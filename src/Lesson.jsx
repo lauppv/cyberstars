@@ -8,7 +8,7 @@ function Lesson({ goHome }) {
     <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Navbar */}
       <nav className="bg-green-600 text-white p-4">
-        <h1 className="text-xl font-bold">FreeCodeCamp Clone - Lesson</h1>
+        <h1 className="text-xl font-bold text-center">CyberStars</h1>
       </nav>
 
       {/* Content */}
