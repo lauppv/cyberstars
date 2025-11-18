@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-function Curriculum({ goHome }) {
+function Curriculum({ goHome, goToLesson }) {
 
 	const [selected, setSelected] = useState(null);
+	
+
 
 	const curriculum = [
 		{
@@ -54,43 +56,30 @@ function Curriculum({ goHome }) {
 				     
 		</section>
 		{selected && (
-			<div
-				className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center"
-				onClick={() => setSelected(null)}
-			>
-				<div
-				className="bg-white p-6 rounded-xl shadow-xl max-w-md w-full"
-				onClick={(e) => e.stopPropagation()}
-				>
-				<h2 className="text-2xl font-bold mb-4 text-green-600">
-					{selected.title}
-				</h2>
-				<p className="text-gray-700 mb-4">{selected.description}</p>
+			<div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center" onClick={() => setSelected(null)}>
+				<div className="bg-white p-6 rounded-xl shadow-xl max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+				
+					<h2 className="text-2xl font-bold mb-4 text-green-600">{selected.title}</h2>
+					<p className="text-gray-700 mb-4">{selected.description}</p>
 
-				<ul className="list-disc pl-6 text-gray-800 space-y-1">
-					{selected.lessons.map((lesson, i) => (
-					<li key={i}>{lesson}</li>
-					))}
-				</ul>
+					<ul className="list-disc pl-6 text-gray-800 space-y-1">
+						{selected.lessons.map((lesson, i) => (
+							<li className="cursor-pointer hover:bg-green-100 px-2 py-1 rounded" key={i} onClick={() => {
+								setSelected(null);
+								goToLesson("lesson");
+							}}>{lesson}</li>
+						))}
+					</ul>
 
-				<button
-					className="mt-6 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-					onClick={() => setSelected(null)}
-				>
-					Close
-				</button>
+					<button className="mt-6 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition" onClick={() => setSelected(null)}>Close</button>
+
 				</div>
 			</div>
 		)}
 
 
     
-      <button
-        onClick={goHome}
-        className="mt-8 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition"
-      >
-        Home
-      </button>
+      <button onClick={goHome} className="mt-8 mt-24 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition">Home</button>
     </div>
   );
 }
