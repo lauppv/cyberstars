@@ -1,9 +1,10 @@
 import './index.css';
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+
 import Lesson from "./Lesson"; 
 import Curriculum from "./Curriculum";
 import AuthPage from './Auth';
-import Home from "./Home"; // trebuie creată
+import Home from "./Home";
 
 function App() {
   return (
