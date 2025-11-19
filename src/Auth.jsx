@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function AuthPage({ goHome }) {
+function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
@@ -51,7 +53,7 @@ function AuthPage({ goHome }) {
 
         <button
           className="mt-6 w-full py-2 border border-green-600 text-green-600 rounded hover:bg-green-50 transition"
-          onClick={goHome}
+          onClick={() => navigate("/")}
         >
           Back to Home
         </button>
@@ -59,4 +61,5 @@ function AuthPage({ goHome }) {
     </div>
   );
 }
+
 export default AuthPage;
