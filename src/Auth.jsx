@@ -3,7 +3,44 @@ import { useNavigate } from "react-router-dom";
 
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const url = isLogin ? "http://localhost:3000/login" : "http://localhost:3000/signup";
+
+    const body = isLogin ? { email, password } : { name, email, password };
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Something went wrong");
+      } else {
+        // exemplu: redirect după login/signup
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      setError("Server error, try again later");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
@@ -12,12 +49,14 @@ function AuthPage() {
           {isLogin ? "Login" : "Sign Up"}
         </h2>
 
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           {!isLogin && (
             <input
               type="text"
               placeholder="Full Name"
               className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           )}
 
@@ -25,21 +64,28 @@ function AuthPage() {
             type="email"
             placeholder="Email"
             className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="password"
             placeholder="Password"
             className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <button
             type="submit"
-            className="w-full py-3 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            disabled={loading}
+            className="w-full py-3 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
           >
-            {isLogin ? "Login" : "Create Account"}
+            {loading ? "Processing..." : isLogin ? "Login" : "Create Account"}
           </button>
         </form>
+
+        {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
 
         <p className="text-center text-gray-600 mt-4">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
