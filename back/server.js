@@ -7,7 +7,7 @@ import cors from "cors";
 dotenv.config();
 
 
-// porneste build-erul
+
 const reactProcess = spawn("node", ["src/react.js"], { stdio: "inherit" });
 
 reactProcess.on("close", (code) => {
