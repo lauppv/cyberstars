@@ -2,6 +2,8 @@ import express from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import pool from '../db/db.js'
+import authenticateToken from "../middleware/authToken.js";
+
 
 const router = express.Router()
 
@@ -52,7 +54,14 @@ router.post("/login", async (req, res) => {
         if (!passwordIsValid) { return res.status(401).send({ message: "Invalid password" }) }
 
         const token = jwt.sign({ id: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '24h' })
-        res.json({ token })
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
+            maxAge: 24 * 60 * 60 * 1000, 
+            });
+        res.status(200).json({ message: "Login successful" });
+
 
     } catch(err){
         console.log(err.message)
@@ -61,5 +70,18 @@ router.post("/login", async (req, res) => {
   
 
 })
+router.post("/logout", (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+    });
+    res.status(200).json({ message: "Logged out successfully" });
+});
+
+router.get("/me", authenticateToken, (req, res) => {
+    res.json({ loggedIn: true, userId: req.user.id });
+});
+
 
 export default router;

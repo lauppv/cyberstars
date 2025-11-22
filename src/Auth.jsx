@@ -15,7 +15,8 @@ function AuthPage() {
     setLoading(true);
     setError("");
 
-    const url = isLogin ? "http://localhost:3000/login" : "http://localhost:3000/signup";
+    const url = isLogin ? "http://localhost:3000/auth/login" : "http://localhost:3000/auth/signup";
+
 
     const body = isLogin ? { email, password } : { name, email, password };
 
@@ -23,6 +24,7 @@ function AuthPage() {
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // ✅ esențial pentru cookie-uri
         body: JSON.stringify(body),
       });
 
@@ -31,8 +33,7 @@ function AuthPage() {
       if (!res.ok) {
         setError(data.message || "Something went wrong");
       } else {
-        // exemplu: redirect după login/signup
-        navigate("/dashboard");
+        navigate("/curriculum");
       }
     } catch (err) {
       setError("Server error, try again later");
@@ -53,7 +54,8 @@ function AuthPage() {
           {!isLogin && (
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder="How should we call you?"
+              required
               className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -63,16 +65,20 @@ function AuthPage() {
           <input
             type="email"
             placeholder="Email"
+            required
             className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
             value={email}
+            
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="password"
             placeholder="Password"
+            required
             className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
             value={password}
+            
             onChange={(e) => setPassword(e.target.value)}
           />
 
