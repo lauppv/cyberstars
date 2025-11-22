@@ -1,3 +1,5 @@
+// connection to database, nothing more
+
 import pkg from "pg";
 import dotenv from "dotenv";
 

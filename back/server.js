@@ -1,8 +1,9 @@
 import { spawn } from "child_process";
 import express from "express";
-import pool from "./db/db.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import authRoutes from './routes/authRoutes.js'
+
 
 dotenv.config();
 
@@ -18,13 +19,10 @@ reactProcess.on("close", (code) => {
 
 const app = express();
 app.use(cors());    
-const PORT = process.env.EXPRESS_PORT;
 app.use(express.json());
 
-
-const result = await pool.query("SELECT NOW()");
-console.log(result.rows);
+app.use("/", authRoutes);
 
 
 
-app.listen(PORT, () => console.log(`API server running on http://localhost:${PORT}`));
+app.listen(process.env.EXPRESS_PORT, () => console.log(`API server running on http://localhost:${process.env.EXPRESS_PORT}`));
