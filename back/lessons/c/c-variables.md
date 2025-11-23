@@ -24,5 +24,9 @@ int main() {
 }
 ```
 
-Here we have **3 variables**: `apples`, `pears`, and `fruits`. These are their **names**.
+Ignore *#include*, *int main()*, and the other parts. Here we have 3 variables: **apples**, **pears**, and **fruits**. These are their **names**.
+
+---
+
+On the right side, you have a code editor. It is incomplete. Create 2 variables, a = 10 and b = 20. Calculate a + b and store the result in a variable c.
 

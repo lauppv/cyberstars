@@ -1,12 +1,25 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown"; // pentru a reda Markdown
+import ReactMarkdown from "react-markdown";
+import CodeMirror from "@uiw/react-codemirror";
+import { cpp } from "@codemirror/lang-cpp"; // pentru limbajul C/C++
+
 
 function Lesson() {
   const navigate = useNavigate();
   const { slug } = useParams(); // /lesson/:slug
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+  const [userCode, setUserCode] = useState(`\
+	#include <stdio.h>
+
+	int main(void){
+
+	
+
+	}
+`);
+
 
   useEffect(() => {
     fetch(`http://localhost:3000/lessons/${slug}`)
@@ -46,11 +59,24 @@ function Lesson() {
 
 
         {/* Partea dreapta: gol momentan */}
-        <div className="w-1/2 p-6 overflow-auto bg-gray-50">
-          {/* aici poti adauga cod editor / exercitii mai tarziu */}
-        </div>
+       <div className="w-1/2 p-6 overflow-auto bg-gray-50 flex flex-col">
+			<h3 className="text-xl font-bold mb-2">Code Editor</h3>
+			<CodeMirror
+				value={userCode}
+				height="100%"
+				extensions={[cpp()]}
+				onChange={(value) => setUserCode(value)}
+			/>
+			<button
+				className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+				onClick={() => alert(userCode)}
+			>
+				Run Code
+			</button>
+			</div>
 
-      </div>
+
+    	  </div>
     </div>
   );
 }
