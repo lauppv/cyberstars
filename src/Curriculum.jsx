@@ -65,15 +65,19 @@ function Curriculum() {
             <ul className="list-disc pl-6 text-gray-800 space-y-1">
               {selected.lessons.map((lesson, i) => (
                 <li 
-                  key={i}
-                  className="cursor-pointer hover:bg-green-100 px-2 py-1 rounded"
-                  onClick={() => {
-                    setSelected(null);
-                    navigate("/lesson");
-                  }}
-                >
-                  {lesson}
-                </li>
+                    key={i}
+                    className="cursor-pointer hover:bg-green-100 px-2 py-1 rounded"
+                    onClick={() => {
+                      setSelected(null);
+                      const slug = `${selected.title.toLowerCase()}-${lesson.toLowerCase()}`;
+                      navigate(`/lesson/${slug}`);
+
+
+                    }}
+                  >
+                    {lesson}
+                  </li>
+
               ))}
             </ul>
 

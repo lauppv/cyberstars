@@ -5,6 +5,8 @@ import cors from "cors";
 import authRoutes from './routes/authRoutes.js';
 import authenticateToken from "./middleware/authToken.js";
 import cookieParser from "cookie-parser";
+import fs from "fs";
+import path from "path";
 
 
 dotenv.config();
@@ -36,6 +38,24 @@ protectedRouter.get("/dashboard", (req, res) => {
 });
 
 app.use("/api", protectedRouter);
+
+app.get("/lessons/:slug", (req, res) => {
+	const slug = req.params.slug; // ex: "c-variables"
+	const [lang, lesson] = slug.split("-"); // "c-variables" -> ["c", "variables"]
+
+	const filePath = path.join(process.cwd(), "back", "lessons", lang, `${lang}-${lesson}.md`);
+
+
+	
+
+
+	if (!fs.existsSync(filePath)) {
+		return res.status(404).json({ error: "Lesson not found" });
+	}
+
+	const content = fs.readFileSync(filePath, "utf-8");
+	res.json({ title: lesson, content });
+});
 
 // 3️⃣ Pornim serverul
 app.listen(process.env.EXPRESS_PORT, () => 

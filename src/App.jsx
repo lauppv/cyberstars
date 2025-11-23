@@ -1,5 +1,5 @@
 import './index.css';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Lesson from "./Lesson"; 
 import Curriculum from "./Curriculum";
@@ -14,6 +14,8 @@ function App() {
             <Route path="/lesson" element={<Lesson />} />
             <Route path="/curriculum" element={<Curriculum />} />
             <Route path="/getstarted" element={<AuthPage />} />
+            <Route path="/lesson/:slug" element={<Lesson />} />
+
         </Routes>
     </BrowserRouter>
   );

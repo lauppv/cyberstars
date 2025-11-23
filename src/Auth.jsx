@@ -1,46 +1,46 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AuthPage() {
-  const [isLogin, setIsLogin] = useState(true);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+    const [isLogin, setIsLogin] = useState(true);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError("");
 
-    const url = isLogin ? "http://localhost:3000/auth/login" : "http://localhost:3000/auth/signup";
+        const url = isLogin ? "http://localhost:3000/auth/login" : "http://localhost:3000/auth/signup";
 
 
-    const body = isLogin ? { email, password } : { name, email, password };
+        const body = isLogin ? { email, password } : { name, email, password };
 
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include", // ✅ esențial pentru cookie-uri
-        body: JSON.stringify(body),
-      });
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include", 
+                body: JSON.stringify(body),
+            });
 
-      const data = await res.json();
+            const data = await res.json();
 
-      if (!res.ok) {
-        setError(data.message || "Something went wrong");
-      } else {
-        navigate("/curriculum");
-      }
-    } catch (err) {
-      setError("Server error, try again later");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+            if (!res.ok) {
+                setError(data.message || "Something went wrong");
+            } else {
+                navigate("/curriculum");
+            }
+        } catch (err) {
+            setError("Server error, try again later");
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
   };
 
   return (
@@ -68,7 +68,6 @@ function AuthPage() {
             required
             className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
             value={email}
-            
             onChange={(e) => setEmail(e.target.value)}
           />
 
@@ -78,7 +77,6 @@ function AuthPage() {
             required
             className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
             value={password}
-            
             onChange={(e) => setPassword(e.target.value)}
           />
 
