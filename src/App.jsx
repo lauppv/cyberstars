@@ -14,7 +14,8 @@ function App() {
             <Route path="/lesson" element={<Lesson />} />
             <Route path="/curriculum" element={<Curriculum />} />
             <Route path="/getstarted" element={<AuthPage />} />
-            <Route path="/lesson/:slug" element={<Lesson />} />
+            <Route path="/lesson/:category/:lesson" element={<Lesson />} />
+
 
         </Routes>
     </BrowserRouter>

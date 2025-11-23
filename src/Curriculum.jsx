@@ -69,11 +69,11 @@ function Curriculum() {
                     className="cursor-pointer hover:bg-green-100 px-2 py-1 rounded"
                     onClick={() => {
                       setSelected(null);
-                      const slug = `${selected.title.toLowerCase()}-${lesson.toLowerCase()}`;
-                      navigate(`/lesson/${slug}`);
-
-
+                      const category = selected.title.toLowerCase();   // c, java, linux
+                      const lessonSlug = lesson.toLowerCase();         // variables, print, if...
+                      navigate(`/lesson/${category}/${lessonSlug}`);
                     }}
+
                   >
                     {lesson}
                   </li>
