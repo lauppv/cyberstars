@@ -5,6 +5,8 @@ import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 function Lesson() {
   const navigate = useNavigate();
@@ -75,8 +77,30 @@ function Lesson() {
         <div className="w-1/2 p-6 overflow-auto bg-white border-r border-gray-300">
           <h2 className="text-2xl font-bold mb-4">{title}</h2>
           <div className="prose">
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <ReactMarkdown
+              children={content}
+              components={{
+                code({node, inline, className, children, ...props}) {
+                  const match = /language-(\w+)/.exec(className || '')
+                  return !inline && match ? (
+                    <SyntaxHighlighter
+                      style={materialDark}
+                      language={match[1]}
+                      PreTag="div"
+                      {...props}
+                    >
+                      {String(children).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
+                  ) : (
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
+                  )
+                }
+              }}
+            />
           </div>
+
 
           <button
             className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition mt-4"

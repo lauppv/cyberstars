@@ -1,3 +1,3 @@
 # write code below
 
-print(12)
+print("salut")

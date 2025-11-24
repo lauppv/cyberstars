@@ -15,7 +15,7 @@ function Curriculum() {
     },
     {
       title: "C",
-      description: "The Foundation of Programming",
+      description: "Understanding low-level programming",
       lessons: [
         "variables", "print", "types", "if", "else if", "else", "for", "while", "switch"
       ]
