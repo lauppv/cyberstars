@@ -6,6 +6,13 @@ function Curriculum() {
   const [selected, setSelected] = useState(null);
 
   const curriculum = [
+     {
+      title: "Python",
+      description: "New to programming? We highly recommend Python",
+      lessons: [
+        "variables", "operators", "if", "else"
+      ]
+    },
     {
       title: "C",
       description: "The Foundation of Programming",
@@ -19,14 +26,8 @@ function Curriculum() {
       lessons: [
         "variables", "print", "if", "else if", "else", "for", "while", "Class", "Object"
       ]
-    },
-    {
-      title: "Linux",
-      description: "Terminal & Bash Scripting",
-      lessons: [
-        "TBC1", "TBC2", "TBC3", "TBC4"
-      ]
     }
+   
   ];
 
   return (

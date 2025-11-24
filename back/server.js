@@ -61,26 +61,43 @@ app.get("/lessons/:lang/:lesson", (req, res) => {
 	const content = fs.readFileSync(filePath, "utf-8");
   	res.json({ title: lesson, content });
 });
-
 app.post("/run-code", (req, res) => {
-    const { code } = req.body;
-    const tempFile = path.join(process.cwd(), "back", "user_code.c");
+    const { code, language } = req.body; // adaugă language
 
-    // Scrie fișierul primit de la frontend
+    // Alege folder-ul runtime corespunzător limbajului
+    const runtimePath = path.join(process.cwd(), `back/runtimes/${language}`);
+    const tempFile = path.join(runtimePath, `user_code.${getExtension(language)}`);
+
+    // Scrie fișierul primit
     fs.writeFileSync(tempFile, code);
 
-    const dockerCmd = 
-        `docker run --rm ` +
-        `-v ${path.join(process.cwd(), "back")}:/usr/src/app ` + 
-        `code-runner ./run_code.sh user_code.c`;
-
-    exec(dockerCmd, (error, stdout, stderr) => {
-        if (stderr) {
-            return res.json({ output: stderr });
+    // Build și run Docker
+    const buildCmd = `docker build -t ${language}-run ${runtimePath}`;
+    exec(buildCmd, (buildErr, buildStdout, buildStderr) => {
+        if (buildErr) {
+            return res.json({ output: buildStderr });
         }
-        res.json({ output: stdout });
+
+        const runCmd = `docker run --rm -v ${runtimePath}:/usr/src/app ${language}-run ./run_code.sh user_code.${getExtension(language)}`;
+        exec(runCmd, (error, stdout, stderr) => {
+            if (error || stderr) {
+                return res.json({ output: stderr || error.message });
+            }
+            res.json({ output: stdout });
+        });
     });
 });
+
+// Functie helper pentru extensia fișierului
+function getExtension(language) {
+    switch(language.toLowerCase()) {
+        case "python": return "py";
+        case "c": return "c";
+        case "java": return "java";
+        default: return "txt";
+    }
+}
+
 
 
 

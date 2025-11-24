@@ -3,9 +3,6 @@
 int main(void) {
    
     
-  while(1){
-
-    puts("plm");
-  }
+  puts("123");
 
 }

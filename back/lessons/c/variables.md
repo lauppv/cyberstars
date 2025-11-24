@@ -30,13 +30,3 @@ Ignore *#include*, *int main()*, and the other parts. Here we have 3 variables: 
 
 On the right side, you have a code editor. It is incomplete. Create 2 variables, a = 10 and b = 20. Calculate a + b and store the result in a variable c.
 
-
-```c
-#include <stdio.h>
-
-int main(void) {
-    int a = 10;
-    int b = 20;
-    // Completează codul aici
-}
-```

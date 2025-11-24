@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
+import { python } from "@codemirror/lang-python";
+import { java } from "@codemirror/lang-java";
 
 function Lesson() {
   const navigate = useNavigate();
@@ -12,6 +14,20 @@ function Lesson() {
   const [userCode, setUserCode] = useState("");
   const [output, setOutput] = useState("");
   const outputRef = useRef(null); // ref pentru scroll
+
+  // Determină extensia/limbajul pentru CodeMirror
+  const getCodeMirrorLang = () => {
+    switch (category.toLowerCase()) {
+      case "python":
+        return [python()];
+      case "c":
+        return [cpp()];
+      case "java":
+        return [java()];
+      default:
+        return [];
+    }
+  };
 
   useEffect(() => {
     // Fetch teoria din backend
@@ -23,10 +39,22 @@ function Lesson() {
       })
       .catch(err => console.error(err));
 
+    // Fetch codul inițial al lecției
     fetch(`http://localhost:3000/lesson-code/${category}/${lesson}-code.md`)
       .then(res => res.text())
       .then(text => setUserCode(text))
-      .catch(() => setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`));
+      .catch(() => {
+        // fallback pentru C
+        if (category.toLowerCase() === "c") {
+          setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`);
+        } else if (category.toLowerCase() === "python") {
+          setUserCode(`# Python code goes here`);
+        } else if (category.toLowerCase() === "java") {
+          setUserCode(`public class Main {\n  public static void main(String[] args) {\n\n  }\n}`);
+        } else {
+          setUserCode("");
+        }
+      });
   }, [category, lesson]);
 
   // Scroll automat la final când output-ul se schimbă
@@ -59,47 +87,56 @@ function Lesson() {
         </div>
 
         {/* Dreapta */}
-        <div className="w-1/2 p-6 overflow-hidden bg-gray-50 flex flex-col">
-          <div className="flex-3 mb-2 overflow-auto">
+        <div className="w-1/2 p-6 flex flex-col bg-gray-50">
+          {/* Editor */}
+          <div className="flex-1 mb-2 overflow-auto">
             <CodeMirror
               value={userCode}
               height="100%"
-              extensions={[cpp()]}
+              extensions={getCodeMirrorLang()}
               onChange={(value) => setUserCode(value)}
             />
           </div>
 
+          {/* Buton Run */}
           <button
             className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
             onClick={async () => {
-              const response = await fetch("http://localhost:3000/run-code", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ code: userCode })
-              });
+              try {
+                const response = await fetch("http://localhost:3000/run-code", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ 
+                    code: userCode,
+                    language: category
+                  })
+                });
 
-              // Backend-ul trimite output incremental sau complet
-              // Păstrăm doar ultimele 200 linii ca să nu aglomereze memoria
-              const data = await response.json();
-              setOutput(prev =>
-                (prev + data.output)
-                  .split("\n")
-                  .slice(-200)
-                  .join("\n")
-              );
+                const data = await response.json();
+
+                setOutput(prev =>
+                  (prev + data.output)
+                    .split("\n")
+                    .slice(-200)
+                    .join("\n")
+                );
+              } catch (err) {
+                setOutput(prev => prev + "\nError connecting to server.");
+                console.error(err);
+              }
             }}
           >
             Run Code
           </button>
 
-              <div
-                ref={outputRef}
-                className="mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap"
-                style={{ height: "200px", minHeight: "200px", maxHeight: "200px" }}
-              >
-           {output || "Output will appear here..."}
-        </div>
-
+          {/* Output */}
+          <div
+            ref={outputRef}
+            className="mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap"
+            style={{ height: "200px", minHeight: "200px", maxHeight: "200px" }}
+          >
+            {output || "Output will appear here..."}
+          </div>
         </div>
       </div>
     </div>
