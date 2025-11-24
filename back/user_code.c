@@ -2,7 +2,10 @@
 
 int main(void) {
    
-    puts("pula");
+    
+  while(1){
 
+    puts("plm");
+  }
 
 }

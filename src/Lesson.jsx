@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
@@ -10,10 +10,11 @@ function Lesson() {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [userCode, setUserCode] = useState("");
-  const [output, setOutput] = useState(""); // ✨ nou
+  const [output, setOutput] = useState("");
+  const outputRef = useRef(null); // ref pentru scroll
 
   useEffect(() => {
-    // 1️⃣ Fetch teoria din backend
+    // Fetch teoria din backend
     fetch(`http://localhost:3000/lessons/${category}/${lesson}`)
       .then(res => res.json())
       .then(data => {
@@ -27,6 +28,13 @@ function Lesson() {
       .then(text => setUserCode(text))
       .catch(() => setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`));
   }, [category, lesson]);
+
+  // Scroll automat la final când output-ul se schimbă
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  }, [output]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
@@ -51,36 +59,48 @@ function Lesson() {
         </div>
 
         {/* Dreapta */}
-			<div className="w-1/2 p-6 overflow-hidden bg-gray-50 flex flex-col">
-			<div className="flex-3 mb-2 overflow-auto">
-				<CodeMirror
-				value={userCode}
-				height="100%" // ocupă tot spațiul div-ului
-				extensions={[cpp()]}
-				onChange={(value) => setUserCode(value)}
-				/>
-			</div>
+        <div className="w-1/2 p-6 overflow-hidden bg-gray-50 flex flex-col">
+          <div className="flex-3 mb-2 overflow-auto">
+            <CodeMirror
+              value={userCode}
+              height="100%"
+              extensions={[cpp()]}
+              onChange={(value) => setUserCode(value)}
+            />
+          </div>
 
-			<button
-				className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-				onClick={async () => {
-				const response = await fetch("http://localhost:3000/run-code", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ code: userCode })
-				});
-				const data = await response.json();
-				setOutput(data.output);
-				}}
-			>
-				Run Code
-			</button>
+          <button
+            className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            onClick={async () => {
+              const response = await fetch("http://localhost:3000/run-code", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ code: userCode })
+              });
 
-			<div className="flex-1 mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap">
-				{output || "Output will appear here..."}
-			</div>
-			</div>
+              // Backend-ul trimite output incremental sau complet
+              // Păstrăm doar ultimele 200 linii ca să nu aglomereze memoria
+              const data = await response.json();
+              setOutput(prev =>
+                (prev + data.output)
+                  .split("\n")
+                  .slice(-200)
+                  .join("\n")
+              );
+            }}
+          >
+            Run Code
+          </button>
 
+              <div
+                ref={outputRef}
+                className="mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap"
+                style={{ height: "200px", minHeight: "200px", maxHeight: "200px" }}
+              >
+           {output || "Output will appear here..."}
+        </div>
+
+        </div>
       </div>
     </div>
   );
