@@ -63,23 +63,25 @@ app.get("/lessons/:lang/:lesson", (req, res) => {
 });
 
 app.post("/run-code", (req, res) => {
-	const { code } = req.body; // codul C de la frontend
-	const tempFile = path.join(process.cwd(), "user_code.c");
+    const { code } = req.body;
+    const tempFile = path.join(process.cwd(), "back", "user_code.c");
 
-	// Salvează codul într-un fișier temporar
-	fs.writeFileSync(tempFile, code);
+    // Scrie fișierul primit de la frontend
+    fs.writeFileSync(tempFile, code);
 
-	// Rulează codul în Docker
-	exec(
-		`docker run --rm -v ${process.cwd()}:/usr/src/app code-runner ./run_code.sh user_code.c`,
-		(error, stdout, stderr) => {
-		if (error) {
-			return res.json({ output: stderr });
-		}
-		res.json({ output: stdout });
-		}
-	);
+    const dockerCmd = 
+        `docker run --rm ` +
+        `-v ${path.join(process.cwd(), "back")}:/usr/src/app ` + 
+        `code-runner ./run_code.sh user_code.c`;
+
+    exec(dockerCmd, (error, stdout, stderr) => {
+        if (stderr) {
+            return res.json({ output: stderr });
+        }
+        res.json({ output: stdout });
+    });
 });
+
 
 
 // 3️⃣ Pornim serverul

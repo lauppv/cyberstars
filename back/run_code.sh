@@ -3,7 +3,7 @@
 SRC_FILE=$1
 OUT_FILE="a.out"
 
-gcc "$SRC_FILE" -o "$OUT_FILE" 2> compile_errors.txt
+gcc -Wall -o "$OUT_FILE" "$SRC_FILE" 2> compile_errors.txt
 
 if [ -s compile_errors.txt ]; then
     cat compile_errors.txt
