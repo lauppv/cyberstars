@@ -17,6 +17,8 @@ function Lesson() {
   const [output, setOutput] = useState("");
   const outputRef = useRef(null); // ref pentru scroll
 
+  const API_URL = "http://localhost:3000"; // backend-ul tău
+
   // Determină extensia/limbajul pentru CodeMirror
   const getCodeMirrorLang = () => {
     switch (category.toLowerCase()) {
@@ -33,20 +35,29 @@ function Lesson() {
 
   useEffect(() => {
     // Fetch teoria din backend
-    fetch(`http://localhost:3000/lessons/${category}/${lesson}`)
+    fetch(`${API_URL}/lessons/${category}/${lesson}`)
       .then(res => res.json())
       .then(data => {
-        setTitle(data.title);
-        setContent(data.content);
+        if (data.content) {
+          setTitle(data.title);
+          setContent(data.content);
+        } else {
+          console.error("Lesson not found:", data);
+          setTitle("Lesson not found");
+          setContent("");
+        }
       })
       .catch(err => console.error(err));
 
     // Fetch codul inițial al lecției
-    fetch(`http://localhost:3000/lesson-code/${category}/${lesson}-code.md`)
-      .then(res => res.text())
+    fetch(`${API_URL}/lesson-code/${category}/${lesson}-code.md`)
+      .then(res => {
+        if (!res.ok) throw new Error("File not found");
+        return res.text();
+      })
       .then(text => setUserCode(text))
       .catch(() => {
-        // fallback pentru C
+        // fallback pentru cod inițial
         if (category.toLowerCase() === "c") {
           setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`);
         } else if (category.toLowerCase() === "python") {
@@ -57,7 +68,7 @@ function Lesson() {
           setUserCode("");
         }
       });
-  }, [category, lesson]);
+  }, [category, lesson, API_URL]);
 
   // Scroll automat la final când output-ul se schimbă
   useEffect(() => {
@@ -80,8 +91,8 @@ function Lesson() {
             <ReactMarkdown
               children={content}
               components={{
-                code({node, inline, className, children, ...props}) {
-                  const match = /language-(\w+)/.exec(className || '')
+                code({ node, inline, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || "");
                   return !inline && match ? (
                     <SyntaxHighlighter
                       style={materialDark}
@@ -89,18 +100,17 @@ function Lesson() {
                       PreTag="div"
                       {...props}
                     >
-                      {String(children).replace(/\n$/, '')}
+                      {String(children).replace(/\n$/, "")}
                     </SyntaxHighlighter>
                   ) : (
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  )
+                  );
                 }
               }}
             />
           </div>
-
 
           <button
             className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition mt-4"
@@ -127,10 +137,10 @@ function Lesson() {
             className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
             onClick={async () => {
               try {
-                const response = await fetch("http://localhost:3000/run-code", {
+                const response = await fetch(`${API_URL}/api/run-code`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ 
+                  body: JSON.stringify({
                     code: userCode,
                     language: category
                   })
@@ -138,12 +148,7 @@ function Lesson() {
 
                 const data = await response.json();
 
-                setOutput(prev =>
-                  (prev + data.output)
-                    .split("\n")
-                    .slice(-200)
-                    .join("\n")
-                );
+                setOutput(data.output);
               } catch (err) {
                 setOutput(prev => prev + "\nError connecting to server.");
                 console.error(err);

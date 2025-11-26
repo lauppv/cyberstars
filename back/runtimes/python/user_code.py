@@ -1,3 +1,4 @@
 # write code below
 
-print("salut")
+while(True):
+  print(12)
