@@ -1,34 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
+import { curriculum } from "./data/curriculum.js"
 
 function Curriculum() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
 
-  const curriculum = [
-     {
-      title: "Python",
-      description: "New to programming? We highly recommend Python",
-      lessons: [
-        "variables", "operators", "if", "else"
-      ]
-    },
-    {
-      title: "C",
-      description: "Understanding low-level programming",
-      lessons: [
-        "variables", "print", "types", "if", "else if", "else", "for", "while", "switch"
-      ]
-    },
-    {
-      title: "Java",
-      description: "Object Oriented Programming",
-      lessons: [
-        "variables", "print", "if", "else if", "else", "for", "while", "Class", "Object"
-      ]
-    }
-   
-  ];
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">

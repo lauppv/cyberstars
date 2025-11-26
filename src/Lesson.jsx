@@ -7,6 +7,7 @@ import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { curriculum } from "./data/curriculum";
 
 function Lesson() {
   const navigate = useNavigate();
@@ -22,19 +23,15 @@ function Lesson() {
   // Determină extensia/limbajul pentru CodeMirror
   const getCodeMirrorLang = () => {
     switch (category.toLowerCase()) {
-      case "python":
-        return [python()];
-      case "c":
-        return [cpp()];
-      case "java":
-        return [java()];
-      default:
-        return [];
+      case "python": return [python()];
+      case "c": return [cpp()];
+      case "java": return [java()];
+      default: return [];
     }
   };
 
+  // Fetch teoria și codul lecției
   useEffect(() => {
-    // Fetch teoria din backend
     fetch(`${API_URL}/lessons/${category}/${lesson}`)
       .then(res => res.json())
       .then(data => {
@@ -42,40 +39,43 @@ function Lesson() {
           setTitle(data.title);
           setContent(data.content);
         } else {
-          console.error("Lesson not found:", data);
           setTitle("Lesson not found");
           setContent("");
         }
       })
       .catch(err => console.error(err));
 
-    // Fetch codul inițial al lecției
     fetch(`${API_URL}/lesson-code/${category}/${lesson}-code.md`)
-      .then(res => {
-        if (!res.ok) throw new Error("File not found");
-        return res.text();
-      })
+      .then(res => res.ok ? res.text() : Promise.reject("File not found"))
       .then(text => setUserCode(text))
       .catch(() => {
-        // fallback pentru cod inițial
-        if (category.toLowerCase() === "c") {
-          setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`);
-        } else if (category.toLowerCase() === "python") {
-          setUserCode(`# Python code goes here`);
-        } else if (category.toLowerCase() === "java") {
-          setUserCode(`public class Main {\n  public static void main(String[] args) {\n\n  }\n}`);
-        } else {
-          setUserCode("");
-        }
+        // fallback cod inițial
+        if (category.toLowerCase() === "c") setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`);
+        else if (category.toLowerCase() === "python") setUserCode(`# Python code goes here`);
+        else if (category.toLowerCase() === "java") setUserCode(`public class Main {\n  public static void main(String[] args) {\n\n  }\n}`);
+        else setUserCode("");
       });
   }, [category, lesson, API_URL]);
 
   // Scroll automat la final când output-ul se schimbă
   useEffect(() => {
-    if (outputRef.current) {
-      outputRef.current.scrollTop = outputRef.current.scrollHeight;
-    }
+    if (outputRef.current) outputRef.current.scrollTop = outputRef.current.scrollHeight;
   }, [output]);
+
+  // Prev/Next
+  // Găsește categoria curentă
+  const categoryObj = curriculum.find(c => c.key.toLowerCase() === category.toLowerCase());
+
+  // Lista de lecții pentru categoria curentă
+  const lessonList = categoryObj ? categoryObj.lessons : [];
+
+  // Indexul lecției curente (lowercase ca să nu conteze majusculele)
+  const currentIndex = lessonList.findIndex(l => l.toLowerCase() === lesson.toLowerCase());
+
+  // Lecția precedentă și lecția următoare
+  const prevLesson = currentIndex > 0 ? lessonList[currentIndex - 1] : null;
+  const nextLesson = currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
+
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
@@ -103,36 +103,53 @@ function Lesson() {
                       {String(children).replace(/\n$/, "")}
                     </SyntaxHighlighter>
                   ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
+                    <code className={className} {...props}>{children}</code>
                   );
                 }
               }}
             />
           </div>
 
-          <button
-            className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition mt-4"
-            onClick={() => navigate("/curriculum")}
-          >
-            Back
-          </button>
+          {/* Back + Prev/Next */}
+          <div className="flex gap-4 mt-4">
+            <button
+              className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              onClick={() => navigate("/curriculum")}
+            >
+              Home
+            </button>
+
+            {prevLesson && (
+              <button
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
+                onClick={() => navigate(`/lesson/${category}/${prevLesson}`)}
+              >
+                Previous
+              </button>
+            )}
+
+            {nextLesson && (
+              <button
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                onClick={() => navigate(`/lesson/${category}/${nextLesson}`)}
+              >
+                Next
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Dreapta */}
         <div className="w-1/2 p-6 flex flex-col bg-gray-50">
-          {/* Editor */}
           <div className="flex-1 mb-2 overflow-auto">
             <CodeMirror
               value={userCode}
               height="100%"
               extensions={getCodeMirrorLang()}
-              onChange={(value) => setUserCode(value)}
+              onChange={value => setUserCode(value)}
             />
           </div>
 
-          {/* Buton Run */}
           <button
             className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
             onClick={async () => {
@@ -140,14 +157,9 @@ function Lesson() {
                 const response = await fetch(`${API_URL}/api/run-code`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    code: userCode,
-                    language: category
-                  })
+                  body: JSON.stringify({ code: userCode, language: category })
                 });
-
                 const data = await response.json();
-
                 setOutput(data.output);
               } catch (err) {
                 setOutput(prev => prev + "\nError connecting to server.");
@@ -158,7 +170,6 @@ function Lesson() {
             Run Code
           </button>
 
-          {/* Output */}
           <div
             ref={outputRef}
             className="mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap"
