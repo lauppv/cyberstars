@@ -3,7 +3,7 @@ export const curriculum = [
     key: "python",
     title: "Python",
     description: "New to programming? We highly recommend Python",
-    lessons: ["variables", "operators", "if", "else"]
+    lessons: ["print", "variables", "if", "else"]
   },
   {
     key: "c",

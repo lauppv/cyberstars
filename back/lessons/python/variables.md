@@ -1,34 +1,77 @@
-Python is the best programming language to start learning programming. The most important thing is to understand **software concepts**.  
-The first concept is **displaying output**, or, in "engineering terms", **print** :D
+A core concept in programming is storing information. Most of the time, we don’t just want to display something on the screen; we want to **process** it first, do something with it, and then maybe display the result
 
-How can we tell the computer "hey, I like pizza"? In Python we say:
+Suppose we start with 2 apples:
+```py
+print("I have 2 apples")
+```
+What happens if Anna gives us **3** more apples? We will have **5**. Of course, we could say:
+```py
+print("Now I have 5 apples")
+```
+Then John comes and gives us **4** more apples. We will have **9** apples:
+```py
+print("Now I have 9 apples")
+```
+Every time, we have to remember how many apples we have, ourselves. But can the **computer** calculate and **remember** this for us? Absolutely!
+```py
+apples = 2
+print(f"Now I have {apples} apples")
+
+apples = apples + 3
+print(f"Now I have {apples} apples")
+
+apples = apples + 4
+print(f"Now I have {apples} apples")
+```
+The output will be:
+```py
+Now I have 2 apples
+Now I have 5 apples
+Now I have 9 apples
+```
+
+Let’s pause a bit to understand the syntax:
+```py
+apples = apples + 3
+print(f"Now I have {apples} apples")
+```
+**apples** is the variable *name* — the *name* of our “box” where we store something
+
+On the right side of the **=** sign we have apples + 3. How many apples do we have **before** this operation? We had 2 apples, right? (See apples = 2 above)
+So **apples** + 3 means 2 + 3, so 5
+
+Therefore, **apples = apples + 3** means store whatever we have on the right
+
+**Takeaway**: The computer first evaluates the right-hand side of **=** and then stores the result in the variable on the left-hand side. So **right comes first**
 
 ```py
-print("hey, I like pizza")
+apples = apples + 3
+print(f"Now I have {apples} apples")
 ```
-
-print() is a function (we'll learn in later lessons what a function really is). For now, we only need to know that print() is an instruction, our way of telling the computer: "display something".
-
-An important thing to notice is the quotes — 
-```py 
-print(hey, I like pizza)
-```
-will not work (we'll learn later why).
-
-We can also do:
+Notice the **{}** in the print. Why do we need it?
 
 ```py
-print("5")
+print("Now I have apples apples")
 ```
+would literally print: **Now I have apples apples**, and not **Now I have 5 apples**
 
-which will display 5, or:
-
+What about the **f**? Well, what would the following code print?
 ```py
-print("I have 2 dogs")
+print("Now I have {apples} apples")
 ```
+Correct, it would print **Now I have {apples} apples** and not the value stored in **apples**
 
-Again, don't forget the quotes.
+So, if we want to display the value of a variable, we must use **f** and **{}**
 
 ---
 
-On the right side of the screen, you have a place to write code. Try to display something using print(). Psst, don't forget the quotes :)
+We can also do other things with variables:
+
+```py
+name = "Nikola Tesla"
+age = 52
+profession = "inventor"
+
+print(f"Hi! My name is {name}, I am {age} years old, and I am an {profession}")
+```
+This will display on the screen: **Hi! My name is Nikola Tesla, I am 52 years old, and I am an inventor**

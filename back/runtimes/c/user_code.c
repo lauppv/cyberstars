@@ -2,7 +2,9 @@
 
 int main(void) {
    
-    
-asdas
+    while(1){
+      puts("brooooo");
+    }
+
 
 }

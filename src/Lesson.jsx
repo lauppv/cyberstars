@@ -69,10 +69,9 @@ function Lesson() {
   // Lista de lecții pentru categoria curentă
   const lessonList = categoryObj ? categoryObj.lessons : [];
 
-  // Indexul lecției curente (lowercase ca să nu conteze majusculele)
+  
   const currentIndex = lessonList.findIndex(l => l.toLowerCase() === lesson.toLowerCase());
-
-  // Lecția precedentă și lecția următoare
+  
   const prevLesson = currentIndex > 0 ? lessonList[currentIndex - 1] : null;
   const nextLesson = currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
@@ -84,7 +83,7 @@ function Lesson() {
       </nav>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Stânga */}
+      
         <div className="w-1/2 p-6 overflow-auto bg-white border-r border-gray-300">
           <h2 className="text-2xl font-bold mb-4">{title}</h2>
           <div className="prose">

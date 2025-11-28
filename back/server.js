@@ -27,14 +27,14 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-// 1️⃣ Endpoint-uri publice: signup și login
+//  Endpoint-uri publice: signup si login
 app.use("/auth", authRoutes);
 app.use("/lesson-code", express.static(path.join(process.cwd(), "back", "lessons")));
 
-// 2️⃣ Endpoint public pentru run-code (nu e nevoie de token)
+// Endpoint public pentru run-code (nu e nevoie de token)
 app.use("/api/run-code", runCodeRouter);
 
-// 3️⃣ Endpoint-uri protejate
+//  Endpoint-uri protejate
 const protectedRouter = express.Router();
 protectedRouter.use(authenticateToken);
 protectedRouter.get("/dashboard", (req, res) => {
@@ -42,7 +42,7 @@ protectedRouter.get("/dashboard", (req, res) => {
 });
 app.use("/api", protectedRouter);
 
-// 4️⃣ Endpoint pentru lecții
+// Endpoint pentru lectii
 app.get("/lessons/:lang/:lesson", (req, res) => {
   const { lang, lesson } = req.params;
   const filePath = path.join(process.cwd(), "back", "lessons", lang, `${lesson}.md`);
@@ -53,7 +53,7 @@ app.get("/lessons/:lang/:lesson", (req, res) => {
   res.json({ title: lesson, content });
 });
 
-// 5️⃣ Pornim serverul
+//  Pornim serverul
 app.listen(process.env.EXPRESS_PORT, () => 
   console.log(`API server running on http://localhost:${process.env.EXPRESS_PORT}`)
 );

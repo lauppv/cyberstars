@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
             FROM users WHERE email = $1`,
         [email])
             
-        if(user.rows.length === 0){return res.status(401).send({message: "user not found"})}
+        if(user.rowCount === 0){return res.status(401).send({message: "user not found"})}
         
         
         const passwordIsValid = bcrypt.compareSync(password, user.rows[0].password)
@@ -76,6 +76,7 @@ router.post("/login", async (req, res) => {
   
 
 })
+
 router.post("/logout", (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
