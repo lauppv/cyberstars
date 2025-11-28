@@ -1,3 +1,3 @@
-x = 1
-while(1):
-  print(x)
+# write code below
+asdasd
+asdasd

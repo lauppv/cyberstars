@@ -3,6 +3,8 @@ import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
+import { oneDark } from "@codemirror/theme-one-dark";
+import { indentUnit } from "@codemirror/language";
 
 export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
@@ -11,14 +13,11 @@ export default function CodeCell({ initialCode, language }) {
 
   const API_URL = "http://localhost:3000";
 
-  // Map shortcode -> limbaj real pentru backend și CodeMirror
   const langMap = {
     py: "python",
     c: "c",
     java: "java",
   };
-
-  // Folosim limbajul corect
   const lang = langMap[language.toLowerCase()] || language.toLowerCase();
 
   const getLang = () => {
@@ -37,7 +36,6 @@ export default function CodeCell({ initialCode, language }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language: lang })
       });
-
       const data = await res.json();
       setOutput(data.output || "");
     } catch {
@@ -55,8 +53,9 @@ export default function CodeCell({ initialCode, language }) {
       <CodeMirror
         value={code}
         height="150px"
-        extensions={getLang()}
+        extensions={[...getLang(), indentUnit.of("    ")]} // 1 tab 4 spaces
         onChange={v => setCode(v)}
+        theme={oneDark}
       />
 
       <button
