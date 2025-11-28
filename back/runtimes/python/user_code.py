@@ -1,4 +1,3 @@
 # write code below
 
-while(True):
-  print(12)
+print(1)

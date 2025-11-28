@@ -67,7 +67,7 @@ function Lesson() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-cyan-300">
       <nav className="bg-gray-800 text-cyan-300 p-4">
-        <h1 className="text-xl font-bold text-center">CyberStars</h1>
+        <h1 className="text-xl font-bold text-center text-pink-400" style={{ fontFamily: 'cursive', fontSize: "140%" } }>CyberStars</h1>
       </nav>
 
       <div className="flex flex-1 overflow-hidden">
@@ -129,9 +129,10 @@ function Lesson() {
           </div>
         </div>
 
-        {/* Dreapta */}
-        <div className="w-1/2 p-6 flex flex-col bg-gray-700">
-          <div className="flex-1 mb-2 overflow-auto">
+      {/* Dreapta */}
+        <div className="w-1/2 flex flex-col p-6 bg-gray-700 h-full">
+          {/* Editorul ocupă tot spațiul disponibil */}
+          <div className="flex-1 overflow-auto mb-2">
             <CodeMirror
               value={userCode}
               height="100%"
@@ -140,6 +141,7 @@ function Lesson() {
             />
           </div>
 
+          {/* Butonul Run */}
           <button
             className="mt-2 px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition"
             onClick={async () => {
@@ -160,6 +162,7 @@ function Lesson() {
             Run Code
           </button>
 
+          {/* Terminal / Output */}
           <div
             ref={outputRef}
             className="mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap"
@@ -168,6 +171,7 @@ function Lesson() {
             {output || "Output will appear here..."}
           </div>
         </div>
+
       </div>
     </div>
   );
