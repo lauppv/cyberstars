@@ -2,51 +2,52 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AuthPage() {
-    const [isLogin, setIsLogin] = useState(true);
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setError("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-        const url = isLogin ? "http://localhost:3000/auth/login" : "http://localhost:3000/auth/signup";
+    const url = isLogin
+      ? "http://localhost:3000/auth/login"
+      : "http://localhost:3000/auth/signup";
 
+    const body = isLogin ? { email, password } : { name, email, password };
 
-        const body = isLogin ? { email, password } : { name, email, password };
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(body),
+      });
 
-        try {
-            const res = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                credentials: "include", 
-                body: JSON.stringify(body),
-            });
+      const data = await res.json();
 
-            const data = await res.json();
-
-            if (!res.ok) {
-                setError(data.message || "Something went wrong");
-            } else {
-                navigate("/curriculum");
-            }
-        } catch (err) {
-            setError("Server error, try again later");
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
+      if (!res.ok) {
+        setError(data.message || "Something went wrong");
+      } else {
+        navigate("/curriculum");
+      }
+    } catch (err) {
+      setError("Server error, try again later");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-green-600 text-center mb-6">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-6">
+      <div className="bg-gray-800 shadow-xl rounded-2xl p-8 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-cyan-300 text-center mb-6">
           {isLogin ? "Login" : "Sign Up"}
         </h2>
 
@@ -56,7 +57,7 @@ function AuthPage() {
               type="text"
               placeholder="How should we call you?"
               required
-              className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
+              className="border border-cyan-300 p-3 rounded bg-gray-700 text-cyan-300 focus:outline-none focus:border-pink-400"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -66,7 +67,7 @@ function AuthPage() {
             type="email"
             placeholder="Email"
             required
-            className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
+            className="border border-cyan-300 p-3 rounded bg-gray-700 text-cyan-300 focus:outline-none focus:border-pink-400"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -75,7 +76,7 @@ function AuthPage() {
             type="password"
             placeholder="Password"
             required
-            className="border border-gray-300 p-3 rounded focus:outline-none focus:border-green-600"
+            className="border border-cyan-300 p-3 rounded bg-gray-700 text-cyan-300 focus:outline-none focus:border-pink-400"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -83,18 +84,20 @@ function AuthPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
+            className="w-full py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 hover:text-white transition disabled:opacity-50"
           >
             {loading ? "Processing..." : isLogin ? "Login" : "Create Account"}
           </button>
         </form>
 
-        {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
+        {error && (
+          <p className="text-pink-400 mt-2 text-center font-bold">{error}</p>
+        )}
 
-        <p className="text-center text-gray-600 mt-4">
+        <p className="text-cyan-300 text-center mt-4">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
-            className="text-green-600 font-semibold ml-2 hover:underline"
+            className="text-pink-400 font-semibold ml-2 hover:underline"
             onClick={() => setIsLogin(!isLogin)}
           >
             {isLogin ? "Sign Up" : "Login"}
@@ -102,7 +105,7 @@ function AuthPage() {
         </p>
 
         <button
-          className="mt-6 w-full py-2 border border-green-600 text-green-600 rounded hover:bg-green-50 transition"
+          className="mt-6 w-full py-2 border border-pink-400 text-white rounded hover:bg-pink-400 hover:text-white transition"
           onClick={() => navigate("/")}
         >
           Back to Home

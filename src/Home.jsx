@@ -11,15 +11,12 @@ function Home() {
       try {
         const res = await fetch("http://localhost:3000/auth/me", {
           method: "GET",
-          credentials: "include", // trimite cookie-ul
+          credentials: "include",
         });
 
-        if (res.ok) {
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-        }
-      } catch (err) {
+        if (res.ok) setIsLoggedIn(true);
+        else setIsLoggedIn(false);
+      } catch {
         setIsLoggedIn(false);
       }
     }
@@ -38,33 +35,29 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen justify-center flex flex-col bg-black-100 items-center p-6">
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-6">
       <header className="w-full max-w-4xl text-center mb-24">
-        <h1 className="text-5xl font-bold text-green-600 mb-4">CyberStars</h1>
-        <p className="text-gray-700 text-lg">Learn to code for free</p>
+        <h1 className="text-5xl font-bold text-pink-300 mb-4">CyberStars</h1>
+        <p className="text-cyan-200 text-lg">Learn to code for free</p>
       </header>
 
       <div className="flex flex-row gap-4 mb-12">
-
-        {/* Afișăm Get Started doar dacă userul nu e logat */}
         {!isLoggedIn && (
           <button
-            className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            className="px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 hover:text-white transition"
             onClick={() => navigate("/getstarted")}
           >
             Get Started
           </button>
         )}
 
-        {/* Explore Curriculum - mereu vizibil */}
         <button
-          className="px-6 py-3 border border-green-600 text-green-600 rounded hover:bg-green-50 transition"
+          className="px-6 py-3 border border-pink-400 text-white rounded hover:bg-pink-400 hover:text-cyan-300 transition"
           onClick={() => navigate("/curriculum")}
         >
           Explore Curriculum
         </button>
 
-        {/* Afișăm butonul Logout doar dacă userul e logat */}
         {isLoggedIn && (
           <button
             className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 transition"
@@ -73,7 +66,6 @@ function Home() {
             Logout
           </button>
         )}
-
       </div>
     </div>
   );

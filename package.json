@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm run build && node src/server.js",
+    "dev": "npm run build && node back/server.js",
     "build": "vite build ",
     "lint": "eslint .",
     "preview": "vite preview"

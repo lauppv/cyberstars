@@ -16,11 +16,10 @@ function Lesson() {
   const [title, setTitle] = useState("");
   const [userCode, setUserCode] = useState("");
   const [output, setOutput] = useState("");
-  const outputRef = useRef(null); // ref pentru scroll
+  const outputRef = useRef(null);
 
-  const API_URL = "http://localhost:3000"; // backend-ul tău
+  const API_URL = "http://localhost:3000";
 
-  // Determină extensia/limbajul pentru CodeMirror
   const getCodeMirrorLang = () => {
     switch (category.toLowerCase()) {
       case "python": return [python()];
@@ -30,7 +29,6 @@ function Lesson() {
     }
   };
 
-  // Fetch teoria și codul lecției
   useEffect(() => {
     fetch(`${API_URL}/lessons/${category}/${lesson}`)
       .then(res => res.json())
@@ -49,7 +47,6 @@ function Lesson() {
       .then(res => res.ok ? res.text() : Promise.reject("File not found"))
       .then(text => setUserCode(text))
       .catch(() => {
-        // fallback cod inițial
         if (category.toLowerCase() === "c") setUserCode(`#include <stdio.h>\nint main(void) {\n\n}`);
         else if (category.toLowerCase() === "python") setUserCode(`# Python code goes here`);
         else if (category.toLowerCase() === "java") setUserCode(`public class Main {\n  public static void main(String[] args) {\n\n  }\n}`);
@@ -57,70 +54,64 @@ function Lesson() {
       });
   }, [category, lesson, API_URL]);
 
-  // Scroll automat la final când output-ul se schimbă
   useEffect(() => {
     if (outputRef.current) outputRef.current.scrollTop = outputRef.current.scrollHeight;
   }, [output]);
 
-  // Prev/Next
-  // Găsește categoria curentă
   const categoryObj = curriculum.find(c => c.key.toLowerCase() === category.toLowerCase());
-
-  // Lista de lecții pentru categoria curentă
   const lessonList = categoryObj ? categoryObj.lessons : [];
-
-  
   const currentIndex = lessonList.findIndex(l => l.toLowerCase() === lesson.toLowerCase());
-  
   const prevLesson = currentIndex > 0 ? lessonList[currentIndex - 1] : null;
   const nextLesson = currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
-
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      <nav className="bg-green-600 text-white p-4">
+    <div className="min-h-screen flex flex-col bg-gray-900 text-cyan-300">
+      <nav className="bg-gray-800 text-cyan-300 p-4">
         <h1 className="text-xl font-bold text-center">CyberStars</h1>
       </nav>
 
       <div className="flex flex-1 overflow-hidden">
-      
-        <div className="w-1/2 p-6 overflow-auto bg-white border-r border-gray-300">
-          <h2 className="text-2xl font-bold mb-4">{title}</h2>
-          <div className="prose">
+        {/* Stânga */}
+        <div className="w-1/2 p-6 overflow-auto bg-gray-800 border-r border-gray-700">
+          <h2 className="text-2xl font-bold mb-4 text-cyan-300">{title}</h2>
+          <div className="prose text-cyan-200">
             <ReactMarkdown
-              children={content}
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "");
-                  return !inline && match ? (
-                    <SyntaxHighlighter
-                      style={materialDark}
-                      language={match[1]}
-                      PreTag="div"
-                      {...props}
-                    >
-                      {String(children).replace(/\n$/, "")}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code className={className} {...props}>{children}</code>
-                  );
-                }
-              }}
-            />
+                children={content}
+                components={{
+                  strong: ({node, children, ...props}) => (
+                    <strong className="text-pink-400 font-bold" {...props}>{children}</strong>
+                  ),
+                  code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        style={materialDark}
+                        language={match[1]}
+                        PreTag="div"
+                        {...props}
+                      >
+                        {String(children).replace(/\n$/, "")}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code className={className} {...props}>{children}</code>
+                    );
+                  }
+                }}
+              />
+
           </div>
 
-          {/* Back + Prev/Next */}
           <div className="flex gap-4 mt-4">
             <button
-              className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              className="px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 hover:text-white transition"
               onClick={() => navigate("/curriculum")}
             >
-              Home
+              Curriculum
             </button>
 
             {prevLesson && (
               <button
-                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
+                className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition"
                 onClick={() => navigate(`/lesson/${category}/${prevLesson}`)}
               >
                 Previous
@@ -129,7 +120,7 @@ function Lesson() {
 
             {nextLesson && (
               <button
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                className="px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition"
                 onClick={() => navigate(`/lesson/${category}/${nextLesson}`)}
               >
                 Next
@@ -139,7 +130,7 @@ function Lesson() {
         </div>
 
         {/* Dreapta */}
-        <div className="w-1/2 p-6 flex flex-col bg-gray-50">
+        <div className="w-1/2 p-6 flex flex-col bg-gray-700">
           <div className="flex-1 mb-2 overflow-auto">
             <CodeMirror
               value={userCode}
@@ -150,7 +141,7 @@ function Lesson() {
           </div>
 
           <button
-            className="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            className="mt-2 px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition"
             onClick={async () => {
               try {
                 const response = await fetch(`${API_URL}/api/run-code`, {
