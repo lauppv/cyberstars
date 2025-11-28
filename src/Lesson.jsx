@@ -8,6 +8,8 @@ import { java } from "@codemirror/lang-java";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { curriculum } from "./data/curriculum";
+import  CodeCell  from "./CodeCell.jsx";
+
 
 function Lesson() {
   const navigate = useNavigate();
@@ -75,29 +77,27 @@ function Lesson() {
         <div className="w-1/2 p-6 overflow-auto bg-gray-800 border-r border-gray-700">
           <h2 className="text-2xl font-bold mb-4 text-cyan-300">{title}</h2>
           <div className="prose text-cyan-200">
+
             <ReactMarkdown
-                children={content}
-                components={{
-                  strong: ({node, children, ...props}) => (
-                    <strong className="text-pink-400 font-bold" {...props}>{children}</strong>
-                  ),
-                  code({ node, inline, className, children, ...props }) {
-                    const match = /language-(\w+)/.exec(className || "");
-                    return !inline && match ? (
-                      <SyntaxHighlighter
-                        style={materialDark}
-                        language={match[1]}
-                        PreTag="div"
-                        {...props}
-                      >
-                        {String(children).replace(/\n$/, "")}
-                      </SyntaxHighlighter>
-                    ) : (
-                      <code className={className} {...props}>{children}</code>
+              children={content}
+              components={{
+                code({ inline, className, children }) {
+                  const match = /language-(\w+)/.exec(className || "");
+
+                  if (!inline && match) {
+                    return (
+                      <CodeCell
+                        initialCode={String(children).trim()}
+                        language={match[1].toLowerCase()}
+                      />
                     );
                   }
-                }}
-              />
+
+                  
+                  return <code className={className}>{children}</code>;
+                }
+              }}
+            />
 
           </div>
 
