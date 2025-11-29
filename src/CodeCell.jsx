@@ -59,13 +59,13 @@ export default function CodeCell({ initialCode, language }) {
       />
       <button
         onClick={runCode}
-        className="mt-2 px-3 py-1 bg-pink-400 text-white rounded hover:bg-cyan-300 shadow-md shadow-pink-500/30 transition"
+        className="mt-2 px-3 py-1 bg-pink-500 text-white font-bold rounded hover:bg-cyan-300 shadow-md shadow-pink-500/30 transition"
       >
         Run Code
       </button>
       <div
         ref={outputRef}
-        className="mt-2 bg-black text-white p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto"
+        className="mt-2 bg-black text-white font-bold p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto"
       >
         {output || "Output will appear here..."}
       </div>
