@@ -1,3 +1,1 @@
-# write code below
-asdasd
-asdasd
+print(hey, I like pizza)

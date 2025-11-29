@@ -3,21 +3,16 @@ import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
-import { oneDark } from "@codemirror/theme-one-dark";
 import { indentUnit } from "@codemirror/language";
+import theme from "./theme"; // folosim tema aici
 
 export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
   const [output, setOutput] = useState("");
   const outputRef = useRef();
-
   const API_URL = "http://localhost:3000";
 
-  const langMap = {
-    py: "python",
-    c: "c",
-    java: "java",
-  };
+  const langMap = { py: "python", c: "c", java: "java" };
   const lang = langMap[language.toLowerCase()] || language.toLowerCase();
 
   const getLang = () => {
@@ -44,32 +39,29 @@ export default function CodeCell({ initialCode, language }) {
   };
 
   useEffect(() => {
-    if (outputRef.current)
-      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    if (outputRef.current) outputRef.current.scrollTop = outputRef.current.scrollHeight;
   }, [output]);
 
   return (
-    <div className="my-4 border border-gray-600 rounded p-3 bg-gray-900">
+    <div className="my-4 border border-gray-600 rounded p-3 bg-[#1a1836]">
       <CodeMirror
         value={code}
         height="150px"
-        extensions={[...getLang(), indentUnit.of("    ")]} // 1 tab 4 spaces
+        extensions={[...getLang(), indentUnit.of("    ")]}
         onChange={v => setCode(v)}
-        theme={oneDark}
+        theme={theme}
       />
-
       <button
         onClick={runCode}
-        className="mt-2 px-3 py-1 bg-pink-400 text-white rounded hover:bg-cyan-300"
+        className="mt-2 px-3 py-1 bg-pink-400 text-white rounded hover:bg-cyan-300 shadow-md shadow-pink-500/30 transition"
       >
-        Run
+        Run Code
       </button>
-
       <div
         ref={outputRef}
         className="mt-2 bg-black text-white p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto"
       >
-        {output || "Output..."}
+        {output || "Output will appear here..."}
       </div>
     </div>
   );

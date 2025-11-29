@@ -5,11 +5,9 @@ import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { curriculum } from "./data/curriculum";
-import  CodeCell  from "./CodeCell.jsx";
-
+import CodeCell from "./CodeCell.jsx";
+import theme from "./theme.js"; // tema synthwave
 
 function Lesson() {
   const navigate = useNavigate();
@@ -67,43 +65,59 @@ function Lesson() {
   const nextLesson = currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-cyan-300">
-      <nav className="bg-gray-800 text-cyan-300 p-4">
-        <h1 className="text-xl font-bold text-center text-pink-400" style={{ fontFamily: 'cursive', fontSize: "140%" } }>CyberStars</h1>
+    <div className="h-screen flex flex-col bg-[#0d0b1f] text-cyan-300">
+      <nav className="bg-[#111026] text-cyan-300 p-4 shadow-lg shadow-blue-500/20">
+        <h1
+          className="text-xl font-bold text-center text-[#00eaff] drop-shadow-[0_0_6px_#00eaff]"
+          style={{ fontFamily: "cursive", fontSize: "140%" }}
+        >
+          CyberStars
+        </h1>
       </nav>
 
       <div className="flex flex-1 overflow-hidden">
         {/* Stânga */}
-        <div className="w-1/2 p-6 overflow-auto bg-gray-800 border-r border-gray-700">
-          <h2 className="text-2xl font-bold mb-4 text-cyan-300">{title}</h2>
-          <div className="prose text-cyan-200">
+        <div className="w-1/2 p-6 overflow-auto bg-[#111026] border-r border-blue-600/30 h-full shadow-inner">
+          <h2 className="text-2xl font-bold mb-4 text-[#00eaff] drop-shadow-[0_0_4px_#00eaff]">{title}</h2>
 
+          <div className="prose text-[#bde5ff]">
             <ReactMarkdown
               children={content}
               components={{
+                strong({ children }) {
+                  return (
+                    <strong style={{ color: "#ff77ff", textShadow: "0 0 6px #ff77ff" }}>
+                      {children}
+                    </strong>
+                  );
+                },
                 code({ inline, className, children }) {
                   const match = /language-(\w+)/.exec(className || "");
-
                   if (!inline && match) {
                     return (
                       <CodeCell
                         initialCode={String(children).trim()}
                         language={match[1].toLowerCase()}
+                        theme={theme} // tema synthwave
                       />
                     );
                   }
-
-                  
-                  return <code className={className}>{children}</code>;
+                  return (
+                    <code
+                      className={className}
+                      style={{ background: "#1a1836", padding: "4px 6px", borderRadius: "4px" }}
+                    >
+                      {children}
+                    </code>
+                  );
                 }
               }}
             />
-
           </div>
 
           <div className="flex gap-4 mt-4">
             <button
-              className="px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 hover:text-white transition"
+              className="px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/30"
               onClick={() => navigate("/curriculum")}
             >
               Curriculum
@@ -111,7 +125,7 @@ function Lesson() {
 
             {prevLesson && (
               <button
-                className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition"
+                className="px-4 py-2 bg-[#333159] text-white rounded hover:bg-[#3f3d6d] transition"
                 onClick={() => navigate(`/lesson/${category}/${prevLesson}`)}
               >
                 Previous
@@ -120,7 +134,7 @@ function Lesson() {
 
             {nextLesson && (
               <button
-                className="px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition"
+                className="px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/30"
                 onClick={() => navigate(`/lesson/${category}/${nextLesson}`)}
               >
                 Next
@@ -129,21 +143,20 @@ function Lesson() {
           </div>
         </div>
 
-      {/* Dreapta */}
-        <div className="w-1/2 flex flex-col p-6 bg-gray-700 h-full">
-          {/* Editorul ocupă tot spațiul disponibil */}
+        {/* Dreapta */}
+        <div className="w-1/2 flex flex-col p-6 bg-[#111026] h-full overflow-hidden shadow-inner">
           <div className="flex-1 overflow-auto mb-2">
             <CodeMirror
               value={userCode}
               height="100%"
+              theme={theme}  // tema synthwave
               extensions={getCodeMirrorLang()}
-              onChange={value => setUserCode(value)}
+              onChange={(value) => setUserCode(value)}
             />
           </div>
 
-          {/* Butonul Run */}
           <button
-            className="mt-2 px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition"
+            className="mt-2 px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/40"
             onClick={async () => {
               try {
                 const response = await fetch(`${API_URL}/api/run-code`, {
@@ -162,16 +175,14 @@ function Lesson() {
             Run Code
           </button>
 
-          {/* Terminal / Output */}
           <div
             ref={outputRef}
-            className="mt-2 p-4 bg-gray-800 text-white font-mono rounded overflow-auto whitespace-pre-wrap"
+            className="mt-2 p-4 bg-[#0d0b1f] text-[#bde5ff] font-mono rounded overflow-auto whitespace-pre-wrap border border-blue-900/40 shadow-inner"
             style={{ height: "200px", minHeight: "200px", maxHeight: "200px" }}
           >
             {output || "Output will appear here..."}
           </div>
         </div>
-
       </div>
     </div>
   );
