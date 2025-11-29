@@ -1,2 +1,3 @@
-apples = apples + 3
-print(f"Now I have {apples} apples")
+print("I have 2 dogs")
+
+asd

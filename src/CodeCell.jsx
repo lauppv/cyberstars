@@ -53,8 +53,8 @@ export default function CodeCell({ initialCode, language }) {
         onChange={v => setCode(v)}
         theme={oneDark}
         style={{
-          fontSize: "20px",  // mărimea textului
-          fontWeight: "bold" // text bold
+          fontSize: "20px",  
+          fontWeight: "bold" 
         }}
       />
       <button

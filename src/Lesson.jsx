@@ -147,10 +147,16 @@ function Lesson() {
           <div className="flex-1 overflow-auto mb-2">
             <CodeMirror
               value={userCode}
-              height="100%"
-              theme={oneDark}  // tema synthwave
+              minHeight="100px"
+              height="auto"
+
+              theme={oneDark}  
               extensions={getCodeMirrorLang()}
               onChange={(value) => setUserCode(value)}
+              style={{
+                fontSize: "24px",  
+                fontWeight: "bold" 
+              }}
             />
           </div>
 
