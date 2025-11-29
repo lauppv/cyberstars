@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { oneDark } from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
 import { indentUnit } from "@codemirror/language";
-import theme from "./theme"; // folosim tema aici
+
 
 export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
@@ -46,10 +46,16 @@ export default function CodeCell({ initialCode, language }) {
     <div className="my-4 border border-gray-600 rounded p-3 bg-[#1a1836]">
       <CodeMirror
         value={code}
-        height="150px"
+        minHeight="60px"
+        height="auto"
+
         extensions={[...getLang(), indentUnit.of("    ")]}
         onChange={v => setCode(v)}
-        theme={theme}
+        theme={oneDark}
+        style={{
+          fontSize: "20px",  // mărimea textului
+          fontWeight: "bold" // text bold
+        }}
       />
       <button
         onClick={runCode}

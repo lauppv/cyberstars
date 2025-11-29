@@ -1,13 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { oneDark } from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
 import { curriculum } from "./data/curriculum";
 import CodeCell from "./CodeCell.jsx";
-import theme from "./theme.js"; // tema synthwave
 
 function Lesson() {
   const navigate = useNavigate();
@@ -98,7 +97,7 @@ function Lesson() {
                       <CodeCell
                         initialCode={String(children).trim()}
                         language={match[1].toLowerCase()}
-                        theme={theme} // tema synthwave
+                        theme={oneDark} // tema synthwave
                       />
                     );
                   }
@@ -149,7 +148,7 @@ function Lesson() {
             <CodeMirror
               value={userCode}
               height="100%"
-              theme={theme}  // tema synthwave
+              theme={oneDark}  // tema synthwave
               extensions={getCodeMirrorLang()}
               onChange={(value) => setUserCode(value)}
             />
