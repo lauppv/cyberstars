@@ -92,15 +92,21 @@ function Lesson() {
                 },
                 code({ inline, className, children }) {
                   const match = /language-(\w+)/.exec(className || "");
-                  if (!inline && match) {
+                  const lang = match?.[1].toLowerCase();
+
+                  // doar aceste limbaje vor fi editabile cu Run Code
+                  const editableLangs = ["py", "python", "c", "java"];
+                  if (!inline && lang && editableLangs.includes(lang)) {
                     return (
                       <CodeCell
                         initialCode={String(children).trim()}
-                        language={match[1].toLowerCase()}
-                        theme={oneDark} 
+                        language={lang}
+                        theme={oneDark}
                       />
                     );
                   }
+
+                  // Altfel, redă codul simplu, fără Run Code
                   return (
                     <code
                       className={className}
@@ -110,6 +116,7 @@ function Lesson() {
                     </code>
                   );
                 }
+
               }}
             />
           </div>

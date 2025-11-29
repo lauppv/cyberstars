@@ -1,77 +1,61 @@
 A core concept in programming is storing information. Most of the time, we don’t just want to display something on the screen; we want to **process** it first, do something with it, and then maybe display the result
 
-Suppose we start with 2 apples:
 ```py
-print("I have 2 apples")
+print("My name is Tommy Vercetti")
 ```
-What happens if Anna gives us **3** more apples? We will have **5**. Of course, we could say:
-```py
-print("Now I have 5 apples")
+In the previous lesson, we learned that this will display 
+```text
+My name is Tommy Vercetti
 ```
-Then John comes and gives us **4** more apples. We will have **9** apples:
-```py
-print("Now I have 9 apples")
-```
-Every time, we have to remember how many apples we have, ourselves. But can the **computer** calculate and **remember** this for us? Absolutely!
-```py
-apples = 2
-print(f"Now I have {apples} apples")
+**print()** does exactly that. However, wouldn’t it be more organized to **store** the name somewhere first and then say something like **My name is ...**, no matter what the name is? For example **My name is Lance Vance** or **My name is Paul**. Somehow, it doesn’t matter which name it is, what matters is that we can display it, **whichever** it may be
 
-apples = apples + 3
-print(f"Now I have {apples} apples")
-
-apples = apples + 4
-print(f"Now I have {apples} apples")
-```
-The output will be:
-```py
-Now I have 2 apples
-Now I have 5 apples
-Now I have 9 apples
-```
-
-Let’s pause a bit to understand the syntax:
-```py
-apples = apples + 3
-print(f"Now I have {apples} apples")
-```
-**apples** is the variable *name* — the *name* of our “box” where we store something
-
-On the right side of the **=** sign we have apples + 3. How many apples do we have **before** this operation? We had 2 apples, right? (See apples = 2 above)
-So **apples** + 3 means 2 + 3, so 5
-
-Therefore, **apples = apples + 3** means store whatever we have on the right
-
-**Takeaway**: The computer first evaluates the right-hand side of **=** and then stores the result in the variable on the left-hand side. So **right comes first**
+Well, yes, there is a way to not care about the specific name, but just display it. This is called a **variable** in programming
 
 ```py
-apples = apples + 3
-print(f"Now I have {apples} apples")
+name = "Tommy Vercetti"
+print(name)
+
+name = "Lance Vance"
+print(name)
+
+name = "Paul"
+print(name)
+print(name)
+print(name)
 ```
-Notice the **{}** in the print. Why do we need it?
+If we run the code by pressing the Run Code button, we will see that Paul appears 3 times, because we used print(name) 3 times.
+We can see that we don’t necessarily care what the name is, because it can change — what matters is that we can display it and use it
+
+However, be careful: if we don’t put **""**, we will get an error. The code below will not work
+```py
+name = Paul
+print(name)
+```
+Why doesn’t it work? Python thinks that **Paul** is a variable. If we want to tell it that it is not a variable, but **text**, we need to put it inside **""**. Text in programming is called a **string**
+
+A slightly more advanced example, but worth studying, is:
+```py
+Kent = "Booooo"
+name = Kent
+print(name)
+```
+We might be tempted to think that **Kent** will be displayed, but that is not true. **Booooo** will be displayed instead. Why? Because if we don’t put **""**, Python thinks that **Kent** is a variable and not our name. It sees **name = Kent**, and since Kent doesn’t have "", it looks for a variable with that name defined earlier and replaces it with **Booooo**.
 
 ```py
-print("Now I have apples apples")
+Kent = "Booooo"
+name = "Kent"
+print(name)
 ```
-would literally print: **Now I have apples apples**, and not **Now I have 5 apples**
+This code will indeed display the name exactly as we intended. Run it :)
+---
 
-What about the **f**? Well, what would the following code print?
-```py
-print("Now I have {apples} apples")
-```
-Correct, it would print **Now I have {apples} apples** and not the value stored in **apples**
-
-So, if we want to display the value of a variable, we must use **f** and **{}**
+So, anything we write between **" and "** is called a **string** and is used whenever we want to write text that Python should treat exactly as we intend, and **not** as a variable.
 
 ---
 
-We can also do other things with variables:
-
-```py
-name = "Nikola Tesla"
-age = 52
-profession = "inventor"
-
-print(f"Hi! My name is {name}, I am {age} years old, and I am an {profession}")
+On the right, you have code that doesn’t work. Can you modify it so that it displays all three names? If you do it correctly, you should see:
+```text
+Shrek
+Fiona
+Donkey
 ```
-This will display on the screen: **Hi! My name is Nikola Tesla, I am 52 years old, and I am an inventor**

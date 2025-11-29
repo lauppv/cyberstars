@@ -4,20 +4,18 @@ export const curriculum = [
     title: "Python",
     description: "New to programming? We highly recommend Python",
     lessons: [
-        "print", 
-		"variables-str",
-		"variables-int",
-		"comment",
-		"if-else",
-		"if-elif-else",
-		"recap-1",
-		"for",
-		"while",
-		"recap-2",
-		"functions-void",
-		"functions-args",
-		"recap-3"
-	]
+          "print", 
+          "variables-str",
+          "variables-int",
+          "print-f",
+          "comment",
+          "if-else",
+          "if-elif-else",
+          "for",
+          "while",
+          "functions-void",
+          "functions-args",
+        ]
   },
   {
     key: "c",
