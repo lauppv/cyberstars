@@ -66,7 +66,7 @@ function Curriculum() {
 
       <button
         onClick={() => navigate("/")}
-        className="mt-24 px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 hover:text-white transition"
+        className="mt-auto px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 hover:text-white transition"
       >
         Home
       </button>

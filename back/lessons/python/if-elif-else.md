@@ -109,4 +109,4 @@ The full explanation is complex, but as a general rule: **if we test the same va
 
 ---
 
-
+Change the values of the **3 variables** to see how the output changes. Play around with the variables and **modify the if-elif-else** to see what changes Once again here at **CyberStars** we encourage **curiosity** **:)**

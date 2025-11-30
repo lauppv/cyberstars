@@ -36,3 +36,8 @@
   scrollbar-width: thin;
   scrollbar-color: #6a5cff #111026;
 }
+
+
+hr {
+  color: rgb(245, 0, 253);
+}

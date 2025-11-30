@@ -13,8 +13,7 @@ export const curriculum = [
           "if-elif-else",
           "for",
           "while",
-          "functions-void",
-          "functions-args",
+          "functions"
         ]
   },
   {

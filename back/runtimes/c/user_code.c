@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-int main(void) {
-   
-    while(1){
-      puts("brooooo");
-    }
+int main() {
 
+    int apples = 2;
+    int pears = 4;
+
+    int fruits = apples + pears;
 
 }

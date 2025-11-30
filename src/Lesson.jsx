@@ -69,6 +69,7 @@ function Lesson() {
         <h1
           className="text-xl font-bold text-center text-[#00eaff] drop-shadow-[0_0_6px_#00eaff]"
           style={{ fontFamily: "cursive", fontSize: "140%" }}
+          onClick={() => navigate("/")}
         >
           CyberStars
         </h1>
