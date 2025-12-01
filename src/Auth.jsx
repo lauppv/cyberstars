@@ -10,7 +10,11 @@ function AuthPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  //const API = import.meta.env.VITE_BACKEND_URL;
+  // URL-ul backend-ului se alege automat după mediu
+  const API_BASE =
+    import.meta.env.MODE === "production"
+      ? import.meta.env.VITE_PROD_API_URL
+      : import.meta.env.VITE_DEV_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,12 +22,12 @@ function AuthPage() {
     setError("");
 
     const url = isLogin
-        ? "/auth/login"
-        : "/auth/signup";
+      ? `${API_BASE}/auth/login`
+      : `${API_BASE}/auth/signup`;
 
-
-
-    const body = isLogin ? { email, password } : { name, email, password };
+    const body = isLogin
+      ? { email, password }
+      : { name, email, password };
 
     try {
       const res = await fetch(url, {

@@ -11,6 +11,8 @@ export default function CodeCell({ initialCode, language }) {
   const [running, setRunning] = useState(false);
   const outputRef = useRef();
 
+  const API = import.meta.env.VITE_BACKEND_URL || "";
+
   const langMap = { py: "python", c: "c", java: "java" };
   const lang = langMap[language.toLowerCase()] || language.toLowerCase();
 
@@ -30,24 +32,23 @@ export default function CodeCell({ initialCode, language }) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => {
         controller.abort();
-        setOutput("Ai intrat într-un loop infinit. Execuția a fost oprită după 5 secunde.");
+        setOutput("Error connecting to server.");
         setRunning(false);
-      }, 5000); // timeout frontend + vizual
+      }, 5000);
 
-      const res = await fetch(`/api/run-code`, {
+      const res = await fetch(`${API}/api/run-code`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language: lang }),
-        signal: controller.signal
+        signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
 
       const data = await res.json();
       setOutput(data.output || "Programul nu a produs output.");
-    } catch (err) {
-      if (err.name === "AbortError") return; // deja afișat mesajul
-      setOutput("Eroare la rularea codului.");
+    } catch {
+      setOutput("Error connecting to server.");
     } finally {
       setRunning(false);
     }

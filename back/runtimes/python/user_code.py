@@ -1,1 +1,1 @@
-print("My name is Tommy Vercetti")
+priasdnt("My naasdasdasme is Tommy Vercetti")

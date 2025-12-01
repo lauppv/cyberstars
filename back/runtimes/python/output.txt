@@ -1,1 +1,4 @@
-My name is Tommy Vercetti
+Traceback (most recent call last):
+  File "/usr/src/app/user_code.py", line 1, in <module>
+    priasdnt("My naasdasdasme is Tommy Vercetti")
+NameError: name 'priasdnt' is not defined

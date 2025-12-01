@@ -5,27 +5,31 @@ function Home() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Folosim URL-ul backend-ului din variabilele de mediu
+  const API_BASE = import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_DEV_API_URL
+    : import.meta.env.VITE_PROD_API_URL;
+
   // Verificăm dacă utilizatorul e logat
   useEffect(() => {
     async function checkLogin() {
       try {
-        const res = await fetch("auth/me", {
+        const res = await fetch(`${API_BASE}/auth/me`, {
           method: "GET",
           credentials: "include",
         });
 
-        if (res.ok) setIsLoggedIn(true);
-        else setIsLoggedIn(false);
+        setIsLoggedIn(res.ok);
       } catch {
         setIsLoggedIn(false);
       }
     }
 
     checkLogin();
-  }, []);
+  }, [API_BASE]);
 
   const handleLogout = async () => {
-    await fetch("/auth/logout", {
+    await fetch(`${API_BASE}/auth/logout`, {
       method: "POST",
       credentials: "include",
     });

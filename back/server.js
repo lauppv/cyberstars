@@ -9,15 +9,33 @@ import authRoutes from "./routes/authRoutes.js";
 import authenticateToken from "./middleware/authToken.js";
 import runCodeRouter from "./routes/runCode.js";
 
+// Încarcă variabilele din .env
 dotenv.config();
 
 const app = express();
 
+// ===== Determinare environment =====
+const isProduction = process.env.NODE_ENV === "production";
+
+// ===== Config variabile =====
+const PORT = isProduction
+  ? process.env.EXPRESS_PORT_PROD || 80
+  : process.env.EXPRESS_PORT || 3000;
+
+const API_ORIGIN = isProduction
+  ? process.env.VITE_PROD_API_URL
+  : process.env.VITE_DEV_API_URL;
+
+const DATABASE_URL = isProduction
+  ? process.env.DATABASE_URL_PROD
+  : process.env.DATABASE_URL;
+
 // ===== Middleware =====
-if (process.env.NODE_ENV === "development") {
+if (!isProduction) {
+  // CORS doar pe development
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: API_ORIGIN,
       credentials: true,
     })
   );
@@ -69,13 +87,14 @@ const buildPath = path.join(process.cwd(), "dist");
 app.use(express.static(buildPath));
 
 // ===== SPA Fallback =====
-// Toate rutele care nu sunt /api, /auth, /lessons sau /lesson-code trimit index.html
 app.get(/^\/(?!api|auth|lessons|lesson-code).*$/, (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
 // ===== Start Server =====
-const PORT = process.env.PORT || process.env.EXPRESS_PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Environment: ${isProduction ? "production" : "development"}`);
+  console.log(`API Origin: ${API_ORIGIN}`);
+  console.log(`Database URL: ${DATABASE_URL}`);
 });
