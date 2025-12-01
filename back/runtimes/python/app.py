@@ -11,6 +11,10 @@ def run_code():
     code = data.get("code", "")
     language = data.get("language", "python").lower()
 
+    # Debug logs
+    print("Received code:", code)
+    print("Language:", language)
+
     if language != "python":
         return jsonify({"output": "Only Python is supported in this runner"}), 400
 
@@ -20,9 +24,9 @@ def run_code():
         tmp_file_path = tmp_file.name
 
     try:
-        # Rulează codul cu timeout 5 secunde
+        # Rulează codul cu timeout 5 secunde, output unbuffered
         result = subprocess.run(
-            ["python3", tmp_file_path],
+            ["python3", "-u", tmp_file_path],
             capture_output=True,
             text=True,
             timeout=5
