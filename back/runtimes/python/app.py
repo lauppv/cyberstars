@@ -30,12 +30,15 @@ def run_code():
         output = result.stdout + result.stderr
     except subprocess.TimeoutExpired:
         output = "Error: Execution timed out"
+    except Exception as e:
+        output = f"Error: {str(e)}"
     finally:
         os.remove(tmp_file_path)
 
     return jsonify({"output": output})
 
 if __name__ == "__main__":
-    # Folosește portul asignat de Railway, dacă există
+    # Folosește portul asignat de Railway
     port = int(os.environ.get("PORT", 5000))
+    print(f"Starting Python runner on port {port}")
     app.run(host="0.0.0.0", port=port)

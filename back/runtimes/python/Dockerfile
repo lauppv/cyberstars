@@ -12,11 +12,11 @@ COPY app.py ./
 # Permisiuni
 RUN chmod +x app.py
 
+# Expune portul folosit
+EXPOSE 5000
+
 # Folosește user non-root
 USER codeuser
-
-# Expune portul
-EXPOSE 5000
 
 # Rulează serverul
 CMD ["python3", "app.py"]
