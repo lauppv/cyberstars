@@ -10,7 +10,7 @@ export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
   const [output, setOutput] = useState("");
   const outputRef = useRef();
-  const API_URL = "cyberstars-production.up.railway.app";
+
 
   const langMap = { py: "python", c: "c", java: "java" };
   const lang = langMap[language.toLowerCase()] || language.toLowerCase();
@@ -26,7 +26,7 @@ export default function CodeCell({ initialCode, language }) {
 
   const runCode = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/run-code`, {
+      const res = await fetch(`/api/run-code`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language: lang })
