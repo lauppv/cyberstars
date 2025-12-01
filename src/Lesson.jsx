@@ -17,7 +17,7 @@ function Lesson() {
   const [output, setOutput] = useState("");
   const outputRef = useRef(null);
 
-  const API_URL = "http://localhost:3000";
+  
 
   const getCodeMirrorLang = () => {
     switch (category.toLowerCase()) {
@@ -29,7 +29,7 @@ function Lesson() {
   };
 
   useEffect(() => {
-    fetch(`${API_URL}/lessons/${category}/${lesson}`)
+    fetch(`lessons/${category}/${lesson}`)
       .then(res => res.json())
       .then(data => {
         if (data.content) {
@@ -42,7 +42,7 @@ function Lesson() {
       })
       .catch(err => console.error(err));
 
-    fetch(`${API_URL}/lesson-code/${category}/${lesson}-code.md`)
+    fetch(`lesson-code/${category}/${lesson}-code.md`)
       .then(res => res.ok ? res.text() : Promise.reject("File not found"))
       .then(text => setUserCode(text))
       .catch(() => {
@@ -51,7 +51,7 @@ function Lesson() {
         else if (category.toLowerCase() === "java") setUserCode(`public class Main {\n  public static void main(String[] args) {\n\n  }\n}`);
         else setUserCode("");
       });
-  }, [category, lesson, API_URL]);
+  }, [category, lesson]);
 
   useEffect(() => {
     if (outputRef.current) outputRef.current.scrollTop = outputRef.current.scrollHeight;
@@ -172,7 +172,7 @@ function Lesson() {
             className="mt-2 px-4 py-2 bg-pink-500 text-white font-bold rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/40"
             onClick={async () => {
               try {
-                const response = await fetch(`${API_URL}/api/run-code`, {
+                const response = await fetch(`/api/run-code`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ code: userCode, language: category })
