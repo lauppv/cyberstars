@@ -11,6 +11,7 @@ export default function CodeCell({ initialCode, language }) {
   const [running, setRunning] = useState(false);
   const outputRef = useRef();
 
+  const isProduction = import.meta.env.MODE === "production";
   const API = import.meta.env.VITE_BACKEND_URL || "";
 
   const langMap = { py: "python", c: "c", java: "java" };
@@ -28,6 +29,7 @@ export default function CodeCell({ initialCode, language }) {
   const runCode = async () => {
     setRunning(true);
     setOutput("Running Code...");
+
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => {
@@ -36,7 +38,16 @@ export default function CodeCell({ initialCode, language }) {
         setRunning(false);
       }, 5000);
 
-      const res = await fetch(`${API}/api/run-code`, {
+      // ------------------------
+      // DEVELOPMENT vs PRODUCTION
+      // ------------------------
+      let endpoint = API;
+      if (isProduction) {
+        // Production: backend-ul Railway folosește Piston
+        endpoint = API; // de obicei același, dar poate fi un URL diferit dacă ai split dev/prod
+      }
+
+      const res = await fetch(`${endpoint}/api/run-code`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language: lang }),
