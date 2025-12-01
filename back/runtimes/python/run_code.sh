@@ -1,10 +1,11 @@
 #!/bin/sh
-
-# Script pentru rularea codului Python cu timeout
 SRC_FILE=$1
 
-# rulează codul Python cu timeout 5 secunde
+# rulează codul python timp de max 5 secunde
 timeout 5 python3 "$SRC_FILE"
-if [ $? -eq 124 ]; then
-  echo "Programul a depășit timpul maxim de execuție (5s) și a fost oprit."
-fi
+# STATUS=$?
+
+# # dacă timeout s-a întâmplat, trimite mesaj
+# if [ $STATUS -eq 124 ]; then
+#   echo "Ai intrat într-un loop infinit. Execuția a fost oprită după 5 secunde."
+# fi

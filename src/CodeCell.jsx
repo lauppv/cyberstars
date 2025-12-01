@@ -7,7 +7,7 @@ import { indentUnit } from "@codemirror/language";
 
 export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
-  const [output, setOutput] = useState(null); // null = încă nu a rulat
+  const [output, setOutput] = useState(null);
   const [running, setRunning] = useState(false);
   const outputRef = useRef();
 
@@ -25,17 +25,29 @@ export default function CodeCell({ initialCode, language }) {
 
   const runCode = async () => {
     setRunning(true);
-    setOutput(null); // reset output
+    setOutput("Running Code...");
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        controller.abort();
+        setOutput("Ai intrat într-un loop infinit. Execuția a fost oprită după 5 secunde.");
+        setRunning(false);
+      }, 5000); // timeout frontend + vizual
+
       const res = await fetch(`/api/run-code`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code, language: lang })
+        body: JSON.stringify({ code, language: lang }),
+        signal: controller.signal
       });
+
+      clearTimeout(timeoutId);
+
       const data = await res.json();
       setOutput(data.output || "Programul nu a produs output.");
-    } catch {
-      setOutput("Error running code.");
+    } catch (err) {
+      if (err.name === "AbortError") return; // deja afișat mesajul
+      setOutput("Eroare la rularea codului.");
     } finally {
       setRunning(false);
     }
@@ -54,10 +66,7 @@ export default function CodeCell({ initialCode, language }) {
         extensions={[...getLang(), indentUnit.of("    ")]}
         onChange={v => setCode(v)}
         theme={oneDark}
-        style={{
-          fontSize: "20px",  
-          fontWeight: "bold" 
-        }}
+        style={{ fontSize: "20px", fontWeight: "bold" }}
       />
       <button
         onClick={runCode}
@@ -70,7 +79,7 @@ export default function CodeCell({ initialCode, language }) {
         ref={outputRef}
         className="mt-2 bg-black text-white font-bold p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto"
       >
-        {running ? "Running..." : (output !== null ? output : "Output will appear here...")}
+        {output || "Output will appear here..."}
       </div>
     </div>
   );
