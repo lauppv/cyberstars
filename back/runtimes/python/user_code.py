@@ -1,3 +1,3 @@
-Kent = "Booooo"
-name = Kent
-print(name)
+# write code below
+
+print(12)
