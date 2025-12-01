@@ -7,8 +7,15 @@ import fetch from "node-fetch"; // dacă folosești Node < 18
 const router = express.Router();
 const isProduction = process.env.NODE_ENV === "production";
 
-// URL-ul public al Piston (poți schimba cu self-hosted dacă vrei)
+// URL-ul public al Piston
 const PISTON_URL = "https://emkc.org/api/v2/piston/execute";
+
+// Mapare limbaje → versiuni Piston
+const pistonVersions = {
+  python: "3.10.0",
+  c: "10.2.0",
+  java: "15.0.2"
+};
 
 router.post("/", async (req, res) => {
   const { code, language } = req.body;
@@ -19,16 +26,30 @@ router.post("/", async (req, res) => {
     // PRODUCTION: folosim Piston
     // -----------------------
     try {
+      const version = pistonVersions[langLower];
+      if (!version) return res.json({ output: "Language not supported in production." });
+
       const response = await fetch(PISTON_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           language: langLower,
-          source: code,
+          version: version,
+          files: [{ name: "main", content: code }],
+          stdin: "",
+          args: [],
+          compile_timeout: 10000,
+          run_timeout: 5000,
+          compile_memory_limit: -1,
+          run_memory_limit: -1
         }),
       });
+
       const data = await response.json();
-      res.json({ output: data.output || "Programul nu a produs output." });
+
+      // returnăm stdout + stderr
+      const output = (data.run?.output || "").trim() || "Programul nu a produs output.";
+      res.json({ output });
     } catch (err) {
       console.error(err);
       res.json({ output: "Error connecting to execution server." });
