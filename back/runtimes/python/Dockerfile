@@ -1,22 +1,14 @@
+# Imagine de bază
 FROM python:3.10-slim
 
-# Crează user non-root
-RUN useradd -m codeuser
-
-# Directorul de lucru
+# Director de lucru
 WORKDIR /usr/src/app
 
-# Copiază serverul Python
-COPY app.py ./
+# Rulează ca root pentru a avea acces la volume montate
+USER root
 
-# Permisiuni
-RUN chmod +x app.py
+# Copiază scriptul de rulare
+COPY run_code.sh .
+RUN chmod +x run_code.sh
 
-# Expune portul folosit
-EXPOSE 5000
-
-# Folosește user non-root
-USER codeuser
-
-# Rulează serverul
-CMD ["python3", "app.py"]
+# Nu mai copiem codul utilizatorului, va fi montat cu -v

@@ -5,12 +5,11 @@ import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
 import { indentUnit } from "@codemirror/language";
 
-
 export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
-  const [output, setOutput] = useState("");
+  const [output, setOutput] = useState(null); // null = încă nu a rulat
+  const [running, setRunning] = useState(false);
   const outputRef = useRef();
-
 
   const langMap = { py: "python", c: "c", java: "java" };
   const lang = langMap[language.toLowerCase()] || language.toLowerCase();
@@ -25,6 +24,8 @@ export default function CodeCell({ initialCode, language }) {
   };
 
   const runCode = async () => {
+    setRunning(true);
+    setOutput(null); // reset output
     try {
       const res = await fetch(`/api/run-code`, {
         method: "POST",
@@ -32,9 +33,11 @@ export default function CodeCell({ initialCode, language }) {
         body: JSON.stringify({ code, language: lang })
       });
       const data = await res.json();
-      setOutput(data.output || "");
+      setOutput(data.output || "Programul nu a produs output.");
     } catch {
       setOutput("Error running code.");
+    } finally {
+      setRunning(false);
     }
   };
 
@@ -48,7 +51,6 @@ export default function CodeCell({ initialCode, language }) {
         value={code}
         minHeight="60px"
         height="auto"
-
         extensions={[...getLang(), indentUnit.of("    ")]}
         onChange={v => setCode(v)}
         theme={oneDark}
@@ -60,14 +62,15 @@ export default function CodeCell({ initialCode, language }) {
       <button
         onClick={runCode}
         className="mt-2 px-3 py-1 bg-pink-500 text-white font-bold rounded hover:bg-cyan-300 shadow-md shadow-pink-500/30 transition"
+        disabled={running}
       >
-        Run Code
+        {running ? "Running..." : "Run Code"}
       </button>
       <div
         ref={outputRef}
         className="mt-2 bg-black text-white font-bold p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto"
       >
-        {output || "Output will appear here..."}
+        {running ? "Running..." : (output !== null ? output : "Output will appear here...")}
       </div>
     </div>
   );
