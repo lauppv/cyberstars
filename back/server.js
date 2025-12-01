@@ -19,7 +19,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 // ===== Config variabile =====
 const PORT = isProduction
-  ? process.env.EXPRESS_PORT_PROD || 80
+  ? process.env.EXPRESS_PORT_PROD || 8080
   : process.env.EXPRESS_PORT || 3000;
 
 const API_ORIGIN = isProduction
