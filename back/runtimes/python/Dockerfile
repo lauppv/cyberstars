@@ -1,20 +1,26 @@
-# FROM imaginea actuală
 FROM python:3.10-slim
 
-# Crează un user non-root
+# Crează user non-root
 RUN useradd -m codeuser
 
-# Setează directorul de lucru
+# Setează directorul de lucru în runtime Python
 WORKDIR /usr/src/app
 
-# Copiază scriptul
+# Copiază Flask app și run_code.sh
+COPY app.py ./
 COPY run_code.sh ./
 
-# Dă permisiuni
+# Instalează Flask
+RUN pip install flask
+
+# Permisiuni
 RUN chmod +x run_code.sh
 
-# Schimbă user-ul curent la codeuser
+# Folosește user non-root
 USER codeuser
 
-# Comanda implicită
-CMD ["./run_code.sh", "user_code.py"]
+# Expune portul 5000
+EXPOSE 5000
+
+# Comanda default: rulează serverul Flask
+CMD ["python3", "app.py"]
