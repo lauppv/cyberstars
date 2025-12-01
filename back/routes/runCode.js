@@ -1,16 +1,19 @@
 import express from "express";
 
+
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   const { code } = req.body;
 
   try {
-    const pythonServiceURL = process.env.PYTHON_RUNNER_URL; // ex: http://python-runner:5000/run
+    const pythonServiceURL = process.env.PYTHON_RUNNER_URL;
+    if (!pythonServiceURL) throw new Error("PYTHON_RUNNER_URL nu e setat!");
+
     const response = await fetch(pythonServiceURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ code })
+      body: JSON.stringify({ code }),
     });
 
     const data = await response.json();
@@ -19,8 +22,5 @@ router.post("/", async (req, res) => {
     res.json({ output: `Eroare la execuție: ${err.message}` });
   }
 });
-
-
-
 
 export default router;
