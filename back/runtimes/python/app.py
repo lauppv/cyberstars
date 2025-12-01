@@ -11,21 +11,21 @@ def run_code():
     code = data.get("code", "")
     language = data.get("language", "python").lower()
 
-    # Debug logs (apar în log-urile Railway)
     print("=== NEW REQUEST ===")
-    print("Received language:", language)
-    print("Code length:", len(code))
+    print("Language:", language)
+    print("Code:", repr(code[:200]))
 
     if language != "python":
-        return jsonify({"output": "Only Python is supported in this runner"}), 400
+        return jsonify({"output": "Only Python supported"}), 400
 
-    # Creăm fișier temporar
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False, encoding="utf-8") as tmp_file:
-        tmp_file.write(code)
-        tmp_file_path = tmp_file.name
-
+    # Fișier temporar – ATENȚIE la indentare!
+    tmp_file_path = None
     try:
-        # Rulăm codul cu timeout de 8 secunde (mai safe decât 5)
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False, encoding="utf-8") as tmp_file:
+            tmp_file.write(code)
+            tmp_file_path = tmp_file.name   # ← trebuie să fie în interiorul with!
+
+        # Rulare cod
         result = subprocess.run(
             ["python3", "-u", tmp_file_path],
             capture_output=True,
@@ -33,33 +33,25 @@ def run_code():
             timeout=8
         )
         output = result.stdout + result.stderr
-
-        # Dacă nu e niciun output, punem mesaj clar
         if not output.strip():
-            output = "Codul a rulat cu succes, dar nu a produs output."
+            output = "Cod rulat cu succes (fără output)"
 
     except subprocess.TimeoutExpired:
-        output = "Error: Execution timed out after 8s (posibil buclă infinită)"
+        output = "Error: Execution timed out (8s)"
     except Exception as e:
         output = f"Error: {str(e)}"
     finally:
-        # Ștergem fișierul temporar
-        try:
-            os.remove(tmp_file_path)
-        except OSError:
-            pass  # dacă nu se poate șterge, nu e dramă
+        if tmp_file_path and os.path.exists(tmp_file_path):
+            try:
+                os.remove(tmp_file_path)
+            except:
+                pass
 
-    print("Execution output:", output)
+    print("Output:", output)
     return jsonify({"output": output})
 
 
-# === PORNIRE SERVER ===
 if __name__ == "__main__":
-    # Railway forțează portul prin variabila PORT
     port = int(os.environ.get("PORT", 5000))
-    print(f"Python runner starting on http://0.0.0.0:{port}")
-    app.run(
-        host="0.0.0.0",   # CRUCIAL – fără asta nu răspunde la cereri din alte servicii!
-        port=port,
-        debug=False       # debug=True e periculos în production
-    )
+    print(f"Python runner LIVE on http://0.0.0.0:{port}")
+    app.run(host="0.0.0.0", port=port, debug=False)
