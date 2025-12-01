@@ -1,7 +1,5 @@
 import express from "express";
-import { exec } from "child_process";
-import path from "path";
-import fs from "fs/promises";
+import fetch from "node-fetch";
 
 const router = express.Router();
 
@@ -9,33 +7,21 @@ router.post("/", async (req, res) => {
   const { code, language } = req.body;
 
   try {
-    let runtimePath, dockerCmd;
+    let runnerUrl;
+    if (language.toLowerCase() === "python") runnerUrl = process.env.PYTHON_RUNNER_URL;
+    else if (language.toLowerCase() === "c") runnerUrl = process.env.C_RUNNER_URL;
+    else if (language.toLowerCase() === "java") runnerUrl = process.env.JAVA_RUNNER_URL;
 
-    if (language.toLowerCase() === "python") {
-      runtimePath = path.join(process.cwd(), "back", "runtimes", "python");
-      await fs.writeFile(path.join(runtimePath, "user_code.py"), code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app python:3.10-slim python /usr/src/app/user_code.py`;
-    } 
-    else if (language.toLowerCase() === "c") {
-      runtimePath = path.join(process.cwd(), "back", "runtimes", "c");
-      await fs.writeFile(path.join(runtimePath, "user_code.c"), code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app gcc:12.2.0 bash -c "gcc /usr/src/app/user_code.c -o /usr/src/app/a.out && /usr/src/app/a.out"`;
-    } 
-    else if (language.toLowerCase() === "java") {
-      runtimePath = path.join(process.cwd(), "back", "runtimes", "java");
-      await fs.writeFile(path.join(runtimePath, "Main.java"), code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app openjdk:20 bash -c "javac /usr/src/app/Main.java && java -cp /usr/src/app Main"`;
-    } 
-    else {
-      return res.json({ output: "Language not supported" });
-    }
+    if (!runnerUrl) return res.json({ output: "Runner URL not configured" });
 
-    exec(dockerCmd, { timeout: 5000 }, (error, stdout, stderr) => {
-      if (error) {
-        return res.json({ output: stderr || error.message });
-      }
-      res.json({ output: stdout });
+    const response = await fetch(runnerUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code, language }),
     });
+
+    const data = await response.json();
+    res.json({ output: data.output });
 
   } catch (err) {
     res.json({ output: `Eroare la execuție: ${err.message}` });
