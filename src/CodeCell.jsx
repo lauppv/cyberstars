@@ -10,7 +10,7 @@ export default function CodeCell({ initialCode, language }) {
   const [code, setCode] = useState(initialCode);
   const [output, setOutput] = useState("");
   const outputRef = useRef();
-  const API_URL = "http://localhost:3000";
+  const API_URL = "cyberstars-production.up.railway.app";
 
   const langMap = { py: "python", c: "c", java: "java" };
   const lang = langMap[language.toLowerCase()] || language.toLowerCase();

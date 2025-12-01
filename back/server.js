@@ -13,10 +13,13 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "*", // frontend URL sau '*' pentru dev
-  credentials: true,
-}));
+if (process.env.NODE_ENV === "development") {
+  app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }));
+}
+
 app.use(express.json());
 app.use(cookieParser());
 

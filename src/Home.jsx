@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     async function checkLogin() {
       try {
-        const res = await fetch("http://localhost:3000/auth/me", {
+        const res = await fetch("auth/me", {
           method: "GET",
           credentials: "include",
         });
@@ -25,7 +25,7 @@ function Home() {
   }, []);
 
   const handleLogout = async () => {
-    await fetch("http://localhost:3000/auth/logout", {
+    await fetch("/auth/logout", {
       method: "POST",
       credentials: "include",
     });

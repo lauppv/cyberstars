@@ -10,14 +10,18 @@ function AuthPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  //const API = import.meta.env.VITE_BACKEND_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     const url = isLogin
-      ? "http://localhost:3000/auth/login"
-      : "http://localhost:3000/auth/signup";
+        ? "/auth/login"
+        : "/auth/signup";
+
+
 
     const body = isLogin ? { email, password } : { name, email, password };
 
