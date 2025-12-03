@@ -6,9 +6,8 @@
 }
 
 * {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  font-family: 'Anton', sans-serif;
 }
-
 
 /* Scroll bar global pentru toate elementele care fac overflow */
 ::-webkit-scrollbar {
