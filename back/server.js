@@ -31,8 +31,8 @@ const DATABASE_URL = isProduction
   : process.env.DATABASE_URL;
 
 // ===== Middleware =====
-if (!isProduction) {
-  // CORS doar pe development
+if (!isProduction || isProduction) {
+  
   app.use(
     cors({
       origin: API_ORIGIN,
