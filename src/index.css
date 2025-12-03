@@ -6,8 +6,9 @@
 }
 
 * {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
+
 
 /* Scroll bar global pentru toate elementele care fac overflow */
 ::-webkit-scrollbar {
