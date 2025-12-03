@@ -18,7 +18,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 // ===== Config variabile =====
 const PORT = isProduction
-  ? process.env.EXPRESS_PORT_PROD || 8080
+  ? process.env.PORT || 8080
   : process.env.EXPRESS_PORT || 5000;
 
 const API_ORIGIN = isProduction
@@ -29,16 +29,14 @@ const DATABASE_URL = isProduction
   ? process.env.DATABASE_URL_PROD
   : process.env.DATABASE_URL;
 
-// ===== Middleware =====
-if (!isProduction || isProduction) {
+
   
-  app.use(
-    cors({
-      origin: API_ORIGIN,
-      credentials: true,
-    })
-  );
-}
+app.use(
+  cors({
+    origin: API_ORIGIN,
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
