@@ -11,8 +11,9 @@ function AuthPage() {
   const navigate = useNavigate();
 
   // URL-ul backend-ului se alege automat după mediu
-  const API_BASE = import.meta.env.VITE_DEV_API_URL; 
-
+  const API_BASE = import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_DEV_API_URL
+    : import.meta.env.VITE_PROD_API_URL;
 
 
  const handleSubmit = async (e) => {
