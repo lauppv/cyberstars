@@ -1,3 +1,4 @@
-# this is a comment
-a = 1 + 2 + 3
-print(a) # display variable a
+pi = 3.14159
+k = 33
+
+print(pi + k)

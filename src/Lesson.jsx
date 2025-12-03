@@ -29,7 +29,7 @@ function Lesson() {
   };
 
   useEffect(() => {
-    fetch(`lessons/${category}/${lesson}`)
+    fetch(`/api/lessons/${category}/${lesson}`)
       .then(res => res.json())
       .then(data => {
         if (data.content) {
@@ -42,7 +42,7 @@ function Lesson() {
       })
       .catch(err => console.error(err));
 
-    fetch(`lesson-code/${category}/${lesson}-code.md`)
+    fetch(`/api/lesson-code/${category}/${lesson}-code.md`)
       .then(res => res.ok ? res.text() : Promise.reject("File not found"))
       .then(text => setUserCode(text))
       .catch(() => {

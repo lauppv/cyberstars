@@ -3,11 +3,10 @@ import path from "path";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import fs from "fs";
-
 import authRoutes from "./routes/authRoutes.js";
 import authenticateToken from "./middleware/authToken.js";
 import runCodeRouter from "./routes/runCode.js";
+import lessonsRouter from "./routes/lessonsRouter.js"
 
 // Încarcă variabilele din .env
 dotenv.config();
@@ -47,6 +46,7 @@ app.use(cookieParser());
 // ===== API Routes =====
 app.use("/auth", authRoutes);
 app.use("/api/run-code", runCodeRouter);
+app.use("/api", lessonsRouter);
 
 // /auth/me pentru frontend
 app.get("/auth/me", authenticateToken, (req, res) => {
@@ -57,31 +57,7 @@ app.get("/auth/me", authenticateToken, (req, res) => {
   });
 });
 
-// ===== Lessons endpoint =====
-app.get("/lessons/:lang/:lesson", (req, res) => {
-  const { lang, lesson } = req.params;
-  const filePath = path.join(process.cwd(), "back", "lessons", lang, `${lesson}.md`);
 
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ error: "Lesson not found" });
-  }
-
-  const content = fs.readFileSync(filePath, "utf-8");
-  res.json({ title: lesson, content });
-});
-
-// ===== Lesson code endpoint =====
-app.get("/lesson-code/:lang/:file", (req, res) => {
-  const { lang, file } = req.params;
-  const filePath = path.join(process.cwd(), "back", "lessons", lang, file);
-
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ error: "Code file not found" });
-  }
-
-  const content = fs.readFileSync(filePath, "utf-8");
-  res.type("text/plain").send(content);
-});
 
 // ===== Serve React build =====
 const buildPath = path.join(process.cwd(), "dist");
