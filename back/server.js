@@ -20,7 +20,7 @@ const isProduction = process.env.NODE_ENV === "production";
 // ===== Config variabile =====
 const PORT = isProduction
   ? process.env.EXPRESS_PORT_PROD || 8080
-  : process.env.EXPRESS_PORT || 3000;
+  : process.env.EXPRESS_PORT || 5000;
 
 const API_ORIGIN = isProduction
   ? process.env.VITE_PROD_API_URL
@@ -48,12 +48,13 @@ app.use(cookieParser());
 app.use("/auth", authRoutes);
 app.use("/api/run-code", runCodeRouter);
 
-// Protected routes (dashboard)
-app.use("/api", authenticateToken, (req, res, next) => {
-  if (req.path === "/dashboard") {
-    return res.json({ message: `Welcome user ${req.user.id}` });
-  }
-  next();
+// /auth/me pentru frontend
+app.get("/auth/me", authenticateToken, (req, res) => {
+  res.json({
+    id: req.user.id,
+    name: req.user.name,  // IMPORTANT
+    email: req.user.email
+  });
 });
 
 // ===== Lessons endpoint =====

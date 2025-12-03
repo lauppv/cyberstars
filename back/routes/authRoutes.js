@@ -86,8 +86,22 @@ router.post("/logout", (req, res) => {
     res.status(200).json({ message: "Logged out successfully" });
 });
 
-router.get("/me", authenticateToken, (req, res) => {
-    res.json({ loggedIn: true, userId: req.user.id });
+
+router.get("/me", authenticateToken, async (req, res) => {
+    try {
+        const userRes = await pool.query(
+            "SELECT id, name, email FROM users WHERE id = $1",
+            [req.user.id]
+        );
+
+        if (userRes.rowCount === 0) return res.status(404).json({ message: "User not found" });
+
+        const user = userRes.rows[0];
+        res.json(user); // { id, name, email }
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
 });
 
 
