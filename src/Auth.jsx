@@ -15,41 +15,44 @@ function AuthPage() {
 
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
 
-    const url = isLogin
-      ? `${API_BASE}/auth/login`
-      : `${API_BASE}/auth/signup`;
+  const url = isLogin
+    ? `${API_BASE}/auth/login`
+    : `${API_BASE}/auth/signup`;
 
-    const body = isLogin
-      ? { email, password }
-      : { name, email, password };
+  const body = isLogin
+    ? { email, password }
+    : { name, email, password };
 
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(body),
-      });
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(body),
+    });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Something went wrong");
-      } else {
-        navigate("/");
-      }
-    } catch (err) {
-      setError("Server error, try again later");
-      console.error(err);
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      // dacă serverul nu trimite JSON valid, preluăm textul
+      const text = await res.text();
+      setError(text || "Something went wrong");
+      return;
     }
-  };
+
+    const data = await res.json(); // parsează doar dacă res.ok
+    navigate("/");
+  } catch (err) {
+    setError("Server error, try again later");
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-6">
