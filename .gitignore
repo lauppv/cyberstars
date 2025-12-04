@@ -11,8 +11,8 @@ lerna-debug.log*
 node_modules
 .env
 
-output.txt
-a.out
+/back/runtimes/python/output.txt
+/back/runtimes/c/a.out
 
 dist
 dist-ssr
