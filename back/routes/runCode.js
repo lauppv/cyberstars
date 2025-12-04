@@ -48,11 +48,11 @@ router.post("/", async (req, res) => {
       const data = await response.json();
 
       // returnăm stdout + stderr
-      const output = (data.run?.output || "").trim() || "Programul nu a produs output.";
+      const output = (data.run?.output || "").trim() || "Container error (Piston)";
       res.json({ output });
     } catch (err) {
       console.error(err);
-      res.json({ output: "Error connecting to execution server." });
+      res.json({ output: "Error connecting to execution server" });
     }
   } else {
     // -----------------------
@@ -110,7 +110,7 @@ timeout 5 bash -c 'javac /usr/src/app/Main.java -d /usr/src/app > /usr/src/app/o
       exec(dockerCmd, { maxBuffer: 1024 * 1024 }, async (error) => {
         try {
           const output = await fs.readFile(outputFile, "utf-8");
-          res.json({ output: output.trim() || "Programul nu a produs output." });
+          res.json({ output: output.trim()});
         } catch (err) {
           console.error(err);
           res.json({ output: "Error reading output file." });

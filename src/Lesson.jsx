@@ -78,7 +78,7 @@ function Lesson() {
       <div className="flex flex-1 overflow-hidden">
         {/* Stânga */}
         <div className="w-1/2 p-6 overflow-auto bg-[#111026] border-r border-blue-600/30 h-full shadow-inner">
-          <h2 className="text-2xl font-bold mb-4 text-[#00eaff]">{title}</h2>
+          <h2 className="text-2xl font-bold mb-4 text-cyan-500/70">{title}</h2>
 
           <div className="prose text-[#bde5ff]">
             <ReactMarkdown
@@ -86,7 +86,7 @@ function Lesson() {
               components={{
                 strong({ children }) {
                   return (
-                    <strong style={{ color: "#ff00d4ff"}}>
+                    <strong style={{ color: "#d10bb0c9"}}>
                       {children}
                     </strong>
                   );
@@ -124,7 +124,7 @@ function Lesson() {
 
           <div className="flex gap-4 mt-4">
             <button
-              className="px-6 py-3 bg-pink-400 text-white rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/30"
+              className="px-6 py-3 bg-pink-500/60 text-white rounded hover:bg-cyan-500/60 transition shadow-md shadow-pink-500/30"
               onClick={() => navigate("/curriculum")}
             >
               Curriculum
@@ -132,7 +132,7 @@ function Lesson() {
 
             {prevLesson && (
               <button
-                className="px-4 py-2 bg-[#333159] text-white rounded hover:bg-[#3f3d6d] transition"
+                className="px-4 py-2 bg-pink-500/60 text-white rounded hover:bg-cyan-500/60 transition"
                 onClick={() => navigate(`/lesson/${category}/${prevLesson}`)}
               >
                 Previous
@@ -141,7 +141,7 @@ function Lesson() {
 
             {nextLesson && (
               <button
-                className="px-4 py-2 bg-pink-400 text-white rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/30"
+                className="px-4 py-2 bg-pink-500/60 text-white rounded hover:bg-cyan-50060 transition shadow-md shadow-pink-500/30"
                 onClick={() => navigate(`/lesson/${category}/${nextLesson}`)}
               >
                 Next
@@ -169,7 +169,7 @@ function Lesson() {
           </div>
 
           <button
-            className="mt-2 px-4 py-2 bg-pink-500 text-white font-bold rounded hover:bg-cyan-300 transition shadow-md shadow-pink-500/40"
+            className="mt-2 px-4 py-2 bg-pink-500/60 text-white font-bold rounded hover:bg-cyan-500/60 transition shadow-md shadow-pink-500/40"
             onClick={async () => {
               try {
                 const response = await fetch(`/api/run-code`, {

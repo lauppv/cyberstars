@@ -47,10 +47,10 @@ export default function CodeCell({ initialCode, language }) {
 
       const data = await res.json();
       // afiseaza stdout sau stderr daca exista
-      const finalOutput = data.output || "Programul nu a produs output.";
-      setOutput(finalOutput);
+     // const finalOutput = data.output || "Programul nu a produs output.";
+      setOutput(data.output);
     } catch {
-      setOutput("Error connecting to server.");
+      setOutput("Timeout error. Maybe infinite loop?");
     } finally {
       setRunning(false);
     }
@@ -73,7 +73,7 @@ export default function CodeCell({ initialCode, language }) {
       />
       <button
         onClick={runCode}
-        className="mt-2 px-3 py-1 bg-pink-500 text-white font-bold rounded hover:bg-cyan-300 shadow-md shadow-pink-500/30 transition"
+        className="mt-2 px-3 py-1 bg-pink-500/60 text-white font-bold rounded hover:bg-cyan-500/60 shadow-md shadow-pink-500/30 transition"
         disabled={running}
       >
         {running ? "Running..." : "Run Code"}
