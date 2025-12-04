@@ -38,11 +38,20 @@ function AuthPage() {
     });
 
     if (!res.ok) {
-      // dacă serverul nu trimite JSON valid, preluăm textul
-      const text = await res.text();
-      setError(text || "Something went wrong");
+      let errorMsg = "Something went wrong";
+
+      try {
+        const errData = await res.json();
+        errorMsg = errData.message || errorMsg;
+      } catch {
+          const text = await res.text();
+          errorMsg = text || errorMsg;
+        }
+
+      setError(errorMsg);
       return;
     }
+
 
     const data = await res.json(); // parsează doar dacă res.ok
     navigate("/");
