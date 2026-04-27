@@ -18,7 +18,7 @@ export function Modal({ open, onClose, children }: ModalProps) {
       className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50"
       onClick={handleBackdrop}
     >
-      <div className="bg-[#2a2240] p-6 rounded-xl shadow-xl max-w-md w-full border border-[#3d3458]">
+      <div className="bg-[#141a22] p-6 rounded-xl shadow-xl max-w-md w-full border border-[#1e2a38]">
         {children}
       </div>
     </div>

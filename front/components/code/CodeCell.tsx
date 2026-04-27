@@ -21,7 +21,7 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
   const { output, isRunning, execute } = useCodeExecution();
 
   return (
-    <div className="my-4 border border-[#3d3458] rounded p-3 bg-[#1e1730]">
+    <div className="my-4 border border-[#1e2a38] rounded p-3 bg-[#111820]">
       <CodeEditor
         value={code}
         onChange={setCode}
@@ -34,7 +34,7 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
         className="mt-2"
       />
       {output && (
-        <div className="mt-2 bg-[#1a1428] text-[#a8c4d4] font-bold p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto border border-[#3d3458]">
+        <div className="mt-2 bg-[#0d1117] text-[#78a8d0] font-bold p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto border border-[#1e2a38]">
           {output}
         </div>
       )}

@@ -4,9 +4,9 @@ export function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-[#221b33] text-[#c8bdd6] p-4 shadow-lg shadow-[#1a1428]/50">
+    <nav className="bg-[#14181e] text-[#b0b8c5] p-4 shadow-lg shadow-[#0d1117]/50">
       <h1
-        className="text-xl font-bold text-center text-[#d4789c] drop-shadow-[0_0_8px_rgba(212,120,156,0.3)] cursor-pointer"
+        className="text-xl font-bold text-center text-[#5aa0e0] drop-shadow-[0_0_8px_rgba(90,160,224,0.3)] cursor-pointer"
         style={{ fontFamily: "cursive", fontSize: "140%" }}
         onClick={() => navigate("/")}
       >

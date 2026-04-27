@@ -41,8 +41,8 @@ export function AuthPage() {
 
   return (
     <PageContainer className="flex items-center justify-center p-6">
-      <div className="bg-[#221b33] shadow-xl rounded-2xl p-8 w-full max-w-md border border-[#3d3458]">
-        <h2 className="text-3xl font-bold text-[#7b9ec4] text-center mb-6">
+      <div className="bg-[#14181e] shadow-xl rounded-2xl p-8 w-full max-w-md border border-[#1e2a38]">
+        <h2 className="text-3xl font-bold text-[#5aa0e0] text-center mb-6">
           {isLogin ? "Login" : "Sign Up"}
         </h2>
 
@@ -79,13 +79,13 @@ export function AuthPage() {
         </form>
 
         {error && (
-          <p className="text-[#d4789c] mt-2 text-center font-bold">{error}</p>
+          <p className="text-[#c08888] mt-2 text-center font-bold">{error}</p>
         )}
 
-        <p className="text-[#9b8fb5] text-center mt-4">
+        <p className="text-[#8890a0] text-center mt-4">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
-            className="text-[#d4789c] font-semibold ml-2 hover:underline"
+            className="text-[#5aa0e0] font-semibold ml-2 hover:underline"
             onClick={() => setIsLogin(!isLogin)}
           >
             {isLogin ? "Sign Up" : "Login"}

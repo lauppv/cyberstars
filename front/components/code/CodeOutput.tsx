@@ -15,7 +15,7 @@ export function CodeOutput({ output, height = "200px" }: CodeOutputProps) {
   return (
     <div
       ref={ref}
-      className="p-4 bg-[#1a1428] text-[#a8c4d4] font-bold font-mono rounded overflow-auto whitespace-pre-wrap border border-[#3d3458] shadow-inner"
+      className="p-4 bg-[#0d1117] text-[#78a8d0] font-bold font-mono rounded overflow-auto whitespace-pre-wrap border border-[#1e2a38] shadow-inner"
       style={{ height, minHeight: height, maxHeight: height }}
     >
       {output || "Output will appear here..."}

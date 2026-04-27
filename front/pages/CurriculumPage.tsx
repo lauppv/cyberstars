@@ -62,15 +62,15 @@ export function CurriculumPage() {
 
   return (
     <PageContainer className="flex flex-col items-center p-6">
-      <h1 className="text-3xl font-bold text-[#7b9ec4] mb-6">Hmm... let's see</h1>
+      <h1 className="text-3xl font-bold text-[#5aa0e0] mb-6">Hmm... let's see</h1>
 
       <section className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         {courses.map((course) => {
           const progress = progressMap[course.key];
           return (
-            <div key={course.key} className="p-6 bg-[#221b33] rounded-lg shadow hover:shadow-lg transition border border-[#3d3458]">
-              <h3 className="text-xl font-bold mb-2 text-[#d4789c]">{course.title}</h3>
-              <p className="text-[#9b8fb5] mb-3">{course.description}</p>
+            <div key={course.key} className="p-6 bg-[#14181e] rounded-lg shadow hover:shadow-lg transition border border-[#1e2a38]">
+              <h3 className="text-xl font-bold mb-2 text-[#5aa0e0]">{course.title}</h3>
+              <p className="text-[#8890a0] mb-3">{course.description}</p>
               {progress && (
                 <div className="mb-3">
                   <ProgressBar completed={progress.completed} total={progress.total} />
@@ -91,17 +91,17 @@ export function CurriculumPage() {
       <Modal open={!!selected} onClose={() => setSelected(null)}>
         {selected && (
           <>
-            <h2 className="text-2xl font-bold mb-4 text-[#7b9ec4]">{selected.title}</h2>
-            <p className="text-[#9b8fb5] mb-4">{selected.description}</p>
+            <h2 className="text-2xl font-bold mb-4 text-[#5aa0e0]">{selected.title}</h2>
+            <p className="text-[#8890a0] mb-4">{selected.description}</p>
 
-            <ul className="list-none pl-2 text-[#c8bdd6] space-y-1">
+            <ul className="list-none pl-2 text-[#b0b8c5] space-y-1">
               {selected.lessons.map((lesson) => {
                 const progress = progressMap[selected.key];
                 const lessonProgress = progress?.lessons.find(l => l.lessonSlug === lesson.slug);
                 return (
                   <li
                     key={lesson.slug}
-                    className="cursor-pointer hover:bg-[#7b9ec4]/15 px-2 py-1 rounded flex items-center gap-2"
+                    className="cursor-pointer hover:bg-[#5aa0e0]/10 px-2 py-1 rounded flex items-center gap-2"
                     onClick={() => {
                       setSelected(null);
                       navigate(`/lesson/${selected.key}/${lesson.slug}`);

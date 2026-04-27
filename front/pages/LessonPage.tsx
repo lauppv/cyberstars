@@ -65,7 +65,7 @@ export function LessonPage() {
 
   if (isLoading) {
     return (
-      <div className="h-screen flex flex-col bg-[#1a1428] text-[#c8bdd6]">
+      <div className="h-screen flex flex-col bg-[#0d1117] text-[#b0b8c5]">
         <Navbar />
         <LoadingSpinner />
       </div>
@@ -73,13 +73,13 @@ export function LessonPage() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-[#1a1428] text-[#c8bdd6]">
+    <div className="h-screen flex flex-col bg-[#0d1117] text-[#b0b8c5]">
       <Navbar />
 
       <div className="flex flex-1 overflow-hidden">
         {/* Left: lesson content */}
-        <div className="w-1/2 p-6 overflow-auto bg-[#221b33] border-r border-[#3d3458] h-full shadow-inner">
-          <h2 className="text-2xl font-bold mb-4 text-[#7b9ec4]/80">{title}</h2>
+        <div className="w-1/2 p-6 overflow-auto bg-[#14181e] border-r border-[#1e2a38] h-full shadow-inner">
+          <h2 className="text-2xl font-bold mb-4 text-[#5aa0e0]/80">{title}</h2>
 
           <MarkdownRenderer content={content} />
 
@@ -111,7 +111,7 @@ export function LessonPage() {
         </div>
 
         {/* Right: code editor */}
-        <div className="w-1/2 flex flex-col p-6 bg-[#221b33] h-full overflow-hidden shadow-inner">
+        <div className="w-1/2 flex flex-col p-6 bg-[#14181e] h-full overflow-hidden shadow-inner">
           <div className="flex-1 overflow-auto mb-2">
             <CodeEditor
               value={userCode}

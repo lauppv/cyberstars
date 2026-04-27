@@ -10,7 +10,7 @@ const EDITABLE_LANGS = ["py", "python", "c", "java"];
 
 const components: Components = {
   strong({ children }) {
-    return <strong style={{ color: "#d4789c" }}>{children}</strong>;
+    return <strong style={{ color: "#5aa0e0" }}>{children}</strong>;
   },
   code({ className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || "");
@@ -29,7 +29,7 @@ const components: Components = {
     return (
       <code
         className={className}
-        style={{ background: "#1e1730", padding: "4px 6px", borderRadius: "4px" }}
+        style={{ background: "#111820", padding: "4px 6px", borderRadius: "4px" }}
         {...props}
       >
         {children}
@@ -40,7 +40,7 @@ const components: Components = {
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="prose text-[#c8bdd6]">
+    <div className="prose text-[#b0b8c5]">
       <ReactMarkdown components={components}>
         {content}
       </ReactMarkdown>

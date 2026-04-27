@@ -7,7 +7,7 @@ interface PageContainerProps {
 
 export function PageContainer({ children, className = "" }: PageContainerProps) {
   return (
-    <div className={`min-h-screen bg-[#1a1428] ${className}`}>
+    <div className={`min-h-screen bg-[#0d1117] ${className}`}>
       {children}
     </div>
   );

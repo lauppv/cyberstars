@@ -9,7 +9,7 @@ export function RunButton({ onClick, isRunning, className = "" }: RunButtonProps
     <button
       onClick={onClick}
       disabled={isRunning}
-      className={`px-4 py-2 bg-[#c4638e]/40 text-[#d4c0ce] font-bold rounded hover:bg-[#7b9ec4]/40 transition shadow-md shadow-[#c4638e]/20 disabled:opacity-50 ${className}`}
+      className={`px-4 py-2 bg-[#1a2d45]/80 text-[#a8b0bc] font-bold rounded hover:bg-[#253d58]/70 transition shadow-sm shadow-[#0d1117]/40 disabled:opacity-50 ${className}`}
     >
       {isRunning ? "Running..." : "Run Code"}
     </button>
