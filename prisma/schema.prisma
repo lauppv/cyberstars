@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(100)
+  email      String   @unique @db.VarChar(255)
+  password   String   @db.VarChar(255)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  progress  UserLessonProgress[]
+  savedCode UserSavedCode[]
+
+  @@map("users")
+}
+
+model Curriculum {
+  id          Int      @id @default(autoincrement())
+  key         String   @unique @db.VarChar(50)
+  title       String   @db.VarChar(100)
+  description String
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("curriculum")
+}
+
+model Lesson {
+  id          Int      @id @default(autoincrement())
+  courseKey   String   @map("course_key") @db.VarChar(50)
+  slug        String   @db.VarChar(100)
+  title       String   @db.VarChar(255)
+  sortOrder   Int      @default(0) @map("sort_order")
+  hasCodeFile Boolean  @default(false) @map("has_code_file")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([courseKey, slug])
+  @@map("lessons")
+}
+
+model UserLessonProgress {
+  id              Int       @id @default(autoincrement())
+  userId          Int       @map("user_id")
+  courseKey       String    @map("course_key") @db.VarChar(50)
+  lessonSlug      String    @map("lesson_slug") @db.VarChar(100)
+  completed       Boolean   @default(false)
+  completedAt     DateTime? @map("completed_at")
+  lastAccessedAt  DateTime  @default(now()) @map("last_accessed_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseKey, lessonSlug])
+  @@index([userId])
+  @@index([userId, courseKey])
+  @@map("user_lesson_progress")
+}
+
+model UserSavedCode {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  courseKey  String   @map("course_key") @db.VarChar(50)
+  lessonSlug String   @map("lesson_slug") @db.VarChar(100)
+  code       String
+  updatedAt  DateTime @default(now()) @map("updated_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseKey, lessonSlug])
+  @@index([userId])
+  @@map("user_saved_code")
+}

@@ -13,6 +13,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["front"],
-  "exclude": ["node_modules", "dist", "back"]
+  "include": ["client", "shared"],
+  "exclude": ["node_modules", "dist", "server"]
 }
