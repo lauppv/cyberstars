@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Displays rocket name",
+    "input": "",
+    "expected": "Laniakea-Explorer",
+    "mode": "contains"
+  },
+  {
+    "name": "Displays mission name",
+    "input": "",
+    "expected": "MARS-IX-5000",
+    "mode": "contains"
+  },
+  {
+    "name": "Displays max power",
+    "input": "",
+    "expected": "804225",
+    "mode": "contains"
+  },
+  {
+    "name": "Full output is correct (no windSpeed)",
+    "input": "",
+    "expected": "Laniakea-Explorer\nMARS-IX-5000\n804225",
+    "mode": "exact"
+  }
+]

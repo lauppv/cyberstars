@@ -1,4 +1,4 @@
-# complete the code below
+# complete the code below (do not change variable names)
 name = ""
 age =
 height =

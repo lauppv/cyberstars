@@ -21,7 +21,7 @@ export function HomePage() {
       <header className="w-full max-w-4xl text-center mb-24">
         {isLoggedIn && user && (
           <h2 className="text-3xl text-[#8890a0] mb-4">
-            Salut, <span className="text-[#5aa0e0]">{user.name}</span>!
+            Hey, <span className="text-[#5aa0e0]">{user.name}</span>!
           </h2>
         )}
         <h1 className="text-5xl font-bold text-[#5aa0e0] mb-4">CyberStars</h1>

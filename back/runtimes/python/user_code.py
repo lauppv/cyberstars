@@ -1,7 +1,7 @@
-temperature = 0
-# write code below
+# complete the code below
+name = ""
+age = 12
+height = 33
+# complete the code above
 
-name = "Lauru Balauru"
-
-for i in range(5):
-    print(name)
+print(f"Hello. My name is {name}, I am {age} years old, and I am {height} tall")

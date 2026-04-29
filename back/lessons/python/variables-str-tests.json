@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Displays Shrek",
+    "input": "",
+    "expected": "Shrek",
+    "mode": "contains"
+  },
+  {
+    "name": "Displays Fiona",
+    "input": "",
+    "expected": "Fiona",
+    "mode": "contains"
+  },
+  {
+    "name": "Displays Donkey",
+    "input": "",
+    "expected": "Donkey",
+    "mode": "contains"
+  },
+  {
+    "name": "Full output is correct",
+    "input": "",
+    "expected": "Shrek\nFiona\nDonkey",
+    "mode": "exact"
+  }
+]

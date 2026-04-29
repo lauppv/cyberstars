@@ -15,3 +15,17 @@ export interface LessonContent {
   title: string;
   content: string;
 }
+
+export interface TestResult {
+  name: string;
+  passed: boolean;
+  expected: string;
+  actual: string;
+}
+
+export interface SubmitResult {
+  passed: number;
+  total: number;
+  allPassed: boolean;
+  results: TestResult[];
+}

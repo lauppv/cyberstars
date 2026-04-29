@@ -1,5 +1,6 @@
 import { exec } from "child_process";
 import path from "path";
+import crypto from "crypto";
 import fs from "fs/promises";
 import { config } from "../config.js";
 
@@ -15,16 +16,16 @@ interface PistonResponse {
   run?: { output?: string };
 }
 
-export async function execute(code: string, language: string): Promise<string> {
+export async function execute(code: string, language: string, stdin = ""): Promise<string> {
   const lang = language.toLowerCase();
 
   if (config.isProduction) {
-    return executePiston(code, lang);
+    return executePiston(code, lang, stdin);
   }
-  return executeDocker(code, lang);
+  return executeDocker(code, lang, stdin);
 }
 
-async function executePiston(code: string, lang: string): Promise<string> {
+async function executePiston(code: string, lang: string, stdin = ""): Promise<string> {
   const version = pistonVersions[lang];
   if (!version) return "Language not supported.";
 
@@ -36,7 +37,7 @@ async function executePiston(code: string, lang: string): Promise<string> {
         language: lang,
         version,
         files: [{ name: "main", content: code }],
-        stdin: "",
+        stdin,
         args: [],
         compile_timeout: 10000,
         run_timeout: 5000,
@@ -52,12 +53,15 @@ async function executePiston(code: string, lang: string): Promise<string> {
   }
 }
 
-async function executeDocker(code: string, lang: string): Promise<string> {
-  const runtimePath = path.join(process.cwd(), "back", "runtimes", lang);
+async function executeDocker(code: string, lang: string, stdin = ""): Promise<string> {
+  const runId = crypto.randomUUID();
+  const runtimePath = path.join(process.cwd(), "back", "runtimes", lang, runId);
   await fs.mkdir(runtimePath, { recursive: true });
 
   const outputFile = path.join(runtimePath, "output.txt");
+  const stdinFile = path.join(runtimePath, "stdin.txt");
   await fs.writeFile(outputFile, "", "utf-8");
+  await fs.writeFile(stdinFile, stdin, "utf-8");
 
   let dockerCmd: string;
 
@@ -65,7 +69,7 @@ async function executeDocker(code: string, lang: string): Promise<string> {
     case "python": {
       const srcFile = path.join(runtimePath, "user_code.py");
       await fs.writeFile(srcFile, code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app python-runtime sh -c "timeout 5 python3 /usr/src/app/user_code.py > /usr/src/app/output.txt 2>&1"`;
+      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app python-runtime sh -c "timeout 5 python3 /usr/src/app/user_code.py < /usr/src/app/stdin.txt > /usr/src/app/output.txt 2>&1"`;
       break;
     }
     case "c": {
@@ -91,6 +95,8 @@ async function executeDocker(code: string, lang: string): Promise<string> {
         resolve(output.trim() || "No output.");
       } catch {
         resolve("Error reading output file.");
+      } finally {
+        fs.rm(runtimePath, { recursive: true, force: true }).catch(() => {});
       }
     });
   });

@@ -97,7 +97,7 @@ export function CurriculumPage() {
             <ul className="list-none pl-2 text-[#b0b8c5] space-y-1">
               {selected.lessons.map((lesson) => {
                 const progress = progressMap[selected.key];
-                const lessonProgress = progress?.lessons.find(l => l.lessonSlug === lesson.slug);
+                const lessonProgress = progress?.lessons.find((l: any) => (l.slug ?? l.lessonSlug) === lesson.slug);
                 return (
                   <li
                     key={lesson.slug}

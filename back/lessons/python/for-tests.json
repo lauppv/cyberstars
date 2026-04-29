@@ -1,0 +1,50 @@
+[
+  {
+    "name": "First line is 0",
+    "input": "",
+    "expected": "0",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Line 10 is 'Pizza Margherita'",
+    "input": "",
+    "expected": "Pizza Margherita",
+    "mode": "line",
+    "line": 10
+  },
+  {
+    "name": "Line 50 is 'Pizza Margherita'",
+    "input": "",
+    "expected": "Pizza Margherita",
+    "mode": "line",
+    "line": 50
+  },
+  {
+    "name": "Line 1 is 1",
+    "input": "",
+    "expected": "1",
+    "mode": "line",
+    "line": 1
+  },
+  {
+    "name": "Line 99 is 99",
+    "input": "",
+    "expected": "99",
+    "mode": "line",
+    "line": 99
+  },
+  {
+    "name": "Line 100 is 100",
+    "input": "",
+    "expected": "100",
+    "mode": "line",
+    "line": 100
+  },
+  {
+    "name": "Contains 'Pizza Margherita'",
+    "input": "",
+    "expected": "Pizza Margherita",
+    "mode": "contains"
+  }
+]

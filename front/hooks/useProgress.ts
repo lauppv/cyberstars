@@ -36,5 +36,5 @@ export function useProgress(courseKey: string) {
     await progressService.saveCode(courseKey, lessonSlug, code);
   }, [isLoggedIn, courseKey]);
 
-  return { progress, isLoading, markComplete, saveCode };
+  return { progress, isLoading, markComplete, saveCode, loadProgress };
 }
