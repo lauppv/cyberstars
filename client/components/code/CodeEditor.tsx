@@ -4,6 +4,7 @@ import { cpp } from "@codemirror/lang-cpp";
 import { python } from "@codemirror/lang-python";
 import { java } from "@codemirror/lang-java";
 import { indentUnit } from "@codemirror/language";
+import { EditorView } from "@codemirror/view";
 import type { Extension } from "@codemirror/state";
 
 interface CodeEditorProps {
@@ -16,7 +17,8 @@ interface CodeEditorProps {
 
 function getExtensions(language: string): Extension[] {
   const lang = language.toLowerCase();
-  const base = [indentUnit.of("    ")];
+  // lineWrapping: long lines wrap inside the editor instead of overflowing horizontally
+  const base: Extension[] = [indentUnit.of("    "), EditorView.lineWrapping];
   switch (lang) {
     case "python":
     case "py":
@@ -36,7 +38,7 @@ export function CodeEditor({
   onChange,
   language,
   minHeight = "100px",
-  fontSize = "20px",
+  fontSize = "16px",
 }: CodeEditorProps) {
   return (
     <CodeMirror
@@ -46,7 +48,7 @@ export function CodeEditor({
       theme={oneDark}
       extensions={getExtensions(language)}
       onChange={onChange}
-      style={{ fontSize, fontWeight: "bold" }}
+      style={{ fontSize, fontFamily: "var(--mono)" }}
     />
   );
 }

@@ -9,9 +9,16 @@ export function RunButton({ onClick, isRunning, className = "" }: RunButtonProps
     <button
       onClick={onClick}
       disabled={isRunning}
-      className={`px-4 py-2 bg-[#1a2d45]/80 text-[#a8b0bc] font-bold rounded hover:bg-[#253d58]/70 transition shadow-sm shadow-[#0d1117]/40 disabled:opacity-50 ${className}`}
+      className={`px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--success)] text-black font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer ${className}`}
     >
-      {isRunning ? "Running..." : "Run Code"}
+      {isRunning ? (
+        <>
+          <span className="inline-block w-3 h-3 border-2 border-black border-t-transparent rounded-full animate-spin" />
+          Running...
+        </>
+      ) : (
+        <>▶ Run</>
+      )}
     </button>
   );
 }

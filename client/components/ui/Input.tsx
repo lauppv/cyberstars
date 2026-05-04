@@ -6,12 +6,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export function Input({ error, className = "", ...props }: InputProps) {
   return (
-    <div>
+    <div className="w-full">
       <input
-        className={`w-full border border-[#1e2a38] p-3 rounded bg-[#141a22] text-[#b0b8c5] placeholder-[#4a5565] focus:outline-none focus:border-[#4090d0] ${className}`}
+        className={`w-full border border-[var(--border)] px-3 py-2.5 rounded-[var(--radius-sm)] bg-[var(--bg)] text-[var(--text)] text-sm placeholder-[var(--text3)] focus:outline-none focus:border-[var(--accent)] transition ${className}`}
         {...props}
       />
-      {error && <p className="text-[#c08888] text-sm mt-1">{error}</p>}
+      {error && <p className="text-[var(--error)] text-xs mt-1">{error}</p>}
     </div>
   );
 }

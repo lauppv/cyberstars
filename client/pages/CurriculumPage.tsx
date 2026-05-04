@@ -2,21 +2,26 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchCurriculum } from "../services/lessonService";
 import { useAuth } from "../context/AuthContext";
+import { useGamification } from "../hooks/useGamification";
 import * as progressService from "../services/progressService";
-import { Button } from "../components/ui/Button";
-import { Modal } from "../components/ui/Modal";
-import { PageContainer } from "../components/layout/PageContainer";
+import { Topbar } from "../components/layout/Topbar";
+import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import { ProgressBar } from "../components/progress/ProgressBar";
-import { LessonStatusBadge } from "../components/progress/LessonStatusBadge";
 import type { Course } from "../../shared/lesson";
 import type { CourseProgress } from "../../shared/progress";
+
+const COURSE_ICON: Record<string, string> = {
+  python: "🐍",
+  java: "☕",
+  c: "⚙️",
+};
 
 export function CurriculumPage() {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
+  const gamification = useGamification();
+
   const [courses, setCourses] = useState<Course[]>([]);
-  const [selected, setSelected] = useState<Course | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [progressMap, setProgressMap] = useState<Record<string, CourseProgress>>({});
 
@@ -27,25 +32,22 @@ export function CurriculumPage() {
         setCourses(data);
 
         if (isLoggedIn) {
-          const progressEntries = await Promise.all(
+          const entries = await Promise.all(
             data.map(async (course) => {
               try {
-                const progress = await progressService.getCourseProgress(course.key);
-                return [course.key, progress] as const;
+                const p = await progressService.getCourseProgress(course.key);
+                return [course.key, p] as const;
               } catch {
                 return null;
               }
             })
           );
           const map: Record<string, CourseProgress> = {};
-          for (const entry of progressEntries) {
-            if (entry) map[entry[0]] = entry[1];
-          }
+          for (const e of entries) if (e) map[e[0]] = e[1];
           setProgressMap(map);
         }
-      } catch {
-        // fallback handled by empty state
-      } finally {
+      } catch {}
+      finally {
         setIsLoading(false);
       }
     };
@@ -54,83 +56,90 @@ export function CurriculumPage() {
 
   if (isLoading) {
     return (
-      <PageContainer className="flex items-center justify-center">
-        <LoadingSpinner />
-      </PageContainer>
+      <div className="h-screen flex flex-col bg-[var(--bg)]">
+        <Topbar />
+        <div className="flex-1 flex items-center justify-center">
+          <LoadingSpinner />
+        </div>
+      </div>
     );
   }
 
   return (
-    <PageContainer className="flex flex-col items-center p-6">
-      <h1 className="text-3xl font-bold text-[#5aa0e0] mb-6">Hmm... let's see</h1>
+    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+      <Topbar streak={gamification.streak} />
 
-      <section className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        {courses.map((course) => {
-          const progress = progressMap[course.key];
-          return (
-            <div key={course.key} className="p-6 bg-[#14181e] rounded-lg shadow hover:shadow-lg transition border border-[#1e2a38]">
-              <h3 className="text-xl font-bold mb-2 text-[#5aa0e0]">{course.title}</h3>
-              <p className="text-[#8890a0] mb-3">{course.description}</p>
-              {progress && (
-                <div className="mb-3">
-                  <ProgressBar completed={progress.completed} total={progress.total} />
-                </div>
-              )}
-              <Button
-                variant="ghost"
-                className="px-4 py-2"
-                onClick={() => setSelected(course)}
-              >
-                What will I learn?
-              </Button>
-            </div>
-          );
-        })}
-      </section>
+      {isLoggedIn && (
+        <XPBar
+          current={gamification.xpInLevel}
+          max={gamification.xpForNextLevel}
+          level={gamification.level}
+        />
+      )}
 
-      <Modal open={!!selected} onClose={() => setSelected(null)}>
-        {selected && (
-          <>
-            <h2 className="text-2xl font-bold mb-4 text-[#5aa0e0]">{selected.title}</h2>
-            <p className="text-[#8890a0] mb-4">{selected.description}</p>
+      <main className="flex-1 px-6 py-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-10">
+            <h1 className="text-[36px] font-bold tracking-[-0.5px] mb-2">Curriculum</h1>
+            <p className="text-[var(--text2)] text-base">
+              Pick a language and start learning. Each lesson is interactive — read on the left, code on the right.
+            </p>
+          </div>
 
-            <ul className="list-none pl-2 text-[#b0b8c5] space-y-1">
-              {selected.lessons.map((lesson) => {
-                const progress = progressMap[selected.key];
-                const lessonProgress = progress?.lessons.find((l: any) => (l.slug ?? l.lessonSlug) === lesson.slug);
-                return (
-                  <li
-                    key={lesson.slug}
-                    className="cursor-pointer hover:bg-[#5aa0e0]/10 px-2 py-1 rounded flex items-center gap-2"
-                    onClick={() => {
-                      setSelected(null);
-                      navigate(`/lesson/${selected.key}/${lesson.slug}`);
-                    }}
-                  >
-                    <LessonStatusBadge completed={lessonProgress?.completed ?? false} />
-                    <span>{lesson.title}</span>
-                  </li>
-                );
-              })}
-            </ul>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {courses.map((course) => {
+              const progress = progressMap[course.key];
+              const completed = progress?.completed ?? 0;
+              const total = progress?.total ?? course.lessons.length;
+              const pct = total > 0 ? (completed / total) * 100 : 0;
 
-            <Button
-              variant="ghost"
-              className="mt-6 px-4 py-2"
-              onClick={() => setSelected(null)}
-            >
-              Close
-            </Button>
-          </>
-        )}
-      </Modal>
+              return (
+                <button
+                  key={course.key}
+                  onClick={() => {
+                    const firstSlug = course.lessons[0]?.slug;
+                    if (firstSlug) navigate(`/lesson/${course.key}/${firstSlug}`);
+                  }}
+                  className="text-left p-6 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] hover:border-[var(--accent)] transition cursor-pointer group"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="text-4xl">{COURSE_ICON[course.key] ?? "📘"}</span>
+                    <span className="text-[11px] uppercase tracking-[1px] text-[var(--text3)] font-semibold">
+                      {course.lessons.length} lessons
+                    </span>
+                  </div>
 
-      <Button
-        onClick={() => navigate("/")}
-        className="mt-auto"
-      >
-        Home
-      </Button>
-    </PageContainer>
+                  <h3 className="text-xl font-bold mb-1.5 text-[var(--text)] group-hover:text-[var(--accent)] transition">
+                    {course.title}
+                  </h3>
+                  <p className="text-sm text-[var(--text2)] mb-5 leading-relaxed">
+                    {course.description}
+                  </p>
+
+                  {isLoggedIn && (
+                    <div>
+                      <div className="flex justify-between text-[11px] mb-1.5">
+                        <span className="text-[var(--text3)]">
+                          {completed} / {total} completed
+                        </span>
+                        <span className="text-[var(--text2)] font-semibold">
+                          {Math.round(pct)}%
+                        </span>
+                      </div>
+                      <div className="h-1.5 bg-[var(--bg3)] rounded-[3px] overflow-hidden">
+                        <div
+                          className="h-full bg-[var(--success)] rounded-[3px] transition-[width] duration-500"
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

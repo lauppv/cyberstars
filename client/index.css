@@ -1,39 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
-.prose p, hr {
-  margin-top: 0;
-  margin-bottom: 1em;
+:root {
+  --accent: #6C5CE7;
+  --accent-glow: #6C5CE733;
+  --bg: #0F0F14;
+  --bg2: #16161D;
+  --bg3: #1E1E28;
+  --surface: #22222E;
+  --surface2: #2A2A38;
+  --border: #2E2E3E;
+  --text: #E8E8F0;
+  --text2: #9999B0;
+  --text3: #666680;
+  --success: #00D68F;
+  --warning: #FFAA00;
+  --error: #FF6B6B;
+  --font: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --radius: 10px;
+  --radius-sm: 6px;
 }
 
-* {
-  font-family: 'Roboto', sans-serif;
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
+#root { height: 100%; }
 
-::-webkit-scrollbar-track {
-  background: #14181e;
-  border-radius: 6px;
-}
+* { font-family: var(--font); }
 
+code, pre, kbd, samp { font-family: var(--mono); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb {
-  background: #2e3a4a;
-  border-radius: 6px;
-  border: 3px solid #14181e;
+  background: var(--surface2);
+  border-radius: 5px;
+  border: 2px solid var(--bg2);
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3a4858;
-}
-
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
 * {
   scrollbar-width: thin;
-  scrollbar-color: #2e3a4a #14181e;
+  scrollbar-color: var(--surface2) var(--bg2);
 }
 
-hr {
-  color: #2e3a4a;
+/* Lesson markdown body */
+.lesson-body { font-size: 15px; line-height: 1.75; color: var(--text2); }
+.lesson-body p { margin-bottom: 1em; }
+.lesson-body strong { color: var(--text); font-weight: 600; }
+.lesson-body em { color: var(--text); font-style: italic; }
+.lesson-body code:not(pre code) {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--surface2);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
+.lesson-body h1, .lesson-body h2, .lesson-body h3 {
+  color: var(--text);
+  font-weight: 700;
+  margin: 1.5em 0 0.5em;
+  letter-spacing: -0.3px;
+}
+.lesson-body h1 { font-size: 24px; }
+.lesson-body h2 { font-size: 20px; }
+.lesson-body h3 { font-size: 17px; }
+.lesson-body ul, .lesson-body ol {
+  margin: 0.5em 0 1em 1.5em;
+  list-style: revert;
+}
+.lesson-body li { margin-bottom: 0.4em; }
+.lesson-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.lesson-body th, .lesson-body td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.lesson-body th { background: var(--surface); font-weight: 600; color: var(--text); }
+.lesson-body td { color: var(--text2); }
+.lesson-body hr { border: 0; border-top: 1px solid var(--border); margin: 1.5em 0; }
+.lesson-body a { color: var(--accent); text-decoration: none; }
+.lesson-body a:hover { text-decoration: underline; }
+
+@keyframes pulse-dot { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes fade-in-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes toast-in { from { transform: translateY(120px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.fade-in-up { animation: fade-in-up 0.3s cubic-bezier(.22,1,.36,1); }

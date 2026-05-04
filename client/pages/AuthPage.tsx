@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
-import { PageContainer } from "../components/layout/PageContainer";
+import { Topbar } from "../components/layout/Topbar";
 import { ApiClientError } from "../services/apiClient";
 
 export function AuthPage() {
@@ -40,66 +40,71 @@ export function AuthPage() {
   };
 
   return (
-    <PageContainer className="flex items-center justify-center p-6">
-      <div className="bg-[#14181e] shadow-xl rounded-2xl p-8 w-full max-w-md border border-[#1e2a38]">
-        <h2 className="text-3xl font-bold text-[#5aa0e0] text-center mb-6">
-          {isLogin ? "Login" : "Sign Up"}
-        </h2>
+    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+      <Topbar />
 
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          {!isLogin && (
+      <main className="flex-1 flex items-center justify-center px-6 py-12">
+        <div className="bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] p-8 w-full max-w-md">
+          <div className="text-center mb-6">
+            <span
+              className="inline-block text-3xl text-[var(--accent)] mb-3"
+              style={{ filter: "drop-shadow(0 0 6px var(--accent-glow))" }}
+            >
+              ⬡
+            </span>
+            <h2 className="text-2xl font-bold tracking-[-0.5px]">
+              {isLogin ? "Welcome back" : "Create your account"}
+            </h2>
+            <p className="text-sm text-[var(--text2)] mt-1">
+              {isLogin ? "Sign in to track your progress" : "Start your coding journey"}
+            </p>
+          </div>
+
+          <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+            {!isLogin && (
+              <Input
+                type="text"
+                placeholder="What should we call you?"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            )}
             <Input
-              type="text"
-              placeholder="How should we call you?"
+              type="email"
+              placeholder="Email"
               required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
+            <Input
+              type="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <Button type="submit" disabled={loading} className="w-full mt-2">
+              {loading ? "Processing..." : isLogin ? "Sign in" : "Create account"}
+            </Button>
+          </form>
+
+          {error && (
+            <p className="text-[var(--error)] mt-3 text-center text-sm font-semibold">{error}</p>
           )}
 
-          <Input
-            type="email"
-            placeholder="Email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <Input
-            type="password"
-            placeholder="Password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Processing..." : isLogin ? "Login" : "Create Account"}
-          </Button>
-        </form>
-
-        {error && (
-          <p className="text-[#c08888] mt-2 text-center font-bold">{error}</p>
-        )}
-
-        <p className="text-[#8890a0] text-center mt-4">
-          {isLogin ? "Don't have an account?" : "Already have an account?"}
-          <button
-            className="text-[#5aa0e0] font-semibold ml-2 hover:underline"
-            onClick={() => setIsLogin(!isLogin)}
-          >
-            {isLogin ? "Sign Up" : "Login"}
-          </button>
-        </p>
-
-        <Button
-          variant="outline"
-          className="mt-6 w-full"
-          onClick={() => navigate("/")}
-        >
-          Back to Home
-        </Button>
-      </div>
-    </PageContainer>
+          <p className="text-[var(--text2)] text-center mt-5 text-sm">
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
+            <button
+              className="text-[var(--accent)] font-semibold ml-2 hover:underline cursor-pointer bg-transparent border-none"
+              onClick={() => setIsLogin(!isLogin)}
+            >
+              {isLogin ? "Sign up" : "Sign in"}
+            </button>
+          </p>
+        </div>
+      </main>
+    </div>
   );
 }
