@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Employee on a working day -> granted",
+    "input": "",
+    "expected": "Access granted",
+    "mode": "contains",
+    "overrides": {
+      "isEmployee": "True",
+      "isWorkingDay": "True",
+      "isGuest": "False",
+      "hasInvitation": "False"
+    }
+  },
+  {
+    "name": "Employee on a non-working day -> denied",
+    "input": "",
+    "expected": "Access denied",
+    "mode": "contains",
+    "overrides": {
+      "isEmployee": "True",
+      "isWorkingDay": "False",
+      "isGuest": "False",
+      "hasInvitation": "False"
+    }
+  },
+  {
+    "name": "Guest with invitation -> granted",
+    "input": "",
+    "expected": "Access granted",
+    "mode": "contains",
+    "overrides": {
+      "isEmployee": "False",
+      "isWorkingDay": "False",
+      "isGuest": "True",
+      "hasInvitation": "True"
+    }
+  },
+  {
+    "name": "Guest without invitation -> denied",
+    "input": "",
+    "expected": "Access denied",
+    "mode": "contains",
+    "overrides": {
+      "isEmployee": "False",
+      "isWorkingDay": "True",
+      "isGuest": "True",
+      "hasInvitation": "False"
+    }
+  },
+  {
+    "name": "Random stranger -> denied",
+    "input": "",
+    "expected": "Access denied",
+    "mode": "contains",
+    "overrides": {
+      "isEmployee": "False",
+      "isWorkingDay": "True",
+      "isGuest": "False",
+      "hasInvitation": "False"
+    }
+  }
+]

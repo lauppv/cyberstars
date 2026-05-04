@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Full output is 1-12, 14-16",
+    "input": "",
+    "expected": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n14\n15\n16",
+    "mode": "exact"
+  }
+]

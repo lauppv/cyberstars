@@ -1,0 +1,49 @@
+[
+  {
+    "name": "seconds = 100 -> onboard computers",
+    "input": "",
+    "expected": "Starting all onboard computers",
+    "mode": "contains",
+    "overrides": {
+      "int seconds": "100;"
+    }
+  },
+  {
+    "name": "seconds = 60 -> control tower",
+    "input": "",
+    "expected": "Checking connection with the control tower",
+    "mode": "contains",
+    "overrides": {
+      "int seconds": "60;"
+    }
+  },
+  {
+    "name": "seconds = 5, no error -> taking off",
+    "input": "",
+    "expected": "No error detected. Taking off...",
+    "mode": "contains",
+    "overrides": {
+      "int seconds": "5;",
+      "int errorDetected": "0;"
+    }
+  },
+  {
+    "name": "seconds = 5, error -> canceling",
+    "input": "",
+    "expected": "Error detected. Canceling the mission",
+    "mode": "contains",
+    "overrides": {
+      "int seconds": "5;",
+      "int errorDetected": "1;"
+    }
+  },
+  {
+    "name": "seconds = 42 -> no effect",
+    "input": "",
+    "expected": "42 seconds has no effect",
+    "mode": "contains",
+    "overrides": {
+      "int seconds": "42;"
+    }
+  }
+]

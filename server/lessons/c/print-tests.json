@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Prints 'Hello, CyberStars!'",
+    "input": "",
+    "expected": "Hello, CyberStars!",
+    "mode": "exact"
+  }
+]

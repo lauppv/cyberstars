@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Addition: 14 + 12 = 26",
+    "input": "",
+    "expected": "14 + 12 = 26",
+    "mode": "contains"
+  },
+  {
+    "name": "Subtraction: 10 - 3 = 7",
+    "input": "",
+    "expected": "10 - 3 = 7",
+    "mode": "contains"
+  },
+  {
+    "name": "Multiplication: 5 * 4 = 20",
+    "input": "",
+    "expected": "5 * 4 = 20",
+    "mode": "contains"
+  },
+  {
+    "name": "Division: 10 / 2 = 5",
+    "input": "",
+    "expected": "10 / 2 = 5",
+    "mode": "contains"
+  },
+  {
+    "name": "Invalid operator",
+    "input": "",
+    "expected": "Invalid operator",
+    "mode": "contains"
+  }
+]

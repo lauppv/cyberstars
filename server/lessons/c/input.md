@@ -1,0 +1,74 @@
+So far, all the values in our programs were hardcoded. Time to let the **user** type something. In C, we read input with **scanf**
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int age;
+
+    printf("Your age: ");
+    scanf("%d", &age);
+
+    printf("Next year you will be %d\n", age + 1);
+    return 0;
+}
+```
+**Run** it, type a number, press **Enter**
+
+Two things to notice
+
+- **scanf** is the partner of **printf**: instead of writing output, it reads input
+- The first argument is a **format specifier**, exactly like in **printf**. **%d** for an int, **%f** for a float/double, **%s** for a string, **%c** for a single char
+- The second argument is **&age** with a strange **&** in front
+
+---
+
+Why the **&**? In C, **&variable** means "the **address** of this variable". When we call **scanf**, we’re telling it: "here’s where in memory you should write the value the user types". Without the **&**, **scanf** would receive a copy of the variable’s value (which is meaningless before reading), and your program might crash or silently corrupt memory
+
+Don’t worry too much about it for now. The rule is simple
+- **printf** uses just the variable
+- **scanf** uses **&variable** (almost always)
+
+There is one exception: when reading a string (a **char[]**), you don’t use **&**. We’ll cover that in the strings lesson
+
+---
+
+To read a **double**
+```c
+double height;
+scanf("%lf", &height);
+```
+**Important**: for **scanf**, doubles use **%lf** (l for "long", f for "float"), not **%f**. **%f** in **scanf** would read a regular **float** instead. This is a small **C quirk** that catches many beginners. (For **printf**, both **%f** and **%lf** work the same on doubles. Inconsistent? Yes :))
+
+---
+
+Reading multiple values in one **scanf** call
+```c
+int a, b;
+scanf("%d %d", &a, &b);
+printf("Sum: %d\n", a + b);
+```
+The user types two numbers separated by space (or Enter), **scanf** reads both. Notice we still use **&** in front of each variable
+
+---
+
+Write a program that asks for a **name** (a single word, no spaces) and an **age** (an int), then displays
+```text
+Hello <name>, you are <age> years old. Next year you will be <age + 1>
+```
+
+Use a **char** array of size **64** for the name
+```c
+char name[64];
+scanf("%s", name);   // no & for strings — we'll explain in the strings lesson
+```
+
+If the user types
+```text
+Cortez
+60
+```
+the program should display
+```text
+Hello Cortez, you are 60 years old. Next year you will be 61
+```

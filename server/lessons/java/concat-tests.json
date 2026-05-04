@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Quincy / 16 / 18",
+    "input": "",
+    "expected": "Hello, Quincy! I'm sorry but the minimum age is 18. You are 16 years old",
+    "mode": "contains"
+  }
+]

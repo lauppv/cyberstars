@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Line 0 is uppercase",
+    "input": "",
+    "expected": "LANCE VANCE",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Line 1 is lowercase",
+    "input": "",
+    "expected": "lance vance",
+    "mode": "line",
+    "line": 1
+  },
+  {
+    "name": "Line 2 is length 11",
+    "input": "",
+    "expected": "11",
+    "mode": "line",
+    "line": 2
+  },
+  {
+    "name": "Line 3 is first letter 'l'",
+    "input": "",
+    "expected": "l",
+    "mode": "line",
+    "line": 3
+  },
+  {
+    "name": "Line 4 is 'lance'",
+    "input": "",
+    "expected": "lance",
+    "mode": "line",
+    "line": 4
+  },
+  {
+    "name": "Line 5 is 'vance'",
+    "input": "",
+    "expected": "vance",
+    "mode": "line",
+    "line": 5
+  }
+]

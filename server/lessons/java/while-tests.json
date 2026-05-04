@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Displays 'I am online'",
+    "input": "",
+    "expected": "I am online",
+    "mode": "contains"
+  },
+  {
+    "name": "Displays 'Now I am offline'",
+    "input": "",
+    "expected": "Now I am offline",
+    "mode": "contains"
+  },
+  {
+    "name": "Full output is correct",
+    "input": "",
+    "expected": "I am online\nNow I am offline",
+    "mode": "exact"
+  }
+]

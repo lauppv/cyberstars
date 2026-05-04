@@ -1,41 +1,42 @@
-import { exec } from "child_process";
+import { execFile } from "child_process";
 import path from "path";
+import os from "os";
 import crypto from "crypto";
 import fs from "fs/promises";
 import { config } from "../config/index.js";
+import { getRuntime } from "../runtimes/registry.js";
+import type { LanguageRuntime } from "../runtimes/types.js";
 
 const PISTON_URL = "https://emkc.org/api/v2/piston/execute";
 
-const pistonVersions: Record<string, string> = {
-  python: "3.10.0",
-  c: "10.2.0",
-  java: "15.0.2",
-};
+// Limite per-execuție. Dacă vreun runner cade pe sistem fără cgroup-memory,
+// suprascrie din env (ex. CODE_RUN_MEMORY=) ca string gol
+const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? "128m";
+const RUN_PIDS = process.env.CODE_RUN_PIDS ?? "64";
+const RUN_DIR = process.env.CODE_RUN_DIR ?? path.join(os.tmpdir(), "cyberstars-runs");
 
 interface PistonResponse {
   run?: { output?: string };
 }
 
 export async function execute(code: string, language: string, stdin = ""): Promise<string> {
-  const lang = language.toLowerCase();
+  const runtime = getRuntime(language);
+  if (!runtime) return "Language not supported.";
 
   if (config.isProduction) {
-    return executePiston(code, lang, stdin);
+    return executePiston(runtime, code, stdin);
   }
-  return executeDocker(code, lang, stdin);
+  return executeDocker(runtime, code, stdin);
 }
 
-async function executePiston(code: string, lang: string, stdin = ""): Promise<string> {
-  const version = pistonVersions[lang];
-  if (!version) return "Language not supported.";
-
+async function executePiston(runtime: LanguageRuntime, code: string, stdin: string): Promise<string> {
   try {
     const response = await fetch(PISTON_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        language: lang,
-        version,
+        language: runtime.name,
+        version: runtime.pistonVersion,
         files: [{ name: "main", content: code }],
         stdin,
         args: [],
@@ -53,51 +54,46 @@ async function executePiston(code: string, lang: string, stdin = ""): Promise<st
   }
 }
 
-async function executeDocker(code: string, lang: string, stdin = ""): Promise<string> {
+async function executeDocker(runtime: LanguageRuntime, code: string, stdin: string): Promise<string> {
   const runId = crypto.randomUUID();
-  const runtimePath = path.join(process.cwd(), "server", "runtimes", lang, runId);
-  await fs.mkdir(runtimePath, { recursive: true });
+  const hostDir = path.join(RUN_DIR, runId);
+  await fs.mkdir(hostDir, { recursive: true });
 
-  const outputFile = path.join(runtimePath, "output.txt");
-  const stdinFile = path.join(runtimePath, "stdin.txt");
-  await fs.writeFile(outputFile, "", "utf-8");
-  await fs.writeFile(stdinFile, stdin, "utf-8");
+  const outputPath = path.join(hostDir, "output.txt");
 
-  let dockerCmd: string;
+  try {
+    await Promise.all([
+      fs.writeFile(path.join(hostDir, runtime.sourceFile), code, "utf-8"),
+      fs.writeFile(path.join(hostDir, "stdin.txt"), stdin, "utf-8"),
+      fs.writeFile(outputPath, "", "utf-8"),
+    ]);
 
-  switch (lang) {
-    case "python": {
-      const srcFile = path.join(runtimePath, "user_code.py");
-      await fs.writeFile(srcFile, code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app python-runtime sh -c "timeout 5 python3 /usr/src/app/user_code.py < /usr/src/app/stdin.txt > /usr/src/app/output.txt 2>&1"`;
-      break;
-    }
-    case "c": {
-      const srcFile = path.join(runtimePath, "user_code.c");
-      await fs.writeFile(srcFile, code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app gcc:12.2.0 bash -c "timeout 5 bash -c 'gcc /usr/src/app/user_code.c -o /usr/src/app/a.out > /usr/src/app/output.txt 2>&1 && /usr/src/app/a.out >> /usr/src/app/output.txt 2>&1'"`;
-      break;
-    }
-    case "java": {
-      const srcFile = path.join(runtimePath, "Main.java");
-      await fs.writeFile(srcFile, code, "utf-8");
-      dockerCmd = `docker run --rm -v ${runtimePath}:/usr/src/app openjdk:20 bash -c "timeout 5 bash -c 'javac /usr/src/app/Main.java -d /usr/src/app > /usr/src/app/output.txt 2>&1 && java -cp /usr/src/app Main >> /usr/src/app/output.txt 2>&1'"`;
-      break;
-    }
-    default:
-      return "Language not supported.";
+    const dockerArgs = [
+      "run", "--rm",
+      "--network=none",
+      `--memory=${RUN_MEMORY}`,
+      `--pids-limit=${RUN_PIDS}`,
+      "-v", `${hostDir}:/work`,
+      "-w", "/work",
+      runtime.image,
+      "sh", "-c", runtime.innerCmd,
+    ];
+
+    await runDocker(dockerArgs);
+
+    const output = await fs.readFile(outputPath, "utf-8");
+    return output.trim() || "No output.";
+  } catch {
+    return "Error reading output file.";
+  } finally {
+    fs.rm(hostDir, { recursive: true, force: true }).catch(() => {});
   }
+}
 
-  return new Promise<string>((resolve) => {
-    exec(dockerCmd, { maxBuffer: 1024 * 1024 }, async () => {
-      try {
-        const output = await fs.readFile(outputFile, "utf-8");
-        resolve(output.trim() || "No output.");
-      } catch {
-        resolve("Error reading output file.");
-      } finally {
-        fs.rm(runtimePath, { recursive: true, force: true }).catch(() => {});
-      }
-    });
+function runDocker(args: string[]): Promise<void> {
+  return new Promise((resolve) => {
+    // Nu ne pasă de exit code (greșelile user-ului ajung în output.txt prin redirecție);
+    // ne pasă doar să nu blocăm procesul Node
+    execFile("docker", args, { maxBuffer: 1024 * 1024 }, () => resolve());
   });
 }
