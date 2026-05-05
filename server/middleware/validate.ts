@@ -9,8 +9,9 @@ export function validateBody<T>(schema: ZodType<T>) {
       next();
     } catch (err) {
       if (err instanceof ZodError) {
+        const first = err.issues[0];
         res.status(400).json({
-          error: "Invalid request body",
+          error: first?.message ?? "Invalid request body",
           issues: err.issues.map(i => ({ path: i.path.join("."), message: i.message })),
         });
         return;

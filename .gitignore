@@ -10,6 +10,7 @@ lerna-debug.log*
 
 node_modules
 .env
+TODO.txt
 
 back/runtimes/python/output.txt
 back/runtimes/c/a.out

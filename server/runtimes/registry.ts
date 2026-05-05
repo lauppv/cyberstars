@@ -7,6 +7,7 @@ import { javaRuntime } from "./java.js";
 // un fișier <lang>.ts și îl înregistrezi aici, restul codului nu se atinge
 const runtimes: Record<string, LanguageRuntime> = {
   python: pythonRuntime,
+  algo: pythonRuntime, // Algorithms course runs Python under the hood
   c: cRuntime,
   java: javaRuntime,
 };

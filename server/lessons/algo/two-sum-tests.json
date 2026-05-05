@@ -1,0 +1,6 @@
+[
+  { "name": "classic example", "input": "2 7 11 15\n9", "expected": "0 1", "mode": "exact" },
+  { "name": "indices in middle", "input": "3 2 4\n6", "expected": "1 2", "mode": "exact" },
+  { "name": "negative target", "input": "-3 4 3 90\n0", "expected": "0 2", "mode": "exact" },
+  { "name": "two-element array", "input": "1 5\n6", "expected": "0 1", "mode": "exact" }
+]

@@ -1,0 +1,7 @@
+[
+  { "name": "listen / silent", "input": "listen\nsilent", "expected": "true", "mode": "exact" },
+  { "name": "hello / world", "input": "hello\nworld", "expected": "false", "mode": "exact" },
+  { "name": "case + spaces", "input": "Dormitory\nDirty room", "expected": "true", "mode": "exact" },
+  { "name": "different lengths", "input": "abc\nabcd", "expected": "false", "mode": "exact" },
+  { "name": "same string", "input": "test\ntest", "expected": "true", "mode": "exact" }
+]

@@ -4,6 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { AuthPage } from "./pages/AuthPage";
 import { CurriculumPage } from "./pages/CurriculumPage";
 import { LessonPage } from "./pages/LessonPage";
+import { ProfilePage } from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/getstarted" element={<AuthPage />} />
           <Route path="/curriculum" element={<CurriculumPage />} />
           <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </AuthProvider>
     </HashRouter>

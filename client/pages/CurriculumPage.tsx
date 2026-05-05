@@ -14,6 +14,7 @@ const COURSE_ICON: Record<string, string> = {
   python: "🐍",
   java: "☕",
   c: "⚙️",
+  algo: "🧩",
 };
 
 export function CurriculumPage() {

@@ -6,6 +6,7 @@ const courses = [
   { key: "python", title: "Python", description: "New to programming? We highly recommend Python", sortOrder: 1 },
   { key: "c", title: "C", description: "Understanding low-level programming", sortOrder: 2 },
   { key: "java", title: "Java", description: "Object Oriented Programming", sortOrder: 3 },
+  { key: "algo", title: "Algorithms", description: "Practice with classic LeetCode-style problems — strings, sorting, hash maps", sortOrder: 4 },
 ];
 
 const lessons = [
@@ -60,6 +61,13 @@ const lessons = [
   { courseKey: "java", slug: "arrays", title: "Arrays", sortOrder: 15, hasCodeFile: true },
   { courseKey: "java", slug: "arrays-for", title: "Looping over Arrays", sortOrder: 16, hasCodeFile: true },
   { courseKey: "java", slug: "break-continue", title: "Break and Continue", sortOrder: 17, hasCodeFile: true },
+
+  { courseKey: "algo", slug: "reverse-string", title: "Easy · Reverse a String", sortOrder: 1, hasCodeFile: true },
+  { courseKey: "algo", slug: "sum-of-digits", title: "Easy · Sum of Digits", sortOrder: 2, hasCodeFile: true },
+  { courseKey: "algo", slug: "count-vowels", title: "Medium · Count Vowels", sortOrder: 3, hasCodeFile: true },
+  { courseKey: "algo", slug: "bubble-sort", title: "Medium · Sort the Numbers", sortOrder: 4, hasCodeFile: true },
+  { courseKey: "algo", slug: "two-sum", title: "Hard · Two Sum", sortOrder: 5, hasCodeFile: true },
+  { courseKey: "algo", slug: "anagram", title: "Hard · Anagram Check", sortOrder: 6, hasCodeFile: true },
 ];
 
 async function main() {

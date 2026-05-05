@@ -44,8 +44,16 @@ export function AuthPage() {
       <Topbar />
 
       <main className="flex-1 flex items-center justify-center px-6 py-12">
-        <div className="bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] p-8 w-full max-w-md">
-          <div className="text-center mb-6">
+        <div
+          className="bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] p-8 w-full max-w-md relative overflow-hidden"
+          style={{ boxShadow: "0 0 40px var(--accent-glow)" }}
+        >
+          <div
+            className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-25 blur-3xl pointer-events-none"
+            style={{ background: "var(--accent)" }}
+          />
+
+          <div className="text-center mb-6 relative">
             <span
               className="inline-block text-3xl text-[var(--accent)] mb-3"
               style={{ filter: "drop-shadow(0 0 6px var(--accent-glow))" }}
@@ -60,7 +68,30 @@ export function AuthPage() {
             </p>
           </div>
 
-          <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+          <div className="flex p-1 mb-5 bg-[var(--bg3)] rounded-[var(--radius-sm)] relative">
+            <button
+              type="button"
+              onClick={() => { setIsLogin(true); setError(""); }}
+              className={`flex-1 py-1.5 text-[13px] font-semibold rounded-[var(--radius-sm)] transition cursor-pointer bg-transparent border-none ${
+                isLogin ? "bg-[var(--bg2)] text-[var(--text)] shadow-sm" : "text-[var(--text3)] hover:text-[var(--text2)]"
+              }`}
+              style={isLogin ? { background: "var(--bg2)" } : undefined}
+            >
+              Sign in
+            </button>
+            <button
+              type="button"
+              onClick={() => { setIsLogin(false); setError(""); }}
+              className={`flex-1 py-1.5 text-[13px] font-semibold rounded-[var(--radius-sm)] transition cursor-pointer bg-transparent border-none ${
+                !isLogin ? "text-[var(--text)]" : "text-[var(--text3)] hover:text-[var(--text2)]"
+              }`}
+              style={!isLogin ? { background: "var(--bg2)" } : undefined}
+            >
+              Sign up
+            </button>
+          </div>
+
+          <form className="flex flex-col gap-3 relative" onSubmit={handleSubmit}>
             {!isLogin && (
               <Input
                 type="text"
@@ -77,13 +108,20 @@ export function AuthPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Input
-              type="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div>
+              <Input
+                type="password"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {!isLogin && (
+                <p className="text-[11px] text-[var(--text3)] mt-1.5 ml-1">
+                  Must be at least 6 characters.
+                </p>
+              )}
+            </div>
 
             <Button type="submit" disabled={loading} className="w-full mt-2">
               {loading ? "Processing..." : isLogin ? "Sign in" : "Create account"}
@@ -91,14 +129,14 @@ export function AuthPage() {
           </form>
 
           {error && (
-            <p className="text-[var(--error)] mt-3 text-center text-sm font-semibold">{error}</p>
+            <p className="text-[var(--error)] mt-3 text-center text-sm font-semibold relative">{error}</p>
           )}
 
-          <p className="text-[var(--text2)] text-center mt-5 text-sm">
+          <p className="text-[var(--text2)] text-center mt-5 text-sm relative">
             {isLogin ? "Don't have an account?" : "Already have an account?"}
             <button
               className="text-[var(--accent)] font-semibold ml-2 hover:underline cursor-pointer bg-transparent border-none"
-              onClick={() => setIsLogin(!isLogin)}
+              onClick={() => { setIsLogin(!isLogin); setError(""); }}
             >
               {isLogin ? "Sign up" : "Sign in"}
             </button>

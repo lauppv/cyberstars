@@ -21,6 +21,7 @@ export interface Gamification {
   xpForNextLevel: number;
   streak: number;
   badges: BadgeDef[];
+  perCourse: Record<string, { done: number; total: number }>;
   isLoading: boolean;
 }
 
@@ -97,6 +98,11 @@ export function useGamification(): Gamification {
     { icon: "🌟", label: "Perfect Score", earned: aCourseFullyComplete },
   ];
 
+  const perCourse: Record<string, { done: number; total: number }> = {};
+  for (const k of Object.keys(perCourseTotal)) {
+    perCourse[k] = { done: perCourseDone[k] ?? 0, total: perCourseTotal[k] };
+  }
+
   return {
     totalCompleted: completed,
     totalLessons: total,
@@ -106,6 +112,7 @@ export function useGamification(): Gamification {
     xpForNextLevel,
     streak: 1,
     badges,
+    perCourse,
     isLoading,
   };
 }

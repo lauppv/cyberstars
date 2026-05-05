@@ -18,8 +18,50 @@ import { MarkdownRenderer } from "../components/markdown/MarkdownRenderer";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import type { Course, LessonMeta } from "../../shared/lesson";
 
-const LANG_LABEL: Record<string, string> = { python: "Python 3", java: "Java", c: "C" };
-const LANG_DOT: Record<string, string> = { python: "#3572A5", java: "#b07219", c: "#555555" };
+const LANG_LABEL: Record<string, string> = { python: "Python 3", java: "Java", c: "C", algo: "Python 3" };
+const LANG_DOT: Record<string, string> = { python: "#3572A5", java: "#b07219", c: "#555555", algo: "#6C5CE7" };
+
+function parseDifficulty(title: string): { difficulty: "Easy" | "Medium" | "Hard" | null; rest: string } {
+  const m = title.match(/^(Easy|Medium|Hard)\s*[·-]\s*(.+)$/i);
+  if (!m) return { difficulty: null, rest: title };
+  const d = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+  return { difficulty: d as "Easy" | "Medium" | "Hard", rest: m[2] };
+}
+
+const DIFFICULTY_COLOR: Record<string, string> = {
+  Easy: "var(--success)",
+  Medium: "var(--warning)",
+  Hard: "var(--error)",
+};
+
+const AI_HINTS: Record<string, string[]> = {
+  python: [
+    "💡 Try using a for loop with range() to repeat an action multiple times. Example: for i in range(5) will loop 5 times!",
+    "💡 Remember: Python uses indentation (spaces) to group code blocks. Make sure your code inside if/for/while is indented!",
+    "💡 You can use f-strings to mix variables into text: print(f\"Hello {name}\")",
+  ],
+  java: [
+    "💡 Every Java program needs a main method: public static void main(String[] args). This is where your program starts!",
+    "💡 Don't forget semicolons at the end of each statement in Java — it's how Java knows where one instruction ends.",
+    "💡 Use System.out.println() to print output. The 'ln' adds a new line automatically!",
+  ],
+  c: [
+    "💡 In C, every program starts at main(). Don't forget to #include <stdio.h> for printf!",
+    "💡 C uses curly braces {} to group code blocks. Every opening brace needs a closing one!",
+    "💡 Remember: in C, you must declare variable types. Use int for whole numbers, float for decimals.",
+  ],
+  algo: [
+    "💡 Read input with input(). For multiple values on one line, try input().split().",
+    "💡 To reverse a string, you can use slicing: s[::-1].",
+    "💡 To sort, Python has sorted(list). For numeric strings, convert with int(x) first.",
+    "💡 Use a dictionary (hash map) to look up complements in O(1) — great for Two Sum.",
+  ],
+};
+
+function pickHint(lang: string): string {
+  const list = AI_HINTS[lang] ?? AI_HINTS.python;
+  return list[Math.floor(Math.random() * list.length)];
+}
 
 export function LessonPage() {
   const navigate = useNavigate();
@@ -37,6 +79,9 @@ export function LessonPage() {
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: 15 });
   const [showSaveToast, setShowSaveToast] = useState(false);
+  const [showAIHint, setShowAIHint] = useState(false);
+  const [aiHint, setAiHint] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
 
   const [editorWidth, setEditorWidth] = useState<number>(() => {
     const saved = typeof window !== "undefined" ? window.localStorage.getItem("editorWidth") : null;
@@ -134,6 +179,16 @@ export function LessonPage() {
     loadProgress();
   }, [submit, userCode, category, lesson, loadProgress]);
 
+  const handleHint = useCallback(() => {
+    setShowAIHint(true);
+    setAiLoading(true);
+    setAiHint("");
+    setTimeout(() => {
+      setAiHint(pickHint(category));
+      setAiLoading(false);
+    }, 900);
+  }, [category]);
+
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
       await saveCode(lesson, userCode);
@@ -187,20 +242,38 @@ export function LessonPage() {
           {/* Lesson content */}
           <div ref={contentRef} className="flex-1 overflow-y-auto bg-[var(--bg)]">
             <div className="max-w-3xl mx-auto px-9 py-8">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                  Lesson {currentIndex + 1} of {lessonList.length}
-                </span>
-                {lessonCompleted && (
-                  <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
-                    ✓ Completed
-                  </span>
-                )}
-              </div>
+              {(() => {
+                const { difficulty, rest } = parseDifficulty(title);
+                return (
+                  <>
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
+                        {category === "algo" ? "Problem" : "Lesson"} {currentIndex + 1} of {lessonList.length}
+                      </span>
+                      {difficulty && (
+                        <span
+                          className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-[1px]"
+                          style={{
+                            background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
+                            color: DIFFICULTY_COLOR[difficulty],
+                          }}
+                        >
+                          {difficulty}
+                        </span>
+                      )}
+                      {lessonCompleted && (
+                        <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
+                          ✓ Completed
+                        </span>
+                      )}
+                    </div>
 
-              <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
-                {title}
-              </h1>
+                    <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
+                      {rest}
+                    </h1>
+                  </>
+                );
+              })()}
 
               <div className="lesson-body">
                 <MarkdownRenderer content={content} />
@@ -255,6 +328,13 @@ export function LessonPage() {
                 >
                   ↺ Reset
                 </button>
+                <button
+                  onClick={handleHint}
+                  className="text-[12px] px-2.5 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text2)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
+                  title="Get an AI hint"
+                >
+                  ✨ Hint
+                </button>
                 <RunButton onClick={handleRun} isRunning={isRunning} />
               </div>
             </div>
@@ -267,6 +347,38 @@ export function LessonPage() {
                 fontSize="16px"
               />
             </div>
+
+            {showAIHint && (
+              <div
+                className="border-t border-[var(--accent)]/40 px-4 py-3 fade-in-up"
+                style={{
+                  background: "linear-gradient(135deg, var(--accent-glow), transparent 60%), var(--bg2)",
+                }}
+              >
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--accent)]">
+                    <span>🤖</span> CyberBot
+                  </div>
+                  <button
+                    onClick={() => setShowAIHint(false)}
+                    className="text-[var(--text3)] hover:text-[var(--text)] text-[16px] leading-none w-5 h-5 flex items-center justify-center bg-transparent border-none cursor-pointer"
+                    aria-label="Close hint"
+                  >
+                    ×
+                  </button>
+                </div>
+                {aiLoading ? (
+                  <div className="text-[13px] text-[var(--text2)] flex items-center gap-1">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]" style={{ animation: "pulse-dot 1s infinite" }} />
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]" style={{ animation: "pulse-dot 1s infinite 0.15s" }} />
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]" style={{ animation: "pulse-dot 1s infinite 0.3s" }} />
+                    <span className="ml-2">Thinking...</span>
+                  </div>
+                ) : (
+                  <div className="text-[13px] text-[var(--text)] leading-relaxed">{aiHint}</div>
+                )}
+              </div>
+            )}
 
             <div className="p-3 border-t border-[var(--border)] bg-[var(--bg2)]">
               <div className="flex gap-2 mb-3 items-center flex-wrap">
