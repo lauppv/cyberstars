@@ -19,14 +19,45 @@ interface PistonResponse {
   run?: { output?: string };
 }
 
+function wrapIfNeeded(code: string, language: string): string {
+  if (language === "c" && !code.includes("main(")) {
+    const needsStdio = !code.includes("#include <stdio.h>");
+    const needsStdlib = !code.includes("#include <stdlib.h>");
+    const needsString = !code.includes("#include <string.h>");
+    return [
+      needsStdio ? "#include <stdio.h>" : "",
+      needsStdlib ? "#include <stdlib.h>" : "",
+      needsString ? "#include <string.h>" : "",
+      "int main(void) {",
+      code,
+      "return 0;",
+      "}",
+    ].filter(Boolean).join("\n");
+  }
+
+  if (language === "java" && !code.includes("class ")) {
+    return [
+      "public class Main {",
+      "    public static void main(String[] args) {",
+      code,
+      "    }",
+      "}",
+    ].join("\n");
+  }
+
+  return code;
+}
+
 export async function execute(code: string, language: string, stdin = ""): Promise<string> {
   const runtime = getRuntime(language);
   if (!runtime) return "Language not supported.";
 
+  const wrapped = wrapIfNeeded(code, language);
+
   if (config.isProduction) {
-    return executePiston(runtime, code, stdin);
+    return executePiston(runtime, wrapped, stdin);
   }
-  return executeDocker(runtime, code, stdin);
+  return executeDocker(runtime, wrapped, stdin);
 }
 
 async function executePiston(runtime: LanguageRuntime, code: string, stdin: string): Promise<string> {

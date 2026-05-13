@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchCurriculum } from "../services/lessonService";
 import * as progressService from "../services/progressService";
 import { useAuth } from "../context/AuthContext";
@@ -23,6 +23,7 @@ export interface Gamification {
   badges: BadgeDef[];
   perCourse: Record<string, { done: number; total: number }>;
   isLoading: boolean;
+  refresh: () => void;
 }
 
 export function useGamification(): Gamification {
@@ -32,6 +33,9 @@ export function useGamification(): Gamification {
   const [perCourseDone, setPerCourseDone] = useState<Record<string, number>>({});
   const [perCourseTotal, setPerCourseTotal] = useState<Record<string, number>>({});
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const refresh = useCallback(() => setRefreshKey((k) => k + 1), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -80,7 +84,7 @@ export function useGamification(): Gamification {
       }
     })();
     return () => { cancelled = true; };
-  }, [isLoggedIn]);
+  }, [isLoggedIn, refreshKey]);
 
   const xp = completed * XP_PER_LESSON;
   const level = Math.floor(xp / XP_PER_LEVEL) + 1;
@@ -114,5 +118,6 @@ export function useGamification(): Gamification {
     badges,
     perCourse,
     isLoading,
+    refresh,
   };
 }

@@ -72,6 +72,7 @@ export function LessonPage() {
   const { output, isRunning, isSubmitting, submitResult, execute, submit } = useCodeExecution();
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
+  const { refresh: refreshGamification } = gamification;
 
   const [userCode, setUserCode] = useState("");
   const [course, setCourse] = useState<Course | null>(null);
@@ -177,7 +178,8 @@ export function LessonPage() {
   const handleSubmit = useCallback(async () => {
     await submit(userCode, category, category, lesson);
     loadProgress();
-  }, [submit, userCode, category, lesson, loadProgress]);
+    refreshGamification();
+  }, [submit, userCode, category, lesson, loadProgress, refreshGamification]);
 
   const handleHint = useCallback(() => {
     setShowAIHint(true);
