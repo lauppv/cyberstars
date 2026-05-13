@@ -19,6 +19,12 @@ const COURSE_ICON: Record<string, string> = {
   c: "⚙️",
   algo: "🧩",
 };
+const COURSE_COLOR: Record<string, string> = {
+  python: "#3572A5",
+  java: "#b07219",
+  c: "#555555",
+  algo: "#6C5CE7",
+};
 
 export function ProfilePage() {
   const navigate = useNavigate();
@@ -45,68 +51,80 @@ export function ProfilePage() {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
       <Topbar streak={g.streak} />
-
       <XPBar current={g.xpInLevel} max={g.xpForNextLevel} level={g.level} />
 
-      <main className="flex-1 px-6 py-10">
-        <div className="max-w-5xl mx-auto">
+      <main className="flex-1 flex justify-center px-6 py-10">
+        <div className="w-full max-w-[520px]">
           {/* Header */}
-          <section className="flex items-center gap-5 mb-10">
+          <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
             <div
-              className="w-20 h-20 rounded-full bg-[var(--surface2)] flex items-center justify-center text-4xl border-2 border-[var(--accent)]"
-              style={{ boxShadow: "0 0 24px var(--accent-glow)" }}
+              className="w-16 h-16 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[32px] border-[3px] border-[var(--accent)] flex-shrink-0"
             >
               🚀
             </div>
-            <div>
-              <h1 className="text-[32px] font-bold tracking-[-0.5px]">{user.name}</h1>
-              <p className="text-[var(--text2)] text-sm">{user.email}</p>
-              <div className="flex items-center gap-2 mt-2 text-[12px]">
-                <span className="px-2 py-0.5 rounded-full bg-[var(--warning)]/15 text-[var(--warning)] font-semibold">
-                  ⭐ Level {g.level}
-                </span>
-                <span className="px-2 py-0.5 rounded-full bg-[var(--accent)]/15 text-[var(--accent)] font-semibold">
-                  {g.xp} XP
-                </span>
-              </div>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-[22px] font-bold tracking-[-0.3px]">{user.name}</h1>
+              <p className="text-[12px] text-[var(--text3)] mt-0.5">{user.email}</p>
             </div>
-          </section>
+          </div>
 
-          {/* Stat cards */}
-          <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <StatCard label="Lessons completed" value={`${g.totalCompleted} / ${g.totalLessons}`} icon="✅" />
-            <StatCard label="Current level" value={`Level ${g.level}`} icon="⭐" />
-            <StatCard label="Total XP" value={String(g.xp)} icon="✨" />
-            <StatCard label="Day streak" value={`${g.streak}`} icon="🔥" />
-          </section>
+          {/* Stat grid */}
+          <div className="grid grid-cols-3 border-b border-[var(--border)]">
+            <div className="py-4 text-center">
+              <div className="text-[24px] font-bold">{g.xp}</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Total XP</div>
+            </div>
+            <div className="py-4 text-center border-x border-[var(--border)]">
+              <div className="text-[24px] font-bold">{g.streak}</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Day Streak</div>
+            </div>
+            <div className="py-4 text-center">
+              <div className="text-[24px] font-bold">{g.badges.filter(b => b.earned).length}</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Badges</div>
+            </div>
+          </div>
 
-          {/* Per-course progress */}
-          <section className="mb-10">
-            <h2 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
-              Course progress
+          {/* XP section */}
+          <div className="py-4 border-b border-[var(--border)]">
+            <div className="flex justify-between text-[11px] mb-1.5">
+              <span className="text-[var(--warning)] font-semibold">⭐ Level {g.level}</span>
+              <span className="text-[var(--text3)]">{g.xpInLevel} / {g.xpForNextLevel} XP</span>
+            </div>
+            <div className="h-1.5 bg-[var(--bg3)] rounded-[3px] overflow-hidden">
+              <div
+                className="h-full rounded-[3px] transition-[width] duration-700"
+                style={{
+                  width: `${Math.min(100, (g.xpInLevel / g.xpForNextLevel) * 100)}%`,
+                  background: "linear-gradient(90deg, var(--accent), #a855f7)",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Courses */}
+          <div className="py-5 border-b border-[var(--border)]">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+              Courses
             </h2>
-            <div className="bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] divide-y divide-[var(--border)]">
-              {courseEntries.length === 0 && (
-                <div className="px-5 py-4 text-[var(--text3)] text-sm">No courses yet.</div>
-              )}
+            <div className="flex flex-col gap-2.5">
               {courseEntries.map(([key, { done, total }]) => {
                 const pct = total > 0 ? (done / total) * 100 : 0;
+                const color = COURSE_COLOR[key] ?? "var(--accent)";
                 return (
-                  <div key={key} className="px-5 py-4 flex items-center gap-4">
-                    <span className="text-2xl">{COURSE_ICON[key] ?? "📘"}</span>
+                  <div
+                    key={key}
+                    className="flex items-center gap-3 p-3 bg-[var(--surface)] rounded-[var(--radius-sm)] border border-[var(--border)]"
+                  >
+                    <span className="text-xl">{COURSE_ICON[key] ?? "📘"}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="flex justify-between text-[13px] mb-1.5">
-                        <span className="font-semibold text-[var(--text)]">
-                          {COURSE_LABEL[key] ?? key}
-                        </span>
-                        <span className="text-[var(--text3)]">
-                          {done} / {total} · {Math.round(pct)}%
-                        </span>
+                      <div className="text-[13px] font-semibold">{COURSE_LABEL[key] ?? key}</div>
+                      <div className="text-[11px] text-[var(--text3)] mt-0.5">
+                        {done} / {total} lessons
                       </div>
-                      <div className="h-1.5 bg-[var(--bg3)] rounded-[3px] overflow-hidden">
+                      <div className="h-1 bg-[var(--bg3)] rounded-[2px] mt-1 overflow-hidden">
                         <div
-                          className="h-full bg-[var(--success)] rounded-[3px] transition-[width] duration-500"
-                          style={{ width: `${pct}%` }}
+                          className="h-full rounded-[2px] transition-[width] duration-500"
+                          style={{ width: `${pct}%`, background: color }}
                         />
                       </div>
                     </div>
@@ -114,33 +132,21 @@ export function ProfilePage() {
                 );
               })}
             </div>
-          </section>
+          </div>
 
           {/* Badges */}
-          <section>
-            <h2 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
+          <div className="py-5">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
               Badges
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
               {g.badges.map((b) => (
                 <Badge key={b.label} icon={b.icon} label={b.label} earned={b.earned} />
               ))}
             </div>
-          </section>
+          </div>
         </div>
       </main>
-    </div>
-  );
-}
-
-function StatCard({ label, value, icon }: { label: string; value: string; icon: string }) {
-  return (
-    <div className="bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] p-4">
-      <div className="text-2xl mb-1">{icon}</div>
-      <div className="text-[11px] uppercase tracking-[1px] text-[var(--text3)] font-semibold mb-0.5">
-        {label}
-      </div>
-      <div className="text-[18px] font-bold text-[var(--text)]">{value}</div>
     </div>
   );
 }

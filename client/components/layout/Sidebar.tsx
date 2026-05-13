@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Badge } from "../gamification/Badge";
 import type { LessonMeta } from "../../../shared/lesson";
-import type { BadgeDef } from "../../hooks/useGamification";
 
 interface SidebarProps {
   courseTitle: string;
@@ -9,7 +7,6 @@ interface SidebarProps {
   lessons: LessonMeta[];
   currentSlug: string;
   completedSlugs: Set<string>;
-  badges: BadgeDef[];
 }
 
 export function Sidebar({
@@ -18,7 +15,6 @@ export function Sidebar({
   lessons,
   currentSlug,
   completedSlugs,
-  badges,
 }: SidebarProps) {
   const navigate = useNavigate();
   const completedCount = lessons.filter((l) => completedSlugs.has(l.slug)).length;
@@ -26,7 +22,7 @@ export function Sidebar({
   const pct = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
 
   return (
-    <aside className="w-[260px] flex-shrink-0 bg-[var(--bg2)] border-r border-[var(--border)] flex flex-col overflow-hidden">
+    <aside className="w-[240px] flex-shrink-0 bg-[var(--bg2)] border-r border-[var(--border)] flex flex-col overflow-hidden">
       <div className="px-4 pt-4 pb-3 text-[11px] uppercase tracking-[1px] text-[var(--text3)] font-semibold">
         {courseTitle}
       </div>
@@ -78,16 +74,6 @@ export function Sidebar({
         </div>
       </div>
 
-      <div className="px-4 py-3 border-t border-[var(--border)]">
-        <div className="text-[11px] uppercase tracking-[1px] text-[var(--text3)] font-semibold mb-2.5">
-          Badges
-        </div>
-        <div className="grid grid-cols-2 gap-1.5">
-          {badges.map((b) => (
-            <Badge key={b.label} icon={b.icon} label={b.label} earned={b.earned} />
-          ))}
-        </div>
-      </div>
     </aside>
   );
 }

@@ -236,7 +236,6 @@ export function LessonPage() {
             lessons={lessonList}
             currentSlug={lesson}
             completedSlugs={completedSlugs}
-            badges={gamification.badges}
           />
         )}
 
