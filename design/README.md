@@ -15,10 +15,11 @@ The code execution in the prototype is **simulated** (regex-matched on `print()`
 
 ## Screens
 
-The platform has three main screens, navigable in this flow:
+The platform has five main screens, navigable in this flow:
 
 ```
-Auth (Login/Signup)  →  Dashboard  →  Lesson View
+Auth (Login/Signup)  →  Dashboard  →  Courses  →  Lesson View
+                             →  Challenges
 ```
 
 ### 1. Auth Page (`CyberStars Auth.html`)
@@ -41,10 +42,12 @@ Auth (Login/Signup)  →  Dashboard  →  Lesson View
 - **Footer link**: "Don't have an account? Sign up free" / "Already have an account? Log in" — toggles tab.
 - **Success state** (after signup): 🚀 icon + "Welcome to CyberStars!" + "Go to Dashboard →" button.
 
-**Code rain animation** (left panel decoration):
-- 6 columns of monospace code snippets (Python examples)
-- Each column animated with `@keyframes rain` translating from `-100%` to `200%` over 18-25s
-- 6% opacity, accent color, behind branding content
+**Background animation** (left panel decoration):
+- **Canvas starfield** — warp-drive effect with stars streaming radially outward from center
+- ~220 stars at varied colors (white, lavender, amber, blue tones)
+- Motion-blur trails for streaking effect; glow halos on near stars; subtle twinkle
+- SPEED constant `0.007` (per-frame z-decrement) — slow & contemplative
+- Deep space gradient background (`#1a0d3d` → `#0a0518` → `#000`) with pulsing accent glow behind brand content
 
 **Auth flow**:
 - Login → loading spinner (1.5s) → redirect to `Dashboard.html`
@@ -90,7 +93,70 @@ Auth (Login/Signup)  →  Dashboard  →  Lesson View
 
 ---
 
-### 3. Lesson View (`CyberStars Lesson View v2.html`)
+### 3. Courses (`CyberStars Courses.html`)
+
+**Purpose**: Catalog page where users browse all available courses and preview syllabuses before enrolling.
+
+**Layout**: Top-down, max-width 1040px
+1. Topbar (same as Dashboard)
+2. Page header: "Courses" + subtitle
+3. **Filter chips row**: pill-shaped buttons — All / Python / Java / C / Beginner / Intermediate / Advanced. Active chip uses accent background.
+4. **Course grid** (2 columns): Each card has:
+   - Top color banner strip (6px, course brand color)
+   - Icon (48px rounded, tinted bg) + name + level tag (color-coded: beginner=green, intermediate=amber, advanced=red)
+   - Description (2-3 lines)
+   - Stats row: lesson count, hours estimated, total XP
+   - Footer: progress bar + "Continue" button (if started) OR "View Syllabus →" button (if not)
+5. Card hover: lifts 2px, accent border, shadow
+
+**Syllabus Drawer** (slides in from right when clicking a card):
+- 440px wide, full-height
+- Header: course icon + name + meta (lessons / hours / XP) + close button
+- Description block
+- **Chapters list**: Numbered circles (or green ✓ if done) + chapter name + detail + XP reward per chapter
+- Footer: full-width "Start Course →" / "Continue Learning →" button (navigates to Lesson View)
+- Click outside drawer or × closes it
+- Animation: overlay fades in (200ms), drawer slides in from right (300ms cubic-bezier)
+
+**Course count**: 6 courses (2 per language) — Python Fundamentals/Intermediate, Java Basics/OOP, C Programming/Systems
+
+---
+
+### 4. Challenges (`CyberStars Challenges.html`)
+
+**Purpose**: LeetCode-style coding challenges by difficulty + category. Users solve problems and earn XP.
+
+**Layout**: Full viewport, three-section horizontal split
+1. **Topbar** (same as Dashboard, "Challenges" nav active)
+2. **Challenge list sidebar** (360px wide, left):
+   - Title "Challenges"
+   - **Category chips**: All / Arrays / Strings / Loops (small pill chips)
+   - **Difficulty chips**: All / Easy / Medium / Hard (color-coded: green/amber/red)
+   - **List of challenges**: Each item has:
+     - Status circle (E/M/H letter for difficulty, green ✓ if solved)
+     - Name + category tag
+     - "+XP" badge (or "Solved" if completed)
+   - Active challenge highlighted with accent bg + border
+3. **Main pane** (flex: 1, right):
+   - **Problem header**: difficulty pill + name + "+XP" badge
+   - **Split pane** (50/50):
+     - **Left**: Problem description with sections — Description (with bold/code formatting), Examples (input/output blocks in monospace), Constraints (bulleted list)
+     - **Right**: Code editor panel
+       - Toolbar: language badge + ✨ Hint + ▶ Run + Submit (green, primary)
+       - Editor with syntax highlighting (same as Lesson View)
+       - Bottom result panel with tabs: Output / Test Results
+       - Test Results show each test case with ✓/✗ icons
+
+**Submit Flow**:
+- Click Submit → 1.5s "Testing..." spinner
+- Test results appear (random pass/fail simulation)
+- If all pass: **Success modal** pops up — 🏆 + "Challenge Solved!" + "+XP earned" + "Next Challenge →" button
+
+**Challenge data**: 10 sample challenges — Two Sum, Reverse String, FizzBuzz, Palindrome Check, Max Subarray Sum, Valid Parentheses, Count Words, Matrix Spiral, Bubble Sort, Flatten Nested List. Difficulties: easy/medium/hard. Categories: arrays/strings/loops. Each has description, examples with explanations, constraints, starter code, test cases.
+
+---
+
+### 5. Lesson View (`CyberStars Lesson View v2.html`)
 
 **Purpose**: The core learning experience — read lesson content and write/run code side-by-side.
 
@@ -274,11 +340,11 @@ Auth (Login/Signup)  →  Dashboard  →  Lesson View
 ## Files in This Bundle
 | File | Purpose |
 |---|---|
-| `CyberStars Auth.html` | Auth page (login/signup) |
-| `CyberStars Dashboard.html` | Dashboard with welcome, courses, leaderboard, onboarding |
-| `CyberStars Lesson View v2.html` | Latest lesson view (XP bar 25%, badges in profile) |
-| `CyberStars Lesson View.html` | Earlier version of lesson view (kept for reference) |
-| `app.jsx` / `app-v2.jsx` | Lesson view App components |
-| `components.jsx` | CodeEditor, XPBar, StreakWidget, Badge, etc. |
+| `CyberStars Auth.html` | Auth page (login/signup) with starfield background |
+| `CyberStars Dashboard.html` | Dashboard with welcome, courses, leaderboard, onboarding tour |
+| `CyberStars Courses.html` | Course catalog with syllabus drawer |
+| `CyberStars Challenges.html` | Challenges with split editor view |
+| `CyberStars Lesson View v2.html` | Lesson view with profile modal |
+| `app-v2.jsx` / `components.jsx` / `tweaks-panel.jsx` | Lesson View support files |
 
-The latest/canonical lesson view is `CyberStars Lesson View v2.html`. Older `CyberStars Lesson View.html` is included for diff reference only.
+All pages navigate to each other via the topbar (Dashboard / Courses / Challenges). Start with `CyberStars Auth.html` to walk the full flow.

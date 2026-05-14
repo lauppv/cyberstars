@@ -225,13 +225,9 @@ function DashboardApp() {
           React.createElement('span', { className: 'logo-text' }, 'CyberStars')
         ),
         React.createElement('nav', { className: 'topbar-nav' },
-          ['Dashboard', 'Courses', 'Challenges'].map(item =>
-            React.createElement('button', {
-              key: item,
-              className: 'nav-item ' + (activeNav === item.toLowerCase() ? 'active' : ''),
-              onClick: () => setActiveNav(item.toLowerCase())
-            }, item)
-          )
+          React.createElement('a', { className: 'nav-item active', href: '#' }, 'Dashboard'),
+          React.createElement('a', { className: 'nav-item', href: 'CyberStars Courses.html' }, 'Courses'),
+          React.createElement('a', { className: 'nav-item', href: 'CyberStars Challenges.html' }, 'Challenges')
         )
       ),
       React.createElement('div', { className: 'topbar-right' },

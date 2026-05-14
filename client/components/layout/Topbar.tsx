@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { StreakWidget } from "../gamification/StreakWidget";
 
@@ -11,6 +11,12 @@ interface TopbarProps {
   streak?: number;
 }
 
+const NAV_ITEMS = [
+  { label: "Dashboard", path: "/" },
+  { label: "Courses", path: "/courses" },
+  { label: "Challenges", path: "/challenges" },
+];
+
 export function Topbar({
   breadcrumb,
   showSidebarToggle,
@@ -19,6 +25,7 @@ export function Topbar({
   streak = 1,
 }: TopbarProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isLoggedIn, user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -42,8 +49,8 @@ export function Topbar({
   }, [menuOpen]);
 
   return (
-    <header className="flex items-center justify-between px-5 h-[52px] bg-[var(--bg2)] border-b border-[var(--border)] flex-shrink-0">
-      <div className="flex items-center gap-4">
+    <header className="flex items-center justify-between px-7 h-14 bg-[var(--bg2)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
+      <div className="flex items-center gap-6">
         {showSidebarToggle && (
           <button
             onClick={onSidebarToggle}
@@ -58,41 +65,62 @@ export function Topbar({
           onClick={() => navigate("/")}
         >
           <span
-            className="text-xl text-[var(--accent)]"
-            style={{ filter: "drop-shadow(0 0 6px var(--accent-glow))" }}
+            className="text-[22px] text-[var(--accent)]"
+            style={{ filter: "drop-shadow(0 0 8px var(--accent-glow))" }}
           >
             ⬡
           </span>
-          <span className="font-bold text-base tracking-[-0.5px]">CyberStars</span>
+          <span className="font-bold text-[17px]" style={{ letterSpacing: "-0.5px" }}>
+            CyberStars
+          </span>
         </div>
-        {breadcrumb && (
-          <div className="flex items-center gap-2 text-[13px] text-[var(--text3)] ml-2">
+
+        {breadcrumb ? (
+          <div className="flex items-center gap-2 text-[13px] text-[var(--text3)]">
             {breadcrumb.course && <span className="text-[var(--text2)]">{breadcrumb.course}</span>}
             {breadcrumb.course && breadcrumb.lesson && <span className="opacity-40">/</span>}
             {breadcrumb.lesson && <span className="text-[var(--text)]">{breadcrumb.lesson}</span>}
           </div>
+        ) : (
+          <nav className="flex gap-1">
+            {NAV_ITEMS.map((item) => {
+              const isActive =
+                item.path === "/"
+                  ? location.pathname === "/"
+                  : location.pathname.startsWith(item.path);
+              return (
+                <button
+                  key={item.path}
+                  onClick={() => navigate(item.path)}
+                  className={`px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer border-none transition-all ${
+                    isActive
+                      ? "text-[var(--accent)] bg-[rgba(108,92,231,0.07)]"
+                      : "text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
         )}
       </div>
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4">
         {isLoggedIn && <StreakWidget days={streak} />}
 
         {isLoggedIn && user ? (
           <div className="relative" ref={menuRef}>
             <button
               onClick={() => setMenuOpen((v) => !v)}
-              className="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-transparent border border-transparent hover:border-[var(--border)] hover:bg-[var(--surface)] transition cursor-pointer"
+              className="flex items-center gap-2 px-2 py-1 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--surface)] transition cursor-pointer"
               aria-haspopup="menu"
               aria-expanded={menuOpen}
             >
-              <div
-                className="w-8 h-8 rounded-full bg-[var(--surface2)] flex items-center justify-center text-base border-2 border-[var(--accent)]"
-                title={user.name}
-              >
+              <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
                 🚀
               </div>
-              <span className="text-[13px] font-semibold">{user.name}</span>
-              <span className={`text-[10px] text-[var(--text3)] transition-transform ${menuOpen ? "rotate-180" : ""}`}>▼</span>
+              <span className="text-[13px] font-semibold text-[var(--text)]">{user.name}</span>
             </button>
 
             {menuOpen && (
@@ -118,7 +146,7 @@ export function Topbar({
                 </button>
                 <button
                   role="menuitem"
-                  onClick={() => { setMenuOpen(false); navigate("/curriculum"); }}
+                  onClick={() => { setMenuOpen(false); navigate("/courses"); }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
                   <span className="w-4 text-center">📚</span> My courses

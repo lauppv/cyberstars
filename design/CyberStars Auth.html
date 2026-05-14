@@ -14,28 +14,22 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .auth-page{height:100%;display:flex}
 
 /* Left panel — branding */
-.auth-brand{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px;background:linear-gradient(160deg,#0F0F14 0%,#1a1040 50%,#0F0F14 100%);position:relative;overflow:hidden}
-.auth-brand::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);top:30%;left:40%;transform:translate(-50%,-50%);pointer-events:none}
-.brand-content{position:relative;z-index:1;max-width:400px;text-align:center}
+.auth-brand{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px;background:radial-gradient(ellipse at 50% 50%,#1a0d3d 0%,#0a0518 55%,#000 100%);position:relative;overflow:hidden}
+.auth-brand::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:pulse-glow 8s ease-in-out infinite;z-index:1}
+@keyframes pulse-glow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:.9;transform:translate(-50%,-50%) scale(1.15)}}
+.starfield{position:absolute;inset:0;pointer-events:none;z-index:2}
+.brand-content{position:relative;z-index:4;max-width:400px;text-align:center}
 .brand-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px}
-.brand-logo-icon{font-size:40px;color:var(--accent);filter:drop-shadow(0 0 12px var(--accent-glow))}
+.brand-logo-icon{font-size:40px;color:var(--accent);filter:drop-shadow(0 0 16px var(--accent-glow))}
 .brand-logo-text{font-size:32px;font-weight:700;letter-spacing:-1px}
 .brand-tagline{font-size:18px;color:var(--text2);line-height:1.6;margin-bottom:40px}
 .brand-features{display:flex;flex-direction:column;gap:16px;text-align:left}
 .brand-feature{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text2)}
-.brand-feature-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.brand-feature-icon{width:36px;height:36px;border-radius:8px;background:rgba(34,34,46,.55);border:1px solid rgba(108,92,231,.35);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .brand-feature strong{color:var(--text)}
 
-/* Code rain decoration */
-.code-rain{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;opacity:.06;pointer-events:none;font-family:var(--mono);font-size:13px;color:var(--accent);line-height:1.8}
-.code-col{position:absolute;top:-20%;animation:rain 18s linear infinite;white-space:pre}
-.code-col:nth-child(1){left:5%;animation-duration:22s;animation-delay:0s}
-.code-col:nth-child(2){left:20%;animation-duration:18s;animation-delay:-4s}
-.code-col:nth-child(3){left:35%;animation-duration:25s;animation-delay:-8s}
-.code-col:nth-child(4){left:55%;animation-duration:20s;animation-delay:-2s}
-.code-col:nth-child(5){left:75%;animation-duration:23s;animation-delay:-6s}
-.code-col:nth-child(6){left:90%;animation-duration:19s;animation-delay:-10s}
-@keyframes rain{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
+/* Vignette — softens edges, keeps brand readable over starfield */
+.auth-brand::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at center,rgba(10,5,24,.55) 0%,transparent 75%);pointer-events:none;z-index:3}
 
 /* Right panel — form */
 .auth-form-panel{width:460px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:48px;background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto}
@@ -129,23 +123,108 @@ function AuthPage() {
     }, 1500);
   };
 
-  const codeSnippets = [
-    "def hello():\n  print(\"Hi!\")\n  return True\n\nfor i in range(5):\n  hello()\n\nx = 42\ny = x * 2",
-    "class Hero:\n  def __init__(self):\n    self.hp = 100\n    self.xp = 0\n\n  def level_up(self):\n    self.xp += 50",
-    "import math\n\ndef calc(n):\n  return math.sqrt(n)\n\nresult = calc(16)\nprint(result)\n\ndata = [1,2,3]",
-    "while True:\n  cmd = input()\n  if cmd == 'q':\n    break\n  process(cmd)\n\nprint(\"Done!\")",
-    "nums = [3,1,4,1,5]\nnums.sort()\n\nfor n in nums:\n  print(n)\n\ntotal = sum(nums)\navg = total / len(nums)",
-    "try:\n  f = open('data')\n  text = f.read()\nexcept:\n  print(\"Error\")\nfinally:\n  f.close()"
-  ];
+  // Starfield warp-drive canvas — stars stream outward from center
+  const canvasRef = React.useRef(null);
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, cx, cy;
+    const resize = () => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      w = canvas.width = rect.width * window.devicePixelRatio;
+      h = canvas.height = rect.height * window.devicePixelRatio;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      cx = w / 2; cy = h / 2;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const NUM_STARS = 220;
+    const SPEED = 0.007;
+    const COLORS = ['#FFFFFF', '#E8E8FF', '#C8B8FF', '#FFD8B8', '#B8E8FF'];
+    const stars = Array.from({ length: NUM_STARS }, () => ({
+      x: (Math.random() - 0.5) * 2,
+      y: (Math.random() - 0.5) * 2,
+      z: Math.random(),
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      twinkle: Math.random() * Math.PI * 2
+    }));
+
+    let rafId;
+    let lastT = performance.now();
+    const tick = (t) => {
+      const dt = Math.min(50, t - lastT);
+      lastT = t;
+      // trailing fade for motion blur effect
+      ctx.fillStyle = 'rgba(10, 5, 24, 0.28)';
+      ctx.fillRect(0, 0, w, h);
+      const maxR = Math.max(w, h) * 0.7;
+
+      for (const s of stars) {
+        s.z -= SPEED * (dt / 16);
+        if (s.z <= 0) {
+          s.x = (Math.random() - 0.5) * 2;
+          s.y = (Math.random() - 0.5) * 2;
+          s.z = 1;
+          s.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        }
+        const scale = 1 / s.z;
+        const px = cx + s.x * scale * maxR;
+        const py = cy + s.y * scale * maxR;
+        if (px < -50 || px > w + 50 || py < -50 || py > h + 50) continue;
+
+        // motion-blur trail — draw line from previous z to current z
+        const prevScale = 1 / Math.min(1, s.z + SPEED * 4);
+        const ppx = cx + s.x * prevScale * maxR;
+        const ppy = cy + s.y * prevScale * maxR;
+
+        const size = (1 - s.z) * 2.5 * window.devicePixelRatio;
+        const alpha = Math.min(1, (1 - s.z) * 1.5);
+        s.twinkle += 0.06;
+        const twink = 0.7 + Math.sin(s.twinkle) * 0.3;
+
+        // streak
+        ctx.strokeStyle = s.color;
+        ctx.globalAlpha = alpha * 0.55;
+        ctx.lineWidth = size * 0.7;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(ppx, ppy);
+        ctx.lineTo(px, py);
+        ctx.stroke();
+
+        // bright head
+        ctx.globalAlpha = alpha * twink;
+        ctx.fillStyle = s.color;
+        ctx.beginPath();
+        ctx.arc(px, py, size, 0, Math.PI * 2);
+        ctx.fill();
+
+        // glow halo for near stars
+        if (s.z < 0.4) {
+          ctx.globalAlpha = alpha * 0.25;
+          ctx.beginPath();
+          ctx.arc(px, py, size * 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
 
   return React.createElement('div', { className: 'auth-page' },
     /* Left brand panel */
     React.createElement('div', { className: 'auth-brand' },
-      React.createElement('div', { className: 'code-rain' },
-        codeSnippets.map((s, i) =>
-          React.createElement('div', { key: i, className: 'code-col' }, s)
-        )
-      ),
+      React.createElement('canvas', { ref: canvasRef, className: 'starfield' }),
       React.createElement('div', { className: 'brand-content' },
         React.createElement('div', { className: 'brand-logo' },
           React.createElement('span', { className: 'brand-logo-icon' }, '⬡'),

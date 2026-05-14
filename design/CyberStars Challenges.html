@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CyberStars — Challenges</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#6C5CE7;--accent-glow:#6C5CE733;--bg:#0F0F14;--bg2:#16161D;--bg3:#1E1E28;--surface:#22222E;--surface2:#2A2A38;--border:#2E2E3E;--text:#E8E8F0;--text2:#9999B0;--text3:#666680;--success:#00D68F;--warning:#FFAA00;--error:#FF6B6B;--font:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code',monospace;--radius:10px;--radius-sm:6px}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--text);overflow:hidden}
+#root{height:100%;display:flex;flex-direction:column}
+
+/* Topbar */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0;z-index:50}
+.topbar-left{display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text)}
+.logo-icon{font-size:22px;color:var(--accent);filter:drop-shadow(0 0 8px var(--accent-glow))}
+.logo-text{font-weight:700;font-size:17px;letter-spacing:-.5px}
+.topbar-nav{display:flex;gap:4px}
+.nav-item{padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border:none;background:none;font-family:var(--font);transition:all .15s;text-decoration:none}
+.nav-item:hover{color:var(--text);background:var(--surface)}
+.nav-item.active{color:var(--accent);background:rgba(108,92,231,.07)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.streak-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;background:var(--surface);border-radius:20px;border:1px solid var(--border);font-size:12px;font-weight:600}
+.user-btn{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 8px;border-radius:var(--radius-sm);border:none;background:none;color:var(--text);font-family:var(--font);transition:all .15s;text-decoration:none}
+.user-btn:hover{background:var(--surface)}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid var(--accent)}
+.user-name{font-size:13px;font-weight:600}
+
+/* Main layout */
+.challenges-layout{flex:1;display:flex;overflow:hidden}
+
+/* Left sidebar — challenge list */
+.challenge-sidebar{width:360px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sidebar-header{padding:20px 20px 16px}
+.sidebar-title{font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:12px}
+
+/* Category filters */
+.cat-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.cat-chip{padding:4px 12px;border-radius:14px;border:1px solid var(--border);background:none;color:var(--text3);font-family:var(--font);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s}
+.cat-chip:hover{border-color:var(--text3);color:var(--text)}
+.cat-chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Difficulty filters */
+.diff-filters{display:flex;gap:4px}
+.diff-chip{padding:4px 10px;border-radius:10px;border:none;background:var(--bg3);font-family:var(--font);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s}
+.diff-chip.easy{color:var(--success)}.diff-chip.easy.active{background:rgba(0,214,143,.15)}
+.diff-chip.medium{color:var(--warning)}.diff-chip.medium.active{background:rgba(255,170,0,.15)}
+.diff-chip.hard{color:var(--error)}.diff-chip.hard.active{background:rgba(255,107,107,.15)}
+.diff-chip.all{color:var(--text2)}.diff-chip.all.active{background:var(--surface2)}
+
+/* Challenge list */
+.challenge-list{flex:1;overflow-y:auto;padding:0 8px 12px}
+.challenge-list::-webkit-scrollbar{width:5px}
+.challenge-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.challenge-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;margin-bottom:2px}
+.challenge-item:hover{background:var(--surface)}
+.challenge-item.active{background:var(--accent)12;border:1px solid var(--accent)30}
+.challenge-item.solved{opacity:.7}
+.ch-status{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.ch-status.easy{background:rgba(0,214,143,.12);color:var(--success)}
+.ch-status.medium{background:rgba(255,170,0,.12);color:var(--warning)}
+.ch-status.hard{background:rgba(255,107,107,.12);color:var(--error)}
+.ch-status.solved{background:var(--success);color:#fff}
+.ch-text{flex:1;min-width:0}
+.ch-name{font-size:13px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-tags{display:flex;gap:4px;flex-wrap:wrap}
+.ch-tag{font-size:9px;padding:1px 6px;border-radius:6px;background:var(--bg3);color:var(--text3);font-weight:500}
+.ch-xp{font-size:11px;font-weight:600;color:var(--accent);flex-shrink:0}
+.ch-solved-badge{font-size:10px;color:var(--success);font-weight:600;flex-shrink:0}
+
+/* Right panel — problem + editor split */
+.challenge-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* Problem header */
+.problem-header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.problem-title-area{display:flex;align-items:center;gap:12px}
+.problem-diff{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px}
+.problem-diff.easy{background:rgba(0,214,143,.12);color:var(--success)}
+.problem-diff.medium{background:rgba(255,170,0,.12);color:var(--warning)}
+.problem-diff.hard{background:rgba(255,107,107,.12);color:var(--error)}
+.problem-name{font-size:17px;font-weight:700;letter-spacing:-.2px}
+.problem-xp{font-size:13px;font-weight:600;color:var(--accent)}
+
+/* Split pane */
+.split-pane{flex:1;display:flex;overflow:hidden}
+
+/* Problem description */
+.problem-desc{flex:1;overflow-y:auto;padding:24px;border-right:1px solid var(--border)}
+.problem-desc::-webkit-scrollbar{width:5px}
+.problem-desc::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.problem-section{margin-bottom:20px}
+.problem-section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:8px}
+.problem-text{font-size:14px;line-height:1.7;color:var(--text2)}
+.problem-text strong{color:var(--text)}
+.problem-text code{font-family:var(--mono);font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;color:var(--accent)}
+
+/* Examples */
+.example-block{background:var(--bg3);border-radius:var(--radius-sm);padding:12px 14px;margin:10px 0;font-family:var(--mono);font-size:12px;line-height:1.6}
+.example-label{font-family:var(--font);font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.example-io{color:var(--text2)}
+.example-io strong{color:var(--success)}
+
+/* Constraints */
+.constraint-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.constraint-list li{font-size:12px;color:var(--text2);padding-left:14px;position:relative}
+.constraint-list li::before{content:'•';position:absolute;left:0;color:var(--accent)}
+
+/* Editor panel */
+.editor-panel{flex:1;display:flex;flex-direction:column;min-width:0}
+.editor-toolbar{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:var(--bg3);border-bottom:1px solid var(--border);flex-shrink:0}
+.editor-lang{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--text2)}
+.lang-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.editor-btns{display:flex;gap:6px}
+.btn-hint,.btn-run,.btn-submit{padding:5px 12px;border-radius:var(--radius-sm);border:none;font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .15s}
+.btn-hint{background:var(--surface);color:var(--text2);border:1px solid var(--border)}
+.btn-hint:hover{color:var(--accent);border-color:var(--accent)}
+.btn-run{background:var(--surface2);color:var(--text)}
+.btn-run:hover{background:var(--surface)}
+.btn-submit{background:var(--success);color:#000}
+.btn-submit:hover{filter:brightness(1.1)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+
+/* Code area */
+.editor-body{flex:1;display:flex;overflow:hidden;background:#0D1117;position:relative;min-height:0}
+.line-numbers{padding:12px 0;width:36px;flex-shrink:0;text-align:right;background:#0D111780;border-right:1px solid #1E2430}
+.line-num{padding:0 6px;font-family:var(--mono);font-size:12px;line-height:1.65;color:#444D60;user-select:none}
+.code-area{flex:1;position:relative;overflow:auto}
+.code-highlight,.code-textarea{position:absolute;top:0;left:0;width:100%;height:100%;padding:12px;font-family:var(--mono);font-size:12px;line-height:1.65;tab-size:4;white-space:pre;overflow:auto}
+.code-highlight{color:var(--text);pointer-events:none;z-index:1}
+.code-textarea{color:transparent;caret-color:var(--text);background:transparent;border:none;outline:none;resize:none;z-index:2;-webkit-text-fill-color:transparent}
+.syn-kw{color:#FF79C6}.syn-str{color:#F1FA8C}.syn-num{color:#BD93F9}.syn-cmt{color:#6272A4;font-style:italic}
+
+/* Output / Results */
+.result-panel{border-top:1px solid var(--border);flex-shrink:0;max-height:160px;overflow-y:auto;background:#0A0E14}
+.result-tabs{display:flex;border-bottom:1px solid var(--border)}
+.result-tab{padding:7px 14px;font-size:11px;font-weight:600;color:var(--text3);cursor:pointer;border:none;background:none;font-family:var(--font);transition:all .15s}
+.result-tab.active{color:var(--text);box-shadow:inset 0 -2px 0 var(--accent)}
+.result-content{padding:10px 14px;font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--success);white-space:pre-wrap}
+.result-content.error{color:var(--error)}
+.result-content.pending{color:var(--text3)}
+
+/* Test case results */
+.test-results{padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.test-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.test-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.test-icon.pass{background:rgba(0,214,143,.15);color:var(--success)}
+.test-icon.fail{background:rgba(255,107,107,.15);color:var(--error)}
+.test-icon.pending{background:var(--bg3);color:var(--text3)}
+.test-label{color:var(--text2);font-family:var(--font)}
+.test-detail{color:var(--text3);font-family:var(--mono);font-size:11px;margin-left:auto}
+
+/* Success modal */
+.success-overlay{position:fixed;inset:0;background:#000b;z-index:200;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.success-modal{background:var(--bg2);border:1px solid var(--accent);border-radius:16px;padding:36px;text-align:center;max-width:380px;animation:popIn .3s cubic-bezier(.22,1,.36,1);box-shadow:0 0 40px var(--accent-glow)}
+@keyframes popIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+.success-icon{font-size:52px;margin-bottom:12px}
+.success-title{font-size:22px;font-weight:700;margin-bottom:6px}
+.success-xp{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px}
+.success-btn{padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer}
+.success-btn:hover{filter:brightness(1.1)}
+
+/* Spinner */
+.spinner{display:inline-block;width:12px;height:12px;border:2px solid #0004;border-top-color:currentColor;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">
+
+const PY_KW = ['def','class','if','elif','else','for','while','return','import','from','as','try','except','finally','with','yield','lambda','pass','break','continue','and','or','not','in','is','True','False','None','print','range','len','input','int','str','float','list','dict','set','tuple','type','self'];
+function hlPy(code) {
+  let h = code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  h = h.replace(/(["'`])(?:(?!\1|\\).|\\.)*\1/g, '<span class="syn-str">$&</span>');
+  h = h.replace(/(#.*$)/gm, '<span class="syn-cmt">$&</span>');
+  h = h.replace(/\b(\d+\.?\d*)\b/g, '<span class="syn-num">$&</span>');
+  const p = new RegExp('\\b(' + PY_KW.join('|') + ')\\b', 'g');
+  h = h.replace(p, '<span class="syn-kw">$&</span>');
+  return h;
+}
+
+const CHALLENGES = [
+  {
+    id: 1, name: 'Two Sum', diff: 'easy', xp: 25, solved: true,
+    category: 'arrays', lang: 'python',
+    desc: 'Given a list of integers <code>nums</code> and an integer <code>target</code>, return the <strong>indices</strong> of the two numbers that add up to the target.\n\nYou may assume each input has <strong>exactly one solution</strong>, and you may not use the same element twice.',
+    examples: [
+      { input: 'nums = [2, 7, 11, 15], target = 9', output: '[0, 1]', explanation: 'nums[0] + nums[1] = 2 + 7 = 9' },
+      { input: 'nums = [3, 2, 4], target = 6', output: '[1, 2]', explanation: 'nums[1] + nums[2] = 2 + 4 = 6' },
+    ],
+    constraints: ['2 ≤ len(nums) ≤ 100', '-1000 ≤ nums[i] ≤ 1000', 'Exactly one valid answer exists'],
+    starter: 'def two_sum(nums, target):\n    # Your code here\n    pass\n\n# Test\nprint(two_sum([2, 7, 11, 15], 9))',
+    tests: ['two_sum([2,7,11,15], 9) → [0,1]', 'two_sum([3,2,4], 6) → [1,2]', 'two_sum([3,3], 6) → [0,1]']
+  },
+  {
+    id: 2, name: 'Reverse String', diff: 'easy', xp: 20, solved: true,
+    category: 'strings', lang: 'python',
+    desc: 'Write a function that takes a string and returns it <strong>reversed</strong>.\n\nDo not use the built-in <code>[::-1]</code> slicing — implement it manually using a loop.',
+    examples: [
+      { input: '"hello"', output: '"olleh"', explanation: 'Characters are reversed' },
+      { input: '"Python"', output: '"nohtyP"', explanation: '' },
+    ],
+    constraints: ['1 ≤ len(s) ≤ 1000', 's contains only printable ASCII'],
+    starter: 'def reverse_string(s):\n    # Your code here\n    pass\n\n# Test\nprint(reverse_string("hello"))',
+    tests: ['reverse_string("hello") → "olleh"', 'reverse_string("a") → "a"', 'reverse_string("ab") → "ba"']
+  },
+  {
+    id: 3, name: 'FizzBuzz', diff: 'easy', xp: 20, solved: false,
+    category: 'loops', lang: 'python',
+    desc: 'Write a function that returns a list of strings for numbers from 1 to <code>n</code>:\n\n• For multiples of <strong>3</strong>, use <code>"Fizz"</code>\n• For multiples of <strong>5</strong>, use <code>"Buzz"</code>\n• For multiples of <strong>both 3 and 5</strong>, use <code>"FizzBuzz"</code>\n• Otherwise, use the number as a string',
+    examples: [
+      { input: 'n = 5', output: '["1", "2", "Fizz", "4", "Buzz"]', explanation: '3 → Fizz, 5 → Buzz' },
+      { input: 'n = 15', output: '[..., "14", "FizzBuzz"]', explanation: '15 is divisible by both 3 and 5' },
+    ],
+    constraints: ['1 ≤ n ≤ 10000'],
+    starter: 'def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        # Your code here\n        pass\n    return result\n\n# Test\nprint(fizzbuzz(15))',
+    tests: ['fizzbuzz(3) → ["1","2","Fizz"]', 'fizzbuzz(5)[-1] → "Buzz"', 'fizzbuzz(15)[-1] → "FizzBuzz"']
+  },
+  {
+    id: 4, name: 'Palindrome Check', diff: 'easy', xp: 25, solved: false,
+    category: 'strings', lang: 'python',
+    desc: 'Write a function that checks if a given string is a <strong>palindrome</strong> (reads the same forwards and backwards).\n\nIgnore case and non-alphanumeric characters.',
+    examples: [
+      { input: '"racecar"', output: 'True', explanation: 'racecar reads the same backwards' },
+      { input: '"A man a plan a canal Panama"', output: 'True', explanation: 'Ignoring spaces and case' },
+      { input: '"hello"', output: 'False', explanation: '' },
+    ],
+    constraints: ['1 ≤ len(s) ≤ 10000'],
+    starter: 'def is_palindrome(s):\n    # Your code here\n    pass\n\n# Test\nprint(is_palindrome("racecar"))\nprint(is_palindrome("hello"))',
+    tests: ['is_palindrome("racecar") → True', 'is_palindrome("hello") → False', 'is_palindrome("A man a plan a canal Panama") → True']
+  },
+  {
+    id: 5, name: 'Max Subarray Sum', diff: 'medium', xp: 50, solved: false,
+    category: 'arrays', lang: 'python',
+    desc: 'Given an array of integers, find the <strong>contiguous subarray</strong> with the largest sum and return that sum.\n\nThis is a classic problem known as <strong>Kadane\'s Algorithm</strong>.',
+    examples: [
+      { input: '[-2, 1, -3, 4, -1, 2, 1, -5, 4]', output: '6', explanation: 'Subarray [4, -1, 2, 1] has the largest sum' },
+      { input: '[1]', output: '1', explanation: 'Single element' },
+    ],
+    constraints: ['1 ≤ len(nums) ≤ 10000', '-10000 ≤ nums[i] ≤ 10000'],
+    starter: 'def max_subarray(nums):\n    # Your code here\n    pass\n\n# Test\nprint(max_subarray([-2,1,-3,4,-1,2,1,-5,4]))',
+    tests: ['max_subarray([-2,1,-3,4,-1,2,1,-5,4]) → 6', 'max_subarray([1]) → 1', 'max_subarray([-1,-2,-3]) → -1']
+  },
+  {
+    id: 6, name: 'Valid Parentheses', diff: 'medium', xp: 50, solved: false,
+    category: 'strings', lang: 'python',
+    desc: 'Given a string containing only <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, determine if the input string has <strong>valid bracket matching</strong>.\n\nEvery opening bracket must be closed by the same type in the correct order.',
+    examples: [
+      { input: '"()[]{}"', output: 'True', explanation: 'All brackets properly closed' },
+      { input: '"(]"', output: 'False', explanation: 'Mismatched types' },
+      { input: '"{[]}"', output: 'True', explanation: 'Nested correctly' },
+    ],
+    constraints: ['0 ≤ len(s) ≤ 10000', 's contains only bracket characters'],
+    starter: 'def is_valid(s):\n    # Hint: use a stack!\n    pass\n\n# Test\nprint(is_valid("()[]{}"))\nprint(is_valid("(]"))',
+    tests: ['is_valid("()[]{}") → True', 'is_valid("(]") → False', 'is_valid("{[]}") → True']
+  },
+  {
+    id: 7, name: 'Count Words', diff: 'easy', xp: 20, solved: false,
+    category: 'strings', lang: 'python',
+    desc: 'Write a function that counts the number of <strong>words</strong> in a string. Words are separated by spaces. Multiple consecutive spaces should be treated as a single separator.',
+    examples: [
+      { input: '"Hello World"', output: '2', explanation: 'Two words' },
+      { input: '"  spaces   everywhere  "', output: '2', explanation: 'Leading/trailing/multiple spaces ignored' },
+    ],
+    constraints: ['0 ≤ len(s) ≤ 10000'],
+    starter: 'def count_words(s):\n    # Your code here\n    pass\n\n# Test\nprint(count_words("Hello World"))',
+    tests: ['count_words("Hello World") → 2', 'count_words("") → 0', 'count_words("  a  b  ") → 2']
+  },
+  {
+    id: 8, name: 'Matrix Spiral', diff: 'hard', xp: 100, solved: false,
+    category: 'arrays', lang: 'python',
+    desc: 'Given an <code>m × n</code> matrix, return all elements in <strong>spiral order</strong> — starting from the top-left, going right, then down, then left, then up, and repeating inward.',
+    examples: [
+      { input: '[[1,2,3],[4,5,6],[7,8,9]]', output: '[1,2,3,6,9,8,7,4,5]', explanation: 'Spiral from outside in' },
+    ],
+    constraints: ['1 ≤ m, n ≤ 100', '-1000 ≤ matrix[i][j] ≤ 1000'],
+    starter: 'def spiral_order(matrix):\n    # Your code here\n    pass\n\n# Test\nprint(spiral_order([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]))',
+    tests: ['spiral_order([[1,2,3],[4,5,6],[7,8,9]]) → [1,2,3,6,9,8,7,4,5]', 'spiral_order([[1]]) → [1]', 'spiral_order([[1,2],[3,4]]) → [1,2,4,3]']
+  },
+  {
+    id: 9, name: 'Bubble Sort', diff: 'medium', xp: 40, solved: false,
+    category: 'loops', lang: 'python',
+    desc: 'Implement the <strong>bubble sort</strong> algorithm. Repeatedly step through the list, compare adjacent elements, and swap them if they are in the wrong order.',
+    examples: [
+      { input: '[64, 34, 25, 12, 22]', output: '[12, 22, 25, 34, 64]', explanation: 'Sorted in ascending order' },
+    ],
+    constraints: ['1 ≤ len(arr) ≤ 1000'],
+    starter: 'def bubble_sort(arr):\n    # Your code here\n    pass\n\n# Test\nprint(bubble_sort([64, 34, 25, 12, 22]))',
+    tests: ['bubble_sort([64,34,25,12,22]) → [12,22,25,34,64]', 'bubble_sort([1]) → [1]', 'bubble_sort([3,1,2]) → [1,2,3]']
+  },
+  {
+    id: 10, name: 'Flatten Nested List', diff: 'hard', xp: 80, solved: false,
+    category: 'arrays', lang: 'python',
+    desc: 'Write a function that takes a <strong>deeply nested list</strong> and returns a <strong>flat list</strong> of all values, preserving order. Use <strong>recursion</strong>.',
+    examples: [
+      { input: '[1, [2, [3, 4], 5], 6]', output: '[1, 2, 3, 4, 5, 6]', explanation: 'All nesting removed' },
+    ],
+    constraints: ['List can be nested to any depth', 'Values are always integers'],
+    starter: 'def flatten(lst):\n    # Your code here (use recursion!)\n    pass\n\n# Test\nprint(flatten([1, [2, [3, 4], 5], 6]))',
+    tests: ['flatten([1,[2,[3,4],5],6]) → [1,2,3,4,5,6]', 'flatten([1,2,3]) → [1,2,3]', 'flatten([[[[1]]]]) → [1]']
+  },
+];
+
+function ChallengesPage() {
+  const [selectedId, setSelectedId] = React.useState(1);
+  const [catFilter, setCatFilter] = React.useState('all');
+  const [diffFilter, setDiffFilter] = React.useState('all');
+  const [codes, setCodes] = React.useState({});
+  const [results, setResults] = React.useState({});
+  const [running, setRunning] = React.useState(false);
+  const [showSuccess, setShowSuccess] = React.useState(false);
+  const [resultTab, setResultTab] = React.useState('output');
+  const preRef = React.useRef(null);
+  const taRef = React.useRef(null);
+
+  const challenge = CHALLENGES.find(c => c.id === selectedId);
+  const code = codes[selectedId] || challenge.starter;
+
+  const filtered = CHALLENGES.filter(c => {
+    if (catFilter !== 'all' && c.category !== catFilter) return false;
+    if (diffFilter !== 'all' && c.diff !== diffFilter) return false;
+    return true;
+  });
+
+  const setCode = (v) => setCodes({ ...codes, [selectedId]: v });
+
+  const syncScroll = () => {
+    if (preRef.current && taRef.current) {
+      preRef.current.scrollTop = taRef.current.scrollTop;
+      preRef.current.scrollLeft = taRef.current.scrollLeft;
+    }
+  };
+
+  const handleRun = () => {
+    setRunning(true);
+    setResultTab('output');
+    setTimeout(() => {
+      const prints = code.match(/print\s*\(([^)]*)\)/g);
+      const output = prints ? prints.map(m => {
+        const inner = m.match(/\(([^)]*)\)/);
+        return inner ? inner[1].replace(/["']/g, '').trim() || '(empty)' : '';
+      }).join('\n') : '✓ No output';
+      setResults({ ...results, [selectedId]: { output, tests: null } });
+      setRunning(false);
+    }, 800);
+  };
+
+  const handleSubmit = () => {
+    setRunning(true);
+    setResultTab('tests');
+    setTimeout(() => {
+      const testResults = challenge.tests.map((t, i) => ({
+        label: 'Test ' + (i + 1),
+        detail: t,
+        pass: Math.random() > 0.2
+      }));
+      const allPass = testResults.every(t => t.pass);
+      setResults({ ...results, [selectedId]: { output: null, tests: testResults } });
+      setRunning(false);
+      if (allPass) {
+        setTimeout(() => setShowSuccess(true), 300);
+      }
+    }, 1500);
+  };
+
+  const categories = ['all', 'arrays', 'strings', 'loops'];
+  const diffs = ['all', 'easy', 'medium', 'hard'];
+
+  return React.createElement('div', { id: 'root', style: { height: '100%', display: 'flex', flexDirection: 'column' } },
+    /* Topbar */
+    React.createElement('header', { className: 'topbar' },
+      React.createElement('div', { className: 'topbar-left' },
+        React.createElement('a', { className: 'logo', href: 'CyberStars Dashboard.html' },
+          React.createElement('span', { className: 'logo-icon' }, '⬡'),
+          React.createElement('span', { className: 'logo-text' }, 'CyberStars')
+        ),
+        React.createElement('nav', { className: 'topbar-nav' },
+          React.createElement('a', { className: 'nav-item', href: 'CyberStars Dashboard.html' }, 'Dashboard'),
+          React.createElement('a', { className: 'nav-item', href: 'CyberStars Courses.html' }, 'Courses'),
+          React.createElement('a', { className: 'nav-item active', href: '#' }, 'Challenges')
+        )
+      ),
+      React.createElement('div', { className: 'topbar-right' },
+        React.createElement('div', { className: 'streak-pill' },
+          React.createElement('span', null, '🔥'),
+          React.createElement('span', null, '5 days')
+        ),
+        React.createElement('button', { className: 'user-btn' },
+          React.createElement('div', { className: 'user-avatar' }, '🚀'),
+          React.createElement('span', { className: 'user-name' }, 'Alex')
+        )
+      )
+    ),
+
+    React.createElement('div', { className: 'challenges-layout' },
+      /* Sidebar */
+      React.createElement('div', { className: 'challenge-sidebar' },
+        React.createElement('div', { className: 'sidebar-header' },
+          React.createElement('div', { className: 'sidebar-title' }, 'Challenges'),
+          React.createElement('div', { className: 'cat-filters' },
+            categories.map(c =>
+              React.createElement('button', {
+                key: c, className: 'cat-chip ' + (catFilter === c ? 'active' : ''),
+                onClick: () => setCatFilter(c)
+              }, c === 'all' ? 'All' : c.charAt(0).toUpperCase() + c.slice(1))
+            )
+          ),
+          React.createElement('div', { className: 'diff-filters' },
+            diffs.map(d =>
+              React.createElement('button', {
+                key: d, className: 'diff-chip ' + d + ' ' + (diffFilter === d ? 'active' : ''),
+                onClick: () => setDiffFilter(d)
+              }, d === 'all' ? 'All' : d.charAt(0).toUpperCase() + d.slice(1))
+            )
+          )
+        ),
+        React.createElement('div', { className: 'challenge-list' },
+          filtered.map(c =>
+            React.createElement('div', {
+              key: c.id,
+              className: 'challenge-item ' + (c.id === selectedId ? 'active' : '') + (c.solved ? ' solved' : ''),
+              onClick: () => setSelectedId(c.id)
+            },
+              React.createElement('div', { className: 'ch-status ' + (c.solved ? 'solved' : c.diff) },
+                c.solved ? '✓' : c.diff === 'easy' ? 'E' : c.diff === 'medium' ? 'M' : 'H'
+              ),
+              React.createElement('div', { className: 'ch-text' },
+                React.createElement('div', { className: 'ch-name' }, c.name),
+                React.createElement('div', { className: 'ch-tags' },
+                  React.createElement('span', { className: 'ch-tag' }, c.category)
+                )
+              ),
+              c.solved
+                ? React.createElement('span', { className: 'ch-solved-badge' }, 'Solved')
+                : React.createElement('span', { className: 'ch-xp' }, '+', c.xp)
+            )
+          )
+        )
+      ),
+
+      /* Main */
+      React.createElement('div', { className: 'challenge-main' },
+        /* Problem header */
+        React.createElement('div', { className: 'problem-header' },
+          React.createElement('div', { className: 'problem-title-area' },
+            React.createElement('span', { className: 'problem-diff ' + challenge.diff },
+              challenge.diff
+            ),
+            React.createElement('span', { className: 'problem-name' }, challenge.name)
+          ),
+          React.createElement('span', { className: 'problem-xp' }, '+', challenge.xp, ' XP')
+        ),
+
+        /* Split pane */
+        React.createElement('div', { className: 'split-pane' },
+          /* Problem description */
+          React.createElement('div', { className: 'problem-desc' },
+            React.createElement('div', { className: 'problem-section' },
+              React.createElement('div', { className: 'problem-section-title' }, 'Description'),
+              React.createElement('div', { className: 'problem-text', dangerouslySetInnerHTML: { __html: challenge.desc.replace(/\n/g, '<br/>') } })
+            ),
+            React.createElement('div', { className: 'problem-section' },
+              React.createElement('div', { className: 'problem-section-title' }, 'Examples'),
+              challenge.examples.map((ex, i) =>
+                React.createElement('div', { key: i, className: 'example-block' },
+                  React.createElement('div', { className: 'example-label' }, 'Example ', i + 1),
+                  React.createElement('div', { className: 'example-io' },
+                    React.createElement('strong', null, 'Input: '), ex.input, React.createElement('br', null),
+                    React.createElement('strong', null, 'Output: '), ex.output,
+                    ex.explanation ? React.createElement(React.Fragment, null, React.createElement('br', null), React.createElement('strong', null, 'Why: '), ex.explanation) : null
+                  )
+                )
+              )
+            ),
+            React.createElement('div', { className: 'problem-section' },
+              React.createElement('div', { className: 'problem-section-title' }, 'Constraints'),
+              React.createElement('ul', { className: 'constraint-list' },
+                challenge.constraints.map((c, i) =>
+                  React.createElement('li', { key: i }, c)
+                )
+              )
+            )
+          ),
+
+          /* Editor */
+          React.createElement('div', { className: 'editor-panel' },
+            React.createElement('div', { className: 'editor-toolbar' },
+              React.createElement('div', { className: 'editor-lang' },
+                React.createElement('span', { className: 'lang-dot', style: { background: '#3572A5' } }),
+                'Python 3'
+              ),
+              React.createElement('div', { className: 'editor-btns' },
+                React.createElement('button', { className: 'btn-hint' }, '✨ Hint'),
+                React.createElement('button', { className: 'btn-run', onClick: handleRun, disabled: running }, '▶ Run'),
+                React.createElement('button', { className: 'btn-submit', onClick: handleSubmit, disabled: running },
+                  running ? React.createElement('span', { className: 'spinner' }) : '⬡',
+                  running ? ' Testing...' : ' Submit'
+                )
+              )
+            ),
+            React.createElement('div', { className: 'editor-body' },
+              React.createElement('div', { className: 'line-numbers' },
+                code.split('\n').map((_, i) =>
+                  React.createElement('div', { key: i, className: 'line-num' }, i + 1)
+                )
+              ),
+              React.createElement('div', { className: 'code-area' },
+                React.createElement('pre', { ref: preRef, className: 'code-highlight', dangerouslySetInnerHTML: { __html: hlPy(code) + '\n' } }),
+                React.createElement('textarea', {
+                  ref: taRef, className: 'code-textarea',
+                  value: code, onChange: e => setCode(e.target.value),
+                  onScroll: syncScroll, spellCheck: false
+                })
+              )
+            ),
+            results[selectedId] && React.createElement('div', { className: 'result-panel' },
+              React.createElement('div', { className: 'result-tabs' },
+                React.createElement('button', {
+                  className: 'result-tab ' + (resultTab === 'output' ? 'active' : ''),
+                  onClick: () => setResultTab('output')
+                }, '⬡ Output'),
+                results[selectedId].tests && React.createElement('button', {
+                  className: 'result-tab ' + (resultTab === 'tests' ? 'active' : ''),
+                  onClick: () => setResultTab('tests')
+                }, '✓ Test Results')
+              ),
+              resultTab === 'output' && results[selectedId].output &&
+                React.createElement('div', { className: 'result-content' }, results[selectedId].output),
+              resultTab === 'tests' && results[selectedId].tests &&
+                React.createElement('div', { className: 'test-results' },
+                  results[selectedId].tests.map((t, i) =>
+                    React.createElement('div', { key: i, className: 'test-row' },
+                      React.createElement('div', { className: 'test-icon ' + (t.pass ? 'pass' : 'fail') }, t.pass ? '✓' : '✗'),
+                      React.createElement('span', { className: 'test-label' }, t.label),
+                      React.createElement('span', { className: 'test-detail' }, t.detail)
+                    )
+                  )
+                )
+            )
+          )
+        )
+      )
+    ),
+
+    /* Success modal */
+    showSuccess && React.createElement('div', { className: 'success-overlay', onClick: () => setShowSuccess(false) },
+      React.createElement('div', { className: 'success-modal', onClick: e => e.stopPropagation() },
+        React.createElement('div', { className: 'success-icon' }, '🏆'),
+        React.createElement('div', { className: 'success-title' }, 'Challenge Solved!'),
+        React.createElement('div', { className: 'success-xp' }, '+', challenge.xp, ' XP earned'),
+        React.createElement('button', { className: 'success-btn', onClick: () => setShowSuccess(false) }, 'Next Challenge →')
+      )
+    )
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ChallengesPage));
+</script>
+</body>
+</html>
