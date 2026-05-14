@@ -1,6 +1,8 @@
 import * as progressRepo from "../repositories/progress.repository.js";
 import * as curriculumRepo from "../repositories/curriculum.repository.js";
-import type { CourseProgress } from "../../shared/progress.js";
+import type { CourseProgress, LeaderboardEntry } from "../../shared/progress.js";
+
+const XP_PER_LESSON = 15;
 
 export async function getCourseProgress(userId: number, courseKey: string): Promise<CourseProgress> {
   const [lessons, progress] = await Promise.all([
@@ -42,4 +44,14 @@ export async function getSavedCode(userId: number, courseKey: string, lessonSlug
 
 export async function trackAccess(userId: number, courseKey: string, lessonSlug: string): Promise<void> {
   await progressRepo.touchAccess(userId, courseKey, lessonSlug);
+}
+
+export async function getLeaderboard(currentUserId?: number): Promise<LeaderboardEntry[]> {
+  const rows = await progressRepo.getLeaderboard();
+  return rows.map((row, i) => ({
+    rank: i + 1,
+    name: row.name,
+    xp: row.completedCount * XP_PER_LESSON,
+    isCurrentUser: row.userId === currentUserId,
+  }));
 }

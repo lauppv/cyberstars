@@ -4,9 +4,11 @@ import { useAuth } from "../context/AuthContext";
 import { useGamification } from "../hooks/useGamification";
 import { Topbar } from "../components/layout/Topbar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
+import { StreakWidget } from "../components/gamification/StreakWidget";
 import { fetchCurriculum } from "../services/lessonService";
 import * as progressService from "../services/progressService";
 import type { Course } from "../../shared/lesson";
+import type { LeaderboardEntry } from "../../shared/progress";
 
 const COURSE_ICON: Record<string, string> = {
   python: "🐍",
@@ -30,21 +32,8 @@ const TOUR_STEPS = [
   { icon: "✨", title: "Never Get Stuck", body: "Our AI-powered hints are always one click away. Ask CyberBot for help whenever you need a nudge in the right direction." },
 ];
 
-const ACTIVITY_DATA = [
-  { color: "var(--success)", text: "Completed \"Variables & Types\"", time: "2h ago" },
-  { color: "var(--accent)", text: "Earned 15 XP", time: "2h ago" },
-  { color: "var(--warning)", text: "Started Java course", time: "1d ago" },
-  { color: "var(--success)", text: "Completed \"Hello World\"", time: "1d ago" },
-  { color: "var(--accent)", text: "Reached Level 2", time: "3d ago" },
-];
 
-const LEADERBOARD_DATA = [
-  { rank: 1, avatar: "🦊", name: "Maya", xp: 2450 },
-  { rank: 2, avatar: "🐺", name: "Kai", xp: 2180 },
-  { rank: 3, avatar: "🚀", name: "You", xp: 0, isCurrentUser: true },
-  { rank: 4, avatar: "🦉", name: "Sam", xp: 1740 },
-  { rank: 5, avatar: "🐱", name: "Zara", xp: 1580 },
-];
+const LB_PAGE_SIZE = 5;
 
 function getGreeting(): string {
   const h = new Date().getHours();
@@ -65,6 +54,9 @@ export function HomePage() {
     pct: number;
   } | null>(null);
   const [tourStep, setTourStep] = useState<number | null>(null);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [lbPage, setLbPage] = useState(0);
+  const [showAllLb, setShowAllLb] = useState(false);
 
   // Onboarding tour
   useEffect(() => {
@@ -78,7 +70,7 @@ export function HomePage() {
     let cancelled = false;
     (async () => {
       try {
-        const data = await fetchCurriculum();
+        const data = (await fetchCurriculum()).filter((c) => c.key !== "algo");
         if (cancelled) return;
         setCourses(data);
 
@@ -101,6 +93,11 @@ export function HomePage() {
           }
         }
       } catch {}
+
+      try {
+        const lb = await progressService.getLeaderboard();
+        if (!cancelled) setLeaderboard(lb);
+      } catch {}
     })();
     return () => { cancelled = true; };
   }, [isLoggedIn]);
@@ -122,9 +119,8 @@ export function HomePage() {
   }
 
   if (isLoggedIn && user) {
-    const leaderboard = LEADERBOARD_DATA.map((entry) =>
-      entry.isCurrentUser ? { ...entry, name: user.name || "You", xp: g.xp } : entry
-    );
+    const lbMaxPage = Math.max(0, Math.ceil(leaderboard.length / LB_PAGE_SIZE) - 1);
+    const lbSlice = leaderboard.slice(lbPage * LB_PAGE_SIZE, (lbPage + 1) * LB_PAGE_SIZE);
 
     return (
       <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
@@ -158,20 +154,23 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* ── XP Mini-Bar ── */}
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-[var(--text2)] whitespace-nowrap">
-                ⭐ Level {g.level} — {g.xpInLevel} / {g.xpForNextLevel} XP to next
-              </span>
-              <div className="w-full max-w-[260px] h-1.5 bg-[var(--bg3)] rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-[width] duration-500"
-                  style={{
-                    width: `${g.xpForNextLevel > 0 ? (g.xpInLevel / g.xpForNextLevel) * 100 : 0}%`,
-                    background: "linear-gradient(90deg, var(--accent), #a855f7)",
-                  }}
-                />
+            {/* ── XP Mini-Bar + Streak ── */}
+            <div className="flex items-center gap-4 flex-wrap">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <span className="text-sm text-[var(--text2)] whitespace-nowrap">
+                  ⭐ Level {g.level} — {g.xpInLevel} / {g.xpForNextLevel} XP to next
+                </span>
+                <div className="w-full max-w-[260px] h-1.5 bg-[var(--bg3)] rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-[width] duration-500"
+                    style={{
+                      width: `${g.xpForNextLevel > 0 ? (g.xpInLevel / g.xpForNextLevel) * 100 : 0}%`,
+                      background: "linear-gradient(90deg, var(--accent), #a855f7)",
+                    }}
+                  />
+                </div>
               </div>
+              <StreakWidget days={g.streak} />
             </div>
 
             {/* ── Continue Learning ── */}
@@ -232,10 +231,7 @@ export function HomePage() {
                   return (
                     <button
                       key={c.key}
-                      onClick={() => {
-                        const firstSlug = c.lessons[0]?.slug;
-                        if (firstSlug) navigate(`/lesson/${c.key}/${firstSlug}`);
-                      }}
+                      onClick={() => navigate(`/course/${c.key}`)}
                       className="text-left p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] hover:border-[var(--accent)] transition cursor-pointer group"
                     >
                       <div className="flex items-center gap-3 mb-3">
@@ -281,54 +277,92 @@ export function HomePage() {
               </div>
             </section>
 
-            {/* ── Bottom Row: Activity + Leaderboard ── */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {/* Recent Activity */}
-              <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
-                <h3 className="text-xs font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-4">
-                  Recent Activity
-                </h3>
-                <ul className="space-y-3">
-                  {ACTIVITY_DATA.map((a, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <span
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ background: a.color }}
-                      />
-                      <span className="flex-1 text-[var(--text)]">{a.text}</span>
-                      <span className="text-[var(--text3)] text-xs whitespace-nowrap">{a.time}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Leaderboard */}
-              <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
-                <h3 className="text-xs font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-4">
+            {/* ── Leaderboard ── */}
+            <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xs font-semibold uppercase tracking-[1px] text-[var(--text3)]">
                   Leaderboard
                 </h3>
-                <ul className="space-y-2">
-                  {leaderboard.map((entry) => (
-                    <li
-                      key={entry.rank}
-                      className={`flex items-center gap-3 px-3 py-2 rounded-[var(--radius-sm)] text-sm ${
-                        entry.isCurrentUser
-                          ? "bg-[var(--accent)]/10 border border-[var(--accent)]/30"
-                          : ""
-                      }`}
-                    >
-                      <span className="w-5 text-[var(--text3)] text-xs font-semibold">#{entry.rank}</span>
-                      <span className="text-lg">{entry.avatar}</span>
-                      <span className="flex-1 font-medium">{entry.name}</span>
-                      <span className="text-xs text-[var(--text2)] font-semibold">{entry.xp} XP</span>
-                    </li>
-                  ))}
-                </ul>
+                {leaderboard.length > LB_PAGE_SIZE && (
+                  <button
+                    onClick={() => setShowAllLb(true)}
+                    className="text-[11px] text-[var(--accent)] font-semibold hover:underline cursor-pointer bg-transparent border-none"
+                  >
+                    Show All
+                  </button>
+                )}
               </div>
+              {leaderboard.length === 0 ? (
+                <p className="text-sm text-[var(--text3)]">No entries yet. Complete a lesson to appear here!</p>
+              ) : (
+                <>
+                  <ul className="space-y-2">
+                    {lbSlice.map((entry) => (
+                      <li
+                        key={entry.rank}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-[var(--radius-sm)] text-sm ${
+                          entry.isCurrentUser
+                            ? "bg-[var(--accent)]/10 border border-[var(--accent)]/30"
+                            : ""
+                        }`}
+                      >
+                        <span className="w-5 text-[var(--text3)] text-xs font-semibold">#{entry.rank}</span>
+                        <span className="flex-1 font-medium">{entry.name}{entry.isCurrentUser ? " (you)" : ""}</span>
+                        <span className="text-xs text-[var(--text2)] font-semibold">{entry.xp} XP</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {lbMaxPage > 0 && (
+                    <div className="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-[var(--border)]">
+                      <button
+                        onClick={() => setLbPage((p) => Math.max(0, p - 1))}
+                        disabled={lbPage === 0}
+                        className="text-xs text-[var(--text2)] hover:text-[var(--text)] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-transparent border-none"
+                      >
+                        ← Prev
+                      </button>
+                      <span className="text-[11px] text-[var(--text3)]">{lbPage + 1} / {lbMaxPage + 1}</span>
+                      <button
+                        onClick={() => setLbPage((p) => Math.min(lbMaxPage, p + 1))}
+                        disabled={lbPage === lbMaxPage}
+                        className="text-xs text-[var(--text2)] hover:text-[var(--text)] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-transparent border-none"
+                      >
+                        Next →
+                      </button>
+                    </div>
+                  )}
+                </>
+              )}
             </div>
 
           </div>
         </main>
+
+        {/* ── Leaderboard Full Modal ── */}
+        {showAllLb && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4" onClick={() => setShowAllLb(false)}>
+            <div className="w-full max-w-md max-h-[80vh] bg-[var(--bg2)] border border-[var(--border)] rounded-[14px] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)]">
+                <h2 className="text-lg font-bold">Leaderboard</h2>
+                <button onClick={() => setShowAllLb(false)} className="text-[var(--text3)] hover:text-[var(--text)] text-lg bg-transparent border-none cursor-pointer">×</button>
+              </div>
+              <ul className="flex-1 overflow-y-auto px-4 py-3 space-y-1.5">
+                {leaderboard.map((entry) => (
+                  <li
+                    key={entry.rank}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] text-sm ${
+                      entry.isCurrentUser ? "bg-[var(--accent)]/10 border border-[var(--accent)]/30" : ""
+                    }`}
+                  >
+                    <span className="w-6 text-[var(--text3)] text-xs font-semibold">#{entry.rank}</span>
+                    <span className="flex-1 font-medium">{entry.name}{entry.isCurrentUser ? " (you)" : ""}</span>
+                    <span className="text-xs text-[var(--text2)] font-semibold">{entry.xp} XP</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
 
         {/* ── Onboarding Tour Modal ── */}
         {tourStep !== null && (

@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { StreakWidget } from "../gamification/StreakWidget";
 
 interface TopbarProps {
   breadcrumb?: { course?: string; lesson?: string };
@@ -107,8 +106,6 @@ export function Topbar({
       </div>
 
       <div className="flex items-center gap-4">
-        {isLoggedIn && <StreakWidget days={streak} />}
-
         {isLoggedIn && user ? (
           <div className="relative" ref={menuRef}>
             <button

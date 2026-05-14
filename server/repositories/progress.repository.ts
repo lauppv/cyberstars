@@ -1,6 +1,23 @@
 import { prisma } from "../config/db.js";
 import type { UserLessonProgress } from "@prisma/client";
 
+export interface LeaderboardRow {
+  userId: number;
+  name: string;
+  completedCount: number;
+}
+
+export async function getLeaderboard(): Promise<LeaderboardRow[]> {
+  const rows = await prisma.$queryRaw<LeaderboardRow[]>`
+    SELECT u.id AS "userId", u.name, COUNT(p.id)::int AS "completedCount"
+    FROM users u
+    JOIN user_lesson_progress p ON p.user_id = u.id AND p.completed = true
+    GROUP BY u.id, u.name
+    ORDER BY "completedCount" DESC
+  `;
+  return rows;
+}
+
 export async function getByUser(userId: number): Promise<UserLessonProgress[]> {
   return prisma.userLessonProgress.findMany({ where: { userId } });
 }

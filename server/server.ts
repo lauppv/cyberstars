@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.routes.js";
 import lessonRoutes from "./routes/lesson.routes.js";
 import codeRoutes from "./routes/code.routes.js";
 import progressRoutes from "./routes/progress.routes.js";
+import leaderboardRoutes from "./routes/leaderboard.routes.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 
 app.use("/auth", authRoutes);
 app.use("/api/run-code", codeRoutes);
+app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api", lessonRoutes);
 

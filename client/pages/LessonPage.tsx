@@ -3,11 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useLesson } from "../hooks/useLesson";
 import { useCodeExecution } from "../hooks/useCodeExecution";
 import { useProgress } from "../hooks/useProgress";
-import { useGamification } from "../hooks/useGamification";
+import { useGamification, recordActivityToday } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { fetchCurriculum } from "../services/lessonService";
 import { Topbar } from "../components/layout/Topbar";
-import { Sidebar } from "../components/layout/Sidebar";
 import { XPBar } from "../components/gamification/XPBar";
 import { AchievementToast } from "../components/gamification/AchievementToast";
 import { CodeEditor } from "../components/code/CodeEditor";
@@ -76,7 +75,6 @@ export function LessonPage() {
 
   const [userCode, setUserCode] = useState("");
   const [course, setCourse] = useState<Course | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: 15 });
   const [showSaveToast, setShowSaveToast] = useState(false);
@@ -84,45 +82,8 @@ export function LessonPage() {
   const [aiHint, setAiHint] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
 
-  const [editorWidth, setEditorWidth] = useState<number>(() => {
-    const saved = typeof window !== "undefined" ? window.localStorage.getItem("editorWidth") : null;
-    return saved ? Math.max(360, Math.min(1200, Number(saved))) : 560;
-  });
-  const isDraggingRef = useRef(false);
-
-  const wasCompletedRef = useRef(false);
+  const justSubmittedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!isDraggingRef.current) return;
-      const fromRight = window.innerWidth - e.clientX;
-      const minWidth = 360;
-      const maxWidth = Math.min(1200, window.innerWidth * 0.7);
-      const next = Math.max(minWidth, Math.min(maxWidth, fromRight));
-      setEditorWidth(next);
-    };
-    const onUp = () => {
-      if (!isDraggingRef.current) return;
-      isDraggingRef.current = false;
-      document.body.style.cursor = "";
-      document.body.style.userSelect = "";
-      window.localStorage.setItem("editorWidth", String(Math.round(editorWidth)));
-    };
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseup", onUp);
-    };
-  }, [editorWidth]);
-
-  const startDrag = (e: React.MouseEvent) => {
-    e.preventDefault();
-    isDraggingRef.current = true;
-    document.body.style.cursor = "col-resize";
-    document.body.style.userSelect = "none";
-  };
 
   const lessonCompleted =
     progress?.lessons.find((l: any) => (l.lessonSlug ?? l.slug) === lesson)?.completed ?? false;
@@ -142,13 +103,13 @@ export function LessonPage() {
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
-    wasCompletedRef.current = lessonCompleted;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    justSubmittedRef.current = false;
   }, [lesson]);
 
   useEffect(() => {
-    if (lessonCompleted && !wasCompletedRef.current) {
-      wasCompletedRef.current = true;
+    if (lessonCompleted && justSubmittedRef.current) {
+      justSubmittedRef.current = false;
+      recordActivityToday();
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
       setToastData({
         icon: isLast ? "🏆" : "✅",
@@ -176,6 +137,7 @@ export function LessonPage() {
   }, [execute, userCode, category]);
 
   const handleSubmit = useCallback(async () => {
+    justSubmittedRef.current = true;
     await submit(userCode, category, category, lesson);
     loadProgress();
     refreshGamification();
@@ -214,9 +176,6 @@ export function LessonPage() {
     <div className="h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] overflow-hidden">
       <Topbar
         breadcrumb={{ course: course?.title, lesson: title }}
-        showSidebarToggle
-        sidebarOpen={sidebarOpen}
-        onSidebarToggle={() => setSidebarOpen(!sidebarOpen)}
         streak={gamification.streak}
       />
 
@@ -228,21 +187,16 @@ export function LessonPage() {
         />
       )}
 
-      <div className="flex flex-1 overflow-hidden">
-        {sidebarOpen && course && (
-          <Sidebar
-            courseTitle={course.title}
-            courseKey={course.key}
-            lessons={lessonList}
-            currentSlug={lesson}
-            completedSlugs={completedSlugs}
-          />
-        )}
-
-        <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden justify-center">
           {/* Lesson content */}
-          <div ref={contentRef} className="flex-1 overflow-y-auto bg-[var(--bg)]">
-            <div className="max-w-3xl mx-auto px-9 py-8">
+          <div ref={contentRef} className="w-[40%] overflow-y-auto bg-[var(--bg)]">
+            <div className="px-9 py-8">
+              <button
+                onClick={() => navigate(`/course/${category}`)}
+                className="inline-flex items-center gap-1.5 mb-4 text-[13px] text-[var(--text3)] hover:text-[var(--accent)] transition cursor-pointer"
+              >
+                ← All Lessons
+              </button>
               {(() => {
                 const { difficulty, rest } = parseDifficulty(title);
                 return (
@@ -299,20 +253,8 @@ export function LessonPage() {
             </div>
           </div>
 
-          {/* Splitter handle */}
-          <div
-            onMouseDown={startDrag}
-            className="w-1 flex-shrink-0 bg-[var(--border)] hover:bg-[var(--accent)] cursor-col-resize transition-colors relative group"
-            title="Drag to resize editor"
-          >
-            <span className="absolute inset-y-0 -left-1 -right-1" />
-          </div>
-
           {/* Editor panel */}
-          <div
-            className="flex flex-col bg-[var(--bg2)] border-l border-[var(--border)] overflow-hidden flex-shrink-0"
-            style={{ width: editorWidth }}
-          >
+          <div className="w-[40%] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)] overflow-hidden">
             <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--bg3)] border-b border-[var(--border)]">
               <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
                 <span
@@ -422,7 +364,6 @@ export function LessonPage() {
               )}
             </div>
           </div>
-        </div>
       </div>
 
       <AchievementToast

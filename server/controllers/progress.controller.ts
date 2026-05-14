@@ -35,3 +35,9 @@ export async function trackAccess(req: Request, res: Response): Promise<void> {
   await progressService.trackAccess(req.user!.id, courseKey, lessonSlug);
   res.json({ message: "Access tracked" });
 }
+
+export async function getLeaderboard(req: Request, res: Response): Promise<void> {
+  const userId = req.user?.id;
+  const leaderboard = await progressService.getLeaderboard(userId);
+  res.json(leaderboard);
+}

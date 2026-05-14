@@ -29,7 +29,7 @@ export function CurriculumPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await fetchCurriculum();
+        const data = (await fetchCurriculum()).filter((c) => c.key !== "algo");
         setCourses(data);
 
         if (isLoggedIn) {
@@ -97,10 +97,7 @@ export function CurriculumPage() {
               return (
                 <button
                   key={course.key}
-                  onClick={() => {
-                    const firstSlug = course.lessons[0]?.slug;
-                    if (firstSlug) navigate(`/lesson/${course.key}/${firstSlug}`);
-                  }}
+                  onClick={() => navigate(`/course/${course.key}`)}
                   className="text-left p-6 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] hover:border-[var(--accent)] transition cursor-pointer group"
                 >
                   <div className="flex items-start justify-between mb-4">

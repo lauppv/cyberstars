@@ -11,3 +11,10 @@ export interface CourseProgress {
   total: number;
   lessons: LessonProgressItem[];
 }
+
+export interface LeaderboardEntry {
+  rank: number;
+  name: string;
+  xp: number;
+  isCurrentUser: boolean;
+}

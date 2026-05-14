@@ -5,6 +5,7 @@ import { useGamification } from "../hooks/useGamification";
 import { Topbar } from "../components/layout/Topbar";
 import { XPBar } from "../components/gamification/XPBar";
 import { Badge } from "../components/gamification/Badge";
+import { StreakWidget } from "../components/gamification/StreakWidget";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 
 const COURSE_LABEL: Record<string, string> = {
@@ -98,6 +99,9 @@ export function ProfilePage() {
                   background: "linear-gradient(90deg, var(--accent), #a855f7)",
                 }}
               />
+            </div>
+            <div className="mt-3 flex justify-center">
+              <StreakWidget days={g.streak} />
             </div>
           </div>
 
