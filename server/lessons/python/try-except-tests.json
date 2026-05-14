@@ -1,0 +1,23 @@
+[
+  {
+    "name": "safeDivide(10, 2) -> 5.0",
+    "input": "",
+    "expected": "5.0",
+    "mode": "contains",
+    "append": "\nprint(safeDivide(10, 2))"
+  },
+  {
+    "name": "safeDivide(10, 0) -> cannot divide by zero",
+    "input": "",
+    "expected": "cannot divide by zero",
+    "mode": "contains",
+    "append": "\nprint(safeDivide(10, 0))"
+  },
+  {
+    "name": "safeDivide(99, 3) -> 33.0",
+    "input": "",
+    "expected": "33.0",
+    "mode": "contains",
+    "append": "\nprint(safeDivide(99, 3))"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Passed: 4",
+    "input": "",
+    "expected": "Passed: 4",
+    "mode": "contains"
+  },
+  {
+    "name": "Failed: 2",
+    "input": "",
+    "expected": "Failed: 2",
+    "mode": "contains"
+  }
+]

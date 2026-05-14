@@ -1,0 +1,23 @@
+[
+  {
+    "name": "All correct -> 3",
+    "input": "",
+    "expected": "3",
+    "mode": "contains",
+    "append": "\nprint(gradeQuiz(quiz, ['B', 'A', 'B']))"
+  },
+  {
+    "name": "One correct -> 1",
+    "input": "",
+    "expected": "1",
+    "mode": "contains",
+    "append": "\nprint(gradeQuiz(quiz, ['A', 'A', 'A']))"
+  },
+  {
+    "name": "All wrong -> 0",
+    "input": "",
+    "expected": "0",
+    "mode": "contains",
+    "append": "\nprint(gradeQuiz(quiz, ['A', 'B', 'A']))"
+  }
+]

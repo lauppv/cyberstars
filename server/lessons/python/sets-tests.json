@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Total votes is 8",
+    "input": "",
+    "expected": "8",
+    "mode": "contains"
+  },
+  {
+    "name": "Unique voters is 4",
+    "input": "",
+    "expected": "4",
+    "mode": "contains"
+  },
+  {
+    "name": "Contains Shrek",
+    "input": "",
+    "expected": "Shrek",
+    "mode": "contains"
+  },
+  {
+    "name": "Contains Fiona",
+    "input": "",
+    "expected": "Fiona",
+    "mode": "contains"
+  }
+]

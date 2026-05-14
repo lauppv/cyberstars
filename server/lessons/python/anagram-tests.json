@@ -1,0 +1,23 @@
+[
+  {
+    "name": "cinema and iceman are anagrams",
+    "input": "",
+    "expected": "True",
+    "mode": "contains",
+    "append": "\nprint(isAnagram('cinema', 'iceman'))"
+  },
+  {
+    "name": "rat and car are not anagrams",
+    "input": "",
+    "expected": "False",
+    "mode": "contains",
+    "append": "\nprint(isAnagram('rat', 'car'))"
+  },
+  {
+    "name": "listen and silent are anagrams",
+    "input": "",
+    "expected": "True",
+    "mode": "contains",
+    "append": "\nprint(isAnagram('listen', 'silent'))"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "highScores contains 95",
+    "input": "",
+    "expected": "95",
+    "mode": "contains"
+  },
+  {
+    "name": "highScores contains 88",
+    "input": "",
+    "expected": "88",
+    "mode": "contains"
+  },
+  {
+    "name": "highScores contains 92",
+    "input": "",
+    "expected": "92",
+    "mode": "contains"
+  },
+  {
+    "name": "boosted contains 104.5",
+    "input": "",
+    "expected": "104.5",
+    "mode": "contains"
+  }
+]

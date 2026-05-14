@@ -1,0 +1,23 @@
+[
+  {
+    "name": "findFirst(['a','b','c','b','a'], 'b') -> 1",
+    "input": "",
+    "expected": "1",
+    "mode": "contains",
+    "append": "\nprint(findFirst(['a','b','c','b','a'], 'b'))"
+  },
+  {
+    "name": "findFirst(['a','b','c'], 'z') -> -1",
+    "input": "",
+    "expected": "-1",
+    "mode": "contains",
+    "append": "\nprint(findFirst(['a','b','c'], 'z'))"
+  },
+  {
+    "name": "findFirst([10,20,30,40], 30) -> 2",
+    "input": "",
+    "expected": "2",
+    "mode": "contains",
+    "append": "\nprint(findFirst([10,20,30,40], 30))"
+  }
+]

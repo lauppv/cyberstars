@@ -1,0 +1,23 @@
+[
+  {
+    "name": "bubbleSort([5,3,8,1,2]) -> [1,2,3,5,8]",
+    "input": "",
+    "expected": "[1, 2, 3, 5, 8]",
+    "mode": "contains",
+    "append": "\nprint(bubbleSort([5, 3, 8, 1, 2]))"
+  },
+  {
+    "name": "bubbleSort([10,7,3,9,1]) -> [1,3,7,9,10]",
+    "input": "",
+    "expected": "[1, 3, 7, 9, 10]",
+    "mode": "contains",
+    "append": "\nprint(bubbleSort([10, 7, 3, 9, 1]))"
+  },
+  {
+    "name": "bubbleSort([1]) -> [1]",
+    "input": "",
+    "expected": "[1]",
+    "mode": "contains",
+    "append": "\nprint(bubbleSort([1]))"
+  }
+]

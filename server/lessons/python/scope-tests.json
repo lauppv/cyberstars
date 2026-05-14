@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Output is 200",
+    "input": "",
+    "expected": "200",
+    "mode": "contains"
+  }
+]

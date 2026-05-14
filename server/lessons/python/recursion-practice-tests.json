@@ -1,0 +1,30 @@
+[
+  {
+    "name": "sumDigits(1234) -> 10",
+    "input": "",
+    "expected": "10",
+    "mode": "contains",
+    "append": "\nprint(sumDigits(1234))"
+  },
+  {
+    "name": "sumDigits(999) -> 27",
+    "input": "",
+    "expected": "27",
+    "mode": "contains",
+    "append": "\nprint(sumDigits(999))"
+  },
+  {
+    "name": "sumDigits(5) -> 5",
+    "input": "",
+    "expected": "5",
+    "mode": "contains",
+    "append": "\nprint(sumDigits(5))"
+  },
+  {
+    "name": "sumDigits(100) -> 1",
+    "input": "",
+    "expected": "1",
+    "mode": "contains",
+    "append": "\nprint(sumDigits(100))"
+  }
+]

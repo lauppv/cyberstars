@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Contains shrek",
+    "input": "",
+    "expected": "shrek",
+    "mode": "contains"
+  },
+  {
+    "name": "Contains fiona",
+    "input": "",
+    "expected": "fiona",
+    "mode": "contains"
+  },
+  {
+    "name": "Contains donkey",
+    "input": "",
+    "expected": "donkey",
+    "mode": "contains"
+  },
+  {
+    "name": "Does not contain 'and'",
+    "input": "",
+    "expected": "['shrek', 'fiona', 'donkey']",
+    "mode": "contains"
+  }
+]

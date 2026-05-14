@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Shows Tommy: 95",
+    "input": "",
+    "expected": "Tommy: 95",
+    "mode": "contains"
+  },
+  {
+    "name": "Shows Lance: 42",
+    "input": "",
+    "expected": "Lance: 42",
+    "mode": "contains"
+  },
+  {
+    "name": "Shows sorted list",
+    "input": "",
+    "expected": "[42, 71, 88, 95]",
+    "mode": "contains"
+  },
+  {
+    "name": "Shows sum 296",
+    "input": "",
+    "expected": "296",
+    "mode": "contains"
+  },
+  {
+    "name": "Shows False for all passed",
+    "input": "",
+    "expected": "False",
+    "mode": "contains"
+  }
+]

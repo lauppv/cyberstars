@@ -1,0 +1,30 @@
+[
+  {
+    "name": "isPalindrome('level') -> True",
+    "input": "",
+    "expected": "True",
+    "mode": "contains",
+    "append": "\nprint(isPalindrome('level'))"
+  },
+  {
+    "name": "isPalindrome('python') -> False",
+    "input": "",
+    "expected": "False",
+    "mode": "contains",
+    "append": "\nprint(isPalindrome('python'))"
+  },
+  {
+    "name": "isPalindrome('abcba') -> True",
+    "input": "",
+    "expected": "True",
+    "mode": "contains",
+    "append": "\nprint(isPalindrome('abcba'))"
+  },
+  {
+    "name": "isPalindrome('a') -> True",
+    "input": "",
+    "expected": "True",
+    "mode": "contains",
+    "append": "\nprint(isPalindrome('a'))"
+  }
+]

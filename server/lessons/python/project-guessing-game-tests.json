@@ -1,0 +1,30 @@
+[
+  {
+    "name": "checkGuess(50, 25) -> too low",
+    "input": "",
+    "expected": "too low",
+    "mode": "contains",
+    "append": "\nprint(checkGuess(50, 25))"
+  },
+  {
+    "name": "checkGuess(50, 75) -> too high",
+    "input": "",
+    "expected": "too high",
+    "mode": "contains",
+    "append": "\nprint(checkGuess(50, 75))"
+  },
+  {
+    "name": "checkGuess(50, 50) -> correct",
+    "input": "",
+    "expected": "correct",
+    "mode": "contains",
+    "append": "\nprint(checkGuess(50, 50))"
+  },
+  {
+    "name": "checkGuess(1, 100) -> too high",
+    "input": "",
+    "expected": "too high",
+    "mode": "contains",
+    "append": "\nprint(checkGuess(1, 100))"
+  }
+]

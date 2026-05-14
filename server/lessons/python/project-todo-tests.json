@@ -1,0 +1,23 @@
+[
+  {
+    "name": "3 tasks added",
+    "input": "",
+    "expected": "3",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "1 done after first complete",
+    "input": "",
+    "expected": "1",
+    "mode": "line",
+    "line": 1
+  },
+  {
+    "name": "2 done after second complete",
+    "input": "",
+    "expected": "2",
+    "mode": "line",
+    "line": 2
+  }
+]

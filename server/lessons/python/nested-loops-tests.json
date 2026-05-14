@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Line 0 is *",
+    "input": "",
+    "expected": "*",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Line 1 is **",
+    "input": "",
+    "expected": "**",
+    "mode": "line",
+    "line": 1
+  },
+  {
+    "name": "Line 2 is ***",
+    "input": "",
+    "expected": "***",
+    "mode": "line",
+    "line": 2
+  },
+  {
+    "name": "Line 3 is ****",
+    "input": "",
+    "expected": "****",
+    "mode": "line",
+    "line": 3
+  },
+  {
+    "name": "Line 4 is *****",
+    "input": "",
+    "expected": "*****",
+    "mode": "line",
+    "line": 4
+  }
+]

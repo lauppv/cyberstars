@@ -1,0 +1,30 @@
+[
+  {
+    "name": "power(2, 3) -> 8",
+    "input": "",
+    "expected": "8",
+    "mode": "contains",
+    "append": "\nprint(power(2, 3))"
+  },
+  {
+    "name": "power(5, 2) -> 25",
+    "input": "",
+    "expected": "25",
+    "mode": "contains",
+    "append": "\nprint(power(5, 2))"
+  },
+  {
+    "name": "power(10, 0) -> 1",
+    "input": "",
+    "expected": "1",
+    "mode": "contains",
+    "append": "\nprint(power(10, 0))"
+  },
+  {
+    "name": "power(3, 4) -> 81",
+    "input": "",
+    "expected": "81",
+    "mode": "contains",
+    "append": "\nprint(power(3, 4))"
+  }
+]
