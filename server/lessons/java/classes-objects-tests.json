@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Rex is 5 years old",
+    "input": "",
+    "expected": "Rex is 5 years old",
+    "mode": "contains"
+  },
+  {
+    "name": "Buddy is 3 years old",
+    "input": "",
+    "expected": "Buddy is 3 years old",
+    "mode": "contains"
+  }
+]

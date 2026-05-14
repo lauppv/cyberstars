@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Spring description",
+    "input": "",
+    "expected": "Spring: flowers bloom",
+    "mode": "contains"
+  },
+  {
+    "name": "Summer description",
+    "input": "",
+    "expected": "Summer: time for the beach",
+    "mode": "contains"
+  },
+  {
+    "name": "Autumn description",
+    "input": "",
+    "expected": "Autumn: leaves are falling",
+    "mode": "contains"
+  },
+  {
+    "name": "Winter description",
+    "input": "",
+    "expected": "Winter: stay inside and code",
+    "mode": "contains"
+  }
+]

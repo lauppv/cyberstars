@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { fetchCurriculum } from "../services/lessonService";
 import * as progressService from "../services/progressService";
 import { useAuth } from "../context/AuthContext";
-
-const XP_PER_LESSON = 15;
-const XP_PER_LEVEL = 300;
+import { useCurriculum } from "../context/CurriculumContext";
+import { XP_PER_LESSON, computeLevel, xpForLevel, xpToNextLevel } from "../../shared/constants";
 
 function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -78,6 +76,7 @@ export interface Gamification {
 
 export function useGamification(): Gamification {
   const { isLoggedIn } = useAuth();
+  const { courses, isLoading: curriculumLoading } = useCurriculum();
   const [completed, setCompleted] = useState(0);
   const [total, setTotal] = useState(0);
   const [perCourseDone, setPerCourseDone] = useState<Record<string, number>>({});
@@ -88,10 +87,10 @@ export function useGamification(): Gamification {
   const refresh = useCallback(() => setRefreshKey((k) => k + 1), []);
 
   useEffect(() => {
+    if (curriculumLoading) return;
     let cancelled = false;
     (async () => {
       try {
-        const courses = await fetchCurriculum();
         const totals: Record<string, number> = {};
         let tot = 0;
         for (const c of courses) {
@@ -134,12 +133,12 @@ export function useGamification(): Gamification {
       }
     })();
     return () => { cancelled = true; };
-  }, [isLoggedIn, refreshKey]);
+  }, [courses, curriculumLoading, isLoggedIn, refreshKey]);
 
   const xp = completed * XP_PER_LESSON;
-  const level = Math.floor(xp / XP_PER_LEVEL) + 1;
-  const xpInLevel = xp % XP_PER_LEVEL;
-  const xpForNextLevel = XP_PER_LEVEL;
+  const level = computeLevel(xp);
+  const xpInLevel = xp - xpForLevel(level);
+  const xpForNextLevel = xpToNextLevel(level);
 
   const aCourseFullyComplete = Object.keys(perCourseTotal).some(
     (k) => perCourseTotal[k] > 0 && perCourseDone[k] === perCourseTotal[k]

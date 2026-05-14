@@ -1,52 +1,42 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useCurriculum } from "../context/CurriculumContext";
 import { useGamification } from "../hooks/useGamification";
-import { fetchCurriculum } from "../services/lessonService";
 import * as progressService from "../services/progressService";
 import { Topbar } from "../components/layout/Topbar";
 import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import type { Course } from "../../shared/lesson";
 import type { CourseProgress } from "../../shared/progress";
-
-const COURSE_ICON: Record<string, string> = {
-  python: "🐍",
-  java: "☕",
-  c: "⚙️",
-  algo: "🧩",
-};
+import { COURSE_ICON } from "../constants/courses";
 
 export function CourseLessonsPage() {
   const { courseKey = "" } = useParams<{ courseKey: string }>();
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
+  const { courses, isLoading: curriculumLoading } = useCurriculum();
   const gamification = useGamification();
 
-  const [course, setCourse] = useState<Course | null>(null);
+  const course = courses.find((c) => c.key === courseKey) ?? null;
   const [progress, setProgress] = useState<CourseProgress | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (curriculumLoading) return;
+    if (!course || !isLoggedIn) {
+      setIsLoading(false);
+      return;
+    }
     let cancelled = false;
     (async () => {
       try {
-        const courses = await fetchCurriculum();
-        const found = courses.find((c) => c.key === courseKey);
-        if (cancelled) return;
-        setCourse(found ?? null);
-
-        if (found && isLoggedIn) {
-          try {
-            const p = await progressService.getCourseProgress(found.key);
-            if (!cancelled) setProgress(p);
-          } catch {}
-        }
+        const p = await progressService.getCourseProgress(course.key);
+        if (!cancelled) setProgress(p);
       } catch {}
       if (!cancelled) setIsLoading(false);
     })();
     return () => { cancelled = true; };
-  }, [courseKey, isLoggedIn]);
+  }, [curriculumLoading, course, isLoggedIn]);
 
   if (isLoading) {
     return (
@@ -167,7 +157,7 @@ export function CourseLessonsPage() {
 
           {/* Back button */}
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/curriculum")}
             className="mt-4 text-[var(--text3)] text-[13px] hover:text-[var(--text)] transition cursor-pointer"
           >
             ← Back

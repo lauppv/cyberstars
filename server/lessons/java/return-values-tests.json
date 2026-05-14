@@ -1,0 +1,20 @@
+[
+  {
+    "name": "power(2, 3) returns 8",
+    "input": "",
+    "expected": "8",
+    "mode": "contains"
+  },
+  {
+    "name": "power(5, 2) returns 25",
+    "input": "",
+    "expected": "25",
+    "mode": "contains"
+  },
+  {
+    "name": "power(10, 0) returns 1",
+    "input": "",
+    "expected": "1",
+    "mode": "contains"
+  }
+]

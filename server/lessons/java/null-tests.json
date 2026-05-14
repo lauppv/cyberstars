@@ -1,0 +1,16 @@
+[
+  {
+    "name": "First line greets Tommy",
+    "input": "",
+    "expected": "Hello, Tommy!",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Second line greets stranger",
+    "input": "",
+    "expected": "Hello, stranger!",
+    "mode": "line",
+    "line": 1
+  }
+]

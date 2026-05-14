@@ -1,0 +1,32 @@
+[
+  {
+    "name": "First name is Cortez",
+    "input": "",
+    "expected": "Cortez",
+    "mode": "line"
+  },
+  {
+    "name": "Second name is Lance",
+    "input": "",
+    "expected": "Lance",
+    "mode": "line"
+  },
+  {
+    "name": "Third name is Phil",
+    "input": "",
+    "expected": "Phil",
+    "mode": "line"
+  },
+  {
+    "name": "Fourth name is Tommy",
+    "input": "",
+    "expected": "Tommy",
+    "mode": "line"
+  },
+  {
+    "name": "Correct sorted order",
+    "input": "",
+    "expected": "Cortez\nLance\nPhil\nTommy",
+    "mode": "exact"
+  }
+]

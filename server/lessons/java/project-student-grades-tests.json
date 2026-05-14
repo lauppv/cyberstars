@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Tommy's report header",
+    "input": "",
+    "expected": "Student: Tommy",
+    "mode": "contains"
+  },
+  {
+    "name": "Tommy's Math grade",
+    "input": "",
+    "expected": "Math: 90",
+    "mode": "contains"
+  },
+  {
+    "name": "Tommy's average is 89.0",
+    "input": "",
+    "expected": "Average: 89.0",
+    "mode": "contains"
+  },
+  {
+    "name": "Lance's report header",
+    "input": "",
+    "expected": "Student: Lance",
+    "mode": "contains"
+  },
+  {
+    "name": "Lance's English grade",
+    "input": "",
+    "expected": "English: 82",
+    "mode": "contains"
+  },
+  {
+    "name": "Lance's average is 82.7",
+    "input": "",
+    "expected": "Average: 82.7",
+    "mode": "contains"
+  },
+  {
+    "name": "Full output matches",
+    "input": "",
+    "expected": "Student: Tommy\n  Math: 90\n  English: 85\n  Science: 92\n  Average: 89.0\nStudent: Lance\n  Math: 78\n  English: 82\n  Science: 88\n  Average: 82.7",
+    "mode": "exact"
+  }
+]

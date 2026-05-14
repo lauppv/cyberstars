@@ -5,31 +5,18 @@ import { useGamification } from "../hooks/useGamification";
 import { Topbar } from "../components/layout/Topbar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { StreakWidget } from "../components/gamification/StreakWidget";
-import { fetchCurriculum } from "../services/lessonService";
 import * as progressService from "../services/progressService";
+import { useCurriculum } from "../context/CurriculumContext";
 import type { Course } from "../../shared/lesson";
 import type { LeaderboardEntry } from "../../shared/progress";
-
-const COURSE_ICON: Record<string, string> = {
-  python: "🐍",
-  java: "☕",
-  c: "⚙️",
-  algo: "🧩",
-};
-
-const COURSE_DESC: Record<string, string> = {
-  python: "Variables, loops, functions, and your first real programs.",
-  java: "Object-oriented programming from the ground up.",
-  c: "Memory, pointers, and low-level system programming.",
-  algo: "Classic algorithms and problem-solving techniques.",
-};
+import { COURSE_ICON } from "../constants/courses";
 
 const TOUR_STEPS = [
   { icon: "👋", title: "Welcome to CyberStars!", body: "We're excited to have you. Let's take a quick tour of the platform so you know where everything is." },
   { icon: "📚", title: "Choose Your Path", body: "Pick from Python, Java, or C. Each course has structured lessons that build on each other — from basics to advanced topics." },
   { icon: "⌨️", title: "Code as You Learn", body: "Every lesson has a built-in code editor. Read the explanation on the left, then practice on the right — no setup needed." },
   { icon: "🏆", title: "Earn XP & Badges", body: "Complete lessons to earn XP, maintain your daily streak, and unlock badges. Climb the leaderboard and show off your skills!" },
-  { icon: "✨", title: "Never Get Stuck", body: "Our AI-powered hints are always one click away. Ask CyberBot for help whenever you need a nudge in the right direction." },
+  { icon: "✨", title: "Never Get Stuck", body: "Hints are always one click away. Click the Hint button in the editor for a nudge in the right direction." },
 ];
 
 
@@ -46,6 +33,7 @@ export function HomePage() {
   const navigate = useNavigate();
   const { isLoggedIn, isLoading, user } = useAuth();
   const g = useGamification();
+  const { courses: allCourses } = useCurriculum();
   const [courses, setCourses] = useState<Course[]>([]);
   const [continueTo, setContinueTo] = useState<{
     course: Course;
@@ -65,34 +53,36 @@ export function HomePage() {
     }
   }, [isLoggedIn]);
 
-  // Data fetching
+  // Data fetching — uses curriculum from context, only fetches progress + leaderboard
   useEffect(() => {
+    if (!allCourses.length) return;
+    const data = allCourses.filter((c) => c.key !== "algo");
+    setCourses(data);
+
     let cancelled = false;
     (async () => {
-      try {
-        const data = (await fetchCurriculum()).filter((c) => c.key !== "algo");
-        if (cancelled) return;
-        setCourses(data);
-
-        if (isLoggedIn) {
-          for (const c of data) {
-            try {
-              const p = await progressService.getCourseProgress(c.key);
-              const next = p.lessons.find((l) => !l.completed);
-              if (next) {
-                const done = p.lessons.filter((l) => l.completed).length;
-                const pct = p.lessons.length > 0 ? Math.round((done / p.lessons.length) * 100) : 0;
-                if (!cancelled) setContinueTo({ course: c, slug: next.slug, title: next.title, pct });
-                return;
-              }
-            } catch {}
-          }
+      if (isLoggedIn) {
+        let found = false;
+        for (const c of data) {
+          try {
+            const p = await progressService.getCourseProgress(c.key);
+            const next = p.lessons.find((l) => !l.completed);
+            if (next) {
+              const done = p.lessons.filter((l) => l.completed).length;
+              const pct = p.lessons.length > 0 ? Math.round((done / p.lessons.length) * 100) : 0;
+              if (!cancelled) setContinueTo({ course: c, slug: next.slug, title: next.title, pct });
+              found = true;
+              break;
+            }
+          } catch {}
+        }
+        if (!found) {
           const first = data[0];
           if (first && first.lessons[0]) {
-            setContinueTo({ course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 });
+            if (!cancelled) setContinueTo({ course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 });
           }
         }
-      } catch {}
+      }
 
       try {
         const lb = await progressService.getLeaderboard();
@@ -100,7 +90,7 @@ export function HomePage() {
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [isLoggedIn]);
+  }, [allCourses, isLoggedIn]);
 
   function closeTour() {
     localStorage.setItem("cyberstars_toured", "1");
@@ -199,7 +189,7 @@ export function HomePage() {
                     </div>
                     <div className="font-bold text-[15px] truncate">{continueTo.title}</div>
                     <div className="text-[var(--text3)] text-xs mt-0.5 truncate">
-                      {COURSE_DESC[continueTo.course.key] ?? ""}
+                      {continueTo.course.description}
                     </div>
                   </div>
                   {/* Right side: progress + button */}
@@ -251,7 +241,7 @@ export function HomePage() {
                         </div>
                       </div>
                       <p className="text-xs text-[var(--text2)] mb-4 line-clamp-2">
-                        {COURSE_DESC[c.key] ?? c.description}
+                        {c.description}
                       </p>
                       {pct > 0 ? (
                         <div>

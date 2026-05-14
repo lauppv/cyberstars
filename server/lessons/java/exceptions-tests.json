@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Catches invalid parse of hello",
+    "input": "",
+    "expected": "Not a valid number: hello",
+    "mode": "contains"
+  },
+  {
+    "name": "Successfully parses 42",
+    "input": "",
+    "expected": "Parsed: 42",
+    "mode": "contains"
+  }
+]

@@ -1,8 +1,7 @@
 import * as progressRepo from "../repositories/progress.repository.js";
 import * as curriculumRepo from "../repositories/curriculum.repository.js";
 import type { CourseProgress, LeaderboardEntry } from "../../shared/progress.js";
-
-const XP_PER_LESSON = 15;
+import { XP_PER_LESSON } from "../../shared/constants.js";
 
 export async function getCourseProgress(userId: number, courseKey: string): Promise<CourseProgress> {
   const [lessons, progress] = await Promise.all([

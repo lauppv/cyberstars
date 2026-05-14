@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Balance is 1300 after deposit 500, withdraw 200, failed withdraw 2000",
+    "input": "",
+    "expected": "1300",
+    "mode": "exact"
+  }
+]

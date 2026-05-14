@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Total visits is 3",
+    "input": "",
+    "expected": "3",
+    "mode": "exact"
+  }
+]

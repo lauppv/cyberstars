@@ -5,7 +5,7 @@ import { useCodeExecution } from "../hooks/useCodeExecution";
 import { useProgress } from "../hooks/useProgress";
 import { useGamification, recordActivityToday } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
-import { fetchCurriculum } from "../services/lessonService";
+import { useCurriculum } from "../context/CurriculumContext";
 import { Topbar } from "../components/layout/Topbar";
 import { XPBar } from "../components/gamification/XPBar";
 import { AchievementToast } from "../components/gamification/AchievementToast";
@@ -16,9 +16,8 @@ import { RunButton } from "../components/code/RunButton";
 import { MarkdownRenderer } from "../components/markdown/MarkdownRenderer";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import type { Course, LessonMeta } from "../../shared/lesson";
-
-const LANG_LABEL: Record<string, string> = { python: "Python 3", java: "Java", c: "C", algo: "Python 3" };
-const LANG_DOT: Record<string, string> = { python: "#3572A5", java: "#b07219", c: "#555555", algo: "#6C5CE7" };
+import { LANG_LABEL, COURSE_COLOR } from "../constants/courses";
+import { XP_PER_LESSON } from "../../shared/constants";
 
 function parseDifficulty(title: string): { difficulty: "Easy" | "Medium" | "Hard" | null; rest: string } {
   const m = title.match(/^(Easy|Medium|Hard)\s*[·-]\s*(.+)$/i);
@@ -72,11 +71,11 @@ export function LessonPage() {
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
   const { refresh: refreshGamification } = gamification;
+  const { courses } = useCurriculum();
 
   const [userCode, setUserCode] = useState("");
-  const [course, setCourse] = useState<Course | null>(null);
   const [showToast, setShowToast] = useState(false);
-  const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: 15 });
+  const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: XP_PER_LESSON });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [showAIHint, setShowAIHint] = useState(false);
   const [aiHint, setAiHint] = useState("");
@@ -85,21 +84,14 @@ export function LessonPage() {
   const justSubmittedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const course = courses.find((c) => c.key === category) ?? null;
+
   const lessonCompleted =
     progress?.lessons.find((l: any) => (l.lessonSlug ?? l.slug) === lesson)?.completed ?? false;
 
   useEffect(() => {
     setUserCode(codeTemplate);
   }, [codeTemplate]);
-
-  useEffect(() => {
-    fetchCurriculum()
-      .then((courses) => {
-        const c = courses.find((c) => c.key === category);
-        if (c) setCourse(c);
-      })
-      .catch(() => {});
-  }, [category]);
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
@@ -114,7 +106,7 @@ export function LessonPage() {
       setToastData({
         icon: isLast ? "🏆" : "✅",
         title: isLast ? "Course Milestone!" : "Lesson Complete!",
-        xp: 15,
+        xp: XP_PER_LESSON,
       });
       setShowToast(true);
     }
@@ -259,7 +251,7 @@ export function LessonPage() {
               <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
-                  style={{ background: LANG_DOT[category] ?? "#888" }}
+                  style={{ background: COURSE_COLOR[category] ?? "#888" }}
                 />
                 {LANG_LABEL[category] ?? category.toUpperCase()}
               </div>

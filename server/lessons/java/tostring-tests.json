@@ -1,0 +1,16 @@
+[
+  {
+    "name": "First line is Infernus (1986)",
+    "input": "",
+    "expected": "Infernus (1986)",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Second line is Cheetah (1984)",
+    "input": "",
+    "expected": "Cheetah (1984)",
+    "mode": "line",
+    "line": 1
+  }
+]

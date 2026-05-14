@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Book printInfo output",
+    "input": "",
+    "expected": "Book: Vice City Stories by Rockstar",
+    "mode": "contains"
+  },
+  {
+    "name": "Movie printInfo output",
+    "input": "",
+    "expected": "Movie: Scarface directed by Brian De Palma",
+    "mode": "contains"
+  }
+]

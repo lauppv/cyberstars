@@ -7,25 +7,7 @@ import { XPBar } from "../components/gamification/XPBar";
 import { Badge } from "../components/gamification/Badge";
 import { StreakWidget } from "../components/gamification/StreakWidget";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-
-const COURSE_LABEL: Record<string, string> = {
-  python: "Python",
-  java: "Java",
-  c: "C",
-  algo: "Algorithms",
-};
-const COURSE_ICON: Record<string, string> = {
-  python: "🐍",
-  java: "☕",
-  c: "⚙️",
-  algo: "🧩",
-};
-const COURSE_COLOR: Record<string, string> = {
-  python: "#3572A5",
-  java: "#b07219",
-  c: "#555555",
-  algo: "#6C5CE7",
-};
+import { COURSE_LABEL, COURSE_ICON, COURSE_COLOR } from "../constants/courses";
 
 export function ProfilePage() {
   const navigate = useNavigate();

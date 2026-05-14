@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ElectricCar fuel type",
+    "input": "",
+    "expected": "Tesla: Electric",
+    "mode": "contains"
+  },
+  {
+    "name": "GasTruck fuel type",
+    "input": "",
+    "expected": "Ford: Gasoline",
+    "mode": "contains"
+  }
+]

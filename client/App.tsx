@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { CurriculumProvider } from "./context/CurriculumContext";
 import { HomePage } from "./pages/HomePage";
 import { AuthPage } from "./pages/AuthPage";
 import { CurriculumPage } from "./pages/CurriculumPage";
@@ -13,6 +14,7 @@ function App() {
   return (
     <HashRouter>
       <AuthProvider>
+        <CurriculumProvider>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/getstarted" element={<AuthPage />} />
@@ -23,6 +25,7 @@ function App() {
           <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
+        </CurriculumProvider>
       </AuthProvider>
     </HashRouter>
   );

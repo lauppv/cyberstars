@@ -1,0 +1,26 @@
+[
+  {
+    "name": "First game is GTA",
+    "input": "",
+    "expected": "GTA",
+    "mode": "contains"
+  },
+  {
+    "name": "Minecraft was removed",
+    "input": "",
+    "expected": "GTA\nZelda\nElden Ring",
+    "mode": "exact"
+  },
+  {
+    "name": "Zelda is in the output",
+    "input": "",
+    "expected": "Zelda",
+    "mode": "contains"
+  },
+  {
+    "name": "Elden Ring is in the output",
+    "input": "",
+    "expected": "Elden Ring",
+    "mode": "contains"
+  }
+]

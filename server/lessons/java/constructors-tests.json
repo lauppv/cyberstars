@@ -1,0 +1,16 @@
+[
+  {
+    "name": "First line shows Tommy Vercetti with 500 points",
+    "input": "",
+    "expected": "Tommy Vercetti has 500 points",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Second line shows Lance Vance with 300 points",
+    "input": "",
+    "expected": "Lance Vance has 300 points",
+    "mode": "line",
+    "line": 1
+  }
+]

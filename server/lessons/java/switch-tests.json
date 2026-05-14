@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Monday is a weekday",
+    "input": "",
+    "expected": "Weekday",
+    "mode": "contains"
+  },
+  {
+    "name": "Saturday is a weekend",
+    "input": "",
+    "expected": "Weekend",
+    "mode": "contains"
+  },
+  {
+    "name": "Output has two Weekday lines",
+    "input": "",
+    "expected": "Weekday\nWeekend\nWeekday",
+    "mode": "exact"
+  }
+]

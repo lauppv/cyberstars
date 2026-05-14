@@ -1,59 +1,54 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchCurriculum } from "../services/lessonService";
 import { useAuth } from "../context/AuthContext";
+import { useCurriculum } from "../context/CurriculumContext";
 import { useGamification } from "../hooks/useGamification";
 import * as progressService from "../services/progressService";
 import { Topbar } from "../components/layout/Topbar";
 import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import type { Course } from "../../shared/lesson";
 import type { CourseProgress } from "../../shared/progress";
-
-const COURSE_ICON: Record<string, string> = {
-  python: "🐍",
-  java: "☕",
-  c: "⚙️",
-  algo: "🧩",
-};
+import { COURSE_ICON } from "../constants/courses";
 
 export function CurriculumPage() {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
+  const { courses: allCourses, isLoading: curriculumLoading } = useCurriculum();
   const gamification = useGamification();
 
-  const [courses, setCourses] = useState<Course[]>([]);
+  const courses = allCourses.filter((c) => c.key !== "algo");
   const [isLoading, setIsLoading] = useState(true);
   const [progressMap, setProgressMap] = useState<Record<string, CourseProgress>>({});
 
   useEffect(() => {
-    const load = async () => {
+    if (curriculumLoading) return;
+    if (!isLoggedIn || !courses.length) {
+      setIsLoading(false);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
       try {
-        const data = (await fetchCurriculum()).filter((c) => c.key !== "algo");
-        setCourses(data);
-
-        if (isLoggedIn) {
-          const entries = await Promise.all(
-            data.map(async (course) => {
-              try {
-                const p = await progressService.getCourseProgress(course.key);
-                return [course.key, p] as const;
-              } catch {
-                return null;
-              }
-            })
-          );
+        const entries = await Promise.all(
+          courses.map(async (course) => {
+            try {
+              const p = await progressService.getCourseProgress(course.key);
+              return [course.key, p] as const;
+            } catch {
+              return null;
+            }
+          })
+        );
+        if (!cancelled) {
           const map: Record<string, CourseProgress> = {};
           for (const e of entries) if (e) map[e[0]] = e[1];
           setProgressMap(map);
         }
       } catch {}
-      finally {
-        setIsLoading(false);
-      }
-    };
-    load();
-  }, [isLoggedIn]);
+      if (!cancelled) setIsLoading(false);
+    })();
+    return () => { cancelled = true; };
+  }, [curriculumLoading, isLoggedIn]);
 
   if (isLoading) {
     return (

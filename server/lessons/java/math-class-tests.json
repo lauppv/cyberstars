@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Math.max(42, 17) is 42",
+    "input": "",
+    "expected": "42",
+    "mode": "contains"
+  },
+  {
+    "name": "Math.min(42, 17) is 17",
+    "input": "",
+    "expected": "17",
+    "mode": "contains"
+  },
+  {
+    "name": "Math.abs(-99) is 99",
+    "input": "",
+    "expected": "99",
+    "mode": "contains"
+  },
+  {
+    "name": "(int)Math.pow(2, 10) is 1024",
+    "input": "",
+    "expected": "1024",
+    "mode": "contains"
+  },
+  {
+    "name": "All four values on separate lines",
+    "input": "",
+    "expected": "42\n17\n99\n1024",
+    "mode": "exact"
+  }
+]

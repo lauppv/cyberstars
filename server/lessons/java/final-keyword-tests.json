@@ -1,0 +1,16 @@
+[
+  {
+    "name": "First line is 100",
+    "input": "",
+    "expected": "100",
+    "mode": "line",
+    "line": 0
+  },
+  {
+    "name": "Second line is CyberQuest",
+    "input": "",
+    "expected": "CyberQuest",
+    "mode": "line",
+    "line": 1
+  }
+]

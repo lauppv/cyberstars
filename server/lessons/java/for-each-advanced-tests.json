@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Prints the maximum value 41",
+    "input": "",
+    "expected": "41",
+    "mode": "exact"
+  }
+]
