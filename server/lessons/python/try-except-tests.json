@@ -1,5 +1,17 @@
 [
   {
+    "name": "Uses try/except",
+    "input": "",
+    "expected": "try\\s*:",
+    "mode": "code_regex"
+  },
+  {
+    "name": "Uses except block",
+    "input": "",
+    "expected": "except",
+    "mode": "code_regex"
+  },
+  {
     "name": "safeDivide(10, 2) -> 5.0",
     "input": "",
     "expected": "5.0",

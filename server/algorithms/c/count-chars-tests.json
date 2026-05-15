@@ -1,0 +1,6 @@
+[
+  { "name": "multiple occurrences", "input": "banana\na", "expected": "3", "mode": "exact" },
+  { "name": "no occurrences", "input": "hello\nz", "expected": "0", "mode": "exact" },
+  { "name": "single occurrence", "input": "abcdef\nc", "expected": "1", "mode": "exact" },
+  { "name": "all same char", "input": "aaaa\na", "expected": "4", "mode": "exact" }
+]

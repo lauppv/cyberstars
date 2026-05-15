@@ -1,5 +1,11 @@
 [
   {
+    "name": "Uses a for loop",
+    "input": "",
+    "expected": "for\\s*\\(",
+    "mode": "code_regex"
+  },
+  {
     "name": "Line 0 is 0",
     "input": "",
     "expected": "0",

@@ -1,5 +1,11 @@
 [
   {
+    "name": "Uses list comprehension",
+    "input": "",
+    "expected": "\\[.+for\\s+\\w+\\s+in\\s+",
+    "mode": "code_regex"
+  },
+  {
     "name": "highScores contains 95",
     "input": "",
     "expected": "95",

@@ -23,10 +23,11 @@ A free interactive coding education platform, inspired by freeCodeCamp, where us
 - **Split-screen lesson view** — educational Markdown content on the left, live code editor (CodeMirror) on the right
 - **Inline runnable code blocks** — code examples inside lesson text are interactive; click "Run Code" to execute them directly in the lesson
 - **Test case validation** — each lesson has test cases that verify the user's code (like LeetCode). A lesson is marked complete only when all tests pass — there is no manual "complete" button
-- **Multi-language support** — Python (49 lessons), Java (50 lessons), C (16 lessons), Algorithms (6 challenges) with language-specific syntax highlighting
+- **Multi-language support** — Python (49 lessons), Java (50 lessons), C (16 lessons) with language-specific syntax highlighting
+- **Algorithm challenges** — 45 algorithm challenges across 3 languages (Python, Java, C), each with difficulty levels (Easy/Medium/Hard) and colored difficulty filters
 - **Remote code execution** — user code runs server-side via Piston API (production) or Docker containers (development), not in the browser
-- **Progress tracking** — lessons are automatically marked complete when all test cases pass, with per-course progress bars on the curriculum page
-- **Gamification UI** — XP bar (15 XP per lesson, progressive leveling), level badge, streak widget, achievement toasts on completion, and 8 unlockable badges (First Code / Speed Run / Bug Squasher / On Fire / Diamond / Half Century / Course Master / Polyglot). All values are derived from real `UserLessonProgress` data — no separate gamification tables
+- **Progress tracking** — lessons are automatically marked complete when all test cases pass, with per-course progress bars
+- **Gamification UI** — XP bar (non-linear XP per lesson based on sort order), level badge, streak widget, achievement toasts on completion, and 8 unlockable badges (First Code / Speed Run / Bug Squasher / On Fire / Diamond / Half Century / Course Master / Polyglot). All values are derived from real `UserLessonProgress` data — no separate gamification tables
 - **Persistent course sidebar** — when viewing a lesson, a sidebar shows every lesson in the current course with a numbered marker (active = accent, completed = green ✓), a course progress bar, and the badges grid
 - **Code persistence** — user code is saved per lesson and restored on revisit, so learners never lose their work
 - **Curriculum from database** — courses and lessons are served from PostgreSQL with ordering, not hardcoded in the frontend
@@ -198,15 +199,15 @@ npm run start
 ```
 cyberstars/
 ├── shared/                                 # Cross-cutting types + constants (imported by both server and client)
-│   ├── constants.ts                        # XP_PER_LESSON, level formula (computeLevel, xpForLevel, xpToNextLevel)
+│   ├── constants.ts                        # xpForLesson (non-linear), level formula (computeLevel, xpForLevel, xpToNextLevel)
 │   ├── auth.ts                             # AuthenticatedUser, LoginPayload, SignupPayload, TokenPayload
 │   ├── lesson.ts                           # LessonContent, LessonMeta, Course
 │   ├── progress.ts                         # CourseProgress, LessonProgressItem
-│   └── tests.ts                            # TestCase, TestResult, SubmitResult
+│   └── tests.ts                            # TestCase, TestResult, SubmitResult, TestMode (6 modes)
 │
 ├── prisma/                                 # Schema, migrations, seed
 │   ├── schema.prisma                       # 5 models with camelCase fields + @map snake_case columns
-│   ├── seed.ts                             # Seeds curriculum + lessons (idempotent via upsert)
+│   ├── seed.ts                             # Seeds 6 courses (3 language + 3 algorithm) + 212 lessons (idempotent via upsert)
 │   └── migrations/
 │       ├── migration_lock.toml
 │       └── 0_init/
@@ -221,7 +222,7 @@ cyberstars/
 │   │   └── index.ts                        # Re-exports `config` and `prisma`
 │   ├── schemas/                            # Zod request schemas (input validation)
 │   │   ├── auth.schema.ts                  # signupSchema, loginSchema
-│   │   ├── code.schema.ts                  # runCodeSchema, submitCodeSchema (language enum-restricted)
+│   │   ├── code.schema.ts                  # runCodeSchema, submitCodeSchema (python/c/java + algo-* variants)
 │   │   └── progress.schema.ts              # saveCodeSchema
 │   ├── middleware/
 │   │   ├── auth.ts                         # JWT verification (authenticateToken + optionalAuth)
@@ -235,7 +236,8 @@ cyberstars/
 │   │   ├── auth.service.ts                 # signup, login, getUser (bcrypt + JWT)
 │   │   ├── lesson.service.ts               # getLessonContent, getLessonCode, getCurriculum
 │   │   ├── code-execution.service.ts       # execute (Piston API or Docker, supports stdin)
-│   │   ├── test-runner.service.ts          # Run code against JSON test cases, compare output
+│   │   ├── test-runner.service.ts          # Run code against JSON test cases, compare output (6 test modes)
+│   │   ├── paths.ts                        # contentDir() — resolves lesson/algorithm content directories
 │   │   └── progress.service.ts             # markComplete, saveCode, getSavedCode, getCourseProgress
 │   ├── controllers/                        # Thin req/res layer
 │   │   ├── auth.controller.ts              # signup, login, logout, me
@@ -253,22 +255,25 @@ cyberstars/
 │   ├── lessons/                            # Markdown lesson content (read from filesystem)
 │   │   ├── python/                         # 49 lessons (print, variables, loops, functions, algorithms, projects)
 │   │   ├── java/                           # 50 lessons (basics, OOP, collections, inheritance, projects)
-│   │   ├── c/                              # 16 lessons (print, variables, loops, functions, arrays)
-│   │   └── algo/                           # 6 challenges (Two Sum, Reverse String, etc.)
+│   │   └── c/                              # 16 lessons (print, variables, loops, functions, arrays)
+│   ├── algorithms/                         # Algorithm challenges (separate from lessons)
+│   │   ├── python/                         # 15 challenges (easy/medium/hard — strings, lists, ciphers, two sum)
+│   │   ├── java/                           # 15 challenges (easy/medium/hard — OOP, classes, generics, linked list)
+│   │   └── c/                              # 15 challenges (easy/medium/hard — arrays, pointers, structs, merge sort)
 │   └── runtimes/                           # Language registry — one file per supported language
 │       ├── types.ts                        # LanguageRuntime interface (image, pistonVersion, innerCmd)
-│       ├── registry.ts                     # getRuntime(lang) — single source of truth for supported langs
+│       ├── registry.ts                     # getRuntime(lang) — maps python/c/java + algo-* keys to runtimes
 │       ├── python.ts                       # Python runtime config
 │       ├── c.ts                            # C runtime config
 │       └── java.ts                         # Java runtime config
 │
 ├── client/                                 # Frontend (React + TypeScript)
 │   ├── main.tsx                            # React entry point
-│   ├── App.tsx                             # Router setup, AuthProvider + CurriculumProvider wrapper
+│   ├── App.tsx                             # Router setup, AuthProvider + CurriculumProvider + ProgressProvider wrapper
 │   ├── index.css                           # Google Fonts, design tokens (CSS variables), lesson body markdown styles, scrollbars
 │   ├── vite-env.d.ts                       # Vite type declarations
 │   ├── constants/
-│   │   └── courses.ts                      # COURSE_ICON, COURSE_COLOR, COURSE_LABEL, COURSE_LEVEL, LANG_LABEL
+│   │   └── courses.ts                      # COURSE_ICON, COURSE_COLOR, COURSE_LABEL, COURSE_LEVEL, LANG_LABEL (includes algo-* variants)
 │   ├── types/
 │   │   └── api.ts                          # ApiError + isApiError (frontend-only helper)
 │   ├── services/
@@ -279,7 +284,8 @@ cyberstars/
 │   │   └── progressService.ts              # getCourseProgress, markLessonComplete, saveCode
 │   ├── context/
 │   │   ├── AuthContext.tsx                 # Global auth state (user, login, signup, logout)
-│   │   └── CurriculumContext.tsx           # Curriculum cache — fetches once, used by all pages
+│   │   ├── CurriculumContext.tsx           # Curriculum cache — fetches once, used by all pages
+│   │   └── ProgressContext.tsx             # All-course progress cache — fetches once for logged-in users
 │   ├── hooks/
 │   │   ├── useLesson.ts                    # Fetches lesson content + saved code or template
 │   │   ├── useCodeExecution.ts             # Runs code with loading/output state
@@ -287,17 +293,16 @@ cyberstars/
 │   │   └── useGamification.ts              # Derives XP, level, badges from real progress (no separate DB tables)
 │   ├── components/
 │   │   ├── ui/                             # Button (5 variants), Input, Modal, LoadingSpinner
-│   │   ├── layout/                         # Topbar (logo + breadcrumb + streak + avatar)
+│   │   ├── layout/                         # Topbar (logo + nav [Dashboard/Courses/Algorithms] + breadcrumb + avatar)
 │   │   ├── gamification/                   # XPBar, StreakWidget, Badge, AchievementToast
 │   │   ├── code/                           # CodeEditor, CodeOutput, TestResults, CodeCell, RunButton
 │   │   └── markdown/                       # MarkdownRenderer (with CodeCell for runnable blocks)
 │   └── pages/
 │       ├── HomePage.tsx                    # Hero landing — level/XP/badges if logged in, feature cards otherwise
 │       ├── AuthPage.tsx                    # Login/signup card with logo + Topbar
-│       ├── CurriculumPage.tsx              # Course cards with emoji icons + progress
-│       ├── CoursesPage.tsx                 # Course catalog with filters, syllabus drawer
-│       ├── CourseLessonsPage.tsx            # Course lessons list with progress
-│       ├── ChallengesPage.tsx              # LeetCode-style challenges
+│       ├── CoursesPage.tsx                 # Course catalog (Python, Java, C)
+│       ├── AlgorithmsPage.tsx              # Algorithm language picker (Python, Java, C cards)
+│       ├── AlgorithmListPage.tsx           # Per-language algorithm list with Easy/Medium/Hard filters
 │       ├── LessonPage.tsx                  # Topbar + XPBar + content split + editor panel + Output
 │       └── ProfilePage.tsx                 # User profile with stats, badges, course progress
 │
@@ -417,7 +422,7 @@ No changes to the service, controllers, or routes are required.
 
 ## Lesson Content
 
-Lessons are authored in Markdown and stored in `server/lessons/:language/`. Each lesson consists of:
+Lessons are authored in Markdown and stored in `server/lessons/:language/`. Algorithm challenges live in `server/algorithms/:language/`. Each lesson/challenge consists of:
 
 - **`lesson-slug.md`** — the educational content (explanations, examples, inline code blocks)
 - **`lesson-slug-code.md`** — the starter code template for the right-side editor
@@ -435,19 +440,23 @@ Each lesson's test file defines an array of test cases. Supported test modes:
 | `contains` | Output must contain the expected string |
 | `any` | Any non-empty output passes |
 | `line` | A specific line of the output must match (by line index) |
+| `regex` | Output must match a regular expression pattern |
+| `code_regex` | The submitted source code must match a regular expression (validates code structure, not output) |
 
 Tests can also use `overrides` to inject variable values into user code (for testing different inputs on the same logic), and `append` to add function calls after user code (for testing function definitions). The full test case shape lives in `shared/tests.ts` and is the same type used by both the test runner on the server and the result rendering on the client.
 
 ### Available lessons
 
-| Language | Lessons | Topics |
-|----------|---------|--------|
-| Python | 49 | print, variables, f-strings, comments, conditionals, loops, functions, input, operators, booleans, string methods, lists, break/continue, return values, dictionaries, tuples, sets, nested loops, list comprehension, scope, default params, try/except, built-in functions, patterns, algorithms, recursion, matrices, projects |
-| Java | 50 | print, variables, strings, comments, conditionals, loops, methods, input, operators, booleans, string methods, arrays, break/continue, return values, method overloading, nested loops, ArrayList, HashMap, Math class, classes & objects, constructors, instance methods, getters/setters, toString, static, final, scope & access, null, wrapper classes, inheritance, method overriding, polymorphism, abstract classes, interfaces, type casting, try/catch, String.format, sorting, enums, switch, projects |
-| C | 16 | print, variables (integers/floats), comments, if/else, if/else if/else, for loops, while loops, functions, input (scanf), operators, booleans, strings, arrays, looping over arrays, break/continue |
-| Algorithms | 6 | LeetCode-style challenges (Two Sum, Reverse String, Sum of Digits, Count Vowels, Bubble Sort, Anagram Check) |
+| Course | Count | Topics |
+|--------|-------|--------|
+| Python | 49 lessons | print, variables, f-strings, comments, conditionals, loops, functions, input, operators, booleans, string methods, lists, break/continue, return values, dictionaries, tuples, sets, nested loops, list comprehension, scope, default params, try/except, built-in functions, patterns, algorithms, recursion, matrices, projects |
+| Java | 50 lessons | print, variables, strings, comments, conditionals, loops, methods, input, operators, booleans, string methods, arrays, break/continue, return values, method overloading, nested loops, ArrayList, HashMap, Math class, classes & objects, constructors, instance methods, getters/setters, toString, static, final, scope & access, null, wrapper classes, inheritance, method overriding, polymorphism, abstract classes, interfaces, type casting, try/catch, String.format, sorting, enums, switch, projects |
+| C | 16 lessons | print, variables (integers/floats), comments, if/else, if/else if/else, for loops, while loops, functions, input (scanf), operators, booleans, strings, arrays, looping over arrays, break/continue |
+| Python Algorithms | 15 challenges | reverse string, sum of digits, count vowels, palindrome, find maximum, even/odd, count words, sum of list, longest word, reverse words, caesar cipher, remove duplicates, anagram check, words with vowels, two sum |
+| Java Algorithms | 15 challenges | student GPA, rectangle calculator, bank account, counter class, temperature converter, string stats, dice roller, shopping item, sort students, inventory manager, shape hierarchy, stack, linked list, iterator pattern, generic pair |
+| C Algorithms | 15 challenges | reverse array, string length, count chars, sum array, find minimum, even count, print triangle, digit count, swap pointers, dynamic array, matrix transpose, struct sort, bitwise ops, linked list, merge sort |
 
-Adding a new lesson requires: (1) creating the `.md` file in `server/lessons/:lang/`, (2) creating a `-code.md` starter template, (3) creating a `-tests.json` file with test cases, and (4) adding the lesson row to `prisma/seed.ts`. The next `npm run dev` will automatically seed it into the database.
+Adding a new lesson requires: (1) creating the `.md` file in the appropriate directory (`server/lessons/:lang/` for courses, `server/algorithms/:lang/` for algorithm challenges), (2) creating a `-code.md` starter template, (3) creating a `-tests.json` file with test cases, and (4) adding the lesson row to `prisma/seed.ts`. The next `npm run dev` will automatically seed it into the database. Algorithm challenge titles must follow the `"Easy · Name"` / `"Medium · Name"` / `"Hard · Name"` format for the difficulty filter to work.
 
 ## Architecture Decisions
 
@@ -463,7 +472,7 @@ Adding a new lesson requires: (1) creating the `.md` file in `server/lessons/:la
 
 - **Cookie-based auth over Bearer tokens**: JWT tokens are stored in httpOnly cookies instead of localStorage. This prevents XSS from accessing tokens — the browser handles cookie attachment automatically via `credentials: "include"`, and the server never exposes the token to JavaScript.
 
-- **Filesystem lessons, database metadata**: Lesson content lives in `.md` files (easy to author and version with git), while ordering and metadata live in PostgreSQL (easy to query and extend). This avoids putting large text blobs in the database while keeping the curriculum structure queryable.
+- **Filesystem lessons, database metadata**: Lesson content lives in `.md` files (easy to author and version with git), while ordering and metadata live in PostgreSQL (easy to query and extend). This avoids putting large text blobs in the database while keeping the curriculum structure queryable. A shared `contentDir()` helper in `server/services/paths.ts` resolves the correct directory for both regular lessons (`server/lessons/:lang/`) and algorithm challenges (`server/algorithms/:lang/`).
 
 - **Centralized API client**: All frontend API calls go through `apiClient.ts`, which handles base URL resolution, credentials, JSON parsing, and error normalization. No raw `fetch()` calls anywhere in the frontend — every service function is a one-liner that calls `api.get()` or `api.post()`.
 
@@ -475,7 +484,7 @@ Adding a new lesson requires: (1) creating the `.md` file in `server/lessons/:la
 
 - **Design tokens via CSS variables, not Tailwind config**: Colors, fonts, radii, and shadows are declared once in `client/index.css` as `--accent`, `--bg`, `--bg2`, `--surface`, etc. Components reference them through Tailwind's arbitrary-value syntax (`bg-[var(--accent)]`, `text-[var(--text2)]`). Re-theming or building a light mode is a matter of overriding a handful of variables; no rebuild or component changes required. The values came from a Claude Design handoff spec — see `client/index.css` for the full palette.
 
-- **Gamification derived, not stored**: XP, level, and badges are computed on the client from `UserLessonProgress` data already in the DB (`useGamification.ts` hook). 15 XP per completed lesson; leveling follows a progressive formula where each level requires 50 more XP than the last (`shared/constants.ts`). 8 badges unlock at lesson-count thresholds and on course completion. No new tables, no new endpoints, no risk of XP and progress drifting out of sync. Streak is currently localStorage-based — adding it server-side would require a `user_activity` table to track daily logins.
+- **Gamification derived, not stored**: XP, level, and badges are computed on the client from `UserLessonProgress` data already in the DB (`useGamification.ts` hook). XP per lesson is non-linear — later lessons in a course award more XP (formula in `shared/constants.ts`). Leveling follows a progressive formula where each level requires 50 more XP than the last. 8 badges unlock at lesson-count thresholds and on course completion. No new tables, no new endpoints, no risk of XP and progress drifting out of sync. Streak is currently localStorage-based — adding it server-side would require a `user_activity` table to track daily logins.
 
 - **`npm run dev` does everything**: The `dev` script runs `db:prepare` (Prisma generate + migrate deploy + seed) before starting the servers. Adding a lesson or migration requires zero manual database commands — just edit the files and restart. The seed is idempotent (`upsert`), so it's safe to run on every startup.
 

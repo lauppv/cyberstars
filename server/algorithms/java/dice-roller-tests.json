@@ -1,0 +1,5 @@
+[
+  { "name": "uses Dice class", "input": "", "expected": "class\\s+Dice", "mode": "code_regex" },
+  { "name": "uses Random with seed", "input": "", "expected": "new\\s+Random\\s*\\(", "mode": "code_regex" },
+  { "name": "has roll method", "input": "", "expected": "roll\\s*\\(", "mode": "code_regex" }
+]

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const language = z.enum(["python", "c", "java"]);
+const language = z.enum(["python", "c", "java", "algo-python", "algo-java", "algo-c"]);
 
 export const runCodeSchema = z.object({
   code: z.string().max(50_000),

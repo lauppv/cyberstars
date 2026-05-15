@@ -6,7 +6,9 @@ const courses = [
   { key: "python", title: "Python", description: "New to programming? We highly recommend Python", sortOrder: 1 },
   { key: "c", title: "C", description: "Low-level programming, pointers, memory, and OS concepts", sortOrder: 2 },
   { key: "java", title: "Java", description: "Object Oriented Programming", sortOrder: 3 },
-  { key: "algo", title: "Algorithms", description: "Practice with classic LeetCode-style problems — strings, sorting, hash maps", sortOrder: 4 },
+  { key: "algo-python", title: "Python Algorithms", description: "Classic algorithms with strings, lists, loops, and dictionaries", sortOrder: 4 },
+  { key: "algo-java", title: "Java Algorithms", description: "OOP-focused challenges — classes, objects, inheritance, and collections", sortOrder: 5 },
+  { key: "algo-c", title: "C Algorithms", description: "Low-level challenges with arrays, pointers, structs, and memory", sortOrder: 6 },
 ];
 
 const lessons = [
@@ -178,12 +180,53 @@ const lessons = [
   { courseKey: "java", slug: "project-battle", title: "Project: Battle Simulator", sortOrder: 60, hasCodeFile: true },
   { courseKey: "java", slug: "project-student-grades", title: "Project: Student Gradebook", sortOrder: 61, hasCodeFile: true },
 
-  { courseKey: "algo", slug: "reverse-string", title: "Easy · Reverse a String", sortOrder: 1, hasCodeFile: true },
-  { courseKey: "algo", slug: "sum-of-digits", title: "Easy · Sum of Digits", sortOrder: 2, hasCodeFile: true },
-  { courseKey: "algo", slug: "count-vowels", title: "Medium · Count Vowels", sortOrder: 3, hasCodeFile: true },
-  { courseKey: "algo", slug: "bubble-sort", title: "Medium · Sort the Numbers", sortOrder: 4, hasCodeFile: true },
-  { courseKey: "algo", slug: "two-sum", title: "Hard · Two Sum", sortOrder: 5, hasCodeFile: true },
-  { courseKey: "algo", slug: "anagram", title: "Hard · Anagram Check", sortOrder: 6, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "reverse-string", title: "Easy · Reverse a String", sortOrder: 1, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "sum-of-digits", title: "Easy · Sum of Digits", sortOrder: 2, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "count-vowels", title: "Easy · Count Vowels", sortOrder: 3, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "palindrome", title: "Easy · Palindrome Check", sortOrder: 4, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "find-maximum", title: "Easy · Find Maximum", sortOrder: 5, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "even-or-odd", title: "Easy · Even or Odd", sortOrder: 6, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "count-words", title: "Easy · Count Words", sortOrder: 7, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "sum-of-list", title: "Easy · Sum of List", sortOrder: 8, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "longest-word", title: "Easy · Longest Word", sortOrder: 9, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "reverse-words", title: "Easy · Reverse Words", sortOrder: 10, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "words-with-vowels", title: "Medium · Words with Two Vowels", sortOrder: 11, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "caesar-cipher", title: "Medium · Caesar Cipher", sortOrder: 12, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "remove-duplicates", title: "Medium · Remove Duplicates", sortOrder: 13, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "anagram-check", title: "Medium · Anagram Check", sortOrder: 14, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "two-sum", title: "Hard · Two Sum", sortOrder: 15, hasCodeFile: true },
+
+  { courseKey: "algo-java", slug: "student-gpa", title: "Easy · Student GPA", sortOrder: 1, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "rectangle-calc", title: "Easy · Rectangle Calculator", sortOrder: 2, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "bank-account", title: "Easy · Bank Account", sortOrder: 3, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "counter-class", title: "Easy · Counter Class", sortOrder: 4, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "temperature-converter", title: "Easy · Temperature Converter", sortOrder: 5, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "string-stats", title: "Easy · String Stats", sortOrder: 6, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "dice-roller", title: "Easy · Dice Roller", sortOrder: 7, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "shopping-item", title: "Easy · Shopping Item", sortOrder: 8, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "comparable-sort", title: "Medium · Sort Students", sortOrder: 9, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "inventory-manager", title: "Medium · Inventory Manager", sortOrder: 10, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "shape-hierarchy", title: "Medium · Shape Hierarchy", sortOrder: 11, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "stack-impl", title: "Medium · Stack Implementation", sortOrder: 12, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "linked-list", title: "Hard · Linked List", sortOrder: 13, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "iterator-pattern", title: "Hard · Number Range Iterator", sortOrder: 14, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "generic-pair", title: "Hard · Generic Pair", sortOrder: 15, hasCodeFile: true },
+
+  { courseKey: "algo-c", slug: "reverse-array", title: "Easy · Reverse an Array", sortOrder: 1, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "string-length", title: "Easy · String Length", sortOrder: 2, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "count-chars", title: "Easy · Count Characters", sortOrder: 3, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "sum-array", title: "Easy · Sum Array", sortOrder: 4, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "find-min", title: "Easy · Find Minimum", sortOrder: 5, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "even-count", title: "Easy · Even Count", sortOrder: 6, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "print-triangle", title: "Easy · Print Triangle", sortOrder: 7, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "digit-count", title: "Easy · Digit Count", sortOrder: 8, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "swap-pointers", title: "Medium · Swap with Pointers", sortOrder: 9, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "dynamic-array", title: "Medium · Dynamic Array", sortOrder: 10, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "matrix-transpose", title: "Medium · Matrix Transpose", sortOrder: 11, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "struct-sort", title: "Medium · Sort Students", sortOrder: 12, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "bitwise-ops", title: "Hard · Bitwise Power of Two", sortOrder: 13, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "linked-list-c", title: "Hard · Linked List", sortOrder: 14, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "merge-sort", title: "Hard · Merge Sort", sortOrder: 15, hasCodeFile: true },
 ];
 
 async function main() {
@@ -202,6 +245,9 @@ async function main() {
       update: {},
     });
   }
+
+  await prisma.lesson.deleteMany({ where: { courseKey: "algo" } });
+  await prisma.curriculum.deleteMany({ where: { key: "algo" } });
 
   console.log(`Seeded ${courses.length} courses and ${lessons.length} lessons.`);
 }

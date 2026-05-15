@@ -145,9 +145,8 @@ export function CourseLessonsPage() {
             </nav>
           </div>
 
-          {/* Back button */}
           <button
-            onClick={() => navigate("/curriculum")}
+            onClick={() => navigate("/courses")}
             className="mt-4 text-[var(--text3)] text-[13px] hover:text-[var(--text)] transition cursor-pointer"
           >
             ← Back

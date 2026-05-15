@@ -2,12 +2,11 @@ import fs from "fs";
 import path from "path";
 import type { LessonContent } from "../../shared/lesson.js";
 import { AppError } from "../middleware/errorHandler.js";
+import { contentDir } from "./paths.js";
 import * as curriculumRepo from "../repositories/curriculum.repository.js";
 
-const LESSONS_DIR = path.join(process.cwd(), "server", "lessons");
-
 export function getLessonContent(courseKey: string, lessonSlug: string): LessonContent {
-  const filePath = path.join(LESSONS_DIR, courseKey, `${lessonSlug}.md`);
+  const filePath = path.join(contentDir(courseKey), `${lessonSlug}.md`);
 
   if (!fs.existsSync(filePath)) {
     throw new AppError(404, "Lesson not found");
@@ -18,7 +17,7 @@ export function getLessonContent(courseKey: string, lessonSlug: string): LessonC
 }
 
 export function getLessonCode(courseKey: string, file: string): string {
-  const filePath = path.join(LESSONS_DIR, courseKey, file);
+  const filePath = path.join(contentDir(courseKey), file);
 
   if (!fs.existsSync(filePath)) {
     throw new AppError(404, "Code file not found");

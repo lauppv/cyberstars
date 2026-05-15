@@ -1,4 +1,4 @@
-export type TestMode = "exact" | "contains" | "any" | "line";
+export type TestMode = "exact" | "contains" | "any" | "line" | "regex" | "code_regex";
 
 export interface TestCase {
   name: string;

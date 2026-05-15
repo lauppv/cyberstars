@@ -22,12 +22,14 @@ function getExtensions(language: string): Extension[] {
   switch (lang) {
     case "python":
     case "py":
-    case "algo":
+    case "algo-python":
       return [...base, python()];
     case "c":
     case "cpp":
+    case "algo-c":
       return [...base, cpp()];
     case "java":
+    case "algo-java":
       return [...base, java()];
     default:
       return base;

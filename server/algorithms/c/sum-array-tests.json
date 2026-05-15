@@ -1,0 +1,6 @@
+[
+  { "name": "basic sum", "input": "5\n1 2 3 4 5", "expected": "15", "mode": "exact" },
+  { "name": "with negatives", "input": "3\n10 -3 7", "expected": "14", "mode": "exact" },
+  { "name": "single element", "input": "1\n42", "expected": "42", "mode": "exact" },
+  { "name": "all zeros", "input": "4\n0 0 0 0", "expected": "0", "mode": "exact" }
+]

@@ -1,0 +1,6 @@
+[
+  { "name": "mixed", "input": "5\n1 2 3 4 5", "expected": "2", "mode": "exact" },
+  { "name": "all even", "input": "4\n2 4 6 8", "expected": "4", "mode": "exact" },
+  { "name": "all odd", "input": "3\n1 3 5", "expected": "0", "mode": "exact" },
+  { "name": "includes zero", "input": "3\n0 1 2", "expected": "2", "mode": "exact" }
+]

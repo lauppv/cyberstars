@@ -1,5 +1,11 @@
 [
   {
+    "name": "Uses nested for loops",
+    "input": "",
+    "expected": "for\\s*\\([^)]*\\)\\s*\\{[^}]*for\\s*\\(",
+    "mode": "code_regex"
+  },
+  {
     "name": "Row 1: single star",
     "input": "",
     "expected": "*",

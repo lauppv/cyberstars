@@ -1,0 +1,6 @@
+[
+  { "name": "basic reverse", "input": "5\n1 2 3 4 5", "expected": "5 4 3 2 1", "mode": "exact" },
+  { "name": "three elements", "input": "3\n10 20 30", "expected": "30 20 10", "mode": "exact" },
+  { "name": "single element", "input": "1\n42", "expected": "42", "mode": "exact" },
+  { "name": "two elements", "input": "2\n7 3", "expected": "3 7", "mode": "exact" }
+]

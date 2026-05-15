@@ -1,0 +1,7 @@
+[
+  { "name": "hello and 42", "input": "hello\n42", "expected": "(hello, 42)\n(42, hello)", "mode": "exact" },
+  { "name": "Java and 100", "input": "Java\n100", "expected": "(Java, 100)\n(100, Java)", "mode": "exact" },
+  { "name": "world and 0", "input": "world\n0", "expected": "(world, 0)\n(0, world)", "mode": "exact" },
+  { "name": "uses generics", "input": "", "expected": "class\\s+Pair\\s*<", "mode": "code_regex" },
+  { "name": "has swap method", "input": "", "expected": "swap\\s*\\(", "mode": "code_regex" }
+]

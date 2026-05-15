@@ -1,0 +1,7 @@
+[
+  { "name": "boiling point C to F", "input": "100.0 C", "expected": "Celsius: 100.0\nFahrenheit: 212.0", "mode": "exact" },
+  { "name": "freezing point F to C", "input": "32.0 F", "expected": "Celsius: 0.0\nFahrenheit: 32.0", "mode": "exact" },
+  { "name": "body temperature F", "input": "98.6 F", "expected": "Celsius: 37.0\nFahrenheit: 98.6", "mode": "exact" },
+  { "name": "negative Celsius", "input": "-40.0 C", "expected": "Celsius: -40.0\nFahrenheit: -40.0", "mode": "exact" },
+  { "name": "uses Temperature class", "input": "", "expected": "class\\s+Temperature", "mode": "code_regex" }
+]

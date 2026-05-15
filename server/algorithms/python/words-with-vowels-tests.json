@@ -1,0 +1,6 @@
+[
+  { "name": "hello and apple match", "input": "hello world apple", "expected": "hello\napple", "mode": "exact" },
+  { "name": "no matches", "input": "cat dog fly", "expected": "", "mode": "exact" },
+  { "name": "mixed case vowels", "input": "About myth open", "expected": "About\nopen", "mode": "exact" },
+  { "name": "single matching word", "input": "oink", "expected": "oink", "mode": "exact" }
+]

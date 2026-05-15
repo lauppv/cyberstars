@@ -1,7 +1,0 @@
-[
-  { "name": "Hello -> 2", "input": "Hello", "expected": "2", "mode": "exact" },
-  { "name": "no vowels", "input": "rhythm", "expected": "0", "mode": "exact" },
-  { "name": "mixed case", "input": "OpenAI", "expected": "4", "mode": "exact" },
-  { "name": "all vowels", "input": "aeiou", "expected": "5", "mode": "exact" },
-  { "name": "empty-ish", "input": "bcdfg", "expected": "0", "mode": "exact" }
-]

@@ -1,0 +1,7 @@
+[
+  { "name": "basic sort", "input": "3\nAlice 85\nBob 72\nCharlie 90", "expected": "Bob 72\nAlice 85\nCharlie 90", "mode": "exact" },
+  { "name": "equal grades stable", "input": "2\nDan 50\nEve 50", "expected": "Dan 50\nEve 50", "mode": "exact" },
+  { "name": "already sorted", "input": "3\nAna 60\nBen 70\nCal 80", "expected": "Ana 60\nBen 70\nCal 80", "mode": "exact" },
+  { "name": "reverse order", "input": "3\nZoe 99\nYan 55\nXia 10", "expected": "Xia 10\nYan 55\nZoe 99", "mode": "exact" },
+  { "name": "uses struct", "input": "", "expected": "struct", "mode": "code_regex" }
+]

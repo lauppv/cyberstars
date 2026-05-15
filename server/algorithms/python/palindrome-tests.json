@@ -1,0 +1,7 @@
+[
+  { "name": "racecar is a palindrome", "input": "racecar", "expected": "True", "mode": "exact" },
+  { "name": "hello is not a palindrome", "input": "hello", "expected": "False", "mode": "exact" },
+  { "name": "single character", "input": "a", "expected": "True", "mode": "exact" },
+  { "name": "abba is a palindrome", "input": "abba", "expected": "True", "mode": "exact" },
+  { "name": "ab is not a palindrome", "input": "ab", "expected": "False", "mode": "exact" }
+]

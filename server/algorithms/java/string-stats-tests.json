@@ -1,0 +1,7 @@
+[
+  { "name": "hello world", "input": "Hello World", "expected": "Vowels: 3\nConsonants: 7\nWords: 2", "mode": "exact" },
+  { "name": "java is fun", "input": "Java is fun", "expected": "Vowels: 4\nConsonants: 5\nWords: 3", "mode": "exact" },
+  { "name": "single word", "input": "aeiou", "expected": "Vowels: 5\nConsonants: 0\nWords: 1", "mode": "exact" },
+  { "name": "all consonants", "input": "rhythm", "expected": "Vowels: 0\nConsonants: 6\nWords: 1", "mode": "exact" },
+  { "name": "uses StringAnalyzer class", "input": "", "expected": "class\\s+StringAnalyzer", "mode": "code_regex" }
+]

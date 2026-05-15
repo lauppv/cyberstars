@@ -1,5 +1,11 @@
 [
   {
+    "name": "Uses a for loop",
+    "input": "",
+    "expected": "for\\s+\\w+\\s+in\\s+",
+    "mode": "code_regex"
+  },
+  {
     "name": "First line is 0",
     "input": "",
     "expected": "0",

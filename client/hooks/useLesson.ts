@@ -5,8 +5,11 @@ import { useAuth } from "../context/AuthContext";
 
 const DEFAULT_CODE: Record<string, string> = {
   python: "# Python code goes here",
+  "algo-python": "# Python code goes here",
   c: '#include <stdio.h>\nint main(void) {\n\n}',
+  "algo-c": '#include <stdio.h>\nint main(void) {\n\n}',
   java: 'public class Main {\n  public static void main(String[] args) {\n\n  }\n}',
+  "algo-java": 'public class Main {\n  public static void main(String[] args) {\n\n  }\n}',
 };
 
 export function useLesson(courseKey: string, lessonSlug: string) {

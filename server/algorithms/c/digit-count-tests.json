@@ -1,0 +1,7 @@
+[
+  { "name": "five digits", "input": "12345", "expected": "5", "mode": "exact" },
+  { "name": "zero", "input": "0", "expected": "1", "mode": "exact" },
+  { "name": "single digit", "input": "7", "expected": "1", "mode": "exact" },
+  { "name": "large number", "input": "1000000000", "expected": "10", "mode": "exact" },
+  { "name": "two digits", "input": "99", "expected": "2", "mode": "exact" }
+]

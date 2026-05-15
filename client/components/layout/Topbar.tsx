@@ -13,7 +13,7 @@ interface TopbarProps {
 const NAV_ITEMS = [
   { label: "Dashboard", path: "/" },
   { label: "Courses", path: "/courses" },
-  { label: "Challenges", path: "/challenges" },
+  { label: "Algorithms", path: "/algorithms" },
 ];
 
 export function Topbar({
@@ -76,7 +76,7 @@ export function Topbar({
 
         {breadcrumb ? (
           <div className="flex items-center gap-2 text-[13px] text-[var(--text3)]">
-            {breadcrumb.course && <span className="text-[var(--text2)]">{breadcrumb.course}</span>}
+            {breadcrumb.course && <span className="text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition" onClick={() => navigate("/courses")}>{breadcrumb.course}</span>}
             {breadcrumb.course && breadcrumb.lesson && <span className="opacity-40">/</span>}
             {breadcrumb.lesson && <span className="text-[var(--text)]">{breadcrumb.lesson}</span>}
           </div>
@@ -86,7 +86,9 @@ export function Topbar({
               const isActive =
                 item.path === "/"
                   ? location.pathname === "/"
-                  : location.pathname.startsWith(item.path);
+                  : item.path === "/algorithms"
+                    ? location.pathname.startsWith("/algorithms") || location.pathname.startsWith("/lesson/algo")
+                    : location.pathname.startsWith(item.path);
               return (
                 <button
                   key={item.path}

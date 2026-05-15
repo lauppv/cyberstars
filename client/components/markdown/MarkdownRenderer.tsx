@@ -12,6 +12,9 @@ const components: Components = {
   strong({ children }) {
     return <strong style={{ color: "#5aa0e0" }}>{children}</strong>;
   },
+  pre({ children }) {
+    return <pre style={{ margin: 0, padding: 0, background: "transparent" }}>{children}</pre>;
+  },
   code({ className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || "");
     const lang = match?.[1]?.toLowerCase();

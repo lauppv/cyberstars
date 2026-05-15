@@ -2,13 +2,12 @@ import fs from "fs";
 import path from "path";
 import { execute } from "./code-execution.service.js";
 import type { TestCase, TestResult, SubmitResult } from "../../shared/tests.js";
+import { contentDir } from "./paths.js";
 
 export type { TestResult, SubmitResult };
 
-const LESSONS_DIR = path.join(process.cwd(), "server", "lessons");
-
 export function getTestCases(courseKey: string, lessonSlug: string): TestCase[] | null {
-  const filePath = path.join(LESSONS_DIR, courseKey, `${lessonSlug}-tests.json`);
+  const filePath = path.join(contentDir(courseKey), `${lessonSlug}-tests.json`);
   if (!fs.existsSync(filePath)) return null;
   const content = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(content);
@@ -39,7 +38,7 @@ function applyOverrides(code: string, overrides: Record<string, string>): string
   return result;
 }
 
-function checkResult(output: string, testCase: TestCase): boolean {
+function checkResult(output: string, testCase: TestCase, code: string): boolean {
   const trimmedOutput = output.trim();
 
   switch (testCase.mode) {
@@ -53,6 +52,10 @@ function checkResult(output: string, testCase: TestCase): boolean {
       if (lineIndex >= lines.length) return false;
       return lines[lineIndex].trim() === testCase.expected;
     }
+    case "regex":
+      return new RegExp(testCase.expected).test(trimmedOutput);
+    case "code_regex":
+      return new RegExp(testCase.expected).test(code);
     case "exact":
     default:
       return trimmedOutput === testCase.expected;
@@ -83,13 +86,13 @@ export async function runTests(
     }
 
     const output = await execute(testCode, language, testCase.input);
-    const passed = checkResult(output, testCase);
+    const passed = checkResult(output, testCase, code);
 
     results.push({
       name: testCase.name,
       passed,
-      expected: testCase.mode === "any" ? "(any output)" : testCase.expected,
-      actual: output.trim(),
+      expected: testCase.mode === "any" ? "(any output)" : testCase.mode === "code_regex" ? "(code structure check)" : testCase.expected,
+      actual: testCase.mode === "code_regex" ? (passed ? "(found)" : "(not found)") : output.trim(),
     });
   }
 

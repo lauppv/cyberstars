@@ -1,9 +1,15 @@
 [
   {
+    "name": "Defines a function",
+    "input": "",
+    "expected": "def\\s+calculator\\s*\\(",
+    "mode": "code_regex"
+  },
+  {
     "name": "Addition: 14 + 12 = 26",
     "input": "",
-    "expected": "14 + 12 = 26",
-    "mode": "contains",
+    "expected": "14 \\+ 12 = 26",
+    "mode": "regex",
     "append": "\ncalculator(14, 12, \"+\")"
   },
   {
@@ -16,15 +22,15 @@
   {
     "name": "Multiplication: 5 * 4 = 20",
     "input": "",
-    "expected": "5 * 4 = 20",
-    "mode": "contains",
+    "expected": "5 \\* 4 = 20",
+    "mode": "regex",
     "append": "\ncalculator(5, 4, \"*\")"
   },
   {
     "name": "Division: 10 / 2 = 5.0",
     "input": "",
-    "expected": "10 / 2 = 5.0",
-    "mode": "contains",
+    "expected": "10 / 2 = 5\\.0",
+    "mode": "regex",
     "append": "\ncalculator(10, 2, \"/\")"
   },
   {

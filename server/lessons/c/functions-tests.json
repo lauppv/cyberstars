@@ -1,9 +1,15 @@
 [
   {
+    "name": "Defines a calculator function",
+    "input": "",
+    "expected": "void\\s+calculator\\s*\\(|int\\s+calculator\\s*\\(",
+    "mode": "code_regex"
+  },
+  {
     "name": "Addition: 14 + 12 = 26",
     "input": "",
-    "expected": "14 + 12 = 26",
-    "mode": "contains"
+    "expected": "14 \\+ 12 = 26",
+    "mode": "regex"
   },
   {
     "name": "Subtraction: 10 - 3 = 7",
@@ -14,8 +20,8 @@
   {
     "name": "Multiplication: 5 * 4 = 20",
     "input": "",
-    "expected": "5 * 4 = 20",
-    "mode": "contains"
+    "expected": "5 \\* 4 = 20",
+    "mode": "regex"
   },
   {
     "name": "Division: 10 / 2 = 5",

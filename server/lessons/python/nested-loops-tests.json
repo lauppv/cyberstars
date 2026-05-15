@@ -1,5 +1,11 @@
 [
   {
+    "name": "Uses nested loops",
+    "input": "",
+    "expected": "for\\s+.+:\\s*\\n\\s+for\\s+",
+    "mode": "code_regex"
+  },
+  {
     "name": "Line 0 is *",
     "input": "",
     "expected": "*",

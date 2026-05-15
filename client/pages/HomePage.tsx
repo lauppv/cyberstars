@@ -360,7 +360,7 @@ export function HomePage() {
 
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <button
-              onClick={() => navigate("/curriculum")}
+              onClick={() => navigate("/courses")}
               className="px-6 py-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer"
             >
               Start Learning →

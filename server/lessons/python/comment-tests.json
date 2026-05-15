@@ -1,5 +1,11 @@
 [
   {
+    "name": "Uses a comment",
+    "input": "",
+    "expected": "#",
+    "mode": "code_regex"
+  },
+  {
     "name": "Displays rocket name",
     "input": "",
     "expected": "Laniakea-Explorer",

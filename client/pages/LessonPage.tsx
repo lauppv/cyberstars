@@ -49,12 +49,6 @@ const AI_HINTS: Record<string, string[]> = {
     "💡 C uses curly braces {} to group code blocks. Every opening brace needs a closing one!",
     "💡 Remember: in C, you must declare variable types. Use int for whole numbers, float for decimals.",
   ],
-  algo: [
-    "💡 Read input with input(). For multiple values on one line, try input().split().",
-    "💡 To reverse a string, you can use slicing: s[::-1].",
-    "💡 To sort, Python has sorted(list). For numeric strings, convert with int(x) first.",
-    "💡 Use a dictionary (hash map) to look up complements in O(1) — great for Two Sum.",
-  ],
 };
 
 function pickHint(lang: string): string {
@@ -203,7 +197,7 @@ export function LessonPage() {
                   <>
                     <div className="flex items-center gap-3 mb-2 flex-wrap">
                       <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                        {category === "algo" ? "Problem" : "Lesson"} {currentIndex + 1} of {lessonList.length}
+                        Lesson {currentIndex + 1} of {lessonList.length}
                       </span>
                       {difficulty && (
                         <span

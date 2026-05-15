@@ -1,7 +1,0 @@
-[
-  { "name": "1234 -> 10", "input": "1234", "expected": "10", "mode": "exact" },
-  { "name": "single digit", "input": "9", "expected": "9", "mode": "exact" },
-  { "name": "100 -> 1", "input": "100", "expected": "1", "mode": "exact" },
-  { "name": "zero", "input": "0", "expected": "0", "mode": "exact" },
-  { "name": "large number", "input": "999999", "expected": "54", "mode": "exact" }
-]

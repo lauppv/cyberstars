@@ -1,0 +1,7 @@
+[
+  { "name": "basic sum and average", "input": "4\n10 20 30 40", "expected": "100\n25.00", "mode": "exact" },
+  { "name": "all equal", "input": "3\n5 5 5", "expected": "15\n5.00", "mode": "exact" },
+  { "name": "single element", "input": "1\n7", "expected": "7\n7.00", "mode": "exact" },
+  { "name": "uses malloc", "input": "", "expected": "malloc", "mode": "code_regex" },
+  { "name": "uses free", "input": "", "expected": "free", "mode": "code_regex" }
+]

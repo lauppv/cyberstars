@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
 import { useGamification } from "../hooks/useGamification";
@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
 import { COURSE_ICON, COURSE_COLOR } from "../constants/courses";
-import { xpForLesson, progressPct } from "../../shared/constants";
+import { xpForLesson, progressPct, MAIN_COURSE_KEYS } from "../../shared/constants";
 
 interface CourseData {
   key: string;
@@ -21,27 +21,18 @@ interface CourseData {
   firstSlug?: string;
 }
 
-const FILTERS = [
-  { key: "all", label: "All Courses" },
-  { key: "python", label: "🐍 Python" },
-  { key: "java", label: "☕ Java" },
-  { key: "c", label: "⚙️ C" },
-  { key: "algo", label: "🧩 Algorithms" },
-] as const;
-
 export function CoursesPage() {
   const navigate = useNavigate();
   const g = useGamification();
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
-  const [filter, setFilter] = useState("all");
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
   const allCourses: CourseData[] = useMemo(() => {
-    return serverCourses.map((course) => {
+    return serverCourses.filter((c) => (MAIN_COURSE_KEYS as readonly string[]).includes(c.key)).map((course) => {
       const p = progressMap[course.key];
       const doneSet = new Set(
         (p?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)
@@ -61,10 +52,6 @@ export function CoursesPage() {
     });
   }, [serverCourses, progressMap]);
 
-  const filtered = useMemo(
-    () => filter === "all" ? allCourses : allCourses.filter((c) => c.key === filter),
-    [allCourses, filter]
-  );
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
   if (isLoading) {
@@ -87,31 +74,11 @@ export function CoursesPage() {
           <h1 className="text-[28px] font-bold mb-1.5" style={{ letterSpacing: "-0.5px" }}>
             Courses
           </h1>
-          <p className="text-sm text-[var(--text2)] leading-relaxed">
-            Structured learning paths in Python, Java, and C. Pick a course and start building.
-          </p>
-        </div>
-
-        {/* Filter chips */}
-        <div className="flex gap-2 mb-6 flex-wrap">
-          {FILTERS.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => setFilter(f.key)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer transition-all ${
-                filter === f.key
-                  ? "bg-[var(--accent)] border-[var(--accent)] text-white"
-                  : "bg-transparent border border-[var(--border)] text-[var(--text2)] hover:border-[var(--text3)] hover:text-[var(--text)]"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
         </div>
 
         {/* Course grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filtered.map((c) => (
+          {allCourses.map((c) => (
             <div
               key={c.key}
               onClick={() => setSelectedKey(c.key)}
