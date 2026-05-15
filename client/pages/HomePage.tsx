@@ -93,7 +93,7 @@ export function HomePage() {
 
   if (isLoading) {
     return (
-      <div className="h-screen flex flex-col bg-[var(--bg)]">
+      <div className="h-screen flex flex-col bg-transparent">
         <Topbar />
         <div className="flex-1 flex items-center justify-center">
           <LoadingSpinner />
@@ -107,7 +107,7 @@ export function HomePage() {
     const lbSlice = leaderboard.slice(lbPage * LB_PAGE_SIZE, (lbPage + 1) * LB_PAGE_SIZE);
 
     return (
-      <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+      <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar streak={g.streak} />
 
         <main className="flex-1 px-4 sm:px-6 py-8">
@@ -337,7 +337,7 @@ export function HomePage() {
 
   // ── Logged-out marketing view ──
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+    <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar streak={g.streak} />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">

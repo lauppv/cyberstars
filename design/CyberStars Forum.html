@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CyberStars — Forum</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#6C5CE7;--accent-glow:#6C5CE733;--bg:#0F0F14;--bg2:#16161D;--bg3:#1E1E28;--surface:#22222E;--surface2:#2A2A38;--border:#2E2E3E;--text:#E8E8F0;--text2:#9999B0;--text3:#666680;--success:#00D68F;--warning:#FFAA00;--error:#FF6B6B;--font:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code',monospace;--radius:10px;--radius-sm:6px}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden}
+#root{min-height:100%;position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+
+/* ===== Cosmic background ===== */
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,#1a1040 0%,#0a0818 45%,#06050d 100%)}
+#cosmos canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nebula{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;mix-blend-mode:screen;pointer-events:none;will-change:transform}
+.nebula.n1{width:520px;height:520px;background:radial-gradient(circle,#6C5CE7 0%,transparent 65%);top:-120px;left:-100px;animation:drift1 38s ease-in-out infinite alternate}
+.nebula.n2{width:680px;height:680px;background:radial-gradient(circle,#FF6B6B 0%,transparent 60%);bottom:-200px;right:-180px;animation:drift2 46s ease-in-out infinite alternate;opacity:.22}
+.nebula.n3{width:420px;height:420px;background:radial-gradient(circle,#00D68F 0%,transparent 65%);top:40%;left:55%;animation:drift3 52s ease-in-out infinite alternate;opacity:.18}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(120px,80px) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-160px,-90px) scale(1.2)}}
+@keyframes drift3{from{transform:translate(0,0) scale(1)}to{transform:translate(-90px,120px) scale(.85)}}
+
+/* Make content panels semi-transparent so cosmos shows through */
+.topbar{background:rgba(22,22,29,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.forum-stats,.cat-table,.side-card,.thread-table,.cat-banner,.thread-toolbar,.post,.composer{background:rgba(22,22,29,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.post-user{background:rgba(30,30,40,.6)}
+.post.op .post-user{background:linear-gradient(180deg,rgba(108,92,231,.18),rgba(30,30,40,.6))}
+
+/* ===== Topbar ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+.topbar-left{display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-icon{font-size:22px;color:var(--accent);filter:drop-shadow(0 0 8px var(--accent-glow))}
+.logo-text{font-weight:700;font-size:17px;letter-spacing:-.5px}
+.topbar-nav{display:flex;gap:4px}
+.nav-item{padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border:none;background:none;font-family:var(--font);transition:all .15s}
+.nav-item:hover{color:var(--text);background:var(--surface)}
+.nav-item.active{color:var(--accent);background:rgba(108,92,231,.08)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.streak-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;background:var(--surface);border-radius:20px;border:1px solid var(--border);font-size:12px;font-weight:600}
+.user-btn{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 8px;border-radius:var(--radius-sm);border:none;background:none;color:var(--text);font-family:var(--font);transition:all .15s}
+.user-btn:hover{background:var(--surface)}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid var(--accent)}
+.user-name{font-size:13px;font-weight:600}
+
+/* ===== Page shell ===== */
+.page{max-width:1080px;margin:0 auto;padding:28px 28px 60px}
+.page-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:24px}
+.page-title{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
+.page-subtitle{font-size:14px;color:var(--text2);line-height:1.5}
+.btn{padding:9px 18px;border-radius:var(--radius-sm);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(1.1)}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ===== Forum-wide stats strip ===== */
+.forum-stats{display:flex;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 4px;margin-bottom:22px;overflow:hidden}
+.fs-item{flex:1;text-align:center;padding:4px 12px;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:2px}
+.fs-item:last-child{border-right:none}
+.fs-value{font-size:18px;font-weight:700;display:flex;align-items:center;gap:6px}
+.fs-value .pulse{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 8px var(--success);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.fs-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px}
+
+/* ===== Category groups ===== */
+.group{margin-bottom:22px}
+.group-header{display:flex;align-items:center;gap:10px;padding:0 4px 10px;border-bottom:1px solid var(--border);margin-bottom:0}
+.group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3)}
+.group-line{flex:1;height:1px}
+
+.cat-table{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.cat-row{display:grid;grid-template-columns:1fr 90px 230px;gap:18px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
+.cat-row:last-child{border-bottom:none}
+.cat-row:hover{background:var(--surface)}
+.cat-row:hover .cat-icon{transform:scale(1.06)}
+.cat-main{display:flex;align-items:center;gap:14px;min-width:0}
+.cat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:transform .2s;position:relative}
+.cat-icon.unread::after{content:'';position:absolute;top:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg2);box-shadow:0 0 8px var(--accent-glow)}
+.cat-info{min-width:0;flex:1}
+.cat-name{font-size:15px;font-weight:600;letter-spacing:-.2px;margin-bottom:3px}
+.cat-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px}
+.cat-subs{display:flex;flex-wrap:wrap;gap:5px}
+.cat-sub{font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--text3);transition:all .15s}
+.cat-sub:hover{background:var(--surface2);color:var(--text)}
+.cat-counts{display:flex;flex-direction:column;align-items:flex-end;font-size:11px;color:var(--text3);text-align:right;gap:3px}
+.cat-counts strong{font-size:14px;color:var(--text);font-weight:700;font-variant-numeric:tabular-nums}
+.cat-lastpost{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text2);min-width:0;padding-left:18px;border-left:1px solid var(--border)}
+.lp-avatar{width:34px;height:34px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;position:relative}
+.lp-avatar .lp-online{position:absolute;bottom:0;right:0;width:9px;height:9px;border-radius:50%;background:var(--success);border:2px solid var(--bg2)}
+.lp-info{min-width:0;flex:1}
+.lp-title{font-size:12px;color:var(--text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1px}
+.lp-meta{font-size:11px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lp-meta .lp-user{color:var(--accent)}
+
+/* ===== Sidebar (right) for online users on index ===== */
+.with-side{display:grid;grid-template-columns:1fr 280px;gap:22px;align-items:flex-start}
+.side-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;position:sticky;top:80px}
+.side-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.side-title .count{color:var(--success);font-weight:700;letter-spacing:0}
+.online-list{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto}
+.online-row{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:var(--radius-sm);transition:background .15s;cursor:pointer}
+.online-row:hover{background:var(--surface)}
+.online-avatar{width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:13px;position:relative;flex-shrink:0}
+.online-avatar .dot{position:absolute;bottom:-1px;right:-1px;width:8px;height:8px;border-radius:50%;background:var(--success);border:2px solid var(--bg2)}
+.online-info{flex:1;min-width:0}
+.online-name{font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px}
+.online-lvl{font-size:9px;font-weight:700;color:var(--accent);background:rgba(108,92,231,.12);padding:1px 5px;border-radius:6px;letter-spacing:.3px}
+.online-status{font-size:10px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.side-sub{margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.trending-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:14px;background:var(--bg3);font-size:11px;font-weight:500;color:var(--text2);cursor:pointer;margin:3px 4px 3px 0;transition:all .15s}
+.trending-tag:hover{background:var(--surface2);color:var(--text)}
+.trending-tag .hash{color:var(--accent)}
+
+/* ===== Breadcrumb ===== */
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);margin-bottom:18px;flex-wrap:wrap}
+.crumbs a{cursor:pointer;transition:color .15s}
+.crumbs a:hover{color:var(--accent)}
+.crumbs .sep{color:var(--text3);opacity:.5}
+.crumbs .here{color:var(--text);font-weight:500}
+
+/* ===== Category view: thread toolbar ===== */
+.cat-banner{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:18px;position:relative;overflow:hidden}
+.cat-banner::after{content:'';position:absolute;width:200px;height:200px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);right:-50px;top:-80px;pointer-events:none}
+.cat-banner-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;position:relative;z-index:1}
+.cat-banner-info{flex:1;position:relative;z-index:1}
+.cat-banner-title{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
+.cat-banner-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:10px}
+.cat-banner-stats{display:flex;gap:18px;font-size:11px;color:var(--text3)}
+.cat-banner-stats strong{color:var(--text2);font-weight:700;font-variant-numeric:tabular-nums}
+
+.thread-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;flex-wrap:wrap}
+.tb-tabs{display:flex;gap:4px}
+.tb-tab{padding:6px 12px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--text3);cursor:pointer;border:none;background:none;font-family:var(--font);transition:all .15s}
+.tb-tab:hover{color:var(--text)}
+.tb-tab.active{color:var(--accent);background:rgba(108,92,231,.1)}
+.tb-search{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:12px;color:var(--text3)}
+.tb-search input{background:none;border:none;color:var(--text);font-family:var(--font);font-size:12px;outline:none;width:140px}
+.tb-search input::placeholder{color:var(--text3)}
+
+.thread-table{background:var(--bg2);border:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);overflow:hidden}
+.thread-row{display:grid;grid-template-columns:32px 1fr 90px 90px 200px;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
+.thread-row:last-child{border-bottom:none}
+.thread-row:hover{background:var(--surface)}
+.thread-row.pinned{background:rgba(255,170,0,.04)}
+.thread-row.pinned:hover{background:rgba(255,170,0,.08)}
+.thread-row.pinned::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--warning)}
+.thread-marker{display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text3)}
+.thread-marker.unread{color:var(--accent);filter:drop-shadow(0 0 6px var(--accent-glow))}
+.thread-marker.hot{color:var(--error)}
+.thread-marker.pin{color:var(--warning)}
+.thread-marker.lock{color:var(--text3)}
+.thread-main{min-width:0}
+.thread-title{font-size:14px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.thread-title .badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;line-height:1.4}
+.badge-solved{background:rgba(0,214,143,.15);color:var(--success)}
+.badge-help{background:rgba(255,170,0,.15);color:var(--warning)}
+.badge-event{background:rgba(108,92,231,.15);color:var(--accent)}
+.badge-showcase{background:rgba(255,107,107,.15);color:var(--error)}
+.thread-author{font-size:11px;color:var(--text3)}
+.thread-author .author{color:var(--text2);font-weight:500}
+.thread-author .lvl{color:var(--accent);font-weight:600;margin-left:5px}
+.thread-tags{display:inline-flex;gap:4px;margin-left:6px}
+.thread-tags .tt{font-size:10px;color:var(--text3);background:var(--bg3);padding:1px 6px;border-radius:6px}
+.thread-count{font-size:12px;color:var(--text2);font-weight:600;text-align:center;font-variant-numeric:tabular-nums}
+.thread-count small{display:block;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-top:1px}
+
+/* ===== Thread (single) view ===== */
+.thread-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}
+.thread-head-info{flex:1;min-width:0}
+.thread-head-title{font-size:24px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3}
+.thread-head-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text3)}
+.thread-head-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--text3)}
+
+.post{display:grid;grid-template-columns:170px 1fr;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;animation:postIn .4s cubic-bezier(.22,1,.36,1) both}
+@keyframes postIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.post.op{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-glow)}
+.post-user{padding:18px 16px;background:var(--bg3);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.post.op .post-user{background:linear-gradient(180deg,rgba(108,92,231,.12),var(--bg3))}
+.post-avatar{width:64px;height:64px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid var(--surface2);position:relative}
+.post.op .post-avatar{border-color:var(--accent);box-shadow:0 0 16px var(--accent-glow)}
+.post-avatar .online-dot{position:absolute;bottom:1px;right:1px;width:14px;height:14px;border-radius:50%;background:var(--success);border:3px solid var(--bg3)}
+.post-username{font-size:14px;font-weight:700;letter-spacing:-.2px}
+.post-role{font-size:10px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.6px;margin-top:-4px}
+.post-role.mod{color:var(--success)}
+.post-role.teacher{color:var(--warning)}
+.post-lvl{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);background:var(--bg2);padding:3px 10px;border-radius:12px;border:1px solid var(--border)}
+.post-lvl strong{color:var(--accent);font-weight:700}
+.post-badges{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:2px}
+.post-badge{font-size:14px;width:22px;height:22px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);cursor:default}
+.post-stats{font-size:10px;color:var(--text3);line-height:1.6;margin-top:4px}
+.post-stats strong{display:block;color:var(--text2);font-weight:700;font-size:11px}
+
+.post-body{padding:18px 22px;display:flex;flex-direction:column;min-width:0}
+.post-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:14px;font-size:11px;color:var(--text3)}
+.post-meta .num{font-weight:600;color:var(--text2)}
+.post-meta-actions{display:flex;gap:4px}
+.post-action-btn{background:none;border:none;color:var(--text3);cursor:pointer;padding:4px 8px;border-radius:4px;font-family:var(--font);font-size:11px;display:inline-flex;align-items:center;gap:4px;transition:all .15s}
+.post-action-btn:hover{color:var(--text);background:var(--surface)}
+.post-content{font-size:14px;line-height:1.65;color:var(--text);flex:1}
+.post-content p{margin-bottom:12px}
+.post-content p:last-child{margin-bottom:0}
+.post-content code{font-family:var(--mono);font-size:13px;background:var(--bg3);padding:1px 6px;border-radius:4px;color:var(--accent)}
+.post-content pre{font-family:var(--mono);font-size:12.5px;background:var(--bg3);padding:14px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);margin:12px 0;overflow-x:auto;line-height:1.6}
+.post-content pre .kw{color:#c792ea}
+.post-content pre .str{color:#c3e88d}
+.post-content pre .com{color:var(--text3);font-style:italic}
+.post-content pre .fn{color:#82aaff}
+.post-content blockquote{border-left:3px solid var(--accent);background:var(--bg3);padding:10px 14px;margin:12px 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:13px;color:var(--text2)}
+.post-content blockquote .quote-who{font-size:11px;color:var(--accent);font-weight:600;margin-bottom:4px;display:block}
+
+.post-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap}
+.reactions{display:flex;gap:6px;flex-wrap:wrap}
+.reaction{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:16px;background:var(--bg3);border:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:var(--font)}
+.reaction:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
+.reaction.active{background:rgba(108,92,231,.12);border-color:var(--accent);color:var(--accent)}
+.post-buttons{display:flex;gap:6px}
+.post-btn{padding:5px 12px;border-radius:var(--radius-sm);background:none;border:1px solid var(--border);color:var(--text3);font-family:var(--font);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s}
+.post-btn:hover{border-color:var(--accent);color:var(--accent)}
+.post-btn.solution{border-color:var(--success);color:var(--success);background:rgba(0,214,143,.06)}
+
+/* Solution highlight banner */
+.solution-banner{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,214,143,.08);border:1px solid rgba(0,214,143,.3);border-radius:var(--radius-sm);margin-bottom:14px;font-size:12px;color:var(--success);font-weight:600}
+.solution-banner .check{font-size:16px}
+
+/* Reply composer */
+.composer{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:18px}
+.composer-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--bg3);border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
+.composer-toolbar{display:flex;gap:4px}
+.composer-tool{width:28px;height:28px;border-radius:4px;background:none;border:none;color:var(--text3);cursor:pointer;font-family:var(--mono);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.composer-tool:hover{color:var(--text);background:var(--surface)}
+.composer-body{padding:16px 18px}
+.composer-textarea{width:100%;min-height:120px;background:none;border:none;color:var(--text);font-family:var(--font);font-size:14px;resize:vertical;outline:none;line-height:1.6}
+.composer-textarea::placeholder{color:var(--text3)}
+.composer-footer{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--border);background:var(--bg3)}
+.composer-hint{font-size:11px;color:var(--text3)}
+.composer-hint kbd{background:var(--surface2);padding:1px 6px;border-radius:3px;font-family:var(--mono);font-size:10px;border:1px solid var(--border)}
+
+/* Responsive */
+@media(max-width:900px){
+  .with-side{grid-template-columns:1fr}
+  .side-card{position:static}
+  .cat-row{grid-template-columns:1fr;gap:12px}
+  .cat-lastpost{border-left:none;padding-left:0;padding-top:10px;border-top:1px solid var(--border)}
+  .cat-counts{flex-direction:row;justify-content:flex-start;gap:18px}
+  .thread-row{grid-template-columns:24px 1fr;gap:10px}
+  .thread-row .thread-count,.thread-row .thread-lastpost{display:none}
+  .post{grid-template-columns:1fr}
+  .post-user{flex-direction:row;justify-content:flex-start;text-align:left;border-right:none;border-bottom:1px solid var(--border)}
+}
+</style>
+</head>
+<body>
+<div id="cosmos">
+  <canvas id="starfield"></canvas>
+  <div class="nebula n1"></div>
+  <div class="nebula n2"></div>
+  <div class="nebula n3"></div>
+</div>
+<div id="root"></div>
+<script>
+// Warp-speed starfield: stars travel from center outward, slow & atmospheric
+(() => {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let cx = 0, cy = 0;
+  const stars = [];
+  const NUM_STARS = 220;
+  const SPEED = 0.0007;        // slow zoom
+  const COLORS = ['#ffffff','#cfd9ff','#ffd1a1','#a8c4ff','#e8b8ff'];
+
+  function resize() {
+    w = canvas.clientWidth = window.innerWidth;
+    h = canvas.clientHeight = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx = w / 2;
+    cy = h * 0.42;             // center of warp slightly above middle
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function spawn(initial) {
+    return {
+      // angle & radius in normalized space (0..1 from center)
+      a: Math.random() * Math.PI * 2,
+      r: initial ? Math.random() : 0.001 + Math.random() * 0.05,
+      // depth z: 1 = far, 0 = at viewer
+      z: initial ? Math.random() : 1,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      twinkle: Math.random() * Math.PI * 2,
+    };
+  }
+  for (let i = 0; i < NUM_STARS; i++) stars.push(spawn(true));
+
+  // mouse parallax
+  let mx = 0, my = 0, tmx = 0, tmy = 0;
+  window.addEventListener('mousemove', e => {
+    tmx = (e.clientX / window.innerWidth - 0.5) * 2;
+    tmy = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  let last = performance.now();
+  let drawTrail = true;
+
+  function frame(now) {
+    const dt = Math.min(50, now - last); last = now;
+    mx += (tmx - mx) * 0.04;
+    my += (tmy - my) * 0.04;
+
+    // dark fade to leave trails of motion
+    ctx.fillStyle = 'rgba(6,5,13,0.22)';
+    ctx.fillRect(0,0,w,h);
+
+    const ocx = cx + mx * 30;
+    const ocy = cy + my * 30;
+    const maxR = Math.hypot(w, h);
+
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+      s.r += SPEED * dt * (1.3 - s.z * 0.9);   // closer stars accelerate
+      s.z -= 0.00006 * dt;
+      if (s.r > 1.05 || s.z < 0.02) {
+        Object.assign(s, spawn(false));
+        continue;
+      }
+      // exponential radial mapping for that warp feel
+      const rPx = Math.pow(s.r, 1.6) * maxR * 0.62;
+      const x = ocx + Math.cos(s.a) * rPx;
+      const y = ocy + Math.sin(s.a) * rPx;
+      if (x < -20 || x > w + 20 || y < -20 || y > h + 20) continue;
+
+      const size = 0.4 + (1 - s.z) * 2.2;
+      const tw = 0.7 + 0.3 * Math.sin(s.twinkle + now * 0.003);
+      const alpha = Math.min(1, (1 - s.z) * 1.1) * tw;
+
+      // streak: line from previous radius to current — gives the warp tail
+      if (drawTrail && rPx > 30) {
+        const prevR = Math.pow(Math.max(0, s.r - SPEED * dt * (1.3 - s.z * 0.9) * 8), 1.6) * maxR * 0.62;
+        const px = ocx + Math.cos(s.a) * prevR;
+        const py = ocy + Math.sin(s.a) * prevR;
+        const grad = ctx.createLinearGradient(px, py, x, y);
+        grad.addColorStop(0, 'rgba(255,255,255,0)');
+        grad.addColorStop(1, s.color);
+        ctx.strokeStyle = grad;
+        ctx.globalAlpha = alpha * 0.7;
+        ctx.lineWidth = size * 0.7;
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+
+      // star head
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = s.color;
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fill();
+
+      // glow on bigger stars
+      if (size > 1.4) {
+        ctx.globalAlpha = alpha * 0.25;
+        ctx.beginPath();
+        ctx.arc(x, y, size * 2.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // pause when tab hidden
+  document.addEventListener('visibilitychange', () => { last = performance.now(); });
+})();
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">
+// ===== Forum data =====
+
+const GROUPS = [
+  {
+    title: 'Community',
+    cats: [
+      { id: 'announcements', icon: '📣', color: '#6C5CE7', name: 'Announcements',
+        desc: 'Platform updates, new courses, and important news from the CyberStars team.',
+        subs: ['Updates', 'Events', 'Rules'],
+        threads: 24, posts: 187, unread: false,
+        lastPost: { title: 'Season 3 — Spring Code Tournament starts April 1st', user: 'CyberBot', emoji: '🤖', time: '12 min ago', online: true }
+      },
+      { id: 'introductions', icon: '👋', color: '#00D68F', name: 'Introductions',
+        desc: 'New to CyberStars? Say hi and meet other coders around your level.',
+        subs: ['New members', 'Find a buddy'],
+        threads: 412, posts: 3210, unread: true,
+        lastPost: { title: 'Hey everyone — Maya from Brașov, 13yo, into Python!', user: 'Maya', emoji: '🦊', time: '3 min ago', online: true }
+      },
+    ]
+  },
+  {
+    title: 'Help & Support',
+    cats: [
+      { id: 'help-python', icon: '🐍', color: '#3572A5', name: 'Python Help',
+        desc: 'Stuck on a lesson or a project? Ask questions, share errors, and get unstuck.',
+        subs: ['Fundamentals', 'OOP', 'Projects', 'Errors & Bugs'],
+        threads: 1840, posts: 12420, unread: true,
+        lastPost: { title: 'Why does my for loop skip the last item?', user: 'Liam', emoji: '🐢', time: 'just now', online: true }
+      },
+      { id: 'help-java', icon: '☕', color: '#b07219', name: 'Java Help',
+        desc: 'Classes, inheritance, streams — and that one NullPointerException that won\'t go away.',
+        subs: ['Basics', 'OOP Deep Dive', 'IDE setup'],
+        threads: 920, posts: 6180, unread: false,
+        lastPost: { title: 'NullPointerException in my ArrayList — what am I doing wrong?', user: 'Nora', emoji: '🐧', time: '18 min ago', online: false }
+      },
+      { id: 'help-c', icon: '⚙️', color: '#888899', name: 'C Programming Help',
+        desc: 'Pointers, segfaults, malloc — the dark arts. Bring your gdb output, leave with answers.',
+        subs: ['Pointers', 'Memory', 'Systems'],
+        threads: 540, posts: 3720, unread: false,
+        lastPost: { title: 'Segfault when I free() my linked list — gdb says line 47', user: 'Theo', emoji: '🦝', time: '1h ago', online: false }
+      },
+    ]
+  },
+  {
+    title: 'Show & Tell',
+    cats: [
+      { id: 'showcase', icon: '🎨', color: '#FF6B6B', name: 'Show Your Project',
+        desc: 'Built something cool? Share it here — even tiny scripts. Reactions encouraged.',
+        subs: ['Games', 'Tools', 'Art', 'Other'],
+        threads: 380, posts: 2940, unread: true,
+        lastPost: { title: 'I built a Wordle clone in Python — repo + screenshots inside', user: 'Sam', emoji: '🦉', time: '42 min ago', online: true }
+      },
+      { id: 'challenges', icon: '🏆', color: '#FFAA00', name: 'Challenges & Contests',
+        desc: 'Weekly puzzles, tournament threads, leaderboards. Compare solutions after the deadline.',
+        subs: ['Weekly puzzle', 'Tournaments', 'Solutions'],
+        threads: 156, posts: 1830, unread: false,
+        lastPost: { title: 'Week 12 puzzle solutions — share yours!', user: 'Kai', emoji: '🐺', time: '2h ago', online: false }
+      },
+    ]
+  },
+  {
+    title: 'Off-Topic',
+    cats: [
+      { id: 'lounge', icon: '🛋️', color: '#9999B0', name: 'The Lounge',
+        desc: 'Talk about anything — games, school, that weird dream you had. Be kind.',
+        subs: ['Games', 'Music', 'Random'],
+        threads: 290, posts: 4810, unread: false,
+        lastPost: { title: 'What music do you code to?', user: 'Zara', emoji: '🐱', time: '5h ago', online: false }
+      },
+    ]
+  },
+];
+
+const ONLINE_USERS = [
+  { name: 'Maya', emoji: '🦊', lvl: 12, status: 'Browsing Python Help' },
+  { name: 'Kai', emoji: '🐺', lvl: 9, status: 'In Challenges' },
+  { name: 'Liam', emoji: '🐢', lvl: 3, status: 'Posting a question' },
+  { name: 'Sam', emoji: '🦉', lvl: 11, status: 'Showcase' },
+  { name: 'Alex', emoji: '🚀', lvl: 4, status: 'Viewing forum index', me: true },
+  { name: 'Nora', emoji: '🐧', lvl: 7, status: 'Java Help' },
+  { name: 'CyberBot', emoji: '🤖', lvl: 99, status: 'Always here' },
+  { name: 'Mia', emoji: '🐝', lvl: 5, status: 'Lounge' },
+];
+
+const TRENDING = [
+  'list-comprehensions', 'segfault', 'pygame', 'inheritance', 'recursion', 'first-project', 'tournament-s3'
+];
+
+// Threads for "Python Help" view
+const THREADS_PYTHON = [
+  { id: 't-pin-1', pinned: true, icon: 'pin', title: 'READ FIRST: How to ask a good Python question', badge: null,
+    author: 'CyberBot', emoji: '🤖', lvl: 99, time: '14 days ago', replies: 0, views: 8420,
+    lastUser: 'CyberBot', lastEmoji: '🤖', lastTime: '14 days ago', tags: ['guidelines'] },
+  { id: 't-pin-2', pinned: true, icon: 'pin', title: 'Megathread: Common Python errors & quick fixes', badge: null,
+    author: 'ms_diana', emoji: '🦄', lvl: 50, time: '2 months ago', replies: 87, views: 12940,
+    lastUser: 'Kai', lastEmoji: '🐺', lastTime: '3h ago', tags: ['megathread', 'errors'] },
+  { id: 't-1', pinned: false, icon: 'unread', title: 'Why does my for loop skip the last item?', badge: 'help',
+    author: 'Liam', emoji: '🐢', lvl: 3, time: 'just now', replies: 0, views: 4,
+    lastUser: 'Liam', lastEmoji: '🐢', lastTime: 'just now', tags: ['loops', 'beginner'] },
+  { id: 't-2', pinned: false, icon: 'hot', title: 'List comprehensions vs map+filter — which is faster?', badge: null,
+    author: 'Maya', emoji: '🦊', lvl: 12, time: '6h ago', replies: 47, views: 1240,
+    lastUser: 'ms_diana', lastEmoji: '🦄', lastTime: '20 min ago', tags: ['performance', 'discussion'] },
+  { id: 't-3', pinned: false, icon: 'unread', title: 'Solved: How to read a CSV without pandas?', badge: 'solved',
+    author: 'Nora', emoji: '🐧', lvl: 7, time: '1d ago', replies: 12, views: 380,
+    lastUser: 'Nora', lastEmoji: '🐧', lastTime: '4h ago', tags: ['file-io', 'csv'] },
+  { id: 't-4', pinned: false, icon: '', title: 'Built a tic-tac-toe in 30 lines — can it be shorter?', badge: 'showcase',
+    author: 'Sam', emoji: '🦉', lvl: 11, time: '2d ago', replies: 23, views: 690,
+    lastUser: 'Kai', lastEmoji: '🐺', lastTime: '1d ago', tags: ['code-golf', 'games'] },
+  { id: 't-5', pinned: false, icon: '', title: 'Why is `is` not the same as `==` ???', badge: null,
+    author: 'Theo', emoji: '🦝', lvl: 6, time: '3d ago', replies: 18, views: 520,
+    lastUser: 'Mia', lastEmoji: '🐝', lastTime: '2d ago', tags: ['basics'] },
+  { id: 't-6', pinned: false, icon: 'lock', title: '[CLOSED] Spam post — please ignore', badge: null,
+    author: 'guest_x', emoji: '👤', lvl: 1, time: '4d ago', replies: 2, views: 84,
+    lastUser: 'ms_diana', lastEmoji: '🦄', lastTime: '4d ago', tags: ['locked'] },
+  { id: 't-7', pinned: false, icon: '', title: 'Recursion is breaking my brain — base case help?', badge: 'help',
+    author: 'Mia', emoji: '🐝', lvl: 5, time: '5d ago', replies: 9, views: 240,
+    lastUser: 'Sam', lastEmoji: '🦉', lastTime: '3d ago', tags: ['recursion'] },
+];
+
+// Single thread posts (for "Why does my for loop skip the last item?")
+const THREAD_VIEW = {
+  title: 'Why does my for loop skip the last item?',
+  category: 'Python Help',
+  views: 47,
+  replies: 3,
+  posts: [
+    {
+      op: true, num: 1, user: 'Liam', emoji: '🐢', role: 'Member', lvl: 3, posts: 8, joined: 'Mar 2026',
+      badges: ['🐍', '🌱'], time: 'just now',
+      content: (
+        <>
+          <p>Hey! I'm doing the Loops chapter from Python Fundamentals and my code keeps skipping the last number in the list. Here's what I have:</p>
+          <pre>
+            <span className="com"># count down from 5</span>{"\n"}
+            <span className="kw">for</span> i <span className="kw">in</span> <span className="fn">range</span>(<span className="str">5</span>, <span className="str">0</span>):{"\n"}
+            {"    "}<span className="fn">print</span>(i){"\n"}
+            <span className="fn">print</span>(<span className="str">"done!"</span>)
+          </pre>
+          <p>It just prints <code>done!</code> and nothing else. Am I using <code>range()</code> wrong? Help 😭</p>
+        </>
+      ),
+      reactions: [{ emoji: '👀', count: 4, active: false }, { emoji: '🤔', count: 1, active: false }]
+    },
+    {
+      op: false, num: 2, user: 'Maya', emoji: '🦊', role: 'Member', lvl: 12, posts: 247, joined: 'Sep 2025',
+      badges: ['🐍', '🏆', '🔥', '⭐'], time: '4 min ago',
+      content: (
+        <>
+          <p>Hey Liam! 👋 Good question. The issue is how <code>range()</code> works — by default it counts <em>up</em>, so <code>range(5, 0)</code> is empty (it stops immediately because 5 is already past 0).</p>
+          <p>You have two options:</p>
+          <pre>
+            <span className="com"># option 1: step backwards with -1</span>{"\n"}
+            <span className="kw">for</span> i <span className="kw">in</span> <span className="fn">range</span>(<span className="str">5</span>, <span className="str">0</span>, <span className="str">-1</span>):{"\n"}
+            {"    "}<span className="fn">print</span>(i)  <span className="com"># 5, 4, 3, 2, 1</span>
+          </pre>
+          <pre>
+            <span className="com"># option 2: use reversed()</span>{"\n"}
+            <span className="kw">for</span> i <span className="kw">in</span> <span className="fn">reversed</span>(<span className="fn">range</span>(<span className="str">1</span>, <span className="str">6</span>)):{"\n"}
+            {"    "}<span className="fn">print</span>(i)
+          </pre>
+          <p>Also note: <code>range(5, 0, -1)</code> stops <strong>before</strong> 0, so you get 5→1. If you want 0 too, use <code>range(5, -1, -1)</code>. Hope this helps!</p>
+        </>
+      ),
+      reactions: [{ emoji: '❤️', count: 12, active: true }, { emoji: '🎯', count: 5, active: false }, { emoji: '⭐', count: 3, active: false }],
+      solution: true
+    },
+    {
+      op: false, num: 3, user: 'Liam', emoji: '🐢', role: 'Member', lvl: 3, posts: 9, joined: 'Mar 2026',
+      badges: ['🐍', '🌱'], time: '2 min ago',
+      content: (
+        <>
+          <blockquote>
+            <span className="quote-who">Maya wrote:</span>
+            The issue is how <code>range()</code> works — by default it counts up...
+          </blockquote>
+          <p>OHHH that makes so much sense. Marking as solved 🙏 thank you Maya you're the goat 🐐</p>
+        </>
+      ),
+      reactions: [{ emoji: '🙏', count: 2, active: false }]
+    },
+    {
+      op: false, num: 4, user: 'ms_diana', emoji: '🦄', role: 'Teacher', lvl: 50, posts: 4218, joined: 'Aug 2024',
+      badges: ['🐍', '☕', '⚙️', '🏆', '👑', '🎓'], time: '1 min ago',
+      content: (
+        <>
+          <p>Great thread, both of you! Just adding a little tip: when you have these "off by one" mysteries, throw in a quick print to see what your loop variable looks like:</p>
+          <pre>
+            <span className="kw">for</span> i <span className="kw">in</span> <span className="fn">range</span>(<span className="str">5</span>, <span className="str">0</span>, <span className="str">-1</span>):{"\n"}
+            {"    "}<span className="fn">print</span>(<span className="str">f"i is {'{'}i{'}'}"</span>)
+          </pre>
+          <p>It's a super useful debugging habit — way faster than guessing. Keep at it Liam, you're doing great. ✨</p>
+        </>
+      ),
+      reactions: [{ emoji: '❤️', count: 8, active: false }, { emoji: '🎓', count: 4, active: false }]
+    },
+  ]
+};
+
+// ===== Forum app — three views =====
+const { useState } = React;
+
+function Topbar({ user }) {
+  return (
+    <header className="topbar">
+      <div className="topbar-left">
+        <a className="logo" href="CyberStars Dashboard.html">
+          <span className="logo-icon">⬡</span>
+          <span className="logo-text">CyberStars</span>
+        </a>
+        <nav className="topbar-nav">
+          <a className="nav-item" href="CyberStars Dashboard.html">Dashboard</a>
+          <a className="nav-item" href="CyberStars Courses.html">Courses</a>
+          <a className="nav-item" href="CyberStars Challenges.html">Challenges</a>
+          <a className="nav-item active" href="#">Forum</a>
+        </nav>
+      </div>
+      <div className="topbar-right">
+        <div className="streak-pill"><span>🔥</span><span>5 days</span></div>
+        <button className="user-btn">
+          <div className="user-avatar">🚀</div>
+          <span className="user-name">Alex</span>
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function ForumIndex({ onOpenCategory }) {
+  return (
+    <main className="page">
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">Forum</h1>
+          <p className="page-subtitle">Ask, share, and hang out with other CyberStars. Be kind, search before posting, and have fun.</p>
+        </div>
+        <button className="btn btn-primary">+ New Thread</button>
+      </div>
+
+      <div className="forum-stats">
+        <div className="fs-item">
+          <div className="fs-value">12,840</div>
+          <div className="fs-label">Members</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value">3,962</div>
+          <div className="fs-label">Threads</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value">31,287</div>
+          <div className="fs-label">Posts</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value"><span className="pulse"></span>248</div>
+          <div className="fs-label">Online now</div>
+        </div>
+      </div>
+
+      <div className="with-side">
+        <div>
+          {GROUPS.map(g => (
+            <div className="group" key={g.title}>
+              <div className="group-header">
+                <div className="group-title">{g.title}</div>
+                <div className="group-line"></div>
+              </div>
+              <div className="cat-table">
+                {g.cats.map(c => (
+                  <div className="cat-row" key={c.id} onClick={() => onOpenCategory(c.id)}>
+                    <div className="cat-main">
+                      <div className={"cat-icon" + (c.unread ? ' unread' : '')} style={{ background: c.color + '22' }}>{c.icon}</div>
+                      <div className="cat-info">
+                        <div className="cat-name">{c.name}</div>
+                        <div className="cat-desc">{c.desc}</div>
+                        <div className="cat-subs">
+                          {c.subs.map(s => <span className="cat-sub" key={s}>{s}</span>)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="cat-counts">
+                      <strong>{c.threads.toLocaleString()}</strong>
+                      <span>threads</span>
+                      <span>{c.posts.toLocaleString()} posts</span>
+                    </div>
+                    <div className="cat-lastpost">
+                      <div className="lp-avatar">{c.lastPost.emoji}{c.lastPost.online && <span className="lp-online"></span>}</div>
+                      <div className="lp-info">
+                        <div className="lp-title">{c.lastPost.title}</div>
+                        <div className="lp-meta">by <span className="lp-user">{c.lastPost.user}</span> · {c.lastPost.time}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <aside>
+          <div className="side-card">
+            <div className="side-title">
+              <span>Online now</span>
+              <span className="count">248</span>
+            </div>
+            <div className="online-list">
+              {ONLINE_USERS.map(u => (
+                <div className="online-row" key={u.name}>
+                  <div className="online-avatar">{u.emoji}<span className="dot"></span></div>
+                  <div className="online-info">
+                    <div className="online-name">
+                      <span>{u.name}{u.me ? ' (you)' : ''}</span>
+                      <span className="online-lvl">L{u.lvl}</span>
+                    </div>
+                    <div className="online-status">{u.status}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="side-sub">
+              <div className="side-title"><span>Trending tags</span></div>
+              <div>
+                {TRENDING.map(t => (
+                  <span className="trending-tag" key={t}><span className="hash">#</span>{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  );
+}
+
+function CategoryView({ catId, onBack, onOpenThread }) {
+  const cat = GROUPS.flatMap(g => g.cats).find(c => c.id === catId) || GROUPS[1].cats[0];
+  const threads = THREADS_PYTHON; // demo: same threads regardless of cat
+  const [sort, setSort] = useState('latest');
+
+  const markerFor = (t) => {
+    if (t.icon === 'pin') return <span className="thread-marker pin">📌</span>;
+    if (t.icon === 'lock') return <span className="thread-marker lock">🔒</span>;
+    if (t.icon === 'hot') return <span className="thread-marker hot">🔥</span>;
+    if (t.icon === 'unread') return <span className="thread-marker unread">●</span>;
+    return <span className="thread-marker">○</span>;
+  };
+
+  return (
+    <main className="page">
+      <div className="crumbs">
+        <a onClick={onBack}>Forum</a>
+        <span className="sep">/</span>
+        <span className="here">{cat.name}</span>
+      </div>
+
+      <div className="cat-banner">
+        <div className="cat-banner-icon" style={{ background: cat.color + '22' }}>{cat.icon}</div>
+        <div className="cat-banner-info">
+          <div className="cat-banner-title">{cat.name}</div>
+          <div className="cat-banner-desc">{cat.desc}</div>
+          <div className="cat-banner-stats">
+            <span><strong>{cat.threads.toLocaleString()}</strong> threads</span>
+            <span><strong>{cat.posts.toLocaleString()}</strong> posts</span>
+            <span><strong>48</strong> active today</span>
+          </div>
+        </div>
+        <button className="btn btn-primary">+ New Thread</button>
+      </div>
+
+      <div className="thread-toolbar">
+        <div className="tb-tabs">
+          {['Latest', 'Top', 'Unanswered', 'My posts'].map((t, i) => (
+            <button key={t} className={"tb-tab" + (sort === t.toLowerCase() ? ' active' : (i === 0 && sort === 'latest' ? ' active' : ''))}
+              onClick={() => setSort(t.toLowerCase())}>{t}</button>
+          ))}
+        </div>
+        <div className="tb-search">
+          <span>🔍</span>
+          <input placeholder="Search this forum…" />
+        </div>
+      </div>
+
+      <div className="thread-table">
+        {threads.map(t => (
+          <div className={"thread-row" + (t.pinned ? ' pinned' : '')} key={t.id} onClick={() => onOpenThread(t.id)}>
+            {markerFor(t)}
+            <div className="thread-main">
+              <div className="thread-title">
+                <span>{t.title}</span>
+                {t.badge === 'solved' && <span className="badge badge-solved">✓ Solved</span>}
+                {t.badge === 'help' && <span className="badge badge-help">Help</span>}
+                {t.badge === 'event' && <span className="badge badge-event">Event</span>}
+                {t.badge === 'showcase' && <span className="badge badge-showcase">Showcase</span>}
+                <span className="thread-tags">
+                  {t.tags.map(tg => <span className="tt" key={tg}>#{tg}</span>)}
+                </span>
+              </div>
+              <div className="thread-author">
+                by <span className="author">{t.author}</span><span className="lvl">L{t.lvl}</span> · {t.time}
+              </div>
+            </div>
+            <div className="thread-count">{t.replies}<small>replies</small></div>
+            <div className="thread-count">{t.views >= 1000 ? (t.views/1000).toFixed(1) + 'k' : t.views}<small>views</small></div>
+            <div className="cat-lastpost" style={{ paddingLeft: 14 }}>
+              <div className="lp-avatar">{t.lastEmoji}</div>
+              <div className="lp-info">
+                <div className="lp-title"><span className="lp-user" style={{ color: 'var(--accent)' }}>{t.lastUser}</span></div>
+                <div className="lp-meta">{t.lastTime}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}
+
+function ThreadView({ threadId, onBack, onBackToCategory }) {
+  const t = THREAD_VIEW;
+  const [reactions, setReactions] = useState(() => t.posts.map(p => p.reactions));
+
+  const toggle = (postIdx, reactionIdx) => {
+    setReactions(prev => prev.map((rs, pi) => pi !== postIdx ? rs : rs.map((r, ri) =>
+      ri !== reactionIdx ? r : { ...r, active: !r.active, count: r.count + (r.active ? -1 : 1) }
+    )));
+  };
+
+  return (
+    <main className="page">
+      <div className="crumbs">
+        <a onClick={onBack}>Forum</a>
+        <span className="sep">/</span>
+        <a onClick={onBackToCategory}>{t.category}</a>
+        <span className="sep">/</span>
+        <span className="here">{t.title}</span>
+      </div>
+
+      <div className="thread-head">
+        <div className="thread-head-info">
+          <h1 className="thread-head-title">{t.title}</h1>
+          <div className="thread-head-meta">
+            <span>started by <strong style={{ color: 'var(--text2)' }}>Liam</strong></span>
+            <span className="dot"></span>
+            <span>{t.posts.length} posts</span>
+            <span className="dot"></span>
+            <span>{t.views} views</span>
+            <span className="dot"></span>
+            <span className="badge badge-solved" style={{ fontSize: 10, padding: '2px 8px' }}>✓ Solved</span>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button className="btn btn-ghost">🔖 Subscribe</button>
+          <button className="btn btn-ghost">↗ Share</button>
+        </div>
+      </div>
+
+      {t.posts.map((p, i) => (
+        <div className={"post" + (p.op ? ' op' : '')} key={i} style={{ animationDelay: (i * 0.08) + 's' }}>
+          <div className="post-user">
+            <div className="post-avatar">{p.emoji}<span className="online-dot"></span></div>
+            <div>
+              <div className="post-username">{p.user}</div>
+              <div className={"post-role" + (p.role === 'Teacher' ? ' teacher' : p.role === 'Moderator' ? ' mod' : '')}>{p.role}</div>
+            </div>
+            <div className="post-lvl">⭐ Level <strong>{p.lvl}</strong></div>
+            <div className="post-badges">
+              {p.badges.map((b, bi) => <span className="post-badge" key={bi} title="badge">{b}</span>)}
+            </div>
+            <div className="post-stats">
+              <strong>{p.posts.toLocaleString()}</strong>
+              posts · joined {p.joined}
+            </div>
+          </div>
+          <div className="post-body">
+            <div className="post-meta">
+              <span><span className="num">#{p.num}</span> · {p.time}</span>
+              <div className="post-meta-actions">
+                <button className="post-action-btn">🔗 Link</button>
+                <button className="post-action-btn">⚑ Report</button>
+              </div>
+            </div>
+            {p.solution && (
+              <div className="solution-banner">
+                <span className="check">✓</span>
+                <span>Marked as solution by Liam · This answer solved the question</span>
+              </div>
+            )}
+            <div className="post-content">{p.content}</div>
+            <div className="post-footer">
+              <div className="reactions">
+                {reactions[i].map((r, ri) => (
+                  <button className={"reaction" + (r.active ? ' active' : '')} key={ri} onClick={() => toggle(i, ri)}>
+                    <span>{r.emoji}</span><span>{r.count}</span>
+                  </button>
+                ))}
+                <button className="reaction" style={{ color: 'var(--text3)' }}>+</button>
+              </div>
+              <div className="post-buttons">
+                {!p.op && !p.solution && p.role === 'Member' && i === 1 && <button className="post-btn solution">✓ Mark as solution</button>}
+                <button className="post-btn">↩ Quote</button>
+                <button className="post-btn">Reply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <div className="composer">
+        <div className="composer-head">
+          <span>Post a reply</span>
+          <div className="composer-toolbar">
+            <button className="composer-tool" title="Bold"><b>B</b></button>
+            <button className="composer-tool" title="Italic"><i>I</i></button>
+            <button className="composer-tool" title="Code">{'</>'}</button>
+            <button className="composer-tool" title="Quote">"</button>
+            <button className="composer-tool" title="Link">🔗</button>
+            <button className="composer-tool" title="Image">🖼</button>
+          </div>
+        </div>
+        <div className="composer-body">
+          <textarea className="composer-textarea" placeholder="Type your reply… Markdown and code blocks supported. Be kind and helpful!"></textarea>
+        </div>
+        <div className="composer-footer">
+          <div className="composer-hint">
+            Tip: wrap code in <kbd>```</kbd> for syntax highlighting · <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to post
+          </div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="btn btn-ghost">Preview</button>
+            <button className="btn btn-primary">Post Reply</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function ForumApp() {
+  const [view, setView] = useState('index');           // 'index' | 'category' | 'thread'
+  const [currentCat, setCurrentCat] = useState(null);
+  const [currentThread, setCurrentThread] = useState(null);
+
+  const openCategory = (id) => { setCurrentCat(id); setView('category'); window.scrollTo(0, 0); };
+  const openThread = (id) => { setCurrentThread(id); setView('thread'); window.scrollTo(0, 0); };
+  const backToIndex = () => { setView('index'); window.scrollTo(0, 0); };
+  const backToCategory = () => { setView('category'); window.scrollTo(0, 0); };
+
+  return (
+    <div>
+      <Topbar />
+      {view === 'index' && <ForumIndex onOpenCategory={openCategory} />}
+      {view === 'category' && <CategoryView catId={currentCat} onBack={backToIndex} onOpenThread={openThread} />}
+      {view === 'thread' && <ThreadView threadId={currentThread} onBack={backToIndex} onBackToCategory={backToCategory} />}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<ForumApp />);
+
+</script>
+</body>
+</html>

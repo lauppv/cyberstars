@@ -56,7 +56,7 @@ export function CoursesPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+      <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar streak={g.streak} />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-[var(--text3)]">Loading...</div>
@@ -66,7 +66,7 @@ export function CoursesPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+    <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar streak={g.streak} />
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-7 py-8 pb-16">

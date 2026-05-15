@@ -65,7 +65,7 @@ export function AlgorithmListPage() {
 
   if (isLoading) {
     return (
-      <div className="h-screen flex flex-col bg-[var(--bg)]">
+      <div className="h-screen flex flex-col bg-transparent">
         <Topbar />
         <div className="flex-1 flex items-center justify-center"><LoadingSpinner /></div>
       </div>
@@ -74,7 +74,7 @@ export function AlgorithmListPage() {
 
   if (!course) {
     return (
-      <div className="h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+      <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
         <div className="flex-1 flex items-center justify-center">
           <p className="text-[var(--text2)]">Course not found.</p>
@@ -84,7 +84,7 @@ export function AlgorithmListPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+    <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar streak={g.streak} />
 
       {isLoggedIn && (

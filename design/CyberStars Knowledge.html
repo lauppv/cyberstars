@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CyberStars — Knowledge</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#6C5CE7;--accent2:#8B7FF0;--accent-glow:#6C5CE733;--bg:#0F0F14;--bg2:#16161D;--bg3:#1E1E28;--surface:#22222E;--surface2:#2A2A38;--border:#2E2E3E;--text:#E8E8F0;--text2:#9999B0;--text3:#666680;--success:#00D68F;--warning:#FFAA00;--error:#FF6B6B;--font:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code',monospace;--serif:'Fraunces',Georgia,serif;--radius:10px;--radius-sm:6px}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden}
+#root{min-height:100%;position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+
+/* ===== Cosmos bg (same as forum) ===== */
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,#1a1040 0%,#0a0818 45%,#06050d 100%)}
+#cosmos canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nebula{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;mix-blend-mode:screen;pointer-events:none;will-change:transform}
+.nebula.n1{width:520px;height:520px;background:radial-gradient(circle,#6C5CE7 0%,transparent 65%);top:-120px;left:-100px;animation:drift1 38s ease-in-out infinite alternate}
+.nebula.n2{width:680px;height:680px;background:radial-gradient(circle,#FF6B6B 0%,transparent 60%);bottom:-200px;right:-180px;animation:drift2 46s ease-in-out infinite alternate;opacity:.22}
+.nebula.n3{width:420px;height:420px;background:radial-gradient(circle,#00D68F 0%,transparent 65%);top:40%;left:55%;animation:drift3 52s ease-in-out infinite alternate;opacity:.18}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(120px,80px) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-160px,-90px) scale(1.2)}}
+@keyframes drift3{from{transform:translate(0,0) scale(1)}to{transform:translate(-90px,120px) scale(.85)}}
+
+/* ===== Topbar ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:rgba(22,22,29,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+.topbar-left{display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-icon{font-size:22px;color:var(--accent);filter:drop-shadow(0 0 8px var(--accent-glow))}
+.logo-text{font-weight:700;font-size:17px;letter-spacing:-.5px}
+.topbar-nav{display:flex;gap:4px}
+.nav-item{padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border:none;background:none;font-family:var(--font);transition:all .15s}
+.nav-item:hover{color:var(--text);background:var(--surface)}
+.nav-item.active{color:var(--accent);background:rgba(108,92,231,.08)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.streak-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;background:var(--surface);border-radius:20px;border:1px solid var(--border);font-size:12px;font-weight:600}
+.user-btn{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 8px;border-radius:var(--radius-sm);border:none;background:none;color:var(--text);font-family:var(--font);transition:all .15s}
+.user-btn:hover{background:var(--surface)}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid var(--accent)}
+.user-name{font-size:13px;font-weight:600}
+
+/* ===== Page shell ===== */
+.page{max-width:1140px;margin:0 auto;padding:36px 28px 60px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:2.5px;font-weight:700;margin-bottom:14px}
+.kicker::before{content:'';width:24px;height:1px;background:var(--accent)}
+.page-title{font-family:var(--serif);font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:14px;background:linear-gradient(180deg,#fff 0%,#a8b0d4 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.page-subtitle{font-size:16px;color:var(--text2);line-height:1.6;max-width:640px}
+.page-header{margin-bottom:40px}
+
+/* Filter chips */
+.filters{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;align-items:center}
+.filter-chip{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:rgba(22,22,29,.6);backdrop-filter:blur(8px);color:var(--text2);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.filter-chip:hover{border-color:var(--text3);color:var(--text)}
+.filter-chip.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 16px var(--accent-glow)}
+.filter-chip .em{font-size:13px}
+
+/* ===== Hero featured ===== */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:rgba(22,22,29,.6);backdrop-filter:blur(10px);margin-bottom:48px;min-height:380px;cursor:pointer;transition:all .3s;position:relative}
+.hero:hover{border-color:var(--accent);box-shadow:0 16px 60px rgba(108,92,231,.2)}
+.hero-art{position:relative;overflow:hidden;min-height:380px}
+.hero-art-bg{position:absolute;inset:0;background:linear-gradient(135deg,#000814 0%,#001d3d 60%,#003566 100%)}
+.hero-art-stars{position:absolute;inset:0}
+.hero-art-stars::before,.hero-art-stars::after{content:'';position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:32px 18px #fff,84px 47px #fff,143px 88px #b0e0ff,210px 32px #fff,46px 145px #fff,178px 165px #fff,260px 122px #ffd1a1,310px 60px #fff,90px 220px #b0e0ff,200px 250px #fff,340px 200px #fff,420px 90px #fff,380px 270px #b0e0ff,440px 180px #fff,80px 310px #fff,260px 290px #ffd1a1;animation:twinkle 4s ease-in-out infinite}
+.hero-art-stars::after{animation-delay:2s;opacity:.6;top:30px;left:20px}
+@keyframes twinkle{0%,100%{opacity:.9}50%{opacity:.4}}
+.hero-art-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;filter:drop-shadow(0 8px 40px rgba(0,0,0,.6));animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-art-badge{position:absolute;top:20px;left:20px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:6px 14px;border-radius:20px;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;letter-spacing:1.5px;border:1px solid rgba(255,255,255,.15)}
+.hero-content{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
+.hero-cat{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:var(--serif);font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:14px;text-wrap:pretty}
+.hero-excerpt{font-size:15px;color:var(--text2);line-height:1.65;margin-bottom:22px;text-wrap:pretty}
+.hero-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--text3)}
+.hero-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--text3)}
+.hero-author{display:flex;align-items:center;gap:8px;color:var(--text2)}
+.hero-author-avatar{width:24px;height:24px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12px}
+
+/* ===== Main grid: articles + sidebar ===== */
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:flex-start;margin-bottom:48px}
+
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px;gap:16px}
+.section-head h2{font-family:var(--serif);font-size:28px;font-weight:700;letter-spacing:-.5px}
+.section-head .meta{font-size:12px;color:var(--text3)}
+
+/* Article grid */
+.articles{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.article{background:rgba(22,22,29,.72);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;display:flex;flex-direction:column}
+.article:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.5)}
+.article-art{position:relative;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:64px}
+.article-art-grad{position:absolute;inset:0;opacity:.95}
+.article-art .emoji{position:relative;z-index:1;filter:drop-shadow(0 4px 18px rgba(0,0,0,.5));transition:transform .3s}
+.article:hover .article-art .emoji{transform:scale(1.08)}
+.article-art-tag{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.5);padding:4px 10px;border-radius:12px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);z-index:2}
+.article-art-year{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:13px;font-weight:700;color:#fff;background:rgba(0,0,0,.5);padding:4px 10px;border-radius:12px;letter-spacing:.5px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);z-index:2}
+.article-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+.article-title{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.25;letter-spacing:-.3px;margin-bottom:8px;text-wrap:pretty}
+.article-excerpt{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px;flex:1;text-wrap:pretty}
+.article-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;color:var(--text3)}
+.article-author{display:flex;align-items:center;gap:6px}
+.article-author-av{width:20px;height:20px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:10px}
+.article-stats{display:flex;gap:10px;align-items:center}
+.article-xp{color:var(--accent);font-weight:700;font-family:var(--mono)}
+
+/* ===== Sidebar ===== */
+.sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:80px}
+.side-card{background:rgba(22,22,29,.72);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;padding:22px;position:relative;overflow:hidden}
+.side-card h3{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.side-card h3 .blip{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 8px var(--success);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+
+/* Fun fact card */
+.factcard{position:relative;background:linear-gradient(135deg,rgba(108,92,231,.15) 0%,rgba(255,107,107,.08) 100%);border:1px solid rgba(108,92,231,.25)}
+.factcard::after{content:'';position:absolute;width:140px;height:140px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);right:-40px;top:-40px;pointer-events:none}
+.fact-emoji{font-size:34px;margin-bottom:10px;display:block}
+.fact-text{font-family:var(--serif);font-size:17px;line-height:1.45;font-weight:600;letter-spacing:-.2px;text-wrap:pretty;position:relative;z-index:1}
+.fact-source{font-size:11px;color:var(--text3);margin-top:12px;font-family:var(--mono);position:relative;z-index:1}
+.fact-nav{display:flex;align-items:center;justify-content:space-between;margin-top:16px;position:relative;z-index:1}
+.fact-btn{width:28px;height:28px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:13px;transition:all .15s}
+.fact-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.fact-pips{display:flex;gap:5px}
+.fact-pip{width:6px;height:6px;border-radius:50%;background:var(--bg3);transition:all .2s}
+.fact-pip.active{background:var(--accent);width:16px;border-radius:3px}
+
+/* On this day timeline */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:grid;grid-template-columns:60px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--border);position:relative}
+.tl-item:last-child{border-bottom:none}
+.tl-year{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.5px}
+.tl-event{font-size:12.5px;color:var(--text2);line-height:1.5;text-wrap:pretty}
+.tl-event strong{color:var(--text);font-weight:600}
+
+/* Hall of legends */
+.legends{display:flex;flex-direction:column;gap:10px}
+.legend{display:flex;align-items:center;gap:11px;padding:8px;border-radius:var(--radius-sm);transition:background .15s;cursor:pointer}
+.legend:hover{background:var(--surface)}
+.legend-av{width:38px;height:38px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid var(--border);flex-shrink:0}
+.legend-info{flex:1;min-width:0}
+.legend-name{font-size:13px;font-weight:600;letter-spacing:-.1px}
+.legend-desc{font-size:11px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Quote of day */
+.quote-card{padding:24px;background:linear-gradient(135deg,rgba(0,214,143,.08) 0%,rgba(108,92,231,.06) 100%);border:1px solid rgba(0,214,143,.18)}
+.quote-mark{font-family:var(--serif);font-size:48px;color:var(--success);line-height:1;margin-bottom:-10px;opacity:.5}
+.quote-text{font-family:var(--serif);font-size:16px;line-height:1.5;font-weight:600;font-style:italic;letter-spacing:-.2px;margin-bottom:12px;text-wrap:pretty}
+.quote-author{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:8px}
+.quote-author strong{color:var(--text);font-weight:600}
+
+/* ===== Big timeline section ===== */
+.bigtl-section{margin-bottom:56px}
+.bigtl{position:relative;padding-left:34px;border-left:2px dashed var(--border);margin-top:24px}
+.bigtl-item{position:relative;padding-bottom:28px}
+.bigtl-item:last-child{padding-bottom:0}
+.bigtl-dot{position:absolute;left:-44px;top:2px;width:22px;height:22px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;box-shadow:0 0 0 4px var(--bg),0 0 16px var(--accent-glow)}
+.bigtl-year{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.8px;margin-bottom:6px}
+.bigtl-title{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:-.4px;margin-bottom:6px;line-height:1.25}
+.bigtl-text{font-size:14px;color:var(--text2);line-height:1.65;max-width:680px;text-wrap:pretty}
+.bigtl-tag{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-top:8px;padding:3px 8px;background:var(--bg3);border-radius:6px}
+
+/* Compact reading-list strip */
+.strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;margin-bottom:32px}
+.strip::-webkit-scrollbar{height:6px}
+.strip::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.strip-card{flex:0 0 280px;background:rgba(22,22,29,.72);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:16px 18px;cursor:pointer;transition:all .2s}
+.strip-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.strip-cat{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:1.3px;font-weight:700;margin-bottom:6px}
+.strip-title{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:6px;letter-spacing:-.2px}
+.strip-meta{font-size:11px;color:var(--text3)}
+
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.sidebar{position:static}.hero{grid-template-columns:1fr}.hero-art{min-height:200px}.articles{grid-template-columns:1fr}.page-title{font-size:42px}}
+</style>
+</head>
+<body>
+<div id="cosmos">
+  <canvas id="starfield"></canvas>
+  <div class="nebula n1"></div>
+  <div class="nebula n2"></div>
+  <div class="nebula n3"></div>
+</div>
+<div id="root"></div>
+
+<script>
+// Static starfield with very slow twinkling — calm, reading-friendly
+(() => {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const stars = [];
+  const NUM_STARS = 260;
+  const COLORS = ['#ffffff','#cfd9ff','#ffd1a1','#a8c4ff','#e8b8ff'];
+
+  function regenStars() {
+    stars.length = 0;
+    for (let i = 0; i < NUM_STARS; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() < 0.85 ? 0.5 + Math.random() * 1.2 : 1.6 + Math.random() * 1.4,
+        baseAlpha: 0.35 + Math.random() * 0.55,
+        // very slow twinkle: period 8–20 seconds
+        twPhase: Math.random() * Math.PI * 2,
+        twSpeed: 0.00015 + Math.random() * 0.0004,  // rad/ms
+        twAmp: 0.15 + Math.random() * 0.35,         // how much it varies
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      });
+    }
+  }
+
+  function resize() {
+    w = canvas.clientWidth = window.innerWidth;
+    h = canvas.clientHeight = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    regenStars();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function frame(now) {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+      const tw = Math.sin(s.twPhase + now * s.twSpeed);
+      const alpha = Math.max(0.05, s.baseAlpha + tw * s.twAmp);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = s.color;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+      ctx.fill();
+      if (s.size > 1.6) {
+        ctx.globalAlpha = alpha * 0.22;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size * 2.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">
+const { useState } = React;
+
+// ===== Data =====
+const CATEGORIES = [
+  { id: 'all',      label: 'All',           em: '✦' },
+  { id: 'history',  label: 'History',       em: '📜' },
+  { id: 'oss',      label: 'Open Source',   em: '🐧' },
+  { id: 'legends',  label: 'Legends',       em: '👑' },
+  { id: 'hardware', label: 'Hardware',      em: '💾' },
+  { id: 'internet', label: 'Internet',      em: '🌐' },
+  { id: 'ai',       label: 'AI & Future',   em: '🧠' },
+  { id: 'fun',      label: 'Fun Facts',     em: '🎲' },
+];
+
+const HERO = {
+  cat: 'oss', catLabel: 'OPEN SOURCE',
+  title: 'How a 21-year-old in Helsinki accidentally changed the world',
+  excerpt: "In August 1991, a Finnish student posted a humble message to a Usenet newsgroup: \"I'm doing a (free) operating system, just a hobby, won't be big and professional like gnu.\" Three decades later, Linux runs on 90% of the cloud, every Android phone, and the laptop you're reading this on.",
+  author: 'Editorial Team', authorEmoji: '✨',
+  readTime: '8 min', date: 'May 14, 2026',
+  emoji: '🐧', xp: 30,
+};
+
+const ARTICLES = [
+  { cat:'history', tag:'HISTORY', year:'1969', emoji:'📞', grad:'linear-gradient(135deg,#1a1a40,#3a1f70)',
+    title:'The night the internet said its first word',
+    excerpt:"On October 29, 1969, ARPANET sent its first message between UCLA and Stanford. They tried to send 'LOGIN' — the system crashed after 'LO'. Humanity's first internet message was an accidental 'lo'.",
+    author:'CyberBot', authorEm:'🤖', readTime:'5 min', xp:20 },
+  { cat:'legends', tag:'LEGENDS', year:'1843', emoji:'👑', grad:'linear-gradient(135deg,#3a1f4f,#8b1a5c)',
+    title:'Ada Lovelace wrote code before computers existed',
+    excerpt:'In 1843, a century before the first electronic computer, Ada Lovelace published an algorithm for computing Bernoulli numbers on a machine that was never built. She is the first programmer in history.',
+    author:'Ms. Diana', authorEm:'🦄', readTime:'6 min', xp:25 },
+  { cat:'oss', tag:'OPEN SOURCE', year:'1985', emoji:'🦬', grad:'linear-gradient(135deg,#1f3a1f,#2d6b3d)',
+    title:'Why Richard Stallman left MIT to start a revolution',
+    excerpt:"After fighting with a printer driver he wasn't allowed to fix, Stallman quit MIT and started the GNU Project. He wrote a license that uses copyright to do the opposite: guarantee freedom.",
+    author:'Editorial', authorEm:'✨', readTime:'7 min', xp:25 },
+  { cat:'history', tag:'HISTORY', year:'1968', emoji:'🎤', grad:'linear-gradient(135deg,#0f1c3a,#2a4a8b)',
+    title:'The Mother of All Demos — a 90-minute glimpse of the future',
+    excerpt:'In 1968, Douglas Engelbart demoed the mouse, hypertext, video conferencing, real-time collaborative editing and windows — 16 years before the Mac. Most of the audience walked out confused.',
+    author:'Kai', authorEm:'🐺', readTime:'9 min', xp:30 },
+  { cat:'fun', tag:'FUN FACT', year:'1947', emoji:'🦟', grad:'linear-gradient(135deg,#3a2010,#8b5a1a)',
+    title:'The first computer bug was a literal bug',
+    excerpt:'September 9, 1947. The Mark II at Harvard malfunctioned. Engineers found a moth stuck in relay #70. They taped it into the logbook with a note: "First actual case of bug being found." Grace Hopper.',
+    author:'CyberBot', authorEm:'🤖', readTime:'3 min', xp:15 },
+  { cat:'oss', tag:'OPEN SOURCE', year:'1996', emoji:'🐧', grad:'linear-gradient(135deg,#1a2a4f,#4f6fab)',
+    title:'Why is Linux\'s mascot a penguin? (The pinching story)',
+    excerpt:'In 1996 Linus needed a mascot. He told the community he\'d been pecked by a penguin at a zoo in Canberra. The supposed pinch came with mild fever — and a lifelong fondness for the bird.',
+    author:'Liam', authorEm:'🐢', readTime:'4 min', xp:15 },
+  { cat:'hardware', tag:'HARDWARE', year:'1971', emoji:'🔲', grad:'linear-gradient(135deg,#2a1a40,#5a2f7a)',
+    title:'The Intel 4004 — a CPU you could hold in your fingernail',
+    excerpt:'The world\'s first commercial microprocessor (1971) had 2,300 transistors and ran at 740 kHz. The chip you\'re using right now has tens of billions of transistors and is 5 million times faster.',
+    author:'Theo', authorEm:'🦝', readTime:'6 min', xp:20 },
+  { cat:'internet', tag:'INTERNET', year:'1991', emoji:'🌐', grad:'linear-gradient(135deg,#103a3a,#1f7a7a)',
+    title:'Tim Berners-Lee gave the Web away — for free, forever',
+    excerpt:'In 1993 CERN published the Web\'s source code into the public domain. Tim Berners-Lee never patented it. No royalties, no permissions. That single decision made the modern internet possible.',
+    author:'Sam', authorEm:'🦉', readTime:'7 min', xp:25 },
+  { cat:'legends', tag:'LEGENDS', year:'1969', emoji:'🚀', grad:'linear-gradient(135deg,#1a1a2e,#16213e)',
+    title:'Margaret Hamilton wrote the code that landed Apollo 11',
+    excerpt:"Hamilton coined the term 'software engineering' because no one took her work seriously. Her code handled an overflow during the moon landing — caught the error, kept the priorities right, and Neil landed safely.",
+    author:'Maya', authorEm:'🦊', readTime:'8 min', xp:30 },
+  { cat:'fun', tag:'FUN FACT', year:'1971', emoji:'@', grad:'linear-gradient(135deg,#3a1a3a,#7a2f6a)',
+    title:'The @ symbol almost died — then email saved it',
+    excerpt:"In 1971, Ray Tomlinson needed a character that separated user from machine. The @ was already on the keyboard and almost never used. One arbitrary choice and now it's on every email ever sent.",
+    author:'CyberBot', authorEm:'🤖', readTime:'4 min', xp:15 },
+  { cat:'ai', tag:'AI & FUTURE', year:'1950', emoji:'🧠', grad:'linear-gradient(135deg,#1a2a40,#4a3a7a)',
+    title:'Turing asked one question that we\'re still trying to answer',
+    excerpt:'"Can machines think?" Alan Turing\'s 1950 paper proposed a test: if you can\'t tell a computer from a human in conversation, does the difference matter? Seventy-six years later, we\'re still arguing.',
+    author:'Editorial', authorEm:'✨', readTime:'9 min', xp:30 },
+  { cat:'oss', tag:'OPEN SOURCE', year:'1999', emoji:'📕', grad:'linear-gradient(135deg,#3a1a1a,#7a2f2f)',
+    title:'The Cathedral and the Bazaar — why open source actually works',
+    excerpt:'Eric S. Raymond\'s 1999 essay explained why a chaotic crowd of volunteers can outpace polished corporate teams. "Given enough eyeballs, all bugs are shallow." It became the manifesto for an entire industry.',
+    author:'Ms. Diana', authorEm:'🦄', readTime:'10 min', xp:35 },
+];
+
+const FUN_FACTS = [
+  { em:'🎮', text:'The first video game, "Tennis for Two" (1958), ran on an analog oscilloscope at a science fair. The creator made it because the open house was boring.', src:'— Brookhaven Lab, 1958' },
+  { em:'📼', text:'Floppy disks were called "floppy" because the original 8-inch disks bent in your hand. The 3.5" disks we remember were technically rigid.', src:'— IBM, 1971' },
+  { em:'🐍', text:'Python is named after Monty Python\'s Flying Circus, not the snake. Guido van Rossum was reading the scripts when he picked the name in 1991.', src:'— python.org' },
+  { em:'⌨️', text:'The QWERTY layout was designed in 1873 to slow typists down — keys jammed on mechanical typewriters. We\'ve kept it ever since.', src:'— Christopher Sholes' },
+  { em:'☕', text:'Java was almost called "Oak" — until lawyers found another product with that name. The team picked Java over coffee. Literally.', src:'— Sun Microsystems, 1995' },
+  { em:'🦠', text:'The first computer virus, "Creeper" (1971), just displayed: "I\'m the creeper, catch me if you can!" The first antivirus, "Reaper", was made to hunt it.', src:'— ARPANET' },
+  { em:'🖱️', text:'The first computer mouse was made of wood (1964). Doug Engelbart\'s prototype had two perpendicular wheels — and one button.', src:'— SRI International' },
+  { em:'💾', text:'The save icon (a floppy disk) is now older than most of the people who use it. Kids today have never touched one.', src:'— Universal truth' },
+];
+
+const ON_THIS_DAY = [
+  { year:'1969', text:<><strong>UNIX</strong> first installed at Bell Labs by Ken Thompson</> },
+  { year:'1990', text:<>Tim Berners-Lee proposes the <strong>World Wide Web</strong> at CERN</> },
+  { year:'2001', text:<>First public release of <strong>Wikipedia</strong></> },
+  { year:'2008', text:<><strong>Bitcoin</strong> whitepaper published by Satoshi Nakamoto</> },
+  { year:'2009', text:<>The first <strong>Git</strong> commit was authored by Linus</> },
+  { year:'2022', text:<>ChatGPT enters public beta — <strong>1M users in 5 days</strong></> },
+];
+
+const LEGENDS = [
+  { em:'🐧', name:'Linus Torvalds',     desc:'Linux, Git — Finland, 1969' },
+  { em:'🦬', name:'Richard Stallman',  desc:'GNU, Free Software — 1953' },
+  { em:'👑', name:'Ada Lovelace',       desc:'First programmer — 1815' },
+  { em:'🦋', name:'Grace Hopper',       desc:'COBOL, first bug — 1906' },
+  { em:'🚀', name:'Margaret Hamilton', desc:'Apollo 11 software — 1936' },
+  { em:'🧠', name:'Alan Turing',        desc:'Father of CS — 1912' },
+  { em:'🌐', name:'Tim Berners-Lee',    desc:'Invented the Web — 1955' },
+  { em:'🍎', name:'Dennis Ritchie',     desc:'Created C, UNIX — 1941' },
+];
+
+const QUOTE = {
+  text: "Talk is cheap. Show me the code.",
+  author: "Linus Torvalds",
+  context: "2000, Linux Kernel Mailing List"
+};
+
+const BIG_TIMELINE = [
+  { year:'1969', emoji:'📡', tag:'INTERNET', title:'ARPANET sends its first message',
+    text:"UCLA → Stanford. They tried to send LOGIN, the system crashed after 'LO'. Humanity's first internet packet was a typo." },
+  { year:'1983', emoji:'🌐', tag:'PROTOCOLS', title:'The internet is born on a Tuesday',
+    text:'January 1, 1983 — ARPANET switches from NCP to TCP/IP. Networks of networks become possible. Vint Cerf calls it "Flag Day".' },
+  { year:'1991', emoji:'🐧', tag:'OPEN SOURCE', title:'Linus posts to comp.os.minix',
+    text:'"Hello everybody out there using minix — I\'m doing a (free) operating system (just a hobby, won\'t be big and professional like gnu)." It would become the most successful OS in history.' },
+  { year:'1995', emoji:'☕', tag:'LANGUAGES', title:'Java is released — "Write Once, Run Anywhere"',
+    text:'Sun Microsystems ships Java 1.0. The JVM concept revolutionizes how we ship software. JavaScript is created the same year by Brendan Eich, in 10 days.' },
+  { year:'2005', emoji:'🌳', tag:'TOOLS', title:'Linus writes Git in two weeks',
+    text:'After BitKeeper revoked the Linux kernel\'s free license, Linus built a distributed version control system from scratch. He named it after himself: "I\'m an egotistical bastard."' },
+  { year:'2007', emoji:'📱', tag:'PLATFORMS', title:'The iPhone redefines a computer',
+    text:'A computer in your pocket, with no keyboard, running custom UNIX. Within a decade more code runs on phones than on every desktop ever made.' },
+];
+
+// ===== App =====
+function KnowledgePage() {
+  const [filter, setFilter] = useState('all');
+  const [factIdx, setFactIdx] = useState(0);
+
+  const filtered = filter === 'all' ? ARTICLES : ARTICLES.filter(a => a.cat === filter);
+  const fact = FUN_FACTS[factIdx];
+
+  const nextFact = () => setFactIdx((factIdx + 1) % FUN_FACTS.length);
+  const prevFact = () => setFactIdx((factIdx - 1 + FUN_FACTS.length) % FUN_FACTS.length);
+
+  return (
+    <>
+      {/* Topbar */}
+      <header className="topbar">
+        <div className="topbar-left">
+          <a className="logo" href="CyberStars Dashboard.html">
+            <span className="logo-icon">⬡</span>
+            <span className="logo-text">CyberStars</span>
+          </a>
+          <nav className="topbar-nav">
+            <a className="nav-item" href="CyberStars Dashboard.html">Dashboard</a>
+            <a className="nav-item" href="CyberStars Courses.html">Courses</a>
+            <a className="nav-item" href="CyberStars Challenges.html">Challenges</a>
+            <a className="nav-item" href="CyberStars Forum.html">Forum</a>
+            <a className="nav-item active" href="#">Knowledge</a>
+            <a className="nav-item" href="CyberStars Rest Room.html" style={{ color: 'var(--accent)' }}>✦ Rest</a>
+          </nav>
+        </div>
+        <div className="topbar-right">
+          <div className="streak-pill"><span>🔥</span><span>5 days</span></div>
+          <button className="user-btn">
+            <div className="user-avatar">🚀</div>
+            <span className="user-name">Alex</span>
+          </button>
+        </div>
+      </header>
+
+      <main className="page">
+        {/* Page header */}
+        <div className="page-header">
+          <div className="kicker">✦ The CyberStars Almanac</div>
+          <h1 className="page-title">Stories that built<br/>the modern world.</h1>
+          <p className="page-subtitle">Tech history, open-source legends, hacker culture and the curious little stories behind the tools you use every day. New articles every week.</p>
+        </div>
+
+        {/* Filters */}
+        <div className="filters">
+          {CATEGORIES.map(c => (
+            <button key={c.id}
+              className={"filter-chip" + (filter === c.id ? ' active' : '')}
+              onClick={() => setFilter(c.id)}>
+              <span className="em">{c.em}</span>
+              <span>{c.label}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Hero featured */}
+        <article className="hero">
+          <div className="hero-art">
+            <div className="hero-art-bg"></div>
+            <div className="hero-art-stars"></div>
+            <div className="hero-art-icon">{HERO.emoji}</div>
+            <div className="hero-art-badge">FEATURED STORY</div>
+          </div>
+          <div className="hero-content">
+            <div className="hero-cat">✦ {HERO.catLabel}</div>
+            <h2 className="hero-title">{HERO.title}</h2>
+            <p className="hero-excerpt">{HERO.excerpt}</p>
+            <div className="hero-meta">
+              <div className="hero-author">
+                <div className="hero-author-avatar">{HERO.authorEmoji}</div>
+                <span>{HERO.author}</span>
+              </div>
+              <span className="dot"></span>
+              <span>{HERO.date}</span>
+              <span className="dot"></span>
+              <span>{HERO.readTime} read</span>
+              <span className="dot"></span>
+              <span style={{ color:'var(--accent)', fontFamily:'var(--mono)', fontWeight:700 }}>+{HERO.xp} XP</span>
+            </div>
+          </div>
+        </article>
+
+        {/* Main grid */}
+        <div className="main-grid">
+          <div>
+            <div className="section-head">
+              <h2>Latest reads</h2>
+              <div className="meta">{filtered.length} {filter === 'all' ? 'articles' : 'in this topic'}</div>
+            </div>
+            <div className="articles">
+              {filtered.map((a, i) => (
+                <article className="article" key={i}>
+                  <div className="article-art">
+                    <div className="article-art-grad" style={{ background: a.grad }}></div>
+                    <span className="article-art-tag">{a.tag}</span>
+                    <span className="article-art-year">{a.year}</span>
+                    <span className="emoji">{a.emoji}</span>
+                  </div>
+                  <div className="article-body">
+                    <h3 className="article-title">{a.title}</h3>
+                    <p className="article-excerpt">{a.excerpt}</p>
+                    <div className="article-footer">
+                      <div className="article-author">
+                        <div className="article-author-av">{a.authorEm}</div>
+                        <span>{a.author}</span>
+                      </div>
+                      <div className="article-stats">
+                        <span>{a.readTime}</span>
+                        <span className="article-xp">+{a.xp} XP</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <aside className="sidebar">
+            <div className="side-card factcard">
+              <h3>🎲 Daily Fun Fact</h3>
+              <span className="fact-emoji">{fact.em}</span>
+              <div className="fact-text">{fact.text}</div>
+              <div className="fact-source">{fact.src}</div>
+              <div className="fact-nav">
+                <div className="fact-pips">
+                  {FUN_FACTS.map((_, i) => <div key={i} className={"fact-pip" + (i === factIdx ? ' active' : '')}></div>)}
+                </div>
+                <div style={{ display:'flex', gap:6 }}>
+                  <button className="fact-btn" onClick={prevFact}>‹</button>
+                  <button className="fact-btn" onClick={nextFact}>›</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="side-card">
+              <h3><span className="blip"></span> On this day in tech</h3>
+              <div className="timeline">
+                {ON_THIS_DAY.map((it, i) => (
+                  <div className="tl-item" key={i}>
+                    <div className="tl-year">{it.year}</div>
+                    <div className="tl-event">{it.text}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="side-card quote-card">
+              <h3>💬 Quote of the day</h3>
+              <div className="quote-mark">"</div>
+              <div className="quote-text">{QUOTE.text}</div>
+              <div className="quote-author">— <strong>{QUOTE.author}</strong> · {QUOTE.context}</div>
+            </div>
+
+            <div className="side-card">
+              <h3>👑 Hall of Legends</h3>
+              <div className="legends">
+                {LEGENDS.map((l, i) => (
+                  <div className="legend" key={i}>
+                    <div className="legend-av">{l.em}</div>
+                    <div className="legend-info">
+                      <div className="legend-name">{l.name}</div>
+                      <div className="legend-desc">{l.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        {/* Big timeline */}
+        <section className="bigtl-section">
+          <div className="section-head" style={{ marginBottom: 8 }}>
+            <div>
+              <div className="kicker" style={{ marginBottom: 6 }}>⏳ The Timeline</div>
+              <h2>Moments that bent the trajectory</h2>
+            </div>
+          </div>
+          <div className="bigtl">
+            {BIG_TIMELINE.map((m, i) => (
+              <div className="bigtl-item" key={i}>
+                <div className="bigtl-dot">{m.emoji}</div>
+                <div className="bigtl-year">{m.year}</div>
+                <h3 className="bigtl-title">{m.title}</h3>
+                <p className="bigtl-text">{m.text}</p>
+                <span className="bigtl-tag">{m.tag}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<KnowledgePage />);
+</script>
+</body>
+</html>

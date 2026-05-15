@@ -34,7 +34,7 @@ export function AlgorithmsPage() {
   const { isLoggedIn } = useAuth();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+    <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar streak={g.streak} />
 
       {isLoggedIn && (

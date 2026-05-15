@@ -14,6 +14,8 @@ const NAV_ITEMS = [
   { label: "Dashboard", path: "/" },
   { label: "Courses", path: "/courses" },
   { label: "Algorithms", path: "/algorithms" },
+  { label: "Forum", path: "/forum" },
+  { label: "Almanac", path: "/almanac" },
 ];
 
 export function Topbar({
@@ -48,7 +50,7 @@ export function Topbar({
   }, [menuOpen]);
 
   return (
-    <header className="flex items-center justify-between px-7 h-14 bg-[var(--bg2)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
+    <header className="flex items-center justify-between px-7 h-14 bg-[rgba(22,22,29,0.78)] backdrop-blur-[14px] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
       <div className="flex items-center gap-6">
         {showSidebarToggle && (
           <button

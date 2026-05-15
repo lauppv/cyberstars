@@ -157,7 +157,7 @@ export function LessonPage() {
 
   if (isLoading) {
     return (
-      <div className="h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
+      <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
         <div className="flex-1 flex items-center justify-center">
           <LoadingSpinner />
@@ -167,7 +167,7 @@ export function LessonPage() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] overflow-hidden">
+    <div className="h-screen flex flex-col bg-transparent text-[var(--text)] overflow-hidden">
       <Topbar
         breadcrumb={{
           course: course?.title,

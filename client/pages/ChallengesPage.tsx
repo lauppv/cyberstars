@@ -243,7 +243,7 @@ export function ChallengesPage() {
         @keyframes popIn { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
       `}</style>
 
-      <div className="h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] overflow-hidden">
+      <div className="h-screen flex flex-col bg-transparent text-[var(--text)] overflow-hidden">
         <Topbar streak={g.streak} />
 
         <div className="flex-1 flex overflow-hidden">
