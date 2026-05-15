@@ -1,0 +1,26 @@
+[
+  {
+    "name": "3 is fizz",
+    "input": "",
+    "expected": "3: fizz",
+    "mode": "contains"
+  },
+  {
+    "name": "5 is buzz",
+    "input": "",
+    "expected": "5: buzz",
+    "mode": "contains"
+  },
+  {
+    "name": "15 is fizzbuzz",
+    "input": "",
+    "expected": "15: fizzbuzz",
+    "mode": "contains"
+  },
+  {
+    "name": "FizzBuzz count",
+    "input": "",
+    "expected": "FizzBuzz count: 1",
+    "mode": "contains"
+  }
+]

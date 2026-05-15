@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Insufficient funds printed",
+    "input": "",
+    "expected": "Insufficient funds",
+    "mode": "contains"
+  },
+  {
+    "name": "Tommy's account correct",
+    "input": "",
+    "expected": "Account #1 (Tommy) - Balance: 1250.0 EUR",
+    "mode": "contains"
+  },
+  {
+    "name": "Lance's account correct",
+    "input": "",
+    "expected": "Account #2 (Lance) - Balance: 300.0 EUR",
+    "mode": "contains"
+  },
+  {
+    "name": "Total accounts is 2",
+    "input": "",
+    "expected": "Total accounts: 2",
+    "mode": "contains"
+  }
+]

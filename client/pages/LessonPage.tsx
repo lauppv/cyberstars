@@ -16,8 +16,9 @@ import { RunButton } from "../components/code/RunButton";
 import { MarkdownRenderer } from "../components/markdown/MarkdownRenderer";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import type { Course, LessonMeta } from "../../shared/lesson";
+import * as progressService from "../services/progressService";
 import { LANG_LABEL, COURSE_COLOR } from "../constants/courses";
-import { XP_PER_LESSON } from "../../shared/constants";
+import { xpForLesson } from "../../shared/constants";
 
 function parseDifficulty(title: string): { difficulty: "Easy" | "Medium" | "Hard" | null; rest: string } {
   const m = title.match(/^(Easy|Medium|Hard)\s*[·-]\s*(.+)$/i);
@@ -75,7 +76,7 @@ export function LessonPage() {
 
   const [userCode, setUserCode] = useState("");
   const [showToast, setShowToast] = useState(false);
-  const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: XP_PER_LESSON });
+  const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: 0 });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [showAIHint, setShowAIHint] = useState(false);
   const [aiHint, setAiHint] = useState("");
@@ -87,7 +88,7 @@ export function LessonPage() {
   const course = courses.find((c) => c.key === category) ?? null;
 
   const lessonCompleted =
-    progress?.lessons.find((l: any) => (l.lessonSlug ?? l.slug) === lesson)?.completed ?? false;
+    progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
 
   useEffect(() => {
     setUserCode(codeTemplate);
@@ -99,14 +100,21 @@ export function LessonPage() {
   }, [lesson]);
 
   useEffect(() => {
+    if (isLoggedIn && category && lesson) {
+      progressService.trackAccess(category, lesson).catch(() => {});
+    }
+  }, [isLoggedIn, category, lesson]);
+
+  useEffect(() => {
     if (lessonCompleted && justSubmittedRef.current) {
       justSubmittedRef.current = false;
       recordActivityToday();
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
+      const lessonMeta = course?.lessons.find((l) => l.slug === lesson);
       setToastData({
         icon: isLast ? "🏆" : "✅",
         title: isLast ? "Course Milestone!" : "Lesson Complete!",
-        xp: XP_PER_LESSON,
+        xp: xpForLesson(lessonMeta?.sortOrder ?? 1),
       });
       setShowToast(true);
     }
@@ -120,8 +128,8 @@ export function LessonPage() {
 
   const completedSlugs = new Set<string>(
     (progress?.lessons ?? [])
-      .filter((l: any) => l.completed)
-      .map((l: any) => l.lessonSlug ?? l.slug)
+      .filter((l) => l.completed)
+      .map((l) => l.slug)
   );
 
   const handleRun = useCallback(() => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useGamification } from "../hooks/useGamification";
@@ -7,9 +7,11 @@ import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { StreakWidget } from "../components/gamification/StreakWidget";
 import * as progressService from "../services/progressService";
 import { useCurriculum } from "../context/CurriculumContext";
+import { useAllProgress } from "../context/ProgressContext";
 import type { Course } from "../../shared/lesson";
 import type { LeaderboardEntry } from "../../shared/progress";
 import { COURSE_ICON } from "../constants/courses";
+import { MAIN_COURSE_KEYS, progressPct } from "../../shared/constants";
 
 const TOUR_STEPS = [
   { icon: "👋", title: "Welcome to CyberStars!", body: "We're excited to have you. Let's take a quick tour of the platform so you know where everything is." },
@@ -34,17 +36,39 @@ export function HomePage() {
   const { isLoggedIn, isLoading, user } = useAuth();
   const g = useGamification();
   const { courses: allCourses } = useCurriculum();
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [continueTo, setContinueTo] = useState<{
-    course: Course;
-    slug: string;
-    title: string;
-    pct: number;
-  } | null>(null);
+  const { progressMap, refresh: refreshProgress } = useAllProgress();
   const [tourStep, setTourStep] = useState<number | null>(null);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [lbPage, setLbPage] = useState(0);
   const [showAllLb, setShowAllLb] = useState(false);
+
+  const mainCourses = useMemo(
+    () => allCourses.filter((c) => (MAIN_COURSE_KEYS as readonly string[]).includes(c.key)),
+    [allCourses]
+  );
+
+  const continueTo = useMemo(() => {
+    if (!isLoggedIn || !mainCourses.length) return null;
+    let best: { course: Course; slug: string; title: string; pct: number; at: string } | null = null;
+    for (const c of mainCourses) {
+      const p = progressMap[c.key];
+      if (!p) continue;
+      const pct = progressPct(p.completed, p.total);
+      for (const l of p.lessons) {
+        if (l.lastAccessedAt && (!best || l.lastAccessedAt > best.at)) {
+          best = { course: c, slug: l.slug, title: l.title, pct, at: l.lastAccessedAt };
+        }
+      }
+    }
+    if (best) return { course: best.course, slug: best.slug, title: best.title, pct: best.pct };
+    const first = mainCourses[0];
+    if (first?.lessons[0]) return { course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 };
+    return null;
+  }, [isLoggedIn, mainCourses, progressMap]);
+
+  useEffect(() => {
+    if (isLoggedIn) refreshProgress();
+  }, [isLoggedIn]);
 
   // Onboarding tour
   useEffect(() => {
@@ -53,44 +77,14 @@ export function HomePage() {
     }
   }, [isLoggedIn]);
 
-  // Data fetching — uses curriculum from context, only fetches progress + leaderboard
+  // Leaderboard (only remaining fetch — not progress-related)
   useEffect(() => {
-    if (!allCourses.length) return;
-    const data = allCourses.filter((c) => c.key !== "algo");
-    setCourses(data);
-
     let cancelled = false;
-    (async () => {
-      if (isLoggedIn) {
-        let found = false;
-        for (const c of data) {
-          try {
-            const p = await progressService.getCourseProgress(c.key);
-            const next = p.lessons.find((l) => !l.completed);
-            if (next) {
-              const done = p.lessons.filter((l) => l.completed).length;
-              const pct = p.lessons.length > 0 ? Math.round((done / p.lessons.length) * 100) : 0;
-              if (!cancelled) setContinueTo({ course: c, slug: next.slug, title: next.title, pct });
-              found = true;
-              break;
-            }
-          } catch {}
-        }
-        if (!found) {
-          const first = data[0];
-          if (first && first.lessons[0]) {
-            if (!cancelled) setContinueTo({ course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 });
-          }
-        }
-      }
-
-      try {
-        const lb = await progressService.getLeaderboard();
-        if (!cancelled) setLeaderboard(lb);
-      } catch {}
-    })();
+    progressService.getLeaderboard()
+      .then((lb) => { if (!cancelled) setLeaderboard(lb); })
+      .catch(() => {});
     return () => { cancelled = true; };
-  }, [allCourses, isLoggedIn]);
+  }, []);
 
   function closeTour() {
     localStorage.setItem("cyberstars_toured", "1");
@@ -163,10 +157,10 @@ export function HomePage() {
               <StreakWidget days={g.streak} />
             </div>
 
-            {/* ── Continue Learning ── */}
+            {/* ── Continue Where You Left Off ── */}
             {continueTo && (
               <section>
-                <SectionHeader>Continue Learning</SectionHeader>
+                <SectionHeader>Continue where you left off</SectionHeader>
                 <button
                   onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
                   className="w-full text-left flex items-center gap-4 p-4 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] hover:border-[var(--accent)] transition cursor-pointer group"
@@ -208,64 +202,6 @@ export function HomePage() {
                 </button>
               </section>
             )}
-
-            {/* ── Your Courses ── */}
-            <section>
-              <SectionHeader>Your Courses</SectionHeader>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {courses.map((c) => {
-                  const p = g.perCourse[c.key];
-                  const done = p?.done ?? 0;
-                  const total = p?.total ?? c.lessons.length;
-                  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-                  return (
-                    <button
-                      key={c.key}
-                      onClick={() => navigate(`/course/${c.key}`)}
-                      className="text-left p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] hover:border-[var(--accent)] transition cursor-pointer group"
-                    >
-                      <div className="flex items-center gap-3 mb-3">
-                        <div
-                          className="w-11 h-11 rounded-[8px] flex items-center justify-center text-xl shrink-0"
-                          style={{ background: "var(--bg3)" }}
-                        >
-                          {COURSE_ICON[c.key] ?? "📘"}
-                        </div>
-                        <div className="min-w-0">
-                          <div className="font-bold text-[15px] group-hover:text-[var(--accent)] transition truncate">
-                            {c.title}
-                          </div>
-                          <div className="text-[11px] text-[var(--text3)]">
-                            {total} lesson{total !== 1 ? "s" : ""}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-xs text-[var(--text2)] mb-4 line-clamp-2">
-                        {c.description}
-                      </p>
-                      {pct > 0 ? (
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-[10px] text-[var(--text3)] font-semibold uppercase tracking-[1px]">
-                              {done}/{total} completed
-                            </span>
-                            <span className="text-[10px] text-[var(--text3)] font-semibold">{pct}%</span>
-                          </div>
-                          <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-[var(--success)] rounded-full transition-[width] duration-500"
-                              style={{ width: `${pct}%` }}
-                            />
-                          </div>
-                        </div>
-                      ) : (
-                        <span className="text-xs font-semibold text-[var(--accent)]">Start Course →</span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
 
             {/* ── Leaderboard ── */}
             <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
@@ -464,7 +400,7 @@ export function HomePage() {
 
 function SectionHeader({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
+    <h2 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
       {children}
     </h2>
   );

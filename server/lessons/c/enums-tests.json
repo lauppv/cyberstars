@@ -1,0 +1,8 @@
+[
+  {
+    "name": "All four seasons printed",
+    "input": "",
+    "expected": "Spring\nSummer\nAutumn\nWinter",
+    "mode": "exact"
+  }
+]

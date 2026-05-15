@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Total words",
+    "input": "",
+    "expected": "Total words: 12",
+    "mode": "contains"
+  },
+  {
+    "name": "Count of 'the'",
+    "input": "",
+    "expected": "Count of 'the': 3",
+    "mode": "contains"
+  },
+  {
+    "name": "Longest word",
+    "input": "",
+    "expected": "Longest word: jumps",
+    "mode": "contains"
+  },
+  {
+    "name": "Has duplicates",
+    "input": "",
+    "expected": "Has duplicates: True",
+    "mode": "contains"
+  }
+]

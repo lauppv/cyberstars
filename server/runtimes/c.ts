@@ -7,6 +7,6 @@ export const cRuntime: LanguageRuntime = {
   sourceFile: "user_code.c",
   // Compilez întâi, dacă pică oprim aici, altfel rulăm binarul cu timeout
   innerCmd:
-    "gcc -Wall /work/user_code.c -o /work/a.out > /work/output.txt 2>&1 && " +
+    "gcc -Wall -lm -lpthread /work/user_code.c -o /work/a.out > /work/output.txt 2>&1 && " +
     "timeout 5 /work/a.out < /work/stdin.txt >> /work/output.txt 2>&1",
 };

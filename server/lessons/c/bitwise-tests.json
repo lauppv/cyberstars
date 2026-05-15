@@ -1,0 +1,8 @@
+[
+  {
+    "name": "AND: 8",
+    "input": "",
+    "expected": "8\n14\n6\n48",
+    "mode": "exact"
+  }
+]

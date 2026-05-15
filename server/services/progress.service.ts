@@ -1,7 +1,7 @@
 import * as progressRepo from "../repositories/progress.repository.js";
 import * as curriculumRepo from "../repositories/curriculum.repository.js";
 import type { CourseProgress, LeaderboardEntry } from "../../shared/progress.js";
-import { XP_PER_LESSON } from "../../shared/constants.js";
+import { xpForLesson } from "../../shared/constants.js";
 
 export async function getCourseProgress(userId: number, courseKey: string): Promise<CourseProgress> {
   const [lessons, progress] = await Promise.all([
@@ -13,19 +13,29 @@ export async function getCourseProgress(userId: number, courseKey: string): Prom
     progress.map(p => [p.lessonSlug, p])
   );
 
+  let earnedXp = 0;
+  let totalXp = 0;
+  const lessonItems = lessons.map(l => {
+    const p = progressMap.get(l.slug);
+    const lessonXp = xpForLesson(l.sortOrder);
+    totalXp += lessonXp;
+    if (p?.completed) earnedXp += lessonXp;
+    return {
+      slug: l.slug,
+      title: l.title,
+      completed: p?.completed ?? false,
+      completedAt: p?.completedAt?.toISOString() ?? null,
+      lastAccessedAt: p?.lastAccessedAt?.toISOString() ?? null,
+    };
+  });
+
   return {
     courseKey,
     completed: progress.filter(p => p.completed).length,
     total: lessons.length,
-    lessons: lessons.map(l => {
-      const p = progressMap.get(l.slug);
-      return {
-        slug: l.slug,
-        title: l.title,
-        completed: p?.completed ?? false,
-        completedAt: p?.completedAt?.toISOString() ?? null,
-      };
-    }),
+    earnedXp,
+    totalXp,
+    lessons: lessonItems,
   };
 }
 
@@ -50,7 +60,7 @@ export async function getLeaderboard(currentUserId?: number): Promise<Leaderboar
   return rows.map((row, i) => ({
     rank: i + 1,
     name: row.name,
-    xp: row.completedCount * XP_PER_LESSON,
+    xp: row.totalXp,
     isCurrentUser: row.userId === currentUserId,
   }));
 }

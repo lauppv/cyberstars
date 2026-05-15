@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Not enough fuel message",
+    "input": "",
+    "expected": "Not enough fuel!",
+    "mode": "contains"
+  },
+  {
+    "name": "BMW fuel correct",
+    "input": "",
+    "expected": "BMW (Car) - Fuel: 70%",
+    "mode": "contains"
+  },
+  {
+    "name": "Volvo fuel correct",
+    "input": "",
+    "expected": "Volvo (Truck) - Fuel: 25%",
+    "mode": "contains"
+  },
+  {
+    "name": "Harley fuel correct",
+    "input": "",
+    "expected": "Harley (Motorcycle) - Fuel: 85%",
+    "mode": "contains"
+  }
+]

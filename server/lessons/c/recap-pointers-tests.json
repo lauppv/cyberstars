@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Sum correct",
+    "input": "",
+    "expected": "Sum: 64",
+    "mode": "contains"
+  },
+  {
+    "name": "Min correct",
+    "input": "",
+    "expected": "Min: 1",
+    "mode": "contains"
+  },
+  {
+    "name": "Max correct",
+    "input": "",
+    "expected": "Max: 15",
+    "mode": "contains"
+  }
+]

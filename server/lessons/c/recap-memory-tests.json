@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Learn pointers is DONE",
+    "input": "",
+    "expected": "[DONE] Learn pointers",
+    "mode": "contains"
+  },
+  {
+    "name": "Practice structs is IN_PROGRESS",
+    "input": "",
+    "expected": "[IN_PROGRESS] Practice structs",
+    "mode": "contains"
+  },
+  {
+    "name": "Master malloc is TODO",
+    "input": "",
+    "expected": "[TODO] Master malloc",
+    "mode": "contains"
+  }
+]

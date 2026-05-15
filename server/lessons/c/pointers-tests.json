@@ -1,0 +1,14 @@
+[
+  {
+    "name": "x is 42",
+    "input": "",
+    "expected": "42",
+    "mode": "contains"
+  },
+  {
+    "name": "Both print 42",
+    "input": "",
+    "expected": "42\n42",
+    "mode": "contains"
+  }
+]

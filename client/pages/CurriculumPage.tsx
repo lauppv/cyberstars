@@ -1,54 +1,28 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
+import { useAllProgress } from "../context/ProgressContext";
 import { useGamification } from "../hooks/useGamification";
-import * as progressService from "../services/progressService";
 import { Topbar } from "../components/layout/Topbar";
 import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import type { CourseProgress } from "../../shared/progress";
 import { COURSE_ICON } from "../constants/courses";
+import { MAIN_COURSE_KEYS, progressPct } from "../../shared/constants";
 
 export function CurriculumPage() {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const { courses: allCourses, isLoading: curriculumLoading } = useCurriculum();
+  const { progressMap, isLoading: progressLoading } = useAllProgress();
   const gamification = useGamification();
 
-  const courses = allCourses.filter((c) => c.key !== "algo");
-  const [isLoading, setIsLoading] = useState(true);
-  const [progressMap, setProgressMap] = useState<Record<string, CourseProgress>>({});
+  const courses = useMemo(
+    () => allCourses.filter((c) => (MAIN_COURSE_KEYS as readonly string[]).includes(c.key)),
+    [allCourses]
+  );
 
-  useEffect(() => {
-    if (curriculumLoading) return;
-    if (!isLoggedIn || !courses.length) {
-      setIsLoading(false);
-      return;
-    }
-    let cancelled = false;
-    (async () => {
-      try {
-        const entries = await Promise.all(
-          courses.map(async (course) => {
-            try {
-              const p = await progressService.getCourseProgress(course.key);
-              return [course.key, p] as const;
-            } catch {
-              return null;
-            }
-          })
-        );
-        if (!cancelled) {
-          const map: Record<string, CourseProgress> = {};
-          for (const e of entries) if (e) map[e[0]] = e[1];
-          setProgressMap(map);
-        }
-      } catch {}
-      if (!cancelled) setIsLoading(false);
-    })();
-    return () => { cancelled = true; };
-  }, [curriculumLoading, isLoggedIn]);
+  const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
   if (isLoading) {
     return (
@@ -84,10 +58,10 @@ export function CurriculumPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {courses.map((course) => {
-              const progress = progressMap[course.key];
-              const completed = progress?.completed ?? 0;
-              const total = progress?.total ?? course.lessons.length;
-              const pct = total > 0 ? (completed / total) * 100 : 0;
+              const p = progressMap[course.key];
+              const completed = p?.completed ?? 0;
+              const total = p?.total ?? course.lessons.length;
+              const pct = progressPct(completed, total);
 
               return (
                 <button
@@ -116,7 +90,7 @@ export function CurriculumPage() {
                           {completed} / {total} completed
                         </span>
                         <span className="text-[var(--text2)] font-semibold">
-                          {Math.round(pct)}%
+                          {pct}%
                         </span>
                       </div>
                       <div className="h-1.5 bg-[var(--bg3)] rounded-[3px] overflow-hidden">

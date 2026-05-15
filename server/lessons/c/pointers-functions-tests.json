@@ -1,0 +1,8 @@
+[
+  {
+    "name": "num is tripled to 15",
+    "input": "",
+    "expected": "15",
+    "mode": "exact"
+  }
+]

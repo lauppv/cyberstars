@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Circle area correct",
+    "input": "",
+    "expected": "78.54",
+    "mode": "contains"
+  },
+  {
+    "name": "Rectangle area correct",
+    "input": "",
+    "expected": "24.00",
+    "mode": "contains"
+  },
+  {
+    "name": "Triangle area correct",
+    "input": "",
+    "expected": "12.00",
+    "mode": "contains"
+  },
+  {
+    "name": "Circle cast works",
+    "input": "",
+    "expected": "Circle radius: 5.0",
+    "mode": "contains"
+  },
+  {
+    "name": "Cast exception caught",
+    "input": "",
+    "expected": "Not a circle!",
+    "mode": "contains"
+  }
+]

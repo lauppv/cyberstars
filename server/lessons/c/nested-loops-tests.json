@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Row 1: just 1",
+    "input": "",
+    "expected": "1",
+    "mode": "contains"
+  },
+  {
+    "name": "Row 3: 1 2 3",
+    "input": "",
+    "expected": "1 2 3",
+    "mode": "contains"
+  },
+  {
+    "name": "Row 5: 1 2 3 4 5",
+    "input": "",
+    "expected": "1 2 3 4 5",
+    "mode": "contains"
+  }
+]

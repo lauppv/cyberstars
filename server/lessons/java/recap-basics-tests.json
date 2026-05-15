@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Header printed",
+    "input": "",
+    "expected": "=== RECEIPT ===",
+    "mode": "contains"
+  },
+  {
+    "name": "Laptop line",
+    "input": "",
+    "expected": "Laptop: 999.99 EUR",
+    "mode": "contains"
+  },
+  {
+    "name": "Subtotal correct",
+    "input": "",
+    "expected": "Subtotal: 1035.48 EUR",
+    "mode": "contains"
+  },
+  {
+    "name": "Total calculated",
+    "input": "",
+    "expected": "Total: 1232.2212 EUR",
+    "mode": "contains"
+  }
+]

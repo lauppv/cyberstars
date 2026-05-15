@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
-import * as progressService from "../services/progressService";
+import { useCallback, useMemo, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
-import { XP_PER_LESSON, computeLevel, xpForLevel, xpToNextLevel } from "../../shared/constants";
+import { useAllProgress } from "../context/ProgressContext";
+import { computeLevel, xpForLevel, xpToNextLevel } from "../../shared/constants";
 
 function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -17,12 +17,10 @@ function computeStreak(): number {
 
     const today = todayKey();
     let streak = 0;
-    const d = new Date(days.includes(today) ? today : today);
     if (!days.includes(today)) {
-      const yesterday = new Date(d);
+      const yesterday = new Date(today);
       yesterday.setDate(yesterday.getDate() - 1);
-      const yKey = yesterday.toISOString().slice(0, 10);
-      if (!days.includes(yKey)) return 0;
+      if (!days.includes(yesterday.toISOString().slice(0, 10))) return 0;
     }
 
     const check = new Date(today);
@@ -77,106 +75,68 @@ export interface Gamification {
 export function useGamification(): Gamification {
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
-  const [completed, setCompleted] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [perCourseDone, setPerCourseDone] = useState<Record<string, number>>({});
-  const [perCourseTotal, setPerCourseTotal] = useState<Record<string, number>>({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [refreshKey, setRefreshKey] = useState(0);
+  const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
+  const [, setTick] = useState(0);
+  const forceRefresh = useCallback(() => { refresh(); setTick((t) => t + 1); }, [refresh]);
 
-  const refresh = useCallback(() => setRefreshKey((k) => k + 1), []);
+  const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
-  useEffect(() => {
-    if (curriculumLoading) return;
-    let cancelled = false;
-    (async () => {
-      try {
-        const totals: Record<string, number> = {};
-        let tot = 0;
-        for (const c of courses) {
-          totals[c.key] = c.lessons.length;
-          tot += c.lessons.length;
-        }
+  const { totalCompleted, totalLessons, xp, perCourse } = useMemo(() => {
+    let comp = 0;
+    let tot = 0;
+    let totalXp = 0;
+    const pc: Record<string, { done: number; total: number }> = {};
 
-        if (!isLoggedIn) {
-          if (!cancelled) {
-            setTotal(tot);
-            setPerCourseTotal(totals);
-            setIsLoading(false);
-          }
-          return;
-        }
+    for (const c of courses) {
+      const p = progressMap[c.key];
+      const done = p?.completed ?? 0;
+      const total = p?.total ?? c.lessons.length;
+      comp += done;
+      tot += total;
+      totalXp += p?.earnedXp ?? 0;
+      pc[c.key] = { done, total };
+    }
 
-        const dones: Record<string, number> = {};
-        let comp = 0;
-        await Promise.all(
-          courses.map(async (c) => {
-            try {
-              const p = await progressService.getCourseProgress(c.key);
-              dones[c.key] = p.completed;
-              comp += p.completed;
-            } catch {
-              dones[c.key] = 0;
-            }
-          })
-        );
+    return { totalCompleted: comp, totalLessons: tot, xp: totalXp, perCourse: pc };
+  }, [courses, progressMap]);
 
-        if (!cancelled) {
-          setTotal(tot);
-          setCompleted(comp);
-          setPerCourseTotal(totals);
-          setPerCourseDone(dones);
-          setIsLoading(false);
-        }
-      } catch {
-        if (!cancelled) setIsLoading(false);
-      }
-    })();
-    return () => { cancelled = true; };
-  }, [courses, curriculumLoading, isLoggedIn, refreshKey]);
-
-  const xp = completed * XP_PER_LESSON;
   const level = computeLevel(xp);
   const xpInLevel = xp - xpForLevel(level);
-  const xpForNextLevel = xpToNextLevel(level);
+  const xpNext = xpToNextLevel(level);
 
-  const aCourseFullyComplete = Object.keys(perCourseTotal).some(
-    (k) => perCourseTotal[k] > 0 && perCourseDone[k] === perCourseTotal[k]
-  );
+  const badges: BadgeDef[] = useMemo(() => {
+    const aCourseFullyComplete = Object.entries(perCourse).some(
+      ([, v]) => v.total > 0 && v.done === v.total
+    );
+    const multipleCoursesDone = Object.entries(perCourse).filter(
+      ([, v]) => v.total > 0 && v.done === v.total
+    ).length;
 
-  const multipleCoursesDone = Object.keys(perCourseTotal).filter(
-    (k) => perCourseTotal[k] > 0 && perCourseDone[k] === perCourseTotal[k]
-  ).length;
-
-  const badges: BadgeDef[] = [
-    { icon: "🐍", label: "First Code", earned: completed >= 1 },
-    { icon: "⚡", label: "Speed Run", earned: completed >= 5 },
-    { icon: "🧠", label: "Bug Squasher", earned: completed >= 10 },
-    { icon: "🔥", label: "On Fire", earned: completed >= 20 },
-    { icon: "💎", label: "Diamond", earned: completed >= 30 },
-    { icon: "🏅", label: "Half Century", earned: completed >= 50 },
-    { icon: "🌟", label: "Course Master", earned: aCourseFullyComplete },
-    { icon: "👑", label: "Polyglot", earned: multipleCoursesDone >= 2 },
-  ];
-
-  const perCourse: Record<string, { done: number; total: number }> = {};
-  for (const k of Object.keys(perCourseTotal)) {
-    perCourse[k] = { done: perCourseDone[k] ?? 0, total: perCourseTotal[k] };
-  }
+    return [
+      { icon: "🐍", label: "First Code", earned: totalCompleted >= 1 },
+      { icon: "⚡", label: "Speed Run", earned: totalCompleted >= 5 },
+      { icon: "🧠", label: "Bug Squasher", earned: totalCompleted >= 10 },
+      { icon: "🔥", label: "On Fire", earned: totalCompleted >= 20 },
+      { icon: "💎", label: "Diamond", earned: totalCompleted >= 30 },
+      { icon: "🏅", label: "Half Century", earned: totalCompleted >= 50 },
+      { icon: "🌟", label: "Course Master", earned: aCourseFullyComplete },
+      { icon: "👑", label: "Polyglot", earned: multipleCoursesDone >= 2 },
+    ];
+  }, [totalCompleted, perCourse]);
 
   const streak = computeStreak();
 
   return {
-    totalCompleted: completed,
-    totalLessons: total,
+    totalCompleted,
+    totalLessons,
     xp,
     level,
     xpInLevel,
-    xpForNextLevel,
+    xpForNextLevel: xpNext,
     streak,
     badges,
     perCourse,
     isLoading,
-    refresh,
+    refresh: forceRefresh,
   };
 }

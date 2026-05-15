@@ -1,0 +1,20 @@
+[
+  {
+    "name": "MILK in output",
+    "input": "",
+    "expected": "MILK",
+    "mode": "contains"
+  },
+  {
+    "name": "BUTTER included",
+    "input": "",
+    "expected": "BUTTER",
+    "mode": "contains"
+  },
+  {
+    "name": "Total is 4",
+    "input": "",
+    "expected": "Total: 4 items",
+    "mode": "contains"
+  }
+]

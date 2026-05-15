@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Ana line",
+    "input": "",
+    "expected": "Name: Ana, Grade: 95",
+    "mode": "contains"
+  },
+  {
+    "name": "Mihai line",
+    "input": "",
+    "expected": "Name: Mihai, Grade: 82",
+    "mode": "contains"
+  },
+  {
+    "name": "Elena line",
+    "input": "",
+    "expected": "Name: Elena, Grade: 98",
+    "mode": "contains"
+  }
+]

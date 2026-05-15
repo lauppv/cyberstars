@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Ana printed",
+    "input": "",
+    "expected": "Ana: 95",
+    "mode": "contains"
+  },
+  {
+    "name": "All students printed",
+    "input": "",
+    "expected": "Radu: 76",
+    "mode": "contains"
+  },
+  {
+    "name": "Best student found",
+    "input": "",
+    "expected": "Best: Elena (98)",
+    "mode": "contains"
+  }
+]

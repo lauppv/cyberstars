@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Common students found",
+    "input": "",
+    "expected": "Students in both:",
+    "mode": "contains"
+  },
+  {
+    "name": "High grades from A",
+    "input": "",
+    "expected": "[85, 91]",
+    "mode": "contains"
+  },
+  {
+    "name": "No matching grades",
+    "input": "",
+    "expected": "No matching grades",
+    "mode": "contains"
+  }
+]

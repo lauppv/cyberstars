@@ -1,0 +1,14 @@
+[
+  {
+    "name": "BMW line",
+    "input": "",
+    "expected": "BMW (2015) - 120000 km",
+    "mode": "contains"
+  },
+  {
+    "name": "Dacia line",
+    "input": "",
+    "expected": "Dacia (2020) - 45000 km",
+    "mode": "contains"
+  }
+]

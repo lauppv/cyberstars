@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Parent receives message",
+    "input": "",
+    "expected": "Received: CyberStars",
+    "mode": "contains"
+  }
+]

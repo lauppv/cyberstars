@@ -1,25 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
 import { useGamification } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
-import * as progressService from "../services/progressService";
-import { COURSE_ICON, COURSE_COLOR, COURSE_LEVEL } from "../constants/courses";
-import { XP_PER_LESSON } from "../../shared/constants";
-import type { Course } from "../../shared/lesson";
+import { useAllProgress } from "../context/ProgressContext";
+import { COURSE_ICON, COURSE_COLOR } from "../constants/courses";
+import { xpForLesson, progressPct } from "../../shared/constants";
 
 interface CourseData {
   key: string;
   icon: string;
   name: string;
   color: string;
-  level: "beginner" | "intermediate" | "advanced";
-  lessons: number;
+  lessonCount: number;
   xpTotal: number;
   progress: number;
   desc: string;
-  chapters: { name: string; done: boolean }[];
+  chapters: { name: string; slug: string; sortOrder: number; done: boolean }[];
   firstSlug?: string;
 }
 
@@ -29,84 +27,44 @@ const FILTERS = [
   { key: "java", label: "☕ Java" },
   { key: "c", label: "⚙️ C" },
   { key: "algo", label: "🧩 Algorithms" },
-  { key: "beginner", label: "Beginner" },
-  { key: "intermediate", label: "Intermediate" },
-  { key: "advanced", label: "Advanced" },
 ] as const;
-
-const LEVEL_CLASSES: Record<string, string> = {
-  beginner: "bg-[rgba(0,214,143,0.1)] text-[var(--success)]",
-  intermediate: "bg-[rgba(255,170,0,0.1)] text-[var(--warning)]",
-  advanced: "bg-[rgba(255,107,107,0.1)] text-[var(--error)]",
-};
-
-function buildCourseData(course: Course): CourseData {
-  return {
-    key: course.key,
-    icon: COURSE_ICON[course.key] ?? "📘",
-    name: course.title,
-    color: COURSE_COLOR[course.key] ?? "#6C5CE7",
-    level: COURSE_LEVEL[course.key] ?? "beginner",
-    lessons: course.lessons.length,
-    xpTotal: course.lessons.length * XP_PER_LESSON,
-    progress: 0,
-    desc: course.description,
-    chapters: course.lessons.map((l) => ({ name: l.title, done: false })),
-    firstSlug: course.lessons[0]?.slug,
-  };
-}
-
-function filterCourses(courses: CourseData[], filter: string): CourseData[] {
-  if (filter === "all") return courses;
-  if (["beginner", "intermediate", "advanced"].includes(filter)) {
-    return courses.filter((c) => c.level === filter);
-  }
-  return courses.filter((c) => c.key === filter);
-}
 
 export function CoursesPage() {
   const navigate = useNavigate();
   const g = useGamification();
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
+  const { progressMap, isLoading: progressLoading } = useAllProgress();
   const [filter, setFilter] = useState("all");
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
-  const [allCourses, setAllCourses] = useState<CourseData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (curriculumLoading) return;
-    (async () => {
-      try {
-        const courses = serverCourses.map(buildCourseData);
+  const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
-        if (isLoggedIn) {
-          await Promise.all(
-            serverCourses.map(async (sc, idx) => {
-              try {
-                const p = await progressService.getCourseProgress(sc.key);
-                if (p.total > 0) {
-                  courses[idx] = {
-                    ...courses[idx],
-                    progress: Math.round((p.completed / p.total) * 100),
-                    chapters: courses[idx].chapters.map((ch, i) => ({
-                      ...ch,
-                      done: p.lessons[i]?.completed ?? false,
-                    })),
-                  };
-                }
-              } catch {}
-            })
-          );
-        }
+  const allCourses: CourseData[] = useMemo(() => {
+    return serverCourses.map((course) => {
+      const p = progressMap[course.key];
+      const doneSet = new Set(
+        (p?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)
+      );
+      return {
+        key: course.key,
+        icon: COURSE_ICON[course.key] ?? "📘",
+        name: course.title,
+        color: COURSE_COLOR[course.key] ?? "#6C5CE7",
+        lessonCount: course.lessons.length,
+        xpTotal: p?.totalXp ?? course.lessons.reduce((sum, l) => sum + xpForLesson(l.sortOrder), 0),
+        progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
+        desc: course.description,
+        chapters: course.lessons.map((l) => ({ name: l.title, slug: l.slug, sortOrder: l.sortOrder, done: doneSet.has(l.slug) })),
+        firstSlug: course.lessons[0]?.slug,
+      };
+    });
+  }, [serverCourses, progressMap]);
 
-        setAllCourses(courses);
-      } catch {}
-      setIsLoading(false);
-    })();
-  }, [serverCourses, curriculumLoading, isLoggedIn]);
-
-  const filtered = filterCourses(allCourses, filter);
+  const filtered = useMemo(
+    () => filter === "all" ? allCourses : allCourses.filter((c) => c.key === filter),
+    [allCourses, filter]
+  );
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
   if (isLoading) {
@@ -172,17 +130,12 @@ export function CoursesPage() {
                     <div className="text-base font-bold mb-0.5" style={{ letterSpacing: "-0.2px" }}>
                       {c.name}
                     </div>
-                    <span
-                      className={`inline-block text-[10px] font-semibold px-2 py-0.5 rounded-[10px] ${LEVEL_CLASSES[c.level]}`}
-                    >
-                      {c.level}
-                    </span>
                   </div>
                 </div>
                 <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
                 <div className="flex gap-4 mb-4">
                   <span className="text-[11px] text-[var(--text3)]">
-                    <strong className="text-[var(--text2)]">{c.lessons}</strong> lessons
+                    <strong className="text-[var(--text2)]">{c.lessonCount}</strong> lessons
                   </span>
                   <span className="text-[11px] text-[var(--text3)]">
                     <strong className="text-[var(--text2)]">{c.xpTotal}</strong> XP
@@ -251,7 +204,7 @@ export function CoursesPage() {
               <div className="flex-1 min-w-0">
                 <div className="text-xl font-bold mb-1">{syllabus.name}</div>
                 <div className="flex gap-3 text-xs text-[var(--text3)]">
-                  <span>{syllabus.lessons} lessons</span>
+                  <span>{syllabus.lessonCount} lessons</span>
                   <span>{syllabus.xpTotal} XP total</span>
                 </div>
               </div>
@@ -269,44 +222,74 @@ export function CoursesPage() {
 
             <div className="px-6 py-4">
               <div className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
-                Lessons
+                Chapters
               </div>
-              <div className="flex flex-col gap-1">
-                {syllabus.chapters.map((ch, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2.5 px-3 py-2.5 rounded-[var(--radius-sm)] hover:bg-[var(--surface)] transition"
-                  >
-                    <div
-                      className={`w-[26px] h-[26px] rounded-full flex items-center justify-center text-[11px] font-semibold flex-shrink-0 ${
-                        ch.done
-                          ? "bg-[var(--success)] text-white"
-                          : "bg-[var(--bg3)] text-[var(--text3)]"
-                      }`}
-                    >
-                      {ch.done ? "✓" : i + 1}
+              {(() => {
+                const total = syllabus.chapters.length;
+                const nextIdx = syllabus.chapters.findIndex((ch) => !ch.done);
+                const segs: { cls: string; top: number; height: number; delay: number }[] = [];
+                for (let i = 0; i < total - 1; i++) {
+                  const a = syllabus.chapters[i].done;
+                  const b = syllabus.chapters[i + 1].done;
+                  let cls = "";
+                  if (a && b) cls = "seg-filled";
+                  else if (a && !b) cls = "seg-half";
+                  segs.push({ cls, top: (i / (total - 1)) * 100, height: (1 / (total - 1)) * 100, delay: i });
+                }
+                return (
+                  <div className="relative flex flex-col gap-0.5 pl-1">
+                    {/* Vertical track */}
+                    <div className="absolute left-[21px] top-6 bottom-6 w-0.5 bg-[var(--bg3)] rounded-full pointer-events-none">
+                      {segs.filter((s) => s.cls).map((s, k) => (
+                        <div
+                          key={k}
+                          className={`absolute left-0 right-0 rounded-full origin-top ${s.cls}`}
+                          style={{
+                            top: `${s.top}%`,
+                            height: `${s.height}%`,
+                            animation: `segIn 0.45s cubic-bezier(.22,1,.36,1) ${0.25 + s.delay * 0.08}s forwards`,
+                            transform: "scaleY(0)",
+                          }}
+                        />
+                      ))}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[13px] font-medium">{ch.name}</div>
-                    </div>
-                    <div className="text-[11px] font-semibold text-[var(--accent)]">+{XP_PER_LESSON} XP</div>
+                    {/* Chapter items */}
+                    {syllabus.chapters.map((ch, i) => {
+                      const isNext = i === nextIdx;
+                      return (
+                        <div
+                          key={i}
+                          onClick={() => navigate(`/lesson/${syllabus.key}/${ch.slug}`)}
+                          className={`relative flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] hover:bg-[var(--surface)] transition cursor-pointer ${isNext ? "ch-is-next" : ""}`}
+                          style={{
+                            opacity: 0,
+                            transform: "translateX(-6px)",
+                            animation: `chapterIn 0.45s cubic-bezier(.22,1,.36,1) ${0.05 + i * 0.04}s forwards`,
+                          }}
+                        >
+                          <div
+                            className={`relative z-[1] w-[26px] h-[26px] rounded-full flex items-center justify-center text-[11px] font-semibold flex-shrink-0 border-2 border-[var(--bg2)] transition-all ${
+                              ch.done
+                                ? "bg-[var(--success)] text-white shadow-[0_0_0_2px_var(--bg2),0_0_12px_rgba(0,214,143,0.4)]"
+                                : isNext
+                                  ? "bg-[var(--bg2)] text-[var(--accent)] border-[var(--accent)] ch-next-pulse"
+                                  : "bg-[var(--bg3)] text-[var(--text3)]"
+                            }`}
+                          >
+                            {ch.done ? "✓" : i + 1}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className={`text-[13px] font-medium ${isNext ? "text-[var(--accent)]" : ""}`}>{ch.name}</div>
+                          </div>
+                          <div className="text-[11px] font-semibold text-[var(--accent)]">+{xpForLesson(ch.sortOrder)} XP</div>
+                        </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
+                );
+              })()}
             </div>
 
-            <div className="px-6 py-4 border-t border-[var(--border)]">
-              <button
-                onClick={() => {
-                  if (syllabus.firstSlug) {
-                    navigate(`/lesson/${syllabus.key}/${syllabus.firstSlug}`);
-                  }
-                }}
-                className="w-full py-3 bg-[var(--accent)] text-white rounded-[var(--radius)] text-sm font-semibold cursor-pointer border-none hover:brightness-110 transition"
-              >
-                {syllabus.progress > 0 ? "Continue Learning →" : "Start Course →"}
-              </button>
-            </div>
           </div>
         </>
       )}
@@ -315,6 +298,26 @@ export function CoursesPage() {
         @keyframes slideIn {
           from { transform: translateX(100%); }
           to { transform: translateX(0); }
+        }
+        @keyframes segIn {
+          to { transform: scaleY(1); }
+        }
+        @keyframes chapterIn {
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes nextPulse {
+          0%, 100% { box-shadow: 0 0 0 2px var(--bg2), 0 0 0 0 var(--accent-glow); }
+          50% { box-shadow: 0 0 0 2px var(--bg2), 0 0 0 6px transparent, 0 0 16px var(--accent-glow); }
+        }
+        .seg-filled {
+          background: linear-gradient(180deg, var(--success), var(--accent));
+          box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .seg-half {
+          background: linear-gradient(180deg, var(--success) 0%, var(--success) 45%, var(--bg3) 55%, var(--bg3) 100%);
+        }
+        .ch-next-pulse {
+          animation: nextPulse 2s ease-in-out infinite;
         }
       `}</style>
     </div>

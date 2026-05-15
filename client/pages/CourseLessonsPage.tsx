@@ -1,42 +1,45 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
+import { useAllProgress } from "../context/ProgressContext";
 import { useGamification } from "../hooks/useGamification";
-import * as progressService from "../services/progressService";
 import { Topbar } from "../components/layout/Topbar";
 import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import type { CourseProgress } from "../../shared/progress";
 import { COURSE_ICON } from "../constants/courses";
+import { progressPct } from "../../shared/constants";
 
 export function CourseLessonsPage() {
   const { courseKey = "" } = useParams<{ courseKey: string }>();
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
+  const { progressMap, isLoading: progressLoading } = useAllProgress();
   const gamification = useGamification();
 
   const course = courses.find((c) => c.key === courseKey) ?? null;
-  const [progress, setProgress] = useState<CourseProgress | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const progress = progressMap[courseKey] ?? null;
 
-  useEffect(() => {
-    if (curriculumLoading) return;
-    if (!course || !isLoggedIn) {
-      setIsLoading(false);
-      return;
-    }
-    let cancelled = false;
-    (async () => {
-      try {
-        const p = await progressService.getCourseProgress(course.key);
-        if (!cancelled) setProgress(p);
-      } catch {}
-      if (!cancelled) setIsLoading(false);
-    })();
-    return () => { cancelled = true; };
-  }, [curriculumLoading, course, isLoggedIn]);
+  const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
+
+  const completedSlugs = useMemo(
+    () => new Set((progress?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)),
+    [progress]
+  );
+
+  const completedCount = completedSlugs.size;
+  const totalCount = course?.lessons.length ?? 0;
+  const pct = progressPct(completedCount, totalCount);
+
+  const continueSlug = useMemo(() => {
+    if (!progress) return course?.lessons[0]?.slug;
+    const lastStudied = progress.lessons
+      .filter((l) => l.completed && l.completedAt)
+      .sort((a, b) => new Date(b.completedAt!).getTime() - new Date(a.completedAt!).getTime())[0];
+    if (!lastStudied) return course?.lessons[0]?.slug;
+    return progress.lessons.find((l) => !l.completed)?.slug ?? lastStudied.slug;
+  }, [progress, course]);
 
   if (isLoading) {
     return (
@@ -60,20 +63,7 @@ export function CourseLessonsPage() {
     );
   }
 
-  const completedSlugs = new Set(
-    (progress?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)
-  );
-  const completedCount = completedSlugs.size;
-  const totalCount = course.lessons.length;
-  const pct = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
-
-  const lastStudied = (progress?.lessons ?? [])
-    .filter((l) => l.completed && l.completedAt)
-    .sort((a, b) => new Date(b.completedAt!).getTime() - new Date(a.completedAt!).getTime())[0];
-
-  const continueSlug = lastStudied
-    ? (progress?.lessons.find((l) => !l.completed)?.slug ?? lastStudied.slug)
-    : course.lessons[0]?.slug;
+  const hasStudied = progress && progress.lessons.some((l) => l.completed);
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)]">
@@ -117,7 +107,7 @@ export function CourseLessonsPage() {
                 </div>
               )}
 
-              {isLoggedIn && continueSlug && lastStudied && (
+              {isLoggedIn && continueSlug && hasStudied && (
                 <button
                   onClick={() => navigate(`/lesson/${course.key}/${continueSlug}`)}
                   className="w-full py-2.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer"

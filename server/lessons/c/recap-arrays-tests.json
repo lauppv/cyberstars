@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Passing count correct",
+    "input": "",
+    "expected": "Passing: 6",
+    "mode": "contains"
+  },
+  {
+    "name": "Max grade correct",
+    "input": "",
+    "expected": "Highest: 95",
+    "mode": "contains"
+  },
+  {
+    "name": "First failing grade found",
+    "input": "",
+    "expected": "First fail: 42",
+    "mode": "contains"
+  }
+]

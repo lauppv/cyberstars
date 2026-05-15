@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Prints 2 4 6 8 10",
+    "input": "",
+    "expected": "2\n4\n6\n8\n10",
+    "mode": "exact"
+  }
+]

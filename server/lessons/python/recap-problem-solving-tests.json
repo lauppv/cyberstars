@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Panama is palindrome",
+    "input": "",
+    "expected": "True",
+    "mode": "contains"
+  },
+  {
+    "name": "Listen/Silent are anagrams",
+    "input": "",
+    "expected": "True",
+    "mode": "contains"
+  },
+  {
+    "name": "Words reversed",
+    "input": "",
+    "expected": "bar foo world hello",
+    "mode": "contains"
+  },
+  {
+    "name": "Word cleaned",
+    "input": "",
+    "expected": "hllwrld",
+    "mode": "contains"
+  }
+]

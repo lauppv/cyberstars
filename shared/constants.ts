@@ -1,8 +1,12 @@
-export const XP_PER_LESSON = 15;
+export function xpForLesson(position: number): number {
+  return 10 + position;
+}
 
-// Each level requires progressively more XP: level N needs 50*N XP to advance.
-// Total XP to reach level N: 25 * N * (N - 1)
-// Level 1→2: 50 XP (~3 lessons), 2→3: 100 XP, 3→4: 150 XP, etc.
+export function progressPct(completed: number, total: number): number {
+  return total > 0 ? Math.round((completed / total) * 100) : 0;
+}
+
+export const MAIN_COURSE_KEYS = ["python", "java", "c"] as const;
 export function computeLevel(xp: number): number {
   return Math.floor((1 + Math.sqrt(1 + (4 * xp) / 25)) / 2);
 }

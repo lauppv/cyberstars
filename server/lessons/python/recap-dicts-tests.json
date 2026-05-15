@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Average calculated",
+    "input": "",
+    "expected": "Average: 67.6",
+    "mode": "contains"
+  },
+  {
+    "name": "Best student found",
+    "input": "",
+    "expected": "Best: Ana",
+    "mode": "contains"
+  },
+  {
+    "name": "Passing students listed",
+    "input": "",
+    "expected": "Passing: Ana, Elena, Ioana",
+    "mode": "contains"
+  }
+]
