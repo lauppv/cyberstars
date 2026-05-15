@@ -28,16 +28,28 @@ So **&age** gives the address, **\*ptr** reads the value at that address. They'r
 The declaration **int \*ptr** says "ptr is a pointer to an int". The **\*** here is part of the **type**, not the dereference operator. It's confusing at first, but you get used to it
 
 ```c
-int x = 10;
-int *p = &x;    // p points to x
+#include <stdio.h>
 
-printf("%d\n", *p);   // 10 — the value at the address p holds
+int main(void) {
+    int x = 10;
+    int *p = &x;    // p points to x
+
+    printf("%d\n", *p);   // 10 — the value at the address p holds
+    return 0;
+}
 ```
 
 We can also **change** the value through the pointer
 ```c
-*p = 42;
-printf("%d\n", x);   // 42 — x changed!
+#include <stdio.h>
+
+int main(void) {
+    int x = 10;
+    int *p = &x;
+    *p = 42;
+    printf("%d\n", x);   // 42 — x changed!
+    return 0;
+}
 ```
 
 We didn't touch **x** directly. We went through **p**, followed the address, and changed the value there. Since **p** points to **x**, changing **\*p** changes **x**. This is the power of pointers
@@ -50,14 +62,21 @@ A useful analogy: think of a **Google Maps pin**. The pin isn't the restaurant �
 
 Different types of pointers for different types:
 ```c
-int a = 10;
-int *ip = &a;       // pointer to int
+#include <stdio.h>
 
-double b = 3.14;
-double *dp = &b;    // pointer to double
+int main(void) {
+    int a = 10;
+    int *ip = &a;       // pointer to int
 
-char c = 'A';
-char *cp = &c;      // pointer to char
+    double b = 3.14;
+    double *dp = &b;    // pointer to double
+
+    char c = 'A';
+    char *cp = &c;      // pointer to char
+
+    printf("%d %f %c\n", *ip, *dp, *cp);
+    return 0;
+}
 ```
 
 The pointer type must match the type it points to. An **int \*** can only point to an **int**. This is how C knows how many bytes to read when you dereference

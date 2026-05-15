@@ -37,9 +37,14 @@ The comparison operators
 
 **Be very careful** about **=** vs **==**. **=** assigns, **==** compares
 ```c
-int x = 4;
-if (x = 4) {
-    printf("Boo\n");
+#include <stdio.h>
+
+int main(void) {
+    int x = 4;
+    if (x = 4) {
+        printf("Boo\n");
+    }
+    return 0;
 }
 ```
 This is a **classic C bug**. Unlike Java (which refuses to compile this), **C accepts it without an error**. **x = 4** stores **4** in **x** and gives back the value **4**, which C treats as "true" (any non-zero value is true). So this code always enters the **if**, no matter what **x** was before. Many real-world bugs in famous projects come from exactly this typo. Use **==** when comparing :)
@@ -48,9 +53,14 @@ This is a **classic C bug**. Unlike Java (which refuses to compile this), **C ac
 
 We don’t always need **else**. Sometimes we just want to act **if** something is true and otherwise do nothing
 ```c
-int isUserOnline = 1;
-if (isUserOnline) {
-    printf("Welcome back\n");
+#include <stdio.h>
+
+int main(void) {
+    int isUserOnline = 1;
+    if (isUserOnline) {
+        printf("Welcome back\n");
+    }
+    return 0;
 }
 ```
 

@@ -9,6 +9,8 @@ typedef enum { TODO, IN_PROGRESS, DONE } Status;
 ```
 
 ```c
+typedef enum { TODO, IN_PROGRESS, DONE } Status;
+
 typedef struct {
     char title[100];
     Status status;

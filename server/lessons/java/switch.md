@@ -1,21 +1,25 @@
 You know if-else chains. They work great for 2-3 options. But when you have **many** options — like checking which day of the week it is, or which weapon Tommy picked — the code gets ugly fast. That's where **switch** comes in
 
 ```java
-String weapon = "shotgun";
+public class Main {
+    public static void main(String[] args) {
+        String weapon = "shotgun";
 
-switch (weapon) {
-    case "pistol":
-        System.out.println("Basic but reliable");
-        break;
-    case "shotgun":
-        System.out.println("Devastating up close");
-        break;
-    case "rocket":
-        System.out.println("Total overkill");
-        break;
-    default:
-        System.out.println("Unknown weapon");
-        break;
+        switch (weapon) {
+            case "pistol":
+                System.out.println("Basic but reliable");
+                break;
+            case "shotgun":
+                System.out.println("Devastating up close");
+                break;
+            case "rocket":
+                System.out.println("Total overkill");
+                break;
+            default:
+                System.out.println("Unknown weapon");
+                break;
+        }
+    }
 }
 ```
 Output
@@ -30,19 +34,23 @@ The **switch** checks the value of `weapon` and jumps to the matching **case**. 
 **break** is crucial. Without it, Java "falls through" to the next case and keeps running
 
 ```java
-int stars = 3;
+public class Main {
+    public static void main(String[] args) {
+        int stars = 3;
 
-switch (stars) {
-    case 1:
-        System.out.println("Cops notice you");
-    case 2:
-        System.out.println("Cops chase you");
-    case 3:
-        System.out.println("Helicopter shows up");
-    case 4:
-        System.out.println("SWAT arrives");
-    case 5:
-        System.out.println("Army tanks roll in");
+        switch (stars) {
+            case 1:
+                System.out.println("Cops notice you");
+            case 2:
+                System.out.println("Cops chase you");
+            case 3:
+                System.out.println("Helicopter shows up");
+            case 4:
+                System.out.println("SWAT arrives");
+            case 5:
+                System.out.println("Army tanks roll in");
+        }
+    }
 }
 ```
 Output
@@ -59,18 +67,22 @@ Whoa — we only wanted the 3-star message, but it printed 3, 4, AND 5! That's b
 The correct version with break
 
 ```java
-int stars = 3;
+public class Main {
+    public static void main(String[] args) {
+        int stars = 3;
 
-switch (stars) {
-    case 3:
-        System.out.println("Helicopter shows up");
-        break;
-    case 4:
-        System.out.println("SWAT arrives");
-        break;
-    case 5:
-        System.out.println("Army tanks roll in");
-        break;
+        switch (stars) {
+            case 3:
+                System.out.println("Helicopter shows up");
+                break;
+            case 4:
+                System.out.println("SWAT arrives");
+                break;
+            case 5:
+                System.out.println("Army tanks roll in");
+                break;
+        }
+    }
 }
 ```
 Output
@@ -83,18 +95,22 @@ Helicopter shows up
 **default** is like the `else` in an if-else chain — it handles anything that doesn't match any case
 
 ```java
-String vehicle = "boat";
+public class Main {
+    public static void main(String[] args) {
+        String vehicle = "boat";
 
-switch (vehicle) {
-    case "car":
-        System.out.println("Drive on roads");
-        break;
-    case "bike":
-        System.out.println("Weave through traffic");
-        break;
-    default:
-        System.out.println("Some other vehicle: " + vehicle);
-        break;
+        switch (vehicle) {
+            case "car":
+                System.out.println("Drive on roads");
+                break;
+            case "bike":
+                System.out.println("Weave through traffic");
+                break;
+            default:
+                System.out.println("Some other vehicle: " + vehicle);
+                break;
+        }
+    }
 }
 ```
 Output
@@ -116,16 +132,20 @@ else:
 ```
 
 ```java
-// Java switch
-String day = "Monday";
-switch (day) {
-    case "Saturday":
-    case "Sunday":
-        System.out.println("Weekend");
-        break;
-    default:
-        System.out.println("Weekday");
-        break;
+public class Main {
+    public static void main(String[] args) {
+        // Java switch
+        String day = "Monday";
+        switch (day) {
+            case "Saturday":
+            case "Sunday":
+                System.out.println("Weekend");
+                break;
+            default:
+                System.out.println("Weekday");
+                break;
+        }
+    }
 }
 ```
 
@@ -136,21 +156,25 @@ Notice how we stacked `case "Saturday":` and `case "Sunday":` together with no c
 Switch with **int** is very common too
 
 ```java
-int menuChoice = 2;
+public class Main {
+    public static void main(String[] args) {
+        int menuChoice = 2;
 
-switch (menuChoice) {
-    case 1:
-        System.out.println("Start new game");
-        break;
-    case 2:
-        System.out.println("Load saved game");
-        break;
-    case 3:
-        System.out.println("Settings");
-        break;
-    default:
-        System.out.println("Invalid choice");
-        break;
+        switch (menuChoice) {
+            case 1:
+                System.out.println("Start new game");
+                break;
+            case 2:
+                System.out.println("Load saved game");
+                break;
+            case 3:
+                System.out.println("Settings");
+                break;
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+    }
 }
 ```
 Output

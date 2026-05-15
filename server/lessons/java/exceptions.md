@@ -26,21 +26,29 @@ Without try/catch, the program would crash at `10 / 0`. With it, Java **catches*
 The basic structure
 
 ```java
-try {
-    // code that might fail
-} catch (SomeException e) {
-    // what to do if it fails
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // code that might fail
+        } catch (SomeException e) {
+            // what to do if it fails
+        }
+    }
 }
 ```
 
 The `e` is the exception object. You can call `e.getMessage()` to get a human-readable description of what went wrong
 
 ```java
-try {
-    int[] nums = {1, 2, 3};
-    System.out.println(nums[10]);
-} catch (ArrayIndexOutOfBoundsException e) {
-    System.out.println("Error: " + e.getMessage());
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int[] nums = {1, 2, 3};
+            System.out.println(nums[10]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }
 ```
 Output
@@ -65,13 +73,17 @@ You can catch a general `Exception` to catch everything, but it's better to be s
 You can have **multiple catch blocks** for different exception types
 
 ```java
-try {
-    String text = "hello";
-    int num = Integer.parseInt(text);
-} catch (NumberFormatException e) {
-    System.out.println("Not a number: " + e.getMessage());
-} catch (Exception e) {
-    System.out.println("Something else went wrong: " + e.getMessage());
+public class Main {
+    public static void main(String[] args) {
+        try {
+            String text = "hello";
+            int num = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            System.out.println("Not a number: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Something else went wrong: " + e.getMessage());
+        }
+    }
 }
 ```
 
@@ -82,13 +94,17 @@ Java tries each catch block from top to bottom and uses the **first one that mat
 The **finally** block runs NO MATTER WHAT — whether the try succeeded or an exception was caught
 
 ```java
-try {
-    System.out.println("Trying...");
-    int x = 10 / 0;
-} catch (ArithmeticException e) {
-    System.out.println("Caught error!");
-} finally {
-    System.out.println("This ALWAYS runs");
+public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Trying...");
+            int x = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Caught error!");
+        } finally {
+            System.out.println("This ALWAYS runs");
+        }
+    }
 }
 ```
 Output
@@ -108,15 +124,23 @@ Don't use try/catch as a crutch. If you know an array has 3 elements, don't acce
 
 Bad:
 ```java
-try {
-    System.out.println(arr[index]);
-} catch (ArrayIndexOutOfBoundsException e) { }
+public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.println(arr[index]);
+        } catch (ArrayIndexOutOfBoundsException e) { }
+    }
+}
 ```
 
 Good:
 ```java
-if (index >= 0 && index < arr.length) {
-    System.out.println(arr[index]);
+public class Main {
+    public static void main(String[] args) {
+        if (index >= 0 && index < arr.length) {
+            System.out.println(arr[index]);
+        }
+    }
 }
 ```
 

@@ -34,6 +34,8 @@ By convention, macros are written in **ALL_CAPS** so you can tell them apart fro
 
 **#define** can also create macros with parameters
 ```c
+#include <stdio.h>
+
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define SQUARE(x) ((x) * (x))
 
@@ -50,6 +52,8 @@ The extra parentheses are important! Without them, **SQUARE(2+3)** would expand 
 
 **Conditional compilation**: compile different code based on conditions
 ```c
+#include <stdio.h>
+
 #define DEBUG
 
 int main(void) {

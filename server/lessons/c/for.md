@@ -2,10 +2,15 @@ Welcome to one of the **most important** concepts in programming — the **for**
 
 Imagine we want to display all numbers from **1** to **10**
 ```c
-printf("%d\n", 1);
-printf("%d\n", 2);
-printf("%d\n", 3);
-// ... and so on, ten times
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 1);
+    printf("%d\n", 2);
+    printf("%d\n", 3);
+    // ... and so on, ten times
+    return 0;
+}
 ```
 Tedious. For **1** to **1000** it’s impossible. **for** saves us
 ```c
@@ -24,8 +29,13 @@ Run it. You’ll see the numbers from **1** to **10**, one per line
 
 The C **for** has **three parts** inside the parentheses, separated by **;** — exactly like Java
 ```c
-for (int i = 1; i <= 10; i++) {
-    ...
+#include <stdio.h>
+
+int main(void) {
+    for (int i = 1; i <= 10; i++) {
+        printf("%d\n", i);
+    }
+    return 0;
 }
 ```
 
@@ -39,14 +49,19 @@ A small detail: in **older C** (pre-C99), you couldn’t declare **int i** insid
 
 We can count by 2s, count down, do whatever we want
 ```c
-// counting by 2s
-for (int i = 0; i <= 10; i = i + 2) {
-    printf("%d\n", i);
-}
+#include <stdio.h>
 
-// counting down
-for (int i = 10; i >= 1; i--) {
-    printf("%d\n", i);
+int main(void) {
+    // counting by 2s
+    for (int i = 0; i <= 10; i = i + 2) {
+        printf("%d\n", i);
+    }
+
+    // counting down
+    for (int i = 10; i >= 1; i--) {
+        printf("%d\n", i);
+    }
+    return 0;
 }
 ```
 **i--** means **i = i - 1**
@@ -55,8 +70,13 @@ for (int i = 10; i >= 1; i--) {
 
 Be careful — if we forget to update **i**, we get an **infinite loop**
 ```c
-for (int i = 1; i <= 10; ) {
-    printf("%d\n", i);
+#include <stdio.h>
+
+int main(void) {
+    for (int i = 1; i <= 10; ) {
+        printf("%d\n", i);
+    }
+    return 0;
 }
 ```
 **i** stays **1** forever, the condition stays **true** forever, and the program prints **1** until something stops it. The platform stops it after 5 seconds, but in real systems an infinite loop can lock up your computer. Always make sure your condition can become false

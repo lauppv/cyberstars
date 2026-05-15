@@ -7,7 +7,6 @@ import { AuthPage } from "./pages/AuthPage";
 import { CoursesPage } from "./pages/CoursesPage";
 import { AlgorithmsPage } from "./pages/AlgorithmsPage";
 import { AlgorithmListPage } from "./pages/AlgorithmListPage";
-import { CourseLessonsPage } from "./pages/CourseLessonsPage";
 import { LessonPage } from "./pages/LessonPage";
 import { ProfilePage } from "./pages/ProfilePage";
 
@@ -23,7 +22,6 @@ function App() {
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/algorithms" element={<AlgorithmsPage />} />
           <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-          <Route path="/course/:courseKey" element={<CourseLessonsPage />} />
           <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>

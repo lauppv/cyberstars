@@ -5,7 +5,11 @@ Combine **ArrayList**, **ArrayList loops**, **HashMap**, and **HashMap loops**
 Build an **inventory tracker**. You have a list of items sold:
 
 ```java
-String[] sales = {"Sword", "Shield", "Potion", "Sword", "Potion", "Potion", "Armor", "Sword"};
+public class Main {
+    public static void main(String[] args) {
+        String[] sales = {"Sword", "Shield", "Potion", "Sword", "Potion", "Potion", "Armor", "Sword"};
+    }
+}
 ```
 
 Do the following:

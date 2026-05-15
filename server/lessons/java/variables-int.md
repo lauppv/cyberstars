@@ -31,17 +31,25 @@ Same rule as Python: with **=**, Java first computes what is on the **right**, t
 
 The classic increment by 1
 ```java
-int n = 10;
-n = n + 1;
-System.out.println(n);
+public class Main {
+    public static void main(String[] args) {
+        int n = 10;
+        n = n + 1;
+        System.out.println(n);
+    }
+}
 ```
 Java looks at **n + 1**, sees **10 + 1 = 11**, and stores **11** back into **n**
 
 Java even has a **shortcut** for this
 ```java
-int n = 10;
-n++;
-System.out.println(n);
+public class Main {
+    public static void main(String[] args) {
+        int n = 10;
+        n++;
+        System.out.println(n);
+    }
+}
 ```
 **n++** is the same as **n = n + 1**. Very common in Java
 
@@ -49,9 +57,13 @@ System.out.println(n);
 
 For numbers with decimals (like **3.14** or **1.75**), **int** is not enough. We use **double**
 ```java
-double pi = 3.14159;
-int k = 33;
-System.out.println(pi + k);
+public class Main {
+    public static void main(String[] args) {
+        double pi = 3.14159;
+        int k = 33;
+        System.out.println(pi + k);
+    }
+}
 ```
 Output
 ```text
@@ -61,7 +73,11 @@ The result is a **double** because we mixed an **int** with a **double**
 
 **Important**: if you try to store a decimal into an **int**, Java will refuse
 ```java
-int x = 3.14;   // ERROR
+public class Main {
+    public static void main(String[] args) {
+        int x = 3.14;   // ERROR
+    }
+}
 ```
 Try it. Read the error. Java protects us from accidentally losing the decimal part
 
@@ -69,15 +85,23 @@ Try it. Read the error. Java protects us from accidentally losing the decimal pa
 
 A small surprise that catches everyone. Try this
 ```java
-int a = 7;
-int b = 2;
-System.out.println(a / b);
+public class Main {
+    public static void main(String[] args) {
+        int a = 7;
+        int b = 2;
+        System.out.println(a / b);
+    }
+}
 ```
 You might expect **3.5**. But you’ll see **3**. Why? Because when we divide an **int** by an **int**, Java gives us back an **int**, throwing away the decimals. To get **3.5**, we’d need at least one **double**
 ```java
-double a = 7;
-int b = 2;
-System.out.println(a / b);
+public class Main {
+    public static void main(String[] args) {
+        double a = 7;
+        int b = 2;
+        System.out.println(a / b);
+    }
+}
 ```
 Now we see **3.5**. Remember this — it’s a very common bug for beginners :)
 
@@ -89,6 +113,10 @@ My name is Cortez, I am 57 years old, and I am 1.67 tall
 ```
 For now, build the message with **+** like this
 ```java
-System.out.println("My name is Cortez, I am " + age + " years old, and I am " + height + " tall");
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("My name is Cortez, I am " + age + " years old, and I am " + height + " tall");
+    }
+}
 ```
 We’ll explain string concatenation properly in the next lessons. Just notice that **+** with strings means "glue them together"

@@ -53,8 +53,16 @@ We use **scores[i]** just like a normal array — because an array name is a poi
 
 **calloc** is malloc's cousin. It allocates AND initializes everything to zero
 ```c
-int *arr = calloc(5, sizeof(int));
-// arr[0] through arr[4] are all 0
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int *arr = calloc(5, sizeof(int));
+    // arr[0] through arr[4] are all 0
+    printf("%d\n", arr[0]);
+    free(arr);
+    return 0;
+}
 ```
 
 With **malloc**, the memory contains garbage (whatever was there before). With **calloc**, it's clean. Use calloc when you want zeros
@@ -68,10 +76,19 @@ The golden rules of dynamic memory:
 4. Always check if malloc returned **NULL** (it does when the system is out of memory)
 
 ```c
-int *p = malloc(sizeof(int));
-if (p == NULL) {
-    printf("Out of memory!\n");
-    return 1;
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int *p = malloc(sizeof(int));
+    if (p == NULL) {
+        printf("Out of memory!\n");
+        return 1;
+    }
+    *p = 42;
+    printf("%d\n", *p);
+    free(p);
+    return 0;
 }
 ```
 

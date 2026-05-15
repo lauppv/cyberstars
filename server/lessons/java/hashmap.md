@@ -53,30 +53,50 @@ The main HashMap methods
 
 **put(key, value)** — adds or updates a key-value pair
 ```java
-scores.put("Tommy", 9500);     // adds Tommy
-scores.put("Tommy", 10000);    // updates Tommy's score to 10000
+public class Main {
+    public static void main(String[] args) {
+        scores.put("Tommy", 9500);     // adds Tommy
+        scores.put("Tommy", 10000);    // updates Tommy's score to 10000
+    }
+}
 ```
 
 **get(key)** — gets the value for that key (returns **null** if the key doesn't exist)
 ```java
-System.out.println(scores.get("Tommy"));   // 10000
-System.out.println(scores.get("Sonny"));   // null
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(scores.get("Tommy"));   // 10000
+        System.out.println(scores.get("Sonny"));   // null
+    }
+}
 ```
 
 **containsKey(key)** — checks if a key exists, returns true/false
 ```java
-System.out.println(scores.containsKey("Tommy"));   // true
-System.out.println(scores.containsKey("Sonny"));    // false
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(scores.containsKey("Tommy"));   // true
+        System.out.println(scores.containsKey("Sonny"));    // false
+    }
+}
 ```
 
 **keySet()** — returns all the keys (useful for looping, which we'll cover next lesson)
 ```java
-System.out.println(scores.keySet());   // [Tommy, Lance, Phil] (order may vary)
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(scores.keySet());   // [Tommy, Lance, Phil] (order may vary)
+    }
+}
 ```
 
 **size()** — returns how many key-value pairs are in the map
 ```java
-System.out.println(scores.size());   // 3
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(scores.size());   // 3
+    }
+}
 ```
 
 ---

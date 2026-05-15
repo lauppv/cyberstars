@@ -102,13 +102,17 @@ Now the scores go from highest to lowest. Think of it like a Vice City leaderboa
 **Collections.reverse()** doesn't sort — it just **flips** whatever order the list is in. So if you call reverse without sorting first, you just get the original list backwards
 
 ```java
-ArrayList<String> crew = new ArrayList<>();
-crew.add("Tommy");
-crew.add("Lance");
-crew.add("Phil");
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> crew = new ArrayList<>();
+        crew.add("Tommy");
+        crew.add("Lance");
+        crew.add("Phil");
 
-Collections.reverse(crew);
-// Now it's: Phil, Lance, Tommy (reversed insertion order, NOT sorted)
+        Collections.reverse(crew);
+        // Now it's: Phil, Lance, Tommy (reversed insertion order, NOT sorted)
+    }
+}
 ```
 
 To get reverse alphabetical order, you need **sort first, then reverse**
@@ -125,13 +129,17 @@ names.reverse()        # reverses in place
 ```
 
 ```java
-// Java
-ArrayList<String> names = new ArrayList<>();
-names.add("Cortez");
-names.add("Tommy");
-names.add("Lance");
-Collections.sort(names);       // sorts in place
-Collections.reverse(names);    // reverses in place
+public class Main {
+    public static void main(String[] args) {
+        // Java
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Cortez");
+        names.add("Tommy");
+        names.add("Lance");
+        Collections.sort(names);       // sorts in place
+        Collections.reverse(names);    // reverses in place
+    }
+}
 ```
 
 Pretty similar, right? The main difference is that Java uses a separate **Collections** utility class instead of methods directly on the list

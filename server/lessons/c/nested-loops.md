@@ -27,11 +27,16 @@ The **outer loop** controls the **rows**, the **inner loop** controls the **colu
 A classic use of nested loops: **printing a pattern**
 
 ```c
-for (int i = 1; i <= 5; i++) {
-    for (int j = 1; j <= i; j++) {
-        printf("* ");
+#include <stdio.h>
+
+int main(void) {
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
     }
-    printf("\n");
+    return 0;
 }
 ```
 Output
@@ -49,13 +54,18 @@ Notice that the inner loop goes **up to i**, not up to 5. When **i = 1**, we pri
 
 Nested loops with arrays: imagine a **multiplication table**
 ```c
-int nums[] = {2, 3, 4};
-int n = 3;
+#include <stdio.h>
 
-for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-        printf("%d * %d = %d\n", nums[i], nums[j], nums[i] * nums[j]);
+int main(void) {
+    int nums[] = {2, 3, 4};
+    int n = 3;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d * %d = %d\n", nums[i], nums[j], nums[i] * nums[j]);
+        }
     }
+    return 0;
 }
 ```
 

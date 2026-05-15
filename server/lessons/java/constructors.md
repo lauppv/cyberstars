@@ -49,17 +49,25 @@ You probably spotted `this.name = name` and wondered what's going on. Here's the
 It's like saying "**this** object's name equals the name you gave me"
 
 ```java
-Player(String name, int score) {
-    this.name = name;     // object's name = parameter name
-    this.score = score;   // object's score = parameter score
+public class Main {
+    public static void main(String[] args) {
+        Player(String name, int score) {
+            this.name = name;     // object's name = parameter name
+            this.score = score;   // object's score = parameter score
+        }
+    }
 }
 ```
 
 If the parameter had a different name, you wouldn't even need `this`:
 ```java
-Player(String n, int s) {
-    name = n;    // no confusion, so "this" is optional
-    score = s;
+public class Main {
+    public static void main(String[] args) {
+        Player(String n, int s) {
+            name = n;    // no confusion, so "this" is optional
+            score = s;
+        }
+    }
 }
 ```
 

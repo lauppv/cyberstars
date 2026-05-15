@@ -5,7 +5,11 @@ Combine **string methods**, **arrays**, **looping over arrays**, and **break/con
 Build a **word filter**. You have an array of words:
 
 ```java
-String[] words = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
+public class Main {
+    public static void main(String[] args) {
+        String[] words = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
+    }
+}
 ```
 
 Write a method **static String[] filterWords(String[] words)** that:

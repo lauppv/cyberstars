@@ -44,23 +44,35 @@ public class Main {
 
 For decimal numbers, there’s **scanner.nextDouble()**
 ```java
-double height = scanner.nextDouble();
+public class Main {
+    public static void main(String[] args) {
+        double height = scanner.nextDouble();
+    }
+}
 ```
 
 ---
 
 A small **gotcha** that catches everyone. If you mix **nextInt()** and **nextLine()**, things get weird
 ```java
-int age = scanner.nextInt();
-String name = scanner.nextLine();   // this looks empty!
+public class Main {
+    public static void main(String[] args) {
+        int age = scanner.nextInt();
+        String name = scanner.nextLine();   // this looks empty!
+    }
+}
 ```
 **Why?** Because **nextInt()** reads the number but leaves the **newline character** behind. Then **nextLine()** picks up that empty newline and immediately returns an empty string
 
 The fix: add an extra **scanner.nextLine()** to "eat" the leftover newline
 ```java
-int age = scanner.nextInt();
-scanner.nextLine();   // consume the leftover newline
-String name = scanner.nextLine();
+public class Main {
+    public static void main(String[] args) {
+        int age = scanner.nextInt();
+        scanner.nextLine();   // consume the leftover newline
+        String name = scanner.nextLine();
+    }
+}
 ```
 Annoying, but you only need to remember it once :)
 

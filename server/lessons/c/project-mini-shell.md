@@ -34,6 +34,13 @@ void runCommand(const char *cmd) {
                WEXITSTATUS(status));
     }
 }
+
+int main(void) {
+    runCommand("hello");
+    runCommand("date");
+    runCommand("unknown_cmd");
+    return 0;
+}
 ```
 
 **_exit(0)** is like **return 0** but for child processes after fork — it exits immediately without running cleanup that could mess up the parent

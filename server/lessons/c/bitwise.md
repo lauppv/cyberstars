@@ -27,7 +27,12 @@ Each position: if both are 1, result is 1. Otherwise 0
 
 **| (OR)** — at least one bit must be 1
 ```c
-printf("%d\n", 13 | 10);   // 15
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 13 | 10);   // 15
+    return 0;
+}
 ```
 ```text
   1101  (13)
@@ -38,7 +43,12 @@ printf("%d\n", 13 | 10);   // 15
 
 **^ (XOR)** — exactly one bit must be 1
 ```c
-printf("%d\n", 13 ^ 10);   // 7
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 13 ^ 10);   // 7
+    return 0;
+}
 ```
 ```text
   1101  (13)
@@ -49,7 +59,12 @@ printf("%d\n", 13 ^ 10);   // 7
 
 **~ (NOT)** — flip every bit
 ```c
-printf("%d\n", ~0);   // -1 (all bits become 1)
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", ~0);   // -1 (all bits become 1)
+    return 0;
+}
 ```
 
 ---
@@ -58,15 +73,25 @@ printf("%d\n", ~0);   // -1 (all bits become 1)
 
 **<< (left shift)** — shift bits left, fill with 0s. Each left shift **multiplies by 2**
 ```c
-printf("%d\n", 5 << 1);   // 10  (101 -> 1010)
-printf("%d\n", 5 << 2);   // 20  (101 -> 10100)
-printf("%d\n", 1 << 3);   // 8   (1 -> 1000)
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 5 << 1);   // 10  (101 -> 1010)
+    printf("%d\n", 5 << 2);   // 20  (101 -> 10100)
+    printf("%d\n", 1 << 3);   // 8   (1 -> 1000)
+    return 0;
+}
 ```
 
 **>> (right shift)** — shift bits right. Each right shift **divides by 2**
 ```c
-printf("%d\n", 20 >> 1);   // 10
-printf("%d\n", 20 >> 2);   // 5
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 20 >> 1);   // 10
+    printf("%d\n", 20 >> 2);   // 5
+    return 0;
+}
 ```
 
 **1 << n** gives us **2^n**. This is one of the most common tricks in programming
@@ -75,23 +100,29 @@ printf("%d\n", 20 >> 2);   // 5
 
 A classic use: **flags**. Imagine a game character with abilities
 ```c
+#include <stdio.h>
+
 #define CAN_FLY    (1 << 0)   // 0001 = 1
 #define CAN_SWIM   (1 << 1)   // 0010 = 2
 #define CAN_FIGHT  (1 << 2)   // 0100 = 4
 #define CAN_HEAL   (1 << 3)   // 1000 = 8
 
-int abilities = CAN_FLY | CAN_FIGHT;   // 0101 = 5
+int main(void) {
+    int abilities = CAN_FLY | CAN_FIGHT;   // 0101 = 5
 
-// check if can fly
-if (abilities & CAN_FLY) {
-    printf("Can fly!\n");
+    // check if can fly
+    if (abilities & CAN_FLY) {
+        printf("Can fly!\n");
+    }
+
+    // add swim ability
+    abilities = abilities | CAN_SWIM;       // 0111 = 7
+
+    // remove fly ability
+    abilities = abilities & ~CAN_FLY;       // 0110 = 6
+
+    return 0;
 }
-
-// add swim ability
-abilities = abilities | CAN_SWIM;       // 0111 = 7
-
-// remove fly ability
-abilities = abilities & ~CAN_FLY;       // 0110 = 6
 ```
 
 A single **int** stores multiple yes/no properties using individual bits. This is used in operating systems, network protocols, and game engines. Linux file permissions work exactly like this

@@ -140,10 +140,14 @@ No player!
 Here's an important distinction: **primitive types** (`int`, `double`, `boolean`, `char`) **cannot** be null. Only reference types (objects, strings, arrays) can:
 
 ```java
-int x = 0;           // valid — x is 0
-// int y = null;      // ERROR! Primitives can't be null
-String s = null;      // valid — s is null
-int[] arr = null;     // valid — arrays are objects
+public class Main {
+    public static void main(String[] args) {
+        int x = 0;           // valid — x is 0
+        // int y = null;      // ERROR! Primitives can't be null
+        String s = null;      // valid — s is null
+        int[] arr = null;     // valid — arrays are objects
+    }
+}
 ```
 
 If you need an integer that can be "nothing," you'll use **wrapper classes** (like `Integer`) — but that's the next lesson

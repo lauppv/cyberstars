@@ -30,16 +30,21 @@ We told the loop to go up to **99**, but as soon as **i** became **5**, **break*
 
 A real example: searching for a value in an array
 ```c
-int values[] = { 10, 25, 7, 42, 13 };
-int n = sizeof(values) / sizeof(values[0]);
-int target = 42;
+#include <stdio.h>
 
-for (int i = 0; i < n; i++) {
-    if (values[i] == target) {
-        printf("Found %d at position %d\n", target, i);
-        break;
+int main(void) {
+    int values[] = { 10, 25, 7, 42, 13 };
+    int n = sizeof(values) / sizeof(values[0]);
+    int target = 42;
+
+    for (int i = 0; i < n; i++) {
+        if (values[i] == target) {
+            printf("Found %d at position %d\n", target, i);
+            break;
+        }
+        printf("Checking %d...\n", values[i]);
     }
-    printf("Checking %d...\n", values[i]);
+    return 0;
 }
 ```
 The loop stops as soon as we find what we’re looking for. **break** saves us time
@@ -48,11 +53,16 @@ The loop stops as soon as we find what we’re looking for. **break** saves us t
 
 **continue** is different. It doesn’t stop the loop — it just **skips** the rest of the current iteration and **jumps to the next one**
 ```c
-for (int i = 0; i < 10; i++) {
-    if (i == 5) {
-        continue;
+#include <stdio.h>
+
+int main(void) {
+    for (int i = 0; i < 10; i++) {
+        if (i == 5) {
+            continue;
+        }
+        printf("%d\n", i);
     }
-    printf("%d\n", i);
+    return 0;
 }
 ```
 Output
@@ -71,11 +81,16 @@ Output
 
 A real example: print only **even** numbers
 ```c
-for (int i = 0; i <= 10; i++) {
-    if (i % 2 != 0) {
-        continue;
+#include <stdio.h>
+
+int main(void) {
+    for (int i = 0; i <= 10; i++) {
+        if (i % 2 != 0) {
+            continue;
+        }
+        printf("%d\n", i);
     }
-    printf("%d\n", i);
+    return 0;
 }
 ```
 Output: **0 2 4 6 8 10**
@@ -84,13 +99,18 @@ Output: **0 2 4 6 8 10**
 
 Both keywords work the same way in **while**, not just **for**
 ```c
-int i = 0;
-while (1) {   // remember: 1 is "true" in C
-    if (i >= 5) {
-        break;
+#include <stdio.h>
+
+int main(void) {
+    int i = 0;
+    while (1) {   // remember: 1 is "true" in C
+        if (i >= 5) {
+            break;
+        }
+        printf("%d\n", i);
+        i++;
     }
-    printf("%d\n", i);
-    i++;
+    return 0;
 }
 ```
 **while (1)** would normally be infinite, but **break** lets us escape

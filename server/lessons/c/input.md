@@ -35,8 +35,14 @@ There is one exception: when reading a string (a **char[]**), you don’t use **
 
 To read a **double**
 ```c
-double height;
-scanf("%lf", &height);
+#include <stdio.h>
+
+int main(void) {
+    double height;
+    scanf("%lf", &height);
+    printf("%f\n", height);
+    return 0;
+}
 ```
 **Important**: for **scanf**, doubles use **%lf** (l for "long", f for "float"), not **%f**. **%f** in **scanf** would read a regular **float** instead. This is a small **C quirk** that catches many beginners. (For **printf**, both **%f** and **%lf** work the same on doubles. Inconsistent? Yes :))
 
@@ -44,9 +50,14 @@ scanf("%lf", &height);
 
 Reading multiple values in one **scanf** call
 ```c
-int a, b;
-scanf("%d %d", &a, &b);
-printf("Sum: %d\n", a + b);
+#include <stdio.h>
+
+int main(void) {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("Sum: %d\n", a + b);
+    return 0;
+}
 ```
 The user types two numbers separated by space (or Enter), **scanf** reads both. Notice we still use **&** in front of each variable
 
@@ -59,8 +70,14 @@ Hello <name>, you are <age> years old. Next year you will be <age + 1>
 
 Use a **char** array of size **64** for the name
 ```c
-char name[64];
-scanf("%s", name);   // no & for strings — we'll explain in the strings lesson
+#include <stdio.h>
+
+int main(void) {
+    char name[64];
+    scanf("%s", name);
+    printf("%s\n", name);
+    return 0;
+}
 ```
 
 If the user types

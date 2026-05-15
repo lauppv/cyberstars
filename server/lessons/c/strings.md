@@ -42,21 +42,32 @@ Two new things
 
 **Comparing strings** — and **THE biggest C trap with strings**
 ```c
-char a[] = "hello";
-char b[] = "hello";
+#include <stdio.h>
 
-if (a == b) {   // WRONG
-    printf("equal\n");
+int main(void) {
+    char a[] = "hello";
+    char b[] = "hello";
+
+    if (a == b) {   // WRONG
+        printf("equal\n");
+    }
+    return 0;
 }
 ```
 This compares **memory addresses**, not the **contents**. **a** and **b** are two different arrays in memory, so this **never** prints **equal**, even though both contain "hello"
 
 The correct way is **strcmp** (string compare) from **<string.h>**
 ```c
+#include <stdio.h>
 #include <string.h>
-// ...
-if (strcmp(a, b) == 0) {
-    printf("equal\n");
+
+int main(void) {
+    char a[] = "hello";
+    char b[] = "hello";
+    if (strcmp(a, b) == 0) {
+        printf("equal\n");
+    }
+    return 0;
 }
 ```
 **strcmp** returns **0** when the strings are **equal**. (Yes, equal = 0. C is full of these little quirks :))
@@ -65,9 +76,14 @@ if (strcmp(a, b) == 0) {
 
 Single character at a position. Since a string is just an array, we use indexing
 ```c
-char name[] = "Tommy Vercetti";
-printf("%c\n", name[0]);    // T
-printf("%c\n", name[6]);    // V
+#include <stdio.h>
+
+int main(void) {
+    char name[] = "Tommy Vercetti";
+    printf("%c\n", name[0]);    // T
+    printf("%c\n", name[6]);    // V
+    return 0;
+}
 ```
 **%c** is the format specifier for a single **char**. Counting starts from **0**, like always
 
@@ -75,9 +91,14 @@ printf("%c\n", name[6]);    // V
 
 Modifying characters
 ```c
-char name[] = "tommy";
-name[0] = 'T';
-printf("%s\n", name);   // Tommy
+#include <stdio.h>
+
+int main(void) {
+    char name[] = "tommy";
+    name[0] = 'T';
+    printf("%s\n", name);   // Tommy
+    return 0;
+}
 ```
 We can change individual characters because **name** is an array we own. Notice the **single quotes** for a single char (**'T'**), and **double quotes** for a string (**"Tommy"**). Confusing them is one of the most common C mistakes
 

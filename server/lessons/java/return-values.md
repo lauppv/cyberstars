@@ -93,15 +93,17 @@ You can think of a method call like **add(10, 20)** as being **replaced** by its
 A common mistake: trying to **return** inside a **void** method, or forgetting to **return** in a non-void method
 
 ```java
-// ERROR: void method can't return a value
-public static void doStuff() {
-    return 42;   // won't compile
-}
+public class Main {
+    // ERROR: void method can't return a value
+    public static void doStuff() {
+        return 42;   // won't compile
+    }
 
-// ERROR: method promises int but has no return
-public static int getNumber() {
-    int x = 42;
-    // forgot to return x!
+    // ERROR: method promises int but has no return
+    public static int getNumber() {
+        int x = 42;
+        // forgot to return x!
+    }
 }
 ```
 
@@ -125,9 +127,13 @@ You can compute this with a loop — start with result = 1, and multiply by base
 Then call it from main and print the results
 
 ```java
-System.out.println(power(2, 3));    // should print 8
-System.out.println(power(5, 2));    // should print 25
-System.out.println(power(10, 0));   // should print 1
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(power(2, 3));    // should print 8
+        System.out.println(power(5, 2));    // should print 25
+        System.out.println(power(10, 0));   // should print 1
+    }
+}
 ```
 
 Hint: anything raised to the power of 0 is 1 — and your loop naturally handles this if result starts at 1 and the loop runs 0 times

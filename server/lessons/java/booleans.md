@@ -1,19 +1,27 @@
 A **boolean** is a value that can only be **true** or **false**. We’ve already seen them inside **if** conditions. Java has its own type for them, called **boolean**
 
 ```java
-boolean isOnline = true;
-boolean hasKey = false;
-System.out.println(isOnline);
-System.out.println(hasKey);
+public class Main {
+    public static void main(String[] args) {
+        boolean isOnline = true;
+        boolean hasKey = false;
+        System.out.println(isOnline);
+        System.out.println(hasKey);
+    }
+}
 ```
 
 **Important**: in Java, **true** and **false** are **lowercase**. (In Python they were **True** and **False** with a capital letter.) Don’t mix them up
 
 Conditions like **age < 18** or **x == 5** also produce booleans
 ```java
-int age = 20;
-System.out.println(age < 18);    // false
-System.out.println(age >= 18);   // true
+public class Main {
+    public static void main(String[] args) {
+        int age = 20;
+        System.out.println(age < 18);    // false
+        System.out.println(age >= 18);   // true
+    }
+}
 ```
 
 ---
@@ -26,13 +34,17 @@ We can combine booleans with logical operators
 
 Imagine: in order to drive a car, you need to be **at least 18 years old AND have a license**
 ```java
-int age = 20;
-boolean hasLicense = true;
+public class Main {
+    public static void main(String[] args) {
+        int age = 20;
+        boolean hasLicense = true;
 
-if (age >= 18 && hasLicense) {
-    System.out.println("You can drive");
-} else {
-    System.out.println("Sorry, no driving today");
+        if (age >= 18 && hasLicense) {
+            System.out.println("You can drive");
+        } else {
+            System.out.println("Sorry, no driving today");
+        }
+    }
 }
 ```
 Both conditions must be **true** for **&&** to be **true**. If even one is false, the whole thing is false
@@ -41,13 +53,17 @@ Both conditions must be **true** for **&&** to be **true**. If even one is false
 
 **||** (or) is more relaxed. Just **one** of the conditions being true is enough
 ```java
-boolean isVIP = false;
-boolean hasInvitation = true;
+public class Main {
+    public static void main(String[] args) {
+        boolean isVIP = false;
+        boolean hasInvitation = true;
 
-if (isVIP || hasInvitation) {
-    System.out.println("Welcome to the club");
-} else {
-    System.out.println("Access denied");
+        if (isVIP || hasInvitation) {
+            System.out.println("Welcome to the club");
+        } else {
+            System.out.println("Access denied");
+        }
+    }
 }
 ```
 **isVIP** is false, **hasInvitation** is true, so the **or** is true and the person enters
@@ -56,9 +72,13 @@ if (isVIP || hasInvitation) {
 
 **!** flips a boolean. **!true** becomes **false**, **!false** becomes **true**
 ```java
-boolean isLoggedIn = false;
-if (!isLoggedIn) {
-    System.out.println("Please log in first");
+public class Main {
+    public static void main(String[] args) {
+        boolean isLoggedIn = false;
+        if (!isLoggedIn) {
+            System.out.println("Please log in first");
+        }
+    }
 }
 ```
 Reads almost like English: *if not logged in, log in*
@@ -87,10 +107,14 @@ You are writing the access system for **CyberStars HQ**. A person can enter if t
 
 You have these variables on the right
 ```java
-boolean isEmployee
-boolean isWorkingDay
-boolean isGuest
-boolean hasInvitation
+public class Main {
+    public static void main(String[] args) {
+        boolean isEmployee = true;
+        boolean isWorkingDay = true;
+        boolean isGuest = false;
+        boolean hasInvitation = false;
+    }
+}
 ```
 
 Display **Access granted** if the person can enter, **Access denied** otherwise

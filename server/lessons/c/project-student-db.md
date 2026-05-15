@@ -11,10 +11,20 @@ The program manages a list of students. Each student has a **name** and a **grad
 
 Here's the struct we'll use
 ```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 typedef struct {
     char name[50];
     int grade;
 } Student;
+
+int main(void) {
+    Student s = {"Ana", 95};
+    printf("%s: %d\n", s.name, s.grade);
+    return 0;
+}
 ```
 
 And here's how to create a student dynamically

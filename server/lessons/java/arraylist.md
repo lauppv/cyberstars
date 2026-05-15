@@ -34,11 +34,15 @@ Second, the **\<String\>** part. This is called a **generic type**. It tells Jav
 Small gotcha: you can't use primitive types like **int** or **double** directly. You have to use their "wrapper" versions: **Integer**, **Double**, **Boolean**. Java auto-converts between them, so it's mostly painless
 
 ```java
-ArrayList<Integer> scores = new ArrayList<Integer>();
-scores.add(100);    // Java auto-converts int 100 to Integer 100
-scores.add(85);
-scores.add(92);
-System.out.println(scores);   // [100, 85, 92]
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> scores = new ArrayList<Integer>();
+        scores.add(100);    // Java auto-converts int 100 to Integer 100
+        scores.add(85);
+        scores.add(92);
+        System.out.println(scores);   // [100, 85, 92]
+    }
+}
 ```
 
 ---
@@ -47,29 +51,45 @@ The main methods you'll use on an ArrayList
 
 **add(item)** — adds an item to the end
 ```java
-ArrayList<String> list = new ArrayList<String>();
-list.add("first");
-list.add("second");
-// list is now [first, second]
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("first");
+        list.add("second");
+        // list is now [first, second]
+    }
+}
 ```
 
 **get(index)** — gets the item at that index (starting from 0, like arrays)
 ```java
-System.out.println(list.get(0));   // first
-System.out.println(list.get(1));   // second
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(list.get(0));   // first
+        System.out.println(list.get(1));   // second
+    }
+}
 ```
 
 **size()** — returns how many items are in the list
 ```java
-System.out.println(list.size());   // 2
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(list.size());   // 2
+    }
+}
 ```
 
 Notice it's **.size()** with parentheses, not **.length** like arrays. Yes, this is another one of Java's charming inconsistencies
 
 **remove(index)** — removes the item at that index, and shifts everything after it down
 ```java
-list.remove(0);   // removes "first"
-// list is now [second]
+public class Main {
+    public static void main(String[] args) {
+        list.remove(0);   // removes "first"
+        // list is now [second]
+    }
+}
 ```
 
 ---

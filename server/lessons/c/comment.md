@@ -32,11 +32,17 @@ Now nothing is printed, because the **printf** is **commented out**. Very useful
 
 For longer comments that span multiple lines, C also has **/\* ... \*/**
 ```c
-/*
-This is a
-multi-line
-comment
-*/
+#include <stdio.h>
+
+int main(void) {
+    /*
+    This is a
+    multi-line
+    comment
+    */
+    printf("Hello\n");
+    return 0;
+}
 ```
 
 In old C code (before C99), only **/\* \*/** existed. **//** was added later, copied from C++. Today both work. Most modern code uses **//**

@@ -81,10 +81,14 @@ In Python this works too (duck typing), but Java does it with **type safety**. T
 Sometimes you need to check what type an object actually is. Java has the **instanceof** keyword for that
 
 ```java
-Animal a = new Dog("Rex");
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog("Rex");
 
-if (a instanceof Dog) {
-    System.out.println("It's a dog!");
+        if (a instanceof Dog) {
+            System.out.println("It's a dog!");
+        }
+    }
 }
 ```
 
@@ -95,8 +99,10 @@ This is useful when you need to access child-specific methods. But in general, i
 Here's why this matters in real code. Imagine a method that takes any Shape
 
 ```java
-static void printArea(Shape s) {
-    System.out.println("Area: " + s.area());
+public class Main {
+    static void printArea(Shape s) {
+        System.out.println("Area: " + s.area());
+    }
 }
 ```
 

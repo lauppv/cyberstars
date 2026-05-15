@@ -29,8 +29,14 @@ Why no **10**? Because when **i = 10**, the condition **10 < 10** is **false**, 
 
 If we wanted **10** included, we’d write
 ```java
-while (i <= 10) {
-    ...
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i <= 10) {
+            System.out.println(i);
+            i++;
+        }
+    }
 }
 ```
 Now **10 <= 10** is **true**, so we enter one more time
@@ -41,10 +47,14 @@ Now **10 <= 10** is **true**, so we enter one more time
 
 **Be very careful**. If we forget to update **i** inside the loop, we get an **infinite loop**
 ```java
-int i = 0;
-while (i <= 100) {
-    System.out.println(i);
-    // we forgot i++
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i <= 100) {
+            System.out.println(i);
+            // we forgot i++
+        }
+    }
 }
 ```
 **i** stays **0** forever, so the condition is always **true**, and the program prints **0** non-stop. Run this code (briefly) to see what happens. Don’t worry, the platform stops it after 5 seconds :)

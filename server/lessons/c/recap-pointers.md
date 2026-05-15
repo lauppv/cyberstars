@@ -10,11 +10,16 @@ This function uses **nested loops** to go through the matrix and sets the sum, m
 
 Then in main, use this matrix:
 ```c
-int matrix[3][3] = {
-    {5, 12, 3},
-    {8, 1, 15},
-    {7, 9, 4}
-};
+#include <stdio.h>
+
+int main(void) {
+    int matrix[3][3] = {
+        {5, 12, 3},
+        {8, 1, 15},
+        {7, 9, 4}
+    };
+    return 0;
+}
 ```
 
 Call matrixStats and print the results

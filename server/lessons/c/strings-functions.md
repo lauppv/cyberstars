@@ -18,13 +18,19 @@ Output: **Length: 14**
 
 **strcmp** — compare two strings
 ```c
-char a[] = "apple";
-char b[] = "banana";
-char c[] = "apple";
+#include <stdio.h>
+#include <string.h>
 
-printf("%d\n", strcmp(a, b));   // negative (a comes before b)
-printf("%d\n", strcmp(b, a));   // positive (b comes after a)
-printf("%d\n", strcmp(a, c));   // 0 (they're equal)
+int main(void) {
+    char a[] = "apple";
+    char b[] = "banana";
+    char c[] = "apple";
+
+    printf("%d\n", strcmp(a, b));   // negative (a comes before b)
+    printf("%d\n", strcmp(b, a));   // positive (b comes after a)
+    printf("%d\n", strcmp(a, c));   // 0 (they're equal)
+    return 0;
+}
 ```
 
 **strcmp** returns **0** if the strings are equal, a **negative** number if the first comes before the second (alphabetically), and a **positive** number if it comes after. Remember: in C, **you cannot compare strings with ==**. That compares **addresses**, not content
@@ -33,11 +39,17 @@ printf("%d\n", strcmp(a, c));   // 0 (they're equal)
 
 **strcpy** — copy one string into another
 ```c
-char source[] = "Hello";
-char dest[20];
+#include <stdio.h>
+#include <string.h>
 
-strcpy(dest, source);
-printf("%s\n", dest);   // Hello
+int main(void) {
+    char source[] = "Hello";
+    char dest[20];
+
+    strcpy(dest, source);
+    printf("%s\n", dest);   // Hello
+    return 0;
+}
 ```
 
 **strcpy(dest, source)** copies everything from **source** into **dest**, including the **'\0'**. Make sure **dest** is big enough! If it's too small, you get a **buffer overflow** — one of the most dangerous bugs in programming. This is how real security vulnerabilities happen
@@ -46,9 +58,15 @@ printf("%s\n", dest);   // Hello
 
 **strcat** — concatenate (join) two strings
 ```c
-char greeting[50] = "Hello, ";
-strcat(greeting, "CyberStars!");
-printf("%s\n", greeting);   // Hello, CyberStars!
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char greeting[50] = "Hello, ";
+    strcat(greeting, "CyberStars!");
+    printf("%s\n", greeting);   // Hello, CyberStars!
+    return 0;
+}
 ```
 
 **strcat** appends the second string to the end of the first. Again, make sure the destination array is big enough for both strings plus the **'\0'**
@@ -57,11 +75,17 @@ printf("%s\n", greeting);   // Hello, CyberStars!
 
 A useful trick: **strstr** — find a substring
 ```c
-char text[] = "I love programming in C";
-char *found = strstr(text, "programming");
+#include <stdio.h>
+#include <string.h>
 
-if (found != NULL) {
-    printf("Found: %s\n", found);   // Found: programming in C
+int main(void) {
+    char text[] = "I love programming in C";
+    char *found = strstr(text, "programming");
+
+    if (found != NULL) {
+        printf("Found: %s\n", found);   // Found: programming in C
+    }
+    return 0;
 }
 ```
 

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 interface TopbarProps {
-  breadcrumb?: { course?: string; lesson?: string };
+  breadcrumb?: { course?: string; lesson?: string; courseHref?: string };
   showSidebarToggle?: boolean;
   sidebarOpen?: boolean;
   onSidebarToggle?: () => void;
@@ -76,7 +76,7 @@ export function Topbar({
 
         {breadcrumb ? (
           <div className="flex items-center gap-2 text-[13px] text-[var(--text3)]">
-            {breadcrumb.course && <span className="text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition" onClick={() => navigate("/courses")}>{breadcrumb.course}</span>}
+            {breadcrumb.course && <span className="text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition" onClick={() => navigate(breadcrumb.courseHref ?? "/courses")}>{breadcrumb.course}</span>}
             {breadcrumb.course && breadcrumb.lesson && <span className="opacity-40">/</span>}
             {breadcrumb.lesson && <span className="text-[var(--text)]">{breadcrumb.lesson}</span>}
           </div>

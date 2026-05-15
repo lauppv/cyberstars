@@ -32,8 +32,13 @@ The format specifier (**%d**) is replaced with the value (the variable that come
 
 We can mix format specifiers with regular text
 ```c
-int age = 60;
-printf("My age is %d\n", age);
+#include <stdio.h>
+
+int main(void) {
+    int age = 60;
+    printf("My age is %d\n", age);
+    return 0;
+}
 ```
 Output
 ```text
@@ -42,9 +47,14 @@ My age is 60
 
 We can use multiple specifiers in one line
 ```c
-int a = 10;
-int b = 20;
-printf("a = %d, b = %d\n", a, b);
+#include <stdio.h>
+
+int main(void) {
+    int a = 10;
+    int b = 20;
+    printf("a = %d, b = %d\n", a, b);
+    return 0;
+}
 ```
 Output
 ```text
@@ -56,18 +66,28 @@ The first **%d** is replaced by **a**, the second by **b**, in order
 
 We can do math, just like in any other language
 ```c
-int a = 2;
-int b = 6;
-int c = a + b;
-printf("%d\n", c);
+#include <stdio.h>
+
+int main(void) {
+    int a = 2;
+    int b = 6;
+    int c = a + b;
+    printf("%d\n", c);
+    return 0;
+}
 ```
 Output **8**. Same rule: the **right side** of **=** is computed first, then stored on the left
 
 The classic **increment by 1** also has a shortcut in C
 ```c
-int n = 10;
-n++;
-printf("%d\n", n);
+#include <stdio.h>
+
+int main(void) {
+    int n = 10;
+    n++;
+    printf("%d\n", n);
+    return 0;
+}
 ```
 Output **11**. **n++** is the same as **n = n + 1**
 
@@ -75,9 +95,14 @@ Output **11**. **n++** is the same as **n = n + 1**
 
 A small surprise. Try this
 ```c
-int a = 7;
-int b = 2;
-printf("%d\n", a / b);
+#include <stdio.h>
+
+int main(void) {
+    int a = 7;
+    int b = 2;
+    printf("%d\n", a / b);
+    return 0;
+}
 ```
 Output **3**, not **3.5**. Why? Because **a / b** with two ints gives back an **int** — C throws away the decimal part. We’ll see how to keep the decimals in the next lesson, with **float**
 

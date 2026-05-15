@@ -4,6 +4,7 @@ A **struct** is a way to group related data together into a single type. Think o
 
 ```c
 #include <stdio.h>
+#include <string.h>
 
 struct Player {
     char name[50];
@@ -34,12 +35,36 @@ If you know Java, a struct is similar to a class with only public fields and no 
 
 We can also initialize a struct all at once
 ```c
-struct Player p1 = {"Vercetti", 100, 500};
+#include <stdio.h>
+
+struct Player {
+    char name[50];
+    int health;
+    int score;
+};
+
+int main(void) {
+    struct Player p1 = {"Vercetti", 100, 500};
+    printf("%s: %d HP, %d pts\n", p1.name, p1.health, p1.score);
+    return 0;
+}
 ```
 
 The values fill in the fields **in order**: name, health, score. Or, more explicitly
 ```c
-struct Player p1 = {.name = "Vercetti", .health = 100, .score = 500};
+#include <stdio.h>
+
+struct Player {
+    char name[50];
+    int health;
+    int score;
+};
+
+int main(void) {
+    struct Player p1 = {.name = "Vercetti", .health = 100, .score = 500};
+    printf("%s: %d HP, %d pts\n", p1.name, p1.health, p1.score);
+    return 0;
+}
 ```
 
 This second form is clearer — you see exactly which field gets which value
@@ -48,14 +73,25 @@ This second form is clearer — you see exactly which field gets which value
 
 Arrays of structs are super useful
 ```c
-struct Player team[3] = {
-    {"Tommy", 100, 500},
-    {"Lance", 80, 300},
-    {"Ken", 60, 100}
+#include <stdio.h>
+
+struct Player {
+    char name[50];
+    int health;
+    int score;
 };
 
-for (int i = 0; i < 3; i++) {
-    printf("%s: %d HP, %d pts\n", team[i].name, team[i].health, team[i].score);
+int main(void) {
+    struct Player team[3] = {
+        {"Tommy", 100, 500},
+        {"Lance", 80, 300},
+        {"Ken", 60, 100}
+    };
+
+    for (int i = 0; i < 3; i++) {
+        printf("%s: %d HP, %d pts\n", team[i].name, team[i].health, team[i].score);
+    }
+    return 0;
 }
 ```
 Output

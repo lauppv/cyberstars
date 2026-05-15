@@ -16,11 +16,15 @@ Write a method **static void printShape(Shape s)** that uses **String.format** t
 In main, create an array of Shapes and print each one. Then try to **cast** one to Circle and print the radius. Wrap the cast in a **try/catch** for ClassCastException
 
 ```java
-Shape[] shapes = {
-    new Circle(5),
-    new Rectangle(4, 6),
-    new Triangle(3, 8)
-};
+public class Main {
+    public static void main(String[] args) {
+        Shape[] shapes = {
+            new Circle(5),
+            new Rectangle(4, 6),
+            new Triangle(3, 8)
+        };
+    }
+}
 ```
 
 Expected output

@@ -21,20 +21,27 @@ Under the hood, **UP** is **0**, **DOWN** is **1**, **LEFT** is **2**, **RIGHT**
 
 We can choose our own values if we want
 ```c
+#include <stdio.h>
+
 enum HttpStatus {
     OK = 200,
     NOT_FOUND = 404,
     SERVER_ERROR = 500
 };
 
-enum HttpStatus code = NOT_FOUND;
-printf("Status: %d\n", code);   // Status: 404
+int main(void) {
+    enum HttpStatus code = NOT_FOUND;
+    printf("Status: %d\n", code);   // Status: 404
+    return 0;
+}
 ```
 
 ---
 
 Enums work great with **switch**
 ```c
+#include <stdio.h>
+
 enum Color { RED, GREEN, BLUE };
 
 void printColor(enum Color c) {
@@ -44,6 +51,13 @@ void printColor(enum Color c) {
         case BLUE:  printf("Blue\n");  break;
     }
 }
+
+int main(void) {
+    printColor(RED);
+    printColor(GREEN);
+    printColor(BLUE);
+    return 0;
+}
 ```
 
 This is much better than `if (c == 0)` — anyone reading the code knows exactly what RED means
@@ -52,13 +66,19 @@ This is much better than `if (c == 0)` — anyone reading the code knows exactly
 
 A classic use: game states
 ```c
+#include <stdio.h>
+
 enum GameState { MENU, PLAYING, PAUSED, GAME_OVER };
 
-enum GameState state = MENU;
-// player presses start
-state = PLAYING;
-// player presses escape
-state = PAUSED;
+int main(void) {
+    enum GameState state = MENU;
+    // player presses start
+    state = PLAYING;
+    // player presses escape
+    state = PAUSED;
+    printf("%d\n", state);
+    return 0;
+}
 ```
 
 Instead of remembering "was 2 paused or game over?", we just use the name. The code reads like English

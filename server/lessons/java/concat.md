@@ -19,7 +19,7 @@ Hello. My name is Quincy, I am 32 years old, and I am 1.97 tall
 What is happening here? When we put a **String** and another value together with **+**, Java **converts everything to text** and glues them. This is called **string concatenation**
 
 Watch the spaces carefully
-```java
+```text
 "Hello. My name is " + name
 ```
 We have a space **before the closing quote**, otherwise we’d get **Hello. My name isQuincy** all stuck together. This is something almost everyone gets wrong at first. **Always check your spaces**
@@ -28,7 +28,11 @@ We have a space **before the closing quote**, otherwise we’d get **Hello. My n
 
 A small but very important subtlety
 ```java
-System.out.println("Result: " + 2 + 3);
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Result: " + 2 + 3);
+    }
+}
 ```
 What do you think this prints? **Result: 5**?
 
@@ -38,7 +42,11 @@ Why? Java reads from **left to right**. It starts with **"Result: "** (a String)
 
 If we want **5**, we use **parentheses** to force the math first
 ```java
-System.out.println("Result: " + (2 + 3));
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Result: " + (2 + 3));
+    }
+}
 ```
 Output
 ```text

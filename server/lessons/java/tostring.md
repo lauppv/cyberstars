@@ -71,9 +71,11 @@ That `@Override` thing above the method is an **annotation**. It tells Java "I'm
 - It makes your code clearer to anyone reading it
 
 ```java
-@Override
-public String toString() {   // Java checks: does the parent have toString()? Yes. Good.
-    return "something";
+public class Main {
+    @Override
+    public String toString() {   // Java checks: does the parent have toString()? Yes. Good.
+        return "something";
+    }
 }
 ```
 

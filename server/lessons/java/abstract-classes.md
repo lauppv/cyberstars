@@ -25,7 +25,11 @@ Two key things here:
 ---
 
 ```java
-Vehicle v = new Vehicle("test");  // COMPILER ERROR! Can't instantiate abstract class
+public class Main {
+    public static void main(String[] args) {
+        Vehicle v = new Vehicle("test");  // COMPILER ERROR! Can't instantiate abstract class
+    }
+}
 ```
 
 It's like trying to buy a "vehicle" at a dealership. The salesperson would say "which KIND of vehicle?" You need a concrete type

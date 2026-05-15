@@ -29,7 +29,7 @@ Now the program prints nothing, because we **commented out** the **println**. Ve
 ---
 
 For longer comments that span multiple lines, Java also supports **/\* ... \*/**
-```java
+```text
 /*
 This is a
 multi-line
@@ -37,7 +37,7 @@ comment
 */
 ```
 However, in practice, most Java code uses **//** even for several lines in a row
-```java
+```text
 // this is how we will write
 // our comments
 // to give hints

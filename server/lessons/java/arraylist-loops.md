@@ -76,18 +76,22 @@ Quick comparison table
 The for-each loop works with **both** arrays and ArrayLists — Java handles the details
 
 ```java
-// For-each with a regular array
-String[] names = {"Tommy", "Lance"};
-for (String name : names) {
-    System.out.println(name);
-}
+public class Main {
+    public static void main(String[] args) {
+        // For-each with a regular array
+        String[] names = {"Tommy", "Lance"};
+        for (String name : names) {
+            System.out.println(name);
+        }
 
-// For-each with an ArrayList
-ArrayList<String> names2 = new ArrayList<String>();
-names2.add("Tommy");
-names2.add("Lance");
-for (String name : names2) {
-    System.out.println(name);
+        // For-each with an ArrayList
+        ArrayList<String> names2 = new ArrayList<String>();
+        names2.add("Tommy");
+        names2.add("Lance");
+        for (String name : names2) {
+            System.out.println(name);
+        }
+    }
 }
 ```
 

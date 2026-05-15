@@ -39,10 +39,15 @@ The chain runs **top to bottom**. At the **first** condition that is **true**, J
 
 Why not just write a bunch of separate **if**s? Like this
 ```java
-if (seconds == 100) { ... }
-if (seconds == 60) { ... }
-if (seconds == 20) { ... }
-else { ... }
+public class Main {
+    public static void main(String[] args) {
+        int seconds = 60;
+        if (seconds == 100) { System.out.println("100"); }
+        if (seconds == 60) { System.out.println("60"); }
+        if (seconds == 20) { System.out.println("20"); }
+        else { System.out.println("other"); }
+    }
+}
 ```
 The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third if fails (60 != 20), and the **else** kicks in printing **"60 seconds has no effect"**, which is wrong — we already handled 60 above!
 
@@ -52,14 +57,18 @@ The problem: each **if** is independent. The **else** at the end belongs only to
 
 We can also nest **if**s inside one another
 ```java
-int seconds = 5;
-boolean errorDetected = false;
+public class Main {
+    public static void main(String[] args) {
+        int seconds = 5;
+        boolean errorDetected = false;
 
-if (seconds < 10) {
-    if (errorDetected) {
-        System.out.println("Error detected. Canceling the mission");
-    } else {
-        System.out.println("No error detected. Taking off...");
+        if (seconds < 10) {
+            if (errorDetected) {
+                System.out.println("Error detected. Canceling the mission");
+            } else {
+                System.out.println("No error detected. Taking off...");
+            }
+        }
     }
 }
 ```

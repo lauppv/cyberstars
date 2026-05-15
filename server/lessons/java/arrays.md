@@ -33,8 +33,12 @@ Java arrays have a **fixed size**. Once you create them, you can’t add or remo
 
 How many elements does the array have? Use **.length**
 ```java
-String[] names = { "Tommy", "Lance", "Cortez" };
-System.out.println(names.length);   // 3
+public class Main {
+    public static void main(String[] args) {
+        String[] names = { "Tommy", "Lance", "Cortez" };
+        System.out.println(names.length);   // 3
+    }
+}
 ```
 **Notice**: **names.length** has **no parentheses**, unlike **String.length()**. Yes, this is annoyingly inconsistent — arrays use a **field** called **length**, while Strings have a **method** called **length()**. Welcome to Java :)
 
@@ -42,13 +46,17 @@ System.out.println(names.length);   // 3
 
 We can also create an array with a fixed size, then fill it later
 ```java
-int[] scores = new int[5];   // an array of 5 ints, all zero by default
-scores[0] = 80;
-scores[1] = 95;
-scores[2] = 60;
-scores[3] = 72;
-scores[4] = 88;
-System.out.println(scores[2]);   // 60
+public class Main {
+    public static void main(String[] args) {
+        int[] scores = new int[5];   // an array of 5 ints, all zero by default
+        scores[0] = 80;
+        scores[1] = 95;
+        scores[2] = 60;
+        scores[3] = 72;
+        scores[4] = 88;
+        System.out.println(scores[2]);   // 60
+    }
+}
 ```
 **new int[5]** creates an array with **5** slots. By default they are filled with **0** for numbers, **null** for objects (like Strings), and **false** for booleans
 
@@ -56,17 +64,25 @@ System.out.println(scores[2]);   // 60
 
 We can **change** a value at any index
 ```java
-String[] names = { "Tommy", "Lance", "Cortez" };
-names[1] = "Lance Vance Dance";
-System.out.println(names[1]);   // Lance Vance Dance
+public class Main {
+    public static void main(String[] args) {
+        String[] names = { "Tommy", "Lance", "Cortez" };
+        names[1] = "Lance Vance Dance";
+        System.out.println(names[1]);   // Lance Vance Dance
+    }
+}
 ```
 
 ---
 
 What happens if we ask for an index that doesn’t exist?
 ```java
-String[] names = { "Tommy", "Lance", "Cortez" };
-System.out.println(names[10]);
+public class Main {
+    public static void main(String[] args) {
+        String[] names = { "Tommy", "Lance", "Cortez" };
+        System.out.println(names[10]);
+    }
+}
 ```
 Run it. Java throws an **ArrayIndexOutOfBoundsException** and crashes. Read the error :)
 

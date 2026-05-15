@@ -55,14 +55,19 @@ int main(void) {
 
 We can also use **fscanf** for structured data
 ```c
-FILE *f = fopen("scores.txt", "r");
-char name[50];
-int score;
+#include <stdio.h>
 
-while (fscanf(f, "%s %d", name, &score) == 2) {
-    printf("%s got %d points\n", name, score);
+int main(void) {
+    FILE *f = fopen("scores.txt", "r");
+    char name[50];
+    int score;
+
+    while (fscanf(f, "%s %d", name, &score) == 2) {
+        printf("%s got %d points\n", name, score);
+    }
+    fclose(f);
+    return 0;
 }
-fclose(f);
 ```
 
 **fscanf** returns the number of items it successfully read. When we expect 2 items (name and score), we check **== 2**

@@ -25,9 +25,14 @@ Two new format specifiers
 
 By default **%f** prints **6 decimals**. If we want fewer, we can tell **printf** how many digits we want
 ```c
-double pi = 3.14159;
-printf("%.2f\n", pi);   // 2 decimals
-printf("%.4f\n", pi);   // 4 decimals
+#include <stdio.h>
+
+int main(void) {
+    double pi = 3.14159;
+    printf("%.2f\n", pi);   // 2 decimals
+    printf("%.4f\n", pi);   // 4 decimals
+    return 0;
+}
 ```
 Output
 ```text
@@ -50,10 +55,15 @@ Notice the **f** at the end of **3.14f** in the float example. This tells C "tre
 
 Now, the famous trap from the previous lesson, fixed
 ```c
-int a = 7;
-int b = 2;
-double result = a / b;
-printf("%f\n", result);
+#include <stdio.h>
+
+int main(void) {
+    int a = 7;
+    int b = 2;
+    double result = a / b;
+    printf("%f\n", result);
+    return 0;
+}
 ```
 You’d expect **3.5**. But the output is **3.000000**. Why?
 
@@ -61,15 +71,25 @@ Because **a / b** is computed **first**, with both **a** and **b** being ints. T
 
 To get the real answer, **at least one** operand must be a decimal
 ```c
-double a = 7;
-int b = 2;
-printf("%f\n", a / b);   // 3.500000
+#include <stdio.h>
+
+int main(void) {
+    double a = 7;
+    int b = 2;
+    printf("%f\n", a / b);   // 3.500000
+    return 0;
+}
 ```
 Or we can use a **cast** to force one to be a double
 ```c
-int a = 7;
-int b = 2;
-printf("%f\n", (double) a / b);   // 3.500000
+#include <stdio.h>
+
+int main(void) {
+    int a = 7;
+    int b = 2;
+    printf("%f\n", (double) a / b);   // 3.500000
+    return 0;
+}
 ```
 **(double)** in front of **a** says "treat this as a double for this operation". This is called a **cast**, and it’s a tool you’ll use a lot in C
 

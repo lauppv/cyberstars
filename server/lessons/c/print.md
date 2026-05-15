@@ -38,8 +38,13 @@ Notice that strange **\n** at the end of the string. What is it?
 **\n** means **new line**. Unlike Python’s **print()** and Java’s **System.out.println**, C’s **printf** does **NOT** automatically go to a new line. If you want a new line, you have to ask for it with **\n**
 
 ```c
-printf("Hello");
-printf("World");
+#include <stdio.h>
+
+int main(void) {
+    printf("Hello");
+    printf("World");
+    return 0;
+}
 ```
 Output
 ```text
@@ -47,8 +52,13 @@ HelloWorld
 ```
 Stuck together. With **\n**
 ```c
-printf("Hello\n");
-printf("World\n");
+#include <stdio.h>
+
+int main(void) {
+    printf("Hello\n");
+    printf("World\n");
+    return 0;
+}
 ```
 Output
 ```text

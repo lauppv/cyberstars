@@ -59,6 +59,8 @@ The OS switches between processes thousands of times per second. This is called 
 
 Another important concept: **exit codes**. When **main** returns a number, that's the **exit code** of the process
 ```c
+#include <stdio.h>
+
 int main(void) {
     return 0;   // 0 means success
 }

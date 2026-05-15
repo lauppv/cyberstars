@@ -55,11 +55,13 @@ The inventory starts empty. `addItem` just adds an item to the list. Think of it
 For `removeItem`, we'll search by name and remove the first match. We need a regular for loop (not for-each) because we need the index to remove
 
 ```java
-void removeItem(String name) {
-    for (int i = 0; i < items.size(); i++) {
-        if (items.get(i).name.equals(name)) {
-            items.remove(i);
-            return;
+public class Main {
+    void removeItem(String name) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).name.equals(name)) {
+                items.remove(i);
+                return;
+            }
         }
     }
 }
@@ -74,9 +76,11 @@ We loop through items, check if the name matches, remove it, and **return** imme
 Let's print each item in a nice format. This is where String.format comes in handy
 
 ```java
-void printAll() {
-    for (Item item : items) {
-        System.out.println(item.name + " x" + item.quantity + " @ $" + String.format("%.2f", item.price));
+public class Main {
+    void printAll() {
+        for (Item item : items) {
+            System.out.println(item.name + " x" + item.quantity + " @ $" + String.format("%.2f", item.price));
+        }
     }
 }
 ```
@@ -93,12 +97,14 @@ Health Pack x3 @ $25.50
 The total value is the sum of `quantity * price` for every item. Classic loop-and-accumulate pattern
 
 ```java
-double totalValue() {
-    double total = 0;
-    for (Item item : items) {
-        total += item.quantity * item.price;
+public class Main {
+    double totalValue() {
+        double total = 0;
+        for (Item item : items) {
+            total += item.quantity * item.price;
+        }
+        return total;
     }
-    return total;
 }
 ```
 

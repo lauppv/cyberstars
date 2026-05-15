@@ -22,8 +22,12 @@ CyberQuest - Max HP: 100
 Once a `final` variable is set, it's done. Try to change it and Java will refuse to compile:
 
 ```java
-final int MAX_HEALTH = 100;
-MAX_HEALTH = 200;  // ERROR: cannot assign a value to final variable
+public class Main {
+    public static void main(String[] args) {
+        final int MAX_HEALTH = 100;
+        MAX_HEALTH = 200;  // ERROR: cannot assign a value to final variable
+    }
+}
 ```
 
 ---
@@ -33,10 +37,14 @@ MAX_HEALTH = 200;  // ERROR: cannot assign a value to final variable
 By convention, `final` constants use **SCREAMING_SNAKE_CASE** — all uppercase letters with underscores between words:
 
 ```java
-final int MAX_SPEED = 250;
-final String PLAYER_NAME = "Tommy Vercetti";
-final double GRAVITY = 9.81;
-final int LIVES_AT_START = 3;
+public class Main {
+    public static void main(String[] args) {
+        final int MAX_SPEED = 250;
+        final String PLAYER_NAME = "Tommy Vercetti";
+        final double GRAVITY = 9.81;
+        final int LIVES_AT_START = 3;
+    }
+}
 ```
 
 This makes constants instantly recognizable in your code. When you see `MAX_SPEED`, you know it's a constant without even looking at the declaration

@@ -21,9 +21,13 @@ That's a 5x4 box. The first and last rows are all `*`. The middle rows have `*`,
 
 Call these in main:
 ```java
-System.out.println(repeat("ab", 3));
-System.out.println(repeat('*', 5));
-printBox(6, 4);
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(repeat("ab", 3));
+        System.out.println(repeat('*', 5));
+        printBox(6, 4);
+    }
+}
 ```
 
 Expected output

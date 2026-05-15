@@ -23,11 +23,17 @@ Now we write **Player** instead of **struct Player**. Much cleaner. This is how 
 The pattern is **typedef existing_type new_name**
 
 ```c
+#include <stdio.h>
+
 typedef int Score;
 typedef char* String;
 
-Score highScore = 9999;
-String name = "Vercetti";
+int main(void) {
+    Score highScore = 9999;
+    String name = "Vercetti";
+    printf("%d %s\n", highScore, name);
+    return 0;
+}
 ```
 
 We can give meaningful names to types. **Score** is still an int underneath, but the name tells you what it represents
@@ -37,6 +43,8 @@ We can give meaningful names to types. **Score** is still an int underneath, but
 **typedef** really shines with function pointers (if you're curious) and with removing the **struct** keyword. Here's the most common pattern you'll see in real code
 
 ```c
+#include <stdio.h>
+
 typedef struct {
     double x;
     double y;
@@ -50,6 +58,12 @@ typedef struct {
 void printCircle(Circle *c) {
     printf("Center: (%.1f, %.1f), Radius: %.1f\n",
            c->center.x, c->center.y, c->radius);
+}
+
+int main(void) {
+    Circle c = {{2.0, 3.0}, 5.0};
+    printCircle(&c);
+    return 0;
 }
 ```
 

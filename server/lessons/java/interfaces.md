@@ -118,9 +118,13 @@ Movie: Inception directed by Christopher Nolan
 And just like with polymorphism, you can use the interface type for variables
 
 ```java
-Printable[] items = { new Book("1984", "Orwell"), new Movie("Inception", "Nolan") };
-for (Printable p : items) {
-    p.printInfo();
+public class Main {
+    public static void main(String[] args) {
+        Printable[] items = { new Book("1984", "Orwell"), new Movie("Inception", "Nolan") };
+        for (Printable p : items) {
+            p.printInfo();
+        }
+    }
 }
 ```
 

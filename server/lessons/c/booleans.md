@@ -1,11 +1,16 @@
 In the **if-else** lesson we saw a small surprise: **C doesn’t have a native boolean type**. It uses **integers**, where **0** means **false** and **anything else** means **true**
 
 ```c
-int isUserOnline = 1;   // "true"
-int isHidden = 0;       // "false"
+#include <stdio.h>
 
-if (isUserOnline) {
-    printf("online\n");
+int main(void) {
+    int isUserOnline = 1;   // "true"
+    int isHidden = 0;       // "false"
+
+    if (isUserOnline) {
+        printf("online\n");
+    }
+    return 0;
 }
 ```
 This works, but reading **int isUserOnline = 1** is awkward. It looks like a counter, not a true/false value
@@ -64,13 +69,19 @@ int main(void) {
 
 **||** is more relaxed. Just one of the conditions being true is enough
 ```c
-bool isVIP = false;
-bool hasInvitation = true;
+#include <stdio.h>
+#include <stdbool.h>
 
-if (isVIP || hasInvitation) {
-    printf("Welcome to the club\n");
-} else {
-    printf("Access denied\n");
+int main(void) {
+    bool isVIP = false;
+    bool hasInvitation = true;
+
+    if (isVIP || hasInvitation) {
+        printf("Welcome to the club\n");
+    } else {
+        printf("Access denied\n");
+    }
+    return 0;
 }
 ```
 
@@ -78,9 +89,15 @@ if (isVIP || hasInvitation) {
 
 **!** flips a boolean. **!true** becomes **false**, and vice versa
 ```c
-bool isLoggedIn = false;
-if (!isLoggedIn) {
-    printf("Please log in first\n");
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(void) {
+    bool isLoggedIn = false;
+    if (!isLoggedIn) {
+        printf("Please log in first\n");
+    }
+    return 0;
 }
 ```
 
@@ -90,10 +107,16 @@ You are writing the access system for **CyberStars HQ**. A person can enter if t
 
 You have these variables on the right
 ```c
-bool isEmployee
-bool isWorkingDay
-bool isGuest
-bool hasInvitation
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(void) {
+    bool isEmployee = true;
+    bool isWorkingDay = true;
+    bool isGuest = false;
+    bool hasInvitation = false;
+    return 0;
+}
 ```
 
 Display **Access granted** if the person can enter, **Access denied** otherwise

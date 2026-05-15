@@ -29,15 +29,19 @@ We told the loop to go up to **99**, but as soon as **i** became **5**, **break*
 
 A real example: searching a name in an array
 ```java
-String[] names = { "Tommy", "Lance", "Cortez", "Phil", "Sonny" };
-String target = "Cortez";
+public class Main {
+    public static void main(String[] args) {
+        String[] names = { "Tommy", "Lance", "Cortez", "Phil", "Sonny" };
+        String target = "Cortez";
 
-for (String name : names) {
-    if (name.equals(target)) {
-        System.out.println("Found " + target + "!");
-        break;
+        for (String name : names) {
+            if (name.equals(target)) {
+                System.out.println("Found " + target + "!");
+                break;
+            }
+            System.out.println("Checking " + name + "...");
+        }
     }
-    System.out.println("Checking " + name + "...");
 }
 ```
 Output
@@ -52,11 +56,15 @@ The loop didn’t check **Phil** and **Sonny** — we already found what we want
 
 **continue** is different. It doesn’t stop the loop — it just **skips the rest** of the current iteration and **jumps to the next** one
 ```java
-for (int i = 0; i < 10; i++) {
-    if (i == 5) {
-        continue;
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            if (i == 5) {
+                continue;
+            }
+            System.out.println(i);
+        }
     }
-    System.out.println(i);
 }
 ```
 Output
@@ -75,11 +83,15 @@ Output
 
 A real example: print only **even** numbers
 ```java
-for (int i = 0; i <= 10; i++) {
-    if (i % 2 != 0) {
-        continue;
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 0; i <= 10; i++) {
+            if (i % 2 != 0) {
+                continue;
+            }
+            System.out.println(i);
+        }
     }
-    System.out.println(i);
 }
 ```
 Output: **0 2 4 6 8 10**
@@ -88,13 +100,17 @@ Output: **0 2 4 6 8 10**
 
 Both keywords work the same way in **while**, not just **for**
 ```java
-int i = 0;
-while (true) {
-    if (i >= 5) {
-        break;
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        while (true) {
+            if (i >= 5) {
+                break;
+            }
+            System.out.println(i);
+            i++;
+        }
     }
-    System.out.println(i);
-    i++;
 }
 ```
 **while (true)** would normally be infinite, but **break** lets us escape

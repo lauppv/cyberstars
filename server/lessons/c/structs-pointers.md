@@ -28,8 +28,22 @@ We pass **&t** (the address of the struct), and the function receives a **struct
 Writing **(\*p).health** everywhere is ugly. C gives us a shortcut: the **arrow operator ->**
 
 ```c
+#include <stdio.h>
+
+struct Player {
+    char name[50];
+    int health;
+    int score;
+};
+
 void printPlayer(struct Player *p) {
     printf("%s: %d HP, %d pts\n", p->name, p->health, p->score);
+}
+
+int main(void) {
+    struct Player t = {"Tommy", 100, 500};
+    printPlayer(&t);
+    return 0;
 }
 ```
 
@@ -39,6 +53,14 @@ void printPlayer(struct Player *p) {
 
 The real power: functions that **modify** a struct through a pointer
 ```c
+#include <stdio.h>
+
+struct Player {
+    char name[50];
+    int health;
+    int score;
+};
+
 void takeDamage(struct Player *p, int dmg) {
     p->health -= dmg;
     if (p->health < 0) {

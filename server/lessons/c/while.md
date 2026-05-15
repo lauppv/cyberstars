@@ -16,8 +16,15 @@ Output: **0** through **9**, one per line. Why no **10**? Because **10 < 10** is
 
 If we wanted **10** included
 ```c
-while (i <= 10) {
-    ...
+#include <stdio.h>
+
+int main(void) {
+    int i = 0;
+    while (i <= 10) {
+        printf("%d\n", i);
+        i++;
+    }
+    return 0;
 }
 ```
 Now **10 <= 10** is **true**, and we enter one more time
@@ -28,10 +35,15 @@ Now **10 <= 10** is **true**, and we enter one more time
 
 **Be very careful**. If we forget to update **i** inside the loop, we have an **infinite loop**
 ```c
-int i = 0;
-while (i <= 100) {
-    printf("%d\n", i);
-    // forgot i++
+#include <stdio.h>
+
+int main(void) {
+    int i = 0;
+    while (i <= 100) {
+        printf("%d\n", i);
+        // forgot i++
+    }
+    return 0;
 }
 ```
 **i** stays **0**, the condition is always **true**, the program prints **0** non-stop. The platform stops it after 5 seconds. In real life, an infinite loop can freeze your whole computer

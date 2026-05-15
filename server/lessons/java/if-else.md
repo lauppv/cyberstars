@@ -33,15 +33,24 @@ The comparison operators are exactly the ones you’d expect
 
 **Be careful** about the difference between **=** and **==**. **=** assigns a value, **==** compares
 ```java
-int x = 4;
-if (x = 4) {       // ERROR
-    System.out.println("Boo");
+public class Main {
+    public static void main(String[] args) {
+        int x = 4;
+        if (x = 4) {       // ERROR
+            System.out.println("Boo");
+        }
+    }
 }
 ```
 This won’t compile. Java won’t even let you make this mistake (unlike some other languages). The correct version is
 ```java
-if (x == 4) {
-    System.out.println("Boo");
+public class Main {
+    public static void main(String[] args) {
+        int x = 4;
+        if (x == 4) {
+            System.out.println("Boo");
+        }
+    }
 }
 ```
 
@@ -49,9 +58,13 @@ if (x == 4) {
 
 We don’t always need an **else**. Sometimes we just want to do something **if** a condition is true, and otherwise do nothing
 ```java
-boolean isUserOnline = true;
-if (isUserOnline) {
-    System.out.println("Welcome back");
+public class Main {
+    public static void main(String[] args) {
+        boolean isUserOnline = true;
+        if (isUserOnline) {
+            System.out.println("Welcome back");
+        }
+    }
 }
 ```
 Notice we wrote **if (isUserOnline)** without **== true**. Both work, but the shorter form is what Java programmers typically write

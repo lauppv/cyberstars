@@ -71,9 +71,11 @@ Three methods, all named **info**, but Java knows which one to call based on wha
 What does **NOT** count as overloading? Changing only the **return type**
 
 ```java
-// This WON'T compile — same parameters, different return type
-public static int calculate(int a) { return a * 2; }
-public static double calculate(int a) { return a * 2.0; }
+public class Main {
+    // This WON'T compile — same parameters, different return type
+    public static int calculate(int a) { return a * 2; }
+    public static double calculate(int a) { return a * 2.0; }
+}
 ```
 
 Java says: "If someone calls **calculate(5)**, which one do I pick?" It can't tell just from the return type, so this is **not allowed**
@@ -83,10 +85,14 @@ Java says: "If someone calls **calculate(5)**, which one do I pick?" It can't te
 Overloading is super common in Java's built-in libraries. You've already used it without knowing — **System.out.println** is overloaded! It can take a String, an int, a double, a boolean... all different versions of the same method
 
 ```java
-System.out.println("hello");   // println(String)
-System.out.println(42);        // println(int)
-System.out.println(3.14);      // println(double)
-System.out.println(true);      // println(boolean)
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("hello");   // println(String)
+        System.out.println(42);        // println(int)
+        System.out.println(3.14);      // println(double)
+        System.out.println(true);      // println(boolean)
+    }
+}
 ```
 
 ---
@@ -104,9 +110,13 @@ Create three overloaded methods called **describe**
 Then call all three from main
 
 ```java
-describe("Sword");
-describe("Shield", 5);
-describe("Potion", 3, 9.99);
+public class Main {
+    public static void main(String[] args) {
+        describe("Sword");
+        describe("Shield", 5);
+        describe("Potion", 3, 9.99);
+    }
+}
 ```
 
 Expected output

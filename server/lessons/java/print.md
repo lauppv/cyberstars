@@ -18,7 +18,11 @@ What is all that boilerplate around our **System.out.println**? Don’t panic. R
 
 The line that does the work is
 ```java
-System.out.println("hey, I like pizza");
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("hey, I like pizza");
+    }
+}
 ```
 **System.out.println** is Java’s way of saying **print**. The **ln** at the end means **line**, so it prints and goes to a new line, just like **print()** in Python
 

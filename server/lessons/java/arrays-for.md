@@ -1,9 +1,13 @@
 We have an array of names. We want to greet each one. We **could** do
 ```java
-String[] names = { "Tommy", "Lance", "Cortez" };
-System.out.println("Hello, " + names[0] + "!");
-System.out.println("Hello, " + names[1] + "!");
-System.out.println("Hello, " + names[2] + "!");
+public class Main {
+    public static void main(String[] args) {
+        String[] names = { "Tommy", "Lance", "Cortez" };
+        System.out.println("Hello, " + names[0] + "!");
+        System.out.println("Hello, " + names[1] + "!");
+        System.out.println("Hello, " + names[2] + "!");
+    }
+}
 ```
 Repetitive. **Forbidden**, as we said in earlier lessons :)
 
@@ -26,10 +30,14 @@ Notice we used **i < names.length**, **not** **i <= names.length**. Why? Because
 
 Java has a shorter form when we don’t need the index — the **enhanced for loop** (also called **for-each**)
 ```java
-String[] names = { "Tommy", "Lance", "Cortez" };
+public class Main {
+    public static void main(String[] args) {
+        String[] names = { "Tommy", "Lance", "Cortez" };
 
-for (String name : names) {
-    System.out.println("Hello, " + name + "!");
+        for (String name : names) {
+            System.out.println("Hello, " + name + "!");
+        }
+    }
 }
 ```
 Read it as: "for each **name** in **names**, do this". Cleaner when we just want the value
@@ -46,12 +54,16 @@ Both are common — Java code uses both depending on the situation
 
 A classic pattern: **summing** numbers
 ```java
-int[] prices = { 10, 20, 30, 40 };
-int total = 0;
-for (int price : prices) {
-    total = total + price;
+public class Main {
+    public static void main(String[] args) {
+        int[] prices = { 10, 20, 30, 40 };
+        int total = 0;
+        for (int price : prices) {
+            total = total + price;
+        }
+        System.out.println(total);
+    }
 }
-System.out.println(total);
 ```
 Output **100**. Start with **total = 0**, walk through every price, add it to total. You will write this kind of loop **a lot** in your career. Read it line by line until it’s second nature :)
 
@@ -77,7 +89,7 @@ Expected output
 ```
 
 **Tip**: for the average, **be careful with integer division** :) If you divide **total / scores.length** as ints, you’ll get **79**, not **79.0**. Cast one of them to a **double**, like this
-```java
+```text
 double average = (double) total / scores.length;
 ```
 

@@ -26,8 +26,12 @@ By convention, enum values are written in **ALL_CAPS**. You access them with the
 Python doesn't have enums built into the language the same way (there's an `enum` module, but most beginners never use it). In Python, you'd probably just use strings or constants. Java's approach is **safer** because the compiler checks that you only use valid values
 
 ```java
-Weather w = Weather.RAINY;    // works
-Weather w = Weather.SNOWY;    // ERROR — SNOWY doesn't exist in Weather
+public class Main {
+    public static void main(String[] args) {
+        Weather w = Weather.RAINY;    // works
+        Weather w = Weather.SNOWY;    // ERROR — SNOWY doesn't exist in Weather
+    }
+}
 ```
 
 The compiler catches your mistake before the program even runs. This is one of those Java superpowers that saves you from sneaky bugs

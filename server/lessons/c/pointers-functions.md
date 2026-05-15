@@ -28,6 +28,8 @@ Nothing happened! The function swapped its **local copies**, but the original **
 
 The fix: **pass pointers** instead of values
 ```c
+#include <stdio.h>
+
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
@@ -53,6 +55,8 @@ Now it works. We passed the **addresses** of x and y. The function followed thos
 This pattern is everywhere in C. Want a function to modify a variable? Pass its address
 
 ```c
+#include <stdio.h>
+
 void doubleIt(int *n) {
     *n = *n * 2;
 }
@@ -67,6 +71,8 @@ int main(void) {
 
 Another common use: functions that need to **return multiple values**. C functions can only return one thing, but with pointers we can "return" as many as we want
 ```c
+#include <stdio.h>
+
 void minMax(int arr[], int n, int *min, int *max) {
     *min = arr[0];
     *max = arr[0];

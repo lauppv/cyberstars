@@ -27,27 +27,39 @@ The interesting one is **a / b = 3**, not **3.4**. Why? Because **a** and **b** 
 
 If we want the decimal result, we need at least one **double**
 ```java
-double a = 17;
-int b = 5;
-System.out.println(a / b);   // 3.4
+public class Main {
+    public static void main(String[] args) {
+        double a = 17;
+        int b = 5;
+        System.out.println(a / b);   // 3.4
+    }
+}
 ```
 
 ---
 
 The new operator is **%**, called **modulo** (or "remainder"). It gives the **remainder** of the division
 ```java
-System.out.println(17 % 5);   // 2
-System.out.println(20 % 4);   // 0
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(17 % 5);   // 2
+        System.out.println(20 % 4);   // 0
+    }
+}
 ```
 **17 / 5 = 3** with remainder **2**, so **17 % 5 = 2**. **20 / 4 = 5** exactly, so the remainder is **0**
 
 **%** is incredibly useful. The classic example: checking if a number is **even**
 ```java
-int n = 10;
-if (n % 2 == 0) {
-    System.out.println("even");
-} else {
-    System.out.println("odd");
+public class Main {
+    public static void main(String[] args) {
+        int n = 10;
+        if (n % 2 == 0) {
+            System.out.println("even");
+        } else {
+            System.out.println("odd");
+        }
+    }
 }
 ```
 
@@ -68,7 +80,11 @@ You’ll see **i++** in **for** loops literally everywhere
 
 What about **powers**? Unlike Python’s **\*\***, Java doesn’t have a power operator. We use **Math.pow**
 ```java
-System.out.println(Math.pow(2, 3));   // 8.0
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.pow(2, 3));   // 8.0
+    }
+}
 ```
 Output is **8.0** (a double). **Math.pow** always returns a double, so even **2 to the power of 3** comes out as **8.0**, not **8**
 
@@ -76,8 +92,12 @@ Output is **8.0** (a double). **Math.pow** always returns a double, so even **2 
 
 The **order of operations** is the same as in math. Multiplication and division before addition and subtraction
 ```java
-System.out.println(2 + 3 * 4);     // 14, not 20
-System.out.println((2 + 3) * 4);   // 20
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(2 + 3 * 4);     // 14, not 20
+        System.out.println((2 + 3) * 4);   // 20
+    }
+}
 ```
 When in doubt, **add parentheses**. They make the code easier to read anyway :)
 

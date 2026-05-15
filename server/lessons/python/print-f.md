@@ -19,7 +19,10 @@ print("Hello. My name is ", name, ", I am ", age, " years old, and I am ", heigh
 The problem is that with this approach you have to be careful with spaces, commas, and quotes… **fun fact**: I messed up twice when I wrote this **XD**
 
 We believe the best approach is the first one
-```text
+```python
+name = "Cortez"
+age = 57
+height = 1.67
 print(f"Hello. My name is {name}, I am {age} years old, and I am {height} tall")
 ```
 

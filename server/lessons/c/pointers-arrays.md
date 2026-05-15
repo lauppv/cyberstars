@@ -21,9 +21,14 @@ int main(void) {
 This means **arr[i]** is just syntactic sugar for **\*(arr + i)**. They are literally the same thing
 
 ```c
-int nums[] = {10, 20, 30};
-printf("%d\n", nums[1]);       // 20
-printf("%d\n", *(nums + 1));   // 20 — same thing!
+#include <stdio.h>
+
+int main(void) {
+    int nums[] = {10, 20, 30};
+    printf("%d\n", nums[1]);       // 20
+    printf("%d\n", *(nums + 1));   // 20 — same thing!
+    return 0;
+}
 ```
 
 This is why array indices start at **0** in C. The first element is at offset **0** from the start: **\*(arr + 0)** is **\*arr** is **arr[0]**
@@ -33,13 +38,18 @@ This is why array indices start at **0** in C. The first element is at offset **
 We can also **walk through** an array with a pointer
 
 ```c
-int nums[] = {10, 20, 30, 40, 50};
-int n = 5;
+#include <stdio.h>
 
-int *p = nums;
-for (int i = 0; i < n; i++) {
-    printf("%d\n", *p);
-    p++;   // move to next element
+int main(void) {
+    int nums[] = {10, 20, 30, 40, 50};
+    int n = 5;
+
+    int *p = nums;
+    for (int i = 0; i < n; i++) {
+        printf("%d\n", *p);
+        p++;   // move to next element
+    }
+    return 0;
 }
 ```
 
@@ -50,13 +60,13 @@ for (int i = 0; i < n; i++) {
 Remember when we said that passing an array to a function makes **sizeof** stop working? Now you understand **why**. When you write
 
 ```c
-void print(int arr[]) { ... }
+void print(int arr[]) { }
 ```
 
 the compiler actually sees
 
 ```c
-void print(int *arr) { ... }
+void print(int *arr) { }
 ```
 
 The array **decays** into a pointer. The function only receives the address of the first element — it has **no idea** how big the array is. That's why we always pass the **size** as a separate parameter. Mystery solved :)

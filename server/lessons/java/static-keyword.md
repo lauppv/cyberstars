@@ -48,7 +48,11 @@ Meanwhile, `name` is an instance field — each visitor has their own
 Static methods belong to the class too. You've been using them all along:
 
 ```java
-int bigger = Math.max(10, 20);   // Math is the class, max is a static method
+public class Main {
+    public static void main(String[] args) {
+        int bigger = Math.max(10, 20);   // Math is the class, max is a static method
+    }
+}
 ```
 
 You don't create a `Math` object to use `max()`. It's a utility that doesn't need any object state

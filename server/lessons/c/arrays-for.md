@@ -1,11 +1,16 @@
 We have an array of scores. We want to do something with each one. We **could** do
 ```c
-int scores[5] = { 80, 95, 60, 72, 88 };
-printf("%d\n", scores[0]);
-printf("%d\n", scores[1]);
-printf("%d\n", scores[2]);
-printf("%d\n", scores[3]);
-printf("%d\n", scores[4]);
+#include <stdio.h>
+
+int main(void) {
+    int scores[5] = { 80, 95, 60, 72, 88 };
+    printf("%d\n", scores[0]);
+    printf("%d\n", scores[1]);
+    printf("%d\n", scores[2]);
+    printf("%d\n", scores[3]);
+    printf("%d\n", scores[4]);
+    return 0;
+}
 ```
 Repetitive. **Forbidden**, as we said in earlier lessons :)
 
@@ -30,11 +35,16 @@ We used **i < 5**, **not** **i <= 5**. Why? Indices go from **0** to **size - 1*
 
 Hardcoding **5** in the loop is fragile. If we add or remove an element, we have to remember to update the loop. Use the **sizeof** trick instead
 ```c
-int scores[] = { 80, 95, 60, 72, 88 };
-int n = sizeof(scores) / sizeof(scores[0]);
+#include <stdio.h>
 
-for (int i = 0; i < n; i++) {
-    printf("%d\n", scores[i]);
+int main(void) {
+    int scores[] = { 80, 95, 60, 72, 88 };
+    int n = sizeof(scores) / sizeof(scores[0]);
+
+    for (int i = 0; i < n; i++) {
+        printf("%d\n", scores[i]);
+    }
+    return 0;
 }
 ```
 Now the loop works no matter how many elements the array has. Add or remove a score, run again, it just works
@@ -43,14 +53,19 @@ Now the loop works no matter how many elements the array has. Add or remove a sc
 
 A classic pattern: **summing** numbers
 ```c
-int prices[] = { 10, 20, 30, 40 };
-int n = sizeof(prices) / sizeof(prices[0]);
+#include <stdio.h>
 
-int total = 0;
-for (int i = 0; i < n; i++) {
-    total = total + prices[i];
+int main(void) {
+    int prices[] = { 10, 20, 30, 40 };
+    int n = sizeof(prices) / sizeof(prices[0]);
+
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total = total + prices[i];
+    }
+    printf("%d\n", total);   // 100
+    return 0;
 }
-printf("%d\n", total);   // 100
 ```
 Start with **total = 0**, walk through every element, add it. You will write this kind of loop many times in your career. Read it line by line and make sure you understand **why** it works :)
 
@@ -58,6 +73,8 @@ Start with **total = 0**, walk through every element, add it. You will write thi
 
 **A note about functions and arrays**: as we mentioned in the previous lesson, when you pass an array to a function, the **sizeof** trick **stops working** (the array becomes a pointer). The standard fix: pass the size as a separate parameter
 ```c
+#include <stdio.h>
+
 void printAll(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d\n", arr[i]);
@@ -96,8 +113,15 @@ Expected output
 
 For the average, **be careful with integer division** :) Cast one of the operands to **double**, like
 ```c
-double average = (double) total / n;
-printf("%f\n", average);
+#include <stdio.h>
+
+int main(void) {
+    int total = 395;
+    int n = 5;
+    double average = (double) total / n;
+    printf("%f\n", average);
+    return 0;
+}
 ```
 
 The **(double)** is a **cast** — we tell C to treat **total** as a double for this operation. The result is **79.0**, which **printf** formats as **79.000000** (6 default decimals). If you want fewer, use **%.1f** or **%.2f**, but for this exercise leave it at the default :)

@@ -162,9 +162,11 @@ This keeps your data safe. Nobody can set `money` to -999 because they have to g
 One more thing: local variables (inside methods) don't use access modifiers at all. They're automatically invisible outside their method — no keyword needed:
 
 ```java
-void doStuff() {
-    int temp = 42;          // no public/private — it's local
-    // temp only exists inside doStuff()
+public class Main {
+    void doStuff() {
+        int temp = 42;          // no public/private — it's local
+        // temp only exists inside doStuff()
+    }
 }
 ```
 

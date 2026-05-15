@@ -36,6 +36,8 @@ The format specifier **%s** in **printf** is for strings, just like **%d** is fo
 
 A function can also **return** a value. Instead of **void**, we put the return type
 ```c
+#include <stdio.h>
+
 int add(int a, int b) {
     return a + b;
 }
@@ -52,7 +54,16 @@ The function **add** takes two ints and returns an int. The **return** keyword s
 
 We can also use the result directly in another expression
 ```c
-printf("%d\n", add(2, 3) * 10);   // 50
+#include <stdio.h>
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main(void) {
+    printf("%d\n", add(2, 3) * 10);   // 50
+    return 0;
+}
 ```
 
 ---
@@ -60,6 +71,8 @@ printf("%d\n", add(2, 3) * 10);   // 50
 **Important detail in C**: a function must be **declared before it is used**. That’s why **add** is written **above** **main**. If we put it below, the compiler reads **main** first, sees **add** being called, doesn’t know what **add** is, and complains
 
 ```c
+#include <stdio.h>
+
 int main(void) {
     int x = add(2, 3);   // ERROR: add is not yet known
     return 0;
@@ -95,6 +108,8 @@ The function should print the result of **number1 operator number2**
 
 Example
 ```c
+#include <stdio.h>
+
 void calculator(int number1, int number2, char operator) {
     if (operator == '+') {
         int result = number1 + number2;
@@ -102,6 +117,11 @@ void calculator(int number1, int number2, char operator) {
     } else {
         printf("Invalid operator\n");
     }
+}
+
+int main(void) {
+    calculator(14, 12, '+');
+    return 0;
 }
 ```
 

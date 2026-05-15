@@ -39,11 +39,17 @@ Think of it like cell division in biology. One cell splits into two identical ce
 The "Before fork" message prints **once** (before the split). The "Done" message prints **twice** — once from the parent and once from the child. This is the mind-bending part: after fork, both processes continue from the **same point** in the code
 
 ```c
-printf("Before fork\n");     // prints 1 time
+#include <stdio.h>
+#include <unistd.h>
 
-fork();
+int main(void) {
+    printf("Before fork\n");     // prints 1 time
 
-printf("After fork\n");      // prints 2 times!
+    fork();
+
+    printf("After fork\n");      // prints 2 times!
+    return 0;
+}
 ```
 
 If you fork again inside one of those processes, you get 4 processes. Fork is **exponential**. Be careful :)

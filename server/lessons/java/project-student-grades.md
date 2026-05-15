@@ -54,8 +54,10 @@ We create an empty HashMap in the constructor. The student starts with no grades
 **Step 2: Adding grades**
 
 ```java
-void addGrade(String subject, int grade) {
-    grades.put(subject, grade);
+public class Main {
+    void addGrade(String subject, int grade) {
+        grades.put(subject, grade);
+    }
 }
 ```
 
@@ -68,12 +70,14 @@ Dead simple. `grades.put("Math", 95)` stores the grade 95 for Math. If the stude
 To get the average, we need to sum all the grades and divide by how many there are. We loop through the HashMap's **values**
 
 ```java
-double getAverage() {
-    int sum = 0;
-    for (int grade : grades.values()) {
-        sum += grade;
+public class Main {
+    double getAverage() {
+        int sum = 0;
+        for (int grade : grades.values()) {
+            sum += grade;
+        }
+        return (double) sum / grades.size();
     }
-    return (double) sum / grades.size();
 }
 ```
 
@@ -86,12 +90,14 @@ double getAverage() {
 Let's print a nice report showing the student's name, each subject with its grade, and the average. We'll loop through the HashMap's **keySet** to get both keys and values
 
 ```java
-void printReport() {
-    System.out.println("Student: " + name);
-    for (String subject : grades.keySet()) {
-        System.out.println("  " + subject + ": " + grades.get(subject));
+public class Main {
+    void printReport() {
+        System.out.println("Student: " + name);
+        for (String subject : grades.keySet()) {
+            System.out.println("  " + subject + ": " + grades.get(subject));
+        }
+        System.out.println("  Average: " + String.format("%.1f", getAverage()));
     }
-    System.out.println("  Average: " + String.format("%.1f", getAverage()));
 }
 ```
 

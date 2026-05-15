@@ -7,7 +7,11 @@ Java has two worlds: **primitives** (`int`, `double`, `boolean`) and **objects**
 Java's collections (like `ArrayList`) only work with objects. You can't do this:
 
 ```java
-ArrayList<int> numbers = new ArrayList<int>();  // ERROR!
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<int> numbers = new ArrayList<int>();  // ERROR!
+    }
+}
 ```
 
 `int` isn't an object — it's a primitive. Java needs an object version of `int`. Enter `Integer`:

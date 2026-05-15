@@ -88,6 +88,16 @@ void *increment(void *arg) {
     }
     return NULL;
 }
+
+int main(void) {
+    pthread_t t1, t2;
+    pthread_create(&t1, NULL, increment, NULL);
+    pthread_create(&t2, NULL, increment, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    printf("Counter: %d\n", counter);
+    return 0;
+}
 ```
 
 Now **counter** will always be exactly 200000. The mutex ensures only one thread touches counter at a time. But there's a tradeoff: locking/unlocking is slower. The art of multithreading is minimizing the time you hold locks

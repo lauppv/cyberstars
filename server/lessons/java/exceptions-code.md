@@ -1,5 +1,9 @@
-// Try to parse "hello" as an integer
-// Catch NumberFormatException and print "Not a valid number: hello"
+public class Main {
+    public static void main(String[] args) {
+        // Try to parse "hello" as an integer
+        // Catch NumberFormatException and print "Not a valid number: hello"
 
-// Try to parse "42" as an integer
-// Print "Parsed: 42"
+        // Try to parse "42" as an integer
+        // Print "Parsed: 42"
+    }
+}

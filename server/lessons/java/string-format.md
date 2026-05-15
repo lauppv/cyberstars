@@ -1,9 +1,13 @@
 In Python, you've probably used **f-strings** like `f"Hello, {name}!"`. Java doesn't have f-strings, but it has something just as powerful: **String.format()**
 
 ```java
-String name = "Tommy Vercetti";
-String message = String.format("Hello, %s!", name);
-System.out.println(message);
+public class Main {
+    public static void main(String[] args) {
+        String name = "Tommy Vercetti";
+        String message = String.format("Hello, %s!", name);
+        System.out.println(message);
+    }
+}
 ```
 Output
 ```text
@@ -21,12 +25,16 @@ There are different placeholders for different types
 - **%f** — floating-point number (double, float)
 
 ```java
-String player = "Lance Vance";
-int kills = 47;
-double accuracy = 82.5;
+public class Main {
+    public static void main(String[] args) {
+        String player = "Lance Vance";
+        int kills = 47;
+        double accuracy = 82.5;
 
-String stats = String.format("Player: %s | Kills: %d | Accuracy: %f", player, kills, accuracy);
-System.out.println(stats);
+        String stats = String.format("Player: %s | Kills: %d | Accuracy: %f", player, kills, accuracy);
+        System.out.println(stats);
+    }
+}
 ```
 Output
 ```text
@@ -40,8 +48,12 @@ Wait, that's a lot of decimals! By default, **%f** shows 6 decimal places. To co
 **%.2f** means "show 2 decimal places." This is the one you'll use most often
 
 ```java
-double price = 4.5;
-System.out.println(String.format("Price: $%.2f", price));
+public class Main {
+    public static void main(String[] args) {
+        double price = 4.5;
+        System.out.println(String.format("Price: $%.2f", price));
+    }
+}
 ```
 Output
 ```text
@@ -51,12 +63,16 @@ Price: $4.50
 You can mix and match placeholders in one format string. They get filled in **left to right**
 
 ```java
-String name = "Cortez";
-int missions = 12;
-double rating = 9.7;
+public class Main {
+    public static void main(String[] args) {
+        String name = "Cortez";
+        int missions = 12;
+        double rating = 9.7;
 
-String report = String.format("%s completed %d missions with a %.1f rating", name, missions, rating);
-System.out.println(report);
+        String report = String.format("%s completed %d missions with a %.1f rating", name, missions, rating);
+        System.out.println(report);
+    }
+}
 ```
 Output
 ```text
@@ -68,9 +84,13 @@ Cortez completed 12 missions with a 9.7 rating
 Java also has **printf()** which is basically a shortcut — it formats AND prints in one step, so you don't need `String.format()` plus `System.out.println()` separately
 
 ```java
-String name = "Tommy";
-int score = 1500;
-System.out.printf("Player: %s | Score: %d%n", name, score);
+public class Main {
+    public static void main(String[] args) {
+        String name = "Tommy";
+        int score = 1500;
+        System.out.printf("Player: %s | Score: %d%n", name, score);
+    }
+}
 ```
 
 Notice **%n** at the end — that's the newline for printf. Without it, the next print would continue on the same line. You can also use `\n` but `%n` is the "proper" Java way
@@ -78,11 +98,15 @@ Notice **%n** at the end — that's the newline for printf. Without it, the next
 Compare the two approaches
 
 ```java
-// approach 1: String.format + println
-System.out.println(String.format("Score: %d", 100));
+public class Main {
+    public static void main(String[] args) {
+        // approach 1: String.format + println
+        System.out.println(String.format("Score: %d", 100));
 
-// approach 2: printf (shorter!)
-System.out.printf("Score: %d%n", 100);
+        // approach 2: printf (shorter!)
+        System.out.printf("Score: %d%n", 100);
+    }
+}
 ```
 
 Both produce the same output. Use whichever you prefer — `String.format()` is great when you want to store the formatted string in a variable, and `printf()` is great when you just want to print it right away
@@ -92,12 +116,16 @@ Both produce the same output. Use whichever you prefer — `String.format()` is 
 Here's a GTA Vice City scoreboard example putting it all together
 
 ```java
-String name = "Phil Cassidy";
-int score = 2300;
-double rating = 8.95;
+public class Main {
+    public static void main(String[] args) {
+        String name = "Phil Cassidy";
+        int score = 2300;
+        double rating = 8.95;
 
-String line = String.format("Player: %s | Score: %d | Rating: %.2f", name, score, rating);
-System.out.println(line);
+        String line = String.format("Player: %s | Score: %d | Rating: %.2f", name, score, rating);
+        System.out.println(line);
+    }
+}
 ```
 Output
 ```text

@@ -5,8 +5,12 @@ Java comes with a built-in **Math** class that's loaded with useful methods for 
 **Math.max(a, b)** — returns the larger of two numbers
 
 ```java
-System.out.println(Math.max(42, 17));    // 42
-System.out.println(Math.max(-5, -20));   // -5
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.max(42, 17));    // 42
+        System.out.println(Math.max(-5, -20));   // -5
+    }
+}
 ```
 
 Like Phil Cassidy comparing his gun collection: "Which one's bigger?" Math.max tells you
@@ -16,8 +20,12 @@ Like Phil Cassidy comparing his gun collection: "Which one's bigger?" Math.max t
 **Math.min(a, b)** — returns the smaller of two numbers
 
 ```java
-System.out.println(Math.min(42, 17));    // 17
-System.out.println(Math.min(100, 200));  // 100
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.min(42, 17));    // 17
+        System.out.println(Math.min(100, 200));  // 100
+    }
+}
 ```
 
 ---
@@ -25,9 +33,13 @@ System.out.println(Math.min(100, 200));  // 100
 **Math.abs(n)** — returns the absolute value (removes the negative sign)
 
 ```java
-System.out.println(Math.abs(-99));   // 99
-System.out.println(Math.abs(50));    // 50
-System.out.println(Math.abs(0));     // 0
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.abs(-99));   // 99
+        System.out.println(Math.abs(50));    // 50
+        System.out.println(Math.abs(0));     // 0
+    }
+}
 ```
 
 Tommy Vercetti lost $99? The absolute value of that loss is 99. Always positive (or zero)
@@ -37,16 +49,24 @@ Tommy Vercetti lost $99? The absolute value of that loss is 99. Always positive 
 **Math.pow(base, exponent)** — raises a number to a power. Returns a **double**
 
 ```java
-System.out.println(Math.pow(2, 10));   // 1024.0
-System.out.println(Math.pow(3, 3));    // 27.0
-System.out.println(Math.pow(5, 0));    // 1.0
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.pow(2, 10));   // 1024.0
+        System.out.println(Math.pow(3, 3));    // 27.0
+        System.out.println(Math.pow(5, 0));    // 1.0
+    }
+}
 ```
 
 Notice it returns **1024.0**, not **1024**. That's because Math.pow always returns a **double**. If you want an int, cast it
 
 ```java
-int result = (int) Math.pow(2, 10);
-System.out.println(result);   // 1024
+public class Main {
+    public static void main(String[] args) {
+        int result = (int) Math.pow(2, 10);
+        System.out.println(result);   // 1024
+    }
+}
 ```
 
 The **(int)** in front is a **cast** — it converts the double to an int by chopping off the decimal part. We used this trick in the lesson exercise below
@@ -56,8 +76,12 @@ The **(int)** in front is a **cast** — it converts the double to an int by cho
 **Math.sqrt(n)** — returns the square root. Also returns a double
 
 ```java
-System.out.println(Math.sqrt(144));   // 12.0
-System.out.println(Math.sqrt(2));     // 1.4142135623730951
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.sqrt(144));   // 12.0
+        System.out.println(Math.sqrt(2));     // 1.4142135623730951
+    }
+}
 ```
 
 ---
@@ -65,14 +89,22 @@ System.out.println(Math.sqrt(2));     // 1.4142135623730951
 **Math.random()** — returns a random double between 0.0 (inclusive) and 1.0 (exclusive)
 
 ```java
-System.out.println(Math.random());   // something like 0.7364281...
-System.out.println(Math.random());   // something different each time
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.random());   // something like 0.7364281...
+        System.out.println(Math.random());   // something different each time
+    }
+}
 ```
 
 To get a random int in a range, say 1 to 6 (like a dice roll)
 ```java
-int dice = (int)(Math.random() * 6) + 1;
-System.out.println("You rolled: " + dice);
+public class Main {
+    public static void main(String[] args) {
+        int dice = (int)(Math.random() * 6) + 1;
+        System.out.println("You rolled: " + dice);
+    }
+}
 ```
 
 How it works: **Math.random() * 6** gives a double from 0.0 to 5.999..., **(int)** chops it to 0-5, then **+ 1** shifts it to 1-6. Cortez would approve of the math
@@ -82,10 +114,14 @@ How it works: **Math.random() * 6** gives a double from 0.0 to 5.999..., **(int)
 You can also **combine** these methods. Want the bigger of two absolute values?
 
 ```java
-int a = -15;
-int b = 8;
-int result = Math.max(Math.abs(a), Math.abs(b));
-System.out.println(result);   // 15
+public class Main {
+    public static void main(String[] args) {
+        int a = -15;
+        int b = 8;
+        int result = Math.max(Math.abs(a), Math.abs(b));
+        System.out.println(result);   // 15
+    }
+}
 ```
 
 Java evaluates from the inside out: first **Math.abs(-15) = 15** and **Math.abs(8) = 8**, then **Math.max(15, 8) = 15**

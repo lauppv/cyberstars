@@ -169,7 +169,13 @@ export function LessonPage() {
   return (
     <div className="h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] overflow-hidden">
       <Topbar
-        breadcrumb={{ course: course?.title, lesson: title }}
+        breadcrumb={{
+          course: course?.title,
+          lesson: title,
+          courseHref: category.startsWith("algo-")
+            ? `/algorithms/${category.replace("algo-", "")}`
+            : "/courses",
+        }}
         streak={gamification.streak}
       />
 
@@ -185,12 +191,6 @@ export function LessonPage() {
           {/* Lesson content */}
           <div ref={contentRef} className="w-[40%] overflow-y-auto bg-[var(--bg)]">
             <div className="px-9 py-8">
-              <button
-                onClick={() => navigate(`/course/${category}`)}
-                className="inline-flex items-center gap-1.5 mb-4 text-[13px] text-[var(--text3)] hover:text-[var(--accent)] transition cursor-pointer"
-              >
-                ← All Lessons
-              </button>
               {(() => {
                 const { difficulty, rest } = parseDifficulty(title);
                 return (

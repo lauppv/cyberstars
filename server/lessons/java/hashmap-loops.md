@@ -110,11 +110,15 @@ This prints only Tommy and Phil (they owe more than 5000). The loop checks each 
 You can also loop over just the **values** with **.values()**, though this is less common since you usually want the key too
 
 ```java
-int total = 0;
-for (int debt : debts.values()) {
-    total += debt;
+public class Main {
+    public static void main(String[] args) {
+        int total = 0;
+        for (int debt : debts.values()) {
+            total += debt;
+        }
+        System.out.println("Total debt: $" + total);
+    }
 }
-System.out.println("Total debt: $" + total);
 ```
 Output **Total debt: $21000**
 

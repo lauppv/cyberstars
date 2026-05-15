@@ -40,10 +40,16 @@ The chain runs **top to bottom**. At the **first** branch that is **true**, C ru
 
 Why not just write a bunch of separate **if**s? Like this
 ```c
-if (seconds == 100) { ... }
-if (seconds == 60) { ... }
-if (seconds == 20) { ... }
-else { ... }
+#include <stdio.h>
+
+int main(void) {
+    int seconds = 60;
+    if (seconds == 100) { printf("100\n"); }
+    if (seconds == 60) { printf("60\n"); }
+    if (seconds == 20) { printf("20\n"); }
+    else { printf("other\n"); }
+    return 0;
+}
 ```
 The problem: each **if** is independent. The **else** at the end only belongs to the **last** **if**. So for **seconds = 60**, the third condition fails (60 != 20), and the **else** would print **"60 seconds has no effect"** — wrong, we already handled 60 above
 
@@ -57,15 +63,20 @@ C also has a **switch** statement that fits this pattern nicely, but we’ll sav
 
 We can nest **if**s inside one another
 ```c
-int seconds = 5;
-int errorDetected = 0;
+#include <stdio.h>
 
-if (seconds < 10) {
-    if (errorDetected) {
-        printf("Error detected. Canceling the mission\n");
-    } else {
-        printf("No error detected. Taking off...\n");
+int main(void) {
+    int seconds = 5;
+    int errorDetected = 0;
+
+    if (seconds < 10) {
+        if (errorDetected) {
+            printf("Error detected. Canceling the mission\n");
+        } else {
+            printf("No error detected. Taking off...\n");
+        }
     }
+    return 0;
 }
 ```
 Nested **if**s are fine, but if you go 5 levels deep, the code gets unreadable. Try to keep things flat when you can
