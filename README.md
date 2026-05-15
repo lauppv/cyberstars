@@ -36,10 +36,15 @@ A free interactive coding education platform, inspired by freeCodeCamp, where us
 
 ## Screenshots
 
+![Auth](screenshots/auth.png)
 ![Dashboard](screenshots/dashboard.png)
-![Curriculum - Course Select](screenshots/select.png)
-![Lesson View - All Tests Passed](screenshots/success.png)
-![Lesson View - Tests Failed](screenshots/fail.png)
+![Courses](screenshots/courses.png)
+![Courses list](screenshots/courses_list.png)
+![Algos](screenshots/algos.png)
+![Algos list](screenshots/algos_list.png)
+![Lesson success](screenshots/success.png)
+![Lesson fail](screenshots/fail.png)
+![Profile](screenshots/profile.png)
 
 ## Tech Stack
 
