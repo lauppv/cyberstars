@@ -29,15 +29,16 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Client (`client/`)
 - React 19 + Vite 7 + Tailwind CSS 4, uses HashRouter
-- Routes: `/`, `/getstarted`, `/courses`, `/algorithms`, `/algorithms/:lang`, `/lesson/:category/:lesson`, `/profile`, `/forum`, `/almanac`
+- Routes: `/`, `/getstarted`, `/courses`, `/algorithms`, `/algorithms/:lang`, `/lesson/:category/:lesson`, `/profile`, `/forum`, `/almanac`, `/welcome`
 - Three React Context providers: `AuthContext`, `CurriculumContext`, `ProgressContext`
 - Services in `client/services/` wrap all API calls through a shared `apiClient` fetch wrapper
 - Code editor uses CodeMirror 4 with per-language syntax highlighting
-- Global `CosmosBackground` (canvas starfield + nebulae) renders on all routes except `/getstarted` — managed in `App.tsx` via `GlobalBackground` component. Uses `isolation: isolate` on `#root` with `z-index: -1` on cosmos so content stays above without explicit z-index hacks. AuthPage has its own dedicated animated background.
+- Global `CosmosBackground` (canvas starfield + nebulae) renders on all routes except `/getstarted` and `/welcome` — managed in `App.tsx` via `GlobalBackground` component. Uses `isolation: isolate` on `#root` with `z-index: -1` on cosmos so content stays above without explicit z-index hacks. AuthPage and WelcomePage have their own dedicated animated backgrounds.
+- Text sections over the starfield use `.text-backdrop` class (semi-transparent bg + backdrop-blur) for readability
 
 ### Server (`server/`)
 - Express 5 + TypeScript, runs with tsx
-- Route files: `auth.routes.ts`, `lesson.routes.ts`, `code.routes.ts`, `progress.routes.ts`, `leaderboard.routes.ts`, `forum.routes.ts`, `terminal.routes.ts`, `support.routes.ts`
+- Route files: `auth.routes.ts`, `lesson.routes.ts`, `code.routes.ts`, `progress.routes.ts`, `leaderboard.routes.ts`, `forum.routes.ts`, `terminal.routes.ts`, `support.routes.ts`, `profile.routes.ts`
 - Controllers handle logic; Zod schemas in `server/schemas/` validate requests
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
 - Code execution: Docker containers locally, Piston API in production — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)
@@ -64,7 +65,8 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Vite proxies `/api` and `/auth` to the Express server (configured in `vite.config.ts`)
 - Course metadata is centralised in `client/constants/courses.ts` via `courseMeta(key)` and `courseTitle(key)` — single source of truth for icons, colors, labels
 - Course key constants live in `shared/constants.ts`: `MAIN_COURSE_KEYS`, `ALGO_COURSE_KEYS`, `TERMINAL_COURSE_KEYS`, `ALL_COURSE_KEYS`
-- Gamification (XP, levels, badges, streaks) is derived entirely from `UserLessonProgress` data — no separate gamification tables
+- Gamification (XP, levels, badges) is derived from `UserLessonProgress` data — no separate gamification tables. Streaks are stored client-side in localStorage keyed by user ID (`cyberstars_activity_days_{userId}`)
+- Profile features (avatar upload, bio, status with 24h expiry) via `/api/profile` routes with multer + magic-byte validation. Uploads served from `/uploads` static dir
 - Dark theme uses CSS custom properties with accent purple `#6C5CE7`, Space Grotesk font for UI, JetBrains Mono for code
 - Lesson completion is automatic when all test cases pass — no manual "complete" button
 - The user communicates in Romanian; code and docs stay in English
