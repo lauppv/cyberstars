@@ -24,8 +24,10 @@ const CATEGORIES = [
   { id: "history", label: "History", em: "📜" },
   { id: "oss", label: "Open Source", em: "🐧" },
   { id: "legends", label: "Legends", em: "👑" },
+  { id: "security", label: "Security", em: "🔒" },
   { id: "hardware", label: "Hardware", em: "💾" },
   { id: "internet", label: "Internet", em: "🌐" },
+  { id: "space", label: "Space", em: "🪐" },
   { id: "ai", label: "AI & Future", em: "🧠" },
   { id: "fun", label: "Fun Facts", em: "🎲" },
 ];
@@ -1000,6 +1002,346 @@ Stack Overflow's legacy is secure regardless of its future. It proved that crowd
     readTime: "9 min",
     xp: 25,
   },
+  {
+    cat: "security",
+    tag: "SECURITY",
+    year: "2010",
+    emoji: "🪱",
+    grad: "linear-gradient(135deg,#1a2a1a,#3a5a2a)",
+    title: "Stuxnet — the virus that destroyed centrifuges with code",
+    excerpt:
+      "Someone dropped infected USB sticks near an Iranian nuclear facility. One of them ended up in a computer. The worm inside quietly reprogrammed industrial centrifuges to tear themselves apart — while displaying normal readings.",
+    fullText: `In 2010, a cybersecurity researcher named Sergei Ulasen in Belarus found something strange: a Windows worm that used not one, not two, but four zero-day exploits simultaneously. That had never been seen before. Whoever made this had resources that only a nation-state could afford.
+
+The worm was Stuxnet. It spread via USB drives — likely dropped intentionally near Iran's Natanz uranium enrichment facility. The facility was air-gapped (not connected to the internet), so a USB stick was the only way in.
+
+Once inside, Stuxnet was remarkably targeted. It did nothing on 99.99% of computers it infected. It was looking for one specific thing: Siemens Step 7 software controlling Siemens S7-300 PLCs connected to variable-frequency drives spinning at specific speeds. In other words, it was hunting for uranium enrichment centrifuges.
+
+When it found its target, Stuxnet did something brilliant and terrifying. It recorded the normal operating data from the centrifuges, then played that recording back to the monitoring systems — like a heist movie where someone loops the security camera feed. Meanwhile, it sent commands to the centrifuges to speed up and slow down erratically, far outside safe parameters.
+
+The centrifuges tore themselves apart. Iranian engineers were baffled — their instruments showed everything was normal, but centrifuges kept failing. Iran lost an estimated 1,000 centrifuges (about 20% of their total) before the worm was discovered.
+
+Stuxnet is widely attributed to a joint US-Israeli operation codenamed "Olympic Games," reportedly started under President Bush and continued under Obama. Neither government has officially confirmed involvement.
+
+The implications were enormous. Stuxnet proved that cyberweapons could cause physical destruction — crossing a line that had previously been theoretical. It was the first known cyberweapon designed to damage real-world infrastructure. It opened a Pandora's box: if the US could do this to Iran, what could others do to power grids, water systems, or hospitals?
+
+The worm also escaped its intended target and spread worldwide, infecting over 100,000 computers in 115 countries. Most were harmless infections (no centrifuges to attack), but the code was now public. Security researchers — and other governments — could study and adapt it.
+
+Stuxnet changed cybersecurity forever. It proved that air gaps aren't secure, that industrial control systems are vulnerable, and that code can be a weapon of war.`,
+    author: "Mr. Radu",
+    authorEm: "🕵️",
+    readTime: "10 min",
+    xp: 35,
+  },
+  {
+    cat: "security",
+    tag: "SECURITY",
+    year: "2008",
+    emoji: "🏦",
+    grad: "linear-gradient(135deg,#2a1a2a,#5a2f5a)",
+    title: "The Robin Hood hacker — stole millions and gave them to the poor",
+    excerpt:
+      "Vahagn Vardanyan from Armenia broke into banking systems, stole millions of dollars, and distributed the money to poor people in his village. When he was caught, locals protested demanding his release.",
+    fullText: `In the 2000s, a young programmer from Armenia named Vahagn Vardanyan began exploiting vulnerabilities in international banking systems. Using hacking techniques, he managed to access accounts and transfer large sums of money — an estimated several million dollars from Western banks.
+
+But Vardanyan didn't buy luxury cars or mansions. He did something unexpected: he distributed the money to poor people in his community. He paid medical bills, bought food, helped families repair their homes. For the locals, he was a hero — a digital Robin Hood.
+
+His story attracted international attention. American and European authorities collaborated with Armenian ones to identify and arrest him. When he was caught, hundreds of people from his community took to the streets demanding his release. To them, the man who had stolen from foreign banks was the only person who had offered them real help.
+
+The trial was heavily covered by media. Defense lawyers argued that Vardanyan had acted out of humanitarian motives, not greed. Prosecutors emphasized that regardless of where the money went, unauthorized access to computer systems and theft remain crimes.
+
+Vardanyan was sentenced to years in prison. His case generated a broad debate about the ethics of hacking, global economic inequality, and the limits of law in the digital age.
+
+The story raises uncomfortable questions: if a banking system is vulnerable, who is more culpable — the one who exploits the vulnerability or the one who left it open? If stolen money reaches people in need, does that change the nature of the crime?
+
+The legal answer is clear: theft is theft, regardless of intent. But the moral answer is more complicated, and that's why Vardanyan's story continues to fascinate — a modern Robin Hood in a digital world.`,
+    author: "Editorial",
+    authorEm: "✨",
+    readTime: "7 min",
+    xp: 25,
+  },
+  {
+    cat: "security",
+    tag: "SECURITY",
+    year: "2013",
+    emoji: "📡",
+    grad: "linear-gradient(135deg,#1a1a3a,#3a3a6a)",
+    title: "Edward Snowden — the man who exposed global surveillance",
+    excerpt:
+      "An NSA contractor copied 1.5 million classified documents and revealed that governments were spying on everyone's calls, emails, and texts. He's been in exile ever since.",
+    fullText: `In June 2013, The Guardian and The Washington Post published a series of bombshell stories. The source: a 29-year-old NSA contractor named Edward Snowden who had copied approximately 1.5 million classified documents and fled to Hong Kong.
+
+The revelations were staggering. PRISM: the NSA had direct access to the servers of Google, Facebook, Apple, Microsoft, and other tech giants, collecting emails, photos, videos, and chat logs. The companies denied knowledge, but the documents were clear.
+
+XKeyscore: a search system that allowed NSA analysts to search through vast databases of emails, browsing history, and chat logs with no prior authorization needed. An analyst could read anyone's email by simply entering an email address.
+
+The NSA was collecting the phone records (metadata) of virtually every American — who called whom, when, and for how long. A secret court (FISA) had approved this mass collection in secret.
+
+The UK's GCHQ was tapping undersea fiber optic cables and storing massive amounts of internet traffic through a program called Tempora. The "Five Eyes" alliance (US, UK, Canada, Australia, New Zealand) was sharing this data freely.
+
+Snowden flew from Hong Kong to Moscow, where his passport was revoked mid-transit. He was stuck in the Moscow airport for 39 days before Russia granted him asylum. He has lived in Russia ever since, unable to return to the US without facing espionage charges carrying up to 30 years in prison.
+
+The debate over Snowden is fierce and unresolved. Supporters call him a whistleblower who exposed unconstitutional surveillance. Critics call him a traitor who damaged national security. The truth probably lies in between — the programs he exposed were real and arguably illegal, but the method of exposure was also enormously damaging to intelligence operations.
+
+The practical impact was enormous. Tech companies rushed to encrypt their services. Apple and Google enabled default encryption on phones. WhatsApp added end-to-end encryption for billions of users. The USA FREEDOM Act (2015) reformed some NSA practices.
+
+Snowden's legacy is that millions of people now use encrypted messaging, verify HTTPS connections, and think about digital privacy — concepts that were abstract before 2013.`,
+    author: "Mr. Radu",
+    authorEm: "🕵️",
+    readTime: "10 min",
+    xp: 35,
+  },
+  {
+    cat: "security",
+    tag: "SECURITY",
+    year: "2017",
+    emoji: "😢",
+    grad: "linear-gradient(135deg,#3a1a1a,#6a2f2f)",
+    title: "WannaCry — the ransomware that paralyzed 200,000 computers in a day",
+    excerpt:
+      "A leaked NSA exploit was turned into ransomware that encrypted hospital computers, factory systems, and government networks across 150 countries. A 22-year-old accidentally found the kill switch.",
+    fullText: `On May 12, 2017, the world woke up to chaos. Computers across 150 countries were displaying the same message: your files have been encrypted. Pay $300 in Bitcoin within 3 days, or $600 within 7 days, or lose your data forever.
+
+WannaCry spread at terrifying speed. Within hours, it had infected over 200,000 computers. The UK's National Health Service was hit hard — hospitals couldn't access patient records, ambulances were diverted, surgeries were cancelled. FedEx, Telefónica, Deutsche Bahn, Renault — major organizations worldwide were crippled.
+
+The attack used EternalBlue, an exploit for a Windows vulnerability that had been developed by the NSA. A hacking group called Shadow Brokers had stolen it and leaked it online a month earlier. Microsoft had released a patch in March, but millions of computers hadn't been updated.
+
+WannaCry was technically a worm — it spread automatically across networks without any user interaction. Once it infected one computer on a network, it scanned for other vulnerable machines and infected them too. This is why it spread so fast.
+
+Then came the accidental hero. Marcus Hutchins, a 22-year-old British cybersecurity researcher working from his bedroom, was analyzing the malware when he noticed it tried to connect to a specific unregistered domain name. On a hunch, he registered the domain for $10.69. This turned out to be a kill switch — the malware checked if the domain existed, and if it did, it stopped spreading.
+
+Hutchins didn't know it was a kill switch when he registered it. He thought he was just sinkholing the domain for analysis. He accidentally saved potentially millions of computers from infection.
+
+The attack was later attributed to the Lazarus Group, linked to North Korea. Despite infecting hundreds of thousands of computers, the attackers collected only about $140,000 in Bitcoin — a surprisingly small haul for such a massive operation.
+
+WannaCry's lasting lesson: patch your systems. The vulnerability had been patched two months before the attack. Every infected machine was running outdated software. It also highlighted the danger of governments stockpiling exploits — when the NSA's tools leaked, they became weapons available to anyone.`,
+    author: "CyberBot",
+    authorEm: "🤖",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "space",
+    tag: "SPACE",
+    year: "2014",
+    emoji: "🌌",
+    grad: "linear-gradient(135deg,#0a0a2a,#1a1a5a)",
+    title: "Laniakea — the supercluster we all float in",
+    excerpt:
+      "The Milky Way isn't alone. Our galaxy is part of an enormous structure of 100,000 galaxies spanning 500 million light-years. It's called Laniakea — 'immeasurable heaven' in Hawaiian.",
+    fullText: `In 2014, a team of astronomers led by R. Brent Tully at the University of Hawaii published a discovery that redefined our place in the universe. Using data about the velocities and directions of motion of galaxies, they mapped an immense cosmic structure they named Laniakea — from the Hawaiian "lani" (heaven) and "akea" (immeasurable, vast).
+
+Laniakea is a supercluster — a massive collection of galaxy clusters, gravitationally bound, moving together through space. It contains approximately 100,000 galaxies, including the Milky Way, and spans roughly 500 million light-years.
+
+For context: the Milky Way has a diameter of about 100,000 light-years. Laniakea is 5,000 times larger. Our galaxy is literally a tiny speck in a structure so large that light needs half a billion years to cross it.
+
+At Laniakea's center lies something mysterious called the Great Attractor — a region of space with an enormous gravitational concentration toward which all galaxies in the supercluster are being pulled. The Great Attractor is roughly 250 million light-years from us, in the direction of the Centaurus constellation. We can't see it directly because the Milky Way's own disk blocks our view (the region is called the "Zone of Avoidance").
+
+What's in the Great Attractor? We don't know exactly. It appears to be an enormous concentration of mass — thousands of galaxies packed together. But the gravity it exerts is greater than the visible mass would explain, suggesting enormous quantities of dark matter.
+
+Laniakea isn't even close to the largest structure in the universe. Our supercluster neighbors the Perseus-Pisces supercluster and the Shapley supercluster. Together, these are part of even larger structures — cosmic filaments that form the "cosmic web," the largest structure in the universe.
+
+The discovery changed how we think about our cosmic "address": Earth → Solar System → Milky Way → Local Group → Virgo Cluster → Laniakea Supercluster. We are a speck of dust on a speck of dust, in a structure so vast that the human mind cannot truly conceive of it.`,
+    author: "Dr. Elena",
+    authorEm: "🔭",
+    readTime: "8 min",
+    xp: 30,
+  },
+  {
+    cat: "space",
+    tag: "SPACE",
+    year: "1970",
+    emoji: "⚫",
+    grad: "linear-gradient(135deg,#0a0a1a,#1a1a3a)",
+    title: "TON 618 — the monster that weighs 66 billion suns",
+    excerpt:
+      "10 billion light-years away lies one of the most massive black holes ever discovered. TON 618 has a mass of 66 billion times that of our Sun. Its event horizon is larger than our entire solar system.",
+    fullText: `TON 618 is a quasar — an extremely luminous galactic nucleus powered by a supermassive black hole devouring matter at a staggering rate. It sits approximately 10.4 billion light-years away, which means the light we see from it left when the universe was only 3 billion years old.
+
+The black hole at the center of TON 618 has an estimated mass of 66 billion solar masses. To put that in perspective: the black hole at the center of the Milky Way (Sagittarius A*) has "only" 4 million solar masses. TON 618 is 16,500 times more massive.
+
+TON 618's event horizon — the boundary beyond which nothing escapes, not even light — has a diameter of approximately 390 billion kilometers. That's nearly 40 times the distance from the Sun to Pluto. If you placed TON 618 where our Sun is, its event horizon would swallow the entire solar system, including the Kuiper Belt.
+
+The quasar's luminosity is equally absurd: TON 618 shines with the power of 140 trillion suns. It's one of the brightest objects in the universe, visible at cosmic distances precisely because the matter falling into the black hole heats up to hundreds of millions of degrees in the accretion disk.
+
+How does a black hole this large form? We don't know for certain. The leading theory is that it grew continuously over billions of years, devouring gas, stars, and possibly other black holes. But even with the most optimistic growth rates, it's difficult to explain how it became so massive in the available time. Some researchers suggest it started from a "seed" much larger than a normal stellar black hole — perhaps a primordial black hole formed directly from the collapse of enormous gas clouds in the early universe.
+
+TON 618 reminds us that the universe operates at scales the human brain never evolved to process. The numbers are real, but our intuition simply doesn't work at 66 billion solar masses.`,
+    author: "Dr. Elena",
+    authorEm: "🔭",
+    readTime: "8 min",
+    xp: 30,
+  },
+  {
+    cat: "space",
+    tag: "SPACE",
+    year: "2019",
+    emoji: "🕳️",
+    grad: "linear-gradient(135deg,#1a0a0a,#3a1a1a)",
+    title: "What happens inside a black hole — the final 7 minutes",
+    excerpt:
+      "If you fell into a black hole, you'd have only minutes left to exist. Time warps, space stretches, and physics as we know it collapses completely.",
+    fullText: `Imagine you're approaching a stellar-mass black hole — one of about 10 solar masses. What happens?
+
+First, the tidal effect. Gravity isn't uniform — it pulls harder on your feet (closer to the black hole) than on your head. This difference stretches you like a strand of spaghetti. Physicists actually call this "spaghettification." For a small black hole, spaghettification would kill you long before reaching the event horizon.
+
+But if the black hole is supermassive (like TON 618), the event horizon is so large that the gravitational difference between your head and feet is negligible. You could cross the horizon without feeling anything special. That's the paradox: the moment from which you can never escape would be completely unremarkable from your perspective.
+
+Once past the event horizon, all paths lead to the center. It's not about a force pulling you — it's about the geometry of spacetime itself. Your future literally points toward the singularity. Try to go "up"? That's still toward the center. Space and time swap roles: the singularity isn't a place in space — it's a moment in time. An inevitable moment.
+
+How long does it take? For a stellar-mass black hole, from the moment you cross the horizon to the singularity, you'd have approximately 0.0001 seconds. But for a supermassive black hole, the time extends. For one with a mass of billions of suns, you could have several minutes — some calculations suggest around 7 minutes for a black hole like those at the centers of large galaxies.
+
+What is the singularity? This is where current physics breaks down. General relativity predicts a point of infinite density and zero volume. But "infinite" in physics usually means "our equation no longer works here." We need a theory of quantum gravity — a fusion of quantum mechanics and general relativity — which we still don't have.
+
+From outside, an observer watching you fall would see something completely different. As you approach the event horizon, the light you emit shifts increasingly toward red (gravitational redshift). You appear to slow down, fade, and freeze at the event horizon — never crossing it. From their perspective, you would exist forever as an ever-dimmer image at the edge of the black hole.
+
+This asymmetry between the falling person's experience and the observer's experience is one of the most profound lessons of relativity: time doesn't flow the same for everyone.`,
+    author: "Editorial",
+    authorEm: "✨",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "space",
+    tag: "SPACE",
+    year: "1990",
+    emoji: "🔵",
+    grad: "linear-gradient(135deg,#0a1a2a,#1a3a5a)",
+    title: "Pale Blue Dot — the photograph that changed humanity's perspective",
+    excerpt:
+      "In 1990, Voyager 1 turned around and photographed Earth from 6 billion km away. Our planet appears as a pale blue dot, less than a pixel wide. Carl Sagan wrote the most moving speech in the history of science.",
+    fullText: `On February 14, 1990, the Voyager 1 spacecraft, 6.06 billion kilometers from Earth — beyond Neptune's orbit — rotated its camera and took one last photograph of our planet.
+
+In the image, Earth appears as a tiny dot, less than a pixel, suspended in a scattered beam of sunlight. The photograph was taken at the request of astronomer Carl Sagan, who had persuaded NASA to program this final portrait before Voyager's cameras were shut down permanently.
+
+Sagan looked at the photograph and wrote a text that entered history:
+
+"Look again at that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives."
+
+"The aggregate of our joy and suffering, thousands of confident religions, ideologies, and economic doctrines, every hunter and forager, every hero and coward, every creator and destroyer of civilization, every king and peasant, every young couple in love, every mother and father, hopeful child, inventor and explorer, every teacher of morals, every corrupt politician, every superstar, every supreme leader, every saint and sinner in the history of our species lived there — on a mote of dust suspended in a sunbeam."
+
+The photograph and Sagan's text became a symbol of our place in the universe. In an era of conflicts, borders, and national egos, a single image showed that all our disputes take place on a nearly invisible point in the vastness of the cosmos.
+
+Voyager 1 continues to fly. In 2012, it entered interstellar space — the first human-made object to leave the heliosphere. In 2025, it's over 24 billion kilometers from Earth. Its radio signals, traveling at the speed of light, take over 22 hours to reach us.
+
+Aboard Voyager is the Golden Record — a phonograph disc with sounds and images from Earth, intended for any extraterrestrial civilization that might find the probe. It includes music by Bach, greetings in 55 languages, and the sound of ocean waves. It is a bottle tossed into an infinite cosmic ocean.`,
+    author: "Dr. Elena",
+    authorEm: "🔭",
+    readTime: "8 min",
+    xp: 30,
+  },
+  {
+    cat: "space",
+    tag: "SPACE",
+    year: "2022",
+    emoji: "🔭",
+    grad: "linear-gradient(135deg,#0a0a2a,#2a1a4a)",
+    title: "James Webb — the telescope that sees to the beginning of time",
+    excerpt:
+      "Launched in 2021 after 25 years of construction and $10 billion, the James Webb telescope photographed galaxies formed just 300 million years after the Big Bang. We're seeing light that traveled 13.5 billion years.",
+    fullText: `On December 25, 2021, an Ariane 5 rocket launched the most complex and expensive scientific instrument ever built by humans: the James Webb Space Telescope (JWST). After 25 years of development, countless budget overruns (from $1 billion to $10 billion), and 344 critical single points of failure during deployment, Webb successfully reached Lagrange point L2, 1.5 million km from Earth.
+
+Unlike Hubble, which sees in visible and ultraviolet light, Webb observes in infrared. This is crucial because light from the most distant galaxies has been "stretched" by the expansion of the universe from ultraviolet and visible into infrared — a phenomenon called cosmological redshift. Webb can see light that traveled 13.5 billion years — close to the beginning of the universe.
+
+Webb's primary mirror is 6.5 meters in diameter (compared to 2.4 meters for Hubble), made of 18 hexagonal beryllium segments coated in gold. The sunshield, the size of a tennis court, cools the instruments to -233°C — essential for detecting faint infrared radiation.
+
+The first images, released on July 12, 2022, left the world speechless. Webb's Deep Field showed thousands of galaxies in a patch of sky the size of a grain of sand held at arm's length. Some of these galaxies existed just 300 million years after the Big Bang.
+
+Webb found massive galaxies in the early universe that shouldn't exist according to our models — galaxies too large, too fast. It detected organic molecules in protoplanetary disks. It analyzed the atmospheres of exoplanets, finding water, CO2, and other molecules. It photographed Neptune, Jupiter, and asteroids with unprecedented clarity.
+
+The James Webb telescope doesn't seek simple answers. It asks questions we couldn't formulate before. Every image is a window into a universe far older, more complex, and more beautiful than we imagined.`,
+    author: "Editorial",
+    authorEm: "✨",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1972",
+    emoji: "🎯",
+    grad: "linear-gradient(135deg,#2a2a1a,#5a4a2f)",
+    title: "How C conquered the world — the language that refuses to die",
+    excerpt:
+      "Created in 1972 as a side project to rewrite UNIX, C became the foundation of modern computing. 50+ years later, it still powers operating systems, databases, and embedded devices everywhere.",
+    fullText: `In 1972, Dennis Ritchie at Bell Labs needed a better language to rewrite the UNIX operating system. Assembly was powerful but painful — every CPU had its own instruction set, so code written for one machine was useless on another. Higher-level languages like FORTRAN were portable but too slow and didn't give programmers access to hardware.
+
+Ritchie wanted both: high-level convenience with low-level power. The result was C — a language that could express complex algorithms clearly while still letting you manipulate individual bytes and memory addresses.
+
+C's key innovation was its combination of portability and efficiency. A C program could be compiled for any processor with a C compiler, yet the resulting code ran nearly as fast as hand-written assembly. This was revolutionary. For the first time, complex software could be written once and deployed on different hardware.
+
+The first major proof of concept was UNIX itself. Ritchie and Ken Thompson rewrote UNIX in C, making it the first operating system written in a high-level language. This meant UNIX could be ported to new hardware by simply rewriting the C compiler — not the entire operating system. This portability is the reason UNIX variants spread to every type of computer.
+
+In 1978, Ritchie and Brian Kernighan published "The C Programming Language" — known universally as K&R. It's one of the most influential programming books ever written: clear, concise, and practical. The famous "Hello, World" program first appeared in this book.
+
+C's influence is immeasurable. C++ (1979), Objective-C (1984), Java (1995), C# (2000), Go (2009), and Rust (2010) all descend from C in syntax or philosophy. Python, Ruby, PHP, and JavaScript are implemented in C. Linux, Windows, macOS — all written primarily in C. MySQL, PostgreSQL, SQLite — C. Git, Apache, nginx, Redis — C.
+
+As of 2025, C remains in the top 3 of every programming language popularity index. It's the language of choice for operating systems, embedded devices (your microwave, car, pacemaker), and performance-critical software. It's 53 years old and shows no signs of retirement.
+
+The lesson? Sometimes the best tool is the simplest one. C gives you enough abstraction to think clearly and enough control to do anything. That sweet spot has kept it relevant for half a century.`,
+    author: "Prof. Andrei",
+    authorEm: "🏛️",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1995",
+    emoji: "☕",
+    grad: "linear-gradient(135deg,#2a1a0a,#5a3a1a)",
+    title: "Java — the language everyone mocks but nobody can replace",
+    excerpt:
+      "Created in 1995 for interactive TVs, Java failed at its original purpose but conquered servers, Android, and enterprise. 30 years later, the world's banks and governments still run on Java.",
+    fullText: `In 1991, James Gosling at Sun Microsystems was working on a project called "Green" — a language for interactive televisions and smart home devices. The idea was to write code once and run it on any processor. Interactive TVs never caught on, but the concept was powerful.
+
+The language was originally named "Oak" (after an oak tree outside Gosling's office), but the name was already trademarked. The team moved to a coffee shop and chose "Java" — a reference to coffee from the island of Java, Indonesia.
+
+Java was publicly released on May 23, 1995, with the slogan "Write Once, Run Anywhere." The key was the JVM (Java Virtual Machine) — an intermediary layer that translated Java code into processor-specific instructions. Write code once, compile to bytecode, and the JVM executes it on any platform.
+
+Initially, Java exploded thanks to applets — small programs that ran in the browser. They were revolutionary in 1996: interactive animations, games, calculators — in an era when the web was static. But applets had security and performance problems, and gradually disappeared.
+
+Where Java truly triumphed was on the server. Enterprise Java (J2EE, then Jakarta EE) became the standard for banking, government, and corporate applications. Millions of financial transactions per day run on Java. Airline ticketing systems, trading platforms, medical systems — Java.
+
+In 2008, Google chose Java as the primary language for Android. Over 3 billion Android devices run Java apps (or Kotlin, which also compiles to JVM bytecode). This made Java the most widely used language on the planet by device count.
+
+Programmers love to mock Java — it's verbose, has excessive design patterns, and the class "AbstractSingletonProxyFactoryBean" actually exists in Spring Framework. But Java has something that "cooler" languages don't: decades of stability. A Java application written in 2005 probably still works today without modifications.
+
+In 2025, Java remains in the top 3 languages, with over 35 million developers. Oracle continues to release new versions every 6 months. Java isn't sexy, isn't hip, but it's the invisible backbone of the digital world.`,
+    author: "Theo",
+    authorEm: "🦝",
+    readTime: "9 min",
+    xp: 25,
+  },
+  {
+    cat: "security",
+    tag: "SECURITY",
+    year: "2020",
+    emoji: "🌐",
+    grad: "linear-gradient(135deg,#1a2a2a,#2f4a4a)",
+    title: "SolarWinds — the hack that infiltrated 18,000 organizations through a software update",
+    excerpt:
+      "Russian hackers compromised a routine software update from SolarWinds, inserting a backdoor that gave them access to the US Treasury, Pentagon, and thousands of corporations. Nobody noticed for 9 months.",
+    fullText: `In December 2020, cybersecurity firm FireEye discovered something alarming: they had been hacked. But this wasn't a typical breach. The attackers hadn't exploited a vulnerability in FireEye's systems. They'd come in through a software update — from a trusted vendor called SolarWinds.
+
+SolarWinds makes Orion, a network monitoring platform used by over 30,000 organizations worldwide, including most Fortune 500 companies and numerous US government agencies. It's the kind of boring, essential infrastructure software that nobody thinks about.
+
+The attackers — later attributed to Russia's SVR intelligence service (APT29/Cozy Bear) — had compromised SolarWinds' build system. They inserted malicious code into Orion's source code in a way that was virtually undetectable. When SolarWinds compiled and distributed routine updates in March 2020, 18,000 customers automatically installed the backdoor.
+
+The sophistication was extraordinary. The malicious code (named SUNBURST) lay dormant for two weeks after installation before activating. It mimicked legitimate Orion network traffic. It checked for security tools and analysis environments before operating. It communicated with command servers using domain names that looked like normal cloud service traffic.
+
+Among the confirmed victims: the US Department of the Treasury, the Department of Commerce (including NOAA), the Department of Homeland Security, parts of the Pentagon, the Department of Energy (including the National Nuclear Security Administration), and dozens of major corporations.
+
+The attackers had access for approximately 9 months before detection. They didn't trigger any alarms. They didn't steal money or deploy ransomware. They quietly collected intelligence — reading emails, accessing documents, mapping networks. Classic espionage.
+
+The implications shook the cybersecurity industry. If you can't trust your software updates, what can you trust? SolarWinds was doing everything "right" — they had security practices, code reviews, signed builds. But the attackers compromised the process itself, echoing Ken Thompson's "Trusting Trust" warning from 1984.
+
+SolarWinds accelerated a fundamental shift toward "zero trust" security architecture — the principle that no user, device, or software update should be automatically trusted, even if it comes from inside your network. It also sparked serious debate about software supply chain security, a problem that remains largely unsolved.`,
+    author: "Mr. Radu",
+    authorEm: "🕵️",
+    readTime: "10 min",
+    xp: 35,
+  },
 ];
 
 const FUN_FACTS = [
@@ -1206,14 +1548,73 @@ function StoryModal({
   );
 }
 
+function Pagination({
+  page,
+  totalPages,
+  onPage,
+}: {
+  page: number;
+  totalPages: number;
+  onPage: (p: number) => void;
+}) {
+  const pages: (number | "…")[] = [];
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
+      pages.push(i);
+    } else if (pages[pages.length - 1] !== "…") {
+      pages.push("…");
+    }
+  }
+  return (
+    <nav className="almanac-pagination">
+      <button
+        className="pg-btn"
+        disabled={page === 1}
+        onClick={() => onPage(page - 1)}
+      >
+        ‹
+      </button>
+      {pages.map((p, i) =>
+        p === "…" ? (
+          <span key={`e${i}`} className="pg-ellipsis">…</span>
+        ) : (
+          <button
+            key={p}
+            className={"pg-btn" + (p === page ? " pg-active" : "")}
+            onClick={() => onPage(p)}
+          >
+            {p}
+          </button>
+        )
+      )}
+      <button
+        className="pg-btn"
+        disabled={page === totalPages}
+        onClick={() => onPage(page + 1)}
+      >
+        ›
+      </button>
+    </nav>
+  );
+}
+
 export function AlmanacPage() {
   const [filter, setFilter] = useState("all");
+  const [page, setPage] = useState(1);
   const [factIdx, setFactIdx] = useState(0);
   const [quoteIdx, setQuoteIdx] = useState(0);
   const [openStory, setOpenStory] = useState<StoryData | null>(null);
 
+  const handlePage = (p: number) => {
+    setPage(p);
+    document.querySelector(".almanac-articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const PER_PAGE = 10;
   const filtered =
     filter === "all" ? ARTICLES : ARTICLES.filter((a) => a.cat === filter);
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   const fact = FUN_FACTS[factIdx];
   const quote = QUOTES[quoteIdx];
 
@@ -1249,7 +1650,7 @@ export function AlmanacPage() {
               className={
                 "almanac-chip" + (filter === c.id ? " active" : "")
               }
-              onClick={() => setFilter(c.id)}
+              onClick={() => { setFilter(c.id); setPage(1); }}
             >
               <span className="chip-em">{c.em}</span>
               <span>{c.label}</span>
@@ -1281,12 +1682,12 @@ export function AlmanacPage() {
             <div className="section-head">
               <h2>Latest reads</h2>
               <div className="meta">
-                {filtered.length}{" "}
-                {filter === "all" ? "articles" : "in this topic"}
+                {filtered.length} {filter === "all" ? "articles" : "in this topic"}
+                {totalPages > 1 && <> · page {page}/{totalPages}</>}
               </div>
             </div>
             <div className="almanac-articles">
-              {filtered.map((a, i) => (
+              {paginated.map((a, i) => (
                 <article className="almanac-article" key={i} onClick={() => setOpenStory(a)}>
                   <div className="article-art">
                     <div
@@ -1304,6 +1705,9 @@ export function AlmanacPage() {
                 </article>
               ))}
             </div>
+            {totalPages > 1 && (
+              <Pagination page={page} totalPages={totalPages} onPage={handlePage} />
+            )}
           </div>
 
           <aside className="almanac-sidebar">
