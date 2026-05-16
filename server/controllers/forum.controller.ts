@@ -89,7 +89,7 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
           take: 1,
           include: { author: { select: { name: true } } },
         },
-        _count: { select: { posts: true } },
+        _count: { select: { posts: { where: { deleted: false } } } },
       },
     });
 
@@ -130,7 +130,7 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
           orderBy: { createdAt: "asc" },
           include: {
             author: { select: { id: true, name: true, role: true } },
-            reactions: true,
+            reactions: { include: { user: { select: { name: true } } } },
           },
         },
       },
@@ -143,14 +143,15 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
     const userId = req.user?.id;
 
     const posts: ForumPostDTO[] = thread.posts.map((p) => {
-      const reactionMap = new Map<string, { count: number; active: boolean }>();
-      for (const r of p.reactions) {
+      const reactionMap = new Map<string, { count: number; active: boolean; users: string[] }>();
+      for (const r of p.reactions as Array<typeof p.reactions[number] & { user: { name: string } }>) {
         const existing = reactionMap.get(r.emoji);
         if (existing) {
           existing.count++;
+          existing.users.push(r.user.name);
           if (r.userId === userId) existing.active = true;
         } else {
-          reactionMap.set(r.emoji, { count: 1, active: r.userId === userId });
+          reactionMap.set(r.emoji, { count: 1, active: r.userId === userId, users: [r.user.name] });
         }
       }
       const reactions: ForumReactionGroupDTO[] = Array.from(reactionMap.entries()).map(
@@ -159,13 +160,16 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
 
       return {
         id: p.id,
-        content: p.content,
+        content: p.deleted ? "" : p.content,
         solution: p.solution,
         authorId: p.author.id,
         authorName: p.author.name,
         authorRole: p.author.role,
         createdAt: p.createdAt.toISOString(),
         updatedAt: p.updatedAt.toISOString(),
+        editedByName: p.editedByName,
+        deleted: p.deleted,
+        deletedByName: p.deletedByName,
         reactions,
       };
     });
@@ -336,7 +340,11 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
       throw new AppError(403, "You cannot edit this post");
     }
 
-    await prisma.forumPost.update({ where: { id: postId }, data: { content: content.trim() } });
+    const actor = await prisma.user.findUnique({ where: { id: userId }, select: { name: true } });
+    await prisma.forumPost.update({
+      where: { id: postId },
+      data: { content: content.trim(), editedByName: actor!.name },
+    });
     res.json({ ok: true });
   } catch (err) {
     next(err);
@@ -360,15 +368,13 @@ export async function deletePost(req: Request, res: Response, next: NextFunction
       throw new AppError(403, "You cannot delete this post");
     }
 
-    await prisma.forumPost.delete({ where: { id: postId } });
+    const actor = await prisma.user.findUnique({ where: { id: userId }, select: { name: true } });
+    await prisma.forumPost.update({
+      where: { id: postId },
+      data: { deleted: true, deletedByName: actor!.name, content: "" },
+    });
 
-    // A thread left with no posts is removed entirely.
-    const remaining = await prisma.forumPost.count({ where: { threadId: post.threadId } });
-    if (remaining === 0) {
-      await prisma.forumThread.delete({ where: { id: post.threadId } });
-    }
-
-    res.json({ ok: true, threadDeleted: remaining === 0 });
+    res.json({ ok: true, threadDeleted: false });
   } catch (err) {
     next(err);
   }

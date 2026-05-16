@@ -39,7 +39,6 @@ export function AlgorithmsPage() {
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-6 py-8">
           <div className="text-center mb-10 text-backdrop">
-            <h1 className="text-[32px] font-bold tracking-[-0.5px] mb-2">Algorithms</h1>  
             <p className="text-[var(--text2)] text-sm">
               Pick a language and solve challenges that combine what you learned in the courses.
             </p>

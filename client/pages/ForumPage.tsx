@@ -141,7 +141,6 @@ function ForumIndex({
     <main className="forum-page">
       <div className="forum-page-header">
         <div>
-          <h1 className="forum-page-title">Forum</h1>
           <p className="forum-page-subtitle">
             Ask, share, and hang out with other CyberStars. Be kind, search before posting, and have
             fun.
@@ -608,6 +607,25 @@ function PostCard({
     setEditing(false);
   };
 
+  if (post.deleted) {
+    return (
+      <div className={`forum-post deleted${isOp ? " op" : ""}`}>
+        <div className="post-sidebar">
+          <div className="post-avatar">
+            {post.authorName.charAt(0).toUpperCase()}
+          </div>
+          <div className="post-username">{post.authorName}</div>
+        </div>
+        <div className="post-body">
+          <div className="post-deleted-banner">
+            <span>🗑</span>
+            <span>This post was deleted by <strong>{post.deletedByName}</strong></span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`forum-post${isOp ? " op" : ""}`}>
       <div className="post-sidebar">
@@ -632,6 +650,9 @@ function PostCard({
       <div className="post-body">
         <div className="post-meta">
           <span className="post-time">{timeAgo(post.createdAt)}</span>
+          {post.editedByName && (
+            <span className="post-edited">edited by {post.editedByName}</span>
+          )}
         </div>
         {post.solution && (
           <div className="solution-banner">
@@ -675,6 +696,7 @@ function PostCard({
                 key={r.emoji}
                 className={`reaction${r.active ? " active" : ""}`}
                 onClick={() => onReaction(r.emoji)}
+                title={r.users.join(", ")}
               >
                 <span>{r.emoji}</span>
                 <span>{r.count}</span>

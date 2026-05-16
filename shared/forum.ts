@@ -61,6 +61,9 @@ export interface ForumPostDTO {
   authorRole: UserRole;
   createdAt: string;
   updatedAt: string;
+  editedByName: string | null;
+  deleted: boolean;
+  deletedByName: string | null;
   reactions: ForumReactionGroupDTO[];
 }
 
@@ -68,6 +71,7 @@ export interface ForumReactionGroupDTO {
   emoji: string;
   count: number;
   active: boolean;
+  users: string[];
 }
 
 export interface CreateThreadRequest {

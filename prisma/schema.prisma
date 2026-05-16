@@ -187,13 +187,16 @@ model ForumThread {
 }
 
 model ForumPost {
-  id        Int      @id @default(autoincrement())
-  threadId  Int      @map("thread_id")
-  authorId  Int      @map("author_id")
-  content   String
-  solution  Boolean  @default(false)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  id            Int      @id @default(autoincrement())
+  threadId      Int      @map("thread_id")
+  authorId      Int      @map("author_id")
+  content       String
+  solution      Boolean  @default(false)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @default(now()) @updatedAt @map("updated_at")
+  editedByName  String?  @map("edited_by_name") @db.VarChar(100)
+  deleted       Boolean  @default(false)
+  deletedByName String?  @map("deleted_by_name") @db.VarChar(100)
 
   thread    ForumThread    @relation(fields: [threadId], references: [id], onDelete: Cascade)
   author    User           @relation(fields: [authorId], references: [id], onDelete: Cascade)

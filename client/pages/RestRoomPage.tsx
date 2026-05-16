@@ -794,15 +794,22 @@ export function RestRoomPage() {
       const edgeBottom = el.querySelector(".edge-hint.bottom") as HTMLElement;
       const edgeLeft = el.querySelector(".edge-hint.left") as HTMLElement;
       const edgeRight = el.querySelector(".edge-hint.right") as HTMLElement;
-      const hdgTick = el.querySelector("#rest-hdgTick") as HTMLElement;
-      const poiNameEl = el.querySelector("#rest-poiName") as HTMLElement;
-      const poiTitleEl = el.querySelector("#rest-poiTitle") as HTMLElement;
+      const headingEl = el.querySelector("#rest-heading") as HTMLElement | null;
+      const dirElm = el.querySelector("#rest-dir") as HTMLElement | null;
       const evaEl = el.querySelector("#rest-evaTimer") as HTMLElement;
       const hrEl = el.querySelector("#rest-hrate") as HTMLElement;
       const o2dec = el.querySelector("#rest-o2dec") as HTMLElement;
       const posEl = el.querySelector("#rest-posReadout") as HTMLElement;
-      const headingEl = el.querySelector("#rest-heading") as HTMLElement;
-      const dirElm = el.querySelector("#rest-dir") as HTMLElement;
+      const evaEl2 = el.querySelector("#rest-evaTimer2") as HTMLElement;
+      const hrEl2 = el.querySelector("#rest-hrate2") as HTMLElement;
+      const o2dec2 = el.querySelector("#rest-o2dec2") as HTMLElement;
+      const posEl2 = el.querySelector("#rest-posReadout2") as HTMLElement;
+      const pressureVal = el.querySelector("#rest-pressureVal") as HTMLElement;
+      const pressureTick = el.querySelector("#rest-pressureTick") as HTMLElement;
+      const o2DialVal = el.querySelector("#rest-o2DialVal") as HTMLElement;
+      const o2Tick = el.querySelector("#rest-o2Tick") as HTMLElement;
+      let pressureTarget = 101.3, pressureCurrent = 101.3, nextPressureChange = 5000;
+      let o2Target = 97, o2Current = 97, nextO2Change = 8000;
       const velEl = el.querySelector("#rest-velocity") as HTMLElement;
       const nearestEl = el.querySelector("#rest-nearestBody") as HTMLElement;
 
@@ -887,19 +894,41 @@ export function RestRoomPage() {
       function fmt2(n: number) { return n.toString().padStart(2, "0"); }
       function tickHUD(now: number, speed: number) {
         const elapsed = Math.floor((now - startTime) / 1000);
-        evaEl.textContent = fmt2(Math.floor(elapsed / 3600)) + ":" + fmt2(Math.floor((elapsed % 3600) / 60)) + ":" + fmt2(elapsed % 60);
-        hrEl.innerHTML = (60 + Math.round(2 * Math.sin(now * 0.001))) + " <small>BPM</small>";
-        o2dec.textContent = String(7 - Math.floor(elapsed / 60) % 4);
+        const evaStr = fmt2(Math.floor(elapsed / 3600)) + ":" + fmt2(Math.floor((elapsed % 3600) / 60)) + ":" + fmt2(elapsed % 60);
+        evaEl.textContent = evaStr;
+        evaEl2.textContent = evaStr;
+        const hrVal = String(60 + Math.round(2 * Math.sin(now * 0.001)));
+        hrEl.innerHTML = hrVal + " <small>BPM</small>";
+        hrEl2.textContent = hrVal;
+        const o2val = String(7 - Math.floor(elapsed / 60) % 4);
+        o2dec.textContent = o2val;
+        o2dec2.textContent = o2val;
         const d = camera.position.length();
-        posEl.textContent = (d >= 0 ? "+" : "") + (d / 1000).toFixed(3) + " LY";
-        const fwdH = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion);
-        let headingDeg = Math.atan2(fwdH.x, -fwdH.z) * 180 / Math.PI;
-        headingDeg = (headingDeg + 360) % 360;
-        headingEl.textContent = headingDeg.toFixed(1) + "°";
-        const compass = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-        dirElm.textContent = compass[Math.floor(((headingDeg + 22.5) % 360) / 45)];
-        if (hdgTick) hdgTick.style.setProperty("--a", headingDeg.toFixed(0) + "deg");
+        const posStr = (d >= 0 ? "+" : "") + (d / 1000).toFixed(3);
+        posEl.textContent = posStr + " LY";
+        posEl2.textContent = posStr;
         velEl.textContent = Math.round(speed * 600).toLocaleString();
+
+        if (now > nextPressureChange) {
+          pressureTarget = 100.8 + Math.random() * 1.4;
+          nextPressureChange = now + 6000 + Math.random() * 12000;
+        }
+        pressureCurrent += (pressureTarget - pressureCurrent) * 0.02;
+        const pInt = Math.floor(pressureCurrent);
+        const pDec = (pressureCurrent - pInt).toFixed(1).slice(1);
+        pressureVal.innerHTML = pInt + "<small>" + pDec + "</small>";
+        const pressureAngle = ((pressureCurrent - 100) / 3) * 180 - 90;
+        pressureTick.style.setProperty("--a", pressureAngle.toFixed(0) + "deg");
+
+        if (now > nextO2Change) {
+          o2Target = 94 + Math.random() * 5;
+          nextO2Change = now + 8000 + Math.random() * 14000;
+        }
+        o2Current += (o2Target - o2Current) * 0.015;
+        const o2Int = Math.round(o2Current);
+        o2DialVal.innerHTML = o2Int + "<small>%</small>";
+        const o2Angle = ((o2Current - 90) / 10) * 180 - 90;
+        o2Tick.style.setProperty("--a", o2Angle.toFixed(0) + "deg");
       }
 
       function updateNearest() {
@@ -914,17 +943,6 @@ export function RestRoomPage() {
         }
         if (!best) return;
         nearestEl.textContent = best.name + " · " + (bestD / 100).toFixed(1) + "k km";
-        let label = "Open space";
-        if (bestD < (best.radius || 200) * 6) label = "Near " + best.name;
-        else if (bestD < 2000) label = "Approaching " + best.name;
-        if (label !== currentPOI) {
-          currentPOI = label;
-          poiTitleEl.style.opacity = "0";
-          setTimeout(() => {
-            poiNameEl.textContent = label;
-            poiTitleEl.style.opacity = "1";
-          }, 350);
-        }
       }
       let nearestTick = 0;
 
@@ -983,8 +1001,9 @@ export function RestRoomPage() {
 
         skyStars.position.copy(camera.position);
         milkyGroup.position.copy(camera.position);
-        skyStars.rotation.y = now * 0.00002;
-        skyMat.opacity = 0.85 + 0.15 * Math.sin(now * 0.0005);
+        const galaxySpin = now * 0.0000015;
+        skyStars.rotation.y = galaxySpin;
+        milkyGroup.rotation.y = galaxySpin;
 
         for (const p of planets) {
           p.planet.rotation.y += p.planet.userData.spin;
@@ -1106,9 +1125,9 @@ export function RestRoomPage() {
           <div className="ck-dash-inner">
             <div className="ck-cluster">
               <div className="dial">
-                <div className="dial-tick" style={{ "--a": "30deg" } as any} />
+                <div className="dial-tick" id="rest-pressureTick" style={{ "--a": "30deg" } as any} />
                 <div className="dial-label">Cabin Pressure</div>
-                <div className="dial-value">101<small>.3</small></div>
+                <div className="dial-value" id="rest-pressureVal">101<small>.3</small></div>
                 <div className="dial-unit">kPa</div>
               </div>
 
@@ -1127,19 +1146,23 @@ export function RestRoomPage() {
                     <div className="scope-self" />
                   </div>
                   <div className="cd-readouts">
-                    <div className="cd-row"><span className="cd-label">Velocity</span><span className="cd-value"><span id="rest-velocity">0</span> <small>km/s</small></span></div>
-                    <div className="cd-row"><span className="cd-label">Thrust</span><span className="cd-value">000<small>%</small></span></div>
-                    <div className="cd-row"><span className="cd-label">Engine</span><span className="cd-value">DRIFT-1 <small>idle</small></span></div>
-                    <div className="cd-row"><span className="cd-label">Course</span><span className="cd-value">OPEN <small>free flight</small></span></div>
+                    <div className="cd-cell"><span className="cd-label">Velocity</span><span className="cd-value"><span id="rest-velocity">0</span> <small>km/s</small></span></div>
+                    <div className="cd-cell"><span className="cd-label">Thrust</span><span className="cd-value">000<small>%</small></span></div>
+                    <div className="cd-cell"><span className="cd-label">Engine</span><span className="cd-value">DRIFT-1</span></div>
+                    <div className="cd-cell"><span className="cd-label">Course</span><span className="cd-value">OPEN</span></div>
+                    <div className="cd-cell"><span className="cd-label">EVA</span><span className="cd-value"><span id="rest-evaTimer2">00:00:00</span></span></div>
+                    <div className="cd-cell"><span className="cd-label">Position</span><span className="cd-value"><span id="rest-posReadout2">+0.000</span> <small>LY</small></span></div>
+                    <div className="cd-cell"><span className="cd-label">Heart</span><span className="cd-value"><span id="rest-hrate2">62</span> <small>BPM</small></span></div>
+                    <div className="cd-cell"><span className="cd-label">O₂</span><span className="cd-value">9<span id="rest-o2dec2">7</span><small>%</small></span></div>
                   </div>
                 </div>
               </div>
 
               <div className="dial">
-                <div className="dial-tick" id="rest-hdgTick" style={{ "--a": "0deg" } as any} />
-                <div className="dial-label">Heading</div>
-                <div className="dial-value"><span id="rest-heading">000.0{"°"}</span></div>
-                <div className="dial-unit"><span id="rest-dir">N</span></div>
+                <div className="dial-tick" id="rest-o2Tick" style={{ "--a": "0deg" } as any} />
+                <div className="dial-label">O₂ Level</div>
+                <div className="dial-value" id="rest-o2DialVal">97<small>%</small></div>
+                <div className="dial-unit">nominal</div>
               </div>
             </div>
 
@@ -1159,10 +1182,8 @@ export function RestRoomPage() {
         </div>
       </div>
 
-      {/* HUD elements */}
-      <div className="poi-banner">
-        <div className="poi-banner-kicker" id="rest-nearestBody">{"—"}</div>
-      </div>
+      {/* Hidden HUD data for nearest body */}
+      <span id="rest-nearestBody" style={{ display: "none" }}>{"—"}</span>
 
       <div className="cursor-dot" id="rest-cursor" />
       <div className="edge-hint top" />
@@ -1224,13 +1245,14 @@ const restRoomStyles = `
 .cd-poi{display:flex;flex-direction:column;align-items:center;text-align:center;padding-bottom:6px;border-bottom:1px dashed rgba(255,170,68,.25);transition:opacity .6s ease}
 .cd-poi-kicker{font-family:var(--mono);font-size:8px;letter-spacing:3.2px;color:rgba(255,170,68,.7);text-transform:uppercase;margin-bottom:1px}
 .cd-poi-text{font-family:var(--font);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);text-shadow:0 0 10px rgba(255,170,68,.3);letter-spacing:.4px}
-.cd-row{display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px dashed rgba(0,214,143,.15);padding:3px 2px}
-.cd-row:last-child{border-bottom:none}
-.cd-label{font-size:9px;letter-spacing:1.8px;color:rgba(180,200,220,.55);text-transform:uppercase}
-.cd-value{font-size:13px;font-weight:700;color:rgba(120,255,200,.95);text-shadow:0 0 8px rgba(0,214,143,.45);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.cd-cell{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 2px;border-right:1px solid rgba(0,214,143,.1);border-bottom:1px solid rgba(0,214,143,.1)}
+.cd-cell:nth-child(4n){border-right:none}
+.cd-cell:nth-child(n+5){border-bottom:none}
+.cd-label{font-size:8px;letter-spacing:1.8px;color:rgba(220,120,255,.75);text-transform:uppercase;margin-bottom:2px}
+.cd-value{font-size:13px;font-weight:700;color:rgba(120,255,200,.95);text-shadow:0 0 8px rgba(0,214,143,.45);font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1.1}
 .cd-value small{font-size:9px;opacity:.6;letter-spacing:1px;font-weight:500}
 .cd-mid{display:flex;gap:12px;flex:1;min-height:0;align-items:stretch}
-.cd-readouts{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.cd-readouts{flex:1;display:grid;grid-template-columns:repeat(4,1fr);align-content:center;gap:0}
 .scope{position:relative;flex-shrink:0;width:96px;height:96px;border-radius:50%;border:1px solid rgba(0,214,143,.32);background:radial-gradient(circle at 50% 50%,rgba(0,214,143,.06) 0%,transparent 70%);box-shadow:0 0 18px rgba(0,214,143,.1),inset 0 0 14px rgba(0,214,143,.08)}
 .scope::before,.scope::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
 .scope::before{inset:13%;border:1px dashed rgba(0,214,143,.18)}
