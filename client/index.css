@@ -32,7 +32,7 @@ html, body {
 
 #root { height: 100%; isolation: isolate; }
 
-* { font-family: var(--font); }
+*, input, select, textarea, button { font-family: var(--font); }
 
 code, pre, kbd, samp { font-family: var(--mono); }
 

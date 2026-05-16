@@ -119,8 +119,8 @@ export function HomePage() {
 
             {/* ── Welcome Hero ── */}
             <div
-              className="p-6 sm:p-8 rounded-[14px] border border-[var(--border)]"
-              style={{ background: "linear-gradient(135deg, var(--bg3) 0%, #1a1040 100%)" }}
+              className="p-6 sm:p-8 rounded-[14px] border border-[var(--accent)]/30 backdrop-blur-[12px]"
+              style={{ background: "linear-gradient(135deg, rgba(30,30,40,0.1) 0%, rgba(26,16,64,0.1) 100%)" }}
             >
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                 <div>
@@ -167,7 +167,7 @@ export function HomePage() {
                 <SectionHeader>Continue where you left off</SectionHeader>
                 <button
                   onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
-                  className="w-full text-left flex items-center gap-4 p-4 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] hover:border-[var(--accent)] transition cursor-pointer group"
+                  className="w-full text-left flex items-center gap-4 p-4 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] transition cursor-pointer group"
                 >
                   {/* Left accent stripe */}
                   <div className="w-1 self-stretch rounded-full bg-[var(--accent)] shrink-0" />
@@ -208,7 +208,7 @@ export function HomePage() {
             )}
 
             {/* ── Leaderboard ── */}
-            <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
+            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xs font-semibold uppercase tracking-[1px] text-[var(--text3)]">
                   Leaderboard
@@ -378,17 +378,17 @@ export function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-3xl mx-auto text-left">
-            <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
+            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">📖</div>
               <div className="font-semibold mb-1">Read</div>
               <div className="text-sm text-[var(--text2)]">Bite-sized lessons explained simply</div>
             </div>
-            <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
+            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">⌨️</div>
               <div className="font-semibold mb-1">Write</div>
               <div className="text-sm text-[var(--text2)]">Interactive editor right in the browser</div>
             </div>
-            <div className="p-5 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)]">
+            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">⚡</div>
               <div className="font-semibold mb-1">Run</div>
               <div className="text-sm text-[var(--text2)]">Real code execution with instant feedback</div>
@@ -413,7 +413,7 @@ function SectionHeader({ children }: { children: React.ReactNode }) {
 function StatCard({ label, value, color }: { label: string; value: string; color: string }) {
   return (
     <div
-      className="px-5 py-4 rounded-[10px] border border-[var(--border)] text-center min-w-[100px] backdrop-blur-sm bg-[var(--bg)]/80"
+      className="px-5 py-4 rounded-[10px] border border-[var(--accent)]/30 text-center min-w-[100px] backdrop-blur-[12px] bg-[rgba(15,15,20,0.1)]"
     >
       <div className="text-xl font-bold mb-0.5" style={{ color }}>{value}</div>
       <div className="text-[10px] uppercase tracking-[1px] text-[var(--text3)] font-semibold">{label}</div>

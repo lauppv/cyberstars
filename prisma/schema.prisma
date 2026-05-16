@@ -51,7 +51,8 @@ model User {
   threads   ForumThread[]
   posts     ForumPost[]
   reactions ForumReaction[]
-  tickets   SupportTicket[]
+  tickets         SupportTicket[]
+  supportMessages SupportMessage[]
 
   @@map("users")
 }
@@ -66,11 +67,26 @@ model SupportTicket {
   createdAt DateTime     @default(now()) @map("created_at")
   updatedAt DateTime     @default(now()) @updatedAt @map("updated_at")
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages SupportMessage[]
 
   @@index([userId])
   @@index([status])
   @@map("support_tickets")
+}
+
+model SupportMessage {
+  id        Int      @id @default(autoincrement())
+  ticketId  Int      @map("ticket_id")
+  userId    Int      @map("user_id")
+  message   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  user   User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([ticketId])
+  @@map("support_messages")
 }
 
 model Curriculum {

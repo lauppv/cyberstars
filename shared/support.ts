@@ -21,6 +21,15 @@ export interface SupportTicketDTO {
   authorEmail?: string;
 }
 
+export interface SupportMessageDTO {
+  id: number;
+  userId: number;
+  authorName: string;
+  isAdmin: boolean;
+  message: string;
+  createdAt: string;
+}
+
 export interface CreateTicketRequest {
   type: TicketType;
   subject: string;

@@ -22,7 +22,7 @@
   backdrop-filter: blur(6px);
   border-radius: var(--radius);
   padding: 20px 24px;
-  border: 1px solid rgba(46, 46, 62, 0.4);
+  border: 1px solid rgba(108, 92, 231, 0.3);
 }
 
 .forum-page-title {
@@ -84,10 +84,10 @@
 .forum-stats {
   display: flex;
   gap: 0;
-  background: rgba(22, 22, 29, 0.72);
+  background: rgba(22, 22, 29, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   padding: 14px 4px;
   margin-bottom: 22px;
@@ -155,10 +155,10 @@
 
 /* ===== Category table ===== */
 .cat-table {
-  background: rgba(22, 22, 29, 0.72);
+  background: rgba(22, 22, 29, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -314,10 +314,10 @@
   align-items: flex-start;
   gap: 18px;
   padding: 22px 24px;
-  background: rgba(22, 22, 29, 0.72);
+  background: rgba(22, 22, 29, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   margin-bottom: 18px;
   position: relative;
@@ -383,10 +383,10 @@
 
 /* ===== Thread table ===== */
 .thread-table {
-  background: rgba(22, 22, 29, 0.72);
+  background: rgba(22, 22, 29, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -568,10 +568,10 @@
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 0;
-  background: rgba(22, 22, 29, 0.72);
+  background: rgba(22, 22, 29, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   overflow: hidden;
   margin-bottom: 14px;
@@ -596,7 +596,7 @@
 
 .post-sidebar {
   padding: 18px 14px;
-  background: rgba(30, 30, 40, 0.6);
+  background: rgba(30, 30, 40, 0.45);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -606,7 +606,7 @@
 }
 
 .forum-post.op .post-sidebar {
-  background: linear-gradient(180deg, rgba(108, 92, 231, 0.12), rgba(30, 30, 40, 0.6));
+  background: linear-gradient(180deg, rgba(108, 92, 231, 0.1), rgba(30, 30, 40, 0.45));
 }
 
 .post-avatar {
@@ -766,10 +766,10 @@
 
 /* ===== Composer ===== */
 .forum-composer {
-  background: rgba(22, 22, 29, 0.72);
+  background: rgba(22, 22, 29, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   overflow: hidden;
   margin-top: 18px;
@@ -838,8 +838,8 @@
 .thread-locked-banner {
   text-align: center;
   padding: 16px;
-  background: rgba(22, 22, 29, 0.72);
-  border: 1px solid var(--border);
+  background: rgba(22, 22, 29, 0.55);
+  border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   margin-top: 18px;
   color: var(--text3);

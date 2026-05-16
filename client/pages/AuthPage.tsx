@@ -8,7 +8,7 @@ function getPasswordStrength(pw: string): number {
   let s = 0;
   if (pw.length >= 6) s++;
   if (pw.length >= 10) s++;
-  if (/[A-Z]/.test(pw) && /[0-9]/.test(pw)) s++;
+  if (/[A-Z]/.test(pw) || /[0-9]/.test(pw) || /[^a-zA-Z0-9]/.test(pw) || pw.length >= 14) s++;
   return s;
 }
 
@@ -134,7 +134,7 @@ function Starfield() {
 }
 
 export function AuthPage() {
-  const [mode, setMode] = useState<"login" | "signup" | "success">("login");
+  const [mode, setMode] = useState<"login" | "signup">("login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -159,7 +159,7 @@ export function AuthPage() {
         navigate("/");
       } else {
         await signup({ name, email, password });
-        setMode("success");
+        navigate("/welcome");
       }
     } catch (err) {
       if (err instanceof ApiClientError) {
@@ -276,24 +276,8 @@ export function AuthPage() {
 
         {/* Right form panel */}
         <div className="w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[var(--bg2)] border-l border-[var(--border)] flex flex-col justify-center px-12 py-12 overflow-y-auto">
-          {mode === "success" ? (
-            <div className="auth-fade-up text-center">
-              <div className="text-5xl mb-4">🚀</div>
-              <div className="text-[22px] font-bold mb-2">Welcome to CyberStars!</div>
-              <div className="text-sm text-[var(--text2)] mb-6 leading-relaxed">
-                Your account is ready. Let's pick your first language and start coding.
-              </div>
-              <button
-                onClick={() => navigate("/")}
-                className="w-full py-[13px] rounded-[var(--radius)] bg-[var(--accent)] text-white text-[15px] font-semibold cursor-pointer border-none hover:brightness-110 transition"
-                style={{ boxShadow: "0 4px 16px #6C5CE744" }}
-              >
-                Go to Dashboard →
-              </button>
-            </div>
-          ) : (
+          {/* Tabs */}
             <>
-              {/* Tabs */}
               <div className="flex mb-8 bg-[var(--bg3)] rounded-[var(--radius)] p-1">
                 <button
                   onClick={() => switchMode("login")}
@@ -452,7 +436,6 @@ export function AuthPage() {
                 )}
               </div>
             </>
-          )}
         </div>
       </div>
     </>

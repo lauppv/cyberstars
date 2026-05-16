@@ -248,7 +248,7 @@ export function ChallengesPage() {
 
         <div className="flex-1 flex overflow-hidden">
           {/* Sidebar - Challenge list */}
-          <div className="w-[360px] flex-shrink-0 bg-[var(--bg2)] border-r border-[var(--border)] flex flex-col overflow-hidden">
+          <div className="w-[360px] flex-shrink-0 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-r border-[var(--accent)]/30 flex flex-col overflow-hidden">
             <div className="p-5 pb-4">
               <div className="text-lg font-bold mb-3" style={{ letterSpacing: "-0.3px" }}>
                 Challenges

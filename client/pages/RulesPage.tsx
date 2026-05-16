@@ -2,13 +2,9 @@ import { Topbar } from "../components/layout/Topbar";
 
 const RULES = [
   { title: "Be respectful", desc: "Treat everyone with kindness. No harassment, bullying, hate speech, or personal attacks." },
-  { title: "No plagiarism", desc: "Submit only your own work. Copying solutions from others without understanding them defeats the purpose." },
-  { title: "Keep it appropriate", desc: "No NSFW content, spam, or advertising in the forum or anywhere on the platform." },
-  { title: "Don't share accounts", desc: "Your account is personal. Sharing credentials or using someone else's account is not allowed." },
+  { title: "Keep it appropriate", desc: "No spam, advertising in the forum, or anywhere on the platform." },
   { title: "No exploiting bugs", desc: "If you find a bug or exploit, report it via Support instead of abusing it for XP or other gains." },
-  { title: "Help others learn", desc: "When answering questions on the forum, guide people toward the solution rather than just giving the answer." },
-  { title: "One account per person", desc: "Creating multiple accounts to farm XP or circumvent bans will result in all accounts being suspended." },
-  { title: "English in code, any language in chat", desc: "Code and variable names should be in English. Forum posts can be in any language." },
+  { title: "English", desc: "This is an English-speaking community. Using other languages is not allowed." },
 ];
 
 export function RulesPage() {

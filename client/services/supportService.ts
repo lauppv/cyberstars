@@ -1,6 +1,7 @@
 import { api } from "./apiClient";
 import type {
   SupportTicketDTO,
+  SupportMessageDTO,
   CreateTicketRequest,
   TicketStatus,
 } from "../../shared/support";
@@ -19,4 +20,12 @@ export function getAllTickets() {
 
 export function updateTicketStatus(id: number, status: TicketStatus) {
   return api.put<{ ok: boolean }>(`/api/support/tickets/${id}/status`, { status });
+}
+
+export function getTicketMessages(id: number) {
+  return api.get<SupportMessageDTO[]>(`/api/support/tickets/${id}/messages`);
+}
+
+export function addTicketMessage(id: number, message: string) {
+  return api.post<{ ok: boolean }>(`/api/support/tickets/${id}/messages`, { message });
 }
