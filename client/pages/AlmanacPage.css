@@ -7,6 +7,11 @@
 
 .almanac-header {
   margin-bottom: 40px;
+  background: rgba(11, 11, 17, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  border: 1px solid rgba(46, 46, 62, 0.4);
 }
 
 .almanac-kicker {

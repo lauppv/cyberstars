@@ -48,6 +48,23 @@ function Starfield() {
 
     let rafId: number;
     let lastT = performance.now();
+    let running = true;
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        running = false;
+      } else {
+        if (!running) {
+          running = true;
+          lastT = performance.now();
+          ctx.clearRect(0, 0, w, h);
+          rafId = requestAnimationFrame(tick);
+        }
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     const tick = (t: number) => {
       const dt = Math.min(50, t - lastT);
       lastT = t;
@@ -107,7 +124,9 @@ function Starfield() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      running = false;
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
@@ -232,6 +251,7 @@ export function AuthPage() {
                 { icon: "🏆", bold: "XP & badges", rest: " — gamified progress tracking" },
                 { icon: "💬", bold: "Community forum", rest: " — ask, share, and help others" },
                 { icon: "📰", bold: "The Almanac", rest: " — tech history, facts & legends" },
+                { icon: "🚀", bold: "Rest Room", rest: " — explore the universe in your cockpit" },
               ].map((f) => (
                 <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
                   <div

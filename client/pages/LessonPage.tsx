@@ -38,7 +38,7 @@ const DIFFICULTY_COLOR: Record<string, string> = {
 export function LessonPage() {
   const navigate = useNavigate();
   const { category = "", lesson = "" } = useParams<{ category: string; lesson: string }>();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
 
@@ -81,7 +81,7 @@ export function LessonPage() {
   useEffect(() => {
     if (lessonCompleted && justSubmittedRef.current) {
       justSubmittedRef.current = false;
-      recordActivityToday();
+      if (user) recordActivityToday(user.id);
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
       const lessonMeta = course?.lessons.find((l) => l.slug === lesson);
       setToastData({

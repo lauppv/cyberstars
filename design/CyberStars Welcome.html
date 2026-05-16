@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CyberStars — Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#6C5CE7;
+  --accent-2:#a855f7;
+  --accent-glow:#6C5CE733;
+  --bg:#0B0B11;
+  --bg2:#10101A;
+  --bg3:#16161F;
+  --surface:#1C1C28;
+  --surface2:#252535;
+  --border:#26263A;
+  --border2:#33334A;
+  --text:#E8E8F0;
+  --text2:#9999B0;
+  --text3:#6B6B85;
+  --success:#00D68F;
+  --warning:#FFAA00;
+  --c-c:#7AB6FF;
+  --c-java:#FF9A6E;
+  --c-py:#FFD24A;
+  --c-bash:#7CEEAE;
+  --font:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono','Fira Code',monospace;
+}
+html,body{font-family:var(--font);background:var(--bg);color:var(--text);scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden;position:relative}
+::selection{background:var(--accent);color:#fff}
+
+/* Background gradients — fixed for parallax */
+.bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-orbs::before,.bg-orbs::after{content:'';position:absolute;width:780px;height:780px;border-radius:50%;filter:blur(120px);opacity:.35}
+.bg-orbs::before{background:radial-gradient(circle,#6C5CE7 0%,transparent 70%);left:-200px;top:200px;animation:drift1 22s ease-in-out infinite}
+.bg-orbs::after{background:radial-gradient(circle,#a855f7 0%,transparent 70%);right:-150px;top:60vh;animation:drift2 26s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(120px,-80px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-100px,120px)}}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(108,92,231,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(108,92,231,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 0%,transparent 90%)}
+
+/* Sticky scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:100;pointer-events:none}
+.scroll-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 12px var(--accent-glow);transition:width .12s linear}
+
+/* Top mini-bar */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:rgba(11,11,17,.6);backdrop-filter:blur(14px);border-bottom:1px solid rgba(38,38,58,.6)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-icon{font-size:22px;color:var(--accent);filter:drop-shadow(0 0 10px var(--accent-glow))}
+.logo-text{font-weight:700;font-size:17px;letter-spacing:-.5px}
+.skip{font-family:var(--mono);font-size:11px;color:var(--text3);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:6px;transition:all .15s}
+.skip:hover{color:var(--text);border-color:var(--accent)}
+
+/* Vertical centerline — runs down page center, connects topics */
+.centerline{position:absolute;left:50%;top:0;bottom:0;width:24px;transform:translateX(-50%);z-index:0;pointer-events:none}
+.centerline-track{position:absolute;left:50%;top:60px;bottom:60px;width:2px;transform:translateX(-50%);background-image:repeating-linear-gradient(180deg,rgba(108,92,231,.18) 0 6px,transparent 6px 12px);border-radius:1px}
+.centerline-fill{position:absolute;left:50%;top:60px;width:2px;height:0;transform:translateX(-50%);background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 14px var(--accent),0 0 28px var(--accent-glow);border-radius:1px;transition:height 1s cubic-bezier(.65,0,.35,1)}
+.centerline-fill::after{content:'';position:absolute;left:50%;bottom:-6px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent),0 0 32px var(--accent);transform:translateX(-50%);opacity:.9}
+.centerline-node{position:absolute;left:50%;width:18px;height:18px;border-radius:50%;background:var(--bg);border:2px solid var(--border2);transform:translate(-50%,-50%);transition:all .35s ease;pointer-events:auto;cursor:pointer}
+.centerline-node::before{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--surface);transition:background .35s ease}
+.centerline-node.active{border-color:var(--accent);box-shadow:0 0 0 6px rgba(108,92,231,.12),0 0 22px var(--accent)}
+.centerline-node.active::before{background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.centerline-label{position:absolute;left:32px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;color:var(--text3);white-space:nowrap;text-transform:uppercase;letter-spacing:2px;background:rgba(11,11,17,.85);padding:5px 10px;border-radius:4px;border:1px solid var(--border);backdrop-filter:blur(6px);transition:all .35s ease}
+.centerline-node.active .centerline-label{color:var(--accent);border-color:rgba(108,92,231,.35)}
+@media (max-width:880px){.centerline{display:none}}
+
+/* General layout */
+.section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 32px;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+.section.tight{min-height:auto;padding:80px 32px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;padding:6px 12px;background:rgba(108,92,231,.1);border:1px solid rgba(108,92,231,.25);border-radius:20px;width:fit-content}
+.eyebrow-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 8px var(--accent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.title{font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:20px;text-wrap:balance}
+.title .accent{background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:18px;color:var(--text2);line-height:1.6;max-width:580px;margin-bottom:32px;text-wrap:pretty}
+
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.08s}
+.reveal[data-delay="2"]{transition-delay:.16s}
+.reveal[data-delay="3"]{transition-delay:.24s}
+.reveal[data-delay="4"]{transition-delay:.32s}
+.reveal[data-delay="5"]{transition-delay:.40s}
+.reveal[data-delay="6"]{transition-delay:.48s}
+.reveal[data-delay="7"]{transition-delay:.56s}
+.reveal[data-delay="8"]{transition-delay:.64s}
+.reveal[data-delay="9"]{transition-delay:.72s}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:160px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.hero-stars{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero-eyebrow{margin:0 auto 24px}
+.hero-title{font-size:clamp(48px,8vw,96px);font-weight:700;letter-spacing:-3px;line-height:1;margin-bottom:24px}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line span{display:inline-block;opacity:0;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.22,1,.36,1) forwards}
+.hero-title .line:nth-child(2) span{animation-delay:.15s}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+.hero-sub{font-size:20px;color:var(--text2);max-width:600px;margin:0 auto 40px;line-height:1.6;opacity:0;animation:fadeIn .9s ease .5s forwards}
+@keyframes fadeIn{to{opacity:1}}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;opacity:0;animation:fadeIn .9s ease 1.2s forwards;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hero-scroll-arrow{width:1px;height:48px;background:linear-gradient(180deg,var(--text3),transparent);position:relative;overflow:hidden}
+.hero-scroll-arrow::after{content:'';position:absolute;top:0;left:0;width:100%;height:12px;background:var(--accent);animation:scrollHint 2s ease-in-out infinite}
+@keyframes scrollHint{0%{top:-12px}100%{top:48px}}
+
+/* BOOTING section */
+.boot-block{font-family:var(--mono);background:rgba(28,28,40,.6);border:1px solid var(--border);border-radius:12px;padding:28px 32px;backdrop-filter:blur(10px);max-width:680px}
+.boot-row{display:grid;grid-template-columns:1fr 200px 60px;gap:16px;align-items:center;padding:10px 0;font-size:13px}
+.boot-row + .boot-row{border-top:1px dashed var(--border)}
+.boot-label{color:var(--text2)}
+.boot-label .prefix{color:var(--accent);margin-right:8px}
+.boot-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;position:relative}
+.boot-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:3px;transition:width 1.4s cubic-bezier(.22,1,.36,1);box-shadow:0 0 12px var(--accent-glow)}
+.boot-pct{color:var(--text3);text-align:right;font-size:12px;font-variant-numeric:tabular-nums;transition:color .3s ease}
+.boot-pct.done{color:var(--success)}
+
+/* LANGUAGES — interconnected cards */
+.langs{position:relative}
+.langs-grid{display:grid;grid-template-columns:1fr 64px 1fr 64px 1fr 64px 1fr;align-items:stretch;gap:0;position:relative;z-index:2;margin-top:36px}
+@media (max-width:880px){.langs-grid{grid-template-columns:repeat(2,1fr);gap:20px}.lang-connect{display:none}}
+.lang-card{position:relative;padding:24px 22px;background:var(--surface);border:1px solid var(--border);border-radius:14px;transition:all .3s;overflow:hidden}
+.lang-card:hover{transform:translateY(-4px);border-color:var(--c)}
+.lang-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,var(--c) 0%,transparent 60%);opacity:.12;pointer-events:none}
+.lang-num{font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:14px}
+.lang-icon{width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-family:var(--mono);font-size:18px;font-weight:700;color:var(--c)}
+.lang-name{font-size:18px;font-weight:700;margin-bottom:4px;letter-spacing:-.5px}
+.lang-tag{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.lang-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:16px;min-height:60px}
+.lang-stats{display:flex;gap:14px;font-family:var(--mono);font-size:11px;color:var(--text3);padding-top:14px;border-top:1px dashed var(--border)}
+.lang-stat strong{color:var(--c);font-size:14px}
+
+/* Dynamic connectors between language cards */
+.lang-connect{align-self:center;height:80px;position:relative;display:flex;align-items:center;justify-content:center}
+.lang-connect svg{width:100%;height:40px;overflow:visible;display:block}
+.lang-connect path{fill:none;stroke-width:2;stroke-linecap:round;stroke-dasharray:80;stroke-dashoffset:80;transition:stroke-dashoffset 1.1s cubic-bezier(.22,1,.36,1) .15s;filter:drop-shadow(0 0 6px rgba(108,92,231,.4))}
+.lang-connect.in path{stroke-dashoffset:0}
+.lang-connect .node{opacity:0;transform-origin:center;transition:opacity .4s ease .9s}
+.lang-connect.in .node{opacity:1;animation:nodePulse 2.2s ease-in-out infinite 1.3s}
+@keyframes nodePulse{0%,100%{r:3}50%{r:5}}
+.lang-connect .node-bg{opacity:0;transition:opacity .5s ease .8s}
+.lang-connect.in .node-bg{opacity:.25}
+
+/* ALMANAC */
+.split{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center}
+@media (max-width:880px){.split{grid-template-columns:1fr;gap:40px}}
+.split.reverse{direction:rtl}
+.split.reverse > *{direction:ltr}
+
+.almanac-mock{background:linear-gradient(180deg,#1C1C28,#15151F);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 30px 80px -20px rgba(108,92,231,.25),0 0 0 1px var(--border) inset;position:relative}
+.almanac-mock::before{content:'';position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,var(--accent),transparent 50%);opacity:.25;z-index:-1;filter:blur(8px)}
+.almanac-tabs{display:flex;gap:6px;margin-bottom:18px;font-family:var(--mono);font-size:11px}
+.almanac-tab{padding:5px 12px;border-radius:6px;color:var(--text3);background:transparent}
+.almanac-tab.active{background:rgba(108,92,231,.15);color:var(--accent)}
+.almanac-entry + .almanac-entry{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.almanac-entry-title{font-size:13px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.almanac-entry-title .kind{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:4px;background:var(--bg3);color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.almanac-entry-title .kind.fn{background:rgba(122,182,255,.12);color:var(--c-c)}
+.almanac-entry-title .kind.cmd{background:rgba(124,238,174,.12);color:var(--c-bash)}
+.almanac-entry-title .kind.kw{background:rgba(255,210,74,.12);color:var(--c-py)}
+.almanac-entry code{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg);padding:3px 7px;border-radius:4px;border:1px solid var(--border)}
+.almanac-entry-desc{font-size:12px;color:var(--text3);margin-top:6px;line-height:1.5}
+
+/* FORUM */
+.forum-mock{background:rgba(28,28,40,.6);border:1px solid var(--border);border-radius:16px;padding:20px;backdrop-filter:blur(10px)}
+.forum-msg{display:flex;gap:12px;padding:14px 0;opacity:0;transform:translateX(-12px);transition:all .5s ease}
+.forum-mock.in .forum-msg{opacity:1;transform:none}
+.forum-mock.in .forum-msg:nth-child(2){transition-delay:.3s}
+.forum-mock.in .forum-msg:nth-child(3){transition-delay:.6s}
+.forum-mock.in .forum-msg:nth-child(4){transition-delay:.9s}
+.forum-msg + .forum-msg{border-top:1px dashed var(--border)}
+.forum-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;color:#fff}
+.forum-meta{flex:1;min-width:0}
+.forum-name{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.forum-name .role{font-family:var(--mono);font-size:9px;padding:1px 6px;border-radius:4px;background:rgba(108,92,231,.15);color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:500}
+.forum-time{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:auto}
+.forum-text{font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55}
+.forum-text code{font-family:var(--mono);font-size:11px;color:var(--c-py);background:var(--bg);padding:2px 5px;border-radius:3px}
+.forum-reactions{display:flex;gap:8px;margin-top:8px;font-family:var(--mono);font-size:10px;color:var(--text3)}
+.forum-reaction{padding:2px 8px;background:var(--bg3);border-radius:10px;border:1px solid var(--border)}
+
+/* REST ROOM — game viewport thumbnail */
+.viewport{position:relative;width:100%;max-width:560px;aspect-ratio:5/4;margin:0 auto;border-radius:14px;background:#000;overflow:hidden;box-shadow:0 30px 80px -20px rgba(108,92,231,.35),0 0 0 1px var(--border) inset;isolation:isolate}
+.vp-space{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 30% 40%,rgba(108,92,231,.22),transparent 60%),radial-gradient(ellipse 50% 40% at 75% 70%,rgba(255,107,107,.18),transparent 60%),radial-gradient(ellipse 40% 60% at 50% 100%,rgba(0,214,143,.1),transparent 70%),#020108}
+.vp-stars{position:absolute;inset:0;pointer-events:none}
+.vp-stars span{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s ease-in-out infinite}
+/* Planets */
+.vp-planet{position:absolute;border-radius:50%;box-shadow:inset -12px -12px 28px rgba(0,0,0,.65),inset 6px 6px 14px rgba(255,255,255,.05)}
+.vp-gas{right:6%;top:32%;width:46%;aspect-ratio:1;background:radial-gradient(circle at 35% 30%,#ffd6a8 0%,#e89a55 18%,#b8632a 40%,#5a2a10 90%);position:absolute}
+.vp-gas::before{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(8deg,transparent 0 6%,rgba(0,0,0,.18) 6% 8%,transparent 8% 14%,rgba(255,200,140,.12) 14% 16%);mix-blend-mode:overlay}
+.vp-gas::after{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset -14px -16px 36px rgba(0,0,0,.7),inset 8px 8px 20px rgba(255,210,160,.18);pointer-events:none}
+.vp-ring{position:absolute;right:-4%;top:42%;width:70%;aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,200,140,.5);transform:rotate(-22deg) scaleY(.18);box-shadow:0 0 0 4px rgba(255,200,140,.08),0 0 24px rgba(255,200,140,.2);pointer-events:none}
+.vp-ring::before{content:'';position:absolute;inset:8%;border-radius:50%;border:1px dashed rgba(255,200,140,.35)}
+.vp-rocky{left:8%;top:14%;width:14%;aspect-ratio:1;background:radial-gradient(circle at 35% 30%,#ff9a6e 0%,#c66b40 30%,#6e3318 80%,#2a0f04 100%)}
+.vp-rocky::before{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset 2px 3px 0 rgba(255,180,140,.25),inset -8px -10px 18px rgba(0,0,0,.55);background:radial-gradient(circle at 60% 70%,rgba(0,0,0,.3) 0 8%,transparent 9%),radial-gradient(circle at 30% 60%,rgba(0,0,0,.3) 0 6%,transparent 7%),radial-gradient(circle at 70% 30%,rgba(0,0,0,.25) 0 5%,transparent 6%)}
+.vp-moon{position:absolute;left:21%;top:8%;width:4%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#cfd5e8,#6a7088 70%,#1a1f2e);box-shadow:inset -2px -2px 4px rgba(0,0,0,.6)}
+/* Black hole */
+.vp-bh{position:absolute;left:8%;bottom:14%;width:30%;aspect-ratio:1}
+.vp-bh-disk{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,150,60,0) 0deg,rgba(255,200,90,.85) 60deg,rgba(255,120,40,.7) 120deg,rgba(255,180,80,.2) 200deg,rgba(255,170,60,.9) 280deg,rgba(255,150,60,0) 360deg);filter:blur(2px);transform:scaleY(.35) rotate(-18deg);animation:bhSpin 16s linear infinite;mask-image:radial-gradient(circle,transparent 22%,#000 30%,#000 78%,transparent 88%);-webkit-mask-image:radial-gradient(circle,transparent 22%,#000 30%,#000 78%,transparent 88%)}
+.vp-bh-photon{position:absolute;left:50%;top:50%;width:35%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,200,90,.7) 0%,rgba(255,140,60,.3) 40%,transparent 70%);filter:blur(3px);mix-blend-mode:screen}
+.vp-bh-core{position:absolute;left:50%;top:50%;width:18%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:#000;box-shadow:0 0 16px 4px #000,inset 0 0 8px rgba(0,0,0,.95)}
+@keyframes bhSpin{to{transform:scaleY(.35) rotate(342deg)}}
+/* HUD */
+.vp-hud{position:absolute;inset:0;pointer-events:none;font-family:var(--mono);color:rgba(255,170,68,.85);text-shadow:0 0 6px rgba(255,170,68,.5)}
+.vp-hud-tl{position:absolute;top:10px;left:12px;font-size:9px;letter-spacing:2px;line-height:1.5}
+.vp-hud-tl .ln{display:flex;gap:8px;align-items:center}
+.vp-hud-tl .dot{width:5px;height:5px;border-radius:50%;background:#00d68f;box-shadow:0 0 6px #00d68f;animation:pulse 2s ease-in-out infinite}
+.vp-hud-tr{position:absolute;top:10px;right:12px;font-size:9px;letter-spacing:2px;text-align:right;line-height:1.5;color:rgba(0,214,143,.85);text-shadow:0 0 6px rgba(0,214,143,.45)}
+.vp-reticle{position:absolute;top:50%;left:50%;width:48px;height:48px;transform:translate(-50%,-50%);opacity:.55}
+.vp-reticle::before,.vp-reticle::after{content:'';position:absolute;background:rgba(0,214,143,.55);box-shadow:0 0 6px rgba(0,214,143,.5)}
+.vp-reticle::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)}
+.vp-reticle::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%)}
+.vp-reticle .rt-box{position:absolute;left:50%;top:50%;width:18px;height:18px;border:1px solid rgba(0,214,143,.7);transform:translate(-50%,-50%);box-shadow:0 0 6px rgba(0,214,143,.4)}
+.vp-label{position:absolute;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:rgba(255,170,68,.85);text-shadow:0 0 4px rgba(255,170,68,.4);padding:2px 5px;border:1px solid rgba(255,170,68,.4);background:rgba(20,12,4,.5);border-radius:2px;white-space:nowrap}
+.vp-label::before{content:'';position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,170,68,.9);box-shadow:0 0 6px rgba(255,170,68,.7)}
+.vp-label.lbl-gas{right:54%;top:48%}.vp-label.lbl-gas::before{right:-12px;top:50%;transform:translateY(-50%)}
+.vp-label.lbl-bh{left:40%;bottom:26%;color:rgba(255,100,100,.9);border-color:rgba(255,100,100,.4)}.vp-label.lbl-bh::before{left:-12px;top:50%;transform:translateY(-50%);background:rgba(255,100,100,.9);box-shadow:0 0 6px rgba(255,100,100,.6)}
+/* Cockpit chrome strips */
+.vp-top{position:absolute;top:0;left:0;right:0;height:24px;background:linear-gradient(180deg,#0e131c,#161c28);border-bottom:1px solid rgba(255,170,68,.35);display:flex;align-items:center;padding:0 10px;gap:8px;z-index:5}
+.vp-top .tt{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:rgba(255,170,68,.8);font-weight:700}
+.vp-top .vent{flex:1;height:6px;display:flex;gap:2px;align-items:center}
+.vp-top .vent span{flex:1;height:100%;background:rgba(255,170,68,.4);border-radius:1px}
+.vp-top .vent span:nth-child(3n){background:rgba(0,214,143,.55)}
+.vp-top .vent span:nth-child(5n){background:rgba(92,196,255,.55)}
+.vp-bot{position:absolute;bottom:0;left:0;right:0;height:34px;background:linear-gradient(180deg,#0a0d18,#050810);border-top:2px solid rgba(255,170,68,.35);display:flex;align-items:center;padding:0 12px;gap:14px;z-index:5;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:rgba(180,200,220,.55)}
+.vp-bot .gauge{display:flex;align-items:center;gap:6px}
+.vp-bot .gauge .lbl{color:rgba(255,170,68,.7);font-weight:700}
+.vp-bot .gauge .val{color:rgba(120,255,200,.95);text-shadow:0 0 6px rgba(0,214,143,.45);font-weight:700}
+.vp-bot .bar{flex:1;height:4px;background:rgba(0,0,0,.6);border:1px solid rgba(255,170,68,.2);border-radius:2px;position:relative;overflow:hidden}
+.vp-bot .bar::after{content:'';position:absolute;left:0;top:0;bottom:0;width:62%;background:linear-gradient(90deg,#00d68f,#80ffc0);box-shadow:0 0 6px #00d68f}
+/* Scanlines */
+.vp-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.08) 2px 3px);mix-blend-mode:overlay;z-index:4}
+
+/* NETWORK — all features linked */
+.network-wrap{position:relative;max-width:880px;margin:60px auto 0}
+.network-svg{display:block;width:100%;height:auto;overflow:visible}
+.network-svg .link{fill:none;stroke:url(#netGrad);stroke-width:1.5;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1)}
+.network-wrap.in .network-svg .link{stroke-dashoffset:0}
+.network-svg .link:nth-of-type(2){transition-delay:.2s}
+.network-svg .link:nth-of-type(3){transition-delay:.4s}
+.network-svg .link:nth-of-type(4){transition-delay:.6s}
+.network-svg .link:nth-of-type(5){transition-delay:.8s}
+.network-svg .link:nth-of-type(6){transition-delay:1.0s}
+.network-svg .node-c{fill:var(--bg2);stroke:var(--accent);stroke-width:2;opacity:0;transition:opacity .5s ease}
+.network-wrap.in .network-svg .node-c{opacity:1}
+.network-svg .node-hub{fill:url(#hubGrad);stroke:var(--accent);filter:drop-shadow(0 0 12px var(--accent))}
+.network-svg .node-label{font-family:var(--mono);font-size:11px;fill:var(--text2);text-anchor:middle;opacity:0;transition:opacity .5s ease}
+.network-wrap.in .node-label{opacity:1}
+.network-svg .node-hub-label{font-family:var(--font);font-size:13px;font-weight:700;fill:#fff;text-anchor:middle}
+.network-pulse{stroke:var(--accent);stroke-width:2;fill:none;opacity:0}
+.network-wrap.in .network-pulse{animation:dashPulse 2.5s linear infinite 1.6s}
+@keyframes dashPulse{0%{stroke-dasharray:0 600;opacity:0}10%{opacity:1}90%{opacity:1}100%{stroke-dasharray:600 0;opacity:0}}
+
+/* CTA */
+.cta{text-align:center;padding:140px 32px 180px}
+.cta .title{margin-left:auto;margin-right:auto}
+.cta .subtitle{margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:none;border-radius:14px;font-family:var(--font);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .25s;box-shadow:0 10px 40px -10px var(--accent),0 0 0 1px rgba(255,255,255,.1) inset;position:relative;overflow:hidden}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 18px 60px -10px var(--accent)}
+.cta-btn:active{transform:translateY(0)}
+.cta-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .8s}
+.cta-btn:hover::before{transform:translateX(100%)}
+.cta-arrow{transition:transform .25s}
+.cta-btn:hover .cta-arrow{transform:translateX(4px)}
+.cta-foot{font-family:var(--mono);font-size:11px;color:var(--text3);margin-top:24px;text-transform:uppercase;letter-spacing:2px}
+
+/* Section divider mono label */
+.section-num{font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-num::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);max-width:200px}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-orbs"></div>
+
+<div class="scroll-progress"><div class="scroll-progress-fill" id="sp"></div></div>
+
+<header class="topbar">
+  <a href="#" class="logo">
+    <span class="logo-icon">⬡</span>
+    <span class="logo-text">CyberStars</span>
+  </a>
+  <div class="skip" style="cursor:default">SCROLL DOWN TO CONTINUE ↓</div>
+</header>
+
+<div class="centerline" aria-hidden="true">
+  <div class="centerline-track"></div>
+  <div class="centerline-fill" id="clFill"></div>
+  <div class="centerline-node" data-target="#s-boot"><span class="centerline-label">01 · Booting</span></div>
+  <div class="centerline-node" data-target="#s-langs"><span class="centerline-label">02 · Languages</span></div>
+  <div class="centerline-node" data-target="#s-almanac"><span class="centerline-label">03 · Almanac</span></div>
+  <div class="centerline-node" data-target="#s-forum"><span class="centerline-label">04 · Forum</span></div>
+  <div class="centerline-node" data-target="#s-restroom"><span class="centerline-label">05 · Rest Room</span></div>
+  <div class="centerline-node" data-target="#s-cta"><span class="centerline-label">06 · Launch</span></div>
+</div>
+
+<!-- HERO -->
+<section class="section hero" id="s-hero">
+  <span class="eyebrow hero-eyebrow" style="opacity:0;animation:fadeIn .9s ease .8s forwards"><span class="eyebrow-dot"></span>Account ready · Tour starting</span>
+  <h1 class="hero-title">
+    <span class="line"><span>Welcome to</span></span>
+    <span class="line"><span style="background:linear-gradient(135deg,#6C5CE7,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">CyberStars.</span></span>
+  </h1>
+  <p class="hero-sub">A quick tour through the universe you just joined. Keep scrolling — everything you need is below.</p>
+  <div class="hero-scroll">
+    SCROLL TO BEGIN
+    <div class="hero-scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- BOOTING / LOADING -->
+<section class="section" id="s-boot">
+  <div class="section-num reveal">// 01 — INITIALIZING</div>
+  <h2 class="title reveal" data-delay="1">Booting your <span class="accent">workstation</span>.</h2>
+  <p class="subtitle reveal" data-delay="2">We're warming up the editor, syncing curriculum, and lighting up the universe. Watch the systems come online.</p>
+
+  <div class="boot-block reveal" data-delay="3">
+    <div class="boot-row" data-p="100%">
+      <div class="boot-label"><span class="prefix">›</span>Mounting code editor</div>
+      <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+      <div class="boot-pct">100%</div>
+    </div>
+    <div class="boot-row" data-p="100%">
+      <div class="boot-label"><span class="prefix">›</span>Loading C / Java / Python / Bash kernels</div>
+      <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+      <div class="boot-pct">100%</div>
+    </div>
+    <div class="boot-row" data-p="100%">
+      <div class="boot-label"><span class="prefix">›</span>Indexing almanac · 2,418 entries</div>
+      <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+      <div class="boot-pct">100%</div>
+    </div>
+    <div class="boot-row" data-p="100%">
+      <div class="boot-label"><span class="prefix">›</span>Syncing forum threads</div>
+      <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+      <div class="boot-pct">100%</div>
+    </div>
+    <div class="boot-row" data-p="100%">
+      <div class="boot-label"><span class="prefix">›</span>Charting the rest room universe</div>
+      <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+      <div class="boot-pct">100%</div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="section langs" id="s-langs">
+  <div class="section-num reveal">// 02 — LANGUAGES</div>
+  <h2 class="title reveal" data-delay="1">Four languages.<br/>One <span class="accent">learning path</span>.</h2>
+  <p class="subtitle reveal" data-delay="2">Start anywhere. Each course is hands-on — you write real code from lesson one, with auto-graded exercises and the almanac one keystroke away.</p>
+
+  <div class="langs-grid">
+    <div class="lang-card reveal" data-delay="3" style="--c:#7AB6FF">
+      <div class="lang-num">01 / SYSTEMS</div>
+      <div class="lang-icon">C</div>
+      <div class="lang-name">C</div>
+      <div class="lang-tag">Memory · Pointers · Speed</div>
+      <div class="lang-desc">Understand what every program is actually doing under the hood.</div>
+      <div class="lang-stats">
+        <div class="lang-stat"><strong>48</strong> lessons</div>
+        <div class="lang-stat"><strong>22h</strong></div>
+      </div>
+    </div>
+    <div class="lang-connect reveal" data-delay="4">
+      <svg viewBox="0 0 64 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lcg1" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#7AB6FF"/>
+            <stop offset="100%" stop-color="#FF9A6E"/>
+          </linearGradient>
+        </defs>
+        <path d="M 2 20 L 62 20" stroke="url(#lcg1)"/>
+        <circle class="node-bg" cx="32" cy="20" r="10" fill="#FF9A6E"/>
+        <circle class="node" cx="32" cy="20" r="3" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="lang-card reveal" data-delay="5" style="--c:#FF9A6E">
+      <div class="lang-num">02 / OOP</div>
+      <div class="lang-icon">Ja</div>
+      <div class="lang-name">Java</div>
+      <div class="lang-tag">Classes · JVM · Patterns</div>
+      <div class="lang-desc">Build robust applications the way the industry actually ships them.</div>
+      <div class="lang-stats">
+        <div class="lang-stat"><strong>56</strong> lessons</div>
+        <div class="lang-stat"><strong>28h</strong></div>
+      </div>
+    </div>
+    <div class="lang-connect reveal" data-delay="6">
+      <svg viewBox="0 0 64 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lcg2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#FF9A6E"/>
+            <stop offset="100%" stop-color="#FFD24A"/>
+          </linearGradient>
+        </defs>
+        <path d="M 2 20 L 62 20" stroke="url(#lcg2)"/>
+        <circle class="node-bg" cx="32" cy="20" r="10" fill="#FFD24A"/>
+        <circle class="node" cx="32" cy="20" r="3" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="lang-card reveal" data-delay="7" style="--c:#FFD24A">
+      <div class="lang-num">03 / SCRIPTING</div>
+      <div class="lang-icon">Py</div>
+      <div class="lang-name">Python</div>
+      <div class="lang-tag">Data · APIs · Automation</div>
+      <div class="lang-desc">From hello world to data analysis without ever leaving the editor.</div>
+      <div class="lang-stats">
+        <div class="lang-stat"><strong>62</strong> lessons</div>
+        <div class="lang-stat"><strong>26h</strong></div>
+      </div>
+    </div>
+    <div class="lang-connect reveal" data-delay="8">
+      <svg viewBox="0 0 64 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lcg3" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#FFD24A"/>
+            <stop offset="100%" stop-color="#7CEEAE"/>
+          </linearGradient>
+        </defs>
+        <path d="M 2 20 L 62 20" stroke="url(#lcg3)"/>
+        <circle class="node-bg" cx="32" cy="20" r="10" fill="#7CEEAE"/>
+        <circle class="node" cx="32" cy="20" r="3" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="lang-card reveal" data-delay="9" style="--c:#7CEEAE">
+      <div class="lang-num">04 / LINUX</div>
+      <div class="lang-icon">$_</div>
+      <div class="lang-name">Bash</div>
+      <div class="lang-tag">Shell · Pipes · Sysadmin</div>
+      <div class="lang-desc">Speak fluent Linux. The shell becomes a second keyboard.</div>
+      <div class="lang-stats">
+        <div class="lang-stat"><strong>34</strong> lessons</div>
+        <div class="lang-stat"><strong>14h</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALMANAC -->
+<section class="section" id="s-almanac">
+  <div class="section-num reveal">// 03 — REFERENCE</div>
+  <div class="split">
+    <div>
+      <h2 class="title reveal" data-delay="1">The <span class="accent">Almanac</span>.<br/>Every fact, one search away.</h2>
+      <p class="subtitle reveal" data-delay="2">Stuck on a syntax detail? Press <code style="font-family:var(--mono);background:var(--bg);padding:2px 8px;border-radius:4px;color:var(--accent);border:1px solid var(--border);font-size:14px">/</code> anywhere to open the almanac. 2,400+ entries across every language we teach — functions, keywords, commands, gotchas — all cross-linked to the lessons that introduced them.</p>
+      <div style="display:flex;gap:24px;margin-top:8px" class="reveal" data-delay="3">
+        <div><div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent)">2,418</div><div style="font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">entries</div></div>
+        <div><div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent)">9k+</div><div style="font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">examples</div></div>
+        <div><div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent)"><1s</div><div style="font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">search</div></div>
+      </div>
+    </div>
+    <div class="almanac-mock reveal" data-delay="4">
+      <div class="almanac-tabs">
+        <div class="almanac-tab active">ALL</div>
+        <div class="almanac-tab">C</div>
+        <div class="almanac-tab">JAVA</div>
+        <div class="almanac-tab">PYTHON</div>
+        <div class="almanac-tab">BASH</div>
+      </div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:14px;padding:8px 12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">/ search: <span style="color:var(--text)">malloc</span><span style="animation:blink 1s step-end infinite;color:var(--accent)">▍</span></div>
+      <div class="almanac-entry">
+        <div class="almanac-entry-title"><span class="kind fn">FN</span> malloc <code>void *malloc(size_t)</code></div>
+        <div class="almanac-entry-desc">Allocates uninitialised memory on the heap. Pair with <code style="font-family:var(--mono);font-size:11px;background:var(--bg);padding:1px 5px;border-radius:3px;color:var(--text2)">free()</code> or leak.</div>
+      </div>
+      <div class="almanac-entry">
+        <div class="almanac-entry-title"><span class="kind kw">KW</span> yield <code>generator semantics</code></div>
+        <div class="almanac-entry-desc">Pauses execution, returns a value, resumes on next iteration. Python's lazy hero.</div>
+      </div>
+      <div class="almanac-entry">
+        <div class="almanac-entry-title"><span class="kind cmd">CMD</span> grep <code>grep -rni pattern path</code></div>
+        <div class="almanac-entry-desc">Recursive, line-numbered, case-insensitive search. Bash's first-aid kit.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORUM -->
+<section class="section" id="s-forum">
+  <div class="section-num reveal">// 04 — COMMUNITY</div>
+  <div class="split reverse">
+    <div>
+      <h2 class="title reveal" data-delay="1">A <span class="accent">forum</span> where<br/>answers actually arrive.</h2>
+      <p class="subtitle reveal" data-delay="2">Every lesson has its own thread. Mentors and senior learners triage questions hourly. Code blocks render with syntax highlighting and one-click "run this snippet" sandboxing.</p>
+      <div style="display:flex;gap:24px;margin-top:8px" class="reveal" data-delay="3">
+        <div><div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent)">8min</div><div style="font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">avg reply</div></div>
+        <div><div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent)">14k</div><div style="font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">threads</div></div>
+        <div><div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent)">98%</div><div style="font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px">solved</div></div>
+      </div>
+    </div>
+    <div class="forum-mock reveal" data-delay="4" id="forumMock">
+      <div class="forum-msg">
+        <div class="forum-avatar" style="background:linear-gradient(135deg,#7AB6FF,#3a73c7)">MR</div>
+        <div class="forum-meta">
+          <div class="forum-name">maria_r <span class="role">L7</span><span class="forum-time">2m ago</span></div>
+          <div class="forum-text">Segfault on lesson 12 — am I freeing the right pointer? Here's the code: <code>free(buf); buf = NULL;</code></div>
+        </div>
+      </div>
+      <div class="forum-msg">
+        <div class="forum-avatar" style="background:linear-gradient(135deg,#FFD24A,#c79a1a);color:#1a1a1a">SK</div>
+        <div class="forum-meta">
+          <div class="forum-name">sk_mentor <span class="role">MENTOR</span><span class="forum-time">just now</span></div>
+          <div class="forum-text">That part's fine ✅ — but check the <code>for</code> loop right above: <code>i &lt;= n</code> walks one past the end. Off-by-one.</div>
+          <div class="forum-reactions">
+            <span class="forum-reaction">🔥 12</span>
+            <span class="forum-reaction">✅ solved</span>
+          </div>
+        </div>
+      </div>
+      <div class="forum-msg">
+        <div class="forum-avatar" style="background:linear-gradient(135deg,#FF9A6E,#c66b40)">AL</div>
+        <div class="forum-meta">
+          <div class="forum-name">alex_l <span class="role">L4</span><span class="forum-time">writing…</span></div>
+          <div class="forum-text" style="color:var(--text3);font-style:italic">alex_l is typing a reply…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REST ROOM -->
+<section class="section" id="s-restroom">
+  <div class="section-num reveal">// 05 — REST ROOM</div>
+  <div class="split">
+    <div class="reveal" data-delay="3">
+      <div class="viewport">
+        <div class="vp-space"></div>
+        <div class="vp-stars" id="tinyStars"></div>
+
+        <!-- Cockpit chrome -->
+        <div class="vp-top">
+          <span class="tt">CSTR-9</span>
+          <span class="vent"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+          <span class="tt" style="color:rgba(0,214,143,.85)">NAV · OK</span>
+        </div>
+
+        <!-- Celestial bodies -->
+        <div class="vp-rocky"></div>
+        <div class="vp-moon"></div>
+        <div class="vp-ring"></div>
+        <div class="vp-planet vp-gas"></div>
+        <div class="vp-bh">
+          <div class="vp-bh-disk"></div>
+          <div class="vp-bh-photon"></div>
+          <div class="vp-bh-core"></div>
+        </div>
+
+        <!-- HUD -->
+        <div class="vp-hud">
+          <div class="vp-hud-tl">
+            <div class="ln"><span class="dot"></span>SECTOR ζ-4</div>
+            <div>HDG 274° · SPD 0.42c</div>
+          </div>
+          <div class="vp-hud-tr">
+            BODIES · 3<br/>FUEL · 87%<br/>HULL · 100%
+          </div>
+        </div>
+        <div class="vp-reticle"><div class="rt-box"></div></div>
+        <div class="vp-label lbl-gas">SIENNA β · 4.2 AU</div>
+        <div class="vp-label lbl-bh">⚠ SINGULARITY</div>
+
+        <!-- Bottom dash -->
+        <div class="vp-bot">
+          <span class="gauge"><span class="lbl">PWR</span><span class="val">98%</span></span>
+          <span class="bar"></span>
+          <span class="gauge"><span class="lbl">DIST</span><span class="val">4.2 AU</span></span>
+        </div>
+        <div class="vp-scan"></div>
+      </div>
+    </div>
+    <div>
+      <h2 class="title reveal" data-delay="1">The <span class="accent">Rest Room</span><br/>is a universe.</h2>
+      <p class="subtitle reveal" data-delay="2">When your brain needs a break, drift into the Rest Room — a navigable galaxy where each planet is a side-quest, a mini-game, or a community room. Fly through it the way you'd play a game. Yes, you can lose track of time.</p>
+      <div style="font-family:var(--mono);font-size:12px;color:var(--text2);background:var(--bg);padding:12px 16px;border-radius:8px;border:1px solid var(--border);max-width:380px" class="reveal" data-delay="3">
+        <div style="color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">CONTROLS</div>
+        <div><span style="color:var(--accent)">WASD</span> · navigate</div>
+        <div><span style="color:var(--accent)">SPACE</span> · enter planet</div>
+        <div><span style="color:var(--accent)">M</span> · system map</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK / TIE-IT-TOGETHER -->
+<section class="section tight">
+  <div class="section-num reveal">// 06 — IT ALL CONNECTS</div>
+  <h2 class="title reveal" data-delay="1" style="text-align:center;max-width:760px;margin-left:auto;margin-right:auto">One platform, every piece <span class="accent">wired together</span>.</h2>
+  <p class="subtitle reveal" data-delay="2" style="margin-left:auto;margin-right:auto;text-align:center">Every lesson links to almanac entries. Every error suggests a forum thread. Every solved exercise unlocks a planet. Your progress shows up everywhere — instantly.</p>
+
+  <div class="network-wrap" id="netWrap">
+    <svg class="network-svg" viewBox="0 0 800 360">
+      <defs>
+        <linearGradient id="netGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#6C5CE7"/>
+          <stop offset="100%" stop-color="#a855f7"/>
+        </linearGradient>
+        <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#a855f7"/>
+          <stop offset="100%" stop-color="#6C5CE7"/>
+        </radialGradient>
+      </defs>
+      <!-- Links from hub to nodes -->
+      <path class="link" d="M 400 180 Q 280 100 130 80"/>
+      <path class="link" d="M 400 180 Q 540 90 680 80"/>
+      <path class="link" d="M 400 180 Q 230 220 90 270"/>
+      <path class="link" d="M 400 180 Q 540 250 700 270"/>
+      <path class="link" d="M 400 180 Q 400 280 400 320"/>
+      <path class="link" d="M 400 180 Q 400 100 400 50"/>
+
+      <!-- Pulse along main spine -->
+      <path class="network-pulse" d="M 400 180 Q 280 100 130 80"/>
+
+      <!-- Nodes -->
+      <circle class="node-c" cx="130" cy="80" r="28"/>
+      <text class="node-label" x="130" y="84">LESSONS</text>
+
+      <circle class="node-c" cx="680" cy="80" r="28"/>
+      <text class="node-label" x="680" y="84">ALMANAC</text>
+
+      <circle class="node-c" cx="90" cy="270" r="28"/>
+      <text class="node-label" x="90" y="274">FORUM</text>
+
+      <circle class="node-c" cx="700" cy="270" r="28"/>
+      <text class="node-label" x="700" y="274">REST ROOM</text>
+
+      <circle class="node-c" cx="400" cy="320" r="28"/>
+      <text class="node-label" x="400" y="324">XP / BADGES</text>
+
+      <circle class="node-c" cx="400" cy="50" r="28"/>
+      <text class="node-label" x="400" y="54">EDITOR</text>
+
+      <!-- Central hub -->
+      <circle class="node-hub" cx="400" cy="180" r="42"/>
+      <text class="node-hub-label" x="400" y="185">YOU</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="s-cta">
+  <div class="reveal">
+    <span class="eyebrow"><span class="eyebrow-dot"></span>Tour complete</span>
+  </div>
+  <h2 class="title reveal" data-delay="1">You're <span class="accent">ready</span>.</h2>
+  <p class="subtitle reveal" data-delay="2">Pick a language. Open a lesson. Write your first line of code on CyberStars.</p>
+  <div class="reveal" data-delay="3">
+    <a href="CyberStars Dashboard.html" class="cta-btn">
+      Enter the Dashboard
+      <svg class="cta-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+  </div>
+  <div class="cta-foot reveal" data-delay="4">Welcome aboard, cyberstar.</div>
+</section>
+
+<style>@keyframes blink{50%{opacity:0}}</style>
+
+<script>
+// Reveal observer
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .forum-mock, .network-wrap, .lang-connect').forEach(el => io.observe(el));
+
+// ===== Boot bar animation — count 0→100 with stagger =====
+document.querySelectorAll('.boot-pct').forEach(el => el.textContent = '0%');
+
+function animateBootRow(row, delay) {
+  const target = parseInt(row.dataset.p) || 100;
+  const fill = row.querySelector('.boot-bar-fill');
+  const pct = row.querySelector('.boot-pct');
+  setTimeout(() => {
+    fill.style.width = target + '%';
+    const dur = 1400;
+    const start = performance.now();
+    function step(t) {
+      const p = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const v = Math.round(eased * target);
+      pct.textContent = v + '%';
+      if (p < 1) requestAnimationFrame(step);
+      else if (target >= 100) pct.classList.add('done');
+    }
+    requestAnimationFrame(step);
+  }, delay);
+}
+
+const bootBlock = document.querySelector('.boot-block');
+if (bootBlock) {
+  const bootIO = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.boot-row').forEach((row, i) => {
+          animateBootRow(row, i * 320);
+        });
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+  bootIO.observe(bootBlock);
+}
+
+// ===== Centerline — vertical progress line through page center =====
+const sp = document.getElementById('sp');
+const clFill = document.getElementById('clFill');
+const clNodes = document.querySelectorAll('.centerline-node');
+const sectionIds = ['s-boot','s-langs','s-almanac','s-forum','s-restroom','s-cta'];
+const CL_PAD = 60; // matches CSS top/bottom of track
+
+function positionCenterlineNodes() {
+  clNodes.forEach(n => {
+    const target = document.querySelector(n.dataset.target);
+    if (!target) return;
+    n.style.top = (target.offsetTop + 100) + 'px';
+  });
+}
+positionCenterlineNodes();
+window.addEventListener('load', positionCenterlineNodes);
+window.addEventListener('resize', positionCenterlineNodes);
+
+function onScroll() {
+  const docH = document.documentElement.scrollHeight;
+  const scrolled = window.scrollY;
+  const max = docH - window.innerHeight;
+  const pct = max > 0 ? (scrolled / max) * 100 : 0;
+  if (sp) sp.style.width = pct + '%';
+
+  // Checkpoint-based: find latest node whose top has entered viewport
+  const trigger = scrolled + window.innerHeight * 0.72;
+  let activeIdx = -1;
+  clNodes.forEach((n, i) => {
+    const nTop = parseFloat(n.style.top) || 0;
+    if (nTop <= trigger) activeIdx = i;
+  });
+
+  if (activeIdx !== lastActiveIdx) {
+    if (clFill) {
+      if (activeIdx >= 0 && clNodes[activeIdx]) {
+        const nTop = parseFloat(clNodes[activeIdx].style.top) || 0;
+        clFill.style.height = Math.max(0, nTop - CL_PAD) + 'px';
+      } else {
+        clFill.style.height = '0px';
+      }
+    }
+    clNodes.forEach((n, i) => n.classList.toggle('active', i <= activeIdx));
+    lastActiveIdx = activeIdx;
+  }
+}
+let lastActiveIdx = -2;
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Node click → smooth scroll
+clNodes.forEach(n => {
+  n.addEventListener('click', () => {
+    const target = document.querySelector(n.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Tiny stars in rest room
+const ts = document.getElementById('tinyStars');
+if (ts) {
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('span');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = (Math.random() * 3) + 's';
+    s.style.opacity = (0.3 + Math.random() * 0.5);
+    ts.appendChild(s);
+  }
+}
+
+// Hero starfield canvas (subtle, behind hero)
+(function(){
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const canvas = document.createElement('canvas');
+  canvas.className = 'hero-stars';
+  hero.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  const resize = () => {
+    const r = hero.getBoundingClientRect();
+    w = canvas.width = r.width * devicePixelRatio;
+    h = canvas.height = r.height * devicePixelRatio;
+    canvas.style.width = r.width + 'px';
+    canvas.style.height = r.height + 'px';
+  };
+  resize();
+  window.addEventListener('resize', resize);
+  const N = 90;
+  const stars = Array.from({length:N}, () => ({
+    x: Math.random()*1,
+    y: Math.random()*1,
+    z: Math.random(),
+    s: Math.random() * 1.4 + 0.2
+  }));
+  let raf;
+  function tick(){
+    ctx.fillStyle = 'rgba(11,11,17,0.18)';
+    ctx.fillRect(0,0,w,h);
+    for (const s of stars) {
+      s.y += 0.00018 * (1 - s.z);
+      if (s.y > 1) s.y = 0;
+      const a = (1 - s.z) * 0.7;
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#E8E8FF';
+      ctx.beginPath();
+      ctx.arc(s.x * w, s.y * h, s.s * devicePixelRatio, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    raf = requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>

@@ -13,6 +13,7 @@ import leaderboardRoutes from "./routes/leaderboard.routes.js";
 import forumRoutes from "./routes/forum.routes.js";
 import terminalRoutes from "./routes/terminal.routes.js";
 import supportRoutes from "./routes/support.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
 
 const app = express();
 
@@ -28,7 +29,11 @@ app.use("/api/progress", progressRoutes);
 app.use("/api/forum", forumRoutes);
 app.use("/api/terminal", terminalRoutes);
 app.use("/api/support", supportRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api", lessonRoutes);
+
+// Serve uploaded files
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 const buildPath = path.join(process.cwd(), "dist");
 app.use(express.static(buildPath));

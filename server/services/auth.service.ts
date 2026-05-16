@@ -37,7 +37,18 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
   if (!user) {
     throw new AppError(404, "User not found");
   }
-  return user;
+  const now = new Date();
+  const statusExpired = user.statusExpiresAt && user.statusExpiresAt < now;
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    avatarUrl: user.avatarUrl,
+    bio: user.bio,
+    status: statusExpired ? null : user.status,
+    statusExpiresAt: statusExpired ? null : user.statusExpiresAt?.toISOString() ?? null,
+  };
 }
 
 function createToken(userId: number): string {

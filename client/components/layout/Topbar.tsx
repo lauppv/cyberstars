@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { label: "Algorithms", path: "/algorithms" },
   { label: "Forum", path: "/forum" },
   { label: "Almanac", path: "/almanac" },
+  { label: "Rest Room", path: "/restroom" },
 ];
 
 export function Topbar({
@@ -147,10 +148,24 @@ export function Topbar({
                 </button>
                 <button
                   role="menuitem"
-                  onClick={() => { setMenuOpen(false); navigate("/courses"); }}
+                  onClick={() => { setMenuOpen(false); navigate("/support"); }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
-                  <span className="w-4 text-center">📚</span> My courses
+                  <span className="w-4 text-center">🎫</span> Support
+                </button>
+                <button
+                  role="menuitem"
+                  onClick={() => { setMenuOpen(false); navigate("/rules"); }}
+                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                >
+                  <span className="w-4 text-center">📋</span> Rules
+                </button>
+                <button
+                  role="menuitem"
+                  onClick={() => { setMenuOpen(false); navigate("/welcome"); }}
+                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                >
+                  <span className="w-4 text-center">✨</span> Welcome Tour
                 </button>
                 <div className="border-t border-[var(--border)]" />
                 <button

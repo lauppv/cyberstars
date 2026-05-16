@@ -10,6 +10,7 @@ interface AuthContextType {
   login: (payload: LoginPayload) => Promise<void>;
   signup: (payload: SignupPayload) => Promise<void>;
   logout: () => Promise<void>;
+  refreshUser: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -42,6 +43,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
+  const refreshUser = useCallback(() => {
+    authService.getMe().then(setUser).catch(() => {});
+  }, []);
+
   return (
     <AuthContext value={{
       user,
@@ -50,6 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       login,
       signup,
       logout,
+      refreshUser,
     }}>
       {children}
     </AuthContext>

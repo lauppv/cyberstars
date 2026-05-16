@@ -8,9 +8,25 @@ function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-function computeStreak(): number {
+function streakKey(userId: number): string {
+  return `cyberstars_activity_days_${userId}`;
+}
+
+function migrateOldStreak(userId: number) {
+  const oldKey = "cyberstars_activity_days";
+  const newKey = streakKey(userId);
+  if (localStorage.getItem(newKey)) return;
+  const old = localStorage.getItem(oldKey);
+  if (old) {
+    localStorage.setItem(newKey, old);
+    localStorage.removeItem(oldKey);
+  }
+}
+
+function computeStreak(userId: number | undefined): number {
+  if (!userId) return 0;
   try {
-    const raw = localStorage.getItem("cyberstars_activity_days");
+    const raw = localStorage.getItem(streakKey(userId));
     if (!raw) return 0;
     const days: string[] = JSON.parse(raw);
     if (!days.length) return 0;
@@ -39,15 +55,16 @@ function computeStreak(): number {
   }
 }
 
-export function recordActivityToday() {
+export function recordActivityToday(userId: number) {
   try {
-    const raw = localStorage.getItem("cyberstars_activity_days");
+    const key = streakKey(userId);
+    const raw = localStorage.getItem(key);
     const days: string[] = raw ? JSON.parse(raw) : [];
     const today = todayKey();
     if (!days.includes(today)) {
       days.push(today);
       if (days.length > 60) days.splice(0, days.length - 60);
-      localStorage.setItem("cyberstars_activity_days", JSON.stringify(days));
+      localStorage.setItem(key, JSON.stringify(days));
     }
   } catch {}
 }
@@ -73,7 +90,7 @@ export interface Gamification {
 }
 
 export function useGamification(): Gamification {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
   const [, setTick] = useState(0);
@@ -124,7 +141,8 @@ export function useGamification(): Gamification {
     ];
   }, [totalCompleted, perCourse]);
 
-  const streak = computeStreak();
+  if (user) migrateOldStreak(user.id);
+  const streak = computeStreak(user?.id);
 
   return {
     totalCompleted,

@@ -8,8 +8,12 @@ export async function findByEmail(email: string): Promise<User | null> {
 export async function findById(id: number) {
   return prisma.user.findUnique({
     where: { id },
-    select: { id: true, name: true, email: true, role: true },
+    select: { id: true, name: true, email: true, role: true, avatarUrl: true, bio: true, status: true, statusExpiresAt: true },
   });
+}
+
+export async function updateProfile(id: number, data: { bio?: string | null; status?: string | null; statusExpiresAt?: Date | null; avatarUrl?: string | null }) {
+  await prisma.user.update({ where: { id }, data });
 }
 
 export async function getRole(id: number): Promise<Role> {

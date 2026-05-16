@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Topbar } from "../components/layout/Topbar";
+import { AI_ARTICLES } from "./almanacAIArticles";
 import "./AlmanacPage.css";
 
 interface StoryData {
@@ -29,6 +30,9 @@ const CATEGORIES = [
   { id: "internet", label: "Internet", em: "🌐" },
   { id: "space", label: "Space", em: "🪐" },
   { id: "ai", label: "AI & Future", em: "🧠" },
+  { id: "claude", label: "Claude", em: "🟣" },
+  { id: "gemini", label: "Gemini", em: "🔵" },
+  { id: "chatgpt", label: "ChatGPT", em: "🟢" },
 ];
 
 const HERO = {
@@ -1501,8 +1505,9 @@ export function AlmanacPage() {
   };
 
   const PER_PAGE = 10;
+  const ALL_ARTICLES = [...ARTICLES, ...AI_ARTICLES];
   const filtered =
-    filter === "all" ? ARTICLES : ARTICLES.filter((a) => a.cat === filter);
+    filter === "all" ? ALL_ARTICLES : ALL_ARTICLES.filter((a) => a.cat === filter);
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   const fact = FUN_FACTS[factIdx];

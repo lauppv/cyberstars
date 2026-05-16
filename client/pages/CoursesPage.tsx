@@ -73,7 +73,7 @@ export function CoursesPage() {
       <Topbar streak={g.streak} />
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-7 py-8 pb-16">
-        <div className="mb-7">
+        <div className="mb-7 text-backdrop">
           <h1 className="text-[28px] font-bold mb-1.5" style={{ letterSpacing: "-0.5px" }}>
             Courses
           </h1>

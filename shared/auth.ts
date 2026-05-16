@@ -5,6 +5,10 @@ export interface AuthenticatedUser {
   name: string;
   email: string;
   role: UserRole;
+  avatarUrl: string | null;
+  bio: string | null;
+  status: string | null;
+  statusExpiresAt: string | null;
 }
 
 export interface LoginPayload {

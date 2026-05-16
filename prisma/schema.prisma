@@ -35,12 +35,16 @@ enum TicketStatus {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  name       String   @db.VarChar(100)
-  email      String   @unique @db.VarChar(255)
-  password   String   @db.VarChar(255)
-  role       Role     @default(USER)
-  createdAt  DateTime @default(now()) @map("created_at")
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(100)
+  email           String    @unique @db.VarChar(255)
+  password        String    @db.VarChar(255)
+  role            Role      @default(USER)
+  avatarUrl       String?   @map("avatar_url") @db.VarChar(512)
+  bio             String?   @db.VarChar(200)
+  status          String?   @db.VarChar(80)
+  statusExpiresAt DateTime? @map("status_expires_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
 
   progress  UserLessonProgress[]
   savedCode UserSavedCode[]

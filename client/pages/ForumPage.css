@@ -18,6 +18,11 @@
   justify-content: space-between;
   margin-bottom: 22px;
   gap: 24px;
+  background: rgba(11, 11, 17, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  border: 1px solid rgba(46, 46, 62, 0.4);
 }
 
 .forum-page-title {
