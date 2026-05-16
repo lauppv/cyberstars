@@ -6,6 +6,10 @@ import { contentDir } from "./paths.js";
 import * as curriculumRepo from "../repositories/curriculum.repository.js";
 
 export function getLessonContent(courseKey: string, lessonSlug: string): LessonContent {
+  if (lessonSlug.includes("..") || lessonSlug.includes("/")) {
+    throw new AppError(400, "Invalid lesson slug");
+  }
+
   const filePath = path.join(contentDir(courseKey), `${lessonSlug}.md`);
 
   if (!fs.existsSync(filePath)) {
@@ -17,6 +21,10 @@ export function getLessonContent(courseKey: string, lessonSlug: string): LessonC
 }
 
 export function getLessonCode(courseKey: string, file: string): string {
+  if (file.includes("..") || file.includes("/")) {
+    throw new AppError(400, "Invalid file path");
+  }
+
   const filePath = path.join(contentDir(courseKey), file);
 
   if (!fs.existsSync(filePath)) {

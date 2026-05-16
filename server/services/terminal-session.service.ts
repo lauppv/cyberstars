@@ -34,12 +34,15 @@ function startGC() {
   gcTimer.unref();
 }
 
-function docker(args: string[], timeout = 10_000): Promise<string> {
+function docker(args: string[], timeout = 10_000, stdin?: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    execFile("docker", args, { maxBuffer: 1024 * 1024, timeout }, (err, stdout, stderr) => {
+    const proc = execFile("docker", args, { maxBuffer: 1024 * 1024, timeout }, (err, stdout, stderr) => {
       if (err) reject(new Error(stderr || err.message));
       else resolve(stdout.trim());
     });
+    if (stdin != null) {
+      proc.stdin?.end(stdin);
+    }
   });
 }
 
@@ -77,11 +80,11 @@ export async function createSession(courseKey: string, lessonSlug: string): Prom
       if (dir2 && dir2 !== "/home/student") {
         await docker(["exec", containerId, "mkdir", "-p", dir2]);
       }
-      await docker(["exec", containerId, "bash", "-c", `cat > ${fullPath} << 'CYBEREOF'\n${file.content}\nCYBEREOF`]);
+      await docker(["exec", "-i", containerId, "bash", "-c", `cat > '${fullPath.replace(/'/g, "'\\''")}'`], 10_000, file.content);
     }
   }
 
-  await docker(["exec", containerId, "bash", "-c", `echo '${cwd}' > /tmp/.cwd`]);
+  await docker(["exec", "-i", containerId, "bash", "-c", "cat > /tmp/.cwd"], 10_000, cwd);
 
   const sessionId = crypto.randomUUID();
   sessions.set(sessionId, {
@@ -100,6 +103,8 @@ export async function createSession(courseKey: string, lessonSlug: string): Prom
 export async function execCommand(sessionId: string, command: string): Promise<TerminalExecResult> {
   const session = sessions.get(sessionId);
   if (!session) throw new Error("Session not found");
+
+  if (command.length > 2000) throw new Error("Command too long");
 
   session.lastActivity = Date.now();
   session.history.push(command);

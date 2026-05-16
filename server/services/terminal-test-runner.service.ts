@@ -29,7 +29,7 @@ function matchValue(actual: string, expected: string, mode: string | undefined):
     case "contains":
       return a.includes(e);
     case "regex":
-      return new RegExp(e).test(a);
+      try { return new RegExp(e).test(a); } catch { return false; }
     case "line":
       return a.split("\n").some((l) => l.trim() === e);
     case "exact":
@@ -79,14 +79,18 @@ async function evaluateCheck(sessionId: string, check: TerminalCheck): Promise<b
 
     case "history_contains": {
       const pattern = check.pattern ?? check.expected ?? "";
-      const regex = new RegExp(pattern);
-      return session.history.some((cmd) => regex.test(cmd));
+      try {
+        const regex = new RegExp(pattern);
+        return session.history.some((cmd) => regex.test(cmd));
+      } catch { return false; }
     }
 
     case "history_not_contains": {
       const pattern = check.pattern ?? check.expected ?? "";
-      const regex = new RegExp(pattern);
-      return !session.history.some((cmd) => regex.test(cmd));
+      try {
+        const regex = new RegExp(pattern);
+        return !session.history.some((cmd) => regex.test(cmd));
+      } catch { return false; }
     }
 
     case "last_output": {

@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
 import { config } from "./config/index.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import authRoutes from "./routes/auth.routes.js";
@@ -15,8 +16,9 @@ import supportRoutes from "./routes/support.routes.js";
 
 const app = express();
 
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: config.corsOrigin, credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);

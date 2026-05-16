@@ -21,7 +21,7 @@ export const env = {
     ? process.env.VITE_PROD_API_URL || ""
     : process.env.VITE_DEV_API_URL || "http://localhost:5173",
   jwt: {
-    secret: process.env.JWT_SECRET || "fallback-secret",
+    secret: required("JWT_SECRET"),
     expiresIn: "24h" as const,
   },
   db: {
