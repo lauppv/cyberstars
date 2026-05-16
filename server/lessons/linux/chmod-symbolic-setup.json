@@ -1,0 +1,1 @@
+{"cwd":"/home/student","files":[{"path":"deploy.sh","content":"#!/bin/bash\necho 'Deploying station firmware update...'\necho 'Done.'\n"}],"dirs":[]}

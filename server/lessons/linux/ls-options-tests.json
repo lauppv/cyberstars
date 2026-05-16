@@ -1,0 +1,19 @@
+[
+  {
+    "name": "You used ls with an option",
+    "check": "history_contains",
+    "pattern": "\\bls\\s+-[a-zA-Z]"
+  },
+  {
+    "name": "Output shows the hidden file (.secret.txt)",
+    "check": "any_output",
+    "mode": "contains",
+    "expected": ".secret.txt"
+  },
+  {
+    "name": "Output uses long format (a directory line starts with 'd')",
+    "check": "any_output",
+    "mode": "regex",
+    "expected": "(?m)^d[rwx-]{9}\\s"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "You ran ps aux",
+    "check": "history_contains",
+    "pattern": "\\bps\\s+aux\\b"
+  },
+  {
+    "name": "You ran df -h",
+    "check": "history_contains",
+    "pattern": "\\bdf\\s+-h\\b"
+  },
+  {
+    "name": "You ran du -sh on logs/",
+    "check": "history_contains",
+    "pattern": "\\bdu\\s+-[a-z]*s[a-z]*h[a-z]*\\s+logs|\\bdu\\s+-[a-z]*h[a-z]*s[a-z]*\\s+logs"
+  },
+  {
+    "name": "You ran date",
+    "check": "history_contains",
+    "pattern": "\\bdate\\b"
+  },
+  {
+    "name": "You ran history",
+    "check": "history_contains",
+    "pattern": "\\bhistory\\b"
+  }
+]

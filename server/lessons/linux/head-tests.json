@@ -1,0 +1,19 @@
+[
+  {
+    "name": "You used head with -n",
+    "check": "history_contains",
+    "pattern": "\\bhead\\s+-n\\s*5\\b"
+  },
+  {
+    "name": "The first line was shown",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "boot sequence started"
+  },
+  {
+    "name": "Only the first 5 lines were shown (line 6 absent)",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "^(?!.*navigation online)[\\s\\S]*life support online[\\s\\S]*$"
+  }
+]

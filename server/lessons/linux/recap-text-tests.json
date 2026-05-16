@@ -1,0 +1,36 @@
+[
+  {
+    "name": "You used cut with comma delimiter",
+    "check": "history_contains",
+    "pattern": "\\bcut\\b.*-d.*,"
+  },
+  {
+    "name": "You piped through sort and uniq -c",
+    "check": "history_contains",
+    "pattern": "\\bsort\\b.*\\|.*\\buniq\\s+-c"
+  },
+  {
+    "name": "You redirected output to report.txt",
+    "check": "history_contains",
+    "pattern": ">\\s*report\\.txt"
+  },
+  {
+    "name": "report.txt exists",
+    "check": "file_exists",
+    "path": "report.txt"
+  },
+  {
+    "name": "report.txt shows count for Voss (3 entries)",
+    "check": "file_content",
+    "path": "report.txt",
+    "mode": "regex",
+    "expected": "\\s*3\\s+Voss"
+  },
+  {
+    "name": "report.txt shows count for Chen (2 entries)",
+    "check": "file_content",
+    "path": "report.txt",
+    "mode": "regex",
+    "expected": "\\s*2\\s+Chen"
+  }
+]

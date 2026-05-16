@@ -1,0 +1,31 @@
+[
+  {
+    "name": "You used grep piped to sort with > redirect",
+    "check": "history_contains",
+    "pattern": "\\bgrep\\b.*WARN.*\\|.*\\bsort\\b.*>\\s*warnings_sorted\\.txt"
+  },
+  {
+    "name": "You used >> to append the footer",
+    "check": "history_contains",
+    "pattern": ">>\\s*warnings_sorted\\.txt"
+  },
+  {
+    "name": "warnings_sorted.txt exists",
+    "check": "file_exists",
+    "path": "warnings_sorted.txt"
+  },
+  {
+    "name": "File contains sorted WARN lines",
+    "check": "file_content",
+    "path": "warnings_sorted.txt",
+    "mode": "contains",
+    "expected": "WARN: antenna misaligned"
+  },
+  {
+    "name": "File contains the appended footer",
+    "check": "file_content",
+    "path": "warnings_sorted.txt",
+    "mode": "contains",
+    "expected": "-- end of report --"
+  }
+]

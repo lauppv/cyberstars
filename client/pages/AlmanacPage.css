@@ -502,6 +502,7 @@
 /* Fun fact card */
 .factcard {
   position: relative;
+  padding: 22px 44px;
   background: linear-gradient(
     135deg,
     rgba(108, 92, 231, 0.15) 0%,
@@ -546,18 +547,12 @@
   z-index: 1;
 }
 
-.fact-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 16px;
-  position: relative;
-  z-index: 1;
-}
-
-.fact-btn {
-  width: 28px;
-  height: 28px;
+.card-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--bg3);
   border: 1px solid var(--border);
@@ -567,33 +562,34 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 16px;
+  line-height: 1;
   transition: all 0.15s;
+  z-index: 3;
 }
 
-.fact-btn:hover {
+.card-arrow:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
 }
 
-.fact-pips {
-  display: flex;
-  gap: 5px;
+.card-arrow-left {
+  left: 9px;
 }
 
-.fact-pip {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--bg3);
-  transition: all 0.2s;
+.card-arrow-right {
+  right: 9px;
 }
 
-.fact-pip.active {
-  background: var(--accent);
-  width: 16px;
-  border-radius: 3px;
+.card-counter {
+  margin-top: 16px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  position: relative;
+  z-index: 1;
 }
 
 /* On this day timeline */
@@ -691,7 +687,7 @@
 
 /* Quote of day */
 .quote-card {
-  padding: 24px;
+  padding: 24px 44px;
   background: linear-gradient(
     135deg,
     rgba(0, 214, 143, 0.08) 0%,

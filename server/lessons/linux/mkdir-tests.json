@@ -1,0 +1,14 @@
+[
+  {
+    "name": "The mission folder exists",
+    "check": "file_exists",
+    "path": "/home/student/mission",
+    "expectDir": true
+  },
+  {
+    "name": "The nested mission/logs/day1 folder exists",
+    "check": "file_exists",
+    "path": "/home/student/mission/logs/day1",
+    "expectDir": true
+  }
+]

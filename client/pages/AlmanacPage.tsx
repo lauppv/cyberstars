@@ -432,82 +432,681 @@ Today, open source is not just accepted — it's dominant. Microsoft, Google, Am
     readTime: "10 min",
     xp: 35,
   },
+  {
+    cat: "hardware",
+    tag: "HARDWARE",
+    year: "1973",
+    emoji: "🖥️",
+    grad: "linear-gradient(135deg,#1a3a2a,#2f7a4f)",
+    title: "The Xerox Alto — the first computer with a GUI that nobody bought",
+    excerpt:
+      "In 1973, Xerox PARC built a computer with windows, icons, a mouse, and ethernet. It had everything. Then Xerox ignored it and let Steve Jobs copy the whole thing.",
+    fullText: `In 1973, researchers at Xerox PARC (Palo Alto Research Center) created something that wouldn't become mainstream for another decade: a personal computer with a graphical user interface. The Xerox Alto had windows you could move around, icons you could click, a mouse pointer, and even a what-you-see-is-what-you-get text editor.
+
+It also had ethernet networking — years before anyone else. You could send email, share files, and print to a laser printer (which Xerox also invented). It was, by any measure, the future of computing sitting in a research lab in California.
+
+But Xerox was a copier company. Their executives looked at the Alto and saw... an expensive toy. They built about 2,000 units, mostly for internal use and universities, but never commercialized it seriously. The Alto cost about $32,000 to build — far too expensive for consumers, but Xerox never invested in making it cheaper.
+
+Then, in 1979, Steve Jobs visited Xerox PARC. The story goes that Xerox gave Apple's team a demo in exchange for the right to buy Apple stock. Jobs saw the GUI and reportedly said: "Why aren't you doing anything with this? This is the greatest thing! This is revolutionary!"
+
+Apple went on to build the Lisa (1983) and then the Macintosh (1984), both heavily inspired by what Jobs saw at PARC. Microsoft followed with Windows in 1985. The entire personal computing revolution — windows, icons, menus, pointers — traces back to that Xerox lab.
+
+The lesson? Innovation without execution is just a cool demo. Xerox invented the future of computing and then watched others get rich from it. Today, Xerox PARC is studied in every business school as the ultimate cautionary tale about failing to commercialize your own research.`,
+    author: "Prof. Andrei",
+    authorEm: "🔬",
+    readTime: "7 min",
+    xp: 25,
+  },
+  {
+    cat: "internet",
+    tag: "INTERNET",
+    year: "1983",
+    emoji: "🌍",
+    grad: "linear-gradient(135deg,#1a2a3a,#2f4f7a)",
+    title: "How DNS works — the internet's phone book that nobody thinks about",
+    excerpt:
+      "Every time you type a URL, a hidden system translates it into numbers. DNS is the backbone of the internet, controlled by just 13 root servers managed by organizations most people have never heard of.",
+    fullText: `Every time you type "google.com" into your browser, something magical happens behind the scenes. Your computer has no idea what "google.com" means — it only understands IP addresses like 142.250.80.46. The Domain Name System (DNS) is what translates human-readable names into machine-readable numbers.
+
+Before DNS existed (pre-1983), there was literally a single text file called HOSTS.TXT maintained by one person at Stanford. Every computer on the early internet downloaded this file to know where other computers were. As the internet grew, this became absurd — the file was constantly outdated and too large to distribute.
+
+Paul Mockapetris designed DNS in 1983 as a distributed, hierarchical system. Instead of one file, the system works like a chain of phone books. When you look up "en.wikipedia.org", your computer asks a recursive resolver, which asks a root server, which points to the .org servers, which point to Wikipedia's servers, which finally return the IP address.
+
+The root of this entire system is just 13 sets of root name servers, labeled A through M. They're operated by organizations like Verisign, NASA, the US Army Research Lab, and ICANN. "13" is a technical limitation of the original DNS packet size — not a lucky number. In reality, these 13 addresses map to over 1,700 physical servers distributed worldwide using anycast routing.
+
+Who controls DNS controls the internet. ICANN (Internet Corporation for Assigned Names and Numbers), a nonprofit based in Los Angeles, coordinates the top-level domain system. It was originally under US government oversight, but in 2016, control was transferred to a global multi-stakeholder community. This transition was controversial — some argued it weakened US influence over the internet.
+
+DNS is also a security nightmare. DNS spoofing (also called DNS poisoning) can redirect you to fake websites without you knowing. DNSSEC was created to add cryptographic signatures to DNS responses, but adoption has been painfully slow because it adds complexity and can break things.
+
+The next time your browser takes an extra 200ms to load a page, it might be DNS doing its thing. It's invisible infrastructure — boring but absolutely essential. Without DNS, you'd need to memorize IP addresses for every website. The internet as we know it simply couldn't exist.`,
+    author: "Mr. Radu",
+    authorEm: "🌐",
+    readTime: "8 min",
+    xp: 30,
+  },
+  {
+    cat: "legends",
+    tag: "LEGENDS",
+    year: "1972",
+    emoji: "👤",
+    grad: "linear-gradient(135deg,#2a1a3a,#5f2f7a)",
+    title: "Dennis Ritchie — the man who created C and UNIX but got no fame",
+    excerpt:
+      "Steve Jobs got a global mourning when he died. Dennis Ritchie died one week later and barely made the news. Yet everything Jobs built ran on Ritchie's inventions: the C language and UNIX.",
+    fullText: `On October 5, 2011, Steve Jobs died. The world mourned. Tributes poured in from every corner of the globe. Newspapers ran front-page stories. People left flowers at Apple stores.
+
+On October 12, 2011 — exactly one week later — Dennis Ritchie died. Most people outside of computing never heard about it. There were no flowers at office buildings. No candlelight vigils. Yet the device people used to post their tributes to Jobs? It ran on Ritchie's inventions.
+
+Dennis Ritchie co-created the UNIX operating system and invented the C programming language at Bell Labs in the early 1970s. These two achievements form the invisible foundation of virtually all modern technology.
+
+C is the language that built the world. Your operating system (Windows, macOS, Linux, Android, iOS) is written in C or its direct descendant C++. Your web browser, your database, your game engine — C. Python, Ruby, PHP, and most other languages you've heard of? Their interpreters are written in C. Even Java runs on a virtual machine written in C.
+
+UNIX's design philosophy — "do one thing well," small composable tools, plain text as a universal interface — became the DNA of modern operating systems. Linux is a UNIX clone. macOS is literally built on UNIX (it's certified UNIX). Android runs on Linux. Your web server almost certainly runs UNIX.
+
+Ritchie was quiet, modest, and academic. He didn't do product launches or keynotes. He wrote papers and code. His 1978 book "The C Programming Language" (known as K&R C, co-authored with Brian Kernighan) is considered one of the best programming books ever written — clear, concise, and practical.
+
+The irony is brutal: Jobs was a visionary marketer who built beautiful products on top of other people's technology. Ritchie was the engineer who built the technology itself. Both were essential to the modern world, but only one became a household name. Ritchie's Turing Award (1983) and National Medal of Technology (1999) are small consolation for his near-invisibility in popular culture.
+
+Rob Pike, Ritchie's colleague, wrote after his death: "Pretty much everything on the web uses those two things: C and UNIX. The browsers are written in C. The UNIX kernel — that pretty much the entire internet runs on — is written in C... Dennis is the most important person you've probably never heard of."`,
+    author: "Prof. Andrei",
+    authorEm: "🏛️",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "ai",
+    tag: "AI & FUTURE",
+    year: "1974",
+    emoji: "❄️",
+    grad: "linear-gradient(135deg,#1a2a3a,#3a5a7a)",
+    title: "The AI Winter — when everyone gave up on artificial intelligence",
+    excerpt:
+      "In the 1970s and again in the late 1980s, AI research funding collapsed. Promises were broken, labs shut down, and the word 'AI' became toxic. It took decades to recover.",
+    fullText: `In the 1960s, AI researchers made extraordinary promises. Herbert Simon predicted that within 20 years, machines would be capable of doing any work a man can do. Marvin Minsky told Life magazine that within 3 to 8 years, we'd have a machine with the general intelligence of an average human being. Funding poured in from DARPA and governments worldwide.
+
+Then reality hit. The problems turned out to be exponentially harder than anyone imagined. Machine translation produced gibberish. Computer vision couldn't distinguish a dog from a cat. Expert systems were brittle and couldn't handle situations outside their narrow rules.
+
+In 1973, the British government commissioned the Lighthill Report, which concluded that AI had failed to deliver on its promises. Funding was slashed across the UK. DARPA cut AI funding in the US. The first AI Winter had begun.
+
+A brief thaw came in the 1980s with expert systems — rule-based programs that could diagnose diseases or configure computers. Companies spent billions. Japan launched the Fifth Generation Computer project to build thinking machines. AI was hot again.
+
+Then the expert systems crashed too. They were expensive to maintain, couldn't learn, and broke when encountering situations their programmers hadn't anticipated. By 1987, the specialized AI hardware market collapsed. Lisp machine companies went bankrupt. The second AI Winter set in, lasting roughly from 1987 to 1993.
+
+During the winters, researchers learned to avoid the term "AI" entirely. They rebranded their work as "machine learning," "data mining," "knowledge systems," or "computational intelligence." Funding proposals that mentioned AI were rejected. Grad students were warned that working on AI was a career dead end.
+
+What eventually ended the winter wasn't a breakthrough in theory — it was data and compute. The internet generated massive datasets. GPUs provided parallel processing power. In 2012, a deep learning system called AlexNet crushed the ImageNet competition, and suddenly neural networks worked. The current AI boom is built on top of ideas from the 1980s that simply needed more data and faster hardware.
+
+The AI winters teach an important lesson: hype cycles are dangerous. When technology is oversold, the inevitable disappointment can set an entire field back by decades. Today's AI researchers quietly worry about a third winter if current AI systems fail to deliver on the enormous expectations being set.`,
+    author: "Dr. Elena",
+    authorEm: "🧊",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1999",
+    emoji: "🐛",
+    grad: "linear-gradient(135deg,#3a2a1a,#7a5f2f)",
+    title: "Y2K — the millennium bug that was actually real",
+    excerpt:
+      "People mocked Y2K as a hoax. But the bug was real — programmers had saved memory by using two-digit years. The reason nothing collapsed? Thousands of engineers worked overtime to fix it before midnight.",
+    fullText: `In the 1960s and 70s, computer memory was astronomically expensive. Programmers saved every byte they could. One common shortcut: storing years as two digits instead of four. 1973 became "73." 1999 became "99." It saved two bytes per date — a big deal when your entire computer had 64KB of memory.
+
+Nobody thought these programs would still be running in 2000. But they were. Banks, power grids, air traffic control, hospital systems, nuclear reactors — all running ancient code that would interpret "00" as 1900, not 2000.
+
+The potential consequences were terrifying. Bank accounts could calculate negative interest for 100 years. Power plants could shut down. Medical equipment could malfunction. Air traffic control could lose track of planes. Nobody knew for sure what would break, because the code was decades old and poorly documented.
+
+Starting around 1996, the world began to panic. Governments formed Y2K task forces. Companies spent an estimated $300 billion fixing their code. COBOL programmers — some pulled out of retirement — worked around the clock. The US alone spent $100 billion. Australia spent $12 billion. The UK created an "Action 2000" campaign.
+
+The fixes were tedious but essential: find every date field in every program, expand it to four digits or add windowing logic (if the year is less than 50, assume 2000s; otherwise assume 1900s). Some systems had millions of lines of code to review.
+
+On January 1, 2000, nothing catastrophic happened. Some people concluded Y2K was a hoax — a scam by consultants to make money. This is deeply unfair to the programmers who prevented disaster. Nothing broke precisely because they spent years fixing it.
+
+There were minor glitches: some slot machines in Delaware stopped working, a few weather stations reported incorrect data, and in Japan, a nuclear plant's radiation monitoring system failed briefly. These small failures confirmed the bug was real — they were just in non-critical systems that hadn't been patched.
+
+Y2K is a paradox: it was simultaneously one of the biggest bugs in computing history and one of the most successful engineering efforts ever. The people who fixed it are unsung heroes who prevented a potential global crisis.`,
+    author: "Mr. Radu",
+    authorEm: "🔧",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "oss",
+    tag: "OPEN SOURCE",
+    year: "2001",
+    emoji: "📚",
+    grad: "linear-gradient(135deg,#1a3a3a,#2f6a6a)",
+    title: "How Wikipedia became the largest encyclopedia ever written",
+    excerpt:
+      "Experts said it would never work. An encyclopedia anyone can edit? It'll be full of nonsense. Two decades later, Wikipedia has 60 million articles in 300 languages and is one of the most visited sites on Earth.",
+    fullText: `In January 2001, Jimmy Wales and Larry Sanger launched Wikipedia as a side project. Their main project, Nupedia, was a traditional online encyclopedia with expert-written, peer-reviewed articles. It was painfully slow — in its first year, Nupedia published just 21 articles.
+
+Wikipedia was meant to be Nupedia's informal feeder — a wiki where anyone could write drafts that would eventually be polished into Nupedia articles. Within weeks, Wikipedia had more content than Nupedia would ever have. Within a year, it had 20,000 articles. Nupedia was quietly shut down.
+
+The idea that random people on the internet could create a reliable encyclopedia seemed insane. Critics called it "the blind leading the blind." Robert McHenry, former editor-in-chief of Encyclopaedia Britannica, compared using Wikipedia to "a public restroom — you never know who used it last."
+
+But Wikipedia developed sophisticated self-correction mechanisms. Vandalism is typically reverted within minutes by bots and dedicated editors. Controversial articles are "semi-protected" — only established editors can modify them. Every edit is logged and reversible. Detailed policies on sourcing, neutrality, and notability evolved organically.
+
+In 2005, Nature published a study comparing Wikipedia and Britannica on science topics. They found roughly similar error rates — about 4 errors per article in Wikipedia vs. 3 in Britannica. This was shocking. Britannica was furious and disputed the methodology, but the damage was done: Wikipedia had proven it could match expert-written references.
+
+Today, Wikipedia has over 60 million articles in more than 300 languages. The English Wikipedia alone has 6.7 million articles. It's maintained by about 120,000 active editors — volunteers who receive no payment. The Wikimedia Foundation that runs the servers has just a few hundred employees.
+
+Wikipedia's model challenged fundamental assumptions about knowledge creation. You don't need credentials to contribute knowledge — you need sources. You don't need gatekeepers — you need transparent processes. You don't need payment — you need intrinsic motivation. It's one of the greatest collaborative achievements in human history, and it runs on donations and volunteer labor.`,
+    author: "Ms. Diana",
+    authorEm: "📖",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "hardware",
+    tag: "HARDWARE",
+    year: "2023",
+    emoji: "📉",
+    grad: "linear-gradient(135deg,#2a2a1a,#5a5a2f)",
+    title: "Moore's Law is dying — what comes next?",
+    excerpt:
+      "For 50 years, transistor counts doubled every two years like clockwork. Now we're hitting the physical limits of silicon. The chip industry is scrambling for alternatives before progress stalls.",
+    fullText: `In 1965, Gordon Moore observed that the number of transistors on a chip doubled roughly every two years while costs stayed flat. This observation — Moore's Law — became a self-fulfilling prophecy that drove the entire semiconductor industry for over five decades.
+
+The numbers are staggering. The Intel 4004 (1971) had 2,300 transistors. A modern Apple M3 chip has 25 billion. That's a 10-million-fold increase. This exponential growth gave us smartphones, cloud computing, AI, and basically everything digital.
+
+But physics is catching up. Transistors on modern chips are now just a few nanometers wide — we're approaching the scale of individual atoms. At these sizes, quantum effects like electron tunneling cause current to "leak" through barriers that should be solid. You can't make a switch smaller than an atom.
+
+The industry has been fighting this wall with clever engineering. FinFET transistors (3D structures instead of flat ones) bought a decade. EUV lithography (extreme ultraviolet light) enabled smaller patterns. Gate-all-around (GAA) transistors are the next trick. But each generation costs more — a cutting-edge chip fab now costs over $20 billion to build.
+
+Chiplet architectures are one answer: instead of making one giant chip, companies like AMD glue together smaller chips. This sidesteps manufacturing limits by using proven smaller designs combined together. Apple's Ultra chips use this approach.
+
+Beyond silicon, researchers are exploring carbon nanotube transistors, photonic computing (using light instead of electrons), neuromorphic chips (mimicking brain structure), and of course quantum computing. Each has promise but also massive engineering challenges.
+
+The end of Moore's Law doesn't mean the end of progress — it means progress will come from different directions. Better software, specialized AI accelerators, new architectures, and algorithmic improvements can all deliver more performance without smaller transistors. The era of "just wait two years and your computer will be twice as fast" is ending, but the era of clever engineering is just beginning.`,
+    author: "Prof. Andrei",
+    authorEm: "⚡",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "internet",
+    tag: "INTERNET",
+    year: "2011",
+    emoji: "🧅",
+    grad: "linear-gradient(135deg,#1a1a2a,#3a2f5a)",
+    title: "The Silk Road — when the dark web became a marketplace",
+    excerpt:
+      "Ross Ulbricht built an anonymous marketplace using Tor and Bitcoin. For two years, you could buy anything. Then the FBI caught him in a public library with his laptop open.",
+    fullText: `In February 2011, a 26-year-old named Ross Ulbricht launched a website called Silk Road. It was only accessible through the Tor network — a system that bounces your internet traffic through multiple encrypted relays to hide your identity. Payments were in Bitcoin, which was still obscure and somewhat anonymous.
+
+Silk Road was essentially eBay for illegal goods. Drugs were the main product — everything from marijuana to heroin. But it also sold fake IDs, hacking tools, and counterfeit currency. Ulbricht, operating under the pseudonym "Dread Pirate Roberts," framed it as a libertarian experiment in free markets without government interference.
+
+The site used an ingenious escrow system. Buyers sent Bitcoin to Silk Road, which held it until the buyer confirmed delivery. Sellers had reputation scores just like on Amazon. There were customer service disputes and a forum for community discussion. It was disturbingly professional.
+
+At its peak, Silk Road had over 100,000 buyers and generated an estimated $1.2 billion in sales. Ulbricht collected commissions on every transaction. The FBI estimated he earned about $80 million in Bitcoin.
+
+The investigation to find Ulbricht took two years. His critical mistake was using his real email address in an early promotional post for Silk Road, before he became careful about anonymity. IRS investigator Gary Alford found this connection by simply Googling.
+
+On October 1, 2013, FBI agents approached Ulbricht in the science fiction section of the San Francisco Public Library. They waited until his laptop was open and unlocked — crucial for accessing his encrypted data. They staged a fake argument between two agents to distract him while a third grabbed the laptop. On the screen was the Silk Road admin panel.
+
+Ulbricht was sentenced to double life imprisonment plus 40 years without parole. His case raised profound questions about internet freedom, privacy, and the limits of technology as a tool for liberation. The technology he used — Tor, Bitcoin, encryption — was legal. What he did with it was not.
+
+Silk Road proved that cryptographic anonymity tools actually work for their intended purpose. It also proved that operational security is only as strong as its weakest moment. One careless early post undid years of careful anonymity.`,
+    author: "Mr. Radu",
+    authorEm: "🕵️",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "legends",
+    tag: "LEGENDS",
+    year: "2013",
+    emoji: "💔",
+    grad: "linear-gradient(135deg,#2a1a2a,#5a2f4a)",
+    title: "Aaron Swartz — the internet's own boy",
+    excerpt:
+      "Co-creator of RSS at 14, co-founder of Reddit, architect of Creative Commons. Aaron Swartz fought to make knowledge free for everyone. The US government charged him with 35 years in prison for downloading academic papers.",
+    fullText: `Aaron Swartz was a prodigy in the truest sense. At age 14, he co-authored the RSS 1.0 specification — the technology that powers podcast feeds and news readers. By 19, he'd co-founded Reddit, worked on Creative Commons licenses, and built web.py, a popular Python web framework.
+
+But Swartz wasn't interested in getting rich. He was obsessed with a single idea: information should be free. Not just software — all human knowledge. Academic papers, legal documents, government data. He believed that locking publicly-funded research behind expensive paywalls was morally wrong.
+
+He put his beliefs into action. In 2008, he downloaded 2.7 million federal court documents from PACER (a system that charged 10 cents per page for public records). The FBI investigated but dropped the case — the documents were technically public.
+
+In 2010-2011, he went further. Using MIT's network, he connected a laptop to a network switch in a closet and downloaded 4.8 million academic articles from JSTOR, a digital library. His apparent intent was to release them publicly. JSTOR settled and declined to prosecute.
+
+But the US Attorney for Massachusetts, Carmen Ortiz, charged Swartz with 13 felony counts carrying up to 35 years in prison and $1 million in fines. For downloading academic papers. The prosecution offered plea deals requiring prison time. Swartz refused.
+
+On January 11, 2013, Aaron Swartz hanged himself in his Brooklyn apartment. He was 26 years old.
+
+The backlash was immediate and fierce. Thousands of academics posted their papers publicly in protest using the hashtag #pdftribute. MIT commissioned an internal investigation that admitted the university had been "neutral" when it should have advocated for Swartz. Congress introduced "Aaron's Law" to reform the Computer Fraud and Abuse Act (it hasn't passed).
+
+Aaron's legacy lives on in the open access movement. Sci-Hub (founded 2011) now provides free access to over 85 million papers. Many journals have moved to open-access models. His story is a reminder that the line between activism and crime is often drawn by those in power, and that the punishment should fit the crime.`,
+    author: "Ms. Diana",
+    authorEm: "🕊️",
+    readTime: "10 min",
+    xp: 35,
+  },
+  {
+    cat: "fun",
+    tag: "FUN FACT",
+    year: "1957",
+    emoji: "0️⃣",
+    grad: "linear-gradient(135deg,#1a2a2a,#2f5a4a)",
+    title: "Why programmers start counting from zero",
+    excerpt:
+      "It confuses every beginner: arrays start at 0, not 1. It seems arbitrary and annoying. But there's a beautiful mathematical reason behind it — and it's all about memory addresses.",
+    fullText: `Every programming beginner hits this wall: the first element of an array is element 0, not element 1. A list of 10 items goes from index 0 to index 9. It feels wrong. Why not just start at 1 like normal humans?
+
+The answer goes back to how memory works at the hardware level. When you create an array, the computer allocates a contiguous block of memory. The variable name points to the first byte of that block. To find any element, the computer calculates: memory_address = start + (index × element_size).
+
+If indexing starts at 0, the first element is at start + (0 × size) = start. Perfect — no offset needed. If indexing started at 1, every single memory access would need an extra subtraction: start + ((index - 1) × size). In the 1950s and 60s, that extra subtraction on every array access was a real performance cost.
+
+The convention was formalized by languages like BCPL (1967), C (1972), and everything that followed. Edsger Dijkstra, one of computing's greatest minds, wrote a famous note in 1982 arguing that zero-based indexing is mathematically superior: ranges are cleaner (0 to N gives you exactly N elements), and you avoid off-by-one errors in calculations.
+
+Not everyone agrees. Lua, MATLAB, R, and Fortran all use 1-based indexing. Some argue that 0-based indexing just shifts the off-by-one errors to different places. The debate has raged for decades.
+
+But here's the thing: once you get used to zero-indexing, it becomes natural. "The third element" is index 2. A loop from 0 to n-1 gives you exactly n iterations. Modular arithmetic works cleanly. And when you're debugging memory layouts or network protocols, zero-based thinking maps directly to what the hardware is doing.
+
+The real lesson isn't about which is "correct" — it's that programming conventions often trace back to hardware constraints that no longer exist. We count from zero because 1950s computers couldn't afford an extra subtraction. Sixty years later, it would cost nothing, but the convention is locked in forever. That's how path dependence works in technology.`,
+    author: "Prof. Andrei",
+    authorEm: "🧮",
+    readTime: "7 min",
+    xp: 20,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "2000",
+    emoji: "💸",
+    grad: "linear-gradient(135deg,#3a1a2a,#7a2f4a)",
+    title: "The dot-com bubble — when pizza delivery apps were worth billions",
+    excerpt:
+      "In 1999, any company with '.com' in its name could raise millions. Pets.com spent $300 million in 2 years and collapsed. The NASDAQ lost 78% of its value. Sound familiar?",
+    fullText: `In the late 1990s, the internet was new, exciting, and nobody really understood how to make money from it. This combination created one of the largest speculative bubbles in financial history.
+
+The logic went like this: the internet will change everything, so internet companies will be worth everything. Investors poured money into any startup with a website and a dream. Revenue? Profits? Irrelevant. All that mattered was "eyeballs" and "mindshare."
+
+The poster child was Pets.com — an online pet supply store. It had a famous sock puppet mascot, a Super Bowl ad, and a $300 million valuation. It burned through its cash in 268 days after its IPO and shut down. Its assets were liquidated for $5.8 million.
+
+But Pets.com was just one of thousands. Webvan (online grocery delivery) burned $800 million. Boo.com (fashion retail) spent $188 million in 18 months. Kozmo.com delivered snacks by bike messenger for free — with no delivery fee and no minimum order. They all failed.
+
+The NASDAQ Composite Index rose from about 1,000 in 1995 to over 5,000 in March 2000. Then it crashed. By October 2002, it had fallen to 1,114 — a 78% decline. Trillions of dollars in wealth evaporated. Many investors lost their life savings.
+
+Here's the ironic part: the dot-com visionaries were right about everything except timing. Online grocery delivery? We have Instacart. Pet supplies online? Chewy is worth billions. Same-day delivery? Amazon does it. Fashion e-commerce? It's a trillion-dollar industry. The ideas were sound — they were just 15 years too early.
+
+The infrastructure wasn't ready. In 1999, most Americans had dial-up internet. Bandwidth was expensive. Payment processing was clunky. Logistics networks weren't built for e-commerce. The companies that survived (Amazon, eBay, Google) were the ones that could bleed money long enough for the infrastructure to catch up.
+
+The dot-com bubble taught Silicon Valley a lesson it seems to periodically forget: being right about the future doesn't mean you'll survive long enough to see it.`,
+    author: "Mr. Radu",
+    authorEm: "📈",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "ai",
+    tag: "AI & FUTURE",
+    year: "1997",
+    emoji: "♟️",
+    grad: "linear-gradient(135deg,#1a1a3a,#2f2f7a)",
+    title: "Deep Blue vs. Kasparov — when a machine beat the world chess champion",
+    excerpt:
+      "In 1997, IBM's Deep Blue defeated Garry Kasparov in a six-game match. It was the first time a reigning world champion lost to a computer. Kasparov accused IBM of cheating.",
+    fullText: `On May 11, 1997, in a Manhattan skyscraper, the reigning world chess champion Garry Kasparov — arguably the greatest player in history — resigned after 19 moves against IBM's Deep Blue computer. The machine had won the match 3.5 to 2.5. It was the first time a computer had defeated a world champion in a full match under standard time controls.
+
+Deep Blue was a brute-force monster. It could evaluate 200 million positions per second using 480 custom chess chips. It didn't "understand" chess in any human sense — it simply calculated further ahead than any human could. Its evaluation function (how it judged whether a position was good) was tuned by a team of grandmaster consultants.
+
+The match was deeply controversial. In Game 2, Deep Blue made a move that seemed to show deep strategic understanding. Kasparov was shaken. He later said this move convinced him that humans must be secretly helping the machine. He became agitated and played poorly for the rest of the match.
+
+Years later, one of the Deep Blue developers admitted that the mysterious move was likely caused by a software bug — when the computer couldn't decide what to do, it played a random legal move. This accident may have psychologically destroyed the world's best chess player.
+
+Kasparov demanded a rematch. IBM refused, dismantled Deep Blue, and never released the full game logs. This fueled conspiracy theories that persist to this day. IBM got what it wanted — the stock price jumped $18 billion after the match. A rematch could only hurt them.
+
+The deeper impact was philosophical. Chess had been considered the pinnacle of human intelligence. When a machine could play it better than any human, it forced a rethinking of what intelligence means. The answer: chess isn't intelligence. It's calculation.
+
+Today, a free chess engine on your phone would demolish Deep Blue. Stockfish and AlphaZero play at a level that makes Deep Blue look like a beginner. The frontier has moved to problems that require genuine understanding, creativity, and common sense — areas where AI still struggles relative to humans.`,
+    author: "Dr. Elena",
+    authorEm: "🏆",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "oss",
+    tag: "OPEN SOURCE",
+    year: "2005",
+    emoji: "🔀",
+    grad: "linear-gradient(135deg,#2a1a1a,#6a3a2f)",
+    title: "How Git was born in two weeks of rage",
+    excerpt:
+      "When the Linux kernel lost access to its version control tool, Linus Torvalds locked himself away and wrote Git in 14 days. It's now used by virtually every software project on Earth.",
+    fullText: `In 2005, the Linux kernel had a problem. For three years, it had been using BitKeeper, a proprietary version control system whose owner gave Linux developers a free license. Then Andrew Tridgell (creator of Samba) reverse-engineered BitKeeper's protocol. BitKeeper's owner, Larry McVoy, was furious and revoked the free license.
+
+Linus Torvalds was now without a version control system for the world's most important open-source project. He could have chosen an existing open-source alternative like CVS or Subversion. Instead, he looked at them and decided they were all terrible.
+
+Linus had specific requirements: it had to be fast (applying a patch should take 3 seconds, not 30), distributed (no central server that could go down or be controlled by someone else), and able to handle the Linux kernel's massive scale (thousands of developers, millions of lines of code).
+
+He started writing Git on April 3, 2005. By April 7 — four days later — Git could version-control its own source code. By April 18, the first merge of multiple branches was done. By June 16, Git managed the release of Linux kernel 2.6.12. The core system was essentially built in two weeks.
+
+The name "Git" is British slang for a stupid person. Linus said: "I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git." (This is a joke — "Linux" was named by the FTP admin who uploaded it, not by Linus himself.)
+
+Git's key innovation was making branching and merging cheap. In older systems, creating a branch was expensive and merging was terrifying. In Git, you create branches constantly — for features, experiments, fixes — and merge them back trivially. This enabled entirely new workflows.
+
+GitHub (founded 2008) built a social network on top of Git and made open-source collaboration accessible to everyone. Pull requests, issues, and code review became standard. Microsoft bought GitHub in 2018 for $7.5 billion.
+
+Today, Git is used by over 90% of developers worldwide. It manages everything from solo projects to codebases with thousands of contributors. All because one developer lost his tools and decided to build better ones in a fit of motivated fury.`,
+    author: "Prof. Andrei",
+    authorEm: "🔥",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "hardware",
+    tag: "HARDWARE",
+    year: "2012",
+    emoji: "🍓",
+    grad: "linear-gradient(135deg,#1a3a1a,#2f7a3a)",
+    title: "The Raspberry Pi revolution — a $35 computer that changed education",
+    excerpt:
+      "A group of Cambridge professors were worried that kids couldn't program anymore. Their solution: a credit-card-sized computer for $35. They expected to sell 10,000 units. They've sold over 60 million.",
+    fullText: `In the early 2000s, professors at Cambridge University noticed a disturbing trend. Students applying to study computer science were less skilled than a decade before. In the 1990s, applicants had programmed on BBC Micros and Amigas — cheap computers that booted straight into a programming environment. By 2005, applicants had only used Word and browsers on expensive family PCs that parents wouldn't let them tinker with.
+
+Eben Upton and his colleagues at the Cambridge Computer Lab decided to build a cheap, hackable computer that kids could experiment with without fear of breaking the family PC. It needed to be cheap enough that destroying it wouldn't matter.
+
+The first Raspberry Pi launched on February 29, 2012. It cost $35, was the size of a credit card, and could run Linux. It had HDMI output, USB ports, GPIO pins for connecting to electronics, and enough power to browse the web or write code. The team expected to sell maybe 10,000 units to UK school kids.
+
+They sold 100,000 on the first day. The website crashed. Distributors ran out of stock within minutes. Clearly, the demand for cheap, hackable computing went far beyond education.
+
+The Pi found audiences nobody expected: home media centers, retro gaming consoles, network-attached storage, home automation, security cameras, weather stations, and countless industrial applications. Factories use Pis to monitor equipment. Space agencies use them in experiments. Artists use them in installations.
+
+The educational mission succeeded too. Code Club, Raspberry Pi Foundation's free programming clubs, now operate in over 100 countries. The Foundation provides free curriculum, teacher training, and resources. Millions of kids have written their first code on a Raspberry Pi.
+
+The Pi's real innovation wasn't technical — ARM-based single-board computers existed before. The innovation was making it accessible: good documentation, a friendly community, a dedicated operating system (Raspberry Pi OS), and a price point that meant anyone could afford to experiment.
+
+As of 2024, over 60 million Raspberry Pis have been sold, making it one of the best-selling computers in history. The latest Pi 5 has more computing power than a high-end desktop from 2005 — for $60. The Pi proved that computing education doesn't need expensive equipment — it needs cheap, expendable hardware that kids aren't afraid to break.`,
+    author: "Ms. Diana",
+    authorEm: "🌱",
+    readTime: "9 min",
+    xp: 25,
+  },
+  {
+    cat: "internet",
+    tag: "INTERNET",
+    year: "1858",
+    emoji: "🔌",
+    grad: "linear-gradient(135deg,#1a2a2a,#2f5a6a)",
+    title: "How submarine cables connect continents — the internet's hidden backbone",
+    excerpt:
+      "97% of intercontinental data travels through cables on the ocean floor. There are over 500 of them, totaling 1.3 million km. And they're only as thick as a garden hose.",
+    fullText: `When you video-call someone on another continent, your data doesn't bounce off satellites. It travels through a fiber optic cable lying on the ocean floor, possibly 4,000 meters deep in total darkness. Satellites are too slow (high latency) and too limited (low bandwidth) for the bulk of internet traffic. 97% of intercontinental data travels through submarine cables.
+
+The first transatlantic cable was laid in 1858 — for telegraph messages. Queen Victoria sent a 98-word greeting to President Buchanan. It took 16 hours to transmit. The cable failed after three weeks because they'd pushed too much voltage through it.
+
+Modern submarine cables are engineering marvels. The fiber optic core is thinner than a human hair. It's wrapped in layers of protection: silicone gel, steel wire, copper tubing, polyethylene, and tar-soaked nylon yarn. In deep water, the total cable is about the diameter of a garden hose. Near shores where fishing and anchors are threats, it's armored to the thickness of a soda can.
+
+Laying cable is a months-long process using specialized ships. The cable spools out from massive tanks on deck while the ship crawls forward at walking speed. In deep water, it simply falls to the ocean floor. In shallow water, it's buried by underwater plows. A single transoceanic cable can cost $300-500 million.
+
+The biggest threats to cables are fishing trawlers, ship anchors, earthquakes, and (seriously) sharks. Sharks occasionally bite cables — possibly attracted by the electromagnetic fields. Cable breaks happen regularly — about 100-200 per year globally — and are repaired by specialized ships that grapple the cable from the seafloor, haul it up, splice it, and drop it back.
+
+Today there are over 500 active submarine cables totaling about 1.3 million km. The biggest players are Google, Meta, Microsoft, and Amazon, who now own or lease significant cable capacity. A single modern cable can carry 250 terabits per second — enough to stream millions of 4K videos simultaneously.
+
+The geopolitics of cables is intense. Countries worry about espionage (the NSA was revealed to tap undersea cables). Island nations depend on a single cable for all connectivity. Russia and China have been mapping Western cable routes. A concerted attack on submarine cables could effectively disconnect continents from each other.`,
+    author: "Mr. Radu",
+    authorEm: "⚓",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "legends",
+    tag: "LEGENDS",
+    year: "1984",
+    emoji: "🚪",
+    grad: "linear-gradient(135deg,#2a2a1a,#5a5a3a)",
+    title: "Ken Thompson's compiler backdoor — the hack that can never be fixed",
+    excerpt:
+      "In 1984, Ken Thompson revealed he'd hidden a backdoor in the C compiler itself. The hack was invisible in the source code and self-replicating. It proved you can never fully trust software you didn't write.",
+    fullText: `In 1984, Ken Thompson — co-creator of UNIX and the C language — gave his Turing Award lecture titled "Reflections on Trusting Trust." In it, he described a hack so elegant and terrifying that it permanently changed how security researchers think about trust.
+
+The setup: Thompson modified the C compiler to recognize when it was compiling the UNIX login program. When it detected this, it would secretly insert a backdoor — a hidden password that would give Thompson access to any UNIX system. The login source code looked clean. Only the compiler binary contained the hack.
+
+But here's the genius part: what if someone recompiled the compiler from clean source code? Thompson's answer: he also modified the compiler to recognize when it was compiling itself. When it detected this, it would insert both hacks into the new compiler binary. The dirty compiler reproduces itself from clean source code.
+
+This means the hack is invisible. You can read every line of the compiler's source code and find nothing suspicious. But the compiled binary contains the backdoor code, and it will insert itself into any new compiler compiled with it. The only way to detect it would be to examine the binary directly — a much harder task.
+
+Thompson's point wasn't that he'd actually deployed this attack (though some believe he might have). His point was philosophical: "You can't trust code that you did not totally create yourself." No amount of source code review can protect you from a compromised compiler. And you didn't write your compiler. And you didn't write the compiler that compiled your compiler. The chain of trust goes back further than any individual can verify.
+
+This became known as the "trusting trust" attack. It's a fundamental problem in computer security with no perfect solution. Modern approaches include "diverse double-compiling" (compiling with two independent compilers and comparing results) and reproducible builds (ensuring the same source always produces the same binary).
+
+The attack has practical relevance today. Supply chain attacks — where hackers compromise build tools, package managers, or CI/CD pipelines — are the modern equivalent. The SolarWinds hack (2020) compromised a build system to inject backdoors into software used by thousands of organizations, including the US government.
+
+Thompson's 1984 lecture remains one of the most important security papers ever written. Its lesson is simple and unsettling: at some point, you have to trust someone. The question is how to minimize that trust and detect when it's violated.`,
+    author: "Prof. Andrei",
+    authorEm: "🔓",
+    readTime: "9 min",
+    xp: 35,
+  },
+  {
+    cat: "fun",
+    tag: "FUN FACT",
+    year: "2002",
+    emoji: "📧",
+    grad: "linear-gradient(135deg,#2a1a2a,#5a3a5a)",
+    title: "The 500-mile email — the most legendary debugging story ever told",
+    excerpt:
+      "A sysadmin got a report: email couldn't be sent farther than 500 miles. It sounded insane. It was real. And the explanation involves the speed of light, a misconfigured timeout, and beautiful math.",
+    fullText: `In 2002, Trey Harris, a system administrator at a university, received what might be the strangest bug report in IT history. The department head said: "We can't send email farther than 500 miles."
+
+Harris's first reaction was to laugh. Email doesn't work that way — it's not like a radio signal that weakens with distance. But the department head insisted and had data to back it up. Emails to local addresses worked. Emails to Atlanta (500 miles away) worked. Emails to Memphis (600 miles away) — failed. Every time.
+
+After extensive investigation, Harris found the problem. A recent server upgrade had reset the sendmail configuration, including a setting called the connection timeout. Someone had set it to zero — but due to a quirk in the software, "zero" was interpreted as the system's minimum time resolution: 3 milliseconds.
+
+Here's where physics enters. When the mail server connected to a remote server, it would wait 3 milliseconds for a response. If no response came in that time, it would give up and report an error.
+
+Now, how far can a signal travel in 3 milliseconds? Light travels at about 300,000 km/s. In 3ms, that's 900 km or about 558 miles. But email doesn't travel in straight lines — it goes through routers and switches that add latency. In practice, any server more than about 500 miles away would take more than 3ms to respond.
+
+The "500-mile email" bug was a perfect storm: a misconfigured timeout that happened to be just long enough to reach nearby servers but not distant ones, creating a geographic boundary that looked like a physical limitation.
+
+Harris published the story on a mailing list, and it became an instant legend in the IT community. It's taught in networking courses as an example of how multiple small mistakes can create seemingly impossible symptoms, and how understanding the physical layer (the actual speed of light!) can be essential to debugging software problems.
+
+The story resonates because it captures the essence of debugging: the symptom seems impossible, the explanation is logical but surprising, and it requires knowledge from multiple domains (networking, physics, software configuration) to solve.`,
+    author: "Dr. Elena",
+    authorEm: "🔍",
+    readTime: "7 min",
+    xp: 20,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1943",
+    emoji: "🔐",
+    grad: "linear-gradient(135deg,#2a2a2a,#4a4a5a)",
+    title: "Enigma and the birth of modern computing",
+    excerpt:
+      "Breaking Nazi Germany's Enigma cipher shortened WWII by an estimated 2 years. The machines built to crack it — Colossus and the Bombe — were the direct ancestors of modern computers.",
+    fullText: `During World War II, Nazi Germany encrypted its military communications using the Enigma machine — an electromechanical device with 158 million million million possible settings (158 quintillion). Every day, operators would set the machine to a new configuration, and the Allies would have to start from scratch.
+
+Poland actually cracked Enigma first, in 1932. Mathematician Marian Rejewski reverse-engineered the machine's wiring using pure mathematics and some stolen German documents. Poland shared their work with Britain and France just weeks before the German invasion in 1939.
+
+At Bletchley Park, a Victorian estate north of London, Britain assembled the greatest collection of mathematical minds in history. Alan Turing, Gordon Welchman, and thousands of others worked in total secrecy to industrialize code-breaking.
+
+Turing designed the Bombe — an electromechanical machine that could test Enigma settings at superhuman speed. By 1943, over 200 Bombes were running around the clock. They exploited weaknesses in German procedures: weather reports always contained certain words, and operators were lazy about choosing random settings.
+
+But Enigma wasn't the only German cipher. The Lorenz cipher, used for Hitler's personal communications, was far more complex. To crack it, Tommy Flowers built Colossus — a room-sized electronic computer using 1,500 vacuum tubes. It became operational in February 1944 and is considered the first programmable electronic digital computer.
+
+The intelligence from code-breaking (codenamed "Ultra") was perhaps the Allies' greatest secret advantage. It revealed U-boat positions (saving convoys), warned of German offensives, and helped plan D-Day. Historians estimate Ultra shortened the war by 2-3 years and saved millions of lives.
+
+After the war, Churchill ordered the Colossus machines destroyed and all records classified. The 10,000 people who worked at Bletchley Park kept their secret for decades — many died before it was declassified in the 1970s. Turing received no public recognition during his lifetime.
+
+The tragedy is that Turing, who arguably contributed more to Allied victory than any other individual, was prosecuted in 1952 for being homosexual. He was chemically castrated and died of cyanide poisoning in 1954. He received a royal pardon in 2013 — 59 years too late. Today, his face is on the British £50 note.`,
+    author: "Prof. Andrei",
+    authorEm: "🎖️",
+    readTime: "10 min",
+    xp: 35,
+  },
+  {
+    cat: "ai",
+    tag: "AI & FUTURE",
+    year: "2016",
+    emoji: "⚫",
+    grad: "linear-gradient(135deg,#1a2a1a,#2f5a3f)",
+    title: "AlphaGo's Move 37 — the move no human would play",
+    excerpt:
+      "In Game 2 against the world Go champion, Google's AlphaGo played a move so alien that commentators thought it was a mistake. It won the game. Move 37 showed that AI can discover strategies humans never imagined.",
+    fullText: `Go is not chess. Chess has about 10^47 possible game positions. Go has 10^170 — more than there are atoms in the observable universe. Brute-force calculation, which had conquered chess in 1997, was utterly useless for Go. Experts predicted it would take decades before AI could beat a top Go player.
+
+In March 2016, Google DeepMind's AlphaGo faced Lee Sedol, one of the greatest Go players in history, in a five-game match in Seoul. Before the match, most Go professionals predicted Lee would win 5-0.
+
+Game 1: AlphaGo won. The Go world was shocked but rationalized — maybe Lee underestimated it.
+
+Game 2 changed everything. On move 37, AlphaGo placed a stone on the fifth line — a position that no human expert would consider. Go wisdom, refined over 3,000 years, says you play on the third or fourth line in the opening. The fifth line is too high, too greedy, too exposed.
+
+The commentators thought it was a bug. Fan Hui, the European champion who had tested AlphaGo, said: "It's not a human move. I've never seen a human play this move." One commentator said: "I thought it was a mistake."
+
+It wasn't a mistake. Move 37 set up influence across the entire board in a way that only became clear dozens of moves later. Lee Sedol left the room for 15 minutes to compose himself. He went on to lose the game.
+
+AlphaGo's team later revealed that its neural networks estimated Move 37 had a 1 in 10,000 chance of being played by a human professional. The AI found it by playing millions of games against itself, discovering strategies that 3,000 years of human play had missed.
+
+Lee Sedol won Game 4 with his own brilliant move — move 78, which AlphaGo's team said the AI had estimated had a 1 in 10,000 chance of being played. But AlphaGo won the match 4-1.
+
+Move 37 matters beyond Go. It demonstrated that AI systems trained through self-play can discover genuinely novel strategies — not just optimize known approaches, but find entirely new ones invisible to human experts. This has implications for drug discovery, materials science, mathematics, and any field where the search space is too vast for human intuition.
+
+Lee Sedol retired from professional Go in 2019, saying: "Even if I become the number one, there is an entity that cannot be defeated." He remains the only human to have beaten AlphaGo in a formal match.`,
+    author: "Dr. Elena",
+    authorEm: "🎯",
+    readTime: "9 min",
+    xp: 30,
+  },
+  {
+    cat: "oss",
+    tag: "OPEN SOURCE",
+    year: "2008",
+    emoji: "📋",
+    grad: "linear-gradient(135deg,#3a2a1a,#7a5a2f)",
+    title: "Stack Overflow changed how we learn to code",
+    excerpt:
+      "Before 2008, getting programming help meant posting on forums and waiting days for a reply (if you were lucky). Stack Overflow's gamified Q&A model created the largest programming knowledge base ever assembled.",
+    fullText: `Before Stack Overflow, getting programming help was painful. You'd post on a forum and wait hours or days for a reply. Replies were often unhelpful ("just Google it"), hostile ("RTFM"), or buried in thread after thread of off-topic discussion. Finding a specific answer required wading through pages of irrelevant posts.
+
+In 2008, Jeff Atwood and Joel Spolsky — both popular programming bloggers — launched Stack Overflow with a radical design. No discussion threads. Just questions and answers. Anyone could ask. Anyone could answer. The community voted on which answers were best, and the best rose to the top.
+
+The gamification was brilliant. You earned reputation points when people upvoted your answers. Reputation unlocked privileges: editing others' posts, closing duplicates, moderating content. Badges rewarded specific behaviors. The system turned helping strangers into a competitive game that top programmers couldn't resist playing.
+
+The strict moderation was equally important. Duplicate questions were closed and linked to the original. Vague questions were put "on hold" until clarified. Answers that were wrong got downvoted into oblivion. This ruthless curation created something rare on the internet: a reliable knowledge base where the best answer is usually the first one you see.
+
+Growth was explosive. Within two years, Stack Overflow had answered millions of questions. Google began surfacing Stack Overflow results at the top of programming searches. For many developers, the workflow became: encounter error → paste into Google → click Stack Overflow result → copy solution. The site became so dominant that the running joke was "programming is just copying from Stack Overflow."
+
+The site also changed who could learn to code. Previously, you needed a CS degree, mentors, or expensive books. Stack Overflow democratized programming knowledge — every error message, every API confusion, every "how do I do X in language Y" question was answered for free, permanently.
+
+By 2024, Stack Overflow had over 24 million questions and 35 million answers. The most viewed question (about reverting a Git commit) has been seen over 12 million times. But the site now faces an existential threat: AI coding assistants like GitHub Copilot and ChatGPT can answer programming questions directly, and Stack Overflow's traffic has dropped significantly since 2023.
+
+Stack Overflow's legacy is secure regardless of its future. It proved that crowd-sourced expertise, properly structured and incentivized, can create knowledge bases that surpass any individual textbook or documentation. It taught millions of developers. And its data trained the very AI models that now threaten to replace it.`,
+    author: "Ms. Diana",
+    authorEm: "🌟",
+    readTime: "9 min",
+    xp: 25,
+  },
 ];
 
 const FUN_FACTS = [
-  {
-    em: "🎮",
-    text: 'The first video game, "Tennis for Two" (1958), ran on an analog oscilloscope at a science fair. The creator made it because the open house was boring.',
-    src: "— Brookhaven Lab, 1958",
-  },
-  {
-    em: "📼",
-    text: 'Floppy disks were called "floppy" because the original 8-inch disks bent in your hand. The 3.5" disks we remember were technically rigid.',
-    src: "— IBM, 1971",
-  },
-  {
-    em: "🐍",
-    text: "Python is named after Monty Python's Flying Circus, not the snake. Guido van Rossum was reading the scripts when he picked the name in 1991.",
-    src: "— python.org",
-  },
-  {
-    em: "⌨️",
-    text: "The QWERTY layout was designed in 1873 to slow typists down — keys jammed on mechanical typewriters. We've kept it ever since.",
-    src: "— Christopher Sholes",
-  },
-  {
-    em: "☕",
-    text: 'Java was almost called "Oak" — until lawyers found another product with that name. The team picked Java over coffee. Literally.',
-    src: "— Sun Microsystems, 1995",
-  },
-  {
-    em: "🦠",
-    text: 'The first computer virus, "Creeper" (1971), just displayed: "I\'m the creeper, catch me if you can!" The first antivirus, "Reaper", was made to hunt it.',
-    src: "— ARPANET",
-  },
-  {
-    em: "🖱️",
-    text: "The first computer mouse was made of wood (1964). Doug Engelbart's prototype had two perpendicular wheels — and one button.",
-    src: "— SRI International",
-  },
-  {
-    em: "💾",
-    text: "The save icon (a floppy disk) is now older than most of the people who use it. Kids today have never touched one.",
-    src: "— Universal truth",
-  },
+  { em: "🎮", text: 'The first video game, "Tennis for Two" (1958), ran on an analog oscilloscope at a science fair. The creator made it because the open house was boring.', src: "— Brookhaven Lab, 1958" },
+  { em: "📼", text: 'Floppy disks were called "floppy" because the original 8-inch disks bent in your hand. The 3.5" disks we remember were technically rigid.', src: "— IBM, 1971" },
+  { em: "🐍", text: "Python is named after Monty Python's Flying Circus, not the snake. Guido van Rossum was reading the scripts when he picked the name in 1991.", src: "— python.org" },
+  { em: "⌨️", text: "The QWERTY layout was designed in 1873 to slow typists down — keys jammed on mechanical typewriters. We've kept it ever since.", src: "— Christopher Sholes" },
+  { em: "☕", text: 'Java was almost called "Oak" — until lawyers found another product with that name. The team picked Java over coffee. Literally.', src: "— Sun Microsystems, 1995" },
+  { em: "🦠", text: 'The first computer virus, "Creeper" (1971), just displayed: "I\'m the creeper, catch me if you can!" The first antivirus, "Reaper", was made to hunt it.', src: "— ARPANET" },
+  { em: "🖱️", text: "The first computer mouse was made of wood (1964). Doug Engelbart's prototype had two perpendicular wheels — and one button.", src: "— SRI International" },
+  { em: "💾", text: "The save icon (a floppy disk) is now older than most of the people who use it. Kids today have never touched one.", src: "— Universal truth" },
+  { em: "🔑", text: "The password 'password' is still used by millions of people every year. It takes less than 1 second to crack.", src: "— NordPass, 2024" },
+  { em: "🌍", text: "Over 5.5 billion people use the internet today — more than have access to clean toilets.", src: "— ITU / WHO" },
+  { em: "📧", text: "The average office worker receives 121 emails per day. About 49% of all email traffic is spam.", src: "— Radicati Group" },
+  { em: "🧮", text: "The word 'computer' originally meant a person who does calculations. It was a job title until the 1950s.", src: "— Oxford English Dictionary" },
+  { em: "🏎️", text: "A modern car has more lines of code (~100 million) than a Boeing 787 Dreamliner, Facebook, and the Large Hadron Collider combined.", src: "— IEEE Spectrum" },
+  { em: "🐛", text: "The average software has 15-50 bugs per 1,000 lines of code. NASA's Space Shuttle had just 0.1 bugs per 1,000 lines.", src: "— NASA / IEEE" },
+  { em: "📡", text: "The entire data of Wikipedia (text only) is about 22 GB — it fits on a cheap USB stick.", src: "— Wikipedia dumps" },
+  { em: "🎵", text: "The first MP3 ever encoded was 'Tom's Diner' by Suzanne Vega (1993). Engineers chose it because of her clear, unaccompanied voice.", src: "— Fraunhofer Institute" },
+  { em: "🔋", text: "Bitcoin mining uses more electricity annually than the entire country of Argentina.", src: "— Cambridge University" },
+  { em: "💻", text: "The Apollo 11 guidance computer had 74 KB of memory. Your phone has about 80 million times more.", src: "— NASA" },
+  { em: "🐱", text: "The first YouTube video ever uploaded was 'Me at the zoo' (2005). It's 18 seconds long and features elephants.", src: "— YouTube" },
+  { em: "📱", text: "The average person touches their phone 2,617 times a day. Heavy users exceed 5,400 touches.", src: "— Dscout Research" },
+  { em: "🗂️", text: "Google processes over 8.5 billion searches per day — that's about 99,000 per second.", src: "— Internet Live Stats" },
+  { em: "🧊", text: "GitHub's Arctic Code Vault stores open-source code on film reels in a decommissioned coal mine in Svalbard, Norway. It's designed to last 1,000 years.", src: "— GitHub, 2020" },
+  { em: "🎲", text: "Minecraft's world is 8x the surface area of Earth. The procedural generation uses a single seed number to create it all.", src: "— Mojang" },
+  { em: "🖥️", text: "The first 1 GB hard drive (1980) weighed 550 pounds, was the size of a refrigerator, and cost $40,000.", src: "— IBM" },
+  { em: "🌙", text: "It takes more computing power to run a modern AI model once than it took to send humans to the Moon.", src: "— OpenAI estimates" },
+  { em: "📦", text: "npm (Node Package Manager) has over 2 million packages. The average JavaScript project installs over 1,000 dependencies.", src: "— npm registry" },
+  { em: "🔐", text: "The most expensive cybersecurity breach in history was Yahoo (2013) — 3 billion accounts compromised. It reduced their sale price by $350 million.", src: "— Verizon/Yahoo" },
+  { em: "🐧", text: "Linux runs on 100% of the world's top 500 supercomputers. Not 99%. All of them.", src: "— TOP500.org" },
+  { em: "⏱️", text: "Amazon calculated that every 100ms of latency costs them 1% in sales. Google found that an extra 0.5s in search page load drops traffic by 20%.", src: "— Amazon / Google" },
+  { em: "🎬", text: "The entire Lord of the Rings trilogy took 12 TB of storage for rendering. A single frame took up to 48 hours to render.", src: "— Weta Digital" },
+  { em: "🔤", text: "There are over 700 programming languages in active use. Most programmers only ever learn 3-5 in their career.", src: "— TIOBE / StackOverflow" },
+  { em: "🌐", text: "The first website (info.cern.ch) is still online. It explains what the World Wide Web is.", src: "— CERN, 1991" },
+  { em: "🧬", text: "1 gram of DNA can theoretically store 215 petabytes (215 million gigabytes) of data.", src: "— Harvard / Nature" },
+  { em: "🚀", text: "SpaceX's Falcon 9 rocket runs Linux. The flight software is written in C++.", src: "— SpaceX" },
+  { em: "🎯", text: "Stack Overflow has over 24 million answered questions. The most viewed question is about reverting a Git commit.", src: "— StackOverflow" },
+  { em: "🔊", text: "Siri was originally developed as a DARPA-funded AI project. Apple acquired it for $200 million in 2010.", src: "— Apple / DARPA" },
+  { em: "📊", text: "90% of the world's data was created in the last two years. We generate 2.5 quintillion bytes daily.", src: "— IBM / DOMO" },
+  { em: "🏠", text: "The first webcam was pointed at a coffee pot at Cambridge University (1991). Researchers used it to check if the pot was empty before walking downstairs.", src: "— Cambridge" },
+  { em: "🕹️", text: "The Game Boy (1989) had less computing power than a modern smart doorbell. It sold 118 million units.", src: "— Nintendo" },
+  { em: "🔗", text: "The internet's undersea cables total over 1.3 million km — enough to wrap around Earth 33 times. 97% of intercontinental data travels through them.", src: "— TeleGeography" },
+  { em: "💡", text: "Thomas Edison's lab made the first audio recording (1877) and also the first motion picture (1891). Both technologies were side projects.", src: "— Edison Labs" },
+  { em: "🤖", text: "The word 'robot' comes from the Czech word 'robota' meaning forced labor. It was coined in a 1920 play by Karel Čapek.", src: "— R.U.R., 1920" },
+  { em: "🎨", text: "The hex color code for Facebook blue (#4267B2) was chosen because Mark Zuckerberg is red-green colorblind. Blue is the color he sees best.", src: "— The New Yorker" },
+  { em: "📝", text: "The original source code for the World Wide Web was written on a NeXT computer. Steve Jobs founded NeXT after being fired from Apple.", src: "— CERN / NeXT" },
+  { em: "🌊", text: "The entire internet weighs about 50 grams — the combined weight of all the electrons in motion carrying data at any given moment.", src: "— Discover Magazine" },
+  { em: "⚡", text: "A single Google search uses about 0.3 Wh of energy — enough to light a 60W bulb for 18 seconds.", src: "— Google" },
+  { em: "🎮", text: "The Easter egg tradition started in 1980 when an Atari developer hid his name in Adventure because the company refused to credit programmers.", src: "— Warren Robinett" },
+  { em: "🐘", text: "PHP originally stood for 'Personal Home Page'. Its creator, Rasmus Lerdorf, said he never intended it to become a real programming language.", src: "— Rasmus Lerdorf" },
+  { em: "🧪", text: "The first domain name ever registered was symbolics.com on March 15, 1985. It's still active as a historical museum.", src: "— IANA" },
+  { em: "📺", text: "Netflix's recommendation engine saves the company $1 billion per year by reducing customer churn.", src: "— Netflix Tech Blog" },
 ];
 
-const ON_THIS_DAY = [
-  { year: "1969", event: "UNIX first installed at Bell Labs by Ken Thompson" },
-  {
-    year: "1990",
-    event: "Tim Berners-Lee proposes the World Wide Web at CERN",
-  },
-  { year: "2001", event: "First public release of Wikipedia" },
-  { year: "2008", event: "Bitcoin whitepaper published by Satoshi Nakamoto" },
-  { year: "2009", event: "The first Git commit was authored by Linus" },
-  {
-    year: "2022",
-    event: "ChatGPT enters public beta — 1M users in 5 days",
-  },
+const QUOTES = [
+  { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds", context: "2000, Linux Kernel Mailing List" },
+  { text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler", context: "Refactoring, 1999" },
+  { text: "First, solve the problem. Then, write the code.", author: "John Johnson", context: "" },
+  { text: "The best way to predict the future is to invent it.", author: "Alan Kay", context: "1971, Xerox PARC" },
+  { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman", context: "" },
+  { text: "Programs must be written for people to read, and only incidentally for machines to execute.", author: "Harold Abelson", context: "SICP, 1985" },
+  { text: "It's not a bug — it's an undocumented feature.", author: "Anonymous", context: "Programmer folklore" },
+  { text: "The most dangerous phrase in the language is 'We've always done it this way.'", author: "Grace Hopper", context: "" },
+  { text: "Measuring programming progress by lines of code is like measuring aircraft building progress by weight.", author: "Bill Gates", context: "" },
+  { text: "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry", context: "" },
+  { text: "The computer was born to solve problems that did not exist before.", author: "Bill Gates", context: "" },
+  { text: "In theory, there is no difference between theory and practice. In practice, there is.", author: "Yogi Berra", context: "" },
+  { text: "Software is like entropy: it is difficult to grasp, weighs nothing, and obeys the Second Law of Thermodynamics — it always increases.", author: "Norman Augustine", context: "" },
+  { text: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson", context: "" },
+  { text: "The only way to learn a new programming language is by writing programs in it.", author: "Dennis Ritchie", context: "" },
+  { text: "Computers are good at following instructions, but not at reading your mind.", author: "Donald Knuth", context: "" },
+  { text: "Give a man a program, frustrate him for a day. Teach a man to program, frustrate him for a lifetime.", author: "Muhammad Waseem", context: "Internet wisdom" },
+  { text: "A language that doesn't affect the way you think about programming is not worth knowing.", author: "Alan Perlis", context: "Epigrams on Programming, 1982" },
+  { text: "The function of good software is to make the complex appear simple.", author: "Grady Booch", context: "" },
+  { text: "One of my most productive days was throwing away 1,000 lines of code.", author: "Ken Thompson", context: "" },
+  { text: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House", context: "" },
+  { text: "Deleted code is debugged code.", author: "Jeff Sickel", context: "" },
+  { text: "It works on my machine.", author: "Every developer", context: "Since the dawn of time" },
+  { text: "If debugging is the process of removing bugs, then programming must be the process of putting them in.", author: "Edsger Dijkstra", context: "" },
+  { text: "The best error message is the one that never shows up.", author: "Thomas Fuchs", context: "" },
+  { text: "Walking on water and developing software from a specification are easy if both are frozen.", author: "Edward V. Berard", context: "" },
+  { text: "Programming today is a race between software engineers trying to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots.", author: "Rick Cook", context: "" },
+  { text: "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.", author: "John Woods", context: "" },
+  { text: "There are only two hard things in Computer Science: cache invalidation and naming things.", author: "Phil Karlton", context: "" },
+  { text: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke", context: "Profiles of the Future, 1962" },
+  { text: "The Internet is becoming the town square for the global village of tomorrow.", author: "Bill Gates", context: "" },
+  { text: "Privacy is not something that I'm merely entitled to, it's an absolute prerequisite.", author: "Marlon Brando", context: "" },
+  { text: "Information is power. But like all power, there are those who want to keep it for themselves.", author: "Aaron Swartz", context: "Guerilla Open Access Manifesto, 2008" },
+  { text: "We can only see a short distance ahead, but we can see plenty there that needs to be done.", author: "Alan Turing", context: "Computing Machinery and Intelligence, 1950" },
+  { text: "People think that computer science is the art of geniuses, but the actual reality is the opposite — just many people doing things that build on each other.", author: "Donald Knuth", context: "" },
+  { text: "The best code is no code at all.", author: "Jeff Atwood", context: "Coding Horror" },
+  { text: "Move fast and break things. Unless you are breaking stuff, you are not moving fast enough.", author: "Mark Zuckerberg", context: "2009" },
+  { text: "The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.", author: "Tim Berners-Lee", context: "" },
+  { text: "Real artists ship.", author: "Steve Jobs", context: "1983" },
+  { text: "Everybody should learn to program a computer, because it teaches you how to think.", author: "Steve Jobs", context: "" },
+  { text: "Most good programmers do programming not because they expect to get paid, but because it is fun to program.", author: "Linus Torvalds", context: "" },
+  { text: "Unix is simple. It just takes a genius to understand its simplicity.", author: "Dennis Ritchie", context: "" },
+  { text: "Controlling complexity is the essence of computer programming.", author: "Brian Kernighan", context: "Software Tools, 1976" },
+  { text: "Programming is the art of telling another human being what one wants the computer to do.", author: "Donald Knuth", context: "" },
+  { text: "Java is to JavaScript what car is to carpet.", author: "Chris Heilmann", context: "" },
+  { text: "In a room full of top software designers, if two agree on the same thing, that's a majority.", author: "Bill Curtis", context: "" },
+  { text: "Programming isn't about what you know; it's about what you can figure out.", author: "Chris Pine", context: "Learn to Program" },
+  { text: "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.", author: "Daniel J. Boorstin", context: "" },
+  { text: "Weeks of coding can save you hours of planning.", author: "Anonymous", context: "Developer proverb" },
+  { text: "Make it work, make it right, make it fast.", author: "Kent Beck", context: "" },
 ];
-
-const LEGENDS = [
-  { em: "🐧", name: "Linus Torvalds", desc: "Linux, Git — Finland, 1969" },
-  { em: "🦬", name: "Richard Stallman", desc: "GNU, Free Software — 1953" },
-  { em: "👑", name: "Ada Lovelace", desc: "First programmer — 1815" },
-  { em: "🦋", name: "Grace Hopper", desc: "COBOL, first bug — 1906" },
-  { em: "🚀", name: "Margaret Hamilton", desc: "Apollo 11 software — 1936" },
-  { em: "🧠", name: "Alan Turing", desc: "Father of CS — 1912" },
-  { em: "🌐", name: "Tim Berners-Lee", desc: "Invented the Web — 1955" },
-  { em: "🍎", name: "Dennis Ritchie", desc: "Created C, UNIX — 1941" },
-];
-
-const QUOTE = {
-  text: "Talk is cheap. Show me the code.",
-  author: "Linus Torvalds",
-  context: "2000, Linux Kernel Mailing List",
-};
 
 const BIG_TIMELINE = [
   {
@@ -596,26 +1195,6 @@ function StoryModal({
         </div>
         <div className="story-modal-body">
           <h2 className="story-modal-title">{story.title}</h2>
-          <div className="story-modal-meta">
-            <div className="story-modal-author">
-              <div className="story-modal-author-av">
-                {story.authorEm || story.authorEmoji}
-              </div>
-              <span>{story.author}</span>
-            </div>
-            <span className="dot" />
-            <span>{story.readTime} read</span>
-            <span className="dot" />
-            <span
-              style={{
-                color: "var(--accent)",
-                fontFamily: "var(--mono)",
-                fontWeight: 700,
-              }}
-            >
-              +{story.xp} XP
-            </span>
-          </div>
           <div className="story-modal-text">
             {story.fullText.split("\n\n").map((para, i) => (
               <p key={i}>{para}</p>
@@ -630,15 +1209,20 @@ function StoryModal({
 export function AlmanacPage() {
   const [filter, setFilter] = useState("all");
   const [factIdx, setFactIdx] = useState(0);
+  const [quoteIdx, setQuoteIdx] = useState(0);
   const [openStory, setOpenStory] = useState<StoryData | null>(null);
 
   const filtered =
     filter === "all" ? ARTICLES : ARTICLES.filter((a) => a.cat === filter);
   const fact = FUN_FACTS[factIdx];
+  const quote = QUOTES[quoteIdx];
 
   const nextFact = () => setFactIdx((factIdx + 1) % FUN_FACTS.length);
   const prevFact = () =>
     setFactIdx((factIdx - 1 + FUN_FACTS.length) % FUN_FACTS.length);
+  const nextQuote = () => setQuoteIdx((quoteIdx + 1) % QUOTES.length);
+  const prevQuote = () =>
+    setQuoteIdx((quoteIdx - 1 + QUOTES.length) % QUOTES.length);
 
   return (
     <>
@@ -686,24 +1270,7 @@ export function AlmanacPage() {
               <h2 className="hero-title">{HERO.title}</h2>
               <p className="hero-excerpt">{HERO.excerpt}</p>
               <div className="hero-meta">
-                <div className="hero-author">
-                  <div className="hero-author-avatar">{HERO.authorEmoji}</div>
-                  <span>{HERO.author}</span>
-                </div>
-                <span className="dot" />
                 <span>{HERO.date}</span>
-                <span className="dot" />
-                <span>{HERO.readTime} read</span>
-                <span className="dot" />
-                <span
-                  style={{
-                    color: "var(--accent)",
-                    fontFamily: "var(--mono)",
-                    fontWeight: 700,
-                  }}
-                >
-                  +{HERO.xp} XP
-                </span>
               </div>
             </div>
           </article>
@@ -733,16 +1300,6 @@ export function AlmanacPage() {
                   <div className="article-body">
                     <h3 className="article-title">{a.title}</h3>
                     <p className="article-excerpt">{a.excerpt}</p>
-                    <div className="article-footer">
-                      <div className="article-author">
-                        <div className="article-author-av">{a.authorEm}</div>
-                        <span>{a.author}</span>
-                      </div>
-                      <div className="article-stats">
-                        <span>{a.readTime}</span>
-                        <span className="article-xp">+{a.xp} XP</span>
-                      </div>
-                    </div>
                   </div>
                 </article>
               ))}
@@ -751,67 +1308,52 @@ export function AlmanacPage() {
 
           <aside className="almanac-sidebar">
             <div className="side-card factcard">
-              <h3>🎲 Daily Fun Fact</h3>
+              <button
+                className="card-arrow card-arrow-left"
+                onClick={prevFact}
+                aria-label="Previous fun fact"
+              >
+                ‹
+              </button>
+              <button
+                className="card-arrow card-arrow-right"
+                onClick={nextFact}
+                aria-label="Next fun fact"
+              >
+                ›
+              </button>
+              <h3>🎲 Fun Fact</h3>
               <span className="fact-emoji">{fact.em}</span>
               <div className="fact-text">{fact.text}</div>
               <div className="fact-source">{fact.src}</div>
-              <div className="fact-nav">
-                <div className="fact-pips">
-                  {FUN_FACTS.map((_, i) => (
-                    <div
-                      key={i}
-                      className={
-                        "fact-pip" + (i === factIdx ? " active" : "")
-                      }
-                    />
-                  ))}
-                </div>
-                <div style={{ display: "flex", gap: 6 }}>
-                  <button className="fact-btn" onClick={prevFact}>
-                    ‹
-                  </button>
-                  <button className="fact-btn" onClick={nextFact}>
-                    ›
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="side-card">
-              <h3>
-                <span className="blip" /> On this day in tech
-              </h3>
-              <div className="timeline">
-                {ON_THIS_DAY.map((it, i) => (
-                  <div className="tl-item" key={i}>
-                    <div className="tl-year">{it.year}</div>
-                    <div className="tl-event">{it.event}</div>
-                  </div>
-                ))}
+              <div className="card-counter">
+                {factIdx + 1} / {FUN_FACTS.length}
               </div>
             </div>
 
             <div className="side-card quote-card">
-              <h3>💬 Quote of the day</h3>
+              <button
+                className="card-arrow card-arrow-left"
+                onClick={prevQuote}
+                aria-label="Previous quote"
+              >
+                ‹
+              </button>
+              <button
+                className="card-arrow card-arrow-right"
+                onClick={nextQuote}
+                aria-label="Next quote"
+              >
+                ›
+              </button>
+              <h3>💬 Quotes</h3>
               <div className="quote-mark">&ldquo;</div>
-              <div className="quote-text">{QUOTE.text}</div>
+              <div className="quote-text">{quote.text}</div>
               <div className="quote-author">
-                — <strong>{QUOTE.author}</strong> &middot; {QUOTE.context}
+                — <strong>{quote.author}</strong>{quote.context && <> &middot; {quote.context}</>}
               </div>
-            </div>
-
-            <div className="side-card">
-              <h3>👑 Hall of Legends</h3>
-              <div className="legends">
-                {LEGENDS.map((l, i) => (
-                  <div className="legend" key={i}>
-                    <div className="legend-av">{l.em}</div>
-                    <div className="legend-info">
-                      <div className="legend-name">{l.name}</div>
-                      <div className="legend-desc">{l.desc}</div>
-                    </div>
-                  </div>
-                ))}
+              <div className="card-counter">
+                {quoteIdx + 1} / {QUOTES.length}
               </div>
             </div>
           </aside>

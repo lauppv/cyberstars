@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "crew.txt", "content": "Ava\nBen\nChloe\n" },
+    { "path": "mission.txt", "content": "Mission: explore sector 7.\n" },
+    { "path": ".secret.txt", "content": "access code: 4471\n" }
+  ],
+  "dirs": ["reports"]
+}

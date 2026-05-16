@@ -10,8 +10,8 @@ import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
 import type { Course } from "../../shared/lesson";
 import type { LeaderboardEntry } from "../../shared/progress";
-import { COURSE_ICON } from "../constants/courses";
-import { MAIN_COURSE_KEYS, progressPct } from "../../shared/constants";
+import { courseMeta } from "../constants/courses";
+import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from "../../shared/constants";
 
 const TOUR_STEPS = [
   { icon: "👋", title: "Welcome to CyberStars!", body: "We're excited to have you. Let's take a quick tour of the platform so you know where everything is." },
@@ -47,10 +47,15 @@ export function HomePage() {
     [allCourses]
   );
 
+  const allNonAlgoCourses = useMemo(() => {
+    const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
+    return allCourses.filter((c) => keys.includes(c.key));
+  }, [allCourses]);
+
   const continueTo = useMemo(() => {
-    if (!isLoggedIn || !mainCourses.length) return null;
+    if (!isLoggedIn || !allNonAlgoCourses.length) return null;
     let best: { course: Course; slug: string; title: string; pct: number; at: string } | null = null;
-    for (const c of mainCourses) {
+    for (const c of allNonAlgoCourses) {
       const p = progressMap[c.key];
       if (!p) continue;
       const pct = progressPct(p.completed, p.total);
@@ -61,10 +66,10 @@ export function HomePage() {
       }
     }
     if (best) return { course: best.course, slug: best.slug, title: best.title, pct: best.pct };
-    const first = mainCourses[0];
+    const first = allNonAlgoCourses[0];
     if (first?.lessons[0]) return { course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 };
     return null;
-  }, [isLoggedIn, mainCourses, progressMap]);
+  }, [isLoggedIn, allNonAlgoCourses, progressMap]);
 
   useEffect(() => {
     if (isLoggedIn) refreshProgress();
@@ -172,7 +177,7 @@ export function HomePage() {
                     className="w-[52px] h-[52px] rounded-[10px] flex items-center justify-center text-2xl shrink-0"
                     style={{ background: "var(--bg3)" }}
                   >
-                    {COURSE_ICON[continueTo.course.key] ?? "📘"}
+                    {courseMeta(continueTo.course.key).icon}
                   </div>
                   {/* Text */}
                   <div className="flex-1 min-w-0">

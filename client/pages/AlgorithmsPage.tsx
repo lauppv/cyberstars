@@ -3,30 +3,22 @@ import { Topbar } from "../components/layout/Topbar";
 import { useGamification } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { XPBar } from "../components/gamification/XPBar";
+import { ALGO_COURSE_KEYS } from "../../shared/constants";
+import { courseMeta } from "../constants/courses";
 
-const LANGS = [
-  {
-    key: "algo-python",
-    icon: "🐍",
-    name: "Python",
-    color: "#3572A5",
-    desc: "Classic algorithms with strings, lists, loops, and dictionaries. Great for building problem-solving skills.",
-  },
-  {
-    key: "algo-java",
-    icon: "☕",
-    name: "Java",
-    color: "#E76F00",
-    desc: "OOP-focused challenges — classes, objects, inheritance, and collections. Practice designing with objects.",
-  },
-  {
-    key: "algo-c",
-    icon: "⚙️",
-    name: "C",
-    color: "#555555",
-    desc: "Low-level challenges with arrays, pointers, structs, and memory. Think close to the hardware.",
-  },
-];
+const ALGO_DESC: Record<string, string> = {
+  "algo-python":
+    "Classic algorithms with strings, lists, loops, and dictionaries. Great for building problem-solving skills.",
+  "algo-java":
+    "OOP-focused challenges — classes, objects, inheritance, and collections. Practice designing with objects.",
+  "algo-c":
+    "Low-level challenges with arrays, pointers, structs, and memory. Think close to the hardware.",
+};
+
+const LANGS = ALGO_COURSE_KEYS.map((key) => {
+  const m = courseMeta(key);
+  return { key, icon: m.icon, name: m.label, color: m.color, desc: ALGO_DESC[key] };
+});
 
 export function AlgorithmsPage() {
   const navigate = useNavigate();

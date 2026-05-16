@@ -1,0 +1,28 @@
+[
+  {
+    "name": "You used >> to append",
+    "check": "history_contains",
+    "pattern": ">>\\s*mission\\.log"
+  },
+  {
+    "name": "Original content is preserved",
+    "check": "file_content",
+    "path": "mission.log",
+    "mode": "contains",
+    "expected": "status: launch sequence initiated"
+  },
+  {
+    "name": "First new line was appended",
+    "check": "file_content",
+    "path": "mission.log",
+    "mode": "contains",
+    "expected": "status: shields nominal"
+  },
+  {
+    "name": "Second new line was appended",
+    "check": "file_content",
+    "path": "mission.log",
+    "mode": "contains",
+    "expected": "status: crew ready"
+  }
+]

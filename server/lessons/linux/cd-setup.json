@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "mission.txt", "content": "Mission: explore sector 7.\n" },
+    { "path": "tools/scripts/deploy.sh", "content": "echo deploying\n" },
+    { "path": "tools/readme.txt", "content": "Tools for the mission.\n" }
+  ],
+  "dirs": ["reports", "tools", "tools/scripts"]
+}

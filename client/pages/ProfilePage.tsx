@@ -7,7 +7,7 @@ import { XPBar } from "../components/gamification/XPBar";
 import { Badge } from "../components/gamification/Badge";
 import { StreakWidget } from "../components/gamification/StreakWidget";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import { COURSE_LABEL, COURSE_ICON, COURSE_COLOR } from "../constants/courses";
+import { courseMeta, courseTitle } from "../constants/courses";
 
 export function ProfilePage() {
   const navigate = useNavigate();
@@ -95,15 +95,15 @@ export function ProfilePage() {
             <div className="flex flex-col gap-2.5">
               {courseEntries.map(([key, { done, total }]) => {
                 const pct = total > 0 ? (done / total) * 100 : 0;
-                const color = COURSE_COLOR[key] ?? "var(--accent)";
+                const color = courseMeta(key).color;
                 return (
                   <div
                     key={key}
                     className="flex items-center gap-3 p-3 bg-[var(--surface)] rounded-[var(--radius-sm)] border border-[var(--border)]"
                   >
-                    <span className="text-xl">{COURSE_ICON[key] ?? "📘"}</span>
+                    <span className="text-xl">{courseMeta(key).icon}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[13px] font-semibold">{COURSE_LABEL[key] ?? key}</div>
+                      <div className="text-[13px] font-semibold">{courseTitle(key)}</div>
                       <div className="text-[11px] text-[var(--text3)] mt-0.5">
                         {done} / {total} lessons
                       </div>

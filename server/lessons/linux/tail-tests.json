@@ -1,0 +1,19 @@
+[
+  {
+    "name": "You used tail with -n",
+    "check": "history_contains",
+    "pattern": "\\btail\\s+-n\\s*4\\b"
+  },
+  {
+    "name": "The last line was shown",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "ready for crew"
+  },
+  {
+    "name": "Only the last 4 lines were shown (line 6 absent)",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "^(?!.*navigation online)[\\s\\S]*airlock sealed[\\s\\S]*$"
+  }
+]

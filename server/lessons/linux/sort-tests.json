@@ -1,0 +1,19 @@
+[
+  {
+    "name": "You used sort -r",
+    "check": "history_contains",
+    "pattern": "\\bsort\\s+-r\\b.*supplies\\.txt"
+  },
+  {
+    "name": "Output starts with water filters (last alphabetically)",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "^water filters"
+  },
+  {
+    "name": "Output ends with ammo crates (first alphabetically)",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "ammo crates"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "briefing.txt", "content": "Cadet briefing.\nDestination: sector 7.\nReport back at 0900.\n" }
+  ],
+  "dirs": []
+}

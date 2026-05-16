@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used find with -name",
+    "check": "history_contains",
+    "pattern": "\\bfind\\b.*-name\\b.*secret\\.txt"
+  },
+  {
+    "name": "find located the secret file",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "data/vault/secret.txt"
+  }
+]

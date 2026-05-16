@@ -1,0 +1,7 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "mystery.dat", "content": "This is actually plain readable text.\n" }
+  ],
+  "dirs": []
+}

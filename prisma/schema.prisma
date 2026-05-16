@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum CurriculumKind {
+  editor
+  terminal
+}
+
 model User {
   id         Int      @id @default(autoincrement())
   name       String   @db.VarChar(100)
@@ -25,10 +30,11 @@ model User {
 
 model Curriculum {
   id          Int      @id @default(autoincrement())
-  key         String   @unique @db.VarChar(50)
-  title       String   @db.VarChar(100)
+  key         String         @unique @db.VarChar(50)
+  title       String         @db.VarChar(100)
   description String
-  sortOrder   Int      @default(0) @map("sort_order")
+  kind        CurriculumKind @default(editor)
+  sortOrder   Int            @default(0) @map("sort_order")
   createdAt   DateTime @default(now()) @map("created_at")
 
   @@map("curriculum")

@@ -1,44 +1,31 @@
-export const COURSE_ICON: Record<string, string> = {
-  python: "🐍",
-  java: "☕",
-  c: "⚙️",
-  "algo-python": "🐍",
-  "algo-java": "☕",
-  "algo-c": "⚙️",
+import { baseLanguage } from "../../shared/constants";
+
+export interface CourseMeta {
+  icon: string;
+  color: string;
+  label: string;
+  langLabel: string;
+}
+
+const LANGUAGE_META: Record<string, CourseMeta> = {
+  python: { icon: "🐍", color: "#3572A5", label: "Python", langLabel: "Python 3" },
+  java: { icon: "☕", color: "#E76F00", label: "Java", langLabel: "Java" },
+  c: { icon: "⚙️", color: "#555555", label: "C", langLabel: "C" },
+  linux: { icon: "🐧", color: "#FCC624", label: "Linux", langLabel: "Bash" },
 };
 
-export const COURSE_COLOR: Record<string, string> = {
-  python: "#3572A5",
-  java: "#b07219",
-  c: "#555555",
-  "algo-python": "#3572A5",
-  "algo-java": "#E76F00",
-  "algo-c": "#555555",
-};
+export function courseMeta(key: string): CourseMeta {
+  return (
+    LANGUAGE_META[baseLanguage(key)] ?? {
+      icon: "📘",
+      color: "#6C5CE7",
+      label: key,
+      langLabel: key.toUpperCase(),
+    }
+  );
+}
 
-export const COURSE_LABEL: Record<string, string> = {
-  python: "Python",
-  java: "Java",
-  c: "C",
-  "algo-python": "Python Algorithms",
-  "algo-java": "Java Algorithms",
-  "algo-c": "C Algorithms",
-};
-
-export const COURSE_LEVEL: Record<string, "beginner" | "intermediate" | "advanced"> = {
-  python: "beginner",
-  java: "beginner",
-  c: "beginner",
-  "algo-python": "intermediate",
-  "algo-java": "intermediate",
-  "algo-c": "intermediate",
-};
-
-export const LANG_LABEL: Record<string, string> = {
-  python: "Python 3",
-  java: "Java",
-  c: "C",
-  "algo-python": "Python 3",
-  "algo-java": "Java",
-  "algo-c": "C",
-};
+export function courseTitle(key: string): string {
+  const { label } = courseMeta(key);
+  return key.startsWith("algo-") ? `${label} Algorithms` : label;
+}

@@ -1,0 +1,7 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "manual.txt", "content": "STATION MANUAL\nChapter 1: Airlocks\nChapter 2: Life support\nChapter 3: Navigation\nChapter 4: Communications\nChapter 5: Emergency procedures\nEnd of manual.\n" }
+  ],
+  "dirs": []
+}

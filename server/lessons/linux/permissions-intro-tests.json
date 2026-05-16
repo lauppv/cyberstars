@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used ls -l to view permissions",
+    "check": "history_contains",
+    "pattern": "\\bls\\s+-l\\b"
+  },
+  {
+    "name": "Output shows file listings with permissions",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "diagnostics.sh"
+  }
+]

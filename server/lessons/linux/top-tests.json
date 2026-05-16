@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used ps aux --sort with CPU",
+    "check": "history_contains",
+    "pattern": "\\bps\\s+aux\\s+--sort=?-?%?cpu"
+  },
+  {
+    "name": "Output shows processes sorted by CPU",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "reactor-monitor"
+  }
+]

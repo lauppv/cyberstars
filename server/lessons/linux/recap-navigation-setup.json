@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "readme.txt", "content": "Welcome aboard, cadet.\n" },
+    { "path": "station/log.txt", "content": "Station online.\n" },
+    { "path": "station/archive/old.txt", "content": "Archived record.\n" },
+    { "path": "station/archive/.vault/codes.txt", "content": "vault code: 9920\n" }
+  ],
+  "dirs": ["station", "station/archive", "station/archive/.vault"]
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used ps aux",
+    "check": "history_contains",
+    "pattern": "\\bps\\s+aux\\b"
+  },
+  {
+    "name": "The process list was displayed",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "reactor-monitor"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "empty-bay folder was removed",
+    "check": "file_absent",
+    "path": "/home/student/empty-bay"
+  },
+  {
+    "name": "old-data folder was removed",
+    "check": "file_absent",
+    "path": "/home/student/old-data"
+  },
+  {
+    "name": "mission folder was kept",
+    "check": "file_exists",
+    "path": "/home/student/mission",
+    "expectDir": true
+  }
+]

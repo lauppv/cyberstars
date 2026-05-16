@@ -1,0 +1,18 @@
+[
+  {
+    "name": "You used kill -9 on PID 510",
+    "check": "history_contains",
+    "pattern": "\\bkill\\s+-9\\s+510\\b"
+  },
+  {
+    "name": "You verified with ps aux",
+    "check": "history_contains",
+    "pattern": "\\bps\\s+aux\\b"
+  },
+  {
+    "name": "The nav-computer process is no longer listed",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "^(?!.*nav-computer)[\\s\\S]*$"
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "name": "You used cut with comma delimiter and field 1",
+    "check": "history_contains",
+    "pattern": "\\bcut\\b.*-d[,].*-f\\s*1|\\bcut\\b.*-f\\s*1.*-d[,]"
+  },
+  {
+    "name": "Output contains oxygen_tanks",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "oxygen_tanks"
+  },
+  {
+    "name": "Output contains water_filters",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "water_filters"
+  },
+  {
+    "name": "Output does not contain quantities",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "^(?!.*\\b50\\b)[\\s\\S]*$"
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "name": "You used sed with substitution for FAIL to PASS",
+    "check": "history_contains",
+    "pattern": "\\bsed\\b.*s.FAIL.PASS"
+  },
+  {
+    "name": "Output shows PASS for test 2",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "Test 2: PASS"
+  },
+  {
+    "name": "Output shows PASS for test 5",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "Test 5: PASS"
+  },
+  {
+    "name": "No FAIL remains in output",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "^(?!.*FAIL)[\\s\\S]*$"
+  }
+]

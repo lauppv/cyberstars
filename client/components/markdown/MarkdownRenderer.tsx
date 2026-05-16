@@ -1,12 +1,13 @@
 import ReactMarkdown from "react-markdown";
 import { CodeCell } from "../code/CodeCell";
 import type { Components } from "react-markdown";
+import { MAIN_COURSE_KEYS } from "../../../shared/constants";
 
 interface MarkdownRendererProps {
   content: string;
 }
 
-const EDITABLE_LANGS = ["py", "python", "c", "java"];
+const EDITABLE_LANGS = [...MAIN_COURSE_KEYS, "py"];
 
 const components: Components = {
   strong({ children }) {

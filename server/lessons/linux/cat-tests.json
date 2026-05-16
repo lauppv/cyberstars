@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used the cat command",
+    "check": "history_contains",
+    "pattern": "\\bcat\\b"
+  },
+  {
+    "name": "The file contents were printed",
+    "check": "any_output",
+    "mode": "contains",
+    "expected": "Destination: sector 7."
+  }
+]

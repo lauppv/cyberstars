@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "mission/plan.txt", "content": "Mission plan.\n" },
+    { "path": "old-data/a.log", "content": "old log a\n" },
+    { "path": "old-data/b.log", "content": "old log b\n" }
+  ],
+  "dirs": ["empty-bay", "old-data", "mission"]
+}

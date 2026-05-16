@@ -1,0 +1,8 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "template.txt", "content": "Project template. Fill in the details.\n" },
+    { "path": "junk.txt", "content": "delete me\n" }
+  ],
+  "dirs": []
+}

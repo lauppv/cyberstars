@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "docs/readme.txt", "content": "documentation\n" },
+    { "path": "data/logs/run.log", "content": "log data\n" },
+    { "path": "data/vault/secret.txt", "content": "classified\n" }
+  ],
+  "dirs": ["docs", "data", "data/logs", "data/vault"]
+}

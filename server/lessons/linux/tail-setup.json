@@ -1,0 +1,7 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "system.log", "content": "boot sequence started\nloading kernel\nmounting drives\nnetwork check\nlife support online\nnavigation online\nsensors online\nairlock sealed\nall systems nominal\nready for crew\n" }
+  ],
+  "dirs": []
+}

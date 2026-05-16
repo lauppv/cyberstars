@@ -1,0 +1,17 @@
+[
+  {
+    "name": "mission.txt exists",
+    "check": "file_exists",
+    "path": "/home/student/mission.txt"
+  },
+  {
+    "name": "crew.txt exists",
+    "check": "file_exists",
+    "path": "/home/student/crew.txt"
+  },
+  {
+    "name": "reports/summary.txt exists",
+    "check": "file_exists",
+    "path": "/home/student/reports/summary.txt"
+  }
+]

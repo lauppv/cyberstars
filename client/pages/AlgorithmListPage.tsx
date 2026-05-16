@@ -8,12 +8,7 @@ import { useAllProgress } from "../context/ProgressContext";
 import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { xpForLesson } from "../../shared/constants";
-
-const LANG_META: Record<string, { icon: string; name: string; color: string }> = {
-  python: { icon: "🐍", name: "Python", color: "#3572A5" },
-  java: { icon: "☕", name: "Java", color: "#E76F00" },
-  c: { icon: "⚙️", name: "C", color: "#555555" },
-};
+import { courseMeta } from "../constants/courses";
 
 const DIFF_FILTERS = ["all", "easy", "medium", "hard"] as const;
 
@@ -41,7 +36,7 @@ export function AlgorithmListPage() {
   const courseKey = `algo-${lang}`;
   const course = courses.find((c) => c.key === courseKey) ?? null;
   const progress = progressMap[courseKey] ?? null;
-  const meta = LANG_META[lang] ?? LANG_META.python;
+  const meta = courseMeta(lang);
 
   const completedSlugs = useMemo(
     () => new Set((progress?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)),
@@ -103,7 +98,7 @@ export function AlgorithmListPage() {
                   {meta.icon}
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold">{meta.name} Algorithms</h1>
+                  <h1 className="text-xl font-bold">{meta.label} Algorithms</h1>
                   <p className="text-[var(--text3)] text-xs">{lessons.length} challenges</p>
                 </div>
               </div>

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "You used cat with the -n option",
+    "check": "history_contains",
+    "pattern": "\\bcat\\s+-n\\b"
+  },
+  {
+    "name": "You joined both team files with cat",
+    "check": "history_contains",
+    "pattern": "\\bcat\\b.*team-a\\.txt.*team-b\\.txt"
+  },
+  {
+    "name": "Numbered output was shown",
+    "check": "any_output",
+    "mode": "regex",
+    "expected": "(?m)^\\s*1\\s"
+  }
+]

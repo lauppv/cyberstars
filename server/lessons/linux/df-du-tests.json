@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used du -sh on cargo-bay",
+    "check": "history_contains",
+    "pattern": "\\bdu\\s+-[a-z]*s[a-z]*h[a-z]*\\s+cargo-bay|\\bdu\\s+-[a-z]*h[a-z]*s[a-z]*\\s+cargo-bay"
+  },
+  {
+    "name": "The total size was displayed",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "\\d+.*cargo-bay"
+  }
+]

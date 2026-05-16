@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "logs/january.log", "content": "system check ok\nfailure in coolant pump\nrestart successful\n" },
+    { "path": "logs/february.log", "content": "all green\nroutine maintenance\n" },
+    { "path": "logs/old/archive.log", "content": "failure logged on day 12\ndata archived\n" }
+  ],
+  "dirs": ["logs", "logs/old"]
+}

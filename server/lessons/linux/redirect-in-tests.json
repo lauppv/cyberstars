@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used input redirection with <",
+    "check": "history_contains",
+    "pattern": "\\bwc\\b.*<\\s*crew\\.txt"
+  },
+  {
+    "name": "Output shows the line count",
+    "check": "last_output",
+    "mode": "contains",
+    "expected": "6"
+  }
+]

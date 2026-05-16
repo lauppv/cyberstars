@@ -1,0 +1,1 @@
+{"cwd":"/home/student","files":[],"dirs":[],"processes":[{"user":"root","pid":"1","cmd":"/sbin/init"},{"user":"root","pid":"42","cmd":"/usr/bin/reactor-monitor --port=7700"},{"user":"student","pid":"1201","cmd":"bash"},{"user":"root","pid":"305","cmd":"/usr/sbin/life-support"}]}

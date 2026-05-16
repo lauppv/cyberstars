@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useLesson } from "../hooks/useLesson";
 import { useCodeExecution } from "../hooks/useCodeExecution";
+import { useTerminalSession } from "../hooks/useTerminalSession";
 import { useProgress } from "../hooks/useProgress";
 import { useGamification, recordActivityToday } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
@@ -13,12 +14,13 @@ import { CodeEditor } from "../components/code/CodeEditor";
 import { CodeOutput } from "../components/code/CodeOutput";
 import { TestResults } from "../components/code/TestResults";
 import { RunButton } from "../components/code/RunButton";
+import { TerminalPanel } from "../components/terminal/TerminalPanel";
 import { MarkdownRenderer } from "../components/markdown/MarkdownRenderer";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import type { Course, LessonMeta } from "../../shared/lesson";
 import * as progressService from "../services/progressService";
-import { LANG_LABEL, COURSE_COLOR } from "../constants/courses";
-import { xpForLesson } from "../../shared/constants";
+import { courseMeta } from "../constants/courses";
+import { xpForLesson, TERMINAL_COURSE_KEYS } from "../../shared/constants";
 
 function parseDifficulty(title: string): { difficulty: "Easy" | "Medium" | "Hard" | null; rest: string } {
   const m = title.match(/^(Easy|Medium|Hard)\s*[·-]\s*(.+)$/i);
@@ -61,8 +63,11 @@ export function LessonPage() {
   const { category = "", lesson = "" } = useParams<{ category: string; lesson: string }>();
   const { isLoggedIn } = useAuth();
 
+  const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
+
   const { title, content, codeTemplate, isLoading } = useLesson(category, lesson);
   const { output, isRunning, isSubmitting, submitResult, execute, submit } = useCodeExecution();
+  const terminal = useTerminalSession(isTerminal ? category : "", isTerminal ? lesson : "");
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
   const { refresh: refreshGamification } = gamification;
@@ -247,15 +252,37 @@ export function LessonPage() {
             </div>
           </div>
 
-          {/* Editor panel */}
+          {/* Right panel: terminal or editor */}
+          {isTerminal ? (
+            <div className="w-[40%] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)] overflow-hidden">
+              <TerminalPanel
+                lines={terminal.lines}
+                cwd={terminal.cwd}
+                isReady={terminal.isReady}
+                isExecuting={terminal.isExecuting}
+                isSubmitting={terminal.isSubmitting}
+                submitResult={terminal.submitResult}
+                onExecute={terminal.execute}
+                onSubmit={async () => {
+                  justSubmittedRef.current = true;
+                  const result = await terminal.submit();
+                  if (result?.allPassed) {
+                    loadProgress();
+                    refreshGamification();
+                  }
+                }}
+                onReset={terminal.reset}
+              />
+            </div>
+          ) : (
           <div className="w-[40%] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)] overflow-hidden">
             <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--bg3)] border-b border-[var(--border)]">
               <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
-                  style={{ background: COURSE_COLOR[category] ?? "#888" }}
+                  style={{ background: courseMeta(category).color }}
                 />
-                {LANG_LABEL[category] ?? category.toUpperCase()}
+                {courseMeta(category).langLabel}
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -358,6 +385,7 @@ export function LessonPage() {
               )}
             </div>
           </div>
+          )}
       </div>
 
       <AchievementToast

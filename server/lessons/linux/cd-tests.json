@@ -1,0 +1,12 @@
+[
+  {
+    "name": "You used the cd command",
+    "check": "history_contains",
+    "pattern": "\\bcd\\b"
+  },
+  {
+    "name": "Your current directory is /home/student/tools/scripts",
+    "check": "cwd_equals",
+    "expected": "/home/student/tools/scripts"
+  }
+]

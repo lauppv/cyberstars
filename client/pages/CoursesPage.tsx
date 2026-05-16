@@ -5,8 +5,8 @@ import { useGamification } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
-import { COURSE_ICON, COURSE_COLOR } from "../constants/courses";
-import { xpForLesson, progressPct, MAIN_COURSE_KEYS } from "../../shared/constants";
+import { courseMeta } from "../constants/courses";
+import { xpForLesson, progressPct, MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from "../../shared/constants";
 
 interface CourseData {
   key: string;
@@ -32,16 +32,17 @@ export function CoursesPage() {
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
   const allCourses: CourseData[] = useMemo(() => {
-    return serverCourses.filter((c) => (MAIN_COURSE_KEYS as readonly string[]).includes(c.key)).map((course) => {
+    const visibleKeys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
+    return serverCourses.filter((c) => visibleKeys.includes(c.key)).map((course) => {
       const p = progressMap[course.key];
       const doneSet = new Set(
         (p?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug)
       );
       return {
         key: course.key,
-        icon: COURSE_ICON[course.key] ?? "📘",
+        icon: courseMeta(course.key).icon,
         name: course.title,
-        color: COURSE_COLOR[course.key] ?? "#6C5CE7",
+        color: courseMeta(course.key).color,
         lessonCount: course.lessons.length,
         xpTotal: p?.totalXp ?? course.lessons.reduce((sum, l) => sum + xpForLesson(l.sortOrder), 0),
         progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),

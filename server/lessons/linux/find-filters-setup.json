@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "station/notes.txt", "content": "notes\n" },
+    { "path": "station/run.log", "content": "log\n" },
+    { "path": "station/bay/manifest.txt", "content": "manifest\n" },
+    { "path": "station/bay/data.bin", "content": "binary\n" }
+  ],
+  "dirs": ["station", "station/bay"]
+}

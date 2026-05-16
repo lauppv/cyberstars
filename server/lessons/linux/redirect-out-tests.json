@@ -1,0 +1,26 @@
+[
+  {
+    "name": "You used grep with > to redirect output",
+    "check": "history_contains",
+    "pattern": "\\bgrep\\b.*critical.*>\\s*alerts\\.txt"
+  },
+  {
+    "name": "alerts.txt was created",
+    "check": "file_exists",
+    "path": "alerts.txt"
+  },
+  {
+    "name": "alerts.txt contains the critical lines",
+    "check": "file_content",
+    "path": "alerts.txt",
+    "mode": "contains",
+    "expected": "critical: pressure drop deck 7"
+  },
+  {
+    "name": "alerts.txt contains both critical lines",
+    "check": "file_content",
+    "path": "alerts.txt",
+    "mode": "contains",
+    "expected": "critical: radiation spike lab 3"
+  }
+]

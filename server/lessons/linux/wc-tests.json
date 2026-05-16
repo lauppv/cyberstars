@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used wc -l",
+    "check": "history_contains",
+    "pattern": "\\bwc\\s+-l\\b"
+  },
+  {
+    "name": "The line count is 6",
+    "check": "last_output",
+    "mode": "regex",
+    "expected": "\\b6\\b"
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "name": "You used chmod on launch_codes.txt",
+    "check": "history_contains",
+    "pattern": "\\bchmod\\b.*launch_codes\\.txt"
+  },
+  {
+    "name": "launch_codes.txt has permissions 600",
+    "check": "command_output",
+    "probe": "stat -c %a launch_codes.txt",
+    "mode": "exact",
+    "expected": "600"
+  },
+  {
+    "name": "You used chmod on status_report.sh",
+    "check": "history_contains",
+    "pattern": "\\bchmod\\b.*status_report\\.sh"
+  },
+  {
+    "name": "status_report.sh has permissions 750",
+    "check": "command_output",
+    "probe": "stat -c %a status_report.sh",
+    "mode": "exact",
+    "expected": "750"
+  },
+  {
+    "name": "You used chmod on public_bulletin.txt",
+    "check": "history_contains",
+    "pattern": "\\bchmod\\b.*public_bulletin\\.txt"
+  },
+  {
+    "name": "public_bulletin.txt has permissions 644",
+    "check": "command_output",
+    "probe": "stat -c %a public_bulletin.txt",
+    "mode": "exact",
+    "expected": "644"
+  },
+  {
+    "name": "You verified with ls -l",
+    "check": "history_contains",
+    "pattern": "\\bls\\s+-l\\b"
+  }
+]

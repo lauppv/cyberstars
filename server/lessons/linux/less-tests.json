@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You viewed the file contents",
+    "check": "history_contains",
+    "pattern": "\\b(less|cat)\\b.*manual\\.txt"
+  },
+  {
+    "name": "The manual contents were shown",
+    "check": "any_output",
+    "mode": "contains",
+    "expected": "End of manual."
+  }
+]

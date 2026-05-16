@@ -1,0 +1,13 @@
+[
+  {
+    "name": "You used the ls command",
+    "check": "history_contains",
+    "pattern": "\\bls\\b"
+  },
+  {
+    "name": "ls listed the files in your home directory",
+    "check": "any_output",
+    "mode": "regex",
+    "expected": "crew\\.txt[\\s\\S]*mission\\.txt[\\s\\S]*reports[\\s\\S]*tools"
+  }
+]

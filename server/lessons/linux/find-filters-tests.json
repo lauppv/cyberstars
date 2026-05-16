@@ -1,0 +1,24 @@
+[
+  {
+    "name": "You used find -type d",
+    "check": "history_contains",
+    "pattern": "\\bfind\\b.*-type\\s+d\\b"
+  },
+  {
+    "name": "You used find -type f with a name pattern",
+    "check": "history_contains",
+    "pattern": "\\bfind\\b.*-type\\s+f\\b.*-name\\b"
+  },
+  {
+    "name": "A directory was listed",
+    "check": "any_output",
+    "mode": "contains",
+    "expected": "station/bay"
+  },
+  {
+    "name": "A .txt file was listed",
+    "check": "any_output",
+    "mode": "contains",
+    "expected": "manifest.txt"
+  }
+]
