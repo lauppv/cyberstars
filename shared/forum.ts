@@ -11,6 +11,8 @@ export interface ForumCategoryDTO {
   lastPost: ForumLastPostDTO | null;
 }
 
+import type { UserRole } from "./auth.js";
+
 export interface ForumLastPostDTO {
   threadTitle: string;
   authorName: string;
@@ -26,6 +28,7 @@ export interface ForumThreadSummaryDTO {
   views: number;
   authorName: string;
   authorId: number;
+  authorRole: UserRole;
   replyCount: number;
   createdAt: string;
   updatedAt: string;
@@ -44,6 +47,7 @@ export interface ForumThreadDetailDTO {
   categoryName: string;
   authorName: string;
   authorId: number;
+  authorRole: UserRole;
   createdAt: string;
   posts: ForumPostDTO[];
 }
@@ -54,6 +58,7 @@ export interface ForumPostDTO {
   solution: boolean;
   authorId: number;
   authorName: string;
+  authorRole: UserRole;
   createdAt: string;
   updatedAt: string;
   reactions: ForumReactionGroupDTO[];
@@ -73,6 +78,14 @@ export interface CreateThreadRequest {
 
 export interface CreatePostRequest {
   content: string;
+}
+
+export interface UpdatePostRequest {
+  content: string;
+}
+
+export interface UpdateUserRoleRequest {
+  role: UserRole;
 }
 
 export interface ToggleReactionRequest {

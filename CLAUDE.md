@@ -18,6 +18,7 @@ npm run db:migrate    # Run pending migrations (prompts for name)
 npm run db:deploy     # Apply migrations without prompts (CI/prod)
 npm run db:seed       # Seed curriculum and lessons into PostgreSQL
 npm run db:studio     # Open Prisma Studio GUI
+npx vitest run path   # Run a single test file (substring match)
 ```
 
 CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): typecheck → test → build. Tests are co-located next to source files (`*.test.ts`).
@@ -36,7 +37,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Server (`server/`)
 - Express 5 + TypeScript, runs with tsx
-- Route files: `auth.routes.ts`, `lesson.routes.ts`, `code.routes.ts`, `progress.routes.ts`, `leaderboard.routes.ts`, `forum.routes.ts`, `terminal.routes.ts`
+- Route files: `auth.routes.ts`, `lesson.routes.ts`, `code.routes.ts`, `progress.routes.ts`, `leaderboard.routes.ts`, `forum.routes.ts`, `terminal.routes.ts`, `support.routes.ts`
 - Controllers handle logic; Zod schemas in `server/schemas/` validate requests
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
 - Code execution: Docker containers locally, Piston API in production — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)

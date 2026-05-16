@@ -9,6 +9,7 @@ import type {
   ForumPostDTO,
   ForumReactionGroupDTO,
 } from "../../shared/forum";
+import type { AuthenticatedUser, UserRole } from "../../shared/auth";
 import "./ForumPage.css";
 
 function timeAgo(iso: string): string {
@@ -23,10 +24,31 @@ function timeAgo(iso: string): string {
   return new Date(iso).toLocaleDateString();
 }
 
+/** Categories where only moderators and admins may start threads or reply. */
+const RESTRICTED_CATEGORIES = new Set(["announcements"]);
+
+const ROLE_META: Record<UserRole, { label: string; cls: string }> = {
+  ADMIN: { label: "Admin", cls: "role-admin" },
+  MODERATOR: { label: "Moderator", cls: "role-mod" },
+  USER: { label: "User", cls: "role-user" },
+};
+
+function RoleBadge({ role }: { role: UserRole }) {
+  const meta = ROLE_META[role];
+  return <span className={`role-badge ${meta.cls}`}>{meta.label}</span>;
+}
+
+/** Mirror of the server-side permission rule (server is authoritative). */
+function canModerate(actorRole: UserRole, targetRole: UserRole, isOwner: boolean): boolean {
+  if (actorRole === "ADMIN") return true;
+  if (actorRole === "MODERATOR") return isOwner || targetRole === "USER";
+  return isOwner;
+}
+
 type View = "index" | "category" | "thread";
 
 export function ForumPage() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   const [view, setView] = useState<View>("index");
   const [categorySlug, setCategorySlug] = useState<string | null>(null);
   const [threadId, setThreadId] = useState<number | null>(null);
@@ -62,6 +84,7 @@ export function ForumPage() {
           onBack={backToIndex}
           onOpenThread={openThread}
           isLoggedIn={isLoggedIn}
+          user={user}
         />
       )}
       {view === "thread" && threadId && (
@@ -70,6 +93,7 @@ export function ForumPage() {
           onBack={backToIndex}
           onBackToCategory={backToCategory}
           isLoggedIn={isLoggedIn}
+          user={user}
         />
       )}
     </>
@@ -202,12 +226,16 @@ function CategoryView({
   onBack,
   onOpenThread,
   isLoggedIn,
+  user,
 }: {
   categorySlug: string;
   onBack: () => void;
   onOpenThread: (id: number) => void;
   isLoggedIn: boolean;
+  user: AuthenticatedUser | null;
 }) {
+  const restricted = RESTRICTED_CATEGORIES.has(categorySlug);
+  const canPost = isLoggedIn && (!restricted || (user != null && user.role !== "USER"));
   const [category, setCategory] = useState<{
     slug: string;
     name: string;
@@ -284,7 +312,7 @@ function CategoryView({
             </span>
           </div>
         </div>
-        {isLoggedIn && (
+        {canPost && (
           <button
             className="forum-btn forum-btn-primary"
             onClick={() => setShowComposer(!showComposer)}
@@ -293,6 +321,12 @@ function CategoryView({
           </button>
         )}
       </div>
+
+      {restricted && !canPost && (
+        <div className="forum-restricted-note">
+          🔒 Only moderators and admins can start threads in this category.
+        </div>
+      )}
 
       {showComposer && (
         <div className="forum-composer">
@@ -342,7 +376,8 @@ function CategoryView({
                   {t.solved && <span className="badge badge-solved">✓ Solved</span>}
                 </div>
                 <div className="thread-author">
-                  by <span className="author">{t.authorName}</span> · {timeAgo(t.createdAt)}
+                  by <span className="author">{t.authorName}</span>{" "}
+                  <RoleBadge role={t.authorRole} /> · {timeAgo(t.createdAt)}
                 </div>
               </div>
               <div className="thread-count">
@@ -374,11 +409,13 @@ function ThreadView({
   onBack,
   onBackToCategory,
   isLoggedIn,
+  user,
 }: {
   threadId: number;
   onBack: () => void;
   onBackToCategory: () => void;
   isLoggedIn: boolean;
+  user: AuthenticatedUser | null;
 }) {
   const [thread, setThread] = useState<ForumThreadDetailDTO | null>(null);
   const [loading, setLoading] = useState(true);
@@ -419,6 +456,27 @@ function ThreadView({
     loadThread();
   };
 
+  const handleEditPost = async (postId: number, content: string) => {
+    await forumService.updatePost(postId, { content });
+    loadThread();
+  };
+
+  const handleDeletePost = async (postId: number) => {
+    const res = await forumService.deletePost(postId);
+    if (res.threadDeleted) onBack();
+    else loadThread();
+  };
+
+  const handleDeleteThread = async () => {
+    await forumService.deleteThread(threadId);
+    onBack();
+  };
+
+  const handleChangeRole = async (userId: number, role: UserRole) => {
+    await forumService.updateUserRole(userId, role);
+    loadThread();
+  };
+
   if (loading || !thread) {
     return (
       <main className="forum-page">
@@ -426,6 +484,10 @@ function ThreadView({
       </main>
     );
   }
+
+  const restricted = RESTRICTED_CATEGORIES.has(thread.categorySlug);
+  const canReply =
+    isLoggedIn && !thread.locked && (!restricted || (user != null && user.role !== "USER"));
 
   return (
     <main className="forum-page">
@@ -444,6 +506,7 @@ function ThreadView({
             <span>
               started by <strong>{thread.authorName}</strong>
             </span>
+            <RoleBadge role={thread.authorRole} />
             <span className="dot" />
             <span>{thread.posts.length} posts</span>
             <span className="dot" />
@@ -463,14 +526,17 @@ function ThreadView({
           key={post.id}
           post={post}
           isOp={i === 0}
-          isThreadAuthor={thread.authorId === post.authorId}
           canMarkSolution={isLoggedIn && !thread.solved && i > 0}
+          currentUser={user}
           onReaction={(emoji) => handleReaction(post.id, emoji)}
           onMarkSolution={() => handleMarkSolution(post.id)}
+          onEdit={(content) => handleEditPost(post.id, content)}
+          onDelete={() => (i === 0 ? handleDeleteThread() : handleDeletePost(post.id))}
+          onChangeRole={(role) => handleChangeRole(post.authorId, role)}
         />
       ))}
 
-      {isLoggedIn && !thread.locked && (
+      {canReply && (
         <div className="forum-composer">
           <div className="forum-composer-head">Post a reply</div>
           <textarea
@@ -492,6 +558,12 @@ function ThreadView({
         </div>
       )}
 
+      {restricted && isLoggedIn && !canReply && !thread.locked && (
+        <div className="forum-restricted-note">
+          🔒 Only moderators and admins can reply in this category.
+        </div>
+      )}
+
       {thread.locked && (
         <div className="thread-locked-banner">🔒 This thread is locked. No new replies.</div>
       )}
@@ -504,18 +576,38 @@ function ThreadView({
 function PostCard({
   post,
   isOp,
-  isThreadAuthor,
   canMarkSolution,
+  currentUser,
   onReaction,
   onMarkSolution,
+  onEdit,
+  onDelete,
+  onChangeRole,
 }: {
   post: ForumPostDTO;
   isOp: boolean;
-  isThreadAuthor: boolean;
   canMarkSolution: boolean;
+  currentUser: AuthenticatedUser | null;
   onReaction: (emoji: string) => void;
   onMarkSolution: () => void;
+  onEdit: (content: string) => void;
+  onDelete: () => void;
+  onChangeRole: (role: UserRole) => void;
 }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(post.content);
+
+  const isOwner = currentUser != null && currentUser.id === post.authorId;
+  const canManage =
+    currentUser != null && canModerate(currentUser.role, post.authorRole, isOwner);
+  const isAdmin = currentUser?.role === "ADMIN";
+
+  const saveEdit = () => {
+    if (!draft.trim()) return;
+    onEdit(draft.trim());
+    setEditing(false);
+  };
+
   return (
     <div className={`forum-post${isOp ? " op" : ""}`}>
       <div className="post-sidebar">
@@ -523,6 +615,19 @@ function PostCard({
           {post.authorName.charAt(0).toUpperCase()}
         </div>
         <div className="post-username">{post.authorName}</div>
+        <RoleBadge role={post.authorRole} />
+        {isAdmin && !isOwner && (
+          <select
+            className="role-select"
+            value={post.authorRole}
+            onChange={(e) => onChangeRole(e.target.value as UserRole)}
+            title="Change this member's role"
+          >
+            <option value="USER">User</option>
+            <option value="MODERATOR">Moderator</option>
+            <option value="ADMIN">Admin</option>
+          </select>
+        )}
       </div>
       <div className="post-body">
         <div className="post-meta">
@@ -534,7 +639,35 @@ function PostCard({
             <span>Marked as solution — this answer solved the question</span>
           </div>
         )}
-        <div className="post-content">{post.content}</div>
+        {editing ? (
+          <div className="post-edit">
+            <textarea
+              className="forum-composer-textarea"
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+            />
+            <div className="post-edit-actions">
+              <button
+                className="forum-btn forum-btn-ghost"
+                onClick={() => {
+                  setEditing(false);
+                  setDraft(post.content);
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                className="forum-btn forum-btn-primary"
+                onClick={saveEdit}
+                disabled={!draft.trim()}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="post-content">{post.content}</div>
+        )}
         <div className="post-footer">
           <div className="reactions">
             {post.reactions.map((r) => (
@@ -555,6 +688,27 @@ function PostCard({
             {canMarkSolution && !post.solution && (
               <button className="post-btn solution-btn" onClick={onMarkSolution}>
                 ✓ Mark as solution
+              </button>
+            )}
+            {canManage && !editing && (
+              <button className="post-btn" onClick={() => setEditing(true)}>
+                ✎ Edit
+              </button>
+            )}
+            {canManage && (
+              <button
+                className="post-btn post-btn-danger"
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      isOp ? "Delete this entire thread?" : "Delete this post?"
+                    )
+                  ) {
+                    onDelete();
+                  }
+                }}
+              >
+                🗑 {isOp ? "Delete thread" : "Delete"}
               </button>
             )}
           </div>

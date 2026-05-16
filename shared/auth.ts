@@ -1,7 +1,10 @@
+export type UserRole = "USER" | "MODERATOR" | "ADMIN";
+
 export interface AuthenticatedUser {
   id: number;
   name: string;
   email: string;
+  role: UserRole;
 }
 
 export interface LoginPayload {

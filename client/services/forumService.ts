@@ -6,7 +6,9 @@ import type {
   CreateThreadRequest,
   CreatePostRequest,
   ToggleReactionRequest,
+  UpdatePostRequest,
 } from "../../shared/forum";
+import type { UserRole } from "../../shared/auth";
 
 export function getCategories() {
   return api.get<ForumCategoryDTO[]>("/api/forum/categories");
@@ -37,4 +39,20 @@ export function toggleReaction(postId: number, data: ToggleReactionRequest) {
 
 export function markSolution(postId: number) {
   return api.post<{ ok: boolean }>(`/api/forum/posts/${postId}/solution`);
+}
+
+export function updatePost(postId: number, data: UpdatePostRequest) {
+  return api.put<{ ok: boolean }>(`/api/forum/posts/${postId}`, data);
+}
+
+export function deletePost(postId: number) {
+  return api.delete<{ ok: boolean; threadDeleted: boolean }>(`/api/forum/posts/${postId}`);
+}
+
+export function deleteThread(threadId: number) {
+  return api.delete<{ ok: boolean }>(`/api/forum/threads/${threadId}`);
+}
+
+export function updateUserRole(userId: number, role: UserRole) {
+  return api.put<{ ok: boolean }>(`/api/forum/users/${userId}/role`, { role });
 }

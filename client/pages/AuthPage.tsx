@@ -228,9 +228,10 @@ export function AuthPage() {
             <div className="flex flex-col gap-4 text-left">
               {[
                 { icon: "⌨️", bold: "Live code editor", rest: " — write & run code instantly" },
-                { icon: "🐍", bold: "Python, C & Java", rest: " — structured curriculum" },
+                { icon: "💻", bold: "Python, C, Java & Linux", rest: " — structured curriculum" },
                 { icon: "🏆", bold: "XP & badges", rest: " — gamified progress tracking" },
-                { icon: "✨", bold: "AI-powered hints", rest: " — never get stuck" },
+                { icon: "💬", bold: "Community forum", rest: " — ask, share, and help others" },
+                { icon: "📰", bold: "The Almanac", rest: " — tech history, facts & legends" },
               ].map((f) => (
                 <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
                   <div

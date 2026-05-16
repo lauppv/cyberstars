@@ -1,6 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
+import type { Role } from "@prisma/client";
 import { AppError } from "../middleware/errorHandler.js";
+import * as userRepo from "../repositories/user.repository.js";
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
@@ -10,6 +12,21 @@ import type {
 } from "../../shared/forum.js";
 
 const prisma = new PrismaClient();
+
+// Categories where only moderators and admins may start threads or reply.
+const RESTRICTED_CATEGORIES = new Set(["announcements"]);
+
+/**
+ * Whether an actor may edit/delete content authored by someone else.
+ * - ADMIN: anything.
+ * - MODERATOR: own content, or content by a plain USER (not other mods/admins).
+ * - USER: only their own content.
+ */
+function canModerate(actorRole: Role, targetRole: Role, isOwner: boolean): boolean {
+  if (actorRole === "ADMIN") return true;
+  if (actorRole === "MODERATOR") return isOwner || targetRole === "USER";
+  return isOwner;
+}
 
 export async function getCategories(_req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
@@ -66,7 +83,7 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
       where: { categoryId: category.id },
       orderBy: [{ pinned: "desc" }, { updatedAt: "desc" }],
       include: {
-        author: { select: { name: true } },
+        author: { select: { name: true, role: true } },
         posts: {
           orderBy: { createdAt: "desc" },
           take: 1,
@@ -85,6 +102,7 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
       views: t.views,
       authorName: t.author.name,
       authorId: t.authorId,
+      authorRole: t.author.role,
       replyCount: Math.max(0, t._count.posts - 1),
       createdAt: t.createdAt.toISOString(),
       updatedAt: t.updatedAt.toISOString(),
@@ -107,11 +125,11 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
       where: { id: threadId },
       include: {
         category: true,
-        author: { select: { name: true } },
+        author: { select: { name: true, role: true } },
         posts: {
           orderBy: { createdAt: "asc" },
           include: {
-            author: { select: { id: true, name: true } },
+            author: { select: { id: true, name: true, role: true } },
             reactions: true,
           },
         },
@@ -145,6 +163,7 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
         solution: p.solution,
         authorId: p.author.id,
         authorName: p.author.name,
+        authorRole: p.author.role,
         createdAt: p.createdAt.toISOString(),
         updatedAt: p.updatedAt.toISOString(),
         reactions,
@@ -162,6 +181,7 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
       categoryName: thread.category.name,
       authorName: thread.author.name,
       authorId: thread.authorId,
+      authorRole: thread.author.role,
       createdAt: thread.createdAt.toISOString(),
       posts,
     };
@@ -183,6 +203,13 @@ export async function createThread(req: Request, res: Response, next: NextFuncti
 
     const category = await prisma.forumCategory.findUnique({ where: { slug: categorySlug } });
     if (!category) throw new AppError(404, "Category not found");
+
+    if (RESTRICTED_CATEGORIES.has(category.slug)) {
+      const role = await userRepo.getRole(userId);
+      if (role === "USER") {
+        throw new AppError(403, "Only moderators and admins can post in this category");
+      }
+    }
 
     const thread = await prisma.forumThread.create({
       data: {
@@ -210,9 +237,19 @@ export async function createPost(req: Request, res: Response, next: NextFunction
     const { content } = req.body;
     if (!content?.trim()) throw new AppError(400, "Content is required");
 
-    const thread = await prisma.forumThread.findUnique({ where: { id: threadId } });
+    const thread = await prisma.forumThread.findUnique({
+      where: { id: threadId },
+      include: { category: true },
+    });
     if (!thread) throw new AppError(404, "Thread not found");
     if (thread.locked) throw new AppError(403, "Thread is locked");
+
+    if (RESTRICTED_CATEGORIES.has(thread.category.slug)) {
+      const role = await userRepo.getRole(userId);
+      if (role === "USER") {
+        throw new AppError(403, "Only moderators and admins can post in this category");
+      }
+    }
 
     const post = await prisma.forumPost.create({
       data: { threadId, authorId: userId, content: content.trim() },
@@ -273,6 +310,110 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
     await prisma.forumPost.update({ where: { id: postId }, data: { solution: true } });
     await prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: true } });
 
+    res.json({ ok: true });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function updatePost(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const postId = parseInt(req.params.postId as string);
+    if (isNaN(postId)) throw new AppError(400, "Invalid post ID");
+
+    const { content } = req.body;
+    if (!content?.trim()) throw new AppError(400, "Content is required");
+
+    const post = await prisma.forumPost.findUnique({
+      where: { id: postId },
+      include: { author: { select: { role: true } } },
+    });
+    if (!post) throw new AppError(404, "Post not found");
+
+    const actorRole = await userRepo.getRole(userId);
+    if (!canModerate(actorRole, post.author.role, post.authorId === userId)) {
+      throw new AppError(403, "You cannot edit this post");
+    }
+
+    await prisma.forumPost.update({ where: { id: postId }, data: { content: content.trim() } });
+    res.json({ ok: true });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function deletePost(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const postId = parseInt(req.params.postId as string);
+    if (isNaN(postId)) throw new AppError(400, "Invalid post ID");
+
+    const post = await prisma.forumPost.findUnique({
+      where: { id: postId },
+      include: { author: { select: { role: true } } },
+    });
+    if (!post) throw new AppError(404, "Post not found");
+
+    const actorRole = await userRepo.getRole(userId);
+    if (!canModerate(actorRole, post.author.role, post.authorId === userId)) {
+      throw new AppError(403, "You cannot delete this post");
+    }
+
+    await prisma.forumPost.delete({ where: { id: postId } });
+
+    // A thread left with no posts is removed entirely.
+    const remaining = await prisma.forumPost.count({ where: { threadId: post.threadId } });
+    if (remaining === 0) {
+      await prisma.forumThread.delete({ where: { id: post.threadId } });
+    }
+
+    res.json({ ok: true, threadDeleted: remaining === 0 });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function deleteThread(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const threadId = parseInt(req.params.threadId as string);
+    if (isNaN(threadId)) throw new AppError(400, "Invalid thread ID");
+
+    const thread = await prisma.forumThread.findUnique({
+      where: { id: threadId },
+      include: { author: { select: { role: true } } },
+    });
+    if (!thread) throw new AppError(404, "Thread not found");
+
+    const actorRole = await userRepo.getRole(userId);
+    if (!canModerate(actorRole, thread.author.role, thread.authorId === userId)) {
+      throw new AppError(403, "You cannot delete this thread");
+    }
+
+    await prisma.forumThread.delete({ where: { id: threadId } });
+    res.json({ ok: true });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function updateUserRole(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const actorId = req.user!.id;
+    const actorRole = await userRepo.getRole(actorId);
+    if (actorRole !== "ADMIN") throw new AppError(403, "Only admins can change roles");
+
+    const targetId = parseInt(req.params.userId as string);
+    if (isNaN(targetId)) throw new AppError(400, "Invalid user ID");
+    if (targetId === actorId) throw new AppError(400, "You cannot change your own role");
+
+    const role = req.body.role as Role;
+    if (!["USER", "MODERATOR", "ADMIN"].includes(role)) {
+      throw new AppError(400, "Invalid role");
+    }
+
+    await userRepo.updateRole(targetId, role);
     res.json({ ok: true });
   } catch (err) {
     next(err);

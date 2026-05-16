@@ -15,6 +15,7 @@ interface CourseData {
   color: string;
   lessonCount: number;
   xpTotal: number;
+  xpEarned: number;
   progress: number;
   desc: string;
   chapters: { name: string; slug: string; sortOrder: number; done: boolean }[];
@@ -45,6 +46,7 @@ export function CoursesPage() {
         color: courseMeta(course.key).color,
         lessonCount: course.lessons.length,
         xpTotal: p?.totalXp ?? course.lessons.reduce((sum, l) => sum + xpForLesson(l.sortOrder), 0),
+        xpEarned: p?.earnedXp ?? 0,
         progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
         desc: course.description,
         chapters: course.lessons.map((l) => ({ name: l.title, slug: l.slug, sortOrder: l.sortOrder, done: doneSet.has(l.slug) })),
@@ -101,13 +103,27 @@ export function CoursesPage() {
                   </div>
                 </div>
                 <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
-                <div className="flex gap-4 mb-4">
+                <div className="flex items-end justify-between gap-4 mb-4">
                   <span className="text-[11px] text-[var(--text3)]">
                     <strong className="text-[var(--text2)]">{c.lessonCount}</strong> lessons
                   </span>
-                  <span className="text-[11px] text-[var(--text3)]">
-                    <strong className="text-[var(--text2)]">{c.xpTotal}</strong> XP
-                  </span>
+                  <div className="grid grid-cols-2 rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden text-center">
+                    <div className="px-4 py-0.5 text-[9px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] bg-[var(--bg3)] border-r border-[var(--border)]">
+                      Earned
+                    </div>
+                    <div className="px-4 py-0.5 text-[9px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] bg-[var(--bg3)]">
+                      Total XP
+                    </div>
+                    <div
+                      className="px-4 py-1 text-[13px] font-bold border-t border-r border-[var(--border)]"
+                      style={{ color: c.color }}
+                    >
+                      {c.xpEarned}
+                    </div>
+                    <div className="px-4 py-1 text-[13px] font-bold text-[var(--text2)] border-t border-[var(--border)]">
+                      {c.xpTotal}
+                    </div>
+                  </div>
                 </div>
                 <div className="flex items-center justify-between">
                   {c.progress > 0 ? (

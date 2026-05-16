@@ -35,29 +35,6 @@ const DIFFICULTY_COLOR: Record<string, string> = {
   Hard: "var(--error)",
 };
 
-const AI_HINTS: Record<string, string[]> = {
-  python: [
-    "💡 Try using a for loop with range() to repeat an action multiple times. Example: for i in range(5) will loop 5 times!",
-    "💡 Remember: Python uses indentation (spaces) to group code blocks. Make sure your code inside if/for/while is indented!",
-    "💡 You can use f-strings to mix variables into text: print(f\"Hello {name}\")",
-  ],
-  java: [
-    "💡 Every Java program needs a main method: public static void main(String[] args). This is where your program starts!",
-    "💡 Don't forget semicolons at the end of each statement in Java — it's how Java knows where one instruction ends.",
-    "💡 Use System.out.println() to print output. The 'ln' adds a new line automatically!",
-  ],
-  c: [
-    "💡 In C, every program starts at main(). Don't forget to #include <stdio.h> for printf!",
-    "💡 C uses curly braces {} to group code blocks. Every opening brace needs a closing one!",
-    "💡 Remember: in C, you must declare variable types. Use int for whole numbers, float for decimals.",
-  ],
-};
-
-function pickHint(lang: string): string {
-  const list = AI_HINTS[lang] ?? AI_HINTS.python;
-  return list[Math.floor(Math.random() * list.length)];
-}
-
 export function LessonPage() {
   const navigate = useNavigate();
   const { category = "", lesson = "" } = useParams<{ category: string; lesson: string }>();
@@ -77,9 +54,6 @@ export function LessonPage() {
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: 0 });
   const [showSaveToast, setShowSaveToast] = useState(false);
-  const [showAIHint, setShowAIHint] = useState(false);
-  const [aiHint, setAiHint] = useState("");
-  const [aiLoading, setAiLoading] = useState(false);
 
   const justSubmittedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -141,16 +115,6 @@ export function LessonPage() {
     loadProgress();
     refreshGamification();
   }, [submit, userCode, category, lesson, loadProgress, refreshGamification]);
-
-  const handleHint = useCallback(() => {
-    setShowAIHint(true);
-    setAiLoading(true);
-    setAiHint("");
-    setTimeout(() => {
-      setAiHint(pickHint(category));
-      setAiLoading(false);
-    }, 900);
-  }, [category]);
 
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
@@ -292,13 +256,6 @@ export function LessonPage() {
                 >
                   ↺ Reset
                 </button>
-                <button
-                  onClick={handleHint}
-                  className="text-[12px] px-2.5 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text2)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
-                  title="Get an AI hint"
-                >
-                  ✨ Hint
-                </button>
                 <RunButton onClick={handleRun} isRunning={isRunning} />
               </div>
             </div>
@@ -311,38 +268,6 @@ export function LessonPage() {
                 fontSize="16px"
               />
             </div>
-
-            {showAIHint && (
-              <div
-                className="border-t border-[var(--accent)]/40 px-4 py-3 fade-in-up"
-                style={{
-                  background: "linear-gradient(135deg, var(--accent-glow), transparent 60%), var(--bg2)",
-                }}
-              >
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--accent)]">
-                    <span>🤖</span> CyberBot
-                  </div>
-                  <button
-                    onClick={() => setShowAIHint(false)}
-                    className="text-[var(--text3)] hover:text-[var(--text)] text-[16px] leading-none w-5 h-5 flex items-center justify-center bg-transparent border-none cursor-pointer"
-                    aria-label="Close hint"
-                  >
-                    ×
-                  </button>
-                </div>
-                {aiLoading ? (
-                  <div className="text-[13px] text-[var(--text2)] flex items-center gap-1">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]" style={{ animation: "pulse-dot 1s infinite" }} />
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]" style={{ animation: "pulse-dot 1s infinite 0.15s" }} />
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)]" style={{ animation: "pulse-dot 1s infinite 0.3s" }} />
-                    <span className="ml-2">Thinking...</span>
-                  </div>
-                ) : (
-                  <div className="text-[13px] text-[var(--text)] leading-relaxed">{aiHint}</div>
-                )}
-              </div>
-            )}
 
             <div className="p-3 border-t border-[var(--border)] bg-[var(--bg2)]">
               <div className="flex gap-2 mb-3 items-center flex-wrap">

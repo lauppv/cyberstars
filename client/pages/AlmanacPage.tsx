@@ -29,7 +29,6 @@ const CATEGORIES = [
   { id: "internet", label: "Internet", em: "🌐" },
   { id: "space", label: "Space", em: "🪐" },
   { id: "ai", label: "AI & Future", em: "🧠" },
-  { id: "fun", label: "Fun Facts", em: "🎲" },
 ];
 
 const HERO = {
@@ -190,33 +189,6 @@ Engelbart spent the rest of his life largely unrecognized by the mainstream. He 
     xp: 30,
   },
   {
-    cat: "fun",
-    tag: "FUN FACT",
-    year: "1947",
-    emoji: "🦟",
-    grad: "linear-gradient(135deg,#3a2010,#8b5a1a)",
-    title: "The first computer bug was a literal bug",
-    excerpt:
-      'September 9, 1947. The Mark II at Harvard malfunctioned. Engineers found a moth stuck in relay #70. They taped it into the logbook with a note: "First actual case of bug being found." Grace Hopper.',
-    fullText: `On September 9, 1947, engineers working on the Harvard Mark II computer at the Naval Weapons Center in Dahlgren, Virginia, were running a routine test when the machine produced errors.
-
-After hours of searching, they traced the problem to relay number 70, Panel F. There, wedged between the contacts, was a moth. The insect had shorted out the relay and caused the malfunction.
-
-The operators carefully removed the moth with tweezers and taped it into the logbook, writing next to it: "First actual case of bug being found."
-
-The word "bug" had actually been used for technical glitches since at least the 1870s — Thomas Edison used it in his notes. But this was the first time a literal bug caused a computer malfunction, making it a delightful coincidence.
-
-Grace Hopper, who was part of the team working on the Mark II, loved telling this story. She often gets credit for coining the term "debugging," though she herself always said the term predated the incident. What she did was popularize the story — and it stuck.
-
-The actual moth, still taped to the logbook page, is preserved at the Smithsonian National Museum of American History in Washington, D.C. It remains the most famous insect in computing history.
-
-The term "debugging" — finding and fixing errors in code — is now so universal that most programmers never think about its entomological origins. Every time you debug your code, you're paying tribute to a moth that flew into the wrong relay 77 years ago.`,
-    author: "CyberBot",
-    authorEm: "🤖",
-    readTime: "3 min",
-    xp: 15,
-  },
-  {
     cat: "oss",
     tag: "OPEN SOURCE",
     year: "1996",
@@ -335,38 +307,6 @@ In 2016, President Obama awarded Hamilton the Presidential Medal of Freedom. The
     authorEm: "🦊",
     readTime: "8 min",
     xp: 30,
-  },
-  {
-    cat: "fun",
-    tag: "FUN FACT",
-    year: "1971",
-    emoji: "@",
-    grad: "linear-gradient(135deg,#3a1a3a,#7a2f6a)",
-    title: "The @ symbol almost died — then email saved it",
-    excerpt:
-      "In 1971, Ray Tomlinson needed a character that separated user from machine. The @ was already on the keyboard and almost never used. One arbitrary choice and now it's on every email ever sent.",
-    fullText: `The @ symbol has a long history before email. Medieval monks used it as an abbreviation for the Latin word "ad" (meaning "at" or "toward"). Merchants adopted it to mean "at the rate of" — as in "10 items @ $5 each."
-
-By the 1960s, the @ symbol was nearly obsolete. It survived on typewriter keyboards mainly out of inertia — it had been there since the first Remington models, and nobody bothered to remove it. Most people never pressed the key.
-
-Then, in 1971, Ray Tomlinson was working on ARPANET at BBN Technologies in Cambridge, Massachusetts. He was building a system to send messages between users on different computers — what we now call email.
-
-He needed a separator between the user's name and the computer's name. The character had to be:
-1. Not a letter or number (to avoid confusion with names)
-2. Not already used in operating system commands
-3. Already on the keyboard
-
-Tomlinson looked at his Model 33 Teletype keyboard and chose @. It was already there, almost nobody used it, and it conveniently read as "at" — user AT machine.
-
-The first email address was something like tomlinson@bbntenexa (the exact text is lost to history). Tomlinson sent a test message to himself between two computers sitting side by side.
-
-He later said the content of the first email was "something like QWERTYUIOP" — a test string, not a carefully composed historic message. When asked about the significance, he told his colleague, "Don't tell anyone! This isn't what we're supposed to be working on."
-
-Today, every email address in the world uses @. The symbol went from near-extinction to appearing billions of times a day — all because one engineer needed an arbitrary character and picked the quiet one gathering dust on his keyboard.`,
-    author: "CyberBot",
-    authorEm: "🤖",
-    readTime: "4 min",
-    xp: 15,
   },
   {
     cat: "ai",
@@ -686,33 +626,6 @@ Aaron's legacy lives on in the open access movement. Sci-Hub (founded 2011) now 
     xp: 35,
   },
   {
-    cat: "fun",
-    tag: "FUN FACT",
-    year: "1957",
-    emoji: "0️⃣",
-    grad: "linear-gradient(135deg,#1a2a2a,#2f5a4a)",
-    title: "Why programmers start counting from zero",
-    excerpt:
-      "It confuses every beginner: arrays start at 0, not 1. It seems arbitrary and annoying. But there's a beautiful mathematical reason behind it — and it's all about memory addresses.",
-    fullText: `Every programming beginner hits this wall: the first element of an array is element 0, not element 1. A list of 10 items goes from index 0 to index 9. It feels wrong. Why not just start at 1 like normal humans?
-
-The answer goes back to how memory works at the hardware level. When you create an array, the computer allocates a contiguous block of memory. The variable name points to the first byte of that block. To find any element, the computer calculates: memory_address = start + (index × element_size).
-
-If indexing starts at 0, the first element is at start + (0 × size) = start. Perfect — no offset needed. If indexing started at 1, every single memory access would need an extra subtraction: start + ((index - 1) × size). In the 1950s and 60s, that extra subtraction on every array access was a real performance cost.
-
-The convention was formalized by languages like BCPL (1967), C (1972), and everything that followed. Edsger Dijkstra, one of computing's greatest minds, wrote a famous note in 1982 arguing that zero-based indexing is mathematically superior: ranges are cleaner (0 to N gives you exactly N elements), and you avoid off-by-one errors in calculations.
-
-Not everyone agrees. Lua, MATLAB, R, and Fortran all use 1-based indexing. Some argue that 0-based indexing just shifts the off-by-one errors to different places. The debate has raged for decades.
-
-But here's the thing: once you get used to zero-indexing, it becomes natural. "The third element" is index 2. A loop from 0 to n-1 gives you exactly n iterations. Modular arithmetic works cleanly. And when you're debugging memory layouts or network protocols, zero-based thinking maps directly to what the hardware is doing.
-
-The real lesson isn't about which is "correct" — it's that programming conventions often trace back to hardware constraints that no longer exist. We count from zero because 1950s computers couldn't afford an extra subtraction. Sixty years later, it would cost nothing, but the convention is locked in forever. That's how path dependence works in technology.`,
-    author: "Prof. Andrei",
-    authorEm: "🧮",
-    readTime: "7 min",
-    xp: 20,
-  },
-  {
     cat: "history",
     tag: "HISTORY",
     year: "2000",
@@ -881,35 +794,6 @@ Thompson's 1984 lecture remains one of the most important security papers ever w
     authorEm: "🔓",
     readTime: "9 min",
     xp: 35,
-  },
-  {
-    cat: "fun",
-    tag: "FUN FACT",
-    year: "2002",
-    emoji: "📧",
-    grad: "linear-gradient(135deg,#2a1a2a,#5a3a5a)",
-    title: "The 500-mile email — the most legendary debugging story ever told",
-    excerpt:
-      "A sysadmin got a report: email couldn't be sent farther than 500 miles. It sounded insane. It was real. And the explanation involves the speed of light, a misconfigured timeout, and beautiful math.",
-    fullText: `In 2002, Trey Harris, a system administrator at a university, received what might be the strangest bug report in IT history. The department head said: "We can't send email farther than 500 miles."
-
-Harris's first reaction was to laugh. Email doesn't work that way — it's not like a radio signal that weakens with distance. But the department head insisted and had data to back it up. Emails to local addresses worked. Emails to Atlanta (500 miles away) worked. Emails to Memphis (600 miles away) — failed. Every time.
-
-After extensive investigation, Harris found the problem. A recent server upgrade had reset the sendmail configuration, including a setting called the connection timeout. Someone had set it to zero — but due to a quirk in the software, "zero" was interpreted as the system's minimum time resolution: 3 milliseconds.
-
-Here's where physics enters. When the mail server connected to a remote server, it would wait 3 milliseconds for a response. If no response came in that time, it would give up and report an error.
-
-Now, how far can a signal travel in 3 milliseconds? Light travels at about 300,000 km/s. In 3ms, that's 900 km or about 558 miles. But email doesn't travel in straight lines — it goes through routers and switches that add latency. In practice, any server more than about 500 miles away would take more than 3ms to respond.
-
-The "500-mile email" bug was a perfect storm: a misconfigured timeout that happened to be just long enough to reach nearby servers but not distant ones, creating a geographic boundary that looked like a physical limitation.
-
-Harris published the story on a mailing list, and it became an instant legend in the IT community. It's taught in networking courses as an example of how multiple small mistakes can create seemingly impossible symptoms, and how understanding the physical layer (the actual speed of light!) can be essential to debugging software problems.
-
-The story resonates because it captures the essence of debugging: the symptom seems impossible, the explanation is logical but surprising, and it requires knowledge from multiple domains (networking, physics, software configuration) to solve.`,
-    author: "Dr. Elena",
-    authorEm: "🔍",
-    readTime: "7 min",
-    xp: 20,
   },
   {
     cat: "history",
@@ -1395,6 +1279,10 @@ const FUN_FACTS = [
   { em: "🐘", text: "PHP originally stood for 'Personal Home Page'. Its creator, Rasmus Lerdorf, said he never intended it to become a real programming language.", src: "— Rasmus Lerdorf" },
   { em: "🧪", text: "The first domain name ever registered was symbolics.com on March 15, 1985. It's still active as a historical museum.", src: "— IANA" },
   { em: "📺", text: "Netflix's recommendation engine saves the company $1 billion per year by reducing customer churn.", src: "— Netflix Tech Blog" },
+  { em: "🦟", text: 'On September 9, 1947, the Harvard Mark II malfunctioned — engineers found a moth stuck in relay #70 and taped it into the logbook: "First actual case of bug being found." The moth is still in the Smithsonian.', src: "— Harvard Mark II logbook, 1947" },
+  { em: "✉️", text: "Ray Tomlinson picked the @ symbol for email in 1971 simply because it was already on the keyboard and almost nobody used it. One arbitrary choice — now it's in every email address on Earth.", src: "— Ray Tomlinson, ARPANET 1971" },
+  { em: "0️⃣", text: "Arrays start at index 0 because of memory math: address = start + index × element_size. With 0-based indexing the first element needs no offset — in the 1950s that saved a subtraction on every single array access.", src: "— BCPL & C convention" },
+  { em: "📧", text: "In 2002 a sysadmin got a bug report: \"we can't send email farther than 500 miles.\" It was real — a misconfigured ~3 ms mail timeout only let messages reach servers within the distance light travels in that time.", src: "— Trey Harris, The 500-Mile Email, 2002" },
 ];
 
 const QUOTES = [
@@ -1604,6 +1492,8 @@ export function AlmanacPage() {
   const [factIdx, setFactIdx] = useState(0);
   const [quoteIdx, setQuoteIdx] = useState(0);
   const [openStory, setOpenStory] = useState<StoryData | null>(null);
+  const [topicOffset, setTopicOffset] = useState(0);
+  const [showAllTopics, setShowAllTopics] = useState(false);
 
   const handlePage = (p: number) => {
     setPage(p);
@@ -1617,6 +1507,10 @@ export function AlmanacPage() {
   const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   const fact = FUN_FACTS[factIdx];
   const quote = QUOTES[quoteIdx];
+
+  const visibleCategories = showAllTopics
+    ? CATEGORIES
+    : [...CATEGORIES.slice(topicOffset), ...CATEGORIES.slice(0, topicOffset)];
 
   const nextFact = () => setFactIdx((factIdx + 1) % FUN_FACTS.length);
   const prevFact = () =>
@@ -1632,30 +1526,60 @@ export function AlmanacPage() {
         <div className="almanac-header">
           <div className="almanac-kicker">✦ The CyberStars Almanac</div>
           <h1 className="almanac-title">
-            Stories that built
+            Tech stories, fun facts
             <br />
-            the modern world.
+            &amp; everything in between.
           </h1>
           <p className="almanac-subtitle">
-            Tech history, open-source legends, hacker culture and the curious
-            little stories behind the tools you use every day. New articles every
-            week.
+            Open-source legends and hacker culture, tech history, space, famous
+            quotes, and the curious little fun facts behind the tools you use
+            every day. New reads every week.
           </p>
         </div>
 
-        <div className="almanac-filters">
-          {CATEGORIES.map((c) => (
+        <div className="almanac-filters-bar">
+          {!showAllTopics && (
             <button
-              key={c.id}
-              className={
-                "almanac-chip" + (filter === c.id ? " active" : "")
+              className="topic-nav"
+              onClick={() =>
+                setTopicOffset((o) => (o - 1 + CATEGORIES.length) % CATEGORIES.length)
               }
-              onClick={() => { setFilter(c.id); setPage(1); }}
+              aria-label="Previous topics"
             >
-              <span className="chip-em">{c.em}</span>
-              <span>{c.label}</span>
+              ‹
             </button>
-          ))}
+          )}
+          <div className={"almanac-filters" + (showAllTopics ? " show-all" : "")}>
+            {visibleCategories.map((c) => (
+              <button
+                key={c.id}
+                className={
+                  "almanac-chip" + (filter === c.id ? " active" : "")
+                }
+                onClick={() => { setFilter(c.id); setPage(1); }}
+              >
+                <span className="chip-em">{c.em}</span>
+                <span>{c.label}</span>
+              </button>
+            ))}
+          </div>
+          {!showAllTopics && (
+            <button
+              className="topic-nav"
+              onClick={() =>
+                setTopicOffset((o) => (o + 1) % CATEGORIES.length)
+              }
+              aria-label="Next topics"
+            >
+              ›
+            </button>
+          )}
+          <button
+            className="topic-showall"
+            onClick={() => setShowAllTopics((s) => !s)}
+          >
+            {showAllTopics ? "Carousel" : "Show all"}
+          </button>
         </div>
 
         {filter === "all" && (

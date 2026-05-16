@@ -410,9 +410,6 @@ export function ChallengesPage() {
                     Python 3
                   </div>
                   <div className="flex gap-1.5">
-                    <button className="px-3 py-[5px] rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-xs font-semibold cursor-pointer hover:text-[var(--accent)] hover:border-[var(--accent)] transition flex items-center gap-1">
-                      ✨ Hint
-                    </button>
                     <button
                       onClick={handleRun}
                       disabled={running}

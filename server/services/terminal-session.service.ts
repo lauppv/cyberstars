@@ -104,7 +104,7 @@ export async function execCommand(sessionId: string, command: string): Promise<T
   session.lastActivity = Date.now();
   session.history.push(command);
 
-  const script = `cd "$(cat /tmp/.cwd)" && ${command}; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
+  const script = `cd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
 
   let output: string;
   try {

@@ -12,11 +12,34 @@ enum CurriculumKind {
   terminal
 }
 
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+enum TicketType {
+  BUG
+  QUESTION
+  RULE_VIOLATION
+  FEEDBACK
+  ACCOUNT
+  OTHER
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
 model User {
   id         Int      @id @default(autoincrement())
   name       String   @db.VarChar(100)
   email      String   @unique @db.VarChar(255)
   password   String   @db.VarChar(255)
+  role       Role     @default(USER)
   createdAt  DateTime @default(now()) @map("created_at")
 
   progress  UserLessonProgress[]
@@ -24,8 +47,26 @@ model User {
   threads   ForumThread[]
   posts     ForumPost[]
   reactions ForumReaction[]
+  tickets   SupportTicket[]
 
   @@map("users")
+}
+
+model SupportTicket {
+  id        Int          @id @default(autoincrement())
+  userId    Int          @map("user_id")
+  type      TicketType
+  subject   String       @db.VarChar(200)
+  message   String
+  status    TicketStatus @default(OPEN)
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("support_tickets")
 }
 
 model Curriculum {

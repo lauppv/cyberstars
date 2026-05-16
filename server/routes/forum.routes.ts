@@ -10,8 +10,13 @@ router.get("/threads/:threadId", optionalAuth, forumController.getThread);
 
 router.post("/threads", authenticateToken, forumController.createThread);
 router.post("/threads/:threadId/posts", authenticateToken, forumController.createPost);
+router.delete("/threads/:threadId", authenticateToken, forumController.deleteThread);
 
 router.post("/posts/:postId/reactions", authenticateToken, forumController.toggleReaction);
 router.post("/posts/:postId/solution", authenticateToken, forumController.markSolution);
+router.put("/posts/:postId", authenticateToken, forumController.updatePost);
+router.delete("/posts/:postId", authenticateToken, forumController.deletePost);
+
+router.put("/users/:userId/role", authenticateToken, forumController.updateUserRole);
 
 export default router;

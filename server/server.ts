@@ -11,6 +11,7 @@ import progressRoutes from "./routes/progress.routes.js";
 import leaderboardRoutes from "./routes/leaderboard.routes.js";
 import forumRoutes from "./routes/forum.routes.js";
 import terminalRoutes from "./routes/terminal.routes.js";
+import supportRoutes from "./routes/support.routes.js";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/forum", forumRoutes);
 app.use("/api/terminal", terminalRoutes);
+app.use("/api/support", supportRoutes);
 app.use("/api", lessonRoutes);
 
 const buildPath = path.join(process.cwd(), "dist");

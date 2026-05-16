@@ -883,3 +883,79 @@
     border-bottom: 1px solid var(--border);
   }
 }
+
+/* ===== Roles & moderation ===== */
+.role-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border: 1px solid transparent;
+}
+
+.role-badge.role-admin {
+  color: #ff8585;
+  background: rgba(255, 107, 107, 0.14);
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
+.role-badge.role-mod {
+  color: #2ee6a8;
+  background: rgba(0, 214, 143, 0.14);
+  border-color: rgba(0, 214, 143, 0.4);
+}
+
+.role-badge.role-user {
+  color: var(--text3);
+  background: rgba(153, 153, 176, 0.12);
+  border-color: var(--border);
+}
+
+.role-select {
+  margin-top: 2px;
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.post-btn-danger {
+  color: var(--error);
+  border-color: rgba(255, 107, 107, 0.35);
+}
+
+.post-btn-danger:hover {
+  border-color: var(--error);
+  color: var(--error);
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.post-edit {
+  margin: 4px 0 10px;
+}
+
+.post-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.forum-restricted-note {
+  margin: 14px 0;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: rgba(108, 92, 231, 0.08);
+  border: 1px dashed rgba(108, 92, 231, 0.4);
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: 500;
+}

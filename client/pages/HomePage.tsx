@@ -18,7 +18,6 @@ const TOUR_STEPS = [
   { icon: "📚", title: "Choose Your Path", body: "Pick from Python, Java, or C. Each course has structured lessons that build on each other — from basics to advanced topics." },
   { icon: "⌨️", title: "Code as You Learn", body: "Every lesson has a built-in code editor. Read the explanation on the left, then practice on the right — no setup needed." },
   { icon: "🏆", title: "Earn XP & Badges", body: "Complete lessons to earn XP, maintain your daily streak, and unlock badges. Climb the leaderboard and show off your skills!" },
-  { icon: "✨", title: "Never Get Stuck", body: "Hints are always one click away. Click the Hint button in the editor for a nudge in the right direction." },
 ];
 
 
