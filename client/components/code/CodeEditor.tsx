@@ -15,10 +15,18 @@ interface CodeEditorProps {
   fontSize?: string;
 }
 
+const transparentBg = EditorView.theme({
+  "&": { backgroundColor: "transparent" },
+  ".cm-gutters": { backgroundColor: "transparent", borderRight: "1px solid rgba(108,92,231,0.15)" },
+  ".cm-content": { backgroundColor: "transparent" },
+  ".cm-line": { backgroundColor: "transparent" },
+  ".cm-activeLine": { backgroundColor: "rgba(108,92,231,0.08)" },
+  ".cm-activeLineGutter": { backgroundColor: "transparent" },
+});
+
 function getExtensions(language: string): Extension[] {
   const lang = language.toLowerCase();
-  // lineWrapping: long lines wrap inside the editor instead of overflowing horizontally
-  const base: Extension[] = [indentUnit.of("    "), EditorView.lineWrapping];
+  const base: Extension[] = [indentUnit.of("    "), EditorView.lineWrapping, transparentBg];
   switch (lang) {
     case "python":
     case "py":

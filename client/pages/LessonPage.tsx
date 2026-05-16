@@ -158,7 +158,7 @@ export function LessonPage() {
 
       <div className="flex flex-1 overflow-hidden justify-center">
           {/* Lesson content */}
-          <div ref={contentRef} className="w-[40%] overflow-y-auto bg-[var(--bg)]">
+          <div ref={contentRef} className="w-[40%] overflow-y-auto bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-r border-[var(--accent)]/30">
             <div className="px-9 py-8">
               {(() => {
                 const { difficulty, rest } = parseDifficulty(title);
@@ -218,7 +218,7 @@ export function LessonPage() {
 
           {/* Right panel: terminal or editor */}
           {isTerminal ? (
-            <div className="w-[40%] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)] overflow-hidden">
+            <div className="w-[40%] flex flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-l border-[var(--accent)]/30 overflow-hidden">
               <TerminalPanel
                 lines={terminal.lines}
                 cwd={terminal.cwd}
@@ -239,8 +239,8 @@ export function LessonPage() {
               />
             </div>
           ) : (
-          <div className="w-[40%] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)] overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--bg3)] border-b border-[var(--border)]">
+          <div className="w-[40%] flex flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-l border-[var(--accent)]/30 overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
               <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
                 <span
                   className="inline-block w-2 h-2 rounded-full"
@@ -260,7 +260,7 @@ export function LessonPage() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-auto bg-[#0D1117]">
+            <div className="flex-1 overflow-auto bg-[rgba(13,17,23,0.3)]">
               <CodeEditor
                 value={userCode}
                 onChange={setUserCode}
@@ -269,7 +269,7 @@ export function LessonPage() {
               />
             </div>
 
-            <div className="p-3 border-t border-[var(--border)] bg-[var(--bg2)]">
+            <div className="p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)]">
               <div className="flex gap-2 mb-3 items-center flex-wrap">
                 <button
                   onClick={handleSubmit}

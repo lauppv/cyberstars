@@ -48,6 +48,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - PostgreSQL via Prisma 6 ORM
 - Core models: `User`, `Curriculum` (with `CurriculumKind` enum: editor/terminal), `Lesson`, `UserLessonProgress`, `UserSavedCode`
 - Forum models: `ForumCategory`, `ForumThread`, `ForumPost`, `ForumReaction`
+- Support models: `SupportTicket`, `SupportMessage` — tickets are per-user with threaded replies; owners can close their own tickets, admins can set any status
 - Seed script populates all courses and lessons from filesystem
 
 ### Shared (`shared/`)
@@ -71,5 +72,9 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Lesson completion is automatic when all test cases pass — no manual "complete" button
 - The user communicates in Romanian; code and docs stay in English
 - New features start as static HTML mockups in `design/` — these are the source of truth for layout, colors, and data structure when implementing React pages
-- Page wrapper divs use `bg-transparent` (not `bg-[var(--bg)]`) so the global cosmos starfield shows through. Cards and panels keep their semi-transparent backgrounds (`rgba(22,22,29,0.72)` with `backdrop-filter: blur`).
+- Page wrapper divs use `bg-transparent` (not `bg-[var(--bg)]`) so the global cosmos starfield shows through
+- All cards, panels, and containers use very low opacity backgrounds (`rgba(22,22,29,0.1)` with `backdrop-blur-[12px]`) so the cosmos is visible through them. Never use opaque backgrounds (`bg-[var(--bg2)]`, `bg-[var(--surface)]`) for content panels
+- Panel/card borders use accent purple at 30% (`border-[var(--accent)]/30`), not `border-[var(--border)]`
+- Internal separators (`border-b`, `border-t`) use `border-[var(--accent)]/20`
+- CodeMirror editor has transparent backgrounds via global CSS overrides (`!important`) in `index.css` — `.cm-editor`, `.cm-line`, `.cm-content`, `.cm-gutters` are all transparent
 - Topbar is semi-transparent (`rgba(22,22,29,0.78)` + `backdrop-blur`) — not opaque

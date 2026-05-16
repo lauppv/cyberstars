@@ -77,7 +77,7 @@ export function TerminalPanel({
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--bg3)] border-b border-[var(--border)]">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
         <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
           <span className="inline-block w-2 h-2 rounded-full bg-[#FCC624]" />
           Terminal
@@ -93,7 +93,7 @@ export function TerminalPanel({
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto p-4 font-mono text-[13px] leading-[1.6] bg-[#0D1117]"
+        className="flex-1 overflow-y-auto p-4 font-mono text-[13px] leading-[1.6] bg-[rgba(13,17,23,0.3)]"
         onClick={() => inputRef.current?.focus()}
       >
         {lines.map((line, i) => (
@@ -126,7 +126,7 @@ export function TerminalPanel({
         )}
       </div>
 
-      <div className="p-3 border-t border-[var(--border)] bg-[var(--bg2)]">
+      <div className="p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)]">
         <div className="flex gap-2 mb-2 items-center flex-wrap">
           <button
             onClick={onSubmit}
