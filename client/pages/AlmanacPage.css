@@ -228,17 +228,6 @@
   justify-content: center;
   font-size: 120px;
   filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.6));
-  animation: almanac-float 6s ease-in-out infinite;
-}
-
-@keyframes almanac-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
 }
 
 .hero-art-badge {
