@@ -41,7 +41,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Route files: `auth.routes.ts`, `lesson.routes.ts`, `code.routes.ts`, `progress.routes.ts`, `leaderboard.routes.ts`, `forum.routes.ts`, `terminal.routes.ts`, `support.routes.ts`, `profile.routes.ts`
 - Controllers handle logic; Zod schemas in `server/schemas/` validate requests
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
-- Code execution: Docker containers locally, Piston API in production — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)
+- Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)
 - Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`. Routes at `/api/terminal` (session, exec, submit, destroy)
 
 ### Database (`prisma/`)
