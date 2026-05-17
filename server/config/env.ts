@@ -18,7 +18,7 @@ export const env = {
     ? Number(process.env.PORT) || 8080
     : Number(process.env.EXPRESS_PORT) || 5000,
   corsOrigin: isProduction
-    ? process.env.VITE_PROD_API_URL || ""
+    ? process.env.CORS_ORIGIN || "https://cyber-stars.org"
     : process.env.VITE_DEV_API_URL || "http://localhost:5173",
   jwt: {
     secret: required("JWT_SECRET"),

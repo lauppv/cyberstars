@@ -23,9 +23,9 @@ A free interactive coding education platform, inspired by freeCodeCamp, where us
 - **Split-screen lesson view** — educational Markdown content on the left, live code editor (CodeMirror) on the right
 - **Inline runnable code blocks** — code examples inside lesson text are interactive; click "Run Code" to execute them directly in the lesson
 - **Test case validation** — each lesson has test cases that verify the user's code (like LeetCode). A lesson is marked complete only when all tests pass — there is no manual "complete" button
-- **Multi-language support** — Python (49 lessons), Java (50 lessons), C (16 lessons) with language-specific syntax highlighting
+- **Multi-language support** — Python (49 lessons), Java (50 lessons), C (45 lessons) with language-specific syntax highlighting
 - **Algorithm challenges** — 45 algorithm challenges across 3 languages (Python, Java, C), each with difficulty levels (Easy/Medium/Hard) and colored difficulty filters
-- **Remote code execution** — user code runs server-side via Piston API (production) or Docker containers (development), not in the browser
+- **Remote code execution** — user code runs server-side via Docker containers (sandboxed, all environments), not in the browser
 - **Progress tracking** — lessons are automatically marked complete when all test cases pass, with per-course progress bars
 - **Gamification UI** — XP bar (non-linear XP per lesson based on sort order), level badge, streak widget, achievement toasts on completion, and 8 unlockable badges (First Code / Speed Run / Bug Squasher / On Fire / Diamond / Half Century / Course Master / Polyglot). All values are derived from real `UserLessonProgress` data — no separate gamification tables
 - **Persistent course sidebar** — when viewing a lesson, a sidebar shows every lesson in the current course with a numbered marker (active = accent, completed = green ✓), a course progress bar, and the badges grid
@@ -52,7 +52,7 @@ A free interactive coding education platform, inspired by freeCodeCamp, where us
 
 **Backend:** Node.js + Express 5 + TypeScript + Prisma 6 (PostgreSQL) + Zod 4 + tsx
 
-**Code Execution:** Piston API (production) / Docker containers (development)
+**Code Execution:** Docker containers (sandboxed)
 
 **Auth:** JWT (jsonwebtoken) + bcryptjs + httpOnly cookies
 
@@ -62,7 +62,7 @@ A free interactive coding education platform, inspired by freeCodeCamp, where us
 
 - [Node.js](https://nodejs.org/) (v18+)
 - [PostgreSQL](https://www.postgresql.org/) (v14+)
-- [Docker](https://www.docker.com/) (development only — for local code execution)
+- [Docker](https://www.docker.com/) (required — for code execution sandboxing)
 
 ### Installing prerequisites
 
@@ -98,11 +98,11 @@ After installing Docker, pull the images used for code execution:
 
 ```bash
 docker pull python:3.10-slim
-docker pull gcc:latest
+docker pull gcc:14
 docker pull eclipse-temurin:21-jdk-alpine
 ```
 
-Without these images, code execution in development will fail silently (returning "Error reading output file"). The Piston API is used in production instead, so Docker is only needed locally.
+Without these images, code execution will fail silently (returning "Error reading output file").
 
 ### Setting up the database
 
@@ -121,7 +121,7 @@ CREATE DATABASE cyberstars OWNER cyberstars;
 1. Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/cyberstars
+git clone https://github.com/lauppv/cyberstars
 cd cyberstars
 npm install
 ```
@@ -240,8 +240,10 @@ cyberstars/
 │   ├── services/                           # Business logic (no req/res, no SQL)
 │   │   ├── auth.service.ts                 # signup, login, getUser (bcrypt + JWT)
 │   │   ├── lesson.service.ts               # getLessonContent, getLessonCode, getCurriculum
-│   │   ├── code-execution.service.ts       # execute (Piston API or Docker, supports stdin)
+│   │   ├── code-execution.service.ts       # execute (Docker, supports stdin)
 │   │   ├── test-runner.service.ts          # Run code against JSON test cases, compare output (6 test modes)
+│   │   ├── terminal-session.service.ts     # Manage sandboxed Docker terminal sessions (create, exec, destroy, idle GC)
+│   │   ├── terminal-test-runner.service.ts # Validate Linux lesson state against -tests.json checks
 │   │   ├── paths.ts                        # contentDir() — resolves lesson/algorithm content directories
 │   │   └── progress.service.ts             # markComplete, saveCode, getSavedCode, getCourseProgress
 │   ├── controllers/                        # Thin req/res layer
@@ -254,7 +256,11 @@ cyberstars/
 │   │   ├── lesson.routes.ts                # /api/lessons/*, /api/lesson-code/*, /api/curriculum
 │   │   ├── code.routes.ts                  # /api/run-code, /api/run-code/submit
 │   │   ├── progress.routes.ts              # /api/progress/* (all authenticated)
-│   │   └── leaderboard.routes.ts           # /api/leaderboard
+│   │   ├── leaderboard.routes.ts           # /api/leaderboard
+│   │   ├── forum.routes.ts                 # /api/forum/*
+│   │   ├── terminal.routes.ts              # /api/terminal/* (Linux sandbox)
+│   │   ├── support.routes.ts               # /api/support/tickets/*
+│   │   └── profile.routes.ts               # /api/profile/*
 │   ├── types/
 │   │   └── express.d.ts                    # Augments Express Request with `user` property
 │   ├── lessons/                            # Markdown lesson content (read from filesystem)
@@ -266,11 +272,13 @@ cyberstars/
 │   │   ├── java/                           # 15 challenges (easy/medium/hard — OOP, classes, generics, linked list)
 │   │   └── c/                              # 15 challenges (easy/medium/hard — arrays, pointers, structs, merge sort)
 │   └── runtimes/                           # Language registry — one file per supported language
-│       ├── types.ts                        # LanguageRuntime interface (image, pistonVersion, innerCmd)
+│       ├── types.ts                        # LanguageRuntime interface (image, innerCmd)
 │       ├── registry.ts                     # getRuntime(lang) — maps python/c/java + algo-* keys to runtimes
 │       ├── python.ts                       # Python runtime config
 │       ├── c.ts                            # C runtime config
-│       └── java.ts                         # Java runtime config
+│       ├── java.ts                         # Java runtime config
+│       └── linux-sandbox/
+│           └── Dockerfile                  # Image for stateful Linux terminal sessions (cyberstars-linux-sandbox)
 │
 ├── client/                                 # Frontend (React + TypeScript)
 │   ├── main.tsx                            # React entry point
@@ -286,7 +294,11 @@ cyberstars/
 │   │   ├── authService.ts                  # login, signup, logout, getMe
 │   │   ├── lessonService.ts                # fetchLesson, fetchLessonCode, fetchCurriculum
 │   │   ├── codeExecutionService.ts         # runCode, submitCode
-│   │   └── progressService.ts              # getCourseProgress, markLessonComplete, saveCode
+│   │   ├── progressService.ts              # getCourseProgress, markLessonComplete, saveCode
+│   │   ├── forumService.ts                 # getCategories, getThreads, getThread, createThread, createPost, reactions, etc.
+│   │   ├── supportService.ts               # createTicket, getMyTickets, getTicketMessages, addMessage, updateStatus
+│   │   ├── profileService.ts               # updateProfile, uploadAvatar, deleteAvatar
+│   │   └── terminalService.ts              # createSession, exec, submit, destroySession
 │   ├── context/
 │   │   ├── AuthContext.tsx                 # Global auth state (user, login, signup, logout)
 │   │   ├── CurriculumContext.tsx           # Curriculum cache — fetches once, used by all pages
@@ -305,11 +317,18 @@ cyberstars/
 │   └── pages/
 │       ├── HomePage.tsx                    # Hero landing — level/XP/badges if logged in, feature cards otherwise
 │       ├── AuthPage.tsx                    # Login/signup card with logo + Topbar
+│       ├── WelcomePage.tsx                 # Onboarding/welcome screen shown after first signup
 │       ├── CoursesPage.tsx                 # Course catalog (Python, Java, C)
 │       ├── AlgorithmsPage.tsx              # Algorithm language picker (Python, Java, C cards)
 │       ├── AlgorithmListPage.tsx           # Per-language algorithm list with Easy/Medium/Hard filters
 │       ├── LessonPage.tsx                  # Topbar + XPBar + content split + editor panel + Output
-│       └── ProfilePage.tsx                 # User profile with stats, badges, course progress
+│       ├── ProfilePage.tsx                 # User profile with stats, badges, course progress
+│       ├── ForumPage.tsx                   # Community forum (categories, threads, posts, reactions)
+│       ├── AlmanacPage.tsx                 # Reference/almanac page with AI-generated articles
+│       ├── RestRoomPage.tsx                # Chill/lounge page
+│       ├── ChallengesPage.tsx              # Coding challenges listing
+│       ├── SupportPage.tsx                 # Support ticket system UI
+│       └── RulesPage.tsx                   # Community rules page
 │
 ├── index.html                              # HTML entry point
 ├── package.json                            # Dependencies + scripts
@@ -362,6 +381,50 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 |--------|----------|------|-------------|
 | GET | `/api/leaderboard` | Optional | Global leaderboard ranked by total XP. If authenticated, the current user is flagged in the response |
 
+### Forum
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/api/forum/categories` | No | List all forum categories |
+| GET | `/api/forum/categories/:categorySlug/threads` | No | List threads in a category |
+| GET | `/api/forum/threads/:threadId` | Optional | Get a thread with its posts and reactions |
+| POST | `/api/forum/threads` | Yes | Create a new thread. Body validated by `createThreadSchema` |
+| POST | `/api/forum/threads/:threadId/posts` | Yes | Reply to a thread. Body validated by `createPostSchema` |
+| DELETE | `/api/forum/threads/:threadId` | Yes | Delete a thread (owner or admin) |
+| POST | `/api/forum/posts/:postId/reactions` | Yes | Toggle a reaction on a post. Body validated by `toggleReactionSchema` |
+| POST | `/api/forum/posts/:postId/solution` | Yes | Mark a post as the solution to a thread |
+| PUT | `/api/forum/posts/:postId` | Yes | Edit a post. Body validated by `updatePostSchema` |
+| DELETE | `/api/forum/posts/:postId` | Yes | Soft-delete a post (owner or admin) |
+| PUT | `/api/forum/users/:userId/role` | Yes (admin) | Update a user's forum role. Body validated by `updateUserRoleSchema` |
+
+### Terminal (Linux sandbox)
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/terminal/session` | Yes | Create a new sandboxed terminal session (Docker container) |
+| POST | `/api/terminal/exec` | Yes | Execute a command in an existing terminal session |
+| POST | `/api/terminal/submit` | Optional | Run lesson validation checks against the current session filesystem |
+| DELETE | `/api/terminal/session/:sessionId` | Yes | Destroy a terminal session and remove the container |
+
+### Support
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/support/tickets` | Yes | Create a new support ticket |
+| GET | `/api/support/tickets/mine` | Yes | Get the current user's support tickets |
+| GET | `/api/support/tickets` | Yes (admin) | Get all support tickets |
+| PUT | `/api/support/tickets/:id/status` | Yes | Update ticket status (owner can close; admin can set any status) |
+| GET | `/api/support/tickets/:id/messages` | Yes | Get messages for a ticket |
+| POST | `/api/support/tickets/:id/messages` | Yes | Add a reply message to a ticket |
+
+### Profile
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| PATCH | `/api/profile` | Yes | Update profile fields (bio, status, displayName) |
+| POST | `/api/profile/avatar` | Yes | Upload a new avatar image (multipart/form-data, magic-byte validated) |
+| DELETE | `/api/profile/avatar` | Yes | Remove the current avatar |
+
 ## Database Schema
 
 The schema is defined in [`prisma/schema.prisma`](prisma/schema.prisma) — it is the single source of truth. Migrations live in `prisma/migrations/` and are applied with `prisma migrate deploy`.
@@ -373,6 +436,12 @@ The schema is defined in [`prisma/schema.prisma`](prisma/schema.prisma) — it i
 - **Lesson** (`lessons`) — lesson metadata (courseKey, slug, title, sortOrder, hasCodeFile). Unique on `(courseKey, slug)`.
 - **UserLessonProgress** (`user_lesson_progress`) — per-user lesson completion (completed, completedAt, lastAccessedAt). Unique on `(userId, courseKey, lessonSlug)`. Indexed on `userId` and `(userId, courseKey)`.
 - **UserSavedCode** (`user_saved_code`) — per-user saved code per lesson (code, updatedAt). Unique on `(userId, courseKey, lessonSlug)`. Indexed on `userId`.
+- **ForumCategory** (`forum_categories`) — top-level forum categories (name, slug, description, icon, sortOrder). `slug` is unique.
+- **ForumThread** (`forum_threads`) — discussion threads (categoryId, authorId, title, body, pinned, locked, solutionPostId). Indexed on `categoryId`.
+- **ForumPost** (`forum_posts`) — replies in a thread (threadId, authorId, body, soft-delete via `deleted`/`deletedByName`, edit tracking via `editedByName`/`editedAt`). Indexed on `threadId`.
+- **ForumReaction** (`forum_reactions`) — emoji reactions on posts (postId, userId, emoji). Unique on `(postId, userId, emoji)`.
+- **SupportTicket** (`support_tickets`) — user support tickets (userId, subject, status). Indexed on `userId`.
+- **SupportMessage** (`support_messages`) — threaded replies on a ticket (ticketId, authorId, body). Indexed on `ticketId`.
 
 Field names use camelCase in TypeScript (`courseKey`, `sortOrder`, `completedAt`) and are mapped to snake_case columns (`course_key`, `sort_order`, `completed_at`) via Prisma's `@map`/`@@map`. Table names also use snake_case via `@@map`.
 
@@ -390,27 +459,17 @@ Lesson content itself is stored as Markdown files on the filesystem (`server/les
 
 User code is never executed in the browser. It's sent to the backend, which delegates execution to an external runtime:
 
-### Production: Piston API
+### Docker (all environments)
 
-The [Piston API](https://github.com/engineer-man/piston) is a free, open-source remote code execution engine. The backend sends code to `https://emkc.org/api/v2/piston/execute` with language-specific version pinning:
-
-| Language | Piston Version | Compile Timeout | Run Timeout |
-|----------|---------------|-----------------|-------------|
-| Python | 3.10.0 | — | 5s |
-| C | 10.2.0 (GCC) | 10s | 5s |
-| Java | 15.0.2 | 10s | 5s |
-
-### Development: Docker
-
-In development, code runs in local Docker containers with volume-mounted temp directories:
+User code runs in local Docker containers with volume-mounted temp directories in all environments:
 
 | Language | Docker Image | Behavior |
 |----------|-------------|----------|
 | Python | `python:3.10-slim` | Runs with 5s timeout |
-| C | `gcc:latest` | Compiles with `-Wall`, then runs binary with 5s timeout |
+| C | `gcc:14` | Compiles with `-Wall`, then runs binary with 5s timeout |
 | Java | `eclipse-temurin:21-jdk-alpine` | `javac` then runs `Main` with 5s timeout |
 
-**Important:** Your user must be in the `docker` group (`sudo usermod -aG docker $USER`, then log out and back in). Without this, code execution will fail with a permission error. You also need to pull the three images listed above before running code locally.
+**Important:** Your user must be in the `docker` group (`sudo usermod -aG docker $USER`, then log out and back in). Without this, code execution will fail with a permission error. You also need to pull the three images listed above before running code.
 
 The execution flow: create a per-run temp dir under `os.tmpdir()/cyberstars-runs/<uuid>/` → write `<sourceFile>`, `stdin.txt`, empty `output.txt` → run the container with the dir mounted at `/work` → read `output.txt` → cleanup. All executions have a 5-second timeout to prevent infinite loops.
 
@@ -456,7 +515,7 @@ Tests can also use `overrides` to inject variable values into user code (for tes
 |--------|-------|--------|
 | Python | 49 lessons | print, variables, f-strings, comments, conditionals, loops, functions, input, operators, booleans, string methods, lists, break/continue, return values, dictionaries, tuples, sets, nested loops, list comprehension, scope, default params, try/except, built-in functions, patterns, algorithms, recursion, matrices, projects |
 | Java | 50 lessons | print, variables, strings, comments, conditionals, loops, methods, input, operators, booleans, string methods, arrays, break/continue, return values, method overloading, nested loops, ArrayList, HashMap, Math class, classes & objects, constructors, instance methods, getters/setters, toString, static, final, scope & access, null, wrapper classes, inheritance, method overriding, polymorphism, abstract classes, interfaces, type casting, try/catch, String.format, sorting, enums, switch, projects |
-| C | 16 lessons | print, variables (integers/floats), comments, if/else, if/else if/else, for loops, while loops, functions, input (scanf), operators, booleans, strings, arrays, looping over arrays, break/continue |
+| C | 45 lessons | print, variables (integers/floats), comments, if/else, if/else if/else, for loops, while loops, functions, input (scanf), operators, booleans, strings, arrays, looping over arrays, break/continue, nested loops, pointers, pointers and functions, pointers and arrays, string functions, structs, structs and pointers, dynamic memory, enums, typedef, preprocessor, file I/O, bitwise operators, OS processes, fork, pipes, threads, projects |
 | Python Algorithms | 15 challenges | reverse string, sum of digits, count vowels, palindrome, find maximum, even/odd, count words, sum of list, longest word, reverse words, caesar cipher, remove duplicates, anagram check, words with vowels, two sum |
 | Java Algorithms | 15 challenges | student GPA, rectangle calculator, bank account, counter class, temperature converter, string stats, dice roller, shopping item, sort students, inventory manager, shape hierarchy, stack, linked list, iterator pattern, generic pair |
 | C Algorithms | 15 challenges | reverse array, string length, count chars, sum array, find minimum, even count, print triangle, digit count, swap pointers, dynamic array, matrix transpose, struct sort, bitwise ops, linked list, merge sort |
@@ -493,7 +552,7 @@ Adding a new lesson requires: (1) creating the `.md` file in the appropriate dir
 
 - **`npm run dev` does everything**: The `dev` script runs `db:prepare` (Prisma generate + migrate deploy + seed) before starting the servers. Adding a lesson or migration requires zero manual database commands — just edit the files and restart. The seed is idempotent (`upsert`), so it's safe to run on every startup.
 
-- **Dual code execution strategy**: Development uses Docker for offline work and full control; production uses the free Piston API to avoid running Docker in hosted environments. The `code-execution.service` abstracts this behind a single `execute(code, language)` interface — the rest of the app doesn't know which backend is running.
+- **Docker for code execution in all environments**: User code runs inside sandboxed Docker containers in both development and production. Containers run with `--network=none`, memory and PID limits, and isolated per-run temp directories — the same security guarantees apply everywhere. The `code-execution.service` exposes a single `execute(code, language)` interface so the rest of the app is fully decoupled from the execution backend.
 
 - **Language runtime registry**: Per-language config (Docker image, Piston version, source filename, inner shell command) is isolated in `server/runtimes/<lang>.ts` files behind a `LanguageRuntime` interface. The execution service is fully generic — there is no `switch (language)` anywhere in the runner. Adding a new language is one file plus one line in `registry.ts`, with zero changes to the service, controllers, or routes.
 

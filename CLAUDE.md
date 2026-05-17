@@ -47,7 +47,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 ### Database (`prisma/`)
 - PostgreSQL via Prisma 6 ORM
 - Core models: `User`, `Curriculum` (with `CurriculumKind` enum: editor/terminal), `Lesson`, `UserLessonProgress`, `UserSavedCode`
-- Forum models: `ForumCategory`, `ForumThread`, `ForumPost`, `ForumReaction`
+- Forum models: `ForumCategory`, `ForumThread`, `ForumPost` (soft-delete with `deleted`/`deletedByName`, edit tracking with `editedByName`), `ForumReaction`
 - Support models: `SupportTicket`, `SupportMessage` — tickets are per-user with threaded replies; owners can close their own tickets, admins can set any status
 - Seed script populates all courses and lessons from filesystem
 
