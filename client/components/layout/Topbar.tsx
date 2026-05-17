@@ -66,12 +66,9 @@ export function Topbar({
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <span
-            className="text-[22px] text-[var(--accent)]"
-            style={{ filter: "drop-shadow(0 0 8px var(--accent-glow))" }}
-          >
-            ⬡
-          </span>
+          <svg className="w-[22px] h-[22px]" viewBox="0 0 64 64" style={{ filter: "drop-shadow(0 0 8px var(--accent-glow))" }}>
+            <polygon points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24" fill="var(--accent)" />
+          </svg>
           <span className="font-bold text-[17px]" style={{ letterSpacing: "-0.5px" }}>
             CyberStars
           </span>
