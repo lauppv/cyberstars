@@ -143,7 +143,7 @@ EXPRESS_PORT=5000
 JWT_SECRET=your_secret_key
 
 NODE_ENV=development
-VITE_DEV_API_URL=http://localhost:5000
+CORS_DEV_ORIGIN=http://localhost:5173
 VITE_PROD_API_URL=
 ```
 

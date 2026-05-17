@@ -19,7 +19,7 @@ export const env = {
     : Number(process.env.EXPRESS_PORT) || 5000,
   corsOrigin: isProduction
     ? process.env.CORS_ORIGIN || "https://cyber-stars.org"
-    : process.env.VITE_DEV_API_URL || "http://localhost:5173",
+    : process.env.CORS_DEV_ORIGIN || "http://localhost:5173",
   jwt: {
     secret: required("JWT_SECRET"),
     expiresIn: "24h" as const,
