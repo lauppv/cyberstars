@@ -66,7 +66,7 @@ On macOS, Docker Desktop handles permissions automatically.
 #### Install and run
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 

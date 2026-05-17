@@ -123,10 +123,10 @@ CREATE DATABASE cyberstars OWNER cyberstars;
 ```bash
 git clone https://github.com/lauppv/cyberstars
 cd cyberstars
-npm install
+npm ci
 ```
 
-`npm install` runs `prisma generate` automatically (via `postinstall`), producing the typed Prisma Client used by the backend.
+`npm ci` installs the exact dependency versions from `package-lock.json`, ensuring a reproducible setup. It also runs `prisma generate` automatically (via `postinstall`), producing the typed Prisma Client used by the backend.
 
 2. Create and configure the `.env` file in the project root:
 
