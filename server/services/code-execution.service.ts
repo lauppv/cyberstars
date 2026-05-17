@@ -23,9 +23,6 @@ export async function execute(code: string, language: string, stdin = ""): Promi
   const runtime = getRuntime(language);
   if (!runtime) return "Language not supported.";
 
-  if (config.isProduction) {
-    return executePiston(runtime, code, stdin);
-  }
   return executeDocker(runtime, code, stdin);
 }
 
