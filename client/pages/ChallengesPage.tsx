@@ -428,7 +428,7 @@ export function ChallengesPage() {
                           {" Testing..."}
                         </>
                       ) : (
-                        <>⬡ Submit</>
+                        <>★ Submit</>
                       )}
                     </button>
                   </div>
@@ -474,7 +474,7 @@ export function ChallengesPage() {
                           resultTab === "output" ? "text-[var(--text)] shadow-[inset_0_-2px_0_var(--accent)]" : "text-[var(--text3)]"
                         }`}
                       >
-                        ⬡ Output
+                        ★ Output
                       </button>
                       {currentResult.tests && (
                         <button

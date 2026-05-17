@@ -1133,7 +1133,7 @@ export function RestRoomPage() {
 
               <div className="center-display">
                 <div className="cd-poi" id="rest-poiTitle">
-                  <div className="cd-poi-kicker">{"⬡"} CyberStars {"·"} Drift Protocol</div>
+                  <div className="cd-poi-kicker">{"★"} CyberStars {"·"} Drift Protocol</div>
                   <div className="cd-poi-text" id="rest-poiName">Open space</div>
                 </div>
                 <div className="cd-mid">

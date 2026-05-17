@@ -15,7 +15,7 @@ export function CodeOutput({ output, height = "200px" }: CodeOutputProps) {
   return (
     <div className="rounded-[var(--radius-sm)] border border-[var(--accent)]/30 overflow-hidden bg-[rgba(10,14,20,0.3)] backdrop-blur-[12px]">
       <div className="px-3 py-1.5 text-[11px] uppercase tracking-[1px] text-[var(--text3)] font-semibold border-b border-[var(--accent)]/20 bg-[rgba(22,22,29,0.2)]">
-        ⬡ Output
+        ★ Output
       </div>
       <div
         ref={ref}
