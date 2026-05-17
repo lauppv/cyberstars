@@ -231,12 +231,9 @@ export function AuthPage() {
           {/* Brand content */}
           <div className="relative max-w-[400px] text-center" style={{ zIndex: 4 }}>
             <div className="flex items-center justify-center gap-3 mb-8">
-              <span
-                className="text-[40px] text-[var(--accent)]"
-                style={{ filter: "drop-shadow(0 0 16px var(--accent-glow))" }}
-              >
-                ⬡
-              </span>
+              <svg className="w-10 h-10" viewBox="0 0 64 64" style={{ filter: "drop-shadow(0 0 16px var(--accent-glow))" }}>
+                <polygon points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24" fill="var(--accent)" />
+              </svg>
               <span className="text-[32px] font-bold" style={{ letterSpacing: "-1px" }}>
                 CyberStars
               </span>
