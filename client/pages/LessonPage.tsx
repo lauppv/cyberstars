@@ -64,7 +64,7 @@ export function LessonPage() {
     progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
 
   useEffect(() => {
-    setUserCode(codeTemplate);
+    setUserCode(codeTemplate); // eslint-disable-line react-hooks/set-state-in-effect
   }, [codeTemplate]);
 
   useEffect(() => {

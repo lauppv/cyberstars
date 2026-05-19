@@ -22,7 +22,7 @@ export function useLesson(courseKey: string, lessonSlug: string) {
 
   useEffect(() => {
     setIsLoading(true); // eslint-disable-line react-hooks/set-state-in-effect
-    setError(null); // eslint-disable-line react-hooks/set-state-in-effect
+    setError(null);
 
     const loadLesson = async () => {
       try {

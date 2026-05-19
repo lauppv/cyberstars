@@ -29,7 +29,7 @@ export function ProfilePage() {
 
   useEffect(() => {
     if (user) {
-      setBio(user.bio ?? "");
+      setBio(user.bio ?? ""); // eslint-disable-line react-hooks/set-state-in-effect
       setStatus(user.status ?? "");
     }
   }, [user]);
