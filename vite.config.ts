@@ -33,6 +33,12 @@ export default defineConfig({
         '**/*.test.*',
         'server/lessons/**',
       ],
+      thresholds: {
+        lines: 70,
+        branches: 50,
+        functions: 60,
+        statements: 70,
+      },
     },
   },
 })
