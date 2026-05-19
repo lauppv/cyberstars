@@ -66,7 +66,7 @@ describe("runTests", () => {
     const tests = getTestCases("python", "variables-int");
     if (!tests) return;
 
-    const result = await runTests(
+    await runTests(
       'name = ""\nage = 0\nheight = 0\nprint(f"Hello. My name is {name}, I am {age} years old, and I am {height} tall")',
       "python",
       "python",
