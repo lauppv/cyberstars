@@ -23,6 +23,3 @@ export const loginSchema = z.object({
     .min(1, "Password is required")
     .max(255, "Password must be at most 255 characters"),
 });
-
-export type SignupInput = z.infer<typeof signupSchema>;
-export type LoginInput = z.infer<typeof loginSchema>;

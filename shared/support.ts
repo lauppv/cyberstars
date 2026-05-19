@@ -35,7 +35,3 @@ export interface CreateTicketRequest {
   subject: string;
   message: string;
 }
-
-export interface UpdateTicketStatusRequest {
-  status: TicketStatus;
-}

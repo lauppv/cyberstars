@@ -1,6 +1,6 @@
 // Shared types for the Linux (terminal) course.
 
-export interface TerminalFile {
+interface TerminalFile {
   path: string;
   content: string;
 }
@@ -13,9 +13,9 @@ export interface TerminalSetup {
   intro?: string;
 }
 
-export type CheckMode = "exact" | "contains" | "regex" | "line";
+type CheckMode = "exact" | "contains" | "regex" | "line";
 
-export type CheckType =
+type CheckType =
   | "file_exists"
   | "file_absent"
   | "file_content"

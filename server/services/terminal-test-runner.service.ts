@@ -4,7 +4,7 @@ import { contentDir } from "./paths.js";
 import { probe, getSession } from "./terminal-session.service.js";
 import type { TerminalCheck } from "../../shared/terminal.js";
 
-export interface TerminalTestResult {
+interface TerminalTestResult {
   name: string;
   passed: boolean;
 }

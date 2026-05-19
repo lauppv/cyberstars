@@ -14,6 +14,3 @@ export const submitCodeSchema = z.object({
   courseKey: z.string().min(1).max(50),
   lessonSlug: z.string().min(1).max(100),
 });
-
-export type RunCodeInput = z.infer<typeof runCodeSchema>;
-export type SubmitCodeInput = z.infer<typeof submitCodeSchema>;

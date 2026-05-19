@@ -69,7 +69,7 @@ export function recordActivityToday(userId: number) {
   } catch { /* localStorage may be unavailable */ }
 }
 
-export interface BadgeDef {
+interface BadgeDef {
   icon: string;
   label: string;
   earned: boolean;
