@@ -11,6 +11,7 @@ npm run dev:server    # Express server with tsx watch
 npm run build         # Production build to /dist
 npm test              # Run Vitest test suite once
 npm run test:watch    # Vitest in watch mode
+npm run test:coverage # Run tests with coverage report (v8, outputs to ./coverage/)
 npm run typecheck     # tsc --noEmit
 npm run lint          # ESLint
 npm run db:prepare    # Prisma generate + migrate + seed
@@ -21,7 +22,7 @@ npm run db:studio     # Open Prisma Studio GUI
 npx vitest run path   # Run a single test file (substring match)
 ```
 
-CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): typecheck → test → build. Tests are co-located next to source files (`*.test.ts`).
+CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parallel jobs for lint, typecheck, test (with coverage + PR comment), and build. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`).
 
 ## Architecture
 
@@ -38,11 +39,11 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Server (`server/`)
 - Express 5 + TypeScript, runs with tsx
-- Route files: `auth.routes.ts`, `lesson.routes.ts`, `code.routes.ts`, `progress.routes.ts`, `leaderboard.routes.ts`, `forum.routes.ts`, `terminal.routes.ts`, `support.routes.ts`, `profile.routes.ts`
-- Controllers handle logic; Zod schemas in `server/schemas/` validate requests
+- Three-layer architecture: Routes → Controllers → Services → Repositories
+- Zod schemas in `server/schemas/` validate all request bodies via `validateBody()` middleware
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
 - Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)
-- Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`. Routes at `/api/terminal` (session, exec, submit, destroy)
+- Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`
 
 ### Database (`prisma/`)
 - PostgreSQL via Prisma 6 ORM
@@ -61,6 +62,13 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Intentional compile errors (e.g., demonstrating `if(x=2)` bug) still have full boilerplate — the error is only on the line being demonstrated
 - Linux lessons: each slug has 3 files — `<slug>.md` (no H1, space-station theme), `<slug>-setup.json` (sandbox filesystem), `<slug>-tests.json` (validation checks). 55 lessons across 9 chapters. Shared types in `shared/terminal.ts`
 
+### Testing (`test/`)
+- Vitest with jsdom environment, `@testing-library/react` + `@testing-library/jest-dom`
+- Setup file in `test/setup.ts` handles jest-dom matchers and cleanup between tests
+- Coverage via `@vitest/coverage-v8` with json-summary + lcov reporters
+- Client component tests use `render`/`screen`/`fireEvent` from testing-library
+- Server tests are unit tests on services (no supertest — `app` is not exported)
+
 ## Key conventions
 
 - Vite proxies `/api` and `/auth` to the Express server (configured in `vite.config.ts`)
@@ -78,3 +86,4 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Internal separators (`border-b`, `border-t`) use `border-[var(--accent)]/20`
 - CodeMirror editor has transparent backgrounds via global CSS overrides (`!important`) in `index.css` — `.cm-editor`, `.cm-line`, `.cm-content`, `.cm-gutters` are all transparent
 - Topbar is semi-transparent (`rgba(22,22,29,0.78)` + `backdrop-blur`) — not opaque
+- ESLint uses `typescript-eslint` parser with separate configs for `.ts/.tsx` (browser globals) and `.js` (node globals). Unused args prefixed with `_` are allowed via `argsIgnorePattern`

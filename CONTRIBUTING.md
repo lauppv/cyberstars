@@ -72,7 +72,7 @@ npm run dev
 
 `npm run dev` handles everything automatically — generates Prisma client, runs migrations, seeds the database, and starts both the frontend (Vite on `:5173`) and backend (Express on `:5000`).
 
-### Linux terminal sandbox (optional)
+### Linux terminal sandbox
 
 The Linux course uses a custom sandbox image. Build it with:
 

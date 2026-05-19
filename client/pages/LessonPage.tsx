@@ -99,12 +99,6 @@ export function LessonPage() {
   const nextLesson =
     currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
-  const completedSlugs = new Set<string>(
-    (progress?.lessons ?? [])
-      .filter((l) => l.completed)
-      .map((l) => l.slug)
-  );
-
   const handleRun = useCallback(() => {
     execute(userCode, category);
   }, [execute, userCode, category]);

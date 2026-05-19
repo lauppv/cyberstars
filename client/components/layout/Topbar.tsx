@@ -24,7 +24,7 @@ export function Topbar({
   showSidebarToggle,
   sidebarOpen,
   onSidebarToggle,
-  streak = 0,
+  streak: _streak = 0,
 }: TopbarProps) {
   const navigate = useNavigate();
   const location = useLocation();

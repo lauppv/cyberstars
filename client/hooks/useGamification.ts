@@ -66,7 +66,7 @@ export function recordActivityToday(userId: number) {
       if (days.length > 60) days.splice(0, days.length - 60);
       localStorage.setItem(key, JSON.stringify(days));
     }
-  } catch {}
+  } catch { /* localStorage may be unavailable */ }
 }
 
 export interface BadgeDef {

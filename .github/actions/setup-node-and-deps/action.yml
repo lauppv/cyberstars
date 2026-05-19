@@ -1,0 +1,33 @@
+name: 'Setup Node.js and Dependencies'
+description: 'Sets up Node.js and installs/caches npm dependencies'
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: false
+    default: '20'
+outputs:
+  cache-hit:
+    description: 'Whether dependencies were restored from cache'
+    value: ${{ steps.cache-deps.outputs.cache-hit }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Set Up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+
+    - name: Cache node_modules
+      id: cache-deps
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ inputs.node-version }}-
+
+    - name: Install Dependencies
+      shell: bash
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      run: npm ci

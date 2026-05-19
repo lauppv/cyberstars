@@ -21,8 +21,8 @@ export function useLesson(courseKey: string, lessonSlug: string) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true); // eslint-disable-line react-hooks/set-state-in-effect
+    setError(null); // eslint-disable-line react-hooks/set-state-in-effect
 
     const loadLesson = async () => {
       try {
