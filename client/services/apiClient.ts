@@ -27,7 +27,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   if (contentType?.includes("application/json")) {
     return res.json() as Promise<T>;
   }
-  return res.text() as unknown as T;
+  return res.text() as Promise<T>;
 }
 
 export class ApiClientError extends Error {

@@ -116,13 +116,13 @@ function ForumIndex({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     forumService.getCategories().then((cats) => {
-      setCategories(cats);
-      setLoading(false);
+      if (!cancelled) { setCategories(cats); setLoading(false); }
     }).catch(() => {
-      setError("Failed to load forum categories.");
-      setLoading(false);
+      if (!cancelled) { setError("Failed to load forum categories."); setLoading(false); }
     });
+    return () => { cancelled = true; };
   }, []);
 
   const groups = categories.reduce<Record<string, ForumCategoryDTO[]>>((acc, cat) => {
@@ -262,20 +262,15 @@ function CategoryView({
   const [newContent, setNewContent] = useState("");
   const [posting, setPosting] = useState(false);
 
-  const loadThreads = useCallback(() => {
-    forumService.getThreads(categorySlug).then((data) => {
-      setCategory(data.category);
-      setThreads(data.threads);
-      setLoading(false);
-    }).catch(() => {
-      setError("Failed to load threads.");
-      setLoading(false);
-    });
-  }, [categorySlug]);
-
   useEffect(() => {
-    loadThreads();
-  }, [loadThreads]);
+    let cancelled = false;
+    forumService.getThreads(categorySlug).then((data) => {
+      if (!cancelled) { setCategory(data.category); setThreads(data.threads); setLoading(false); }
+    }).catch(() => {
+      if (!cancelled) { setError("Failed to load threads."); setLoading(false); }
+    });
+    return () => { cancelled = true; };
+  }, [categorySlug]);
 
   const handleCreateThread = async () => {
     if (!newTitle.trim() || !newContent.trim()) return;
@@ -462,8 +457,14 @@ function ThreadView({
   }, [threadId]);
 
   useEffect(() => {
-    loadThread();
-  }, [loadThread]);
+    let cancelled = false;
+    forumService.getThread(threadId).then((data) => {
+      if (!cancelled) { setThread(data); setLoading(false); }
+    }).catch(() => {
+      if (!cancelled) { setError("Failed to load thread."); setLoading(false); }
+    });
+    return () => { cancelled = true; };
+  }, [threadId]);
 
   const handleReply = async () => {
     if (!replyContent.trim() || !thread) return;

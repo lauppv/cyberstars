@@ -7,6 +7,7 @@ import type { CourseProgress } from "../../shared/progress";
 
 interface ProgressContextType {
   progressMap: Record<string, CourseProgress>;
+  failedCourses: ReadonlySet<string>;
   isLoading: boolean;
   refresh: () => void;
 }
@@ -17,6 +18,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const [progressMap, setProgressMap] = useState<Record<string, CourseProgress>>({});
+  const [failedCourses, setFailedCourses] = useState<ReadonlySet<string>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -26,21 +28,26 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     if (curriculumLoading) return;
     if (!isLoggedIn || !courses.length) {
       setProgressMap({}); // eslint-disable-line react-hooks/set-state-in-effect
+      setFailedCourses(new Set());
       setIsLoading(false);
       return;
     }
     let cancelled = false;
     (async () => {
       const map: Record<string, CourseProgress> = {};
+      const failed = new Set<string>();
       await Promise.all(
         courses.map(async (c) => {
           try {
             map[c.key] = await progressService.getCourseProgress(c.key);
-          } catch { /* individual course failure is non-fatal */ }
+          } catch {
+            failed.add(c.key);
+          }
         })
       );
       if (!cancelled) {
         setProgressMap(map);
+        setFailedCourses(failed);
         setIsLoading(false);
       }
     })();
@@ -48,7 +55,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   }, [courses, curriculumLoading, isLoggedIn, refreshKey]);
 
   return (
-    <ProgressContext value={{ progressMap, isLoading, refresh }}>
+    <ProgressContext value={{ progressMap, failedCourses, isLoading, refresh }}>
       {children}
     </ProgressContext>
   );
