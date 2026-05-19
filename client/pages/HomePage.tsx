@@ -13,14 +13,6 @@ import type { LeaderboardEntry } from "../../shared/progress";
 import { courseMeta } from "../constants/courses";
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from "../../shared/constants";
 
-const TOUR_STEPS = [
-  { icon: "👋", title: "Welcome to CyberStars!", body: "We're excited to have you. Let's take a quick tour of the platform so you know where everything is." },
-  { icon: "📚", title: "Choose Your Path", body: "Pick from Python, Java, or C. Each course has structured lessons that build on each other — from basics to advanced topics." },
-  { icon: "⌨️", title: "Code as You Learn", body: "Every lesson has a built-in code editor. Read the explanation on the left, then practice on the right — no setup needed." },
-  { icon: "🏆", title: "Earn XP & Badges", body: "Complete lessons to earn XP, maintain your daily streak, and unlock badges. Climb the leaderboard and show off your skills!" },
-];
-
-
 const LB_PAGE_SIZE = 5;
 
 function getGreeting(): string {
@@ -36,7 +28,6 @@ export function HomePage() {
   const g = useGamification();
   const { courses: allCourses } = useCurriculum();
   const { progressMap, refresh: refreshProgress } = useAllProgress();
-  const [tourStep, setTourStep] = useState<number | null>(null);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [lbPage, setLbPage] = useState(0);
   const [showAllLb, setShowAllLb] = useState(false);
@@ -69,13 +60,6 @@ export function HomePage() {
     if (isLoggedIn) refreshProgress();
   }, [isLoggedIn]);
 
-  // Onboarding tour
-  useEffect(() => {
-    if (isLoggedIn && !localStorage.getItem("cyberstars_toured")) {
-      setTourStep(0); // eslint-disable-line react-hooks/set-state-in-effect
-    }
-  }, [isLoggedIn]);
-
   // Leaderboard (only remaining fetch — not progress-related)
   useEffect(() => {
     let cancelled = false;
@@ -84,11 +68,6 @@ export function HomePage() {
       .catch(() => {});
     return () => { cancelled = true; };
   }, []);
-
-  function closeTour() {
-    localStorage.setItem("cyberstars_toured", "1");
-    setTourStep(null);
-  }
 
   if (isLoading) {
     return (
@@ -289,47 +268,6 @@ export function HomePage() {
           </div>
         )}
 
-        {/* ── Onboarding Tour Modal ── */}
-        {tourStep !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-            <div className="w-full max-w-md bg-[var(--bg2)] border border-[var(--border)] rounded-[14px] p-8 text-center">
-              <div className="text-5xl mb-4">{TOUR_STEPS[tourStep].icon}</div>
-              <h2 className="text-xl font-bold mb-2">{TOUR_STEPS[tourStep].title}</h2>
-              <p className="text-[var(--text2)] text-sm mb-6">{TOUR_STEPS[tourStep].body}</p>
-              {/* Dot indicators */}
-              <div className="flex items-center justify-center gap-1.5 mb-6">
-                {TOUR_STEPS.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`w-2 h-2 rounded-full transition ${
-                      i === tourStep ? "bg-[var(--accent)]" : "bg-[var(--border)]"
-                    }`}
-                  />
-                ))}
-              </div>
-              <div className="flex items-center justify-center gap-3">
-                <button
-                  onClick={closeTour}
-                  className="px-4 py-2 text-sm text-[var(--text2)] hover:text-[var(--text)] transition cursor-pointer"
-                >
-                  Skip
-                </button>
-                <button
-                  onClick={() => {
-                    if (tourStep < TOUR_STEPS.length - 1) {
-                      setTourStep(tourStep + 1);
-                    } else {
-                      closeTour();
-                    }
-                  }}
-                  className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer"
-                >
-                  {tourStep < TOUR_STEPS.length - 1 ? "Next" : "Get Started"}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     );
   }

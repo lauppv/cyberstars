@@ -88,8 +88,6 @@ async function executeDocker(runtime: LanguageRuntime, code: string, stdin: stri
 
 function runDocker(args: string[]): Promise<void> {
   return new Promise((resolve) => {
-    // Nu ne pasă de exit code (greșelile user-ului ajung în output.txt prin redirecție);
-    // ne pasă doar să nu blocăm procesul Node
-    execFile("docker", args, { maxBuffer: 1024 * 1024 }, () => resolve());
+    execFile("docker", args, { maxBuffer: 1024 * 1024, timeout: 15_000 }, () => resolve());
   });
 }

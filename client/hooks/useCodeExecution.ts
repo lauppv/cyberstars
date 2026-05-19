@@ -1,6 +1,12 @@
 import { useState, useCallback } from "react";
 import { runCode, submitCode } from "../services/codeExecutionService";
+import { ApiClientError } from "../services/apiClient";
 import type { SubmitResult } from "../../shared/tests";
+
+function errorMessage(err: unknown): string {
+  if (err instanceof ApiClientError) return err.message;
+  return "Error connecting to server.";
+}
 
 export function useCodeExecution() {
   const [output, setOutput] = useState("");
@@ -16,8 +22,8 @@ export function useCodeExecution() {
     try {
       const result = await runCode(code, language);
       setOutput(result.output || "No output.");
-    } catch {
-      setOutput("Error connecting to server.");
+    } catch (err) {
+      setOutput(errorMessage(err));
     } finally {
       setIsRunning(false);
     }
@@ -36,8 +42,8 @@ export function useCodeExecution() {
       } else {
         setOutput(`Tests: ${result.passed}/${result.total} passed`);
       }
-    } catch {
-      setOutput("Error connecting to server.");
+    } catch (err) {
+      setOutput(errorMessage(err));
     } finally {
       setIsSubmitting(false);
     }
