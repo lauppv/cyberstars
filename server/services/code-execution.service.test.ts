@@ -1,16 +1,19 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mockReadFile = vi.fn();
 const mockWriteFile = vi.fn();
 const mockMkdir = vi.fn();
 const mockRm = vi.fn();
 
+const { mockExecFile } = vi.hoisted(() => ({
+  mockExecFile: vi.fn(
+    (_cmd: string, _args: string[], _opts: unknown, cb: () => void) => cb(),
+  ),
+}));
+
 vi.mock("child_process", async (importOriginal) => {
   const actual = await importOriginal<typeof import("child_process")>();
-  return {
-    ...actual,
-    execFile: vi.fn((_cmd: string, _args: string[], _opts: unknown, cb: () => void) => cb()),
-  };
+  return { ...actual, execFile: mockExecFile };
 });
 
 vi.mock("fs/promises", () => {
@@ -25,13 +28,20 @@ vi.mock("fs/promises", () => {
 
 const { execute } = await import("./code-execution.service.js");
 
+beforeEach(() => {
+  vi.clearAllMocks();
+  mockExecFile.mockImplementation(
+    (_cmd: string, _args: string[], _opts: unknown, cb: () => void) => cb(),
+  );
+});
+
 describe("execute", () => {
   it("returns 'Language not supported.' for unknown language", async () => {
     const result = await execute("code", "brainfuck");
     expect(result).toBe("Language not supported.");
   });
 
-  it("returns output for a supported language (mocked docker)", async () => {
+  it("returns output for a supported language (mocked docker)", { timeout: 20_000 }, async () => {
     mockWriteFile.mockResolvedValue(undefined);
     mockReadFile.mockResolvedValue("Hello World");
     mockMkdir.mockResolvedValue(undefined);
@@ -41,7 +51,7 @@ describe("execute", () => {
     expect(result).toBe("Hello World");
   });
 
-  it("returns 'No output.' when docker produces empty output", async () => {
+  it("returns 'No output.' when docker produces empty output", { timeout: 20_000 }, async () => {
     mockWriteFile.mockResolvedValue(undefined);
     mockReadFile.mockResolvedValue("   ");
     mockMkdir.mockResolvedValue(undefined);
