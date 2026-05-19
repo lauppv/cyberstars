@@ -65,6 +65,7 @@ See [docs/architecture.md](docs/architecture.md) for the full architecture break
 | `npm run test:coverage` | Run tests with coverage report |
 | `npm run typecheck` | TypeScript type checking |
 | `npm run lint` | ESLint |
+| `npm run dead-code` | Find unused files, exports, and dependencies (knip) |
 | `npm run build` | Production build |
 | `npm run db:studio` | Open Prisma Studio (DB browser) |
 
