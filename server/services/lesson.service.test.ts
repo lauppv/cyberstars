@@ -1,6 +1,9 @@
-import { describe, it, expect } from "vitest";
-import { getLessonContent, getLessonCode } from "./lesson.service.js";
+import { describe, it, expect, vi } from "vitest";
 import { AppError } from "../middleware/errorHandler.js";
+
+vi.mock("../repositories/curriculum.repository.js", () => ({}));
+
+const { getLessonContent, getLessonCode } = await import("./lesson.service.js");
 
 describe("getLessonContent", () => {
   it("throws 400 on path traversal in slug", () => {
