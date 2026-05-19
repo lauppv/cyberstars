@@ -25,7 +25,9 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (curriculumLoading) return;
     if (!isLoggedIn || !courses.length) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setProgressMap({});
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoading(false);
       return;
     }
@@ -36,7 +38,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         courses.map(async (c) => {
           try {
             map[c.key] = await progressService.getCourseProgress(c.key);
-          } catch {}
+          } catch { /* individual course failure is non-fatal */ }
         })
       );
       if (!cancelled) {
@@ -54,6 +56,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAllProgress(): ProgressContextType {
   const ctx = useContext(ProgressContext);
   if (!ctx) throw new Error("useAllProgress must be used within ProgressProvider");

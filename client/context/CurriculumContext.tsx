@@ -34,6 +34,7 @@ export function CurriculumProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useCurriculum(): CurriculumContextType {
   const ctx = useContext(CurriculumContext);
   if (!ctx) throw new Error("useCurriculum must be used within CurriculumProvider");

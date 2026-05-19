@@ -14,4 +14,25 @@ export default defineConfig({
       '/auth': 'http://localhost:5000',
     },
   },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./test/setup.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json-summary', 'lcov'],
+      reportsDirectory: './coverage',
+      exclude: [
+        'node_modules/',
+        'dist/',
+        'coverage/',
+        'prisma/',
+        'design/',
+        'test/',
+        '**/*.d.ts',
+        '**/*.config.*',
+        '**/*.test.*',
+        'server/lessons/**',
+      ],
+    },
+  },
 })

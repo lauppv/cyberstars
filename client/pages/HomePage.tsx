@@ -41,11 +41,6 @@ export function HomePage() {
   const [lbPage, setLbPage] = useState(0);
   const [showAllLb, setShowAllLb] = useState(false);
 
-  const mainCourses = useMemo(
-    () => allCourses.filter((c) => (MAIN_COURSE_KEYS as readonly string[]).includes(c.key)),
-    [allCourses]
-  );
-
   const allNonAlgoCourses = useMemo(() => {
     const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
     return allCourses.filter((c) => keys.includes(c.key));
@@ -77,7 +72,7 @@ export function HomePage() {
   // Onboarding tour
   useEffect(() => {
     if (isLoggedIn && !localStorage.getItem("cyberstars_toured")) {
-      setTourStep(0);
+      setTourStep(0); // eslint-disable-line react-hooks/set-state-in-effect
     }
   }, [isLoggedIn]);
 

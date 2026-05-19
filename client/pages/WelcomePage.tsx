@@ -523,18 +523,19 @@ function LangConnect({ delay, from, to }: { delay: string; from: string; to: str
   );
 }
 
+const VP_STARS = Array.from({ length: 40 }, () => ({
+  left: Math.random() * 100 + "%",
+  top: Math.random() * 100 + "%",
+  animationDelay: Math.random() * 3 + "s",
+  opacity: 0.3 + Math.random() * 0.5,
+}));
+
 function VPStars() {
-  const stars = Array.from({ length: 40 }, (_, i) => (
-    <span
-      key={i}
-      style={{
-        position: "absolute",
-        left: Math.random() * 100 + "%",
-        top: Math.random() * 100 + "%",
-        animationDelay: Math.random() * 3 + "s",
-        opacity: 0.3 + Math.random() * 0.5,
-      }}
-    />
-  ));
-  return <div className="wc-vp-stars">{stars}</div>;
+  return (
+    <div className="wc-vp-stars">
+      {VP_STARS.map((s, i) => (
+        <span key={i} style={{ position: "absolute", ...s }} />
+      ))}
+    </div>
+  );
 }

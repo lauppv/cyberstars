@@ -14,6 +14,7 @@ TODO.txt
 
 dist
 dist-ssr
+coverage
 *.local
 uploads/
 

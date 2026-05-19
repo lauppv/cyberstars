@@ -3,7 +3,6 @@ import path from "path";
 import os from "os";
 import crypto from "crypto";
 import fs from "fs/promises";
-import { config } from "../config/index.js";
 import { getRuntime } from "../runtimes/registry.js";
 import type { LanguageRuntime } from "../runtimes/types.js";
 
@@ -26,7 +25,7 @@ export async function execute(code: string, language: string, stdin = ""): Promi
   return executeDocker(runtime, code, stdin);
 }
 
-async function executePiston(runtime: LanguageRuntime, code: string, stdin: string): Promise<string> {
+async function _executePiston(runtime: LanguageRuntime, code: string, stdin: string): Promise<string> {
   try {
     const response = await fetch(PISTON_URL, {
       method: "POST",

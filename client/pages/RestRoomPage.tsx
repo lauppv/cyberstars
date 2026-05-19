@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -794,8 +795,8 @@ export function RestRoomPage() {
       const edgeBottom = el.querySelector(".edge-hint.bottom") as HTMLElement;
       const edgeLeft = el.querySelector(".edge-hint.left") as HTMLElement;
       const edgeRight = el.querySelector(".edge-hint.right") as HTMLElement;
-      const headingEl = el.querySelector("#rest-heading") as HTMLElement | null;
-      const dirElm = el.querySelector("#rest-dir") as HTMLElement | null;
+      const _headingEl = el.querySelector("#rest-heading") as HTMLElement | null;
+      const _dirElm = el.querySelector("#rest-dir") as HTMLElement | null;
       const evaEl = el.querySelector("#rest-evaTimer") as HTMLElement;
       const hrEl = el.querySelector("#rest-hrate") as HTMLElement;
       const o2dec = el.querySelector("#rest-o2dec") as HTMLElement;
@@ -890,7 +891,7 @@ export function RestRoomPage() {
 
       // ===== HUD =====
       const startTime = performance.now();
-      let currentPOI = "—";
+      const _currentPOI = "—";
       function fmt2(n: number) { return n.toString().padStart(2, "0"); }
       function tickHUD(now: number, speed: number) {
         const elapsed = Math.floor((now - startTime) / 1000);

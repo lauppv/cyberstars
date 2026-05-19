@@ -124,7 +124,7 @@ export async function execCommand(sessionId: string, command: string): Promise<T
   let newCwd = session.cwd;
   try {
     newCwd = await docker(["exec", session.containerId, "cat", "/tmp/.cwd"]);
-  } catch {}
+  } catch { /* cwd read is best-effort */ }
 
   session.cwd = newCwd;
   session.lastOutput = output;
@@ -156,5 +156,5 @@ export async function destroySession(sessionId: string): Promise<void> {
   sessions.delete(sessionId);
   try {
     await docker(["rm", "-f", session.containerId], 5000);
-  } catch {}
+  } catch { /* container may already be gone */ }
 }
