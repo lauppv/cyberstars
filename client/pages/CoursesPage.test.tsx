@@ -15,7 +15,7 @@ vi.mock("../context/CurriculumContext", () => ({
   useCurriculum: vi.fn(),
 }));
 vi.mock("../context/ProgressContext", () => ({
-  useAllProgress: vi.fn(() => ({ progressMap: {}, isLoading: false })),
+  useAllProgress: vi.fn(() => ({ progressMap: {}, failedCourses: new Set(), isLoading: false })),
 }));
 vi.mock("../hooks/useGamification", () => ({
   useGamification: vi.fn(() => ({ xp: 0, level: 1, streak: 0, xpInLevel: 0, xpForNextLevel: 100, badges: [] })),
@@ -70,7 +70,7 @@ describe("CoursesPage", () => {
   it("shows loading state when logged in and progress is loading", () => {
     mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<typeof useAuth>);
     mockUseCurriculum.mockReturnValue({ courses: [], isLoading: false, refresh: vi.fn() });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: true, refresh: vi.fn() });
+    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: true, refresh: vi.fn() });
     renderPage();
     expect(screen.getByText("Loading...")).toBeDefined();
   });
@@ -82,7 +82,7 @@ describe("CoursesPage", () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: false, refresh: vi.fn() });
+    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
     renderPage();
     expect(screen.getByText("Python")).toBeDefined();
     expect(screen.getByText("Java")).toBeDefined();
@@ -119,6 +119,7 @@ describe("CoursesPage", () => {
           ],
         },
       },
+      failedCourses: new Set(),
       isLoading: false,
       refresh: vi.fn(),
     });
@@ -145,6 +146,7 @@ describe("CoursesPage", () => {
           lessons: [{ slug: "intro", title: "Intro", completed: true, completedAt: null, lastAccessedAt: null }],
         },
       },
+      failedCourses: new Set(),
       isLoading: false,
       refresh: vi.fn(),
     });
@@ -159,7 +161,7 @@ describe("CoursesPage", () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: false, refresh: vi.fn() });
+    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
     renderPage();
     fireEvent.click(screen.getByText("Python"));
     expect(screen.getByText("Chapters")).toBeDefined();
@@ -173,7 +175,7 @@ describe("CoursesPage", () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: false, refresh: vi.fn() });
+    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
     renderPage();
     fireEvent.click(screen.getByText("Python"));
     expect(screen.getByText("Chapters")).toBeDefined();
@@ -187,7 +189,7 @@ describe("CoursesPage", () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: false, refresh: vi.fn() });
+    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
     renderPage();
     fireEvent.click(screen.getByText("Python"));
     fireEvent.click(screen.getByText("Booleans"));
@@ -215,6 +217,7 @@ describe("CoursesPage", () => {
           ],
         },
       },
+      failedCourses: new Set(),
       isLoading: false,
       refresh: vi.fn(),
     });
@@ -229,7 +232,7 @@ describe("CoursesPage", () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: false, refresh: vi.fn() });
+    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
     renderPage();
     expect(screen.getByText("Earned")).toBeDefined();
     expect(screen.getByText("Total XP")).toBeDefined();

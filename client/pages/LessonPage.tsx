@@ -57,6 +57,7 @@ export function LessonPage() {
 
   const justSubmittedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
   const course = courses.find((c) => c.key === category) ?? null;
 
@@ -114,9 +115,14 @@ export function LessonPage() {
     if (isLoggedIn) {
       await saveCode(lesson, userCode);
       setShowSaveToast(true);
-      setTimeout(() => setShowSaveToast(false), 2000);
+      if (saveToastTimer.current) clearTimeout(saveToastTimer.current);
+      saveToastTimer.current = setTimeout(() => setShowSaveToast(false), 2000);
     }
   }, [isLoggedIn, saveCode, lesson, userCode]);
+
+  useEffect(() => {
+    return () => { if (saveToastTimer.current) clearTimeout(saveToastTimer.current); };
+  }, []);
 
   if (isLoading) {
     return (

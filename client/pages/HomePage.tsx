@@ -60,14 +60,13 @@ export function HomePage() {
     if (isLoggedIn) refreshProgress();
   }, [isLoggedIn]);
 
-  // Leaderboard (only remaining fetch — not progress-related)
   useEffect(() => {
     let cancelled = false;
     progressService.getLeaderboard()
       .then((lb) => { if (!cancelled) setLeaderboard(lb); })
       .catch(() => {});
     return () => { cancelled = true; };
-  }, []);
+  }, [isLoggedIn]);
 
   if (isLoading) {
     return (

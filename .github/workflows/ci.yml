@@ -84,6 +84,18 @@ jobs:
           path: coverage/
           retention-days: 7
 
+  audit:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
+      - run: npm audit --audit-level=high
+
   dead-code:
     runs-on: ubuntu-latest
     needs: setup

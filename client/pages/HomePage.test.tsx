@@ -15,7 +15,7 @@ vi.mock("../context/CurriculumContext", () => ({
   useCurriculum: vi.fn(() => ({ courses: [], isLoading: false })),
 }));
 vi.mock("../context/ProgressContext", () => ({
-  useAllProgress: vi.fn(() => ({ progressMap: {}, isLoading: false, refresh: vi.fn() })),
+  useAllProgress: vi.fn(() => ({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() })),
 }));
 vi.mock("../hooks/useGamification", () => ({
   useGamification: vi.fn(() => ({ xp: 150, level: 3, streak: 5, xpInLevel: 50, xpForNextLevel: 100, badges: [] })),
@@ -88,7 +88,7 @@ function renderPage() {
 beforeEach(() => {
   vi.clearAllMocks();
   mockGetLeaderboard.mockResolvedValue([]);
-  mockUseAllProgress.mockReturnValue({ progressMap: {}, isLoading: false, refresh: vi.fn() });
+  mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
   mockUseCurriculum.mockReturnValue({ courses: [], isLoading: false, refresh: vi.fn() });
 });
 
@@ -234,6 +234,7 @@ describe("HomePage", () => {
           ],
         },
       },
+      failedCourses: new Set(),
       isLoading: false,
       refresh: vi.fn(),
     });
@@ -258,6 +259,7 @@ describe("HomePage", () => {
           ],
         },
       },
+      failedCourses: new Set(),
       isLoading: false,
       refresh: vi.fn(),
     });

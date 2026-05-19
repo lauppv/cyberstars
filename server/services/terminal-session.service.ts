@@ -18,6 +18,7 @@ interface Session {
 }
 
 const sessions = new Map<string, Session>();
+const executing = new Set<string>();
 
 let gcTimer: ReturnType<typeof setInterval> | null = null;
 
@@ -105,31 +106,37 @@ export async function execCommand(sessionId: string, command: string): Promise<T
   if (!session) throw new Error("Session not found");
 
   if (command.length > 2000) throw new Error("Command too long");
+  if (executing.has(sessionId)) throw new Error("A command is already running in this session");
 
-  session.lastActivity = Date.now();
-  session.history.push(command);
-
-  const script = `cd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
-
-  let output: string;
+  executing.add(sessionId);
   try {
-    output = await docker(
-      ["exec", session.containerId, "timeout", String(EXEC_TIMEOUT), "bash", "-c", script],
-      (EXEC_TIMEOUT + 2) * 1000
-    );
-  } catch (e: unknown) {
-    output = e instanceof Error ? e.message : "Command failed";
+    session.lastActivity = Date.now();
+    session.history.push(command);
+
+    const script = `cd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
+
+    let output: string;
+    try {
+      output = await docker(
+        ["exec", session.containerId, "timeout", String(EXEC_TIMEOUT), "bash", "-c", script],
+        (EXEC_TIMEOUT + 2) * 1000
+      );
+    } catch (e: unknown) {
+      output = e instanceof Error ? e.message : "Command failed";
+    }
+
+    let newCwd = session.cwd;
+    try {
+      newCwd = await docker(["exec", session.containerId, "cat", "/tmp/.cwd"]);
+    } catch { /* cwd read is best-effort */ }
+
+    session.cwd = newCwd;
+    session.lastOutput = output;
+
+    return { output, cwd: newCwd };
+  } finally {
+    executing.delete(sessionId);
   }
-
-  let newCwd = session.cwd;
-  try {
-    newCwd = await docker(["exec", session.containerId, "cat", "/tmp/.cwd"]);
-  } catch { /* cwd read is best-effort */ }
-
-  session.cwd = newCwd;
-  session.lastOutput = output;
-
-  return { output, cwd: newCwd };
 }
 
 export async function probe(sessionId: string, command: string): Promise<string> {
@@ -157,4 +164,10 @@ export async function destroySession(sessionId: string): Promise<void> {
   try {
     await docker(["rm", "-f", session.containerId], 5000);
   } catch { /* container may already be gone */ }
+}
+
+export async function destroyAllSessions(): Promise<void> {
+  const ids = [...sessions.keys()];
+  await Promise.allSettled(ids.map((id) => destroySession(id)));
+  if (gcTimer) { clearInterval(gcTimer); gcTimer = null; }
 }

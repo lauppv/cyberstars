@@ -87,7 +87,13 @@ async function executeDocker(runtime: LanguageRuntime, code: string, stdin: stri
 }
 
 function runDocker(args: string[]): Promise<void> {
-  return new Promise((resolve) => {
-    execFile("docker", args, { maxBuffer: 1024 * 1024, timeout: 15_000 }, () => resolve());
+  return new Promise((resolve, reject) => {
+    execFile("docker", args, { maxBuffer: 1024 * 1024, timeout: 15_000 }, (err) => {
+      if (err && (err as NodeJS.ErrnoException).code === "ENOENT") {
+        reject(new Error("Docker is not available"));
+      } else {
+        resolve();
+      }
+    });
   });
 }
