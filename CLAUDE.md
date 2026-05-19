@@ -14,6 +14,7 @@ npm run test:watch    # Vitest in watch mode
 npm run test:coverage # Run tests with coverage report (v8, outputs to ./coverage/)
 npm run typecheck     # tsc --noEmit
 npm run lint          # ESLint
+npm run dead-code     # knip — find unused files, exports, and dependencies
 npm run db:prepare    # Prisma generate + migrate + seed
 npm run db:migrate    # Run pending migrations (prompts for name)
 npm run db:deploy     # Apply migrations without prompts (CI/prod)
@@ -39,9 +40,11 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Server (`server/`)
 - Express 5 + TypeScript, runs with tsx
+- `app.ts` exports the Express app (used by supertest); `server.ts` imports it and calls `listen()`
 - Three-layer architecture: Routes → Controllers → Services → Repositories
 - Zod schemas in `server/schemas/` validate all request bodies via `validateBody()` middleware
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
+- Rate limiting: `express-rate-limit` on auth routes (10/15min) and code execution routes (10/min/IP)
 - Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)
 - Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`
 
@@ -67,7 +70,9 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Setup file in `test/setup.ts` handles jest-dom matchers and cleanup between tests
 - Coverage via `@vitest/coverage-v8` with json-summary + lcov reporters
 - Client component tests use `render`/`screen`/`fireEvent` from testing-library
-- Server tests are unit tests on services (no supertest — `app` is not exported)
+- Server unit tests on services use `vi.mock` to isolate from env/DB dependencies (see `lesson.service.test.ts`)
+- Endpoint smoke tests (`server/app.test.ts`) use supertest to verify all routes respond correctly (200 for public, 401 for auth-protected, 404 for unknown). Mock PrismaClient and repositories to avoid needing a real DB
+- Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`, ignores `design/` mockups
 
 ## Key conventions
 

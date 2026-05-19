@@ -25,9 +25,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (curriculumLoading) return;
     if (!isLoggedIn || !courses.length) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setProgressMap({});
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setProgressMap({}); // eslint-disable-line react-hooks/set-state-in-effect
       setIsLoading(false);
       return;
     }
