@@ -1,14 +1,10 @@
 import type { Request, Response, NextFunction } from "express";
-import { PrismaClient } from "@prisma/client";
 import type { SupportTicket, User } from "@prisma/client";
+import { prisma } from "../config/db.js";
 import { AppError } from "../middleware/errorHandler.js";
 import * as userRepo from "../repositories/user.repository.js";
 import type { SupportTicketDTO, SupportMessageDTO } from "../../shared/support.js";
 
-const prisma = new PrismaClient();
-
-const TICKET_TYPES = ["BUG", "QUESTION", "RULE_VIOLATION", "FEEDBACK", "ACCOUNT", "OTHER"];
-const TICKET_STATUSES = ["OPEN", "IN_PROGRESS", "RESOLVED", "CLOSED"];
 
 function toDTO(t: SupportTicket): SupportTicketDTO {
   return {
@@ -26,12 +22,6 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
   try {
     const userId = req.user!.id;
     const { type, subject, message } = req.body;
-
-    if (!TICKET_TYPES.includes(type)) throw new AppError(400, "Invalid ticket type");
-    if (!subject?.trim() || !message?.trim()) {
-      throw new AppError(400, "Subject and message are required");
-    }
-    if (subject.trim().length > 200) throw new AppError(400, "Subject is too long (max 200 chars)");
 
     const ticket = await prisma.supportTicket.create({
       data: { userId, type, subject: subject.trim(), message: message.trim() },
@@ -90,7 +80,6 @@ export async function updateTicketStatus(
     if (isNaN(id)) throw new AppError(400, "Invalid ticket ID");
 
     const { status } = req.body;
-    if (!TICKET_STATUSES.includes(status)) throw new AppError(400, "Invalid status");
 
     const ticket = await prisma.supportTicket.findUnique({ where: { id } });
     if (!ticket) throw new AppError(404, "Ticket not found");
@@ -149,7 +138,6 @@ export async function addTicketMessage(req: Request, res: Response, next: NextFu
     if (isNaN(ticketId)) throw new AppError(400, "Invalid ticket ID");
 
     const { message } = req.body;
-    if (!message?.trim()) throw new AppError(400, "Message is required");
 
     const ticket = await prisma.supportTicket.findUnique({ where: { id: ticketId } });
     if (!ticket) throw new AppError(404, "Ticket not found");

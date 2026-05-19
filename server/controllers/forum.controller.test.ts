@@ -39,13 +39,7 @@ const mockPrisma = {
   },
 };
 
-vi.mock("@prisma/client", () => ({
-  PrismaClient: class {
-    constructor() {
-      return mockPrisma;
-    }
-  },
-}));
+vi.mock("../config/db.js", () => ({ prisma: mockPrisma }));
 
 const mockUserRepo = {
   getRole: vi.fn(),
@@ -84,11 +78,13 @@ beforeEach(() => vi.clearAllMocks());
 describe("getCategories", () => {
   it("returns categories with counts", async () => {
     mockPrisma.forumCategory.findMany.mockResolvedValue([
-      { id: 1, slug: "general", name: "General", description: "desc", icon: "💬", color: "#fff", groupName: "Main" },
+      {
+        id: 1, slug: "general", name: "General", description: "desc", icon: "💬", color: "#fff", groupName: "Main",
+        threads: [
+          { id: 1, title: "Hello", posts: [{ createdAt: new Date("2025-01-01"), author: { name: "Alice" } }], _count: { posts: 10 } },
+        ],
+      },
     ]);
-    mockPrisma.forumThread.count.mockResolvedValue(5);
-    mockPrisma.forumPost.count.mockResolvedValue(10);
-    mockPrisma.forumPost.findFirst.mockResolvedValue(null);
 
     const res = mockRes();
     const next = vi.fn();
@@ -96,7 +92,7 @@ describe("getCategories", () => {
 
     expect(next).not.toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith([
-      expect.objectContaining({ slug: "general", threadCount: 5, postCount: 10, lastPost: null }),
+      expect.objectContaining({ slug: "general", threadCount: 1, postCount: 10, lastPost: expect.objectContaining({ threadTitle: "Hello" }) }),
     ]);
   });
 });

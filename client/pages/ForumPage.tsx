@@ -113,10 +113,14 @@ function ForumIndex({
 }) {
   const [categories, setCategories] = useState<ForumCategoryDTO[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     forumService.getCategories().then((cats) => {
       setCategories(cats);
+      setLoading(false);
+    }).catch(() => {
+      setError("Failed to load forum categories.");
       setLoading(false);
     });
   }, []);
@@ -133,6 +137,14 @@ function ForumIndex({
     return (
       <main className="forum-page">
         <div className="forum-loading">Loading forum...</div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="forum-page">
+        <div className="forum-loading">{error}</div>
       </main>
     );
   }
@@ -244,6 +256,7 @@ function CategoryView({
   } | null>(null);
   const [threads, setThreads] = useState<ForumThreadSummaryDTO[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [showComposer, setShowComposer] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
@@ -253,6 +266,9 @@ function CategoryView({
     forumService.getThreads(categorySlug).then((data) => {
       setCategory(data.category);
       setThreads(data.threads);
+      setLoading(false);
+    }).catch(() => {
+      setError("Failed to load threads.");
       setLoading(false);
     });
   }, [categorySlug]);
@@ -279,10 +295,23 @@ function CategoryView({
     }
   };
 
-  if (loading || !category) {
+  if (loading || (!category && !error)) {
     return (
       <main className="forum-page">
         <div className="forum-loading">Loading threads...</div>
+      </main>
+    );
+  }
+
+  if (error || !category) {
+    return (
+      <main className="forum-page">
+        <div className="forum-crumbs">
+          <a onClick={onBack}>Forum</a>
+          <span className="forum-crumb-sep">/</span>
+          <span className="forum-crumb-here">Error</span>
+        </div>
+        <div className="forum-loading">{error ?? "Category not found."}</div>
       </main>
     );
   }
@@ -418,12 +447,16 @@ function ThreadView({
 }) {
   const [thread, setThread] = useState<ForumThreadDetailDTO | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [replyContent, setReplyContent] = useState("");
   const [posting, setPosting] = useState(false);
 
   const loadThread = useCallback(() => {
     forumService.getThread(threadId).then((data) => {
       setThread(data);
+      setLoading(false);
+    }).catch(() => {
+      setError("Failed to load thread.");
       setLoading(false);
     });
   }, [threadId]);
@@ -476,10 +509,23 @@ function ThreadView({
     loadThread();
   };
 
-  if (loading || !thread) {
+  if (loading || (!thread && !error)) {
     return (
       <main className="forum-page">
         <div className="forum-loading">Loading thread...</div>
+      </main>
+    );
+  }
+
+  if (error || !thread) {
+    return (
+      <main className="forum-page">
+        <div className="forum-crumbs">
+          <a onClick={onBack}>Forum</a>
+          <span className="forum-crumb-sep">/</span>
+          <span className="forum-crumb-here">Error</span>
+        </div>
+        <div className="forum-loading">{error ?? "Thread not found."}</div>
       </main>
     );
   }

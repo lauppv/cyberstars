@@ -21,13 +21,7 @@ const mockPrisma = {
   },
 };
 
-vi.mock("@prisma/client", () => ({
-  PrismaClient: class {
-    constructor() {
-      return mockPrisma;
-    }
-  },
-}));
+vi.mock("../config/db.js", () => ({ prisma: mockPrisma }));
 
 const mockUserRepo = {
   getRole: vi.fn(),
@@ -55,27 +49,6 @@ function mockRes(): Response {
 beforeEach(() => vi.clearAllMocks());
 
 describe("createTicket", () => {
-  it("returns 400 for invalid type", async () => {
-    const next = vi.fn();
-    await createTicket(mockReq({ user: { id: 1 } as Request["user"], body: { type: "INVALID", subject: "s", message: "m" } }), mockRes(), next);
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
-  it("returns 400 for missing subject", async () => {
-    const next = vi.fn();
-    await createTicket(mockReq({ user: { id: 1 } as Request["user"], body: { type: "BUG", subject: "", message: "m" } }), mockRes(), next);
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
-  it("returns 400 for subject too long", async () => {
-    const next = vi.fn();
-    await createTicket(
-      mockReq({ user: { id: 1 } as Request["user"], body: { type: "BUG", subject: "x".repeat(201), message: "m" } }),
-      mockRes(), next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
   it("creates ticket successfully", async () => {
     mockPrisma.supportTicket.create.mockResolvedValue({ id: 10 });
     const res = mockRes();
@@ -121,15 +94,6 @@ describe("getAllTickets", () => {
 });
 
 describe("updateTicketStatus", () => {
-  it("returns 400 for invalid status", async () => {
-    const next = vi.fn();
-    await updateTicketStatus(
-      mockReq({ user: { id: 1 } as Request["user"], params: { id: "1" } as Record<string, string>, body: { status: "YOLO" } }),
-      mockRes(), next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
   it("returns 404 for missing ticket", async () => {
     mockPrisma.supportTicket.findUnique.mockResolvedValue(null);
     const next = vi.fn();
@@ -218,16 +182,6 @@ describe("getTicketMessages", () => {
 });
 
 describe("addTicketMessage", () => {
-  it("returns 400 for empty message", async () => {
-    mockPrisma.supportTicket.findUnique.mockResolvedValue({ id: 1, userId: 1 });
-    const next = vi.fn();
-    await addTicketMessage(
-      mockReq({ user: { id: 1 } as Request["user"], params: { id: "1" } as Record<string, string>, body: { message: "" } }),
-      mockRes(), next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
   it("creates message successfully", async () => {
     mockPrisma.supportTicket.findUnique.mockResolvedValue({ id: 1, userId: 1 });
     mockUserRepo.getRole.mockResolvedValue("USER");

@@ -68,7 +68,7 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
       setLines((prev) => [...prev, { type: "output", text: e instanceof Error ? e.message : "Error" }]);
     }
     setIsExecuting(false);
-  }, [isExecuting]);
+  }, [isExecuting, cwd]);
 
   const submit = useCallback(async () => {
     if (!sessionRef.current) return null;

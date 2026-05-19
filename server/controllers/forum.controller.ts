@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
-import { PrismaClient } from "@prisma/client";
 import type { Role } from "@prisma/client";
+import { prisma } from "../config/db.js";
 import { AppError } from "../middleware/errorHandler.js";
 import * as userRepo from "../repositories/user.repository.js";
 import type {
@@ -10,8 +10,6 @@ import type {
   ForumPostDTO,
   ForumReactionGroupDTO,
 } from "../../shared/forum.js";
-
-const prisma = new PrismaClient();
 
 // Categories where only moderators and admins may start threads or reply.
 const RESTRICTED_CATEGORIES = new Set(["announcements"]);
@@ -30,41 +28,55 @@ function canModerate(actorRole: Role, targetRole: Role, isOwner: boolean): boole
 
 export async function getCategories(_req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const categories = await prisma.forumCategory.findMany({ orderBy: { sortOrder: "asc" } });
+    const categories = await prisma.forumCategory.findMany({
+      orderBy: { sortOrder: "asc" },
+      include: {
+        threads: {
+          select: {
+            id: true,
+            title: true,
+            posts: {
+              orderBy: { createdAt: "desc" },
+              take: 1,
+              select: { createdAt: true, author: { select: { name: true } } },
+            },
+            _count: { select: { posts: true } },
+          },
+        },
+      },
+    });
 
-    const result: ForumCategoryDTO[] = await Promise.all(
-      categories.map(async (cat) => {
-        const threadCount = await prisma.forumThread.count({ where: { categoryId: cat.id } });
-        const postCount = await prisma.forumPost.count({
-          where: { thread: { categoryId: cat.id } },
-        });
+    const result: ForumCategoryDTO[] = categories.map((cat) => {
+      const threadCount = cat.threads.length;
+      const postCount = cat.threads.reduce((sum, t) => sum + t._count.posts, 0);
 
-        const lastPost = await prisma.forumPost.findFirst({
-          where: { thread: { categoryId: cat.id } },
-          orderBy: { createdAt: "desc" },
-          include: { thread: true, author: { select: { name: true } } },
-        });
+      let lastPost: ForumCategoryDTO["lastPost"] = null;
+      let latestDate: Date | null = null;
+      for (const t of cat.threads) {
+        const p = t.posts[0];
+        if (p && (!latestDate || p.createdAt > latestDate)) {
+          latestDate = p.createdAt;
+          lastPost = {
+            threadTitle: t.title,
+            authorName: p.author.name,
+            createdAt: p.createdAt.toISOString(),
+          };
+        }
+      }
 
-        return {
-          id: cat.id,
-          slug: cat.slug,
-          name: cat.name,
-          description: cat.description,
-          icon: cat.icon,
-          color: cat.color,
-          groupName: cat.groupName,
-          threadCount,
-          postCount,
-          lastPost: lastPost
-            ? {
-                threadTitle: lastPost.thread.title,
-                authorName: lastPost.author.name,
-                createdAt: lastPost.createdAt.toISOString(),
-              }
-            : null,
-        };
-      })
-    );
+      return {
+        id: cat.id,
+        slug: cat.slug,
+        name: cat.name,
+        description: cat.description,
+        icon: cat.icon,
+        color: cat.color,
+        groupName: cat.groupName,
+        threadCount,
+        postCount,
+        lastPost,
+      };
+    });
 
     res.json(result);
   } catch (err) {
