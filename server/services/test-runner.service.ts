@@ -4,8 +4,6 @@ import { execute } from "./code-execution.service.js";
 import type { TestCase, TestResult, SubmitResult } from "../../shared/tests.js";
 import { contentDir } from "./paths.js";
 
-export type { TestResult, SubmitResult };
-
 export function getTestCases(courseKey: string, lessonSlug: string): TestCase[] | null {
   const filePath = path.join(contentDir(courseKey), `${lessonSlug}-tests.json`);
   if (!fs.existsSync(filePath)) return null;

@@ -1,4 +1,4 @@
-export interface LessonProgressItem {
+interface LessonProgressItem {
   slug: string;
   title: string;
   completed: boolean;

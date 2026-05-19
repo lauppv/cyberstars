@@ -17,7 +17,3 @@ export async function getAllLessons(): Promise<Lesson[]> {
     orderBy: [{ courseKey: "asc" }, { sortOrder: "asc" }],
   });
 }
-
-export async function getLessonCount(courseKey: string): Promise<number> {
-  return prisma.lesson.count({ where: { courseKey } });
-}

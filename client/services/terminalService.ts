@@ -1,7 +1,7 @@
 import { api } from "./apiClient.js";
 import type { TerminalSessionInfo, TerminalExecResult } from "../../shared/terminal.js";
 
-export interface TerminalTestResult {
+interface TerminalTestResult {
   name: string;
   passed: boolean;
 }

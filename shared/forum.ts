@@ -13,7 +13,7 @@ export interface ForumCategoryDTO {
 
 import type { UserRole } from "./auth.js";
 
-export interface ForumLastPostDTO {
+interface ForumLastPostDTO {
   threadTitle: string;
   authorName: string;
   createdAt: string;
@@ -88,7 +88,7 @@ export interface UpdatePostRequest {
   content: string;
 }
 
-export interface UpdateUserRoleRequest {
+interface UpdateUserRoleRequest {
   role: UserRole;
 }
 

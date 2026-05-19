@@ -20,10 +20,6 @@ export async function getLeaderboard(): Promise<LeaderboardRow[]> {
   return rows;
 }
 
-export async function getByUser(userId: number): Promise<UserLessonProgress[]> {
-  return prisma.userLessonProgress.findMany({ where: { userId } });
-}
-
 export async function getByCourse(userId: number, courseKey: string): Promise<UserLessonProgress[]> {
   return prisma.userLessonProgress.findMany({ where: { userId, courseKey } });
 }

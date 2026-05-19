@@ -13,8 +13,8 @@ export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as con
 // Terminal courses run in a Linux sandbox, not the /api/code editor pipeline.
 export const TERMINAL_COURSE_KEYS = ["linux"] as const;
 
-export type LanguageKey = (typeof MAIN_COURSE_KEYS)[number];
-export type CourseKey = (typeof ALL_COURSE_KEYS)[number];
+type LanguageKey = (typeof MAIN_COURSE_KEYS)[number];
+type CourseKey = (typeof ALL_COURSE_KEYS)[number];
 
 export function baseLanguage(key: string): string {
   return key.startsWith("algo-") ? key.slice(5) : key;
