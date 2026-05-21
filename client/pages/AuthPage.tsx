@@ -248,7 +248,7 @@ export function AuthPage() {
                 { icon: "🏆", bold: "XP & badges", rest: " — gamified progress tracking" },
                 { icon: "💬", bold: "Community forum", rest: " — ask, share, and help others" },
                 { icon: "📰", bold: "The Almanac", rest: " — tech history, facts & legends" },
-                { icon: "🚀", bold: "Rest Room", rest: " — explore the universe in your cockpit" },
+                { icon: "🚀", bold: "Laniakea Explorer", rest: " — explore the universe in your cockpit" },
               ].map((f) => (
                 <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
                   <div

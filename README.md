@@ -84,4 +84,4 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ## License
 
-[MIT](LICENSE)
+[BSD 3-Clause](LICENSE)

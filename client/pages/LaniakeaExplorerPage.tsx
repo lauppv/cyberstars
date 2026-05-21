@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function RestRoomPage() {
+export function LaniakeaExplorerPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const cleanupRef = useRef<(() => void) | null>(null);
@@ -1093,7 +1093,7 @@ export function RestRoomPage() {
 
   return (
     <div ref={containerRef} className="fixed inset-0 z-[9999]" style={{ cursor: "none", background: "#000", fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
-      <style>{restRoomStyles}</style>
+      <style>{laniakeaStyles}</style>
 
       <div id="rest-intro" className="intro">
         <div className="intro-kicker">{"◈"} CSTR-9 {"·"} STELLARIS {"·"} MARK IV</div>
@@ -1212,7 +1212,7 @@ export function RestRoomPage() {
   );
 }
 
-const restRoomStyles = `
+const laniakeaStyles = `
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--accent:#6C5CE7;--success:#00D68F;--warning:#FFAA00;--mono:'JetBrains Mono','Fira Code',monospace;--font:'Space Grotesk',system-ui,sans-serif}
 .ck-window-glass{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 35%,transparent 65%,rgba(0,0,0,.35) 100%);z-index:9;mix-blend-mode:multiply}

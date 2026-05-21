@@ -237,7 +237,7 @@
 .wc-forum-reactions { display: flex; gap: 8px; margin-top: 8px; font-family: var(--mono); font-size: 10px; color: var(--text3); }
 .wc-forum-reaction { padding: 2px 8px; background: var(--bg3); border-radius: 10px; border: 1px solid var(--border); }
 
-/* Rest Room viewport */
+/* Laniakea Explorer viewport */
 .wc-viewport {
   position: relative; width: 100%; max-width: 560px; aspect-ratio: 5/4; margin: 0 auto;
   border-radius: 14px; background: #000; overflow: hidden;
