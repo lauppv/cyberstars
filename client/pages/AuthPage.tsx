@@ -2,6 +2,7 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { ApiClientError } from "../services/apiClient";
+import { forgotPassword, resetPassword } from "../services/authService";
 
 function getPasswordStrength(pw: string): number {
   if (pw.length === 0) return 0;
@@ -134,14 +135,16 @@ function Starfield() {
 }
 
 export function AuthPage() {
-  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [mode, setMode] = useState<"login" | "signup" | "forgot" | "reset">("login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [remember, setRemember] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
   const { login, signup } = useAuth();
 
@@ -153,13 +156,24 @@ export function AuthPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setSuccess("");
     try {
       if (mode === "login") {
         await login({ email, password });
         navigate("/");
-      } else {
+      } else if (mode === "signup") {
         await signup({ name, email, password });
         navigate("/welcome");
+      } else if (mode === "forgot") {
+        await forgotPassword(email);
+        setSuccess("If that email exists, a reset code was sent. Check your inbox.");
+        setMode("reset");
+      } else if (mode === "reset") {
+        await resetPassword(email, code, password);
+        setSuccess("Password reset! You can now log in.");
+        setCode("");
+        setPassword("");
+        setMode("login");
       }
     } catch (err) {
       if (err instanceof ApiClientError) {
@@ -172,9 +186,10 @@ export function AuthPage() {
     }
   };
 
-  const switchMode = (m: "login" | "signup") => {
+  const switchMode = (m: "login" | "signup" | "forgot" | "reset") => {
     setMode(m);
     setError("");
+    setSuccess("");
   };
 
   return (
@@ -273,32 +288,57 @@ export function AuthPage() {
 
         {/* Right form panel */}
         <div className="w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[var(--bg2)] border-l border-[var(--border)] flex flex-col justify-center px-12 py-12 overflow-y-auto">
-          {/* Tabs */}
+          {/* Tabs — only shown for login/signup */}
             <>
-              <div className="flex mb-8 bg-[var(--bg3)] rounded-[var(--radius)] p-1">
-                <button
-                  onClick={() => switchMode("login")}
-                  className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
-                    mode === "login"
-                      ? "bg-[var(--accent)] text-white"
-                      : "bg-transparent text-[var(--text3)] hover:text-[var(--text)]"
-                  }`}
-                  style={mode === "login" ? { boxShadow: "0 2px 8px #6C5CE744" } : undefined}
-                >
-                  Log In
-                </button>
-                <button
-                  onClick={() => switchMode("signup")}
-                  className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
-                    mode === "signup"
-                      ? "bg-[var(--accent)] text-white"
-                      : "bg-transparent text-[var(--text3)] hover:text-[var(--text)]"
-                  }`}
-                  style={mode === "signup" ? { boxShadow: "0 2px 8px #6C5CE744" } : undefined}
-                >
-                  Sign Up
-                </button>
-              </div>
+              {(mode === "login" || mode === "signup") && (
+                <div className="flex mb-8 bg-[var(--bg3)] rounded-[var(--radius)] p-1">
+                  <button
+                    onClick={() => switchMode("login")}
+                    className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
+                      mode === "login"
+                        ? "bg-[var(--accent)] text-white"
+                        : "bg-transparent text-[var(--text3)] hover:text-[var(--text)]"
+                    }`}
+                    style={mode === "login" ? { boxShadow: "0 2px 8px #6C5CE744" } : undefined}
+                  >
+                    Log In
+                  </button>
+                  <button
+                    onClick={() => switchMode("signup")}
+                    className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
+                      mode === "signup"
+                        ? "bg-[var(--accent)] text-white"
+                        : "bg-transparent text-[var(--text3)] hover:text-[var(--text)]"
+                    }`}
+                    style={mode === "signup" ? { boxShadow: "0 2px 8px #6C5CE744" } : undefined}
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              )}
+
+              {(mode === "forgot" || mode === "reset") && (
+                <div className="mb-8">
+                  <button
+                    onClick={() => switchMode("login")}
+                    className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline mb-3 flex items-center gap-1"
+                  >
+                    ← Back to login
+                  </button>
+                  <h2 className="text-xl font-bold text-[var(--text)] m-0">
+                    {mode === "forgot" ? "Forgot Password" : "Reset Password"}
+                  </h2>
+                  <p className="text-sm text-[var(--text3)] mt-1 mb-0">
+                    {mode === "forgot"
+                      ? "Enter your email and we'll send you a 6-digit code."
+                      : "Enter the code from your email and your new password."}
+                  </p>
+                </div>
+              )}
+
+              {success && (
+                <p className="text-[var(--success)] text-center text-sm font-semibold mb-4">{success}</p>
+              )}
 
               <form onSubmit={handleSubmit}>
                 {mode === "signup" && (
@@ -317,54 +357,82 @@ export function AuthPage() {
                   </div>
                 )}
 
-                <div className="mb-5">
-                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="you@example.com"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
-                  />
-                </div>
-
-                <div className="mb-5">
-                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                    Password
-                  </label>
-                  <div className="relative">
+                {(mode !== "reset") && (
+                  <div className="mb-5">
+                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                      Email
+                    </label>
                     <input
-                      type={showPw ? "text" : "password"}
-                      placeholder={mode === "signup" ? "Min. 8 characters" : "Enter your password"}
+                      type="email"
+                      placeholder="you@example.com"
                       required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="w-full py-[11px] px-[14px] pr-10 bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
                     />
-                    <span
-                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-[var(--text3)]"
-                      onClick={() => setShowPw(!showPw)}
-                    >
-                      {showPw ? "🙈" : "👁️"}
-                    </span>
                   </div>
-                  {mode === "signup" && password.length > 0 && (
-                    <>
-                      <div className="flex gap-1 mt-2">
-                        {[1, 2, 3].map((i) => (
-                          <div
-                            key={i}
-                            className={`pw-bar ${strength >= i ? strengthClass : ""}`}
-                          />
-                        ))}
-                      </div>
-                      <div className="text-[11px] text-[var(--text3)] mt-1">{strengthLabel}</div>
-                    </>
-                  )}
-                </div>
+                )}
+
+                {mode === "reset" && (
+                  <input type="hidden" autoComplete="username" value={email} />
+                )}
+
+                {mode === "reset" && (
+                  <div className="mb-5">
+                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                      Reset Code
+                    </label>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      autoComplete="one-time-code"
+                      placeholder="6-digit code"
+                      required
+                      maxLength={6}
+                      value={code}
+                      onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                      className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)] text-center tracking-[6px] text-lg font-mono"
+                    />
+                  </div>
+                )}
+
+                {mode !== "forgot" && (
+                  <div className="mb-5">
+                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                      {mode === "reset" ? "New Password" : "Password"}
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPw ? "text" : "password"}
+                        autoComplete={mode === "reset" ? "new-password" : mode === "signup" ? "new-password" : "current-password"}
+                        placeholder={mode === "signup" ? "Min. 8 characters" : mode === "reset" ? "Min. 6 characters" : "Enter your password"}
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full py-[11px] px-[14px] pr-10 bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                      />
+                      <span
+                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-[var(--text3)]"
+                        onClick={() => setShowPw(!showPw)}
+                      >
+                        {showPw ? "🙈" : "👁️"}
+                      </span>
+                    </div>
+                    {(mode === "signup" || mode === "reset") && password.length > 0 && (
+                      <>
+                        <div className="flex gap-1 mt-2">
+                          {[1, 2, 3].map((i) => (
+                            <div
+                              key={i}
+                              className={`pw-bar ${strength >= i ? strengthClass : ""}`}
+                            />
+                          ))}
+                        </div>
+                        <div className="text-[11px] text-[var(--text3)] mt-1">{strengthLabel}</div>
+                      </>
+                    )}
+                  </div>
+                )}
 
                 {mode === "login" && (
                   <div className="flex items-center justify-between mb-6">
@@ -379,6 +447,7 @@ export function AuthPage() {
                     </label>
                     <button
                       type="button"
+                      onClick={() => switchMode("forgot")}
                       className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
                     >
                       Forgot password?
@@ -403,8 +472,12 @@ export function AuthPage() {
                     />
                   ) : mode === "login" ? (
                     "Log In"
-                  ) : (
+                  ) : mode === "signup" ? (
                     "Create Account"
+                  ) : mode === "forgot" ? (
+                    "Send Reset Code"
+                  ) : (
+                    "Reset Password"
                   )}
                 </button>
               </form>
@@ -420,7 +493,7 @@ export function AuthPage() {
                       Sign up free
                     </button>
                   </span>
-                ) : (
+                ) : mode === "signup" ? (
                   <span>
                     Already have an account?{" "}
                     <button
@@ -430,7 +503,7 @@ export function AuthPage() {
                       Log in
                     </button>
                   </span>
-                )}
+                ) : null}
               </div>
             </>
         </div>
