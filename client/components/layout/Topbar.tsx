@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   { label: "Algorithms", path: "/algorithms" },
   { label: "Forum", path: "/forum" },
   { label: "Almanac", path: "/almanac" },
-  { label: "Rest Room", path: "/restroom" },
+  { label: "Laniakea Explorer", path: "/laniakea" },
 ];
 
 export function Topbar({

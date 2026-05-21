@@ -12,7 +12,7 @@ import { LessonPage } from "./pages/LessonPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ForumPage } from "./pages/ForumPage";
 import { AlmanacPage } from "./pages/AlmanacPage";
-import { RestRoomPage } from "./pages/RestRoomPage";
+import { LaniakeaExplorerPage } from "./pages/LaniakeaExplorerPage";
 import { RulesPage } from "./pages/RulesPage";
 import { SupportPage } from "./pages/SupportPage";
 import { WelcomePage } from "./pages/WelcomePage";
@@ -40,7 +40,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/forum" element={<ForumPage />} />
           <Route path="/almanac" element={<AlmanacPage />} />
-          <Route path="/restroom" element={<RestRoomPage />} />
+          <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
           <Route path="/rules" element={<RulesPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/welcome" element={<WelcomePage />} />

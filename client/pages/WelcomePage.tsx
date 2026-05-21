@@ -112,7 +112,7 @@ export function WelcomePage() {
 
   useEffect(() => {
     const positionNodes = () => {
-      const sectionIds = ["s-boot", "s-langs", "s-almanac", "s-forum", "s-restroom", "s-cta"];
+      const sectionIds = ["s-boot", "s-langs", "s-almanac", "s-forum", "s-laniakea", "s-cta"];
       nodesRef.current.forEach((n, i) => {
         if (!n) return;
         const target = document.getElementById(sectionIds[i]);
@@ -166,7 +166,7 @@ export function WelcomePage() {
     return () => io.disconnect();
   }, []);
 
-  const nodeLabels = ["01 · Booting", "02 · Languages", "03 · Almanac", "04 · Forum", "05 · Rest Room", "06 · Launch"];
+  const nodeLabels = ["01 · Booting", "02 · Languages", "03 · Almanac", "04 · Forum", "05 · Laniakea Explorer", "06 · Launch"];
 
   return (
     <div className="wc-page" ref={rootRef}>
@@ -241,7 +241,7 @@ export function WelcomePage() {
             "Loading C / Java / Python / Bash kernels",
             "Indexing almanac · 2,418 entries",
             "Syncing forum threads",
-            "Charting the rest room universe",
+            "Charting the Laniakea universe",
           ].map((label) => (
             <div className="wc-boot-row" key={label}>
               <div className="wc-boot-label"><span className="wc-boot-prefix">›</span>{label}</div>
@@ -363,9 +363,9 @@ export function WelcomePage() {
         </div>
       </section>
 
-      {/* REST ROOM */}
-      <section className="wc-section" id="s-restroom">
-        <div className="wc-section-num reveal">// 05 — REST ROOM</div>
+      {/* LANIAKEA EXPLORER */}
+      <section className="wc-section" id="s-laniakea">
+        <div className="wc-section-num reveal">// 05 — LANIAKEA EXPLORER</div>
         <div className="wc-split">
           <div className="reveal" data-delay="3">
             <div className="wc-viewport">
@@ -405,10 +405,10 @@ export function WelcomePage() {
           </div>
           <div>
             <h2 className="wc-title reveal" data-delay="1">
-              The <span className="wc-accent-text">Rest Room</span><br />is a universe.
+              The <span className="wc-accent-text">Laniakea Explorer</span><br />is a universe.
             </h2>
             <p className="wc-subtitle reveal" data-delay="2">
-              When your brain needs a break, drift into the Rest Room — a navigable galaxy where each planet is a side-quest or a community room. Fly through it the way you'd play a game.
+              When your brain needs a break, drift into the Laniakea Explorer — a navigable galaxy where each planet is a side-quest or a community room. Fly through it the way you'd play a game.
             </p>
             <div className="wc-controls reveal" data-delay="3">
               <div className="wc-controls-title">CONTROLS</div>
@@ -454,7 +454,7 @@ export function WelcomePage() {
             <circle className="wc-node-c" cx={90} cy={270} r={28} />
             <text className="wc-node-label" x={90} y={274}>FORUM</text>
             <circle className="wc-node-c" cx={700} cy={270} r={28} />
-            <text className="wc-node-label" x={700} y={274}>REST ROOM</text>
+            <text className="wc-node-label" x={700} y={274}>LANIAKEA</text>
             <circle className="wc-node-c" cx={400} cy={320} r={28} />
             <text className="wc-node-label" x={400} y={324}>XP / BADGES</text>
             <circle className="wc-node-c" cx={400} cy={50} r={28} />

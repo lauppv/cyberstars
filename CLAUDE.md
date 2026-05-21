@@ -23,7 +23,7 @@ npm run db:studio     # Open Prisma Studio GUI
 npx vitest run path   # Run a single test file (substring match)
 ```
 
-CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parallel jobs for lint, typecheck, test (with coverage + PR comment), and build. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`).
+CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parallel jobs for lint, typecheck, test (with coverage + PR comment), dead-code (knip), and build. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`). Node version is pinned in `.node-version` — CI reads it via `node-version-file`.
 
 ## Architecture
 
@@ -31,7 +31,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Client (`client/`)
 - React 19 + Vite 7 + Tailwind CSS 4, uses HashRouter
-- Routes: `/`, `/getstarted`, `/courses`, `/algorithms`, `/algorithms/:lang`, `/lesson/:category/:lesson`, `/profile`, `/forum`, `/almanac`, `/welcome`
+- Routes: `/`, `/getstarted`, `/courses`, `/algorithms`, `/algorithms/:lang`, `/lesson/:category/:lesson`, `/profile`, `/forum`, `/almanac`, `/laniakea`, `/rules`, `/support`, `/welcome`
 - Three React Context providers: `AuthContext`, `CurriculumContext`, `ProgressContext`
 - Services in `client/services/` wrap all API calls through a shared `apiClient` fetch wrapper
 - Code editor uses CodeMirror 4 with per-language syntax highlighting
@@ -72,7 +72,8 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Client component tests use `render`/`screen`/`fireEvent` from testing-library
 - Server unit tests on services use `vi.mock` to isolate from env/DB dependencies (see `lesson.service.test.ts`)
 - Endpoint smoke tests (`server/app.test.ts`) use supertest to verify all routes respond correctly (200 for public, 401 for auth-protected, 404 for unknown). Mock PrismaClient and repositories to avoid needing a real DB
-- Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`, ignores `design/` mockups
+- Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`, ignores `design/` mockups. Runs in CI; must pass before merge
+- Coverage thresholds enforced in `vite.config.ts`: 70% statements/lines, 50% branches, 60% functions — `npm run test:coverage` fails if below
 
 ## Key conventions
 
@@ -92,3 +93,4 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - CodeMirror editor has transparent backgrounds via global CSS overrides (`!important`) in `index.css` — `.cm-editor`, `.cm-line`, `.cm-content`, `.cm-gutters` are all transparent
 - Topbar is semi-transparent (`rgba(22,22,29,0.78)` + `backdrop-blur`) — not opaque
 - ESLint uses `typescript-eslint` parser with separate configs for `.ts/.tsx` (browser globals) and `.js` (node globals). Unused args prefixed with `_` are allowed via `argsIgnorePattern`
+- License: BSD 3-Clause for code (`LICENSE`), CC BY-SA 4.0 for educational content in `server/lessons/` (`LICENSE-content.md`)
