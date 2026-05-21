@@ -37,4 +37,8 @@ export const env = {
     sameSite: "lax" as const,
     maxAge: 24 * 60 * 60 * 1000,
   },
+  smtp: {
+    user: process.env.SMTP_USER ?? "",
+    pass: process.env.SMTP_PASS ?? "",
+  },
 } as const;

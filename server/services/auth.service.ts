@@ -1,7 +1,9 @@
+import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { config } from "../config/index.js";
 import * as userRepo from "../repositories/user.repository.js";
+import * as emailService from "./email.service.js";
 import type { TokenPayload, AuthenticatedUser } from "../../shared/auth.js";
 import { AppError } from "../middleware/errorHandler.js";
 
@@ -49,6 +51,23 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     status: statusExpired ? null : user.status,
     statusExpiresAt: statusExpired ? null : user.statusExpiresAt?.toISOString() ?? null,
   };
+}
+
+export async function forgotPassword(email: string): Promise<void> {
+  const code = crypto.randomInt(100_000, 999_999).toString();
+  const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
+  const found = await userRepo.setResetCode(email, code, expiresAt);
+  if (!found) return;
+  await emailService.sendResetCode(email, code);
+}
+
+export async function resetPassword(email: string, code: string, newPassword: string): Promise<void> {
+  const user = await userRepo.findByResetCode(email, code);
+  if (!user) {
+    throw new AppError(400, "Invalid or expired code");
+  }
+  const hashed = bcrypt.hashSync(newPassword, 8);
+  await userRepo.updatePassword(user.id, hashed);
 }
 
 function createToken(userId: number): string {

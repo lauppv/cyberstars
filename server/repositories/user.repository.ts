@@ -34,3 +34,26 @@ export async function create(name: string, email: string, hashedPassword: string
 export async function updateRole(id: number, role: Role): Promise<void> {
   await prisma.user.update({ where: { id }, data: { role } });
 }
+
+export async function setResetCode(email: string, code: string, expiresAt: Date): Promise<boolean> {
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) return false;
+  await prisma.user.update({
+    where: { email },
+    data: { resetCode: code, resetCodeExpiresAt: expiresAt },
+  });
+  return true;
+}
+
+export async function findByResetCode(email: string, code: string): Promise<User | null> {
+  return prisma.user.findFirst({
+    where: { email, resetCode: code, resetCodeExpiresAt: { gte: new Date() } },
+  });
+}
+
+export async function updatePassword(id: number, hashedPassword: string): Promise<void> {
+  await prisma.user.update({
+    where: { id },
+    data: { password: hashedPassword, resetCode: null, resetCodeExpiresAt: null },
+  });
+}

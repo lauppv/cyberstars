@@ -16,3 +16,11 @@ export function logout() {
 export function getMe() {
   return api.get<User>("/auth/me");
 }
+
+export function forgotPassword(email: string) {
+  return api.post<{ message: string }>("/auth/forgot-password", { email });
+}
+
+export function resetPassword(email: string, code: string, password: string) {
+  return api.post<{ message: string }>("/auth/reset-password", { email, code, password });
+}

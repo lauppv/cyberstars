@@ -43,8 +43,10 @@ model User {
   avatarUrl       String?   @map("avatar_url") @db.VarChar(512)
   bio             String?   @db.VarChar(200)
   status          String?   @db.VarChar(80)
-  statusExpiresAt DateTime? @map("status_expires_at")
-  createdAt       DateTime  @default(now()) @map("created_at")
+  statusExpiresAt    DateTime? @map("status_expires_at")
+  resetCode          String?   @map("reset_code") @db.VarChar(6)
+  resetCodeExpiresAt DateTime? @map("reset_code_expires_at")
+  createdAt          DateTime  @default(now()) @map("created_at")
 
   progress  UserLessonProgress[]
   savedCode UserSavedCode[]

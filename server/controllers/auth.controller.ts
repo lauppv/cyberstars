@@ -33,6 +33,25 @@ export function logout(_req: Request, res: Response): void {
   res.json({ message: "Logged out successfully" });
 }
 
+export async function forgotPassword(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    await authService.forgotPassword(req.body.email);
+    res.json({ message: "If that email exists, a reset code was sent" });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function resetPassword(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const { email, code, password } = req.body;
+    await authService.resetPassword(email, code, password);
+    res.json({ message: "Password reset successfully" });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function me(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const user = await authService.getUser(req.user!.id);
