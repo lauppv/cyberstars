@@ -621,6 +621,7 @@
   font-weight: 700;
   border: 2px solid var(--surface2);
   color: var(--text);
+  object-fit: cover;
 }
 
 .post-avatar.op-avatar {

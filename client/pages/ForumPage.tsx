@@ -658,9 +658,13 @@ function PostCard({
     return (
       <div className={`forum-post deleted${isOp ? " op" : ""}`}>
         <div className="post-sidebar">
-          <div className="post-avatar">
-            {post.authorName.charAt(0).toUpperCase()}
-          </div>
+          {post.authorAvatarUrl ? (
+            <img src={post.authorAvatarUrl} alt="" className="post-avatar" />
+          ) : (
+            <div className="post-avatar">
+              {post.authorName.charAt(0).toUpperCase()}
+            </div>
+          )}
           <div className="post-username">{post.authorName}</div>
         </div>
         <div className="post-body">
@@ -676,9 +680,13 @@ function PostCard({
   return (
     <div className={`forum-post${isOp ? " op" : ""}`}>
       <div className="post-sidebar">
-        <div className={`post-avatar${isOp ? " op-avatar" : ""}`}>
-          {post.authorName.charAt(0).toUpperCase()}
-        </div>
+        {post.authorAvatarUrl ? (
+          <img src={post.authorAvatarUrl} alt="" className={`post-avatar${isOp ? " op-avatar" : ""}`} />
+        ) : (
+          <div className={`post-avatar${isOp ? " op-avatar" : ""}`}>
+            {post.authorName.charAt(0).toUpperCase()}
+          </div>
+        )}
         <div className="post-username">{post.authorName}</div>
         <RoleBadge role={post.authorRole} />
         {isAdmin && !isOwner && (

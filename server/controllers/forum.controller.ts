@@ -141,7 +141,7 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
         posts: {
           orderBy: { createdAt: "asc" },
           include: {
-            author: { select: { id: true, name: true, role: true } },
+            author: { select: { id: true, name: true, role: true, avatarUrl: true } },
             reactions: { include: { user: { select: { name: true } } } },
           },
         },
@@ -176,6 +176,7 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
         solution: p.solution,
         authorId: p.author.id,
         authorName: p.author.name,
+        authorAvatarUrl: p.author.avatarUrl,
         authorRole: p.author.role,
         createdAt: p.createdAt.toISOString(),
         updatedAt: p.updatedAt.toISOString(),
