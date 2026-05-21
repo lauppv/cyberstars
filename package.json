@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "^22"
+  },
   "scripts": {
     "db:prepare": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts",
     "dev": "npm run db:prepare && concurrently -n client,server -c cyan,magenta \"npm run dev:client\" \"npm run dev:server\"",
