@@ -58,6 +58,7 @@ export interface ForumPostDTO {
   solution: boolean;
   authorId: number;
   authorName: string;
+  authorAvatarUrl: string | null;
   authorRole: UserRole;
   createdAt: string;
   updatedAt: string;

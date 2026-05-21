@@ -116,9 +116,13 @@ export function Topbar({
               aria-haspopup="menu"
               aria-expanded={menuOpen}
             >
-              <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
-                🚀
-              </div>
+              {user.avatarUrl ? (
+                <img src={user.avatarUrl} alt="" className="w-[30px] h-[30px] rounded-full object-cover border-2 border-[var(--accent)]" />
+              ) : (
+                <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
+                  🚀
+                </div>
+              )}
               <span className="text-[13px] font-semibold text-[var(--text)]">{user.name}</span>
             </button>
 
@@ -128,9 +132,13 @@ export function Topbar({
                 className="absolute right-0 mt-2 w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
               >
                 <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg border-2 border-[var(--accent)] flex-shrink-0">
-                    🚀
-                  </div>
+                  {user.avatarUrl ? (
+                    <img src={user.avatarUrl} alt="" className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0" />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg border-2 border-[var(--accent)] flex-shrink-0">
+                      🚀
+                    </div>
+                  )}
                   <div className="min-w-0">
                     <div className="text-[13px] font-semibold text-[var(--text)] truncate">{user.name}</div>
                     <div className="text-[11px] text-[var(--text3)] truncate">{user.email}</div>
