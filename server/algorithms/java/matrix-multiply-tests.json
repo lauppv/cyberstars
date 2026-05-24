@@ -1,0 +1,7 @@
+[
+  { "name": "2x3 times 3x2", "input": "2 3\n1 2 3\n4 5 6\n3 2\n7 8\n9 10\n11 12", "expected": "58 64\n139 154", "mode": "exact" },
+  { "name": "2x2 times 2x2", "input": "2 2\n1 2\n3 4\n2 2\n5 6\n7 8", "expected": "19 22\n43 50", "mode": "exact" },
+  { "name": "1x1 times 1x1", "input": "1 1\n3\n1 1\n4", "expected": "12", "mode": "exact" },
+  { "name": "1x3 times 3x1", "input": "1 3\n1 2 3\n3 1\n4\n5\n6", "expected": "32", "mode": "exact" },
+  { "name": "3x2 times 2x3 with identity-like", "input": "3 2\n1 0\n0 1\n2 3\n2 3\n4 5 6\n7 8 9", "expected": "4 5 6\n7 8 9\n29 34 39", "mode": "exact" }
+]

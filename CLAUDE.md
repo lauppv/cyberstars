@@ -65,6 +65,16 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Intentional compile errors (e.g., demonstrating `if(x=2)` bug) still have full boilerplate — the error is only on the line being demonstrated
 - Linux lessons: each slug has 3 files — `<slug>.md` (no H1, space-station theme), `<slug>-setup.json` (sandbox filesystem), `<slug>-tests.json` (validation checks). 55 lessons across 9 chapters. Shared types in `shared/terminal.ts`
 
+### Algorithm challenges (`server/algorithms/{python,java,c}/`)
+- Separate from main lessons — mapped via `server/services/paths.ts`: course keys `algo-python`, `algo-java`, `algo-c` resolve to `server/algorithms/{python,java,c}/`
+- Each challenge has 3 files: `<slug>.md` (problem statement with Input/Output/Examples/Hints), `<slug>-code.md` (starter code), `<slug>-tests.json` (test cases)
+- 20 challenges per language (Easy/Medium/Hard), registered in `prisma/seed.ts`
+- Starter code reads input and has `# TODO` comments — students fill in the logic
+- Test modes in `-tests.json`: `exact` (trimmed output === expected), `regex` (output matches pattern), `code_regex` (student code matches pattern), `contains`, `line` (specific line matches), `any` (any non-empty output)
+- **Critical rule for `code_regex` tests**: the regex must NOT match the unmodified starter code, otherwise the test passes by default without the student implementing anything. Always verify with: `new RegExp(expected).test(starterCode)` — must return `false`
+- Tests can use `overrides` (replace variable assignments) and `append` (add code after student's code) fields
+- Test runner in `server/services/test-runner.service.ts` — executes code via Docker, trims output, compares against expected
+
 ### Testing (`test/`)
 - Vitest with jsdom environment, `@testing-library/react` + `@testing-library/jest-dom`
 - Setup file in `test/setup.ts` handles jest-dom matchers and cleanup between tests

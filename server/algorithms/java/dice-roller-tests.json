@@ -1,5 +1,6 @@
 [
-  { "name": "uses Dice class", "input": "", "expected": "class\\s+Dice", "mode": "code_regex" },
-  { "name": "uses Random with seed", "input": "", "expected": "new\\s+Random\\s*\\(", "mode": "code_regex" },
-  { "name": "has roll method", "input": "", "expected": "roll\\s*\\(", "mode": "code_regex" }
+  { "name": "single side always 1", "input": "1 0 3", "expected": "1\n1\n1", "mode": "exact" },
+  { "name": "example from lesson", "input": "6 42 1", "expected": "1", "mode": "exact" },
+  { "name": "single side five rolls", "input": "1 999 5", "expected": "1\n1\n1\n1\n1", "mode": "exact" },
+  { "name": "uses nextInt", "input": "", "expected": "nextInt\\s*\\(", "mode": "code_regex" }
 ]

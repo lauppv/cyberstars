@@ -31,7 +31,8 @@ And here's how to create a student dynamically
 ```c
 Student *createStudent(const char *name, int grade) {
     Student *s = malloc(sizeof(Student));
-    strcpy(s->name, name);
+    strncpy(s->name, name, sizeof(s->name) - 1);
+    s->name[sizeof(s->name) - 1] = '\0';
     s->grade = grade;
     return s;
 }

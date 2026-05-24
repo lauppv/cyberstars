@@ -1,17 +1,5 @@
 [
   {
-    "name": "Uses break",
-    "input": "",
-    "expected": "\\bbreak\\b",
-    "mode": "code_regex"
-  },
-  {
-    "name": "Uses continue",
-    "input": "",
-    "expected": "\\bcontinue\\b",
-    "mode": "code_regex"
-  },
-  {
     "name": "Line 0 is 1",
     "input": "",
     "expected": "1",

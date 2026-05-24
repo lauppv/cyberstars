@@ -30,7 +30,7 @@ i = 1
 for i in range(1, 1001):
     print(i)
 ```
-Now we see all the numbers from **1 to 1001**
+Now we see all the numbers from **1 to 1000**
 
 Let’s explain this code
 

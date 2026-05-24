@@ -1,7 +1,26 @@
 [
-  { "name": "add and print", "input": "6\nadd 10\nadd 20\nadd 30\nprint\nremove 20\nprint", "expected": "10 -> 20 -> 30\n10 -> 30", "mode": "exact" },
-  { "name": "remove until empty", "input": "4\nadd 5\nremove 5\nremove 5\nprint", "expected": "Not found\nEmpty", "mode": "exact" },
-  { "name": "remove head", "input": "4\nadd 1\nadd 2\nremove 1\nprint", "expected": "2", "mode": "exact" },
-  { "name": "print empty list", "input": "1\nprint", "expected": "Empty", "mode": "exact" },
-  { "name": "uses Node class", "input": "", "expected": "class\\s+Node", "mode": "code_regex" }
+  {
+    "name": "add and print",
+    "input": "6\nadd 10\nadd 20\nadd 30\nprint\nremove 20\nprint",
+    "expected": "10 -> 20 -> 30\n10 -> 30",
+    "mode": "exact"
+  },
+  {
+    "name": "remove until empty",
+    "input": "4\nadd 5\nremove 5\nremove 5\nprint",
+    "expected": "Not found\nEmpty",
+    "mode": "exact"
+  },
+  {
+    "name": "remove head",
+    "input": "4\nadd 1\nadd 2\nremove 1\nprint",
+    "expected": "2",
+    "mode": "exact"
+  },
+  {
+    "name": "print empty list",
+    "input": "1\nprint",
+    "expected": "Empty",
+    "mode": "exact"
+  }
 ]

@@ -252,6 +252,11 @@ const lessons = [
   { courseKey: "algo-python", slug: "remove-duplicates", title: "Medium · Remove Duplicates", sortOrder: 13, hasCodeFile: true },
   { courseKey: "algo-python", slug: "anagram-check", title: "Medium · Anagram Check", sortOrder: 14, hasCodeFile: true },
   { courseKey: "algo-python", slug: "two-sum", title: "Hard · Two Sum", sortOrder: 15, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "fizzbuzz", title: "Easy · FizzBuzz", sortOrder: 16, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "fibonacci", title: "Medium · Fibonacci", sortOrder: 17, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "insertion-sort", title: "Medium · Insertion Sort", sortOrder: 18, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "matrix-spiral", title: "Hard · Matrix Spiral", sortOrder: 19, hasCodeFile: true },
+  { courseKey: "algo-python", slug: "group-anagrams", title: "Hard · Group Anagrams", sortOrder: 20, hasCodeFile: true },
 
   { courseKey: "algo-java", slug: "student-gpa", title: "Easy · Student GPA", sortOrder: 1, hasCodeFile: true },
   { courseKey: "algo-java", slug: "rectangle-calc", title: "Easy · Rectangle Calculator", sortOrder: 2, hasCodeFile: true },
@@ -268,6 +273,11 @@ const lessons = [
   { courseKey: "algo-java", slug: "linked-list", title: "Hard · Linked List", sortOrder: 13, hasCodeFile: true },
   { courseKey: "algo-java", slug: "iterator-pattern", title: "Hard · Number Range Iterator", sortOrder: 14, hasCodeFile: true },
   { courseKey: "algo-java", slug: "generic-pair", title: "Hard · Generic Pair", sortOrder: 15, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "binary-search", title: "Easy · Binary Search", sortOrder: 16, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "bubble-sort", title: "Easy · Bubble Sort", sortOrder: 17, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "queue-impl", title: "Medium · Queue Implementation", sortOrder: 18, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "palindrome-number", title: "Easy · Palindrome Number", sortOrder: 19, hasCodeFile: true },
+  { courseKey: "algo-java", slug: "matrix-multiply", title: "Hard · Matrix Multiplication", sortOrder: 20, hasCodeFile: true },
 
   { courseKey: "algo-c", slug: "reverse-array", title: "Easy · Reverse an Array", sortOrder: 1, hasCodeFile: true },
   { courseKey: "algo-c", slug: "string-length", title: "Easy · String Length", sortOrder: 2, hasCodeFile: true },
@@ -284,6 +294,11 @@ const lessons = [
   { courseKey: "algo-c", slug: "bitwise-ops", title: "Hard · Bitwise Power of Two", sortOrder: 13, hasCodeFile: true },
   { courseKey: "algo-c", slug: "linked-list-c", title: "Hard · Linked List", sortOrder: 14, hasCodeFile: true },
   { courseKey: "algo-c", slug: "merge-sort", title: "Hard · Merge Sort", sortOrder: 15, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "insertion-sort-c", title: "Medium · Insertion Sort", sortOrder: 16, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "binary-search-c", title: "Easy · Binary Search", sortOrder: 17, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "stack-array", title: "Medium · Stack with Array", sortOrder: 18, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "caesar-cipher-c", title: "Medium · Caesar Cipher", sortOrder: 19, hasCodeFile: true },
+  { courseKey: "algo-c", slug: "gcd-lcm", title: "Easy · GCD & LCM", sortOrder: 20, hasCodeFile: true },
 ];
 
 const forumCategories = [

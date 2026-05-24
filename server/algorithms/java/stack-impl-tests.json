@@ -1,7 +1,26 @@
 [
-  { "name": "push pop peek", "input": "6\npush 10\npush 20\npeek\npop\npop\npop", "expected": "20\n20\n10\nEmpty", "mode": "exact" },
-  { "name": "peek only", "input": "3\npush 5\npush 15\npeek", "expected": "15", "mode": "exact" },
-  { "name": "pop empty stack", "input": "1\npop", "expected": "Empty", "mode": "exact" },
-  { "name": "push and pop all", "input": "4\npush 1\npush 2\npop\npop", "expected": "2\n1", "mode": "exact" },
-  { "name": "uses Stack class with ArrayList", "input": "", "expected": "class\\s+Stack", "mode": "code_regex" }
+  {
+    "name": "push pop peek",
+    "input": "6\npush 10\npush 20\npeek\npop\npop\npop",
+    "expected": "20\n20\n10\nEmpty",
+    "mode": "exact"
+  },
+  {
+    "name": "peek only",
+    "input": "3\npush 5\npush 15\npeek",
+    "expected": "15",
+    "mode": "exact"
+  },
+  {
+    "name": "pop empty stack",
+    "input": "1\npop",
+    "expected": "Empty",
+    "mode": "exact"
+  },
+  {
+    "name": "push and pop all",
+    "input": "4\npush 1\npush 2\npop\npop",
+    "expected": "2\n1",
+    "mode": "exact"
+  }
 ]

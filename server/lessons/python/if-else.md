@@ -44,7 +44,7 @@ Similarly, we have:
 
 **>** means greater than 18: 19, 20, 145
 
-**=**means greater than or equal to 18: 18, 19, 20, 1000
+**>=** means greater than or equal to 18: 18, 19, 20, 1000
 
 **==** means equal. Do not confuse it with **=** which is used to 
 **assign** a value to a variable

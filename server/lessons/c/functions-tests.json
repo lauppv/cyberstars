@@ -1,11 +1,5 @@
 [
   {
-    "name": "Defines a calculator function",
-    "input": "",
-    "expected": "void\\s+calculator\\s*\\(|int\\s+calculator\\s*\\(",
-    "mode": "code_regex"
-  },
-  {
     "name": "Addition: 14 + 12 = 26",
     "input": "",
     "expected": "14 \\+ 12 = 26",

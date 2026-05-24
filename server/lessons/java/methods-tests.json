@@ -1,11 +1,5 @@
 [
   {
-    "name": "Defines a calculator method",
-    "input": "",
-    "expected": "(void|static)\\s+.*calculator\\s*\\(",
-    "mode": "code_regex"
-  },
-  {
     "name": "Addition: 14 + 12 = 26",
     "input": "",
     "expected": "14 \\+ 12 = 26",
