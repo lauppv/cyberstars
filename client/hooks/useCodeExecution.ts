@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { runCode, submitCode } from "../services/codeExecutionService";
+import { useState, useCallback, useRef } from "react";
+import { submitCode } from "../services/codeExecutionService";
 import { ApiClientError } from "../services/apiClient";
 import type { SubmitResult } from "../../shared/tests";
 
@@ -8,25 +8,70 @@ function errorMessage(err: unknown): string {
   return "Error connecting to server.";
 }
 
+function wsUrl(): string {
+  const proto = location.protocol === "https:" ? "wss:" : "ws:";
+  return `${proto}//${location.host}/ws/run`;
+}
+
 export function useCodeExecution() {
   const [output, setOutput] = useState("");
   const [isRunning, setIsRunning] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null);
+  const wsRef = useRef<WebSocket | null>(null);
+  const sendInputRef = useRef<((data: string) => void) | null>(null);
 
-  const execute = useCallback(async (code: string, language: string) => {
+  const execute = useCallback((code: string, language: string) => {
+    if (wsRef.current) {
+      wsRef.current.close();
+      wsRef.current = null;
+    }
+
     setIsRunning(true);
-    setOutput("Running...");
+    setOutput("");
     setSubmitResult(null);
 
-    try {
-      const result = await runCode(code, language);
-      setOutput(result.output || "No output.");
-    } catch (err) {
-      setOutput(errorMessage(err));
-    } finally {
+    const ws = new WebSocket(wsUrl());
+    wsRef.current = ws;
+
+    ws.onopen = () => {
+      ws.send(JSON.stringify({ type: "run", code, language }));
+    };
+
+    ws.onmessage = (event) => {
+      const msg = JSON.parse(event.data as string) as { type: string; data?: string; code?: number };
+      if (msg.type === "stdout" || msg.type === "stderr") {
+        setOutput((prev) => prev + (msg.data ?? ""));
+      } else if (msg.type === "exit") {
+        setIsRunning(false);
+        sendInputRef.current = null;
+        ws.close();
+        wsRef.current = null;
+      }
+    };
+
+    ws.onerror = () => {
+      setOutput((prev) => prev + "\nConnection error.\n");
       setIsRunning(false);
-    }
+      sendInputRef.current = null;
+    };
+
+    ws.onclose = () => {
+      setIsRunning(false);
+      sendInputRef.current = null;
+      wsRef.current = null;
+    };
+
+    sendInputRef.current = (data: string) => {
+      if (ws.readyState === WebSocket.OPEN) {
+        setOutput((prev) => prev + data);
+        ws.send(JSON.stringify({ type: "stdin", data }));
+      }
+    };
+  }, []);
+
+  const sendInput = useCallback((data: string) => {
+    sendInputRef.current?.(data);
   }, []);
 
   const submit = useCallback(async (code: string, language: string, courseKey: string, lessonSlug: string) => {
@@ -52,7 +97,12 @@ export function useCodeExecution() {
   const clearOutput = useCallback(() => {
     setOutput("");
     setSubmitResult(null);
+    if (wsRef.current) {
+      wsRef.current.close();
+      wsRef.current = null;
+    }
+    sendInputRef.current = null;
   }, []);
 
-  return { output, isRunning, isSubmitting, submitResult, execute, submit, clearOutput };
+  return { output, isRunning, isSubmitting, submitResult, execute, sendInput, submit, clearOutput };
 }

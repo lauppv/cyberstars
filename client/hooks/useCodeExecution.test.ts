@@ -1,8 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 
 vi.mock("../services/codeExecutionService", () => ({
-  runCode: vi.fn(),
   submitCode: vi.fn(),
 }));
 
@@ -17,11 +16,42 @@ vi.mock("../services/apiClient", () => ({
   },
 }));
 
+let wsInstances: MockWebSocket[] = [];
+
+class MockWebSocket {
+  static readonly OPEN = 1;
+  readonly OPEN = 1;
+  readyState = 1;
+  onopen: (() => void) | null = null;
+  onmessage: ((e: { data: string }) => void) | null = null;
+  onerror: (() => void) | null = null;
+  onclose: (() => void) | null = null;
+  sent: string[] = [];
+
+  constructor(_url: string) {
+    wsInstances.push(this);
+    setTimeout(() => this.onopen?.(), 0);
+  }
+
+  send(data: string) { this.sent.push(data); }
+  close() { this.onclose?.(); }
+
+  simulateMessage(data: object) {
+    this.onmessage?.({ data: JSON.stringify(data) });
+  }
+}
+
+vi.stubGlobal("WebSocket", MockWebSocket);
+
 const { useCodeExecution } = await import("./useCodeExecution");
-const { runCode, submitCode } = await import("../services/codeExecutionService");
+const { submitCode } = await import("../services/codeExecutionService");
 const { ApiClientError } = await import("../services/apiClient");
-const mockRunCode = vi.mocked(runCode);
 const mockSubmitCode = vi.mocked(submitCode);
+
+beforeEach(() => {
+  wsInstances = [];
+  vi.clearAllMocks();
+});
 
 describe("useCodeExecution", () => {
   it("starts with empty output and not running", () => {
@@ -31,49 +61,44 @@ describe("useCodeExecution", () => {
     expect(result.current.isSubmitting).toBe(false);
   });
 
-  it("execute sets output from runCode", async () => {
-    mockRunCode.mockResolvedValue({ output: "Hello" });
+  it("execute opens WebSocket and streams stdout", async () => {
     const { result } = renderHook(() => useCodeExecution());
 
-    await act(async () => {
-      await result.current.execute("code", "python");
-    });
+    act(() => { result.current.execute("code", "python"); });
+    expect(result.current.isRunning).toBe(true);
 
+    await act(async () => { await new Promise((r) => setTimeout(r, 10)); });
+
+    const ws = wsInstances[0];
+    expect(JSON.parse(ws.sent[0])).toEqual({ type: "run", code: "code", language: "python" });
+
+    act(() => { ws.simulateMessage({ type: "stdout", data: "Hello" }); });
     expect(result.current.output).toBe("Hello");
+
+    act(() => { ws.simulateMessage({ type: "exit", code: 0 }); });
     expect(result.current.isRunning).toBe(false);
   });
 
-  it("execute shows 'No output.' when result is empty", async () => {
-    mockRunCode.mockResolvedValue({ output: "" });
+  it("execute streams stderr", async () => {
     const { result } = renderHook(() => useCodeExecution());
 
-    await act(async () => {
-      await result.current.execute("code", "python");
-    });
+    act(() => { result.current.execute("code", "c"); });
+    await act(async () => { await new Promise((r) => setTimeout(r, 10)); });
 
-    expect(result.current.output).toBe("No output.");
+    const ws = wsInstances[0];
+    act(() => { ws.simulateMessage({ type: "stderr", data: "error: undefined ref\n" }); });
+    expect(result.current.output).toContain("error");
   });
 
-  it("execute shows server error message on ApiClientError", async () => {
-    mockRunCode.mockRejectedValue(new ApiClientError(429, "Too many requests. Try again in 45 seconds."));
+  it("sendInput writes to WebSocket", async () => {
     const { result } = renderHook(() => useCodeExecution());
 
-    await act(async () => {
-      await result.current.execute("code", "python");
-    });
+    act(() => { result.current.execute("code", "python"); });
+    await act(async () => { await new Promise((r) => setTimeout(r, 10)); });
 
-    expect(result.current.output).toBe("Too many requests. Try again in 45 seconds.");
-  });
-
-  it("execute shows generic error on network failure", async () => {
-    mockRunCode.mockRejectedValue(new Error("fetch failed"));
-    const { result } = renderHook(() => useCodeExecution());
-
-    await act(async () => {
-      await result.current.execute("code", "python");
-    });
-
-    expect(result.current.output).toBe("Error connecting to server.");
+    act(() => { result.current.sendInput("42\n"); });
+    const ws = wsInstances[0];
+    expect(ws.sent).toContainEqual(JSON.stringify({ type: "stdin", data: "42\n" }));
   });
 
   it("submit sets submitResult on success", async () => {
@@ -99,18 +124,28 @@ describe("useCodeExecution", () => {
     expect(result.current.output).toContain("1/3");
   });
 
-  it("clearOutput resets state", async () => {
-    mockRunCode.mockResolvedValue({ output: "Hello" });
+  it("submit shows error on ApiClientError", async () => {
+    mockSubmitCode.mockRejectedValue(new ApiClientError(429, "Too many requests."));
     const { result } = renderHook(() => useCodeExecution());
 
     await act(async () => {
-      await result.current.execute("code", "python");
+      await result.current.submit("code", "python", "python", "booleans");
     });
+
+    expect(result.current.output).toBe("Too many requests.");
+  });
+
+  it("clearOutput resets state", async () => {
+    const { result } = renderHook(() => useCodeExecution());
+
+    act(() => { result.current.execute("code", "python"); });
+    await act(async () => { await new Promise((r) => setTimeout(r, 10)); });
+
+    const ws = wsInstances[0];
+    act(() => { ws.simulateMessage({ type: "stdout", data: "Hello" }); });
     expect(result.current.output).toBe("Hello");
 
-    act(() => {
-      result.current.clearOutput();
-    });
+    act(() => { result.current.clearOutput(); });
     expect(result.current.output).toBe("");
     expect(result.current.submitResult).toBeNull();
   });
