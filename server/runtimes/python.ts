@@ -7,4 +7,5 @@ export const pythonRuntime: LanguageRuntime = {
   sourceFile: "user_code.py",
   innerCmd:
     "timeout 5 python3 /work/user_code.py < /work/stdin.txt > /work/output.txt 2>&1",
+  runCmd: "python3 -u /work/user_code.py",
 };

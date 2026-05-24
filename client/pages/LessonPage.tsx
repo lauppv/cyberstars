@@ -43,7 +43,7 @@ export function LessonPage() {
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
 
   const { title, content, codeTemplate, isLoading } = useLesson(category, lesson);
-  const { output, isRunning, isSubmitting, submitResult, execute, submit } = useCodeExecution();
+  const { output, isRunning, isSubmitting, submitResult, execute, sendInput, submit } = useCodeExecution();
   const terminal = useTerminalSession(isTerminal ? category : "", isTerminal ? lesson : "");
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
@@ -306,7 +306,7 @@ export function LessonPage() {
               {submitResult ? (
                 <TestResults result={submitResult} />
               ) : (
-                <CodeOutput output={output} height="180px" />
+                <CodeOutput output={output} height="180px" isRunning={isRunning} onInput={sendInput} />
               )}
             </div>
           </div>

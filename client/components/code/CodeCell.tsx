@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CodeEditor } from "./CodeEditor";
 import { RunButton } from "./RunButton";
+import { CodeOutput } from "./CodeOutput";
 import { useCodeExecution } from "../../hooks/useCodeExecution";
 
 interface CodeCellProps {
@@ -18,7 +19,7 @@ const LANG_MAP: Record<string, string> = {
 export function CodeCell({ initialCode, language }: CodeCellProps) {
   const lang = LANG_MAP[language.toLowerCase()] || language.toLowerCase();
   const [code, setCode] = useState(initialCode);
-  const { output, isRunning, execute } = useCodeExecution();
+  const { output, isRunning, execute, sendInput } = useCodeExecution();
 
   return (
     <div className="my-4 border border-[#1e2a38] rounded p-3 bg-[#111820]">
@@ -33,9 +34,14 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
         isRunning={isRunning}
         className="mt-2"
       />
-      {output && (
-        <div className="mt-2 bg-[#0d1117] text-[#78a8d0] font-bold p-2 rounded font-mono whitespace-pre-wrap max-h-40 overflow-auto border border-[#1e2a38]">
-          {output}
+      {(output || isRunning) && (
+        <div className="mt-2">
+          <CodeOutput
+            output={output}
+            height="120px"
+            isRunning={isRunning}
+            onInput={sendInput}
+          />
         </div>
       )}
     </div>
