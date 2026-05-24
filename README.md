@@ -7,8 +7,8 @@ A free, open-source interactive coding education platform. Learn Python, C, Java
 - **Split-screen lessons** — Markdown content on the left, live CodeMirror editor on the right
 - **Runnable code examples** — click "Run" on any code block inside lesson text to execute it instantly
 - **Test-driven completion** — lessons are marked complete when all test cases pass, not by clicking a button
-- **Multi-language** — Python (49 lessons), Java (50 lessons), C (45 lessons), Linux terminal (55 lessons)
-- **Algorithm challenges** — 45 challenges across 3 languages with Easy/Medium/Hard difficulty levels
+- **Multi-language** — Python (61 lessons), Java (61 lessons), C (45 lessons), Linux terminal (55 lessons)
+- **Algorithm challenges** — 60 challenges across 3 languages with Easy/Medium/Hard difficulty levels
 - **Sandboxed execution** — user code runs in Docker containers, never in the browser
 - **Progress tracking** — per-course progress bars, XP, levels, streak, and 8 unlockable badges
 - **Code persistence** — saved per lesson, restored on revisit
@@ -17,7 +17,7 @@ A free, open-source interactive coding education platform. Learn Python, C, Java
 
 ## Quick start
 
-**Prerequisites:** Node.js 20+, PostgreSQL 14+, Docker
+**Prerequisites:** Node.js 24+, PostgreSQL 14+, Docker
 
 ```bash
 git clone https://github.com/lauppv/cyberstars.git

@@ -6,7 +6,7 @@ Thanks for your interest in contributing! CyberStars is an open-source coding ed
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 24+
 - PostgreSQL 14+
 - Docker (required for code execution sandboxing)
 - Linux or macOS
@@ -49,7 +49,7 @@ psql postgres -c "CREATE DATABASE cyberstars OWNER cyberstars;"
 Pull the Docker images for code execution:
 
 ```bash
-docker pull gcc:14
+docker pull gcc:latest
 docker pull python:3.10-slim
 docker pull eclipse-temurin:21-jdk-alpine
 ```

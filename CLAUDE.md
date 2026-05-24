@@ -23,7 +23,7 @@ npm run db:studio     # Open Prisma Studio GUI
 npx vitest run path   # Run a single test file (substring match)
 ```
 
-CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parallel jobs for lint, typecheck, test (with coverage + PR comment), dead-code (knip), and build. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`). Node version is pinned in `.node-version` — CI reads it via `node-version-file`.
+CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parallel jobs for lint, typecheck, test (with coverage + PR comment), dead-code (knip), and build. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`). Node version is pinned in `.node-version` (currently 24) — CI reads it via `node-version-file`. Keep `.node-version`, `package.json` engines, and your local Node version in sync to avoid lock file mismatches between local and CI.
 
 ## Architecture
 
@@ -45,7 +45,8 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Zod schemas in `server/schemas/` validate all request bodies via `validateBody()` middleware
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
 - Rate limiting: `express-rate-limit` on auth routes (10/15min) and code execution routes (10/min/IP)
-- Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts)
+- Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts). Required Docker images: `gcc:latest`, `python:3.10-slim`, `eclipse-temurin:21-jdk-alpine`
+- Interactive code execution via WebSocket at `/ws/run` — `server.ts` attaches a `WebSocketServer` to the HTTP server, client connects via `useCodeExecution` hook. In production, nginx must proxy `/ws/` with `Upgrade` and `Connection "upgrade"` headers
 - Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`
 
 ### Database (`prisma/`)
@@ -85,9 +86,15 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`, ignores `design/` mockups. Runs in CI; must pass before merge
 - Coverage thresholds enforced in `vite.config.ts`: 70% statements/lines, 50% branches, 60% functions — `npm run test:coverage` fails if below
 
+### Production (`cyber-stars.org`)
+- DigitalOcean VPS, app at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`)
+- nginx reverse proxy on port 443 → localhost:8080. The `/ws/` location block requires `proxy_set_header Upgrade` and `Connection "upgrade"` for WebSocket
+- Deploy: `cd /opt/cyberstars && git pull && npm install && npm run build && pm2 restart cyberstars`
+- Docker images must be pre-pulled on the server: `docker pull gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine`
+
 ## Key conventions
 
-- Vite proxies `/api` and `/auth` to the Express server (configured in `vite.config.ts`)
+- Vite proxies `/api`, `/auth`, and `/ws` to the Express server (configured in `vite.config.ts`)
 - Course metadata is centralised in `client/constants/courses.ts` via `courseMeta(key)` and `courseTitle(key)` — single source of truth for icons, colors, labels
 - Course key constants live in `shared/constants.ts`: `MAIN_COURSE_KEYS`, `ALGO_COURSE_KEYS`, `TERMINAL_COURSE_KEYS`, `ALL_COURSE_KEYS`
 - Gamification (XP, levels, badges) is derived from `UserLessonProgress` data — no separate gamification tables. Streaks are stored client-side in localStorage keyed by user ID (`cyberstars_activity_days_{userId}`)
