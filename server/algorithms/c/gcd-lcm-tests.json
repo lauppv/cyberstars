@@ -1,0 +1,7 @@
+[
+  { "name": "basic case", "input": "12 8", "expected": "GCD: 4\nLCM: 24", "mode": "exact" },
+  { "name": "coprime numbers", "input": "7 13", "expected": "GCD: 1\nLCM: 91", "mode": "exact" },
+  { "name": "one divides the other", "input": "100 25", "expected": "GCD: 25\nLCM: 100", "mode": "exact" },
+  { "name": "equal numbers", "input": "1 1", "expected": "GCD: 1\nLCM: 1", "mode": "exact" },
+  { "name": "larger values", "input": "36 60", "expected": "GCD: 12\nLCM: 180", "mode": "exact" }
+]

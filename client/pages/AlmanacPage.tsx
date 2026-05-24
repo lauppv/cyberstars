@@ -1230,6 +1230,174 @@ SolarWinds accelerated a fundamental shift toward "zero trust" security architec
     readTime: "10 min",
     xp: 35,
   },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1991",
+    emoji: "🌐",
+    grad: "linear-gradient(135deg,#0a2a4a,#1a5a8a)",
+    title: "Tim Berners-Lee gave the web away for free",
+    excerpt:
+      "In 1989, a physicist at CERN proposed a hypertext system to share research papers. By 1991, the first website was live. He could have patented it and become the richest person alive. Instead, he made it free.",
+    fullText: `In March 1989, Tim Berners-Lee, a British software engineer working at CERN in Geneva, submitted a proposal to his boss titled "Information Management: A Proposal." His boss wrote "Vague, but exciting" on the cover page and let him work on it.
+
+The problem was mundane: CERN had thousands of researchers using different computers, different operating systems, and different document formats. Sharing information was a nightmare. Berners-Lee wanted a system where documents on any computer could link to documents on any other computer.
+
+By December 1990, he had built three things: HTML (a language for writing documents with links), HTTP (a protocol for transferring them), and the first web browser (which was also an editor — he imagined a read-write web from the start). On August 6, 1991, the first website went live at info.cern.ch.
+
+The technology could have been patented. CERN could have licensed it. Berners-Lee could have become the wealthiest person in history — the web now generates trillions of dollars in economic activity.
+
+Instead, CERN released the web technology into the public domain on April 30, 1993. No royalties, no licenses, no restrictions. Berners-Lee has said repeatedly that the web only succeeded because it was free. If any single company had owned it, competing standards would have fragmented the network.
+
+By 1995, the web had exploded: Netscape went public, Amazon launched, and the dot-com era began. Today there are nearly 2 billion websites. The entire modern internet economy — social media, streaming, e-commerce, cloud computing — exists because one person decided that connecting humanity mattered more than getting rich.
+
+Berners-Lee was knighted in 2004. He continues to advocate for an open web through the World Wide Web Consortium (W3C) and the Web Foundation. In recent years, he has expressed concern about the web's centralization, surveillance, and misinformation — problems he never anticipated when he wrote that vague, exciting proposal in 1989.`,
+    author: "Editorial",
+    authorEm: "✨",
+    readTime: "7 min",
+    xp: 25,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1995",
+    emoji: "⚡",
+    grad: "linear-gradient(135deg,#3a3a0a,#8a8a1a)",
+    title: "JavaScript was created in 10 days — and it won",
+    excerpt:
+      "Brendan Eich built the first version of JavaScript in just 10 days at Netscape. It was messy, rushed, and full of quirks. It became the most widely used programming language on the planet.",
+    fullText: `In May 1995, Netscape Communications was in a war with Microsoft for control of the web browser market. Netscape Navigator was the dominant browser, but Microsoft was building Internet Explorer. Netscape needed an edge.
+
+Marc Andreessen, Netscape's co-founder, wanted a scripting language that could make web pages interactive — something simpler than Java that designers and part-time programmers could use. He recruited Brendan Eich, a programmer who had been hired to embed the Scheme programming language into the browser.
+
+Plans changed. The language had to look like Java (for marketing reasons), be easy to learn, and be ready immediately. Eich built the first prototype in 10 days, from May 6 to May 15, 1995. It was originally called Mocha, then LiveScript, then finally JavaScript — a name chosen purely for marketing synergy with Sun Microsystems' Java.
+
+The 10-day timeline left permanent marks. JavaScript has two equality operators (== and ===) because the loose one was a hasty design choice. typeof null returns "object" — a bug from day one that can never be fixed because too much code depends on it. Numbers are all 64-bit floats, which means 0.1 + 0.2 !== 0.3.
+
+But JavaScript had one unbeatable advantage: it was the only language that ran in the browser. When Microsoft reverse-engineered it as "JScript" for Internet Explorer, JavaScript became the de facto standard for web interactivity. No committee planned this. No corporation mandated it. It just happened because JavaScript was there first.
+
+The standardization as ECMAScript (1997) gave JavaScript a stable foundation. Then came the AJAX revolution (2005), which showed that JavaScript could build desktop-quality web apps. jQuery (2006) smoothed over browser inconsistencies. Node.js (2009) took JavaScript to the server. Modern frameworks like React, Vue, and Angular turned it into a platform for building everything from mobile apps to desktop software.
+
+Today, JavaScript runs on virtually every computing device on Earth. GitHub's annual survey consistently ranks it as the most used programming language. The messy, rushed, 10-day prototype became the language of the web — and by extension, the language of the modern world.`,
+    author: "CyberBot",
+    authorEm: "🤖",
+    readTime: "7 min",
+    xp: 25,
+  },
+  {
+    cat: "legends",
+    tag: "LEGENDS",
+    year: "1991",
+    emoji: "🐍",
+    grad: "linear-gradient(135deg,#1a3a2a,#2a7a4a)",
+    title: "Python — the language named after Monty Python",
+    excerpt:
+      "Guido van Rossum started Python during a Christmas holiday because he was bored. He named it after his favorite comedy show. Three decades later, it's the world's most popular programming language.",
+    fullText: `In December 1989, Guido van Rossum was looking for a hobby programming project to keep him busy during the Christmas week. He was a researcher at Centrum Wiskunde & Informatica (CWI) in Amsterdam, and he'd been thinking about a successor to the ABC language — something that kept ABC's elegant syntax but fixed its limitations.
+
+He started writing an interpreter for a new scripting language. He named it Python — not after the snake, but after Monty Python's Flying Circus, the British comedy show he loved. The irreverent name set the tone for a language that would prioritize fun and readability.
+
+Python's first public release (version 0.9.0) came in February 1991. From the beginning, it had features that were radical at the time: indentation-based syntax (no curly braces), dynamic typing, garbage collection, and a clear, readable style that read almost like English.
+
+The design philosophy was captured in "The Zen of Python" (type import this in a Python shell): "Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Readability counts."
+
+For years, Python was a niche language — popular in academia and scripting, but overlooked for "serious" software. Java and C++ dominated industry. JavaScript owned the web. Python was the quiet language that scientists used because they didn't have time to fight with compilers.
+
+Then everything changed. The rise of data science and machine learning in the 2010s made Python the language of AI. Libraries like NumPy, Pandas, and scikit-learn provided powerful tools. TensorFlow and PyTorch made Python the default for deep learning. Suddenly, the most important code in the world was being written in a language named after a comedy show.
+
+Today, Python is the most popular programming language in the world by most measures. It's taught in more universities than any other language. It powers Instagram, YouTube, Dropbox, and Spotify's backend. It's the language of choice for AI research, data analysis, automation, and education.
+
+Van Rossum served as Python's "Benevolent Dictator For Life" (BDFL) until 2018, when he stepped down after a contentious debate about a syntax proposal. He later joined Microsoft, where he works on making Python faster. The language he built during a boring Christmas has become the most important tool in modern computing.`,
+    author: "Ms. Diana",
+    authorEm: "🦄",
+    readTime: "8 min",
+    xp: 25,
+  },
+  {
+    cat: "history",
+    tag: "HISTORY",
+    year: "1970",
+    emoji: "🗄️",
+    grad: "linear-gradient(135deg,#2a1a3a,#5a3a7a)",
+    title: "The database revolution — how SQL changed everything",
+    excerpt:
+      "In 1970, Edgar Codd published a paper proposing that data should be stored in tables with relationships between them. His employer, IBM, ignored it. Others didn't. The relational database became the foundation of modern software.",
+    fullText: `Before relational databases, storing and retrieving data was a nightmare. Programs in the 1960s used hierarchical or network databases where data was organized in rigid tree structures. If you wanted to ask a new question about your data — one the original programmer hadn't anticipated — you often had to rewrite the entire program.
+
+In June 1970, Edgar F. Codd, a mathematician at IBM's San Jose Research Laboratory, published "A Relational Model of Data for Large Shared Data Banks." The paper proposed something revolutionary: store data in simple tables (relations) with rows and columns. Relationships between data would be expressed through shared values, not physical pointers or file structures.
+
+The beauty was in the separation of concerns. The programmer would describe what data they wanted (declaratively), and the database system would figure out how to get it efficiently. This was the opposite of existing systems where programmers had to navigate the physical data structure themselves.
+
+IBM, despite employing Codd, was slow to act. Their existing database product (IMS) was hugely profitable, and a relational system would cannibalize it. So others moved first. A small startup called Relational Software Inc. built the first commercial relational database in 1979 and named it Oracle. Larry Ellison, its co-founder, had read Codd's paper and realized IBM was leaving money on the table.
+
+IBM eventually released SQL/DS (1981) and DB2 (1983), but Oracle had a head start. The SQL language — originally called SEQUEL (Structured English Query Language) — became the standard way to talk to relational databases.
+
+SQL's power was in its simplicity. A query like SELECT name FROM students WHERE grade > 90 reads almost like English. Non-programmers could learn it. Business analysts could query data directly instead of filing requests with the IT department.
+
+Today, relational databases are everywhere. PostgreSQL, MySQL, SQLite, SQL Server, and Oracle power virtually every application that stores structured data — from banking systems handling trillions of dollars to the app tracking your running routes. NoSQL databases emerged in the 2010s for specific use cases, but SQL remains the most widely used database language in the world.
+
+Codd received the Turing Award in 1981. He spent his later years frustrated that SQL implementations didn't fully follow his relational model. He died in 2003, leaving behind an invention that quietly runs the world.`,
+    author: "Prof. Andrei",
+    authorEm: "📊",
+    readTime: "8 min",
+    xp: 30,
+  },
+  {
+    cat: "internet",
+    tag: "INTERNET",
+    year: "1983",
+    emoji: "📡",
+    grad: "linear-gradient(135deg,#1a2a3a,#2a5a7a)",
+    title: "TCP/IP — the protocol that glued the internet together",
+    excerpt:
+      "On January 1, 1983, ARPANET switched to TCP/IP. This single protocol change unified dozens of incompatible networks into one internet. It's the reason your phone can talk to a server on the other side of the planet.",
+    fullText: `In the 1970s, the internet didn't exist — but many networks did. ARPANET connected US universities. European networks used different protocols. Corporate networks were islands. None of them could talk to each other. It was like having telephones that only worked within one city.
+
+Vint Cerf and Bob Kahn saw the problem clearly: you couldn't build a global network if every local network spoke a different language. In 1974, they published a paper proposing TCP (Transmission Control Protocol) — a universal protocol that could work across any type of network.
+
+The key insight was the "end-to-end principle." TCP/IP doesn't care what kind of network carries the data — copper wire, fiber optic, radio waves, satellite links. It only cares that data gets from point A to point B reliably. Each network can use whatever technology it wants internally; TCP/IP handles the translation at the boundaries.
+
+IP (Internet Protocol) handles addressing and routing — getting packets from source to destination across multiple networks. TCP handles reliability — making sure all packets arrive, in order, without corruption. Together, they form a two-layer system elegant enough to scale from four computers to four billion.
+
+January 1, 1983 — known as "flag day" — was when ARPANET officially switched from its old NCP protocol to TCP/IP. Every connected machine had to switch simultaneously. It was a massive coordination effort, and some machines didn't make the transition cleanly, but it worked.
+
+The switch to TCP/IP did something profound: it made the internet a "network of networks." Any network that implemented TCP/IP could join. Corporate networks, university networks, military networks, and eventually commercial ISPs all connected to the same fabric. The internet grew from hundreds of hosts in 1983 to millions by the mid-1990s.
+
+Every time you load a web page, send a message, or stream a video, TCP/IP is doing the work underneath. Your request is split into packets, each one individually routed across the internet, possibly taking different paths, then reassembled at the destination. It happens in milliseconds, billions of times per second, across the entire planet.
+
+Cerf and Kahn received the Turing Award in 2004 and the Presidential Medal of Freedom in 2005. Cerf went on to become a VP at Google and is known as one of the "Fathers of the Internet." The protocol they designed in the 1970s still runs, essentially unchanged, under every internet connection in the world.`,
+    author: "CyberBot",
+    authorEm: "🤖",
+    readTime: "8 min",
+    xp: 30,
+  },
+  {
+    cat: "legends",
+    tag: "LEGENDS",
+    year: "1971",
+    emoji: "📧",
+    grad: "linear-gradient(135deg,#2a2a1a,#6a5a2a)",
+    title: "The @ sign — how Ray Tomlinson invented email",
+    excerpt:
+      "In 1971, Ray Tomlinson was looking for a way to send messages between computers. He picked the @ sign because it wasn't used in anyone's name. The first email was something like 'QWERTYUIOP' — he couldn't remember.",
+    fullText: `In 1971, computer messaging existed, but only on the same machine. You could leave a message for another user on your shared computer — like a digital Post-it note. But you couldn't send a message to someone on a different computer.
+
+Ray Tomlinson, an engineer at BBN (the company that built ARPANET), changed that. He was working on a file transfer program called CPYNET and a local messaging program called SNDMSG. He realized he could combine them: use CPYNET to send a message file from one computer to another, and SNDMSG to compose and read it.
+
+The missing piece was addressing. How do you specify both the user and the computer? Tomlinson needed a separator that wouldn't appear in anyone's name. He looked at his keyboard — a Model 33 Teletype — and chose @. It was obscure, unused, and had a nice semantic meaning: user "at" computer.
+
+The first network email was sent between two computers sitting side by side in Tomlinson's office. When asked what the first message said, Tomlinson replied: "Something like QWERTYUIOP." He didn't save it — he had no idea it was historic.
+
+The format user@computer — later user@domain — became universal. It's now the most recognized addressing format in the world. Every email address, every login form, every "contact us" page uses the convention Tomlinson established by looking at his keyboard and picking a rarely-used symbol.
+
+Email grew slowly at first, used mainly by academics and military researchers on ARPANET. But by the 1990s, services like AOL, Hotmail, and Yahoo Mail brought email to hundreds of millions of people. Today, over 300 billion emails are sent every day.
+
+Tomlinson remained modest about his invention. He received the Webby Award in 2009, and the Internet Hall of Fame inducted him in 2012. He died in 2016 at age 74. His legacy lives in every @ sign typed, every inbox refreshed, and every "you've got mail" notification.`,
+    author: "Ms. Diana",
+    authorEm: "🌟",
+    readTime: "6 min",
+    xp: 20,
+  },
 ];
 
 const FUN_FACTS = [

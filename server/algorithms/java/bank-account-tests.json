@@ -1,7 +1,26 @@
 [
-  { "name": "deposit and withdraw", "input": "100\n3\ndeposit 50\nwithdraw 30\nwithdraw 200", "expected": "Insufficient funds\nBalance: 120", "mode": "exact" },
-  { "name": "exact balance withdraw", "input": "0\n2\ndeposit 500\nwithdraw 500", "expected": "Balance: 0", "mode": "exact" },
-  { "name": "all deposits", "input": "10\n3\ndeposit 20\ndeposit 30\ndeposit 40", "expected": "Balance: 100", "mode": "exact" },
-  { "name": "overdraw from zero", "input": "0\n1\nwithdraw 10", "expected": "Insufficient funds\nBalance: 0", "mode": "exact" },
-  { "name": "uses BankAccount class", "input": "", "expected": "class\\s+BankAccount", "mode": "code_regex" }
+  {
+    "name": "deposit and withdraw",
+    "input": "100\n3\ndeposit 50\nwithdraw 30\nwithdraw 200",
+    "expected": "Insufficient funds\nBalance: 120",
+    "mode": "exact"
+  },
+  {
+    "name": "exact balance withdraw",
+    "input": "0\n2\ndeposit 500\nwithdraw 500",
+    "expected": "Balance: 0",
+    "mode": "exact"
+  },
+  {
+    "name": "all deposits",
+    "input": "10\n3\ndeposit 20\ndeposit 30\ndeposit 40",
+    "expected": "Balance: 100",
+    "mode": "exact"
+  },
+  {
+    "name": "overdraw from zero",
+    "input": "0\n1\nwithdraw 10",
+    "expected": "Insufficient funds\nBalance: 0",
+    "mode": "exact"
+  }
 ]

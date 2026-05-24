@@ -813,6 +813,9 @@ export function LaniakeaExplorerPage() {
       let o2Target = 97, o2Current = 97, nextO2Change = 8000;
       const velEl = el.querySelector("#rest-velocity") as HTMLElement;
       const nearestEl = el.querySelector("#rest-nearestBody") as HTMLElement;
+      const approachNameEl = el.querySelector("#rest-approachName") as HTMLElement;
+      const approachDistEl = el.querySelector("#rest-approachDist") as HTMLElement;
+      const approachWrapEl = el.querySelector("#rest-approachWrap") as HTMLElement;
 
       function setPaused(v: boolean) {
         paused = v;
@@ -932,18 +935,66 @@ export function LaniakeaExplorerPage() {
         o2Tick.style.setProperty("--a", o2Angle.toFixed(0) + "deg");
       }
 
+      const _dirToBody = new THREE.Vector3();
+      const _camFwd = new THREE.Vector3();
+
       function updateNearest() {
+        // Camera forward direction
+        _camFwd.set(0, 0, -1).applyQuaternion(camera.quaternion);
+
         let best: any = null, bestD = Infinity;
+
+        // Check planets
         for (const p of planets) {
-          const d = camera.position.distanceTo(p.group.position);
-          if (d < bestD) { bestD = d; best = p; }
+          _dirToBody.subVectors(p.group.position, camera.position);
+          const d = _dirToBody.length();
+          // Dot product > 0 means the object is AHEAD of the camera
+          const dot = _dirToBody.dot(_camFwd);
+          if (dot > 0 && d < bestD) { bestD = d; best = p; }
         }
+
+        // Check black holes
         for (const b of blackHoles) {
-          const d = camera.position.distanceTo(b.group.position);
-          if (d < bestD) { bestD = d; best = { name: "Black hole", type: "bh", radius: 200 }; }
+          _dirToBody.subVectors(b.group.position, camera.position);
+          const d = _dirToBody.length();
+          const dot = _dirToBody.dot(_camFwd);
+          if (dot > 0 && d < bestD) { bestD = d; best = { name: "Black Hole", type: "bh", radius: 200 }; }
         }
-        if (!best) return;
-        nearestEl.textContent = best.name + " · " + (bestD / 100).toFixed(1) + "k km";
+
+        // Check quasars
+        for (const q of quasars) {
+          _dirToBody.subVectors(q.group.position, camera.position);
+          const d = _dirToBody.length();
+          const dot = _dirToBody.dot(_camFwd);
+          if (dot > 0 && d < bestD) { bestD = d; best = { name: "Quasar", type: "quasar", radius: 280 }; }
+        }
+
+        // Check Dyson spheres
+        for (const ds of dysonSpheres) {
+          _dirToBody.subVectors(ds.group.position, camera.position);
+          const d = _dirToBody.length();
+          const dot = _dirToBody.dot(_camFwd);
+          if (dot > 0 && d < bestD) { bestD = d; best = { name: "Dyson Sphere", type: "dyson", radius: 280 }; }
+        }
+
+        if (best) {
+          nearestEl.textContent = best.name + " · " + (bestD / 100).toFixed(1) + "k km";
+          // Format distance for the approach display
+          const distKm = bestD / 100;
+          let distStr: string;
+          if (distKm >= 1000) {
+            distStr = (distKm / 1000).toFixed(1) + "M km";
+          } else {
+            distStr = distKm.toFixed(1) + "k km";
+          }
+          approachNameEl.textContent = best.name;
+          approachDistEl.textContent = distStr;
+          approachWrapEl.classList.add("visible");
+        } else {
+          // Nothing ahead — hide the display
+          nearestEl.textContent = "—";
+          approachWrapEl.classList.remove("visible");
+        }
       }
       let nearestTick = 0;
 
@@ -1183,6 +1234,16 @@ export function LaniakeaExplorerPage() {
         </div>
       </div>
 
+      {/* Approaching body display */}
+      <div className="approach-display" id="rest-approachWrap">
+        <div className="approach-icon">{"◎"}</div>
+        <div className="approach-info">
+          <div className="approach-label">APPROACHING</div>
+          <div className="approach-name" id="rest-approachName">—</div>
+        </div>
+        <div className="approach-dist" id="rest-approachDist">—</div>
+      </div>
+
       {/* Hidden HUD data for nearest body */}
       <span id="rest-nearestBody" style={{ display: "none" }}>{"—"}</span>
 
@@ -1320,4 +1381,12 @@ const laniakeaStyles = `
 .edge-hint.bottom{bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,rgba(255,170,60,.25),transparent)}
 .edge-hint.left{top:0;bottom:0;left:0;width:90px;background:linear-gradient(to right,rgba(255,170,60,.25),transparent)}
 .edge-hint.right{top:0;bottom:0;right:0;width:90px;background:linear-gradient(to left,rgba(255,170,60,.25),transparent)}
+.approach-display{position:fixed;bottom:290px;left:50%;transform:translateX(-50%);z-index:15;display:flex;align-items:center;gap:14px;padding:10px 24px 10px 18px;background:rgba(6,8,14,.65);border:1px solid rgba(108,92,231,.35);border-radius:30px;backdrop-filter:blur(12px);font-family:var(--mono);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s ease,transform .45s ease;transform:translateX(-50%) translateY(8px);pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 24px rgba(108,92,231,.12),inset 0 1px 0 rgba(255,255,255,.04)}
+.approach-display.visible{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.approach-icon{font-size:18px;color:rgba(108,92,231,.85);text-shadow:0 0 10px rgba(108,92,231,.6);animation:approachPulse 2.5s ease-in-out infinite}
+@keyframes approachPulse{0%,100%{opacity:.6;text-shadow:0 0 8px rgba(108,92,231,.4)}50%{opacity:1;text-shadow:0 0 16px rgba(108,92,231,.8)}}
+.approach-info{display:flex;flex-direction:column;gap:1px}
+.approach-label{font-size:8px;letter-spacing:3px;color:rgba(108,92,231,.7);text-transform:uppercase;font-weight:600}
+.approach-name{font-family:var(--font);font-size:15px;font-weight:600;color:rgba(255,255,255,.92);text-shadow:0 0 10px rgba(108,92,231,.25);letter-spacing:.3px;white-space:nowrap}
+.approach-dist{font-size:14px;font-weight:700;color:rgba(120,255,200,.9);text-shadow:0 0 10px rgba(0,214,143,.4);font-variant-numeric:tabular-nums;margin-left:8px;padding-left:14px;border-left:1px solid rgba(108,92,231,.25);white-space:nowrap}
 `;

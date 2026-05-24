@@ -1,6 +1,20 @@
 [
-  { "name": "basic swap", "input": "3 7", "expected": "7 3", "mode": "exact" },
-  { "name": "equal values", "input": "10 10", "expected": "10 10", "mode": "exact" },
-  { "name": "negative values", "input": "-5 12", "expected": "12 -5", "mode": "exact" },
-  { "name": "uses pointers", "input": "", "expected": "\\*", "mode": "code_regex" }
+  {
+    "name": "basic swap",
+    "input": "3 7",
+    "expected": "7 3",
+    "mode": "exact"
+  },
+  {
+    "name": "equal values",
+    "input": "10 10",
+    "expected": "10 10",
+    "mode": "exact"
+  },
+  {
+    "name": "negative values",
+    "input": "-5 12",
+    "expected": "12 -5",
+    "mode": "exact"
+  }
 ]

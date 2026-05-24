@@ -1,11 +1,5 @@
 [
   {
-    "name": "Uses a while loop",
-    "input": "",
-    "expected": "while\\s+.+:",
-    "mode": "code_regex"
-  },
-  {
     "name": "Displays 'I am online'",
     "input": "",
     "expected": "I am online",

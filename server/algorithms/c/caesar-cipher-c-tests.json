@@ -1,0 +1,7 @@
+[
+  { "name": "basic shift 3", "input": "Hello, World!\n3", "expected": "Khoor, Zruog!", "mode": "exact" },
+  { "name": "wrap around lowercase", "input": "xyz\n2", "expected": "zab", "mode": "exact" },
+  { "name": "wrap around uppercase", "input": "XYZ\n5", "expected": "CDE", "mode": "exact" },
+  { "name": "digits and symbols unchanged", "input": "Code 123!\n1", "expected": "Dpef 123!", "mode": "exact" },
+  { "name": "full alphabet shift 13", "input": "abcdefghijklmnopqrstuvwxyz\n13", "expected": "nopqrstuvwxyzabcdefghijklm", "mode": "exact" }
+]

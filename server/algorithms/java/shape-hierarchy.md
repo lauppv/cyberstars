@@ -21,7 +21,7 @@ rectangle 4 6
 circle 3
 
 Output:
-Total: 130.54
+Total: 130.81
 ```
 
 ```

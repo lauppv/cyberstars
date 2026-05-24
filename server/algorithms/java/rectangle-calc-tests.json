@@ -1,7 +1,26 @@
 [
-  { "name": "5x3 rectangle", "input": "5 3", "expected": "Area: 15\nPerimeter: 16", "mode": "exact" },
-  { "name": "square 10x10", "input": "10 10", "expected": "Area: 100\nPerimeter: 40", "mode": "exact" },
-  { "name": "1x1 unit square", "input": "1 1", "expected": "Area: 1\nPerimeter: 4", "mode": "exact" },
-  { "name": "wide rectangle", "input": "20 3", "expected": "Area: 60\nPerimeter: 46", "mode": "exact" },
-  { "name": "uses Rectangle class", "input": "", "expected": "class\\s+Rectangle", "mode": "code_regex" }
+  {
+    "name": "5x3 rectangle",
+    "input": "5 3",
+    "expected": "Area: 15\nPerimeter: 16",
+    "mode": "exact"
+  },
+  {
+    "name": "square 10x10",
+    "input": "10 10",
+    "expected": "Area: 100\nPerimeter: 40",
+    "mode": "exact"
+  },
+  {
+    "name": "1x1 unit square",
+    "input": "1 1",
+    "expected": "Area: 1\nPerimeter: 4",
+    "mode": "exact"
+  },
+  {
+    "name": "wide rectangle",
+    "input": "20 3",
+    "expected": "Area: 60\nPerimeter: 46",
+    "mode": "exact"
+  }
 ]

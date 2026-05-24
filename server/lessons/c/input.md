@@ -63,6 +63,49 @@ The user types two numbers separated by space (or Enter), **scanf** reads both. 
 
 ---
 
+But what if we want to read a **full line** with spaces? **scanf("%s")** stops at the first space, so if the user types **Tommy Vercetti**, scanf only reads **Tommy**. For full lines, we use **fgets**
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    char name[64];
+
+    printf("Full name: ");
+    fgets(name, sizeof(name), stdin);
+
+    printf("Hello %s", name);
+    return 0;
+}
+```
+**fgets** takes three arguments:
+- **name** — where to store the text
+- **sizeof(name)** — the maximum number of characters to read (prevents buffer overflow!)
+- **stdin** — read from standard input (the keyboard)
+
+Unlike **scanf**, **fgets** is **safe** — it will never write more characters than the buffer can hold. This is why **fgets** is preferred over **scanf** for reading strings in real C programs
+
+One small catch: **fgets** keeps the **newline** character (**\n**) at the end. To remove it
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char name[64];
+
+    printf("Full name: ");
+    fgets(name, sizeof(name), stdin);
+    name[strcspn(name, "\n")] = '\0';
+
+    printf("Hello %s!\n", name);
+    return 0;
+}
+```
+**strcspn(name, "\n")** finds the position of the newline, and we replace it with **\0** (the string terminator). This is a common C pattern you'll see everywhere
+
+---
+
 Write a program that asks for a **name** (a single word, no spaces) and an **age** (an int), then displays
 ```text
 Hello <name>, you are <age> years old. Next year you will be <age + 1>

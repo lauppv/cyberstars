@@ -1,0 +1,7 @@
+[
+  { "name": "found in middle", "input": "5\n1 3 5 7 9\n5", "expected": "2", "mode": "exact" },
+  { "name": "not found", "input": "4\n10 20 30 40\n25", "expected": "-1", "mode": "exact" },
+  { "name": "found at start", "input": "5\n2 4 6 8 10\n2", "expected": "0", "mode": "exact" },
+  { "name": "found at end", "input": "5\n2 4 6 8 10\n10", "expected": "4", "mode": "exact" },
+  { "name": "single element found", "input": "1\n7\n7", "expected": "0", "mode": "exact" }
+]

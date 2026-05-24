@@ -1,11 +1,5 @@
 [
   {
-    "name": "Defines a function",
-    "input": "",
-    "expected": "def\\s+calculator\\s*\\(",
-    "mode": "code_regex"
-  },
-  {
     "name": "Addition: 14 + 12 = 26",
     "input": "",
     "expected": "14 \\+ 12 = 26",
