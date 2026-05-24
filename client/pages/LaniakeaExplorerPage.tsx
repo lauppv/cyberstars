@@ -795,27 +795,21 @@ export function LaniakeaExplorerPage() {
       const edgeBottom = el.querySelector(".edge-hint.bottom") as HTMLElement;
       const edgeLeft = el.querySelector(".edge-hint.left") as HTMLElement;
       const edgeRight = el.querySelector(".edge-hint.right") as HTMLElement;
-      const _headingEl = el.querySelector("#rest-heading") as HTMLElement | null;
-      const _dirElm = el.querySelector("#rest-dir") as HTMLElement | null;
-      const evaEl = el.querySelector("#rest-evaTimer") as HTMLElement;
-      const hrEl = el.querySelector("#rest-hrate") as HTMLElement;
-      const o2dec = el.querySelector("#rest-o2dec") as HTMLElement;
-      const posEl = el.querySelector("#rest-posReadout") as HTMLElement;
-      const evaEl2 = el.querySelector("#rest-evaTimer2") as HTMLElement;
-      const hrEl2 = el.querySelector("#rest-hrate2") as HTMLElement;
-      const o2dec2 = el.querySelector("#rest-o2dec2") as HTMLElement;
-      const posEl2 = el.querySelector("#rest-posReadout2") as HTMLElement;
-      const pressureVal = el.querySelector("#rest-pressureVal") as HTMLElement;
-      const pressureTick = el.querySelector("#rest-pressureTick") as HTMLElement;
-      const o2DialVal = el.querySelector("#rest-o2DialVal") as HTMLElement;
-      const o2Tick = el.querySelector("#rest-o2Tick") as HTMLElement;
+      const evaEl = el.querySelector("#hud-eva") as HTMLElement;
+      const hrEl = el.querySelector("#hud-heart") as HTMLElement;
+      const o2SatEl = el.querySelector("#hud-o2sat") as HTMLElement;
+      const posEl = el.querySelector("#hud-position") as HTMLElement;
+      const pressureVal = el.querySelector("#hud-pressure") as HTMLElement;
+      const pressureNeedle = el.querySelector("#hud-pressure-needle") as HTMLElement;
+      const o2DialVal = el.querySelector("#hud-o2level") as HTMLElement;
+      const o2Needle = el.querySelector("#hud-o2-needle") as HTMLElement;
       let pressureTarget = 101.3, pressureCurrent = 101.3, nextPressureChange = 5000;
       let o2Target = 97, o2Current = 97, nextO2Change = 8000;
-      const velEl = el.querySelector("#rest-velocity") as HTMLElement;
-      const nearestEl = el.querySelector("#rest-nearestBody") as HTMLElement;
-      const approachNameEl = el.querySelector("#rest-approachName") as HTMLElement;
-      const approachDistEl = el.querySelector("#rest-approachDist") as HTMLElement;
-      const approachWrapEl = el.querySelector("#rest-approachWrap") as HTMLElement;
+      const velEl = el.querySelector("#hud-velocity") as HTMLElement;
+      const nearestEl = el.querySelector("#hud-nearest") as HTMLElement;
+      const approachNameEl = el.querySelector("#hud-approachName") as HTMLElement;
+      const approachDistEl = el.querySelector("#hud-approachDist") as HTMLElement;
+      const approachWrapEl = el.querySelector("#hud-approachWrap") as HTMLElement;
 
       function setPaused(v: boolean) {
         paused = v;
@@ -900,17 +894,13 @@ export function LaniakeaExplorerPage() {
         const elapsed = Math.floor((now - startTime) / 1000);
         const evaStr = fmt2(Math.floor(elapsed / 3600)) + ":" + fmt2(Math.floor((elapsed % 3600) / 60)) + ":" + fmt2(elapsed % 60);
         evaEl.textContent = evaStr;
-        evaEl2.textContent = evaStr;
         const hrVal = String(60 + Math.round(2 * Math.sin(now * 0.001)));
-        hrEl.innerHTML = hrVal + " <small>BPM</small>";
-        hrEl2.textContent = hrVal;
-        const o2val = String(7 - Math.floor(elapsed / 60) % 4);
-        o2dec.textContent = o2val;
-        o2dec2.textContent = o2val;
+        hrEl.textContent = hrVal;
+        const o2sat = 97 - Math.floor(elapsed / 60) % 4;
+        o2SatEl.textContent = String(o2sat);
         const d = camera.position.length();
         const posStr = (d >= 0 ? "+" : "") + (d / 1000).toFixed(3);
-        posEl.textContent = posStr + " LY";
-        posEl2.textContent = posStr;
+        posEl.textContent = posStr;
         velEl.textContent = Math.round(speed * 600).toLocaleString();
 
         if (now > nextPressureChange) {
@@ -918,11 +908,9 @@ export function LaniakeaExplorerPage() {
           nextPressureChange = now + 6000 + Math.random() * 12000;
         }
         pressureCurrent += (pressureTarget - pressureCurrent) * 0.02;
-        const pInt = Math.floor(pressureCurrent);
-        const pDec = (pressureCurrent - pInt).toFixed(1).slice(1);
-        pressureVal.innerHTML = pInt + "<small>" + pDec + "</small>";
+        pressureVal.textContent = pressureCurrent.toFixed(1);
         const pressureAngle = ((pressureCurrent - 100) / 3) * 180 - 90;
-        pressureTick.style.setProperty("--a", pressureAngle.toFixed(0) + "deg");
+        pressureNeedle.style.transform = `translate(-50%, -100%) rotate(${pressureAngle.toFixed(0)}deg)`;
 
         if (now > nextO2Change) {
           o2Target = 94 + Math.random() * 5;
@@ -930,9 +918,9 @@ export function LaniakeaExplorerPage() {
         }
         o2Current += (o2Target - o2Current) * 0.015;
         const o2Int = Math.round(o2Current);
-        o2DialVal.innerHTML = o2Int + "<small>%</small>";
+        o2DialVal.textContent = String(o2Int);
         const o2Angle = ((o2Current - 90) / 10) * 180 - 90;
-        o2Tick.style.setProperty("--a", o2Angle.toFixed(0) + "deg");
+        o2Needle.style.transform = `translate(-50%, -100%) rotate(${o2Angle.toFixed(0)}deg)`;
       }
 
       const _dirToBody = new THREE.Vector3();
@@ -1162,90 +1150,137 @@ export function LaniakeaExplorerPage() {
 
       <div id="rest-scene" style={{ position: "fixed", inset: 0, zIndex: 0 }} />
 
-      <div className="ck-window-glass" />
+      {/* Vignette overlay */}
+      <div className="hud-vignette" />
 
-      {/* Cockpit */}
-      <div className="cockpit">
-        <div className="ck-top">
-          <div className="ck-vent">{Array.from({ length: 24 }, (_, i) => <span key={i} />)}</div>
-          <div className="ck-ship-tag"><span className="pulse" /><span>CSTR-9 STELLARIS</span><small>MK IV</small></div>
-          <div className="ck-vent">{Array.from({ length: 24 }, (_, i) => <span key={i} />)}</div>
+      {/* Corner brackets */}
+      <svg className="corner-bracket" style={{ top: 16, left: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="0,50 0,0 50,0" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
+      <svg className="corner-bracket" style={{ top: 16, right: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="0,0 50,0 50,50" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
+      <svg className="corner-bracket" style={{ bottom: 16, left: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="0,0 0,50 50,50" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
+      <svg className="corner-bracket" style={{ bottom: 16, right: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="50,0 50,50 0,50" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
+
+      {/* Scanlines */}
+      <div className="hud-scanlines" />
+
+      {/* ── TOP-LEFT: Ship ID + EVA ── */}
+      <div className="hud-panel hud-tl" style={{ position: "fixed", top: 20, left: 20, zIndex: 15 }}>
+        <div className="hud-ship-id">
+          <span className="hud-led" />
+          <span className="hud-ship-name">CSTR-9</span>
+          <span className="hud-ship-sub">STELLARIS MK IV</span>
         </div>
+        <div className="hud-cells">
+          <div className="hud-cell">
+            <span className="hud-label">EVA</span>
+            <span className="hud-value hud-teal" id="hud-eva">00:00:00</span>
+          </div>
+          <div className="hud-cell">
+            <span className="hud-label">Mode</span>
+            <span className="hud-value hud-dim">DRIFT</span>
+          </div>
+        </div>
+      </div>
 
-        {/* Bottom dashboard */}
-        <div className="ck-dash">
-          <div className="ck-dash-inner">
-            <div className="ck-cluster">
-              <div className="dial">
-                <div className="dial-tick" id="rest-pressureTick" style={{ "--a": "30deg" } as any} />
-                <div className="dial-label">Cabin Pressure</div>
-                <div className="dial-value" id="rest-pressureVal">101<small>.3</small></div>
-                <div className="dial-unit">kPa</div>
-              </div>
+      {/* ── TOP-RIGHT: Vitals ── */}
+      <div className="hud-panel hud-tr" style={{ position: "fixed", top: 20, right: 20, zIndex: 15 }}>
+        <div className="hud-cells">
+          <div className="hud-cell">
+            <span className="hud-label">Heart</span>
+            <span className="hud-value hud-pink"><span id="hud-heart">62</span><small> BPM</small></span>
+          </div>
+          <div className="hud-divider-v" />
+          <div className="hud-cell">
+            <span className="hud-label">O₂ Sat</span>
+            <span className="hud-value hud-teal"><span id="hud-o2sat">97</span><small> %</small></span>
+          </div>
+        </div>
+      </div>
 
-              <div className="center-display">
-                <div className="cd-poi" id="rest-poiTitle">
-                  <div className="cd-poi-kicker">{"★"} CyberStars {"·"} Drift Protocol</div>
-                  <div className="cd-poi-text" id="rest-poiName">Open space</div>
-                </div>
-                <div className="cd-mid">
-                  <div className="scope">
-                    <div className="scope-cross" />
-                    <div className="scope-sweep" />
-                    <div className="scope-blip scope-b1" />
-                    <div className="scope-blip scope-b2" />
-                    <div className="scope-blip scope-b3" />
-                    <div className="scope-self" />
-                  </div>
-                  <div className="cd-readouts">
-                    <div className="cd-cell"><span className="cd-label">Velocity</span><span className="cd-value"><span id="rest-velocity">0</span> <small>km/s</small></span></div>
-                    <div className="cd-cell"><span className="cd-label">Thrust</span><span className="cd-value">000<small>%</small></span></div>
-                    <div className="cd-cell"><span className="cd-label">Engine</span><span className="cd-value">DRIFT-1</span></div>
-                    <div className="cd-cell"><span className="cd-label">Course</span><span className="cd-value">OPEN</span></div>
-                    <div className="cd-cell"><span className="cd-label">EVA</span><span className="cd-value"><span id="rest-evaTimer2">00:00:00</span></span></div>
-                    <div className="cd-cell"><span className="cd-label">Position</span><span className="cd-value"><span id="rest-posReadout2">+0.000</span> <small>LY</small></span></div>
-                    <div className="cd-cell"><span className="cd-label">Heart</span><span className="cd-value"><span id="rest-hrate2">62</span> <small>BPM</small></span></div>
-                    <div className="cd-cell"><span className="cd-label">O₂</span><span className="cd-value">9<span id="rest-o2dec2">7</span><small>%</small></span></div>
-                  </div>
-                </div>
-              </div>
+      {/* ── BOTTOM-LEFT: Pressure dial + Velocity ── */}
+      <div className="hud-panel hud-bl" style={{ position: "fixed", bottom: 20, left: 20, zIndex: 15 }}>
+        <div className="hud-dial-row">
+          <div className="mini-dial">
+            {Array.from({ length: 12 }, (_, i) => (
+              <span key={i} className={`dial-mark ${i % 3 === 0 ? "major" : ""}`} style={{ transform: `translate(-50%, -22px) rotate(${i * 30}deg)` }} />
+            ))}
+            <div className="dial-needle amber" id="hud-pressure-needle" style={{ transform: "translate(-50%, -100%) rotate(30deg)" }} />
+            <div className="dial-center amber" />
+          </div>
+          <div className="hud-cell">
+            <span className="hud-label hud-amber-text">Cabin PSI</span>
+            <span className="hud-value hud-amber"><span id="hud-pressure">101.3</span><small> kPa</small></span>
+          </div>
+        </div>
+        <div className="hud-divider-h" />
+        <div className="hud-cell">
+          <span className="hud-label">Velocity</span>
+          <span className="hud-value hud-teal"><span id="hud-velocity">0</span><small> km/s</small></span>
+        </div>
+      </div>
 
-              <div className="dial">
-                <div className="dial-tick" id="rest-o2Tick" style={{ "--a": "0deg" } as any} />
-                <div className="dial-label">O₂ Level</div>
-                <div className="dial-value" id="rest-o2DialVal">97<small>%</small></div>
-                <div className="dial-unit">nominal</div>
-              </div>
+      {/* ── BOTTOM-RIGHT: O2 dial + Position ── */}
+      <div className="hud-panel hud-br" style={{ position: "fixed", bottom: 20, right: 20, zIndex: 15 }}>
+        <div className="hud-dial-row">
+          <div className="mini-dial teal">
+            {Array.from({ length: 12 }, (_, i) => (
+              <span key={i} className={`dial-mark teal ${i % 3 === 0 ? "major" : ""}`} style={{ transform: `translate(-50%, -22px) rotate(${i * 30}deg)` }} />
+            ))}
+            <div className="dial-needle teal" id="hud-o2-needle" style={{ transform: "translate(-50%, -100%) rotate(0deg)" }} />
+            <div className="dial-center teal" />
+          </div>
+          <div className="hud-cell">
+            <span className="hud-label hud-teal-text">O₂ Level</span>
+            <span className="hud-value hud-teal"><span id="hud-o2level">97</span><small> %</small></span>
+          </div>
+        </div>
+        <div className="hud-divider-h" />
+        <div className="hud-cell">
+          <span className="hud-label">Position</span>
+          <span className="hud-value hud-accent"><span id="hud-position">+0.000</span><small> LY</small></span>
+        </div>
+      </div>
+
+      {/* ── BOTTOM-CENTER: Scope + Nearest + Course ── */}
+      <div className="hud-panel hud-bc" style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", zIndex: 15 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          {/* Mini scope */}
+          <div className="mini-scope">
+            <div className="scope-grid-v" />
+            <div className="scope-grid-h" />
+            <div className="scope-inner-ring" />
+            <div className="scope-sweep" />
+            <div className="scope-self" />
+            <div className="scope-blip scope-blip-1" style={{ left: "70%", top: "30%" }} />
+            <div className="scope-blip scope-blip-2" style={{ left: "25%", top: "62%" }} />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <div className="hud-cell">
+              <span className="hud-label">Nearest</span>
+              <span className="hud-value hud-amber" style={{ fontSize: 13 }} id="hud-nearest">{"—"}</span>
             </div>
-
-            <div className="ck-bottom-strip">
-              <div className="btn-grid">
-                <span className="btn amber lit" /><span className="btn amber" /><span className="btn green" /><span className="btn" /><span className="btn amber" /><span className="btn" />
-                <span className="btn amber" /><span className="btn red" /><span className="btn amber" /><span className="btn green" /><span className="btn amber lit" /><span className="btn toggle" />
+            <div style={{ display: "flex", gap: 14 }}>
+              <div className="hud-cell">
+                <span className="hud-label">Engine</span>
+                <span className="hud-value hud-dim" style={{ fontSize: 13 }}>DRIFT-1</span>
               </div>
-              <div className="yoke-stick"><div className="grip" /><div className="shaft" /><div className="base" /></div>
-              <div className="yoke-stick"><div className="grip" /><div className="shaft" /><div className="base" /></div>
-              <div className="btn-grid">
-                <span className="btn green" /><span className="btn amber" /><span className="btn" /><span className="btn amber" /><span className="btn red" /><span className="btn toggle" />
-                <span className="btn" /><span className="btn amber lit" /><span className="btn green" /><span className="btn amber" /><span className="btn amber" /><span className="btn" />
+              <div className="hud-cell">
+                <span className="hud-label">Course</span>
+                <span className="hud-value hud-dim" style={{ fontSize: 13 }}>OPEN</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Approaching body display */}
-      <div className="approach-display" id="rest-approachWrap">
-        <div className="approach-icon">{"◎"}</div>
-        <div className="approach-info">
-          <div className="approach-label">APPROACHING</div>
-          <div className="approach-name" id="rest-approachName">—</div>
+      {/* ── Approach display ── */}
+      <div className="hud-approach" id="hud-approachWrap">
+        <span className="hud-approach-icon">{"◎"}</span>
+        <div className="hud-approach-info">
+          <span className="hud-approach-label">Approaching</span>
+          <span className="hud-approach-name" id="hud-approachName">{"—"}</span>
         </div>
-        <div className="approach-dist" id="rest-approachDist">—</div>
+        <span className="hud-approach-dist" id="hud-approachDist">{"—"}</span>
       </div>
-
-      {/* Hidden HUD data for nearest body */}
-      <span id="rest-nearestBody" style={{ display: "none" }}>{"—"}</span>
 
       <div className="cursor-dot" id="rest-cursor" />
       <div className="edge-hint top" />
@@ -1253,21 +1288,13 @@ export function LaniakeaExplorerPage() {
       <div className="edge-hint left" />
       <div className="edge-hint right" />
 
-      <a href="#" className="rest-exit exit">{"✕"} EXIT REST MODE</a>
+      <a href="#" className="rest-exit exit">{"✕"} EXIT</a>
 
       <div className="pause" id="rest-pause">
         <div className="pause-icon">{"✦"}</div>
         <div className="pause-title">Paused</div>
         <div className="pause-sub">Take a moment. Click anywhere or press <kbd style={{ fontFamily: "var(--mono)", background: "rgba(255,255,255,.1)", padding: "1px 6px", borderRadius: "4px", border: "1px solid rgba(255,255,255,.15)" }}>Esc</kbd> to keep drifting.</div>
         <button className="pause-cta" id="rest-resumeBtn">{"▸"} RESUME</button>
-      </div>
-
-      {/* Hidden HUD data */}
-      <div style={{ display: "none" }}>
-        <span id="rest-evaTimer">00:00:00</span>
-        <span id="rest-hrate">62 BPM</span>
-        <span id="rest-o2dec">7</span>
-        <span id="rest-posReadout">+0.000 LY</span>
       </div>
     </div>
   );
@@ -1276,83 +1303,90 @@ export function LaniakeaExplorerPage() {
 const laniakeaStyles = `
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--accent:#6C5CE7;--success:#00D68F;--warning:#FFAA00;--mono:'JetBrains Mono','Fira Code',monospace;--font:'Space Grotesk',system-ui,sans-serif}
-.ck-window-glass{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 50% 35%,transparent 65%,rgba(0,0,0,.35) 100%);z-index:9;mix-blend-mode:multiply}
-.cockpit{position:fixed;inset:0;z-index:10;pointer-events:none;font-family:var(--mono);color:#e8e8f0}
-.cockpit *{pointer-events:none}
-.ck-top{position:absolute;top:0;left:0;right:0;height:46px;background:linear-gradient(180deg,#050810 0%,#0e131c 60%,#161c28 100%);border-bottom:1px solid #1a2330;box-shadow:0 4px 14px rgba(0,0,0,.7),inset 0 -1px 0 rgba(255,170,68,.2);display:flex;align-items:center;padding:0 16px;gap:14px}
-.ck-top::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:linear-gradient(90deg,transparent 8%,rgba(255,170,68,.55) 30%,rgba(255,170,68,.55) 70%,transparent 92%)}
-.ck-vent{flex:1;height:14px;display:flex;gap:3px;align-items:center;justify-content:center;overflow:hidden}
-.ck-vent span{flex:0 0 3px;height:100%;background:rgba(255,170,68,.42);border-radius:1px;box-shadow:0 0 4px rgba(255,170,68,.4)}
-.ck-vent span:nth-child(3n){background:rgba(0,214,143,.55);box-shadow:0 0 4px rgba(0,214,143,.5)}
-.ck-vent span:nth-child(7n){background:rgba(92,196,255,.6);box-shadow:0 0 4px rgba(92,196,255,.5)}
-.ck-ship-tag{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,170,68,.85);text-shadow:0 0 8px rgba(255,170,68,.5);padding:0 22px;border-left:1px solid #2a3245;border-right:1px solid #2a3245;display:flex;align-items:center;gap:14px;white-space:nowrap;height:32px}
-.ck-ship-tag .pulse{width:8px;height:8px;border-radius:50%;background:#00d68f;box-shadow:0 0 8px #00d68f;animation:ledP 2s ease-in-out infinite}
-.ck-ship-tag small{font-size:9px;color:rgba(180,200,220,.5);letter-spacing:2px;font-weight:500}
+
+/* ── Vignette + scanlines ── */
+.hud-vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 70% 65% at 50% 50%,transparent 50%,rgba(0,0,0,.4) 100%)}
+.hud-scanlines{position:fixed;inset:0;z-index:4;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.08) 3px,rgba(0,0,0,.08) 4px);opacity:.3}
+
+/* ── Corner brackets ── */
+.corner-bracket{position:fixed;z-index:5;pointer-events:none}
+
+/* ── HUD Panels ── */
+.hud-panel{background:rgba(6,8,18,.55);border:1px solid rgba(108,92,231,.25);border-radius:14px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 4px 24px rgba(0,0,0,.5),0 0 20px rgba(108,92,231,.08),inset 0 1px 0 rgba(255,255,255,.04);padding:12px 16px;pointer-events:none;font-family:var(--mono);color:#e8e8f0;opacity:0;animation:hudFadeIn .8s cubic-bezier(.22,1,.36,1) forwards}
+.hud-tl{animation-delay:.3s}
+.hud-tr{animation-delay:.45s}
+.hud-bl{animation-delay:.6s}
+.hud-br{animation-delay:.75s}
+.hud-bc{animation-delay:.9s}
+@keyframes hudFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hud-bc{animation:hudFadeInCenter .8s cubic-bezier(.22,1,.36,1) .9s forwards!important;opacity:0!important}
+@keyframes hudFadeInCenter{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ── Ship identity ── */
+.hud-ship-id{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.hud-led{display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(0,214,143,.9);box-shadow:0 0 8px rgba(0,214,143,.9);animation:ledP 2s ease-in-out infinite;flex-shrink:0}
 @keyframes ledP{0%,100%{opacity:1}50%{opacity:.35}}
-.dial{width:128px;height:128px;border-radius:50%;background:radial-gradient(circle at 50% 30%,#1a2030 0%,#0a0d18 70%);border:2px solid #1a2330;box-shadow:inset 0 0 22px rgba(0,0,0,.75),0 6px 14px rgba(0,0,0,.55),0 0 0 1px rgba(255,170,68,.15);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex-shrink:0}
-.dial::before{content:'';position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(255,170,68,.32);box-shadow:inset 0 0 10px rgba(255,170,68,.1)}
-.dial::after{content:'';position:absolute;inset:14px;border-radius:50%;border:1px dashed rgba(255,170,68,.18);background:radial-gradient(circle,transparent 60%,rgba(255,170,68,.04) 100%)}
-.dial-label{font-size:8px;letter-spacing:2.5px;color:rgba(255,170,68,.75);text-transform:uppercase;font-weight:700;margin-bottom:3px;position:relative;z-index:1}
-.dial-value{font-size:26px;font-weight:700;color:#ffb858;text-shadow:0 0 12px rgba(255,170,68,.65);font-variant-numeric:tabular-nums;font-family:var(--mono);line-height:1;position:relative;z-index:1}
-.dial-value small{font-size:13px;opacity:.8;font-weight:500;letter-spacing:1px}
-.dial-unit{font-size:9px;color:rgba(255,170,68,.55);letter-spacing:1.5px;margin-top:3px;text-transform:uppercase;position:relative;z-index:1}
-.dial-tick{position:absolute;top:50%;left:50%;width:2px;height:54px;transform-origin:bottom center;background:linear-gradient(to top,#00d68f,transparent 80%);box-shadow:0 0 6px #00d68f;border-radius:1px;transform:translate(-50%,-100%) rotate(var(--a,30deg));z-index:0}
-.ck-dash{position:absolute;bottom:0;left:0;right:0;height:280px;background:linear-gradient(180deg,#0a0d18 0%,#0c1018 50%,#050810 100%);border-top:2px solid #1a2330;box-shadow:0 -8px 28px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,170,68,.16)}
-.ck-dash::before{content:'';position:absolute;top:-2px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 5%,rgba(255,170,68,.55) 20%,rgba(255,170,68,.55) 80%,transparent 95%)}
-.ck-dash-inner{position:relative;height:100%;display:flex;flex-direction:column;padding:20px 6% 16px}
-.ck-cluster{display:flex;align-items:center;gap:18px;flex:1;min-height:0}
-.center-display{flex:1;align-self:stretch;background:linear-gradient(180deg,#06080e 0%,#0a0d14 100%);border:1px solid #2a3245;border-radius:6px;padding:10px 14px;position:relative;display:flex;flex-direction:column;gap:6px;box-shadow:inset 0 0 28px rgba(0,214,143,.06),0 0 16px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);overflow:hidden}
-.center-display::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.18) 3px,rgba(0,0,0,.18) 4px);pointer-events:none;border-radius:6px}
-.center-display > *{position:relative;z-index:1}
-.cd-poi{display:flex;flex-direction:column;align-items:center;text-align:center;padding-bottom:6px;border-bottom:1px dashed rgba(255,170,68,.25);transition:opacity .6s ease}
-.cd-poi-kicker{font-family:var(--mono);font-size:8px;letter-spacing:3.2px;color:rgba(255,170,68,.7);text-transform:uppercase;margin-bottom:1px}
-.cd-poi-text{font-family:var(--font);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);text-shadow:0 0 10px rgba(255,170,68,.3);letter-spacing:.4px}
-.cd-cell{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 2px;border-right:1px solid rgba(0,214,143,.1);border-bottom:1px solid rgba(0,214,143,.1)}
-.cd-cell:nth-child(4n){border-right:none}
-.cd-cell:nth-child(n+5){border-bottom:none}
-.cd-label{font-size:8px;letter-spacing:1.8px;color:rgba(220,120,255,.75);text-transform:uppercase;margin-bottom:2px}
-.cd-value{font-size:13px;font-weight:700;color:rgba(120,255,200,.95);text-shadow:0 0 8px rgba(0,214,143,.45);font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1.1}
-.cd-value small{font-size:9px;opacity:.6;letter-spacing:1px;font-weight:500}
-.cd-mid{display:flex;gap:12px;flex:1;min-height:0;align-items:stretch}
-.cd-readouts{flex:1;display:grid;grid-template-columns:repeat(4,1fr);align-content:center;gap:0}
-.scope{position:relative;flex-shrink:0;width:96px;height:96px;border-radius:50%;border:1px solid rgba(0,214,143,.32);background:radial-gradient(circle at 50% 50%,rgba(0,214,143,.06) 0%,transparent 70%);box-shadow:0 0 18px rgba(0,214,143,.1),inset 0 0 14px rgba(0,214,143,.08)}
-.scope::before,.scope::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
-.scope::before{inset:13%;border:1px dashed rgba(0,214,143,.18)}
-.scope::after{inset:36%;border:1px solid rgba(0,214,143,.25)}
-.scope-sweep{position:absolute;top:50%;left:50%;width:50%;height:1px;transform-origin:left center;background:linear-gradient(90deg,rgba(0,214,143,.85),transparent);box-shadow:0 0 6px rgba(0,214,143,.6);animation:sweep 5s linear infinite}
-@keyframes sweep{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.scope-cross::before,.scope-cross::after{content:'';position:absolute;background:rgba(0,214,143,.14)}
-.scope-cross::before{left:50%;top:0;bottom:0;width:1px}
-.scope-cross::after{top:50%;left:0;right:0;height:1px}
-.scope-self{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;transform:translate(-50%,-50%);z-index:2}
-.scope-blip{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffaa44;box-shadow:0 0 5px #ffaa44;transform:translate(-50%,-50%)}
-.scope-b1{left:72%;top:32%;animation:blipA 7s ease-in-out infinite}
-.scope-b2{left:28%;top:65%;animation:blipB 11s ease-in-out infinite;background:#5cc4ff;box-shadow:0 0 5px #5cc4ff}
-.scope-b3{left:58%;top:78%;animation:blipA 9s ease-in-out -3s infinite}
+.hud-ship-name{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,170,68,.85);text-shadow:0 0 8px rgba(255,170,68,.35)}
+.hud-ship-sub{font-size:9px;color:rgba(180,190,220,.45);letter-spacing:2px}
+
+/* ── HUD cells (label+value) ── */
+.hud-cells{display:flex;gap:16px;align-items:flex-start}
+.hud-cell{display:flex;flex-direction:column;gap:2px}
+.hud-label{font-size:8px;letter-spacing:2.5px;color:rgba(220,120,255,.75);text-transform:uppercase;font-weight:600}
+.hud-label.hud-amber-text{color:rgba(255,170,68,.65)}
+.hud-label.hud-teal-text{color:rgba(0,214,143,.65)}
+.hud-value{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.hud-value small{font-size:9px;opacity:.6;margin-left:3px;font-weight:500;letter-spacing:1px}
+.hud-value.hud-teal{color:rgba(0,214,143,.9);text-shadow:0 0 10px rgba(0,214,143,.35)}
+.hud-value.hud-amber{color:rgba(255,170,68,.85);text-shadow:0 0 10px rgba(255,170,68,.35)}
+.hud-value.hud-pink{color:#ff6b8a;text-shadow:0 0 10px rgba(255,107,138,.3)}
+.hud-value.hud-accent{color:rgba(108,92,231,.85);text-shadow:0 0 10px rgba(108,92,231,.3)}
+.hud-value.hud-dim{color:rgba(180,190,220,.45);text-shadow:none}
+.hud-divider-v{width:1px;align-self:stretch;background:rgba(108,92,231,.25)}
+.hud-divider-h{height:1px;background:rgba(108,92,231,.25);margin:10px 0}
+
+/* ── Mini dials ── */
+.hud-dial-row{display:flex;align-items:center;gap:12px}
+.mini-dial{width:52px;height:52px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 50% 35%,rgba(20,24,35,.9) 0%,rgba(6,8,14,.95) 70%);border:1.5px solid rgba(255,170,68,.27);box-shadow:inset 0 0 12px rgba(0,0,0,.6),0 0 8px rgba(255,170,68,.14);position:relative}
+.mini-dial.teal{border-color:rgba(0,214,143,.27);box-shadow:inset 0 0 12px rgba(0,0,0,.6),0 0 8px rgba(0,214,143,.14)}
+.dial-mark{position:absolute;left:50%;top:50%;width:1px;height:4px;background:rgba(255,170,68,.2);transform-origin:0 22px}
+.dial-mark.major{background:rgba(255,170,68,.55);width:1.5px}
+.dial-mark.teal{background:rgba(0,214,143,.2)}
+.dial-mark.teal.major{background:rgba(0,214,143,.55)}
+.dial-needle{position:absolute;left:50%;top:50%;width:2px;height:18px;border-radius:1px;background:linear-gradient(to top,rgba(255,170,68,.85),transparent 85%);box-shadow:0 0 6px rgba(255,170,68,.85);transform-origin:bottom center;transition:transform 1s ease}
+.dial-needle.teal{background:linear-gradient(to top,rgba(0,214,143,.9),transparent 85%);box-shadow:0 0 6px rgba(0,214,143,.9)}
+.dial-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:rgba(255,170,68,.85);box-shadow:0 0 4px rgba(255,170,68,.85)}
+.dial-center.teal{background:rgba(0,214,143,.9);box-shadow:0 0 4px rgba(0,214,143,.9)}
+
+/* ── Mini scope ── */
+.mini-scope{width:72px;height:72px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,214,143,.3);background:radial-gradient(circle,rgba(0,214,143,.05) 0%,transparent 70%);box-shadow:0 0 14px rgba(0,214,143,.08),inset 0 0 10px rgba(0,214,143,.06);position:relative}
+.scope-grid-v{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(0,214,143,.12)}
+.scope-grid-h{position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(0,214,143,.12)}
+.scope-inner-ring{position:absolute;inset:30%;border-radius:50%;border:1px dashed rgba(0,214,143,.15)}
+.scope-sweep{position:absolute;top:50%;left:50%;width:50%;height:1px;transform-origin:left center;background:linear-gradient(90deg,rgba(0,214,143,.8),transparent);box-shadow:0 0 5px rgba(0,214,143,.5);animation:scopeSweep 5s linear infinite}
+@keyframes scopeSweep{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.scope-self{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;z-index:2}
+.scope-blip{position:absolute;width:3px;height:3px;border-radius:50%;transform:translate(-50%,-50%)}
+.scope-blip-1{background:rgba(255,170,68,.85);box-shadow:0 0 4px rgba(255,170,68,.85);animation:blipA 7s ease-in-out infinite}
+.scope-blip-2{background:#5cc4ff;box-shadow:0 0 4px #5cc4ff;animation:blipB 11s ease-in-out infinite}
 @keyframes blipA{0%,100%{opacity:0}30%,60%{opacity:1}}
 @keyframes blipB{0%,100%{opacity:.2}40%,80%{opacity:.9}}
-.ck-bottom-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:14px;height:74px}
-.btn-grid{display:grid;grid-template-columns:repeat(6,18px);grid-template-rows:repeat(2,1fr);gap:3px;height:42px;align-self:flex-start;margin-top:14px}
-.btn{background:linear-gradient(180deg,#1a2030,#0a0d18);border:1px solid #2a3245;border-radius:2px;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.btn.amber{background:linear-gradient(180deg,#3a1f08,#1a0d05);border-color:#5a3010;box-shadow:inset 0 0 6px rgba(255,140,40,.4),0 0 4px rgba(255,140,40,.18)}
-.btn.amber::after{content:'';position:absolute;left:4px;right:4px;top:50%;transform:translateY(-50%);height:2px;background:#ffaa44;border-radius:1px;box-shadow:0 0 4px #ffaa44}
-.btn.amber.lit::after{background:#ffe0a0;box-shadow:0 0 8px #ffe0a0}
-.btn.green{background:linear-gradient(180deg,#0a3a25,#051a10);border-color:#1a5a3a}
-.btn.green::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:#00d68f;box-shadow:0 0 5px #00d68f}
-.btn.red{background:linear-gradient(180deg,#3a0a0a,#1a0505);border-color:#5a1a1a}
-.btn.red::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:#ff4a4a;box-shadow:0 0 5px #ff4a4a;animation:ledP 1.8s ease-in-out infinite}
-.btn.toggle{background:linear-gradient(180deg,#252a35,#0a0d14);border-color:#454a55}
-.btn.toggle::after{content:'';position:absolute;left:50%;top:30%;transform:translateX(-50%);width:4px;height:8px;border-radius:1px;background:linear-gradient(180deg,#c0c0d0,#606070)}
-.yoke-stick{position:relative;width:74px;height:104px;flex-shrink:0}
-.yoke-stick .base{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:88px;height:30px;background:linear-gradient(180deg,#2a3040,#0e1218);border:1px solid #2a3245;border-radius:18px 18px 4px 4px;box-shadow:0 4px 10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06)}
-.yoke-stick .base::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:50px;height:3px;background:#00d68f;border-radius:2px;box-shadow:0 0 4px rgba(0,214,143,.6);opacity:.7}
-.yoke-stick .shaft{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:13px;height:42px;background:linear-gradient(90deg,#15191f 0%,#3a4255 50%,#15191f 100%);border-radius:3px;box-shadow:inset 0 0 4px rgba(0,0,0,.5)}
-.yoke-stick .grip{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);width:44px;height:44px;background:linear-gradient(180deg,#252a35 0%,#15191f 100%);border:1px solid #353a45;border-radius:10px 10px 5px 5px;box-shadow:0 -3px 8px rgba(0,0,0,.5),inset 0 0 8px rgba(0,0,0,.5)}
-.yoke-stick .grip::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:#ff4a4a;box-shadow:0 0 7px #ff4a4a;animation:ledP 1.5s ease-in-out infinite}
-.yoke-stick .grip::after{content:'';position:absolute;top:24px;left:9px;right:9px;height:2px;background:#00d68f;border-radius:1px;box-shadow:0 0 4px #00d68f}
-.poi-banner{position:absolute;top:68px;left:50%;transform:translateX(-50%);text-align:center;font-family:var(--font);transition:opacity .6s ease;z-index:14;pointer-events:none}
-.exit{position:fixed;top:18px;right:18px;z-index:20;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);color:#e8e8f0;padding:8px 16px;border-radius:20px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.5px;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;pointer-events:auto}
+
+/* ── Approach display ── */
+.hud-approach{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:16;display:flex;align-items:center;gap:12px;padding:10px 22px 10px 16px;background:rgba(6,8,18,.55);border:1px solid rgba(108,92,231,.25);border-radius:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 20px rgba(108,92,231,.1);font-family:var(--mono);pointer-events:none;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s ease,transform .45s ease}
+.hud-approach.visible{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.hud-approach-icon{font-size:16px;color:rgba(108,92,231,.85);text-shadow:0 0 10px rgba(108,92,231,.85);animation:approachPulse 2.5s ease-in-out infinite}
+@keyframes approachPulse{0%,100%{opacity:.6;text-shadow:0 0 8px rgba(108,92,231,.4)}50%{opacity:1;text-shadow:0 0 16px rgba(108,92,231,.8)}}
+.hud-approach-info{display:flex;flex-direction:column;gap:1px}
+.hud-approach-label{font-size:7px;letter-spacing:3px;color:rgba(108,92,231,.65);text-transform:uppercase;font-weight:600}
+.hud-approach-name{font-family:var(--font);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.3px}
+.hud-approach-dist{font-size:13px;font-weight:700;color:rgba(0,214,143,.9);text-shadow:0 0 8px rgba(0,214,143,.3);font-variant-numeric:tabular-nums;margin-left:6px;padding-left:12px;border-left:1px solid rgba(108,92,231,.25)}
+
+/* ── Exit button ── */
+.exit{position:fixed;top:78px;right:18px;z-index:20;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);color:#e8e8f0;padding:7px 14px;border-radius:20px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:1.5px;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;pointer-events:auto}
 .exit:hover{background:rgba(255,107,107,.2);border-color:rgba(255,107,107,.5);color:#fff}
+
+/* ── Intro ── */
 .intro{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at center,rgba(10,8,24,.92) 0%,#000 80%);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;cursor:pointer;transition:opacity .8s ease,visibility .8s ease}
 .intro.gone{opacity:0;visibility:hidden;pointer-events:none}
 .intro-kicker{font-family:var(--mono);font-size:11px;letter-spacing:4px;color:rgba(108,92,231,.9);text-transform:uppercase;margin-bottom:14px}
@@ -1364,6 +1398,8 @@ const laniakeaStyles = `
 .intro-btn{padding:14px 32px;background:rgba(108,92,231,.15);border:1px solid rgba(108,92,231,.5);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;border-radius:30px;cursor:pointer;transition:all .2s;backdrop-filter:blur(8px)}
 .intro-btn:hover{background:var(--accent);box-shadow:0 0 30px rgba(108,92,231,.5)}
 .intro-hint{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(150,150,170,.5);text-transform:uppercase}
+
+/* ── Pause ── */
 .pause{position:fixed;inset:0;z-index:40;background:rgba(5,5,15,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;pointer-events:auto;cursor:pointer;color:#e8e8f0}
 .pause.show{opacity:1;visibility:visible}
 .pause-icon{font-size:42px;margin-bottom:14px;opacity:.7;animation:pauseBreath 3s ease-in-out infinite}
@@ -1371,22 +1407,18 @@ const laniakeaStyles = `
 .pause-title{font-size:24px;font-weight:600;letter-spacing:-.3px;margin-bottom:8px}
 .pause-sub{font-size:13px;color:rgba(200,200,220,.65);max-width:380px;line-height:1.6}
 .pause-cta{margin-top:24px;padding:12px 28px;background:rgba(108,92,231,.2);border:1px solid rgba(108,92,231,.5);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;border-radius:30px;cursor:pointer}
+
+/* ── Cursor ── */
 .cursor-dot{position:fixed;width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(180,220,255,.7);background:rgba(180,220,255,.15);box-shadow:0 0 10px rgba(180,220,255,.4);pointer-events:none;z-index:30;transform:translate(-50%,-50%);left:50%;top:50%;transition:border-color .15s,background .15s,box-shadow .15s}
 .cursor-dot.rotating{border-color:rgba(255,170,60,.85);background:rgba(255,170,60,.15);box-shadow:0 0 12px rgba(255,170,60,.5)}
 .cursor-dot::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:3px;height:3px;border-radius:50%;background:rgba(180,220,255,.95);box-shadow:0 0 6px rgba(180,220,255,.8)}
 .cursor-dot.rotating::after{background:rgba(255,220,140,.95);box-shadow:0 0 6px rgba(255,200,100,.9)}
+
+/* ── Edge hints ── */
 .edge-hint{position:fixed;pointer-events:none;z-index:8;opacity:0;transition:opacity .2s}
 .edge-hint.show{opacity:.55}
 .edge-hint.top{top:0;left:0;right:0;height:90px;background:linear-gradient(to bottom,rgba(255,170,60,.25),transparent)}
 .edge-hint.bottom{bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,rgba(255,170,60,.25),transparent)}
 .edge-hint.left{top:0;bottom:0;left:0;width:90px;background:linear-gradient(to right,rgba(255,170,60,.25),transparent)}
 .edge-hint.right{top:0;bottom:0;right:0;width:90px;background:linear-gradient(to left,rgba(255,170,60,.25),transparent)}
-.approach-display{position:fixed;bottom:290px;left:50%;transform:translateX(-50%);z-index:15;display:flex;align-items:center;gap:14px;padding:10px 24px 10px 18px;background:rgba(6,8,14,.65);border:1px solid rgba(108,92,231,.35);border-radius:30px;backdrop-filter:blur(12px);font-family:var(--mono);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s ease,transform .45s ease;transform:translateX(-50%) translateY(8px);pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 24px rgba(108,92,231,.12),inset 0 1px 0 rgba(255,255,255,.04)}
-.approach-display.visible{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-.approach-icon{font-size:18px;color:rgba(108,92,231,.85);text-shadow:0 0 10px rgba(108,92,231,.6);animation:approachPulse 2.5s ease-in-out infinite}
-@keyframes approachPulse{0%,100%{opacity:.6;text-shadow:0 0 8px rgba(108,92,231,.4)}50%{opacity:1;text-shadow:0 0 16px rgba(108,92,231,.8)}}
-.approach-info{display:flex;flex-direction:column;gap:1px}
-.approach-label{font-size:8px;letter-spacing:3px;color:rgba(108,92,231,.7);text-transform:uppercase;font-weight:600}
-.approach-name{font-family:var(--font);font-size:15px;font-weight:600;color:rgba(255,255,255,.92);text-shadow:0 0 10px rgba(108,92,231,.25);letter-spacing:.3px;white-space:nowrap}
-.approach-dist{font-size:14px;font-weight:700;color:rgba(120,255,200,.9);text-shadow:0 0 10px rgba(0,214,143,.4);font-variant-numeric:tabular-nums;margin-left:8px;padding-left:14px;border-left:1px solid rgba(108,92,231,.25);white-space:nowrap}
 `;
