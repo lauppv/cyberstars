@@ -1,8 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
-import { useGamification } from "../hooks/useGamification";
-import { useAuth } from "../context/AuthContext";
-import { XPBar } from "../components/gamification/XPBar";
 import { ALGO_COURSE_KEYS } from "../../shared/constants";
 import { courseMeta } from "../constants/courses";
 
@@ -22,20 +19,10 @@ const LANGS = ALGO_COURSE_KEYS.map((key) => {
 
 export function AlgorithmsPage() {
   const navigate = useNavigate();
-  const g = useGamification();
-  const { isLoggedIn } = useAuth();
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar streak={g.streak} />
-
-      {isLoggedIn && (
-        <XPBar
-          current={g.xpInLevel}
-          max={g.xpForNextLevel}
-          level={g.level}
-        />
-      )}
+      <Topbar />
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-6 py-8">
           <div className="text-center mb-10 text-backdrop">

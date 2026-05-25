@@ -24,7 +24,8 @@ wss.on("connection", (ws) => {
       };
       if (msg.type === "run" && msg.code && msg.language) {
         started = true;
-        handleInteractiveRun(ws, msg.code, msg.language).catch(() => {
+        handleInteractiveRun(ws, msg.code, msg.language).catch((err) => {
+          console.error("[ws/run] execution error:", err);
           ws.send(JSON.stringify({ type: "stderr", data: "Internal error.\n" }));
           ws.send(JSON.stringify({ type: "exit", code: 1 }));
         });

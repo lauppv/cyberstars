@@ -1,13 +1,11 @@
 import { useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
-import { useGamification } from "../hooks/useGamification";
+
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
-import { XPBar } from "../components/gamification/XPBar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import { xpForLesson } from "../../shared/constants";
 import { courseMeta } from "../constants/courses";
 
 const DIFF_FILTERS = ["all", "easy", "medium", "hard"] as const;
@@ -27,7 +25,6 @@ function parseDifficulty(title: string): { diff: "easy" | "medium" | "hard"; nam
 export function AlgorithmListPage() {
   const { lang = "" } = useParams<{ lang: string }>();
   const navigate = useNavigate();
-  const g = useGamification();
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
@@ -80,11 +77,7 @@ export function AlgorithmListPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar streak={g.streak} />
-
-      {isLoggedIn && (
-        <XPBar current={g.xpInLevel} max={g.xpForNextLevel} level={g.level} />
-      )}
+      <Topbar />
 
       <main className="flex-1 max-w-lg mx-auto w-full px-4 py-8">
           <div className="bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border border-[var(--accent)]/30 rounded-[14px] overflow-hidden flex flex-col" style={{ maxHeight: "calc(100vh - 180px)" }}>
@@ -158,9 +151,6 @@ export function AlgorithmListPage() {
                       style={{ background: dc.bg, color: dc.text }}
                     >
                       {lesson.diff}
-                    </span>
-                    <span className="text-[11px] font-semibold text-[var(--accent)] flex-shrink-0">
-                      +{xpForLesson(lesson.sortOrder)} XP
                     </span>
                   </button>
                 );

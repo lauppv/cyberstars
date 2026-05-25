@@ -10,14 +10,5 @@ export interface CourseProgress {
   courseKey: string;
   completed: number;
   total: number;
-  earnedXp: number;
-  totalXp: number;
   lessons: LessonProgressItem[];
-}
-
-export interface LeaderboardEntry {
-  rank: number;
-  name: string;
-  xp: number;
-  isCurrentUser: boolean;
 }

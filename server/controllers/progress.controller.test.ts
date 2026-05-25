@@ -12,7 +12,6 @@ const mockMarkComplete = vi.fn();
 const mockGetSavedCode = vi.fn();
 const mockSaveCode = vi.fn();
 const mockTrackAccess = vi.fn();
-const mockGetLeaderboard = vi.fn();
 
 vi.mock("../services/progress.service.js", () => ({
   getCourseProgress: (...args: unknown[]) => mockGetCourseProgress(...args),
@@ -20,7 +19,6 @@ vi.mock("../services/progress.service.js", () => ({
   getSavedCode: (...args: unknown[]) => mockGetSavedCode(...args),
   saveCode: (...args: unknown[]) => mockSaveCode(...args),
   trackAccess: (...args: unknown[]) => mockTrackAccess(...args),
-  getLeaderboard: (...args: unknown[]) => mockGetLeaderboard(...args),
 }));
 
 vi.mock("@prisma/client", () => ({
@@ -93,26 +91,5 @@ describe("trackAccess", () => {
     await ctrl.trackAccess(req, res);
     expect(mockTrackAccess).toHaveBeenCalledWith(1, "python", "booleans");
     expect(res.json).toHaveBeenCalledWith({ message: "Access tracked" });
-  });
-});
-
-describe("getLeaderboard", () => {
-  it("returns leaderboard with user id", async () => {
-    const board = [{ name: "Test", xp: 100 }];
-    mockGetLeaderboard.mockResolvedValue(board);
-    const req = mockReq();
-    const res = mockRes();
-    await ctrl.getLeaderboard(req, res);
-    expect(mockGetLeaderboard).toHaveBeenCalledWith(1);
-    expect(res.json).toHaveBeenCalledWith(board);
-  });
-
-  it("passes undefined userId when user is not logged in", async () => {
-    const board = [{ name: "Test", xp: 100 }];
-    mockGetLeaderboard.mockResolvedValue(board);
-    const req = mockReq({ user: undefined });
-    const res = mockRes();
-    await ctrl.getLeaderboard(req, res);
-    expect(mockGetLeaderboard).toHaveBeenCalledWith(undefined);
   });
 });

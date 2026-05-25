@@ -1,5 +1,5 @@
 import { api } from "./apiClient";
-import type { CourseProgress, LeaderboardEntry } from "../../shared/progress";
+import type { CourseProgress } from "../../shared/progress";
 
 export function getCourseProgress(courseKey: string) {
   return api.get<CourseProgress>(`/api/progress/${courseKey}`);
@@ -19,8 +19,4 @@ export function saveCode(courseKey: string, lessonSlug: string, code: string) {
 
 export function trackAccess(courseKey: string, lessonSlug: string) {
   return api.post(`/api/progress/${courseKey}/${lessonSlug}/access`);
-}
-
-export function getLeaderboard() {
-  return api.get<LeaderboardEntry[]>("/api/leaderboard");
 }

@@ -1,12 +1,11 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
-import { useGamification } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
 import { courseMeta } from "../constants/courses";
-import { xpForLesson, progressPct, MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from "../../shared/constants";
+import { progressPct, MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from "../../shared/constants";
 
 interface CourseData {
   key: string;
@@ -14,8 +13,6 @@ interface CourseData {
   name: string;
   color: string;
   lessonCount: number;
-  xpTotal: number;
-  xpEarned: number;
   progress: number;
   desc: string;
   chapters: { name: string; slug: string; sortOrder: number; done: boolean }[];
@@ -24,11 +21,11 @@ interface CourseData {
 
 export function CoursesPage() {
   const navigate = useNavigate();
-  const g = useGamification();
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
-  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const [selectedKey, setSelectedKey] = useState<string | null>(searchParams.get("open"));
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
@@ -45,8 +42,6 @@ export function CoursesPage() {
         name: course.title,
         color: courseMeta(course.key).color,
         lessonCount: course.lessons.length,
-        xpTotal: p?.totalXp ?? course.lessons.reduce((sum, l) => sum + xpForLesson(l.sortOrder), 0),
-        xpEarned: p?.earnedXp ?? 0,
         progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
         desc: course.description,
         chapters: course.lessons.map((l) => ({ name: l.title, slug: l.slug, sortOrder: l.sortOrder, done: doneSet.has(l.slug) })),
@@ -60,7 +55,7 @@ export function CoursesPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-        <Topbar streak={g.streak} />
+        <Topbar />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-[var(--text3)]">Loading...</div>
         </main>
@@ -70,12 +65,12 @@ export function CoursesPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar streak={g.streak} />
+      <Topbar />
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-7 py-8 pb-16">
         <div className="text-center mb-8 text-backdrop">
           <p className="text-[var(--text2)] text-sm">
-            Take your time, read carefully, and experiment. The goal isn't to rush through lessons and collect XP — it's to understand, play around, and have fun.
+            Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.
           </p>
         </div>
         {/* Course grid */}
@@ -106,23 +101,6 @@ export function CoursesPage() {
                   <span className="text-[11px] text-[var(--text3)]">
                     <strong className="text-[var(--text2)]">{c.lessonCount}</strong> lessons
                   </span>
-                  <div className="grid grid-cols-2 rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden text-center">
-                    <div className="px-4 py-0.5 text-[9px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] bg-[var(--bg3)] border-r border-[var(--border)]">
-                      Earned
-                    </div>
-                    <div className="px-4 py-0.5 text-[9px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] bg-[var(--bg3)]">
-                      Total XP
-                    </div>
-                    <div
-                      className="px-4 py-1 text-[13px] font-bold border-t border-r border-[var(--border)]"
-                      style={{ color: c.color }}
-                    >
-                      {c.xpEarned}
-                    </div>
-                    <div className="px-4 py-1 text-[13px] font-bold text-[var(--text2)] border-t border-[var(--border)]">
-                      {c.xpTotal}
-                    </div>
-                  </div>
                 </div>
                 <div className="flex items-center justify-between">
                   {c.progress > 0 ? (
@@ -188,7 +166,6 @@ export function CoursesPage() {
                 <div className="text-xl font-bold mb-1">{syllabus.name}</div>
                 <div className="flex gap-3 text-xs text-[var(--text3)]">
                   <span>{syllabus.lessonCount} lessons</span>
-                  <span>{syllabus.xpTotal} XP total</span>
                 </div>
               </div>
               <button
@@ -264,7 +241,6 @@ export function CoursesPage() {
                           <div className="flex-1 min-w-0">
                             <div className={`text-[13px] font-medium ${isNext ? "text-[var(--accent)]" : ""}`}>{ch.name}</div>
                           </div>
-                          <div className="text-[11px] font-semibold text-[var(--accent)]">+{xpForLesson(ch.sortOrder)} XP</div>
                         </div>
                       );
                     })}

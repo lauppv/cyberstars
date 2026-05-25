@@ -9,7 +9,6 @@ import authRoutes from "./routes/auth.routes.js";
 import lessonRoutes from "./routes/lesson.routes.js";
 import codeRoutes from "./routes/code.routes.js";
 import progressRoutes from "./routes/progress.routes.js";
-import leaderboardRoutes from "./routes/leaderboard.routes.js";
 import forumRoutes from "./routes/forum.routes.js";
 import terminalRoutes from "./routes/terminal.routes.js";
 import supportRoutes from "./routes/support.routes.js";
@@ -24,7 +23,6 @@ app.use(cookieParser());
 
 app.use("/auth", authRoutes);
 app.use("/api/run-code", codeRoutes);
-app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/forum", forumRoutes);
 app.use("/api/terminal", terminalRoutes);

@@ -1,36 +1,87 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { useGamification } from "../hooks/useGamification";
 import { Topbar } from "../components/layout/Topbar";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import { StreakWidget } from "../components/gamification/StreakWidget";
-import * as progressService from "../services/progressService";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
 import type { Course } from "../../shared/lesson";
-import type { LeaderboardEntry } from "../../shared/progress";
 import { courseMeta } from "../constants/courses";
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from "../../shared/constants";
+import { StoryModal } from "./AlmanacPage";
+import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW } from "./almanacData";
+import type { StoryData } from "./almanacData";
+import { AI_ARTICLES } from "./almanacAIArticles";
 
-const LB_PAGE_SIZE = 5;
-
-function getGreeting(): string {
-  const h = new Date().getHours();
-  if (h < 12) return "Good morning,";
-  if (h < 18) return "Good afternoon,";
-  return "Good evening,";
+function localDateStr(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
+
+function extractActivityCounts(progressMap: Record<string, import("../../shared/progress").CourseProgress>): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const p of Object.values(progressMap)) {
+    for (const l of p.lessons) {
+      if (l.completedAt) {
+        const day = localDateStr(new Date(l.completedAt));
+        counts[day] = (counts[day] ?? 0) + 1;
+      }
+    }
+  }
+  return counts;
+}
+
+const HEATMAP_COLORS = [
+  "rgba(30,30,40,0.4)",
+  "rgba(108,92,231,0.25)",
+  "rgba(108,92,231,0.5)",
+  "rgba(108,92,231,0.85)",
+];
+
+const TODAY_SEED = Math.floor(Date.now() / 86400000);
+
+const TAG_COLORS: Record<string, string> = {
+  "OPEN SOURCE": "#00D68F",
+  LEGENDS: "#a855f7",
+  HARDWARE: "#FFAA00",
+  HISTORY: "#3b82f6",
+  INTERNET: "#06b6d4",
+  SECURITY: "#ef4444",
+  "AI & FUTURE": "#8b5cf6",
+  SPACE: "#6366f1",
+  TOOLS: "#f59e0b",
+  LANGUAGES: "#10b981",
+  PLATFORMS: "#ec4899",
+  PROTOCOLS: "#14b8a6",
+};
+
+function seededPick<T>(items: T[], count: number, seed: number): T[] {
+  const indices = items.map((_, i) => i);
+  let s = seed;
+  for (let i = indices.length - 1; i > 0; i--) {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    const j = s % (i + 1);
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices.slice(0, count).map((i) => items[i]);
+}
+
+const ALL_ALMANAC_POOL: StoryData[] = [
+  ALMANAC_HERO,
+  ...ALMANAC_ARTICLES_RAW,
+  ...AI_ARTICLES,
+];
+
+const ALMANAC_HIGHLIGHTS = seededPick(ALL_ALMANAC_POOL, 3, TODAY_SEED);
 
 export function HomePage() {
   const navigate = useNavigate();
   const { isLoggedIn, isLoading, user } = useAuth();
-  const g = useGamification();
+  const [almanacStory, setAlmanacStory] = useState<StoryData | null>(null);
   const { courses: allCourses } = useCurriculum();
   const { progressMap, refresh: refreshProgress } = useAllProgress();
-  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
-  const [lbPage, setLbPage] = useState(0);
-  const [showAllLb, setShowAllLb] = useState(false);
 
   const allNonAlgoCourses = useMemo(() => {
     const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
@@ -56,17 +107,39 @@ export function HomePage() {
     return null;
   }, [isLoggedIn, allNonAlgoCourses, progressMap]);
 
-  useEffect(() => {
-    if (isLoggedIn) refreshProgress();
-  }, [isLoggedIn]);
+  const recentLessons = useMemo(() => {
+    if (!isLoggedIn) return [];
+    const items: { courseKey: string; slug: string; title: string; lastAccessedAt: string }[] = [];
+    for (const [courseKey, p] of Object.entries(progressMap)) {
+      for (const l of p.lessons) {
+        if (l.lastAccessedAt) {
+          items.push({ courseKey, slug: l.slug, title: l.title, lastAccessedAt: l.lastAccessedAt });
+        }
+      }
+    }
+    items.sort((a, b) => b.lastAccessedAt.localeCompare(a.lastAccessedAt));
+    return items.slice(0, 4);
+  }, [isLoggedIn, progressMap]);
+
+  const lessonOfTheDay = useMemo(() => {
+    if (!isLoggedIn || !allNonAlgoCourses.length) return null;
+    const incomplete: { course: Course; slug: string; title: string }[] = [];
+    for (const c of allNonAlgoCourses) {
+      const p = progressMap[c.key];
+      const doneSet = new Set(p?.lessons.filter((l) => l.completed).map((l) => l.slug));
+      for (const l of c.lessons) {
+        if (!doneSet.has(l.slug)) {
+          incomplete.push({ course: c, slug: l.slug, title: l.title });
+        }
+      }
+    }
+    if (!incomplete.length) return null;
+    return incomplete[TODAY_SEED % incomplete.length];
+  }, [isLoggedIn, allNonAlgoCourses, progressMap]);
 
   useEffect(() => {
-    let cancelled = false;
-    progressService.getLeaderboard()
-      .then((lb) => { if (!cancelled) setLeaderboard(lb); })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, [isLoggedIn]);
+    if (isLoggedIn) refreshProgress();
+  }, [isLoggedIn, refreshProgress]);
 
   if (isLoading) {
     return (
@@ -80,193 +153,120 @@ export function HomePage() {
   }
 
   if (isLoggedIn && user) {
-    const lbMaxPage = Math.max(0, Math.ceil(leaderboard.length / LB_PAGE_SIZE) - 1);
-    const lbSlice = leaderboard.slice(lbPage * LB_PAGE_SIZE, (lbPage + 1) * LB_PAGE_SIZE);
-
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-        <Topbar streak={g.streak} />
+        <Topbar />
 
         <main className="flex-1 px-4 sm:px-6 py-8">
           <div className="max-w-[1040px] mx-auto space-y-6">
 
-            {/* ── Welcome Hero ── */}
-            <div
-              className="p-6 sm:p-8 rounded-[14px] border border-[var(--accent)]/30 backdrop-blur-[12px]"
-              style={{ background: "linear-gradient(135deg, rgba(30,30,40,0.1) 0%, rgba(26,16,64,0.1) 100%)" }}
-            >
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                <div>
-                  <p className="text-[var(--text2)] text-sm mb-1">{getGreeting()}</p>
-                  <h1 className="text-2xl sm:text-[28px] font-bold tracking-[-0.5px] mb-2">
-                    Welcome back, {user.name}
-                  </h1>
-                  <p className="text-[var(--text2)] text-sm">
-                    {g.streak > 0
-                      ? `You're on a ${g.streak}-day streak — keep it going!`
-                      : "Start a lesson today to begin your streak!"}
-                  </p>
-                </div>
-                <div className="flex gap-3">
-                  <StatCard label="Total XP" value={String(g.xp)} color="var(--accent)" />
-                  <StatCard label="Day Streak" value={`${g.streak}`} color="var(--warning)" />
-                  <StatCard label="Level" value={String(g.level)} color="var(--success)" />
-                </div>
-              </div>
-            </div>
-
-            {/* ── XP Mini-Bar + Streak ── */}
-            <div className="flex items-center gap-4 flex-wrap">
-              <div className="flex items-center gap-3 flex-1 min-w-0">
-                <span className="text-sm text-[var(--text2)] whitespace-nowrap">
-                  ⭐ Level {g.level} — {g.xpInLevel} / {g.xpForNextLevel} XP to next
-                </span>
-                <div className="w-full max-w-[260px] h-1.5 bg-[var(--bg3)] rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-[width] duration-500"
-                    style={{
-                      width: `${g.xpForNextLevel > 0 ? (g.xpInLevel / g.xpForNextLevel) * 100 : 0}%`,
-                      background: "linear-gradient(90deg, var(--accent), #a855f7)",
-                    }}
-                  />
-                </div>
-              </div>
-              <StreakWidget days={g.streak} />
-            </div>
-
-            {/* ── Continue Where You Left Off ── */}
-            {continueTo && (
-              <section>
-                <SectionHeader>Continue where you left off</SectionHeader>
-                <button
-                  onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
-                  className="w-full text-left flex items-center gap-4 p-4 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] transition cursor-pointer group"
-                >
-                  {/* Left accent stripe */}
-                  <div className="w-1 self-stretch rounded-full bg-[var(--accent)] shrink-0" />
-                  {/* Icon */}
-                  <div
-                    className="w-[52px] h-[52px] rounded-[10px] flex items-center justify-center text-2xl shrink-0"
-                    style={{ background: "var(--bg3)" }}
+            {/* ── Continue Where You Left Off + Activity ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              {continueTo && (
+                <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
+                  <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">Continue where you left off</h3>
+                  <button
+                    onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
+                    className="w-full text-left flex items-center gap-3 p-3 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer group"
                   >
-                    {courseMeta(continueTo.course.key).icon}
-                  </div>
-                  {/* Text */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="inline-block px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[1px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)]">
+                    <div
+                      className="w-10 h-10 rounded-[10px] flex items-center justify-center text-lg shrink-0"
+                      style={{ background: courseMeta(continueTo.course.key).color + "20" }}
+                    >
+                      {courseMeta(continueTo.course.key).icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="inline-block px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.5px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-1">
                         {continueTo.course.title}
                       </span>
+                      <div className="font-semibold text-[14px] truncate">{continueTo.title}</div>
                     </div>
-                    <div className="font-bold text-[15px] truncate">{continueTo.title}</div>
-                    <div className="text-[var(--text3)] text-xs mt-0.5 truncate">
-                      {continueTo.course.description}
-                    </div>
-                  </div>
-                  {/* Right side: progress + button */}
-                  <div className="hidden sm:flex flex-col items-end gap-2 shrink-0">
-                    <span className="text-xs font-semibold text-[var(--text2)]">{continueTo.pct}%</span>
-                    <div className="w-20 h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
-                        style={{ width: `${continueTo.pct}%` }}
-                      />
-                    </div>
-                    <span className="text-xs font-semibold text-[var(--accent)] group-hover:translate-x-0.5 transition-transform">
-                      Continue →
-                    </span>
-                  </div>
-                </button>
-              </section>
-            )}
-
-            {/* ── Leaderboard ── */}
-            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xs font-semibold uppercase tracking-[1px] text-[var(--text3)]">
-                  Leaderboard
-                </h3>
-                {leaderboard.length > LB_PAGE_SIZE && (
-                  <button
-                    onClick={() => setShowAllLb(true)}
-                    className="text-[11px] text-[var(--accent)] font-semibold hover:underline cursor-pointer bg-transparent border-none"
-                  >
-                    Show All
                   </button>
-                )}
-              </div>
-              {leaderboard.length === 0 ? (
-                <p className="text-sm text-[var(--text3)]">No entries yet. Complete a lesson to appear here!</p>
-              ) : (
-                <>
-                  <ul className="space-y-2">
-                    {lbSlice.map((entry) => (
-                      <li
-                        key={entry.rank}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-[var(--radius-sm)] text-sm ${
-                          entry.isCurrentUser
-                            ? "bg-[var(--accent)]/10 border border-[var(--accent)]/30"
-                            : ""
-                        }`}
-                      >
-                        <span className="w-5 text-[var(--text3)] text-xs font-semibold">#{entry.rank}</span>
-                        <span className="flex-1 font-medium">{entry.name}{entry.isCurrentUser ? " (you)" : ""}</span>
-                        <span className="text-xs text-[var(--text2)] font-semibold">{entry.xp} XP</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {lbMaxPage > 0 && (
-                    <div className="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-[var(--border)]">
-                      <button
-                        onClick={() => setLbPage((p) => Math.max(0, p - 1))}
-                        disabled={lbPage === 0}
-                        className="text-xs text-[var(--text2)] hover:text-[var(--text)] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-transparent border-none"
-                      >
-                        ← Prev
-                      </button>
-                      <span className="text-[11px] text-[var(--text3)]">{lbPage + 1} / {lbMaxPage + 1}</span>
-                      <button
-                        onClick={() => setLbPage((p) => Math.min(lbMaxPage, p + 1))}
-                        disabled={lbPage === lbMaxPage}
-                        className="text-xs text-[var(--text2)] hover:text-[var(--text)] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-transparent border-none"
-                      >
-                        Next →
-                      </button>
-                    </div>
+
+                  {recentLessons.length > 1 && (
+                    <>
+                      <div className="border-t border-[var(--accent)]/20 my-3" />
+                      <h4 className="text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] mb-2">Recently accessed</h4>
+                      <div className="flex flex-col gap-1.5">
+                        {recentLessons.slice(1, 4).map((l, i) => {
+                          const meta = courseMeta(l.courseKey);
+                          return (
+                            <button
+                              key={i}
+                              onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
+                              className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer text-left"
+                            >
+                              <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm shrink-0" style={{ background: meta.color + "20" }}>
+                                {meta.icon}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="text-[12px] font-semibold truncate">{l.title}</div>
+                                <div className="text-[10px] text-[var(--text3)]">{meta.label} · {formatTimeAgo(l.lastAccessedAt)}</div>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
                   )}
-                </>
+                </div>
               )}
+
+              <ActivityHeatmap progressMap={progressMap} />
             </div>
+
+            {/* ── Lesson of the Day + Course Milestones ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              {lessonOfTheDay && (
+                <LessonOfTheDay
+                  course={lessonOfTheDay.course}
+                  slug={lessonOfTheDay.slug}
+                  title={lessonOfTheDay.title}
+                />
+              )}
+              <CourseMilestones courses={allNonAlgoCourses} progressMap={progressMap} />
+            </div>
+
+
+            {/* ── Almanac Highlights ── */}
+            <section>
+              <div className="flex items-center justify-between mb-3">
+                <SectionHeader noMargin>From the Almanac</SectionHeader>
+                <button onClick={() => navigate("/almanac")} className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer">
+                  View all →
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                {ALMANAC_HIGHLIGHTS.map((a, i) => {
+                  const color = TAG_COLORS[a.tag ?? ""] ?? "#6C5CE7";
+                  return (
+                  <button
+                    key={i}
+                    onClick={() => setAlmanacStory(a)}
+                    className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
+                  >
+                    <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.8px] mb-2">
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                      <span style={{ color }}>{a.tag}</span>
+                    </div>
+                    <div className="text-sm font-bold tracking-[-0.2px] leading-tight mb-1.5 line-clamp-2">{a.title}</div>
+                    <div className="text-xs text-[var(--text2)] leading-relaxed flex-1 line-clamp-3 mb-2.5">{a.excerpt}</div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] text-[var(--text3)]">{a.readTime} read</span>
+                      <span className="text-[11px] font-semibold text-[var(--accent)]">Read →</span>
+                    </div>
+                  </button>
+                  );
+                })}
+              </div>
+            </section>
 
           </div>
         </main>
 
-        {/* ── Leaderboard Full Modal ── */}
-        {showAllLb && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4" onClick={() => setShowAllLb(false)}>
-            <div className="w-full max-w-md max-h-[80vh] bg-[var(--bg2)] border border-[var(--border)] rounded-[14px] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
-              <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)]">
-                <h2 className="text-lg font-bold">Leaderboard</h2>
-                <button onClick={() => setShowAllLb(false)} className="text-[var(--text3)] hover:text-[var(--text)] text-lg bg-transparent border-none cursor-pointer">×</button>
-              </div>
-              <ul className="flex-1 overflow-y-auto px-4 py-3 space-y-1.5">
-                {leaderboard.map((entry) => (
-                  <li
-                    key={entry.rank}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] text-sm ${
-                      entry.isCurrentUser ? "bg-[var(--accent)]/10 border border-[var(--accent)]/30" : ""
-                    }`}
-                  >
-                    <span className="w-6 text-[var(--text3)] text-xs font-semibold">#{entry.rank}</span>
-                    <span className="flex-1 font-medium">{entry.name}{entry.isCurrentUser ? " (you)" : ""}</span>
-                    <span className="text-xs text-[var(--text2)] font-semibold">{entry.xp} XP</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+        {almanacStory && (
+          <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />
         )}
-
       </div>
     );
   }
@@ -274,7 +274,7 @@ export function HomePage() {
   // ── Logged-out marketing view ──
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar streak={g.streak} />
+      <Topbar />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <div className="max-w-3xl w-full text-center">
@@ -326,27 +326,258 @@ export function HomePage() {
           </div>
         </div>
       </main>
+
+      {almanacStory && (
+        <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />
+      )}
     </div>
   );
 }
 
 /* ── Helper Components ── */
 
-function SectionHeader({ children }: { children: React.ReactNode }) {
+function SectionHeader({ children, noMargin }: { children: React.ReactNode; noMargin?: boolean }) {
   return (
-    <h2 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
+    <h2 className={`text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] ${noMargin ? "" : "mb-3"}`}>
       {children}
     </h2>
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: string; color: string }) {
+function formatTimeAgo(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+/* ── Activity Heatmap ── */
+
+interface HeatmapDay { date: string; level: number; count: number; isFuture: boolean }
+
+function countToLevel(count: number): number {
+  if (count === 0) return 0;
+  if (count === 1) return 1;
+  if (count <= 3) return 2;
+  return 3;
+}
+
+function buildHeatmapData(activityCounts: Record<string, number>, weeks: number): HeatmapDay[][] {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayStr = localDateStr(today);
+
+  const todayDow = today.getDay();
+  const endSunday = new Date(today);
+  endSunday.setDate(endSunday.getDate() + (todayDow === 0 ? 0 : 7 - todayDow));
+
+  const start = new Date(endSunday);
+  start.setDate(start.getDate() - weeks * 7 + 1);
+
+  const data: HeatmapDay[][] = [];
+  const current = new Date(start);
+  for (let w = 0; w < weeks; w++) {
+    const week: HeatmapDay[] = [];
+    for (let d = 0; d < 7; d++) {
+      const dateStr = localDateStr(current);
+      const isFuture = dateStr > todayStr;
+      const count = isFuture ? 0 : (activityCounts[dateStr] ?? 0);
+      const level = countToLevel(count);
+      week.push({ date: dateStr, level, count, isFuture });
+      current.setDate(current.getDate() + 1);
+    }
+    data.push(week);
+  }
+  return data;
+}
+
+function getMonthLabels(data: HeatmapDay[][]): { month: string; col: number }[] {
+  const labels: { month: string; col: number }[] = [];
+  let lastMonth = -1;
+  data.forEach((week, i) => {
+    const d = new Date(week[0].date);
+    const m = d.getMonth();
+    if (m !== lastMonth) {
+      labels.push({ month: d.toLocaleString("en", { month: "short" }), col: i });
+      lastMonth = m;
+    }
+  });
+  return labels;
+}
+
+function ActivityHeatmap({ progressMap }: { progressMap: Record<string, import("../../shared/progress").CourseProgress> }) {
+  const weeks = 20;
+  const activityCounts = useMemo(() => extractActivityCounts(progressMap), [progressMap]);
+  const data = useMemo(() => buildHeatmapData(activityCounts, weeks), [activityCounts, weeks]);
+  const monthLabels = useMemo(() => getMonthLabels(data), [data]);
+  const totalActive = data.flat().filter((d) => d.level > 0).length;
+  const colWidth = 19;
+
   return (
-    <div
-      className="px-5 py-4 rounded-[10px] border border-[var(--accent)]/30 text-center min-w-[100px] backdrop-blur-[12px] bg-[rgba(15,15,20,0.1)]"
-    >
-      <div className="text-xl font-bold mb-0.5" style={{ color }}>{value}</div>
-      <div className="text-[10px] uppercase tracking-[1px] text-[var(--text3)] font-semibold">{label}</div>
+    <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+      <div className="flex items-center justify-between mb-3.5">
+        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">Activity</h3>
+        <span className="text-xs text-[var(--text2)]">
+          <strong className="text-[var(--text)] font-semibold">{totalActive}</strong> active days in the last {weeks} weeks
+        </span>
+      </div>
+
+      {/* Month labels */}
+      <div className="flex" style={{ paddingLeft: 30 }}>
+        {monthLabels.map((m, i) => {
+          const nextCol = monthLabels[i + 1]?.col ?? weeks;
+          return (
+            <div key={i} className="text-[9px] text-[var(--text3)] font-medium" style={{ width: (nextCol - m.col) * colWidth }}>
+              {m.month}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex">
+        {/* Day labels */}
+        <div className="flex flex-col gap-[3px] mr-1.5 shrink-0">
+          {["", "Tue", "", "Thu", "", "Sat", ""].map((label, i) => (
+            <div key={i} className="h-4 flex items-center text-[9px] text-[var(--text3)] font-medium">{label}</div>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="flex gap-[3px] overflow-x-auto pb-1">
+          {data.map((week, wi) => (
+            <div key={wi} className="flex flex-col gap-[3px]">
+              {week.map((day, di) => (
+                <div
+                  key={di}
+                  className="w-4 h-4 rounded-[3px] transition-all hover:outline hover:outline-2 hover:outline-[var(--accent)] hover:outline-offset-1"
+                  style={{
+                    background: day.isFuture ? "transparent" : HEATMAP_COLORS[day.level],
+                    border: day.isFuture ? "1px dashed rgba(102,102,128,0.15)" : "none",
+                  }}
+                  title={`${day.date}: ${day.count === 0 ? "No activity" : `${day.count} lesson${day.count === 1 ? "" : "s"} completed`}`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center justify-end gap-1.5 mt-2.5">
+        <span className="text-[10px] text-[var(--text3)]">Less</span>
+        <div className="flex gap-[3px]">
+          {HEATMAP_COLORS.map((c, i) => (
+            <div key={i} className="w-3 h-3 rounded-sm" style={{ background: c }} />
+          ))}
+        </div>
+        <span className="text-[10px] text-[var(--text3)]">More</span>
+      </div>
+    </div>
+  );
+}
+
+/* ── Lesson of the Day ── */
+
+function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string; title: string }) {
+  const navigate = useNavigate();
+  const meta = courseMeta(course.key);
+  return (
+    <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">Lesson of the Day</h3>
+        <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full uppercase tracking-[0.5px]">Recommended</span>
+      </div>
+      <div className="flex-1">
+        <div className="flex items-center gap-2 mb-2.5">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ background: meta.color + "20" }}>
+            {meta.icon}
+          </div>
+          <span className="text-[11px] text-[var(--text3)] font-medium">{course.title}</span>
+        </div>
+        <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
+        <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
+          Continue your {course.title} journey with this lesson.
+        </p>
+      </div>
+      <button
+        onClick={() => navigate(`/lesson/${course.key}/${slug}`)}
+        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] text-white rounded-[var(--radius-sm)] text-xs font-semibold hover:brightness-110 transition cursor-pointer self-start"
+      >
+        Start Lesson →
+      </button>
+    </div>
+  );
+}
+
+/* ── Course Milestones ── */
+
+function CourseMilestones({ courses, progressMap }: { courses: Course[]; progressMap: Record<string, import("../../shared/progress").CourseProgress> }) {
+  const navigate = useNavigate();
+  const active = courses.filter((c) => progressMap[c.key]?.completed);
+  const notStarted = courses.filter((c) => !progressMap[c.key]?.completed);
+
+  return (
+    <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
+      <div className="mb-4">
+        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">Course Milestones</h3>
+      </div>
+      <div className="flex flex-col gap-3.5 flex-1">
+        {active.map((c) => {
+          const p = progressMap[c.key]!;
+          const pct = progressPct(p.completed, p.total);
+          const remaining = p.total - p.completed;
+          const meta = courseMeta(c.key);
+          const nextLesson = c.lessons.find((l) => {
+            const lp = p.lessons.find((pl) => pl.slug === l.slug);
+            return !lp?.completed;
+          });
+          return (
+            <button
+              key={c.key}
+              onClick={() => navigate(`/courses?open=${c.key}`)}
+              className="flex items-center gap-3 text-left cursor-pointer hover:opacity-80 transition"
+            >
+              <div className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0" style={{ background: meta.color + "20" }}>
+                {meta.icon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[13px] font-semibold">{meta.label}</div>
+                <div className="text-[11px] text-[var(--text2)] mb-1.5">
+                  <strong className="text-[var(--text)] font-semibold">{remaining}</strong> {remaining === 1 ? "lesson" : "lessons"} remaining
+                  {nextLesson && <> · next: <strong className="text-[var(--text)] font-semibold">{nextLesson.title}</strong></>}
+                </div>
+                <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
+                  <div className="h-full rounded-full transition-[width] duration-600" style={{ width: `${pct}%`, background: meta.color }} />
+                </div>
+              </div>
+              <span className="text-xs font-bold text-[var(--text2)] shrink-0 min-w-[32px] text-right">{pct}%</span>
+            </button>
+          );
+        })}
+        {notStarted.map((c) => {
+          const meta = courseMeta(c.key);
+          return (
+            <button
+              key={c.key}
+              onClick={() => navigate(`/courses?open=${c.key}`)}
+              className="flex items-center gap-3 opacity-60 text-left cursor-pointer hover:opacity-80 transition"
+            >
+              <div className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0" style={{ background: meta.color + "20" }}>
+                {meta.icon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[13px] font-semibold">{meta.label}</div>
+                <div className="text-[11px] text-[var(--text2)] mb-1.5">Not started yet · {c.lessons.length} lessons</div>
+                <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
+                  <div className="h-full rounded-full" style={{ width: "0%" }} />
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CyberStars — Dashboard v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#6C5CE7;--accent-glow:#6C5CE733;
+  --bg:#0F0F14;--bg2:#16161D;--bg3:#1E1E28;
+  --surface:#22222E;--surface2:#2A2A38;
+  --border:#2E2E3E;
+  --text:#E8E8F0;--text2:#9999B0;--text3:#666680;
+  --success:#00D68F;--warning:#FFAA00;--error:#FF6B6B;
+  --font:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono','Fira Code',monospace;
+  --radius:10px;--radius-sm:6px;
+  --python:#3572A5;--java:#E76F00;--c:#555555;--linux:#FCC624;
+}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--text)}
+#root{min-height:100%}
+
+/* ── Topbar ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:rgba(22,22,29,0.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--accent);border-bottom-color:rgba(108,92,231,0.3);position:sticky;top:0;z-index:50}
+.topbar-left{display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text)}
+.logo-icon{font-size:22px;color:var(--accent);filter:drop-shadow(0 0 8px var(--accent-glow))}
+.logo-text{font-weight:700;font-size:17px;letter-spacing:-.5px}
+.topbar-nav{display:flex;gap:4px}
+.nav-item{padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border:none;background:none;font-family:var(--font);transition:all .15s;text-decoration:none}
+.nav-item:hover{color:var(--text);background:var(--surface)}
+.nav-item.active{color:var(--accent);background:rgba(108,92,231,0.12)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.streak-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(22,22,29,0.1);backdrop-filter:blur(8px);border-radius:20px;border:1px solid rgba(108,92,231,0.3);font-size:12px;font-weight:600}
+.streak-days-row{display:flex;gap:3px}
+.streak-day{width:18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;background:var(--bg3);color:var(--text3)}
+.streak-day.active{background:var(--accent);color:#fff}
+.user-btn{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 8px;border-radius:var(--radius-sm);border:none;background:none;color:var(--text);font-family:var(--font);transition:all .15s}
+.user-btn:hover{background:var(--surface)}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid var(--accent)}
+.user-name{font-size:13px;font-weight:600}
+
+/* ── Dashboard ── */
+.dashboard{max-width:1040px;margin:0 auto;padding:28px 28px 48px}
+
+/* ── Hero ── */
+.hero{display:flex;align-items:center;justify-content:space-between;padding:28px 32px;background:linear-gradient(135deg,rgba(30,30,40,0.1) 0%,rgba(26,16,64,0.1) 100%);border:1px solid rgba(108,92,231,0.3);border-radius:14px;margin-bottom:24px;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.hero::after{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);right:-80px;top:-80px;pointer-events:none}
+.hero-text{position:relative;z-index:1}
+.hero-greeting{font-size:13px;color:var(--text3);margin-bottom:4px}
+.hero-title{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:6px}
+.hero-subtitle{font-size:14px;color:var(--text2);line-height:1.5}
+.hero-stats{display:flex;gap:12px;position:relative;z-index:1}
+.hero-stat{text-align:center;padding:12px 20px;background:rgba(15,15,20,0.1);border-radius:var(--radius);border:1px solid rgba(108,92,231,0.3);backdrop-filter:blur(8px);min-width:90px}
+.hero-stat-value{font-size:22px;font-weight:700}
+.hero-stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;font-weight:600}
+
+/* ── Streak + Stats row ── */
+.stats-row{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+
+/* ── Section headers ── */
+.section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:12px}
+
+/* ── Continue card ── */
+.continue-card{display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(22,22,29,0.1);backdrop-filter:blur(12px);border:1px solid rgba(108,92,231,0.3);border-radius:var(--radius);margin-bottom:28px;cursor:pointer;transition:all .2s;position:relative}
+.continue-card:hover{border-color:var(--accent);box-shadow:0 4px 20px #0004}
+.continue-stripe{width:4px;align-self:stretch;border-radius:2px;background:var(--accent);flex-shrink:0}
+.continue-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.continue-info{flex:1;min-w:0}
+.continue-badge{display:inline-block;font-size:10px;font-weight:600;color:var(--accent);background:rgba(108,92,231,0.15);padding:2px 8px;border-radius:10px;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.continue-title{font-size:15px;font-weight:600;margin-bottom:2px}
+.continue-desc{font-size:12px;color:var(--text3)}
+.continue-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.continue-pct{font-size:12px;font-weight:700;color:var(--text2)}
+.continue-bar{width:80px;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.continue-fill{height:100%;border-radius:2px}
+.continue-btn{font-size:12px;font-weight:600;color:var(--accent);background:none;border:none;font-family:var(--font);cursor:pointer;transition:transform .15s}
+.continue-card:hover .continue-btn{transform:translateX(2px)}
+
+/* ── Activity Heatmap ── */
+.heatmap-card{padding:20px 24px;background:rgba(22,22,29,0.1);backdrop-filter:blur(12px);border:1px solid rgba(108,92,231,0.3);border-radius:var(--radius);margin-bottom:24px}
+.heatmap-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.heatmap-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text3)}
+.heatmap-meta{font-size:12px;color:var(--text2)}
+.heatmap-meta strong{color:var(--text);font-weight:600}
+.heatmap-grid{display:flex;gap:3px;overflow-x:auto;padding-bottom:4px}
+.heatmap-col{display:flex;flex-direction:column;gap:3px}
+.heatmap-cell{width:14px;height:14px;border-radius:3px;transition:all .15s}
+.heatmap-cell:hover{outline:2px solid var(--accent);outline-offset:1px}
+.heatmap-day-labels{display:flex;flex-direction:column;gap:3px;margin-right:6px;flex-shrink:0}
+.heatmap-day-label{height:14px;display:flex;align-items:center;font-size:9px;color:var(--text3);font-weight:500}
+.heatmap-footer{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:10px}
+.heatmap-legend-label{font-size:10px;color:var(--text3)}
+.heatmap-legend{display:flex;gap:3px}
+.heatmap-legend-cell{width:12px;height:12px;border-radius:2px}
+.heatmap-months{display:flex;margin-left:24px;margin-bottom:4px}
+.heatmap-month{font-size:9px;color:var(--text3);font-weight:500}
+
+/* ── Two-column row ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+
+/* ── Lesson of the day ── */
+.lotd-card{padding:20px 24px;background:rgba(22,22,29,0.1);backdrop-filter:blur(12px);border:1px solid rgba(108,92,231,0.3);border-radius:var(--radius);display:flex;flex-direction:column}
+.lotd-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.lotd-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text3)}
+.lotd-tag{font-size:10px;font-weight:600;color:var(--warning);background:rgba(255,170,0,0.12);padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px}
+.lotd-body{flex:1}
+.lotd-course{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.lotd-course-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.lotd-course-name{font-size:11px;color:var(--text3);font-weight:500}
+.lotd-title{font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px;line-height:1.3}
+.lotd-desc{font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:16px}
+.lotd-action{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+.lotd-action:hover{filter:brightness(1.1)}
+
+/* ── Course Milestones ── */
+.milestones-card{padding:20px 24px;background:rgba(22,22,29,0.1);backdrop-filter:blur(12px);border:1px solid rgba(108,92,231,0.3);border-radius:var(--radius);display:flex;flex-direction:column}
+.milestones-list{display:flex;flex-direction:column;gap:14px;flex:1}
+.milestone{display:flex;align-items:center;gap:12px}
+.milestone-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.milestone-info{flex:1;min-width:0}
+.milestone-course{font-size:13px;font-weight:600;margin-bottom:2px}
+.milestone-next{font-size:11px;color:var(--text2);margin-bottom:6px}
+.milestone-next strong{color:var(--text);font-weight:600}
+.milestone-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.milestone-fill{height:100%;border-radius:2px;transition:width .6s cubic-bezier(.22,1,.36,1)}
+.milestone-pct{font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0;min-width:32px;text-align:right}
+.milestone-complete{font-size:10px;font-weight:600;color:var(--success);background:rgba(0,214,143,0.12);padding:3px 8px;border-radius:10px}
+
+/* ── Recently Accessed ── */
+.recent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.recent-card{padding:14px 16px;background:rgba(22,22,29,0.1);backdrop-filter:blur(12px);border:1px solid rgba(108,92,231,0.3);border-radius:var(--radius);cursor:pointer;transition:all .2s}
+.recent-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 20px #0004}
+.recent-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.recent-emoji{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.recent-course{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.recent-title{font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.recent-time{font-size:10px;color:var(--text3)}
+
+/* ── Almanac Highlights ── */
+.almanac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.almanac-card{padding:18px 20px;background:rgba(22,22,29,0.1);backdrop-filter:blur(12px);border:1px solid rgba(108,92,231,0.3);border-radius:var(--radius);cursor:pointer;transition:all .2s;display:flex;flex-direction:column}
+.almanac-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 20px #0004}
+.almanac-tag{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.almanac-tag-dot{width:6px;height:6px;border-radius:50%}
+.almanac-title{font-size:14px;font-weight:700;letter-spacing:-.2px;line-height:1.35;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.almanac-excerpt{font-size:12px;color:var(--text2);line-height:1.5;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
+.almanac-footer{display:flex;align-items:center;justify-content:space-between}
+.almanac-read{font-size:11px;color:var(--text3)}
+.almanac-link{font-size:11px;font-weight:600;color:var(--accent)}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .two-col{grid-template-columns:1fr}
+  .recent-grid{grid-template-columns:repeat(2,1fr)}
+  .almanac-grid{grid-template-columns:1fr}
+  .hero{flex-direction:column;gap:20px}
+  .hero-stats{width:100%}
+}
+@media(max-width:600px){
+  .recent-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+
+/* ═══════════════════════════════════════════
+   CyberStars Dashboard v2 — No XP / No Leaderboard
+   ═══════════════════════════════════════════ */
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "showHeatmap": true,
+  "heatmapWeeks": 16,
+  "showLessonOfDay": true,
+  "showMilestones": true,
+  "showRecent": true,
+  "showAlmanac": true
+}/*EDITMODE-END*/;
+
+/* ── Helpers ── */
+function getGreeting() {
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning,";
+  if (h < 18) return "Good afternoon,";
+  return "Good evening,";
+}
+
+/* ── Generate heatmap data (simulated) ── */
+function generateHeatmapData(weeks) {
+  const data = [];
+  const today = new Date();
+  const startDay = new Date(today);
+  startDay.setDate(startDay.getDate() - (weeks * 7 - 1));
+  // Align to Monday
+  const dayOfWeek = startDay.getDay();
+  const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+  startDay.setDate(startDay.getDate() + mondayOffset);
+
+  const current = new Date(startDay);
+  for (let w = 0; w < weeks; w++) {
+    const week = [];
+    for (let d = 0; d < 7; d++) {
+      const dateStr = current.toISOString().slice(0, 10);
+      const isFuture = current > today;
+      // Simulate activity: weighted random, more recent = more likely
+      const recency = (current - startDay) / (today - startDay);
+      const rand = Math.random();
+      let level = 0;
+      if (!isFuture) {
+        if (rand < 0.15 * (0.5 + recency)) level = 3;
+        else if (rand < 0.3 * (0.5 + recency)) level = 2;
+        else if (rand < 0.5 * (0.5 + recency)) level = 1;
+      }
+      week.push({ date: dateStr, level, isFuture });
+      current.setDate(current.getDate() + 1);
+    }
+    data.push(week);
+  }
+  return data;
+}
+
+const HEATMAP_COLORS = [
+  'rgba(30,30,40,0.4)',        // 0 - no activity
+  'rgba(108,92,231,0.25)',     // 1 - light
+  'rgba(108,92,231,0.5)',      // 2 - medium
+  'rgba(108,92,231,0.85)',     // 3 - heavy
+];
+
+/* ── Month labels for heatmap ── */
+function getMonthLabels(heatmapData) {
+  const labels = [];
+  let lastMonth = -1;
+  heatmapData.forEach((week, i) => {
+    const d = new Date(week[0].date);
+    const m = d.getMonth();
+    if (m !== lastMonth) {
+      labels.push({ month: d.toLocaleString('en', { month: 'short' }), col: i });
+      lastMonth = m;
+    }
+  });
+  return labels;
+}
+
+/* ── Mock Data ── */
+const COURSES = [
+  { key: 'python', icon: '🐍', name: 'Python', color: '#3572A5', done: 8, total: 61, currentChapter: 'Loops & Iteration', nextChapter: 'Functions & Parameters' },
+  { key: 'java', icon: '☕', name: 'Java', color: '#E76F00', done: 3, total: 61, currentChapter: 'Variables & Types', nextChapter: 'Conditionals' },
+  { key: 'c', icon: '⚙️', name: 'C', color: '#555555', done: 0, total: 45, currentChapter: null, nextChapter: 'Hello World' },
+  { key: 'linux', icon: '🐧', name: 'Linux', color: '#FCC624', done: 12, total: 55, currentChapter: 'File Permissions', nextChapter: 'Users & Groups' },
+];
+
+const RECENT_LESSONS = [
+  { course: 'Python', icon: '🐍', color: '#3572A5', title: 'Loops & Iteration', time: '2h ago' },
+  { course: 'Linux', icon: '🐧', color: '#FCC624', title: 'File Permissions', time: '1d ago' },
+  { course: 'Java', icon: '☕', color: '#E76F00', title: 'Variables & Types', time: '2d ago' },
+  { course: 'Python', icon: '🐍', color: '#3572A5', title: 'Naming Rules', time: '3d ago' },
+];
+
+const ALMANAC_ARTICLES = [
+  {
+    tag: 'OPEN SOURCE', tagColor: '#00D68F', emoji: '🐧',
+    title: 'How a 21-year-old in Helsinki accidentally changed the world',
+    excerpt: 'In August 1991, a Finnish student posted a humble message to a Usenet newsgroup about a hobby operating system. Three decades later, it runs on 90% of the cloud.',
+    readTime: '8 min'
+  },
+  {
+    tag: 'LEGENDS', tagColor: '#a855f7', emoji: '🚀',
+    title: 'Margaret Hamilton wrote the code that landed Apollo 11',
+    excerpt: 'Her code handled an overflow during the moon landing — caught the error, kept the priorities right, and Neil landed safely.',
+    readTime: '8 min'
+  },
+  {
+    tag: 'HARDWARE', tagColor: '#FFAA00', emoji: '🔲',
+    title: 'The Intel 4004 — a CPU you could hold on your fingernail',
+    excerpt: 'The world\'s first commercial microprocessor had 2,300 transistors and ran at 740 kHz. Yours has tens of billions.',
+    readTime: '6 min'
+  },
+];
+
+const LESSON_OF_DAY = {
+  course: 'Python',
+  courseIcon: '🐍',
+  courseColor: '#3572A5',
+  title: 'List Comprehensions',
+  desc: 'Learn one of Python\'s most powerful features — create lists in a single, elegant line of code. Transform, filter, and generate data like a pro.',
+  chapter: 'Ch. 7',
+};
+
+/* ═══════════════════════════════════════════
+   Components
+   ═══════════════════════════════════════════ */
+
+function Topbar({ streak }) {
+  const dayLabels = ['M','T','W','T','F','S','S'];
+  return (
+    <header className="topbar">
+      <div className="topbar-left">
+        <a className="logo" href="#">
+          <span className="logo-icon">⬡</span>
+          <span className="logo-text">CyberStars</span>
+        </a>
+        <nav className="topbar-nav">
+          <a className="nav-item active" href="#">Dashboard</a>
+          <a className="nav-item" href="CyberStars Courses.html">Courses</a>
+          <a className="nav-item" href="CyberStars Challenges.html">Challenges</a>
+        </nav>
+      </div>
+      <div className="topbar-right">
+        <div className="streak-pill">
+          <span>🔥</span>
+          <span>{streak} days</span>
+          <div className="streak-days-row">
+            {dayLabels.map((d, i) => (
+              <div key={i} className={`streak-day ${i < streak % 7 ? 'active' : ''}`}>{d}</div>
+            ))}
+          </div>
+        </div>
+        <button className="user-btn">
+          <div className="user-avatar">🚀</div>
+          <span className="user-name">Alex</span>
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function HeroSection({ streak, lessonsCompleted, activeCourses }) {
+  return (
+    <div className="hero">
+      <div className="hero-text">
+        <div className="hero-greeting">{getGreeting()}</div>
+        <h1 className="hero-title">Welcome back, Alex</h1>
+        <p className="hero-subtitle">
+          {streak > 0
+            ? `You're on a ${streak}-day streak — keep it going!`
+            : 'Start a lesson today to begin your streak!'}
+        </p>
+      </div>
+      <div className="hero-stats">
+        <div className="hero-stat">
+          <div className="hero-stat-value" style={{ color: 'var(--accent)' }}>{lessonsCompleted}</div>
+          <div className="hero-stat-label">Lessons Done</div>
+        </div>
+        <div className="hero-stat">
+          <div className="hero-stat-value" style={{ color: 'var(--warning)' }}>{streak}</div>
+          <div className="hero-stat-label">Day Streak</div>
+        </div>
+        <div className="hero-stat">
+          <div className="hero-stat-value" style={{ color: 'var(--success)' }}>{activeCourses}</div>
+          <div className="hero-stat-label">Active Courses</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ContinueCard({ lesson }) {
+  return (
+    <div>
+      <div className="section-label">Continue where you left off</div>
+      <div className="continue-card" onClick={() => window.location.href = 'CyberStars Lesson View v2.html'}>
+        <div className="continue-stripe"></div>
+        <div className="continue-icon" style={{ background: lesson.courseColor + '20' }}>{lesson.courseIcon}</div>
+        <div className="continue-info">
+          <div className="continue-badge">{lesson.course}</div>
+          <div className="continue-title">{lesson.chapter}: {lesson.title}</div>
+          <div className="continue-desc">{lesson.desc}</div>
+        </div>
+        <div className="continue-right">
+          <div className="continue-pct">{lesson.pct}%</div>
+          <div className="continue-bar">
+            <div className="continue-fill" style={{ width: lesson.pct + '%', background: lesson.courseColor }}></div>
+          </div>
+          <div className="continue-btn">Continue →</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ActivityHeatmap({ weeks }) {
+  const data = React.useMemo(() => generateHeatmapData(weeks), [weeks]);
+  const monthLabels = React.useMemo(() => getMonthLabels(data), [data]);
+  const totalActive = data.flat().filter(d => d.level > 0).length;
+  const [hoveredCell, setHoveredCell] = React.useState(null);
+
+  // Calculate column widths for month labels
+  const colWidth = 17; // 14px cell + 3px gap
+
+  return (
+    <div className="heatmap-card">
+      <div className="heatmap-header">
+        <div className="heatmap-title">Activity</div>
+        <div className="heatmap-meta">
+          <strong>{totalActive}</strong> active days in the last {weeks} weeks
+        </div>
+      </div>
+
+      {/* Month labels */}
+      <div className="heatmap-months" style={{ paddingLeft: 30 }}>
+        {monthLabels.map((m, i) => {
+          const nextCol = monthLabels[i + 1]?.col ?? weeks;
+          const span = nextCol - m.col;
+          return (
+            <div key={i} className="heatmap-month" style={{ width: span * colWidth }}>{m.month}</div>
+          );
+        })}
+      </div>
+
+      <div style={{ display: 'flex' }}>
+        {/* Day labels */}
+        <div className="heatmap-day-labels">
+          <div className="heatmap-day-label"></div>
+          <div className="heatmap-day-label">Tue</div>
+          <div className="heatmap-day-label"></div>
+          <div className="heatmap-day-label">Thu</div>
+          <div className="heatmap-day-label"></div>
+          <div className="heatmap-day-label">Sat</div>
+          <div className="heatmap-day-label"></div>
+        </div>
+
+        {/* Grid */}
+        <div className="heatmap-grid">
+          {data.map((week, wi) => (
+            <div key={wi} className="heatmap-col">
+              {week.map((day, di) => (
+                <div
+                  key={di}
+                  className="heatmap-cell"
+                  style={{
+                    background: day.isFuture ? 'transparent' : HEATMAP_COLORS[day.level],
+                    border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
+                  }}
+                  title={`${day.date}: ${day.level === 0 ? 'No activity' : day.level === 1 ? 'Light' : day.level === 2 ? 'Medium' : 'Heavy'}`}
+                  onMouseEnter={() => setHoveredCell(day)}
+                  onMouseLeave={() => setHoveredCell(null)}
+                ></div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="heatmap-footer">
+        <span className="heatmap-legend-label">Less</span>
+        <div className="heatmap-legend">
+          {HEATMAP_COLORS.map((c, i) => (
+            <div key={i} className="heatmap-legend-cell" style={{ background: c }}></div>
+          ))}
+        </div>
+        <span className="heatmap-legend-label">More</span>
+      </div>
+    </div>
+  );
+}
+
+function LessonOfTheDay({ lesson }) {
+  return (
+    <div className="lotd-card">
+      <div className="lotd-header">
+        <div className="lotd-label">Lesson of the Day</div>
+        <div className="lotd-tag">Recommended</div>
+      </div>
+      <div className="lotd-body">
+        <div className="lotd-course">
+          <div className="lotd-course-icon" style={{ background: lesson.courseColor + '20' }}>{lesson.courseIcon}</div>
+          <div className="lotd-course-name">{lesson.course} · {lesson.chapter}</div>
+        </div>
+        <div className="lotd-title">{lesson.title}</div>
+        <div className="lotd-desc">{lesson.desc}</div>
+      </div>
+      <button className="lotd-action" onClick={() => window.location.href = 'CyberStars Lesson View v2.html'}>
+        Start Lesson →
+      </button>
+    </div>
+  );
+}
+
+function CourseMilestones({ courses }) {
+  const active = courses.filter(c => c.done > 0);
+  const notStarted = courses.filter(c => c.done === 0);
+
+  return (
+    <div className="milestones-card">
+      <div className="lotd-header">
+        <div className="lotd-label">Course Milestones</div>
+      </div>
+      <div className="milestones-list">
+        {active.map(c => {
+          const pct = Math.round((c.done / c.total) * 100);
+          // Lessons until next chapter (simulate: ~5-8 lessons per chapter)
+          const chapterSize = Math.ceil(c.total / 8);
+          const inChapter = c.done % chapterSize;
+          const remaining = chapterSize - inChapter;
+          return (
+            <div key={c.key} className="milestone">
+              <div className="milestone-icon" style={{ background: c.color + '20' }}>{c.icon}</div>
+              <div className="milestone-info">
+                <div className="milestone-course">{c.name}</div>
+                <div className="milestone-next">
+                  <strong>{remaining}</strong> {remaining === 1 ? 'lesson' : 'lessons'} until <strong>{c.nextChapter}</strong>
+                </div>
+                <div className="milestone-bar">
+                  <div className="milestone-fill" style={{ width: pct + '%', background: c.color }}></div>
+                </div>
+              </div>
+              <div className="milestone-pct">{pct}%</div>
+            </div>
+          );
+        })}
+        {notStarted.map(c => (
+          <div key={c.key} className="milestone" style={{ opacity: 0.6 }}>
+            <div className="milestone-icon" style={{ background: c.color + '20' }}>{c.icon}</div>
+            <div className="milestone-info">
+              <div className="milestone-course">{c.name}</div>
+              <div className="milestone-next">Not started yet · {c.total} lessons</div>
+              <div className="milestone-bar">
+                <div className="milestone-fill" style={{ width: '0%' }}></div>
+              </div>
+            </div>
+            <button style={{
+              padding: '4px 12px', borderRadius: 'var(--radius-sm)',
+              border: '1px solid var(--border)', background: 'none',
+              color: 'var(--text3)', fontFamily: 'var(--font)',
+              fontSize: 11, fontWeight: 600, cursor: 'pointer',
+              flexShrink: 0, transition: 'all .15s'
+            }}>Start →</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RecentlyAccessed({ lessons }) {
+  return (
+    <div>
+      <div className="section-label">Recently Accessed</div>
+      <div className="recent-grid">
+        {lessons.map((l, i) => (
+          <div key={i} className="recent-card">
+            <div className="recent-top">
+              <div className="recent-emoji" style={{ background: l.color + '20' }}>{l.icon}</div>
+              <div className="recent-course">{l.course}</div>
+            </div>
+            <div className="recent-title">{l.title}</div>
+            <div className="recent-time">{l.time}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AlmanacHighlights({ articles }) {
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+        <div className="section-label" style={{ marginBottom: 0 }}>From the Almanac</div>
+        <a href="CyberStars Knowledge.html" style={{
+          fontSize: 12, color: 'var(--accent)', fontWeight: 500,
+          textDecoration: 'none', fontFamily: 'var(--font)'
+        }}>View all →</a>
+      </div>
+      <div className="almanac-grid">
+        {articles.map((a, i) => (
+          <div key={i} className="almanac-card">
+            <div className="almanac-tag">
+              <div className="almanac-tag-dot" style={{ background: a.tagColor }}></div>
+              <span style={{ color: a.tagColor }}>{a.tag}</span>
+            </div>
+            <div className="almanac-title">{a.title}</div>
+            <div className="almanac-excerpt">{a.excerpt}</div>
+            <div className="almanac-footer">
+              <span className="almanac-read">{a.readTime} read</span>
+              <span className="almanac-link">Read →</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════
+   App
+   ═══════════════════════════════════════════ */
+function DashboardApp() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const streak = 5;
+  const totalDone = COURSES.reduce((s, c) => s + c.done, 0);
+  const activeCourses = COURSES.filter(c => c.done > 0).length;
+
+  const continueData = {
+    course: 'Python Fundamentals',
+    courseIcon: '🐍',
+    courseColor: '#3572A5',
+    chapter: 'Ch. 3',
+    title: 'Loops & Iteration',
+    desc: 'Up next: for loops, while loops, and the range() function',
+    pct: 13,
+  };
+
+  return (
+    <div>
+      <Topbar streak={streak} />
+
+      <main className="dashboard">
+        <HeroSection
+          streak={streak}
+          lessonsCompleted={totalDone}
+          activeCourses={activeCourses}
+        />
+
+        <ContinueCard lesson={continueData} />
+
+        {tweaks.showHeatmap && (
+          <ActivityHeatmap weeks={tweaks.heatmapWeeks} />
+        )}
+
+        <div className="two-col">
+          {tweaks.showLessonOfDay && (
+            <LessonOfTheDay lesson={LESSON_OF_DAY} />
+          )}
+          {tweaks.showMilestones && (
+            <CourseMilestones courses={COURSES} />
+          )}
+        </div>
+
+        {tweaks.showRecent && (
+          <RecentlyAccessed lessons={RECENT_LESSONS} />
+        )}
+
+        {tweaks.showAlmanac && (
+          <AlmanacHighlights articles={ALMANAC_ARTICLES} />
+        )}
+      </main>
+
+      <TweaksPanel>
+        <TweakSection title="Dashboard Sections">
+          <TweakToggle label="Activity Heatmap" value={tweaks.showHeatmap} onChange={v => setTweak('showHeatmap', v)} />
+          {tweaks.showHeatmap && (
+            <TweakSlider label="Heatmap Weeks" value={tweaks.heatmapWeeks} min={8} max={24} step={4} onChange={v => setTweak('heatmapWeeks', v)} />
+          )}
+          <TweakToggle label="Lesson of the Day" value={tweaks.showLessonOfDay} onChange={v => setTweak('showLessonOfDay', v)} />
+          <TweakToggle label="Course Milestones" value={tweaks.showMilestones} onChange={v => setTweak('showMilestones', v)} />
+          <TweakToggle label="Recently Accessed" value={tweaks.showRecent} onChange={v => setTweak('showRecent', v)} />
+          <TweakToggle label="Almanac Highlights" value={tweaks.showAlmanac} onChange={v => setTweak('showAlmanac', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<DashboardApp />);
+</script>
+</body>
+</html>

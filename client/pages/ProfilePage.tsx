@@ -3,10 +3,11 @@ import { useEffect, useState, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useGamification } from "../hooks/useGamification";
 import { Topbar } from "../components/layout/Topbar";
-import { XPBar } from "../components/gamification/XPBar";
 import { Badge } from "../components/gamification/Badge";
-import { StreakWidget } from "../components/gamification/StreakWidget";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
+import { useCurriculum } from "../context/CurriculumContext";
+import { useAllProgress } from "../context/ProgressContext";
+import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from "../../shared/constants";
 import * as profileService from "../services/profileService";
 
 const INPUT_CLS =
@@ -16,7 +17,14 @@ export function ProfilePage() {
   const navigate = useNavigate();
   const { user, isLoggedIn, isLoading, refreshUser } = useAuth();
   const g = useGamification();
+  const { courses: allCourses } = useCurriculum();
+  const { progressMap } = useAllProgress();
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const activeCourses = allCourses.filter((c) => {
+    const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
+    return keys.includes(c.key) && progressMap[c.key]?.completed > 0;
+  }).length;
 
   const [bio, setBio] = useState("");
   const [status, setStatus] = useState("");
@@ -88,11 +96,11 @@ export function ProfilePage() {
 
   const statusExpired = user.statusExpiresAt && new Date(user.statusExpiresAt) < new Date();
   const activeStatus = statusExpired ? null : user.status;
+  const earnedBadges = g.badges.filter(b => b.earned).length;
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar streak={g.streak} />
-      <XPBar current={g.xpInLevel} max={g.xpForNextLevel} level={g.level} />
+      <Topbar />
 
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[520px]">
@@ -181,36 +189,16 @@ export function ProfilePage() {
           {/* Stat grid */}
           <div className="grid grid-cols-3 border-b border-[var(--border)]">
             <div className="py-4 text-center">
-              <div className="text-[24px] font-bold">{g.xp}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Total XP</div>
+              <div className="text-[24px] font-bold">{g.totalCompleted}</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Lessons Done</div>
             </div>
             <div className="py-4 text-center border-x border-[var(--border)]">
-              <div className="text-[24px] font-bold">{g.streak}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Day Streak</div>
+              <div className="text-[24px] font-bold">{activeCourses}</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Active Courses</div>
             </div>
             <div className="py-4 text-center">
-              <div className="text-[24px] font-bold">{g.badges.filter(b => b.earned).length}</div>
+              <div className="text-[24px] font-bold">{earnedBadges}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Badges</div>
-            </div>
-          </div>
-
-          {/* XP section */}
-          <div className="py-4 border-b border-[var(--border)]">
-            <div className="flex justify-between text-[11px] mb-1.5">
-              <span className="text-[var(--warning)] font-semibold">⭐ Level {g.level}</span>
-              <span className="text-[var(--text3)]">{g.xpInLevel} / {g.xpForNextLevel} XP</span>
-            </div>
-            <div className="h-1.5 bg-[var(--bg3)] rounded-[3px] overflow-hidden">
-              <div
-                className="h-full rounded-[3px] transition-[width] duration-700"
-                style={{
-                  width: `${Math.min(100, (g.xpInLevel / g.xpForNextLevel) * 100)}%`,
-                  background: "linear-gradient(90deg, var(--accent), #a855f7)",
-                }}
-              />
-            </div>
-            <div className="mt-3 flex justify-center">
-              <StreakWidget days={g.streak} />
             </div>
           </div>
 
@@ -221,7 +209,7 @@ export function ProfilePage() {
             </h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
               {g.badges.map((b) => (
-                <Badge key={b.label} icon={b.icon} label={b.label} earned={b.earned} />
+                <Badge key={`${b.courseKey}-${b.level}`} icon={b.icon} label={b.label} earned={b.earned} description={b.description} />
               ))}
             </div>
           </div>

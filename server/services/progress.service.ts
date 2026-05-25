@@ -1,7 +1,6 @@
 import * as progressRepo from "../repositories/progress.repository.js";
 import * as curriculumRepo from "../repositories/curriculum.repository.js";
-import type { CourseProgress, LeaderboardEntry } from "../../shared/progress.js";
-import { xpForLesson } from "../../shared/constants.js";
+import type { CourseProgress } from "../../shared/progress.js";
 
 export async function getCourseProgress(userId: number, courseKey: string): Promise<CourseProgress> {
   const [lessons, progress] = await Promise.all([
@@ -13,13 +12,8 @@ export async function getCourseProgress(userId: number, courseKey: string): Prom
     progress.map(p => [p.lessonSlug, p])
   );
 
-  let earnedXp = 0;
-  let totalXp = 0;
   const lessonItems = lessons.map(l => {
     const p = progressMap.get(l.slug);
-    const lessonXp = xpForLesson(l.sortOrder);
-    totalXp += lessonXp;
-    if (p?.completed) earnedXp += lessonXp;
     return {
       slug: l.slug,
       title: l.title,
@@ -33,8 +27,6 @@ export async function getCourseProgress(userId: number, courseKey: string): Prom
     courseKey,
     completed: progress.filter(p => p.completed).length,
     total: lessons.length,
-    earnedXp,
-    totalXp,
     lessons: lessonItems,
   };
 }
@@ -53,14 +45,4 @@ export async function getSavedCode(userId: number, courseKey: string, lessonSlug
 
 export async function trackAccess(userId: number, courseKey: string, lessonSlug: string): Promise<void> {
   await progressRepo.touchAccess(userId, courseKey, lessonSlug);
-}
-
-export async function getLeaderboard(currentUserId?: number): Promise<LeaderboardEntry[]> {
-  const rows = await progressRepo.getLeaderboard();
-  return rows.map((row, i) => ({
-    rank: i + 1,
-    name: row.name,
-    xp: row.totalXp,
-    isCurrentUser: row.userId === currentUserId,
-  }));
 }

@@ -1,25 +1,6 @@
 import { prisma } from "../config/db.js";
 import type { UserLessonProgress } from "@prisma/client";
 
-export interface LeaderboardRow {
-  userId: number;
-  name: string;
-  totalXp: number;
-}
-
-export async function getLeaderboard(): Promise<LeaderboardRow[]> {
-  const rows = await prisma.$queryRaw<LeaderboardRow[]>`
-    SELECT u.id AS "userId", u.name,
-           COALESCE(SUM(10 + l.sort_order), 0)::int AS "totalXp"
-    FROM users u
-    JOIN user_lesson_progress p ON p.user_id = u.id AND p.completed = true
-    JOIN lessons l ON l.course_key = p.course_key AND l.slug = p.lesson_slug
-    GROUP BY u.id, u.name
-    ORDER BY "totalXp" DESC
-  `;
-  return rows;
-}
-
 export async function getByCourse(userId: number, courseKey: string): Promise<UserLessonProgress[]> {
   return prisma.userLessonProgress.findMany({ where: { userId, courseKey } });
 }

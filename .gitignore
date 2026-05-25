@@ -28,3 +28,4 @@ uploads/
 *.njsproj
 *.sln
 *.sw?
+.runs
