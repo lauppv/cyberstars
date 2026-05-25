@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Topbar } from "../components/layout/Topbar";
@@ -47,14 +47,14 @@ export function SupportPage() {
     if (!isLoading && !isLoggedIn) navigate("/getstarted");
   }, [isLoading, isLoggedIn, navigate]);
 
-  const refresh = () => {
+  const refresh = useCallback(() => {
     supportService.getMyTickets().then(setMyTickets).catch(() => {});
     if (isAdmin) supportService.getAllTickets().then(setAllTickets).catch(() => {});
-  };
+  }, [isAdmin]);
 
   useEffect(() => {
     if (isLoggedIn) refresh();
-  }, [isLoggedIn]);
+  }, [isLoggedIn, refresh]);
 
   const submit = async () => {
     if (!subject.trim() || !message.trim()) return;
@@ -248,13 +248,13 @@ function TicketConversation({
   const bottomRef = useRef<HTMLDivElement>(null);
   const status = STATUS_META[ticket.status];
 
-  const loadMessages = () => {
+  const loadMessages = useCallback(() => {
     supportService.getTicketMessages(ticket.id).then(setMessages).catch(() => {});
-  };
+  }, [ticket.id]);
 
   useEffect(() => {
     loadMessages();
-  }, [ticket.id]);
+  }, [loadMessages]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });

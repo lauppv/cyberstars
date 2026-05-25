@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
-import { useGamification } from "../hooks/useGamification";
+
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
@@ -25,7 +25,6 @@ function parseDifficulty(title: string): { diff: "easy" | "medium" | "hard"; nam
 export function AlgorithmListPage() {
   const { lang = "" } = useParams<{ lang: string }>();
   const navigate = useNavigate();
-  const g = useGamification();
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();

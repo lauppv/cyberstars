@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
-import { useGamification } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { useAllProgress } from "../context/ProgressContext";
@@ -22,7 +21,6 @@ interface CourseData {
 
 export function CoursesPage() {
   const navigate = useNavigate();
-  const g = useGamification();
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();

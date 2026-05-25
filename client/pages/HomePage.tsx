@@ -8,8 +8,9 @@ import { useAllProgress } from "../context/ProgressContext";
 import type { Course } from "../../shared/lesson";
 import { courseMeta } from "../constants/courses";
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from "../../shared/constants";
-import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW, StoryModal } from "./AlmanacPage";
-import type { StoryData } from "./AlmanacPage";
+import { StoryModal } from "./AlmanacPage";
+import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW } from "./almanacData";
+import type { StoryData } from "./almanacData";
 import { AI_ARTICLES } from "./almanacAIArticles";
 
 function localDateStr(d: Date): string {
@@ -138,7 +139,7 @@ export function HomePage() {
 
   useEffect(() => {
     if (isLoggedIn) refreshProgress();
-  }, [isLoggedIn]);
+  }, [isLoggedIn, refreshProgress]);
 
   if (isLoading) {
     return (

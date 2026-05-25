@@ -72,7 +72,7 @@ export function LessonPage() {
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
     justSubmittedRef.current = false;
-    setShowToast(false);
+    setTimeout(() => setShowToast(false), 0);
   }, [lesson]);
 
   useEffect(() => {

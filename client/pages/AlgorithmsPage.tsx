@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Topbar } from "../components/layout/Topbar";
-import { useGamification } from "../hooks/useGamification";
 import { ALGO_COURSE_KEYS } from "../../shared/constants";
 import { courseMeta } from "../constants/courses";
 
@@ -20,7 +19,6 @@ const LANGS = ALGO_COURSE_KEYS.map((key) => {
 
 export function AlgorithmsPage() {
   const navigate = useNavigate();
-  const g = useGamification();
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">

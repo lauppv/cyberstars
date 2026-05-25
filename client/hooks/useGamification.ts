@@ -37,7 +37,7 @@ const COURSE_BADGE_ICONS: Record<string, string> = {
 const LEVEL_LABELS = ["Bronze", "Silver", "Gold"];
 
 export function useGamification(): Gamification {
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
   const [, setTick] = useState(0);
@@ -109,7 +109,7 @@ export function useGamification(): Gamification {
       for (const key of earnedKeys) {
         if (!prev.has(key)) {
           const badge = badges.find((b) => `${b.courseKey}-${b.level}` === key);
-          if (badge) setNewBadge(badge);
+          if (badge) setTimeout(() => setNewBadge(badge), 0);
           break;
         }
       }
