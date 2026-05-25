@@ -3,7 +3,7 @@ import { Topbar } from "../components/layout/Topbar";
 import { AI_ARTICLES } from "./almanacAIArticles";
 import "./AlmanacPage.css";
 
-interface StoryData {
+export interface StoryData {
   emoji: string;
   tag?: string;
   catLabel?: string;
@@ -35,7 +35,7 @@ const CATEGORIES = [
   { id: "chatgpt", label: "ChatGPT", em: "🟢" },
 ];
 
-const HERO = {
+export const HERO = {
   cat: "oss",
   catLabel: "OPEN SOURCE",
   tag: "OPEN SOURCE",
@@ -65,7 +65,7 @@ What started as a hobby project by a bored Finnish student became the backbone o
   xp: 30,
 };
 
-const ARTICLES = [
+export const ARTICLES = [
   {
     cat: "history",
     tag: "HISTORY",
@@ -1555,7 +1555,7 @@ const BIG_TIMELINE = [
   },
 ];
 
-function StoryModal({
+export function StoryModal({
   story,
   onClose,
 }: {

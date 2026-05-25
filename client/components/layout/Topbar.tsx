@@ -7,7 +7,6 @@ interface TopbarProps {
   showSidebarToggle?: boolean;
   sidebarOpen?: boolean;
   onSidebarToggle?: () => void;
-  streak?: number;
 }
 
 const NAV_ITEMS = [
@@ -24,7 +23,6 @@ export function Topbar({
   showSidebarToggle,
   sidebarOpen,
   onSidebarToggle,
-  streak: _streak = 0,
 }: TopbarProps) {
   const navigate = useNavigate();
   const location = useLocation();

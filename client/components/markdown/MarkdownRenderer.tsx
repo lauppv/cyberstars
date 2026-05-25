@@ -30,13 +30,25 @@ const components: Components = {
       );
     }
 
+    if (isInline) {
+      return (
+        <code
+          className={className}
+          style={{ background: "#111820", padding: "4px 6px", borderRadius: "4px" }}
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    }
+
     return (
       <code
         className={className}
-        style={{ background: "#111820", padding: "4px 6px", borderRadius: "4px" }}
+        style={{ display: "block", background: "#111820", padding: "12px 16px", borderRadius: "6px" }}
         {...props}
       >
-        {children}
+        {String(children).replace(/^\n/, "")}
       </code>
     );
   },
@@ -44,7 +56,7 @@ const components: Components = {
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="prose text-[#b0b8c5]">
+    <div className="prose text-[#b0b8c5] break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
       <ReactMarkdown components={components}>
         {content}
       </ReactMarkdown>

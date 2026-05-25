@@ -12,7 +12,6 @@ const mockProgressRepo = {
   upsertCode: vi.fn(),
   getSavedCode: vi.fn(),
   touchAccess: vi.fn(),
-  getLeaderboard: vi.fn(),
 };
 
 const mockCurriculumRepo = {
@@ -25,7 +24,7 @@ const mockCurriculumRepo = {
 vi.mock("../repositories/progress.repository.js", () => mockProgressRepo);
 vi.mock("../repositories/curriculum.repository.js", () => mockCurriculumRepo);
 
-const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess, getLeaderboard } =
+const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
   await import("./progress.service.js");
 
 beforeEach(() => vi.clearAllMocks());
@@ -45,8 +44,6 @@ describe("getCourseProgress", () => {
 
     expect(result.completed).toBe(1);
     expect(result.total).toBe(3);
-    expect(result.earnedXp).toBe(10); // xpForLesson(0) = 10
-    expect(result.totalXp).toBe(33);  // 10 + 11 + 12
     expect(result.lessons).toHaveLength(3);
     expect(result.lessons[0].completed).toBe(true);
     expect(result.lessons[1].completed).toBe(false);
@@ -60,7 +57,6 @@ describe("getCourseProgress", () => {
 
     const result = await getCourseProgress(1, "python");
     expect(result.completed).toBe(0);
-    expect(result.earnedXp).toBe(0);
   });
 });
 
@@ -85,28 +81,5 @@ describe("trackAccess", () => {
   it("delegates to repo", async () => {
     await trackAccess(1, "python", "booleans");
     expect(mockProgressRepo.touchAccess).toHaveBeenCalledWith(1, "python", "booleans");
-  });
-});
-
-describe("getLeaderboard", () => {
-  it("ranks users and marks current user", async () => {
-    mockProgressRepo.getLeaderboard.mockResolvedValue([
-      { userId: 10, name: "Alice", totalXp: 200 },
-      { userId: 20, name: "Bob", totalXp: 100 },
-    ]);
-
-    const lb = await getLeaderboard(20);
-    expect(lb).toHaveLength(2);
-    expect(lb[0]).toEqual({ rank: 1, name: "Alice", xp: 200, isCurrentUser: false });
-    expect(lb[1]).toEqual({ rank: 2, name: "Bob", xp: 100, isCurrentUser: true });
-  });
-
-  it("works without a current user", async () => {
-    mockProgressRepo.getLeaderboard.mockResolvedValue([
-      { userId: 10, name: "Alice", totalXp: 50 },
-    ]);
-
-    const lb = await getLeaderboard();
-    expect(lb[0].isCurrentUser).toBe(false);
   });
 });

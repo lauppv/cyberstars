@@ -3,15 +3,14 @@ import { useEffect } from "react";
 interface AchievementToastProps {
   icon: string;
   title: string;
-  xp: number;
   visible: boolean;
   onClose: () => void;
 }
 
-export function AchievementToast({ icon, title, xp, visible, onClose }: AchievementToastProps) {
+export function AchievementToast({ icon, title, visible, onClose }: AchievementToastProps) {
   useEffect(() => {
     if (!visible) return;
-    const t = setTimeout(onClose, 3000);
+    const t = setTimeout(onClose, 5000);
     return () => clearTimeout(t);
   }, [visible, onClose]);
 
@@ -26,10 +25,7 @@ export function AchievementToast({ icon, title, xp, visible, onClose }: Achievem
       }}
     >
       <span className="text-3xl">{icon}</span>
-      <div className="flex flex-col gap-[2px]">
-        <span className="text-sm font-bold text-[var(--text)]">{title}</span>
-        <span className="text-[13px] font-semibold text-[var(--accent)]">+{xp} XP</span>
-      </div>
+      <span className="text-sm font-bold text-[var(--text)]">{title}</span>
       <button
         onClick={onClose}
         className="bg-transparent border-none text-[var(--text3)] text-base cursor-pointer ml-2 hover:text-[var(--text)]"

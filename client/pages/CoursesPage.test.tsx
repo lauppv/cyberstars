@@ -18,7 +18,7 @@ vi.mock("../context/ProgressContext", () => ({
   useAllProgress: vi.fn(() => ({ progressMap: {}, failedCourses: new Set(), isLoading: false })),
 }));
 vi.mock("../hooks/useGamification", () => ({
-  useGamification: vi.fn(() => ({ xp: 0, level: 1, streak: 0, xpInLevel: 0, xpForNextLevel: 100, badges: [] })),
+  useGamification: vi.fn(() => ({ totalCompleted: 0, totalLessons: 0, badges: [], perCourse: {}, isLoading: false, refresh: vi.fn() })),
 }));
 vi.mock("../components/layout/Topbar", () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
@@ -111,8 +111,7 @@ describe("CoursesPage", () => {
           courseKey: "python",
           completed: 1,
           total: 2,
-          totalXp: 30,
-          earnedXp: 10,
+
           lessons: [
             { slug: "intro", title: "Intro", completed: true, completedAt: null, lastAccessedAt: null },
             { slug: "booleans", title: "Booleans", completed: false, completedAt: null, lastAccessedAt: null },
@@ -141,8 +140,7 @@ describe("CoursesPage", () => {
           courseKey: "python",
           completed: 1,
           total: 2,
-          totalXp: 30,
-          earnedXp: 10,
+
           lessons: [{ slug: "intro", title: "Intro", completed: true, completedAt: null, lastAccessedAt: null }],
         },
       },
@@ -209,8 +207,7 @@ describe("CoursesPage", () => {
           courseKey: "python",
           completed: 1,
           total: 2,
-          totalXp: 30,
-          earnedXp: 10,
+
           lessons: [
             { slug: "intro", title: "Intro", completed: true, completedAt: null, lastAccessedAt: null },
             { slug: "booleans", title: "Booleans", completed: false, completedAt: null, lastAccessedAt: null },
@@ -226,15 +223,4 @@ describe("CoursesPage", () => {
     expect(screen.getByText("✓")).toBeDefined();
   });
 
-  it("displays XP info on course cards", () => {
-    mockUseCurriculum.mockReturnValue({
-      courses: [pythonCourse],
-      isLoading: false,
-      refresh: vi.fn(),
-    });
-    mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
-    renderPage();
-    expect(screen.getByText("Earned")).toBeDefined();
-    expect(screen.getByText("Total XP")).toBeDefined();
-  });
 });

@@ -68,6 +68,8 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 | POST | `/auth/login` | No | Login, set JWT cookie |
 | POST | `/auth/logout` | No | Clear JWT cookie |
 | GET | `/auth/me` | Yes | Get current user |
+| POST | `/auth/forgot-password` | No | Send reset code via email (15min expiry) |
+| POST | `/auth/reset-password` | No | Reset password with code |
 
 ### Curriculum & Lessons
 
@@ -81,7 +83,8 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| POST | `/api/run-code` | No | Execute code and return output |
+| WS | `/ws/run` | No | Interactive code execution via WebSocket |
+| POST | `/api/run-code` | No | Execute code and return output (batch) |
 | POST | `/api/run-code/submit` | Optional | Run code against test cases; auto-marks complete if all pass |
 
 ### Progress (all authenticated)
@@ -93,12 +96,6 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 | GET | `/api/progress/:courseKey/:lessonSlug/code` | Yes | Get saved code |
 | PUT | `/api/progress/:courseKey/:lessonSlug/code` | Yes | Save code |
 | POST | `/api/progress/:courseKey/:lessonSlug/access` | Yes | Track last access time |
-
-### Leaderboard
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/leaderboard` | Optional | Global leaderboard ranked by XP |
 
 ### Forum
 
@@ -174,11 +171,13 @@ User code runs in Docker containers, never in the browser.
 
 | Language | Docker Image | Behavior |
 |----------|-------------|----------|
-| Python | `python:3.10-slim` | Run with 5s timeout |
-| C | `gcc:14` | Compile with `-Wall`, run with 5s timeout |
-| Java | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 5s timeout |
+| Python | `python:3.10-slim` | Run with `-u` (unbuffered), 20s timeout |
+| C | `gcc:latest` | Compile with `-Wall`, 20s timeout |
+| Java | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout |
 
 Containers run with `--network=none`, `--memory=128m`, `--pids-limit=64`. Docker is invoked via `execFile` with an argument array (no shell interpolation).
+
+Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on each stdin input, plus a 1MB output cap to stop runaway output loops.
 
 ### Adding a new language
 

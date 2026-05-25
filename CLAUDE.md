@@ -46,7 +46,8 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Auth: JWT in httpOnly cookies, bcryptjs password hashing
 - Rate limiting: `express-rate-limit` on auth routes (10/15min) and code execution routes (10/min/IP)
 - Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts). Required Docker images: `gcc:latest`, `python:3.10-slim`, `eclipse-temurin:21-jdk-alpine`
-- Interactive code execution via WebSocket at `/ws/run` — `server.ts` attaches a `WebSocketServer` to the HTTP server, client connects via `useCodeExecution` hook. In production, nginx must proxy `/ws/` with `Upgrade` and `Connection "upgrade"` headers
+- Interactive code execution via WebSocket at `/ws/run` — `server.ts` attaches a `WebSocketServer` to the HTTP server, client connects via `useCodeExecution` hook. 20s wall-clock timeout (resets on stdin), 1MB output cap. In production, nginx must proxy `/ws/` with `Upgrade` and `Connection "upgrade"` headers
+- Password reset: `/auth/forgot-password` sends a 6-digit code via email (15min expiry), `/auth/reset-password` validates code and updates password
 - Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`
 
 ### Database (`prisma/`)
@@ -97,7 +98,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Vite proxies `/api`, `/auth`, and `/ws` to the Express server (configured in `vite.config.ts`)
 - Course metadata is centralised in `client/constants/courses.ts` via `courseMeta(key)` and `courseTitle(key)` — single source of truth for icons, colors, labels
 - Course key constants live in `shared/constants.ts`: `MAIN_COURSE_KEYS`, `ALGO_COURSE_KEYS`, `TERMINAL_COURSE_KEYS`, `ALL_COURSE_KEYS`
-- Gamification (XP, levels, badges) is derived from `UserLessonProgress` data — no separate gamification tables. Streaks are stored client-side in localStorage keyed by user ID (`cyberstars_activity_days_{userId}`)
+- Gamification (XP, levels, badges) is derived from `UserLessonProgress` data — no separate gamification tables. Badges include "First Steps" (1 lesson) and Bronze/Silver/Gold tiers (10/20/30 lessons per course). New badge earnings trigger a 5s toast notification
 - Profile features (avatar upload, bio, status with 24h expiry) via `/api/profile` routes with multer + magic-byte validation. Uploads served from `/uploads` static dir
 - Dark theme uses CSS custom properties with accent purple `#6C5CE7`, Space Grotesk font for UI, JetBrains Mono for code
 - Lesson completion is automatic when all test cases pass — no manual "complete" button

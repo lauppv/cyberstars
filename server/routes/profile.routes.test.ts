@@ -56,7 +56,6 @@ vi.mock("../repositories/progress.repository.js", () => ({
   getSavedCode: vi.fn().mockResolvedValue(null),
   saveCode: vi.fn().mockResolvedValue(null),
   trackAccess: vi.fn().mockResolvedValue(null),
-  getLeaderboard: vi.fn().mockResolvedValue([]),
 }));
 
 vi.mock("file-type", () => ({

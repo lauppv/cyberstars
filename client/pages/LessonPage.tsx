@@ -4,11 +4,10 @@ import { useLesson } from "../hooks/useLesson";
 import { useCodeExecution } from "../hooks/useCodeExecution";
 import { useTerminalSession } from "../hooks/useTerminalSession";
 import { useProgress } from "../hooks/useProgress";
-import { useGamification, recordActivityToday } from "../hooks/useGamification";
+import { useGamification } from "../hooks/useGamification";
 import { useAuth } from "../context/AuthContext";
 import { useCurriculum } from "../context/CurriculumContext";
 import { Topbar } from "../components/layout/Topbar";
-import { XPBar } from "../components/gamification/XPBar";
 import { AchievementToast } from "../components/gamification/AchievementToast";
 import { CodeEditor } from "../components/code/CodeEditor";
 import { CodeOutput } from "../components/code/CodeOutput";
@@ -17,10 +16,10 @@ import { RunButton } from "../components/code/RunButton";
 import { TerminalPanel } from "../components/terminal/TerminalPanel";
 import { MarkdownRenderer } from "../components/markdown/MarkdownRenderer";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import type { Course, LessonMeta } from "../../shared/lesson";
+import type { LessonMeta } from "../../shared/lesson";
 import * as progressService from "../services/progressService";
 import { courseMeta } from "../constants/courses";
-import { xpForLesson, TERMINAL_COURSE_KEYS } from "../../shared/constants";
+import { TERMINAL_COURSE_KEYS } from "../../shared/constants";
 
 function parseDifficulty(title: string): { difficulty: "Easy" | "Medium" | "Hard" | null; rest: string } {
   const m = title.match(/^(Easy|Medium|Hard)\s*[·-]\s*(.+)$/i);
@@ -38,9 +37,10 @@ const DIFFICULTY_COLOR: Record<string, string> = {
 export function LessonPage() {
   const navigate = useNavigate();
   const { category = "", lesson = "" } = useParams<{ category: string; lesson: string }>();
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
+  const isAlgo = category.startsWith("algo-");
 
   const { title, content, codeTemplate, isLoading } = useLesson(category, lesson);
   const { output, isRunning, isSubmitting, submitResult, execute, sendInput, submit } = useCodeExecution();
@@ -52,8 +52,9 @@ export function LessonPage() {
 
   const [userCode, setUserCode] = useState("");
   const [showToast, setShowToast] = useState(false);
-  const [toastData, setToastData] = useState({ icon: "✅", title: "", xp: 0 });
+  const [toastData, setToastData] = useState({ icon: "✅", title: "" });
   const [showSaveToast, setShowSaveToast] = useState(false);
+  const [isMarking, setIsMarking] = useState(false);
 
   const justSubmittedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -71,6 +72,7 @@ export function LessonPage() {
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
     justSubmittedRef.current = false;
+    setShowToast(false);
   }, [lesson]);
 
   useEffect(() => {
@@ -82,13 +84,10 @@ export function LessonPage() {
   useEffect(() => {
     if (lessonCompleted && justSubmittedRef.current) {
       justSubmittedRef.current = false;
-      if (user) recordActivityToday(user.id);
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
-      const lessonMeta = course?.lessons.find((l) => l.slug === lesson);
       setToastData({
         icon: isLast ? "🏆" : "✅",
         title: isLast ? "Course Milestone!" : "Lesson Complete!",
-        xp: xpForLesson(lessonMeta?.sortOrder ?? 1),
       });
       setShowToast(true);
     }
@@ -110,6 +109,19 @@ export function LessonPage() {
     loadProgress();
     refreshGamification();
   }, [submit, userCode, category, lesson, loadProgress, refreshGamification]);
+
+  const handleMarkComplete = useCallback(async () => {
+    if (!isLoggedIn || lessonCompleted) return;
+    setIsMarking(true);
+    try {
+      justSubmittedRef.current = true;
+      await progressService.markLessonComplete(category, lesson);
+      loadProgress();
+      refreshGamification();
+    } finally {
+      setIsMarking(false);
+    }
+  }, [isLoggedIn, lessonCompleted, category, lesson, loadProgress, refreshGamification]);
 
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
@@ -145,16 +157,7 @@ export function LessonPage() {
             ? `/algorithms/${category.replace("algo-", "")}`
             : "/courses",
         }}
-        streak={gamification.streak}
       />
-
-      {isLoggedIn && (
-        <XPBar
-          current={gamification.xpInLevel}
-          max={gamification.xpForNextLevel}
-          level={gamification.level}
-        />
-      )}
 
       <div className="flex flex-1 overflow-hidden justify-center">
           {/* Lesson content */}
@@ -249,6 +252,19 @@ export function LessonPage() {
                 {courseMeta(category).langLabel}
               </div>
               <div className="flex items-center gap-2">
+                {!isAlgo && isLoggedIn && (
+                  <button
+                    onClick={handleMarkComplete}
+                    disabled={lessonCompleted || isMarking}
+                    className={`text-[12px] px-3 py-1 rounded-[var(--radius-sm)] transition cursor-pointer border ${
+                      lessonCompleted
+                        ? "bg-[var(--success)]/15 border-[var(--success)]/30 text-[var(--success)]"
+                        : "bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20"
+                    } font-semibold disabled:cursor-default`}
+                  >
+                    {lessonCompleted ? "✓ Completed" : isMarking ? "Marking..." : "Mark Complete"}
+                  </button>
+                )}
                 <button
                   onClick={() => setUserCode(codeTemplate)}
                   className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
@@ -260,7 +276,7 @@ export function LessonPage() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-auto bg-[rgba(13,17,23,0.3)]">
+            <div className="overflow-auto bg-[rgba(13,17,23,0.3)]" style={{ maxHeight: "60%" }}>
               <CodeEditor
                 value={userCode}
                 onChange={setUserCode}
@@ -269,44 +285,64 @@ export function LessonPage() {
               />
             </div>
 
-            <div className="p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)]">
-              <div className="flex gap-2 mb-3 items-center flex-wrap">
-                <button
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  className={`px-4 py-1.5 rounded-[var(--radius-sm)] text-[13px] font-semibold transition cursor-pointer disabled:opacity-50 ${
-                    submitResult?.allPassed || (lessonCompleted && !submitResult)
-                      ? "bg-[var(--success)]/20 border border-[var(--success)]/40 text-[var(--success)]"
-                      : "bg-[var(--accent)] text-white hover:brightness-110"
-                  }`}
-                >
-                  {isSubmitting
-                    ? "Testing..."
-                    : submitResult?.allPassed
-                    ? "✓ Submitted"
-                    : lessonCompleted && !submitResult
-                    ? "✓ Submitted"
-                    : "Submit"}
-                </button>
-                {isLoggedIn && (
+            <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
+              {isAlgo && (
+                <div className="flex gap-2 mb-3 items-center flex-wrap">
                   <button
-                    onClick={handleSave}
-                    className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className={`px-4 py-1.5 rounded-[var(--radius-sm)] text-[13px] font-semibold transition cursor-pointer disabled:opacity-50 ${
+                      submitResult?.allPassed || (lessonCompleted && !submitResult)
+                        ? "bg-[var(--success)]/20 border border-[var(--success)]/40 text-[var(--success)]"
+                        : "bg-[var(--accent)] text-white hover:brightness-110"
+                    }`}
                   >
-                    💾 Save
+                    {isSubmitting
+                      ? "Testing..."
+                      : submitResult?.allPassed
+                      ? "✓ Submitted"
+                      : lessonCompleted && !submitResult
+                      ? "✓ Submitted"
+                      : "Submit"}
                   </button>
-                )}
-                {showSaveToast && (
-                  <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                    Code saved!
-                  </span>
-                )}
-              </div>
+                  {isLoggedIn && (
+                    <button
+                      onClick={handleSave}
+                      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
+                    >
+                      💾 Save
+                    </button>
+                  )}
+                  {showSaveToast && (
+                    <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
+                      Code saved!
+                    </span>
+                  )}
+                </div>
+              )}
 
-              {submitResult ? (
+              {!isAlgo && (
+                <div className="flex gap-2 mb-3 items-center flex-wrap">
+                  {isLoggedIn && (
+                    <button
+                      onClick={handleSave}
+                      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
+                    >
+                      💾 Save
+                    </button>
+                  )}
+                  {showSaveToast && (
+                    <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
+                      Code saved!
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {isAlgo && submitResult ? (
                 <TestResults result={submitResult} />
               ) : (
-                <CodeOutput output={output} height="180px" isRunning={isRunning} onInput={sendInput} />
+                <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
               )}
             </div>
           </div>
@@ -316,9 +352,14 @@ export function LessonPage() {
       <AchievementToast
         icon={toastData.icon}
         title={toastData.title}
-        xp={toastData.xp}
         visible={showToast}
         onClose={() => setShowToast(false)}
+      />
+      <AchievementToast
+        icon={gamification.newBadge?.icon ?? "🏅"}
+        title={`Badge earned: ${gamification.newBadge?.label ?? ""}`}
+        visible={!!gamification.newBadge}
+        onClose={gamification.dismissNewBadge}
       />
     </div>
   );

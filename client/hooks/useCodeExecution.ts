@@ -13,6 +13,17 @@ function wsUrl(): string {
   return `${proto}//${location.host}/ws/run`;
 }
 
+const OUTPUT_DISPLAY_MAX = 256 * 1024;
+
+function appendCapped(prev: string, chunk: string): string {
+  const next = prev + chunk;
+  if (next.length <= OUTPUT_DISPLAY_MAX) return next;
+  const kept = next.slice(-OUTPUT_DISPLAY_MAX);
+  const nlIdx = kept.indexOf("\n");
+  const trimmed = nlIdx >= 0 ? kept.slice(nlIdx + 1) : kept;
+  return "... (output truncated) ...\n" + trimmed;
+}
+
 export function useCodeExecution() {
   const [output, setOutput] = useState("");
   const [isRunning, setIsRunning] = useState(false);
@@ -41,7 +52,7 @@ export function useCodeExecution() {
     ws.onmessage = (event) => {
       const msg = JSON.parse(event.data as string) as { type: string; data?: string; code?: number };
       if (msg.type === "stdout" || msg.type === "stderr") {
-        setOutput((prev) => prev + (msg.data ?? ""));
+        setOutput((prev) => appendCapped(prev, msg.data ?? ""));
       } else if (msg.type === "exit") {
         setIsRunning(false);
         sendInputRef.current = null;
@@ -64,7 +75,7 @@ export function useCodeExecution() {
 
     sendInputRef.current = (data: string) => {
       if (ws.readyState === WebSocket.OPEN) {
-        setOutput((prev) => prev + data);
+        setOutput((prev) => appendCapped(prev, data));
         ws.send(JSON.stringify({ type: "stdin", data }));
       }
     };

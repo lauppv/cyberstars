@@ -1,6 +1,5 @@
 import { spawn, execFile } from "child_process";
 import path from "path";
-import os from "os";
 import crypto from "crypto";
 import fs from "fs/promises";
 import { getRuntime } from "../runtimes/registry.js";
@@ -8,8 +7,12 @@ import type { WebSocket } from "ws";
 
 const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? "128m";
 const RUN_PIDS = process.env.CODE_RUN_PIDS ?? "64";
-const RUN_DIR = process.env.CODE_RUN_DIR ?? path.join(os.tmpdir(), "cyberstars-runs");
-const TIMEOUT_MS = 60_000;
+const RUN_DIR = process.env.CODE_RUN_DIR ?? path.join(process.cwd(), ".runs");
+
+const TIMEOUT_MS = 20_000;
+const OUTPUT_FLUSH_MS = 50;
+const OUTPUT_BUFFER_MAX = 16 * 1024;
+const OUTPUT_TOTAL_MAX = 1024 * 1024;
 
 export async function handleInteractiveRun(ws: WebSocket, code: string, language: string) {
   const runtime = getRuntime(language);
@@ -36,11 +39,15 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     }
   }
 
+  const containerName = `run-${runId}`;
+
   const dockerArgs = [
     "run", "--rm", "-i",
+    `--name=${containerName}`,
     "--network=none",
     `--memory=${RUN_MEMORY}`,
     `--pids-limit=${RUN_PIDS}`,
+    "--stop-timeout=0",
     "-v", `${hostDir}:/work`,
     "-w", "/work",
     runtime.image,
@@ -49,33 +56,105 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
 
   const proc = spawn("docker", dockerArgs);
 
+  let exited = false;
+  let stdoutBuf = "";
+  let stderrBuf = "";
+  let flushTimer: ReturnType<typeof setTimeout> | null = null;
+  let outputTotal = 0;
+  let outputCapped = false;
+
+  const flushOutput = () => {
+    flushTimer = null;
+    if (exited || ws.readyState !== ws.OPEN) {
+      stdoutBuf = "";
+      stderrBuf = "";
+      return;
+    }
+    if (stdoutBuf) {
+      ws.send(JSON.stringify({ type: "stdout", data: stdoutBuf }));
+      stdoutBuf = "";
+    }
+    if (stderrBuf) {
+      ws.send(JSON.stringify({ type: "stderr", data: stderrBuf }));
+      stderrBuf = "";
+    }
+  };
+
+  const scheduleFlush = () => {
+    if (flushTimer) return;
+    flushTimer = setTimeout(flushOutput, OUTPUT_FLUSH_MS);
+  };
+
+  const killContainer = () => {
+    execFile("docker", ["kill", containerName], () => {});
+  };
+
+  const sendExit = (code: number) => {
+    if (exited) return;
+    exited = true;
+    clearTimeout(timer);
+    if (flushTimer) {
+      clearTimeout(flushTimer);
+      flushTimer = null;
+    }
+    if (ws.readyState === ws.OPEN) {
+      ws.send(JSON.stringify({ type: "exit", code }));
+    }
+  };
+
+  const killAll = () => {
+    proc.kill("SIGKILL");
+    killContainer();
+  };
+
   let timer: ReturnType<typeof setTimeout>;
   const resetTimer = () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      ws.send(JSON.stringify({ type: "stderr", data: "\nExecution timed out.\n" }));
-      proc.kill("SIGKILL");
+      if (exited) return;
+      killAll();
+      stderrBuf += "\nTime limit exceeded (20s) — program stopped.\n";
+      flushOutput();
+      sendExit(124);
     }, TIMEOUT_MS);
   };
   resetTimer();
 
-  proc.stdout.on("data", (chunk: Buffer) => {
-    if (ws.readyState === ws.OPEN) {
-      ws.send(JSON.stringify({ type: "stdout", data: chunk.toString() }));
+  const appendOutput = (target: "stdout" | "stderr", chunk: Buffer) => {
+    if (exited || outputCapped) return;
+    const remaining = OUTPUT_TOTAL_MAX - outputTotal;
+    if (remaining <= 0) return;
+    const slice = chunk.length > remaining ? chunk.subarray(0, remaining) : chunk;
+    const text = slice.toString();
+    outputTotal += slice.length;
+    if (target === "stdout") {
+      stdoutBuf += text;
+      if (stdoutBuf.length > OUTPUT_BUFFER_MAX) {
+        stdoutBuf = stdoutBuf.slice(-OUTPUT_BUFFER_MAX);
+      }
+    } else {
+      stderrBuf += text;
+      if (stderrBuf.length > OUTPUT_BUFFER_MAX) {
+        stderrBuf = stderrBuf.slice(-OUTPUT_BUFFER_MAX);
+      }
     }
-  });
+    if (outputTotal >= OUTPUT_TOTAL_MAX) {
+      outputCapped = true;
+      killAll();
+      stderrBuf += "\nOutput limit exceeded — program stopped.\n";
+      flushOutput();
+      sendExit(124);
+      return;
+    }
+    scheduleFlush();
+  };
 
-  proc.stderr.on("data", (chunk: Buffer) => {
-    if (ws.readyState === ws.OPEN) {
-      ws.send(JSON.stringify({ type: "stderr", data: chunk.toString() }));
-    }
-  });
+  proc.stdout.on("data", (chunk: Buffer) => appendOutput("stdout", chunk));
+  proc.stderr.on("data", (chunk: Buffer) => appendOutput("stderr", chunk));
 
   proc.on("close", (exitCode) => {
-    clearTimeout(timer);
-    if (ws.readyState === ws.OPEN) {
-      ws.send(JSON.stringify({ type: "exit", code: exitCode ?? 0 }));
-    }
+    flushOutput();
+    sendExit(exitCode ?? 0);
     cleanup();
   });
 
@@ -94,7 +173,8 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
 
   ws.on("close", () => {
     clearTimeout(timer);
-    if (!proc.killed) proc.kill("SIGKILL");
+    if (flushTimer) clearTimeout(flushTimer);
+    killContainer();
     cleanup();
   });
 }

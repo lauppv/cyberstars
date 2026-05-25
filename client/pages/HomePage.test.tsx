@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 
 const mockNavigate = vi.fn();
@@ -18,19 +18,13 @@ vi.mock("../context/ProgressContext", () => ({
   useAllProgress: vi.fn(() => ({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() })),
 }));
 vi.mock("../hooks/useGamification", () => ({
-  useGamification: vi.fn(() => ({ xp: 150, level: 3, streak: 5, xpInLevel: 50, xpForNextLevel: 100, badges: [] })),
-}));
-vi.mock("../services/progressService", () => ({
-  getLeaderboard: vi.fn().mockResolvedValue([]),
+  useGamification: vi.fn(() => ({ totalCompleted: 10, totalLessons: 50, badges: [], perCourse: {}, isLoading: false, refresh: vi.fn() })),
 }));
 vi.mock("../components/layout/Topbar", () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
 vi.mock("../components/ui/LoadingSpinner", () => ({
   LoadingSpinner: () => <div>Loading...</div>,
-}));
-vi.mock("../components/gamification/StreakWidget", () => ({
-  StreakWidget: () => <div>Streak</div>,
 }));
 
 const { useAuth } = await import("../context/AuthContext");
@@ -41,9 +35,6 @@ const mockUseCurriculum = vi.mocked(useCurriculum);
 
 const { useAllProgress } = await import("../context/ProgressContext");
 const mockUseAllProgress = vi.mocked(useAllProgress);
-
-const progressService = await import("../services/progressService");
-const mockGetLeaderboard = vi.mocked(progressService.getLeaderboard);
 
 const { HomePage } = await import("./HomePage");
 
@@ -87,7 +78,6 @@ function renderPage() {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mockGetLeaderboard.mockResolvedValue([]);
   mockUseAllProgress.mockReturnValue({ progressMap: {}, failedCourses: new Set(), isLoading: false, refresh: vi.fn() });
   mockUseCurriculum.mockReturnValue({ courses: [], isLoading: false, refresh: vi.fn() });
 });
@@ -129,92 +119,10 @@ describe("HomePage", () => {
     expect(mockNavigate).toHaveBeenCalledWith("/getstarted");
   });
 
-  it("renders welcome back when logged in", () => {
+  it("renders dashboard when logged in", () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     renderPage();
-    expect(screen.getByText(/Welcome back, Alice/)).toBeDefined();
-  });
-
-  it("shows stat cards with gamification data", () => {
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    expect(screen.getByText("150")).toBeDefined();
-    expect(screen.getByText("5")).toBeDefined();
-    expect(screen.getByText("3")).toBeDefined();
-    expect(screen.getByText("Total XP")).toBeDefined();
-    expect(screen.getByText("Day Streak")).toBeDefined();
-    expect(screen.getByText("Level")).toBeDefined();
-  });
-
-  it("shows streak message when streak > 0", () => {
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    expect(screen.getByText(/5-day streak/)).toBeDefined();
-  });
-
-  it("shows leaderboard section when logged in", () => {
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    expect(screen.getByText("Leaderboard")).toBeDefined();
-  });
-
-  it("shows empty leaderboard message", () => {
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    expect(screen.getByText(/No entries yet/)).toBeDefined();
-  });
-
-  it("renders leaderboard entries", async () => {
-    mockGetLeaderboard.mockResolvedValue([
-      { rank: 1, name: "Bob", xp: 200, isCurrentUser: false },
-      { rank: 2, name: "Alice", xp: 150, isCurrentUser: true },
-    ]);
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    await waitFor(() => {
-      expect(screen.getByText("Bob")).toBeDefined();
-    });
-    expect(screen.getByText("Alice (you)")).toBeDefined();
-    expect(screen.getByText("#1")).toBeDefined();
-    expect(screen.getByText("#2")).toBeDefined();
-  });
-
-  it("shows leaderboard pagination when more than 5 entries", async () => {
-    const entries = Array.from({ length: 7 }, (_, i) => ({
-      rank: i + 1,
-      name: `User${i + 1}`,
-      xp: 100 - i * 10,
-      isCurrentUser: false,
-    }));
-    mockGetLeaderboard.mockResolvedValue(entries);
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    await waitFor(() => {
-      expect(screen.getByText("User1")).toBeDefined();
-    });
-    expect(screen.getByText("Show All")).toBeDefined();
-    expect(screen.getByText("Next →")).toBeDefined();
-    fireEvent.click(screen.getByText("Next →"));
-    expect(screen.getByText("User6")).toBeDefined();
-    fireEvent.click(screen.getByText("← Prev"));
-    expect(screen.getByText("User1")).toBeDefined();
-  });
-
-  it("opens full leaderboard modal", async () => {
-    const entries = Array.from({ length: 7 }, (_, i) => ({
-      rank: i + 1,
-      name: `Player${i + 1}`,
-      xp: 100 - i * 10,
-      isCurrentUser: false,
-    }));
-    mockGetLeaderboard.mockResolvedValue(entries);
-    mockUseAuth.mockReturnValue(loggedInAuth);
-    renderPage();
-    await waitFor(() => {
-      expect(screen.getByText("Show All")).toBeDefined();
-    });
-    fireEvent.click(screen.getByText("Show All"));
-    expect(screen.getByText("Player7")).toBeDefined();
+    expect(screen.getByTestId("topbar")).toBeDefined();
   });
 
   it("shows continue where you left off section", () => {
@@ -226,8 +134,6 @@ describe("HomePage", () => {
           courseKey: "python",
           completed: 1,
           total: 2,
-          totalXp: 30,
-          earnedXp: 10,
           lessons: [
             { slug: "intro", title: "Intro", completed: true, completedAt: null, lastAccessedAt: "2025-01-01T00:00:00Z" },
             { slug: "booleans", title: "Booleans", completed: false, completedAt: null, lastAccessedAt: null },
@@ -240,7 +146,7 @@ describe("HomePage", () => {
     });
     renderPage();
     expect(screen.getByText("Continue where you left off")).toBeDefined();
-    expect(screen.getByText("Intro")).toBeDefined();
+    expect(screen.getAllByText("Intro").length).toBeGreaterThanOrEqual(1);
   });
 
   it("continue section navigates on click", () => {
@@ -252,8 +158,6 @@ describe("HomePage", () => {
           courseKey: "python",
           completed: 0,
           total: 2,
-          totalXp: 30,
-          earnedXp: 0,
           lessons: [
             { slug: "intro", title: "Intro", completed: false, completedAt: null, lastAccessedAt: "2025-01-01T00:00:00Z" },
           ],
@@ -264,13 +168,25 @@ describe("HomePage", () => {
       refresh: vi.fn(),
     });
     renderPage();
-    fireEvent.click(screen.getByText("Continue where you left off").closest("section")!.querySelector("button")!);
+    fireEvent.click(screen.getByText("Continue where you left off").closest("div")!.querySelector("button")!);
     expect(mockNavigate).toHaveBeenCalledWith("/lesson/python/intro");
   });
 
-  it("shows XP level bar", () => {
+  it("shows activity heatmap when logged in", () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     renderPage();
-    expect(screen.getByText(/Level 3 — 50 \/ 100 XP to next/)).toBeDefined();
+    expect(screen.getByText("Activity")).toBeDefined();
+  });
+
+  it("shows almanac highlights when logged in", () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(screen.getByText("From the Almanac")).toBeDefined();
+  });
+
+  it("shows course milestones when logged in", () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(screen.getByText("Course Milestones")).toBeDefined();
   });
 });

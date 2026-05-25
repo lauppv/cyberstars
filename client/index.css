@@ -50,7 +50,7 @@ code, pre, kbd, samp { font-family: var(--mono); }
 }
 
 /* Lesson markdown body */
-.lesson-body { font-size: 15px; line-height: 1.75; color: var(--text2); }
+.lesson-body { font-size: 15px; line-height: 1.75; color: var(--text2); overflow-wrap: break-word; word-break: break-word; }
 .lesson-body p { margin-bottom: 1em; }
 .lesson-body strong { color: var(--text); font-weight: 600; }
 .lesson-body em { color: var(--text); font-style: italic; }
@@ -90,6 +90,7 @@ code, pre, kbd, samp { font-family: var(--mono); }
 .lesson-body th { background: var(--surface); font-weight: 600; color: var(--text); }
 .lesson-body td { color: var(--text2); }
 .lesson-body hr { border: 0; border-top: 1px solid var(--border); margin: 1.5em 0; }
+.lesson-body pre { white-space: pre-wrap; word-break: break-word; }
 .lesson-body a { color: var(--accent); text-decoration: none; }
 .lesson-body a:hover { text-decoration: underline; }
 

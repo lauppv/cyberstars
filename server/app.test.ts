@@ -47,7 +47,6 @@ vi.mock("./repositories/progress.repository.js", () => ({
   getSavedCode: vi.fn().mockResolvedValue(null),
   saveCode: vi.fn().mockResolvedValue(null),
   trackAccess: vi.fn().mockResolvedValue(null),
-  getLeaderboard: vi.fn().mockResolvedValue([]),
 }));
 vi.mock("./repositories/user.repository.js", () => ({
   findByEmail: vi.fn().mockResolvedValue(null),
@@ -63,7 +62,6 @@ describe("endpoint smoke tests — public routes return 200", () => {
     "/api/curriculum",
     "/api/lessons/python/booleans",
     "/api/lesson-code/python/booleans-code.md",
-    "/api/leaderboard",
     "/api/forum/categories",
   ];
 
