@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Topbar } from "../components/layout/Topbar";
 import { AI_ARTICLES } from "./almanacAIArticles";
-import { HERO, ARTICLES } from "./almanacData";
+import { HERO, ARTICLES, FUN_FACTS, QUOTES, BIG_TIMELINE } from "./almanacData";
 import type { StoryData } from "./almanacData";
 import "./AlmanacPage.css";
 

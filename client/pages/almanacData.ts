@@ -1380,7 +1380,7 @@ Tomlinson remained modest about his invention. He received the Webby Award in 20
   },
 ];
 
-const FUN_FACTS = [
+export const FUN_FACTS = [
   { em: "🎮", text: 'The first video game, "Tennis for Two" (1958), ran on an analog oscilloscope at a science fair. The creator made it because the open house was boring.', src: "— Brookhaven Lab, 1958" },
   { em: "📼", text: 'Floppy disks were called "floppy" because the original 8-inch disks bent in your hand. The 3.5" disks we remember were technically rigid.', src: "— IBM, 1971" },
   { em: "🐍", text: "Python is named after Monty Python's Flying Circus, not the snake. Guido van Rossum was reading the scripts when he picked the name in 1991.", src: "— python.org" },
@@ -1437,7 +1437,7 @@ const FUN_FACTS = [
   { em: "📧", text: "In 2002 a sysadmin got a bug report: \"we can't send email farther than 500 miles.\" It was real — a misconfigured ~3 ms mail timeout only let messages reach servers within the distance light travels in that time.", src: "— Trey Harris, The 500-Mile Email, 2002" },
 ];
 
-const QUOTES = [
+export const QUOTES = [
   { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds", context: "2000, Linux Kernel Mailing List" },
   { text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler", context: "Refactoring, 1999" },
   { text: "First, solve the problem. Then, write the code.", author: "John Johnson", context: "" },
@@ -1490,7 +1490,7 @@ const QUOTES = [
   { text: "Make it work, make it right, make it fast.", author: "Kent Beck", context: "" },
 ];
 
-const BIG_TIMELINE = [
+export const BIG_TIMELINE = [
   {
     year: "1969",
     emoji: "📡",
