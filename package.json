@@ -28,6 +28,10 @@
     "db:studio": "prisma studio",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test:e2e": "dotenv -e .env.test -- playwright test --config e2e/playwright.config.ts",
+    "test:e2e:browser": "dotenv -e .env.test -- playwright test --config e2e/playwright.config.ts --project=browser",
+    "test:e2e:docker": "dotenv -e .env.test -- playwright test --config e2e/playwright.config.ts --project=docker",
+    "test:e2e:ui": "dotenv -e .env.test -- playwright test --config e2e/playwright.config.ts --ui",
     "postinstall": "prisma generate"
   },
   "prisma": {
@@ -61,6 +65,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/typography": "^0.5.19",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
