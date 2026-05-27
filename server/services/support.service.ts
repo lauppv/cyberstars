@@ -1,5 +1,5 @@
-import { prisma } from "../config/db.js";
-import type { TicketType, TicketStatus } from "@prisma/client";
+import { prisma } from '../config/db.js';
+import type { TicketType, TicketStatus } from '@prisma/client';
 
 export function create(userId: number, type: TicketType, subject: string, message: string) {
   return prisma.supportTicket.create({
@@ -10,13 +10,13 @@ export function create(userId: number, type: TicketType, subject: string, messag
 export function findByUser(userId: number) {
   return prisma.supportTicket.findMany({
     where: { userId },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
   });
 }
 
 export function findAll() {
   return prisma.supportTicket.findMany({
-    orderBy: [{ status: "asc" }, { createdAt: "desc" }],
+    orderBy: [{ status: 'asc' }, { createdAt: 'desc' }],
     include: { user: { select: { name: true, email: true } } },
   });
 }
@@ -32,7 +32,7 @@ export function updateStatus(id: number, status: TicketStatus) {
 export function getMessages(ticketId: number) {
   return prisma.supportMessage.findMany({
     where: { ticketId },
-    orderBy: { createdAt: "asc" },
+    orderBy: { createdAt: 'asc' },
     include: { user: { select: { name: true, role: true } } },
   });
 }

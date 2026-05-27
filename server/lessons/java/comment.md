@@ -11,11 +11,13 @@ public class Main {
     }
 }
 ```
+
 The lines after **//** are completely ignored by Java. The program runs as if they weren’t there
 
 ---
 
 Comments are also great for **disabling** code temporarily
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -24,11 +26,13 @@ public class Main {
     }
 }
 ```
+
 Now the program prints nothing, because we **commented out** the **println**. Very useful when debugging — instead of deleting code and rewriting it later, we just comment it out
 
 ---
 
 For longer comments that span multiple lines, Java also supports **/\* ... \*/**
+
 ```text
 /*
 This is a
@@ -36,7 +40,9 @@ multi-line
 comment
 */
 ```
+
 However, in practice, most Java code uses **//** even for several lines in a row
+
 ```text
 // this is how we will write
 // our comments

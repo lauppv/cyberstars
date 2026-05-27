@@ -7,6 +7,7 @@ numbers = [5, 3, 8, 1, 2]
 ```
 
 **Pass 1**: compare neighbors, swap if needed
+
 - Compare 5 and 3 → 5 > 3, swap → **[3, 5, 8, 1, 2]**
 - Compare 5 and 8 → 5 < 8, ok → **[3, 5, 8, 1, 2]**
 - Compare 8 and 1 → 8 > 1, swap → **[3, 5, 1, 8, 2]**
@@ -15,11 +16,13 @@ numbers = [5, 3, 8, 1, 2]
 After pass 1, the **biggest number (8)** has "bubbled up" to the end. That's why it's called **Bubble Sort**
 
 **Pass 2**:
+
 - 3 and 5 → ok
 - 5 and 1 → swap → **[3, 1, 5, 2, 8]**
 - 5 and 2 → swap → **[3, 1, 2, 5, 8]**
 
 **Pass 3**:
+
 - 3 and 1 → swap → **[1, 3, 2, 5, 8]**
 - 3 and 2 → swap → **[1, 2, 3, 5, 8]**
 
@@ -28,6 +31,7 @@ After pass 1, the **biggest number (8)** has "bubbled up" to the end. That's why
 ---
 
 In code
+
 ```py
 numbers = [5, 3, 8, 1, 2]
 
@@ -38,6 +42,7 @@ for i in range(len(numbers)):
 
 print(numbers)
 ```
+
 Output **[1, 2, 3, 5, 8]**
 
 The trick **numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]** is Python's way of **swapping** two variables. In other languages you'd need a temporary variable, but Python makes it easy
@@ -66,6 +71,7 @@ print(bubbleSort([10, 7, 3, 9, 1]))   # [1, 3, 7, 9, 10]
 ```
 
 Expected output
+
 ```text
 [1, 2, 3, 5, 8]
 [1, 3, 7, 9, 10]

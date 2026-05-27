@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import type { ReactNode } from "react";
-import type { Course } from "../../shared/lesson";
-import { fetchCurriculum } from "../services/lessonService";
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import type { Course } from '../../shared/lesson';
+import { fetchCurriculum } from '../services/lessonService';
 
 interface CurriculumContextType {
   courses: Course[];
@@ -21,22 +21,24 @@ export function CurriculumProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let cancelled = false;
     fetchCurriculum()
-      .then((data) => { if (!cancelled) setCourses(data); })
+      .then((data) => {
+        if (!cancelled) setCourses(data);
+      })
       .catch(() => {})
-      .finally(() => { if (!cancelled) setIsLoading(false); });
-    return () => { cancelled = true; };
+      .finally(() => {
+        if (!cancelled) setIsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [refreshKey]);
 
-  return (
-    <CurriculumContext value={{ courses, isLoading, refresh }}>
-      {children}
-    </CurriculumContext>
-  );
+  return <CurriculumContext value={{ courses, isLoading, refresh }}>{children}</CurriculumContext>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useCurriculum(): CurriculumContextType {
   const ctx = useContext(CurriculumContext);
-  if (!ctx) throw new Error("useCurriculum must be used within CurriculumProvider");
+  if (!ctx) throw new Error('useCurriculum must be used within CurriculumProvider');
   return ctx;
 }

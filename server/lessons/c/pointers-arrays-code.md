@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-int sumArray(int *ptr, int n) {
-    // sum using pointer arithmetic
-    int total = 0;
-    return total;
+int sumArray(int \*ptr, int n) {
+// sum using pointer arithmetic
+int total = 0;
+return total;
 }
 
 int main(void) {
-    int nums[] = {5, 10, 15, 20};
-    int result = sumArray(nums, 4);
-    printf("%d\n", result);
-    return 0;
+int nums[] = {5, 10, 15, 20};
+int result = sumArray(nums, 4);
+printf("%d\n", result);
+return 0;
 }

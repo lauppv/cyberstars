@@ -17,7 +17,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 555-0001
 555-0002
@@ -43,6 +45,7 @@ public class Main {
     }
 }
 ```
+
 Output **Tommy's score: 9500**
 
 Just like with ArrayList, you can't use primitive types directly — use **Integer** instead of **int**, **Double** instead of **double**, etc.
@@ -52,6 +55,7 @@ Just like with ArrayList, you can't use primitive types directly — use **Integ
 The main HashMap methods
 
 **put(key, value)** — adds or updates a key-value pair
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -62,6 +66,7 @@ public class Main {
 ```
 
 **get(key)** — gets the value for that key (returns **null** if the key doesn't exist)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -72,6 +77,7 @@ public class Main {
 ```
 
 **containsKey(key)** — checks if a key exists, returns true/false
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -82,6 +88,7 @@ public class Main {
 ```
 
 **keySet()** — returns all the keys (useful for looping, which we'll cover next lesson)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -91,6 +98,7 @@ public class Main {
 ```
 
 **size()** — returns how many key-value pairs are in the map
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -102,6 +110,7 @@ public class Main {
 ---
 
 In Python you'd write
+
 ```python
 scores = {"Tommy": 9500, "Lance": 7200, "Phil": 3100}
 print(scores["Tommy"])
@@ -138,7 +147,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy completed 47 missions
 Lance now has 13 missions
@@ -157,6 +168,7 @@ Then print each player and their score on its own line, in this format: **Name: 
 You can use **.get()** for each player individually
 
 Expected output (print them in this order)
+
 ```text
 Tommy: 9500
 Lance: 7200

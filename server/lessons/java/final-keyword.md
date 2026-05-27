@@ -14,7 +14,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 CyberQuest - Max HP: 100
 ```
@@ -70,7 +72,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Game version: 1.0
 Max players: 4
@@ -105,7 +109,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Lance Vance: 50
 ```
@@ -141,7 +147,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 99
 ```
@@ -153,12 +161,14 @@ Output
 ## Exercise
 
 Create two `final` constants:
+
 - `MAX_HEALTH` set to `100`
 - `GAME_NAME` set to `"CyberQuest"`
 
 Print both constants on separate lines, exactly like this:
 
 Expected output:
+
 ```text
 100
 CyberQuest

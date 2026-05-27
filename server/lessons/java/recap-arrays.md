@@ -13,6 +13,7 @@ public class Main {
 ```
 
 Write a method **static String[] filterWords(String[] words)** that:
+
 1. Loops through the array
 2. **Skips** any word that equals "SPAM" (use **continue** and **.equals()**)
 3. **Stops** when it finds "exit" (use **break**)
@@ -22,6 +23,7 @@ Write a method **static String[] filterWords(String[] words)** that:
 In main, call the method and print each result, then print the count
 
 Expected output
+
 ```text
 HELLO
 WORLD

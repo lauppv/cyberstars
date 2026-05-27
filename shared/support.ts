@@ -1,12 +1,6 @@
-export type TicketType =
-  | "BUG"
-  | "QUESTION"
-  | "RULE_VIOLATION"
-  | "FEEDBACK"
-  | "ACCOUNT"
-  | "OTHER";
+export type TicketType = 'BUG' | 'QUESTION' | 'RULE_VIOLATION' | 'FEEDBACK' | 'ACCOUNT' | 'OTHER';
 
-export type TicketStatus = "OPEN" | "IN_PROGRESS" | "RESOLVED" | "CLOSED";
+export type TicketStatus = 'OPEN' | 'IN_PROGRESS' | 'RESOLVED' | 'CLOSED';
 
 export interface SupportTicketDTO {
   id: number;

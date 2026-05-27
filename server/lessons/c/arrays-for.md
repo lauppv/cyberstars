@@ -1,4 +1,5 @@
 We have an array of scores. We want to do something with each one. We **could** do
+
 ```c
 #include <stdio.h>
 
@@ -12,9 +13,11 @@ int main(void) {
     return 0;
 }
 ```
+
 Repetitive. **Forbidden**, as we said in earlier lessons :)
 
 The classic C **for** loop goes hand in hand with arrays
+
 ```c
 #include <stdio.h>
 
@@ -34,6 +37,7 @@ We used **i < 5**, **not** **i <= 5**. Why? Indices go from **0** to **size - 1*
 ---
 
 Hardcoding **5** in the loop is fragile. If we add or remove an element, we have to remember to update the loop. Use the **sizeof** trick instead
+
 ```c
 #include <stdio.h>
 
@@ -47,11 +51,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Now the loop works no matter how many elements the array has. Add or remove a score, run again, it just works
 
 ---
 
 A classic pattern: **summing** numbers
+
 ```c
 #include <stdio.h>
 
@@ -67,11 +73,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Start with **total = 0**, walk through every element, add it. You will write this kind of loop many times in your career. Read it line by line and make sure you understand **why** it works :)
 
 ---
 
 **A note about functions and arrays**: as we mentioned in the previous lesson, when you pass an array to a function, the **sizeof** trick **stops working** (the array becomes a pointer). The standard fix: pass the size as a separate parameter
+
 ```c
 #include <stdio.h>
 
@@ -88,6 +96,7 @@ int main(void) {
     return 0;
 }
 ```
+
 This is a very common C idiom. Get used to writing it :)
 
 ---
@@ -101,6 +110,7 @@ Display **on separate lines**
 3. The **average**
 
 Expected output
+
 ```text
 80
 95
@@ -112,6 +122,7 @@ Expected output
 ```
 
 For the average, **be careful with integer division** :) Cast one of the operands to **double**, like
+
 ```c
 #include <stdio.h>
 

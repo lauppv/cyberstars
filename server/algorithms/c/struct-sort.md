@@ -5,10 +5,12 @@ Read **N** students, each with a **name** (single word) and a **grade** (integer
 This exercise practices defining and using `struct` in C, plus sorting an array of structs.
 
 ### Input
+
 - First line: an integer `N` (1 ≤ N ≤ 50)
 - Next `N` lines: a name (string, no spaces) and a grade (integer), separated by a space
 
 ### Output
+
 `N` lines, each with the name and grade, sorted by grade ascending.
 
 ### Examples
@@ -36,6 +38,7 @@ Eve 50
 ```
 
 ### Hints
+
 - Define a struct: `struct Student { char name[51]; int grade; };`
 - Use bubble sort or selection sort to sort the array by the `grade` field.
 - For a stable sort, bubble sort works well — it preserves order of equal elements.

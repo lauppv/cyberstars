@@ -3,14 +3,14 @@
 #include <string.h>
 #include <sys/wait.h>
 
-int countWords(const char *text) {
-    // count words separated by spaces
-    return 0;
+int countWords(const char \*text) {
+// count words separated by spaces
+return 0;
 }
 
 int main(void) {
-    int fd[2];
-    pipe(fd);
+int fd[2];
+pipe(fd);
 
     char text[] = "The quick brown fox jumps over the lazy dog";
 
@@ -20,4 +20,5 @@ int main(void) {
     // parent: read from pipe, print result
 
     return 0;
+
 }

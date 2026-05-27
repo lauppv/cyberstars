@@ -5,6 +5,7 @@ C is **lower-level** than Python or Java. That means it gives us more **control*
 ---
 
 The simplest C program looks like this
+
 ```c
 #include <stdio.h>
 
@@ -13,7 +14,9 @@ int main(void) {
     return 0;
 }
 ```
+
 **Run** it. You’ll see
+
 ```text
 hey, I like pizza
 ```
@@ -26,9 +29,11 @@ There is some boilerplate. Let’s go through it briefly — for now, **trust it
 - **return 0;** — we tell the operating system "the program ended successfully". **0** means "all good"
 
 The line that does the actual work is
+
 ```c
 printf("hey, I like pizza\n");
 ```
+
 **printf** is C’s way of printing text on the screen. It comes from **print formatted**
 
 ---
@@ -46,11 +51,15 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 HelloWorld
 ```
+
 Stuck together. With **\n**
+
 ```c
 #include <stdio.h>
 
@@ -60,16 +69,20 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 Hello
 World
 ```
+
 This is a small but important detail. Forget **\n** at your own risk :)
 
 ---
 
 A few small reminders, just like in Java
+
 - Text goes inside **double quotes** **""**
 - Every statement ends with a **semicolon** **;**
 
@@ -78,7 +91,9 @@ Try removing the **;** and run the code. Read the compile error :)
 ---
 
 On the right you have a C program ready to go. Inside **main**, write code that displays
+
 ```text
 Hello, CyberStars!
 ```
+
 Don’t forget the **\n** at the end of the string :)

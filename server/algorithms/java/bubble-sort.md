@@ -5,10 +5,12 @@ Implement the **bubble sort** algorithm. Read an array of integers and sort them
 Bubble sort works by repeatedly stepping through the list, comparing adjacent elements, and swapping them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
 
 ### Input
+
 - Line 1: integer N — the number of elements
 - Line 2: N space-separated integers
 
 ### Output
+
 - The sorted integers on a single line, separated by spaces.
 
 ### Examples
@@ -32,6 +34,7 @@ Output:
 ```
 
 ### Hints
+
 - Use two nested loops: the outer loop runs N-1 times, the inner loop compares adjacent elements.
 - If `arr[j] > arr[j+1]`, swap them.
 - After each pass of the outer loop, the largest unsorted element "bubbles up" to its correct position.

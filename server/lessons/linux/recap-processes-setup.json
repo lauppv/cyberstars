@@ -1,1 +1,21 @@
-{"cwd":"/home/student","files":[{"path":"logs/reactor.log","content":"[OK] Temperature nominal\n[OK] Pressure stable\n[WARN] Coolant level 42%\n"},{"path":"logs/comms.log","content":"[OK] Signal strength 98%\n[OK] Antenna aligned\n"},{"path":"logs/nav.log","content":"[OK] Course locked\n[OK] ETA 3 days\n[WARN] Micro-debris detected ahead\n"}],"dirs":["logs"],"processes":[{"user":"root","pid":"1","cmd":"/sbin/init"},{"user":"root","pid":"42","cmd":"/usr/bin/reactor-monitor"},{"user":"root","pid":"305","cmd":"/usr/sbin/life-support"},{"user":"student","pid":"1201","cmd":"bash"}]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "logs/reactor.log",
+      "content": "[OK] Temperature nominal\n[OK] Pressure stable\n[WARN] Coolant level 42%\n"
+    },
+    { "path": "logs/comms.log", "content": "[OK] Signal strength 98%\n[OK] Antenna aligned\n" },
+    {
+      "path": "logs/nav.log",
+      "content": "[OK] Course locked\n[OK] ETA 3 days\n[WARN] Micro-debris detected ahead\n"
+    }
+  ],
+  "dirs": ["logs"],
+  "processes": [
+    { "user": "root", "pid": "1", "cmd": "/sbin/init" },
+    { "user": "root", "pid": "42", "cmd": "/usr/bin/reactor-monitor" },
+    { "user": "root", "pid": "305", "cmd": "/usr/sbin/life-support" },
+    { "user": "student", "pid": "1201", "cmd": "bash" }
+  ]
+}

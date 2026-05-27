@@ -20,7 +20,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Math: 92
 ```
@@ -174,7 +176,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Student: Tommy
   Math: 85
@@ -205,6 +209,7 @@ Your turn! Build the student gradebook:
 5. Print both reports
 
 Expected output:
+
 ```text
 Student: Tommy
   Math: 90

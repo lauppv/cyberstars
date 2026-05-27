@@ -14,7 +14,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 null
 ```
@@ -35,7 +37,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Exception in thread "main" java.lang.NullPointerException
 ```
@@ -63,7 +67,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 No name set!
 ```
@@ -90,7 +96,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 true
 false
@@ -128,7 +136,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 No player!
 ```
@@ -175,7 +185,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Hello, Tommy Vercetti!
 Hello, stranger!
@@ -201,14 +213,17 @@ The difference: Python gives you an `AttributeError`, Java gives you a `NullPoin
 ## Exercise
 
 Write a static method called `greet` that takes a `String name` parameter:
+
 - If `name` is **not null**, return `"Hello, Name!"`
 - If `name` **is null**, return `"Hello, stranger!"`
 
 In `main`, call the method twice and print the results:
-1. `greet("Tommy")` 
+
+1. `greet("Tommy")`
 2. `greet(null)`
 
 Expected output:
+
 ```text
 Hello, Tommy!
 Hello, stranger!

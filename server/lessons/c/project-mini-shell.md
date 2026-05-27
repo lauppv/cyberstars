@@ -5,6 +5,7 @@ A real shell does: read a command → fork → child runs the command → parent
 ---
 
 Here's the core idea
+
 ```c
 #include <stdio.h>
 #include <unistd.h>
@@ -43,7 +44,7 @@ int main(void) {
 }
 ```
 
-**_exit(0)** is like **return 0** but for child processes after fork — it exits immediately without running cleanup that could mess up the parent
+**\_exit(0)** is like **return 0** but for child processes after fork — it exits immediately without running cleanup that could mess up the parent
 
 **WEXITSTATUS(status)** extracts the actual exit code from the status value that **waitpid** gives us
 
@@ -56,6 +57,7 @@ The parent creates a child for each command, waits for it to finish, then moves 
 Your task: complete the program on the right. Implement the **runCommand** function and call it from main with these commands: **"greet"**, **"count"**, and **"unknown"**
 
 The commands should do:
+
 - **"greet"** → print **"Hello from CyberStars!"**
 - **"count"** → print numbers **1 2 3** (on the same line, separated by spaces)
 - anything else → print **"Error: unknown command"**
@@ -63,6 +65,7 @@ The commands should do:
 After each command, the parent prints **"Done"**
 
 Expected output (PIDs will vary)
+
 ```text
 Hello from CyberStars!
 Done

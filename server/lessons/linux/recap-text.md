@@ -1,12 +1,12 @@
 Chapter 6 armed you with a full text-processing toolkit:
 
-| Command | Superpower |
-|---------|-----------|
-| `sort` | Reorder lines (alpha, numeric, by column) |
-| `uniq` | Remove/count duplicates (after sorting) |
-| `cut` | Extract columns by delimiter or position |
-| `sed` | Find & replace in a stream |
-| `awk` | Field processing, calculations, filtering |
+| Command | Superpower                                |
+| ------- | ----------------------------------------- |
+| `sort`  | Reorder lines (alpha, numeric, by column) |
+| `uniq`  | Remove/count duplicates (after sorting)   |
+| `cut`   | Extract columns by delimiter or position  |
+| `sed`   | Find & replace in a stream                |
+| `awk`   | Field processing, calculations, filtering |
 
 These commands **compose** beautifully through pipes. A single pipeline can transform
 raw data into a clean report.

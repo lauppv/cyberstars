@@ -19,7 +19,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 30
 10
@@ -60,7 +62,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy Vercetti: 70 HP
 ```
@@ -110,7 +114,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Owner: Cortez
 Unlocked: true
@@ -177,6 +183,7 @@ Access modifiers (`public`, `private`) are only for class members — fields, me
 ## Exercise
 
 Create a `Wallet` class with:
+
 - A `private int money` field
 - A constructor that takes starting money
 - A `public void addMoney(int amount)` method (only if amount > 0)
@@ -186,6 +193,7 @@ Create a `Wallet` class with:
 In `main`, create a wallet with 100, add 50, spend 30, try to spend 200 (should fail), and print the balance
 
 Expected output:
+
 ```text
 120
 ```

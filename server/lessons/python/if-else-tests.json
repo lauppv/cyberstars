@@ -4,27 +4,27 @@
     "input": "",
     "expected": "water does not freeze",
     "mode": "contains",
-    "overrides": {"temperature": "0"}
+    "overrides": { "temperature": "0" }
   },
   {
     "name": "temperature = -5 -> it's freezing outside",
     "input": "",
     "expected": "it's freezing outside",
     "mode": "contains",
-    "overrides": {"temperature": "-5"}
+    "overrides": { "temperature": "-5" }
   },
   {
     "name": "temperature = -100 -> it's freezing outside",
     "input": "",
     "expected": "it's freezing outside",
     "mode": "contains",
-    "overrides": {"temperature": "-100"}
+    "overrides": { "temperature": "-100" }
   },
   {
     "name": "temperature = 25 -> water does not freeze",
     "input": "",
     "expected": "water does not freeze",
     "mode": "contains",
-    "overrides": {"temperature": "25"}
+    "overrides": { "temperature": "25" }
   }
 ]

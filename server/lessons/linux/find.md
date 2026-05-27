@@ -1,4 +1,4 @@
-`grep` searches *inside* files for text. But sometimes you are looking for the **file
+`grep` searches _inside_ files for text. But sometimes you are looking for the **file
 itself** — "where did I put that file called `report.txt`?". That is what **find**
 does.
 

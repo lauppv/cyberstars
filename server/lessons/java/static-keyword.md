@@ -28,7 +28,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Total visits: 3
 ```
@@ -77,7 +79,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 25
 10
@@ -152,7 +156,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Enemies spawned: 4
 ```
@@ -179,6 +185,7 @@ Same concept — the class variable belongs to the class, not to any instance
 ## Exercise
 
 Create a `Visitor` class with:
+
 - A `String name` instance field
 - A `static int totalVisits` field starting at 0
 - A constructor that takes a name and increments `totalVisits`
@@ -186,6 +193,7 @@ Create a `Visitor` class with:
 In `main`, create 3 visitors: `"Tommy"`, `"Lance"`, and `"Cortez"`. Then print the total visits
 
 Expected output:
+
 ```text
 3
 ```

@@ -1,9 +1,9 @@
-import nodemailer from "nodemailer";
-import { config } from "../config/index.js";
+import nodemailer from 'nodemailer';
+import { config } from '../config/index.js';
 
 const transporter = config.smtp.user
   ? nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: { user: config.smtp.user, pass: config.smtp.pass },
     })
   : null;
@@ -17,7 +17,7 @@ export async function sendResetCode(to: string, code: string): Promise<void> {
   await transporter.sendMail({
     from: `"CyberStars" <${config.smtp.user}>`,
     to,
-    subject: "Password Reset Code — CyberStars",
+    subject: 'Password Reset Code — CyberStars',
     html: `
       <div style="font-family:sans-serif;max-width:420px;margin:0 auto;padding:32px;background:#16161d;color:#e8e8ff;border-radius:12px">
         <h2 style="margin:0 0 16px;color:#6C5CE7">Password Reset</h2>

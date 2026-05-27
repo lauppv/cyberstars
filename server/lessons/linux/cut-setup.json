@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"manifest.csv","content":"oxygen_tanks,50,deck1\nration_packs,200,deck3\nmedkits,30,medbay\nbatteries,100,engineering\nwater_filters,20,life_support\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "manifest.csv",
+      "content": "oxygen_tanks,50,deck1\nration_packs,200,deck3\nmedkits,30,medbay\nbatteries,100,engineering\nwater_filters,20,life_support\n"
+    }
+  ],
+  "dirs": []
+}

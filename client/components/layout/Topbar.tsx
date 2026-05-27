@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 interface TopbarProps {
   breadcrumb?: { course?: string; lesson?: string; courseHref?: string };
@@ -10,12 +10,12 @@ interface TopbarProps {
 }
 
 const NAV_ITEMS = [
-  { label: "Dashboard", path: "/" },
-  { label: "Courses", path: "/courses" },
-  { label: "Algorithms", path: "/algorithms" },
-  { label: "Forum", path: "/forum" },
-  { label: "Almanac", path: "/almanac" },
-  { label: "Laniakea Explorer", path: "/laniakea" },
+  { label: 'Dashboard', path: '/' },
+  { label: 'Courses', path: '/courses' },
+  { label: 'Algorithms', path: '/algorithms' },
+  { label: 'Forum', path: '/forum' },
+  { label: 'Almanac', path: '/almanac' },
+  { label: 'Laniakea Explorer', path: '/laniakea' },
 ];
 
 export function Topbar({
@@ -38,13 +38,13 @@ export function Topbar({
       }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === 'Escape') setMenuOpen(false);
     };
-    document.addEventListener("mousedown", onClick);
-    document.addEventListener("keydown", onKey);
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onKey);
     return () => {
-      document.removeEventListener("mousedown", onClick);
-      document.removeEventListener("keydown", onKey);
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onKey);
     };
   }, [menuOpen]);
 
@@ -57,24 +57,35 @@ export function Topbar({
             className="bg-transparent border border-[var(--border)] text-[var(--text3)] w-7 h-7 rounded-[var(--radius-sm)] flex items-center justify-center text-[11px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer"
             aria-label="Toggle sidebar"
           >
-            {sidebarOpen ? "◀" : "▶"}
+            {sidebarOpen ? '◀' : '▶'}
           </button>
         )}
-        <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          <svg className="w-[22px] h-[22px]" viewBox="0 0 64 64" style={{ filter: "drop-shadow(0 0 8px var(--accent-glow))" }}>
-            <polygon points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24" fill="var(--accent)" />
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
+          <svg
+            className="w-[22px] h-[22px]"
+            viewBox="0 0 64 64"
+            style={{ filter: 'drop-shadow(0 0 8px var(--accent-glow))' }}
+          >
+            <polygon
+              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
+              fill="var(--accent)"
+            />
           </svg>
-          <span className="font-bold text-[17px]" style={{ letterSpacing: "-0.5px" }}>
+          <span className="font-bold text-[17px]" style={{ letterSpacing: '-0.5px' }}>
             CyberStars
           </span>
         </div>
 
         {breadcrumb ? (
           <div className="flex items-center gap-2 text-[13px] text-[var(--text3)]">
-            {breadcrumb.course && <span className="text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition" onClick={() => navigate(breadcrumb.courseHref ?? "/courses")}>{breadcrumb.course}</span>}
+            {breadcrumb.course && (
+              <span
+                className="text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition"
+                onClick={() => navigate(breadcrumb.courseHref ?? '/courses')}
+              >
+                {breadcrumb.course}
+              </span>
+            )}
             {breadcrumb.course && breadcrumb.lesson && <span className="opacity-40">/</span>}
             {breadcrumb.lesson && <span className="text-[var(--text)]">{breadcrumb.lesson}</span>}
           </div>
@@ -82,10 +93,11 @@ export function Topbar({
           <nav className="flex gap-1">
             {NAV_ITEMS.map((item) => {
               const isActive =
-                item.path === "/"
-                  ? location.pathname === "/"
-                  : item.path === "/algorithms"
-                    ? location.pathname.startsWith("/algorithms") || location.pathname.startsWith("/lesson/algo")
+                item.path === '/'
+                  ? location.pathname === '/'
+                  : item.path === '/algorithms'
+                    ? location.pathname.startsWith('/algorithms') ||
+                      location.pathname.startsWith('/lesson/algo')
                     : location.pathname.startsWith(item.path);
               return (
                 <button
@@ -93,8 +105,8 @@ export function Topbar({
                   onClick={() => navigate(item.path)}
                   className={`px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer border-none transition-all ${
                     isActive
-                      ? "text-[var(--accent)] bg-[rgba(108,92,231,0.07)]"
-                      : "text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]"
+                      ? 'text-[var(--accent)] bg-[rgba(108,92,231,0.07)]'
+                      : 'text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]'
                   }`}
                 >
                   {item.label}
@@ -115,7 +127,11 @@ export function Topbar({
               aria-expanded={menuOpen}
             >
               {user.avatarUrl ? (
-                <img src={user.avatarUrl} alt="" className="w-[30px] h-[30px] rounded-full object-cover border-2 border-[var(--accent)]" />
+                <img
+                  src={user.avatarUrl}
+                  alt=""
+                  className="w-[30px] h-[30px] rounded-full object-cover border-2 border-[var(--accent)]"
+                />
               ) : (
                 <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
                   🚀
@@ -131,41 +147,59 @@ export function Topbar({
               >
                 <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
                   {user.avatarUrl ? (
-                    <img src={user.avatarUrl} alt="" className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0" />
+                    <img
+                      src={user.avatarUrl}
+                      alt=""
+                      className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0"
+                    />
                   ) : (
                     <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg border-2 border-[var(--accent)] flex-shrink-0">
                       🚀
                     </div>
                   )}
                   <div className="min-w-0">
-                    <div className="text-[13px] font-semibold text-[var(--text)] truncate">{user.name}</div>
+                    <div className="text-[13px] font-semibold text-[var(--text)] truncate">
+                      {user.name}
+                    </div>
                     <div className="text-[11px] text-[var(--text3)] truncate">{user.email}</div>
                   </div>
                 </div>
                 <button
                   role="menuitem"
-                  onClick={() => { setMenuOpen(false); navigate("/profile"); }}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/profile');
+                  }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
                   <span className="w-4 text-center">👤</span> Profile
                 </button>
                 <button
                   role="menuitem"
-                  onClick={() => { setMenuOpen(false); navigate("/support"); }}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/support');
+                  }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
                   <span className="w-4 text-center">🎫</span> Support
                 </button>
                 <button
                   role="menuitem"
-                  onClick={() => { setMenuOpen(false); navigate("/rules"); }}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/rules');
+                  }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
                   <span className="w-4 text-center">📋</span> Rules
                 </button>
                 <button
                   role="menuitem"
-                  onClick={() => { setMenuOpen(false); navigate("/welcome"); }}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/welcome');
+                  }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
                   <span className="w-4 text-center">✨</span> Welcome Tour
@@ -176,7 +210,7 @@ export function Topbar({
                   onClick={async () => {
                     setMenuOpen(false);
                     await logout();
-                    navigate("/getstarted");
+                    navigate('/getstarted');
                   }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--error)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
@@ -187,7 +221,7 @@ export function Topbar({
           </div>
         ) : (
           <button
-            onClick={() => navigate("/getstarted")}
+            onClick={() => navigate('/getstarted')}
             className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer"
           >
             Sign in

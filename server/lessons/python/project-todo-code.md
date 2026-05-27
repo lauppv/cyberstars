@@ -1,14 +1,11 @@
-def addTask(todos, name):
-    # add a new task dict with name and done=False
-    pass
+def addTask(todos, name): # add a new task dict with name and done=False
+pass
 
-def completeTask(todos, index):
-    # mark the task at index as done
-    pass
+def completeTask(todos, index): # mark the task at index as done
+pass
 
-def countDone(todos):
-    # return how many tasks have done=True
-    pass
+def countDone(todos): # return how many tasks have done=True
+pass
 
 todos = []
 addTask(todos, "Learn Python")

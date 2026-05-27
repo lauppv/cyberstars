@@ -15,6 +15,7 @@ At the end, print how many students passed (score >= 10)
 Use the scores: just use the loop variable **i** as the score (so score 1, score 2, ... score 20)
 
 Expected output (first few and last few lines + the count)
+
 ```text
 Score 1: Very Poor
 Score 2: Very Poor

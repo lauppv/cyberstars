@@ -20,6 +20,7 @@ Under the hood, **UP** is **0**, **DOWN** is **1**, **LEFT** is **2**, **RIGHT**
 ---
 
 We can choose our own values if we want
+
 ```c
 #include <stdio.h>
 
@@ -39,6 +40,7 @@ int main(void) {
 ---
 
 Enums work great with **switch**
+
 ```c
 #include <stdio.h>
 
@@ -65,6 +67,7 @@ This is much better than `if (c == 0)` — anyone reading the code knows exactly
 ---
 
 A classic use: game states
+
 ```c
 #include <stdio.h>
 
@@ -92,6 +95,7 @@ Write a function **printSeason** that takes a Season and prints the season name.
 Call it for each season from **main**
 
 Expected output
+
 ```text
 Spring
 Summer

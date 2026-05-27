@@ -109,7 +109,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Book: 1984 by George Orwell
 Movie: Inception directed by Christopher Nolan

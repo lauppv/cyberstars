@@ -1,12 +1,12 @@
 Chapter 7 taught you the security layer of the station's file system:
 
-| Command | Purpose |
-|---------|---------|
-| `ls -l` | View permissions and ownership |
-| `chmod u+x` | Add/remove permissions (symbolic) |
+| Command     | Purpose                               |
+| ----------- | ------------------------------------- |
+| `ls -l`     | View permissions and ownership        |
+| `chmod u+x` | Add/remove permissions (symbolic)     |
 | `chmod 755` | Set all permissions at once (numeric) |
-| `whoami` | Show your username |
-| `id` | Show uid, gid, and groups |
+| `whoami`    | Show your username                    |
+| `id`        | Show uid, gid, and groups             |
 
 Remember the permission triad: **user → group → others**, each with `r`, `w`, `x`.
 Numeric: r=4, w=2, x=1 — add them up per group.

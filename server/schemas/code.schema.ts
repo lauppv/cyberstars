@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { ALL_COURSE_KEYS } from "../../shared/constants.js";
+import { z } from 'zod';
+import { ALL_COURSE_KEYS } from '../../shared/constants.js';
 
 const language = z.enum(ALL_COURSE_KEYS);
 

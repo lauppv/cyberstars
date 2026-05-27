@@ -31,7 +31,7 @@ That creates three folders in one go.
 
 ### Nested folders: `mkdir -p`
 
-What if you want a folder *inside* a folder that does not exist yet? This fails:
+What if you want a folder _inside_ a folder that does not exist yet? This fails:
 
 ```bash
 mkdir projects/website

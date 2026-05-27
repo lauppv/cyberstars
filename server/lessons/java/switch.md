@@ -22,7 +22,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Devastating up close
 ```
@@ -53,7 +55,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Helicopter shows up
 SWAT arrives
@@ -85,7 +89,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Helicopter shows up
 ```
@@ -113,7 +119,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Some other vehicle: boat
 ```
@@ -177,7 +185,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Load saved game
 ```

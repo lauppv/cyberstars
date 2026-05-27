@@ -1,7 +1,10 @@
 {
   "cwd": "/home/student",
   "files": [
-    { "path": "system.log", "content": "info: boot complete\nwarning: hull temperature rising\ninfo: crew aboard\nwarning: fuel reserve low\nerror: sensor 3 offline\ninfo: orbit stable\nwarning: comms latency high\n" }
+    {
+      "path": "system.log",
+      "content": "info: boot complete\nwarning: hull temperature rising\ninfo: crew aboard\nwarning: fuel reserve low\nerror: sensor 3 offline\ninfo: orbit stable\nwarning: comms latency high\n"
+    }
   ],
   "dirs": []
 }

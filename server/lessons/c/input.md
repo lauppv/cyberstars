@@ -13,6 +13,7 @@ int main(void) {
     return 0;
 }
 ```
+
 **Run** it, type a number, press **Enter**
 
 Two things to notice
@@ -26,6 +27,7 @@ Two things to notice
 Why the **&**? In C, **&variable** means "the **address** of this variable". When we call **scanf**, we’re telling it: "here’s where in memory you should write the value the user types". Without the **&**, **scanf** would receive a copy of the variable’s value (which is meaningless before reading), and your program might crash or silently corrupt memory
 
 Don’t worry too much about it for now. The rule is simple
+
 - **printf** uses just the variable
 - **scanf** uses **&variable** (almost always)
 
@@ -34,6 +36,7 @@ There is one exception: when reading a string (a **char[]**), you don’t use **
 ---
 
 To read a **double**
+
 ```c
 #include <stdio.h>
 
@@ -44,11 +47,13 @@ int main(void) {
     return 0;
 }
 ```
+
 **Important**: for **scanf**, doubles use **%lf** (l for "long", f for "float"), not **%f**. **%f** in **scanf** would read a regular **float** instead. This is a small **C quirk** that catches many beginners. (For **printf**, both **%f** and **%lf** work the same on doubles. Inconsistent? Yes :))
 
 ---
 
 Reading multiple values in one **scanf** call
+
 ```c
 #include <stdio.h>
 
@@ -59,6 +64,7 @@ int main(void) {
     return 0;
 }
 ```
+
 The user types two numbers separated by space (or Enter), **scanf** reads both. Notice we still use **&** in front of each variable
 
 ---
@@ -78,7 +84,9 @@ int main(void) {
     return 0;
 }
 ```
+
 **fgets** takes three arguments:
+
 - **name** — where to store the text
 - **sizeof(name)** — the maximum number of characters to read (prevents buffer overflow!)
 - **stdin** — read from standard input (the keyboard)
@@ -102,16 +110,19 @@ int main(void) {
     return 0;
 }
 ```
+
 **strcspn(name, "\n")** finds the position of the newline, and we replace it with **\0** (the string terminator). This is a common C pattern you'll see everywhere
 
 ---
 
 Write a program that asks for a **name** (a single word, no spaces) and an **age** (an int), then displays
+
 ```text
 Hello <name>, you are <age> years old. Next year you will be <age + 1>
 ```
 
 Use a **char** array of size **64** for the name
+
 ```c
 #include <stdio.h>
 
@@ -124,11 +135,14 @@ int main(void) {
 ```
 
 If the user types
+
 ```text
 Cortez
 60
 ```
+
 the program should display
+
 ```text
 Hello Cortez, you are 60 years old. Next year you will be 61
 ```

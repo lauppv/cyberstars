@@ -22,7 +22,9 @@ public class Main {
     }
 }
 ```
+
 Output (order may vary since HashMap doesn't guarantee order)
+
 ```text
 Tommy scored 9500
 Phil scored 3100
@@ -54,7 +56,9 @@ public class Main {
     }
 }
 ```
+
 Output (order may vary)
+
 ```text
 Tommy -> 9500
 Phil -> 3100
@@ -73,6 +77,7 @@ It's more typing than keySet(), but it's slightly more efficient for large maps 
 ---
 
 In Python, this would be
+
 ```python
 for name, score in scores.items():
     print(f"{name} -> {score}")
@@ -103,6 +108,7 @@ public class Main {
     }
 }
 ```
+
 This prints only Tommy and Phil (they owe more than 5000). The loop checks each entry and filters based on the value
 
 ---
@@ -120,6 +126,7 @@ public class Main {
     }
 }
 ```
+
 Output **Total debt: $21000**
 
 ---
@@ -137,6 +144,7 @@ Create a **HashMap\<String, Integer\>** called **wordCount** with these entries
 Loop through the map and print each word that appears more than once, in the format: **word: count**
 
 Expected output (order may vary, all of these must appear)
+
 ```text
 java: 5
 python: 3

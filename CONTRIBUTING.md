@@ -20,6 +20,7 @@ cp .env.example .env
 ```
 
 Edit `.env` before continuing:
+
 - Set `DB_PASSWORD` to the password you'll create below
 - Set `DATABASE_URL` to match: `postgresql://cyberstars:<your-password>@localhost:5432/cyberstars`
 - Set `JWT_SECRET` to any random string (e.g. `openssl rand -hex 32`)
@@ -97,6 +98,7 @@ See [README.md](README.md) for the full architecture. The short version:
 ### Reporting bugs
 
 Open an issue with:
+
 - Steps to reproduce
 - Expected vs actual behavior
 - Browser/OS if relevant
@@ -112,6 +114,7 @@ Lesson content lives in `server/lessons/{python,c,java,linux}/`. Each lesson nee
 Then add the lesson to `prisma/seed.ts` in the `lessons` array with the correct `courseKey`, `slug`, `title`, and `sortOrder`. The next `npm run dev` will seed it automatically.
 
 Important rules:
+
 - C code blocks must be full programs (`#include`, `int main(void)`, `return 0`)
 - Java code blocks must have `public class Main` with `main()` method
 - Linux lessons need three files: `<slug>.md`, `<slug>-setup.json`, `<slug>-tests.json`

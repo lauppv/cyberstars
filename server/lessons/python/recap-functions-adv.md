@@ -11,6 +11,7 @@ Build a **safe math toolkit**. Write these functions:
 **process(expression)** — takes a string like "10 / 3" and uses **try/except** to handle errors. Split the string, convert to numbers, and call safe_divide. If anything goes wrong, print "Error: invalid expression"
 
 Test with:
+
 ```python
 print(safe_divide(10, 3))
 print(safe_divide(10, 3, 4))
@@ -24,6 +25,7 @@ process("hello / world")
 ```
 
 Expected output
+
 ```text
 3.33
 3.3333

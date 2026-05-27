@@ -25,7 +25,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy
 100
@@ -60,6 +62,7 @@ public class Main {
 ```
 
 If the parameter had a different name, you wouldn't even need `this`:
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -116,7 +119,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Goon
 50
@@ -153,7 +158,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Katana deals 75 damage
 Fists deals 10 damage
@@ -181,12 +188,14 @@ In Java, the constructor name matches the class name, and `this` is available au
 Create a `Player` class with two fields: `name` (String) and `score` (int). Write a constructor that takes both values and sets them using `this`.
 
 Then in `main`, create two players:
+
 - `"Tommy Vercetti"` with score `500`
 - `"Lance Vance"` with score `300`
 
 Print each player on their own line in this format: `Name has Score points`
 
 Expected output:
+
 ```text
 Tommy Vercetti has 500 points
 Lance Vance has 300 points

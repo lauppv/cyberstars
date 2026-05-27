@@ -24,32 +24,36 @@ We checked **4 elements** instead of scanning all 10. For 1,000,000 elements, bi
 ---
 
 In code
+
 ```py
 def binarySearch(numbers, target):
     left = 0
     right = len(numbers) - 1
-    
+
     while left <= right:
         mid = (left + right) // 2
-        
+
         if numbers[mid] == target:
             return mid
         elif numbers[mid] < target:
             left = mid + 1
         else:
             right = mid - 1
-    
+
     return -1
 
 numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 print(binarySearch(numbers, 13))
 print(binarySearch(numbers, 6))
 ```
+
 Output
+
 ```text
 6
 -1
 ```
+
 13 is at index 6. 6 is not in the list, so we return -1
 
 ---
@@ -64,13 +68,14 @@ Let's trace through **binarySearch([1,3,5,7,9,11,13,15,17,19], 13)**
 ---
 
 We can also write it **recursively**
+
 ```py
 def binarySearchRecursive(numbers, target, left, right):
     if left > right:
         return -1
-    
+
     mid = (left + right) // 2
-    
+
     if numbers[mid] == target:
         return mid
     elif numbers[mid] < target:
@@ -81,6 +86,7 @@ def binarySearchRecursive(numbers, target, left, right):
 numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 print(binarySearchRecursive(numbers, 13, 0, len(numbers) - 1))
 ```
+
 Output **6**. Same logic, different style
 
 ---
@@ -97,6 +103,7 @@ print(binarySearch([2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 50))
 ```
 
 Expected output
+
 ```text
 5
 -1

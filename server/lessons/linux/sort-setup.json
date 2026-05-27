@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"supplies.txt","content":"oxygen tanks\nbatteries\nration packs\nmedkits\nwater filters\nammo crates\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "supplies.txt",
+      "content": "oxygen tanks\nbatteries\nration packs\nmedkits\nwater filters\nammo crates\n"
+    }
+  ],
+  "dirs": []
+}

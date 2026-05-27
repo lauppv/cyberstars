@@ -11,7 +11,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Hello. My name is Quincy, I am 32 years old, and I am 1.97 tall
 ```
@@ -19,14 +21,17 @@ Hello. My name is Quincy, I am 32 years old, and I am 1.97 tall
 What is happening here? When we put a **String** and another value together with **+**, Java **converts everything to text** and glues them. This is called **string concatenation**
 
 Watch the spaces carefully
+
 ```text
 "Hello. My name is " + name
 ```
+
 We have a space **before the closing quote**, otherwise we’d get **Hello. My name isQuincy** all stuck together. This is something almost everyone gets wrong at first. **Always check your spaces**
 
 ---
 
 A small but very important subtlety
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +39,7 @@ public class Main {
     }
 }
 ```
+
 What do you think this prints? **Result: 5**?
 
 It prints **Result: 23**
@@ -41,6 +47,7 @@ It prints **Result: 23**
 Why? Java reads from **left to right**. It starts with **"Result: "** (a String), then sees **+ 2**: a String + an int = String, so it becomes **"Result: 2"**. Then **+ 3** → **"Result: 23"**
 
 If we want **5**, we use **parentheses** to force the math first
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -48,10 +55,13 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Result: 5
 ```
+
 Now **(2 + 3)** is computed first (giving **5**), then glued to the string. Remember this rule, you will hit it in real code :)
 
 ---
@@ -61,11 +71,13 @@ There is also **System.out.printf** for fancier formatting, but it’s a bit har
 ---
 
 On the right, you have a story about an underage user. Create three variables
+
 1. **username** — any name you like (a String)
 2. **userAge** — any age **less than 18** (an int)
 3. **requiredAge** — set to **18** (an int)
 
 Then display a message like
+
 ```text
 Hello, <username>! I'm sorry but the minimum age is <requiredAge>. You are <userAge> years old
 ```

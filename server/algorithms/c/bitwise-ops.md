@@ -5,10 +5,12 @@ Read an integer **N**, then read **N** positive integers. For each number, print
 A number `x` is a power of 2 if and only if `x > 0` and `(x & (x - 1)) == 0`.
 
 ### Input
+
 - First line: an integer `N` (1 ≤ N ≤ 100)
 - Next `N` lines: one positive integer each
 
 ### Output
+
 `N` lines, each `YES` or `NO`.
 
 ### Examples
@@ -40,6 +42,7 @@ YES
 ```
 
 ### Hints
+
 - The bitwise trick: `(n & (n - 1)) == 0` is true only for powers of 2 (and zero, but input is positive).
 - `&` is the bitwise AND operator in C.
 - Powers of 2 in binary have exactly one bit set: `1, 10, 100, 1000, ...`

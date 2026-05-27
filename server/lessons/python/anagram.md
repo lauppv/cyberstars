@@ -10,7 +10,9 @@ print(isAnagram("listen", "silent"))
 print(isAnagram("hello", "world"))
 print(isAnagram("Evil", "Vile"))
 ```
+
 Output
+
 ```text
 True
 False
@@ -29,30 +31,32 @@ But let's also solve it using what we learned — a **frequency dictionary**. Tw
 def isAnagram(word1, word2):
     word1 = word1.lower()
     word2 = word2.lower()
-    
+
     if len(word1) != len(word2):
         return False
-    
+
     freq1 = {}
     for char in word1:
         if char in freq1:
             freq1[char] += 1
         else:
             freq1[char] = 1
-    
+
     freq2 = {}
     for char in word2:
         if char in freq2:
             freq2[char] += 1
         else:
             freq2[char] = 1
-    
+
     return freq1 == freq2
 
 print(isAnagram("listen", "silent"))
 print(isAnagram("hello", "world"))
 ```
+
 Output
+
 ```text
 True
 False
@@ -77,6 +81,7 @@ print(isAnagram("Dormitory", "Dirty room"))  # this one is tricky!
 ```
 
 For the first two, expected output
+
 ```text
 True
 False

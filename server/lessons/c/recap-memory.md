@@ -28,6 +28,7 @@ Write these functions:
 **void printTask(Task \*t)** — prints the task as **"[STATUS] Title"**
 
 In main, create 3 tasks dynamically:
+
 - "Learn pointers" → update to DONE
 - "Practice structs" → update to IN_PROGRESS
 - "Master malloc" → leave as TODO
@@ -35,6 +36,7 @@ In main, create 3 tasks dynamically:
 Print all three, then free the memory
 
 Expected output
+
 ```text
 [DONE] Learn pointers
 [IN_PROGRESS] Practice structs

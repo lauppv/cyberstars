@@ -1,4 +1,5 @@
 We have an array of names. We want to greet each one. We **could** do
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -9,9 +10,11 @@ public class Main {
     }
 }
 ```
+
 Repetitive. **Forbidden**, as we said in earlier lessons :)
 
 The classic Java **for** loop goes hand in hand with arrays
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +32,7 @@ Notice we used **i < names.length**, **not** **i <= names.length**. Why? Because
 ---
 
 Java has a shorter form when we don’t need the index — the **enhanced for loop** (also called **for-each**)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -40,11 +44,13 @@ public class Main {
     }
 }
 ```
+
 Read it as: "for each **name** in **names**, do this". Cleaner when we just want the value
 
 The shape is **for (Type variable : array) { ... }**. The **:** in the middle is essential
 
 When do you choose one over the other?
+
 - Use the **classic for** when you need the **index** (e.g., for printing position numbers)
 - Use the **enhanced for** when you only need the **value**
 
@@ -53,6 +59,7 @@ Both are common — Java code uses both depending on the situation
 ---
 
 A classic pattern: **summing** numbers
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -65,6 +72,7 @@ public class Main {
     }
 }
 ```
+
 Output **100**. Start with **total = 0**, walk through every price, add it to total. You will write this kind of loop **a lot** in your career. Read it line by line until it’s second nature :)
 
 ---
@@ -78,6 +86,7 @@ Display **on separate lines**
 3. The **average** (total divided by the number of scores)
 
 Expected output
+
 ```text
 80
 95
@@ -89,6 +98,7 @@ Expected output
 ```
 
 **Tip**: for the average, **be careful with integer division** :) If you divide **total / scores.length** as ints, you’ll get **79**, not **79.0**. Cast one of them to a **double**, like this
+
 ```text
 double average = (double) total / scores.length;
 ```

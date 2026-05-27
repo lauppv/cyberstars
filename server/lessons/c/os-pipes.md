@@ -1,7 +1,9 @@
 How do processes **talk to each other**? One of the simplest mechanisms is a **pipe**. If you've used Linux, you've already seen pipes:
+
 ```text
 ls | grep ".txt"
 ```
+
 The **|** symbol takes the output of **ls** and sends it as input to **grep**. That's a pipe
 
 ---
@@ -9,6 +11,7 @@ The **|** symbol takes the output of **ls** and sends it as input to **grep**. T
 A pipe is a **one-way communication channel**. One process **writes** into it, another process **reads** from it. Think of it like a water pipe — water flows in one direction
 
 In C, we create a pipe with the **pipe()** function
+
 ```c
 #include <stdio.h>
 #include <unistd.h>
@@ -43,11 +46,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Output: **Parent received: Hello from child!**
 
 ---
 
 Let's break it down:
+
 1. **pipe(fd)** creates two file descriptors: **fd[0]** for reading, **fd[1]** for writing
 2. We **fork** — now both parent and child have copies of the pipe
 3. The **child** closes the read end (it only needs to write), writes a message, and closes the write end
@@ -70,6 +75,7 @@ Pipes are **the** fundamental building block for process communication in Unix. 
 Write a program that creates a pipe and forks. The **child** writes the message **"CyberStars"** to the pipe. The **parent** reads it and prints **"Received: CyberStars"**
 
 Expected output
+
 ```text
 Received: CyberStars
 ```

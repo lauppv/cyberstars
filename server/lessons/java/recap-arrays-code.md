@@ -1,8 +1,8 @@
 public class Main {
-    static String[] filterWords(String[] words) {
-        // filter, skip SPAM, stop at exit, uppercase
-        return new String[0];
-    }
+static String[] filterWords(String[] words) {
+// filter, skip SPAM, stop at exit, uppercase
+return new String[0];
+}
 
     public static void main(String[] args) {
         String[] words = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
@@ -13,4 +13,5 @@ public class Main {
         }
         System.out.println("Total: " + result.length + " words");
     }
+
 }

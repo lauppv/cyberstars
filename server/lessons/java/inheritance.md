@@ -28,7 +28,7 @@ The `Dog` class **inherits** everything from `Animal` — its `name` field, its 
 
 ---
 
-Think of it like GTA Vice City. Tommy Vercetti is a **criminal** (the parent class). Lance Vance is also a criminal, but he's a *specific kind* — a backstabbing criminal. He **extends** the base criminal class with his own special behavior (betrayal). He still has all the base criminal abilities, plus his own twist
+Think of it like GTA Vice City. Tommy Vercetti is a **criminal** (the parent class). Lance Vance is also a criminal, but he's a _specific kind_ — a backstabbing criminal. He **extends** the base criminal class with his own special behavior (betrayal). He still has all the base criminal abilities, plus his own twist
 
 ---
 
@@ -137,7 +137,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Woof! My name is Rex
 Meow! My name is Whiskers

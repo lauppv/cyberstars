@@ -7,9 +7,11 @@ Implement the **Iterable** and **Iterator** interfaces to create a `NumberRange`
 Read start and end from stdin, create a `NumberRange`, and print each number on a separate line.
 
 ### Input
+
 - Line 1: two integers — start and end
 
 ### Output
+
 Each number from start to end (inclusive), one per line.
 
 ### Examples
@@ -47,6 +49,7 @@ Output:
 ```
 
 ### Hints
+
 - `NumberRange` should `implement Iterable<Integer>`.
 - You need to implement `iterator()` which returns an `Iterator<Integer>`.
 - The Iterator needs `hasNext()` and `next()` methods.

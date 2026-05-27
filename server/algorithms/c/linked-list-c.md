@@ -8,10 +8,12 @@ Implement a **singly linked list** in C. Read commands from stdin and execute th
 Use `malloc` to allocate each node. Each node has an `int data` field and a `struct Node *next` pointer.
 
 ### Input
+
 - First line: an integer `N` (number of commands)
 - Next `N` lines: a command (`INSERT x` or `PRINT`)
 
 ### Output
+
 For each `PRINT` command, output the list elements space-separated. If the list is empty, print `EMPTY`.
 
 ### Examples
@@ -40,6 +42,7 @@ EMPTY
 ```
 
 ### Hints
+
 - Define a struct: `struct Node { int data; struct Node *next; };`
 - Keep a `head` pointer, initially `NULL`.
 - For INSERT, allocate a new node with `malloc`, traverse to the end, and link it.

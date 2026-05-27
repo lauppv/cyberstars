@@ -1,1 +1,8 @@
-{"cwd":"/home/student","files":[{"path":"classified.doc","content":"TOP SECRET: Station coordinates encrypted.\n"},{"path":"public_notice.txt","content":"Mess hall closes at 2200.\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "classified.doc", "content": "TOP SECRET: Station coordinates encrypted.\n" },
+    { "path": "public_notice.txt", "content": "Mess hall closes at 2200.\n" }
+  ],
+  "dirs": []
+}

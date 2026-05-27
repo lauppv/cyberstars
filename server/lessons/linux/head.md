@@ -32,7 +32,7 @@ line 3
 ### When head is useful
 
 - Checking the **header row** of a data file
-- Seeing how a log file *begins*
+- Seeing how a log file _begins_
 - Sampling a file without scrolling through all of it
 
 Like `cat`, `head` only reads — it changes nothing.

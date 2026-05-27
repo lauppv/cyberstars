@@ -31,11 +31,11 @@ If something goes wrong, remove the last pipe and inspect the intermediate outpu
 
 ### Common pipeline commands
 
-| Command | Role in a pipeline |
-|---------|--------------------|
-| `grep` | Filter lines |
-| `sort` | Reorder lines |
-| `wc -l` | Count lines |
+| Command         | Role in a pipeline      |
+| --------------- | ----------------------- |
+| `grep`          | Filter lines            |
+| `sort`          | Reorder lines           |
+| `wc -l`         | Count lines             |
 | `head` / `tail` | Take first/last N lines |
 
 ---

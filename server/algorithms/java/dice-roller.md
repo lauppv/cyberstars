@@ -7,9 +7,11 @@ Create a **Dice** class that simulates rolling a die. The constructor takes the 
 Read the number of sides, the seed, and the number of rolls from stdin. Create a `Dice` object and print each roll result on a separate line.
 
 ### Input
+
 - Line 1: three integers separated by spaces — sides, seed, numberOfRolls
 
 ### Output
+
 - One line per roll with the result (an integer between 1 and sides).
 
 ### Examples
@@ -23,6 +25,7 @@ Output:
 ```
 
 ### Hints
+
 - `new Random(seed)` creates a reproducible random number generator.
 - `random.nextInt(sides)` returns a value from 0 to sides-1, so add 1.
 - Encapsulate the `Random` object as a private field inside your `Dice` class.

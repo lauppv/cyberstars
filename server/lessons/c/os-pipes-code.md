@@ -4,12 +4,13 @@
 #include <sys/wait.h>
 
 int main(void) {
-    int fd[2];
-    pipe(fd);
+int fd[2];
+pipe(fd);
 
     pid_t pid = fork();
 
     // child writes "CyberStars", parent reads and prints
 
     return 0;
+
 }

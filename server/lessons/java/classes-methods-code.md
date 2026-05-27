@@ -1,5 +1,5 @@
 class Counter {
-    int count;
+int count;
 
     // Write a constructor that sets count to 0
 
@@ -10,9 +10,9 @@ class Counter {
 }
 
 public class Main {
-    public static void main(String[] args) {
-        // Create a Counter
-        // Call increment() three times
-        // Print the count using getCount()
-    }
+public static void main(String[] args) {
+// Create a Counter
+// Call increment() three times
+// Print the count using getCount()
+}
 }

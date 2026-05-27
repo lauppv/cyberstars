@@ -1,10 +1,10 @@
 Chapter 4 turned you into a station detective. Three search tools, three different
 questions:
 
-| Command | Question |
-|---------|----------|
-| `grep` | "Which **lines** contain this word?" |
-| `find` | "Where is this **file**?" |
+| Command | Question                               |
+| ------- | -------------------------------------- |
+| `grep`  | "Which **lines** contain this word?"   |
+| `find`  | "Where is this **file**?"              |
 | `which` | "Where is this **program** installed?" |
 
 Remember the power options: `grep -r` searches whole trees, `grep -i` ignores case,

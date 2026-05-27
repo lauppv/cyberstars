@@ -13,6 +13,7 @@ Build a **ticket price calculator** for a cinema. The rules:
 Additionally, if it's a **3D movie** (boolean), add **3 EUR** to the price
 
 Given these variables:
+
 ```python
 age = 15
 is_3d = True
@@ -21,6 +22,7 @@ is_3d = True
 Calculate and print the result
 
 Expected output
+
 ```text
 Base price: 8 EUR
 3D surcharge: 3 EUR

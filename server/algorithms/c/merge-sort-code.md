@@ -8,11 +8,11 @@
 // void mergeSort(int arr[], int left, int right) { ... }
 
 int main() {
-    int n;
-    scanf("%d", &n);
-    int arr[1000];
-    // TODO: read n numbers into arr
-    // TODO: call mergeSort
-    // TODO: print the sorted array space-separated
-    return 0;
+int n;
+scanf("%d", &n);
+int arr[1000];
+// TODO: read n numbers into arr
+// TODO: call mergeSort
+// TODO: print the sorted array space-separated
+return 0;
 }

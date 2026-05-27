@@ -62,84 +62,84 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Auth
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/auth/signup` | No | Register user, set JWT cookie |
-| POST | `/auth/login` | No | Login, set JWT cookie |
-| POST | `/auth/logout` | No | Clear JWT cookie |
-| GET | `/auth/me` | Yes | Get current user |
-| POST | `/auth/forgot-password` | No | Send reset code via email (15min expiry) |
-| POST | `/auth/reset-password` | No | Reset password with code |
+| Method | Endpoint                | Auth | Description                              |
+| ------ | ----------------------- | ---- | ---------------------------------------- |
+| POST   | `/auth/signup`          | No   | Register user, set JWT cookie            |
+| POST   | `/auth/login`           | No   | Login, set JWT cookie                    |
+| POST   | `/auth/logout`          | No   | Clear JWT cookie                         |
+| GET    | `/auth/me`              | Yes  | Get current user                         |
+| POST   | `/auth/forgot-password` | No   | Send reset code via email (15min expiry) |
+| POST   | `/auth/reset-password`  | No   | Reset password with code                 |
 
 ### Curriculum & Lessons
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/curriculum` | No | List all courses with ordered lessons |
-| GET | `/api/lessons/:lang/:lesson` | No | Get lesson Markdown content |
-| GET | `/api/lesson-code/:lang/:file` | No | Get starter code template |
+| Method | Endpoint                       | Auth | Description                           |
+| ------ | ------------------------------ | ---- | ------------------------------------- |
+| GET    | `/api/curriculum`              | No   | List all courses with ordered lessons |
+| GET    | `/api/lessons/:lang/:lesson`   | No   | Get lesson Markdown content           |
+| GET    | `/api/lesson-code/:lang/:file` | No   | Get starter code template             |
 
 ### Code Execution
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| WS | `/ws/run` | No | Interactive code execution via WebSocket |
-| POST | `/api/run-code` | No | Execute code and return output (batch) |
-| POST | `/api/run-code/submit` | Optional | Run code against test cases; auto-marks complete if all pass |
+| Method | Endpoint               | Auth     | Description                                                  |
+| ------ | ---------------------- | -------- | ------------------------------------------------------------ |
+| WS     | `/ws/run`              | No       | Interactive code execution via WebSocket                     |
+| POST   | `/api/run-code`        | No       | Execute code and return output (batch)                       |
+| POST   | `/api/run-code/submit` | Optional | Run code against test cases; auto-marks complete if all pass |
 
 ### Progress (all authenticated)
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/progress/:courseKey` | Yes | Get progress for a course |
-| POST | `/api/progress/:courseKey/:lessonSlug/complete` | Yes | Mark lesson complete |
-| GET | `/api/progress/:courseKey/:lessonSlug/code` | Yes | Get saved code |
-| PUT | `/api/progress/:courseKey/:lessonSlug/code` | Yes | Save code |
-| POST | `/api/progress/:courseKey/:lessonSlug/access` | Yes | Track last access time |
+| Method | Endpoint                                        | Auth | Description               |
+| ------ | ----------------------------------------------- | ---- | ------------------------- |
+| GET    | `/api/progress/:courseKey`                      | Yes  | Get progress for a course |
+| POST   | `/api/progress/:courseKey/:lessonSlug/complete` | Yes  | Mark lesson complete      |
+| GET    | `/api/progress/:courseKey/:lessonSlug/code`     | Yes  | Get saved code            |
+| PUT    | `/api/progress/:courseKey/:lessonSlug/code`     | Yes  | Save code                 |
+| POST   | `/api/progress/:courseKey/:lessonSlug/access`   | Yes  | Track last access time    |
 
 ### Forum
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/forum/categories` | No | List forum categories |
-| GET | `/api/forum/categories/:slug/threads` | No | List threads in category |
-| GET | `/api/forum/threads/:id` | Optional | Get thread with posts |
-| POST | `/api/forum/threads` | Yes | Create thread |
-| POST | `/api/forum/threads/:id/posts` | Yes | Reply to thread |
-| DELETE | `/api/forum/threads/:id` | Yes | Delete thread (owner/admin) |
-| POST | `/api/forum/posts/:id/reactions` | Yes | Toggle reaction |
-| POST | `/api/forum/posts/:id/solution` | Yes | Mark post as solution |
-| PUT | `/api/forum/posts/:id` | Yes | Edit post |
-| DELETE | `/api/forum/posts/:id` | Yes | Soft-delete post |
-| PUT | `/api/forum/users/:id/role` | Admin | Update user role |
+| Method | Endpoint                              | Auth     | Description                 |
+| ------ | ------------------------------------- | -------- | --------------------------- |
+| GET    | `/api/forum/categories`               | No       | List forum categories       |
+| GET    | `/api/forum/categories/:slug/threads` | No       | List threads in category    |
+| GET    | `/api/forum/threads/:id`              | Optional | Get thread with posts       |
+| POST   | `/api/forum/threads`                  | Yes      | Create thread               |
+| POST   | `/api/forum/threads/:id/posts`        | Yes      | Reply to thread             |
+| DELETE | `/api/forum/threads/:id`              | Yes      | Delete thread (owner/admin) |
+| POST   | `/api/forum/posts/:id/reactions`      | Yes      | Toggle reaction             |
+| POST   | `/api/forum/posts/:id/solution`       | Yes      | Mark post as solution       |
+| PUT    | `/api/forum/posts/:id`                | Yes      | Edit post                   |
+| DELETE | `/api/forum/posts/:id`                | Yes      | Soft-delete post            |
+| PUT    | `/api/forum/users/:id/role`           | Admin    | Update user role            |
 
 ### Terminal (Linux sandbox)
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/terminal/session` | Yes | Create sandboxed terminal session |
-| POST | `/api/terminal/exec` | Yes | Execute command in session |
-| POST | `/api/terminal/submit` | Optional | Run lesson validation checks |
-| DELETE | `/api/terminal/session/:id` | Yes | Destroy session |
+| Method | Endpoint                    | Auth     | Description                       |
+| ------ | --------------------------- | -------- | --------------------------------- |
+| POST   | `/api/terminal/session`     | Yes      | Create sandboxed terminal session |
+| POST   | `/api/terminal/exec`        | Yes      | Execute command in session        |
+| POST   | `/api/terminal/submit`      | Optional | Run lesson validation checks      |
+| DELETE | `/api/terminal/session/:id` | Yes      | Destroy session                   |
 
 ### Support
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/support/tickets` | Yes | Create ticket |
-| GET | `/api/support/tickets/mine` | Yes | Get user's tickets |
-| GET | `/api/support/tickets` | Admin | Get all tickets |
-| PUT | `/api/support/tickets/:id/status` | Yes | Update status |
-| GET | `/api/support/tickets/:id/messages` | Yes | Get messages |
-| POST | `/api/support/tickets/:id/messages` | Yes | Add reply |
+| Method | Endpoint                            | Auth  | Description        |
+| ------ | ----------------------------------- | ----- | ------------------ |
+| POST   | `/api/support/tickets`              | Yes   | Create ticket      |
+| GET    | `/api/support/tickets/mine`         | Yes   | Get user's tickets |
+| GET    | `/api/support/tickets`              | Admin | Get all tickets    |
+| PUT    | `/api/support/tickets/:id/status`   | Yes   | Update status      |
+| GET    | `/api/support/tickets/:id/messages` | Yes   | Get messages       |
+| POST   | `/api/support/tickets/:id/messages` | Yes   | Add reply          |
 
 ### Profile
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| PATCH | `/api/profile` | Yes | Update profile (bio, status, displayName) |
-| POST | `/api/profile/avatar` | Yes | Upload avatar |
-| DELETE | `/api/profile/avatar` | Yes | Remove avatar |
+| Method | Endpoint              | Auth | Description                               |
+| ------ | --------------------- | ---- | ----------------------------------------- |
+| PATCH  | `/api/profile`        | Yes  | Update profile (bio, status, displayName) |
+| POST   | `/api/profile/avatar` | Yes  | Upload avatar                             |
+| DELETE | `/api/profile/avatar` | Yes  | Remove avatar                             |
 
 ## Database schema
 
@@ -169,11 +169,11 @@ Lesson content is stored as Markdown files on disk, not in the database. The `Le
 
 User code runs in Docker containers, never in the browser.
 
-| Language | Docker Image | Behavior |
-|----------|-------------|----------|
-| Python | `python:3.10-slim` | Run with `-u` (unbuffered), 20s timeout |
-| C | `gcc:latest` | Compile with `-Wall`, 20s timeout |
-| Java | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout |
+| Language | Docker Image                    | Behavior                                |
+| -------- | ------------------------------- | --------------------------------------- |
+| Python   | `python:3.10-slim`              | Run with `-u` (unbuffered), 20s timeout |
+| C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout       |
+| Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout          |
 
 Containers run with `--network=none`, `--memory=128m`, `--pids-limit=64`. Docker is invoked via `execFile` with an argument array (no shell interpolation).
 
@@ -196,31 +196,31 @@ Each lesson consists of three files in `server/lessons/:lang/`:
 
 ### Test modes
 
-| Mode | Description |
-|------|-------------|
-| `exact` | Output must match expected string exactly |
-| `contains` | Output must contain expected string |
-| `any` | Any non-empty output passes |
-| `line` | A specific output line must match |
-| `regex` | Output must match a regex |
-| `code_regex` | Source code must match a regex |
+| Mode         | Description                               |
+| ------------ | ----------------------------------------- |
+| `exact`      | Output must match expected string exactly |
+| `contains`   | Output must contain expected string       |
+| `any`        | Any non-empty output passes               |
+| `line`       | A specific output line must match         |
+| `regex`      | Output must match a regex                 |
+| `code_regex` | Source code must match a regex            |
 
 ## Environment variables
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `DB_USER` | Yes | — | PostgreSQL user |
-| `DB_HOST` | Yes | — | PostgreSQL host |
-| `DB_NAME` | Yes | — | Database name |
-| `DB_PASSWORD` | Yes | — | Database password |
-| `DB_PORT` | No | `5432` | PostgreSQL port |
-| `DATABASE_URL` | Yes | — | Prisma CLI connection string |
-| `EXPRESS_PORT` | No | `5000` | Backend port |
-| `JWT_SECRET` | Yes | — | JWT signing secret |
-| `NODE_ENV` | No | `development` | Environment |
-| `CORS_DEV_ORIGIN` | No | `http://localhost:5173` | CORS origin in dev |
-| `CODE_RUN_MEMORY` | No | `128m` | Per-container memory limit |
-| `CODE_RUN_PIDS` | No | `64` | Per-container PID limit |
+| Variable          | Required | Default                 | Description                  |
+| ----------------- | -------- | ----------------------- | ---------------------------- |
+| `DB_USER`         | Yes      | —                       | PostgreSQL user              |
+| `DB_HOST`         | Yes      | —                       | PostgreSQL host              |
+| `DB_NAME`         | Yes      | —                       | Database name                |
+| `DB_PASSWORD`     | Yes      | —                       | Database password            |
+| `DB_PORT`         | No       | `5432`                  | PostgreSQL port              |
+| `DATABASE_URL`    | Yes      | —                       | Prisma CLI connection string |
+| `EXPRESS_PORT`    | No       | `5000`                  | Backend port                 |
+| `JWT_SECRET`      | Yes      | —                       | JWT signing secret           |
+| `NODE_ENV`        | No       | `development`           | Environment                  |
+| `CORS_DEV_ORIGIN` | No       | `http://localhost:5173` | CORS origin in dev           |
+| `CODE_RUN_MEMORY` | No       | `128m`                  | Per-container memory limit   |
+| `CODE_RUN_PIDS`   | No       | `64`                    | Per-container PID limit      |
 
 ## Design decisions
 

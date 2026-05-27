@@ -7,11 +7,12 @@ Build a **vehicle fleet** system. Create an **abstract** class **Vehicle** with:
 - Fields: **name** (String), **fuelLevel** (int, starts at 100)
 - Constructor takes name
 - **abstract String type()** — each subclass returns its type
-- **void drive(int km)** — reduces fuel by km * fuelCost(). If not enough fuel, print "Not enough fuel!"
+- **void drive(int km)** — reduces fuel by km \* fuelCost(). If not enough fuel, print "Not enough fuel!"
 - **abstract int fuelCost()** — fuel used per km (different for each vehicle)
 - **toString()** — returns "name (type) - Fuel: X%"
 
 Create three subclasses:
+
 - **Car** — fuelCost = 2, type = "Car"
 - **Truck** — fuelCost = 5, type = "Truck"
 - **Motorcycle** — fuelCost = 1, type = "Motorcycle"
@@ -41,6 +42,7 @@ public class Main {
 ```
 
 Expected output
+
 ```text
 Not enough fuel!
 BMW (Car) - Fuel: 70%

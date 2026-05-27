@@ -47,7 +47,7 @@ grep -n error system.log
 ```
 
 Options combine, just like with `ls`: `grep -in error system.log` is case-insensitive
-*and* numbered.
+_and_ numbered.
 
 ---
 

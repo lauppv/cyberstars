@@ -5,14 +5,16 @@ Implement a **singly linked list** from scratch. Create a `Node` class with `val
 Process commands from stdin.
 
 ### Input
+
 - Line 1: number of commands N
 - Next N lines: one of:
   - `add X` — add integer X to the end of the list
   - `remove X` — remove the first occurrence of X (print `Not found` if X is not in the list)
-  - `print` — print all elements separated by ` -> `, or `Empty` if the list is empty
+  - `print` — print all elements separated by `->`, or `Empty` if the list is empty
 
 ### Output
-- For each `print`: elements in order separated by ` -> `, or `Empty`
+
+- For each `print`: elements in order separated by `->`, or `Empty`
 - For each failed `remove`: `Not found`
 
 ### Examples
@@ -46,6 +48,7 @@ Empty
 ```
 
 ### Hints
+
 - `Node` holds a value and a reference to the next node.
 - `LinkedList` holds a reference to the `head` node.
 - For `add`: traverse to the end, set `next` of the last node.

@@ -325,7 +325,7 @@
 }
 
 .cat-banner::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 200px;
   height: 200px;
@@ -427,7 +427,7 @@
 }
 
 .thread-row.pinned::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;

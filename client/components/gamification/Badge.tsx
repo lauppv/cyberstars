@@ -7,8 +7,10 @@ interface BadgeProps {
 
 export function Badge({ icon, label, earned, description }: BadgeProps) {
   const tooltip = earned
-    ? description ?? label
-    : description ? `${description} (not yet earned)` : `${label} (not yet earned)`;
+    ? (description ?? label)
+    : description
+      ? `${description} (not yet earned)`
+      : `${label} (not yet earned)`;
 
   return (
     <div

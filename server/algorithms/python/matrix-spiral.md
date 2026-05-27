@@ -3,10 +3,12 @@
 Read an NxN matrix of integers and print its elements in **spiral order**: start from the top-left corner, move right along the top row, then down the right column, then left along the bottom row, then up the left column, and repeat inward.
 
 ### Input
+
 - Line 1: an integer `n` — the size of the matrix (1 <= n <= 10).
 - Next `n` lines: each containing `n` space-separated integers.
 
 ### Output
+
 All matrix elements in spiral order, separated by spaces.
 
 ### Examples
@@ -35,6 +37,7 @@ Output:
 ```
 
 ### Hints
+
 - Maintain four boundaries: `top`, `bottom`, `left`, `right`. After traversing one side, shrink the corresponding boundary.
 - Right: traverse columns `left` to `right` at row `top`, then `top += 1`.
 - Down: traverse rows `top` to `bottom` at column `right`, then `right -= 1`.

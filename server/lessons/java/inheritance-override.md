@@ -54,7 +54,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Vehicle starting...
 Car engine revving!
@@ -67,6 +69,7 @@ Car engine revving!
 **Overriding vs Overloading** — these sound similar but they're completely different things
 
 **Overriding**: child class replaces a parent method (same name, same parameters)
+
 ```java
 class Animal {
     void speak() { ... }
@@ -78,6 +81,7 @@ class Dog extends Animal {
 ```
 
 **Overloading**: same class has multiple methods with the same name but DIFFERENT parameters
+
 ```java
 class Calculator {
     int add(int a, int b) {
@@ -141,7 +145,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Circle area: 78.54
 Rectangle area: 24.0

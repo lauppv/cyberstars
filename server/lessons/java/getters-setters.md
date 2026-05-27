@@ -23,7 +23,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 -999999
 ```
@@ -71,7 +73,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Balance: 1300
 ```
@@ -122,7 +126,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy Vercetti: 75 HP
 Tommy Vercetti: 75 HP
@@ -159,6 +165,7 @@ The getter still lets people **read** the name, but nobody can change it. This i
 ## Exercise
 
 Create a `BankAccount` class with:
+
 - A `private int balance` field
 - A constructor that takes the starting balance
 - A `getBalance()` method that returns the balance
@@ -168,6 +175,7 @@ Create a `BankAccount` class with:
 In `main`, create an account with 1000, deposit 500, withdraw 200, then try to withdraw 2000 (should fail), and print the balance
 
 Expected output:
+
 ```text
 1300
 ```

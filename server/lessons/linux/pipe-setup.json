@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"transmissions.log","content":"routine: docking bay clear\nmayday: engine failure pod 9\nroutine: shift change alpha\nmayday: oxygen leak sector 4\nroutine: cargo transfer done\nroutine: patrol complete\nmayday: collision warning asteroid belt\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "transmissions.log",
+      "content": "routine: docking bay clear\nmayday: engine failure pod 9\nroutine: shift change alpha\nmayday: oxygen leak sector 4\nroutine: cargo transfer done\nroutine: patrol complete\nmayday: collision warning asteroid belt\n"
+    }
+  ],
+  "dirs": []
+}

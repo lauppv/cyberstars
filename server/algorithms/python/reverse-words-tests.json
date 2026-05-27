@@ -1,6 +1,16 @@
 [
   { "name": "two words", "input": "hello world", "expected": "world hello", "mode": "exact" },
   { "name": "three words", "input": "I love Python", "expected": "Python love I", "mode": "exact" },
-  { "name": "single word stays same", "input": "CyberStars", "expected": "CyberStars", "mode": "exact" },
-  { "name": "four words", "input": "one two three four", "expected": "four three two one", "mode": "exact" }
+  {
+    "name": "single word stays same",
+    "input": "CyberStars",
+    "expected": "CyberStars",
+    "mode": "exact"
+  },
+  {
+    "name": "four words",
+    "input": "one two three four",
+    "expected": "four three two one",
+    "mode": "exact"
+  }
 ]

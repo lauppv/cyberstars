@@ -22,7 +22,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 0: Tommy Vercetti
 1: Lance Vance
@@ -53,7 +55,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Member: Tommy Vercetti
 Member: Lance Vance
@@ -66,12 +70,12 @@ Read **for (String name : crew)** as: "for each String called name **in** crew."
 
 Quick comparison table
 
-| | Array | ArrayList |
-|---|---|---|
-| Size | Fixed | Dynamic |
-| Length | .length | .size() |
-| Access | arr[i] | list.get(i) |
-| For-each | works | works |
+|          | Array   | ArrayList   |
+| -------- | ------- | ----------- |
+| Size     | Fixed   | Dynamic     |
+| Length   | .length | .size()     |
+| Access   | arr[i]  | list.get(i) |
+| For-each | works   | works       |
 
 The for-each loop works with **both** arrays and ArrayLists — Java handles the details
 
@@ -121,7 +125,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 25 is big
 30 is big
@@ -139,6 +145,7 @@ Then loop through the list and print **only the even numbers**, each on its own 
 Hint: a number is even if **num % 2 == 0**
 
 Expected output
+
 ```text
 12
 24

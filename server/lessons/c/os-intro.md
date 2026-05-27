@@ -5,6 +5,7 @@ An **operating system** (OS) is the software that manages everything: your RAM, 
 ---
 
 When you run a C program, the OS creates a **process**. A process is an **instance of a running program**. It has its own:
+
 - **Code** — the instructions (your compiled C code)
 - **Memory** — the stack, the heap, global variables
 - **State** — is it running? waiting? done?
@@ -27,6 +28,7 @@ Every process has a unique **PID** (Process ID). **getpid()** returns ours. **ge
 ---
 
 The **memory layout** of a process looks like this:
+
 ```text
 High addresses
 ┌──────────────┐
@@ -48,6 +50,7 @@ Remember **malloc**? Now you know where that memory comes from — the **heap**.
 ---
 
 Processes can be in different **states**:
+
 - **Running** — currently executing on the CPU
 - **Ready** — waiting for its turn on the CPU
 - **Waiting** — blocked, waiting for something (keyboard input, file read, network)
@@ -58,6 +61,7 @@ The OS switches between processes thousands of times per second. This is called 
 ---
 
 Another important concept: **exit codes**. When **main** returns a number, that's the **exit code** of the process
+
 ```c
 #include <stdio.h>
 
@@ -73,6 +77,7 @@ int main(void) {
 Print the PID of the current process and a message about the exit code
 
 Expected output (your PID will be different)
+
 ```text
 PID: 12345
 Exiting with code 0

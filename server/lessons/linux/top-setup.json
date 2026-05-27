@@ -1,1 +1,12 @@
-{"cwd":"/home/student","files":[],"dirs":[],"processes":[{"user":"root","pid":"1","cmd":"/sbin/init","cpu":"0.0"},{"user":"root","pid":"42","cmd":"/usr/bin/reactor-monitor --port=7700","cpu":"8.2"},{"user":"root","pid":"305","cmd":"/usr/sbin/life-support","cpu":"1.1"},{"user":"student","pid":"1201","cmd":"bash","cpu":"0.0"},{"user":"root","pid":"510","cmd":"/usr/bin/nav-computer","cpu":"3.5"}]}
+{
+  "cwd": "/home/student",
+  "files": [],
+  "dirs": [],
+  "processes": [
+    { "user": "root", "pid": "1", "cmd": "/sbin/init", "cpu": "0.0" },
+    { "user": "root", "pid": "42", "cmd": "/usr/bin/reactor-monitor --port=7700", "cpu": "8.2" },
+    { "user": "root", "pid": "305", "cmd": "/usr/sbin/life-support", "cpu": "1.1" },
+    { "user": "student", "pid": "1201", "cmd": "bash", "cpu": "0.0" },
+    { "user": "root", "pid": "510", "cmd": "/usr/bin/nav-computer", "cpu": "3.5" }
+  ]
+}

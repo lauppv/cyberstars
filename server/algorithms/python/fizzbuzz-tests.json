@@ -1,7 +1,17 @@
 [
   { "name": "small input", "input": "5", "expected": "1\n2\nFizz\n4\nBuzz", "mode": "exact" },
-  { "name": "up to 15", "input": "15", "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz", "mode": "exact" },
+  {
+    "name": "up to 15",
+    "input": "15",
+    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+    "mode": "exact"
+  },
   { "name": "single element", "input": "1", "expected": "1", "mode": "exact" },
   { "name": "only Fizz", "input": "3", "expected": "1\n2\nFizz", "mode": "exact" },
-  { "name": "up to 16", "input": "16", "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16", "mode": "exact" }
+  {
+    "name": "up to 16",
+    "input": "16",
+    "expected": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16",
+    "mode": "exact"
+  }
 ]

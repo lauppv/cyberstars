@@ -5,10 +5,12 @@ Create a **ShoppingItem** class with three fields: `name` (String), `price` (dou
 Read N items from stdin. For each item, create a `ShoppingItem` object. At the end, print the grand total cost of all items, formatted to two decimal places.
 
 ### Input
+
 - Line 1: an integer N — the number of items
 - Next N lines: a string, a double, and an integer separated by spaces — name, price, quantity
 
 ### Output
+
 - Line 1: `Total: X` (X formatted to two decimal places)
 
 ### Examples
@@ -35,6 +37,7 @@ Total: 12.99
 ```
 
 ### Hints
+
 - `getTotal()` should return a `double` — multiply price by quantity.
 - Use `String.format("%.2f", total)` to format the output to two decimal places.
 - Accumulate the grand total by summing `getTotal()` for each item.

@@ -1,4 +1,4 @@
-Sometimes you do not want to *read* a file — you want to **measure** it. How many
+Sometimes you do not want to _read_ a file — you want to **measure** it. How many
 lines? How many words? The **wc** command (**word count**) tells you.
 
 Run plain `wc` on a file:
@@ -21,10 +21,10 @@ The three numbers are, in order:
 
 Options narrow it down to a single number:
 
-| Option | Counts |
-|--------|--------|
-| `wc -l` | **lines** only |
-| `wc -w` | **words** only |
+| Option  | Counts              |
+| ------- | ------------------- |
+| `wc -l` | **lines** only      |
+| `wc -w` | **words** only      |
 | `wc -c` | **characters** only |
 
 ```bash

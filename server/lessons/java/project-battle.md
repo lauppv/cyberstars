@@ -150,7 +150,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy swings sword at Lance for 25 damage!
 Lance - HP: 55
@@ -179,6 +181,7 @@ Your turn! Build the battle simulator:
    - Lance attacks Tommy, then print Tommy's status
 
 Expected output:
+
 ```text
 Tommy swings sword at Lance for 25 damage!
 Lance - HP: 55

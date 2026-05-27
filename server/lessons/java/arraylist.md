@@ -16,7 +16,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
 ```
@@ -50,6 +52,7 @@ public class Main {
 The main methods you'll use on an ArrayList
 
 **add(item)** — adds an item to the end
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -62,6 +65,7 @@ public class Main {
 ```
 
 **get(index)** — gets the item at that index (starting from 0, like arrays)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -72,6 +76,7 @@ public class Main {
 ```
 
 **size()** — returns how many items are in the list
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -83,6 +88,7 @@ public class Main {
 Notice it's **.size()** with parentheses, not **.length** like arrays. Yes, this is another one of Java's charming inconsistencies
 
 **remove(index)** — removes the item at that index, and shifts everything after it down
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -117,7 +123,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Guest count: 4
 First guest: Tommy
@@ -127,6 +135,7 @@ After removal: [Tommy, Lance, Mercedes]
 ---
 
 In Python, this would be
+
 ```python
 guests = ["Tommy", "Lance", "Mercedes", "Sonny"]
 print(len(guests))
@@ -148,6 +157,7 @@ Then remove the 2nd game (index 1)
 Finally, print each game on its own line using a for loop with **.get(i)** and **.size()**
 
 Expected output
+
 ```text
 GTA
 Zelda

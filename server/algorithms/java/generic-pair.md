@@ -5,10 +5,12 @@ Create a generic **Pair<A, B>** class that holds two values of potentially diffe
 Read two values from stdin (a string and an integer), create a Pair, swap it, and print both the original and swapped pairs.
 
 ### Input
+
 - Line 1: a string value
 - Line 2: an integer value
 
 ### Output
+
 - Line 1: `(FIRST, SECOND)` — the original pair
 - Line 2: `(FIRST, SECOND)` — the swapped pair
 
@@ -45,6 +47,7 @@ Output:
 ```
 
 ### Hints
+
 - Use generics: `class Pair<A, B>`.
 - `swap()` returns `new Pair<B, A>(second, first)`.
 - Override `toString()` to return `(first, second)`.

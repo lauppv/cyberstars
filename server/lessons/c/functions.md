@@ -14,7 +14,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 Hello, Cortez!
 Hello, Tommy Vercetti!
@@ -22,6 +24,7 @@ Hello, Lance Vance!
 ```
 
 Let’s break the function header
+
 ```c
 void greet(char name[])
 ```
@@ -35,6 +38,7 @@ The format specifier **%s** in **printf** is for strings, just like **%d** is fo
 ---
 
 A function can also **return** a value. Instead of **void**, we put the return type
+
 ```c
 #include <stdio.h>
 
@@ -48,11 +52,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Output **5**
 
 The function **add** takes two ints and returns an int. The **return** keyword sends the value back, and **the function exits immediately** when **return** runs
 
 We can also use the result directly in another expression
+
 ```c
 #include <stdio.h>
 
@@ -84,6 +90,7 @@ int add(int a, int b) {   // declared too late
 ```
 
 There is a workaround: **forward declarations** (also called **prototypes**). We write the function header at the top, the body anywhere
+
 ```c
 #include <stdio.h>
 
@@ -98,6 +105,7 @@ int add(int a, int b) {   // body, written later
     return a + b;
 }
 ```
+
 Notice the **;** at the end of the prototype — it’s a declaration, not a body. For now, the simplest is to write your helper functions **above** **main** and stop worrying :)
 
 ---
@@ -107,6 +115,7 @@ Write a function **calculator** that takes **three parameters**: an **int number
 The function should print the result of **number1 operator number2**
 
 Example
+
 ```c
 #include <stdio.h>
 
@@ -128,6 +137,7 @@ int main(void) {
 Notice the format specifier **%c** for a single **char**
 
 Then call it from **main** with
+
 ```c
 calculator(14, 12, '+');
 ```

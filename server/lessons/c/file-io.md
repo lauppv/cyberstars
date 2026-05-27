@@ -20,6 +20,7 @@ int main(void) {
 ```
 
 **fopen** opens a file and returns a **FILE pointer**. The second argument is the **mode**:
+
 - **"w"** — write (creates the file, or **overwrites** if it exists)
 - **"r"** — read (file must exist)
 - **"a"** — append (adds to the end, doesn't erase)
@@ -29,6 +30,7 @@ int main(void) {
 ---
 
 Reading from a file
+
 ```c
 #include <stdio.h>
 
@@ -54,6 +56,7 @@ int main(void) {
 ---
 
 We can also use **fscanf** for structured data
+
 ```c
 #include <stdio.h>
 
@@ -75,6 +78,7 @@ int main(void) {
 ---
 
 The pattern for safe file operations is always the same:
+
 1. **fopen** — open the file
 2. **Check for NULL** — handle the error
 3. **Read or write** — do your work
@@ -85,19 +89,23 @@ Forgetting **fclose** is like leaving the water running. The program might work 
 ---
 
 Write a program that:
+
 1. Opens a file **"grades.txt"** for **writing**
 2. Writes these 3 lines:
+
 ```text
 Ana 95
 Mihai 82
 Elena 98
 ```
+
 3. Closes the file
 4. Opens **"grades.txt"** for **reading**
 5. Reads each name and grade using **fscanf**, and prints them as: **"Name: Ana, Grade: 95"**
 6. Closes the file
 
 Expected output
+
 ```text
 Name: Ana, Grade: 95
 Name: Mihai, Grade: 82

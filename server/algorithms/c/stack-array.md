@@ -7,10 +7,12 @@ Implement a **stack** data structure using an array. Read a sequence of commands
 - **peek** — print the top element without removing it, or print `Empty` if the stack is empty
 
 ### Input
+
 - First line: an integer `M` (1 ≤ M ≤ 100), the number of commands
 - Next `M` lines: one command per line (`push X`, `pop`, or `peek`)
 
 ### Output
+
 For each `pop` or `peek` command, print one line: the value or `Empty`.
 
 ### Examples
@@ -41,6 +43,7 @@ Empty
 ```
 
 ### Hints
+
 - Use an array of fixed size (e.g., 100) and a `top` variable initialized to `-1`.
 - `push`: increment `top`, then set `arr[top] = X`.
 - `pop`: if `top >= 0`, print `arr[top]` and decrement `top`; otherwise print `Empty`.

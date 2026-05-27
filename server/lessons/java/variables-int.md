@@ -10,6 +10,7 @@ public class Main {
     }
 }
 ```
+
 **int** is the **type** for whole numbers (1, 2, 100, -20, 0). We are telling Java: "I’m about to store a whole number, and its name is **age**"
 
 This is **different from Python**. In Python we just wrote **age = 18**. Java is **stricter** — it wants to know the type. The advantage is that Java can catch many mistakes before the program even runs
@@ -17,6 +18,7 @@ This is **different from Python**. In Python we just wrote **age = 18**. Java is
 ---
 
 We can do math with numbers, just like in Python
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -27,9 +29,11 @@ public class Main {
     }
 }
 ```
+
 Same rule as Python: with **=**, Java first computes what is on the **right**, then stores the result on the **left**. So **c = a + b** stores **8** in **c**
 
 The classic increment by 1
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -39,9 +43,11 @@ public class Main {
     }
 }
 ```
+
 Java looks at **n + 1**, sees **10 + 1 = 11**, and stores **11** back into **n**
 
 Java even has a **shortcut** for this
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -51,11 +57,13 @@ public class Main {
     }
 }
 ```
+
 **n++** is the same as **n = n + 1**. Very common in Java
 
 ---
 
 For numbers with decimals (like **3.14** or **1.75**), **int** is not enough. We use **double**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -65,13 +73,17 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 36.14159
 ```
+
 The result is a **double** because we mixed an **int** with a **double**
 
 **Important**: if you try to store a decimal into an **int**, Java will refuse
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -79,11 +91,13 @@ public class Main {
     }
 }
 ```
+
 Try it. Read the error. Java protects us from accidentally losing the decimal part
 
 ---
 
 A small surprise that catches everyone. Try this
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -93,7 +107,9 @@ public class Main {
     }
 }
 ```
+
 You might expect **3.5**. But you’ll see **3**. Why? Because when we divide an **int** by an **int**, Java gives us back an **int**, throwing away the decimals. To get **3.5**, we’d need at least one **double**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -103,15 +119,19 @@ public class Main {
     }
 }
 ```
+
 Now we see **3.5**. Remember this — it’s a very common bug for beginners :)
 
 ---
 
 On the right, complete the code with values for **age** and **height**, then display
+
 ```text
 My name is Cortez, I am 57 years old, and I am 1.67 tall
 ```
+
 For now, build the message with **+** like this
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -119,4 +139,5 @@ public class Main {
     }
 }
 ```
+
 We’ll explain string concatenation properly in the next lessons. Just notice that **+** with strings means "glue them together"

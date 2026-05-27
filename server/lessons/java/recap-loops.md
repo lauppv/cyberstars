@@ -4,13 +4,14 @@ Combine **while loops**, **methods**, and **input**
 
 Build a **number cruncher**. Write these methods:
 
-**static int factorial(int n)** — calculate factorial using a **while loop** (not recursion). 5! = 5 * 4 * 3 * 2 * 1 = 120
+**static int factorial(int n)** — calculate factorial using a **while loop** (not recursion). 5! = 5 _ 4 _ 3 _ 2 _ 1 = 120
 
 **static boolean isPrime(int n)** — check if a number is prime using a **while loop**. A prime is only divisible by 1 and itself
 
 **static int sumDigits(int n)** — sum all digits of a number using a **while loop** (use `% 10` and `/ 10`)
 
 Test with these values in main:
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +25,7 @@ public class Main {
 ```
 
 Expected output
+
 ```text
 5! = 120
 7! = 5040

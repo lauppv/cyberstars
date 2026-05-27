@@ -2,8 +2,14 @@
   "cwd": "/home/student",
   "files": [
     { "path": "summary.log", "content": "All checks passed.\nReady for launch.\n" },
-    { "path": "events.log", "content": "event 1: power on\nevent 2: doors locked\nevent 3: engines warm\nevent 4: course set\nevent 5: liftoff\nevent 6: orbit reached\n" },
-    { "path": "errors.log", "content": "error: sensor 3 offline\nerror: low coolant\nerror: comms delay\n" }
+    {
+      "path": "events.log",
+      "content": "event 1: power on\nevent 2: doors locked\nevent 3: engines warm\nevent 4: course set\nevent 5: liftoff\nevent 6: orbit reached\n"
+    },
+    {
+      "path": "errors.log",
+      "content": "error: sensor 3 offline\nerror: low coolant\nerror: comms delay\n"
+    }
   ],
   "dirs": []
 }

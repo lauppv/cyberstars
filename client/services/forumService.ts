@@ -1,4 +1,4 @@
-import { api } from "./apiClient";
+import { api } from './apiClient';
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
@@ -7,11 +7,11 @@ import type {
   CreatePostRequest,
   ToggleReactionRequest,
   UpdatePostRequest,
-} from "../../shared/forum";
-import type { UserRole } from "../../shared/auth";
+} from '../../shared/forum';
+import type { UserRole } from '../../shared/auth';
 
 export function getCategories() {
-  return api.get<ForumCategoryDTO[]>("/api/forum/categories");
+  return api.get<ForumCategoryDTO[]>('/api/forum/categories');
 }
 
 export function getThreads(categorySlug: string) {
@@ -26,7 +26,7 @@ export function getThread(threadId: number) {
 }
 
 export function createThread(data: CreateThreadRequest) {
-  return api.post<{ threadId: number }>("/api/forum/threads", data);
+  return api.post<{ threadId: number }>('/api/forum/threads', data);
 }
 
 export function createPost(threadId: number, data: CreatePostRequest) {

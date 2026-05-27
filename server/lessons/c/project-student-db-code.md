@@ -3,29 +3,29 @@
 #include <string.h>
 
 typedef struct {
-    char name[50];
-    int grade;
+char name[50];
+int grade;
 } Student;
 
 Student *createStudent(const char *name, int grade) {
-    Student *s = malloc(sizeof(Student));
-    strcpy(s->name, name);
-    s->grade = grade;
-    return s;
+Student \*s = malloc(sizeof(Student));
+strcpy(s->name, name);
+s->grade = grade;
+return s;
 }
 
-void printAll(Student *students[], int n) {
-    // print each student as "Name: Grade"
+void printAll(Student \*students[], int n) {
+// print each student as "Name: Grade"
 }
 
 Student *findBest(Student *students[], int n) {
-    // return pointer to student with highest grade
-    return NULL;
+// return pointer to student with highest grade
+return NULL;
 }
 
 int main(void) {
-    int n = 4;
-    Student *db[4];
+int n = 4;
+Student \*db[4];
 
     db[0] = createStudent("Ana", 95);
     db[1] = createStudent("Mihai", 82);
@@ -43,4 +43,5 @@ int main(void) {
     }
 
     return 0;
+
 }

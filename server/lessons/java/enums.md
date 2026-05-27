@@ -1,4 +1,4 @@
-Imagine you're coding a Vice City mission system and you need to represent the current **weather**: sunny, rainy, foggy, or stormy. You *could* use Strings like `"sunny"` and `"rainy"`, but then someone could accidentally type `"suny"` and your code wouldn't catch the typo until runtime. Enter **enums**
+Imagine you're coding a Vice City mission system and you need to represent the current **weather**: sunny, rainy, foggy, or stormy. You _could_ use Strings like `"sunny"` and `"rainy"`, but then someone could accidentally type `"suny"` and your code wouldn't catch the typo until runtime. Enter **enums**
 
 An **enum** (short for enumeration) is a special type that represents a **fixed set of named values**. Once you define them, those are the ONLY valid options
 
@@ -14,7 +14,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Today's weather: SUNNY
 ```
@@ -69,7 +71,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Devastating up close. Tommy's favorite.
 Silent and deadly. Samurai style.
@@ -94,7 +98,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 VERCETTI
 CUBANS

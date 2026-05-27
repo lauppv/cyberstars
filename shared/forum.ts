@@ -11,7 +11,7 @@ export interface ForumCategoryDTO {
   lastPost: ForumLastPostDTO | null;
 }
 
-import type { UserRole } from "./auth.js";
+import type { UserRole } from './auth.js';
 
 interface ForumLastPostDTO {
   threadTitle: string;

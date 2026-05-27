@@ -14,6 +14,7 @@ public class Main {
     }
 }
 ```
+
 **Run** the code, type something, press **Enter**
 
 Two new things appeared
@@ -26,6 +27,7 @@ The actual reading happens with **scanner.nextLine()** — it waits for the user
 ---
 
 For numbers, **Scanner** has different methods
+
 ```java
 import java.util.Scanner;
 
@@ -40,9 +42,11 @@ public class Main {
     }
 }
 ```
+
 **scanner.nextInt()** reads a whole number directly. We don’t need to convert from a String like in Python (**int(input())**) — Java does it for us
 
 For decimal numbers, there’s **scanner.nextDouble()**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -54,6 +58,7 @@ public class Main {
 ---
 
 A small **gotcha** that catches everyone. If you mix **nextInt()** and **nextLine()**, things get weird
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -62,9 +67,11 @@ public class Main {
     }
 }
 ```
+
 **Why?** Because **nextInt()** reads the number but leaves the **newline character** behind. Then **nextLine()** picks up that empty newline and immediately returns an empty string
 
 The fix: add an extra **scanner.nextLine()** to "eat" the leftover newline
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -74,6 +81,7 @@ public class Main {
     }
 }
 ```
+
 Annoying, but you only need to remember it once :)
 
 To keep things simple in this exercise, we’ll **read the name first**, then the age
@@ -81,16 +89,20 @@ To keep things simple in this exercise, we’ll **read the name first**, then th
 ---
 
 Write a program that asks the user for their **name** and their **age**, then displays
+
 ```text
 Hello <name>, you are <age> years old. Next year you will be <age + 1>
 ```
 
 If the user types
+
 ```text
 Cortez
 60
 ```
+
 then the output should be
+
 ```text
 Hello Cortez, you are 60 years old. Next year you will be 61
 ```

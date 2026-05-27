@@ -4,20 +4,20 @@
     "input": "",
     "expected": "The engine is off",
     "mode": "contains",
-    "overrides": {"isEngineOn": "False", "speed": "0", "isHighway": "False"}
+    "overrides": { "isEngineOn": "False", "speed": "0", "isHighway": "False" }
   },
   {
     "name": "Engine on, speed 0 -> accelerator pedal",
     "input": "",
     "expected": "We can press the accelerator pedal to go",
     "mode": "contains",
-    "overrides": {"isEngineOn": "True", "speed": "0", "isHighway": "False"}
+    "overrides": { "isEngineOn": "True", "speed": "0", "isHighway": "False" }
   },
   {
     "name": "Engine on, highway -> Speed now = 130",
     "input": "",
     "expected": "Speed now = 130",
     "mode": "contains",
-    "overrides": {"isEngineOn": "True", "speed": "0", "isHighway": "True"}
+    "overrides": { "isEngineOn": "True", "speed": "0", "isHighway": "True" }
   }
 ]

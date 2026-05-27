@@ -1,6 +1,7 @@
 Time for a real project! We'll build a **student database** that uses everything we've learned: structs, pointers, dynamic memory, arrays, and string functions
 
 The program manages a list of students. Each student has a **name** and a **grade**. We'll:
+
 1. Create students dynamically with **malloc**
 2. Store them in an array
 3. Print all students
@@ -10,6 +11,7 @@ The program manages a list of students. Each student has a **name** and a **grad
 ---
 
 Here's the struct we'll use
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,6 +30,7 @@ int main(void) {
 ```
 
 And here's how to create a student dynamically
+
 ```c
 Student *createStudent(const char *name, int grade) {
     Student *s = malloc(sizeof(Student));
@@ -43,6 +46,7 @@ The function allocates memory on the heap, fills in the fields, and returns a po
 ---
 
 To print all students
+
 ```c
 void printAll(Student *students[], int n) {
     for (int i = 0; i < n; i++) {
@@ -56,6 +60,7 @@ Notice we use **students[i]->name** because each element is a **pointer to a Stu
 ---
 
 To find the best student
+
 ```c
 Student *findBest(Student *students[], int n) {
     Student *best = students[0];
@@ -71,6 +76,7 @@ Student *findBest(Student *students[], int n) {
 ---
 
 Your task: complete the program. Create **4 students**:
+
 - "Ana", 95
 - "Mihai", 82
 - "Elena", 98
@@ -79,6 +85,7 @@ Your task: complete the program. Create **4 students**:
 Print all students, then print the best student, then free all memory
 
 Expected output
+
 ```text
 Ana: 95
 Mihai: 82

@@ -15,6 +15,7 @@ if allEven:
 else:
     print("Not all numbers are even")
 ```
+
 Output **All numbers are even**
 
 We started with the assumption **allEven = True** (optimistic, we believe they're all even). If we find even one number that's **not** even, we set the flag to **False**. At the end, we check the flag
@@ -32,6 +33,7 @@ if allEven:
 else:
     print("Not all numbers are even")
 ```
+
 Output **Not all numbers are even** (because of the 7)
 
 ---
@@ -52,6 +54,7 @@ if found:
 else:
     print(f"{target} is not in the list")
 ```
+
 Output **Cortez is in the list!**
 
 We start pessimistic (**found = False**) and only switch to **True** if we actually find the target
@@ -59,6 +62,7 @@ We start pessimistic (**found = False**) and only switch to **True** if we actua
 ---
 
 We can combine the flag with **break** for efficiency. Once we found what we need, why keep looking?
+
 ```py
 names = ["Tommy", "Lance", "Cortez", "Phil"]
 target = "Lance"
@@ -78,6 +82,7 @@ else:
 ---
 
 A practical example: checking if a password is **strong** (has at least one uppercase letter, one lowercase letter, and one digit)
+
 ```py
 password = "Tommy123"
 hasUpper = False
@@ -97,6 +102,7 @@ if hasUpper and hasLower and hasDigit:
 else:
     print("Weak password")
 ```
+
 Output **Strong password**. Three flags, one for each requirement
 
 ---
@@ -106,6 +112,7 @@ Write a program that checks if a list contains **any negative number**
 Use a flag variable called **hasNegative**. Display **Contains negative numbers** or **All positive**
 
 Expected output
+
 ```text
 Contains negative numbers
 ```

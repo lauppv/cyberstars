@@ -14,6 +14,7 @@ Calculate the **subtotal**, the **tax amount**, and the **total**
 Print a formatted receipt using **concatenation** and **System.out.println**
 
 Expected output
+
 ```text
 === RECEIPT ===
 Laptop: 999.99 EUR

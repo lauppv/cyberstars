@@ -7,9 +7,11 @@ matrix = [
     [7, 8, 9]
 ]
 ```
+
 This is a **3×3** matrix (3 rows, 3 columns). Each inner list is a **row**
 
 To access an element, we use **two indexes**: **matrix[row][column]**
+
 ```py
 print(matrix[0][0])   # 1  (row 0, column 0)
 print(matrix[1][2])   # 6  (row 1, column 2)
@@ -19,6 +21,7 @@ print(matrix[2][1])   # 8  (row 2, column 1)
 ---
 
 To go through every element, we use **nested loops**
+
 ```py
 matrix = [
     [1, 2, 3],
@@ -31,17 +34,21 @@ for row in matrix:
         print(element, end=" ")
     print()
 ```
+
 Output
+
 ```text
-1 2 3 
-4 5 6 
-7 8 9 
+1 2 3
+4 5 6
+7 8 9
 ```
+
 The outer loop goes through each **row** (which is a list). The inner loop goes through each **element** in that row. **print()** at the end starts a new line after each row
 
 ---
 
 If we need the **indexes** (to know where we are)
+
 ```py
 matrix = [
     [1, 2, 3],
@@ -59,6 +66,7 @@ for i in range(len(matrix)):
 Common operations on matrices
 
 **Sum of all elements**
+
 ```py
 total = 0
 for row in matrix:
@@ -66,9 +74,11 @@ for row in matrix:
         total += element
 print(total)
 ```
+
 Output **45**
 
 **Find the maximum**
+
 ```py
 biggest = matrix[0][0]
 for row in matrix:
@@ -77,6 +87,7 @@ for row in matrix:
             biggest = element
 print(biggest)
 ```
+
 Output **9**
 
 ---
@@ -98,6 +109,7 @@ for row in gameMap:
             walls += 1
 print(f"Number of walls: {walls}")
 ```
+
 Output **Number of walls: 4**
 
 ---
@@ -108,6 +120,7 @@ You have a **4×4** matrix of scores. Write a program that displays
 2. The **overall maximum** score
 
 Expected output
+
 ```text
 22
 26

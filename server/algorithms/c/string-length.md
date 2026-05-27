@@ -5,9 +5,11 @@ Read a string (single word, no spaces) and compute its length **without** using 
 This exercise practices manual string traversal in C — iterating character by character until the null terminator `'\0'`.
 
 ### Input
+
 A single word (max 1000 characters, no spaces).
 
 ### Output
+
 A single integer: the length of the string.
 
 ### Examples
@@ -23,6 +25,7 @@ Output: 1
 ```
 
 ### Hints
+
 - Use `scanf("%s", str)` to read a word.
 - Loop through the characters: `while (str[i] != '\0')` and count.
 - Do NOT use `strlen` — the point is to implement it yourself.

@@ -78,6 +78,7 @@ Write a function **sumArray** that takes an **int pointer** and a **size**, and 
 Then in **main**, create the array **{5, 10, 15, 20}**, call **sumArray**, and print the result
 
 Expected output
+
 ```text
 50
 ```

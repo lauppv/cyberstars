@@ -13,7 +13,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 18
 1
@@ -31,6 +33,7 @@ Notice the new thing: **%d** inside the **printf**. This is a **format specifier
 The format specifier (**%d**) is replaced with the value (the variable that comes after the comma)
 
 We can mix format specifiers with regular text
+
 ```c
 #include <stdio.h>
 
@@ -40,12 +43,15 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 My age is 60
 ```
 
 We can use multiple specifiers in one line
+
 ```c
 #include <stdio.h>
 
@@ -56,15 +62,19 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 a = 10, b = 20
 ```
+
 The first **%d** is replaced by **a**, the second by **b**, in order
 
 ---
 
 We can do math, just like in any other language
+
 ```c
 #include <stdio.h>
 
@@ -76,9 +86,11 @@ int main(void) {
     return 0;
 }
 ```
+
 Output **8**. Same rule: the **right side** of **=** is computed first, then stored on the left
 
 The classic **increment by 1** also has a shortcut in C
+
 ```c
 #include <stdio.h>
 
@@ -89,11 +101,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Output **11**. **n++** is the same as **n = n + 1**
 
 ---
 
 A small surprise. Try this
+
 ```c
 #include <stdio.h>
 
@@ -104,11 +118,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Output **3**, not **3.5**. Why? Because **a / b** with two ints gives back an **int** — C throws away the decimal part. We’ll see how to keep the decimals in the next lesson, with **float**
 
 ---
 
 On the right, set the variables **age** and **x**, then display
+
 ```text
 My age is 60
 x is 5

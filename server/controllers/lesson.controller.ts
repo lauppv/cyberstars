@@ -1,5 +1,5 @@
-import type { Request, Response, NextFunction } from "express";
-import * as lessonService from "../services/lesson.service.js";
+import type { Request, Response, NextFunction } from 'express';
+import * as lessonService from '../services/lesson.service.js';
 
 export function getLesson(req: Request, res: Response, next: NextFunction): void {
   try {
@@ -17,13 +17,17 @@ export function getLessonCode(req: Request, res: Response, next: NextFunction): 
     const lang = req.params.lang as string;
     const file = req.params.file as string;
     const code = lessonService.getLessonCode(lang, file);
-    res.type("text/plain").send(code);
+    res.type('text/plain').send(code);
   } catch (err) {
     next(err);
   }
 }
 
-export async function getCurriculum(_req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function getCurriculum(
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   try {
     const curriculum = await lessonService.getCurriculum();
     res.json(curriculum);

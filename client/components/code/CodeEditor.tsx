@@ -1,11 +1,11 @@
-import CodeMirror from "@uiw/react-codemirror";
-import { oneDark } from "@uiw/react-codemirror";
-import { cpp } from "@codemirror/lang-cpp";
-import { python } from "@codemirror/lang-python";
-import { java } from "@codemirror/lang-java";
-import { indentUnit } from "@codemirror/language";
-import { EditorView } from "@codemirror/view";
-import type { Extension } from "@codemirror/state";
+import CodeMirror from '@uiw/react-codemirror';
+import { oneDark } from '@uiw/react-codemirror';
+import { cpp } from '@codemirror/lang-cpp';
+import { python } from '@codemirror/lang-python';
+import { java } from '@codemirror/lang-java';
+import { indentUnit } from '@codemirror/language';
+import { EditorView } from '@codemirror/view';
+import type { Extension } from '@codemirror/state';
 
 interface CodeEditorProps {
   value: string;
@@ -16,28 +16,28 @@ interface CodeEditorProps {
 }
 
 const transparentBg = EditorView.theme({
-  "&": { backgroundColor: "transparent" },
-  ".cm-gutters": { backgroundColor: "transparent", borderRight: "1px solid rgba(108,92,231,0.15)" },
-  ".cm-content": { backgroundColor: "transparent" },
-  ".cm-line": { backgroundColor: "transparent" },
-  ".cm-activeLine": { backgroundColor: "rgba(108,92,231,0.08)" },
-  ".cm-activeLineGutter": { backgroundColor: "transparent" },
+  '&': { backgroundColor: 'transparent' },
+  '.cm-gutters': { backgroundColor: 'transparent', borderRight: '1px solid rgba(108,92,231,0.15)' },
+  '.cm-content': { backgroundColor: 'transparent' },
+  '.cm-line': { backgroundColor: 'transparent' },
+  '.cm-activeLine': { backgroundColor: 'rgba(108,92,231,0.08)' },
+  '.cm-activeLineGutter': { backgroundColor: 'transparent' },
 });
 
 function getExtensions(language: string): Extension[] {
   const lang = language.toLowerCase();
-  const base: Extension[] = [indentUnit.of("    "), EditorView.lineWrapping, transparentBg];
+  const base: Extension[] = [indentUnit.of('    '), EditorView.lineWrapping, transparentBg];
   switch (lang) {
-    case "python":
-    case "py":
-    case "algo-python":
+    case 'python':
+    case 'py':
+    case 'algo-python':
       return [...base, python()];
-    case "c":
-    case "cpp":
-    case "algo-c":
+    case 'c':
+    case 'cpp':
+    case 'algo-c':
       return [...base, cpp()];
-    case "java":
-    case "algo-java":
+    case 'java':
+    case 'algo-java':
       return [...base, java()];
     default:
       return base;
@@ -48,8 +48,8 @@ export function CodeEditor({
   value,
   onChange,
   language,
-  minHeight = "100px",
-  fontSize = "16px",
+  minHeight = '100px',
+  fontSize = '16px',
 }: CodeEditorProps) {
   return (
     <CodeMirror
@@ -59,7 +59,7 @@ export function CodeEditor({
       theme={oneDark}
       extensions={getExtensions(language)}
       onChange={onChange}
-      style={{ fontSize, fontFamily: "var(--mono)" }}
+      style={{ fontSize, fontFamily: 'var(--mono)' }}
     />
   );
 }

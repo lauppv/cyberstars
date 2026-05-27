@@ -12,11 +12,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Everything after **//** on a given line is ignored. The program runs as if those parts weren’t there
 
 ---
 
 Comments are great for **temporarily disabling** code
+
 ```c
 #include <stdio.h>
 
@@ -26,11 +28,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Now nothing is printed, because the **printf** is **commented out**. Very useful when debugging — instead of deleting code and rewriting later, just comment it out
 
 ---
 
 For longer comments that span multiple lines, C also has **/\* ... \*/**
+
 ```c
 #include <stdio.h>
 
@@ -50,6 +54,7 @@ In old C code (before C99), only **/\* \*/** existed. **//** was added later, co
 ---
 
 The code on the right is correct, but you don’t want to print **everything**. Comment out the line with the **secret cargo**, so the program only displays
+
 ```text
 Voyager
 Deep Space Exploration

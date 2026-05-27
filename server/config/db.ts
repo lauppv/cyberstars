@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import { env } from "./env.js";
+import { PrismaClient } from '@prisma/client';
+import { env } from './env.js';
 
 function buildDatabaseUrl(): string {
   if (process.env.DATABASE_URL) return process.env.DATABASE_URL;

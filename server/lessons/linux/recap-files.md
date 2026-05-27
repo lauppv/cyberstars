@@ -1,12 +1,12 @@
 Chapter 2 gave you the full file-management toolkit. Time to use all of it in one
 build.
 
-| Command | Job |
-|---------|-----|
-| `mkdir` (`-p`) | create folders |
-| `touch` | create empty files |
-| `cp` (`-r`) | copy files and folders |
-| `mv` | move and rename |
+| Command              | Job                      |
+| -------------------- | ------------------------ |
+| `mkdir` (`-p`)       | create folders           |
+| `touch`              | create empty files       |
+| `cp` (`-r`)          | copy files and folders   |
+| `mv`                 | move and rename          |
 | `rm` (`-r`), `rmdir` | delete files and folders |
 
 A project folder almost always starts the same way: make the directories, then put

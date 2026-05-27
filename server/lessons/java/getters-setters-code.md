@@ -1,5 +1,5 @@
 class BankAccount {
-    private int balance;
+private int balance;
 
     // Write a constructor that takes starting balance
 
@@ -12,11 +12,11 @@ class BankAccount {
 }
 
 public class Main {
-    public static void main(String[] args) {
-        // Create account with 1000
-        // Deposit 500
-        // Withdraw 200
-        // Try to withdraw 2000 (should fail silently)
-        // Print the balance
-    }
+public static void main(String[] args) {
+// Create account with 1000
+// Deposit 500
+// Withdraw 200
+// Try to withdraw 2000 (should fail silently)
+// Print the balance
+}
 }

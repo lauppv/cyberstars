@@ -1,26 +1,28 @@
-import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { Topbar } from "../components/layout/Topbar";
-import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import { useCurriculum } from "../context/CurriculumContext";
-import { useAllProgress } from "../context/ProgressContext";
-import type { Course } from "../../shared/lesson";
-import { courseMeta } from "../constants/courses";
-import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from "../../shared/constants";
-import { StoryModal } from "./AlmanacPage";
-import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW } from "./almanacData";
-import type { StoryData } from "./almanacData";
-import { AI_ARTICLES } from "./almanacAIArticles";
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { Topbar } from '../components/layout/Topbar';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { useCurriculum } from '../context/CurriculumContext';
+import { useAllProgress } from '../context/ProgressContext';
+import type { Course } from '../../shared/lesson';
+import { courseMeta } from '../constants/courses';
+import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from '../../shared/constants';
+import { StoryModal } from './AlmanacPage';
+import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW } from './almanacData';
+import type { StoryData } from './almanacData';
+import { AI_ARTICLES } from './almanacAIArticles';
 
 function localDateStr(d: Date): string {
   const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
   return `${y}-${m}-${day}`;
 }
 
-function extractActivityCounts(progressMap: Record<string, import("../../shared/progress").CourseProgress>): Record<string, number> {
+function extractActivityCounts(
+  progressMap: Record<string, import('../../shared/progress').CourseProgress>,
+): Record<string, number> {
   const counts: Record<string, number> = {};
   for (const p of Object.values(progressMap)) {
     for (const l of p.lessons) {
@@ -34,27 +36,27 @@ function extractActivityCounts(progressMap: Record<string, import("../../shared/
 }
 
 const HEATMAP_COLORS = [
-  "rgba(30,30,40,0.4)",
-  "rgba(108,92,231,0.25)",
-  "rgba(108,92,231,0.5)",
-  "rgba(108,92,231,0.85)",
+  'rgba(30,30,40,0.4)',
+  'rgba(108,92,231,0.25)',
+  'rgba(108,92,231,0.5)',
+  'rgba(108,92,231,0.85)',
 ];
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
 
 const TAG_COLORS: Record<string, string> = {
-  "OPEN SOURCE": "#00D68F",
-  LEGENDS: "#a855f7",
-  HARDWARE: "#FFAA00",
-  HISTORY: "#3b82f6",
-  INTERNET: "#06b6d4",
-  SECURITY: "#ef4444",
-  "AI & FUTURE": "#8b5cf6",
-  SPACE: "#6366f1",
-  TOOLS: "#f59e0b",
-  LANGUAGES: "#10b981",
-  PLATFORMS: "#ec4899",
-  PROTOCOLS: "#14b8a6",
+  'OPEN SOURCE': '#00D68F',
+  LEGENDS: '#a855f7',
+  HARDWARE: '#FFAA00',
+  HISTORY: '#3b82f6',
+  INTERNET: '#06b6d4',
+  SECURITY: '#ef4444',
+  'AI & FUTURE': '#8b5cf6',
+  SPACE: '#6366f1',
+  TOOLS: '#f59e0b',
+  LANGUAGES: '#10b981',
+  PLATFORMS: '#ec4899',
+  PROTOCOLS: '#14b8a6',
 };
 
 function seededPick<T>(items: T[], count: number, seed: number): T[] {
@@ -68,11 +70,7 @@ function seededPick<T>(items: T[], count: number, seed: number): T[] {
   return indices.slice(0, count).map((i) => items[i]);
 }
 
-const ALL_ALMANAC_POOL: StoryData[] = [
-  ALMANAC_HERO,
-  ...ALMANAC_ARTICLES_RAW,
-  ...AI_ARTICLES,
-];
+const ALL_ALMANAC_POOL: StoryData[] = [ALMANAC_HERO, ...ALMANAC_ARTICLES_RAW, ...AI_ARTICLES];
 
 const ALMANAC_HIGHLIGHTS = seededPick(ALL_ALMANAC_POOL, 3, TODAY_SEED);
 
@@ -90,7 +88,8 @@ export function HomePage() {
 
   const continueTo = useMemo(() => {
     if (!isLoggedIn || !allNonAlgoCourses.length) return null;
-    let best: { course: Course; slug: string; title: string; pct: number; at: string } | null = null;
+    let best: { course: Course; slug: string; title: string; pct: number; at: string } | null =
+      null;
     for (const c of allNonAlgoCourses) {
       const p = progressMap[c.key];
       if (!p) continue;
@@ -103,7 +102,8 @@ export function HomePage() {
     }
     if (best) return { course: best.course, slug: best.slug, title: best.title, pct: best.pct };
     const first = allNonAlgoCourses[0];
-    if (first?.lessons[0]) return { course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 };
+    if (first?.lessons[0])
+      return { course: first, slug: first.lessons[0].slug, title: first.lessons[0].title, pct: 0 };
     return null;
   }, [isLoggedIn, allNonAlgoCourses, progressMap]);
 
@@ -159,19 +159,20 @@ export function HomePage() {
 
         <main className="flex-1 px-4 sm:px-6 py-8">
           <div className="max-w-[1040px] mx-auto space-y-6">
-
             {/* ── Continue Where You Left Off + Activity ── */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               {continueTo && (
                 <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
-                  <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">Continue where you left off</h3>
+                  <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+                    Continue where you left off
+                  </h3>
                   <button
                     onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
                     className="w-full text-left flex items-center gap-3 p-3 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer group"
                   >
                     <div
                       className="w-10 h-10 rounded-[10px] flex items-center justify-center text-lg shrink-0"
-                      style={{ background: courseMeta(continueTo.course.key).color + "20" }}
+                      style={{ background: courseMeta(continueTo.course.key).color + '20' }}
                     >
                       {courseMeta(continueTo.course.key).icon}
                     </div>
@@ -186,7 +187,9 @@ export function HomePage() {
                   {recentLessons.length > 1 && (
                     <>
                       <div className="border-t border-[var(--accent)]/20 my-3" />
-                      <h4 className="text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] mb-2">Recently accessed</h4>
+                      <h4 className="text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] mb-2">
+                        Recently accessed
+                      </h4>
                       <div className="flex flex-col gap-1.5">
                         {recentLessons.slice(1, 4).map((l, i) => {
                           const meta = courseMeta(l.courseKey);
@@ -196,12 +199,17 @@ export function HomePage() {
                               onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
                               className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer text-left"
                             >
-                              <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm shrink-0" style={{ background: meta.color + "20" }}>
+                              <div
+                                className="w-7 h-7 rounded-lg flex items-center justify-center text-sm shrink-0"
+                                style={{ background: meta.color + '20' }}
+                              >
                                 {meta.icon}
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="text-[12px] font-semibold truncate">{l.title}</div>
-                                <div className="text-[10px] text-[var(--text3)]">{meta.label} · {formatTimeAgo(l.lastAccessedAt)}</div>
+                                <div className="text-[10px] text-[var(--text3)]">
+                                  {meta.label} · {formatTimeAgo(l.lastAccessedAt)}
+                                </div>
                               </div>
                             </button>
                           );
@@ -227,46 +235,51 @@ export function HomePage() {
               <CourseMilestones courses={allNonAlgoCourses} progressMap={progressMap} />
             </div>
 
-
             {/* ── Almanac Highlights ── */}
             <section>
               <div className="flex items-center justify-between mb-3">
                 <SectionHeader noMargin>From the Almanac</SectionHeader>
-                <button onClick={() => navigate("/almanac")} className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer">
+                <button
+                  onClick={() => navigate('/almanac')}
+                  className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer"
+                >
                   View all →
                 </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                 {ALMANAC_HIGHLIGHTS.map((a, i) => {
-                  const color = TAG_COLORS[a.tag ?? ""] ?? "#6C5CE7";
+                  const color = TAG_COLORS[a.tag ?? ''] ?? '#6C5CE7';
                   return (
-                  <button
-                    key={i}
-                    onClick={() => setAlmanacStory(a)}
-                    className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
-                  >
-                    <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.8px] mb-2">
-                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
-                      <span style={{ color }}>{a.tag}</span>
-                    </div>
-                    <div className="text-sm font-bold tracking-[-0.2px] leading-tight mb-1.5 line-clamp-2">{a.title}</div>
-                    <div className="text-xs text-[var(--text2)] leading-relaxed flex-1 line-clamp-3 mb-2.5">{a.excerpt}</div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] text-[var(--text3)]">{a.readTime} read</span>
-                      <span className="text-[11px] font-semibold text-[var(--accent)]">Read →</span>
-                    </div>
-                  </button>
+                    <button
+                      key={i}
+                      onClick={() => setAlmanacStory(a)}
+                      className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
+                    >
+                      <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.8px] mb-2">
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                        <span style={{ color }}>{a.tag}</span>
+                      </div>
+                      <div className="text-sm font-bold tracking-[-0.2px] leading-tight mb-1.5 line-clamp-2">
+                        {a.title}
+                      </div>
+                      <div className="text-xs text-[var(--text2)] leading-relaxed flex-1 line-clamp-3 mb-2.5">
+                        {a.excerpt}
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] text-[var(--text3)]">{a.readTime} read</span>
+                        <span className="text-[11px] font-semibold text-[var(--accent)]">
+                          Read →
+                        </span>
+                      </div>
+                    </button>
                   );
                 })}
               </div>
             </section>
-
           </div>
         </main>
 
-        {almanacStory && (
-          <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />
-        )}
+        {almanacStory && <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />}
       </div>
     );
   }
@@ -278,29 +291,35 @@ export function HomePage() {
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <div className="max-w-3xl w-full text-center">
-          <svg className="inline-block w-16 h-16 mb-6" viewBox="0 0 64 64" style={{ filter: "drop-shadow(0 0 24px var(--accent-glow))" }}>
-            <polygon points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24" fill="var(--accent)" />
+          <svg
+            className="inline-block w-16 h-16 mb-6"
+            viewBox="0 0 64 64"
+            style={{ filter: 'drop-shadow(0 0 24px var(--accent-glow))' }}
+          >
+            <polygon
+              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
+              fill="var(--accent)"
+            />
           </svg>
 
-          <h1 className="text-[44px] font-bold tracking-[-0.5px] mb-3">
-            Learn to code, for free
-          </h1>
+          <h1 className="text-[44px] font-bold tracking-[-0.5px] mb-3">Learn to code, for free</h1>
           <p className="text-[var(--text2)] text-lg mb-10">
-            Interactive lessons in <span className="text-[var(--text)] font-semibold">Python</span>,{" "}
-            <span className="text-[var(--text)] font-semibold">Java</span>,{" "}
-            <span className="text-[var(--text)] font-semibold">C</span>, and{" "}
-            <span className="text-[var(--text)] font-semibold">Linux</span>. Read, write, run — all in one place.
+            Interactive lessons in <span className="text-[var(--text)] font-semibold">Python</span>,{' '}
+            <span className="text-[var(--text)] font-semibold">Java</span>,{' '}
+            <span className="text-[var(--text)] font-semibold">C</span>, and{' '}
+            <span className="text-[var(--text)] font-semibold">Linux</span>. Read, write, run — all
+            in one place.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <button
-              onClick={() => navigate("/courses")}
+              onClick={() => navigate('/courses')}
               className="px-6 py-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer"
             >
               Start Learning →
             </button>
             <button
-              onClick={() => navigate("/getstarted")}
+              onClick={() => navigate('/getstarted')}
               className="px-6 py-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
             >
               Sign in
@@ -316,20 +335,22 @@ export function HomePage() {
             <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">⌨️</div>
               <div className="font-semibold mb-1">Write</div>
-              <div className="text-sm text-[var(--text2)]">Interactive editor right in the browser</div>
+              <div className="text-sm text-[var(--text2)]">
+                Interactive editor right in the browser
+              </div>
             </div>
             <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">⚡</div>
               <div className="font-semibold mb-1">Run</div>
-              <div className="text-sm text-[var(--text2)]">Real code execution with instant feedback</div>
+              <div className="text-sm text-[var(--text2)]">
+                Real code execution with instant feedback
+              </div>
             </div>
           </div>
         </div>
       </main>
 
-      {almanacStory && (
-        <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />
-      )}
+      {almanacStory && <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />}
     </div>
   );
 }
@@ -338,7 +359,9 @@ export function HomePage() {
 
 function SectionHeader({ children, noMargin }: { children: React.ReactNode; noMargin?: boolean }) {
   return (
-    <h2 className={`text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] ${noMargin ? "" : "mb-3"}`}>
+    <h2
+      className={`text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] ${noMargin ? '' : 'mb-3'}`}
+    >
       {children}
     </h2>
   );
@@ -356,7 +379,12 @@ function formatTimeAgo(iso: string): string {
 
 /* ── Activity Heatmap ── */
 
-interface HeatmapDay { date: string; level: number; count: number; isFuture: boolean }
+interface HeatmapDay {
+  date: string;
+  level: number;
+  count: number;
+  isFuture: boolean;
+}
 
 function countToLevel(count: number): number {
   if (count === 0) return 0;
@@ -401,14 +429,18 @@ function getMonthLabels(data: HeatmapDay[][]): { month: string; col: number }[] 
     const d = new Date(week[0].date);
     const m = d.getMonth();
     if (m !== lastMonth) {
-      labels.push({ month: d.toLocaleString("en", { month: "short" }), col: i });
+      labels.push({ month: d.toLocaleString('en', { month: 'short' }), col: i });
       lastMonth = m;
     }
   });
   return labels;
 }
 
-function ActivityHeatmap({ progressMap }: { progressMap: Record<string, import("../../shared/progress").CourseProgress> }) {
+function ActivityHeatmap({
+  progressMap,
+}: {
+  progressMap: Record<string, import('../../shared/progress').CourseProgress>;
+}) {
   const weeks = 20;
   const activityCounts = useMemo(() => extractActivityCounts(progressMap), [progressMap]);
   const data = useMemo(() => buildHeatmapData(activityCounts, weeks), [activityCounts, weeks]);
@@ -419,9 +451,12 @@ function ActivityHeatmap({ progressMap }: { progressMap: Record<string, import("
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
       <div className="flex items-center justify-between mb-3.5">
-        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">Activity</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
+          Activity
+        </h3>
         <span className="text-xs text-[var(--text2)]">
-          <strong className="text-[var(--text)] font-semibold">{totalActive}</strong> active days in the last {weeks} weeks
+          <strong className="text-[var(--text)] font-semibold">{totalActive}</strong> active days in
+          the last {weeks} weeks
         </span>
       </div>
 
@@ -430,7 +465,11 @@ function ActivityHeatmap({ progressMap }: { progressMap: Record<string, import("
         {monthLabels.map((m, i) => {
           const nextCol = monthLabels[i + 1]?.col ?? weeks;
           return (
-            <div key={i} className="text-[9px] text-[var(--text3)] font-medium" style={{ width: (nextCol - m.col) * colWidth }}>
+            <div
+              key={i}
+              className="text-[9px] text-[var(--text3)] font-medium"
+              style={{ width: (nextCol - m.col) * colWidth }}
+            >
               {m.month}
             </div>
           );
@@ -440,8 +479,13 @@ function ActivityHeatmap({ progressMap }: { progressMap: Record<string, import("
       <div className="flex">
         {/* Day labels */}
         <div className="flex flex-col gap-[3px] mr-1.5 shrink-0">
-          {["", "Tue", "", "Thu", "", "Sat", ""].map((label, i) => (
-            <div key={i} className="h-4 flex items-center text-[9px] text-[var(--text3)] font-medium">{label}</div>
+          {['', 'Tue', '', 'Thu', '', 'Sat', ''].map((label, i) => (
+            <div
+              key={i}
+              className="h-4 flex items-center text-[9px] text-[var(--text3)] font-medium"
+            >
+              {label}
+            </div>
           ))}
         </div>
 
@@ -454,10 +498,10 @@ function ActivityHeatmap({ progressMap }: { progressMap: Record<string, import("
                   key={di}
                   className="w-4 h-4 rounded-[3px] transition-all hover:outline hover:outline-2 hover:outline-[var(--accent)] hover:outline-offset-1"
                   style={{
-                    background: day.isFuture ? "transparent" : HEATMAP_COLORS[day.level],
-                    border: day.isFuture ? "1px dashed rgba(102,102,128,0.15)" : "none",
+                    background: day.isFuture ? 'transparent' : HEATMAP_COLORS[day.level],
+                    border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
                   }}
-                  title={`${day.date}: ${day.count === 0 ? "No activity" : `${day.count} lesson${day.count === 1 ? "" : "s"} completed`}`}
+                  title={`${day.date}: ${day.count === 0 ? 'No activity' : `${day.count} lesson${day.count === 1 ? '' : 's'} completed`}`}
                 />
               ))}
             </div>
@@ -486,12 +530,19 @@ function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string;
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">Lesson of the Day</h3>
-        <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full uppercase tracking-[0.5px]">Recommended</span>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
+          Lesson of the Day
+        </h3>
+        <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full uppercase tracking-[0.5px]">
+          Recommended
+        </span>
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-2.5">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ background: meta.color + "20" }}>
+          <div
+            className="w-9 h-9 rounded-lg flex items-center justify-center text-lg shrink-0"
+            style={{ background: meta.color + '20' }}
+          >
             {meta.icon}
           </div>
           <span className="text-[11px] text-[var(--text3)] font-medium">{course.title}</span>
@@ -513,7 +564,13 @@ function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string;
 
 /* ── Course Milestones ── */
 
-function CourseMilestones({ courses, progressMap }: { courses: Course[]; progressMap: Record<string, import("../../shared/progress").CourseProgress> }) {
+function CourseMilestones({
+  courses,
+  progressMap,
+}: {
+  courses: Course[];
+  progressMap: Record<string, import('../../shared/progress').CourseProgress>;
+}) {
   const navigate = useNavigate();
   const active = courses.filter((c) => progressMap[c.key]?.completed);
   const notStarted = courses.filter((c) => !progressMap[c.key]?.completed);
@@ -521,7 +578,9 @@ function CourseMilestones({ courses, progressMap }: { courses: Course[]; progres
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
       <div className="mb-4">
-        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">Course Milestones</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
+          Course Milestones
+        </h3>
       </div>
       <div className="flex flex-col gap-3.5 flex-1">
         {active.map((c) => {
@@ -539,20 +598,37 @@ function CourseMilestones({ courses, progressMap }: { courses: Course[]; progres
               onClick={() => navigate(`/courses?open=${c.key}`)}
               className="flex items-center gap-3 text-left cursor-pointer hover:opacity-80 transition"
             >
-              <div className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0" style={{ background: meta.color + "20" }}>
+              <div
+                className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0"
+                style={{ background: meta.color + '20' }}
+              >
                 {meta.icon}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold">{meta.label}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">
-                  <strong className="text-[var(--text)] font-semibold">{remaining}</strong> {remaining === 1 ? "lesson" : "lessons"} remaining
-                  {nextLesson && <> · next: <strong className="text-[var(--text)] font-semibold">{nextLesson.title}</strong></>}
+                  <strong className="text-[var(--text)] font-semibold">{remaining}</strong>{' '}
+                  {remaining === 1 ? 'lesson' : 'lessons'} remaining
+                  {nextLesson && (
+                    <>
+                      {' '}
+                      · next:{' '}
+                      <strong className="text-[var(--text)] font-semibold">
+                        {nextLesson.title}
+                      </strong>
+                    </>
+                  )}
                 </div>
                 <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-                  <div className="h-full rounded-full transition-[width] duration-600" style={{ width: `${pct}%`, background: meta.color }} />
+                  <div
+                    className="h-full rounded-full transition-[width] duration-600"
+                    style={{ width: `${pct}%`, background: meta.color }}
+                  />
                 </div>
               </div>
-              <span className="text-xs font-bold text-[var(--text2)] shrink-0 min-w-[32px] text-right">{pct}%</span>
+              <span className="text-xs font-bold text-[var(--text2)] shrink-0 min-w-[32px] text-right">
+                {pct}%
+              </span>
             </button>
           );
         })}
@@ -564,14 +640,19 @@ function CourseMilestones({ courses, progressMap }: { courses: Course[]; progres
               onClick={() => navigate(`/courses?open=${c.key}`)}
               className="flex items-center gap-3 opacity-60 text-left cursor-pointer hover:opacity-80 transition"
             >
-              <div className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0" style={{ background: meta.color + "20" }}>
+              <div
+                className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0"
+                style={{ background: meta.color + '20' }}
+              >
                 {meta.icon}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold">{meta.label}</div>
-                <div className="text-[11px] text-[var(--text2)] mb-1.5">Not started yet · {c.lessons.length} lessons</div>
+                <div className="text-[11px] text-[var(--text2)] mb-1.5">
+                  Not started yet · {c.lessons.length} lessons
+                </div>
                 <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-                  <div className="h-full rounded-full" style={{ width: "0%" }} />
+                  <div className="h-full rounded-full" style={{ width: '0%' }} />
                 </div>
               </div>
             </button>

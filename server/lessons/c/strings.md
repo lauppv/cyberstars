@@ -9,6 +9,7 @@ int main(void) {
     return 0;
 }
 ```
+
 Output **Tommy Vercetti**. The format specifier for a string is **%s**
 
 What does **char name[] = "Tommy Vercetti"** mean? It creates an array of **char**s containing the letters of the text. **char[]** is "array of characters", and **""** is the way to write a string literal that fills the array
@@ -22,6 +23,7 @@ You don’t usually write **\0** yourself when using string literals. C adds it 
 ---
 
 How long is a string? We can’t use **name.length** like in Java, since C doesn’t have methods. Instead, we use a function from the standard library
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -32,7 +34,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Two new things
+
 - **#include <string.h>** — needed for **strlen** and friends
 - **%zu** — format specifier for the type **strlen** returns (a **size_t**, kind of an unsigned int). For our purposes, you can also use **%d** with a cast: **printf("%d\n", (int) strlen(name))**
 
@@ -41,6 +45,7 @@ Two new things
 ---
 
 **Comparing strings** — and **THE biggest C trap with strings**
+
 ```c
 #include <stdio.h>
 
@@ -54,9 +59,11 @@ int main(void) {
     return 0;
 }
 ```
+
 This compares **memory addresses**, not the **contents**. **a** and **b** are two different arrays in memory, so this **never** prints **equal**, even though both contain "hello"
 
 The correct way is **strcmp** (string compare) from **<string.h>**
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -70,11 +77,13 @@ int main(void) {
     return 0;
 }
 ```
+
 **strcmp** returns **0** when the strings are **equal**. (Yes, equal = 0. C is full of these little quirks :))
 
 ---
 
 Single character at a position. Since a string is just an array, we use indexing
+
 ```c
 #include <stdio.h>
 
@@ -85,11 +94,13 @@ int main(void) {
     return 0;
 }
 ```
+
 **%c** is the format specifier for a single **char**. Counting starts from **0**, like always
 
 ---
 
 Modifying characters
+
 ```c
 #include <stdio.h>
 
@@ -100,11 +111,13 @@ int main(void) {
     return 0;
 }
 ```
+
 We can change individual characters because **name** is an array we own. Notice the **single quotes** for a single char (**'T'**), and **double quotes** for a string (**"Tommy"**). Confusing them is one of the most common C mistakes
 
 ---
 
 You have a **char** array **name** on the right, set to **"lance vance"**. Display **on separate lines**
+
 ```text
 lance vance
 11

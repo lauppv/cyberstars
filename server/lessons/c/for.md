@@ -1,6 +1,7 @@
 Welcome to one of the **most important** concepts in programming — the **for** loop. With it, we ask the computer to do something **many times automatically**
 
 Imagine we want to display all numbers from **1** to **10**
+
 ```c
 #include <stdio.h>
 
@@ -12,7 +13,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Tedious. For **1** to **1000** it’s impossible. **for** saves us
+
 ```c
 #include <stdio.h>
 
@@ -23,11 +26,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Run it. You’ll see the numbers from **1** to **10**, one per line
 
 ---
 
 The C **for** has **three parts** inside the parentheses, separated by **;** — exactly like Java
+
 ```c
 #include <stdio.h>
 
@@ -48,6 +53,7 @@ So **i** takes the values **1, 2, 3, ..., 10**. When **i** becomes **11**, the c
 A small detail: in **older C** (pre-C99), you couldn’t declare **int i** inside the **for**. You had to declare it before. In **modern C** (C99 and later, which is what we use), declaring inside is fine and idiomatic
 
 We can count by 2s, count down, do whatever we want
+
 ```c
 #include <stdio.h>
 
@@ -64,11 +70,13 @@ int main(void) {
     return 0;
 }
 ```
+
 **i--** means **i = i - 1**
 
 ---
 
 Be careful — if we forget to update **i**, we get an **infinite loop**
+
 ```c
 #include <stdio.h>
 
@@ -79,6 +87,7 @@ int main(void) {
     return 0;
 }
 ```
+
 **i** stays **1** forever, the condition stays **true** forever, and the program prints **1** until something stops it. The platform stops it after 5 seconds, but in real systems an infinite loop can lock up your computer. Always make sure your condition can become false
 
 ---

@@ -9,6 +9,7 @@ Build a **matrix statistics** calculator. You have a 3x3 matrix (a 2D array). Wr
 This function uses **nested loops** to go through the matrix and sets the sum, min, and max values through pointers
 
 Then in main, use this matrix:
+
 ```c
 #include <stdio.h>
 
@@ -25,6 +26,7 @@ int main(void) {
 Call matrixStats and print the results
 
 Expected output
+
 ```text
 Sum: 64
 Min: 1

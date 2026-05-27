@@ -17,6 +17,7 @@ def fib(n):
 for i in range(10):
     print(fib(i), end=" ")
 ```
+
 Output **0 1 1 2 3 5 8 13 21 34**
 
 Beautiful? Yes. Efficient? Not really. **fib(5)** calls **fib(4)** and **fib(3)**. But **fib(4)** also calls **fib(3)** — so we compute the same thing twice. For **fib(30)**, this repeats millions of times. For now, don't worry about it — understanding the logic is what matters
@@ -33,6 +34,7 @@ def reverseStr(s):
 
 print(reverseStr("Tommy"))
 ```
+
 Output **ymmoT**
 
 The idea: the reverse of "Tommy" is the reverse of "ommy" followed by "T". The reverse of "ommy" is the reverse of "mmy" followed by "o". And so on until we have a single character (base case)
@@ -51,11 +53,14 @@ def countChar(text, target):
 print(countChar("banana", "a"))
 print(countChar("mississippi", "s"))
 ```
+
 Output
+
 ```text
 3
 4
 ```
+
 Check the first character. If it matches, count 1. Then recursively count in the rest of the string. Base case: empty string → 0
 
 ---
@@ -74,6 +79,7 @@ def flatten(lst):
 
 print(flatten([1, [2, 3], [4, [5, 6]], 7]))
 ```
+
 Output **[1, 2, 3, 4, 5, 6, 7]**
 
 For each element: if it's a list, recursively flatten it and add the results. If it's not a list, just add it. A loop alone can't handle arbitrary nesting depth — recursion can
@@ -95,6 +101,7 @@ print(sumDigits(5))       # 5
 ```
 
 Expected output
+
 ```text
 10
 27

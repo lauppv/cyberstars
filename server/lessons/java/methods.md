@@ -13,7 +13,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Hello, Cortez!
 Hello, Tommy Vercetti!
@@ -21,11 +23,13 @@ Hello, Lance Vance!
 ```
 
 Let’s break this down. The line
+
 ```java
 public class Main {
     public static void greet(String name)
 }
 ```
+
 declares a method named **greet**. Each part has a meaning, and we’ll explain only the essentials for now
 
 - **public** — anyone can call this method
@@ -39,6 +43,7 @@ We must put **public static void** at the start. Don’t worry about why for now
 ---
 
 A method can also **return** a value. In that case, instead of **void**, we write the return type
+
 ```java
 public class Main {
     public static int add(int a, int b) {
@@ -51,11 +56,13 @@ public class Main {
     }
 }
 ```
+
 Output **5**
 
 The method **add** takes two ints and returns an int. Inside, we use **return** to give back the value. As soon as Java hits **return**, the method **exits immediately** — anything written after **return** is dead code
 
 We can also use the result directly inside another expression
+
 ```java
 public class Main {
     public static int add(int a, int b) {
@@ -67,11 +74,13 @@ public class Main {
     }
 }
 ```
-Output **50**. Java first computes **add(2, 3) = 5**, then **5 * 10 = 50**, then prints
+
+Output **50**. Java first computes **add(2, 3) = 5**, then **5 \* 10 = 50**, then prints
 
 ---
 
 The return type **must match** what we actually return
+
 ```java
 public class Main {
     public static int add(int a, int b) {
@@ -79,11 +88,13 @@ public class Main {
     }
 }
 ```
+
 The method promises to return an **int**, but tries to give back a **String**. Java refuses to compile. This is one of Java’s **strict** but **helpful** habits — many bugs are caught before the program even runs :)
 
 ---
 
 A method without **return**, declared as **void**, just does its job and exits. We can still use **return** alone (without a value) to exit early
+
 ```java
 public class Main {
     public static void greet(String name) {
@@ -102,6 +113,7 @@ Write a method **calculator** that takes **three parameters**: an **int number1*
 The method should print the result of **number1 operator number2**
 
 Example
+
 ```java
 public class Main {
     public static void calculator(int number1, int number2, String operator) {
@@ -116,6 +128,7 @@ public class Main {
 ```
 
 Then call it from **main** like
+
 ```java
 public class Main {
     public static void main(String[] args) {

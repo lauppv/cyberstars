@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import type { ReactNode } from "react";
-import { useAuth } from "./AuthContext";
-import { useCurriculum } from "./CurriculumContext";
-import * as progressService from "../services/progressService";
-import type { CourseProgress } from "../../shared/progress";
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import { useAuth } from './AuthContext';
+import { useCurriculum } from './CurriculumContext';
+import * as progressService from '../services/progressService';
+import type { CourseProgress } from '../../shared/progress';
 
 interface ProgressContextType {
   progressMap: Record<string, CourseProgress>;
@@ -43,7 +43,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
           } catch {
             failed.add(c.key);
           }
-        })
+        }),
       );
       if (!cancelled) {
         setProgressMap(map);
@@ -51,7 +51,9 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         setIsLoading(false);
       }
     })();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [courses, curriculumLoading, isLoggedIn, refreshKey]);
 
   return (
@@ -64,6 +66,6 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 // eslint-disable-next-line react-refresh/only-export-components
 export function useAllProgress(): ProgressContextType {
   const ctx = useContext(ProgressContext);
-  if (!ctx) throw new Error("useAllProgress must be used within ProgressProvider");
+  if (!ctx) throw new Error('useAllProgress must be used within ProgressProvider');
   return ctx;
 }

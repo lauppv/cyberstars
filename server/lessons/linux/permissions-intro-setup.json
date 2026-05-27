@@ -1,1 +1,9 @@
-{"cwd":"/home/student","files":[{"path":"diagnostics.sh","content":"#!/bin/bash\necho 'Running diagnostics...'\n"},{"path":"notes.txt","content":"Remember to check airlock seals.\n"},{"path":"manifest.dat","content":"item1 100\nitem2 200\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "diagnostics.sh", "content": "#!/bin/bash\necho 'Running diagnostics...'\n" },
+    { "path": "notes.txt", "content": "Remember to check airlock seals.\n" },
+    { "path": "manifest.dat", "content": "item1 100\nitem2 200\n" }
+  ],
+  "dirs": []
+}

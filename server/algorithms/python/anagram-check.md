@@ -3,12 +3,14 @@
 Two strings are **anagrams** if they contain the exact same characters, just in a different order. Given two strings, determine if they are anagrams of each other (case-insensitive).
 
 ### Input
+
 - Line 1: a string `a`.
 - Line 2: a string `b`.
 
 Both strings contain only letters (no spaces or punctuation).
 
 ### Output
+
 Print `True` if the strings are anagrams, `False` otherwise.
 
 ### Examples
@@ -32,6 +34,7 @@ False
 ```
 
 ### Hints
+
 - Convert both strings to lowercase first with `.lower()`.
 - One approach: sort both strings and compare — `sorted(a) == sorted(b)`.
 - Another approach: count the frequency of each letter using a `dict` or `collections.Counter`.

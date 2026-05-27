@@ -98,6 +98,7 @@ public class Main {
 ```
 
 To get a random int in a range, say 1 to 6 (like a dice roll)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -107,7 +108,7 @@ public class Main {
 }
 ```
 
-How it works: **Math.random() * 6** gives a double from 0.0 to 5.999..., **(int)** chops it to 0-5, then **+ 1** shifts it to 1-6. Cortez would approve of the math
+How it works: **Math.random() \* 6** gives a double from 0.0 to 5.999..., **(int)** chops it to 0-5, then **+ 1** shifts it to 1-6. Cortez would approve of the math
 
 ---
 
@@ -130,14 +131,14 @@ Java evaluates from the inside out: first **Math.abs(-15) = 15** and **Math.abs(
 
 In Python, some of these are built-in functions (**abs**, **max**, **min**, **pow**) and some come from the **math** module (**math.sqrt**). In Java, they're all neatly organized under the **Math** class
 
-| Python | Java |
-|---|---|
-| max(a, b) | Math.max(a, b) |
-| min(a, b) | Math.min(a, b) |
-| abs(n) | Math.abs(n) |
-| pow(a, b) or a**b | Math.pow(a, b) |
-| math.sqrt(n) | Math.sqrt(n) |
-| random.random() | Math.random() |
+| Python              | Java           |
+| ------------------- | -------------- |
+| max(a, b)           | Math.max(a, b) |
+| min(a, b)           | Math.min(a, b) |
+| abs(n)              | Math.abs(n)    |
+| pow(a, b) or a\*\*b | Math.pow(a, b) |
+| math.sqrt(n)        | Math.sqrt(n)   |
+| random.random()     | Math.random()  |
 
 ---
 
@@ -149,6 +150,7 @@ Print the result of each of these on a **separate line**
 4. **(int)Math.pow(2, 10)**
 
 Expected output
+
 ```text
 42
 17

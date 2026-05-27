@@ -1,1 +1,9 @@
-{"cwd":"/home/student","files":[{"path":"launch_codes.txt","content":"CODE-ALPHA-7749\nCODE-BRAVO-3312\n"},{"path":"status_report.sh","content":"#!/bin/bash\necho 'All systems nominal'\n"},{"path":"public_bulletin.txt","content":"Station movie night: Friday 2000 hours.\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "launch_codes.txt", "content": "CODE-ALPHA-7749\nCODE-BRAVO-3312\n" },
+    { "path": "status_report.sh", "content": "#!/bin/bash\necho 'All systems nominal'\n" },
+    { "path": "public_bulletin.txt", "content": "Station movie night: Friday 2000 hours.\n" }
+  ],
+  "dirs": []
+}

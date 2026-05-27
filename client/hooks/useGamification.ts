@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useCurriculum } from "../context/CurriculumContext";
-import { useAllProgress } from "../context/ProgressContext";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useCurriculum } from '../context/CurriculumContext';
+import { useAllProgress } from '../context/ProgressContext';
 
 interface BadgeDef {
   icon: string;
@@ -25,23 +25,26 @@ export interface Gamification {
 }
 
 const COURSE_BADGE_ICONS: Record<string, string> = {
-  python: "🐍",
-  java: "☕",
-  c: "⚙️",
-  linux: "🐧",
-  "algo-python": "🧩",
-  "algo-java": "🧩",
-  "algo-c": "🧩",
+  python: '🐍',
+  java: '☕',
+  c: '⚙️',
+  linux: '🐧',
+  'algo-python': '🧩',
+  'algo-java': '🧩',
+  'algo-c': '🧩',
 };
 
-const LEVEL_LABELS = ["Bronze", "Silver", "Gold"];
+const LEVEL_LABELS = ['Bronze', 'Silver', 'Gold'];
 
 export function useGamification(): Gamification {
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
   const [, setTick] = useState(0);
-  const forceRefresh = useCallback(() => { refresh(); setTick((t) => t + 1); }, [refresh]);
+  const forceRefresh = useCallback(() => {
+    refresh();
+    setTick((t) => t + 1);
+  }, [refresh]);
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
@@ -68,7 +71,7 @@ export function useGamification(): Gamification {
     for (const c of courses) {
       const { done, total } = perCourse[c.key] ?? { done: 0, total: 0 };
       const maxLevel = Math.max(1, Math.floor(total / 10));
-      const icon = COURSE_BADGE_ICONS[c.key] ?? "⭐";
+      const icon = COURSE_BADGE_ICONS[c.key] ?? '⭐';
 
       result.push({
         icon,
@@ -102,7 +105,7 @@ export function useGamification(): Gamification {
 
   useEffect(() => {
     const earnedKeys = new Set(
-      badges.filter((b) => b.earned).map((b) => `${b.courseKey}-${b.level}`)
+      badges.filter((b) => b.earned).map((b) => `${b.courseKey}-${b.level}`),
     );
     const prev = prevEarnedRef.current;
     if (prev.size > 0) {

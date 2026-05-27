@@ -14,6 +14,7 @@ public class Main {
 **Important**: in Java, **true** and **false** are **lowercase**. (In Python they were **True** and **False** with a capital letter.) Don’t mix them up
 
 Conditions like **age < 18** or **x == 5** also produce booleans
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -33,6 +34,7 @@ We can combine booleans with logical operators
 - **!** means **not** (flips the value)
 
 Imagine: in order to drive a car, you need to be **at least 18 years old AND have a license**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -47,11 +49,13 @@ public class Main {
     }
 }
 ```
+
 Both conditions must be **true** for **&&** to be **true**. If even one is false, the whole thing is false
 
 ---
 
 **||** (or) is more relaxed. Just **one** of the conditions being true is enough
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -66,11 +70,13 @@ public class Main {
     }
 }
 ```
+
 **isVIP** is false, **hasInvitation** is true, so the **or** is true and the person enters
 
 ---
 
 **!** flips a boolean. **!true** becomes **false**, **!false** becomes **true**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -81,11 +87,13 @@ public class Main {
     }
 }
 ```
-Reads almost like English: *if not logged in, log in*
+
+Reads almost like English: _if not logged in, log in_
 
 ---
 
 Truth tables, just to have them in one place
+
 ```text
 true  && true  = true
 true  && false = false
@@ -106,6 +114,7 @@ false || false = false
 You are writing the access system for **CyberStars HQ**. A person can enter if they are an **employee AND it’s a working day**, or if they are a **guest WITH an invitation**
 
 You have these variables on the right
+
 ```java
 public class Main {
     public static void main(String[] args) {

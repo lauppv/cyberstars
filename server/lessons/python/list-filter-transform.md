@@ -12,12 +12,15 @@ for s in scores:
         passed.append(s)
 print(passed)
 ```
+
 Output **[82, 67, 91, 74, 55, 96]**
 
 Or with list comprehension
+
 ```py
 passed = [s for s in scores if s >= 50]
 ```
+
 Same result, shorter code
 
 ---
@@ -31,9 +34,11 @@ for price in prices:
     withTax.append(round(price * 1.19, 2))
 print(withTax)
 ```
+
 Output **[11.9, 30.35, 9.52, 49.98]**
 
 Or with list comprehension
+
 ```py
 withTax = [round(price * 1.19, 2) for price in prices]
 ```
@@ -57,9 +62,11 @@ for player in players:
         onlineNames.append(player["name"])
 print(onlineNames)
 ```
+
 Output **['Tommy', 'Cortez', 'Phil']**
 
 We **filtered** (only online players) and **transformed** (extracted just the name). With list comprehension
+
 ```py
 onlineNames = [p["name"] for p in players if p["online"]]
 ```
@@ -85,9 +92,11 @@ for grade in grades:
 
 print(result)
 ```
+
 Output **[87, 72, 96, 79, 60, 100]**
 
 With comprehension and **min()** to cap
+
 ```py
 result = [min(g + 5, 100) for g in grades if g >= 50]
 ```
@@ -103,6 +112,7 @@ You have a list of **words**. Do the following
 Tip: **word[0].isupper()** checks if the first character is uppercase
 
 Expected output
+
 ```text
 ['shrek', 'fiona', 'donkey']
 ```

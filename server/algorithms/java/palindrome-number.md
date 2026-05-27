@@ -5,9 +5,11 @@ Check if an integer is a **palindrome** — a number that reads the same forward
 Negative numbers are never palindromes (because of the minus sign). Single-digit numbers are always palindromes.
 
 ### Input
+
 - Line 1: a single integer
 
 ### Output
+
 - `true` if the number is a palindrome, `false` otherwise.
 
 ### Examples
@@ -37,6 +39,7 @@ false
 ```
 
 ### Hints
+
 - Negative numbers always return `false`.
 - One approach: reverse the number digit by digit and compare with the original.
 - To get the last digit: `num % 10`. To remove the last digit: `num / 10`.

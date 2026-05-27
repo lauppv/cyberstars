@@ -26,7 +26,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Rex says: Woof!
 Buddy says: Woof!
@@ -65,7 +67,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Cash: 80
 ```
@@ -103,7 +107,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy Vercetti completed a mission! Respect: 10
 Tommy Vercetti completed a mission! Respect: 20
@@ -145,6 +151,7 @@ That's why `main` is `static` — it runs before any objects exist. It's the sta
 ## Python Comparison
 
 In Python, instance methods take `self` as the first parameter:
+
 ```python
 class Dog:
     def bark(self):
@@ -158,6 +165,7 @@ In Java, `this` is always available inside instance methods — you don't need t
 ## Exercise
 
 Create a `Counter` class with:
+
 - An `int` field called `count`, starting at 0
 - A constructor that sets `count` to 0
 - An `increment()` method that adds 1 to `count`
@@ -166,6 +174,7 @@ Create a `Counter` class with:
 In `main`, create a `Counter`, call `increment()` three times, then print the count
 
 Expected output:
+
 ```text
 3
 ```

@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useGamification } from "../hooks/useGamification";
-import { Topbar } from "../components/layout/Topbar";
-import { Badge } from "../components/gamification/Badge";
-import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import { useCurriculum } from "../context/CurriculumContext";
-import { useAllProgress } from "../context/ProgressContext";
-import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from "../../shared/constants";
-import * as profileService from "../services/profileService";
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useGamification } from '../hooks/useGamification';
+import { Topbar } from '../components/layout/Topbar';
+import { Badge } from '../components/gamification/Badge';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { useCurriculum } from '../context/CurriculumContext';
+import { useAllProgress } from '../context/ProgressContext';
+import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
+import * as profileService from '../services/profileService';
 
 const INPUT_CLS =
-  "w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]";
+  'w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]';
 
 export function ProfilePage() {
   const navigate = useNavigate();
@@ -26,19 +26,19 @@ export function ProfilePage() {
     return keys.includes(c.key) && progressMap[c.key]?.completed > 0;
   }).length;
 
-  const [bio, setBio] = useState("");
-  const [status, setStatus] = useState("");
+  const [bio, setBio] = useState('');
+  const [status, setStatus] = useState('');
   const [saving, setSaving] = useState(false);
-  const [uploadError, setUploadError] = useState("");
+  const [uploadError, setUploadError] = useState('');
 
   useEffect(() => {
-    if (!isLoading && !isLoggedIn) navigate("/getstarted");
+    if (!isLoading && !isLoggedIn) navigate('/getstarted');
   }, [isLoading, isLoggedIn, navigate]);
 
   useEffect(() => {
     if (user) {
-      setBio(user.bio ?? ""); // eslint-disable-line react-hooks/set-state-in-effect
-      setStatus(user.status ?? "");
+      setBio(user.bio ?? ''); // eslint-disable-line react-hooks/set-state-in-effect
+      setStatus(user.status ?? '');
     }
   }, [user]);
 
@@ -65,16 +65,16 @@ export function ProfilePage() {
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setUploadError("");
+    setUploadError('');
     if (file.size > 2 * 1024 * 1024) {
-      setUploadError("File too large (max 2MB)");
+      setUploadError('File too large (max 2MB)');
       return;
     }
     try {
       await profileService.uploadAvatar(file);
       refreshUser();
     } catch (err) {
-      setUploadError(err instanceof Error ? err.message : "Upload failed");
+      setUploadError(err instanceof Error ? err.message : 'Upload failed');
     }
   };
 
@@ -96,7 +96,7 @@ export function ProfilePage() {
 
   const statusExpired = user.statusExpiresAt && new Date(user.statusExpiresAt) < new Date();
   const activeStatus = statusExpired ? null : user.status;
-  const earnedBadges = g.badges.filter(b => b.earned).length;
+  const earnedBadges = g.badges.filter((b) => b.earned).length;
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
@@ -153,27 +153,33 @@ export function ProfilePage() {
           {/* Bio & Status */}
           <div className="py-4 border-b border-[var(--border)] flex flex-col gap-3">
             <div>
-              <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">Bio</label>
+              <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                Bio
+              </label>
               <textarea
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 placeholder="Tell others about yourself..."
                 maxLength={200}
                 rows={2}
-                className={INPUT_CLS + " resize-none"}
+                className={INPUT_CLS + ' resize-none'}
                 onBlur={saveBio}
               />
-              <div className="text-[10px] text-[var(--text3)] text-right mt-0.5">{bio.length}/200</div>
+              <div className="text-[10px] text-[var(--text3)] text-right mt-0.5">
+                {bio.length}/200
+              </div>
             </div>
             <div>
-              <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">Status <span className="normal-case">(expires in 24h)</span></label>
+              <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                Status <span className="normal-case">(expires in 24h)</span>
+              </label>
               <div className="flex gap-2">
                 <input
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   placeholder="What are you up to?"
                   maxLength={80}
-                  className={INPUT_CLS + " flex-1"}
+                  className={INPUT_CLS + ' flex-1'}
                 />
                 <button
                   onClick={saveStatus}
@@ -190,15 +196,21 @@ export function ProfilePage() {
           <div className="grid grid-cols-3 border-b border-[var(--border)]">
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{g.totalCompleted}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Lessons Done</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+                Lessons Done
+              </div>
             </div>
             <div className="py-4 text-center border-x border-[var(--border)]">
               <div className="text-[24px] font-bold">{activeCourses}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Active Courses</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+                Active Courses
+              </div>
             </div>
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{earnedBadges}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">Badges</div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+                Badges
+              </div>
             </div>
           </div>
 
@@ -209,7 +221,13 @@ export function ProfilePage() {
             </h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
               {g.badges.map((b) => (
-                <Badge key={`${b.courseKey}-${b.level}`} icon={b.icon} label={b.label} earned={b.earned} description={b.description} />
+                <Badge
+                  key={`${b.courseKey}-${b.level}`}
+                  icon={b.icon}
+                  label={b.label}
+                  earned={b.earned}
+                  description={b.description}
+                />
               ))}
             </div>
           </div>

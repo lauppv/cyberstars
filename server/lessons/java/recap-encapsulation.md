@@ -15,6 +15,7 @@ Build a **bank account system**. Create a class **BankAccount** with:
 - **static int getTotalAccounts()** — returns how many accounts were created
 
 Test:
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -33,6 +34,7 @@ public class Main {
 ```
 
 Expected output
+
 ```text
 Insufficient funds
 Account #1 (Tommy) - Balance: 1250.0 EUR

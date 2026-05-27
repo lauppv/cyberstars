@@ -3,6 +3,7 @@ Combine **recursion**, **matrices (2D lists)**, and **binary search**
 ---
 
 Build a **dungeon explorer**. You have a dungeon map (a 2D list) where:
+
 - **0** = empty path
 - **1** = wall
 - **2** = treasure
@@ -28,6 +29,7 @@ Write these functions:
 **count_paths(dungeon, row, col)** — BONUS: use **recursion** to count how many cells are reachable from position (0,0) by moving only right or down on empty cells (value 0 or 2). Mark visited cells to avoid counting twice
 
 Test with:
+
 ```python
 print(f"Treasures: {count_treasures(dungeon)}")
 flat = flatten_sorted(dungeon)
@@ -37,6 +39,7 @@ print(f"Has value 3: {find_value(flat, 3)}")
 ```
 
 Expected output
+
 ```text
 Treasures: 1
 Unique values: [0, 1, 2]

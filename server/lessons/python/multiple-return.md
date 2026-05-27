@@ -10,7 +10,9 @@ smallest, largest = minMax([5, 2, 8, 1, 9])
 print(smallest)
 print(largest)
 ```
+
 Output
+
 ```text
 1
 9
@@ -26,11 +28,14 @@ result = minMax([5, 2, 8, 1, 9])
 print(result)
 print(type(result))
 ```
+
 Output
+
 ```text
 (1, 9)
 <class 'tuple'>
 ```
+
 See? It's a tuple. **return a, b** is the same as **return (a, b)**. Python lets us skip the parentheses for convenience
 
 ---
@@ -49,17 +54,21 @@ print(f"Total: {t}")
 print(f"Average: {avg}")
 print(f"Best: {top}")
 ```
+
 Output
+
 ```text
 Total: 333
 Average: 83.25
 Best: 95
 ```
+
 One function, three useful values back. Clean
 
 ---
 
 Another common use: a function that **splits** a full name
+
 ```py
 def splitName(fullName):
     parts = fullName.split(" ")
@@ -71,7 +80,9 @@ first, last = splitName("Tommy Vercetti")
 print(f"First: {first}")
 print(f"Last: {last}")
 ```
+
 Output
+
 ```text
 First: Tommy
 Last: Vercetti
@@ -88,6 +99,7 @@ upper, lower, length = analyzeWord("Cortez")
 ```
 
 Display each on a separate line. Expected output
+
 ```text
 CORTEZ
 cortez

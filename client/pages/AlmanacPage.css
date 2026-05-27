@@ -28,7 +28,7 @@
 }
 
 .almanac-kicker::before {
-  content: "";
+  content: '';
   width: 24px;
   height: 1px;
   background: var(--accent);
@@ -194,16 +194,28 @@
 
 .hero-art-stars::before,
 .hero-art-stars::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 2px;
   height: 2px;
   background: #fff;
   border-radius: 50%;
-  box-shadow: 32px 18px #fff, 84px 47px #fff, 143px 88px #b0e0ff,
-    210px 32px #fff, 46px 145px #fff, 178px 165px #fff, 260px 122px #ffd1a1,
-    310px 60px #fff, 90px 220px #b0e0ff, 200px 250px #fff, 340px 200px #fff,
-    420px 90px #fff, 380px 270px #b0e0ff, 440px 180px #fff, 80px 310px #fff,
+  box-shadow:
+    32px 18px #fff,
+    84px 47px #fff,
+    143px 88px #b0e0ff,
+    210px 32px #fff,
+    46px 145px #fff,
+    178px 165px #fff,
+    260px 122px #ffd1a1,
+    310px 60px #fff,
+    90px 220px #b0e0ff,
+    200px 250px #fff,
+    340px 200px #fff,
+    420px 90px #fff,
+    380px 270px #b0e0ff,
+    440px 180px #fff,
+    80px 310px #fff,
     260px 290px #ffd1a1;
   animation: almanac-twinkle 4s ease-in-out infinite;
 }
@@ -555,16 +567,12 @@
 .factcard {
   position: relative;
   padding: 22px 44px;
-  background: linear-gradient(
-    135deg,
-    rgba(108, 92, 231, 0.15) 0%,
-    rgba(255, 107, 107, 0.08) 100%
-  );
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15) 0%, rgba(255, 107, 107, 0.08) 100%);
   border: 1px solid rgba(108, 92, 231, 0.25);
 }
 
 .factcard::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 140px;
   height: 140px;
@@ -740,11 +748,7 @@
 /* Quote of day */
 .quote-card {
   padding: 24px 44px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 214, 143, 0.08) 0%,
-    rgba(108, 92, 231, 0.06) 100%
-  );
+  background: linear-gradient(135deg, rgba(0, 214, 143, 0.08) 0%, rgba(108, 92, 231, 0.06) 100%);
   border: 1px solid rgba(0, 214, 143, 0.18);
 }
 
@@ -813,7 +817,9 @@
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 16px var(--accent-glow);
+  box-shadow:
+    0 0 0 4px var(--bg),
+    0 0 16px var(--accent-glow);
 }
 
 .bigtl-year {
@@ -888,7 +894,9 @@
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 18px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px var(--border);
   animation: modal-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 

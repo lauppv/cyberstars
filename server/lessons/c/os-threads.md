@@ -105,6 +105,7 @@ Now **counter** will always be exactly 200000. The mutex ensures only one thread
 ---
 
 When to use **threads** vs **processes**:
+
 - **Threads**: shared memory needed, lightweight, same program doing parallel work (web server handling requests, video game updating physics and rendering)
 - **Processes**: isolation needed, safety (a crash in one process doesn't kill the other), running different programs
 
@@ -113,6 +114,7 @@ When to use **threads** vs **processes**:
 Write a program that creates **two threads**. Each thread receives a different string as argument — **"Ping"** and **"Pong"**. Each thread prints its string **3 times**. The main thread waits for both to finish, then prints **"Game over"**
 
 Expected output (order of Ping/Pong may vary, but "Game over" must be last)
+
 ```text
 Ping
 Ping

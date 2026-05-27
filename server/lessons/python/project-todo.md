@@ -3,11 +3,13 @@ Our final mini-project: a **to-do list manager**. We'll build functions to **add
 ---
 
 Each task is a dictionary with a **name** and a **done** status
+
 ```py
 task = {"name": "Learn Python", "done": False}
 ```
 
 Our to-do list is a **list** of these dictionaries
+
 ```py
 todos = [
     {"name": "Learn Python", "done": True},
@@ -21,12 +23,14 @@ todos = [
 Let's build the functions one by one
 
 **Adding a task**
+
 ```py
 def addTask(todos, name):
     todos.append({"name": name, "done": False})
 ```
 
 **Marking a task as done** (by index)
+
 ```py
 def completeTask(todos, index):
     if 0 <= index < len(todos):
@@ -34,14 +38,17 @@ def completeTask(todos, index):
 ```
 
 **Removing a task** (by index)
+
 ```py
 def removeTask(todos, index):
     if 0 <= index < len(todos):
         todos.pop(index)
 ```
+
 **.pop(index)** removes the element at that position from the list
 
 **Displaying all tasks**
+
 ```py
 def displayTodos(todos):
     for i, task in enumerate(todos):
@@ -52,6 +59,7 @@ def displayTodos(todos):
 ---
 
 Putting it all together
+
 ```py
 todos = []
 
@@ -69,7 +77,9 @@ print("---")
 removeTask(todos, 2)
 displayTodos(todos)
 ```
+
 Output
+
 ```text
 0. [not done] Finish Python curriculum
 1. [not done] Start Java curriculum
@@ -88,6 +98,7 @@ Each function does **one thing** and does it well. This is a core principle of g
 ---
 
 A **count** function is useful too
+
 ```py
 def countDone(todos):
     count = 0
@@ -111,6 +122,7 @@ Write the functions **addTask**, **completeTask**, and **countDone**
 The starter code on the right already calls these functions. Make them work so the output is
 
 Expected output
+
 ```text
 3
 1
