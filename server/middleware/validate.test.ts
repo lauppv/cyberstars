@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
-import { z } from "zod";
-import { validateBody } from "./validate.js";
-import type { Request, Response, NextFunction } from "express";
+import { describe, it, expect, vi } from 'vitest';
+import { z } from 'zod';
+import { validateBody } from './validate.js';
+import type { Request, Response, NextFunction } from 'express';
 
 const schema = z.object({ name: z.string().min(1), age: z.number() });
 
@@ -18,15 +18,15 @@ function callMiddleware(body: unknown) {
   return { req, res, next };
 }
 
-describe("validateBody", () => {
-  it("calls next and sets parsed body on valid input", () => {
-    const { req, next } = callMiddleware({ name: "Ada", age: 25 });
+describe('validateBody', () => {
+  it('calls next and sets parsed body on valid input', () => {
+    const { req, next } = callMiddleware({ name: 'Ada', age: 25 });
     expect(next).toHaveBeenCalled();
-    expect(req.body).toEqual({ name: "Ada", age: 25 });
+    expect(req.body).toEqual({ name: 'Ada', age: 25 });
   });
 
-  it("returns 400 with error message on invalid input", () => {
-    const { res, next } = callMiddleware({ name: "", age: "not a number" });
+  it('returns 400 with error message on invalid input', () => {
+    const { res, next } = callMiddleware({ name: '', age: 'not a number' });
     expect(next).not.toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalledWith(
@@ -34,7 +34,7 @@ describe("validateBody", () => {
     );
   });
 
-  it("returns 400 when body is missing fields", () => {
+  it('returns 400 when body is missing fields', () => {
     const { res, next } = callMiddleware({});
     expect(next).not.toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(400);

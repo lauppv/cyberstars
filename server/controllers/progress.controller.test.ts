@@ -1,11 +1,11 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import type { Request, Response } from "express";
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { Request, Response } from 'express';
 
-process.env.JWT_SECRET = "test-secret";
-process.env.DB_USER = "test";
-process.env.DB_HOST = "localhost";
-process.env.DB_NAME = "test";
-process.env.DB_PASSWORD = "test";
+process.env.JWT_SECRET = 'test-secret';
+process.env.DB_USER = 'test';
+process.env.DB_HOST = 'localhost';
+process.env.DB_NAME = 'test';
+process.env.DB_PASSWORD = 'test';
 
 const mockGetCourseProgress = vi.fn();
 const mockMarkComplete = vi.fn();
@@ -13,7 +13,7 @@ const mockGetSavedCode = vi.fn();
 const mockSaveCode = vi.fn();
 const mockTrackAccess = vi.fn();
 
-vi.mock("../services/progress.service.js", () => ({
+vi.mock('../services/progress.service.js', () => ({
   getCourseProgress: (...args: unknown[]) => mockGetCourseProgress(...args),
   markComplete: (...args: unknown[]) => mockMarkComplete(...args),
   getSavedCode: (...args: unknown[]) => mockGetSavedCode(...args),
@@ -21,14 +21,23 @@ vi.mock("../services/progress.service.js", () => ({
   trackAccess: (...args: unknown[]) => mockTrackAccess(...args),
 }));
 
-vi.mock("@prisma/client", () => ({
-  PrismaClient: class { constructor() { return {}; } },
+vi.mock('@prisma/client', () => ({
+  PrismaClient: class {
+    constructor() {
+      return {};
+    }
+  },
 }));
 
-const ctrl = await import("./progress.controller.js");
+const ctrl = await import('./progress.controller.js');
 
 function mockReq(overrides: Partial<Request> = {}): Request {
-  return { params: {}, body: {}, user: { id: 1 } as Request["user"], ...overrides } as unknown as Request;
+  return {
+    params: {},
+    body: {},
+    user: { id: 1 } as Request['user'],
+    ...overrides,
+  } as unknown as Request;
 }
 
 function mockRes(): Response {
@@ -38,58 +47,61 @@ function mockRes(): Response {
 
 beforeEach(() => vi.clearAllMocks());
 
-describe("getCourseProgress", () => {
-  it("returns progress for a course", async () => {
-    const progress = [{ lessonSlug: "intro", completed: true }];
+describe('getCourseProgress', () => {
+  it('returns progress for a course', async () => {
+    const progress = [{ lessonSlug: 'intro', completed: true }];
     mockGetCourseProgress.mockResolvedValue(progress);
-    const req = mockReq({ params: { courseKey: "python" } });
+    const req = mockReq({ params: { courseKey: 'python' } });
     const res = mockRes();
     await ctrl.getCourseProgress(req, res);
-    expect(mockGetCourseProgress).toHaveBeenCalledWith(1, "python");
+    expect(mockGetCourseProgress).toHaveBeenCalledWith(1, 'python');
     expect(res.json).toHaveBeenCalledWith(progress);
   });
 });
 
-describe("markComplete", () => {
-  it("marks a lesson as complete", async () => {
+describe('markComplete', () => {
+  it('marks a lesson as complete', async () => {
     mockMarkComplete.mockResolvedValue(undefined);
-    const req = mockReq({ params: { courseKey: "python", lessonSlug: "booleans" } });
+    const req = mockReq({ params: { courseKey: 'python', lessonSlug: 'booleans' } });
     const res = mockRes();
     await ctrl.markComplete(req, res);
-    expect(mockMarkComplete).toHaveBeenCalledWith(1, "python", "booleans");
-    expect(res.json).toHaveBeenCalledWith({ message: "Lesson marked as complete" });
+    expect(mockMarkComplete).toHaveBeenCalledWith(1, 'python', 'booleans');
+    expect(res.json).toHaveBeenCalledWith({ message: 'Lesson marked as complete' });
   });
 });
 
-describe("getSavedCode", () => {
-  it("returns saved code for a lesson", async () => {
+describe('getSavedCode', () => {
+  it('returns saved code for a lesson', async () => {
     mockGetSavedCode.mockResolvedValue("print('hi')");
-    const req = mockReq({ params: { courseKey: "python", lessonSlug: "booleans" } });
+    const req = mockReq({ params: { courseKey: 'python', lessonSlug: 'booleans' } });
     const res = mockRes();
     await ctrl.getSavedCode(req, res);
-    expect(mockGetSavedCode).toHaveBeenCalledWith(1, "python", "booleans");
+    expect(mockGetSavedCode).toHaveBeenCalledWith(1, 'python', 'booleans');
     expect(res.json).toHaveBeenCalledWith({ code: "print('hi')" });
   });
 });
 
-describe("saveCode", () => {
-  it("saves code for a lesson", async () => {
+describe('saveCode', () => {
+  it('saves code for a lesson', async () => {
     mockSaveCode.mockResolvedValue(undefined);
-    const req = mockReq({ params: { courseKey: "python", lessonSlug: "booleans" }, body: { code: "x=1" } });
+    const req = mockReq({
+      params: { courseKey: 'python', lessonSlug: 'booleans' },
+      body: { code: 'x=1' },
+    });
     const res = mockRes();
     await ctrl.saveCode(req, res);
-    expect(mockSaveCode).toHaveBeenCalledWith(1, "python", "booleans", "x=1");
-    expect(res.json).toHaveBeenCalledWith({ message: "Code saved" });
+    expect(mockSaveCode).toHaveBeenCalledWith(1, 'python', 'booleans', 'x=1');
+    expect(res.json).toHaveBeenCalledWith({ message: 'Code saved' });
   });
 });
 
-describe("trackAccess", () => {
-  it("tracks lesson access", async () => {
+describe('trackAccess', () => {
+  it('tracks lesson access', async () => {
     mockTrackAccess.mockResolvedValue(undefined);
-    const req = mockReq({ params: { courseKey: "python", lessonSlug: "booleans" } });
+    const req = mockReq({ params: { courseKey: 'python', lessonSlug: 'booleans' } });
     const res = mockRes();
     await ctrl.trackAccess(req, res);
-    expect(mockTrackAccess).toHaveBeenCalledWith(1, "python", "booleans");
-    expect(res.json).toHaveBeenCalledWith({ message: "Access tracked" });
+    expect(mockTrackAccess).toHaveBeenCalledWith(1, 'python', 'booleans');
+    expect(res.json).toHaveBeenCalledWith({ message: 'Access tracked' });
   });
 });
