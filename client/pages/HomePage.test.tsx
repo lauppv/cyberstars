@@ -320,7 +320,13 @@ describe('HomePage', () => {
           completed: 0,
           total: 1,
           lessons: [
-            { slug: 'hello', title: 'Hello', completed: false, completedAt: null, lastAccessedAt: null },
+            {
+              slug: 'hello',
+              title: 'Hello',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: null,
+            },
           ],
         },
       },
