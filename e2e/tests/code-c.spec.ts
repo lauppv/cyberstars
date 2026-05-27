@@ -1,10 +1,8 @@
 import { test, expect } from '../fixtures/test.js';
 
-const C_CODE = `#include <stdio.h>
-int main(void) {
-    printf("hello");
-    return 0;
-}`;
+// Single-line body so the typed `}` lands next to CodeMirror's auto-paired `}`
+// (which lets it skip instead of inserting a duplicate).
+const C_CODE = `#include <stdio.h>\nint main(void) { printf("hello"); return 0; }`;
 
 test('run C printf("hello") → output "hello"', async ({ authedPage: page }) => {
   await page.goto('/#/lesson/c/print');

@@ -1,10 +1,8 @@
 import { test, expect } from '../fixtures/test.js';
 
-const JAVA_CODE = `public class Main {
-    public static void main(String[] args) {
-        System.out.println("hello");
-    }
-}`;
+// Single-line body so each typed `}` lands next to CodeMirror's auto-paired `}`
+// (which lets it skip instead of inserting a duplicate).
+const JAVA_CODE = `public class Main { public static void main(String[] args) { System.out.println("hello"); } }`;
 
 test('run Java System.out.println("hello") → output "hello"', async ({ authedPage: page }) => {
   await page.goto('/#/lesson/java/print');
