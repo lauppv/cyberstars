@@ -10,13 +10,13 @@ test.beforeEach(async () => {
 test('signup via UI → redirects to welcome page', async ({ page }) => {
   await page.goto('/#/getstarted');
 
-  await page.getByText("Don't have an account?").click();
+  await page.getByRole('button', { name: 'Sign Up' }).click();
 
   await page.getByPlaceholder('Choose a username').fill('TestUser');
   await page.getByPlaceholder('you@example.com').fill('signup-e2e@test.com');
   await page.getByPlaceholder('Min. 8 characters').fill('SecurePass123');
 
-  await page.getByRole('button', { name: 'Create Account' }).click();
+  await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
 
   await expect(page).toHaveURL(/\/#\/welcome/, { timeout: 10_000 });
 });
@@ -32,7 +32,7 @@ test('login via UI → redirects to home', async ({ page, context }) => {
   await page.getByPlaceholder('you@example.com').fill(email);
   await page.getByPlaceholder('Enter your password').fill(password);
 
-  await page.getByRole('button', { name: 'Log In' }).click();
+  await page.locator('form').getByRole('button', { name: 'Log In' }).click();
 
   await expect(page).toHaveURL(/\/#\/$/, { timeout: 10_000 });
 });

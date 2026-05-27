@@ -6,7 +6,7 @@ print(f"Hi {name}")`;
 test('WebSocket stdin: Python input() receives user input', async ({ authedPage: page }) => {
   await page.goto('/#/lesson/python/print');
 
-  const editor = page.locator('.cm-content');
+  const editor = page.locator('.cm-content').last();
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(PYTHON_INPUT_CODE);

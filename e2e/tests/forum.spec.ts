@@ -3,7 +3,7 @@ import { test, expect } from '../fixtures/test.js';
 test('create a forum thread', async ({ authedPage: page }) => {
   await page.goto('/#/forum');
 
-  await page.getByText('help-python').or(page.getByText('Help Python')).first().click();
+  await page.getByText('Python Help').click();
   await page.waitForLoadState('networkidle');
 
   await page.getByText('+ New Thread').click();

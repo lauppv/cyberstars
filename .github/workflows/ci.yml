@@ -196,7 +196,7 @@ jobs:
         if: failure()
         with:
           name: playwright-report-browser
-          path: e2e/playwright-report/
+          path: playwright-report/
           retention-days: 7
 
   test-e2e-docker:
@@ -240,7 +240,7 @@ jobs:
         if: failure()
         with:
           name: playwright-report-docker
-          path: e2e/playwright-report/
+          path: playwright-report/
           retention-days: 7
 
   build:

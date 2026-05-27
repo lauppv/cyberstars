@@ -9,7 +9,7 @@ int main(void) {
 test('run C printf("hello") → output "hello"', async ({ authedPage: page }) => {
   await page.goto('/#/lesson/c/print');
 
-  const editor = page.locator('.cm-content');
+  const editor = page.locator('.cm-content').last();
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(C_CODE);
