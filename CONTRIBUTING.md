@@ -125,7 +125,7 @@ Important rules:
 1. Fork the repo and create a feature branch from `main`
 2. Keep your branch up to date: `git fetch origin && git rebase origin/main`
 3. Make your changes
-4. Run `npm run typecheck && npm test && npm run lint && npm run dead-code` — all four must pass
+4. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code` — all five must pass (these mirror the CI gates)
 5. Open a pull request with a clear description of what and why
 
 ### Style guide

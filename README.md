@@ -54,24 +54,28 @@ cyberstars/
 └── .github/         # CI workflows
 ```
 
-See [docs/architecture.md](docs/architecture.md) for the full architecture breakdown, API endpoints, and database schema.
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture breakdown, API endpoints, and database schema.
 
 ## Scripts
 
-| Script                  | Description                                         |
-| ----------------------- | --------------------------------------------------- |
-| `npm run dev`           | Start everything (DB setup + Vite + Express)        |
-| `npm test`              | Run test suite                                      |
-| `npm run test:coverage` | Run tests with coverage report                      |
-| `npm run typecheck`     | TypeScript type checking                            |
-| `npm run lint`          | ESLint                                              |
-| `npm run dead-code`     | Find unused files, exports, and dependencies (knip) |
-| `npm run build`         | Production build                                    |
-| `npm run db:studio`     | Open Prisma Studio (DB browser)                     |
+| Script                      | Description                                              |
+| --------------------------- | -------------------------------------------------------- |
+| `npm run dev`               | Start everything (DB setup + Vite + Express)             |
+| `npm test`                  | Run unit suite (Vitest, jsdom)                           |
+| `npm run test:coverage`     | Unit suite + v8 coverage; fails if below 90% on any axis |
+| `npm run test:integration`  | Real-Postgres integration tests (needs `.env.test`)      |
+| `npm run test:e2e:browser`  | Playwright UI flows (auth/forum/support/courses/profile) |
+| `npm run test:e2e:docker`   | Playwright code-execution flows (Python/C/Java/terminal) |
+| `npm run typecheck`         | TypeScript type checking                                 |
+| `npm run lint`              | ESLint                                                   |
+| `npm run format` / `:check` | Prettier write / check                                   |
+| `npm run dead-code`         | Find unused files, exports, and dependencies (knip)      |
+| `npm run build`             | Production build                                         |
+| `npm run db:studio`         | Open Prisma Studio (DB browser)                          |
 
 ## CI
 
-Every push and pull request runs: **lint** → **typecheck** → **test** (with coverage) → **build** — all in parallel. PRs get an automatic coverage report comment.
+Every push and pull request runs ten parallel jobs after a shared `setup`: **format-check**, **lint**, **typecheck**, **test** (with coverage + PR comment), **audit** (`npm audit --audit-level=high`), **dead-code** (knip), **test-integration** (against a Postgres 16 service), **test-e2e-browser** and **test-e2e-docker** (Playwright with sandbox + runtime Docker images), and **build**.
 
 ## Contributing
 
