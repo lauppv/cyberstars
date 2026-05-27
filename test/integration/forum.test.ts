@@ -24,7 +24,7 @@ describe('Forum flow', () => {
     expect(thread.body.title).toBe('How do loops work?');
     expect(thread.body.posts.length).toBe(1);
     expect(thread.body.posts[0].content).toBe('I need help.');
-    expect(thread.body.posts[0].author.name).toBe(name);
+    expect(thread.body.posts[0].authorName).toBe(name);
   });
 
   it('post reply → thread has two posts', async () => {
