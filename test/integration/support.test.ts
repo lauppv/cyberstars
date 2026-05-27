@@ -24,7 +24,7 @@ describe('Support flow', () => {
       .send({ type: 'QUESTION', subject: 'How to?', message: 'First message' })
       .expect(201);
 
-    const ticketId = ticket.body.id;
+    const ticketId = ticket.body.ticketId;
 
     await a
       .post(`/api/support/tickets/${ticketId}/messages`)
@@ -45,7 +45,7 @@ describe('Support flow', () => {
       .expect(201);
 
     await a
-      .put(`/api/support/tickets/${ticket.body.id}/status`)
+      .put(`/api/support/tickets/${ticket.body.ticketId}/status`)
       .send({ status: 'CLOSED' })
       .expect(200);
 

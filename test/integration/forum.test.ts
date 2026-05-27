@@ -17,7 +17,7 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'How do loops work?', content: 'I need help.' })
       .expect(201);
 
-    const threadId = create.body.id;
+    const threadId = create.body.threadId;
     expect(threadId).toBeDefined();
 
     const thread = await a.get(`/api/forum/threads/${threadId}`).expect(200);
@@ -36,7 +36,7 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Question', content: 'Help please' })
       .expect(201);
 
-    const threadId = create.body.id;
+    const threadId = create.body.threadId;
 
     await replier
       .post(`/api/forum/threads/${threadId}/posts`)
@@ -56,7 +56,7 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Test', content: 'Content' })
       .expect(201);
 
-    const thread = await a.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const thread = await a.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     const postId = thread.body.posts[0].id;
 
     const on = await a
@@ -87,12 +87,12 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Del test', content: 'Will delete' })
       .expect(201);
 
-    const thread = await a.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const thread = await a.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     const postId = thread.body.posts[0].id;
 
     await a.delete(`/api/forum/posts/${postId}`).expect(200);
 
-    const after = await a.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const after = await a.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     expect(after.body.posts[0].deleted).toBe(true);
     expect(after.body.posts[0].content).toBe('');
   });
@@ -105,12 +105,12 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Edit test', content: 'Original' })
       .expect(201);
 
-    const thread = await a.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const thread = await a.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     const postId = thread.body.posts[0].id;
 
     await a.put(`/api/forum/posts/${postId}`).send({ content: 'Updated content' }).expect(200);
 
-    const after = await a.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const after = await a.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     expect(after.body.posts[0].content).toBe('Updated content');
     expect(after.body.posts[0].editedByName).toBe(name);
   });
@@ -133,7 +133,7 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Mine', content: 'My post' })
       .expect(201);
 
-    const thread = await author.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const thread = await author.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     const postId = thread.body.posts[0].id;
 
     await other.delete(`/api/forum/posts/${postId}`).expect(403);
@@ -149,14 +149,14 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Reactions', content: 'Like this' })
       .expect(201);
 
-    const thread = await a1.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const thread = await a1.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     const postId = thread.body.posts[0].id;
 
     await a1.post(`/api/forum/posts/${postId}/reactions`).send({ emoji: '👍' }).expect(200);
     await a2.post(`/api/forum/posts/${postId}/reactions`).send({ emoji: '👍' }).expect(200);
     await a3.post(`/api/forum/posts/${postId}/reactions`).send({ emoji: '👍' }).expect(200);
 
-    const after = await a1.get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const after = await a1.get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     const thumbs = after.body.posts[0].reactions.find((r: { emoji: string }) => r.emoji === '👍');
     expect(thumbs.count).toBe(3);
   });
@@ -169,8 +169,8 @@ describe('Forum flow', () => {
       .send({ categorySlug: 'help-python', title: 'Views test', content: 'Content' })
       .expect(201);
 
-    const first = await agent().get(`/api/forum/threads/${create.body.id}`).expect(200);
-    const second = await agent().get(`/api/forum/threads/${create.body.id}`).expect(200);
+    const first = await agent().get(`/api/forum/threads/${create.body.threadId}`).expect(200);
+    const second = await agent().get(`/api/forum/threads/${create.body.threadId}`).expect(200);
     expect(second.body.views).toBeGreaterThan(first.body.views);
   });
 });

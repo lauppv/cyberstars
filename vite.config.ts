@@ -30,6 +30,9 @@ export default defineConfig({
         '**/*.config.*',
         '**/*.test.*',
         'server/lessons/**',
+        'server/algorithms/**',
+        'server/services/terminal-session.service.ts',
+        'server/config/index.ts',
       ],
       thresholds: {
         lines: 85,

@@ -8,7 +8,7 @@ describe('Progress flow', () => {
     await a.post('/api/progress/python/booleans/complete').expect(200);
 
     const progress = await a.get('/api/progress/python').expect(200);
-    const lesson = progress.body.find((l: { lessonSlug: string }) => l.lessonSlug === 'booleans');
+    const lesson = progress.body.lessons.find((l: { slug: string }) => l.slug === 'booleans');
     expect(lesson).toBeDefined();
     expect(lesson.completed).toBe(true);
   });
@@ -20,10 +20,7 @@ describe('Progress flow', () => {
     await a.post('/api/progress/python/booleans/complete').expect(200);
 
     const progress = await a.get('/api/progress/python').expect(200);
-    const matches = progress.body.filter(
-      (l: { lessonSlug: string }) => l.lessonSlug === 'booleans',
-    );
-    expect(matches.length).toBe(1);
+    expect(progress.body.completed).toBe(1);
   });
 
   it('save code → retrieve it', async () => {
@@ -42,7 +39,7 @@ describe('Progress flow', () => {
     await userA.post('/api/progress/python/booleans/complete').expect(200);
 
     const progressB = await userB.get('/api/progress/python').expect(200);
-    expect(progressB.body.length).toBe(0);
+    expect(progressB.body.completed).toBe(0);
   });
 
   it('track access updates last accessed', async () => {
@@ -51,7 +48,8 @@ describe('Progress flow', () => {
     await a.post('/api/progress/python/booleans/access').expect(200);
 
     const progress = await a.get('/api/progress/python').expect(200);
-    const lesson = progress.body.find((l: { lessonSlug: string }) => l.lessonSlug === 'booleans');
+    const lesson = progress.body.lessons.find((l: { slug: string }) => l.slug === 'booleans');
     expect(lesson).toBeDefined();
+    expect(lesson.lastAccessedAt).not.toBeNull();
   });
 });
