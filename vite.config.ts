@@ -1,12 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss()
-  ],
+  plugins: [react(), tailwindcss()],
   server: {
     port: 5173,
     proxy: {
@@ -17,6 +14,7 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
+    exclude: ['test/integration/**', 'node_modules/**'],
     setupFiles: ['./test/setup.ts'],
     coverage: {
       provider: 'v8',
@@ -27,7 +25,6 @@ export default defineConfig({
         'dist/',
         'coverage/',
         'prisma/',
-        'design/',
         'test/',
         '**/*.d.ts',
         '**/*.config.*',
@@ -35,11 +32,11 @@ export default defineConfig({
         'server/lessons/**',
       ],
       thresholds: {
-        lines: 70,
-        branches: 50,
-        functions: 60,
-        statements: 70,
+        lines: 85,
+        branches: 70,
+        functions: 80,
+        statements: 85,
       },
     },
   },
-})
+});
