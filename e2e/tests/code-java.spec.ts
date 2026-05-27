@@ -14,10 +14,7 @@ test('run Java System.out.println("hello") → output "hello"', async ({ authedP
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(JAVA_CODE);
 
-  await page.getByRole('button', { name: '▶ Run' }).click();
+  await page.getByRole('button', { name: '▶ Run' }).last().click();
 
-  await expect(page.locator('[class*="CodeOutput"], [class*="output"]').first()).toContainText(
-    'hello',
-    { timeout: 30_000 },
-  );
+  await expect(page.getByTestId('code-output').last()).toContainText('hello', { timeout: 30_000 });
 });

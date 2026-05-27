@@ -10,7 +10,7 @@ test.beforeEach(async () => {
 test('signup via UI → redirects to welcome page', async ({ page }) => {
   await page.goto('/#/getstarted');
 
-  await page.getByRole('button', { name: 'Sign Up' }).click();
+  await page.getByRole('button', { name: 'Sign Up', exact: true }).click();
 
   await page.getByPlaceholder('Choose a username').fill('TestUser');
   await page.getByPlaceholder('you@example.com').fill('signup-e2e@test.com');

@@ -15,5 +15,7 @@ test('create a forum thread', async ({ authedPage: page }) => {
 
   await page.getByRole('button', { name: 'Create Thread' }).click();
 
-  await expect(page.getByText('E2E Test Thread')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByRole('heading', { name: 'E2E Test Thread' })).toBeVisible({
+    timeout: 10_000,
+  });
 });

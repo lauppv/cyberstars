@@ -11,9 +11,9 @@ test('WebSocket stdin: Python input() receives user input', async ({ authedPage:
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(PYTHON_INPUT_CODE);
 
-  await page.getByRole('button', { name: '▶ Run' }).click();
+  await page.getByRole('button', { name: '▶ Run' }).last().click();
 
-  const outputArea = page.locator('[class*="CodeOutput"], [class*="output"]').first();
+  const outputArea = page.getByTestId('code-output').last();
   await expect(outputArea).toContainText('Name?', { timeout: 30_000 });
 
   const stdinInput = outputArea.locator('input[type="text"]');
