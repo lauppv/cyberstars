@@ -102,23 +102,28 @@ export function useGamification(): Gamification {
 
   const [newBadge, setNewBadge] = useState<BadgeDef | null>(null);
   const prevEarnedRef = useRef<Set<string>>(new Set());
+  const initializedRef = useRef(false);
 
   useEffect(() => {
+    if (isLoading) return;
     const earnedKeys = new Set(
       badges.filter((b) => b.earned).map((b) => `${b.courseKey}-${b.level}`),
     );
+    if (!initializedRef.current) {
+      prevEarnedRef.current = earnedKeys;
+      initializedRef.current = true;
+      return;
+    }
     const prev = prevEarnedRef.current;
-    if (prev.size > 0) {
-      for (const key of earnedKeys) {
-        if (!prev.has(key)) {
-          const badge = badges.find((b) => `${b.courseKey}-${b.level}` === key);
-          if (badge) setTimeout(() => setNewBadge(badge), 0);
-          break;
-        }
+    for (const key of earnedKeys) {
+      if (!prev.has(key)) {
+        const badge = badges.find((b) => `${b.courseKey}-${b.level}` === key);
+        if (badge) setTimeout(() => setNewBadge(badge), 0);
+        break;
       }
     }
     prevEarnedRef.current = earnedKeys;
-  }, [badges]);
+  }, [badges, isLoading]);
 
   const dismissNewBadge = useCallback(() => setNewBadge(null), []);
 

@@ -5,25 +5,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev           # Start client (Vite :5173) + server (:5000) + db setup concurrently
-npm run dev:client    # Vite dev server only
-npm run dev:server    # Express server with tsx watch
-npm run build         # Production build to /dist
-npm test              # Run Vitest test suite once
-npm run test:watch    # Vitest in watch mode
-npm run test:coverage # Run tests with coverage report (v8, outputs to ./coverage/)
-npm run typecheck     # tsc --noEmit
-npm run lint          # ESLint
-npm run dead-code     # knip — find unused files, exports, and dependencies
-npm run db:prepare    # Prisma generate + migrate + seed
-npm run db:migrate    # Run pending migrations (prompts for name)
-npm run db:deploy     # Apply migrations without prompts (CI/prod)
-npm run db:seed       # Seed curriculum and lessons into PostgreSQL
-npm run db:studio     # Open Prisma Studio GUI
-npx vitest run path   # Run a single test file (substring match)
+npm run dev               # Start client (Vite :5173) + server (:5000) + db setup concurrently
+npm run dev:client        # Vite dev server only
+npm run dev:server        # Express server with tsx watch
+npm run build             # Production build to /dist
+npm test                  # Run Vitest unit suite once (jsdom)
+npm run test:watch        # Vitest in watch mode
+npm run test:coverage     # Vitest + v8 coverage (./coverage/); fails if below thresholds
+npm run test:integration  # Real-Postgres integration tests (test/integration/, requires .env.test)
+npm run test:e2e          # Playwright (both projects: browser + docker)
+npm run test:e2e:browser  # Playwright browser-only (auth/forum/support/courses/profile)
+npm run test:e2e:docker   # Playwright docker runners (Python/C/Java/terminal/ws-stdin)
+npm run test:e2e:ui       # Playwright UI mode
+npm run typecheck         # tsc --noEmit
+npm run lint              # ESLint
+npm run format            # Prettier write
+npm run format:check      # Prettier check (CI-equivalent)
+npm run dead-code         # knip — find unused files, exports, and dependencies
+npm run db:prepare        # Prisma generate + migrate + seed
+npm run db:migrate        # Run pending migrations (prompts for name)
+npm run db:deploy         # Apply migrations without prompts (CI/prod)
+npm run db:seed           # Seed curriculum and lessons into PostgreSQL
+npm run db:studio         # Open Prisma Studio GUI
+npx vitest run path       # Run a single test file (substring match)
 ```
 
-CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parallel jobs for lint, typecheck, test (with coverage + PR comment), dead-code (knip), and build. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`). Node version is pinned in `.node-version` (currently 24) — CI reads it via `node-version-file`. Keep `.node-version`, `package.json` engines, and your local Node version in sync to avoid lock file mismatches between local and CI.
+CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): a `setup` job warms `node_modules`, then **10 parallel jobs**: `format-check`, `lint`, `typecheck`, `test` (with coverage + PR comment), `audit` (`npm audit --audit-level=high`), `dead-code` (knip), `test-integration` (spins up a Postgres 16 service), `test-e2e-browser` + `test-e2e-docker` (Playwright with required Docker images pre-pulled), and `build`. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`); integration and E2E live in separate top-level dirs and are excluded from the unit run via `vite.config.ts`. Node version is pinned in `.node-version` (currently 24) — CI reads it via `node-version-file`. Keep `.node-version`, `package.json` engines, and your local Node version in sync to avoid lock file mismatches between local and CI. Prettier check is enforced in CI; before committing larger changes prefer `npm run format` over `:check` so the working tree is normalised.
 
 ## Architecture
 
@@ -92,8 +99,11 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Server unit tests on services use `vi.mock` to isolate from env/DB dependencies (see `lesson.service.test.ts`)
 - Endpoint smoke tests (`server/app.test.ts`) use supertest to verify all routes respond correctly (200 for public, 401 for auth-protected, 404 for unknown). Mock PrismaClient and repositories to avoid needing a real DB
 - Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`. Runs in CI; must pass before merge
-- Coverage thresholds enforced in `vite.config.ts`: 85% statements/lines, 70% branches, 80% functions — `npm run test:coverage` fails if below
+- Coverage thresholds enforced in `vite.config.ts`: **90% on all metrics** (lines/statements/functions/branches) — `npm run test:coverage` fails if below
 - Code formatting via Prettier — config in `.prettierrc`, check with `npm run format:check`, fix with `npm run format`
+- **Integration tests** (`test/integration/`) run against a real PostgreSQL DB (config in `vitest.integration.config.ts`). `global-setup.ts` runs `prisma migrate deploy` + seed once; per-file `setup.ts` truncates app tables before each test and inserts a Sentinel ADMIN so `createAuthenticatedAgent()` returns regular USERs (first-registered-user auto-promotes to ADMIN). Tests are serial (`fileParallelism: false`) to avoid DB contention. Requires `.env.test`
+- **E2E tests** (`e2e/`) use Playwright with two projects: `browser` (auth/forum/support/courses/profile via `npm run dev` webserver) and `docker` (code execution paths — needs all runner Docker images plus `cyberstars-linux-sandbox` built locally). `e2e/global-setup.ts` migrates+seeds; `e2e/fixtures/test.ts` provides an `authedPage` fixture that resets the DB and signs up a fresh user via the API before each test. The webserver autostarts the dev stack when no server is running on :5173
+- CodeMirror auto-pairs `{`, `(`, `[`, `"`. In E2E tests, multi-line code typed with `keyboard.type` may produce duplicate `}` — keep test code on a single line so the typed `}` skips over the auto-paired one
 
 ### Production (`cyber-stars.org`)
 

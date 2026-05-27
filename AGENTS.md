@@ -13,6 +13,7 @@ Instructions for AI contributors (Claude, Copilot, Cursor, etc.) working on this
    npm run lint
    npm run typecheck
    npm test
+   npm run dead-code
    ```
 5. **No speculative features** — don't add abstractions, config options, or error handling beyond what's asked.
 6. **Keep commits atomic** — one logical change per commit, with a clear message.
