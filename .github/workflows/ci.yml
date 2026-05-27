@@ -155,7 +155,7 @@ jobs:
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
       - run: npx prisma migrate deploy
       - run: npx tsx prisma/seed.ts
-      - run: npx vitest run -c vitest.integration.config.ts
+      - run: npm run test:integration
 
   build:
     runs-on: ubuntu-latest
