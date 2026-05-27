@@ -609,3 +609,126 @@ describe('updateUserRole', () => {
     expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
 });
+
+describe('createThread validation', () => {
+  it('returns 400 when categorySlug is missing', async () => {
+    const next = vi.fn();
+    await createThread(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { title: 'T', content: 'C' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('returns 400 when title is whitespace only', async () => {
+    const next = vi.fn();
+    await createThread(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { categorySlug: 'general', title: '   ', content: 'C' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('returns 400 when content is whitespace only', async () => {
+    const next = vi.fn();
+    await createThread(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { categorySlug: 'general', title: 'T', content: '   ' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+});
+
+describe('deletePost authorization', () => {
+  it('returns 404 for missing post', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await deletePost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
+  it('returns 403 when user is neither owner nor moderator', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      id: 1,
+      authorId: 99,
+      author: { role: 'USER' },
+    });
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await deletePost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('returns 400 for non-numeric postId', async () => {
+    const next = vi.fn();
+    await deletePost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: 'abc' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+});
+
+describe('deleteThread authorization', () => {
+  it('returns 403 when user is neither owner nor moderator', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue({
+      id: 1,
+      authorId: 99,
+      author: { role: 'USER' },
+    });
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await deleteThread(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { threadId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('returns 400 for non-numeric threadId', async () => {
+    const next = vi.fn();
+    await deleteThread(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { threadId: 'abc' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+});

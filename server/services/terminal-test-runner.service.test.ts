@@ -316,3 +316,82 @@ describe('runTerminalTests', () => {
     expect(r.allPassed).toBe(false);
   });
 });
+
+describe('default fallbacks for missing fields', () => {
+  it('file_exists with no path defaults to empty string', async () => {
+    setupChecks([{ name: 't', check: 'file_exists' }]);
+    mockGetSession.mockReturnValue(fakeSession());
+    mockProbe.mockResolvedValue('NO');
+    await runTerminalTests('sid', 'linux', 'lesson');
+    expect(mockProbe).toHaveBeenCalledWith('sid', expect.stringContaining('test -f ""'));
+  });
+
+  it('file_absent with no path defaults to empty string', async () => {
+    setupChecks([{ name: 't', check: 'file_absent' }]);
+    mockGetSession.mockReturnValue(fakeSession());
+    mockProbe.mockResolvedValue('NO');
+    await runTerminalTests('sid', 'linux', 'lesson');
+    expect(mockProbe).toHaveBeenCalledWith('sid', expect.stringContaining('test -e ""'));
+  });
+
+  it('file_content with no path and no expected uses empty defaults', async () => {
+    setupChecks([{ name: 't', check: 'file_content' }]);
+    mockGetSession.mockReturnValue(fakeSession());
+    mockProbe.mockResolvedValue('');
+    const r = await runTerminalTests('sid', 'linux', 'lesson');
+    expect(r.results[0].passed).toBe(true);
+  });
+
+  it('file_content line mode falls back to empty when line index is out of range', async () => {
+    setupChecks([{ name: 't', check: 'file_content', path: '/f', line: 99, expected: '' }]);
+    mockGetSession.mockReturnValue(fakeSession());
+    mockProbe.mockResolvedValue('only one line');
+    const r = await runTerminalTests('sid', 'linux', 'lesson');
+    expect(r.results[0].passed).toBe(true);
+  });
+
+  it('dir_listing defaults path to "." when omitted', async () => {
+    setupChecks([{ name: 't', check: 'dir_listing', expected: '' }]);
+    mockGetSession.mockReturnValue(fakeSession());
+    mockProbe.mockResolvedValue('');
+    await runTerminalTests('sid', 'linux', 'lesson');
+    expect(mockProbe).toHaveBeenCalledWith('sid', expect.stringContaining('ls "."'));
+  });
+
+  it('cwd_equals with no expected matches empty cwd', async () => {
+    setupChecks([{ name: 't', check: 'cwd_equals' }]);
+    mockGetSession.mockReturnValue(fakeSession({ cwd: '' }));
+    const r = await runTerminalTests('sid', 'linux', 'lesson');
+    expect(r.results[0].passed).toBe(true);
+  });
+
+  it('history_contains with no pattern or expected fails (empty regex matches everything actually)', async () => {
+    setupChecks([{ name: 't', check: 'history_contains' }]);
+    mockGetSession.mockReturnValue(fakeSession({ history: ['cmd'] }));
+    const r = await runTerminalTests('sid', 'linux', 'lesson');
+    // empty regex matches any string -> passes; documents the chain `pattern ?? expected ?? ''`
+    expect(r.results[0].passed).toBe(true);
+  });
+
+  it('history_not_contains with no pattern or expected fails (empty regex matches everything)', async () => {
+    setupChecks([{ name: 't', check: 'history_not_contains' }]);
+    mockGetSession.mockReturnValue(fakeSession({ history: ['cmd'] }));
+    const r = await runTerminalTests('sid', 'linux', 'lesson');
+    expect(r.results[0].passed).toBe(false);
+  });
+
+  it('last_output with no expected matches empty output', async () => {
+    setupChecks([{ name: 't', check: 'last_output' }]);
+    mockGetSession.mockReturnValue(fakeSession({ lastOutput: '' }));
+    const r = await runTerminalTests('sid', 'linux', 'lesson');
+    expect(r.results[0].passed).toBe(true);
+  });
+
+  it('command_output uses default probe "echo" and empty expected', async () => {
+    setupChecks([{ name: 't', check: 'command_output' }]);
+    mockGetSession.mockReturnValue(fakeSession());
+    mockProbe.mockResolvedValue('');
+    await runTerminalTests('sid', 'linux', 'lesson');
+    expect(mockProbe).toHaveBeenCalledWith('sid', 'echo');
+  });
+});

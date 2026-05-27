@@ -81,4 +81,84 @@ describe('apiClient', () => {
       expect.objectContaining({ method: 'DELETE' }),
     );
   });
+
+  it('PATCH sends body', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+    await api.patch('/api/test', { bio: 'hi' });
+    expect(mockFetch).toHaveBeenCalledWith(
+      '/api/test',
+      expect.objectContaining({ method: 'PATCH', body: '{"bio":"hi"}' }),
+    );
+  });
+
+  it('POST with no body sends undefined body', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+    await api.post('/api/test');
+    expect(mockFetch).toHaveBeenCalledWith(
+      '/api/test',
+      expect.objectContaining({ method: 'POST', body: undefined }),
+    );
+  });
+
+  it('uses data.message when data.error is missing', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ message: 'Validation failed' }, 422));
+    try {
+      await api.get('/api/x');
+      expect.unreachable();
+    } catch (e) {
+      expect((e as ApiClientError).message).toBe('Validation failed');
+    }
+  });
+
+  it('falls back to default message when error body has neither error nor message', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ unrelated: 'field' }, 500));
+    try {
+      await api.get('/api/x');
+      expect.unreachable();
+    } catch (e) {
+      expect((e as ApiClientError).message).toBe('Something went wrong');
+    }
+  });
+
+  it('returns text body when content-type is not JSON', async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      headers: new Headers({ 'content-type': 'text/plain' }),
+      json: () => Promise.reject(new Error('not json')),
+      text: () => Promise.resolve('plain text body'),
+    });
+    const result = await api.get<string>('/api/text');
+    expect(result).toBe('plain text body');
+  });
+
+  it('returns text body when content-type header is missing', async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      headers: new Headers(),
+      json: () => Promise.reject(new Error('not json')),
+      text: () => Promise.resolve('raw'),
+    });
+    const result = await api.get<string>('/api/raw');
+    expect(result).toBe('raw');
+  });
+
+  it('PUT with no body sends undefined body', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+    await api.put('/api/test');
+    expect(mockFetch).toHaveBeenCalledWith(
+      '/api/test',
+      expect.objectContaining({ method: 'PUT', body: undefined }),
+    );
+  });
+
+  it('PATCH with no body sends undefined body', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+    await api.patch('/api/test');
+    expect(mockFetch).toHaveBeenCalledWith(
+      '/api/test',
+      expect.objectContaining({ method: 'PATCH', body: undefined }),
+    );
+  });
 });

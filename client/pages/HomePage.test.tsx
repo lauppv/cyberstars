@@ -243,4 +243,139 @@ describe('HomePage', () => {
     renderPage();
     expect(screen.getByText('Course Milestones')).toBeDefined();
   });
+
+  it('milestone button for in-progress courses navigates to /courses?open=', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          completed: 1,
+          total: 2,
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: true,
+              completedAt: '2025-01-01T00:00:00Z',
+              lastAccessedAt: '2025-01-01T00:00:00Z',
+            },
+            {
+              slug: 'booleans',
+              title: 'Booleans',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: null,
+            },
+          ],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    const section = screen.getByText('Course Milestones').closest('div')!.parentElement!;
+    const btn = section.querySelector('button')!;
+    fireEvent.click(btn);
+    expect(mockNavigate).toHaveBeenCalledWith('/courses?open=python');
+  });
+
+  it('milestone button for not-started courses navigates to /courses?open=', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    const cCourse = {
+      key: 'c',
+      title: 'C',
+      description: 'Learn C',
+      lessons: [{ slug: 'hello', title: 'Hello', sortOrder: 1 }],
+    };
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse, cCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          completed: 1,
+          total: 2,
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: true,
+              completedAt: '2025-01-01T00:00:00Z',
+              lastAccessedAt: '2025-01-01T00:00:00Z',
+            },
+          ],
+        },
+        c: {
+          courseKey: 'c',
+          completed: 0,
+          total: 1,
+          lessons: [
+            { slug: 'hello', title: 'Hello', completed: false, completedAt: null, lastAccessedAt: null },
+          ],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    const section = screen.getByText('Course Milestones').closest('div')!.parentElement!;
+    const buttons = section.querySelectorAll('button');
+    // Last button is the not-started course (rendered after active)
+    fireEvent.click(buttons[buttons.length - 1]);
+    expect(mockNavigate).toHaveBeenCalledWith(expect.stringMatching(/^\/courses\?open=/));
+  });
+
+  it('renders heatmap activity for dates with multiple completions (countToLevel high branch)', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    // 4+ completions on the same day push countToLevel into its `return 3` branch
+    const sameDay = new Date().toISOString();
+    mockUseCurriculum.mockReturnValue({
+      courses: [
+        {
+          key: 'python',
+          title: 'Python',
+          description: 'Learn Python',
+          lessons: Array.from({ length: 5 }, (_, i) => ({
+            slug: `l${i}`,
+            title: `L${i}`,
+            sortOrder: i,
+          })),
+        },
+      ],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          completed: 5,
+          total: 5,
+          lessons: Array.from({ length: 5 }, (_, i) => ({
+            slug: `l${i}`,
+            title: `L${i}`,
+            completed: true,
+            completedAt: sameDay,
+            lastAccessedAt: sameDay,
+          })),
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getByText('Activity')).toBeDefined();
+  });
 });

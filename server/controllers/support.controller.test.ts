@@ -254,4 +254,58 @@ describe('addTicketMessage', () => {
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
+
+  it('returns 403 when non-admin tries to reply to someone else’s ticket', async () => {
+    mockSupportService.findById.mockResolvedValue({ id: 1, userId: 99 });
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await addTicketMessage(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { id: '1' } as Record<string, string>,
+        body: { message: 'Help!' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('returns 400 for non-numeric ticket id', async () => {
+    const next = vi.fn();
+    await addTicketMessage(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { id: 'abc' } as Record<string, string>,
+        body: { message: 'Help!' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+});
+
+describe('error forwarding via next()', () => {
+  it('createTicket forwards service errors to next()', async () => {
+    mockSupportService.create.mockRejectedValue(new Error('DB down'));
+    const next = vi.fn();
+    await createTicket(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { type: 'BUG', subject: 'X', message: 'Y' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect(next).toHaveBeenCalled();
+    expect((next.mock.calls[0][0] as Error).message).toBe('DB down');
+  });
+
+  it('getMyTickets forwards service errors to next()', async () => {
+    mockSupportService.findByUser.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await getMyTickets(mockReq({ user: { id: 1 } as Request['user'] }), mockRes(), next);
+    expect((next.mock.calls[0][0] as Error).message).toBe('boom');
+  });
 });

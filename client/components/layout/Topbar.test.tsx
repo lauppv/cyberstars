@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -8,17 +8,23 @@ vi.mock('react-router-dom', async (importOriginal) => {
   return {
     ...actual,
     useNavigate: () => mockNavigate,
+    useLocation: () => mockLocation,
   };
 });
 
+let mockLocation = { pathname: '/' };
+
 const mockLogout = vi.fn();
+let mockAuthState: {
+  isLoggedIn: boolean;
+  user: { name: string; email: string; avatarUrl: string | null } | null;
+} = {
+  isLoggedIn: true,
+  user: { name: 'Test', email: 'test@test.com', avatarUrl: null },
+};
 
 vi.mock('../../context/AuthContext', () => ({
-  useAuth: () => ({
-    isLoggedIn: true,
-    user: { name: 'Test', email: 'test@test.com', avatarUrl: null },
-    logout: mockLogout,
-  }),
+  useAuth: () => ({ ...mockAuthState, logout: mockLogout }),
 }));
 
 import { Topbar } from './Topbar';
@@ -30,6 +36,14 @@ function renderTopbar(props = {}) {
     </MemoryRouter>,
   );
 }
+
+beforeEach(() => {
+  mockLocation = { pathname: '/' };
+  mockAuthState = {
+    isLoggedIn: true,
+    user: { name: 'Test', email: 'test@test.com', avatarUrl: null },
+  };
+});
 
 describe('Topbar', () => {
   it('renders the logo and nav items', () => {
@@ -87,5 +101,103 @@ describe('Topbar', () => {
     renderTopbar();
     fireEvent.click(screen.getByText('CyberStars'));
     expect(mockNavigate).toHaveBeenCalledWith('/');
+  });
+
+  it('navigates from menu items: Support, Rules, Welcome Tour, and Sign out', async () => {
+    mockLogout.mockResolvedValue(undefined);
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+
+    fireEvent.click(screen.getByText('Support'));
+    expect(mockNavigate).toHaveBeenCalledWith('/support');
+
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.click(screen.getByText('Rules'));
+    expect(mockNavigate).toHaveBeenCalledWith('/rules');
+
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.click(screen.getByText('Welcome Tour'));
+    expect(mockNavigate).toHaveBeenCalledWith('/welcome');
+
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.click(screen.getByText('Sign out'));
+    // logout() returns a promise; wait a microtask for navigate('/getstarted') to fire
+    await Promise.resolve();
+    expect(mockLogout).toHaveBeenCalled();
+    expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
+  });
+
+  it('shows Sign in button when not logged in', () => {
+    mockAuthState = { isLoggedIn: false, user: null };
+    renderTopbar();
+    const signIn = screen.getByText('Sign in');
+    fireEvent.click(signIn);
+    expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
+  });
+
+  it('renders avatar image when user has avatarUrl', () => {
+    mockAuthState = {
+      isLoggedIn: true,
+      user: { name: 'Test', email: 'test@test.com', avatarUrl: '/uploads/a.png' },
+    };
+    renderTopbar();
+    const img = document.querySelector('img[src="/uploads/a.png"]');
+    expect(img).not.toBeNull();
+  });
+
+  it('closes menu when clicking outside', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    fireEvent.mouseDown(document.body);
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+
+  it('marks Algorithms active on /algorithms and /lesson/algo-* paths', () => {
+    mockLocation = { pathname: '/lesson/algo-python/sum' };
+    renderTopbar();
+    const algBtn = screen.getByText('Algorithms');
+    expect(algBtn.className).toMatch(/text-\[var\(--accent\)\]/);
+  });
+
+  it('marks Courses active on /courses paths', () => {
+    mockLocation = { pathname: '/courses/python' };
+    renderTopbar();
+    const btn = screen.getByText('Courses');
+    expect(btn.className).toMatch(/text-\[var\(--accent\)\]/);
+  });
+
+  it('navigates via nav buttons', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByText('Forum'));
+    expect(mockNavigate).toHaveBeenCalledWith('/forum');
+  });
+
+  it('breadcrumb course click navigates to courseHref when provided', () => {
+    renderTopbar({ breadcrumb: { course: 'Python', courseHref: '/courses/python' } });
+    fireEvent.click(screen.getByText('Python'));
+    expect(mockNavigate).toHaveBeenCalledWith('/courses/python');
+  });
+
+  it('breadcrumb course click falls back to /courses without courseHref', () => {
+    renderTopbar({ breadcrumb: { course: 'Python' } });
+    fireEvent.click(screen.getByText('Python'));
+    expect(mockNavigate).toHaveBeenCalledWith('/courses');
+  });
+
+  it('sidebar toggle arrow flips with sidebarOpen prop', () => {
+    const { rerender } = renderTopbar({
+      showSidebarToggle: true,
+      sidebarOpen: true,
+      onSidebarToggle: vi.fn(),
+    });
+    expect(screen.getByLabelText('Toggle sidebar').textContent).toBe('◀');
+
+    rerender(
+      <MemoryRouter>
+        <Topbar showSidebarToggle sidebarOpen={false} onSidebarToggle={vi.fn()} />
+      </MemoryRouter>,
+    );
+    expect(screen.getByLabelText('Toggle sidebar').textContent).toBe('▶');
   });
 });

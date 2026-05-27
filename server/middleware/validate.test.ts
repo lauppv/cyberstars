@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 import { validateBody } from './validate.js';
 import type { Request, Response, NextFunction } from 'express';
 
@@ -38,5 +38,49 @@ describe('validateBody', () => {
     const { res, next } = callMiddleware({});
     expect(next).not.toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(400);
+  });
+
+  it('falls back to generic error message when ZodError has no issues', () => {
+    const throwingSchema = {
+      parse: () => {
+        throw new ZodError([]);
+      },
+    } as unknown as Parameters<typeof validateBody>[0];
+
+    const req = { body: {} } as Request;
+    const res = {
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn().mockReturnThis(),
+    } as unknown as Response;
+    const next = vi.fn() as unknown as NextFunction;
+
+    validateBody(throwingSchema)(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith(
+      expect.objectContaining({ error: 'Invalid request body' }),
+    );
+  });
+
+  it('forwards non-ZodError to next() instead of responding', () => {
+    const boom = new Error('something else broke');
+    const throwingSchema = {
+      parse: () => {
+        throw boom;
+      },
+    } as unknown as Parameters<typeof validateBody>[0];
+
+    const req = { body: {} } as Request;
+    const res = {
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn().mockReturnThis(),
+    } as unknown as Response;
+    const next = vi.fn() as unknown as NextFunction;
+
+    validateBody(throwingSchema)(req, res, next);
+
+    expect(res.status).not.toHaveBeenCalled();
+    expect(res.json).not.toHaveBeenCalled();
+    expect(next).toHaveBeenCalledWith(boom);
   });
 });

@@ -126,6 +126,28 @@ describe('PATCH /api/profile', () => {
     expect(res.status).toBe(200);
     expect(mockUserRepo.updateProfile.mock.calls[0][1].bio).toHaveLength(200);
   });
+
+  it('clears status and expiresAt when status is empty string', async () => {
+    const res = await request(app)
+      .patch('/api/profile')
+      .set('Cookie', `token=${token}`)
+      .send({ status: '' });
+
+    expect(res.status).toBe(200);
+    const call = mockUserRepo.updateProfile.mock.calls[0];
+    expect(call[1].status).toBeNull();
+    expect(call[1].statusExpiresAt).toBeNull();
+  });
+
+  it('forwards repository errors to the error handler', async () => {
+    mockUserRepo.updateProfile.mockRejectedValueOnce(new Error('DB down'));
+    const res = await request(app)
+      .patch('/api/profile')
+      .set('Cookie', `token=${token}`)
+      .send({ bio: 'hi' });
+
+    expect(res.status).toBe(500);
+  });
 });
 
 describe('POST /api/profile/avatar', () => {
@@ -160,6 +182,22 @@ describe('POST /api/profile/avatar', () => {
       .attach('avatar', Buffer.from('fakepdf'), 'test.pdf');
 
     expect(res.status).toBe(400);
+  });
+
+  it('replaces existing avatar when user already has one', async () => {
+    mockFileType.mockResolvedValue({ mime: 'image/png', ext: 'png' } as never);
+    mockUserRepo.findById.mockResolvedValue({ avatarUrl: '/uploads/avatars/old.png' });
+
+    const res = await request(app)
+      .post('/api/profile/avatar')
+      .set('Cookie', `token=${token}`)
+      .attach('avatar', Buffer.from('fakepng'), 'test.png');
+
+    expect(res.status).toBe(200);
+    expect(mockUserRepo.updateProfile).toHaveBeenCalledWith(
+      1,
+      expect.objectContaining({ avatarUrl: expect.stringContaining('/uploads/avatars/') }),
+    );
   });
 });
 

@@ -58,4 +58,13 @@ describe('execute', () => {
     const result = await execute('', 'python');
     expect(result).toBe('No output.');
   });
+
+  it("returns 'Error reading output file.' when fs write fails", async () => {
+    mockMkdir.mockResolvedValue(undefined);
+    mockWriteFile.mockRejectedValue(new Error('disk full'));
+    mockRm.mockResolvedValue(undefined);
+
+    const result = await execute('code', 'python');
+    expect(result).toBe('Error reading output file.');
+  });
 });

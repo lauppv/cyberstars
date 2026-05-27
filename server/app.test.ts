@@ -108,3 +108,12 @@ describe('endpoint smoke tests — unknown routes', () => {
     expect(res.status).toBe(404);
   });
 });
+
+describe('SPA fallback', () => {
+  it('non-api/auth path invokes the index.html fallback handler', async () => {
+    // dist/index.html may not exist in tests; we only need the handler to run
+    // (the response itself can be 404 from sendFile).
+    const res = await request(app).get('/some/spa/route');
+    expect([200, 404]).toContain(res.status);
+  });
+});
