@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import type { TerminalLine } from "../../hooks/useTerminalSession";
-import type { TerminalSubmitResult } from "../../services/terminalService";
+import { useState, useRef, useEffect, useCallback } from 'react';
+import type { TerminalLine } from '../../hooks/useTerminalSession';
+import type { TerminalSubmitResult } from '../../services/terminalService';
 
 interface Props {
   lines: TerminalLine[];
@@ -25,7 +25,7 @@ export function TerminalPanel({
   onSubmit,
   onReset,
 }: Props) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -50,30 +50,30 @@ export function TerminalPanel({
       if (!cmd || isExecuting) return;
       setHistory((h) => [...h, cmd]);
       setHistoryIdx(-1);
-      setInput("");
+      setInput('');
       onExecute(cmd);
     },
-    [input, isExecuting, onExecute]
+    [input, isExecuting, onExecute],
   );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === "ArrowUp") {
+      if (e.key === 'ArrowUp') {
         e.preventDefault();
         const newIdx = historyIdx < history.length - 1 ? historyIdx + 1 : historyIdx;
         setHistoryIdx(newIdx);
-        setInput(history[history.length - 1 - newIdx] ?? "");
-      } else if (e.key === "ArrowDown") {
+        setInput(history[history.length - 1 - newIdx] ?? '');
+      } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         const newIdx = historyIdx > 0 ? historyIdx - 1 : -1;
         setHistoryIdx(newIdx);
-        setInput(newIdx === -1 ? "" : history[history.length - 1 - newIdx] ?? "");
+        setInput(newIdx === -1 ? '' : (history[history.length - 1 - newIdx] ?? ''));
       }
     },
-    [history, historyIdx]
+    [history, historyIdx],
   );
 
-  const prompt = `student@sandbox:${cwd.replace("/home/student", "~")}$`;
+  const prompt = `student@sandbox:${cwd.replace('/home/student', '~')}$`;
 
   return (
     <div className="flex flex-col h-full">
@@ -98,7 +98,7 @@ export function TerminalPanel({
       >
         {lines.map((line, i) => (
           <div key={i} className={lineClass(line.type)}>
-            {line.type === "input" && (
+            {line.type === 'input' && (
               <span className="text-[#7EE787]">{line.prompt ?? prompt} </span>
             )}
             <span className="whitespace-pre-wrap">{line.text}</span>
@@ -121,9 +121,7 @@ export function TerminalPanel({
           </form>
         )}
 
-        {!isReady && (
-          <div className="text-[var(--text3)] animate-pulse">Starting sandbox...</div>
-        )}
+        {!isReady && <div className="text-[var(--text3)] animate-pulse">Starting sandbox...</div>}
       </div>
 
       <div className="p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)]">
@@ -133,11 +131,11 @@ export function TerminalPanel({
             disabled={isSubmitting || !isReady}
             className={`px-4 py-1.5 rounded-[var(--radius-sm)] text-[13px] font-semibold transition cursor-pointer disabled:opacity-50 ${
               submitResult?.allPassed
-                ? "bg-[var(--success)]/20 border border-[var(--success)]/40 text-[var(--success)]"
-                : "bg-[var(--accent)] text-white hover:brightness-110"
+                ? 'bg-[var(--success)]/20 border border-[var(--success)]/40 text-[var(--success)]'
+                : 'bg-[var(--accent)] text-white hover:brightness-110'
             }`}
           >
-            {isSubmitting ? "Checking..." : submitResult?.allPassed ? "✓ All Passed" : "Check"}
+            {isSubmitting ? 'Checking...' : submitResult?.allPassed ? '✓ All Passed' : 'Check'}
           </button>
         </div>
 
@@ -148,11 +146,11 @@ export function TerminalPanel({
                 key={i}
                 className={`flex items-center gap-2 text-[12px] px-2 py-1 rounded ${
                   r.passed
-                    ? "bg-[var(--success)]/10 text-[var(--success)]"
-                    : "bg-[var(--error)]/10 text-[var(--error)]"
+                    ? 'bg-[var(--success)]/10 text-[var(--success)]'
+                    : 'bg-[var(--error)]/10 text-[var(--error)]'
                 }`}
               >
-                <span>{r.passed ? "✓" : "✗"}</span>
+                <span>{r.passed ? '✓' : '✗'}</span>
                 <span>{r.name}</span>
               </div>
             ))}
@@ -163,13 +161,13 @@ export function TerminalPanel({
   );
 }
 
-function lineClass(type: TerminalLine["type"]): string {
+function lineClass(type: TerminalLine['type']): string {
   switch (type) {
-    case "system":
-      return "text-[var(--accent)] mb-2";
-    case "output":
-      return "text-[var(--text)] mb-0.5";
-    case "input":
-      return "text-[var(--text)] mb-0.5";
+    case 'system':
+      return 'text-[var(--accent)] mb-2';
+    case 'output':
+      return 'text-[var(--text)] mb-0.5';
+    case 'input':
+      return 'text-[var(--text)] mb-0.5';
   }
 }

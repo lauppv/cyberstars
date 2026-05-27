@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"crew.txt","content":"Commander Voss\nEngineer Tanaka\nPilot Okafor\nMedic Chen\nScientist Ruiz\nNavigator Park\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "crew.txt",
+      "content": "Commander Voss\nEngineer Tanaka\nPilot Okafor\nMedic Chen\nScientist Ruiz\nNavigator Park\n"
+    }
+  ],
+  "dirs": []
+}

@@ -5,10 +5,12 @@ Create a **Student** class that implements `Comparable<Student>`. Each student h
 Read students from stdin, sort them, and print each student on a separate line.
 
 ### Input
+
 - Line 1: number of students N
 - Next N lines: `name gpa` (name is a single word, gpa is a decimal)
 
 ### Output
+
 N lines, each in the format: `name gpa` (GPA with 1 decimal place), sorted by GPA descending then name ascending.
 
 ### Examples
@@ -38,6 +40,7 @@ Zoe 4.0
 ```
 
 ### Hints
+
 - Implement `compareTo` in the Student class.
 - For descending GPA: compare other's GPA to this GPA with `Double.compare()`.
 - For ties, use `this.name.compareTo(other.name)`.

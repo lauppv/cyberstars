@@ -1,7 +1,7 @@
 public class Main {
-    public static void main(String[] args) {
-        int seconds = 60;
-        boolean errorDetected = false;
+public static void main(String[] args) {
+int seconds = 60;
+boolean errorDetected = false;
 
         if (seconds == 100) {
             System.out.println("Starting all onboard computers");
@@ -21,4 +21,5 @@ public class Main {
             System.out.println(seconds + " seconds has no effect");
         }
     }
+
 }

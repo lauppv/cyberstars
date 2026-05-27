@@ -12,6 +12,7 @@ Build a **character profile card** for a game. Create these variables:
 Print the profile card using **f-strings** like this. Add a **comment** above the print explaining what it does
 
 Expected output
+
 ```text
 === PLAYER CARD ===
 Name: Shadow

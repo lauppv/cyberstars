@@ -74,6 +74,7 @@ Notice how we can use **Point** inside **Circle**. Structs inside structs — **
 Define a **typedef** struct called **Student** with fields: **name** (char array), **grade** (int), **average** (double)
 
 Create an array of **3 students**:
+
 - "Ana", 10, 9.5
 - "Mihai", 11, 8.2
 - "Elena", 10, 9.8
@@ -81,6 +82,7 @@ Create an array of **3 students**:
 Loop through them and print each one
 
 Expected output
+
 ```text
 Ana - Grade 10 - Avg 9.50
 Mihai - Grade 11 - Avg 8.20

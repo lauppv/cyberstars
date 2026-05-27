@@ -12,6 +12,7 @@ Write a program that goes through numbers from **1 to 20** and classifies each o
 At the end, print how many **fizzbuzz** numbers you found
 
 Expected output
+
 ```text
 1: normal
 2: normal

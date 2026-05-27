@@ -23,6 +23,7 @@ int main(void) {
 ```
 
 After **fork()**, there are **two processes** running the same code. The original is the **parent**, the copy is the **child**. How do they know who's who? **fork()** returns:
+
 - **0** to the child process
 - The **child's PID** to the parent process
 
@@ -59,6 +60,7 @@ If you fork again inside one of those processes, you get 4 processes. Fork is **
 **fork** is the foundation of how Unix works. When you open a terminal and type a command, the shell **forks** itself, and the child process **replaces itself** with the new program (using a function called **exec**, which we won't cover in detail but it's good to know it exists)
 
 This fork-then-exec pattern is everywhere:
+
 1. Shell forks → now there are 2 shells
 2. Child shell calls exec("ls") → child is now running "ls"
 3. Parent shell waits for child to finish
@@ -69,6 +71,7 @@ This fork-then-exec pattern is everywhere:
 Write a program that forks. The **child** should print **"Child: hello from PID X"** (where X is its PID). The **parent** should **wait** for the child, then print **"Parent: child finished"**
 
 Expected output (PID will vary)
+
 ```text
 Child: hello from PID 12345
 Parent: child finished

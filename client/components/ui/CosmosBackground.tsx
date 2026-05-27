@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-const STAR_COLORS = ["#ffffff", "#cfd9ff", "#ffd1a1", "#a8c4ff", "#e8b8ff"];
+const STAR_COLORS = ['#ffffff', '#cfd9ff', '#ffd1a1', '#a8c4ff', '#e8b8ff'];
 
 export function CosmosBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -8,7 +8,7 @@ export function CosmosBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let w = 0;
@@ -34,10 +34,7 @@ export function CosmosBackground() {
         stars.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          size:
-            Math.random() < 0.85
-              ? 0.5 + Math.random() * 1.2
-              : 1.6 + Math.random() * 1.4,
+          size: Math.random() < 0.85 ? 0.5 + Math.random() * 1.2 : 1.6 + Math.random() * 1.4,
           baseAlpha: 0.35 + Math.random() * 0.55,
           twPhase: Math.random() * Math.PI * 2,
           twSpeed: 0.00015 + Math.random() * 0.0004,
@@ -56,7 +53,7 @@ export function CosmosBackground() {
       regenStars();
     }
 
-    window.addEventListener("resize", resize);
+    window.addEventListener('resize', resize);
     resize();
 
     let rafId: number;
@@ -83,7 +80,7 @@ export function CosmosBackground() {
     rafId = requestAnimationFrame(frame);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener('resize', resize);
       cancelAnimationFrame(rafId);
     };
   }, []);

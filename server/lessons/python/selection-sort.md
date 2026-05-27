@@ -23,6 +23,7 @@ numbers = [5, 3, 8, 1, 2]
 ---
 
 In code
+
 ```py
 numbers = [5, 3, 8, 1, 2]
 
@@ -35,6 +36,7 @@ for i in range(len(numbers)):
 
 print(numbers)
 ```
+
 Output **[1, 2, 3, 5, 8]**
 
 The **outer loop** picks each position (0, 1, 2, ...). For each position, the **inner loop** scans the rest of the list to find the smallest element. Then we **swap** it into place
@@ -69,6 +71,7 @@ print(selectionSort([5, 1, 4, 2, 8]))         # [1, 2, 4, 5, 8]
 ```
 
 Expected output
+
 ```text
 [11, 12, 22, 25, 64]
 [1, 2, 4, 5, 8]

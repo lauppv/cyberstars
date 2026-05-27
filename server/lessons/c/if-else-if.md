@@ -11,6 +11,7 @@ If **10** seconds left → start the main engines
 Otherwise → no special action
 
 In C, we chain branches with **else if** (just like Java)
+
 ```c
 #include <stdio.h>
 
@@ -32,6 +33,7 @@ int main(void) {
     return 0;
 }
 ```
+
 **Run** it. Then change **seconds** to **60**, **20**, **10**, **42**. See how the output changes
 
 The chain runs **top to bottom**. At the **first** branch that is **true**, C runs that block and then **jumps out** of the entire chain. The remaining branches are **never checked**. So for **seconds = 60**, only one line is printed, not all of them
@@ -39,6 +41,7 @@ The chain runs **top to bottom**. At the **first** branch that is **true**, C ru
 ---
 
 Why not just write a bunch of separate **if**s? Like this
+
 ```c
 #include <stdio.h>
 
@@ -51,6 +54,7 @@ int main(void) {
     return 0;
 }
 ```
+
 The problem: each **if** is independent. The **else** at the end only belongs to the **last** **if**. So for **seconds = 60**, the third condition fails (60 != 20), and the **else** would print **"60 seconds has no effect"** — wrong, we already handled 60 above
 
 **Rule of thumb**: when we test the **same variable** for multiple values, **chain** with **if / else if / else**
@@ -62,6 +66,7 @@ C also has a **switch** statement that fits this pattern nicely, but we’ll sav
 ---
 
 We can nest **if**s inside one another
+
 ```c
 #include <stdio.h>
 
@@ -79,6 +84,7 @@ int main(void) {
     return 0;
 }
 ```
+
 Nested **if**s are fine, but if you go 5 levels deep, the code gets unreadable. Try to keep things flat when you can
 
 ---

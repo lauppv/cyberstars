@@ -13,7 +13,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy Vercetti
 Lance Vance
@@ -32,6 +34,7 @@ Just like in Python, **counting starts from 0**. **names[0]** is the first eleme
 Java arrays have a **fixed size**. Once you create them, you can’t add or remove elements. (For dynamic collections, Java has **ArrayList**, but we’ll keep arrays for now)
 
 How many elements does the array have? Use **.length**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -40,11 +43,13 @@ public class Main {
     }
 }
 ```
+
 **Notice**: **names.length** has **no parentheses**, unlike **String.length()**. Yes, this is annoyingly inconsistent — arrays use a **field** called **length**, while Strings have a **method** called **length()**. Welcome to Java :)
 
 ---
 
 We can also create an array with a fixed size, then fill it later
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -58,11 +63,13 @@ public class Main {
     }
 }
 ```
+
 **new int[5]** creates an array with **5** slots. By default they are filled with **0** for numbers, **null** for objects (like Strings), and **false** for booleans
 
 ---
 
 We can **change** a value at any index
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -76,6 +83,7 @@ public class Main {
 ---
 
 What happens if we ask for an index that doesn’t exist?
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -84,6 +92,7 @@ public class Main {
     }
 }
 ```
+
 Run it. Java throws an **ArrayIndexOutOfBoundsException** and crashes. Read the error :)
 
 ---
@@ -98,6 +107,7 @@ You have an array **heroes** declared on the right with **3 slots**, all empty f
 6. Display the **last** hero
 
 Expected output
+
 ```text
 3
 Shrek

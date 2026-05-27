@@ -14,11 +14,11 @@ drwxr-x--- 2 student crew  4096 Jan 10 08:00 logs
 The permission string has 10 characters. The first is the type (`-` = file, `d` =
 directory). The remaining 9 split into three groups of three:
 
-| Positions | Who | Meaning |
-|-----------|-----|---------|
-| 2-4 | **u**ser (owner) | `rwx` = read, write, execute |
-| 5-7 | **g**roup | `r-x` = read, no write, execute |
-| 8-10 | **o**thers | `r--` = read only |
+| Positions | Who              | Meaning                         |
+| --------- | ---------------- | ------------------------------- |
+| 2-4       | **u**ser (owner) | `rwx` = read, write, execute    |
+| 5-7       | **g**roup        | `r-x` = read, no write, execute |
+| 8-10      | **o**thers       | `r--` = read only               |
 
 A dash (`-`) means that permission is **not** granted.
 

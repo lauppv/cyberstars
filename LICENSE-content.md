@@ -18,4 +18,4 @@ Under the following terms:
 
 Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
-Copyright (c) 2025 CyberStars 
+Copyright (c) 2025 CyberStars

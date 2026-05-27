@@ -1,21 +1,20 @@
-import { useState, useEffect, useCallback } from "react";
-import { Topbar } from "../components/layout/Topbar";
-import { useAuth } from "../context/AuthContext";
-import * as forumService from "../services/forumService";
+import { useState, useEffect, useCallback } from 'react';
+import { Topbar } from '../components/layout/Topbar';
+import { useAuth } from '../context/AuthContext';
+import * as forumService from '../services/forumService';
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
   ForumThreadDetailDTO,
   ForumPostDTO,
-  ForumReactionGroupDTO,
-} from "../../shared/forum";
-import type { AuthenticatedUser, UserRole } from "../../shared/auth";
-import "./ForumPage.css";
+} from '../../shared/forum';
+import type { AuthenticatedUser, UserRole } from '../../shared/auth';
+import './ForumPage.css';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return "just now";
+  if (mins < 1) return 'just now';
   if (mins < 60) return `${mins}m ago`;
   const hrs = Math.floor(mins / 60);
   if (hrs < 24) return `${hrs}h ago`;
@@ -25,12 +24,12 @@ function timeAgo(iso: string): string {
 }
 
 /** Categories where only moderators and admins may start threads or reply. */
-const RESTRICTED_CATEGORIES = new Set(["announcements"]);
+const RESTRICTED_CATEGORIES = new Set(['announcements']);
 
 const ROLE_META: Record<UserRole, { label: string; cls: string }> = {
-  ADMIN: { label: "Admin", cls: "role-admin" },
-  MODERATOR: { label: "Moderator", cls: "role-mod" },
-  USER: { label: "User", cls: "role-user" },
+  ADMIN: { label: 'Admin', cls: 'role-admin' },
+  MODERATOR: { label: 'Moderator', cls: 'role-mod' },
+  USER: { label: 'User', cls: 'role-user' },
 };
 
 function RoleBadge({ role }: { role: UserRole }) {
@@ -40,45 +39,45 @@ function RoleBadge({ role }: { role: UserRole }) {
 
 /** Mirror of the server-side permission rule (server is authoritative). */
 function canModerate(actorRole: UserRole, targetRole: UserRole, isOwner: boolean): boolean {
-  if (actorRole === "ADMIN") return true;
-  if (actorRole === "MODERATOR") return isOwner || targetRole === "USER";
+  if (actorRole === 'ADMIN') return true;
+  if (actorRole === 'MODERATOR') return isOwner || targetRole === 'USER';
   return isOwner;
 }
 
-type View = "index" | "category" | "thread";
+type View = 'index' | 'category' | 'thread';
 
 export function ForumPage() {
   const { isLoggedIn, user } = useAuth();
-  const [view, setView] = useState<View>("index");
+  const [view, setView] = useState<View>('index');
   const [categorySlug, setCategorySlug] = useState<string | null>(null);
   const [threadId, setThreadId] = useState<number | null>(null);
 
   const openCategory = (slug: string) => {
     setCategorySlug(slug);
-    setView("category");
+    setView('category');
     window.scrollTo(0, 0);
   };
   const openThread = (id: number) => {
     setThreadId(id);
-    setView("thread");
+    setView('thread');
     window.scrollTo(0, 0);
   };
   const backToIndex = () => {
-    setView("index");
+    setView('index');
     window.scrollTo(0, 0);
   };
   const backToCategory = () => {
-    setView("category");
+    setView('category');
     window.scrollTo(0, 0);
   };
 
   return (
     <>
       <Topbar />
-      {view === "index" && (
+      {view === 'index' && (
         <ForumIndex onOpenCategory={openCategory} isLoggedIn={isLoggedIn} onNewThread={() => {}} />
       )}
-      {view === "category" && categorySlug && (
+      {view === 'category' && categorySlug && (
         <CategoryView
           categorySlug={categorySlug}
           onBack={backToIndex}
@@ -87,7 +86,7 @@ export function ForumPage() {
           user={user}
         />
       )}
-      {view === "thread" && threadId && (
+      {view === 'thread' && threadId && (
         <ThreadView
           threadId={threadId}
           onBack={backToIndex}
@@ -117,12 +116,23 @@ function ForumIndex({
 
   useEffect(() => {
     let cancelled = false;
-    forumService.getCategories().then((cats) => {
-      if (!cancelled) { setCategories(cats); setLoading(false); }
-    }).catch(() => {
-      if (!cancelled) { setError("Failed to load forum categories."); setLoading(false); }
-    });
-    return () => { cancelled = true; };
+    forumService
+      .getCategories()
+      .then((cats) => {
+        if (!cancelled) {
+          setCategories(cats);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setError('Failed to load forum categories.');
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const groups = categories.reduce<Record<string, ForumCategoryDTO[]>>((acc, cat) => {
@@ -192,10 +202,7 @@ function ForumIndex({
                 {cats.map((c) => (
                   <div className="cat-row" key={c.slug} onClick={() => onOpenCategory(c.slug)}>
                     <div className="cat-main">
-                      <div
-                        className="cat-icon"
-                        style={{ background: c.color + "22" }}
-                      >
+                      <div className="cat-icon" style={{ background: c.color + '22' }}>
                         {c.icon}
                       </div>
                       <div className="cat-info">
@@ -213,7 +220,7 @@ function ForumIndex({
                         <div className="lp-info">
                           <div className="lp-title">{c.lastPost.threadTitle}</div>
                           <div className="lp-meta">
-                            by <span className="lp-user">{c.lastPost.authorName}</span> ·{" "}
+                            by <span className="lp-user">{c.lastPost.authorName}</span> ·{' '}
                             {timeAgo(c.lastPost.createdAt)}
                           </div>
                         </div>
@@ -246,7 +253,7 @@ function CategoryView({
   user: AuthenticatedUser | null;
 }) {
   const restricted = RESTRICTED_CATEGORIES.has(categorySlug);
-  const canPost = isLoggedIn && (!restricted || (user != null && user.role !== "USER"));
+  const canPost = isLoggedIn && (!restricted || (user != null && user.role !== 'USER'));
   const [category, setCategory] = useState<{
     slug: string;
     name: string;
@@ -258,18 +265,30 @@ function CategoryView({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showComposer, setShowComposer] = useState(false);
-  const [newTitle, setNewTitle] = useState("");
-  const [newContent, setNewContent] = useState("");
+  const [newTitle, setNewTitle] = useState('');
+  const [newContent, setNewContent] = useState('');
   const [posting, setPosting] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
-    forumService.getThreads(categorySlug).then((data) => {
-      if (!cancelled) { setCategory(data.category); setThreads(data.threads); setLoading(false); }
-    }).catch(() => {
-      if (!cancelled) { setError("Failed to load threads."); setLoading(false); }
-    });
-    return () => { cancelled = true; };
+    forumService
+      .getThreads(categorySlug)
+      .then((data) => {
+        if (!cancelled) {
+          setCategory(data.category);
+          setThreads(data.threads);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setError('Failed to load threads.');
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [categorySlug]);
 
   const handleCreateThread = async () => {
@@ -282,8 +301,8 @@ function CategoryView({
         content: newContent.trim(),
       });
       setShowComposer(false);
-      setNewTitle("");
-      setNewContent("");
+      setNewTitle('');
+      setNewContent('');
       onOpenThread(threadId);
     } finally {
       setPosting(false);
@@ -306,7 +325,7 @@ function CategoryView({
           <span className="forum-crumb-sep">/</span>
           <span className="forum-crumb-here">Error</span>
         </div>
-        <div className="forum-loading">{error ?? "Category not found."}</div>
+        <div className="forum-loading">{error ?? 'Category not found.'}</div>
       </main>
     );
   }
@@ -319,11 +338,8 @@ function CategoryView({
         <span className="forum-crumb-here">{category.name}</span>
       </div>
 
-      <div className="cat-banner" style={{ borderColor: category.color + "44" }}>
-        <div
-          className="cat-banner-icon"
-          style={{ background: category.color + "22" }}
-        >
+      <div className="cat-banner" style={{ borderColor: category.color + '44' }}>
+        <div className="cat-banner-icon" style={{ background: category.color + '22' }}>
           {category.icon}
         </div>
         <div className="cat-banner-info">
@@ -374,7 +390,7 @@ function CategoryView({
               onClick={handleCreateThread}
               disabled={posting || !newTitle.trim() || !newContent.trim()}
             >
-              {posting ? "Posting..." : "Create Thread"}
+              {posting ? 'Posting...' : 'Create Thread'}
             </button>
           </div>
         </div>
@@ -386,12 +402,12 @@ function CategoryView({
         ) : (
           threads.map((t) => (
             <div
-              className={`thread-row${t.pinned ? " pinned" : ""}`}
+              className={`thread-row${t.pinned ? ' pinned' : ''}`}
               key={t.id}
               onClick={() => onOpenThread(t.id)}
             >
               <div className="thread-marker">
-                {t.pinned ? "📌" : t.locked ? "🔒" : t.solved ? "✓" : "●"}
+                {t.pinned ? '📌' : t.locked ? '🔒' : t.solved ? '✓' : '●'}
               </div>
               <div className="thread-main">
                 <div className="thread-title">
@@ -399,7 +415,7 @@ function CategoryView({
                   {t.solved && <span className="badge badge-solved">✓ Solved</span>}
                 </div>
                 <div className="thread-author">
-                  by <span className="author">{t.authorName}</span>{" "}
+                  by <span className="author">{t.authorName}</span>{' '}
                   <RoleBadge role={t.authorRole} /> · {timeAgo(t.createdAt)}
                 </div>
               </div>
@@ -408,13 +424,13 @@ function CategoryView({
                 <small>replies</small>
               </div>
               <div className="thread-count">
-                {t.views >= 1000 ? (t.views / 1000).toFixed(1) + "k" : t.views}
+                {t.views >= 1000 ? (t.views / 1000).toFixed(1) + 'k' : t.views}
                 <small>views</small>
               </div>
               {t.lastPostAuthor && (
                 <div className="thread-lastpost">
                   <span className="lp-user">{t.lastPostAuthor}</span>
-                  <span className="lp-time">{t.lastPostAt ? timeAgo(t.lastPostAt) : ""}</span>
+                  <span className="lp-time">{t.lastPostAt ? timeAgo(t.lastPostAt) : ''}</span>
                 </div>
               )}
             </div>
@@ -443,27 +459,41 @@ function ThreadView({
   const [thread, setThread] = useState<ForumThreadDetailDTO | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [replyContent, setReplyContent] = useState("");
+  const [replyContent, setReplyContent] = useState('');
   const [posting, setPosting] = useState(false);
 
   const loadThread = useCallback(() => {
-    forumService.getThread(threadId).then((data) => {
-      setThread(data);
-      setLoading(false);
-    }).catch(() => {
-      setError("Failed to load thread.");
-      setLoading(false);
-    });
+    forumService
+      .getThread(threadId)
+      .then((data) => {
+        setThread(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load thread.');
+        setLoading(false);
+      });
   }, [threadId]);
 
   useEffect(() => {
     let cancelled = false;
-    forumService.getThread(threadId).then((data) => {
-      if (!cancelled) { setThread(data); setLoading(false); }
-    }).catch(() => {
-      if (!cancelled) { setError("Failed to load thread."); setLoading(false); }
-    });
-    return () => { cancelled = true; };
+    forumService
+      .getThread(threadId)
+      .then((data) => {
+        if (!cancelled) {
+          setThread(data);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setError('Failed to load thread.');
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [threadId]);
 
   const handleReply = async () => {
@@ -471,7 +501,7 @@ function ThreadView({
     setPosting(true);
     try {
       await forumService.createPost(threadId, { content: replyContent.trim() });
-      setReplyContent("");
+      setReplyContent('');
       loadThread();
     } finally {
       setPosting(false);
@@ -526,14 +556,14 @@ function ThreadView({
           <span className="forum-crumb-sep">/</span>
           <span className="forum-crumb-here">Error</span>
         </div>
-        <div className="forum-loading">{error ?? "Thread not found."}</div>
+        <div className="forum-loading">{error ?? 'Thread not found.'}</div>
       </main>
     );
   }
 
   const restricted = RESTRICTED_CATEGORIES.has(thread.categorySlug);
   const canReply =
-    isLoggedIn && !thread.locked && (!restricted || (user != null && user.role !== "USER"));
+    isLoggedIn && !thread.locked && (!restricted || (user != null && user.role !== 'USER'));
 
   return (
     <main className="forum-page">
@@ -598,7 +628,7 @@ function ThreadView({
               onClick={handleReply}
               disabled={posting || !replyContent.trim()}
             >
-              {posting ? "Posting..." : "Post Reply"}
+              {posting ? 'Posting...' : 'Post Reply'}
             </button>
           </div>
         </div>
@@ -644,9 +674,8 @@ function PostCard({
   const [draft, setDraft] = useState(post.content);
 
   const isOwner = currentUser != null && currentUser.id === post.authorId;
-  const canManage =
-    currentUser != null && canModerate(currentUser.role, post.authorRole, isOwner);
-  const isAdmin = currentUser?.role === "ADMIN";
+  const canManage = currentUser != null && canModerate(currentUser.role, post.authorRole, isOwner);
+  const isAdmin = currentUser?.role === 'ADMIN';
 
   const saveEdit = () => {
     if (!draft.trim()) return;
@@ -656,21 +685,21 @@ function PostCard({
 
   if (post.deleted) {
     return (
-      <div className={`forum-post deleted${isOp ? " op" : ""}`}>
+      <div className={`forum-post deleted${isOp ? ' op' : ''}`}>
         <div className="post-sidebar">
           {post.authorAvatarUrl ? (
             <img src={post.authorAvatarUrl} alt="" className="post-avatar" />
           ) : (
-            <div className="post-avatar">
-              {post.authorName.charAt(0).toUpperCase()}
-            </div>
+            <div className="post-avatar">{post.authorName.charAt(0).toUpperCase()}</div>
           )}
           <div className="post-username">{post.authorName}</div>
         </div>
         <div className="post-body">
           <div className="post-deleted-banner">
             <span>🗑</span>
-            <span>This post was deleted by <strong>{post.deletedByName}</strong></span>
+            <span>
+              This post was deleted by <strong>{post.deletedByName}</strong>
+            </span>
           </div>
         </div>
       </div>
@@ -678,12 +707,16 @@ function PostCard({
   }
 
   return (
-    <div className={`forum-post${isOp ? " op" : ""}`}>
+    <div className={`forum-post${isOp ? ' op' : ''}`}>
       <div className="post-sidebar">
         {post.authorAvatarUrl ? (
-          <img src={post.authorAvatarUrl} alt="" className={`post-avatar${isOp ? " op-avatar" : ""}`} />
+          <img
+            src={post.authorAvatarUrl}
+            alt=""
+            className={`post-avatar${isOp ? ' op-avatar' : ''}`}
+          />
         ) : (
-          <div className={`post-avatar${isOp ? " op-avatar" : ""}`}>
+          <div className={`post-avatar${isOp ? ' op-avatar' : ''}`}>
             {post.authorName.charAt(0).toUpperCase()}
           </div>
         )}
@@ -705,9 +738,7 @@ function PostCard({
       <div className="post-body">
         <div className="post-meta">
           <span className="post-time">{timeAgo(post.createdAt)}</span>
-          {post.editedByName && (
-            <span className="post-edited">edited by {post.editedByName}</span>
-          )}
+          {post.editedByName && <span className="post-edited">edited by {post.editedByName}</span>}
         </div>
         {post.solution && (
           <div className="solution-banner">
@@ -749,15 +780,15 @@ function PostCard({
             {post.reactions.map((r) => (
               <button
                 key={r.emoji}
-                className={`reaction${r.active ? " active" : ""}`}
+                className={`reaction${r.active ? ' active' : ''}`}
                 onClick={() => onReaction(r.emoji)}
-                title={r.users.join(", ")}
+                title={r.users.join(', ')}
               >
                 <span>{r.emoji}</span>
                 <span>{r.count}</span>
               </button>
             ))}
-            <button className="reaction reaction-add" onClick={() => onReaction("👍")}>
+            <button className="reaction reaction-add" onClick={() => onReaction('👍')}>
               +
             </button>
           </div>
@@ -776,16 +807,12 @@ function PostCard({
               <button
                 className="post-btn post-btn-danger"
                 onClick={() => {
-                  if (
-                    window.confirm(
-                      isOp ? "Delete this entire thread?" : "Delete this post?"
-                    )
-                  ) {
+                  if (window.confirm(isOp ? 'Delete this entire thread?' : 'Delete this post?')) {
                     onDelete();
                   }
                 }}
               >
-                🗑 {isOp ? "Delete thread" : "Delete"}
+                🗑 {isOp ? 'Delete thread' : 'Delete'}
               </button>
             )}
           </div>

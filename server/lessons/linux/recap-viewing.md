@@ -1,13 +1,13 @@
 Chapter 3 gave you the file-inspection toolkit. Each command answers a different
 question:
 
-| Command | Answers |
-|---------|---------|
-| `cat` | "Show me the whole (short) file." |
-| `head` | "Show me the *start*." |
-| `tail` | "Show me the *latest* events." |
-| `less` | "Let me *scroll* through a long file." |
-| `wc` | "How big is it — how many lines/words?" |
+| Command | Answers                                 |
+| ------- | --------------------------------------- |
+| `cat`   | "Show me the whole (short) file."       |
+| `head`  | "Show me the _start_."                  |
+| `tail`  | "Show me the _latest_ events."          |
+| `less`  | "Let me _scroll_ through a long file."  |
+| `wc`    | "How big is it — how many lines/words?" |
 
 A common workflow when inspecting logs: `wc -l` to size the file, `head` to see how it
 begins, `tail` to see the newest entries.

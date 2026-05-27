@@ -37,7 +37,7 @@ touch reports/summary.txt
 
 ### Why is it called "touch"?
 
-If the file *already* exists, `touch` does not erase it — it just updates the file's
+If the file _already_ exists, `touch` does not erase it — it just updates the file's
 "last modified" time. That is its original purpose. For a beginner, think of it
 simply as **"create an empty file"**.
 

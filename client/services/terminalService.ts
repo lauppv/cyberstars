@@ -1,5 +1,5 @@
-import { api } from "./apiClient.js";
-import type { TerminalSessionInfo, TerminalExecResult } from "../../shared/terminal.js";
+import { api } from './apiClient.js';
+import type { TerminalSessionInfo, TerminalExecResult } from '../../shared/terminal.js';
 
 interface TerminalTestResult {
   name: string;
@@ -14,15 +14,19 @@ export interface TerminalSubmitResult {
 }
 
 export function createTerminalSession(courseKey: string, lessonSlug: string) {
-  return api.post<TerminalSessionInfo>("/api/terminal/session", { courseKey, lessonSlug });
+  return api.post<TerminalSessionInfo>('/api/terminal/session', { courseKey, lessonSlug });
 }
 
 export function execTerminalCommand(sessionId: string, command: string) {
-  return api.post<TerminalExecResult>("/api/terminal/exec", { sessionId, command });
+  return api.post<TerminalExecResult>('/api/terminal/exec', { sessionId, command });
 }
 
 export function submitTerminalLesson(sessionId: string, courseKey: string, lessonSlug: string) {
-  return api.post<TerminalSubmitResult>("/api/terminal/submit", { sessionId, courseKey, lessonSlug });
+  return api.post<TerminalSubmitResult>('/api/terminal/submit', {
+    sessionId,
+    courseKey,
+    lessonSlug,
+  });
 }
 
 export function destroyTerminalSession(sessionId: string) {

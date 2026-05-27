@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function LaniakeaExplorerPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,8 +13,8 @@ export function LaniakeaExplorerPage() {
 
     let destroyed = false;
 
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/three@0.160.0/build/three.min.js";
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/three@0.160.0/build/three.min.js';
     script.onload = () => {
       if (destroyed) return;
       initScene(container);
@@ -30,29 +30,37 @@ export function LaniakeaExplorerPage() {
 
       const camera = new THREE.PerspectiveCamera(72, innerWidth / innerHeight, 0.1, 60000);
       camera.position.set(0, 0, 0);
-      camera.rotation.order = "YXZ";
+      camera.rotation.order = 'YXZ';
 
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(innerWidth, innerHeight);
       renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
       renderer.setClearColor(0x05050d, 1);
-      el.querySelector("#rest-scene")!.appendChild(renderer.domElement);
+      el.querySelector('#rest-scene')!.appendChild(renderer.domElement);
 
       // ===== Nebulae =====
       function nebulaTex(color: string) {
-        const c = document.createElement("canvas"); c.width = c.height = 256;
-        const ctx = c.getContext("2d")!;
+        const c = document.createElement('canvas');
+        c.width = c.height = 256;
+        const ctx = c.getContext('2d')!;
         const g = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
-        g.addColorStop(0, color + "cc");
-        g.addColorStop(0.4, color + "44");
-        g.addColorStop(1, color + "00");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, 256, 256);
+        g.addColorStop(0, color + 'cc');
+        g.addColorStop(0.4, color + '44');
+        g.addColorStop(1, color + '00');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 256, 256);
         return new THREE.CanvasTexture(c);
       }
-      const nebPalette = ["#6c5ce7", "#ff6b6b", "#00d68f", "#3b6bff", "#ff8aff", "#ffa040"];
+      const nebPalette = ['#6c5ce7', '#ff6b6b', '#00d68f', '#3b6bff', '#ff8aff', '#ffa040'];
       for (let i = 0; i < 60; i++) {
         const tex = nebulaTex(nebPalette[i % nebPalette.length]);
-        const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.12 + Math.random() * 0.22, blending: THREE.AdditiveBlending, depthWrite: false });
+        const mat = new THREE.SpriteMaterial({
+          map: tex,
+          transparent: true,
+          opacity: 0.12 + Math.random() * 0.22,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
         const s = new THREE.Sprite(mat);
         const r = 4000 + Math.random() * 22000;
         const theta = Math.random() * Math.PI * 2;
@@ -70,12 +78,16 @@ export function LaniakeaExplorerPage() {
       const skyPos = new Float32Array(SKY_STAR_COUNT * 3);
       const skyCol = new Float32Array(SKY_STAR_COUNT * 3);
       const starColors = [
-        new THREE.Color(0xffffff), new THREE.Color(0xcfd9ff),
-        new THREE.Color(0xffd1a1), new THREE.Color(0xa8c4ff),
-        new THREE.Color(0xe8b8ff), new THREE.Color(0xfff0a0),
+        new THREE.Color(0xffffff),
+        new THREE.Color(0xcfd9ff),
+        new THREE.Color(0xffd1a1),
+        new THREE.Color(0xa8c4ff),
+        new THREE.Color(0xe8b8ff),
+        new THREE.Color(0xfff0a0),
       ];
       for (let i = 0; i < SKY_STAR_COUNT; i++) {
-        const u = Math.random(), v = Math.random();
+        const u = Math.random(),
+          v = Math.random();
         const theta = 2 * Math.PI * u;
         const phi = Math.acos(2 * v - 1);
         const r = SKY_R * (0.85 + Math.random() * 0.3);
@@ -83,11 +95,20 @@ export function LaniakeaExplorerPage() {
         skyPos[i * 3 + 1] = r * Math.cos(phi);
         skyPos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
         const col = starColors[Math.floor(Math.random() * starColors.length)];
-        skyCol[i * 3] = col.r; skyCol[i * 3 + 1] = col.g; skyCol[i * 3 + 2] = col.b;
+        skyCol[i * 3] = col.r;
+        skyCol[i * 3 + 1] = col.g;
+        skyCol[i * 3 + 2] = col.b;
       }
-      skyGeo.setAttribute("position", new THREE.BufferAttribute(skyPos, 3));
-      skyGeo.setAttribute("color", new THREE.BufferAttribute(skyCol, 3));
-      const skyMat = new THREE.PointsMaterial({ size: 8, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false });
+      skyGeo.setAttribute('position', new THREE.BufferAttribute(skyPos, 3));
+      skyGeo.setAttribute('color', new THREE.BufferAttribute(skyCol, 3));
+      const skyMat = new THREE.PointsMaterial({
+        size: 8,
+        vertexColors: true,
+        transparent: true,
+        opacity: 1,
+        sizeAttenuation: true,
+        depthWrite: false,
+      });
       const skyStars = new THREE.Points(skyGeo, skyMat);
       scene.add(skyStars);
 
@@ -103,52 +124,85 @@ export function LaniakeaExplorerPage() {
       for (let i = 0; i < MW_STAR_COUNT; i++) {
         const theta = Math.random() * Math.PI * 2;
         let lat = 0;
-        for (let k = 0; k < 4; k++) lat += (Math.random() - 0.5);
+        for (let k = 0; k < 4; k++) lat += Math.random() - 0.5;
         lat *= 0.085;
         const r = SKY_R * (0.95 + Math.random() * 0.1);
         mwPos[i * 3] = r * Math.cos(lat) * Math.cos(theta);
         mwPos[i * 3 + 1] = r * Math.sin(lat);
         mwPos[i * 3 + 2] = r * Math.cos(lat) * Math.sin(theta);
         const warm = Math.random();
-        if (warm < 0.5) { mwCol[i * 3] = 1.0; mwCol[i * 3 + 1] = 0.96; mwCol[i * 3 + 2] = 0.86; }
-        else if (warm < 0.8) { mwCol[i * 3] = 0.9; mwCol[i * 3 + 1] = 0.88; mwCol[i * 3 + 2] = 1.0; }
-        else { mwCol[i * 3] = 1.0; mwCol[i * 3 + 1] = 0.85; mwCol[i * 3 + 2] = 0.65; }
+        if (warm < 0.5) {
+          mwCol[i * 3] = 1.0;
+          mwCol[i * 3 + 1] = 0.96;
+          mwCol[i * 3 + 2] = 0.86;
+        } else if (warm < 0.8) {
+          mwCol[i * 3] = 0.9;
+          mwCol[i * 3 + 1] = 0.88;
+          mwCol[i * 3 + 2] = 1.0;
+        } else {
+          mwCol[i * 3] = 1.0;
+          mwCol[i * 3 + 1] = 0.85;
+          mwCol[i * 3 + 2] = 0.65;
+        }
       }
-      mwGeo.setAttribute("position", new THREE.BufferAttribute(mwPos, 3));
-      mwGeo.setAttribute("color", new THREE.BufferAttribute(mwCol, 3));
-      const mwMat = new THREE.PointsMaterial({ size: 7, vertexColors: true, transparent: true, opacity: 0.95, sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending });
+      mwGeo.setAttribute('position', new THREE.BufferAttribute(mwPos, 3));
+      mwGeo.setAttribute('color', new THREE.BufferAttribute(mwCol, 3));
+      const mwMat = new THREE.PointsMaterial({
+        size: 7,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.95,
+        sizeAttenuation: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
       milkyGroup.add(new THREE.Points(mwGeo, mwMat));
 
       function dustTex(tint: string) {
-        const c = document.createElement("canvas"); c.width = c.height = 128;
-        const ctx = c.getContext("2d")!;
+        const c = document.createElement('canvas');
+        c.width = c.height = 128;
+        const ctx = c.getContext('2d')!;
         const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-        g.addColorStop(0, tint + "b0");
-        g.addColorStop(0.45, tint + "55");
-        g.addColorStop(1, tint + "00");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+        g.addColorStop(0, tint + 'b0');
+        g.addColorStop(0.45, tint + '55');
+        g.addColorStop(1, tint + '00');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 128, 128);
         return new THREE.CanvasTexture(c);
       }
-      const mwTints = ["#fff0c8", "#f0e0a8", "#ffd0a0", "#e8c4ff", "#a0b8ff", "#ffb898"];
+      const mwTints = ['#fff0c8', '#f0e0a8', '#ffd0a0', '#e8c4ff', '#a0b8ff', '#ffb898'];
       function darkDustTex() {
-        const c = document.createElement("canvas"); c.width = c.height = 128;
-        const ctx = c.getContext("2d")!;
+        const c = document.createElement('canvas');
+        c.width = c.height = 128;
+        const ctx = c.getContext('2d')!;
         const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-        g.addColorStop(0, "rgba(8,4,16,0.85)");
-        g.addColorStop(0.5, "rgba(8,4,16,0.4)");
-        g.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+        g.addColorStop(0, 'rgba(8,4,16,0.85)');
+        g.addColorStop(0.5, 'rgba(8,4,16,0.4)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 128, 128);
         return new THREE.CanvasTexture(c);
       }
       for (let i = 0; i < 110; i++) {
         const theta = Math.random() * Math.PI * 2;
-        let lat = 0; for (let k = 0; k < 4; k++) lat += (Math.random() - 0.5);
+        let lat = 0;
+        for (let k = 0; k < 4; k++) lat += Math.random() - 0.5;
         lat *= 0.075;
         const r = SKY_R * 0.92;
         const tint = mwTints[Math.floor(Math.random() * mwTints.length)];
-        const mat = new THREE.SpriteMaterial({ map: dustTex(tint), transparent: true, opacity: 0.16 + Math.random() * 0.18, blending: THREE.AdditiveBlending, depthWrite: false });
+        const mat = new THREE.SpriteMaterial({
+          map: dustTex(tint),
+          transparent: true,
+          opacity: 0.16 + Math.random() * 0.18,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
         const s = new THREE.Sprite(mat);
-        s.position.set(r * Math.cos(lat) * Math.cos(theta), r * Math.sin(lat), r * Math.cos(lat) * Math.sin(theta));
+        s.position.set(
+          r * Math.cos(lat) * Math.cos(theta),
+          r * Math.sin(lat),
+          r * Math.cos(lat) * Math.sin(theta),
+        );
         const sc = 600 + Math.random() * 1600;
         s.scale.set(sc, sc * 0.55, 1);
         milkyGroup.add(s);
@@ -158,9 +212,19 @@ export function LaniakeaExplorerPage() {
         const theta = Math.random() * Math.PI * 2;
         const lat = (Math.random() - 0.5) * 0.025;
         const r = SKY_R * 0.93;
-        const mat = new THREE.SpriteMaterial({ map: darkTex, transparent: true, opacity: 0.5, blending: THREE.NormalBlending, depthWrite: false });
+        const mat = new THREE.SpriteMaterial({
+          map: darkTex,
+          transparent: true,
+          opacity: 0.5,
+          blending: THREE.NormalBlending,
+          depthWrite: false,
+        });
         const s = new THREE.Sprite(mat);
-        s.position.set(r * Math.cos(lat) * Math.cos(theta), r * Math.sin(lat), r * Math.cos(lat) * Math.sin(theta));
+        s.position.set(
+          r * Math.cos(lat) * Math.cos(theta),
+          r * Math.sin(lat),
+          r * Math.cos(lat) * Math.sin(theta),
+        );
         const sc = 800 + Math.random() * 1400;
         s.scale.set(sc, sc * 0.35, 1);
         milkyGroup.add(s);
@@ -176,18 +240,35 @@ export function LaniakeaExplorerPage() {
         midPos[i * 3 + 1] = (Math.random() - 0.5) * 20000;
         midPos[i * 3 + 2] = (Math.random() - 0.5) * 50000;
         const col = starColors[Math.floor(Math.random() * starColors.length)];
-        midCol[i * 3] = col.r; midCol[i * 3 + 1] = col.g; midCol[i * 3 + 2] = col.b;
+        midCol[i * 3] = col.r;
+        midCol[i * 3 + 1] = col.g;
+        midCol[i * 3 + 2] = col.b;
       }
-      midGeo.setAttribute("position", new THREE.BufferAttribute(midPos, 3));
-      midGeo.setAttribute("color", new THREE.BufferAttribute(midCol, 3));
-      scene.add(new THREE.Points(midGeo, new THREE.PointsMaterial({ size: 3, vertexColors: true, transparent: true, opacity: 1, sizeAttenuation: true, depthWrite: false })));
+      midGeo.setAttribute('position', new THREE.BufferAttribute(midPos, 3));
+      midGeo.setAttribute('color', new THREE.BufferAttribute(midCol, 3));
+      scene.add(
+        new THREE.Points(
+          midGeo,
+          new THREE.PointsMaterial({
+            size: 3,
+            vertexColors: true,
+            transparent: true,
+            opacity: 1,
+            sizeAttenuation: true,
+            depthWrite: false,
+          }),
+        ),
+      );
 
       // ===== Planet helpers =====
       function planetTexture(palette: string[], type: string) {
-        const c = document.createElement("canvas"); c.width = 512; c.height = 256;
-        const ctx = c.getContext("2d")!;
-        ctx.fillStyle = palette[0]; ctx.fillRect(0, 0, 512, 256);
-        if (type === "banded" || type === "gas") {
+        const c = document.createElement('canvas');
+        c.width = 512;
+        c.height = 256;
+        const ctx = c.getContext('2d')!;
+        ctx.fillStyle = palette[0];
+        ctx.fillRect(0, 0, 512, 256);
+        if (type === 'banded' || type === 'gas') {
           for (let y = 0; y < 256; y += 2) {
             const t = y / 256;
             const noise = Math.sin(t * 24 + Math.random()) * 0.4 + Math.sin(t * 8) * 0.6;
@@ -198,8 +279,10 @@ export function LaniakeaExplorerPage() {
           }
           ctx.globalAlpha = 1;
           ctx.fillStyle = palette[palette.length - 1];
-          ctx.beginPath(); ctx.ellipse(160, 130, 28, 14, 0, 0, Math.PI * 2); ctx.fill();
-        } else if (type === "rocky" || type === "desert" || type === "lava") {
+          ctx.beginPath();
+          ctx.ellipse(160, 130, 28, 14, 0, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (type === 'rocky' || type === 'desert' || type === 'lava') {
           for (let i = 0; i < 700; i++) {
             const r = 2 + Math.random() * 22;
             ctx.fillStyle = palette[Math.floor(Math.random() * palette.length)];
@@ -208,50 +291,80 @@ export function LaniakeaExplorerPage() {
             ctx.arc(Math.random() * 512, Math.random() * 256, r, 0, Math.PI * 2);
             ctx.fill();
           }
-          if (type === "lava") {
+          if (type === 'lava') {
             for (let i = 0; i < 80; i++) {
-              ctx.fillStyle = "#ff5520";
+              ctx.fillStyle = '#ff5520';
               ctx.globalAlpha = 0.9;
               ctx.beginPath();
-              ctx.arc(Math.random() * 512, Math.random() * 256, 1 + Math.random() * 3, 0, Math.PI * 2);
+              ctx.arc(
+                Math.random() * 512,
+                Math.random() * 256,
+                1 + Math.random() * 3,
+                0,
+                Math.PI * 2,
+              );
               ctx.fill();
             }
           }
           ctx.globalAlpha = 1;
-        } else if (type === "earthlike" || type === "ocean") {
-          ctx.fillStyle = palette[0]; ctx.fillRect(0, 0, 512, 256);
+        } else if (type === 'earthlike' || type === 'ocean') {
+          ctx.fillStyle = palette[0];
+          ctx.fillRect(0, 0, 512, 256);
           for (let i = 0; i < 14; i++) {
             ctx.fillStyle = palette[1 + (i % (palette.length - 1))];
             ctx.beginPath();
-            const cx = Math.random() * 512, cy = Math.random() * 256;
+            const cx = Math.random() * 512,
+              cy = Math.random() * 256;
             for (let a = 0; a < Math.PI * 2; a += 0.3) {
               const rr = 18 + Math.random() * 50;
-              const px = cx + Math.cos(a) * rr, py = cy + Math.sin(a) * rr * 0.5;
-              if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+              const px = cx + Math.cos(a) * rr,
+                py = cy + Math.sin(a) * rr * 0.5;
+              if (a === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
             }
-            ctx.closePath(); ctx.fill();
-          }
-          ctx.fillStyle = "rgba(255,255,255,.5)";
-          for (let i = 0; i < 32; i++) {
-            ctx.beginPath();
-            ctx.ellipse(Math.random() * 512, Math.random() * 256, 8 + Math.random() * 30, 4 + Math.random() * 8, 0, 0, Math.PI * 2);
+            ctx.closePath();
             ctx.fill();
           }
-        } else if (type === "ice") {
-          ctx.fillStyle = palette[0]; ctx.fillRect(0, 0, 512, 256);
+          ctx.fillStyle = 'rgba(255,255,255,.5)';
+          for (let i = 0; i < 32; i++) {
+            ctx.beginPath();
+            ctx.ellipse(
+              Math.random() * 512,
+              Math.random() * 256,
+              8 + Math.random() * 30,
+              4 + Math.random() * 8,
+              0,
+              0,
+              Math.PI * 2,
+            );
+            ctx.fill();
+          }
+        } else if (type === 'ice') {
+          ctx.fillStyle = palette[0];
+          ctx.fillRect(0, 0, 512, 256);
           for (let i = 0; i < 40; i++) {
             ctx.fillStyle = palette[1 + (i % (palette.length - 1))];
             ctx.globalAlpha = 0.5 + Math.random() * 0.4;
-            ctx.fillRect(Math.random() * 512, Math.random() * 256, 4 + Math.random() * 40, 1 + Math.random() * 4);
+            ctx.fillRect(
+              Math.random() * 512,
+              Math.random() * 256,
+              4 + Math.random() * 40,
+              1 + Math.random() * 4,
+            );
           }
           ctx.strokeStyle = palette[palette.length - 1];
           ctx.globalAlpha = 0.7;
           ctx.lineWidth = 1;
           for (let i = 0; i < 12; i++) {
             ctx.beginPath();
-            let x = Math.random() * 512, y = Math.random() * 256;
+            let x = Math.random() * 512,
+              y = Math.random() * 256;
             ctx.moveTo(x, y);
-            for (let j = 0; j < 6; j++) { x += (Math.random() - 0.5) * 60; y += (Math.random() - 0.5) * 30; ctx.lineTo(x, y); }
+            for (let j = 0; j < 6; j++) {
+              x += (Math.random() - 0.5) * 60;
+              y += (Math.random() - 0.5) * 30;
+              ctx.lineTo(x, y);
+            }
             ctx.stroke();
           }
           ctx.globalAlpha = 1;
@@ -262,8 +375,10 @@ export function LaniakeaExplorerPage() {
       }
 
       function ringTexture(colors: string[]) {
-        const c = document.createElement("canvas"); c.width = 256; c.height = 32;
-        const ctx = c.getContext("2d")!;
+        const c = document.createElement('canvas');
+        c.width = 256;
+        c.height = 32;
+        const ctx = c.getContext('2d')!;
         for (let x = 0; x < 256; x++) {
           const t = x / 256;
           let alpha = 0.7 + Math.sin(t * 40) * 0.25 - Math.pow(Math.sin(t * 8), 12) * 0.7;
@@ -277,19 +392,84 @@ export function LaniakeaExplorerPage() {
 
       // ===== Planet catalogue =====
       const PLANET_TYPES = [
-        { type: "rocky", palette: ["#a04020", "#d96030", "#f08040", "#642010"], glow: 0xff8855, names: ["Mars-7", "Outer Mars", "Red Rock", "Vermillion", "Rust"] },
-        { type: "rocky", palette: ["#6a5040", "#8a6850", "#a08060", "#3a2820"], glow: 0xa08070, names: ["Sienna", "Hadley", "Drylands", "Ochre"] },
-        { type: "earthlike", palette: ["#1a3a6f", "#2a78c4", "#3aa05f", "#dca555", "#f0e0a8"], glow: 0x70a8e0, names: ["Kepler-Prime", "Terra Nova", "Verdania", "Atlas", "Echo"] },
-        { type: "earthlike", palette: ["#1f4a30", "#2d8060", "#46d4a8", "#0a2820", "#80f0c8"], glow: 0x66e4be, names: ["Veridian", "Aurelis", "Mossworld", "Greenhalo"] },
-        { type: "ocean", palette: ["#0a3a6a", "#1a78d0", "#5fb8f0", "#0a1a3a"], glow: 0x70b8ff, names: ["Aquaria", "Tideborn", "Pelago", "Oceanus"] },
-        { type: "desert", palette: ["#8a6a20", "#d4a060", "#b08040", "#3a2a10"], glow: 0xe0b070, names: ["Ker", "Saharah", "Brimwaste", "Goldsand"] },
-        { type: "gas", palette: ["#5a3a8a", "#8a5fd0", "#b088f0", "#3a2060", "#d0a8ff"], glow: 0xb088ff, names: ["Violetus", "Auroma", "Lavender Giant", "Indigo Hall"] },
-        { type: "gas", palette: ["#3a4a8a", "#5a78d0", "#88a0f0", "#202850"], glow: 0x88a0ff, names: ["Cobaltus", "Azure Hall", "Sapphis", "Nimbus"] },
-        { type: "gas", palette: ["#8a4030", "#d07050", "#f0a050", "#502010", "#ffc080"], glow: 0xff9050, names: ["Amber Giant", "Honeyfall", "Sunburn", "Magma Cloud"] },
-        { type: "ice", palette: ["#a8c8ff", "#dde8f8", "#608ad0", "#ffffff", "#88a8d0"], glow: 0xa8c8ff, names: ["Frostbite", "Cryos", "Glaciem", "Pale Eight"] },
-        { type: "ice", palette: ["#80e0e0", "#b0f0f0", "#48a0a0", "#ffffff"], glow: 0x90f0f0, names: ["Mintglass", "Hoarfrost", "Cyanite"] },
-        { type: "lava", palette: ["#3a0a0a", "#8a1a08", "#d04408", "#ff7020", "#1a0000"], glow: 0xff5020, names: ["Cinder", "Pyrre", "Hellforge", "Charcoal"] },
-        { type: "rocky", palette: ["#404060", "#606080", "#8080a0", "#2a2a40"], glow: 0x8080b0, names: ["Moonlet Aelia", "Silvermoon", "Twilight Rock"] },
+        {
+          type: 'rocky',
+          palette: ['#a04020', '#d96030', '#f08040', '#642010'],
+          glow: 0xff8855,
+          names: ['Mars-7', 'Outer Mars', 'Red Rock', 'Vermillion', 'Rust'],
+        },
+        {
+          type: 'rocky',
+          palette: ['#6a5040', '#8a6850', '#a08060', '#3a2820'],
+          glow: 0xa08070,
+          names: ['Sienna', 'Hadley', 'Drylands', 'Ochre'],
+        },
+        {
+          type: 'earthlike',
+          palette: ['#1a3a6f', '#2a78c4', '#3aa05f', '#dca555', '#f0e0a8'],
+          glow: 0x70a8e0,
+          names: ['Kepler-Prime', 'Terra Nova', 'Verdania', 'Atlas', 'Echo'],
+        },
+        {
+          type: 'earthlike',
+          palette: ['#1f4a30', '#2d8060', '#46d4a8', '#0a2820', '#80f0c8'],
+          glow: 0x66e4be,
+          names: ['Veridian', 'Aurelis', 'Mossworld', 'Greenhalo'],
+        },
+        {
+          type: 'ocean',
+          palette: ['#0a3a6a', '#1a78d0', '#5fb8f0', '#0a1a3a'],
+          glow: 0x70b8ff,
+          names: ['Aquaria', 'Tideborn', 'Pelago', 'Oceanus'],
+        },
+        {
+          type: 'desert',
+          palette: ['#8a6a20', '#d4a060', '#b08040', '#3a2a10'],
+          glow: 0xe0b070,
+          names: ['Ker', 'Saharah', 'Brimwaste', 'Goldsand'],
+        },
+        {
+          type: 'gas',
+          palette: ['#5a3a8a', '#8a5fd0', '#b088f0', '#3a2060', '#d0a8ff'],
+          glow: 0xb088ff,
+          names: ['Violetus', 'Auroma', 'Lavender Giant', 'Indigo Hall'],
+        },
+        {
+          type: 'gas',
+          palette: ['#3a4a8a', '#5a78d0', '#88a0f0', '#202850'],
+          glow: 0x88a0ff,
+          names: ['Cobaltus', 'Azure Hall', 'Sapphis', 'Nimbus'],
+        },
+        {
+          type: 'gas',
+          palette: ['#8a4030', '#d07050', '#f0a050', '#502010', '#ffc080'],
+          glow: 0xff9050,
+          names: ['Amber Giant', 'Honeyfall', 'Sunburn', 'Magma Cloud'],
+        },
+        {
+          type: 'ice',
+          palette: ['#a8c8ff', '#dde8f8', '#608ad0', '#ffffff', '#88a8d0'],
+          glow: 0xa8c8ff,
+          names: ['Frostbite', 'Cryos', 'Glaciem', 'Pale Eight'],
+        },
+        {
+          type: 'ice',
+          palette: ['#80e0e0', '#b0f0f0', '#48a0a0', '#ffffff'],
+          glow: 0x90f0f0,
+          names: ['Mintglass', 'Hoarfrost', 'Cyanite'],
+        },
+        {
+          type: 'lava',
+          palette: ['#3a0a0a', '#8a1a08', '#d04408', '#ff7020', '#1a0000'],
+          glow: 0xff5020,
+          names: ['Cinder', 'Pyrre', 'Hellforge', 'Charcoal'],
+        },
+        {
+          type: 'rocky',
+          palette: ['#404060', '#606080', '#8080a0', '#2a2a40'],
+          glow: 0x8080b0,
+          names: ['Moonlet Aelia', 'Silvermoon', 'Twilight Rock'],
+        },
       ];
 
       const planets: any[] = [];
@@ -302,24 +482,41 @@ export function LaniakeaExplorerPage() {
         const tex = planetTexture(spec.palette, spec.type);
         const planet = new THREE.Mesh(
           new THREE.SphereGeometry(spec.radius, 40, 40),
-          new THREE.MeshStandardMaterial({ map: tex, roughness: 0.85, metalness: spec.type === "ocean" ? 0.4 : 0.05 })
+          new THREE.MeshStandardMaterial({
+            map: tex,
+            roughness: 0.85,
+            metalness: spec.type === 'ocean' ? 0.4 : 0.05,
+          }),
         );
         planet.rotation.z = (Math.random() - 0.5) * 0.5;
         planet.userData.spin = 0.001 + Math.random() * 0.003;
         group.add(planet);
 
-        const atmMat = new THREE.MeshBasicMaterial({ color: spec.glow, transparent: true, opacity: 0.16, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false });
+        const atmMat = new THREE.MeshBasicMaterial({
+          color: spec.glow,
+          transparent: true,
+          opacity: 0.16,
+          side: THREE.BackSide,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
         group.add(new THREE.Mesh(new THREE.SphereGeometry(spec.radius * 1.08, 24, 24), atmMat));
 
-        if (spec.type === "lava") {
+        if (spec.type === 'lava') {
           planet.material.emissive = new THREE.Color(0xff3010);
           planet.material.emissiveIntensity = 0.45;
         }
 
-        if ((spec.type === "gas" || spec.type === "banded") && Math.random() < 0.55) {
+        if ((spec.type === 'gas' || spec.type === 'banded') && Math.random() < 0.55) {
           const ring = new THREE.Mesh(
             new THREE.RingGeometry(spec.radius * 1.55, spec.radius * 2.4, 96),
-            new THREE.MeshBasicMaterial({ map: ringTexture(spec.palette), transparent: true, opacity: 0.85, side: THREE.DoubleSide, depthWrite: false })
+            new THREE.MeshBasicMaterial({
+              map: ringTexture(spec.palette),
+              transparent: true,
+              opacity: 0.85,
+              side: THREE.DoubleSide,
+              depthWrite: false,
+            }),
           );
           ring.rotation.x = Math.PI * (0.38 + Math.random() * 0.18);
           ring.rotation.z = (Math.random() - 0.5) * 0.5;
@@ -327,14 +524,21 @@ export function LaniakeaExplorerPage() {
         } else if (Math.random() < 0.18) {
           const ring = new THREE.Mesh(
             new THREE.RingGeometry(spec.radius * 1.5, spec.radius * 2.2, 96),
-            new THREE.MeshBasicMaterial({ map: ringTexture(spec.palette), transparent: true, opacity: 0.65, side: THREE.DoubleSide, depthWrite: false })
+            new THREE.MeshBasicMaterial({
+              map: ringTexture(spec.palette),
+              transparent: true,
+              opacity: 0.65,
+              side: THREE.DoubleSide,
+              depthWrite: false,
+            }),
           );
           ring.rotation.x = Math.PI * 0.42;
           group.add(ring);
         }
 
         // moons
-        const moonCount = Math.random() < 0.45 ? 0 : (Math.random() < 0.7 ? 1 : (Math.random() < 0.7 ? 2 : 3));
+        const moonCount =
+          Math.random() < 0.45 ? 0 : Math.random() < 0.7 ? 1 : Math.random() < 0.7 ? 2 : 3;
         const moons: any[] = [];
         for (let mi = 0; mi < moonCount; mi++) {
           const moonR = spec.radius * (0.08 + Math.random() * 0.22);
@@ -347,17 +551,54 @@ export function LaniakeaExplorerPage() {
           orbitPivot.rotation.z = tiltZ;
           const moon = new THREE.Mesh(
             new THREE.SphereGeometry(moonR, 16, 16),
-            new THREE.MeshStandardMaterial({ color: new THREE.Color(0.55 + Math.random() * 0.3, 0.55 + Math.random() * 0.3, 0.6 + Math.random() * 0.3), roughness: 0.9 })
+            new THREE.MeshStandardMaterial({
+              color: new THREE.Color(
+                0.55 + Math.random() * 0.3,
+                0.55 + Math.random() * 0.3,
+                0.6 + Math.random() * 0.3,
+              ),
+              roughness: 0.9,
+            }),
           );
           moon.position.set(Math.cos(moonAngle) * moonDist, 0, Math.sin(moonAngle) * moonDist);
-          moon.userData.orbit = { radius: moonDist, angle: moonAngle, speed: (Math.random() < 0.5 ? -1 : 1) * (0.0006 + Math.random() * 0.0024) };
+          moon.userData.orbit = {
+            radius: moonDist,
+            angle: moonAngle,
+            speed: (Math.random() < 0.5 ? -1 : 1) * (0.0006 + Math.random() * 0.0024),
+          };
           orbitPivot.add(moon);
           group.add(orbitPivot);
           moons.push(moon);
         }
         planet.userData.moons = moons;
 
-        const name = spec.names[Math.floor(Math.random() * spec.names.length)] + " " + ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "π", "ρ", "σ", "τ", "φ", "χ", "ψ", "ω"][Math.floor(Math.random() * 22)];
+        const name =
+          spec.names[Math.floor(Math.random() * spec.names.length)] +
+          ' ' +
+          [
+            'α',
+            'β',
+            'γ',
+            'δ',
+            'ε',
+            'ζ',
+            'η',
+            'θ',
+            'ι',
+            'κ',
+            'λ',
+            'μ',
+            'ν',
+            'ξ',
+            'π',
+            'ρ',
+            'σ',
+            'τ',
+            'φ',
+            'χ',
+            'ψ',
+            'ω',
+          ][Math.floor(Math.random() * 22)];
         scene.add(group);
         planets.push({ group, planet, radius: spec.radius, name, type: spec.type });
         placedPositions.push(new THREE.Vector3(...position));
@@ -376,11 +617,18 @@ export function LaniakeaExplorerPage() {
           );
           let ok = true;
           for (const p of placedPositions) {
-            if (p.distanceTo(pos) < 2200) { ok = false; break; }
+            if (p.distanceTo(pos) < 2200) {
+              ok = false;
+              break;
+            }
           }
           if (ok) return [pos.x, pos.y, pos.z];
         }
-        return [Math.random() * 30000 - 15000, Math.random() * 8000 - 4000, Math.random() * 30000 - 15000];
+        return [
+          Math.random() * 30000 - 15000,
+          Math.random() * 8000 - 4000,
+          Math.random() * 30000 - 15000,
+        ];
       }
 
       // Near planets
@@ -398,7 +646,9 @@ export function LaniakeaExplorerPage() {
       });
 
       // Far planets
-      function pickPosFar() { return pickPos(3500, 60000, 30); }
+      function pickPosFar() {
+        return pickPos(3500, 60000, 30);
+      }
       for (let i = 0; i < 140; i++) {
         const t = PLANET_TYPES[Math.floor(Math.random() * PLANET_TYPES.length)];
         const radius = 40 + Math.pow(Math.random(), 0.9) * 240;
@@ -410,56 +660,98 @@ export function LaniakeaExplorerPage() {
       function makeBlackHole(position: number[], scale = 1) {
         const grp = new THREE.Group();
         grp.position.set(...position);
-        grp.add(new THREE.Mesh(new THREE.SphereGeometry(70 * scale, 48, 48), new THREE.MeshBasicMaterial({ color: 0x000000 })));
+        grp.add(
+          new THREE.Mesh(
+            new THREE.SphereGeometry(70 * scale, 48, 48),
+            new THREE.MeshBasicMaterial({ color: 0x000000 }),
+          ),
+        );
 
-        const dc = document.createElement("canvas"); dc.width = dc.height = 512;
-        const dctx = dc.getContext("2d")!;
+        const dc = document.createElement('canvas');
+        dc.width = dc.height = 512;
+        const dctx = dc.getContext('2d')!;
         const g = dctx.createRadialGradient(256, 256, 80, 256, 256, 256);
-        g.addColorStop(0, "rgba(255,250,200,0)");
-        g.addColorStop(0.18, "rgba(255,240,150,1)");
-        g.addColorStop(0.32, "rgba(255,180,80,1)");
-        g.addColorStop(0.55, "rgba(220,80,40,.85)");
-        g.addColorStop(0.78, "rgba(140,40,120,.45)");
-        g.addColorStop(1, "rgba(60,20,80,0)");
-        dctx.fillStyle = g; dctx.fillRect(0, 0, 512, 512);
+        g.addColorStop(0, 'rgba(255,250,200,0)');
+        g.addColorStop(0.18, 'rgba(255,240,150,1)');
+        g.addColorStop(0.32, 'rgba(255,180,80,1)');
+        g.addColorStop(0.55, 'rgba(220,80,40,.85)');
+        g.addColorStop(0.78, 'rgba(140,40,120,.45)');
+        g.addColorStop(1, 'rgba(60,20,80,0)');
+        dctx.fillStyle = g;
+        dctx.fillRect(0, 0, 512, 512);
         for (let i = 0; i < 200; i++) {
           const a = Math.random() * Math.PI * 2;
           const d = 100 + Math.random() * 140;
-          dctx.fillStyle = "rgba(255,220,160," + (Math.random() * 0.4) + ")";
+          dctx.fillStyle = 'rgba(255,220,160,' + Math.random() * 0.4 + ')';
           dctx.beginPath();
-          dctx.arc(256 + Math.cos(a) * d, 256 + Math.sin(a) * d, 2 + Math.random() * 4, 0, Math.PI * 2);
+          dctx.arc(
+            256 + Math.cos(a) * d,
+            256 + Math.sin(a) * d,
+            2 + Math.random() * 4,
+            0,
+            Math.PI * 2,
+          );
           dctx.fill();
         }
         const diskTex = new THREE.CanvasTexture(dc);
         const disk = new THREE.Mesh(
           new THREE.RingGeometry(75 * scale, 280 * scale, 96),
-          new THREE.MeshBasicMaterial({ map: diskTex, transparent: true, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, depthWrite: false })
+          new THREE.MeshBasicMaterial({
+            map: diskTex,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            side: THREE.DoubleSide,
+            depthWrite: false,
+          }),
         );
         disk.rotation.x = Math.PI * 0.42;
-        disk.rotation.z = (Math.random() - 0.5);
+        disk.rotation.z = Math.random() - 0.5;
         disk.userData.spin = 0.002 + Math.random() * 0.002;
         grp.add(disk);
 
         const photon = new THREE.Mesh(
           new THREE.RingGeometry(74 * scale, 79 * scale, 96),
-          new THREE.MeshBasicMaterial({ color: 0xffe8a8, transparent: true, opacity: 0.85, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false })
+          new THREE.MeshBasicMaterial({
+            color: 0xffe8a8,
+            transparent: true,
+            opacity: 0.85,
+            side: THREE.DoubleSide,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          }),
         );
         grp.add(photon);
 
-        const hc = document.createElement("canvas"); hc.width = hc.height = 256;
-        const hctx = hc.getContext("2d")!;
+        const hc = document.createElement('canvas');
+        hc.width = hc.height = 256;
+        const hctx = hc.getContext('2d')!;
         const hg = hctx.createRadialGradient(128, 128, 30, 128, 128, 128);
-        hg.addColorStop(0, "rgba(255,180,80,0)");
-        hg.addColorStop(0.35, "rgba(255,200,120,.5)");
-        hg.addColorStop(0.6, "rgba(140,40,120,.2)");
-        hg.addColorStop(1, "rgba(0,0,0,0)");
-        hctx.fillStyle = hg; hctx.fillRect(0, 0, 256, 256);
-        const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(hc), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+        hg.addColorStop(0, 'rgba(255,180,80,0)');
+        hg.addColorStop(0.35, 'rgba(255,200,120,.5)');
+        hg.addColorStop(0.6, 'rgba(140,40,120,.2)');
+        hg.addColorStop(1, 'rgba(0,0,0,0)');
+        hctx.fillStyle = hg;
+        hctx.fillRect(0, 0, 256, 256);
+        const halo = new THREE.Sprite(
+          new THREE.SpriteMaterial({
+            map: new THREE.CanvasTexture(hc),
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          }),
+        );
         halo.scale.set(800 * scale, 800 * scale, 1);
         grp.add(halo);
 
         scene.add(grp);
-        blackHoles.push({ group: grp, disk, photon, halo, scale, position: new THREE.Vector3(...position) });
+        blackHoles.push({
+          group: grp,
+          disk,
+          photon,
+          halo,
+          scale,
+          position: new THREE.Vector3(...position),
+        });
         placedPositions.push(new THREE.Vector3(...position));
       }
       makeBlackHole([-3500, 600, -4200], 1.0);
@@ -471,31 +763,36 @@ export function LaniakeaExplorerPage() {
       // ===== Quasars (bipolar jets) =====
       const quasars: any[] = [];
       function makeJetTexture() {
-        const c = document.createElement("canvas"); c.width = 64; c.height = 1024;
-        const ctx = c.getContext("2d")!;
+        const c = document.createElement('canvas');
+        c.width = 64;
+        c.height = 1024;
+        const ctx = c.getContext('2d')!;
         const g = ctx.createLinearGradient(0, 1024, 0, 0);
-        g.addColorStop(0, "rgba(255,240,200,1)");
-        g.addColorStop(0.06, "rgba(255,200,140,1)");
-        g.addColorStop(0.20, "rgba(200,130,255,.85)");
-        g.addColorStop(0.55, "rgba(140,80,220,.4)");
-        g.addColorStop(0.85, "rgba(80,40,160,.12)");
-        g.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, 64, 1024);
+        g.addColorStop(0, 'rgba(255,240,200,1)');
+        g.addColorStop(0.06, 'rgba(255,200,140,1)');
+        g.addColorStop(0.2, 'rgba(200,130,255,.85)');
+        g.addColorStop(0.55, 'rgba(140,80,220,.4)');
+        g.addColorStop(0.85, 'rgba(80,40,160,.12)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 64, 1024);
         const h = ctx.createLinearGradient(0, 0, 64, 0);
-        h.addColorStop(0, "rgba(0,0,0,0)");
-        h.addColorStop(0.5, "rgba(0,0,0,1)");
-        h.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.globalCompositeOperation = "destination-in";
-        ctx.fillStyle = h; ctx.fillRect(0, 0, 64, 1024);
-        ctx.globalCompositeOperation = "lighter";
+        h.addColorStop(0, 'rgba(0,0,0,0)');
+        h.addColorStop(0.5, 'rgba(0,0,0,1)');
+        h.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.fillStyle = h;
+        ctx.fillRect(0, 0, 64, 1024);
+        ctx.globalCompositeOperation = 'lighter';
         for (let i = 0; i < 14; i++) {
           const y = 100 + Math.random() * 700;
           const rad = 8 + Math.random() * 16;
           const kg = ctx.createRadialGradient(32, y, 0, 32, y, rad);
           const a = 0.5 + Math.random() * 0.4;
-          kg.addColorStop(0, "rgba(255,230,200," + a + ")");
-          kg.addColorStop(1, "rgba(255,230,200,0)");
-          ctx.fillStyle = kg; ctx.fillRect(0, y - rad, 64, rad * 2);
+          kg.addColorStop(0, 'rgba(255,230,200,' + a + ')');
+          kg.addColorStop(1, 'rgba(255,230,200,0)');
+          ctx.fillStyle = kg;
+          ctx.fillRect(0, y - rad, 64, rad * 2);
         }
         const tex = new THREE.CanvasTexture(c);
         tex.minFilter = THREE.LinearFilter;
@@ -508,59 +805,104 @@ export function LaniakeaExplorerPage() {
         const grp = new THREE.Group();
         grp.position.set(...position);
 
-        grp.add(new THREE.Mesh(new THREE.SphereGeometry(28, 24, 24), new THREE.MeshBasicMaterial({ color: 0xfff4d0 })));
+        grp.add(
+          new THREE.Mesh(
+            new THREE.SphereGeometry(28, 24, 24),
+            new THREE.MeshBasicMaterial({ color: 0xfff4d0 }),
+          ),
+        );
 
-        const cv = document.createElement("canvas"); cv.width = cv.height = 256;
-        const ctx = cv.getContext("2d")!;
+        const cv = document.createElement('canvas');
+        cv.width = cv.height = 256;
+        const ctx = cv.getContext('2d')!;
         const g = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
-        g.addColorStop(0, "rgba(255,255,240,1)");
-        g.addColorStop(0.18, "rgba(255,220,160,.85)");
-        g.addColorStop(0.45, "rgba(220,140,255,.45)");
-        g.addColorStop(0.75, "rgba(120,60,200,.15)");
-        g.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, 256, 256);
-        const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+        g.addColorStop(0, 'rgba(255,255,240,1)');
+        g.addColorStop(0.18, 'rgba(255,220,160,.85)');
+        g.addColorStop(0.45, 'rgba(220,140,255,.45)');
+        g.addColorStop(0.75, 'rgba(120,60,200,.15)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 256, 256);
+        const glow = new THREE.Sprite(
+          new THREE.SpriteMaterial({
+            map: new THREE.CanvasTexture(cv),
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          }),
+        );
         glow.scale.set(620, 620, 1);
         grp.add(glow);
 
         function jet(direction: number) {
           const j = new THREE.Group();
-          const planeMat = new THREE.MeshBasicMaterial({ map: jetTex, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+          const planeMat = new THREE.MeshBasicMaterial({
+            map: jetTex,
+            transparent: true,
+            opacity: 0.75,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+          });
           const p1 = new THREE.Mesh(new THREE.PlaneGeometry(280, 3600), planeMat);
           const p2 = new THREE.Mesh(new THREE.PlaneGeometry(280, 3600), planeMat.clone());
-          p1.position.y = 1800; p2.position.y = 1800;
+          p1.position.y = 1800;
+          p2.position.y = 1800;
           p2.rotation.y = Math.PI / 2;
-          j.add(p1); j.add(p2);
-          const innerMat = new THREE.MeshBasicMaterial({ map: jetTex, transparent: true, opacity: 1, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+          j.add(p1);
+          j.add(p2);
+          const innerMat = new THREE.MeshBasicMaterial({
+            map: jetTex,
+            transparent: true,
+            opacity: 1,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+          });
           const inner = new THREE.Mesh(new THREE.PlaneGeometry(70, 3200), innerMat);
           inner.position.y = 1600;
           j.add(inner);
           if (direction < 0) j.rotation.x = Math.PI;
           return j;
         }
-        grp.add(jet(1)); grp.add(jet(-1));
+        grp.add(jet(1));
+        grp.add(jet(-1));
 
-        const dc = document.createElement("canvas"); dc.width = dc.height = 512;
-        const dctx = dc.getContext("2d")!;
+        const dc = document.createElement('canvas');
+        dc.width = dc.height = 512;
+        const dctx = dc.getContext('2d')!;
         const dg = dctx.createRadialGradient(256, 256, 30, 256, 256, 256);
-        dg.addColorStop(0, "rgba(255,250,200,0)");
-        dg.addColorStop(0.10, "rgba(255,230,160,1)");
-        dg.addColorStop(0.30, "rgba(255,170,80,.85)");
-        dg.addColorStop(0.60, "rgba(220,90,160,.5)");
-        dg.addColorStop(0.85, "rgba(120,40,160,.2)");
-        dg.addColorStop(1, "rgba(0,0,0,0)");
-        dctx.fillStyle = dg; dctx.fillRect(0, 0, 512, 512);
+        dg.addColorStop(0, 'rgba(255,250,200,0)');
+        dg.addColorStop(0.1, 'rgba(255,230,160,1)');
+        dg.addColorStop(0.3, 'rgba(255,170,80,.85)');
+        dg.addColorStop(0.6, 'rgba(220,90,160,.5)');
+        dg.addColorStop(0.85, 'rgba(120,40,160,.2)');
+        dg.addColorStop(1, 'rgba(0,0,0,0)');
+        dctx.fillStyle = dg;
+        dctx.fillRect(0, 0, 512, 512);
         for (let i = 0; i < 240; i++) {
           const ang = Math.random() * Math.PI * 2;
           const rad = 80 + Math.random() * 160;
-          dctx.fillStyle = "rgba(255,220,160," + (Math.random() * 0.5) + ")";
+          dctx.fillStyle = 'rgba(255,220,160,' + Math.random() * 0.5 + ')';
           dctx.beginPath();
-          dctx.arc(256 + Math.cos(ang) * rad, 256 + Math.sin(ang) * rad, 1.5 + Math.random() * 3.5, 0, Math.PI * 2);
+          dctx.arc(
+            256 + Math.cos(ang) * rad,
+            256 + Math.sin(ang) * rad,
+            1.5 + Math.random() * 3.5,
+            0,
+            Math.PI * 2,
+          );
           dctx.fill();
         }
         const disk = new THREE.Mesh(
           new THREE.RingGeometry(40, 280, 96),
-          new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(dc), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })
+          new THREE.MeshBasicMaterial({
+            map: new THREE.CanvasTexture(dc),
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+          }),
         );
         disk.rotation.x = Math.PI * 0.5;
         grp.add(disk);
@@ -582,36 +924,67 @@ export function LaniakeaExplorerPage() {
         grp.position.set(...position);
         const R = 280;
 
-        const star = new THREE.Mesh(new THREE.SphereGeometry(100, 32, 32), new THREE.MeshBasicMaterial({ color: 0xffe8a0 }));
+        const star = new THREE.Mesh(
+          new THREE.SphereGeometry(100, 32, 32),
+          new THREE.MeshBasicMaterial({ color: 0xffe8a0 }),
+        );
         grp.add(star);
 
-        const sgcv = document.createElement("canvas"); sgcv.width = sgcv.height = 128;
-        const sgc = sgcv.getContext("2d")!;
+        const sgcv = document.createElement('canvas');
+        sgcv.width = sgcv.height = 128;
+        const sgc = sgcv.getContext('2d')!;
         const sg = sgc.createRadialGradient(64, 64, 0, 64, 64, 64);
-        sg.addColorStop(0, "rgba(255,240,180,1)");
-        sg.addColorStop(0.4, "rgba(255,200,80,0.6)");
-        sg.addColorStop(1, "rgba(255,120,40,0)");
-        sgc.fillStyle = sg; sgc.fillRect(0, 0, 128, 128);
-        const starHalo = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(sgcv), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+        sg.addColorStop(0, 'rgba(255,240,180,1)');
+        sg.addColorStop(0.4, 'rgba(255,200,80,0.6)');
+        sg.addColorStop(1, 'rgba(255,120,40,0)');
+        sgc.fillStyle = sg;
+        sgc.fillRect(0, 0, 128, 128);
+        const starHalo = new THREE.Sprite(
+          new THREE.SpriteMaterial({
+            map: new THREE.CanvasTexture(sgcv),
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          }),
+        );
         starHalo.scale.set(900, 900, 1);
         grp.add(starHalo);
 
-        const latticeMat = new THREE.MeshBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.55, side: THREE.DoubleSide, depthWrite: false });
+        const latticeMat = new THREE.MeshBasicMaterial({
+          color: 0x88ccff,
+          transparent: true,
+          opacity: 0.55,
+          side: THREE.DoubleSide,
+          depthWrite: false,
+        });
         function ring(rotX: number, rotY: number, rotZ: number) {
           const r = new THREE.Mesh(new THREE.TorusGeometry(R, 3, 6, 96), latticeMat);
           r.rotation.set(rotX, rotY, rotZ);
           grp.add(r);
         }
-        ring(0, 0, 0); ring(Math.PI / 2, 0, 0); ring(0, Math.PI / 2, 0);
-        ring(Math.PI / 4, Math.PI / 4, 0); ring(-Math.PI / 4, Math.PI / 4, 0); ring(Math.PI / 4, -Math.PI / 4, 0);
+        ring(0, 0, 0);
+        ring(Math.PI / 2, 0, 0);
+        ring(0, Math.PI / 2, 0);
+        ring(Math.PI / 4, Math.PI / 4, 0);
+        ring(-Math.PI / 4, Math.PI / 4, 0);
+        ring(Math.PI / 4, -Math.PI / 4, 0);
 
-        const panelMat = new THREE.MeshBasicMaterial({ color: 0x2a3045, transparent: true, opacity: 0.85 });
+        const panelMat = new THREE.MeshBasicMaterial({
+          color: 0x2a3045,
+          transparent: true,
+          opacity: 0.85,
+        });
         for (let i = 0; i < 32; i++) {
-          const u = Math.random(), v = Math.random();
+          const u = Math.random(),
+            v = Math.random();
           const theta = 2 * Math.PI * u;
           const phi = Math.acos(2 * v - 1);
           const panel = new THREE.Mesh(new THREE.BoxGeometry(30, 30, 4), panelMat);
-          panel.position.set(R * Math.sin(phi) * Math.cos(theta), R * Math.cos(phi), R * Math.sin(phi) * Math.sin(theta));
+          panel.position.set(
+            R * Math.sin(phi) * Math.cos(theta),
+            R * Math.cos(phi),
+            R * Math.sin(phi) * Math.sin(theta),
+          );
           panel.lookAt(0, 0, 0);
           grp.add(panel);
         }
@@ -620,15 +993,25 @@ export function LaniakeaExplorerPage() {
         const POINT_N = 60;
         const pPos = new Float32Array(POINT_N * 3);
         for (let i = 0; i < POINT_N; i++) {
-          const u = Math.random(), v = Math.random();
+          const u = Math.random(),
+            v = Math.random();
           const theta = 2 * Math.PI * u;
           const phi = Math.acos(2 * v - 1);
           pPos[i * 3] = R * Math.sin(phi) * Math.cos(theta);
           pPos[i * 3 + 1] = R * Math.cos(phi);
           pPos[i * 3 + 2] = R * Math.sin(phi) * Math.sin(theta);
         }
-        pointGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
-        const lights = new THREE.Points(pointGeo, new THREE.PointsMaterial({ color: 0xffd070, size: 6, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+        pointGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        const lights = new THREE.Points(
+          pointGeo,
+          new THREE.PointsMaterial({
+            color: 0xffd070,
+            size: 6,
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          }),
+        );
         grp.add(lights);
 
         scene.add(grp);
@@ -644,36 +1027,45 @@ export function LaniakeaExplorerPage() {
         const grp = new THREE.Group();
         const hull = new THREE.Mesh(
           new THREE.ConeGeometry(2.2, 9, 8),
-          new THREE.MeshStandardMaterial({ color: 0x888899, roughness: 0.45, metalness: 0.65 })
+          new THREE.MeshStandardMaterial({ color: 0x888899, roughness: 0.45, metalness: 0.65 }),
         );
         hull.rotation.x = Math.PI / 2;
         grp.add(hull);
         const body = new THREE.Mesh(
           new THREE.BoxGeometry(5, 1.6, 4.5),
-          new THREE.MeshStandardMaterial({ color: 0x55606e, roughness: 0.5, metalness: 0.6 })
+          new THREE.MeshStandardMaterial({ color: 0x55606e, roughness: 0.5, metalness: 0.6 }),
         );
         body.position.z = -2;
         grp.add(body);
         const wing = new THREE.Mesh(
           new THREE.BoxGeometry(10, 0.4, 2.5),
-          new THREE.MeshStandardMaterial({ color: 0x404a55, roughness: 0.55, metalness: 0.55 })
+          new THREE.MeshStandardMaterial({ color: 0x404a55, roughness: 0.55, metalness: 0.55 }),
         );
         wing.position.z = -1.5;
         grp.add(wing);
-        const cv = document.createElement("canvas"); cv.width = cv.height = 64;
-        const ctx = cv.getContext("2d")!;
+        const cv = document.createElement('canvas');
+        cv.width = cv.height = 64;
+        const ctx = cv.getContext('2d')!;
         const eg = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        eg.addColorStop(0, "rgba(180,220,255,1)");
-        eg.addColorStop(0.4, "rgba(80,140,255,0.6)");
-        eg.addColorStop(1, "rgba(40,80,200,0)");
-        ctx.fillStyle = eg; ctx.fillRect(0, 0, 64, 64);
-        const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+        eg.addColorStop(0, 'rgba(180,220,255,1)');
+        eg.addColorStop(0.4, 'rgba(80,140,255,0.6)');
+        eg.addColorStop(1, 'rgba(40,80,200,0)');
+        ctx.fillStyle = eg;
+        ctx.fillRect(0, 0, 64, 64);
+        const glow = new THREE.Sprite(
+          new THREE.SpriteMaterial({
+            map: new THREE.CanvasTexture(cv),
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          }),
+        );
         glow.scale.set(18, 18, 1);
         glow.position.z = -5;
         grp.add(glow);
         const navLight = new THREE.Mesh(
           new THREE.SphereGeometry(0.4, 8, 8),
-          new THREE.MeshBasicMaterial({ color: 0xff3a3a })
+          new THREE.MeshBasicMaterial({ color: 0xff3a3a }),
         );
         navLight.position.set(0, 0.8, 0);
         grp.add(navLight);
@@ -682,57 +1074,97 @@ export function LaniakeaExplorerPage() {
         const orbitCenter = new THREE.Vector3(
           (Math.random() - 0.5) * 12000,
           (Math.random() - 0.5) * 4000,
-          (Math.random() - 0.5) * 12000
+          (Math.random() - 0.5) * 12000,
         );
         const orbitR = 800 + Math.random() * 3000;
-        const orbitAxis = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+        const orbitAxis = new THREE.Vector3(
+          Math.random() - 0.5,
+          Math.random() - 0.5,
+          Math.random() - 0.5,
+        ).normalize();
         const orbitSpeed = (Math.random() < 0.5 ? -1 : 1) * (0.00015 + Math.random() * 0.0003);
         const orbitPhase = Math.random() * Math.PI * 2;
 
         scene.add(grp);
-        ships.push({ group: grp, glow, navLight, orbitCenter, orbitR, orbitAxis, orbitSpeed, orbitPhase, idx });
+        ships.push({
+          group: grp,
+          glow,
+          navLight,
+          orbitCenter,
+          orbitR,
+          orbitAxis,
+          orbitSpeed,
+          orbitPhase,
+          idx,
+        });
       }
       for (let i = 0; i < 14; i++) makeShip(i);
 
       // ===== Shooting stars =====
       function meteorTexture() {
-        const c = document.createElement("canvas"); c.width = 256; c.height = 32;
-        const ctx = c.getContext("2d")!;
+        const c = document.createElement('canvas');
+        c.width = 256;
+        c.height = 32;
+        const ctx = c.getContext('2d')!;
         const g = ctx.createLinearGradient(0, 16, 256, 16);
-        g.addColorStop(0, "rgba(255,255,255,0)");
-        g.addColorStop(0.55, "rgba(255,230,180,0.45)");
-        g.addColorStop(0.88, "rgba(255,255,255,1)");
-        g.addColorStop(1, "rgba(255,255,255,0)");
-        ctx.fillStyle = g; ctx.fillRect(0, 0, 256, 32);
-        ctx.globalCompositeOperation = "destination-in";
+        g.addColorStop(0, 'rgba(255,255,255,0)');
+        g.addColorStop(0.55, 'rgba(255,230,180,0.45)');
+        g.addColorStop(0.88, 'rgba(255,255,255,1)');
+        g.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 256, 32);
+        ctx.globalCompositeOperation = 'destination-in';
         const tg = ctx.createLinearGradient(0, 0, 0, 32);
-        tg.addColorStop(0, "rgba(0,0,0,0)");
-        tg.addColorStop(0.5, "rgba(0,0,0,1)");
-        tg.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = tg; ctx.fillRect(0, 0, 256, 32);
+        tg.addColorStop(0, 'rgba(0,0,0,0)');
+        tg.addColorStop(0.5, 'rgba(0,0,0,1)');
+        tg.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = tg;
+        ctx.fillRect(0, 0, 256, 32);
         return new THREE.CanvasTexture(c);
       }
       const meteorTex = meteorTexture();
       const meteors: any[] = [];
       for (let i = 0; i < 8; i++) {
-        const mat = new THREE.MeshBasicMaterial({ map: meteorTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, opacity: 0 });
+        const mat = new THREE.MeshBasicMaterial({
+          map: meteorTex,
+          transparent: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+          side: THREE.DoubleSide,
+          opacity: 0,
+        });
         const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
         mesh.visible = false;
         scene.add(mesh);
-        meteors.push({ mesh, alive: false, age: 0, life: 0, pos: new THREE.Vector3(), vel: new THREE.Vector3(), length: 0 });
+        meteors.push({
+          mesh,
+          alive: false,
+          age: 0,
+          life: 0,
+          pos: new THREE.Vector3(),
+          vel: new THREE.Vector3(),
+          length: 0,
+        });
       }
       function spawnMeteor() {
         const m = meteors.find((x: any) => !x.alive);
         if (!m) return;
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos(2 * Math.random() - 1);
-        const dir = new THREE.Vector3(Math.sin(phi) * Math.cos(theta), Math.cos(phi) * 0.6, Math.sin(phi) * Math.sin(theta));
+        const dir = new THREE.Vector3(
+          Math.sin(phi) * Math.cos(theta),
+          Math.cos(phi) * 0.6,
+          Math.sin(phi) * Math.sin(theta),
+        );
         const dist = 5500 + Math.random() * 1200;
         m.pos.copy(camera.position).addScaledVector(dir, dist);
         const t1 = new THREE.Vector3(-dir.z, 0, dir.x).normalize();
         const t2 = new THREE.Vector3().crossVectors(dir, t1).normalize();
         const ang = Math.random() * Math.PI * 2;
-        const tangent = t1.multiplyScalar(Math.cos(ang)).add(t2.multiplyScalar(Math.sin(ang))).normalize();
+        const tangent = t1
+          .multiplyScalar(Math.cos(ang))
+          .add(t2.multiplyScalar(Math.sin(ang)))
+          .normalize();
         m.vel.copy(tangent).multiplyScalar(550 + Math.random() * 400);
         m.age = 0;
         m.life = 1.2 + Math.random() * 1.4;
@@ -748,7 +1180,12 @@ export function LaniakeaExplorerPage() {
         for (const m of meteors) {
           if (!m.alive) continue;
           m.age += dtSec;
-          if (m.age >= m.life) { m.alive = false; m.mesh.visible = false; m.mesh.material.opacity = 0; continue; }
+          if (m.age >= m.life) {
+            m.alive = false;
+            m.mesh.visible = false;
+            m.mesh.material.opacity = 0;
+            continue;
+          }
           m.pos.addScaledVector(m.vel, dtSec);
           m.mesh.position.copy(m.pos);
           _tmpFwd.copy(m.vel).normalize();
@@ -759,7 +1196,7 @@ export function LaniakeaExplorerPage() {
           m.mesh.quaternion.setFromRotationMatrix(_tmpMat);
           m.mesh.scale.set(m.length, 10, 1);
           const t = m.age / m.life;
-          const alpha = t < 0.12 ? (t / 0.12) : (1 - (t - 0.12) / 0.88);
+          const alpha = t < 0.12 ? t / 0.12 : 1 - (t - 0.12) / 0.88;
           m.mesh.material.opacity = Math.max(0, Math.min(1, alpha)) * 0.85;
         }
         if (Math.random() < dtSec * 0.7) spawnMeteor();
@@ -780,7 +1217,8 @@ export function LaniakeaExplorerPage() {
 
       // ===== Input =====
       const keys = { w: false, a: false, s: false, d: false };
-      let yawRate = 0, pitchRate = 0;
+      let yawRate = 0,
+        pitchRate = 0;
       let started = false;
       let paused = false;
 
@@ -788,95 +1226,126 @@ export function LaniakeaExplorerPage() {
       const MAX_YAW_RATE = 2.4;
       const MAX_PITCH_RATE = 1.6;
 
-      const introEl = el.querySelector("#rest-intro") as HTMLElement;
-      const cursorEl = el.querySelector("#rest-cursor") as HTMLElement;
-      const pauseEl = el.querySelector("#rest-pause") as HTMLElement;
-      const edgeTop = el.querySelector(".edge-hint.top") as HTMLElement;
-      const edgeBottom = el.querySelector(".edge-hint.bottom") as HTMLElement;
-      const edgeLeft = el.querySelector(".edge-hint.left") as HTMLElement;
-      const edgeRight = el.querySelector(".edge-hint.right") as HTMLElement;
-      const evaEl = el.querySelector("#hud-eva") as HTMLElement;
-      const hrEl = el.querySelector("#hud-heart") as HTMLElement;
-      const o2SatEl = el.querySelector("#hud-o2sat") as HTMLElement;
-      const posEl = el.querySelector("#hud-position") as HTMLElement;
-      const pressureVal = el.querySelector("#hud-pressure") as HTMLElement;
-      const pressureNeedle = el.querySelector("#hud-pressure-needle") as HTMLElement;
-      const o2DialVal = el.querySelector("#hud-o2level") as HTMLElement;
-      const o2Needle = el.querySelector("#hud-o2-needle") as HTMLElement;
-      let pressureTarget = 101.3, pressureCurrent = 101.3, nextPressureChange = 5000;
-      let o2Target = 97, o2Current = 97, nextO2Change = 8000;
-      const velEl = el.querySelector("#hud-velocity") as HTMLElement;
-      const nearestEl = el.querySelector("#hud-nearest") as HTMLElement;
-      const approachNameEl = el.querySelector("#hud-approachName") as HTMLElement;
-      const approachDistEl = el.querySelector("#hud-approachDist") as HTMLElement;
-      const approachWrapEl = el.querySelector("#hud-approachWrap") as HTMLElement;
+      const introEl = el.querySelector('#rest-intro') as HTMLElement;
+      const cursorEl = el.querySelector('#rest-cursor') as HTMLElement;
+      const pauseEl = el.querySelector('#rest-pause') as HTMLElement;
+      const edgeTop = el.querySelector('.edge-hint.top') as HTMLElement;
+      const edgeBottom = el.querySelector('.edge-hint.bottom') as HTMLElement;
+      const edgeLeft = el.querySelector('.edge-hint.left') as HTMLElement;
+      const edgeRight = el.querySelector('.edge-hint.right') as HTMLElement;
+      const evaEl = el.querySelector('#hud-eva') as HTMLElement;
+      const hrEl = el.querySelector('#hud-heart') as HTMLElement;
+      const o2SatEl = el.querySelector('#hud-o2sat') as HTMLElement;
+      const posEl = el.querySelector('#hud-position') as HTMLElement;
+      const pressureVal = el.querySelector('#hud-pressure') as HTMLElement;
+      const pressureNeedle = el.querySelector('#hud-pressure-needle') as HTMLElement;
+      const o2DialVal = el.querySelector('#hud-o2level') as HTMLElement;
+      const o2Needle = el.querySelector('#hud-o2-needle') as HTMLElement;
+      let pressureTarget = 101.3,
+        pressureCurrent = 101.3,
+        nextPressureChange = 5000;
+      let o2Target = 97,
+        o2Current = 97,
+        nextO2Change = 8000;
+      const velEl = el.querySelector('#hud-velocity') as HTMLElement;
+      const nearestEl = el.querySelector('#hud-nearest') as HTMLElement;
+      const approachNameEl = el.querySelector('#hud-approachName') as HTMLElement;
+      const approachDistEl = el.querySelector('#hud-approachDist') as HTMLElement;
+      const approachWrapEl = el.querySelector('#hud-approachWrap') as HTMLElement;
 
       function setPaused(v: boolean) {
         paused = v;
-        pauseEl.classList.toggle("show", v);
-        if (v) { yawRate = 0; pitchRate = 0; }
+        pauseEl.classList.toggle('show', v);
+        if (v) {
+          yawRate = 0;
+          pitchRate = 0;
+        }
       }
 
-      function steerCurve(t: number) { return Math.pow(t, 1.4); }
+      function steerCurve(t: number) {
+        return Math.pow(t, 1.4);
+      }
 
       const onMouseMove = (e: MouseEvent) => {
-        cursorEl.style.left = e.clientX + "px";
-        cursorEl.style.top = e.clientY + "px";
+        cursorEl.style.left = e.clientX + 'px';
+        cursorEl.style.top = e.clientY + 'px';
         if (paused) return;
-        const nx = (e.clientX / innerWidth) - 0.5;
-        const ny = (e.clientY / innerHeight) - 0.5;
-        const ax = Math.abs(nx), ay = Math.abs(ny);
-        const dx = ax < DEAD_ZONE ? 0 : Math.sign(nx) * steerCurve((ax - DEAD_ZONE) / (0.5 - DEAD_ZONE));
-        const dy = ay < DEAD_ZONE ? 0 : Math.sign(ny) * steerCurve((ay - DEAD_ZONE) / (0.5 - DEAD_ZONE));
+        const nx = e.clientX / innerWidth - 0.5;
+        const ny = e.clientY / innerHeight - 0.5;
+        const ax = Math.abs(nx),
+          ay = Math.abs(ny);
+        const dx =
+          ax < DEAD_ZONE ? 0 : Math.sign(nx) * steerCurve((ax - DEAD_ZONE) / (0.5 - DEAD_ZONE));
+        const dy =
+          ay < DEAD_ZONE ? 0 : Math.sign(ny) * steerCurve((ay - DEAD_ZONE) / (0.5 - DEAD_ZONE));
         yawRate = -dx * MAX_YAW_RATE;
         pitchRate = -dy * MAX_PITCH_RATE;
         const rotating = dx !== 0 || dy !== 0;
-        cursorEl.classList.toggle("rotating", rotating);
-        edgeLeft.classList.toggle("show", nx < -DEAD_ZONE);
-        edgeRight.classList.toggle("show", nx > DEAD_ZONE);
-        edgeTop.classList.toggle("show", ny < -DEAD_ZONE);
-        edgeBottom.classList.toggle("show", ny > DEAD_ZONE);
+        cursorEl.classList.toggle('rotating', rotating);
+        edgeLeft.classList.toggle('show', nx < -DEAD_ZONE);
+        edgeRight.classList.toggle('show', nx > DEAD_ZONE);
+        edgeTop.classList.toggle('show', ny < -DEAD_ZONE);
+        edgeBottom.classList.toggle('show', ny > DEAD_ZONE);
       };
 
       const onMouseLeave = () => {
-        yawRate = 0; pitchRate = 0;
-        cursorEl.classList.remove("rotating");
-        edgeLeft.classList.remove("show"); edgeRight.classList.remove("show");
-        edgeTop.classList.remove("show"); edgeBottom.classList.remove("show");
+        yawRate = 0;
+        pitchRate = 0;
+        cursorEl.classList.remove('rotating');
+        edgeLeft.classList.remove('show');
+        edgeRight.classList.remove('show');
+        edgeTop.classList.remove('show');
+        edgeBottom.classList.remove('show');
       };
 
       function start() {
         if (started) return;
         started = true;
-        introEl.classList.add("gone");
+        introEl.classList.add('gone');
       }
 
       const onKeyDown = (e: KeyboardEvent) => {
-        if (!started && (e.code === "Enter" || e.code === "Space")) { start(); e.preventDefault(); return; }
-        if (e.code === "Escape") { if (started) setPaused(!paused); return; }
-        if (e.code === "KeyQ") { handleExit(); return; }
+        if (!started && (e.code === 'Enter' || e.code === 'Space')) {
+          start();
+          e.preventDefault();
+          return;
+        }
+        if (e.code === 'Escape') {
+          if (started) setPaused(!paused);
+          return;
+        }
+        if (e.code === 'KeyQ') {
+          handleExit();
+          return;
+        }
         if (paused) return;
-        if (e.code === "KeyW") keys.w = true;
-        if (e.code === "KeyA") keys.a = true;
-        if (e.code === "KeyS") keys.s = true;
-        if (e.code === "KeyD") keys.d = true;
+        if (e.code === 'KeyW') keys.w = true;
+        if (e.code === 'KeyA') keys.a = true;
+        if (e.code === 'KeyS') keys.s = true;
+        if (e.code === 'KeyD') keys.d = true;
       };
       const onKeyUp = (e: KeyboardEvent) => {
-        if (e.code === "KeyW") keys.w = false;
-        if (e.code === "KeyA") keys.a = false;
-        if (e.code === "KeyS") keys.s = false;
-        if (e.code === "KeyD") keys.d = false;
+        if (e.code === 'KeyW') keys.w = false;
+        if (e.code === 'KeyA') keys.a = false;
+        if (e.code === 'KeyS') keys.s = false;
+        if (e.code === 'KeyD') keys.d = false;
       };
 
-      document.addEventListener("mousemove", onMouseMove);
-      document.addEventListener("mouseleave", onMouseLeave);
-      document.addEventListener("keydown", onKeyDown);
-      document.addEventListener("keyup", onKeyUp);
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseleave', onMouseLeave);
+      document.addEventListener('keydown', onKeyDown);
+      document.addEventListener('keyup', onKeyUp);
 
-      el.querySelector("#rest-enterBtn")!.addEventListener("click", (e: any) => { e.stopPropagation(); start(); });
-      introEl.addEventListener("click", start);
-      el.querySelector("#rest-resumeBtn")!.addEventListener("click", (e: any) => { e.stopPropagation(); setPaused(false); });
-      pauseEl.addEventListener("click", () => setPaused(false));
+      el.querySelector('#rest-enterBtn')!.addEventListener('click', (e: any) => {
+        e.stopPropagation();
+        start();
+      });
+      introEl.addEventListener('click', start);
+      el.querySelector('#rest-resumeBtn')!.addEventListener('click', (e: any) => {
+        e.stopPropagation();
+        setPaused(false);
+      });
+      pauseEl.addEventListener('click', () => setPaused(false));
 
       // ===== Resize =====
       const onResize = () => {
@@ -884,22 +1353,29 @@ export function LaniakeaExplorerPage() {
         camera.updateProjectionMatrix();
         renderer.setSize(innerWidth, innerHeight);
       };
-      window.addEventListener("resize", onResize);
+      window.addEventListener('resize', onResize);
 
       // ===== HUD =====
       const startTime = performance.now();
-      const _currentPOI = "—";
-      function fmt2(n: number) { return n.toString().padStart(2, "0"); }
+      const _currentPOI = '—';
+      function fmt2(n: number) {
+        return n.toString().padStart(2, '0');
+      }
       function tickHUD(now: number, speed: number) {
         const elapsed = Math.floor((now - startTime) / 1000);
-        const evaStr = fmt2(Math.floor(elapsed / 3600)) + ":" + fmt2(Math.floor((elapsed % 3600) / 60)) + ":" + fmt2(elapsed % 60);
+        const evaStr =
+          fmt2(Math.floor(elapsed / 3600)) +
+          ':' +
+          fmt2(Math.floor((elapsed % 3600) / 60)) +
+          ':' +
+          fmt2(elapsed % 60);
         evaEl.textContent = evaStr;
         const hrVal = String(60 + Math.round(2 * Math.sin(now * 0.001)));
         hrEl.textContent = hrVal;
-        const o2sat = 97 - Math.floor(elapsed / 60) % 4;
+        const o2sat = 97 - (Math.floor(elapsed / 60) % 4);
         o2SatEl.textContent = String(o2sat);
         const d = camera.position.length();
-        const posStr = (d >= 0 ? "+" : "") + (d / 1000).toFixed(3);
+        const posStr = (d >= 0 ? '+' : '') + (d / 1000).toFixed(3);
         posEl.textContent = posStr;
         velEl.textContent = Math.round(speed * 600).toLocaleString();
 
@@ -930,7 +1406,8 @@ export function LaniakeaExplorerPage() {
         // Camera forward direction
         _camFwd.set(0, 0, -1).applyQuaternion(camera.quaternion);
 
-        let best: any = null, bestD = Infinity;
+        let best: any = null,
+          bestD = Infinity;
 
         // Check planets
         for (const p of planets) {
@@ -938,7 +1415,10 @@ export function LaniakeaExplorerPage() {
           const d = _dirToBody.length();
           // Dot product > 0 means the object is AHEAD of the camera
           const dot = _dirToBody.dot(_camFwd);
-          if (dot > 0 && d < bestD) { bestD = d; best = p; }
+          if (dot > 0 && d < bestD) {
+            bestD = d;
+            best = p;
+          }
         }
 
         // Check black holes
@@ -946,7 +1426,10 @@ export function LaniakeaExplorerPage() {
           _dirToBody.subVectors(b.group.position, camera.position);
           const d = _dirToBody.length();
           const dot = _dirToBody.dot(_camFwd);
-          if (dot > 0 && d < bestD) { bestD = d; best = { name: "Black Hole", type: "bh", radius: 200 }; }
+          if (dot > 0 && d < bestD) {
+            bestD = d;
+            best = { name: 'Black Hole', type: 'bh', radius: 200 };
+          }
         }
 
         // Check quasars
@@ -954,7 +1437,10 @@ export function LaniakeaExplorerPage() {
           _dirToBody.subVectors(q.group.position, camera.position);
           const d = _dirToBody.length();
           const dot = _dirToBody.dot(_camFwd);
-          if (dot > 0 && d < bestD) { bestD = d; best = { name: "Quasar", type: "quasar", radius: 280 }; }
+          if (dot > 0 && d < bestD) {
+            bestD = d;
+            best = { name: 'Quasar', type: 'quasar', radius: 280 };
+          }
         }
 
         // Check Dyson spheres
@@ -962,32 +1448,36 @@ export function LaniakeaExplorerPage() {
           _dirToBody.subVectors(ds.group.position, camera.position);
           const d = _dirToBody.length();
           const dot = _dirToBody.dot(_camFwd);
-          if (dot > 0 && d < bestD) { bestD = d; best = { name: "Dyson Sphere", type: "dyson", radius: 280 }; }
+          if (dot > 0 && d < bestD) {
+            bestD = d;
+            best = { name: 'Dyson Sphere', type: 'dyson', radius: 280 };
+          }
         }
 
         if (best) {
-          nearestEl.textContent = best.name + " · " + (bestD / 100).toFixed(1) + "k km";
+          nearestEl.textContent = best.name + ' · ' + (bestD / 100).toFixed(1) + 'k km';
           // Format distance for the approach display
           const distKm = bestD / 100;
           let distStr: string;
           if (distKm >= 1000) {
-            distStr = (distKm / 1000).toFixed(1) + "M km";
+            distStr = (distKm / 1000).toFixed(1) + 'M km';
           } else {
-            distStr = distKm.toFixed(1) + "k km";
+            distStr = distKm.toFixed(1) + 'k km';
           }
           approachNameEl.textContent = best.name;
           approachDistEl.textContent = distStr;
-          approachWrapEl.classList.add("visible");
+          approachWrapEl.classList.add('visible');
         } else {
           // Nothing ahead — hide the display
-          nearestEl.textContent = "—";
-          approachWrapEl.classList.remove("visible");
+          nearestEl.textContent = '—';
+          approachWrapEl.classList.remove('visible');
         }
       }
       let nearestTick = 0;
 
       // ===== Main loop =====
-      const fwd = new THREE.Vector3(), right = new THREE.Vector3();
+      const fwd = new THREE.Vector3(),
+        right = new THREE.Vector3();
       const velocity = new THREE.Vector3();
       const targetVel = new THREE.Vector3();
       let velSmoothed = 0;
@@ -1000,11 +1490,15 @@ export function LaniakeaExplorerPage() {
       function animate(now: number) {
         if (destroyed) return;
         rafId = requestAnimationFrame(animate);
-        const dt = Math.min(50, now - lastT); lastT = now;
+        const dt = Math.min(50, now - lastT);
+        lastT = now;
         const dtN = dt / 16;
         const dtSec = dt / 1000;
 
-        if (paused) { renderer.render(scene, camera); return; }
+        if (paused) {
+          renderer.render(scene, camera);
+          return;
+        }
 
         camera.rotateY(yawRate * dtSec);
         camera.rotateX(pitchRate * dtSec);
@@ -1012,19 +1506,21 @@ export function LaniakeaExplorerPage() {
         fwd.set(0, 0, -1).applyQuaternion(camera.quaternion);
         right.set(1, 0, 0).applyQuaternion(camera.quaternion);
 
-        let dirX = 0, dirZ = 0;
+        let dirX = 0,
+          dirZ = 0;
         if (started) {
           if (keys.w) dirZ += 1;
           if (keys.s) dirZ -= 1;
           if (keys.d) dirX += 1;
           if (keys.a) dirX -= 1;
         }
-        const hasInput = (dirX !== 0 || dirZ !== 0);
+        const hasInput = dirX !== 0 || dirZ !== 0;
 
         targetVel.set(0, 0, 0);
         if (hasInput) {
           const mag = Math.hypot(dirX, dirZ);
-          const nx = dirX / mag, nz = dirZ / mag;
+          const nx = dirX / mag,
+            nz = dirZ / mag;
           targetVel.addScaledVector(fwd, nz * MAX_SPEED);
           targetVel.addScaledVector(right, nx * MAX_SPEED);
         }
@@ -1059,19 +1555,21 @@ export function LaniakeaExplorerPage() {
 
         for (const s of ships) {
           s.orbitPhase += s.orbitSpeed * dt;
-          const arb = Math.abs(s.orbitAxis.y) < 0.9 ? new THREE.Vector3(0, 1, 0) : new THREE.Vector3(1, 0, 0);
+          const arb =
+            Math.abs(s.orbitAxis.y) < 0.9 ? new THREE.Vector3(0, 1, 0) : new THREE.Vector3(1, 0, 0);
           const b1 = new THREE.Vector3().crossVectors(s.orbitAxis, arb).normalize();
           const b2 = new THREE.Vector3().crossVectors(s.orbitAxis, b1).normalize();
-          const cs = Math.cos(s.orbitPhase), sn = Math.sin(s.orbitPhase);
+          const cs = Math.cos(s.orbitPhase),
+            sn = Math.sin(s.orbitPhase);
           const px = s.orbitCenter.x + (b1.x * cs + b2.x * sn) * s.orbitR;
           const py = s.orbitCenter.y + (b1.y * cs + b2.y * sn) * s.orbitR;
           const pz = s.orbitCenter.z + (b1.z * cs + b2.z * sn) * s.orbitR;
-          const vx = (-b1.x * sn + b2.x * cs);
-          const vy = (-b1.y * sn + b2.y * cs);
-          const vz = (-b1.z * sn + b2.z * cs);
+          const vx = -b1.x * sn + b2.x * cs;
+          const vy = -b1.y * sn + b2.y * cs;
+          const vz = -b1.z * sn + b2.z * cs;
           s.group.position.set(px, py, pz);
           s.group.lookAt(px + vx, py + vy, pz + vz);
-          const blink = (Math.sin(now * 0.006 + s.idx) > 0.5) ? 1 : 0.15;
+          const blink = Math.sin(now * 0.006 + s.idx) > 0.5 ? 1 : 0.15;
           s.navLight.material.color.setRGB(blink, blink * 0.15, blink * 0.15);
           s.glow.material.opacity = 0.7 + 0.3 * Math.sin(now * 0.005 + s.idx * 1.7);
         }
@@ -1094,7 +1592,7 @@ export function LaniakeaExplorerPage() {
         }
 
         tickHUD(now, velSmoothed);
-        if ((nearestTick++ % 12) === 0) updateNearest();
+        if (nearestTick++ % 12 === 0) updateNearest();
         updateMeteors(dtSec);
 
         renderer.render(scene, camera);
@@ -1105,21 +1603,21 @@ export function LaniakeaExplorerPage() {
       cleanupRef.current = () => {
         destroyed = true;
         cancelAnimationFrame(rafId);
-        document.removeEventListener("mousemove", onMouseMove);
-        document.removeEventListener("mouseleave", onMouseLeave);
-        document.removeEventListener("keydown", onKeyDown);
-        document.removeEventListener("keyup", onKeyUp);
-        window.removeEventListener("resize", onResize);
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseleave', onMouseLeave);
+        document.removeEventListener('keydown', onKeyDown);
+        document.removeEventListener('keyup', onKeyUp);
+        window.removeEventListener('resize', onResize);
         renderer.dispose();
       };
     }
 
     function handleExit() {
       if (cleanupRef.current) cleanupRef.current();
-      navigate("/");
+      navigate('/');
     }
 
-    (container.querySelector(".rest-exit") as HTMLElement)?.addEventListener("click", (e) => {
+    (container.querySelector('.rest-exit') as HTMLElement)?.addEventListener('click', (e) => {
       e.preventDefault();
       handleExit();
     });
@@ -1131,39 +1629,121 @@ export function LaniakeaExplorerPage() {
   }, [navigate]);
 
   return (
-    <div ref={containerRef} className="fixed inset-0 z-[9999]" style={{ cursor: "none", background: "#000", fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-[9999]"
+      style={{
+        cursor: 'none',
+        background: '#000',
+        fontFamily: "'Space Grotesk', system-ui, sans-serif",
+      }}
+    >
       <style>{laniakeaStyles}</style>
 
       <div id="rest-intro" className="intro">
-        <div className="intro-kicker">{"◈"} CSTR-9 {"·"} STELLARIS {"·"} MARK IV</div>
-        <div className="intro-title">Welcome aboard, captain.</div>
-        <div className="intro-sub">A drift vessel for unhurried exploration. Take the helm — glide through 100+ worlds, past nebulae and black holes. No goals. No timer. Just the cosmos through your viewport.</div>
-        <div className="intro-controls">
-          <div className="row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>Move / strafe</span></div>
-          <div className="row"><kbd>Mouse</kbd><span>Center = still {"·"} edge = rotate (360{"°"})</span></div>
-          <div className="row"><kbd>Esc</kbd><span>Pause</span></div>
-          <div className="row"><kbd>Q</kbd><span>Exit to dashboard</span></div>
+        <div className="intro-kicker">
+          {'◈'} CSTR-9 {'·'} STELLARIS {'·'} MARK IV
         </div>
-        <button className="intro-btn" id="rest-enterBtn">{"▸"} Begin Drift</button>
-        <div className="intro-hint">Move the mouse to look around {"·"} W to fly forward</div>
+        <div className="intro-title">Welcome aboard, captain.</div>
+        <div className="intro-sub">
+          A drift vessel for unhurried exploration. Take the helm — glide through 100+ worlds, past
+          nebulae and black holes. No goals. No timer. Just the cosmos through your viewport.
+        </div>
+        <div className="intro-controls">
+          <div className="row">
+            <kbd>W</kbd>
+            <kbd>A</kbd>
+            <kbd>S</kbd>
+            <kbd>D</kbd>
+            <span>Move / strafe</span>
+          </div>
+          <div className="row">
+            <kbd>Mouse</kbd>
+            <span>
+              Center = still {'·'} edge = rotate (360{'°'})
+            </span>
+          </div>
+          <div className="row">
+            <kbd>Esc</kbd>
+            <span>Pause</span>
+          </div>
+          <div className="row">
+            <kbd>Q</kbd>
+            <span>Exit to dashboard</span>
+          </div>
+        </div>
+        <button className="intro-btn" id="rest-enterBtn">
+          {'▸'} Begin Drift
+        </button>
+        <div className="intro-hint">Move the mouse to look around {'·'} W to fly forward</div>
       </div>
 
-      <div id="rest-scene" style={{ position: "fixed", inset: 0, zIndex: 0 }} />
+      <div id="rest-scene" style={{ position: 'fixed', inset: 0, zIndex: 0 }} />
 
       {/* Vignette overlay */}
       <div className="hud-vignette" />
 
       {/* Corner brackets */}
-      <svg className="corner-bracket" style={{ top: 16, left: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="0,50 0,0 50,0" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
-      <svg className="corner-bracket" style={{ top: 16, right: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="0,0 50,0 50,50" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
-      <svg className="corner-bracket" style={{ bottom: 16, left: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="0,0 0,50 50,50" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
-      <svg className="corner-bracket" style={{ bottom: 16, right: 16 }} width="50" height="50" viewBox="0 0 50 50"><polyline points="50,0 50,50 0,50" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" /></svg>
+      <svg
+        className="corner-bracket"
+        style={{ top: 16, left: 16 }}
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+      >
+        <polyline points="0,50 0,0 50,0" fill="none" stroke="rgba(108,92,231,.2)" strokeWidth="1" />
+      </svg>
+      <svg
+        className="corner-bracket"
+        style={{ top: 16, right: 16 }}
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+      >
+        <polyline
+          points="0,0 50,0 50,50"
+          fill="none"
+          stroke="rgba(108,92,231,.2)"
+          strokeWidth="1"
+        />
+      </svg>
+      <svg
+        className="corner-bracket"
+        style={{ bottom: 16, left: 16 }}
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+      >
+        <polyline
+          points="0,0 0,50 50,50"
+          fill="none"
+          stroke="rgba(108,92,231,.2)"
+          strokeWidth="1"
+        />
+      </svg>
+      <svg
+        className="corner-bracket"
+        style={{ bottom: 16, right: 16 }}
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+      >
+        <polyline
+          points="50,0 50,50 0,50"
+          fill="none"
+          stroke="rgba(108,92,231,.2)"
+          strokeWidth="1"
+        />
+      </svg>
 
       {/* Scanlines */}
       <div className="hud-scanlines" />
 
       {/* ── TOP-LEFT: Ship ID + EVA ── */}
-      <div className="hud-panel hud-tl" style={{ position: "fixed", top: 20, left: 20, zIndex: 15 }}>
+      <div
+        className="hud-panel hud-tl"
+        style={{ position: 'fixed', top: 20, left: 20, zIndex: 15 }}
+      >
         <div className="hud-ship-id">
           <span className="hud-led" />
           <span className="hud-ship-name">CSTR-9</span>
@@ -1172,7 +1752,9 @@ export function LaniakeaExplorerPage() {
         <div className="hud-cells">
           <div className="hud-cell">
             <span className="hud-label">EVA</span>
-            <span className="hud-value hud-teal" id="hud-eva">00:00:00</span>
+            <span className="hud-value hud-teal" id="hud-eva">
+              00:00:00
+            </span>
           </div>
           <div className="hud-cell">
             <span className="hud-label">Mode</span>
@@ -1182,67 +1764,119 @@ export function LaniakeaExplorerPage() {
       </div>
 
       {/* ── TOP-RIGHT: Vitals ── */}
-      <div className="hud-panel hud-tr" style={{ position: "fixed", top: 20, right: 20, zIndex: 15 }}>
+      <div
+        className="hud-panel hud-tr"
+        style={{ position: 'fixed', top: 20, right: 20, zIndex: 15 }}
+      >
         <div className="hud-cells">
           <div className="hud-cell">
             <span className="hud-label">Heart</span>
-            <span className="hud-value hud-pink"><span id="hud-heart">62</span><small> BPM</small></span>
+            <span className="hud-value hud-pink">
+              <span id="hud-heart">62</span>
+              <small> BPM</small>
+            </span>
           </div>
           <div className="hud-divider-v" />
           <div className="hud-cell">
             <span className="hud-label">O₂ Sat</span>
-            <span className="hud-value hud-teal"><span id="hud-o2sat">97</span><small> %</small></span>
+            <span className="hud-value hud-teal">
+              <span id="hud-o2sat">97</span>
+              <small> %</small>
+            </span>
           </div>
         </div>
       </div>
 
       {/* ── BOTTOM-LEFT: Pressure dial + Velocity ── */}
-      <div className="hud-panel hud-bl" style={{ position: "fixed", bottom: 20, left: 20, zIndex: 15 }}>
+      <div
+        className="hud-panel hud-bl"
+        style={{ position: 'fixed', bottom: 20, left: 20, zIndex: 15 }}
+      >
         <div className="hud-dial-row">
           <div className="mini-dial">
             {Array.from({ length: 12 }, (_, i) => (
-              <span key={i} className={`dial-mark ${i % 3 === 0 ? "major" : ""}`} style={{ transform: `translate(-50%, -22px) rotate(${i * 30}deg)` }} />
+              <span
+                key={i}
+                className={`dial-mark ${i % 3 === 0 ? 'major' : ''}`}
+                style={{ transform: `translate(-50%, -22px) rotate(${i * 30}deg)` }}
+              />
             ))}
-            <div className="dial-needle amber" id="hud-pressure-needle" style={{ transform: "translate(-50%, -100%) rotate(30deg)" }} />
+            <div
+              className="dial-needle amber"
+              id="hud-pressure-needle"
+              style={{ transform: 'translate(-50%, -100%) rotate(30deg)' }}
+            />
             <div className="dial-center amber" />
           </div>
           <div className="hud-cell">
             <span className="hud-label hud-amber-text">Cabin PSI</span>
-            <span className="hud-value hud-amber"><span id="hud-pressure">101.3</span><small> kPa</small></span>
+            <span className="hud-value hud-amber">
+              <span id="hud-pressure">101.3</span>
+              <small> kPa</small>
+            </span>
           </div>
         </div>
         <div className="hud-divider-h" />
         <div className="hud-cell">
           <span className="hud-label">Velocity</span>
-          <span className="hud-value hud-teal"><span id="hud-velocity">0</span><small> km/s</small></span>
+          <span className="hud-value hud-teal">
+            <span id="hud-velocity">0</span>
+            <small> km/s</small>
+          </span>
         </div>
       </div>
 
       {/* ── BOTTOM-RIGHT: O2 dial + Position ── */}
-      <div className="hud-panel hud-br" style={{ position: "fixed", bottom: 20, right: 20, zIndex: 15 }}>
+      <div
+        className="hud-panel hud-br"
+        style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 15 }}
+      >
         <div className="hud-dial-row">
           <div className="mini-dial teal">
             {Array.from({ length: 12 }, (_, i) => (
-              <span key={i} className={`dial-mark teal ${i % 3 === 0 ? "major" : ""}`} style={{ transform: `translate(-50%, -22px) rotate(${i * 30}deg)` }} />
+              <span
+                key={i}
+                className={`dial-mark teal ${i % 3 === 0 ? 'major' : ''}`}
+                style={{ transform: `translate(-50%, -22px) rotate(${i * 30}deg)` }}
+              />
             ))}
-            <div className="dial-needle teal" id="hud-o2-needle" style={{ transform: "translate(-50%, -100%) rotate(0deg)" }} />
+            <div
+              className="dial-needle teal"
+              id="hud-o2-needle"
+              style={{ transform: 'translate(-50%, -100%) rotate(0deg)' }}
+            />
             <div className="dial-center teal" />
           </div>
           <div className="hud-cell">
             <span className="hud-label hud-teal-text">O₂ Level</span>
-            <span className="hud-value hud-teal"><span id="hud-o2level">97</span><small> %</small></span>
+            <span className="hud-value hud-teal">
+              <span id="hud-o2level">97</span>
+              <small> %</small>
+            </span>
           </div>
         </div>
         <div className="hud-divider-h" />
         <div className="hud-cell">
           <span className="hud-label">Position</span>
-          <span className="hud-value hud-accent"><span id="hud-position">+0.000</span><small> LY</small></span>
+          <span className="hud-value hud-accent">
+            <span id="hud-position">+0.000</span>
+            <small> LY</small>
+          </span>
         </div>
       </div>
 
       {/* ── BOTTOM-CENTER: Scope + Nearest + Course ── */}
-      <div className="hud-panel hud-bc" style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", zIndex: 15 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <div
+        className="hud-panel hud-bc"
+        style={{
+          position: 'fixed',
+          bottom: 20,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 15,
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           {/* Mini scope */}
           <div className="mini-scope">
             <div className="scope-grid-v" />
@@ -1250,22 +1884,28 @@ export function LaniakeaExplorerPage() {
             <div className="scope-inner-ring" />
             <div className="scope-sweep" />
             <div className="scope-self" />
-            <div className="scope-blip scope-blip-1" style={{ left: "70%", top: "30%" }} />
-            <div className="scope-blip scope-blip-2" style={{ left: "25%", top: "62%" }} />
+            <div className="scope-blip scope-blip-1" style={{ left: '70%', top: '30%' }} />
+            <div className="scope-blip scope-blip-2" style={{ left: '25%', top: '62%' }} />
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <div className="hud-cell">
               <span className="hud-label">Nearest</span>
-              <span className="hud-value hud-amber" style={{ fontSize: 13 }} id="hud-nearest">{"—"}</span>
+              <span className="hud-value hud-amber" style={{ fontSize: 13 }} id="hud-nearest">
+                {'—'}
+              </span>
             </div>
-            <div style={{ display: "flex", gap: 14 }}>
+            <div style={{ display: 'flex', gap: 14 }}>
               <div className="hud-cell">
                 <span className="hud-label">Engine</span>
-                <span className="hud-value hud-dim" style={{ fontSize: 13 }}>DRIFT-1</span>
+                <span className="hud-value hud-dim" style={{ fontSize: 13 }}>
+                  DRIFT-1
+                </span>
               </div>
               <div className="hud-cell">
                 <span className="hud-label">Course</span>
-                <span className="hud-value hud-dim" style={{ fontSize: 13 }}>OPEN</span>
+                <span className="hud-value hud-dim" style={{ fontSize: 13 }}>
+                  OPEN
+                </span>
               </div>
             </div>
           </div>
@@ -1274,12 +1914,16 @@ export function LaniakeaExplorerPage() {
 
       {/* ── Approach display ── */}
       <div className="hud-approach" id="hud-approachWrap">
-        <span className="hud-approach-icon">{"◎"}</span>
+        <span className="hud-approach-icon">{'◎'}</span>
         <div className="hud-approach-info">
           <span className="hud-approach-label">Approaching</span>
-          <span className="hud-approach-name" id="hud-approachName">{"—"}</span>
+          <span className="hud-approach-name" id="hud-approachName">
+            {'—'}
+          </span>
         </div>
-        <span className="hud-approach-dist" id="hud-approachDist">{"—"}</span>
+        <span className="hud-approach-dist" id="hud-approachDist">
+          {'—'}
+        </span>
       </div>
 
       <div className="cursor-dot" id="rest-cursor" />
@@ -1288,13 +1932,31 @@ export function LaniakeaExplorerPage() {
       <div className="edge-hint left" />
       <div className="edge-hint right" />
 
-      <a href="#" className="rest-exit exit">{"✕"} EXIT</a>
+      <a href="#" className="rest-exit exit">
+        {'✕'} EXIT
+      </a>
 
       <div className="pause" id="rest-pause">
-        <div className="pause-icon">{"✦"}</div>
+        <div className="pause-icon">{'✦'}</div>
         <div className="pause-title">Paused</div>
-        <div className="pause-sub">Take a moment. Click anywhere or press <kbd style={{ fontFamily: "var(--mono)", background: "rgba(255,255,255,.1)", padding: "1px 6px", borderRadius: "4px", border: "1px solid rgba(255,255,255,.15)" }}>Esc</kbd> to keep drifting.</div>
-        <button className="pause-cta" id="rest-resumeBtn">{"▸"} RESUME</button>
+        <div className="pause-sub">
+          Take a moment. Click anywhere or press{' '}
+          <kbd
+            style={{
+              fontFamily: 'var(--mono)',
+              background: 'rgba(255,255,255,.1)',
+              padding: '1px 6px',
+              borderRadius: '4px',
+              border: '1px solid rgba(255,255,255,.15)',
+            }}
+          >
+            Esc
+          </kbd>{' '}
+          to keep drifting.
+        </div>
+        <button className="pause-cta" id="rest-resumeBtn">
+          {'▸'} RESUME
+        </button>
       </div>
     </div>
   );

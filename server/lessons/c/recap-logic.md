@@ -14,6 +14,7 @@ Given the password **"Cyber2025!"**:
 For each check, print **"PASS"** or **"FAIL"**. Then print whether **all checks passed**
 
 Expected output
+
 ```text
 Length >= 8: PASS
 Has uppercase: PASS

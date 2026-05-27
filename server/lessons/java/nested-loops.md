@@ -13,7 +13,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 i=1 j=1
 i=1 j=2
@@ -44,12 +46,14 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
-* * * * 
-* * * * 
-* * * * 
-* * * * 
+* * * *
+* * * *
+* * * *
+* * * *
 ```
 
 Notice we used **System.out.print** (no "ln") inside the inner loop — that prints without jumping to a new line. Then **System.out.println()** at the end of each row starts a new line
@@ -70,7 +74,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 *
 **
@@ -96,11 +102,13 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
-1	2	3	
-2	4	6	
-3	6	9	
+1	2	3
+2	4	6
+3	6	9
 ```
 
 **\t** is a tab character — it spaces things out nicely in a grid
@@ -108,6 +116,7 @@ Output
 ---
 
 In Python, you might have written something like
+
 ```python
 for i in range(5):
     for j in range(i + 1):
@@ -124,6 +133,7 @@ Print a **right triangle** of stars with **5 rows**
 Row 1 has 1 star, row 2 has 2 stars, all the way to row 5 with 5 stars. Each star is just the **\*** character with no spaces between them
 
 Expected output
+
 ```text
 *
 **

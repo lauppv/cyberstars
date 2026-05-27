@@ -10,11 +10,14 @@ lerna-debug.log*
 
 node_modules
 .env
+.env.test
 TODO.txt
 
 dist
 dist-ssr
 coverage
+playwright-report/
+test-results/
 *.local
 uploads/
 

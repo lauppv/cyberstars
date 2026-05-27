@@ -64,7 +64,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 78.53981633974483
 24.0
@@ -112,4 +114,4 @@ Like Cortez in Vice City — he gives missions to Tommy, Lance, whoever. He does
 
 ---
 
-Your turn! Create the `Shape`, `Circle`, and `Rectangle` classes from the override lesson (Shape has area() returning 0, Circle overrides with pi*r*r, Rectangle overrides with w*h). Then create a `Shape[]` array containing a Circle with radius 5 and a Rectangle with width 4 and height 6. Loop through the array and print each area using `String.format("%.2f", s.area())`
+Your turn! Create the `Shape`, `Circle`, and `Rectangle` classes from the override lesson (Shape has area() returning 0, Circle overrides with pi*r*r, Rectangle overrides with w\*h). Then create a `Shape[]` array containing a Circle with radius 5 and a Rectangle with width 4 and height 6. Loop through the array and print each area using `String.format("%.2f", s.area())`

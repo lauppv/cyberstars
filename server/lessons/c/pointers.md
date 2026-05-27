@@ -18,6 +18,7 @@ int main(void) {
 ```
 
 Two new operators:
+
 - **&** — the **address-of** operator. **&age** gives us the **address** where `age` is stored in memory
 - **\*** — the **dereference** operator. **\*ptr** gives us the **value** at the address stored in `ptr`
 
@@ -40,6 +41,7 @@ int main(void) {
 ```
 
 We can also **change** the value through the pointer
+
 ```c
 #include <stdio.h>
 
@@ -61,6 +63,7 @@ A useful analogy: think of a **Google Maps pin**. The pin isn't the restaurant �
 ---
 
 Different types of pointers for different types:
+
 ```c
 #include <stdio.h>
 
@@ -86,6 +89,7 @@ The pointer type must match the type it points to. An **int \*** can only point 
 Declare an **int** variable called **x** with value **7**. Create a pointer **ptr** that points to **x**. Then use the pointer to **change** x to **42**. Print both **x** and **\*ptr**
 
 Expected output
+
 ```text
 42
 42

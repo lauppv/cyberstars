@@ -1,13 +1,13 @@
 Chapter 5 gave you the plumbing of the station. Here is your toolbox:
 
-| Symbol | Purpose |
-|--------|---------|
-| `>` | Redirect output to file (overwrite) |
-| `>>` | Redirect output to file (append) |
-| `<` | Feed file as input |
-| `\|` | Pipe output to next command |
-| `2>` | Redirect errors only |
-| `2>&1` | Merge errors into stdout |
+| Symbol | Purpose                             |
+| ------ | ----------------------------------- |
+| `>`    | Redirect output to file (overwrite) |
+| `>>`   | Redirect output to file (append)    |
+| `<`    | Feed file as input                  |
+| `\|`   | Pipe output to next command         |
+| `2>`   | Redirect errors only                |
+| `2>&1` | Merge errors into stdout            |
 
 Pipes and redirection let you build **data pipelines** — take raw data, filter it,
 transform it, and save the result, all in one line.

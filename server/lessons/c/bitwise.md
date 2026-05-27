@@ -5,6 +5,7 @@ The number **13** in binary is **1101**. The number **10** is **1010**. Bitwise 
 ---
 
 **& (AND)** — both bits must be 1
+
 ```c
 #include <stdio.h>
 
@@ -15,17 +16,20 @@ int main(void) {
     return 0;
 }
 ```
+
 ```text
   1101  (13)
 & 1010  (10)
 ------
   1000  (8)
 ```
+
 Each position: if both are 1, result is 1. Otherwise 0
 
 ---
 
 **| (OR)** — at least one bit must be 1
+
 ```c
 #include <stdio.h>
 
@@ -34,6 +38,7 @@ int main(void) {
     return 0;
 }
 ```
+
 ```text
   1101  (13)
 | 1010  (10)
@@ -42,6 +47,7 @@ int main(void) {
 ```
 
 **^ (XOR)** — exactly one bit must be 1
+
 ```c
 #include <stdio.h>
 
@@ -50,6 +56,7 @@ int main(void) {
     return 0;
 }
 ```
+
 ```text
   1101  (13)
 ^ 1010  (10)
@@ -58,6 +65,7 @@ int main(void) {
 ```
 
 **~ (NOT)** — flip every bit
+
 ```c
 #include <stdio.h>
 
@@ -72,6 +80,7 @@ int main(void) {
 **Shift operators** move bits left or right
 
 **<< (left shift)** — shift bits left, fill with 0s. Each left shift **multiplies by 2**
+
 ```c
 #include <stdio.h>
 
@@ -84,6 +93,7 @@ int main(void) {
 ```
 
 **>> (right shift)** — shift bits right. Each right shift **divides by 2**
+
 ```c
 #include <stdio.h>
 
@@ -99,6 +109,7 @@ int main(void) {
 ---
 
 A classic use: **flags**. Imagine a game character with abilities
+
 ```c
 #include <stdio.h>
 
@@ -130,12 +141,14 @@ A single **int** stores multiple yes/no properties using individual bits. This i
 ---
 
 Given two integers **a = 12** (binary: 1100) and **b = 10** (binary: 1010), print:
+
 1. **a & b** (AND)
 2. **a | b** (OR)
 3. **a ^ b** (XOR)
 4. **a << 2** (left shift by 2)
 
 Expected output
+
 ```text
 8
 14

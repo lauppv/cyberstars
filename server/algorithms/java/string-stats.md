@@ -9,9 +9,11 @@ Create a **StringAnalyzer** class that takes a string in its constructor and pro
 Read a single line of text from stdin. Create a `StringAnalyzer` and print the three stats.
 
 ### Input
+
 - Line 1: a string of text (letters and spaces only)
 
 ### Output
+
 - Line 1: `Vowels: X`
 - Line 2: `Consonants: X`
 - Line 3: `Words: X`
@@ -39,6 +41,7 @@ Words: 3
 ```
 
 ### Hints
+
 - Use `Character.toLowerCase()` to handle case-insensitive vowel checks.
 - `Character.isLetter()` helps you skip spaces when counting consonants.
 - `String.split(" ")` splits a string into words by spaces.

@@ -1,14 +1,14 @@
 interface Shape {
-    double area();
-    String describe();
+double area();
+String describe();
 }
 
 // implement Circle, Rectangle, Triangle
 
 public class Main {
-    static void printShape(Shape s) {
-        System.out.println(String.format("%s — Area: %.2f", s.describe(), s.area()));
-    }
+static void printShape(Shape s) {
+System.out.println(String.format("%s — Area: %.2f", s.describe(), s.area()));
+}
 
     public static void main(String[] args) {
         Shape[] shapes = {
@@ -24,4 +24,5 @@ public class Main {
         // try casting shapes[0] to Circle, print radius
         // try casting shapes[1] to Circle, catch the exception
     }
+
 }

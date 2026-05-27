@@ -21,6 +21,7 @@ Do the following:
 5. Print the best seller and the popular items list
 
 Expected output (HashMap order may vary, so we'll check key parts)
+
 ```text
 Sword: 3
 Shield: 1

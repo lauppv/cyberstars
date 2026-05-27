@@ -24,7 +24,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Weapon: Shotgun
 Weapon: Pistol (x3)
@@ -57,7 +59,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Text: Tommy
 Number: 42
@@ -120,6 +124,7 @@ public class Main {
 ```
 
 Expected output
+
 ```text
 Item: Sword
 Item: Shield (x5)

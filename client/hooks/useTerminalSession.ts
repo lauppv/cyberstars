@@ -1,21 +1,21 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect } from 'react';
 import {
   createTerminalSession,
   execTerminalCommand,
   submitTerminalLesson,
   destroyTerminalSession,
-} from "../services/terminalService";
-import type { TerminalSubmitResult } from "../services/terminalService";
+} from '../services/terminalService';
+import type { TerminalSubmitResult } from '../services/terminalService';
 
 export interface TerminalLine {
-  type: "input" | "output" | "system";
+  type: 'input' | 'output' | 'system';
   text: string;
   prompt?: string;
 }
 
 export function useTerminalSession(courseKey: string, lessonSlug: string) {
   const [sessionId, setSessionId] = useState<string | null>(null);
-  const [cwd, setCwd] = useState("/home/student");
+  const [cwd, setCwd] = useState('/home/student');
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const [isReady, setIsReady] = useState(false);
   const [isExecuting, setIsExecuting] = useState(false);
@@ -34,11 +34,16 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
       sessionRef.current = info.sessionId;
       setCwd(info.cwd);
       if (info.intro) {
-        setLines([{ type: "system", text: info.intro }]);
+        setLines([{ type: 'system', text: info.intro }]);
       }
       setIsReady(true);
     } catch (e: unknown) {
-      setLines([{ type: "system", text: `Failed to start session: ${e instanceof Error ? e.message : "unknown error"}` }]);
+      setLines([
+        {
+          type: 'system',
+          text: `Failed to start session: ${e instanceof Error ? e.message : 'unknown error'}`,
+        },
+      ]);
     }
   }, [courseKey, lessonSlug]);
 
@@ -53,22 +58,28 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
     };
   }, [init, courseKey, lessonSlug]);
 
-  const execute = useCallback(async (command: string) => {
-    if (!sessionRef.current || isExecuting) return;
-    setIsExecuting(true);
-    const snap = `student@sandbox:${cwd.replace("/home/student", "~")}$`;
-    setLines((prev) => [...prev, { type: "input", text: command, prompt: snap }]);
-    try {
-      const result = await execTerminalCommand(sessionRef.current, command);
-      if (result.output) {
-        setLines((prev) => [...prev, { type: "output", text: result.output }]);
+  const execute = useCallback(
+    async (command: string) => {
+      if (!sessionRef.current || isExecuting) return;
+      setIsExecuting(true);
+      const snap = `student@sandbox:${cwd.replace('/home/student', '~')}$`;
+      setLines((prev) => [...prev, { type: 'input', text: command, prompt: snap }]);
+      try {
+        const result = await execTerminalCommand(sessionRef.current, command);
+        if (result.output) {
+          setLines((prev) => [...prev, { type: 'output', text: result.output }]);
+        }
+        setCwd(result.cwd);
+      } catch (e: unknown) {
+        setLines((prev) => [
+          ...prev,
+          { type: 'output', text: e instanceof Error ? e.message : 'Error' },
+        ]);
       }
-      setCwd(result.cwd);
-    } catch (e: unknown) {
-      setLines((prev) => [...prev, { type: "output", text: e instanceof Error ? e.message : "Error" }]);
-    }
-    setIsExecuting(false);
-  }, [isExecuting, cwd]);
+      setIsExecuting(false);
+    },
+    [isExecuting, cwd],
+  );
 
   const submit = useCallback(async () => {
     if (!sessionRef.current) return null;

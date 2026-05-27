@@ -16,6 +16,7 @@ Each appearance = 1 win. Do the following:
 4. Print the sorted leaderboard with rankings
 
 Expected output
+
 ```text
 Wins: {'Ana': 4, 'Mihai': 3, 'Elena': 2, 'Radu': 1}
 Champion: Ana (4 wins)

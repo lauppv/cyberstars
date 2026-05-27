@@ -34,10 +34,11 @@ public class Main {
 Print each pet's status after the interactions
 
 Expected output
+
 ```text
 Rex (Dog, age 3) - Happiness: 90
 Whiskers (Cat, age 5) - Happiness: 60
 Nemo (Fish, age 1) - Happiness: 100
 ```
 
-Nemo caps at 100 even though 50 + 4*15 = 110
+Nemo caps at 100 even though 50 + 4\*15 = 110

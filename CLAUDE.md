@@ -30,6 +30,7 @@ CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): parall
 CyberStars is a split-screen coding education platform (React frontend + Express backend + PostgreSQL).
 
 ### Client (`client/`)
+
 - React 19 + Vite 7 + Tailwind CSS 4, uses HashRouter
 - Routes: `/`, `/getstarted`, `/courses`, `/algorithms`, `/algorithms/:lang`, `/lesson/:category/:lesson`, `/profile`, `/forum`, `/almanac`, `/laniakea`, `/rules`, `/support`, `/welcome`
 - Three React Context providers: `AuthContext`, `CurriculumContext`, `ProgressContext`
@@ -39,6 +40,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Text sections over the starfield use `.text-backdrop` class (semi-transparent bg + backdrop-blur) for readability
 
 ### Server (`server/`)
+
 - Express 5 + TypeScript, runs with tsx
 - `app.ts` exports the Express app (used by supertest); `server.ts` imports it and calls `listen()`
 - Three-layer architecture: Routes → Controllers → Services → Repositories
@@ -51,6 +53,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`
 
 ### Database (`prisma/`)
+
 - PostgreSQL via Prisma 6 ORM
 - Core models: `User`, `Curriculum` (with `CurriculumKind` enum: editor/terminal), `Lesson`, `UserLessonProgress`, `UserSavedCode`
 - Forum models: `ForumCategory`, `ForumThread`, `ForumPost` (soft-delete with `deleted`/`deletedByName`, edit tracking with `editedByName`), `ForumReaction`
@@ -58,9 +61,11 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Seed script populates all courses and lessons from filesystem
 
 ### Shared (`shared/`)
+
 - DTO types and constants imported by both client and server — keeps request/response shapes and business rules (XP formulas, course keys) in sync. Badges are derived client-side only (`useGamification`)
 
 ### Lesson content (`server/lessons/{python,c,java,linux}/`)
+
 - Markdown files with fenced code blocks (` ```python `, ` ```c `, ` ```java `, ` ```bash `) for runnable examples and ` ```text ` for output
 - Every C code block must include `#include`, `int main(void)`, `return 0` (full compilable program)
 - Every Java code block must include `public class Main` with `public static void main(String[] args)` wrapper
@@ -68,6 +73,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Linux lessons: each slug has 3 files — `<slug>.md` (no H1, space-station theme), `<slug>-setup.json` (sandbox filesystem), `<slug>-tests.json` (validation checks). 55 lessons across 9 chapters. Shared types in `shared/terminal.ts`
 
 ### Algorithm challenges (`server/algorithms/{python,java,c}/`)
+
 - Separate from main lessons — mapped via `server/services/paths.ts`: course keys `algo-python`, `algo-java`, `algo-c` resolve to `server/algorithms/{python,java,c}/`
 - Each challenge has 3 files: `<slug>.md` (problem statement with Input/Output/Examples/Hints), `<slug>-code.md` (starter code), `<slug>-tests.json` (test cases)
 - 20 challenges per language (Easy/Medium/Hard), registered in `prisma/seed.ts`
@@ -78,16 +84,19 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Test runner in `server/services/test-runner.service.ts` — executes code via Docker, trims output, compares against expected
 
 ### Testing (`test/`)
+
 - Vitest with jsdom environment, `@testing-library/react` + `@testing-library/jest-dom`
 - Setup file in `test/setup.ts` handles jest-dom matchers and cleanup between tests
 - Coverage via `@vitest/coverage-v8` with json-summary + lcov reporters
 - Client component tests use `render`/`screen`/`fireEvent` from testing-library
 - Server unit tests on services use `vi.mock` to isolate from env/DB dependencies (see `lesson.service.test.ts`)
 - Endpoint smoke tests (`server/app.test.ts`) use supertest to verify all routes respond correctly (200 for public, 401 for auth-protected, 404 for unknown). Mock PrismaClient and repositories to avoid needing a real DB
-- Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`, ignores `design/` mockups. Runs in CI; must pass before merge
-- Coverage thresholds enforced in `vite.config.ts`: 70% statements/lines, 50% branches, 60% functions — `npm run test:coverage` fails if below
+- Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`. Runs in CI; must pass before merge
+- Coverage thresholds enforced in `vite.config.ts`: 85% statements/lines, 70% branches, 80% functions — `npm run test:coverage` fails if below
+- Code formatting via Prettier — config in `.prettierrc`, check with `npm run format:check`, fix with `npm run format`
 
 ### Production (`cyber-stars.org`)
+
 - DigitalOcean VPS, app at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`)
 - nginx reverse proxy on port 443 → localhost:8080. The `/ws/` location block requires `proxy_set_header Upgrade` and `Connection "upgrade"` for WebSocket
 - Deploy: `cd /opt/cyberstars && git pull && npm install && npm run build && pm2 restart cyberstars`
@@ -103,7 +112,6 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Dark theme uses CSS custom properties with accent purple `#6C5CE7`, Space Grotesk font for UI, JetBrains Mono for code
 - Lesson completion is automatic when all test cases pass — no manual "complete" button
 - The user communicates in Romanian; code and docs stay in English
-- New features start as static HTML mockups in `design/` — these are the source of truth for layout, colors, and data structure when implementing React pages
 - Page wrapper divs use `bg-transparent` (not `bg-[var(--bg)]`) so the global cosmos starfield shows through
 - All cards, panels, and containers use very low opacity backgrounds (`rgba(22,22,29,0.1)` with `backdrop-blur-[12px]`) so the cosmos is visible through them. Never use opaque backgrounds (`bg-[var(--bg2)]`, `bg-[var(--surface)]`) for content panels
 - Panel/card borders use accent purple at 30% (`border-[var(--accent)]/30`), not `border-[var(--border)]`

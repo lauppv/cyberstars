@@ -7,6 +7,7 @@ That's recursion. **Each person asks the same question to the next**, until some
 ---
 
 In code, the simplest example: **counting down**
+
 ```py
 def countdown(n):
     if n == 0:
@@ -17,7 +18,9 @@ def countdown(n):
 
 countdown(5)
 ```
+
 Output
+
 ```text
 5
 4
@@ -46,13 +49,16 @@ def factorial(n):
 print(factorial(5))
 print(factorial(3))
 ```
+
 Output
+
 ```text
 120
 6
 ```
 
 Let's trace **factorial(5)**:
+
 - factorial(5) = 5 × factorial(4)
 - factorial(4) = 4 × factorial(3)
 - factorial(3) = 3 × factorial(2)
@@ -63,6 +69,7 @@ Let's trace **factorial(5)**:
 ---
 
 Another classic: **sum of a list**
+
 ```py
 def sumList(numbers):
     if len(numbers) == 0:
@@ -71,6 +78,7 @@ def sumList(numbers):
 
 print(sumList([1, 2, 3, 4, 5]))
 ```
+
 Output **15**
 
 The idea: the sum of a list is the **first element** plus the **sum of the rest**. The rest gets smaller and smaller until it's empty (base case: return 0)
@@ -95,6 +103,7 @@ print(power(10, 0))   # 1
 ```
 
 Expected output
+
 ```text
 8
 25

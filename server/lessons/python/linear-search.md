@@ -13,13 +13,16 @@ names = ["Tommy", "Lance", "Cortez", "Phil", "Sonny"]
 result = linearSearch(names, "Cortez")
 print(result)
 ```
+
 Output **2**. Cortez is at index 2
 
 If the target is not in the list, we return **-1** (a convention meaning "not found")
+
 ```py
 result = linearSearch(names, "Shrek")
 print(result)
 ```
+
 Output **-1**. Shrek is not in Vice City :)
 
 ---
@@ -40,6 +43,7 @@ for i in range(len(scores)):
         print(f"Found a score above 90: {scores[i]} at index {i}")
         break
 ```
+
 Output **Found a score above 90: 95 at index 3**
 
 ---
@@ -59,6 +63,7 @@ print(findFirst([10, 20, 30, 40], 30))               # 2
 ```
 
 Expected output
+
 ```text
 1
 -1

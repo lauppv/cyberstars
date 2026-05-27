@@ -1,7 +1,7 @@
-So far you have only *looked* at directories. Now you will **move between them**.
+So far you have only _looked_ at directories. Now you will **move between them**.
 
 The **cd** command (**change directory**) takes you into a different folder. After
-`cd`, your *current working directory* changes — and `pwd` will prove it.
+`cd`, your _current working directory_ changes — and `pwd` will prove it.
 
 ### Going into a folder
 
@@ -34,11 +34,11 @@ pwd
 
 ### Useful shortcuts
 
-| Command | Where it takes you |
-|---------|--------------------|
-| `cd ~`  | your **home** directory (`/home/student`) |
-| `cd /`  | the **root** of the whole system |
-| `cd ..` | one directory **up** |
+| Command | Where it takes you                                            |
+| ------- | ------------------------------------------------------------- |
+| `cd ~`  | your **home** directory (`/home/student`)                     |
+| `cd /`  | the **root** of the whole system                              |
+| `cd ..` | one directory **up**                                          |
 | `cd`    | also home — typing `cd` with nothing is a shortcut for `cd ~` |
 
 ### Paths

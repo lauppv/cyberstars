@@ -13,11 +13,13 @@ int main(void) {
     return 0;
 }
 ```
+
 This works, but reading **int isUserOnline = 1** is awkward. It looks like a counter, not a true/false value
 
 ---
 
 The good news: since C99, the standard library gives us a real boolean type
+
 ```c
 #include <stdio.h>
 #include <stdbool.h>
@@ -32,6 +34,7 @@ int main(void) {
     return 0;
 }
 ```
+
 After we **#include <stdbool.h>**, three new identifiers exist: **bool**, **true**, and **false**
 
 Behind the scenes, **bool** is still essentially an int — **true** is **1**, **false** is **0** — but the names make our code much more **readable**. From now on, when something can only be true or false, prefer **bool** over **int**
@@ -47,6 +50,7 @@ We can combine booleans with logical operators
 - **!** → **not** (flips the value)
 
 A real example: in order to drive a car, you need to be **at least 18 AND have a license**
+
 ```c
 #include <stdio.h>
 #include <stdbool.h>
@@ -68,6 +72,7 @@ int main(void) {
 ---
 
 **||** is more relaxed. Just one of the conditions being true is enough
+
 ```c
 #include <stdio.h>
 #include <stdbool.h>
@@ -88,6 +93,7 @@ int main(void) {
 ---
 
 **!** flips a boolean. **!true** becomes **false**, and vice versa
+
 ```c
 #include <stdio.h>
 #include <stdbool.h>
@@ -106,6 +112,7 @@ int main(void) {
 You are writing the access system for **CyberStars HQ**. A person can enter if they are an **employee AND it’s a working day**, or if they are a **guest WITH an invitation**
 
 You have these variables on the right
+
 ```c
 #include <stdio.h>
 #include <stdbool.h>

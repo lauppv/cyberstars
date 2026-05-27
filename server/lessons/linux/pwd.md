@@ -1,5 +1,5 @@
 Every time you use the terminal, you are **inside a folder** — Linux calls it a
-**directory**. This is your *current location*, also known as the
+**directory**. This is your _current location_, also known as the
 **working directory**.
 
 Knowing where you are matters: commands like "list the files here" or "delete this
@@ -22,12 +22,12 @@ and each `/` separates one folder from the next. So `/home/student` means:
 
 - `/` — the root
 - `home` — a folder inside root
-- `student` — a folder inside home (this is *your* folder)
+- `student` — a folder inside home (this is _your_ folder)
 
 When you start the terminal you usually begin in your **home directory** — the place
 that belongs to you. For the user `student`, that home directory is `/home/student`.
 
-`pwd` never changes anything. It only *reports* — it is completely safe to run as
+`pwd` never changes anything. It only _reports_ — it is completely safe to run as
 often as you like.
 
 ---

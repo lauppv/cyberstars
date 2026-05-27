@@ -53,4 +53,4 @@ You can write it as `ls -la`, `ls -al`, or `ls -l -a` — all the same.
 
 Your home directory contains a hidden file. Use **ls** with the right option(s) to
 list **all** items, including hidden ones, in **long** format — so you can see the
-hidden file *and* which items are directories.
+hidden file _and_ which items are directories.

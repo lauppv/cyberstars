@@ -13,6 +13,7 @@ phoneBook = {
 
 print(phoneBook["Cortez"])
 ```
+
 Output **555-1234**
 
 A dictionary is created with **curly braces {}**. Inside, we write **key: value** pairs separated by **commas**. The **key** is what we use to look things up (like the name), and the **value** is what we get back (like the phone number)
@@ -27,7 +28,9 @@ phoneBook = {
 print(phoneBook["Lance"])
 print(phoneBook["Phil"])
 ```
+
 Output
+
 ```text
 555-5678
 555-9999
@@ -36,6 +39,7 @@ Output
 ---
 
 What happens if we ask for a key that doesn't exist?
+
 ```py
 phoneBook = {
     "Cortez": "555-1234",
@@ -44,11 +48,13 @@ phoneBook = {
 
 print(phoneBook["Sonny"])
 ```
+
 **Run** it. You'll see a **KeyError**. Python is telling us: "I don't know any Sonny". Always read the error :)
 
 ---
 
 We can **add** a new entry or **change** an existing one very easily
+
 ```py
 phoneBook = {
     "Cortez": "555-1234",
@@ -61,16 +67,20 @@ print(phoneBook["Tommy"])
 phoneBook["Lance"] = "555-1111"
 print(phoneBook["Lance"])
 ```
+
 Output
+
 ```text
 555-0000
 555-1111
 ```
+
 If the key doesn't exist, Python **creates** it. If it already exists, Python **updates** it. Simple
 
 ---
 
 We can also **remove** an entry with **del**
+
 ```py
 phoneBook = {
     "Cortez": "555-1234",
@@ -80,15 +90,19 @@ phoneBook = {
 del phoneBook["Lance"]
 print(phoneBook)
 ```
+
 Output
+
 ```text
 {'Cortez': '555-1234'}
 ```
+
 Lance is gone. Sorry Lance :)
 
 ---
 
 To check if a key **exists** before accessing it, use **in**
+
 ```py
 phoneBook = {"Cortez": "555-1234"}
 
@@ -101,6 +115,7 @@ else:
 ---
 
 Just like lists, dictionaries can hold **any type** of value: strings, numbers, booleans, even other lists or dictionaries
+
 ```py
 player = {
     "name": "Tommy Vercetti",
@@ -125,6 +140,7 @@ Create a dictionary called **hero** with the following keys and values
 Then **add** a new key **color** with the value **green**
 
 Finally, display each value on a separate line. Expected output
+
 ```text
 Shrek
 Swamp

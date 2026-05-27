@@ -29,7 +29,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 [10, 20, 30]
 ```
@@ -40,16 +42,16 @@ Output
 
 ## Every Primitive Has a Wrapper
 
-| Primitive | Wrapper |
-|-----------|---------|
-| `int` | `Integer` |
-| `double` | `Double` |
-| `boolean` | `Boolean` |
-| `char` | `Character` |
-| `long` | `Long` |
-| `float` | `Float` |
-| `byte` | `Byte` |
-| `short` | `Short` |
+| Primitive | Wrapper     |
+| --------- | ----------- |
+| `int`     | `Integer`   |
+| `double`  | `Double`    |
+| `boolean` | `Boolean`   |
+| `char`    | `Character` |
+| `long`    | `Long`      |
+| `float`   | `Float`     |
+| `byte`    | `Byte`      |
+| `short`   | `Short`     |
 
 The pattern: capitalize the name (and `int` becomes `Integer`, `char` becomes `Character` — the two weird ones)
 
@@ -78,7 +80,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 42
 42
@@ -109,7 +113,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 First score: 100
 All scores: [100, 85, 92]
@@ -139,7 +145,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 45.14
 Max int: 2147483647
@@ -172,7 +180,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 a is null!
 ```
@@ -198,6 +208,7 @@ Java's two-world system (primitives vs objects) is the main reason wrapper class
 Create an `ArrayList<Integer>` with five numbers: `10`, `20`, `30`, `40`, `50`. Use a for loop to calculate the sum, then print it
 
 Expected output:
+
 ```text
 150
 ```

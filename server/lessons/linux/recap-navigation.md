@@ -1,9 +1,9 @@
 Time to put the first chapter together. You now have three trusty tools for moving
 around a Linux system:
 
-- **pwd** — tells you *where* you are
-- **ls** — tells you *what* is around you
-- **cd** — *moves* you to a new directory
+- **pwd** — tells you _where_ you are
+- **ls** — tells you _what_ is around you
+- **cd** — _moves_ you to a new directory
 
 None of these change or delete anything, so you can explore freely. The golden habit
 of every cadet:

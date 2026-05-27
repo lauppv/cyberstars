@@ -12,6 +12,7 @@ for letter in word:
 
 print(freq)
 ```
+
 Output **{'m': 1, 'i': 4, 's': 4, 'p': 2}**
 
 Let's understand this line by line. We start with an empty dictionary. For each letter, we check: is it already in the dictionary? If yes, add 1 to its count. If not, create a new entry with count 1
@@ -33,6 +34,7 @@ for word in words:
 
 print(freq)
 ```
+
 Output **{'I': 3, 'like': 3, 'pizza': 1, 'and': 2, 'burgers': 1, 'tacos': 1}**
 
 ---
@@ -40,6 +42,7 @@ Output **{'I': 3, 'like': 3, 'pizza': 1, 'and': 2, 'burgers': 1, 'tacos': 1}**
 Once we have a frequency dictionary, we can answer interesting questions
 
 **What's the most common element?**
+
 ```py
 bestKey = ""
 bestCount = 0
@@ -51,6 +54,7 @@ print(f"Most common: {bestKey} ({bestCount} times)")
 ```
 
 **What elements appear only once?**
+
 ```py
 unique = []
 for key, count in freq.items():
@@ -60,11 +64,13 @@ print(f"Unique: {unique}")
 ```
 
 **Sort by frequency?**
+
 ```py
 sortedItems = sorted(freq.items(), key=lambda x: x[1], reverse=True)
 for item, count in sortedItems:
     print(f"{item}: {count}")
 ```
+
 Don't worry about **lambda** for now, just know that it tells **sorted()** which value to sort by (in this case, the count)
 
 ---
@@ -83,7 +89,9 @@ for course in enrollments:
 for course, count in freq.items():
     print(f"{course}: {count} students")
 ```
+
 Output
+
 ```text
 python: 5 students
 java: 3 students
@@ -95,6 +103,7 @@ c: 2 students
 You have a list of **grades** (letters). Build a frequency dictionary and display each grade with its count, **sorted alphabetically**
 
 Expected output
+
 ```text
 A: 3
 B: 4

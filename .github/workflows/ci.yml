@@ -26,6 +26,18 @@ jobs:
           path: node_modules
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
 
+  format-check:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
+      - run: npm run format:check
+
   lint:
     runs-on: ubuntu-latest
     needs: setup
@@ -107,6 +119,129 @@ jobs:
           path: node_modules
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
       - run: npm run dead-code
+
+  test-integration:
+    runs-on: ubuntu-latest
+    needs: setup
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: cyberstars
+          POSTGRES_PASSWORD: testpassword
+          POSTGRES_DB: cyberstars_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cyberstars -d cyberstars_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://cyberstars:testpassword@localhost:5432/cyberstars_test
+      DB_USER: cyberstars
+      DB_HOST: localhost
+      DB_NAME: cyberstars_test
+      DB_PASSWORD: testpassword
+      DB_PORT: 5432
+      JWT_SECRET: ci-test-secret
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
+      - run: npx prisma migrate deploy
+      - run: npx tsx prisma/seed.ts
+      - run: npm run test:integration
+
+  test-e2e-browser:
+    runs-on: ubuntu-latest
+    needs: setup
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: cyberstars
+          POSTGRES_PASSWORD: testpassword
+          POSTGRES_DB: cyberstars_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cyberstars -d cyberstars_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://cyberstars:testpassword@localhost:5432/cyberstars_test
+      DB_USER: cyberstars
+      DB_HOST: localhost
+      DB_NAME: cyberstars_test
+      DB_PASSWORD: testpassword
+      DB_PORT: 5432
+      JWT_SECRET: ci-test-secret
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
+      - run: npx playwright install chromium --with-deps
+      - run: npm run test:e2e:browser
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-browser
+          path: playwright-report/
+          retention-days: 7
+
+  test-e2e-docker:
+    runs-on: ubuntu-latest
+    needs: setup
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: cyberstars
+          POSTGRES_PASSWORD: testpassword
+          POSTGRES_DB: cyberstars_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cyberstars -d cyberstars_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://cyberstars:testpassword@localhost:5432/cyberstars_test
+      DB_USER: cyberstars
+      DB_HOST: localhost
+      DB_NAME: cyberstars_test
+      DB_PASSWORD: testpassword
+      DB_PORT: 5432
+      JWT_SECRET: ci-test-secret
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
+      - run: npx playwright install chromium --with-deps
+      - run: docker pull python:3.10-slim && docker pull gcc:latest && docker pull eclipse-temurin:21-jdk-alpine
+      - run: docker build -t cyberstars-linux-sandbox server/runtimes/linux-sandbox
+      - run: npm run test:e2e:docker
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-docker
+          path: playwright-report/
+          retention-days: 7
 
   build:
     runs-on: ubuntu-latest

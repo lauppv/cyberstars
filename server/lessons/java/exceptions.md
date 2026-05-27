@@ -13,7 +13,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Can't divide by zero!
 Program continues...
@@ -51,7 +53,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Error: Index 10 out of bounds for length 3
 ```
@@ -107,7 +111,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Trying...
 Caught error!
@@ -123,6 +129,7 @@ Finally is useful for cleanup — closing files, releasing resources, etc. Even 
 Don't use try/catch as a crutch. If you know an array has 3 elements, don't access index 10 and catch the error — just check the index first. Use try/catch for things you genuinely can't predict: user input, file reading, network calls
 
 Bad:
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -134,6 +141,7 @@ public class Main {
 ```
 
 Good:
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -166,7 +174,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Not a valid number: hello
 Parsed: 42

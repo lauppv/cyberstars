@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main(void) {
-    int seconds = 60;
-    int errorDetected = 0;
+int seconds = 60;
+int errorDetected = 0;
 
     if (seconds == 100) {
         printf("Starting all onboard computers\n");
@@ -23,4 +23,5 @@ int main(void) {
     }
 
     return 0;
+
 }

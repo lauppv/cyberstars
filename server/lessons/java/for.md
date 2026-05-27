@@ -1,6 +1,7 @@
 Welcome to one of the **most important** concepts in programming — the **for** loop. With it, we can ask the computer to do something **many times**, **automatically**
 
 Why does it matter? Imagine we want to display all numbers from **1** to **10**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +12,7 @@ public class Main {
     }
 }
 ```
+
 Tedious. Now imagine **1** to **1000**. Absolutely no chance we write **1000 println**s. This is where **for** saves us
 
 ```java
@@ -22,6 +24,7 @@ public class Main {
     }
 }
 ```
+
 Run it. You’ll see numbers from **1** to **10**, one per line
 
 ---
@@ -58,6 +61,7 @@ public class Main {
     }
 }
 ```
+
 Output: 0, 2, 4, 6, 8, 10
 
 ```java
@@ -70,11 +74,13 @@ public class Main {
     }
 }
 ```
+
 Output: 10, 9, 8, ..., 1. **i--** means **i = i - 1**
 
 ---
 
 A common mistake: forgetting to update **i**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -84,6 +90,7 @@ public class Main {
     }
 }
 ```
+
 This is an **infinite loop**. **i** stays **1** forever, the condition stays **true** forever, and the program prints **1** until you stop it. Run it (briefly) to see what happens, then close it :)
 
 ---

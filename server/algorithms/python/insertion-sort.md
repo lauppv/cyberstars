@@ -3,10 +3,12 @@
 Read a list of numbers and sort them using the **insertion sort** algorithm. Insertion sort works by building a sorted portion of the list one element at a time: pick the next unsorted element and insert it into the correct position in the sorted portion.
 
 ### Input
+
 - Line 1: an integer `n` — the count of numbers.
 - Line 2: `n` integers separated by spaces.
 
 ### Output
+
 The sorted numbers, separated by spaces.
 
 ### Examples
@@ -30,6 +32,7 @@ Output:
 ```
 
 ### Hints
+
 - Start from the second element (index 1). Compare it with elements to its left and shift larger elements one position to the right.
 - Use a `while` loop inside the `for` loop to find the correct insertion position.
 - The outer loop runs from index 1 to n-1; the inner loop moves leftward while the current element is smaller.

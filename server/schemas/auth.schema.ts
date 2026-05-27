@@ -1,44 +1,39 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const signupSchema = z.object({
-  name: z
-    .string()
-    .min(1, "Name is required")
-    .max(100, "Name must be at most 100 characters"),
+  name: z.string().min(1, 'Name is required').max(100, 'Name must be at most 100 characters'),
   email: z
-    .email("Please enter a valid email address")
-    .max(255, "Email must be at most 255 characters"),
+    .email('Please enter a valid email address')
+    .max(255, 'Email must be at most 255 characters'),
   password: z
     .string()
-    .min(6, "Password is too short — must be at least 6 characters")
-    .max(255, "Password must be at most 255 characters"),
+    .min(6, 'Password is too short — must be at least 6 characters')
+    .max(255, 'Password must be at most 255 characters'),
 });
 
 export const loginSchema = z.object({
   email: z
-    .email("Please enter a valid email address")
-    .max(255, "Email must be at most 255 characters"),
+    .email('Please enter a valid email address')
+    .max(255, 'Email must be at most 255 characters'),
   password: z
     .string()
-    .min(1, "Password is required")
-    .max(255, "Password must be at most 255 characters"),
+    .min(1, 'Password is required')
+    .max(255, 'Password must be at most 255 characters'),
 });
 
 export const forgotPasswordSchema = z.object({
   email: z
-    .email("Please enter a valid email address")
-    .max(255, "Email must be at most 255 characters"),
+    .email('Please enter a valid email address')
+    .max(255, 'Email must be at most 255 characters'),
 });
 
 export const resetPasswordSchema = z.object({
   email: z
-    .email("Please enter a valid email address")
-    .max(255, "Email must be at most 255 characters"),
-  code: z
-    .string()
-    .length(6, "Code must be 6 digits"),
+    .email('Please enter a valid email address')
+    .max(255, 'Email must be at most 255 characters'),
+  code: z.string().length(6, 'Code must be 6 digits'),
   password: z
     .string()
-    .min(6, "Password is too short — must be at least 6 characters")
-    .max(255, "Password must be at most 255 characters"),
+    .min(6, 'Password is too short — must be at least 6 characters')
+    .max(255, 'Password must be at most 255 characters'),
 });

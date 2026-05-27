@@ -1,6 +1,7 @@
 In real life we make decisions: **if** it’s cold, take a sweater, **otherwise** a t-shirt is enough. **If** I’m sleepy I sleep, **otherwise** I program :)
 
 In C we say
+
 ```c
 #include <stdio.h>
 
@@ -18,6 +19,7 @@ int main(void) {
 ```
 
 The C syntax is **almost identical** to Java
+
 - The condition goes in **parentheses** **( )**
 - The body goes inside **braces** **{ }**
 - No **:** at the end like Python
@@ -36,6 +38,7 @@ The comparison operators
 - **!=** not equal
 
 **Be very careful** about **=** vs **==**. **=** assigns, **==** compares
+
 ```c
 #include <stdio.h>
 
@@ -47,11 +50,13 @@ int main(void) {
     return 0;
 }
 ```
+
 This is a **classic C bug**. Unlike Java (which refuses to compile this), **C accepts it without an error**. **x = 4** stores **4** in **x** and gives back the value **4**, which C treats as "true" (any non-zero value is true). So this code always enters the **if**, no matter what **x** was before. Many real-world bugs in famous projects come from exactly this typo. Use **==** when comparing :)
 
 ---
 
 We don’t always need **else**. Sometimes we just want to act **if** something is true and otherwise do nothing
+
 ```c
 #include <stdio.h>
 
@@ -69,6 +74,7 @@ Wait, **isUserOnline = 1**? Where is **true**? Well, **C doesn’t have a real b
 ---
 
 A complete example
+
 ```c
 #include <stdio.h>
 
@@ -84,6 +90,7 @@ int main(void) {
     return 0;
 }
 ```
+
 Change **isUserOnline** to **0** and run again. The output flips. Programming becomes fun the moment you start **playing** with the values :)
 
 ---

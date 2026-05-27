@@ -27,7 +27,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Max: 95
 ```
@@ -62,7 +64,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 High scores: [88, 95]
 ```
@@ -97,7 +101,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Names longer than 4 chars: 3
 ```
@@ -129,7 +135,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Crew: Tommy, Lance, Phil
 ```
@@ -171,7 +179,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Expensive items: 3
 Cheapest: $30

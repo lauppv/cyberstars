@@ -1,6 +1,5 @@
-def analyzeWord(word):
-    # return uppercase, lowercase, and length
-    pass
+def analyzeWord(word): # return uppercase, lowercase, and length
+pass
 
 upper, lower, length = analyzeWord("Cortez")
 print(upper)

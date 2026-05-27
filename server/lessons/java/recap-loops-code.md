@@ -1,5 +1,5 @@
 public class Main {
-    // write your methods here
+// write your methods here
 
     public static void main(String[] args) {
         System.out.println("5! = " + factorial(5));
@@ -8,4 +8,5 @@ public class Main {
         System.out.println("15 prime? " + isPrime(15));
         System.out.println("Digits of 9876: " + sumDigits(9876));
     }
+
 }

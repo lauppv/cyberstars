@@ -1,6 +1,7 @@
 In Python and Java, when you pass a variable to a function, the function gets a **copy**. In C it's the same — but pointers let us do something special: **pass by reference**
 
 First, let's see the problem. This function tries to swap two numbers but **fails**
+
 ```c
 #include <stdio.h>
 
@@ -17,7 +18,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 x = 10, y = 20
 ```
@@ -27,6 +30,7 @@ Nothing happened! The function swapped its **local copies**, but the original **
 ---
 
 The fix: **pass pointers** instead of values
+
 ```c
 #include <stdio.h>
 
@@ -43,7 +47,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 x = 20, y = 10
 ```
@@ -70,6 +76,7 @@ int main(void) {
 ```
 
 Another common use: functions that need to **return multiple values**. C functions can only return one thing, but with pointers we can "return" as many as we want
+
 ```c
 #include <stdio.h>
 
@@ -90,6 +97,7 @@ int main(void) {
     return 0;
 }
 ```
+
 Output: **Min: 1, Max: 9**
 
 The function "returns" both the minimum and maximum through pointers. This is idiomatic C — you'll see it everywhere
@@ -101,6 +109,7 @@ Write a function **tripleIt** that takes an **int pointer** and **triples** the 
 Then in **main**, create a variable **num** with value **5**, call **tripleIt(&num)**, and print the result
 
 Expected output
+
 ```text
 15
 ```

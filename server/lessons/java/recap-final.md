@@ -8,9 +8,10 @@ Create a class **Task** with fields: **title** (String), **priority** (Priority)
 
 Write these methods:
 
-**static String priorityLabel(Priority p)** — use a **switch** to return a label: LOW → "[  ]", MEDIUM → "[* ]", HIGH → "[**]", CRITICAL → "[!!]"
+**static String priorityLabel(Priority p)** — use a **switch** to return a label: LOW → "[ ]", MEDIUM → "[* ]", HIGH → "[**]", CRITICAL → "[!!]"
 
 In main, create an ArrayList of tasks:
+
 - "Write tests" — HIGH — done
 - "Fix bug" — CRITICAL — not done
 - "Update docs" — LOW — done
@@ -22,6 +23,7 @@ In main, create an ArrayList of tasks:
 Print the board using an **enhanced for** loop. Mark done tasks with "(DONE)"
 
 Expected output
+
 ```text
 === TASK BOARD ===
 [!!] Fix bug

@@ -69,6 +69,7 @@ class Dog extends Animal {
 ```
 
 **Upcasting** (child to parent, always safe):
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -81,6 +82,7 @@ public class Main {
 ```
 
 **Downcasting** (parent to child, dangerous):
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -110,12 +112,12 @@ It's like Tommy Vercetti trying to pretend he's Cortez. The disguise might work 
 
 Here's a quick reference
 
-| Conversion | Direction | Safe? | Syntax |
-|-----------|-----------|-------|--------|
-| int to double | Widening | Yes | `double d = myInt;` |
-| double to int | Narrowing | No (loses decimals) | `int i = (int) myDouble;` |
-| Dog to Animal | Upcasting | Yes | `Animal a = myDog;` |
-| Animal to Dog | Downcasting | Maybe | `Dog d = (Dog) myAnimal;` |
+| Conversion    | Direction   | Safe?               | Syntax                    |
+| ------------- | ----------- | ------------------- | ------------------------- |
+| int to double | Widening    | Yes                 | `double d = myInt;`       |
+| double to int | Narrowing   | No (loses decimals) | `int i = (int) myDouble;` |
+| Dog to Animal | Upcasting   | Yes                 | `Animal a = myDog;`       |
+| Animal to Dog | Downcasting | Maybe               | `Dog d = (Dog) myAnimal;` |
 
 ---
 

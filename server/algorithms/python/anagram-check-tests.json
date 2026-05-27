@@ -1,7 +1,12 @@
 [
   { "name": "listen and silent", "input": "listen\nsilent", "expected": "True", "mode": "exact" },
   { "name": "hello and world", "input": "hello\nworld", "expected": "False", "mode": "exact" },
-  { "name": "case insensitive", "input": "Triangle\nIntegral", "expected": "True", "mode": "exact" },
+  {
+    "name": "case insensitive",
+    "input": "Triangle\nIntegral",
+    "expected": "True",
+    "mode": "exact"
+  },
   { "name": "different lengths", "input": "abc\nabcd", "expected": "False", "mode": "exact" },
   { "name": "same word", "input": "test\ntest", "expected": "True", "mode": "exact" }
 ]

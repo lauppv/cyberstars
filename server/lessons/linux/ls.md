@@ -31,7 +31,7 @@ january.log  february.log
 
 This peeks inside `reports` while you stay where you are.
 
-Like `pwd`, `ls` only *looks* — it never changes or deletes anything. It is safe to
+Like `pwd`, `ls` only _looks_ — it never changes or deletes anything. It is safe to
 run any time you feel lost.
 
 A useful habit: run `ls` whenever you arrive in a new directory, so you always know

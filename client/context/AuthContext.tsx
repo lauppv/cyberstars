@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import type { ReactNode } from "react";
-import type { AuthenticatedUser as User, LoginPayload, SignupPayload } from "../../shared/auth";
-import * as authService from "../services/authService";
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import type { AuthenticatedUser as User, LoginPayload, SignupPayload } from '../../shared/auth';
+import * as authService from '../services/authService';
 
 interface AuthContextType {
   user: User | null;
@@ -20,7 +20,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    authService.getMe()
+    authService
+      .getMe()
       .then(setUser)
       .catch(() => setUser(null))
       .finally(() => setIsLoading(false));
@@ -44,19 +45,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const refreshUser = useCallback(() => {
-    authService.getMe().then(setUser).catch(() => {});
+    authService
+      .getMe()
+      .then(setUser)
+      .catch(() => {});
   }, []);
 
   return (
-    <AuthContext value={{
-      user,
-      isLoggedIn: !!user,
-      isLoading,
-      login,
-      signup,
-      logout,
-      refreshUser,
-    }}>
+    <AuthContext
+      value={{
+        user,
+        isLoggedIn: !!user,
+        isLoading,
+        login,
+        signup,
+        logout,
+        refreshUser,
+      }}
+    >
       {children}
     </AuthContext>
   );
@@ -65,6 +71,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 // eslint-disable-next-line react-refresh/only-export-components
 export function useAuth(): AuthContextType {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }

@@ -33,7 +33,7 @@ cp reports reports-backup
 cp: -r not specified; omitting directory 'reports'
 ```
 
-The `-r` option (**recursive**) copies the folder *and everything inside it*:
+The `-r` option (**recursive**) copies the folder _and everything inside it_:
 
 ```bash
 cp -r reports reports-backup

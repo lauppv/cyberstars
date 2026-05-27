@@ -3,13 +3,15 @@ Combine **interfaces**, **casting**, **exceptions**, and **String.format**
 ---
 
 Build a **shape calculator** using interfaces. Create an interface **Shape** with:
+
 - **double area()**
 - **String describe()**
 
 Create three classes that implement Shape:
-- **Circle** — takes radius. Area = PI * r * r
-- **Rectangle** — takes width and height. Area = w * h
-- **Triangle** — takes base and height. Area = 0.5 * b * h
+
+- **Circle** — takes radius. Area = PI _ r _ r
+- **Rectangle** — takes width and height. Area = w \* h
+- **Triangle** — takes base and height. Area = 0.5 _ b _ h
 
 Write a method **static void printShape(Shape s)** that uses **String.format** to print: "Shape: describe — Area: X.XX"
 
@@ -28,6 +30,7 @@ public class Main {
 ```
 
 Expected output
+
 ```text
 Circle (r=5.0) — Area: 78.54
 Rectangle (4.0 x 6.0) — Area: 24.00

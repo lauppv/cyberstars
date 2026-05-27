@@ -5,6 +5,7 @@ Implement a **Queue** class using an `ArrayList` as the internal storage. The qu
 Process commands from stdin and print results for `dequeue` and `peek`. If `dequeue` or `peek` is called on an empty queue, print `Empty`.
 
 ### Input
+
 - Line 1: number of commands N
 - Next N lines: one of:
   - `enqueue X` — add integer X to the back of the queue
@@ -12,6 +13,7 @@ Process commands from stdin and print results for `dequeue` and `peek`. If `dequ
   - `peek` — print the front element without removing it
 
 ### Output
+
 - For each `dequeue`: the removed value, or `Empty`
 - For each `peek`: the front value, or `Empty`
 
@@ -48,6 +50,7 @@ Output:
 ```
 
 ### Hints
+
 - Use `ArrayList<Integer>` to store elements.
 - Enqueue adds to the end of the list with `add()`.
 - Dequeue removes from the front with `remove(0)`.

@@ -1,11 +1,11 @@
 class Shape {
-    double area() {
-        return 0;
-    }
+double area() {
+return 0;
+}
 }
 
 class Circle extends Shape {
-    double radius;
+double radius;
 
     Circle(double radius) {
         this.radius = radius;
@@ -15,10 +15,11 @@ class Circle extends Shape {
     double area() {
         return Math.PI * radius * radius;
     }
+
 }
 
 class Rectangle extends Shape {
-    double width, height;
+double width, height;
 
     Rectangle(double width, double height) {
         this.width = width;
@@ -29,14 +30,16 @@ class Rectangle extends Shape {
     double area() {
         return width * height;
     }
+
 }
 
 public class Main {
-    public static void main(String[] args) {
-        // Create a Shape[] array with a Circle(5) and a Rectangle(4, 6)
+public static void main(String[] args) {
+// Create a Shape[] array with a Circle(5) and a Rectangle(4, 6)
 
         // Loop through the array and print each area
         // Use String.format("%.2f", s.area())
 
     }
+
 }

@@ -11,11 +11,13 @@ You're building a **grade analyzer** for a class of students. Write these functi
 **int findFirstFail(int grades[], int n)** — returns the **first** failing grade (below 50). Use **break** to stop as soon as you find one. Return **-1** if everyone passed
 
 Use this array in main:
+
 ```c
 int grades[] = {85, 42, 91, 67, 38, 73, 95, 55};
 ```
 
 Expected output
+
 ```text
 Passing: 6
 Highest: 95

@@ -31,6 +31,7 @@ public class Main {
     }
 }
 ```
+
 **Run** this. Then change **seconds** to **60**, **20**, **10**, **9**, **42**. See how the output changes
 
 The chain runs **top to bottom**. At the **first** condition that is **true**, Java enters that block, runs it, and **jumps out** of the whole chain. The remaining branches are **never** checked. This is important — if **seconds == 60**, the chain prints **"Checking connection..."** and then exits
@@ -38,6 +39,7 @@ The chain runs **top to bottom**. At the **first** condition that is **true**, J
 ---
 
 Why not just write a bunch of separate **if**s? Like this
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -49,6 +51,7 @@ public class Main {
     }
 }
 ```
+
 The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third if fails (60 != 20), and the **else** kicks in printing **"60 seconds has no effect"**, which is wrong — we already handled 60 above!
 
 **Rule of thumb**: when we test the **same variable** for multiple values, we **chain** with **if / else if / else**
@@ -56,6 +59,7 @@ The problem: each **if** is independent. The **else** at the end belongs only to
 ---
 
 We can also nest **if**s inside one another
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -72,6 +76,7 @@ public class Main {
     }
 }
 ```
+
 Here, only **if** we’re in the last 10 seconds, we check the error flag. Nested **if**s are fine, but if you nest 5 levels deep, your code becomes unreadable. Try to keep things flat when you can :)
 
 ---

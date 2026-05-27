@@ -6,10 +6,13 @@ A **set** is a collection where **every element is unique**. No duplicates allow
 guests = {"Tommy", "Lance", "Cortez", "Tommy"}
 print(guests)
 ```
+
 Output
+
 ```text
 {'Lance', 'Cortez', 'Tommy'}
 ```
+
 Wait, we wrote **Tommy** twice, but he only appears once. That's the whole point of a set — it automatically removes duplicates. Also notice that the **order might be different** from how we wrote them. Sets don't care about order, only about **what's inside**
 
 ---
@@ -22,15 +25,18 @@ myDict = {"a": 1, "b": 2}
 ```
 
 **Be careful** with empty collections
+
 ```py
 empty_dict = {}
 empty_set = set()
 ```
+
 An empty **{}** creates a dictionary, not a set. To create an empty set, use **set()**
 
 ---
 
 We can **add** elements with **.add()** and **remove** them with **.remove()**
+
 ```py
 weapons = {"bat", "pistol"}
 weapons.add("shotgun")
@@ -39,6 +45,7 @@ print(weapons)
 weapons.remove("bat")
 print(weapons)
 ```
+
 Notice we use **.add()**, not **.append()** like with lists. Sets don't have an order, so "appending at the end" doesn't make sense
 
 ---
@@ -54,6 +61,7 @@ if player in bannedPlayers:
 else:
     print(f"{player} is welcome")
 ```
+
 Output **Tommy is welcome**
 
 ---
@@ -65,15 +73,18 @@ names = ["Tommy", "Lance", "Tommy", "Cortez", "Lance", "Lance"]
 uniqueNames = list(set(names))
 print(uniqueNames)
 ```
+
 We converted the list to a set (which removed duplicates), then back to a list. Clean and simple
 
 ---
 
 **len()** works on sets too
+
 ```py
 colors = {"red", "green", "blue", "red"}
 print(len(colors))
 ```
+
 Output **3**, not 4, because the duplicate **red** was removed
 
 ---
@@ -86,9 +97,11 @@ You have a list **votes** on the right with some repeated names. Do the followin
 4. Display the unique voters
 
 Expected output
+
 ```text
 8
 4
 {'Fiona', 'Shrek', 'Donkey', 'Puss'}
 ```
+
 The order of names in the set might be different, that's fine :)

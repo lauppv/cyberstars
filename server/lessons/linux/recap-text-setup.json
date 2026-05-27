@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"raw_data.csv","content":"Voss,scan,3\nTanaka,repair,1\nChen,scan,2\nVoss,patrol,1\nTanaka,repair,2\nVoss,scan,1\nChen,patrol,4\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "raw_data.csv",
+      "content": "Voss,scan,3\nTanaka,repair,1\nChen,scan,2\nVoss,patrol,1\nTanaka,repair,2\nVoss,scan,1\nChen,patrol,4\n"
+    }
+  ],
+  "dirs": []
+}

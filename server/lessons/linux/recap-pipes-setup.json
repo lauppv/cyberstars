@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"telemetry.raw","content":"OK: thruster 1 nominal\nWARN: fuel cell B low\nOK: solar panel aligned\nWARN: antenna misaligned\nERR: gyroscope fault\nWARN: coolant pressure dropping\nOK: life support green\nERR: backup power offline\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "telemetry.raw",
+      "content": "OK: thruster 1 nominal\nWARN: fuel cell B low\nOK: solar panel aligned\nWARN: antenna misaligned\nERR: gyroscope fault\nWARN: coolant pressure dropping\nOK: life support green\nERR: backup power offline\n"
+    }
+  ],
+  "dirs": []
+}

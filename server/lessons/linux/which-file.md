@@ -3,7 +3,7 @@ Two small but handy commands round off your searching skills: **which** and **fi
 ### Where does a command live? `which`
 
 When you type `ls`, Linux runs a program stored somewhere on disk. The **which**
-command tells you *exactly where* that program is:
+command tells you _exactly where_ that program is:
 
 ```bash
 which ls
@@ -48,10 +48,10 @@ photo.png: PNG image data
 `file` looks at the actual bytes, so it is right even when the extension is missing or
 wrong.
 
-| Command | Question it answers |
-|---------|---------------------|
-| `which` | "Where is this *program* installed?" |
-| `file`  | "What *type* of file is this?" |
+| Command | Question it answers                  |
+| ------- | ------------------------------------ |
+| `which` | "Where is this _program_ installed?" |
+| `file`  | "What _type_ of file is this?"       |
 
 ---
 

@@ -19,6 +19,7 @@ abstract class Vehicle {
 ```
 
 Two key things here:
+
 - The class is marked `abstract` — you CANNOT do `new Vehicle("something")`
 - The method `fuelType()` is marked `abstract` — it has NO body (no curly braces), just a semicolon. Any non-abstract child MUST provide the body
 
@@ -76,7 +77,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tesla Model 3: Electric
 Ford F-150: Gasoline

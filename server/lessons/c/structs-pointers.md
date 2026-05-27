@@ -52,6 +52,7 @@ int main(void) {
 ---
 
 The real power: functions that **modify** a struct through a pointer
+
 ```c
 #include <stdio.h>
 
@@ -80,6 +81,7 @@ int main(void) {
     return 0;
 }
 ```
+
 Output: **Tommy: 70 HP, 200 pts**
 
 The functions modified the **original struct**, not a copy. This is the same "pass by reference" pattern we learned with int pointers, but now with structs. This is how real C programs manage state
@@ -95,6 +97,7 @@ Write a function **withdraw** that takes a pointer to a BankAccount and an amoun
 In **main**, create an account for "Lance" with balance 1000. Deposit 500. Withdraw 200. Withdraw 2000 (should fail). Print the final balance
 
 Expected output
+
 ```text
 Insufficient funds
 Balance: 1300

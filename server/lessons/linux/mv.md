@@ -11,7 +11,7 @@ mv draft.txt final.txt
 ```
 
 `draft.txt` is gone; `final.txt` now holds its contents. Unlike `cp`, no extra copy is
-left behind — `mv` *moves*, it does not duplicate.
+left behind — `mv` _moves_, it does not duplicate.
 
 ### Moving a file into a folder
 
@@ -26,7 +26,7 @@ Now the file lives at `reports/final.txt`.
 
 ### Move and rename at once
 
-You can do both in one command — move into a folder *and* give a new name:
+You can do both in one command — move into a folder _and_ give a new name:
 
 ```bash
 mv notes.txt archive/notes-2026.txt

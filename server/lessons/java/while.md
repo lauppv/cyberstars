@@ -11,7 +11,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 0
 1
@@ -28,6 +30,7 @@ Output
 Why no **10**? Because when **i = 10**, the condition **10 < 10** is **false**, so we exit
 
 If we wanted **10** included, we’d write
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +42,7 @@ public class Main {
     }
 }
 ```
+
 Now **10 <= 10** is **true**, so we enter one more time
 
 ---
@@ -46,6 +50,7 @@ Now **10 <= 10** is **true**, so we enter one more time
 **while** runs **as long as** the condition is **true**
 
 **Be very careful**. If we forget to update **i** inside the loop, we get an **infinite loop**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -57,6 +62,7 @@ public class Main {
     }
 }
 ```
+
 **i** stays **0** forever, so the condition is always **true**, and the program prints **0** non-stop. Run this code (briefly) to see what happens. Don’t worry, the platform stops it after 5 seconds :)
 
 This is a very common bug. Whenever you write a **while**, ask yourself: "what makes this condition eventually become false?". If the answer is "nothing", you have a problem
@@ -73,6 +79,7 @@ Both are equally powerful — anything you can do with one, you can do with the 
 ---
 
 The code on the right is in an **infinite loop**. Fix it so the program prints
+
 ```text
 I am online
 Now I am offline

@@ -4,7 +4,7 @@ interface RunButtonProps {
   className?: string;
 }
 
-export function RunButton({ onClick, isRunning, className = "" }: RunButtonProps) {
+export function RunButton({ onClick, isRunning, className = '' }: RunButtonProps) {
   return (
     <button
       onClick={onClick}

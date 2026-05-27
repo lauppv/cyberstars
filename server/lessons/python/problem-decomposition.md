@@ -9,14 +9,17 @@ Let's say someone asks you: "Write a program that finds the most common word in 
 If you try to write the whole thing at once, you'll get lost. Instead, think about it step by step
 
 **Step 1**: How do I get the individual words from a sentence? → use **.split()**
+
 ```py
 sentence = "the cat sat on the mat the cat"
 words = sentence.split(" ")
 print(words)
 ```
+
 Output **['the', 'cat', 'sat', 'on', 'the', 'mat', 'the', 'cat']**
 
 **Step 2**: How do I count how many times each word appears? → use a dictionary
+
 ```py
 counter = {}
 for word in words:
@@ -26,9 +29,11 @@ for word in words:
         counter[word] = 1
 print(counter)
 ```
+
 Output **{'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}**
 
 **Step 3**: How do I find which word has the highest count? → loop through the dictionary
+
 ```py
 bestWord = ""
 bestCount = 0
@@ -38,6 +43,7 @@ for word, count in counter.items():
         bestWord = word
 print(f"Most common: {bestWord} ({bestCount} times)")
 ```
+
 Output **Most common: the (3 times)**
 
 ---
@@ -56,19 +62,23 @@ This is how professional programmers think. Nobody writes a program in one go. T
 Let's do another one. "Given a list of numbers, find all pairs that add up to a target"
 
 **Step 1**: What does "all pairs" mean? → every combination of two numbers
+
 ```py
 numbers = [1, 3, 5, 7, 2]
 target = 8
 ```
 
 **Step 2**: How do I check every pair? → nested loop
+
 ```py
 for i in range(len(numbers)):
     for j in range(i + 1, len(numbers)):
         if numbers[i] + numbers[j] == target:
             print(f"{numbers[i]} + {numbers[j]} = {target}")
 ```
+
 Output
+
 ```text
 1 + 7 = 8
 3 + 5 = 8
@@ -85,6 +95,7 @@ You are given a list of **names**. Write a program that
 3. Displays **{name} appears {count} times**
 
 Expected output
+
 ```text
 Tommy appears 3 times
 ```

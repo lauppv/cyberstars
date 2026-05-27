@@ -3,17 +3,20 @@ Sometimes things go wrong. The user types a word when we expect a number. We try
 ```py
 number = int("abc")
 ```
+
 **Run** it. **ValueError**. Python can't convert "abc" to a number
 
 ```py
 names = ["Tommy", "Lance"]
 print(names[10])
 ```
+
 **Run** it. **IndexError**. There's no element at position 10
 
 ```py
 print(10 / 0)
 ```
+
 **Run** it. **ZeroDivisionError**. Math says no :)
 
 ---
@@ -29,6 +32,7 @@ try:
 except:
     print("That's not a valid number")
 ```
+
 Output **That's not a valid number**
 
 How it works: Python **tries** to run the code inside the **try** block. If everything goes well, it continues normally. If an error happens, instead of crashing, Python jumps to the **except** block and runs that code instead
@@ -40,6 +44,7 @@ try:
 except:
     print("Please enter a number, not text!")
 ```
+
 If the user types **18**, everything works. If they type **hello**, we get a friendly message instead of a crash
 
 ---
@@ -56,6 +61,7 @@ except ValueError:
 except ZeroDivisionError:
     print("Can't divide by zero!")
 ```
+
 If the user types text → **ValueError** is caught. If they type **0** → **ZeroDivisionError** is caught. Each error gets its own message. This is better than a generic **except** because we know exactly what went wrong
 
 ---
@@ -72,6 +78,7 @@ while True:
 
 print(f"Your age is {age}")
 ```
+
 The **while True** loop keeps running. If **int()** succeeds, we **break** out of the loop. If it fails, we print a message and the loop continues. This is a pattern you'll use a lot
 
 ---
@@ -88,11 +95,14 @@ else:
 finally:
     print("This always runs")
 ```
+
 Output
+
 ```text
 No errors, great!
 This always runs
 ```
+
 **else** and **finally** are optional. For now, **try** and **except** are the important ones
 
 ---
@@ -108,6 +118,7 @@ print(safeDivide(99, 3))    # 33.0
 ```
 
 Expected output
+
 ```text
 5.0
 cannot divide by zero

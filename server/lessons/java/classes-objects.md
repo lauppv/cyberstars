@@ -39,7 +39,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Color: red
 Speed: 120
@@ -89,7 +91,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy Vercetti has 100 HP and carries a M4
 Lance Vance has 80 HP and carries a Pistol
@@ -172,6 +176,7 @@ public class Main {
     }
 }
 ```
+
 Output **Rocket Launcher deals more damage**
 
 Without classes, you'd need separate variables for every single field: **w1Name, w1Damage, w1Weight, w2Name, w2Damage, w2Weight**... It gets messy fast. Classes let you bundle related data together into one clean package
@@ -191,6 +196,7 @@ Then in **main**, create **two** Dog objects
 Print each dog in the format: **Name is X years old**
 
 Expected output
+
 ```text
 Rex is 5 years old
 Buddy is 3 years old

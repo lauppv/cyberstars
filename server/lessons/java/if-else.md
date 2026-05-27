@@ -1,6 +1,7 @@
 In real life we often face decisions: **if** it’s cold, take a sweater, **otherwise** a t-shirt is enough. **If** I’m sleepy, I go to sleep, **otherwise** I program :)
 
 In code, we say
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +14,9 @@ public class Main {
     }
 }
 ```
+
 Three things to notice in Java
+
 - The condition goes inside **parentheses** **( )**
 - The block of code goes inside **braces** **{ }**
 - We don’t need a **:** like in Python
@@ -32,6 +35,7 @@ The comparison operators are exactly the ones you’d expect
 - **!=** **not** equal
 
 **Be careful** about the difference between **=** and **==**. **=** assigns a value, **==** compares
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -42,7 +46,9 @@ public class Main {
     }
 }
 ```
+
 This won’t compile. Java won’t even let you make this mistake (unlike some other languages). The correct version is
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -57,6 +63,7 @@ public class Main {
 ---
 
 We don’t always need an **else**. Sometimes we just want to do something **if** a condition is true, and otherwise do nothing
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -67,11 +74,13 @@ public class Main {
     }
 }
 ```
+
 Notice we wrote **if (isUserOnline)** without **== true**. Both work, but the shorter form is what Java programmers typically write
 
 ---
 
 A complete example
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -86,6 +95,7 @@ public class Main {
     }
 }
 ```
+
 Change **isUserOnline** to **false** and run again. Read the new output. Programming becomes fun the moment you start **playing** with the values :)
 
 ---

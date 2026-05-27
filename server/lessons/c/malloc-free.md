@@ -52,6 +52,7 @@ We use **scores[i]** just like a normal array — because an array name is a poi
 ---
 
 **calloc** is malloc's cousin. It allocates AND initializes everything to zero
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,6 +71,7 @@ With **malloc**, the memory contains garbage (whatever was there before). With *
 ---
 
 The golden rules of dynamic memory:
+
 1. Every **malloc** or **calloc** must have a matching **free**
 2. Never use memory after freeing it (**use after free** — a dangerous bug)
 3. Never free the same memory twice (**double free** — also dangerous)
@@ -99,6 +101,7 @@ These rules sound simple but violating them causes some of the hardest bugs in t
 Create a dynamic array of **5 ints** using **malloc**. Fill it with the values **{2, 4, 6, 8, 10}**. Print each value on a separate line. Don't forget to **free** the memory
 
 Expected output
+
 ```text
 2
 4

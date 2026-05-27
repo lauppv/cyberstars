@@ -5,10 +5,10 @@ usefully by **type** and **size**.
 
 The `-type` option says whether you want files or directories:
 
-| Condition | Matches |
-|-----------|---------|
+| Condition | Matches           |
+| --------- | ----------------- |
 | `-type f` | regular **files** |
-| `-type d` | **directories** |
+| `-type d` | **directories**   |
 
 ```bash
 find . -type d
@@ -20,7 +20,7 @@ That lists every folder under `.`. To find only files:
 find . -type f -name "*.log"
 ```
 
-This reads as: under `.`, find things that are **files** *and* whose name ends in
+This reads as: under `.`, find things that are **files** _and_ whose name ends in
 `.log`. Multiple conditions are simply listed one after another — `find` requires
 **all** of them to match.
 
@@ -28,11 +28,11 @@ This reads as: under `.`, find things that are **files** *and* whose name ends i
 
 The `-size` option matches files by how big they are:
 
-| Example | Matches |
-|---------|---------|
-| `-size +1k` | bigger than 1 kilobyte |
+| Example     | Matches                 |
+| ----------- | ----------------------- |
+| `-size +1k` | bigger than 1 kilobyte  |
 | `-size -1k` | smaller than 1 kilobyte |
-| `-size +1M` | bigger than 1 megabyte |
+| `-size +1M` | bigger than 1 megabyte  |
 
 A `+` means "more than", a `-` means "less than". The letter is the unit (`k`, `M`,
 `G`).

@@ -32,7 +32,7 @@ An **absolute path** starts at the root `/` and spells out every step:
 
 It works from **anywhere** — it is the full address.
 
-A **relative path** starts from *wherever you currently are*. If you are in
+A **relative path** starts from _wherever you currently are_. If you are in
 `/home/student`, then:
 
 ```text
@@ -57,4 +57,4 @@ Explore the layout of your home directory:
 1. Run `tree` to see the whole structure at once.
 2. Run `pwd` to print your absolute path.
 
-(Nothing on disk changes — this lesson is about *looking*.)
+(Nothing on disk changes — this lesson is about _looking_.)

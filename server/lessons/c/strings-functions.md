@@ -10,6 +10,7 @@ int main(void) {
     return 0;
 }
 ```
+
 Output: **Length: 14**
 
 **strlen** returns the number of characters in the string, **NOT** counting the **'\0'**. The actual array has 15 chars (14 letters + '\0'), but strlen says 14. This is an important distinction
@@ -17,6 +18,7 @@ Output: **Length: 14**
 ---
 
 **strcmp** — compare two strings
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -38,6 +40,7 @@ int main(void) {
 ---
 
 **strcpy** — copy one string into another
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -57,6 +60,7 @@ int main(void) {
 ---
 
 **strcat** — concatenate (join) two strings
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -74,6 +78,7 @@ int main(void) {
 ---
 
 A useful trick: **strstr** — find a substring
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -101,6 +106,7 @@ You have two char arrays: **first** with value **"Cyber"** and **second** with v
 4. Print **result**
 
 Expected output
+
 ```text
 5
 CyberStars

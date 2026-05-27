@@ -47,9 +47,9 @@ for i, q in enumerate(quiz):
     print(f"\nQuestion {i + 1}: {q['text']}")
     for option in q["options"]:
         print(f"  {option}")
-    
+
     answer = input("Your answer (A/B/C/D): ").upper()
-    
+
     if answer == q["answer"]:
         print("Correct!")
         score += 1
@@ -68,20 +68,20 @@ Let's make it even better with a function
 ```py
 def runQuiz(questions):
     score = 0
-    
+
     for i, q in enumerate(questions):
         print(f"\nQuestion {i + 1}: {q['text']}")
         for option in q["options"]:
             print(f"  {option}")
-        
+
         answer = input("Your answer: ").upper()
-        
+
         if answer == q["answer"]:
             print("Correct!")
             score += 1
         else:
             print(f"Wrong! The answer was {q['answer']}")
-    
+
     return score, len(questions)
 
 score, total = runQuiz(quiz)
@@ -106,6 +106,7 @@ print(gradeQuiz(quiz, ["A", "B", "A"]))   # 0 (all wrong)
 ```
 
 Expected output
+
 ```text
 3
 1

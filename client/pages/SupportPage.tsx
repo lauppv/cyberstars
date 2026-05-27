@@ -1,25 +1,30 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { Topbar } from "../components/layout/Topbar";
-import { LoadingSpinner } from "../components/ui/LoadingSpinner";
-import * as supportService from "../services/supportService";
-import type { SupportTicketDTO, SupportMessageDTO, TicketType, TicketStatus } from "../../shared/support";
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { Topbar } from '../components/layout/Topbar';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import * as supportService from '../services/supportService';
+import type {
+  SupportTicketDTO,
+  SupportMessageDTO,
+  TicketType,
+  TicketStatus,
+} from '../../shared/support';
 
 const TICKET_TYPES: { value: TicketType; label: string }[] = [
-  { value: "BUG", label: "🐞 Bug report" },
-  { value: "QUESTION", label: "❓ Question" },
-  { value: "RULE_VIOLATION", label: "🚫 Rule violation" },
-  { value: "FEEDBACK", label: "💡 Feedback / idea" },
-  { value: "ACCOUNT", label: "👤 Account issue" },
-  { value: "OTHER", label: "📋 Other" },
+  { value: 'BUG', label: '🐞 Bug report' },
+  { value: 'QUESTION', label: '❓ Question' },
+  { value: 'RULE_VIOLATION', label: '🚫 Rule violation' },
+  { value: 'FEEDBACK', label: '💡 Feedback / idea' },
+  { value: 'ACCOUNT', label: '👤 Account issue' },
+  { value: 'OTHER', label: '📋 Other' },
 ];
 
 const STATUS_META: Record<TicketStatus, { label: string; color: string }> = {
-  OPEN: { label: "Open", color: "var(--warning)" },
-  IN_PROGRESS: { label: "In progress", color: "var(--accent)" },
-  RESOLVED: { label: "Resolved", color: "var(--success)" },
-  CLOSED: { label: "Closed", color: "var(--text3)" },
+  OPEN: { label: 'Open', color: 'var(--warning)' },
+  IN_PROGRESS: { label: 'In progress', color: 'var(--accent)' },
+  RESOLVED: { label: 'Resolved', color: 'var(--success)' },
+  CLOSED: { label: 'Closed', color: 'var(--text3)' },
 };
 
 function ticketTypeLabel(t: TicketType): string {
@@ -27,16 +32,16 @@ function ticketTypeLabel(t: TicketType): string {
 }
 
 const INPUT_CLS =
-  "w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]";
+  'w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]';
 
 export function SupportPage() {
   const navigate = useNavigate();
   const { user, isLoggedIn, isLoading } = useAuth();
-  const isAdmin = user?.role === "ADMIN";
+  const isAdmin = user?.role === 'ADMIN';
 
-  const [type, setType] = useState<TicketType>("BUG");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [type, setType] = useState<TicketType>('BUG');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [myTickets, setMyTickets] = useState<SupportTicketDTO[]>([]);
@@ -44,12 +49,19 @@ export function SupportPage() {
   const [openTicket, setOpenTicket] = useState<SupportTicketDTO | null>(null);
 
   useEffect(() => {
-    if (!isLoading && !isLoggedIn) navigate("/getstarted");
+    if (!isLoading && !isLoggedIn) navigate('/getstarted');
   }, [isLoading, isLoggedIn, navigate]);
 
   const refresh = useCallback(() => {
-    supportService.getMyTickets().then(setMyTickets).catch(() => {});
-    if (isAdmin) supportService.getAllTickets().then(setAllTickets).catch(() => {});
+    supportService
+      .getMyTickets()
+      .then(setMyTickets)
+      .catch(() => {});
+    if (isAdmin)
+      supportService
+        .getAllTickets()
+        .then(setAllTickets)
+        .catch(() => {});
   }, [isAdmin]);
 
   useEffect(() => {
@@ -61,9 +73,9 @@ export function SupportPage() {
     setSubmitting(true);
     try {
       await supportService.createTicket({ type, subject: subject.trim(), message: message.trim() });
-      setSubject("");
-      setMessage("");
-      setType("BUG");
+      setSubject('');
+      setMessage('');
+      setType('BUG');
       setSent(true);
       setTimeout(() => setSent(false), 3000);
       refresh();
@@ -81,7 +93,9 @@ export function SupportPage() {
     return (
       <div className="h-screen flex flex-col bg-transparent">
         <Topbar />
-        <div className="flex-1 flex items-center justify-center"><LoadingSpinner /></div>
+        <div className="flex-1 flex items-center justify-center">
+          <LoadingSpinner />
+        </div>
       </div>
     );
   }
@@ -95,7 +109,10 @@ export function SupportPage() {
             ticket={openTicket}
             isAdmin={isAdmin}
             currentUserId={user.id}
-            onBack={() => { setOpenTicket(null); refresh(); }}
+            onBack={() => {
+              setOpenTicket(null);
+              refresh();
+            }}
             onStatusChange={(s) => changeStatus(openTicket.id, s)}
           />
         </main>
@@ -111,27 +128,33 @@ export function SupportPage() {
           <div className="text-backdrop mb-8">
             <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">Support</h1>
             <p className="text-[13px] text-[var(--text3)]">
-              Found a bug, have a question, or need to report something? Open a ticket and the team will take a look.
+              Found a bug, have a question, or need to report something? Open a ticket and the team
+              will take a look.
             </p>
           </div>
 
           {/* New ticket form */}
           <div
             className="p-5 rounded-[var(--radius)] border border-[var(--border)] mb-8"
-            style={{ background: "rgba(22,22,29,0.72)", backdropFilter: "blur(12px)" }}
+            style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
           >
             <h2 className="text-[14px] font-semibold mb-4">New ticket</h2>
             <form
-              onSubmit={(e) => { e.preventDefault(); void submit(); }}
+              onSubmit={(e) => {
+                e.preventDefault();
+                void submit();
+              }}
               className="flex flex-col gap-3"
             >
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as TicketType)}
-                className={INPUT_CLS + " cursor-pointer"}
+                className={INPUT_CLS + ' cursor-pointer'}
               >
                 {TICKET_TYPES.map((o) => (
-                  <option key={o.value} value={o.value}>{o.label}</option>
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
                 ))}
               </select>
               <input
@@ -146,7 +169,7 @@ export function SupportPage() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Describe the issue or question in detail..."
                 rows={4}
-                className={INPUT_CLS + " resize-y"}
+                className={INPUT_CLS + ' resize-y'}
               />
               <div className="flex items-center gap-3">
                 <button
@@ -154,10 +177,12 @@ export function SupportPage() {
                   disabled={submitting || !subject.trim() || !message.trim()}
                   className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitting ? "Sending..." : "Submit ticket"}
+                  {submitting ? 'Sending...' : 'Submit ticket'}
                 </button>
                 {sent && (
-                  <span className="text-[var(--success)] text-[12px] font-semibold">Ticket submitted!</span>
+                  <span className="text-[var(--success)] text-[12px] font-semibold">
+                    Ticket submitted!
+                  </span>
                 )}
               </div>
             </form>
@@ -202,19 +227,30 @@ export function SupportPage() {
   );
 }
 
-function TicketRow({ ticket, admin, onClick }: { ticket: SupportTicketDTO; admin?: boolean; onClick: () => void }) {
+function TicketRow({
+  ticket,
+  admin,
+  onClick,
+}: {
+  ticket: SupportTicketDTO;
+  admin?: boolean;
+  onClick: () => void;
+}) {
   const status = STATUS_META[ticket.status];
   return (
     <div
       className="p-4 rounded-[var(--radius)] border border-[var(--border)] cursor-pointer hover:border-[var(--accent)] transition"
-      style={{ background: "rgba(22,22,29,0.72)", backdropFilter: "blur(12px)" }}
+      style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
       onClick={onClick}
     >
       <div className="flex items-center justify-between gap-2 mb-1">
         <span className="text-[12px] font-semibold">{ticketTypeLabel(ticket.type)}</span>
         <span
           className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-          style={{ color: status.color, background: `color-mix(in srgb, ${status.color} 16%, transparent)` }}
+          style={{
+            color: status.color,
+            background: `color-mix(in srgb, ${status.color} 16%, transparent)`,
+          }}
         >
           {status.label}
         </span>
@@ -222,7 +258,7 @@ function TicketRow({ ticket, admin, onClick }: { ticket: SupportTicketDTO; admin
       <div className="text-[13px] font-semibold mb-0.5">{ticket.subject}</div>
       <div className="text-[12px] text-[var(--text2)] line-clamp-2">{ticket.message}</div>
       <div className="text-[10px] text-[var(--text3)] mt-1.5">
-        {admin && ticket.authorName ? `${ticket.authorName} · ` : ""}
+        {admin && ticket.authorName ? `${ticket.authorName} · ` : ''}
         {new Date(ticket.createdAt).toLocaleDateString()}
       </div>
     </div>
@@ -243,13 +279,16 @@ function TicketConversation({
   onStatusChange: (s: TicketStatus) => void;
 }) {
   const [messages, setMessages] = useState<SupportMessageDTO[]>([]);
-  const [reply, setReply] = useState("");
+  const [reply, setReply] = useState('');
   const [sending, setSending] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const status = STATUS_META[ticket.status];
 
   const loadMessages = useCallback(() => {
-    supportService.getTicketMessages(ticket.id).then(setMessages).catch(() => {});
+    supportService
+      .getTicketMessages(ticket.id)
+      .then(setMessages)
+      .catch(() => {});
   }, [ticket.id]);
 
   useEffect(() => {
@@ -257,7 +296,7 @@ function TicketConversation({
   }, [loadMessages]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   const sendReply = async () => {
@@ -265,7 +304,7 @@ function TicketConversation({
     setSending(true);
     try {
       await supportService.addTicketMessage(ticket.id, reply.trim());
-      setReply("");
+      setReply('');
       loadMessages();
     } finally {
       setSending(false);
@@ -286,7 +325,7 @@ function TicketConversation({
           <div className="text-[15px] font-semibold truncate">{ticket.subject}</div>
           <div className="text-[11px] text-[var(--text3)]">
             {ticketTypeLabel(ticket.type)} · {new Date(ticket.createdAt).toLocaleDateString()}
-            {ticket.authorName ? ` · ${ticket.authorName}` : ""}
+            {ticket.authorName ? ` · ${ticket.authorName}` : ''}
           </div>
         </div>
         {isAdmin ? (
@@ -297,20 +336,25 @@ function TicketConversation({
             style={{ color: status.color }}
           >
             {(Object.keys(STATUS_META) as TicketStatus[]).map((s) => (
-              <option key={s} value={s}>{STATUS_META[s].label}</option>
+              <option key={s} value={s}>
+                {STATUS_META[s].label}
+              </option>
             ))}
           </select>
         ) : (
           <div className="flex items-center gap-2">
             <span
               className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-              style={{ color: status.color, background: `color-mix(in srgb, ${status.color} 16%, transparent)` }}
+              style={{
+                color: status.color,
+                background: `color-mix(in srgb, ${status.color} 16%, transparent)`,
+              }}
             >
               {status.label}
             </span>
-            {ticket.status !== "CLOSED" && ticket.status !== "RESOLVED" && (
+            {ticket.status !== 'CLOSED' && ticket.status !== 'RESOLVED' && (
               <button
-                onClick={() => onStatusChange("CLOSED")}
+                onClick={() => onStatusChange('CLOSED')}
                 className="text-[10px] font-semibold px-2 py-1 rounded bg-[#1a7a3a] text-white border-none cursor-pointer hover:brightness-110 transition"
               >
                 ✓ Mark as solved
@@ -323,11 +367,15 @@ function TicketConversation({
       {/* Messages */}
       <div
         className="flex-1 flex flex-col gap-3 p-4 rounded-[var(--radius)] border border-[var(--border)] overflow-y-auto"
-        style={{ background: "rgba(22,22,29,0.72)", backdropFilter: "blur(12px)", maxHeight: "60vh" }}
+        style={{
+          background: 'rgba(22,22,29,0.72)',
+          backdropFilter: 'blur(12px)',
+          maxHeight: '60vh',
+        }}
       >
         {/* Original message */}
         <MessageBubble
-          authorName={ticket.authorName ?? "You"}
+          authorName={ticket.authorName ?? 'You'}
           message={ticket.message}
           createdAt={ticket.createdAt}
           isOwn={!ticket.authorName}
@@ -348,23 +396,26 @@ function TicketConversation({
       </div>
 
       {/* Reply input */}
-      {ticket.status !== "CLOSED" && (
+      {ticket.status !== 'CLOSED' && (
         <form
-          onSubmit={(e) => { e.preventDefault(); void sendReply(); }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            void sendReply();
+          }}
           className="flex gap-2"
         >
           <input
             value={reply}
             onChange={(e) => setReply(e.target.value)}
             placeholder="Type a reply..."
-            className={INPUT_CLS + " flex-1"}
+            className={INPUT_CLS + ' flex-1'}
           />
           <button
             type="submit"
             disabled={sending || !reply.trim()}
             className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
           >
-            {sending ? "..." : "Send"}
+            {sending ? '...' : 'Send'}
           </button>
         </form>
       )}
@@ -386,7 +437,7 @@ function MessageBubble({
   isAdmin: boolean;
 }) {
   return (
-    <div className={`flex flex-col ${isOwn ? "items-end" : "items-start"}`}>
+    <div className={`flex flex-col ${isOwn ? 'items-end' : 'items-start'}`}>
       <div className="text-[10px] text-[var(--text3)] mb-0.5 flex items-center gap-1.5">
         <span className="font-semibold">{authorName}</span>
         {isAdmin && <span className="text-[var(--accent)]">· admin</span>}
@@ -394,8 +445,8 @@ function MessageBubble({
       <div
         className="max-w-[85%] px-3 py-2 rounded-lg text-[13px] leading-relaxed whitespace-pre-wrap"
         style={{
-          background: isOwn ? "rgba(108,92,231,0.18)" : "rgba(255,255,255,0.05)",
-          border: `1px solid ${isOwn ? "rgba(108,92,231,0.3)" : "var(--border)"}`,
+          background: isOwn ? 'rgba(108,92,231,0.18)' : 'rgba(255,255,255,0.05)',
+          border: `1px solid ${isOwn ? 'rgba(108,92,231,0.3)' : 'var(--border)'}`,
         }}
       >
         {message}

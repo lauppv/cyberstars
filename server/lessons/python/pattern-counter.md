@@ -12,9 +12,11 @@ for n in numbers:
 
 print(f"Even numbers: {evenCount}")
 ```
+
 Output **Even numbers: 5**
 
 The structure is always the same:
+
 1. **Initialize** the counter to 0
 2. **Loop** through the data
 3. **Check** a condition
@@ -23,6 +25,7 @@ The structure is always the same:
 ---
 
 Let's count how many characters in a name are uppercase
+
 ```py
 name = "Tommy Vercetti"
 upperCount = 0
@@ -33,6 +36,7 @@ for char in name:
 
 print(f"Uppercase letters: {upperCount}")
 ```
+
 Output **Uppercase letters: 2** (T and V)
 
 **.isupper()** is a string method that returns **True** if the character is uppercase. There's also **.islower()**, **.isdigit()**, **.isalpha()**, and more
@@ -40,6 +44,7 @@ Output **Uppercase letters: 2** (T and V)
 ---
 
 We can count multiple things at once
+
 ```py
 text = "Hello World 123"
 letters = 0
@@ -56,6 +61,7 @@ for char in text:
 
 print(f"Letters: {letters}, Digits: {digits}, Spaces: {spaces}")
 ```
+
 Output **Letters: 10, Digits: 3, Spaces: 2**
 
 ---
@@ -69,7 +75,8 @@ count += 1
 count += 1
 print(count)
 ```
-Output **3**. Works with other operators too: **x -= 1**, **x *= 2**, **x /= 3**
+
+Output **3**. Works with other operators too: **x -= 1**, **x \*= 2**, **x /= 3**
 
 ---
 
@@ -79,6 +86,7 @@ You have a list of **scores**. Count and display
 2. How many scores are **below 50** (failed)
 
 Expected output
+
 ```text
 Passed: 4
 Failed: 2

@@ -4,13 +4,13 @@
     "input": "",
     "expected": "Contains negative numbers",
     "mode": "contains",
-    "overrides": {"numbers": "[5, 12, -3, 8, 42, 7]"}
+    "overrides": { "numbers": "[5, 12, -3, 8, 42, 7]" }
   },
   {
     "name": "All positive when no negatives",
     "input": "",
     "expected": "All positive",
     "mode": "contains",
-    "overrides": {"numbers": "[5, 12, 3, 8, 42, 7]"}
+    "overrides": { "numbers": "[5, 12, 3, 8, 42, 7]" }
   }
 ]

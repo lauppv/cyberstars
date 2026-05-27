@@ -9,7 +9,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Hello, Tommy Vercetti!
 ```
@@ -36,7 +38,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Player: Lance Vance | Kills: 47 | Accuracy: 82.500000
 ```
@@ -55,7 +59,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Price: $4.50
 ```
@@ -74,7 +80,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Cortez completed 12 missions with a 9.7 rating
 ```
@@ -127,7 +135,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Player: Phil Cassidy | Score: 2300 | Rating: 8.95
 ```

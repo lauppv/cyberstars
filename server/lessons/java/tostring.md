@@ -18,7 +18,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Car@6d06d69c
 ```
@@ -54,7 +56,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Infernus (1986)
 ```
@@ -113,7 +117,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Katana (damage: 75)
 Weapon: Katana (damage: 75)
@@ -169,7 +175,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Tommy Vercetti - Boss (Respect: 100)
 Lance Vance - Partner (Respect: 60)
@@ -182,10 +190,12 @@ Lance Vance - Partner (Respect: 60)
 Create a `Car` class with `make` (String) and `year` (int) fields. Write a constructor and override `toString()` to return the format `Make (Year)`.
 
 Create two cars and print them:
+
 - `"Infernus"`, year `1986`
 - `"Cheetah"`, year `1984`
 
 Expected output:
+
 ```text
 Infernus (1986)
 Cheetah (1984)

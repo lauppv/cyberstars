@@ -5,6 +5,7 @@ Implement a **Stack** class using an `ArrayList` as the internal storage. The st
 Process commands from stdin and print results for `pop` and `peek`. If `pop` or `peek` is called on an empty stack, print `Empty`.
 
 ### Input
+
 - Line 1: number of commands N
 - Next N lines: one of:
   - `push X` — push integer X onto the stack
@@ -12,6 +13,7 @@ Process commands from stdin and print results for `pop` and `peek`. If `pop` or 
   - `peek` — print the top element without removing it
 
 ### Output
+
 - For each `pop`: the removed value, or `Empty`
 - For each `peek`: the top value, or `Empty`
 
@@ -46,6 +48,7 @@ Output:
 ```
 
 ### Hints
+
 - Use `ArrayList<Integer>` to store elements.
 - Push adds to the end of the list, pop removes from the end.
 - `list.get(list.size() - 1)` gives you the top element.

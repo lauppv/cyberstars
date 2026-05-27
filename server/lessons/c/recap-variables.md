@@ -13,6 +13,7 @@ Write a program that calculates and displays info about a road trip:
 Print the results in this exact format
 
 Expected output
+
 ```text
 Distance: 450 km
 Fuel needed: 31.50 liters

@@ -5,9 +5,11 @@ Read an integer **N** and print a left-aligned triangle of `*` characters. Line 
 This exercise practices nested loops and printing patterns.
 
 ### Input
+
 - A single integer `N` (1 ≤ N ≤ 20)
 
 ### Output
+
 `N` lines. Line `i` (starting from 1) contains exactly `i` asterisks (`*`), with no trailing spaces.
 
 ### Examples
@@ -33,6 +35,7 @@ Output:
 ```
 
 ### Hints
+
 - Use a `for` loop from `1` to `N` for the rows.
 - Inside, use another `for` loop to print `i` stars on row `i`.
 - Use `printf("\n")` after each row to move to the next line.

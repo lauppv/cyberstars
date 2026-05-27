@@ -24,7 +24,7 @@ This refusal is a **safety feature** — it stops you wiping out files by accide
 
 ### Folders with content: `rm -r`
 
-To delete a folder *and everything inside it*, use `rm` with the `-r` option
+To delete a folder _and everything inside it_, use `rm` with the `-r` option
 (**recursive**):
 
 ```bash
@@ -39,9 +39,9 @@ permanently.
 `rm -r` is powerful and dangerous. It deletes entire trees with no confirmation and no
 undo. Always `ls` the folder first to be certain of what is inside.
 
-| Command | Use it for |
-|---------|------------|
-| `rmdir` | an **empty** folder (safe) |
+| Command | Use it for                                     |
+| ------- | ---------------------------------------------- |
+| `rmdir` | an **empty** folder (safe)                     |
 | `rm -r` | a folder **with content** (powerful, careful!) |
 
 ---

@@ -1,7 +1,10 @@
-import { prisma } from "../config/db.js";
-import type { UserLessonProgress } from "@prisma/client";
+import { prisma } from '../config/db.js';
+import type { UserLessonProgress } from '@prisma/client';
 
-export async function getByCourse(userId: number, courseKey: string): Promise<UserLessonProgress[]> {
+export async function getByCourse(
+  userId: number,
+  courseKey: string,
+): Promise<UserLessonProgress[]> {
   return prisma.userLessonProgress.findMany({ where: { userId, courseKey } });
 }
 
@@ -9,7 +12,7 @@ export async function upsertProgress(
   userId: number,
   courseKey: string,
   lessonSlug: string,
-  completed: boolean
+  completed: boolean,
 ): Promise<void> {
   const completedAt = completed ? new Date() : null;
   await prisma.userLessonProgress.upsert({
@@ -22,7 +25,7 @@ export async function upsertProgress(
 export async function touchAccess(
   userId: number,
   courseKey: string,
-  lessonSlug: string
+  lessonSlug: string,
 ): Promise<void> {
   await prisma.userLessonProgress.upsert({
     where: { userId_courseKey_lessonSlug: { userId, courseKey, lessonSlug } },
@@ -34,7 +37,7 @@ export async function touchAccess(
 export async function getSavedCode(
   userId: number,
   courseKey: string,
-  lessonSlug: string
+  lessonSlug: string,
 ): Promise<string | null> {
   const row = await prisma.userSavedCode.findUnique({
     where: { userId_courseKey_lessonSlug: { userId, courseKey, lessonSlug } },
@@ -47,7 +50,7 @@ export async function upsertCode(
   userId: number,
   courseKey: string,
   lessonSlug: string,
-  code: string
+  code: string,
 ): Promise<void> {
   await prisma.userSavedCode.upsert({
     where: { userId_courseKey_lessonSlug: { userId, courseKey, lessonSlug } },

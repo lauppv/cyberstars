@@ -19,7 +19,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Cortez
 Lance
@@ -54,7 +56,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 42
 67
@@ -87,7 +91,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 95
 88

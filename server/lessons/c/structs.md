@@ -34,6 +34,7 @@ If you know Java, a struct is similar to a class with only public fields and no 
 ---
 
 We can also initialize a struct all at once
+
 ```c
 #include <stdio.h>
 
@@ -51,6 +52,7 @@ int main(void) {
 ```
 
 The values fill in the fields **in order**: name, health, score. Or, more explicitly
+
 ```c
 #include <stdio.h>
 
@@ -72,6 +74,7 @@ This second form is clearer — you see exactly which field gets which value
 ---
 
 Arrays of structs are super useful
+
 ```c
 #include <stdio.h>
 
@@ -94,7 +97,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 Tommy: 100 HP, 500 pts
 Lance: 80 HP, 300 pts
@@ -106,12 +111,14 @@ Ken: 60 HP, 100 pts
 Define a struct **Car** with fields: **brand** (char array), **year** (int), **km** (int)
 
 Create **two cars**:
+
 - "BMW", 2015, 120000
 - "Dacia", 2020, 45000
 
 Print them in this format
 
 Expected output
+
 ```text
 BMW (2015) - 120000 km
 Dacia (2020) - 45000 km

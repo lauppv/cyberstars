@@ -1,7 +1,7 @@
 class Character {
-    String name;
-    int health;
-    int attackPower;
+String name;
+int health;
+int attackPower;
 
     Character(String name, int health, int attackPower) {
         this.name = name;
@@ -19,10 +19,11 @@ class Character {
         // Print: "NAME - HP: HEALTH"
 
     }
+
 }
 
 class Warrior extends Character {
-    int armor;
+int armor;
 
     // Constructor: name, health, attackPower, armor
     Warrior(String name, int health, int attackPower, int armor) {
@@ -36,7 +37,7 @@ class Warrior extends Character {
 }
 
 class Mage extends Character {
-    int spellPower;
+int spellPower;
 
     // Constructor: name, health, attackPower, spellPower
     Mage(String name, int health, int attackPower, int spellPower) {
@@ -50,12 +51,13 @@ class Mage extends Character {
 }
 
 public class Main {
-    public static void main(String[] args) {
-        // Create Warrior "Tommy": health 100, attack 25, armor 10
-        // Create Mage "Lance": health 80, attack 15, spellPower 20
+public static void main(String[] args) {
+// Create Warrior "Tommy": health 100, attack 25, armor 10
+// Create Mage "Lance": health 80, attack 15, spellPower 20
 
         // Tommy attacks Lance, print Lance's status
         // Lance attacks Tommy, print Tommy's status
 
     }
+
 }

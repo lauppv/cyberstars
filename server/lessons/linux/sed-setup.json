@@ -1,1 +1,10 @@
-{"cwd":"/home/student","files":[{"path":"report.txt","content":"Test 1: PASS\nTest 2: FAIL\nTest 3: PASS\nTest 4: FAIL\nTest 5: FAIL\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "report.txt",
+      "content": "Test 1: PASS\nTest 2: FAIL\nTest 3: PASS\nTest 4: FAIL\nTest 5: FAIL\n"
+    }
+  ],
+  "dirs": []
+}

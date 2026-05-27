@@ -20,6 +20,7 @@ Write **static void printBox(int width, int height)** that uses **nested loops**
 That's a 5x4 box. The first and last rows are all `*`. The middle rows have `*`, then spaces, then `*`
 
 Call these in main:
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -31,6 +32,7 @@ public class Main {
 ```
 
 Expected output
+
 ```text
 ababab
 *****

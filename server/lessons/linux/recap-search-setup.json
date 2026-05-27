@@ -2,7 +2,10 @@
   "cwd": "/home/student",
   "files": [
     { "path": "station/log.txt", "content": "routine patrol\n" },
-    { "path": "station/comms/distress.log", "content": "incoming transmission\nSOS from escape pod 4\nposition unknown\n" },
+    {
+      "path": "station/comms/distress.log",
+      "content": "incoming transmission\nSOS from escape pod 4\nposition unknown\n"
+    },
     { "path": "station/comms/old.log", "content": "SOS test signal archived\n" }
   ],
   "dirs": ["station", "station/comms"]

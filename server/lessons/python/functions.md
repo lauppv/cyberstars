@@ -1,4 +1,5 @@
 As we mentioned in a previous lesson, it’s not a good idea to **repeat** code. If we have to write the same thing twice, chances are we’ll need to write it three times or **more**. This is where the notion of a **function** comes in. A **function** is a piece of code that we write **once** and can reuse **multiple** times
+
 ```py
 name = "Cortez"
 age = 60
@@ -7,7 +8,9 @@ i = 0
 for i in range(0, 11):
     print(f"My name is {name} and my age is {age}")
 ```
+
 Output:
+
 ```text
 My name is Cortez and my age is 60
 My name is Cortez and my age is 60
@@ -20,7 +23,8 @@ My name is Cortez and my age is 60
 My name is Cortez and my age is 60
 My name is Cortez and my age is 60
 ```
-What happens if we want to display the same thing but with *Tommy Vercetti* and age *42*? Of course, we can change the variable values
+
+What happens if we want to display the same thing but with _Tommy Vercetti_ and age _42_? Of course, we can change the variable values
 
 ```py
 name = "Tommy Vercetti"
@@ -30,7 +34,9 @@ i = 0
 for i in range(0, 11):
     print(f"My name is {name} and my age is {age}")
 ```
+
 Output:
+
 ```text
 My name is Tommy Vercetti and my age is 42
 My name is Tommy Vercetti and my age is 42
@@ -43,6 +49,7 @@ My name is Tommy Vercetti and my age is 42
 My name is Tommy Vercetti and my age is 42
 My name is Tommy Vercetti and my age is 42
 ```
+
 and that’s fine
 
 However, if we want to use this piece of code **later** in the program with **different values for name and age**, we would always have to **copy and paste** this **for** loop
@@ -71,6 +78,7 @@ Just like **print()**, we use parentheses **()**
 Inside the parentheses, we write whatever we want to name the parameters. In this case, **name** and **age**
 
 Remember that the **parameter names can be anything**. The code below works as well
+
 ```py
 def myFunction(n, a):
     i = 0
@@ -108,6 +116,7 @@ Write a function **calculator** that takes **3** **parameters**: **number1**, **
 The function will display the **result** of **number1 operator number2**
 
 Example:
+
 ```py
 def calculator(number1, number2, operator):
     if operator == "+":
@@ -122,5 +131,5 @@ calculator(14, 12, "+")     # calling the function
 Complete the function so that it can also do **subtraction**, **multiplication**, and **division**
 
 For subtraction we use **-**
-For multiplication we use *****
+For multiplication we use **\***
 For division we use **/**

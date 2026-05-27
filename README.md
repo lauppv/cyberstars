@@ -33,13 +33,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions (PostgreS
 
 ## Tech stack
 
-| Layer | Stack |
-|-------|-------|
-| Frontend | React 19, TypeScript, Vite 7, Tailwind CSS 4, CodeMirror |
-| Backend | Express 5, TypeScript, Prisma 6 (PostgreSQL), Zod |
-| Execution | Docker containers (sandboxed, per-language) |
-| Auth | JWT in httpOnly cookies, bcryptjs |
-| Shared | `shared/` folder with DTO types and constants used by both sides |
+| Layer     | Stack                                                            |
+| --------- | ---------------------------------------------------------------- |
+| Frontend  | React 19, TypeScript, Vite 7, Tailwind CSS 4, CodeMirror         |
+| Backend   | Express 5, TypeScript, Prisma 6 (PostgreSQL), Zod                |
+| Execution | Docker containers (sandboxed, per-language)                      |
+| Auth      | JWT in httpOnly cookies, bcryptjs                                |
+| Shared    | `shared/` folder with DTO types and constants used by both sides |
 
 ## Project structure
 
@@ -58,16 +58,16 @@ See [docs/architecture.md](docs/architecture.md) for the full architecture break
 
 ## Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start everything (DB setup + Vite + Express) |
-| `npm test` | Run test suite |
-| `npm run test:coverage` | Run tests with coverage report |
-| `npm run typecheck` | TypeScript type checking |
-| `npm run lint` | ESLint |
-| `npm run dead-code` | Find unused files, exports, and dependencies (knip) |
-| `npm run build` | Production build |
-| `npm run db:studio` | Open Prisma Studio (DB browser) |
+| Script                  | Description                                         |
+| ----------------------- | --------------------------------------------------- |
+| `npm run dev`           | Start everything (DB setup + Vite + Express)        |
+| `npm test`              | Run test suite                                      |
+| `npm run test:coverage` | Run tests with coverage report                      |
+| `npm run typecheck`     | TypeScript type checking                            |
+| `npm run lint`          | ESLint                                              |
+| `npm run dead-code`     | Find unused files, exports, and dependencies (knip) |
+| `npm run build`         | Production build                                    |
+| `npm run db:studio`     | Open Prisma Studio (DB browser)                     |
 
 ## CI
 

@@ -22,7 +22,7 @@ line 100
 
 ### Why the end of a file matters
 
-Log files grow by adding **new lines at the bottom**. So the *most recent* events are
+Log files grow by adding **new lines at the bottom**. So the _most recent_ events are
 always at the **end**. When something just went wrong, the answer is almost always in
 the last few lines:
 
@@ -30,7 +30,7 @@ the last few lines:
 tail -n 5 error.log
 ```
 
-`head` shows you how a file *began*; `tail` shows you the *latest* news. Together they
+`head` shows you how a file _began_; `tail` shows you the _latest_ news. Together they
 let you sample a big file from both ends without reading the middle.
 
 `tail`, like `head`, only reads — it never changes the file.

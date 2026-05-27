@@ -1,1 +1,5 @@
-{"cwd":"/home/student","files":[{"path":"report.txt","content":"Mission report: all systems green.\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [{ "path": "report.txt", "content": "Mission report: all systems green.\n" }],
+  "dirs": []
+}

@@ -6,7 +6,9 @@ This is where **input()** comes in
 name = input()
 print(f"Hello, {name}!")
 ```
+
 We **run** this code, type something (for example **Lance**) and press **Enter**. The program will display
+
 ```text
 Hello, Lance!
 ```
@@ -19,6 +21,7 @@ We can also give the user a **hint** about what we want them to type
 name = input("What's your name? ")
 print(f"Hello, {name}!")
 ```
+
 That little message inside **input("...")** is shown to the user before the program waits. It’s called a **prompt**
 
 ---
@@ -30,17 +33,21 @@ age = input("Your age: ")
 nextYear = age + 1
 print(nextYear)
 ```
+
 You will get an error. **Why?** Because **input() always gives back a string**, even if the user types numbers. So **age** is **"18"** (text), not **18** (number). And we cannot do **"18" + 1**, since one is text and the other is a number
 
 To fix it, we tell **Python**: "hey, take this text and turn it into a number"
+
 ```py
 age = int(input("Your age: "))
 nextYear = age + 1
 print(nextYear)
 ```
+
 **int()** is a function that converts text into an **integer** (a whole number). Now **age** is really **18**, and **18 + 1 = 19** works perfectly
 
 If the user typed something with decimals like **1.75**, we’d use **float()** instead
+
 ```py
 height = float(input("Your height: "))
 print(height)
@@ -49,17 +56,22 @@ print(height)
 ---
 
 Write a program that **asks** the user for their **name** and their **age**, then displays
+
 ```text
 Hello <name>, you are <age> years old. Next year you will be <age + 1>
 ```
 
 Example. If the user types
+
 ```text
 Cortez
 60
 ```
+
 then the program should display
+
 ```text
 Hello Cortez, you are 60 years old. Next year you will be 61
 ```
+
 Don’t forget that **age** comes back as a **string** :)

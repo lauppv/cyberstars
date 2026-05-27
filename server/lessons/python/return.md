@@ -11,20 +11,24 @@ def add(a, b):
 result = add(2, 3)
 print(result)
 ```
+
 Output **5**
 
 What happened? The function **add** **took** two numbers, **calculated** their sum, and **returned** the result. We caught that result in the variable **result**, then printed it
 
 Compare this with the old style we used
+
 ```py
 def addAndPrint(a, b):
     print(a + b)
 
 addAndPrint(2, 3)
 ```
+
 This just prints. It doesn’t give anything back. If I wanted to take the result and **multiply** it by 10, I couldn’t. The function did its thing and the value is **gone**
 
 With **return**, we can chain functions together
+
 ```py
 def add(a, b):
     return a + b
@@ -32,6 +36,7 @@ def add(a, b):
 result = add(2, 3) * 10
 print(result)
 ```
+
 Output **50**. **add(2, 3)** gave us **5**, then we multiplied by **10**. Try doing that with a function that only **prints**, you can’t
 
 ---
@@ -45,6 +50,7 @@ def greet(name):
 message = greet("Cortez")
 print(message)
 ```
+
 Output **Hello, Cortez!**
 
 ```py
@@ -54,9 +60,11 @@ def isAdult(age):
 print(isAdult(20))    # True
 print(isAdult(15))    # False
 ```
+
 This function returns a **boolean**. Notice that we can use **isAdult(20)** **directly inside print()**, no need for a separate variable. **Python** runs the function first, then **print()** shows the returned value
 
 We can even use it inside an **if**
+
 ```py
 def isAdult(age):
     return age >= 18
@@ -67,11 +75,13 @@ if isAdult(age):
 else:
     print("Sorry, too young")
 ```
+
 Cleaner than writing **if age >= 18** everywhere, especially if our condition gets complicated
 
 ---
 
 **Important**: as soon as **Python** sees **return**, the function **exits immediately**. Anything written after **return** is **NOT** executed
+
 ```py
 def f():
     return 1
@@ -79,9 +89,11 @@ def f():
 
 print(f())
 ```
+
 Output is just **1**. The **print** inside the function is **dead code**, it never runs
 
 We can use this to exit a function **early**
+
 ```py
 def divide(a, b):
     if b == 0:
@@ -95,6 +107,7 @@ print(divide(10, 0))    # cannot divide by zero
 ---
 
 By the way, a function that has no **return** still works, it just gives back a special value called **None**
+
 ```py
 def f():
     print("hello")
@@ -102,11 +115,14 @@ def f():
 result = f()
 print(result)
 ```
+
 Output
+
 ```text
 hello
 None
 ```
+
 **None** is **Python**’s way of saying "nothing". You don’t need to worry about it now, just know it exists :)
 
 ---
@@ -114,6 +130,7 @@ None
 Write a function called **maxOfThree** that takes **3 numbers** and **returns** the largest one
 
 Example
+
 ```py
 def maxOfThree(a, b, c):
     # your code here

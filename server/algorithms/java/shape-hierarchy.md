@@ -5,10 +5,12 @@ Create an **abstract** `Shape` class with an abstract method `getArea()`. Implem
 Read shapes from stdin, create the appropriate objects, and print the **total area** of all shapes rounded to 2 decimal places.
 
 ### Input
+
 - Line 1: number of shapes N
 - Next N lines: either `circle RADIUS` or `rectangle WIDTH HEIGHT`
 
 ### Output
+
 A single line: `Total: X` where X is the sum of all areas, formatted to 2 decimal places.
 
 ### Examples
@@ -34,7 +36,8 @@ Total: 100.00
 ```
 
 ### Hints
-- Use `Math.PI` for the circle area (pi * r * r).
+
+- Use `Math.PI` for the circle area (pi _ r _ r).
 - Declare `Shape` as `abstract class Shape` with `abstract double getArea()`.
 - Store all shapes in an `ArrayList<Shape>` — this is **polymorphism** in action.
 - Sum up `getArea()` for each shape in the list.

@@ -35,7 +35,7 @@ cat -n part1.txt part2.txt
 
 The numbering runs continuously across both files.
 
-(In a later chapter you will learn how to *save* this joined output into a new file
+(In a later chapter you will learn how to _save_ this joined output into a new file
 using redirection. For now, just enjoy seeing it on screen.)
 
 ---

@@ -1,7 +1,10 @@
 {
   "cwd": "/home/student",
   "files": [
-    { "path": "inventory.txt", "content": "oxygen tank\nwater filter\nration pack\ntool kit\nflare gun\nmedkit\n" }
+    {
+      "path": "inventory.txt",
+      "content": "oxygen tank\nwater filter\nration pack\ntool kit\nflare gun\nmedkit\n"
+    }
   ],
   "dirs": []
 }

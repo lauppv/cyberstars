@@ -6,7 +6,9 @@ while i < 10:
     print(i)
     i = i + 1
 ```
+
 this code will display
+
 ```text
 0
 1
@@ -19,16 +21,17 @@ this code will display
 8
 9
 ```
-Why not **10** as well? Because if **i = 10**, then **i < 10 is NOT true**, since **10 is NOT less than 10**
 
+Why not **10** as well? Because if **i = 10**, then **i < 10 is NOT true**, since **10 is NOT less than 10**
 
 ```py
 i = 0
 while i <= 10:
     print(i)
     i = i + 1
-    
+
 ```
+
 As a matter of fact we will have all the numbers from **0 to 10 inclusive**, because **10 <= 10 is true**
 
 In other words, **while** runs as long as the condition is **true**
@@ -40,7 +43,9 @@ i = 0
 while i <= 100:
     print(i)
 ```
+
 Because **i stays 0**, therefore **print(i)** will always print **0**. Since **i <= 100** is always **true** in this case **(0 <= 100 always)**, the program will print
+
 ```text
 0
 0
@@ -49,8 +54,8 @@ Because **i stays 0**, therefore **print(i)** will always print **0**. Since **i
 0
 ...
 ```
-**forever**. This is called an **infinite loop**. **Run** the code above to see what is printed, to see what the program does **:)**
 
+**forever**. This is called an **infinite loop**. **Run** the code above to see what is printed, to see what the program does **:)**
 
 ---
 

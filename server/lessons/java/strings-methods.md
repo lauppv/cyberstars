@@ -3,6 +3,7 @@ We already saw how to declare a **String** and combine strings with **+**. Time 
 ---
 
 How long is a string? **.length()**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -11,11 +12,13 @@ public class Main {
     }
 }
 ```
+
 Output **14**. Spaces count too. Notice the **parentheses** **()** at the end — in Java, **length** is a **method**, so we call it like one. (For arrays the syntax is different, just **arr.length** without parentheses. Java is full of small inconsistencies like this :)
 
 ---
 
 Uppercase and lowercase
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -27,6 +30,7 @@ public class Main {
 ```
 
 **Important**: these methods do **NOT** change the original variable. They give back a **new** string
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -36,7 +40,9 @@ public class Main {
     }
 }
 ```
+
 To actually keep the uppercase version
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -45,11 +51,13 @@ public class Main {
     }
 }
 ```
+
 This trap catches everyone in the beginning. Strings in Java are **immutable** — they cannot be changed. Methods always return a new string
 
 ---
 
 Get a **substring** (a piece of the string)
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -69,6 +77,7 @@ Counting starts from **0**, like always in programming. **name.substring(0, 5)**
 ---
 
 Single character at a position
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -78,11 +87,13 @@ public class Main {
     }
 }
 ```
+
 **charAt(i)** gives back a **char** (a single character). For our purposes, you can think of it as a tiny string
 
 ---
 
 Comparing strings — and **the most common Java trap of all time**
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -97,7 +108,9 @@ public class Main {
     }
 }
 ```
+
 This **might** print **equal**, but **it’s wrong**. With objects (and **String** is an object in Java), **==** compares whether they are the **same object in memory**, not whether they have the same content. The correct way is
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -107,11 +120,13 @@ public class Main {
     }
 }
 ```
+
 **Always use .equals() to compare strings in Java**. Memorize this. You’ll thank yourself later :)
 
 ---
 
 You have a variable **name** on the right, set to **"lance vance"**. Display **on separate lines**
+
 ```text
 LANCE VANCE
 lance vance

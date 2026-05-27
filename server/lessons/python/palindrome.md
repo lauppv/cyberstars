@@ -9,6 +9,7 @@ if word == word[::-1]:
 else:
     print("Not a palindrome")
 ```
+
 Output **Palindrome!**
 
 That's it. One line of logic. We reverse the string and check if it's the same as the original. Python makes this absurdly simple :)
@@ -30,7 +31,9 @@ print(isPalindrome("racecar"))
 print(isPalindrome("hello"))
 print(isPalindrome("madam"))
 ```
+
 Output
+
 ```text
 True
 False
@@ -57,12 +60,15 @@ print(isPalindromeSentence("A man a plan a canal Panama"))
 print(isPalindromeSentence("racecar"))
 print(isPalindromeSentence("hello world"))
 ```
+
 Output
+
 ```text
 True
 True
 False
 ```
+
 We first **clean** the string: keep only letters and convert to lowercase. Then check if it's a palindrome. Step by step, just like we learned in the decomposition lesson :)
 
 ---
@@ -77,6 +83,7 @@ print(isPalindrome("ab"))       # False
 ```
 
 Expected output
+
 ```text
 True
 False

@@ -1,13 +1,13 @@
-import type { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
-import { config } from "../config/index.js";
-import type { TokenPayload } from "../../shared/auth.js";
+import type { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { config } from '../config/index.js';
+import type { TokenPayload } from '../../shared/auth.js';
 
 export function authenticateToken(req: Request, res: Response, next: NextFunction): void {
   const token = req.cookies?.token;
 
   if (!token) {
-    res.status(401).json({ error: "No token provided" });
+    res.status(401).json({ error: 'No token provided' });
     return;
   }
 
@@ -16,7 +16,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
     req.user = payload;
     next();
   } catch {
-    res.status(403).json({ error: "Invalid token" });
+    res.status(403).json({ error: 'Invalid token' });
   }
 }
 

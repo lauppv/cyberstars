@@ -21,6 +21,7 @@ Also use **built-in functions**: **len()** on the word list to count total words
 Print the results
 
 Expected output
+
 ```text
 Total words: 12
 Count of 'the': 3

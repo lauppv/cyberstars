@@ -1,7 +1,27 @@
 [
-  { "name": "push and pop", "input": "5\npush 10\npush 20\npeek\npop\npop", "expected": "20\n20\n10", "mode": "exact" },
-  { "name": "pop empty stack", "input": "3\npop\npush 5\npeek", "expected": "Empty\n5", "mode": "exact" },
-  { "name": "multiple pops on empty", "input": "4\npop\npop\npush 1\npop", "expected": "Empty\nEmpty\n1", "mode": "exact" },
-  { "name": "peek does not remove", "input": "4\npush 42\npeek\npeek\npop", "expected": "42\n42\n42", "mode": "exact" },
+  {
+    "name": "push and pop",
+    "input": "5\npush 10\npush 20\npeek\npop\npop",
+    "expected": "20\n20\n10",
+    "mode": "exact"
+  },
+  {
+    "name": "pop empty stack",
+    "input": "3\npop\npush 5\npeek",
+    "expected": "Empty\n5",
+    "mode": "exact"
+  },
+  {
+    "name": "multiple pops on empty",
+    "input": "4\npop\npop\npush 1\npop",
+    "expected": "Empty\nEmpty\n1",
+    "mode": "exact"
+  },
+  {
+    "name": "peek does not remove",
+    "input": "4\npush 42\npeek\npeek\npop",
+    "expected": "42\n42\n42",
+    "mode": "exact"
+  },
   { "name": "push only", "input": "3\npush 1\npush 2\npush 3", "expected": "", "mode": "exact" }
 ]

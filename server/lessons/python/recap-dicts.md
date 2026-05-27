@@ -9,6 +9,7 @@ Build a **grade report** system. Write a function **analyze_grades(grades)** tha
 - **"passing"** — a list of names with grade >= 50
 
 Use this dictionary:
+
 ```python
 grades = {"Ana": 95, "Mihai": 42, "Elena": 88, "Radu": 37, "Ioana": 76}
 ```
@@ -16,6 +17,7 @@ grades = {"Ana": 95, "Mihai": 42, "Elena": 88, "Radu": 37, "Ioana": 76}
 Call the function and print the results
 
 Expected output
+
 ```text
 Average: 67.6
 Best: Ana

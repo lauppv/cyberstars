@@ -18,7 +18,9 @@ function fmt(pct) {
 
 try {
   if (!fs.existsSync(coveragePath)) {
-    console.log(errorComment('Coverage summary file not found. Tests may not have run successfully.'));
+    console.log(
+      errorComment('Coverage summary file not found. Tests may not have run successfully.'),
+    );
     process.exit(0);
   }
 

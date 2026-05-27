@@ -86,6 +86,7 @@ public class Main {
 ```
 
 For an item named "Health Pack" with quantity 3 and price 25.50, this prints:
+
 ```text
 Health Pack x3 @ $25.50
 ```
@@ -174,7 +175,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Pistol x1 @ $100.00
 Health Pack x5 @ $25.00
@@ -202,6 +205,7 @@ Your turn! Build the full inventory system:
 5. Print the total value as: `Total: $` followed by the value with 2 decimal places
 
 Expected output:
+
 ```text
 Shotgun x2 @ $350.00
 Medkit x10 @ $15.50

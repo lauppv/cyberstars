@@ -18,10 +18,10 @@ Both lines are preserved. Each `>>` appends to the bottom.
 
 ### `>` vs `>>`
 
-| Operator | Behavior |
-|----------|----------|
-| `>` | Create / overwrite |
-| `>>` | Create / append |
+| Operator | Behavior           |
+| -------- | ------------------ |
+| `>`      | Create / overwrite |
+| `>>`     | Create / append    |
 
 If the file does not exist yet, **both** `>` and `>>` will create it. The difference
 only matters when the file already has content.

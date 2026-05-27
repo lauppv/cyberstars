@@ -1,13 +1,13 @@
-import { spawn, execFile } from "child_process";
-import path from "path";
-import crypto from "crypto";
-import fs from "fs/promises";
-import { getRuntime } from "../runtimes/registry.js";
-import type { WebSocket } from "ws";
+import { spawn, execFile } from 'child_process';
+import path from 'path';
+import crypto from 'crypto';
+import fs from 'fs/promises';
+import { getRuntime } from '../runtimes/registry.js';
+import type { WebSocket } from 'ws';
 
-const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? "128m";
-const RUN_PIDS = process.env.CODE_RUN_PIDS ?? "64";
-const RUN_DIR = process.env.CODE_RUN_DIR ?? path.join(process.cwd(), ".runs");
+const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? '128m';
+const RUN_PIDS = process.env.CODE_RUN_PIDS ?? '64';
+const RUN_DIR = process.env.CODE_RUN_DIR ?? path.join(process.cwd(), '.runs');
 
 const TIMEOUT_MS = 20_000;
 const OUTPUT_FLUSH_MS = 50;
@@ -17,23 +17,23 @@ const OUTPUT_TOTAL_MAX = 1024 * 1024;
 export async function handleInteractiveRun(ws: WebSocket, code: string, language: string) {
   const runtime = getRuntime(language);
   if (!runtime) {
-    ws.send(JSON.stringify({ type: "stderr", data: "Language not supported.\n" }));
-    ws.send(JSON.stringify({ type: "exit", code: 1 }));
+    ws.send(JSON.stringify({ type: 'stderr', data: 'Language not supported.\n' }));
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     return;
   }
 
   const runId = crypto.randomUUID();
   const hostDir = path.join(RUN_DIR, runId);
   await fs.mkdir(hostDir, { recursive: true });
-  await fs.writeFile(path.join(hostDir, runtime.sourceFile), code, "utf-8");
+  await fs.writeFile(path.join(hostDir, runtime.sourceFile), code, 'utf-8');
 
   const cleanup = () => fs.rm(hostDir, { recursive: true, force: true }).catch(() => {});
 
   if (runtime.compileCmd) {
     const compileErr = await compile(hostDir, runtime.image, runtime.compileCmd);
     if (compileErr) {
-      ws.send(JSON.stringify({ type: "stderr", data: compileErr }));
-      ws.send(JSON.stringify({ type: "exit", code: 1 }));
+      ws.send(JSON.stringify({ type: 'stderr', data: compileErr }));
+      ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       cleanup();
       return;
     }
@@ -42,23 +42,29 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
   const containerName = `run-${runId}`;
 
   const dockerArgs = [
-    "run", "--rm", "-i",
+    'run',
+    '--rm',
+    '-i',
     `--name=${containerName}`,
-    "--network=none",
+    '--network=none',
     `--memory=${RUN_MEMORY}`,
     `--pids-limit=${RUN_PIDS}`,
-    "--stop-timeout=0",
-    "-v", `${hostDir}:/work`,
-    "-w", "/work",
+    '--stop-timeout=0',
+    '-v',
+    `${hostDir}:/work`,
+    '-w',
+    '/work',
     runtime.image,
-    "sh", "-c", runtime.runCmd,
+    'sh',
+    '-c',
+    runtime.runCmd,
   ];
 
-  const proc = spawn("docker", dockerArgs);
+  const proc = spawn('docker', dockerArgs);
 
   let exited = false;
-  let stdoutBuf = "";
-  let stderrBuf = "";
+  let stdoutBuf = '';
+  let stderrBuf = '';
   let flushTimer: ReturnType<typeof setTimeout> | null = null;
   let outputTotal = 0;
   let outputCapped = false;
@@ -66,17 +72,17 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
   const flushOutput = () => {
     flushTimer = null;
     if (exited || ws.readyState !== ws.OPEN) {
-      stdoutBuf = "";
-      stderrBuf = "";
+      stdoutBuf = '';
+      stderrBuf = '';
       return;
     }
     if (stdoutBuf) {
-      ws.send(JSON.stringify({ type: "stdout", data: stdoutBuf }));
-      stdoutBuf = "";
+      ws.send(JSON.stringify({ type: 'stdout', data: stdoutBuf }));
+      stdoutBuf = '';
     }
     if (stderrBuf) {
-      ws.send(JSON.stringify({ type: "stderr", data: stderrBuf }));
-      stderrBuf = "";
+      ws.send(JSON.stringify({ type: 'stderr', data: stderrBuf }));
+      stderrBuf = '';
     }
   };
 
@@ -86,7 +92,7 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
   };
 
   const killContainer = () => {
-    execFile("docker", ["kill", containerName], () => {});
+    execFile('docker', ['kill', containerName], () => {});
   };
 
   const sendExit = (code: number) => {
@@ -98,12 +104,12 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
       flushTimer = null;
     }
     if (ws.readyState === ws.OPEN) {
-      ws.send(JSON.stringify({ type: "exit", code }));
+      ws.send(JSON.stringify({ type: 'exit', code }));
     }
   };
 
   const killAll = () => {
-    proc.kill("SIGKILL");
+    proc.kill('SIGKILL');
     killContainer();
   };
 
@@ -113,21 +119,21 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     timer = setTimeout(() => {
       if (exited) return;
       killAll();
-      stderrBuf += "\nTime limit exceeded (20s) — program stopped.\n";
+      stderrBuf += '\nTime limit exceeded (20s) — program stopped.\n';
       flushOutput();
       sendExit(124);
     }, TIMEOUT_MS);
   };
   resetTimer();
 
-  const appendOutput = (target: "stdout" | "stderr", chunk: Buffer) => {
+  const appendOutput = (target: 'stdout' | 'stderr', chunk: Buffer) => {
     if (exited || outputCapped) return;
     const remaining = OUTPUT_TOTAL_MAX - outputTotal;
     if (remaining <= 0) return;
     const slice = chunk.length > remaining ? chunk.subarray(0, remaining) : chunk;
     const text = slice.toString();
     outputTotal += slice.length;
-    if (target === "stdout") {
+    if (target === 'stdout') {
       stdoutBuf += text;
       if (stdoutBuf.length > OUTPUT_BUFFER_MAX) {
         stdoutBuf = stdoutBuf.slice(-OUTPUT_BUFFER_MAX);
@@ -141,7 +147,7 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     if (outputTotal >= OUTPUT_TOTAL_MAX) {
       outputCapped = true;
       killAll();
-      stderrBuf += "\nOutput limit exceeded — program stopped.\n";
+      stderrBuf += '\nOutput limit exceeded — program stopped.\n';
       flushOutput();
       sendExit(124);
       return;
@@ -149,29 +155,31 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     scheduleFlush();
   };
 
-  proc.stdout.on("data", (chunk: Buffer) => appendOutput("stdout", chunk));
-  proc.stderr.on("data", (chunk: Buffer) => appendOutput("stderr", chunk));
+  proc.stdout.on('data', (chunk: Buffer) => appendOutput('stdout', chunk));
+  proc.stderr.on('data', (chunk: Buffer) => appendOutput('stderr', chunk));
 
-  proc.on("close", (exitCode) => {
+  proc.on('close', (exitCode) => {
     flushOutput();
     sendExit(exitCode ?? 0);
     cleanup();
   });
 
   const onMessage = (raw: Buffer | string) => {
-    const msg = typeof raw === "string" ? raw : raw.toString();
+    const msg = typeof raw === 'string' ? raw : raw.toString();
     try {
       const parsed = JSON.parse(msg) as { type: string; data?: string };
-      if (parsed.type === "stdin" && parsed.data != null && !proc.killed) {
+      if (parsed.type === 'stdin' && parsed.data != null && !proc.killed) {
         proc.stdin.write(parsed.data);
         resetTimer();
       }
-    } catch { /* ignore non-JSON */ }
+    } catch {
+      /* ignore non-JSON */
+    }
   };
 
-  ws.on("message", onMessage);
+  ws.on('message', onMessage);
 
-  ws.on("close", () => {
+  ws.on('close', () => {
     clearTimeout(timer);
     if (flushTimer) clearTimeout(flushTimer);
     killContainer();
@@ -182,19 +190,29 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
 function compile(hostDir: string, image: string, compileCmd: string): Promise<string | null> {
   return new Promise((resolve) => {
     const args = [
-      "run", "--rm",
-      "--network=none",
-      "-v", `${hostDir}:/work`,
-      "-w", "/work",
+      'run',
+      '--rm',
+      '--network=none',
+      '-v',
+      `${hostDir}:/work`,
+      '-w',
+      '/work',
       image,
-      "sh", "-c", compileCmd,
+      'sh',
+      '-c',
+      compileCmd,
     ];
-    execFile("docker", args, { maxBuffer: 1024 * 1024, timeout: 15_000 }, (err, _stdout, stderr) => {
-      if (err) {
-        resolve(stderr || err.message);
-      } else {
-        resolve(null);
-      }
-    });
+    execFile(
+      'docker',
+      args,
+      { maxBuffer: 1024 * 1024, timeout: 15_000 },
+      (err, _stdout, stderr) => {
+        if (err) {
+          resolve(stderr || err.message);
+        } else {
+          resolve(null);
+        }
+      },
+    );
   });
 }

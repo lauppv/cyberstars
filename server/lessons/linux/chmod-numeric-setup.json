@@ -1,1 +1,8 @@
-{"cwd":"/home/student","files":[{"path":"engine_control.sh","content":"#!/bin/bash\necho 'Igniting main thruster'\n"},{"path":"readme.txt","content":"Engine control documentation.\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "engine_control.sh", "content": "#!/bin/bash\necho 'Igniting main thruster'\n" },
+    { "path": "readme.txt", "content": "Engine control documentation.\n" }
+  ],
+  "dirs": []
+}

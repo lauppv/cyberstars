@@ -5,6 +5,7 @@ C gives us **break** and **continue** — same names, same behavior as in Python
 ---
 
 **break** **stops** the loop completely. The remaining iterations never happen
+
 ```c
 #include <stdio.h>
 
@@ -18,7 +19,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 0
 1
@@ -26,9 +29,11 @@ Output
 3
 4
 ```
+
 We told the loop to go up to **99**, but as soon as **i** became **5**, **break** kicked in and the loop ended
 
 A real example: searching for a value in an array
+
 ```c
 #include <stdio.h>
 
@@ -47,11 +52,13 @@ int main(void) {
     return 0;
 }
 ```
+
 The loop stops as soon as we find what we’re looking for. **break** saves us time
 
 ---
 
 **continue** is different. It doesn’t stop the loop — it just **skips** the rest of the current iteration and **jumps to the next one**
+
 ```c
 #include <stdio.h>
 
@@ -65,7 +72,9 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
 0
 1
@@ -77,9 +86,11 @@ Output
 8
 9
 ```
+
 **5** is missing. When **i** was **5**, **continue** jumped over **printf** and the loop kept going
 
 A real example: print only **even** numbers
+
 ```c
 #include <stdio.h>
 
@@ -93,11 +104,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Output: **0 2 4 6 8 10**
 
 ---
 
 Both keywords work the same way in **while**, not just **for**
+
 ```c
 #include <stdio.h>
 
@@ -113,6 +126,7 @@ int main(void) {
     return 0;
 }
 ```
+
 **while (1)** would normally be infinite, but **break** lets us escape
 
 ---
@@ -122,10 +136,12 @@ A small warning: **break** and **continue** can make code harder to read if you 
 ---
 
 Print all numbers from **1 to 20**, but with two rules
+
 - **Skip** the number **13** (use **continue**)
 - **Stop** completely when you reach **17** (use **break**, do not print **17**)
 
 Expected output
+
 ```text
 1
 2
@@ -143,4 +159,5 @@ Expected output
 15
 16
 ```
+
 **13** is missing, and **17, 18, 19, 20** never show up

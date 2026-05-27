@@ -1,8 +1,8 @@
-import { useState, useMemo, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { ApiClientError } from "../services/apiClient";
-import { forgotPassword, resetPassword } from "../services/authService";
+import { useState, useMemo, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { ApiClientError } from '../services/apiClient';
+import { forgotPassword, resetPassword } from '../services/authService';
 
 function getPasswordStrength(pw: string): number {
   if (pw.length === 0) return 0;
@@ -19,7 +19,7 @@ function Starfield() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let w: number, h: number, cx: number, cy: number;
@@ -28,17 +28,17 @@ function Starfield() {
       const dpr = window.devicePixelRatio;
       w = canvas.width = rect.width * dpr;
       h = canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + "px";
-      canvas.style.height = rect.height + "px";
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
       cx = w / 2;
       cy = h / 2;
     };
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener('resize', resize);
 
     const NUM_STARS = 220;
     const SPEED = 0.007;
-    const COLORS = ["#FFFFFF", "#E8E8FF", "#C8B8FF", "#FFD8B8", "#B8E8FF"];
+    const COLORS = ['#FFFFFF', '#E8E8FF', '#C8B8FF', '#FFD8B8', '#B8E8FF'];
     const stars = Array.from({ length: NUM_STARS }, () => ({
       x: (Math.random() - 0.5) * 2,
       y: (Math.random() - 0.5) * 2,
@@ -64,12 +64,12 @@ function Starfield() {
         }
       }
     };
-    document.addEventListener("visibilitychange", onVisibility);
+    document.addEventListener('visibilitychange', onVisibility);
 
     const tick = (t: number) => {
       const dt = Math.min(50, t - lastT);
       lastT = t;
-      ctx.fillStyle = "rgba(10, 5, 24, 0.28)";
+      ctx.fillStyle = 'rgba(10, 5, 24, 0.28)';
       ctx.fillRect(0, 0, w, h);
       const maxR = Math.max(w, h) * 0.7;
 
@@ -99,7 +99,7 @@ function Starfield() {
         ctx.strokeStyle = s.color;
         ctx.globalAlpha = alpha * 0.55;
         ctx.lineWidth = size * 0.7;
-        ctx.lineCap = "round";
+        ctx.lineCap = 'round';
         ctx.beginPath();
         ctx.moveTo(ppx, ppy);
         ctx.lineTo(px, py);
@@ -126,70 +126,77 @@ function Starfield() {
     return () => {
       cancelAnimationFrame(rafId);
       running = false;
-      window.removeEventListener("resize", resize);
-      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none"
+      style={{ zIndex: 2 }}
+    />
+  );
 }
 
 export function AuthPage() {
-  const [mode, setMode] = useState<"login" | "signup" | "forgot" | "reset">("login");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [code, setCode] = useState("");
+  const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'reset'>('login');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [remember, setRemember] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
   const { login, signup } = useAuth();
 
   const strength = useMemo(() => getPasswordStrength(password), [password]);
-  const strengthLabel = strength <= 1 ? "Weak" : strength === 2 ? "Getting better" : "Strong password!";
-  const strengthClass = strength === 1 ? "weak" : strength === 2 ? "medium" : "strong";
+  const strengthLabel =
+    strength <= 1 ? 'Weak' : strength === 2 ? 'Getting better' : 'Strong password!';
+  const strengthClass = strength === 1 ? 'weak' : strength === 2 ? 'medium' : 'strong';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
-    setSuccess("");
+    setError('');
+    setSuccess('');
     try {
-      if (mode === "login") {
+      if (mode === 'login') {
         await login({ email, password });
-        navigate("/");
-      } else if (mode === "signup") {
+        navigate('/');
+      } else if (mode === 'signup') {
         await signup({ name, email, password });
-        navigate("/welcome");
-      } else if (mode === "forgot") {
+        navigate('/welcome');
+      } else if (mode === 'forgot') {
         await forgotPassword(email);
-        setSuccess("If that email exists, a reset code was sent. Check your inbox.");
-        setMode("reset");
-      } else if (mode === "reset") {
+        setSuccess('If that email exists, a reset code was sent. Check your inbox.');
+        setMode('reset');
+      } else if (mode === 'reset') {
         await resetPassword(email, code, password);
-        setSuccess("Password reset! You can now log in.");
-        setCode("");
-        setPassword("");
-        setMode("login");
+        setSuccess('Password reset! You can now log in.');
+        setCode('');
+        setPassword('');
+        setMode('login');
       }
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);
       } else {
-        setError("Server error, try again later");
+        setError('Server error, try again later');
       }
     } finally {
       setLoading(false);
     }
   };
 
-  const switchMode = (m: "login" | "signup" | "forgot" | "reset") => {
+  const switchMode = (m: 'login' | 'signup' | 'forgot' | 'reset') => {
     setMode(m);
-    setError("");
-    setSuccess("");
+    setError('');
+    setSuccess('');
   };
 
   return (
@@ -216,7 +223,7 @@ export function AuthPage() {
         <div
           className="hidden min-[900px]:flex flex-1 flex-col justify-center items-center relative overflow-hidden"
           style={{
-            background: "radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%)",
+            background: 'radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%)',
           }}
         >
           {/* Pulsing accent glow */}
@@ -225,11 +232,11 @@ export function AuthPage() {
             style={{
               width: 600,
               height: 600,
-              background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              animation: "pulse-glow 8s ease-in-out infinite",
+              background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              animation: 'pulse-glow 8s ease-in-out infinite',
               zIndex: 1,
             }}
           />
@@ -239,39 +246,52 @@ export function AuthPage() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse 55% 45% at center, rgba(10,5,24,.55) 0%, transparent 75%)",
+              background:
+                'radial-gradient(ellipse 55% 45% at center, rgba(10,5,24,.55) 0%, transparent 75%)',
               zIndex: 3,
             }}
           />
           {/* Brand content */}
           <div className="relative max-w-[400px] text-center" style={{ zIndex: 4 }}>
             <div className="flex items-center justify-center gap-3 mb-8">
-              <svg className="w-10 h-10" viewBox="0 0 64 64" style={{ filter: "drop-shadow(0 0 16px var(--accent-glow))" }}>
-                <polygon points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24" fill="var(--accent)" />
+              <svg
+                className="w-10 h-10"
+                viewBox="0 0 64 64"
+                style={{ filter: 'drop-shadow(0 0 16px var(--accent-glow))' }}
+              >
+                <polygon
+                  points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
+                  fill="var(--accent)"
+                />
               </svg>
-              <span className="text-[32px] font-bold" style={{ letterSpacing: "-1px" }}>
+              <span className="text-[32px] font-bold" style={{ letterSpacing: '-1px' }}>
                 CyberStars
               </span>
             </div>
             <p className="text-lg text-[var(--text2)] leading-relaxed mb-10">
-              Learn to code through interactive lessons. Write real code, earn XP, and level up your skills.
+              Learn to code through interactive lessons. Write real code, earn XP, and level up your
+              skills.
             </p>
             <div className="flex flex-col gap-4 text-left">
               {[
-                { icon: "⌨️", bold: "Live code editor", rest: " — write & run code instantly" },
-                { icon: "💻", bold: "Python, C, Java & Linux", rest: " — structured curriculum" },
-                { icon: "🏆", bold: "XP & badges", rest: " — gamified progress tracking" },
-                { icon: "💬", bold: "Community forum", rest: " — ask, share, and help others" },
-                { icon: "📰", bold: "The Almanac", rest: " — tech history, facts & legends" },
-                { icon: "🚀", bold: "Laniakea Explorer", rest: " — explore the universe in your cockpit" },
+                { icon: '⌨️', bold: 'Live code editor', rest: ' — write & run code instantly' },
+                { icon: '💻', bold: 'Python, C, Java & Linux', rest: ' — structured curriculum' },
+                { icon: '🏆', bold: 'XP & badges', rest: ' — gamified progress tracking' },
+                { icon: '💬', bold: 'Community forum', rest: ' — ask, share, and help others' },
+                { icon: '📰', bold: 'The Almanac', rest: ' — tech history, facts & legends' },
+                {
+                  icon: '🚀',
+                  bold: 'Laniakea Explorer',
+                  rest: ' — explore the universe in your cockpit',
+                },
               ].map((f) => (
                 <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
                   <div
                     className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0"
                     style={{
-                      background: "rgba(34,34,46,.55)",
-                      border: "1px solid rgba(108,92,231,.35)",
-                      backdropFilter: "blur(8px)",
+                      background: 'rgba(34,34,46,.55)',
+                      border: '1px solid rgba(108,92,231,.35)',
+                      backdropFilter: 'blur(8px)',
                     }}
                   >
                     {f.icon}
@@ -289,223 +309,234 @@ export function AuthPage() {
         {/* Right form panel */}
         <div className="w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[var(--bg2)] border-l border-[var(--border)] flex flex-col justify-center px-12 py-12 overflow-y-auto">
           {/* Tabs — only shown for login/signup */}
-            <>
-              {(mode === "login" || mode === "signup") && (
-                <div className="flex mb-8 bg-[var(--bg3)] rounded-[var(--radius)] p-1">
-                  <button
-                    onClick={() => switchMode("login")}
-                    className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
-                      mode === "login"
-                        ? "bg-[var(--accent)] text-white"
-                        : "bg-transparent text-[var(--text3)] hover:text-[var(--text)]"
-                    }`}
-                    style={mode === "login" ? { boxShadow: "0 2px 8px #6C5CE744" } : undefined}
-                  >
-                    Log In
-                  </button>
-                  <button
-                    onClick={() => switchMode("signup")}
-                    className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
-                      mode === "signup"
-                        ? "bg-[var(--accent)] text-white"
-                        : "bg-transparent text-[var(--text3)] hover:text-[var(--text)]"
-                    }`}
-                    style={mode === "signup" ? { boxShadow: "0 2px 8px #6C5CE744" } : undefined}
-                  >
-                    Sign Up
-                  </button>
-                </div>
-              )}
-
-              {(mode === "forgot" || mode === "reset") && (
-                <div className="mb-8">
-                  <button
-                    onClick={() => switchMode("login")}
-                    className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline mb-3 flex items-center gap-1"
-                  >
-                    ← Back to login
-                  </button>
-                  <h2 className="text-xl font-bold text-[var(--text)] m-0">
-                    {mode === "forgot" ? "Forgot Password" : "Reset Password"}
-                  </h2>
-                  <p className="text-sm text-[var(--text3)] mt-1 mb-0">
-                    {mode === "forgot"
-                      ? "Enter your email and we'll send you a 6-digit code."
-                      : "Enter the code from your email and your new password."}
-                  </p>
-                </div>
-              )}
-
-              {success && (
-                <p className="text-[var(--success)] text-center text-sm font-semibold mb-4">{success}</p>
-              )}
-
-              <form onSubmit={handleSubmit}>
-                {mode === "signup" && (
-                  <div className="mb-5">
-                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                      Display Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Choose a username"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
-                    />
-                  </div>
-                )}
-
-                {(mode !== "reset") && (
-                  <div className="mb-5">
-                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="you@example.com"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
-                    />
-                  </div>
-                )}
-
-                {mode === "reset" && (
-                  <input type="hidden" autoComplete="username" value={email} />
-                )}
-
-                {mode === "reset" && (
-                  <div className="mb-5">
-                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                      Reset Code
-                    </label>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      autoComplete="one-time-code"
-                      placeholder="6-digit code"
-                      required
-                      maxLength={6}
-                      value={code}
-                      onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                      className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)] text-center tracking-[6px] text-lg font-mono"
-                    />
-                  </div>
-                )}
-
-                {mode !== "forgot" && (
-                  <div className="mb-5">
-                    <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                      {mode === "reset" ? "New Password" : "Password"}
-                    </label>
-                    <div className="relative">
-                      <input
-                        type={showPw ? "text" : "password"}
-                        autoComplete={mode === "reset" ? "new-password" : mode === "signup" ? "new-password" : "current-password"}
-                        placeholder={mode === "signup" ? "Min. 8 characters" : mode === "reset" ? "Min. 6 characters" : "Enter your password"}
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full py-[11px] px-[14px] pr-10 bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
-                      />
-                      <span
-                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-[var(--text3)]"
-                        onClick={() => setShowPw(!showPw)}
-                      >
-                        {showPw ? "🙈" : "👁️"}
-                      </span>
-                    </div>
-                    {(mode === "signup" || mode === "reset") && password.length > 0 && (
-                      <>
-                        <div className="flex gap-1 mt-2">
-                          {[1, 2, 3].map((i) => (
-                            <div
-                              key={i}
-                              className={`pw-bar ${strength >= i ? strengthClass : ""}`}
-                            />
-                          ))}
-                        </div>
-                        <div className="text-[11px] text-[var(--text3)] mt-1">{strengthLabel}</div>
-                      </>
-                    )}
-                  </div>
-                )}
-
-                {mode === "login" && (
-                  <div className="flex items-center justify-between mb-6">
-                    <label className="flex items-center gap-2 text-[13px] text-[var(--text2)] cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={remember}
-                        onChange={(e) => setRemember(e.target.checked)}
-                        className="accent-[var(--accent)] w-4 h-4"
-                      />
-                      Remember me
-                    </label>
-                    <button
-                      type="button"
-                      onClick={() => switchMode("forgot")}
-                      className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
-                    >
-                      Forgot password?
-                    </button>
-                  </div>
-                )}
-
-                {error && (
-                  <p className="text-[var(--error)] text-center text-sm font-semibold mb-4">{error}</p>
-                )}
-
+          <>
+            {(mode === 'login' || mode === 'signup') && (
+              <div className="flex mb-8 bg-[var(--bg3)] rounded-[var(--radius)] p-1">
                 <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-[13px] rounded-[var(--radius)] bg-[var(--accent)] text-white text-[15px] font-semibold cursor-pointer border-none transition-all relative overflow-hidden hover:brightness-110 disabled:opacity-80 disabled:pointer-events-none"
-                  style={!loading ? { boxShadow: undefined } : undefined}
+                  onClick={() => switchMode('login')}
+                  className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
+                    mode === 'login'
+                      ? 'bg-[var(--accent)] text-white'
+                      : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
+                  }`}
+                  style={mode === 'login' ? { boxShadow: '0 2px 8px #6C5CE744' } : undefined}
                 >
-                  {loading ? (
-                    <span
-                      className="inline-block w-[18px] h-[18px] border-2 border-white/25 border-t-white rounded-full align-middle"
-                      style={{ animation: "spin 0.6s linear infinite" }}
-                    />
-                  ) : mode === "login" ? (
-                    "Log In"
-                  ) : mode === "signup" ? (
-                    "Create Account"
-                  ) : mode === "forgot" ? (
-                    "Send Reset Code"
-                  ) : (
-                    "Reset Password"
-                  )}
+                  Log In
                 </button>
-              </form>
-
-              <div className="text-center text-[13px] text-[var(--text3)] mt-5">
-                {mode === "login" ? (
-                  <span>
-                    Don't have an account?{" "}
-                    <button
-                      onClick={() => switchMode("signup")}
-                      className="text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
-                    >
-                      Sign up free
-                    </button>
-                  </span>
-                ) : mode === "signup" ? (
-                  <span>
-                    Already have an account?{" "}
-                    <button
-                      onClick={() => switchMode("login")}
-                      className="text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
-                    >
-                      Log in
-                    </button>
-                  </span>
-                ) : null}
+                <button
+                  onClick={() => switchMode('signup')}
+                  className={`flex-1 py-2.5 text-sm font-semibold rounded-[var(--radius-sm)] transition-all cursor-pointer border-none ${
+                    mode === 'signup'
+                      ? 'bg-[var(--accent)] text-white'
+                      : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
+                  }`}
+                  style={mode === 'signup' ? { boxShadow: '0 2px 8px #6C5CE744' } : undefined}
+                >
+                  Sign Up
+                </button>
               </div>
-            </>
+            )}
+
+            {(mode === 'forgot' || mode === 'reset') && (
+              <div className="mb-8">
+                <button
+                  onClick={() => switchMode('login')}
+                  className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline mb-3 flex items-center gap-1"
+                >
+                  ← Back to login
+                </button>
+                <h2 className="text-xl font-bold text-[var(--text)] m-0">
+                  {mode === 'forgot' ? 'Forgot Password' : 'Reset Password'}
+                </h2>
+                <p className="text-sm text-[var(--text3)] mt-1 mb-0">
+                  {mode === 'forgot'
+                    ? "Enter your email and we'll send you a 6-digit code."
+                    : 'Enter the code from your email and your new password.'}
+                </p>
+              </div>
+            )}
+
+            {success && (
+              <p className="text-[var(--success)] text-center text-sm font-semibold mb-4">
+                {success}
+              </p>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              {mode === 'signup' && (
+                <div className="mb-5">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                    Display Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Choose a username"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                  />
+                </div>
+              )}
+
+              {mode !== 'reset' && (
+                <div className="mb-5">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                  />
+                </div>
+              )}
+
+              {mode === 'reset' && <input type="hidden" autoComplete="username" value={email} />}
+
+              {mode === 'reset' && (
+                <div className="mb-5">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                    Reset Code
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    placeholder="6-digit code"
+                    required
+                    maxLength={6}
+                    value={code}
+                    onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)] text-center tracking-[6px] text-lg font-mono"
+                  />
+                </div>
+              )}
+
+              {mode !== 'forgot' && (
+                <div className="mb-5">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                    {mode === 'reset' ? 'New Password' : 'Password'}
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showPw ? 'text' : 'password'}
+                      autoComplete={
+                        mode === 'reset'
+                          ? 'new-password'
+                          : mode === 'signup'
+                            ? 'new-password'
+                            : 'current-password'
+                      }
+                      placeholder={
+                        mode === 'signup'
+                          ? 'Min. 8 characters'
+                          : mode === 'reset'
+                            ? 'Min. 6 characters'
+                            : 'Enter your password'
+                      }
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="w-full py-[11px] px-[14px] pr-10 bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                    />
+                    <span
+                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-[var(--text3)]"
+                      onClick={() => setShowPw(!showPw)}
+                    >
+                      {showPw ? '🙈' : '👁️'}
+                    </span>
+                  </div>
+                  {(mode === 'signup' || mode === 'reset') && password.length > 0 && (
+                    <>
+                      <div className="flex gap-1 mt-2">
+                        {[1, 2, 3].map((i) => (
+                          <div key={i} className={`pw-bar ${strength >= i ? strengthClass : ''}`} />
+                        ))}
+                      </div>
+                      <div className="text-[11px] text-[var(--text3)] mt-1">{strengthLabel}</div>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {mode === 'login' && (
+                <div className="flex items-center justify-between mb-6">
+                  <label className="flex items-center gap-2 text-[13px] text-[var(--text2)] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={remember}
+                      onChange={(e) => setRemember(e.target.checked)}
+                      className="accent-[var(--accent)] w-4 h-4"
+                    />
+                    Remember me
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => switchMode('forgot')}
+                    className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
+              )}
+
+              {error && (
+                <p className="text-[var(--error)] text-center text-sm font-semibold mb-4">
+                  {error}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-[13px] rounded-[var(--radius)] bg-[var(--accent)] text-white text-[15px] font-semibold cursor-pointer border-none transition-all relative overflow-hidden hover:brightness-110 disabled:opacity-80 disabled:pointer-events-none"
+                style={!loading ? { boxShadow: undefined } : undefined}
+              >
+                {loading ? (
+                  <span
+                    className="inline-block w-[18px] h-[18px] border-2 border-white/25 border-t-white rounded-full align-middle"
+                    style={{ animation: 'spin 0.6s linear infinite' }}
+                  />
+                ) : mode === 'login' ? (
+                  'Log In'
+                ) : mode === 'signup' ? (
+                  'Create Account'
+                ) : mode === 'forgot' ? (
+                  'Send Reset Code'
+                ) : (
+                  'Reset Password'
+                )}
+              </button>
+            </form>
+
+            <div className="text-center text-[13px] text-[var(--text3)] mt-5">
+              {mode === 'login' ? (
+                <span>
+                  Don't have an account?{' '}
+                  <button
+                    onClick={() => switchMode('signup')}
+                    className="text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
+                  >
+                    Sign up free
+                  </button>
+                </span>
+              ) : mode === 'signup' ? (
+                <span>
+                  Already have an account?{' '}
+                  <button
+                    onClick={() => switchMode('login')}
+                    className="text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
+                  >
+                    Log in
+                  </button>
+                </span>
+              ) : null}
+            </div>
+          </>
         </div>
       </div>
     </>

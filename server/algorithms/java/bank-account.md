@@ -5,11 +5,13 @@ Create a **BankAccount** class with a `balance` field and methods `deposit(amoun
 Read the initial balance on the first line, then process operations from stdin. Print the final balance at the end.
 
 ### Input
+
 - Line 1: initial balance (integer)
 - Line 2: number of operations N
 - Next N lines: either `deposit X` or `withdraw X`
 
 ### Output
+
 - For each rejected withdrawal: `Insufficient funds`
 - Last line: `Balance: X`
 
@@ -40,6 +42,7 @@ Balance: 0
 ```
 
 ### Hints
+
 - Parse each operation line by splitting on space.
 - In `withdraw()`, check if amount <= balance before subtracting.
 - The balance should never go negative.

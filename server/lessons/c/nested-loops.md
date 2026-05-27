@@ -13,11 +13,13 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
-(1, 1) (1, 2) (1, 3) 
-(2, 1) (2, 2) (2, 3) 
-(3, 1) (3, 2) (3, 3) 
+(1, 1) (1, 2) (1, 3)
+(2, 1) (2, 2) (2, 3)
+(3, 1) (3, 2) (3, 3)
 ```
 
 The **outer loop** controls the **rows**, the **inner loop** controls the **columns**. For every single value of **i**, the inner loop runs **completely** from start to finish. Read the output carefully and trace through the code in your head :)
@@ -39,13 +41,15 @@ int main(void) {
     return 0;
 }
 ```
+
 Output
+
 ```text
-* 
-* * 
-* * * 
-* * * * 
-* * * * * 
+*
+* *
+* * *
+* * * *
+* * * * *
 ```
 
 Notice that the inner loop goes **up to i**, not up to 5. When **i = 1**, we print 1 star. When **i = 3**, we print 3 stars. This is how we build a **triangle**
@@ -53,6 +57,7 @@ Notice that the inner loop goes **up to i**, not up to 5. When **i = 1**, we pri
 ---
 
 Nested loops with arrays: imagine a **multiplication table**
+
 ```c
 #include <stdio.h>
 
@@ -69,7 +74,7 @@ int main(void) {
 }
 ```
 
-This prints **every combination** of two elements from the array. If the array has **n** elements, nested loops give us **n * n** combinations. When you hear "all pairs", think nested loops
+This prints **every combination** of two elements from the array. If the array has **n** elements, nested loops give us **n \* n** combinations. When you hear "all pairs", think nested loops
 
 ---
 

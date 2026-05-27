@@ -1,12 +1,8 @@
-import type { KnipConfig } from "knip";
+import type { KnipConfig } from 'knip';
 
 const config: KnipConfig = {
-  ignore: ["design/**"],
-  ignoreDependencies: [
-    "@tailwindcss/typography",
-    "autoprefixer",
-    "postcss",
-  ],
+  ignoreDependencies: ['@tailwindcss/typography', 'autoprefixer', 'postcss'],
+  ignore: ['e2e/**'],
 };
 
 export default config;

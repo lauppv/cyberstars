@@ -1,14 +1,14 @@
 enum Season {
-    SPRING, SUMMER, AUTUMN, WINTER
+SPRING, SUMMER, AUTUMN, WINTER
 }
 
 public class Main {
-    public static void describeSeason(Season s) {
-        // Use a switch (or if-else) to print a description for each season
-        // SPRING -> "Spring: flowers bloom"
-        // SUMMER -> "Summer: time for the beach"
-        // AUTUMN -> "Autumn: leaves are falling"
-        // WINTER -> "Winter: stay inside and code"
+public static void describeSeason(Season s) {
+// Use a switch (or if-else) to print a description for each season
+// SPRING -> "Spring: flowers bloom"
+// SUMMER -> "Summer: time for the beach"
+// AUTUMN -> "Autumn: leaves are falling"
+// WINTER -> "Winter: stay inside and code"
 
     }
 
@@ -17,4 +17,5 @@ public class Main {
         // and call describeSeason for each
 
     }
+
 }

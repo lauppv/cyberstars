@@ -13,6 +13,7 @@ Build a **word game toolkit**. Write these functions:
 **reverse_words(sentence)** — reverse the **order of words** in a sentence (not the letters). Split, reverse the list, join back
 
 Test with:
+
 ```python
 print(is_palindrome("A man, a plan, a canal: Panama"))
 print(are_anagrams("Listen!", "Silent"))
@@ -21,6 +22,7 @@ print(clean_word("H3ll0, W0rld!"))
 ```
 
 Expected output
+
 ```text
 True
 True

@@ -1,42 +1,35 @@
-import { useState, useEffect } from "react";
-import { Topbar } from "../components/layout/Topbar";
-import { AI_ARTICLES } from "./almanacAIArticles";
-import { HERO, ARTICLES, FUN_FACTS, QUOTES, BIG_TIMELINE } from "./almanacData";
-import type { StoryData } from "./almanacData";
-import "./AlmanacPage.css";
+import { useState, useEffect } from 'react';
+import { Topbar } from '../components/layout/Topbar';
+import { AI_ARTICLES } from './almanacAIArticles';
+import { HERO, ARTICLES, FUN_FACTS, QUOTES, BIG_TIMELINE } from './almanacData';
+import type { StoryData } from './almanacData';
+import './AlmanacPage.css';
 
 const CATEGORIES = [
-  { id: "all", label: "All", em: "✦" },
-  { id: "history", label: "History", em: "📜" },
-  { id: "oss", label: "Open Source", em: "🐧" },
-  { id: "legends", label: "Legends", em: "👑" },
-  { id: "security", label: "Security", em: "🔒" },
-  { id: "hardware", label: "Hardware", em: "💾" },
-  { id: "internet", label: "Internet", em: "🌐" },
-  { id: "space", label: "Space", em: "🪐" },
-  { id: "ai", label: "AI & Future", em: "🧠" },
-  { id: "claude", label: "Claude", em: "🟣" },
-  { id: "gemini", label: "Gemini", em: "🔵" },
-  { id: "chatgpt", label: "ChatGPT", em: "🟢" },
+  { id: 'all', label: 'All', em: '✦' },
+  { id: 'history', label: 'History', em: '📜' },
+  { id: 'oss', label: 'Open Source', em: '🐧' },
+  { id: 'legends', label: 'Legends', em: '👑' },
+  { id: 'security', label: 'Security', em: '🔒' },
+  { id: 'hardware', label: 'Hardware', em: '💾' },
+  { id: 'internet', label: 'Internet', em: '🌐' },
+  { id: 'space', label: 'Space', em: '🪐' },
+  { id: 'ai', label: 'AI & Future', em: '🧠' },
+  { id: 'claude', label: 'Claude', em: '🟣' },
+  { id: 'gemini', label: 'Gemini', em: '🔵' },
+  { id: 'chatgpt', label: 'ChatGPT', em: '🟢' },
 ];
 
-
-export function StoryModal({
-  story,
-  onClose,
-}: {
-  story: StoryData;
-  onClose: () => void;
-}) {
+export function StoryModal({ story, onClose }: { story: StoryData; onClose: () => void }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKey);
     return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
     };
   }, [onClose]);
 
@@ -51,20 +44,17 @@ export function StoryModal({
             className="story-modal-art-grad"
             style={{
               background:
-                story.grad ||
-                "linear-gradient(135deg,#000814 0%,#001d3d 60%,#003566 100%)",
+                story.grad || 'linear-gradient(135deg,#000814 0%,#001d3d 60%,#003566 100%)',
             }}
           />
           <span className="story-modal-emoji">{story.emoji}</span>
           {story.tag && <span className="story-modal-tag">{story.tag}</span>}
-          {story.year && (
-            <span className="story-modal-year">{story.year}</span>
-          )}
+          {story.year && <span className="story-modal-year">{story.year}</span>}
         </div>
         <div className="story-modal-body">
           <h2 className="story-modal-title">{story.title}</h2>
           <div className="story-modal-text">
-            {story.fullText.split("\n\n").map((para, i) => (
+            {story.fullText.split('\n\n').map((para, i) => (
               <p key={i}>{para}</p>
             ))}
           </div>
@@ -83,41 +73,35 @@ function Pagination({
   totalPages: number;
   onPage: (p: number) => void;
 }) {
-  const pages: (number | "…")[] = [];
+  const pages: (number | '…')[] = [];
   for (let i = 1; i <= totalPages; i++) {
     if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
       pages.push(i);
-    } else if (pages[pages.length - 1] !== "…") {
-      pages.push("…");
+    } else if (pages[pages.length - 1] !== '…') {
+      pages.push('…');
     }
   }
   return (
     <nav className="almanac-pagination">
-      <button
-        className="pg-btn"
-        disabled={page === 1}
-        onClick={() => onPage(page - 1)}
-      >
+      <button className="pg-btn" disabled={page === 1} onClick={() => onPage(page - 1)}>
         ‹
       </button>
       {pages.map((p, i) =>
-        p === "…" ? (
-          <span key={`e${i}`} className="pg-ellipsis">…</span>
+        p === '…' ? (
+          <span key={`e${i}`} className="pg-ellipsis">
+            …
+          </span>
         ) : (
           <button
             key={p}
-            className={"pg-btn" + (p === page ? " pg-active" : "")}
+            className={'pg-btn' + (p === page ? ' pg-active' : '')}
             onClick={() => onPage(p)}
           >
             {p}
           </button>
-        )
+        ),
       )}
-      <button
-        className="pg-btn"
-        disabled={page === totalPages}
-        onClick={() => onPage(page + 1)}
-      >
+      <button className="pg-btn" disabled={page === totalPages} onClick={() => onPage(page + 1)}>
         ›
       </button>
     </nav>
@@ -125,7 +109,7 @@ function Pagination({
 }
 
 export function AlmanacPage() {
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState('all');
   const [page, setPage] = useState(1);
   const [factIdx, setFactIdx] = useState(0);
   const [quoteIdx, setQuoteIdx] = useState(0);
@@ -135,13 +119,14 @@ export function AlmanacPage() {
 
   const handlePage = (p: number) => {
     setPage(p);
-    document.querySelector(".almanac-articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .querySelector('.almanac-articles')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const PER_PAGE = 10;
   const ALL_ARTICLES = [...ARTICLES, ...AI_ARTICLES];
-  const filtered =
-    filter === "all" ? ALL_ARTICLES : ALL_ARTICLES.filter((a) => a.cat === filter);
+  const filtered = filter === 'all' ? ALL_ARTICLES : ALL_ARTICLES.filter((a) => a.cat === filter);
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   const fact = FUN_FACTS[factIdx];
@@ -152,11 +137,9 @@ export function AlmanacPage() {
     : [...CATEGORIES.slice(topicOffset), ...CATEGORIES.slice(0, topicOffset)];
 
   const nextFact = () => setFactIdx((factIdx + 1) % FUN_FACTS.length);
-  const prevFact = () =>
-    setFactIdx((factIdx - 1 + FUN_FACTS.length) % FUN_FACTS.length);
+  const prevFact = () => setFactIdx((factIdx - 1 + FUN_FACTS.length) % FUN_FACTS.length);
   const nextQuote = () => setQuoteIdx((quoteIdx + 1) % QUOTES.length);
-  const prevQuote = () =>
-    setQuoteIdx((quoteIdx - 1 + QUOTES.length) % QUOTES.length);
+  const prevQuote = () => setQuoteIdx((quoteIdx - 1 + QUOTES.length) % QUOTES.length);
 
   return (
     <>
@@ -170,9 +153,8 @@ export function AlmanacPage() {
             &amp; everything in between.
           </h1>
           <p className="almanac-subtitle">
-            Open-source legends and hacker culture, tech history, space, famous
-            quotes, and the curious little fun facts behind the tools you use
-            every day. New reads every week.
+            Open-source legends and hacker culture, tech history, space, famous quotes, and the
+            curious little fun facts behind the tools you use every day. New reads every week.
           </p>
         </div>
 
@@ -180,22 +162,21 @@ export function AlmanacPage() {
           {!showAllTopics && (
             <button
               className="topic-nav"
-              onClick={() =>
-                setTopicOffset((o) => (o - 1 + CATEGORIES.length) % CATEGORIES.length)
-              }
+              onClick={() => setTopicOffset((o) => (o - 1 + CATEGORIES.length) % CATEGORIES.length)}
               aria-label="Previous topics"
             >
               ‹
             </button>
           )}
-          <div className={"almanac-filters" + (showAllTopics ? " show-all" : "")}>
+          <div className={'almanac-filters' + (showAllTopics ? ' show-all' : '')}>
             {visibleCategories.map((c) => (
               <button
                 key={c.id}
-                className={
-                  "almanac-chip" + (filter === c.id ? " active" : "")
-                }
-                onClick={() => { setFilter(c.id); setPage(1); }}
+                className={'almanac-chip' + (filter === c.id ? ' active' : '')}
+                onClick={() => {
+                  setFilter(c.id);
+                  setPage(1);
+                }}
               >
                 <span className="chip-em">{c.em}</span>
                 <span>{c.label}</span>
@@ -205,23 +186,18 @@ export function AlmanacPage() {
           {!showAllTopics && (
             <button
               className="topic-nav"
-              onClick={() =>
-                setTopicOffset((o) => (o + 1) % CATEGORIES.length)
-              }
+              onClick={() => setTopicOffset((o) => (o + 1) % CATEGORIES.length)}
               aria-label="Next topics"
             >
               ›
             </button>
           )}
-          <button
-            className="topic-showall"
-            onClick={() => setShowAllTopics((s) => !s)}
-          >
-            {showAllTopics ? "Carousel" : "Show all"}
+          <button className="topic-showall" onClick={() => setShowAllTopics((s) => !s)}>
+            {showAllTopics ? 'Carousel' : 'Show all'}
           </button>
         </div>
 
-        {filter === "all" && (
+        {filter === 'all' && (
           <article className="almanac-hero" onClick={() => setOpenStory(HERO)}>
             <div className="hero-art">
               <div className="hero-art-bg" />
@@ -245,18 +221,20 @@ export function AlmanacPage() {
             <div className="section-head">
               <h2>Latest reads</h2>
               <div className="meta">
-                {filtered.length} {filter === "all" ? "articles" : "in this topic"}
-                {totalPages > 1 && <> · page {page}/{totalPages}</>}
+                {filtered.length} {filter === 'all' ? 'articles' : 'in this topic'}
+                {totalPages > 1 && (
+                  <>
+                    {' '}
+                    · page {page}/{totalPages}
+                  </>
+                )}
               </div>
             </div>
             <div className="almanac-articles">
               {paginated.map((a, i) => (
                 <article className="almanac-article" key={i} onClick={() => setOpenStory(a)}>
                   <div className="article-art">
-                    <div
-                      className="article-art-grad"
-                      style={{ background: a.grad }}
-                    />
+                    <div className="article-art-grad" style={{ background: a.grad }} />
                     <span className="article-art-tag">{a.tag}</span>
                     <span className="article-art-year">{a.year}</span>
                     <span className="emoji">{a.emoji}</span>
@@ -317,7 +295,8 @@ export function AlmanacPage() {
               <div className="quote-mark">&ldquo;</div>
               <div className="quote-text">{quote.text}</div>
               <div className="quote-author">
-                — <strong>{quote.author}</strong>{quote.context && <> &middot; {quote.context}</>}
+                — <strong>{quote.author}</strong>
+                {quote.context && <> &middot; {quote.context}</>}
               </div>
               <div className="card-counter">
                 {quoteIdx + 1} / {QUOTES.length}
@@ -349,9 +328,7 @@ export function AlmanacPage() {
         </section>
       </main>
 
-      {openStory && (
-        <StoryModal story={openStory} onClose={() => setOpenStory(null)} />
-      )}
+      {openStory && <StoryModal story={openStory} onClose={() => setOpenStory(null)} />}
     </>
   );
 }

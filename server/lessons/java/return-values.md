@@ -14,6 +14,7 @@ public class Main {
     }
 }
 ```
+
 Output **25**
 
 The return type **int** before the method name tells Java: "this method will give back an int." Inside the method, **return** sends that value back to whoever called it
@@ -44,7 +45,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 Welcome to Vice City, Lance Vance!
 50.0
@@ -79,7 +82,9 @@ public class Main {
     }
 }
 ```
+
 Output
+
 ```text
 40
 300

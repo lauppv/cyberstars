@@ -1,16 +1,20 @@
-import type { Request, Response, NextFunction } from "express";
-import path from "path";
-import fs from "fs/promises";
-import { fileTypeFromBuffer } from "file-type";
-import * as userRepo from "../repositories/user.repository.js";
-import { AppError } from "../middleware/errorHandler.js";
+import type { Request, Response, NextFunction } from 'express';
+import path from 'path';
+import fs from 'fs/promises';
+import { fileTypeFromBuffer } from 'file-type';
+import * as userRepo from '../repositories/user.repository.js';
+import { AppError } from '../middleware/errorHandler.js';
 
-const UPLOAD_DIR = path.resolve("uploads/avatars");
+const UPLOAD_DIR = path.resolve('uploads/avatars');
 await fs.mkdir(UPLOAD_DIR, { recursive: true });
 
-const ALLOWED_MIMES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
+const ALLOWED_MIMES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 
-export async function updateProfile(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function updateProfile(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   try {
     const userId = req.user!.id;
     const { bio, status } = req.body;
@@ -32,7 +36,7 @@ export async function updateProfile(req: Request, res: Response, next: NextFunct
     }
 
     await userRepo.updateProfile(userId, data);
-    res.json({ message: "Profile updated" });
+    res.json({ message: 'Profile updated' });
   } catch (err) {
     next(err);
   }
@@ -42,11 +46,11 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
   try {
     const userId = req.user!.id;
     const file = req.file;
-    if (!file) throw new AppError(400, "No file uploaded");
+    if (!file) throw new AppError(400, 'No file uploaded');
 
     const type = await fileTypeFromBuffer(file.buffer);
     if (!type || !ALLOWED_MIMES.has(type.mime)) {
-      throw new AppError(400, "Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.");
+      throw new AppError(400, 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.');
     }
 
     const ext = type.ext;
@@ -77,7 +81,7 @@ export async function deleteAvatar(req: Request, res: Response, next: NextFuncti
       await fs.unlink(oldFile).catch(() => {});
     }
     await userRepo.updateProfile(userId, { avatarUrl: null });
-    res.json({ message: "Avatar removed" });
+    res.json({ message: 'Avatar removed' });
   } catch (err) {
     next(err);
   }

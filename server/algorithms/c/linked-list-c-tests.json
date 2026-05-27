@@ -1,7 +1,22 @@
 [
-  { "name": "insert and print", "input": "5\nINSERT 10\nINSERT 20\nINSERT 30\nPRINT\nINSERT 40", "expected": "10 20 30", "mode": "exact" },
-  { "name": "empty list", "input": "3\nPRINT\nINSERT 5\nPRINT", "expected": "EMPTY\n5", "mode": "exact" },
+  {
+    "name": "insert and print",
+    "input": "5\nINSERT 10\nINSERT 20\nINSERT 30\nPRINT\nINSERT 40",
+    "expected": "10 20 30",
+    "mode": "exact"
+  },
+  {
+    "name": "empty list",
+    "input": "3\nPRINT\nINSERT 5\nPRINT",
+    "expected": "EMPTY\n5",
+    "mode": "exact"
+  },
   { "name": "single element", "input": "2\nINSERT 42\nPRINT", "expected": "42", "mode": "exact" },
-  { "name": "multiple prints", "input": "6\nINSERT 1\nPRINT\nINSERT 2\nINSERT 3\nPRINT\nPRINT", "expected": "1\n1 2 3\n1 2 3", "mode": "exact" },
+  {
+    "name": "multiple prints",
+    "input": "6\nINSERT 1\nPRINT\nINSERT 2\nINSERT 3\nPRINT\nPRINT",
+    "expected": "1\n1 2 3\n1 2 3",
+    "mode": "exact"
+  },
   { "name": "uses malloc", "input": "", "expected": "malloc", "mode": "code_regex" }
 ]

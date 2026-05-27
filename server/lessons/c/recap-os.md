@@ -7,12 +7,14 @@ Build a **parallel word counter**. The idea: the parent creates a **pipe**, then
 Write a function **int countWords(const char \*text)** that counts words (sequences separated by spaces). For example, "hello world foo" has 3 words
 
 The program should:
+
 1. Create a pipe
 2. Fork
 3. **Child**: count the words in **"The quick brown fox jumps over the lazy dog"**, write the count to the pipe as a string (use **sprintf** to convert int to string), then exit
 4. **Parent**: read the count from the pipe, print it, wait for the child
 
 Expected output
+
 ```text
 Child counted: 9 words
 ```

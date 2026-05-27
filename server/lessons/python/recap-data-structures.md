@@ -16,6 +16,7 @@ Do the following:
 3. Use **nested loops** to find all pairs of students (one from each class) who have the **same grade**. If none, print "No matching grades"
 
 Expected output
+
 ```text
 Students in both: Ana, Mihai
 High grades from A: [85, 91]

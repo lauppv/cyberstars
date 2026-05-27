@@ -1,1 +1,5 @@
-{"cwd":"/home/student","files":[{"path":"mission.log","content":"status: launch sequence initiated\n"}],"dirs":[]}
+{
+  "cwd": "/home/student",
+  "files": [{ "path": "mission.log", "content": "status: launch sequence initiated\n" }],
+  "dirs": []
+}

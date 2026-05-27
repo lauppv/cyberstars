@@ -1,4 +1,4 @@
-You can create and move files — but how do you see *what is inside* one? The simplest
+You can create and move files — but how do you see _what is inside_ one? The simplest
 tool is **cat**.
 
 The name is short for **concatenate**, but its everyday use is plain: **print a file's
@@ -29,7 +29,7 @@ Give `cat` more than one file and it prints them one after another, joined toget
 cat part1.txt part2.txt
 ```
 
-That "joining" is where the name *concatenate* comes from.
+That "joining" is where the name _concatenate_ comes from.
 
 Like `ls` and `pwd`, `cat` only reads — it never changes the file.
 
