@@ -17,10 +17,7 @@ const { mockExecFile } = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock('child_process', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('child_process')>();
-  return { ...actual, execFile: mockExecFile };
-});
+vi.mock('child_process', () => ({ execFile: mockExecFile, default: { execFile: mockExecFile } }));
 
 vi.mock('fs/promises', () => {
   const mod = {
