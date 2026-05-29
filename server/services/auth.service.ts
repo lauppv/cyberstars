@@ -63,7 +63,12 @@ export async function forgotPassword(email: string): Promise<void> {
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
   const found = await userRepo.setResetCode(email, code, expiresAt);
   if (!found) return;
-  await emailService.sendResetCode(email, code);
+  // Send outside the request path: keeps response timing for known vs unknown
+  // emails close (no awaited SMTP round-trip), and an SMTP failure no longer
+  // 500s the request or strands the reset code already stored in the DB.
+  void emailService.sendResetCode(email, code).catch((err) => {
+    console.error('[forgot-password] failed to send reset code:', err);
+  });
 }
 
 export async function resetPassword(
