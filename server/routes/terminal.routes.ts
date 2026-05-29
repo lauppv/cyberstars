@@ -17,13 +17,7 @@ const terminalExecLimiter = rateLimit({
 const router = Router();
 
 router.post('/session', authenticateToken, validateBody(createSessionSchema), ctrl.createSession);
-router.post(
-  '/exec',
-  authenticateToken,
-  terminalExecLimiter,
-  validateBody(execSchema),
-  ctrl.exec,
-);
+router.post('/exec', authenticateToken, terminalExecLimiter, validateBody(execSchema), ctrl.exec);
 router.delete('/session/:sessionId', authenticateToken, ctrl.destroy);
 
 export default router;
