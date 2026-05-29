@@ -28,7 +28,7 @@ vi.mock('../repositories/user.repository.js', () => ({
   updateProfile: (...a: unknown[]) => mockUpdateProfile(...a),
 }));
 
-const { uploadAvatar } = await import('./profile.controller.js');
+const { uploadAvatar, deleteAvatar } = await import('./profile.controller.js');
 
 // Stateful DB stand-in so a later request sees the avatarUrl an earlier one set.
 let currentAvatar: string | null;
@@ -77,5 +77,25 @@ describe('uploadAvatar', () => {
     expect(orphans).toEqual([]);
     // The current avatar must NOT have been unlinked.
     expect(unlinked).not.toContain(finalDb);
+  });
+});
+
+describe('deleteAvatar', () => {
+  it('unlinks the current avatar and clears it in the DB', async () => {
+    currentAvatar = '/uploads/avatars/7-123.png';
+    const res = mkRes();
+    await deleteAvatar(mkReq(), res, vi.fn());
+    expect(mockUnlink).toHaveBeenCalledTimes(1);
+    expect(path.basename((mockUnlink.mock.calls[0][0] as string) ?? '')).toBe('7-123.png');
+    expect(currentAvatar).toBeNull();
+    expect(res.json).toHaveBeenCalledWith({ message: 'Avatar removed' });
+  });
+
+  it('is a no-op unlink when the user has no avatar', async () => {
+    currentAvatar = null;
+    const res = mkRes();
+    await deleteAvatar(mkReq(), res, vi.fn());
+    expect(mockUnlink).not.toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalledWith({ message: 'Avatar removed' });
   });
 });

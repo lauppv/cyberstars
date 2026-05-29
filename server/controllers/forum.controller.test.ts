@@ -166,6 +166,52 @@ describe('getThreads', () => {
       }),
     );
   });
+
+  it('reports null last-post fields for a thread with no posts', async () => {
+    mockPrisma.forumCategory.findUnique.mockResolvedValue({
+      id: 1,
+      slug: 'general',
+      name: 'General',
+      description: '',
+      icon: '',
+      color: '',
+    });
+    mockPrisma.forumThread.findMany.mockResolvedValue([
+      {
+        id: 11,
+        title: 'Empty',
+        pinned: false,
+        locked: false,
+        solved: false,
+        views: 0,
+        authorId: 1,
+        author: { name: 'Alice', role: 'USER' },
+        posts: [],
+        _count: { posts: 0 },
+        createdAt: new Date('2025-01-01'),
+        updatedAt: new Date('2025-01-02'),
+      },
+    ]);
+
+    const res = mockRes();
+    await getThreads(
+      mockReq({ params: { categorySlug: 'general' } as Record<string, string> }),
+      res,
+      vi.fn(),
+    );
+    expect(res.json).toHaveBeenCalledWith(
+      expect.objectContaining({
+        threads: [
+          expect.objectContaining({
+            id: 11,
+            replyCount: 0,
+            lastPostAuthor: null,
+            lastPostAt: null,
+          }),
+        ],
+      }),
+    );
+  });
 });
 
 describe('getThread', () => {
@@ -212,6 +258,73 @@ describe('getThread', () => {
       expect.objectContaining({ where: { id: 1 }, data: { views: { increment: 1 } } }),
     );
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ id: 1, views: 6 }));
+  });
+
+  it('groups reactions (marking the viewer active) and blanks deleted posts', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue({
+      id: 1,
+      title: 'T',
+      pinned: false,
+      locked: false,
+      solved: false,
+      views: 0,
+      authorId: 1,
+      author: { name: 'A', role: 'USER' },
+      category: { slug: 'general', name: 'General' },
+      createdAt: new Date(),
+      posts: [
+        {
+          id: 100,
+          content: 'visible',
+          solution: false,
+          deleted: false,
+          deletedByName: null,
+          editedByName: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          author: { id: 1, name: 'Bob', role: 'USER', avatarUrl: null },
+          reactions: [
+            { emoji: '👍', userId: 1, user: { name: 'Bob' } },
+            { emoji: '👍', userId: 7, user: { name: 'Me' } },
+          ],
+        },
+        {
+          id: 101,
+          content: 'secret',
+          solution: false,
+          deleted: true,
+          deletedByName: 'Mod',
+          editedByName: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          author: { id: 2, name: 'Carol', role: 'USER', avatarUrl: null },
+          reactions: [],
+        },
+      ],
+    });
+    mockPrisma.forumThread.update.mockResolvedValue({});
+
+    const res = mockRes();
+    await getThread(
+      mockReq({
+        params: { threadId: '1' } as Record<string, string>,
+        user: { id: 7 } as Request['user'],
+      }),
+      res,
+      vi.fn(),
+    );
+
+    const payload = (res.json as ReturnType<typeof vi.fn>).mock.calls[0][0] as {
+      posts: Array<{
+        id: number;
+        content: string;
+        reactions: Array<{ count: number; active: boolean }>;
+      }>;
+    };
+    const visible = payload.posts.find((p) => p.id === 100)!;
+    const deleted = payload.posts.find((p) => p.id === 101)!;
+    expect(visible.reactions[0]).toMatchObject({ count: 2, active: true });
+    expect(deleted.content).toBe('');
   });
 });
 
