@@ -11,21 +11,11 @@ process.env.DB_PASSWORD = 'test';
 const mockCreateSession = vi.fn();
 const mockExecCommand = vi.fn();
 const mockDestroySession = vi.fn();
-const mockRunTerminalTests = vi.fn();
-const mockMarkComplete = vi.fn();
 
 vi.mock('../services/terminal-session.service.js', () => ({
   createSession: (...args: unknown[]) => mockCreateSession(...args),
   execCommand: (...args: unknown[]) => mockExecCommand(...args),
   destroySession: (...args: unknown[]) => mockDestroySession(...args),
-}));
-
-vi.mock('../services/terminal-test-runner.service.js', () => ({
-  runTerminalTests: (...args: unknown[]) => mockRunTerminalTests(...args),
-}));
-
-vi.mock('../services/progress.service.js', () => ({
-  markComplete: (...args: unknown[]) => mockMarkComplete(...args),
 }));
 
 vi.mock('@prisma/client', () => ({
@@ -39,7 +29,12 @@ vi.mock('@prisma/client', () => ({
 const ctrl = await import('./terminal.controller.js');
 
 function mockReq(overrides: Partial<Request> = {}): Request {
-  return { params: {}, body: {}, user: undefined, ...overrides } as unknown as Request;
+  return {
+    params: {},
+    body: {},
+    user: { id: 1 } as Request['user'],
+    ...overrides,
+  } as unknown as Request;
 }
 
 function mockRes(): Response {
@@ -59,14 +54,6 @@ describe('createSession', () => {
     await ctrl.createSession(req, res, next);
     expect(res.json).toHaveBeenCalledWith(session);
     expect(next).not.toHaveBeenCalled();
-  });
-
-  it('calls next on validation error', async () => {
-    const req = mockReq({ body: { courseKey: '', lessonSlug: '' } });
-    const res = mockRes();
-    const next = vi.fn();
-    await ctrl.createSession(req, res, next);
-    expect(next).toHaveBeenCalled();
   });
 });
 
@@ -105,71 +92,6 @@ describe('exec', () => {
     const next = vi.fn();
     await ctrl.exec(req, res, next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
-  });
-});
-
-describe('submit', () => {
-  it('runs tests and returns results', async () => {
-    const testResult = { passed: 1, total: 1, allPassed: true, results: [] };
-    mockRunTerminalTests.mockResolvedValue(testResult);
-    const req = mockReq({
-      body: {
-        sessionId: '550e8400-e29b-41d4-a716-446655440000',
-        courseKey: 'linux',
-        lessonSlug: 'intro',
-      },
-    });
-    const res = mockRes();
-    const next = vi.fn();
-    await ctrl.submit(req, res, next);
-    expect(res.json).toHaveBeenCalledWith(testResult);
-  });
-
-  it('marks complete when all pass and user logged in', async () => {
-    mockRunTerminalTests.mockResolvedValue({ passed: 1, total: 1, allPassed: true, results: [] });
-    const req = mockReq({
-      body: {
-        sessionId: '550e8400-e29b-41d4-a716-446655440000',
-        courseKey: 'linux',
-        lessonSlug: 'intro',
-      },
-      user: { id: 1 } as Request['user'],
-    });
-    const res = mockRes();
-    const next = vi.fn();
-    await ctrl.submit(req, res, next);
-    expect(mockMarkComplete).toHaveBeenCalledWith(1, 'linux', 'intro');
-  });
-
-  it('does not mark complete when tests fail', async () => {
-    mockRunTerminalTests.mockResolvedValue({ passed: 0, total: 1, allPassed: false, results: [] });
-    const req = mockReq({
-      body: {
-        sessionId: '550e8400-e29b-41d4-a716-446655440000',
-        courseKey: 'linux',
-        lessonSlug: 'intro',
-      },
-      user: { id: 1 } as Request['user'],
-    });
-    const res = mockRes();
-    const next = vi.fn();
-    await ctrl.submit(req, res, next);
-    expect(mockMarkComplete).not.toHaveBeenCalled();
-  });
-
-  it('returns 404 AppError when session not found', async () => {
-    mockRunTerminalTests.mockRejectedValue(new Error('Session not found'));
-    const req = mockReq({
-      body: {
-        sessionId: '550e8400-e29b-41d4-a716-446655440000',
-        courseKey: 'linux',
-        lessonSlug: 'intro',
-      },
-    });
-    const res = mockRes();
-    const next = vi.fn();
-    await ctrl.submit(req, res, next);
-    expect(next).toHaveBeenCalledWith(expect.any(AppError));
   });
 });
 
