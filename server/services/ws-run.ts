@@ -7,8 +7,11 @@ import { handleInteractiveRun } from './interactive-execution.service.js';
 
 // Reject oversized frames before they are buffered/parsed.
 const MAX_PAYLOAD_BYTES = 128 * 1024;
-// Limits are keyed by user id; the app runs as a single process.
-const MAX_ACTIVE_RUNS_PER_USER = 5;
+// Limits are keyed per identity: `user:<id>` for authenticated users,
+// `anon:<ip>` for guests. Running code is open to guests (only progress needs
+// an account); the per-key limits keep guests from spawning docker unbounded.
+// The app runs as a single process.
+const MAX_ACTIVE_RUNS_PER_KEY = 5;
 const MAX_RUNS_PER_WINDOW = 60;
 const RATE_WINDOW_MS = 60_000;
 
@@ -33,31 +36,43 @@ export function verifyToken(token: string | null): number | null {
   }
 }
 
-const recentRuns = new Map<number, number[]>();
-const activeRuns = new Map<number, number>();
+// Rate-limit identity: authenticated users by id, guests by client IP.
+// NOTE: behind a proxy this trusts X-Forwarded-For; nginx must set a
+// trustworthy client-IP header (otherwise guests share one bucket).
+export function clientKey(req: IncomingMessage): string {
+  const userId = verifyToken(parseTokenCookie(req.headers.cookie));
+  if (userId !== null) return `user:${userId}`;
+  const xff = req.headers['x-forwarded-for'];
+  const ip =
+    (typeof xff === 'string' && xff.length > 0 ? xff.split(',')[0].trim() : undefined) ??
+    req.socket?.remoteAddress ??
+    'unknown';
+  return `anon:${ip}`;
+}
 
-export function tryStartRun(userId: number, now = Date.now()): boolean {
-  const window = (recentRuns.get(userId) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  recentRuns.set(userId, window);
+const recentRuns = new Map<string, number[]>();
+const activeRuns = new Map<string, number>();
+
+export function tryStartRun(key: string, now = Date.now()): boolean {
+  const window = (recentRuns.get(key) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  recentRuns.set(key, window);
   if (window.length >= MAX_RUNS_PER_WINDOW) return false;
-  if ((activeRuns.get(userId) ?? 0) >= MAX_ACTIVE_RUNS_PER_USER) return false;
+  if ((activeRuns.get(key) ?? 0) >= MAX_ACTIVE_RUNS_PER_KEY) return false;
   window.push(now);
-  activeRuns.set(userId, (activeRuns.get(userId) ?? 0) + 1);
+  activeRuns.set(key, (activeRuns.get(key) ?? 0) + 1);
   return true;
 }
 
-export function endRun(userId: number): void {
-  const remaining = (activeRuns.get(userId) ?? 0) - 1;
-  if (remaining <= 0) activeRuns.delete(userId);
-  else activeRuns.set(userId, remaining);
+export function endRun(key: string): void {
+  const remaining = (activeRuns.get(key) ?? 0) - 1;
+  if (remaining <= 0) activeRuns.delete(key);
+  else activeRuns.set(key, remaining);
 }
 
 export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
-  const userId = verifyToken(parseTokenCookie(req.headers.cookie));
-  if (userId === null) {
-    ws.close(4401, 'Unauthorized');
-    return;
-  }
+  // Running code is open to guests; we rate-limit per identity instead of
+  // requiring an account (only saving progress needs one).
+  const key = clientKey(req);
 
   let started = false;
   let counted = false;
@@ -73,7 +88,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
     if (msg.type !== 'run' || typeof msg.code !== 'string' || typeof msg.language !== 'string') {
       return;
     }
-    if (!tryStartRun(userId)) {
+    if (!tryStartRun(key)) {
       ws.send(JSON.stringify({ type: 'stderr', data: 'Too many runs — please wait a moment.\n' }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       ws.close(4429, 'Rate limit');
@@ -92,7 +107,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
 
   ws.on('close', () => {
     if (counted) {
-      endRun(userId);
+      endRun(key);
       counted = false;
     }
   });

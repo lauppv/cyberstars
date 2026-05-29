@@ -15,7 +15,7 @@ vi.mock('./interactive-execution.service.js', () => ({
   handleInteractiveRun: (...args: unknown[]) => mockRun(...args),
 }));
 
-const { parseTokenCookie, verifyToken, tryStartRun, endRun, handleConnection } =
+const { parseTokenCookie, verifyToken, clientKey, tryStartRun, endRun, handleConnection } =
   await import('./ws-run.js');
 
 class FakeWs extends EventEmitter {
@@ -58,31 +58,56 @@ describe('verifyToken', () => {
   });
 });
 
+describe('clientKey', () => {
+  it('keys authenticated users by id', () => {
+    expect(clientKey(fakeReq(`token=${token(42)}`))).toBe('user:42');
+  });
+
+  it('keys guests by the first forwarded IP', () => {
+    const req = {
+      headers: { 'x-forwarded-for': '9.9.9.9, 10.0.0.1' },
+      socket: {},
+    } as unknown as IncomingMessage;
+    expect(clientKey(req)).toBe('anon:9.9.9.9');
+  });
+
+  it('falls back to the socket address for guests', () => {
+    const req = {
+      headers: {},
+      socket: { remoteAddress: '5.5.5.5' },
+    } as unknown as IncomingMessage;
+    expect(clientKey(req)).toBe('anon:5.5.5.5');
+  });
+});
+
 describe('tryStartRun / endRun', () => {
-  it('blocks once active runs exceed the per-user cap', () => {
-    const uid = 1001;
-    for (let i = 0; i < 5; i++) expect(tryStartRun(uid)).toBe(true);
-    expect(tryStartRun(uid)).toBe(false);
-    endRun(uid);
-    expect(tryStartRun(uid)).toBe(true);
+  it('blocks once active runs exceed the per-key cap', () => {
+    const key = 'user:1001';
+    for (let i = 0; i < 5; i++) expect(tryStartRun(key)).toBe(true);
+    expect(tryStartRun(key)).toBe(false);
+    endRun(key);
+    expect(tryStartRun(key)).toBe(true);
   });
 
   it('blocks once the per-window run count is exceeded', () => {
-    const uid = 1002;
+    const key = 'anon:1.2.3.4';
     const now = 5_000_000;
     for (let i = 0; i < 60; i++) {
-      expect(tryStartRun(uid, now)).toBe(true);
-      endRun(uid);
+      expect(tryStartRun(key, now)).toBe(true);
+      endRun(key);
     }
-    expect(tryStartRun(uid, now)).toBe(false);
+    expect(tryStartRun(key, now)).toBe(false);
   });
 });
 
 describe('handleConnection', () => {
-  it('closes unauthenticated connections with 4401', () => {
+  it('lets guests (no account) run code', () => {
     const ws = new FakeWs();
     handleConnection(ws as unknown as WebSocket, fakeReq());
-    expect(ws.close).toHaveBeenCalledWith(4401, 'Unauthorized');
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python');
+    expect(ws.close).not.toHaveBeenCalled();
+    ws.emit('close');
   });
 
   it('runs code on a valid run message', () => {
@@ -102,9 +127,9 @@ describe('handleConnection', () => {
     ws.emit('close');
   });
 
-  it('rejects runs when the user is rate limited', () => {
+  it('rejects runs when the identity is rate limited', () => {
     const uid = 2003;
-    for (let i = 0; i < 5; i++) tryStartRun(uid);
+    for (let i = 0; i < 5; i++) tryStartRun(`user:${uid}`);
     const ws = new FakeWs();
     handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(uid)}`));
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
