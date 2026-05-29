@@ -10,7 +10,6 @@ interface AIArticle {
   author: string;
   authorEm?: string;
   readTime: string;
-  xp: number;
 }
 
 const CLAUDE_GRAD = 'linear-gradient(135deg,#2d1a4f,#6C5CE7)';
@@ -39,7 +38,6 @@ Dario Amodei, Anthropic's CEO, described the goal: "We want to build models that
 The release proved that the AI race wasn't a two-horse competition. Anthropic, with its focus on safety-first development, had built something genuinely world-class.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -61,7 +59,6 @@ The long context also enabled new workflows in legal document review, academic r
 As one developer put it: "It's like having a colleague who has genuinely read everything."`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -83,7 +80,6 @@ This approach scales better than human feedback alone. You can update the consti
 Critics worried it might make models overly cautious. But in practice, Constitutional AI produced models that were both more capable and more aligned — a rare combination that suggested the safety-versus-capability tradeoff might be a false dichotomy.`,
     author: 'AI Desk',
     readTime: '6 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -105,7 +101,6 @@ Power users discovered they could chain complex operations: "Read this legacy co
 The tool represented a philosophical shift in how we think about programming. Not AI replacing developers, but AI amplifying them — handling the tedious parts so humans could focus on the creative decisions.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -129,7 +124,6 @@ As Dario Amodei explained: "If you're going to build powerful AI systems, you'd 
 The market agreed. By 2025, Claude was competitive with or ahead of rivals on most benchmarks while maintaining a reputation for being more careful and more honest.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -151,7 +145,6 @@ What made this particularly exciting was that it mirrored how expert humans solv
 The philosophical implication was profound: AI models weren't just pattern-matching anymore. They were developing something that looked increasingly like genuine reasoning — the ability to solve novel problems they'd never seen in training data.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -173,7 +166,6 @@ But the framework's real value was in making the conversation concrete. Instead 
 By 2025, several other AI companies had adopted similar frameworks. The RSP became less a competitive disadvantage and more an industry standard — exactly what Anthropic had hoped for.`,
     author: 'AI Desk',
     readTime: '6 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -197,7 +189,6 @@ Anthropic achieved this through a combination of training techniques: Constituti
 The result: a model that felt less like a know-it-all and more like an honest expert — someone who could say "I don't know" without feeling threatened.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -221,7 +212,6 @@ The key was Claude's willingness to critique as well as create. "This paragraph 
 As one novelist put it: "It doesn't write my books. It makes me a better writer."`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -245,7 +235,6 @@ Crucially, Claude was honest about its limitations. "I can help you understand t
 The educational impact was particularly strong in developing countries where qualified tutors were scarce and expensive.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -269,7 +258,6 @@ The open-source nature of MCP was deliberate. Anthropic wanted it to become an i
 By 2025, thousands of MCP servers existed for everything from Slack to Kubernetes to financial APIs.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -295,7 +283,6 @@ The essay's power came from its honesty about prerequisites. These benefits woul
 It was a compelling articulation of why safety-first AI development wasn't just ethical — it was strategically necessary for the positive future to happen.`,
     author: 'AI Desk',
     readTime: '6 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -317,7 +304,6 @@ Developers appreciated that Sonnet didn't just trade quality for speed. It maint
 The lesson for the industry was clear: the best model isn't always the biggest one. It's the one that fits your use case, your budget, and your latency requirements. And for most of the world, that's Sonnet.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -339,7 +325,6 @@ The cultural awareness goes deeper than language. Claude understands that direct
 For global companies, this meant they could deploy a single AI system that served all their markets without separate models for each language — a dramatic simplification of their AI infrastructure.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -361,7 +346,6 @@ Educators used it to create custom learning tools. Designers used it to prototyp
 The implication was profound: the barrier between "having an idea" and "having a working prototype" collapsed to near zero. Anyone who could describe what they wanted could get a functional version in seconds.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -385,7 +369,6 @@ Users initially found this jarring if they were used to more people-pleasing mod
 In a world of algorithms optimized for engagement and echo chambers, a mainstream AI product committed to honesty felt almost radical.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'claude',
@@ -409,7 +392,6 @@ The technical challenge was significant: the model needed to understand screensh
 But the result felt magical: describe what you want done, and watch as the cursor moves, windows open, and tasks complete — like having a ghost use your computer for you.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -431,7 +413,6 @@ What made Amodei's prediction unusual was that it came with an action plan, not 
 The AI community was split. Some found the timeline too aggressive. Others thought it was too conservative. But most agreed with the underlying message: whether AGI comes in 2027 or 2032, the time to prepare is now.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -453,7 +434,6 @@ The model's honesty was particularly valuable here. In science, being wrong is e
 Researchers reported that their biggest productivity gain wasn't in any single task, but in the connections Claude helped them see between disparate fields. The cross-pollination of ideas — the thing humans are worst at because we can't read enough — became AI's superpower.`,
     author: 'AI Desk',
     readTime: '6 min',
-    xp: 25,
   },
   {
     cat: 'claude',
@@ -477,7 +457,6 @@ The plan's success demonstrated something important about the AI market: for kno
 By the end of Q1 2025, Max subscribers reported an average productivity increase of 30-40% in their primary work activities.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
 
   // ─── GEMINI (20) ───
@@ -501,7 +480,6 @@ For Google, Gemini represented years of work combining DeepMind's research prowe
 The message to the industry was clear: the AI race wasn't just about OpenAI anymore. Google had the talent, the data, the compute, and now the model to compete at the frontier.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -525,7 +503,6 @@ Google achieved this through a novel architecture they called "Mixture of Expert
 For enterprise customers, million-token context meant they could ask questions about their entire documentation corpus, analyze full financial reports, or review complete legal contracts without any preprocessing or chunking.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -549,7 +526,6 @@ The impact on web traffic was hotly debated. Some sites saw less referral traffi
 What was undeniable was the user experience improvement: for complex queries that previously required clicking through 5-10 results and synthesizing information manually, Gemini did the work in seconds.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -573,7 +549,6 @@ The technical requirements were staggering: real-time video processing, multimod
 For accessibility, the implications were profound: visually impaired users could point their phone at anything and get a detailed description instantly.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'gemini',
@@ -597,7 +572,6 @@ Demis Hassabis described the strategy: "Pure research is necessary but not suffi
 The merger signaled that the era of AI as a pure research endeavor was over. The frontier was now at the intersection of research, engineering, and products.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -621,7 +595,6 @@ The model proved an important market insight: most AI tasks don't require genius
 Flash became the most-used Gemini model by request volume — not because it was the best, but because it was the most useful.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -645,7 +618,6 @@ For the software engineering profession, the implication was significant: if AI 
 The research team was careful to frame it as a tool, not a replacement: "The goal isn't to replace programmers. It's to handle the algorithmic complexity so humans can focus on design and architecture."`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'gemini',
@@ -669,7 +641,6 @@ The result felt like science fiction made mundane: your phone actually understoo
 For Google, it represented the ultimate distribution advantage: over 3 billion Android devices, each running Gemini, each becoming more useful every day.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -693,7 +664,6 @@ Hassabis envisions Gemini's successors doing the same for materials science, mat
 The implication for young scientists entering the field today: the most important skill isn't memorizing facts or running standard experiments. It's learning to collaborate with AI — to ask the right questions and validate the answers.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'gemini',
@@ -717,7 +687,6 @@ It represented a new paradigm for consuming information: instead of choosing bet
 By 2025, users were generating millions of audio overviews per month, covering everything from academic papers to company quarterly reports.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -741,7 +710,6 @@ The broader implication: biology was becoming a computational science. Instead o
 Demis Hassabis called it "the beginning of the end of the trial-and-error era in drug discovery."`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'gemini',
@@ -765,7 +733,6 @@ Google integrated Veo 2 into YouTube's creation tools, allowing creators to gene
 The ethical debates were predictable and necessary: deepfakes, misinformation, copyright concerns. Google responded with invisible watermarking (SynthID) embedded in every generated frame.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -789,7 +756,6 @@ The chips also optimize inference — serving the trained model to users. Lower 
 Jeff Dean, Google's chief scientist, called it "the single biggest strategic advantage in AI infrastructure."`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -813,7 +779,6 @@ The most powerful feature was cross-app intelligence. Gemini could draft an emai
 For enterprises, this meant faster decision-making, fewer miscommunications, and less time spent on formatting and formatting rather than thinking. The boring administrative overhead of knowledge work — summarizing, formatting, cross-referencing — was largely eliminated.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -841,7 +806,6 @@ Critics argued Google was sometimes too cautious — refusing to generate conten
 The approach influenced the industry: by 2025, publishing safety evaluations alongside model releases became standard practice across major AI labs.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -865,7 +829,6 @@ This kind of visual reasoning requires more than pattern matching. It requires u
 For education, the implications are enormous: students can photograph textbook pages, worksheets, or lab setups and get instant explanations tailored to their level. The visual world becomes as queryable as text.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -889,7 +852,6 @@ Dean envisions Gemini's successors designing new battery chemistries by simulati
 His timeline: major AI-driven climate breakthroughs within 3-5 years, with transformative impact on global emissions within a decade.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'gemini',
@@ -913,7 +875,6 @@ Google was careful about this emotional dimension. They added clear disclosures 
 But the technology itself was undeniable: for the first time, talking to AI felt as natural as talking to a person.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -937,7 +898,6 @@ For young researchers, Google DeepMind represents both an opportunity and a chal
 As one researcher described it: "Every Monday morning meeting feels like a conference keynote. You have to level up just to keep up."`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'gemini',
@@ -961,7 +921,6 @@ For accessibility, it meant anyone could create professional-quality visuals for
 Google embedded SynthID watermarks in every generated image — invisible to the eye but detectable by algorithms — ensuring responsible deployment as the quality became indistinguishable from reality.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
 
   // ─── CHATGPT (20) ───
@@ -987,7 +946,6 @@ The impact rippled through every industry. Google declared a "code red." Microso
 In retrospect, ChatGPT's launch was less a product release and more a cultural inflection point — the moment "AI" stopped being science fiction and became something everyone could touch.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'chatgpt',
@@ -1011,7 +969,6 @@ The model also introduced multimodal capabilities — it could understand images
 GPT-4 didn't just improve on GPT-3.5 — it qualitatively changed what people believed AI could do. The question shifted from "Can AI be useful?" to "What can't AI do?"`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'chatgpt',
@@ -1035,7 +992,6 @@ The revenue growth attracted more investment. OpenAI raised at increasingly mass
 For the AI industry, the message was clear: there was a real, large, growing market for AI products. Not someday in the future, but right now.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1059,7 +1015,6 @@ The real-time voice capability was particularly transformative for accessibility
 GPT-4o was also free to use (with rate limits), dramatically expanding access to AI capabilities. The premium tiers offered more usage and priority access, but the base experience was available to everyone.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1083,7 +1038,6 @@ For users, it meant finding AI assistants perfectly tailored to their specific n
 The platform created an ecosystem reminiscent of the early App Store — millions of creators, most producing modest tools, but some building genuinely transformative applications that attracted millions of users.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1107,7 +1061,6 @@ For professional designers, it became a brainstorming tool: rapidly exploring co
 The integration with ChatGPT meant the AI understood context from your conversation, making iterations natural and efficient.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1131,7 +1084,6 @@ The chain-of-thought reasoning was visible to users, showing how the model broke
 o1 pointed toward a future where AI capability scaled not just with training data and parameters, but with the amount of thought applied to each individual problem.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'chatgpt',
@@ -1158,7 +1110,6 @@ Critics worried about dependency. Supporters argued it was no different from "de
 What was undeniable: we had crossed a threshold. Using AI wasn't novel or optional anymore. It was normal.`,
     author: 'AI Desk',
     readTime: '4 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1182,7 +1133,6 @@ Independent filmmakers gained superpowers: the creative constraints of budget ev
 The response from creative unions was predictable and justified: this technology, if unchecked, could displace thousands of production workers. The industry began negotiating AI clauses in contracts, establishing new norms for a world where creation and generation were converging.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 25,
   },
   {
     cat: 'chatgpt',
@@ -1206,7 +1156,6 @@ The financial structure was unusual: Microsoft invested in exchange for a signif
 The partnership proved that in AI, distribution is as important as capability. Having the best model matters less if you can't get it into people's hands. Microsoft could do that better than anyone.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1230,7 +1179,6 @@ Senior developers benefited differently: less time on implementation, more time 
 The statistic sparked debates about code quality, intellectual property, and the future of the profession. But the productivity gains were undeniable, and adoption kept accelerating.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1254,7 +1202,6 @@ The crucial word was "potentially." Altman argued strenuously that the outcome d
 The AI community was divided. Some found the timeline reckless. Others thought it was already conservative. What was undeniable: the CEO of the world's leading AI company was telling everyone to take these timelines seriously and prepare accordingly.`,
     author: 'AI Desk',
     readTime: '6 min',
-    xp: 25,
   },
   {
     cat: 'chatgpt',
@@ -1283,7 +1230,6 @@ While plugins eventually evolved into different forms (GPT Actions, tool use), t
 This vision of AI as an agent — not just an oracle — became the dominant paradigm for how people thought about AI products going forward.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1307,7 +1253,6 @@ The industry took notice. Other labs publicly committed to specific safety bench
 In retrospect, the controversy probably improved industry-wide safety practices by making the trade-off visible and forcing public commitments. The worst outcome — silent deprioritization of safety — became politically untenable.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1335,7 +1280,6 @@ The schools that adapted fastest saw better outcomes: students who learned to co
 The schools that tried to ban AI found themselves fighting a losing battle while their students fell behind peers who were learning to work alongside it.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1364,7 +1308,6 @@ The AI safety community watched with a mixture of excitement and concern. More c
 Whatever GPT-5 turns out to be, one thing seems certain: it will once again redefine what people think is possible with AI.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1391,7 +1334,6 @@ The enterprise tier ($60/user/month for Teams, custom pricing for Enterprise) pr
 The economic impact was significant: companies reported 20-40% productivity improvements in knowledge work roles. Not from replacing workers, but from amplifying them — allowing each person to do more complex, higher-value work.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1419,7 +1361,6 @@ The technology behind it was impressive: real-time speech recognition, understan
 Critics raised concerns about parasocial relationships — people forming emotional bonds with an AI that couldn't reciprocate. OpenAI added periodic reminders that users were talking to an AI, not a person. But the utility was undeniable: millions of people had access to a patient, knowledgeable, always-available conversational partner.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1448,7 +1389,6 @@ The EU AI Act, passed in 2024, became the first comprehensive AI regulation. The
 The landscape was evolving rapidly. What seemed clear was that the era of unregulated AI development was ending. The question was whether regulation would be thoughtful enough to preserve innovation while preventing harm.`,
     author: 'AI Desk',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'chatgpt',
@@ -1474,6 +1414,5 @@ But Altman has been equally insistent about the second part of his argument: thi
 Whether these predictions prove correct, and whether the proposed distribution mechanisms are adequate, remains to be seen. But the scale of the prediction — AI as the most transformative economic force in human history — seems increasingly hard to dismiss given the trajectory of the past three years.`,
     author: 'AI Desk',
     readTime: '6 min',
-    xp: 25,
   },
 ];

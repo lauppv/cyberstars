@@ -11,7 +11,7 @@ const RULES = [
   },
   {
     title: 'No exploiting bugs',
-    desc: 'If you find a bug or exploit, report it via Support instead of abusing it for XP or other gains.',
+    desc: 'If you find a bug or exploit, report it via Support instead of abusing it for badges or other gains.',
   },
   {
     title: 'English',

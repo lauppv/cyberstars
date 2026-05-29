@@ -11,7 +11,6 @@ import { Topbar } from '../components/layout/Topbar';
 import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
-import { TestResults } from '../components/code/TestResults';
 import { RunButton } from '../components/code/RunButton';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
@@ -43,11 +42,9 @@ export function LessonPage() {
   const { isLoggedIn } = useAuth();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
-  const isAlgo = category.startsWith('algo-');
 
   const { title, content, codeTemplate, isLoading } = useLesson(category, lesson);
-  const { output, isRunning, isSubmitting, submitResult, execute, sendInput, submit } =
-    useCodeExecution();
+  const { output, isRunning, execute, sendInput } = useCodeExecution();
   const terminal = useTerminalSession(isTerminal ? category : '', isTerminal ? lesson : '');
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
@@ -60,7 +57,7 @@ export function LessonPage() {
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
 
-  const justSubmittedRef = useRef(false);
+  const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
@@ -74,7 +71,7 @@ export function LessonPage() {
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
-    justSubmittedRef.current = false;
+    justMarkedRef.current = false;
     setTimeout(() => setShowToast(false), 0);
   }, [lesson]);
 
@@ -85,8 +82,8 @@ export function LessonPage() {
   }, [isLoggedIn, category, lesson]);
 
   useEffect(() => {
-    if (lessonCompleted && justSubmittedRef.current) {
-      justSubmittedRef.current = false;
+    if (lessonCompleted && justMarkedRef.current) {
+      justMarkedRef.current = false;
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
       setToastData({
         icon: isLast ? '🏆' : '✅',
@@ -106,18 +103,11 @@ export function LessonPage() {
     execute(userCode, category);
   }, [execute, userCode, category]);
 
-  const handleSubmit = useCallback(async () => {
-    justSubmittedRef.current = true;
-    await submit(userCode, category, category, lesson);
-    loadProgress();
-    refreshGamification();
-  }, [submit, userCode, category, lesson, loadProgress, refreshGamification]);
-
   const handleMarkComplete = useCallback(async () => {
     if (!isLoggedIn || lessonCompleted) return;
     setIsMarking(true);
     try {
-      justSubmittedRef.current = true;
+      justMarkedRef.current = true;
       await progressService.markLessonComplete(category, lesson);
       loadProgress();
       refreshGamification();
@@ -235,18 +225,11 @@ export function LessonPage() {
               cwd={terminal.cwd}
               isReady={terminal.isReady}
               isExecuting={terminal.isExecuting}
-              isSubmitting={terminal.isSubmitting}
-              submitResult={terminal.submitResult}
               onExecute={terminal.execute}
-              onSubmit={async () => {
-                justSubmittedRef.current = true;
-                const result = await terminal.submit();
-                if (result?.allPassed) {
-                  loadProgress();
-                  refreshGamification();
-                }
-              }}
               onReset={terminal.reset}
+              lessonCompleted={lessonCompleted}
+              isMarking={isMarking}
+              onMarkComplete={isLoggedIn ? handleMarkComplete : undefined}
             />
           </div>
         ) : (
@@ -260,7 +243,7 @@ export function LessonPage() {
                 {courseMeta(category).langLabel}
               </div>
               <div className="flex items-center gap-2">
-                {!isAlgo && isLoggedIn && (
+                {isLoggedIn && (
                   <button
                     onClick={handleMarkComplete}
                     disabled={lessonCompleted || isMarking}
@@ -294,33 +277,14 @@ export function LessonPage() {
             </div>
 
             <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
-              {isAlgo && (
+              {isLoggedIn && (
                 <div className="flex gap-2 mb-3 items-center flex-wrap">
                   <button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className={`px-4 py-1.5 rounded-[var(--radius-sm)] text-[13px] font-semibold transition cursor-pointer disabled:opacity-50 ${
-                      submitResult?.allPassed || (lessonCompleted && !submitResult)
-                        ? 'bg-[var(--success)]/20 border border-[var(--success)]/40 text-[var(--success)]'
-                        : 'bg-[var(--accent)] text-white hover:brightness-110'
-                    }`}
+                    onClick={handleSave}
+                    className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
                   >
-                    {isSubmitting
-                      ? 'Testing...'
-                      : submitResult?.allPassed
-                        ? '✓ Submitted'
-                        : lessonCompleted && !submitResult
-                          ? '✓ Submitted'
-                          : 'Submit'}
+                    💾 Save
                   </button>
-                  {isLoggedIn && (
-                    <button
-                      onClick={handleSave}
-                      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-                    >
-                      💾 Save
-                    </button>
-                  )}
                   {showSaveToast && (
                     <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
                       Code saved!
@@ -329,29 +293,7 @@ export function LessonPage() {
                 </div>
               )}
 
-              {!isAlgo && (
-                <div className="flex gap-2 mb-3 items-center flex-wrap">
-                  {isLoggedIn && (
-                    <button
-                      onClick={handleSave}
-                      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-                    >
-                      💾 Save
-                    </button>
-                  )}
-                  {showSaveToast && (
-                    <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                      Code saved!
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {isAlgo && submitResult ? (
-                <TestResults result={submitResult} />
-              ) : (
-                <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
-              )}
+              <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
             </div>
           </div>
         )}

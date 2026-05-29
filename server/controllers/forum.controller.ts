@@ -339,13 +339,14 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
     if (post.thread.authorId !== userId)
       throw new AppError(403, 'Only the thread author can mark a solution');
 
-    await prisma.forumPost.updateMany({
-      where: { threadId: post.threadId },
-      data: { solution: false },
-    });
-
-    await prisma.forumPost.update({ where: { id: postId }, data: { solution: true } });
-    await prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: true } });
+    await prisma.$transaction([
+      prisma.forumPost.updateMany({
+        where: { threadId: post.threadId },
+        data: { solution: false },
+      }),
+      prisma.forumPost.update({ where: { id: postId }, data: { solution: true } }),
+      prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: true } }),
+    ]);
 
     res.json({ ok: true });
   } catch (err) {

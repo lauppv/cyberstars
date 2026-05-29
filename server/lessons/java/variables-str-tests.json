@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Prints Shrek, Fiona, Donkey on three lines",
-    "input": "",
-    "expected": "Shrek\nFiona\nDonkey",
-    "mode": "exact"
-  }
-]

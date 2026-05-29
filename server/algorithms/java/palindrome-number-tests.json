@@ -1,7 +1,0 @@
-[
-  { "name": "palindrome 121", "input": "121", "expected": "true", "mode": "exact" },
-  { "name": "negative number", "input": "-121", "expected": "false", "mode": "exact" },
-  { "name": "not palindrome 10", "input": "10", "expected": "false", "mode": "exact" },
-  { "name": "single digit", "input": "7", "expected": "true", "mode": "exact" },
-  { "name": "zero", "input": "0", "expected": "true", "mode": "exact" }
-]

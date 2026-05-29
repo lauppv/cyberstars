@@ -1,8 +1,7 @@
 import { Router, type Request, type Response } from 'express';
 import rateLimit from 'express-rate-limit';
-import { optionalAuth } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
-import { runCodeSchema, submitCodeSchema } from '../schemas/code.schema.js';
+import { runCodeSchema } from '../schemas/code.schema.js';
 import * as codeController from '../controllers/code.controller.js';
 
 const codeLimiter = rateLimit({
@@ -22,12 +21,5 @@ const codeLimiter = rateLimit({
 const router = Router();
 
 router.post('/', codeLimiter, validateBody(runCodeSchema), codeController.executeCode);
-router.post(
-  '/submit',
-  codeLimiter,
-  optionalAuth,
-  validateBody(submitCodeSchema),
-  codeController.submitCode,
-);
 
 export default router;

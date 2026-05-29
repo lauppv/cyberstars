@@ -1,21 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 
-vi.mock('../services/codeExecutionService', () => ({
-  submitCode: vi.fn(),
-}));
-
-vi.mock('../services/apiClient', () => ({
-  ApiClientError: class ApiClientError extends Error {
-    status: number;
-    constructor(status: number, message: string) {
-      super(message);
-      this.status = status;
-      this.name = 'ApiClientError';
-    }
-  },
-}));
-
 let wsInstances: MockWebSocket[] = [];
 
 class MockWebSocket {
@@ -48,9 +33,6 @@ class MockWebSocket {
 vi.stubGlobal('WebSocket', MockWebSocket);
 
 const { useCodeExecution } = await import('./useCodeExecution');
-const { submitCode } = await import('../services/codeExecutionService');
-const { ApiClientError } = await import('../services/apiClient');
-const mockSubmitCode = vi.mocked(submitCode);
 
 beforeEach(() => {
   wsInstances = [];
@@ -62,7 +44,6 @@ describe('useCodeExecution', () => {
     const { result } = renderHook(() => useCodeExecution());
     expect(result.current.output).toBe('');
     expect(result.current.isRunning).toBe(false);
-    expect(result.current.isSubmitting).toBe(false);
   });
 
   it('execute opens WebSocket and streams stdout', async () => {
@@ -125,40 +106,6 @@ describe('useCodeExecution', () => {
     expect(ws.sent).toContainEqual(JSON.stringify({ type: 'stdin', data: '42\n' }));
   });
 
-  it('submit sets submitResult on success', async () => {
-    mockSubmitCode.mockResolvedValue({ passed: 3, total: 3, allPassed: true, results: [] });
-    const { result } = renderHook(() => useCodeExecution());
-
-    await act(async () => {
-      await result.current.submit('code', 'python', 'python', 'booleans');
-    });
-
-    expect(result.current.submitResult?.allPassed).toBe(true);
-    expect(result.current.output).toContain('All tests passed');
-  });
-
-  it('submit shows partial results', async () => {
-    mockSubmitCode.mockResolvedValue({ passed: 1, total: 3, allPassed: false, results: [] });
-    const { result } = renderHook(() => useCodeExecution());
-
-    await act(async () => {
-      await result.current.submit('code', 'python', 'python', 'booleans');
-    });
-
-    expect(result.current.output).toContain('1/3');
-  });
-
-  it('submit shows error on ApiClientError', async () => {
-    mockSubmitCode.mockRejectedValue(new ApiClientError(429, 'Too many requests.'));
-    const { result } = renderHook(() => useCodeExecution());
-
-    await act(async () => {
-      await result.current.submit('code', 'python', 'python', 'booleans');
-    });
-
-    expect(result.current.output).toBe('Too many requests.');
-  });
-
   it('clearOutput resets state', async () => {
     const { result } = renderHook(() => useCodeExecution());
 
@@ -179,7 +126,6 @@ describe('useCodeExecution', () => {
       result.current.clearOutput();
     });
     expect(result.current.output).toBe('');
-    expect(result.current.submitResult).toBeNull();
   });
 
   it('execute closes a previous WebSocket before opening a new one', async () => {
@@ -274,17 +220,6 @@ describe('useCodeExecution', () => {
     expect(closeSpy).toHaveBeenCalled();
   });
 
-  it('submit shows generic error message on non-ApiClientError', async () => {
-    mockSubmitCode.mockRejectedValue(new Error('network down'));
-    const { result } = renderHook(() => useCodeExecution());
-
-    await act(async () => {
-      await result.current.submit('code', 'python', 'python', 'booleans');
-    });
-
-    expect(result.current.output).toBe('Error connecting to server.');
-  });
-
   it('output is capped and truncated when it exceeds OUTPUT_DISPLAY_MAX', async () => {
     const { result } = renderHook(() => useCodeExecution());
 
@@ -316,7 +251,6 @@ describe('useCodeExecution', () => {
     });
 
     const ws = wsInstances[0];
-    // No newlines in the payload — appendCapped falls through to the "no \n" branch.
     const big = 'x'.repeat(256 * 1024 + 100);
     act(() => {
       ws.simulateMessage({ type: 'stdout', data: big });
@@ -336,14 +270,12 @@ describe('useCodeExecution', () => {
     });
 
     const ws = wsInstances[0];
-    // Newlines in the cap window → take the nlIdx >= 0 branch in appendCapped.
     const chunk = 'a'.repeat(100_000) + '\n' + 'b'.repeat(200_000);
     act(() => {
       ws.simulateMessage({ type: 'stdout', data: chunk });
     });
 
     expect(result.current.output.startsWith('... (output truncated) ...')).toBe(true);
-    // The leading 'a' chunk before the newline should be dropped.
     expect(result.current.output).not.toContain('aaaaaaaaaaaaaaaaaaa');
   });
 
@@ -378,7 +310,6 @@ describe('useCodeExecution', () => {
     expect(wsInstances.length).toBeGreaterThan(0);
 
     vi.unstubAllGlobals();
-    // Re-stub WebSocket since unstubAllGlobals also removed it
     vi.stubGlobal('WebSocket', MockWebSocket);
   });
 });

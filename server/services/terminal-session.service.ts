@@ -14,6 +14,7 @@ const IDLE_TTL = 15 * 60 * 1000;
 const EXEC_TIMEOUT = 5;
 
 interface Session {
+  userId: number;
   containerId: string;
   cwd: string;
   history: string[];
@@ -65,6 +66,7 @@ export function loadSetup(courseKey: string, lessonSlug: string): TerminalSetup 
 export async function createSession(
   courseKey: string,
   lessonSlug: string,
+  userId: number,
 ): Promise<TerminalSessionInfo> {
   const setup = loadSetup(courseKey, lessonSlug);
   const cwd = setup?.cwd ?? '/home/student';
@@ -107,6 +109,7 @@ export async function createSession(
 
   const sessionId = crypto.randomUUID();
   sessions.set(sessionId, {
+    userId,
     containerId,
     cwd,
     history: [],
@@ -119,9 +122,15 @@ export async function createSession(
   return { sessionId, cwd, intro: setup?.intro };
 }
 
-export async function execCommand(sessionId: string, command: string): Promise<TerminalExecResult> {
+export async function execCommand(
+  sessionId: string,
+  command: string,
+  userId: number,
+): Promise<TerminalExecResult> {
   const session = sessions.get(sessionId);
-  if (!session) throw new Error('Session not found');
+  // A mismatched owner is reported as "not found" so a leaked sessionId reveals
+  // nothing about other users' sessions.
+  if (!session || session.userId !== userId) throw new Error('Session not found');
 
   if (command.length > 2000) throw new Error('Command too long');
   if (executing.has(sessionId)) throw new Error('A command is already running in this session');
@@ -177,9 +186,12 @@ export function getSession(sessionId: string): Session | undefined {
   return sessions.get(sessionId);
 }
 
-export async function destroySession(sessionId: string): Promise<void> {
+export async function destroySession(sessionId: string, actorId?: number): Promise<void> {
   const session = sessions.get(sessionId);
   if (!session) return;
+  // Internal callers (GC, shutdown) pass no actorId; a user may only destroy
+  // their own session.
+  if (actorId !== undefined && session.userId !== actorId) return;
   sessions.delete(sessionId);
   try {
     await docker(['rm', '-f', session.containerId], 5000);

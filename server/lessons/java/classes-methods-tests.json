@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Output is 3 after three increments",
-    "input": "",
-    "expected": "3",
-    "mode": "exact"
-  }
-]

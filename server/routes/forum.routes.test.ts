@@ -4,11 +4,11 @@ import type { Request, Response } from 'express';
 type Limiter = (req: Request, res: Response, next: () => void) => void;
 type RateLimitOpts = { limit?: number; max?: number };
 
-const captured: { opts?: RateLimitOpts } = {};
+const captured: { opts: RateLimitOpts[] } = { opts: [] };
 
 vi.mock('express-rate-limit', () => ({
   default: (opts: RateLimitOpts): Limiter => {
-    captured.opts = opts;
+    captured.opts.push(opts);
     return (_req: Request, _res: Response, next: () => void) => next();
   },
 }));
@@ -37,22 +37,22 @@ vi.mock('../controllers/forum.controller.js', () => ({
 }));
 
 beforeEach(() => {
-  captured.opts = undefined;
+  captured.opts = [];
   vi.resetModules();
 });
 
 describe('forum.routes rate limiter', () => {
-  it('uses a relaxed limit (10_000) under NODE_ENV=test', async () => {
+  it('relaxes both write and read limiters under NODE_ENV=test', async () => {
     vi.stubEnv('NODE_ENV', 'test');
     await import('./forum.routes.js');
-    expect(captured.opts?.limit).toBe(10_000);
+    expect(captured.opts.map((o) => o.limit)).toEqual([10_000, 100_000]);
     vi.unstubAllEnvs();
   });
 
-  it('uses the production limit (10) outside test', async () => {
+  it('uses production limits outside test', async () => {
     vi.stubEnv('NODE_ENV', 'production');
     await import('./forum.routes.js');
-    expect(captured.opts?.limit).toBe(10);
+    expect(captured.opts.map((o) => o.limit)).toEqual([10, 120]);
     vi.unstubAllEnvs();
   });
 });

@@ -131,6 +131,20 @@ describe('updateTicketStatus', () => {
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
   });
 
+  it('returns 400 for non-numeric ticket id', async () => {
+    const next = vi.fn();
+    await updateTicketStatus(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { id: 'abc' } as Record<string, string>,
+        body: { status: 'CLOSED' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
   it('allows owner to close their ticket', async () => {
     mockSupportService.findById.mockResolvedValue({ id: 1, userId: 1 });
     mockUserRepo.getRole.mockResolvedValue('USER');
@@ -199,6 +213,33 @@ describe('updateTicketStatus', () => {
 });
 
 describe('getTicketMessages', () => {
+  it('returns 400 for non-numeric ticket id', async () => {
+    const next = vi.fn();
+    await getTicketMessages(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { id: 'abc' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('returns 404 for missing ticket', async () => {
+    mockSupportService.findById.mockResolvedValue(null);
+    const next = vi.fn();
+    await getTicketMessages(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { id: '999' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
   it('returns 403 for non-owner non-admin', async () => {
     mockSupportService.findById.mockResolvedValue({ id: 1, userId: 99 });
     mockUserRepo.getRole.mockResolvedValue('USER');
@@ -253,6 +294,21 @@ describe('addTicketMessage', () => {
     );
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ ok: true });
+  });
+
+  it('returns 404 for missing ticket', async () => {
+    mockSupportService.findById.mockResolvedValue(null);
+    const next = vi.fn();
+    await addTicketMessage(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { id: '999' } as Record<string, string>,
+        body: { message: 'Help!' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
   });
 
   it('returns 403 when non-admin tries to reply to someone else’s ticket', async () => {

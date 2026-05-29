@@ -14,6 +14,13 @@ const OUTPUT_FLUSH_MS = 50;
 const OUTPUT_BUFFER_MAX = 16 * 1024;
 const OUTPUT_TOTAL_MAX = 1024 * 1024;
 
+// Per-run host dirs are cleaned on ws.close/process exit, but a crash mid-run
+// orphans them. Sweep the whole RUN_DIR at startup to reclaim that disk.
+export async function sweepRunDir(): Promise<void> {
+  await fs.rm(RUN_DIR, { recursive: true, force: true }).catch(() => {});
+  await fs.mkdir(RUN_DIR, { recursive: true }).catch(() => {});
+}
+
 export async function handleInteractiveRun(ws: WebSocket, code: string, language: string) {
   const runtime = getRuntime(language);
   if (!runtime) {

@@ -69,7 +69,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Shared (`shared/`)
 
-- DTO types and constants imported by both client and server — keeps request/response shapes and business rules (XP formulas, course keys) in sync. Badges are derived client-side only (`useGamification`)
+- DTO types and constants imported by both client and server — keeps request/response shapes and course key constants in sync. Badges are derived client-side only (`useGamification`) from completion counts
 
 ### Lesson content (`server/lessons/{python,c,java,linux}/`)
 
@@ -77,18 +77,15 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Every C code block must include `#include`, `int main(void)`, `return 0` (full compilable program)
 - Every Java code block must include `public class Main` with `public static void main(String[] args)` wrapper
 - Intentional compile errors (e.g., demonstrating `if(x=2)` bug) still have full boilerplate — the error is only on the line being demonstrated
-- Linux lessons: each slug has 3 files — `<slug>.md` (no H1, space-station theme), `<slug>-setup.json` (sandbox filesystem), `<slug>-tests.json` (validation checks). 55 lessons across 9 chapters. Shared types in `shared/terminal.ts`
+- Linux lessons: each slug has 2 files — `<slug>.md` (no H1, space-station theme) and `<slug>-setup.json` (sandbox filesystem). 55 lessons across 9 chapters. Shared types in `shared/terminal.ts`
 
 ### Algorithm challenges (`server/algorithms/{python,java,c}/`)
 
 - Separate from main lessons — mapped via `server/services/paths.ts`: course keys `algo-python`, `algo-java`, `algo-c` resolve to `server/algorithms/{python,java,c}/`
-- Each challenge has 3 files: `<slug>.md` (problem statement with Input/Output/Examples/Hints), `<slug>-code.md` (starter code), `<slug>-tests.json` (test cases)
+- Each challenge has 2 files: `<slug>.md` (problem statement with Input/Output/Examples/Hints) and `<slug>-code.md` (starter code)
 - 20 challenges per language (Easy/Medium/Hard), registered in `prisma/seed.ts`
 - Starter code reads input and has `# TODO` comments — students fill in the logic
-- Test modes in `-tests.json`: `exact` (trimmed output === expected), `regex` (output matches pattern), `code_regex` (student code matches pattern), `contains`, `line` (specific line matches), `any` (any non-empty output)
-- **Critical rule for `code_regex` tests**: the regex must NOT match the unmodified starter code, otherwise the test passes by default without the student implementing anything. Always verify with: `new RegExp(expected).test(starterCode)` — must return `false`
-- Tests can use `overrides` (replace variable assignments) and `append` (add code after student's code) fields
-- Test runner in `server/services/test-runner.service.ts` — executes code via Docker, trims output, compares against expected
+- Lessons and challenges have no automated grading: students Run their code (Docker-backed `code-execution.service`) and decide when to click "Mark Complete" themselves
 
 ### Testing (`test/`)
 
@@ -117,10 +114,10 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Vite proxies `/api`, `/auth`, and `/ws` to the Express server (configured in `vite.config.ts`)
 - Course metadata is centralised in `client/constants/courses.ts` via `courseMeta(key)` and `courseTitle(key)` — single source of truth for icons, colors, labels
 - Course key constants live in `shared/constants.ts`: `MAIN_COURSE_KEYS`, `ALGO_COURSE_KEYS`, `TERMINAL_COURSE_KEYS`, `ALL_COURSE_KEYS`
-- Gamification (XP, levels, badges) is derived from `UserLessonProgress` data — no separate gamification tables. Badges include "First Steps" (1 lesson) and Bronze/Silver/Gold tiers (10/20/30 lessons per course). New badge earnings trigger a 5s toast notification
+- Gamification is badge-only (no XP), derived client-side from `UserLessonProgress` counts — no separate gamification tables. Badges include "First Steps" (1 lesson) and Bronze/Silver/Gold tiers (10/20/30 lessons per course). New badge earnings trigger a 5s toast notification
 - Profile features (avatar upload, bio, status with 24h expiry) via `/api/profile` routes with multer + magic-byte validation. Uploads served from `/uploads` static dir
 - Dark theme uses CSS custom properties with accent purple `#6C5CE7`, Space Grotesk font for UI, JetBrains Mono for code
-- Lesson completion is automatic when all test cases pass — no manual "complete" button
+- Lesson completion is user-driven: students click "Mark Complete" (calls `POST /api/progress/:courseKey/:lessonSlug/complete`). There is no automated grading
 - The user communicates in Romanian; code and docs stay in English
 - Page wrapper divs use `bg-transparent` (not `bg-[var(--bg)]`) so the global cosmos starfield shows through
 - All cards, panels, and containers use very low opacity backgrounds (`rgba(22,22,29,0.1)` with `backdrop-blur-[12px]`) so the cosmos is visible through them. Never use opaque backgrounds (`bg-[var(--bg2)]`, `bg-[var(--surface)]`) for content panels

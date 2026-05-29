@@ -12,6 +12,14 @@ export async function getLessonsByCourse(courseKey: string): Promise<Lesson[]> {
   });
 }
 
+export async function lessonExists(courseKey: string, slug: string): Promise<boolean> {
+  const lesson = await prisma.lesson.findUnique({
+    where: { courseKey_slug: { courseKey, slug } },
+    select: { id: true },
+  });
+  return lesson !== null;
+}
+
 export async function getAllLessons(): Promise<Lesson[]> {
   return prisma.lesson.findMany({
     orderBy: [{ courseKey: 'asc' }, { sortOrder: 'asc' }],

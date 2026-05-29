@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Word count is 9",
-    "input": "",
-    "expected": "Child counted: 9 words",
-    "mode": "contains"
-  }
-]

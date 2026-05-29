@@ -1,6 +1,0 @@
-[
-  { "name": "three rows", "input": "3", "expected": "*\n**\n***", "mode": "exact" },
-  { "name": "single row", "input": "1", "expected": "*", "mode": "exact" },
-  { "name": "five rows", "input": "5", "expected": "*\n**\n***\n****\n*****", "mode": "exact" },
-  { "name": "two rows", "input": "2", "expected": "*\n**", "mode": "exact" }
-]

@@ -269,14 +269,14 @@ export function AuthPage() {
               </span>
             </div>
             <p className="text-lg text-[var(--text2)] leading-relaxed mb-10">
-              Learn to code through interactive lessons. Write real code, earn XP, and level up your
-              skills.
+              Learn to code through interactive lessons. Write real code and collect badges as you
+              go.
             </p>
             <div className="flex flex-col gap-4 text-left">
               {[
                 { icon: '⌨️', bold: 'Live code editor', rest: ' — write & run code instantly' },
                 { icon: '💻', bold: 'Python, C, Java & Linux', rest: ' — structured curriculum' },
-                { icon: '🏆', bold: 'XP & badges', rest: ' — gamified progress tracking' },
+                { icon: '🏆', bold: 'Badges', rest: ' — celebrate every lesson you finish' },
                 { icon: '💬', bold: 'Community forum', rest: ' — ask, share, and help others' },
                 { icon: '📰', bold: 'The Almanac', rest: ' — tech history, facts & legends' },
                 {

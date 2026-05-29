@@ -1,6 +1,0 @@
-[
-  { "name": "two words", "input": "hello world", "expected": "2", "mode": "exact" },
-  { "name": "four words", "input": "Python is really fun", "expected": "4", "mode": "exact" },
-  { "name": "single word", "input": "CyberStars", "expected": "1", "mode": "exact" },
-  { "name": "six words", "input": "I love to write clean code", "expected": "6", "mode": "exact" }
-]

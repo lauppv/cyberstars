@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Correct formatted output",
-    "input": "",
-    "expected": "Player: Tommy Vercetti | Score: 1500 | Rating: 4.75",
-    "mode": "contains"
-  }
-]
