@@ -16,11 +16,18 @@ const forumWriteLimiter = rateLimit({
   limit: process.env.NODE_ENV === 'test' ? 10_000 : 10,
 });
 
+// getThread increments the view counter on every GET; cap it per-IP so the
+// counter can't be inflated by hammering the endpoint (audit H7).
+const forumReadLimiter = rateLimit({
+  windowMs: 60_000,
+  limit: process.env.NODE_ENV === 'test' ? 100_000 : 120,
+});
+
 const router = Router();
 
 router.get('/categories', forumController.getCategories);
 router.get('/categories/:categorySlug/threads', forumController.getThreads);
-router.get('/threads/:threadId', optionalAuth, forumController.getThread);
+router.get('/threads/:threadId', forumReadLimiter, optionalAuth, forumController.getThread);
 
 router.post(
   '/threads',
