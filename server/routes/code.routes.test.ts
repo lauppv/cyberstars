@@ -16,17 +16,12 @@ vi.mock('express-rate-limit', () => ({
   },
 }));
 
-vi.mock('../middleware/auth.js', () => ({
-  optionalAuth: (_req: Request, _res: Response, next: () => void) => next(),
-}));
-
 vi.mock('../middleware/validate.js', () => ({
   validateBody: () => (_req: Request, _res: Response, next: () => void) => next(),
 }));
 
 vi.mock('../controllers/code.controller.js', () => ({
   executeCode: vi.fn(),
-  submitCode: vi.fn(),
 }));
 
 beforeEach(async () => {

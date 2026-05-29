@@ -11,7 +11,6 @@ export interface StoryData {
   authorEm?: string;
   authorEmoji?: string;
   readTime: string;
-  xp: number;
   date?: string;
 }
 
@@ -42,7 +41,6 @@ What started as a hobby project by a bored Finnish student became the backbone o
   readTime: '8 min',
   date: 'May 14, 2026',
   emoji: '🐧',
-  xp: 30,
 };
 
 export const ARTICLES = [
@@ -73,7 +71,6 @@ That two-letter "LO" is preserved in the IMP (Interface Message Processor) log a
     author: 'CyberBot',
     authorEm: '🤖',
     readTime: '5 min',
-    xp: 20,
   },
   {
     cat: 'legends',
@@ -104,7 +101,6 @@ Ada died of cancer in 1852, at age 36. The Analytical Engine was never built. Bu
     author: 'Ms. Diana',
     authorEm: '🦄',
     readTime: '6 min',
-    xp: 25,
   },
   {
     cat: 'oss',
@@ -135,7 +131,6 @@ Stallman's principled stand — triggered by a jammed printer — had laid the f
     author: 'Editorial',
     authorEm: '✨',
     readTime: '7 min',
-    xp: 25,
   },
   {
     cat: 'history',
@@ -170,7 +165,6 @@ Engelbart spent the rest of his life largely unrecognized by the mainstream. He 
     author: 'Kai',
     authorEm: '🐺',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'oss',
@@ -197,7 +191,6 @@ Tux became one of the most recognized mascots in technology. Unlike corporate lo
     author: 'Liam',
     authorEm: '🐢',
     readTime: '4 min',
-    xp: 15,
   },
   {
     cat: 'hardware',
@@ -226,7 +219,6 @@ The 4004 made computers small enough to put in anything. That idea led directly 
     author: 'Theo',
     authorEm: '🦝',
     readTime: '6 min',
-    xp: 20,
   },
   {
     cat: 'internet',
@@ -257,7 +249,6 @@ Berners-Lee was knighted in 2004 and received the Turing Award in 2016. But his 
     author: 'Sam',
     authorEm: '🦉',
     readTime: '7 min',
-    xp: 25,
   },
   {
     cat: 'legends',
@@ -290,7 +281,6 @@ In 2016, President Obama awarded Hamilton the Presidential Medal of Freedom. The
     author: 'Maya',
     authorEm: '🦊',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'ai',
@@ -325,7 +315,6 @@ Turing himself never saw any of this. He died in 1954, at age 41, after being pr
     author: 'Editorial',
     authorEm: '✨',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'oss',
@@ -356,7 +345,6 @@ Today, open source is not just accepted — it's dominant. Microsoft, Google, Am
     author: 'Ms. Diana',
     authorEm: '🦄',
     readTime: '10 min',
-    xp: 35,
   },
   {
     cat: 'hardware',
@@ -381,7 +369,6 @@ The lesson? Innovation without execution is just a cool demo. Xerox invented the
     author: 'Prof. Andrei',
     authorEm: '🔬',
     readTime: '7 min',
-    xp: 25,
   },
   {
     cat: 'internet',
@@ -408,7 +395,6 @@ The next time your browser takes an extra 200ms to load a page, it might be DNS 
     author: 'Mr. Radu',
     authorEm: '🌐',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'legends',
@@ -437,7 +423,6 @@ Rob Pike, Ritchie's colleague, wrote after his death: "Pretty much everything on
     author: 'Prof. Andrei',
     authorEm: '🏛️',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'ai',
@@ -466,7 +451,6 @@ The AI winters teach an important lesson: hype cycles are dangerous. When techno
     author: 'Dr. Elena',
     authorEm: '🧊',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'history',
@@ -495,7 +479,6 @@ Y2K is a paradox: it was simultaneously one of the biggest bugs in computing his
     author: 'Mr. Radu',
     authorEm: '🔧',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'oss',
@@ -522,7 +505,6 @@ Wikipedia's model challenged fundamental assumptions about knowledge creation. Y
     author: 'Ms. Diana',
     authorEm: '📖',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'hardware',
@@ -549,7 +531,6 @@ The end of Moore's Law doesn't mean the end of progress — it means progress wi
     author: 'Prof. Andrei',
     authorEm: '⚡',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'internet',
@@ -578,7 +559,6 @@ Silk Road proved that cryptographic anonymity tools actually work for their inte
     author: 'Mr. Radu',
     authorEm: '🕵️',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'legends',
@@ -607,7 +587,6 @@ Aaron's legacy lives on in the open access movement. Sci-Hub (founded 2011) now 
     author: 'Ms. Diana',
     authorEm: '🕊️',
     readTime: '10 min',
-    xp: 35,
   },
   {
     cat: 'history',
@@ -636,7 +615,6 @@ The dot-com bubble taught Silicon Valley a lesson it seems to periodically forge
     author: 'Mr. Radu',
     authorEm: '📈',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'ai',
@@ -663,7 +641,6 @@ Today, a free chess engine on your phone would demolish Deep Blue. Stockfish and
     author: 'Dr. Elena',
     authorEm: '🏆',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'oss',
@@ -692,7 +669,6 @@ Today, Git is used by over 90% of developers worldwide. It manages everything fr
     author: 'Prof. Andrei',
     authorEm: '🔥',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'hardware',
@@ -721,7 +697,6 @@ As of 2024, over 60 million Raspberry Pis have been sold, making it one of the b
     author: 'Ms. Diana',
     authorEm: '🌱',
     readTime: '9 min',
-    xp: 25,
   },
   {
     cat: 'internet',
@@ -748,7 +723,6 @@ The geopolitics of cables is intense. Countries worry about espionage (the NSA w
     author: 'Mr. Radu',
     authorEm: '⚓',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'legends',
@@ -777,7 +751,6 @@ Thompson's 1984 lecture remains one of the most important security papers ever w
     author: 'Prof. Andrei',
     authorEm: '🔓',
     readTime: '9 min',
-    xp: 35,
   },
   {
     cat: 'history',
@@ -806,7 +779,6 @@ The tragedy is that Turing, who arguably contributed more to Allied victory than
     author: 'Prof. Andrei',
     authorEm: '🎖️',
     readTime: '10 min',
-    xp: 35,
   },
   {
     cat: 'ai',
@@ -839,7 +811,6 @@ Lee Sedol retired from professional Go in 2019, saying: "Even if I become the nu
     author: 'Dr. Elena',
     authorEm: '🎯',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'oss',
@@ -868,7 +839,6 @@ Stack Overflow's legacy is secure regardless of its future. It proved that crowd
     author: 'Ms. Diana',
     authorEm: '🌟',
     readTime: '9 min',
-    xp: 25,
   },
   {
     cat: 'security',
@@ -899,7 +869,6 @@ Stuxnet changed cybersecurity forever. It proved that air gaps aren't secure, th
     author: 'Mr. Radu',
     authorEm: '🕵️',
     readTime: '10 min',
-    xp: 35,
   },
   {
     cat: 'security',
@@ -926,7 +895,6 @@ The legal answer is clear: theft is theft, regardless of intent. But the moral a
     author: 'Editorial',
     authorEm: '✨',
     readTime: '7 min',
-    xp: 25,
   },
   {
     cat: 'security',
@@ -957,7 +925,6 @@ Snowden's legacy is that millions of people now use encrypted messaging, verify 
     author: 'Mr. Radu',
     authorEm: '🕵️',
     readTime: '10 min',
-    xp: 35,
   },
   {
     cat: 'security',
@@ -986,7 +953,6 @@ WannaCry's lasting lesson: patch your systems. The vulnerability had been patche
     author: 'CyberBot',
     authorEm: '🤖',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'space',
@@ -1013,7 +979,6 @@ The discovery changed how we think about our cosmic "address": Earth → Solar S
     author: 'Dr. Elena',
     authorEm: '🔭',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'space',
@@ -1038,7 +1003,6 @@ TON 618 reminds us that the universe operates at scales the human brain never ev
     author: 'Dr. Elena',
     authorEm: '🔭',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'space',
@@ -1067,7 +1031,6 @@ This asymmetry between the falling person's experience and the observer's experi
     author: 'Editorial',
     authorEm: '✨',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'space',
@@ -1096,7 +1059,6 @@ Aboard Voyager is the Golden Record — a phonograph disc with sounds and images
     author: 'Dr. Elena',
     authorEm: '🔭',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'space',
@@ -1121,7 +1083,6 @@ The James Webb telescope doesn't seek simple answers. It asks questions we could
     author: 'Editorial',
     authorEm: '✨',
     readTime: '9 min',
-    xp: 30,
   },
   {
     cat: 'history',
@@ -1150,7 +1111,6 @@ The lesson? Sometimes the best tool is the simplest one. C gives you enough abst
     author: 'Prof. Andrei',
     authorEm: '🏛️',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'history',
@@ -1179,7 +1139,6 @@ In 2025, Java remains in the top 3 languages, with over 35 million developers. O
     author: 'Theo',
     authorEm: '🦝',
     readTime: '9 min',
-    xp: 25,
   },
   {
     cat: 'security',
@@ -1208,7 +1167,6 @@ SolarWinds accelerated a fundamental shift toward "zero trust" security architec
     author: 'Mr. Radu',
     authorEm: '🕵️',
     readTime: '10 min',
-    xp: 35,
   },
   {
     cat: 'history',
@@ -1235,7 +1193,6 @@ Berners-Lee was knighted in 2004. He continues to advocate for an open web throu
     author: 'Editorial',
     authorEm: '✨',
     readTime: '7 min',
-    xp: 25,
   },
   {
     cat: 'history',
@@ -1262,7 +1219,6 @@ Today, JavaScript runs on virtually every computing device on Earth. GitHub's an
     author: 'CyberBot',
     authorEm: '🤖',
     readTime: '7 min',
-    xp: 25,
   },
   {
     cat: 'legends',
@@ -1291,7 +1247,6 @@ Van Rossum served as Python's "Benevolent Dictator For Life" (BDFL) until 2018, 
     author: 'Ms. Diana',
     authorEm: '🦄',
     readTime: '8 min',
-    xp: 25,
   },
   {
     cat: 'history',
@@ -1320,7 +1275,6 @@ Codd received the Turing Award in 1981. He spent his later years frustrated that
     author: 'Prof. Andrei',
     authorEm: '📊',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'internet',
@@ -1349,7 +1303,6 @@ Cerf and Kahn received the Turing Award in 2004 and the Presidential Medal of Fr
     author: 'CyberBot',
     authorEm: '🤖',
     readTime: '8 min',
-    xp: 30,
   },
   {
     cat: 'legends',
@@ -1376,7 +1329,6 @@ Tomlinson remained modest about his invention. He received the Webby Award in 20
     author: 'Ms. Diana',
     authorEm: '🌟',
     readTime: '6 min',
-    xp: 20,
   },
 ];
 

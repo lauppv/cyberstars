@@ -1,7 +1,0 @@
-[
-  { "name": "first 5", "input": "5", "expected": "0 1 1 2 3", "mode": "exact" },
-  { "name": "first 8", "input": "8", "expected": "0 1 1 2 3 5 8 13", "mode": "exact" },
-  { "name": "single element", "input": "1", "expected": "0", "mode": "exact" },
-  { "name": "two elements", "input": "2", "expected": "0 1", "mode": "exact" },
-  { "name": "first 10", "input": "10", "expected": "0 1 1 2 3 5 8 13 21 34", "mode": "exact" }
-]

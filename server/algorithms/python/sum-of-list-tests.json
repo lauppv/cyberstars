@@ -1,7 +1,0 @@
-[
-  { "name": "3 numbers sum to 60", "input": "3\n10\n20\n30", "expected": "60", "mode": "exact" },
-  { "name": "4 numbers sum to 10", "input": "4\n1\n2\n3\n4", "expected": "10", "mode": "exact" },
-  { "name": "single number", "input": "1\n42", "expected": "42", "mode": "exact" },
-  { "name": "includes negatives", "input": "3\n5\n-3\n8", "expected": "10", "mode": "exact" },
-  { "name": "all zeros", "input": "3\n0\n0\n0", "expected": "0", "mode": "exact" }
-]

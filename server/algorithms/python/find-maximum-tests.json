@@ -1,6 +1,0 @@
-[
-  { "name": "basic case", "input": "5\n3 1 7 2 5", "expected": "7", "mode": "exact" },
-  { "name": "all negative numbers", "input": "3\n-10 -3 -7", "expected": "-3", "mode": "exact" },
-  { "name": "single element", "input": "1\n42", "expected": "42", "mode": "exact" },
-  { "name": "duplicates at max", "input": "4\n5 5 3 1", "expected": "5", "mode": "exact" }
-]

@@ -504,12 +504,6 @@
   align-items: center;
 }
 
-.article-xp {
-  color: var(--accent);
-  font-weight: 700;
-  font-family: var(--mono);
-}
-
 /* ===== Sidebar ===== */
 .almanac-sidebar {
   display: flex;

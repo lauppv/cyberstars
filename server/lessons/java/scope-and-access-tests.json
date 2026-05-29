@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Balance is 120 after add 50, spend 30, failed spend 200",
-    "input": "",
-    "expected": "120",
-    "mode": "exact"
-  }
-]

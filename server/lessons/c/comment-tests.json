@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Output is exactly ship, mission, power (no secret)",
-    "input": "",
-    "expected": "Voyager\nDeep Space Exploration\n9001",
-    "mode": "exact"
-  }
-]

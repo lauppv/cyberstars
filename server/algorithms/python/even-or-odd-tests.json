@@ -1,7 +1,0 @@
-[
-  { "name": "4 is Even", "input": "4", "expected": "Even", "mode": "exact" },
-  { "name": "7 is Odd", "input": "7", "expected": "Odd", "mode": "exact" },
-  { "name": "0 is Even", "input": "0", "expected": "Even", "mode": "exact" },
-  { "name": "-3 is Odd", "input": "-3", "expected": "Odd", "mode": "exact" },
-  { "name": "100 is Even", "input": "100", "expected": "Even", "mode": "exact" }
-]

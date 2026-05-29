@@ -1,6 +1,0 @@
-[
-  { "name": "hello -> 2", "input": "hello", "expected": "2", "mode": "exact" },
-  { "name": "Python -> 1", "input": "Python", "expected": "1", "mode": "exact" },
-  { "name": "all vowels AEIOU -> 5", "input": "AEIOU", "expected": "5", "mode": "exact" },
-  { "name": "no vowels -> 0", "input": "rhythms", "expected": "0", "mode": "exact" }
-]

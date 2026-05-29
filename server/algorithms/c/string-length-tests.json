@@ -1,6 +1,0 @@
-[
-  { "name": "simple word", "input": "hello", "expected": "5", "mode": "exact" },
-  { "name": "single char", "input": "C", "expected": "1", "mode": "exact" },
-  { "name": "longer word", "input": "programming", "expected": "11", "mode": "exact" },
-  { "name": "uses manual loop", "input": "", "expected": "while|for", "mode": "code_regex" }
-]

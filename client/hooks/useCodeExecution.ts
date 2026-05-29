@@ -1,12 +1,4 @@
 import { useState, useCallback, useRef } from 'react';
-import { submitCode } from '../services/codeExecutionService';
-import { ApiClientError } from '../services/apiClient';
-import type { SubmitResult } from '../../shared/tests';
-
-function errorMessage(err: unknown): string {
-  if (err instanceof ApiClientError) return err.message;
-  return 'Error connecting to server.';
-}
 
 function wsUrl(): string {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -27,8 +19,6 @@ function appendCapped(prev: string, chunk: string): string {
 export function useCodeExecution() {
   const [output, setOutput] = useState('');
   const [isRunning, setIsRunning] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
   const sendInputRef = useRef<((data: string) => void) | null>(null);
 
@@ -40,7 +30,6 @@ export function useCodeExecution() {
 
     setIsRunning(true);
     setOutput('');
-    setSubmitResult(null);
 
     const ws = new WebSocket(wsUrl());
     wsRef.current = ws;
@@ -89,32 +78,8 @@ export function useCodeExecution() {
     sendInputRef.current?.(data);
   }, []);
 
-  const submit = useCallback(
-    async (code: string, language: string, courseKey: string, lessonSlug: string) => {
-      setIsSubmitting(true);
-      setOutput('Running tests...');
-      setSubmitResult(null);
-
-      try {
-        const result = await submitCode(code, language, courseKey, lessonSlug);
-        setSubmitResult(result);
-        if (result.allPassed) {
-          setOutput(`All tests passed! (${result.passed}/${result.total})`);
-        } else {
-          setOutput(`Tests: ${result.passed}/${result.total} passed`);
-        }
-      } catch (err) {
-        setOutput(errorMessage(err));
-      } finally {
-        setIsSubmitting(false);
-      }
-    },
-    [],
-  );
-
   const clearOutput = useCallback(() => {
     setOutput('');
-    setSubmitResult(null);
     if (wsRef.current) {
       wsRef.current.close();
       wsRef.current = null;
@@ -122,5 +87,5 @@ export function useCodeExecution() {
     sendInputRef.current = null;
   }, []);
 
-  return { output, isRunning, isSubmitting, submitResult, execute, sendInput, submit, clearOutput };
+  return { output, isRunning, execute, sendInput, clearOutput };
 }

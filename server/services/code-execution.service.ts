@@ -24,6 +24,7 @@ async function executeDocker(
 ): Promise<string> {
   const runId = crypto.randomUUID();
   const hostDir = path.join(RUN_DIR, runId);
+  const containerName = `run-${runId}`;
   await fs.mkdir(hostDir, { recursive: true });
 
   const outputPath = path.join(hostDir, 'output.txt');
@@ -38,9 +39,11 @@ async function executeDocker(
     const dockerArgs = [
       'run',
       '--rm',
+      `--name=${containerName}`,
       '--network=none',
       `--memory=${RUN_MEMORY}`,
       `--pids-limit=${RUN_PIDS}`,
+      '--stop-timeout=0',
       '-v',
       `${hostDir}:/work`,
       '-w',
@@ -51,7 +54,7 @@ async function executeDocker(
       runtime.innerCmd,
     ];
 
-    await runDocker(dockerArgs);
+    await runDocker(dockerArgs, containerName);
 
     const output = await fs.readFile(outputPath, 'utf-8');
     return output.trim() || 'No output.';
@@ -62,14 +65,19 @@ async function executeDocker(
   }
 }
 
-function runDocker(args: string[]): Promise<void> {
+function runDocker(args: string[], containerName: string): Promise<void> {
   return new Promise((resolve, reject) => {
     execFile('docker', args, { maxBuffer: 1024 * 1024, timeout: 15_000 }, (err) => {
       if (err && (err as NodeJS.ErrnoException).code === 'ENOENT') {
         reject(new Error('Docker is not available'));
-      } else {
-        resolve();
+        return;
       }
+      // On timeout execFile kills the docker CLI, but the container can outlive
+      // it; kill it explicitly so it does not linger past the SIGTERM grace.
+      if (err && (err as { killed?: boolean }).killed) {
+        execFile('docker', ['kill', containerName], () => {});
+      }
+      resolve();
     });
   });
 }

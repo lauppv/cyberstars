@@ -1,17 +1,16 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
-import type { TerminalSubmitResult } from '../../services/terminalService';
 
 interface Props {
   lines: TerminalLine[];
   cwd: string;
   isReady: boolean;
   isExecuting: boolean;
-  isSubmitting: boolean;
-  submitResult: TerminalSubmitResult | null;
   onExecute: (cmd: string) => void;
-  onSubmit: () => void;
   onReset: () => void;
+  lessonCompleted?: boolean;
+  isMarking?: boolean;
+  onMarkComplete?: () => void;
 }
 
 export function TerminalPanel({
@@ -19,11 +18,11 @@ export function TerminalPanel({
   cwd,
   isReady,
   isExecuting,
-  isSubmitting,
-  submitResult,
   onExecute,
-  onSubmit,
   onReset,
+  lessonCompleted,
+  isMarking,
+  onMarkComplete,
 }: Props) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
@@ -82,13 +81,28 @@ export function TerminalPanel({
           <span className="inline-block w-2 h-2 rounded-full bg-[#FCC624]" />
           Terminal
         </div>
-        <button
-          onClick={onReset}
-          className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
-          title="Reset sandbox"
-        >
-          ↺ Reset
-        </button>
+        <div className="flex items-center gap-2">
+          {onMarkComplete && (
+            <button
+              onClick={onMarkComplete}
+              disabled={lessonCompleted || isMarking}
+              className={`text-[12px] px-3 py-1 rounded-[var(--radius-sm)] transition cursor-pointer border ${
+                lessonCompleted
+                  ? 'bg-[var(--success)]/15 border-[var(--success)]/30 text-[var(--success)]'
+                  : 'bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20'
+              } font-semibold disabled:cursor-default`}
+            >
+              {lessonCompleted ? '✓ Completed' : isMarking ? 'Marking...' : 'Mark Complete'}
+            </button>
+          )}
+          <button
+            onClick={onReset}
+            className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
+            title="Reset sandbox"
+          >
+            ↺ Reset
+          </button>
+        </div>
       </div>
 
       <div
@@ -122,40 +136,6 @@ export function TerminalPanel({
         )}
 
         {!isReady && <div className="text-[var(--text3)] animate-pulse">Starting sandbox...</div>}
-      </div>
-
-      <div className="p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)]">
-        <div className="flex gap-2 mb-2 items-center flex-wrap">
-          <button
-            onClick={onSubmit}
-            disabled={isSubmitting || !isReady}
-            className={`px-4 py-1.5 rounded-[var(--radius-sm)] text-[13px] font-semibold transition cursor-pointer disabled:opacity-50 ${
-              submitResult?.allPassed
-                ? 'bg-[var(--success)]/20 border border-[var(--success)]/40 text-[var(--success)]'
-                : 'bg-[var(--accent)] text-white hover:brightness-110'
-            }`}
-          >
-            {isSubmitting ? 'Checking...' : submitResult?.allPassed ? '✓ All Passed' : 'Check'}
-          </button>
-        </div>
-
-        {submitResult && (
-          <div className="space-y-1 max-h-[140px] overflow-y-auto">
-            {submitResult.results.map((r, i) => (
-              <div
-                key={i}
-                className={`flex items-center gap-2 text-[12px] px-2 py-1 rounded ${
-                  r.passed
-                    ? 'bg-[var(--success)]/10 text-[var(--success)]'
-                    : 'bg-[var(--error)]/10 text-[var(--error)]'
-                }`}
-              >
-                <span>{r.passed ? '✓' : '✗'}</span>
-                <span>{r.name}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

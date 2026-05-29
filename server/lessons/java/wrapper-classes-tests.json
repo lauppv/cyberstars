@@ -1,8 +1,0 @@
-[
-  {
-    "name": "Sum of 10+20+30+40+50 is 150",
-    "input": "",
-    "expected": "150",
-    "mode": "exact"
-  }
-]

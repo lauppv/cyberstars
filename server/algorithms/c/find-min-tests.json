@@ -1,7 +1,0 @@
-[
-  { "name": "min in middle", "input": "5\n3 1 4 1 5", "expected": "1", "mode": "exact" },
-  { "name": "min at start", "input": "3\n10 20 30", "expected": "10", "mode": "exact" },
-  { "name": "min at end", "input": "4\n5 4 3 2", "expected": "2", "mode": "exact" },
-  { "name": "single element", "input": "1\n7", "expected": "7", "mode": "exact" },
-  { "name": "with negatives", "input": "3\n-5 0 5", "expected": "-5", "mode": "exact" }
-]

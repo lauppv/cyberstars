@@ -596,8 +596,8 @@ export function WelcomePage() {
           One platform, every piece <span className="wc-accent-text">wired together</span>.
         </h2>
         <p className="wc-subtitle reveal wc-center" data-delay="2">
-          Every lesson links to almanac entries. Every error suggests a forum thread. Every solved
-          exercise unlocks XP. Your progress shows up everywhere — instantly.
+          Every lesson links to almanac entries. Every error suggests a forum thread. Every
+          completed lesson unlocks a badge. Your progress shows up everywhere — instantly.
         </p>
         <div className="wc-network-wrap network-wrap reveal" data-delay="3">
           <svg className="wc-network-svg" viewBox="0 0 800 360">
@@ -635,7 +635,7 @@ export function WelcomePage() {
             </text>
             <circle className="wc-node-c" cx={400} cy={320} r={28} />
             <text className="wc-node-label" x={400} y={324}>
-              XP / BADGES
+              BADGES
             </text>
             <circle className="wc-node-c" cx={400} cy={50} r={28} />
             <text className="wc-node-label" x={400} y={54}>
