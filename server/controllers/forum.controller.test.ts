@@ -37,6 +37,7 @@ const mockPrisma = {
   user: {
     findUnique: vi.fn(),
   },
+  $transaction: vi.fn((ops) => Promise.all(ops)),
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
@@ -392,6 +393,7 @@ describe('markSolution', () => {
       res,
       vi.fn(),
     );
+    expect(mockPrisma.$transaction).toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
 });
