@@ -19,6 +19,7 @@ const mockCurriculumRepo = {
   getAllCourses: vi.fn(),
   getAllLessons: vi.fn(),
   getLessonCount: vi.fn(),
+  lessonExists: vi.fn(),
 };
 
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
@@ -27,7 +28,10 @@ vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
 const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
   await import('./progress.service.js');
 
-beforeEach(() => vi.clearAllMocks());
+beforeEach(() => {
+  vi.clearAllMocks();
+  mockCurriculumRepo.lessonExists.mockResolvedValue(true);
+});
 
 describe('getCourseProgress', () => {
   it('aggregates lessons and progress correctly', async () => {
@@ -91,5 +95,28 @@ describe('trackAccess', () => {
   it('delegates to repo', async () => {
     await trackAccess(1, 'python', 'booleans');
     expect(mockProgressRepo.touchAccess).toHaveBeenCalledWith(1, 'python', 'booleans');
+  });
+});
+
+describe('URL param validation (H11)', () => {
+  it('getCourseProgress rejects an unknown course with 400', async () => {
+    await expect(getCourseProgress(1, 'garbage')).rejects.toMatchObject({ statusCode: 400 });
+  });
+
+  it('markComplete rejects an unknown course with 400 (no write)', async () => {
+    await expect(markComplete(1, 'garbage', 'whatever')).rejects.toMatchObject({ statusCode: 400 });
+    expect(mockProgressRepo.upsertProgress).not.toHaveBeenCalled();
+  });
+
+  it('saveCode rejects a nonexistent lesson with 404 (no write)', async () => {
+    mockCurriculumRepo.lessonExists.mockResolvedValue(false);
+    await expect(saveCode(1, 'python', 'nope', 'x')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockProgressRepo.upsertCode).not.toHaveBeenCalled();
+  });
+
+  it('trackAccess rejects a nonexistent lesson with 404 (no write)', async () => {
+    mockCurriculumRepo.lessonExists.mockResolvedValue(false);
+    await expect(trackAccess(1, 'python', 'nope')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockProgressRepo.touchAccess).not.toHaveBeenCalled();
   });
 });
