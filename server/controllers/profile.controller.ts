@@ -10,6 +10,25 @@ await fs.mkdir(UPLOAD_DIR, { recursive: true });
 
 const ALLOWED_MIMES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 
+// Serialize avatar mutations per user. Concurrent upload/delete requests for
+// the same user otherwise read the same previous avatarUrl and leave the
+// loser's file orphaned on disk (audit H10).
+const avatarLocks = new Map<number, Promise<unknown>>();
+
+function withAvatarLock<T>(userId: number, task: () => Promise<T>): Promise<T> {
+  const prev = avatarLocks.get(userId) ?? Promise.resolve();
+  const run = prev.then(task, task);
+  const tail = run.then(
+    () => {},
+    () => {},
+  );
+  avatarLocks.set(userId, tail);
+  void tail.then(() => {
+    if (avatarLocks.get(userId) === tail) avatarLocks.delete(userId);
+  });
+  return run;
+}
+
 export async function updateProfile(
   req: Request,
   res: Response,
@@ -53,19 +72,23 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
       throw new AppError(400, 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.');
     }
 
-    const ext = type.ext;
-    const filename = `${userId}-${Date.now()}.${ext}`;
-    const filepath = path.join(UPLOAD_DIR, filename);
+    const avatarUrl = await withAvatarLock(userId, async () => {
+      const ext = type.ext;
+      const filename = `${userId}-${Date.now()}.${ext}`;
+      const filepath = path.join(UPLOAD_DIR, filename);
 
-    const user = await userRepo.findById(userId);
-    if (user?.avatarUrl) {
-      const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
-      await fs.unlink(oldFile).catch(() => {});
-    }
+      const user = await userRepo.findById(userId);
+      if (user?.avatarUrl) {
+        const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
+        await fs.unlink(oldFile).catch(() => {});
+      }
 
-    await fs.writeFile(filepath, file.buffer);
-    const avatarUrl = `/uploads/avatars/${filename}`;
-    await userRepo.updateProfile(userId, { avatarUrl });
+      await fs.writeFile(filepath, file.buffer);
+      const url = `/uploads/avatars/${filename}`;
+      await userRepo.updateProfile(userId, { avatarUrl: url });
+      return url;
+    });
+
     res.json({ avatarUrl });
   } catch (err) {
     next(err);
@@ -75,12 +98,14 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
 export async function deleteAvatar(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const userId = req.user!.id;
-    const user = await userRepo.findById(userId);
-    if (user?.avatarUrl) {
-      const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
-      await fs.unlink(oldFile).catch(() => {});
-    }
-    await userRepo.updateProfile(userId, { avatarUrl: null });
+    await withAvatarLock(userId, async () => {
+      const user = await userRepo.findById(userId);
+      if (user?.avatarUrl) {
+        const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
+        await fs.unlink(oldFile).catch(() => {});
+      }
+      await userRepo.updateProfile(userId, { avatarUrl: null });
+    });
     res.json({ message: 'Avatar removed' });
   } catch (err) {
     next(err);
