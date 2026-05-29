@@ -6,7 +6,15 @@ import * as userRepo from '../repositories/user.repository.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 const UPLOAD_DIR = path.resolve('uploads/avatars');
-await fs.mkdir(UPLOAD_DIR, { recursive: true });
+
+// Create the upload dir lazily on first use instead of at import time, so the
+// module imports without filesystem side effects (audit H9). Cached so the
+// mkdir runs at most once.
+let uploadDirReady: Promise<void> | null = null;
+function ensureUploadDir(): Promise<void> {
+  if (!uploadDirReady) uploadDirReady = fs.mkdir(UPLOAD_DIR, { recursive: true }).then(() => {});
+  return uploadDirReady;
+}
 
 const ALLOWED_MIMES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 
@@ -83,6 +91,7 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
         await fs.unlink(oldFile).catch(() => {});
       }
 
+      await ensureUploadDir();
       await fs.writeFile(filepath, file.buffer);
       const url = `/uploads/avatars/${filename}`;
       await userRepo.updateProfile(userId, { avatarUrl: url });
