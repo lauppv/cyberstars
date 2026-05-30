@@ -64,18 +64,18 @@ describe('login', () => {
     expect(payload.id).toBe(7);
   });
 
-  it('throws 401 for unknown email', async () => {
+  it('throws a generic 401 for unknown email (no enumeration)', async () => {
     mockUserRepo.findByEmail.mockResolvedValue(null);
-    await expect(login('nobody@test.com', 'pass')).rejects.toThrow(AppError);
+    await expect(login('nobody@test.com', 'pass')).rejects.toThrow('Invalid email or password');
   });
 
-  it('throws 401 for wrong password', async () => {
+  it('throws the same generic 401 for wrong password', async () => {
     const bcrypt = await import('bcryptjs');
     mockUserRepo.findByEmail.mockResolvedValue({
       id: 7,
       password: bcrypt.hashSync('correct', 8),
     });
-    await expect(login('bob@test.com', 'wrong')).rejects.toThrow(AppError);
+    await expect(login('bob@test.com', 'wrong')).rejects.toThrow('Invalid email or password');
   });
 });
 
