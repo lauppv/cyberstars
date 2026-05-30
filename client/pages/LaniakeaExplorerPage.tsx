@@ -15,6 +15,8 @@ export function LaniakeaExplorerPage() {
 
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/three@0.160.0/build/three.min.js';
+    script.integrity = 'sha384-qOkzR5Ke/XkQxuGVJ9hpFEpDlcoLtWwVYhnJf06cLIZa2vaIptSqaubivErzmD5O';
+    script.crossOrigin = 'anonymous';
     script.onload = () => {
       if (destroyed) return;
       initScene(container);

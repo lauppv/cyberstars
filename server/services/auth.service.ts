@@ -7,8 +7,12 @@ import * as emailService from './email.service.js';
 import type { TokenPayload, AuthenticatedUser } from '../../shared/auth.js';
 import { AppError } from '../middleware/errorHandler.js';
 
+// Kept in one place because the dummy-hash timing defense below only works if
+// every hash (real and throwaway) uses the same cost.
+const BCRYPT_COST = 10;
+
 export async function signup(name: string, email: string, password: string): Promise<string> {
-  const hashedPassword = bcrypt.hashSync(password, 8);
+  const hashedPassword = bcrypt.hashSync(password, BCRYPT_COST);
   try {
     const userId = await userRepo.create(name, email, hashedPassword);
     return createToken(userId);
@@ -28,7 +32,7 @@ export async function signup(name: string, email: string, password: string): Pro
 // A throwaway hash compared against when the email is unknown. Running one
 // bcrypt comparison on every login keeps response timing the same whether or
 // not the account exists, so timing can't be used to enumerate users.
-const DUMMY_PASSWORD_HASH = bcrypt.hashSync('cyberstars-no-such-user', 8);
+const DUMMY_PASSWORD_HASH = bcrypt.hashSync('cyberstars-no-such-user', BCRYPT_COST);
 
 export async function login(email: string, password: string): Promise<string> {
   const user = await userRepo.findByEmail(email);
@@ -84,7 +88,7 @@ export async function resetPassword(
   if (!user) {
     throw new AppError(400, 'Invalid or expired code');
   }
-  const hashed = bcrypt.hashSync(newPassword, 8);
+  const hashed = bcrypt.hashSync(newPassword, BCRYPT_COST);
   await userRepo.updatePassword(user.id, hashed);
 }
 
