@@ -21,6 +21,26 @@ export async function sweepRunDir(): Promise<void> {
   await fs.mkdir(RUN_DIR, { recursive: true }).catch(() => {});
 }
 
+// Container hardening shared by the compile and run invocations. We run as the
+// host-dir owner (this process's uid) instead of root: /work is a bind-mount of
+// a host dir owned by that uid, so once CAP_DAC_OVERRIDE is dropped only the
+// owner can write the compiler's build output there. /tmp is a small tmpfs so
+// gcc/javac still have scratch space under --read-only.
+function hardeningArgs(): string[] {
+  const args = [
+    '--cap-drop=ALL',
+    '--security-opt=no-new-privileges',
+    '--read-only',
+    '--tmpfs=/tmp:size=64m',
+  ];
+  const uid = process.getuid?.();
+  const gid = process.getgid?.();
+  if (uid !== undefined && gid !== undefined) {
+    args.push(`--user=${uid}:${gid}`);
+  }
+  return args;
+}
+
 export async function handleInteractiveRun(ws: WebSocket, code: string, language: string) {
   const runtime = getRuntime(language);
   if (!runtime) {
@@ -57,6 +77,7 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     `--memory=${RUN_MEMORY}`,
     `--pids-limit=${RUN_PIDS}`,
     '--stop-timeout=0',
+    ...hardeningArgs(),
     '-v',
     `${hostDir}:/work`,
     '-w',
@@ -200,6 +221,7 @@ function compile(hostDir: string, image: string, compileCmd: string): Promise<st
       'run',
       '--rm',
       '--network=none',
+      ...hardeningArgs(),
       '-v',
       `${hostDir}:/work`,
       '-w',
