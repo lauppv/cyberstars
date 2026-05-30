@@ -67,6 +67,7 @@ export function CodeOutput({
             {isRunning && onInput && (
               <span
                 ref={inputRef}
+                data-testid="stdin-input"
                 contentEditable
                 suppressContentEditableWarning
                 className="outline-none font-mono text-[13px] text-[var(--text)] caret-[var(--accent)] whitespace-pre-wrap break-all"

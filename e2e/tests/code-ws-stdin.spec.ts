@@ -16,7 +16,7 @@ test('WebSocket stdin: Python input() receives user input', async ({ authedPage:
   const outputArea = page.getByTestId('code-output').last();
   await expect(outputArea).toContainText('Name?', { timeout: 30_000 });
 
-  const stdinInput = outputArea.locator('input[type="text"]');
+  const stdinInput = outputArea.getByTestId('stdin-input');
   await stdinInput.fill('World');
   await stdinInput.press('Enter');
 
