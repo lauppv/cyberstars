@@ -81,11 +81,9 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Code Execution
 
-| Method | Endpoint               | Auth     | Description                                                  |
-| ------ | ---------------------- | -------- | ------------------------------------------------------------ |
-| WS     | `/ws/run`              | No       | Interactive code execution via WebSocket                     |
-| POST   | `/api/run-code`        | No       | Execute code and return output (batch)                       |
-| POST   | `/api/run-code/submit` | Optional | Run code against test cases; auto-marks complete if all pass |
+| Method | Endpoint  | Auth | Description                              |
+| ------ | --------- | ---- | ---------------------------------------- |
+| WS     | `/ws/run` | No   | Interactive code execution via WebSocket |
 
 ### Progress (all authenticated)
 

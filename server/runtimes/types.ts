@@ -3,7 +3,6 @@ export interface LanguageRuntime {
   image: string;
   pistonVersion: string;
   sourceFile: string;
-  innerCmd: string;
   compileCmd?: string;
   runCmd: string;
 }
