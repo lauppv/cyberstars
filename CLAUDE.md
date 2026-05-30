@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Related docs
+
+- `ARCHITECTURE.md` — full project tree and layer-by-layer breakdown
+- `AGENTS.md` — rules for AI contributors (surgical changes, full check suite before submitting)
+- `CONTRIBUTING.md` — setup prerequisites and contribution workflow
+- `README.md` — project overview
+
 ## Commands
 
 ```bash
@@ -30,7 +37,7 @@ npm run db:studio         # Open Prisma Studio GUI
 npx vitest run path       # Run a single test file (substring match)
 ```
 
-CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): a `setup` job warms `node_modules`, then **10 parallel jobs**: `format-check`, `lint`, `typecheck`, `test` (with coverage + PR comment), `audit` (`npm audit --audit-level=high`), `dead-code` (knip), `test-integration` (spins up a Postgres 16 service), `test-e2e-browser` + `test-e2e-docker` (Playwright with required Docker images pre-pulled), and `build`. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`); integration and E2E live in separate top-level dirs and are excluded from the unit run via `vite.config.ts`. Node version is pinned in `.node-version` (currently 24) — CI reads it via `node-version-file`. Keep `.node-version`, `package.json` engines, and your local Node version in sync to avoid lock file mismatches between local and CI. Prettier check is enforced in CI; before committing larger changes prefer `npm run format` over `:check` so the working tree is normalised.
+CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): a `setup` job warms `node_modules`, then **10 parallel jobs**: `format-check`, `lint`, `typecheck`, `test` (with coverage + PR comment), `audit` (`npm audit --audit-level=high`), `dead-code` (knip), `test-integration` (spins up a Postgres 16 service), `test-e2e-browser` + `test-e2e-docker` (Playwright with required Docker images pre-pulled), and `build`. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`); integration and E2E live in separate top-level dirs and are excluded from the unit run via `vite.config.ts`. Node version is pinned in `.node-version` (currently 24) — CI reads it via `node-version-file` (the composite action `.github/actions/setup-node-and-deps` points at `.node-version`). Keep `.node-version`, `.nvmrc`, `package.json` engines, and your local Node version in sync to avoid lock file mismatches between local and CI. Prettier check is enforced in CI; before committing larger changes prefer `npm run format` over `:check` so the working tree is normalised.
 
 ## Architecture
 
@@ -57,7 +64,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Code execution: Docker containers in all environments — runtimes in `server/runtimes/` (c.ts, python.ts, java.ts). Required Docker images: `gcc:latest`, `python:3.10-slim`, `eclipse-temurin:21-jdk-alpine`
 - Interactive code execution via WebSocket at `/ws/run` — `server.ts` attaches a `WebSocketServer` to the HTTP server, client connects via `useCodeExecution` hook. 20s wall-clock timeout (resets on stdin), 1MB output cap. In production, nginx must proxy `/ws/` with `Upgrade` and `Connection "upgrade"` headers
 - Password reset: `/auth/forgot-password` sends a 6-digit code via email (15min expiry), `/auth/reset-password` validates code and updates password
-- Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --read-only --memory=128m --pids-limit=64 --cap-drop=ALL`
+- Terminal (Linux course): sandboxed Docker containers (`cyberstars-linux-sandbox`), stateful sessions with in-memory Map, idle GC at 15min. Container flags: `--network=none --memory=128m --pids-limit=64 --cap-drop=ALL --security-opt=no-new-privileges --read-only` plus tmpfs mounts for `/home/student` and `/tmp`
 
 ### Database (`prisma/`)
 
