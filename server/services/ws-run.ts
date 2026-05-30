@@ -7,9 +7,10 @@ import { handleInteractiveRun } from './interactive-execution.service.js';
 
 // Reject oversized frames before they are buffered/parsed.
 const MAX_PAYLOAD_BYTES = 128 * 1024;
-// Limits are keyed by user id; the app runs as a single process.
-const MAX_ACTIVE_RUNS_PER_USER = 5;
+const MAX_ACTIVE_RUNS = 5;
 const MAX_RUNS_PER_WINDOW = 60;
+const GUEST_MAX_RUNS_PER_WINDOW = 15;
+const GUEST_MAX_ACTIVE_RUNS = 2;
 const RATE_WINDOW_MS = 60_000;
 
 export function parseTokenCookie(cookieHeader: string | undefined): string | null {
@@ -33,31 +34,37 @@ export function verifyToken(token: string | null): number | null {
   }
 }
 
-const recentRuns = new Map<number, number[]>();
-const activeRuns = new Map<number, number>();
+export function extractIp(req: IncomingMessage): string {
+  const forwarded = req.headers['x-forwarded-for'];
+  if (typeof forwarded === 'string') return forwarded.split(',')[0].trim();
+  return req.socket.remoteAddress ?? 'unknown';
+}
 
-export function tryStartRun(userId: number, now = Date.now()): boolean {
-  const window = (recentRuns.get(userId) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  recentRuns.set(userId, window);
-  if (window.length >= MAX_RUNS_PER_WINDOW) return false;
-  if ((activeRuns.get(userId) ?? 0) >= MAX_ACTIVE_RUNS_PER_USER) return false;
+const recentRuns = new Map<string, number[]>();
+const activeRuns = new Map<string, number>();
+
+export function tryStartRun(key: string, isGuest: boolean, now = Date.now()): boolean {
+  const maxWindow = isGuest ? GUEST_MAX_RUNS_PER_WINDOW : MAX_RUNS_PER_WINDOW;
+  const maxActive = isGuest ? GUEST_MAX_ACTIVE_RUNS : MAX_ACTIVE_RUNS;
+  const window = (recentRuns.get(key) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  recentRuns.set(key, window);
+  if (window.length >= maxWindow) return false;
+  if ((activeRuns.get(key) ?? 0) >= maxActive) return false;
   window.push(now);
-  activeRuns.set(userId, (activeRuns.get(userId) ?? 0) + 1);
+  activeRuns.set(key, (activeRuns.get(key) ?? 0) + 1);
   return true;
 }
 
-export function endRun(userId: number): void {
-  const remaining = (activeRuns.get(userId) ?? 0) - 1;
-  if (remaining <= 0) activeRuns.delete(userId);
-  else activeRuns.set(userId, remaining);
+export function endRun(key: string): void {
+  const remaining = (activeRuns.get(key) ?? 0) - 1;
+  if (remaining <= 0) activeRuns.delete(key);
+  else activeRuns.set(key, remaining);
 }
 
 export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
   const userId = verifyToken(parseTokenCookie(req.headers.cookie));
-  if (userId === null) {
-    ws.close(4401, 'Unauthorized');
-    return;
-  }
+  const isGuest = userId === null;
+  const rateKey = isGuest ? `ip:${extractIp(req)}` : `user:${userId}`;
 
   let started = false;
   let counted = false;
@@ -73,7 +80,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
     if (msg.type !== 'run' || typeof msg.code !== 'string' || typeof msg.language !== 'string') {
       return;
     }
-    if (!tryStartRun(userId)) {
+    if (!tryStartRun(rateKey, isGuest)) {
       ws.send(JSON.stringify({ type: 'stderr', data: 'Too many runs — please wait a moment.\n' }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       ws.close(4429, 'Rate limit');
@@ -92,7 +99,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
 
   ws.on('close', () => {
     if (counted) {
-      endRun(userId);
+      endRun(rateKey);
       counted = false;
     }
   });
