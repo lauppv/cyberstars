@@ -70,7 +70,7 @@ export function CodeOutput({
                 data-testid="stdin-input"
                 contentEditable
                 suppressContentEditableWarning
-                className="outline-none font-mono text-[13px] text-[var(--text)] caret-[var(--accent)] whitespace-pre-wrap break-all"
+                className="inline-block min-w-[1ch] min-h-[1em] outline-none font-mono text-[13px] text-[var(--text)] caret-[var(--accent)] whitespace-pre-wrap break-all"
                 style={{ fontFamily: 'var(--mono)' }}
                 autoFocus
                 onKeyDown={handleKeyDown}
