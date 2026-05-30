@@ -25,15 +25,19 @@ export async function signup(name: string, email: string, password: string): Pro
   }
 }
 
+// A throwaway hash compared against when the email is unknown. Running one
+// bcrypt comparison on every login keeps response timing the same whether or
+// not the account exists, so timing can't be used to enumerate users.
+const DUMMY_PASSWORD_HASH = bcrypt.hashSync('cyberstars-no-such-user', 8);
+
 export async function login(email: string, password: string): Promise<string> {
   const user = await userRepo.findByEmail(email);
-  if (!user) {
-    throw new AppError(401, 'User not found');
-  }
 
-  const valid = bcrypt.compareSync(password, user.password);
-  if (!valid) {
-    throw new AppError(401, 'Invalid password');
+  // One generic message for both "no such email" and "wrong password" so the
+  // response never reveals which accounts exist (user enumeration).
+  const valid = bcrypt.compareSync(password, user?.password ?? DUMMY_PASSWORD_HASH);
+  if (!user || !valid) {
+    throw new AppError(401, 'Invalid email or password');
   }
 
   return createToken(user.id);
