@@ -6,11 +6,11 @@ A free, open-source interactive coding education platform. Learn Python, C, Java
 
 - **Split-screen lessons** — Markdown content on the left, live CodeMirror editor on the right
 - **Runnable code examples** — click "Run" on any code block inside lesson text to execute it instantly
-- **Test-driven completion** — lessons are marked complete when all test cases pass, not by clicking a button
+- **Self-paced completion** — run your code, then click "Mark Complete" when you're ready; no automated grading
 - **Multi-language** — Python (61 lessons), Java (61 lessons), C (45 lessons), Linux terminal (55 lessons)
 - **Algorithm challenges** — 60 challenges across 3 languages with Easy/Medium/Hard difficulty levels
 - **Sandboxed execution** — user code runs in Docker containers, never in the browser
-- **Progress tracking** — per-course progress bars, XP, levels, streak, and 8 unlockable badges
+- **Progress tracking** — per-course progress bars and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
 - **Code persistence** — saved per lesson, restored on revisit
 - **Community forum** — threaded discussions with reactions and solution marking
 - **Linux terminal** — interactive sandboxed shell for learning Linux commands
@@ -50,7 +50,6 @@ cyberstars/
 ├── shared/          # Types and constants (client + server)
 ├── prisma/          # Database schema, migrations, seed
 ├── test/            # Test setup
-├── docs/            # Technical documentation
 └── .github/         # CI workflows
 ```
 

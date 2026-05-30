@@ -105,19 +105,20 @@ Open an issue with:
 
 ### Adding lessons
 
-Lesson content lives in `server/lessons/{python,c,java,linux}/`. Each lesson needs three files:
+Lesson content lives in `server/lessons/{python,c,java,linux}/`. Python, C, and Java lessons need two files:
 
 1. `<slug>.md` — the lesson content (Markdown with runnable code blocks)
 2. `<slug>-code.md` — the starter code template shown in the editor
-3. `<slug>-tests.json` — test cases that validate the student's solution
 
 Then add the lesson to `prisma/seed.ts` in the `lessons` array with the correct `courseKey`, `slug`, `title`, and `sortOrder`. The next `npm run dev` will seed it automatically.
+
+There is no automated grading: students run their code and click "Mark Complete" themselves.
 
 Important rules:
 
 - C code blocks must be full programs (`#include`, `int main(void)`, `return 0`)
 - Java code blocks must have `public class Main` with `main()` method
-- Linux lessons need three files: `<slug>.md`, `<slug>-setup.json`, `<slug>-tests.json`
+- Linux lessons use two files instead: `<slug>.md` (the lesson) and `<slug>-setup.json` (the sandbox filesystem) — no `-code.md`
 - Look at existing lessons for the format — consistency matters
 
 ### Code changes

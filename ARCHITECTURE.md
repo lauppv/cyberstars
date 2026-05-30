@@ -133,11 +133,11 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Profile
 
-| Method | Endpoint              | Auth | Description                               |
-| ------ | --------------------- | ---- | ----------------------------------------- |
-| PATCH  | `/api/profile`        | Yes  | Update profile (bio, status, displayName) |
-| POST   | `/api/profile/avatar` | Yes  | Upload avatar                             |
-| DELETE | `/api/profile/avatar` | Yes  | Remove avatar                             |
+| Method | Endpoint              | Auth | Description                  |
+| ------ | --------------------- | ---- | ---------------------------- |
+| PATCH  | `/api/profile`        | Yes  | Update profile (bio, status) |
+| POST   | `/api/profile/avatar` | Yes  | Upload avatar                |
+| DELETE | `/api/profile/avatar` | Yes  | Remove avatar                |
 
 ## Database schema
 
@@ -173,7 +173,7 @@ User code runs in Docker containers, never in the browser.
 | C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout       |
 | Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout          |
 
-Containers run with `--network=none`, `--memory=128m`, `--pids-limit=64`. Docker is invoked via `execFile` with an argument array (no shell interpolation).
+Containers are locked down with `--network=none`, `--memory=128m`, `--pids-limit=64`, `--cap-drop=ALL`, `--security-opt=no-new-privileges`, `--read-only` (with a small `/tmp` tmpfs for compiler scratch), and `--user=<uid>:<gid>` (the host process's own uid, so the bind-mounted `/work` stays writable after capabilities are dropped). Docker is always invoked with an argument array (no shell interpolation) — `spawn` for the run step, `execFile` for the compile step.
 
 Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on each stdin input, plus a 1MB output cap to stop runaway output loops.
 
@@ -195,20 +195,24 @@ Lessons have no automated grading: students run their code and click "Mark Compl
 
 ## Environment variables
 
-| Variable          | Required | Default                 | Description                  |
-| ----------------- | -------- | ----------------------- | ---------------------------- |
-| `DB_USER`         | Yes      | —                       | PostgreSQL user              |
-| `DB_HOST`         | Yes      | —                       | PostgreSQL host              |
-| `DB_NAME`         | Yes      | —                       | Database name                |
-| `DB_PASSWORD`     | Yes      | —                       | Database password            |
-| `DB_PORT`         | No       | `5432`                  | PostgreSQL port              |
-| `DATABASE_URL`    | Yes      | —                       | Prisma CLI connection string |
-| `EXPRESS_PORT`    | No       | `5000`                  | Backend port                 |
-| `JWT_SECRET`      | Yes      | —                       | JWT signing secret           |
-| `NODE_ENV`        | No       | `development`           | Environment                  |
-| `CORS_DEV_ORIGIN` | No       | `http://localhost:5173` | CORS origin in dev           |
-| `CODE_RUN_MEMORY` | No       | `128m`                  | Per-container memory limit   |
-| `CODE_RUN_PIDS`   | No       | `64`                    | Per-container PID limit      |
+| Variable          | Required | Default                   | Description                               |
+| ----------------- | -------- | ------------------------- | ----------------------------------------- |
+| `DB_USER`         | Yes      | —                         | PostgreSQL user                           |
+| `DB_HOST`         | Yes      | —                         | PostgreSQL host                           |
+| `DB_NAME`         | Yes      | —                         | Database name                             |
+| `DB_PASSWORD`     | Yes      | —                         | Database password                         |
+| `DB_PORT`         | No       | `5432`                    | PostgreSQL port                           |
+| `DATABASE_URL`    | Yes      | —                         | Prisma CLI connection string              |
+| `EXPRESS_PORT`    | No       | `5000`                    | Backend port (dev)                        |
+| `PORT`            | No       | `8080`                    | Backend port (production)                 |
+| `JWT_SECRET`      | Yes      | —                         | JWT signing secret                        |
+| `NODE_ENV`        | No       | `development`             | Environment                               |
+| `CORS_DEV_ORIGIN` | No       | `http://localhost:5173`   | CORS origin in dev                        |
+| `CORS_ORIGIN`     | No       | `https://cyber-stars.org` | CORS origin in production                 |
+| `CODE_RUN_MEMORY` | No       | `128m`                    | Per-container memory limit                |
+| `CODE_RUN_PIDS`   | No       | `64`                      | Per-container PID limit                   |
+| `SMTP_USER`       | No       | —                         | Gmail SMTP user for password-reset emails |
+| `SMTP_PASS`       | No       | —                         | Gmail SMTP app password                   |
 
 ## Design decisions
 
