@@ -89,10 +89,6 @@ export interface UpdatePostRequest {
   content: string;
 }
 
-interface UpdateUserRoleRequest {
-  role: UserRole;
-}
-
 export interface ToggleReactionRequest {
   emoji: string;
 }

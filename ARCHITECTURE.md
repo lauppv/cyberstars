@@ -7,11 +7,12 @@ CyberStars is a split-screen coding education platform with a React frontend, Ex
 ```
 cyberstars/
 ├── shared/                        # DTO types + constants (imported by both client and server)
-│   ├── constants.ts               # XP formulas, level math, course key lists
+│   ├── constants.ts               # Progress %, course key constants
 │   ├── auth.ts                    # Auth-related types
 │   ├── lesson.ts                  # LessonContent, LessonMeta, Course
 │   ├── progress.ts                # CourseProgress, LessonProgressItem
-│   ├── tests.ts                   # TestCase, TestResult, SubmitResult, TestMode
+│   ├── forum.ts                   # Forum DTO types
+│   ├── support.ts                 # Support ticket DTO types
 │   └── terminal.ts                # Terminal session types
 │
 ├── prisma/
@@ -113,12 +114,11 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Terminal (Linux sandbox)
 
-| Method | Endpoint                    | Auth     | Description                       |
-| ------ | --------------------------- | -------- | --------------------------------- |
-| POST   | `/api/terminal/session`     | Yes      | Create sandboxed terminal session |
-| POST   | `/api/terminal/exec`        | Yes      | Execute command in session        |
-| POST   | `/api/terminal/submit`      | Optional | Run lesson validation checks      |
-| DELETE | `/api/terminal/session/:id` | Yes      | Destroy session                   |
+| Method | Endpoint                    | Auth | Description                       |
+| ------ | --------------------------- | ---- | --------------------------------- |
+| POST   | `/api/terminal/session`     | Yes  | Create sandboxed terminal session |
+| POST   | `/api/terminal/exec`        | Yes  | Execute command in session        |
+| DELETE | `/api/terminal/session/:id` | Yes  | Destroy session                   |
 
 ### Support
 
@@ -186,22 +186,12 @@ No changes to services, controllers, or routes needed.
 
 ## Lesson format
 
-Each lesson consists of three files in `server/lessons/:lang/`:
+Each lesson consists of two files in `server/lessons/:lang/`:
 
 - `<slug>.md` — educational content with runnable code blocks
 - `<slug>-code.md` — starter code template
-- `<slug>-tests.json` — test cases for validation
 
-### Test modes
-
-| Mode         | Description                               |
-| ------------ | ----------------------------------------- |
-| `exact`      | Output must match expected string exactly |
-| `contains`   | Output must contain expected string       |
-| `any`        | Any non-empty output passes               |
-| `line`       | A specific output line must match         |
-| `regex`      | Output must match a regex                 |
-| `code_regex` | Source code must match a regex            |
+Lessons have no automated grading: students run their code and click "Mark Complete" themselves.
 
 ## Environment variables
 
@@ -225,7 +215,7 @@ Each lesson consists of three files in `server/lessons/:lang/`:
 - **Shared types** — `shared/` folder prevents client/server type drift
 - **Cookie auth** — httpOnly cookies prevent XSS access to tokens
 - **Filesystem lessons** — easy to author with git, metadata in PostgreSQL for querying
-- **Derived gamification** — XP/levels/badges computed from `UserLessonProgress`, no extra tables
+- **Derived gamification** — badges computed client-side from `UserLessonProgress` counts, no extra tables
 - **CurriculumContext** — curriculum fetched once at startup, shared via context
 - **CSS variables** — all theming via custom properties, re-theming is a one-file change
 - **`npm run dev` does everything** — DB setup, migration, seeding, server start in one command
