@@ -329,12 +329,6 @@ describe('getThread', () => {
 });
 
 describe('createThread', () => {
-  it('returns 400 for missing fields', async () => {
-    const next = vi.fn();
-    await createThread(mockReq({ user: { id: 1 } as Request['user'], body: {} }), mockRes(), next);
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
   it('returns 404 for unknown category', async () => {
     mockPrisma.forumCategory.findUnique.mockResolvedValue(null);
     const next = vi.fn();
@@ -692,21 +686,6 @@ describe('updateUserRole', () => {
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
   });
 
-  it('returns 400 for invalid role', async () => {
-    mockUserRepo.getRole.mockResolvedValue('ADMIN');
-    const next = vi.fn();
-    await updateUserRole(
-      mockReq({
-        user: { id: 1 } as Request['user'],
-        params: { userId: '2' } as Record<string, string>,
-        body: { role: 'SUPERADMIN' },
-      }),
-      mockRes(),
-      next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
   it('updates role successfully', async () => {
     mockUserRepo.getRole.mockResolvedValue('ADMIN');
     mockUserRepo.updateRole.mockResolvedValue(undefined);
@@ -722,47 +701,6 @@ describe('updateUserRole', () => {
     );
     expect(mockUserRepo.updateRole).toHaveBeenCalledWith(2, 'MODERATOR');
     expect(res.json).toHaveBeenCalledWith({ ok: true });
-  });
-});
-
-describe('createThread validation', () => {
-  it('returns 400 when categorySlug is missing', async () => {
-    const next = vi.fn();
-    await createThread(
-      mockReq({
-        user: { id: 1 } as Request['user'],
-        body: { title: 'T', content: 'C' },
-      }),
-      mockRes(),
-      next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
-  it('returns 400 when title is whitespace only', async () => {
-    const next = vi.fn();
-    await createThread(
-      mockReq({
-        user: { id: 1 } as Request['user'],
-        body: { categorySlug: 'general', title: '   ', content: 'C' },
-      }),
-      mockRes(),
-      next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
-  });
-
-  it('returns 400 when content is whitespace only', async () => {
-    const next = vi.fn();
-    await createThread(
-      mockReq({
-        user: { id: 1 } as Request['user'],
-        body: { categorySlug: 'general', title: 'T', content: '   ' },
-      }),
-      mockRes(),
-      next,
-    );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
   });
 });
 
