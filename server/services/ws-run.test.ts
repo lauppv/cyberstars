@@ -63,11 +63,17 @@ describe('verifyToken', () => {
 
 describe('extractIp', () => {
   it('returns x-forwarded-for first entry when present', () => {
-    const req = { headers: { 'x-forwarded-for': '1.2.3.4, 5.6.7.8' }, socket: { remoteAddress: '127.0.0.1' } } as unknown as IncomingMessage;
+    const req = {
+      headers: { 'x-forwarded-for': '1.2.3.4, 5.6.7.8' },
+      socket: { remoteAddress: '127.0.0.1' },
+    } as unknown as IncomingMessage;
     expect(extractIp(req)).toBe('1.2.3.4');
   });
   it('falls back to socket.remoteAddress', () => {
-    const req = { headers: {}, socket: { remoteAddress: '10.0.0.1' } } as unknown as IncomingMessage;
+    const req = {
+      headers: {},
+      socket: { remoteAddress: '10.0.0.1' },
+    } as unknown as IncomingMessage;
     expect(extractIp(req)).toBe('10.0.0.1');
   });
 });
