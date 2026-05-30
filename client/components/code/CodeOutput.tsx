@@ -16,17 +16,19 @@ export function CodeOutput({
   onInput,
 }: CodeOutputProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [output]);
 
   const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement>) => {
+    (e: React.KeyboardEvent<HTMLSpanElement>) => {
       if (e.key === 'Enter') {
-        const val = e.currentTarget.value;
-        e.currentTarget.value = '';
+        e.preventDefault();
+        const el = e.currentTarget;
+        const val = el.textContent ?? '';
+        el.textContent = '';
         onInput?.(val + '\n');
       }
     },
@@ -63,16 +65,23 @@ export function CodeOutput({
             {beforeLastLine && <span className="text-[var(--success)]">{beforeLastLine}</span>}
             <span className="text-[var(--success)]">{lastLine}</span>
             {isRunning && onInput && (
-              <input
+              <span
                 ref={inputRef}
-                type="text"
-                className="bg-transparent text-[var(--text)] outline-none border-none font-mono text-[13px] caret-[var(--accent)] p-0 m-0 align-baseline inline"
-                style={{
-                  fontFamily: 'var(--mono)',
-                  width: `${Math.max(10, 30 - lastLine.length)}ch`,
-                }}
+                data-testid="stdin-input"
+                contentEditable
+                suppressContentEditableWarning
+                className="inline-block min-w-[1ch] min-h-[1em] outline-none font-mono text-[13px] text-[var(--text)] caret-[var(--accent)] whitespace-pre-wrap break-all"
+                style={{ fontFamily: 'var(--mono)' }}
                 autoFocus
                 onKeyDown={handleKeyDown}
+                onFocus={(e) => {
+                  const range = document.createRange();
+                  range.selectNodeContents(e.currentTarget);
+                  range.collapse(false);
+                  const sel = window.getSelection();
+                  sel?.removeAllRanges();
+                  sel?.addRange(range);
+                }}
               />
             )}
           </>
