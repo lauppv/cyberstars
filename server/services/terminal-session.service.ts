@@ -168,24 +168,6 @@ export async function execCommand(
   }
 }
 
-export async function probe(sessionId: string, command: string): Promise<string> {
-  const session = sessions.get(sessionId);
-  if (!session) throw new Error('Session not found');
-
-  try {
-    return await docker(
-      ['exec', session.containerId, 'bash', '-c', `cd "$(cat /tmp/.cwd)" && ${command}`],
-      8000,
-    );
-  } catch (e: unknown) {
-    return e instanceof Error ? e.message : '';
-  }
-}
-
-export function getSession(sessionId: string): Session | undefined {
-  return sessions.get(sessionId);
-}
-
 export async function destroySession(sessionId: string, actorId?: number): Promise<void> {
   const session = sessions.get(sessionId);
   if (!session) return;

@@ -229,10 +229,6 @@ export async function createThread(req: Request, res: Response, next: NextFuncti
     const userId = req.user!.id;
     const { categorySlug, title, content } = req.body;
 
-    if (!categorySlug || !title?.trim() || !content?.trim()) {
-      throw new AppError(400, 'categorySlug, title, and content are required');
-    }
-
     const category = await prisma.forumCategory.findUnique({ where: { slug: categorySlug } });
     if (!category) throw new AppError(404, 'Category not found');
 
@@ -247,9 +243,9 @@ export async function createThread(req: Request, res: Response, next: NextFuncti
       data: {
         categoryId: category.id,
         authorId: userId,
-        title: title.trim(),
+        title,
         posts: {
-          create: { authorId: userId, content: content.trim() },
+          create: { authorId: userId, content },
         },
       },
     });
@@ -267,7 +263,6 @@ export async function createPost(req: Request, res: Response, next: NextFunction
     if (isNaN(threadId)) throw new AppError(400, 'Invalid thread ID');
 
     const { content } = req.body;
-    if (!content?.trim()) throw new AppError(400, 'Content is required');
 
     const thread = await prisma.forumThread.findUnique({
       where: { id: threadId },
@@ -284,7 +279,7 @@ export async function createPost(req: Request, res: Response, next: NextFunction
     }
 
     const post = await prisma.forumPost.create({
-      data: { threadId, authorId: userId, content: content.trim() },
+      data: { threadId, authorId: userId, content },
     });
 
     await prisma.forumThread.update({ where: { id: threadId }, data: { updatedAt: new Date() } });
@@ -306,7 +301,6 @@ export async function toggleReaction(
     if (isNaN(postId)) throw new AppError(400, 'Invalid post ID');
 
     const { emoji } = req.body;
-    if (!emoji) throw new AppError(400, 'Emoji is required');
 
     const existing = await prisma.forumReaction.findUnique({
       where: { postId_userId_emoji: { postId, userId, emoji } },
@@ -361,7 +355,6 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
     if (isNaN(postId)) throw new AppError(400, 'Invalid post ID');
 
     const { content } = req.body;
-    if (!content?.trim()) throw new AppError(400, 'Content is required');
 
     const post = await prisma.forumPost.findUnique({
       where: { id: postId },
@@ -377,7 +370,7 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
     const actor = await prisma.user.findUnique({ where: { id: userId }, select: { name: true } });
     await prisma.forumPost.update({
       where: { id: postId },
-      data: { content: content.trim(), editedByName: actor!.name },
+      data: { content, editedByName: actor!.name },
     });
     res.json({ ok: true });
   } catch (err) {
@@ -453,10 +446,6 @@ export async function updateUserRole(
     if (targetId === actorId) throw new AppError(400, 'You cannot change your own role');
 
     const role = req.body.role as Role;
-    if (!['USER', 'MODERATOR', 'ADMIN'].includes(role)) {
-      throw new AppError(400, 'Invalid role');
-    }
-
     await userRepo.updateRole(targetId, role);
     res.json({ ok: true });
   } catch (err) {

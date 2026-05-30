@@ -16,7 +16,7 @@ vi.mock('fs', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { loadSetup, createSession, execCommand, probe, getSession, destroySession } =
+const { loadSetup, createSession, execCommand, destroySession } =
   await import('./terminal-session.service.js');
 
 function dockerAvailable(): boolean {
@@ -61,7 +61,6 @@ describe('createSession', () => {
     sessionsToClean.push(info.sessionId);
     expect(info.sessionId).toBeDefined();
     expect(info.cwd).toBe('/home/student');
-    expect(getSession(info.sessionId)).toBeDefined();
   });
 });
 
@@ -105,48 +104,29 @@ describe('execCommand', () => {
   });
 });
 
-describe('probe', () => {
-  it('throws for unknown session', async () => {
-    await expect(probe('no-such-session', 'pwd')).rejects.toThrow('Session not found');
-  });
-
-  itDocker('returns probe output', async () => {
+describe('destroySession', () => {
+  itDocker('removes the session', async () => {
     mockExistsSync.mockReturnValue(false);
     const { sessionId } = await createSession('linux', 'test', 1);
-    sessionsToClean.push(sessionId);
-
-    const result = await probe(sessionId, 'echo probed');
-    expect(result).toContain('probed');
-  });
-});
-
-describe('getSession / destroySession', () => {
-  it('getSession returns undefined for unknown session', () => {
-    expect(getSession('nope')).toBeUndefined();
-  });
-
-  itDocker('destroySession removes session', async () => {
-    mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
-    expect(getSession(sessionId)).toBeDefined();
 
     await destroySession(sessionId);
-    expect(getSession(sessionId)).toBeUndefined();
+    await expect(execCommand(sessionId, 'echo hi', 1)).rejects.toThrow('Session not found');
   });
 
-  it('destroySession is no-op for unknown session', async () => {
+  it('is a no-op for unknown session', async () => {
     await expect(destroySession('nope')).resolves.toBeUndefined();
   });
 
-  itDocker('destroySession ignores a non-owner actor', async () => {
+  itDocker('ignores a non-owner actor', async () => {
     mockExistsSync.mockReturnValue(false);
     const { sessionId } = await createSession('linux', 'test', 1);
     sessionsToClean.push(sessionId);
 
     await destroySession(sessionId, 2);
-    expect(getSession(sessionId)).toBeDefined();
+    const stillAlive = await execCommand(sessionId, 'echo hi', 1);
+    expect(stillAlive.output).toContain('hi');
 
     await destroySession(sessionId, 1);
-    expect(getSession(sessionId)).toBeUndefined();
+    await expect(execCommand(sessionId, 'echo hi', 1)).rejects.toThrow('Session not found');
   });
 });
