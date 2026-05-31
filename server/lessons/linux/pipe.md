@@ -33,5 +33,12 @@ lines.
 
 ---
 
-The file `transmissions.log` has many entries. Use a **pipe** to send the output of
-`cat transmissions.log` into `grep` and show only lines containing `mayday`.
+## Mission: Distress Signal Filter
+
+The station's comms officer has flagged `transmissions.log` — it contains routine chatter mixed with distress calls. Command needs only the emergencies.
+
+Use a **pipe** to send the output of `cat transmissions.log` into `grep` and show only lines containing `mayday`.
+
+**Expected result**
+
+Three lines should appear, each starting with `mayday:`.

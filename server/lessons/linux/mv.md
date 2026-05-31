@@ -45,10 +45,13 @@ names carefully.
 
 ---
 
-Tidy up the workspace. In your home directory:
+## Mission: File Relocation
+
+The station's filing system is being reorganised. A draft document needs to be finalised and moved to the archive. Your home directory contains `draft.txt` and an `archive` folder.
 
 1. Rename `draft.txt` to `report.txt`.
 2. Move `report.txt` into the `archive` folder.
 
-When you finish, the file should be at `archive/report.txt` and no longer in your home
-directory.
+**Expected result**
+
+The file now lives at `archive/report.txt` and is no longer in your home directory.

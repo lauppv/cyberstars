@@ -37,5 +37,12 @@ let you sample a big file from both ends without reading the middle.
 
 ---
 
-The `system.log` file keeps growing. Use **tail** with the `-n` option to print only
-its **last 4 lines** — the most recent events.
+## Mission: Check the Latest Alerts
+
+Something triggered an alert on the station. The most recent events are always at the end of `system.log`. You need to check what just happened.
+
+Use `tail` with the `-n` option to print only the **last 4 lines** of `system.log`.
+
+**Expected result**
+
+The 4 most recent log entries appear, showing you the latest station events.

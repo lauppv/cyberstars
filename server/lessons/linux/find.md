@@ -45,5 +45,12 @@ find logs -name "error.txt"
 
 ---
 
-Somewhere under your home directory there is a file called `secret.txt`. Use **find**
-with `-name` to locate it and print its path.
+## Mission: Locate the Classified File
+
+Intelligence reports that a classified document called `secret.txt` is stored somewhere in your home directory tree, but no one remembers the exact path.
+
+Use `find` with `-name` to locate `secret.txt` and print its full path.
+
+**Expected result**
+
+The terminal displays the path to `secret.txt` within the directory tree.

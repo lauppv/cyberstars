@@ -40,6 +40,12 @@ If something goes wrong, remove the last pipe and inspect the intermediate outpu
 
 ---
 
-The file `events.log` records station events. Build a pipeline that: takes the file
-content, filters lines containing `alert`, sorts them alphabetically, and shows only
-the **first 2** results. Chain at least 3 pipes.
+## Mission: Priority Alert Briefing
+
+The bridge crew needs a quick briefing — only the two most urgent alerts from today's event log, sorted alphabetically so they can cross-reference the duty roster.
+
+Build a pipeline that reads `events.log`, filters lines containing `alert`, sorts them alphabetically, and shows only the **first 2** results. Your pipeline should chain at least 3 pipes.
+
+**Expected result**
+
+Two sorted `alert` lines should appear on screen.

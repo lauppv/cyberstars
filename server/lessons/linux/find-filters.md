@@ -45,8 +45,13 @@ That finds every file larger than 1 KB.
 
 ---
 
-Explore the `station` folder under your home directory:
+## Mission: Station Directory Scan
 
-1. Use `find` with `-type d` to list **only the directories** inside `station`.
-2. Use `find` with `-type f` and `-name "*.txt"` to list **only the .txt files**
-   inside `station`.
+The chief engineer needs a structural overview of the `station` folder before reorganising the file system.
+
+1. Use `find station -type d` to list **only the directories** inside `station`.
+2. Use `find station -type f -name "*.txt"` to list **only the `.txt` files** inside `station`.
+
+**Expected result**
+
+First you see the directory paths, then the paths of all `.txt` files found under `station`.

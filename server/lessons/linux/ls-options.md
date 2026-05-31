@@ -51,6 +51,12 @@ You can write it as `ls -la`, `ls -al`, or `ls -l -a` — all the same.
 
 ---
 
-Your home directory contains a hidden file. Use **ls** with the right option(s) to
-list **all** items, including hidden ones, in **long** format — so you can see the
-hidden file _and_ which items are directories.
+## Mission: Uncover Hidden Files
+
+Station security has flagged a hidden file somewhere in your home directory. Regular scans missed it because hidden files do not show up in a plain listing.
+
+Use `ls` with the right options to list **all** items (including hidden ones) in **long** format.
+
+**Expected result**
+
+You see every item — including the hidden file starting with `.` — along with details showing which entries are files and which are directories.

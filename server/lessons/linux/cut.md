@@ -36,6 +36,12 @@ Extracts the second comma-separated column from a CSV stream.
 
 ---
 
-The file `manifest.csv` uses commas as delimiters. Each line has the format:
-`item,quantity,destination`. Use `cut` to extract **only the item names** (field 1)
-and display them.
+## Mission: Cargo Manifest Quick-List
+
+The supply shuttle is docking in minutes and the deck officer needs a plain list of item names from `manifest.csv` — no quantities, no destinations, just the items.
+
+Use `cut` to extract **only the item names** (field 1) from the comma-delimited `manifest.csv`.
+
+**Expected result**
+
+A list of item names, one per line, with no other columns.

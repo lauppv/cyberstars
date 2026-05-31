@@ -35,6 +35,12 @@ everything `more` does _and_ lets you scroll **backwards** — hence the joke na
 
 ---
 
-A long file `manual.txt` is in your home directory. Use **cat** to display it (on a
-real system you would open it with `less` and scroll). Confirm you can see its
-contents.
+## Mission: Review the Operations Manual
+
+The station's operations manual has been updated and saved to `manual.txt`. You need to review its contents. In this sandbox, use `cat` to display the file (on a real system you would use `less` to scroll through it page by page).
+
+Display the contents of `manual.txt`.
+
+**Expected result**
+
+The full text of the operations manual appears in your terminal.

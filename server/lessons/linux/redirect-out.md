@@ -45,5 +45,12 @@ anything.
 
 ---
 
-The file `sensors.log` has several readings. Use `grep` to find lines containing
-`critical` and redirect **only those lines** into a new file called `alerts.txt`.
+## Mission: Critical Alert Extraction
+
+The sensor array has been logging readings to `sensors.log`, but the chief engineer only wants to see the critical warnings. Extract them into a separate file so the repair crew knows exactly what to fix.
+
+Use `grep` to find lines containing `critical` in `sensors.log` and redirect the output into a new file called `alerts.txt`.
+
+**Expected result**
+
+Running `cat alerts.txt` shows only the two critical lines from the sensor log.

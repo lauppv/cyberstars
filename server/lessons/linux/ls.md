@@ -39,5 +39,12 @@ what you are working with.
 
 ---
 
-Your home directory contains some files and folders left by the previous crew. Run
-**ls** to see what is here.
+## Mission: Inventory Check
+
+The previous crew left behind files and folders in your home directory. Before you can start your shift, you need to know what you are working with.
+
+Run `ls` to list everything in your current directory.
+
+**Expected result**
+
+The terminal displays the names of all files and folders the previous crew left behind.

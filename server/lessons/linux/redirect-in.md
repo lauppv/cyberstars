@@ -30,6 +30,12 @@ becomes valuable when:
 
 ---
 
-The file `crew.txt` lists crew members, one per line. Use **input redirection** (`<`)
-to count how many lines it has with `wc -l`. The output should show only the number,
-with no filename.
+## Mission: Crew Headcount
+
+Life support needs an exact headcount to calibrate oxygen levels. The manifest is stored in `crew.txt`, one name per line.
+
+Use input redirection to count the crew: `wc -l < crew.txt`.
+
+**Expected result**
+
+The terminal prints only the number `6` with no filename beside it.

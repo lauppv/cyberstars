@@ -44,5 +44,12 @@ wherever stream 1 is going."
 
 ---
 
-Run `ls report.txt ghost.txt`. The file `ghost.txt` does not exist, so you will get an
-error. Redirect **only the error** into a file called `errors.log` using `2>`.
+## Mission: Ghost File Investigation
+
+Station sensors flagged a reference to a file called `ghost.txt` that may no longer exist. You need to run `ls report.txt ghost.txt` to check both files, but the error output is cluttering the main console.
+
+Redirect **only the error** into a file called `errors.log` using `2>`, so the normal output stays on screen and the error is captured separately.
+
+**Expected result**
+
+The terminal shows `report.txt` on screen, and `cat errors.log` reveals the "No such file" error for `ghost.txt`.

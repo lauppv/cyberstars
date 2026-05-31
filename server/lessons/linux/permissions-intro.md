@@ -32,5 +32,12 @@ For directories: `r` = list contents, `w` = add/remove files, `x` = enter (`cd`)
 
 ---
 
-Run `ls -l` to see the permissions of the files in your directory. Identify which file
-is executable by the owner.
+## Mission: Security Audit
+
+The station commander has ordered a permissions audit on your workstation. You need to inspect every file in your home directory and identify which ones have executable access.
+
+Run `ls -l` to display the permission strings for all files. Find the file that the owner can execute.
+
+**Expected result**
+
+You should see three files listed. One of them has `x` in the owner permission group (positions 2-4) — that is the executable file (`diagnostics.sh`).

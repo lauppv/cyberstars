@@ -35,5 +35,12 @@ Like `ls` and `pwd`, `cat` only reads — it never changes the file.
 
 ---
 
-A message file is waiting for you. In your home directory, use **cat** to read the
-contents of `briefing.txt`.
+## Mission: Read the Briefing
+
+A new mission briefing has arrived and is stored in `briefing.txt` in your home directory. Read it to find out what the crew's next objective is.
+
+Use `cat` to display the contents of `briefing.txt`.
+
+**Expected result**
+
+The full text of the briefing appears in your terminal.
