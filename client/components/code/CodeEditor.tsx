@@ -59,7 +59,7 @@ export function CodeEditor({
       theme={oneDark}
       extensions={getExtensions(language)}
       onChange={onChange}
-      style={{ fontSize, fontFamily: 'var(--mono)' }}
+      style={{ fontSize }}
     />
   );
 }
