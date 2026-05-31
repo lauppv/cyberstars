@@ -60,7 +60,7 @@ services:
       # so Docker daemon can resolve bind-mount paths correctly (DooD pattern).
       - /tmp/cyberstars-runs:/tmp/cyberstars-runs
     ports:
-      - "8080:8080"
+      - '8080:8080'
 
 volumes:
   pgdata:
