@@ -139,6 +139,19 @@ CyberStars uses the **fork-and-pull** model: you push branches to your own fork,
 5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code` — all five must pass (these mirror the CI gates)
 6. Push to your fork (`git push origin my-feature`) and open a pull request against `lauppv/cyberstars` with a clear description of what and why
 
+### Formatting
+
+This project uses [Prettier](https://prettier.io/) to enforce consistent code style (single quotes, semicolons, 2-space indent, 100-char lines). CI will reject unformatted code.
+
+Before committing, run:
+
+```bash
+npm run format        # auto-fix all formatting issues
+npm run format:check  # verify everything is clean (same check CI runs)
+```
+
+If `format:check` fails, just run `format` — it fixes everything automatically.
+
 ### Style guide
 
 - TypeScript everywhere, strict mode
