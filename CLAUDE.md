@@ -37,6 +37,8 @@ npm run db:studio         # Open Prisma Studio GUI
 npx vitest run path       # Run a single test file (substring match)
 ```
 
+**Before every commit**, run `npm run format` to auto-fix formatting, then verify with `npm run format:check`. CI will reject unformatted code.
+
 CI runs on every push/PR via GitHub Actions (`.github/workflows/ci.yml`): a `setup` job warms `node_modules`, then **10 parallel jobs**: `format-check`, `lint`, `typecheck`, `test` (with coverage + PR comment), `audit` (`npm audit --audit-level=high`), `dead-code` (knip), `test-integration` (spins up a Postgres 16 service), `test-e2e-browser` + `test-e2e-docker` (Playwright with required Docker images pre-pulled), and `build`. Tests are co-located next to source files (`*.test.ts`/`*.test.tsx`); integration and E2E live in separate top-level dirs and are excluded from the unit run via `vite.config.ts`. Node version is pinned in `.node-version` (currently 24) — CI reads it via `node-version-file` (the composite action `.github/actions/setup-node-and-deps` points at `.node-version`). Keep `.node-version`, `.nvmrc`, `package.json` engines, and your local Node version in sync to avoid lock file mismatches between local and CI. Prettier check is enforced in CI; before committing larger changes prefer `npm run format` over `:check` so the working tree is normalised.
 
 ## Architecture
