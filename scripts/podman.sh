@@ -21,4 +21,4 @@ fi
 export DOCKER_SOCK="$SOCKET"
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
-exec docker compose up "$@"
+exec docker compose "$@"
