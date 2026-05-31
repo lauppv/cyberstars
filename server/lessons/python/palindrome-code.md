@@ -1,7 +1,6 @@
-def isPalindrome(word): # check if word is a palindrome using a loop
+codes = ["racecar", "signal", "level", "orbit", "radar"]
+
+def is_palindrome(word): # return True if word reads the same forwards and backwards (use a loop, no [::-1])
 pass
 
-print(isPalindrome("level"))
-print(isPalindrome("python"))
-print(isPalindrome("abcba"))
-print(isPalindrome("ab"))
+# check each code, print "code: True/False", then print "Valid signals: " + the count

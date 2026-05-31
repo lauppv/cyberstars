@@ -109,19 +109,24 @@ We can even mix them, but in practice it’s rare and usually a sign that someth
 
 ---
 
-You have an empty list **heroes** on the right. Do the following
+## Mission: Cargo Bay
 
-1. Add **Shrek**, **Fiona** and **Donkey** to the list using **.append()**
-2. Display the **length** of the list
-3. Display the **first** hero
-4. Display the **last** hero (try with **heroes[2]**, but think about how you’d do it if the list had 100 elements)
+The station tracks its cargo in a list. You start with an **empty list** `cargo` (already on the right). Do the following, in order:
 
-Expected output
+1. **Add** `oxygen`, `water`, `food`, and `fuel` using **.append()**
+2. Print how many items are loaded (use **len()**)
+3. Print the **first** item
+4. Print the **last** item
+5. A leak ruins the water — **replace** the item at index 1 with `EMPTY`
+6. Print the **whole list**
+
+**Output**
 
 ```text
-3
-Shrek
-Donkey
+4
+oxygen
+fuel
+['oxygen', 'EMPTY', 'food', 'fuel']
 ```
 
-Run, play, **add more heroes**, see what changes :)
+Notice the last line: when you print a whole list, Python shows the brackets and quotes for you. Add more cargo and run again to see how the numbers change :)

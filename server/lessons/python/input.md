@@ -55,23 +55,32 @@ print(height)
 
 ---
 
-Write a program that **asks** the user for their **name** and their **age**, then displays
+## Mission: Crew Check-In
 
-```text
-Hello <name>, you are <age> years old. Next year you will be <age + 1>
-```
+The space station registers every new crew member. Write a program that **asks** for the crew member's **name**, then their **age**, and prints a welcome message.
 
-Example. If the user types
+Remember that **input()** always gives back a **string**, so you must turn the age into a number with **int()** before you can add **1** to it.
+
+**Input** (typed by the user when the program runs):
+
+- the crew member's name
+- the crew member's age
+
+**Output**
+
+One line: `Welcome aboard, ` then the name, then `! You are ` the age, then `. Next year you will be ` the age plus one, then a `.`
+
+**Example**
+
+If the user types
 
 ```text
 Cortez
 60
 ```
 
-then the program should display
+the program should print
 
 ```text
-Hello Cortez, you are 60 years old. Next year you will be 61
+Welcome aboard, Cortez! You are 60. Next year you will be 61.
 ```
-
-Don’t forget that **age** comes back as a **string** :)

@@ -63,16 +63,22 @@ The point of learning these algorithms is not to use them in production. It's to
 
 ---
 
-Write a function **selectionSort** that takes a list and sorts it using selection sort. Return the sorted list
+## Mission: Cargo Sort
+
+The cargo bay scanner reports container weights in whatever order they were loaded. To balance the hold, the crew needs them sorted from lightest to heaviest.
+
+Write a function **selection_sort(numbers)** that sorts a list in **ascending** order using selection sort and **returns** the sorted list.
+
+Then sort two batches of weights and print each result.
 
 ```py
-print(selectionSort([64, 25, 12, 22, 11]))   # [11, 12, 22, 25, 64]
-print(selectionSort([5, 1, 4, 2, 8]))         # [1, 2, 4, 5, 8]
+print(selection_sort([64, 25, 12, 22, 11]))
+print(selection_sort([9, 7, 5, 3, 1]))
 ```
 
-Expected output
+**Output**
 
 ```text
 [11, 12, 22, 25, 64]
-[1, 2, 4, 5, 8]
+[1, 3, 5, 7, 9]
 ```

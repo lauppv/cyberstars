@@ -1,7 +1,9 @@
-hero = {}
+crew = {"name": "Tommy", "role": "Pilot", "age": 34}
 
-# 1. add keys: name, location, friends
+# 1. add station = Laniakea
 
-# 2. add the key color with value green
+# 2. update age to 35
 
-# 3. print each value on a separate line
+# 3. print name, role, age, station each on its own line
+
+# 4. if rank is not in crew, print Rank: unknown

@@ -100,13 +100,20 @@ c: 2 students
 
 ---
 
-You have a list of **grades** (letters). Build a frequency dictionary and display each grade with its count, **sorted alphabetically**
+## Mission: Signal Frequencies
 
-Expected output
+The station's antenna logs every signal it receives by channel letter (already on the right). Mission Control wants to know how busy each channel is, and which one is busiest.
+
+1. Build a **frequency dictionary** counting how many times each channel appears.
+2. Print each channel and its count as `channel: count`, **sorted alphabetically** (loop over `sorted(freq)`).
+3. Find the **most common** channel and print `Most common: ` followed by its letter.
+
+**Output**
 
 ```text
 A: 3
 B: 4
-C: 2
+C: 1
 D: 1
+Most common: B
 ```

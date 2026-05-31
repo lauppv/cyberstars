@@ -86,24 +86,21 @@ For each element: if it's a list, recursively flatten it and add the results. If
 
 ---
 
-Write a recursive function **sumDigits** that takes a **positive integer** and returns the **sum of its digits**
+## Mission: Transmission Checksums
 
-The trick: **n % 10** gives us the **last digit**, and **n // 10** gives us the **rest of the number**
+Every transmission carries a numeric code, and the station verifies it with a **checksum** — the sum of the code's digits. You'll compute these checksums with **recursion**.
 
-Example: **sumDigits(1234)** = 1 + 2 + 3 + 4 = **10**
+1. Write a recursive function **sum_digits(n)** that returns the sum of the digits of a positive integer. The trick: `n % 10` is the **last digit**, `n // 10` is the **rest of the number**. Base case: if `n < 10` (one digit), return `n` itself.
+2. For each code in the list, print the code, then `: `, then its checksum.
+3. Track and print the **largest** checksum as `Largest checksum: ` followed by the value.
 
-Base case: if the number has one digit (n < 10), return n itself
-
-```py
-print(sumDigits(1234))    # 10
-print(sumDigits(999))     # 27
-print(sumDigits(5))       # 5
-```
-
-Expected output
+**Output**
 
 ```text
-10
-27
-5
+1234: 10
+999: 27
+5: 5
+4070: 11
+88: 16
+Largest checksum: 27
 ```

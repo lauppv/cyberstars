@@ -1,12 +1,12 @@
 quiz = [
-{"text": "1+1?", "options": ["A) 1", "B) 2"], "answer": "B"},
-{"text": "2+2?", "options": ["A) 4", "B) 5"], "answer": "A"},
-{"text": "3+3?", "options": ["A) 5", "B) 6"], "answer": "B"}
+{"text": "Which command shows output?", "answer": "B"},
+{"text": "What starts a comment?", "answer": "C"},
+{"text": "What does len() return?", "answer": "A"},
+{"text": "Which keyword defines a function?", "answer": "D"},
 ]
+player_answers = ["B", "C", "A", "B"]
 
-def gradeQuiz(questions, playerAnswers): # count how many answers are correct
+def grade_quiz(questions, answers): # count how many answers match each question's "answer"
 pass
 
-print(gradeQuiz(quiz, ["B", "A", "B"]))
-print(gradeQuiz(quiz, ["A", "A", "A"]))
-print(gradeQuiz(quiz, ["A", "B", "A"]))
+# print "Score: X/Y", "Percentage: Z%", then "PASS" (>= 50%) or "FAIL"

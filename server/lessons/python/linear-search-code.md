@@ -1,6 +1,8 @@
-def findFirst(items, target): # return the index of the first occurrence, or -1
+crew = ["Ana", "Boris", "Cara", "Dmitri", "Elena"]
+
+def find_crew(crew, target): # linear search: return the station number (index), or -1 if not found
 pass
 
-print(findFirst(["a", "b", "c", "b", "a"], "b"))
-print(findFirst(["a", "b", "c"], "z"))
-print(findFirst([10, 20, 30, 40], 30))
+target = input()
+
+# call find_crew, then print the result (station number, or "not on board")

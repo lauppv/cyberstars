@@ -91,24 +91,19 @@ print(f"\nFinal score: {score}/{total} ({percentage}%)")
 
 ---
 
-For testing, write a function **gradeQuiz** that takes a list of questions and a list of the player's answers (strings), and returns the **number of correct answers**. No input() needed — the answers are passed as a parameter
+## Mission: Crew Certification Quiz
 
-```py
-quiz = [
-    {"text": "1+1?", "options": ["A) 1", "B) 2"], "answer": "B"},
-    {"text": "2+2?", "options": ["A) 4", "B) 5"], "answer": "A"},
-    {"text": "3+3?", "options": ["A) 5", "B) 6"], "answer": "B"}
-]
+New crew must pass a certification quiz. The questions and the candidate's answers are already recorded (on the right), so no `input()` is needed — you just grade and report.
 
-print(gradeQuiz(quiz, ["B", "A", "B"]))   # 3 (all correct)
-print(gradeQuiz(quiz, ["A", "A", "A"]))   # 1 (only second is correct)
-print(gradeQuiz(quiz, ["A", "B", "A"]))   # 0 (all wrong)
-```
+1. Write a function **grade_quiz(questions, answers)** that returns how many of the candidate's answers match the `"answer"` field of the matching question.
+2. Print `Score: ` followed by the number correct, a `/`, and the total number of questions.
+3. Print `Percentage: ` followed by the score as a whole-number percentage (use `round(score / total * 100)`), then a `%`.
+4. Print `PASS` if the percentage is `50` or more, otherwise `FAIL`.
 
-Expected output
+**Output**
 
 ```text
-3
-1
-0
+Score: 3/4
+Percentage: 75%
+PASS
 ```

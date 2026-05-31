@@ -2,47 +2,37 @@ Combine **recursion**, **matrices (2D lists)**, and **binary search**
 
 ---
 
-Build a **dungeon explorer**. You have a dungeon map (a 2D list) where:
+## Mission: Sector Scan
 
-- **0** = empty path
-- **1** = wall
-- **2** = treasure
+A long-range scan returns a **sector map** as a 2D grid (a list of lists, already on the right) where:
 
-```python
-dungeon = [
-    [0, 1, 0, 0, 0],
-    [0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0],
-    [1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 2]
-]
-```
+- **0** = open space
+- **1** = debris
+- **2** = beacon
 
-Write these functions:
+Pull together everything from this chapter — **matrices**, **recursion**, and **binary search**:
 
-**count_treasures(dungeon)** — use nested loops on the matrix to count how many treasures (2s) exist
+**count_beacons(sector)** — use **nested loops** on the grid to count how many beacons (the `2`s) it contains.
 
-**flatten_sorted(dungeon)** — flatten the 2D list into a sorted 1D list of all unique values
+**flatten_sorted(sector)** — collapse the 2D grid into a **sorted list of the unique values** that appear in it.
 
-**find_value(sorted_list, target)** — use **binary search** (recursive!) to check if a value exists in the sorted list. Return True/False
-
-**count_paths(dungeon, row, col)** — BONUS: use **recursion** to count how many cells are reachable from position (0,0) by moving only right or down on empty cells (value 0 or 2). Mark visited cells to avoid counting twice
+**find_value(sorted_list, target)** — use **recursive binary search** to check whether a value is in the sorted list. Return `True` or `False`.
 
 Test with:
 
-```python
-print(f"Treasures: {count_treasures(dungeon)}")
-flat = flatten_sorted(dungeon)
+```py
+print(f"Beacons: {count_beacons(sector)}")
+flat = flatten_sorted(sector)
 print(f"Unique values: {flat}")
-print(f"Has treasure value: {find_value(flat, 2)}")
+print(f"Has beacon value: {find_value(flat, 2)}")
 print(f"Has value 3: {find_value(flat, 3)}")
 ```
 
-Expected output
+**Output**
 
 ```text
-Treasures: 1
+Beacons: 1
 Unique values: [0, 1, 2]
-Has treasure value: True
+Has beacon value: True
 Has value 3: False
 ```

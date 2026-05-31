@@ -1,5 +1,5 @@
-def bubbleSort(numbers): # sort using bubble sort and return the list
+def bubble_sort(numbers): # sort the list ascending using bubble sort, then return it
 pass
 
-print(bubbleSort([5, 3, 8, 1, 2]))
-print(bubbleSort([10, 7, 3, 9, 1]))
+print(bubble_sort([42, 17, 88, 9, 23]))
+print(bubble_sort([5, 4, 3, 2, 1]))

@@ -82,17 +82,36 @@ print(name[6:])    # Vercetti (from 6 to the end)
 
 ---
 
-You have a variable **name** on the right, set to **"lance vance"**. Display, **on separate lines**
+## Mission: Crew ID Badge
+
+The station prints an ID badge from a crew member's full name. Write a program that **reads a full name** and prints the badge using the string tools you just learned.
+
+**Input** (typed by the user when the program runs):
+
+- the crew member's full name (for example `Tommy Vercetti`)
+
+**Output**
+
+Four lines:
+
+- `Name: ` then the full name in UPPERCASE
+- `Letters: ` then how many characters the name has (the space counts too)
+- `Initial: ` then the very first letter, in uppercase
+- `Tag: ` then the first three characters, in lowercase
+
+**Example**
+
+If the user types
 
 ```text
-LANCE VANCE
-lance vance
-11
-l
-lance
-vance
+Tommy Vercetti
 ```
 
-That is: the name in uppercase, in lowercase, its length, the first letter, the first 5 characters, and the last 5 characters
+the program should print
 
-Run, modify the name to anything else (Cortez, Quincy, your own name), and see how the output changes :)
+```text
+Name: TOMMY VERCETTI
+Letters: 14
+Initial: T
+Tag: tom
+```

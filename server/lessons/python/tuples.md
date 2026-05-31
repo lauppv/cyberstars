@@ -118,15 +118,19 @@ Donkey
 
 ---
 
-You have a tuple **mission** on the right with 3 values: a mission name, a difficulty, and a reward
+## Mission: Star Chart
 
-1. **Unpack** the tuple into three variables: **name**, **difficulty**, **reward**
-2. Display each on a separate line
+The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`. You have a list of them (already on the right).
 
-Expected output
+1. Loop over the list and **unpack** each tuple into three variables: `name`, `distance`, `planets`
+2. Print each system as `name: distance ly, planets planets` — for example `Sol: 0 ly, 8 planets`
+3. After the loop, print `Total planets: ` then the sum of all the planets
+
+**Output**
 
 ```text
-Demolition Man
-Hard
-5000
+Sol: 0 ly, 8 planets
+Alpha: 4 ly, 3 planets
+Vega: 25 ly, 5 planets
+Total planets: 16
 ```

@@ -70,20 +70,24 @@ We skipped **health** (kept the default 100) and only changed **city** by using 
 
 ---
 
-Write a function **greet** that takes a **name** and an optional **greeting** with a default value of **Hello**
+## Mission: Docking Log
 
-The function should display **{greeting}, {name}!**
+Write a function `dock(ship, bay="A1", priority="normal")` that prints `ship docked at bay (priority)`. The `bay` and `priority` parameters have **default values**, so they can be left out.
+
+Call it exactly like this (the calls are already in the starter):
 
 ```py
-greet("Shrek")                 # Hello, Shrek!
-greet("Fiona", "Welcome")     # Welcome, Fiona!
-greet("Donkey", "Hey there")  # Hey there, Donkey!
+dock("Voyager")
+dock("Odyssey", "B7")
+dock("Pioneer", priority="urgent")
 ```
 
-Expected output
+Notice the last call uses a **keyword argument** (`priority="urgent"`) to skip `bay` and keep its default while still setting the priority.
+
+**Output**
 
 ```text
-Hello, Shrek!
-Welcome, Fiona!
-Hey there, Donkey!
+Voyager docked at A1 (normal)
+Odyssey docked at B7 (normal)
+Pioneer docked at A1 (urgent)
 ```

@@ -1,6 +1,9 @@
-def checkGuess(secret, guess): # return "too low", "too high", or "correct"
+secret = 42
+guesses = [50, 30, 40, 45, 42]
+
+def check_guess(secret, guess): # return "too low", "too high", or "correct"
 pass
 
-print(checkGuess(50, 25))
-print(checkGuess(50, 75))
-print(checkGuess(50, 50))
+# loop through the guesses, count attempts, print "guess: result",
+
+# stop at the correct one, then print "Cracked in N attempts!"

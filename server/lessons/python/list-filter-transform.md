@@ -103,16 +103,20 @@ result = [min(g + 5, 100) for g in grades if g >= 50]
 
 ---
 
-You have a list of **words**. Do the following
+## Mission: Power Grid Filter
 
-1. **Filter**: keep only words that start with an uppercase letter
-2. **Transform**: convert each kept word to lowercase
-3. Display the result as a list
+The station's reactors report power readings (already on the right). Engineering wants to focus on the **stable** reactors and give them a small boost — but no reactor may exceed 100.
 
-Tip: **word[0].isupper()** checks if the first character is uppercase
+1. **Filter**: keep only readings that are `>= 50` (the stable reactors).
+2. **Transform**: add a 5-point boost to each kept reading, **capped at 100** (use `min(reading + 5, 100)` so nothing goes over).
+3. Print `Boosted: ` followed by the resulting list.
+4. Print `Stable reactors: ` followed by how many made the cut.
+5. Print `Average: ` followed by the average of the boosted readings, rounded to a whole number with `round()`.
 
-Expected output
+**Output**
 
 ```text
-['shrek', 'fiona', 'donkey']
+Boosted: [87, 72, 96, 79, 60, 100, 65]
+Stable reactors: 7
+Average: 80
 ```

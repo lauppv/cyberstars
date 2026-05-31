@@ -131,19 +131,25 @@ Output **3** — the dictionary has 3 key-value pairs
 
 ---
 
-You have a dictionary of **scores** on the right. Do the following
+## Mission: Crew Scores
 
-1. Loop through it and display each name and score like **Tommy: 95**
-2. Calculate and display the **total** of all scores
-3. Calculate and display the **average** score
+You have a dictionary of crew members and their mission scores (already on the right). Loop through it and build a report.
 
-Expected output
+Print, in this order:
+
+1. Each member as `name: score` (loop with **.items()**)
+2. `Total: ` then the sum of all scores
+3. `Average: ` then the total divided by how many members there are
+4. `Top: ` then the **name** of the member with the highest score
+
+**Output**
 
 ```text
 Tommy: 95
 Lance: 80
 Cortez: 70
 Phil: 90
-245
-61.25
+Total: 335
+Average: 83.75
+Top: Tommy
 ```

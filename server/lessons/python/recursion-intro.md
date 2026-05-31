@@ -91,22 +91,19 @@ For simple things like counting or summing, a **loop** is usually clearer and mo
 
 ---
 
-Write a recursive function **power** that calculates **base** raised to the power of **exp** (base^exp)
+## Mission: Signal Amplifier
 
-The rule: **base^exp = base × base^(exp-1)**. Base case: **base^0 = 1**
+The station's signal amplifier doubles its strength at each stage. To predict the output, you need to compute powers of 2 — and you'll do it with **recursion**.
 
-```py
-print(power(2, 3))    # 8
-print(power(5, 2))    # 25
-print(power(3, 4))    # 81
-print(power(10, 0))   # 1
-```
+1. Write a recursive function **power(base, exp)** that returns `base` raised to the power `exp`. The rule: `base^exp = base * base^(exp - 1)`. Base case: `base^0 = 1` (no loops, no `**`).
+2. With `base = 2`, use a **for loop** over `range(5)` to print the amplifier table: for each `exp` from 0 to 4, print the line `2^exp = result` (using the actual numbers).
 
-Expected output
+**Output**
 
 ```text
-8
-25
-81
-1
+2^0 = 1
+2^1 = 2
+2^2 = 4
+2^3 = 8
+2^4 = 16
 ```

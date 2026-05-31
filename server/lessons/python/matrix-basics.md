@@ -114,17 +114,23 @@ Output **Number of walls: 4**
 
 ---
 
-You have a **4×4** matrix of scores. Write a program that displays
+## Mission: Sensor Grid
 
-1. The **sum** of each row (on separate lines)
-2. The **overall maximum** score
+The station's hull sensors report their readings as a **4×4 grid** (a list of lists, already on the right). Mission Control wants a quick summary of the grid.
 
-Expected output
+Using **nested loops**, print:
+
+1. The **sum of each row**, one per line, labelled `Row 1: `, `Row 2: `, and so on (rows numbered from 1).
+2. `Max: ` followed by the single **highest** reading anywhere in the grid.
+3. `Above 7: ` followed by **how many** readings are strictly greater than 7.
+
+**Output**
 
 ```text
-22
-26
-15
-37
-10
+Row 1: 22
+Row 2: 26
+Row 3: 15
+Row 4: 37
+Max: 10
+Above 7: 7
 ```

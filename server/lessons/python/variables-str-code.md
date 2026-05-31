@@ -1,7 +1,7 @@
-name1 = Shrek
-name2 = Fiona
-name3 = Donkey
+# --- input data (change these to test) ---
 
-print("name1")
-print("name2")
-print("name3")
+commander = "Shadow"
+pilot = "Lance"
+engineer = "Quincy"
+
+# --- write your code below ---

@@ -1,6 +1,6 @@
-isOnline = True
+# --- input data (change these to test) ---
 
-while isOnline == True:
-print("I am online")
-isOnline = # complete this line
-print("Now I am offline")
+charge = 100 # starting battery level in percent
+drain = 30 # charge lost each cycle
+
+# --- write your code below ---

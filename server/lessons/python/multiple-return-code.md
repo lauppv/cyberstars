@@ -1,7 +1,8 @@
-def analyzeWord(word): # return uppercase, lowercase, and length
+def parse(reading): # split the reading, convert to numbers, return sum, largest, smallest
 pass
 
-upper, lower, length = analyzeWord("Cortez")
-print(upper)
-print(lower)
-print(length)
+reading = input()
+total, largest, smallest = parse(reading)
+print(f"Total: {total}")
+print(f"Largest: {largest}")
+print(f"Smallest: {smallest}")

@@ -72,19 +72,31 @@ Just like in math, parentheses **()** force what to do first. When in doubt, **a
 
 ---
 
-You have two variables **a** and **b** on the right. Display, **on separate lines**, the result of
+## Mission: Calculator Readout
+
+The station's calculator panel takes two whole numbers and shows everything Python can do with them. Write a program that **reads two numbers** and prints, **on separate lines**, the result of every operator you just learned.
+
+Read both numbers with **int()** so they are real numbers, not text.
+
+**Input** (typed by the user when the program runs):
+
+- the first number
+- the second number
+
+**Output**
+
+Seven lines, in this order: addition, subtraction, multiplication, division, integer division, remainder, and power.
+
+**Example**
+
+If the user types
 
 ```text
-a + b
-a - b
-a * b
-a / b
-a // b
-a % b
-a ** b
+17
+5
 ```
 
-For **a = 17** and **b = 5** the output should be
+the program should print
 
 ```text
 22
@@ -95,5 +107,3 @@ For **a = 17** and **b = 5** the output should be
 2
 1419857
 ```
-
-Play around with the values and see how the output changes. **Run** the code as many times as you want :)

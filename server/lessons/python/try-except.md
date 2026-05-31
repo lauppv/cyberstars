@@ -107,20 +107,23 @@ This always runs
 
 ---
 
-Write a function **safeDivide** that takes **a** and **b** and returns **a / b**
+## Mission: Sensor Cleanup
 
-If **b** is **0**, the function should return the string **"cannot divide by zero"** instead of crashing. Use **try/except**
+The station receives a list of sensor readings as **strings**, but some are corrupted — they aren't numbers at all (already on the right). Go through the list and, using **try/except**, turn each one into an integer:
 
-```py
-print(safeDivide(10, 2))    # 5.0
-print(safeDivide(10, 0))    # cannot divide by zero
-print(safeDivide(99, 3))    # 33.0
-```
+- if it converts, add it to a running **total**
+- if `int()` raises a `ValueError`, count it as **corrupted** and move on (no crash)
 
-Expected output
+At the end, print:
+
+- `Total: ` then the sum of the valid readings
+- `Corrupted: ` then how many readings failed
+
+**Output**
 
 ```text
-5.0
-cannot divide by zero
-33.0
+Total: 162
+Corrupted: 2
 ```
+
+The valid readings are `42`, `100`, `7`, and `13` (sum `162`); `x9` and `bad` are the two corrupted ones.

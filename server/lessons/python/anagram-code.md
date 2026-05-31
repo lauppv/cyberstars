@@ -1,6 +1,7 @@
-def isAnagram(word1, word2): # check if word1 and word2 are anagrams
+def are_anagrams(a, b): # return True if a and b are anagrams (same letters, case ignored)
 pass
 
-print(isAnagram("cinema", "iceman"))
-print(isAnagram("rat", "car"))
-print(isAnagram("Tom Marvolo Riddle", "I am Lord Voldemort"))
+first = input()
+second = input()
+
+# print "Anagram: True/False", then "Access granted" or "Access denied"

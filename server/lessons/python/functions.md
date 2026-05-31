@@ -111,25 +111,25 @@ f(name, isOnline) # prints admin is offline
 
 ---
 
-Write a function **calculator** that takes **3** **parameters**: **number1**, **number2**, **operator**
+## Mission: Onboard Calculator
 
-The function will display the **result** of **number1 operator number2**
+Write a function `calculator(number1, number2, operator)` that prints the result of `number1 operator number2`. The `+` case is already written for you in the starter — add the cases for **subtraction** (`-`), **multiplication** (`*`), and **division** (`/`). For any other operator, print `Invalid operator`.
 
-Example:
+Format each result like `14 + 12 = 26`.
 
-```py
-def calculator(number1, number2, operator):
-    if operator == "+":
-        result = number1 + number2
-        print(f"{number1} {operator} {number2} = {result}")
-    else:
-        print("Invalid operator")
+**Input** (the calls at the bottom of your code test the function — change them too):
 
-calculator(14, 12, "+")     # calling the function
+- `calculator(14, 12, "+")`, `calculator(20, 8, "-")`, `calculator(6, 7, "*")`, `calculator(20, 4, "/")`
+
+**Example**
+
+The four calls in the starter should print
+
+```text
+14 + 12 = 26
+20 - 8 = 12
+6 * 7 = 42
+20 / 4 = 5.0
 ```
 
-Complete the function so that it can also do **subtraction**, **multiplication**, and **division**
-
-For subtraction we use **-**
-For multiplication we use **\***
-For division we use **/**
+Notice that division gives a number with decimals — `20 / 4` is `5.0`, not `5`.

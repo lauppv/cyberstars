@@ -2,28 +2,33 @@ Combine **return values**, **dictionaries**, and **looping over dictionaries**
 
 ---
 
-Build a **grade report** system. Write a function **analyze_grades(grades)** that takes a dictionary of student names and grades, and **returns a dictionary** with:
+## Mission: Mission Control Report
 
-- **"average"** — the average grade (use a loop to sum values)
-- **"best"** — the name of the student with the highest grade
-- **"passing"** — a list of names with grade >= 50
+Write a function `analyze(scores)` that takes a dictionary of crew names → scores and **returns a dictionary** with three keys:
 
-Use this dictionary:
+- `"average"` — the average score (sum of all scores divided by how many there are)
+- `"top"` — the name of the crew member with the highest score
+- `"passing"` — a **list** of names whose score is **50 or more**
+
+The crew scores are already on the right:
 
 ```python
-grades = {"Ana": 95, "Mihai": 42, "Elena": 88, "Radu": 37, "Ioana": 76}
+scores = {"Ana": 95, "Mihai": 42, "Elena": 88, "Radu": 37, "Ioana": 76}
 ```
 
-Call the function and print the results
+Call the function, then print the report:
 
-Expected output
+1. `Average: ` then the average
+2. `Top: ` then the top name
+3. `Passing:` on its own line, then each passing name on the following lines (loop over the list)
+
+**Output**
 
 ```text
 Average: 67.6
-Best: Ana
-Passing: Ana, Elena, Ioana
+Top: Ana
+Passing:
+Ana
+Elena
+Ioana
 ```
-
-For the average, use one decimal place with an f-string: `f"{value:.1f}"`
-
-For passing, join the names with `", ".join(list)`

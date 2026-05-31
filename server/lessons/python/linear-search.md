@@ -54,18 +54,42 @@ Is there something faster? Yes — **binary search**, which we'll learn later. B
 
 ---
 
-Write a function **findFirst** that takes a list and a **target** value, and returns the **index** of the first occurrence of the target. If not found, return **-1**
+## Mission: Crew Locator
 
-```py
-print(findFirst(["a", "b", "c", "b", "a"], "b"))   # 1
-print(findFirst(["a", "b", "c"], "z"))               # -1
-print(findFirst([10, 20, 30, 40], 30))               # 2
-```
+The station roster is a list of crew names, each one at a numbered station (station 0, station 1, and so on). Mission Control wants to look someone up by name.
 
-Expected output
+Write a function **find_crew(crew, target)** that uses **linear search** to return the **station number** (the index) where `target` sits in the list. If the name is not in the list, return **-1**.
+
+Then **read** a name and report the result.
+
+**Input** (typed by the user when the program runs):
+
+- the crew member's name to find
+
+**Output** — one line. If the name is on board, print the name, then `is at station`, then the station number. If not, print the name followed by `is not on board`. See the example below for the exact wording.
+
+**Example**
+
+If the user types
 
 ```text
-1
--1
-2
+Cara
+```
+
+the program should print
+
+```text
+Cara is at station 2
+```
+
+If the user types
+
+```text
+Zane
+```
+
+the program should print
+
+```text
+Zane is not on board
 ```

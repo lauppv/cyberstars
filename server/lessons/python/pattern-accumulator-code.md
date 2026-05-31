@@ -1,7 +1,8 @@
-words = ["Shrek", "Fiona", "Donkey", "Puss", "Farquaad"]
+strengths = [30, 65, 20, 90, 50]
+code = "ORBIT"
 
-# 1. join all words with " - "
+# 1. Sum: total of all strengths (accumulate from 0)
 
-# 2. collect words longer than 4 letters
+# 2. Strong: list of strengths above 50 (accumulate into [])
 
-# 3. count total letters across all words
+# 3. Reversed: the code word reversed character by character (accumulate into "")

@@ -1,6 +1,8 @@
-def maxOfThree(a, b, c): # return the largest of the three
+def highest(a, b, c): # return the largest of the three readings
 pass
 
-print(maxOfThree(5, 9, 2))
-print(maxOfThree(10, 3, 7))
-print(maxOfThree(1, 1, 1))
+a = int(input())
+b = int(input())
+c = int(input())
+
+# call highest, then print the safety message and the top reading

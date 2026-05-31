@@ -107,23 +107,23 @@ Two different **x** variables. They just happen to have the same name, but they 
 
 ---
 
-What will the following code print? Try to figure it out **before running it**
+## Mission: Shield Boost
 
-```py
-x = "global"
+Write a function `boost(shield)` that **returns** the shield value doubled. It must work only with its **parameter** and **return** the result — it should not reach out to any global variable (that's the whole point of scope).
 
-def f():
-    x = "local"
-    print(x)
+Then, in the main program:
 
-f()
-print(x)
-```
+1. Set `shield = 100`
+2. Print `Before: ` then shield
+3. Call `boost(shield)` **without storing** the result, then print `Ignored: ` then shield — notice it's unchanged, because the return value was thrown away
+4. Now do `shield = boost(shield)` and print `After: ` then shield
 
-Modify the code on the right so that the function **doubleHealth** correctly returns the doubled health value, and store the result back in the **health** variable
-
-Expected output
+**Output**
 
 ```text
-200
+Before: 100
+Ignored: 100
+After: 200
 ```
+
+The `Ignored` line proves the function can't change the global on its own — the new value only sticks when you **store the return**.

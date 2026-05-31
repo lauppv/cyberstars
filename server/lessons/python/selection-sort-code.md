@@ -1,5 +1,5 @@
-def selectionSort(numbers): # sort using selection sort and return the list
+def selection_sort(numbers): # sort the list ascending using selection sort, then return it
 pass
 
-print(selectionSort([64, 25, 12, 22, 11]))
-print(selectionSort([5, 1, 4, 2, 8]))
+print(selection_sort([64, 25, 12, 22, 11]))
+print(selection_sort([9, 7, 5, 3, 1]))

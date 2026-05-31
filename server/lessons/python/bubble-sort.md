@@ -63,16 +63,22 @@ That's why in real code we use **sorted()**, which uses a much faster algorithm.
 
 ---
 
-Write a function **bubbleSort** that takes a list and sorts it using bubble sort. Return the sorted list
+## Mission: Reactor Calibration
+
+The station's reactors report power readings in a random order. Engineering needs them lined up from lowest to highest to spot the weakest reactor at a glance.
+
+Write a function **bubble_sort(numbers)** that sorts a list in **ascending** order using bubble sort and **returns** the sorted list.
+
+Then sort two batches of readings and print each result.
 
 ```py
-print(bubbleSort([5, 3, 8, 1, 2]))    # [1, 2, 3, 5, 8]
-print(bubbleSort([10, 7, 3, 9, 1]))   # [1, 3, 7, 9, 10]
+print(bubble_sort([42, 17, 88, 9, 23]))
+print(bubble_sort([5, 4, 3, 2, 1]))
 ```
 
-Expected output
+**Output**
 
 ```text
-[1, 2, 3, 5, 8]
-[1, 3, 7, 9, 10]
+[9, 17, 23, 42, 88]
+[1, 2, 3, 4, 5]
 ```

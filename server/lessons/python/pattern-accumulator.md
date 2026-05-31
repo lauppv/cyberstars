@@ -77,16 +77,18 @@ Output **120** (2 × 3 × 4 × 5). Notice that we start with **1** not **0**. Wh
 
 ---
 
-You have a list of **words**. Build and display
+## Mission: Signal Accumulator
 
-1. A string with all words joined by **" - "** (dash with spaces)
-2. A list of only words that have **more than 4 letters**
-3. The **total** number of letters across all words
+You have a list of signal `strengths` and a `code` word (both on the right). Using the **accumulator pattern** for each step:
 
-Expected output
+1. `Sum: ` then the total of all strengths (accumulate from `0`)
+2. `Strong: ` then a **list** of only the strengths **above 50** (accumulate into an empty `[]`)
+3. `Reversed: ` then the code word reversed **character by character** (accumulate into an empty `""`, putting each new character at the **front**)
+
+**Output**
 
 ```text
-Shrek - Fiona - Donkey - Puss - Farquaad
-['Shrek', 'Fiona', 'Donkey', 'Farquaad']
-29
+Sum: 255
+Strong: [65, 90]
+Reversed: TIBRO
 ```

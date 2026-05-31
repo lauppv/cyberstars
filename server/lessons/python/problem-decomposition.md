@@ -88,14 +88,26 @@ Why **range(i + 1, len(numbers))**? Because we don't want to pair a number with 
 
 ---
 
-You are given a list of **names**. Write a program that
+## Mission: Log Analyzer
 
-1. Counts how many times each name appears (use a dictionary)
-2. Finds the name that appears the **most**
-3. Displays **{name} appears {count} times**
+The station log is a single string of event codes separated by spaces (already on the right). **Break the work into three functions**, then use them together:
 
-Expected output
+1. `split_codes(log)` — returns the **list** of codes (use `.split(" ")`)
+2. `count_codes(codes)` — returns a **dictionary** mapping each code to how many times it appears
+3. `most_common(counts)` — returns the code with the **highest** count
+
+In the main program, call the functions in order, then print:
+
+- `Codes: ` then the total number of codes
+- each code as `code: count` (loop over the dictionary)
+- `Most common: ` then the most common code
+
+**Output**
 
 ```text
-Tommy appears 3 times
+Codes: 6
+alpha: 3
+beta: 2
+gamma: 1
+Most common: alpha
 ```
