@@ -23,6 +23,7 @@ services:
         docker pull gcc:latest &&
         docker pull python:3.10-slim &&
         docker pull eclipse-temurin:21-jdk-alpine &&
+        docker pull danysk/kotlin:latest &&
         docker build -t cyberstars-linux-sandbox /context
       "
     environment:
