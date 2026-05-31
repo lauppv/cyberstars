@@ -35,7 +35,8 @@ function hardeningArgs(): string[] {
   ];
   const uid = process.getuid?.();
   const gid = process.getgid?.();
-  if (uid !== undefined && gid !== undefined) {
+  const sandboxUser = process.env.SANDBOX_RUN_AS_USER ?? 'true';
+  if (uid !== undefined && gid !== undefined && sandboxUser !== 'false') {
     args.push(`--user=${uid}:${gid}`);
   }
   return args;

@@ -1,11 +1,13 @@
-FROM node:20-slim
-
+FROM node:24-alpine
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+RUN apk add --no-cache docker-cli
 
-COPY prisma ./prisma
+COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts
+
+# It's run separately, not as postinstall, to take advantage of docker caching
+COPY prisma ./prisma 
 RUN npx prisma generate
 
 COPY . .

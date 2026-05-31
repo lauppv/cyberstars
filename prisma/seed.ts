@@ -40,6 +40,12 @@ const courses = [
     description: 'Low-level challenges with arrays, pointers, structs, and memory',
     sortOrder: 7,
   },
+  {
+    key: 'kotlin',
+    title: 'Kotlin',
+    description: 'Modern JVM language — concise, safe, and interoperable',
+    sortOrder: 8,
+  },
 ];
 
 const lessons = [
@@ -1629,6 +1635,13 @@ const lessons = [
     slug: 'gcd-lcm',
     title: 'Easy · GCD & LCM',
     sortOrder: 20,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'kotlin',
+    slug: 'hello-world',
+    title: 'Hello World',
+    sortOrder: 1,
     hasCodeFile: true,
   },
 ];

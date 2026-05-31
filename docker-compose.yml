@@ -16,12 +16,30 @@ services:
       timeout: 3s
       retries: 5
 
+  setup:
+    image: docker:cli
+    entrypoint: >
+      sh -c "
+        docker pull gcc:latest &&
+        docker pull python:3.10-slim &&
+        docker pull eclipse-temurin:21-jdk-alpine &&
+        docker pull danysk/kotlin:latest &&
+        docker build -t cyberstars-linux-sandbox /context
+      "
+    environment:
+      - DOCKER_HOST=${DOCKER_HOST:-unix:///var/run/docker.sock}
+    volumes:
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
+      - ./server/runtimes/linux-sandbox:/context
+
   app:
     build: .
     restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
+      setup:
+        condition: service_completed_successfully
     environment:
       DB_USER: ${DB_USER}
       DB_HOST: db
@@ -32,17 +50,17 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: production
       PORT: 8080
+      CODE_RUN_DIR: /tmp/cyberstars-runs
+      DOCKER_HOST: ${DOCKER_HOST:-unix:///var/run/docker.sock}
     volumes:
       # Docker socket is required for sandboxed code execution (C, Python, Java, Linux terminal).
       # The app spawns docker run commands inside the container via this socket.
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
+      # Shared directory for code execution — same path on host and in container,
+      # so Docker daemon can resolve bind-mount paths correctly (DooD pattern).
+      - /tmp/cyberstars-runs:/tmp/cyberstars-runs
     ports:
-      - '8080:8080'
-    # Before running `docker compose up`, make sure the following images are available on the host:
-    #   docker build -t cyberstars-linux-sandbox server/runtimes/linux-sandbox
-    #   docker pull gcc:14
-    #   docker pull python:3.10-slim
-    #   docker pull eclipse-temurin:21-jdk-alpine
+      - "8080:8080"
 
 volumes:
   pgdata:
