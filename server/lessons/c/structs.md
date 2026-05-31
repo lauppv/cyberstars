@@ -108,16 +108,22 @@ Ken: 60 HP, 100 pts
 
 ---
 
-Define a struct **Car** with fields: **brand** (char array), **year** (int), **km** (int)
+## Mission: Fleet Inventory Report
 
-Create **two cars**:
+The station's hangar bay needs a quick inventory of its shuttles. Define a struct to represent each vehicle and print a formatted manifest for Commander Lance.
 
-- "BMW", 2015, 120000
-- "Dacia", 2020, 45000
+1. Define a struct **Car** with fields: **brand** (char array), **year** (int), **km** (int)
+2. Create **two** cars with the values shown below
+3. Print each one in the format **"Brand (Year) - Km km"**
 
-Print them in this format
+**Input** (already set at the top of your code — change the values to test):
 
-Expected output
+- Car 1: **"BMW"**, **2015**, **120000**
+- Car 2: **"Dacia"**, **2020**, **45000**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 BMW (2015) - 120000 km

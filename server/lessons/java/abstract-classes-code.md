@@ -1,5 +1,5 @@
 abstract class Vehicle {
-String name;
+    String name;
 
     Vehicle(String name) {
         this.name = name;
@@ -16,12 +16,10 @@ String name;
 // fuelType() should return "Gasoline"
 
 public class Main {
-public static void main(String[] args) {
-// Create an ElectricCar named "Tesla"
-// Create a GasTruck named "Ford"
-// Print: "Tesla: Electric"
-// Print: "Ford: Gasoline"
-
+    public static void main(String[] args) {
+        // Create an ElectricCar named "Tesla"
+        // Create a GasTruck named "Ford"
+        // Print: "Tesla: Electric"
+        // Print: "Ford: Gasoline"
     }
-
 }

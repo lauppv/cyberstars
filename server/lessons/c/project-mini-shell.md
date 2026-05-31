@@ -54,17 +54,19 @@ The parent creates a child for each command, waits for it to finish, then moves 
 
 ---
 
-Your task: complete the program on the right. Implement the **runCommand** function and call it from main with these commands: **"greet"**, **"count"**, and **"unknown"**
+## Mission: Station Command Terminal
 
-The commands should do:
+The station's emergency terminal is offline. Rex needs you to rebuild a minimal shell that can dispatch commands to child processes. Each command runs in isolation — if one crashes, the shell survives.
 
-- **"greet"** → print **"Hello from CyberStars!"**
-- **"count"** → print numbers **1 2 3** (on the same line, separated by spaces)
-- anything else → print **"Error: unknown command"**
+Complete the **runCommand** function on the right and call it from main with these commands: **"greet"**, **"count"**, and **"unknown"**
 
-After each command, the parent prints **"Done"**
+1. The child process checks the command string and runs the matching action:
+   - **"greet"** prints **"Hello from CyberStars!"**
+   - **"count"** prints **"1 2 3"** (on the same line, separated by spaces)
+   - anything else prints **"Error: unknown command"**
+2. The parent waits for the child, then prints **"Done"**
 
-Expected output (PIDs will vary)
+**Output**
 
 ```text
 Hello from CyberStars!

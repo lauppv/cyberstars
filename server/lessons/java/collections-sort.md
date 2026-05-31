@@ -152,4 +152,21 @@ Pretty similar, right? The main difference is that Java uses a separate **Collec
 
 ---
 
-Your turn! Create an ArrayList of Strings with these names: `"Cortez"`, `"Tommy"`, `"Lance"`, `"Phil"`. Sort them **alphabetically** using Collections.sort(), then print each name on its own line
+## Mission: Roll Call
+
+The captain wants the crew roster printed in **alphabetical order**. The names are already loaded into an `ArrayList<String>` on the right. Sort them with `Collections.sort()`, then print each name on its own line.
+
+**Input** (already set in your code — change the values to test):
+
+- Names: `"Cortez"`, `"Tommy"`, `"Lance"`, `"Phil"`
+
+**Example**
+
+With the starter values, your program should print
+
+```text
+Cortez
+Lance
+Phil
+Tommy
+```

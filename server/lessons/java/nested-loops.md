@@ -128,11 +128,19 @@ The Java version is almost identical in logic, just with different syntax. The *
 
 ---
 
-Print a **right triangle** of stars with **5 rows**
+## Mission: Shield Grid
 
-Row 1 has 1 star, row 2 has 2 stars, all the way to row 5 with 5 stars. Each star is just the **\*** character with no spaces between them
+The station's shield generator builds up its energy grid row by row. Row 1 has **1** energy cell, row 2 has **2**, and so on up to `rows` cells in the last row. Each cell is shown as a `*` character with no spaces between them.
 
-Expected output
+Write a program that uses a **nested loop** to print a right triangle of stars with `rows` rows. The outer loop controls which row you are on; the inner loop prints the right number of stars for that row.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `rows` — how many rows the shield grid has
+
+**Example**
+
+With `rows = 5`, your program should print
 
 ```text
 *
@@ -141,5 +149,3 @@ Expected output
 ****
 *****
 ```
-
-Use a nested loop where the inner loop prints stars, and the outer loop controls how many stars per row

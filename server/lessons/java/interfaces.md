@@ -141,4 +141,18 @@ You can even combine them: `abstract class Animal implements Printable`
 
 ---
 
-Your turn! Create an interface `Printable` with a method `printInfo()`. Create a `Book` class with title and author fields that implements Printable — printInfo should print "Book: TITLE by AUTHOR". Create a `Movie` class with title and director fields — printInfo should print "Movie: TITLE directed by DIRECTOR". In main, create a Book("Vice City Stories", "Rockstar") and a Movie("Scarface", "Brian De Palma"), then call printInfo() on both
+## Mission: Station Archive Catalog
+
+The space station's digital archive holds both books and movies, but the old catalog software crashed. You need to rebuild the listing system using a shared `Printable` interface so every item can describe itself.
+
+1. Create an interface `Printable` with a method `printInfo()`
+2. Create a `Book` class with `title` and `author` fields that implements `Printable` — `printInfo()` should print `"Book: TITLE by AUTHOR"`
+3. Create a `Movie` class with `title` and `director` fields that implements `Printable` — `printInfo()` should print `"Movie: TITLE directed by DIRECTOR"`
+4. In main, create a `Book("Vice City Stories", "Rockstar")` and a `Movie("Scarface", "Brian De Palma")`, then call `printInfo()` on both
+
+**Output**
+
+```text
+Book: Vice City Stories by Rockstar
+Movie: Scarface directed by Brian De Palma
+```

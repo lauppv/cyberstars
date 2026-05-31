@@ -111,9 +111,15 @@ When to use **threads** vs **processes**:
 
 ---
 
-Write a program that creates **two threads**. Each thread receives a different string as argument — **"Ping"** and **"Pong"**. Each thread prints its string **3 times**. The main thread waits for both to finish, then prints **"Game over"**
+## Mission: Dual Thruster Calibration
 
-Expected output (order of Ping/Pong may vary, but "Game over" must be last)
+The station's twin thrusters must fire test pulses simultaneously. Each thruster runs on its own thread, repeating its callsign to confirm alignment. Once both finish, the bridge logs the calibration as complete.
+
+1. Create **two threads**, passing **"Ping"** to the first and **"Pong"** to the second
+2. Each thread prints its string **3 times**
+3. The main thread waits for both to finish, then prints **"Game over"**
+
+**Output**
 
 ```text
 Ping
@@ -124,3 +130,5 @@ Pong
 Pong
 Game over
 ```
+
+The order of Ping and Pong lines may vary, but **"Game over"** must always be last

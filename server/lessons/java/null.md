@@ -210,19 +210,20 @@ The difference: Python gives you an `AttributeError`, Java gives you a `NullPoin
 
 ---
 
-## Exercise
+## Mission: Airlock Greeting System
+
+The station's airlock scanner identifies incoming crew members by their badge. But sometimes the badge reader fails and returns `null` — no name detected. You need a greeting system that handles both cases gracefully.
 
 Write a static method called `greet` that takes a `String name` parameter:
 
-- If `name` is **not null**, return `"Hello, Name!"`
-- If `name` **is null**, return `"Hello, stranger!"`
+1. If `name` is **not null**, return `"Hello, Name!"`
+2. If `name` **is null**, return `"Hello, stranger!"`
 
-In `main`, call the method twice and print the results:
+In `main`, call the method twice and print the results: once with `"Tommy"` and once with `null`.
 
-1. `greet("Tommy")`
-2. `greet(null)`
+**Example**
 
-Expected output:
+With the starter calls, your program should print
 
 ```text
 Hello, Tommy!

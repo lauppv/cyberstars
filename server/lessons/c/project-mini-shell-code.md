@@ -3,8 +3,8 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void runCommand(const char \*cmd) {
-pid_t pid = fork();
+void runCommand(const char *cmd) {
+    pid_t pid = fork();
 
     if (pid == 0) {
         // child: check cmd and run the right action
@@ -14,15 +14,14 @@ pid_t pid = fork();
 
         _exit(0);
     } else {
-        wait(NULL);
-        printf("Done\n");
-    }
-
+    wait(NULL);
+    printf("Done\n");
+}
 }
 
 int main(void) {
-runCommand("greet");
-runCommand("count");
-runCommand("unknown");
-return 0;
+    runCommand("greet");
+    runCommand("count");
+    runCommand("unknown");
+    return 0;
 }

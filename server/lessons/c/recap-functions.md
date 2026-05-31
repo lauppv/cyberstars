@@ -2,7 +2,9 @@ Combine **while loops**, **functions**, **input**, and **operators**
 
 ---
 
-Build a **mini calculator** that reads operations from input until the user types **0**
+## Mission: Navigation Computer
+
+The station's navigation computer processes trajectory calculations from a queue. Each calculation specifies two operands and an operation code. The computer must keep processing until it receives a shutdown signal (op code 0).
 
 Write these functions:
 
@@ -26,7 +28,7 @@ The input will be
 0 0 0
 ```
 
-Expected output
+**Output**
 
 ```text
 7
@@ -34,4 +36,4 @@ Expected output
 256
 ```
 
-Each line of input has three numbers. Process them one by one until op is 0. Remember: **power(2, 8)** means 2 _ 2 _ 2 _ 2 _ 2 _ 2 _ 2 \* 2 = 256. Implement it with a while loop, **not** with a library function
+Each line of input has three numbers. Process them one by one until op is 0. Implement **power** with a while loop, not a library function

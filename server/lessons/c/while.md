@@ -70,11 +70,21 @@ C also has a **do { ... } while (...)** form that runs the body **at least once*
 
 ---
 
-The code on the right is in an **infinite loop**. Fix it so the program prints
+## Mission: Signal Beacon
+
+The station's signal beacon broadcasts `I am online` every cycle while `isOnline` is true. But right now the code on the right loops forever because nobody turns the beacon off.
+
+Fix the loop so it runs **once**, then exits. You need to **set `isOnline` to 0** inside the loop so the condition becomes false after one broadcast.
+
+**Input** (already set at the top of your code):
+
+- `isOnline` — 1 means the beacon is active, 0 means off
+
+**Example**
+
+After your fix, the program should print
 
 ```text
 I am online
 Now I am offline
 ```
-
-The loop should run **once** while the user is online, then end. You need to **change** the variable inside the loop so the condition eventually becomes false

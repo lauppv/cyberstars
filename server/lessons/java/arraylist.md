@@ -148,15 +148,19 @@ Pretty similar! Java just needs more ceremony with the types
 
 ---
 
-Create an ArrayList of Strings called **games**. Add these 3 games: **"GTA"**, **"Minecraft"**, **"Zelda"**
+## Mission: Rec-Room Playlist
 
-Then add a 4th game: **"Elden Ring"**
+The station's rec room keeps a dynamic playlist of games. Build it step by step:
 
-Then remove the 2nd game (index 1)
+1. Create an `ArrayList<String>` called `games`
+2. Add three games: `"GTA"`, `"Minecraft"`, `"Zelda"`
+3. Add a 4th game: `"Elden Ring"`
+4. Remove the 2nd game (index 1)
+5. Print each remaining game on its own line using a for loop with `.get(i)` and `.size()`
 
-Finally, print each game on its own line using a for loop with **.get(i)** and **.size()**
+**Example**
 
-Expected output
+After the additions and removal, your program should print
 
 ```text
 GTA

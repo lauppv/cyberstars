@@ -2,18 +2,20 @@ Combine **operators**, **booleans**, and **strings**
 
 ---
 
-Write a **password validator**. The password is stored as a char array. Check these rules and print the result for each:
+## Mission: Airlock Access Validator
 
-Given the password **"Cyber2025!"**:
+The station's airlock requires a security code before opening. Phil wrote the authentication module but never finished the validation logic. The code must pass four checks before the airlock unlocks.
 
-1. **Length check**: is it at least 8 characters? (use **strlen**)
+The data is already on the right. Do the following, in order:
+
+1. **Length check**: is the password at least 8 characters? (use **strlen**)
 2. **Has uppercase**: does it contain at least one uppercase letter? (A-Z means the char is **>= 'A' && <= 'Z'**)
 3. **Has digit**: does it contain at least one digit? ('0'-'9')
 4. **Has special**: does it contain **'!'** or **'@'** or **'#'**?
+5. For each check, print **"PASS"** or **"FAIL"**
+6. Print whether **all checks passed** (**"YES"** or **"NO"**)
 
-For each check, print **"PASS"** or **"FAIL"**. Then print whether **all checks passed**
-
-Expected output
+**Output**
 
 ```text
 Length >= 8: PASS
@@ -23,4 +25,4 @@ Has special char: PASS
 Password valid: YES
 ```
 
-You'll need a **for loop** to go through each character, **booleans** (use int 0/1) to track what you found, **if/else** for the conditions, and **string.h** for strlen. Everything we've learned so far :)
+Use a **for loop** to scan each character, **int** flags (0/1) to track results, and **string.h** for strlen

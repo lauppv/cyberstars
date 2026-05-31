@@ -176,7 +176,7 @@ You have two lists: `crew` (names) and `scores` (already on the right). Using th
 **Output**
 
 ```text
-Ana: 88
+Tommy: 88
 Boris: 100
 Cara: 47
 Dmitri: 73

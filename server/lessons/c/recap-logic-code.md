@@ -2,10 +2,9 @@
 #include <string.h>
 
 int main(void) {
-char password[] = "Cyber2025!";
+    char password[] = "Cyber2025!";
 
     // validate the password
 
     return 0;
-
 }

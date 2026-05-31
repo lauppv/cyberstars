@@ -81,4 +81,19 @@ Here, only **if** we’re in the last 10 seconds, we check the error flag. Neste
 
 ---
 
-Change the values of the variables on the right and run multiple times. Modify the chain, add a new **else if** for **30 seconds**. Once again at **CyberStars** we encourage **curiosity** :)
+## Mission: Launch Sequence
+
+The countdown timer is running. Depending on how many seconds remain, the system must perform a different action. The code on the right already has the full chain — try changing `seconds` and `errorDetected` to see every branch fire.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `seconds` — seconds remaining until launch (int)
+- `errorDetected` — whether an error has been detected (boolean)
+
+**Example**
+
+With `seconds = 60` and `errorDetected = false`, your program should print
+
+```text
+Checking connection with the control tower
+```

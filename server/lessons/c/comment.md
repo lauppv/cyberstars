@@ -53,7 +53,15 @@ In old C code (before C99), only **/\* \*/** existed. **//** was added later, co
 
 ---
 
-The code on the right is correct, but you don’t want to print **everything**. Comment out the line with the **secret cargo**, so the program only displays
+## Mission: Classified Cargo
+
+The station’s cargo manifest is displayed on screen, but one line contains **classified information** that must not appear in the public log.
+
+Comment out the line that prints the secret code, so only the approved entries are transmitted.
+
+**Example**
+
+Your program should print
 
 ```text
 Voyager

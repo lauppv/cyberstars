@@ -88,15 +88,22 @@ The functions modified the **original struct**, not a copy. This is the same "pa
 
 ---
 
-Define a struct **BankAccount** with fields **owner** (char array) and **balance** (int)
+## Mission: Station Credit System
 
-Write a function **deposit** that takes a pointer to a BankAccount and an amount, and adds the amount to the balance
+The station's treasury module needs two core functions: deposit and withdraw. Crew accounts are stored as structs, and all updates go through pointers so the original balance changes in place.
 
-Write a function **withdraw** that takes a pointer to a BankAccount and an amount. If the balance is enough, subtract the amount. Otherwise, print **"Insufficient funds"**
+1. The struct **BankAccount** (with **owner** and **balance**) is already defined on the right
+2. Complete the **deposit** function: add the amount to the balance via the pointer
+3. Complete the **withdraw** function: subtract the amount if the balance is enough, otherwise print **"Insufficient funds"**
 
-In **main**, create an account for "Lance" with balance 1000. Deposit 500. Withdraw 200. Withdraw 2000 (should fail). Print the final balance
+**Input** (already set at the top of your code — change the values to test):
 
-Expected output
+- Account owner: **"Lance"**, starting balance: **1000**
+- Operations: deposit **500**, withdraw **200**, withdraw **2000**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 Insufficient funds

@@ -77,15 +77,27 @@ Output **100**. Start with **total = 0**, walk through every price, add it to to
 
 ---
 
-You have an array **scores** with the values **{80, 95, 60, 72, 88}**
+## Mission: Telemetry Report
 
-Display **on separate lines**
+The station just received a batch of sensor `scores`. Your job is to produce a quick telemetry report: list every reading, then show the **total** and the **average**.
 
-1. Each score (one per line)
-2. The **total** of all scores
-3. The **average** (total divided by the number of scores)
+1. Print each score on its own line
+2. Print the **total** of all scores
+3. Print the **average** as a decimal number (use a cast to `double`)
 
-Expected output
+**Tip**: if you divide `total / scores.length` as ints, you get **79**, not **79.0**. Cast one side to `double`:
+
+```text
+double average = (double) total / scores.length;
+```
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `scores` — an `int[]` array of sensor readings
+
+**Example**
+
+With `scores = {80, 95, 60, 72, 88}`, your program should print
 
 ```text
 80
@@ -96,11 +108,3 @@ Expected output
 395
 79.0
 ```
-
-**Tip**: for the average, **be careful with integer division** :) If you divide **total / scores.length** as ints, you’ll get **79**, not **79.0**. Cast one of them to a **double**, like this
-
-```text
-double average = (double) total / scores.length;
-```
-
-The **(double)** in front says "treat this value as a double, not an int". This is called a **cast** :)

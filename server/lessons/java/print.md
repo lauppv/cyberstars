@@ -75,10 +75,16 @@ Notice that **Hello** and **World** are stuck together. Run it. Most of the time
 
 ---
 
-On the right side of the screen, you have a Java program with the boilerplate ready. Inside **main**, write code that displays
+## Mission: First Transmission
+
+The station’s communication array just came online. Send out your very first message to confirm the link is active.
+
+Write a single `System.out.println` inside `main` that displays the greeting below.
+
+**Example**
+
+Your program should print
 
 ```text
 Hello, CyberStars!
 ```
-
-Don’t forget the **;** at the end of the line :)

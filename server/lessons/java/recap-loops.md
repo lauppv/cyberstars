@@ -2,29 +2,19 @@ Combine **while loops**, **methods**, and **input**
 
 ---
 
-Build a **number cruncher**. Write these methods:
+## Mission: Navigation Computer Diagnostics
 
-**static int factorial(int n)** — calculate factorial using a **while loop** (not recursion). 5! = 5 _ 4 _ 3 _ 2 _ 1 = 120
+The station's navigation computer needs a diagnostic check. The engineering team wrote three test routines that crunch numbers using while loops — your job is to implement them.
 
-**static boolean isPrime(int n)** — check if a number is prime using a **while loop**. A prime is only divisible by 1 and itself
+Write these methods:
 
-**static int sumDigits(int n)** — sum all digits of a number using a **while loop** (use `% 10` and `/ 10`)
+1. **`static int factorial(int n)`** — calculate factorial using a **while loop** (not recursion). `5! = 5 * 4 * 3 * 2 * 1 = 120`
+2. **`static boolean isPrime(int n)`** — check if a number is prime using a **while loop**. A prime is only divisible by 1 and itself
+3. **`static int sumDigits(int n)`** — sum all digits of a number using a **while loop** (use `% 10` and `/ 10`)
 
-Test with these values in main:
+The test calls in main are already on the right.
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("5! = " + factorial(5));
-        System.out.println("7! = " + factorial(7));
-        System.out.println("13 prime? " + isPrime(13));
-        System.out.println("15 prime? " + isPrime(15));
-        System.out.println("Digits of 9876: " + sumDigits(9876));
-    }
-}
-```
-
-Expected output
+**Output**
 
 ```text
 5! = 120

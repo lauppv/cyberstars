@@ -100,6 +100,21 @@ Change **isUserOnline** to **false** and run again. Read the new output. Program
 
 ---
 
-Write a program that displays **it's freezing outside** if the **temperature** is below **0** degrees, or **water does not freeze** otherwise
+## Mission: Hull Temperature Alert
 
-Once again here at **CyberStars** we encourage **curiosity**. Try different temperatures, **run** several times, see how the output changes
+The station's hull sensor reports the outside temperature. Write an **if / else** that checks it:
+
+- if `temperature` is **less than 0** → print `it's freezing outside`
+- otherwise → print `water does not freeze`
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `temperature` — hull temperature in degrees Celsius (int)
+
+**Example**
+
+With `temperature = -5`, your program should print
+
+```text
+it's freezing outside
+```

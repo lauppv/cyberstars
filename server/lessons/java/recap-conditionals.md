@@ -2,19 +2,21 @@ Combine **if/else**, **if/else if**, and **for loops**
 
 ---
 
-Build a **grade classifier**. Loop through student scores from **1 to 20** and classify each:
+## Mission: Crew Fitness Evaluation
 
-- **18-20**: "Excellent"
-- **15-17**: "Good"
-- **10-14**: "Pass"
-- **5-9**: "Fail"
-- **1-4**: "Very Poor"
+The station commander ordered a fitness evaluation for all 20 crew members. Each crew member scored between 1 and 20 on the physical test. You need to classify every score and report how many passed.
 
-At the end, print how many students passed (score >= 10)
+Loop through scores from **1 to 20** (use the loop variable `i` as the score) and classify each:
 
-Use the scores: just use the loop variable **i** as the score (so score 1, score 2, ... score 20)
+- **18-20**: `"Excellent"`
+- **15-17**: `"Good"`
+- **10-14**: `"Pass"`
+- **5-9**: `"Fail"`
+- **1-4**: `"Very Poor"`
 
-Expected output (first few and last few lines + the count)
+At the end, print how many crew members passed (score >= 10).
+
+**Output**
 
 ```text
 Score 1: Very Poor

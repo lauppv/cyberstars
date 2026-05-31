@@ -1,9 +1,9 @@
 def calculator(number1, number2, operator):
-if operator == "+":
-result = number1 + number2
-print(f"{number1} {operator} {number2} = {result}") # add the -, \*, and / cases here
-else:
-print("Invalid operator")
+    if operator == "+":
+        result = number1 + number2
+        print(f"{number1} {operator} {number2} = {result}") # add the -, \*, and / cases here
+    else:
+        print("Invalid operator")
 
 # --- these calls test your function (change them too) ---
 

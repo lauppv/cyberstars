@@ -182,17 +182,25 @@ Same concept — the class variable belongs to the class, not to any instance
 
 ---
 
-## Exercise
+## Mission: Airlock Traffic Monitor
+
+The station's main airlock logs every crew member who passes through. Individual names are tracked per person, but the total number of entries is a station-wide counter shared across all records.
 
 Create a `Visitor` class with:
 
-- A `String name` instance field
-- A `static int totalVisits` field starting at 0
-- A constructor that takes a name and increments `totalVisits`
+1. A `String name` instance field
+2. A `static int totalVisits` field starting at 0
+3. A constructor that takes a name and increments `totalVisits`
 
-In `main`, create 3 visitors: `"Tommy"`, `"Lance"`, and `"Cortez"`. Then print the total visits
+In `main`, register 3 visitors: `"Tommy"`, `"Lance"`, and `"Cortez"`. Then print the total visit count.
 
-Expected output:
+**Input** (already set in your code — change the values to test):
+
+- `"Tommy"`, `"Lance"`, `"Cortez"` — crew members passing through the airlock
+
+**Example**
+
+With three visitors registered, your program should print
 
 ```text
 3

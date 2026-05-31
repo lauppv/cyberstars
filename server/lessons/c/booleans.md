@@ -109,23 +109,29 @@ int main(void) {
 
 ---
 
-You are writing the access system for **CyberStars HQ**. A person can enter if they are an **employee AND it’s a working day**, or if they are a **guest WITH an invitation**
+## Mission: Airlock Access
 
-You have these variables on the right
+You are programming the airlock access panel for CyberStars HQ. A person can pass through if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
 
-```c
-#include <stdio.h>
-#include <stdbool.h>
+Write an **if / else** using `&&` and `||` that prints the correct verdict.
 
-int main(void) {
-    bool isEmployee = true;
-    bool isWorkingDay = true;
-    bool isGuest = false;
-    bool hasInvitation = false;
-    return 0;
-}
+**Input** (already set at the top of your code — change the values to test):
+
+- `isEmployee` — whether the person is an employee
+- `isWorkingDay` — whether today is a working day
+- `isGuest` — whether the person is a guest
+- `hasInvitation` — whether the person has an invitation
+
+**Example**
+
+With `isEmployee = true`, `isWorkingDay = true`, `isGuest = false`, `hasInvitation = false`, your program should print
+
+```text
+Access granted
 ```
 
-Display **Access granted** if the person can enter, **Access denied** otherwise
+Now set `isEmployee = false` and `isGuest = true`, `hasInvitation = false` and run again
 
-Don’t forget the **#include <stdbool.h>** — it’s already there for you :)
+```text
+Access denied
+```

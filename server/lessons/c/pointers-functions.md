@@ -104,11 +104,20 @@ The function "returns" both the minimum and maximum through pointers. This is id
 
 ---
 
-Write a function **tripleIt** that takes an **int pointer** and **triples** the value it points to
+## Mission: Engine Power Boost
 
-Then in **main**, create a variable **num** with value **5**, call **tripleIt(&num)**, and print the result
+The reactor output is too low for the jump to hyperspace. Engineer Phil wrote a boost function, but it only doubles the value. You need a **tripleIt** function that triples the engine power through a pointer — no copies, direct memory access.
 
-Expected output
+1. Write a function **tripleIt** that takes an **int pointer** and triples the value it points to
+2. In **main**, call **tripleIt(&num)** and print the result
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `num` — an int with value **5**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 15

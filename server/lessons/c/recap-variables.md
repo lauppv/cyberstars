@@ -2,7 +2,11 @@ Time to combine what you've learned so far! No new theory — just a challenge t
 
 ---
 
-Write a program that calculates and displays info about a road trip:
+## Mission: Supply Run Calculator
+
+The station is running low on oxygen canisters. Cortez needs to calculate the fuel cost for a supply shuttle trip to the nearest depot.
+
+The data is already on the right. Do the following, in order:
 
 1. Declare an **int** variable **distanceKm** with value **450**
 2. Declare a **float** variable **fuelPerKm** with value **0.07** (liters per km)
@@ -10,9 +14,7 @@ Write a program that calculates and displays info about a road trip:
 4. Calculate the **total fuel** needed and the **total cost**
 5. Add a **comment** above each calculation explaining what it does
 
-Print the results in this exact format
-
-Expected output
+**Output**
 
 ```text
 Distance: 450 km

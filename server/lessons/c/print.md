@@ -90,7 +90,15 @@ Try removing the **;** and run the code. Read the compile error :)
 
 ---
 
-On the right you have a C program ready to go. Inside **main**, write code that displays
+## Mission: First Transmission
+
+You just boarded the CyberStars space station and the comms console is waiting for your first broadcast.
+
+Inside **main**, write a single **printf** that transmits the message below to Mission Control.
+
+**Example**
+
+Your program should print
 
 ```text
 Hello, CyberStars!

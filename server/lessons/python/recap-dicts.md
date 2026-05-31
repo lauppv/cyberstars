@@ -13,7 +13,7 @@ Write a function `analyze(scores)` that takes a dictionary of crew names → sco
 The crew scores are already on the right:
 
 ```python
-scores = {"Ana": 95, "Mihai": 42, "Elena": 88, "Radu": 37, "Ioana": 76}
+scores = {"Tommy": 95, "Lance": 42, "Cortez": 88, "Phil": 37, "Mira": 76}
 ```
 
 Call the function, then print the report:
@@ -26,9 +26,9 @@ Call the function, then print the report:
 
 ```text
 Average: 67.6
-Top: Ana
+Top: Tommy
 Passing:
-Ana
-Elena
-Ioana
+Tommy
+Cortez
+Mira
 ```

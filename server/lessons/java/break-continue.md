@@ -137,12 +137,22 @@ A small warning: **break** and **continue** can make code harder to read if you 
 
 ---
 
-Print all numbers from **1 to 20**, but with two rules
+## Mission: Deck Patrol
 
-- **Skip** the number **13** (use **continue**)
-- **Stop** completely when you reach **17** (use **break**, do not print **17** itself)
+Security is scanning decks **1** through `totalDecks`. Two special rules apply:
 
-Expected output
+1. Deck `cursedDeck` is sealed off — **skip** it with `continue`
+2. When you reach deck `lockdownDeck`, a lockdown triggers — **stop** immediately with `break` (do **not** print that deck)
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `totalDecks` — how many decks to patrol
+- `cursedDeck` — the deck to skip
+- `lockdownDeck` — the deck where you stop
+
+**Example**
+
+With `totalDecks = 20`, `cursedDeck = 13`, and `lockdownDeck = 17`, your program should print
 
 ```text
 1
@@ -162,4 +172,4 @@ Expected output
 16
 ```
 
-**13** is missing, and **17, 18, 19, 20** never show up
+**13** is missing (skipped), and **17, 18, 19, 20** never show up (lockdown)

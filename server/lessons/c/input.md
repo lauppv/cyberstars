@@ -115,24 +115,13 @@ int main(void) {
 
 ---
 
-Write a program that asks for a **name** (a single word, no spaces) and an **age** (an int), then displays
+## Mission: Crew Check-In
 
-```text
-Hello <name>, you are <age> years old. Next year you will be <age + 1>
-```
+Every crew member arriving at the station must check in at the terminal. The system reads their **name** and **age**, then displays a welcome message with their age next year.
 
-Use a **char** array of size **64** for the name
+Read a name (single word, no spaces) and an age using **scanf**, then print the welcome line.
 
-```c
-#include <stdio.h>
-
-int main(void) {
-    char name[64];
-    scanf("%s", name);
-    printf("%s\n", name);
-    return 0;
-}
-```
+**Example**
 
 If the user types
 
@@ -141,8 +130,10 @@ Cortez
 60
 ```
 
-the program should display
+your program should print
 
 ```text
 Hello Cortez, you are 60 years old. Next year you will be 61
 ```
+
+Try different names and ages — the station welcomes everyone :)

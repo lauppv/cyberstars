@@ -184,4 +184,18 @@ Parsed: 42
 
 ---
 
-Your turn! Write code that tries to parse the string "hello" as an integer using `Integer.parseInt()`. Catch the `NumberFormatException` and print "Not a valid number: hello". Then try to parse "42" — this one should succeed. Print "Parsed: 42"
+## Mission: Sensor Data Validator
+
+The station receives raw sensor readings as text strings from deep-space probes. Some are valid numbers, some are corrupted garbage. Your job is to build a validator that tries to parse each reading and handles the failures gracefully.
+
+1. Try to parse the string `"hello"` as an integer using `Integer.parseInt()`. Catch the `NumberFormatException` and print `"Not a valid number: hello"`.
+2. Try to parse the string `"42"` — this one should succeed. Print `"Parsed: 42"`.
+
+**Example**
+
+Your program should print
+
+```text
+Not a valid number: hello
+Parsed: 42
+```

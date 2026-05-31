@@ -78,11 +78,21 @@ Both are equally powerful — anything you can do with one, you can do with the 
 
 ---
 
-The code on the right is in an **infinite loop**. Fix it so the program prints
+## Mission: Signal Lost
+
+A crew member's communicator is stuck in an **infinite loop** — it keeps broadcasting `I am online` forever and never shuts down.
+
+Fix the code on the right so the communicator broadcasts **once**, then goes offline. You need to **change** the variable inside the loop so the condition eventually becomes **false**.
+
+**Input** (already set at the top of your code):
+
+- `isOnline` — whether the communicator is active (`true` at the start)
+
+**Example**
+
+After your fix, the program should print exactly
 
 ```text
 I am online
 Now I am offline
 ```
-
-Tip: the loop should run **once** while the user is online, then end. You need to **change** the variable inside the loop so the condition eventually becomes **false**

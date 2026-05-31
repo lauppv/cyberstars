@@ -203,11 +203,21 @@ Java's two-world system (primitives vs objects) is the main reason wrapper class
 
 ---
 
-## Exercise
+## Mission: Supply Tally
 
-Create an `ArrayList<Integer>` with five numbers: `10`, `20`, `30`, `40`, `50`. Use a for loop to calculate the sum, then print it
+The cargo bay inventory is stored in an `ArrayList<Integer>` (because collections need wrapper types, not primitives). Add five crate counts and compute the **total**.
 
-Expected output:
+1. Create an `ArrayList<Integer>` and add: `10`, `20`, `30`, `40`, `50`
+2. Loop through the list to calculate the sum
+3. Print the sum
+
+**Input** (already set in your code — change the values to test):
+
+- Crate counts: `10, 20, 30, 40, 50`
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 150

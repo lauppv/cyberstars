@@ -1,9 +1,14 @@
 public class Main {
-public static void main(String[] args) {
-for (int i = 1; i <= 20; i++) {
-// skip 13 with continue
-// stop at 17 with break (don't print 17)
-System.out.println(i);
-}
-}
+    public static void main(String[] args) {
+        int totalDecks = 20;
+        int cursedDeck = 13;
+        int lockdownDeck = 17;
+
+        for (int i = 1; i <= totalDecks; i++) {
+            // skip cursedDeck with continue
+            // stop at lockdownDeck with break (don't print it)
+            System.out.println(i);
+        }
+    }
+
 }

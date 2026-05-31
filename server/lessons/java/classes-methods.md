@@ -162,18 +162,22 @@ In Java, `this` is always available inside instance methods — you don't need t
 
 ---
 
-## Exercise
+## Mission: Docking Bay Counter
+
+The station's docking bay needs a digital counter to track how many ships have arrived during each shift. Every time a ship docks, the counter increments by one.
 
 Create a `Counter` class with:
 
-- An `int` field called `count`, starting at 0
-- A constructor that sets `count` to 0
-- An `increment()` method that adds 1 to `count`
-- A `getCount()` method that returns the current `count`
+1. An `int` field called `count`, starting at 0
+2. A constructor that sets `count` to 0
+3. An `increment()` method that adds 1 to `count`
+4. A `getCount()` method that returns the current `count`
 
-In `main`, create a `Counter`, call `increment()` three times, then print the count
+In `main`, create a `Counter`, call `increment()` three times (three ships docked), then print the count.
 
-Expected output:
+**Example**
+
+After three dockings, your program should print
 
 ```text
 3

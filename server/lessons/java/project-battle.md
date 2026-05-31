@@ -168,19 +168,17 @@ Notice how `printStatus()` is only defined once in the parent `Character` class,
 
 ---
 
-Your turn! Build the battle simulator:
+## Mission: Arena Combat Protocol
 
-1. Create a `Character` class with `name` (String), `health` (int), `attackPower` (int), a constructor, an `attack(Character target)` method, and a `printStatus()` method
+Two crew members have entered the station's holographic training arena. Tommy is a close-range Warrior with heavy armor, and Lance is a Mage who channels energy blasts. Build the combat system and simulate one round of attacks.
+
+1. Create a `Character` class with `name` (String), `health` (int), `attackPower` (int), a constructor, an `attack(Character target)` method that reduces target health by `attackPower` and prints `"NAME attacks TARGET for DAMAGE damage!"`, and a `printStatus()` method that prints `"NAME - HP: HEALTH"`
 2. Create a `Warrior` class extending Character with `armor` (int). Override attack to print: `"NAME swings sword at TARGET for DAMAGE damage!"` where damage equals attackPower
 3. Create a `Mage` class extending Character with `spellPower` (int). Override attack to print: `"NAME casts spell on TARGET for DAMAGE damage!"` where damage equals attackPower + spellPower
-4. `printStatus()` should print: `"NAME - HP: HEALTH"`
-5. In main:
-   - Create a Warrior: "Tommy", health 100, attackPower 25, armor 10
-   - Create a Mage: "Lance", health 80, attackPower 15, spellPower 20
-   - Tommy attacks Lance, then print Lance's status
-   - Lance attacks Tommy, then print Tommy's status
+4. In main, create Warrior Tommy (health 100, attack 25, armor 10) and Mage Lance (health 80, attack 15, spellPower 20)
+5. Tommy attacks Lance, print Lance's status. Then Lance attacks Tommy, print Tommy's status
 
-Expected output:
+**Output**
 
 ```text
 Tommy swings sword at Lance for 25 damage!

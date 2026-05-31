@@ -1,8 +1,8 @@
 import java.util.LinkedHashMap;
 
 class Student {
-String name;
-LinkedHashMap<String, Integer> grades;
+    String name;
+    LinkedHashMap<String, Integer> grades;
 
     Student(String name) {
         this.name = name;
@@ -29,10 +29,10 @@ LinkedHashMap<String, Integer> grades;
 }
 
 public class Main {
-public static void main(String[] args) {
-// Create student "Tommy" with Math 90, English 85, Science 92
-// Create student "Lance" with Math 78, English 82, Science 88
-// Print both reports
+    public static void main(String[] args) {
+        // Create student "Tommy" with Math 90, English 85, Science 92
+        // Create student "Lance" with Math 78, English 82, Science 88
+        // Print both reports
 
     }
 

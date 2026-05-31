@@ -140,14 +140,23 @@ A single **int** stores multiple yes/no properties using individual bits. This i
 
 ---
 
-Given two integers **a = 12** (binary: 1100) and **b = 10** (binary: 1010), print:
+## Mission: Airlock Access Codes
 
-1. **a & b** (AND)
-2. **a | b** (OR)
-3. **a ^ b** (XOR)
-4. **a << 2** (left shift by 2)
+The station's airlock system uses bitwise flags to encode access permissions. Given two security codes, run the four core bitwise operations so the security officer can verify the lock configuration.
 
-Expected output
+1. Print **a & b** (AND)
+2. Print **a | b** (OR)
+3. Print **a ^ b** (XOR)
+4. Print **a << 2** (left shift by 2)
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `a` — int with value **12** (binary: 1100)
+- `b` — int with value **10** (binary: 1010)
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 8

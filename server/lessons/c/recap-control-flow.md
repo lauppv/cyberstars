@@ -2,16 +2,18 @@ Combine **if/else**, **if/else if**, and **for loops** in one challenge
 
 ---
 
-Write a program that goes through numbers from **1 to 20** and classifies each one:
+## Mission: Sector Scan Protocol
 
-- If the number is **divisible by both 3 and 5**, print **"X: fizzbuzz"**
-- If divisible by **3 only**, print **"X: fizz"**
-- If divisible by **5 only**, print **"X: buzz"**
-- Otherwise, print **"X: normal"**
+The station's long-range scanner is sweeping sectors 1 through 20. Each sector gets a classification tag based on its resonance frequency — divisibility patterns determine the tag.
 
-At the end, print how many **fizzbuzz** numbers you found
+1. Loop through numbers from **1 to 20**
+2. If the number is **divisible by both 3 and 5**, print **"X: fizzbuzz"**
+3. If divisible by **3 only**, print **"X: fizz"**
+4. If divisible by **5 only**, print **"X: buzz"**
+5. Otherwise, print **"X: normal"**
+6. At the end, print how many **fizzbuzz** sectors you found
 
-Expected output
+**Output**
 
 ```text
 1: normal
@@ -36,5 +38,3 @@ Expected output
 20: buzz
 FizzBuzz count: 1
 ```
-
-This is a famous interview problem called **FizzBuzz**. You now have the skills to solve it :)

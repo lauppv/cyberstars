@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main(void) {
-char name[64];
-int age;
+    char name[64];
+    int age;
 
     scanf("%s", name);
     scanf("%d", &age);
@@ -10,5 +10,4 @@ int age;
     // print the message
 
     return 0;
-
 }

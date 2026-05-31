@@ -2,18 +2,20 @@ Combine **print**, **variables (numbers and strings)**, and **string concatenati
 
 ---
 
-Build a **receipt printer**. Create these variables:
+## Mission: Supply Depot Receipt
 
-- **item1** = "Laptop" with price **999.99**
-- **item2** = "Mouse" with price **29.50**
-- **item3** = "USB Cable" with price **5.99**
-- **tax** = 19 (percent, as an int)
+A cargo shipment just arrived at the station's supply depot. Before the crates can be stored, you need to print an official receipt for the quartermaster's records.
 
-Calculate the **subtotal**, the **tax amount**, and the **total**
+Create these variables:
 
-Print a formatted receipt using **concatenation** and **System.out.println**
+- **item1** = `"Laptop"` with price **999.99**
+- **item2** = `"Mouse"` with price **29.50**
+- **item3** = `"USB Cable"` with price **5.99**
+- **tax** = 19 (percent, as an `int`)
 
-Expected output
+Calculate the **subtotal**, the **tax amount**, and the **total**. Print a formatted receipt using concatenation and `System.out.println`. Don't worry about rounding — just let Java calculate the numbers and print them as-is.
+
+**Output**
 
 ```text
 === RECEIPT ===
@@ -25,5 +27,3 @@ Tax (19%): 196.7412 EUR
 Total: 1232.2212 EUR
 ===============
 ```
-
-Don't worry about rounding for now — just let Java calculate the numbers and print them as-is

@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-// your road trip calculator here
+    // your supply run calculator here
 
     return 0;
-
 }

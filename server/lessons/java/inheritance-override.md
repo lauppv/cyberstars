@@ -155,4 +155,27 @@ Rectangle area: 24.0
 
 ---
 
-Your turn! Create a `Shape` class with an `area()` method that returns 0. Create a `Circle` class (with a radius field) and a `Rectangle` class (with width and height) that both extend Shape and override `area()`. In main, create a Circle with radius 5 and a Rectangle with width 4 and height 6. Print the circle's area formatted to 2 decimal places using `String.format("%.2f", ...)` and the rectangle's area. Use the exact format shown above
+## Mission: Hull Plate Calculator
+
+The station's engineering team is replacing hull plates of different shapes. They need a program that calculates the area of each plate so they can order the right amount of material.
+
+Create a `Shape` class with an `area()` method that returns `0`. Then create two child classes:
+
+1. `Circle` — has a `double radius` field, overrides `area()` to return `Math.PI * radius * radius`
+2. `Rectangle` — has `double width` and `double height` fields, overrides `area()` to return `width * height`
+
+Use `@Override` on both. In `main`, create a Circle with radius `5` and a Rectangle with width `4` and height `6`. Print each area with the labels shown below — use `String.format("%.2f", ...)` for the circle.
+
+**Input** (already set in your code — change the values to test):
+
+- `5` — circle radius
+- `4`, `6` — rectangle width and height
+
+**Example**
+
+With the starter values, your program should print
+
+```text
+Circle area: 78.54
+Rectangle area: 24.0
+```

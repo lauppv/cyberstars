@@ -2,30 +2,17 @@ Combine **nested loops**, **pointers**, and **pass by reference**
 
 ---
 
-Build a **matrix statistics** calculator. You have a 3x3 matrix (a 2D array). Write functions that use **pointers** to return results:
+## Mission: Sensor Grid Analysis
 
-**void matrixStats(int matrix[3][3], int \*sum, int \*min, int \*max)**
+The station's 3x3 sensor grid just finished a radiation sweep. Tommy needs a quick diagnostic: the total reading, the lowest value, and the highest spike. One function must return all three results at once through pointers.
 
-This function uses **nested loops** to go through the matrix and sets the sum, min, and max values through pointers
+The data is already on the right. Do the following, in order:
 
-Then in main, use this matrix:
+1. Write **void matrixStats(int matrix[3][3], int *sum, int *min, int \*max)** using nested loops to scan the matrix
+2. Set the sum, min, and max values through pointers
+3. Call the function from main and print the results
 
-```c
-#include <stdio.h>
-
-int main(void) {
-    int matrix[3][3] = {
-        {5, 12, 3},
-        {8, 1, 15},
-        {7, 9, 4}
-    };
-    return 0;
-}
-```
-
-Call matrixStats and print the results
-
-Expected output
+**Output**
 
 ```text
 Sum: 64
@@ -33,4 +20,4 @@ Min: 1
 Max: 15
 ```
 
-The function "returns" three values at once using pointers — the pattern we learned in the pointers-functions lesson
+The function "returns" three values at once using pointers — the pass-by-reference pattern

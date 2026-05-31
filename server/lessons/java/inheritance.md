@@ -147,4 +147,22 @@ Meow! My name is Whiskers
 
 ---
 
-Your turn! Create an `Animal` class with a `name` field and a `speak()` method. Then create a `Dog` that extends Animal and overrides speak() to print `Woof! My name is X`. Create a `Cat` that prints `Meow! My name is X`. In main, create a Dog named "Tommy" and a Cat named "Lance", and call speak() on both
+## Mission: Crew Companion Registry
+
+The station allows crew members to bring animal companions aboard. Every companion has a name and can vocalize, but dogs and cats do it differently. You need to build the inheritance hierarchy for the registry.
+
+Create an `Animal` class with a `name` field, a constructor, and a `speak()` method that prints `"..."`. Then create two child classes:
+
+1. `Dog` extends `Animal` — overrides `speak()` to print `"Woof! My name is "` + name
+2. `Cat` extends `Animal` — overrides `speak()` to print `"Meow! My name is "` + name
+
+In `main`, create a Dog named `"Tommy"` and a Cat named `"Lance"`, and call `speak()` on both.
+
+**Example**
+
+Your program should print
+
+```text
+Woof! My name is Tommy
+Meow! My name is Lance
+```

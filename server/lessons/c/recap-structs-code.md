@@ -2,21 +2,21 @@
 #include <string.h>
 
 typedef struct {
-char name[50];
-char phone[20];
+    char name[50];
+    char phone[20];
 } Contact;
 
 void addContact(Contact *book, int *count, const char *name, const char *phone) {
-// add contact and increment count
+    // add contact and increment count
 }
 
 void searchContact(Contact *book, int count, const char *query) {
-// search using pointer arithmetic
+    // search using pointer arithmetic
 }
 
 int main(void) {
-Contact book[10];
-int count = 0;
+    Contact book[10];
+    int count = 0;
 
     addContact(book, &count, "Tommy", "0722111222");
     addContact(book, &count, "Lance", "0733222333");
@@ -26,5 +26,4 @@ int count = 0;
     searchContact(book, count, "Diaz");
 
     return 0;
-
 }

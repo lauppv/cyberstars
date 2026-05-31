@@ -195,7 +195,9 @@ The Student class is self-contained — it knows how to add grades, calculate it
 
 ---
 
-Your turn! Build the student gradebook:
+## Mission: Academy Transcript Generator
+
+The station's training academy just finished exams. Each cadet has grades in multiple subjects, and the academy director needs a printed transcript for every student showing their scores and average.
 
 1. Create a `Student` class with a `name` (String) and a `LinkedHashMap<String, Integer>` for grades
 2. Add methods: `addGrade(String subject, int grade)`, `double getAverage()`, `printReport()`
@@ -208,7 +210,7 @@ Your turn! Build the student gradebook:
    - "Lance" with grades: Math 78, English 82, Science 88
 5. Print both reports
 
-Expected output:
+**Output**
 
 ```text
 Student: Tommy

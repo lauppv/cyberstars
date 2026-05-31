@@ -86,9 +86,22 @@ The pointer type must match the type it points to. An **int \*** can only point 
 
 ---
 
-Declare an **int** variable called **x** with value **7**. Create a pointer **ptr** that points to **x**. Then use the pointer to **change** x to **42**. Print both **x** and **\*ptr**
+## Mission: Remote Valve Override
 
-Expected output
+A pressure valve on Deck 7 is stuck. You can't reach it physically, but you have a pointer to its control register. Use the pointer to change the valve setting remotely.
+
+1. Declare an **int** variable **x** with value **7**
+2. Create a pointer **ptr** that points to **x**
+3. Use the pointer to change **x** to **42** (assign through **\*ptr**)
+4. Print both **x** and **\*ptr**
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `x` — an int with initial value **7**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 42

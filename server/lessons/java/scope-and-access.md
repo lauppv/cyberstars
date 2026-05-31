@@ -180,19 +180,28 @@ Access modifiers (`public`, `private`) are only for class members — fields, me
 
 ---
 
-## Exercise
+## Mission: Crew Wallet
 
-Create a `Wallet` class with:
+Each crew member has a personal `Wallet` on the station, protected by access controls. Build the `Wallet` class with:
 
-- A `private int money` field
-- A constructor that takes starting money
-- A `public void addMoney(int amount)` method (only if amount > 0)
-- A `public void spendMoney(int amount)` method (only if amount > 0 and amount <= money)
-- A `public int getBalance()` method
+1. A `private int money` field
+2. A `public` constructor that takes starting money
+3. A `public void addMoney(int amount)` method — only adds if `amount > 0`
+4. A `public void spendMoney(int amount)` method — only spends if `amount > 0` **and** `amount <= money`
+5. A `public int getBalance()` method that returns the current balance
 
-In `main`, create a wallet with 100, add 50, spend 30, try to spend 200 (should fail), and print the balance
+In `main`, create a wallet with **100**, add **50**, spend **30**, try to spend **200** (should fail silently), then print the balance.
 
-Expected output:
+**Input** (already set in the starter code — change the values to test):
+
+- Starting money: `100`
+- Add: `50`
+- Spend: `30`
+- Attempted overspend: `200`
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 120

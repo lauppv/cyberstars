@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-int heroes[3];
+    int heroes[3];
 
     // 1. set heroes[0] to 10
     // 2. set heroes[1] to 20
@@ -11,5 +11,4 @@ int heroes[3];
     // 6. print the last element
 
     return 0;
-
 }

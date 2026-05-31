@@ -71,22 +71,26 @@ Notice how we can use **Point** inside **Circle**. Structs inside structs — **
 
 ---
 
-Define a **typedef** struct called **Student** with fields: **name** (char array), **grade** (int), **average** (double)
+## Mission: Crew Performance Report
 
-Create an array of **3 students**:
+The station captain wants a formatted report of crew members' performance scores. Use **typedef** to define a clean struct and loop through the roster.
 
-- "Ana", 10, 9.5
-- "Mihai", 11, 8.2
-- "Elena", 10, 9.8
+1. Define a **typedef** struct called **CrewMember** with fields: **name** (char array), **rank** (int), **rating** (double)
+2. Create an array of **3 crew members** with the values shown below
+3. Loop through them and print each one in the format **"Name - Rank X - Rating Y.YY"**
 
-Loop through them and print each one
+**Input** (already set at the top of your code — change the values to test):
 
-Expected output
+- **"Tommy"**, rank **10**, rating **9.50**
+- **"Lance"**, rank **11**, rating **8.20**
+- **"Cortez"**, rank **10**, rating **9.80**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
-Ana - Grade 10 - Avg 9.50
-Mihai - Grade 11 - Avg 8.20
-Elena - Grade 10 - Avg 9.80
+Tommy - Rank 10 - Rating 9.50
+Lance - Rank 11 - Rating 8.20
+Cortez - Rank 10 - Rating 9.80
 ```
-
-Use **printf("%.2f")** for the average to get 2 decimal places

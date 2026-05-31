@@ -56,4 +56,25 @@ There’s also a special kind, **/\*\* ... \*/**, used to document classes and m
 
 ---
 
-The code on the right is correct, but you don’t want to print **everything**. Comment out **one line** so that the program displays only the **ship’s name**, **mission name**, and **maximum power**. Don’t delete anything — just **comment** the line you want to skip
+## Mission: Classified Cargo
+
+The ship’s manifest is displayed on the main screen, but one line contains **classified cargo** that must stay hidden from the crew.
+
+Comment out **one line** so that only the ship’s name, mission name, and maximum power are printed. Do not delete anything — just use `//` to hide the secret.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `shipName` — the ship’s name
+- `missionName` — the current mission
+- `secretCargo` — classified item (this must NOT appear in the output)
+- `maxPower` — engine power level
+
+**Example**
+
+With the default values, your program should print
+
+```text
+Voyager
+Deep Space Exploration
+9001
+```

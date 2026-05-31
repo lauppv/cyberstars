@@ -98,9 +98,22 @@ These rules sound simple but violating them causes some of the hardest bugs in t
 
 ---
 
-Create a dynamic array of **5 ints** using **malloc**. Fill it with the values **{2, 4, 6, 8, 10}**. Print each value on a separate line. Don't forget to **free** the memory
+## Mission: Dynamic Sensor Buffer
 
-Expected output
+The station just detected 5 new objects on radar, but the sensor array size isn't known at compile time. Allocate a buffer dynamically, fill it with the readings, display them, and release the memory before the next scan cycle.
+
+1. Allocate a dynamic array of **5 ints** using **malloc**
+2. Fill it with the values **{2, 4, 6, 8, 10}**
+3. Print each value on a separate line
+4. **free** the memory when done
+
+**Input** (already set at the top of your code — change the values to test):
+
+- 5 sensor readings: **2, 4, 6, 8, 10**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 2

@@ -2,34 +2,24 @@ Combine **interfaces**, **casting**, **exceptions**, and **String.format**
 
 ---
 
-Build a **shape calculator** using interfaces. Create an interface **Shape** with:
+## Mission: Hull Geometry Scanner
 
-- **double area()**
-- **String describe()**
+The station's hull integrity scanner detects structural shapes and calculates their area for stress analysis. Build the shape system using interfaces, then demonstrate safe casting with exception handling.
+
+Create an interface **`Shape`** with:
+
+- `double area()`
+- `String describe()`
 
 Create three classes that implement Shape:
 
-- **Circle** — takes radius. Area = PI _ r _ r
-- **Rectangle** — takes width and height. Area = w \* h
-- **Triangle** — takes base and height. Area = 0.5 _ b _ h
+- **Circle** — takes radius. Area = PI _ r _ r. Describe returns `"Circle (r=X.X)"`
+- **Rectangle** — takes width and height. Area = w \* h. Describe returns `"Rectangle (X.X x X.X)"`
+- **Triangle** — takes base and height. Area = 0.5 _ b _ h. Describe returns `"Triangle (b=X.X, h=X.X)"`
 
-Write a method **static void printShape(Shape s)** that uses **String.format** to print: "Shape: describe — Area: X.XX"
+The `printShape` method and shape array are already on the right. After printing all shapes, cast `shapes[0]` to Circle and print its radius, then try casting `shapes[1]` to Circle and catch the `ClassCastException`.
 
-In main, create an array of Shapes and print each one. Then try to **cast** one to Circle and print the radius. Wrap the cast in a **try/catch** for ClassCastException
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        Shape[] shapes = {
-            new Circle(5),
-            new Rectangle(4, 6),
-            new Triangle(3, 8)
-        };
-    }
-}
-```
-
-Expected output
+**Output**
 
 ```text
 Circle (r=5.0) — Area: 78.54

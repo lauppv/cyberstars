@@ -78,7 +78,15 @@ This prints **every combination** of two elements from the array. If the array h
 
 ---
 
-Print the following pattern using nested loops
+## Mission: Star Map Grid
+
+The navigation console needs a star map rendered row by row. Each row **i** displays the sector numbers from **1** up to **i**.
+
+Write **nested for loops**: the outer loop goes from 1 to 5 (rows), the inner loop prints numbers from 1 to i. Use `printf("%d ", j)` inside the inner loop and `printf("\n")` after it.
+
+**Example**
+
+Your program should print
 
 ```text
 1
@@ -88,4 +96,4 @@ Print the following pattern using nested loops
 1 2 3 4 5
 ```
 
-Each row **i** prints numbers from **1** to **i**, separated by spaces. Use `printf("%d ", j)` inside the inner loop and `printf("\n")` after it
+Note: there is a trailing space after each number — that is fine :)

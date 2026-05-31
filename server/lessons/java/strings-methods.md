@@ -125,7 +125,19 @@ public class Main {
 
 ---
 
-You have a variable **name** on the right, set to **"lance vance"**. Display **on separate lines**
+## Mission: Signal Decoder
+
+A garbled crew name arrived over the comms. The decryption module needs you to display it in every format so the analysts can cross-reference it.
+
+Print these six values on **separate lines**: uppercase, lowercase, length, first character, first 5 characters, and last 5 characters (positions 6 to 11).
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `name` — the crew member's name (String)
+
+**Example**
+
+With `name = "lance vance"`, your program should print
 
 ```text
 LANCE VANCE
@@ -135,7 +147,3 @@ l
 lance
 vance
 ```
-
-That is: uppercase, lowercase, length, first letter, the first 5 characters, and the last 5 characters (positions 6 to 11)
-
-Try modifying the name to **"tommy"**, **"cortez"**, your own name — see what changes :)

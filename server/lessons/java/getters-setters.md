@@ -162,19 +162,29 @@ The getter still lets people **read** the name, but nobody can change it. This i
 
 ---
 
-## Exercise
+## Mission: Station Credit Vault
+
+The station's credit vault needs a secure transaction system. Crew members can deposit and withdraw credits, but the system must reject invalid operations — no negative deposits and no overdrafts allowed.
 
 Create a `BankAccount` class with:
 
-- A `private int balance` field
-- A constructor that takes the starting balance
-- A `getBalance()` method that returns the balance
-- A `deposit(int amount)` method that adds to balance (only if amount > 0)
-- A `withdraw(int amount)` method that subtracts from balance (only if amount > 0 and amount <= balance)
+1. A `private int balance` field
+2. A constructor that takes the starting balance
+3. A `getBalance()` method that returns the balance
+4. A `deposit(int amount)` method that adds to balance (only if amount > 0)
+5. A `withdraw(int amount)` method that subtracts from balance (only if amount > 0 and amount <= balance)
 
-In `main`, create an account with 1000, deposit 500, withdraw 200, then try to withdraw 2000 (should fail), and print the balance
+In `main`, create an account with `1000` credits, deposit `500`, withdraw `200`, then try to withdraw `2000` (should fail silently), and print the final balance.
 
-Expected output:
+**Input** (already set in your code — change the values to test):
+
+- `1000` — starting balance
+- `500` — deposit amount
+- `200`, `2000` — withdrawal amounts
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 1300

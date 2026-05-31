@@ -101,15 +101,21 @@ This is a very common C idiom. Get used to writing it :)
 
 ---
 
-You have an array **scores** on the right, with the values **{80, 95, 60, 72, 88}**
+## Mission: Sensor Array Analysis
 
-Display **on separate lines**
+The station's external sensors just delivered a batch of readings. Commander Rex needs a full summary: every individual reading, the total, and the average.
 
-1. Each score (one per line)
-2. The **total** of all scores
-3. The **average**
+1. Print each score on its own line (use a **for** loop)
+2. Print the **total** of all scores
+3. Print the **average** (cast to **double** to avoid integer division — use **(double) total / n**)
 
-Expected output
+**Input** (already set at the top of your code — change the values to test):
+
+- `scores` — an int array with values **{80, 95, 60, 72, 88}**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 80
@@ -120,19 +126,3 @@ Expected output
 395
 79.000000
 ```
-
-For the average, **be careful with integer division** :) Cast one of the operands to **double**, like
-
-```c
-#include <stdio.h>
-
-int main(void) {
-    int total = 395;
-    int n = 5;
-    double average = (double) total / n;
-    printf("%f\n", average);
-    return 0;
-}
-```
-
-The **(double)** is a **cast** — we tell C to treat **total** as a double for this operation. The result is **79.0**, which **printf** formats as **79.000000** (6 default decimals). If you want fewer, use **%.1f** or **%.2f**, but for this exercise leave it at the default :)

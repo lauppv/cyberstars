@@ -114,4 +114,24 @@ Like Cortez in Vice City — he gives missions to Tommy, Lance, whoever. He does
 
 ---
 
-Your turn! Create the `Shape`, `Circle`, and `Rectangle` classes from the override lesson (Shape has area() returning 0, Circle overrides with pi*r*r, Rectangle overrides with w\*h). Then create a `Shape[]` array containing a Circle with radius 5 and a Rectangle with width 4 and height 6. Loop through the array and print each area using `String.format("%.2f", s.area())`
+## Mission: Cargo Bay Audit
+
+The station's cargo bay holds containers of different shapes. The quartermaster needs a single loop that calculates and prints the footprint area of every container — without checking what shape each one is.
+
+Create the `Shape`, `Circle`, and `Rectangle` classes (Shape has `area()` returning 0; Circle overrides with `Math.PI * radius * radius`; Rectangle overrides with `width * height`).
+
+In `main`, create a `Shape[]` array containing a Circle with radius `5` and a Rectangle with width `4` and height `6`. Loop through the array and print each area using `String.format("%.2f", s.area())`.
+
+**Input** (already set in your code — change the values to test):
+
+- `5` — circle radius
+- `4`, `6` — rectangle width and height
+
+**Example**
+
+With the starter values, your program should print
+
+```text
+78.54
+24.00
+```

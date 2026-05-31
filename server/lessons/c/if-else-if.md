@@ -89,4 +89,23 @@ Nested **if**s are fine, but if you go 5 levels deep, the code gets unreadable. 
 
 ---
 
-Change the values on the right and run multiple times. Add a new **else if** for **30 seconds**. **Be curious** :)
+## Mission: Launch Sequence
+
+You are the launch controller. The countdown timer shows `seconds` remaining. Depending on the value, different systems must activate.
+
+The code on the right already has the full chain. Your task: **add a new else if** branch for **30 seconds** that prints `Pressurizing fuel tanks`.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `seconds` — seconds remaining until launch
+- `errorDetected` — whether an error was detected (0 = no, 1 = yes)
+
+**Example**
+
+With `seconds = 30`, your program should print
+
+```text
+Pressurizing fuel tanks
+```
+
+Change `seconds` to `60`, `10`, `5` and run again — see the whole sequence in action :)
