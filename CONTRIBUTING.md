@@ -13,6 +13,8 @@ Thanks for your interest in contributing! CyberStars is an open-source coding ed
 
 ### Setup
 
+If you just want to run CyberStars locally (try it out, follow the lessons), clone the main repo directly with the command below. If you plan to submit changes, fork the repo first and clone your fork instead — see [Code changes](#code-changes) for the full fork workflow.
+
 ```bash
 git clone https://github.com/lauppv/cyberstars.git
 cd cyberstars
@@ -123,11 +125,19 @@ Important rules:
 
 ### Code changes
 
-1. Fork the repo and create a feature branch from `main`
-2. Keep your branch up to date: `git fetch origin && git rebase origin/main`
-3. Make your changes
-4. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code` — all five must pass (these mirror the CI gates)
-5. Open a pull request with a clear description of what and why
+CyberStars uses the **fork-and-pull** model: you push branches to your own fork, then open a pull request against this repo. Direct push access to this repo is only granted to collaborators, so external contributors always work from a fork.
+
+1. Fork the repo on GitHub, then clone your fork and add this repo as `upstream`:
+   ```bash
+   git clone https://github.com/<your-username>/cyberstars.git
+   cd cyberstars
+   git remote add upstream https://github.com/lauppv/cyberstars.git
+   ```
+2. Create a feature branch from `main`: `git switch -c my-feature main`
+3. Keep your branch up to date with upstream: `git fetch upstream && git rebase upstream/main`
+4. Make your changes
+5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code` — all five must pass (these mirror the CI gates)
+6. Push to your fork (`git push origin my-feature`) and open a pull request against `lauppv/cyberstars` with a clear description of what and why
 
 ### Style guide
 
