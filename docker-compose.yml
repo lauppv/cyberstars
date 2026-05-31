@@ -25,8 +25,10 @@ services:
         docker pull eclipse-temurin:21-jdk-alpine &&
         docker build -t cyberstars-linux-sandbox /context
       "
+    environment:
+      - DOCKER_HOST=${DOCKER_HOST:-unix:///var/run/docker.sock}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
       - ./server/runtimes/linux-sandbox:/context
 
   app:
@@ -48,10 +50,11 @@ services:
       NODE_ENV: production
       PORT: 8080
       CODE_RUN_DIR: /tmp/cyberstars-runs
+      DOCKER_HOST: ${DOCKER_HOST:-unix:///var/run/docker.sock}
     volumes:
       # Docker socket is required for sandboxed code execution (C, Python, Java, Linux terminal).
       # The app spawns docker run commands inside the container via this socket.
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
       # Shared directory for code execution — same path on host and in container,
       # so Docker daemon can resolve bind-mount paths correctly (DooD pattern).
       - /tmp/cyberstars-runs:/tmp/cyberstars-runs
