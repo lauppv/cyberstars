@@ -43,5 +43,13 @@ You can re-run a previous command by typing `!NUMBER`, for example `!3` would re
 
 ---
 
-Run `date` to log the current timestamp, then run `history` to see a record of the
-commands you have typed in this session.
+## Mission: Log the Timestamp
+
+Station protocol requires logging the current date and time at the start of every shift, then reviewing recent terminal activity.
+
+1. Run `date` to record the current timestamp.
+2. Run `history` to see a record of the commands you have typed in this session.
+
+**Expected result**
+
+You see today's date and time, followed by a numbered list of all commands from your session so far.

@@ -52,9 +52,13 @@ Now both `projects` and `projects/website` exist.
 
 ---
 
-In your home directory, build a small workspace:
+## Mission: Build a Workspace
+
+The station needs a new directory structure for the upcoming mission. You will set it up from scratch.
 
 1. Create a folder called `mission`.
 2. Using a single `mkdir -p` command, create the nested path `mission/logs/day1`.
 
-When you finish, the directory `mission/logs/day1` should exist.
+**Expected result**
+
+The directory `mission/logs/day1` exists. You can verify with `ls mission/logs` to see `day1` inside.

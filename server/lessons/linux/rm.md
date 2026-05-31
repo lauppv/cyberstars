@@ -40,9 +40,13 @@ deleting anything you are unsure about.
 
 ---
 
-The workspace has some leftover junk files. In your home directory:
+## Mission: Purge Junk Data
+
+Routine maintenance scan detected leftover junk files cluttering the station workspace. They need to be removed, but be careful not to delete anything important.
 
 1. Delete the file `junk.txt`.
 2. Delete the file `temp.log`.
 
-When you finish, both files should be gone, but `mission.txt` must still be there.
+**Expected result**
+
+Both junk files are gone, but `mission.txt` is still safely in your home directory.

@@ -46,5 +46,14 @@ to you. Understanding your identity helps you predict what you can and cannot do
 
 ---
 
-Run `whoami` to confirm your username, then run `id` to see your full identity and
-groups. Finally, use `ls -l` to check who owns the file `classified.doc`.
+## Mission: Identity Verification
+
+A classified document was found in your home directory. Before anyone can access it, station protocol requires you to verify your identity and confirm file ownership.
+
+1. Run `whoami` to confirm your username.
+2. Run `id` to see your full identity, including your groups.
+3. Run `ls -l classified.doc` to check who owns the file.
+
+**Expected result**
+
+You see your username (`student`), your uid/gid/groups, and that `classified.doc` is owned by `student` in group `crew`.

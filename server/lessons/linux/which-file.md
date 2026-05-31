@@ -55,7 +55,13 @@ wrong.
 
 ---
 
-Investigate your environment:
+## Mission: Unknown Data Probe
 
-1. Use `which` to find where the `ls` program is installed.
-2. Use `file` to identify the type of `mystery.dat` in your home directory.
+A routine scan found a file called `mystery.dat` in your home directory. The extension is unfamiliar and nobody knows what it contains. Before opening it, you need to investigate.
+
+1. Use `which ls` to confirm that basic tools are available on this system.
+2. Use `file mystery.dat` to identify what kind of data is actually inside.
+
+**Expected result**
+
+You see the path where `ls` is installed, and `file` reveals that `mystery.dat` is plain ASCII text despite its suspicious name.

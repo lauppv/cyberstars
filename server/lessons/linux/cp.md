@@ -48,7 +48,13 @@ your destination names carefully.
 
 ---
 
-The `mission.txt` file holds important data. In your home directory:
+## Mission: Emergency Backup
+
+A solar storm warning has been issued. Critical station data must be backed up immediately before any damage occurs.
 
 1. Make a backup copy of `mission.txt` called `mission-backup.txt`.
 2. Copy the entire `reports` folder to a new folder called `reports-backup`.
+
+**Expected result**
+
+Your home directory now contains both `mission-backup.txt` and a `reports-backup` folder with the same contents as `reports`.

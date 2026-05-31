@@ -37,5 +37,12 @@ Using `|` avoids escaping all those slashes.
 
 ---
 
-The file `report.txt` contains several lines where the word `FAIL` appears. Use `sed`
-to replace **all** occurrences of `FAIL` with `PASS` and display the result on screen.
+## Mission: Inspection Report Fix
+
+The station just passed its safety re-inspection, but `report.txt` still shows old `FAIL` results from the previous round. The captain wants a clean report before the delegation arrives.
+
+Use `sed` to replace **all** occurrences of `FAIL` with `PASS` in `report.txt` and display the corrected report on screen.
+
+**Expected result**
+
+Every test line shows `PASS` -- no `FAIL` entries remain in the output.

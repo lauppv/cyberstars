@@ -57,6 +57,13 @@ Tip: lost? `cd ~` always brings you home, and `pwd` always tells you where you a
 
 ---
 
-Starting from your home directory, move **into** the `tools` folder, and then go
-**into** the `scripts` folder inside it. When you are done, your current directory
-should be `/home/student/tools/scripts`.
+## Mission: Reach the Scripts Vault
+
+A critical automation script is stored deep inside the station's file system. Your home directory contains a `tools` folder, and inside it there is a `scripts` folder.
+
+1. Navigate into the `tools` folder.
+2. From there, navigate into the `scripts` folder.
+
+**Expected result**
+
+Running `pwd` shows `/home/student/tools/scripts` — you have reached the vault.

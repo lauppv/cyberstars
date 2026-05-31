@@ -34,5 +34,12 @@ mentioned?" — `grep` answers it instantly.
 
 ---
 
-The file `system.log` records the station's events. Use **grep** to print only the
-lines that contain the word `warning`.
+## Mission: Warning Scan
+
+The station commander wants a quick briefing on all warnings logged during this shift. The event log is in `system.log`.
+
+Use `grep` to print only the lines that contain the word `warning`.
+
+**Expected result**
+
+Only the warning lines from `system.log` appear in the terminal.

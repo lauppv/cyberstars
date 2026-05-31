@@ -34,6 +34,12 @@ diagnostic tool.
 
 ---
 
-Run `ps aux` to see all processes currently active on the station's computer. Look
-for any process whose command contains `reactor` — that is the one engineering
-asked you to check on.
+## Mission: Engineering Health Check
+
+Engineering just radioed in — they need you to confirm the reactor monitoring daemon is still running. Without it, temperature readings stop flowing to the bridge.
+
+Run `ps aux` to list all processes on the station's computer. Scan the output for any process whose command contains `reactor`.
+
+**Expected result**
+
+You should see a process running `/usr/bin/reactor-monitor --port=7700` owned by `root`. Report confirmed to engineering.

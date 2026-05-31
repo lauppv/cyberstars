@@ -43,5 +43,12 @@ big is this folder?"
 
 ---
 
-The station engineers suspect the `cargo-bay/` directory is hogging disk space. Run
-`du -sh cargo-bay/` to find out its total size.
+## Mission: Storage Audit
+
+The station engineers suspect `cargo-bay/` is eating into the limited disk reserves. Before they can approve the next data archive, they need to know exactly how much space it uses.
+
+Run `du -sh cargo-bay/` to display the total size of the directory.
+
+**Expected result**
+
+A single line showing the human-readable size of `cargo-bay/`.

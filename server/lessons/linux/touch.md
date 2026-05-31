@@ -43,8 +43,14 @@ simply as **"create an empty file"**.
 
 ---
 
-You have a `reports` folder ready. In your home directory:
+## Mission: Prepare Mission Files
+
+The station commander needs three new files for today's briefing. Your home directory already has a `reports` folder ready.
 
 1. Create an empty file called `mission.txt`.
 2. Create an empty file called `crew.txt`.
 3. Create an empty file called `summary.txt` **inside** the `reports` folder.
+
+**Expected result**
+
+Running `ls` in your home directory shows `mission.txt` and `crew.txt`, and running `ls reports` shows `summary.txt`.

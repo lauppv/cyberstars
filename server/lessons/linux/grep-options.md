@@ -51,7 +51,13 @@ _and_ numbered.
 
 ---
 
-The file `system.log` is in your home directory. Use **grep** options to:
+## Mission: Shift-End Log Summary
 
-1. Count how many lines contain `warning` — use `grep -c`.
-2. Print every line that does **NOT** contain `info` — use `grep -v`.
+Before handing off to the night crew, you need to prepare a summary of `system.log`: how many warnings were logged, and what non-routine events occurred.
+
+1. Use `grep -c warning system.log` to count how many lines contain `warning`.
+2. Use `grep -v info system.log` to print every line that does **not** contain `info`.
+
+**Expected result**
+
+First you see the warning count (a single number), then the filtered lines showing only warnings and errors.

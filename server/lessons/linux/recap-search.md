@@ -12,12 +12,14 @@ Remember the power options: `grep -r` searches whole trees, `grep -i` ignores ca
 
 ---
 
-A distress signal came from somewhere in the `station` folder. Track it down:
+## Mission: Rescue Signal Trace
 
-1. Use `find` with `-name` to locate the file called `distress.log` somewhere under
-   `station`.
-2. Use `grep -r` to find every line mentioning `SOS` anywhere inside the `station`
-   folder.
-3. Use `which` to confirm where the `grep` program itself lives.
+A faint distress signal is coming from somewhere inside the `station` directory structure. Command needs you to pinpoint the source and extract every SOS transmission.
 
-Solve all three and the rescue is complete, cadet.
+1. Use `find station -name "distress.log"` to locate the distress log file.
+2. Use `grep -r "SOS" station` to find every line mentioning `SOS` anywhere inside `station`.
+3. Use `which grep` to confirm where the `grep` program itself is installed.
+
+**Expected result**
+
+`find` reveals `station/comms/distress.log`. `grep -r` shows two SOS lines across two files in `station/comms/`. `which` prints the path to the `grep` binary. Rescue coordinates confirmed.

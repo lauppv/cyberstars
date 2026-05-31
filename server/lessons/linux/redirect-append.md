@@ -31,10 +31,19 @@ over time — like a station log that grows with each shift.
 
 ---
 
-The file `mission.log` already has one entry. **Append** two new lines to it (one at a
-time) using `>>`:
+## Mission: Shift Log Update
 
-1. `status: shields nominal`
-2. `status: crew ready`
+The outgoing watch officer recorded the launch sequence in `mission.log`. Your shift is starting and you need to add two new status entries without erasing the existing record.
 
-Do **not** overwrite the existing content.
+1. Append `status: shields nominal` to `mission.log` using `>>`.
+2. Append `status: crew ready` to `mission.log` using `>>`.
+
+When you finish, `cat mission.log` should show all three lines — the original entry plus your two updates.
+
+**Expected result**
+
+```text
+status: launch sequence initiated
+status: shields nominal
+status: crew ready
+```

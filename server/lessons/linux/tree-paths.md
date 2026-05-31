@@ -52,9 +52,13 @@ Use `pwd` to see your absolute location, and `tree` to see the structure below y
 
 ---
 
-Explore the layout of your home directory:
+## Mission: Map the Station
 
-1. Run `tree` to see the whole structure at once.
-2. Run `pwd` to print your absolute path.
+Before starting repairs, you need a complete map of the station's file system layout and confirmation of your current position.
 
-(Nothing on disk changes — this lesson is about _looking_.)
+1. Run `tree` to see the full directory structure at a glance.
+2. Run `pwd` to confirm your absolute path.
+
+**Expected result**
+
+You see a tree diagram showing all files and folders in your home directory, and `pwd` confirms you are at `/home/student`.

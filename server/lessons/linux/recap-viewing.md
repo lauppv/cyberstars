@@ -14,11 +14,15 @@ begins, `tail` to see the newest entries.
 
 ---
 
-The station left behind three log files. In your home directory:
+## Mission: Station Log Triage
 
-1. Use `cat` to read the short file `summary.log` in full.
+The previous crew evacuated in a hurry and left three log files behind. Command needs a quick status report before we can re-occupy the station.
+
+1. Use `cat` to read `summary.log` in full.
 2. Use `head -n 3` to view the **first 3 lines** of `events.log`.
 3. Use `tail -n 3` to view the **last 3 lines** of `events.log`.
 4. Use `wc -l` to count the lines in `errors.log`.
 
-This is how you triage logs on a real system — measure, then peek at both ends.
+**Expected result**
+
+You see the full summary, the first and last three events, and the error count (3 lines).

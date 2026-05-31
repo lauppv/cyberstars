@@ -38,5 +38,12 @@ grep -rn "error" logs     # recursive + line numbers
 
 ---
 
-The `logs` folder contains several files in sub-folders. Use **grep -r** to find every
-line mentioning `failure` anywhere inside the `logs` directory.
+## Mission: Failure Investigation
+
+A recurring malfunction has been reported and the maintenance team needs every mention of `failure` from the station logs. The `logs` folder contains files spread across several sub-folders.
+
+Use `grep -r` to search for `failure` across the entire `logs` directory.
+
+**Expected result**
+
+Each match shows the file path, a colon, and the line containing `failure`.
