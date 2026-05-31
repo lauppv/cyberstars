@@ -1,6 +1,6 @@
 public class Main {
-public static void main(String[] args) {
-String[] heroes = new String[3];
+    public static void main(String[] args) {
+        String[] heroes = new String[3];
 
         // 1. set heroes[0] to "Shrek"
         // 2. set heroes[1] to "Fiona"

@@ -183,18 +183,27 @@ In Java, the constructor name matches the class name, and `this` is available au
 
 ---
 
-## Exercise
+## Mission: Crew Scorecard
+
+The station commander needs a quick scorecard system to track crew performance ratings after each mission cycle. Each crew member is registered with a name and a score.
 
 Create a `Player` class with two fields: `name` (String) and `score` (int). Write a constructor that takes both values and sets them using `this`.
 
-Then in `main`, create two players:
+In `main`, create two players:
 
-- `"Tommy Vercetti"` with score `500`
-- `"Lance Vance"` with score `300`
+1. `"Tommy Vercetti"` with score `500`
+2. `"Lance Vance"` with score `300`
 
-Print each player on their own line in this format: `Name has Score points`
+Print each player in the format `Name has Score points`.
 
-Expected output:
+**Input** (already set in your code — change the values to test):
+
+- `"Tommy Vercetti"` / `500` — first player's name and score
+- `"Lance Vance"` / `300` — second player's name and score
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 Tommy Vercetti has 500 points

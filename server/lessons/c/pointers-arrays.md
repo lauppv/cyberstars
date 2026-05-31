@@ -73,11 +73,21 @@ The array **decays** into a pointer. The function only receives the address of t
 
 ---
 
-Write a function **sumArray** that takes an **int pointer** and a **size**, and returns the **sum** of all elements using **pointer arithmetic** (use **\*(ptr + i)** instead of **ptr[i]**)
+## Mission: Cargo Weight Tally
 
-Then in **main**, create the array **{5, 10, 15, 20}**, call **sumArray**, and print the result
+The cargo bay sensors report container weights through a raw memory buffer. Write a function that walks the buffer using pointer arithmetic and returns the total weight so the bridge knows if the ship is overloaded.
 
-Expected output
+1. Write a function **sumArray** that takes an **int pointer** and a **size**, and returns the **sum** of all elements
+2. Use **pointer arithmetic** inside the function: access elements with **\*(ptr + i)** instead of **ptr[i]**
+3. In **main**, the array **{5, 10, 15, 20}** is already set up — call **sumArray** and print the result
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `nums` — an int array with values **{5, 10, 15, 20}**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 50

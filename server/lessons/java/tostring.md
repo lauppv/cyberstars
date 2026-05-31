@@ -185,16 +185,25 @@ Lance Vance - Partner (Respect: 60)
 
 ---
 
-## Exercise
+## Mission: Fleet Manifest
+
+The station's hangar needs a display system for its vehicle fleet. Each vehicle should print its own formatted summary when logged to the console — no manual string building required.
 
 Create a `Car` class with `make` (String) and `year` (int) fields. Write a constructor and override `toString()` to return the format `Make (Year)`.
 
-Create two cars and print them:
+In `main`, create two vehicles and print them directly:
 
-- `"Infernus"`, year `1986`
-- `"Cheetah"`, year `1984`
+1. `"Infernus"`, year `1986`
+2. `"Cheetah"`, year `1984`
 
-Expected output:
+**Input** (already set in your code — change the values to test):
+
+- `"Infernus"` / `1986` — first vehicle
+- `"Cheetah"` / `1984` — second vehicle
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 Infernus (1986)

@@ -2,21 +2,17 @@ Combine **arrays**, **looping over arrays**, **break/continue**, and **functions
 
 ---
 
-You're building a **grade analyzer** for a class of students. Write these functions:
+## Mission: Crew Fitness Report
 
-**int countPassing(int grades[], int n)** — returns how many grades are **>= 50** (passing). Use **continue** to skip grades below 50
+The station doctor, Lance, logged fitness scores for the crew. He needs a quick summary: how many passed, the top score, and the first failure so he can schedule a retest.
 
-**int findMax(int grades[], int n)** — returns the highest grade. Use a loop with an array
+The data is already on the right. Do the following, in order:
 
-**int findFirstFail(int grades[], int n)** — returns the **first** failing grade (below 50). Use **break** to stop as soon as you find one. Return **-1** if everyone passed
+1. Write **int countPassing(int grades[], int n)** — returns how many grades are **>= 50**. Use **continue** to skip grades below 50
+2. Write **int findMax(int grades[], int n)** — returns the highest grade
+3. Write **int findFirstFail(int grades[], int n)** — returns the **first** failing grade (below 50). Use **break** to stop as soon as you find one. Return **-1** if everyone passed
 
-Use this array in main:
-
-```c
-int grades[] = {85, 42, 91, 67, 38, 73, 95, 55};
-```
-
-Expected output
+**Output**
 
 ```text
 Passing: 6

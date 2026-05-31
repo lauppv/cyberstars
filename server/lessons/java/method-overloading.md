@@ -105,25 +105,25 @@ In Python, if you wanted something similar, you'd use default arguments or **\*a
 
 ---
 
-Create three overloaded methods called **describe**
+## Mission: Cargo Manifest
 
-1. **describe(String item)** — prints **Item: X** (where X is the item)
-2. **describe(String item, int quantity)** — prints **Item: X (x5)** (where 5 is the quantity)
-3. **describe(String item, int quantity, double price)** — prints **Item: X (x5) - $P** (where P is the price)
+The cargo bay needs an inventory printer. Create three overloaded methods called `describe` — each prints a different level of detail depending on what information is available:
 
-Then call all three from main
+1. `describe(String item)` — prints `Item: X`
+2. `describe(String item, int quantity)` — prints `Item: X (x5)` (where 5 is the quantity)
+3. `describe(String item, int quantity, double price)` — prints `Item: X (x5) - $P` (where P is the price)
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        describe("Sword");
-        describe("Shield", 5);
-        describe("Potion", 3, 9.99);
-    }
-}
-```
+The method signatures and calls are already on the right. Fill in each method body.
 
-Expected output
+**Input** (change the calls in `main` to test):
+
+- `item` — the cargo name
+- `quantity` — how many units (optional, second overload)
+- `price` — unit price (optional, third overload)
+
+**Example**
+
+With the starter calls, your program should print
 
 ```text
 Item: Sword

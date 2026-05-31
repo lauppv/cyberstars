@@ -128,4 +128,27 @@ In Python, there's no built-in `abstract` keyword — you'd use the `abc` module
 
 ---
 
-Your turn! Create an abstract class `Vehicle` with a `name` field, a constructor, and an abstract method `fuelType()` that returns a String. Create `ElectricCar` that returns "Electric" and `GasTruck` that returns "Gasoline". In main, create an ElectricCar named "Tesla" and a GasTruck named "Ford". Print each vehicle's name and fuel type in the format "Name: FuelType"
+## Mission: Fleet Fuel Report
+
+The station's ground fleet has different vehicle types, each running on a different fuel. The logistics officer needs a report showing every vehicle and its fuel type — but "Vehicle" itself is just a concept, not something you can build directly.
+
+Create an abstract class `Vehicle` with a `String name` field, a constructor, and an abstract method `fuelType()` that returns a String. Then create two concrete classes:
+
+1. `ElectricCar` — `fuelType()` returns `"Electric"`
+2. `GasTruck` — `fuelType()` returns `"Gasoline"`
+
+In `main`, create an ElectricCar named `"Tesla"` and a GasTruck named `"Ford"`. Print each in the format `Name: FuelType`.
+
+**Input** (already set in your code — change the values to test):
+
+- `"Tesla"` — electric car name
+- `"Ford"` — gas truck name
+
+**Example**
+
+With the starter values, your program should print
+
+```text
+Tesla: Electric
+Ford: Gasoline
+```

@@ -88,13 +88,15 @@ Instead of remembering "was 2 paused or game over?", we just use the name. The c
 
 ---
 
-Define an enum **Season** with values **SPRING**, **SUMMER**, **AUTUMN**, **WINTER**
+## Mission: Climate Module
 
-Write a function **printSeason** that takes a Season and prints the season name. Use a **switch** statement
+The station orbits a planet with four distinct seasons. The climate module needs a function that translates each season code into a human-readable name for the crew display.
 
-Call it for each season from **main**
+The **enum Season** and the **printSeason** function skeleton are already on the right. Fill in the **switch** statement so each case prints the season name.
 
-Expected output
+**Example**
+
+Your program should print
 
 ```text
 Spring

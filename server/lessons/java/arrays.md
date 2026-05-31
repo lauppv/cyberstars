@@ -97,16 +97,24 @@ Run it. Java throws an **ArrayIndexOutOfBoundsException** and crashes. Read the 
 
 ---
 
-You have an array **heroes** declared on the right with **3 slots**, all empty for now. Do the following
+## Mission: Crew Registry
 
-1. Set **heroes[0]** to **"Shrek"**
-2. Set **heroes[1]** to **"Fiona"**
-3. Set **heroes[2]** to **"Donkey"**
-4. Display the **length** of the array
-5. Display the **first** hero
-6. Display the **last** hero
+The station has an empty crew registry with **3 slots**. Your job is to fill it in and run a quick status check.
 
-Expected output
+1. Set `heroes[0]` to `"Shrek"`
+2. Set `heroes[1]` to `"Fiona"`
+3. Set `heroes[2]` to `"Donkey"`
+4. Print the **length** of the array
+5. Print the **first** hero
+6. Print the **last** hero
+
+**Input** (already set at the top of your code):
+
+- `heroes` — a `String[]` array with 3 empty slots
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 3

@@ -70,16 +70,22 @@ There is also **System.out.printf** for fancier formatting, but it’s a bit har
 
 ---
 
-On the right, you have a story about an underage user. Create three variables
+## Mission: Airlock Age Gate
 
-1. **username** — any name you like (a String)
-2. **userAge** — any age **less than 18** (an int)
-3. **requiredAge** — set to **18** (an int)
+The station’s airlock has a minimum-age restriction. A young recruit just tried to enter. Use string concatenation to display the rejection message.
 
-Then display a message like
+The variables `username`, `userAge`, and `requiredAge` are already set on the right. Use **+** to build and print the message.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `username` — the recruit’s name (String)
+- `userAge` — the recruit’s age (int)
+- `requiredAge` — minimum age to enter (int)
+
+**Example**
+
+With `username = "Quincy"`, `userAge = 16`, and `requiredAge = 18`, your program should print
 
 ```text
-Hello, <username>! I'm sorry but the minimum age is <requiredAge>. You are <userAge> years old
+Hello, Quincy! I’m sorry but the minimum age is 18. You are 16 years old
 ```
-
-Use **+** to glue everything together. Don’t forget the spaces :)

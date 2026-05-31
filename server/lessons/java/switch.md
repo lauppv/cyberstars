@@ -194,6 +194,24 @@ Load saved game
 
 ---
 
-Your turn! Write a static method **dayType(String day)** that uses a **switch** to print `"Weekday"` for Monday through Friday and `"Weekend"` for Saturday and Sunday. Use the full day names: "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday". Add a default case that prints `"Unknown day"`.
+## Mission: Duty Roster Classifier
 
-Then call it from main for: `"Monday"`, `"Saturday"`, `"Wednesday"`
+The station's duty roster needs a quick classifier: given a day name, print whether it is a **Weekday** or a **Weekend** shift.
+
+Write the body of the `dayType` method using a **switch** on `day`:
+
+1. For `"Monday"` through `"Friday"` → print `Weekday`
+2. For `"Saturday"` and `"Sunday"` → print `Weekend`
+3. Default → print `Unknown day`
+
+The `main` method already calls `dayType` three times.
+
+**Example**
+
+With the calls `dayType("Monday")`, `dayType("Saturday")`, `dayType("Wednesday")`, your program should print
+
+```text
+Weekday
+Weekend
+Weekday
+```

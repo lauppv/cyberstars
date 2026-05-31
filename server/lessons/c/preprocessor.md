@@ -73,20 +73,24 @@ If **DEBUG** is defined, the debug message is compiled. If we remove the **#defi
 
 ---
 
-Create three macros:
+## Mission: Shield Configuration
 
-- **AREA_RECT(w, h)** — returns width \* height
-- **AREA_CIRCLE(r)** — returns PI _ r _ r (define PI as 3.14159)
-- **MAX_SIZE** — define it as 100
+The station's shield generator uses preprocessor macros for its geometry calculations. You need to define three macros so the diagnostics panel compiles and displays the correct readings.
 
-In main, print the area of a rectangle 5 x 3, the area of a circle with radius 4, and MAX_SIZE
+Create these macros above **main**:
 
-Expected output
+- **AREA_RECT(w, h)** — returns `((w) * (h))`
+- **AREA_CIRCLE(r)** — returns `((PI) * (r) * (r))` (PI is already defined as 3.14159)
+- **MAX_SIZE** — define it as `100`
+
+The **main** function already calls them — just add the macro definitions.
+
+**Example**
+
+Your program should print
 
 ```text
 Rectangle: 15
 Circle: 50.27
 Max: 100
 ```
-
-Use **printf("%.2f")** for the circle area

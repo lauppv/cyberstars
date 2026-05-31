@@ -1,4 +1,4 @@
-crew = ["Ana", "Boris", "Cara", "Dmitri", "Elena"]
+crew = ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"]
 
 def find_crew(crew, target): # linear search: return the station number (index), or -1 if not found
 pass

@@ -109,7 +109,20 @@ int main(void) {
 
 ---
 
-On the right, complete the code so it prints
+## Mission: Sensor Calibration
+
+The station's sensors need calibration data logged to the console. Two readings are already stored in `height` and `pi` on the right.
+
+Write **two printf** calls that display each value with a label, rounded to **2 decimal places**.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `height` — height reading in metres
+- `pi` — the mathematical constant pi
+
+**Example**
+
+With `height = 1.75` and `pi = 3.14159`, your program should print
 
 ```text
 My height is 1.75

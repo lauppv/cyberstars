@@ -92,6 +92,20 @@ int main(void) {
 
 ---
 
-Write a C program that displays all numbers from **0** to **100**. If the number is **10** or **50**, display **Pizza Margherita** instead. Otherwise display the number itself
+## Mission: Supply Drop Scanner
 
-Tip: use an **if/else** inside the loop to decide what to print
+The cargo bay conveyor belt moves 101 crates (numbered **0** to **100**) past the scanner. Most crates display their number, but crates **10** and **50** contain a special delivery: **Pizza Margherita**.
+
+Write a **for** loop from 0 to 100. For each number, if it is **10** or **50**, print `Pizza Margherita` instead of the number. Otherwise print the number itself.
+
+**Example**
+
+Your output should include (showing a few lines around the special crates)
+
+```text
+9
+Pizza Margherita
+11
+```
+
+Tip: use an **if / else** inside the loop to decide what to print :)

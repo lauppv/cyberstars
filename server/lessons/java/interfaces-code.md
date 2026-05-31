@@ -1,5 +1,5 @@
 interface Printable {
-void printInfo();
+    void printInfo();
 }
 
 // Create a Book class that implements Printable
@@ -11,10 +11,10 @@ void printInfo();
 // printInfo() should print "Movie: TITLE directed by DIRECTOR"
 
 public class Main {
-public static void main(String[] args) {
-// Create a Book("Vice City Stories", "Rockstar")
-// Create a Movie("Scarface", "Brian De Palma")
-// Call printInfo() on both
+    public static void main(String[] args) {
+        // Create a Book("Vice City Stories", "Rockstar")
+        // Create a Movie("Scarface", "Brian De Palma")
+        // Call printInfo() on both
 
     }
 

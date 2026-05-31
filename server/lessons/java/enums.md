@@ -121,11 +121,26 @@ If you find yourself writing `if (status.equals("active") || status.equals("inac
 
 ---
 
-Your turn! Create an enum called **Season** with four values: `SPRING`, `SUMMER`, `AUTUMN`, `WINTER`. Write a static method `describeSeason(Season s)` that prints a description for each:
+## Mission: Climate Control Module
 
-- SPRING: `"Spring: flowers bloom"`
-- SUMMER: `"Summer: time for the beach"`
-- AUTUMN: `"Autumn: leaves are falling"`
-- WINTER: `"Winter: stay inside and code"`
+The station orbits a planet with four distinct climate cycles. The environmental systems need a status report for each season so the crew knows what to expect on surface missions.
 
-Then in main, loop through **all** seasons using `Season.values()` and call `describeSeason` for each one
+Create an enum called `Season` with four values: `SPRING`, `SUMMER`, `AUTUMN`, `WINTER`. Write a static method `describeSeason(Season s)` that prints a description for each:
+
+1. SPRING: `"Spring: flowers bloom"`
+2. SUMMER: `"Summer: time for the beach"`
+3. AUTUMN: `"Autumn: leaves are falling"`
+4. WINTER: `"Winter: stay inside and code"`
+
+In `main`, loop through **all** seasons using `Season.values()` and call `describeSeason` for each one.
+
+**Example**
+
+Your program should print
+
+```text
+Spring: flowers bloom
+Summer: time for the beach
+Autumn: leaves are falling
+Winter: stay inside and code
+```

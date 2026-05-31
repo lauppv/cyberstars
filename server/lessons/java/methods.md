@@ -108,37 +108,30 @@ public class Main {
 
 ---
 
-Write a method **calculator** that takes **three parameters**: an **int number1**, an **int number2**, and a **String operator**
+## Mission: Ship Computer
 
-The method should print the result of **number1 operator number2**
+The station’s on-board computer needs a **calculator** method. It already handles addition, but the crew also needs **subtraction** (`-`), **multiplication** (`*`), and **division** (`/`).
 
-Example
+Complete the `calculator` method on the right so it handles all four operators. For any unrecognised operator, it should print `Invalid operator`.
 
-```java
-public class Main {
-    public static void calculator(int number1, int number2, String operator) {
-        if (operator.equals("+")) {
-            int result = number1 + number2;
-            System.out.println(number1 + " " + operator + " " + number2 + " = " + result);
-        } else {
-            System.out.println("Invalid operator");
-        }
-    }
-}
+The method takes three parameters: `number1`, `number2`, and `operator`. It should print a line like `14 + 12 = 26`.
+
+A small **trap**: in Java, you compare strings with `.equals(...)`, **NOT** with `==`. So write `operator.equals("+")`, not `operator == "+"`.
+
+**Input** (the calls are already in `main` — change the values to test):
+
+- `number1` — the first operand
+- `number2` — the second operand
+- `operator` — one of `"+"`, `"-"`, `"*"`, `"/"`
+
+**Example**
+
+With the starter calls, your program should print
+
+```text
+14 + 12 = 26
+10 - 3 = 7
+5 * 4 = 20
+10 / 2 = 5
+Invalid operator
 ```
-
-Then call it from **main** like
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        calculator(14, 12, "+");
-    }
-}
-```
-
-Complete the method so it also handles **subtraction**, **multiplication**, and **division**
-
-For subtraction we use **-**, for multiplication **\***, for division **/**
-
-A small **trap**: in Java, you compare strings with **.equals(...)**, **NOT** with **==**. So write **operator.equals("+")**, not **operator == "+"**. We’ll explain why in the strings lesson :)

@@ -95,6 +95,35 @@ This is an **infinite loop**. **i** stays **1** forever, the condition stays **t
 
 ---
 
-Write a Java program that displays all numbers from **0** to **100**. If the number is **10** or **50**, display **Pizza Margherita** instead. Otherwise display the number itself
+## Mission: Sector Scan
 
-Tip: inside the loop, use an **if/else** to decide what to print
+The station's scanner sweeps through **all sectors** from `startSector` to `endSector`. Most sectors get a normal numeric readout, but two special sectors (`alertSector1` and `alertSector2`) trigger a **Pizza Margherita** signal instead of the number.
+
+Write a program that uses a **for** loop to go through every sector number from `startSector` to `endSector`. For each sector:
+
+- if the sector is `alertSector1` or `alertSector2` → print `Pizza Margherita`
+- otherwise → print the sector number
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `startSector` — first sector to scan
+- `endSector` — last sector to scan
+- `alertSector1` — first special sector
+- `alertSector2` — second special sector
+
+**Example**
+
+With `startSector = 0`, `endSector = 100`, `alertSector1 = 10`, and `alertSector2 = 50`, the first few lines of output should be
+
+```text
+0
+1
+2
+...
+9
+Pizza Margherita
+11
+...
+```
+
+and at sector 50 you'll see another `Pizza Margherita`

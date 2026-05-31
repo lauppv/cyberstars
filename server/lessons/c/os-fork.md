@@ -68,13 +68,19 @@ This fork-then-exec pattern is everywhere:
 
 ---
 
-Write a program that forks. The **child** should print **"Child: hello from PID X"** (where X is its PID). The **parent** should **wait** for the child, then print **"Parent: child finished"**
+## Mission: Clone Bay Activation
 
-Expected output (PID will vary)
+The station's Clone Bay needs to spawn a worker clone to run a diagnostic. The clone reports its own ID, and the original operator waits until the clone finishes before logging completion.
+
+1. Call **fork()** to create a child process
+2. The **child** prints **"Child: hello from PID X"** (where X is its actual PID from **getpid()**)
+3. The **parent** calls **wait(NULL)**, then prints **"Parent: child finished"**
+
+**Output**
 
 ```text
 Child: hello from PID 12345
 Parent: child finished
 ```
 
-Use **fork()**, **getpid()**, and **wait(NULL)**. Don't forget to include **unistd.h** and **sys/wait.h**
+The PID will vary on each run. Use **fork()**, **getpid()**, and **wait(NULL)** from **unistd.h** and **sys/wait.h**

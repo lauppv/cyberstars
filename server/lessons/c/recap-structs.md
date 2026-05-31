@@ -2,23 +2,18 @@ Combine **pointer arithmetic**, **string functions**, and **structs with pointer
 
 ---
 
-Build a **contact book**. Define a struct **Contact** with **name** (char array) and **phone** (char array)
+## Mission: Crew Directory Lookup
 
-Write these functions:
+The station's crew directory crashed and needs to be rebuilt from scratch. Cortez has the backup data for three crew members. Build the lookup system using structs and pointer arithmetic.
 
-**void addContact(Contact \*book, int \*count, const char \*name, const char \*phone)** — adds a contact to the array at position **\*count** and increments the counter through the pointer. Use **strcpy** to copy strings
+The data is already on the right. Do the following, in order:
 
-**void searchContact(Contact \*book, int count, const char \*query)** — loops through the contacts using **pointer arithmetic** (use `(book + i)->name` instead of `book[i].name`). If a contact's name matches the query (use **strcmp**), print it. If not found, print **"Not found"**
+1. Write **void addContact(Contact *book, int *count, const char *name, const char *phone)** — adds a contact at position **\*count** and increments the counter. Use **strcpy** to copy strings
+2. Write **void searchContact(Contact *book, int count, const char *query)** — loops through contacts using **pointer arithmetic** (`(book + i)->name`). If found, print **"Found: name - phone"**. If not found, print **"Not found: query"**
+3. Add these crew members: Tommy (0722111222), Lance (0733222333), Ken (0744333444)
+4. Search for "Lance" and "Diaz"
 
-In main, create a Contact array of size 10. Add these contacts:
-
-- "Tommy", "0722111222"
-- "Lance", "0733222333"
-- "Ken", "0744333444"
-
-Search for "Lance" and "Diaz"
-
-Expected output
+**Output**
 
 ```text
 Found: Lance - 0733222333

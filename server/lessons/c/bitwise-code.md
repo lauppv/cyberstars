@@ -1,11 +1,13 @@
 #include <stdio.h>
 
 int main(void) {
-int a = 12;
-int b = 10;
+    int a = 12;
+    int b = 10;
 
-    // print AND, OR, XOR, and left shift
+    // print a & b  (AND)
+    // print a | b  (OR)
+    // print a ^ b  (XOR)
+    // print a << 2 (left shift)
 
     return 0;
-
 }

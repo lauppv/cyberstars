@@ -183,19 +183,27 @@ Without classes, you'd need separate variables for every single field: **w1Name,
 
 ---
 
-Create a class called **Dog** with two fields
+## Mission: K-9 Unit Roster
 
-- **String name**
-- **int age**
+The station's security division is registering its K-9 patrol dogs into the new crew database. Each dog needs a name and age on file before they can be assigned to a sector.
 
-Then in **main**, create **two** Dog objects
+Create a class called `Dog` with two fields: `String name` and `int age`.
 
-1. A dog named **"Rex"** who is **5** years old
-2. A dog named **"Buddy"** who is **3** years old
+In `main`, create two Dog objects:
 
-Print each dog in the format: **Name is X years old**
+1. A dog named `"Rex"` who is `5` years old
+2. A dog named `"Buddy"` who is `3` years old
 
-Expected output
+Print each dog in the format `Name is X years old`.
+
+**Input** (already set in your code — change the values to test):
+
+- `"Rex"` / `5` — first dog's name and age
+- `"Buddy"` / `3` — second dog's name and age
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 Rex is 5 years old

@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
 class Item {
-String name;
-int quantity;
-double price;
+    String name;
+    int quantity;
+    double price;
 
     // Constructor that takes name, quantity, price
 
 }
 
 class Inventory {
-ArrayList<Item> items;
+    ArrayList<Item> items;
 
     Inventory() {
         items = new ArrayList<>();
@@ -39,8 +39,8 @@ ArrayList<Item> items;
 }
 
 public class Main {
-public static void main(String[] args) {
-Inventory inv = new Inventory();
+    public static void main(String[] args) {
+        Inventory inv = new Inventory();
 
         // Add: "Shotgun" x2 @ $350.00
         // Add: "Medkit" x10 @ $15.50

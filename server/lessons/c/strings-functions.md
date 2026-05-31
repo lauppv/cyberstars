@@ -98,14 +98,23 @@ int main(void) {
 
 ---
 
-You have two char arrays: **first** with value **"Cyber"** and **second** with value **"Stars"**
+## Mission: Assemble the Station Code Name
 
-1. Print the length of **first**
-2. Copy **first** into a **result** array (make it big enough, like `char result[50]`)
-3. Concatenate **second** onto **result**
+HQ sent two halves of the station's new code name in separate transmissions. Your job: measure the first fragment, then join both fragments into one string and broadcast the full name.
+
+1. Print the length of **first** (use **strlen**)
+2. Copy **first** into a **result** array (use **strcpy**, make result big enough: `char result[50]`)
+3. Concatenate **second** onto **result** (use **strcat**)
 4. Print **result**
 
-Expected output
+**Input** (already set at the top of your code — change the values to test):
+
+- `first` — a char array set to **"Cyber"**
+- `second` — a char array set to **"Stars"**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 5

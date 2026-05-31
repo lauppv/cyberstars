@@ -138,13 +138,19 @@ Notice that even though we declared the list as **ArrayList\<Integer\>**, we can
 
 ---
 
-Create an ArrayList of Integers called **numbers**. Add these values: **3, 12, 7, 24, 5, 18, 11, 30**
+## Mission: Frequency Filter
 
-Then loop through the list and print **only the even numbers**, each on its own line
+The station's antenna picked up a list of frequency readings. Command only cares about the **even** frequencies — filter out the odd ones.
 
-Hint: a number is even if **num % 2 == 0**
+Create an `ArrayList<Integer>` called `numbers`, add the readings, then loop through and print **only the even numbers**, each on its own line. A number is even if `num % 2 == 0`.
 
-Expected output
+**Input** (already set in your code — change the values to test):
+
+- Readings to add: `3, 12, 7, 24, 5, 18, 11, 30`
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 12

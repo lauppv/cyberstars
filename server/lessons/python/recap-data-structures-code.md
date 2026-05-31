@@ -1,5 +1,5 @@
-team_a = [("Ana", 85), ("Mihai", 72), ("Elena", 91), ("Radu", 60)]
-team_b = [("Ioana", 88), ("Mihai", 65), ("Ana", 91), ("Vlad", 72)]
+team_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]
+team_b = [("Mira", 88), ("Lance", 65), ("Tommy", 91), ("Quinn", 72)]
 
 # 1. set of team B names, then print names from team A that are also in it
 

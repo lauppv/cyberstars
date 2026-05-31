@@ -72,12 +72,18 @@ Pipes are **the** fundamental building block for process communication in Unix. 
 
 ---
 
-Write a program that creates a pipe and forks. The **child** writes the message **"CyberStars"** to the pipe. The **parent** reads it and prints **"Received: CyberStars"**
+## Mission: Encrypted Relay
 
-Expected output
+Sector 7's sensor array detected an anomaly, but comms are down. The only way to relay the data to the bridge is through a one-way pipe between two processes.
+
+1. Create a pipe and fork
+2. The **child** writes the message **"CyberStars"** to the pipe, then closes its ends
+3. The **parent** reads the message and prints **"Received: CyberStars"**, then closes its ends and waits for the child
+
+**Output**
 
 ```text
 Received: CyberStars
 ```
 
-Remember to close the ends you don't use!
+Remember to close the pipe ends you do not use

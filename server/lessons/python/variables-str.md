@@ -65,7 +65,7 @@ So, anything we write between **" and "** is called a **string** and is used whe
 
 Three crew members are assigned to the station. Their names are stored in the variables `commander`, `pilot`, and `engineer` at the top of your code.
 
-Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission — add a line that changes `pilot` to `"Maria"` and print `pilot` one more time.
+Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission — add a line that changes `pilot` to `"Jess"` and print `pilot` one more time.
 
 **Input** (already set at the top of your code — change the values to test):
 
@@ -79,5 +79,5 @@ With the starter values, your program should print
 Shadow
 Lance
 Quincy
-Maria
+Jess
 ```

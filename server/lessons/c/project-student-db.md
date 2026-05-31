@@ -23,7 +23,7 @@ typedef struct {
 } Student;
 
 int main(void) {
-    Student s = {"Ana", 95};
+    Student s = {"Tommy", 95};
     printf("%s: %d\n", s.name, s.grade);
     return 0;
 }
@@ -75,23 +75,30 @@ Student *findBest(Student *students[], int n) {
 
 ---
 
-Your task: complete the program. Create **4 students**:
+## Mission: Station Crew Database
 
-- "Ana", 95
-- "Mihai", 82
-- "Elena", 98
-- "Radu", 76
+The station needs a personnel database that tracks every crew member's name and performance grade. You have the building blocks above — now wire them together into a working system.
 
-Print all students, then print the best student, then free all memory
+1. Complete the **printAll** function to print each student as **"Name: Grade"**
+2. Complete the **findBest** function to return a pointer to the student with the highest grade
+3. In **main**, the 4 crew members are already created — call **printAll**, then **findBest**, and print the best one
+4. Free all allocated memory at the end
 
-Expected output
+**Input** (already set at the top of your code — change the values to test):
+
+- **"Tommy"**, 95
+- **"Lance"**, 82
+- **"Cortez"**, 98
+- **"Rex"**, 76
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
-Ana: 95
-Mihai: 82
-Elena: 98
-Radu: 76
-Best: Elena (98)
+Tommy: 95
+Lance: 82
+Cortez: 98
+Rex: 76
+Best: Cortez (98)
 ```
-
-The skeleton code is on the right. Fill in the missing parts!

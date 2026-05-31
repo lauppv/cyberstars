@@ -95,4 +95,29 @@ Change **isUserOnline** to **0** and run again. The output flips. Programming be
 
 ---
 
-Write a program that displays **it's freezing outside** if **temperature** is below **0**, or **water does not freeze** otherwise
+## Mission: Hull Temperature Alert
+
+The station's hull sensors report the outside temperature. If it drops below zero, the crew must be warned.
+
+Write an **if / else** that checks `temperature`:
+
+- if `temperature` is **less than 0** → print `it's freezing outside`
+- otherwise → print `water does not freeze`
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `temperature` — hull temperature in degrees Celsius
+
+**Example**
+
+With `temperature = -5`, your program should print
+
+```text
+it's freezing outside
+```
+
+Now set `temperature = 10` and run again
+
+```text
+water does not freeze
+```

@@ -189,10 +189,20 @@ Cheapest: $30
 
 ---
 
-Your turn! Given an ArrayList of integers: `15, 8, 22, 3, 41, 7, 30` — find and print the **maximum value**. Your output should be exactly:
+## Mission: Peak Signal
+
+The station's sensor array logged a burst of readings. Command needs the **strongest signal** — find and print the **maximum value** from the list.
+
+The readings are already loaded into an `ArrayList<Integer>` on the right. Loop through them, track the largest value, and print it.
+
+**Input** (already set in your code — change the values to test):
+
+- Readings: `15, 8, 22, 3, 41, 7, 30`
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 41
 ```
-
-Just print the number, nothing else

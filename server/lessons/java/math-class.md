@@ -142,14 +142,18 @@ In Python, some of these are built-in functions (**abs**, **max**, **min**, **po
 
 ---
 
-Print the result of each of these on a **separate line**
+## Mission: Navigation Computer
 
-1. **Math.max(42, 17)**
-2. **Math.min(42, 17)**
-3. **Math.abs(-99)**
-4. **(int)Math.pow(2, 10)**
+The navigation computer needs four quick calculations before the next jump. Print each result on a **separate line**:
 
-Expected output
+1. The larger of `42` and `17` — use `Math.max`
+2. The smaller of `42` and `17` — use `Math.min`
+3. The absolute value of `-99` — use `Math.abs`
+4. `2` raised to the power `10` as an integer — use `(int) Math.pow`
+
+**Example**
+
+Your program should print
 
 ```text
 42

@@ -144,10 +144,20 @@ Player: Phil Cassidy | Score: 2300 | Rating: 8.95
 
 ---
 
-Your turn! Create three variables: a String **name** set to `"Tommy Vercetti"`, an int **score** set to `1500`, and a double **rating** set to `4.75`. Use **String.format()** to create and print this exact line:
+## Mission: Scoreboard Display
+
+The station's arcade just finished a tournament. Use `String.format()` with the correct placeholders (`%s`, `%d`, `%.2f`) to display the winner's stats on the scoreboard.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `name` — player name (String)
+- `score` — total score (int)
+- `rating` — performance rating (double)
+
+**Example**
+
+With `name = "Tommy Vercetti"`, `score = 1500`, and `rating = 4.75`, your program should print
 
 ```text
 Player: Tommy Vercetti | Score: 1500 | Rating: 4.75
 ```
-
-Make sure to use **%.2f** for the rating so it shows exactly 2 decimal places

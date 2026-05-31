@@ -121,4 +121,23 @@ Here's a quick reference
 
 ---
 
-Your turn! Given a double value `9.99`, cast it to an int and print it. Then given an int value `42`, widen it to a double and print it. Two lines of output
+## Mission: Cargo Weight Converter
+
+The cargo bay scanner reports a package weight as a decimal (`9.99` kg), but the manifest system only accepts whole numbers. Meanwhile, the precision scale needs a whole-number score (`42`) expanded to a decimal reading.
+
+1. Cast `price` (a double) to an int and print it
+2. Widen `score` (an int) to a double and print it
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `price` — decimal weight reading (double)
+- `score` — whole-number score (int)
+
+**Example**
+
+With `price = 9.99` and `score = 42`, your program should print
+
+```text
+9
+42.0
+```

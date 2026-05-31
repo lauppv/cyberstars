@@ -157,17 +157,26 @@ Lance now has 13 missions
 
 ---
 
-Create a **HashMap\<String, Integer\>** called **scores** that maps player names to their scores. Add these three players
+## Mission: Crew Registry
 
-- **"Tommy"** with score **9500**
-- **"Lance"** with score **7200**
-- **"Phil"** with score **3100**
+The station's personnel database was wiped during a solar flare. You need to rebuild the crew roster from memory before the next shift starts.
 
-Then print each player and their score on its own line, in this format: **Name: score**
+Create a **HashMap\<String, Integer\>** called `scores` that maps crew member names to their performance scores. Register these three members:
 
-You can use **.get()** for each player individually
+1. `"Tommy"` with score `9500`
+2. `"Lance"` with score `7200`
+3. `"Phil"` with score `3100`
 
-Expected output (print them in this order)
+Then print each member and their score on its own line using `.get()`, in the format `Name: score`.
+
+**Input** (already set in your code — change the values to test):
+
+- `"Tommy"`, `"Lance"`, `"Phil"` — crew member names
+- `9500`, `7200`, `3100` — their performance scores
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 Tommy: 9500

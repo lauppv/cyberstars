@@ -1,4 +1,4 @@
-crew = ["Ana", "Boris", "Cara", "Dmitri"]
+crew = ["Tommy", "Boris", "Cara", "Dmitri"]
 scores = [88, 100, 47, 73]
 
 # 1. print each name: score using zip

@@ -1,5 +1,5 @@
 class Wallet {
-private int money;
+    private int money;
 
     // Write a public constructor that takes starting money
 
@@ -12,11 +12,11 @@ private int money;
 }
 
 public class Main {
-public static void main(String[] args) {
-// Create wallet with 100
-// Add 50
-// Spend 30
-// Try to spend 200 (should fail)
-// Print balance
-}
+    public static void main(String[] args) {
+        // Create wallet with 100
+        // Add 50
+        // Spend 30
+        // Try to spend 200 (should fail)
+        // Print balance
+    }
 }

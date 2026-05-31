@@ -111,21 +111,23 @@ false || false = false
 
 ---
 
-You are writing the access system for **CyberStars HQ**. A person can enter if they are an **employee AND it’s a working day**, or if they are a **guest WITH an invitation**
+## Mission: Station Access Gate
 
-You have these variables on the right
+You are writing the access system for the station. A person can enter if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        boolean isEmployee = true;
-        boolean isWorkingDay = true;
-        boolean isGuest = false;
-        boolean hasInvitation = false;
-    }
-}
+Write an `if / else` using `&&` and `||` to check the conditions.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `isEmployee` — whether the person is an employee (boolean)
+- `isWorkingDay` — whether today is a working day (boolean)
+- `isGuest` — whether the person is a guest (boolean)
+- `hasInvitation` — whether they have an invitation (boolean)
+
+**Example**
+
+With `isEmployee = true`, `isWorkingDay = true`, `isGuest = false`, `hasInvitation = false`, your program should print
+
+```text
+Access granted
 ```
-
-Display **Access granted** if the person can enter, **Access denied** otherwise
-
-Play with the values, **run** multiple times, check that all combinations behave correctly :)

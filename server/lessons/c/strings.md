@@ -116,7 +116,22 @@ We can change individual characters because **name** is an array we own. Notice 
 
 ---
 
-You have a **char** array **name** on the right, set to **"lance vance"**. Display **on separate lines**
+## Mission: Decrypt the Call Sign
+
+A garbled transmission just came through. The comms officer stored it in a char array. Your job: display the full call sign, its length, the first character, and the last character so the bridge can verify the signal.
+
+1. Print the full **name** string
+2. Print its **length** (use **strlen**)
+3. Print the **first** character (index **0**, use **%c**)
+4. Print the **last** character (index **strlen(name) - 1**, use **%c**)
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `name` — a char array set to **"lance vance"**
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 lance vance
@@ -124,7 +139,3 @@ lance vance
 l
 e
 ```
-
-That is: the name itself, its **length** (with **strlen**), the **first** character, and the **last** character (use **strlen(name) - 1** as the index)
-
-Tip: the last character of **"lance vance"** is **'e'**. Use **%c** to print individual characters

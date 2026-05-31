@@ -125,20 +125,25 @@ Tommy Vercetti doesn't just run missions — he **brings back the money**. That'
 
 ---
 
-Write a method called **power** that takes two **int** parameters: **base** and **exponent**, and **returns** the result of raising **base** to the power of **exponent**
+## Mission: Engine Thrust
 
-You can compute this with a loop — start with result = 1, and multiply by base, exponent times
+The station's thruster power is calculated as `base` raised to the power of `exponent`. Write a method called `power` that takes two `int` parameters (`base` and `exponent`) and **returns** the result.
 
-Then call it from main and print the results
+Compute it with a loop: start with `result = 1`, then multiply by `base` a total of `exponent` times. Anything raised to the power of **0** is **1** — your loop naturally handles this if it runs 0 times.
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(power(2, 3));    // should print 8
-        System.out.println(power(5, 2));    // should print 25
-        System.out.println(power(10, 0));   // should print 1
-    }
-}
+The calls are already in `main` on the right.
+
+**Input** (change the calls in `main` to test):
+
+- `base` — the base number
+- `exponent` — how many times to multiply
+
+**Example**
+
+With the starter calls, your program should print
+
+```text
+8
+25
+1
 ```
-
-Hint: anything raised to the power of 0 is 1 — and your loop naturally handles this if result starts at 1 and the loop runs 0 times

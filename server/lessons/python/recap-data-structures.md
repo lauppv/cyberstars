@@ -7,8 +7,8 @@ Combine **tuples**, **sets**, **nested loops**, and **list comprehension**
 You're comparing two teams. Each crew member is a **tuple** of `(name, score)` (both lists are already on the right):
 
 ```python
-team_a = [("Ana", 85), ("Mihai", 72), ("Elena", 91), ("Radu", 60)]
-team_b = [("Ioana", 88), ("Mihai", 65), ("Ana", 91), ("Vlad", 72)]
+team_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]
+team_b = [("Mira", 88), ("Lance", 65), ("Tommy", 91), ("Quinn", 72)]
 ```
 
 Do the following, in order:
@@ -21,10 +21,10 @@ Do the following, in order:
 
 ```text
 In both:
-Ana
-Mihai
+Tommy
+Lance
 Team A high: [85, 91]
 Matches:
-Mihai and Vlad both scored 72
-Elena and Ana both scored 91
+Lance and Quinn both scored 72
+Cortez and Tommy both scored 91
 ```

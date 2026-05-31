@@ -110,17 +110,20 @@ When in doubt, **add parentheses**. They make the code easier to read anyway
 
 ---
 
-You have two variables **a** and **b** on the right. Display **on separate lines** the result of
+## Mission: Power Grid Calculator
 
-```text
-a + b
-a - b
-a * b
-a / b
-a % b
-```
+The station's power grid runs diagnostics using two sensor values. Your job is to display all five arithmetic results so the engineering team can verify the grid is stable.
 
-For **a = 17** and **b = 5** the output should be
+Print the results of `a + b`, `a - b`, `a * b`, `a / b`, and `a % b` — each on its own line.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `a` — primary sensor reading
+- `b` — secondary sensor reading
+
+**Example**
+
+With `a = 17` and `b = 5`, your program should print
 
 ```text
 22
@@ -130,4 +133,4 @@ For **a = 17** and **b = 5** the output should be
 2
 ```
 
-Play around, **run** the code several times, see how the output changes :)
+Change the values and run again — see how the output changes :)

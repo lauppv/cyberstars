@@ -96,12 +96,18 @@ Output **14**. **.length()** tells us how many characters the text has. Spaces c
 
 ---
 
-The code on the right doesn’t work. Modify it so it displays
+## Mission: Crew Roster Fix
+
+The station’s crew roster has a bug — the names were entered without quotes, so Java thinks they are variables instead of text.
+
+Fix the three variable assignments so the program compiles and prints the crew names correctly.
+
+**Example**
+
+Your program should print
 
 ```text
 Shrek
 Fiona
 Donkey
 ```
-
-Don’t forget that text needs **""** around it, and don’t forget the **;** at the end of every line :)

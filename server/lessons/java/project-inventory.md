@@ -193,18 +193,21 @@ Also notice: `Item` and `Inventory` are NOT public — only `Main` is public. Th
 
 ---
 
-Your turn! Build the full inventory system:
+## Mission: Cargo Bay Manifest
+
+The station's cargo bay needs a digital manifest system. Every supply item has a name, quantity, and unit price. Build the inventory tracker so the quartermaster can list everything and calculate the total value at a glance.
 
 1. Create an `Item` class with fields: `name` (String), `quantity` (int), `price` (double) and a constructor
 2. Create an `Inventory` class with an `ArrayList<Item>`, and methods: `addItem(Item item)`, `removeItem(String name)`, `printAll()`, and `double totalValue()`
-3. In main, create an Inventory and add these 3 items:
+3. `printAll()` prints each item as `"name xQuantity @ $price"` (use `String.format("%.2f", price)`)
+4. `totalValue()` returns the sum of `quantity * price` for all items
+5. In main, create an Inventory and add these items:
    - "Shotgun", quantity 2, price 350.00
    - "Medkit", quantity 10, price 15.50
    - "Kevlar Vest", quantity 1, price 200.00
-4. Call `printAll()` to show all items
-5. Print the total value as: `Total: $` followed by the value with 2 decimal places
+6. Call `printAll()`, then print `"Total: $"` followed by the formatted total
 
-Expected output:
+**Output**
 
 ```text
 Shotgun x2 @ $350.00

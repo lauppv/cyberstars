@@ -88,26 +88,30 @@ Forgetting **fclose** is like leaving the water running. The program might work 
 
 ---
 
-Write a program that:
+## Mission: Crew Log Archive
 
-1. Opens a file **"grades.txt"** for **writing**
-2. Writes these 3 lines:
+The station needs a permanent crew log. Write crew names and scores to a file, then read the file back and display a formatted report for the captain.
+
+1. Open a file **"grades.txt"** for **writing**
+2. Write these 3 lines (use **fprintf**):
 
 ```text
-Ana 95
-Mihai 82
-Elena 98
+Tommy 95
+Lance 82
+Cortez 98
 ```
 
-3. Closes the file
-4. Opens **"grades.txt"** for **reading**
-5. Reads each name and grade using **fscanf**, and prints them as: **"Name: Ana, Grade: 95"**
-6. Closes the file
+3. Close the file
+4. Open **"grades.txt"** for **reading**
+5. Read each name and grade using **fscanf**, and print them as: **"Name: Tommy, Grade: 95"**
+6. Close the file
 
-Expected output
+**Example**
+
+Your program should print
 
 ```text
-Name: Ana, Grade: 95
-Name: Mihai, Grade: 82
-Name: Elena, Grade: 98
+Name: Tommy, Grade: 95
+Name: Lance, Grade: 82
+Name: Cortez, Grade: 98
 ```

@@ -74,13 +74,18 @@ int main(void) {
 
 ---
 
-Print the PID of the current process and a message about the exit code
+## Mission: Station Boot Sequence
 
-Expected output (your PID will be different)
+The station's main reactor just restarted after a power surge. Every subsystem must broadcast its process ID so Mission Control can confirm it came back online.
+
+1. Print the current process ID using **getpid()**
+2. Print a message confirming the exit code
+
+**Output**
 
 ```text
 PID: 12345
 Exiting with code 0
 ```
 
-Use **getpid()** from **unistd.h**
+Your PID will be different — that is expected. Use **getpid()** from **unistd.h**

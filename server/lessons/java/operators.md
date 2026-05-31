@@ -113,17 +113,18 @@ When in doubt, **add parentheses**. They make the code easier to read anyway :)
 
 ---
 
-You have two variables **a** and **b** on the right. Display **on separate lines** the result of
+## Mission: Engine Diagnostics
 
-```text
-a + b
-a - b
-a * b
-a / b
-a % b
-```
+The station's diagnostic console needs a quick arithmetic readout of two sensor values. Print each operation on its own line: addition, subtraction, multiplication, integer division, and remainder.
 
-For **a = 17** and **b = 5** the output should be
+**Input** (already set at the top of your code — change the values to test):
+
+- `a` — first sensor reading (int)
+- `b` — second sensor reading (int)
+
+**Example**
+
+With `a = 17` and `b = 5`, your program should print
 
 ```text
 22
@@ -132,5 +133,3 @@ For **a = 17** and **b = 5** the output should be
 3
 2
 ```
-
-Play around with the values, **run** the code several times, see how the output changes :)

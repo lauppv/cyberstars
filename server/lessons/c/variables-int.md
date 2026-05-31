@@ -123,11 +123,22 @@ Output **3**, not **3.5**. Why? Because **a / b** with two ints gives back an **
 
 ---
 
-On the right, set the variables **age** and **x**, then display
+## Mission: Crew Registry
+
+The station’s crew database needs two entries logged to the console: a crew member’s age and their security clearance level.
+
+Using the variables `age` and `x` already declared on the right, write **two printf** calls that display each value with a label.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `age` — crew member’s age
+- `x` — security clearance level
+
+**Example**
+
+With `age = 60` and `x = 5`, your program should print
 
 ```text
 My age is 60
 x is 5
 ```
-
-You’ll need **two** **printf** calls and **%d** twice :)

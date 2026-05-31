@@ -135,12 +135,15 @@ A small warning: **break** and **continue** can make code harder to read if you 
 
 ---
 
-Print all numbers from **1 to 20**, but with two rules
+## Mission: Deck Patrol
 
-- **Skip** the number **13** (use **continue**)
-- **Stop** completely when you reach **17** (use **break**, do not print **17**)
+You are scanning decks **1** through **20** aboard the station. Deck **13** is sealed for decontamination — **skip** it with **continue**. When you reach deck **17**, the alert system triggers a lockdown — **stop** the scan with **break** (do not print 17).
 
-Expected output
+Write the appropriate **if** checks inside the loop.
+
+**Example**
+
+Your program should print
 
 ```text
 1
@@ -160,4 +163,4 @@ Expected output
 16
 ```
 
-**13** is missing, and **17, 18, 19, 20** never show up
+**13** is missing (skipped), and **17, 18, 19, 20** never show up (stopped) :)

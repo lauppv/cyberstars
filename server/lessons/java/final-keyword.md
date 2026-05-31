@@ -158,16 +158,20 @@ Output
 
 ---
 
-## Exercise
+## Mission: Station Configuration Lock
+
+The station's core parameters — maximum shield capacity and the station's official designation — must never change once initialized. Your job is to define these as locked constants that no code can accidentally overwrite.
 
 Create two `final` constants:
 
-- `MAX_HEALTH` set to `100`
-- `GAME_NAME` set to `"CyberQuest"`
+1. `MAX_HEALTH` set to `100`
+2. `GAME_NAME` set to `"CyberQuest"`
 
-Print both constants on separate lines, exactly like this:
+Print both constants on separate lines.
 
-Expected output:
+**Example**
+
+Your program should print
 
 ```text
 100

@@ -131,19 +131,28 @@ Output **Total debt: $21000**
 
 ---
 
-You're building a word frequency counter. Given a HashMap of words and how many times they appear, print **only the words that appear more than once**
+## Mission: Signal Frequency Scanner
 
-Create a **HashMap\<String, Integer\>** called **wordCount** with these entries
+The station's communications array has been intercepting keyword signals from deep space. Your job is to scan the log and flag any keyword that appeared more than once — those could be repeating distress calls.
 
-- **"java"** appears **5** times
-- **"python"** appears **3** times
-- **"bug"** appears **1** time
-- **"loop"** appears **1** time
-- **"class"** appears **4** times
+Create a **HashMap\<String, Integer\>** called `wordCount` with these signal entries:
 
-Loop through the map and print each word that appears more than once, in the format: **word: count**
+1. `"java"` appeared `5` times
+2. `"python"` appeared `3` times
+3. `"bug"` appeared `1` time
+4. `"loop"` appeared `1` time
+5. `"class"` appeared `4` times
 
-Expected output (order may vary, all of these must appear)
+Loop through the map and print only the keywords that appear more than once, in the format `word: count`.
+
+**Input** (already set in your code — change the values to test):
+
+- `"java"`, `"python"`, `"bug"`, `"loop"`, `"class"` — intercepted keywords
+- `5`, `3`, `1`, `1`, `4` — how many times each was detected
+
+**Example**
+
+With the starter values, your program should print (order may vary)
 
 ```text
 java: 5

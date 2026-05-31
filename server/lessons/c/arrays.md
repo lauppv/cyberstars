@@ -115,18 +115,24 @@ Run it. **C does NOT check** whether the index is valid. Unlike Python (which ra
 
 ---
 
-You have an array **heroes** on the right, declared with **3** slots, all empty for now. We can’t store strings inside an int array, so we’ll keep it simple — declare it as **int**
+## Mission: Crew Roster Check
 
-Do the following
+The station’s crew manifest just arrived as an empty data block. Your job is to fill in the crew power-levels and run a quick diagnostic.
 
 1. Set **heroes[0]** to **10**
 2. Set **heroes[1]** to **20**
 3. Set **heroes[2]** to **30**
-4. Display the **size** of the array (use **sizeof** trick)
-5. Display the **first** element
-6. Display the **last** element (index **2**)
+4. Print the **size** of the array (use the **sizeof** trick)
+5. Print the **first** element
+6. Print the **last** element (index **2**)
 
-Expected output
+**Input** (already set at the top of your code — change the values to test):
+
+- `heroes` — an int array with 3 empty slots
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
 3

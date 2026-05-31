@@ -110,40 +110,31 @@ Notice the **;** at the end of the prototype — it’s a declaration, not a bod
 
 ---
 
-Write a function **calculator** that takes **three parameters**: an **int number1**, an **int number2**, and a **char operator** (a single character like **'+'**, **'-'**, etc — note the **single quotes** for a single char in C)
+## Mission: Station Power Calculator
 
-The function should print the result of **number1 operator number2**
+The station’s engineering console needs a quick arithmetic module. Commander Cortez wants a single function that handles all four basic operations so crew members can run calculations on the fly.
 
-Example
+Write a function **calculator** that takes three parameters: an **int number1**, an **int number2**, and a **char operator** (a single character like **’+’**, **’-’**, **’\*’**, **’/’** — note the **single quotes** for a single char in C).
 
-```c
-#include <stdio.h>
+The function should print the result of the operation. If the operator is not recognized, print **"Invalid operator"**.
 
-void calculator(int number1, int number2, char operator) {
-    if (operator == '+') {
-        int result = number1 + number2;
-        printf("%d %c %d = %d\n", number1, operator, number2, result);
-    } else {
-        printf("Invalid operator\n");
-    }
-}
+1. Handle **addition** (**’+’**), **subtraction** (**’-’**), **multiplication** (**’\*’**), and **division** (**’/’**)
+2. Use **%c** as the format specifier for a single **char**
+3. Use **==** to compare the char (this works in C because chars are small integers under the hood)
 
-int main(void) {
-    calculator(14, 12, '+');
-    return 0;
-}
+**Input** (already set at the top of your code — change the values to test):
+
+- `number1`, `number2` — the two operands
+- `operator` — the operation character
+
+**Example**
+
+With the starter values, your program should print
+
+```text
+14 + 12 = 26
+10 - 3 = 7
+5 * 4 = 20
+10 / 2 = 5
+Invalid operator
 ```
-
-Notice the format specifier **%c** for a single **char**
-
-Then call it from **main** with
-
-```c
-calculator(14, 12, '+');
-```
-
-Complete the function so it also handles **subtraction**, **multiplication**, and **division**
-
-For subtraction we use **'-'**, for multiplication **'\*'**, for division **'/'**
-
-In C we **can** use **==** to compare a **char** (since chars are essentially small integers under the hood) — unlike strings, where **==** is wrong. Don’t worry, this will become clearer in the strings lesson :)

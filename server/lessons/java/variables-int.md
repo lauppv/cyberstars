@@ -124,20 +124,23 @@ Now we see **3.5**. Remember this — it’s a very common bug for beginners :)
 
 ---
 
-On the right, complete the code with values for **age** and **height**, then display
+## Mission: Officer ID Card
+
+Commander Cortez needs a new ID card printed. Set the correct values for `age` and `height`, then display the full badge line.
+
+1. Set `age` to `57`
+2. Set `height` to `1.67`
+3. The `println` at the bottom already builds the message with **+** — just make sure the variables hold the right values
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `age` — officer’s age (int)
+- `height` — officer’s height in metres (double)
+
+**Example**
+
+With `age = 57` and `height = 1.67`, your program should print
 
 ```text
 My name is Cortez, I am 57 years old, and I am 1.67 tall
 ```
-
-For now, build the message with **+** like this
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("My name is Cortez, I am " + age + " years old, and I am " + height + " tall");
-    }
-}
-```
-
-We’ll explain string concatenation properly in the next lessons. Just notice that **+** with strings means "glue them together"
