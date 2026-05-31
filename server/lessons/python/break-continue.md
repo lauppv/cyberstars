@@ -118,29 +118,23 @@ while True:
 
 ---
 
-Print all numbers from **1 to 20**, but with two rules
+## Mission: Signal Scanner
 
-- **Skip** the number **13** (use **continue**)
-- **Stop** completely when you reach **17** (use **break**, do not print **17** itself)
+The station scans a list of incoming signals (already on the right). The rules of the scan:
 
-Expected output
+- a **negative** number is just noise — **skip** it (use **continue**)
+- a **0** means "end of transmission" — **stop** scanning immediately (use **break**)
+- every other (positive) signal is valid — **print** it and **count** it
+
+At the end, print `Total signals: ` then how many valid signals you found.
+
+**Output**
 
 ```text
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 12
-14
-15
-16
+7
+5
+Total signals: 3
 ```
 
-Notice that **13** is missing and **17, 18, 19, 20** never show up
+The `-3` and `-8` are skipped, the scan stops at the `0`, and the `99` and `4` after it are never reached — so only `12`, `7`, and `5` count.

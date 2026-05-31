@@ -1,9 +1,9 @@
-votes = ["Shrek", "Fiona", "Donkey", "Shrek", "Puss", "Fiona", "Shrek", "Donkey"]
+signals = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
 
-# 1. print total number of votes
+# 1. print the total number of signals
 
-# 2. create a set of unique voters
+# 2. make a set of unique codes
 
-# 3. print how many unique voters
+# 3. print how many unique codes
 
-# 4. print the unique voters
+# 4. print whether D4 was detected

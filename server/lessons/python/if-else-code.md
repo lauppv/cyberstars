@@ -1,3 +1,5 @@
-temperature = 0
+# --- input data (change these to test) ---
 
-# write code below
+temp = 1200 # reactor temperature in degrees Celsius
+
+# --- write your code below ---

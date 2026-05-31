@@ -127,18 +127,52 @@ None
 
 ---
 
-Write a function called **maxOfThree** that takes **3 numbers** and **returns** the largest one
+## Mission: Reactor Safety
 
-Example
+The station has three reactors and we care about the hottest one. Write a function `highest(a, b, c)` that **returns** the largest of three readings — use **if/elif/else** and **return** the value, do **not** print inside the function.
 
-```py
-def maxOfThree(a, b, c):
-    # your code here
-    pass
+Then read three readings, call `highest` to find the top one, and report on safety:
 
-print(maxOfThree(5, 9, 2))   # 9
-print(maxOfThree(10, 3, 7))  # 10
-print(maxOfThree(1, 1, 1))   # 1
+- if the top reading is **above 100**, print `Reactor: DANGER`
+- otherwise print `Reactor: stable`
+- on a second line, print `Top reading: ` then the top value
+
+**Input** (typed by the user when the program runs):
+
+- three reactor readings, one per line
+
+**Output**
+
+Two lines: the safety message, then the top reading.
+
+**Example**
+
+If the user types
+
+```text
+88
+132
+95
 ```
 
-Tip: use **if/elif/else** to compare them. **Don’t** print inside the function, **return** the value :)
+the program should print
+
+```text
+Reactor: DANGER
+Top reading: 132
+```
+
+If the user types
+
+```text
+40
+90
+75
+```
+
+the program should print
+
+```text
+Reactor: stable
+Top reading: 90
+```

@@ -35,4 +35,15 @@ Again, don't forget the quotes.
 
 ---
 
-On the right side of the screen, you have a place to write code. Try to display something using **print()**. Psst, don't forget the quotes :)
+## Mission: Boot the Console
+
+The station's control console boots up with a welcome banner. Write a program that uses **print()** to display **exactly** these four lines:
+
+```text
+== CYBERSTARS MISSION CONTROL ==
+Station: Orion
+Status: ONLINE
+Welcome aboard, cadet!
+```
+
+Psst — don't forget the **quotes** :) Match the text exactly, line by line.

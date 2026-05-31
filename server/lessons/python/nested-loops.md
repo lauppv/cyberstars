@@ -77,7 +77,25 @@ When **j** hits **2**, **break** stops the inner loop, but the outer loop keeps 
 
 ---
 
-Display a **right triangle** made of stars. If **rows = 5**, the output should be
+## Mission: Signal Tower
+
+Build a tower of stars for the station's antenna. **Read** a number `rows`, then print a right triangle where the first row has **1** star, the second has **2**, and so on, down to `rows` rows.
+
+The outer loop controls the **row**, and the inner loop prints the right number of **stars** for that row. Use `print("*", end="")` to print a star **without** moving to a new line, then `print()` alone after the inner loop to go to the next line.
+
+**Input** (typed by the user when the program runs):
+
+- `rows` — how many rows the tower has
+
+**Example**
+
+If the user types
+
+```text
+5
+```
+
+the program should print
 
 ```text
 *
@@ -86,7 +104,3 @@ Display a **right triangle** made of stars. If **rows = 5**, the output should b
 ****
 *****
 ```
-
-Tip: the first row has **1** star, the second has **2**, the third has **3**, and so on. The outer loop controls the **row**, the inner loop controls how many **stars** to print on that row
-
-You'll need to use **print()** in a special way: **print("\*", end="")** prints a star **without going to a new line**. Then after the inner loop, use **print()** alone to go to the next line

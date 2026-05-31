@@ -1,21 +1,19 @@
-def addTask(todos, name): # add a new task dict with name and done=False
+def add_task(tasks, name): # append a new task: {"name": name, "done": False}
 pass
 
-def completeTask(todos, index): # mark the task at index as done
+def complete_task(tasks, index): # mark the task at index as done
 pass
 
-def countDone(todos): # return how many tasks have done=True
+def count_done(tasks): # return how many tasks have done == True
 pass
 
-todos = []
-addTask(todos, "Learn Python")
-addTask(todos, "Learn Java")
-addTask(todos, "Learn C")
+tasks = []
+add_task(tasks, "Run diagnostics")
+add_task(tasks, "Refuel reactor")
+add_task(tasks, "Chart course")
+complete_task(tasks, 0)
+complete_task(tasks, 2)
 
-print(len(todos))
+# display each task as "0. [done] Run diagnostics" or "1. [pending] Refuel reactor",
 
-completeTask(todos, 0)
-print(countDone(todos))
-
-completeTask(todos, 2)
-print(countDone(todos))
+# then print "Completed: " + how many are done + "/" + the total

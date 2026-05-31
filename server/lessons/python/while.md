@@ -59,4 +59,32 @@ Because **i stays 0**, therefore **print(i)** will always print **0**. Since **i
 
 ---
 
-Take the program out of the infinite loop
+## Mission: Battery Drain
+
+The station runs on a battery that loses charge every cycle. You are given the starting `charge` (in percent) and how much it loses per cycle, `drain`.
+
+Write a program that uses a **while** loop to keep running **as long as** `charge` is greater than **0**. On each cycle:
+
+- if `charge` is **20 or below** → print the charge, then `% - LOW POWER` (for example `10% - LOW POWER`)
+- otherwise → print the charge, then `%` (for example `70%`)
+
+then reduce `charge` by `drain`. When the battery finally runs out, print `Battery dead` once at the end.
+
+**Careful** — just like in the lesson above, if you forget to lower `charge` you will be stuck in an **infinite loop** :)
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `charge` — starting battery level in percent
+- `drain` — how much charge is lost per cycle
+
+**Example**
+
+With `charge = 100` and `drain = 30`, your program should print
+
+```text
+100%
+70%
+40%
+10% - LOW POWER
+Battery dead
+```

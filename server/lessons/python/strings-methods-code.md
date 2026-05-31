@@ -1,3 +1,3 @@
-name = "lance vance"
+name = input()
 
-# print uppercase, lowercase, length, first letter, first 5 chars, last 5 chars
+# build the badge: uppercase name, length, first letter, first 3 chars

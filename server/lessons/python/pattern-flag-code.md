@@ -1,3 +1,5 @@
-numbers = [5, 12, -3, 8, 42, 7]
+code = input()
 
-# use a flag to check if any number is negative
+# use flags has_upper and has_digit, plus a length >= 6 check
+
+# print each check, then whether the code is valid

@@ -80,14 +80,18 @@ Output **3**. Works with other operators too: **x -= 1**, **x \*= 2**, **x /= 3*
 
 ---
 
-You have a list of **scores**. Count and display
+## Mission: Reading Bands
 
-1. How many scores are **above or equal to 50** (passed)
-2. How many scores are **below 50** (failed)
+You have a list of reactor readings (already on the right). Using the **counter pattern**, count how many fall into each band and print the totals:
 
-Expected output
+- `Low: ` then how many readings are **below 50**
+- `Mid: ` then how many are **from 50 to 99** (inclusive)
+- `High: ` then how many are **100 or above**
+
+**Output**
 
 ```text
-Passed: 4
-Failed: 2
+Low: 2
+Mid: 4
+High: 2
 ```

@@ -65,24 +65,28 @@ Output **100**. We started with **total = 0**, then for each price we added it t
 
 ---
 
-You have a list **scores** with the values **[80, 95, 60, 72, 88]**
+## Mission: Reactor Readings
 
-Display **on separate lines**
+The reactor sends a list of temperature readings (already on the right). Loop over them and report on the reactor's health.
 
-1. Each score (just the number, one per line)
-2. The **total** of all scores
-3. The **average** (total divided by how many there are)
+Print, in this order:
 
-Expected output
+1. Each reading on its own line
+2. `Total: ` then the sum of all readings
+3. `Average: ` then the total divided by how many readings there are (use **len()**)
+4. `Warnings: ` then how many readings are **above 100** (count them with a **for** loop and an **if**)
+
+**Output**
 
 ```text
-80
-95
-60
-72
-88
-395
-79.0
+90
+105
+100
+120
+85
+Total: 500
+Average: 100.0
+Warnings: 2
 ```
 
-Tip: use **len(scores)** so the average works no matter how many numbers are in the list. Try adding or removing scores and run again. Programming is fun when **you’re curious** :)
+Two of the readings (105 and 120) are above 100, so the warning count is 2. Add or remove readings and run again — the average and warning count should follow along :)

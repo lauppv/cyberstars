@@ -92,16 +92,32 @@ Last: Vercetti
 
 ---
 
-Write a function **analyzeWord** that takes a **word** and returns **three** values: the word in **uppercase**, the word in **lowercase**, and its **length**
+## Mission: Coordinate Parser
 
-```py
-upper, lower, length = analyzeWord("Cortez")
-```
+Write a function `parse(reading)` that takes a string of three numbers separated by spaces (like `"45 90 12"`) and returns **three values**: the **sum**, the **largest**, and the **smallest**.
 
-Display each on a separate line. Expected output
+Inside the function, use `.split(" ")` to break the string into parts and turn each part into a number. Then **return** all three results at once.
+
+In the main program, **read** a line, call `parse`, **unpack** the three values, and print them.
+
+**Input** (typed by the user when the program runs):
+
+- three numbers on one line, separated by spaces
+
+**Output**
 
 ```text
-CORTEZ
-cortez
-6
+Total: 147
+Largest: 90
+Smallest: 12
 ```
+
+**Example**
+
+If the user types
+
+```text
+45 90 12
+```
+
+the program prints the output shown above.

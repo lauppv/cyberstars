@@ -1,5 +1,5 @@
-mission = ("Demolition Man", "Hard", 5000)
+systems = [("Sol", 0, 8), ("Alpha", 4, 3), ("Vega", 25, 5)]
 
-# 1. unpack into name, difficulty, reward
+# loop and unpack each tuple into name, distance, planets
 
-# 2. print each on a separate line
+# print each system, then the total number of planets

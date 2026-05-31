@@ -1,6 +1,3 @@
-def safeDivide(a, b): # return a / b, but handle division by zero
-pass
+readings = ["42", "x9", "100", "7", "bad", "13"]
 
-print(safeDivide(10, 2))
-print(safeDivide(10, 0))
-print(safeDivide(99, 3))
+# convert each reading with try/except; sum the valid ones and count the corrupted ones

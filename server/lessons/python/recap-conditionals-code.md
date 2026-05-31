@@ -1,4 +1,6 @@
+# --- input data (change these to test) ---
+
 age = 15
 is_3d = True
 
-# calculate and print the ticket price
+# --- write your code below ---

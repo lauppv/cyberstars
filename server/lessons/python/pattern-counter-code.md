@@ -1,3 +1,3 @@
-scores = [80, 35, 92, 48, 67, 55]
+readings = [42, 75, 100, 30, 88, 120, 55, 99]
 
-# count passed (>= 50) and failed (< 50)
+# count Low (< 50), Mid (50-99), High (>= 100)

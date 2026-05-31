@@ -56,9 +56,21 @@ this displays `text 36.159`
 
 ---
 
-Complete the code on the right with **name**, **age** and **height**
-Example:
+## Mission: Oxygen Count
+
+The station has three oxygen tanks, with their amounts (in liters) stored in `tankA`, `tankB`, and `tankC`.
+
+Add the three tanks together into a `total` and print it. Then a leak drains **50** liters — subtract 50 from the `total` and print the new value.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `tankA`, `tankB`, `tankC` — liters of oxygen in each tank
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
-Hello. My name is Cortez, I am 57 years old, and I am 1.67 tall
+400
+350
 ```

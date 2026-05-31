@@ -2,30 +2,28 @@ Combine **built-in functions**, **problem decomposition**, **counter**, **accumu
 
 ---
 
-Build a **text analyzer**. Given this text:
+## Mission: Mission Log Analyzer
 
-```python
-text = "The quick brown fox jumps over the lazy dog and the quick cat"
-```
+The mission log is a single string of words (already on the right). **Break the work into three functions**, each using a different pattern:
 
-Write **separate functions** for each task (decompose the problem!):
+1. `count_word(log, word)` — **counter pattern**: how many times `word` appears in the log
+2. `longest_word(log)` — **accumulator pattern**: the longest word in the log
+3. `has_duplicate(log)` — **flag pattern**: returns `True` if any word appears more than once
 
-**count_word(text, word)** — uses the **counter pattern** to count how many times a word appears (split the text into words and loop)
+In the main program, also use **built-in functions** — `len()` for the total word count and `sorted()` together with a `set()` for the unique words. Print:
 
-**longest_word(text)** — uses the **accumulator pattern** to find the longest word (keep track of the longest seen so far)
+- `Total words: ` then how many words there are
+- `Count of scan: ` then how many times `scan` appears
+- `Longest word: ` then the longest word
+- `Has duplicate: ` then `True` or `False`
+- `Unique words: ` then the sorted list of unique words
 
-**has_duplicate_words(text)** — uses the **flag pattern** to check if any word appears more than once. Return True/False
-
-Also use **built-in functions**: **len()** on the word list to count total words, **sorted()** to get unique words alphabetically
-
-Print the results
-
-Expected output
+**Output**
 
 ```text
-Total words: 12
-Count of 'the': 3
-Longest word: jumps
-Has duplicates: True
-Unique words: and, brown, cat, dog, fox, jumps, lazy, over, quick, the
+Total words: 7
+Count of scan: 3
+Longest word: analyze
+Has duplicate: True
+Unique words: ['analyze', 'boot', 'probe', 'scan']
 ```

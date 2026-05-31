@@ -99,24 +99,21 @@ Notice how we used **everything**: import, function, for loop, try/except, if/el
 
 ---
 
-Since this is a game with random numbers and user input, we can't easily test it with automatic tests. Instead, your task is to write a **simplified version**
+## Mission: Reactor Code Cracker
 
-Write a function **checkGuess** that takes a **secret** number and a **guess**, and returns
+The reactor is locked behind a secret numeric code. A diagnostics tool already recorded a sequence of guesses (already on the right) — replay them and report how the crack went. No randomness here, so the result is the same every run.
 
-- **"too low"** if the guess is smaller
-- **"too high"** if the guess is bigger
-- **"correct"** if they match
+1. Write a function **check_guess(secret, guess)** that returns `"too low"` if the guess is smaller than the secret, `"too high"` if it's bigger, and `"correct"` if they match.
+2. Loop through the guesses, counting attempts. For each guess, print the guess, then `: `, then the result.
+3. **Stop** as soon as a guess is correct, then print `Cracked in N attempts!` (with the real number of attempts).
 
-```py
-print(checkGuess(50, 25))   # too low
-print(checkGuess(50, 75))   # too high
-print(checkGuess(50, 50))   # correct
-```
-
-Expected output
+**Output**
 
 ```text
-too low
-too high
-correct
+50: too high
+30: too low
+40: too low
+45: too high
+42: correct
+Cracked in 5 attempts!
 ```

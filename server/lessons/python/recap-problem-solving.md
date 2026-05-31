@@ -2,30 +2,32 @@ Combine **string reverse**, **palindrome**, **anagram**, **filter/transform**, a
 
 ---
 
-Build a **word game toolkit**. Write these functions:
+## Mission: Transmission Toolkit
 
-**clean_word(word)** — **filter and transform**: remove non-letter characters and convert to lowercase. Use a loop or list comprehension with **.isalpha()**
+Incoming transmissions are noisy and scrambled. Build a small toolkit of helper functions, then use them together to make sense of the signal. Pull together everything from this chapter:
 
-**is_palindrome(word)** — check if the cleaned word is a palindrome using the **two pointers** technique (one pointer at start, one at end, move towards center)
+**clean_text(text)** — **filter and transform**: keep only the letters and convert them to lowercase (use `.isalpha()`).
 
-**are_anagrams(word1, word2)** — check if two cleaned words are anagrams (same letters, different order). Sort the letters and compare
+**is_palindrome(word)** — check whether the word reads the same both ways, using the **two pointers** technique (one pointer at the start, one at the end, move them towards the centre).
 
-**reverse_words(sentence)** — reverse the **order of words** in a sentence (not the letters). Split, reverse the list, join back
+**are_anagrams(a, b)** — clean both words, then check whether they are anagrams (same letters, different order). Sort the letters and compare.
+
+**reverse_words(sentence)** — reverse the **order of the words** in a sentence (not the letters). Split, reverse the list, join back with spaces.
 
 Test with:
 
-```python
-print(is_palindrome("A man, a plan, a canal: Panama"))
+```py
+print(is_palindrome(clean_text("A man, a plan, a canal: Panama")))
 print(are_anagrams("Listen!", "Silent"))
-print(reverse_words("hello world foo bar"))
-print(clean_word("H3ll0, W0rld!"))
+print(reverse_words("navigation system is online"))
+print(clean_text("S3ct0r 7 cl34r!"))
 ```
 
-Expected output
+**Output**
 
 ```text
 True
 True
-bar foo world hello
-hllwrld
+online is system navigation
+sctrclr
 ```

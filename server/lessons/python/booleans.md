@@ -105,17 +105,51 @@ not False = True
 
 ---
 
-You are writing the access system for **CyberStars HQ**. A person can enter if they are an **employee AND it’s a working day**, or if they are a **guest with an invitation**
+## Mission: HQ Access
 
-You have these variables on the right:
+You are writing the door system for **CyberStars HQ**. A person can enter if they are an **employee AND it's a working day**, or if they are a **guest who has an invitation**.
 
-```py
-isEmployee
-isWorkingDay
-isGuest
-hasInvitation
+The program asks **four** questions. For each one the user types `yes` or `no`. A handy trick: `answer == "yes"` is already a boolean, so you can store it straight into a variable.
+
+**Input** (typed by the user when the program runs), each one `yes` or `no`:
+
+- is the person an employee?
+- is it a working day?
+- is the person a guest?
+- does the person have an invitation?
+
+**Output**
+
+One line: `Access granted` if the person can enter, otherwise `Access denied`.
+
+**Example**
+
+If the user types
+
+```text
+yes
+yes
+no
+no
 ```
 
-Display **Access granted** if the person can enter, **Access denied** otherwise
+the program should print
 
-Play with the values, **run** multiple times and check that all combinations work :)
+```text
+Access granted
+```
+
+A guest with an invitation also gets in. If the user types
+
+```text
+no
+no
+yes
+yes
+```
+
+the program should print
+
+```text
+Access granted
+```

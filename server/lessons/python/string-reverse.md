@@ -57,18 +57,31 @@ Output **City Vice love I**
 
 ---
 
-Write a function **reverseString** that takes a string and returns it reversed. **Don't use [::-1]** — use a loop
+## Mission: Decode Transmission
 
-```py
-print(reverseString("hello"))
-print(reverseString("Vice City"))
-print(reverseString("12345"))
-```
+A garbled transmission just arrived. The crew suspects it was sent **backwards**, so you need to flip it two ways and see which one makes sense.
 
-Expected output
+1. Write a function **reverse_text(text)** that returns the text reversed **character by character**, using a loop (**don't use `[::-1]`**).
+2. **Read** the transmission, then print `Reversed: ` followed by the character-reversed text.
+3. Also reverse the **order of the words** (split into words, reverse the list, join back with spaces) and print `Word order: ` followed by the result.
+
+**Input** (typed by the user when the program runs):
+
+- the transmission, a line of words separated by spaces
+
+**Output** — two lines: the character-reversed text, then the word-order-reversed text.
+
+**Example**
+
+If the user types
 
 ```text
-olleh
-ytiC eciV
-54321
+navigation system online
+```
+
+the program should print
+
+```text
+Reversed: enilno metsys noitagivan
+Word order: online system navigation
 ```

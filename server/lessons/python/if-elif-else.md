@@ -113,4 +113,40 @@ The full explanation is complex, but as a general rule: **if we test the same va
 
 ---
 
-Change the values of the **3 variables** to see how the output changes. Play around with the variables and **modify the if-elif-else** to see what changes Once again here at **CyberStars** we encourage **curiosity** **:)**
+## Mission: Oxygen Level Monitor
+
+The station constantly checks its `oxygen` level (in percent) and whether there is still `crewAboard`. Based on the oxygen level, print **one** status line using a chained **if / elif / else**:
+
+- `oxygen` is **80 or more** → `Oxygen nominal`
+- `oxygen` is **50 to 79** → `Oxygen low - conserve power`
+- `oxygen` is **20 to 49** → `Oxygen critical - seal the bay`
+- below **20** → it's an emergency. Here, check `crewAboard` with a **nested if**:
+  - if the crew is still aboard → `EMERGENCY - evacuate now`
+  - otherwise → `Venting the bay is safe`
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `oxygen` — oxygen level in percent
+- `crewAboard` — `True` if the crew is still on the station
+
+**Example**
+
+With `oxygen = 65`, your program should print
+
+```text
+Oxygen low - conserve power
+```
+
+Now set `oxygen = 12` and `crewAboard = True` and run again
+
+```text
+EMERGENCY - evacuate now
+```
+
+And with `oxygen = 12` and `crewAboard = False`
+
+```text
+Venting the bay is safe
+```
+
+Once again, here at **CyberStars** we encourage **curiosity** — play around with the values **:)**

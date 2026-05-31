@@ -96,6 +96,29 @@ Here we see that the user is **offline** because **isUserOnline** = **False**, w
 
 ---
 
-Write a program that displays _it's freezing outside_ if the **temperature** is below **0** degrees, or _water does not freeze_
+## Mission: Reactor Watch
 
-Here at **CyberStars**, we encourage **learning** and **curiosity**. Programming is learned through **curiosity**. Ask yourself _what happens if I change this?_ Play around with variables and **if-else**. This can actually be fun
+The reactor reports its temperature in `temp` (degrees Celsius). Write an **if / else** that checks it:
+
+- if `temp` is **greater than 1000** → print `DANGER: reactor at`, the temperature, then `degrees - shutting down` (for `temp = 1200` that is `DANGER: reactor at 1200 degrees - shutting down`)
+- otherwise → print `Reactor stable at`, the temperature, then `degrees` (for `temp = 800` that is `Reactor stable at 800 degrees`)
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `temp` — reactor temperature in degrees Celsius
+
+**Example**
+
+With `temp = 1200`, your program should print
+
+```text
+DANGER: reactor at 1200 degrees - shutting down
+```
+
+Now set `temp = 800` and run again
+
+```text
+Reactor stable at 800 degrees
+```
+
+Here at **CyberStars** we encourage **curiosity** — change `temp` and see what happens :)

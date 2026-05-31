@@ -72,19 +72,47 @@ The frequency approach is actually **faster** than sorting for very long strings
 
 ---
 
-Write a function **isAnagram** that takes two words and returns **True** if they are anagrams, **False** otherwise. You can use **either** approach (sorting or frequency dictionary)
+## Mission: Passphrase Match
 
-```py
-print(isAnagram("cinema", "iceman"))   # True
-print(isAnagram("rat", "car"))          # False
-print(isAnagram("Dormitory", "Dirty room"))  # this one is tricky!
-```
+Two crew members each transmit a scrambled passphrase. The airlock only opens if the two passphrases are **anagrams** of each other — the same letters in a different order (case doesn't matter).
 
-For the first two, expected output
+1. Write a function **are_anagrams(a, b)** that returns `True` if the two words are anagrams, `False` otherwise. Use **either** approach (sort the letters and compare, or a frequency dictionary). Lowercase both first so capitals don't matter.
+2. **Read** two passphrases, then print `Anagram: ` followed by the result.
+3. On the next line, print `Access granted` if they match, or `Access denied` if they don't.
+
+**Input** (typed by the user when the program runs):
+
+- the first passphrase
+- the second passphrase
+
+**Output** — two lines: the anagram check, then the access verdict.
+
+**Example**
+
+If the user types
 
 ```text
-True
-False
+listen
+silent
 ```
 
-Bonus: can you make it work for **"Dormitory"** and **"Dirty room"** by ignoring spaces? Try it :)
+the program should print
+
+```text
+Anagram: True
+Access granted
+```
+
+If the user types
+
+```text
+orbit
+robot
+```
+
+the program should print
+
+```text
+Anagram: False
+Access denied
+```

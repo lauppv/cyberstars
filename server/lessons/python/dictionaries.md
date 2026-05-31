@@ -131,19 +131,27 @@ print(player["weapons"])
 
 ---
 
-Create a dictionary called **hero** with the following keys and values
+## Mission: Crew Database
 
-- **name** → **Shrek**
-- **location** → **Swamp**
-- **friends** → **2**
+The station keeps each crew member in a dictionary. You start with this one (already on the right):
 
-Then **add** a new key **color** with the value **green**
+```python
+crew = {"name": "Tommy", "role": "Pilot", "age": 34}
+```
 
-Finally, display each value on a separate line. Expected output
+Do the following, in order:
+
+1. **Add** a new key `station` with the value `Laniakea`
+2. It's Tommy's birthday — **update** `age` to `35`
+3. Print the values for `name`, `role`, `age`, and `station`, each on its own line
+4. We don't track rank yet — if the key `rank` is **not in** the dictionary, print `Rank: unknown`
+
+**Output**
 
 ```text
-Shrek
-Swamp
-2
-green
+Tommy
+Pilot
+35
+Laniakea
+Rank: unknown
 ```

@@ -1,28 +1,61 @@
-Combine **input**, **operators**, **booleans**, and **string methods**
+Combine **input**, **operators**, and **booleans**
 
 ---
 
-Build a **username validator**. Given these variables:
+## Mission: Launch Authorization
 
-```python
-username = "Cyber_Star42"
-```
+Before a rocket can launch, mission control checks three things. Write a program that **reads three numbers** and decides whether launch is authorized.
 
-Check these rules and print the result for each:
+The three numbers are the **fuel level** (a percentage), the **crew size**, and the number of **completed safety checks**. The rules are:
 
-1. **Length**: between 3 and 20 characters (use **len()**)
-2. **Starts with letter**: first character is a letter (use **.isalpha()**)
-3. **No spaces**: the username contains no spaces (use **" " not in username** or **.count(" ")**)
-4. **Has a number**: at least one digit somewhere (loop through and use **.isdigit()**)
+- fuel is OK when it is **80 or more**
+- crew is OK when it is **between 2 and 6** (at least 2 and at most 6)
+- checks are OK when they are **exactly 10**
 
-Print each check, then whether the username is **valid** (all checks pass)
+Launch is authorized only when **all three** are OK. Use booleans to store each result.
 
-Expected output
+**Input** (typed by the user when the program runs):
+
+- the fuel level
+- the crew size
+- the number of completed safety checks
+
+**Output**
+
+Four lines: `Fuel OK: ` then True or False, `Crew OK: ` then True or False, `Checks OK: ` then True or False, and finally `Authorized: ` then True or False.
+
+**Example**
+
+If the user types
 
 ```text
-Length OK: True
-Starts with letter: True
-No spaces: True
-Has a number: True
-Username valid: True
+90
+4
+10
+```
+
+the program should print
+
+```text
+Fuel OK: True
+Crew OK: True
+Checks OK: True
+Authorized: True
+```
+
+If the user types
+
+```text
+50
+4
+10
+```
+
+the program should print
+
+```text
+Fuel OK: False
+Crew OK: True
+Checks OK: True
+Authorized: False
 ```

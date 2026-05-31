@@ -1,3 +1,5 @@
-username = "Cyber_Star42"
+fuel = int(input())
+crew = int(input())
+checks = int(input())
 
-# validate the username
+# work out the booleans, then print the four lines

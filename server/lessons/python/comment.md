@@ -44,4 +44,18 @@ However, in future lessons we will use comments with **#**, even if they span mu
 
 ---
 
-The code on the right is correct, but you don't wanna print everything. You need to **comment** one line so that the program displays the **ship’s name**, **mission name**, and **maximum power**. Don't delete anything, just comment
+## Mission: Redact the Log
+
+The code at the right prints four lines about the rocket. But the **wind speed** is classified — you must hide it **without deleting it**.
+
+**Comment** the single line that prints `windSpeed` so that the program shows only the **ship name**, **mission name**, and **maximum power**. Don't delete anything, just add a `#`.
+
+**Example**
+
+After commenting the right line, your program should print
+
+```text
+Laniakea-Explorer
+MARS-IX-5000
+804225
+```

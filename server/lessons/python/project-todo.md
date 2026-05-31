@@ -113,20 +113,23 @@ def countNotDone(todos):
 
 ---
 
-Write the functions **addTask**, **completeTask**, and **countDone**
+## Mission: Mission Task Board
 
-- **addTask(todos, name)** — adds a new task (not done) to the list
-- **completeTask(todos, index)** — marks the task at that index as done
-- **countDone(todos)** — returns how many tasks are done
+The crew tracks its work on a shared task board. Build the functions that manage it, then print the finished board. Each task is a dictionary with a `name` and a `done` status, and the board is a list of those dictionaries.
 
-The starter code on the right already calls these functions. Make them work so the output is
+Write three functions:
 
-Expected output
+- **add_task(tasks, name)** — append a new task to the list with `done` set to `False`.
+- **complete_task(tasks, index)** — mark the task at that index as done.
+- **count_done(tasks)** — return how many tasks are done.
+
+The starter on the right already builds the board (add three tasks, complete two of them). After that, **display** the board: for each task print its index, then `. `, then `[done]` or `[pending]`, then the task name. Finally print `Completed: ` followed by the number done, a `/`, and the total.
+
+**Output**
 
 ```text
-3
-1
-2
+0. [done] Run diagnostics
+1. [pending] Refuel reactor
+2. [done] Chart course
+Completed: 2/3
 ```
-
-(3 total tasks, 1 done after completing first, 2 done after completing second)

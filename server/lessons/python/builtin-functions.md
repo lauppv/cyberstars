@@ -162,21 +162,27 @@ The second argument tells Python how many decimal places we want
 
 ---
 
-You have two lists: **names** and **scores**. Using the built-in functions we learned
+## Mission: Crew Leaderboard
 
-1. Display each name with their score using **zip** (format: **name: score**)
-2. Display the scores **sorted** from lowest to highest
-3. Display the **sum** of all scores
-4. Display whether **all** students passed (score >= 50)
+You have two lists: `crew` (names) and `scores` (already on the right). Using the **built-in functions** you just learned:
 
-Expected output
+1. Use `zip` to print each crew member with their score as `name: score`
+2. Print `Sorted: ` then the scores sorted from **highest to lowest** (`sorted(..., reverse=True)`)
+3. Print `Total: ` then the **sum** of all scores
+4. Print `Average: ` then the average, **rounded** to 1 decimal place (`round(..., 1)`)
+5. Print `All passed: ` then whether **all** scores are 50 or more (`all(...)`)
+6. Print `Any perfect: ` then whether **any** score equals 100 (`any(...)`)
+
+**Output**
 
 ```text
-Tommy: 95
-Lance: 42
-Cortez: 88
-Phil: 71
-[42, 71, 88, 95]
-296
-False
+Ana: 88
+Boris: 100
+Cara: 47
+Dmitri: 73
+Sorted: [100, 88, 73, 47]
+Total: 308
+Average: 77.0
+All passed: False
+Any perfect: True
 ```

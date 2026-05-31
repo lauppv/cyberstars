@@ -82,17 +82,19 @@ Clean. Easy to read. Perfect use case
 
 ---
 
-You have a list of **scores** on the right. Using **list comprehension**
+## Mission: Data Filter
 
-1. Create a list **highScores** that contains only scores **above 80**
-2. Create a list **boosted** that contains every score **multiplied by 1.1** (a 10% boost for everyone)
-3. Display both lists
+You have a list of sensor readings (already on the right). Using **list comprehension** for each step:
 
-Expected output
+1. Create `high` — only the readings **above 80**
+2. Create `doubled` — every reading **multiplied by 2**
+3. Create `passing` — only the readings that are **50 or more**
+4. Print all three lists, each on its own line
+
+**Output**
 
 ```text
 [95, 88, 92]
-[82.50000000000001, 104.50000000000001, 77.0, 96.80000000000001, 60.500000000000007, 101.2]
+[150, 60, 190, 176, 84, 184]
+[75, 95, 88, 92]
 ```
-
-Don't worry about the weird decimals, that's just how computers handle floating point numbers :)

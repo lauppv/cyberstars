@@ -2,35 +2,24 @@ Combine **scope**, **default parameters**, **multiple return values**, and **try
 
 ---
 
-Build a **safe math toolkit**. Write these functions:
+## Mission: Telemetry Toolkit
 
-**safe_divide(a, b, decimals=2)** — divides a by b, rounded to **decimals** decimal places (use **round()**). If b is 0, **return None** instead of crashing. The **decimals** parameter has a **default value** of 2
+Build a small toolkit. Each function should work only with its **parameters** and **return** its result (good scope discipline).
 
-**stats(numbers)** — takes a list of numbers and returns **three values**: the min, max, and average. Use **multiple return**
+1. `safe_int(text, fallback=0)` — uses **try/except** to turn `text` into an int. If `int()` fails, return `fallback`. The `fallback` parameter has a **default** of `0`.
+2. `summarize(numbers)` — returns **three values**: the total, the largest, and the smallest of a list of numbers.
 
-**process(expression)** — takes a string like "10 / 3" and uses **try/except** to handle errors. Split the string, convert to numbers, and call safe_divide. If anything goes wrong, print "Error: invalid expression"
+In the main program, the readings are already on the right (some are corrupted). Then:
 
-Test with:
+- go through `readings` and use `safe_int` on each to build a list called `numbers` (corrupted readings become `0`)
+- print `Numbers: ` then that list
+- call `summarize(numbers)`, **unpack** the three values, and print `Total:`, `Largest:`, and `Smallest:`
 
-```python
-print(safe_divide(10, 3))
-print(safe_divide(10, 3, 4))
-print(safe_divide(10, 0))
-
-lo, hi, avg = stats([4, 8, 15, 16, 23, 42])
-print(f"Min: {lo}, Max: {hi}, Avg: {avg}")
-
-process("10 / 3")
-process("hello / world")
-```
-
-Expected output
+**Output**
 
 ```text
-3.33
-3.3333
-None
-Min: 4, Max: 42, Avg: 18.0
-3.33
-Error: invalid expression
+Numbers: [10, 0, 25, 7, 0]
+Total: 42
+Largest: 25
+Smallest: 0
 ```

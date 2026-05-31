@@ -1,9 +1,7 @@
-# complete the code below (do not change variable names)
+# --- input data (change these to test) ---
 
-name = ""
-age =
-height =
+tankA = 120
+tankB = 80
+tankC = 200
 
-# complete the code above
-
-print(f"Hello. My name is {name}, I am {age} years old, and I am {height} tall")
+# --- write your code below ---

@@ -95,16 +95,26 @@ Output **6**. Same logic, different style
 
 ---
 
-Write a function **binarySearch** that takes a **sorted list** and a **target**, and returns the **index** where the target is found, or **-1** if not found
+## Mission: Archive Lookup
+
+The station archive stores crew IDs in a **sorted** list (already on the right). Mission Control fires off a batch of lookup queries and needs each one answered fast — so you'll use **binary search**, not a linear scan.
+
+1. Write a function **binary_search(numbers, target)** that returns the **index** where `target` sits in the sorted list, or `-1` if it isn't there.
+2. For each query, print the query, then `-> index ` and the index if it was found, or `-> not found` if it wasn't.
+3. Print `Found: ` followed by how many queries were located.
 
 ```py
-print(binarySearch([2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 23))
-print(binarySearch([2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 50))
+ids = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+queries = [23, 50, 8, 91, 100]
 ```
 
-Expected output
+**Output**
 
 ```text
-5
--1
+23 -> index 5
+50 -> not found
+8 -> index 2
+91 -> index 9
+100 -> not found
+Found: 3
 ```

@@ -89,19 +89,19 @@ Output **3**, not 4, because the duplicate **red** was removed
 
 ---
 
-You have a list **votes** on the right with some repeated names. Do the following
+## Mission: Signal Log
 
-1. Display how many **total** votes there are (length of the list)
-2. Create a set from the list to find the **unique** voters
-3. Display how many **unique** voters there are
-4. Display the unique voters
+The station picked up a list of signal codes, and many repeat (already on the right). Do the following:
 
-Expected output
+1. Print `Total: ` then the total number of signals (length of the list)
+2. Make a **set** of the unique codes
+3. Print `Unique: ` then how many unique codes there are
+4. Check whether the code `D4` was picked up — print `D4 detected` if it is **in** the set, otherwise `D4 missing`
+
+**Output**
 
 ```text
-8
-4
-{'Fiona', 'Shrek', 'Donkey', 'Puss'}
+Total: 8
+Unique: 4
+D4 detected
 ```
-
-The order of names in the set might be different, that's fine :)

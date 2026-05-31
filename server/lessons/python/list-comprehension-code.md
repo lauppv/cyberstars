@@ -1,7 +1,9 @@
-scores = [75, 95, 70, 88, 55, 92]
+readings = [75, 30, 95, 88, 42, 92]
 
-# 1. highScores = scores above 80 (list comprehension)
+# 1. high = readings above 80 (list comprehension)
 
-# 2. boosted = each score \* 1.1 (list comprehension)
+# 2. doubled = each reading \* 2 (list comprehension)
 
-# 3. print both
+# 3. passing = readings 50 or more (list comprehension)
+
+# 4. print all three

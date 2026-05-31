@@ -1,3 +1,3 @@
-items = ["milk", "bread", "EXPIRED_eggs", "cheese", "EXPIRED_yogurt", "butter", "jam"]
+items = ["milk", "bread", "BAD_eggs", "cheese", "BAD_yogurt", "butter", "jam"]
 
-# process the shopping list
+# skip BAD\_ crates, add the rest UPPERCASE to a new list, stop after butter, then print and count

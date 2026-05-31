@@ -73,20 +73,21 @@ We first **clean** the string: keep only letters and convert to lowercase. Then 
 
 ---
 
-Write a function **isPalindrome** that takes a word and returns **True** if it's a palindrome, **False** otherwise. Use a **loop**, not [::-1]
+## Mission: Signal Integrity Check
 
-```py
-print(isPalindrome("level"))    # True
-print(isPalindrome("python"))   # False
-print(isPalindrome("abcba"))    # True
-print(isPalindrome("ab"))       # False
-```
+A signal code is only trustworthy if it reads the same forwards and backwards — a **palindrome**. The station logged a batch of codes (already on the right) and needs them checked.
 
-Expected output
+1. Write a function **is_palindrome(word)** that returns `True` if the word is a palindrome, `False` otherwise. Use a **loop** (compare the first letter with the last, the second with the second-to-last, ...), not `[::-1]`.
+2. For each code, print the code, then `: `, then the result.
+3. Count how many codes are palindromes and print `Valid signals: ` followed by that count.
+
+**Output**
 
 ```text
-True
-False
-True
-False
+racecar: True
+signal: False
+level: True
+orbit: False
+radar: True
+Valid signals: 3
 ```

@@ -107,12 +107,46 @@ Output **Strong password**. Three flags, one for each requirement
 
 ---
 
-Write a program that checks if a list contains **any negative number**
+## Mission: Access Code Check
 
-Use a flag variable called **hasNegative**. Display **Contains negative numbers** or **All positive**
+A station access code is **valid** only if it meets **all three** rules: it has at least one **uppercase** letter, at least one **digit**, and is at least **6 characters** long.
 
-Expected output
+**Read** a code, then use **flags** (`has_upper` and `has_digit`, each starting `False` and flipped to `True` when you find one) plus a length check. Print each result, then the verdict:
+
+**Input** (typed by the user when the program runs):
+
+- the access code
+
+**Output** — four lines: the three checks, then `Access code valid` or `Access code invalid`.
+
+**Example**
+
+If the user types
 
 ```text
-Contains negative numbers
+Orbit42
+```
+
+the program should print
+
+```text
+Has uppercase: True
+Has digit: True
+Long enough: True
+Access code valid
+```
+
+If the user types
+
+```text
+orbit
+```
+
+the program should print
+
+```text
+Has uppercase: False
+Has digit: False
+Long enough: False
+Access code invalid
 ```

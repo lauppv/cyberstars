@@ -61,10 +61,23 @@ So, anything we write between **" and "** is called a **string** and is used whe
 
 ---
 
-On the right, you have code that doesn’t work. Can you modify it so that it displays all three names? If you do it correctly, you should see:
+## Mission: Crew Roster
+
+Three crew members are assigned to the station. Their names are stored in the variables `commander`, `pilot`, and `engineer` at the top of your code.
+
+Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission — add a line that changes `pilot` to `"Maria"` and print `pilot` one more time.
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `commander`, `pilot`, `engineer` — the crew member names
+
+**Example**
+
+With the starter values, your program should print
 
 ```text
-Shrek
-Fiona
-Donkey
+Shadow
+Lance
+Quincy
+Maria
 ```

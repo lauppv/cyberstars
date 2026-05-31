@@ -55,4 +55,38 @@ Now **i = 3**, it prints it, then does **i = i + 1 again**
 
 ---
 
-Write a Python program that displays all the numbers from **0 to 100**. If the number is **10** or **50**, display _Pizza Margherita_. **Otherwise** display the value of **i**
+## Mission: Reactor Warm-Up
+
+The station's reactor warms up one **step** at a time before it goes online. You are given how many `steps` the warm-up takes, and a special `boostStep` where the engineers fire a power boost.
+
+Write a program that uses a **for** loop to go through every step number from **1** to `steps`. For each step, print:
+
+- if the step is the `boostStep` → print `Step`, then the step number, then `: BOOST` (for `boostStep = 3` that is `Step 3: BOOST`)
+- otherwise, if it is the **first** step → `Ignition`
+- otherwise, if it is the **last** step → `Reactor online`
+- otherwise → print `Step`, then the step number, then `: heating` (for example `Step 2: heating`)
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `steps` — how many warm-up steps there are
+- `boostStep` — the step where the boost happens
+
+**Example**
+
+With `steps = 5` and `boostStep = 3`, your program should print
+
+```text
+Ignition
+Step 2: heating
+Step 3: BOOST
+Step 4: heating
+Reactor online
+```
+
+Now change to `steps = 3` and `boostStep = 2` and run again — the output should become
+
+```text
+Ignition
+Step 2: BOOST
+Reactor online
+```

@@ -1,5 +1,5 @@
-# write the greet function below
+# write the dock function below
 
-greet("Shrek")
-greet("Fiona", "Welcome")
-greet("Donkey", "Hey there")
+dock("Voyager")
+dock("Odyssey", "B7")
+dock("Pioneer", priority="urgent")

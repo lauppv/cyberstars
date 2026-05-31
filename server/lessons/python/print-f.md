@@ -53,20 +53,28 @@ This process in programming is called **formatting** (hence the letter **f**)
 
 ---
 
+## Mission: Flight Report
+
+A pilot is about to launch. The details are stored in `pilot`, `shipName`, `fuel`, and `speed`.
+
+Using **f-strings**, print a three-line flight report:
+
+- the pilot's name and the ship — like `Pilot Shadow is flying Orion`
+- the fuel — like `Fuel: 400 units`
+- the speed — like `Speed: 7.5 km/s`
+
+**Input** (already set at the top of your code — change the values to test):
+
+- `pilot`, `shipName` — text
+- `fuel` — a whole number
+- `speed` — a number with decimals
+
+**Example**
+
+With the starter values, your program should print
+
 ```text
-Create 3 variables:
-1. username
-2. userAge
-3. requiredAge
-
-Set them with the following values:
-1.username -> any name you want
-2.userAge -> a number less than 18
-3.requiredAge -> 18
-```
-
-Since they don’t have the required age, display a message telling them something like
-
-```text
-Hello, <something>! I’m sorry but the minimum age is <something>. You are <something> years old
+Pilot Shadow is flying Orion
+Fuel: 400 units
+Speed: 7.5 km/s
 ```

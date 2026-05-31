@@ -1,8 +1,6 @@
-health = 100
+def boost(shield): # return the shield doubled
+pass
 
-def doubleHealth(hp): # fix this function so it returns double the hp
-hp \* 2
+shield = 100
 
-# call the function and store the result in health
-
-# then print health
+# print Before, call boost without storing (Ignored), then store the result and print After

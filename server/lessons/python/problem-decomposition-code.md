@@ -1,7 +1,12 @@
-names = ["Lance", "Tommy", "Cortez", "Tommy", "Lance", "Tommy"]
+log = "alpha beta alpha gamma beta alpha"
 
-# 1. count how many times each name appears
+def split_codes(log): # return the list of codes
+pass
 
-# 2. find the name with the highest count
+def count_codes(codes): # return a dict of code -> count
+pass
 
-# 3. print: {name} appears {count} times
+def most_common(counts): # return the code with the highest count
+pass
+
+# use the three functions, then print the report
