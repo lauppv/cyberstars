@@ -97,8 +97,16 @@ export function CoursesPage() {
                     {c.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-base font-bold mb-0.5" style={{ letterSpacing: '-0.2px' }}>
+                    <div className="text-base font-bold mb-0.5 flex items-center gap-2" style={{ letterSpacing: '-0.2px' }}>
                       {c.name}
+                      {courseMeta(c.key).badge && (
+                        <span
+                          className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                          style={{ background: courseMeta(c.key).color + '30', color: courseMeta(c.key).color }}
+                        >
+                          {courseMeta(c.key).badge}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
