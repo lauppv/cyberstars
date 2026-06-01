@@ -44,5 +44,12 @@ automatically.
 
 ---
 
-In your home directory there is a file `inventory.txt`, one item per line. Use **wc**
-with the right option to count **how many lines** (items) it has.
+## Mission: Count the Inventory
+
+Supply tracking reports that `inventory.txt` lists every item in the cargo bay, one per line. The quartermaster needs an exact count before the next resupply shuttle arrives.
+
+Use `wc` with the right option to count **how many lines** are in `inventory.txt`.
+
+**Expected result**
+
+The terminal displays the number of lines, telling you exactly how many items are in the inventory.

@@ -40,7 +40,13 @@ using redirection. For now, just enjoy seeing it on screen.)
 
 ---
 
-A crew list is split across two files. In your home directory:
+## Mission: Assemble the Crew Roster
 
-1. Use `cat` to print `team-a.txt` and `team-b.txt` together, one after another.
+The station's crew list got split into two files: `team-a.txt` and `team-b.txt`. Command needs a combined view and a numbered roll call of Team A.
+
+1. Use `cat` to print `team-a.txt` and `team-b.txt` together in one go.
 2. Run `cat -n` on `team-a.txt` to see its lines numbered.
+
+**Expected result**
+
+You see both teams listed one after another, then Team A's roster with line numbers in front of each name.

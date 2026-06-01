@@ -34,5 +34,13 @@ replace the entire set.
 
 ---
 
-Set the file `engine_control.sh` to permission `750` (owner: full access, group: read
-and execute, others: nothing). Then verify with `ls -l`.
+## Mission: Lock Down the Thruster Script
+
+The `engine_control.sh` script fires the main thruster — only authorised personnel should be able to access it. Station security policy requires permission `750` (owner: full access, group: read and execute, others: nothing).
+
+1. Use `chmod 750` to set the correct permissions on `engine_control.sh`.
+2. Run `ls -l engine_control.sh` to verify the change.
+
+**Expected result**
+
+`ls -l` shows `-rwxr-x---` for `engine_control.sh`.

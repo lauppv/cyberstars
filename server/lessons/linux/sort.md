@@ -49,5 +49,12 @@ This filters errors first, then sorts them alphabetically.
 
 ---
 
-The file `supplies.txt` lists cargo items in random order. Sort them **in reverse
-alphabetical order** and display the result on screen.
+## Mission: Cargo Priority List
+
+A supply shuttle just docked and the cargo bay manifest (`supplies.txt`) is a mess. The quartermaster wants the items listed in reverse alphabetical order for the unloading crew.
+
+Sort `supplies.txt` in **reverse alphabetical order** and display the result on screen.
+
+**Expected result**
+
+The six items appear from `water filters` down to `ammo crates`.

@@ -2,7 +2,7 @@ export function progressPct(completed: number, total: number): number {
   return total > 0 ? Math.round((completed / total) * 100) : 0;
 }
 
-export const MAIN_COURSE_KEYS = ['python', 'java', 'c'] as const;
+export const MAIN_COURSE_KEYS = ['python', 'java', 'c', 'kotlin'] as const;
 export const ALGO_COURSE_KEYS = ['algo-python', 'algo-java', 'algo-c'] as const;
 export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as const;
 

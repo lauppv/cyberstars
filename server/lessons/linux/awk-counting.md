@@ -30,6 +30,12 @@ patterns can be regex (`/word/`) or conditions (`$2 == "alpha"`).
 
 ---
 
-The file `cargo_weight.txt` has two columns: item name and weight (numeric). Use `awk`
-to **sum all the weights** (column 2) and print the total. Your output should be just
-the number.
+## Mission: Cargo Weight Report
+
+The station is approaching a gravity-assist manoeuvre and the pilot needs to know the total cargo mass. The file `cargo_weight.txt` lists each item and its weight in column 2.
+
+Use `awk` to **sum all the weights** (column 2) and print the total.
+
+**Expected result**
+
+A single number representing the combined weight of all cargo items.

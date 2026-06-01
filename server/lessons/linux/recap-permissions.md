@@ -13,13 +13,16 @@ Numeric: r=4, w=2, x=1 — add them up per group.
 
 ---
 
-You have three files that need proper security settings. Lock them down:
+## Mission: Lockdown Protocol
 
-1. `launch_codes.txt` — Only the owner should be able to read and write. No one else
-   gets any access. (Hint: `600`)
-2. `status_report.sh` — The owner needs full access (rwx). Group can read and execute.
-   Others get nothing. (Hint: `750`)
-3. `public_bulletin.txt` — Everyone can read, but only the owner can write. (Hint:
-   `644`)
+A security breach was detected on deck 3. The captain has issued a lockdown order — three files in your directory need their permissions tightened immediately.
 
-Set the correct permissions on each file using `chmod`, then run `ls -l` to confirm.
+1. `launch_codes.txt` — Top secret. Only the owner may read and write. No group or other access. Set to `600`.
+2. `status_report.sh` — Operational script. Owner gets full access (rwx), group can read and execute, others get nothing. Set to `750`.
+3. `public_bulletin.txt` — Station-wide bulletin. Everyone can read, but only the owner can write. Set to `644`.
+
+Use `chmod` on each file, then run `ls -l` to verify.
+
+**Expected result**
+
+`ls -l` shows `-rw-------` for `launch_codes.txt`, `-rwxr-x---` for `status_report.sh`, and `-rw-r--r--` for `public_bulletin.txt`. Lockdown complete.

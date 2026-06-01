@@ -32,5 +32,12 @@ processes live. Here in the sandbox, `ps aux --sort` is your practical equivalen
 
 ---
 
-Run `ps aux --sort=-%cpu` to see which process is using the most CPU on the
-station. Identify the top consumer.
+## Mission: Runaway Process Hunt
+
+The station's main computer is running hot and the bridge wants to know why. Something is eating up CPU cycles, and you need to find it before the thermal alarms trigger.
+
+Run `ps aux --sort=-%cpu` to list all processes sorted by CPU usage, highest first.
+
+**Expected result**
+
+The process list appears with the biggest CPU consumer at the top -- identify which program is hogging the processor.

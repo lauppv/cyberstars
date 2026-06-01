@@ -18,10 +18,16 @@ timestamp the incident.
 
 ---
 
-Time for a full system checkup, cadet:
+## Mission: System Health Inspection
 
-1. Run `ps aux` to inspect all active processes.
-2. Run `df -h` to check disk space.
-3. Run `du -sh logs/` to see how large the logs directory is.
-4. Run `date` to record the current time.
-5. Run `history` to confirm everything is in the audit trail.
+The station is approaching a debris field and the captain wants a full systems check logged before entry. Run through the standard diagnostic sequence.
+
+1. Run `ps aux` to inspect all active processes — confirm the reactor monitor and life support are running.
+2. Run `df -h` to check available disk space on all filesystems.
+3. Run `du -sh logs/` to measure how large the logs directory has grown.
+4. Run `date` to timestamp this inspection.
+5. Run `history` to confirm every diagnostic command is recorded in the audit trail.
+
+**Expected result**
+
+You should see the `reactor-monitor` and `life-support` processes active, disk usage stats for all mounts, the size of `logs/`, the current date, and your full command history.

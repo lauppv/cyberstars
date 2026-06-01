@@ -24,13 +24,15 @@ it whenever you need to know which names you can `cd` into.
 
 ---
 
-The station has a hidden archive. Starting from your home directory:
+## Mission: The Hidden Vault
 
-1. Use `ls` to look around.
+Station intelligence reports a hidden vault somewhere deep in the `station` directory. Your job is to navigate the folder structure and find it. Rumor has it the vault is invisible to a basic `ls`.
+
+1. Use `ls` to see what is in your home directory.
 2. Move into the `station` folder.
 3. From there, move into the `archive` folder.
-4. Inside `archive` there is a hidden directory. Use `ls -a` to find it, then `cd`
-   into it.
+4. Inside `archive`, a hidden directory is waiting. Use `ls -a` to reveal it, then `cd` into it.
 
-When you finish, your current directory should be
-`/home/student/station/archive/.vault`.
+**Expected result**
+
+Running `pwd` shows `/home/student/station/archive/.vault`. You found the vault.

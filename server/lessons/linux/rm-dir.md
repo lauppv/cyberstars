@@ -46,10 +46,13 @@ undo. Always `ls` the folder first to be certain of what is inside.
 
 ---
 
-Clean up the station. In your home directory:
+## Mission: Decommission Old Bays
 
-1. The folder `empty-bay` has nothing in it — remove it with `rmdir`.
-2. The folder `old-data` is full of files — remove it (and its contents) with
-   `rm -r`.
+Two storage bays on the station are scheduled for decommissioning. The `empty-bay` folder has already been cleared out, but `old-data` still contains leftover files.
 
-When you finish, both folders should be gone, but `mission` must remain.
+1. Remove the empty `empty-bay` folder using `rmdir`.
+2. Remove the `old-data` folder and all its contents using `rm -r`.
+
+**Expected result**
+
+Both folders are gone, but the `mission` folder remains untouched.

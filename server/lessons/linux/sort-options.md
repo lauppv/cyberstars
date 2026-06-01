@@ -42,6 +42,12 @@ This uses `:` as the delimiter and sorts by column 3 numerically.
 
 ---
 
-The file `power_readings.txt` has two columns: a sector name and a numeric power level.
-Sort the file **numerically by the second column** (the power level) so the lowest
-reading appears first.
+## Mission: Power Grid Diagnostics
+
+Engineering detected fluctuations in the station's power grid. The file `power_readings.txt` lists each sector and its current power level. To find the weakest sector first, you need to sort by power output.
+
+Sort `power_readings.txt` **numerically by the second column** so the lowest power reading appears at the top.
+
+**Expected result**
+
+The sectors appear in ascending power order, starting with `epsilon 5` and ending with `delta 800`.

@@ -38,6 +38,12 @@ The `sort | uniq` combo is so common it deserves its own muscle memory.
 
 ---
 
-The file `door_access.log` records which crew member opened a door. Many entries are
-duplicated. Use `sort` piped to `uniq -c` to count how many times each crew member
-appears, and display the result.
+## Mission: Door Access Audit
+
+Security flagged unusual activity on Deck 7. The file `door_access.log` records every crew member who swiped through the door. Find out who has been coming and going the most.
+
+Pipe `sort` and `uniq -c` together on `door_access.log` to count how many times each crew member accessed the door.
+
+**Expected result**
+
+Each crew member's name appears once, prefixed by their access count. You should see that Voss had the most entries (3).

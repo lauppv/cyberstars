@@ -39,5 +39,12 @@ Like `cat`, `head` only reads — it changes nothing.
 
 ---
 
-A long log file `system.log` is in your home directory. Use **head** with the `-n`
-option to print only its **first 5 lines**.
+## Mission: Check the Boot Sequence
+
+The station's `system.log` file records everything since the last reboot. Engineering wants to verify the boot sequence by looking at just the very beginning of the log.
+
+Use `head` with the `-n` option to print only the **first 5 lines** of `system.log`.
+
+**Expected result**
+
+Only the first 5 lines of the log appear — the earliest events recorded after boot.

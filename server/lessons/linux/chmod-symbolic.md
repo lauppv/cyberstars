@@ -40,6 +40,13 @@ After each `chmod`, verify with `ls -l` to confirm the change took effect.
 
 ---
 
-The file `deploy.sh` is a script but currently has no execute permission. Use `chmod`
-to add **execute permission for the user (owner)** so you can run it. Then verify with
-`ls -l`.
+## Mission: Activate the Firmware Deployer
+
+A critical firmware update is ready in `deploy.sh`, but the script cannot run yet — it is missing execute permission for the owner.
+
+1. Use `chmod` to add **execute permission for the user (owner)** on `deploy.sh`.
+2. Run `ls -l deploy.sh` to confirm the permission change.
+
+**Expected result**
+
+`ls -l` shows the owner now has execute (`x`) permission on `deploy.sh`.

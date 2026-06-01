@@ -39,6 +39,13 @@ The shell gives you its PID (`1312`) so you can `kill` it later if needed.
 
 ---
 
-The nav-computer process (PID **510**) has frozen and is not responding to commands.
-Use `kill -9 510` to forcefully terminate it, then confirm it is gone by running
-`ps aux`.
+## Mission: Terminate the Frozen Nav-Computer
+
+The navigation computer (PID **510**) has locked up mid-calculation and is no longer responding. The pilot cannot plot a course until it is restarted.
+
+1. Use `kill -9 510` to forcefully terminate the frozen process.
+2. Run `ps aux` to confirm it is no longer running.
+
+**Expected result**
+
+The `ps aux` output no longer lists the `nav-computer` process.

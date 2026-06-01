@@ -32,5 +32,12 @@ often as you like.
 
 ---
 
-You have just opened the terminal. Run **pwd** to confirm which directory you are
-currently in.
+## Mission: Locate Your Position
+
+You have just arrived at the station and opened a fresh terminal. Before doing anything else, you need to confirm your position in the file system.
+
+Run `pwd` to find out which directory you are currently in.
+
+**Expected result**
+
+The terminal displays your absolute path, showing you are in `/home/student`.

@@ -16,11 +16,15 @@ The golden rule: **each command does one job**. Pipes connect the jobs into a wo
 
 ---
 
-The file `telemetry.raw` contains a mix of readings. Your mission:
+## Mission: Telemetry Report
 
-1. Use a pipeline to find all lines containing `WARN`, sort them alphabetically, and
-   save the result into `warnings_sorted.txt` (use `>` at the end of the pipe).
-2. Then **append** a final line to `warnings_sorted.txt` with the text
-   `-- end of report --` using `>>`.
+The engineering deck just dumped raw telemetry into `telemetry.raw`. The chief engineer needs a clean, sorted list of all warnings filed away before the next systems review.
 
-Two commands total, cadet. Show mission control you can build a real data pipeline.
+1. Build a pipeline that finds all lines containing `WARN` in `telemetry.raw`, sorts them alphabetically, and saves the result into `warnings_sorted.txt` using `>`.
+2. Append the line `-- end of report --` to `warnings_sorted.txt` using `>>`.
+
+Two commands total.
+
+**Expected result**
+
+Running `cat warnings_sorted.txt` shows three sorted `WARN` lines followed by `-- end of report --`.
