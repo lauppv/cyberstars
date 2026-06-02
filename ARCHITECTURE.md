@@ -82,9 +82,10 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Code Execution
 
-| Method | Endpoint  | Auth | Description                              |
-| ------ | --------- | ---- | ---------------------------------------- |
-| WS     | `/ws/run` | No   | Interactive code execution via WebSocket |
+| Method | Endpoint       | Auth | Description                                            |
+| ------ | -------------- | ---- | ------------------------------------------------------ |
+| WS     | `/ws/run`      | No   | Interactive code execution via WebSocket               |
+| WS     | `/ws/presence` | No   | Per-tab keep-alive; closing it frees the run container |
 
 ### Progress (all authenticated)
 
@@ -173,9 +174,13 @@ User code runs in Docker containers, never in the browser.
 | C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout       |
 | Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout          |
 
-Containers are locked down with `--network=none`, `--memory=128m`, `--pids-limit=64`, `--cap-drop=ALL`, `--security-opt=no-new-privileges`, `--read-only` (with a small `/tmp` tmpfs for compiler scratch), and `--user=<uid>:<gid>` (the host process's own uid, so the bind-mounted `/work` stays writable after capabilities are dropped). Docker is always invoked with an argument array (no shell interpolation) — `spawn` for the run step, `execFile` for the compile step.
+**One persistent container per owner.** Each owner — a logged-in user, or a guest keyed by a per-browser `guestId` cookie — gets a single long-lived container for the language they're currently running, created lazily on their first run and managed by `code-container.service.ts`. It is reused across runs (the cold start is paid once), swapped when they switch language (the previous one is torn down on the first run of the new language), garbage-collected after 15 min idle, and bounded by a global LRU cap. `interactive-execution.service.ts` writes the source into the container's `/work` tmpfs and `docker exec`s the compile/run there.
 
-Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on each stdin input, plus a 1MB output cap to stop runaway output loops.
+Containers are locked down with `--network=none`, `--memory=128m`, `--pids-limit=64`, `--cap-drop=ALL`, `--security-opt=no-new-privileges`, `--read-only`, and `--user=<uid>:<gid>` (the host process's own uid). `/work` and `/tmp` are tmpfs mounts owned by that uid; `/work` is mounted `exec` so compiled C binaries can run under the read-only rootfs. Docker is always invoked with an argument array (no shell interpolation).
+
+Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on each stdin input, plus a 1MB output cap to stop runaway output loops. On timeout, output-cap, or the page being abandoned mid-run the container is destroyed (reliably killing the program); on a normal exit it is kept for reuse. A separate `/ws/presence` connection (one per tab) lets the server tear the idle container down promptly when the tab closes — the 15 min GC is the backstop. `attachRunWebSocket` routes both WS paths through one manual `noServer` upgrade handler.
+
+**Rate limits & guests.** Editor runs are capped at 10 runs / 60 s per owner (same for guests and logged-in) plus 5 concurrent; guests additionally get a lifetime budget of 10 runs (`guest-budget.service.ts`) before a sign-up nudge. The terminal exec route is capped at 30/min per user with a friendly retry-after message.
 
 ### Adding a new language
 
@@ -195,24 +200,27 @@ Lessons have no automated grading: students run their code and click "Mark Compl
 
 ## Environment variables
 
-| Variable          | Required | Default                   | Description                               |
-| ----------------- | -------- | ------------------------- | ----------------------------------------- |
-| `DB_USER`         | Yes      | —                         | PostgreSQL user                           |
-| `DB_HOST`         | Yes      | —                         | PostgreSQL host                           |
-| `DB_NAME`         | Yes      | —                         | Database name                             |
-| `DB_PASSWORD`     | Yes      | —                         | Database password                         |
-| `DB_PORT`         | No       | `5432`                    | PostgreSQL port                           |
-| `DATABASE_URL`    | Yes      | —                         | Prisma CLI connection string              |
-| `EXPRESS_PORT`    | No       | `5000`                    | Backend port (dev)                        |
-| `PORT`            | No       | `8080`                    | Backend port (production)                 |
-| `JWT_SECRET`      | Yes      | —                         | JWT signing secret                        |
-| `NODE_ENV`        | No       | `development`             | Environment                               |
-| `CORS_DEV_ORIGIN` | No       | `http://localhost:5173`   | CORS origin in dev                        |
-| `CORS_ORIGIN`     | No       | `https://cyber-stars.org` | CORS origin in production                 |
-| `CODE_RUN_MEMORY` | No       | `128m`                    | Per-container memory limit                |
-| `CODE_RUN_PIDS`   | No       | `64`                      | Per-container PID limit                   |
-| `SMTP_USER`       | No       | —                         | Gmail SMTP user for password-reset emails |
-| `SMTP_PASS`       | No       | —                         | Gmail SMTP app password                   |
+| Variable                 | Required | Default                   | Description                                            |
+| ------------------------ | -------- | ------------------------- | ------------------------------------------------------ |
+| `DB_USER`                | Yes      | —                         | PostgreSQL user                                        |
+| `DB_HOST`                | Yes      | —                         | PostgreSQL host                                        |
+| `DB_NAME`                | Yes      | —                         | Database name                                          |
+| `DB_PASSWORD`            | Yes      | —                         | Database password                                      |
+| `DB_PORT`                | No       | `5432`                    | PostgreSQL port                                        |
+| `DATABASE_URL`           | Yes      | —                         | Prisma CLI connection string                           |
+| `EXPRESS_PORT`           | No       | `5000`                    | Backend port (dev)                                     |
+| `PORT`                   | No       | `8080`                    | Backend port (production)                              |
+| `JWT_SECRET`             | Yes      | —                         | JWT signing secret                                     |
+| `NODE_ENV`               | No       | `development`             | Environment                                            |
+| `CORS_DEV_ORIGIN`        | No       | `http://localhost:5173`   | CORS origin in dev                                     |
+| `CORS_ORIGIN`            | No       | `https://cyber-stars.org` | CORS origin in production                              |
+| `CODE_RUN_MEMORY`        | No       | `128m`                    | Per-container memory limit                             |
+| `CODE_RUN_PIDS`          | No       | `64`                      | Per-container PID limit                                |
+| `CODE_MAX_CONTAINERS`    | No       | `50`                      | Global cap on concurrent run containers (LRU-evicted)  |
+| `CODE_CONTAINER_IDLE_MS` | No       | `900000`                  | Idle TTL before a run container is GC'd (15 min)       |
+| `GUEST_RUN_BUDGET`       | No       | `10`                      | Lifetime code runs a guest gets before a sign-up nudge |
+| `SMTP_USER`              | No       | —                         | Gmail SMTP user for password-reset emails              |
+| `SMTP_PASS`              | No       | —                         | Gmail SMTP app password                                |
 
 ## Design decisions
 
