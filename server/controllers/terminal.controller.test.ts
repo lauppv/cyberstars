@@ -113,3 +113,23 @@ describe('destroy', () => {
     expect(next).toHaveBeenCalled();
   });
 });
+
+describe('execRateLimitHandler', () => {
+  it('responds 429 with the remaining seconds until the window resets', async () => {
+    const { execRateLimitHandler } = await import('../routes/terminal.routes.js');
+    const res = mockRes();
+    const req = { rateLimit: { resetTime: new Date(Date.now() + 34_000) } } as unknown as Request;
+    execRateLimitHandler(req, res);
+    expect(res.status).toHaveBeenCalledWith(429);
+    expect(res.json).toHaveBeenCalledWith({
+      error: expect.stringMatching(/^Too many attempts — try again in \d+s\.$/),
+    });
+  });
+
+  it('defaults to 1s when no reset time is available', async () => {
+    const { execRateLimitHandler } = await import('../routes/terminal.routes.js');
+    const res = mockRes();
+    execRateLimitHandler({ rateLimit: {} } as unknown as Request, res);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Too many attempts — try again in 1s.' });
+  });
+});

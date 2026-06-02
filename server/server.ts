@@ -1,10 +1,8 @@
 import { app } from './app.js';
 import { config } from './config/index.js';
 import { destroyAllSessions } from './services/terminal-session.service.js';
-import { sweepRunDir } from './services/interactive-execution.service.js';
+import { drainAll } from './services/code-container.service.js';
 import { attachRunWebSocket } from './services/ws-run.js';
-
-await sweepRunDir();
 
 const server = app.listen(config.port, () => {
   console.log(`Server running on http://localhost:${config.port}`);
@@ -14,8 +12,8 @@ const server = app.listen(config.port, () => {
 const wss = attachRunWebSocket(server);
 
 function shutdown() {
-  console.log('Shutting down — cleaning up terminal containers...');
-  destroyAllSessions().finally(() => {
+  console.log('Shutting down — cleaning up containers...');
+  Promise.allSettled([destroyAllSessions(), drainAll()]).finally(() => {
     wss.close();
     server.close(() => process.exit(0));
     setTimeout(() => process.exit(1), 5000).unref();

@@ -4,4 +4,5 @@ export interface LanguageRuntime {
   sourceFile: string;
   compileCmd?: string;
   runCmd: string;
+  memory?: string;
 }

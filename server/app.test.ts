@@ -73,6 +73,20 @@ describe('endpoint smoke tests — public routes return 200', () => {
   }
 });
 
+describe('guest id cookie', () => {
+  it('sets a guestId cookie for signed-out visitors', async () => {
+    const res = await request(app).get('/api/curriculum');
+    const cookies = (res.headers['set-cookie'] as string[] | undefined) ?? [];
+    expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
+  });
+
+  it('does not set a guestId when a token cookie is already present', async () => {
+    const res = await request(app).get('/api/curriculum').set('Cookie', 'token=whatever');
+    const cookies = (res.headers['set-cookie'] as string[] | undefined) ?? [];
+    expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
+  });
+});
+
 describe('endpoint smoke tests — auth-protected routes return 401 without token', () => {
   const authRequired: [string, string][] = [
     ['get', '/api/progress/python'],
