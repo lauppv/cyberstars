@@ -14,7 +14,7 @@ const IDLE_TTL = 15 * 60 * 1000;
 const EXEC_TIMEOUT = 5;
 
 interface Session {
-  userId: number;
+  ownerKey: string;
   containerId: string;
   cwd: string;
   history: string[];
@@ -66,7 +66,7 @@ export function loadSetup(courseKey: string, lessonSlug: string): TerminalSetup 
 export async function createSession(
   courseKey: string,
   lessonSlug: string,
-  userId: number,
+  ownerKey: string,
 ): Promise<TerminalSessionInfo> {
   const setup = loadSetup(courseKey, lessonSlug);
   const cwd = setup?.cwd ?? '/home/student';
@@ -82,8 +82,8 @@ export async function createSession(
     '--cap-drop=ALL',
     '--security-opt=no-new-privileges',
     '--read-only',
-    '--tmpfs=/home/student:size=16m,uid=1000',
-    '--tmpfs=/tmp:size=4m,uid=1000',
+    '--tmpfs=/home/student:size=16m',
+    '--tmpfs=/tmp:size=4m',
     IMAGE,
   ]);
 
@@ -109,7 +109,7 @@ export async function createSession(
 
   const sessionId = crypto.randomUUID();
   sessions.set(sessionId, {
-    userId,
+    ownerKey,
     containerId,
     cwd,
     history: [],
@@ -125,12 +125,12 @@ export async function createSession(
 export async function execCommand(
   sessionId: string,
   command: string,
-  userId: number,
+  ownerKey: string,
 ): Promise<TerminalExecResult> {
   const session = sessions.get(sessionId);
   // A mismatched owner is reported as "not found" so a leaked sessionId reveals
   // nothing about other users' sessions.
-  if (!session || session.userId !== userId) throw new Error('Session not found');
+  if (!session || session.ownerKey !== ownerKey) throw new Error('Session not found');
 
   if (command.length > 2000) throw new Error('Command too long');
   if (executing.has(sessionId)) throw new Error('A command is already running in this session');
@@ -168,12 +168,12 @@ export async function execCommand(
   }
 }
 
-export async function destroySession(sessionId: string, actorId?: number): Promise<void> {
+export async function destroySession(sessionId: string, ownerKey?: string): Promise<void> {
   const session = sessions.get(sessionId);
   if (!session) return;
-  // Internal callers (GC, shutdown) pass no actorId; a user may only destroy
+  // Internal callers (GC, shutdown) pass no ownerKey; a user may only destroy
   // their own session.
-  if (actorId !== undefined && session.userId !== actorId) return;
+  if (ownerKey !== undefined && session.ownerKey !== ownerKey) return;
   sessions.delete(sessionId);
   try {
     await docker(['rm', '-f', session.containerId], 5000);

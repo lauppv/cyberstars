@@ -57,7 +57,7 @@ describe('loadSetup', () => {
 describe('createSession', () => {
   itDocker('creates a session and returns session info', async () => {
     mockExistsSync.mockReturnValue(false);
-    const info = await createSession('linux', 'test', 1);
+    const info = await createSession('linux', 'test', 'user:1');
     sessionsToClean.push(info.sessionId);
     expect(info.sessionId).toBeDefined();
     expect(info.cwd).toBe('/home/student');
@@ -66,51 +66,57 @@ describe('createSession', () => {
 
 describe('execCommand', () => {
   it('throws for unknown session', async () => {
-    await expect(execCommand('no-such-session', 'ls', 1)).rejects.toThrow('Session not found');
+    await expect(execCommand('no-such-session', 'ls', 'user:1')).rejects.toThrow(
+      'Session not found',
+    );
   });
 
   itDocker('throws for command too long', async () => {
     mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
     sessionsToClean.push(sessionId);
-    await expect(execCommand(sessionId, 'x'.repeat(2001), 1)).rejects.toThrow('Command too long');
+    await expect(execCommand(sessionId, 'x'.repeat(2001), 'user:1')).rejects.toThrow(
+      'Command too long',
+    );
   });
 
   itDocker('returns output and updated cwd', async () => {
     mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
     sessionsToClean.push(sessionId);
 
-    const result = await execCommand(sessionId, 'echo hello', 1);
+    const result = await execCommand(sessionId, 'echo hello', 'user:1');
     expect(result.output).toContain('hello');
     expect(result.cwd).toBe('/home/student');
   });
 
   itDocker('tracks cwd across commands', async () => {
     mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
     sessionsToClean.push(sessionId);
 
-    await execCommand(sessionId, 'cd /tmp', 1);
-    const result = await execCommand(sessionId, 'pwd', 1);
+    await execCommand(sessionId, 'cd /tmp', 'user:1');
+    const result = await execCommand(sessionId, 'pwd', 'user:1');
     expect(result.cwd).toBe('/tmp');
   });
 
   itDocker('rejects a command from a different user', async () => {
     mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
     sessionsToClean.push(sessionId);
-    await expect(execCommand(sessionId, 'whoami', 2)).rejects.toThrow('Session not found');
+    await expect(execCommand(sessionId, 'whoami', 'guest:other')).rejects.toThrow(
+      'Session not found',
+    );
   });
 });
 
 describe('destroySession', () => {
   itDocker('removes the session', async () => {
     mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
 
     await destroySession(sessionId);
-    await expect(execCommand(sessionId, 'echo hi', 1)).rejects.toThrow('Session not found');
+    await expect(execCommand(sessionId, 'echo hi', 'user:1')).rejects.toThrow('Session not found');
   });
 
   it('is a no-op for unknown session', async () => {
@@ -119,14 +125,14 @@ describe('destroySession', () => {
 
   itDocker('ignores a non-owner actor', async () => {
     mockExistsSync.mockReturnValue(false);
-    const { sessionId } = await createSession('linux', 'test', 1);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
     sessionsToClean.push(sessionId);
 
-    await destroySession(sessionId, 2);
-    const stillAlive = await execCommand(sessionId, 'echo hi', 1);
+    await destroySession(sessionId, 'guest:other');
+    const stillAlive = await execCommand(sessionId, 'echo hi', 'user:1');
     expect(stillAlive.output).toContain('hi');
 
-    await destroySession(sessionId, 1);
-    await expect(execCommand(sessionId, 'echo hi', 1)).rejects.toThrow('Session not found');
+    await destroySession(sessionId, 'user:1');
+    await expect(execCommand(sessionId, 'echo hi', 'user:1')).rejects.toThrow('Session not found');
   });
 });
