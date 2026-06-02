@@ -1,48 +1,45 @@
 import { spawn, execFile } from 'child_process';
-import path from 'path';
-import crypto from 'crypto';
-import fs from 'fs/promises';
 import { getRuntime } from '../runtimes/registry.js';
+import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
 import type { WebSocket } from 'ws';
-
-const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? '128m';
-const RUN_PIDS = process.env.CODE_RUN_PIDS ?? '64';
-const RUN_DIR = process.env.CODE_RUN_DIR ?? path.join(process.cwd(), '.runs');
 
 const TIMEOUT_MS = 20_000;
 const OUTPUT_FLUSH_MS = 50;
 const OUTPUT_BUFFER_MAX = 16 * 1024;
 const OUTPUT_TOTAL_MAX = 1024 * 1024;
 
-// Per-run host dirs are cleaned on ws.close/process exit, but a crash mid-run
-// orphans them. Sweep the whole RUN_DIR at startup to reclaim that disk.
-export async function sweepRunDir(): Promise<void> {
-  await fs.rm(RUN_DIR, { recursive: true, force: true }).catch(() => {});
-  await fs.mkdir(RUN_DIR, { recursive: true }).catch(() => {});
+// Write the user's source into the run container, wiping any leftover files from
+// the owner's previous run first so a stale binary/output can't resurface.
+function writeSource(containerId: string, sourceFile: string, code: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const script = `rm -rf /work/* 2>/dev/null; cat > /work/${sourceFile}`;
+    const proc = execFile(
+      'docker',
+      ['exec', '-i', containerId, 'sh', '-c', script],
+      { timeout: 10_000 },
+      (err, _stdout, stderr) => (err ? reject(new Error(stderr || err.message)) : resolve()),
+    );
+    proc.stdin?.end(code);
+  });
 }
 
-// Container hardening shared by the compile and run invocations. We run as the
-// host-dir owner (this process's uid) instead of root: /work is a bind-mount of
-// a host dir owned by that uid, so once CAP_DAC_OVERRIDE is dropped only the
-// owner can write the compiler's build output there. /tmp is a small tmpfs so
-// gcc/javac still have scratch space under --read-only.
-function hardeningArgs(): string[] {
-  const args = [
-    '--cap-drop=ALL',
-    '--security-opt=no-new-privileges',
-    '--read-only',
-    '--tmpfs=/tmp:size=64m',
-  ];
-  const uid = process.getuid?.();
-  const gid = process.getgid?.();
-  const sandboxUser = process.env.SANDBOX_RUN_AS_USER ?? 'true';
-  if (uid !== undefined && gid !== undefined && sandboxUser !== 'false') {
-    args.push(`--user=${uid}:${gid}`);
-  }
-  return args;
+function compile(containerId: string, compileCmd: string): Promise<string | null> {
+  return new Promise((resolve) => {
+    execFile(
+      'docker',
+      ['exec', containerId, 'sh', '-c', compileCmd],
+      { maxBuffer: 1024 * 1024, timeout: 15_000 },
+      (err, _stdout, stderr) => resolve(err ? stderr || err.message : null),
+    );
+  });
 }
 
-export async function handleInteractiveRun(ws: WebSocket, code: string, language: string) {
+export async function handleInteractiveRun(
+  ws: WebSocket,
+  code: string,
+  language: string,
+  ownerKey: string,
+) {
   const runtime = getRuntime(language);
   if (!runtime) {
     ws.send(JSON.stringify({ type: 'stderr', data: 'Language not supported.\n' }));
@@ -50,46 +47,53 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     return;
   }
 
-  const runId = crypto.randomUUID();
-  const hostDir = path.join(RUN_DIR, runId);
-  await fs.mkdir(hostDir, { recursive: true });
-  await fs.writeFile(path.join(hostDir, runtime.sourceFile), code, 'utf-8');
+  let containerId: string;
+  try {
+    containerId = await acquireForRun(ownerKey, language);
+  } catch (err) {
+    const data =
+      err instanceof Error && err.message === 'A run is already in progress'
+        ? 'A run is already in progress.\n'
+        : 'Could not start the runner. Please try again.\n';
+    ws.send(JSON.stringify({ type: 'stderr', data }));
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    return;
+  }
 
-  const cleanup = () => fs.rm(hostDir, { recursive: true, force: true }).catch(() => {});
+  // We now hold the owner's container reserved. Every exit path below must settle
+  // it exactly once: keep it (release for reuse) or drop it (destroy).
+  let settled = false;
+  const keepContainer = () => {
+    if (settled) return;
+    settled = true;
+    releaseAfterRun(ownerKey);
+  };
+  const dropContainer = () => {
+    if (settled) return;
+    settled = true;
+    void destroyOwner(ownerKey);
+  };
+
+  try {
+    await writeSource(containerId, runtime.sourceFile, code);
+  } catch {
+    ws.send(JSON.stringify({ type: 'stderr', data: 'Could not prepare the run.\n' }));
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    dropContainer();
+    return;
+  }
 
   if (runtime.compileCmd) {
-    const compileErr = await compile(hostDir, runtime.image, runtime.compileCmd);
+    const compileErr = await compile(containerId, runtime.compileCmd);
     if (compileErr) {
       ws.send(JSON.stringify({ type: 'stderr', data: compileErr }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
-      cleanup();
+      keepContainer(); // a compile error is normal — keep the container for the retry
       return;
     }
   }
 
-  const containerName = `run-${runId}`;
-
-  const dockerArgs = [
-    'run',
-    '--rm',
-    '-i',
-    `--name=${containerName}`,
-    '--network=none',
-    `--memory=${RUN_MEMORY}`,
-    `--pids-limit=${RUN_PIDS}`,
-    '--stop-timeout=0',
-    ...hardeningArgs(),
-    '-v',
-    `${hostDir}:/work`,
-    '-w',
-    '/work',
-    runtime.image,
-    'sh',
-    '-c',
-    runtime.runCmd,
-  ];
-
-  const proc = spawn('docker', dockerArgs);
+  const proc = spawn('docker', ['exec', '-i', containerId, 'sh', '-c', runtime.runCmd]);
 
   let exited = false;
   let stdoutBuf = '';
@@ -120,10 +124,6 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     flushTimer = setTimeout(flushOutput, OUTPUT_FLUSH_MS);
   };
 
-  const killContainer = () => {
-    execFile('docker', ['kill', containerName], () => {});
-  };
-
   const sendExit = (code: number) => {
     if (exited) return;
     exited = true;
@@ -137,9 +137,12 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
     }
   };
 
+  // On timeout / output cap / abandonment we kill the exec client and destroy the
+  // whole container: that reliably stops the program and any children inside it
+  // (killing the `docker exec` client alone would leave them running).
   const killAll = () => {
     proc.kill('SIGKILL');
-    killContainer();
+    dropContainer();
   };
 
   let timer: ReturnType<typeof setTimeout>;
@@ -190,7 +193,7 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
   proc.on('close', (exitCode) => {
     flushOutput();
     sendExit(exitCode ?? 0);
-    cleanup();
+    keepContainer(); // program finished normally — keep the container for reuse
   });
 
   const onMessage = (raw: Buffer | string) => {
@@ -211,38 +214,10 @@ export async function handleInteractiveRun(ws: WebSocket, code: string, language
   ws.on('close', () => {
     clearTimeout(timer);
     if (flushTimer) clearTimeout(flushTimer);
-    killContainer();
-    cleanup();
-  });
-}
-
-function compile(hostDir: string, image: string, compileCmd: string): Promise<string | null> {
-  return new Promise((resolve) => {
-    const args = [
-      'run',
-      '--rm',
-      '--network=none',
-      ...hardeningArgs(),
-      '-v',
-      `${hostDir}:/work`,
-      '-w',
-      '/work',
-      image,
-      'sh',
-      '-c',
-      compileCmd,
-    ];
-    execFile(
-      'docker',
-      args,
-      { maxBuffer: 1024 * 1024, timeout: 15_000 },
-      (err, _stdout, stderr) => {
-        if (err) {
-          resolve(stderr || err.message);
-        } else {
-          resolve(null);
-        }
-      },
-    );
+    if (!exited) {
+      // The page was closed mid-run — kill the program and drop the container.
+      proc.kill('SIGKILL');
+      dropContainer();
+    }
   });
 }

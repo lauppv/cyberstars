@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import crypto from 'crypto';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
@@ -19,6 +20,21 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: config.corsOrigin, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
+
+// Give signed-out visitors a stable per-browser id so guest code runs are
+// isolated per browser (not shared by IP) and the guest run budget can be
+// tracked. The WebSocket handshake reads this cookie back.
+app.use((req, res, next) => {
+  if (!req.cookies?.token && !req.cookies?.guestId) {
+    res.cookie('guestId', crypto.randomUUID(), {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: config.isProduction,
+      maxAge: 365 * 24 * 60 * 60 * 1000,
+    });
+  }
+  next();
+});
 
 app.use('/auth', authRoutes);
 app.use('/api/progress', progressRoutes);

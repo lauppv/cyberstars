@@ -33,3 +33,4 @@ Instructions for AI contributors (Claude, Copilot, Cursor, etc.) working on this
 - Zod for request validation on the server
 - Three-layer server architecture: Routes → Controllers → Services → Repositories
 - Coverage thresholds enforced in CI — don't let them drop
+- Code execution uses **one persistent Docker container per owner** (`code-container.service.ts`), reused across runs and swapped on language change — don't revert it to per-run `docker run`. Editor runs go through `/ws/run`; `/ws/presence` (the `usePresence` hook) drives prompt container cleanup on tab close. Key guests by their `guestId` cookie, never by IP (shared IPs would share a container). Guests have a 10-run lifetime budget (`guest-budget.service.ts`)

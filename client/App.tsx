@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { CosmosBackground } from './components/ui/CosmosBackground';
+import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
 import { AuthPage } from './pages/AuthPage';
 import { CoursesPage } from './pages/CoursesPage';
@@ -24,6 +25,7 @@ function GlobalBackground() {
 }
 
 function App() {
+  usePresence();
   return (
     <HashRouter>
       <AuthProvider>

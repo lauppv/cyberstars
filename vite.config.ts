@@ -32,6 +32,7 @@ export default defineConfig({
         'server/lessons/**',
         'server/algorithms/**',
         'server/services/terminal-session.service.ts',
+        'server/services/interactive-execution.service.ts',
         'server/config/index.ts',
       ],
       thresholds: {
