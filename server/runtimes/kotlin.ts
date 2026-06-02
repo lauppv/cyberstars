@@ -6,4 +6,5 @@ export const kotlinRuntime: LanguageRuntime = {
   sourceFile: 'Main.kt',
   compileCmd: 'kotlinc -include-runtime -d /work/Main.jar /work/Main.kt',
   runCmd: 'stdbuf -o0 java -jar /work/Main.jar',
+  memory: '512m',
 };

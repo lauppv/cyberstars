@@ -48,14 +48,14 @@ function hardeningArgs(): string[] {
   return args;
 }
 
-function createContainer(image: string): Promise<string> {
+function createContainer(image: string, memory?: string): Promise<string> {
   return docker(
     [
       'run',
       '-d',
       '--rm',
       '--network=none',
-      `--memory=${RUN_MEMORY}`,
+      `--memory=${memory ?? RUN_MEMORY}`,
       `--pids-limit=${RUN_PIDS}`,
       ...hardeningArgs(),
       '-w',
@@ -141,7 +141,7 @@ export async function acquireForRun(ownerKey: string, language: string): Promise
 
   let containerId: string;
   try {
-    containerId = await createContainer(runtime.image);
+    containerId = await createContainer(runtime.image, runtime.memory);
   } catch (err) {
     if (containers.get(ownerKey) === reserved) containers.delete(ownerKey);
     throw err;
