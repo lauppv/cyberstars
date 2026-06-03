@@ -31,8 +31,6 @@ export async function exec(req: Request, res: Response, next: NextFunction) {
   } catch (err) {
     if (err instanceof Error && err.message === 'Session not found') {
       next(new AppError(404, 'Session not found'));
-    } else if (err instanceof AppError) {
-      next(err);
     } else {
       next(err);
     }
@@ -47,8 +45,6 @@ export async function destroy(req: Request, res: Response, next: NextFunction) {
   } catch (err) {
     if (err instanceof ZodError) {
       next(new AppError(400, 'Invalid session ID'));
-    } else if (err instanceof AppError) {
-      next(err);
     } else {
       next(err);
     }
