@@ -46,10 +46,10 @@ export function CosmosBackground() {
 
     function setup() {
       w = window.innerWidth;
-      // Size to the tallest plausible viewport so the canvas still covers the
-      // screen when the mobile URL bar hides (which grows innerHeight). This
-      // lets us ignore height-only resizes entirely (see onResize).
-      h = Math.max(window.innerHeight, window.screen?.height ?? 0);
+      // Read the container's rendered height. Its CSS height is `100lvh`, which
+      // is stable while the mobile URL bar shows/hides — so this no longer
+      // tracks the dynamic viewport. (window.innerHeight would.)
+      h = canvas!.clientHeight || window.innerHeight;
       canvas!.width = w * dpr;
       canvas!.height = h * dpr;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -57,9 +57,9 @@ export function CosmosBackground() {
     }
 
     function onResize() {
-      // Ignore height-only resizes. On mobile the URL bar showing/hiding during
-      // scroll fires resize with a new innerHeight; re-running setup there
-      // regenerated the stars and made the field visibly jump on every scroll.
+      // Width-only guard: neither the mobile URL bar nor desktop scrollbars
+      // change window.innerWidth, so the field never regenerates on scroll —
+      // only on a real resize / orientation change.
       if (window.innerWidth === w) return;
       setup();
     }
