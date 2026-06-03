@@ -44,17 +44,28 @@ export function CosmosBackground() {
       }
     }
 
-    function resize() {
+    function setup() {
       w = window.innerWidth;
-      h = window.innerHeight;
+      // Size to the tallest plausible viewport so the canvas still covers the
+      // screen when the mobile URL bar hides (which grows innerHeight). This
+      // lets us ignore height-only resizes entirely (see onResize).
+      h = Math.max(window.innerHeight, window.screen?.height ?? 0);
       canvas!.width = w * dpr;
       canvas!.height = h * dpr;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       regenStars();
     }
 
-    window.addEventListener('resize', resize);
-    resize();
+    function onResize() {
+      // Ignore height-only resizes. On mobile the URL bar showing/hiding during
+      // scroll fires resize with a new innerHeight; re-running setup there
+      // regenerated the stars and made the field visibly jump on every scroll.
+      if (window.innerWidth === w) return;
+      setup();
+    }
+
+    window.addEventListener('resize', onResize);
+    setup();
 
     let rafId: number;
     function frame(now: number) {
@@ -80,7 +91,7 @@ export function CosmosBackground() {
     rafId = requestAnimationFrame(frame);
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(rafId);
     };
   }, []);
