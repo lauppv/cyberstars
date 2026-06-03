@@ -72,7 +72,7 @@ export function CoursesPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
 
-      <main className="flex-1 max-w-[1040px] mx-auto w-full px-7 py-8 pb-16">
+      <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
         <div className="text-center mb-8 text-backdrop">
           <p className="text-[var(--text2)] text-sm">
             Take your time, read carefully, and experiment. The goal is to understand, play around,
