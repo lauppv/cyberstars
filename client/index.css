@@ -258,7 +258,14 @@ samp {
 /* ===== Cosmos background (global) ===== */
 .cosmos-bg {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Stable height: lvh = large viewport, does NOT change when the mobile URL
+     bar shows/hides on scroll (unlike `inset: 0`, which tracks the dynamic
+     viewport and was scaling the canvas on every scroll). vh is the fallback. */
+  height: 100vh;
+  height: 100lvh;
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(ellipse at 50% 30%, #1a1040 0%, #0a0818 45%, #06050d 100%);
