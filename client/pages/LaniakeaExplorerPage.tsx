@@ -1369,8 +1369,8 @@ export function LaniakeaExplorerPage() {
         const STICK_R = 46; // max knob travel in px
         const STICK_DEAD = 0.22; // ignore tiny jitter near centre
         const STICK_EXP = 2.4; // steeper than steerCurve → gentle low end
-        const STICK_YAW = MAX_YAW_RATE * 0.6;
-        const STICK_PITCH = MAX_PITCH_RATE * 0.6;
+        const STICK_YAW = MAX_YAW_RATE * 0.4;
+        const STICK_PITCH = MAX_PITCH_RATE * 0.4;
         let stickId = -1;
         const stickAxis = (n: number) => {
           const a = Math.abs(n);
@@ -2210,11 +2210,19 @@ const laniakeaStyles = `
 .is-touch .intro-controls,.is-touch .intro-hint{display:none}
 .is-touch .intro-touch{display:flex}
 
-/* ── Mobile HUD adjustments (clear the touch controls + center popup) ── */
+/* ── Mobile HUD adjustments ── */
 .is-touch .hud-bl,.is-touch .hud-br{bottom:172px!important}
 .is-touch .hud-panel{padding:8px 11px}
-.is-touch .hud-ship-name{font-size:10px;letter-spacing:2px}
-.is-touch .hud-ship-sub{font-size:8px;letter-spacing:1px}
 .is-touch .hud-cells{gap:10px}
 .is-touch .hud-value{font-size:13px}
+/* Drop the ship-ID panel and reuse the top-left corner for the approach /
+   distance readout (moved out of the centre so nothing overlaps). */
+.is-touch .hud-tl{display:none}
+.is-touch .hud-approach{left:20px;max-width:calc(100vw - 150px);transform:translateY(-8px)}
+.is-touch .hud-approach.visible{transform:translateY(0)}
+.is-touch .hud-approach-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width: 640px) {
+  .is-touch .hud-tr{padding:7px 9px}
+  .is-touch .hud-value{font-size:12px}
+}
 `;
