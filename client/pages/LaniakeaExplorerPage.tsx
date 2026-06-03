@@ -1349,6 +1349,90 @@ export function LaniakeaExplorerPage() {
       });
       pauseEl.addEventListener('click', () => setPaused(false));
 
+      // ===== Touch controls (mobile) =====
+      const isTouch = window.matchMedia?.('(pointer: coarse)').matches || 'ontouchstart' in window;
+      if (isTouch) {
+        el.classList.add('is-touch');
+        const touchEl = el.querySelector('#rest-touch') as HTMLElement;
+        const stickEl = el.querySelector('#rest-stick') as HTMLElement;
+        const knobEl = el.querySelector('#rest-stickKnob') as HTMLElement;
+        const thrUpEl = el.querySelector('#rest-thrUp') as HTMLElement;
+        const thrDownEl = el.querySelector('#rest-thrDown') as HTMLElement;
+
+        touchEl.style.display = 'block';
+        cursorEl.style.display = 'none';
+
+        // Right-hand stick → yaw/pitch (replaces the desktop mouse reticle).
+        // Tuned softer than the mouse: the knob's physical travel is small, so a
+        // steep curve + lower max keep fine control near centre and full speed
+        // only near the rim.
+        const STICK_R = 46; // max knob travel in px
+        const STICK_DEAD = 0.22; // ignore tiny jitter near centre
+        const STICK_EXP = 2.4; // steeper than steerCurve → gentle low end
+        const STICK_YAW = MAX_YAW_RATE * 0.6;
+        const STICK_PITCH = MAX_PITCH_RATE * 0.6;
+        let stickId = -1;
+        const stickAxis = (n: number) => {
+          const a = Math.abs(n);
+          if (a < STICK_DEAD) return 0;
+          return Math.sign(n) * Math.pow((a - STICK_DEAD) / (1 - STICK_DEAD), STICK_EXP);
+        };
+        const applyStick = (offX: number, offY: number) => {
+          const len = Math.hypot(offX, offY);
+          const clamp = len > STICK_R ? STICK_R / len : 1;
+          const cx = offX * clamp,
+            cy = offY * clamp;
+          knobEl.style.transform = `translate(calc(-50% + ${cx}px), calc(-50% + ${cy}px))`;
+          yawRate = -stickAxis(cx / STICK_R) * STICK_YAW;
+          pitchRate = -stickAxis(cy / STICK_R) * STICK_PITCH;
+        };
+        const stickMove = (e: PointerEvent) => {
+          if (e.pointerId !== stickId) return;
+          const r = stickEl.getBoundingClientRect();
+          applyStick(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+          e.preventDefault();
+        };
+        const stickEnd = (e: PointerEvent) => {
+          if (e.pointerId !== stickId) return;
+          stickId = -1;
+          knobEl.style.transform = 'translate(-50%, -50%)';
+          yawRate = 0;
+          pitchRate = 0;
+        };
+        stickEl.addEventListener('pointerdown', (e: PointerEvent) => {
+          start();
+          if (paused) return;
+          stickId = e.pointerId;
+          stickEl.setPointerCapture(e.pointerId);
+          stickMove(e);
+        });
+        stickEl.addEventListener('pointermove', stickMove);
+        stickEl.addEventListener('pointerup', stickEnd);
+        stickEl.addEventListener('pointercancel', stickEnd);
+
+        // Left-hand throttle → hold to accelerate (W) / decelerate (S)
+        const holdThrottle = (btn: HTMLElement, key: 'w' | 's') => {
+          const press = (e: PointerEvent) => {
+            start();
+            if (paused) return;
+            keys[key] = true;
+            btn.classList.add('active');
+            btn.setPointerCapture(e.pointerId);
+            e.preventDefault();
+          };
+          const release = () => {
+            keys[key] = false;
+            btn.classList.remove('active');
+          };
+          btn.addEventListener('pointerdown', press);
+          btn.addEventListener('pointerup', release);
+          btn.addEventListener('pointercancel', release);
+          btn.addEventListener('pointerleave', release);
+        };
+        holdThrottle(thrUpEl, 'w');
+        holdThrottle(thrDownEl, 's');
+      }
+
       // ===== Resize =====
       const onResize = () => {
         camera.aspect = innerWidth / innerHeight;
@@ -1674,6 +1758,16 @@ export function LaniakeaExplorerPage() {
             <span>Exit to dashboard</span>
           </div>
         </div>
+        <div className="intro-touch">
+          <div className="row">
+            <span className="intro-touch-ic">{'◑'}</span>
+            <span>Right stick {'·'} steer (turn & pitch)</span>
+          </div>
+          <div className="row">
+            <span className="intro-touch-ic">{'▲▼'}</span>
+            <span>Left arrows {'·'} hold to accelerate / decelerate</span>
+          </div>
+        </div>
         <button className="intro-btn" id="rest-enterBtn">
           {'▸'} Begin Drift
         </button>
@@ -1934,6 +2028,21 @@ export function LaniakeaExplorerPage() {
       <div className="edge-hint left" />
       <div className="edge-hint right" />
 
+      {/* Touch controls (shown on touch devices) */}
+      <div className="rest-touch" id="rest-touch">
+        <div className="touch-throttle">
+          <button className="throttle-btn" id="rest-thrUp" aria-label="Accelerate">
+            {'▲'}
+          </button>
+          <button className="throttle-btn" id="rest-thrDown" aria-label="Decelerate">
+            {'▼'}
+          </button>
+        </div>
+        <div className="touch-stick" id="rest-stick">
+          <div className="touch-stick-knob" id="rest-stickKnob" />
+        </div>
+      </div>
+
       <a href="#" className="rest-exit exit">
         {'✕'} EXIT
       </a>
@@ -2085,4 +2194,27 @@ const laniakeaStyles = `
 .edge-hint.bottom{bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,rgba(255,170,60,.25),transparent)}
 .edge-hint.left{top:0;bottom:0;left:0;width:90px;background:linear-gradient(to right,rgba(255,170,60,.25),transparent)}
 .edge-hint.right{top:0;bottom:0;right:0;width:90px;background:linear-gradient(to left,rgba(255,170,60,.25),transparent)}
+
+/* ── Touch controls (mobile) ── */
+.rest-touch{display:none}
+.touch-throttle{position:fixed;left:max(18px,env(safe-area-inset-left));bottom:max(26px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:20}
+.throttle-btn{width:62px;height:54px;border-radius:14px;background:rgba(6,8,18,.55);border:1px solid rgba(108,92,231,.4);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 4px 24px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);color:#cfd2ff;font-size:18px;display:flex;align-items:center;justify-content:center;touch-action:none;-webkit-user-select:none;user-select:none;cursor:pointer;font-family:var(--mono)}
+.throttle-btn.active{background:rgba(108,92,231,.4);border-color:var(--accent);color:#fff;box-shadow:0 0 18px rgba(108,92,231,.5)}
+.touch-stick{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(28px,env(safe-area-inset-bottom));width:128px;height:128px;border-radius:50%;background:radial-gradient(circle,rgba(6,8,18,.5),rgba(6,8,18,.32));border:1px solid rgba(108,92,231,.4);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 4px 24px rgba(0,0,0,.5),inset 0 0 26px rgba(108,92,231,.1);touch-action:none;-webkit-user-select:none;user-select:none;z-index:20}
+.touch-stick-knob{position:absolute;left:50%;top:50%;width:54px;height:54px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(108,92,231,.85),rgba(108,92,231,.45));border:1px solid rgba(255,255,255,.35);box-shadow:0 0 18px rgba(108,92,231,.6);pointer-events:none}
+
+/* ── Touch vs keyboard intro hints ── */
+.intro-touch{display:none;flex-direction:column;gap:10px;margin:6px 0 4px}
+.intro-touch .row{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(200,205,235,.8)}
+.intro-touch-ic{min-width:36px;text-align:center;color:var(--accent);font-size:15px}
+.is-touch .intro-controls,.is-touch .intro-hint{display:none}
+.is-touch .intro-touch{display:flex}
+
+/* ── Mobile HUD adjustments (clear the touch controls + center popup) ── */
+.is-touch .hud-bl,.is-touch .hud-br{bottom:172px!important}
+.is-touch .hud-panel{padding:8px 11px}
+.is-touch .hud-ship-name{font-size:10px;letter-spacing:2px}
+.is-touch .hud-ship-sub{font-size:8px;letter-spacing:1px}
+.is-touch .hud-cells{gap:10px}
+.is-touch .hud-value{font-size:13px}
 `;
