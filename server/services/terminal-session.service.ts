@@ -82,8 +82,8 @@ export async function createSession(
     '--cap-drop=ALL',
     '--security-opt=no-new-privileges',
     '--read-only',
-    '--tmpfs=/home/student:size=16m,uid=1000',
-    '--tmpfs=/tmp:size=4m,uid=1000',
+    '--tmpfs=/home/student:size=16m,mode=0777',
+    '--tmpfs=/tmp:size=4m,mode=0777',
     IMAGE,
   ]);
 
