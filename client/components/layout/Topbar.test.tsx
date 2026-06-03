@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 const mockNavigate = vi.fn();
@@ -183,6 +183,56 @@ describe('Topbar', () => {
     renderTopbar({ breadcrumb: { course: 'Python' } });
     fireEvent.click(screen.getByText('Python'));
     expect(mockNavigate).toHaveBeenCalledWith('/courses');
+  });
+
+  it('opens mobile nav via hamburger and navigates from it', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByLabelText('Toggle menu'));
+    const menu = screen.getByRole('menu');
+    fireEvent.click(within(menu).getByText('Forum'));
+    expect(mockNavigate).toHaveBeenCalledWith('/forum');
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+
+  it('toggles the mobile nav closed when the hamburger is clicked again', () => {
+    renderTopbar();
+    const btn = screen.getByLabelText('Toggle menu');
+    fireEvent.click(btn);
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    fireEvent.click(btn);
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+
+  it('closes the mobile nav on Escape', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByLabelText('Toggle menu'));
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+
+  it('ignores non-Escape keys while the mobile nav is open', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByLabelText('Toggle menu'));
+    fireEvent.keyDown(document, { key: 'a' });
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+  });
+
+  it('closes the mobile nav when clicking outside', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByLabelText('Toggle menu'));
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    fireEvent.mouseDown(document.body);
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+
+  it('keeps the mobile nav open when clicking inside it', () => {
+    renderTopbar();
+    const btn = screen.getByLabelText('Toggle menu');
+    fireEvent.click(btn);
+    const menu = screen.getByRole('menu');
+    fireEvent.mouseDown(menu);
+    expect(screen.getByRole('menu')).toBeInTheDocument();
   });
 
   it('sidebar toggle arrow flips with sidebarOpen prop', () => {
