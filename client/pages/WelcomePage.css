@@ -550,11 +550,15 @@
 }
 @media (max-width: 880px) {
   .wc-langs-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
     gap: 20px;
   }
+  /* !important beats the later base `.wc-lang-connect { display: flex }` rule */
   .wc-lang-connect {
-    display: none;
+    display: none !important;
   }
 }
 

@@ -302,8 +302,10 @@ export function HomePage() {
             />
           </svg>
 
-          <h1 className="text-[44px] font-bold tracking-[-0.5px] mb-3">Learn to code, for free</h1>
-          <p className="text-[var(--text2)] text-lg mb-10">
+          <h1 className="text-[32px] sm:text-[44px] font-bold tracking-[-0.5px] mb-3">
+            Learn to code, for free
+          </h1>
+          <p className="text-[var(--text2)] text-base sm:text-lg mb-10">
             Interactive lessons in <span className="text-[var(--text)] font-semibold">Python</span>,{' '}
             <span className="text-[var(--text)] font-semibold">Java</span>,{' '}
             <span className="text-[var(--text)] font-semibold">C</span>, and{' '}

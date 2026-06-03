@@ -28,7 +28,9 @@ export function Topbar({
   const location = useLocation();
   const { isLoggedIn, user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -48,9 +50,59 @@ export function Topbar({
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (mobileNavRef.current && !mobileNavRef.current.contains(e.target as Node)) {
+        setMobileNavOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileNavOpen(false);
+    };
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [mobileNavOpen]);
+
   return (
-    <header className="flex items-center justify-between px-7 h-14 bg-[rgba(22,22,29,0.78)] backdrop-blur-[14px] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
-      <div className="flex items-center gap-6">
+    <header className="flex items-center justify-between px-4 sm:px-7 h-14 bg-[rgba(22,22,29,0.78)] backdrop-blur-[14px] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
+      <div className="flex items-center gap-3 sm:gap-6 min-w-0" ref={mobileNavRef}>
+        {/* Mobile hamburger (site nav collapses below lg) */}
+        <button
+          onClick={() => setMobileNavOpen((v) => !v)}
+          className="lg:hidden bg-transparent border border-[var(--border)] text-[var(--text2)] w-8 h-8 rounded-[var(--radius-sm)] flex items-center justify-center text-[15px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer flex-shrink-0"
+          aria-label="Toggle menu"
+          aria-haspopup="menu"
+          aria-expanded={mobileNavOpen}
+        >
+          ☰
+        </button>
+
+        {mobileNavOpen && (
+          <div
+            role="menu"
+            className="lg:hidden absolute left-2 top-[52px] w-56 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up py-1"
+          >
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.path}
+                role="menuitem"
+                onClick={() => {
+                  setMobileNavOpen(false);
+                  navigate(item.path);
+                }}
+                className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
+
         {showSidebarToggle && (
           <button
             onClick={onSidebarToggle}
@@ -77,20 +129,24 @@ export function Topbar({
         </div>
 
         {breadcrumb ? (
-          <div className="flex items-center gap-2 text-[13px] text-[var(--text3)]">
+          <div className="flex items-center gap-2 text-[13px] text-[var(--text3)] min-w-0">
             {breadcrumb.course && (
               <span
-                className="text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition"
+                className="hidden sm:inline text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition whitespace-nowrap"
                 onClick={() => navigate(breadcrumb.courseHref ?? '/courses')}
               >
                 {breadcrumb.course}
               </span>
             )}
-            {breadcrumb.course && breadcrumb.lesson && <span className="opacity-40">/</span>}
-            {breadcrumb.lesson && <span className="text-[var(--text)]">{breadcrumb.lesson}</span>}
+            {breadcrumb.course && breadcrumb.lesson && (
+              <span className="hidden sm:inline opacity-40">/</span>
+            )}
+            {breadcrumb.lesson && (
+              <span className="text-[var(--text)] truncate">{breadcrumb.lesson}</span>
+            )}
           </div>
         ) : (
-          <nav className="flex gap-1">
+          <nav className="hidden lg:flex gap-1">
             {NAV_ITEMS.map((item) => {
               const isActive =
                 item.path === '/'
@@ -137,7 +193,9 @@ export function Topbar({
                   🚀
                 </div>
               )}
-              <span className="text-[13px] font-semibold text-[var(--text)]">{user.name}</span>
+              <span className="hidden sm:inline text-[13px] font-semibold text-[var(--text)] max-w-[120px] truncate">
+                {user.name}
+              </span>
             </button>
 
             {menuOpen && (

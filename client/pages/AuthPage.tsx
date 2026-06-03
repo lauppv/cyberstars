@@ -218,39 +218,41 @@ export function AuthPage() {
         .pw-bar.strong { background: var(--success); }
       `}</style>
 
-      <div className="flex h-screen bg-[var(--bg)] text-[var(--text)] overflow-hidden">
-        {/* Left brand panel */}
+      <div
+        className="relative flex h-screen text-[var(--text)] overflow-hidden"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%)',
+        }}
+      >
+        {/* Cosmic background — full screen, behind both panels (visible on mobile too) */}
+        {/* Pulsing accent glow */}
         <div
-          className="hidden min-[900px]:flex flex-1 flex-col justify-center items-center relative overflow-hidden"
+          className="absolute pointer-events-none"
           style={{
-            background: 'radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%)',
+            width: 600,
+            height: 600,
+            background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            animation: 'pulse-glow 8s ease-in-out infinite',
+            zIndex: 1,
           }}
-        >
-          {/* Pulsing accent glow */}
-          <div
-            className="absolute pointer-events-none"
-            style={{
-              width: 600,
-              height: 600,
-              background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              animation: 'pulse-glow 8s ease-in-out infinite',
-              zIndex: 1,
-            }}
-          />
-          {/* Canvas starfield */}
-          <Starfield />
-          {/* Vignette */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                'radial-gradient(ellipse 55% 45% at center, rgba(10,5,24,.55) 0%, transparent 75%)',
-              zIndex: 3,
-            }}
-          />
+        />
+        {/* Canvas starfield */}
+        <Starfield />
+        {/* Vignette */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse 55% 45% at center, rgba(10,5,24,.55) 0%, transparent 75%)',
+            zIndex: 3,
+          }}
+        />
+
+        {/* Left brand panel (desktop only) */}
+        <div className="hidden min-[900px]:flex flex-1 flex-col justify-center items-center relative z-[4]">
           {/* Brand content */}
           <div className="relative max-w-[400px] text-center" style={{ zIndex: 4 }}>
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -307,7 +309,7 @@ export function AuthPage() {
         </div>
 
         {/* Right form panel */}
-        <div className="w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[var(--bg2)] border-l border-[var(--border)] flex flex-col justify-center px-12 py-12 overflow-y-auto">
+        <div className="relative z-[4] w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[rgba(13,10,24,0.6)] backdrop-blur-[10px] min-[900px]:bg-[var(--bg2)] min-[900px]:backdrop-blur-none border-l border-[var(--border)] flex flex-col justify-center px-6 sm:px-12 py-12 overflow-y-auto">
           {/* Tabs — only shown for login/signup */}
           <>
             {(mode === 'login' || mode === 'signup') && (
