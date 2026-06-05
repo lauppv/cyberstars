@@ -1,0 +1,14 @@
+{
+  "slug": "turing-asked-one-question-that-were-still-trying-to-answer",
+  "cat": "ai",
+  "tag": "AI & FUTURE",
+  "year": "1950",
+  "emoji": "🧠",
+  "grad": "linear-gradient(135deg,#1a2a40,#4a3a7a)",
+  "title": "Turing asked one question that we're still trying to answer",
+  "excerpt": "\"Can machines think?\" Alan Turing's 1950 paper proposed a test: if you can't tell a computer from a human in conversation, does the difference matter? Seventy-six years later, we're still arguing.",
+  "fullText": "In 1950, Alan Turing published a paper titled \"Computing Machinery and Intelligence\" in the journal Mind. It opened with five words that would define an entire field: \"Can machines think?\"\n\nTuring knew the question was tricky. What does \"think\" even mean? Instead of getting lost in philosophy, he proposed a practical test — what he called \"The Imitation Game\" (now known as the Turing Test).\n\nThe setup is simple: a human judge has text conversations with two hidden participants — one human, one machine. If the judge can't reliably tell which is which, the machine is said to have passed the test.\n\nTuring predicted that by 2000, a computer with 128 MB of memory could fool 30% of judges in a five-minute conversation. This was remarkably prescient, though the timeline was optimistic.\n\nIn the paper, Turing anticipated and addressed virtually every objection that people still raise about AI today:\n\n\"Machines can't be creative.\" Turing argued that creativity might just be a form of computation we don't understand yet.\n\n\"Machines don't have consciousness.\" Turing asked: how do you know other humans are conscious? You can only judge from external behavior.\n\n\"Machines can only do what they're programmed to do.\" Turing pointed out that learning machines could develop behaviors their programmers never anticipated.\n\nThe Turing Test has been debated for 76 years. Critics say it only tests imitation, not understanding. Supporters say that sufficiently good imitation IS understanding — or at least, that we can't prove otherwise.\n\nIn 2024-2025, large language models began routinely passing informal versions of the Turing Test. Whether this means machines \"think\" remains as contested as ever. But the question Turing asked — and the framework he gave us for approaching it — remains the foundation of artificial intelligence.\n\nTuring himself never saw any of this. He died in 1954, at age 41, after being prosecuted for homosexuality and subjected to chemical castration. The British government issued a formal apology in 2009, and a royal pardon in 2013.",
+  "author": "Editorial",
+  "authorEm": "✨",
+  "readTime": "9 min"
+}

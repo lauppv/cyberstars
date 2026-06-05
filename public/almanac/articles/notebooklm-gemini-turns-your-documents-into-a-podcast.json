@@ -1,0 +1,13 @@
+{
+  "slug": "notebooklm-gemini-turns-your-documents-into-a-podcast",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "NotebookLM: Gemini turns your documents into a podcast",
+  "excerpt": "Upload research papers, meeting notes, or textbooks — and Gemini generates a natural-sounding podcast discussion about the content.",
+  "fullText": "One of Google's most surprisingly popular AI features was NotebookLM's Audio Overview. Upload any document — a research paper, a textbook chapter, meeting notes — and Gemini would generate a natural-sounding podcast-style discussion about its contents.\n\nTwo AI voices would discuss the material, explaining concepts to each other, raising questions, making connections, and occasionally disagreeing. The result was eerily natural — not robotic text-to-speech, but genuine-sounding conversation.\n\nStudents used it to study: upload lecture notes before an exam and listen to the AI \"hosts\" explain the material during their commute. Researchers used it to digest papers: hearing ideas discussed aloud often triggered insights that reading alone didn't.\n\nThe feature worked because it combined three capabilities: deep content understanding (knowing what's important), conversational generation (creating natural dialogue), and voice synthesis (making it pleasant to listen to).\n\nIt represented a new paradigm for consuming information: instead of choosing between reading (slow, high-engagement) and summaries (fast, low-detail), audio overviews provided a middle path — detailed understanding at the speed of listening.\n\nBy 2025, users were generating millions of audio overviews per month, covering everything from academic papers to company quarterly reports.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "github-copilot-ai-writes-46-of-all-new-code",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2024",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "GitHub Copilot: AI writes 46% of all new code",
+  "excerpt": "By 2024, nearly half of all code committed on GitHub was AI-assisted. Programming didn't die — it evolved into a collaboration between humans and machines.",
+  "fullText": "GitHub's 2024 data revealed a stunning statistic: 46% of code written on the platform was now AI-assisted, with GitHub Copilot (powered by OpenAI's models) being the primary tool.\n\nThis didn't mean AI was writing code autonomously. It meant developers were working in a new way: describe what you want, review the suggestion, modify and integrate it. The human was still in the loop, but the loop was dramatically faster.\n\nCopilot excelled at boilerplate: writing API endpoints, data models, unit tests, and configuration files. The tedious, mechanical parts of programming that developers had always hated. Now they could focus on architecture, design, and the genuinely creative decisions.\n\nJunior developers reported the biggest productivity gains. Copilot served as a constant tutor: \"Here's how this pattern typically looks. Here's the idiomatic way to do this in this language.\" The learning curve for new languages and frameworks flattened dramatically.\n\nSenior developers benefited differently: less time on implementation, more time on code review, system design, and mentoring. The job didn't disappear — it shifted toward higher-level thinking.\n\nThe statistic sparked debates about code quality, intellectual property, and the future of the profession. But the productivity gains were undeniable, and adoption kept accelerating.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

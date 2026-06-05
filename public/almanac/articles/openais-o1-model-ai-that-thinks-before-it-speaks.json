@@ -1,0 +1,13 @@
+{
+  "slug": "openais-o1-model-ai-that-thinks-before-it-speaks",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2024",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "OpenAI's o1 model: AI that thinks before it speaks",
+  "excerpt": "The o1 model introduced 'chain of thought' reasoning — spending more time thinking through problems before answering. PhD-level performance on science and math.",
+  "fullText": "In September 2024, OpenAI released o1 — a model designed to think longer before responding. Instead of immediately generating an answer, o1 would reason through problems step by step, sometimes spending minutes on a single response.\n\nThe results were dramatic: on challenging math competition problems, o1 scored in the 89th percentile on the International Mathematics Olympiad qualifying exam. On PhD-level science questions, it outperformed human experts in many domains.\n\nThe approach was philosophically different from simply making models bigger. Instead of \"more parameters = more capability,\" it was \"more thinking time = better answers.\" Given the same underlying model, spending more compute at inference time (when generating the answer) produced better results.\n\nFor users, this meant a new interaction pattern. Complex questions took longer to answer (30 seconds to several minutes) but the answers were significantly better. Users learned to save o1 for hard problems and use faster models for simple queries.\n\nThe chain-of-thought reasoning was visible to users, showing how the model broke down problems, considered alternatives, and built toward conclusions. This transparency helped users trust (and verify) the reasoning.\n\no1 pointed toward a future where AI capability scaled not just with training data and parameters, but with the amount of thought applied to each individual problem.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

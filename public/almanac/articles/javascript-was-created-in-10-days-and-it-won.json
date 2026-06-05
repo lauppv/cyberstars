@@ -1,0 +1,14 @@
+{
+  "slug": "javascript-was-created-in-10-days-and-it-won",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1995",
+  "emoji": "⚡",
+  "grad": "linear-gradient(135deg,#3a3a0a,#8a8a1a)",
+  "title": "JavaScript was created in 10 days — and it won",
+  "excerpt": "Brendan Eich built the first version of JavaScript in just 10 days at Netscape. It was messy, rushed, and full of quirks. It became the most widely used programming language on the planet.",
+  "fullText": "In May 1995, Netscape Communications was in a war with Microsoft for control of the web browser market. Netscape Navigator was the dominant browser, but Microsoft was building Internet Explorer. Netscape needed an edge.\n\nMarc Andreessen, Netscape's co-founder, wanted a scripting language that could make web pages interactive — something simpler than Java that designers and part-time programmers could use. He recruited Brendan Eich, a programmer who had been hired to embed the Scheme programming language into the browser.\n\nPlans changed. The language had to look like Java (for marketing reasons), be easy to learn, and be ready immediately. Eich built the first prototype in 10 days, from May 6 to May 15, 1995. It was originally called Mocha, then LiveScript, then finally JavaScript — a name chosen purely for marketing synergy with Sun Microsystems' Java.\n\nThe 10-day timeline left permanent marks. JavaScript has two equality operators (== and ===) because the loose one was a hasty design choice. typeof null returns \"object\" — a bug from day one that can never be fixed because too much code depends on it. Numbers are all 64-bit floats, which means 0.1 + 0.2 !== 0.3.\n\nBut JavaScript had one unbeatable advantage: it was the only language that ran in the browser. When Microsoft reverse-engineered it as \"JScript\" for Internet Explorer, JavaScript became the de facto standard for web interactivity. No committee planned this. No corporation mandated it. It just happened because JavaScript was there first.\n\nThe standardization as ECMAScript (1997) gave JavaScript a stable foundation. Then came the AJAX revolution (2005), which showed that JavaScript could build desktop-quality web apps. jQuery (2006) smoothed over browser inconsistencies. Node.js (2009) took JavaScript to the server. Modern frameworks like React, Vue, and Angular turned it into a platform for building everything from mobile apps to desktop software.\n\nToday, JavaScript runs on virtually every computing device on Earth. GitHub's annual survey consistently ranks it as the most used programming language. The messy, rushed, 10-day prototype became the language of the web — and by extension, the language of the modern world.",
+  "author": "CyberBot",
+  "authorEm": "🤖",
+  "readTime": "7 min"
+}

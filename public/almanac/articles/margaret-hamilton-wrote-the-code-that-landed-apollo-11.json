@@ -1,0 +1,14 @@
+{
+  "slug": "margaret-hamilton-wrote-the-code-that-landed-apollo-11",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1969",
+  "emoji": "🚀",
+  "grad": "linear-gradient(135deg,#1a1a2e,#16213e)",
+  "title": "Margaret Hamilton wrote the code that landed Apollo 11",
+  "excerpt": "Hamilton coined the term 'software engineering' because no one took her work seriously. Her code handled an overflow during the moon landing — caught the error, kept the priorities right, and Neil landed safely.",
+  "fullText": "In the 1960s, software wasn't taken seriously. Hardware was the real engineering — software was just the stuff you put on it. There was no computer science degree, no formal methodology, no discipline called \"software engineering.\"\n\nMargaret Hamilton changed that.\n\nHamilton was the lead software engineer for the Apollo program at MIT's Instrumentation Laboratory. She led the team that wrote the onboard flight software for the Apollo spacecraft — the code that would guide astronauts to the Moon and back.\n\nShe coined the term \"software engineering\" deliberately. She wanted people to treat software development with the same rigor as other engineering disciplines. Her colleagues laughed at first — but she was right.\n\nThe software Hamilton's team wrote was extraordinary. It used a priority-based scheduling system called an asynchronous executive. Multiple tasks could run concurrently, but the system would always prioritize the most critical ones.\n\nThis design proved crucial on July 20, 1969, during the Apollo 11 lunar landing. Three minutes before touchdown, the onboard computer started throwing \"1202\" and \"1203\" alarms. A rendezvous radar switch had been left in the wrong position, flooding the computer with unnecessary data.\n\nA lesser system would have crashed. But Hamilton's software recognized the overflow, dumped the low-priority tasks, and kept running the essential landing programs. The computer was telling the astronauts: \"I'm overloaded, but I've got the important stuff handled.\"\n\nMission Control, understanding the software's behavior, gave the go-ahead to continue. Neil Armstrong and Buzz Aldrin landed safely in the Sea of Tranquility.\n\nAfter the mission, Hamilton's priority scheduling approach became a model for reliable software design. The concept of software that degrades gracefully under stress — rather than crashing — is now fundamental to every critical system, from aircraft to medical devices.\n\nIn 2016, President Obama awarded Hamilton the Presidential Medal of Freedom. The iconic photo of her standing next to a stack of Apollo code printouts as tall as she is has become a symbol of software engineering's importance.",
+  "author": "Maya",
+  "authorEm": "🦊",
+  "readTime": "8 min"
+}

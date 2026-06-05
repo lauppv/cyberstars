@@ -1,0 +1,13 @@
+{
+  "slug": "deepmind-google-brain-the-merger-that-created-gemini",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "DeepMind + Google Brain: the merger that created Gemini",
+  "excerpt": "Two legendary AI labs became one. DeepMind's research brilliance combined with Google Brain's engineering scale produced something neither could alone.",
+  "fullText": "In April 2023, Google merged its two AI research divisions — DeepMind and Google Brain — into a single entity called Google DeepMind. Led by Demis Hassabis, the combined organization immediately focused on one goal: building Gemini.\n\nDeepMind was famous for AlphaGo, AlphaFold, and fundamental research. Google Brain was famous for TensorFlow, the Transformer architecture (which powers all modern LLMs), and scaling AI to billions of users. Together, they had both the imagination and the infrastructure.\n\nThe merger wasn't without friction. Research cultures clashed. DeepMind's \"publish papers\" ethos met Google Brain's \"ship products\" mentality. But the creative tension proved productive — it meant Gemini was both scientifically novel and practically useful.\n\nWithin a year of the merger, Gemini Ultra was competing at the frontier. Within 18 months, it was integrated into products used by billions. The speed was unprecedented for a research organization.\n\nDemis Hassabis described the strategy: \"Pure research is necessary but not sufficient. You also need the engineering to deploy at scale and the product sense to make it useful. Google DeepMind has all three.\"\n\nThe merger signaled that the era of AI as a pure research endeavor was over. The frontier was now at the intersection of research, engineering, and products.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

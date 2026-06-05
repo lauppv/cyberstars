@@ -1,0 +1,15 @@
+{
+  "slug": "how-a-21-year-old-in-helsinki-accidentally-changed-the-world",
+  "cat": "oss",
+  "catLabel": "OPEN SOURCE",
+  "tag": "OPEN SOURCE",
+  "title": "How a 21-year-old in Helsinki accidentally changed the world",
+  "excerpt": "In August 1991, a Finnish student posted a humble message to a Usenet newsgroup: \"I'm doing a (free) operating system, just a hobby, won't be big and professional like gnu.\" Three decades later, Linux runs on 90% of the cloud, every Android phone, and the laptop you're reading this on.",
+  "fullText": "In the summer of 1991, Linus Torvalds was a 21-year-old computer science student at the University of Helsinki. He'd just bought a new PC with an Intel 386 processor, and he was frustrated. MINIX, the teaching OS he was using, couldn't do what he wanted. Commercial UNIX was far too expensive for a student.\n\nSo he started writing his own operating system kernel. Not because he wanted to change the world — he just wanted to use his modem and read Usenet newsgroups more comfortably.\n\nOn August 25, 1991, he posted a now-legendary message to comp.os.minix:\n\n\"Hello everybody out there using minix — I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu). This has been brewing since april, and is starting to get ready.\"\n\nThe response was immediate. Developers from around the world began contributing patches, drivers, and ideas. Within months, the project had its own mailing list and a growing community.\n\nBy choosing the GPL license (at the suggestion of others), Linus ensured that every improvement would be shared back. This created a virtuous cycle: more users meant more developers, which meant better hardware support, which meant more users.\n\nToday, Linux runs on over 90% of cloud servers, every Android phone, most of the world's supercomputers, smart TVs, routers, cars, and even Mars rovers. The International Space Station runs Linux. The Large Hadron Collider runs Linux. Your WiFi router almost certainly runs Linux.\n\nWhat started as a hobby project by a bored Finnish student became the backbone of modern computing — an ecosystem worth billions, built by millions of volunteers, all because one person decided to scratch an itch and share the result.",
+  "author": "Editorial Team",
+  "authorEmoji": "✨",
+  "readTime": "8 min",
+  "date": "May 14, 2026",
+  "emoji": "🐧",
+  "isHero": true
+}

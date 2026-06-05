@@ -1,0 +1,13 @@
+{
+  "slug": "imagen-3-and-gemini-text-to-image-reaches-photorealism",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Imagen 3 and Gemini: text-to-image reaches photorealism",
+  "excerpt": "Google's image generation, powered by Gemini's understanding, creates images that professional photographers mistake for real photographs.",
+  "fullText": "Google's Imagen 3, integrated with Gemini's language understanding, pushed text-to-image generation to a new level. The images weren't just pretty — they were compositionally sophisticated, physically accurate, and stylistically controllable.\n\n\"A elderly Japanese woman reading a newspaper in a sunlit kitchen, morning light casting long shadows, Fuji X100V style\" would produce an image so convincing that professional photographers couldn't reliably distinguish it from a real photograph.\n\nThe key advance was Gemini's deep language understanding interpreting the prompt. It understood \"Fuji X100V style\" meant specific color science and depth of field characteristics. It understood \"morning light\" meant particular shadow angles and color temperature.\n\nFor creative professionals, this meant rapid prototyping of visual concepts. Art directors could generate dozens of variations before a shoot, exploring compositions and lighting setups that would take hours to set up physically.\n\nFor accessibility, it meant anyone could create professional-quality visuals for presentations, social media, or personal projects without photography skills or expensive equipment.\n\nGoogle embedded SynthID watermarks in every generated image — invisible to the eye but detectable by algorithms — ensuring responsible deployment as the quality became indistinguishable from reality.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

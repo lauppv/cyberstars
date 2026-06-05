@@ -1,0 +1,14 @@
+{
+  "slug": "dennis-ritchie-the-man-who-created-c-and-unix-but-got-no-fame",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1972",
+  "emoji": "👤",
+  "grad": "linear-gradient(135deg,#2a1a3a,#5f2f7a)",
+  "title": "Dennis Ritchie — the man who created C and UNIX but got no fame",
+  "excerpt": "Steve Jobs got a global mourning when he died. Dennis Ritchie died one week later and barely made the news. Yet everything Jobs built ran on Ritchie's inventions: the C language and UNIX.",
+  "fullText": "On October 5, 2011, Steve Jobs died. The world mourned. Tributes poured in from every corner of the globe. Newspapers ran front-page stories. People left flowers at Apple stores.\n\nOn October 12, 2011 — exactly one week later — Dennis Ritchie died. Most people outside of computing never heard about it. There were no flowers at office buildings. No candlelight vigils. Yet the device people used to post their tributes to Jobs? It ran on Ritchie's inventions.\n\nDennis Ritchie co-created the UNIX operating system and invented the C programming language at Bell Labs in the early 1970s. These two achievements form the invisible foundation of virtually all modern technology.\n\nC is the language that built the world. Your operating system (Windows, macOS, Linux, Android, iOS) is written in C or its direct descendant C++. Your web browser, your database, your game engine — C. Python, Ruby, PHP, and most other languages you've heard of? Their interpreters are written in C. Even Java runs on a virtual machine written in C.\n\nUNIX's design philosophy — \"do one thing well,\" small composable tools, plain text as a universal interface — became the DNA of modern operating systems. Linux is a UNIX clone. macOS is literally built on UNIX (it's certified UNIX). Android runs on Linux. Your web server almost certainly runs UNIX.\n\nRitchie was quiet, modest, and academic. He didn't do product launches or keynotes. He wrote papers and code. His 1978 book \"The C Programming Language\" (known as K&R C, co-authored with Brian Kernighan) is considered one of the best programming books ever written — clear, concise, and practical.\n\nThe irony is brutal: Jobs was a visionary marketer who built beautiful products on top of other people's technology. Ritchie was the engineer who built the technology itself. Both were essential to the modern world, but only one became a household name. Ritchie's Turing Award (1983) and National Medal of Technology (1999) are small consolation for his near-invisibility in popular culture.\n\nRob Pike, Ritchie's colleague, wrote after his death: \"Pretty much everything on the web uses those two things: C and UNIX. The browsers are written in C. The UNIX kernel — that pretty much the entire internet runs on — is written in C... Dennis is the most important person you've probably never heard of.\"",
+  "author": "Prof. Andrei",
+  "authorEm": "🏛️",
+  "readTime": "9 min"
+}

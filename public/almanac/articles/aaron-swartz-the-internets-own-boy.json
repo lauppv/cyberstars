@@ -1,0 +1,14 @@
+{
+  "slug": "aaron-swartz-the-internets-own-boy",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "2013",
+  "emoji": "💔",
+  "grad": "linear-gradient(135deg,#2a1a2a,#5a2f4a)",
+  "title": "Aaron Swartz — the internet's own boy",
+  "excerpt": "Co-creator of RSS at 14, co-founder of Reddit, architect of Creative Commons. Aaron Swartz fought to make knowledge free for everyone. The US government charged him with 35 years in prison for downloading academic papers.",
+  "fullText": "Aaron Swartz was a prodigy in the truest sense. At age 14, he co-authored the RSS 1.0 specification — the technology that powers podcast feeds and news readers. By 19, he'd co-founded Reddit, worked on Creative Commons licenses, and built web.py, a popular Python web framework.\n\nBut Swartz wasn't interested in getting rich. He was obsessed with a single idea: information should be free. Not just software — all human knowledge. Academic papers, legal documents, government data. He believed that locking publicly-funded research behind expensive paywalls was morally wrong.\n\nHe put his beliefs into action. In 2008, he downloaded 2.7 million federal court documents from PACER (a system that charged 10 cents per page for public records). The FBI investigated but dropped the case — the documents were technically public.\n\nIn 2010-2011, he went further. Using MIT's network, he connected a laptop to a network switch in a closet and downloaded 4.8 million academic articles from JSTOR, a digital library. His apparent intent was to release them publicly. JSTOR settled and declined to prosecute.\n\nBut the US Attorney for Massachusetts, Carmen Ortiz, charged Swartz with 13 felony counts carrying up to 35 years in prison and $1 million in fines. For downloading academic papers. The prosecution offered plea deals requiring prison time. Swartz refused.\n\nOn January 11, 2013, Aaron Swartz hanged himself in his Brooklyn apartment. He was 26 years old.\n\nThe backlash was immediate and fierce. Thousands of academics posted their papers publicly in protest using the hashtag #pdftribute. MIT commissioned an internal investigation that admitted the university had been \"neutral\" when it should have advocated for Swartz. Congress introduced \"Aaron's Law\" to reform the Computer Fraud and Abuse Act (it hasn't passed).\n\nAaron's legacy lives on in the open access movement. Sci-Hub (founded 2011) now provides free access to over 85 million papers. Many journals have moved to open-access models. His story is a reminder that the line between activism and crime is often drawn by those in power, and that the punishment should fit the crime.",
+  "author": "Ms. Diana",
+  "authorEm": "🕊️",
+  "readTime": "10 min"
+}

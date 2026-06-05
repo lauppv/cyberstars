@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { fetchAlmanacSlugs } from '../services/almanacService';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async (importOriginal) => {
@@ -37,6 +38,22 @@ vi.mock('../components/layout/Topbar', () => ({
 }));
 vi.mock('../components/ui/LoadingSpinner', () => ({
   LoadingSpinner: () => <div>Loading...</div>,
+}));
+vi.mock('../services/almanacService', () => ({
+  fetchAlmanacSlugs: vi.fn(() => Promise.resolve(['a', 'b', 'c', 'd'])),
+  fetchAlmanacArticle: vi.fn((slug: string) =>
+    Promise.resolve({
+      slug,
+      cat: 'oss',
+      tag: 'OSS',
+      title: `Story ${slug}`,
+      excerpt: 'excerpt',
+      fullText: 'body',
+      author: 'x',
+      readTime: '5 min',
+      emoji: '🐧',
+    }),
+  ),
 }));
 
 const { useAuth } = await import('../context/AuthContext');
@@ -236,6 +253,27 @@ describe('HomePage', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     renderPage();
     expect(screen.getByText('From the Almanac')).toBeDefined();
+  });
+
+  it('renders almanac highlight cards after fetch', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(await screen.findAllByText(/^Story /)).toHaveLength(3);
+  });
+
+  it('opens story modal when an almanac highlight is clicked', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    const cards = await screen.findAllByText(/^Story /);
+    fireEvent.click(cards[0].closest('button')!);
+    expect(await screen.findByText('✕')).toBeInTheDocument();
+  });
+
+  it('hides the almanac section when highlights fail to load', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    vi.mocked(fetchAlmanacSlugs).mockRejectedValueOnce(new Error('boom'));
+    renderPage();
+    await waitFor(() => expect(screen.queryByText('From the Almanac')).not.toBeInTheDocument());
   });
 
   it('shows course milestones when logged in', () => {

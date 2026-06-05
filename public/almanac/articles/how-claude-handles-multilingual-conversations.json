@@ -1,0 +1,13 @@
+{
+  "slug": "how-claude-handles-multilingual-conversations",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "How Claude handles multilingual conversations",
+  "excerpt": "Claude speaks 50+ languages fluently — but what's impressive is how it switches between them naturally and maintains cultural context.",
+  "fullText": "One of Claude's less-discussed strengths is its multilingual capability. Not just translation — genuine fluency in 50+ languages, including an understanding of cultural context, idioms, and register.\n\nAsk Claude a question in Japanese, and it responds in natural Japanese — not translated English, but text that a native speaker would find comfortable. Switch to Spanish mid-conversation, and it follows seamlessly. Mix languages (as bilingual people naturally do), and it understands.\n\nThis matters enormously for global accessibility. An Indian student can learn programming in Hindi. A Brazilian developer can debug code in Portuguese. A Korean startup can write documentation in Korean and have Claude help translate it for international markets.\n\nThe cultural awareness goes deeper than language. Claude understands that directness is valued differently in different cultures, that humor translates poorly, and that certain topics require different levels of sensitivity in different contexts.\n\nFor global companies, this meant they could deploy a single AI system that served all their markets without separate models for each language — a dramatic simplification of their AI infrastructure.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

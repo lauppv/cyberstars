@@ -1,0 +1,14 @@
+{
+  "slug": "how-dns-works-the-internets-phone-book-that-nobody-thinks-about",
+  "cat": "internet",
+  "tag": "INTERNET",
+  "year": "1983",
+  "emoji": "🌍",
+  "grad": "linear-gradient(135deg,#1a2a3a,#2f4f7a)",
+  "title": "How DNS works — the internet's phone book that nobody thinks about",
+  "excerpt": "Every time you type a URL, a hidden system translates it into numbers. DNS is the backbone of the internet, controlled by just 13 root servers managed by organizations most people have never heard of.",
+  "fullText": "Every time you type \"google.com\" into your browser, something magical happens behind the scenes. Your computer has no idea what \"google.com\" means — it only understands IP addresses like 142.250.80.46. The Domain Name System (DNS) is what translates human-readable names into machine-readable numbers.\n\nBefore DNS existed (pre-1983), there was literally a single text file called HOSTS.TXT maintained by one person at Stanford. Every computer on the early internet downloaded this file to know where other computers were. As the internet grew, this became absurd — the file was constantly outdated and too large to distribute.\n\nPaul Mockapetris designed DNS in 1983 as a distributed, hierarchical system. Instead of one file, the system works like a chain of phone books. When you look up \"en.wikipedia.org\", your computer asks a recursive resolver, which asks a root server, which points to the .org servers, which point to Wikipedia's servers, which finally return the IP address.\n\nThe root of this entire system is just 13 sets of root name servers, labeled A through M. They're operated by organizations like Verisign, NASA, the US Army Research Lab, and ICANN. \"13\" is a technical limitation of the original DNS packet size — not a lucky number. In reality, these 13 addresses map to over 1,700 physical servers distributed worldwide using anycast routing.\n\nWho controls DNS controls the internet. ICANN (Internet Corporation for Assigned Names and Numbers), a nonprofit based in Los Angeles, coordinates the top-level domain system. It was originally under US government oversight, but in 2016, control was transferred to a global multi-stakeholder community. This transition was controversial — some argued it weakened US influence over the internet.\n\nDNS is also a security nightmare. DNS spoofing (also called DNS poisoning) can redirect you to fake websites without you knowing. DNSSEC was created to add cryptographic signatures to DNS responses, but adoption has been painfully slow because it adds complexity and can break things.\n\nThe next time your browser takes an extra 200ms to load a page, it might be DNS doing its thing. It's invisible infrastructure — boring but absolutely essential. Without DNS, you'd need to memorize IP addresses for every website. The internet as we know it simply couldn't exist.",
+  "author": "Mr. Radu",
+  "authorEm": "🌐",
+  "readTime": "8 min"
+}

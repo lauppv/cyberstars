@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-prediction-jeff-dean-on-ai-solving-climate-change",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini prediction: Jeff Dean on AI solving climate change",
+  "excerpt": "Google's chief scientist outlined how Gemini-class models could optimize energy systems, accelerate materials research, and model climate interventions.",
+  "fullText": "Jeff Dean, Google's chief scientist, has been vocal about AI's potential to address climate change. His prediction: within 5 years, AI will be the primary tool for designing climate solutions.\n\n\"The climate problem is fundamentally a computation problem,\" Dean explained. \"We need to model incredibly complex systems, optimize energy distribution, discover new materials for batteries and solar cells, and predict the effects of interventions. All of these are things AI excels at.\"\n\nGoogle has already applied AI to reduce data center energy consumption by 30% — a proof of concept for what's possible at larger scales. DeepMind's work on wind energy forecasting improved prediction accuracy by 20%, making wind farms significantly more profitable and reliable.\n\nDean envisions Gemini's successors designing new battery chemistries by simulating millions of molecular combinations, optimizing national power grids in real-time to minimize waste, and modeling the cascading effects of climate policies before they're implemented.\n\n\"The science of climate change is settled. What's missing is the engineering — the 'how do we actually fix it' part. That's exactly where AI can contribute most.\"\n\nHis timeline: major AI-driven climate breakthroughs within 3-5 years, with transformative impact on global emissions within a decade.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

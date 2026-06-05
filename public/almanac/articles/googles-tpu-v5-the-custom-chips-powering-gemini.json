@@ -1,0 +1,13 @@
+{
+  "slug": "googles-tpu-v5-the-custom-chips-powering-gemini",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Google's TPU v5: the custom chips powering Gemini",
+  "excerpt": "While others buy NVIDIA GPUs, Google designs its own AI chips. TPU v5 gave Gemini a hardware advantage no competitor could buy.",
+  "fullText": "Google has been designing its own AI accelerator chips — Tensor Processing Units (TPUs) — since 2016. By TPU v5, these custom chips gave Google a significant advantage in training and serving Gemini.\n\nTPUs are specifically designed for the matrix multiplication operations that dominate AI workloads. They sacrifice general-purpose computing flexibility for raw throughput on exactly the operations AI needs.\n\nThe advantage is twofold: cost and access. While competitors scramble to buy NVIDIA H100 GPUs (expensive and supply-constrained), Google manufactures its own chips. They're not subject to supply chain bottlenecks or NVIDIA's pricing.\n\nTPU v5 pods — clusters of thousands of chips — can train models in weeks that would take months on equivalent GPU clusters. This speed advantage means Google can iterate faster: try more architectures, run more experiments, and get to better models sooner.\n\nThe chips also optimize inference — serving the trained model to users. Lower serving cost per query means Google can offer more generous free tiers, deploy to more products, and experiment with applications where margins would be too thin with rented GPU compute.\n\nJeff Dean, Google's chief scientist, called it \"the single biggest strategic advantage in AI infrastructure.\"",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

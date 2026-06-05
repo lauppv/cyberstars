@@ -1,0 +1,14 @@
+{
+  "slug": "enigma-and-the-birth-of-modern-computing",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1943",
+  "emoji": "🔐",
+  "grad": "linear-gradient(135deg,#2a2a2a,#4a4a5a)",
+  "title": "Enigma and the birth of modern computing",
+  "excerpt": "Breaking Nazi Germany's Enigma cipher shortened WWII by an estimated 2 years. The machines built to crack it — Colossus and the Bombe — were the direct ancestors of modern computers.",
+  "fullText": "During World War II, Nazi Germany encrypted its military communications using the Enigma machine — an electromechanical device with 158 million million million possible settings (158 quintillion). Every day, operators would set the machine to a new configuration, and the Allies would have to start from scratch.\n\nPoland actually cracked Enigma first, in 1932. Mathematician Marian Rejewski reverse-engineered the machine's wiring using pure mathematics and some stolen German documents. Poland shared their work with Britain and France just weeks before the German invasion in 1939.\n\nAt Bletchley Park, a Victorian estate north of London, Britain assembled the greatest collection of mathematical minds in history. Alan Turing, Gordon Welchman, and thousands of others worked in total secrecy to industrialize code-breaking.\n\nTuring designed the Bombe — an electromechanical machine that could test Enigma settings at superhuman speed. By 1943, over 200 Bombes were running around the clock. They exploited weaknesses in German procedures: weather reports always contained certain words, and operators were lazy about choosing random settings.\n\nBut Enigma wasn't the only German cipher. The Lorenz cipher, used for Hitler's personal communications, was far more complex. To crack it, Tommy Flowers built Colossus — a room-sized electronic computer using 1,500 vacuum tubes. It became operational in February 1944 and is considered the first programmable electronic digital computer.\n\nThe intelligence from code-breaking (codenamed \"Ultra\") was perhaps the Allies' greatest secret advantage. It revealed U-boat positions (saving convoys), warned of German offensives, and helped plan D-Day. Historians estimate Ultra shortened the war by 2-3 years and saved millions of lives.\n\nAfter the war, Churchill ordered the Colossus machines destroyed and all records classified. The 10,000 people who worked at Bletchley Park kept their secret for decades — many died before it was declassified in the 1970s. Turing received no public recognition during his lifetime.\n\nThe tragedy is that Turing, who arguably contributed more to Allied victory than any other individual, was prosecuted in 1952 for being homosexual. He was chemically castrated and died of cyanide poisoning in 1954. He received a royal pardon in 2013 — 59 years too late. Today, his face is on the British £50 note.",
+  "author": "Prof. Andrei",
+  "authorEm": "🎖️",
+  "readTime": "10 min"
+}

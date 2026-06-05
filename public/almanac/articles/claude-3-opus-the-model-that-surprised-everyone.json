@@ -1,0 +1,13 @@
+{
+  "slug": "claude-3-opus-the-model-that-surprised-everyone",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2024",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude 3 Opus: the model that surprised everyone",
+  "excerpt": "When Anthropic released Claude 3 Opus in March 2024, benchmarks showed it matching or exceeding GPT-4 on reasoning tasks. The AI community took notice.",
+  "fullText": "In March 2024, Anthropic quietly released Claude 3 — a family of three models (Haiku, Sonnet, Opus) that changed how people thought about the competitive landscape of AI.\n\nClaude 3 Opus, the largest model, scored at or above GPT-4 on virtually every major benchmark: MMLU, HumanEval, GSM8K, and more. But what really set it apart wasn't raw scores — it was the quality of reasoning.\n\nUsers reported that Opus produced more nuanced, more careful responses. It was less likely to hallucinate, more willing to say \"I don't know,\" and better at following complex multi-step instructions.\n\nDario Amodei, Anthropic's CEO, described the goal: \"We want to build models that are not just capable, but also honest and harmless.\" Claude 3 felt like a step toward that vision — power without recklessness.\n\nThe release proved that the AI race wasn't a two-horse competition. Anthropic, with its focus on safety-first development, had built something genuinely world-class.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

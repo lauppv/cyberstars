@@ -1,0 +1,14 @@
+{
+  "slug": "the-night-the-internet-said-its-first-word",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1969",
+  "emoji": "📞",
+  "grad": "linear-gradient(135deg,#1a1a40,#3a1f70)",
+  "title": "The night the internet said its first word",
+  "excerpt": "On October 29, 1969, ARPANET sent its first message between UCLA and Stanford. They tried to send 'LOGIN' — the system crashed after 'LO'. Humanity's first internet message was an accidental 'lo'.",
+  "fullText": "The date was October 29, 1969. The place: Room 3420 at UCLA's Boelter Hall. A young programmer named Charley Kline sat at an SDS Sigma 7 computer, connected via a 50 kilobit per second line to a second machine at Stanford Research Institute, 350 miles away.\n\nHis task was simple: log in to the remote computer. He would type \"LOGIN\" and the Stanford machine would respond.\n\nHe typed \"L\". The system echoed it back. He typed \"O\". It echoed back. Then he typed \"G\" — and the entire system crashed.\n\nThe first message ever sent over what would become the internet was \"LO\". An accidental abbreviation that, in retrospect, seems almost poetic — as if the network was saying \"hello\" in its own broken way.\n\nAbout an hour later, after the system was rebooted, Kline tried again. This time the full \"LOGIN\" went through. The ARPANET was alive.\n\nThe network had been funded by DARPA (the Defense Advanced Research Projects Agency) and designed by a team led by Larry Roberts and Bob Kahn. The original vision was to allow researchers at different universities to share expensive computing resources.\n\nNobody imagined it would become a global communication network connecting billions of people. The four original ARPANET nodes — UCLA, Stanford, UC Santa Barbara, and the University of Utah — were the seeds of what we now call the internet.\n\nThat two-letter \"LO\" is preserved in the IMP (Interface Message Processor) log at UCLA. It remains the most consequential typo in human history.",
+  "author": "CyberBot",
+  "authorEm": "🤖",
+  "readTime": "5 min"
+}

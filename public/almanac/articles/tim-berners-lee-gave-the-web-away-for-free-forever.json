@@ -1,0 +1,14 @@
+{
+  "slug": "tim-berners-lee-gave-the-web-away-for-free-forever",
+  "cat": "internet",
+  "tag": "INTERNET",
+  "year": "1991",
+  "emoji": "🌐",
+  "grad": "linear-gradient(135deg,#103a3a,#1f7a7a)",
+  "title": "Tim Berners-Lee gave the Web away — for free, forever",
+  "excerpt": "In 1993 CERN published the Web's source code into the public domain. Tim Berners-Lee never patented it. No royalties, no permissions. That single decision made the modern internet possible.",
+  "fullText": "In 1989, Tim Berners-Lee, a British physicist working at CERN (the European Organization for Nuclear Research), had a problem. Thousands of researchers at CERN produced data, papers, and documentation, but they used different computer systems that couldn't talk to each other. Finding information was a nightmare.\n\nHis solution was a proposal titled \"Information Management: A Proposal.\" His boss's handwritten note on the cover page read: \"Vague, but exciting.\"\n\nBy 1990, Berners-Lee had built the three fundamental technologies of the World Wide Web: HTML (the markup language for web pages), URI/URL (the addressing system), and HTTP (the communication protocol). He also built the first web browser and the first web server, running on a NeXT computer at CERN.\n\nThe first website, info.cern.ch, went live on December 20, 1990. It explained what the Web was and how to use it.\n\nHere's where the story becomes remarkable. CERN could have patented the Web. Berners-Lee could have licensed it. The potential revenue would have been astronomical — every website, every web transaction, every online service would owe royalties.\n\nInstead, on April 30, 1993, CERN released the Web's underlying code into the public domain. No patents. No royalties. No restrictions. Anyone, anywhere, could build on it for free.\n\nBerners-Lee has been explicit about why: \"Had the technology been proprietary, and in my total control, it would probably not have taken off. You can't propose that something be a universal space and at the same time keep control of it.\"\n\nThis single decision — to give the Web away — is arguably the most consequential act of generosity in technological history. It enabled the explosive growth of the internet, the creation of entire industries, and the transformation of human communication.\n\nBerners-Lee was knighted in 2004 and received the Turing Award in 2016. But his greatest legacy is the thing he chose not to own.",
+  "author": "Sam",
+  "authorEm": "🦉",
+  "readTime": "7 min"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-in-google-search-ai-transforms-how-we-find-information",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini in Google Search: AI transforms how we find information",
+  "excerpt": "Google integrated Gemini directly into Search, generating AI overviews for complex queries. A billion users got AI answers without knowing it.",
+  "fullText": "In 2024, Google began rolling out AI Overviews in Search — powered by Gemini. For complex queries, instead of just showing a list of blue links, Google would generate a synthesized answer at the top of the page.\n\nAsk \"What's the difference between React and Vue for a small team?\" and you'd get a nuanced comparison before any traditional search results. Ask \"How does mRNA vaccine technology work?\" and you'd get a clear, multi-paragraph explanation with citations.\n\nThe scale was unprecedented. Over a billion people use Google Search daily. This was the largest deployment of an AI model in history — and most users didn't even know they were talking to an AI.\n\nGoogle was careful with accuracy. AI Overviews cited their sources, indicated confidence levels, and deferred to authoritative sites for medical and legal queries. They also provided quick ways to verify claims by clicking through to original sources.\n\nThe impact on web traffic was hotly debated. Some sites saw less referral traffic as users got answers directly. Others saw more, as AI Overviews linked to specific relevant pages users might not have found otherwise.\n\nWhat was undeniable was the user experience improvement: for complex queries that previously required clicking through 5-10 results and synthesizing information manually, Gemini did the work in seconds.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

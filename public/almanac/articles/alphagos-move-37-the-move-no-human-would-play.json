@@ -1,0 +1,14 @@
+{
+  "slug": "alphagos-move-37-the-move-no-human-would-play",
+  "cat": "ai",
+  "tag": "AI & FUTURE",
+  "year": "2016",
+  "emoji": "⚫",
+  "grad": "linear-gradient(135deg,#1a2a1a,#2f5a3f)",
+  "title": "AlphaGo's Move 37 — the move no human would play",
+  "excerpt": "In Game 2 against the world Go champion, Google's AlphaGo played a move so alien that commentators thought it was a mistake. It won the game. Move 37 showed that AI can discover strategies humans never imagined.",
+  "fullText": "Go is not chess. Chess has about 10^47 possible game positions. Go has 10^170 — more than there are atoms in the observable universe. Brute-force calculation, which had conquered chess in 1997, was utterly useless for Go. Experts predicted it would take decades before AI could beat a top Go player.\n\nIn March 2016, Google DeepMind's AlphaGo faced Lee Sedol, one of the greatest Go players in history, in a five-game match in Seoul. Before the match, most Go professionals predicted Lee would win 5-0.\n\nGame 1: AlphaGo won. The Go world was shocked but rationalized — maybe Lee underestimated it.\n\nGame 2 changed everything. On move 37, AlphaGo placed a stone on the fifth line — a position that no human expert would consider. Go wisdom, refined over 3,000 years, says you play on the third or fourth line in the opening. The fifth line is too high, too greedy, too exposed.\n\nThe commentators thought it was a bug. Fan Hui, the European champion who had tested AlphaGo, said: \"It's not a human move. I've never seen a human play this move.\" One commentator said: \"I thought it was a mistake.\"\n\nIt wasn't a mistake. Move 37 set up influence across the entire board in a way that only became clear dozens of moves later. Lee Sedol left the room for 15 minutes to compose himself. He went on to lose the game.\n\nAlphaGo's team later revealed that its neural networks estimated Move 37 had a 1 in 10,000 chance of being played by a human professional. The AI found it by playing millions of games against itself, discovering strategies that 3,000 years of human play had missed.\n\nLee Sedol won Game 4 with his own brilliant move — move 78, which AlphaGo's team said the AI had estimated had a 1 in 10,000 chance of being played. But AlphaGo won the match 4-1.\n\nMove 37 matters beyond Go. It demonstrated that AI systems trained through self-play can discover genuinely novel strategies — not just optimize known approaches, but find entirely new ones invisible to human experts. This has implications for drug discovery, materials science, mathematics, and any field where the search space is too vast for human intuition.\n\nLee Sedol retired from professional Go in 2019, saying: \"Even if I become the number one, there is an entity that cannot be defeated.\" He remains the only human to have beaten AlphaGo in a formal match.",
+  "author": "Dr. Elena",
+  "authorEm": "🎯",
+  "readTime": "9 min"
+}

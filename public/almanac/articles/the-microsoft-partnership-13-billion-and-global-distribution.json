@@ -1,0 +1,13 @@
+{
+  "slug": "the-microsoft-partnership-13-billion-and-global-distribution",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2025",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "The Microsoft partnership: $13 billion and global distribution",
+  "excerpt": "Microsoft's investment gave OpenAI massive compute resources and distribution through Windows, Office, and Azure. 1.5 billion people got AI access overnight.",
+  "fullText": "Microsoft's cumulative investment in OpenAI — reaching $13 billion by 2024 — wasn't just financial. It was a strategic distribution deal that put AI into the hands of 1.5 billion people through Microsoft 365, Windows, Azure, and GitHub.\n\nCopilot in Windows gave every PC user an AI assistant. Copilot in Office transformed Word, Excel, PowerPoint, and Outlook. GitHub Copilot changed how millions of developers write code. Azure OpenAI Service let enterprises deploy GPT-4 in their own infrastructure.\n\nFor OpenAI, the partnership solved their two biggest problems: compute (Azure's GPU clusters for training) and distribution (reaching billions of users through Microsoft's existing products).\n\nFor Microsoft, it represented a once-in-a-generation opportunity to leapfrog Google in the AI race. After years of being dismissed as \"the cloud and Office company,\" Microsoft suddenly became the most exciting company in tech.\n\nThe financial structure was unusual: Microsoft invested in exchange for a significant share of OpenAI's profits, but OpenAI maintained its capped-profit structure and ultimate non-profit governance (though this would later evolve).\n\nThe partnership proved that in AI, distribution is as important as capability. Having the best model matters less if you can't get it into people's hands. Microsoft could do that better than anyone.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

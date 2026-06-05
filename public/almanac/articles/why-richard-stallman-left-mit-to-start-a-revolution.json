@@ -1,0 +1,14 @@
+{
+  "slug": "why-richard-stallman-left-mit-to-start-a-revolution",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "1985",
+  "emoji": "🦬",
+  "grad": "linear-gradient(135deg,#1f3a1f,#2d6b3d)",
+  "title": "Why Richard Stallman left MIT to start a revolution",
+  "excerpt": "After fighting with a printer driver he wasn't allowed to fix, Stallman quit MIT and started the GNU Project. He wrote a license that uses copyright to do the opposite: guarantee freedom.",
+  "fullText": "In the late 1970s, the AI Lab at MIT was a hacker paradise. Researchers shared code freely, improved each other's programs, and treated software like knowledge — something meant to flow.\n\nRichard Stallman, a programmer at the lab, thrived in this culture. Then things changed.\n\nThe incident that radicalized him was surprisingly mundane: a printer. Xerox had donated a laser printer to the lab, but it jammed frequently. Stallman wanted to fix the driver software to notify users when their print job jammed — a simple quality-of-life hack.\n\nBut Xerox wouldn't share the source code. A researcher at Carnegie Mellon who had the code refused to share it too — he'd signed a non-disclosure agreement.\n\nFor Stallman, this was a betrayal of everything computing should be. Software was becoming proprietary. Companies were locking down code that researchers used to share freely. The hacker culture was dying.\n\nIn 1983, he announced the GNU Project — a plan to build a complete, free operating system. In 1985, he left MIT (so the university couldn't claim ownership of his work) and founded the Free Software Foundation.\n\nHis masterstroke was the GNU General Public License (GPL). Instead of abandoning copyright, the GPL uses copyright law to enforce freedom: you can use, modify, and share GPL software, but any derivative work must also be GPL. Stallman called this \"copyleft.\"\n\nBy the early 1990s, GNU had produced essential tools — GCC (compiler), Emacs (editor), Bash (shell), and many utilities. The only missing piece was the kernel. When Linus Torvalds released his Linux kernel in 1991, it combined with the GNU tools to create a fully free operating system.\n\nStallman's principled stand — triggered by a jammed printer — had laid the foundation for the open-source revolution that now powers most of the world's technology.",
+  "author": "Editorial",
+  "authorEm": "✨",
+  "readTime": "7 min"
+}

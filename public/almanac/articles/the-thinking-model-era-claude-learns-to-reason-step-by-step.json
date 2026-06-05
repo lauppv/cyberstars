@@ -1,0 +1,13 @@
+{
+  "slug": "the-thinking-model-era-claude-learns-to-reason-step-by-step",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "The thinking model era: Claude learns to reason step by step",
+  "excerpt": "Extended thinking gave Claude the ability to work through complex problems internally before responding. Math, logic, and coding quality jumped dramatically.",
+  "fullText": "In early 2025, Anthropic introduced \"extended thinking\" — a mode where Claude could reason through complex problems step by step before producing a final answer.\n\nUnder the hood, the model generates a chain of thought that explores the problem space, considers alternatives, catches its own errors, and builds toward a solution. The user sees the final polished answer, but behind it lies pages of careful reasoning.\n\nThe impact on challenging tasks was dramatic. On graduate-level math problems, accuracy improved by 30-50%. On complex coding challenges, Claude went from \"close but buggy\" to \"correct on first try\" more often than not.\n\nWhat made this particularly exciting was that it mirrored how expert humans solve hard problems: they don't jump straight to an answer. They think, consider edge cases, backtrack when they hit dead ends, and build confidence before committing.\n\nThe philosophical implication was profound: AI models weren't just pattern-matching anymore. They were developing something that looked increasingly like genuine reasoning — the ability to solve novel problems they'd never seen in training data.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}
