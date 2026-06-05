@@ -16,8 +16,6 @@ const mockProgressRepo = {
 
 const mockCurriculumRepo = {
   getLessonsByCourse: vi.fn(),
-  getAllCourses: vi.fn(),
-  getAllLessons: vi.fn(),
   getLessonCount: vi.fn(),
   lessonExists: vi.fn(),
 };

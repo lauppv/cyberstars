@@ -7,7 +7,6 @@ import helmet from 'helmet';
 import { config } from './config/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import authRoutes from './routes/auth.routes.js';
-import lessonRoutes from './routes/lesson.routes.js';
 import progressRoutes from './routes/progress.routes.js';
 import forumRoutes from './routes/forum.routes.js';
 import terminalRoutes from './routes/terminal.routes.js';
@@ -42,7 +41,6 @@ app.use('/api/forum', forumRoutes);
 app.use('/api/terminal', terminalRoutes);
 app.use('/api/support', supportRoutes);
 app.use('/api/profile', profileRoutes);
-app.use('/api', lessonRoutes);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));

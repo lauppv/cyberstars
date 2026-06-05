@@ -21,6 +21,10 @@ test-results/
 *.local
 uploads/
 
+# Generated static lesson content (see scripts/generate-static-content.ts)
+public/lessons/
+public/curriculum.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

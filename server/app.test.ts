@@ -36,10 +36,8 @@ vi.mock('@prisma/client', () => {
 vi.mock('./config/db.js', () => ({ prisma: makePrismaProxy() }));
 
 vi.mock('./repositories/curriculum.repository.js', () => ({
-  getAllCourses: vi.fn().mockResolvedValue([]),
   getLessonsByCourse: vi.fn().mockResolvedValue([]),
-  getAllLessons: vi.fn().mockResolvedValue([]),
-  getLessonCount: vi.fn().mockResolvedValue(0),
+  lessonExists: vi.fn().mockResolvedValue(false),
 }));
 vi.mock('./repositories/progress.repository.js', () => ({
   getProgress: vi.fn().mockResolvedValue([]),
@@ -58,12 +56,7 @@ vi.mock('./repositories/user.repository.js', () => ({
 const { app } = await import('./app.js');
 
 describe('endpoint smoke tests — public routes return 200', () => {
-  const publicGets = [
-    '/api/curriculum',
-    '/api/lessons/python/booleans',
-    '/api/lesson-code/python/booleans-code.md',
-    '/api/forum/categories',
-  ];
+  const publicGets = ['/api/forum/categories'];
 
   for (const path of publicGets) {
     it(`GET ${path}`, async () => {
@@ -75,13 +68,13 @@ describe('endpoint smoke tests — public routes return 200', () => {
 
 describe('guest id cookie', () => {
   it('sets a guestId cookie for signed-out visitors', async () => {
-    const res = await request(app).get('/api/curriculum');
+    const res = await request(app).get('/api/forum/categories');
     const cookies = (res.headers['set-cookie'] as string[] | undefined) ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
   });
 
   it('does not set a guestId when a token cookie is already present', async () => {
-    const res = await request(app).get('/api/curriculum').set('Cookie', 'token=whatever');
+    const res = await request(app).get('/api/forum/categories').set('Cookie', 'token=whatever');
     const cookies = (res.headers['set-cookie'] as string[] | undefined) ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
   });

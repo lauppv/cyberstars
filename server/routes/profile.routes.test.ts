@@ -45,9 +45,7 @@ const mockUserRepo = {
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('../repositories/curriculum.repository.js', () => ({
-  getAllCourses: vi.fn().mockResolvedValue([]),
   getLessonsByCourse: vi.fn().mockResolvedValue([]),
-  getAllLessons: vi.fn().mockResolvedValue([]),
   getLessonCount: vi.fn().mockResolvedValue(0),
 }));
 vi.mock('../repositories/progress.repository.js', () => ({

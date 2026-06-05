@@ -15,7 +15,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev               # Start client (Vite :5173) + server (:5000) + db setup concurrently
 npm run dev:client        # Vite dev server only
 npm run dev:server        # Express server with tsx watch
-npm run build             # Production build to /dist
+npm run build             # Production build to /dist (runs gen:content first via prebuild)
+npm run gen:content       # Generate public/curriculum.json + public/lessons/ static files (auto-run by predev:client & prebuild)
 npm test                  # Run Vitest unit suite once (jsdom)
 npm run test:watch        # Vitest in watch mode
 npm run test:coverage     # Vitest + v8 coverage (./coverage/); fails if below thresholds
@@ -55,7 +56,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - React 19 + Vite 7 + Tailwind CSS 4, uses HashRouter
 - Routes: `/`, `/getstarted`, `/courses`, `/algorithms`, `/algorithms/:lang`, `/lesson/:category/:lesson`, `/profile`, `/forum`, `/almanac`, `/laniakea`, `/rules`, `/support`, `/welcome`
 - Three React Context providers: `AuthContext`, `CurriculumContext`, `ProgressContext`
-- Services in `client/services/` wrap all API calls through a shared `apiClient` fetch wrapper
+- Services in `client/services/` wrap API calls through a shared `apiClient` fetch wrapper. Exceptions: `lessonService` and `almanacService` fetch **static files** (lesson markdown, `curriculum.json`, almanac JSON) directly via `fetch` — that content is generated into `public/` at build time and never hits the API server (see `scripts/generate-static-content.ts`)
 - Code editor uses CodeMirror 4 with per-language syntax highlighting
 - Global `CosmosBackground` (canvas starfield + nebulae) renders on all routes except `/getstarted` and `/welcome` — managed in `App.tsx` via `GlobalBackground` component. Uses `isolation: isolate` on `#root` with `z-index: -1` on cosmos so content stays above without explicit z-index hacks. AuthPage and WelcomePage have their own dedicated animated backgrounds.
 - Text sections over the starfield use `.text-backdrop` class (semi-transparent bg + backdrop-blur) for readability
@@ -79,7 +80,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Core models: `User`, `Curriculum` (with `CurriculumKind` enum: editor/terminal), `Lesson`, `UserLessonProgress`, `UserSavedCode`
 - Forum models: `ForumCategory`, `ForumThread`, `ForumPost` (soft-delete with `deleted`/`deletedByName`, edit tracking with `editedByName`), `ForumReaction`
 - Support models: `SupportTicket`, `SupportMessage` — tickets are per-user with threaded replies; owners can close their own tickets, admins can set any status
-- Seed script populates all courses and lessons from filesystem
+- Seed script populates courses and lessons from `prisma/curriculum.data.ts` (the single source of truth for curriculum structure, shared with the static-content generator)
 
 ### Shared (`shared/`)
 
@@ -107,7 +108,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Setup file in `test/setup.ts` handles jest-dom matchers and cleanup between tests
 - Coverage via `@vitest/coverage-v8` with json-summary + lcov reporters
 - Client component tests use `render`/`screen`/`fireEvent` from testing-library
-- Server unit tests on services use `vi.mock` to isolate from env/DB dependencies (see `lesson.service.test.ts`)
+- Server unit tests on services use `vi.mock` to isolate from env/DB dependencies (see `progress.service.test.ts`)
 - Endpoint smoke tests (`server/app.test.ts`) use supertest to verify all routes respond correctly (200 for public, 401 for auth-protected, 404 for unknown). Mock PrismaClient and repositories to avoid needing a real DB
 - Dead code detection via knip (`npm run dead-code`) — config in `knip.config.ts`. Runs in CI; must pass before merge
 - Coverage thresholds enforced in `vite.config.ts`: **90% on all metrics** (lines/statements/functions/branches) — `npm run test:coverage` fails if below

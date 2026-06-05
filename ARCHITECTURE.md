@@ -74,11 +74,18 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Curriculum & Lessons
 
-| Method | Endpoint                       | Auth | Description                           |
-| ------ | ------------------------------ | ---- | ------------------------------------- |
-| GET    | `/api/curriculum`              | No   | List all courses with ordered lessons |
-| GET    | `/api/lessons/:lang/:lesson`   | No   | Get lesson Markdown content           |
-| GET    | `/api/lesson-code/:lang/:file` | No   | Get starter code template             |
+Curriculum structure and lesson content are **static files**, not API routes —
+generated at build time by `scripts/generate-static-content.ts` (from the seed
+data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
+`server/algorithms`) and served from `public/` (Vite's publicDir in dev,
+`express.static`/nginx in prod). The client fetches them directly via
+`client/services/lessonService.ts`, so they never touch the API server or the DB.
+
+| Asset                               | Description                      |
+| ----------------------------------- | -------------------------------- |
+| `/curriculum.json`                  | All courses with ordered lessons |
+| `/lessons/:courseKey/:slug.md`      | Lesson Markdown content          |
+| `/lessons/:courseKey/:slug-code.md` | Starter code template            |
 
 ### Code Execution
 
