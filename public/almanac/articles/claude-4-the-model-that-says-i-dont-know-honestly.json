@@ -1,0 +1,13 @@
+{
+  "slug": "claude-4-the-model-that-says-i-dont-know-honestly",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude 4: the model that says 'I don't know' honestly",
+  "excerpt": "Claude 4 brought calibrated uncertainty — it wouldn't just give answers, it would tell you how confident it was. A small change with enormous implications.",
+  "fullText": "One of the most underrated features of Claude 4 was its improved calibration — the ability to accurately assess its own uncertainty.\n\nWhen asked a factual question, Claude 4 wouldn't just produce an answer. It would indicate its confidence level. \"I'm quite confident about this\" vs. \"I'm not certain — you should verify this\" vs. \"I genuinely don't know.\"\n\nThis might sound simple, but it addressed one of the biggest criticisms of AI: hallucination. Previous models would confidently state falsehoods with the same tone as genuine facts. Claude 4's calibrated responses meant users could actually trust the model's self-assessment.\n\nFor professional use cases — medicine, law, engineering — this was transformative. A doctor could ask Claude for a differential diagnosis and know which possibilities the model was confident about vs. which were speculative. A lawyer could trust that \"I'm not sure this citation is correct\" meant something.\n\nAnthropic achieved this through a combination of training techniques: Constitutional AI principles that valued honesty, reward modeling that penalized false confidence, and post-training calibration procedures.\n\nThe result: a model that felt less like a know-it-all and more like an honest expert — someone who could say \"I don't know\" without feeling threatened.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

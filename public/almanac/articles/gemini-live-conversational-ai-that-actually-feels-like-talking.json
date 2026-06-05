@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-live-conversational-ai-that-actually-feels-like-talking",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini Live: conversational AI that actually feels like talking",
+  "excerpt": "Gemini Live introduced real-time voice conversation with natural interruptions, emotional awareness, and context that persists across sessions.",
+  "fullText": "Previous voice AI felt like talking to a phone tree: speak, wait, get a response, repeat. Gemini Live changed that by introducing genuine conversational dynamics: natural turn-taking, the ability to interrupt and be interrupted, awareness of tone and emotion, and context that persisted across conversations.\n\nYou could interrupt mid-sentence and the model would gracefully pivot. You could think out loud — \"hmm, wait, actually...\" — and it would understand you were revising your thought, not asking a question. You could express frustration and it would adjust its approach.\n\nThe technical challenge was enormous: real-time streaming of both audio input and output, sub-200ms latency for natural conversation flow, and the ability to process partial utterances and maintain coherent context.\n\nFor many users, this was the moment AI stopped feeling like a tool and started feeling like a companion. Daily commuters chatted with Gemini during drives. Language learners practiced conversation. Elderly users found companionship.\n\nGoogle was careful about this emotional dimension. They added clear disclosures that Gemini is an AI, not a person, and designed the voice to be helpful without being deceptively human-like.\n\nBut the technology itself was undeniable: for the first time, talking to AI felt as natural as talking to a person.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

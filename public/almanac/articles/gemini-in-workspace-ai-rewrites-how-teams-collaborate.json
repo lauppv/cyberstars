@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-in-workspace-ai-rewrites-how-teams-collaborate",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini in Workspace: AI rewrites how teams collaborate",
+  "excerpt": "Gemini in Google Docs, Sheets, and Slides doesn't just help individuals — it transforms how teams work together on shared documents.",
+  "fullText": "When Google integrated Gemini into Workspace (Docs, Sheets, Slides, Gmail), it didn't just add an AI assistant to individual productivity. It transformed collaborative workflows.\n\nIn Docs, Gemini could summarize comment threads, resolve conflicting edits, and suggest compromises when collaborators disagreed. \"Based on Alex's comment and Jordan's revision, here's a version that addresses both concerns.\"\n\nIn Sheets, it could analyze data patterns, generate formulas from natural language, and create visualizations — but also explain its reasoning to team members who might question the analysis.\n\nIn Slides, Gemini could generate entire presentations from a brief, then adapt them based on feedback: \"Make it more technical for the engineering audience\" or \"Simplify for the board meeting.\"\n\nThe most powerful feature was cross-app intelligence. Gemini could draft an email based on a meeting's shared notes, create a project plan in Sheets from discussion points in Docs, or generate a presentation from a collaborative brainstorm.\n\nFor enterprises, this meant faster decision-making, fewer miscommunications, and less time spent on formatting and formatting rather than thinking. The boring administrative overhead of knowledge work — summarizing, formatting, cross-referencing — was largely eliminated.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

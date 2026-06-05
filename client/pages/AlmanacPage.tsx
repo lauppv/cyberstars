@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Topbar } from '../components/layout/Topbar';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { StoryModal } from './StoryModal';
-import { AI_ARTICLES } from './almanacAIArticles';
-import { HERO, ARTICLES, FUN_FACTS, QUOTES, BIG_TIMELINE } from './almanacData';
-import type { StoryData } from './almanacData';
+import {
+  fetchAlmanacIndex,
+  fetchAlmanacExtras,
+  fetchAlmanacArticle,
+} from '../services/almanacService';
+import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/almanac';
 import './AlmanacPage.css';
 
 const CATEGORIES = [
@@ -70,9 +74,20 @@ export function AlmanacPage() {
   const [page, setPage] = useState(1);
   const [factIdx, setFactIdx] = useState(0);
   const [quoteIdx, setQuoteIdx] = useState(0);
-  const [openStory, setOpenStory] = useState<StoryData | null>(null);
+  const [openStory, setOpenStory] = useState<AlmanacArticle | null>(null);
   const [topicOffset, setTopicOffset] = useState(0);
   const [showAllTopics, setShowAllTopics] = useState(false);
+  const [cards, setCards] = useState<AlmanacCard[] | null>(null);
+  const [extras, setExtras] = useState<AlmanacExtras | null>(null);
+
+  useEffect(() => {
+    fetchAlmanacIndex()
+      .then(setCards)
+      .catch(() => setCards([]));
+    fetchAlmanacExtras()
+      .then(setExtras)
+      .catch(() => setExtras({ funFacts: [], quotes: [], timeline: [] }));
+  }, []);
 
   const handlePage = (p: number) => {
     setPage(p);
@@ -81,22 +96,43 @@ export function AlmanacPage() {
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const PER_PAGE = 10;
-  const ALL_ARTICLES = [...ARTICLES, ...AI_ARTICLES];
-  const filtered = filter === 'all' ? ALL_ARTICLES : ALL_ARTICLES.filter((a) => a.cat === filter);
-  const totalPages = Math.ceil(filtered.length / PER_PAGE);
-  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
-  const fact = FUN_FACTS[factIdx];
-  const quote = QUOTES[quoteIdx];
+  const openArticle = (slug: string) => {
+    fetchAlmanacArticle(slug)
+      .then(setOpenStory)
+      .catch(() => {});
+  };
 
   const visibleCategories = showAllTopics
     ? CATEGORIES
     : [...CATEGORIES.slice(topicOffset), ...CATEGORIES.slice(0, topicOffset)];
 
-  const nextFact = () => setFactIdx((factIdx + 1) % FUN_FACTS.length);
-  const prevFact = () => setFactIdx((factIdx - 1 + FUN_FACTS.length) % FUN_FACTS.length);
-  const nextQuote = () => setQuoteIdx((quoteIdx + 1) % QUOTES.length);
-  const prevQuote = () => setQuoteIdx((quoteIdx - 1 + QUOTES.length) % QUOTES.length);
+  if (!cards || !extras) {
+    return (
+      <>
+        <Topbar />
+        <main className="almanac-page">
+          <div className="flex items-center justify-center py-20">
+            <LoadingSpinner />
+          </div>
+        </main>
+      </>
+    );
+  }
+
+  const PER_PAGE = 10;
+  const hero = cards.find((c) => c.isHero);
+  const articleCards = cards.filter((c) => !c.isHero);
+  const filtered = filter === 'all' ? articleCards : articleCards.filter((a) => a.cat === filter);
+  const totalPages = Math.ceil(filtered.length / PER_PAGE);
+  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const fact = extras.funFacts[factIdx];
+  const quote = extras.quotes[quoteIdx];
+
+  const nextFact = () => setFactIdx((factIdx + 1) % extras.funFacts.length);
+  const prevFact = () =>
+    setFactIdx((factIdx - 1 + extras.funFacts.length) % extras.funFacts.length);
+  const nextQuote = () => setQuoteIdx((quoteIdx + 1) % extras.quotes.length);
+  const prevQuote = () => setQuoteIdx((quoteIdx - 1 + extras.quotes.length) % extras.quotes.length);
 
   return (
     <>
@@ -154,20 +190,20 @@ export function AlmanacPage() {
           </button>
         </div>
 
-        {filter === 'all' && (
-          <article className="almanac-hero" onClick={() => setOpenStory(HERO)}>
+        {filter === 'all' && hero && (
+          <article className="almanac-hero" onClick={() => openArticle(hero.slug)}>
             <div className="hero-art">
               <div className="hero-art-bg" />
               <div className="hero-art-stars" />
-              <div className="hero-art-icon">{HERO.emoji}</div>
+              <div className="hero-art-icon">{hero.emoji}</div>
               <div className="hero-art-badge">FEATURED STORY</div>
             </div>
             <div className="hero-content">
-              <div className="hero-cat">✦ {HERO.catLabel}</div>
-              <h2 className="hero-title">{HERO.title}</h2>
-              <p className="hero-excerpt">{HERO.excerpt}</p>
+              <div className="hero-cat">✦ {hero.catLabel}</div>
+              <h2 className="hero-title">{hero.title}</h2>
+              <p className="hero-excerpt">{hero.excerpt}</p>
               <div className="hero-meta">
-                <span>{HERO.date}</span>
+                <span>{hero.date}</span>
               </div>
             </div>
           </article>
@@ -189,7 +225,7 @@ export function AlmanacPage() {
             </div>
             <div className="almanac-articles">
               {paginated.map((a, i) => (
-                <article className="almanac-article" key={i} onClick={() => setOpenStory(a)}>
+                <article className="almanac-article" key={i} onClick={() => openArticle(a.slug)}>
                   <div className="article-art">
                     <div className="article-art-grad" style={{ background: a.grad }} />
                     <span className="article-art-tag">{a.tag}</span>
@@ -225,11 +261,11 @@ export function AlmanacPage() {
                 ›
               </button>
               <h3>🎲 Fun Fact</h3>
-              <span className="fact-emoji">{fact.em}</span>
-              <div className="fact-text">{fact.text}</div>
-              <div className="fact-source">{fact.src}</div>
+              <span className="fact-emoji">{fact?.em}</span>
+              <div className="fact-text">{fact?.text}</div>
+              <div className="fact-source">{fact?.src}</div>
               <div className="card-counter">
-                {factIdx + 1} / {FUN_FACTS.length}
+                {factIdx + 1} / {extras.funFacts.length}
               </div>
             </div>
 
@@ -250,13 +286,13 @@ export function AlmanacPage() {
               </button>
               <h3>💬 Quotes</h3>
               <div className="quote-mark">&ldquo;</div>
-              <div className="quote-text">{quote.text}</div>
+              <div className="quote-text">{quote?.text}</div>
               <div className="quote-author">
-                — <strong>{quote.author}</strong>
-                {quote.context && <> &middot; {quote.context}</>}
+                — <strong>{quote?.author}</strong>
+                {quote?.context && <> &middot; {quote.context}</>}
               </div>
               <div className="card-counter">
-                {quoteIdx + 1} / {QUOTES.length}
+                {quoteIdx + 1} / {extras.quotes.length}
               </div>
             </div>
           </aside>
@@ -272,7 +308,7 @@ export function AlmanacPage() {
             </div>
           </div>
           <div className="bigtl">
-            {BIG_TIMELINE.map((m, i) => (
+            {extras.timeline.map((m, i) => (
               <div className="bigtl-item" key={i}>
                 <div className="bigtl-dot">{m.emoji}</div>
                 <div className="bigtl-year">{m.year}</div>

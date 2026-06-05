@@ -1,0 +1,13 @@
+{
+  "slug": "gpt-4o-multimodal-ai-that-sees-hears-and-speaks",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2024",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "GPT-4o: multimodal AI that sees, hears, and speaks",
+  "excerpt": "GPT-4o (omni) could process text, images, and audio simultaneously — and respond in real-time voice with emotion and personality.",
+  "fullText": "In May 2024, OpenAI released GPT-4o (\"o\" for \"omni\") — a model that natively processed text, vision, and audio in a single architecture. The demo was jaw-dropping.\n\nA user spoke to the model and it responded instantly — no more awkward pauses. It could be interrupted, could laugh, could sing, could adjust its tone from formal to playful mid-sentence. It sounded human in a way no AI voice had before.\n\nThe vision capabilities were equally impressive: hold up a math worksheet and GPT-4o would read it, solve problems, and explain steps aloud. Point a camera at a menu in a foreign language and hear the translation spoken naturally.\n\nThe \"omni\" in the name was deliberate: this was a single model handling all modalities simultaneously, not separate systems stitched together. Input in any modality, output in any modality, with understanding that crossed between them.\n\nThe real-time voice capability was particularly transformative for accessibility. Visually impaired users could point their phone at anything and get an instant description. Hearing-impaired users could get real-time transcription with context.\n\nGPT-4o was also free to use (with rate limits), dramatically expanding access to AI capabilities. The premium tiers offered more usage and priority access, but the base experience was available to everyone.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "the-ai-regulation-debate-openai-advocates-for-governance",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2025",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "The AI regulation debate: OpenAI advocates for governance",
+  "excerpt": "OpenAI publicly called for AI regulation — including licensing for frontier models. 'We'd rather have sensible rules than a free-for-all,' said Altman.",
+  "fullText": "In a move that surprised many, OpenAI became one of the most vocal advocates for AI regulation. Sam Altman testified before Congress, published policy proposals, and actively engaged with regulators worldwide.\n\n\"We'd rather have sensible rules now than wait for something to go wrong and get heavy-handed regulation after the fact,\" Altman explained.\n\nOpenAI's policy proposals included:\n- Licensing requirements for training frontier models above a certain compute threshold\n- Mandatory safety evaluations before deployment\n- International coordination on AI governance (similar to nuclear non-proliferation)\n- Liability frameworks for AI-caused harm\n- Transparency requirements for training data and model capabilities\n\nCritics accused OpenAI of regulatory capture — advocating for rules that would entrench large players while keeping smaller competitors out. Supporters argued that some form of governance was inevitable and it was better to have technically literate voices shaping it.\n\nThe EU AI Act, passed in 2024, became the first comprehensive AI regulation. The US followed with executive orders and agency guidance. China had its own framework.\n\nThe landscape was evolving rapidly. What seemed clear was that the era of unregulated AI development was ending. The question was whether regulation would be thoughtful enough to preserve innovation while preventing harm.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

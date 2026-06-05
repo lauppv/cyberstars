@@ -1,0 +1,13 @@
+{
+  "slug": "the-artifact-system-claude-generates-interactive-content",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "The artifact system: Claude generates interactive content",
+  "excerpt": "Claude can create React components, SVG visualizations, and interactive tools on the fly. It turned conversations into applications.",
+  "fullText": "When Anthropic introduced the artifact system in Claude.ai, it changed how people interacted with AI. Instead of just getting text responses, users could ask Claude to create interactive content: React components, data visualizations, games, tools.\n\n\"Make me a mortgage calculator.\" A few seconds later, a working calculator appears in the conversation — interactive, styled, functional. \"Turn this data into a chart.\" An SVG visualization materializes.\n\nThe system worked because Claude understood not just how to write code, but how to design user experiences. The artifacts it produced were clean, accessible, and properly styled — not just technically correct but actually pleasant to use.\n\nEducators used it to create custom learning tools. Designers used it to prototype interfaces. Data scientists used it to build ad-hoc visualizations of their datasets. Musicians used it to create interactive music theory explanations.\n\nThe implication was profound: the barrier between \"having an idea\" and \"having a working prototype\" collapsed to near zero. Anyone who could describe what they wanted could get a functional version in seconds.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

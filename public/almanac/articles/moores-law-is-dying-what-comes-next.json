@@ -1,0 +1,14 @@
+{
+  "slug": "moores-law-is-dying-what-comes-next",
+  "cat": "hardware",
+  "tag": "HARDWARE",
+  "year": "2023",
+  "emoji": "📉",
+  "grad": "linear-gradient(135deg,#2a2a1a,#5a5a2f)",
+  "title": "Moore's Law is dying — what comes next?",
+  "excerpt": "For 50 years, transistor counts doubled every two years like clockwork. Now we're hitting the physical limits of silicon. The chip industry is scrambling for alternatives before progress stalls.",
+  "fullText": "In 1965, Gordon Moore observed that the number of transistors on a chip doubled roughly every two years while costs stayed flat. This observation — Moore's Law — became a self-fulfilling prophecy that drove the entire semiconductor industry for over five decades.\n\nThe numbers are staggering. The Intel 4004 (1971) had 2,300 transistors. A modern Apple M3 chip has 25 billion. That's a 10-million-fold increase. This exponential growth gave us smartphones, cloud computing, AI, and basically everything digital.\n\nBut physics is catching up. Transistors on modern chips are now just a few nanometers wide — we're approaching the scale of individual atoms. At these sizes, quantum effects like electron tunneling cause current to \"leak\" through barriers that should be solid. You can't make a switch smaller than an atom.\n\nThe industry has been fighting this wall with clever engineering. FinFET transistors (3D structures instead of flat ones) bought a decade. EUV lithography (extreme ultraviolet light) enabled smaller patterns. Gate-all-around (GAA) transistors are the next trick. But each generation costs more — a cutting-edge chip fab now costs over $20 billion to build.\n\nChiplet architectures are one answer: instead of making one giant chip, companies like AMD glue together smaller chips. This sidesteps manufacturing limits by using proven smaller designs combined together. Apple's Ultra chips use this approach.\n\nBeyond silicon, researchers are exploring carbon nanotube transistors, photonic computing (using light instead of electrons), neuromorphic chips (mimicking brain structure), and of course quantum computing. Each has promise but also massive engineering challenges.\n\nThe end of Moore's Law doesn't mean the end of progress — it means progress will come from different directions. Better software, specialized AI accelerators, new architectures, and algorithmic improvements can all deliver more performance without smaller transistors. The era of \"just wait two years and your computer will be twice as fast\" is ending, but the era of clever engineering is just beginning.",
+  "author": "Prof. Andrei",
+  "authorEm": "⚡",
+  "readTime": "8 min"
+}

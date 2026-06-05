@@ -1,0 +1,13 @@
+{
+  "slug": "project-astra-gemini-sees-the-world-through-your-phone",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Project Astra: Gemini sees the world through your phone",
+  "excerpt": "Google demonstrated Gemini understanding live video from a phone camera — recognizing objects, reading text, navigating spaces in real-time.",
+  "fullText": "At Google I/O 2024, the most impressive demo wasn't a chatbot. It was Project Astra: Gemini processing live video from a phone camera and understanding everything it saw.\n\nPoint your phone at a street sign in Tokyo and ask \"Where am I?\" Gemini reads the Japanese characters, identifies the neighborhood, and gives you directions. Point it at a circuit board and ask \"What's wrong?\" It identifies a blown capacitor.\n\nThe demo showed the model maintaining context across a continuous video stream — remembering objects it had seen earlier, tracking movement, understanding spatial relationships. When asked \"Where did I put my glasses?\" it could recall seeing them on a desk three minutes earlier in the video.\n\nProject Astra represented Google's vision for AI as a universal assistant — not something you type to, but something that sees and understands your world in real-time.\n\nThe technical requirements were staggering: real-time video processing, multimodal understanding, low latency, and the ability to maintain coherent context across minutes of continuous input. Only a company with Google's infrastructure could even attempt it.\n\nFor accessibility, the implications were profound: visually impaired users could point their phone at anything and get a detailed description instantly.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

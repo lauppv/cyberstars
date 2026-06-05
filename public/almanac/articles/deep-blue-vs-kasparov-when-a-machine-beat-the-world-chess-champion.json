@@ -1,0 +1,14 @@
+{
+  "slug": "deep-blue-vs-kasparov-when-a-machine-beat-the-world-chess-champion",
+  "cat": "ai",
+  "tag": "AI & FUTURE",
+  "year": "1997",
+  "emoji": "♟️",
+  "grad": "linear-gradient(135deg,#1a1a3a,#2f2f7a)",
+  "title": "Deep Blue vs. Kasparov — when a machine beat the world chess champion",
+  "excerpt": "In 1997, IBM's Deep Blue defeated Garry Kasparov in a six-game match. It was the first time a reigning world champion lost to a computer. Kasparov accused IBM of cheating.",
+  "fullText": "On May 11, 1997, in a Manhattan skyscraper, the reigning world chess champion Garry Kasparov — arguably the greatest player in history — resigned after 19 moves against IBM's Deep Blue computer. The machine had won the match 3.5 to 2.5. It was the first time a computer had defeated a world champion in a full match under standard time controls.\n\nDeep Blue was a brute-force monster. It could evaluate 200 million positions per second using 480 custom chess chips. It didn't \"understand\" chess in any human sense — it simply calculated further ahead than any human could. Its evaluation function (how it judged whether a position was good) was tuned by a team of grandmaster consultants.\n\nThe match was deeply controversial. In Game 2, Deep Blue made a move that seemed to show deep strategic understanding. Kasparov was shaken. He later said this move convinced him that humans must be secretly helping the machine. He became agitated and played poorly for the rest of the match.\n\nYears later, one of the Deep Blue developers admitted that the mysterious move was likely caused by a software bug — when the computer couldn't decide what to do, it played a random legal move. This accident may have psychologically destroyed the world's best chess player.\n\nKasparov demanded a rematch. IBM refused, dismantled Deep Blue, and never released the full game logs. This fueled conspiracy theories that persist to this day. IBM got what it wanted — the stock price jumped $18 billion after the match. A rematch could only hurt them.\n\nThe deeper impact was philosophical. Chess had been considered the pinnacle of human intelligence. When a machine could play it better than any human, it forced a rethinking of what intelligence means. The answer: chess isn't intelligence. It's calculation.\n\nToday, a free chess engine on your phone would demolish Deep Blue. Stockfish and AlphaZero play at a level that makes Deep Blue look like a beginner. The frontier has moved to problems that require genuine understanding, creativity, and common sense — areas where AI still struggles relative to humans.",
+  "author": "Dr. Elena",
+  "authorEm": "🏆",
+  "readTime": "8 min"
+}

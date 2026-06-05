@@ -1,0 +1,13 @@
+{
+  "slug": "the-chatgpt-plugin-ecosystem-ai-connects-to-the-real-world",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2023",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "The ChatGPT plugin ecosystem: AI connects to the real world",
+  "excerpt": "Plugins let ChatGPT browse the web, access databases, book flights, and order food. AI went from 'talking' to 'doing.'",
+  "fullText": "In 2023, OpenAI launched plugins for ChatGPT — allowing the model to interact with external services. Suddenly ChatGPT could browse the web for current information, query Wolfram Alpha for precise calculations, or book a restaurant through OpenTable.\n\nThe concept was simple but powerful: ChatGPT remained the conversational interface, but plugins gave it arms and legs. It could reach out into the real world, gather information, and take actions on behalf of users.\n\nPopular plugins included:\n- Web browsing: accessing current information beyond the training cutoff\n- Code Interpreter: running Python code, analyzing data, creating charts\n- Expedia: planning and booking travel\n- Instacart: grocery shopping\n- Zapier: connecting to thousands of business tools\n\nThe ecosystem grew rapidly to hundreds of plugins across every category: productivity, shopping, research, entertainment, education.\n\nWhile plugins eventually evolved into different forms (GPT Actions, tool use), the concept they proved was lasting: AI interfaces shouldn't just talk — they should act. The boundary between \"getting information\" and \"getting things done\" should disappear.\n\nThis vision of AI as an agent — not just an oracle — became the dominant paradigm for how people thought about AI products going forward.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "edward-snowden-the-man-who-exposed-global-surveillance",
+  "cat": "security",
+  "tag": "SECURITY",
+  "year": "2013",
+  "emoji": "📡",
+  "grad": "linear-gradient(135deg,#1a1a3a,#3a3a6a)",
+  "title": "Edward Snowden — the man who exposed global surveillance",
+  "excerpt": "An NSA contractor copied 1.5 million classified documents and revealed that governments were spying on everyone's calls, emails, and texts. He's been in exile ever since.",
+  "fullText": "In June 2013, The Guardian and The Washington Post published a series of bombshell stories. The source: a 29-year-old NSA contractor named Edward Snowden who had copied approximately 1.5 million classified documents and fled to Hong Kong.\n\nThe revelations were staggering. PRISM: the NSA had direct access to the servers of Google, Facebook, Apple, Microsoft, and other tech giants, collecting emails, photos, videos, and chat logs. The companies denied knowledge, but the documents were clear.\n\nXKeyscore: a search system that allowed NSA analysts to search through vast databases of emails, browsing history, and chat logs with no prior authorization needed. An analyst could read anyone's email by simply entering an email address.\n\nThe NSA was collecting the phone records (metadata) of virtually every American — who called whom, when, and for how long. A secret court (FISA) had approved this mass collection in secret.\n\nThe UK's GCHQ was tapping undersea fiber optic cables and storing massive amounts of internet traffic through a program called Tempora. The \"Five Eyes\" alliance (US, UK, Canada, Australia, New Zealand) was sharing this data freely.\n\nSnowden flew from Hong Kong to Moscow, where his passport was revoked mid-transit. He was stuck in the Moscow airport for 39 days before Russia granted him asylum. He has lived in Russia ever since, unable to return to the US without facing espionage charges carrying up to 30 years in prison.\n\nThe debate over Snowden is fierce and unresolved. Supporters call him a whistleblower who exposed unconstitutional surveillance. Critics call him a traitor who damaged national security. The truth probably lies in between — the programs he exposed were real and arguably illegal, but the method of exposure was also enormously damaging to intelligence operations.\n\nThe practical impact was enormous. Tech companies rushed to encrypt their services. Apple and Google enabled default encryption on phones. WhatsApp added end-to-end encryption for billions of users. The USA FREEDOM Act (2015) reformed some NSA practices.\n\nSnowden's legacy is that millions of people now use encrypted messaging, verify HTTPS connections, and think about digital privacy — concepts that were abstract before 2013.",
+  "author": "Mr. Radu",
+  "authorEm": "🕵️",
+  "readTime": "10 min"
+}

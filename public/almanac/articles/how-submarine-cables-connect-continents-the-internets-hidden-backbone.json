@@ -1,0 +1,14 @@
+{
+  "slug": "how-submarine-cables-connect-continents-the-internets-hidden-backbone",
+  "cat": "internet",
+  "tag": "INTERNET",
+  "year": "1858",
+  "emoji": "🔌",
+  "grad": "linear-gradient(135deg,#1a2a2a,#2f5a6a)",
+  "title": "How submarine cables connect continents — the internet's hidden backbone",
+  "excerpt": "97% of intercontinental data travels through cables on the ocean floor. There are over 500 of them, totaling 1.3 million km. And they're only as thick as a garden hose.",
+  "fullText": "When you video-call someone on another continent, your data doesn't bounce off satellites. It travels through a fiber optic cable lying on the ocean floor, possibly 4,000 meters deep in total darkness. Satellites are too slow (high latency) and too limited (low bandwidth) for the bulk of internet traffic. 97% of intercontinental data travels through submarine cables.\n\nThe first transatlantic cable was laid in 1858 — for telegraph messages. Queen Victoria sent a 98-word greeting to President Buchanan. It took 16 hours to transmit. The cable failed after three weeks because they'd pushed too much voltage through it.\n\nModern submarine cables are engineering marvels. The fiber optic core is thinner than a human hair. It's wrapped in layers of protection: silicone gel, steel wire, copper tubing, polyethylene, and tar-soaked nylon yarn. In deep water, the total cable is about the diameter of a garden hose. Near shores where fishing and anchors are threats, it's armored to the thickness of a soda can.\n\nLaying cable is a months-long process using specialized ships. The cable spools out from massive tanks on deck while the ship crawls forward at walking speed. In deep water, it simply falls to the ocean floor. In shallow water, it's buried by underwater plows. A single transoceanic cable can cost $300-500 million.\n\nThe biggest threats to cables are fishing trawlers, ship anchors, earthquakes, and (seriously) sharks. Sharks occasionally bite cables — possibly attracted by the electromagnetic fields. Cable breaks happen regularly — about 100-200 per year globally — and are repaired by specialized ships that grapple the cable from the seafloor, haul it up, splice it, and drop it back.\n\nToday there are over 500 active submarine cables totaling about 1.3 million km. The biggest players are Google, Meta, Microsoft, and Amazon, who now own or lease significant cable capacity. A single modern cable can carry 250 terabits per second — enough to stream millions of 4K videos simultaneously.\n\nThe geopolitics of cables is intense. Countries worry about espionage (the NSA was revealed to tap undersea cables). Island nations depend on a single cable for all connectivity. Russia and China have been mapping Western cable routes. A concerted attack on submarine cables could effectively disconnect continents from each other.",
+  "author": "Mr. Radu",
+  "authorEm": "⚓",
+  "readTime": "8 min"
+}

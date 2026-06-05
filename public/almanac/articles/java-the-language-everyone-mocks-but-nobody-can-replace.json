@@ -1,0 +1,14 @@
+{
+  "slug": "java-the-language-everyone-mocks-but-nobody-can-replace",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1995",
+  "emoji": "☕",
+  "grad": "linear-gradient(135deg,#2a1a0a,#5a3a1a)",
+  "title": "Java — the language everyone mocks but nobody can replace",
+  "excerpt": "Created in 1995 for interactive TVs, Java failed at its original purpose but conquered servers, Android, and enterprise. 30 years later, the world's banks and governments still run on Java.",
+  "fullText": "In 1991, James Gosling at Sun Microsystems was working on a project called \"Green\" — a language for interactive televisions and smart home devices. The idea was to write code once and run it on any processor. Interactive TVs never caught on, but the concept was powerful.\n\nThe language was originally named \"Oak\" (after an oak tree outside Gosling's office), but the name was already trademarked. The team moved to a coffee shop and chose \"Java\" — a reference to coffee from the island of Java, Indonesia.\n\nJava was publicly released on May 23, 1995, with the slogan \"Write Once, Run Anywhere.\" The key was the JVM (Java Virtual Machine) — an intermediary layer that translated Java code into processor-specific instructions. Write code once, compile to bytecode, and the JVM executes it on any platform.\n\nInitially, Java exploded thanks to applets — small programs that ran in the browser. They were revolutionary in 1996: interactive animations, games, calculators — in an era when the web was static. But applets had security and performance problems, and gradually disappeared.\n\nWhere Java truly triumphed was on the server. Enterprise Java (J2EE, then Jakarta EE) became the standard for banking, government, and corporate applications. Millions of financial transactions per day run on Java. Airline ticketing systems, trading platforms, medical systems — Java.\n\nIn 2008, Google chose Java as the primary language for Android. Over 3 billion Android devices run Java apps (or Kotlin, which also compiles to JVM bytecode). This made Java the most widely used language on the planet by device count.\n\nProgrammers love to mock Java — it's verbose, has excessive design patterns, and the class \"AbstractSingletonProxyFactoryBean\" actually exists in Spring Framework. But Java has something that \"cooler\" languages don't: decades of stability. A Java application written in 2005 probably still works today without modifications.\n\nIn 2025, Java remains in the top 3 languages, with over 35 million developers. Oracle continues to release new versions every 6 months. Java isn't sexy, isn't hip, but it's the invisible backbone of the digital world.",
+  "author": "Theo",
+  "authorEm": "🦝",
+  "readTime": "9 min"
+}

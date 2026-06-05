@@ -1,0 +1,13 @@
+{
+  "slug": "claudes-computer-use-ai-learns-to-click-buttons",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude's computer use: AI learns to click buttons",
+  "excerpt": "Teaching AI to use a computer like a human — moving the mouse, clicking buttons, reading screens — opened up automation possibilities that APIs couldn't touch.",
+  "fullText": "In late 2024, Anthropic demonstrated Claude's ability to use a computer: navigate GUIs, click buttons, fill forms, and interact with software just like a human would.\n\nThis sounds mundane, but it's transformative. Most software doesn't have APIs. You can't programmatically interact with most desktop applications, legacy enterprise systems, or specialized tools. The only interface is the one designed for humans.\n\nWith computer use, Claude could automate workflows that were previously impossible: filling out government forms, navigating internal company tools, testing web applications, and performing repetitive GUI-based tasks.\n\nFor enterprises with legacy systems — banks, hospitals, government agencies — this was revolutionary. They didn't need to rewrite their 30-year-old software to add AI capabilities. Claude could just use it the same way their employees did.\n\nThe technical challenge was significant: the model needed to understand screenshots, plan multi-step interactions, handle errors and unexpected states, and maintain context across long workflows.\n\nBut the result felt magical: describe what you want done, and watch as the cursor moves, windows open, and tasks complete — like having a ghost use your computer for you.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

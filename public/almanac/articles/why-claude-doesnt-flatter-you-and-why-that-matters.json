@@ -1,0 +1,13 @@
+{
+  "slug": "why-claude-doesnt-flatter-you-and-why-that-matters",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2024",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Why Claude doesn't flatter you (and why that matters)",
+  "excerpt": "Unlike models trained to maximize user satisfaction, Claude was trained to be honest — even when the truth isn't what you want to hear.",
+  "fullText": "There's a subtle but important difference between an AI that tells you what you want to hear and one that tells you what you need to hear. Claude was designed to be the latter.\n\nThis manifests in small ways. Ask Claude \"Is my business idea good?\" and instead of enthusiastic validation, you'll get honest analysis: \"Here are the strengths, here are the potential problems, here's what I'd research further.\" It's not discouraging — it's useful.\n\nAsk it to review your code and it won't just say \"looks great!\" It'll point out edge cases you missed, suggest better approaches, and flag potential security issues. Even if that means the response is less pleasant to read.\n\nAnthropic calls this \"non-sycophancy\" and considers it a core design principle. The reasoning: a model that just agrees with everything is less useful than one that provides genuine, sometimes uncomfortable, feedback.\n\nUsers initially found this jarring if they were used to more people-pleasing models. But over time, most came to prefer it. \"I trust Claude's opinion because I know it's not just telling me what I want to hear.\"\n\nIn a world of algorithms optimized for engagement and echo chambers, a mainstream AI product committed to honesty felt almost radical.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

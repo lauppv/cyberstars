@@ -1,0 +1,14 @@
+{
+  "slug": "the-cathedral-and-the-bazaar-why-open-source-actually-works",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "1999",
+  "emoji": "📕",
+  "grad": "linear-gradient(135deg,#3a1a1a,#7a2f2f)",
+  "title": "The Cathedral and the Bazaar — why open source actually works",
+  "excerpt": "Eric S. Raymond's 1999 essay explained why a chaotic crowd of volunteers can outpace polished corporate teams. \"Given enough eyeballs, all bugs are shallow.\" It became the manifesto for an entire industry.",
+  "fullText": "In 1997, Eric S. Raymond published an essay that would reshape how the software industry thinks about development. \"The Cathedral and the Bazaar\" compared two models of software creation.\n\nThe Cathedral model was the traditional approach: a small team of experts works in isolation, carefully designing and building software before releasing polished versions to the public. Most commercial software — and even many open-source projects like GNU Emacs — followed this pattern.\n\nThe Bazaar model was what Raymond observed in the Linux kernel project: a chaotic, open process where anyone could contribute, releases happened constantly, and the code evolved through a messy but effective process of peer review and iteration.\n\nRaymond expected the Bazaar approach to produce inferior software. Instead, he found the opposite. Linux was more reliable, more innovative, and faster-moving than Cathedral-style projects.\n\nHis key insight was Linus's Law: \"Given enough eyeballs, all bugs are shallow.\" When thousands of people read your code, bugs that would take a small team weeks to find get spotted in hours.\n\nBut Raymond identified something deeper: the Bazaar model worked because it aligned incentives differently. Cathedral developers build what the plan says. Bazaar developers scratch their own itches — they fix bugs that annoy them, add features they need. This means contributions are motivated by genuine need, not corporate priorities.\n\nThe essay had enormous practical impact. It directly influenced Netscape's decision to release the Mozilla browser's source code in 1998 — one of the first major commercial open-source releases. This eventually led to Firefox.\n\nIt also inspired the creation of the \"Open Source Initiative\" and the term \"open source\" itself (as distinct from Stallman's \"free software\"). The essay gave business leaders a framework for understanding why giving away code could be a competitive advantage.\n\nToday, open source is not just accepted — it's dominant. Microsoft, Google, Amazon, and virtually every major tech company both use and contribute to open-source projects. The Bazaar won.",
+  "author": "Ms. Diana",
+  "authorEm": "🦄",
+  "readTime": "10 min"
+}

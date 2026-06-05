@@ -1,0 +1,13 @@
+{
+  "slug": "claude-for-science-accelerating-research-across-disciplines",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude for science: accelerating research across disciplines",
+  "excerpt": "From protein folding to materials science, researchers are using Claude to read papers faster, generate hypotheses, and design experiments.",
+  "fullText": "Scientists generate more papers than any human can read. In 2024 alone, over 3 million scientific papers were published. No researcher can stay current with their own sub-field, let alone adjacent ones where breakthrough connections might lurk.\n\nClaude's long context window and scientific understanding made it uniquely valuable for research. Scientists could feed it dozens of papers and ask: \"What are the contradictions between these studies? What hypotheses haven't been tested?\"\n\nIn drug discovery, researchers used Claude to analyze molecular structures, predict interactions, and suggest modifications. In materials science, it helped design new alloys by reasoning about atomic properties. In climate science, it synthesized data from hundreds of monitoring stations into actionable insights.\n\nThe model's honesty was particularly valuable here. In science, being wrong is expensive. A model that says \"I'm uncertain about this prediction — here's why\" is infinitely more useful than one that confidently states an incorrect molecular structure.\n\nResearchers reported that their biggest productivity gain wasn't in any single task, but in the connections Claude helped them see between disparate fields. The cross-pollination of ideas — the thing humans are worst at because we can't read enough — became AI's superpower.",
+  "author": "AI Desk",
+  "readTime": "6 min"
+}

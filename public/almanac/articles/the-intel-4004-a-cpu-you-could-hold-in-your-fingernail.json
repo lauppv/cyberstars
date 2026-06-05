@@ -1,0 +1,14 @@
+{
+  "slug": "the-intel-4004-a-cpu-you-could-hold-in-your-fingernail",
+  "cat": "hardware",
+  "tag": "HARDWARE",
+  "year": "1971",
+  "emoji": "🔲",
+  "grad": "linear-gradient(135deg,#2a1a40,#5a2f7a)",
+  "title": "The Intel 4004 — a CPU you could hold in your fingernail",
+  "excerpt": "The world's first commercial microprocessor (1971) had 2,300 transistors and ran at 740 kHz. The chip you're using right now has tens of billions of transistors and is 5 million times faster.",
+  "fullText": "In 1969, a Japanese calculator company called Busicom approached Intel to design a set of chips for a new calculator. They wanted 12 custom chips, each handling a different function.\n\nFederico Faggin, Ted Hoff, and Stanley Mazor at Intel had a better idea: instead of 12 specialized chips, why not build one general-purpose processor that could be programmed to do everything?\n\nThe result, released on November 15, 1971, was the Intel 4004 — the world's first commercially available microprocessor.\n\nThe numbers seem laughable today: 2,300 transistors, a 4-bit architecture, running at 740 kHz. It could perform about 92,000 instructions per second. The chip was 3mm × 4mm — small enough to fit on a fingernail.\n\nBut the concept was revolutionary. Before the 4004, computers were built from boards full of discrete components. Each new design required custom hardware. The microprocessor changed this: now you could build different devices by simply writing different programs for the same chip.\n\nTo put the progress in perspective: a modern Apple M4 chip contains about 28 billion transistors and can perform trillions of operations per second. That's roughly 12 million times more transistors and several million times more computing power — packed into a chip that's only about 40 times larger in area.\n\nMoore's Law — the observation that transistor counts double roughly every two years — has held remarkably steady since the 4004. But the real revolution wasn't the transistor count. It was the idea that a single, programmable chip could replace rooms full of specialized hardware.\n\nThe 4004 made computers small enough to put in anything. That idea led directly to personal computers, smartphones, smart watches, and the connected world we live in today.",
+  "author": "Theo",
+  "authorEm": "🦝",
+  "readTime": "6 min"
+}

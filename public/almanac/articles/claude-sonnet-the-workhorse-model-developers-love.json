@@ -1,0 +1,13 @@
+{
+  "slug": "claude-sonnet-the-workhorse-model-developers-love",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude Sonnet: the workhorse model developers love",
+  "excerpt": "Not every task needs the biggest model. Claude Sonnet hits the sweet spot of speed, cost, and capability that makes it the default choice for production.",
+  "fullText": "While Opus grabbed headlines with benchmark scores, it was Sonnet that won developers' hearts. Fast, affordable, and surprisingly capable — it became the default model for production applications.\n\nThe reasoning was simple economics. Opus was brilliant but expensive and slower. Haiku was cheap but limited. Sonnet sat in the middle: smart enough for 90% of tasks, fast enough for real-time applications, and priced for scale.\n\nStartups built entire products on Sonnet. Customer support bots, code review tools, content moderation systems, data analysis pipelines — all running on a model that cost a fraction of what Opus would.\n\nDevelopers appreciated that Sonnet didn't just trade quality for speed. It maintained Claude's signature characteristics: honesty, careful reasoning, and a lack of sycophancy. It would still push back when asked to do something questionable, still say \"I'm not sure\" when uncertain.\n\nThe lesson for the industry was clear: the best model isn't always the biggest one. It's the one that fits your use case, your budget, and your latency requirements. And for most of the world, that's Sonnet.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

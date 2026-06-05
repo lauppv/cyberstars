@@ -1,0 +1,13 @@
+{
+  "slug": "geminis-multimodal-reasoning-understanding-charts-diagrams-and-handwri",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini's multimodal reasoning: understanding charts, diagrams, and handwriting",
+  "excerpt": "Feed Gemini a whiteboard photo and it reads the handwriting, understands the diagram, and explains the concept. Vision isn't just seeing — it's understanding.",
+  "fullText": "Gemini's vision capabilities go far beyond basic image recognition. It can read handwriting, understand diagrams, interpret charts, follow flowcharts, and reason about spatial relationships in images.\n\nA student photographs their professor's messy whiteboard notes. Gemini not only transcribes the handwriting (including Greek symbols and mathematical notation) but explains the concept being taught and identifies potential errors.\n\nAn engineer uploads a circuit diagram. Gemini identifies the components, traces the signal path, and explains what the circuit does — then spots a design flaw that could cause oscillation.\n\nA business analyst screenshots a complex dashboard with multiple charts. Gemini describes the trends, identifies correlations between the charts, and suggests what the data implies for the business.\n\nThis kind of visual reasoning requires more than pattern matching. It requires understanding what diagrams represent, what spatial relationships mean, and how visual information connects to conceptual knowledge.\n\nFor education, the implications are enormous: students can photograph textbook pages, worksheets, or lab setups and get instant explanations tailored to their level. The visual world becomes as queryable as text.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}
