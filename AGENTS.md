@@ -23,7 +23,7 @@ Instructions for AI contributors (Claude, Copilot, Cursor, etc.) working on this
 - `client/` — React 19 + Vite + Tailwind CSS
 - `server/` — Express 5 + Prisma (PostgreSQL)
 - `shared/` — DTO types and constants used by both sides
-- `prisma/` — schema, migrations, seed
+- `prisma/` — schema, migrations, seed, curriculum metadata (`curriculum.data.ts`)
 - `test/` — test setup (tests are co-located next to source files)
 
 ## Key conventions

@@ -8,9 +8,12 @@
   },
   "scripts": {
     "db:prepare": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts",
+    "gen:content": "tsx scripts/generate-static-content.ts",
     "dev": "npm run db:prepare && concurrently -n client,server -c cyan,magenta \"npm run dev:client\" \"npm run dev:server\"",
+    "predev:client": "npm run gen:content",
     "dev:client": "vite",
     "dev:server": "tsx watch server/server.ts",
+    "prebuild": "npm run gen:content",
     "build": "vite build",
     "start": "npm run build && tsx server/server.ts",
     "lint": "eslint .",

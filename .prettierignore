@@ -4,3 +4,5 @@ node_modules
 prisma/migrations
 server/lessons/**/*-code.md
 server/algorithms/**/*-code.md
+public/lessons
+public/curriculum.json

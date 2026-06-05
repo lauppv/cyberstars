@@ -1,9 +1,5 @@
 import { prisma } from '../config/db.js';
-import type { Curriculum, Lesson } from '@prisma/client';
-
-export async function getAllCourses(): Promise<Curriculum[]> {
-  return prisma.curriculum.findMany({ orderBy: { sortOrder: 'asc' } });
-}
+import type { Lesson } from '@prisma/client';
 
 export async function getLessonsByCourse(courseKey: string): Promise<Lesson[]> {
   return prisma.lesson.findMany({
@@ -18,10 +14,4 @@ export async function lessonExists(courseKey: string, slug: string): Promise<boo
     select: { id: true },
   });
   return lesson !== null;
-}
-
-export async function getAllLessons(): Promise<Lesson[]> {
-  return prisma.lesson.findMany({
-    orderBy: [{ courseKey: 'asc' }, { sortOrder: 'asc' }],
-  });
 }

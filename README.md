@@ -48,7 +48,7 @@ cyberstars/
 ├── client/          # React frontend
 ├── server/          # Express API + lesson content
 ├── shared/          # Types and constants (client + server)
-├── prisma/          # Database schema, migrations, seed
+├── prisma/          # Database schema, migrations, seed, curriculum data
 ├── test/            # Test setup
 └── .github/         # CI workflows
 ```

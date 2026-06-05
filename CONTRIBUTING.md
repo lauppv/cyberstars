@@ -91,7 +91,7 @@ See [README.md](README.md) for the full architecture. The short version:
 
 - `client/` — React 19 + Vite + Tailwind frontend
 - `server/` — Express 5 + TypeScript API
-- `prisma/` — Database schema, migrations, seed
+- `prisma/` — Database schema, migrations, seed, and curriculum metadata (`curriculum.data.ts`)
 - `shared/` — Types and constants used by both client and server
 - `server/lessons/` — Lesson content as Markdown files
 
@@ -112,7 +112,9 @@ Lesson content lives in `server/lessons/{python,c,java,linux}/`. Python, C, and 
 1. `<slug>.md` — the lesson content (Markdown with runnable code blocks)
 2. `<slug>-code.md` — the starter code template shown in the editor
 
-Then add the lesson to `prisma/seed.ts` in the `lessons` array with the correct `courseKey`, `slug`, `title`, and `sortOrder`. The next `npm run dev` will seed it automatically.
+Then register the lesson in `prisma/curriculum.data.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure — you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
+
+Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `scripts/generate-static-content.ts`, which copies the lesson Markdown into `public/lessons/` and writes `public/curriculum.json`. Those outputs are generated, not committed — never edit them by hand; edit `server/lessons/` and `prisma/curriculum.data.ts` instead.
 
 There is no automated grading: students run their code and click "Mark Complete" themselves.
 
