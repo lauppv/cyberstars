@@ -8,7 +8,7 @@ import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '../../shared/lesson';
 import { courseMeta } from '../constants/courses';
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from '../../shared/constants';
-import { StoryModal } from './AlmanacPage';
+import { StoryModal } from './StoryModal';
 import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW } from './almanacData';
 import type { StoryData } from './almanacData';
 import { AI_ARTICLES } from './almanacAIArticles';
