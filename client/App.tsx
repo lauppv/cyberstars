@@ -1,22 +1,47 @@
+import { lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { CosmosBackground } from './components/ui/CosmosBackground';
+import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
-import { AuthPage } from './pages/AuthPage';
-import { CoursesPage } from './pages/CoursesPage';
-import { AlgorithmsPage } from './pages/AlgorithmsPage';
-import { AlgorithmListPage } from './pages/AlgorithmListPage';
-import { LessonPage } from './pages/LessonPage';
-import { ProfilePage } from './pages/ProfilePage';
-import { ForumPage } from './pages/ForumPage';
-import { AlmanacPage } from './pages/AlmanacPage';
-import { LaniakeaExplorerPage } from './pages/LaniakeaExplorerPage';
-import { RulesPage } from './pages/RulesPage';
-import { SupportPage } from './pages/SupportPage';
-import { WelcomePage } from './pages/WelcomePage';
+
+// HomePage stays eager — it's the landing route, so splitting it would only add a
+// spinner to the first paint. Every other route is code-split into its own chunk,
+// fetched on navigation instead of shipping in the initial bundle. Pages use named
+// exports, so each loader maps the named export onto the default lazy() expects.
+const AuthPage = lazy(() => import('./pages/AuthPage').then((m) => ({ default: m.AuthPage })));
+const CoursesPage = lazy(() =>
+  import('./pages/CoursesPage').then((m) => ({ default: m.CoursesPage })),
+);
+const AlgorithmsPage = lazy(() =>
+  import('./pages/AlgorithmsPage').then((m) => ({ default: m.AlgorithmsPage })),
+);
+const AlgorithmListPage = lazy(() =>
+  import('./pages/AlgorithmListPage').then((m) => ({ default: m.AlgorithmListPage })),
+);
+const LessonPage = lazy(() =>
+  import('./pages/LessonPage').then((m) => ({ default: m.LessonPage })),
+);
+const ProfilePage = lazy(() =>
+  import('./pages/ProfilePage').then((m) => ({ default: m.ProfilePage })),
+);
+const ForumPage = lazy(() => import('./pages/ForumPage').then((m) => ({ default: m.ForumPage })));
+const AlmanacPage = lazy(() =>
+  import('./pages/AlmanacPage').then((m) => ({ default: m.AlmanacPage })),
+);
+const LaniakeaExplorerPage = lazy(() =>
+  import('./pages/LaniakeaExplorerPage').then((m) => ({ default: m.LaniakeaExplorerPage })),
+);
+const RulesPage = lazy(() => import('./pages/RulesPage').then((m) => ({ default: m.RulesPage })));
+const SupportPage = lazy(() =>
+  import('./pages/SupportPage').then((m) => ({ default: m.SupportPage })),
+);
+const WelcomePage = lazy(() =>
+  import('./pages/WelcomePage').then((m) => ({ default: m.WelcomePage })),
+);
 
 function GlobalBackground() {
   const { pathname } = useLocation();
@@ -32,21 +57,29 @@ function App() {
         <CurriculumProvider>
           <ProgressProvider>
             <GlobalBackground />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/getstarted" element={<AuthPage />} />
-              <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/algorithms" element={<AlgorithmsPage />} />
-              <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-              <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/forum" element={<ForumPage />} />
-              <Route path="/almanac" element={<AlmanacPage />} />
-              <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-              <Route path="/rules" element={<RulesPage />} />
-              <Route path="/support" element={<SupportPage />} />
-              <Route path="/welcome" element={<WelcomePage />} />
-            </Routes>
+            <Suspense
+              fallback={
+                <div className="h-screen flex items-center justify-center bg-transparent">
+                  <LoadingSpinner />
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/getstarted" element={<AuthPage />} />
+                <Route path="/courses" element={<CoursesPage />} />
+                <Route path="/algorithms" element={<AlgorithmsPage />} />
+                <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/forum" element={<ForumPage />} />
+                <Route path="/almanac" element={<AlmanacPage />} />
+                <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                <Route path="/rules" element={<RulesPage />} />
+                <Route path="/support" element={<SupportPage />} />
+                <Route path="/welcome" element={<WelcomePage />} />
+              </Routes>
+            </Suspense>
           </ProgressProvider>
         </CurriculumProvider>
       </AuthProvider>

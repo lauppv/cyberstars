@@ -14,7 +14,8 @@ vi.mock('../context/ProgressContext', () => ({
   useProgress: () => ({ completedLessons: [] }),
 }));
 
-import { AlmanacPage, StoryModal } from './AlmanacPage';
+import { AlmanacPage } from './AlmanacPage';
+import { StoryModal } from './StoryModal';
 
 function renderWithRouter(ui: React.ReactElement) {
   return render(<MemoryRouter>{ui}</MemoryRouter>);
