@@ -1,0 +1,14 @@
+{
+  "slug": "y2k-the-millennium-bug-that-was-actually-real",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1999",
+  "emoji": "🐛",
+  "grad": "linear-gradient(135deg,#3a2a1a,#7a5f2f)",
+  "title": "Y2K — the millennium bug that was actually real",
+  "excerpt": "People mocked Y2K as a hoax. But the bug was real — programmers had saved memory by using two-digit years. The reason nothing collapsed? Thousands of engineers worked overtime to fix it before midnight.",
+  "fullText": "In the 1960s and 70s, computer memory was astronomically expensive. Programmers saved every byte they could. One common shortcut: storing years as two digits instead of four. 1973 became \"73.\" 1999 became \"99.\" It saved two bytes per date — a big deal when your entire computer had 64KB of memory.\n\nNobody thought these programs would still be running in 2000. But they were. Banks, power grids, air traffic control, hospital systems, nuclear reactors — all running ancient code that would interpret \"00\" as 1900, not 2000.\n\nThe potential consequences were terrifying. Bank accounts could calculate negative interest for 100 years. Power plants could shut down. Medical equipment could malfunction. Air traffic control could lose track of planes. Nobody knew for sure what would break, because the code was decades old and poorly documented.\n\nStarting around 1996, the world began to panic. Governments formed Y2K task forces. Companies spent an estimated $300 billion fixing their code. COBOL programmers — some pulled out of retirement — worked around the clock. The US alone spent $100 billion. Australia spent $12 billion. The UK created an \"Action 2000\" campaign.\n\nThe fixes were tedious but essential: find every date field in every program, expand it to four digits or add windowing logic (if the year is less than 50, assume 2000s; otherwise assume 1900s). Some systems had millions of lines of code to review.\n\nOn January 1, 2000, nothing catastrophic happened. Some people concluded Y2K was a hoax — a scam by consultants to make money. This is deeply unfair to the programmers who prevented disaster. Nothing broke precisely because they spent years fixing it.\n\nThere were minor glitches: some slot machines in Delaware stopped working, a few weather stations reported incorrect data, and in Japan, a nuclear plant's radiation monitoring system failed briefly. These small failures confirmed the bug was real — they were just in non-critical systems that hadn't been patched.\n\nY2K is a paradox: it was simultaneously one of the biggest bugs in computing history and one of the most successful engineering efforts ever. The people who fixed it are unsung heroes who prevented a potential global crisis.",
+  "author": "Mr. Radu",
+  "authorEm": "🔧",
+  "readTime": "9 min"
+}

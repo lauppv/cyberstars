@@ -1,0 +1,13 @@
+{
+  "slug": "googles-ai-safety-approach-responsible-by-design",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Google's AI safety approach: responsible by design",
+  "excerpt": "Google published detailed model cards, red-team results, and safety evaluations for every Gemini release. Transparency as a competitive advantage.",
+  "fullText": "Google took a distinctive approach to AI safety: radical transparency. Every Gemini model release came with detailed technical reports, model cards documenting capabilities and limitations, and results from extensive red-teaming exercises.\n\nThis wasn't just altruism — it was strategic. By being transparent about what Gemini could and couldn't do, Google built trust with enterprise customers who needed to assess risk before deploying AI in their products.\n\nThe safety work included:\n- Adversarial testing by dedicated red teams trying to break the model\n- Bias evaluations across demographics and use cases\n- Content safety filters with transparent decision boundaries\n- Regular external audits by independent researchers\n\nGoogle also invested heavily in watermarking generated content (SynthID), making it possible to detect AI-generated text, images, and audio — even after editing.\n\nCritics argued Google was sometimes too cautious — refusing to generate content that other models would produce freely. But for enterprise and government customers, this caution was a feature, not a bug. They needed AI they could trust, not AI that would embarrass them.\n\nThe approach influenced the industry: by 2025, publishing safety evaluations alongside model releases became standard practice across major AI labs.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

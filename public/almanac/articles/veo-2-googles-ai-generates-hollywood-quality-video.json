@@ -1,0 +1,13 @@
+{
+  "slug": "veo-2-googles-ai-generates-hollywood-quality-video",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Veo 2: Google's AI generates Hollywood-quality video",
+  "excerpt": "Veo 2 creates photorealistic videos up to 4K resolution with consistent physics and coherent narratives. Filmmakers took notice.",
+  "fullText": "In late 2024, Google released Veo 2 — a video generation model that produced output nearly indistinguishable from professional footage. Resolution up to 4K, consistent physics, realistic motion, and coherent multi-second narratives.\n\nUnlike earlier video models that produced dreamlike, physically impossible sequences, Veo 2 understood how the world works. Water flowed correctly. Objects had consistent mass. People moved naturally. Camera movements followed cinematic conventions.\n\nFilmmakers and advertisers were the first adopters. Pre-visualization — creating rough versions of scenes before expensive shoots — became trivially easy. \"Show me this scene at golden hour with a crane shot moving left to right.\" Seconds later, a convincing preview appeared.\n\nFor independent creators, the implications were even more dramatic. The cost of creating professional-looking video content dropped by orders of magnitude. A student with an idea could produce visuals that previously required a production crew.\n\nGoogle integrated Veo 2 into YouTube's creation tools, allowing creators to generate B-roll, transitions, and even entire sequences from text descriptions.\n\nThe ethical debates were predictable and necessary: deepfakes, misinformation, copyright concerns. Google responded with invisible watermarking (SynthID) embedded in every generated frame.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

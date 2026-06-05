@@ -1,0 +1,14 @@
+{
+  "slug": "how-c-conquered-the-world-the-language-that-refuses-to-die",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1972",
+  "emoji": "🎯",
+  "grad": "linear-gradient(135deg,#2a2a1a,#5a4a2f)",
+  "title": "How C conquered the world — the language that refuses to die",
+  "excerpt": "Created in 1972 as a side project to rewrite UNIX, C became the foundation of modern computing. 50+ years later, it still powers operating systems, databases, and embedded devices everywhere.",
+  "fullText": "In 1972, Dennis Ritchie at Bell Labs needed a better language to rewrite the UNIX operating system. Assembly was powerful but painful — every CPU had its own instruction set, so code written for one machine was useless on another. Higher-level languages like FORTRAN were portable but too slow and didn't give programmers access to hardware.\n\nRitchie wanted both: high-level convenience with low-level power. The result was C — a language that could express complex algorithms clearly while still letting you manipulate individual bytes and memory addresses.\n\nC's key innovation was its combination of portability and efficiency. A C program could be compiled for any processor with a C compiler, yet the resulting code ran nearly as fast as hand-written assembly. This was revolutionary. For the first time, complex software could be written once and deployed on different hardware.\n\nThe first major proof of concept was UNIX itself. Ritchie and Ken Thompson rewrote UNIX in C, making it the first operating system written in a high-level language. This meant UNIX could be ported to new hardware by simply rewriting the C compiler — not the entire operating system. This portability is the reason UNIX variants spread to every type of computer.\n\nIn 1978, Ritchie and Brian Kernighan published \"The C Programming Language\" — known universally as K&R. It's one of the most influential programming books ever written: clear, concise, and practical. The famous \"Hello, World\" program first appeared in this book.\n\nC's influence is immeasurable. C++ (1979), Objective-C (1984), Java (1995), C# (2000), Go (2009), and Rust (2010) all descend from C in syntax or philosophy. Python, Ruby, PHP, and JavaScript are implemented in C. Linux, Windows, macOS — all written primarily in C. MySQL, PostgreSQL, SQLite — C. Git, Apache, nginx, Redis — C.\n\nAs of 2025, C remains in the top 3 of every programming language popularity index. It's the language of choice for operating systems, embedded devices (your microwave, car, pacemaker), and performance-critical software. It's 53 years old and shows no signs of retirement.\n\nThe lesson? Sometimes the best tool is the simplest one. C gives you enough abstraction to think clearly and enough control to do anything. That sweet spot has kept it relevant for half a century.",
+  "author": "Prof. Andrei",
+  "authorEm": "🏛️",
+  "readTime": "8 min"
+}

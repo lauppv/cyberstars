@@ -1,0 +1,13 @@
+{
+  "slug": "mcp-how-claude-connects-to-the-real-world",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "MCP: how Claude connects to the real world",
+  "excerpt": "The Model Context Protocol lets Claude talk to databases, APIs, and tools directly. It went from 'smart chatbot' to 'intelligent agent' overnight.",
+  "fullText": "In 2024, Anthropic open-sourced the Model Context Protocol (MCP) — a standard for connecting AI models to external tools, databases, and services.\n\nBefore MCP, if you wanted Claude to query your database or call an API, you had to write custom integration code. MCP standardized these connections, creating an ecosystem of \"servers\" that any MCP-compatible model could use.\n\nThe impact was immediate. Developers could set up a Claude environment with access to their GitHub repos, their databases, their monitoring tools, and their documentation — all through a simple configuration file.\n\nThis transformed Claude from a conversational AI into an agent that could take real actions: create pull requests, query production databases (read-only!), update tickets, send notifications, and coordinate complex workflows.\n\nThe open-source nature of MCP was deliberate. Anthropic wanted it to become an industry standard, not a proprietary lock-in. By making it easy for anyone to build MCP servers, they created a network effect that benefited the entire ecosystem.\n\nBy 2025, thousands of MCP servers existed for everything from Slack to Kubernetes to financial APIs.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

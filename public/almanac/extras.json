@@ -1,0 +1,570 @@
+{
+  "funFacts": [
+    {
+      "em": "🎮",
+      "text": "The first video game, \"Tennis for Two\" (1958), ran on an analog oscilloscope at a science fair. The creator made it because the open house was boring.",
+      "src": "— Brookhaven Lab, 1958"
+    },
+    {
+      "em": "📼",
+      "text": "Floppy disks were called \"floppy\" because the original 8-inch disks bent in your hand. The 3.5\" disks we remember were technically rigid.",
+      "src": "— IBM, 1971"
+    },
+    {
+      "em": "🐍",
+      "text": "Python is named after Monty Python's Flying Circus, not the snake. Guido van Rossum was reading the scripts when he picked the name in 1991.",
+      "src": "— python.org"
+    },
+    {
+      "em": "⌨️",
+      "text": "The QWERTY layout was designed in 1873 to slow typists down — keys jammed on mechanical typewriters. We've kept it ever since.",
+      "src": "— Christopher Sholes"
+    },
+    {
+      "em": "☕",
+      "text": "Java was almost called \"Oak\" — until lawyers found another product with that name. The team picked Java over coffee. Literally.",
+      "src": "— Sun Microsystems, 1995"
+    },
+    {
+      "em": "🦠",
+      "text": "The first computer virus, \"Creeper\" (1971), just displayed: \"I'm the creeper, catch me if you can!\" The first antivirus, \"Reaper\", was made to hunt it.",
+      "src": "— ARPANET"
+    },
+    {
+      "em": "🖱️",
+      "text": "The first computer mouse was made of wood (1964). Doug Engelbart's prototype had two perpendicular wheels — and one button.",
+      "src": "— SRI International"
+    },
+    {
+      "em": "💾",
+      "text": "The save icon (a floppy disk) is now older than most of the people who use it. Kids today have never touched one.",
+      "src": "— Universal truth"
+    },
+    {
+      "em": "🔑",
+      "text": "The password 'password' is still used by millions of people every year. It takes less than 1 second to crack.",
+      "src": "— NordPass, 2024"
+    },
+    {
+      "em": "🌍",
+      "text": "Over 5.5 billion people use the internet today — more than have access to clean toilets.",
+      "src": "— ITU / WHO"
+    },
+    {
+      "em": "📧",
+      "text": "The average office worker receives 121 emails per day. About 49% of all email traffic is spam.",
+      "src": "— Radicati Group"
+    },
+    {
+      "em": "🧮",
+      "text": "The word 'computer' originally meant a person who does calculations. It was a job title until the 1950s.",
+      "src": "— Oxford English Dictionary"
+    },
+    {
+      "em": "🏎️",
+      "text": "A modern car has more lines of code (~100 million) than a Boeing 787 Dreamliner, Facebook, and the Large Hadron Collider combined.",
+      "src": "— IEEE Spectrum"
+    },
+    {
+      "em": "🐛",
+      "text": "The average software has 15-50 bugs per 1,000 lines of code. NASA's Space Shuttle had just 0.1 bugs per 1,000 lines.",
+      "src": "— NASA / IEEE"
+    },
+    {
+      "em": "📡",
+      "text": "The entire data of Wikipedia (text only) is about 22 GB — it fits on a cheap USB stick.",
+      "src": "— Wikipedia dumps"
+    },
+    {
+      "em": "🎵",
+      "text": "The first MP3 ever encoded was 'Tom's Diner' by Suzanne Vega (1993). Engineers chose it because of her clear, unaccompanied voice.",
+      "src": "— Fraunhofer Institute"
+    },
+    {
+      "em": "🔋",
+      "text": "Bitcoin mining uses more electricity annually than the entire country of Argentina.",
+      "src": "— Cambridge University"
+    },
+    {
+      "em": "💻",
+      "text": "The Apollo 11 guidance computer had 74 KB of memory. Your phone has about 80 million times more.",
+      "src": "— NASA"
+    },
+    {
+      "em": "🐱",
+      "text": "The first YouTube video ever uploaded was 'Me at the zoo' (2005). It's 18 seconds long and features elephants.",
+      "src": "— YouTube"
+    },
+    {
+      "em": "📱",
+      "text": "The average person touches their phone 2,617 times a day. Heavy users exceed 5,400 touches.",
+      "src": "— Dscout Research"
+    },
+    {
+      "em": "🗂️",
+      "text": "Google processes over 8.5 billion searches per day — that's about 99,000 per second.",
+      "src": "— Internet Live Stats"
+    },
+    {
+      "em": "🧊",
+      "text": "GitHub's Arctic Code Vault stores open-source code on film reels in a decommissioned coal mine in Svalbard, Norway. It's designed to last 1,000 years.",
+      "src": "— GitHub, 2020"
+    },
+    {
+      "em": "🎲",
+      "text": "Minecraft's world is 8x the surface area of Earth. The procedural generation uses a single seed number to create it all.",
+      "src": "— Mojang"
+    },
+    {
+      "em": "🖥️",
+      "text": "The first 1 GB hard drive (1980) weighed 550 pounds, was the size of a refrigerator, and cost $40,000.",
+      "src": "— IBM"
+    },
+    {
+      "em": "🌙",
+      "text": "It takes more computing power to run a modern AI model once than it took to send humans to the Moon.",
+      "src": "— OpenAI estimates"
+    },
+    {
+      "em": "📦",
+      "text": "npm (Node Package Manager) has over 2 million packages. The average JavaScript project installs over 1,000 dependencies.",
+      "src": "— npm registry"
+    },
+    {
+      "em": "🔐",
+      "text": "The most expensive cybersecurity breach in history was Yahoo (2013) — 3 billion accounts compromised. It reduced their sale price by $350 million.",
+      "src": "— Verizon/Yahoo"
+    },
+    {
+      "em": "🐧",
+      "text": "Linux runs on 100% of the world's top 500 supercomputers. Not 99%. All of them.",
+      "src": "— TOP500.org"
+    },
+    {
+      "em": "⏱️",
+      "text": "Amazon calculated that every 100ms of latency costs them 1% in sales. Google found that an extra 0.5s in search page load drops traffic by 20%.",
+      "src": "— Amazon / Google"
+    },
+    {
+      "em": "🎬",
+      "text": "The entire Lord of the Rings trilogy took 12 TB of storage for rendering. A single frame took up to 48 hours to render.",
+      "src": "— Weta Digital"
+    },
+    {
+      "em": "🔤",
+      "text": "There are over 700 programming languages in active use. Most programmers only ever learn 3-5 in their career.",
+      "src": "— TIOBE / StackOverflow"
+    },
+    {
+      "em": "🌐",
+      "text": "The first website (info.cern.ch) is still online. It explains what the World Wide Web is.",
+      "src": "— CERN, 1991"
+    },
+    {
+      "em": "🧬",
+      "text": "1 gram of DNA can theoretically store 215 petabytes (215 million gigabytes) of data.",
+      "src": "— Harvard / Nature"
+    },
+    {
+      "em": "🚀",
+      "text": "SpaceX's Falcon 9 rocket runs Linux. The flight software is written in C++.",
+      "src": "— SpaceX"
+    },
+    {
+      "em": "🎯",
+      "text": "Stack Overflow has over 24 million answered questions. The most viewed question is about reverting a Git commit.",
+      "src": "— StackOverflow"
+    },
+    {
+      "em": "🔊",
+      "text": "Siri was originally developed as a DARPA-funded AI project. Apple acquired it for $200 million in 2010.",
+      "src": "— Apple / DARPA"
+    },
+    {
+      "em": "📊",
+      "text": "90% of the world's data was created in the last two years. We generate 2.5 quintillion bytes daily.",
+      "src": "— IBM / DOMO"
+    },
+    {
+      "em": "🏠",
+      "text": "The first webcam was pointed at a coffee pot at Cambridge University (1991). Researchers used it to check if the pot was empty before walking downstairs.",
+      "src": "— Cambridge"
+    },
+    {
+      "em": "🕹️",
+      "text": "The Game Boy (1989) had less computing power than a modern smart doorbell. It sold 118 million units.",
+      "src": "— Nintendo"
+    },
+    {
+      "em": "🔗",
+      "text": "The internet's undersea cables total over 1.3 million km — enough to wrap around Earth 33 times. 97% of intercontinental data travels through them.",
+      "src": "— TeleGeography"
+    },
+    {
+      "em": "💡",
+      "text": "Thomas Edison's lab made the first audio recording (1877) and also the first motion picture (1891). Both technologies were side projects.",
+      "src": "— Edison Labs"
+    },
+    {
+      "em": "🤖",
+      "text": "The word 'robot' comes from the Czech word 'robota' meaning forced labor. It was coined in a 1920 play by Karel Čapek.",
+      "src": "— R.U.R., 1920"
+    },
+    {
+      "em": "🎨",
+      "text": "The hex color code for Facebook blue (#4267B2) was chosen because Mark Zuckerberg is red-green colorblind. Blue is the color he sees best.",
+      "src": "— The New Yorker"
+    },
+    {
+      "em": "📝",
+      "text": "The original source code for the World Wide Web was written on a NeXT computer. Steve Jobs founded NeXT after being fired from Apple.",
+      "src": "— CERN / NeXT"
+    },
+    {
+      "em": "🌊",
+      "text": "The entire internet weighs about 50 grams — the combined weight of all the electrons in motion carrying data at any given moment.",
+      "src": "— Discover Magazine"
+    },
+    {
+      "em": "⚡",
+      "text": "A single Google search uses about 0.3 Wh of energy — enough to light a 60W bulb for 18 seconds.",
+      "src": "— Google"
+    },
+    {
+      "em": "🎮",
+      "text": "The Easter egg tradition started in 1980 when an Atari developer hid his name in Adventure because the company refused to credit programmers.",
+      "src": "— Warren Robinett"
+    },
+    {
+      "em": "🐘",
+      "text": "PHP originally stood for 'Personal Home Page'. Its creator, Rasmus Lerdorf, said he never intended it to become a real programming language.",
+      "src": "— Rasmus Lerdorf"
+    },
+    {
+      "em": "🧪",
+      "text": "The first domain name ever registered was symbolics.com on March 15, 1985. It's still active as a historical museum.",
+      "src": "— IANA"
+    },
+    {
+      "em": "📺",
+      "text": "Netflix's recommendation engine saves the company $1 billion per year by reducing customer churn.",
+      "src": "— Netflix Tech Blog"
+    },
+    {
+      "em": "🦟",
+      "text": "On September 9, 1947, the Harvard Mark II malfunctioned — engineers found a moth stuck in relay #70 and taped it into the logbook: \"First actual case of bug being found.\" The moth is still in the Smithsonian.",
+      "src": "— Harvard Mark II logbook, 1947"
+    },
+    {
+      "em": "✉️",
+      "text": "Ray Tomlinson picked the @ symbol for email in 1971 simply because it was already on the keyboard and almost nobody used it. One arbitrary choice — now it's in every email address on Earth.",
+      "src": "— Ray Tomlinson, ARPANET 1971"
+    },
+    {
+      "em": "0️⃣",
+      "text": "Arrays start at index 0 because of memory math: address = start + index × element_size. With 0-based indexing the first element needs no offset — in the 1950s that saved a subtraction on every single array access.",
+      "src": "— BCPL & C convention"
+    },
+    {
+      "em": "📧",
+      "text": "In 2002 a sysadmin got a bug report: \"we can't send email farther than 500 miles.\" It was real — a misconfigured ~3 ms mail timeout only let messages reach servers within the distance light travels in that time.",
+      "src": "— Trey Harris, The 500-Mile Email, 2002"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "Talk is cheap. Show me the code.",
+      "author": "Linus Torvalds",
+      "context": "2000, Linux Kernel Mailing List"
+    },
+    {
+      "text": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      "author": "Martin Fowler",
+      "context": "Refactoring, 1999"
+    },
+    {
+      "text": "First, solve the problem. Then, write the code.",
+      "author": "John Johnson",
+      "context": ""
+    },
+    {
+      "text": "The best way to predict the future is to invent it.",
+      "author": "Alan Kay",
+      "context": "1971, Xerox PARC"
+    },
+    {
+      "text": "Simplicity is the soul of efficiency.",
+      "author": "Austin Freeman",
+      "context": ""
+    },
+    {
+      "text": "Programs must be written for people to read, and only incidentally for machines to execute.",
+      "author": "Harold Abelson",
+      "context": "SICP, 1985"
+    },
+    {
+      "text": "It's not a bug — it's an undocumented feature.",
+      "author": "Anonymous",
+      "context": "Programmer folklore"
+    },
+    {
+      "text": "The most dangerous phrase in the language is 'We've always done it this way.'",
+      "author": "Grace Hopper",
+      "context": ""
+    },
+    {
+      "text": "Measuring programming progress by lines of code is like measuring aircraft building progress by weight.",
+      "author": "Bill Gates",
+      "context": ""
+    },
+    {
+      "text": "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.",
+      "author": "Antoine de Saint-Exupéry",
+      "context": ""
+    },
+    {
+      "text": "The computer was born to solve problems that did not exist before.",
+      "author": "Bill Gates",
+      "context": ""
+    },
+    {
+      "text": "In theory, there is no difference between theory and practice. In practice, there is.",
+      "author": "Yogi Berra",
+      "context": ""
+    },
+    {
+      "text": "Software is like entropy: it is difficult to grasp, weighs nothing, and obeys the Second Law of Thermodynamics — it always increases.",
+      "author": "Norman Augustine",
+      "context": ""
+    },
+    {
+      "text": "Before software can be reusable it first has to be usable.",
+      "author": "Ralph Johnson",
+      "context": ""
+    },
+    {
+      "text": "The only way to learn a new programming language is by writing programs in it.",
+      "author": "Dennis Ritchie",
+      "context": ""
+    },
+    {
+      "text": "Computers are good at following instructions, but not at reading your mind.",
+      "author": "Donald Knuth",
+      "context": ""
+    },
+    {
+      "text": "Give a man a program, frustrate him for a day. Teach a man to program, frustrate him for a lifetime.",
+      "author": "Muhammad Waseem",
+      "context": "Internet wisdom"
+    },
+    {
+      "text": "A language that doesn't affect the way you think about programming is not worth knowing.",
+      "author": "Alan Perlis",
+      "context": "Epigrams on Programming, 1982"
+    },
+    {
+      "text": "The function of good software is to make the complex appear simple.",
+      "author": "Grady Booch",
+      "context": ""
+    },
+    {
+      "text": "One of my most productive days was throwing away 1,000 lines of code.",
+      "author": "Ken Thompson",
+      "context": ""
+    },
+    {
+      "text": "Code is like humor. When you have to explain it, it's bad.",
+      "author": "Cory House",
+      "context": ""
+    },
+    {
+      "text": "Deleted code is debugged code.",
+      "author": "Jeff Sickel",
+      "context": ""
+    },
+    {
+      "text": "It works on my machine.",
+      "author": "Every developer",
+      "context": "Since the dawn of time"
+    },
+    {
+      "text": "If debugging is the process of removing bugs, then programming must be the process of putting them in.",
+      "author": "Edsger Dijkstra",
+      "context": ""
+    },
+    {
+      "text": "The best error message is the one that never shows up.",
+      "author": "Thomas Fuchs",
+      "context": ""
+    },
+    {
+      "text": "Walking on water and developing software from a specification are easy if both are frozen.",
+      "author": "Edward V. Berard",
+      "context": ""
+    },
+    {
+      "text": "Programming today is a race between software engineers trying to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots.",
+      "author": "Rick Cook",
+      "context": ""
+    },
+    {
+      "text": "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.",
+      "author": "John Woods",
+      "context": ""
+    },
+    {
+      "text": "There are only two hard things in Computer Science: cache invalidation and naming things.",
+      "author": "Phil Karlton",
+      "context": ""
+    },
+    {
+      "text": "Any sufficiently advanced technology is indistinguishable from magic.",
+      "author": "Arthur C. Clarke",
+      "context": "Profiles of the Future, 1962"
+    },
+    {
+      "text": "The Internet is becoming the town square for the global village of tomorrow.",
+      "author": "Bill Gates",
+      "context": ""
+    },
+    {
+      "text": "Privacy is not something that I'm merely entitled to, it's an absolute prerequisite.",
+      "author": "Marlon Brando",
+      "context": ""
+    },
+    {
+      "text": "Information is power. But like all power, there are those who want to keep it for themselves.",
+      "author": "Aaron Swartz",
+      "context": "Guerilla Open Access Manifesto, 2008"
+    },
+    {
+      "text": "We can only see a short distance ahead, but we can see plenty there that needs to be done.",
+      "author": "Alan Turing",
+      "context": "Computing Machinery and Intelligence, 1950"
+    },
+    {
+      "text": "People think that computer science is the art of geniuses, but the actual reality is the opposite — just many people doing things that build on each other.",
+      "author": "Donald Knuth",
+      "context": ""
+    },
+    {
+      "text": "The best code is no code at all.",
+      "author": "Jeff Atwood",
+      "context": "Coding Horror"
+    },
+    {
+      "text": "Move fast and break things. Unless you are breaking stuff, you are not moving fast enough.",
+      "author": "Mark Zuckerberg",
+      "context": "2009"
+    },
+    {
+      "text": "The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.",
+      "author": "Tim Berners-Lee",
+      "context": ""
+    },
+    {
+      "text": "Real artists ship.",
+      "author": "Steve Jobs",
+      "context": "1983"
+    },
+    {
+      "text": "Everybody should learn to program a computer, because it teaches you how to think.",
+      "author": "Steve Jobs",
+      "context": ""
+    },
+    {
+      "text": "Most good programmers do programming not because they expect to get paid, but because it is fun to program.",
+      "author": "Linus Torvalds",
+      "context": ""
+    },
+    {
+      "text": "Unix is simple. It just takes a genius to understand its simplicity.",
+      "author": "Dennis Ritchie",
+      "context": ""
+    },
+    {
+      "text": "Controlling complexity is the essence of computer programming.",
+      "author": "Brian Kernighan",
+      "context": "Software Tools, 1976"
+    },
+    {
+      "text": "Programming is the art of telling another human being what one wants the computer to do.",
+      "author": "Donald Knuth",
+      "context": ""
+    },
+    {
+      "text": "Java is to JavaScript what car is to carpet.",
+      "author": "Chris Heilmann",
+      "context": ""
+    },
+    {
+      "text": "In a room full of top software designers, if two agree on the same thing, that's a majority.",
+      "author": "Bill Curtis",
+      "context": ""
+    },
+    {
+      "text": "Programming isn't about what you know; it's about what you can figure out.",
+      "author": "Chris Pine",
+      "context": "Learn to Program"
+    },
+    {
+      "text": "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.",
+      "author": "Daniel J. Boorstin",
+      "context": ""
+    },
+    {
+      "text": "Weeks of coding can save you hours of planning.",
+      "author": "Anonymous",
+      "context": "Developer proverb"
+    },
+    {
+      "text": "Make it work, make it right, make it fast.",
+      "author": "Kent Beck",
+      "context": ""
+    }
+  ],
+  "timeline": [
+    {
+      "year": "1969",
+      "emoji": "📡",
+      "tag": "INTERNET",
+      "title": "ARPANET sends its first message",
+      "text": "UCLA → Stanford. They tried to send LOGIN, the system crashed after 'LO'. Humanity's first internet packet was a typo."
+    },
+    {
+      "year": "1983",
+      "emoji": "🌐",
+      "tag": "PROTOCOLS",
+      "title": "The internet is born on a Tuesday",
+      "text": "January 1, 1983 — ARPANET switches from NCP to TCP/IP. Networks of networks become possible. Vint Cerf calls it \"Flag Day\"."
+    },
+    {
+      "year": "1991",
+      "emoji": "🐧",
+      "tag": "OPEN SOURCE",
+      "title": "Linus posts to comp.os.minix",
+      "text": "\"Hello everybody out there using minix — I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu).\" It would become the most successful OS in history."
+    },
+    {
+      "year": "1995",
+      "emoji": "☕",
+      "tag": "LANGUAGES",
+      "title": "Java is released — \"Write Once, Run Anywhere\"",
+      "text": "Sun Microsystems ships Java 1.0. The JVM concept revolutionizes how we ship software. JavaScript is created the same year by Brendan Eich, in 10 days."
+    },
+    {
+      "year": "2005",
+      "emoji": "🌳",
+      "tag": "TOOLS",
+      "title": "Linus writes Git in two weeks",
+      "text": "After BitKeeper revoked the Linux kernel's free license, Linus built a distributed version control system from scratch. He named it after himself: \"I'm an egotistical bastard.\""
+    },
+    {
+      "year": "2007",
+      "emoji": "📱",
+      "tag": "PLATFORMS",
+      "title": "The iPhone redefines a computer",
+      "text": "A computer in your pocket, with no keyboard, running custom UNIX. Within a decade more code runs on phones than on every desktop ever made."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "tim-berners-lee-gave-the-web-away-for-free",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1991",
+  "emoji": "🌐",
+  "grad": "linear-gradient(135deg,#0a2a4a,#1a5a8a)",
+  "title": "Tim Berners-Lee gave the web away for free",
+  "excerpt": "In 1989, a physicist at CERN proposed a hypertext system to share research papers. By 1991, the first website was live. He could have patented it and become the richest person alive. Instead, he made it free.",
+  "fullText": "In March 1989, Tim Berners-Lee, a British software engineer working at CERN in Geneva, submitted a proposal to his boss titled \"Information Management: A Proposal.\" His boss wrote \"Vague, but exciting\" on the cover page and let him work on it.\n\nThe problem was mundane: CERN had thousands of researchers using different computers, different operating systems, and different document formats. Sharing information was a nightmare. Berners-Lee wanted a system where documents on any computer could link to documents on any other computer.\n\nBy December 1990, he had built three things: HTML (a language for writing documents with links), HTTP (a protocol for transferring them), and the first web browser (which was also an editor — he imagined a read-write web from the start). On August 6, 1991, the first website went live at info.cern.ch.\n\nThe technology could have been patented. CERN could have licensed it. Berners-Lee could have become the wealthiest person in history — the web now generates trillions of dollars in economic activity.\n\nInstead, CERN released the web technology into the public domain on April 30, 1993. No royalties, no licenses, no restrictions. Berners-Lee has said repeatedly that the web only succeeded because it was free. If any single company had owned it, competing standards would have fragmented the network.\n\nBy 1995, the web had exploded: Netscape went public, Amazon launched, and the dot-com era began. Today there are nearly 2 billion websites. The entire modern internet economy — social media, streaming, e-commerce, cloud computing — exists because one person decided that connecting humanity mattered more than getting rich.\n\nBerners-Lee was knighted in 2004. He continues to advocate for an open web through the World Wide Web Consortium (W3C) and the Web Foundation. In recent years, he has expressed concern about the web's centralization, surveillance, and misinformation — problems he never anticipated when he wrote that vague, exciting proposal in 1989.",
+  "author": "Editorial",
+  "authorEm": "✨",
+  "readTime": "7 min"
+}

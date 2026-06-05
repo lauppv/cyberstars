@@ -1,0 +1,14 @@
+{
+  "slug": "how-git-was-born-in-two-weeks-of-rage",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "2005",
+  "emoji": "🔀",
+  "grad": "linear-gradient(135deg,#2a1a1a,#6a3a2f)",
+  "title": "How Git was born in two weeks of rage",
+  "excerpt": "When the Linux kernel lost access to its version control tool, Linus Torvalds locked himself away and wrote Git in 14 days. It's now used by virtually every software project on Earth.",
+  "fullText": "In 2005, the Linux kernel had a problem. For three years, it had been using BitKeeper, a proprietary version control system whose owner gave Linux developers a free license. Then Andrew Tridgell (creator of Samba) reverse-engineered BitKeeper's protocol. BitKeeper's owner, Larry McVoy, was furious and revoked the free license.\n\nLinus Torvalds was now without a version control system for the world's most important open-source project. He could have chosen an existing open-source alternative like CVS or Subversion. Instead, he looked at them and decided they were all terrible.\n\nLinus had specific requirements: it had to be fast (applying a patch should take 3 seconds, not 30), distributed (no central server that could go down or be controlled by someone else), and able to handle the Linux kernel's massive scale (thousands of developers, millions of lines of code).\n\nHe started writing Git on April 3, 2005. By April 7 — four days later — Git could version-control its own source code. By April 18, the first merge of multiple branches was done. By June 16, Git managed the release of Linux kernel 2.6.12. The core system was essentially built in two weeks.\n\nThe name \"Git\" is British slang for a stupid person. Linus said: \"I'm an egotistical bastard, and I name all my projects after myself. First Linux, now Git.\" (This is a joke — \"Linux\" was named by the FTP admin who uploaded it, not by Linus himself.)\n\nGit's key innovation was making branching and merging cheap. In older systems, creating a branch was expensive and merging was terrifying. In Git, you create branches constantly — for features, experiments, fixes — and merge them back trivially. This enabled entirely new workflows.\n\nGitHub (founded 2008) built a social network on top of Git and made open-source collaboration accessible to everyone. Pull requests, issues, and code review became standard. Microsoft bought GitHub in 2018 for $7.5 billion.\n\nToday, Git is used by over 90% of developers worldwide. It manages everything from solo projects to codebases with thousands of contributors. All because one developer lost his tools and decided to build better ones in a fit of motivated fury.",
+  "author": "Prof. Andrei",
+  "authorEm": "🔥",
+  "readTime": "9 min"
+}

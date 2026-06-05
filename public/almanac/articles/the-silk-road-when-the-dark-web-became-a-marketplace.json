@@ -1,0 +1,14 @@
+{
+  "slug": "the-silk-road-when-the-dark-web-became-a-marketplace",
+  "cat": "internet",
+  "tag": "INTERNET",
+  "year": "2011",
+  "emoji": "🧅",
+  "grad": "linear-gradient(135deg,#1a1a2a,#3a2f5a)",
+  "title": "The Silk Road — when the dark web became a marketplace",
+  "excerpt": "Ross Ulbricht built an anonymous marketplace using Tor and Bitcoin. For two years, you could buy anything. Then the FBI caught him in a public library with his laptop open.",
+  "fullText": "In February 2011, a 26-year-old named Ross Ulbricht launched a website called Silk Road. It was only accessible through the Tor network — a system that bounces your internet traffic through multiple encrypted relays to hide your identity. Payments were in Bitcoin, which was still obscure and somewhat anonymous.\n\nSilk Road was essentially eBay for illegal goods. Drugs were the main product — everything from marijuana to heroin. But it also sold fake IDs, hacking tools, and counterfeit currency. Ulbricht, operating under the pseudonym \"Dread Pirate Roberts,\" framed it as a libertarian experiment in free markets without government interference.\n\nThe site used an ingenious escrow system. Buyers sent Bitcoin to Silk Road, which held it until the buyer confirmed delivery. Sellers had reputation scores just like on Amazon. There were customer service disputes and a forum for community discussion. It was disturbingly professional.\n\nAt its peak, Silk Road had over 100,000 buyers and generated an estimated $1.2 billion in sales. Ulbricht collected commissions on every transaction. The FBI estimated he earned about $80 million in Bitcoin.\n\nThe investigation to find Ulbricht took two years. His critical mistake was using his real email address in an early promotional post for Silk Road, before he became careful about anonymity. IRS investigator Gary Alford found this connection by simply Googling.\n\nOn October 1, 2013, FBI agents approached Ulbricht in the science fiction section of the San Francisco Public Library. They waited until his laptop was open and unlocked — crucial for accessing his encrypted data. They staged a fake argument between two agents to distract him while a third grabbed the laptop. On the screen was the Silk Road admin panel.\n\nUlbricht was sentenced to double life imprisonment plus 40 years without parole. His case raised profound questions about internet freedom, privacy, and the limits of technology as a tool for liberation. The technology he used — Tor, Bitcoin, encryption — was legal. What he did with it was not.\n\nSilk Road proved that cryptographic anonymity tools actually work for their intended purpose. It also proved that operational security is only as strong as its weakest moment. One careless early post undid years of careful anonymity.",
+  "author": "Mr. Radu",
+  "authorEm": "🕵️",
+  "readTime": "9 min"
+}

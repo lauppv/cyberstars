@@ -1,0 +1,13 @@
+{
+  "slug": "custom-gpts-everyone-becomes-an-ai-developer",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2024",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "Custom GPTs: everyone becomes an AI developer",
+  "excerpt": "OpenAI's GPT Store let anyone create custom AI assistants without coding. Within months, millions of specialized GPTs existed for every niche imaginable.",
+  "fullText": "In late 2023, OpenAI launched Custom GPTs — a way for anyone to create a specialized AI assistant by simply describing what it should do. No coding required. No API calls. Just natural language instructions.\n\n\"You are a fitness coach who specializes in bodyweight exercises for busy professionals. You always ask about injuries before suggesting workouts.\" That's it — you just created a custom AI that hundreds of people could use.\n\nThe GPT Store launched shortly after, creating a marketplace where creators could share (and monetize) their custom GPTs. Within months, millions of specialized assistants existed: recipe generators, legal advisors, coding tutors, language partners, game masters, financial analysts.\n\nFor entrepreneurs, it lowered the barrier to building AI products to near zero. You didn't need to understand machine learning, manage infrastructure, or write code. You needed a good idea and clear instructions.\n\nFor users, it meant finding AI assistants perfectly tailored to their specific needs. Instead of prompting a general-purpose model, they could use a pre-configured one that already understood their domain.\n\nThe platform created an ecosystem reminiscent of the early App Store — millions of creators, most producing modest tools, but some building genuinely transformative applications that attracted millions of users.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

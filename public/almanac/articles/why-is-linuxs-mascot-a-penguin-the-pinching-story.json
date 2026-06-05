@@ -1,0 +1,14 @@
+{
+  "slug": "why-is-linuxs-mascot-a-penguin-the-pinching-story",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "1996",
+  "emoji": "🐧",
+  "grad": "linear-gradient(135deg,#1a2a4f,#4f6fab)",
+  "title": "Why is Linux's mascot a penguin? (The pinching story)",
+  "excerpt": "In 1996 Linus needed a mascot. He told the community he'd been pecked by a penguin at a zoo in Canberra. The supposed pinch came with mild fever — and a lifelong fondness for the bird.",
+  "fullText": "In 1996, the Linux community decided it needed a mascot. The project was gaining serious momentum, and a recognizable logo would help.\n\nSuggestions poured in — eagles, sharks, foxes, all the usual tech-mascot suspects. Then Linus Torvalds chimed in with an unusual preference: he wanted a penguin.\n\nHis reasoning? During a visit to the National Zoo & Aquarium in Canberra, Australia, he'd been nipped by a little penguin (Eudyptula minor, the world's smallest penguin species). The bite wasn't serious, but Linus joked that it gave him \"penguinitis\" — a made-up condition causing an irrational fondness for the birds.\n\nHe described his ideal mascot: a penguin that looked \"happy and satisfied, like it had just eaten a whole herring.\" Not fierce, not corporate — just content.\n\nLarry Ewing, a developer, created the image using GIMP (the GNU Image Manipulation Program — open source, of course). The result was Tux: a slightly pudgy, friendly-looking penguin sitting with a satisfied expression.\n\nThe name \"Tux\" has multiple claimed origins — some say it stands for \"Torvalds UniX,\" others that it refers to the penguin's tuxedo-like coloring.\n\nTux became one of the most recognized mascots in technology. Unlike corporate logos designed by branding agencies, Tux was born from a personal anecdote, created with free software, and belongs to no one. It's the perfect mascot for Linux — informal, community-driven, and a little bit weird.",
+  "author": "Liam",
+  "authorEm": "🐢",
+  "readTime": "4 min"
+}

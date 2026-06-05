@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import type { StoryData } from './almanacData';
+import type { AlmanacArticle } from '../../shared/almanac';
 import './AlmanacPage.css';
 
-export function StoryModal({ story, onClose }: { story: StoryData; onClose: () => void }) {
+export function StoryModal({ story, onClose }: { story: AlmanacArticle; onClose: () => void }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();

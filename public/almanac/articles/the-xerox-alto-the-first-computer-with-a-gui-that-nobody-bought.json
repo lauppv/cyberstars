@@ -1,0 +1,14 @@
+{
+  "slug": "the-xerox-alto-the-first-computer-with-a-gui-that-nobody-bought",
+  "cat": "hardware",
+  "tag": "HARDWARE",
+  "year": "1973",
+  "emoji": "🖥️",
+  "grad": "linear-gradient(135deg,#1a3a2a,#2f7a4f)",
+  "title": "The Xerox Alto — the first computer with a GUI that nobody bought",
+  "excerpt": "In 1973, Xerox PARC built a computer with windows, icons, a mouse, and ethernet. It had everything. Then Xerox ignored it and let Steve Jobs copy the whole thing.",
+  "fullText": "In 1973, researchers at Xerox PARC (Palo Alto Research Center) created something that wouldn't become mainstream for another decade: a personal computer with a graphical user interface. The Xerox Alto had windows you could move around, icons you could click, a mouse pointer, and even a what-you-see-is-what-you-get text editor.\n\nIt also had ethernet networking — years before anyone else. You could send email, share files, and print to a laser printer (which Xerox also invented). It was, by any measure, the future of computing sitting in a research lab in California.\n\nBut Xerox was a copier company. Their executives looked at the Alto and saw... an expensive toy. They built about 2,000 units, mostly for internal use and universities, but never commercialized it seriously. The Alto cost about $32,000 to build — far too expensive for consumers, but Xerox never invested in making it cheaper.\n\nThen, in 1979, Steve Jobs visited Xerox PARC. The story goes that Xerox gave Apple's team a demo in exchange for the right to buy Apple stock. Jobs saw the GUI and reportedly said: \"Why aren't you doing anything with this? This is the greatest thing! This is revolutionary!\"\n\nApple went on to build the Lisa (1983) and then the Macintosh (1984), both heavily inspired by what Jobs saw at PARC. Microsoft followed with Windows in 1985. The entire personal computing revolution — windows, icons, menus, pointers — traces back to that Xerox lab.\n\nThe lesson? Innovation without execution is just a cool demo. Xerox invented the future of computing and then watched others get rich from it. Today, Xerox PARC is studied in every business school as the ultimate cautionary tale about failing to commercialize your own research.",
+  "author": "Prof. Andrei",
+  "authorEm": "🔬",
+  "readTime": "7 min"
+}

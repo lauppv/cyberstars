@@ -1,0 +1,13 @@
+{
+  "slug": "alphacode-2-gemini-powered-competitive-programming",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "AlphaCode 2: Gemini-powered competitive programming",
+  "excerpt": "DeepMind's coding AI reached the 85th percentile in programming competitions — performing at the level of a talented undergraduate.",
+  "fullText": "Building on their earlier AlphaCode system, Google DeepMind released AlphaCode 2 — powered by Gemini's architecture and reaching the 85th percentile in competitive programming contests on Codeforces.\n\nCompetitive programming is one of the hardest tests of AI reasoning. Problems require understanding complex specifications, designing algorithms, handling edge cases, and writing bug-free code — all under time pressure.\n\nAlphaCode 2 solved problems that require genuine algorithmic insight: dynamic programming optimizations, graph theory applications, and mathematical reasoning that can't be pattern-matched from training data.\n\nThe system used a novel approach: generate thousands of possible solutions, then use a learned value function to select the most likely correct ones. Combined with Gemini's reasoning capability, this brute-force-meets-intelligence approach proved remarkably effective.\n\nFor the software engineering profession, the implication was significant: if AI could solve competitive programming problems at this level, what did that mean for everyday coding tasks? Most production code is far simpler than contest problems.\n\nThe research team was careful to frame it as a tool, not a replacement: \"The goal isn't to replace programmers. It's to handle the algorithmic complexity so humans can focus on design and architecture.\"",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

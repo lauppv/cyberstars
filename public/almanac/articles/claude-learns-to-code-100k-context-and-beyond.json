@@ -1,0 +1,13 @@
+{
+  "slug": "claude-learns-to-code-100k-context-and-beyond",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude learns to code: 100K context and beyond",
+  "excerpt": "Claude's 200K context window meant it could read entire codebases at once. Developers started using it not just to write code, but to understand legacy systems.",
+  "fullText": "One of Claude's most celebrated capabilities is its massive context window — up to 200,000 tokens. That's roughly 150,000 words, or an entire novel, or a substantial codebase.\n\nFor developers, this changed the game. Instead of feeding an AI small snippets of code and hoping it understood the bigger picture, they could paste entire repositories. Claude could then reason about architecture, find bugs across file boundaries, and suggest refactors that required understanding dozens of interconnected modules.\n\nCompanies reported using Claude to onboard new developers: \"Just feed it the codebase and ask it to explain the architecture.\" What used to take weeks of reading documentation could now happen in a conversation.\n\nThe long context also enabled new workflows in legal document review, academic research, and financial analysis — anywhere professionals needed to synthesize large volumes of text quickly.\n\nAs one developer put it: \"It's like having a colleague who has genuinely read everything.\"",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

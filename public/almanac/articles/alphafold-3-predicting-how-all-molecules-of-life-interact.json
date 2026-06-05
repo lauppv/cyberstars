@@ -1,0 +1,13 @@
+{
+  "slug": "alphafold-3-predicting-how-all-molecules-of-life-interact",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2024",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "AlphaFold 3: predicting how all molecules of life interact",
+  "excerpt": "DeepMind's latest AlphaFold doesn't just predict protein structures — it predicts how proteins, DNA, RNA, and drugs interact with each other.",
+  "fullText": "If AlphaFold 2 solved protein structure prediction, AlphaFold 3 went further: it predicts how all biological molecules interact with each other. Proteins with DNA. Proteins with drugs. RNA with small molecules. Everything.\n\nThis matters enormously for drug discovery. Knowing a protein's shape is useful, but knowing how a potential drug molecule will bind to it — where it will attach, how tightly, what side effects it might cause — is what actually enables new medicines.\n\nAlphaFold 3 achieved 50% better accuracy than previous methods for predicting protein-ligand interactions. For drug designers, this meant fewer failed experiments, faster identification of promising compounds, and ultimately cheaper, faster development of new treatments.\n\nGoogle made the system available through the AlphaFold Server, allowing researchers worldwide to submit predictions at no cost. Within months, tens of thousands of researchers had used it.\n\nThe broader implication: biology was becoming a computational science. Instead of expensive, slow wet-lab experiments to understand molecular behavior, researchers could simulate interactions computationally and only go to the lab for final validation.\n\nDemis Hassabis called it \"the beginning of the end of the trial-and-error era in drug discovery.\"",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

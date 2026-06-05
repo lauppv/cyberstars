@@ -9,9 +9,8 @@ import type { Course } from '../../shared/lesson';
 import { courseMeta } from '../constants/courses';
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from '../../shared/constants';
 import { StoryModal } from './StoryModal';
-import { HERO as ALMANAC_HERO, ARTICLES as ALMANAC_ARTICLES_RAW } from './almanacData';
-import type { StoryData } from './almanacData';
-import { AI_ARTICLES } from './almanacAIArticles';
+import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
+import type { AlmanacArticle } from '../../shared/almanac';
 
 function localDateStr(d: Date): string {
   const y = d.getFullYear();
@@ -70,14 +69,11 @@ function seededPick<T>(items: T[], count: number, seed: number): T[] {
   return indices.slice(0, count).map((i) => items[i]);
 }
 
-const ALL_ALMANAC_POOL: StoryData[] = [ALMANAC_HERO, ...ALMANAC_ARTICLES_RAW, ...AI_ARTICLES];
-
-const ALMANAC_HIGHLIGHTS = seededPick(ALL_ALMANAC_POOL, 3, TODAY_SEED);
-
 export function HomePage() {
   const navigate = useNavigate();
   const { isLoggedIn, isLoading, user } = useAuth();
-  const [almanacStory, setAlmanacStory] = useState<StoryData | null>(null);
+  const [almanacStory, setAlmanacStory] = useState<AlmanacArticle | null>(null);
+  const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
   const { courses: allCourses } = useCurriculum();
   const { progressMap, refresh: refreshProgress } = useAllProgress();
 
@@ -140,6 +136,22 @@ export function HomePage() {
   useEffect(() => {
     if (isLoggedIn) refreshProgress();
   }, [isLoggedIn, refreshProgress]);
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+    let cancelled = false;
+    fetchAlmanacSlugs()
+      .then((slugs) => Promise.all(seededPick(slugs, 3, TODAY_SEED).map(fetchAlmanacArticle)))
+      .then((articles) => {
+        if (!cancelled) setAlmanacHighlights(articles);
+      })
+      .catch(() => {
+        if (!cancelled) setAlmanacHighlights([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoggedIn]);
 
   if (isLoading) {
     return (
@@ -236,46 +248,56 @@ export function HomePage() {
             </div>
 
             {/* ── Almanac Highlights ── */}
-            <section>
-              <div className="flex items-center justify-between mb-3">
-                <SectionHeader noMargin>From the Almanac</SectionHeader>
-                <button
-                  onClick={() => navigate('/almanac')}
-                  className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer"
-                >
-                  View all →
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-                {ALMANAC_HIGHLIGHTS.map((a, i) => {
-                  const color = TAG_COLORS[a.tag ?? ''] ?? '#6C5CE7';
-                  return (
-                    <button
-                      key={i}
-                      onClick={() => setAlmanacStory(a)}
-                      className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
-                    >
-                      <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.8px] mb-2">
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
-                        <span style={{ color }}>{a.tag}</span>
-                      </div>
-                      <div className="text-sm font-bold tracking-[-0.2px] leading-tight mb-1.5 line-clamp-2">
-                        {a.title}
-                      </div>
-                      <div className="text-xs text-[var(--text2)] leading-relaxed flex-1 line-clamp-3 mb-2.5">
-                        {a.excerpt}
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] text-[var(--text3)]">{a.readTime} read</span>
-                        <span className="text-[11px] font-semibold text-[var(--accent)]">
-                          Read →
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
+            {almanacHighlights?.length !== 0 && (
+              <section>
+                <div className="flex items-center justify-between mb-3">
+                  <SectionHeader noMargin>From the Almanac</SectionHeader>
+                  <button
+                    onClick={() => navigate('/almanac')}
+                    className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer"
+                  >
+                    View all →
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                  {(almanacHighlights ?? [null, null, null]).map((a, i) => {
+                    if (!a) {
+                      return (
+                        <div
+                          key={i}
+                          className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] animate-pulse h-[168px]"
+                        />
+                      );
+                    }
+                    const color = TAG_COLORS[a.tag ?? ''] ?? '#6C5CE7';
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => setAlmanacStory(a)}
+                        className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
+                      >
+                        <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.8px] mb-2">
+                          <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                          <span style={{ color }}>{a.tag}</span>
+                        </div>
+                        <div className="text-sm font-bold tracking-[-0.2px] leading-tight mb-1.5 line-clamp-2">
+                          {a.title}
+                        </div>
+                        <div className="text-xs text-[var(--text2)] leading-relaxed flex-1 line-clamp-3 mb-2.5">
+                          {a.excerpt}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] text-[var(--text3)]">{a.readTime} read</span>
+                          <span className="text-[11px] font-semibold text-[var(--accent)]">
+                            Read →
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
           </div>
         </main>
 

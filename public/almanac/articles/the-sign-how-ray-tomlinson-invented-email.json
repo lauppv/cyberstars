@@ -1,0 +1,14 @@
+{
+  "slug": "the-sign-how-ray-tomlinson-invented-email",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1971",
+  "emoji": "📧",
+  "grad": "linear-gradient(135deg,#2a2a1a,#6a5a2a)",
+  "title": "The @ sign — how Ray Tomlinson invented email",
+  "excerpt": "In 1971, Ray Tomlinson was looking for a way to send messages between computers. He picked the @ sign because it wasn't used in anyone's name. The first email was something like 'QWERTYUIOP' — he couldn't remember.",
+  "fullText": "In 1971, computer messaging existed, but only on the same machine. You could leave a message for another user on your shared computer — like a digital Post-it note. But you couldn't send a message to someone on a different computer.\n\nRay Tomlinson, an engineer at BBN (the company that built ARPANET), changed that. He was working on a file transfer program called CPYNET and a local messaging program called SNDMSG. He realized he could combine them: use CPYNET to send a message file from one computer to another, and SNDMSG to compose and read it.\n\nThe missing piece was addressing. How do you specify both the user and the computer? Tomlinson needed a separator that wouldn't appear in anyone's name. He looked at his keyboard — a Model 33 Teletype — and chose @. It was obscure, unused, and had a nice semantic meaning: user \"at\" computer.\n\nThe first network email was sent between two computers sitting side by side in Tomlinson's office. When asked what the first message said, Tomlinson replied: \"Something like QWERTYUIOP.\" He didn't save it — he had no idea it was historic.\n\nThe format user@computer — later user@domain — became universal. It's now the most recognized addressing format in the world. Every email address, every login form, every \"contact us\" page uses the convention Tomlinson established by looking at his keyboard and picking a rarely-used symbol.\n\nEmail grew slowly at first, used mainly by academics and military researchers on ARPANET. But by the 1990s, services like AOL, Hotmail, and Yahoo Mail brought email to hundreds of millions of people. Today, over 300 billion emails are sent every day.\n\nTomlinson remained modest about his invention. He received the Webby Award in 2009, and the Internet Hall of Fame inducted him in 2012. He died in 2016 at age 74. His legacy lives in every @ sign typed, every inbox refreshed, and every \"you've got mail\" notification.",
+  "author": "Ms. Diana",
+  "authorEm": "🌟",
+  "readTime": "6 min"
+}

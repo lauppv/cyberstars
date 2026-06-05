@@ -1,0 +1,13 @@
+{
+  "slug": "geminis-1-million-token-context-reading-entire-libraries",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini's 1 million token context: reading entire libraries",
+  "excerpt": "While others measured context in thousands, Google pushed to 1 million tokens. You could feed Gemini an entire codebase of 30,000 files.",
+  "fullText": "In early 2024, Google announced Gemini 1.5 Pro with a 1 million token context window — roughly 700,000 words or 30,000 lines of code. Later versions pushed even further.\n\nTo put this in perspective: you could feed Gemini the entire Harry Potter series (1,084,000 words) and it could answer questions about any detail from any book. Or you could upload an entire software project — hundreds of files — and ask it to find a bug.\n\nGoogle demonstrated this with impressive examples: uploading 402 pages of technical documentation and asking specific questions, or feeding it an hour-long video and asking about a 2-second moment 45 minutes in.\n\nThe technical challenge was enormous. Long context doesn't just mean \"bigger memory\" — it requires the model to maintain coherent attention across vast distances, avoiding the degradation that typically occurs as context grows.\n\nGoogle achieved this through a novel architecture they called \"Mixture of Experts\" (MoE), which allowed the model to efficiently route information without processing every token with every parameter.\n\nFor enterprise customers, million-token context meant they could ask questions about their entire documentation corpus, analyze full financial reports, or review complete legal contracts without any preprocessing or chunking.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

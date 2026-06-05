@@ -1,0 +1,13 @@
+{
+  "slug": "claude-code-when-ai-becomes-your-pair-programmer",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude Code: when AI becomes your pair programmer",
+  "excerpt": "Anthropic launched Claude Code — a CLI tool that lets Claude write, test, and debug code directly in your terminal. It felt like the future arrived quietly.",
+  "fullText": "In 2025, Anthropic released Claude Code — a command-line interface that gave Claude direct access to your development environment. It could read files, write code, run tests, and even commit changes.\n\nUnlike previous AI coding tools that worked through chat interfaces or IDE plugins, Claude Code operated at the system level. You could say \"add authentication to this Express app\" and watch as it read your existing code, created new files, installed dependencies, and ran the tests to verify everything worked.\n\nThe key insight was trust: Claude Code asked before making destructive changes, explained its reasoning, and worked incrementally. Developers described it as \"the best pair programmer I've ever had — patient, thorough, and never condescending.\"\n\nPower users discovered they could chain complex operations: \"Read this legacy codebase, write documentation for it, then refactor it to use modern patterns.\" Tasks that would take a team days could happen in hours.\n\nThe tool represented a philosophical shift in how we think about programming. Not AI replacing developers, but AI amplifying them — handling the tedious parts so humans could focus on the creative decisions.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

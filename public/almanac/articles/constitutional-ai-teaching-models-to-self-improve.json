@@ -1,0 +1,13 @@
+{
+  "slug": "constitutional-ai-teaching-models-to-self-improve",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2024",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Constitutional AI: teaching models to self-improve",
+  "excerpt": "Anthropic's key innovation wasn't just a bigger model — it was a training method. Constitutional AI lets models critique and revise their own outputs using a set of principles.",
+  "fullText": "Most AI companies train their models using RLHF (Reinforcement Learning from Human Feedback) — humans rate outputs, and the model learns to produce higher-rated responses. It works, but it's expensive and can encode human biases.\n\nAnthropic took a different approach: Constitutional AI (CAI). Instead of relying solely on human raters, they gave the model a \"constitution\" — a set of principles like \"be helpful,\" \"be honest,\" \"avoid harm\" — and trained it to critique and revise its own outputs.\n\nThe process works in two stages. First, the model generates a response. Then it's asked: \"Does this response follow the constitution? If not, revise it.\" The model's self-critiques become training data for the next iteration.\n\nThis approach scales better than human feedback alone. You can update the constitution (add new principles, remove outdated ones) without retraining from scratch. And it makes the model's values more transparent — they're literally written down.\n\nCritics worried it might make models overly cautious. But in practice, Constitutional AI produced models that were both more capable and more aligned — a rare combination that suggested the safety-versus-capability tradeoff might be a false dichotomy.",
+  "author": "AI Desk",
+  "readTime": "6 min"
+}

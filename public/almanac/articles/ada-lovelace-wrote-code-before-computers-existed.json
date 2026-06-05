@@ -1,0 +1,14 @@
+{
+  "slug": "ada-lovelace-wrote-code-before-computers-existed",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1843",
+  "emoji": "👑",
+  "grad": "linear-gradient(135deg,#3a1f4f,#8b1a5c)",
+  "title": "Ada Lovelace wrote code before computers existed",
+  "excerpt": "In 1843, a century before the first electronic computer, Ada Lovelace published an algorithm for computing Bernoulli numbers on a machine that was never built. She is the first programmer in history.",
+  "fullText": "Augusta Ada King, Countess of Lovelace, was born on December 10, 1815 — the only legitimate child of the poet Lord Byron, who left the family when Ada was a month old.\n\nHer mother, Lady Byron, was determined that Ada would not inherit her father's \"dangerous\" poetic temperament. She insisted on a rigorous education in mathematics and science — unusual for women of the era.\n\nIt worked, but not the way her mother intended. Ada developed what she called \"poetical science\" — a visionary blend of imagination and mathematical rigor.\n\nIn 1833, at age 17, Ada met Charles Babbage at a party. Babbage had designed the Difference Engine, a mechanical calculator, and was working on something far more ambitious: the Analytical Engine, a general-purpose computing machine with memory, processing, and conditional branching.\n\nAda was fascinated. Over the next decade, she studied the Analytical Engine's designs in detail. In 1843, she published a translation of an Italian article about the Engine, adding her own extensive \"Notes\" that were three times longer than the original text.\n\nIn Note G, she described a step-by-step algorithm for computing Bernoulli numbers — a sequence important in number theory. This is widely regarded as the first computer program ever written.\n\nBut Ada saw something even bigger. While Babbage thought of his Engine as a number-crunching machine, Ada realized it could manipulate any symbols according to rules — not just numbers. She wrote: \"The Engine might compose elaborate and scientific pieces of music of any degree of complexity.\"\n\nShe essentially predicted general-purpose computing, artificial creativity, and the relationship between hardware and software — 100 years before any of it existed.\n\nAda died of cancer in 1852, at age 36. The Analytical Engine was never built. But her vision was eventually proven right, and the U.S. Department of Defense named a programming language \"Ada\" in her honor in 1980.",
+  "author": "Ms. Diana",
+  "authorEm": "🦄",
+  "readTime": "6 min"
+}

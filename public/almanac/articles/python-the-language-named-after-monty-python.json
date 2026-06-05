@@ -1,0 +1,14 @@
+{
+  "slug": "python-the-language-named-after-monty-python",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1991",
+  "emoji": "🐍",
+  "grad": "linear-gradient(135deg,#1a3a2a,#2a7a4a)",
+  "title": "Python — the language named after Monty Python",
+  "excerpt": "Guido van Rossum started Python during a Christmas holiday because he was bored. He named it after his favorite comedy show. Three decades later, it's the world's most popular programming language.",
+  "fullText": "In December 1989, Guido van Rossum was looking for a hobby programming project to keep him busy during the Christmas week. He was a researcher at Centrum Wiskunde & Informatica (CWI) in Amsterdam, and he'd been thinking about a successor to the ABC language — something that kept ABC's elegant syntax but fixed its limitations.\n\nHe started writing an interpreter for a new scripting language. He named it Python — not after the snake, but after Monty Python's Flying Circus, the British comedy show he loved. The irreverent name set the tone for a language that would prioritize fun and readability.\n\nPython's first public release (version 0.9.0) came in February 1991. From the beginning, it had features that were radical at the time: indentation-based syntax (no curly braces), dynamic typing, garbage collection, and a clear, readable style that read almost like English.\n\nThe design philosophy was captured in \"The Zen of Python\" (type import this in a Python shell): \"Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Readability counts.\"\n\nFor years, Python was a niche language — popular in academia and scripting, but overlooked for \"serious\" software. Java and C++ dominated industry. JavaScript owned the web. Python was the quiet language that scientists used because they didn't have time to fight with compilers.\n\nThen everything changed. The rise of data science and machine learning in the 2010s made Python the language of AI. Libraries like NumPy, Pandas, and scikit-learn provided powerful tools. TensorFlow and PyTorch made Python the default for deep learning. Suddenly, the most important code in the world was being written in a language named after a comedy show.\n\nToday, Python is the most popular programming language in the world by most measures. It's taught in more universities than any other language. It powers Instagram, YouTube, Dropbox, and Spotify's backend. It's the language of choice for AI research, data analysis, automation, and education.\n\nVan Rossum served as Python's \"Benevolent Dictator For Life\" (BDFL) until 2018, when he stepped down after a contentious debate about a syntax proposal. He later joined Microsoft, where he works on making Python faster. The language he built during a boring Christmas has become the most important tool in modern computing.",
+  "author": "Ms. Diana",
+  "authorEm": "🦄",
+  "readTime": "8 min"
+}

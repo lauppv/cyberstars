@@ -1,0 +1,14 @@
+{
+  "slug": "wannacry-the-ransomware-that-paralyzed-200000-computers-in-a-day",
+  "cat": "security",
+  "tag": "SECURITY",
+  "year": "2017",
+  "emoji": "😢",
+  "grad": "linear-gradient(135deg,#3a1a1a,#6a2f2f)",
+  "title": "WannaCry — the ransomware that paralyzed 200,000 computers in a day",
+  "excerpt": "A leaked NSA exploit was turned into ransomware that encrypted hospital computers, factory systems, and government networks across 150 countries. A 22-year-old accidentally found the kill switch.",
+  "fullText": "On May 12, 2017, the world woke up to chaos. Computers across 150 countries were displaying the same message: your files have been encrypted. Pay $300 in Bitcoin within 3 days, or $600 within 7 days, or lose your data forever.\n\nWannaCry spread at terrifying speed. Within hours, it had infected over 200,000 computers. The UK's National Health Service was hit hard — hospitals couldn't access patient records, ambulances were diverted, surgeries were cancelled. FedEx, Telefónica, Deutsche Bahn, Renault — major organizations worldwide were crippled.\n\nThe attack used EternalBlue, an exploit for a Windows vulnerability that had been developed by the NSA. A hacking group called Shadow Brokers had stolen it and leaked it online a month earlier. Microsoft had released a patch in March, but millions of computers hadn't been updated.\n\nWannaCry was technically a worm — it spread automatically across networks without any user interaction. Once it infected one computer on a network, it scanned for other vulnerable machines and infected them too. This is why it spread so fast.\n\nThen came the accidental hero. Marcus Hutchins, a 22-year-old British cybersecurity researcher working from his bedroom, was analyzing the malware when he noticed it tried to connect to a specific unregistered domain name. On a hunch, he registered the domain for $10.69. This turned out to be a kill switch — the malware checked if the domain existed, and if it did, it stopped spreading.\n\nHutchins didn't know it was a kill switch when he registered it. He thought he was just sinkholing the domain for analysis. He accidentally saved potentially millions of computers from infection.\n\nThe attack was later attributed to the Lazarus Group, linked to North Korea. Despite infecting hundreds of thousands of computers, the attackers collected only about $140,000 in Bitcoin — a surprisingly small haul for such a massive operation.\n\nWannaCry's lasting lesson: patch your systems. The vulnerability had been patched two months before the attack. Every infected machine was running outdated software. It also highlighted the danger of governments stockpiling exploits — when the NSA's tools leaked, they became weapons available to anyone.",
+  "author": "CyberBot",
+  "authorEm": "🤖",
+  "readTime": "9 min"
+}

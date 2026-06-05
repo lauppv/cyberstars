@@ -1,0 +1,14 @@
+{
+  "slug": "how-wikipedia-became-the-largest-encyclopedia-ever-written",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "2001",
+  "emoji": "📚",
+  "grad": "linear-gradient(135deg,#1a3a3a,#2f6a6a)",
+  "title": "How Wikipedia became the largest encyclopedia ever written",
+  "excerpt": "Experts said it would never work. An encyclopedia anyone can edit? It'll be full of nonsense. Two decades later, Wikipedia has 60 million articles in 300 languages and is one of the most visited sites on Earth.",
+  "fullText": "In January 2001, Jimmy Wales and Larry Sanger launched Wikipedia as a side project. Their main project, Nupedia, was a traditional online encyclopedia with expert-written, peer-reviewed articles. It was painfully slow — in its first year, Nupedia published just 21 articles.\n\nWikipedia was meant to be Nupedia's informal feeder — a wiki where anyone could write drafts that would eventually be polished into Nupedia articles. Within weeks, Wikipedia had more content than Nupedia would ever have. Within a year, it had 20,000 articles. Nupedia was quietly shut down.\n\nThe idea that random people on the internet could create a reliable encyclopedia seemed insane. Critics called it \"the blind leading the blind.\" Robert McHenry, former editor-in-chief of Encyclopaedia Britannica, compared using Wikipedia to \"a public restroom — you never know who used it last.\"\n\nBut Wikipedia developed sophisticated self-correction mechanisms. Vandalism is typically reverted within minutes by bots and dedicated editors. Controversial articles are \"semi-protected\" — only established editors can modify them. Every edit is logged and reversible. Detailed policies on sourcing, neutrality, and notability evolved organically.\n\nIn 2005, Nature published a study comparing Wikipedia and Britannica on science topics. They found roughly similar error rates — about 4 errors per article in Wikipedia vs. 3 in Britannica. This was shocking. Britannica was furious and disputed the methodology, but the damage was done: Wikipedia had proven it could match expert-written references.\n\nToday, Wikipedia has over 60 million articles in more than 300 languages. The English Wikipedia alone has 6.7 million articles. It's maintained by about 120,000 active editors — volunteers who receive no payment. The Wikimedia Foundation that runs the servers has just a few hundred employees.\n\nWikipedia's model challenged fundamental assumptions about knowledge creation. You don't need credentials to contribute knowledge — you need sources. You don't need gatekeepers — you need transparent processes. You don't need payment — you need intrinsic motivation. It's one of the greatest collaborative achievements in human history, and it runs on donations and volunteer labor.",
+  "author": "Ms. Diana",
+  "authorEm": "📖",
+  "readTime": "8 min"
+}
