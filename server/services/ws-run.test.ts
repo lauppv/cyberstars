@@ -178,6 +178,13 @@ describe('tryStartRun / endRun', () => {
     expect(tryStartRun('user:global-extra').ok).toBe(true);
     endRun('user:global-extra');
   });
+
+  it('endRun on an idle key is a harmless no-op', () => {
+    expect(() => endRun('user:never-started')).not.toThrow();
+    // The slot stays empty — a subsequent run still starts cleanly.
+    expect(tryStartRun('user:never-started').ok).toBe(true);
+    endRun('user:never-started');
+  });
 });
 
 describe('handleConnection', () => {
@@ -204,6 +211,26 @@ describe('handleConnection', () => {
     ws.emit('message', 'not json');
     ws.emit('message', JSON.stringify({ type: 'stdin', data: 'x' }));
     expect(mockRun).not.toHaveBeenCalled();
+    ws.emit('close');
+  });
+
+  it('ignores a second run message once one has started', () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2006)}`));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'print(2)', language: 'python' }));
+    expect(mockRun).toHaveBeenCalledTimes(1);
+    ws.emit('close');
+  });
+
+  it('accepts a run message delivered as a Buffer frame', () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2007)}`));
+    ws.emit(
+      'message',
+      Buffer.from(JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' })),
+    );
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2007');
     ws.emit('close');
   });
 
