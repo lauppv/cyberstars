@@ -14,12 +14,14 @@ node_modules
 TODO.txt
 
 dist
+dist-server
 dist-ssr
 coverage
 playwright-report/
 test-results/
 *.local
 uploads/
+PERF-AUDIT.md
 
 # Generated static lesson content (see scripts/generate-static-content.ts)
 public/lessons/

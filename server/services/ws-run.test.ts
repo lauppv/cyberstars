@@ -155,6 +155,7 @@ describe('tryStartRun / endRun', () => {
     }
     expect(tryStartRun(key, start).ok).toBe(false);
     expect(tryStartRun(key, start + 60_000)).toEqual({ ok: true });
+    endRun(key); // release so the global concurrent count returns to zero
   });
 
   it('caps concurrent active runs independently of the window', () => {
@@ -164,6 +165,18 @@ describe('tryStartRun / endRun', () => {
     expect(tryStartRun(key, start)).toEqual({ ok: false, active: true });
     endRun(key);
     expect(tryStartRun(key, start).ok).toBe(true);
+    for (let i = 0; i < 5; i++) endRun(key); // release the 5 still-active runs
+  });
+
+  it('rejects a new owner once the global concurrent-run cap is reached', () => {
+    // Six distinct owners, each well under the per-owner cap, saturate the box.
+    const keys = Array.from({ length: 6 }, (_, i) => `user:global-${i}`);
+    for (const k of keys) expect(tryStartRun(k).ok).toBe(true);
+    // A seventh owner is under its own cap, but the server is full.
+    expect(tryStartRun('user:global-extra')).toEqual({ ok: false, global: true });
+    for (const k of keys) endRun(k); // free the slots again
+    expect(tryStartRun('user:global-extra').ok).toBe(true);
+    endRun('user:global-extra');
   });
 });
 
@@ -253,6 +266,20 @@ describe('handleConnection', () => {
     expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
     const messages = ws.send.mock.calls.map((c) => JSON.parse(c[0] as string));
     expect(messages.some((m) => m.type === 'stderr' && /in progress/.test(m.data))).toBe(true);
+    for (let i = 0; i < 5; i++) endRun(key); // release the saturated runs
+  });
+
+  it('rejects with a server-busy message when the global cap is reached', () => {
+    const keys = Array.from({ length: 6 }, (_, i) => `user:gbusy-${i}`);
+    for (const k of keys) tryStartRun(k); // saturate the whole box
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2005)}`));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
+    expect(mockRun).not.toHaveBeenCalled();
+    expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
+    const messages = ws.send.mock.calls.map((c) => JSON.parse(c[0] as string));
+    expect(messages.some((m) => m.type === 'stderr' && /Server is busy/.test(m.data))).toBe(true);
+    for (const k of keys) endRun(k); // release the slots
   });
 
   it('rate-limits guests by IP with the same limit', () => {
