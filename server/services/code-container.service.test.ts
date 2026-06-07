@@ -52,6 +52,7 @@ describe('acquireForRun', () => {
     expect(id).toBe('container-1');
     const run = dockerCalls().find((a) => a[0] === 'run')!;
     expect(run).toEqual(expect.arrayContaining(['-d', '--network=none', '--cap-drop=ALL']));
+    expect(run).toContain('--cpus=0.5');
     expect(run).toContain('python:3.10-slim');
     expect(run).toEqual(expect.arrayContaining(['sleep', 'infinity']));
   });
