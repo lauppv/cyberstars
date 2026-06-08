@@ -5,8 +5,8 @@ import { python } from '@codemirror/lang-python';
 import { java } from '@codemirror/lang-java';
 import { indentUnit, StreamLanguage } from '@codemirror/language';
 import { kotlin } from '@codemirror/legacy-modes/mode/clike';
-import { EditorView } from '@codemirror/view';
-import type { Extension } from '@codemirror/state';
+import { EditorView, keymap } from '@codemirror/view';
+import { Prec, type Extension } from '@codemirror/state';
 
 interface CodeEditorProps {
   value: string;
@@ -14,6 +14,7 @@ interface CodeEditorProps {
   language: string;
   minHeight?: string;
   fontSize?: string;
+  onRun?: () => void;
 }
 
 const transparentBg = EditorView.theme({
@@ -54,14 +55,31 @@ export function CodeEditor({
   language,
   minHeight = '100px',
   fontSize = '16px',
+  onRun,
 }: CodeEditorProps) {
+  const extensions = getExtensions(language);
+  if (onRun) {
+    extensions.push(
+      Prec.highest(
+        keymap.of([
+          {
+            key: 'Mod-Enter',
+            run: () => {
+              onRun();
+              return true;
+            },
+          },
+        ]),
+      ),
+    );
+  }
   return (
     <CodeMirror
       value={value}
       minHeight={minHeight}
       height="auto"
       theme={oneDark}
-      extensions={getExtensions(language)}
+      extensions={extensions}
       onChange={onChange}
       style={{ fontSize }}
     />

@@ -120,7 +120,7 @@ export function TerminalPanel({
         ))}
 
         {isReady && (
-          <form onSubmit={handleSubmitCmd} className="flex items-start">
+          <form onSubmit={handleSubmitCmd} className="flex items-center">
             <span className="text-[#7EE787] shrink-0">{prompt}&nbsp;</span>
             <input
               ref={inputRef}
@@ -132,6 +132,14 @@ export function TerminalPanel({
               spellCheck={false}
               autoComplete="off"
             />
+            <button
+              type="submit"
+              disabled={isExecuting}
+              title="Enter to run"
+              className="shrink-0 ml-2 px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--success)] text-black font-semibold text-[11px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+            >
+              ↵
+            </button>
           </form>
         )}
 

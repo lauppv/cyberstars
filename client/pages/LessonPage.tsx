@@ -101,8 +101,9 @@ export function LessonPage() {
     currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
   const handleRun = useCallback(() => {
+    if (isRunning) return;
     execute(userCode, category);
-  }, [execute, userCode, category]);
+  }, [isRunning, execute, userCode, category]);
 
   const handleMarkComplete = useCallback(async () => {
     if (!isLoggedIn || lessonCompleted) return;
@@ -302,6 +303,7 @@ export function LessonPage() {
                 onChange={setUserCode}
                 language={category}
                 fontSize="16px"
+                onRun={handleRun}
               />
             </div>
 
