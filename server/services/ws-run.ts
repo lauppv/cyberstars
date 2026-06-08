@@ -16,9 +16,6 @@ const MAX_PAYLOAD_BYTES = 128 * 1024;
 const MAX_ACTIVE_RUNS = 5;
 const MAX_RUNS_PER_WINDOW = 10;
 const RATE_WINDOW_MS = 60_000;
-// A server-wide ceiling on concurrent runs across ALL owners, so a burst of
-// users can't flood a small box even while each stays under MAX_ACTIVE_RUNS.
-const MAX_GLOBAL_ACTIVE_RUNS = Number(process.env.CODE_MAX_GLOBAL_RUNS ?? 6);
 
 function parseCookie(cookieHeader: string | undefined, name: string): string | null {
   if (!cookieHeader) return null;
@@ -54,29 +51,14 @@ export function extractIp(req: IncomingMessage): string {
 export type RunGate =
   | { ok: true }
   | { ok: false; retryAfterMs: number }
-  | { ok: false; active: true }
-  | { ok: false; global: true };
+  | { ok: false; active: true };
 
 const windows = new Map<string, { start: number; count: number }>();
 const activeRuns = new Map<string, number>();
 
-// Global in-flight runs = the sum of every owner's active count. Derived from
-// activeRuns (a single source of truth) rather than a parallel counter that
-// could drift out of sync with it.
-function globalActiveRunCount(): number {
-  let total = 0;
-  for (const n of activeRuns.values()) total += n;
-  return total;
-}
-
 export function tryStartRun(key: string, now = Date.now()): RunGate {
   if ((activeRuns.get(key) ?? 0) >= MAX_ACTIVE_RUNS) {
     return { ok: false, active: true };
-  }
-  // Server-wide ceiling, checked before the per-minute window so a run rejected
-  // because the box is busy doesn't burn the owner's rate-limit budget.
-  if (globalActiveRunCount() >= MAX_GLOBAL_ACTIVE_RUNS) {
-    return { ok: false, global: true };
   }
   let window = windows.get(key);
   if (!window || now - window.start >= RATE_WINDOW_MS) {
@@ -136,16 +118,12 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
     }
     const gate = tryStartRun(rateKey);
     if (!gate.ok) {
-      let data: string;
-      if ('retryAfterMs' in gate) {
-        data = `Rate limit: max ${MAX_RUNS_PER_WINDOW} runs per minute. Try again in ${Math.ceil(
-          gate.retryAfterMs / 1000,
-        )}s.\n`;
-      } else if ('global' in gate) {
-        data = 'Server is busy running other programs — try again in a few seconds.\n';
-      } else {
-        data = 'Too many runs in progress — wait for one to finish.\n';
-      }
+      const data =
+        'retryAfterMs' in gate
+          ? `Rate limit: max ${MAX_RUNS_PER_WINDOW} runs per minute. Try again in ${Math.ceil(
+              gate.retryAfterMs / 1000,
+            )}s.\n`
+          : 'Too many runs in progress — wait for one to finish.\n';
       ws.send(JSON.stringify({ type: 'stderr', data }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       ws.close(4429, 'Rate limit');
