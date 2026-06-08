@@ -39,12 +39,14 @@ function hardeningArgs(): string[] {
   const gid = process.getgid?.();
   const sandboxUser = process.env.SANDBOX_RUN_AS_USER ?? 'true';
   const asUser = uid !== undefined && gid !== undefined && sandboxUser !== 'false';
-  const ownerOpt = asUser ? `,uid=${uid},gid=${gid}` : '';
+  // Podman rejects `uid=0,gid=0` in tmpfs options, and root already has full
+  // access, so skip the owner option when running as root.
+  const ownerOpt = asUser && uid !== 0 ? `,uid=${uid},gid=${gid}` : '';
   // /work is `exec` so compiled C binaries can run from it (docker tmpfs is
   // noexec by default); /tmp stays noexec — nothing is executed from there.
   args.push(`--tmpfs=/work:exec,size=64m,mode=0700${ownerOpt}`);
   args.push(`--tmpfs=/tmp:size=64m,mode=0700${ownerOpt}`);
-  if (asUser) args.push(`--user=${uid}:${gid}`);
+  if (asUser && uid !== 0) args.push(`--user=${uid}:${gid}`);
   return args;
 }
 
