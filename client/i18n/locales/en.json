@@ -475,6 +475,7 @@
     "markComplete": "Mark Complete",
     "resetTitle": "Reset code",
     "reset": "↺ Reset",
+    "confirmReset": "Reset the code to the lesson's default template? Your current code will be lost.",
     "save": "💾 Save",
     "codeSaved": "Code saved!",
     "badgeEarned": "Badge earned: {{label}}"

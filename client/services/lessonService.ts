@@ -32,16 +32,43 @@ async function getJson<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export function fetchLesson(courseKey: string, lessonSlug: string): Promise<LessonContent> {
-  return cached(`lesson:${courseKey}/${lessonSlug}`, async () => ({
+// Translated lessons live in a per-language subfolder alongside the English
+// source (e.g. /lessons/python/ro/print.md). English stays at the top level and
+// is the source of truth; a missing translation falls back to it, so a course
+// can be translated one lesson at a time.
+async function getLocalizedText(
+  courseKey: string,
+  slug: string,
+  suffix: string,
+  lang: string,
+): Promise<string> {
+  const base = `/lessons/${courseKey}/${slug}${suffix}.md`;
+  if (lang === 'en') return getText(base);
+  try {
+    return await getText(`/lessons/${courseKey}/${lang}/${slug}${suffix}.md`);
+  } catch {
+    return getText(base);
+  }
+}
+
+export function fetchLesson(
+  courseKey: string,
+  lessonSlug: string,
+  lang = 'en',
+): Promise<LessonContent> {
+  return cached(`lesson:${lang}:${courseKey}/${lessonSlug}`, async () => ({
     title: lessonSlug,
-    content: await getText(`/lessons/${courseKey}/${lessonSlug}.md`),
+    content: await getLocalizedText(courseKey, lessonSlug, '', lang),
   }));
 }
 
-export function fetchLessonCode(courseKey: string, lessonSlug: string): Promise<string> {
-  return cached(`code:${courseKey}/${lessonSlug}`, () =>
-    getText(`/lessons/${courseKey}/${lessonSlug}-code.md`),
+export function fetchLessonCode(
+  courseKey: string,
+  lessonSlug: string,
+  lang = 'en',
+): Promise<string> {
+  return cached(`code:${lang}:${courseKey}/${lessonSlug}`, () =>
+    getLocalizedText(courseKey, lessonSlug, '-code', lang),
   );
 }
 

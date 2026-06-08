@@ -45,7 +45,7 @@ export function LessonPage() {
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
 
-  const { title, content, codeTemplate, isLoading } = useLesson(category, lesson);
+  const { title, content, starterCode, savedCode, isLoading } = useLesson(category, lesson);
   const { output, isRunning, execute, sendInput } = useCodeExecution();
   const terminal = useTerminalSession(isTerminal ? category : '', isTerminal ? lesson : '');
   const { saveCode, progress, loadProgress } = useProgress(category);
@@ -63,14 +63,32 @@ export function LessonPage() {
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
+  const loadedLessonRef = useRef('');
+  const loadedStarterRef = useRef('');
 
   const course = courses.find((c) => c.key === category) ?? null;
 
   const lessonCompleted = progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
 
+  // Populate the editor once a lesson's code is loaded. Opening a lesson loads
+  // the user's saved code (or the starter). A language switch within the same
+  // lesson re-translates the editor only while it still holds the untouched
+  // starter — code the user has written or saved is preserved.
   useEffect(() => {
-    setUserCode(codeTemplate); // eslint-disable-line react-hooks/set-state-in-effect
-  }, [codeTemplate]);
+    if (isLoading) return;
+    const lessonKey = `${category}/${lesson}`;
+    if (loadedLessonRef.current !== lessonKey) {
+      loadedLessonRef.current = lessonKey;
+      loadedStarterRef.current = starterCode;
+      setUserCode(savedCode ?? starterCode);
+      return;
+    }
+    if (starterCode !== loadedStarterRef.current) {
+      const prevStarter = loadedStarterRef.current;
+      loadedStarterRef.current = starterCode;
+      setUserCode((prev) => (prev === prevStarter ? starterCode : prev));
+    }
+  }, [isLoading, category, lesson, starterCode, savedCode]);
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
@@ -296,7 +314,9 @@ export function LessonPage() {
                   </button>
                 )}
                 <button
-                  onClick={() => setUserCode(codeTemplate)}
+                  onClick={() => {
+                    if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
+                  }}
                   className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
                   title={t('lesson.resetTitle')}
                 >

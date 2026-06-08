@@ -475,6 +475,7 @@
     "markComplete": "Marchează ca finalizat",
     "resetTitle": "Resetează codul",
     "reset": "↺ Resetează",
+    "confirmReset": "Resetezi codul la șablonul implicit al lecției? Codul actual se va pierde.",
     "save": "💾 Salvează",
     "codeSaved": "Cod salvat!",
     "badgeEarned": "Insignă obținută: {{label}}"

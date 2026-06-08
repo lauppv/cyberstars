@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as lessonService from '../services/lessonService';
 import * as progressService from '../services/progressService';
 import { useAuth } from '../context/AuthContext';
@@ -14,9 +15,15 @@ const DEFAULT_CODE: Record<string, string> = {
 
 export function useLesson(courseKey: string, lessonSlug: string) {
   const { isLoggedIn } = useAuth();
+  const { i18n } = useTranslation();
+  const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [codeTemplate, setCodeTemplate] = useState('');
+  // starterCode: the code we ship as teachers, in the current language (Reset
+  // target, and what a pristine editor follows on a language switch). savedCode:
+  // the user's own code, if any — language-agnostic, never auto-translated.
+  const [starterCode, setStarterCode] = useState('');
+  const [savedCode, setSavedCode] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +34,7 @@ export function useLesson(courseKey: string, lessonSlug: string) {
 
     const loadLesson = async () => {
       try {
-        const lesson = await lessonService.fetchLesson(courseKey, lessonSlug);
+        const lesson = await lessonService.fetchLesson(courseKey, lessonSlug, lang);
         if (cancelled) return;
         setTitle(lesson.title);
         setContent(lesson.content);
@@ -38,29 +45,27 @@ export function useLesson(courseKey: string, lessonSlug: string) {
         setContent('');
       }
 
+      // Always resolve the starter so Reset has a target even when saved code exists.
+      let starter: string;
       try {
-        if (isLoggedIn) {
-          const saved = await progressService.getSavedCode(courseKey, lessonSlug);
+        starter = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang);
+      } catch {
+        starter = DEFAULT_CODE[courseKey.toLowerCase()] || '';
+      }
+      if (cancelled) return;
+      setStarterCode(starter);
+
+      let saved: string | null = null;
+      if (isLoggedIn) {
+        try {
+          const res = await progressService.getSavedCode(courseKey, lessonSlug);
           if (cancelled) return;
-          if (saved.code) {
-            setCodeTemplate(saved.code);
-            setIsLoading(false);
-            return;
-          }
+          saved = res.code;
+        } catch {
+          if (cancelled) return;
         }
-      } catch {
-        if (cancelled) return;
       }
-
-      try {
-        const code = await lessonService.fetchLessonCode(courseKey, lessonSlug);
-        if (cancelled) return;
-        setCodeTemplate(code);
-      } catch {
-        if (cancelled) return;
-        setCodeTemplate(DEFAULT_CODE[courseKey.toLowerCase()] || '');
-      }
-
+      setSavedCode(saved);
       setIsLoading(false);
     };
 
@@ -68,7 +73,7 @@ export function useLesson(courseKey: string, lessonSlug: string) {
     return () => {
       cancelled = true;
     };
-  }, [courseKey, lessonSlug, isLoggedIn]);
+  }, [courseKey, lessonSlug, isLoggedIn, lang]);
 
-  return { title, content, codeTemplate, isLoading, error };
+  return { title, content, starterCode, savedCode, isLoading, error };
 }
