@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function LaniakeaExplorerPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const cleanupRef = useRef<(() => void) | null>(null);
+  const [isTouch] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      (window.matchMedia?.('(pointer: coarse)').matches || 'ontouchstart' in window),
+  );
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1271,7 +1276,7 @@ export function LaniakeaExplorerPage() {
       const onMouseMove = (e: MouseEvent) => {
         cursorEl.style.left = e.clientX + 'px';
         cursorEl.style.top = e.clientY + 'px';
-        if (paused) return;
+        if (paused || !started) return;
         const nx = e.clientX / innerWidth - 0.5;
         const ny = e.clientY / innerHeight - 0.5;
         const ax = Math.abs(nx),
@@ -1350,7 +1355,6 @@ export function LaniakeaExplorerPage() {
       pauseEl.addEventListener('click', () => setPaused(false));
 
       // ===== Touch controls (mobile) =====
-      const isTouch = window.matchMedia?.('(pointer: coarse)').matches || 'ontouchstart' in window;
       if (isTouch) {
         el.classList.add('is-touch');
         const touchEl = el.querySelector('#rest-touch') as HTMLElement;
@@ -1712,12 +1716,12 @@ export function LaniakeaExplorerPage() {
       destroyed = true;
       if (cleanupRef.current) cleanupRef.current();
     };
-  }, [navigate]);
+  }, [navigate, isTouch]);
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999]"
+      className={`fixed inset-0 z-[9999] ${isTouch ? 'is-touch' : ''}`}
       style={{
         cursor: 'none',
         background: '#000',
