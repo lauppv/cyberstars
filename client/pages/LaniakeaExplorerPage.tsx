@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 export function LaniakeaExplorerPage() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const cleanupRef = useRef<(() => void) | null>(null);
@@ -1734,48 +1736,43 @@ export function LaniakeaExplorerPage() {
         <div className="intro-kicker">
           {'◈'} CSTR-9 {'·'} STELLARIS {'·'} MARK IV
         </div>
-        <div className="intro-title">Welcome aboard, captain.</div>
-        <div className="intro-sub">
-          A drift vessel for unhurried exploration. Take the helm — glide through 100+ worlds, past
-          nebulae and black holes. No goals. No timer. Just the cosmos through your viewport.
-        </div>
+        <div className="intro-title">{t('laniakea.introTitle')}</div>
+        <div className="intro-sub">{t('laniakea.introSub')}</div>
         <div className="intro-controls">
           <div className="row">
             <kbd>W</kbd>
             <kbd>A</kbd>
             <kbd>S</kbd>
             <kbd>D</kbd>
-            <span>Move / strafe</span>
+            <span>{t('laniakea.moveStrafe')}</span>
           </div>
           <div className="row">
             <kbd>Mouse</kbd>
-            <span>
-              Center = still {'·'} edge = rotate (360{'°'})
-            </span>
+            <span>{t('laniakea.mouseLook')}</span>
           </div>
           <div className="row">
             <kbd>Esc</kbd>
-            <span>Pause</span>
+            <span>{t('laniakea.pause')}</span>
           </div>
           <div className="row">
             <kbd>Q</kbd>
-            <span>Exit to dashboard</span>
+            <span>{t('laniakea.exitToDashboard')}</span>
           </div>
         </div>
         <div className="intro-touch">
           <div className="row">
             <span className="intro-touch-ic">{'◑'}</span>
-            <span>Right stick {'·'} steer (turn & pitch)</span>
+            <span>{t('laniakea.touchSteer')}</span>
           </div>
           <div className="row">
             <span className="intro-touch-ic">{'▲▼'}</span>
-            <span>Left arrows {'·'} hold to accelerate / decelerate</span>
+            <span>{t('laniakea.touchThrottle')}</span>
           </div>
         </div>
         <button className="intro-btn" id="rest-enterBtn">
-          {'▸'} Begin Drift
+          {'▸'} {t('laniakea.beginDrift')}
         </button>
-        <div className="intro-hint">Move the mouse to look around {'·'} W to fly forward</div>
+        <div className="intro-hint">{t('laniakea.introHint')}</div>
       </div>
 
       <div id="rest-scene" style={{ position: 'fixed', inset: 0, zIndex: 0 }} />
@@ -1857,8 +1854,8 @@ export function LaniakeaExplorerPage() {
             </span>
           </div>
           <div className="hud-cell">
-            <span className="hud-label">Mode</span>
-            <span className="hud-value hud-dim">DRIFT</span>
+            <span className="hud-label">{t('laniakea.mode')}</span>
+            <span className="hud-value hud-dim">{t('laniakea.modeDrift')}</span>
           </div>
         </div>
       </div>
@@ -1870,7 +1867,7 @@ export function LaniakeaExplorerPage() {
       >
         <div className="hud-cells">
           <div className="hud-cell">
-            <span className="hud-label">Heart</span>
+            <span className="hud-label">{t('laniakea.heart')}</span>
             <span className="hud-value hud-pink">
               <span id="hud-heart">62</span>
               <small> BPM</small>
@@ -1909,7 +1906,7 @@ export function LaniakeaExplorerPage() {
             <div className="dial-center amber" />
           </div>
           <div className="hud-cell">
-            <span className="hud-label hud-amber-text">Cabin PSI</span>
+            <span className="hud-label hud-amber-text">{t('laniakea.cabinPsi')}</span>
             <span className="hud-value hud-amber">
               <span id="hud-pressure">101.3</span>
               <small> kPa</small>
@@ -1918,7 +1915,7 @@ export function LaniakeaExplorerPage() {
         </div>
         <div className="hud-divider-h" />
         <div className="hud-cell">
-          <span className="hud-label">Velocity</span>
+          <span className="hud-label">{t('laniakea.velocity')}</span>
           <span className="hud-value hud-teal">
             <span id="hud-velocity">0</span>
             <small> km/s</small>
@@ -1948,7 +1945,7 @@ export function LaniakeaExplorerPage() {
             <div className="dial-center teal" />
           </div>
           <div className="hud-cell">
-            <span className="hud-label hud-teal-text">O₂ Level</span>
+            <span className="hud-label hud-teal-text">{t('laniakea.o2level')}</span>
             <span className="hud-value hud-teal">
               <span id="hud-o2level">97</span>
               <small> %</small>
@@ -1957,7 +1954,7 @@ export function LaniakeaExplorerPage() {
         </div>
         <div className="hud-divider-h" />
         <div className="hud-cell">
-          <span className="hud-label">Position</span>
+          <span className="hud-label">{t('laniakea.position')}</span>
           <span className="hud-value hud-accent">
             <span id="hud-position">+0.000</span>
             <small> LY</small>
@@ -1989,22 +1986,22 @@ export function LaniakeaExplorerPage() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <div className="hud-cell">
-              <span className="hud-label">Nearest</span>
+              <span className="hud-label">{t('laniakea.nearest')}</span>
               <span className="hud-value hud-amber" style={{ fontSize: 13 }} id="hud-nearest">
                 {'—'}
               </span>
             </div>
             <div style={{ display: 'flex', gap: 14 }}>
               <div className="hud-cell">
-                <span className="hud-label">Engine</span>
+                <span className="hud-label">{t('laniakea.engine')}</span>
                 <span className="hud-value hud-dim" style={{ fontSize: 13 }}>
                   DRIFT-1
                 </span>
               </div>
               <div className="hud-cell">
-                <span className="hud-label">Course</span>
+                <span className="hud-label">{t('laniakea.course')}</span>
                 <span className="hud-value hud-dim" style={{ fontSize: 13 }}>
-                  OPEN
+                  {t('laniakea.courseOpen')}
                 </span>
               </div>
             </div>
@@ -2016,7 +2013,7 @@ export function LaniakeaExplorerPage() {
       <div className="hud-approach" id="hud-approachWrap">
         <span className="hud-approach-icon">{'◎'}</span>
         <div className="hud-approach-info">
-          <span className="hud-approach-label">Approaching</span>
+          <span className="hud-approach-label">{t('laniakea.approaching')}</span>
           <span className="hud-approach-name" id="hud-approachName">
             {'—'}
           </span>

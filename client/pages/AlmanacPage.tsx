@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { StoryModal } from './StoryModal';
@@ -11,18 +12,18 @@ import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/al
 import './AlmanacPage.css';
 
 const CATEGORIES = [
-  { id: 'all', label: 'All', em: '✦' },
-  { id: 'history', label: 'History', em: '📜' },
-  { id: 'oss', label: 'Open Source', em: '🐧' },
-  { id: 'legends', label: 'Legends', em: '👑' },
-  { id: 'security', label: 'Security', em: '🔒' },
-  { id: 'hardware', label: 'Hardware', em: '💾' },
-  { id: 'internet', label: 'Internet', em: '🌐' },
-  { id: 'space', label: 'Space', em: '🪐' },
-  { id: 'ai', label: 'AI & Future', em: '🧠' },
-  { id: 'claude', label: 'Claude', em: '🟣' },
-  { id: 'gemini', label: 'Gemini', em: '🔵' },
-  { id: 'chatgpt', label: 'ChatGPT', em: '🟢' },
+  { id: 'all', em: '✦' },
+  { id: 'history', em: '📜' },
+  { id: 'oss', em: '🐧' },
+  { id: 'legends', em: '👑' },
+  { id: 'security', em: '🔒' },
+  { id: 'hardware', em: '💾' },
+  { id: 'internet', em: '🌐' },
+  { id: 'space', em: '🪐' },
+  { id: 'ai', em: '🧠' },
+  { id: 'claude', em: '🟣' },
+  { id: 'gemini', em: '🔵' },
+  { id: 'chatgpt', em: '🟢' },
 ];
 
 function Pagination({
@@ -70,6 +71,7 @@ function Pagination({
 }
 
 export function AlmanacPage() {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState('all');
   const [page, setPage] = useState(1);
   const [factIdx, setFactIdx] = useState(0);
@@ -139,16 +141,13 @@ export function AlmanacPage() {
       <Topbar />
       <main className="almanac-page">
         <div className="almanac-header">
-          <div className="almanac-kicker">✦ The CyberStars Almanac</div>
+          <div className="almanac-kicker">{t('almanac.kicker')}</div>
           <h1 className="almanac-title">
-            Tech stories, fun facts
+            {t('almanac.title')}
             <br />
-            &amp; everything in between.
+            {t('almanac.titleLine2')}
           </h1>
-          <p className="almanac-subtitle">
-            Open-source legends and hacker culture, tech history, space, famous quotes, and the
-            curious little fun facts behind the tools you use every day. New reads every week.
-          </p>
+          <p className="almanac-subtitle">{t('almanac.subtitle')}</p>
         </div>
 
         <div className="almanac-filters-bar">
@@ -156,7 +155,7 @@ export function AlmanacPage() {
             <button
               className="topic-nav"
               onClick={() => setTopicOffset((o) => (o - 1 + CATEGORIES.length) % CATEGORIES.length)}
-              aria-label="Previous topics"
+              aria-label={t('almanac.prevTopics')}
             >
               ‹
             </button>
@@ -172,7 +171,7 @@ export function AlmanacPage() {
                 }}
               >
                 <span className="chip-em">{c.em}</span>
-                <span>{c.label}</span>
+                <span>{t(`almanac.categories.${c.id}`)}</span>
               </button>
             ))}
           </div>
@@ -180,13 +179,13 @@ export function AlmanacPage() {
             <button
               className="topic-nav"
               onClick={() => setTopicOffset((o) => (o + 1) % CATEGORIES.length)}
-              aria-label="Next topics"
+              aria-label={t('almanac.nextTopics')}
             >
               ›
             </button>
           )}
           <button className="topic-showall" onClick={() => setShowAllTopics((s) => !s)}>
-            {showAllTopics ? 'Carousel' : 'Show all'}
+            {showAllTopics ? t('almanac.carousel') : t('almanac.showAll')}
           </button>
         </div>
 
@@ -196,7 +195,7 @@ export function AlmanacPage() {
               <div className="hero-art-bg" />
               <div className="hero-art-stars" />
               <div className="hero-art-icon">{hero.emoji}</div>
-              <div className="hero-art-badge">FEATURED STORY</div>
+              <div className="hero-art-badge">{t('almanac.featured')}</div>
             </div>
             <div className="hero-content">
               <div className="hero-cat">✦ {hero.catLabel}</div>
@@ -212,13 +211,14 @@ export function AlmanacPage() {
         <div className="almanac-grid">
           <div>
             <div className="section-head">
-              <h2>Latest reads</h2>
+              <h2>{t('almanac.latestReads')}</h2>
               <div className="meta">
-                {filtered.length} {filter === 'all' ? 'articles' : 'in this topic'}
+                {filtered.length}{' '}
+                {filter === 'all' ? t('almanac.articles') : t('almanac.inThisTopic')}
                 {totalPages > 1 && (
                   <>
                     {' '}
-                    · page {page}/{totalPages}
+                    · {t('almanac.page')} {page}/{totalPages}
                   </>
                 )}
               </div>
@@ -249,18 +249,18 @@ export function AlmanacPage() {
               <button
                 className="card-arrow card-arrow-left"
                 onClick={prevFact}
-                aria-label="Previous fun fact"
+                aria-label={t('almanac.prevFact')}
               >
                 ‹
               </button>
               <button
                 className="card-arrow card-arrow-right"
                 onClick={nextFact}
-                aria-label="Next fun fact"
+                aria-label={t('almanac.nextFact')}
               >
                 ›
               </button>
-              <h3>🎲 Fun Fact</h3>
+              <h3>{t('almanac.funFact')}</h3>
               <span className="fact-emoji">{fact?.em}</span>
               <div className="fact-text">{fact?.text}</div>
               <div className="fact-source">{fact?.src}</div>
@@ -273,18 +273,18 @@ export function AlmanacPage() {
               <button
                 className="card-arrow card-arrow-left"
                 onClick={prevQuote}
-                aria-label="Previous quote"
+                aria-label={t('almanac.prevQuote')}
               >
                 ‹
               </button>
               <button
                 className="card-arrow card-arrow-right"
                 onClick={nextQuote}
-                aria-label="Next quote"
+                aria-label={t('almanac.nextQuote')}
               >
                 ›
               </button>
-              <h3>💬 Quotes</h3>
+              <h3>{t('almanac.quotes')}</h3>
               <div className="quote-mark">&ldquo;</div>
               <div className="quote-text">{quote?.text}</div>
               <div className="quote-author">
@@ -302,9 +302,9 @@ export function AlmanacPage() {
           <div className="section-head" style={{ marginBottom: 8 }}>
             <div>
               <div className="almanac-kicker" style={{ marginBottom: 6 }}>
-                ⏳ The Timeline
+                {t('almanac.timelineKicker')}
               </div>
-              <h2>Moments that bent the trajectory</h2>
+              <h2>{t('almanac.timelineTitle')}</h2>
             </div>
           </div>
           <div className="bigtl">

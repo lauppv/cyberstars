@@ -1,6 +1,9 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 import './WelcomePage.css';
+
+const ACCENT = <span className="wc-accent-text" />;
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -77,6 +80,7 @@ function HeroStarfield() {
 
 export function WelcomePage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const rootRef = useReveal();
   const spRef = useRef<HTMLDivElement>(null);
   const clFillRef = useRef<HTMLDivElement>(null);
@@ -166,14 +170,7 @@ export function WelcomePage() {
     return () => io.disconnect();
   }, []);
 
-  const nodeLabels = [
-    '01 · Booting',
-    '02 · Languages',
-    '03 · Almanac',
-    '04 · Forum',
-    '05 · Laniakea Explorer',
-    '06 · Launch',
-  ];
+  const nodeLabels = t('welcome.nodes', { returnObjects: true }) as string[];
 
   return (
     <div className="wc-page" ref={rootRef}>
@@ -203,7 +200,7 @@ export function WelcomePage() {
           <span className="wc-logo-text">CyberStars</span>
         </div>
         <button className="wc-skip" onClick={() => navigate('/')}>
-          SKIP TO DASHBOARD →
+          {t('welcome.skip')}
         </button>
       </header>
 
@@ -229,44 +226,34 @@ export function WelcomePage() {
         <HeroStarfield />
         <span className="wc-eyebrow wc-hero-eyebrow wc-fade-in">
           <span className="wc-eyebrow-dot" />
-          Account ready · Tour starting
+          {t('welcome.hero.eyebrow')}
         </span>
         <h1 className="wc-hero-title">
           <span className="wc-line">
-            <span>Welcome to</span>
+            <span>{t('welcome.hero.welcomeTo')}</span>
           </span>
           <span className="wc-line">
             <span className="wc-accent-text">CyberStars.</span>
           </span>
         </h1>
-        <p className="wc-hero-sub">
-          A quick tour through the universe you just joined. Keep scrolling — everything you need is
-          below.
-        </p>
+        <p className="wc-hero-sub">{t('welcome.hero.sub')}</p>
         <div className="wc-hero-scroll">
-          SCROLL TO BEGIN
+          {t('welcome.hero.scroll')}
           <div className="wc-hero-scroll-arrow" />
         </div>
       </section>
 
       {/* BOOTING */}
       <section className="wc-section" id="s-boot">
-        <div className="wc-section-num reveal">// 01 — INITIALIZING</div>
+        <div className="wc-section-num reveal">{t('welcome.boot.num')}</div>
         <h2 className="wc-title reveal" data-delay="1">
-          Booting your <span className="wc-accent-text">workstation</span>.
+          <Trans i18nKey="welcome.boot.title" components={[<span />, ACCENT]} />
         </h2>
         <p className="wc-subtitle reveal" data-delay="2">
-          We're warming up the editor, syncing curriculum, and lighting up the universe. Watch the
-          systems come online.
+          {t('welcome.boot.subtitle')}
         </p>
         <div className="wc-boot-block reveal" data-delay="3">
-          {[
-            'Mounting code editor',
-            'Loading C / Java / Python / Bash kernels',
-            'Indexing almanac · 2,418 entries',
-            'Syncing forum threads',
-            'Charting the Laniakea universe',
-          ].map((label) => (
+          {(t('welcome.boot.steps', { returnObjects: true }) as string[]).map((label) => (
             <div className="wc-boot-row" key={label}>
               <div className="wc-boot-label">
                 <span className="wc-boot-prefix">›</span>
@@ -283,93 +270,94 @@ export function WelcomePage() {
 
       {/* LANGUAGES */}
       <section className="wc-section wc-langs" id="s-langs">
-        <div className="wc-section-num reveal">// 02 — LANGUAGES</div>
+        <div className="wc-section-num reveal">{t('welcome.langs.num')}</div>
         <h2 className="wc-title reveal" data-delay="1">
-          Four languages.
-          <br />
-          One <span className="wc-accent-text">learning path</span>.
+          <Trans i18nKey="welcome.langs.title" components={[<span />, <br />, <span />, ACCENT]} />
         </h2>
         <p className="wc-subtitle reveal" data-delay="2">
-          Start anywhere. Each course is hands-on — you write real code from lesson one, with
-          auto-graded exercises and the almanac one keystroke away.
+          {t('welcome.langs.subtitle')}
         </p>
         <div className="wc-langs-grid">
           <LangCard
             delay="3"
             color="#7AB6FF"
-            num="01 / SYSTEMS"
+            num={t('welcome.langs.cards.c.num')}
             icon="C"
             name="C"
-            tag="Memory · Pointers · Speed"
-            desc="Understand what every program is actually doing under the hood."
+            tag={t('welcome.langs.cards.c.tag')}
+            desc={t('welcome.langs.cards.c.desc')}
             lessons={48}
             hours="22h"
+            lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="4" from="#7AB6FF" to="#FF9A6E" />
           <LangCard
             delay="5"
             color="#FF9A6E"
-            num="02 / OOP"
+            num={t('welcome.langs.cards.java.num')}
             icon="Ja"
             name="Java"
-            tag="Classes · JVM · Patterns"
-            desc="Build robust applications the way the industry actually ships them."
+            tag={t('welcome.langs.cards.java.tag')}
+            desc={t('welcome.langs.cards.java.desc')}
             lessons={56}
             hours="28h"
+            lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="6" from="#FF9A6E" to="#FFD24A" />
           <LangCard
             delay="7"
             color="#FFD24A"
-            num="03 / SCRIPTING"
+            num={t('welcome.langs.cards.python.num')}
             icon="Py"
             name="Python"
-            tag="Data · APIs · Automation"
-            desc="From hello world to data analysis without ever leaving the editor."
+            tag={t('welcome.langs.cards.python.tag')}
+            desc={t('welcome.langs.cards.python.desc')}
             lessons={62}
             hours="26h"
+            lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="8" from="#FFD24A" to="#7CEEAE" />
           <LangCard
             delay="9"
             color="#7CEEAE"
-            num="04 / LINUX"
+            num={t('welcome.langs.cards.bash.num')}
             icon="$_"
             name="Bash"
-            tag="Shell · Pipes · Sysadmin"
-            desc="Speak fluent Linux. The shell becomes a second keyboard."
+            tag={t('welcome.langs.cards.bash.tag')}
+            desc={t('welcome.langs.cards.bash.desc')}
             lessons={34}
             hours="14h"
+            lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
         </div>
       </section>
 
       {/* ALMANAC */}
       <section className="wc-section" id="s-almanac">
-        <div className="wc-section-num reveal">// 03 — REFERENCE</div>
+        <div className="wc-section-num reveal">{t('welcome.almanac.num')}</div>
         <div className="wc-split">
           <div>
             <h2 className="wc-title reveal" data-delay="1">
-              The <span className="wc-accent-text">Almanac</span>.<br />
-              Every fact, one search away.
+              <Trans
+                i18nKey="welcome.almanac.title"
+                components={[<span />, ACCENT, <span />, <br />]}
+              />
             </h2>
             <p className="wc-subtitle reveal" data-delay="2">
-              Stuck on a syntax detail? The almanac has 2,400+ entries across every language we
-              teach — functions, keywords, commands, gotchas — all cross-linked to the lessons that
-              introduced them.
+              {t('welcome.almanac.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div>
                 <div className="wc-stat-num">2,418</div>
-                <div className="wc-stat-label">entries</div>
+                <div className="wc-stat-label">{t('welcome.almanac.stats.entries')}</div>
               </div>
               <div>
                 <div className="wc-stat-num">9k+</div>
-                <div className="wc-stat-label">examples</div>
+                <div className="wc-stat-label">{t('welcome.almanac.stats.examples')}</div>
               </div>
               <div>
                 <div className="wc-stat-num">&lt;1s</div>
-                <div className="wc-stat-label">search</div>
+                <div className="wc-stat-label">{t('welcome.almanac.stats.search')}</div>
               </div>
             </div>
           </div>
@@ -415,30 +403,30 @@ export function WelcomePage() {
 
       {/* FORUM */}
       <section className="wc-section" id="s-forum">
-        <div className="wc-section-num reveal">// 04 — COMMUNITY</div>
+        <div className="wc-section-num reveal">{t('welcome.forum.num')}</div>
         <div className="wc-split wc-reverse">
           <div>
             <h2 className="wc-title reveal" data-delay="1">
-              A <span className="wc-accent-text">forum</span> where
-              <br />
-              answers actually arrive.
+              <Trans
+                i18nKey="welcome.forum.title"
+                components={[<span />, ACCENT, <span />, <br />]}
+              />
             </h2>
             <p className="wc-subtitle reveal" data-delay="2">
-              Every lesson has its own thread. Mentors and senior learners triage questions hourly.
-              Code blocks render with syntax highlighting and one-click sandboxing.
+              {t('welcome.forum.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div>
                 <div className="wc-stat-num">8min</div>
-                <div className="wc-stat-label">avg reply</div>
+                <div className="wc-stat-label">{t('welcome.forum.stats.avgReply')}</div>
               </div>
               <div>
                 <div className="wc-stat-num">14k</div>
-                <div className="wc-stat-label">threads</div>
+                <div className="wc-stat-label">{t('welcome.forum.stats.threads')}</div>
               </div>
               <div>
                 <div className="wc-stat-num">98%</div>
-                <div className="wc-stat-label">solved</div>
+                <div className="wc-stat-label">{t('welcome.forum.stats.solved')}</div>
               </div>
             </div>
           </div>
@@ -504,7 +492,7 @@ export function WelcomePage() {
 
       {/* LANIAKEA EXPLORER */}
       <section className="wc-section" id="s-laniakea">
-        <div className="wc-section-num reveal">// 05 — LANIAKEA EXPLORER</div>
+        <div className="wc-section-num reveal">{t('welcome.laniakea.num')}</div>
         <div className="wc-split">
           <div className="reveal" data-delay="3">
             <div className="wc-viewport">
@@ -564,25 +552,24 @@ export function WelcomePage() {
           </div>
           <div>
             <h2 className="wc-title reveal" data-delay="1">
-              The <span className="wc-accent-text">Laniakea Explorer</span>
-              <br />
-              is a universe.
+              <Trans
+                i18nKey="welcome.laniakea.title"
+                components={[<span />, ACCENT, <span />, <br />]}
+              />
             </h2>
             <p className="wc-subtitle reveal" data-delay="2">
-              When your brain needs a break, drift into the Laniakea Explorer — a navigable galaxy
-              where each planet is a side-quest or a community room. Fly through it the way you'd
-              play a game.
+              {t('welcome.laniakea.subtitle')}
             </p>
             <div className="wc-controls reveal" data-delay="3">
-              <div className="wc-controls-title">CONTROLS</div>
+              <div className="wc-controls-title">{t('welcome.laniakea.controlsTitle')}</div>
               <div>
-                <span className="wc-ctrl-key">WASD</span> · navigate
+                <span className="wc-ctrl-key">WASD</span> · {t('welcome.laniakea.navigate')}
               </div>
               <div>
-                <span className="wc-ctrl-key">MOUSE</span> · steer
+                <span className="wc-ctrl-key">MOUSE</span> · {t('welcome.laniakea.steer')}
               </div>
               <div>
-                <span className="wc-ctrl-key">SHIFT</span> · boost
+                <span className="wc-ctrl-key">SHIFT</span> · {t('welcome.laniakea.boost')}
               </div>
             </div>
           </div>
@@ -591,13 +578,12 @@ export function WelcomePage() {
 
       {/* NETWORK */}
       <section className="wc-section wc-tight">
-        <div className="wc-section-num reveal">// 06 — IT ALL CONNECTS</div>
+        <div className="wc-section-num reveal">{t('welcome.network.num')}</div>
         <h2 className="wc-title reveal wc-center" data-delay="1">
-          One platform, every piece <span className="wc-accent-text">wired together</span>.
+          <Trans i18nKey="welcome.network.title" components={[<span />, ACCENT]} />
         </h2>
         <p className="wc-subtitle reveal wc-center" data-delay="2">
-          Every lesson links to almanac entries. Every error suggests a forum thread. Every
-          completed lesson unlocks a badge. Your progress shows up everywhere — instantly.
+          {t('welcome.network.subtitle')}
         </p>
         <div className="wc-network-wrap network-wrap reveal" data-delay="3">
           <svg className="wc-network-svg" viewBox="0 0 800 360">
@@ -619,27 +605,27 @@ export function WelcomePage() {
             <path className="wc-link" d="M 400 180 Q 400 100 400 50" />
             <circle className="wc-node-c" cx={130} cy={80} r={28} />
             <text className="wc-node-label" x={130} y={84}>
-              LESSONS
+              {t('welcome.network.nodes.lessons')}
             </text>
             <circle className="wc-node-c" cx={680} cy={80} r={28} />
             <text className="wc-node-label" x={680} y={84}>
-              ALMANAC
+              {t('welcome.network.nodes.almanac')}
             </text>
             <circle className="wc-node-c" cx={90} cy={270} r={28} />
             <text className="wc-node-label" x={90} y={274}>
-              FORUM
+              {t('welcome.network.nodes.forum')}
             </text>
             <circle className="wc-node-c" cx={700} cy={270} r={28} />
             <text className="wc-node-label" x={700} y={274}>
-              LANIAKEA
+              {t('welcome.network.nodes.laniakea')}
             </text>
             <circle className="wc-node-c" cx={400} cy={320} r={28} />
             <text className="wc-node-label" x={400} y={324}>
-              BADGES
+              {t('welcome.network.nodes.badges')}
             </text>
             <circle className="wc-node-c" cx={400} cy={50} r={28} />
             <text className="wc-node-label" x={400} y={54}>
-              EDITOR
+              {t('welcome.network.nodes.editor')}
             </text>
             <circle
               className="wc-node-hub"
@@ -650,7 +636,7 @@ export function WelcomePage() {
               stroke="#6C5CE7"
             />
             <text className="wc-node-hub-label" x={400} y={185}>
-              YOU
+              {t('welcome.network.nodes.you')}
             </text>
           </svg>
         </div>
@@ -661,18 +647,18 @@ export function WelcomePage() {
         <div className="reveal">
           <span className="wc-eyebrow">
             <span className="wc-eyebrow-dot" />
-            Tour complete
+            {t('welcome.cta.eyebrow')}
           </span>
         </div>
         <h2 className="wc-title reveal" data-delay="1">
-          You're <span className="wc-accent-text">ready</span>.
+          <Trans i18nKey="welcome.cta.title" components={[<span />, ACCENT]} />
         </h2>
         <p className="wc-subtitle reveal wc-center" data-delay="2">
-          Pick a language. Open a lesson. Write your first line of code on CyberStars.
+          {t('welcome.cta.subtitle')}
         </p>
         <div className="reveal" data-delay="3">
           <button className="wc-cta-btn" onClick={() => navigate('/')}>
-            Enter the Dashboard
+            {t('welcome.cta.button')}
             <svg
               className="wc-cta-arrow"
               width="18"
@@ -690,7 +676,7 @@ export function WelcomePage() {
           </button>
         </div>
         <div className="wc-cta-foot reveal" data-delay="4">
-          Welcome aboard, cyberstar.
+          {t('welcome.cta.foot')}
         </div>
       </section>
     </div>
@@ -707,6 +693,7 @@ function LangCard({
   desc,
   lessons,
   hours,
+  lessonsLabel,
 }: {
   delay: string;
   color: string;
@@ -717,6 +704,7 @@ function LangCard({
   desc: string;
   lessons: number;
   hours: string;
+  lessonsLabel: string;
 }) {
   return (
     <div
@@ -731,7 +719,7 @@ function LangCard({
       <div className="wc-lang-desc">{desc}</div>
       <div className="wc-lang-stats">
         <div className="wc-lang-stat">
-          <strong>{lessons}</strong> lessons
+          <strong>{lessons}</strong> {lessonsLabel}
         </div>
         <div className="wc-lang-stat">
           <strong>{hours}</strong>
