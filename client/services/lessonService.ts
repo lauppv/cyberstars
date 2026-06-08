@@ -23,6 +23,14 @@ function cached<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
 async function getText(path: string): Promise<string> {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+  // Vite's dev server answers a missing static file with the SPA index.html
+  // (200, text/html) instead of a 404, so a missing translation can't be
+  // detected by status alone. Lessons are always markdown — an HTML body means
+  // the file isn't there, so treat it as a load failure (getLocalizedText then
+  // falls back to English). In prod nginx serves real .md and 404s the rest.
+  if (res.headers?.get('content-type')?.includes('text/html')) {
+    throw new Error(`Failed to load ${path}: got SPA fallback (not markdown)`);
+  }
   return res.text();
 }
 
