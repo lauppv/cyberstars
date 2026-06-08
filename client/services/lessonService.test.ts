@@ -54,6 +54,47 @@ describe('lessonService cache', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it('fetchLesson with lang=ro fetches from the /ro/ subfolder', async () => {
+    const fetchMock = vi.fn(() => textResponse('# corpo'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLesson('python', 'vars', 'ro');
+    expect(result).toEqual({ title: 'vars', content: '# corpo' });
+    expect(fetchMock).toHaveBeenCalledWith('/lessons/python/ro/vars.md');
+  });
+
+  it('fetchLesson with lang=ro falls back to English when translated file is missing', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(textResponse('', false))
+      .mockReturnValueOnce(textResponse('# english fallback'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLesson('python', 'missing-ro', 'ro');
+    expect(result).toEqual({ title: 'missing-ro', content: '# english fallback' });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/python/ro/missing-ro.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/python/missing-ro.md');
+  });
+
+  it('fetchLessonCode with lang=ro fetches from the /ro/ subfolder', async () => {
+    const fetchMock = vi.fn(() => textResponse('# cod'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLessonCode('python', 'vars', 'ro');
+    expect(result).toBe('# cod');
+    expect(fetchMock).toHaveBeenCalledWith('/lessons/python/ro/vars-code.md');
+  });
+
+  it('fetchLessonCode with lang=ro falls back to English when missing', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(textResponse('', false))
+      .mockReturnValueOnce(textResponse('en starter'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLessonCode('python', 'no-ro', 'ro');
+    expect(result).toBe('en starter');
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/python/ro/no-ro-code.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/python/no-ro-code.md');
+  });
+
   it('fetchCurriculum is not cached (CurriculumProvider owns refresh)', async () => {
     const fetchMock = vi.fn(() => jsonResponse([]));
     vi.stubGlobal('fetch', fetchMock);
