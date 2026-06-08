@@ -3,14 +3,14 @@ Căutarea este unul dintre cele mai fundamentale lucruri pe care le face un calc
 Cel mai simplu mod de a căuta este **căutarea liniară**: parcurgem lista **element cu element**, de la început la sfârșit, și verificăm fiecare element
 
 ```py
-def linearSearch(elemente, tinta):
+def cautare_liniara(elemente, tinta):
     for i in range(len(elemente)):
         if elemente[i] == tinta:
             return i
     return -1
 
 nume = ["Tommy", "Lance", "Cortez", "Phil", "Sonny"]
-rezultat = linearSearch(nume, "Cortez")
+rezultat = cautare_liniara(nume, "Cortez")
 print(rezultat)
 ```
 
@@ -19,7 +19,7 @@ Afișează **2**. Cortez este la indexul 2
 Dacă ținta nu este în listă, returnăm **-1** (o convenție care înseamnă „negăsit")
 
 ```py
-rezultat = linearSearch(nume, "Shrek")
+rezultat = cautare_liniara(nume, "Shrek")
 print(rezultat)
 ```
 
@@ -58,7 +58,7 @@ Există ceva mai rapid? Da — **căutarea binară**, pe care o vom învăța ma
 
 Lista echipajului stației este o listă de nume, fiecare la o stație numerotată (stația 0, stația 1, și așa mai departe). Controlul Misiunii vrea să caute pe cineva după nume.
 
-Scrie o funcție **find_crew(crew, tinta)** care folosește **căutarea liniară** ca să returneze **numărul stației** (indexul) unde se află `tinta` în listă. Dacă numele nu este în listă, returnează **-1**.
+Scrie o funcție **gaseste_echipaj(echipaj, tinta)** care folosește **căutarea liniară** ca să returneze **numărul stației** (indexul) unde se află `tinta` în listă. Dacă numele nu este în listă, returnează **-1**.
 
 Apoi **citește** un nume și raportează rezultatul.
 

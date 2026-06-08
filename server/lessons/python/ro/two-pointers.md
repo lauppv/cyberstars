@@ -3,20 +3,20 @@ Tehnica **two pointers** (doi pointeri) este o idee simplă, dar puternică: în
 Am văzut-o deja fără să știm. Când verificam palindroamele, comparam primul caracter cu ultimul, apoi al doilea cu penultimul. Aceia erau doi pointeri
 
 ```py
-def isPalindrome(cuvant):
-    left = 0
-    right = len(cuvant) - 1
+def este_palindrom(cuvant):
+    stanga = 0
+    dreapta = len(cuvant) - 1
 
-    while left < right:
-        if cuvant[left] != cuvant[right]:
+    while stanga < dreapta:
+        if cuvant[stanga] != cuvant[dreapta]:
             return False
-        left += 1
-        right -= 1
+        stanga += 1
+        dreapta -= 1
 
     return True
 
-print(isPalindrome("racecar"))
-print(isPalindrome("hello"))
+print(este_palindrom("racecar"))
+print(este_palindrom("hello"))
 ```
 
 Rezultat
@@ -35,23 +35,23 @@ Alt exemplu clasic: având o listă **sortată** și o sumă țintă, găsește 
 Metoda brute force (buclă imbricată, verificând fiecare pereche) funcționează, dar este lentă. Cu doi pointeri pe o listă **sortată**, este mult mai inteligent
 
 ```py
-def twoSum(numere, tinta):
-    left = 0
-    right = len(numere) - 1
+def doua_numere(numere, tinta):
+    stanga = 0
+    dreapta = len(numere) - 1
 
-    while left < right:
-        currentSum = numere[left] + numere[right]
-        if currentSum == tinta:
-            return (numere[left], numere[right])
-        elif currentSum < tinta:
-            left += 1
+    while stanga < dreapta:
+        suma_curenta = numere[stanga] + numere[dreapta]
+        if suma_curenta == tinta:
+            return (numere[stanga], numere[dreapta])
+        elif suma_curenta < tinta:
+            stanga += 1
         else:
-            right -= 1
+            dreapta -= 1
 
     return None
 
 numere = [1, 2, 4, 7, 11, 15]
-rezultat = twoSum(numere, 9)
+rezultat = doua_numere(numere, 9)
 print(rezultat)
 ```
 
@@ -66,7 +66,7 @@ Asta funcționează pentru că lista este **sortată**. Mutarea lui left crește
 Un exemplu mai simplu: **elimină duplicatele** dintr-o listă sortată (păstrând doar elementele unice)
 
 ```py
-def removeDuplicates(numere):
+def elimina_duplicatele(numere):
     if len(numere) == 0:
         return []
 
@@ -76,7 +76,7 @@ def removeDuplicates(numere):
             rezultat.append(numere[i])
     return rezultat
 
-print(removeDuplicates([1, 1, 2, 2, 2, 3, 4, 4, 5]))
+print(elimina_duplicatele([1, 1, 2, 2, 2, 3, 4, 4, 5]))
 ```
 
 Rezultat **[1, 2, 3, 4, 5]**
@@ -94,7 +94,7 @@ Scrie o funcție **pair_with_sum(numere, tinta)** care primește o listă **sort
 Apoi afișează `Perechi: ` urmat de lista de perechi și `Total perechi: ` urmat de câte sunt.
 
 ```py
-fuels = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+combustibili = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 **Rezultat**

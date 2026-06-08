@@ -6,11 +6,11 @@
 
 ```py
 scoruri = [45, 82, 67, 91, 38, 74, 55, 96]
-passed = []
+promovate = []
 for s in scoruri:
     if s >= 50:
-        passed.append(s)
-print(passed)
+        promovate.append(s)
+print(promovate)
 ```
 
 Rezultat **[82, 67, 91, 74, 55, 96]**
@@ -18,7 +18,7 @@ Rezultat **[82, 67, 91, 74, 55, 96]**
 Sau cu list comprehension
 
 ```py
-passed = [s for s in scoruri if s >= 50]
+promovate = [s for s in scoruri if s >= 50]
 ```
 
 Același rezultat, cod mai scurt
@@ -28,11 +28,11 @@ Același rezultat, cod mai scurt
 **Transformarea** înseamnă: aplică o operație fiecărui element
 
 ```py
-prices = [10.0, 25.5, 8.0, 42.0]
-withTax = []
-for price in prices:
-    withTax.append(round(price * 1.19, 2))
-print(withTax)
+preturi = [10.0, 25.5, 8.0, 42.0]
+cu_taxa = []
+for pret in preturi:
+    cu_taxa.append(round(pret * 1.19, 2))
+print(cu_taxa)
 ```
 
 Rezultat **[11.9, 30.35, 9.52, 49.98]**
@@ -40,7 +40,7 @@ Rezultat **[11.9, 30.35, 9.52, 49.98]**
 Sau cu list comprehension
 
 ```py
-withTax = [round(price * 1.19, 2) for price in prices]
+cu_taxa = [round(pret * 1.19, 2) for pret in preturi]
 ```
 
 ---
@@ -48,7 +48,7 @@ withTax = [round(price * 1.19, 2) for price in prices]
 Adevărata putere apare când le **combinăm** pe amândouă: filtrăm întâi, apoi transformăm (sau invers)
 
 ```py
-players = [
+jucatori = [
     {"nume": "Tommy", "scor": 95, "online": True},
     {"nume": "Lance", "scor": 42, "online": False},
     {"nume": "Cortez", "scor": 88, "online": True},
@@ -56,11 +56,11 @@ players = [
     {"nume": "Sonny", "scor": 33, "online": False}
 ]
 
-numeOnline = []
-for player in players:
-    if player["online"]:
-        numeOnline.append(player["nume"])
-print(numeOnline)
+nume_conectati = []
+for jucator in jucatori:
+    if jucator["online"]:
+        nume_conectati.append(jucator["nume"])
+print(nume_conectati)
 ```
 
 Rezultat **['Tommy', 'Cortez', 'Phil']**
@@ -68,7 +68,7 @@ Rezultat **['Tommy', 'Cortez', 'Phil']**
 Am **filtrat** (doar jucătorii online) și am **transformat** (am extras doar numele). Cu list comprehension
 
 ```py
-numeOnline = [p["nume"] for p in players if p["online"]]
+nume_conectati = [p["nume"] for p in jucatori if p["online"]]
 ```
 
 ---
@@ -85,10 +85,10 @@ note = [45, 82, 67, 91, 38, 74, 55, 96]
 rezultat = []
 for grade in note:
     if grade >= 50:
-        boosted = grade + 5
-        if boosted > 100:
-            boosted = 100
-        rezultat.append(boosted)
+        amplificat = grade + 5
+        if amplificat > 100:
+            amplificat = 100
+        rezultat.append(amplificat)
 
 print(rezultat)
 ```
@@ -98,7 +98,7 @@ Rezultat **[87, 72, 96, 79, 60, 100]**
 Cu comprehension și **min()** pentru plafonare
 
 ```py
-rezultat = [min(g + 5, 100) for g in note if g >= 50]
+rezultat = [minim(g + 5, 100) for g in note if g >= 50]
 ```
 
 ---

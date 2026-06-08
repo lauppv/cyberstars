@@ -3,10 +3,10 @@
 Un **boolean** este o valoare care poate fi doar unul din două lucruri: **True** sau **False**. Atât. Nicio altă opțiune
 
 ```py
-isOnline = True
-hasKey = False
-print(isOnline)
-print(hasKey)
+este_online = True
+are_cheie = False
+print(este_online)
+print(are_cheie)
 ```
 
 **Atenție**: **True** și **False** se scriu **cu literă mare**. **true** și **false** vor da o eroare în Python
@@ -27,9 +27,9 @@ Până aici, bine. Dar dacă vrem să combinăm mai multe condiții? Imaginează
 
 ```py
 varsta = 20
-hasLicense = True
+are_permis = True
 
-if varsta >= 18 and hasLicense == True:
+if varsta >= 18 and are_permis == True:
     print("Poți conduce")
 else:
     print("Scuze, azi nu conduci")
@@ -39,20 +39,20 @@ Cuvântul cheie **and** spune: **ambele condiții trebuie să fie True**. Dacă 
 
 ```py
 varsta = 20
-hasLicense = False
+are_permis = False
 
-if varsta >= 18 and hasLicense == True:
+if varsta >= 18 and are_permis == True:
     print("Poți conduce")
 else:
     print("Scuze, azi nu conduci")
 ```
 
-Aici **varsta >= 18** este **True**, dar **hasLicense == True** este **False**. **True and False** = **False**, așa că mergem la **else**
+Aici **varsta >= 18** este **True**, dar **are_permis == True** este **False**. **True and False** = **False**, așa că mergem la **else**
 
-Apropo, **hasLicense == True** este același lucru cu a scrie doar **hasLicense**, deoarece **hasLicense** este deja un boolean. Așa că îl putem scurta
+Apropo, **are_permis == True** este același lucru cu a scrie doar **are_permis**, deoarece **are_permis** este deja un boolean. Așa că îl putem scurta
 
 ```py
-if varsta >= 18 and hasLicense:
+if varsta >= 18 and are_permis:
     print("Poți conduce")
 ```
 
@@ -63,22 +63,22 @@ Mai curat :)
 Există și **or**. Imaginează-ți: poți intra în club dacă ești **VIP SAU ai o invitație specială**. E suficient doar **unul** dintre ele
 
 ```py
-isVIP = False
-hasInvitation = True
+este_vip = False
+are_invitatie = True
 
-if isVIP or hasInvitation:
+if este_vip or are_invitatie:
     print("Bun venit în club")
 else:
     print("Acces refuzat")
 ```
 
-Chiar dacă **isVIP** este **False**, **hasInvitation** este **True**, și asta e suficient
+Chiar dacă **este_vip** este **False**, **are_invitatie** este **True**, și asta e suficient
 
 Și, în sfârșit, **not**. **not** inversează un boolean: **not True** devine **False**, **not False** devine **True**
 
 ```py
-isLoggedIn = False
-if not isLoggedIn:
+este_autentificat = False
+if not este_autentificat:
     print("Te rog autentifică-te mai întâi")
 ```
 

@@ -4,13 +4,13 @@ Ideea este simplă: pornește cu o variabilă la **0**, parcurge datele cu o buc
 
 ```py
 numere = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-evenCount = 0
+numar_pare = 0
 
 for n in numere:
     if n % 2 == 0:
-        evenCount = evenCount + 1
+        numar_pare = numar_pare + 1
 
-print(f"Numere pare: {evenCount}")
+print(f"Numere pare: {numar_pare}")
 ```
 
 Rezultat **Numere pare: 5**
@@ -28,13 +28,13 @@ Hai să numărăm câte caractere dintr-un nume sunt majuscule
 
 ```py
 nume = "Tommy Vercetti"
-upperCount = 0
+numar_majuscule = 0
 
-for char in nume:
-    if char.isupper():
-        upperCount = upperCount + 1
+for caracter in nume:
+    if caracter.isupper():
+        numar_majuscule = numar_majuscule + 1
 
-print(f"Litere majuscule: {upperCount}")
+print(f"Litere majuscule: {numar_majuscule}")
 ```
 
 Rezultat **Litere majuscule: 2** (T și V)
@@ -47,19 +47,19 @@ Putem număra mai multe lucruri deodată
 
 ```py
 text = "Hello World 123"
-letters = 0
-digits = 0
-spaces = 0
+litere = 0
+cifre = 0
+spatii = 0
 
-for char in text:
-    if char.isalpha():
-        letters = letters + 1
-    elif char.isdigit():
-        digits = digits + 1
-    elif char == " ":
-        spaces = spaces + 1
+for caracter in text:
+    if caracter.isalpha():
+        litere = litere + 1
+    elif caracter.isdigit():
+        cifre = cifre + 1
+    elif caracter == " ":
+        spatii = spatii + 1
 
-print(f"Litere: {letters}, Cifre: {digits}, Spații: {spaces}")
+print(f"Litere: {litere}, Cifre: {cifre}, Spații: {spatii}")
 ```
 
 Rezultat **Litere: 10, Cifre: 3, Spații: 2**

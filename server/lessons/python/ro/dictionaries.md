@@ -5,13 +5,13 @@ Imaginează-ți agenda telefonică a lui Tommy Vercetti. El nu spune „dă-mi c
 Exact asta face un **dicționar** în Python
 
 ```py
-phoneBook = {
+agenda_telefonica = {
     "Cortez": "555-1234",
     "Lance": "555-5678",
     "Phil": "555-9999"
 }
 
-print(phoneBook["Cortez"])
+print(agenda_telefonica["Cortez"])
 ```
 
 Afișează **555-1234**
@@ -19,14 +19,14 @@ Afișează **555-1234**
 Un dicționar se creează cu **acolade {}**. Înăuntru, scriem perechi **key: value (cheie: valoare)** separate prin **virgule**. **Cheia** este ceea ce folosim ca să căutăm lucrurile (cum ar fi numele), iar **valoarea** este ceea ce primim înapoi (cum ar fi numărul de telefon)
 
 ```py
-phoneBook = {
+agenda_telefonica = {
     "Cortez": "555-1234",
     "Lance": "555-5678",
     "Phil": "555-9999"
 }
 
-print(phoneBook["Lance"])
-print(phoneBook["Phil"])
+print(agenda_telefonica["Lance"])
+print(agenda_telefonica["Phil"])
 ```
 
 Afișează
@@ -41,12 +41,12 @@ Afișează
 Ce se întâmplă dacă cerem o cheie care nu există?
 
 ```py
-phoneBook = {
+agenda_telefonica = {
     "Cortez": "555-1234",
     "Lance": "555-5678"
 }
 
-print(phoneBook["Sonny"])
+print(agenda_telefonica["Sonny"])
 ```
 
 **Rulează**. Vei vedea o **KeyError**. Python ne spune: „nu cunosc niciun Sonny". Citește mereu eroarea :)
@@ -56,16 +56,16 @@ print(phoneBook["Sonny"])
 Putem **adăuga** o intrare nouă sau **modifica** una existentă foarte ușor
 
 ```py
-phoneBook = {
+agenda_telefonica = {
     "Cortez": "555-1234",
     "Lance": "555-5678"
 }
 
-phoneBook["Tommy"] = "555-0000"
-print(phoneBook["Tommy"])
+agenda_telefonica["Tommy"] = "555-0000"
+print(agenda_telefonica["Tommy"])
 
-phoneBook["Lance"] = "555-1111"
-print(phoneBook["Lance"])
+agenda_telefonica["Lance"] = "555-1111"
+print(agenda_telefonica["Lance"])
 ```
 
 Afișează
@@ -82,13 +82,13 @@ Dacă cheia nu există, Python o **creează**. Dacă există deja, Python o **ac
 Putem și **elimina** o intrare cu **del**
 
 ```py
-phoneBook = {
+agenda_telefonica = {
     "Cortez": "555-1234",
     "Lance": "555-5678"
 }
 
-del phoneBook["Lance"]
-print(phoneBook)
+del agenda_telefonica["Lance"]
+print(agenda_telefonica)
 ```
 
 Afișează
@@ -104,9 +104,9 @@ Lance a dispărut. Scuze, Lance :)
 Ca să verificăm dacă o cheie **există** înainte să o accesăm, folosim **in**
 
 ```py
-phoneBook = {"Cortez": "555-1234"}
+agenda_telefonica = {"Cortez": "555-1234"}
 
-if "Cortez" in phoneBook:
+if "Cortez" in agenda_telefonica:
     print("L-am găsit pe Cortez!")
 else:
     print("Cortez nu este în agendă")
@@ -117,16 +117,16 @@ else:
 La fel ca listele, dicționarele pot conține **orice tip** de valoare: șiruri de caractere, numere, valori booleene, chiar și alte liste sau dicționare
 
 ```py
-player = {
+jucator = {
     "nume": "Tommy Vercetti",
-    "health": 100,
-    "isAlive": True,
-    "weapons": ["bat", "pistol", "shotgun"]
+    "viata": 100,
+    "este_viu": True,
+    "arme": ["bat", "pistol", "shotgun"]
 }
 
-print(player["nume"])
-print(player["health"])
-print(player["weapons"])
+print(jucator["nume"])
+print(jucator["viata"])
+print(jucator["arme"])
 ```
 
 ---
@@ -136,7 +136,7 @@ print(player["weapons"])
 Stația păstrează fiecare membru al echipajului într-un dicționar. Pornești cu acesta (deja în dreapta):
 
 ```python
-crew = {"nume": "Tommy", "role": "Pilot", "varsta": 34}
+echipaj = {"nume": "Tommy", "role": "Pilot", "varsta": 34}
 ```
 
 Fă următoarele, în ordine:

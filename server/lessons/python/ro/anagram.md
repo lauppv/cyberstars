@@ -3,12 +3,12 @@ Două cuvinte sunt **anagrame** dacă conțin exact **aceleași litere**, doar �
 Cum verificăm? Cea mai simplă abordare: **sortăm literele** și le comparăm
 
 ```py
-def isAnagram(cuvant1, cuvant2):
+def este_anagrama(cuvant1, cuvant2):
     return sorted(cuvant1.lower()) == sorted(cuvant2.lower())
 
-print(isAnagram("listen", "silent"))
-print(isAnagram("hello", "world"))
-print(isAnagram("Evil", "Vile"))
+print(este_anagrama("listen", "silent"))
+print(este_anagrama("hello", "world"))
+print(este_anagrama("Evil", "Vile"))
 ```
 
 Rezultat
@@ -28,7 +28,7 @@ Folosim **.lower()** ca să nu conteze majusculele și minusculele
 Dar hai să o rezolvăm și folosind ce am învățat — un **dicționar de frecvențe**. Două cuvinte sunt anagrame dacă fiecare literă apare de **același număr de ori** în ambele cuvinte
 
 ```py
-def isAnagram(cuvant1, cuvant2):
+def este_anagrama(cuvant1, cuvant2):
     cuvant1 = cuvant1.lower()
     cuvant2 = cuvant2.lower()
 
@@ -36,23 +36,23 @@ def isAnagram(cuvant1, cuvant2):
         return False
 
     freq1 = {}
-    for char in cuvant1:
-        if char in freq1:
-            freq1[char] += 1
+    for caracter in cuvant1:
+        if caracter in freq1:
+            freq1[caracter] += 1
         else:
-            freq1[char] = 1
+            freq1[caracter] = 1
 
     freq2 = {}
-    for char in cuvant2:
-        if char in freq2:
-            freq2[char] += 1
+    for caracter in cuvant2:
+        if caracter in freq2:
+            freq2[caracter] += 1
         else:
-            freq2[char] = 1
+            freq2[caracter] = 1
 
     return freq1 == freq2
 
-print(isAnagram("listen", "silent"))
-print(isAnagram("hello", "world"))
+print(este_anagrama("listen", "silent"))
+print(este_anagrama("hello", "world"))
 ```
 
 Rezultat

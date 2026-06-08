@@ -1,6 +1,6 @@
-def power(base, exp): # recursiv: base^exp = base \* base^(exp - 1), și base^0 = 1
-pass
+def putere(baza, exponent): # recursiv: baza^exponent = baza \* baza^(exponent - 1), și baza^0 = 1
+    pass
 
-base = 2
+baza = 2
 
-# parcurge exp de la 0 la 4 și afișează fiecare linie ca "2^0 = 1"
+# parcurge exponent de la 0 la 4 și afișează fiecare linie ca "2^0 = 1"

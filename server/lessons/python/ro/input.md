@@ -30,8 +30,8 @@ Acum, iată ceva **chiar important**. Rulează acest cod
 
 ```py
 varsta = input("Vârsta ta: ")
-nextYear = varsta + 1
-print(nextYear)
+anul_urmator = varsta + 1
+print(anul_urmator)
 ```
 
 Vei primi o eroare. **De ce?** Pentru că **input() returnează întotdeauna un șir de caractere (string)**, chiar dacă utilizatorul tastează numere. Deci **varsta** este **"18"** (text), nu **18** (număr). Și nu putem face **"18" + 1**, deoarece unul este text și celălalt este număr
@@ -40,8 +40,8 @@ Ca să rezolvăm asta, îi spunem lui **Python**: „salut, ia acest text și tr
 
 ```py
 varsta = int(input("Vârsta ta: "))
-nextYear = varsta + 1
-print(nextYear)
+anul_urmator = varsta + 1
+print(anul_urmator)
 ```
 
 **int()** este o funcție care convertește textul într-un **întreg** (un număr întreg). Acum **varsta** este cu adevărat **18**, și **18 + 1 = 19** funcționează perfect

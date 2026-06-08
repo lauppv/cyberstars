@@ -1,14 +1,14 @@
 Acum că știm ce este un dicționar, e timpul să-l **parcurgem** cu o buclă. La fel cum am parcurs listele, putem parcurge dicționarele. Dar pentru că un dicționar are **chei** și **valori**, lucrurile sunt puțin diferite
 
 ```py
-player = {
+jucator = {
     "nume": "Tommy Vercetti",
-    "health": 100,
+    "viata": 100,
     "oras": "Vice City"
 }
 
-for key in player:
-    print(key)
+for cheie in jucator:
+    print(cheie)
 ```
 
 Afișează
@@ -22,14 +22,14 @@ oras
 Stai, a afișat doar **cheile**? Da. În mod implicit, când parcurgem un dicționar, Python ne dă **cheile**. Dar putem obține ușor și **valoarea**
 
 ```py
-player = {
+jucator = {
     "nume": "Tommy Vercetti",
-    "health": 100,
+    "viata": 100,
     "oras": "Vice City"
 }
 
-for key in player:
-    print(f"{key} -> {player[key]}")
+for cheie in jucator:
+    print(f"{cheie} -> {jucator[cheie]}")
 ```
 
 Afișează
@@ -47,14 +47,14 @@ Am folosit **player[key]** ca să luăm valoarea pentru fiecare cheie. Asta func
 **.items()** ne dă atât **cheia** cât și **valoarea** în același timp
 
 ```py
-player = {
+jucator = {
     "nume": "Tommy Vercetti",
-    "health": 100,
+    "viata": 100,
     "oras": "Vice City"
 }
 
-for key, value in player.items():
-    print(f"{key} -> {value}")
+for cheie, valoare in jucator.elemente():
+    print(f"{cheie} -> {valoare}")
 ```
 
 Același rezultat, dar mai curat. Partea cu **key, value** se numește **despachetare (unpacking)**, Python pune cheia într-o variabilă și valoarea în cealaltă
@@ -64,9 +64,9 @@ Același rezultat, dar mai curat. Partea cu **key, value** se numește **despach
 Dacă avem nevoie doar de **chei**, putem folosi **.keys()**
 
 ```py
-player = {"nume": "Tommy", "health": 100}
+jucator = {"nume": "Tommy", "viata": 100}
 
-for k in player.keys():
+for k in jucator.keys():
     print(k)
 ```
 
@@ -80,9 +80,9 @@ health
 Dacă avem nevoie doar de **valori**, folosim **.values()**
 
 ```py
-player = {"nume": "Tommy", "health": 100}
+jucator = {"nume": "Tommy", "viata": 100}
 
-for v in player.values():
+for v in jucator.values():
     print(v)
 ```
 
@@ -99,15 +99,15 @@ Un caz de utilizare foarte des întâlnit: **numărarea lucrurilor**. Să zicem 
 
 ```py
 cuvant = "banana"
-counter = {}
+contor = {}
 
 for litera in cuvant:
-    if litera in counter:
-        counter[litera] = counter[litera] + 1
+    if litera in contor:
+        contor[litera] = contor[litera] + 1
     else:
-        counter[litera] = 1
+        contor[litera] = 1
 
-print(counter)
+print(contor)
 ```
 
 Afișează
@@ -123,8 +123,8 @@ Acesta se numește **dicționar de frecvențe** sau **histogramă**. Verificăm:
 **len()** funcționează și pe dicționare
 
 ```py
-player = {"nume": "Tommy", "health": 100, "oras": "Vice City"}
-print(len(player))
+jucator = {"nume": "Tommy", "viata": 100, "oras": "Vice City"}
+print(len(jucator))
 ```
 
 Afișează **3** — dicționarul are 3 perechi cheie-valoare

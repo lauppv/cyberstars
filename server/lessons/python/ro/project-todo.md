@@ -5,7 +5,7 @@ Ultimul nostru mini-proiect: un **manager de listă de sarcini**. O să construi
 Fiecare sarcină este un dicționar cu un **nume** și o stare **done**
 
 ```py
-task = {"nume": "Învață Python", "done": False}
+sarcina = {"nume": "Învață Python", "done": False}
 ```
 
 Lista noastră de sarcini este o **listă** din aceste dicționare
@@ -25,14 +25,14 @@ Hai să construim funcțiile una câte una
 **Adăugarea unei sarcini**
 
 ```py
-def addTask(todos, nume):
+def adauga_sarcina(todos, nume):
     todos.append({"nume": nume, "done": False})
 ```
 
 **Marcarea unei sarcini ca terminată** (după index)
 
 ```py
-def completeTask(todos, index):
+def finalizeaza_sarcina(todos, index):
     if 0 <= index < len(todos):
         todos[index]["done"] = True
 ```
@@ -40,7 +40,7 @@ def completeTask(todos, index):
 **Eliminarea unei sarcini** (după index)
 
 ```py
-def removeTask(todos, index):
+def elimina_sarcina(todos, index):
     if 0 <= index < len(todos):
         todos.pop(index)
 ```
@@ -50,10 +50,10 @@ def removeTask(todos, index):
 **Afișarea tuturor sarcinilor**
 
 ```py
-def displayTodos(todos):
-    for i, task in enumerate(todos):
-        status = "terminat" if task["done"] else "neterminat"
-        print(f"{i}. [{status}] {task['nume']}")
+def afiseaza_sarcini(todos):
+    for i, sarcina in enumerate(todos):
+        stare = "terminat" if sarcina["done"] else "neterminat"
+        print(f"{i}. [{stare}] {sarcina['nume']}")
 ```
 
 ---
@@ -63,19 +63,19 @@ Punând totul cap la cap
 ```py
 todos = []
 
-addTask(todos, "Termină curriculumul de Python")
-addTask(todos, "Începe curriculumul de Java")
-addTask(todos, "Ieși la aer")
+adauga_sarcina(todos, "Termină curriculumul de Python")
+adauga_sarcina(todos, "Începe curriculumul de Java")
+adauga_sarcina(todos, "Ieși la aer")
 
-displayTodos(todos)
+afiseaza_sarcini(todos)
 print("---")
 
-completeTask(todos, 0)
-displayTodos(todos)
+finalizeaza_sarcina(todos, 0)
+afiseaza_sarcini(todos)
 print("---")
 
-removeTask(todos, 2)
-displayTodos(todos)
+elimina_sarcina(todos, 2)
+afiseaza_sarcini(todos)
 ```
 
 Rezultat
@@ -100,15 +100,15 @@ Fiecare funcție face **un singur lucru** și îl face bine. Acesta este un prin
 O funcție de **numărare** este și ea utilă
 
 ```py
-def countDone(todos):
+def numara_finalizate(todos):
     contor = 0
-    for task in todos:
-        if task["done"]:
+    for sarcina in todos:
+        if sarcina["done"]:
             contor += 1
     return contor
 
-def countNotDone(todos):
-    return len(todos) - countDone(todos)
+def numara_nefinalizate(todos):
+    return len(todos) - numara_finalizate(todos)
 ```
 
 ---
@@ -119,9 +119,9 @@ Echipajul își urmărește munca pe o tablă de sarcini comună. Construiește 
 
 Scrie trei funcții:
 
-- **add_task(tasks, nume)** — adaugă o sarcină nouă la listă cu `done` setat pe `False`.
-- **complete_task(tasks, index)** — marchează sarcina de la acel index ca terminată.
-- **count_done(tasks)** — returnează câte sarcini sunt terminate.
+- **adauga_sarcina(sarcini, nume)** — adaugă o sarcină nouă la listă cu `done` setat pe `False`.
+- **finalizeaza_sarcina(sarcini, index)** — marchează sarcina de la acel index ca terminată.
+- **numara_finalizate(sarcini)** — returnează câte sarcini sunt terminate.
 
 Codul de start din dreapta construiește deja tabla (adaugă trei sarcini, finalizează două dintre ele). După aceea, **afișează** tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[în așteptare]`, apoi numele sarcinii. La final afișează `Finalizat: ` urmat de numărul de sarcini terminate, un `/`, și totalul.
 

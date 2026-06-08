@@ -1,4 +1,4 @@
-crew = {"nume": "Tommy", "role": "Pilot", "varsta": 34}
+echipaj = {"nume": "Tommy", "role": "Pilot", "varsta": 34}
 
 # 1. adaugă station = Laniakea
 
@@ -6,4 +6,4 @@ crew = {"nume": "Tommy", "role": "Pilot", "varsta": 34}
 
 # 3. afișează nume, role, varsta, station fiecare pe propria linie
 
-# 4. dacă rank nu este în crew, afișează Rang: necunoscut
+# 4. dacă rank nu este în echipaj, afișează Rang: necunoscut

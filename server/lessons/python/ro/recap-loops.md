@@ -4,7 +4,7 @@ Combină **bucle for**, **bucle while** și **funcții**
 
 ## Misiune: Indicii despre Număr
 
-Scrie o funcție `give_hints(secret)` care afișează **patru** indicii despre un număr, apoi cheam-o cu valoarea din `secret`.
+Scrie o funcție `da_indicii(numar_secret)` care afișează **patru** indicii despre un număr, apoi cheam-o cu valoarea din `numar_secret`.
 
 Indiciile, în ordine:
 
@@ -15,11 +15,11 @@ Indiciile, în ordine:
 
 **Input** (deja setat la începutul codului tău — schimbă-l ca să testezi):
 
-- `secret` — numărul de analizat
+- `numar_secret` — numărul de analizat
 
 **Exemplu**
 
-Cu `secret = 73`, programul tău ar trebui să afișeze
+Cu `numar_secret = 73`, programul tău ar trebui să afișeze
 
 ```text
 Este impar

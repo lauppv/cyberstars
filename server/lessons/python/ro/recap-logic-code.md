@@ -1,5 +1,5 @@
-fuel = int(input())
-crew = int(input())
-checks = int(input())
+combustibil = int(input())
+echipaj = int(input())
+verificari = int(input())
 
 # calculează booleenii, apoi afișează cele patru linii

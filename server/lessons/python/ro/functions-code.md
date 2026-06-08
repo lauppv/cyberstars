@@ -1,7 +1,7 @@
-def calculator(number1, number2, operator):
+def calculator(numar1, numar2, operator):
     if operator == "+":
-        rezultat = number1 + number2
-        print(f"{number1} {operator} {number2} = {rezultat}") # adaugă aici cazurile -, \*, și /
+        rezultat = numar1 + numar2
+        print(f"{numar1} {operator} {numar2} = {rezultat}") # adaugă aici cazurile -, \*, și /
     else:
         print("Operator invalid")
 

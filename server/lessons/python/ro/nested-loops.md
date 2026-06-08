@@ -3,9 +3,9 @@
 Să începem simplu. Vrem să afișăm toate combinațiile a două aruncări de zaruri
 
 ```py
-for die1 in range(1, 7):
-    for die2 in range(1, 7):
-        print(f"{die1} {die2}")
+for zar1 in range(1, 7):
+    for zar2 in range(1, 7):
+        print(f"{zar1} {zar2}")
 ```
 
 Asta va afișa **36 de linii**: (1,1), (1,2), ..., (1,6), (2,1), (2,2), ... până la (6,6)
@@ -32,12 +32,12 @@ for i in range(1, 6):
 Putem folosi bucle imbricate și cu **liste**
 
 ```py
-teams = ["Sharks", "Bears"]
-players = ["Tommy", "Lance", "Cortez"]
+echipe = ["Sharks", "Bears"]
+jucatori = ["Tommy", "Lance", "Cortez"]
 
-for team in teams:
-    for player in players:
-        print(f"{player} joacă pentru {team}")
+for echipa in echipe:
+    for jucator in jucatori:
+        print(f"{jucator} joacă pentru {echipa}")
 ```
 
 Rezultat

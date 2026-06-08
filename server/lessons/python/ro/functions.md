@@ -57,14 +57,14 @@ Totuși, dacă vrem să folosim această bucată de cod **mai târziu** în prog
 Se dovedește că cel mai bun mod, și cel care face codul cel mai **lizibil**, este să folosim o **funcție**
 
 ```py
-def myFunction(nume, varsta):
+def functia_mea(nume, varsta):
     i = 0
     for i in range(0, 11):
         print(f"Mă numesc {nume} și am vârsta {varsta}")
 
-myFunction("Cortez", 60)
-myFunction("Tommy Vercetti", 42)
-myFunction("Lance Vance Dance", 35)
+functia_mea("Cortez", 60)
+functia_mea("Tommy Vercetti", 42)
+functia_mea("Lance Vance Dance", 35)
 ```
 
 Putem vedea cum codul nostru este mult mai **curat** și mai **ușor** de citit. Ce am făcut a fost să **refolosim** **funcția** numită **myFunction** și să o apelăm cu valori diferite. Am scris funcția **o dată** și o putem rula de câte ori vrem cu valori diferite
@@ -80,14 +80,14 @@ La fel ca **print()**, folosim paranteze **()**
 Ține minte că **numele parametrilor pot fi orice**. Codul de mai jos funcționează la fel de bine
 
 ```py
-def myFunction(n, a):
+def functia_mea(n, a):
     i = 0
     for i in range(0, 11):
         print(f"Mă numesc {n} și am vârsta {a}")
 
-myFunction("Cortez", 60)
-myFunction("Tommy Vercetti", 42)
-myFunction("Lance Vance Dance", 35)
+functia_mea("Cortez", 60)
+functia_mea("Tommy Vercetti", 42)
+functia_mea("Lance Vance Dance", 35)
 ```
 
 După ce numim o funcție, trebuie să punem un **:**
@@ -95,25 +95,25 @@ După ce numim o funcție, trebuie să punem un **:**
 Un alt exemplu de funcție ar putea fi
 
 ```py
-def f(nume, status):
-    if(status == True):
+def f(nume, stare):
+    if(stare == True):
         print(f"{nume} este online")
     else:
         print(f"{nume} este offline")
 
 nume = "Admin"
-isOnline = True
-f(nume, isOnline) # afișează Admin este online
+este_online = True
+f(nume, este_online) # afișează Admin este online
 
-isOnline = False
-f(nume, isOnline) # afișează admin este offline
+este_online = False
+f(nume, este_online) # afișează admin este offline
 ```
 
 ---
 
 ## Misiune: Calculatorul de la Bord
 
-Scrie o funcție `calculator(number1, number2, operator)` care afișează rezultatul lui `number1 operator number2`. Cazul `+` este deja scris pentru tine în codul de start — adaugă cazurile pentru **scădere** (`-`), **înmulțire** (`*`) și **împărțire** (`/`). Pentru orice alt operator, afișează `Operator invalid`.
+Scrie o funcție `calculator(numar1, numar2, operator)` care afișează rezultatul lui `numar1 operator numar2`. Cazul `+` este deja scris pentru tine în codul de start — adaugă cazurile pentru **scădere** (`-`), **înmulțire** (`*`) și **împărțire** (`/`). Pentru orice alt operator, afișează `Operator invalid`.
 
 Formatează fiecare rezultat ca `14 + 12 = 26`.
 

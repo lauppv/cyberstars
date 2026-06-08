@@ -3,8 +3,8 @@ Cunoaștem **listele**, **tuplurile** și **dicționarele**. E timpul pentru ult
 O **mulțime** (set) este o colecție în care **fiecare element este unic**. Nu sunt permise duplicate. Gândește-te la asta ca la lista de invitați la o petrecere — fiecare persoană poate fi pe listă o **singură** dată
 
 ```py
-guests = {"Tommy", "Lance", "Cortez", "Tommy"}
-print(guests)
+oaspeti = {"Tommy", "Lance", "Cortez", "Tommy"}
+print(oaspeti)
 ```
 
 Rezultat
@@ -20,15 +20,15 @@ Stai, am scris **Tommy** de două ori, dar el apare o singură dată. Asta este 
 Mulțimile folosesc **acolade {}**, exact ca dicționarele. Dar nu există **cheie: valoare**, doar valori. Dacă are două puncte este un dicționar, dacă nu are este o mulțime
 
 ```py
-mySet = {1, 2, 3}
-myDict = {"a": 1, "b": 2}
+setul_meu = {1, 2, 3}
+dictul_meu = {"a": 1, "b": 2}
 ```
 
 **Ai grijă** cu colecțiile goale
 
 ```py
-empty_dict = {}
-empty_set = set()
+dict_gol = {}
+set_gol = set()
 ```
 
 Un **{}** gol creează un dicționar, nu o mulțime. Ca să creezi o mulțime goală, folosește **set()**
@@ -38,12 +38,12 @@ Un **{}** gol creează un dicționar, nu o mulțime. Ca să creezi o mulțime go
 Putem **adăuga** elemente cu **.add()** și **elimina** cu **.remove()**
 
 ```py
-weapons = {"bat", "pistol"}
-weapons.add("shotgun")
-print(weapons)
+arme = {"bat", "pistol"}
+arme.adauga("shotgun")
+print(arme)
 
-weapons.remove("bat")
-print(weapons)
+arme.remove("bat")
+print(arme)
 ```
 
 Observă că folosim **.add()**, nu **.append()** ca la liste. Mulțimile nu au o ordine, așa că „adăugarea la final" nu are sens
@@ -53,13 +53,13 @@ Observă că folosim **.add()**, nu **.append()** ca la liste. Mulțimile nu au 
 Cel mai util lucru la mulțimi: verificarea dacă ceva **se află în** mulțime. Acest lucru este **extrem de rapid**, mult mai rapid decât verificarea într-o listă
 
 ```py
-bannedPlayers = {"Sonny", "Diaz", "Gonzalez"}
+jucatori_banati = {"Sonny", "Diaz", "Gonzalez"}
 
-player = "Tommy"
-if player in bannedPlayers:
-    print(f"{player} este interzis!")
+jucator = "Tommy"
+if jucator in jucatori_banati:
+    print(f"{jucator} este interzis!")
 else:
-    print(f"{player} este binevenit")
+    print(f"{jucator} este binevenit")
 ```
 
 Rezultatul **Tommy este binevenit**
@@ -70,8 +70,8 @@ Un caz de utilizare foarte des întâlnit: **eliminarea duplicatelor dintr-o lis
 
 ```py
 nume = ["Tommy", "Lance", "Tommy", "Cortez", "Lance", "Lance"]
-numeUnice = list(set(nume))
-print(numeUnice)
+nume_unice = list(set(nume))
+print(nume_unice)
 ```
 
 Am convertit lista într-o mulțime (care a eliminat duplicatele), apoi înapoi într-o listă. Curat și simplu

@@ -1,4 +1,4 @@
-crew = ["Tommy", "Boris", "Cara", "Dmitri"]
+echipaj = ["Tommy", "Boris", "Cara", "Dmitri"]
 scoruri = [88, 100, 47, 73]
 
 # 1. afișează fiecare nume: scor folosind zip

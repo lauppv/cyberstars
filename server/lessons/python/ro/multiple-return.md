@@ -3,12 +3,12 @@ Am învățat că **return** trimite o valoare înapoi dintr-o funcție. Dar dac
 În multe limbaje de programare, asta e complicat. În Python, este minunat de simplu
 
 ```py
-def minMax(numere):
-    return min(numere), max(numere)
+def minim_maxim(numere):
+    return minim(numere), maxim(numere)
 
-smallest, largest = minMax([5, 2, 8, 1, 9])
-print(smallest)
-print(largest)
+cel_mai_mic, cel_mai_mare = minim_maxim([5, 2, 8, 1, 9])
+print(cel_mai_mic)
+print(cel_mai_mare)
 ```
 
 Rezultat
@@ -21,10 +21,10 @@ Rezultat
 Ce s-a întâmplat? Funcția a **returnat două valori** separate printr-o virgulă. În exterior, le-am **despachetat** în două variabile, exact cum am făcut cu tuplele. De fapt, asta este exact ce face Python în culise — creează o **tuplă** și apoi o despachetează
 
 ```py
-def minMax(numere):
-    return min(numere), max(numere)
+def minim_maxim(numere):
+    return minim(numere), maxim(numere)
 
-rezultat = minMax([5, 2, 8, 1, 9])
+rezultat = minim_maxim([5, 2, 8, 1, 9])
 print(rezultat)
 print(type(rezultat))
 ```
@@ -43,16 +43,16 @@ Vezi? Este o tuplă. **return a, b** este același lucru cu **return (a, b)**. P
 Asta este incredibil de util pentru funcțiile care calculează valori înrudite
 
 ```py
-def playerStats(scoruri):
+def statistici_jucator(scoruri):
     total = sum(scoruri)
-    average = total / len(scoruri)
-    best = max(scoruri)
-    return total, average, best
+    medie = total / len(scoruri)
+    cel_mai_bun = maxim(scoruri)
+    return total, medie, cel_mai_bun
 
-t, avg, top = playerStats([80, 95, 70, 88])
+t, medie, varf = statistici_jucator([80, 95, 70, 88])
 print(f"Total: {t}")
-print(f"Medie: {avg}")
-print(f"Cel mai bun: {top}")
+print(f"Medie: {medie}")
+print(f"Cel mai bun: {varf}")
 ```
 
 Rezultat
@@ -70,15 +70,15 @@ O singură funcție, trei valori utile înapoi. Curat
 O altă utilizare frecventă: o funcție care **împarte** un nume complet
 
 ```py
-def numeImpartit(numeComplet):
-    parts = numeComplet.split(" ")
-    prenume = parts[0]
-    numeFamilie = parts[1]
-    return prenume, numeFamilie
+def nume_impartit(nume_complet):
+    parti = nume_complet.split(" ")
+    prenume = parti[0]
+    nume_familie = parti[1]
+    return prenume, nume_familie
 
-first, last = numeImpartit("Tommy Vercetti")
-print(f"Prenume: {first}")
-print(f"Nume: {last}")
+primul, ultimul = nume_impartit("Tommy Vercetti")
+print(f"Prenume: {primul}")
+print(f"Nume: {ultimul}")
 ```
 
 Rezultat

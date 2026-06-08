@@ -17,7 +17,7 @@ Putem transforma un string în **majuscule** sau **minuscule**
 
 ```py
 nume = "tommy vercetti"
-print(nume.upper())   # TOMMY VERCETTI
+print(nume.majuscule())   # TOMMY VERCETTI
 print(nume.lower())   # tommy vercetti
 ```
 
@@ -27,7 +27,7 @@ Observă **punctul** dintre **nume** și **upper()**. **Sintaxa cu punct** înse
 
 ```py
 nume = "tommy vercetti"
-nume.upper()
+nume.majuscule()
 print(nume)
 ```
 
@@ -35,7 +35,7 @@ Va afișa **tommy vercetti**, cu litere mici ca înainte, pentru că nu am făcu
 
 ```py
 nume = "tommy vercetti"
-nume = nume.upper()
+nume = nume.majuscule()
 print(nume)
 ```
 
@@ -47,9 +47,9 @@ Putem **lipi string-uri împreună** cu **+**. Acest lucru se numește **concate
 
 ```py
 prenume = "Tommy"
-numeFamilie = "Vercetti"
-numeComplet = prenume + " " + numeFamilie
-print(numeComplet)
+nume_familie = "Vercetti"
+nume_complet = prenume + " " + nume_familie
+print(nume_complet)
 ```
 
 Rezultatul **Tommy Vercetti**. Observă că am adăugat **" "** la mijloc, altfel am obține **TommyVercetti** lipite. String-urile nu adaugă spații în locul nostru, trebuie să o facem noi

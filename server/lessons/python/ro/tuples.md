@@ -1,8 +1,8 @@
 Cunoaștem deja **listele**. O listă poate crește, se poate micșora și se poate schimba — putem **adăuga** (append), **elimina** (remove) și **modifica** elemente oricând vrem. Dar uneori vrem o colecție care **nu se poate schimba**. Aceasta este un **tuple**
 
 ```py
-coordinates = (10, 20)
-print(coordinates)
+coordonate = (10, 20)
+print(coordonate)
 ```
 
 Rezultat **(10, 20)**
@@ -10,8 +10,8 @@ Rezultat **(10, 20)**
 Un tuple arată ca o listă, dar cu **paranteze rotunde ()** în loc de **paranteze pătrate []**. Marea diferență? **Nu îl putem modifica** după creare
 
 ```py
-coordinates = (10, 20)
-coordinates[0] = 99
+coordonate = (10, 20)
+coordonate[0] = 99
 ```
 
 **Rulează**-l. Python va țipa la noi cu o **TypeError**: 'tuple' object does not support item assignment. Cu alte cuvinte: „nu mă poți schimba" :)
@@ -21,8 +21,8 @@ coordinates[0] = 99
 De ce am vrea vreodată ceva ce nu putem schimba? Ei bine, uneori ăsta e tot rostul. Gândește-te la o dată de naștere. **Tommy Vercetti s-a născut într-o anumită zi**. Acea dată nu ar trebui să se schimbe niciodată. Dacă scriem din greșeală cod care încearcă să o modifice, **vrem** ca Python să ne oprească
 
 ```py
-birthday = (1951, 7, 15)
-print(birthday)
+zi_de_nastere = (1951, 7, 15)
+print(zi_de_nastere)
 ```
 
 Alt exemplu: coordonate GPS. **Vice City se află într-o locație fixă**. Nu se mișcă
@@ -37,10 +37,10 @@ print(viceCity)
 **Putem** citi elemente dintr-un tuple, exact ca dintr-o listă, folosind un **index**
 
 ```py
-player = ("Tommy Vercetti", 100, "Vice City")
-print(player[0])
-print(player[1])
-print(player[2])
+jucator = ("Tommy Vercetti", 100, "Vice City")
+print(jucator[0])
+print(jucator[1])
+print(jucator[2])
 ```
 
 Rezultat
@@ -54,8 +54,8 @@ Vice City
 Și **len()** funcționează
 
 ```py
-player = ("Tommy Vercetti", 100, "Vice City")
-print(len(player))
+jucator = ("Tommy Vercetti", 100, "Vice City")
+print(len(jucator))
 ```
 
 Rezultat **3**
@@ -65,11 +65,11 @@ Rezultat **3**
 Unul dintre cele mai mișto lucruri legate de tuple-uri este **despachetarea** (unpacking). În loc să folosim indecși, putem apuca toate valorile dintr-o dată
 
 ```py
-player = ("Tommy Vercetti", 100, "Vice City")
+jucator = ("Tommy Vercetti", 100, "Vice City")
 
-nume, health, oras = player
+nume, viata, oras = jucator
 print(nume)
-print(health)
+print(viata)
 print(oras)
 ```
 
@@ -81,7 +81,7 @@ Tommy Vercetti
 Vice City
 ```
 
-Am creat **trei variabile** într-o singură linie. Python a luat primul element și l-a pus în **nume**, al doilea în **health**, al treilea în **oras**. Numărul de variabile din stânga **trebuie să corespundă** cu numărul de elemente din tuple
+Am creat **trei variabile** într-o singură linie. Python a luat primul element și l-a pus în **nume**, al doilea în **viata**, al treilea în **oras**. Numărul de variabile din stânga **trebuie să corespundă** cu numărul de elemente din tuple
 
 ```py
 a, b = (10, 20)
@@ -103,9 +103,9 @@ Aceasta este aceeași **despachetare** pe care am văzut-o la **.items()** când
 Putem și **parcurge** (loop) un tuple, exact ca o listă
 
 ```py
-heroes = ("Shrek", "Fiona", "Donkey")
-for hero in heroes:
-    print(hero)
+eroi = ("Shrek", "Fiona", "Donkey")
+for erou in eroi:
+    print(erou)
 ```
 
 Rezultat

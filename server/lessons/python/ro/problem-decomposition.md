@@ -21,13 +21,13 @@ Rezultat **['the', 'cat', 'sat', 'on', 'the', 'mat', 'the', 'cat']**
 **Pasul 2**: Cum număr de câte ori apare fiecare cuvânt? → folosește un dicționar
 
 ```py
-counter = {}
+contor = {}
 for cuvant in cuvinte:
-    if cuvant in counter:
-        counter[cuvant] = counter[cuvant] + 1
+    if cuvant in contor:
+        contor[cuvant] = contor[cuvant] + 1
     else:
-        counter[cuvant] = 1
-print(counter)
+        contor[cuvant] = 1
+print(contor)
 ```
 
 Rezultat **{'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}**
@@ -35,13 +35,13 @@ Rezultat **{'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}**
 **Pasul 3**: Cum găsesc care cuvânt are numărul cel mai mare? → parcurge dicționarul
 
 ```py
-celMaiBunCuvant = ""
-bestCount = 0
-for cuvant, contor in counter.items():
-    if contor > bestCount:
-        bestCount = contor
-        celMaiBunCuvant = cuvant
-print(f"Cel mai frecvent: {celMaiBunCuvant} ({bestCount} ori)")
+cel_mai_bun_cuvant = ""
+cel_mai_bun_numar = 0
+for cuvant, contor in contor.elemente():
+    if contor > cel_mai_bun_numar:
+        cel_mai_bun_numar = contor
+        cel_mai_bun_cuvant = cuvant
+print(f"Cel mai frecvent: {cel_mai_bun_cuvant} ({cel_mai_bun_numar} ori)")
 ```
 
 Rezultat **Cel mai frecvent: the (3 ori)**
@@ -92,14 +92,14 @@ De ce **range(i + 1, len(numere))**? Pentru că nu vrem să formăm o pereche di
 
 Jurnalul stației este un singur șir de coduri de eveniment separate prin spații (deja în dreapta). **Împarte munca în trei funcții**, apoi folosește-le împreună:
 
-1. `split_codes(log)` — returnează **lista** de coduri (folosește `.split(" ")`)
-2. `count_codes(codes)` — returnează un **dicționar** care asociază fiecărui cod de câte ori apare
-3. `most_common(counts)` — returnează codul cu numărul **cel mai mare**
+1. `desparte_coduri(jurnal)` — returnează **lista** de coduri (folosește `.split(" ")`)
+2. `numara_coduri(coduri)` — returnează un **dicționar** care asociază fiecărui cod de câte ori apare
+3. `cel_mai_frecvent(numere)` — returnează codul cu numărul **cel mai mare**
 
 În programul principal, apelează funcțiile în ordine, apoi afișează:
 
 - `Coduri: ` apoi numărul total de coduri
-- fiecare cod ca `code: contor` (parcurge dicționarul)
+- fiecare cod ca `cod: contor` (parcurge dicționarul)
 - `Cel mai frecvent: ` apoi codul cel mai frecvent
 
 **Rezultat**

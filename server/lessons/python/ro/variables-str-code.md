@@ -1,7 +1,7 @@
 # --- date de intrare (schimbă-le ca să testezi) ---
 
-commander = "Shadow"
+comandant = "Shadow"
 pilot = "Lance"
-engineer = "Quincy"
+inginer = "Quincy"
 
 # --- scrie codul tău mai jos ---

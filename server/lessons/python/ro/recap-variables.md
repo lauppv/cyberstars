@@ -4,15 +4,15 @@ E timpul să combini ce ai învățat! Nicio teorie nouă — doar o provocare c
 
 ## Misiune: Cardul Jucătorului
 
-Construiește un **card de profil al personajului** pentru un joc. Statisticile personajului sunt deja setate la începutul codului tău: `nume`, `level`, `health` și `guild`.
+Construiește un **card de profil al personajului** pentru un joc. Statisticile personajului sunt deja setate la începutul codului tău: `nume`, `nivel`, `viata` și `breasla`.
 
 Folosind **f-string-uri**, afișează cardul de profil exact cum este arătat mai jos. Adaugă un **comentariu** deasupra print-urilor tale care explică ce fac.
 
 **Input** (deja setat la începutul codului tău — schimbă valorile ca să testezi):
 
-- `nume`, `guild` — text
-- `level` — un număr întreg
-- `health` — un număr cu zecimale
+- `nume`, `breasla` — text
+- `nivel` — un număr întreg
+- `viata` — un număr cu zecimale
 
 **Exemplu**
 

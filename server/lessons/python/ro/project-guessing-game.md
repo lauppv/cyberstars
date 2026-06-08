@@ -9,8 +9,8 @@ Mai întâi, cum obținem un număr aleatoriu? Python are un modul încorporat p
 ```py
 import random
 
-secretNumber = random.randint(1, 100)
-print(secretNumber)
+numar_secret = random.randint(1, 100)
+print(numar_secret)
 ```
 
 **import random** aduce modulul random. **random.randint(1, 100)** ne dă un întreg aleatoriu între 1 și 100 (inclusiv). De fiecare dată când îl rulăm, obținem un alt număr
@@ -23,16 +23,16 @@ Hai să construim jocul pas cu pas
 
 ```py
 import random
-secretNumber = random.randint(1, 100)
+numar_secret = random.randint(1, 100)
 ```
 
 **Pasul 2**: cere-i jucătorului o ghicire, și spune-i dacă e prea mare sau prea mică
 
 ```py
-guess = int(input("Ghicește un număr (1-100): "))
-if guess < secretNumber:
+ghicire = int(input("Ghicește un număr (1-100): "))
+if ghicire < numar_secret:
     print("Prea mic!")
-elif guess > secretNumber:
+elif ghicire > numar_secret:
     print("Prea mare!")
 else:
     print("Corect!")
@@ -43,19 +43,19 @@ else:
 ```py
 import random
 
-secretNumber = random.randint(1, 100)
-attempts = 0
+numar_secret = random.randint(1, 100)
+incercari = 0
 
 while True:
-    guess = int(input("Ghicește un număr (1-100): "))
-    attempts += 1
+    ghicire = int(input("Ghicește un număr (1-100): "))
+    incercari += 1
 
-    if guess < secretNumber:
+    if ghicire < numar_secret:
         print("Prea mic!")
-    elif guess > secretNumber:
+    elif ghicire > numar_secret:
         print("Prea mare!")
     else:
-        print(f"Corect! L-ai ghicit în {attempts} încercări!")
+        print(f"Corect! L-ai ghicit în {incercari} încercări!")
         break
 ```
 
@@ -68,31 +68,31 @@ Versiunea completă
 ```py
 import random
 
-def playGame():
-    secretNumber = random.randint(1, 100)
-    maxAttempts = 7
+def joaca_joc():
+    numar_secret = random.randint(1, 100)
+    maxim_incercari = 7
 
     print("Mă gândesc la un număr între 1 și 100")
-    print(f"Ai {maxAttempts} încercări. Mult noroc!")
+    print(f"Ai {maxim_incercari} încercări. Mult noroc!")
 
-    for attempt in range(1, maxAttempts + 1):
+    for incercare in range(1, maxim_incercari + 1):
         try:
-            guess = int(input(f"Încercarea {attempt}/{maxAttempts}: "))
+            ghicire = int(input(f"Încercarea {incercare}/{maxim_incercari}: "))
         except ValueError:
             print("Ăsta nu e un număr!")
             continue
 
-        if guess < secretNumber:
+        if ghicire < numar_secret:
             print("Prea mic!")
-        elif guess > secretNumber:
+        elif ghicire > numar_secret:
             print("Prea mare!")
         else:
-            print(f"Corect! L-ai ghicit în {attempt} încercări!")
+            print(f"Corect! L-ai ghicit în {incercare} încercări!")
             return
 
-    print(f"Joc terminat! Numărul a fost {secretNumber}")
+    print(f"Joc terminat! Numărul a fost {numar_secret}")
 
-playGame()
+joaca_joc()
 ```
 
 Observă cum am folosit **tot**: import, funcție, buclă for, try/except, if/elif/else, f-string-uri, return (ca să ieșim devreme când ghicesc corect)
@@ -103,7 +103,7 @@ Observă cum am folosit **tot**: import, funcție, buclă for, try/except, if/el
 
 Reactorul este blocat în spatele unui cod numeric secret. Un instrument de diagnosticare a înregistrat deja o secvență de ghiciri (deja în dreapta) — redă-le și raportează cum a decurs spargerea. Nu există nimic aleatoriu aici, așa că rezultatul este același la fiecare rulare.
 
-1. Scrie o funcție **check_guess(secret, guess)** care returnează `"prea mic"` dacă ghicirea e mai mică decât secretul, `"prea mare"` dacă e mai mare, și `"corect"` dacă se potrivesc.
+1. Scrie o funcție **verifica_ghicirea(numar_secret, ghicire)** care returnează `"prea mic"` dacă ghicirea e mai mică decât secretul, `"prea mare"` dacă e mai mare, și `"corect"` dacă se potrivesc.
 2. Parcurge ghicirile, numărând încercările. Pentru fiecare ghicire, afișează ghicirea, apoi `: `, apoi rezultatul.
 3. **Oprește-te** imediat ce o ghicire e corectă, apoi afișează `Spart în N încercări!` (cu numărul real de încercări).
 

@@ -1,6 +1,6 @@
-isEmployee = input() == "yes"
-isWorkingDay = input() == "yes"
-isGuest = input() == "yes"
-hasInvitation = input() == "yes"
+este_angajat = input() == "yes"
+este_zi_lucratoare = input() == "yes"
+este_oaspete = input() == "yes"
+are_invitatie = input() == "yes"
 
 # scrie if/else aici

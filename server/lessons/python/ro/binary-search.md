@@ -26,25 +26,25 @@ Am verificat **4 elemente** în loc să le scanăm pe toate 10. Pentru 1.000.000
 În cod
 
 ```py
-def binarySearch(numere, tinta):
-    left = 0
-    right = len(numere) - 1
+def cautare_binara(numere, tinta):
+    stanga = 0
+    dreapta = len(numere) - 1
 
-    while left <= right:
-        mid = (left + right) // 2
+    while stanga <= dreapta:
+        mijloc = (stanga + dreapta) // 2
 
-        if numere[mid] == tinta:
-            return mid
-        elif numere[mid] < tinta:
-            left = mid + 1
+        if numere[mijloc] == tinta:
+            return mijloc
+        elif numere[mijloc] < tinta:
+            stanga = mijloc + 1
         else:
-            right = mid - 1
+            dreapta = mijloc - 1
 
     return -1
 
 numere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-print(binarySearch(numere, 13))
-print(binarySearch(numere, 6))
+print(cautare_binara(numere, 13))
+print(cautare_binara(numere, 6))
 ```
 
 Rezultat
@@ -58,7 +58,7 @@ Rezultat
 
 ---
 
-Hai să urmărim pas cu pas **binarySearch([1,3,5,7,9,11,13,15,17,19], 13)**
+Hai să urmărim pas cu pas **cautare_binara([1,3,5,7,9,11,13,15,17,19], 13)**
 
 - left=0, right=9, mid=4 → numere[4]=9 < 13 → left=5
 - left=5, right=9, mid=7 → numere[7]=15 > 13 → right=6
@@ -70,21 +70,21 @@ Hai să urmărim pas cu pas **binarySearch([1,3,5,7,9,11,13,15,17,19], 13)**
 O putem scrie și **recursiv**
 
 ```py
-def binarySearchRecursive(numere, tinta, left, right):
-    if left > right:
+def cautare_binara_recursiva(numere, tinta, stanga, dreapta):
+    if stanga > dreapta:
         return -1
 
-    mid = (left + right) // 2
+    mijloc = (stanga + dreapta) // 2
 
-    if numere[mid] == tinta:
-        return mid
-    elif numere[mid] < tinta:
-        return binarySearchRecursive(numere, tinta, mid + 1, right)
+    if numere[mijloc] == tinta:
+        return mijloc
+    elif numere[mijloc] < tinta:
+        return cautare_binara_recursiva(numere, tinta, mijloc + 1, dreapta)
     else:
-        return binarySearchRecursive(numere, tinta, left, mid - 1)
+        return cautare_binara_recursiva(numere, tinta, stanga, mijloc - 1)
 
 numere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-print(binarySearchRecursive(numere, 13, 0, len(numere) - 1))
+print(cautare_binara_recursiva(numere, 13, 0, len(numere) - 1))
 ```
 
 Rezultat **6**. Aceeași logică, alt stil
@@ -105,7 +105,7 @@ Arhiva stației stochează ID-urile echipajului într-o listă **sortată** (dej
 
 ```py
 ids = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
-queries = [23, 50, 8, 91, 100]
+interogari = [23, 50, 8, 91, 100]
 ```
 
 **Output**

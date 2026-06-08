@@ -21,11 +21,11 @@ Adună tot din acest capitol — **matrice**, **recursivitate** și **căutare b
 Testează cu:
 
 ```py
-print(f"Faruri: {count_beacons(sector)}")
-flat = flatten_sorted(sector)
-print(f"Valori unice: {flat}")
-print(f"Are valoare far: {find_value(flat, 2)}")
-print(f"Are valoarea 3: {find_value(flat, 3)}")
+print(f"Faruri: {numara_balize(sector)}")
+plat = aplatizeaza_sortat(sector)
+print(f"Valori unice: {plat}")
+print(f"Are valoare far: {gaseste_valoare(plat, 2)}")
+print(f"Are valoarea 3: {gaseste_valoare(plat, 3)}")
 ```
 
 **Output**

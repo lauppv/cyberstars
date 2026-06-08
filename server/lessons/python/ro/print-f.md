@@ -55,7 +55,7 @@ Acest proces în programare se numește **formatare** (de aici și litera **f**)
 
 ## Misiune: Raport de Zbor
 
-Un pilot e pe cale să decoleze. Detaliile sunt stocate în `pilot`, `numeNava`, `fuel` și `speed`.
+Un pilot e pe cale să decoleze. Detaliile sunt stocate în `pilot`, `nume_nava`, `combustibil` și `viteza`.
 
 Folosind **f-string-uri**, afișează un raport de zbor pe trei linii:
 
@@ -65,9 +65,9 @@ Folosind **f-string-uri**, afișează un raport de zbor pe trei linii:
 
 **Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
-- `pilot`, `numeNava` — text
-- `fuel` — un număr întreg
-- `speed` — un număr cu zecimale
+- `pilot`, `nume_nava` — text
+- `combustibil` — un număr întreg
+- `viteza` — un număr cu zecimale
 
 **Exemplu**
 

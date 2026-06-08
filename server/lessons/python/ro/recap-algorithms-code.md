@@ -1,4 +1,4 @@
-results = ["Rex", "Tommy", "Boris", "Tommy", "Cara", "Boris", "Tommy", "Cara", "Boris", "Tommy"]
+rezultate = ["Rex", "Tommy", "Boris", "Tommy", "Cara", "Boris", "Tommy", "Cara", "Boris", "Tommy"]
 
 # 1. construiește un dicționar de frecvențe (victorii per echipaj), apoi afișează "Victorii: " + dicționarul
 

@@ -1,12 +1,12 @@
 quiz = [
-{"text": "Care comandă arată rezultatul?", "answer": "B"},
-{"text": "Ce începe un comentariu?", "answer": "C"},
-{"text": "Ce returnează len()?", "answer": "A"},
-{"text": "Care cuvânt-cheie definește o funcție?", "answer": "D"},
+{"text": "Care comandă arată rezultatul?", "raspuns": "B"},
+{"text": "Ce începe un comentariu?", "raspuns": "C"},
+{"text": "Ce returnează len()?", "raspuns": "A"},
+{"text": "Care cuvânt-cheie definește o funcție?", "raspuns": "D"},
 ]
-player_answers = ["B", "C", "A", "B"]
+raspunsuri_jucator = ["B", "C", "A", "B"]
 
-def grade_quiz(questions, answers): # numără câte răspunsuri se potrivesc cu "answer"-ul fiecărei întrebări
-pass
+def noteaza_test(intrebari, raspunsuri): # numără câte răspunsuri se potrivesc cu "raspuns"-ul fiecărei întrebări
+    pass
 
 # afișează "Scor: X/Y", "Procentaj: Z%", apoi "PASS" (>= 50%) sau "FAIL"

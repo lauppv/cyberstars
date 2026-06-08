@@ -17,10 +17,10 @@ Transmisiile primite sunt pline de zgomot și amestecate. Construiește o mică 
 Testează cu:
 
 ```py
-print(is_palindrome(clean_text("A man, a plan, a canal: Panama")))
-print(are_anagrams("Listen!", "Silent"))
+print(este_palindrom(curata_text("A man, a plan, a canal: Panama")))
+print(sunt_anagrame("Listen!", "Silent"))
 print(inverseaza_cuvinte("navigation system is online"))
-print(clean_text("S3ct0r 7 cl34r!"))
+print(curata_text("S3ct0r 7 cl34r!"))
 ```
 
 **Output**

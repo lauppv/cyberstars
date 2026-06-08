@@ -1,4 +1,4 @@
-signals = ["B", "A", "C", "B", "A", "B", "D", "A", "B"]
+semnale = ["B", "A", "C", "B", "A", "B", "D", "A", "B"]
 
 # 1. construiește un dicționar de frecvențe: channel -> contor
 

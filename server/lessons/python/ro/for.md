@@ -57,19 +57,19 @@ Acum **i = 3**, îl afișează, apoi face din nou **i = i + 1**
 
 ## Misiune: Încălzirea Reactorului
 
-Reactorul stației se încălzește câte un **pas** o dată înainte să intre online. Ți se dă câți `steps` durează încălzirea și un `boostStep` special unde inginerii declanșează un impuls de putere.
+Reactorul stației se încălzește câte un **pas** o dată înainte să intre online. Ți se dă câți `pasi` durează încălzirea și un `pas_amplificare` special unde inginerii declanșează un impuls de putere.
 
-Scrie un program care folosește o buclă **for** ca să parcurgă fiecare număr de pas de la **1** la `steps`. Pentru fiecare pas, afișează:
+Scrie un program care folosește o buclă **for** ca să parcurgă fiecare număr de pas de la **1** la `pasi`. Pentru fiecare pas, afișează:
 
-- dacă pasul este `boostStep` → afișează `Pas`, apoi numărul pasului, apoi `: BOOST` (pentru `boostStep = 3` asta înseamnă `Pas 3: BOOST`)
+- dacă pasul este `pas_amplificare` → afișează `Pas`, apoi numărul pasului, apoi `: BOOST` (pentru `boostStep = 3` asta înseamnă `Pas 3: BOOST`)
 - altfel, dacă este **primul** pas → `Aprindere`
 - altfel, dacă este **ultimul** pas → `Reactor online`
 - altfel → afișează `Pas`, apoi numărul pasului, apoi `: încălzire` (de exemplu `Pas 2: încălzire`)
 
 **Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
-- `steps` — câți pași de încălzire sunt
-- `boostStep` — pasul la care are loc impulsul
+- `pasi` — câți pași de încălzire sunt
+- `pas_amplificare` — pasul la care are loc impulsul
 
 **Exemplu**
 

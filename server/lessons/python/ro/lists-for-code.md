@@ -1,4 +1,4 @@
-readings = [90, 105, 100, 120, 85]
+citiri = [90, 105, 100, 120, 85]
 
 # 1. afișează fiecare citire pe linia ei
 

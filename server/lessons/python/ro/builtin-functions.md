@@ -104,11 +104,11 @@ Cortez: 70
 ```py
 scoruri = [80, 95, 40, 70]
 
-hasFailure = any(s < 50 for s in scoruri)
-print(hasFailure)
+are_esuat = any(s < 50 for s in scoruri)
+print(are_esuat)
 
-allPassed = all(s >= 50 for s in scoruri)
-print(allPassed)
+toate_promovate = all(s >= 50 for s in scoruri)
+print(toate_promovate)
 ```
 
 Afișează
@@ -164,7 +164,7 @@ Al doilea argument îi spune lui Python câte zecimale vrem
 
 ## Misiune: Clasamentul Echipajului
 
-Ai două liste: `crew` (nume) și `scoruri` (deja în dreapta). Folosind **funcțiile încorporate** pe care tocmai le-ai învățat:
+Ai două liste: `echipaj` (nume) și `scoruri` (deja în dreapta). Folosind **funcțiile încorporate** pe care tocmai le-ai învățat:
 
 1. Folosește `zip` ca să afișezi fiecare membru al echipajului cu scorul său ca `nume: scor`
 2. Afișează `Sortate: ` apoi scorurile sortate de la **cel mai mare la cel mai mic** (`sorted(..., reverse=True)`)

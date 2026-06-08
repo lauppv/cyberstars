@@ -54,10 +54,10 @@ Ambele stiluri sunt utile. **for n in nume** este mai curat când vrem doar valo
 Un caz de folosire clasic: **adunarea** numerelor dintr-o listă
 
 ```py
-prices = [10, 20, 30, 40]
+preturi = [10, 20, 30, 40]
 total = 0
-for price in prices:
-    total = total + price
+for pret in preturi:
+    total = total + pret
 print(total)
 ```
 

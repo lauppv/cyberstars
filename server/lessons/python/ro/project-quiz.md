@@ -7,10 +7,10 @@ Acest proiect ne învață cum să **organizăm datele**, să le **parcurgem**, 
 Cum stocăm o întrebare de quiz? Un **dicționar** este perfect
 
 ```py
-question = {
+intrebare = {
     "text": "Care este capitala statului din Vice City?",
-    "options": ["A) New York", "B) Miami", "C) Los Angeles", "D) Chicago"],
-    "answer": "B"
+    "optiuni": ["A) New York", "B) Miami", "C) Los Angeles", "D) Chicago"],
+    "raspuns": "B"
 }
 ```
 
@@ -20,18 +20,18 @@ question = {
 quiz = [
     {
         "text": "Ce face print()?",
-        "options": ["A) Citește input", "B) Afișează rezultatul", "C) Creează o variabilă", "D) Face bucle"],
-        "answer": "B"
+        "optiuni": ["A) Citește input", "B) Afișează rezultatul", "C) Creează o variabilă", "D) Face bucle"],
+        "raspuns": "B"
     },
     {
         "text": "Ce simbol se folosește pentru comentarii în Python?",
-        "options": ["A) //", "B) /*", "C) #", "D) --"],
-        "answer": "C"
+        "optiuni": ["A) //", "B) /*", "C) #", "D) --"],
+        "raspuns": "C"
     },
     {
         "text": "Ce returnează len()?",
-        "options": ["A) Tipul", "B) Valoarea", "C) Lungimea", "D) Nimic"],
-        "answer": "C"
+        "optiuni": ["A) Tipul", "B) Valoarea", "C) Lungimea", "D) Nimic"],
+        "raspuns": "C"
     }
 ]
 ```
@@ -45,16 +45,16 @@ scor = 0
 
 for i, q in enumerate(quiz):
     print(f"\nÎntrebarea {i + 1}: {q['text']}")
-    for option in q["options"]:
-        print(f"  {option}")
+    for optiune in q["optiuni"]:
+        print(f"  {optiune}")
 
-    answer = input("Răspunsul tău (A/B/C/D): ").upper()
+    raspuns = input("Răspunsul tău (A/B/C/D): ").majuscule()
 
-    if answer == q["answer"]:
+    if raspuns == q["raspuns"]:
         print("Corect!")
         scor += 1
     else:
-        print(f"Greșit! Răspunsul era {q['answer']}")
+        print(f"Greșit! Răspunsul era {q['raspuns']}")
 
 print(f"\nAi obținut {scor}/{len(quiz)}")
 ```
@@ -66,27 +66,27 @@ Observă ce am folosit: **listă de dicționare**, **enumerate**, **bucle for**,
 Hai să-l facem și mai bun cu o funcție
 
 ```py
-def runQuiz(questions):
+def ruleaza_test(intrebari):
     scor = 0
 
-    for i, q in enumerate(questions):
+    for i, q in enumerate(intrebari):
         print(f"\nÎntrebarea {i + 1}: {q['text']}")
-        for option in q["options"]:
-            print(f"  {option}")
+        for optiune in q["optiuni"]:
+            print(f"  {optiune}")
 
-        answer = input("Răspunsul tău: ").upper()
+        raspuns = input("Răspunsul tău: ").majuscule()
 
-        if answer == q["answer"]:
+        if raspuns == q["raspuns"]:
             print("Corect!")
             scor += 1
         else:
-            print(f"Greșit! Răspunsul era {q['answer']}")
+            print(f"Greșit! Răspunsul era {q['raspuns']}")
 
-    return scor, len(questions)
+    return scor, len(intrebari)
 
-scor, total = runQuiz(quiz)
-percentage = round(scor / total * 100)
-print(f"\nScor final: {scor}/{total} ({percentage}%)")
+scor, total = ruleaza_test(quiz)
+procent = round(scor / total * 100)
+print(f"\nScor final: {scor}/{total} ({procent}%)")
 ```
 
 ---

@@ -1,5 +1,5 @@
-def reverse_text(text): # inversează textul caracter cu caracter folosind o buclă (fără [::-1])
-pass
+def inverseaza_text(text): # inversează textul caracter cu caracter folosind o buclă (fără [::-1])
+    pass
 
 mesaj = input()
 

@@ -27,12 +27,12 @@ Frumos? Da. Eficient? Nu prea. **fib(5)** apelează **fib(4)** și **fib(3)**. D
 **Inversează un șir de caractere** recursiv
 
 ```py
-def reverseStr(s):
+def inverseaza_sir(s):
     if len(s) <= 1:
         return s
-    return reverseStr(s[1:]) + s[0]
+    return inverseaza_sir(s[1:]) + s[0]
 
-print(reverseStr("Tommy"))
+print(inverseaza_sir("Tommy"))
 ```
 
 Output **ymmoT**
@@ -44,14 +44,14 @@ Ideea: inversul lui "Tommy" este inversul lui "ommy" urmat de "T". Inversul lui 
 **Numără aparițiile** unui caracter într-un șir
 
 ```py
-def countChar(text, tinta):
+def numara_caractere(text, tinta):
     if len(text) == 0:
         return 0
-    first = 1 if text[0] == tinta else 0
-    return first + countChar(text[1:], tinta)
+    primul = 1 if text[0] == tinta else 0
+    return primul + numara_caractere(text[1:], tinta)
 
-print(countChar("banana", "a"))
-print(countChar("mississippi", "s"))
+print(numara_caractere("banana", "a"))
+print(numara_caractere("mississippi", "s"))
 ```
 
 Output
@@ -68,16 +68,16 @@ Verifică primul caracter. Dacă se potrivește, numără 1. Apoi numără recur
 **Aplatizează o listă imbricată**. Aici strălucește cu adevărat recursivitatea — când datele sunt **imbricate** și nu știm cât de adânc
 
 ```py
-def flatten(lst):
+def aplatizeaza(lst):
     rezultat = []
-    for item in lst:
-        if type(item) == list:
-            rezultat = rezultat + flatten(item)
+    for element in lst:
+        if type(element) == list:
+            rezultat = rezultat + aplatizeaza(element)
         else:
-            rezultat.append(item)
+            rezultat.append(element)
     return rezultat
 
-print(flatten([1, [2, 3], [4, [5, 6]], 7]))
+print(aplatizeaza([1, [2, 3], [4, [5, 6]], 7]))
 ```
 
 Output **[1, 2, 3, 4, 5, 6, 7]**

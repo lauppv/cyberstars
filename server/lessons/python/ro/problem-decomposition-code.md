@@ -1,12 +1,12 @@
 log = "alpha beta alpha gamma beta alpha"
 
-def split_codes(log): # returnează lista de coduri
-pass
+def desparte_coduri(log): # returnează lista de coduri
+    pass
 
-def count_codes(codes): # returnează un dict de cod -> număr
-pass
+def numara_coduri(coduri): # returnează un dict de cod -> număr
+    pass
 
-def most_common(counts): # returnează codul cu numărul cel mai mare
-pass
+def cel_mai_frecvent(numere): # returnează codul cu numărul cel mai mare
+    pass
 
 # folosește cele trei funcții, apoi afișează raportul

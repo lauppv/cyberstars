@@ -72,8 +72,8 @@ Scrie o funcție **bubble_sort(numere)** care sortează o listă în ordine **cr
 Apoi sortează două loturi de valori și afișează fiecare rezultat.
 
 ```py
-print(bubble_sort([42, 17, 88, 9, 23]))
-print(bubble_sort([5, 4, 3, 2, 1]))
+print(sortare_bule([42, 17, 88, 9, 23]))
+print(sortare_bule([5, 4, 3, 2, 1]))
 ```
 
 **Output**

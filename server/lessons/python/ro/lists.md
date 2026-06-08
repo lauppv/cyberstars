@@ -101,8 +101,8 @@ Listele pot conține orice fel de valori, nu doar șiruri
 
 ```py
 varste = [42, 35, 60, 29]
-prices = [3.14, 9.99, 12.50]
-flags = [True, False, True]
+preturi = [3.14, 9.99, 12.50]
+fanioane = [True, False, True]
 ```
 
 Le putem chiar amesteca, dar în practică este rar și de obicei un semn că ceva e greșit la design
@@ -113,7 +113,7 @@ Le putem chiar amesteca, dar în practică este rar și de obicei un semn că ce
 
 Stația își ține evidența mărfii într-o listă. Pornești cu o **listă goală** `cargo` (deja în dreapta). Fă următoarele, în ordine:
 
-1. **Adaugă** `oxygen`, `water`, `food` și `fuel` folosind **.append()**
+1. **Adaugă** `oxigen`, `water`, `food` și `combustibil` folosind **.append()**
 2. Afișează câte articole sunt încărcate (folosește **len()**)
 3. Afișează **primul** articol
 4. Afișează **ultimul** articol

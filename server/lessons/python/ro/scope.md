@@ -1,11 +1,11 @@
 Am folosit variabile peste tot: în interiorul buclelor, în interiorul funcțiilor, în afara funcțiilor. Dar te-ai întrebat vreodată — poate o variabilă creată **în interiorul** unei funcții să fie folosită **în afara** ei?
 
 ```py
-def greet():
+def saluta():
     mesaj = "Salut din Vice City"
     print(mesaj)
 
-greet()
+saluta()
 print(mesaj)
 ```
 
@@ -33,10 +33,10 @@ f()
 ```py
 nume = "Tommy Vercetti"
 
-def greet():
+def saluta():
     print(f"Salut, {nume}")
 
-greet()
+saluta()
 print(nume)
 ```
 
@@ -47,16 +47,16 @@ Ambele print-uri funcționează. **nume** a fost creat la nivelul cel mai de sus
 Dar ce se întâmplă dacă încercăm să **schimbăm** o variabilă globală în interiorul unei funcții?
 
 ```py
-health = 100
+viata = 100
 
-def takeDamage():
-    health = health - 10
-    print(health)
+def primeste_damage():
+    viata = viata - 10
+    print(viata)
 
-takeDamage()
+primeste_damage()
 ```
 
-**Rulează**-l. Eroare! Python vede **health = ...** în interiorul funcției și crede că creăm o **nouă variabilă locală** numită health. Dar în partea dreaptă folosim și **health**, iar cea locală nu există încă. Confuz? Da. De asta este important să înțelegi **scope-ul**
+**Rulează**-l. Eroare! Python vede **viata = ...** în interiorul funcției și crede că creăm o **nouă variabilă locală** numită viata. Dar în partea dreaptă folosim și **viata**, iar cea locală nu există încă. Confuz? Da. De asta este important să înțelegi **scope-ul**
 
 Regula simplă: dacă **atribui** o valoare unei variabile în interiorul unei funcții, Python o tratează ca fiind **locală**. Chiar dacă o variabilă globală are același nume
 
@@ -65,17 +65,17 @@ Regula simplă: dacă **atribui** o valoare unei variabile în interiorul unei f
 Soluția curată? **Transmite valori ca parametri și returnează rezultate**
 
 ```py
-health = 100
+viata = 100
 
-def takeDamage(hp):
-    hp = hp - 10
-    return hp
+def primeste_damage(viata):
+    viata = viata - 10
+    return viata
 
-health = takeDamage(health)
-print(health)
+viata = primeste_damage(viata)
+print(viata)
 ```
 
-Rezultatul **90**. Am transmis **health** în funcție, funcția și-a făcut treaba și a returnat noua valoare. Nicio confuzie legată de scope
+Rezultatul **90**. Am transmis **viata** în funcție, funcția și-a făcut treaba și a returnat noua valoare. Nicio confuzie legată de scope
 
 Asta este cea mai bună practică: **funcțiile primesc date prin parametri și trimit date înapoi prin return**. Ele nu se întind să apuce variabile globale
 
@@ -107,16 +107,16 @@ Două variabile **x** diferite. Doar se întâmplă să aibă același nume, dar
 
 ---
 
-## Misiune: Boost de Scut
+## Misiune: Amplificare Scut
 
-Scrie o funcție `boost(shield)` care **returnează** valoarea scutului dublată. Trebuie să lucreze doar cu **parametrul** ei și să **returneze** rezultatul — nu trebuie să se întindă către nicio variabilă globală (ăsta e tot rostul scope-ului).
+Scrie o funcție `amplifica(scut)` care **returnează** valoarea scutului dublată. Trebuie să lucreze doar cu **parametrul** ei și să **returneze** rezultatul — nu trebuie să se întindă către nicio variabilă globală (ăsta e tot rostul scope-ului).
 
 Apoi, în programul principal:
 
-1. Setează `shield = 100`
-2. Afișează `Înainte: ` apoi shield
-3. Apelează `boost(shield)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi shield — observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
-4. Acum fă `shield = boost(shield)` și afișează `După: ` apoi shield
+1. Setează `scut = 100`
+2. Afișează `Înainte: ` apoi scut
+3. Apelează `amplifica(scut)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi scut — observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
+4. Acum fă `scut = amplifica(scut)` și afișează `După: ` apoi scut
 
 **Rezultat**
 
@@ -126,4 +126,4 @@ Ignorat: 100
 După: 200
 ```
 
-Linia `Ignored` dovedește că funcția nu poate schimba variabila globală de la sine — noua valoare se păstrează doar când **stochezi valoarea returnată**.
+Linia `Ignorat` dovedește că funcția nu poate schimba variabila globală de la sine — noua valoare se păstrează doar când **stochezi valoarea returnată**.

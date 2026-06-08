@@ -28,11 +28,11 @@ numere = [5, 3, 8, 1, 2]
 numere = [5, 3, 8, 1, 2]
 
 for i in range(len(numere)):
-    minIndex = i
+    index_minim = i
     for j in range(i + 1, len(numere)):
-        if numere[j] < numere[minIndex]:
-            minIndex = j
-    numere[i], numere[minIndex] = numere[minIndex], numere[i]
+        if numere[j] < numere[index_minim]:
+            index_minim = j
+    numere[i], numere[index_minim] = numere[index_minim], numere[i]
 
 print(numere)
 ```
@@ -72,8 +72,8 @@ Scrie o funcție **selection_sort(numere)** care sortează o listă în ordine *
 Apoi sortează două loturi de greutăți și afișează fiecare rezultat.
 
 ```py
-print(selection_sort([64, 25, 12, 22, 11]))
-print(selection_sort([9, 7, 5, 3, 1]))
+print(sortare_selectie([64, 25, 12, 22, 11]))
+print(sortare_selectie([9, 7, 5, 3, 1]))
 ```
 
 **Rezultat**

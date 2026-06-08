@@ -1,4 +1,4 @@
-rows = int(input())
+randuri = int(input())
 
 # afișează un turn de steluțe: rândul 1 are 1 steluță, rândul 2 are 2, și așa mai departe
 

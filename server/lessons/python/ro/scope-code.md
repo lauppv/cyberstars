@@ -1,6 +1,6 @@
-def boost(shield): # returnează scutul dublat
-pass
+def amplifica(scut): # returnează scutul dublat
+    pass
 
-shield = 100
+scut = 100
 
-# afișează Înainte, apelează boost fără a stoca (Ignorat), apoi stochează rezultatul și afișează După
+# afișează Înainte, apelează amplifica fără a stoca (Ignorat), apoi stochează rezultatul și afișează După

@@ -63,13 +63,13 @@ Așadar, orice scriem între **" și "** se numește **string** și este folosit
 
 ## Misiune: Echipajul Stației
 
-Trei membri ai echipajului sunt repartizați la stație. Numele lor sunt stocate în variabilele `commander`, `pilot` și `engineer` în partea de sus a codului tău.
+Trei membri ai echipajului sunt repartizați la stație. Numele lor sunt stocate în variabilele `comandant`, `pilot` și `inginer` în partea de sus a codului tău.
 
-Afișează cele trei nume, **fiecare pe linia lui**, în această ordine: commander, pilot, engineer. Apoi pilotul este schimbat la mijlocul misiunii — adaugă o linie care schimbă `pilot` în `"Jess"` și afișează `pilot` încă o dată.
+Afișează cele trei nume, **fiecare pe linia lui**, în această ordine: comandant, pilot, inginer. Apoi pilotul este schimbat la mijlocul misiunii — adaugă o linie care schimbă `pilot` în `"Jess"` și afișează `pilot` încă o dată.
 
 **Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
-- `commander`, `pilot`, `engineer` — numele membrilor echipajului
+- `comandant`, `pilot`, `inginer` — numele membrilor echipajului
 
 **Exemplu**
 

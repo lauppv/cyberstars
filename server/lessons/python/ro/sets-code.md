@@ -1,4 +1,4 @@
-signals = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
+semnale = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
 
 # 1. afișează numărul total de semnale
 

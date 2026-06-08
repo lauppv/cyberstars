@@ -1,8 +1,8 @@
-readings = [45, 82, 67, 91, 38, 74, 55, 96, 12, 60]
+citiri = [45, 82, 67, 91, 38, 74, 55, 96, 12, 60]
 
 # 1. filtrează: păstrează citirile >= 50
 
-# 2. transformă: adaugă 5 la fiecare, plafonat la 100 cu min(reading + 5, 100)
+# 2. transformă: adaugă 5 la fiecare, plafonat la 100 cu minim(citire + 5, 100)
 
 # 3. afișează "Cu impuls: " + lista
 

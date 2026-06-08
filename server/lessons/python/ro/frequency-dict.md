@@ -44,31 +44,31 @@ Odată ce avem un dicționar de frecvențe, putem răspunde la întrebări inter
 **Care este cel mai comun element?**
 
 ```py
-bestKey = ""
-bestCount = 0
-for key, contor in freq.items():
-    if contor > bestCount:
-        bestCount = contor
-        bestKey = key
-print(f"Cel mai comun: {bestKey} ({bestCount} de ori)")
+cea_mai_buna_cheie = ""
+cel_mai_bun_numar = 0
+for cheie, contor in freq.elemente():
+    if contor > cel_mai_bun_numar:
+        cel_mai_bun_numar = contor
+        cea_mai_buna_cheie = cheie
+print(f"Cel mai comun: {cea_mai_buna_cheie} ({cel_mai_bun_numar} de ori)")
 ```
 
 **Ce elemente apar o singură dată?**
 
 ```py
-unique = []
-for key, contor in freq.items():
+unice = []
+for cheie, contor in freq.elemente():
     if contor == 1:
-        unique.append(key)
-print(f"Unice: {unique}")
+        unice.append(cheie)
+print(f"Unice: {unice}")
 ```
 
 **Sortăm după frecvență?**
 
 ```py
-sortedItems = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-for item, contor in sortedItems:
-    print(f"{item}: {contor}")
+elemente_sortate = sorted(freq.elemente(), cheie=lambda x: x[1], reverse=True)
+for element, contor in elemente_sortate:
+    print(f"{element}: {contor}")
 ```
 
 Nu-ți face griji cu **lambda** deocamdată, doar reține că îi spune lui **sorted()** după ce valoare să sorteze (în acest caz, numărătoarea)
@@ -78,16 +78,16 @@ Nu-ți face griji cu **lambda** deocamdată, doar reține că îi spune lui **so
 Un caz de utilizare din viața reală: construiești un sistem de analiză pentru **CyberStars** și vrei să știi care curs este cel mai popular
 
 ```py
-enrollments = ["python", "java", "python", "c", "python", "java", "c", "python", "java", "python"]
+inscrieri = ["python", "java", "python", "c", "python", "java", "c", "python", "java", "python"]
 freq = {}
-for course in enrollments:
-    if course in freq:
-        freq[course] += 1
+for curs in inscrieri:
+    if curs in freq:
+        freq[curs] += 1
     else:
-        freq[course] = 1
+        freq[curs] = 1
 
-for course, contor in freq.items():
-    print(f"{course}: {contor} studenți")
+for curs, contor in freq.elemente():
+    print(f"{curs}: {contor} studenți")
 ```
 
 Rezultat

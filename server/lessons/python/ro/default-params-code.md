@@ -1,5 +1,5 @@
-# scrie funcția dock mai jos
+# scrie funcția andocheaza mai jos
 
-dock("Voyager")
-dock("Odyssey", "B7")
-dock("Pioneer", priority="urgent")
+andocheaza("Voyager")
+andocheaza("Odyssey", "B7")
+andocheaza("Pioneer", prioritate="urgent")

@@ -7,8 +7,8 @@ Combină **tuple**, **set-uri**, **bucle imbricate** și **list comprehension**
 Compari două echipe. Fiecare membru al echipajului este un **tuple** de forma `(nume, scor)` (ambele liste sunt deja în dreapta):
 
 ```python
-team_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]
-team_b = [("Mira", 88), ("Lance", 65), ("Tommy", 91), ("Quinn", 72)]
+echipa_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]
+echipa_b = [("Mira", 88), ("Lance", 65), ("Tommy", 91), ("Quinn", 72)]
 ```
 
 Fă următoarele, în ordine:

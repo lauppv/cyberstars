@@ -5,10 +5,10 @@ Imaginează-ți: îl întreb pe un prieten „cât face 2 + 3?". Vreau să-mi **
 Asta face **return** într-o funcție
 
 ```py
-def add(a, b):
+def adauga(a, b):
     return a + b
 
-rezultat = add(2, 3)
+rezultat = adauga(2, 3)
 print(rezultat)
 ```
 
@@ -19,10 +19,10 @@ Ce s-a întâmplat? Funcția **add** **a luat** două numere, **a calculat** sum
 Compară asta cu stilul vechi pe care îl foloseam
 
 ```py
-def addAndPrint(a, b):
+def adauga_si_afiseaza(a, b):
     print(a + b)
 
-addAndPrint(2, 3)
+adauga_si_afiseaza(2, 3)
 ```
 
 Asta doar afișează. Nu dă nimic înapoi. Dacă aș vrea să iau rezultatul și să-l **înmulțesc** cu 10, n-aș putea. Funcția și-a făcut treaba și valoarea s-a **dus**
@@ -30,10 +30,10 @@ Asta doar afișează. Nu dă nimic înapoi. Dacă aș vrea să iau rezultatul ș
 Cu **return**, putem înlănțui funcții împreună
 
 ```py
-def add(a, b):
+def adauga(a, b):
     return a + b
 
-rezultat = add(2, 3) * 10
+rezultat = adauga(2, 3) * 10
 print(rezultat)
 ```
 
@@ -44,21 +44,21 @@ Output **50**. **add(2, 3)** ne-a dat **5**, apoi am înmulțit cu **10**. Înce
 O funcție poate returna **orice**, nu doar numere. Șiruri de caractere, booleeni, liste, orice
 
 ```py
-def greet(nume):
+def saluta(nume):
     return f"Salut, {nume}!"
 
-mesaj = greet("Cortez")
+mesaj = saluta("Cortez")
 print(mesaj)
 ```
 
 Output **Salut, Cortez!**
 
 ```py
-def isAdult(varsta):
+def este_adult(varsta):
     return varsta >= 18
 
-print(isAdult(20))    # True
-print(isAdult(15))    # False
+print(este_adult(20))    # True
+print(este_adult(15))    # False
 ```
 
 Această funcție returnează un **boolean**. Observă că putem folosi **isAdult(20)** **direct în interiorul print()**, fără să fie nevoie de o variabilă separată. **Python** rulează mai întâi funcția, apoi **print()** afișează valoarea returnată
@@ -66,11 +66,11 @@ Această funcție returnează un **boolean**. Observă că putem folosi **isAdul
 Putem chiar să o folosim în interiorul unui **if**
 
 ```py
-def isAdult(varsta):
+def este_adult(varsta):
     return varsta >= 18
 
 varsta = 25
-if isAdult(varsta):
+if este_adult(varsta):
     print("Bun venit")
 else:
     print("Îmi pare rău, prea tânăr")
@@ -95,13 +95,13 @@ Output este doar **1**. **print**-ul din interiorul funcției este **cod mort**,
 Putem folosi asta ca să ieșim **devreme** dintr-o funcție
 
 ```py
-def divide(a, b):
+def imparte(a, b):
     if b == 0:
         return "nu se poate împărți la zero"
     return a / b
 
-print(divide(10, 2))    # 5.0
-print(divide(10, 0))    # nu se poate împărți la zero
+print(imparte(10, 2))    # 5.0
+print(imparte(10, 0))    # nu se poate împărți la zero
 ```
 
 ---

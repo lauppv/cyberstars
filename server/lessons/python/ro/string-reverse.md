@@ -4,10 +4,10 @@ Am văzut deja o metodă folosind pattern-ul de acumulator
 
 ```py
 original = "Tommy"
-reversed_str = ""
-for char in original:
-    reversed_str = char + reversed_str
-print(reversed_str)
+sir_inversat = ""
+for caracter in original:
+    sir_inversat = caracter + sir_inversat
+print(sir_inversat)
 ```
 
 Rezultatul **ymmoT**
@@ -29,10 +29,10 @@ Hai să încercăm o altă abordare: folosind o **buclă for cu indexuri**
 
 ```py
 nume = "Tommy"
-reversed_str = ""
+sir_inversat = ""
 for i in range(len(nume) - 1, -1, -1):
-    reversed_str += nume[i]
-print(reversed_str)
+    sir_inversat += nume[i]
+print(sir_inversat)
 ```
 
 Rezultatul **ymmoT**

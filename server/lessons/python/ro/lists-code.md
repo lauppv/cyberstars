@@ -1,6 +1,6 @@
-cargo = []
+incarcatura = []
 
-# 1. adaugă oxygen, water, food, fuel
+# 1. adaugă oxigen, water, food, combustibil
 
 # 2. afișează câte articole sunt
 

@@ -1,14 +1,14 @@
 def clean_text(text): # keep only letters, lowercase them
-pass
+    pass
 
 def is_palindrome(word): # two pointers: compare start and end, move towards the centre
-pass
+    pass
 
 def are_anagrams(a, b): # clean both words, sort the letters, compare
-pass
+    pass
 
 def reverse_words(sentence): # reverse the order of the words (split, reverse, join)
-pass
+    pass
 
 print(is_palindrome(clean_text("A man, a plan, a canal: Panama")))
 print(are_anagrams("Listen!", "Silent"))

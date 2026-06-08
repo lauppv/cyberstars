@@ -72,9 +72,9 @@ Totuși, există cazuri în care chiar avem nevoie de **else**. **Dacă** iau ce
 
 ```py
 utilizator = "Tommy Vercetti"
-isUserOnline = True
+este_utilizator_online = True
 
-if isUserOnline == True:
+if este_utilizator_online == True:
     print(f"{utilizator} joacă GTA Vice City")
 else:
     print(f"{utilizator} este offline")
@@ -84,9 +84,9 @@ else:
 
 ```py
 utilizator = "Tommy Vercetti"
-isUserOnline = False
+este_utilizator_online = False
 
-if isUserOnline == True:
+if este_utilizator_online == True:
     print(f"{utilizator} joacă GTA Vice City")
 else:
     print(f"{utilizator} este offline")
@@ -98,18 +98,18 @@ Aici vedem că utilizatorul este **offline** pentru că **isUserOnline** = **Fal
 
 ## Misiune: Supravegherea Reactorului
 
-Reactorul își raportează temperatura în `temp` (grade Celsius). Scrie un **if / else** care o verifică:
+Reactorul își raportează temperatura în `temperatura` (grade Celsius). Scrie un **if / else** care o verifică:
 
-- dacă `temp` este **mai mare de 1000** → afișează `PERICOL: reactor la`, temperatura, apoi `grade - oprire` (pentru `temp = 1200` asta înseamnă `PERICOL: reactor la 1200 grade - oprire`)
-- altfel → afișează `Reactor stabil la`, temperatura, apoi `grade` (pentru `temp = 800` asta înseamnă `Reactor stabil la 800 grade`)
+- dacă `temperatura` este **mai mare de 1000** → afișează `PERICOL: reactor la`, temperatura, apoi `grade - oprire` (pentru `temperatura = 1200` asta înseamnă `PERICOL: reactor la 1200 grade - oprire`)
+- altfel → afișează `Reactor stabil la`, temperatura, apoi `grade` (pentru `temperatura = 800` asta înseamnă `Reactor stabil la 800 grade`)
 
 **Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
-- `temp` — temperatura reactorului în grade Celsius
+- `temperatura` — temperatura reactorului în grade Celsius
 
 **Exemplu**
 
-Cu `temp = 1200`, programul tău ar trebui să afișeze
+Cu `temperatura = 1200`, programul tău ar trebui să afișeze
 
 ```text
 PERICOL: reactor la 1200 grade - oprire
@@ -121,4 +121,4 @@ Acum setează `temp = 800` și rulează din nou
 Reactor stabil la 800 grade
 ```
 
-Aici la **CyberStars** încurajăm **curiozitatea** — schimbă `temp` și vezi ce se întâmplă :)
+Aici la **CyberStars** încurajăm **curiozitatea** — schimbă `temperatura` și vezi ce se întâmplă :)

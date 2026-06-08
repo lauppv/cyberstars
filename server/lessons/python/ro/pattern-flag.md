@@ -4,13 +4,13 @@ Un **steag** este o variabilă booleană care pornește ca **True** sau **False*
 
 ```py
 numere = [2, 4, 6, 8, 10]
-allEven = True
+toate_pare = True
 
 for n in numere:
     if n % 2 != 0:
-        allEven = False
+        toate_pare = False
 
-if allEven:
+if toate_pare:
     print("Toate numerele sunt pare")
 else:
     print("Nu toate numerele sunt pare")
@@ -22,13 +22,13 @@ Am pornit de la presupunerea **allEven = True** (optimist, credem că sunt toate
 
 ```py
 numere = [2, 4, 7, 8, 10]
-allEven = True
+toate_pare = True
 
 for n in numere:
     if n % 2 != 0:
-        allEven = False
+        toate_pare = False
 
-if allEven:
+if toate_pare:
     print("Toate numerele sunt pare")
 else:
     print("Nu toate numerele sunt pare")
@@ -85,19 +85,19 @@ Un exemplu practic: verificarea dacă o parolă este **puternică** (are cel pu�
 
 ```py
 parola = "Tommy123"
-hasUpper = False
-hasLower = False
-hasDigit = False
+are_majuscula = False
+are_minuscula = False
+are_cifra = False
 
-for char in parola:
-    if char.isupper():
-        hasUpper = True
-    elif char.islower():
-        hasLower = True
-    elif char.isdigit():
-        hasDigit = True
+for caracter in parola:
+    if caracter.isupper():
+        are_majuscula = True
+    elif caracter.islower():
+        are_minuscula = True
+    elif caracter.isdigit():
+        are_cifra = True
 
-if hasUpper and hasLower and hasDigit:
+if are_majuscula and are_minuscula and are_cifra:
     print("Parolă puternică")
 else:
     print("Parolă slabă")

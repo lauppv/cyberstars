@@ -1,11 +1,11 @@
 def add_task(tasks, name): # append a new task: {"name": name, "done": False}
-pass
+    pass
 
 def complete_task(tasks, index): # mark the task at index as done
-pass
+    pass
 
 def count_done(tasks): # return how many tasks have done == True
-pass
+    pass
 
 tasks = []
 add_task(tasks, "Run diagnostics")

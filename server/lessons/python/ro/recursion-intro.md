@@ -9,14 +9,14 @@ Asta e recursivitatea. **Fiecare persoană pune aceeași întrebare următoarei*
 În cod, cel mai simplu exemplu: **numărătoarea inversă**
 
 ```py
-def countdown(n):
+def numaratoare_inversa(n):
     if n == 0:
         print("Start!")
         return
     print(n)
-    countdown(n - 1)
+    numaratoare_inversa(n - 1)
 
-countdown(5)
+numaratoare_inversa(5)
 ```
 
 Output
@@ -71,12 +71,12 @@ Hai să urmărim **factorial(5)**:
 Alt clasic: **suma unei liste**
 
 ```py
-def sumList(numere):
+def suma_lista(numere):
     if len(numere) == 0:
         return 0
-    return numere[0] + sumList(numere[1:])
+    return numere[0] + suma_lista(numere[1:])
 
-print(sumList([1, 2, 3, 4, 5]))
+print(suma_lista([1, 2, 3, 4, 5]))
 ```
 
 Output **15**
@@ -96,7 +96,7 @@ Pentru lucruri simple precum numărarea sau însumarea, o **buclă** este de obi
 Amplificatorul de semnal al stației își dublează puterea la fiecare etapă. Ca să prezici rezultatul, trebuie să calculezi puteri ale lui 2 — și o vei face cu **recursivitate**.
 
 1. Scrie o funcție recursivă **power(base, exp)** care întoarce `base` ridicat la puterea `exp`. Regula: `base^exp = base * base^(exp - 1)`. Cazul de bază: `base^0 = 1` (fără bucle, fără `**`).
-2. Cu `base = 2`, folosește o **buclă for** peste `range(5)` ca să afișezi tabelul amplificatorului: pentru fiecare `exp` de la 0 la 4, afișează linia `2^exp = rezultat` (folosind numerele reale).
+2. Cu `baza = 2`, folosește o **buclă for** peste `range(5)` ca să afișezi tabelul amplificatorului: pentru fiecare `exp` de la 0 la 4, afișează linia `2^exp = rezultat` (folosind numerele reale).
 
 **Output**
 

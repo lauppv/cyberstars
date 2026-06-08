@@ -1,7 +1,7 @@
 O **matrice** este o grilă de numere organizate în **rânduri** și **coloane**. Gândește-te la o foaie de calcul, o tablă de șah sau un ecran de pixeli — toate sunt grile. În Python, reprezentăm o matrice ca o **listă de liste**
 
 ```py
-matrix = [
+matrice = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
@@ -13,9 +13,9 @@ Aceasta este o matrice **3×3** (3 rânduri, 3 coloane). Fiecare listă interioa
 Ca să accesăm un element, folosim **doi indecși**: **matrix[rând][coloană]**
 
 ```py
-print(matrix[0][0])   # 1  (rândul 0, coloana 0)
-print(matrix[1][2])   # 6  (rândul 1, coloana 2)
-print(matrix[2][1])   # 8  (rândul 2, coloana 1)
+print(matrice[0][0])   # 1  (rândul 0, coloana 0)
+print(matrice[1][2])   # 6  (rândul 1, coloana 2)
+print(matrice[2][1])   # 8  (rândul 2, coloana 1)
 ```
 
 ---
@@ -23,14 +23,14 @@ print(matrix[2][1])   # 8  (rândul 2, coloana 1)
 Ca să parcurgem fiecare element, folosim **bucle imbricate**
 
 ```py
-matrix = [
+matrice = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
 ]
 
-for row in matrix:
-    for element in row:
+for rand in matrice:
+    for element in rand:
         print(element, end=" ")
     print()
 ```
@@ -50,15 +50,15 @@ Bucla exterioară parcurge fiecare **rând** (care este o listă). Bucla interio
 Dacă avem nevoie de **indecși** (ca să știm unde suntem)
 
 ```py
-matrix = [
+matrice = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
 ]
 
-for i in range(len(matrix)):
-    for j in range(len(matrix[i])):
-        print(f"[{i}][{j}] = {matrix[i][j]}")
+for i in range(len(matrice)):
+    for j in range(len(matrice[i])):
+        print(f"[{i}][{j}] = {matrice[i][j]}")
 ```
 
 ---
@@ -69,8 +69,8 @@ Operații frecvente pe matrice
 
 ```py
 total = 0
-for row in matrix:
-    for element in row:
+for rand in matrice:
+    for element in rand:
         total += element
 print(total)
 ```
@@ -80,12 +80,12 @@ Rezultat **45**
 **Găsește maximul**
 
 ```py
-biggest = matrix[0][0]
-for row in matrix:
-    for element in row:
-        if element > biggest:
-            biggest = element
-print(biggest)
+cel_mai_mare = matrice[0][0]
+for rand in matrice:
+    for element in rand:
+        if element > cel_mai_mare:
+            cel_mai_mare = element
+print(cel_mai_mare)
 ```
 
 Rezultat **9**
@@ -95,19 +95,19 @@ Rezultat **9**
 Un caz de utilizare din viața reală: imaginează-ți o hartă de joc unde 0 este gol și 1 este un zid
 
 ```py
-gameMap = [
+harta_joc = [
     [0, 0, 1, 0],
     [0, 1, 0, 0],
     [0, 0, 0, 1],
     [1, 0, 0, 0]
 ]
 
-walls = 0
-for row in gameMap:
-    for cell in row:
-        if cell == 1:
-            walls += 1
-print(f"Numărul de ziduri: {walls}")
+ziduri = 0
+for rand in harta_joc:
+    for celula in rand:
+        if celula == 1:
+            ziduri += 1
+print(f"Numărul de ziduri: {ziduri}")
 ```
 
 Rezultat **Numărul de ziduri: 4**

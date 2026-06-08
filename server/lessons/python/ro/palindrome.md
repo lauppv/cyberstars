@@ -21,15 +21,15 @@ Dar hai să ne gândim și cum să facem asta **fără** trucul cu slicing, pent
 Un palindrom înseamnă: **primul** caracter este egal cu **ultimul**, **al doilea** este egal cu **penultimul** și așa mai departe
 
 ```py
-def isPalindrome(cuvant):
+def este_palindrom(cuvant):
     for i in range(len(cuvant) // 2):
         if cuvant[i] != cuvant[len(cuvant) - 1 - i]:
             return False
     return True
 
-print(isPalindrome("racecar"))
-print(isPalindrome("hello"))
-print(isPalindrome("madam"))
+print(este_palindrom("racecar"))
+print(este_palindrom("hello"))
+print(este_palindrom("madam"))
 ```
 
 Rezultat
@@ -49,16 +49,16 @@ Trebuie să verificăm doar **jumătate** din șir. De ce? Pentru că dacă prim
 Dar propozițiile? „A man a plan a canal Panama" este un palindrom dacă ignorăm spațiile și majusculele
 
 ```py
-def isPalindromeSentence(text):
-    cleaned = ""
-    for char in text:
-        if char.isalpha():
-            cleaned += char.lower()
-    return cleaned == cleaned[::-1]
+def este_palindrom_propozitie(text):
+    curatat = ""
+    for caracter in text:
+        if caracter.isalpha():
+            curatat += caracter.lower()
+    return curatat == curatat[::-1]
 
-print(isPalindromeSentence("A man a plan a canal Panama"))
-print(isPalindromeSentence("racecar"))
-print(isPalindromeSentence("hello world"))
+print(este_palindrom_propozitie("A man a plan a canal Panama"))
+print(este_palindrom_propozitie("racecar"))
+print(este_palindrom_propozitie("hello world"))
 ```
 
 Rezultat
