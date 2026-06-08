@@ -287,22 +287,22 @@ export function AuthPage() {
                   rest: t(`auth.features.${i}.rest`),
                 };
                 return (
-                <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0"
-                    style={{
-                      background: 'rgba(34,34,46,.55)',
-                      border: '1px solid rgba(108,92,231,.35)',
-                      backdropFilter: 'blur(8px)',
-                    }}
-                  >
-                    {f.icon}
+                  <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0"
+                      style={{
+                        background: 'rgba(34,34,46,.55)',
+                        border: '1px solid rgba(108,92,231,.35)',
+                        backdropFilter: 'blur(8px)',
+                      }}
+                    >
+                      {f.icon}
+                    </div>
+                    <span>
+                      <strong className="text-[var(--text)]">{f.bold}</strong>
+                      {f.rest}
+                    </span>
                   </div>
-                  <span>
-                    <strong className="text-[var(--text)]">{f.bold}</strong>
-                    {f.rest}
-                  </span>
-                </div>
                 );
               })}
             </div>

@@ -321,8 +321,7 @@ function TicketConversation({
         <div className="flex-1 min-w-0">
           <div className="text-[15px] font-semibold truncate">{ticket.subject}</div>
           <div className="text-[11px] text-[var(--text3)]">
-            {t(`support.types.${ticket.type}`)} ·{' '}
-            {new Date(ticket.createdAt).toLocaleDateString()}
+            {t(`support.types.${ticket.type}`)} · {new Date(ticket.createdAt).toLocaleDateString()}
             {ticket.authorName ? ` · ${ticket.authorName}` : ''}
           </div>
         </div>

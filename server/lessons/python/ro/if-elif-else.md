@@ -13,7 +13,7 @@ Dacă mai avem **20** de secunde, pornim motoarele secundare
 Dacă mai avem **10** secunde, pornim motoarele principale
 
 Dacă mai avem mai puțin de **10** secunde, verificăm dacă toate componentele funcționează corespunzător:
- Dacă apare oriunde și cea mai mică eroare, anulăm lansarea
+Dacă apare oriunde și cea mai mică eroare, anulăm lansarea
 
 Aici putem vedea că avem 2 condiții una în interiorul celeilalte
 

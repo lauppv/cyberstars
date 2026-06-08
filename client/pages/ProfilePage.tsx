@@ -173,7 +173,8 @@ export function ProfilePage() {
             </div>
             <div>
               <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
-                {t('profile.status')} <span className="normal-case">{t('profile.statusExpires')}</span>
+                {t('profile.status')}{' '}
+                <span className="normal-case">{t('profile.statusExpires')}</span>
               </label>
               <div className="flex gap-2">
                 <input
