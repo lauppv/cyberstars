@@ -1,5 +1,5 @@
 def reverse_text(text): # reverse the text character by character using a loop (no [::-1])
-pass
+    pass
 
 message = input()
 

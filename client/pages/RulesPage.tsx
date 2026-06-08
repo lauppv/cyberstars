@@ -1,38 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 
-const RULES = [
-  {
-    title: 'Be respectful',
-    desc: 'Treat everyone with kindness. No harassment, bullying, hate speech, or personal attacks.',
-  },
-  {
-    title: 'Keep it appropriate',
-    desc: 'No spam, advertising in the forum, or anywhere on the platform.',
-  },
-  {
-    title: 'No exploiting bugs',
-    desc: 'If you find a bug or exploit, report it via Support instead of abusing it for badges or other gains.',
-  },
-  {
-    title: 'English',
-    desc: 'This is an English-speaking community. Using other languages is not allowed.',
-  },
-];
-
 export function RulesPage() {
+  const { t } = useTranslation();
+  const rules = t('rules.items', { returnObjects: true }) as { title: string; desc: string }[];
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[600px]">
           <div className="text-backdrop mb-8">
-            <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">Community Rules</h1>
-            <p className="text-[13px] text-[var(--text3)]">
-              These rules help keep CyberStars a positive learning environment for everyone.
-            </p>
+            <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">{t('rules.title')}</h1>
+            <p className="text-[13px] text-[var(--text3)]">{t('rules.subtitle')}</p>
           </div>
           <div className="flex flex-col gap-4">
-            {RULES.map((rule, i) => (
+            {rules.map((rule, i) => (
               <div
                 key={i}
                 className="flex gap-4 p-4 rounded-[var(--radius)] border border-[var(--border)]"

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
@@ -21,6 +22,7 @@ interface CourseData {
 
 export function CoursesPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
@@ -43,7 +45,7 @@ export function CoursesPage() {
           color: courseMeta(course.key).color,
           lessonCount: course.lessons.length,
           progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
-          desc: course.description,
+          desc: t(`courses.descriptions.${course.key}`, { defaultValue: course.description }),
           chapters: course.lessons.map((l) => ({
             name: l.title,
             slug: l.slug,
@@ -53,7 +55,7 @@ export function CoursesPage() {
           firstSlug: course.lessons[0]?.slug,
         };
       });
-  }, [serverCourses, progressMap]);
+  }, [serverCourses, progressMap, t]);
 
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
@@ -62,7 +64,7 @@ export function CoursesPage() {
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
         <main className="flex-1 flex items-center justify-center">
-          <div className="text-[var(--text3)]">Loading...</div>
+          <div className="text-[var(--text3)]">{t('common.loading')}</div>
         </main>
       </div>
     );
@@ -74,10 +76,7 @@ export function CoursesPage() {
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
         <div className="text-center mb-8 text-backdrop">
-          <p className="text-[var(--text2)] text-sm">
-            Take your time, read carefully, and experiment. The goal is to understand, play around,
-            and have fun.
-          </p>
+          <p className="text-[var(--text2)] text-sm">{t('courses.intro')}</p>
         </div>
         {/* Course grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -119,7 +118,8 @@ export function CoursesPage() {
                 <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
                 <div className="flex items-end justify-between gap-4 mb-4">
                   <span className="text-[11px] text-[var(--text3)]">
-                    <strong className="text-[var(--text2)]">{c.lessonCount}</strong> lessons
+                    <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
+                    {t('courses.lessons', { count: c.lessonCount })}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
@@ -127,7 +127,7 @@ export function CoursesPage() {
                     <>
                       <div className="flex-1 mr-3">
                         <div className="text-[11px] text-[var(--text3)] mb-1">
-                          {c.progress}% complete
+                          {t('courses.percentComplete', { pct: c.progress })}
                         </div>
                         <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
                           <div
@@ -145,7 +145,7 @@ export function CoursesPage() {
                         }}
                         className="px-4 py-[7px] rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-xs font-semibold cursor-pointer border-none hover:brightness-110 transition flex-shrink-0"
                       >
-                        Continue
+                        {t('courses.continue')}
                       </button>
                     </>
                   ) : (
@@ -156,7 +156,7 @@ export function CoursesPage() {
                       }}
                       className="px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
                     >
-                      View Syllabus →
+                      {t('courses.viewSyllabus')}
                     </button>
                   )}
                 </div>
@@ -187,7 +187,9 @@ export function CoursesPage() {
               <div className="flex-1 min-w-0">
                 <div className="text-xl font-bold mb-1">{syllabus.name}</div>
                 <div className="flex gap-3 text-xs text-[var(--text3)]">
-                  <span>{syllabus.lessonCount} lessons</span>
+                  <span>
+                    {syllabus.lessonCount} {t('courses.lessons', { count: syllabus.lessonCount })}
+                  </span>
                 </div>
               </div>
               <button
@@ -204,7 +206,7 @@ export function CoursesPage() {
 
             <div className="px-6 py-4">
               <div className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
-                Chapters
+                {t('courses.chapters')}
               </div>
               {(() => {
                 const total = syllabus.chapters.length;

@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -71,6 +73,7 @@ function seededPick<T>(items: T[], count: number, seed: number): T[] {
 
 export function HomePage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { isLoggedIn, isLoading, user } = useAuth();
   const [almanacStory, setAlmanacStory] = useState<AlmanacArticle | null>(null);
   const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
@@ -176,7 +179,7 @@ export function HomePage() {
               {continueTo && (
                 <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
                   <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
-                    Continue where you left off
+                    {t('home.continueWhereLeftOff')}
                   </h3>
                   <button
                     onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
@@ -200,7 +203,7 @@ export function HomePage() {
                     <>
                       <div className="border-t border-[var(--accent)]/20 my-3" />
                       <h4 className="text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] mb-2">
-                        Recently accessed
+                        {t('home.recentlyAccessed')}
                       </h4>
                       <div className="flex flex-col gap-1.5">
                         {recentLessons.slice(1, 4).map((l, i) => {
@@ -220,7 +223,7 @@ export function HomePage() {
                               <div className="flex-1 min-w-0">
                                 <div className="text-[12px] font-semibold truncate">{l.title}</div>
                                 <div className="text-[10px] text-[var(--text3)]">
-                                  {meta.label} · {formatTimeAgo(l.lastAccessedAt)}
+                                  {meta.label} · {formatTimeAgo(l.lastAccessedAt, t)}
                                 </div>
                               </div>
                             </button>
@@ -251,12 +254,12 @@ export function HomePage() {
             {almanacHighlights?.length !== 0 && (
               <section>
                 <div className="flex items-center justify-between mb-3">
-                  <SectionHeader noMargin>From the Almanac</SectionHeader>
+                  <SectionHeader noMargin>{t('home.fromAlmanac')}</SectionHeader>
                   <button
                     onClick={() => navigate('/almanac')}
                     className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer"
                   >
-                    View all →
+                    {t('home.viewAll')}
                   </button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
@@ -287,9 +290,11 @@ export function HomePage() {
                           {a.excerpt}
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-[11px] text-[var(--text3)]">{a.readTime} read</span>
+                          <span className="text-[11px] text-[var(--text3)]">
+                            {t('home.readTime', { time: a.readTime })}
+                          </span>
                           <span className="text-[11px] font-semibold text-[var(--accent)]">
-                            Read →
+                            {t('home.readMore')}
                           </span>
                         </div>
                       </button>
@@ -325,14 +330,18 @@ export function HomePage() {
           </svg>
 
           <h1 className="text-[32px] sm:text-[44px] font-bold tracking-[-0.5px] mb-3">
-            Learn to code, for free
+            {t('home.marketing.title')}
           </h1>
           <p className="text-[var(--text2)] text-base sm:text-lg mb-10">
-            Interactive lessons in <span className="text-[var(--text)] font-semibold">Python</span>,{' '}
-            <span className="text-[var(--text)] font-semibold">Java</span>,{' '}
-            <span className="text-[var(--text)] font-semibold">C</span>, and{' '}
-            <span className="text-[var(--text)] font-semibold">Linux</span>. Read, write, run — all
-            in one place.
+            <Trans
+              i18nKey="home.marketing.subtitle"
+              components={{
+                1: <span className="text-[var(--text)] font-semibold" />,
+                3: <span className="text-[var(--text)] font-semibold" />,
+                5: <span className="text-[var(--text)] font-semibold" />,
+                7: <span className="text-[var(--text)] font-semibold" />,
+              }}
+            />
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
@@ -340,35 +349,31 @@ export function HomePage() {
               onClick={() => navigate('/courses')}
               className="px-6 py-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer"
             >
-              Start Learning →
+              {t('home.marketing.startLearning')}
             </button>
             <button
               onClick={() => navigate('/getstarted')}
               className="px-6 py-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
             >
-              Sign in
+              {t('home.marketing.signIn')}
             </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-3xl mx-auto text-left">
             <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">📖</div>
-              <div className="font-semibold mb-1">Read</div>
-              <div className="text-sm text-[var(--text2)]">Bite-sized lessons explained simply</div>
+              <div className="font-semibold mb-1">{t('home.marketing.readCard')}</div>
+              <div className="text-sm text-[var(--text2)]">{t('home.marketing.readCardDesc')}</div>
             </div>
             <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">⌨️</div>
-              <div className="font-semibold mb-1">Write</div>
-              <div className="text-sm text-[var(--text2)]">
-                Interactive editor right in the browser
-              </div>
+              <div className="font-semibold mb-1">{t('home.marketing.writeCard')}</div>
+              <div className="text-sm text-[var(--text2)]">{t('home.marketing.writeCardDesc')}</div>
             </div>
             <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">⚡</div>
-              <div className="font-semibold mb-1">Run</div>
-              <div className="text-sm text-[var(--text2)]">
-                Real code execution with instant feedback
-              </div>
+              <div className="font-semibold mb-1">{t('home.marketing.runCard')}</div>
+              <div className="text-sm text-[var(--text2)]">{t('home.marketing.runCardDesc')}</div>
             </div>
           </div>
         </div>
@@ -391,14 +396,14 @@ function SectionHeader({ children, noMargin }: { children: React.ReactNode; noMa
   );
 }
 
-function formatTimeAgo(iso: string): string {
+function formatTimeAgo(iso: string, t: TFunction): string {
   const diff = Date.now() - new Date(iso).getTime();
   const mins = Math.floor(diff / 60000);
-  if (mins < 60) return `${mins}m ago`;
+  if (mins < 60) return t('home.minAgo', { count: mins });
   const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 24) return t('home.hourAgo', { count: hours });
   const days = Math.floor(hours / 24);
-  return `${days}d ago`;
+  return t('home.dayAgo', { count: days });
 }
 
 /* ── Activity Heatmap ── */
@@ -446,14 +451,14 @@ function buildHeatmapData(activityCounts: Record<string, number>, weeks: number)
   return data;
 }
 
-function getMonthLabels(data: HeatmapDay[][]): { month: string; col: number }[] {
+function getMonthLabels(data: HeatmapDay[][], locale: string): { month: string; col: number }[] {
   const labels: { month: string; col: number }[] = [];
   let lastMonth = -1;
   data.forEach((week, i) => {
     const d = new Date(week[0].date);
     const m = d.getMonth();
     if (m !== lastMonth) {
-      labels.push({ month: d.toLocaleString('en', { month: 'short' }), col: i });
+      labels.push({ month: d.toLocaleString(locale, { month: 'short' }), col: i });
       lastMonth = m;
     }
   });
@@ -465,10 +470,11 @@ function ActivityHeatmap({
 }: {
   progressMap: Record<string, import('../../shared/progress').CourseProgress>;
 }) {
+  const { t, i18n } = useTranslation();
   const weeks = 20;
   const activityCounts = useMemo(() => extractActivityCounts(progressMap), [progressMap]);
   const data = useMemo(() => buildHeatmapData(activityCounts, weeks), [activityCounts, weeks]);
-  const monthLabels = useMemo(() => getMonthLabels(data), [data]);
+  const monthLabels = useMemo(() => getMonthLabels(data, i18n.language), [data, i18n.language]);
   const totalActive = data.flat().filter((d) => d.level > 0).length;
   const colWidth = 19;
 
@@ -476,11 +482,14 @@ function ActivityHeatmap({
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
       <div className="flex items-center justify-between mb-3.5">
         <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
-          Activity
+          {t('home.activity')}
         </h3>
         <span className="text-xs text-[var(--text2)]">
-          <strong className="text-[var(--text)] font-semibold">{totalActive}</strong> active days in
-          the last {weeks} weeks
+          <Trans
+            i18nKey="home.activeDays"
+            values={{ count: totalActive, weeks }}
+            components={[<strong className="text-[var(--text)] font-semibold" />]}
+          />
         </span>
       </div>
 
@@ -503,14 +512,16 @@ function ActivityHeatmap({
       <div className="flex">
         {/* Day labels */}
         <div className="flex flex-col gap-[3px] mr-1.5 shrink-0">
-          {['', 'Tue', '', 'Thu', '', 'Sat', ''].map((label, i) => (
-            <div
-              key={i}
-              className="h-4 flex items-center text-[9px] text-[var(--text3)] font-medium"
-            >
-              {label}
-            </div>
-          ))}
+          {['', t('home.dayTue'), '', t('home.dayThu'), '', t('home.daySat'), ''].map(
+            (label, i) => (
+              <div
+                key={i}
+                className="h-4 flex items-center text-[9px] text-[var(--text3)] font-medium"
+              >
+                {label}
+              </div>
+            ),
+          )}
         </div>
 
         {/* Grid */}
@@ -525,7 +536,7 @@ function ActivityHeatmap({
                     background: day.isFuture ? 'transparent' : HEATMAP_COLORS[day.level],
                     border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
                   }}
-                  title={`${day.date}: ${day.count === 0 ? 'No activity' : `${day.count} lesson${day.count === 1 ? '' : 's'} completed`}`}
+                  title={`${day.date}: ${day.count === 0 ? t('home.noActivity') : t('home.lessonsCompleted', { count: day.count })}`}
                 />
               ))}
             </div>
@@ -534,13 +545,13 @@ function ActivityHeatmap({
       </div>
 
       <div className="flex items-center justify-end gap-1.5 mt-2.5">
-        <span className="text-[10px] text-[var(--text3)]">Less</span>
+        <span className="text-[10px] text-[var(--text3)]">{t('home.less')}</span>
         <div className="flex gap-[3px]">
           {HEATMAP_COLORS.map((c, i) => (
             <div key={i} className="w-3 h-3 rounded-sm" style={{ background: c }} />
           ))}
         </div>
-        <span className="text-[10px] text-[var(--text3)]">More</span>
+        <span className="text-[10px] text-[var(--text3)]">{t('home.more')}</span>
       </div>
     </div>
   );
@@ -550,15 +561,16 @@ function ActivityHeatmap({
 
 function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string; title: string }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const meta = courseMeta(course.key);
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
-          Lesson of the Day
+          {t('home.lessonOfTheDay')}
         </h3>
         <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full uppercase tracking-[0.5px]">
-          Recommended
+          {t('home.recommended')}
         </span>
       </div>
       <div className="flex-1">
@@ -573,14 +585,14 @@ function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string;
         </div>
         <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
         <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
-          Continue your {course.title} journey with this lesson.
+          {t('home.continueJourney', { course: course.title })}
         </p>
       </div>
       <button
         onClick={() => navigate(`/lesson/${course.key}/${slug}`)}
         className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] text-white rounded-[var(--radius-sm)] text-xs font-semibold hover:brightness-110 transition cursor-pointer self-start"
       >
-        Start Lesson →
+        {t('home.startLesson')}
       </button>
     </div>
   );
@@ -596,6 +608,7 @@ function CourseMilestones({
   progressMap: Record<string, import('../../shared/progress').CourseProgress>;
 }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const active = courses.filter((c) => progressMap[c.key]?.completed);
   const notStarted = courses.filter((c) => !progressMap[c.key]?.completed);
 
@@ -603,7 +616,7 @@ function CourseMilestones({
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
       <div className="mb-4">
         <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
-          Course Milestones
+          {t('home.courseMilestones')}
         </h3>
       </div>
       <div className="flex flex-col gap-3.5 flex-1">
@@ -631,12 +644,16 @@ function CourseMilestones({
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold">{meta.label}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">
-                  <strong className="text-[var(--text)] font-semibold">{remaining}</strong>{' '}
-                  {remaining === 1 ? 'lesson' : 'lessons'} remaining
+                  <Trans
+                    i18nKey="home.lessonsRemaining"
+                    count={remaining}
+                    values={{ count: remaining }}
+                    components={[<strong className="text-[var(--text)] font-semibold" />]}
+                  />
                   {nextLesson && (
                     <>
                       {' '}
-                      · next:{' '}
+                      · {t('home.next')}{' '}
                       <strong className="text-[var(--text)] font-semibold">
                         {nextLesson.title}
                       </strong>
@@ -673,7 +690,7 @@ function CourseMilestones({
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold">{meta.label}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">
-                  Not started yet · {c.lessons.length} lessons
+                  {t('home.notStarted', { count: c.lessons.length })}
                 </div>
                 <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: '0%' }} />

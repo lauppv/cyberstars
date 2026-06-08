@@ -23,6 +23,14 @@ function cached<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
 async function getText(path: string): Promise<string> {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+  // Vite's dev server answers a missing static file with the SPA index.html
+  // (200, text/html) instead of a 404, so a missing translation can't be
+  // detected by status alone. Lessons are always markdown — an HTML body means
+  // the file isn't there, so treat it as a load failure (getLocalizedText then
+  // falls back to English). In prod nginx serves real .md and 404s the rest.
+  if (res.headers?.get('content-type')?.includes('text/html')) {
+    throw new Error(`Failed to load ${path}: got SPA fallback (not markdown)`);
+  }
   return res.text();
 }
 
@@ -32,16 +40,43 @@ async function getJson<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export function fetchLesson(courseKey: string, lessonSlug: string): Promise<LessonContent> {
-  return cached(`lesson:${courseKey}/${lessonSlug}`, async () => ({
+// Translated lessons live in a per-language subfolder alongside the English
+// source (e.g. /lessons/python/ro/print.md). English stays at the top level and
+// is the source of truth; a missing translation falls back to it, so a course
+// can be translated one lesson at a time.
+async function getLocalizedText(
+  courseKey: string,
+  slug: string,
+  suffix: string,
+  lang: string,
+): Promise<string> {
+  const base = `/lessons/${courseKey}/${slug}${suffix}.md`;
+  if (lang === 'en') return getText(base);
+  try {
+    return await getText(`/lessons/${courseKey}/${lang}/${slug}${suffix}.md`);
+  } catch {
+    return getText(base);
+  }
+}
+
+export function fetchLesson(
+  courseKey: string,
+  lessonSlug: string,
+  lang = 'en',
+): Promise<LessonContent> {
+  return cached(`lesson:${lang}:${courseKey}/${lessonSlug}`, async () => ({
     title: lessonSlug,
-    content: await getText(`/lessons/${courseKey}/${lessonSlug}.md`),
+    content: await getLocalizedText(courseKey, lessonSlug, '', lang),
   }));
 }
 
-export function fetchLessonCode(courseKey: string, lessonSlug: string): Promise<string> {
-  return cached(`code:${courseKey}/${lessonSlug}`, () =>
-    getText(`/lessons/${courseKey}/${lessonSlug}-code.md`),
+export function fetchLessonCode(
+  courseKey: string,
+  lessonSlug: string,
+  lang = 'en',
+): Promise<string> {
+  return cached(`code:${lang}:${courseKey}/${lessonSlug}`, () =>
+    getLocalizedText(courseKey, lessonSlug, '-code', lang),
   );
 }
 

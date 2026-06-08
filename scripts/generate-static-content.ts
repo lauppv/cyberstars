@@ -49,19 +49,34 @@ fs.writeFileSync(
   JSON.stringify(curriculum, null, 2) + '\n',
 );
 
-// Copy lesson + starter-code markdown. Only *.md is exposed: linux -setup.json
-// files stay server-side (the terminal sandbox reads them on session create).
+// Translation subfolders that sit alongside the English source (e.g.
+// server/lessons/python/ro/) and are mirrored into public/lessons/<key>/<lang>/.
+const LOCALE_DIRS = ['ro'];
+
+// Copy every *.md from srcDir into destDir. Only *.md is exposed: linux
+// -setup.json files stay server-side (the terminal sandbox reads them on session
+// create), and locale subdirectories are handled separately below.
+function copyMarkdown(srcDir: string, destDir: string): number {
+  if (!fs.existsSync(srcDir)) return 0;
+  fs.mkdirSync(destDir, { recursive: true });
+  let n = 0;
+  for (const file of fs.readdirSync(srcDir)) {
+    if (!file.endsWith('.md')) continue; // skips locale subdirs (they're not *.md)
+    fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
+    n++;
+  }
+  return n;
+}
+
 fs.rmSync(LESSONS_OUT, { recursive: true, force: true });
 let copied = 0;
 for (const course of curriculum) {
   const src = sourceDir(course.key);
   if (!fs.existsSync(src)) continue; // kotlin has no lesson files yet
   const dest = path.join(LESSONS_OUT, course.key);
-  fs.mkdirSync(dest, { recursive: true });
-  for (const file of fs.readdirSync(src)) {
-    if (!file.endsWith('.md')) continue;
-    fs.copyFileSync(path.join(src, file), path.join(dest, file));
-    copied++;
+  copied += copyMarkdown(src, dest);
+  for (const locale of LOCALE_DIRS) {
+    copied += copyMarkdown(path.join(src, locale), path.join(dest, locale));
   }
 }
 

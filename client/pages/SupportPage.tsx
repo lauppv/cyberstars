@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -11,31 +12,28 @@ import type {
   TicketStatus,
 } from '../../shared/support';
 
-const TICKET_TYPES: { value: TicketType; label: string }[] = [
-  { value: 'BUG', label: '🐞 Bug report' },
-  { value: 'QUESTION', label: '❓ Question' },
-  { value: 'RULE_VIOLATION', label: '🚫 Rule violation' },
-  { value: 'FEEDBACK', label: '💡 Feedback / idea' },
-  { value: 'ACCOUNT', label: '👤 Account issue' },
-  { value: 'OTHER', label: '📋 Other' },
+const TICKET_TYPE_VALUES: TicketType[] = [
+  'BUG',
+  'QUESTION',
+  'RULE_VIOLATION',
+  'FEEDBACK',
+  'ACCOUNT',
+  'OTHER',
 ];
 
-const STATUS_META: Record<TicketStatus, { label: string; color: string }> = {
-  OPEN: { label: 'Open', color: 'var(--warning)' },
-  IN_PROGRESS: { label: 'In progress', color: 'var(--accent)' },
-  RESOLVED: { label: 'Resolved', color: 'var(--success)' },
-  CLOSED: { label: 'Closed', color: 'var(--text3)' },
+const STATUS_COLOR: Record<TicketStatus, string> = {
+  OPEN: 'var(--warning)',
+  IN_PROGRESS: 'var(--accent)',
+  RESOLVED: 'var(--success)',
+  CLOSED: 'var(--text3)',
 };
-
-function ticketTypeLabel(t: TicketType): string {
-  return TICKET_TYPES.find((o) => o.value === t)?.label ?? t;
-}
 
 const INPUT_CLS =
   'w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]';
 
 export function SupportPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user, isLoggedIn, isLoading } = useAuth();
   const isAdmin = user?.role === 'ADMIN';
 
@@ -126,11 +124,8 @@ export function SupportPage() {
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[560px]">
           <div className="text-backdrop mb-8">
-            <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">Support</h1>
-            <p className="text-[13px] text-[var(--text3)]">
-              Found a bug, have a question, or need to report something? Open a ticket and the team
-              will take a look.
-            </p>
+            <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">{t('support.title')}</h1>
+            <p className="text-[13px] text-[var(--text3)]">{t('support.subtitle')}</p>
           </div>
 
           {/* New ticket form */}
@@ -138,7 +133,7 @@ export function SupportPage() {
             className="p-5 rounded-[var(--radius)] border border-[var(--border)] mb-8"
             style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
           >
-            <h2 className="text-[14px] font-semibold mb-4">New ticket</h2>
+            <h2 className="text-[14px] font-semibold mb-4">{t('support.newTicket')}</h2>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -151,23 +146,23 @@ export function SupportPage() {
                 onChange={(e) => setType(e.target.value as TicketType)}
                 className={INPUT_CLS + ' cursor-pointer'}
               >
-                {TICKET_TYPES.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
+                {TICKET_TYPE_VALUES.map((v) => (
+                  <option key={v} value={v}>
+                    {t(`support.types.${v}`)}
                   </option>
                 ))}
               </select>
               <input
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                placeholder="Subject"
+                placeholder={t('support.subjectPlaceholder')}
                 maxLength={200}
                 className={INPUT_CLS}
               />
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Describe the issue or question in detail..."
+                placeholder={t('support.messagePlaceholder')}
                 rows={4}
                 className={INPUT_CLS + ' resize-y'}
               />
@@ -177,11 +172,11 @@ export function SupportPage() {
                   disabled={submitting || !subject.trim() || !message.trim()}
                   className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitting ? 'Sending...' : 'Submit ticket'}
+                  {submitting ? t('support.sending') : t('support.submit')}
                 </button>
                 {sent && (
                   <span className="text-[var(--success)] text-[12px] font-semibold">
-                    Ticket submitted!
+                    {t('support.submitted')}
                   </span>
                 )}
               </div>
@@ -191,14 +186,14 @@ export function SupportPage() {
           {/* My tickets */}
           <div className="mb-8">
             <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
-              Your tickets
+              {t('support.yourTickets')}
             </h2>
             {myTickets.length === 0 ? (
-              <p className="text-[12px] text-[var(--text3)]">You haven't opened any tickets yet.</p>
+              <p className="text-[12px] text-[var(--text3)]">{t('support.noTickets')}</p>
             ) : (
               <div className="flex flex-col gap-2.5">
-                {myTickets.map((t) => (
-                  <TicketRow key={t.id} ticket={t} onClick={() => setOpenTicket(t)} />
+                {myTickets.map((tk) => (
+                  <TicketRow key={tk.id} ticket={tk} onClick={() => setOpenTicket(tk)} />
                 ))}
               </div>
             )}
@@ -208,14 +203,14 @@ export function SupportPage() {
           {isAdmin && (
             <div>
               <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--accent)] mb-3">
-                All tickets · Admin
+                {t('support.allTickets')}
               </h2>
               {allTickets.length === 0 ? (
-                <p className="text-[12px] text-[var(--text3)]">No tickets from anyone yet.</p>
+                <p className="text-[12px] text-[var(--text3)]">{t('support.noTicketsAdmin')}</p>
               ) : (
                 <div className="flex flex-col gap-2.5">
-                  {allTickets.map((t) => (
-                    <TicketRow key={t.id} ticket={t} admin onClick={() => setOpenTicket(t)} />
+                  {allTickets.map((tk) => (
+                    <TicketRow key={tk.id} ticket={tk} admin onClick={() => setOpenTicket(tk)} />
                   ))}
                 </div>
               )}
@@ -236,7 +231,8 @@ function TicketRow({
   admin?: boolean;
   onClick: () => void;
 }) {
-  const status = STATUS_META[ticket.status];
+  const { t } = useTranslation();
+  const color = STATUS_COLOR[ticket.status];
   return (
     <div
       className="p-4 rounded-[var(--radius)] border border-[var(--border)] cursor-pointer hover:border-[var(--accent)] transition"
@@ -244,15 +240,15 @@ function TicketRow({
       onClick={onClick}
     >
       <div className="flex items-center justify-between gap-2 mb-1">
-        <span className="text-[12px] font-semibold">{ticketTypeLabel(ticket.type)}</span>
+        <span className="text-[12px] font-semibold">{t(`support.types.${ticket.type}`)}</span>
         <span
           className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
           style={{
-            color: status.color,
-            background: `color-mix(in srgb, ${status.color} 16%, transparent)`,
+            color,
+            background: `color-mix(in srgb, ${color} 16%, transparent)`,
           }}
         >
-          {status.label}
+          {t(`support.status.${ticket.status}`)}
         </span>
       </div>
       <div className="text-[13px] font-semibold mb-0.5">{ticket.subject}</div>
@@ -278,11 +274,12 @@ function TicketConversation({
   onBack: () => void;
   onStatusChange: (s: TicketStatus) => void;
 }) {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<SupportMessageDTO[]>([]);
   const [reply, setReply] = useState('');
   const [sending, setSending] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const status = STATUS_META[ticket.status];
+  const statusColor = STATUS_COLOR[ticket.status];
 
   const loadMessages = useCallback(() => {
     supportService
@@ -324,7 +321,7 @@ function TicketConversation({
         <div className="flex-1 min-w-0">
           <div className="text-[15px] font-semibold truncate">{ticket.subject}</div>
           <div className="text-[11px] text-[var(--text3)]">
-            {ticketTypeLabel(ticket.type)} · {new Date(ticket.createdAt).toLocaleDateString()}
+            {t(`support.types.${ticket.type}`)} · {new Date(ticket.createdAt).toLocaleDateString()}
             {ticket.authorName ? ` · ${ticket.authorName}` : ''}
           </div>
         </div>
@@ -333,11 +330,11 @@ function TicketConversation({
             value={ticket.status}
             onChange={(e) => onStatusChange(e.target.value as TicketStatus)}
             className="text-[11px] font-semibold bg-[var(--bg2)] border border-[var(--border)] rounded px-2 py-1 outline-none cursor-pointer"
-            style={{ color: status.color }}
+            style={{ color: statusColor }}
           >
-            {(Object.keys(STATUS_META) as TicketStatus[]).map((s) => (
+            {(Object.keys(STATUS_COLOR) as TicketStatus[]).map((s) => (
               <option key={s} value={s}>
-                {STATUS_META[s].label}
+                {t(`support.status.${s}`)}
               </option>
             ))}
           </select>
@@ -346,18 +343,18 @@ function TicketConversation({
             <span
               className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
               style={{
-                color: status.color,
-                background: `color-mix(in srgb, ${status.color} 16%, transparent)`,
+                color: statusColor,
+                background: `color-mix(in srgb, ${statusColor} 16%, transparent)`,
               }}
             >
-              {status.label}
+              {t(`support.status.${ticket.status}`)}
             </span>
             {ticket.status !== 'CLOSED' && ticket.status !== 'RESOLVED' && (
               <button
                 onClick={() => onStatusChange('CLOSED')}
                 className="text-[10px] font-semibold px-2 py-1 rounded bg-[#1a7a3a] text-white border-none cursor-pointer hover:brightness-110 transition"
               >
-                ✓ Mark as solved
+                {t('support.markSolved')}
               </button>
             )}
           </div>
@@ -375,7 +372,7 @@ function TicketConversation({
       >
         {/* Original message */}
         <MessageBubble
-          authorName={ticket.authorName ?? 'You'}
+          authorName={ticket.authorName ?? t('support.you')}
           message={ticket.message}
           createdAt={ticket.createdAt}
           isOwn={!ticket.authorName}
@@ -407,7 +404,7 @@ function TicketConversation({
           <input
             value={reply}
             onChange={(e) => setReply(e.target.value)}
-            placeholder="Type a reply..."
+            placeholder={t('support.replyPlaceholder')}
             className={INPUT_CLS + ' flex-1'}
           />
           <button
@@ -415,7 +412,7 @@ function TicketConversation({
             disabled={sending || !reply.trim()}
             className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
           >
-            {sending ? '...' : 'Send'}
+            {sending ? '...' : t('support.send')}
           </button>
         </form>
       )}
@@ -436,11 +433,12 @@ function MessageBubble({
   isOwn: boolean;
   isAdmin: boolean;
 }) {
+  const { t } = useTranslation();
   return (
     <div className={`flex flex-col ${isOwn ? 'items-end' : 'items-start'}`}>
       <div className="text-[10px] text-[var(--text3)] mb-0.5 flex items-center gap-1.5">
         <span className="font-semibold">{authorName}</span>
-        {isAdmin && <span className="text-[var(--accent)]">· admin</span>}
+        {isAdmin && <span className="text-[var(--accent)]">· {t('support.admin')}</span>}
       </div>
       <div
         className="max-w-[85%] px-3 py-2 rounded-lg text-[13px] leading-relaxed whitespace-pre-wrap"

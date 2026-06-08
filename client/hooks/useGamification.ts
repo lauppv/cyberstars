@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
@@ -34,9 +35,10 @@ const COURSE_BADGE_ICONS: Record<string, string> = {
   'algo-c': '🧩',
 };
 
-const LEVEL_LABELS = ['Bronze', 'Silver', 'Gold'];
+const TIER_KEYS = ['bronze', 'silver', 'gold'];
 
 export function useGamification(): Gamification {
+  const { t } = useTranslation();
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
@@ -75,8 +77,8 @@ export function useGamification(): Gamification {
 
       result.push({
         icon,
-        label: `${c.title} First Steps`,
-        description: `Complete your first ${c.title} lesson`,
+        label: t('gamification.firstSteps', { course: c.title }),
+        description: t('gamification.firstStepsDesc', { course: c.title }),
         courseKey: c.key,
         level: 0,
         maxLevel,
@@ -85,10 +87,12 @@ export function useGamification(): Gamification {
 
       for (let lvl = 1; lvl <= maxLevel; lvl++) {
         const threshold = lvl * 10;
+        const tierKey = TIER_KEYS[lvl - 1];
+        const tier = tierKey ? t(`gamification.${tierKey}`) : `Lv${lvl}`;
         result.push({
           icon,
-          label: `${c.title} ${LEVEL_LABELS[lvl - 1] ?? `Lv${lvl}`}`,
-          description: `Complete ${threshold} ${c.title} lessons`,
+          label: t('gamification.tier', { course: c.title, tier }),
+          description: t('gamification.tierDesc', { course: c.title, count: threshold }),
           courseKey: c.key,
           level: lvl,
           maxLevel,
@@ -98,7 +102,7 @@ export function useGamification(): Gamification {
     }
 
     return result;
-  }, [courses, perCourse]);
+  }, [courses, perCourse, t]);
 
   const [newBadge, setNewBadge] = useState<BadgeDef | null>(null);
   const prevEarnedRef = useRef<Set<string>>(new Set());

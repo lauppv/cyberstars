@@ -48,7 +48,11 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 const buildPath = path.join(process.cwd(), 'dist');
 app.use(express.static(buildPath));
 
-app.get(/^\/(?!api|auth).*$/, (_req, res) => {
+// SPA fallback: only match extensionless paths (course/lesson routes, profile,
+// forum, etc.). Paths with a file extension (e.g. /lessons/*.md, /assets/*.js)
+// should 404 — not return index.html — so the client can detect missing
+// translations and fall back to English.
+app.get(/^\/(?!api|auth)[^.]*$/, (_req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
 

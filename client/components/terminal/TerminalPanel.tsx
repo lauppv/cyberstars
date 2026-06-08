@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
 
 interface Props {
@@ -24,6 +25,7 @@ export function TerminalPanel({
   isMarking,
   onMarkComplete,
 }: Props) {
+  const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
@@ -79,7 +81,7 @@ export function TerminalPanel({
       <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
         <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
           <span className="inline-block w-2 h-2 rounded-full bg-[#FCC624]" />
-          Terminal
+          {t('terminal.label')}
         </div>
         <div className="flex items-center gap-2">
           {onMarkComplete && (
@@ -92,15 +94,19 @@ export function TerminalPanel({
                   : 'bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20'
               } font-semibold disabled:cursor-default`}
             >
-              {lessonCompleted ? '✓ Completed' : isMarking ? 'Marking...' : 'Mark Complete'}
+              {lessonCompleted
+                ? t('lesson.completed')
+                : isMarking
+                  ? t('lesson.marking')
+                  : t('lesson.markComplete')}
             </button>
           )}
           <button
             onClick={onReset}
             className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
-            title="Reset sandbox"
+            title={t('terminal.resetTitle')}
           >
-            ↺ Reset
+            {t('lesson.reset')}
           </button>
         </div>
       </div>
@@ -135,7 +141,7 @@ export function TerminalPanel({
             <button
               type="submit"
               disabled={isExecuting}
-              title="Enter to run"
+              title={t('terminal.enterToRun')}
               className="shrink-0 ml-2 px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--success)] text-black font-semibold text-[11px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
             >
               ↵
@@ -143,7 +149,9 @@ export function TerminalPanel({
           </form>
         )}
 
-        {!isReady && <div className="text-[var(--text3)] animate-pulse">Starting sandbox...</div>}
+        {!isReady && (
+          <div className="text-[var(--text3)] animate-pulse">{t('terminal.starting')}</div>
+        )}
       </div>
     </div>
   );

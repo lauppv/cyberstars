@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeExecution } from '../hooks/useCodeExecution';
@@ -37,13 +38,14 @@ const DIFFICULTY_COLOR: Record<string, string> = {
 };
 
 export function LessonPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
   const { isLoggedIn } = useAuth();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
 
-  const { title, content, codeTemplate, isLoading } = useLesson(category, lesson);
+  const { title, content, starterCode, savedCode, isLoading } = useLesson(category, lesson);
   const { output, isRunning, execute, sendInput } = useCodeExecution();
   const terminal = useTerminalSession(isTerminal ? category : '', isTerminal ? lesson : '');
   const { saveCode, progress, loadProgress } = useProgress(category);
@@ -61,14 +63,32 @@ export function LessonPage() {
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
+  const loadedLessonRef = useRef('');
+  const loadedStarterRef = useRef('');
 
   const course = courses.find((c) => c.key === category) ?? null;
 
   const lessonCompleted = progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
 
+  // Populate the editor once a lesson's code is loaded. Opening a lesson loads
+  // the user's saved code (or the starter). A language switch within the same
+  // lesson re-translates the editor only while it still holds the untouched
+  // starter — code the user has written or saved is preserved.
   useEffect(() => {
-    setUserCode(codeTemplate); // eslint-disable-line react-hooks/set-state-in-effect
-  }, [codeTemplate]);
+    if (isLoading) return;
+    const lessonKey = `${category}/${lesson}`;
+    if (loadedLessonRef.current !== lessonKey) {
+      loadedLessonRef.current = lessonKey;
+      loadedStarterRef.current = starterCode;
+      setUserCode(savedCode ?? starterCode);
+      return;
+    }
+    if (starterCode !== loadedStarterRef.current) {
+      const prevStarter = loadedStarterRef.current;
+      loadedStarterRef.current = starterCode;
+      setUserCode((prev) => (prev === prevStarter ? starterCode : prev));
+    }
+  }, [isLoading, category, lesson, starterCode, savedCode]);
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
@@ -88,11 +108,11 @@ export function LessonPage() {
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
       setToastData({
         icon: isLast ? '🏆' : '✅',
-        title: isLast ? 'Course Milestone!' : 'Lesson Complete!',
+        title: isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete'),
       });
       setShowToast(true);
     }
-  }, [lessonCompleted, course, lesson]);
+  }, [lessonCompleted, course, lesson, t]);
 
   const lessonList: LessonMeta[] = course?.lessons ?? [];
   const currentIndex = lessonList.findIndex((l) => l.slug === lesson);
@@ -166,7 +186,7 @@ export function LessonPage() {
               : 'text-[var(--text3)] border-transparent'
           }`}
         >
-          📖 Lesson
+          {t('lesson.tabLesson')}
         </button>
         <button
           onClick={() => setActiveTab('workspace')}
@@ -176,7 +196,7 @@ export function LessonPage() {
               : 'text-[var(--text3)] border-transparent'
           }`}
         >
-          {isTerminal ? '⌨️ Terminal' : '💻 Code'}
+          {isTerminal ? t('lesson.tabTerminal') : t('lesson.tabCode')}
         </button>
       </div>
 
@@ -193,7 +213,10 @@ export function LessonPage() {
                 <>
                   <div className="flex items-center gap-3 mb-2 flex-wrap">
                     <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                      Lesson {currentIndex + 1} of {lessonList.length}
+                      {t('lesson.lessonNofM', {
+                        n: currentIndex + 1,
+                        total: lessonList.length,
+                      })}
                     </span>
                     {difficulty && (
                       <span
@@ -203,12 +226,12 @@ export function LessonPage() {
                           color: DIFFICULTY_COLOR[difficulty],
                         }}
                       >
-                        {difficulty}
+                        {t(`lesson.difficulty.${difficulty}`)}
                       </span>
                     )}
                     {lessonCompleted && (
                       <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
-                        ✓ Completed
+                        {t('lesson.completed')}
                       </span>
                     )}
                   </div>
@@ -230,14 +253,14 @@ export function LessonPage() {
                 disabled={!prevLesson}
                 className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
               >
-                ← Previous
+                {t('lesson.previous')}
               </button>
               <button
                 onClick={() => nextLesson && navigate(`/lesson/${category}/${nextLesson.slug}`)}
                 disabled={!nextLesson}
                 className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
               >
-                Next →
+                {t('lesson.next')}
               </button>
             </div>
           </div>
@@ -283,15 +306,21 @@ export function LessonPage() {
                         : 'bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20'
                     } font-semibold disabled:cursor-default`}
                   >
-                    {lessonCompleted ? '✓ Completed' : isMarking ? 'Marking...' : 'Mark Complete'}
+                    {lessonCompleted
+                      ? t('lesson.completed')
+                      : isMarking
+                        ? t('lesson.marking')
+                        : t('lesson.markComplete')}
                   </button>
                 )}
                 <button
-                  onClick={() => setUserCode(codeTemplate)}
+                  onClick={() => {
+                    if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
+                  }}
                   className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
-                  title="Reset code"
+                  title={t('lesson.resetTitle')}
                 >
-                  ↺ Reset
+                  {t('lesson.reset')}
                 </button>
                 <RunButton onClick={handleRun} isRunning={isRunning} />
               </div>
@@ -314,11 +343,11 @@ export function LessonPage() {
                     onClick={handleSave}
                     className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
                   >
-                    💾 Save
+                    {t('lesson.save')}
                   </button>
                   {showSaveToast && (
                     <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                      Code saved!
+                      {t('lesson.codeSaved')}
                     </span>
                   )}
                 </div>
@@ -338,7 +367,7 @@ export function LessonPage() {
       />
       <AchievementToast
         icon={gamification.newBadge?.icon ?? '🏅'}
-        title={`Badge earned: ${gamification.newBadge?.label ?? ''}`}
+        title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />

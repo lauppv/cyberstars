@@ -1,5 +1,5 @@
 def power(base, exp): # recursive: base^exp = base \* base^(exp - 1), and base^0 = 1
-pass
+    pass
 
 base = 2
 

@@ -1,5 +1,5 @@
 def highest(a, b, c): # return the largest of the three readings
-pass
+    pass
 
 a = int(input())
 b = int(input())

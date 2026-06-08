@@ -9,6 +9,17 @@ function jsonResponse(body: unknown, ok = true) {
   return Promise.resolve({ ok, status: ok ? 200 : 404, json: () => Promise.resolve(body) });
 }
 
+// Vite's dev server answers a missing static file with index.html (200,
+// text/html) rather than a 404 — the status alone looks successful.
+function spaFallbackResponse() {
+  return Promise.resolve({
+    ok: true,
+    status: 200,
+    headers: { get: (name: string) => (name === 'content-type' ? 'text/html' : null) },
+    text: () => Promise.resolve('<!doctype html><html></html>'),
+  });
+}
+
 afterEach(() => vi.unstubAllGlobals());
 
 describe('lessonService cache', () => {
@@ -52,6 +63,72 @@ describe('lessonService cache', () => {
       content: 'ok',
     });
     expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('fetchLesson with lang=ro fetches from the /ro/ subfolder', async () => {
+    const fetchMock = vi.fn(() => textResponse('# corpo'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLesson('python', 'vars', 'ro');
+    expect(result).toEqual({ title: 'vars', content: '# corpo' });
+    expect(fetchMock).toHaveBeenCalledWith('/lessons/python/ro/vars.md');
+  });
+
+  it('fetchLesson with lang=ro falls back to English when translated file is missing', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(textResponse('', false))
+      .mockReturnValueOnce(textResponse('# english fallback'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLesson('python', 'missing-ro', 'ro');
+    expect(result).toEqual({ title: 'missing-ro', content: '# english fallback' });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/python/ro/missing-ro.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/python/missing-ro.md');
+  });
+
+  it('fetchLesson with lang=ro falls back to English when Vite serves the SPA index.html for a missing translation', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(spaFallbackResponse())
+      .mockReturnValueOnce(textResponse('# english body'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLesson('c', 'arrays', 'ro');
+    expect(result).toEqual({ title: 'arrays', content: '# english body' });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/c/ro/arrays.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/c/arrays.md');
+  });
+
+  it('fetchLessonCode with lang=ro falls back to English when Vite serves the SPA index.html', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(spaFallbackResponse())
+      .mockReturnValueOnce(textResponse('en starter'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLessonCode('java', 'lists', 'ro');
+    expect(result).toBe('en starter');
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/java/ro/lists-code.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/java/lists-code.md');
+  });
+
+  it('fetchLessonCode with lang=ro fetches from the /ro/ subfolder', async () => {
+    const fetchMock = vi.fn(() => textResponse('# cod'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLessonCode('python', 'vars', 'ro');
+    expect(result).toBe('# cod');
+    expect(fetchMock).toHaveBeenCalledWith('/lessons/python/ro/vars-code.md');
+  });
+
+  it('fetchLessonCode with lang=ro falls back to English when missing', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(textResponse('', false))
+      .mockReturnValueOnce(textResponse('en starter'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLessonCode('python', 'no-ro', 'ro');
+    expect(result).toBe('en starter');
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/python/ro/no-ro-code.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/python/no-ro-code.md');
   });
 
   it('fetchCurriculum is not cached (CurriculumProvider owns refresh)', async () => {

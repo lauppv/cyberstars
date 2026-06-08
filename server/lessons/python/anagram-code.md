@@ -1,5 +1,5 @@
 def are_anagrams(a, b): # return True if a and b are anagrams (same letters, case ignored)
-pass
+    pass
 
 first = input()
 second = input()

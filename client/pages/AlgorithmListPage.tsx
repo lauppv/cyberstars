@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 
 import { useAuth } from '../context/AuthContext';
@@ -25,6 +26,7 @@ function parseDifficulty(title: string): { diff: 'easy' | 'medium' | 'hard'; nam
 export function AlgorithmListPage() {
   const { lang = '' } = useParams<{ lang: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
@@ -71,7 +73,7 @@ export function AlgorithmListPage() {
       <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
         <div className="flex-1 flex items-center justify-center">
-          <p className="text-[var(--text2)]">Course not found.</p>
+          <p className="text-[var(--text2)]">{t('algoList.courseNotFound')}</p>
         </div>
       </div>
     );
@@ -96,8 +98,10 @@ export function AlgorithmListPage() {
                 {meta.icon}
               </div>
               <div>
-                <h1 className="text-xl font-bold">{meta.label} Algorithms</h1>
-                <p className="text-[var(--text3)] text-xs">{lessons.length} challenges</p>
+                <h1 className="text-xl font-bold">{t('algoList.title', { lang: meta.label })}</h1>
+                <p className="text-[var(--text3)] text-xs">
+                  {t('algoList.challenges', { count: lessons.length })}
+                </p>
               </div>
             </div>
 
@@ -117,7 +121,7 @@ export function AlgorithmListPage() {
                       boxShadow: isActive && dc ? `0 0 8px ${dc.bg}` : 'none',
                     }}
                   >
-                    {d === 'all' ? 'All' : d.charAt(0).toUpperCase() + d.slice(1)}
+                    {t(`algoList.filters.${d}`)}
                   </button>
                 );
               })}
@@ -128,7 +132,7 @@ export function AlgorithmListPage() {
           <nav className="flex-1 overflow-y-auto px-3 py-3 min-h-0">
             {filtered.length === 0 && (
               <p className="text-center text-[var(--text3)] text-sm py-6">
-                No challenges match this filter.
+                {t('algoList.noMatch')}
               </p>
             )}
             {filtered.map((lesson, idx) => {
@@ -155,7 +159,7 @@ export function AlgorithmListPage() {
                     className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                     style={{ background: dc.bg, color: dc.text }}
                   >
-                    {lesson.diff}
+                    {t(`algoList.diff.${lesson.diff}`)}
                   </span>
                 </button>
               );

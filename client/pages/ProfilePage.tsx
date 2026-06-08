@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
@@ -15,6 +16,7 @@ const INPUT_CLS =
 
 export function ProfilePage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user, isLoggedIn, isLoading, refreshUser } = useAuth();
   const g = useGamification();
   const { courses: allCourses } = useCurriculum();
@@ -67,14 +69,14 @@ export function ProfilePage() {
     if (!file) return;
     setUploadError('');
     if (file.size > 2 * 1024 * 1024) {
-      setUploadError('File too large (max 2MB)');
+      setUploadError(t('profile.fileTooLarge'));
       return;
     }
     try {
       await profileService.uploadAvatar(file);
       refreshUser();
     } catch (err) {
-      setUploadError(err instanceof Error ? err.message : 'Upload failed');
+      setUploadError(err instanceof Error ? err.message : t('profile.uploadFailed'));
     }
   };
 
@@ -110,7 +112,7 @@ export function ProfilePage() {
               {user.avatarUrl ? (
                 <img
                   src={user.avatarUrl}
-                  alt="Avatar"
+                  alt={t('profile.avatarAlt')}
                   className="w-16 h-16 rounded-full object-cover border-[3px] border-[var(--accent)] flex-shrink-0"
                 />
               ) : (
@@ -122,7 +124,7 @@ export function ProfilePage() {
                 onClick={() => fileRef.current?.click()}
                 className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xs font-semibold cursor-pointer border-none"
               >
-                Edit
+                {t('profile.edit')}
               </button>
               <input
                 ref={fileRef}
@@ -146,7 +148,7 @@ export function ProfilePage() {
               onClick={removeAvatar}
               className="text-[11px] text-[var(--text3)] hover:text-[var(--error)] mt-1 bg-transparent border-none cursor-pointer transition"
             >
-              Remove avatar
+              {t('profile.removeAvatar')}
             </button>
           )}
 
@@ -154,12 +156,12 @@ export function ProfilePage() {
           <div className="py-4 border-b border-[var(--border)] flex flex-col gap-3">
             <div>
               <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
-                Bio
+                {t('profile.bio')}
               </label>
               <textarea
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                placeholder="Tell others about yourself..."
+                placeholder={t('profile.bioPlaceholder')}
                 maxLength={200}
                 rows={2}
                 className={INPUT_CLS + ' resize-none'}
@@ -171,13 +173,14 @@ export function ProfilePage() {
             </div>
             <div>
               <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
-                Status <span className="normal-case">(expires in 24h)</span>
+                {t('profile.status')}{' '}
+                <span className="normal-case">{t('profile.statusExpires')}</span>
               </label>
               <div className="flex gap-2">
                 <input
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
-                  placeholder="What are you up to?"
+                  placeholder={t('profile.statusPlaceholder')}
                   maxLength={80}
                   className={INPUT_CLS + ' flex-1'}
                 />
@@ -186,7 +189,7 @@ export function ProfilePage() {
                   disabled={saving}
                   className="px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
                 >
-                  Set
+                  {t('profile.set')}
                 </button>
               </div>
             </div>
@@ -197,19 +200,19 @@ export function ProfilePage() {
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{g.totalCompleted}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
-                Lessons Done
+                {t('profile.lessonsDone')}
               </div>
             </div>
             <div className="py-4 text-center border-x border-[var(--border)]">
               <div className="text-[24px] font-bold">{activeCourses}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
-                Active Courses
+                {t('profile.activeCourses')}
               </div>
             </div>
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{earnedBadges}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
-                Badges
+                {t('profile.badges')}
               </div>
             </div>
           </div>
@@ -217,7 +220,7 @@ export function ProfilePage() {
           {/* Badges */}
           <div className="py-5">
             <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
-              Badges
+              {t('profile.badges')}
             </h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
               {g.badges.map((b) => (

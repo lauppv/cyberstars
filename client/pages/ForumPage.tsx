@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { useAuth } from '../context/AuthContext';
 import * as forumService from '../services/forumService';
@@ -14,27 +16,27 @@ import './ForumPage.css';
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
   const mins = Math.floor(diff / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return `${mins}m ago`;
+  if (mins < 1) return i18next.t('forum.time.justNow');
+  if (mins < 60) return i18next.t('forum.time.minAgo', { count: mins });
   const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
+  if (hrs < 24) return i18next.t('forum.time.hourAgo', { count: hrs });
   const days = Math.floor(hrs / 24);
-  if (days < 30) return `${days}d ago`;
+  if (days < 30) return i18next.t('forum.time.dayAgo', { count: days });
   return new Date(iso).toLocaleDateString();
 }
 
 /** Categories where only moderators and admins may start threads or reply. */
 const RESTRICTED_CATEGORIES = new Set(['announcements']);
 
-const ROLE_META: Record<UserRole, { label: string; cls: string }> = {
-  ADMIN: { label: 'Admin', cls: 'role-admin' },
-  MODERATOR: { label: 'Moderator', cls: 'role-mod' },
-  USER: { label: 'User', cls: 'role-user' },
+const ROLE_CLS: Record<UserRole, string> = {
+  ADMIN: 'role-admin',
+  MODERATOR: 'role-mod',
+  USER: 'role-user',
 };
 
 function RoleBadge({ role }: { role: UserRole }) {
-  const meta = ROLE_META[role];
-  return <span className={`role-badge ${meta.cls}`}>{meta.label}</span>;
+  const { t } = useTranslation();
+  return <span className={`role-badge ${ROLE_CLS[role]}`}>{t(`forum.roles.${role}`)}</span>;
 }
 
 /** Mirror of the server-side permission rule (server is authoritative). */
@@ -110,6 +112,7 @@ function ForumIndex({
   isLoggedIn: boolean;
   onNewThread: () => void;
 }) {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState<ForumCategoryDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -126,14 +129,14 @@ function ForumIndex({
       })
       .catch(() => {
         if (!cancelled) {
-          setError('Failed to load forum categories.');
+          setError(t('forum.loadCategoriesError'));
           setLoading(false);
         }
       });
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [t]);
 
   const groups = categories.reduce<Record<string, ForumCategoryDTO[]>>((acc, cat) => {
     (acc[cat.groupName] ??= []).push(cat);
@@ -146,7 +149,7 @@ function ForumIndex({
   if (loading) {
     return (
       <main className="forum-page">
-        <div className="forum-loading">Loading forum...</div>
+        <div className="forum-loading">{t('forum.loadingForum')}</div>
       </main>
     );
   }
@@ -163,14 +166,11 @@ function ForumIndex({
     <main className="forum-page">
       <div className="forum-page-header">
         <div>
-          <p className="forum-page-subtitle">
-            Ask, share, and hang out with other CyberStars. Be kind, search before posting, and have
-            fun.
-          </p>
+          <p className="forum-page-subtitle">{t('forum.subtitle')}</p>
         </div>
         {isLoggedIn && (
           <button className="forum-btn forum-btn-primary" onClick={onNewThread}>
-            + New Thread
+            {t('forum.newThread')}
           </button>
         )}
       </div>
@@ -178,15 +178,15 @@ function ForumIndex({
       <div className="forum-stats">
         <div className="fs-item">
           <div className="fs-value">{totalThreads.toLocaleString()}</div>
-          <div className="fs-label">Threads</div>
+          <div className="fs-label">{t('forum.stats.threads')}</div>
         </div>
         <div className="fs-item">
           <div className="fs-value">{totalPosts.toLocaleString()}</div>
-          <div className="fs-label">Posts</div>
+          <div className="fs-label">{t('forum.stats.posts')}</div>
         </div>
         <div className="fs-item">
           <div className="fs-value">{categories.length}</div>
-          <div className="fs-label">Categories</div>
+          <div className="fs-label">{t('forum.stats.categories')}</div>
         </div>
       </div>
 
@@ -195,7 +195,9 @@ function ForumIndex({
           {Object.entries(groups).map(([groupName, cats]) => (
             <div className="forum-group" key={groupName}>
               <div className="forum-group-header">
-                <div className="forum-group-title">{groupName}</div>
+                <div className="forum-group-title">
+                  {t(`forum.groups.${groupName}`, { defaultValue: groupName })}
+                </div>
                 <div className="forum-group-line" />
               </div>
               <div className="cat-table">
@@ -206,22 +208,26 @@ function ForumIndex({
                         {c.icon}
                       </div>
                       <div className="cat-info">
-                        <div className="cat-name">{c.name}</div>
-                        <div className="cat-desc">{c.description}</div>
+                        <div className="cat-name">
+                          {t(`forum.categories.${c.slug}.name`, { defaultValue: c.name })}
+                        </div>
+                        <div className="cat-desc">
+                          {t(`forum.categories.${c.slug}.desc`, { defaultValue: c.description })}
+                        </div>
                       </div>
                     </div>
                     <div className="cat-counts">
                       <strong>{c.threadCount.toLocaleString()}</strong>
-                      <span>threads</span>
-                      <span>{c.postCount.toLocaleString()} posts</span>
+                      <span>{t('forum.threadsLower')}</span>
+                      <span>{t('forum.postsCount', { count: c.postCount })}</span>
                     </div>
                     {c.lastPost && (
                       <div className="cat-lastpost">
                         <div className="lp-info">
                           <div className="lp-title">{c.lastPost.threadTitle}</div>
                           <div className="lp-meta">
-                            by <span className="lp-user">{c.lastPost.authorName}</span> ·{' '}
-                            {timeAgo(c.lastPost.createdAt)}
+                            {t('forum.by')} <span className="lp-user">{c.lastPost.authorName}</span>{' '}
+                            · {timeAgo(c.lastPost.createdAt)}
                           </div>
                         </div>
                       </div>
@@ -252,6 +258,7 @@ function CategoryView({
   isLoggedIn: boolean;
   user: AuthenticatedUser | null;
 }) {
+  const { t } = useTranslation();
   const restricted = RESTRICTED_CATEGORIES.has(categorySlug);
   const canPost = isLoggedIn && (!restricted || (user != null && user.role !== 'USER'));
   const [category, setCategory] = useState<{
@@ -282,14 +289,14 @@ function CategoryView({
       })
       .catch(() => {
         if (!cancelled) {
-          setError('Failed to load threads.');
+          setError(t('forum.loadThreadsError'));
           setLoading(false);
         }
       });
     return () => {
       cancelled = true;
     };
-  }, [categorySlug]);
+  }, [categorySlug, t]);
 
   const handleCreateThread = async () => {
     if (!newTitle.trim() || !newContent.trim()) return;
@@ -312,7 +319,7 @@ function CategoryView({
   if (loading || (!category && !error)) {
     return (
       <main className="forum-page">
-        <div className="forum-loading">Loading threads...</div>
+        <div className="forum-loading">{t('forum.loadingThreads')}</div>
       </main>
     );
   }
@@ -321,11 +328,11 @@ function CategoryView({
     return (
       <main className="forum-page">
         <div className="forum-crumbs">
-          <a onClick={onBack}>Forum</a>
+          <a onClick={onBack}>{t('forum.crumbForum')}</a>
           <span className="forum-crumb-sep">/</span>
-          <span className="forum-crumb-here">Error</span>
+          <span className="forum-crumb-here">{t('forum.crumbError')}</span>
         </div>
-        <div className="forum-loading">{error ?? 'Category not found.'}</div>
+        <div className="forum-loading">{error ?? t('forum.categoryNotFound')}</div>
       </main>
     );
   }
@@ -333,9 +340,11 @@ function CategoryView({
   return (
     <main className="forum-page">
       <div className="forum-crumbs">
-        <a onClick={onBack}>Forum</a>
+        <a onClick={onBack}>{t('forum.crumbForum')}</a>
         <span className="forum-crumb-sep">/</span>
-        <span className="forum-crumb-here">{category.name}</span>
+        <span className="forum-crumb-here">
+          {t(`forum.categories.${category.slug}.name`, { defaultValue: category.name })}
+        </span>
       </div>
 
       <div className="cat-banner" style={{ borderColor: category.color + '44' }}>
@@ -343,11 +352,15 @@ function CategoryView({
           {category.icon}
         </div>
         <div className="cat-banner-info">
-          <div className="cat-banner-title">{category.name}</div>
-          <div className="cat-banner-desc">{category.description}</div>
+          <div className="cat-banner-title">
+            {t(`forum.categories.${category.slug}.name`, { defaultValue: category.name })}
+          </div>
+          <div className="cat-banner-desc">
+            {t(`forum.categories.${category.slug}.desc`, { defaultValue: category.description })}
+          </div>
           <div className="cat-banner-stats">
             <span>
-              <strong>{threads.length}</strong> threads
+              <strong>{threads.length}</strong> {t('forum.bannerThreads')}
             </span>
           </div>
         </div>
@@ -356,41 +369,39 @@ function CategoryView({
             className="forum-btn forum-btn-primary"
             onClick={() => setShowComposer(!showComposer)}
           >
-            + New Thread
+            {t('forum.newThread')}
           </button>
         )}
       </div>
 
       {restricted && !canPost && (
-        <div className="forum-restricted-note">
-          🔒 Only moderators and admins can start threads in this category.
-        </div>
+        <div className="forum-restricted-note">{t('forum.restrictedThreads')}</div>
       )}
 
       {showComposer && (
         <div className="forum-composer">
           <input
             className="forum-composer-title"
-            placeholder="Thread title..."
+            placeholder={t('forum.threadTitlePlaceholder')}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
           />
           <textarea
             className="forum-composer-textarea"
-            placeholder="Write your post... Markdown supported."
+            placeholder={t('forum.composerPlaceholder')}
             value={newContent}
             onChange={(e) => setNewContent(e.target.value)}
           />
           <div className="forum-composer-footer">
             <button className="forum-btn forum-btn-ghost" onClick={() => setShowComposer(false)}>
-              Cancel
+              {t('forum.cancel')}
             </button>
             <button
               className="forum-btn forum-btn-primary"
               onClick={handleCreateThread}
               disabled={posting || !newTitle.trim() || !newContent.trim()}
             >
-              {posting ? 'Posting...' : 'Create Thread'}
+              {posting ? t('forum.posting') : t('forum.createThread')}
             </button>
           </div>
         </div>
@@ -398,39 +409,39 @@ function CategoryView({
 
       <div className="thread-table">
         {threads.length === 0 ? (
-          <div className="thread-empty">No threads yet. Be the first to post!</div>
+          <div className="thread-empty">{t('forum.noThreads')}</div>
         ) : (
-          threads.map((t) => (
+          threads.map((th) => (
             <div
-              className={`thread-row${t.pinned ? ' pinned' : ''}`}
-              key={t.id}
-              onClick={() => onOpenThread(t.id)}
+              className={`thread-row${th.pinned ? ' pinned' : ''}`}
+              key={th.id}
+              onClick={() => onOpenThread(th.id)}
             >
               <div className="thread-marker">
-                {t.pinned ? '📌' : t.locked ? '🔒' : t.solved ? '✓' : '●'}
+                {th.pinned ? '📌' : th.locked ? '🔒' : th.solved ? '✓' : '●'}
               </div>
               <div className="thread-main">
                 <div className="thread-title">
-                  <span>{t.title}</span>
-                  {t.solved && <span className="badge badge-solved">✓ Solved</span>}
+                  <span>{th.title}</span>
+                  {th.solved && <span className="badge badge-solved">{t('forum.solved')}</span>}
                 </div>
                 <div className="thread-author">
-                  by <span className="author">{t.authorName}</span>{' '}
-                  <RoleBadge role={t.authorRole} /> · {timeAgo(t.createdAt)}
+                  {t('forum.by')} <span className="author">{th.authorName}</span>{' '}
+                  <RoleBadge role={th.authorRole} /> · {timeAgo(th.createdAt)}
                 </div>
               </div>
               <div className="thread-count">
-                {t.replyCount}
-                <small>replies</small>
+                {th.replyCount}
+                <small>{t('forum.replies')}</small>
               </div>
               <div className="thread-count">
-                {t.views >= 1000 ? (t.views / 1000).toFixed(1) + 'k' : t.views}
-                <small>views</small>
+                {th.views >= 1000 ? (th.views / 1000).toFixed(1) + 'k' : th.views}
+                <small>{t('forum.views')}</small>
               </div>
-              {t.lastPostAuthor && (
+              {th.lastPostAuthor && (
                 <div className="thread-lastpost">
-                  <span className="lp-user">{t.lastPostAuthor}</span>
-                  <span className="lp-time">{t.lastPostAt ? timeAgo(t.lastPostAt) : ''}</span>
+                  <span className="lp-user">{th.lastPostAuthor}</span>
+                  <span className="lp-time">{th.lastPostAt ? timeAgo(th.lastPostAt) : ''}</span>
                 </div>
               )}
             </div>
@@ -456,6 +467,7 @@ function ThreadView({
   isLoggedIn: boolean;
   user: AuthenticatedUser | null;
 }) {
+  const { t } = useTranslation();
   const [thread, setThread] = useState<ForumThreadDetailDTO | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -470,10 +482,10 @@ function ThreadView({
         setLoading(false);
       })
       .catch(() => {
-        setError('Failed to load thread.');
+        setError(t('forum.loadThreadError'));
         setLoading(false);
       });
-  }, [threadId]);
+  }, [threadId, t]);
 
   useEffect(() => {
     let cancelled = false;
@@ -487,14 +499,14 @@ function ThreadView({
       })
       .catch(() => {
         if (!cancelled) {
-          setError('Failed to load thread.');
+          setError(t('forum.loadThreadError'));
           setLoading(false);
         }
       });
     return () => {
       cancelled = true;
     };
-  }, [threadId]);
+  }, [threadId, t]);
 
   const handleReply = async () => {
     if (!replyContent.trim() || !thread) return;
@@ -543,7 +555,7 @@ function ThreadView({
   if (loading || (!thread && !error)) {
     return (
       <main className="forum-page">
-        <div className="forum-loading">Loading thread...</div>
+        <div className="forum-loading">{t('forum.loadingThread')}</div>
       </main>
     );
   }
@@ -552,11 +564,11 @@ function ThreadView({
     return (
       <main className="forum-page">
         <div className="forum-crumbs">
-          <a onClick={onBack}>Forum</a>
+          <a onClick={onBack}>{t('forum.crumbForum')}</a>
           <span className="forum-crumb-sep">/</span>
-          <span className="forum-crumb-here">Error</span>
+          <span className="forum-crumb-here">{t('forum.crumbError')}</span>
         </div>
-        <div className="forum-loading">{error ?? 'Thread not found.'}</div>
+        <div className="forum-loading">{error ?? t('forum.threadNotFound')}</div>
       </main>
     );
   }
@@ -568,9 +580,11 @@ function ThreadView({
   return (
     <main className="forum-page">
       <div className="forum-crumbs">
-        <a onClick={onBack}>Forum</a>
+        <a onClick={onBack}>{t('forum.crumbForum')}</a>
         <span className="forum-crumb-sep">/</span>
-        <a onClick={onBackToCategory}>{thread.categoryName}</a>
+        <a onClick={onBackToCategory}>
+          {t(`forum.categories.${thread.categorySlug}.name`, { defaultValue: thread.categoryName })}
+        </a>
         <span className="forum-crumb-sep">/</span>
         <span className="forum-crumb-here">{thread.title}</span>
       </div>
@@ -580,17 +594,21 @@ function ThreadView({
           <h1 className="thread-head-title">{thread.title}</h1>
           <div className="thread-head-meta">
             <span>
-              started by <strong>{thread.authorName}</strong>
+              {t('forum.startedBy')} <strong>{thread.authorName}</strong>
             </span>
             <RoleBadge role={thread.authorRole} />
             <span className="dot" />
-            <span>{thread.posts.length} posts</span>
+            <span>
+              {thread.posts.length} {t('forum.postsLower')}
+            </span>
             <span className="dot" />
-            <span>{thread.views} views</span>
+            <span>
+              {thread.views} {t('forum.viewsLower')}
+            </span>
             {thread.solved && (
               <>
                 <span className="dot" />
-                <span className="badge badge-solved">✓ Solved</span>
+                <span className="badge badge-solved">{t('forum.solved')}</span>
               </>
             )}
           </div>
@@ -614,35 +632,31 @@ function ThreadView({
 
       {canReply && (
         <div className="forum-composer">
-          <div className="forum-composer-head">Post a reply</div>
+          <div className="forum-composer-head">{t('forum.postReply')}</div>
           <textarea
             className="forum-composer-textarea"
-            placeholder="Type your reply..."
+            placeholder={t('forum.replyPlaceholder')}
             value={replyContent}
             onChange={(e) => setReplyContent(e.target.value)}
           />
           <div className="forum-composer-footer">
-            <span className="forum-composer-hint">Markdown supported</span>
+            <span className="forum-composer-hint">{t('forum.markdownSupported')}</span>
             <button
               className="forum-btn forum-btn-primary"
               onClick={handleReply}
               disabled={posting || !replyContent.trim()}
             >
-              {posting ? 'Posting...' : 'Post Reply'}
+              {posting ? t('forum.posting') : t('forum.postReplyBtn')}
             </button>
           </div>
         </div>
       )}
 
       {restricted && isLoggedIn && !canReply && !thread.locked && (
-        <div className="forum-restricted-note">
-          🔒 Only moderators and admins can reply in this category.
-        </div>
+        <div className="forum-restricted-note">{t('forum.restrictedReply')}</div>
       )}
 
-      {thread.locked && (
-        <div className="thread-locked-banner">🔒 This thread is locked. No new replies.</div>
-      )}
+      {thread.locked && <div className="thread-locked-banner">{t('forum.locked')}</div>}
     </main>
   );
 }
@@ -670,6 +684,7 @@ function PostCard({
   onDelete: () => void;
   onChangeRole: (role: UserRole) => void;
 }) {
+  const { t } = useTranslation();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(post.content);
 
@@ -698,7 +713,7 @@ function PostCard({
           <div className="post-deleted-banner">
             <span>🗑</span>
             <span>
-              This post was deleted by <strong>{post.deletedByName}</strong>
+              {t('forum.deletedBy')} <strong>{post.deletedByName}</strong>
             </span>
           </div>
         </div>
@@ -727,23 +742,25 @@ function PostCard({
             className="role-select"
             value={post.authorRole}
             onChange={(e) => onChangeRole(e.target.value as UserRole)}
-            title="Change this member's role"
+            title={t('forum.changeRole')}
           >
-            <option value="USER">User</option>
-            <option value="MODERATOR">Moderator</option>
-            <option value="ADMIN">Admin</option>
+            <option value="USER">{t('forum.roles.USER')}</option>
+            <option value="MODERATOR">{t('forum.roles.MODERATOR')}</option>
+            <option value="ADMIN">{t('forum.roles.ADMIN')}</option>
           </select>
         )}
       </div>
       <div className="post-body">
         <div className="post-meta">
           <span className="post-time">{timeAgo(post.createdAt)}</span>
-          {post.editedByName && <span className="post-edited">edited by {post.editedByName}</span>}
+          {post.editedByName && (
+            <span className="post-edited">{t('forum.editedBy', { name: post.editedByName })}</span>
+          )}
         </div>
         {post.solution && (
           <div className="solution-banner">
             <span className="check">✓</span>
-            <span>Marked as solution — this answer solved the question</span>
+            <span>{t('forum.solutionBanner')}</span>
           </div>
         )}
         {editing ? (
@@ -761,14 +778,14 @@ function PostCard({
                   setDraft(post.content);
                 }}
               >
-                Cancel
+                {t('forum.cancel')}
               </button>
               <button
                 className="forum-btn forum-btn-primary"
                 onClick={saveEdit}
                 disabled={!draft.trim()}
               >
-                Save
+                {t('forum.save')}
               </button>
             </div>
           </div>
@@ -795,24 +812,28 @@ function PostCard({
           <div className="post-buttons">
             {canMarkSolution && !post.solution && (
               <button className="post-btn solution-btn" onClick={onMarkSolution}>
-                ✓ Mark as solution
+                {t('forum.markSolution')}
               </button>
             )}
             {canManage && !editing && (
               <button className="post-btn" onClick={() => setEditing(true)}>
-                ✎ Edit
+                {t('forum.edit')}
               </button>
             )}
             {canManage && (
               <button
                 className="post-btn post-btn-danger"
                 onClick={() => {
-                  if (window.confirm(isOp ? 'Delete this entire thread?' : 'Delete this post?')) {
+                  if (
+                    window.confirm(
+                      isOp ? t('forum.confirmDeleteThread') : t('forum.confirmDeletePost'),
+                    )
+                  ) {
                     onDelete();
                   }
                 }}
               >
-                🗑 {isOp ? 'Delete thread' : 'Delete'}
+                {isOp ? t('forum.deleteThread') : `🗑 ${t('forum.delete')}`}
               </button>
             )}
           </div>

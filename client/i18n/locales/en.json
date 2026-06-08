@@ -1,0 +1,537 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "courses": "Courses",
+    "algorithms": "Algorithms",
+    "forum": "Forum",
+    "almanac": "Almanac",
+    "laniakea": "Laniakea Explorer"
+  },
+  "topbar": {
+    "toggleMenu": "Toggle menu",
+    "toggleSidebar": "Toggle sidebar",
+    "profile": "Profile",
+    "support": "Support",
+    "rules": "Rules",
+    "welcomeTour": "Welcome Tour",
+    "signOut": "Sign out",
+    "signIn": "Sign in"
+  },
+  "lang": {
+    "switch": "Switch language",
+    "en": "EN",
+    "ro": "RO"
+  },
+  "home": {
+    "continueWhereLeftOff": "Continue where you left off",
+    "recentlyAccessed": "Recently accessed",
+    "fromAlmanac": "From the Almanac",
+    "viewAll": "View all →",
+    "readTime": "{{time}} read",
+    "readMore": "Read →",
+    "activity": "Activity",
+    "activeDays": "<0>{{count}}</0> active days in the last {{weeks}} weeks",
+    "dayTue": "Tue",
+    "dayThu": "Thu",
+    "daySat": "Sat",
+    "less": "Less",
+    "more": "More",
+    "noActivity": "No activity",
+    "lessonsCompleted_one": "{{count}} lesson completed",
+    "lessonsCompleted_other": "{{count}} lessons completed",
+    "minAgo": "{{count}}m ago",
+    "hourAgo": "{{count}}h ago",
+    "dayAgo": "{{count}}d ago",
+    "lessonOfTheDay": "Lesson of the Day",
+    "recommended": "Recommended",
+    "continueJourney": "Continue your {{course}} journey with this lesson.",
+    "startLesson": "Start Lesson →",
+    "courseMilestones": "Course Milestones",
+    "lessonsRemaining_one": "<0>{{count}}</0> lesson remaining",
+    "lessonsRemaining_other": "<0>{{count}}</0> lessons remaining",
+    "next": "next:",
+    "notStarted_one": "Not started yet · {{count}} lesson",
+    "notStarted_other": "Not started yet · {{count}} lessons",
+    "marketing": {
+      "title": "Learn to code, for free",
+      "subtitle": "Interactive lessons in <1>Python</1>, <3>Java</3>, <5>C</5>, and <7>Linux</7>. Read, write, run — all in one place.",
+      "startLearning": "Start Learning →",
+      "signIn": "Sign in",
+      "readCard": "Read",
+      "readCardDesc": "Bite-sized lessons explained simply",
+      "writeCard": "Write",
+      "writeCardDesc": "Interactive editor right in the browser",
+      "runCard": "Run",
+      "runCardDesc": "Real code execution with instant feedback"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "close": "Close"
+  },
+  "courses": {
+    "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
+    "lessons_one": "lesson",
+    "lessons_other": "lessons",
+    "percentComplete": "{{pct}}% complete",
+    "continue": "Continue",
+    "viewSyllabus": "View Syllabus →",
+    "chapters": "Chapters",
+    "descriptions": {
+      "python": "New to programming? We highly recommend Python",
+      "c": "Low-level programming, pointers, memory, and OS concepts",
+      "java": "Object Oriented Programming",
+      "linux": "Master the terminal — files, navigation, and shell commands",
+      "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries",
+      "algo-java": "OOP-focused challenges — classes, objects, inheritance, and collections",
+      "algo-c": "Low-level challenges with arrays, pointers, structs, and memory",
+      "kotlin": "Modern JVM language — concise, safe, and interoperable"
+    }
+  },
+  "algorithms": {
+    "intro": "Pick a language and solve challenges that combine what you learned in the courses.",
+    "desc": {
+      "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries. Great for building problem-solving skills.",
+      "algo-java": "OOP-focused challenges — classes, objects, inheritance, and collections. Practice designing with objects.",
+      "algo-c": "Low-level challenges with arrays, pointers, structs, and memory. Think close to the hardware."
+    }
+  },
+  "algoList": {
+    "courseNotFound": "Course not found.",
+    "title": "{{lang}} Algorithms",
+    "challenges_one": "{{count}} challenge",
+    "challenges_other": "{{count}} challenges",
+    "filters": {
+      "all": "All",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "diff": {
+      "easy": "easy",
+      "medium": "medium",
+      "hard": "hard"
+    },
+    "noMatch": "No challenges match this filter."
+  },
+  "auth": {
+    "tabs": { "login": "Log In", "signup": "Sign Up" },
+    "brand": {
+      "tagline": "Learn to code through interactive lessons. Write real code and collect badges as you go."
+    },
+    "features": [
+      { "bold": "Live code editor", "rest": " — write & run code instantly" },
+      { "bold": "Python, C, Java & Linux", "rest": " — structured curriculum" },
+      { "bold": "Badges", "rest": " — celebrate every lesson you finish" },
+      { "bold": "Community forum", "rest": " — ask, share, and help others" },
+      { "bold": "The Almanac", "rest": " — tech history, facts & legends" },
+      { "bold": "Laniakea Explorer", "rest": " — explore the universe in your cockpit" }
+    ],
+    "backToLogin": "← Back to login",
+    "forgotTitle": "Forgot Password",
+    "resetTitle": "Reset Password",
+    "forgotSubtitle": "Enter your email and we'll send you a 6-digit code.",
+    "resetSubtitle": "Enter the code from your email and your new password.",
+    "displayName": "Display Name",
+    "displayNamePlaceholder": "Choose a username",
+    "email": "Email",
+    "resetCode": "Reset Code",
+    "resetCodePlaceholder": "6-digit code",
+    "newPassword": "New Password",
+    "password": "Password",
+    "passwordPlaceholderSignup": "Min. 8 characters",
+    "passwordPlaceholderReset": "Min. 6 characters",
+    "passwordPlaceholderLogin": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "submitLogin": "Log In",
+    "submitSignup": "Create Account",
+    "submitForgot": "Send Reset Code",
+    "submitReset": "Reset Password",
+    "noAccount": "Don't have an account?",
+    "signUpFree": "Sign up free",
+    "haveAccount": "Already have an account?",
+    "logIn": "Log in",
+    "strength": { "weak": "Weak", "medium": "Getting better", "strong": "Strong password!" },
+    "successForgot": "If that email exists, a reset code was sent. Check your inbox.",
+    "successReset": "Password reset! You can now log in.",
+    "serverError": "Server error, try again later"
+  },
+  "welcome": {
+    "nodes": [
+      "01 · Booting",
+      "02 · Languages",
+      "03 · Almanac",
+      "04 · Forum",
+      "05 · Laniakea Explorer",
+      "06 · Launch"
+    ],
+    "skip": "SKIP TO DASHBOARD →",
+    "hero": {
+      "eyebrow": "Account ready · Tour starting",
+      "welcomeTo": "Welcome to",
+      "sub": "A quick tour through the universe you just joined. Keep scrolling — everything you need is below.",
+      "scroll": "SCROLL TO BEGIN"
+    },
+    "boot": {
+      "num": "// 01 — INITIALIZING",
+      "title": "Booting your <1>workstation</1>.",
+      "subtitle": "We're warming up the editor, syncing curriculum, and lighting up the universe. Watch the systems come online.",
+      "steps": [
+        "Mounting code editor",
+        "Loading C / Java / Python / Bash kernels",
+        "Indexing almanac · 2,418 entries",
+        "Syncing forum threads",
+        "Charting the Laniakea universe"
+      ]
+    },
+    "langs": {
+      "num": "// 02 — LANGUAGES",
+      "title": "Four languages.<1></1>One <3>learning path</3>.",
+      "subtitle": "Start anywhere. Each course is hands-on — you write real code from lesson one, with auto-graded exercises and the almanac one keystroke away.",
+      "lessonsLabel": "lessons",
+      "cards": {
+        "c": {
+          "num": "01 / SYSTEMS",
+          "tag": "Memory · Pointers · Speed",
+          "desc": "Understand what every program is actually doing under the hood."
+        },
+        "java": {
+          "num": "02 / OOP",
+          "tag": "Classes · JVM · Patterns",
+          "desc": "Build robust applications the way the industry actually ships them."
+        },
+        "python": {
+          "num": "03 / SCRIPTING",
+          "tag": "Data · APIs · Automation",
+          "desc": "From hello world to data analysis without ever leaving the editor."
+        },
+        "bash": {
+          "num": "04 / LINUX",
+          "tag": "Shell · Pipes · Sysadmin",
+          "desc": "Speak fluent Linux. The shell becomes a second keyboard."
+        }
+      }
+    },
+    "almanac": {
+      "num": "// 03 — REFERENCE",
+      "title": "The <1>Almanac</1>.<3></3>Every fact, one search away.",
+      "subtitle": "Stuck on a syntax detail? The almanac has 2,400+ entries across every language we teach — functions, keywords, commands, gotchas — all cross-linked to the lessons that introduced them.",
+      "stats": { "entries": "entries", "examples": "examples", "search": "search" }
+    },
+    "forum": {
+      "num": "// 04 — COMMUNITY",
+      "title": "A <1>forum</1> where<3></3>answers actually arrive.",
+      "subtitle": "Every lesson has its own thread. Mentors and senior learners triage questions hourly. Code blocks render with syntax highlighting and one-click sandboxing.",
+      "stats": { "avgReply": "avg reply", "threads": "threads", "solved": "solved" }
+    },
+    "laniakea": {
+      "num": "// 05 — LANIAKEA EXPLORER",
+      "title": "The <1>Laniakea Explorer</1><3></3>is a universe.",
+      "subtitle": "When your brain needs a break, drift into the Laniakea Explorer — a navigable galaxy where each planet is a side-quest or a community room. Fly through it the way you'd play a game.",
+      "controlsTitle": "CONTROLS",
+      "navigate": "navigate",
+      "steer": "steer",
+      "boost": "boost"
+    },
+    "network": {
+      "num": "// 06 — IT ALL CONNECTS",
+      "title": "One platform, every piece <1>wired together</1>.",
+      "subtitle": "Every lesson links to almanac entries. Every error suggests a forum thread. Every completed lesson unlocks a badge. Your progress shows up everywhere — instantly.",
+      "nodes": {
+        "lessons": "LESSONS",
+        "almanac": "ALMANAC",
+        "forum": "FORUM",
+        "laniakea": "LANIAKEA",
+        "badges": "BADGES",
+        "editor": "EDITOR",
+        "you": "YOU"
+      }
+    },
+    "cta": {
+      "eyebrow": "Tour complete",
+      "title": "You're <1>ready</1>.",
+      "subtitle": "Pick a language. Open a lesson. Write your first line of code on CyberStars.",
+      "button": "Enter the Dashboard",
+      "foot": "Welcome aboard, cyberstar."
+    }
+  },
+  "rules": {
+    "title": "Community Rules",
+    "subtitle": "These rules help keep CyberStars a positive learning environment for everyone.",
+    "items": [
+      {
+        "title": "Be respectful",
+        "desc": "Treat everyone with kindness. No harassment, bullying, hate speech, or personal attacks."
+      },
+      {
+        "title": "Keep it appropriate",
+        "desc": "No spam, advertising in the forum, or anywhere on the platform."
+      },
+      {
+        "title": "No exploiting bugs",
+        "desc": "If you find a bug or exploit, report it via Support instead of abusing it for badges or other gains."
+      },
+      {
+        "title": "English",
+        "desc": "This is an English-speaking community. Using other languages is not allowed."
+      }
+    ]
+  },
+  "profile": {
+    "edit": "Edit",
+    "avatarAlt": "Avatar",
+    "removeAvatar": "Remove avatar",
+    "fileTooLarge": "File too large (max 2MB)",
+    "uploadFailed": "Upload failed",
+    "bio": "Bio",
+    "bioPlaceholder": "Tell others about yourself...",
+    "status": "Status",
+    "statusExpires": "(expires in 24h)",
+    "statusPlaceholder": "What are you up to?",
+    "set": "Set",
+    "lessonsDone": "Lessons Done",
+    "activeCourses": "Active Courses",
+    "badges": "Badges"
+  },
+  "support": {
+    "title": "Support",
+    "subtitle": "Found a bug, have a question, or need to report something? Open a ticket and the team will take a look.",
+    "newTicket": "New ticket",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Describe the issue or question in detail...",
+    "sending": "Sending...",
+    "submit": "Submit ticket",
+    "submitted": "Ticket submitted!",
+    "yourTickets": "Your tickets",
+    "noTickets": "You haven't opened any tickets yet.",
+    "allTickets": "All tickets · Admin",
+    "noTicketsAdmin": "No tickets from anyone yet.",
+    "types": {
+      "BUG": "🐞 Bug report",
+      "QUESTION": "❓ Question",
+      "RULE_VIOLATION": "🚫 Rule violation",
+      "FEEDBACK": "💡 Feedback / idea",
+      "ACCOUNT": "👤 Account issue",
+      "OTHER": "📋 Other"
+    },
+    "status": {
+      "OPEN": "Open",
+      "IN_PROGRESS": "In progress",
+      "RESOLVED": "Resolved",
+      "CLOSED": "Closed"
+    },
+    "markSolved": "✓ Mark as solved",
+    "replyPlaceholder": "Type a reply...",
+    "send": "Send",
+    "you": "You",
+    "admin": "admin"
+  },
+  "forum": {
+    "time": {
+      "justNow": "just now",
+      "minAgo": "{{count}}m ago",
+      "hourAgo": "{{count}}h ago",
+      "dayAgo": "{{count}}d ago"
+    },
+    "roles": { "ADMIN": "Admin", "MODERATOR": "Moderator", "USER": "User" },
+    "groups": {
+      "Community": "Community",
+      "Help & Support": "Help & Support",
+      "Show & Tell": "Show & Tell",
+      "Off-Topic": "Off-Topic"
+    },
+    "categories": {
+      "announcements": {
+        "name": "Announcements",
+        "desc": "Platform updates, new courses, and important news from the CyberStars team."
+      },
+      "introductions": {
+        "name": "Introductions",
+        "desc": "New to CyberStars? Say hi and meet other coders around your level."
+      },
+      "help-python": {
+        "name": "Python Help",
+        "desc": "Stuck on a lesson or a project? Ask questions, share errors, and get unstuck."
+      },
+      "help-java": {
+        "name": "Java Help",
+        "desc": "Classes, inheritance, streams — and that one NullPointerException that won't go away."
+      },
+      "help-c": {
+        "name": "C Programming Help",
+        "desc": "Pointers, segfaults, malloc — the dark arts. Bring your gdb output, leave with answers."
+      },
+      "showcase": {
+        "name": "Show Your Project",
+        "desc": "Built something cool? Share it here — even tiny scripts. Reactions encouraged."
+      },
+      "challenges": {
+        "name": "Challenges & Contests",
+        "desc": "Weekly puzzles, tournament threads, leaderboards. Compare solutions after the deadline."
+      },
+      "lounge": {
+        "name": "The Lounge",
+        "desc": "Talk about anything — games, school, that weird dream you had. Be kind."
+      }
+    },
+    "loadCategoriesError": "Failed to load forum categories.",
+    "loadingForum": "Loading forum...",
+    "subtitle": "Ask, share, and hang out with other CyberStars. Be kind, search before posting, and have fun.",
+    "newThread": "+ New Thread",
+    "stats": { "threads": "Threads", "posts": "Posts", "categories": "Categories" },
+    "threadsLower": "threads",
+    "postsCount": "{{count}} posts",
+    "by": "by",
+    "loadThreadsError": "Failed to load threads.",
+    "loadThreadError": "Failed to load thread.",
+    "loadingThreads": "Loading threads...",
+    "crumbForum": "Forum",
+    "crumbError": "Error",
+    "categoryNotFound": "Category not found.",
+    "bannerThreads": "threads",
+    "restrictedThreads": "🔒 Only moderators and admins can start threads in this category.",
+    "threadTitlePlaceholder": "Thread title...",
+    "composerPlaceholder": "Write your post... Markdown supported.",
+    "cancel": "Cancel",
+    "posting": "Posting...",
+    "createThread": "Create Thread",
+    "noThreads": "No threads yet. Be the first to post!",
+    "solved": "✓ Solved",
+    "replies": "replies",
+    "views": "views",
+    "loadingThread": "Loading thread...",
+    "threadNotFound": "Thread not found.",
+    "startedBy": "started by",
+    "postsLower": "posts",
+    "viewsLower": "views",
+    "postReply": "Post a reply",
+    "replyPlaceholder": "Type your reply...",
+    "markdownSupported": "Markdown supported",
+    "postReplyBtn": "Post Reply",
+    "restrictedReply": "🔒 Only moderators and admins can reply in this category.",
+    "locked": "🔒 This thread is locked. No new replies.",
+    "deletedBy": "This post was deleted by",
+    "changeRole": "Change this member's role",
+    "editedBy": "edited by {{name}}",
+    "solutionBanner": "Marked as solution — this answer solved the question",
+    "save": "Save",
+    "markSolution": "✓ Mark as solution",
+    "edit": "✎ Edit",
+    "confirmDeleteThread": "Delete this entire thread?",
+    "confirmDeletePost": "Delete this post?",
+    "deleteThread": "🗑 Delete thread",
+    "delete": "Delete"
+  },
+  "almanac": {
+    "categories": {
+      "all": "All",
+      "history": "History",
+      "oss": "Open Source",
+      "legends": "Legends",
+      "security": "Security",
+      "hardware": "Hardware",
+      "internet": "Internet",
+      "space": "Space",
+      "ai": "AI & Future",
+      "claude": "Claude",
+      "gemini": "Gemini",
+      "chatgpt": "ChatGPT"
+    },
+    "prevTopics": "Previous topics",
+    "nextTopics": "Next topics",
+    "carousel": "Carousel",
+    "showAll": "Show all",
+    "kicker": "✦ The CyberStars Almanac",
+    "title": "Tech stories, fun facts",
+    "titleLine2": "& everything in between.",
+    "subtitle": "Open-source legends and hacker culture, tech history, space, famous quotes, and the curious little fun facts behind the tools you use every day. New reads every week.",
+    "featured": "FEATURED STORY",
+    "latestReads": "Latest reads",
+    "articles": "articles",
+    "inThisTopic": "in this topic",
+    "page": "page",
+    "prevFact": "Previous fun fact",
+    "nextFact": "Next fun fact",
+    "prevQuote": "Previous quote",
+    "nextQuote": "Next quote",
+    "funFact": "🎲 Fun Fact",
+    "quotes": "💬 Quotes",
+    "timelineKicker": "⏳ The Timeline",
+    "timelineTitle": "Moments that bent the trajectory"
+  },
+  "lesson": {
+    "difficulty": { "Easy": "Easy", "Medium": "Medium", "Hard": "Hard" },
+    "courseMilestone": "Course Milestone!",
+    "lessonComplete": "Lesson Complete!",
+    "tabLesson": "📖 Lesson",
+    "tabTerminal": "⌨️ Terminal",
+    "tabCode": "💻 Code",
+    "lessonNofM": "Lesson {{n}} of {{total}}",
+    "completed": "✓ Completed",
+    "previous": "← Previous",
+    "next": "Next →",
+    "marking": "Marking...",
+    "markComplete": "Mark Complete",
+    "resetTitle": "Reset code",
+    "reset": "↺ Reset",
+    "confirmReset": "Reset the code to the lesson's default template? Your current code will be lost.",
+    "save": "💾 Save",
+    "codeSaved": "Code saved!",
+    "badgeEarned": "Badge earned: {{label}}"
+  },
+  "laniakea": {
+    "introTitle": "Welcome aboard, captain.",
+    "introSub": "A drift vessel for unhurried exploration. Take the helm — glide through 100+ worlds, past nebulae and black holes. No goals. No timer. Just the cosmos through your viewport.",
+    "moveStrafe": "Move / strafe",
+    "mouseLook": "Center = still · edge = rotate (360°)",
+    "pause": "Pause",
+    "exitToDashboard": "Exit to dashboard",
+    "touchSteer": "Right stick · steer (turn & pitch)",
+    "touchThrottle": "Left arrows · hold to accelerate / decelerate",
+    "beginDrift": "Begin Drift",
+    "introHint": "Move the mouse to look around · W to fly forward",
+    "mode": "Mode",
+    "modeDrift": "DRIFT",
+    "heart": "Heart",
+    "velocity": "Velocity",
+    "o2level": "O₂ Level",
+    "cabinPsi": "Cabin PSI",
+    "position": "Position",
+    "nearest": "Nearest",
+    "engine": "Engine",
+    "course": "Course",
+    "courseOpen": "OPEN",
+    "approaching": "Approaching",
+    "exit": "EXIT",
+    "paused": "Paused",
+    "pausedSubPre": "Take a moment. Click anywhere or press",
+    "pausedSubPost": "to keep drifting.",
+    "resume": "RESUME",
+    "accelerate": "Accelerate",
+    "decelerate": "Decelerate"
+  },
+  "code": {
+    "run": "▶ Run",
+    "running": "Running...",
+    "runTitle": "Ctrl + Enter to run code",
+    "output": "★ Output",
+    "runToSee": "Run your code to see the output..."
+  },
+  "terminal": {
+    "label": "Terminal",
+    "starting": "Starting sandbox...",
+    "resetTitle": "Reset sandbox",
+    "enterToRun": "Enter to run"
+  },
+  "gamification": {
+    "firstSteps": "{{course}} First Steps",
+    "firstStepsDesc": "Complete your first {{course}} lesson",
+    "tier": "{{course}} {{tier}}",
+    "tierDesc": "Complete {{count}} {{course}} lessons",
+    "bronze": "Bronze",
+    "silver": "Silver",
+    "gold": "Gold",
+    "notEarned": " (not yet earned)"
+  }
+}

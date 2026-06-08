@@ -1,0 +1,537 @@
+{
+  "nav": {
+    "dashboard": "Panou",
+    "courses": "Cursuri",
+    "algorithms": "Algoritmi",
+    "forum": "Forum",
+    "almanac": "Almanah",
+    "laniakea": "Laniakea Explorer"
+  },
+  "topbar": {
+    "toggleMenu": "Comută meniul",
+    "toggleSidebar": "Comută bara laterală",
+    "profile": "Profil",
+    "support": "Suport",
+    "rules": "Reguli",
+    "welcomeTour": "Tur de bun venit",
+    "signOut": "Deconectare",
+    "signIn": "Conectare"
+  },
+  "lang": {
+    "switch": "Schimbă limba",
+    "en": "EN",
+    "ro": "RO"
+  },
+  "home": {
+    "continueWhereLeftOff": "Continuă de unde ai rămas",
+    "recentlyAccessed": "Accesate recent",
+    "fromAlmanac": "Din Almanah",
+    "viewAll": "Vezi tot →",
+    "readTime": "{{time}} de citit",
+    "readMore": "Citește →",
+    "activity": "Activitate",
+    "activeDays": "<0>{{count}}</0> zile active în ultimele {{weeks}} săptămâni",
+    "dayTue": "Mar",
+    "dayThu": "Joi",
+    "daySat": "Sâm",
+    "less": "Mai puțin",
+    "more": "Mai mult",
+    "noActivity": "Fără activitate",
+    "lessonsCompleted_one": "{{count}} lecție finalizată",
+    "lessonsCompleted_other": "{{count}} lecții finalizate",
+    "minAgo": "acum {{count}}m",
+    "hourAgo": "acum {{count}}h",
+    "dayAgo": "acum {{count}}z",
+    "lessonOfTheDay": "Lecția zilei",
+    "recommended": "Recomandat",
+    "continueJourney": "Continuă-ți călătoria în {{course}} cu această lecție.",
+    "startLesson": "Începe lecția →",
+    "courseMilestones": "Progres pe cursuri",
+    "lessonsRemaining_one": "<0>{{count}}</0> lecție rămasă",
+    "lessonsRemaining_other": "<0>{{count}}</0> lecții rămase",
+    "next": "urmează:",
+    "notStarted_one": "Neînceput · {{count}} lecție",
+    "notStarted_other": "Neînceput · {{count}} lecții",
+    "marketing": {
+      "title": "Învață să programezi, gratuit",
+      "subtitle": "Lecții interactive în <1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>. Citește, scrie, rulează — totul într-un singur loc.",
+      "startLearning": "Începe să înveți →",
+      "signIn": "Conectare",
+      "readCard": "Citește",
+      "readCardDesc": "Lecții scurte, explicate simplu",
+      "writeCard": "Scrie",
+      "writeCardDesc": "Editor interactiv direct în browser",
+      "runCard": "Rulează",
+      "runCardDesc": "Execuție reală de cod cu feedback instant"
+    }
+  },
+  "common": {
+    "loading": "Se încarcă...",
+    "close": "Închide"
+  },
+  "courses": {
+    "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
+    "lessons_one": "lecție",
+    "lessons_other": "lecții",
+    "percentComplete": "{{pct}}% finalizat",
+    "continue": "Continuă",
+    "viewSyllabus": "Vezi programa →",
+    "chapters": "Capitole",
+    "descriptions": {
+      "python": "Începător în programare? Îți recomandăm cu căldură Python",
+      "c": "Programare de nivel jos: pointeri, memorie și concepte de sistem de operare",
+      "java": "Programare orientată pe obiecte",
+      "linux": "Stăpânește terminalul — fișiere, navigare și comenzi shell",
+      "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare",
+      "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții",
+      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, structuri și memorie",
+      "kotlin": "Limbaj JVM modern — concis, sigur și interoperabil"
+    }
+  },
+  "algorithms": {
+    "intro": "Alege un limbaj și rezolvă provocări care combină ce ai învățat la cursuri.",
+    "desc": {
+      "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare. Ideal pentru a-ți dezvolta gândirea de rezolvare a problemelor.",
+      "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții. Exersează proiectarea cu obiecte.",
+      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, structuri și memorie. Gândește aproape de hardware."
+    }
+  },
+  "algoList": {
+    "courseNotFound": "Cursul nu a fost găsit.",
+    "title": "Algoritmi {{lang}}",
+    "challenges_one": "{{count}} provocare",
+    "challenges_other": "{{count}} provocări",
+    "filters": {
+      "all": "Toate",
+      "easy": "Ușor",
+      "medium": "Mediu",
+      "hard": "Greu"
+    },
+    "diff": {
+      "easy": "ușor",
+      "medium": "mediu",
+      "hard": "greu"
+    },
+    "noMatch": "Nicio provocare nu corespunde acestui filtru."
+  },
+  "auth": {
+    "tabs": { "login": "Autentificare", "signup": "Înregistrare" },
+    "brand": {
+      "tagline": "Învață să programezi prin lecții interactive. Scrie cod real și colecționează insigne pe parcurs."
+    },
+    "features": [
+      { "bold": "Editor de cod live", "rest": " — scrie și rulează cod instant" },
+      { "bold": "Python, C, Java și Linux", "rest": " — programă structurată" },
+      { "bold": "Insigne", "rest": " — sărbătorește fiecare lecție terminată" },
+      { "bold": "Forum comunitar", "rest": " — întreabă, împărtășește și ajută-i pe alții" },
+      { "bold": "Almanahul", "rest": " — istorie tech, curiozități și legende" },
+      { "bold": "Laniakea Explorer", "rest": " — explorează universul din cabina ta" }
+    ],
+    "backToLogin": "← Înapoi la autentificare",
+    "forgotTitle": "Ai uitat parola",
+    "resetTitle": "Resetează parola",
+    "forgotSubtitle": "Introdu adresa de email și îți trimitem un cod din 6 cifre.",
+    "resetSubtitle": "Introdu codul din email și noua parolă.",
+    "displayName": "Nume afișat",
+    "displayNamePlaceholder": "Alege un nume de utilizator",
+    "email": "Email",
+    "resetCode": "Cod de resetare",
+    "resetCodePlaceholder": "Cod din 6 cifre",
+    "newPassword": "Parolă nouă",
+    "password": "Parolă",
+    "passwordPlaceholderSignup": "Min. 8 caractere",
+    "passwordPlaceholderReset": "Min. 6 caractere",
+    "passwordPlaceholderLogin": "Introdu parola",
+    "rememberMe": "Ține-mă minte",
+    "forgotPassword": "Ai uitat parola?",
+    "submitLogin": "Autentificare",
+    "submitSignup": "Creează cont",
+    "submitForgot": "Trimite codul de resetare",
+    "submitReset": "Resetează parola",
+    "noAccount": "Nu ai cont?",
+    "signUpFree": "Înregistrează-te gratuit",
+    "haveAccount": "Ai deja cont?",
+    "logIn": "Autentifică-te",
+    "strength": { "weak": "Slabă", "medium": "Devine mai bună", "strong": "Parolă puternică!" },
+    "successForgot": "Dacă acel email există, a fost trimis un cod de resetare. Verifică-ți inboxul.",
+    "successReset": "Parolă resetată! Acum te poți autentifica.",
+    "serverError": "Eroare de server, încearcă mai târziu"
+  },
+  "welcome": {
+    "nodes": [
+      "01 · Pornire",
+      "02 · Limbaje",
+      "03 · Almanah",
+      "04 · Forum",
+      "05 · Laniakea Explorer",
+      "06 · Lansare"
+    ],
+    "skip": "SARI LA PANOU →",
+    "hero": {
+      "eyebrow": "Cont gata · Turul începe",
+      "welcomeTo": "Bun venit la",
+      "sub": "Un tur rapid prin universul în care tocmai ai intrat. Continuă să derulezi — tot ce ai nevoie este mai jos.",
+      "scroll": "DERULEAZĂ PENTRU A ÎNCEPE"
+    },
+    "boot": {
+      "num": "// 01 — INIȚIALIZARE",
+      "title": "Pornim <1>stația ta de lucru</1>.",
+      "subtitle": "Încălzim editorul, sincronizăm programa și aprindem universul. Privește cum sistemele intră în funcțiune.",
+      "steps": [
+        "Se montează editorul de cod",
+        "Se încarcă nucleele C / Java / Python / Bash",
+        "Se indexează almanahul · 2.418 intrări",
+        "Se sincronizează discuțiile din forum",
+        "Se cartografiază universul Laniakea"
+      ]
+    },
+    "langs": {
+      "num": "// 02 — LIMBAJE",
+      "title": "Patru limbaje.<1></1>Un singur <3>parcurs de învățare</3>.",
+      "subtitle": "Începe de oriunde. Fiecare curs e practic — scrii cod real din prima lecție, cu exerciții evaluate automat și almanahul la o apăsare de tastă.",
+      "lessonsLabel": "lecții",
+      "cards": {
+        "c": {
+          "num": "01 / SISTEME",
+          "tag": "Memorie · Pointeri · Viteză",
+          "desc": "Înțelege ce face de fapt fiecare program în spate."
+        },
+        "java": {
+          "num": "02 / OOP",
+          "tag": "Clase · JVM · Tipare",
+          "desc": "Construiește aplicații robuste așa cum le livrează industria în realitate."
+        },
+        "python": {
+          "num": "03 / SCRIPTING",
+          "tag": "Date · API-uri · Automatizare",
+          "desc": "De la hello world la analiză de date fără să părăsești editorul."
+        },
+        "bash": {
+          "num": "04 / LINUX",
+          "tag": "Shell · Pipe-uri · Sysadmin",
+          "desc": "Vorbește Linux fluent. Shell-ul devine o a doua tastatură."
+        }
+      }
+    },
+    "almanac": {
+      "num": "// 03 — REFERINȚĂ",
+      "title": "<1>Almanahul</1>.<3></3>Orice informație, la o căutare distanță.",
+      "subtitle": "Te-ai blocat la un detaliu de sintaxă? Almanahul are peste 2.400 de intrări pentru fiecare limbaj pe care îl predăm — funcții, cuvinte cheie, comenzi, capcane — toate legate de lecțiile care le-au introdus.",
+      "stats": { "entries": "intrări", "examples": "exemple", "search": "căutare" }
+    },
+    "forum": {
+      "num": "// 04 — COMUNITATE",
+      "title": "Un <1>forum</1> unde<3></3>răspunsurile chiar ajung.",
+      "subtitle": "Fiecare lecție are propriul fir de discuție. Mentorii și cursanții avansați triază întrebările din oră în oră. Blocurile de cod sunt afișate cu evidențiere de sintaxă și sandbox dintr-un clic.",
+      "stats": { "avgReply": "răspuns mediu", "threads": "discuții", "solved": "rezolvate" }
+    },
+    "laniakea": {
+      "num": "// 05 — LANIAKEA EXPLORER",
+      "title": "<1>Laniakea Explorer</1><3></3>este un univers.",
+      "subtitle": "Când creierul tău are nevoie de o pauză, plutește în Laniakea Explorer — o galaxie navigabilă unde fiecare planetă e o misiune secundară sau o cameră a comunității. Zboară prin ea ca într-un joc.",
+      "controlsTitle": "CONTROALE",
+      "navigate": "navighează",
+      "steer": "direcționează",
+      "boost": "accelerează"
+    },
+    "network": {
+      "num": "// 06 — TOTUL SE CONECTEAZĂ",
+      "title": "O platformă, fiecare piesă <1>conectată</1>.",
+      "subtitle": "Fiecare lecție trimite la intrări din almanah. Fiecare eroare sugerează un fir din forum. Fiecare lecție finalizată deblochează o insignă. Progresul tău apare peste tot — instant.",
+      "nodes": {
+        "lessons": "LECȚII",
+        "almanac": "ALMANAH",
+        "forum": "FORUM",
+        "laniakea": "LANIAKEA",
+        "badges": "INSIGNE",
+        "editor": "EDITOR",
+        "you": "TU"
+      }
+    },
+    "cta": {
+      "eyebrow": "Tur finalizat",
+      "title": "Ești <1>pregătit</1>.",
+      "subtitle": "Alege un limbaj. Deschide o lecție. Scrie prima ta linie de cod pe CyberStars.",
+      "button": "Intră în panou",
+      "foot": "Bun venit la bord, cyberstar."
+    }
+  },
+  "rules": {
+    "title": "Regulile comunității",
+    "subtitle": "Aceste reguli ajută la menținerea CyberStars ca un mediu de învățare pozitiv pentru toți.",
+    "items": [
+      {
+        "title": "Fii respectuos",
+        "desc": "Tratează-i pe toți cu bunătate. Fără hărțuire, bullying, discurs instigator la ură sau atacuri personale."
+      },
+      {
+        "title": "Păstrează un ton potrivit",
+        "desc": "Fără spam, reclame în forum sau oriunde pe platformă."
+      },
+      {
+        "title": "Fără exploatarea bug-urilor",
+        "desc": "Dacă găsești un bug sau un exploit, raportează-l prin Suport în loc să-l folosești abuziv pentru insigne sau alte avantaje."
+      },
+      {
+        "title": "Engleză",
+        "desc": "Aceasta este o comunitate de limbă engleză. Folosirea altor limbi nu este permisă."
+      }
+    ]
+  },
+  "profile": {
+    "edit": "Editează",
+    "avatarAlt": "Avatar",
+    "removeAvatar": "Elimină avatarul",
+    "fileTooLarge": "Fișier prea mare (max 2MB)",
+    "uploadFailed": "Încărcare eșuată",
+    "bio": "Bio",
+    "bioPlaceholder": "Spune-le altora despre tine...",
+    "status": "Status",
+    "statusExpires": "(expiră în 24h)",
+    "statusPlaceholder": "Cu ce te ocupi?",
+    "set": "Setează",
+    "lessonsDone": "Lecții terminate",
+    "activeCourses": "Cursuri active",
+    "badges": "Insigne"
+  },
+  "support": {
+    "title": "Suport",
+    "subtitle": "Ai găsit un bug, ai o întrebare sau vrei să raportezi ceva? Deschide un tichet și echipa se va uita.",
+    "newTicket": "Tichet nou",
+    "subjectPlaceholder": "Subiect",
+    "messagePlaceholder": "Descrie problema sau întrebarea în detaliu...",
+    "sending": "Se trimite...",
+    "submit": "Trimite tichetul",
+    "submitted": "Tichet trimis!",
+    "yourTickets": "Tichetele tale",
+    "noTickets": "Nu ai deschis încă niciun tichet.",
+    "allTickets": "Toate tichetele · Admin",
+    "noTicketsAdmin": "Niciun tichet de la nimeni încă.",
+    "types": {
+      "BUG": "🐞 Raportare bug",
+      "QUESTION": "❓ Întrebare",
+      "RULE_VIOLATION": "🚫 Încălcare reguli",
+      "FEEDBACK": "💡 Feedback / idee",
+      "ACCOUNT": "👤 Problemă de cont",
+      "OTHER": "📋 Altele"
+    },
+    "status": {
+      "OPEN": "Deschis",
+      "IN_PROGRESS": "În lucru",
+      "RESOLVED": "Rezolvat",
+      "CLOSED": "Închis"
+    },
+    "markSolved": "✓ Marchează ca rezolvat",
+    "replyPlaceholder": "Scrie un răspuns...",
+    "send": "Trimite",
+    "you": "Tu",
+    "admin": "admin"
+  },
+  "forum": {
+    "time": {
+      "justNow": "chiar acum",
+      "minAgo": "acum {{count}}m",
+      "hourAgo": "acum {{count}}h",
+      "dayAgo": "acum {{count}}z"
+    },
+    "roles": { "ADMIN": "Admin", "MODERATOR": "Moderator", "USER": "Utilizator" },
+    "groups": {
+      "Community": "Comunitate",
+      "Help & Support": "Ajutor și suport",
+      "Show & Tell": "Arată și spune",
+      "Off-Topic": "Diverse"
+    },
+    "categories": {
+      "announcements": {
+        "name": "Anunțuri",
+        "desc": "Actualizări ale platformei, cursuri noi și știri importante de la echipa CyberStars."
+      },
+      "introductions": {
+        "name": "Prezentări",
+        "desc": "Ești nou pe CyberStars? Salută și cunoaște alți programatori de nivelul tău."
+      },
+      "help-python": {
+        "name": "Ajutor Python",
+        "desc": "Blocat la o lecție sau un proiect? Pune întrebări, împărtășește erori și deblochează-te."
+      },
+      "help-java": {
+        "name": "Ajutor Java",
+        "desc": "Clase, moștenire, stream-uri — și acel NullPointerException care nu vrea să dispară."
+      },
+      "help-c": {
+        "name": "Ajutor programare C",
+        "desc": "Pointeri, segfault-uri, malloc — artele întunecate. Adu output-ul gdb, pleacă cu răspunsuri."
+      },
+      "showcase": {
+        "name": "Arată-ți proiectul",
+        "desc": "Ai construit ceva mișto? Împărtășește aici — chiar și scripturi mici. Reacțiile sunt încurajate."
+      },
+      "challenges": {
+        "name": "Provocări și concursuri",
+        "desc": "Puzzle-uri săptămânale, discuții de turneu, clasamente. Compară soluțiile după termenul limită."
+      },
+      "lounge": {
+        "name": "Lounge-ul",
+        "desc": "Vorbește despre orice — jocuri, școală, visul ciudat pe care l-ai avut. Fii amabil."
+      }
+    },
+    "loadCategoriesError": "Nu s-au putut încărca categoriile forumului.",
+    "loadingForum": "Se încarcă forumul...",
+    "subtitle": "Întreabă, împărtășește și petrece timp cu ceilalți CyberStars. Fii amabil, caută înainte de a posta și distrează-te.",
+    "newThread": "+ Discuție nouă",
+    "stats": { "threads": "Discuții", "posts": "Postări", "categories": "Categorii" },
+    "threadsLower": "discuții",
+    "postsCount": "{{count}} postări",
+    "by": "de",
+    "loadThreadsError": "Nu s-au putut încărca discuțiile.",
+    "loadThreadError": "Nu s-a putut încărca discuția.",
+    "loadingThreads": "Se încarcă discuțiile...",
+    "crumbForum": "Forum",
+    "crumbError": "Eroare",
+    "categoryNotFound": "Categoria nu a fost găsită.",
+    "bannerThreads": "discuții",
+    "restrictedThreads": "🔒 Doar moderatorii și administratorii pot începe discuții în această categorie.",
+    "threadTitlePlaceholder": "Titlul discuției...",
+    "composerPlaceholder": "Scrie postarea ta... Markdown acceptat.",
+    "cancel": "Anulează",
+    "posting": "Se postează...",
+    "createThread": "Creează discuția",
+    "noThreads": "Încă nu există discuții. Fii primul care postează!",
+    "solved": "✓ Rezolvat",
+    "replies": "răspunsuri",
+    "views": "vizualizări",
+    "loadingThread": "Se încarcă discuția...",
+    "threadNotFound": "Discuția nu a fost găsită.",
+    "startedBy": "începută de",
+    "postsLower": "postări",
+    "viewsLower": "vizualizări",
+    "postReply": "Postează un răspuns",
+    "replyPlaceholder": "Scrie răspunsul tău...",
+    "markdownSupported": "Markdown acceptat",
+    "postReplyBtn": "Postează răspunsul",
+    "restrictedReply": "🔒 Doar moderatorii și administratorii pot răspunde în această categorie.",
+    "locked": "🔒 Această discuție este blocată. Fără răspunsuri noi.",
+    "deletedBy": "Această postare a fost ștearsă de",
+    "changeRole": "Schimbă rolul acestui membru",
+    "editedBy": "editat de {{name}}",
+    "solutionBanner": "Marcat ca soluție — acest răspuns a rezolvat întrebarea",
+    "save": "Salvează",
+    "markSolution": "✓ Marchează ca soluție",
+    "edit": "✎ Editează",
+    "confirmDeleteThread": "Ștergi întreaga discuție?",
+    "confirmDeletePost": "Ștergi această postare?",
+    "deleteThread": "🗑 Șterge discuția",
+    "delete": "Șterge"
+  },
+  "almanac": {
+    "categories": {
+      "all": "Toate",
+      "history": "Istorie",
+      "oss": "Open Source",
+      "legends": "Legende",
+      "security": "Securitate",
+      "hardware": "Hardware",
+      "internet": "Internet",
+      "space": "Spațiu",
+      "ai": "AI și viitor",
+      "claude": "Claude",
+      "gemini": "Gemini",
+      "chatgpt": "ChatGPT"
+    },
+    "prevTopics": "Subiecte anterioare",
+    "nextTopics": "Subiecte următoare",
+    "carousel": "Carusel",
+    "showAll": "Arată tot",
+    "kicker": "✦ Almanahul CyberStars",
+    "title": "Povești tech, curiozități",
+    "titleLine2": "și tot ce e între ele.",
+    "subtitle": "Legende open-source și cultură hacker, istorie tech, spațiu, citate celebre și micile curiozități din spatele instrumentelor pe care le folosești zilnic. Lecturi noi în fiecare săptămână.",
+    "featured": "POVESTE RECOMANDATĂ",
+    "latestReads": "Cele mai noi lecturi",
+    "articles": "articole",
+    "inThisTopic": "în acest subiect",
+    "page": "pagina",
+    "prevFact": "Curiozitatea anterioară",
+    "nextFact": "Curiozitatea următoare",
+    "prevQuote": "Citatul anterior",
+    "nextQuote": "Citatul următor",
+    "funFact": "🎲 Curiozitate",
+    "quotes": "💬 Citate",
+    "timelineKicker": "⏳ Cronologia",
+    "timelineTitle": "Momente care au schimbat traiectoria"
+  },
+  "lesson": {
+    "difficulty": { "Easy": "Ușor", "Medium": "Mediu", "Hard": "Greu" },
+    "courseMilestone": "Etapă de curs!",
+    "lessonComplete": "Lecție finalizată!",
+    "tabLesson": "📖 Lecție",
+    "tabTerminal": "⌨️ Terminal",
+    "tabCode": "💻 Cod",
+    "lessonNofM": "Lecția {{n}} din {{total}}",
+    "completed": "✓ Finalizat",
+    "previous": "← Anterioara",
+    "next": "Următoarea →",
+    "marking": "Se marchează...",
+    "markComplete": "Marchează ca finalizat",
+    "resetTitle": "Resetează codul",
+    "reset": "↺ Resetează",
+    "confirmReset": "Resetezi codul la șablonul implicit al lecției? Codul actual se va pierde.",
+    "save": "💾 Salvează",
+    "codeSaved": "Cod salvat!",
+    "badgeEarned": "Insignă obținută: {{label}}"
+  },
+  "laniakea": {
+    "introTitle": "Bun venit la bord, căpitane.",
+    "introSub": "O navă de derivă pentru explorare fără grabă. Preia cârma — alunecă prin peste 100 de lumi, pe lângă nebuloase și găuri negre. Fără obiective. Fără cronometru. Doar cosmosul prin vizorul tău.",
+    "moveStrafe": "Mișcare / deplasare laterală",
+    "mouseLook": "Centru = nemișcat · margine = rotire (360°)",
+    "pause": "Pauză",
+    "exitToDashboard": "Ieșire la panou",
+    "touchSteer": "Joystick dreapta · direcție (rotire și înclinare)",
+    "touchThrottle": "Săgeți stânga · ține apăsat pentru a accelera / decelera",
+    "beginDrift": "Pornește deriva",
+    "introHint": "Mișcă mouse-ul pentru a privi în jur · W pentru a zbura înainte",
+    "mode": "Mod",
+    "modeDrift": "DERIVĂ",
+    "heart": "Puls",
+    "velocity": "Viteză",
+    "o2level": "Nivel O₂",
+    "cabinPsi": "Presiune cabină",
+    "position": "Poziție",
+    "nearest": "Cel mai apropiat",
+    "engine": "Motor",
+    "course": "Curs",
+    "courseOpen": "LIBER",
+    "approaching": "Se apropie",
+    "exit": "IEȘIRE",
+    "paused": "Pauză",
+    "pausedSubPre": "Ia o pauză. Apasă oriunde sau tasta",
+    "pausedSubPost": "pentru a continua deriva.",
+    "resume": "CONTINUĂ",
+    "accelerate": "Accelerează",
+    "decelerate": "Decelerează"
+  },
+  "code": {
+    "run": "▶ Rulează",
+    "running": "Se rulează...",
+    "runTitle": "Ctrl + Enter pentru a rula codul",
+    "output": "★ Rezultat",
+    "runToSee": "Rulează codul pentru a vedea rezultatul..."
+  },
+  "terminal": {
+    "label": "Terminal",
+    "starting": "Se pornește sandbox-ul...",
+    "resetTitle": "Resetează sandbox-ul",
+    "enterToRun": "Enter pentru a rula"
+  },
+  "gamification": {
+    "firstSteps": "{{course}} Primii pași",
+    "firstStepsDesc": "Finalizează prima lecție de {{course}}",
+    "tier": "{{course}} {{tier}}",
+    "tierDesc": "Finalizează {{count}} lecții de {{course}}",
+    "bronze": "Bronz",
+    "silver": "Argint",
+    "gold": "Aur",
+    "notEarned": " (neobținută încă)"
+  }
+}

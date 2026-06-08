@@ -1,12 +1,12 @@
 log = "alpha beta alpha gamma beta alpha"
 
 def split_codes(log): # return the list of codes
-pass
+    pass
 
 def count_codes(codes): # return a dict of code -> count
-pass
+    pass
 
 def most_common(counts): # return the code with the highest count
-pass
+    pass
 
 # use the three functions, then print the report

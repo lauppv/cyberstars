@@ -1,5 +1,5 @@
 def parse(reading): # split the reading, convert to numbers, return sum, largest, smallest
-pass
+    pass
 
 reading = input()
 total, largest, smallest = parse(reading)

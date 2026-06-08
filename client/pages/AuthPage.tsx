@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { ApiClientError } from '../services/apiClient';
 import { forgotPassword, resetPassword } from '../services/authService';
@@ -152,11 +153,16 @@ export function AuthPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { login, signup } = useAuth();
 
   const strength = useMemo(() => getPasswordStrength(password), [password]);
   const strengthLabel =
-    strength <= 1 ? 'Weak' : strength === 2 ? 'Getting better' : 'Strong password!';
+    strength <= 1
+      ? t('auth.strength.weak')
+      : strength === 2
+        ? t('auth.strength.medium')
+        : t('auth.strength.strong');
   const strengthClass = strength === 1 ? 'weak' : strength === 2 ? 'medium' : 'strong';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -173,11 +179,11 @@ export function AuthPage() {
         navigate('/welcome');
       } else if (mode === 'forgot') {
         await forgotPassword(email);
-        setSuccess('If that email exists, a reset code was sent. Check your inbox.');
+        setSuccess(t('auth.successForgot'));
         setMode('reset');
       } else if (mode === 'reset') {
         await resetPassword(email, code, password);
-        setSuccess('Password reset! You can now log in.');
+        setSuccess(t('auth.successReset'));
         setCode('');
         setPassword('');
         setMode('login');
@@ -186,7 +192,7 @@ export function AuthPage() {
       if (err instanceof ApiClientError) {
         setError(err.message);
       } else {
-        setError('Server error, try again later');
+        setError(t('auth.serverError'));
       }
     } finally {
       setLoading(false);
@@ -271,39 +277,34 @@ export function AuthPage() {
               </span>
             </div>
             <p className="text-lg text-[var(--text2)] leading-relaxed mb-10">
-              Learn to code through interactive lessons. Write real code and collect badges as you
-              go.
+              {t('auth.brand.tagline')}
             </p>
             <div className="flex flex-col gap-4 text-left">
-              {[
-                { icon: '⌨️', bold: 'Live code editor', rest: ' — write & run code instantly' },
-                { icon: '💻', bold: 'Python, C, Java & Linux', rest: ' — structured curriculum' },
-                { icon: '🏆', bold: 'Badges', rest: ' — celebrate every lesson you finish' },
-                { icon: '💬', bold: 'Community forum', rest: ' — ask, share, and help others' },
-                { icon: '📰', bold: 'The Almanac', rest: ' — tech history, facts & legends' },
-                {
-                  icon: '🚀',
-                  bold: 'Laniakea Explorer',
-                  rest: ' — explore the universe in your cockpit',
-                },
-              ].map((f) => (
-                <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0"
-                    style={{
-                      background: 'rgba(34,34,46,.55)',
-                      border: '1px solid rgba(108,92,231,.35)',
-                      backdropFilter: 'blur(8px)',
-                    }}
-                  >
-                    {f.icon}
+              {['⌨️', '💻', '🏆', '💬', '📰', '🚀'].map((icon, i) => {
+                const f = {
+                  icon,
+                  bold: t(`auth.features.${i}.bold`),
+                  rest: t(`auth.features.${i}.rest`),
+                };
+                return (
+                  <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0"
+                      style={{
+                        background: 'rgba(34,34,46,.55)',
+                        border: '1px solid rgba(108,92,231,.35)',
+                        backdropFilter: 'blur(8px)',
+                      }}
+                    >
+                      {f.icon}
+                    </div>
+                    <span>
+                      <strong className="text-[var(--text)]">{f.bold}</strong>
+                      {f.rest}
+                    </span>
                   </div>
-                  <span>
-                    <strong className="text-[var(--text)]">{f.bold}</strong>
-                    {f.rest}
-                  </span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -323,7 +324,7 @@ export function AuthPage() {
                   }`}
                   style={mode === 'login' ? { boxShadow: '0 2px 8px #6C5CE744' } : undefined}
                 >
-                  Log In
+                  {t('auth.tabs.login')}
                 </button>
                 <button
                   onClick={() => switchMode('signup')}
@@ -334,7 +335,7 @@ export function AuthPage() {
                   }`}
                   style={mode === 'signup' ? { boxShadow: '0 2px 8px #6C5CE744' } : undefined}
                 >
-                  Sign Up
+                  {t('auth.tabs.signup')}
                 </button>
               </div>
             )}
@@ -345,15 +346,13 @@ export function AuthPage() {
                   onClick={() => switchMode('login')}
                   className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline mb-3 flex items-center gap-1"
                 >
-                  ← Back to login
+                  {t('auth.backToLogin')}
                 </button>
                 <h2 className="text-xl font-bold text-[var(--text)] m-0">
-                  {mode === 'forgot' ? 'Forgot Password' : 'Reset Password'}
+                  {mode === 'forgot' ? t('auth.forgotTitle') : t('auth.resetTitle')}
                 </h2>
                 <p className="text-sm text-[var(--text3)] mt-1 mb-0">
-                  {mode === 'forgot'
-                    ? "Enter your email and we'll send you a 6-digit code."
-                    : 'Enter the code from your email and your new password.'}
+                  {mode === 'forgot' ? t('auth.forgotSubtitle') : t('auth.resetSubtitle')}
                 </p>
               </div>
             )}
@@ -368,11 +367,11 @@ export function AuthPage() {
               {mode === 'signup' && (
                 <div className="mb-5">
                   <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                    Display Name
+                    {t('auth.displayName')}
                   </label>
                   <input
                     type="text"
-                    placeholder="Choose a username"
+                    placeholder={t('auth.displayNamePlaceholder')}
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -384,7 +383,7 @@ export function AuthPage() {
               {mode !== 'reset' && (
                 <div className="mb-5">
                   <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                    Email
+                    {t('auth.email')}
                   </label>
                   <input
                     type="email"
@@ -402,13 +401,13 @@ export function AuthPage() {
               {mode === 'reset' && (
                 <div className="mb-5">
                   <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                    Reset Code
+                    {t('auth.resetCode')}
                   </label>
                   <input
                     type="text"
                     inputMode="numeric"
                     autoComplete="one-time-code"
-                    placeholder="6-digit code"
+                    placeholder={t('auth.resetCodePlaceholder')}
                     required
                     maxLength={6}
                     value={code}
@@ -421,7 +420,7 @@ export function AuthPage() {
               {mode !== 'forgot' && (
                 <div className="mb-5">
                   <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
-                    {mode === 'reset' ? 'New Password' : 'Password'}
+                    {mode === 'reset' ? t('auth.newPassword') : t('auth.password')}
                   </label>
                   <div className="relative">
                     <input
@@ -435,10 +434,10 @@ export function AuthPage() {
                       }
                       placeholder={
                         mode === 'signup'
-                          ? 'Min. 8 characters'
+                          ? t('auth.passwordPlaceholderSignup')
                           : mode === 'reset'
-                            ? 'Min. 6 characters'
-                            : 'Enter your password'
+                            ? t('auth.passwordPlaceholderReset')
+                            : t('auth.passwordPlaceholderLogin')
                       }
                       required
                       value={password}
@@ -474,14 +473,14 @@ export function AuthPage() {
                       onChange={(e) => setRemember(e.target.checked)}
                       className="accent-[var(--accent)] w-4 h-4"
                     />
-                    Remember me
+                    {t('auth.rememberMe')}
                   </label>
                   <button
                     type="button"
                     onClick={() => switchMode('forgot')}
                     className="text-[13px] text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
                   >
-                    Forgot password?
+                    {t('auth.forgotPassword')}
                   </button>
                 </div>
               )}
@@ -504,13 +503,13 @@ export function AuthPage() {
                     style={{ animation: 'spin 0.6s linear infinite' }}
                   />
                 ) : mode === 'login' ? (
-                  'Log In'
+                  t('auth.submitLogin')
                 ) : mode === 'signup' ? (
-                  'Create Account'
+                  t('auth.submitSignup')
                 ) : mode === 'forgot' ? (
-                  'Send Reset Code'
+                  t('auth.submitForgot')
                 ) : (
-                  'Reset Password'
+                  t('auth.submitReset')
                 )}
               </button>
             </form>
@@ -518,22 +517,22 @@ export function AuthPage() {
             <div className="text-center text-[13px] text-[var(--text3)] mt-5">
               {mode === 'login' ? (
                 <span>
-                  Don't have an account?{' '}
+                  {t('auth.noAccount')}{' '}
                   <button
                     onClick={() => switchMode('signup')}
                     className="text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
                   >
-                    Sign up free
+                    {t('auth.signUpFree')}
                   </button>
                 </span>
               ) : mode === 'signup' ? (
                 <span>
-                  Already have an account?{' '}
+                  {t('auth.haveAccount')}{' '}
                   <button
                     onClick={() => switchMode('login')}
                     className="text-[var(--accent)] bg-transparent border-none cursor-pointer hover:underline"
                   >
-                    Log in
+                    {t('auth.logIn')}
                   </button>
                 </span>
               ) : null}

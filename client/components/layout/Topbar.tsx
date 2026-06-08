@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface TopbarProps {
   breadcrumb?: { course?: string; lesson?: string; courseHref?: string };
@@ -10,12 +12,12 @@ interface TopbarProps {
 }
 
 const NAV_ITEMS = [
-  { label: 'Dashboard', path: '/' },
-  { label: 'Courses', path: '/courses' },
-  { label: 'Algorithms', path: '/algorithms' },
-  { label: 'Forum', path: '/forum' },
-  { label: 'Almanac', path: '/almanac' },
-  { label: 'Laniakea Explorer', path: '/laniakea' },
+  { key: 'nav.dashboard', path: '/' },
+  { key: 'nav.courses', path: '/courses' },
+  { key: 'nav.algorithms', path: '/algorithms' },
+  { key: 'nav.forum', path: '/forum' },
+  { key: 'nav.almanac', path: '/almanac' },
+  { key: 'nav.laniakea', path: '/laniakea' },
 ];
 
 export function Topbar({
@@ -26,6 +28,7 @@ export function Topbar({
 }: TopbarProps) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const { isLoggedIn, user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -75,7 +78,7 @@ export function Topbar({
         <button
           onClick={() => setMobileNavOpen((v) => !v)}
           className="lg:hidden bg-transparent border border-[var(--border)] text-[var(--text2)] w-8 h-8 rounded-[var(--radius-sm)] flex items-center justify-center text-[15px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer flex-shrink-0"
-          aria-label="Toggle menu"
+          aria-label={t('topbar.toggleMenu')}
           aria-haspopup="menu"
           aria-expanded={mobileNavOpen}
         >
@@ -97,7 +100,7 @@ export function Topbar({
                 }}
                 className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
               >
-                {item.label}
+                {t(item.key)}
               </button>
             ))}
           </div>
@@ -107,7 +110,7 @@ export function Topbar({
           <button
             onClick={onSidebarToggle}
             className="bg-transparent border border-[var(--border)] text-[var(--text3)] w-7 h-7 rounded-[var(--radius-sm)] flex items-center justify-center text-[11px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer"
-            aria-label="Toggle sidebar"
+            aria-label={t('topbar.toggleSidebar')}
           >
             {sidebarOpen ? '◀' : '▶'}
           </button>
@@ -165,7 +168,7 @@ export function Topbar({
                       : 'text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]'
                   }`}
                 >
-                  {item.label}
+                  {t(item.key)}
                 </button>
               );
             })}
@@ -174,6 +177,7 @@ export function Topbar({
       </div>
 
       <div className="flex items-center gap-4">
+        <LanguageSwitcher />
         {isLoggedIn && user ? (
           <div className="relative" ref={menuRef}>
             <button
@@ -230,7 +234,7 @@ export function Topbar({
                   }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
-                  <span className="w-4 text-center">👤</span> Profile
+                  <span className="w-4 text-center">👤</span> {t('topbar.profile')}
                 </button>
                 <button
                   role="menuitem"
@@ -240,7 +244,7 @@ export function Topbar({
                   }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
-                  <span className="w-4 text-center">🎫</span> Support
+                  <span className="w-4 text-center">🎫</span> {t('topbar.support')}
                 </button>
                 <button
                   role="menuitem"
@@ -250,7 +254,7 @@ export function Topbar({
                   }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
-                  <span className="w-4 text-center">📋</span> Rules
+                  <span className="w-4 text-center">📋</span> {t('topbar.rules')}
                 </button>
                 <button
                   role="menuitem"
@@ -260,7 +264,7 @@ export function Topbar({
                   }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
-                  <span className="w-4 text-center">✨</span> Welcome Tour
+                  <span className="w-4 text-center">✨</span> {t('topbar.welcomeTour')}
                 </button>
                 <div className="border-t border-[var(--border)]" />
                 <button
@@ -272,7 +276,7 @@ export function Topbar({
                   }}
                   className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--error)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                 >
-                  <span className="w-4 text-center">↪</span> Sign out
+                  <span className="w-4 text-center">↪</span> {t('topbar.signOut')}
                 </button>
               </div>
             )}
@@ -282,7 +286,7 @@ export function Topbar({
             onClick={() => navigate('/getstarted')}
             className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer"
           >
-            Sign in
+            {t('topbar.signIn')}
           </button>
         )}
       </div>

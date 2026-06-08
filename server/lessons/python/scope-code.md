@@ -1,5 +1,5 @@
 def boost(shield): # return the shield doubled
-pass
+    pass
 
 shield = 100
 
