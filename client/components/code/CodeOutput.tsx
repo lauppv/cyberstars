@@ -1,4 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface CodeOutputProps {
   output: string;
@@ -15,6 +16,7 @@ export function CodeOutput({
   isRunning,
   onInput,
 }: CodeOutputProps) {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLSpanElement>(null);
 
@@ -45,7 +47,7 @@ export function CodeOutput({
       className={`rounded-[var(--radius-sm)] border border-[var(--accent)]/30 overflow-hidden bg-[rgba(10,14,20,0.3)] backdrop-blur-[12px]${fillHeight ? ' flex-1 min-h-0 flex flex-col' : ''}`}
     >
       <div className="px-3 py-1.5 text-[11px] uppercase tracking-[1px] text-[var(--text3)] font-semibold border-b border-[var(--accent)]/20 bg-[rgba(22,22,29,0.2)] flex items-center gap-2">
-        <span>★ Output</span>
+        <span>{t('code.output')}</span>
         {isRunning && (
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
         )}
@@ -86,7 +88,7 @@ export function CodeOutput({
             )}
           </>
         ) : (
-          <span className="text-[var(--text3)] italic">Run your code to see the output...</span>
+          <span className="text-[var(--text3)] italic">{t('code.runToSee')}</span>
         )}
       </div>
     </div>

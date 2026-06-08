@@ -45,7 +45,7 @@ export function CoursesPage() {
           color: courseMeta(course.key).color,
           lessonCount: course.lessons.length,
           progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
-          desc: course.description,
+          desc: t(`courses.descriptions.${course.key}`, { defaultValue: course.description }),
           chapters: course.lessons.map((l) => ({
             name: l.title,
             slug: l.slug,
@@ -55,7 +55,7 @@ export function CoursesPage() {
           firstSlug: course.lessons[0]?.slug,
         };
       });
-  }, [serverCourses, progressMap]);
+  }, [serverCourses, progressMap, t]);
 
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
@@ -188,8 +188,7 @@ export function CoursesPage() {
                 <div className="text-xl font-bold mb-1">{syllabus.name}</div>
                 <div className="flex gap-3 text-xs text-[var(--text3)]">
                   <span>
-                    {syllabus.lessonCount}{' '}
-                    {t('courses.lessons', { count: syllabus.lessonCount })}
+                    {syllabus.lessonCount} {t('courses.lessons', { count: syllabus.lessonCount })}
                   </span>
                 </div>
               </div>

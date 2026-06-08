@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface AchievementToastProps {
   icon: string;
@@ -8,6 +9,7 @@ interface AchievementToastProps {
 }
 
 export function AchievementToast({ icon, title, visible, onClose }: AchievementToastProps) {
+  const { t } = useTranslation();
   useEffect(() => {
     if (!visible) return;
     const t = setTimeout(onClose, 5000);
@@ -29,7 +31,7 @@ export function AchievementToast({ icon, title, visible, onClose }: AchievementT
       <button
         onClick={onClose}
         className="bg-transparent border-none text-[var(--text3)] text-base cursor-pointer ml-2 hover:text-[var(--text)]"
-        aria-label="Close"
+        aria-label={t('common.close')}
       >
         ×
       </button>

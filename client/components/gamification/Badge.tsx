@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 interface BadgeProps {
   icon: string;
   label: string;
@@ -6,11 +8,10 @@ interface BadgeProps {
 }
 
 export function Badge({ icon, label, earned, description }: BadgeProps) {
+  const { t } = useTranslation();
   const tooltip = earned
     ? (description ?? label)
-    : description
-      ? `${description} (not yet earned)`
-      : `${label} (not yet earned)`;
+    : `${description ?? label}${t('gamification.notEarned')}`;
 
   return (
     <div

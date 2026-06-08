@@ -66,7 +66,8 @@
     }
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "close": "Close"
   },
   "courses": {
     "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
@@ -75,7 +76,17 @@
     "percentComplete": "{{pct}}% complete",
     "continue": "Continue",
     "viewSyllabus": "View Syllabus →",
-    "chapters": "Chapters"
+    "chapters": "Chapters",
+    "descriptions": {
+      "python": "New to programming? We highly recommend Python",
+      "c": "Low-level programming, pointers, memory, and OS concepts",
+      "java": "Object Oriented Programming",
+      "linux": "Master the terminal — files, navigation, and shell commands",
+      "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries",
+      "algo-java": "OOP-focused challenges — classes, objects, inheritance, and collections",
+      "algo-c": "Low-level challenges with arrays, pointers, structs, and memory",
+      "kotlin": "Modern JVM language — concise, safe, and interoperable"
+    }
   },
   "algorithms": {
     "intro": "Pick a language and solve challenges that combine what you learned in the courses.",
@@ -498,5 +509,28 @@
     "resume": "RESUME",
     "accelerate": "Accelerate",
     "decelerate": "Decelerate"
+  },
+  "code": {
+    "run": "▶ Run",
+    "running": "Running...",
+    "runTitle": "Ctrl + Enter to run code",
+    "output": "★ Output",
+    "runToSee": "Run your code to see the output..."
+  },
+  "terminal": {
+    "label": "Terminal",
+    "starting": "Starting sandbox...",
+    "resetTitle": "Reset sandbox",
+    "enterToRun": "Enter to run"
+  },
+  "gamification": {
+    "firstSteps": "{{course}} First Steps",
+    "firstStepsDesc": "Complete your first {{course}} lesson",
+    "tier": "{{course}} {{tier}}",
+    "tierDesc": "Complete {{count}} {{course}} lessons",
+    "bronze": "Bronze",
+    "silver": "Silver",
+    "gold": "Gold",
+    "notEarned": " (not yet earned)"
   }
 }

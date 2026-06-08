@@ -66,7 +66,8 @@
     }
   },
   "common": {
-    "loading": "Se încarcă..."
+    "loading": "Se încarcă...",
+    "close": "Închide"
   },
   "courses": {
     "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
@@ -75,7 +76,17 @@
     "percentComplete": "{{pct}}% finalizat",
     "continue": "Continuă",
     "viewSyllabus": "Vezi programa →",
-    "chapters": "Capitole"
+    "chapters": "Capitole",
+    "descriptions": {
+      "python": "Începător în programare? Îți recomandăm cu căldură Python",
+      "c": "Programare de nivel jos: pointeri, memorie și concepte de sistem de operare",
+      "java": "Programare orientată pe obiecte",
+      "linux": "Stăpânește terminalul — fișiere, navigare și comenzi shell",
+      "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare",
+      "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții",
+      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, structuri și memorie",
+      "kotlin": "Limbaj JVM modern — concis, sigur și interoperabil"
+    }
   },
   "algorithms": {
     "intro": "Alege un limbaj și rezolvă provocări care combină ce ai învățat la cursuri.",
@@ -498,5 +509,28 @@
     "resume": "CONTINUĂ",
     "accelerate": "Accelerează",
     "decelerate": "Decelerează"
+  },
+  "code": {
+    "run": "▶ Rulează",
+    "running": "Se rulează...",
+    "runTitle": "Ctrl + Enter pentru a rula codul",
+    "output": "★ Rezultat",
+    "runToSee": "Rulează codul pentru a vedea rezultatul..."
+  },
+  "terminal": {
+    "label": "Terminal",
+    "starting": "Se pornește sandbox-ul...",
+    "resetTitle": "Resetează sandbox-ul",
+    "enterToRun": "Enter pentru a rula"
+  },
+  "gamification": {
+    "firstSteps": "{{course}} Primii pași",
+    "firstStepsDesc": "Finalizează prima lecție de {{course}}",
+    "tier": "{{course}} {{tier}}",
+    "tierDesc": "Finalizează {{count}} lecții de {{course}}",
+    "bronze": "Bronz",
+    "silver": "Argint",
+    "gold": "Aur",
+    "notEarned": " (neobținută încă)"
   }
 }

@@ -2032,10 +2032,10 @@ export function LaniakeaExplorerPage() {
       {/* Touch controls (shown on touch devices) */}
       <div className="rest-touch" id="rest-touch">
         <div className="touch-throttle">
-          <button className="throttle-btn" id="rest-thrUp" aria-label="Accelerate">
+          <button className="throttle-btn" id="rest-thrUp" aria-label={t('laniakea.accelerate')}>
             {'▲'}
           </button>
-          <button className="throttle-btn" id="rest-thrDown" aria-label="Decelerate">
+          <button className="throttle-btn" id="rest-thrDown" aria-label={t('laniakea.decelerate')}>
             {'▼'}
           </button>
         </div>
@@ -2045,14 +2045,14 @@ export function LaniakeaExplorerPage() {
       </div>
 
       <a href="#" className="rest-exit exit">
-        {'✕'} EXIT
+        {'✕'} {t('laniakea.exit')}
       </a>
 
       <div className="pause" id="rest-pause">
         <div className="pause-icon">{'✦'}</div>
-        <div className="pause-title">Paused</div>
+        <div className="pause-title">{t('laniakea.paused')}</div>
         <div className="pause-sub">
-          Take a moment. Click anywhere or press{' '}
+          {t('laniakea.pausedSubPre')}{' '}
           <kbd
             style={{
               fontFamily: 'var(--mono)',
@@ -2064,10 +2064,10 @@ export function LaniakeaExplorerPage() {
           >
             Esc
           </kbd>{' '}
-          to keep drifting.
+          {t('laniakea.pausedSubPost')}
         </div>
         <button className="pause-cta" id="rest-resumeBtn">
-          {'▸'} RESUME
+          {'▸'} {t('laniakea.resume')}
         </button>
       </div>
     </div>
