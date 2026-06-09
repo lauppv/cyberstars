@@ -1,0 +1,13 @@
+{
+  "slug": "the-artifact-system-claude-generates-interactive-content",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Sistemul de artefacte: Claude generează conținut interactiv",
+  "excerpt": "Claude poate crea componente React, vizualizări SVG și instrumente interactive pe loc. A transformat conversațiile în aplicații.",
+  "fullText": "Când Anthropic a introdus sistemul de artefacte în Claude.ai, a schimbat modul în care oamenii interacționau cu AI. În loc să primească doar răspunsuri text, utilizatorii puteau să-i ceară lui Claude să creeze conținut interactiv: componente React, vizualizări de date, jocuri, instrumente.\n\n„Fă-mi un calculator de credit ipotecar.” Câteva secunde mai târziu, apare în conversație un calculator funcțional — interactiv, stilizat, funcțional. „Transformă aceste date într-un grafic.” Se materializează o vizualizare SVG.\n\nSistemul funcționa pentru că Claude înțelegea nu doar cum să scrie cod, ci și cum să proiecteze experiențe pentru utilizatori. Artefactele pe care le producea erau curate, accesibile și stilizate corespunzător — nu doar corecte din punct de vedere tehnic, ci chiar plăcute de folosit.\n\nProfesorii l-au folosit pentru a crea instrumente de învățare personalizate. Designerii l-au folosit pentru a prototipa interfețe. Oamenii de știință din domeniul datelor l-au folosit pentru a construi vizualizări ad-hoc ale seturilor lor de date. Muzicienii l-au folosit pentru a crea explicații interactive de teorie muzicală.\n\nImplicația era profundă: bariera dintre „a avea o idee” și „a avea un prototip funcțional” s-a prăbușit până aproape de zero. Oricine putea descrie ce voia putea obține o versiune funcțională în câteva secunde.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

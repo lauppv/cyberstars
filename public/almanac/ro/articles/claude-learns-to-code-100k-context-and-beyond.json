@@ -1,0 +1,13 @@
+{
+  "slug": "claude-learns-to-code-100k-context-and-beyond",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude învață să programeze: 100K context și dincolo de el",
+  "excerpt": "Fereastra de context de 200K a lui Claude însemna că putea citi baze de cod întregi dintr-o dată. Dezvoltatorii au început să-l folosească nu doar ca să scrie cod, ci ca să înțeleagă sisteme vechi.",
+  "fullText": "Una dintre cele mai apreciate capabilități ale lui Claude este fereastra sa masivă de context — până la 200.000 de tokeni. Asta înseamnă aproximativ 150.000 de cuvinte, sau un roman întreg, sau o bază de cod considerabilă.\n\nPentru dezvoltatori, acest lucru a schimbat regulile jocului. În loc să dea unui AI mici fragmente de cod sperând că a înțeles imaginea de ansamblu, puteau lipi depozite întregi. Claude putea apoi să raționeze despre arhitectură, să găsească erori dincolo de granițele fișierelor și să sugereze refactorizări care necesitau înțelegerea a zeci de module interconectate.\n\nCompaniile au raportat că folosesc Claude pentru a integra noi dezvoltatori: „Doar dă-i baza de cod și cere-i să explice arhitectura.” Ceea ce înainte dura săptămâni de citit documentație acum se putea întâmpla într-o conversație.\n\nContextul lung a permis și fluxuri de lucru noi în revizuirea documentelor juridice, cercetarea academică și analiza financiară — oriunde profesioniștii aveau nevoie să sintetizeze rapid volume mari de text.\n\nCum a spus un dezvoltator: „E ca și cum ai avea un coleg care chiar a citit totul.”",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

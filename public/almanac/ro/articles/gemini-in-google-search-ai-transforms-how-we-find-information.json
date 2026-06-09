@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-in-google-search-ai-transforms-how-we-find-information",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini în Google Search: AI transformă modul în care găsim informații",
+  "excerpt": "Google a integrat Gemini direct în Search, generând rezumate AI pentru interogări complexe. Un miliard de utilizatori au primit răspunsuri AI fără să știe.",
+  "fullText": "În 2024, Google a început să lanseze AI Overviews în Search — alimentate de Gemini. Pentru interogări complexe, în loc să afișeze doar o listă de linkuri albastre, Google genera un răspuns sintetizat în partea de sus a paginii.\n\nÎntreabă „Care este diferența dintre React și Vue pentru o echipă mică?” și primeai o comparație nuanțată înainte de orice rezultat tradițional al căutării. Întreabă „Cum funcționează tehnologia vaccinurilor mRNA?” și primeai o explicație clară, de mai multe paragrafe, cu citări.\n\nScara era fără precedent. Peste un miliard de oameni folosesc Google Search zilnic. Aceasta a fost cea mai mare implementare a unui model AI din istorie — și majoritatea utilizatorilor nici măcar nu știau că vorbeau cu un AI.\n\nGoogle a fost atent la acuratețe. AI Overviews își citau sursele, indicau niveluri de încredere și se bazau pe site-uri autoritare pentru interogări medicale și juridice. Ofereau, de asemenea, modalități rapide de a verifica afirmațiile, prin accesarea surselor originale.\n\nImpactul asupra traficului web a fost intens dezbătut. Unele site-uri au văzut mai puțin trafic de recomandare, pe măsură ce utilizatorii primeau răspunsuri direct. Altele au văzut mai mult, deoarece AI Overviews trimiteau către pagini specifice relevante pe care utilizatorii poate nu le-ar fi găsit altfel.\n\nCeea ce era de netăgăduit era îmbunătățirea experienței utilizatorului: pentru interogări complexe care anterior necesitau accesarea a 5-10 rezultate și sintetizarea manuală a informațiilor, Gemini făcea munca în câteva secunde.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

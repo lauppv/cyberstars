@@ -1,0 +1,13 @@
+{
+  "slug": "claudes-computer-use-ai-learns-to-click-buttons",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Utilizarea computerului de către Claude: AI-ul învață să apese butoane",
+  "excerpt": "Învățarea AI-ului să folosească un computer ca un om — mișcând mouse-ul, apăsând butoane, citind ecrane — a deschis posibilități de automatizare pe care API-urile nu le puteau atinge.",
+  "fullText": "La sfârșitul anului 2024, Anthropic a demonstrat capacitatea lui Claude de a folosi un computer: să navigheze în interfețe grafice, să apese butoane, să completeze formulare și să interacționeze cu software-ul exact ca un om.\n\nAsta sună banal, dar este transformator. Majoritatea programelor software nu au API-uri. Nu poți interacționa programatic cu majoritatea aplicațiilor desktop, a sistemelor enterprise vechi sau a instrumentelor specializate. Singura interfață este cea concepută pentru oameni.\n\nCu utilizarea computerului, Claude putea automatiza fluxuri de lucru care înainte erau imposibile: completarea formularelor guvernamentale, navigarea în instrumentele interne ale companiilor, testarea aplicațiilor web și efectuarea de sarcini repetitive bazate pe interfața grafică.\n\nPentru companiile cu sisteme vechi — bănci, spitale, agenții guvernamentale — acest lucru a fost revoluționar. Nu trebuiau să rescrie software-ul lor vechi de 30 de ani pentru a adăuga capabilități AI. Claude putea pur și simplu să-l folosească la fel cum o făceau angajații lor.\n\nProvocarea tehnică a fost semnificativă: modelul trebuia să înțeleagă capturile de ecran, să planifice interacțiuni în mai mulți pași, să gestioneze erorile și stările neașteptate și să mențină contextul de-a lungul unor fluxuri de lucru lungi.\n\nDar rezultatul părea magic: descrii ce vrei să se facă și privești cum cursorul se mișcă, ferestrele se deschid și sarcinile se finalizează — ca și cum ai avea o fantomă care îți folosește computerul.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "the-cathedral-and-the-bazaar-why-open-source-actually-works",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "1999",
+  "emoji": "📕",
+  "grad": "linear-gradient(135deg,#3a1a1a,#7a2f2f)",
+  "title": "Catedrala și Bazarul — de ce open source chiar funcționează",
+  "excerpt": "Eseul din 1999 al lui Eric S. Raymond a explicat de ce o mulțime haotică de voluntari poate depăși echipe corporative șlefuite. „Cu destui ochi, toate erorile sunt superficiale.” A devenit manifestul unei industrii întregi.",
+  "fullText": "În 1997, Eric S. Raymond a publicat un eseu care avea să remodeleze modul în care industria software gândește despre dezvoltare. „Catedrala și Bazarul” compara două modele de creare a software-ului.\n\nModelul Catedralei era abordarea tradițională: o echipă mică de experți lucrează izolat, proiectând și construind cu atenție software-ul înainte de a lansa publicului versiuni șlefuite. Majoritatea software-ului comercial — și chiar multe proiecte open-source precum GNU Emacs — urmau acest tipar.\n\nModelul Bazarului era ceea ce Raymond observase în proiectul nucleului Linux: un proces haotic și deschis în care oricine putea contribui, lansările se întâmplau constant, iar codul evolua printr-un proces dezordonat, dar eficient, de evaluare colegială și iterație.\n\nRaymond se aștepta ca abordarea Bazarului să producă software inferior. În schimb, a constatat contrariul. Linux era mai fiabil, mai inovator și se mișca mai rapid decât proiectele în stil Catedrală.\n\nObservația lui cheie a fost Legea lui Linus: „Cu destui ochi, toate erorile sunt superficiale.” Când mii de oameni îți citesc codul, erorile care i-ar lua unei echipe mici săptămâni să le găsească sunt depistate în câteva ore.\n\nDar Raymond a identificat ceva mai profund: modelul Bazarului funcționa pentru că alinia stimulentele în mod diferit. Dezvoltatorii Catedralei construiesc ceea ce spune planul. Dezvoltatorii Bazarului își rezolvă propriile nevoi — repară erorile care îi enervează, adaugă funcțiile de care au nevoie. Asta înseamnă că contribuțiile sunt motivate de o nevoie autentică, nu de priorități corporative.\n\nEseul a avut un impact practic enorm. A influențat direct decizia Netscape de a lansa codul sursă al browserului Mozilla în 1998 — una dintre primele mari lansări comerciale de tip open-source. Acest lucru a dus în cele din urmă la Firefox.\n\nA inspirat, de asemenea, crearea „Open Source Initiative” și a însuși termenului „open source” (ca distinct de „free software” al lui Stallman). Eseul le-a oferit liderilor de afaceri un cadru pentru a înțelege de ce oferirea gratuită a codului putea fi un avantaj competitiv.\n\nAstăzi, open source nu este doar acceptat — este dominant. Microsoft, Google, Amazon și practic fiecare companie tehnologică importantă folosesc și contribuie la proiecte open-source. Bazarul a câștigat.",
+  "author": "Ms. Diana",
+  "authorEm": "🦄",
+  "readTime": "10 min"
+}

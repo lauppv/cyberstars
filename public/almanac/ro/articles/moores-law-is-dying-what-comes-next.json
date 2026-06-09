@@ -1,0 +1,14 @@
+{
+  "slug": "moores-law-is-dying-what-comes-next",
+  "cat": "hardware",
+  "tag": "HARDWARE",
+  "year": "2023",
+  "emoji": "📉",
+  "grad": "linear-gradient(135deg,#2a2a1a,#5a5a2f)",
+  "title": "Legea lui Moore moare — ce urmează?",
+  "excerpt": "Timp de 50 de ani, numărul de tranzistoare s-a dublat la fiecare doi ani ca un mecanism de ceasornic. Acum ne lovim de limitele fizice ale siliciului. Industria cipurilor caută febril alternative înainte ca progresul să se blocheze.",
+  "fullText": "În 1965, Gordon Moore a observat că numărul de tranzistoare de pe un cip se dubla aproximativ la fiecare doi ani, în timp ce costurile rămâneau constante. Această observație — Legea lui Moore — a devenit o profeție care se autoîmplinea și care a impulsionat întreaga industrie de semiconductoare timp de peste cinci decenii.\n\nCifrele sunt uluitoare. Intel 4004 (1971) avea 2.300 de tranzistoare. Un cip modern Apple M3 are 25 de miliarde. Asta înseamnă o creștere de 10 milioane de ori. Această creștere exponențială ne-a dat smartphone-uri, cloud computing, AI și practic tot ce este digital.\n\nDar fizica își spune cuvântul. Tranzistoarele de pe cipurile moderne au acum doar câțiva nanometri lățime — ne apropiem de scara atomilor individuali. La aceste dimensiuni, efecte cuantice precum tunelarea electronilor fac curentul să „se scurgă” prin bariere care ar trebui să fie solide. Nu poți face un comutator mai mic decât un atom.\n\nIndustria a luptat cu acest zid prin inginerie inteligentă. Tranzistoarele FinFET (structuri 3D în loc de unele plate) au mai cumpărat un deceniu. Litografia EUV (lumină ultravioletă extremă) a permis tipare mai mici. Tranzistoarele gate-all-around (GAA) sunt următorul truc. Dar fiecare generație costă mai mult — o fabrică de cipuri de ultimă generație costă acum peste 20 de miliarde de dolari pentru a fi construită.\n\nArhitecturile chiplet sunt un răspuns: în loc să facă un cip uriaș, companii precum AMD lipesc împreună cipuri mai mici. Acest lucru ocolește limitele de fabricație folosind modele mai mici, deja dovedite, combinate între ele. Cipurile Ultra ale Apple folosesc această abordare.\n\nDincolo de siliciu, cercetătorii explorează tranzistoarele din nanotuburi de carbon, calculul fotonic (folosind lumina în loc de electroni), cipurile neuromorfice (care imită structura creierului) și, desigur, calculul cuantic. Fiecare are potențial, dar și provocări inginerești masive.\n\nSfârșitul Legii lui Moore nu înseamnă sfârșitul progresului — înseamnă că progresul va veni din direcții diferite. Software mai bun, acceleratoare AI specializate, arhitecturi noi și îmbunătățiri algoritmice pot oferi toate mai multă performanță fără tranzistoare mai mici. Era lui „doar mai așteaptă doi ani și computerul tău va fi de două ori mai rapid” se încheie, dar era ingineriei inteligente abia începe.",
+  "author": "Prof. Andrei",
+  "authorEm": "⚡",
+  "readTime": "8 min"
+}

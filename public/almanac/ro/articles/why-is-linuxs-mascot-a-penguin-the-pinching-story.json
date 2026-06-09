@@ -1,0 +1,14 @@
+{
+  "slug": "why-is-linuxs-mascot-a-penguin-the-pinching-story",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "1996",
+  "emoji": "🐧",
+  "grad": "linear-gradient(135deg,#1a2a4f,#4f6fab)",
+  "title": "De ce este mascota Linux un pinguin? (Povestea ciupiturii)",
+  "excerpt": "În 1996, Linus avea nevoie de o mascotă. I-a spus comunității că fusese ciugulit de un pinguin la o grădină zoologică din Canberra. Presupusa ciupitură a venit cu o ușoară febră — și cu o afecțiune de-o viață pentru pasăre.",
+  "fullText": "În 1996, comunitatea Linux a decis că avea nevoie de o mascotă. Proiectul căpăta un avânt serios, iar un logo recognoscibil ar fi ajutat.\n\nSugestiile au curs — vulturi, rechini, vulpi, toți suspecții obișnuiți de mascotă tehnologică. Apoi Linus Torvalds a intervenit cu o preferință neobișnuită: voia un pinguin.\n\nMotivul lui? În timpul unei vizite la National Zoo & Aquarium din Canberra, Australia, fusese ciupit de un pinguin mic (Eudyptula minor, cea mai mică specie de pinguin din lume). Mușcătura nu a fost gravă, dar Linus a glumit că i-a dat „penguinită” — o afecțiune inventată care provoacă o afecțiune irațională față de aceste păsări.\n\nȘi-a descris mascota ideală: un pinguin care arăta „fericit și mulțumit, de parcă tocmai ar fi mâncat un hering întreg.” Nu feroce, nu corporatist — doar mulțumit.\n\nLarry Ewing, un dezvoltator, a creat imaginea folosind GIMP (GNU Image Manipulation Program — open source, desigur). Rezultatul a fost Tux: un pinguin ușor durduliu, cu aspect prietenos, stând cu o expresie satisfăcută.\n\nNumele „Tux” are mai multe origini revendicate — unii spun că vine de la „Torvalds UniX”, alții că se referă la coloritul pinguinului asemănător unui smoching.\n\nTux a devenit una dintre cele mai recunoscute mascote din tehnologie. Spre deosebire de logourile corporative concepute de agenții de branding, Tux s-a născut dintr-o anecdotă personală, a fost creat cu software liber și nu aparține nimănui. Este mascota perfectă pentru Linux — informală, condusă de comunitate și un pic ciudată.",
+  "author": "Liam",
+  "authorEm": "🐢",
+  "readTime": "4 min"
+}

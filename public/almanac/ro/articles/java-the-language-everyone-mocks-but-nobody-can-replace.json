@@ -1,0 +1,14 @@
+{
+  "slug": "java-the-language-everyone-mocks-but-nobody-can-replace",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1995",
+  "emoji": "☕",
+  "grad": "linear-gradient(135deg,#2a1a0a,#5a3a1a)",
+  "title": "Java — limbajul de care toți își bat joc, dar pe care nimeni nu îl poate înlocui",
+  "excerpt": "Creat în 1995 pentru televizoare interactive, Java a eșuat în scopul său original, dar a cucerit serverele, Android și mediul enterprise. 30 de ani mai târziu, băncile și guvernele lumii încă rulează pe Java.",
+  "fullText": "În 1991, James Gosling de la Sun Microsystems lucra la un proiect numit „Green” — un limbaj pentru televizoare interactive și dispozitive inteligente pentru casă. Ideea era să scrii codul o singură dată și să îl rulezi pe orice procesor. Televizoarele interactive nu au prins niciodată, dar conceptul era puternic.\n\nLimbajul a fost numit inițial „Oak” (după un stejar din fața biroului lui Gosling), dar numele era deja înregistrat ca marcă. Echipa s-a mutat într-o cafenea și a ales „Java” — o referință la cafeaua din insula Java, Indonezia.\n\nJava a fost lansat public pe 23 mai 1995, cu sloganul „Write Once, Run Anywhere” (Scrie o dată, rulează oriunde). Cheia era JVM (Java Virtual Machine) — un strat intermediar care traducea codul Java în instrucțiuni specifice procesorului. Scrii codul o singură dată, îl compilezi în bytecode, iar JVM îl execută pe orice platformă.\n\nInițial, Java a explodat datorită applet-urilor — programe mici care rulau în browser. Erau revoluționare în 1996: animații interactive, jocuri, calculatoare — într-o eră în care web-ul era static. Dar applet-urile aveau probleme de securitate și performanță și au dispărut treptat.\n\nAcolo unde Java a triumfat cu adevărat a fost pe server. Enterprise Java (J2EE, apoi Jakarta EE) a devenit standardul pentru aplicații bancare, guvernamentale și corporative. Milioane de tranzacții financiare pe zi rulează pe Java. Sisteme de emitere a biletelor de avion, platforme de tranzacționare, sisteme medicale — Java.\n\nÎn 2008, Google a ales Java ca limbaj principal pentru Android. Peste 3 miliarde de dispozitive Android rulează aplicații Java (sau Kotlin, care se compilează tot în bytecode JVM). Acest lucru a făcut din Java cel mai folosit limbaj de pe planetă din punctul de vedere al numărului de dispozitive.\n\nProgramatorilor le place să își bată joc de Java — este verbos, are tipare de design excesive, iar clasa „AbstractSingletonProxyFactoryBean” chiar există în Spring Framework. Dar Java are ceva ce limbajele mai „cool” nu au: decenii de stabilitate. O aplicație Java scrisă în 2005 probabil funcționează și astăzi fără modificări.\n\nÎn 2025, Java rămâne în top 3 al limbajelor, cu peste 35 de milioane de dezvoltatori. Oracle continuă să lanseze versiuni noi la fiecare 6 luni. Java nu este sexy, nu este la modă, dar este coloana vertebrală invizibilă a lumii digitale.",
+  "author": "Theo",
+  "authorEm": "🦝",
+  "readTime": "9 min"
+}

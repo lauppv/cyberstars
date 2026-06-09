@@ -1,0 +1,13 @@
+{
+  "slug": "openais-o1-model-ai-that-thinks-before-it-speaks",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2024",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "Modelul o1 de la OpenAI: AI care gândește înainte să vorbească",
+  "excerpt": "Modelul o1 a introdus raționamentul de tip „lanț de gândire” — petrecând mai mult timp gândind problemele înainte de a răspunde. Performanță la nivel de doctorat în știință și matematică.",
+  "fullText": "În septembrie 2024, OpenAI a lansat o1 — un model conceput să gândească mai mult înainte de a răspunde. În loc să genereze imediat un răspuns, o1 raționa prin probleme pas cu pas, petrecând uneori minute pentru o singură replică.\n\nRezultatele au fost dramatice: la probleme dificile de concurs de matematică, o1 a obținut percentila 89 la examenul de calificare pentru Olimpiada Internațională de Matematică. La întrebări de știință la nivel de doctorat, a depășit experții umani în multe domenii.\n\nAbordarea era filosofic diferită de simpla mărire a modelelor. În loc de „mai mulți parametri = mai multă capacitate,” era „mai mult timp de gândire = răspunsuri mai bune.” Având același model de bază, petrecerea mai multor resurse de calcul în timpul inferenței (când se generează răspunsul) producea rezultate mai bune.\n\nPentru utilizatori, acest lucru însemna un nou tipar de interacțiune. Întrebările complexe durau mai mult până la răspuns (de la 30 de secunde la câteva minute), dar răspunsurile erau semnificativ mai bune. Utilizatorii au învățat să rezerve o1 pentru problemele grele și să folosească modele mai rapide pentru interogări simple.\n\nRaționamentul de tip lanț de gândire era vizibil pentru utilizatori, arătând cum modelul descompunea problemele, lua în considerare alternative și construia spre concluzii. Această transparență ajuta utilizatorii să aibă încredere (și să verifice) raționamentul.\n\no1 indica spre un viitor în care capacitatea AI se scala nu doar cu datele de antrenament și parametrii, ci și cu cantitatea de gândire aplicată fiecărei probleme individuale.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}
