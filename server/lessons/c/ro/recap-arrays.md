@@ -15,7 +15,7 @@ Datele sunt deja pe partea dreaptă. Fă următoarele, în ordine:
 **Output**
 
 ```text
-Passing: 6
-Highest: 95
-First fail: 42
+Promovati: 6
+Maxim: 95
+Prima cadere: 42
 ```

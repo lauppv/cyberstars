@@ -11,7 +11,7 @@ int main(void) {
     int fd[2];
     pipe(fd);
 
-    char text[] = "The quick brown fox jumps over the lazy dog";
+    char text[] = "Vulpea bruna sare repede peste cainele lenes din curte";
 
     pid_t pid = fork();
 

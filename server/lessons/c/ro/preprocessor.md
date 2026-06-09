@@ -90,7 +90,7 @@ Funcția **main** le apelează deja — doar adaugă definițiile macro-urilor.
 Programul tău ar trebui să afișeze
 
 ```text
-Rectangle: 15
-Circle: 50.27
+Dreptunghi: 15
+Cerc: 50.27
 Max: 100
 ```

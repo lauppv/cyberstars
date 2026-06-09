@@ -24,9 +24,9 @@ Output: **Lungime: 14**
 #include <string.h>
 
 int main(void) {
-    char a[] = "apple";
-    char b[] = "banana";
-    char c[] = "apple";
+    char a[] = "banana";
+    char b[] = "mar";
+    char c[] = "banana";
 
     printf("%d\n", strcmp(a, b));   // negativ (a vine inainte de b)
     printf("%d\n", strcmp(b, a));   // pozitiv (b vine dupa a)
