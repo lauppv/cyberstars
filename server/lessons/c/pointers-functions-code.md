@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 void tripleIt(int *n) {
-    // triple the value at the address n
 }
 
 int main(void) {

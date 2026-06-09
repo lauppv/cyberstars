@@ -6,8 +6,6 @@ public class Main {
         int sectorAlerta2 = 50;
 
         for (int i = sectorStart; i <= sectorFinal; i++) {
-            // afișează i, sau "Pizza Margherita" pentru sectorAlerta1 și sectorAlerta2
         }
     }
-
 }

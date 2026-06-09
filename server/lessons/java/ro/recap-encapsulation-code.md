@@ -1,5 +1,4 @@
 class ContBancar {
-    // câmpuri, constructor, metode
 }
 
 public class Main {
@@ -15,5 +14,4 @@ public class Main {
         System.out.println(a2);
         System.out.println("Total conturi: " + ContBancar.getTotalConturi());
     }
-
 }

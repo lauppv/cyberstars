@@ -15,7 +15,6 @@ class Cerc extends Forma {
     double arie() {
         return Math.PI * raza * raza;
     }
-
 }
 
 class Dreptunghi extends Forma {
@@ -30,15 +29,9 @@ class Dreptunghi extends Forma {
     double arie() {
         return latime * inaltime;
     }
-
 }
 
 public class Main {
     public static void main(String[] args) {
-        // Creează un array Forma[] cu un Cerc(5) și un Dreptunghi(4, 6)
-
-        // Parcurge array-ul și afișează fiecare arie
-        // Folosește String.format("%.2f", f.arie())
     }
-
 }

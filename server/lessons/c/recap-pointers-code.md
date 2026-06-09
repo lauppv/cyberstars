@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 void matrixStats(int matrix[3][3], int *sum, int *min, int *max) {
-    // nested loops + pointer writes
 }
 
 int main(void) {

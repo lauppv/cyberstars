@@ -1,12 +1,10 @@
 log = "alpha beta alpha gamma beta alpha"
 
-def desparte_coduri(log): # returnează lista de coduri
+def desparte_coduri(log):
     pass
 
-def numara_coduri(coduri): # returnează un dict de cod -> număr
+def numara_coduri(coduri):
     pass
 
-def cel_mai_frecvent(numere): # returnează codul cu numărul cel mai mare
+def cel_mai_frecvent(numere):
     pass
-
-# folosește cele trei funcții, apoi afișează raportul

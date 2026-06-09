@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-// write your three functions here
-
 int main(void) {
     int grades[] = {85, 42, 91, 67, 38, 73, 95, 55};
     int n = 8;

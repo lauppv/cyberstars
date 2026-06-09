@@ -3,8 +3,6 @@ interface Forma {
     String descrie();
 }
 
-// implementează Cerc, Dreptunghi, Triunghi
-
 public class Main {
     static void afiseazaForma(Forma s) {
         System.out.println(String.format("%s — Arie: %.2f", s.descrie(), s.arie()));
@@ -20,9 +18,5 @@ public class Main {
         for (Forma s : forme) {
             afiseazaForma(s);
         }
-
-        // încearcă să convertești forme[0] la Cerc, afișează raza
-        // încearcă să convertești forme[1] la Cerc, prinde excepția
     }
-
 }

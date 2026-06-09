@@ -5,5 +5,4 @@ public class Main {
 
         System.out.println("Mă numesc Cortez, am " + varsta + " ani și înălțimea de " + inaltime + " m");
     }
-
 }

@@ -6,8 +6,6 @@ public class Main {
         int alertSector2 = 50;
 
         for (int i = startSector; i <= endSector; i++) {
-            // print i, or "Pizza Margherita" for alertSector1 and alertSector2
         }
     }
-
 }

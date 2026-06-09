@@ -1,4 +1,4 @@
-def parse(reading): # split the reading, convert to numbers, return sum, largest, smallest
+def parse(reading):
     pass
 
 reading = input()

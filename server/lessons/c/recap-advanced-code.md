@@ -5,11 +5,8 @@
 #define PERM_EXECUTE (1 << 2)
 
 void printPermissions(const char *name, int perms) {
-    // check each flag with & and print
 }
 
 int main(void) {
-    // write config.txt, read it back, print permissions
-
     return 0;
 }

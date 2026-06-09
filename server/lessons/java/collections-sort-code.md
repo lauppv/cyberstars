@@ -8,10 +8,5 @@ public class Main {
         names.add("Tommy");
         names.add("Lance");
         names.add("Phil");
-
-        // Sort the list alphabetically using Collections.sort()
-
-        // Print each name on its own line
     }
-
 }

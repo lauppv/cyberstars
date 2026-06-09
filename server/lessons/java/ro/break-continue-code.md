@@ -5,10 +5,7 @@ public class Main {
         int punteBlocaj = 17;
 
         for (int i = 1; i <= totalPunti; i++) {
-            // sari peste punteBlestemata cu continue
-            // oprește-te la punteBlocaj cu break (nu o afișa)
             System.out.println(i);
         }
     }
-
 }

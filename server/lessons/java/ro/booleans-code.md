@@ -4,7 +4,5 @@ public class Main {
         boolean esteZiLucratoare = true;
         boolean esteOaspete = false;
         boolean areInvitatie = false;
-
-        // scrie if/else aici
     }
 }

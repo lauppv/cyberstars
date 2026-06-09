@@ -1,4 +1,4 @@
-def bubble_sort(numbers): # sort the list ascending using bubble sort, then return it
+def bubble_sort(numbers):
     pass
 
 print(bubble_sort([42, 17, 88, 9, 23]))

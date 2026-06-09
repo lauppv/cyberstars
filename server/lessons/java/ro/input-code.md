@@ -6,8 +6,5 @@ public class Main {
 
         String nume = scanner.nextLine();
         int varsta = scanner.nextInt();
-
-        // construiește și afișează mesajul
     }
-
 }

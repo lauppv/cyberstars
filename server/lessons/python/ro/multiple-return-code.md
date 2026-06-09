@@ -1,4 +1,4 @@
-def analizeaza(citire): # împarte citirea, convertește în numere, returnează suma, cel mai mare, cel mai mic
+def analizeaza(citire):
     pass
 
 citire = input()

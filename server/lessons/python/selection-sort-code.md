@@ -1,4 +1,4 @@
-def selection_sort(numbers): # sort the list ascending using selection sort, then return it
+def selection_sort(numbers):
     pass
 
 print(selection_sort([64, 25, 12, 22, 11]))

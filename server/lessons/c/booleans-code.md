@@ -7,7 +7,5 @@ int main(void) {
     bool isGuest = false;
     bool hasInvitation = false;
 
-    // write the if/else here
-
     return 0;
 }

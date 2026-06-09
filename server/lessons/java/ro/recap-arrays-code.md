@@ -1,6 +1,5 @@
 public class Main {
     static String[] filtreazaCuvinte(String[] cuvinte) {
-        // filtrează, sari peste SPAM, oprește-te la exit, majuscule
         return new String[0];
     }
 
@@ -13,5 +12,4 @@ public class Main {
         }
         System.out.println("Total: " + rezultat.length + " cuvinte");
     }
-
 }

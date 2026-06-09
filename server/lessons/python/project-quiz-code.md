@@ -6,7 +6,5 @@ quiz = [
 ]
 player_answers = ["B", "C", "A", "B"]
 
-def grade_quiz(questions, answers): # count how many answers match each question's "answer"
+def grade_quiz(questions, answers):
     pass
-
-# print "Score: X/Y", "Percentage: Z%", then "PASS" (>= 50%) or "FAIL"
