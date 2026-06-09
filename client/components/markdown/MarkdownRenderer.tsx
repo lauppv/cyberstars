@@ -22,7 +22,8 @@ const components: Components = {
     const isInline = !className;
 
     if (!isInline && lang && EDITABLE_LANGS.includes(lang)) {
-      return <CodeCell initialCode={String(children).trim()} language={lang} />;
+      const code = String(children).trim();
+      return <CodeCell key={code} initialCode={code} language={lang} />;
     }
 
     if (isInline) {
