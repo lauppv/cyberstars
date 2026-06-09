@@ -1,16 +1,16 @@
 Capitolul 8 ți-a dat uneltele pentru a inspecta și administra însuși sistemul de
 operare al stației:
 
-| Comandă               | Scop                                            |
-| --------------------- | ----------------------------------------------- |
-| `ps aux`              | Listează toate procesele active                 |
-| `ps aux --sort=-%cpu` | Sortează după consumul de CPU (cel mai mare întâi) |
-| `kill PID`            | Oprește politicos un proces                     |
-| `kill -9 PID`         | Forțează oprirea unui proces încăpățânat        |
+| Comandă               | Scop                                                   |
+| --------------------- | ------------------------------------------------------ |
+| `ps aux`              | Listează toate procesele active                        |
+| `ps aux --sort=-%cpu` | Sortează după consumul de CPU (cel mai mare întâi)     |
+| `kill PID`            | Oprește politicos un proces                            |
+| `kill -9 PID`         | Forțează oprirea unui proces încăpățânat               |
 | `df -h`               | Arată spațiul pe disc pentru fiecare sistem de fișiere |
-| `du -sh DIR`          | Arată dimensiunea totală a unui director        |
-| `date`                | Afișează data și ora curentă                    |
-| `history`             | Arată comenzile anterioare                      |
+| `du -sh DIR`          | Arată dimensiunea totală a unui director               |
+| `date`                | Afișează data și ora curentă                           |
+| `history`             | Arată comenzile anterioare                             |
 
 Acestea sunt trusa ta de diagnoză a sistemului. Când ceva merge prost, începi cu
 `ps aux` pentru a vedea ce rulează, `df -h` pentru a verifica spațiul pe disc și

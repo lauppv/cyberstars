@@ -14,11 +14,11 @@ drwxr-x--- 2 student crew  4096 Jan 10 08:00 logs
 Șirul de permisiuni are 10 caractere. Primul indică tipul (`-` = fișier, `d` =
 director). Restul de 9 sunt împărțite în trei grupuri de câte trei:
 
-| Poziții | Cine                  | Semnificație                            |
-| ------- | --------------------- | --------------------------------------- |
-| 2-4     | **u**ser (proprietar) | `rwx` = citire, scriere, execuție       |
-| 5-7     | **g**rup              | `r-x` = citire, fără scriere, execuție  |
-| 8-10    | **o**thers (ceilalți) | `r--` = doar citire                     |
+| Poziții | Cine                  | Semnificație                           |
+| ------- | --------------------- | -------------------------------------- |
+| 2-4     | **u**ser (proprietar) | `rwx` = citire, scriere, execuție      |
+| 5-7     | **g**rup              | `r-x` = citire, fără scriere, execuție |
+| 8-10    | **o**thers (ceilalți) | `r--` = doar citire                    |
 
 O liniuță (`-`) înseamnă că permisiunea respectivă **nu** este acordată.
 

@@ -49,10 +49,10 @@ photo.png: PNG image data
 `file` se uită la octeții reali, deci are dreptate chiar și când extensia lipsește
 sau este greșită.
 
-| Comandă | Întrebarea la care răspunde                |
-| ------- | ------------------------------------------ |
-| `which` | „Unde este instalat acest _program_?”      |
-| `file`  | „Ce _tip_ de fișier este acesta?”          |
+| Comandă | Întrebarea la care răspunde           |
+| ------- | ------------------------------------- |
+| `which` | „Unde este instalat acest _program_?” |
+| `file`  | „Ce _tip_ de fișier este acesta?”     |
 
 ---
 

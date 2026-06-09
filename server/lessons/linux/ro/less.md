@@ -10,13 +10,13 @@ less bigfile.log
 `less` deschide fișierul într-un **vizualizator**. Nu aruncă totul — afișează un
 ecran și te așteaptă. În interiorul vizualizatorului poți:
 
-| Tastă          | Acțiune                                |
-| -------------- | -------------------------------------- |
-| `Space` sau `f` | pagina următoare                      |
-| `b`            | pagina anterioară                      |
-| săgețile       | sus / jos o linie                      |
-| `/cuvânt`      | caută înainte _cuvânt_                 |
-| `q`            | **ieși** și revino la prompt           |
+| Tastă           | Acțiune                      |
+| --------------- | ---------------------------- |
+| `Space` sau `f` | pagina următoare             |
+| `b`             | pagina anterioară            |
+| săgețile        | sus / jos o linie            |
+| `/cuvânt`       | caută înainte _cuvânt_       |
+| `q`             | **ieși** și revino la prompt |
 
 Cea mai importantă tastă este **`q`** — așa ieși din `less` și îți recapeți
 shell-ul.

@@ -21,11 +21,11 @@ Cele trei numere sunt, în ordine:
 
 Opțiunile reduc rezultatul la un singur număr:
 
-| Opțiune | Numără                |
-| ------- | --------------------- |
-| `wc -l` | doar **liniile**      |
-| `wc -w` | doar **cuvintele**    |
-| `wc -c` | doar **caracterele**  |
+| Opțiune | Numără               |
+| ------- | -------------------- |
+| `wc -l` | doar **liniile**     |
+| `wc -w` | doar **cuvintele**   |
+| `wc -c` | doar **caracterele** |
 
 ```bash
 wc -l crew.txt

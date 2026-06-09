@@ -1,21 +1,21 @@
 În loc de litere, poți seta permisiunile cu un **număr octal de trei cifre**. Fiecare
 cifră reprezintă un grup (user, group, others) și este **suma** dintre:
 
-| Permisiune    | Valoare |
-| ------------- | ------- |
-| Citire (r)    | 4       |
-| Scriere (w)   | 2       |
-| Execuție (x)  | 1       |
-| Niciuna       | 0       |
+| Permisiune   | Valoare |
+| ------------ | ------- |
+| Citire (r)   | 4       |
+| Scriere (w)  | 2       |
+| Execuție (x) | 1       |
+| Niciuna      | 0       |
 
 ### Numere uzuale de permisiuni
 
-| Număr  | Semnificație                            | Șir          |
-| ------ | --------------------------------------- | ------------ |
-| `755`  | owner: rwx, group: r-x, others: r-x     | `-rwxr-xr-x` |
-| `644`  | owner: rw-, group: r--, others: r--     | `-rw-r--r--` |
-| `700`  | owner: rwx, group: ---, others: ---     | `-rwx------` |
-| `600`  | owner: rw-, group: ---, others: ---     | `-rw-------` |
+| Număr | Semnificație                        | Șir          |
+| ----- | ----------------------------------- | ------------ |
+| `755` | owner: rwx, group: r-x, others: r-x | `-rwxr-xr-x` |
+| `644` | owner: rw-, group: r--, others: r-- | `-rw-r--r--` |
+| `700` | owner: rwx, group: ---, others: --- | `-rwx------` |
+| `600` | owner: rw-, group: ---, others: --- | `-rw-------` |
 
 ### Folosirea lui chmod cu numere
 

@@ -1,13 +1,13 @@
 Capitolul 2 ți-a oferit întreg setul de unelte pentru gestionarea fișierelor. E
 timpul să le folosești pe toate într-o singură construcție.
 
-| Comandă              | Rol                              |
-| -------------------- | -------------------------------- |
-| `mkdir` (`-p`)       | creează foldere                  |
-| `touch`              | creează fișiere goale            |
-| `cp` (`-r`)          | copiază fișiere și foldere       |
-| `mv`                 | mută și redenumește              |
-| `rm` (`-r`), `rmdir` | șterge fișiere și foldere        |
+| Comandă              | Rol                        |
+| -------------------- | -------------------------- |
+| `mkdir` (`-p`)       | creează foldere            |
+| `touch`              | creează fișiere goale      |
+| `cp` (`-r`)          | copiază fișiere și foldere |
+| `mv`                 | mută și redenumește        |
+| `rm` (`-r`), `rmdir` | șterge fișiere și foldere  |
 
 Un folder de proiect începe aproape întotdeauna la fel: creezi directoarele, apoi pui
 fișierele în ele. Planifică structura mai întâi, apoi construiește-o pas cu pas.

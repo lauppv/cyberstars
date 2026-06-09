@@ -34,12 +34,12 @@ Dacă ceva nu merge, scoate ultimul pipe și inspectează rezultatul intermediar
 
 ### Comenzi des întâlnite în pipeline-uri
 
-| Comandă         | Rol în pipeline                |
-| --------------- | ------------------------------ |
-| `grep`          | Filtrează linii                |
-| `sort`          | Reordonează linii              |
-| `wc -l`         | Numără linii                   |
-| `head` / `tail` | Ia primele/ultimele N linii    |
+| Comandă         | Rol în pipeline             |
+| --------------- | --------------------------- |
+| `grep`          | Filtrează linii             |
+| `sort`          | Reordonează linii           |
+| `wc -l`         | Numără linii                |
+| `head` / `tail` | Ia primele/ultimele N linii |
 
 ---
 

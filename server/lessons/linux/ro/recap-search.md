@@ -1,11 +1,11 @@
 Capitolul 4 te-a transformat într-un detectiv al stației. Trei unelte de căutare,
 trei întrebări diferite:
 
-| Comandă | Întrebare                                  |
-| ------- | ------------------------------------------ |
-| `grep`  | „Care **linii** conțin acest cuvânt?”      |
-| `find`  | „Unde se află acest **fișier**?”           |
-| `which` | „Unde este instalat acest **program**?”    |
+| Comandă | Întrebare                               |
+| ------- | --------------------------------------- |
+| `grep`  | „Care **linii** conțin acest cuvânt?”   |
+| `find`  | „Unde se află acest **fișier**?”        |
+| `which` | „Unde este instalat acest **program**?” |
 
 Reține opțiunile puternice: `grep -r` caută în arbori întregi, `grep -i` ignoră
 majusculele/minusculele, `grep -v` inversează; `find -name` potrivește după nume,

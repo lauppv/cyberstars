@@ -1,12 +1,12 @@
 Capitolul 7 te-a învățat stratul de securitate al sistemului de fișiere al stației:
 
-| Comandă     | Scop                                       |
-| ----------- | ------------------------------------------ |
-| `ls -l`     | Vezi permisiunile și proprietarul          |
-| `chmod u+x` | Adaugă/elimină permisiuni (simbolic)       |
+| Comandă     | Scop                                         |
+| ----------- | -------------------------------------------- |
+| `ls -l`     | Vezi permisiunile și proprietarul            |
+| `chmod u+x` | Adaugă/elimină permisiuni (simbolic)         |
 | `chmod 755` | Setează toate permisiunile deodată (numeric) |
-| `whoami`    | Afișează numele tău de utilizator          |
-| `id`        | Afișează uid, gid și grupurile             |
+| `whoami`    | Afișează numele tău de utilizator            |
+| `id`        | Afișează uid, gid și grupurile               |
 
 Reține triada de permisiuni: **user → group → others**, fiecare cu `r`, `w`, `x`.
 Numeric: r=4, w=2, x=1 — adună-le pe grup.

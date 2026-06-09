@@ -35,11 +35,11 @@ pwd
 
 ### Scurtături utile
 
-| Comandă | Unde te duce                                                          |
-| ------- | --------------------------------------------------------------------- |
-| `cd ~`  | directorul tău **personal** (`/home/student`)                         |
-| `cd /`  | **rădăcina** întregului sistem                                        |
-| `cd ..` | un director mai **sus**                                               |
+| Comandă | Unde te duce                                                             |
+| ------- | ------------------------------------------------------------------------ |
+| `cd ~`  | directorul tău **personal** (`/home/student`)                            |
+| `cd /`  | **rădăcina** întregului sistem                                           |
+| `cd ..` | un director mai **sus**                                                  |
 | `cd`    | tot acasă — scrierea lui `cd` fără nimic este o scurtătură pentru `cd ~` |
 
 ### Căi

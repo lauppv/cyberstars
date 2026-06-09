@@ -14,7 +14,7 @@ sed 's/old/new/' file.txt
 sed 's/error/WARNING/g' log.txt
 ```
 
-`g`-ul de la final (de la *global*) înlocuiește fiecare potrivire de pe linie, nu doar
+`g`-ul de la final (de la _global_) înlocuiește fiecare potrivire de pe linie, nu doar
 prima.
 
 ### sed nu modifică fișierul original

@@ -5,10 +5,10 @@
 
 Opțiunea `-type` spune dacă vrei fișiere sau directoare:
 
-| Condiție  | Potrivește             |
-| --------- | ---------------------- |
-| `-type f` | **fișiere** obișnuite  |
-| `-type d` | **directoare**         |
+| Condiție  | Potrivește            |
+| --------- | --------------------- |
+| `-type f` | **fișiere** obișnuite |
+| `-type d` | **directoare**        |
 
 ```bash
 find . -type d
@@ -28,11 +28,11 @@ se termină în `.log`. Mai multe condiții se listează pur și simplu una dup�
 
 Opțiunea `-size` potrivește fișiere după cât de mari sunt:
 
-| Exemplu     | Potrivește                |
-| ----------- | ------------------------- |
-| `-size +1k` | mai mari de 1 kilobyte    |
-| `-size -1k` | mai mici de 1 kilobyte    |
-| `-size +1M` | mai mari de 1 megabyte    |
+| Exemplu     | Potrivește             |
+| ----------- | ---------------------- |
+| `-size +1k` | mai mari de 1 kilobyte |
+| `-size -1k` | mai mici de 1 kilobyte |
+| `-size +1M` | mai mari de 1 megabyte |
 
 Un `+` înseamnă „mai mare decât”, un `-` înseamnă „mai mic decât”. Litera este
 unitatea (`k`, `M`, `G`).
