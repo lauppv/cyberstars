@@ -82,17 +82,17 @@ Ambele sunt la fel de puternice — orice poți face cu una, poți face cu ceala
 
 Comunicatorul unui membru al echipajului este blocat într-o **buclă infinită** — transmite la nesfârșit `I am online` și nu se oprește niciodată.
 
-Repară codul din dreapta astfel încât comunicatorul să transmită **o singură dată**, apoi să se deconecteze. Trebuie să **schimbi** variabila din interiorul buclei astfel încât condiția să devină în cele din urmă **falsă**.
+Repară codul din dreapta astfel încât comunicatorul să transmită **o singură dată**, apoi să se deconecteze. Trebuie să **schimbi** variabila `esteOnline` din interiorul buclei astfel încât condiția să devină în cele din urmă **falsă**.
 
 **Input** (deja setat în partea de sus a codului tău):
 
-- `isOnline` — dacă comunicatorul este activ (`true` la început)
+- `esteOnline` — dacă comunicatorul este activ (`true` la început)
 
 **Exemplu**
 
 După reparația ta, programul ar trebui să afișeze exact
 
 ```text
-I am online
-Now I am offline
+Sunt online
+Acum sunt offline
 ```

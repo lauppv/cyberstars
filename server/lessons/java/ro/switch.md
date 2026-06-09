@@ -7,16 +7,16 @@ public class Main {
 
         switch (arma) {
             case "pistol":
-                System.out.println("Basic but reliable");
+                System.out.println("De bază dar de încredere");
                 break;
             case "shotgun":
-                System.out.println("Devastating up close");
+                System.out.println("Devastator la distanță apropiată");
                 break;
             case "rocket":
-                System.out.println("Total overkill");
+                System.out.println("Exagerare totală");
                 break;
             default:
-                System.out.println("Unknown weapon");
+                System.out.println("Armă necunoscută");
                 break;
         }
     }
@@ -26,7 +26,7 @@ public class Main {
 Output
 
 ```text
-Devastating up close
+Devastator la distanță apropiată
 ```
 
 **switch** verifică valoarea lui `arma` și sare la **case**-ul care se potrivește. Când găsește `"shotgun"`, rulează acel bloc, apoi **break** îi spune să se oprească și să iasă din switch
@@ -42,15 +42,15 @@ public class Main {
 
         switch (stele) {
             case 1:
-                System.out.println("Cops notice you");
+                System.out.println("Poliția te observă");
             case 2:
-                System.out.println("Cops chase you");
+                System.out.println("Poliția te urmărește");
             case 3:
-                System.out.println("Helicopter shows up");
+                System.out.println("Apare elicopterul");
             case 4:
-                System.out.println("SWAT arrives");
+                System.out.println("Sosește SWAT");
             case 5:
-                System.out.println("Army tanks roll in");
+                System.out.println("Intră tancurile armatei");
         }
     }
 }
@@ -59,9 +59,9 @@ public class Main {
 Output
 
 ```text
-Helicopter shows up
-SWAT arrives
-Army tanks roll in
+Apare elicopterul
+Sosește SWAT
+Intră tancurile armatei
 ```
 
 Uau — voiam doar mesajul de 3 stele, dar a afișat 3, 4 ȘI 5! Asta pentru că fără **break**, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
@@ -77,13 +77,13 @@ public class Main {
 
         switch (stele) {
             case 3:
-                System.out.println("Helicopter shows up");
+                System.out.println("Apare elicopterul");
                 break;
             case 4:
-                System.out.println("SWAT arrives");
+                System.out.println("Sosește SWAT");
                 break;
             case 5:
-                System.out.println("Army tanks roll in");
+                System.out.println("Intră tancurile armatei");
                 break;
         }
     }
@@ -93,7 +93,7 @@ public class Main {
 Output
 
 ```text
-Helicopter shows up
+Apare elicopterul
 ```
 
 ---
@@ -107,13 +107,13 @@ public class Main {
 
         switch (vehicul) {
             case "car":
-                System.out.println("Drive on roads");
+                System.out.println("Condu pe drumuri");
                 break;
             case "bike":
-                System.out.println("Weave through traffic");
+                System.out.println("Strecoară-te prin trafic");
                 break;
             default:
-                System.out.println("Some other vehicle: " + vehicul);
+                System.out.println("Alt vehicul: " + vehicul);
                 break;
         }
     }
@@ -123,7 +123,7 @@ public class Main {
 Output
 
 ```text
-Some other vehicle: boat
+Alt vehicul: boat
 ```
 
 ---
@@ -132,25 +132,25 @@ Python nu a avut switch până de curând (match/case în 3.10+). În Java, swit
 
 ```python
 # lanț if-else în Python
-zi = "Monday"
-if zi == "Saturday" or zi == "Sunday":
+zi = "Luni"
+if zi == "Sâmbătă" or zi == "Duminică":
     print("Weekend")
 else:
-    print("Weekday")
+    print("Zi lucrătoare")
 ```
 
 ```java
 public class Main {
     public static void main(String[] args) {
         // switch în Java
-        String zi = "Monday";
+        String zi = "Luni";
         switch (zi) {
-            case "Saturday":
-            case "Sunday":
+            case "Sâmbătă":
+            case "Duminică":
                 System.out.println("Weekend");
                 break;
             default:
-                System.out.println("Weekday");
+                System.out.println("Zi lucrătoare");
                 break;
         }
     }
@@ -170,16 +170,16 @@ public class Main {
 
         switch (optiuneMeniu) {
             case 1:
-                System.out.println("Start new game");
+                System.out.println("Începe joc nou");
                 break;
             case 2:
-                System.out.println("Load saved game");
+                System.out.println("Încarcă jocul salvat");
                 break;
             case 3:
-                System.out.println("Settings");
+                System.out.println("Setări");
                 break;
             default:
-                System.out.println("Invalid choice");
+                System.out.println("Alegere invalidă");
                 break;
         }
     }
@@ -189,7 +189,7 @@ public class Main {
 Output
 
 ```text
-Load saved game
+Încarcă jocul salvat
 ```
 
 ---
@@ -198,20 +198,20 @@ Load saved game
 
 Programul de tură al stației are nevoie de un clasificator rapid: dată fiind o zi, afișează dacă este o tură de **zi lucrătoare** (Weekday) sau de **weekend** (Weekend).
 
-Scrie corpul metodei `dayType` folosind un **switch** pe `day`:
+Scrie corpul metodei `tipZi` folosind un **switch** pe `zi`:
 
-1. Pentru `"Monday"` până la `"Friday"` → afișează `Weekday`
-2. Pentru `"Saturday"` și `"Sunday"` → afișează `Weekend`
-3. Default → afișează `Unknown day`
+1. Pentru `"Luni"` până la `"Vineri"` → afișează `Zi lucrătoare`
+2. Pentru `"Sâmbătă"` și `"Duminică"` → afișează `Weekend`
+3. Default → afișează `Zi necunoscută`
 
-Metoda `main` apelează deja `dayType` de trei ori.
+Metoda `main` apelează deja `tipZi` de trei ori.
 
 **Exemplu**
 
-Cu apelurile `dayType("Monday")`, `dayType("Saturday")`, `dayType("Wednesday")`, programul tău ar trebui să afișeze
+Cu apelurile `tipZi("Luni")`, `tipZi("Sâmbătă")`, `tipZi("Miercuri")`, programul tău ar trebui să afișeze
 
 ```text
-Weekday
+Zi lucrătoare
 Weekend
-Weekday
+Zi lucrătoare
 ```

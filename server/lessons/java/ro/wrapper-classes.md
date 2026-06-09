@@ -108,8 +108,8 @@ public class Main {
         scoruri.add(92);
 
         int primul = scoruri.get(0);  // unboxing: Integer -> int
-        System.out.println("First score: " + primul);
-        System.out.println("All scores: " + scoruri);
+        System.out.println("Primul scor: " + primul);
+        System.out.println("Toate scorurile: " + scoruri);
     }
 }
 ```
@@ -117,8 +117,8 @@ public class Main {
 Output
 
 ```text
-First score: 100
-All scores: [100, 85, 92]
+Primul scor: 100
+Toate scorurile: [100, 85, 92]
 ```
 
 ---

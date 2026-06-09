@@ -1,17 +1,17 @@
 public class Main {
-    static String[] filterWords(String[] words) {
+    static String[] filtreazaCuvinte(String[] cuvinte) {
         // filtrează, sari peste SPAM, oprește-te la exit, majuscule
         return new String[0];
     }
 
     public static void main(String[] args) {
-        String[] words = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
-        String[] result = filterWords(words);
+        String[] cuvinte = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
+        String[] rezultat = filtreazaCuvinte(cuvinte);
 
-        for (String w : result) {
-            System.out.println(w);
+        for (String c : rezultat) {
+            System.out.println(c);
         }
-        System.out.println("Total: " + result.length + " words");
+        System.out.println("Total: " + rezultat.length + " cuvinte");
     }
 
 }

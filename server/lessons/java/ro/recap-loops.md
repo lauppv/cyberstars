@@ -9,8 +9,8 @@ Calculatorul de navigație al stației are nevoie de o verificare de diagnoză. 
 Scrie aceste metode:
 
 1. **`static int factorial(int n)`** — calculează factorialul folosind o **buclă while** (nu recursivitate). `5! = 5 * 4 * 3 * 2 * 1 = 120`
-2. **`static boolean isPrime(int n)`** — verifică dacă un număr este prim folosind o **buclă while**. Un număr prim se împarte exact doar la 1 și la el însuși
-3. **`static int sumDigits(int n)`** — adună toate cifrele unui număr folosind o **buclă while** (folosește `% 10` și `/ 10`)
+2. **`static boolean estePrim(int n)`** — verifică dacă un număr este prim folosind o **buclă while**. Un număr prim se împarte exact doar la 1 și la el însuși
+3. **`static int sumaCifre(int n)`** — adună toate cifrele unui număr folosind o **buclă while** (folosește `% 10` și `/ 10`)
 
 Apelurile de test din main sunt deja pregătite în dreapta.
 
@@ -19,7 +19,7 @@ Apelurile de test din main sunt deja pregătite în dreapta.
 ```text
 5! = 120
 7! = 5040
-13 prime? true
-15 prime? false
-Digits of 9876: 30
+13 prim? true
+15 prim? false
+Suma cifrelor lui 9876: 30
 ```

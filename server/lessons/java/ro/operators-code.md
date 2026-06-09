@@ -5,5 +5,4 @@ public class Main {
 
         // afișează fiecare operație pe propria linie
     }
-
 }

@@ -9,10 +9,10 @@ Antena de comunicații a stației captează transmisii corupte. Unele mesaje sun
 Datele sunt deja în dreapta:
 
 ```java
-String[] words = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
+String[] cuvinte = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
 ```
 
-Scrie o metodă **`static String[] filterWords(String[] words)`** care:
+Scrie o metodă **`static String[] filtreazaCuvinte(String[] cuvinte)`** care:
 
 1. Parcurge array-ul
 2. **Sare** peste orice cuvânt egal cu `"SPAM"` (folosește `continue` și `.equals()`)
@@ -29,5 +29,5 @@ HELLO
 WORLD
 JAVA
 ROCKS
-Total: 4 words
+Total: 4 cuvinte
 ```

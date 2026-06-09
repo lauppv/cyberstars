@@ -101,21 +101,21 @@ public class Main {
         String b = "hello";
 
         if (a == b) {
-            System.out.println("equal");
+            System.out.println("egal");
         } else {
-            System.out.println("not equal");
+            System.out.println("nu e egal");
         }
     }
 }
 ```
 
-Asta **ar putea** afișa **equal**, dar **e greșit**. Cu obiectele (și **String** este un obiect în Java), **==** compară dacă sunt **același obiect din memorie**, nu dacă au același conținut. Modul corect este
+Asta **ar putea** afișa **egal**, dar **e greșit**. Cu obiectele (și **String** este un obiect în Java), **==** compară dacă sunt **același obiect din memorie**, nu dacă au același conținut. Modul corect este
 
 ```java
 public class Main {
     public static void main(String[] args) {
         if (a.equals(b)) {
-            System.out.println("equal");
+            System.out.println("egal");
         }
     }
 }

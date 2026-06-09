@@ -1,13 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        boolean isOnline = true;
+        boolean esteOnline = true;
 
-        while (isOnline) {
-            System.out.println("I am online");
+        while (esteOnline) {
+            System.out.println("Sunt online");
             // completează asta astfel încât bucla să iasă
-        }
 
-        System.out.println("Now I am offline");
+        System.out.println("Acum sunt offline");
     }
 
 }

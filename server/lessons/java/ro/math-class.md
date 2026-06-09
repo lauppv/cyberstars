@@ -103,7 +103,7 @@ Ca să obținem un int aleator într-un interval, să zicem de la 1 la 6 (ca o a
 public class Main {
     public static void main(String[] args) {
         int zar = (int)(Math.random() * 6) + 1;
-        System.out.println("You rolled: " + zar);
+        System.out.println("Ai aruncat: " + zar);
     }
 }
 ```

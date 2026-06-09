@@ -7,5 +7,4 @@ public class Main {
 
         // scrie if/else aici
     }
-
 }

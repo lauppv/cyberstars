@@ -6,7 +6,7 @@ Deja cunoști bucla for-each. Acum hai să o ducem la nivelul următor cu niște
 
 Parcurge lista, ținând evidența celui mai mare număr pe care l-ai văzut până acum
 
-```java
+````java
 import java.util.ArrayList;
 
 public class Main {
@@ -23,10 +23,13 @@ public class Main {
                 maxim = s;
             }
         }
-        System.out.println("Max: " + maxim);
-    }
-}
-```
+        System.out.println("Maxim: " + maxim);
+
+Output
+
+```text
+Maxim: 95
+````
 
 Output
 
@@ -42,7 +45,7 @@ Max: 95
 
 Uneori vrei să iei doar elementele care îndeplinesc o condiție. Creează o listă nouă și adaugă doar pe cele pe care le vrei
 
-```java
+````java
 import java.util.ArrayList;
 
 public class Main {
@@ -60,10 +63,13 @@ public class Main {
             }
         }
 
-        System.out.println("High scores: " + scoruriMari);
-    }
-}
-```
+        System.out.println("Scoruri mari: " + scoruriMari);
+
+Output
+
+```text
+Scoruri mari: [88, 95]
+````
 
 Output
 
@@ -79,7 +85,7 @@ Asta e ca filtrarea garajului tău din Vice City — păstrează mașinile rapid
 
 Câte elemente îndeplinesc o condiție? Folosește un contor
 
-```java
+````java
 import java.util.ArrayList;
 
 public class Main {
@@ -97,10 +103,13 @@ public class Main {
                 numeLungi++;
             }
         }
-        System.out.println("Names longer than 4 chars: " + numeLungi);
-    }
-}
-```
+        System.out.println("Nume mai lungi de 4 caractere: " + numeLungi);
+
+Output
+
+```text
+Nume mai lungi de 4 caractere: 3
+````
 
 Output
 
@@ -114,7 +123,7 @@ Names longer than 4 chars: 3
 
 Uneori vrei să combini elementele într-un singur string, poate cu un separator
 
-```java
+````java
 import java.util.ArrayList;
 
 public class Main {
@@ -131,10 +140,13 @@ public class Main {
             }
             rezultat += echipaj.get(i);
         }
-        System.out.println("Crew: " + rezultat);
-    }
-}
-```
+        System.out.println("Echipaj: " + rezultat);
+
+Output
+
+```text
+Echipaj: Tommy, Lance, Phil
+````
 
 Output
 
@@ -150,7 +162,7 @@ Folosim aici o buclă for obișnuită în loc de for-each pentru că avem nevoie
 
 Poți amesteca aceste modele. Aici filtrăm ȘI numărăm într-o singură buclă
 
-```java
+````java
 import java.util.ArrayList;
 
 public class Main {
@@ -174,11 +186,15 @@ public class Main {
             }
         }
 
-        System.out.println("Expensive items: " + numarScumpe);
-        System.out.println("Cheapest: $" + celMaiIeftin);
-    }
-}
-```
+        System.out.println("Obiecte scumpe: " + numarScumpe);
+        System.out.println("Cel mai ieftin: $" + celMaiIeftin);
+
+Output
+
+```text
+Obiecte scumpe: 3
+Cel mai ieftin: $30
+````
 
 Output
 

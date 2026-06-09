@@ -61,9 +61,9 @@ public class Main {
     public static void main(String[] args) {
         int n = 10;
         if (n % 2 == 0) {
-            System.out.println("even");
+            System.out.println("par");
         } else {
-            System.out.println("odd");
+            System.out.println("impar");
         }
     }
 }

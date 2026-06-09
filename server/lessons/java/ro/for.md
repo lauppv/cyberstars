@@ -97,23 +97,23 @@ Aceasta este o **buclă infinită**. **i** rămâne **1** pentru totdeauna, cond
 
 ## Misiune: Scanarea Sectoarelor
 
-Scannerul stației parcurge **toate sectoarele** de la `sector_start` la `sector_final`. Majoritatea sectoarelor primesc o citire numerică normală, dar două sectoare speciale (`sector_alerta1` și `sector_alerta2`) declanșează în schimb un semnal **Pizza Margherita** în loc de număr.
+Scannerul stației parcurge **toate sectoarele** de la `sectorStart` la `sectorFinal`. Majoritatea sectoarelor primesc o citire numerică normală, dar două sectoare speciale (`sectorAlerta1` și `sectorAlerta2`) declanșează în schimb un semnal **Pizza Margherita** în loc de număr.
 
-Scrie un program care folosește o buclă **for** ca să parcurgă fiecare număr de sector de la `sector_start` la `sector_final`. Pentru fiecare sector:
+Scrie un program care folosește o buclă **for** ca să parcurgă fiecare număr de sector de la `sectorStart` la `sectorFinal`. Pentru fiecare sector:
 
-- dacă sectorul este `sector_alerta1` sau `sector_alerta2` → afișează `Pizza Margherita`
+- dacă sectorul este `sectorAlerta1` sau `sectorAlerta2` → afișează `Pizza Margherita`
 - altfel → afișează numărul sectorului
 
 **Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
-- `sector_start` — primul sector de scanat
-- `sector_final` — ultimul sector de scanat
-- `sector_alerta1` — primul sector special
-- `sector_alerta2` — al doilea sector special
+- `sectorStart` — primul sector de scanat
+- `sectorFinal` — ultimul sector de scanat
+- `sectorAlerta1` — primul sector special
+- `sectorAlerta2` — al doilea sector special
 
 **Exemplu**
 
-Cu `sector_start = 0`, `sector_final = 100`, `sector_alerta1 = 10` și `sector_alerta2 = 50`, primele câteva linii din rezultat ar trebui să fie
+Cu `sectorStart = 0`, `sectorFinal = 100`, `sectorAlerta1 = 10` și `sectorAlerta2 = 50`, primele câteva linii din rezultat ar trebui să fie
 
 ```text
 0

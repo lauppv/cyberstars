@@ -1,15 +1,15 @@
 public class Main {
-    public static void dayType(String day) {
-        // folosește un switch pe day
-        // afișează "Weekday" pentru Monday-Friday
-        // afișează "Weekend" pentru Saturday și Sunday
-        // afișează "Unknown day" pentru default
+    public static void tipZi(String zi) {
+        // folosește un switch pe zi
+        // afișează "Zi lucrătoare" pentru Luni-Vineri
+        // afișează "Weekend" pentru Sâmbătă și Duminică
+        // afișează "Zi necunoscută" pentru default
     }
 
     public static void main(String[] args) {
-        dayType("Monday");
-        dayType("Saturday");
-        dayType("Wednesday");
+        tipZi("Luni");
+        tipZi("Sâmbătă");
+        tipZi("Miercuri");
     }
 
 }

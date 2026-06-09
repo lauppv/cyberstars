@@ -170,12 +170,12 @@ Inamici apăruți: 4
 Python are variabile de clasă (similare câmpurilor statice) și `@staticmethod`:
 
 ```python
-class Visitor:
-    total_visits = 0  # variabilă de clasă (partajată)
+class Visitator:
+    total_vizite = 0  # variabilă de clasă (partajată)
 
     def __init__(self, nume):
         self.nume = nume  # variabilă de instanță
-        Visitor.total_visits += 1
+        Visitator.total_vizite += 1
 ```
 
 Același concept — variabila de clasă aparține clasei, nu vreunei instanțe

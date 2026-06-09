@@ -9,7 +9,7 @@ Postul de comerț al stației a înregistrat vânzările de azi, dar datele sunt
 Datele sunt deja în dreapta:
 
 ```java
-String[] sales = {"Sword", "Shield", "Potion", "Sword", "Potion", "Potion", "Armor", "Sword"};
+String[] vanzari = {"Sword", "Shield", "Potion", "Sword", "Potion", "Potion", "Armor", "Sword"};
 ```
 
 Fă următoarele, în ordine:
@@ -29,6 +29,6 @@ Sword: 3
 Shield: 1
 Potion: 3
 Armor: 1
-Best seller: Sword
-Popular items: [Sword, Potion]
+Cel mai vândut: Sword
+Obiecte populare: [Sword, Potion]
 ```

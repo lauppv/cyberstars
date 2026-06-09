@@ -1,12 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        int sector_start = 0;
-        int sector_final = 100;
-        int sector_alerta1 = 10;
-        int sector_alerta2 = 50;
+        int sectorStart = 0;
+        int sectorFinal = 100;
+        int sectorAlerta1 = 10;
+        int sectorAlerta2 = 50;
 
-        for (int i = sector_start; i <= sector_final; i++) {
-            // afișează i, sau "Pizza Margherita" pentru sector_alerta1 și sector_alerta2
+        for (int i = sectorStart; i <= sectorFinal; i++) {
+            // afișează i, sau "Pizza Margherita" pentru sectorAlerta1 și sectorAlerta2
         }
     }
 

@@ -11,12 +11,12 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<String, Integer> grades = new HashMap<>();
-        grades.put("Math", 92);
-        grades.put("English", 85);
-        grades.put("Science", 78);
+        HashMap<String, Integer> note = new HashMap<>();
+        note.put("Mate", 92);
+        note.put("Engleză", 85);
+        note.put("Științe", 78);
 
-        System.out.println("Math: " + grades.get("Math"));
+        System.out.println("Mate: " + note.get("Mate"));
     }
 }
 ```
@@ -24,7 +24,7 @@ public class Main {
 Output
 
 ```text
-Math: 92
+Mate: 92
 ```
 
 `put` adaugă o pereche cheie-valoare, `get` recuperează valoarea pentru o cheie. Atât de simplu
@@ -63,7 +63,7 @@ public class Main {
 }
 ```
 
-Foarte simplu. `note.put("Math", 95)` stochează nota 95 pentru Math. Dacă studentul are deja o notă la Math, ea este suprascrisă cu cea nouă
+Foarte simplu. `note.put("Mate", 95)` stochează nota 95 pentru Mate. Dacă studentul are deja o notă la Mate, ea este suprascrisă cu cea nouă
 
 ---
 
@@ -109,7 +109,7 @@ public class Main {
 
 **Notă importantă despre ordinea în HashMap**
 
-HashMap-urile **NU** garantează ordinea. Dacă adaugi Math, English, Science — s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
+HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleză, Științe — s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
 
 Pentru exercițiul nostru, o să folosim un **LinkedHashMap** ca rezultatul să fie previzibil
 
@@ -169,9 +169,9 @@ class Student {
 public class Main {
     public static void main(String[] args) {
         Student s1 = new Student("Tommy");
-        s1.adaugaNota("Math", 85);
-        s1.adaugaNota("English", 92);
-        s1.adaugaNota("Science", 78);
+        s1.adaugaNota("Mate", 85);
+        s1.adaugaNota("Engleză", 92);
+        s1.adaugaNota("Științe", 78);
         s1.afiseazaRaport();
     }
 }
@@ -181,9 +181,9 @@ Output
 
 ```text
 Student: Tommy
-  Math: 85
-  English: 92
-  Science: 78
+  Mate: 85
+  Engleză: 92
+  Științe: 78
   Media: 85.0
 ```
 
@@ -206,21 +206,21 @@ Academia de antrenament a stației tocmai a terminat examenele. Fiecare cadet ar
    - `"  MATERIE: NOTA"` pentru fiecare materie (două spații înainte de fiecare)
    - `"  Media: X.X"` la final (o zecimală, două spații înainte)
 4. În main, creează doi studenți:
-   - "Tommy" cu notele: Math 90, English 85, Science 92
-   - "Lance" cu notele: Math 78, English 82, Science 88
+   - "Tommy" cu notele: Mate 90, Engleză 85, Științe 92
+   - "Lance" cu notele: Mate 78, Engleză 82, Științe 88
 5. Afișează ambele rapoarte
 
 **Output**
 
 ```text
 Student: Tommy
-  Math: 90
-  English: 85
-  Science: 92
+  Mate: 90
+  Engleză: 85
+  Științe: 92
   Media: 89.0
 Student: Lance
-  Math: 78
-  English: 82
-  Science: 88
+  Mate: 78
+  Engleză: 82
+  Științe: 88
   Media: 82.7
 ```
