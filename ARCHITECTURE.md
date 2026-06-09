@@ -38,6 +38,7 @@ cyberstars/
 │   ├── App.tsx                    # Router, context providers
 │   ├── index.css                  # Design tokens (CSS variables), global styles
 │   ├── constants/                 # Course metadata (icons, colors, labels)
+│   ├── i18n/                      # i18next setup + en/ro UI string bundles
 │   ├── services/                  # API client + per-feature service wrappers
 │   ├── context/                   # AuthContext, CurriculumContext, ProgressContext
 │   ├── hooks/                     # useLesson, useCodeExecution, useProgress, useGamification
@@ -81,11 +82,25 @@ data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
 `express.static`/nginx in prod). The client fetches them directly via
 `client/services/lessonService.ts`, so they never touch the API server or the DB.
 
-| Asset                               | Description                      |
-| ----------------------------------- | -------------------------------- |
-| `/curriculum.json`                  | All courses with ordered lessons |
-| `/lessons/:courseKey/:slug.md`      | Lesson Markdown content          |
-| `/lessons/:courseKey/:slug-code.md` | Starter code template            |
+| Asset                               | Description                                            |
+| ----------------------------------- | ------------------------------------------------------ |
+| `/curriculum.json`                  | All courses with ordered lessons                       |
+| `/lessons/:courseKey/:slug.md`      | Lesson Markdown content (English, source of truth)     |
+| `/lessons/:courseKey/:slug-code.md` | Starter code template                                  |
+| `/lessons/:courseKey/ro/:slug.md`   | Romanian translation (optional)                        |
+| `/almanac/{index,extras}.json`      | Almanac cards + sidebar data (English) and `ro/` peers |
+| `/almanac/articles/:slug.json`      | Almanac article body (English) and `ro/` peer          |
+
+**Localization** — the UI is bilingual (English + Romanian), toggled in the
+topbar; the choice persists in `localStorage` and is read from `i18n.language`.
+UI chrome strings come from `client/i18n/locales/{en,ro}.json`. Lesson and almanac
+content is localized by file: translated copies live in a per-language subfolder
+(`ro`) beside the English source, with the **same slug**. `lessonService` /
+`almanacService` request the localized path and **fall back to English** when the
+translation is missing (a 404 in prod, the SPA `index.html` in dev — both
+rejected), so content can be translated incrementally and English-only content
+works in both languages. Lesson/course titles come from `curriculum.json` and are
+not localized per-language.
 
 ### Code Execution
 
@@ -205,6 +220,8 @@ Each lesson consists of two files in `server/lessons/:lang/`:
 
 Lessons have no automated grading: students run their code and click "Mark Complete" themselves.
 
+A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
+
 ## Environment variables
 
 | Variable                 | Required | Default                   | Description                                            |
@@ -238,3 +255,4 @@ Lessons have no automated grading: students run their code and click "Mark Compl
 - **CurriculumContext** — curriculum fetched once at startup, shared via context
 - **CSS variables** — all theming via custom properties, re-theming is a one-file change
 - **`npm run dev` does everything** — DB setup, migration, seeding, server start in one command
+- **i18n with English fallback** — English is the source of truth; UI strings in `client/i18n/locales/{en,ro}.json`, content translations in `/ro` subfolders that fall back to English, so the site stays usable while translation lags

@@ -1,6 +1,7 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import i18n from 'i18next';
 import type { AlmanacArticle } from '../../shared/almanac';
 
 vi.mock('../context/AuthContext', () => ({
@@ -80,6 +81,19 @@ function renderWithRouter(ui: React.ReactElement) {
 }
 
 describe('AlmanacPage', () => {
+  // The language is a global i18n singleton; reset it so the ro test can't leak.
+  afterEach(async () => {
+    await i18n.changeLanguage('en');
+  });
+
+  it('requests Romanian content when the UI language is ro', async () => {
+    await i18n.changeLanguage('ro');
+    renderWithRouter(<AlmanacPage />);
+    await screen.findByText('Article 0');
+    expect(vi.mocked(fetchAlmanacIndex)).toHaveBeenCalledWith('ro');
+    expect(vi.mocked(fetchAlmanacExtras)).toHaveBeenCalledWith('ro');
+  });
+
   it('renders the main heading and filters once loaded', async () => {
     renderWithRouter(<AlmanacPage />);
     expect(await screen.findByText(/The CyberStars Almanac/)).toBeInTheDocument();
