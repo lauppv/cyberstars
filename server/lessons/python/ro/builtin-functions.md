@@ -61,8 +61,8 @@ Cu **enumerate()** e mult mai curat
 
 ```py
 nume = ["Tommy", "Lance", "Cortez"]
-for i, nume in enumerate(nume):
-    print(f"{i}: {nume}")
+for i, n in enumerate(nume):
+    print(f"{i}: {n}")
 ```
 
 Afișează

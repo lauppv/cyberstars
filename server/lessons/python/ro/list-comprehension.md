@@ -54,7 +54,7 @@ Putem transforma și filtra în același timp
 
 ```py
 nume = ["tommy", "lance", "cortez"]
-majuscule = [n.majuscule() for n in nume]
+majuscule = [n.upper() for n in nume]
 print(majuscule)
 ```
 

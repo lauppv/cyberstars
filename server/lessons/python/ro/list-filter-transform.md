@@ -98,7 +98,7 @@ Rezultat **[87, 72, 96, 79, 60, 100]**
 Cu comprehension și **min()** pentru plafonare
 
 ```py
-rezultat = [minim(g + 5, 100) for g in note if g >= 50]
+rezultat = [min(g + 5, 100) for g in note if g >= 50]
 ```
 
 ---

@@ -37,9 +37,9 @@ Rezultat **{'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}**
 ```py
 cel_mai_bun_cuvant = ""
 cel_mai_bun_numar = 0
-for cuvant, contor in contor.elemente():
-    if contor > cel_mai_bun_numar:
-        cel_mai_bun_numar = contor
+for cuvant, numar in contor.items():
+    if numar > cel_mai_bun_numar:
+        cel_mai_bun_numar = numar
         cel_mai_bun_cuvant = cuvant
 print(f"Cel mai frecvent: {cel_mai_bun_cuvant} ({cel_mai_bun_numar} ori)")
 ```

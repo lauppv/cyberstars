@@ -46,7 +46,7 @@ Odată ce avem un dicționar de frecvențe, putem răspunde la întrebări inter
 ```py
 cea_mai_buna_cheie = ""
 cel_mai_bun_numar = 0
-for cheie, contor in freq.elemente():
+for cheie, contor in freq.items():
     if contor > cel_mai_bun_numar:
         cel_mai_bun_numar = contor
         cea_mai_buna_cheie = cheie
@@ -57,7 +57,7 @@ print(f"Cel mai comun: {cea_mai_buna_cheie} ({cel_mai_bun_numar} de ori)")
 
 ```py
 unice = []
-for cheie, contor in freq.elemente():
+for cheie, contor in freq.items():
     if contor == 1:
         unice.append(cheie)
 print(f"Unice: {unice}")
@@ -66,7 +66,7 @@ print(f"Unice: {unice}")
 **Sortăm după frecvență?**
 
 ```py
-elemente_sortate = sorted(freq.elemente(), cheie=lambda x: x[1], reverse=True)
+elemente_sortate = sorted(freq.items(), key=lambda x: x[1], reverse=True)
 for element, contor in elemente_sortate:
     print(f"{element}: {contor}")
 ```
@@ -86,7 +86,7 @@ for curs in inscrieri:
     else:
         freq[curs] = 1
 
-for curs, contor in freq.elemente():
+for curs, contor in freq.items():
     print(f"{curs}: {contor} studenți")
 ```
 

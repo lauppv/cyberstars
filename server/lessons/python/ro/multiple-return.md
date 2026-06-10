@@ -4,7 +4,7 @@ Am învățat că **return** trimite o valoare înapoi dintr-o funcție. Dar dac
 
 ```py
 def minim_maxim(numere):
-    return minim(numere), maxim(numere)
+    return min(numere), max(numere)
 
 cel_mai_mic, cel_mai_mare = minim_maxim([5, 2, 8, 1, 9])
 print(cel_mai_mic)
@@ -22,7 +22,7 @@ Ce s-a întâmplat? Funcția a **returnat două valori** separate printr-o virgu
 
 ```py
 def minim_maxim(numere):
-    return minim(numere), maxim(numere)
+    return min(numere), max(numere)
 
 rezultat = minim_maxim([5, 2, 8, 1, 9])
 print(rezultat)
@@ -46,7 +46,7 @@ Asta este incredibil de util pentru funcțiile care calculează valori înrudite
 def statistici_jucator(scoruri):
     total = sum(scoruri)
     medie = total / len(scoruri)
-    cel_mai_bun = maxim(scoruri)
+    cel_mai_bun = max(scoruri)
     return total, medie, cel_mai_bun
 
 t, medie, varf = statistici_jucator([80, 95, 70, 88])
