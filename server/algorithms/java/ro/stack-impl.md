@@ -1,4 +1,4 @@
-# Medium · Stack Implementation
+# Mediu · Implementarea unei stive
 
 Implementează o clasă **Stack** folosind un `ArrayList` ca stocare internă. Stiva trebuie să suporte operațiile `push`, `pop` și `peek`.
 

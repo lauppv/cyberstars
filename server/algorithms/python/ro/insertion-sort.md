@@ -1,4 +1,4 @@
-# Medium · Insertion Sort
+# Mediu · Sortare prin inserție
 
 Citește o listă de numere și sortează-le folosind algoritmul **insertion sort** (sortare prin inserție). Insertion sort funcționează construind o porțiune sortată a listei câte un element pe rând: alege următorul element nesortat și inserează-l în poziția corectă în porțiunea sortată.
 

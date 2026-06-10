@@ -1,4 +1,4 @@
-# Hard · Group Anagrams
+# Dificil · Grupează anagramele
 
 Având o listă de cuvinte, grupează împreună toate **anagramele**. Două cuvinte sunt anagrame dacă conțin aceleași litere într-o ordine diferită (de exemplu, "listen" și "silent").
 

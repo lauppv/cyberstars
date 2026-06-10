@@ -1,4 +1,4 @@
-# Easy · Bank Account
+# Ușor · Cont bancar
 
 Creează o clasă **BankAccount** cu un câmp `balance` și metodele `deposit(amount)` și `withdraw(amount)`. Retragerile trebuie respinse dacă suma depășește soldul curent (afișează `Insufficient funds`).
 

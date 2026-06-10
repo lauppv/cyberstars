@@ -1,4 +1,4 @@
-# Easy · Palindrome Number
+# Ușor · Număr palindrom
 
 Verifică dacă un număr întreg este un **palindrom** — un număr care se citește la fel de la stânga la dreapta și de la dreapta la stânga.
 

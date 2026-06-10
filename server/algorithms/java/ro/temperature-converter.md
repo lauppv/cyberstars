@@ -1,4 +1,4 @@
-# Easy · Temperature Converter
+# Ușor · Convertor de temperatură
 
 Creează o clasă **Temperature** care stochează o valoare de temperatură și unitatea ei (`C` pentru Celsius, `F` pentru Fahrenheit). Adaugă două metode:
 

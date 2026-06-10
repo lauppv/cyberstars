@@ -1,4 +1,4 @@
-# Medium · Matrix Transpose
+# Mediu · Transpusa unei matrice
 
 Citește un întreg **N**, apoi citește o matrice de numere întregi de dimensiune **N×N**. Afișează **transpusa** ei (rândurile devin coloane).
 

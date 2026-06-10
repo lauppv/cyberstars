@@ -1,4 +1,4 @@
-# Medium · Sort Students
+# Mediu · Sortează studenții
 
 Creează o clasă **Student** care implementează `Comparable<Student>`. Fiecare student are un `name` și un `gpa` (double). Studenții trebuie sortați după GPA în ordine **descrescătoare**. Dacă doi studenți au același GPA, sortează-i după nume în **ordine alfabetică**.
 

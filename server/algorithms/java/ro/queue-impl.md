@@ -1,4 +1,4 @@
-# Medium · Queue Implementation
+# Mediu · Implementarea unei cozi
 
 Implementează o clasă **Queue** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `enqueue`, `dequeue` și `peek`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
 

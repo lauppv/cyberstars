@@ -1,4 +1,4 @@
-# Count Vowels
+# Numără vocalele
 
 Având un șir, numără câte **vocale** conține.
 

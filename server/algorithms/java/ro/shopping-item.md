@@ -1,4 +1,4 @@
-# Easy · Shopping Item
+# Ușor · Produs de cumpărături
 
 Creează o clasă **ShoppingItem** cu trei câmpuri: `name` (String), `price` (double) și `quantity` (int). Adaugă o metodă `getTotal()` care returnează `price * quantity`.
 

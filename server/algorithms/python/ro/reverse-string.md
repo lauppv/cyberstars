@@ -1,4 +1,4 @@
-# Reverse a String
+# Inversează un șir
 
 Având o singură linie de text, afișeaz-o **inversată**.
 

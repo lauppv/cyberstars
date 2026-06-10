@@ -1,4 +1,4 @@
-# Hard · Linked List
+# Dificil · Listă înlănțuită
 
 Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Node` cu câmpurile `value` și `next`, și o clasă `LinkedList` cu operațiile `add`, `remove` și `print`.
 

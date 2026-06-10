@@ -1,4 +1,4 @@
-# Remove Duplicates
+# Elimină duplicatele
 
 Având o listă de numere, afișează-le **fără duplicate**, păstrând ordinea originală.
 

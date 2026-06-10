@@ -1,4 +1,4 @@
-# Medium · Sort Students
+# Mediu · Sortează studenții
 
 Citește **N** studenți, fiecare cu un **nume** (un singur cuvânt) și o **notă** (număr întreg). Sortează-i după notă în ordine **crescătoare**. Dacă doi studenți au aceeași notă, păstrează ordinea lor originală (sortare stabilă). Afișează lista sortată.
 

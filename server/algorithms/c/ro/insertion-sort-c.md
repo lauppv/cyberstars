@@ -1,4 +1,4 @@
-# Medium · Insertion Sort
+# Mediu · Sortare prin inserție
 
 Citește un întreg **N**, apoi citește **N** numere întregi. Sortează-le folosind algoritmul de **sortare prin inserție** și afișează rezultatul sortat.
 

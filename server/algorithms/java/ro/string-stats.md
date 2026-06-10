@@ -1,4 +1,4 @@
-# Easy · String Stats
+# Ușor · Statistici despre șir
 
 Creează o clasă **StringAnalyzer** care primește un șir în constructorul său și oferă trei metode:
 

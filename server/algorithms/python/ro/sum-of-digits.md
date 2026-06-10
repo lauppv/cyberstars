@@ -1,4 +1,4 @@
-# Sum of Digits
+# Suma cifrelor
 
 Având un număr întreg, afișează **suma cifrelor sale**.
 

@@ -1,4 +1,4 @@
-# Count Words
+# Numără cuvintele
 
 Având o propoziție, numără câte **cuvinte** conține.
 

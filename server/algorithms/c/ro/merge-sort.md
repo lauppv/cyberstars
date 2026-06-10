@@ -1,4 +1,4 @@
-# Hard · Merge Sort
+# Dificil · Sortare prin interclasare
 
 Citește un întreg **N**, apoi citește **N** numere întregi. Sortează-le folosind algoritmul de **sortare prin interclasare** și afișează rezultatul sortat.
 

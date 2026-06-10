@@ -1,4 +1,4 @@
-# Easy · Counter Class
+# Ușor · Clasă contor
 
 Creează o clasă **Counter** care ține evidența unei valori întregi. Aceasta trebuie să suporte trei operații:
 
