@@ -5,10 +5,7 @@ public class Main {
         int lockdownDeck = 17;
 
         for (int i = 1; i <= totalDecks; i++) {
-            // skip cursedDeck with continue
-            // stop at lockdownDeck with break (don't print it)
             System.out.println(i);
         }
     }
-
 }

@@ -10,8 +10,5 @@ public class Main {
         numere.add(41);
         numere.add(7);
         numere.add(30);
-
-        // Găsește valoarea maximă și afișeaz-o
     }
-
 }

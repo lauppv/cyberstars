@@ -1,4 +1,4 @@
-def sortare_bule(numere): # sortează lista crescător folosind bubble sort, apoi returneaz-o
+def sortare_bule(numere):
     pass
 
 print(sortare_bule([42, 17, 88, 9, 23]))

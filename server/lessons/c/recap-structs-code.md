@@ -7,11 +7,9 @@ typedef struct {
 } Contact;
 
 void addContact(Contact *book, int *count, const char *name, const char *phone) {
-    // add contact and increment count
 }
 
 void searchContact(Contact *book, int count, const char *query) {
-    // search using pointer arithmetic
 }
 
 int main(void) {

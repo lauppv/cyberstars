@@ -1,8 +1,6 @@
-def highest(a, b, c): # return the largest of the three readings
+def highest(a, b, c):
     pass
 
 a = int(input())
 b = int(input())
 c = int(input())
-
-# call highest, then print the safety message and the top reading

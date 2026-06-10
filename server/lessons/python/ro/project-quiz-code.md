@@ -6,7 +6,5 @@ quiz = [
 ]
 raspunsuri_jucator = ["B", "C", "A", "B"]
 
-def noteaza_test(intrebari, raspunsuri): # numără câte răspunsuri se potrivesc cu "raspuns"-ul fiecărei întrebări
+def noteaza_test(intrebari, raspunsuri):
     pass
-
-# afișează "Scor: X/Y", "Procentaj: Z%", apoi "PASS" (>= 50%) sau "FAIL"

@@ -6,8 +6,5 @@ public class Main {
 
         String name = scanner.nextLine();
         int age = scanner.nextInt();
-
-        // build and print the message
     }
-
 }

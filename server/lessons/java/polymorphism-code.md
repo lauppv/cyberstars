@@ -15,7 +15,6 @@ class Circle extends Shape {
     double area() {
         return Math.PI * radius * radius;
     }
-
 }
 
 class Rectangle extends Shape {
@@ -30,15 +29,9 @@ class Rectangle extends Shape {
     double area() {
         return width * height;
     }
-
 }
 
 public class Main {
     public static void main(String[] args) {
-        // Create a Shape[] array with a Circle(5) and a Rectangle(4, 6)
-
-        // Loop through the array and print each area
-        // Use String.format("%.2f", s.area())
     }
-
 }

@@ -1,9 +1,7 @@
 abstract class Vehicle {
-    // fields, constructor, abstract methods, drive, toString
 }
 
 class Car extends Vehicle {
-    // implement
     Car(String name) { super(name); }
 }
 
@@ -33,5 +31,4 @@ public class Main {
             System.out.println(v);
         }
     }
-
 }

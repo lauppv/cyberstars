@@ -1,13 +1,13 @@
-def curata_text(text): # păstrează doar literele, transformă-le în litere mici
+def curata_text(text):
     pass
 
-def este_palindrom(cuvant): # doi pointeri: compară începutul și sfârșitul, mută-i spre centru
+def este_palindrom(cuvant):
     pass
 
-def sunt_anagrame(a, b): # curăță ambele cuvinte, sortează literele, compară
+def sunt_anagrame(a, b):
     pass
 
-def inverseaza_cuvinte(propozitie): # inversează ordinea cuvintelor (desparte, inversează, lipește)
+def inverseaza_cuvinte(propozitie):
     pass
 
 print(este_palindrom(curata_text("A man, a plan, a canal: Panama")))

@@ -10,5 +10,4 @@ public class Main {
         System.out.println(secretCargo);
         System.out.println(maxPower);
     }
-
 }

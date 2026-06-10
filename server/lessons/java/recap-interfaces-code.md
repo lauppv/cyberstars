@@ -3,8 +3,6 @@ interface Shape {
     String describe();
 }
 
-// implement Circle, Rectangle, Triangle
-
 public class Main {
     static void printShape(Shape s) {
         System.out.println(String.format("%s — Area: %.2f", s.describe(), s.area()));
@@ -20,9 +18,5 @@ public class Main {
         for (Shape s : shapes) {
             printShape(s);
         }
-
-        // try casting shapes[0] to Circle, print radius
-        // try casting shapes[1] to Circle, catch the exception
     }
-
 }
