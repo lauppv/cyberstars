@@ -71,7 +71,8 @@ function Pagination({
 }
 
 export function AlmanacPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [filter, setFilter] = useState('all');
   const [page, setPage] = useState(1);
   const [factIdx, setFactIdx] = useState(0);
@@ -83,13 +84,13 @@ export function AlmanacPage() {
   const [extras, setExtras] = useState<AlmanacExtras | null>(null);
 
   useEffect(() => {
-    fetchAlmanacIndex()
+    fetchAlmanacIndex(lang)
       .then(setCards)
       .catch(() => setCards([]));
-    fetchAlmanacExtras()
+    fetchAlmanacExtras(lang)
       .then(setExtras)
       .catch(() => setExtras({ funFacts: [], quotes: [], timeline: [] }));
-  }, []);
+  }, [lang]);
 
   const handlePage = (p: number) => {
     setPage(p);
@@ -99,7 +100,7 @@ export function AlmanacPage() {
   };
 
   const openArticle = (slug: string) => {
-    fetchAlmanacArticle(slug)
+    fetchAlmanacArticle(slug, lang)
       .then(setOpenStory)
       .catch(() => {});
   };

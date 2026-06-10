@@ -1,0 +1,13 @@
+{
+  "slug": "github-copilot-ai-writes-46-of-all-new-code",
+  "cat": "chatgpt",
+  "tag": "CHATGPT",
+  "year": "2024",
+  "emoji": "🟢",
+  "grad": "linear-gradient(135deg,#1a3f2f,#10a37f)",
+  "title": "GitHub Copilot: AI-ul scrie 46% din tot codul nou",
+  "excerpt": "Până în 2024, aproape jumătate din tot codul comis pe GitHub era asistat de AI. Programarea nu a murit — a evoluat într-o colaborare între oameni și mașini.",
+  "fullText": "Datele GitHub din 2024 au dezvăluit o statistică uluitoare: 46% din codul scris pe platformă era acum asistat de AI, GitHub Copilot (alimentat de modelele OpenAI) fiind instrumentul principal.\n\nAcest lucru nu însemna că AI-ul scria cod autonom. Însemna că dezvoltatorii lucrau într-un mod nou: descrii ce vrei, analizezi sugestia, o modifici și o integrezi. Omul era încă în buclă, dar bucla era dramatic mai rapidă.\n\nCopilot excela la codul repetitiv: scrierea endpoint-urilor API, a modelelor de date, a testelor unitare și a fișierelor de configurare. Părțile plictisitoare și mecanice ale programării pe care dezvoltatorii le-au urât dintotdeauna. Acum se puteau concentra pe arhitectură, design și deciziile cu adevărat creative.\n\nDezvoltatorii juniori au raportat cele mai mari câștiguri de productivitate. Copilot servea drept tutore constant: \"Iată cum arată de obicei acest tipar. Iată modul idiomatic de a face asta în acest limbaj.\" Curba de învățare pentru limbaje și framework-uri noi s-a aplatizat dramatic.\n\nDezvoltatorii seniori au beneficiat diferit: mai puțin timp pe implementare, mai mult timp pe analiza codului, designul sistemelor și mentorat. Meseria nu a dispărut — s-a deplasat către o gândire de nivel superior.\n\nStatistica a stârnit dezbateri despre calitatea codului, proprietatea intelectuală și viitorul profesiei. Dar câștigurile de productivitate erau de netăgăduit, iar adoptarea continua să se accelereze.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

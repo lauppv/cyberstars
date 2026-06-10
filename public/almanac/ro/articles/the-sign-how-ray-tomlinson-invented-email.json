@@ -1,0 +1,14 @@
+{
+  "slug": "the-sign-how-ray-tomlinson-invented-email",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1971",
+  "emoji": "📧",
+  "grad": "linear-gradient(135deg,#2a2a1a,#6a5a2a)",
+  "title": "Semnul @ — cum a inventat Ray Tomlinson emailul",
+  "excerpt": "În 1971, Ray Tomlinson căuta o modalitate de a trimite mesaje între computere. A ales semnul @ pentru că nu era folosit în numele nimănui. Primul email era ceva de genul „QWERTYUIOP” — nu și-a putut aminti.",
+  "fullText": "În 1971, mesageria pe computer exista, dar doar pe aceeași mașină. Puteai lăsa un mesaj pentru un alt utilizator pe computerul vostru comun — ca un bilețel digital. Dar nu puteai trimite un mesaj cuiva de pe un computer diferit.\n\nRay Tomlinson, inginer la BBN (compania care a construit ARPANET), a schimbat asta. Lucra la un program de transfer de fișiere numit CPYNET și la un program local de mesagerie numit SNDMSG. Și-a dat seama că le putea combina: să folosească CPYNET pentru a trimite un fișier de mesaj de la un computer la altul, iar SNDMSG pentru a-l compune și citi.\n\nPiesa lipsă era adresarea. Cum specifici atât utilizatorul, cât și computerul? Tomlinson avea nevoie de un separator care să nu apară în numele nimănui. S-a uitat la tastatura sa — un teleimprimator Model 33 Teletype — și a ales @. Era obscur, nefolosit și avea o semnificație semantică plăcută: utilizator „la” computer.\n\nPrimul email de rețea a fost trimis între două computere aflate unul lângă altul în biroul lui Tomlinson. Întrebat ce spunea primul mesaj, Tomlinson a răspuns: „Ceva de genul QWERTYUIOP.” Nu l-a salvat — habar nu avea că era istoric.\n\nFormatul utilizator@computer — mai târziu utilizator@domeniu — a devenit universal. Acum este cel mai recunoscut format de adresare din lume. Fiecare adresă de email, fiecare formular de autentificare, fiecare pagină „contactează-ne” folosește convenția pe care Tomlinson a stabilit-o uitându-se la tastatură și alegând un simbol rar folosit.\n\nEmailul a crescut lent la început, fiind folosit în principal de cadre universitare și cercetători militari pe ARPANET. Dar până în anii 1990, servicii precum AOL, Hotmail și Yahoo Mail au adus emailul la sute de milioane de oameni. Astăzi, peste 300 de miliarde de emailuri sunt trimise în fiecare zi.\n\nTomlinson a rămas modest în privința invenției sale. A primit premiul Webby în 2009, iar Internet Hall of Fame l-a inclus în 2012. A murit în 2016, la vârsta de 74 de ani. Moștenirea sa trăiește în fiecare semn @ tastat, în fiecare căsuță de email reîmprospătată și în fiecare notificare „ai primit un mesaj”.",
+  "author": "Ms. Diana",
+  "authorEm": "🌟",
+  "readTime": "6 min"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "how-claude-handles-multilingual-conversations",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Cum gestionează Claude conversațiile multilingve",
+  "excerpt": "Claude vorbește fluent peste 50 de limbi — dar ceea ce este impresionant este cum trece între ele natural și menține contextul cultural.",
+  "fullText": "Una dintre forțele mai puțin discutate ale lui Claude este capacitatea sa multilingvă. Nu doar traducere — fluență autentică în peste 50 de limbi, inclusiv o înțelegere a contextului cultural, a expresiilor și a registrului.\n\nÎntreabă-l pe Claude ceva în japoneză și răspunde într-o japoneză naturală — nu engleză tradusă, ci text pe care un vorbitor nativ l-ar găsi confortabil. Treci la spaniolă în mijlocul conversației și te urmează fără probleme. Amestecă limbile (așa cum fac în mod natural oamenii bilingvi) și înțelege.\n\nAcest lucru contează enorm pentru accesibilitatea globală. Un student indian poate învăța programare în hindi. Un dezvoltator brazilian poate depana cod în portugheză. O startup coreeană poate scrie documentație în coreeană și îl poate ruga pe Claude să o traducă pentru piețele internaționale.\n\nConștientizarea culturală merge mai adânc decât limba. Claude înțelege că directețea este apreciată diferit în culturi diferite, că umorul se traduce prost și că anumite subiecte necesită niveluri diferite de sensibilitate în contexte diferite.\n\nPentru companiile globale, acest lucru însemna că puteau implementa un singur sistem AI care servea toate piețele lor, fără modele separate pentru fiecare limbă — o simplificare dramatică a infrastructurii lor AI.",
+  "author": "AI Desk",
+  "readTime": "4 min"
+}

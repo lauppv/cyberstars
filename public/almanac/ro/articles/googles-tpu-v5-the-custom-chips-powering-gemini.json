@@ -1,0 +1,13 @@
+{
+  "slug": "googles-tpu-v5-the-custom-chips-powering-gemini",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "TPU v5 de la Google: cipurile personalizate care alimentează Gemini",
+  "excerpt": "În timp ce alții cumpără GPU-uri NVIDIA, Google își proiectează propriile cipuri AI. TPU v5 i-a oferit lui Gemini un avantaj hardware pe care niciun competitor nu îl putea cumpăra.",
+  "fullText": "Google își proiectează propriile cipuri acceleratoare AI — Tensor Processing Units (TPU) — încă din 2016. Până la TPU v5, aceste cipuri personalizate i-au oferit lui Google un avantaj semnificativ în antrenarea și operarea Gemini.\n\nTPU-urile sunt proiectate special pentru operațiile de înmulțire a matricilor care domină sarcinile de lucru AI. Ele sacrifică flexibilitatea calculului de uz general în favoarea unui debit brut exact pe operațiile de care are nevoie AI-ul.\n\nAvantajul este dublu: cost și acces. În timp ce competitorii se înghesuie să cumpere GPU-uri NVIDIA H100 (scumpe și cu ofertă limitată), Google își fabrică propriile cipuri. Nu sunt supuse blocajelor din lanțul de aprovizionare sau prețurilor NVIDIA.\n\nPod-urile TPU v5 — clustere de mii de cipuri — pot antrena în câteva săptămâni modele care ar dura luni pe clustere GPU echivalente. Acest avantaj de viteză înseamnă că Google poate itera mai rapid: să încerce mai multe arhitecturi, să ruleze mai multe experimente și să ajungă mai devreme la modele mai bune.\n\nCipurile optimizează și inferența — operarea modelului antrenat pentru utilizatori. Un cost de operare mai mic per interogare înseamnă că Google poate oferi niveluri gratuite mai generoase, poate implementa AI în mai multe produse și poate experimenta cu aplicații în care marjele ar fi prea mici cu putere de calcul GPU închiriată.\n\nJeff Dean, omul de știință șef al Google, l-a numit „cel mai mare avantaj strategic individual în infrastructura AI.”",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

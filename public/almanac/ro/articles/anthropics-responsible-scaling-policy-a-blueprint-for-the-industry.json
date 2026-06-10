@@ -1,0 +1,13 @@
+{
+  "slug": "anthropics-responsible-scaling-policy-a-blueprint-for-the-industry",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Responsible Scaling Policy de la Anthropic: un model pentru întreaga industrie",
+  "excerpt": "În loc de „mișcă-te repede și sparge lucruri”, Anthropic a propus un cadru în care creșterile de capabilitate declanșează măsuri de siguranță corespunzătoare.",
+  "fullText": "În 2023, Anthropic a publicat Responsible Scaling Policy (RSP) — un cadru care lega nivelurile de capabilitate ale modelelor de măsurile de siguranță necesare. Pe măsură ce modelele deveneau mai capabile, ele trebuiau să treacă evaluări de siguranță tot mai riguroase înainte de a fi puse în funcțiune.\n\nRSP definea „Nivelurile de siguranță AI” (ASL), inspirate de nivelurile de biosecuritate. ASL-1 reprezintă sistemele actuale, fără un risc catastrofal semnificativ. ASL-2 și nivelurile superioare necesită măsuri de izolare, evaluare și guvernanță progresiv mai puternice.\n\nPolitica a fost controversată. Unii susțineau că este prea precaută — că ar încetini progresul și ar lăsa concurenții mai puțin atenți să câștige. Alții susțineau că nu merge suficient de departe — că angajamentele voluntare, fără supraveghere externă, erau insuficiente.\n\nDar adevărata valoare a cadrului a fost că a făcut discuția concretă. În loc de dezbateri abstracte despre „riscul AI”, RSP oferea o abordare specifică și măsurabilă: „Iată ce verificăm. Iată ce declanșează escaladarea. Iată cine ia deciziile.”\n\nPână în 2025, mai multe alte companii AI adoptaseră cadre similare. RSP a devenit mai puțin un dezavantaj competitiv și mai mult un standard al industriei — exact ce sperase Anthropic.",
+  "author": "AI Desk",
+  "readTime": "6 min"
+}

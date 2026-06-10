@@ -1,0 +1,13 @@
+{
+  "slug": "project-astra-gemini-sees-the-world-through-your-phone",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Project Astra: Gemini vede lumea prin telefonul tău",
+  "excerpt": "Google a demonstrat cum Gemini înțelege video live de la camera unui telefon — recunoscând obiecte, citind text, navigând prin spații în timp real.",
+  "fullText": "La Google I/O 2024, cea mai impresionantă demonstrație nu a fost un chatbot. A fost Project Astra: Gemini procesând video live de la camera unui telefon și înțelegând tot ce vedea.\n\nÎndreaptă-ți telefonul spre un indicator stradal din Tokyo și întreabă „Unde mă aflu?” Gemini citește caracterele japoneze, identifică cartierul și îți dă indicații. Îndreaptă-l spre o placă de circuite și întreabă „Ce nu e în regulă?” Identifică un condensator ars.\n\nDemonstrația a arătat modelul menținând contextul de-a lungul unui flux video continuu — amintindu-și obiecte pe care le văzuse mai devreme, urmărind mișcarea, înțelegând relațiile spațiale. Când a fost întrebat „Unde mi-am pus ochelarii?”, putea să-și amintească faptul că îi văzuse pe un birou cu trei minute mai devreme în videoclip.\n\nProject Astra a reprezentat viziunea Google asupra AI-ului ca asistent universal — nu ceva căruia îi scrii, ci ceva care îți vede și îți înțelege lumea în timp real.\n\nCerințele tehnice erau uluitoare: procesare video în timp real, înțelegere multimodală, latență redusă și capacitatea de a menține un context coerent de-a lungul a câteva minute de input continuu. Doar o companie cu infrastructura Google putea măcar încerca așa ceva.\n\nPentru accesibilitate, implicațiile erau profunde: utilizatorii cu deficiențe de vedere își puteau îndrepta telefonul spre orice și primeau instantaneu o descriere detaliată.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

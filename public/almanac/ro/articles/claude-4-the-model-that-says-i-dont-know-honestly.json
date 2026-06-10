@@ -1,0 +1,13 @@
+{
+  "slug": "claude-4-the-model-that-says-i-dont-know-honestly",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude 4: modelul care spune sincer „nu știu”",
+  "excerpt": "Claude 4 a adus incertitudinea calibrată — nu doar dădea răspunsuri, ci îți spunea cât de încrezător era. O schimbare mică, cu implicații enorme.",
+  "fullText": "Una dintre cele mai subestimate caracteristici ale lui Claude 4 a fost calibrarea sa îmbunătățită — capacitatea de a-și evalua cu acuratețe propria incertitudine.\n\nCând era întrebat ceva factual, Claude 4 nu producea doar un răspuns. Își indica nivelul de încredere. „Sunt destul de sigur de acest lucru” vs. „Nu sunt sigur — ar trebui să verifici asta” vs. „Sincer, nu știu.”\n\nAr putea suna simplu, dar aborda una dintre cele mai mari critici aduse AI-ului: halucinația. Modelele anterioare afirmau cu încredere falsuri pe același ton ca faptele reale. Răspunsurile calibrate ale lui Claude 4 însemnau că utilizatorii puteau efectiv avea încredere în autoevaluarea modelului.\n\nPentru cazurile de utilizare profesională — medicină, drept, inginerie — acest lucru a fost transformator. Un medic putea cere lui Claude un diagnostic diferențial și știa de care posibilități modelul era sigur și care erau speculative. Un avocat putea avea încredere că „Nu sunt sigur că această citare este corectă” însemna ceva.\n\nAnthropic a realizat acest lucru printr-o combinație de tehnici de antrenare: principiile Constitutional AI care valorizau onestitatea, modelarea recompenselor care penaliza încrederea falsă și procedurile de calibrare post-antrenare.\n\nRezultatul: un model care părea mai puțin un atotștiutor și mai mult un expert onest — cineva care putea spune „nu știu” fără să se simtă amenințat.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

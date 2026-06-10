@@ -1,0 +1,14 @@
+{
+  "slug": "deep-blue-vs-kasparov-when-a-machine-beat-the-world-chess-champion",
+  "cat": "ai",
+  "tag": "AI & FUTURE",
+  "year": "1997",
+  "emoji": "♟️",
+  "grad": "linear-gradient(135deg,#1a1a3a,#2f2f7a)",
+  "title": "Deep Blue contra Kasparov — când o mașină l-a învins pe campionul mondial la șah",
+  "excerpt": "În 1997, Deep Blue al IBM l-a învins pe Garry Kasparov într-un meci de șase partide. A fost prima dată când un campion mondial în exercițiu a pierdut în fața unui computer. Kasparov a acuzat IBM de trișare.",
+  "fullText": "Pe 11 mai 1997, într-un zgârie-nori din Manhattan, campionul mondial de șah în exercițiu Garry Kasparov — probabil cel mai mare jucător din istorie — a abandonat după 19 mutări în fața computerului Deep Blue al IBM. Mașina câștigase meciul cu 3,5 la 2,5. A fost prima dată când un computer învingea un campion mondial într-un meci complet, în condiții standard de timp.\n\nDeep Blue era un monstru de forță brută. Putea evalua 200 de milioane de poziții pe secundă folosind 480 de cipuri de șah personalizate. Nu „înțelegea” șahul în niciun sens uman — pur și simplu calcula mai departe decât putea orice om. Funcția sa de evaluare (modul în care judeca dacă o poziție era bună) a fost reglată de o echipă de consultanți mari maeștri.\n\nMeciul a fost profund controversat. În Partida 2, Deep Blue a făcut o mutare care părea să demonstreze o înțelegere strategică profundă. Kasparov a fost zguduit. Mai târziu a spus că această mutare l-a convins că niște oameni trebuie să ajute în secret mașina. A devenit agitat și a jucat slab pentru restul meciului.\n\nAni mai târziu, unul dintre dezvoltatorii Deep Blue a recunoscut că misterioasa mutare a fost cauzată probabil de un bug software — când computerul nu putea decide ce să facă, juca o mutare legală aleatorie. Acest accident s-ar putea să fi distrus psihologic cel mai bun jucător de șah din lume.\n\nKasparov a cerut o revanșă. IBM a refuzat, a demontat Deep Blue și nu a publicat niciodată jurnalele complete ale partidelor. Asta a alimentat teorii ale conspirației care persistă până în ziua de azi. IBM a obținut ce voia — prețul acțiunilor a sărit cu 18 miliarde de dolari după meci. O revanșă nu putea decât să le dăuneze.\n\nImpactul mai profund a fost filosofic. Șahul fusese considerat culmea inteligenței umane. Când o mașină a putut să-l joace mai bine decât orice om, asta a forțat o regândire a ceea ce înseamnă inteligența. Răspunsul: șahul nu este inteligență. Este calcul.\n\nAstăzi, un motor de șah gratuit de pe telefonul tău ar demola Deep Blue. Stockfish și AlphaZero joacă la un nivel care îl face pe Deep Blue să pară un începător. Frontiera s-a mutat către probleme care necesită înțelegere autentică, creativitate și bun-simț — domenii în care AI-ul încă se chinuie în comparație cu oamenii.",
+  "author": "Dr. Elena",
+  "authorEm": "🏆",
+  "readTime": "8 min"
+}

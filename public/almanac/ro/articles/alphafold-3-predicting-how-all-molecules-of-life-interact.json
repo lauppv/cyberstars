@@ -1,0 +1,13 @@
+{
+  "slug": "alphafold-3-predicting-how-all-molecules-of-life-interact",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2024",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "AlphaFold 3: prezicerea modului în care interacționează toate moleculele vieții",
+  "excerpt": "Cel mai recent AlphaFold de la DeepMind nu doar prezice structurile proteinelor — prezice cum interacționează între ele proteinele, ADN-ul, ARN-ul și medicamentele.",
+  "fullText": "Dacă AlphaFold 2 a rezolvat predicția structurii proteinelor, AlphaFold 3 a mers mai departe: prezice cum interacționează între ele toate moleculele biologice. Proteine cu ADN. Proteine cu medicamente. ARN cu molecule mici. Totul.\n\nAcest lucru contează enorm pentru descoperirea de medicamente. A cunoaște forma unei proteine este util, dar a ști cum se va lega de ea o potențială moleculă de medicament — unde se va atașa, cât de strâns, ce efecte secundare ar putea provoca — este ceea ce permite cu adevărat crearea de noi medicamente.\n\nAlphaFold 3 a obținut o acuratețe cu 50% mai bună decât metodele anterioare pentru prezicerea interacțiunilor proteină-ligand. Pentru cei care proiectează medicamente, acest lucru a însemnat mai puține experimente eșuate, identificarea mai rapidă a compușilor promițători și, în cele din urmă, o dezvoltare mai ieftină și mai rapidă a noilor tratamente.\n\nGoogle a pus sistemul la dispoziție prin AlphaFold Server, permițând cercetătorilor din întreaga lume să trimită predicții gratuit. În câteva luni, zeci de mii de cercetători îl folosiseră.\n\nImplicația mai amplă: biologia devenea o știință computațională. În loc de experimente de laborator scumpe și lente pentru a înțelege comportamentul molecular, cercetătorii puteau simula interacțiunile computațional și mergeau la laborator doar pentru validarea finală.\n\nDemis Hassabis a numit-o \"începutul sfârșitului erei încercării și erorii în descoperirea de medicamente\".",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

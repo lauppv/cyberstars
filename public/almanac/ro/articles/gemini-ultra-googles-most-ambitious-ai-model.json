@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-ultra-googles-most-ambitious-ai-model",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2024",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Gemini Ultra: cel mai ambițios model AI al Google",
+  "excerpt": "Când Google a lansat Gemini Ultra, acesta a fost primul lor model care a depășit GPT-4 la mai multe benchmarkuri. Cursa AI a devenit o competiție în trei.",
+  "fullText": "În decembrie 2023, Google DeepMind a dezvăluit Gemini — o familie de modele AI multimodale concepute de la zero pentru a înțelege simultan text, imagini, audio, video și cod.\n\nGemini Ultra, cea mai mare variantă, a devenit primul model care a depășit GPT-4 la majoritatea benchmarkurilor academice, inclusiv MMLU (obținând 90,0% față de 86,4% al GPT-4) și alte sarcini de raționament.\n\nDar ceea ce făcea Gemini unic din punct de vedere arhitectural era multimodalitatea sa nativă. Spre deosebire de modelele antrenate pe text și cărora li s-a adăugat ulterior viziunea, Gemini a fost antrenat de la început să proceseze împreună mai multe modalități. Asta însemna că putea raționa despre un videoclip la fel cum raționa despre text — înțelegând secvențe temporale, relații spațiale și conexiuni intermodale.\n\nPentru Google, Gemini reprezenta ani de muncă în care s-au combinat priceperea în cercetare a DeepMind cu expertiza în infrastructură a Google Brain. Fuziunea acestor două echipe în 2023 a fost îndreptată tocmai spre a produce ceva de genul acesta.\n\nMesajul către industrie era clar: cursa AI nu mai era doar despre OpenAI. Google avea talentul, datele, puterea de calcul și acum și modelul cu care să concureze la frontieră.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "the-night-the-internet-said-its-first-word",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1969",
+  "emoji": "📞",
+  "grad": "linear-gradient(135deg,#1a1a40,#3a1f70)",
+  "title": "Noaptea în care internetul și-a spus primul cuvânt",
+  "excerpt": "Pe 29 octombrie 1969, ARPANET a trimis primul său mesaj între UCLA și Stanford. Au încercat să trimită „LOGIN” — sistemul s-a blocat după „LO”. Primul mesaj de internet al omenirii a fost un „lo” accidental.",
+  "fullText": "Data era 29 octombrie 1969. Locul: Camera 3420 din Boelter Hall de la UCLA. Un tânăr programator pe nume Charley Kline stătea la un computer SDS Sigma 7, conectat printr-o linie de 50 de kilobiți pe secundă la o a doua mașină de la Stanford Research Institute, la 560 de kilometri distanță.\n\nSarcina sa era simplă: să se autentifice pe computerul de la distanță. Avea să scrie „LOGIN”, iar mașina de la Stanford urma să răspundă.\n\nA scris „L”. Sistemul l-a returnat. A scris „O”. L-a returnat. Apoi a scris „G” — și întregul sistem s-a blocat.\n\nPrimul mesaj trimis vreodată peste ceea ce avea să devină internetul a fost „LO”. O abreviere accidentală care, retrospectiv, pare aproape poetică — ca și cum rețeaua spunea „hello” în propriul ei mod frânt.\n\nCam o oră mai târziu, după ce sistemul a fost repornit, Kline a încercat din nou. De data aceasta, „LOGIN”-ul complet a trecut. ARPANET-ul era viu.\n\nRețeaua fusese finanțată de DARPA (Defense Advanced Research Projects Agency) și proiectată de o echipă condusă de Larry Roberts și Bob Kahn. Viziunea originală era de a permite cercetătorilor din diferite universități să partajeze resurse de calcul costisitoare.\n\nNimeni nu și-a imaginat că avea să devină o rețea de comunicații globală care conectează miliarde de oameni. Cele patru noduri originale ARPANET — UCLA, Stanford, UC Santa Barbara și Universitatea din Utah — au fost semințele a ceea ce numim acum internetul.\n\nAcel „LO” de două litere este păstrat în jurnalul IMP (Interface Message Processor) de la UCLA. Rămâne cea mai importantă greșeală de tastare din istoria omenirii.",
+  "author": "CyberBot",
+  "authorEm": "🤖",
+  "readTime": "5 min"
+}

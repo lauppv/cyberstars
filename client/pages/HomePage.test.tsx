@@ -1,7 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { fetchAlmanacSlugs } from '../services/almanacService';
+import i18n from 'i18next';
+import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async (importOriginal) => {
@@ -123,6 +124,11 @@ beforeEach(() => {
     refresh: vi.fn(),
   });
   mockUseCurriculum.mockReturnValue({ courses: [], isLoading: false, refresh: vi.fn() });
+});
+
+// The language is a global i18n singleton; reset it so the ro test can't leak.
+afterEach(async () => {
+  await i18n.changeLanguage('en');
 });
 
 describe('HomePage', () => {
@@ -259,6 +265,14 @@ describe('HomePage', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     renderPage();
     expect(await screen.findAllByText(/^Story /)).toHaveLength(3);
+  });
+
+  it('requests Romanian almanac highlights when the UI language is ro', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    await i18n.changeLanguage('ro');
+    renderPage();
+    await screen.findAllByText(/^Story /);
+    expect(vi.mocked(fetchAlmanacArticle)).toHaveBeenCalledWith(expect.any(String), 'ro');
   });
 
   it('opens story modal when an almanac highlight is clicked', async () => {

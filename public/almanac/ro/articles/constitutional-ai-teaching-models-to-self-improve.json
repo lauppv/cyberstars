@@ -1,0 +1,13 @@
+{
+  "slug": "constitutional-ai-teaching-models-to-self-improve",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2024",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Constitutional AI: cum învățăm modelele să se autoperfecționeze",
+  "excerpt": "Inovația cheie a Anthropic nu a fost doar un model mai mare — a fost o metodă de antrenament. Constitutional AI permite modelelor să își critice și să își revizuiască propriile rezultate folosind un set de principii.",
+  "fullText": "Majoritatea companiilor de AI își antrenează modelele folosind RLHF (Reinforcement Learning from Human Feedback) — oamenii evaluează rezultatele, iar modelul învață să producă răspunsuri mai bine cotate. Funcționează, dar este costisitor și poate codifica prejudecățile umane.\n\nAnthropic a adoptat o abordare diferită: Constitutional AI (CAI). În loc să se bazeze exclusiv pe evaluatori umani, au oferit modelului o „constituție” — un set de principii precum „fii util”, „fii cinstit”, „evită răul” — și l-au antrenat să își critice și să își revizuiască propriile rezultate.\n\nProcesul funcționează în două etape. Mai întâi, modelul generează un răspuns. Apoi este întrebat: „Respectă acest răspuns constituția? Dacă nu, revizuiește-l.” Autocriticile modelului devin date de antrenament pentru iterația următoare.\n\nAceastă abordare se scalează mai bine decât feedbackul uman singur. Poți actualiza constituția (adăuga principii noi, elimina pe cele învechite) fără a reantrena de la zero. Și face valorile modelului mai transparente — sunt literalmente scrise.\n\nCriticii s-au temut că ar putea face modelele excesiv de prudente. Dar în practică, Constitutional AI a produs modele care erau în același timp mai capabile și mai bine aliniate — o combinație rară care sugera că compromisul dintre siguranță și capacitate ar putea fi o falsă dilemă.",
+  "author": "AI Desk",
+  "readTime": "6 min"
+}

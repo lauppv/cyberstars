@@ -1,0 +1,570 @@
+{
+  "funFacts": [
+    {
+      "em": "🎮",
+      "text": "Primul joc video, \"Tennis for Two\" (1958), rula pe un osciloscop analogic la un târg de știință. Creatorul l-a făcut pentru că ziua porților deschise era plictisitoare.",
+      "src": "— Brookhaven Lab, 1958"
+    },
+    {
+      "em": "📼",
+      "text": "Dischetele erau numite \"floppy\" (flexibile) pentru că primele dischete de 8 inci se îndoiau în mână. Dischetele de 3,5\" pe care ni le amintim erau de fapt rigide.",
+      "src": "— IBM, 1971"
+    },
+    {
+      "em": "🐍",
+      "text": "Python este numit după Monty Python's Flying Circus, nu după șarpe. Guido van Rossum citea scenariile când a ales numele în 1991.",
+      "src": "— python.org"
+    },
+    {
+      "em": "⌨️",
+      "text": "Aranjamentul QWERTY a fost conceput în 1873 pentru a încetini dactilografii — tastele se blocau la mașinile de scris mecanice. L-am păstrat de atunci.",
+      "src": "— Christopher Sholes"
+    },
+    {
+      "em": "☕",
+      "text": "Java era cât pe ce să se numească \"Oak\" — până când avocații au găsit un alt produs cu acel nume. Echipa a ales Java la o cafea. Literalmente.",
+      "src": "— Sun Microsystems, 1995"
+    },
+    {
+      "em": "🦠",
+      "text": "Primul virus de calculator, \"Creeper\" (1971), doar afișa: \"I'm the creeper, catch me if you can!\". Primul antivirus, \"Reaper\", a fost creat pentru a-l vâna.",
+      "src": "— ARPANET"
+    },
+    {
+      "em": "🖱️",
+      "text": "Primul mouse de calculator a fost făcut din lemn (1964). Prototipul lui Doug Engelbart avea două roți perpendiculare — și un singur buton.",
+      "src": "— SRI International"
+    },
+    {
+      "em": "💾",
+      "text": "Pictograma de salvare (o dischetă) este acum mai veche decât majoritatea oamenilor care o folosesc. Copiii de azi nu au atins niciodată una.",
+      "src": "— Universal truth"
+    },
+    {
+      "em": "🔑",
+      "text": "Parola 'password' este încă folosită de milioane de oameni în fiecare an. Durează mai puțin de 1 secundă să fie spartă.",
+      "src": "— NordPass, 2024"
+    },
+    {
+      "em": "🌍",
+      "text": "Peste 5,5 miliarde de oameni folosesc internetul astăzi — mai mulți decât cei care au acces la toalete curate.",
+      "src": "— ITU / WHO"
+    },
+    {
+      "em": "📧",
+      "text": "Un angajat de birou obișnuit primește 121 de e-mailuri pe zi. Aproximativ 49% din tot traficul de e-mail este spam.",
+      "src": "— Radicati Group"
+    },
+    {
+      "em": "🧮",
+      "text": "Cuvântul 'computer' însemna inițial o persoană care face calcule. A fost o denumire de meserie până în anii 1950.",
+      "src": "— Oxford English Dictionary"
+    },
+    {
+      "em": "🏎️",
+      "text": "Un automobil modern are mai multe linii de cod (~100 de milioane) decât un Boeing 787 Dreamliner, Facebook și Marele Accelerator de Hadroni la un loc.",
+      "src": "— IEEE Spectrum"
+    },
+    {
+      "em": "🐛",
+      "text": "Software-ul obișnuit are între 15 și 50 de erori la fiecare 1.000 de linii de cod. Naveta spațială a NASA avea doar 0,1 erori la 1.000 de linii.",
+      "src": "— NASA / IEEE"
+    },
+    {
+      "em": "📡",
+      "text": "Toate datele din Wikipedia (doar text) ocupă aproximativ 22 GB — încap pe un stick USB ieftin.",
+      "src": "— Wikipedia dumps"
+    },
+    {
+      "em": "🎵",
+      "text": "Primul MP3 codificat vreodată a fost 'Tom's Diner' de Suzanne Vega (1993). Inginerii l-au ales datorită vocii ei clare, neacompaniate.",
+      "src": "— Fraunhofer Institute"
+    },
+    {
+      "em": "🔋",
+      "text": "Mineritul de Bitcoin folosește anual mai multă electricitate decât întreaga țară Argentina.",
+      "src": "— Cambridge University"
+    },
+    {
+      "em": "💻",
+      "text": "Calculatorul de ghidare de pe Apollo 11 avea 74 KB de memorie. Telefonul tău are de aproximativ 80 de milioane de ori mai mult.",
+      "src": "— NASA"
+    },
+    {
+      "em": "🐱",
+      "text": "Primul videoclip încărcat vreodată pe YouTube a fost 'Me at the zoo' (2005). Are 18 secunde și prezintă elefanți.",
+      "src": "— YouTube"
+    },
+    {
+      "em": "📱",
+      "text": "O persoană obișnuită își atinge telefonul de 2.617 ori pe zi. Utilizatorii intensivi depășesc 5.400 de atingeri.",
+      "src": "— Dscout Research"
+    },
+    {
+      "em": "🗂️",
+      "text": "Google procesează peste 8,5 miliarde de căutări pe zi — adică aproximativ 99.000 pe secundă.",
+      "src": "— Internet Live Stats"
+    },
+    {
+      "em": "🧊",
+      "text": "Arctic Code Vault al GitHub stochează cod open-source pe role de film într-o mină de cărbune dezafectată din Svalbard, Norvegia. Este conceput să dureze 1.000 de ani.",
+      "src": "— GitHub, 2020"
+    },
+    {
+      "em": "🎲",
+      "text": "Lumea din Minecraft are de 8 ori suprafața Pământului. Generarea procedurală folosește un singur număr seed pentru a crea totul.",
+      "src": "— Mojang"
+    },
+    {
+      "em": "🖥️",
+      "text": "Primul hard disk de 1 GB (1980) cântărea 250 de kilograme, avea dimensiunea unui frigider și costa 40.000 de dolari.",
+      "src": "— IBM"
+    },
+    {
+      "em": "🌙",
+      "text": "Este nevoie de mai multă putere de calcul pentru a rula o singură dată un model AI modern decât a fost nevoie pentru a trimite oameni pe Lună.",
+      "src": "— OpenAI estimates"
+    },
+    {
+      "em": "📦",
+      "text": "npm (Node Package Manager) are peste 2 milioane de pachete. Un proiect JavaScript obișnuit instalează peste 1.000 de dependențe.",
+      "src": "— npm registry"
+    },
+    {
+      "em": "🔐",
+      "text": "Cea mai costisitoare breșă de securitate cibernetică din istorie a fost Yahoo (2013) — 3 miliarde de conturi compromise. A redus prețul de vânzare al companiei cu 350 de milioane de dolari.",
+      "src": "— Verizon/Yahoo"
+    },
+    {
+      "em": "🐧",
+      "text": "Linux rulează pe 100% dintre primele 500 de supercalculatoare ale lumii. Nu 99%. Pe toate.",
+      "src": "— TOP500.org"
+    },
+    {
+      "em": "⏱️",
+      "text": "Amazon a calculat că fiecare 100 ms de latență îi costă 1% din vânzări. Google a constatat că o jumătate de secundă în plus la încărcarea paginii de căutare scade traficul cu 20%.",
+      "src": "— Amazon / Google"
+    },
+    {
+      "em": "🎬",
+      "text": "Întreaga trilogie Stăpânul Inelelor a necesitat 12 TB de spațiu de stocare pentru randare. Un singur cadru dura până la 48 de ore pentru a fi randat.",
+      "src": "— Weta Digital"
+    },
+    {
+      "em": "🔤",
+      "text": "Există peste 700 de limbaje de programare în uz activ. Majoritatea programatorilor învață doar 3-5 în întreaga lor carieră.",
+      "src": "— TIOBE / StackOverflow"
+    },
+    {
+      "em": "🌐",
+      "text": "Primul site web (info.cern.ch) este încă online. Explică ce este World Wide Web-ul.",
+      "src": "— CERN, 1991"
+    },
+    {
+      "em": "🧬",
+      "text": "1 gram de ADN poate stoca teoretic 215 petabytes (215 milioane de gigabytes) de date.",
+      "src": "— Harvard / Nature"
+    },
+    {
+      "em": "🚀",
+      "text": "Racheta Falcon 9 de la SpaceX rulează Linux. Software-ul de zbor este scris în C++.",
+      "src": "— SpaceX"
+    },
+    {
+      "em": "🎯",
+      "text": "Stack Overflow are peste 24 de milioane de întrebări cu răspuns. Cea mai vizualizată întrebare este despre cum se anulează un commit Git.",
+      "src": "— StackOverflow"
+    },
+    {
+      "em": "🔊",
+      "text": "Siri a fost dezvoltat inițial ca un proiect AI finanțat de DARPA. Apple l-a achiziționat pentru 200 de milioane de dolari în 2010.",
+      "src": "— Apple / DARPA"
+    },
+    {
+      "em": "📊",
+      "text": "90% din datele lumii au fost create în ultimii doi ani. Generăm 2,5 trilioane de miliarde de bytes zilnic.",
+      "src": "— IBM / DOMO"
+    },
+    {
+      "em": "🏠",
+      "text": "Prima cameră web a fost îndreptată spre un ibric de cafea la Universitatea Cambridge (1991). Cercetătorii o foloseau pentru a verifica dacă ibricul era gol înainte de a coborî scările.",
+      "src": "— Cambridge"
+    },
+    {
+      "em": "🕹️",
+      "text": "Game Boy-ul (1989) avea mai puțină putere de calcul decât o sonerie inteligentă modernă. S-au vândut 118 milioane de unități.",
+      "src": "— Nintendo"
+    },
+    {
+      "em": "🔗",
+      "text": "Cablurile submarine ale internetului însumează peste 1,3 milioane de km — suficient pentru a înconjura Pământul de 33 de ori. 97% din datele intercontinentale circulă prin ele.",
+      "src": "— TeleGeography"
+    },
+    {
+      "em": "💡",
+      "text": "Laboratorul lui Thomas Edison a realizat prima înregistrare audio (1877) și totodată primul film (1891). Ambele tehnologii au fost proiecte secundare.",
+      "src": "— Edison Labs"
+    },
+    {
+      "em": "🤖",
+      "text": "Cuvântul 'robot' provine din cuvântul ceh 'robota', care înseamnă muncă forțată. A fost inventat într-o piesă de teatru din 1920 de Karel Čapek.",
+      "src": "— R.U.R., 1920"
+    },
+    {
+      "em": "🎨",
+      "text": "Codul de culoare hex pentru albastrul Facebook (#4267B2) a fost ales pentru că Mark Zuckerberg suferă de daltonism roșu-verde. Albastrul este culoarea pe care o vede cel mai bine.",
+      "src": "— The New Yorker"
+    },
+    {
+      "em": "📝",
+      "text": "Codul sursă original al World Wide Web a fost scris pe un calculator NeXT. Steve Jobs a fondat NeXT după ce a fost concediat de la Apple.",
+      "src": "— CERN / NeXT"
+    },
+    {
+      "em": "🌊",
+      "text": "Întregul internet cântărește aproximativ 50 de grame — greutatea combinată a tuturor electronilor în mișcare care transportă date în orice moment dat.",
+      "src": "— Discover Magazine"
+    },
+    {
+      "em": "⚡",
+      "text": "O singură căutare Google folosește aproximativ 0,3 Wh de energie — suficient pentru a aprinde un bec de 60 W timp de 18 secunde.",
+      "src": "— Google"
+    },
+    {
+      "em": "🎮",
+      "text": "Tradiția Easter egg-urilor a început în 1980, când un dezvoltator Atari și-a ascuns numele în Adventure, deoarece compania refuza să-i crediteze pe programatori.",
+      "src": "— Warren Robinett"
+    },
+    {
+      "em": "🐘",
+      "text": "PHP însemna inițial 'Personal Home Page'. Creatorul său, Rasmus Lerdorf, a spus că nu a intenționat niciodată să devină un limbaj de programare real.",
+      "src": "— Rasmus Lerdorf"
+    },
+    {
+      "em": "🧪",
+      "text": "Primul nume de domeniu înregistrat vreodată a fost symbolics.com, pe 15 martie 1985. Este încă activ, ca muzeu istoric.",
+      "src": "— IANA"
+    },
+    {
+      "em": "📺",
+      "text": "Motorul de recomandare al Netflix economisește companiei 1 miliard de dolari pe an prin reducerea abandonului clienților.",
+      "src": "— Netflix Tech Blog"
+    },
+    {
+      "em": "🦟",
+      "text": "Pe 9 septembrie 1947, Harvard Mark II s-a defectat — inginerii au găsit o molie blocată în releul #70 și au lipit-o în jurnal: \"First actual case of bug being found.\" Molia se află încă la Smithsonian.",
+      "src": "— Harvard Mark II logbook, 1947"
+    },
+    {
+      "em": "✉️",
+      "text": "Ray Tomlinson a ales simbolul @ pentru e-mail în 1971 pur și simplu pentru că era deja pe tastatură și aproape nimeni nu îl folosea. O alegere arbitrară — acum se află în fiecare adresă de e-mail de pe Pământ.",
+      "src": "— Ray Tomlinson, ARPANET 1971"
+    },
+    {
+      "em": "0️⃣",
+      "text": "Tablourile încep la indexul 0 din cauza matematicii memoriei: address = start + index × element_size. Cu indexarea de la 0, primul element nu are nevoie de niciun offset — în anii 1950, asta economisea o scădere la fiecare accesare a unui tablou.",
+      "src": "— BCPL & C convention"
+    },
+    {
+      "em": "📧",
+      "text": "În 2002, un administrator de sistem a primit un raport de eroare: \"nu putem trimite e-mail mai departe de 500 de mile.\" Era real — un timeout de mail prost configurat de ~3 ms permitea mesajelor să ajungă doar la servere aflate în raza distanței pe care o parcurge lumina în acel timp.",
+      "src": "— Trey Harris, The 500-Mile Email, 2002"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "Vorba e ieftină. Arată-mi codul.",
+      "author": "Linus Torvalds",
+      "context": "2000, Linux Kernel Mailing List"
+    },
+    {
+      "text": "Orice prost poate scrie cod pe care un calculator îl înțelege. Programatorii buni scriu cod pe care îl înțeleg oamenii.",
+      "author": "Martin Fowler",
+      "context": "Refactoring, 1999"
+    },
+    {
+      "text": "Mai întâi, rezolvă problema. Apoi, scrie codul.",
+      "author": "John Johnson",
+      "context": ""
+    },
+    {
+      "text": "Cel mai bun mod de a prezice viitorul este să-l inventezi.",
+      "author": "Alan Kay",
+      "context": "1971, Xerox PARC"
+    },
+    {
+      "text": "Simplitatea este sufletul eficienței.",
+      "author": "Austin Freeman",
+      "context": ""
+    },
+    {
+      "text": "Programele trebuie scrise pentru ca oamenii să le citească și doar în mod accidental pentru ca mașinile să le execute.",
+      "author": "Harold Abelson",
+      "context": "SICP, 1985"
+    },
+    {
+      "text": "Nu e o eroare — e o funcționalitate nedocumentată.",
+      "author": "Anonymous",
+      "context": "Programmer folklore"
+    },
+    {
+      "text": "Cea mai periculoasă frază din limbaj este 'Așa am făcut întotdeauna'.",
+      "author": "Grace Hopper",
+      "context": ""
+    },
+    {
+      "text": "A măsura progresul programării după liniile de cod e ca a măsura progresul construcției unui avion după greutate.",
+      "author": "Bill Gates",
+      "context": ""
+    },
+    {
+      "text": "Perfecțiunea se atinge nu atunci când nu mai e nimic de adăugat, ci atunci când nu mai e nimic de eliminat.",
+      "author": "Antoine de Saint-Exupéry",
+      "context": ""
+    },
+    {
+      "text": "Calculatorul s-a născut ca să rezolve probleme care nu existau înainte.",
+      "author": "Bill Gates",
+      "context": ""
+    },
+    {
+      "text": "În teorie, nu există nicio diferență între teorie și practică. În practică, există.",
+      "author": "Yogi Berra",
+      "context": ""
+    },
+    {
+      "text": "Software-ul este ca entropia: e greu de înțeles, nu cântărește nimic și respectă a doua lege a termodinamicii — crește mereu.",
+      "author": "Norman Augustine",
+      "context": ""
+    },
+    {
+      "text": "Înainte ca software-ul să poată fi reutilizabil, trebuie mai întâi să fie utilizabil.",
+      "author": "Ralph Johnson",
+      "context": ""
+    },
+    {
+      "text": "Singurul mod de a învăța un limbaj de programare nou este scriind programe în el.",
+      "author": "Dennis Ritchie",
+      "context": ""
+    },
+    {
+      "text": "Calculatoarele sunt bune la a urma instrucțiuni, dar nu la a-ți citi gândurile.",
+      "author": "Donald Knuth",
+      "context": ""
+    },
+    {
+      "text": "Dă-i unui om un program și îl frustrezi o zi. Învață-l pe om să programeze și îl frustrezi pentru toată viața.",
+      "author": "Muhammad Waseem",
+      "context": "Internet wisdom"
+    },
+    {
+      "text": "Un limbaj care nu îți afectează modul în care gândești despre programare nu merită cunoscut.",
+      "author": "Alan Perlis",
+      "context": "Epigrams on Programming, 1982"
+    },
+    {
+      "text": "Funcția unui software bun este de a face ca lucrurile complexe să pară simple.",
+      "author": "Grady Booch",
+      "context": ""
+    },
+    {
+      "text": "Una dintre cele mai productive zile ale mele a fost când am aruncat 1.000 de linii de cod.",
+      "author": "Ken Thompson",
+      "context": ""
+    },
+    {
+      "text": "Codul e ca umorul. Când trebuie să-l explici, e prost.",
+      "author": "Cory House",
+      "context": ""
+    },
+    {
+      "text": "Codul șters este cod depanat.",
+      "author": "Jeff Sickel",
+      "context": ""
+    },
+    {
+      "text": "Pe calculatorul meu funcționează.",
+      "author": "Every developer",
+      "context": "Since the dawn of time"
+    },
+    {
+      "text": "Dacă depanarea este procesul de eliminare a erorilor, atunci programarea trebuie să fie procesul de introducere a lor.",
+      "author": "Edsger Dijkstra",
+      "context": ""
+    },
+    {
+      "text": "Cel mai bun mesaj de eroare este cel care nu apare niciodată.",
+      "author": "Thomas Fuchs",
+      "context": ""
+    },
+    {
+      "text": "Să mergi pe apă și să dezvolți software dintr-o specificație sunt ușoare dacă ambele sunt înghețate.",
+      "author": "Edward V. Berard",
+      "context": ""
+    },
+    {
+      "text": "Programarea de azi este o cursă între inginerii software care încearcă să construiască programe tot mai mari și mai rezistente la idioți, și Universul care încearcă să producă idioți tot mai mari și mai buni.",
+      "author": "Rick Cook",
+      "context": ""
+    },
+    {
+      "text": "Scrie întotdeauna cod ca și cum cel care va ajunge să-ți întrețină codul va fi un psihopat violent care știe unde locuiești.",
+      "author": "John Woods",
+      "context": ""
+    },
+    {
+      "text": "Există doar două lucruri grele în informatică: invalidarea cache-ului și denumirea lucrurilor.",
+      "author": "Phil Karlton",
+      "context": ""
+    },
+    {
+      "text": "Orice tehnologie suficient de avansată este imposibil de distins de magie.",
+      "author": "Arthur C. Clarke",
+      "context": "Profiles of the Future, 1962"
+    },
+    {
+      "text": "Internetul devine piața centrală a satului global de mâine.",
+      "author": "Bill Gates",
+      "context": ""
+    },
+    {
+      "text": "Intimitatea nu este ceva la care sunt doar îndreptățit, este o condiție absolut necesară.",
+      "author": "Marlon Brando",
+      "context": ""
+    },
+    {
+      "text": "Informația este putere. Dar, ca orice putere, există cei care vor să o păstreze pentru ei înșiși.",
+      "author": "Aaron Swartz",
+      "context": "Guerilla Open Access Manifesto, 2008"
+    },
+    {
+      "text": "Putem vedea doar la mică distanță înainte, dar putem vedea destule acolo care trebuie făcute.",
+      "author": "Alan Turing",
+      "context": "Computing Machinery and Intelligence, 1950"
+    },
+    {
+      "text": "Oamenii cred că informatica este arta geniilor, dar realitatea este opusul — doar mulți oameni care fac lucruri ce se construiesc unul peste altul.",
+      "author": "Donald Knuth",
+      "context": ""
+    },
+    {
+      "text": "Cel mai bun cod este absența totală a codului.",
+      "author": "Jeff Atwood",
+      "context": "Coding Horror"
+    },
+    {
+      "text": "Mișcă-te rapid și sparge lucruri. Dacă nu spargi lucruri, nu te miști suficient de rapid.",
+      "author": "Mark Zuckerberg",
+      "context": "2009"
+    },
+    {
+      "text": "Web-ul așa cum l-am imaginat eu, încă nu l-am văzut. Viitorul este încă mult mai mare decât trecutul.",
+      "author": "Tim Berners-Lee",
+      "context": ""
+    },
+    {
+      "text": "Artiștii adevărați livrează.",
+      "author": "Steve Jobs",
+      "context": "1983"
+    },
+    {
+      "text": "Toată lumea ar trebui să învețe să programeze un calculator, pentru că te învață cum să gândești.",
+      "author": "Steve Jobs",
+      "context": ""
+    },
+    {
+      "text": "Majoritatea programatorilor buni programează nu pentru că se așteaptă să fie plătiți, ci pentru că este distractiv să programezi.",
+      "author": "Linus Torvalds",
+      "context": ""
+    },
+    {
+      "text": "Unix este simplu. E nevoie doar de un geniu pentru a-i înțelege simplitatea.",
+      "author": "Dennis Ritchie",
+      "context": ""
+    },
+    {
+      "text": "Controlul complexității este esența programării calculatoarelor.",
+      "author": "Brian Kernighan",
+      "context": "Software Tools, 1976"
+    },
+    {
+      "text": "Programarea este arta de a-i spune unei alte ființe umane ce vrei să facă calculatorul.",
+      "author": "Donald Knuth",
+      "context": ""
+    },
+    {
+      "text": "Java este pentru JavaScript ceea ce este mașina (car) pentru covor (carpet).",
+      "author": "Chris Heilmann",
+      "context": ""
+    },
+    {
+      "text": "Într-o cameră plină cu cei mai buni designeri de software, dacă doi sunt de acord cu același lucru, asta e majoritate.",
+      "author": "Bill Curtis",
+      "context": ""
+    },
+    {
+      "text": "Programarea nu ține de ceea ce știi, ci de ceea ce poți deduce.",
+      "author": "Chris Pine",
+      "context": "Learn to Program"
+    },
+    {
+      "text": "Cel mai mare dușman al cunoașterii nu este ignoranța, ci iluzia cunoașterii.",
+      "author": "Daniel J. Boorstin",
+      "context": ""
+    },
+    {
+      "text": "Săptămâni de programare îți pot economisi ore de planificare.",
+      "author": "Anonymous",
+      "context": "Developer proverb"
+    },
+    {
+      "text": "Fă-l să funcționeze, fă-l corect, fă-l rapid.",
+      "author": "Kent Beck",
+      "context": ""
+    }
+  ],
+  "timeline": [
+    {
+      "year": "1969",
+      "emoji": "📡",
+      "tag": "INTERNET",
+      "title": "ARPANET trimite primul său mesaj",
+      "text": "UCLA → Stanford. Au încercat să trimită LOGIN, sistemul s-a blocat după 'LO'. Primul pachet de internet al umanității a fost o greșeală de tastare."
+    },
+    {
+      "year": "1983",
+      "emoji": "🌐",
+      "tag": "PROTOCOLS",
+      "title": "Internetul se naște într-o marți",
+      "text": "1 ianuarie 1983 — ARPANET trece de la NCP la TCP/IP. Rețelele de rețele devin posibile. Vint Cerf o numește \"Flag Day\"."
+    },
+    {
+      "year": "1991",
+      "emoji": "🐧",
+      "tag": "OPEN SOURCE",
+      "title": "Linus postează pe comp.os.minix",
+      "text": "\"Hello everybody out there using minix — I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu).\" Avea să devină cel mai de succes sistem de operare din istorie."
+    },
+    {
+      "year": "1995",
+      "emoji": "☕",
+      "tag": "LANGUAGES",
+      "title": "Java este lansat — \"Write Once, Run Anywhere\"",
+      "text": "Sun Microsystems lansează Java 1.0. Conceptul de JVM revoluționează modul în care livrăm software. JavaScript este creat în același an de Brendan Eich, în 10 zile."
+    },
+    {
+      "year": "2005",
+      "emoji": "🌳",
+      "tag": "TOOLS",
+      "title": "Linus scrie Git în două săptămâni",
+      "text": "După ce BitKeeper a revocat licența gratuită a kernelului Linux, Linus a construit de la zero un sistem de control al versiunilor distribuit. L-a numit după el însuși: \"I'm an egotistical bastard.\""
+    },
+    {
+      "year": "2007",
+      "emoji": "📱",
+      "tag": "PLATFORMS",
+      "title": "iPhone-ul redefinește un calculator",
+      "text": "Un calculator în buzunarul tău, fără tastatură, rulând un UNIX personalizat. În mai puțin de un deceniu, mai mult cod rulează pe telefoane decât pe toate calculatoarele desktop construite vreodată."
+    }
+  ]
+}
