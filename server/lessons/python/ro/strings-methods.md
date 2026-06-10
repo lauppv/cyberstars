@@ -17,7 +17,7 @@ Putem transforma un string în **majuscule** sau **minuscule**
 
 ```py
 nume = "tommy vercetti"
-print(nume.majuscule())   # TOMMY VERCETTI
+print(nume.upper())   # TOMMY VERCETTI
 print(nume.lower())   # tommy vercetti
 ```
 
@@ -27,7 +27,7 @@ Observă **punctul** dintre **nume** și **upper()**. **Sintaxa cu punct** înse
 
 ```py
 nume = "tommy vercetti"
-nume.majuscule()
+nume.upper()
 print(nume)
 ```
 
@@ -35,7 +35,7 @@ Va afișa **tommy vercetti**, cu litere mici ca înainte, pentru că nu am făcu
 
 ```py
 nume = "tommy vercetti"
-nume = nume.majuscule()
+nume = nume.upper()
 print(nume)
 ```
 

@@ -48,7 +48,7 @@ for i, q in enumerate(quiz):
     for optiune in q["optiuni"]:
         print(f"  {optiune}")
 
-    raspuns = input("Răspunsul tău (A/B/C/D): ").majuscule()
+    raspuns = input("Răspunsul tău (A/B/C/D): ").upper()
 
     if raspuns == q["raspuns"]:
         print("Corect!")
@@ -74,7 +74,7 @@ def ruleaza_test(intrebari):
         for optiune in q["optiuni"]:
             print(f"  {optiune}")
 
-        raspuns = input("Răspunsul tău: ").majuscule()
+        raspuns = input("Răspunsul tău: ").upper()
 
         if raspuns == q["raspuns"]:
             print("Corect!")

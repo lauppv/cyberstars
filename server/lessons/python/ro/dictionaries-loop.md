@@ -53,7 +53,7 @@ jucator = {
     "oras": "Vice City"
 }
 
-for cheie, valoare in jucator.elemente():
+for cheie, valoare in jucator.items():
     print(f"{cheie} -> {valoare}")
 ```
 

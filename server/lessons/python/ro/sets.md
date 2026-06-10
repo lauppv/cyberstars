@@ -39,7 +39,7 @@ Putem **adăuga** elemente cu **.add()** și **elimina** cu **.remove()**
 
 ```py
 arme = {"bat", "pistol"}
-arme.adauga("shotgun")
+arme.add("shotgun")
 print(arme)
 
 arme.remove("bat")
