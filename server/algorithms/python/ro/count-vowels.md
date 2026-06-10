@@ -1,0 +1,34 @@
+# Count Vowels
+
+Având un șir, numără câte **vocale** conține.
+
+### Date de intrare
+
+O singură linie care conține un șir `s`.
+
+### Rezultat
+
+Un singur număr întreg — numărul de vocale (`a`, `e`, `i`, `o`, `u`, fără a ține cont de litere mari/mici) din `s`.
+
+### Exemple
+
+```
+Intrare:  hello
+Ieșire: 2
+```
+
+```
+Intrare:  Python
+Ieșire: 1
+```
+
+```
+Intrare:  AEIOU
+Ieșire: 5
+```
+
+### Indicii
+
+- Folosește `.lower()` pentru a trata atât literele mari, cât și cele mici.
+- Verifică dacă fiecare caracter este `in "aeiou"`.
+- O buclă `for` cu o variabilă contor funcționează grozav aici.

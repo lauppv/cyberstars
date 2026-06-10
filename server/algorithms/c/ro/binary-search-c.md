@@ -1,0 +1,40 @@
+# Easy · Binary Search
+
+Citește un tablou sortat de **N** numere întregi și o valoare căutată. Găsește valoarea folosind **căutarea binară** și afișează indicele ei (începând de la 0), sau **-1** dacă valoarea nu este găsită.
+
+Căutarea binară funcționează înjumătățind în mod repetat intervalul de căutare. Compară valoarea căutată cu elementul din mijloc: dacă sunt egale, ai găsit-o; dacă este mai mică, caută în jumătatea stângă; dacă este mai mare, caută în jumătatea dreaptă. Se execută în timp O(log N).
+
+### Date de intrare
+
+- Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
+- A doua linie: `N` numere întregi sortate crescător, separate prin spații
+- A treia linie: un întreg `target` de căutat
+
+### Rezultat
+
+Un singur întreg: indicele (începând de la 0) al valorii căutate în tablou, sau `-1` dacă nu este găsită.
+
+### Exemple
+
+```
+Intrare:
+5
+1 3 5 7 9
+5
+Ieșire: 2
+```
+
+```
+Intrare:
+4
+10 20 30 40
+25
+Ieșire: -1
+```
+
+### Indicii
+
+- Menține doi indici `left` și `right` care reprezintă intervalul curent de căutare.
+- Calculează `mid = (left + right) / 2` și compară `arr[mid]` cu valoarea căutată.
+- Dacă `arr[mid] == target`, afișează `mid` și oprește-te.
+- Dacă bucla se termină fără a găsi valoarea, afișează `-1`.
