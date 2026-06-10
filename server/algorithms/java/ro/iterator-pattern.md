@@ -1,4 +1,4 @@
-# Hard · Number Range Iterator
+# Dificil · Iterator pentru interval de numere
 
 Implementează interfețele **Iterable** și **Iterator** pentru a crea o clasă `NumberRange` care iterează peste un interval de numere întregi.
 

@@ -3,12 +3,12 @@ Two words are **anagrams** if they contain exactly the **same letters**, just in
 How do we check? The simplest approach: **sort the letters** and compare
 
 ```py
-def isAnagram(word1, word2):
+def is_anagram(word1, word2):
     return sorted(word1.lower()) == sorted(word2.lower())
 
-print(isAnagram("listen", "silent"))
-print(isAnagram("hello", "world"))
-print(isAnagram("Evil", "Vile"))
+print(is_anagram("listen", "silent"))
+print(is_anagram("hello", "world"))
+print(is_anagram("Evil", "Vile"))
 ```
 
 Output
@@ -28,7 +28,7 @@ We use **.lower()** so that uppercase and lowercase don't matter
 But let's also solve it using what we learned — a **frequency dictionary**. Two words are anagrams if every letter appears the **same number of times** in both words
 
 ```py
-def isAnagram(word1, word2):
+def is_anagram(word1, word2):
     word1 = word1.lower()
     word2 = word2.lower()
 
@@ -51,8 +51,8 @@ def isAnagram(word1, word2):
 
     return freq1 == freq2
 
-print(isAnagram("listen", "silent"))
-print(isAnagram("hello", "world"))
+print(is_anagram("listen", "silent"))
+print(is_anagram("hello", "world"))
 ```
 
 Output

@@ -3,7 +3,7 @@
 #include <string.h>
 #include <sys/wait.h>
 
-int countWords(const char *text) {
+int count_words(const char *text) {
     return 0;
 }
 

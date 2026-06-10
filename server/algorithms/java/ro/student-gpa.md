@@ -1,4 +1,4 @@
-# Easy · Student GPA
+# Ușor · Media studentului
 
 Creează o clasă **Student** care stochează numele unui student și un tablou de note. Clasa trebuie să aibă o metodă `getGPA()` care calculează media tuturor notelor.
 

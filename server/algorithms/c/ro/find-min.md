@@ -1,4 +1,4 @@
-# Easy · Find the Minimum
+# Ușor · Găsește minimul
 
 Citește un întreg **N**, apoi citește **N** numere întregi. Afișează cea mai **mică** valoare.
 

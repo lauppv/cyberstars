@@ -2,10 +2,10 @@
 #include <stdbool.h>
 
 int main(void) {
-    bool isEmployee = true;
-    bool isWorkingDay = true;
-    bool isGuest = false;
-    bool hasInvitation = false;
+    bool is_employee = true;
+    bool is_working_day = true;
+    bool is_guest = false;
+    bool has_invitation = false;
 
     return 0;
 }

@@ -1,4 +1,4 @@
-# Hard · Matrix Multiplication
+# Dificil · Înmulțirea matricelor
 
 Înmulțește două matrice **A** și **B** și afișează matricea rezultată **C**.
 

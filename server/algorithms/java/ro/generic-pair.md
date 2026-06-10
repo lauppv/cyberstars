@@ -1,4 +1,4 @@
-# Hard · Generic Pair
+# Dificil · Pereche generică
 
 Creează o clasă generică **Pair<A, B>** care conține două valori de tipuri potențial diferite. Clasa trebuie să aibă metodele `getFirst()`, `getSecond()` și o metodă `swap()` care returnează un nou `Pair<B, A>` cu valorile interschimbate.
 

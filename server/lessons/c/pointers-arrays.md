@@ -77,9 +77,9 @@ The array **decays** into a pointer. The function only receives the address of t
 
 The cargo bay sensors report container weights through a raw memory buffer. Write a function that walks the buffer using pointer arithmetic and returns the total weight so the bridge knows if the ship is overloaded.
 
-1. Write a function **sumArray** that takes an **int pointer** and a **size**, and returns the **sum** of all elements
+1. Write a function **sum_array** that takes an **int pointer** and a **size**, and returns the **sum** of all elements
 2. Use **pointer arithmetic** inside the function: access elements with **\*(ptr + i)** instead of **ptr[i]**
-3. In **main**, the array **{5, 10, 15, 20}** is already set up — call **sumArray** and print the result
+3. In **main**, the array **{5, 10, 15, 20}** is already set up — call **sum_array** and print the result
 
 **Input** (already set at the top of your code — change the values to test):
 

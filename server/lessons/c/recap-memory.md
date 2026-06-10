@@ -8,10 +8,10 @@ The station took damage from a micrometeorite shower. Phil needs a dynamic task 
 
 The data is already on the right. Do the following, in order:
 
-1. Write **Task *createTask(const char *title)** — allocates a Task with malloc, copies the title, sets status to **TODO**, returns the pointer
-2. Write **void updateStatus(Task \*t, Status s)** — updates the task's status
-3. Write **const char \*statusName(Status s)** — returns "TODO", "IN_PROGRESS", or "DONE" (use a switch)
-4. Write **void printTask(Task \*t)** — prints the task as **"[STATUS] Title"**
+1. Write **Task *create_task(const char *title)** — allocates a Task with malloc, copies the title, sets status to **TODO**, returns the pointer
+2. Write **void update_status(Task \*t, Status s)** — updates the task's status
+3. Write **const char \*status_name(Status s)** — returns "TODO", "IN_PROGRESS", or "DONE" (use a switch)
+4. Write **void print_task(Task \*t)** — prints the task as **"[STATUS] Title"**
 5. Create 3 tasks: "Learn pointers" (update to DONE), "Practice structs" (update to IN_PROGRESS), "Master malloc" (leave as TODO)
 6. Print all three, then free the memory
 

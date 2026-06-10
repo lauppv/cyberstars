@@ -66,7 +66,7 @@ Notice what we used: **list of dictionaries**, **enumerate**, **for loops**, **i
 Let's make it even better with a function
 
 ```py
-def runQuiz(questions):
+def run_quiz(questions):
     score = 0
 
     for i, q in enumerate(questions):
@@ -84,7 +84,7 @@ def runQuiz(questions):
 
     return score, len(questions)
 
-score, total = runQuiz(quiz)
+score, total = run_quiz(quiz)
 percentage = round(score / total * 100)
 print(f"\nFinal score: {score}/{total} ({percentage}%)")
 ```

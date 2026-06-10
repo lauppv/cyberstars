@@ -1,4 +1,4 @@
-# Easy · Rectangle Calculator
+# Ușor · Calculator de dreptunghi
 
 Creează o clasă **Rectangle** cu câmpurile `width` și `height`. Adaugă metodele `getArea()` și `getPerimeter()` care returnează aria și perimetrul dreptunghiului.
 

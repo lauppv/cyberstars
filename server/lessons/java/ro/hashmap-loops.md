@@ -135,7 +135,7 @@ Rezultat **Total datorii: $21000**
 
 Antena de comunicații a stației a interceptat semnale cu cuvinte cheie din spațiul adânc. Sarcina ta este să scanezi jurnalul și să marchezi orice cuvânt cheie care a apărut de mai multe ori — acelea ar putea fi apeluri de ajutor repetate.
 
-Creează un **HashMap\<String, Integer\>** numit `contor_cuvinte` cu aceste intrări de semnale:
+Creează un **HashMap\<String, Integer\>** numit `contorCuvinte` cu aceste intrări de semnale:
 
 1. `"java"` a apărut de `5` ori
 2. `"python"` a apărut de `3` ori

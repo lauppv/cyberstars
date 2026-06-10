@@ -1,4 +1,4 @@
-# Medium · Shape Hierarchy
+# Mediu · Ierarhia formelor
 
 Creează o clasă **abstractă** `Shape` cu o metodă abstractă `getArea()`. Implementează două subclase: `Circle` (cu radius) și `Rectangle` (cu width și height).
 

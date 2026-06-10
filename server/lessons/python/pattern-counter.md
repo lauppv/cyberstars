@@ -4,13 +4,13 @@ The idea is simple: start with a variable at **0**, loop through the data, and *
 
 ```py
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-evenCount = 0
+even_count = 0
 
 for n in numbers:
     if n % 2 == 0:
-        evenCount = evenCount + 1
+        even_count = even_count + 1
 
-print(f"Even numbers: {evenCount}")
+print(f"Even numbers: {even_count}")
 ```
 
 Output **Even numbers: 5**
@@ -28,13 +28,13 @@ Let's count how many characters in a name are uppercase
 
 ```py
 name = "Tommy Vercetti"
-upperCount = 0
+upper_count = 0
 
 for char in name:
     if char.isupper():
-        upperCount = upperCount + 1
+        upper_count = upper_count + 1
 
-print(f"Uppercase letters: {upperCount}")
+print(f"Uppercase letters: {upper_count}")
 ```
 
 Output **Uppercase letters: 2** (T and V)

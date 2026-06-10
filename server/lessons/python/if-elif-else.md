@@ -19,7 +19,7 @@ Here we can see that we have 2 conditions inside one another
 
 ```py
 seconds = 100  # number of seconds
-errorDetected = False # no error in the beginning
+error_detected = False # no error in the beginning
 
 if seconds == 100:
     print("Starting all onboard computers")
@@ -30,7 +30,7 @@ elif seconds == 20:
 elif seconds == 10:
     print("Starting the main engines")
 elif seconds < 10:  # the last 10 seconds
-    if errorDetected == True:
+    if error_detected == True:
         print("Error detected. Canceling the mission")
     else:
         print("No error detected. Taking off...")
@@ -38,7 +38,7 @@ else: # unknown number of seconds
     print(f"{seconds} seconds has no effect")
 ```
 
-An explanation of this code would be very complicated. **Run** the code as it is, then change the two variables. Change seconds to 60, 20, 10, then 9. See how the program’s output changes. Also change **errorDetected** to **True** and see how the program reacts. The code may look intimidating, but in the end it’s just a story. Feel free to **play around**
+An explanation of this code would be very complicated. **Run** the code as it is, then change the two variables. Change seconds to 60, 20, 10, then 9. See how the program’s output changes. Also change **error_detected** to **True** and see how the program reacts. The code may look intimidating, but in the end it’s just a story. Feel free to **play around**
 
 So, we can see how **elif** is nothing more than another **if**. Still, why did we use if-elif-elif-elif...else? **Why chain them?**
 
@@ -46,7 +46,7 @@ If we test the **same variable for multiple cases**, we chain them with **if-eli
 
 ```py
 seconds = 60  # number of seconds
-errorDetected = False # no error in the beginning
+error_detected = False # no error in the beginning
 
 if seconds == 100:
     print("Starting all onboard computers")
@@ -59,7 +59,7 @@ elif seconds == 20:
 elif seconds == 10:
     print("Starting the main engines")
 elif seconds < 10:  # the last 10 seconds
-    if errorDetected == True:
+    if error_detected == True:
         print("Error detected. Canceling the mission")
     else:
         print("No error detected. Taking off...")
@@ -80,7 +80,7 @@ But why didn't we write the program like this?
 
 ```py
 seconds = 60  # number of seconds
-errorDetected = False # no error in the beginning
+error_detected = False # no error in the beginning
 
 if seconds == 100:
     print("Starting all onboard computers")
@@ -91,7 +91,7 @@ if seconds == 20:
 if seconds == 10:
     print("Starting the main engines")
 if seconds < 10:  # the last 10 seconds
-    if errorDetected == True:
+    if error_detected == True:
         print("Error detected. Canceling the mission")
     else:
         print("No error detected. Taking off...")
@@ -115,19 +115,19 @@ The full explanation is complex, but as a general rule: **if we test the same va
 
 ## Mission: Oxygen Level Monitor
 
-The station constantly checks its `oxygen` level (in percent) and whether there is still `crewAboard`. Based on the oxygen level, print **one** status line using a chained **if / elif / else**:
+The station constantly checks its `oxygen` level (in percent) and whether there is still `crew_aboard`. Based on the oxygen level, print **one** status line using a chained **if / elif / else**:
 
 - `oxygen` is **80 or more** → `Oxygen nominal`
 - `oxygen` is **50 to 79** → `Oxygen low - conserve power`
 - `oxygen` is **20 to 49** → `Oxygen critical - seal the bay`
-- below **20** → it's an emergency. Here, check `crewAboard` with a **nested if**:
+- below **20** → it's an emergency. Here, check `crew_aboard` with a **nested if**:
   - if the crew is still aboard → `EMERGENCY - evacuate now`
   - otherwise → `Venting the bay is safe`
 
 **Input** (already set at the top of your code — change the values to test):
 
 - `oxygen` — oxygen level in percent
-- `crewAboard` — `True` if the crew is still on the station
+- `crew_aboard` — `True` if the crew is still on the station
 
 **Example**
 
@@ -137,13 +137,13 @@ With `oxygen = 65`, your program should print
 Oxygen low - conserve power
 ```
 
-Now set `oxygen = 12` and `crewAboard = True` and run again
+Now set `oxygen = 12` and `crew_aboard = True` and run again
 
 ```text
 EMERGENCY - evacuate now
 ```
 
-And with `oxygen = 12` and `crewAboard = False`
+And with `oxygen = 12` and `crew_aboard = False`
 
 ```text
 Venting the bay is safe

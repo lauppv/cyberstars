@@ -1,4 +1,4 @@
-# Easy · FizzBuzz
+# Ușor · FizzBuzz
 
 Afișează numerele de la 1 la N, dar cu o răsturnare de situație: pentru multiplii de 3 afișează `Fizz`, pentru multiplii de 5 afișează `Buzz`, iar pentru multiplii atât de 3 cât și de 5 afișează `FizzBuzz`.
 

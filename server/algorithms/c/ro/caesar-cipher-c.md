@@ -1,4 +1,4 @@
-# Medium · Caesar Cipher
+# Mediu · Cifrul lui Caesar
 
 Criptează un șir folosind **cifrul lui Cezar**. Fiecare literă este deplasată înainte în alfabet cu o anumită valoare. Literele mari rămân mari, literele mici rămân mici, iar caracterele care nu sunt litere rămân neschimbate.
 

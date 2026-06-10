@@ -3,10 +3,10 @@ We learned that **return** sends a value back from a function. But what if we wa
 In many programming languages, this is tricky. In Python, it's beautifully simple
 
 ```py
-def minMax(numbers):
+def min_max(numbers):
     return min(numbers), max(numbers)
 
-smallest, largest = minMax([5, 2, 8, 1, 9])
+smallest, largest = min_max([5, 2, 8, 1, 9])
 print(smallest)
 print(largest)
 ```
@@ -21,10 +21,10 @@ Output
 What happened? The function **returned two values** separated by a comma. On the outside, we **unpacked** them into two variables, just like we did with tuples. In fact, that's exactly what Python does behind the scenes — it creates a **tuple** and then unpacks it
 
 ```py
-def minMax(numbers):
+def min_max(numbers):
     return min(numbers), max(numbers)
 
-result = minMax([5, 2, 8, 1, 9])
+result = min_max([5, 2, 8, 1, 9])
 print(result)
 print(type(result))
 ```
@@ -43,13 +43,13 @@ See? It's a tuple. **return a, b** is the same as **return (a, b)**. Python lets
 This is incredibly useful for functions that compute related values
 
 ```py
-def playerStats(scores):
+def player_stats(scores):
     total = sum(scores)
     average = total / len(scores)
     best = max(scores)
     return total, average, best
 
-t, avg, top = playerStats([80, 95, 70, 88])
+t, avg, top = player_stats([80, 95, 70, 88])
 print(f"Total: {t}")
 print(f"Average: {avg}")
 print(f"Best: {top}")
@@ -70,13 +70,13 @@ One function, three useful values back. Clean
 Another common use: a function that **splits** a full name
 
 ```py
-def splitName(fullName):
-    parts = fullName.split(" ")
-    firstName = parts[0]
-    lastName = parts[1]
-    return firstName, lastName
+def split_name(full_name):
+    parts = full_name.split(" ")
+    first_name = parts[0]
+    last_name = parts[1]
+    return first_name, last_name
 
-first, last = splitName("Tommy Vercetti")
+first, last = split_name("Tommy Vercetti")
 print(f"First: {first}")
 print(f"Last: {last}")
 ```

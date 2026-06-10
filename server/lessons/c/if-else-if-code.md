@@ -2,7 +2,7 @@
 
 int main(void) {
     int seconds = 60;
-    int errorDetected = 0;
+    int error_detected = 0;
 
     if (seconds == 100) {
         printf("Starting all onboard computers\n");
@@ -13,7 +13,7 @@ int main(void) {
     } else if (seconds == 10) {
         printf("Starting the main engines\n");
     } else if (seconds < 10) {
-        if (errorDetected) {
+        if (error_detected) {
             printf("Error detected. Canceling the mission\n");
         } else {
             printf("No error detected. Taking off...\n");

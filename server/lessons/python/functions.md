@@ -57,21 +57,21 @@ However, if we want to use this piece of code **later** in the program with **di
 It turns out that the best way, and the one that makes the code most **readable**, is to use a **function**
 
 ```py
-def myFunction(name, age):
+def my_function(name, age):
     i = 0
     for i in range(0, 11):
         print(f"My name is {name} and my age is {age}")
 
-myFunction("Cortez", 60)
-myFunction("Tommy Vercetti", 42)
-myFunction("Lance Vance Dance", 35)
+my_function("Cortez", 60)
+my_function("Tommy Vercetti", 42)
+my_function("Lance Vance Dance", 35)
 ```
 
-We can see how our code is much **cleaner** and **easier** to read. What we did was **reuse** the **function** called **myFunction** and call it with different values. We wrote the function **once** and can run it as many times as we want with different values
+We can see how our code is much **cleaner** and **easier** to read. What we did was **reuse** the **function** called **my_function** and call it with different values. We wrote the function **once** and can run it as many times as we want with different values
 
 The word **def** defines a **function** in Python
 
-**myFunction** is the **name** of the function, meaning the name we use to **call** this function
+**my_function** is the **name** of the function, meaning the name we use to **call** this function
 
 Just like **print()**, we use parentheses **()**
 
@@ -80,14 +80,14 @@ Inside the parentheses, we write whatever we want to name the parameters. In thi
 Remember that the **parameter names can be anything**. The code below works as well
 
 ```py
-def myFunction(n, a):
+def my_function(n, a):
     i = 0
     for i in range(0, 11):
         print(f"My name is {n} and my age is {a}")
 
-myFunction("Cortez", 60)
-myFunction("Tommy Vercetti", 42)
-myFunction("Lance Vance Dance", 35)
+my_function("Cortez", 60)
+my_function("Tommy Vercetti", 42)
+my_function("Lance Vance Dance", 35)
 ```
 
 After naming a function, we must put a **:**
@@ -102,11 +102,11 @@ def f(name, status):
         print(f"{name} is offline")
 
 name = "Admin"
-isOnline = True
-f(name, isOnline) # prints Admin is online
+is_online = True
+f(name, is_online) # prints Admin is online
 
-isOnline = False
-f(name, isOnline) # prints admin is offline
+is_online = False
+f(name, is_online) # prints admin is offline
 ```
 
 ---

@@ -1,4 +1,4 @@
-# Sum of a List
+# Suma unei liste
 
 Având un număr `N` urmat de `N` numere (unul pe linie), afișează **suma** lor.
 

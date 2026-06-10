@@ -61,7 +61,7 @@ print(este_adult(20))    # True
 print(este_adult(15))    # False
 ```
 
-Această funcție returnează un **boolean**. Observă că putem folosi **isAdult(20)** **direct în interiorul print()**, fără să fie nevoie de o variabilă separată. **Python** rulează mai întâi funcția, apoi **print()** afișează valoarea returnată
+Această funcție returnează un **boolean**. Observă că putem folosi **is_adult(20)** **direct în interiorul print()**, fără să fie nevoie de o variabilă separată. **Python** rulează mai întâi funcția, apoi **print()** afișează valoarea returnată
 
 Putem chiar să o folosim în interiorul unui **if**
 

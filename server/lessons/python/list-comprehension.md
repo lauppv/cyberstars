@@ -42,8 +42,8 @@ Output **[2, 4, 6, 8, 10]**. Only the numbers where **n % 2 == 0** made it into 
 
 ```py
 names = ["Tommy Vercetti", "Lance", "Cortez", "Phil Cassidy"]
-longNames = [name for name in names if len(name) > 6]
-print(longNames)
+long_names = [name for name in names if len(name) > 6]
+print(long_names)
 ```
 
 Output **['Tommy Vercetti', 'Phil Cassidy']**. Only names longer than 6 characters survived

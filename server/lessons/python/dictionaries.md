@@ -5,13 +5,13 @@ Imagine Tommy Vercetti's phone book. He doesn't say "give me contact number 3". 
 This is exactly what a **dictionary** does in Python
 
 ```py
-phoneBook = {
+phone_book = {
     "Cortez": "555-1234",
     "Lance": "555-5678",
     "Phil": "555-9999"
 }
 
-print(phoneBook["Cortez"])
+print(phone_book["Cortez"])
 ```
 
 Output **555-1234**
@@ -19,14 +19,14 @@ Output **555-1234**
 A dictionary is created with **curly braces {}**. Inside, we write **key: value** pairs separated by **commas**. The **key** is what we use to look things up (like the name), and the **value** is what we get back (like the phone number)
 
 ```py
-phoneBook = {
+phone_book = {
     "Cortez": "555-1234",
     "Lance": "555-5678",
     "Phil": "555-9999"
 }
 
-print(phoneBook["Lance"])
-print(phoneBook["Phil"])
+print(phone_book["Lance"])
+print(phone_book["Phil"])
 ```
 
 Output
@@ -41,12 +41,12 @@ Output
 What happens if we ask for a key that doesn't exist?
 
 ```py
-phoneBook = {
+phone_book = {
     "Cortez": "555-1234",
     "Lance": "555-5678"
 }
 
-print(phoneBook["Sonny"])
+print(phone_book["Sonny"])
 ```
 
 **Run** it. You'll see a **KeyError**. Python is telling us: "I don't know any Sonny". Always read the error :)
@@ -56,16 +56,16 @@ print(phoneBook["Sonny"])
 We can **add** a new entry or **change** an existing one very easily
 
 ```py
-phoneBook = {
+phone_book = {
     "Cortez": "555-1234",
     "Lance": "555-5678"
 }
 
-phoneBook["Tommy"] = "555-0000"
-print(phoneBook["Tommy"])
+phone_book["Tommy"] = "555-0000"
+print(phone_book["Tommy"])
 
-phoneBook["Lance"] = "555-1111"
-print(phoneBook["Lance"])
+phone_book["Lance"] = "555-1111"
+print(phone_book["Lance"])
 ```
 
 Output
@@ -82,13 +82,13 @@ If the key doesn't exist, Python **creates** it. If it already exists, Python **
 We can also **remove** an entry with **del**
 
 ```py
-phoneBook = {
+phone_book = {
     "Cortez": "555-1234",
     "Lance": "555-5678"
 }
 
-del phoneBook["Lance"]
-print(phoneBook)
+del phone_book["Lance"]
+print(phone_book)
 ```
 
 Output
@@ -104,9 +104,9 @@ Lance is gone. Sorry Lance :)
 To check if a key **exists** before accessing it, use **in**
 
 ```py
-phoneBook = {"Cortez": "555-1234"}
+phone_book = {"Cortez": "555-1234"}
 
-if "Cortez" in phoneBook:
+if "Cortez" in phone_book:
     print("Found Cortez!")
 else:
     print("Cortez is not in the phone book")
@@ -120,7 +120,7 @@ Just like lists, dictionaries can hold **any type** of value: strings, numbers, 
 player = {
     "name": "Tommy Vercetti",
     "health": 100,
-    "isAlive": True,
+    "is_alive": True,
     "weapons": ["bat", "pistol", "shotgun"]
 }
 

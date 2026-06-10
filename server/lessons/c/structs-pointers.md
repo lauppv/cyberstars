@@ -10,13 +10,13 @@ struct Player {
     int score;
 };
 
-void printPlayer(struct Player *p) {
+void print_player(struct Player *p) {
     printf("%s: %d HP, %d pts\n", (*p).name, (*p).health, (*p).score);
 }
 
 int main(void) {
     struct Player t = {"Tommy", 100, 500};
-    printPlayer(&t);
+    print_player(&t);
     return 0;
 }
 ```
@@ -36,13 +36,13 @@ struct Player {
     int score;
 };
 
-void printPlayer(struct Player *p) {
+void print_player(struct Player *p) {
     printf("%s: %d HP, %d pts\n", p->name, p->health, p->score);
 }
 
 int main(void) {
     struct Player t = {"Tommy", 100, 500};
-    printPlayer(&t);
+    print_player(&t);
     return 0;
 }
 ```
@@ -62,21 +62,21 @@ struct Player {
     int score;
 };
 
-void takeDamage(struct Player *p, int dmg) {
+void take_damage(struct Player *p, int dmg) {
     p->health -= dmg;
     if (p->health < 0) {
         p->health = 0;
     }
 }
 
-void addScore(struct Player *p, int points) {
+void add_score(struct Player *p, int points) {
     p->score += points;
 }
 
 int main(void) {
     struct Player t = {"Tommy", 100, 0};
-    takeDamage(&t, 30);
-    addScore(&t, 200);
+    take_damage(&t, 30);
+    add_score(&t, 200);
     printf("%s: %d HP, %d pts\n", t.name, t.health, t.score);
     return 0;
 }

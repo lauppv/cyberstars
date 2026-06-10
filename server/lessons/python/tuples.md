@@ -28,8 +28,8 @@ print(birthday)
 Another example: GPS coordinates. **Vice City is at a fixed location**. It doesn't move
 
 ```py
-viceCity = (25.7617, -80.1918)
-print(viceCity)
+vice_city = (25.7617, -80.1918)
+print(vice_city)
 ```
 
 ---

@@ -1,4 +1,4 @@
-# Easy · Count Characters
+# Ușor · Numără caracterele
 
 Citește un șir (un singur cuvânt) și un caracter. Numără de câte ori apare acel caracter în șir și afișează numărul.
 

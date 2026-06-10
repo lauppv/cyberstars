@@ -1,4 +1,4 @@
-# Two Sum
+# Suma a două numere
 
 Având o listă de numere întregi și o valoare țintă, găsește **cei doi indici** ale căror valori însumate dau ținta.
 

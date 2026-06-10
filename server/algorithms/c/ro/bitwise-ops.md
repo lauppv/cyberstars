@@ -1,4 +1,4 @@
-# Hard · Bitwise Power of Two
+# Dificil · Putere a lui doi pe biți
 
 Citește un întreg **N**, apoi citește **N** numere întregi pozitive. Pentru fiecare număr, afișează `"YES"` dacă este o **putere a lui 2**, sau `"NO"` în caz contrar. Trebuie să folosești **operatori pe biți** pentru verificare — fără bucle care numără împărțiri.
 

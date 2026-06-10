@@ -1,4 +1,4 @@
-# Caesar Cipher
+# Cifrul lui Caesar
 
 Criptează un șir folosind **cifrul Caesar**: deplasează fiecare literă înainte cu un număr dat de poziții în alfabet. Caracterele care nu sunt litere rămân neschimbate.
 

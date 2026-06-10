@@ -8,9 +8,9 @@ The station is running low on oxygen canisters. Cortez needs to calculate the fu
 
 The data is already on the right. Do the following, in order:
 
-1. Declare an **int** variable **distanceKm** with value **450**
-2. Declare a **float** variable **fuelPerKm** with value **0.07** (liters per km)
-3. Declare a **float** variable **pricePerLiter** with value **1.75**
+1. Declare an **int** variable **distance_km** with value **450**
+2. Declare a **float** variable **fuel_per_km** with value **0.07** (liters per km)
+3. Declare a **float** variable **price_per_liter** with value **1.75**
 4. Calculate the **total fuel** needed and the **total cost**
 5. Add a **comment** above each calculation explaining what it does
 

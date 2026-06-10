@@ -1,4 +1,4 @@
-# Medium · Inventory Manager
+# Mediu · Gestionar de inventar
 
 Folosește un **HashMap** pentru a gestiona un inventar de articole și cantitățile lor. Procesează comenzi pentru a adăuga articole, a elimina articole și a verifica stocul.
 

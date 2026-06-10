@@ -9,8 +9,8 @@ First, how do we get a random number? Python has a built-in module for that
 ```py
 import random
 
-secretNumber = random.randint(1, 100)
-print(secretNumber)
+secret_number = random.randint(1, 100)
+print(secret_number)
 ```
 
 **import random** brings in the random module. **random.randint(1, 100)** gives us a random integer between 1 and 100 (inclusive). Every time we run it, we get a different number
@@ -23,16 +23,16 @@ Let's build the game step by step
 
 ```py
 import random
-secretNumber = random.randint(1, 100)
+secret_number = random.randint(1, 100)
 ```
 
 **Step 2**: ask the player for a guess, and tell them if it's too high or too low
 
 ```py
 guess = int(input("Guess a number (1-100): "))
-if guess < secretNumber:
+if guess < secret_number:
     print("Too low!")
-elif guess > secretNumber:
+elif guess > secret_number:
     print("Too high!")
 else:
     print("Correct!")
@@ -43,16 +43,16 @@ else:
 ```py
 import random
 
-secretNumber = random.randint(1, 100)
+secret_number = random.randint(1, 100)
 attempts = 0
 
 while True:
     guess = int(input("Guess a number (1-100): "))
     attempts += 1
 
-    if guess < secretNumber:
+    if guess < secret_number:
         print("Too low!")
-    elif guess > secretNumber:
+    elif guess > secret_number:
         print("Too high!")
     else:
         print(f"Correct! You got it in {attempts} attempts!")
@@ -68,31 +68,31 @@ The complete version
 ```py
 import random
 
-def playGame():
-    secretNumber = random.randint(1, 100)
-    maxAttempts = 7
+def play_game():
+    secret_number = random.randint(1, 100)
+    max_attempts = 7
 
     print("I'm thinking of a number between 1 and 100")
-    print(f"You have {maxAttempts} attempts. Good luck!")
+    print(f"You have {max_attempts} attempts. Good luck!")
 
-    for attempt in range(1, maxAttempts + 1):
+    for attempt in range(1, max_attempts + 1):
         try:
-            guess = int(input(f"Attempt {attempt}/{maxAttempts}: "))
+            guess = int(input(f"Attempt {attempt}/{max_attempts}: "))
         except ValueError:
             print("That's not a number!")
             continue
 
-        if guess < secretNumber:
+        if guess < secret_number:
             print("Too low!")
-        elif guess > secretNumber:
+        elif guess > secret_number:
             print("Too high!")
         else:
             print(f"Correct! You got it in {attempt} attempts!")
             return
 
-    print(f"Game over! The number was {secretNumber}")
+    print(f"Game over! The number was {secret_number}")
 
-playGame()
+play_game()
 ```
 
 Notice how we used **everything**: import, function, for loop, try/except, if/elif/else, f-strings, return (to exit early when they guess correctly)

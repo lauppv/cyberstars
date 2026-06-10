@@ -1,4 +1,4 @@
-# Even or Odd
+# Par sau impar
 
 Având un număr întreg, determină dacă este **par** sau **impar**.
 

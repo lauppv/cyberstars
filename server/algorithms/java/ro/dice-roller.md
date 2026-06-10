@@ -1,4 +1,4 @@
-# Easy · Dice Roller
+# Ușor · Aruncător de zaruri
 
 Creează o clasă **Dice** care simulează aruncarea unui zar. Constructorul primește numărul de fețe și un **seed**. Adaugă o metodă `roll()` care returnează următorul rezultat folosind `java.util.Random`.
 

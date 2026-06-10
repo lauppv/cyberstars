@@ -25,14 +25,14 @@ Let's build the functions one by one
 **Adding a task**
 
 ```py
-def addTask(todos, name):
+def add_task(todos, name):
     todos.append({"name": name, "done": False})
 ```
 
 **Marking a task as done** (by index)
 
 ```py
-def completeTask(todos, index):
+def complete_task(todos, index):
     if 0 <= index < len(todos):
         todos[index]["done"] = True
 ```
@@ -40,7 +40,7 @@ def completeTask(todos, index):
 **Removing a task** (by index)
 
 ```py
-def removeTask(todos, index):
+def remove_task(todos, index):
     if 0 <= index < len(todos):
         todos.pop(index)
 ```
@@ -50,7 +50,7 @@ def removeTask(todos, index):
 **Displaying all tasks**
 
 ```py
-def displayTodos(todos):
+def display_todos(todos):
     for i, task in enumerate(todos):
         status = "done" if task["done"] else "not done"
         print(f"{i}. [{status}] {task['name']}")
@@ -63,19 +63,19 @@ Putting it all together
 ```py
 todos = []
 
-addTask(todos, "Finish Python curriculum")
-addTask(todos, "Start Java curriculum")
-addTask(todos, "Touch grass")
+add_task(todos, "Finish Python curriculum")
+add_task(todos, "Start Java curriculum")
+add_task(todos, "Touch grass")
 
-displayTodos(todos)
+display_todos(todos)
 print("---")
 
-completeTask(todos, 0)
-displayTodos(todos)
+complete_task(todos, 0)
+display_todos(todos)
 print("---")
 
-removeTask(todos, 2)
-displayTodos(todos)
+remove_task(todos, 2)
+display_todos(todos)
 ```
 
 Output
@@ -100,15 +100,15 @@ Each function does **one thing** and does it well. This is a core principle of g
 A **count** function is useful too
 
 ```py
-def countDone(todos):
+def count_done(todos):
     count = 0
     for task in todos:
         if task["done"]:
             count += 1
     return count
 
-def countNotDone(todos):
-    return len(todos) - countDone(todos)
+def count_not_done(todos):
+    return len(todos) - count_done(todos)
 ```
 
 ---

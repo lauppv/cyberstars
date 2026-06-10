@@ -19,10 +19,10 @@ What happened? The function **add** **took** two numbers, **calculated** their s
 Compare this with the old style we used
 
 ```py
-def addAndPrint(a, b):
+def add_and_print(a, b):
     print(a + b)
 
-addAndPrint(2, 3)
+add_and_print(2, 3)
 ```
 
 This just prints. It doesn’t give anything back. If I wanted to take the result and **multiply** it by 10, I couldn’t. The function did its thing and the value is **gone**
@@ -54,23 +54,23 @@ print(message)
 Output **Hello, Cortez!**
 
 ```py
-def isAdult(age):
+def is_adult(age):
     return age >= 18
 
-print(isAdult(20))    # True
-print(isAdult(15))    # False
+print(is_adult(20))    # True
+print(is_adult(15))    # False
 ```
 
-This function returns a **boolean**. Notice that we can use **isAdult(20)** **directly inside print()**, no need for a separate variable. **Python** runs the function first, then **print()** shows the returned value
+This function returns a **boolean**. Notice that we can use **is_adult(20)** **directly inside print()**, no need for a separate variable. **Python** runs the function first, then **print()** shows the returned value
 
 We can even use it inside an **if**
 
 ```py
-def isAdult(age):
+def is_adult(age):
     return age >= 18
 
 age = 25
-if isAdult(age):
+if is_adult(age):
     print("Welcome")
 else:
     print("Sorry, too young")

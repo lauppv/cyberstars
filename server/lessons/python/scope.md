@@ -49,11 +49,11 @@ But what if we try to **change** a global variable inside a function?
 ```py
 health = 100
 
-def takeDamage():
+def take_damage():
     health = health - 10
     print(health)
 
-takeDamage()
+take_damage()
 ```
 
 **Run** it. Error! Python sees **health = ...** inside the function and thinks we're creating a **new local variable** called health. But on the right side, we also use **health**, and the local one doesn't exist yet. Confusing? Yes. That's why **scope** is important to understand
@@ -67,11 +67,11 @@ The clean solution? **Pass values as parameters and return results**
 ```py
 health = 100
 
-def takeDamage(hp):
+def take_damage(hp):
     hp = hp - 10
     return hp
 
-health = takeDamage(health)
+health = take_damage(health)
 print(health)
 ```
 

@@ -71,12 +71,12 @@ Let's trace **factorial(5)**:
 Another classic: **sum of a list**
 
 ```py
-def sumList(numbers):
+def sum_list(numbers):
     if len(numbers) == 0:
         return 0
-    return numbers[0] + sumList(numbers[1:])
+    return numbers[0] + sum_list(numbers[1:])
 
-print(sumList([1, 2, 3, 4, 5]))
+print(sum_list([1, 2, 3, 4, 5]))
 ```
 
 Output **15**

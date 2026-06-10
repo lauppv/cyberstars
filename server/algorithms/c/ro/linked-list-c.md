@@ -1,4 +1,4 @@
-# Hard · Linked List
+# Dificil · Listă înlănțuită
 
 Implementează o **listă simplu înlănțuită** în C. Citește comenzi de la stdin și execută-le:
 

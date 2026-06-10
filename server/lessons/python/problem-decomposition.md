@@ -35,13 +35,13 @@ Output **{'the': 3, 'cat': 2, 'sat': 1, 'on': 1, 'mat': 1}**
 **Step 3**: How do I find which word has the highest count? → loop through the dictionary
 
 ```py
-bestWord = ""
-bestCount = 0
+best_word = ""
+best_count = 0
 for word, count in counter.items():
-    if count > bestCount:
-        bestCount = count
-        bestWord = word
-print(f"Most common: {bestWord} ({bestCount} times)")
+    if count > best_count:
+        best_count = count
+        best_word = word
+print(f"Most common: {best_word} ({best_count} times)")
 ```
 
 Output **Most common: the (3 times)**

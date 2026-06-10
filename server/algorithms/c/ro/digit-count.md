@@ -1,4 +1,4 @@
-# Easy · Count Digits
+# Ușor · Numără cifrele
 
 Citește un singur număr întreg și afișează câte **cifre** are.
 

@@ -67,11 +67,11 @@ functia_mea("Tommy Vercetti", 42)
 functia_mea("Lance Vance Dance", 35)
 ```
 
-Putem vedea cum codul nostru este mult mai **curat** și mai **ușor** de citit. Ce am făcut a fost să **refolosim** **funcția** numită **myFunction** și să o apelăm cu valori diferite. Am scris funcția **o dată** și o putem rula de câte ori vrem cu valori diferite
+Putem vedea cum codul nostru este mult mai **curat** și mai **ușor** de citit. Ce am făcut a fost să **refolosim** **funcția** numită **my_function** și să o apelăm cu valori diferite. Am scris funcția **o dată** și o putem rula de câte ori vrem cu valori diferite
 
 Cuvântul **def** definește o **funcție** în Python
 
-**myFunction** este **numele** funcției, adică numele pe care îl folosim pentru a **apela** această funcție
+**my_function** este **numele** funcției, adică numele pe care îl folosim pentru a **apela** această funcție
 
 La fel ca **print()**, folosim paranteze **()**
 

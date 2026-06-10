@@ -1,4 +1,4 @@
-# Easy · GCD and LCM
+# Ușor · CMMDC și CMMMC
 
 Calculează **Cel Mai Mare Divizor Comun (CMMDC)** și **Cel Mai Mic Multiplu Comun (CMMMC)** a două numere întregi pozitive folosind **algoritmul lui Euclid**.
 

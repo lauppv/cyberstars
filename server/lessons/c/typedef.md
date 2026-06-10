@@ -29,9 +29,9 @@ typedef int Score;
 typedef char* String;
 
 int main(void) {
-    Score highScore = 9999;
+    Score high_score = 9999;
     String name = "Vercetti";
-    printf("%d %s\n", highScore, name);
+    printf("%d %s\n", high_score, name);
     return 0;
 }
 ```
@@ -55,14 +55,14 @@ typedef struct {
     double radius;
 } Circle;
 
-void printCircle(Circle *c) {
+void print_circle(Circle *c) {
     printf("Center: (%.1f, %.1f), Radius: %.1f\n",
            c->center.x, c->center.y, c->radius);
 }
 
 int main(void) {
     Circle c = {{2.0, 3.0}, 5.0};
-    printCircle(&c);
+    print_circle(&c);
     return 0;
 }
 ```

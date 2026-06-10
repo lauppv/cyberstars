@@ -1,4 +1,4 @@
-# Reverse Words
+# Inversează cuvintele
 
 Având o propoziție, afișează **cuvintele în ordine inversă**.
 

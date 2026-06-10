@@ -28,8 +28,8 @@ print(zi_de_nastere)
 Alt exemplu: coordonate GPS. **Vice City se află într-o locație fixă**. Nu se mișcă
 
 ```py
-viceCity = (25.7617, -80.1918)
-print(viceCity)
+vice_city = (25.7617, -80.1918)
+print(vice_city)
 ```
 
 ---

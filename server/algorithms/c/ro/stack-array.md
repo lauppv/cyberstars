@@ -1,4 +1,4 @@
-# Medium · Stack Using Array
+# Mediu · Stivă folosind un tablou
 
 Implementează o structură de date de tip **stivă** folosind un tablou. Citește o secvență de comenzi și procesează-le:
 

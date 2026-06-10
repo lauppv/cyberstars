@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void matrixStats(int matrix[3][3], int *sum, int *min, int *max) {
+void matrix_stats(int matrix[3][3], int *sum, int *min, int *max) {
 }
 
 int main(void) {
@@ -11,7 +11,7 @@ int main(void) {
     };
 
     int sum, min, max;
-    matrixStats(matrix, &sum, &min, &max);
+    matrix_stats(matrix, &sum, &min, &max);
 
     printf("Sum: %d\n", sum);
     printf("Min: %d\n", min);

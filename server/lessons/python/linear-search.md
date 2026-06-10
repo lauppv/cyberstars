@@ -3,14 +3,14 @@ Searching is one of the most fundamental things a computer does. "Is this user i
 The simplest way to search is **linear search**: go through the list **one element at a time**, from start to finish, and check each one
 
 ```py
-def linearSearch(items, target):
+def linear_search(items, target):
     for i in range(len(items)):
         if items[i] == target:
             return i
     return -1
 
 names = ["Tommy", "Lance", "Cortez", "Phil", "Sonny"]
-result = linearSearch(names, "Cortez")
+result = linear_search(names, "Cortez")
 print(result)
 ```
 
@@ -19,7 +19,7 @@ Output **2**. Cortez is at index 2
 If the target is not in the list, we return **-1** (a convention meaning "not found")
 
 ```py
-result = linearSearch(names, "Shrek")
+result = linear_search(names, "Shrek")
 print(result)
 ```
 

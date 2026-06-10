@@ -46,7 +46,7 @@ Enums work great with **switch**
 
 enum Color { RED, GREEN, BLUE };
 
-void printColor(enum Color c) {
+void print_color(enum Color c) {
     switch (c) {
         case RED:   printf("Red\n");   break;
         case GREEN: printf("Green\n"); break;
@@ -55,9 +55,9 @@ void printColor(enum Color c) {
 }
 
 int main(void) {
-    printColor(RED);
-    printColor(GREEN);
-    printColor(BLUE);
+    print_color(RED);
+    print_color(GREEN);
+    print_color(BLUE);
     return 0;
 }
 ```
@@ -92,7 +92,7 @@ Instead of remembering "was 2 paused or game over?", we just use the name. The c
 
 The station orbits a planet with four distinct seasons. The climate module needs a function that translates each season code into a human-readable name for the crew display.
 
-The **enum Season** and the **printSeason** function skeleton are already on the right. Fill in the **switch** statement so each case prints the season name.
+The **enum Season** and the **print_season** function skeleton are already on the right. Fill in the **switch** statement so each case prints the season name.
 
 **Example**
 

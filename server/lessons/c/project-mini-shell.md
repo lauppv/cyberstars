@@ -12,7 +12,7 @@ Here's the core idea
 #include <sys/wait.h>
 #include <string.h>
 
-void runCommand(const char *cmd) {
+void run_command(const char *cmd) {
     pid_t pid = fork();
 
     if (pid == 0) {
@@ -37,9 +37,9 @@ void runCommand(const char *cmd) {
 }
 
 int main(void) {
-    runCommand("hello");
-    runCommand("date");
-    runCommand("unknown_cmd");
+    run_command("hello");
+    run_command("date");
+    run_command("unknown_cmd");
     return 0;
 }
 ```
@@ -58,7 +58,7 @@ The parent creates a child for each command, waits for it to finish, then moves 
 
 The station's emergency terminal is offline. Rex needs you to rebuild a minimal shell that can dispatch commands to child processes. Each command runs in isolation — if one crashes, the shell survives.
 
-Complete the **runCommand** function on the right and call it from main with these commands: **"greet"**, **"count"**, and **"unknown"**
+Complete the **run_command** function on the right and call it from main with these commands: **"greet"**, **"count"**, and **"unknown"**
 
 1. The child process checks the command string and runs the matching action:
    - **"greet"** prints **"Hello from CyberStars!"**

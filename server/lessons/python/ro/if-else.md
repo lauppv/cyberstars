@@ -80,7 +80,7 @@ else:
     print(f"{utilizator} este offline")
 ```
 
-**True** și **False** sunt destul de simple. **Dacă** utilizatorul este **online**, intrăm în blocul **if** și **NU** vom intra în **else**. Putem vedea că codul din blocul **else** nu se execută. Schimbă **isUserOnline** în **False** și rulează codul. Ce vezi?
+**True** și **False** sunt destul de simple. **Dacă** utilizatorul este **online**, intrăm în blocul **if** și **NU** vom intra în **else**. Putem vedea că codul din blocul **else** nu se execută. Schimbă **is_user_online** în **False** și rulează codul. Ce vezi?
 
 ```py
 utilizator = "Tommy Vercetti"
@@ -92,7 +92,7 @@ else:
     print(f"{utilizator} este offline")
 ```
 
-Aici vedem că utilizatorul este **offline** pentru că **isUserOnline** = **False**, ceea ce înseamnă că nu vom intra în blocul **if**, din moment ce intrăm doar **dacă** condiția este **adevărată**. Pentru că condiția noastră este **falsă**, intrăm în blocul **else**
+Aici vedem că utilizatorul este **offline** pentru că **is_user_online** = **False**, ceea ce înseamnă că nu vom intra în blocul **if**, din moment ce intrăm doar **dacă** condiția este **adevărată**. Pentru că condiția noastră este **falsă**, intrăm în blocul **else**
 
 ---
 
