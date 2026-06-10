@@ -4,10 +4,8 @@ public class Main {
 
         while (isOnline) {
             System.out.println("I am online");
-            // complete this so the loop exits
         }
 
         System.out.println("Now I am offline");
     }
-
 }

@@ -125,6 +125,20 @@ Important rules:
 - Linux lessons use two files instead: `<slug>.md` (the lesson) and `<slug>-setup.json` (the sandbox filesystem) — no `-code.md`
 - Look at existing lessons for the format — consistency matters
 
+### Translations (optional)
+
+CyberStars has a bilingual UI (English + Romanian) with a language toggle. **English is the default and the source of truth** — always author lessons, algorithm challenges, and almanac entries in English first.
+
+Translations are **optional and can be added later** — you never have to translate content in the same change that adds it. Until a translation exists, the app falls back to English automatically, so an English-only lesson renders correctly in both languages and nothing breaks when a reader switches to Romanian.
+
+To translate content, add the localized file alongside the English source in a per-language subfolder (currently `ro`), reusing the **same slug** (slugs are language-independent):
+
+- Lessons: `server/lessons/<course>/ro/<slug>.md` (and `<slug>-code.md` if the course has one)
+- Almanac: `public/almanac/ro/articles/<slug>.json`, plus `ro/index.json` and `ro/extras.json`
+- UI strings: add the matching keys to `client/i18n/locales/ro.json` (keep its structure in sync with `en.json`)
+
+Lesson and course titles come from `curriculum.data.ts` and are not translated per-language.
+
 ### Code changes
 
 CyberStars uses the **fork-and-pull** model: you push branches to your own fork, then open a pull request against this repo. Direct push access to this repo is only granted to collaborators, so external contributors always work from a fork.

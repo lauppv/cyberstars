@@ -1,0 +1,13 @@
+{
+  "slug": "googles-ai-safety-approach-responsible-by-design",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Abordarea Google privind siguranța AI: responsabil prin design",
+  "excerpt": "Google a publicat fișe de model detaliate, rezultate de red-team și evaluări de siguranță pentru fiecare lansare Gemini. Transparența ca avantaj competitiv.",
+  "fullText": "Google a adoptat o abordare distinctă față de siguranța AI: transparența radicală. Fiecare lansare de model Gemini venea cu rapoarte tehnice detaliate, fișe de model care documentau capacitățile și limitările și rezultate din exerciții extinse de red-teaming.\n\nNu era doar altruism — era strategic. Fiind transparenți cu privire la ceea ce Gemini putea și nu putea face, Google a construit încredere cu clienții corporativi care aveau nevoie să evalueze riscul înainte de a implementa AI în produsele lor.\n\nMunca de siguranță a inclus:\n- Testarea adversarială de către echipe dedicate de red team care încercau să spargă modelul\n- Evaluări de prejudecăți de-a lungul categoriilor demografice și cazurilor de utilizare\n- Filtre de siguranță a conținutului cu granițe de decizie transparente\n- Audituri externe periodice realizate de cercetători independenți\n\nGoogle a investit, de asemenea, masiv în marcarea cu filigran a conținutului generat (SynthID), făcând posibilă detectarea textului, imaginilor și audio generate de AI — chiar și după editare.\n\nCriticii au argumentat că Google era uneori prea precaut — refuzând să genereze conținut pe care alte modele l-ar produce liber. Dar pentru clienții corporativi și guvernamentali, această precauție era o calitate, nu un defect. Aveau nevoie de un AI în care să poată avea încredere, nu de un AI care să-i pună în încurcătură.\n\nAbordarea a influențat industria: până în 2025, publicarea evaluărilor de siguranță alături de lansările de modele a devenit o practică standard în marile laboratoare AI.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

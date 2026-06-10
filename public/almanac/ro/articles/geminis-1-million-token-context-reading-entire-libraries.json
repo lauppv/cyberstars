@@ -1,0 +1,13 @@
+{
+  "slug": "geminis-1-million-token-context-reading-entire-libraries",
+  "cat": "gemini",
+  "tag": "GEMINI",
+  "year": "2025",
+  "emoji": "🔵",
+  "grad": "linear-gradient(135deg,#1a2f4f,#4285F4)",
+  "title": "Contextul de 1 milion de tokeni al Gemini: citirea unor biblioteci întregi",
+  "excerpt": "În timp ce alții măsurau contextul în mii, Google a împins limita la 1 milion de tokeni. Puteai să-i dai lui Gemini o bază de cod întreagă de 30.000 de fișiere.",
+  "fullText": "La începutul anului 2024, Google a anunțat Gemini 1.5 Pro cu o fereastră de context de 1 milion de tokeni — aproximativ 700.000 de cuvinte sau 30.000 de linii de cod. Versiunile ulterioare au împins limita și mai departe.\n\nCa să punem asta în perspectivă: puteai să-i dai lui Gemini întreaga serie Harry Potter (1.084.000 de cuvinte) și el putea răspunde la întrebări despre orice detaliu din orice carte. Sau puteai încărca un proiect software întreg — sute de fișiere — și să-i ceri să găsească o eroare.\n\nGoogle a demonstrat acest lucru cu exemple impresionante: încărcarea a 402 pagini de documentație tehnică și punerea unor întrebări specifice, sau alimentarea cu un videoclip de o oră și întrebarea despre un moment de 2 secunde aflat la 45 de minute în interior.\n\nProvocarea tehnică a fost enormă. Contextul lung nu înseamnă doar „memorie mai mare” — necesită ca modelul să mențină o atenție coerentă pe distanțe vaste, evitând degradarea care apare de obicei pe măsură ce contextul crește.\n\nGoogle a realizat acest lucru printr-o arhitectură nouă pe care au numit-o „Mixture of Experts” (MoE), care permitea modelului să direcționeze eficient informația fără a procesa fiecare token cu fiecare parametru.\n\nPentru clienții enterprise, contextul de un milion de tokeni însemna că puteau pune întrebări despre întregul lor corpus de documentație, puteau analiza rapoarte financiare complete sau puteau revizui contracte legale integrale fără nicio preprocesare sau fragmentare.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

@@ -8,5 +8,4 @@ public class Main {
         System.out.println(hero2);
         System.out.println(hero3);
     }
-
 }

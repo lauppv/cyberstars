@@ -3,7 +3,6 @@
 enum Season { SPRING, SUMMER, AUTUMN, WINTER };
 
 void printSeason(enum Season s) {
-    // use switch to print the name
 }
 
 int main(void) {

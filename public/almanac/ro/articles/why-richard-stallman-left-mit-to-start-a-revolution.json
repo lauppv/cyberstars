@@ -1,0 +1,14 @@
+{
+  "slug": "why-richard-stallman-left-mit-to-start-a-revolution",
+  "cat": "oss",
+  "tag": "OPEN SOURCE",
+  "year": "1985",
+  "emoji": "🦬",
+  "grad": "linear-gradient(135deg,#1f3a1f,#2d6b3d)",
+  "title": "De ce a părăsit Richard Stallman MIT pentru a porni o revoluție",
+  "excerpt": "După ce s-a luptat cu un driver de imprimantă pe care nu i s-a permis să-l repare, Stallman a renunțat la MIT și a pornit Proiectul GNU. A scris o licență care folosește dreptul de autor pentru a face exact opusul: a garanta libertatea.",
+  "fullText": "La sfârșitul anilor 1970, Laboratorul de AI de la MIT era un paradis al hackerilor. Cercetătorii partajau cod liber, își îmbunătățeau reciproc programele și tratau software-ul ca pe cunoaștere — ceva menit să circule.\n\nRichard Stallman, programator la laborator, prospera în această cultură. Apoi lucrurile s-au schimbat.\n\nIncidentul care l-a radicalizat a fost surprinzător de banal: o imprimantă. Xerox donase o imprimantă laser laboratorului, dar aceasta se bloca frecvent. Stallman voia să modifice software-ul driverului pentru a notifica utilizatorii când li se bloca lucrarea de imprimare — un simplu truc care îmbunătățea calitatea vieții.\n\nDar Xerox nu voia să partajeze codul sursă. Un cercetător de la Carnegie Mellon care avea codul a refuzat și el să-l partajeze — semnase un acord de confidențialitate.\n\nPentru Stallman, aceasta era o trădare a tot ce ar trebui să însemne informatica. Software-ul devenea proprietar. Companiile blocau cod pe care cercetătorii obișnuiau să-l partajeze liber. Cultura hackerilor murea.\n\nÎn 1983, a anunțat Proiectul GNU — un plan de a construi un sistem de operare complet și liber. În 1985, a părăsit MIT (pentru ca universitatea să nu poată revendica proprietatea asupra muncii sale) și a fondat Free Software Foundation.\n\nLovitura sa de maestru a fost GNU General Public License (GPL). În loc să abandoneze dreptul de autor, GPL folosește legea dreptului de autor pentru a impune libertatea: poți folosi, modifica și partaja software GPL, dar orice operă derivată trebuie să fie și ea GPL. Stallman a numit acest lucru „copyleft”.\n\nPână la începutul anilor 1990, GNU produsese instrumente esențiale — GCC (compilator), Emacs (editor), Bash (shell) și multe utilitare. Singura piesă lipsă era kernelul. Când Linus Torvalds a lansat kernelul său Linux în 1991, acesta s-a combinat cu instrumentele GNU pentru a crea un sistem de operare complet liber.\n\nPoziția de principiu a lui Stallman — declanșată de o imprimantă blocată — pusese bazele revoluției open-source care alimentează acum cea mai mare parte a tehnologiei din lume.",
+  "author": "Editorial",
+  "authorEm": "✨",
+  "readTime": "7 min"
+}

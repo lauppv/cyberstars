@@ -1,6 +1,4 @@
-def amplifica(scut): # returnează scutul dublat
+def amplifica(scut):
     pass
 
 scut = 100
-
-# afișează Înainte, apelează amplifica fără a stoca (Ignorat), apoi stochează rezultatul și afișează După

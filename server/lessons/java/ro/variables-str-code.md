@@ -8,5 +8,4 @@ public class Main {
         System.out.println(erou2);
         System.out.println(erou3);
     }
-
 }

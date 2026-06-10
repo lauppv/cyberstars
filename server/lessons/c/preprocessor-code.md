@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 #define PI 3.14159
-// define your macros here
 
 int main(void) {
     printf("Rectangle: %d\n", AREA_RECT(5, 3));

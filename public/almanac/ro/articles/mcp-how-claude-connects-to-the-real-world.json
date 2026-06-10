@@ -1,0 +1,13 @@
+{
+  "slug": "mcp-how-claude-connects-to-the-real-world",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "MCP: cum se conectează Claude la lumea reală",
+  "excerpt": "Model Context Protocol îi permite lui Claude să vorbească direct cu baze de date, API-uri și instrumente. A trecut peste noapte de la „chatbot inteligent” la „agent inteligent”.",
+  "fullText": "În 2024, Anthropic a făcut open-source Model Context Protocol (MCP) — un standard pentru conectarea modelelor AI la instrumente, baze de date și servicii externe.\n\nÎnainte de MCP, dacă voiai ca Claude să interogheze baza ta de date sau să apeleze un API, trebuia să scrii cod de integrare personalizat. MCP a standardizat aceste conexiuni, creând un ecosistem de „servere” pe care orice model compatibil MCP le putea folosi.\n\nImpactul a fost imediat. Dezvoltatorii puteau configura un mediu Claude cu acces la depozitele lor GitHub, bazele lor de date, instrumentele lor de monitorizare și documentația lor — totul printr-un simplu fișier de configurare.\n\nAcest lucru a transformat Claude dintr-un AI conversațional într-un agent care putea întreprinde acțiuni reale: să creeze pull request-uri, să interogheze baze de date de producție (doar pentru citire!), să actualizeze tichete, să trimită notificări și să coordoneze fluxuri de lucru complexe.\n\nNatura open-source a MCP a fost deliberată. Anthropic dorea ca acesta să devină un standard al industriei, nu o blocare proprietară. Făcând ușor pentru oricine să construiască servere MCP, au creat un efect de rețea care a beneficiat întregul ecosistem.\n\nPână în 2025, existau mii de servere MCP pentru orice, de la Slack la Kubernetes și la API-uri financiare.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

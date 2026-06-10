@@ -1,0 +1,14 @@
+{
+  "slug": "the-intel-4004-a-cpu-you-could-hold-in-your-fingernail",
+  "cat": "hardware",
+  "tag": "HARDWARE",
+  "year": "1971",
+  "emoji": "🔲",
+  "grad": "linear-gradient(135deg,#2a1a40,#5a2f7a)",
+  "title": "Intel 4004 — un CPU pe care l-ai putea ține pe unghie",
+  "excerpt": "Primul microprocesor comercial din lume (1971) avea 2.300 de tranzistoare și rula la 740 kHz. Cipul pe care îl folosești chiar acum are zeci de miliarde de tranzistoare și este de 5 milioane de ori mai rapid.",
+  "fullText": "În 1969, o companie japoneză de calculatoare numită Busicom a abordat Intel pentru a proiecta un set de cipuri pentru un nou calculator. Voiau 12 cipuri personalizate, fiecare ocupându-se de o funcție diferită.\n\nFederico Faggin, Ted Hoff și Stanley Mazor de la Intel au avut o idee mai bună: în loc de 12 cipuri specializate, de ce să nu construiască un singur procesor de uz general care să poată fi programat să facă totul?\n\nRezultatul, lansat pe 15 noiembrie 1971, a fost Intel 4004 — primul microprocesor disponibil comercial din lume.\n\nNumerele par astăzi ridicole: 2.300 de tranzistoare, o arhitectură pe 4 biți, rulând la 740 kHz. Putea efectua aproximativ 92.000 de instrucțiuni pe secundă. Cipul avea 3 mm × 4 mm — suficient de mic ca să încapă pe o unghie.\n\nDar conceptul era revoluționar. Înainte de 4004, computerele erau construite din plăci pline de componente discrete. Fiecare design nou necesita hardware personalizat. Microprocesorul a schimbat acest lucru: acum puteai construi dispozitive diferite scriind pur și simplu programe diferite pentru același cip.\n\nCa să punem progresul în perspectivă: un cip modern Apple M4 conține aproximativ 28 de miliarde de tranzistoare și poate efectua trilioane de operațiuni pe secundă. Asta înseamnă aproximativ de 12 milioane de ori mai multe tranzistoare și de câteva milioane de ori mai multă putere de calcul — împachetate într-un cip care este doar de aproximativ 40 de ori mai mare ca suprafață.\n\nLegea lui Moore — observația că numărul de tranzistoare se dublează aproximativ la fiecare doi ani — s-a menținut remarcabil de stabilă încă de la 4004. Dar adevărata revoluție nu a fost numărul de tranzistoare. A fost ideea că un singur cip programabil putea înlocui camere întregi de hardware specializat.\n\n4004 a făcut computerele suficient de mici pentru a fi puse în orice. Acea idee a dus direct la computerele personale, smartphone-uri, ceasuri inteligente și lumea conectată în care trăim astăzi.",
+  "author": "Theo",
+  "authorEm": "🦝",
+  "readTime": "6 min"
+}

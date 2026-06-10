@@ -5,5 +5,4 @@ public class Main {
 
         System.out.println("My name is Cortez, I am " + age + " years old, and I am " + height + " tall");
     }
-
 }

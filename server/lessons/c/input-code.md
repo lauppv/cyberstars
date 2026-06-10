@@ -7,7 +7,5 @@ int main(void) {
     scanf("%s", name);
     scanf("%d", &age);
 
-    // print the message
-
     return 0;
 }

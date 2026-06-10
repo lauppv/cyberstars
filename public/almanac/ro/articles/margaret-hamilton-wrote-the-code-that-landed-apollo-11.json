@@ -1,0 +1,14 @@
+{
+  "slug": "margaret-hamilton-wrote-the-code-that-landed-apollo-11",
+  "cat": "legends",
+  "tag": "LEGENDS",
+  "year": "1969",
+  "emoji": "🚀",
+  "grad": "linear-gradient(135deg,#1a1a2e,#16213e)",
+  "title": "Margaret Hamilton a scris codul care a aselenizat Apollo 11",
+  "excerpt": "Hamilton a inventat termenul „inginerie software” pentru că nimeni nu îi lua munca în serios. Codul ei a gestionat o supraîncărcare în timpul aselenizării — a prins eroarea, a păstrat prioritățile corecte, iar Neil a aselenizat în siguranță.",
+  "fullText": "În anii 1960, software-ul nu era luat în serios. Hardware-ul era ingineria adevărată — software-ul era doar lucrul pe care îl puneai pe el. Nu exista o diplomă în informatică, nicio metodologie formală, nicio disciplină numită „inginerie software”.\n\nMargaret Hamilton a schimbat asta.\n\nHamilton a fost inginera software principală pentru programul Apollo la Laboratorul de Instrumentație al MIT. A condus echipa care a scris software-ul de zbor de la bordul navei Apollo — codul care urma să ghideze astronauții către Lună și înapoi.\n\nA inventat termenul „inginerie software” în mod deliberat. Voia ca oamenii să trateze dezvoltarea de software cu aceeași rigoare ca alte discipline inginerești. Colegii ei au râs la început — dar ea avea dreptate.\n\nSoftware-ul scris de echipa lui Hamilton era extraordinar. Folosea un sistem de planificare bazat pe priorități numit executiv asincron. Mai multe sarcini puteau rula concurent, dar sistemul le prioritiza mereu pe cele mai critice.\n\nAcest design s-a dovedit crucial pe 20 iulie 1969, în timpul aselenizării Apollo 11. Cu trei minute înainte de atingerea solului, computerul de la bord a început să emită alarmele „1202” și „1203”. Un comutator al radarului de rendezvous fusese lăsat în poziția greșită, inundând computerul cu date inutile.\n\nUn sistem mai slab s-ar fi blocat. Dar software-ul lui Hamilton a recunoscut supraîncărcarea, a renunțat la sarcinile de prioritate scăzută și a continuat să ruleze programele esențiale de aselenizare. Computerul le spunea astronauților: „Sunt supraîncărcat, dar mă ocup de lucrurile importante.”\n\nControlul Misiunii, înțelegând comportamentul software-ului, a dat unda verde pentru a continua. Neil Armstrong și Buzz Aldrin au aselenizat în siguranță în Marea Liniștii.\n\nDupă misiune, abordarea lui Hamilton privind planificarea pe priorități a devenit un model pentru proiectarea de software fiabil. Conceptul de software care se degradează grațios sub stres — în loc să se blocheze — este acum fundamental pentru orice sistem critic, de la avioane la dispozitive medicale.\n\nÎn 2016, președintele Obama i-a acordat lui Hamilton Medalia Prezidențială a Libertății. Fotografia emblematică în care stă lângă un teanc de printuri ale codului Apollo la fel de înalt ca ea a devenit un simbol al importanței ingineriei software.",
+  "author": "Maya",
+  "authorEm": "🦊",
+  "readTime": "8 min"
+}

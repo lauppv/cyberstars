@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 int sumArray(int *ptr, int n) {
-    // sum using pointer arithmetic: *(ptr + i)
     int total = 0;
     return total;
 }

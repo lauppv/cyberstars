@@ -1,0 +1,15 @@
+{
+  "slug": "how-a-21-year-old-in-helsinki-accidentally-changed-the-world",
+  "cat": "oss",
+  "catLabel": "OPEN SOURCE",
+  "tag": "OPEN SOURCE",
+  "title": "Cum un tânăr de 21 de ani din Helsinki a schimbat din întâmplare lumea",
+  "excerpt": "În august 1991, un student finlandez a postat un mesaj modest pe un grup de discuții Usenet: „Fac un sistem de operare (gratuit), doar un hobby, nu va fi mare și profesional ca gnu.” Trei decenii mai târziu, Linux rulează pe 90% din cloud, pe fiecare telefon Android și pe laptopul pe care citești asta.",
+  "fullText": "În vara anului 1991, Linus Torvalds era un student de 21 de ani la informatică la Universitatea din Helsinki. Tocmai își cumpărase un PC nou cu un procesor Intel 386 și era frustrat. MINIX, sistemul de operare didactic pe care îl folosea, nu putea face ceea ce voia el. UNIX-ul comercial era mult prea scump pentru un student.\n\nAșa că a început să-și scrie propriul nucleu de sistem de operare. Nu pentru că voia să schimbe lumea — voia doar să-și folosească modemul și să citească mai comod grupurile de discuții Usenet.\n\nPe 25 august 1991, a postat un mesaj acum legendar pe comp.os.minix:\n\n„Salut tuturor celor de acolo care folosesc minix — fac un sistem de operare (gratuit) (doar un hobby, nu va fi mare și profesional ca gnu). Asta fierbe din aprilie și începe să fie gata.”\n\nReacția a fost imediată. Dezvoltatori din întreaga lume au început să contribuie cu patch-uri, drivere și idei. În câteva luni, proiectul avea propria listă de discuții și o comunitate în creștere.\n\nAlegând licența GPL (la sugestia altora), Linus s-a asigurat că fiecare îmbunătățire va fi împărtășită înapoi. Asta a creat un cerc virtuos: mai mulți utilizatori însemnau mai mulți dezvoltatori, ceea ce însemna suport hardware mai bun, ceea ce însemna mai mulți utilizatori.\n\nAstăzi, Linux rulează pe peste 90% dintre serverele cloud, pe fiecare telefon Android, pe majoritatea supercomputerelor din lume, pe televizoare inteligente, routere, mașini și chiar pe rovere marțiene. Stația Spațială Internațională rulează Linux. Marele Accelerator de Hadroni rulează Linux. Routerul tău WiFi rulează aproape sigur Linux.\n\nCeea ce a început ca un proiect de hobby al unui student finlandez plictisit a devenit coloana vertebrală a computerului modern — un ecosistem care valorează miliarde, construit de milioane de voluntari, totul pentru că o singură persoană a decis să-și rezolve o nemulțumire și să împărtășească rezultatul.",
+  "author": "Editorial Team",
+  "authorEmoji": "✨",
+  "readTime": "8 min",
+  "date": "May 14, 2026",
+  "emoji": "🐧",
+  "isHero": true
+}

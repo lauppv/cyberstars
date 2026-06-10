@@ -1,12 +1,10 @@
 log = "scan probe scan analyze probe scan boot"
 
-def count_word(log, word): # counter pattern: how many times word appears
+def count_word(log, word):
     pass
 
-def longest_word(log): # accumulator pattern: the longest word
+def longest_word(log):
     pass
 
-def has_duplicate(log): # flag pattern: True if any word appears more than once
+def has_duplicate(log):
     pass
-
-# print total words, count of scan, longest word, has duplicate, and unique words sorted

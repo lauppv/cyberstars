@@ -24,20 +24,39 @@ async function getJson<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+// Translated almanac files live in a per-language subfolder (/almanac/ro/...)
+// alongside the English source. English stays the source of truth; a missing
+// translation falls back to it, so the almanac can be translated incrementally.
+// A missing file is a 404 in prod (nginx) or the SPA index.html in dev — both
+// reject here (bad status or non-JSON body), so the catch covers both.
+async function getLocalizedJson<T>(relPath: string, lang: string): Promise<T> {
+  const base = `/almanac/${relPath}`;
+  if (lang === 'en') return getJson<T>(base);
+  try {
+    return await getJson<T>(`/almanac/${lang}/${relPath}`);
+  } catch {
+    return getJson<T>(base);
+  }
+}
+
+// Slugs are language-independent (translations reuse the English slug), so this
+// one stays unlocalized.
 export function fetchAlmanacSlugs(): Promise<string[]> {
   return cached('almanac:slugs', () => getJson<string[]>('/almanac/slugs.json'));
 }
 
-export function fetchAlmanacIndex(): Promise<AlmanacCard[]> {
-  return cached('almanac:index', () => getJson<AlmanacCard[]>('/almanac/index.json'));
+export function fetchAlmanacIndex(lang = 'en'): Promise<AlmanacCard[]> {
+  return cached(`almanac:index:${lang}`, () => getLocalizedJson<AlmanacCard[]>('index.json', lang));
 }
 
-export function fetchAlmanacArticle(slug: string): Promise<AlmanacArticle> {
-  return cached(`almanac:article:${slug}`, () =>
-    getJson<AlmanacArticle>(`/almanac/articles/${slug}.json`),
+export function fetchAlmanacArticle(slug: string, lang = 'en'): Promise<AlmanacArticle> {
+  return cached(`almanac:article:${lang}:${slug}`, () =>
+    getLocalizedJson<AlmanacArticle>(`articles/${slug}.json`, lang),
   );
 }
 
-export function fetchAlmanacExtras(): Promise<AlmanacExtras> {
-  return cached('almanac:extras', () => getJson<AlmanacExtras>('/almanac/extras.json'));
+export function fetchAlmanacExtras(lang = 'en'): Promise<AlmanacExtras> {
+  return cached(`almanac:extras:${lang}`, () =>
+    getLocalizedJson<AlmanacExtras>('extras.json', lang),
+  );
 }

@@ -4,8 +4,5 @@ public class Main {
         boolean isWorkingDay = true;
         boolean isGuest = false;
         boolean hasInvitation = false;
-
-        // write the if/else here
     }
-
 }

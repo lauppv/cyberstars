@@ -1,10 +1,10 @@
-def adauga_sarcina(sarcini, nume): # adaugă o sarcină nouă: {"nume": nume, "done": False}
+def adauga_sarcina(sarcini, nume):
     pass
 
-def finalizeaza_sarcina(sarcini, index): # marchează sarcina de la index ca terminată
+def finalizeaza_sarcina(sarcini, index):
     pass
 
-def numara_finalizate(sarcini): # returnează câte sarcini au done == True
+def numara_finalizate(sarcini):
     pass
 
 sarcini = []
@@ -13,7 +13,3 @@ adauga_sarcina(sarcini, "Realimentează reactorul")
 adauga_sarcina(sarcini, "Trasează traseul")
 finalizeaza_sarcina(sarcini, 0)
 finalizeaza_sarcina(sarcini, 2)
-
-# afișează fiecare sarcină ca "0. [terminat] Rulează diagnoza" sau "1. [în așteptare] Realimentează reactorul",
-
-# apoi afișează "Finalizat: " + câte sunt terminate + "/" + totalul

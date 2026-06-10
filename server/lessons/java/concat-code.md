@@ -3,8 +3,5 @@ public class Main {
         String username = "Quincy";
         int userAge = 16;
         int requiredAge = 18;
-
-        // build the message with +
     }
-
 }

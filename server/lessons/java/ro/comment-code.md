@@ -10,5 +10,4 @@ public class Main {
         System.out.println(incarcaturaSecreta);
         System.out.println(putereMax);
     }
-
 }

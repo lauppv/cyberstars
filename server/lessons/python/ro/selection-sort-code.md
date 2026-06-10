@@ -1,4 +1,4 @@
-def sortare_selectie(numere): # sortează lista crescător folosind selection sort, apoi returneaz-o
+def sortare_selectie(numere):
     pass
 
 print(sortare_selectie([64, 25, 12, 22, 11]))

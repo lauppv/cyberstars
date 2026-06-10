@@ -73,7 +73,8 @@ function seededPick<T>(items: T[], count: number, seed: number): T[] {
 
 export function HomePage() {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const { isLoggedIn, isLoading, user } = useAuth();
   const [almanacStory, setAlmanacStory] = useState<AlmanacArticle | null>(null);
   const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
@@ -144,7 +145,9 @@ export function HomePage() {
     if (!isLoggedIn) return;
     let cancelled = false;
     fetchAlmanacSlugs()
-      .then((slugs) => Promise.all(seededPick(slugs, 3, TODAY_SEED).map(fetchAlmanacArticle)))
+      .then((slugs) =>
+        Promise.all(seededPick(slugs, 3, TODAY_SEED).map((s) => fetchAlmanacArticle(s, lang))),
+      )
       .then((articles) => {
         if (!cancelled) setAlmanacHighlights(articles);
       })
@@ -154,7 +157,7 @@ export function HomePage() {
     return () => {
       cancelled = true;
     };
-  }, [isLoggedIn]);
+  }, [isLoggedIn, lang]);
 
   if (isLoading) {
     return (

@@ -5,7 +5,6 @@ int main(void) {
 
     while (isOnline) {
         printf("I am online\n");
-        // complete this so the loop exits
     }
 
     printf("Now I am offline\n");

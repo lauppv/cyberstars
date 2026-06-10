@@ -1,13 +1,13 @@
-def clean_text(text): # keep only letters, lowercase them
+def clean_text(text):
     pass
 
-def is_palindrome(word): # two pointers: compare start and end, move towards the centre
+def is_palindrome(word):
     pass
 
-def are_anagrams(a, b): # clean both words, sort the letters, compare
+def are_anagrams(a, b):
     pass
 
-def reverse_words(sentence): # reverse the order of the words (split, reverse, join)
+def reverse_words(sentence):
     pass
 
 print(is_palindrome(clean_text("A man, a plan, a canal: Panama")))

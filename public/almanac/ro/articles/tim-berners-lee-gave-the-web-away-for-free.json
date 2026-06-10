@@ -1,0 +1,14 @@
+{
+  "slug": "tim-berners-lee-gave-the-web-away-for-free",
+  "cat": "history",
+  "tag": "HISTORY",
+  "year": "1991",
+  "emoji": "🌐",
+  "grad": "linear-gradient(135deg,#0a2a4a,#1a5a8a)",
+  "title": "Tim Berners-Lee a dăruit web-ul gratuit",
+  "excerpt": "În 1989, un fizician de la CERN a propus un sistem de hipertext pentru a partaja lucrări de cercetare. Până în 1991, primul site web era activ. Ar fi putut să-l breveteze și să devină cel mai bogat om în viață. În schimb, l-a făcut gratuit.",
+  "fullText": "În martie 1989, Tim Berners-Lee, un inginer software britanic care lucra la CERN în Geneva, a înaintat șefului său o propunere intitulată „Information Management: A Proposal”. Șeful său a scris „Vag, dar interesant” pe pagina de copertă și l-a lăsat să lucreze la ea.\n\nProblema era banală: CERN avea mii de cercetători care foloseau computere diferite, sisteme de operare diferite și formate de documente diferite. Partajarea informațiilor era un coșmar. Berners-Lee voia un sistem în care documentele de pe orice computer să poată face legături către documente de pe orice alt computer.\n\nPână în decembrie 1990, construise trei lucruri: HTML (un limbaj pentru scrierea documentelor cu legături), HTTP (un protocol pentru transferul lor) și primul browser web (care era și un editor — își imaginase un web de tip citește-scrie încă de la început). Pe 6 august 1991, primul site web a devenit activ la info.cern.ch.\n\nTehnologia ar fi putut fi brevetată. CERN ar fi putut să o licențieze. Berners-Lee ar fi putut deveni cel mai bogat om din istorie — web-ul generează acum trilioane de dolari în activitate economică.\n\nÎn schimb, CERN a eliberat tehnologia web în domeniul public pe 30 aprilie 1993. Fără redevențe, fără licențe, fără restricții. Berners-Lee a spus în repetate rânduri că web-ul a reușit doar pentru că a fost gratuit. Dacă vreo companie l-ar fi deținut, standardele concurente ar fi fragmentat rețeaua.\n\nPână în 1995, web-ul explodase: Netscape s-a listat la bursă, Amazon a fost lansat și a început era dot-com. Astăzi există aproape 2 miliarde de site-uri web. Întreaga economie modernă a internetului — rețele sociale, streaming, comerț electronic, cloud computing — există pentru că o singură persoană a decis că a conecta omenirea contează mai mult decât a se îmbogăți.\n\nBerners-Lee a fost înnobilat în 2004. Continuă să pledeze pentru un web deschis prin World Wide Web Consortium (W3C) și Web Foundation. În ultimii ani, și-a exprimat îngrijorarea cu privire la centralizarea web-ului, supraveghere și dezinformare — probleme pe care nu le-a anticipat niciodată când a scris acea propunere vagă și interesantă în 1989.",
+  "author": "Editorial",
+  "authorEm": "✨",
+  "readTime": "7 min"
+}

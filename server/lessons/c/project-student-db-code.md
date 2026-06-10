@@ -15,11 +15,9 @@ Student *createStudent(const char *name, int grade) {
 }
 
 void printAll(Student *students[], int n) {
-    // print each student as "Name: Grade"
 }
 
 Student *findBest(Student *students[], int n) {
-    // return pointer to student with highest grade
     return NULL;
 }
 
@@ -37,7 +35,6 @@ int main(void) {
     Student *best = findBest(db, n);
     printf("Best: %s (%d)\n", best->name, best->grade);
 
-    // free all memory
     for (int i = 0; i < n; i++) {
         free(db[i]);
     }

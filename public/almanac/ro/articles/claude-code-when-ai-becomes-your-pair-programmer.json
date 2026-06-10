@@ -1,0 +1,13 @@
+{
+  "slug": "claude-code-when-ai-becomes-your-pair-programmer",
+  "cat": "claude",
+  "tag": "CLAUDE",
+  "year": "2025",
+  "emoji": "🟣",
+  "grad": "linear-gradient(135deg,#2d1a4f,#6C5CE7)",
+  "title": "Claude Code: când AI-ul devine partenerul tău de programare",
+  "excerpt": "Anthropic a lansat Claude Code — un instrument CLI care îi permite lui Claude să scrie, să testeze și să depaneze cod direct în terminalul tău. A părut că viitorul a sosit în liniște.",
+  "fullText": "În 2025, Anthropic a lansat Claude Code — o interfață în linie de comandă care i-a oferit lui Claude acces direct la mediul tău de dezvoltare. Putea să citească fișiere, să scrie cod, să ruleze teste și chiar să facă commit la modificări.\n\nSpre deosebire de instrumentele AI de codare anterioare, care funcționau prin interfețe de chat sau pluginuri pentru IDE, Claude Code opera la nivel de sistem. Puteai să spui „adaugă autentificare la această aplicație Express” și să urmărești cum citea codul existent, crea fișiere noi, instala dependențe și rula testele pentru a verifica că totul funcționa.\n\nIdeea cheie era încrederea: Claude Code întreba înainte de a face modificări distructive, își explica raționamentul și lucra incremental. Dezvoltatorii îl descriau drept „cel mai bun partener de programare pe care l-am avut vreodată — răbdător, riguros și niciodată condescendent.”\n\nUtilizatorii avansați au descoperit că puteau înlănțui operațiuni complexe: „Citește această bază de cod veche, scrie documentație pentru ea, apoi refactorizeaz-o ca să folosească tipare moderne.” Sarcini care i-ar fi luat unei echipe zile întregi se puteau întâmpla în câteva ore.\n\nInstrumentul a reprezentat o schimbare filozofică în modul în care ne gândim la programare. Nu AI-ul care înlocuiește dezvoltatorii, ci AI-ul care îi amplifică — ocupându-se de părțile plictisitoare ca oamenii să se poată concentra pe deciziile creative.",
+  "author": "AI Desk",
+  "readTime": "5 min"
+}

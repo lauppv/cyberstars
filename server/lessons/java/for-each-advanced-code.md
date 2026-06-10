@@ -10,8 +10,5 @@ public class Main {
         numbers.add(41);
         numbers.add(7);
         numbers.add(30);
-
-        // Find the maximum value and print it
     }
-
 }

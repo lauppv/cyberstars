@@ -1,5 +1,4 @@
 class AnimalCompanie {
-    // câmpuri, constructor, metode
 }
 
 public class Main {
@@ -21,5 +20,4 @@ public class Main {
         System.out.println(p2.status());
         System.out.println(p3.status());
     }
-
 }

@@ -3,8 +3,5 @@ public class Main {
         String numeUtilizator = "Quincy";
         int varstaUtilizator = 16;
         int varstaNecesara = 18;
-
-        // construiește mesajul cu +
     }
-
 }

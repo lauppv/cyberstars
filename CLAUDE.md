@@ -93,6 +93,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Every Java code block must include `public class Main` with `public static void main(String[] args)` wrapper
 - Intentional compile errors (e.g., demonstrating `if(x=2)` bug) still have full boilerplate — the error is only on the line being demonstrated
 - Linux lessons: each slug has 2 files — `<slug>.md` (no H1, space-station theme) and `<slug>-setup.json` (sandbox filesystem). 55 lessons across 9 chapters. Shared types in `shared/terminal.ts`
+- **Translations**: English is the source of truth and lives at the top level. Optional Romanian translations sit in a `ro/` subfolder beside the English source (`server/lessons/<course>/ro/<slug>.md`, reusing the same slug); `lessonService.getLocalizedText` requests the `ro/` path and falls back to English when it's missing, so a course can be translated one lesson at a time and English-only lessons work in both languages. The almanac follows the same pattern under `public/almanac/ro/` (`almanacService`). Linux `-setup.json` sandbox files are not localized (single server-side copy)
 
 ### Algorithm challenges (`server/algorithms/{python,java,c}/`)
 
@@ -134,6 +135,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Dark theme uses CSS custom properties with accent purple `#6C5CE7`, Space Grotesk font for UI, JetBrains Mono for code
 - Lesson completion is user-driven: students click "Mark Complete" (calls `POST /api/progress/:courseKey/:lessonSlug/complete`). There is no automated grading
 - The user communicates in Romanian; code and docs stay in English
+- i18n: bilingual UI (English default + Romanian) via i18next; toggle persists to `localStorage` (`cyberstars.lang`). UI strings in `client/i18n/locales/{en,ro}.json` (keep keys in sync). Lesson/almanac content is translated by file in `/ro` subfolders with English fallback (see Lesson content). `SUPPORTED_LANGS = ['en', 'ro']` in `client/i18n/index.ts`
 - Page wrapper divs use `bg-transparent` (not `bg-[var(--bg)]`) so the global cosmos starfield shows through
 - All cards, panels, and containers use very low opacity backgrounds (`rgba(22,22,29,0.1)` with `backdrop-blur-[12px]`) so the cosmos is visible through them. Never use opaque backgrounds (`bg-[var(--bg2)]`, `bg-[var(--surface)]`) for content panels
 - Panel/card borders use accent purple at 30% (`border-[var(--accent)]/30`), not `border-[var(--border)]`

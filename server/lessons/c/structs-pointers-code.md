@@ -7,11 +7,9 @@ struct BankAccount {
 };
 
 void deposit(struct BankAccount *acc, int amount) {
-    // add amount to balance
 }
 
 void withdraw(struct BankAccount *acc, int amount) {
-    // subtract if enough, otherwise print "Insufficient funds"
 }
 
 int main(void) {

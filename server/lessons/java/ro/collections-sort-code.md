@@ -8,10 +8,5 @@ public class Main {
         nume.add("Tommy");
         nume.add("Lance");
         nume.add("Phil");
-
-        // Sortează lista alfabetic folosind Collections.sort()
-
-        // Afișează fiecare nume pe linia lui
     }
-
 }

@@ -1,7 +1,5 @@
-def are_anagrams(a, b): # return True if a and b are anagrams (same letters, case ignored)
+def are_anagrams(a, b):
     pass
 
 first = input()
 second = input()
-
-# print "Anagram: True/False", then "Access granted" or "Access denied"

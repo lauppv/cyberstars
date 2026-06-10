@@ -4,9 +4,7 @@ public class Main {
 
         while (esteOnline) {
             System.out.println("Sunt online");
-            // completează asta astfel încât bucla să iasă
 
         System.out.println("Acum sunt offline");
     }
-
 }

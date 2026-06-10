@@ -1,0 +1,14 @@
+{
+  "slug": "tim-berners-lee-gave-the-web-away-for-free-forever",
+  "cat": "internet",
+  "tag": "INTERNET",
+  "year": "1991",
+  "emoji": "🌐",
+  "grad": "linear-gradient(135deg,#103a3a,#1f7a7a)",
+  "title": "Tim Berners-Lee a oferit Web-ul — gratuit, pentru totdeauna",
+  "excerpt": "În 1993, CERN a publicat codul sursă al Web-ului în domeniul public. Tim Berners-Lee nu l-a brevetat niciodată. Fără redevențe, fără permisiuni. Acea singură decizie a făcut posibil internetul modern.",
+  "fullText": "În 1989, Tim Berners-Lee, un fizician britanic care lucra la CERN (Organizația Europeană pentru Cercetare Nucleară), avea o problemă. Mii de cercetători de la CERN produceau date, lucrări și documentație, dar foloseau sisteme de calcul diferite, care nu puteau comunica între ele. Găsirea informațiilor era un coșmar.\n\nSoluția sa a fost o propunere intitulată „Information Management: A Proposal”. Nota scrisă de mână a șefului său pe pagina de copertă spunea: „Vag, dar incitant.”\n\nPână în 1990, Berners-Lee construise cele trei tehnologii fundamentale ale World Wide Web: HTML (limbajul de marcare pentru paginile web), URI/URL (sistemul de adresare) și HTTP (protocolul de comunicare). A construit, de asemenea, primul browser web și primul server web, rulând pe un computer NeXT la CERN.\n\nPrimul site web, info.cern.ch, a fost lansat pe 20 decembrie 1990. Explica ce era Web-ul și cum să-l folosești.\n\nAici povestea devine remarcabilă. CERN ar fi putut breveta Web-ul. Berners-Lee ar fi putut să-l licențieze. Veniturile potențiale ar fi fost astronomice — fiecare site web, fiecare tranzacție web, fiecare serviciu online ar fi datorat redevențe.\n\nÎn schimb, pe 30 aprilie 1993, CERN a lansat codul de bază al Web-ului în domeniul public. Fără brevete. Fără redevențe. Fără restricții. Oricine, oriunde, putea construi pe baza lui gratuit.\n\nBerners-Lee a fost explicit în privința motivului: „Dacă tehnologia ar fi fost proprietară și sub controlul meu total, probabil că nu și-ar fi luat avânt. Nu poți propune ca ceva să fie un spațiu universal și, în același timp, să păstrezi controlul asupra lui.”\n\nAceastă singură decizie — de a oferi Web-ul — este, fără îndoială, cel mai important act de generozitate din istoria tehnologiei. A permis creșterea explozivă a internetului, crearea unor industrii întregi și transformarea comunicării umane.\n\nBerners-Lee a fost înnobilat în 2004 și a primit Premiul Turing în 2016. Dar cea mai mare moștenire a sa este lucrul pe care a ales să nu-l dețină.",
+  "author": "Sam",
+  "authorEm": "🦉",
+  "readTime": "7 min"
+}

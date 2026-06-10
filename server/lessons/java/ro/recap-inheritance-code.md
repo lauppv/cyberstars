@@ -1,9 +1,7 @@
 abstract class Vehicul {
-    // câmpuri, constructor, metode abstracte, condu, toString
 }
 
 class Masina extends Vehicul {
-    // implementează
     Masina(String nume) { super(nume); }
 }
 
@@ -33,5 +31,4 @@ public class Main {
             System.out.println(v);
         }
     }
-
 }
