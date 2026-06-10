@@ -43,7 +43,7 @@ grep -n error system.log
 ```
 
 ```text
-5:error: senzorul 3 deconectat
+5:error: sensor 3 offline
 ```
 
 Opțiunile se pot combina, la fel ca la `ls`: `grep -in error system.log` este
