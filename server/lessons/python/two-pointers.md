@@ -3,7 +3,7 @@ The **two pointers** technique is a simple but powerful idea: instead of using o
 We've already seen it without knowing it. When we checked palindromes, we compared the first character with the last, then the second with the second-to-last. That was two pointers
 
 ```py
-def isPalindrome(word):
+def is_palindrome(word):
     left = 0
     right = len(word) - 1
 
@@ -15,8 +15,8 @@ def isPalindrome(word):
 
     return True
 
-print(isPalindrome("racecar"))
-print(isPalindrome("hello"))
+print(is_palindrome("racecar"))
+print(is_palindrome("hello"))
 ```
 
 Output
@@ -35,15 +35,15 @@ Another classic: given a **sorted** list and a target sum, find two numbers that
 The brute force way (nested loop, checking every pair) works but is slow. With two pointers on a **sorted** list, it's much smarter
 
 ```py
-def twoSum(numbers, target):
+def two_sum(numbers, target):
     left = 0
     right = len(numbers) - 1
 
     while left < right:
-        currentSum = numbers[left] + numbers[right]
-        if currentSum == target:
+        current_sum = numbers[left] + numbers[right]
+        if current_sum == target:
             return (numbers[left], numbers[right])
-        elif currentSum < target:
+        elif current_sum < target:
             left += 1
         else:
             right -= 1
@@ -51,7 +51,7 @@ def twoSum(numbers, target):
     return None
 
 numbers = [1, 2, 4, 7, 11, 15]
-result = twoSum(numbers, 9)
+result = two_sum(numbers, 9)
 print(result)
 ```
 
@@ -66,7 +66,7 @@ This works because the list is **sorted**. Moving left increases the sum, moving
 A simpler example: **remove duplicates** from a sorted list (keeping only unique elements)
 
 ```py
-def removeDuplicates(numbers):
+def remove_duplicates(numbers):
     if len(numbers) == 0:
         return []
 
@@ -76,7 +76,7 @@ def removeDuplicates(numbers):
             result.append(numbers[i])
     return result
 
-print(removeDuplicates([1, 1, 2, 2, 2, 3, 4, 4, 5]))
+print(remove_duplicates([1, 1, 2, 2, 2, 3, 4, 4, 5]))
 ```
 
 Output **[1, 2, 3, 4, 5]**

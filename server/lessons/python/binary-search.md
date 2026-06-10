@@ -26,7 +26,7 @@ We checked **4 elements** instead of scanning all 10. For 1,000,000 elements, bi
 In code
 
 ```py
-def binarySearch(numbers, target):
+def binary_search(numbers, target):
     left = 0
     right = len(numbers) - 1
 
@@ -43,8 +43,8 @@ def binarySearch(numbers, target):
     return -1
 
 numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-print(binarySearch(numbers, 13))
-print(binarySearch(numbers, 6))
+print(binary_search(numbers, 13))
+print(binary_search(numbers, 6))
 ```
 
 Output
@@ -58,7 +58,7 @@ Output
 
 ---
 
-Let's trace through **binarySearch([1,3,5,7,9,11,13,15,17,19], 13)**
+Let's trace through **binary_search([1,3,5,7,9,11,13,15,17,19], 13)**
 
 - left=0, right=9, mid=4 → numbers[4]=9 < 13 → left=5
 - left=5, right=9, mid=7 → numbers[7]=15 > 13 → right=6
@@ -70,7 +70,7 @@ Let's trace through **binarySearch([1,3,5,7,9,11,13,15,17,19], 13)**
 We can also write it **recursively**
 
 ```py
-def binarySearchRecursive(numbers, target, left, right):
+def binary_search_recursive(numbers, target, left, right):
     if left > right:
         return -1
 
@@ -79,12 +79,12 @@ def binarySearchRecursive(numbers, target, left, right):
     if numbers[mid] == target:
         return mid
     elif numbers[mid] < target:
-        return binarySearchRecursive(numbers, target, mid + 1, right)
+        return binary_search_recursive(numbers, target, mid + 1, right)
     else:
-        return binarySearchRecursive(numbers, target, left, mid - 1)
+        return binary_search_recursive(numbers, target, left, mid - 1)
 
 numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-print(binarySearchRecursive(numbers, 13, 0, len(numbers) - 1))
+print(binary_search_recursive(numbers, 13, 0, len(numbers) - 1))
 ```
 
 Output **6**. Same logic, different style

@@ -4,17 +4,17 @@ In the **if-else** lesson we saw a small surprise: **C doesn’t have a native b
 #include <stdio.h>
 
 int main(void) {
-    int isUserOnline = 1;   // "true"
-    int isHidden = 0;       // "false"
+    int is_user_online = 1;   // "true"
+    int is_hidden = 0;       // "false"
 
-    if (isUserOnline) {
+    if (is_user_online) {
         printf("online\n");
     }
     return 0;
 }
 ```
 
-This works, but reading **int isUserOnline = 1** is awkward. It looks like a counter, not a true/false value
+This works, but reading **int is_user_online = 1** is awkward. It looks like a counter, not a true/false value
 
 ---
 
@@ -25,11 +25,11 @@ The good news: since C99, the standard library gives us a real boolean type
 #include <stdbool.h>
 
 int main(void) {
-    bool isOnline = true;
-    bool hasKey = false;
+    bool is_online = true;
+    bool has_key = false;
 
-    printf("%d\n", isOnline);   // 1
-    printf("%d\n", hasKey);     // 0
+    printf("%d\n", is_online);   // 1
+    printf("%d\n", has_key);     // 0
 
     return 0;
 }
@@ -57,9 +57,9 @@ A real example: in order to drive a car, you need to be **at least 18 AND have a
 
 int main(void) {
     int age = 20;
-    bool hasLicense = true;
+    bool has_license = true;
 
-    if (age >= 18 && hasLicense) {
+    if (age >= 18 && has_license) {
         printf("You can drive\n");
     } else {
         printf("Sorry, no driving today\n");
@@ -78,10 +78,10 @@ int main(void) {
 #include <stdbool.h>
 
 int main(void) {
-    bool isVIP = false;
-    bool hasInvitation = true;
+    bool is_vip = false;
+    bool has_invitation = true;
 
-    if (isVIP || hasInvitation) {
+    if (is_vip || has_invitation) {
         printf("Welcome to the club\n");
     } else {
         printf("Access denied\n");
@@ -99,8 +99,8 @@ int main(void) {
 #include <stdbool.h>
 
 int main(void) {
-    bool isLoggedIn = false;
-    if (!isLoggedIn) {
+    bool is_logged_in = false;
+    if (!is_logged_in) {
         printf("Please log in first\n");
     }
     return 0;
@@ -117,20 +117,20 @@ Write an **if / else** using `&&` and `||` that prints the correct verdict.
 
 **Input** (already set at the top of your code — change the values to test):
 
-- `isEmployee` — whether the person is an employee
-- `isWorkingDay` — whether today is a working day
-- `isGuest` — whether the person is a guest
-- `hasInvitation` — whether the person has an invitation
+- `is_employee` — whether the person is an employee
+- `is_working_day` — whether today is a working day
+- `is_guest` — whether the person is a guest
+- `has_invitation` — whether the person has an invitation
 
 **Example**
 
-With `isEmployee = true`, `isWorkingDay = true`, `isGuest = false`, `hasInvitation = false`, your program should print
+With `is_employee = true`, `is_working_day = true`, `is_guest = false`, `has_invitation = false`, your program should print
 
 ```text
 Access granted
 ```
 
-Now set `isEmployee = false` and `isGuest = true`, `hasInvitation = false` and run again
+Now set `is_employee = false` and `is_guest = true`, `has_invitation = false` and run again
 
 ```text
 Access denied

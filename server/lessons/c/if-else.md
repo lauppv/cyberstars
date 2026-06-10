@@ -61,15 +61,15 @@ We don’t always need **else**. Sometimes we just want to act **if** something 
 #include <stdio.h>
 
 int main(void) {
-    int isUserOnline = 1;
-    if (isUserOnline) {
+    int is_user_online = 1;
+    if (is_user_online) {
         printf("Welcome back\n");
     }
     return 0;
 }
 ```
 
-Wait, **isUserOnline = 1**? Where is **true**? Well, **C doesn’t have a real boolean type by default**. It uses integers: **0** means **false**, **anything else** (1, 2, -5, ...) means **true**. We’ll see a real **bool** type in a later lesson, with **#include <stdbool.h>**
+Wait, **is_user_online = 1**? Where is **true**? Well, **C doesn’t have a real boolean type by default**. It uses integers: **0** means **false**, **anything else** (1, 2, -5, ...) means **true**. We’ll see a real **bool** type in a later lesson, with **#include <stdbool.h>**
 
 ---
 
@@ -79,9 +79,9 @@ A complete example
 #include <stdio.h>
 
 int main(void) {
-    int isUserOnline = 1;
+    int is_user_online = 1;
 
-    if (isUserOnline) {
+    if (is_user_online) {
         printf("Tommy Vercetti is playing GTA Vice City\n");
     } else {
         printf("Tommy Vercetti is offline\n");
@@ -91,7 +91,7 @@ int main(void) {
 }
 ```
 
-Change **isUserOnline** to **0** and run again. The output flips. Programming becomes fun the moment you start **playing** with the values :)
+Change **is_user_online** to **0** and run again. The output flips. Programming becomes fun the moment you start **playing** with the values :)
 
 ---
 

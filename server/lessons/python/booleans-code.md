@@ -1,4 +1,4 @@
-isEmployee = input() == "yes"
-isWorkingDay = input() == "yes"
-isGuest = input() == "yes"
-hasInvitation = input() == "yes"
+is_employee = input() == "yes"
+is_working_day = input() == "yes"
+is_guest = input() == "yes"
+has_invitation = input() == "yes"

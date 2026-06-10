@@ -30,8 +30,8 @@ Now, here is something **really important**. Run this code
 
 ```py
 age = input("Your age: ")
-nextYear = age + 1
-print(nextYear)
+next_year = age + 1
+print(next_year)
 ```
 
 You will get an error. **Why?** Because **input() always gives back a string**, even if the user types numbers. So **age** is **"18"** (text), not **18** (number). And we cannot do **"18" + 1**, since one is text and the other is a number
@@ -40,8 +40,8 @@ To fix it, we tell **Python**: "hey, take this text and turn it into a number"
 
 ```py
 age = int(input("Your age: "))
-nextYear = age + 1
-print(nextYear)
+next_year = age + 1
+print(next_year)
 ```
 
 **int()** is a function that converts text into an **integer** (a whole number). Now **age** is really **18**, and **18 + 1 = 19** works perfectly

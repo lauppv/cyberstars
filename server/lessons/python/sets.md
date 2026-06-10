@@ -20,8 +20,8 @@ Wait, we wrote **Tommy** twice, but he only appears once. That's the whole point
 Sets use **curly braces {}**, just like dictionaries. But there's no **key: value**, just values. If it has colons it's a dictionary, if it doesn't it's a set
 
 ```py
-mySet = {1, 2, 3}
-myDict = {"a": 1, "b": 2}
+my_set = {1, 2, 3}
+my_dict = {"a": 1, "b": 2}
 ```
 
 **Be careful** with empty collections
@@ -53,10 +53,10 @@ Notice we use **.add()**, not **.append()** like with lists. Sets don't have an 
 The most useful thing about sets: checking if something **is in** the set. This is **extremely fast**, much faster than checking in a list
 
 ```py
-bannedPlayers = {"Sonny", "Diaz", "Gonzalez"}
+banned_players = {"Sonny", "Diaz", "Gonzalez"}
 
 player = "Tommy"
-if player in bannedPlayers:
+if player in banned_players:
     print(f"{player} is banned!")
 else:
     print(f"{player} is welcome")
@@ -70,8 +70,8 @@ A super common use case: **removing duplicates from a list**
 
 ```py
 names = ["Tommy", "Lance", "Tommy", "Cortez", "Lance", "Lance"]
-uniqueNames = list(set(names))
-print(uniqueNames)
+unique_names = list(set(names))
+print(unique_names)
 ```
 
 We converted the list to a set (which removed duplicates), then back to a list. Clean and simple

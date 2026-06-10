@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main(void) {
-    int isOnline = 1;
+    int is_online = 1;
 
-    while (isOnline) {
+    while (is_online) {
         printf("I am online\n");
     }
 

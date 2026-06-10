@@ -3,7 +3,7 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void runCommand(const char *cmd) {
+void run_command(const char *cmd) {
     pid_t pid = fork();
 
     if (pid == 0) {
@@ -15,8 +15,8 @@ void runCommand(const char *cmd) {
 }
 
 int main(void) {
-    runCommand("greet");
-    runCommand("count");
-    runCommand("unknown");
+    run_command("greet");
+    run_command("count");
+    run_command("unknown");
     return 0;
 }

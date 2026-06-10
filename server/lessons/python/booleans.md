@@ -3,10 +3,10 @@ In the **if-else** lesson we briefly saw **True** and **False**. Time to look at
 A **boolean** is a value that can only be one of two things: **True** or **False**. That’s it. No other options
 
 ```py
-isOnline = True
-hasKey = False
-print(isOnline)
-print(hasKey)
+is_online = True
+has_key = False
+print(is_online)
+print(has_key)
 ```
 
 **Be careful**: **True** and **False** are written **with a capital letter**. **true** and **false** will give an error in Python
@@ -27,9 +27,9 @@ So far so good. But what if we want to combine multiple conditions? Imagine a st
 
 ```py
 age = 20
-hasLicense = True
+has_license = True
 
-if age >= 18 and hasLicense == True:
+if age >= 18 and has_license == True:
     print("You can drive")
 else:
     print("Sorry, no driving today")
@@ -39,20 +39,20 @@ The keyword **and** says: **both conditions must be True**. If even one of them 
 
 ```py
 age = 20
-hasLicense = False
+has_license = False
 
-if age >= 18 and hasLicense == True:
+if age >= 18 and has_license == True:
     print("You can drive")
 else:
     print("Sorry, no driving today")
 ```
 
-Here **age >= 18** is **True**, but **hasLicense == True** is **False**. **True and False** = **False**, so we go to **else**
+Here **age >= 18** is **True**, but **has_license == True** is **False**. **True and False** = **False**, so we go to **else**
 
-By the way, **hasLicense == True** is the same as just writing **hasLicense**, since **hasLicense** is already a boolean. So we can shorten it
+By the way, **has_license == True** is the same as just writing **has_license**, since **has_license** is already a boolean. So we can shorten it
 
 ```py
-if age >= 18 and hasLicense:
+if age >= 18 and has_license:
     print("You can drive")
 ```
 
@@ -63,22 +63,22 @@ Cleaner :)
 There is also **or**. Imagine: you can enter the club if you are **a VIP OR you have a special invitation**. Just **one** of them is enough
 
 ```py
-isVIP = False
-hasInvitation = True
+is_vip = False
+has_invitation = True
 
-if isVIP or hasInvitation:
+if is_vip or has_invitation:
     print("Welcome to the club")
 else:
     print("Access denied")
 ```
 
-Even though **isVIP** is **False**, **hasInvitation** is **True**, and that’s enough
+Even though **is_vip** is **False**, **has_invitation** is **True**, and that’s enough
 
 And finally, **not**. **not** flips a boolean: **not True** becomes **False**, **not False** becomes **True**
 
 ```py
-isLoggedIn = False
-if not isLoggedIn:
+is_logged_in = False
+if not is_logged_in:
     print("Please log in first")
 ```
 

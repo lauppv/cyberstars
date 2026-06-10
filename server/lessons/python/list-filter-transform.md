@@ -29,10 +29,10 @@ Same result, shorter code
 
 ```py
 prices = [10.0, 25.5, 8.0, 42.0]
-withTax = []
+with_tax = []
 for price in prices:
-    withTax.append(round(price * 1.19, 2))
-print(withTax)
+    with_tax.append(round(price * 1.19, 2))
+print(with_tax)
 ```
 
 Output **[11.9, 30.35, 9.52, 49.98]**
@@ -40,7 +40,7 @@ Output **[11.9, 30.35, 9.52, 49.98]**
 Or with list comprehension
 
 ```py
-withTax = [round(price * 1.19, 2) for price in prices]
+with_tax = [round(price * 1.19, 2) for price in prices]
 ```
 
 ---
@@ -56,11 +56,11 @@ players = [
     {"name": "Sonny", "score": 33, "online": False}
 ]
 
-onlineNames = []
+online_names = []
 for player in players:
     if player["online"]:
-        onlineNames.append(player["name"])
-print(onlineNames)
+        online_names.append(player["name"])
+print(online_names)
 ```
 
 Output **['Tommy', 'Cortez', 'Phil']**
@@ -68,7 +68,7 @@ Output **['Tommy', 'Cortez', 'Phil']**
 We **filtered** (only online players) and **transformed** (extracted just the name). With list comprehension
 
 ```py
-onlineNames = [p["name"] for p in players if p["online"]]
+online_names = [p["name"] for p in players if p["online"]]
 ```
 
 ---

@@ -28,11 +28,11 @@ In code
 numbers = [5, 3, 8, 1, 2]
 
 for i in range(len(numbers)):
-    minIndex = i
+    min_index = i
     for j in range(i + 1, len(numbers)):
-        if numbers[j] < numbers[minIndex]:
-            minIndex = j
-    numbers[i], numbers[minIndex] = numbers[minIndex], numbers[i]
+        if numbers[j] < numbers[min_index]:
+            min_index = j
+    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]
 
 print(numbers)
 ```
@@ -47,13 +47,13 @@ The key difference from Bubble Sort: we only do **one swap per pass** instead of
 
 Let's trace through the code for **[5, 3, 8, 1, 2]**
 
-**i = 0**: minIndex starts at 0 (value 5). Inner loop finds 1 at index 3, so minIndex = 3. Swap positions 0 and 3 → **[1, 3, 8, 5, 2]**
+**i = 0**: min_index starts at 0 (value 5). Inner loop finds 1 at index 3, so min_index = 3. Swap positions 0 and 3 → **[1, 3, 8, 5, 2]**
 
-**i = 1**: minIndex starts at 1 (value 3). Inner loop finds 2 at index 4, so minIndex = 4. Swap positions 1 and 4 → **[1, 2, 8, 5, 3]**
+**i = 1**: min_index starts at 1 (value 3). Inner loop finds 2 at index 4, so min_index = 4. Swap positions 1 and 4 → **[1, 2, 8, 5, 3]**
 
-**i = 2**: minIndex starts at 2 (value 8). Inner loop finds 3 at index 4, so minIndex = 4. Swap positions 2 and 4 → **[1, 2, 3, 5, 8]**
+**i = 2**: min_index starts at 2 (value 8). Inner loop finds 3 at index 4, so min_index = 4. Swap positions 2 and 4 → **[1, 2, 3, 5, 8]**
 
-**i = 3**: minIndex starts at 3 (value 5). Inner loop finds nothing smaller, minIndex stays 3. Swap with itself → **[1, 2, 3, 5, 8]**
+**i = 3**: min_index starts at 3 (value 5). Inner loop finds nothing smaller, min_index stays 3. Swap with itself → **[1, 2, 3, 5, 8]**
 
 ---
 

@@ -46,10 +46,10 @@ Now **name** stores the new value. This kind of trap catches absolutely everyone
 We can **glue strings together** with **+**. This is called **concatenation**
 
 ```py
-firstName = "Tommy"
-lastName = "Vercetti"
-fullName = firstName + " " + lastName
-print(fullName)
+first_name = "Tommy"
+last_name = "Vercetti"
+full_name = first_name + " " + last_name
+print(full_name)
 ```
 
 Output **Tommy Vercetti**. Notice that we added **" "** in the middle, otherwise we’d get **TommyVercetti** glued together. Strings don’t add spaces for us, we have to do it ourselves

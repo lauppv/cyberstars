@@ -58,13 +58,13 @@ this displays `text 36.159`
 
 ## Mission: Oxygen Count
 
-The station has three oxygen tanks, with their amounts (in liters) stored in `tankA`, `tankB`, and `tankC`.
+The station has three oxygen tanks, with their amounts (in liters) stored in `tank_a`, `tank_b`, and `tank_c`.
 
 Add the three tanks together into a `total` and print it. Then a leak drains **50** liters — subtract 50 from the `total` and print the new value.
 
 **Input** (already set at the top of your code — change the values to test):
 
-- `tankA`, `tankB`, `tankC` — liters of oxygen in each tank
+- `tank_a`, `tank_b`, `tank_c` — liters of oxygen in each tank
 
 **Example**
 

@@ -12,7 +12,7 @@ In C, we use the **pthread** (POSIX threads) library
 #include <stdio.h>
 #include <pthread.h>
 
-void *sayHello(void *arg) {
+void *say_hello(void *arg) {
     char *name = (char *)arg;
     printf("Hello from thread: %s\n", name);
     return NULL;
@@ -21,8 +21,8 @@ void *sayHello(void *arg) {
 int main(void) {
     pthread_t t1, t2;
 
-    pthread_create(&t1, NULL, sayHello, "Thread A");
-    pthread_create(&t2, NULL, sayHello, "Thread B");
+    pthread_create(&t1, NULL, say_hello, "Thread A");
+    pthread_create(&t2, NULL, say_hello, "Thread B");
 
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
@@ -32,7 +32,7 @@ int main(void) {
 }
 ```
 
-**pthread_create** starts a new thread running the function **sayHello**. The last argument is passed to the function. **pthread_join** waits for the thread to finish — like **wait()** for processes
+**pthread_create** starts a new thread running the function **say_hello**. The last argument is passed to the function. **pthread_join** waits for the thread to finish — like **wait()** for processes
 
 The function signature is special: it takes a **void \*** and returns a **void \***. That's the pthread convention — **void \*** is C's "generic pointer" that can point to anything
 

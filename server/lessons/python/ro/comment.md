@@ -48,7 +48,7 @@ Totuși, în lecțiile următoare vom folosi comentarii cu **#**, chiar dacă se
 
 Codul din dreapta afișează patru linii despre rachetă. Dar **viteza vântului** este clasificată — trebuie să o ascunzi **fără să o ștergi**.
 
-**Comentează** singura linie care afișează `windSpeed` astfel încât programul să arate doar **numele navei**, **numele misiunii** și **puterea maximă**. Nu șterge nimic, doar adaugă un `#`.
+**Comentează** singura linie care afișează `wind_speed` astfel încât programul să arate doar **numele navei**, **numele misiunii** și **puterea maximă**. Nu șterge nimic, doar adaugă un `#`.
 
 **Exemplu**
 

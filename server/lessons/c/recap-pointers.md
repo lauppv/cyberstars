@@ -8,7 +8,7 @@ The station's 3x3 sensor grid just finished a radiation sweep. Tommy needs a qui
 
 The data is already on the right. Do the following, in order:
 
-1. Write **void matrixStats(int matrix[3][3], int *sum, int *min, int \*max)** using nested loops to scan the matrix
+1. Write **void matrix_stats(int matrix[3][3], int *sum, int *min, int \*max)** using nested loops to scan the matrix
 2. Set the sum, min, and max values through pointers
 3. Call the function from main and print the results
 

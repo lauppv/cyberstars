@@ -72,10 +72,10 @@ We can nest **if**s inside one another
 
 int main(void) {
     int seconds = 5;
-    int errorDetected = 0;
+    int error_detected = 0;
 
     if (seconds < 10) {
-        if (errorDetected) {
+        if (error_detected) {
             printf("Error detected. Canceling the mission\n");
         } else {
             printf("No error detected. Taking off...\n");
@@ -98,7 +98,7 @@ The code on the right already has the full chain. Your task: **add a new else if
 **Input** (already set at the top of your code — change the values to test):
 
 - `seconds` — seconds remaining until launch
-- `errorDetected` — whether an error was detected (0 = no, 1 = yes)
+- `error_detected` — whether an error was detected (0 = no, 1 = yes)
 
 **Example**
 

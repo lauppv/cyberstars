@@ -104,11 +104,11 @@ Cortez: 70
 ```py
 scores = [80, 95, 40, 70]
 
-hasFailure = any(s < 50 for s in scores)
-print(hasFailure)
+has_failure = any(s < 50 for s in scores)
+print(has_failure)
 
-allPassed = all(s >= 50 for s in scores)
-print(allPassed)
+all_passed = all(s >= 50 for s in scores)
+print(all_passed)
 ```
 
 Output

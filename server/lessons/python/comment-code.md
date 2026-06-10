@@ -1,9 +1,9 @@
-rocketName = "Laniakea-Explorer"
+rocket_name = "Laniakea-Explorer"
 mission = "MARS-IX-5000"
-maxPower = 804225
-windSpeed = 45.4
+max_power = 804225
+wind_speed = 45.4
 
-print(rocketName)
+print(rocket_name)
 print(mission)
-print(maxPower)
-print(windSpeed)
+print(max_power)
+print(wind_speed)

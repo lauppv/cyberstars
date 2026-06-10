@@ -137,13 +137,13 @@ Cu `oxygen = 65`, programul tău ar trebui să afișeze
 Oxigen scăzut - conservați energia
 ```
 
-Acum setează `oxygen = 12` și `crewAboard = True` și rulează din nou
+Acum setează `oxygen = 12` și `crew_aboard = True` și rulează din nou
 
 ```text
 URGENȚĂ - evacuați acum
 ```
 
-Și cu `oxygen = 12` și `crewAboard = False`
+Și cu `oxygen = 12` și `crew_aboard = False`
 
 ```text
 Aerisirea compartimentului este sigură

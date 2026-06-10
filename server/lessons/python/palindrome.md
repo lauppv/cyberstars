@@ -21,15 +21,15 @@ But let's also think about how to do this **without** the slicing trick, because
 A palindrome means: the **first** character equals the **last**, the **second** equals the **second-to-last**, and so on
 
 ```py
-def isPalindrome(word):
+def is_palindrome(word):
     for i in range(len(word) // 2):
         if word[i] != word[len(word) - 1 - i]:
             return False
     return True
 
-print(isPalindrome("racecar"))
-print(isPalindrome("hello"))
-print(isPalindrome("madam"))
+print(is_palindrome("racecar"))
+print(is_palindrome("hello"))
+print(is_palindrome("madam"))
 ```
 
 Output
@@ -49,16 +49,16 @@ We only need to check **half** the string. Why? Because if the first half matche
 What about sentences? "A man a plan a canal Panama" is a palindrome if we ignore spaces and capitalization
 
 ```py
-def isPalindromeSentence(text):
+def is_palindrome_sentence(text):
     cleaned = ""
     for char in text:
         if char.isalpha():
             cleaned += char.lower()
     return cleaned == cleaned[::-1]
 
-print(isPalindromeSentence("A man a plan a canal Panama"))
-print(isPalindromeSentence("racecar"))
-print(isPalindromeSentence("hello world"))
+print(is_palindrome_sentence("A man a plan a canal Panama"))
+print(is_palindrome_sentence("racecar"))
+print(is_palindrome_sentence("hello world"))
 ```
 
 Output

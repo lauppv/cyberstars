@@ -2,13 +2,13 @@
 
 enum Season { SPRING, SUMMER, AUTUMN, WINTER };
 
-void printSeason(enum Season s) {
+void print_season(enum Season s) {
 }
 
 int main(void) {
-    printSeason(SPRING);
-    printSeason(SUMMER);
-    printSeason(AUTUMN);
-    printSeason(WINTER);
+    print_season(SPRING);
+    print_season(SUMMER);
+    print_season(AUTUMN);
+    print_season(WINTER);
     return 0;
 }

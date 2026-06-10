@@ -83,7 +83,7 @@ Start with **total = 0**, walk through every element, add it. You will write thi
 ```c
 #include <stdio.h>
 
-void printAll(int arr[], int n) {
+void print_all(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d\n", arr[i]);
     }
@@ -92,7 +92,7 @@ void printAll(int arr[], int n) {
 int main(void) {
     int scores[] = { 80, 95, 60, 72, 88 };
     int n = sizeof(scores) / sizeof(scores[0]);
-    printAll(scores, n);
+    print_all(scores, n);
     return 0;
 }
 ```

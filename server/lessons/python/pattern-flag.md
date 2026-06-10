@@ -4,13 +4,13 @@ A **flag** is a boolean variable that starts as **True** or **False** and flips 
 
 ```py
 numbers = [2, 4, 6, 8, 10]
-allEven = True
+all_even = True
 
 for n in numbers:
     if n % 2 != 0:
-        allEven = False
+        all_even = False
 
-if allEven:
+if all_even:
     print("All numbers are even")
 else:
     print("Not all numbers are even")
@@ -18,17 +18,17 @@ else:
 
 Output **All numbers are even**
 
-We started with the assumption **allEven = True** (optimistic, we believe they're all even). If we find even one number that's **not** even, we set the flag to **False**. At the end, we check the flag
+We started with the assumption **all_even = True** (optimistic, we believe they're all even). If we find even one number that's **not** even, we set the flag to **False**. At the end, we check the flag
 
 ```py
 numbers = [2, 4, 7, 8, 10]
-allEven = True
+all_even = True
 
 for n in numbers:
     if n % 2 != 0:
-        allEven = False
+        all_even = False
 
-if allEven:
+if all_even:
     print("All numbers are even")
 else:
     print("Not all numbers are even")
@@ -85,19 +85,19 @@ A practical example: checking if a password is **strong** (has at least one uppe
 
 ```py
 password = "Tommy123"
-hasUpper = False
-hasLower = False
-hasDigit = False
+has_upper = False
+has_lower = False
+has_digit = False
 
 for char in password:
     if char.isupper():
-        hasUpper = True
+        has_upper = True
     elif char.islower():
-        hasLower = True
+        has_lower = True
     elif char.isdigit():
-        hasDigit = True
+        has_digit = True
 
-if hasUpper and hasLower and hasDigit:
+if has_upper and has_lower and has_digit:
     print("Strong password")
 else:
     print("Weak password")

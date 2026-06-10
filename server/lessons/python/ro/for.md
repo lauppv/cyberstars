@@ -61,7 +61,7 @@ Reactorul stației se încălzește câte un **pas** o dată înainte să intre 
 
 Scrie un program care folosește o buclă **for** ca să parcurgă fiecare număr de pas de la **1** la `pasi`. Pentru fiecare pas, afișează:
 
-- dacă pasul este `pas_amplificare` → afișează `Pas`, apoi numărul pasului, apoi `: BOOST` (pentru `boostStep = 3` asta înseamnă `Pas 3: BOOST`)
+- dacă pasul este `pas_amplificare` → afișează `Pas`, apoi numărul pasului, apoi `: BOOST` (pentru `boost_step = 3` asta înseamnă `Pas 3: BOOST`)
 - altfel, dacă este **primul** pas → `Aprindere`
 - altfel, dacă este **ultimul** pas → `Reactor online`
 - altfel → afișează `Pas`, apoi numărul pasului, apoi `: încălzire` (de exemplu `Pas 2: încălzire`)
@@ -73,7 +73,7 @@ Scrie un program care folosește o buclă **for** ca să parcurgă fiecare numă
 
 **Exemplu**
 
-Cu `steps = 5` și `boostStep = 3`, programul tău ar trebui să afișeze
+Cu `steps = 5` și `boost_step = 3`, programul tău ar trebui să afișeze
 
 ```text
 Aprindere
@@ -83,7 +83,7 @@ Pas 4: încălzire
 Reactor online
 ```
 
-Acum schimbă la `steps = 3` și `boostStep = 2` și rulează din nou — rezultatul ar trebui să devină
+Acum schimbă la `steps = 3` și `boost_step = 2` și rulează din nou — rezultatul ar trebui să devină
 
 ```text
 Aprindere

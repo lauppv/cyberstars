@@ -4,7 +4,7 @@
 #define PERM_WRITE   (1 << 1)
 #define PERM_EXECUTE (1 << 2)
 
-void printPermissions(const char *name, int perms) {
+void print_permissions(const char *name, int perms) {
 }
 
 int main(void) {

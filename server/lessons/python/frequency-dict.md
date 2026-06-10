@@ -44,13 +44,13 @@ Once we have a frequency dictionary, we can answer interesting questions
 **What's the most common element?**
 
 ```py
-bestKey = ""
-bestCount = 0
+best_key = ""
+best_count = 0
 for key, count in freq.items():
-    if count > bestCount:
-        bestCount = count
-        bestKey = key
-print(f"Most common: {bestKey} ({bestCount} times)")
+    if count > best_count:
+        best_count = count
+        best_key = key
+print(f"Most common: {best_key} ({best_count} times)")
 ```
 
 **What elements appear only once?**
@@ -66,8 +66,8 @@ print(f"Unique: {unique}")
 **Sort by frequency?**
 
 ```py
-sortedItems = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-for item, count in sortedItems:
+sorted_items = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+for item, count in sorted_items:
     print(f"{item}: {count}")
 ```
 

@@ -1,3 +1,3 @@
-tankA = 120
-tankB = 80
-tankC = 200
+tank_a = 120
+tank_b = 80
+tank_c = 200

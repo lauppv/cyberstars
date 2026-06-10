@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void tripleIt(int *n) {
+void triple_it(int *n) {
 }
 
 int main(void) {
     int num = 5;
-    tripleIt(&num);
+    triple_it(&num);
     printf("%d\n", num);
     return 0;
 }

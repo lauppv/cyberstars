@@ -47,13 +47,13 @@ Diferența cheie față de Bubble Sort: facem doar **o singură interschimbare p
 
 Hai să urmărim codul pas cu pas pentru **[5, 3, 8, 1, 2]**
 
-**i = 0**: minIndex pornește de la 0 (valoarea 5). Bucla interioară găsește 1 la indexul 3, deci minIndex = 3. Interschimbă pozițiile 0 și 3 → **[1, 3, 8, 5, 2]**
+**i = 0**: min_index pornește de la 0 (valoarea 5). Bucla interioară găsește 1 la indexul 3, deci min_index = 3. Interschimbă pozițiile 0 și 3 → **[1, 3, 8, 5, 2]**
 
-**i = 1**: minIndex pornește de la 1 (valoarea 3). Bucla interioară găsește 2 la indexul 4, deci minIndex = 4. Interschimbă pozițiile 1 și 4 → **[1, 2, 8, 5, 3]**
+**i = 1**: min_index pornește de la 1 (valoarea 3). Bucla interioară găsește 2 la indexul 4, deci min_index = 4. Interschimbă pozițiile 1 și 4 → **[1, 2, 8, 5, 3]**
 
-**i = 2**: minIndex pornește de la 2 (valoarea 8). Bucla interioară găsește 3 la indexul 4, deci minIndex = 4. Interschimbă pozițiile 2 și 4 → **[1, 2, 3, 5, 8]**
+**i = 2**: min_index pornește de la 2 (valoarea 8). Bucla interioară găsește 3 la indexul 4, deci min_index = 4. Interschimbă pozițiile 2 și 4 → **[1, 2, 3, 5, 8]**
 
-**i = 3**: minIndex pornește de la 3 (valoarea 5). Bucla interioară nu găsește nimic mai mic, minIndex rămâne 3. Interschimbă cu el însuși → **[1, 2, 3, 5, 8]**
+**i = 3**: min_index pornește de la 3 (valoarea 5). Bucla interioară nu găsește nimic mai mic, min_index rămâne 3. Interschimbă cu el însuși → **[1, 2, 3, 5, 8]**
 
 ---
 

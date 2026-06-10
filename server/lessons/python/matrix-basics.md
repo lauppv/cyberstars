@@ -95,7 +95,7 @@ Output **9**
 A real-life use case: imagine a game map where 0 is empty and 1 is a wall
 
 ```py
-gameMap = [
+game_map = [
     [0, 0, 1, 0],
     [0, 1, 0, 0],
     [0, 0, 0, 1],
@@ -103,7 +103,7 @@ gameMap = [
 ]
 
 walls = 0
-for row in gameMap:
+for row in game_map:
     for cell in row:
         if cell == 1:
             walls += 1

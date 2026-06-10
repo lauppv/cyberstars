@@ -27,12 +27,12 @@ Beautiful? Yes. Efficient? Not really. **fib(5)** calls **fib(4)** and **fib(3)*
 **Reverse a string** recursively
 
 ```py
-def reverseStr(s):
+def reverse_str(s):
     if len(s) <= 1:
         return s
-    return reverseStr(s[1:]) + s[0]
+    return reverse_str(s[1:]) + s[0]
 
-print(reverseStr("Tommy"))
+print(reverse_str("Tommy"))
 ```
 
 Output **ymmoT**
@@ -44,14 +44,14 @@ The idea: the reverse of "Tommy" is the reverse of "ommy" followed by "T". The r
 **Count occurrences** of a character in a string
 
 ```py
-def countChar(text, target):
+def count_char(text, target):
     if len(text) == 0:
         return 0
     first = 1 if text[0] == target else 0
-    return first + countChar(text[1:], target)
+    return first + count_char(text[1:], target)
 
-print(countChar("banana", "a"))
-print(countChar("mississippi", "s"))
+print(count_char("banana", "a"))
+print(count_char("mississippi", "s"))
 ```
 
 Output

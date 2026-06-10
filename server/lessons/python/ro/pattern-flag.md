@@ -18,7 +18,7 @@ else:
 
 Rezultat **Toate numerele sunt pare**
 
-Am pornit de la presupunerea **allEven = True** (optimist, credem că sunt toate pare). Dacă găsim măcar un număr care **nu** este par, setăm steagul la **False**. La final, verificăm steagul
+Am pornit de la presupunerea **all_even = True** (optimist, credem că sunt toate pare). Dacă găsim măcar un număr care **nu** este par, setăm steagul la **False**. La final, verificăm steagul
 
 ```py
 numere = [2, 4, 7, 8, 10]

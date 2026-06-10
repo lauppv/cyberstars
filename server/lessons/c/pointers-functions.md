@@ -63,13 +63,13 @@ This pattern is everywhere in C. Want a function to modify a variable? Pass its 
 ```c
 #include <stdio.h>
 
-void doubleIt(int *n) {
+void double_it(int *n) {
     *n = *n * 2;
 }
 
 int main(void) {
     int score = 50;
-    doubleIt(&score);
+    double_it(&score);
     printf("%d\n", score);   // 100
     return 0;
 }
@@ -80,7 +80,7 @@ Another common use: functions that need to **return multiple values**. C functio
 ```c
 #include <stdio.h>
 
-void minMax(int arr[], int n, int *min, int *max) {
+void min_max(int arr[], int n, int *min, int *max) {
     *min = arr[0];
     *max = arr[0];
     for (int i = 1; i < n; i++) {
@@ -92,7 +92,7 @@ void minMax(int arr[], int n, int *min, int *max) {
 int main(void) {
     int nums[] = {3, 7, 1, 9, 4};
     int lo, hi;
-    minMax(nums, 5, &lo, &hi);
+    min_max(nums, 5, &lo, &hi);
     printf("Min: %d, Max: %d\n", lo, hi);
     return 0;
 }
@@ -106,10 +106,10 @@ The function "returns" both the minimum and maximum through pointers. This is id
 
 ## Mission: Engine Power Boost
 
-The reactor output is too low for the jump to hyperspace. Engineer Phil wrote a boost function, but it only doubles the value. You need a **tripleIt** function that triples the engine power through a pointer — no copies, direct memory access.
+The reactor output is too low for the jump to hyperspace. Engineer Phil wrote a boost function, but it only doubles the value. You need a **triple_it** function that triples the engine power through a pointer — no copies, direct memory access.
 
-1. Write a function **tripleIt** that takes an **int pointer** and triples the value it points to
-2. In **main**, call **tripleIt(&num)** and print the result
+1. Write a function **triple_it** that takes an **int pointer** and triples the value it points to
+2. In **main**, call **triple_it(&num)** and print the result
 
 **Input** (already set at the top of your code — change the values to test):
 

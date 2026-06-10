@@ -55,7 +55,7 @@ This process in programming is called **formatting** (hence the letter **f**)
 
 ## Mission: Flight Report
 
-A pilot is about to launch. The details are stored in `pilot`, `shipName`, `fuel`, and `speed`.
+A pilot is about to launch. The details are stored in `pilot`, `ship_name`, `fuel`, and `speed`.
 
 Using **f-strings**, print a three-line flight report:
 
@@ -65,7 +65,7 @@ Using **f-strings**, print a three-line flight report:
 
 **Input** (already set at the top of your code — change the values to test):
 
-- `pilot`, `shipName` — text
+- `pilot`, `ship_name` — text
 - `fuel` — a whole number
 - `speed` — a number with decimals
 

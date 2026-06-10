@@ -72,27 +72,27 @@ However, there are cases where we do need **else**. **If** I get at least 50% on
 
 ```py
 username = "Tommy Vercetti"
-isUserOnline = True
+is_user_online = True
 
-if isUserOnline == True:
+if is_user_online == True:
     print(f"{username} is playing GTA Vice City")
 else:
     print(f"{username} is offline")
 ```
 
-**True** and **False** are pretty straightforward. **If** the user is **online**, we enter the **if** block and will **NOT** enter the **else**. We can see that the code in the **else** block does not execute. Change **isUserOnline** to **False** and run the code. What do you see?
+**True** and **False** are pretty straightforward. **If** the user is **online**, we enter the **if** block and will **NOT** enter the **else**. We can see that the code in the **else** block does not execute. Change **is_user_online** to **False** and run the code. What do you see?
 
 ```py
 username = "Tommy Vercetti"
-isUserOnline = False
+is_user_online = False
 
-if isUserOnline == True:
+if is_user_online == True:
     print(f"{username} is playing GTA Vice City")
 else:
     print(f"{username} is offline")
 ```
 
-Here we see that the user is **offline** because **isUserOnline** = **False**, which means we won’t enter the **if** block, since we only enter **if** the condition is **true**. Since our condition is **false**, we enter the **else** block
+Here we see that the user is **offline** because **is_user_online** = **False**, which means we won’t enter the **if** block, since we only enter **if** the condition is **true**. Since our condition is **false**, we enter the **else** block
 
 ---
 

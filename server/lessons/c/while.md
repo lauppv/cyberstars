@@ -72,13 +72,13 @@ C also has a **do { ... } while (...)** form that runs the body **at least once*
 
 ## Mission: Signal Beacon
 
-The station's signal beacon broadcasts `I am online` every cycle while `isOnline` is true. But right now the code on the right loops forever because nobody turns the beacon off.
+The station's signal beacon broadcasts `I am online` every cycle while `is_online` is true. But right now the code on the right loops forever because nobody turns the beacon off.
 
-Fix the loop so it runs **once**, then exits. You need to **set `isOnline` to 0** inside the loop so the condition becomes false after one broadcast.
+Fix the loop so it runs **once**, then exits. You need to **set `is_online` to 0** inside the loop so the condition becomes false after one broadcast.
 
 **Input** (already set at the top of your code):
 
-- `isOnline` — 1 means the beacon is active, 0 means off
+- `is_online` — 1 means the beacon is active, 0 means off
 
 **Example**
 
