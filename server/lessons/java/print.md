@@ -24,7 +24,6 @@ The line that does the work is
 System.out.println("hey, I like pizza");
 ```
 
-
 **System.out.println** is Java’s way of saying **print**. The **ln** at the end means **line**, so it prints and goes to a new line, just like **print()** in Python
 
 Three things to notice
