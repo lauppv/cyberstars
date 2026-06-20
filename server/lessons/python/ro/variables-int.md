@@ -58,13 +58,13 @@ asta afișează `text 36.159`
 
 ## Misiune: Numărătoarea Oxigenului
 
-Stația are trei rezervoare de oxigen, cu cantitățile lor (în litri) stocate în `tank_a`, `tank_b` și `tank_c`.
+Stația are trei rezervoare de oxigen, cu cantitățile lor (în litri) stocate în `rezervor_a`, `rezervor_b` și `rezervor_c`.
 
 Adună cele trei rezervoare laolaltă într-un `total` și afișează-l. Apoi o scurgere golește **50** de litri — scade 50 din `total` și afișează noua valoare.
 
 **Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
-- `tank_a`, `tank_b`, `tank_c` — litri de oxigen din fiecare rezervor
+- `rezervor_a`, `rezervor_b`, `rezervor_c` — litri de oxigen din fiecare rezervor
 
 **Exemplu**
 

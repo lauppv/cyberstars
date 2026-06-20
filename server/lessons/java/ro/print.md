@@ -20,12 +20,8 @@ Ce este tot acel boilerplate din jurul lui **System.out.println**? Nu intra în 
 
 Linia care face treaba este
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("salut, îmi place pizza");
-    }
-}
+```text
+System.out.println("salut, îmi place pizza");
 ```
 
 **System.out.println** este felul în care Java spune **print**. **ln** de la final înseamnă **line** (linie), deci afișează și trece pe o linie nouă, exact ca **print()** în Python
