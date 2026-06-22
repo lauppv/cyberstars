@@ -121,13 +121,11 @@ The station constantly checks its `oxygen` level (in percent) and whether there 
 - `oxygen` is **50 to 79** → `Oxygen low - conserve power`
 - `oxygen` is **20 to 49** → `Oxygen critical - seal the bay`
 - below **20** → it's an emergency. Here, check `crew_aboard` with a **nested if**:
-  - if the crew is still aboard → `EMERGENCY - evacuate now`
-  - otherwise → `Venting the bay is safe`
-
-**Input** (already set at the top of your code — change the values to test):
+  - if the crew is still aboard → `Emergency - evacuate now`
+  - otherwise → `We have no crew aboard, so venting the bay is safe`
 
 - `oxygen` — oxygen level in percent
-- `crew_aboard` — `True` if the crew is still on the station
+- `crew_aboard` — if the crew is still on the station
 
 **Example**
 
@@ -140,13 +138,11 @@ Oxygen low - conserve power
 Now set `oxygen = 12` and `crew_aboard = True` and run again
 
 ```text
-EMERGENCY - evacuate now
+Emergency - evacuate now
 ```
 
 And with `oxygen = 12` and `crew_aboard = False`
 
 ```text
-Venting the bay is safe
+We have no crew aboard, so venting the bay is safe
 ```
-
-Once again, here at **CyberStars** we encourage **curiosity** — play around with the values **:)**

@@ -1,2 +1,1 @@
-age = 15
-is_3d = True
+# decide what variables you need and write your code here

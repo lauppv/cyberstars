@@ -1,4 +1,4 @@
-name = "Shadow"
-level = 42
-health = 97.5
-guild = "CyberStars"
+name =
+level =
+health =
+guild =

@@ -17,7 +17,7 @@ nume = "Quincy"
 varsta = 32
 inaltime = 1.90
 
-print("Salut. Numele meu este ", nume, ", am ", varsta, " ani și am înălțimea de ", inaltime, ":")
+print("Salut. Numele meu este ", nume, ", am ", varsta, " ani și am înălțimea de ", inaltime)
 ```
 
 Problema e că, cu această abordare, trebuie să fii atent la spații, virgule și ghilimele… **fun fact**: am greșit de două ori când am scris asta **XD**
@@ -31,8 +31,7 @@ inaltime = 1.67
 print(f"Salut. Numele meu este {nume}, am {varsta} ani și am înălțimea de {inaltime}")
 ```
 
-Evident, **nume**, **varsta** și **inaltime** sunt variabilele. Simbolurile **{}** funcționează ca un _placeholder_. În interiorul lor, dacă pui o variabilă, **numele variabilei va fi înlocuit cu valoarea ei**
-Totuși, nu trebuie să uităm de **f**
+Evident, **nume**, **varsta** și **inaltime** sunt variabilele. Simbolurile **{}** funcționează ca un _placeholder_. În interiorul lor, dacă pui o variabilă, **numele variabilei va fi înlocuit cu valoarea ei**. Totuși, nu trebuie să uităm de **f**
 
 ```py
 nume = "Quincy"

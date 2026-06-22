@@ -1,2 +1,1 @@
-varsta = 15
-este_3d = True
+# decide de ce variabile ai nevoie și scrie codul aici

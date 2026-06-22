@@ -17,7 +17,7 @@ name = "Quincy"
 age = 32
 height = 1.90
 
-print("Hello. My name is ", name, ", I am ", age, " years old, and I am ", height, " tall:")
+print("Hello. My name is ", name, ", I am ", age, " years old, and I am ", height, " tall")
 ```
 
 The problem is that with this approach you have to be careful with spaces, commas, and quotes… **fun fact**: I messed up twice when I wrote this **XD**
@@ -31,8 +31,7 @@ height = 1.67
 print(f"Hello. My name is {name}, I am {age} years old, and I am {height} tall")
 ```
 
-Obviously, **name**, **age**, and **height** are the variables. The **{}** symbols work as a _placeholder_. Inside them, if you put a variable, the **variable’s name will be replaced by its value**
-However, we must not forget the **f**
+Obviously, **name**, **age**, and **height** are the variables. The **{}** symbols work as a _placeholder_. Inside them, if you put a variable, the **variable’s name will be replaced by its value**. However, we must not forget the **f**
 
 ```py
 name = "Quincy"

@@ -1,1 +1,1 @@
-temp = 1200
+# create a variable that stores the temperature value
