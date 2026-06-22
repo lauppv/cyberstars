@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import path from 'path';
 import type { Request, Response } from 'express';
+import { AppError } from '../middleware/errorHandler.js';
 
 const { mockMkdir, mockWriteFile, mockUnlink, mockFindById, mockUpdateProfile, mockFileType } =
   vi.hoisted(() => ({
@@ -59,6 +60,15 @@ describe('uploadAvatar', () => {
     expect(mockWriteFile).toHaveBeenCalledTimes(1);
     expect(currentAvatar).toMatch(/^\/uploads\/avatars\/7-\d+\.png$/);
     expect(res.json).toHaveBeenCalledWith({ avatarUrl: currentAvatar });
+  });
+
+  it('rejects with 400 when no file is attached', async () => {
+    const req = { user: { id: 7 }, file: undefined } as unknown as Request;
+    const next = vi.fn();
+    await uploadAvatar(req, mkRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(AppError));
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockWriteFile).not.toHaveBeenCalled();
   });
 
   it('serializes concurrent uploads so no avatar file is orphaned (H10)', async () => {

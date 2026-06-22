@@ -67,6 +67,9 @@ describe('parseTokenCookie', () => {
   it('returns null when token cookie absent', () => {
     expect(parseTokenCookie('a=1; b=2')).toBeNull();
   });
+  it('skips malformed cookie parts that have no = separator', () => {
+    expect(parseTokenCookie('flag; token=abc123')).toBe('abc123');
+  });
 });
 
 describe('verifyToken', () => {
@@ -93,6 +96,10 @@ describe('extractIp', () => {
       socket: { remoteAddress: '10.0.0.1' },
     } as unknown as IncomingMessage;
     expect(extractIp(req)).toBe('10.0.0.1');
+  });
+  it('returns "unknown" when neither header nor remoteAddress is set', () => {
+    const req = { headers: {}, socket: {} } as unknown as IncomingMessage;
+    expect(extractIp(req)).toBe('unknown');
   });
 });
 
@@ -165,6 +172,10 @@ describe('tryStartRun / endRun', () => {
     endRun(key);
     expect(tryStartRun(key, start).ok).toBe(true);
   });
+
+  it('endRun is a harmless no-op for a key with no active runs', () => {
+    expect(() => endRun('user:never-started')).not.toThrow();
+  });
 });
 
 describe('handleConnection', () => {
@@ -192,6 +203,40 @@ describe('handleConnection', () => {
     ws.emit('message', JSON.stringify({ type: 'stdin', data: 'x' }));
     expect(mockRun).not.toHaveBeenCalled();
     ws.emit('close');
+  });
+
+  it('parses a Buffer frame the same as a string frame', () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2050)}`));
+    ws.emit(
+      'message',
+      Buffer.from(JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' })),
+    );
+    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'user:2050');
+    ws.emit('close');
+  });
+
+  it('ignores further messages once a run has started', () => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(2051)}`));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'print(2)', language: 'python' }));
+    expect(mockRun).toHaveBeenCalledTimes(1);
+    ws.emit('close');
+  });
+
+  it('skips the error reply when the socket is no longer open', async () => {
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRun.mockRejectedValueOnce(new Error('boom'));
+    const ws = new FakeWs();
+    ws.readyState = 3; // CLOSED
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(3050)}`));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(ws.send).not.toHaveBeenCalled();
+    ws.emit('close');
+    errSpy.mockRestore();
   });
 
   it('lets a guest run within budget and records the run under their guestId', () => {
