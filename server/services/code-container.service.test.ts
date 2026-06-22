@@ -92,6 +92,49 @@ describe('acquireForRun', () => {
     expect(activeCount()).toBe(0);
   });
 
+  it('falls back to the error message when docker writes nothing to stderr', async () => {
+    execFileMock.mockImplementation((_c: string, args: string[], _o: unknown, cb: DockerCb) => {
+      if (args[0] === 'run') cb(new Error('exec format error'), '', '');
+      else cb(null, '', '');
+    });
+    await expect(acquireForRun('user:6b', 'python')).rejects.toThrow('exec format error');
+  });
+
+  it('omits the --user flag and tmpfs owner option when not running as a sandbox user', async () => {
+    const prev = process.env.SANDBOX_RUN_AS_USER;
+    process.env.SANDBOX_RUN_AS_USER = 'false';
+    try {
+      await acquireForRun('user:nouser', 'python');
+      const run = dockerCalls().find((a) => a[0] === 'run')!;
+      expect(run.some((arg) => arg.startsWith('--user='))).toBe(false);
+      expect(run.some((arg) => arg.includes('uid='))).toBe(false);
+    } finally {
+      if (prev === undefined) delete process.env.SANDBOX_RUN_AS_USER;
+      else process.env.SANDBOX_RUN_AS_USER = prev;
+    }
+  });
+
+  it('creates past the cap when every tracked container is busy (nothing to evict)', async () => {
+    await acquireForRun('user:busy1', 'python'); // busy, not released
+    await acquireForRun('user:busy2', 'python'); // busy, not released — at cap (2)
+    await acquireForRun('user:busy3', 'python'); // no idle to evict → grows to 3
+    expect(activeCount()).toBe(3);
+    expect(dockerCalls().filter((a) => a[0] === 'rm')).toHaveLength(0);
+  });
+
+  it('does not delete the slot in the catch path when the owner was already torn down', async () => {
+    let failRun!: () => void;
+    execFileMock.mockImplementation((_c: string, args: string[], _o: unknown, cb: DockerCb) => {
+      if (args[0] === 'run') failRun = () => cb(new Error('boom'), '', '');
+      else cb(null, '', '');
+    });
+    const pending = acquireForRun('user:catch', 'python');
+    await destroyOwner('user:catch'); // removes the reserved slot mid-creation
+    failRun(); // now the create rejects
+    await expect(pending).rejects.toThrow('boom');
+    expect(activeCount()).toBe(0);
+  });
+
   it('evicts the least-recently-used idle container at the global cap', async () => {
     const a = await acquireForRun('user:a', 'python');
     releaseAfterRun('user:a');
@@ -134,6 +177,12 @@ describe('destroyOwner', () => {
   });
 });
 
+describe('releaseAfterRun', () => {
+  it('is a harmless no-op when the owner has no container', () => {
+    expect(() => releaseAfterRun('user:ghost')).not.toThrow();
+  });
+});
+
 describe('session ref-counting', () => {
   it('destroys the container only when the last session closes', async () => {
     const id = await acquireForRun('user:s', 'python');
@@ -163,6 +212,17 @@ describe('idle GC', () => {
       expect(activeCount()).toBe(1);
       vi.advanceTimersByTime(61_000); // GC ticks every 60s; idle TTL is 1s here
       expect(activeCount()).toBe(0);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('leaves a busy container alone even after the idle TTL elapses', async () => {
+    vi.useFakeTimers();
+    try {
+      await acquireForRun('user:gc-busy', 'python'); // never released → stays busy
+      vi.advanceTimersByTime(61_000);
+      expect(activeCount()).toBe(1); // busy containers are skipped by the GC
     } finally {
       vi.useRealTimers();
     }

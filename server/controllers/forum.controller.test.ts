@@ -112,6 +112,56 @@ describe('getCategories', () => {
       }),
     ]);
   });
+
+  it('picks the most recent post across threads and ignores empty ones', async () => {
+    mockPrisma.forumCategory.findMany.mockResolvedValue([
+      {
+        id: 1,
+        slug: 'general',
+        name: 'General',
+        description: '',
+        icon: '',
+        color: '',
+        groupName: 'Main',
+        threads: [
+          {
+            id: 1,
+            title: 'Oldest',
+            posts: [{ createdAt: new Date('2025-01-01'), author: { name: 'A' } }],
+            _count: { posts: 1 },
+          },
+          {
+            id: 2,
+            title: 'Newest',
+            posts: [{ createdAt: new Date('2025-03-01'), author: { name: 'B' } }],
+            _count: { posts: 1 },
+          },
+          {
+            id: 3,
+            title: 'Middle',
+            posts: [{ createdAt: new Date('2025-02-01'), author: { name: 'C' } }],
+            _count: { posts: 1 },
+          },
+          {
+            id: 4,
+            title: 'Empty',
+            posts: [],
+            _count: { posts: 0 },
+          },
+        ],
+      },
+    ]);
+
+    const res = mockRes();
+    await getCategories(mockReq(), res, vi.fn());
+    expect(res.json).toHaveBeenCalledWith([
+      expect.objectContaining({
+        threadCount: 4,
+        postCount: 3,
+        lastPost: expect.objectContaining({ threadTitle: 'Newest', authorName: 'B' }),
+      }),
+    ]);
+  });
 });
 
 describe('getThreads', () => {
@@ -326,6 +376,53 @@ describe('getThread', () => {
     expect(visible.reactions[0]).toMatchObject({ count: 2, active: true });
     expect(deleted.content).toBe('');
   });
+
+  it('keeps a grouped reaction inactive when later reactors are not the viewer', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue({
+      id: 1,
+      title: 'T',
+      pinned: false,
+      locked: false,
+      solved: false,
+      views: 0,
+      authorId: 1,
+      author: { name: 'A', role: 'USER' },
+      category: { slug: 'general', name: 'General' },
+      createdAt: new Date(),
+      posts: [
+        {
+          id: 100,
+          content: 'visible',
+          solution: false,
+          deleted: false,
+          deletedByName: null,
+          editedByName: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          author: { id: 1, name: 'Bob', role: 'USER', avatarUrl: null },
+          reactions: [
+            { emoji: '👍', userId: 1, user: { name: 'Bob' } },
+            { emoji: '👍', userId: 2, user: { name: 'Carol' } },
+          ],
+        },
+      ],
+    });
+    mockPrisma.forumThread.update.mockResolvedValue({});
+
+    const res = mockRes();
+    await getThread(
+      mockReq({
+        params: { threadId: '1' } as Record<string, string>,
+        user: { id: 7 } as Request['user'],
+      }),
+      res,
+      vi.fn(),
+    );
+    const payload = (res.json as ReturnType<typeof vi.fn>).mock.calls[0][0] as {
+      posts: Array<{ reactions: Array<{ count: number; active: boolean }> }>;
+    };
+    expect(payload.posts[0].reactions[0]).toMatchObject({ count: 2, active: false });
+  });
 });
 
 describe('createThread', () => {
@@ -372,6 +469,23 @@ describe('createThread', () => {
     );
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ threadId: 42 });
+  });
+
+  it('lets a MODERATOR start a thread in a restricted category', async () => {
+    mockPrisma.forumCategory.findUnique.mockResolvedValue({ id: 1, slug: 'announcements' });
+    mockUserRepo.getRole.mockResolvedValue('MODERATOR');
+    mockPrisma.forumThread.create.mockResolvedValue({ id: 7 });
+    const res = mockRes();
+    await createThread(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { categorySlug: 'announcements', title: 'Notice', content: 'C' },
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(res.json).toHaveBeenCalledWith({ threadId: 7 });
   });
 });
 
@@ -431,6 +545,63 @@ describe('createPost', () => {
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ postId: 99 });
   });
+
+  it('returns 400 for a non-numeric thread ID', async () => {
+    const next = vi.fn();
+    await createPost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { threadId: 'abc' } as Record<string, string>,
+        body: { content: 'hi' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('returns 403 when a USER replies in a restricted category', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue({
+      id: 1,
+      locked: false,
+      category: { slug: 'announcements' },
+    });
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await createPost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { threadId: '1' } as Record<string, string>,
+        body: { content: 'hi' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('lets a MODERATOR reply in a restricted category', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue({
+      id: 1,
+      locked: false,
+      category: { slug: 'announcements' },
+    });
+    mockUserRepo.getRole.mockResolvedValue('MODERATOR');
+    mockPrisma.forumPost.create.mockResolvedValue({ id: 5 });
+    mockPrisma.forumThread.update.mockResolvedValue({});
+    const res = mockRes();
+    await createPost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { threadId: '1' } as Record<string, string>,
+        body: { content: 'hi' },
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(res.json).toHaveBeenCalledWith({ postId: 5 });
+  });
 });
 
 describe('toggleReaction', () => {
@@ -465,9 +636,50 @@ describe('toggleReaction', () => {
     );
     expect(res.json).toHaveBeenCalledWith({ active: true });
   });
+
+  it('returns 400 for a non-numeric post ID', async () => {
+    const next = vi.fn();
+    await toggleReaction(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: 'abc' } as Record<string, string>,
+        body: { emoji: '👍' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
 });
 
 describe('markSolution', () => {
+  it('returns 400 for a non-numeric post ID', async () => {
+    const next = vi.fn();
+    await markSolution(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: 'abc' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('returns 404 when the post does not exist', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await markSolution(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
   it('returns 403 if not thread author', async () => {
     mockPrisma.forumPost.findUnique.mockResolvedValue({ id: 1, thread: { authorId: 99 } });
     const next = vi.fn();
@@ -506,6 +718,35 @@ describe('markSolution', () => {
 });
 
 describe('updatePost', () => {
+  it('returns 400 for a non-numeric post ID', async () => {
+    const next = vi.fn();
+    await updatePost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: 'abc' } as Record<string, string>,
+        body: { content: 'x' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('returns 404 when the post does not exist', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await updatePost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+        body: { content: 'x' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
   it("returns 403 when USER tries to edit another user's post", async () => {
     mockPrisma.forumPost.findUnique.mockResolvedValue({
       id: 1,
@@ -669,6 +910,21 @@ describe('updateUserRole', () => {
       next,
     );
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('returns 400 for a non-numeric user ID', async () => {
+    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    const next = vi.fn();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: 'abc' } as Record<string, string>,
+        body: { role: 'MODERATOR' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
   });
 
   it('returns 400 when admin tries to change own role', async () => {

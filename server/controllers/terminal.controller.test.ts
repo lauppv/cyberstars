@@ -112,6 +112,16 @@ describe('destroy', () => {
     await ctrl.destroy(req, res, next);
     expect(next).toHaveBeenCalled();
   });
+
+  it('passes non-validation errors straight to next', async () => {
+    mockDestroySession.mockRejectedValue(new Error('Docker failed'));
+    const req = mockReq({ params: { sessionId: '550e8400-e29b-41d4-a716-446655440000' } });
+    const res = mockRes();
+    const next = vi.fn();
+    await ctrl.destroy(req, res, next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+    expect((next.mock.calls[0][0] as Error).message).toBe('Docker failed');
+  });
 });
 
 describe('execRateLimitHandler', () => {
