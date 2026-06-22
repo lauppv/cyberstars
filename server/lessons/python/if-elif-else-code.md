@@ -1,2 +1,2 @@
-oxygen = 65
-crew_aboard = True
+oxygen =
+crew_aboard =

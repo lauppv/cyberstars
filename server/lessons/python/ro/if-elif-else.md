@@ -121,32 +121,28 @@ Stația verifică în permanență nivelul ei de `oxigen` (în procente) și dac
 - `oxigen` este **între 50 și 79** → `Oxigen scăzut - conservați energia`
 - `oxigen` este **între 20 și 49** → `Oxigen critic - sigilați compartimentul`
 - sub **20** → este o urgență. Aici, verifică `echipaj_la_bord` cu un **if imbricat**:
-  - dacă echipajul este încă la bord → `URGENȚĂ - evacuați acum`
-  - altfel → `Aerisirea compartimentului este sigură`
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+  - dacă echipajul este încă la bord → `Urgența - evacuați acum`
+  - altfel → `Nu avem echipaj la bord, deci aerisirea compartimentului este sigură`
 
 - `oxigen` — nivelul de oxigen în procente
-- `echipaj_la_bord` — `True` dacă echipajul este încă pe stație
+- `echipaj_la_bord` — dacă echipajul este încă pe stație
 
 **Exemplu**
 
-Cu `oxygen = 65`, programul tău ar trebui să afișeze
+Cu `oxigen = 65`, programul tău ar trebui să afișeze
 
 ```text
 Oxigen scăzut - conservați energia
 ```
 
-Acum setează `oxygen = 12` și `crew_aboard = True` și rulează din nou
+Acum setează `oxigen = 12` și `echipaj_la_bord = True` și rulează din nou
 
 ```text
-URGENȚĂ - evacuați acum
+Urgența - evacuați acum
 ```
 
-Și cu `oxygen = 12` și `crew_aboard = False`
+Și cu `oxigen = 12` și `echipaj_la_bord = False`
 
 ```text
-Aerisirea compartimentului este sigură
+Nu avem echipaj la bord, deci aerisirea compartimentului este sigură
 ```
-
-Încă o dată, aici la **CyberStars** încurajăm **curiozitatea** — joacă-te cu valorile **:)**

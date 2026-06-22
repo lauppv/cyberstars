@@ -4,25 +4,27 @@ E timpul să combini ce ai învățat! Nicio teorie nouă — doar o provocare c
 
 ## Misiune: Cardul Jucătorului
 
-Construiește un **card de profil al personajului** pentru un joc. Statisticile personajului sunt deja setate la începutul codului tău: `nume`, `nivel`, `viata` și `breasla`.
+Construiește un **card de profil al personajului** pentru un joc. Trebuie să creezi statisticile personajului: `nume`, `nivel`, `viata` și `breasla`.
 
-Folosind **f-string-uri**, afișează cardul de profil exact cum este arătat mai jos. Adaugă un **comentariu** deasupra print-urilor tale care explică ce fac.
+Folosind **f-string-uri (f{})**, afișează cardul de profil.
 
-**Input** (deja setat la începutul codului tău — schimbă valorile ca să testezi):
+Exemplu:
+
+```py
+nume = "Shadow"
+nivel = 42
+viata = 97.5
+breasla = "CyberStars"
+```
+
+După afișare cu print() și f{}, ar trebui să vedem:
+
+```text
+Jucătorul Shadow(42) are viața 97.5 și face parte din CyberStars.
+```
+
+Observație:
 
 - `nume`, `breasla` — text
 - `nivel` — un număr întreg
 - `viata` — un număr cu zecimale
-
-**Exemplu**
-
-Cu valorile de start, programul tău ar trebui să afișeze
-
-```text
-=== CARD JUCĂTOR ===
-Nume: Shadow
-Nivel: 42
-Viață: 97.5 HP
-Breaslă: CyberStars
-===================
-```

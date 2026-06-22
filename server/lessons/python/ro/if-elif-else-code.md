@@ -1,2 +1,2 @@
-oxigen = 65
-echipaj_la_bord = True
+oxigen =
+echipaj_la_bord =

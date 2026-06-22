@@ -4,25 +4,27 @@ Time to combine what you've learned! No new theory — just a challenge that use
 
 ## Mission: Player Card
 
-Build a **character profile card** for a game. The character's stats are already set at the top of your code: `name`, `level`, `health`, and `guild`.
+Build a **character profile card** for a game. You need to create the character's stats: `name`, `level`, `health`, and `guild`.
 
-Using **f-strings**, print the profile card exactly as shown below. Add a **comment** above your prints explaining what they do.
+Using **f-strings (f{})**, print the profile card.
 
-**Input** (already set at the top of your code — change the values to test):
+Example:
+
+```py
+name = "Shadow"
+level = 42
+health = 97.5
+guild = "CyberStars"
+```
+
+After printing with print() and f{}, we should see:
+
+```text
+Player Shadow(42) has 97.5 health and is part of CyberStars.
+```
+
+Note:
 
 - `name`, `guild` — text
 - `level` — a whole number
 - `health` — a number with decimals
-
-**Example**
-
-With the starter values, your program should print
-
-```text
-=== PLAYER CARD ===
-Name: Shadow
-Level: 42
-Health: 97.5 HP
-Guild: CyberStars
-===================
-```

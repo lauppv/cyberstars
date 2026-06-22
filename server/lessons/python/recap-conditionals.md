@@ -1,39 +1,57 @@
-Combine **if/else**, **if/elif/else**, and **comments**
+Combine **if/elif/else**, **booleans**, and **math operations**
 
 ---
 
 ## Mission: Ticket Booth
 
-Build a **ticket price calculator** for the station's cinema. The customer's `age` and whether it's a `is_3d` movie are set at the top of your code.
+Build a **ticket price calculator** for the station's cinema.
 
-Base price by age:
+A ticket has a standard price of 10 EUR (the full price, without any discount). Based on the customer's age, discounts may apply:
 
-- under **6** → **0 EUR** (free)
-- **6 to 12** → **5 EUR**
-- **13 to 17** → **8 EUR**
-- **18 to 64** → **12 EUR**
-- **65 and over** → **6 EUR** (senior discount)
+- under **6** → discount **10 EUR** (free)
+- **6 to 12** → discount **5 EUR**
+- **13 to 17** → discount **3 EUR**
+- **18 to 64** → discount **0 EUR**
+- **65 and over** → discount **4 EUR**
 
-Print the base price like `Base price: 8 EUR`. If `is_3d` is True, add **3 EUR** to the total and also print `3D surcharge: 3 EUR`. Finally print the total like `Total: 11 EUR` (if it's not 3D, the total is just the base price).
+If the movie is 3D, a **2 EUR** fee is added
 
-**Input** (already set at the top of your code — change the values to test):
-
-- `age` — the customer's age
-- `is_3d` — `True` for a 3D movie
+You must print the final ticket price
 
 **Example**
 
-With `age = 15` and `is_3d = True`, your program should print
+For an **8-year-old** customer at a **3D** movie, your program should print
 
 ```text
-Base price: 8 EUR
-3D surcharge: 3 EUR
-Total: 11 EUR
+Standard price: 10 EUR
+Discount: 5 EUR
+3D fee: 2 EUR
+Total: 7 EUR
 ```
 
-Now set `age = 70` and `is_3d = False` and run again
+(10 − 5 = 5, plus 2 EUR for 3D, so 7 EUR)
+
+Now try a **30-year-old** customer at a movie that is **not 3D**
 
 ```text
-Base price: 6 EUR
-Total: 6 EUR
+Standard price: 10 EUR
+Discount: 0 EUR
+Total: 10 EUR
+```
+
+Or a **70-year-old** customer at a **3D** movie
+
+```text
+Standard price: 10 EUR
+Discount: 4 EUR
+3D fee: 2 EUR
+Total: 8 EUR
+```
+
+And a **4-year-old** customer at a movie that is **not 3D**
+
+```text
+Standard price: 10 EUR
+Discount: 10 EUR
+Total: 0 EUR
 ```

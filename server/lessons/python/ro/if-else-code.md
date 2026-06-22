@@ -1,1 +1,1 @@
-temperatura = 1200
+# fă o variabilă care să stocheze valoarea temperaturii
