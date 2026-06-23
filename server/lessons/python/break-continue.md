@@ -115,6 +115,8 @@ print("System stopped")
 
 **while True** would normally be an infinite loop. But on every step we ask for a command, and if the user types **stop**, **break** takes us out of the loop. Whatever else they type, the program prints **Running: ...** and asks again
 
+Notice **command == "stop"**. So far we've only used **==** with numbers, but it works just as well with **text**: **command == "stop"** is **True** only if the variable holds exactly the word **stop**. Text comparison is case-sensitive, so **"Stop"** or **"STOP"** would be different from **"stop"**
+
 ---
 
 ## Mission: Manual Sector Scanner

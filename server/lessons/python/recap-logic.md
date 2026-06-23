@@ -1,4 +1,4 @@
-This is a **recap**. Put to work everything we've learned so far: **input**, **operators**, **booleans**, loops, and **break** / **continue**. You decide how to combine them
+This is a **recap**. Put to work everything we've learned so far: **input**, **booleans**, loops, and **break** / **continue**. You decide how to combine them
 
 ---
 
