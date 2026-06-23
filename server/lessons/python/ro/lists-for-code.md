@@ -1,1 +1,3 @@
-citiri = [90, 105, 100, 120, 85]
+echipaj = ["Maria", "Andrei", "Elena", "Mihai", "Ana", "Vlad", "Ioana", "George", "Diana", "Radu", "Cristina", "Alex", "Gabriela", "Stefan", "Laura", "Bogdan", "Andreea", "Paul", "Roxana", "Dan"]
+
+# scrie codul tau sub aceasta linie

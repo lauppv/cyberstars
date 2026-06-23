@@ -1,4 +1,4 @@
-Avem o listă de nume. Vrem să salutăm pe fiecare dintre ele. Am putea face
+Avem o listă de nume. Vrem să salutăm fiecare personaj. Am putea face
 
 ```py
 nume = ["Tommy", "Lance", "Cortez"]
@@ -7,12 +7,12 @@ print(f"Salut, {nume[1]}!")
 print(f"Salut, {nume[2]}!")
 ```
 
-Încă o dată, **repetăm** cod. Și încă o dată, acest lucru este **interzis** :). Dacă lista are 100 de nume? Nu vom scrie 100 de print-uri. Folosim o buclă **for**, exact cum am făcut înainte
+Încă o dată, **repetăm** cod. Dacă lista are 100 de nume? Nu vom scrie 100 de print-uri. Folosim o buclă **for**. Tehnic vorbind se poate folosi și o buclă **while**, dar un **for** este mai potrivit aici
 
 ```py
 nume = ["Tommy", "Lance", "Cortez"]
-for n in nume:
-    print(f"Salut, {n}!")
+for i in nume:
+    print(f"Salut, {i}!")
 ```
 
 Rezultat
@@ -23,9 +23,7 @@ Salut, Lance!
 Salut, Cortez!
 ```
 
-Ce înseamnă asta? Îi spunem lui **Python**: „pentru **fiecare nume** din lista **nume**, fă asta". La fiecare iterație, variabila **nume** ia valoarea următorului element din listă
-
-Cuvântul-cheie **in** este același pe care l-am văzut la **range()**. Aici, în loc să parcurgem numere, parcurgem elementele unei liste
+Ce înseamnă asta? Îi spunem lui **Python** așa: folosim **i** pentru a parcurge lista **nume**. Prima dată, **i** va fi `Tommy`, apoi **i** va fi `Lance` și tot așa. Comportamentul e similar cu cel din `for i in range()`, doar că de data asta parcurgem o listă
 
 ---
 
@@ -56,37 +54,46 @@ Un caz de folosire clasic: **adunarea** numerelor dintr-o listă
 ```py
 preturi = [10, 20, 30, 40]
 total = 0
-for pret in preturi:
-    total = total + pret
+for i in preturi:
+    total = total + i
 print(total)
 ```
 
-Rezultat **100**. Am început cu **total = 0**, apoi pentru fiecare preț l-am adăugat la **total**. Acesta este unul dintre cele mai des întâlnite tipare din programare și îl vei scrie de multe, multe ori. Citește codul linie cu linie și asigură-te că înțelegi **de ce** funcționează
+Rezultat **100**. Am început cu **total = 0**, apoi pentru fiecare preț **i** l-am adăugat la **total**. Acesta este unul dintre cele mai des întâlnite tipare din programare și îl vei scrie de multe, multe ori. Citește codul linie cu linie și asigură-te că înțelegi **de ce** funcționează
 
 ---
 
-## Misiune: Citiri ale Reactorului
+## Misiune: Echipajul navei
 
-Reactorul trimite o listă de citiri de temperatură (deja în dreapta). Parcurge-le și raportează starea de sănătate a reactorului.
+Ai în dreapta lista cu cei **20** de membri ai echipajului. Controlul de la sol a selectat trei oameni pentru o ieșire în spațiu (EVA): cei aflați la **indexurile 5, 10 și 12** din listă
 
-Afișează, în această ordine:
+Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. Maria`, `2. Andrei` și tot așa — folosește indexul cu **i + 1**). Pentru membrii de la indexurile **5**, **10** și **12** adaugă la final ` -> selectat pentru EVA`
 
-1. Fiecare citire pe linia ei
-2. `Total: ` apoi suma tuturor citirilor
-3. `Medie: ` apoi totalul împărțit la câte citiri sunt (folosește **len()**)
-4. `Avertismente: ` apoi câte citiri sunt **peste 100** (numără-le cu o buclă **for** și un **if**)
+Ai grijă: numărăm de la **0**, deci indexul **5** este al **6**-lea membru afișat
 
 **Rezultat**
 
 ```text
-90
-105
-100
-120
-85
-Total: 500
-Medie: 100.0
-Avertismente: 2
+1. Maria
+2. Andrei
+3. Elena
+4. Mihai
+5. Ana
+6. Vlad -> selectat pentru EVA
+7. Ioana
+8. George
+9. Diana
+10. Radu
+11. Cristina -> selectat pentru EVA
+12. Alex
+13. Gabriela -> selectat pentru EVA
+14. Stefan
+15. Laura
+16. Bogdan
+17. Andreea
+18. Paul
+19. Roxana
+20. Dan
 ```
 
-Două dintre citiri (105 și 120) sunt peste 100, deci numărul de avertismente este 2. Adaugă sau elimină citiri și rulează din nou — media și numărul de avertismente ar trebui să se modifice odată cu ele :)
+Schimbă indexurile selectate sau adaugă un membru nou și rulează din nou — vezi cum se mută eticheta de EVA
