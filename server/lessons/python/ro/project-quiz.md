@@ -100,7 +100,7 @@ Echipajul nou trebuie să treacă un quiz de certificare. Întrebările și răs
 3. Afișează `Procentaj: ` urmat de scor ca procentaj cu număr întreg (folosește `round(scor / total * 100)`), apoi un `%`.
 4. Afișează `PASS` dacă procentajul este `50` sau mai mare, altfel `FAIL`.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Scor: 3/4

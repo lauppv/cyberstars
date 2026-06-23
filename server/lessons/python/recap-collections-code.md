@@ -1,1 +1,1 @@
-items = ["milk", "bread", "BAD_eggs", "cheese", "BAD_yogurt", "butter", "jam"]
+items = ["milk", "bread", "con-eggs", "cheese", "con-yogurt", "butter", "jam"]

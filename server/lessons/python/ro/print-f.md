@@ -62,7 +62,7 @@ Folosind **f-string-uri**, afișează un raport de zbor pe trei linii:
 - combustibilul — de genul `Combustibil: 400 unități`
 - viteza — de genul `Viteză: 7.5 km/s`
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
 - `pilot`, `nume_nava` — text
 - `combustibil` — un număr întreg

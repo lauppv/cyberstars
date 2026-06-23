@@ -35,7 +35,7 @@ for rand in matrice:
     print()
 ```
 
-Rezultat
+Ieșire
 
 ```text
 1 2 3
@@ -124,7 +124,7 @@ Folosind **bucle imbricate**, afișează:
 2. `Max: ` urmat de cea mai **mare** citire de oriunde din grilă.
 3. `Peste 7: ` urmat de **câte** citiri sunt strict mai mari decât 7.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Rând 1: 22

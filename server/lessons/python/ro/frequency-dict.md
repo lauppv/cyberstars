@@ -90,7 +90,7 @@ for curs, contor in freq.items():
     print(f"{curs}: {contor} studenți")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 python: 5 studenți
@@ -108,7 +108,7 @@ Antena stației înregistrează fiecare semnal pe care îl primește după liter
 2. Afișează fiecare canal și numărătoarea lui ca `channel: contor`, **sortate alfabetic** (parcurge `sorted(freq)`).
 3. Găsește canalul **cel mai comun** și afișează `Cel mai comun: ` urmat de litera lui.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 A: 3

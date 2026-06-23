@@ -47,7 +47,7 @@ print(cautare_binara(numere, 13))
 print(cautare_binara(numere, 6))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 6
@@ -108,7 +108,7 @@ ids = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
 interogari = [23, 50, 8, 91, 100]
 ```
 
-**Output**
+**Ieșire**
 
 ```text
 23 -> index 5

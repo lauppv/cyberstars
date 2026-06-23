@@ -18,7 +18,7 @@ Jurnalul de misiune este un singur șir de cuvinte (deja în dreapta). **Împart
 - `Are duplicat: ` apoi `True` sau `False`
 - `Cuvinte unice: ` apoi lista sortată de cuvinte unice
 
-**Output**
+**Ieșire**
 
 ```text
 Total cuvinte: 7

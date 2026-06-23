@@ -28,7 +28,7 @@ print(f"Are valoare far: {gaseste_valoare(plat, 2)}")
 print(f"Are valoarea 3: {gaseste_valoare(plat, 3)}")
 ```
 
-**Output**
+**Ieșire**
 
 ```text
 Faruri: 1

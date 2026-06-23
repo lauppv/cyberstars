@@ -7,19 +7,19 @@ jucator = {
     "oras": "Vice City"
 }
 
-for cheie in jucator:
-    print(cheie)
+for i in jucator:
+    print(i)
 ```
 
 Afișează
 
 ```text
 nume
-health
+viata
 oras
 ```
 
-Stai, a afișat doar **cheile**? Da. În mod implicit, când parcurgem un dicționar, Python ne dă **cheile**. Dar putem obține ușor și **valoarea**
+Stai, a afișat doar **cheile**? Da. În mod implicit, când parcurgem un dicționar, Python ne dă **cheile**. Dar putem obține ușor și **valorile**
 
 ```py
 jucator = {
@@ -28,19 +28,19 @@ jucator = {
     "oras": "Vice City"
 }
 
-for cheie in jucator:
-    print(f"{cheie} -> {jucator[cheie]}")
+for i in jucator:
+    print(jucator[i])
 ```
 
 Afișează
 
 ```text
-nume -> Tommy Vercetti
-health -> 100
-oras -> Vice City
+Tommy Vercetti
+100
+Vice City
 ```
 
-Am folosit **player[key]** ca să luăm valoarea pentru fiecare cheie. Asta funcționează, dar Python are o metodă mai frumoasă
+Am folosit **jucator[i]** ca să luăm valoarea pentru fiecare cheie. Am luat **i** ca iterator, care ia pe rând fiecare cheie din dicționar. Asta funcționează, dar Python are o metodă mai frumoasă
 
 ---
 
@@ -54,34 +54,42 @@ jucator = {
 }
 
 for cheie, valoare in jucator.items():
-    print(f"{cheie} -> {valoare}")
+    print(f"Cheia {cheie} cu valoare {valoare}")
 ```
 
-Același rezultat, dar mai curat. Partea cu **key, value** se numește **despachetare (unpacking)**, Python pune cheia într-o variabilă și valoarea în cealaltă
+Vedem cum Python vede **jucator.items()**, știe că asta înseamnă pereche `cheie: valoare`, așa că atribuie automat **cheie** cu ce se află la stânga de **:** ("nume", "viata", "oras") și **valoare** cu ce se află la dreapta de **:** ("Tommy Vercetti", 100, "Vice City")
 
 ---
 
 Dacă avem nevoie doar de **chei**, putem folosi **.keys()**
 
 ```py
-jucator = {"nume": "Tommy", "viata": 100}
+jucator = {
+    "nume": "Tommy Vercetti",
+    "viata": 100,
+    "oras": "Vice City"
+}
 
-for k in jucator.keys():
-    print(k)
+for c in jucator.keys():
+    print(c)
 ```
 
 Afișează
 
 ```text
 nume
-health
+viata
+oras
 ```
 
 Dacă avem nevoie doar de **valori**, folosim **.values()**
 
 ```py
-jucator = {"nume": "Tommy", "viata": 100}
-
+jucator = {
+    "nume": "Tommy Vercetti",
+    "viata": 100,
+    "oras": "Vice City"
+}
 for v in jucator.values():
     print(v)
 ```
@@ -89,8 +97,9 @@ for v in jucator.values():
 Afișează
 
 ```text
-Tommy
+Tommy Vercetti
 100
+Vice City
 ```
 
 ---
@@ -116,14 +125,18 @@ Afișează
 {'b': 1, 'a': 3, 'n': 2}
 ```
 
-Acesta se numește **dicționar de frecvențe** sau **histogramă**. Verificăm: este litera deja în dicționar? Dacă da, creștem numărul. Dacă nu, îl pornim de la **1**. Acest tipar apare **peste tot** în programare, așa că studiază-l cu atenție :)
+Acesta se numește **dicționar de frecvențe** sau **histogramă**. Verificăm: este litera deja în dicționar? Dacă da, creștem numărul. Dacă nu, îl pornim de la **1**
 
 ---
 
 **len()** funcționează și pe dicționare
 
 ```py
-jucator = {"nume": "Tommy", "viata": 100, "oras": "Vice City"}
+jucator = {
+    "nume": "Tommy Vercetti",
+    "viata": 100,
+    "oras": "Vice City"
+}
 print(len(jucator))
 ```
 
@@ -133,23 +146,40 @@ Afișează **3** — dicționarul are 3 perechi cheie-valoare
 
 ## Misiune: Scorurile Echipajului
 
-Ai un dicționar cu membrii echipajului și scorurile lor de misiune (deja în dreapta). Parcurge-l și construiește un raport.
+Ai un dicționar cu membrii echipajului și scorurile lor de la ultima misiune (deja în dreapta). Parcurge-l și construiește un raport.
 
 Afișează, în această ordine:
 
-1. Fiecare membru ca `nume: scor` (parcurge cu **.items()**)
-2. `Total: ` apoi suma tuturor scorurilor
-3. `Medie: ` apoi totalul împărțit la câți membri sunt
-4. `Top: ` apoi **numele** membrului cu cel mai mare scor
+1. `Numele` fiecărui membru (parcurge cu **.keys()**)
+2. `Scorul` fiecărui membru (parcurge cu **.values()**)
+3. `Total: ` apoi suma tuturor scorurilor
+4. `Medie: ` apoi totalul împărțit la numărul de membri (folosește **len()**)
+5. `Top: ` apoi **numele** membrului cu cel mai mare scor
 
-**Output**
+**Ieșire**
 
 ```text
-Tommy: 95
-Lance: 80
-Cortez: 70
-Phil: 90
-Total: 335
-Medie: 83.75
-Top: Tommy
+Tommy
+Lance
+Cortez
+Phil
+Ken
+Sonny
+Diaz
+Avery
+Umberto
+Mercedes
+88
+95
+70
+90
+65
+78
+84
+72
+60
+83
+Total: 785
+Medie: 78.5
+Top: Lance
 ```

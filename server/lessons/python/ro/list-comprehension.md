@@ -91,7 +91,7 @@ Ai o listă de citiri de senzori (deja în dreapta). Folosind **list comprehensi
 3. Creează `passing` — doar citirile care sunt **50 sau mai mult**
 4. Afișează toate cele trei liste, fiecare pe linia ei
 
-**Rezultat**
+**Ieșire**
 
 ```text
 [95, 88, 92]

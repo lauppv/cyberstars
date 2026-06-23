@@ -88,7 +88,7 @@ Ai o listă de citiri ale reactorului (deja în dreapta). Folosind **tiparul con
 - `Medii: ` apoi câte sunt **de la 50 la 99** (inclusiv)
 - `Mari: ` apoi câte sunt **100 sau peste**
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Mici: 2

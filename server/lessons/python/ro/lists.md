@@ -71,7 +71,7 @@ nume.append("Phil Cassidy")
 print(nume)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 ['Tommy Vercetti', 'Lance Vance', 'Cortez', 'Phil Cassidy']
@@ -89,7 +89,7 @@ nume[1] = "Lance Vance Dance"
 print(nume)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 ['Tommy Vercetti', 'Lance Vance Dance', 'Cortez']
@@ -121,7 +121,7 @@ Stația își ține evidența mărfii într-o listă. Creează o listă goală n
 6. O scurgere golește apa — înlocuiește articolul de la indexul 1 cu `gol`
 7. Afișează lista
 
-**Rezultat**
+**Ieșire**
 
 ```text
 ['oxigen', 'apa', 'mancare', 'combustibil']

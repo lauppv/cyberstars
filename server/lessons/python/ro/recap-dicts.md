@@ -22,7 +22,7 @@ Apelează funcția, apoi afișează raportul:
 2. `Cel mai bun: ` apoi numele celui mai bun
 3. `Promovați:` pe linia lui, apoi fiecare nume care a trecut pe liniile următoare (parcurge lista)
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Medie: 67.6

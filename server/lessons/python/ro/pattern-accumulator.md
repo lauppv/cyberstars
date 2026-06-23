@@ -85,7 +85,7 @@ Ai o listă de intensități de semnal `puncte_tari` și un cuvânt `cod` (ambel
 2. `Puternice: ` apoi o **listă** doar cu intensitățile **peste 50** (acumulează într-o listă goală `[]`)
 3. `Inversat: ` apoi cuvântul code inversat **caracter cu caracter** (acumulează într-un șir gol `""`, punând fiecare caracter nou în **față**)
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Sumă: 255

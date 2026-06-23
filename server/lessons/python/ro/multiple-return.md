@@ -11,7 +11,7 @@ print(cel_mai_mic)
 print(cel_mai_mare)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 1
@@ -29,7 +29,7 @@ print(rezultat)
 print(type(rezultat))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 (1, 9)
@@ -55,7 +55,7 @@ print(f"Medie: {medie}")
 print(f"Cel mai bun: {varf}")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Total: 333
@@ -81,7 +81,7 @@ print(f"Prenume: {primul}")
 print(f"Nume: {ultimul}")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Prenume: Tommy
@@ -100,11 +100,11 @@ Scrie o funcție `parse(reading)` care primește un șir de trei numere separate
 
 În programul principal, **citește** o linie, apelează `parse`, **despachetează** cele trei valori și afișează-le.
 
-**Input** (tastat de utilizator când rulează programul):
+**Intrare** (tastat de utilizator când rulează programul):
 
 - trei numere pe o singură linie, separate prin spații
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Total: 147

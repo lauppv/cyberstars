@@ -15,7 +15,7 @@ Construiește o mică trusă de unelte. Fiecare funcție ar trebui să lucreze d
 - afișează `Numere: ` apoi acea listă
 - apelează `summarize(numere)`, **despachetează** cele trei valori și afișează `Total:`, `Cel mai mare:` și `Cel mai mic:`
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Numere: [10, 0, 25, 7, 0]

@@ -77,7 +77,7 @@ for i in range(len(numere)):
             print(f"{numere[i]} + {numere[j]} = {tinta}")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 1 + 7 = 8
@@ -102,7 +102,7 @@ Jurnalul stației este un singur șir de coduri de eveniment separate prin spaț
 - fiecare cod ca `cod: contor` (parcurge dicționarul)
 - `Cel mai frecvent: ` apoi codul cel mai frecvent
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Coduri: 6

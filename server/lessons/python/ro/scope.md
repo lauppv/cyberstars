@@ -96,7 +96,7 @@ f()
 g()
 ```
 
-Rezultat
+Ieșire
 
 ```text
 5
@@ -118,7 +118,7 @@ Apoi, în programul principal:
 3. Apelează `amplifica(scut)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi scut — observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
 4. Acum fă `scut = amplifica(scut)` și afișează `După: ` apoi scut
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Înainte: 100

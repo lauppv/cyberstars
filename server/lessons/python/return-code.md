@@ -1,6 +1,5 @@
-def highest(a, b, c):
-    pass
-
-a = int(input())
-b = int(input())
-c = int(input())
+galaxy1 = ["rigel", "vega", "sirius", "antares", "altair", "deneb", "spica", "betelgeuse", "mizar", "pollux"]
+galaxy2 = ["mira", "capella", "arcturus", "procyon", "castor", "bellatrix", "alnitak", "saiph", "tania", "wezen"]
+galaxy3 = ["fomalhaut", "regulus", "atria", "merak", "phecda", "dubhe", "alcor", "naos", "kaus", "sadr"]
+galaxy4 = ["aldebaran", "hamal", "menkar", "diphda", "achird", "gienah", "tarazed", "rasalhague", "sheliak", "nashira"]
+galaxy5 = ["alphard", "alkaid", "thuban", "rastaban", "eltanin", "vindemiatrix", "zosma", "chara", "muphrid", "seginus"]

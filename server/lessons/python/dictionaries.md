@@ -49,7 +49,7 @@ phone_book = {
 print(phone_book["Sonny"])
 ```
 
-**Run** it. You'll see a **KeyError**. Python is telling us: "I don't know any Sonny". Always read the error :)
+**Run** it. You'll see a **KeyError**. Python is telling us: "I don't know any Sonny"
 
 ---
 
@@ -133,18 +133,15 @@ print(player["weapons"])
 
 ## Mission: Crew Database
 
-The station keeps each crew member in a dictionary. You start with this one (already on the right):
-
-```python
-crew = {"name": "Tommy", "role": "Pilot", "age": 34}
-```
+This time **you** build the dictionary from scratch — there's nothing on the right.
 
 Do the following, in order:
 
-1. **Add** a new key `station` with the value `Laniakea`
-2. It's Tommy's birthday — **update** `age` to `35`
-3. Print the values for `name`, `role`, `age`, and `station`, each on its own line
-4. We don't track rank yet — if the key `rank` is **not in** the dictionary, print `Rank: unknown`
+1. **Create** a dictionary `crew` with three keys: `name` with the value `Tommy`, `role` with the value `Pilot`, and `age` with the value `34`
+2. **Add** a new key `station` with the value `Laniakea`
+3. It's Tommy's birthday — **update** `age` to `35` (using the + operator)
+4. Print the values for `name`, `role`, `age`, and `station`, each on its own line
+5. We don't track rank yet — if the key `rank` is **not in** the dictionary, print `Rank: unknown`
 
 **Output**
 

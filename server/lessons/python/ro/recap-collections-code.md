@@ -1,1 +1,1 @@
-elemente = ["milk", "bread", "BAD_eggs", "cheese", "BAD_yogurt", "butter", "jam"]
+elemente = ["lapte", "paine", "con-oua", "branza", "con-iaurt", "unt", "gem"]

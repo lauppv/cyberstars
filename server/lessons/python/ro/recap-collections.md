@@ -4,23 +4,23 @@ Combină **metodele pe șiruri**, **listele**, **parcurgerea listelor**, și **b
 
 ## Misiune: Aprovizionarea
 
-Stația primește o listă de lăzi cu provizii (deja în dreapta). Unele lăzi sunt contaminate — numele lor începe cu `BAD_`. Sortează proviziile bune într-o listă curată după aceste reguli:
+Stația primește o listă de lăzi cu provizii (deja în dreapta). Unele lăzi sunt contaminate — numele lor începe cu `con-`. Sortează proviziile bune într-o listă curată după aceste reguli:
 
 1. Parcurge elementele.
-2. **Sari peste** orice ladă ale cărei **primele patru caractere** sunt `BAD_` (taie cu `item[0:4]` și folosește **continue**)
-3. Pentru fiecare ladă bună, adaug-o cu **MAJUSCULE** într-o listă nouă numită `clean`
-4. În momentul în care adaugi `butter`, depozitul e plin — **oprește-te** imediat după ce ai adăugat-o (folosește **break**)
-5. Afișează fiecare element din `clean`, câte unul pe linie
-6. Afișează `Total: ` apoi câte elemente au ajuns în `clean`
+2. **Sari peste** orice ladă ale cărei **primele 4 caractere** sunt `con-`
+3. Pentru fiecare ladă bună, adaug-o într-o listă nouă numită `curate`
+4. În momentul în care adaugi `unt`, depozitul e plin — **oprește-te** imediat după ce ai adăugat-o
+5. Afișează fiecare element din `curate`, câte unul pe linie
+6. Afișează `Total: ` apoi câte elemente au ajuns în `curate`
 
-**Rezultat**
+**Ieșire**
 
 ```text
-MILK
-BREAD
-CHEESE
-BUTTER
+lapte
+paine
+branza
+unt
 Total: 4
 ```
 
-Cele două lăzi `BAD_` sunt sărite, iar bucla se oprește imediat ce `butter` este adăugată — așa că `jam` nu este atins niciodată.
+Cele două lăzi `con-` sunt sărite, iar bucla se oprește imediat ce `unt` este adăugată — așa că `gem` nu este atins niciodată.

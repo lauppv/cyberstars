@@ -96,7 +96,7 @@ finally:
     print("Asta rulează mereu")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Nicio eroare, super!
@@ -119,7 +119,7 @@ La final, afișează:
 - `Total: ` apoi suma citirilor valide
 - `Corupte: ` apoi câte citiri au eșuat
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Total: 162

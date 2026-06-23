@@ -43,7 +43,7 @@ print(jucator[1])
 print(jucator[2])
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Tommy Vercetti
@@ -73,7 +73,7 @@ print(viata)
 print(oras)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Tommy Vercetti
@@ -89,7 +89,7 @@ print(a)
 print(b)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 10
@@ -108,7 +108,7 @@ for erou in eroi:
     print(erou)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Shrek
@@ -126,7 +126,7 @@ Calculatorul de navigație al stației stochează fiecare sistem stelar ca un **
 2. Afișează fiecare sistem ca `nume: distance al, planets planete` — de exemplu `Sol: 0 al, 8 planete`
 3. După buclă, afișează `Total planete: ` apoi suma tuturor planetelor
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Sol: 0 al, 8 planete

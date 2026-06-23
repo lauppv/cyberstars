@@ -10,7 +10,7 @@ print(a * b)   # înmulțire
 print(a / b)   # împărțire
 ```
 
-Rezultat
+Ieșire
 
 ```text
 22
