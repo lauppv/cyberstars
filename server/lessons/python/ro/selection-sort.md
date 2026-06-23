@@ -76,7 +76,7 @@ print(sortare_selectie([64, 25, 12, 22, 11]))
 print(sortare_selectie([9, 7, 5, 3, 1]))
 ```
 
-**Rezultat**
+**Ieșire**
 
 ```text
 [11, 12, 22, 25, 64]

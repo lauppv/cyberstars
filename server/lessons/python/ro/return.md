@@ -41,6 +41,44 @@ Output **50**. **add(2, 3)** ne-a dat **5**, apoi am înmulțit cu **10**. Înce
 
 ---
 
+Adevăratul rost al unei funcții e că scrii logica **o singură dată** și apoi o folosești de **câte ori vrei**, cu argumente diferite. Nu mai repeți codul din corp
+
+Imaginează-ți că avem trei senzori care ne dau temperatura în **Celsius**, dar noi o vrem în **Fahrenheit**. Fără funcție, am repeta aceeași formulă de fiecare dată
+
+```py
+senzor1 = 20 * 9 / 5 + 32
+senzor2 = 37 * 9 / 5 + 32
+senzor3 = 100 * 9 / 5 + 32
+print(senzor1)
+print(senzor2)
+print(senzor3)
+```
+
+Aceeași formulă, scrisă de **trei ori**. Dacă greșim ceva la ea, trebuie s-o corectăm în toate locurile. Și dacă am avea **o sută** de senzori?
+
+Cu o funcție, scriem formula **o singură dată** în corpul ei și apoi o **apelăm** cu argumente diferite
+
+```py
+def in_fahrenheit(c):
+    return c * 9 / 5 + 32
+
+print(in_fahrenheit(20))
+print(in_fahrenheit(37))
+print(in_fahrenheit(100))
+```
+
+Ieșire
+
+```text
+68.0
+98.6
+212.0
+```
+
+Corpul funcției — formula — e scris **o singură dată**. Îl refolosim de trei ori, schimbând doar **argumentul**. Asta e, până la urmă, ce ne dă o funcție: scrii codul o dată și nu-l mai repeți
+
+---
+
 O funcție poate returna **orice**, nu doar numere. Șiruri de caractere, booleeni, liste, orice
 
 ```py
@@ -116,7 +154,7 @@ rezultat = f()
 print(rezultat)
 ```
 
-Output
+Ieșire
 
 ```text
 salut
@@ -127,52 +165,28 @@ None
 
 ---
 
-## Misiune: Siguranța Reactorului
+## Misiune: Atlasul Galaxiilor
 
-Stația are trei reactoare și ne pasă de cel mai fierbinte. Scrie o funcție `highest(a, b, c)` care **returnează** cea mai mare dintre trei citiri — folosește **if/elif/else** și **returnează** valoarea, **nu** afișa în interiorul funcției.
+În editor ai deja **cinci galaxii**, fiecare o **listă** cu zece nume de stele.
 
-Apoi citește trei citiri, apelează `highest` ca să o găsești pe cea mai mare și raportează despre siguranță:
+Scrie **o singură** funcție care primește o galaxie (lista) și **returnează** numele stelei cu cele mai multe litere din acea galaxie.
 
-- dacă cea mai mare citire este **peste 100**, afișează `Reactor: PERICOL`
-- altfel afișează `Reactor: stabil`
-- pe a doua linie, afișează `Citire maximă: ` apoi valoarea cea mai mare
+Apoi **apeleaz-o de cinci ori**, o dată pentru fiecare galaxie, și afișează ce returnează. Scrii funcția o dată, dar o folosești pentru toate cele cinci liste — fără să repeți codul din corp.
 
-**Input** (tastat de utilizator când rulează programul):
+**Ieșire**
 
-- trei citiri ale reactoarelor, una pe linie
-
-**Output**
-
-Două linii: mesajul de siguranță, apoi cea mai mare citire.
+Cinci linii, câte un nume pe linie: cea mai lungă stea din fiecare galaxie, în ordine.
 
 **Exemplu**
 
-Dacă utilizatorul tastează
+Dacă o galaxie ar fi `["rigel", "vega", "betelgeuse", "spica"]`, funcția ar returna `betelgeuse`.
+
+Pentru galaxiile din editor, programul ar trebui să afișeze
 
 ```text
-88
-132
-95
-```
-
-programul ar trebui să afișeze
-
-```text
-Reactor: PERICOL
-Citire maximă: 132
-```
-
-Dacă utilizatorul tastează
-
-```text
-40
-90
-75
-```
-
-programul ar trebui să afișeze
-
-```text
-Reactor: stabil
-Citire maximă: 90
+betelgeuse
+bellatrix
+fomalhaut
+rasalhague
+vindemiatrix
 ```

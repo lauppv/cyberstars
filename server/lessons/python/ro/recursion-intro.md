@@ -19,7 +19,7 @@ def numaratoare_inversa(n):
 numaratoare_inversa(5)
 ```
 
-Output
+Ieșire
 
 ```text
 5
@@ -50,7 +50,7 @@ print(factorial(5))
 print(factorial(3))
 ```
 
-Output
+Ieșire
 
 ```text
 120
@@ -98,7 +98,7 @@ Amplificatorul de semnal al stației își dublează puterea la fiecare etapă. 
 1. Scrie o funcție recursivă **power(base, exp)** care întoarce `base` ridicat la puterea `exp`. Regula: `base^exp = base * base^(exp - 1)`. Cazul de bază: `base^0 = 1` (fără bucle, fără `**`).
 2. Cu `baza = 2`, folosește o **buclă for** peste `range(5)` ca să afișezi tabelul amplificatorului: pentru fiecare `exp` de la 0 la 4, afișează linia `2^exp = rezultat` (folosind numerele reale).
 
-**Output**
+**Ieșire**
 
 ```text
 2^0 = 1

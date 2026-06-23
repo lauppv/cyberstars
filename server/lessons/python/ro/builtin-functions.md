@@ -173,7 +173,7 @@ Ai două liste: `echipaj` (nume) și `scoruri` (deja în dreapta). Folosind **fu
 5. Afișează `Toți au trecut: ` apoi dacă **toate** scorurile sunt 50 sau mai mult (`all(...)`)
 6. Afișează `Vreunul perfect: ` apoi dacă **vreun** scor este egal cu 100 (`any(...)`)
 
-**Output**
+**Ieșire**
 
 ```text
 Tommy: 88

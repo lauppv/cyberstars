@@ -62,11 +62,11 @@ Scrie o funcție **gaseste_echipaj(echipaj, tinta)** care folosește **căutarea
 
 Apoi **citește** un nume și raportează rezultatul.
 
-**Input** (tastat de utilizator când rulează programul):
+**Intrare** (tastat de utilizator când rulează programul):
 
 - numele membrului echipajului de găsit
 
-**Output** — o linie. Dacă numele este la bord, afișează numele, apoi `este la stația`, apoi numărul stației. Dacă nu, afișează numele urmat de `nu este la bord`. Vezi exemplul de mai jos pentru formularea exactă.
+**Ieșire** — o linie. Dacă numele este la bord, afișează numele, apoi `este la stația`, apoi numărul stației. Dacă nu, afișează numele urmat de `nu este la bord`. Vezi exemplul de mai jos pentru formularea exactă.
 
 **Exemplu**
 

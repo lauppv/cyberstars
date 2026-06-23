@@ -1,6 +1,5 @@
-def cel_mai_mare(a, b, c):
-    pass
-
-a = int(input())
-b = int(input())
-c = int(input())
+galaxie1 = ["rigel", "vega", "sirius", "antares", "altair", "deneb", "spica", "betelgeuse", "mizar", "pollux"]
+galaxie2 = ["mira", "capella", "arcturus", "procyon", "castor", "bellatrix", "alnitak", "saiph", "tania", "wezen"]
+galaxie3 = ["fomalhaut", "regulus", "atria", "merak", "phecda", "dubhe", "alcor", "naos", "kaus", "sadr"]
+galaxie4 = ["aldebaran", "hamal", "menkar", "diphda", "achird", "gienah", "tarazed", "rasalhague", "sheliak", "nashira"]
+galaxie5 = ["alphard", "alkaid", "thuban", "rastaban", "eltanin", "vindemiatrix", "zosma", "chara", "muphrid", "seginus"]

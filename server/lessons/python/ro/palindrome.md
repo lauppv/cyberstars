@@ -32,7 +32,7 @@ print(este_palindrom("hello"))
 print(este_palindrom("madam"))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 True
@@ -61,7 +61,7 @@ print(este_palindrom_propozitie("racecar"))
 print(este_palindrom_propozitie("hello world"))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 True
@@ -81,7 +81,7 @@ Un cod de semnal este de încredere doar dacă se citește la fel de la stânga 
 2. Pentru fiecare cod, afișează codul, apoi `: `, apoi rezultatul.
 3. Numără câte coduri sunt palindroame și afișează `Semnale valide: ` urmat de acel număr.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 racecar: True

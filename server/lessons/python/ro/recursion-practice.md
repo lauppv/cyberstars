@@ -54,7 +54,7 @@ print(numara_caractere("banana", "a"))
 print(numara_caractere("mississippi", "s"))
 ```
 
-Output
+Ieșire
 
 ```text
 3
@@ -94,7 +94,7 @@ Fiecare transmisiune poartă un cod numeric, iar stația îl verifică cu o **su
 2. Pentru fiecare cod din listă, afișează codul, apoi `: `, apoi suma lui de control.
 3. Reține și afișează **cea mai mare** sumă de control sub forma `Cea mai mare sumă de control: ` urmat de valoare.
 
-**Output**
+**Ieșire**
 
 ```text
 1234: 10

@@ -17,7 +17,7 @@ Fă următoarele, în ordine:
 2. Folosește o **list comprehension** ca să aduni fiecare scor din **echipa A** care este **peste 80**. Afișează `Scoruri mari echipa A: ` apoi acea listă.
 3. Afișează `Potriviri:` și apoi folosește **bucle imbricate** (echipa A în exterior, echipa B în interior) ca să afișezi fiecare pereche care are **același scor**, sub forma `nume1 și nume2 au amândoi scorul X`.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 În ambele:

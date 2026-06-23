@@ -84,7 +84,7 @@ andocheaza("Pioneer", prioritate="urgent")
 
 Observă că ultimul apel folosește un **argument cu nume** (`prioritate="urgenta"`) ca să sară peste `bay` și să-i păstreze valoarea implicită în timp ce setează totuși prioritatea.
 
-**Output**
+**Ieșire**
 
 ```text
 Voyager andocat la A1 (normal)

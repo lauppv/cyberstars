@@ -41,6 +41,44 @@ Output **50**. **add(2, 3)** gave us **5**, then we multiplied by **10**. Try do
 
 ---
 
+The real point of a function is that you write the logic **once** and then use it **as many times as you want**, with different arguments. You stop repeating the code in the body
+
+Imagine we have three sensors giving us the temperature in **Celsius**, but we want it in **Fahrenheit**. Without a function, we’d repeat the same formula every time
+
+```py
+sensor1 = 20 * 9 / 5 + 32
+sensor2 = 37 * 9 / 5 + 32
+sensor3 = 100 * 9 / 5 + 32
+print(sensor1)
+print(sensor2)
+print(sensor3)
+```
+
+The same formula, written **three times**. If we get something wrong in it, we have to fix it in every place. And what if we had **a hundred** sensors?
+
+With a function, we write the formula **once** in its body and then **call** it with different arguments
+
+```py
+def in_fahrenheit(c):
+    return c * 9 / 5 + 32
+
+print(in_fahrenheit(20))
+print(in_fahrenheit(37))
+print(in_fahrenheit(100))
+```
+
+Output
+
+```text
+68.0
+98.6
+212.0
+```
+
+The function’s body — the formula — is written **once**. We reuse it three times, changing only the **argument**. That’s what a function gives us, in the end: you write the code once and never repeat it
+
+---
+
 A function can return **anything**, not just numbers. Strings, booleans, lists, anything
 
 ```py
@@ -127,52 +165,28 @@ None
 
 ---
 
-## Mission: Reactor Safety
+## Mission: Atlas of Galaxies
 
-The station has three reactors and we care about the hottest one. Write a function `highest(a, b, c)` that **returns** the largest of three readings — use **if/elif/else** and **return** the value, do **not** print inside the function.
+In the editor you already have **five galaxies**, each a **list** of ten star names.
 
-Then read three readings, call `highest` to find the top one, and report on safety:
+Write **one** function that takes a galaxy (the list) and **returns** the name of the star with the most letters in that galaxy.
 
-- if the top reading is **above 100**, print `Reactor: DANGER`
-- otherwise print `Reactor: stable`
-- on a second line, print `Top reading: ` then the top value
-
-**Input** (typed by the user when the program runs):
-
-- three reactor readings, one per line
+Then **call it five times**, once for each galaxy, and print what it returns. You write the function once, but use it for all five lists — without repeating the code in the body.
 
 **Output**
 
-Two lines: the safety message, then the top reading.
+Five lines, one name per line: the longest star in each galaxy, in order.
 
 **Example**
 
-If the user types
+If a galaxy were `["rigel", "vega", "betelgeuse", "spica"]`, the function would return `betelgeuse`.
+
+For the galaxies in the editor, the program should print
 
 ```text
-88
-132
-95
-```
-
-the program should print
-
-```text
-Reactor: DANGER
-Top reading: 132
-```
-
-If the user types
-
-```text
-40
-90
-75
-```
-
-the program should print
-
-```text
-Reactor: stable
-Top reading: 90
+betelgeuse
+bellatrix
+fomalhaut
+rasalhague
+vindemiatrix
 ```

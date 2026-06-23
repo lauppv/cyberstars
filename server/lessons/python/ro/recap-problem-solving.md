@@ -23,7 +23,7 @@ print(inverseaza_cuvinte("navigation system is online"))
 print(curata_text("S3ct0r 7 cl34r!"))
 ```
 
-**Output**
+**Ieșire**
 
 ```text
 True

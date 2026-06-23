@@ -7,7 +7,7 @@ oaspeti = {"Tommy", "Lance", "Cortez", "Tommy"}
 print(oaspeti)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 {'Lance', 'Cortez', 'Tommy'}
@@ -98,7 +98,7 @@ Stația a recepționat o listă de coduri de semnal, iar multe se repetă (deja 
 3. Afișează `Unice: ` apoi câte coduri unice există
 4. Verifică dacă a fost recepționat codul `D4` — afișează `D4 detectat` dacă **se află în** mulțime, altfel `D4 lipsește`
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Total: 8

@@ -62,7 +62,7 @@ Stația are trei rezervoare de oxigen, cu cantitățile lor (în litri) stocate 
 
 Adună cele trei rezervoare laolaltă într-un `total` și afișează-l. Apoi o scurgere golește **50** de litri — scade 50 din `total` și afișează noua valoare.
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
 - `rezervor_a`, `rezervor_b`, `rezervor_c` — litri de oxigen din fiecare rezervor
 

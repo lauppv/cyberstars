@@ -9,7 +9,7 @@ for i in range(0, 11):
     print(f"Mă numesc {nume} și am vârsta {varsta}")
 ```
 
-Rezultat:
+Ieșire:
 
 ```text
 Mă numesc Cortez și am vârsta 60
@@ -35,7 +35,7 @@ for i in range(0, 11):
     print(f"Mă numesc {nume} și am vârsta {varsta}")
 ```
 
-Rezultat:
+Ieșire:
 
 ```text
 Mă numesc Tommy Vercetti și am vârsta 42
@@ -115,7 +115,7 @@ f(nume, este_online) # afișează admin este offline
 
 Stația are nevoie de un calculator de bord. Scrie o funcție care primește două numere și un operator (`+`, `-`, `*`, `/`) și afișează operația cu rezultatul ei. Dacă operatorul nu este unul dintre cele patru, afișează `Operator invalid`.
 
-**Exemple de input și output**
+**Exemple de intrare și ieșire**
 
 - `calculator(14, 12, "+")` afișează `14 + 12 = 26`
 - `calculator(20, 8, "-")` afișează `20 - 8 = 12`

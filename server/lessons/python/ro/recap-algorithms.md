@@ -13,7 +13,7 @@ Pune cap la cap tot din acest capitol:
 3. Construiește o listă de tupluri **(wins, nume)**, apoi sortează-o de la cele mai multe victorii la cele mai puține folosind **selection sort** (găsește maximul la fiecare trecere, mută-l în față).
 4. Afișează `=== CLASAMENT ===`, apoi fiecare membru al echipajului pe linia lui ca `rank. nume - wins victorii`.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Victorii: {'Rex': 1, 'Tommy': 4, 'Boris': 3, 'Cara': 2}

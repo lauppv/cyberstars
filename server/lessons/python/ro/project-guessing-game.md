@@ -107,7 +107,7 @@ Reactorul este blocat în spatele unui cod numeric secret. Un instrument de diag
 2. Parcurge ghicirile, numărând încercările. Pentru fiecare ghicire, afișează ghicirea, apoi `: `, apoi rezultatul.
 3. **Oprește-te** imediat ce o ghicire e corectă, apoi afișează `Spart în N încercări!` (cu numărul real de încercări).
 
-**Rezultat**
+**Ieșire**
 
 ```text
 50: prea mare

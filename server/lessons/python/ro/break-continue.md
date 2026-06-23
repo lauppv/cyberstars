@@ -14,7 +14,7 @@ for i in range(0, 100):
     print(i)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 0
@@ -36,7 +36,7 @@ for sector in range(1, 100):
     print(f"Scanez sectorul {sector}...")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Scanez sectorul 1...
@@ -62,7 +62,7 @@ for i in range(0, 10):
     print(i)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 0
@@ -87,7 +87,7 @@ for i in range(0, 11):
     print(i)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 0

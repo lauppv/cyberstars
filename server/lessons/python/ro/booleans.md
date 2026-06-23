@@ -122,7 +122,7 @@ while ruleaza:
 print("Gata")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 0

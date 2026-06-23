@@ -113,11 +113,11 @@ Un cod de acces al stației este **valid** doar dacă îndeplinește **toate cel
 
 **Citește** un cod, apoi folosește **steaguri** (`has_upper` și `has_digit`, fiecare pornind de la `False` și schimbat la `True` când găsești unul) plus o verificare a lungimii. Afișează fiecare rezultat, apoi verdictul:
 
-**Input** (tastat de utilizator când rulează programul):
+**Intrare** (tastat de utilizator când rulează programul):
 
 - codul de acces
 
-**Rezultat** — patru linii: cele trei verificări, apoi `Cod de acces valid` sau `Cod de acces invalid`.
+**Ieșire** — patru linii: cele trei verificări, apoi `Cod de acces valid` sau `Cod de acces invalid`.
 
 **Exemplu**
 

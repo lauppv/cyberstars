@@ -65,11 +65,11 @@ Tocmai a sosit o transmisiune bruiată. Echipajul bănuiește că a fost trimis�
 2. **Citește** transmisiunea, apoi afișează `Inversat: ` urmat de textul inversat caracter cu caracter.
 3. Inversează de asemenea **ordinea cuvintelor** (desparte în cuvinte, inversează lista, lipește înapoi cu spații) și afișează `Ordine cuvinte: ` urmat de rezultat.
 
-**Input** (tastat de utilizator când programul rulează):
+**Intrare** (tastat de utilizator când programul rulează):
 
 - transmisiunea, o linie de cuvinte separate prin spații
 
-**Rezultat** — două linii: textul inversat caracter cu caracter, apoi textul cu ordinea cuvintelor inversată.
+**Ieșire** — două linii: textul inversat caracter cu caracter, apoi textul cu ordinea cuvintelor inversată.
 
 **Exemplu**
 

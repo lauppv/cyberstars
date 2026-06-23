@@ -49,7 +49,7 @@ agenda_telefonica = {
 print(agenda_telefonica["Sonny"])
 ```
 
-**Rulează**. Vei vedea o **KeyError**. Python ne spune: „nu cunosc niciun Sonny". Citește mereu eroarea :)
+**Rulează**. Vei vedea o **KeyError**. Python ne spune: „nu cunosc niciun Sonny"
 
 ---
 
@@ -133,20 +133,17 @@ print(jucator["arme"])
 
 ## Misiune: Baza de Date a Echipajului
 
-Stația păstrează fiecare membru al echipajului într-un dicționar. Pornești cu acesta (deja în dreapta):
-
-```python
-echipaj = {"nume": "Tommy", "role": "Pilot", "varsta": 34}
-```
+De data asta **tu** construiești dicționarul de la zero — în dreapta nu e nimic scris.
 
 Fă următoarele, în ordine:
 
-1. **Adaugă** o cheie nouă `station` cu valoarea `Laniakea`
-2. E ziua de naștere a lui Tommy — **actualizează** `varsta` la `35`
-3. Afișează valorile pentru `nume`, `role`, `varsta` și `station`, fiecare pe propria linie
-4. Încă nu urmărim rangul — dacă cheia `rank` **nu este în** dicționar, afișează `Rang: necunoscut`
+1. **Creează** un dicționar `echipaj` cu trei chei: `nume` cu valoarea `Tommy`, `rol` cu valoarea `Pilot` și `varsta` cu valoarea `34`
+2. **Adaugă** o cheie nouă `statie` cu valoarea `Laniakea`
+3. E ziua de naștere a lui Tommy — **actualizează** `varsta` la `35` (folosind operatorul +)
+4. Afișează valorile pentru `nume`, `rol`, `varsta` și `statie`, fiecare pe propria linie
+5. Încă nu urmărim rangul — dacă cheia `rang` **nu este în** dicționar, afișează `Rang: necunoscut`
 
-**Output**
+**Ieșire**
 
 ```text
 Tommy

@@ -19,7 +19,7 @@ print(este_palindrom("racecar"))
 print(este_palindrom("hello"))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 True
@@ -97,7 +97,7 @@ Apoi afișează `Perechi: ` urmat de lista de perechi și `Total perechi: ` urma
 combustibili = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Perechi: [(1, 9), (2, 8), (3, 7), (4, 6)]

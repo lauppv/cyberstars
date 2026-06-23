@@ -67,7 +67,7 @@ Trei membri ai echipajului sunt repartizați la stație. Numele lor sunt stocate
 
 Afișează cele trei nume, **fiecare pe linia lui**, în această ordine: comandant, pilot, inginer. Apoi pilotul este schimbat la mijlocul misiunii — adaugă o linie care schimbă `pilot` în `"Jess"` și afișează `pilot` încă o dată.
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
 
 - `comandant`, `pilot`, `inginer` — numele membrilor echipajului
 

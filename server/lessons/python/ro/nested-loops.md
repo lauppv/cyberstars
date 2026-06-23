@@ -40,7 +40,7 @@ for echipa in echipe:
         print(f"{jucator} joacă pentru {echipa}")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Tommy joacă pentru Sharks
@@ -65,7 +65,7 @@ for i in range(1, 4):
         print(f"{i} {j}")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 1 1
@@ -83,7 +83,7 @@ Construiește un turn de steluțe pentru antena stației. **Citește** un număr
 
 Bucla exterioară controlează **rândul**, iar bucla interioară afișează numărul corect de **steluțe** pentru acel rând. Folosește `print("*", end="")` ca să afișezi o steluță **fără** să treci la o linie nouă, apoi `print()` singur după bucla interioară ca să treci la linia următoare.
 
-**Input** (tastat de utilizator când rulează programul):
+**Intrare** (tastat de utilizator când rulează programul):
 
 - `rows` — câte rânduri are turnul
 

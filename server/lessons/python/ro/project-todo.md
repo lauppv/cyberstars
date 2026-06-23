@@ -78,7 +78,7 @@ elimina_sarcina(todos, 2)
 afiseaza_sarcini(todos)
 ```
 
-Rezultat
+Ieșire
 
 ```text
 0. [neterminat] Termină curriculumul de Python
@@ -125,7 +125,7 @@ Scrie trei funcții:
 
 Codul de start din dreapta construiește deja tabla (adaugă trei sarcini, finalizează două dintre ele). După aceea, **afișează** tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[în așteptare]`, apoi numele sarcinii. La final afișează `Finalizat: ` urmat de numărul de sarcini terminate, un `/`, și totalul.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 0. [terminat] Rulează diagnoza

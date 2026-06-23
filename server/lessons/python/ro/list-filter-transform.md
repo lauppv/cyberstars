@@ -113,7 +113,7 @@ Reactoarele stației raportează citiri de putere (deja în dreapta). Inginerii 
 4. Afișează `Reactoare stabile: ` urmat de câte au trecut testul.
 5. Afișează `Medie: ` urmat de media citirilor cu impuls, rotunjită la un număr întreg cu `round()`.
 
-**Rezultat**
+**Ieșire**
 
 ```text
 Cu impuls: [87, 72, 96, 79, 60, 100, 65]

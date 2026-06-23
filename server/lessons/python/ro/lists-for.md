@@ -15,7 +15,7 @@ for i in nume:
     print(f"Salut, {i}!")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Salut, Tommy!
@@ -35,7 +35,7 @@ for i in range(0, len(nume)):
     print(f"Erou numărul {i + 1}: {nume[i]}")
 ```
 
-Rezultat
+Ieșire
 
 ```text
 Erou numărul 1: Tommy
@@ -71,7 +71,7 @@ Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. 
 
 Ai grijă: numărăm de la **0**, deci indexul **5** este al **6**-lea membru afișat
 
-**Rezultat**
+**Ieșire**
 
 ```text
 1. Maria

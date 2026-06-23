@@ -11,7 +11,7 @@ print(este_anagrama("hello", "world"))
 print(este_anagrama("Evil", "Vile"))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 True
@@ -55,7 +55,7 @@ print(este_anagrama("listen", "silent"))
 print(este_anagrama("hello", "world"))
 ```
 
-Rezultat
+Ieșire
 
 ```text
 True
@@ -80,12 +80,12 @@ Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se
 2. **Citește** două parole, apoi afișează `Anagramă: ` urmat de rezultat.
 3. Pe linia următoare, afișează `Acces permis` dacă se potrivesc, sau `Acces refuzat` dacă nu.
 
-**Input** (tastat de utilizator când rulează programul):
+**Intrare** (tastat de utilizator când rulează programul):
 
 - prima parolă
 - a doua parolă
 
-**Output** — două linii: verificarea anagramei, apoi verdictul accesului.
+**Ieșire** — două linii: verificarea anagramei, apoi verdictul accesului.
 
 **Exemplu**
 
