@@ -19,7 +19,7 @@ nume = ["Tommy Vercetti", "Lance Vance", "Cortez", "Phil Cassidy", "Sonny Forell
 print(nume)
 ```
 
-O **listă** este o **colecție** de valori stocate într-o singură variabilă. Folosim parantezele drepte **[ ]** și separăm elementele cu **virgule**
+O **listă** este o **colecție** de valori stocate într-o singură variabilă. Folosim parantezele drepte **[ ]** și separăm elementele cu **virgula**
 
 Dacă rulăm asta, **Python** va afișa toată lista deodată
 
@@ -47,7 +47,7 @@ nume = ["Tommy Vercetti", "Lance Vance", "Cortez"]
 print(nume[10])
 ```
 
-**Rulează**-l. Vei vedea că **Python** se plânge cu un **IndexError**, pentru că nu există niciun element la poziția **10**. Citește-ți mereu erorile :)
+**Rulează**-l. Vei vedea că **Python** se plânge cu un **IndexError**, pentru că nu există niciun element la poziția **10**. Citește mereu erorile, ele pot fi foarte utile
 
 ---
 
@@ -111,22 +111,24 @@ Le putem chiar amesteca, dar în practică este rar și de obicei un semn că ce
 
 ## Misiune: Cala de Marfă
 
-Stația își ține evidența mărfii într-o listă. Pornești cu o **listă goală** `cargo` (deja în dreapta). Fă următoarele, în ordine:
+Stația își ține evidența mărfii într-o listă. Creează o listă goală numită `incarcatura`. Fă următoarele, în ordine:
 
-1. **Adaugă** `oxigen`, `water`, `food` și `combustibil` folosind **.append()**
-2. Afișează câte articole sunt încărcate (folosește **len()**)
+1. **Adaugă** `"oxigen"`, `"apa"`, `"mancare"` și `"combustibil"`
+2. Afișează lista
 3. Afișează **primul** articol
 4. Afișează **ultimul** articol
-5. O scurgere strică apa — **înlocuiește** articolul de la indexul 1 cu `EMPTY`
-6. Afișează **toată lista**
+5. Afișează câte articole sunt încărcate
+6. O scurgere golește apa — înlocuiește articolul de la indexul 1 cu `gol`
+7. Afișează lista
 
 **Rezultat**
 
 ```text
+['oxigen', 'apa', 'mancare', 'combustibil']
+oxigen
+combustibil
 4
-oxygen
-fuel
-['oxygen', 'EMPTY', 'food', 'fuel']
+['oxigen', 'gol', 'mancare', 'combustibil']
 ```
 
-Observă ultima linie: când afișezi o listă întreagă, Python îți pune parantezele și ghilimelele de la sine. Adaugă mai multă marfă și rulează din nou ca să vezi cum se schimbă numerele :)
+Observă ultima linie: când afișezi o listă întreagă, Python îți pune parantezele și ghilimelele de la sine.

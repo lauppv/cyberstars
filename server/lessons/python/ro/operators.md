@@ -72,38 +72,6 @@ Exact ca în matematică, parantezele **()** forțează ce să se facă mai înt
 
 ---
 
-## Misiune: Afișajul Calculatorului
+## Joacă-te
 
-Panoul de calcul al stației primește două numere întregi și arată tot ce poate face Python cu ele. Scrie un program care **citește două numere** și afișează, **pe linii separate**, rezultatul fiecărui operator pe care tocmai l-ai învățat.
-
-Citește ambele numere cu **int()** ca să fie numere reale, nu text.
-
-**Input** (tastat de utilizator când rulează programul):
-
-- primul număr
-- al doilea număr
-
-**Rezultat**
-
-Șapte linii, în această ordine: adunare, scădere, înmulțire, împărțire, împărțire întreagă, rest și putere.
-
-**Exemplu**
-
-Dacă utilizatorul tastează
-
-```text
-17
-5
-```
-
-programul ar trebui să afișeze
-
-```text
-22
-12
-85
-3.4
-3
-2
-1419857
-```
+Nu e nicio misiune de data asta. Ia codul de start, schimbă valorile lui `a` și `b`, încearcă fiecare operator și vezi ce afișează. Experimentează până înțelegi cum se comportă fiecare.

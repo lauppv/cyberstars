@@ -9,7 +9,7 @@ nume = "Tommy Vercetti"
 print(len(nume))
 ```
 
-Rezultatul **14**. Da, **spațiul** contează și el. Fiecare caracter contează, inclusiv spațiile, virgulele, punctele, semnele de exclamare. Încearcă cu **len("Lance Vance Dance")** :)
+Rezultatul **14**. Da, **spațiul** contează și el. Fiecare caracter contează, inclusiv virgulele, punctele, semnele de exclamare și orice alt caracter. Încearcă cu **len("password-!@#$")**
 
 ---
 
@@ -39,7 +39,7 @@ nume = nume.upper()
 print(nume)
 ```
 
-Acum **nume** stochează noua valoare. Acest tip de capcană prinde absolut pe toată lumea la început, așa că nu-ți face griji dacă te încurcă :)
+Acum **nume** stochează noua valoare. Acest tip de capcană prinde absolut pe toată lumea la început. Dacă citim de sus în jos, povestea e simplă: avem un nume, apoi îl transformăm în litere mari și actualizăm numele, apoi îl afișăm
 
 ---
 
@@ -48,17 +48,22 @@ Putem **lipi string-uri împreună** cu **+**. Acest lucru se numește **concate
 ```py
 prenume = "Tommy"
 nume_familie = "Vercetti"
+nume_complet = prenume + nume_familie
+print(nume_complet)
+```
+
+Rezultatul **TommyVercetti**. Dacă vrem să avem un spațiu între prenume și nume de familie, trebuie să îl concatenăm și pe el
+
+```py
+prenume = "Tommy"
+nume_familie = "Vercetti"
 nume_complet = prenume + " " + nume_familie
 print(nume_complet)
 ```
 
-Rezultatul **Tommy Vercetti**. Observă că am adăugat **" "** la mijloc, altfel am obține **TommyVercetti** lipite. String-urile nu adaugă spații în locul nostru, trebuie să o facem noi
-
-Apropo, ai văzut deja o metodă mult mai frumoasă de a combina string-uri cu **f-string-urile** dintr-o lecție anterioară. Ambele funcționează, dar **f-string-urile** sunt de obicei mai ușor de citit
-
 ---
 
-Cel mai puternic truc: **slicing-ul**. Putem lua o bucată dintr-un string indicând poziția lui de **început** și **sfârșit**
+Putem lua o bucată dintr-un string indicând poziția lui de **început** și **sfârșit**
 
 ```py
 nume = "Tommy Vercetti"
@@ -68,50 +73,51 @@ print(nume[0:5])    # Tommy
 print(nume[6:14])   # Vercetti
 ```
 
-**Important**: în programare, numărarea începe de la **0**, **NU** de la **1**. Deci **nume[0]** este **prima** literă, **nume[1]** este a doua, și așa mai departe
+**nume** este o variabilă - știm deja asta. De ce **nume[0] = T**? De ce **nume[1] = o**? De fapt, de ce **nume[ceva] = altceva**?
 
-**nume[0:5]** înseamnă „de la poziția **0**, până la dar **FĂRĂ** să includă poziția **5**". Deci luăm pozițiile **0, 1, 2, 3, 4**, care formează **Tommy**. La fel ca la **range()** în bucla **for**, sfârșitul este exclusiv
+Să ne imaginăm variabila **nume** ca pe un șir de cutiuțe, fiecare cutiuță ținând un singur caracter. Sub fiecare cutiuță este scris **numărul poziției** ei
+
+```strindex
+Tommy Vercetti
+^ 0 1
+```
+
+În programare, numărarea începe de la **0**, **NU** de la **1**. Deci **nume[0]** este **prima** literă (cutiuța de la poziția 0, evidențiată mai sus), **nume[1]** este a doua, și așa mai departe. Când scriem **nume[ceva]**, **ceva** este numărul poziției, iar Python ne dă caracterul din acea cutiuță. De exemplu, **nume[9]** înseamnă „dă-mi caracterul de pe poziția **9** din **nume**", adică caracterul **c**
+
+**nume[0:5]** înseamnă „de la poziția **0**, până la dar **FĂRĂ** să includă poziția **5**". Deci luăm pozițiile **0, 1, 2, 3, 4**, care formează **Tommy**. La fel ca la **range()** în bucla **for**, sfârșitul este exclusiv (nu îl luăm)
 
 Putem de asemenea să omitem unul dintre numere
 
 ```py
 nume = "Tommy Vercetti"
-print(nume[:5])    # Tommy   (de la început până la 5)
+print(nume[:5])    # Tommy   (de la început până la 5 - 1)
 print(nume[6:])    # Vercetti (de la 6 până la sfârșit)
 ```
 
 ---
 
-## Misiune: Ecusonul Echipajului
+## Misiune: Decodorul de Poziții
 
-Stația tipărește un ecuson de identificare din numele complet al unui membru al echipajului. Scrie un program care **citește un nume complet** și afișează ecusonul folosind uneltele pentru string-uri pe care tocmai le-ai învățat.
+Stația citește dintr-un cuvânt de cod doar anumite poziții. Programul citește un cuvânt într-o variabilă și afișează, pe linii separate:
 
-**Input** (tastat de utilizator când programul rulează):
-
-- numele complet al membrului echipajului (de exemplu `Tommy Vercetti`)
-
-**Rezultat**
-
-Patru linii:
-
-- `Nume: ` apoi numele complet cu MAJUSCULE
-- `Litere: ` apoi câte caractere are numele (spațiul contează și el)
-- `Inițială: ` apoi prima literă, cu majusculă
-- `Etichetă: ` apoi primele trei caractere, cu litere mici
+- caracterul de pe poziția **0**
+- caracterul de pe poziția **3**
+- primele **4** caractere
+- caracterele de la poziția **4** până la sfârșit
 
 **Exemplu**
 
 Dacă utilizatorul tastează
 
 ```text
-Tommy Vercetti
+Andromeda
 ```
 
 programul ar trebui să afișeze
 
 ```text
-Nume: TOMMY VERCETTI
-Litere: 14
-Inițială: T
-Etichetă: tom
+A
+r
+Andr
+omeda
 ```

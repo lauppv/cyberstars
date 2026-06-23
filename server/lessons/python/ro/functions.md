@@ -113,23 +113,12 @@ f(nume, este_online) # afișează admin este offline
 
 ## Misiune: Calculatorul de la Bord
 
-Scrie o funcție `calculator(numar1, numar2, operator)` care afișează rezultatul lui `numar1 operator numar2`. Cazul `+` este deja scris pentru tine în codul de start — adaugă cazurile pentru **scădere** (`-`), **înmulțire** (`*`) și **împărțire** (`/`). Pentru orice alt operator, afișează `Operator invalid`.
+Stația are nevoie de un calculator de bord. Scrie o funcție care primește două numere și un operator (`+`, `-`, `*`, `/`) și afișează operația cu rezultatul ei. Dacă operatorul nu este unul dintre cele patru, afișează `Operator invalid`.
 
-Formatează fiecare rezultat ca `14 + 12 = 26`.
+**Exemple de input și output**
 
-**Input** (apelurile de la baza codului tău testează funcția — schimbă-le și pe ele):
-
-- `calculator(14, 12, "+")`, `calculator(20, 8, "-")`, `calculator(6, 7, "*")`, `calculator(20, 4, "/")`
-
-**Exemplu**
-
-Cele patru apeluri din codul de start ar trebui să afișeze
-
-```text
-14 + 12 = 26
-20 - 8 = 12
-6 * 7 = 42
-20 / 4 = 5.0
-```
-
-Observă că împărțirea dă un număr cu zecimale — `20 / 4` este `5.0`, nu `5`.
+- `calculator(14, 12, "+")` afișează `14 + 12 = 26`
+- `calculator(20, 8, "-")` afișează `20 - 8 = 12`
+- `calculator(6, 7, "*")` afișează `6 * 7 = 42`
+- `calculator(20, 4, "/")` afișează `20 / 4 = 5.0`
+- `calculator(5, 2, "%")` afișează `Operator invalid`

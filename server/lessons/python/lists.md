@@ -111,22 +111,24 @@ We can even mix them, but in practice it’s rare and usually a sign that someth
 
 ## Mission: Cargo Bay
 
-The station tracks its cargo in a list. You start with an **empty list** `cargo` (already on the right). Do the following, in order:
+The station tracks its cargo in a list. Create an empty list called `cargo`. Do the following, in order:
 
-1. **Add** `oxygen`, `water`, `food`, and `fuel` using **.append()**
-2. Print how many items are loaded (use **len()**)
+1. **Add** `"oxygen"`, `"water"`, `"food"`, and `"fuel"`
+2. Print the list
 3. Print the **first** item
 4. Print the **last** item
-5. A leak ruins the water — **replace** the item at index 1 with `EMPTY`
-6. Print the **whole list**
+5. Print how many items are loaded
+6. A leak empties the water — replace the item at index 1 with `empty`
+7. Print the list
 
 **Output**
 
 ```text
-4
+['oxygen', 'water', 'food', 'fuel']
 oxygen
 fuel
-['oxygen', 'EMPTY', 'food', 'fuel']
+4
+['oxygen', 'empty', 'food', 'fuel']
 ```
 
-Notice the last line: when you print a whole list, Python shows the brackets and quotes for you. Add more cargo and run again to see how the numbers change :)
+Notice the last line: when you print a whole list, Python shows the brackets and quotes for you.

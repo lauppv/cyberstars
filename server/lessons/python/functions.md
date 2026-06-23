@@ -113,23 +113,12 @@ f(name, is_online) # prints admin is offline
 
 ## Mission: Onboard Calculator
 
-Write a function `calculator(number1, number2, operator)` that prints the result of `number1 operator number2`. The `+` case is already written for you in the starter — add the cases for **subtraction** (`-`), **multiplication** (`*`), and **division** (`/`). For any other operator, print `Invalid operator`.
+The station needs an onboard calculator. Write a function that takes two numbers and an operator (`+`, `-`, `*`, `/`) and prints the operation with its result. If the operator is not one of the four, print `Invalid operator`.
 
-Format each result like `14 + 12 = 26`.
+**Input and output examples**
 
-**Input** (the calls at the bottom of your code test the function — change them too):
-
-- `calculator(14, 12, "+")`, `calculator(20, 8, "-")`, `calculator(6, 7, "*")`, `calculator(20, 4, "/")`
-
-**Example**
-
-The four calls in the starter should print
-
-```text
-14 + 12 = 26
-20 - 8 = 12
-6 * 7 = 42
-20 / 4 = 5.0
-```
-
-Notice that division gives a number with decimals — `20 / 4` is `5.0`, not `5`.
+- `calculator(14, 12, "+")` prints `14 + 12 = 26`
+- `calculator(20, 8, "-")` prints `20 - 8 = 12`
+- `calculator(6, 7, "*")` prints `6 * 7 = 42`
+- `calculator(20, 4, "/")` prints `20 / 4 = 5.0`
+- `calculator(5, 2, "%")` prints `Invalid operator`

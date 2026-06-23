@@ -68,7 +68,16 @@ print(name[0:5])    # Tommy
 print(name[6:14])   # Vercetti
 ```
 
-**Important**: in programming, counting starts from **0**, **NOT** from **1**. So **name[0]** is the **first** letter, **name[1]** is the second, and so on
+**name** is a variable - we already know that. Why is **name[0] = T**? Why is **name[1] = o**? In fact, why does **name[something] = something else**?
+
+Let's imagine the variable **name** as a row of little boxes, each box holding a single character. Under each box is written its **position number**
+
+```strindex
+Tommy Vercetti
+^ 0 1
+```
+
+In programming, counting starts from **0**, **NOT** from **1**. So **name[0]** is the **first** letter (the box at position 0, highlighted above), **name[1]** is the second, and so on. When we write **name[something]**, **something** is the position number, and Python gives us the character in that box. For example, **name[9]** means "give me the character at position **9** in **name**", which is the character **c**
 
 **name[0:5]** means "from position **0**, up to but **NOT including** position **5**". So we take positions **0, 1, 2, 3, 4**, which spell **Tommy**. Just like with **range()** in the **for** loop, the end is exclusive
 
@@ -82,36 +91,28 @@ print(name[6:])    # Vercetti (from 6 to the end)
 
 ---
 
-## Mission: Crew ID Badge
+## Mission: Position Decoder
 
-The station prints an ID badge from a crew member's full name. Write a program that **reads a full name** and prints the badge using the string tools you just learned.
+The station reads only certain positions from a code word. The program reads a word into a variable and prints, on separate lines:
 
-**Input** (typed by the user when the program runs):
-
-- the crew member's full name (for example `Tommy Vercetti`)
-
-**Output**
-
-Four lines:
-
-- `Name: ` then the full name in UPPERCASE
-- `Letters: ` then how many characters the name has (the space counts too)
-- `Initial: ` then the very first letter, in uppercase
-- `Tag: ` then the first three characters, in lowercase
+- the character at position **0**
+- the character at position **3**
+- the first **4** characters
+- the characters from position **4** to the end
 
 **Example**
 
 If the user types
 
 ```text
-Tommy Vercetti
+Andromeda
 ```
 
 the program should print
 
 ```text
-Name: TOMMY VERCETTI
-Letters: 14
-Initial: T
-Tag: tom
+A
+r
+Andr
+omeda
 ```
