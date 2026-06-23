@@ -1,4 +1,4 @@
-În lecția despre **if-else** am văzut pe scurt **True** și **False**. E timpul să ne uităm la ele mai cu atenție, pentru că sunt peste tot în programare
+În lecția despre **if-else** am văzut pe scurt **True** și **False**, iar la bucle am folosit chiar **while True**. E timpul să ne uităm la ele mai cu atenție, pentru că sunt peste tot în programare
 
 Un **boolean** este o valoare care poate fi doar unul din două lucruri: **True** sau **False**. Atât. Nicio altă opțiune
 
@@ -32,10 +32,12 @@ are_permis = True
 if varsta >= 18 and are_permis == True:
     print("Poți conduce")
 else:
-    print("Scuze, azi nu conduci")
+    print("Trebuie să ai cel puțin 18 ani și să ai permis pentru a putea conduce")
 ```
 
 Cuvântul cheie **and** spune: **ambele condiții trebuie să fie True**. Dacă măcar una dintre ele este **False**, întregul lucru este **False**
+
+Cu alte cuvinte, dacă avem `stanga` **and** `dreapta`, trebuie ca atât `stanga` cât și `dreapta` să fie **True** pentru ca întreaga expresie să fie **True**
 
 ```py
 varsta = 20
@@ -44,7 +46,7 @@ are_permis = False
 if varsta >= 18 and are_permis == True:
     print("Poți conduce")
 else:
-    print("Scuze, azi nu conduci")
+    print("Trebuie să ai cel puțin 18 ani și să ai permis pentru a putea conduce")
 ```
 
 Aici **varsta >= 18** este **True**, dar **are_permis == True** este **False**. **True and False** = **False**, așa că mergem la **else**
@@ -56,7 +58,7 @@ if varsta >= 18 and are_permis:
     print("Poți conduce")
 ```
 
-Mai curat :)
+Adesea programatorii preferă să omită **== True** pentru că se subînțelege că **if are_permis** înseamnă de fapt **if are_permis == True**. Se poate și să îl punem, și să nu îl punem, ambele la fel de corecte
 
 ---
 
@@ -105,51 +107,50 @@ not False = True
 
 ---
 
-## Misiune: Acces la HQ
+## Booleans în bucle
 
-Scrii sistemul de uși pentru **CyberStars HQ**. O persoană poate intra dacă este **angajat ȘI este zi lucrătoare**, sau dacă este **oaspete care are o invitație**.
+Am văzut deja un boolean drept condiție: **while True** rulează cât timp condiția este... **True**. Dar putem folosi și un boolean **stocat într-o variabilă** ca să controlăm o buclă. O astfel de variabilă se numește adesea un **steag** (flag)
 
-Programul pune **patru** întrebări. Pentru fiecare, utilizatorul tastează `yes` sau `no`. Un truc util: `answer == "yes"` este deja un boolean, așa că îl poți stoca direct într-o variabilă.
+```py
+ruleaza = True
+numar = 0
+while ruleaza:
+    print(numar)
+    numar = numar + 1
+    if numar == 3:
+        ruleaza = False
+print("Gata")
+```
 
-**Input** (tastat de utilizator când rulează programul), fiecare `yes` sau `no`:
+Rezultat
 
-- persoana este angajat?
-- este zi lucrătoare?
-- persoana este oaspete?
-- persoana are o invitație?
+```text
+0
+1
+2
+Gata
+```
 
-**Output**
+Cât timp **ruleaza** este **True**, bucla continuă. Când **if**-ul îl face **False**, condiția **while ruleaza** devine falsă și bucla se oprește la următoarea verificare. Este o alternativă curată la **break** — în loc să sărim brusc afară, lăsăm condiția să se închidă singură
 
-O linie: `Acces permis` dacă persoana poate intra, altfel `Acces refuzat`.
+---
+
+## Misiune: Consola de comenzi
+
+Stația are o consolă care rulează **cât timp** este pornită. Folosește o variabilă boolean `pornit` (începe cu `True`) drept condiție pentru o buclă **while**. La fiecare pas, citește o comandă cu `input()`:
+
+- dacă utilizatorul tastează `oprire` → setează `pornit` pe `False` (bucla se va opri aici)
+- dacă utilizatorul tastează `status` → afișează `Sistem activ`
+- altfel → afișează `Comandă necunoscută`
+
+După ce bucla se termină, afișează `Se închide consola...`.
 
 **Exemplu**
 
-Dacă utilizatorul tastează
+Dacă utilizatorul tastează pe rând `status`, apoi `salut`, apoi `oprire`, programul afișează
 
 ```text
-yes
-yes
-no
-no
-```
-
-programul ar trebui să afișeze
-
-```text
-Acces permis
-```
-
-Un oaspete cu o invitație intră și el. Dacă utilizatorul tastează
-
-```text
-no
-no
-yes
-yes
-```
-
-programul ar trebui să afișeze
-
-```text
-Acces permis
+Sistem activ
+Comandă necunoscută
+Se închide consola...
 ```

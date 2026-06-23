@@ -1,61 +1,32 @@
-Combine **input**, **operators**, and **booleans**
+This is a **recap**. Put to work everything we've learned so far: **input**, **operators**, **booleans**, loops, and **break** / **continue**. You decide how to combine them
 
 ---
 
-## Mission: Launch Authorization
+## Mission: Launch Console
 
-Before a rocket can launch, mission control checks three things. Write a program that **reads three numbers** and decides whether launch is authorized.
+Before launch, the operator enters the level of each rocket system, one by one, until they type `0`.
 
-The three numbers are the **fuel level** (a percentage), the **crew size**, and the number of **completed safety checks**. The rules are:
+- a **negative** reading is noise and is ignored (don't print anything for it)
+- a system with a level **below 50** is critical and makes the launch unsafe → print `Critical system`
+- a system with a level **of 50 or more** is good → print `System OK`
 
-- fuel is OK when it is **80 or more**
-- crew is OK when it is **between 2 and 6** (at least 2 and at most 6)
-- checks are OK when they are **exactly 10**
-
-Launch is authorized only when **all three** are OK. Use booleans to store each result.
-
-**Input** (typed by the user when the program runs):
-
-- the fuel level
-- the crew size
-- the number of completed safety checks
-
-**Output**
-
-Four lines: `Fuel OK: ` then True or False, `Crew OK: ` then True or False, `Checks OK: ` then True or False, and finally `Authorized: ` then True or False.
+When the operator types `0`, the input is over. If no system was critical, print `Launch authorized`. Otherwise, print `Launch aborted`.
 
 **Example**
 
-If the user types
+If the operator types `90`, then `75`, then `0` in turn, the program prints
 
 ```text
-90
-4
-10
+System OK
+System OK
+Launch authorized
 ```
 
-the program should print
+If the operator types `90`, then `-5`, then `30`, then `80`, then `0` in turn, the program prints
 
 ```text
-Fuel OK: True
-Crew OK: True
-Checks OK: True
-Authorized: True
-```
-
-If the user types
-
-```text
-50
-4
-10
-```
-
-the program should print
-
-```text
-Fuel OK: False
-Crew OK: True
-Checks OK: True
-Authorized: False
+System OK
+Critical system
+System OK
+Launch aborted
 ```

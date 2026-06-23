@@ -26,28 +26,29 @@ Rezultat
 
 I-am spus lui **for** să meargă de la **0** la **99**, dar de îndată ce **i** a devenit **5**, am dat de **break** și bucla s-a oprit. Numerele **5, 6, 7, ..., 99** nu au fost niciodată afișate
 
-Un exemplu real: imaginează-ți că căutăm un nume într-o listă. Odată ce l-am găsit, de ce să continuăm să căutăm?
+Un exemplu real: imaginează-ți că scanăm sectoarele stației, unul câte unul, ca să găsim un semnal. Odată ce l-am găsit, de ce să continuăm să scanăm?
 
 ```py
-nume = ["Tommy", "Lance", "Cortez", "Phil", "Sonny"]
-tinta = "Cortez"
-
-for n in nume:
-    if n == tinta:
-        print(f"L-am găsit pe {tinta}!")
+for sector in range(1, 100):
+    if sector == 7:
+        print(f"Semnal găsit în sectorul {sector}!")
         break
-    print(f"Verific {n}...")
+    print(f"Scanez sectorul {sector}...")
 ```
 
 Rezultat
 
 ```text
-Verific Tommy...
-Verific Lance...
-L-am găsit pe Cortez!
+Scanez sectorul 1...
+Scanez sectorul 2...
+Scanez sectorul 3...
+Scanez sectorul 4...
+Scanez sectorul 5...
+Scanez sectorul 6...
+Semnal găsit în sectorul 7!
 ```
 
-Bucla nu a verificat **Phil** și **Sonny**, pentru că am găsit deja ce voiam. **break** ne-a economisit timp
+Bucla nu a mai verificat sectoarele de la **8** la **99**, pentru că am găsit deja ce voiam. **break** ne-a economisit timp
 
 ---
 
@@ -101,40 +102,39 @@ Pentru numerele impare, **continue** a sărit peste **print**. Pentru cele pare,
 
 ---
 
-O mică avertizare: **break** și **continue** pot face codul mai greu de citit dacă abuzezi de ele. Folosește-le când fac logica mai clară, nu doar ca să fii deștept :)
-
-Ambele cuvinte cheie funcționează la fel în buclele **while**, nu doar în **for**
+Ambele cuvinte cheie funcționează la fel în buclele **while**, nu doar în **for**. Un tipar foarte des întâlnit este **while True** împreună cu **input()**: repetăm la nesfârșit și ieșim cu **break** atunci când utilizatorul ne spune
 
 ```py
-i = 0
 while True:
-    if i >= 5:
+    comanda = input("Comandă: ")
+    if comanda == "stop":
         break
-    print(i)
-    i = i + 1
+    print(f"Execut: {comanda}")
+print("Sistem oprit")
 ```
 
-**while True** ar fi în mod normal o buclă infinită, dar **break** ne lasă să ieșim din ea când vrem
+**while True** ar fi în mod normal o buclă infinită. Dar la fiecare pas cerem o comandă, iar dacă utilizatorul tastează **stop**, **break** ne scoate din buclă. Orice altceva ar tasta, programul afișează **Execut: ...** și întreabă din nou
 
 ---
 
-## Misiune: Scanner de Semnale
+## Misiune: Scaner manual de sectoare
 
-Stația scanează o listă de semnale primite (deja în dreapta). Regulile scanării:
+Operatorul stației introduce numere de sector **unul câte unul**. Folosește o buclă **while True** și citește la fiecare pas un număr cu `int(input(...))`. Pentru fiecare număr:
 
-- un număr **negativ** este doar zgomot — **sari peste el** (folosește **continue**)
-- un **0** înseamnă „sfârșitul transmisiei" — **oprește** scanarea imediat (folosește **break**)
-- orice alt semnal (pozitiv) este valid — **afișează-l** și **numără-l**
+- dacă operatorul tastează `0` → este sfârșitul scanării, **oprește** bucla (folosește **break**)
+- dacă numărul este **negativ** → este doar zgomot, **sari peste el** (folosește **continue**) și nu afișa nimic
+- altfel → afișează `Sector ` apoi numărul, apoi ` verificat` (de exemplu `Sector 4 verificat`)
 
-La final, afișează `Total semnale: ` apoi câte semnale valide ai găsit.
+După buclă, afișează `Scanare terminată`.
 
-**Output**
+**Exemplu**
+
+Dacă operatorul tastează pe rând `4`, apoi `-2`, apoi `7`, apoi `0`, programul afișează
 
 ```text
-12
-7
-5
-Total semnale: 3
+Sector 4 verificat
+Sector 7 verificat
+Scanare terminată
 ```
 
-`-3` și `-8` sunt sărite, scanarea se oprește la `0`, iar `99` și `4` de după el nu sunt niciodată atinse — așa că doar `12`, `7` și `5` contează.
+`-2` este sărit, iar `0` oprește scanarea.

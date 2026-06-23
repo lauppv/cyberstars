@@ -55,36 +55,49 @@ Pentru că **i rămâne 0**, prin urmare **print(i)** va afișa mereu **0**. Cum
 ...
 ```
 
-**la nesfârșit**. Asta se numește **buclă infinită**. **Rulează** codul de mai sus ca să vezi ce se afișează, ca să vezi ce face programul **:)**
+**la nesfârșit**. Asta se numește **buclă infinită**
 
 ---
 
-## Misiune: Descărcarea Bateriei
+## Oprim bucla cu input()
 
-Stația funcționează pe o baterie care pierde din încărcare la fiecare ciclu. Ți se dau încărcarea de start `charge` (în procente) și cât pierde per ciclu, `drain`.
+Bucla **while** devine cu adevărat puternică împreună cu **input()**. Putem cere ceva utilizatorului **din nou și din nou**, până când ne dă răspunsul pe care îl așteptăm
 
-Scrie un program care folosește o buclă **while** ca să continue să ruleze **atâta timp cât** `charge` este mai mare decât **0**. La fiecare ciclu:
+Imaginează-ți că stația cere o parolă. Vrem să tot întrebăm **cât timp** parola este greșită
 
-- dacă `charge` este **20 sau mai puțin** → afișează încărcarea, apoi `% - ENERGIE SCĂZUTĂ` (de exemplu `10% - ENERGIE SCĂZUTĂ`)
-- altfel → afișează încărcarea, apoi `%` (de exemplu `70%`)
+```py
+parola = ""
+while parola != "steluta":
+    parola = input("Parola: ")
+print("Acces permis!")
+```
 
-apoi reduce `charge` cu `drain`. Când bateria se golește în cele din urmă, afișează `Baterie descărcată` o singură dată la final.
+Hai să urmărim ce se întâmplă:
 
-**Atenție** — exact ca în lecția de mai sus, dacă uiți să scazi `charge` vei rămâne blocat într-o **buclă infinită** :)
+- la început **parola = ""** (gol), deci **parola != "steluta"** este adevărat → intrăm în buclă
+- programul ne cere parola. Dacă tastăm **luna**, atunci **parola = "luna"**, încă diferit de **"steluta"** → bucla se repetă și ne cere din nou
+- dacă tastăm **steluta**, atunci **parola = "steluta"**, deci **parola != "steluta"** devine **fals** → bucla se oprește
+- programul afișează **Acces permis!**
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+Observă lucrul important: aici **nu** știam de câte ori se va repeta bucla. Depinde complet de ce tastează utilizatorul. Cu un **for** ar fi fost greu, pentru că **for** vrea să știe de la început de câte ori să meargă. Cu **while** este natural — repetăm pur și simplu **cât timp** condiția este adevărată
 
-- `charge` — nivelul de start al bateriei în procente
-- `drain` — cât din încărcare se pierde per ciclu
+De ce am pus **parola = ""** înainte de buclă? Ca **while** să aibă ce verifica la prima trecere. Dacă variabila nu ar exista deloc, **Python** ar da eroare când ajunge la condiție
+
+---
+
+## Misiune: Cod de acces
+
+Stația cere un cod de acces înainte să deschidă ușa. Scrie un program care cere repetat un cod cu **input()**, **cât timp** codul tastat nu este cel corect. Codul corect este **1234**
+
+- cât timp utilizatorul tastează un cod greșit → afișează `Cod greșit`
+- când utilizatorul tastează codul corect → afișează `Acces permis` și bucla se oprește
 
 **Exemplu**
 
-Cu `charge = 100` și `drain = 30`, programul tău ar trebui să afișeze
+Dacă utilizatorul tastează pe rând `1111`, apoi `2222`, apoi `1234`, programul afișează
 
 ```text
-100%
-70%
-40%
-10% - ENERGIE SCĂZUTĂ
-Baterie descărcată
+Cod greșit
+Cod greșit
+Acces permis
 ```

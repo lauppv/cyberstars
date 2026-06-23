@@ -55,36 +55,49 @@ Because **i stays 0**, therefore **print(i)** will always print **0**. Since **i
 ...
 ```
 
-**forever**. This is called an **infinite loop**. **Run** the code above to see what is printed, to see what the program does **:)**
+**forever**. This is called an **infinite loop**
 
 ---
 
-## Mission: Battery Drain
+## Stopping the loop with input()
 
-The station runs on a battery that loses charge every cycle. You are given the starting `charge` (in percent) and how much it loses per cycle, `drain`.
+The **while** loop becomes truly powerful together with **input()**. We can ask the user for something **again and again**, until they give us the answer we're waiting for
 
-Write a program that uses a **while** loop to keep running **as long as** `charge` is greater than **0**. On each cycle:
+Imagine the station asks for a password. We want to keep asking **as long as** the password is wrong
 
-- if `charge` is **20 or below** → print the charge, then `% - LOW POWER` (for example `10% - LOW POWER`)
-- otherwise → print the charge, then `%` (for example `70%`)
+```py
+password = ""
+while password != "starlet":
+    password = input("Password: ")
+print("Access granted!")
+```
 
-then reduce `charge` by `drain`. When the battery finally runs out, print `Battery dead` once at the end.
+Let's follow what happens:
 
-**Careful** — just like in the lesson above, if you forget to lower `charge` you will be stuck in an **infinite loop** :)
+- at the start **password = ""** (empty), so **password != "starlet"** is true → we enter the loop
+- the program asks for the password. If we type **moon**, then **password = "moon"**, still different from **"starlet"** → the loop repeats and asks again
+- if we type **starlet**, then **password = "starlet"**, so **password != "starlet"** becomes **false** → the loop stops
+- the program prints **Access granted!**
 
-**Input** (already set at the top of your code — change the values to test):
+Notice the important thing: here we did **not** know how many times the loop would repeat. It depends entirely on what the user types. With a **for** loop it would have been hard, because **for** wants to know up front how many times to go. With **while** it's natural — we simply repeat **as long as** the condition is true
 
-- `charge` — starting battery level in percent
-- `drain` — how much charge is lost per cycle
+Why did we put **password = ""** before the loop? So that **while** has something to check on the first pass. If the variable didn't exist at all, **Python** would give an error when it reaches the condition
+
+---
+
+## Mission: Access Code
+
+The station asks for an access code before it opens the door. Write a program that repeatedly asks for a code with **input()**, **as long as** the typed code is not the correct one. The correct code is **1234**
+
+- as long as the user types a wrong code → print `Wrong code`
+- when the user types the correct code → print `Access granted` and the loop stops
 
 **Example**
 
-With `charge = 100` and `drain = 30`, your program should print
+If the user types `1111`, then `2222`, then `1234` in turn, the program prints
 
 ```text
-100%
-70%
-40%
-10% - LOW POWER
-Battery dead
+Wrong code
+Wrong code
+Access granted
 ```

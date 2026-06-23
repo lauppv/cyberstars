@@ -1,6 +1,6 @@
-In the **if-else** lesson we briefly saw **True** and **False**. Time to look at them more carefully, because they are everywhere in programming
+In the **if-else** lesson we briefly saw **True** and **False**, and in the loops we even used **while True**. Time to look at them more carefully, because they are everywhere in programming
 
-A **boolean** is a value that can only be one of two things: **True** or **False**. That’s it. No other options
+A **boolean** is a value that can only be one of two things: **True** or **False**. That's it. No other options
 
 ```py
 is_online = True
@@ -32,10 +32,12 @@ has_license = True
 if age >= 18 and has_license == True:
     print("You can drive")
 else:
-    print("Sorry, no driving today")
+    print("You must be at least 18 and have a license to drive")
 ```
 
 The keyword **and** says: **both conditions must be True**. If even one of them is **False**, the whole thing is **False**
+
+In other words, if we have `left` **and** `right`, both `left` and `right` must be **True** for the whole expression to be **True**
 
 ```py
 age = 20
@@ -44,7 +46,7 @@ has_license = False
 if age >= 18 and has_license == True:
     print("You can drive")
 else:
-    print("Sorry, no driving today")
+    print("You must be at least 18 and have a license to drive")
 ```
 
 Here **age >= 18** is **True**, but **has_license == True** is **False**. **True and False** = **False**, so we go to **else**
@@ -56,7 +58,7 @@ if age >= 18 and has_license:
     print("You can drive")
 ```
 
-Cleaner :)
+Programmers often prefer to drop the **== True** because **if has_license** already means **if has_license == True**. You can write it either way, both are equally correct
 
 ---
 
@@ -72,7 +74,7 @@ else:
     print("Access denied")
 ```
 
-Even though **is_vip** is **False**, **has_invitation** is **True**, and that’s enough
+Even though **is_vip** is **False**, **has_invitation** is **True**, and that's enough
 
 And finally, **not**. **not** flips a boolean: **not True** becomes **False**, **not False** becomes **True**
 
@@ -105,51 +107,50 @@ not False = True
 
 ---
 
-## Mission: HQ Access
+## Booleans in loops
 
-You are writing the door system for **CyberStars HQ**. A person can enter if they are an **employee AND it's a working day**, or if they are a **guest who has an invitation**.
+We've already seen a boolean as a condition: **while True** runs as long as the condition is... **True**. But we can also use a boolean **stored in a variable** to control a loop. Such a variable is often called a **flag**
 
-The program asks **four** questions. For each one the user types `yes` or `no`. A handy trick: `answer == "yes"` is already a boolean, so you can store it straight into a variable.
+```py
+running = True
+number = 0
+while running:
+    print(number)
+    number = number + 1
+    if number == 3:
+        running = False
+print("Done")
+```
 
-**Input** (typed by the user when the program runs), each one `yes` or `no`:
+Output
 
-- is the person an employee?
-- is it a working day?
-- is the person a guest?
-- does the person have an invitation?
+```text
+0
+1
+2
+Done
+```
 
-**Output**
+As long as **running** is **True**, the loop continues. When the **if** makes it **False**, the condition **while running** becomes false and the loop stops at the next check. It's a clean alternative to **break** — instead of jumping out abruptly, we let the condition close itself
 
-One line: `Access granted` if the person can enter, otherwise `Access denied`.
+---
+
+## Mission: Command Console
+
+The station has a console that runs **as long as** it's powered on. Use a boolean variable `powered_on` (starts as `True`) as the condition for a **while** loop. On every step, read a command with `input()`:
+
+- if the user types `shutdown` → set `powered_on` to `False` (the loop will stop here)
+- if the user types `status` → print `System active`
+- otherwise → print `Unknown command`
+
+After the loop ends, print `Closing console...`.
 
 **Example**
 
-If the user types
+If the user types `status`, then `hello`, then `shutdown` in turn, the program prints
 
 ```text
-yes
-yes
-no
-no
-```
-
-the program should print
-
-```text
-Access granted
-```
-
-A guest with an invitation also gets in. If the user types
-
-```text
-no
-no
-yes
-yes
-```
-
-the program should print
-
-```text
-Access granted
+System active
+Unknown command
+Closing console...
 ```
