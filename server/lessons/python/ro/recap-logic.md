@@ -1,61 +1,32 @@
-Combină **input**, **operatori** și **booleeni**
+Acesta este un **recap**. Pune la lucru tot ce am învățat până acum: **input**, **operatori**, **booleeni**, bucle și **break** / **continue**. Tu decizi cum le combini
 
 ---
 
-## Misiune: Autorizarea Lansării
+## Misiune: Consola de lansare
 
-Înainte ca o rachetă să poată fi lansată, controlul misiunii verifică trei lucruri. Scrie un program care **citește trei numere** și decide dacă lansarea este autorizată.
+Înainte de lansare, operatorul introduce nivelul fiecărui sistem al rachetei, unul câte unul, până când tastează `0`.
 
-Cele trei numere sunt **nivelul de combustibil** (un procent), **mărimea echipajului** și numărul de **verificări de siguranță finalizate**. Regulile sunt:
+- o citire **negativă** este zgomot și se ignoră (nu afișa nimic pentru ea)
+- un sistem cu nivelul **sub 50** este critic și face lansarea nesigură → afișează `Sistem critic`
+- un sistem cu nivelul **50 sau mai mare** este bun → afișează `Sistem OK`
 
-- combustibilul e OK când este **80 sau mai mult**
-- echipajul e OK când este **între 2 și 6** (cel puțin 2 și cel mult 6)
-- verificările sunt OK când sunt **exact 10**
-
-Lansarea este autorizată doar când **toate trei** sunt OK. Folosește booleeni ca să stochezi fiecare rezultat.
-
-**Input** (tastat de utilizator când rulează programul):
-
-- nivelul de combustibil
-- mărimea echipajului
-- numărul de verificări de siguranță finalizate
-
-**Output**
-
-Patru linii: `Combustibil OK: ` apoi True sau False, `Echipaj OK: ` apoi True sau False, `Verificări OK: ` apoi True sau False, și în final `Autorizat: ` apoi True sau False.
+Când operatorul tastează `0`, introducerea s-a terminat. Dacă niciun sistem n-a fost critic, afișează `Lansare autorizata`. Altfel, afișează `Lansare anulata`.
 
 **Exemplu**
 
-Dacă utilizatorul tastează
+Dacă operatorul tastează pe rând `90`, apoi `75`, apoi `0`, programul afișează
 
 ```text
-90
-4
-10
+Sistem OK
+Sistem OK
+Lansare autorizata
 ```
 
-programul ar trebui să afișeze
+Dacă operatorul tastează pe rând `90`, apoi `-5`, apoi `30`, apoi `80`, apoi `0`, programul afișează
 
 ```text
-Combustibil OK: True
-Echipaj OK: True
-Verificări OK: True
-Autorizat: True
-```
-
-Dacă utilizatorul tastează
-
-```text
-50
-4
-10
-```
-
-programul ar trebui să afișeze
-
-```text
-Combustibil OK: False
-Echipaj OK: True
-Verificări OK: True
-Autorizat: False
+Sistem OK
+Sistem critic
+Sistem OK
+Lansare anulata
 ```
