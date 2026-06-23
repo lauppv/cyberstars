@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import { CodeCell } from '../code/CodeCell';
+import { StringIndexTable } from './StringIndexTable';
 import type { Components } from 'react-markdown';
 import { MAIN_COURSE_KEYS } from '../../../shared/constants';
 
@@ -20,6 +21,17 @@ const components: Components = {
     const match = /language-(\w+)/.exec(className || '');
     const lang = match?.[1]?.toLowerCase();
     const isInline = !className;
+
+    if (!isInline && lang === 'strindex') {
+      const lines = String(children).replace(/\n$/, '').split('\n');
+      const text = lines[0] ?? '';
+      const highlight = (lines[1] ?? '')
+        .replace(/^\^/, '')
+        .split(/[\s,]+/)
+        .map((n) => Number(n))
+        .filter((n) => Number.isInteger(n));
+      return <StringIndexTable text={text} highlight={highlight} />;
+    }
 
     if (!isInline && lang && EDITABLE_LANGS.includes(lang)) {
       const code = String(children).trim();

@@ -113,8 +113,8 @@ export const lessons = [
     sortOrder: 15,
     hasCodeFile: true,
   },
-  { courseKey: 'python', slug: 'functions', title: 'Functions', sortOrder: 16, hasCodeFile: true },
-  { courseKey: 'python', slug: 'operators', title: 'Operators', sortOrder: 17, hasCodeFile: true },
+  { courseKey: 'python', slug: 'operators', title: 'Operators', sortOrder: 16, hasCodeFile: true },
+  { courseKey: 'python', slug: 'functions', title: 'Functions', sortOrder: 17, hasCodeFile: true },
   {
     courseKey: 'python',
     slug: 'strings-methods',
