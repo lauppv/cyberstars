@@ -27,7 +27,7 @@ Apelează funcția, apoi afișează raportul:
 ```text
 Medie: 67.6
 Cel mai bun: Tommy
-Promovați:
+Promovati:
 Tommy
 Cortez
 Mira

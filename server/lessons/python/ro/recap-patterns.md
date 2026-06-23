@@ -22,8 +22,8 @@ Jurnalul de misiune este un singur șir de cuvinte (deja în dreapta). **Împart
 
 ```text
 Total cuvinte: 7
-Apariții scan: 3
-Cel mai lung cuvânt: analyze
+Aparitii scan: 3
+Cel mai lung cuvant: analyze
 Are duplicat: True
 Cuvinte unice: ['analyze', 'boot', 'probe', 'scan']
 ```

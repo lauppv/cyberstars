@@ -18,7 +18,7 @@ Programul s-a **oprit** și a **așteptat** după noi. În momentul în care **P
 Putem de asemenea să-i dăm utilizatorului un **indiciu** despre ce vrem să tasteze
 
 ```py
-nume = input("Cum te cheamă? ")
+nume = input("Cum te cheama? ")
 print(f"Salut, {nume}!")
 ```
 
@@ -29,7 +29,7 @@ Acel mic mesaj din **input("...")** este afișat utilizatorului înainte ca prog
 Acum, iată ceva **chiar important**. Rulează acest cod
 
 ```py
-varsta = input("Vârsta ta: ")
+varsta = input("Varsta ta: ")
 anul_urmator = varsta + 1
 print(anul_urmator)
 ```
@@ -39,7 +39,7 @@ Vei primi o eroare. **De ce?** Pentru că **input() returnează întotdeauna un 
 Ca să rezolvăm asta, îi spunem lui **Python**: „salut, ia acest text și transformă-l într-un număr"
 
 ```py
-varsta = int(input("Vârsta ta: "))
+varsta = int(input("Varsta ta: "))
 anul_urmator = varsta + 1
 print(anul_urmator)
 ```
@@ -49,7 +49,7 @@ print(anul_urmator)
 Dacă utilizatorul a tastat ceva cu zecimale precum **1.75**, am folosi **float()** în schimb
 
 ```py
-inaltime = float(input("Înălțimea ta: "))
+inaltime = float(input("Inaltimea ta: "))
 print(inaltime)
 ```
 

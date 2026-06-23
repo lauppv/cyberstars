@@ -18,8 +18,8 @@ Dacă apare oriunde și cea mai mică eroare, anulăm lansarea
 Aici putem vedea că avem 2 condiții una în interiorul celeilalte
 
 ```py
-secunde = 100  # numărul de secunde
-eroare_detectata = False # nicio eroare la început
+secunde = 100  # numarul de secunde
+eroare_detectata = False # nicio eroare la inceput
 
 if secunde == 100:
     print("Pornesc toate calculatoarele de la bord")
@@ -31,10 +31,10 @@ elif secunde == 10:
     print("Pornesc motoarele principale")
 elif secunde < 10:  # ultimele 10 secunde
     if eroare_detectata == True:
-        print("Eroare detectată. Anulez misiunea")
+        print("Eroare detectata. Anulez misiunea")
     else:
-        print("Nicio eroare detectată. Decolez...")
-else: # număr necunoscut de secunde
+        print("Nicio eroare detectata. Decolez...")
+else: # numar necunoscut de secunde
     print(f"{secunde} secunde nu au niciun efect")
 ```
 
@@ -45,42 +45,42 @@ Așadar, putem vedea cum **elif** nu este nimic mai mult decât un alt **if**. T
 Dacă testăm **aceeași variabilă pentru mai multe cazuri**, le înlănțuim cu **if-elif-else**. Programul rulează de sus în jos. La primul if/elif a cărui condiție este adevărată, intră și rulează codul din acel bloc, iar apoi iese complet
 
 ```py
-secunde = 60  # numărul de secunde
-eroare_detectata = False # nicio eroare la început
+secunde = 60  # numarul de secunde
+eroare_detectata = False # nicio eroare la inceput
 
 if secunde == 100:
     print("Pornesc toate calculatoarele de la bord")
 elif secunde == 60:
-    # programul va intra aici și va afișa acest print
+    # programul va intra aici si va afisa acest print
     print("Verific conexiunea cu turnul de control")
-    # după ce îl afișează, sare afară din lanț
+    # dupa ce il afiseaza, sare afara din lant
 elif secunde == 20:
     print("Pornesc motoarele secundare")
 elif secunde == 10:
     print("Pornesc motoarele principale")
 elif secunde < 10:  # ultimele 10 secunde
     if eroare_detectata == True:
-        print("Eroare detectată. Anulez misiunea")
+        print("Eroare detectata. Anulez misiunea")
     else:
-        print("Nicio eroare detectată. Decolez...")
-else: # număr necunoscut de secunde
+        print("Nicio eroare detectata. Decolez...")
+else: # numar necunoscut de secunde
     print(f"{secunde} secunde nu au niciun efect")
 
-print("Programul sare direct aici și nu mai verifică restul instrucțiunilor elif sau else-ul")
+print("Programul sare direct aici si nu mai verifica restul instructiunilor elif sau else-ul")
 ```
 
 Putem vedea rezultatul
 
 ```text
 Verific conexiunea cu turnul de control
-Programul sare direct aici și nu mai verifică restul instrucțiunilor elif sau else-ul
+Programul sare direct aici si nu mai verifica restul instructiunilor elif sau else-ul
 ```
 
 Dar de ce nu am scris programul așa?
 
 ```py
-secunde = 60  # numărul de secunde
-eroare_detectata = False # nicio eroare la început
+secunde = 60  # numarul de secunde
+eroare_detectata = False # nicio eroare la inceput
 
 if secunde == 100:
     print("Pornesc toate calculatoarele de la bord")
@@ -92,10 +92,10 @@ if secunde == 10:
     print("Pornesc motoarele principale")
 if secunde < 10:  # ultimele 10 secunde
     if eroare_detectata == True:
-        print("Eroare detectată. Anulez misiunea")
+        print("Eroare detectata. Anulez misiunea")
     else:
-        print("Nicio eroare detectată. Decolez...")
-else: # număr necunoscut de secunde
+        print("Nicio eroare detectata. Decolez...")
+else: # numar necunoscut de secunde
     print(f"{secunde} secunde nu au niciun efect")
 
 ```
@@ -132,17 +132,17 @@ Stația verifică în permanență nivelul ei de `oxigen` (în procente) și dac
 Cu `oxigen = 65`, programul tău ar trebui să afișeze
 
 ```text
-Oxigen scăzut - conservați energia
+Oxigen scazut - conservati energia
 ```
 
 Acum setează `oxigen = 12` și `echipaj_la_bord = True` și rulează din nou
 
 ```text
-Urgența - evacuați acum
+Urgenta - evacuati acum
 ```
 
 Și cu `oxigen = 12` și `echipaj_la_bord = False`
 
 ```text
-Nu avem echipaj la bord, deci aerisirea compartimentului este sigură
+Nu avem echipaj la bord, deci aerisirea compartimentului este sigura
 ```

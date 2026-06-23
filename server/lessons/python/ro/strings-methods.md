@@ -90,8 +90,8 @@ Putem de asemenea să omitem unul dintre numere
 
 ```py
 nume = "Tommy Vercetti"
-print(nume[:5])    # Tommy   (de la început până la 5 - 1)
-print(nume[6:])    # Vercetti (de la 6 până la sfârșit)
+print(nume[:5])    # Tommy   (de la inceput pana la 5 - 1)
+print(nume[6:])    # Vercetti (de la 6 pana la sfarsit)
 ```
 
 ---

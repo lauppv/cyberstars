@@ -40,7 +40,7 @@ scoruri = [65, 42, 88, 95, 71]
 
 for i in range(len(scoruri)):
     if scoruri[i] > 90:
-        print(f"Am găsit un scor peste 90: {scoruri[i]} la indexul {i}")
+        print(f"Am gasit un scor peste 90: {scoruri[i]} la indexul {i}")
         break
 ```
 
@@ -79,7 +79,7 @@ Cara
 programul ar trebui să afișeze
 
 ```text
-Cara este la stația 2
+Cara este la statia 2
 ```
 
 Dacă utilizatorul tastează

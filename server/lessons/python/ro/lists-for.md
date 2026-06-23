@@ -32,15 +32,15 @@ Putem folosi și **range()** cu **len()** dacă vrem **indexul** pe lângă valo
 ```py
 nume = ["Tommy", "Lance", "Cortez"]
 for i in range(0, len(nume)):
-    print(f"Erou numărul {i + 1}: {nume[i]}")
+    print(f"Erou numarul {i + 1}: {nume[i]}")
 ```
 
 Ieșire
 
 ```text
-Erou numărul 1: Tommy
-Erou numărul 2: Lance
-Erou numărul 3: Cortez
+Erou numarul 1: Tommy
+Erou numarul 2: Lance
+Erou numarul 3: Cortez
 ```
 
 De ce **i + 1**? Pentru că în cod numărăm de la **0**, dar oamenii încep de obicei de la **1** când spun „primul, al doilea, al treilea". Așa că adăugăm **1** doar pentru afișare

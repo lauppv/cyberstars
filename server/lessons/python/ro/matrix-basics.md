@@ -13,9 +13,9 @@ Aceasta este o matrice **3×3** (3 rânduri, 3 coloane). Fiecare listă interioa
 Ca să accesăm un element, folosim **doi indecși**: **matrix[rând][coloană]**
 
 ```py
-print(matrice[0][0])   # 1  (rândul 0, coloana 0)
-print(matrice[1][2])   # 6  (rândul 1, coloana 2)
-print(matrice[2][1])   # 8  (rândul 2, coloana 1)
+print(matrice[0][0])   # 1  (randul 0, coloana 0)
+print(matrice[1][2])   # 6  (randul 1, coloana 2)
+print(matrice[2][1])   # 8  (randul 2, coloana 1)
 ```
 
 ---
@@ -107,7 +107,7 @@ for rand in harta_joc:
     for celula in rand:
         if celula == 1:
             ziduri += 1
-print(f"Numărul de ziduri: {ziduri}")
+print(f"Numarul de ziduri: {ziduri}")
 ```
 
 Rezultat **Numărul de ziduri: 4**
@@ -127,10 +127,10 @@ Folosind **bucle imbricate**, afișează:
 **Ieșire**
 
 ```text
-Rând 1: 22
-Rând 2: 26
-Rând 3: 15
-Rând 4: 37
+Rand 1: 22
+Rand 2: 26
+Rand 3: 15
+Rand 4: 37
 Max: 10
 Peste 7: 7
 ```

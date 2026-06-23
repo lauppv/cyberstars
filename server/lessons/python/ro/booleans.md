@@ -30,9 +30,9 @@ varsta = 20
 are_permis = True
 
 if varsta >= 18 and are_permis == True:
-    print("Poți conduce")
+    print("Poti conduce")
 else:
-    print("Trebuie să ai cel puțin 18 ani și să ai permis pentru a putea conduce")
+    print("Trebuie sa ai cel putin 18 ani si sa ai permis pentru a putea conduce")
 ```
 
 Cuvântul cheie **and** spune: **ambele condiții trebuie să fie True**. Dacă măcar una dintre ele este **False**, întregul lucru este **False**
@@ -44,9 +44,9 @@ varsta = 20
 are_permis = False
 
 if varsta >= 18 and are_permis == True:
-    print("Poți conduce")
+    print("Poti conduce")
 else:
-    print("Trebuie să ai cel puțin 18 ani și să ai permis pentru a putea conduce")
+    print("Trebuie sa ai cel putin 18 ani si sa ai permis pentru a putea conduce")
 ```
 
 Aici **varsta >= 18** este **True**, dar **are_permis == True** este **False**. **True and False** = **False**, așa că mergem la **else**
@@ -55,7 +55,7 @@ Apropo, **are_permis == True** este același lucru cu a scrie doar **are_permis*
 
 ```py
 if varsta >= 18 and are_permis:
-    print("Poți conduce")
+    print("Poti conduce")
 ```
 
 Adesea programatorii preferă să omită **== True** pentru că se subînțelege că **if are_permis** înseamnă de fapt **if are_permis == True**. Se poate și să îl punem, și să nu îl punem, ambele la fel de corecte
@@ -69,7 +69,7 @@ este_vip = False
 are_invitatie = True
 
 if este_vip or are_invitatie:
-    print("Bun venit în club")
+    print("Bun venit in club")
 else:
     print("Acces refuzat")
 ```
@@ -81,7 +81,7 @@ Chiar dacă **este_vip** este **False**, **are_invitatie** este **True**, și as
 ```py
 este_autentificat = False
 if not este_autentificat:
-    print("Te rog autentifică-te mai întâi")
+    print("Te rog autentifica-te mai intai")
 ```
 
 Se citește aproape ca în limba română: _dacă nu este autentificat, te rog autentifică-te_
@@ -151,6 +151,6 @@ Dacă utilizatorul tastează pe rând `status`, apoi `salut`, apoi `oprire`, pro
 
 ```text
 Sistem activ
-Comandă necunoscută
-Se închide consola...
+Comanda necunoscuta
+Se inchide consola...
 ```

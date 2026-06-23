@@ -37,18 +37,18 @@ jucatori = ["Tommy", "Lance", "Cortez"]
 
 for echipa in echipe:
     for jucator in jucatori:
-        print(f"{jucator} joacă pentru {echipa}")
+        print(f"{jucator} joaca pentru {echipa}")
 ```
 
 Ieșire
 
 ```text
-Tommy joacă pentru Sharks
-Lance joacă pentru Sharks
-Cortez joacă pentru Sharks
-Tommy joacă pentru Bears
-Lance joacă pentru Bears
-Cortez joacă pentru Bears
+Tommy joaca pentru Sharks
+Lance joaca pentru Sharks
+Cortez joaca pentru Sharks
+Tommy joaca pentru Bears
+Lance joaca pentru Bears
+Cortez joaca pentru Bears
 ```
 
 Fiecare jucător este împerecheat cu fiecare echipă. Bucla exterioară alege o echipă, iar bucla interioară parcurge toți jucătorii pentru acea echipă

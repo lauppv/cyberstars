@@ -87,15 +87,15 @@ for curs in inscrieri:
         freq[curs] = 1
 
 for curs, contor in freq.items():
-    print(f"{curs}: {contor} studenți")
+    print(f"{curs}: {contor} studenti")
 ```
 
 Ieșire
 
 ```text
-python: 5 studenți
-java: 3 studenți
-c: 2 studenți
+python: 5 studenti
+java: 3 studenti
+c: 2 studenti
 ```
 
 ---

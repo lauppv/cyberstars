@@ -20,11 +20,11 @@ Fă următoarele, în ordine:
 **Ieșire**
 
 ```text
-În ambele:
+In ambele:
 Tommy
 Lance
 Scoruri mari echipa A: [85, 91]
 Potriviri:
-Lance și Quinn au amândoi scorul 72
-Cortez și Tommy au amândoi scorul 91
+Lance si Quinn au amandoi scorul 72
+Cortez si Tommy au amandoi scorul 91
 ```

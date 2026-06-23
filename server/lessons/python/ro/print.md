@@ -4,7 +4,7 @@ Primul concept este **afișarea rezultatului**, sau, în „termeni ingineri", *
 Cum îi spunem calculatorului „salut, îmi place pizza"? În Python scriem:
 
 ```py
-print("salut, îmi place pizza")
+print("salut, imi place pizza")
 ```
 
 Apropo, poți **rula** aceste bucăți de cod ca să vezi rezultatul. Te **încurajăm cu tărie să modifici aceste coduri și să explorezi**, să-ți pui întrebări de genul „ce se întâmplă dacă schimb asta, sau aia, sau altceva." Rulează mereu codul și vezi ce se întâmplă. Experimentarea poate fi uneori chiar **distractivă** :)
@@ -14,7 +14,7 @@ Apropo, poți **rula** aceste bucăți de cod ca să vezi rezultatul. Te **încu
 Un lucru important de observat sunt **ghilimelele** —
 
 ```py
-print(salut, îmi place pizza)
+print(salut, imi place pizza)
 ```
 
 nu va funcționa (vom învăța mai târziu de ce). Rulează și vezi ce se întâmplă
@@ -28,7 +28,7 @@ print("5")
 care va afișa 5, sau:
 
 ```py
-print("Am 2 câini")
+print("Am 2 caini")
 ```
 
 Din nou, nu uita ghilimelele.
@@ -41,7 +41,7 @@ Consola de control a stației pornește cu un banner de întâmpinare. Scrie un 
 
 ```text
 == CONTROL MISIUNE CYBERSTARS ==
-Stație: Orion
+Statie: Orion
 Stare: ONLINE
 Bun venit la bord, cadet!
 ```

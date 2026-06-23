@@ -80,6 +80,19 @@ export function fetchLessonCode(
   );
 }
 
+// Worked-out solution for a lesson's mission, shipped as <slug>-solution.md (a
+// markdown file with a single fenced code block). Optional: lessons without a
+// solution file simply reject, and the UI hides the "Show Solution" button.
+export function fetchLessonSolution(
+  courseKey: string,
+  lessonSlug: string,
+  lang = 'en',
+): Promise<string> {
+  return cached(`solution:${lang}:${courseKey}/${lessonSlug}`, () =>
+    getLocalizedText(courseKey, lessonSlug, '-solution', lang),
+  );
+}
+
 export function fetchCurriculum(): Promise<Course[]> {
   return getJson<Course[]>('/curriculum.json');
 }

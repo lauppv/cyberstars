@@ -91,7 +91,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-conditionals',
-    title: 'Recap: Ticket Calculator',
+    title: 'Recap: Ticket Booth',
     sortOrder: 9,
     hasCodeFile: true,
   },
@@ -133,7 +133,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-collections',
-    title: 'Recap: Shopping List',
+    title: 'Recap: Supply Run',
     sortOrder: 21,
     hasCodeFile: true,
   },
@@ -155,7 +155,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-dicts',
-    title: 'Recap: Grade Report',
+    title: 'Recap: Mission Control Report',
     sortOrder: 25,
     hasCodeFile: true,
   },
@@ -178,7 +178,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-data-structures',
-    title: 'Recap: Class Analyzer',
+    title: 'Recap: Crew Analysis',
     sortOrder: 30,
     hasCodeFile: true,
   },
@@ -207,7 +207,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-functions-adv',
-    title: 'Recap: Safe Math Toolkit',
+    title: 'Recap: Telemetry Toolkit',
     sortOrder: 35,
     hasCodeFile: true,
   },
@@ -249,7 +249,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-patterns',
-    title: 'Recap: Text Analyzer',
+    title: 'Recap: Mission Log Analyzer',
     sortOrder: 41,
     hasCodeFile: true,
   },
@@ -284,7 +284,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-algorithms',
-    title: 'Recap: Leaderboard',
+    title: 'Recap: Mission Leaderboard',
     sortOrder: 46,
     hasCodeFile: true,
   },
@@ -320,7 +320,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-problem-solving',
-    title: 'Recap: Word Game Toolkit',
+    title: 'Recap: Transmission Toolkit',
     sortOrder: 52,
     hasCodeFile: true,
   },
@@ -355,7 +355,7 @@ export const lessons = [
   {
     courseKey: 'python',
     slug: 'recap-recursion',
-    title: 'Recap: Dungeon Explorer',
+    title: 'Recap: Sector Scan',
     sortOrder: 57,
     hasCodeFile: true,
   },

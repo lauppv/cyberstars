@@ -97,7 +97,7 @@ Stația cere un cod de acces înainte să deschidă ușa. Scrie un program care 
 Dacă utilizatorul tastează pe rând `1111`, apoi `2222`, apoi `1234`, programul afișează
 
 ```text
-Cod greșit
-Cod greșit
+Cod gresit
+Cod gresit
 Acces permis
 ```

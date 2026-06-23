@@ -183,6 +183,6 @@ Dmitri: 73
 Sortate: [100, 88, 73, 47]
 Total: 308
 Medie: 77.0
-Toți au trecut: False
+Toti au trecut: False
 Vreunul perfect: True
 ```

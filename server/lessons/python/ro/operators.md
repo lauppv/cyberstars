@@ -5,9 +5,9 @@ a = 17
 b = 5
 
 print(a + b)   # adunare
-print(a - b)   # scădere
-print(a * b)   # înmulțire
-print(a / b)   # împărțire
+print(a - b)   # scadere
+print(a * b)   # inmultire
+print(a / b)   # impartire
 ```
 
 Ieșire
@@ -26,7 +26,7 @@ Dar dacă vrem **doar partea întreagă** a împărțirii? **17 / 5 = 3** cu un 
 ```py
 a = 17
 b = 5
-print(a // b)   # împărțire întreagă
+print(a // b)   # impartire intreaga
 ```
 
 Asta va afișa **3**. Am aruncat restul. **//** se numește **împărțire întreagă**

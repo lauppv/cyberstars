@@ -99,7 +99,7 @@ silent
 programul ar trebui să afișeze
 
 ```text
-Anagramă: True
+Anagrama: True
 Acces permis
 ```
 
@@ -113,6 +113,6 @@ robot
 programul ar trebui să afișeze
 
 ```text
-Anagramă: False
+Anagrama: False
 Acces refuzat
 ```

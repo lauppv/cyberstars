@@ -5,16 +5,16 @@ Ultimul nostru mini-proiect: un **manager de listă de sarcini**. O să construi
 Fiecare sarcină este un dicționar cu un **nume** și o stare **done**
 
 ```py
-sarcina = {"nume": "Învață Python", "done": False}
+sarcina = {"nume": "Invata Python", "done": False}
 ```
 
 Lista noastră de sarcini este o **listă** din aceste dicționare
 
 ```py
 todos = [
-    {"nume": "Învață Python", "done": True},
-    {"nume": "Construiește un proiect", "done": False},
-    {"nume": "Obține un job la CyberStars", "done": False}
+    {"nume": "Invata Python", "done": True},
+    {"nume": "Construieste un proiect", "done": False},
+    {"nume": "Obtine un job la CyberStars", "done": False}
 ]
 ```
 
@@ -63,9 +63,9 @@ Punând totul cap la cap
 ```py
 todos = []
 
-adauga_sarcina(todos, "Termină curriculumul de Python")
-adauga_sarcina(todos, "Începe curriculumul de Java")
-adauga_sarcina(todos, "Ieși la aer")
+adauga_sarcina(todos, "Termina curriculumul de Python")
+adauga_sarcina(todos, "Incepe curriculumul de Java")
+adauga_sarcina(todos, "Iesi la aer")
 
 afiseaza_sarcini(todos)
 print("---")
@@ -81,16 +81,16 @@ afiseaza_sarcini(todos)
 Ieșire
 
 ```text
-0. [neterminat] Termină curriculumul de Python
-1. [neterminat] Începe curriculumul de Java
-2. [neterminat] Ieși la aer
+0. [neterminat] Termina curriculumul de Python
+1. [neterminat] Incepe curriculumul de Java
+2. [neterminat] Iesi la aer
 ---
-0. [terminat] Termină curriculumul de Python
-1. [neterminat] Începe curriculumul de Java
-2. [neterminat] Ieși la aer
+0. [terminat] Termina curriculumul de Python
+1. [neterminat] Incepe curriculumul de Java
+2. [neterminat] Iesi la aer
 ---
-0. [terminat] Termină curriculumul de Python
-1. [neterminat] Începe curriculumul de Java
+0. [terminat] Termina curriculumul de Python
+1. [neterminat] Incepe curriculumul de Java
 ```
 
 Fiecare funcție face **un singur lucru** și îl face bine. Acesta este un principiu de bază al programării bune. Funcțiile sunt mici, ușor de înțeles, și ușor de testat
@@ -128,8 +128,8 @@ Codul de start din dreapta construiește deja tabla (adaugă trei sarcini, final
 **Ieșire**
 
 ```text
-0. [terminat] Rulează diagnoza
-1. [în așteptare] Realimentează reactorul
-2. [terminat] Trasează traseul
+0. [terminat] Ruleaza diagnoza
+1. [in asteptare] Realimenteaza reactorul
+2. [terminat] Traseaza traseul
 Finalizat: 2/3
 ```

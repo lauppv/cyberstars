@@ -50,9 +50,9 @@ for n in nume:
         gasit = True
 
 if gasit:
-    print(f"{tinta} este în listă!")
+    print(f"{tinta} este in lista!")
 else:
-    print(f"{tinta} nu este în listă")
+    print(f"{tinta} nu este in lista")
 ```
 
 Rezultat **Cortez este în listă!**
@@ -74,9 +74,9 @@ for n in nume:
         break
 
 if gasit:
-    print(f"Găsit {tinta}!")
+    print(f"Gasit {tinta}!")
 else:
-    print(f"{tinta} negăsit")
+    print(f"{tinta} negasit")
 ```
 
 ---
@@ -98,9 +98,9 @@ for caracter in parola:
         are_cifra = True
 
 if are_majuscula and are_minuscula and are_cifra:
-    print("Parolă puternică")
+    print("Parola puternica")
 else:
-    print("Parolă slabă")
+    print("Parola slaba")
 ```
 
 Rezultat **Parolă puternică**. Trei steaguri, câte unul pentru fiecare cerință
@@ -130,8 +130,8 @@ Orbit42
 programul ar trebui să afișeze
 
 ```text
-Are majusculă: True
-Are cifră: True
+Are majuscula: True
+Are cifra: True
 Suficient de lung: True
 Cod de acces valid
 ```
@@ -145,8 +145,8 @@ orbit
 programul ar trebui să afișeze
 
 ```text
-Are majusculă: False
-Are cifră: False
+Are majuscula: False
+Are cifra: False
 Suficient de lung: False
 Cod de acces invalid
 ```

@@ -107,9 +107,9 @@ Ca să verificăm dacă o cheie **există** înainte să o accesăm, folosim **i
 agenda_telefonica = {"Cortez": "555-1234"}
 
 if "Cortez" in agenda_telefonica:
-    print("L-am găsit pe Cortez!")
+    print("L-am gasit pe Cortez!")
 else:
-    print("Cortez nu este în agendă")
+    print("Cortez nu este in agenda")
 ```
 
 ---

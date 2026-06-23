@@ -8,8 +8,8 @@ def numara_finalizate(sarcini):
     pass
 
 sarcini = []
-adauga_sarcina(sarcini, "Rulează diagnoza")
-adauga_sarcina(sarcini, "Realimentează reactorul")
-adauga_sarcina(sarcini, "Trasează traseul")
+adauga_sarcina(sarcini, "Ruleaza diagnoza")
+adauga_sarcina(sarcini, "Realimenteaza reactorul")
+adauga_sarcina(sarcini, "Traseaza traseul")
 finalizeaza_sarcina(sarcini, 0)
 finalizeaza_sarcina(sarcini, 2)

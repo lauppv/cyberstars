@@ -5,7 +5,7 @@ nume = "Quincy"
 varsta = 32
 inaltime = 1.97
 
-print(f"Salut. Numele meu este {nume}, am {varsta} ani și am înălțimea de {inaltime}")
+print(f"Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}")
 ```
 
 Ce e acel **print()** lung, care arată ca un script? Ei bine, mai întâi, hai să ne întrebăm cum am putea afișa valorile pentru **nume**, **varsta** și **inaltime** în interiorul unui text
@@ -17,7 +17,7 @@ nume = "Quincy"
 varsta = 32
 inaltime = 1.90
 
-print("Salut. Numele meu este ", nume, ", am ", varsta, " ani și am înălțimea de ", inaltime)
+print("Salut. Numele meu este ", nume, ", am ", varsta, " ani si am inaltimea de ", inaltime)
 ```
 
 Problema e că, cu această abordare, trebuie să fii atent la spații, virgule și ghilimele… **fun fact**: am greșit de două ori când am scris asta **XD**
@@ -28,7 +28,7 @@ Credem că cea mai bună abordare este prima
 nume = "Cortez"
 varsta = 57
 inaltime = 1.67
-print(f"Salut. Numele meu este {nume}, am {varsta} ani și am înălțimea de {inaltime}")
+print(f"Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}")
 ```
 
 Evident, **nume**, **varsta** și **inaltime** sunt variabilele. Simbolurile **{}** funcționează ca un _placeholder_. În interiorul lor, dacă pui o variabilă, **numele variabilei va fi înlocuit cu valoarea ei**. Totuși, nu trebuie să uităm de **f**
@@ -38,13 +38,13 @@ nume = "Quincy"
 varsta = 32
 inaltime = 1.90
 
-print("Salut. Numele meu este {nume}, am {varsta} ani și am înălțimea de {inaltime}")
+print("Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}")
 ```
 
 Acum **nu am pus acel f**. Ce se va afișa? Corect, exact șirul de caractere
 
 ```text
-Salut. Numele meu este {nume}, am {varsta} ani și am înălțimea de {inaltime}
+Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}
 ```
 
 Și asta pentru că **f**-ul din fața șirului îi spune lui Python: „salut, înlocuiește ce e în {} cu valorile respective"
@@ -73,7 +73,7 @@ Folosind **f-string-uri**, afișează un raport de zbor pe trei linii:
 Cu valorile inițiale, programul tău ar trebui să afișeze
 
 ```text
-Pilotul Shadow pilotează Orion
-Combustibil: 400 unități
-Viteză: 7.5 km/s
+Pilotul Shadow piloteaza Orion
+Combustibil: 400 unitati
+Viteza: 7.5 km/s
 ```

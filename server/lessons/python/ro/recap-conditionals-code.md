@@ -1,1 +1,1 @@
-# decide de ce variabile ai nevoie și scrie codul aici
+# decide de ce variabile ai nevoie si scrie codul aici

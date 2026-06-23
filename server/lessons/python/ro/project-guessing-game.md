@@ -29,7 +29,7 @@ numar_secret = random.randint(1, 100)
 **Pasul 2**: cere-i jucătorului o ghicire, și spune-i dacă e prea mare sau prea mică
 
 ```py
-ghicire = int(input("Ghicește un număr (1-100): "))
+ghicire = int(input("Ghiceste un numar (1-100): "))
 if ghicire < numar_secret:
     print("Prea mic!")
 elif ghicire > numar_secret:
@@ -47,7 +47,7 @@ numar_secret = random.randint(1, 100)
 incercari = 0
 
 while True:
-    ghicire = int(input("Ghicește un număr (1-100): "))
+    ghicire = int(input("Ghiceste un numar (1-100): "))
     incercari += 1
 
     if ghicire < numar_secret:
@@ -55,7 +55,7 @@ while True:
     elif ghicire > numar_secret:
         print("Prea mare!")
     else:
-        print(f"Corect! L-ai ghicit în {incercari} încercări!")
+        print(f"Corect! L-ai ghicit in {incercari} incercari!")
         break
 ```
 
@@ -72,14 +72,14 @@ def joaca_joc():
     numar_secret = random.randint(1, 100)
     maxim_incercari = 7
 
-    print("Mă gândesc la un număr între 1 și 100")
-    print(f"Ai {maxim_incercari} încercări. Mult noroc!")
+    print("Ma gandesc la un numar intre 1 si 100")
+    print(f"Ai {maxim_incercari} incercari. Mult noroc!")
 
     for incercare in range(1, maxim_incercari + 1):
         try:
-            ghicire = int(input(f"Încercarea {incercare}/{maxim_incercari}: "))
+            ghicire = int(input(f"Incercarea {incercare}/{maxim_incercari}: "))
         except ValueError:
-            print("Ăsta nu e un număr!")
+            print("Asta nu e un numar!")
             continue
 
         if ghicire < numar_secret:
@@ -87,10 +87,10 @@ def joaca_joc():
         elif ghicire > numar_secret:
             print("Prea mare!")
         else:
-            print(f"Corect! L-ai ghicit în {incercare} încercări!")
+            print(f"Corect! L-ai ghicit in {incercare} incercari!")
             return
 
-    print(f"Joc terminat! Numărul a fost {numar_secret}")
+    print(f"Joc terminat! Numarul a fost {numar_secret}")
 
 joaca_joc()
 ```
@@ -115,5 +115,5 @@ Reactorul este blocat în spatele unui cod numeric secret. Un instrument de diag
 40: prea mic
 45: prea mare
 42: corect
-Spart în 5 încercări!
+Spart in 5 incercari!
 ```

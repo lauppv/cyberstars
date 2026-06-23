@@ -121,9 +121,9 @@ Apoi, în programul principal:
 **Ieșire**
 
 ```text
-Înainte: 100
+Inainte: 100
 Ignorat: 100
-După: 200
+Dupa: 200
 ```
 
 Linia `Ignorat` dovedește că funcția nu poate schimba variabila globală de la sine — noua valoare se păstrează doar când **stochezi valoarea returnată**.

@@ -1,8 +1,8 @@
 quiz = [
-{"text": "Care comandă arată rezultatul?", "raspuns": "B"},
-{"text": "Ce începe un comentariu?", "raspuns": "C"},
-{"text": "Ce returnează len()?", "raspuns": "A"},
-{"text": "Care cuvânt-cheie definește o funcție?", "raspuns": "D"},
+{"text": "Care comanda arata rezultatul?", "raspuns": "B"},
+{"text": "Ce incepe un comentariu?", "raspuns": "C"},
+{"text": "Ce returneaza len()?", "raspuns": "A"},
+{"text": "Care cuvant-cheie defineste o functie?", "raspuns": "D"},
 ]
 raspunsuri_jucator = ["B", "C", "A", "B"]
 
