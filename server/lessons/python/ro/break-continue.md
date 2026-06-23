@@ -115,6 +115,8 @@ print("Sistem oprit")
 
 **while True** ar fi în mod normal o buclă infinită. Dar la fiecare pas cerem o comandă, iar dacă utilizatorul tastează **stop**, **break** ne scoate din buclă. Orice altceva ar tasta, programul afișează **Execut: ...** și întreabă din nou
 
+Observă **comanda == "stop"**. Până acum am folosit **==** doar cu numere, dar el merge la fel de bine și cu **text**: **comanda == "stop"** este **True** doar dacă în variabilă se află exact cuvântul **stop**. Compararea de text ține cont de litere mari și mici, deci **"Stop"** sau **"STOP"** ar fi diferite de **"stop"**
+
 ---
 
 ## Misiune: Scaner manual de sectoare

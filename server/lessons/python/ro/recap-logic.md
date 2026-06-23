@@ -1,4 +1,4 @@
-Acesta este un **recap**. Pune la lucru tot ce am învățat până acum: **input**, **operatori**, **booleeni**, bucle și **break** / **continue**. Tu decizi cum le combini
+Acesta este un **recap**. Pune la lucru tot ce am învățat până acum: **input**, **booleeni**, bucle și **break** / **continue**. Tu decizi cum le combini
 
 ---
 
