@@ -1,1 +1,1 @@
-# fă o variabilă care să stocheze valoarea temperaturii
+# fa o variabila care sa stocheze valoarea temperaturii

@@ -30,7 +30,7 @@ try:
     numar = int("abc")
     print(numar)
 except:
-    print("Acela nu e un număr valid")
+    print("Acela nu e un numar valid")
 ```
 
 Rezultat **Acela nu e un număr valid**
@@ -39,10 +39,10 @@ Cum funcționează: Python **încearcă** (try) să ruleze codul din blocul **tr
 
 ```py
 try:
-    varsta = int(input("Vârsta ta: "))
+    varsta = int(input("Varsta ta: "))
     print(f"La anul vei avea {varsta + 1}")
 except:
-    print("Te rog introdu un număr, nu text!")
+    print("Te rog introdu un numar, nu text!")
 ```
 
 Dacă utilizatorul tastează **18**, totul funcționează. Dacă tastează **hello**, primim un mesaj prietenos în loc de o prăbușire
@@ -53,13 +53,13 @@ Putem fi **specifici** în privința erorii pe care vrem să o prindem
 
 ```py
 try:
-    numar = int(input("Introdu un număr: "))
+    numar = int(input("Introdu un numar: "))
     rezultat = 100 / numar
     print(rezultat)
 except ValueError:
-    print("Acela nu e un număr!")
+    print("Acela nu e un numar!")
 except ZeroDivisionError:
-    print("Nu poți împărți la zero!")
+    print("Nu poti imparti la zero!")
 ```
 
 Dacă utilizatorul tastează text → este prinsă o **ValueError**. Dacă tastează **0** → este prinsă o **ZeroDivisionError**. Fiecare eroare primește propriul mesaj. Asta e mai bine decât un **except** generic, pentru că știm exact ce a mers prost
@@ -71,12 +71,12 @@ Un tipar comun: continuă să întrebi până când utilizatorul oferă o intrar
 ```py
 while True:
     try:
-        varsta = int(input("Vârsta ta: "))
+        varsta = int(input("Varsta ta: "))
         break
     except ValueError:
-        print("Acela nu e un număr, mai încearcă")
+        print("Acela nu e un numar, mai incearca")
 
-print(f"Vârsta ta este {varsta}")
+print(f"Varsta ta este {varsta}")
 ```
 
 Bucla **while True** continuă să ruleze. Dacă **int()** reușește, **ieșim** (break) din buclă. Dacă eșuează, afișăm un mesaj și bucla continuă. Este un tipar pe care îl vei folosi mult
@@ -93,14 +93,14 @@ except ValueError:
 else:
     print("Nicio eroare, super!")
 finally:
-    print("Asta rulează mereu")
+    print("Asta ruleaza mereu")
 ```
 
 Ieșire
 
 ```text
 Nicio eroare, super!
-Asta rulează mereu
+Asta ruleaza mereu
 ```
 
 **else** și **finally** sunt opționale. Deocamdată, **try** și **except** sunt cele importante

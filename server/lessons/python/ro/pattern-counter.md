@@ -59,7 +59,7 @@ for caracter in text:
     elif caracter == " ":
         spatii = spatii + 1
 
-print(f"Litere: {litere}, Cifre: {cifre}, Spații: {spatii}")
+print(f"Litere: {litere}, Cifre: {cifre}, Spatii: {spatii}")
 ```
 
 Rezultat **Litere: 10, Cifre: 3, Spații: 2**

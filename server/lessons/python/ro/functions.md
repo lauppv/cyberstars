@@ -6,22 +6,22 @@ varsta = 60
 
 i = 0
 for i in range(0, 11):
-    print(f"Mă numesc {nume} și am vârsta {varsta}")
+    print(f"Ma numesc {nume} si am varsta {varsta}")
 ```
 
 Ieșire:
 
 ```text
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
-Mă numesc Cortez și am vârsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
+Ma numesc Cortez si am varsta 60
 ```
 
 Ce se întâmplă dacă vrem să afișăm același lucru, dar cu _Tommy Vercetti_ și vârsta _42_? Bineînțeles, putem schimba valorile variabilelor
@@ -32,22 +32,22 @@ varsta = 42
 
 i = 0
 for i in range(0, 11):
-    print(f"Mă numesc {nume} și am vârsta {varsta}")
+    print(f"Ma numesc {nume} si am varsta {varsta}")
 ```
 
 Ieșire:
 
 ```text
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
-Mă numesc Tommy Vercetti și am vârsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
+Ma numesc Tommy Vercetti si am varsta 42
 ```
 
 și asta e în regulă
@@ -60,7 +60,7 @@ Se dovedește că cel mai bun mod, și cel care face codul cel mai **lizibil**, 
 def functia_mea(nume, varsta):
     i = 0
     for i in range(0, 11):
-        print(f"Mă numesc {nume} și am vârsta {varsta}")
+        print(f"Ma numesc {nume} si am varsta {varsta}")
 
 functia_mea("Cortez", 60)
 functia_mea("Tommy Vercetti", 42)
@@ -83,7 +83,7 @@ La fel ca **print()**, folosim paranteze **()**
 def functia_mea(n, a):
     i = 0
     for i in range(0, 11):
-        print(f"Mă numesc {n} și am vârsta {a}")
+        print(f"Ma numesc {n} si am varsta {a}")
 
 functia_mea("Cortez", 60)
 functia_mea("Tommy Vercetti", 42)
@@ -103,10 +103,10 @@ def f(nume, stare):
 
 nume = "Admin"
 este_online = True
-f(nume, este_online) # afișează Admin este online
+f(nume, este_online) # afiseaza Admin este online
 
 este_online = False
-f(nume, este_online) # afișează admin este offline
+f(nume, este_online) # afiseaza admin este offline
 ```
 
 ---

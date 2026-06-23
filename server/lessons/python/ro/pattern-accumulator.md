@@ -88,7 +88,7 @@ Ai o listă de intensități de semnal `puncte_tari` și un cuvânt `cod` (ambel
 **Ieșire**
 
 ```text
-Sumă: 255
+Suma: 255
 Puternice: [65, 90]
 Inversat: TIBRO
 ```

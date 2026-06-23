@@ -15,7 +15,7 @@ un tricou e suficient
 ```py
 temperatura = 14
 if temperatura < 15:
-    print("Ia o bluză")
+    print("Ia o bluza")
 else:
     print("Un tricou e suficient")
 ```
@@ -32,7 +32,7 @@ Apoi tot ce scriem după aceste **:** trebuie să fie **indentat**. De ce? Ca Py
 ```py
 temperatura = 14
 if temperatura < 15:
-print("Ia o bluză")
+print("Ia o bluza")
 else:
 print("Un tricou e suficient")
 ```
@@ -74,7 +74,7 @@ utilizator = "Tommy Vercetti"
 este_utilizator_online = True
 
 if este_utilizator_online == True:
-    print(f"{utilizator} joacă GTA Vice City")
+    print(f"{utilizator} joaca GTA Vice City")
 else:
     print(f"{utilizator} este offline")
 ```
@@ -86,7 +86,7 @@ utilizator = "Tommy Vercetti"
 este_utilizator_online = False
 
 if este_utilizator_online == True:
-    print(f"{utilizator} joacă GTA Vice City")
+    print(f"{utilizator} joaca GTA Vice City")
 else:
     print(f"{utilizator} este offline")
 ```

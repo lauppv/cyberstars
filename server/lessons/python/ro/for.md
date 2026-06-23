@@ -165,11 +165,11 @@ Cu **6** celule, cele impare sunt **1, 3, 5**, deci programul afișează
 Cu **0** celule afișează
 
 ```text
-Fără celule
+Fara celule
 ```
 
 Cu **1** celulă afișează
 
 ```text
-O singură celulă
+O singura celula
 ```

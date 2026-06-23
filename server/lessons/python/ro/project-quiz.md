@@ -20,16 +20,16 @@ intrebare = {
 quiz = [
     {
         "text": "Ce face print()?",
-        "optiuni": ["A) Citește input", "B) Afișează rezultatul", "C) Creează o variabilă", "D) Face bucle"],
+        "optiuni": ["A) Citeste input", "B) Afiseaza rezultatul", "C) Creeaza o variabila", "D) Face bucle"],
         "raspuns": "B"
     },
     {
-        "text": "Ce simbol se folosește pentru comentarii în Python?",
+        "text": "Ce simbol se foloseste pentru comentarii in Python?",
         "optiuni": ["A) //", "B) /*", "C) #", "D) --"],
         "raspuns": "C"
     },
     {
-        "text": "Ce returnează len()?",
+        "text": "Ce returneaza len()?",
         "optiuni": ["A) Tipul", "B) Valoarea", "C) Lungimea", "D) Nimic"],
         "raspuns": "C"
     }
@@ -44,19 +44,19 @@ Acum hai să construim logica jocului
 scor = 0
 
 for i, q in enumerate(quiz):
-    print(f"\nÎntrebarea {i + 1}: {q['text']}")
+    print(f"\nIntrebarea {i + 1}: {q['text']}")
     for optiune in q["optiuni"]:
         print(f"  {optiune}")
 
-    raspuns = input("Răspunsul tău (A/B/C/D): ").upper()
+    raspuns = input("Raspunsul tau (A/B/C/D): ").upper()
 
     if raspuns == q["raspuns"]:
         print("Corect!")
         scor += 1
     else:
-        print(f"Greșit! Răspunsul era {q['raspuns']}")
+        print(f"Gresit! Raspunsul era {q['raspuns']}")
 
-print(f"\nAi obținut {scor}/{len(quiz)}")
+print(f"\nAi obtinut {scor}/{len(quiz)}")
 ```
 
 Observă ce am folosit: **listă de dicționare**, **enumerate**, **bucle for**, **if/else**, **input**, **metode pe șiruri** (.upper()), **f-string-uri**, și **tiparul de contor**. Toate uneltele din acest curriculum, lucrând împreună
@@ -70,17 +70,17 @@ def ruleaza_test(intrebari):
     scor = 0
 
     for i, q in enumerate(intrebari):
-        print(f"\nÎntrebarea {i + 1}: {q['text']}")
+        print(f"\nIntrebarea {i + 1}: {q['text']}")
         for optiune in q["optiuni"]:
             print(f"  {optiune}")
 
-        raspuns = input("Răspunsul tău: ").upper()
+        raspuns = input("Raspunsul tau: ").upper()
 
         if raspuns == q["raspuns"]:
             print("Corect!")
             scor += 1
         else:
-            print(f"Greșit! Răspunsul era {q['raspuns']}")
+            print(f"Gresit! Raspunsul era {q['raspuns']}")
 
     return scor, len(intrebari)
 

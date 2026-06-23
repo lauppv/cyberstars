@@ -23,7 +23,7 @@ Trebuie să afișezi prețul final al biletului
 Pentru un client de **8 ani** la un film **3D**, programul tău ar trebui să afișeze
 
 ```text
-Preț standard: 10 EUR
+Pret standard: 10 EUR
 Reducere: 5 EUR
 Taxa 3D: 2 EUR
 Total: 7 EUR
@@ -34,7 +34,7 @@ Total: 7 EUR
 Acum încearcă un client de **30 de ani** la un film care **nu e 3D**
 
 ```text
-Preț standard: 10 EUR
+Pret standard: 10 EUR
 Reducere: 0 EUR
 Total: 10 EUR
 ```
@@ -42,7 +42,7 @@ Total: 10 EUR
 Sau un client de **70 de ani** la un film **3D**
 
 ```text
-Preț standard: 10 EUR
+Pret standard: 10 EUR
 Reducere: 4 EUR
 Taxa 3D: 2 EUR
 Total: 8 EUR
@@ -51,7 +51,7 @@ Total: 8 EUR
 Și un client de **4 ani** la un film care **nu e 3D**
 
 ```text
-Preț standard: 10 EUR
+Pret standard: 10 EUR
 Reducere: 10 EUR
 Total: 0 EUR
 ```

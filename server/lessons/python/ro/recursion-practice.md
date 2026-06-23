@@ -102,5 +102,5 @@ Fiecare transmisiune poartă un cod numeric, iar stația îl verifică cu o **su
 5: 5
 4070: 11
 88: 16
-Cea mai mare sumă de control: 27
+Cea mai mare suma de control: 27
 ```

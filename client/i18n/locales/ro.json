@@ -478,6 +478,8 @@
     "confirmReset": "Resetezi codul la șablonul implicit al lecției? Codul actual se va pierde.",
     "save": "💾 Salvează",
     "codeSaved": "Cod salvat!",
+    "showSolution": "💡 Arată soluția",
+    "solutionTitle": "Soluția",
     "badgeEarned": "Insignă obținută: {{label}}"
   },
   "laniakea": {

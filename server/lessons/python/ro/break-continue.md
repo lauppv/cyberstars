@@ -31,7 +31,7 @@ Un exemplu real: imaginează-ți că scanăm sectoarele stației, unul câte unu
 ```py
 for sector in range(1, 100):
     if sector == 7:
-        print(f"Semnal găsit în sectorul {sector}!")
+        print(f"Semnal gasit in sectorul {sector}!")
         break
     print(f"Scanez sectorul {sector}...")
 ```
@@ -45,7 +45,7 @@ Scanez sectorul 3...
 Scanez sectorul 4...
 Scanez sectorul 5...
 Scanez sectorul 6...
-Semnal găsit în sectorul 7!
+Semnal gasit in sectorul 7!
 ```
 
 Bucla nu a mai verificat sectoarele de la **8** la **99**, pentru că am găsit deja ce voiam. **break** ne-a economisit timp
@@ -106,7 +106,7 @@ Ambele cuvinte cheie funcționează la fel în buclele **while**, nu doar în **
 
 ```py
 while True:
-    comanda = input("Comandă: ")
+    comanda = input("Comanda: ")
     if comanda == "stop":
         break
     print(f"Execut: {comanda}")
@@ -136,7 +136,7 @@ Dacă operatorul tastează pe rând `4`, apoi `-2`, apoi `7`, apoi `0`, programu
 ```text
 Sector 4 verificat
 Sector 7 verificat
-Scanare terminată
+Scanare terminata
 ```
 
 `-2` este sărit, iar `0` oprește scanarea.

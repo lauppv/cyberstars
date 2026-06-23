@@ -20,7 +20,7 @@ breasla = "CyberStars"
 După afișare cu print() și f{}, ar trebui să vedem:
 
 ```text
-Jucătorul Shadow(42) are viața 97.5 și face parte din CyberStars.
+Jucatorul Shadow(42) are viata 97.5 si face parte din CyberStars.
 ```
 
 Observație:

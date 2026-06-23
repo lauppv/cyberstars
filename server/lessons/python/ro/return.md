@@ -111,7 +111,7 @@ varsta = 25
 if este_adult(varsta):
     print("Bun venit")
 else:
-    print("Îmi pare rău, prea tânăr")
+    print("Imi pare rau, prea tanar")
 ```
 
 Mai curat decât să scrii **if varsta >= 18** peste tot, mai ales dacă condiția noastră se complică
@@ -123,7 +123,7 @@ Mai curat decât să scrii **if varsta >= 18** peste tot, mai ales dacă condiț
 ```py
 def f():
     return 1
-    print("nu se afișează niciodată")   # asta nu rulează niciodată
+    print("nu se afiseaza niciodata")   # asta nu ruleaza niciodata
 
 print(f())
 ```
@@ -135,11 +135,11 @@ Putem folosi asta ca să ieșim **devreme** dintr-o funcție
 ```py
 def imparte(a, b):
     if b == 0:
-        return "nu se poate împărți la zero"
+        return "nu se poate imparti la zero"
     return a / b
 
 print(imparte(10, 2))    # 5.0
-print(imparte(10, 0))    # nu se poate împărți la zero
+print(imparte(10, 0))    # nu se poate imparti la zero
 ```
 
 ---

@@ -13,6 +13,7 @@ import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
+import { SolutionModal } from '../components/code/SolutionModal';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -45,8 +46,11 @@ export function LessonPage() {
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
 
-  const { title, content, starterCode, savedCode, isLoading } = useLesson(category, lesson);
-  const { output, isRunning, execute, sendInput } = useCodeExecution();
+  const { title, content, starterCode, savedCode, solution, isLoading } = useLesson(
+    category,
+    lesson,
+  );
+  const { output, isRunning, execute, sendInput, clearOutput } = useCodeExecution();
   const terminal = useTerminalSession(isTerminal ? category : '', isTerminal ? lesson : '');
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
@@ -59,6 +63,7 @@ export function LessonPage() {
   const [toastData, setToastData] = useState({ icon: '✅', title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
+  const [showSolution, setShowSolution] = useState(false);
 
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -93,8 +98,12 @@ export function LessonPage() {
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
     justMarkedRef.current = false;
-    setTimeout(() => setShowToast(false), 0);
-  }, [lesson]);
+    clearOutput();
+    setTimeout(() => {
+      setShowToast(false);
+      setShowSolution(false);
+    }, 0);
+  }, [lesson, clearOutput]);
 
   useEffect(() => {
     if (isLoggedIn && category && lesson) {
@@ -296,6 +305,14 @@ export function LessonPage() {
                 {courseMeta(category).langLabel}
               </div>
               <div className="flex items-center gap-2">
+                {solution && (
+                  <button
+                    onClick={() => setShowSolution(true)}
+                    className="text-[12px] px-3 py-1 rounded-[var(--radius-sm)] bg-[var(--warning)]/10 border border-[var(--warning)]/30 text-[var(--warning)] font-semibold hover:bg-[var(--warning)]/20 transition cursor-pointer"
+                  >
+                    {t('lesson.showSolution')}
+                  </button>
+                )}
                 {isLoggedIn && (
                   <button
                     onClick={handleMarkComplete}
@@ -322,7 +339,21 @@ export function LessonPage() {
                 >
                   {t('lesson.reset')}
                 </button>
-                <RunButton onClick={handleRun} isRunning={isRunning} />
+                {isLoggedIn && (
+                  <>
+                    <button
+                      onClick={handleSave}
+                      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
+                    >
+                      {t('lesson.save')}
+                    </button>
+                    {showSaveToast && (
+                      <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
+                        {t('lesson.codeSaved')}
+                      </span>
+                    )}
+                  </>
+                )}
               </div>
             </div>
 
@@ -337,21 +368,9 @@ export function LessonPage() {
             </div>
 
             <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
-              {isLoggedIn && (
-                <div className="flex gap-2 mb-3 items-center flex-wrap">
-                  <button
-                    onClick={handleSave}
-                    className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-                  >
-                    {t('lesson.save')}
-                  </button>
-                  {showSaveToast && (
-                    <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                      {t('lesson.codeSaved')}
-                    </span>
-                  )}
-                </div>
-              )}
+              <div className="flex gap-2 mb-3 items-center flex-wrap">
+                <RunButton onClick={handleRun} isRunning={isRunning} />
+              </div>
 
               <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
             </div>
@@ -371,6 +390,9 @@ export function LessonPage() {
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />
+      {showSolution && solution && (
+        <SolutionModal solution={solution} onClose={() => setShowSolution(false)} />
+      )}
     </div>
   );
 }

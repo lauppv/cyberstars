@@ -112,9 +112,9 @@ interogari = [23, 50, 8, 91, 100]
 
 ```text
 23 -> index 5
-50 -> negăsit
+50 -> negasit
 8 -> index 2
 91 -> index 9
-100 -> negăsit
-Găsite: 3
+100 -> negasit
+Gasite: 3
 ```

@@ -4,14 +4,14 @@
 ```py
 # acesta este un comentariu
 a = 1 + 2 + 3
-print(a) # afișează variabila a
+print(a) # afiseaza variabila a
 ```
 
 Acest program funcționează așa cum ne așteptam
 
 ```py
-# acum vreau să dezactivez ceva în program
-# fără să-l șterg
+# acum vreau sa dezactivez ceva in program
+# fara sa-l sterg
 a = 1 + 2 + 3
 # print(a)
 ```
@@ -36,10 +36,10 @@ mai multe linii
 Totuși, în lecțiile următoare vom folosi comentarii cu **#**, chiar dacă se întind pe mai multe linii
 
 ```py
-# așa vom scrie
+# asa vom scrie
 # comentariile noastre
 # pentru a da indicii
-# și pentru a explica de acum încolo
+# si pentru a explica de acum incolo
 ```
 
 ---
