@@ -5,6 +5,3 @@ quiz = [
 {"text": "Care cuvant-cheie defineste o functie?", "raspuns": "D"},
 ]
 raspunsuri_jucator = ["B", "C", "A", "B"]
-
-def noteaza_test(intrebari, raspunsuri):
-    pass

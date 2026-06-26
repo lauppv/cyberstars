@@ -72,7 +72,7 @@ Am sărit peste **viata** (am păstrat valoarea implicită 100) și am schimbat 
 
 ## Misiune: Jurnal de Andocare
 
-Scrie o funcție `andocheaza(nava, bay="A1", prioritate="normala")` care afișează `nava andocat la bay (prioritate)`. Parametrii `bay` și `prioritate` au **valori implicite**, deci pot fi omiși.
+Scrie o funcție `andocheaza(nava, bay="A1", prioritate="normal")` care afișează `nava andocat la bay (prioritate)`. Parametrii `bay` și `prioritate` au **valori implicite**, deci pot fi omiși.
 
 Apeleaz-o exact așa (apelurile sunt deja în starter):
 
@@ -82,7 +82,7 @@ andocheaza("Odyssey", "B7")
 andocheaza("Pioneer", prioritate="urgent")
 ```
 
-Observă că ultimul apel folosește un **argument cu nume** (`prioritate="urgenta"`) ca să sară peste `bay` și să-i păstreze valoarea implicită în timp ce setează totuși prioritatea.
+Observă că ultimul apel folosește un **argument cu nume** (`prioritate="urgent"`) ca să sară peste `bay` și să-i păstreze valoarea implicită în timp ce setează totuși prioritatea.
 
 **Ieșire**
 

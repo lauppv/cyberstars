@@ -84,7 +84,7 @@ Clean. Easy to read. Perfect use case
 
 ## Mission: Data Filter
 
-You have a list of sensor readings (already on the right). Using **list comprehension** for each step:
+You have a list of sensor readings. Using **list comprehension** for each step:
 
 1. Create `high` — only the readings **above 80**
 2. Create `doubled` — every reading **multiplied by 2**

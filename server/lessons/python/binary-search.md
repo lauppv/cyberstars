@@ -97,7 +97,7 @@ Output **6**. Same logic, different style
 
 ## Mission: Archive Lookup
 
-The station archive stores crew IDs in a **sorted** list (already on the right). Mission Control fires off a batch of lookup queries and needs each one answered fast — so you'll use **binary search**, not a linear scan.
+The station archive stores crew IDs in a **sorted** list. Mission Control fires off a batch of lookup queries and needs each one answered fast — so you'll use **binary search**, not a linear scan.
 
 1. Write a function **binary_search(numbers, target)** that returns the **index** where `target` sits in the sorted list, or `-1` if it isn't there.
 2. For each query, print the query, then `-> index ` and the index if it was found, or `-> not found` if it wasn't.

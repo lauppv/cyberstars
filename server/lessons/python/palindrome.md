@@ -12,7 +12,7 @@ else:
 
 Output **Palindrome!**
 
-That's it. One line of logic. We reverse the string and check if it's the same as the original. Python makes this absurdly simple :)
+That's it. One line of logic. We reverse the string and check if it's the same as the original. Python makes this absurdly simple
 
 ---
 
@@ -69,13 +69,13 @@ True
 False
 ```
 
-We first **clean** the string: keep only letters and convert to lowercase. Then check if it's a palindrome. Step by step, just like we learned in the decomposition lesson :)
+We first **clean** the string: keep only letters and convert to lowercase. Then check if it's a palindrome. Step by step, just like we learned in the decomposition lesson
 
 ---
 
 ## Mission: Signal Integrity Check
 
-A signal code is only trustworthy if it reads the same forwards and backwards — a **palindrome**. The station logged a batch of codes (already on the right) and needs them checked.
+A signal code is only trustworthy if it reads the same forwards and backwards — a **palindrome**. The station logged a batch of codes and needs them checked.
 
 1. Write a function **is_palindrome(word)** that returns `True` if the word is a palindrome, `False` otherwise. Use a **loop** (compare the first letter with the last, the second with the second-to-last, ...), not `[::-1]`.
 2. For each code, print the code, then `: `, then the result.

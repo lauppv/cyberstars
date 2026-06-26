@@ -5,6 +5,3 @@ quiz = [
 {"text": "Which keyword defines a function?", "answer": "D"},
 ]
 player_answers = ["B", "C", "A", "B"]
-
-def grade_quiz(questions, answers):
-    pass

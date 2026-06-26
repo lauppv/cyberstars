@@ -10,7 +10,7 @@ matrice = [
 
 Aceasta este o matrice **3×3** (3 rânduri, 3 coloane). Fiecare listă interioară este un **rând**
 
-Ca să accesăm un element, folosim **doi indecși**: **matrix[rând][coloană]**
+Ca să accesăm un element, folosim **doi indecși**: **matrice[rand][coloana]**
 
 ```py
 print(matrice[0][0])   # 1  (randul 0, coloana 0)
@@ -110,17 +110,17 @@ for rand in harta_joc:
 print(f"Numarul de ziduri: {ziduri}")
 ```
 
-Rezultat **Numărul de ziduri: 4**
+Rezultat **Numarul de ziduri: 4**
 
 ---
 
 ## Misiune: Grila de Senzori
 
-Senzorii de pe carena stației își raportează citirile sub forma unei **grile 4×4** (o listă de liste, deja în dreapta). Controlul Misiunii vrea un rezumat rapid al grilei.
+Senzorii de pe carena stației își raportează citirile sub forma unei **grile 4×4** (o listă de liste). Controlul Misiunii vrea un rezumat rapid al grilei.
 
 Folosind **bucle imbricate**, afișează:
 
-1. **Suma fiecărui rând**, câte una pe linie, etichetată `Rând 1: `, `Rând 2: `, și așa mai departe (rândurile numerotate de la 1).
+1. **Suma fiecărui rând**, câte una pe linie, etichetată `Rand 1: `, `Rand 2: `, și așa mai departe (rândurile numerotate de la 1).
 2. `Max: ` urmat de cea mai **mare** citire de oriunde din grilă.
 3. `Peste 7: ` urmat de **câte** citiri sunt strict mai mari decât 7.
 

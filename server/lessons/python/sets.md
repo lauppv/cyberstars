@@ -91,7 +91,7 @@ Output **3**, not 4, because the duplicate **red** was removed
 
 ## Mission: Signal Log
 
-The station picked up a list of signal codes, and many repeat (already on the right). Do the following:
+The station picked up a list of signal codes, and many repeat. Do the following:
 
 1. Print `Total: ` then the total number of signals (length of the list)
 2. Make a **set** of the unique codes

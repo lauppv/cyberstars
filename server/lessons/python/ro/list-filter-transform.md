@@ -83,9 +83,9 @@ Hai să facem un exemplu mai complex. Avem notele unor elevi și vrem să
 note = [45, 82, 67, 91, 38, 74, 55, 96]
 
 rezultat = []
-for grade in note:
-    if grade >= 50:
-        amplificat = grade + 5
+for nota in note:
+    if nota >= 50:
+        amplificat = nota + 5
         if amplificat > 100:
             amplificat = 100
         rezultat.append(amplificat)
@@ -105,10 +105,10 @@ rezultat = [min(g + 5, 100) for g in note if g >= 50]
 
 ## Misiune: Filtru pentru Rețeaua de Energie
 
-Reactoarele stației raportează citiri de putere (deja în dreapta). Inginerii vor să se concentreze pe reactoarele **stabile** și să le dea un mic impuls — dar niciun reactor nu poate depăși 100.
+Reactoarele stației raportează citiri de putere. Inginerii vor să se concentreze pe reactoarele **stabile** și să le dea un mic impuls — dar niciun reactor nu poate depăși 100.
 
 1. **Filtrează**: păstrează doar citirile care sunt `>= 50` (reactoarele stabile).
-2. **Transformă**: adaugă un impuls de 5 puncte fiecărei citiri păstrate, **plafonat la 100** (folosește `min(reading + 5, 100)` ca să nu treacă nimic peste).
+2. **Transformă**: adaugă un impuls de 5 puncte fiecărei citiri păstrate, **plafonat la 100** (folosește `min(citire + 5, 100)` ca să nu treacă nimic peste).
 3. Afișează `Cu impuls: ` urmat de lista rezultată.
 4. Afișează `Reactoare stabile: ` urmat de câte au trecut testul.
 5. Afișează `Medie: ` urmat de media citirilor cu impuls, rotunjită la un număr întreg cu `round()`.

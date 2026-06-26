@@ -82,7 +82,7 @@ Rezultat **3**. Funcționează și cu alți operatori: **x -= 1**, **x \*= 2**, 
 
 ## Misiune: Benzi de Citiri
 
-Ai o listă de citiri ale reactorului (deja în dreapta). Folosind **tiparul contor**, numără câte se încadrează în fiecare bandă și afișează totalurile:
+Ai o listă de citiri ale reactorului. Folosind **tiparul contor**, numără câte se încadrează în fiecare bandă și afișează totalurile:
 
 - `Mici: ` apoi câte citiri sunt **sub 50**
 - `Medii: ` apoi câte sunt **de la 50 la 99** (inclusiv)

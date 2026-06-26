@@ -60,10 +60,10 @@ Ieșire
 
 Hai să urmărim pas cu pas **cautare_binara([1,3,5,7,9,11,13,15,17,19], 13)**
 
-- left=0, right=9, mid=4 → numere[4]=9 < 13 → left=5
-- left=5, right=9, mid=7 → numere[7]=15 > 13 → right=6
-- left=5, right=6, mid=5 → numere[5]=11 < 13 → left=6
-- left=6, right=6, mid=6 → numere[6]=13 == 13 → **găsit la indexul 6!**
+- stanga=0, dreapta=9, mijloc=4 → numere[4]=9 < 13 → stanga=5
+- stanga=5, dreapta=9, mijloc=7 → numere[7]=15 > 13 → dreapta=6
+- stanga=5, dreapta=6, mijloc=5 → numere[5]=11 < 13 → stanga=6
+- stanga=6, dreapta=6, mijloc=6 → numere[6]=13 == 13 → **găsit la indexul 6!**
 
 ---
 
@@ -97,11 +97,11 @@ Rezultat **6**. Aceeași logică, alt stil
 
 ## Misiune: Căutare în Arhivă
 
-Arhiva stației stochează ID-urile echipajului într-o listă **sortată** (deja în dreapta). Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid — așa că vei folosi **căutarea binară**, nu o scanare liniară.
+Arhiva stației stochează ID-urile echipajului într-o listă **sortată**. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid — așa că vei folosi **căutarea binară**, nu o scanare liniară.
 
-1. Scrie o funcție **binary_search(numere, tinta)** care returnează **indexul** unde se află `tinta` în lista sortată, sau `-1` dacă nu este acolo.
-2. Pentru fiecare interogare, afișează interogarea, apoi `-> index ` și indexul dacă a fost găsit, sau `-> negăsit` dacă nu.
-3. Afișează `Găsite: ` urmat de câte interogări au fost localizate.
+1. Scrie o funcție **cautare_binara(numere, tinta)** care returnează **indexul** unde se află `tinta` în lista sortată, sau `-1` dacă nu este acolo.
+2. Pentru fiecare interogare, afișează interogarea, apoi `-> index ` și indexul dacă a fost găsit, sau `-> negasit` dacă nu.
+3. Afișează `Gasite: ` urmat de câte interogări au fost localizate.
 
 ```py
 ids = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]

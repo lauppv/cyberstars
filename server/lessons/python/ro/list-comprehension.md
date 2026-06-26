@@ -84,11 +84,11 @@ Curat. Ușor de citit. Cazul perfect de folosire
 
 ## Misiune: Filtru de Date
 
-Ai o listă de citiri de senzori (deja în dreapta). Folosind **list comprehension** pentru fiecare pas:
+Ai o listă de citiri de senzori. Folosind **list comprehension** pentru fiecare pas:
 
-1. Creează `high` — doar citirile **peste 80**
-2. Creează `doubled` — fiecare citire **înmulțită cu 2**
-3. Creează `passing` — doar citirile care sunt **50 sau mai mult**
+1. Creează `mari` — doar citirile **peste 80**
+2. Creează `dublate` — fiecare citire **înmulțită cu 2**
+3. Creează `promovate` — doar citirile care sunt **50 sau mai mult**
 4. Afișează toate cele trei liste, fiecare pe linia ei
 
 **Ieșire**

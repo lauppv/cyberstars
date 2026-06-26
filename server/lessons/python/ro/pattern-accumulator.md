@@ -79,11 +79,11 @@ Rezultat **120** (2 × 3 × 4 × 5). Observă că pornim de la **1**, nu de la *
 
 ## Misiune: Acumulator de Semnal
 
-Ai o listă de intensități de semnal `puncte_tari` și un cuvânt `cod` (ambele în dreapta). Folosind **tiparul acumulator** pentru fiecare pas:
+Ai o listă de intensități de semnal `puncte_tari` și un cuvânt `cod`. Folosind **tiparul acumulator** pentru fiecare pas:
 
 1. `Sumă: ` apoi totalul tuturor intensităților (acumulează de la `0`)
 2. `Puternice: ` apoi o **listă** doar cu intensitățile **peste 50** (acumulează într-o listă goală `[]`)
-3. `Inversat: ` apoi cuvântul code inversat **caracter cu caracter** (acumulează într-un șir gol `""`, punând fiecare caracter nou în **față**)
+3. `Inversat: ` apoi cuvântul `cod` inversat **caracter cu caracter** (acumulează într-un șir gol `""`, punând fiecare caracter nou în **față**)
 
 **Ieșire**
 

@@ -73,7 +73,7 @@ Output
 2: Cortez
 ```
 
-Same result, but we don't have to write **range(len(...))** and **names[i]**. Much nicer :)
+Same result, but we don't have to write **range(len(...))** and **names[i]**. Much nicer
 
 ---
 
@@ -164,7 +164,7 @@ The second argument tells Python how many decimal places we want
 
 ## Mission: Crew Leaderboard
 
-You have two lists: `crew` (names) and `scores` (already on the right). Using the **built-in functions** you just learned:
+You have two lists: `crew` (names) and `scores`. Using the **built-in functions** you just learned:
 
 1. Use `zip` to print each crew member with their score as `name: score`
 2. Print `Sorted: ` then the scores sorted from **highest to lowest** (`sorted(..., reverse=True)`)

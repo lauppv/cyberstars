@@ -1,26 +1,22 @@
-Combine **return values**, **dictionaries**, and **looping over dictionaries**
+This is a **recap**. It puts to work the things you've learned recently: **return values** (`return`), **dictionaries**, and **looping** over them with `.keys()`, `.values()`, and `.items()`. You decide how to combine them
 
 ---
 
 ## Mission: Mission Control Report
 
-Write a function `analyze(scores)` that takes a dictionary of crew names → scores and **returns a dictionary** with three keys:
+You have a dictionary of crew members and their scores from the last mission.
 
-- `"average"` — the average score (sum of all scores divided by how many there are)
-- `"top"` — the name of the crew member with the highest score
+Write a function `analyze(scores)` that takes this dictionary and **returns a new dictionary** with three keys:
+
+- `"average"` — the average score (sum of all scores divided by how many members there are)
+- `"top"` — the name of the member with the highest score
 - `"passing"` — a **list** of names whose score is **50 or more**
 
-The crew scores are already on the right:
-
-```python
-scores = {"Tommy": 95, "Lance": 42, "Cortez": 88, "Phil": 37, "Mira": 76}
-```
-
-Call the function, then print the report:
+Then **call** the function and use the returned dictionary to print the report:
 
 1. `Average: ` then the average
 2. `Top: ` then the top name
-3. `Passing:` on its own line, then each passing name on the following lines (loop over the list)
+3. `Passing:` on its own line, then each passing name on its own line (loop over the list)
 
 **Output**
 

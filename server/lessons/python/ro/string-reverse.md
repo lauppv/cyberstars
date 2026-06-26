@@ -61,7 +61,7 @@ Rezultatul **City Vice love I**
 
 Tocmai a sosit o transmisiune bruiată. Echipajul bănuiește că a fost trimisă **invers**, așa că trebuie să o întorci în două moduri și să vezi care are sens.
 
-1. Scrie o funcție **reverse_text(text)** care returnează textul inversat **caracter cu caracter**, folosind o buclă (**nu folosi `[::-1]`**).
+1. Scrie o funcție **inverseaza_text(text)** care returnează textul inversat **caracter cu caracter**, folosind o buclă (**nu folosi `[::-1]`**).
 2. **Citește** transmisiunea, apoi afișează `Inversat: ` urmat de textul inversat caracter cu caracter.
 3. Inversează de asemenea **ordinea cuvintelor** (desparte în cuvinte, inversează lista, lipește înapoi cu spații) și afișează `Ordine cuvinte: ` urmat de rezultat.
 

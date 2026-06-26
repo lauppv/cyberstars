@@ -93,9 +93,9 @@ print(f"\nScor final: {scor}/{total} ({procent}%)")
 
 ## Misiune: Quiz-ul de Certificare al Echipajului
 
-Echipajul nou trebuie să treacă un quiz de certificare. Întrebările și răspunsurile candidatului sunt deja înregistrate (în dreapta), așa că nu e nevoie de `input()` — tu doar evaluezi și raportezi.
+Echipajul nou trebuie să treacă un quiz de certificare. Întrebările și răspunsurile candidatului sunt deja înregistrate, așa că nu e nevoie de `input()` — tu doar evaluezi și raportezi.
 
-1. Scrie o funcție **grade_quiz(questions, answers)** care returnează câte dintre răspunsurile candidatului se potrivesc cu câmpul `"answer"` al întrebării corespunzătoare.
+1. Scrie o funcție **noteaza_test(intrebari, raspunsuri)** care returnează câte dintre răspunsurile candidatului se potrivesc cu câmpul `"raspuns"` al întrebării corespunzătoare.
 2. Afișează `Scor: ` urmat de numărul de răspunsuri corecte, un `/`, și numărul total de întrebări.
 3. Afișează `Procentaj: ` urmat de scor ca procentaj cu număr întreg (folosește `round(scor / total * 100)`), apoi un `%`.
 4. Afișează `PASS` dacă procentajul este `50` sau mai mare, altfel `FAIL`.

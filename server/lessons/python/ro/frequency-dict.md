@@ -102,10 +102,10 @@ c: 2 studenti
 
 ## Misiune: Frecvențele Semnalelor
 
-Antena stației înregistrează fiecare semnal pe care îl primește după litera canalului (deja în dreapta). Controlul Misiunii vrea să știe cât de ocupat este fiecare canal și care este cel mai aglomerat.
+Antena stației înregistrează fiecare semnal pe care îl primește după litera canalului. Controlul Misiunii vrea să știe cât de ocupat este fiecare canal și care este cel mai aglomerat.
 
 1. Construiește un **dicționar de frecvențe** care numără de câte ori apare fiecare canal.
-2. Afișează fiecare canal și numărătoarea lui ca `channel: contor`, **sortate alfabetic** (parcurge `sorted(freq)`).
+2. Afișează fiecare canal și numărătoarea lui ca `canal: contor`, **sortate alfabetic** (parcurge `sorted(freq)`).
 3. Găsește canalul **cel mai comun** și afișează `Cel mai comun: ` urmat de litera lui.
 
 **Ieșire**

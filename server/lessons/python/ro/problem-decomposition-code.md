@@ -1,10 +1,10 @@
-log = "alpha beta alpha gamma beta alpha"
+jurnal = "alpha beta alpha gamma beta alpha"
 
-def desparte_coduri(log):
+def desparte_coduri(jurnal):
     pass
 
 def numara_coduri(coduri):
     pass
 
-def cel_mai_frecvent(numere):
+def cel_mai_frecvent(contor):
     pass

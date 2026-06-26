@@ -102,7 +102,7 @@ c: 2 students
 
 ## Mission: Signal Frequencies
 
-The station's antenna logs every signal it receives by channel letter (already on the right). Mission Control wants to know how busy each channel is, and which one is busiest.
+The station's antenna logs every signal it receives by channel letter. Mission Control wants to know how busy each channel is, and which one is busiest.
 
 1. Build a **frequency dictionary** counting how many times each channel appears.
 2. Print each channel and its count as `channel: count`, **sorted alphabetically** (loop over `sorted(freq)`).

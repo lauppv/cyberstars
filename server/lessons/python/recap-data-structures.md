@@ -4,7 +4,7 @@ Combine **tuples**, **sets**, **nested loops**, and **list comprehension**
 
 ## Mission: Crew Analysis
 
-You're comparing two teams. Each crew member is a **tuple** of `(name, score)` (both lists are already on the right):
+You're comparing two teams. Each crew member is a **tuple** of `(name, score)`:
 
 ```python
 team_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]

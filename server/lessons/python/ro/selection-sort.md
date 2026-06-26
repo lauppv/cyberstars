@@ -67,7 +67,7 @@ Scopul învățării acestor algoritmi nu este să-i folosești în producție. 
 
 Scanerul din zona de marfă raportează greutățile containerelor în ordinea în care au fost încărcate. Ca să echilibreze cala, echipajul are nevoie ca acestea să fie sortate de la cel mai ușor la cel mai greu.
 
-Scrie o funcție **selection_sort(numere)** care sortează o listă în ordine **crescătoare** folosind selection sort și **returnează** lista sortată.
+Scrie o funcție **sortare_selectie(numere)** care sortează o listă în ordine **crescătoare** folosind selection sort și **returnează** lista sortată.
 
 Apoi sortează două loturi de greutăți și afișează fiecare rezultat.
 

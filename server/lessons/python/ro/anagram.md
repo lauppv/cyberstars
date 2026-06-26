@@ -68,7 +68,7 @@ Observă **ieșirea timpurie**: dacă lungimile sunt diferite, nu pot fi anagram
 
 ---
 
-Abordarea cu frecvențe este de fapt **mai rapidă** decât sortarea pentru șiruri foarte lungi. Sortarea ia aproximativ **n × log(n)** pași, în timp ce numărarea ia doar **n** pași. Pentru acest exercițiu, ambele sunt bune, dar e bine să te gândești la astfel de lucruri :)
+Abordarea cu frecvențe este de fapt **mai rapidă** decât sortarea pentru șiruri foarte lungi. Sortarea ia aproximativ **n × log(n)** pași, în timp ce numărarea ia doar **n** pași. Pentru acest exercițiu, ambele sunt bune, dar e bine să te gândești la astfel de lucruri
 
 ---
 
@@ -76,8 +76,8 @@ Abordarea cu frecvențe este de fapt **mai rapidă** decât sortarea pentru șir
 
 Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se deschide doar dacă cele două parole sunt **anagrame** una a celeilalte — aceleași litere într-o ordine diferită (nu contează majusculele).
 
-1. Scrie o funcție **are_anagrams(a, b)** care returnează `True` dacă cele două cuvinte sunt anagrame, `False` altfel. Folosește **oricare** abordare (sortează literele și compară, sau un dicționar de frecvențe). Transformă-le mai întâi în minuscule ca să nu conteze majusculele.
-2. **Citește** două parole, apoi afișează `Anagramă: ` urmat de rezultat.
+1. Scrie o funcție **sunt_anagrame(a, b)** care returnează `True` dacă cele două cuvinte sunt anagrame, `False` altfel. Folosește **oricare** abordare (sortează literele și compară, sau un dicționar de frecvențe). Transformă-le mai întâi în minuscule ca să nu conteze majusculele.
+2. **Citește** două parole, apoi afișează `Anagrama: ` urmat de rezultat.
 3. Pe linia următoare, afișează `Acces permis` dacă se potrivesc, sau `Acces refuzat` dacă nu.
 
 **Intrare** (tastat de utilizator când rulează programul):

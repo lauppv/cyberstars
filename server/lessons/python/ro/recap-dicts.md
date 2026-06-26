@@ -1,26 +1,22 @@
-Combină **valori returnate**, **dicționare** și **parcurgerea dicționarelor**
+Acesta este un **recap**. Pune la lucru lucrurile învățate recent: **valori returnate** (`return`), **dicționare** și **parcurgerea** lor cu `.keys()`, `.values()` și `.items()`. Tu decizi cum le combini
 
 ---
 
 ## Misiune: Raport de la Centrul de Control
 
-Scrie o funcție `analyze(scoruri)` care primește un dicționar de nume ale echipajului → scoruri și **returnează un dicționar** cu trei chei:
+Ai un dicționar cu membrii echipajului și scorurile lor de la ultima misiune.
 
-- `"average"` — scorul mediu (suma tuturor scorurilor împărțită la câte sunt)
-- `"top"` — numele membrului echipajului cu cel mai mare scor
-- `"passing"` — o **listă** de nume al căror scor este **50 sau mai mult**
+Scrie o funcție `analizeaza(scoruri)` care primește acest dicționar și **returnează un dicționar nou** cu trei chei:
 
-Scorurile echipajului sunt deja în dreapta:
+- `"medie"` — scorul mediu (suma tuturor scorurilor împărțită la câți membri sunt)
+- `"top"` — numele membrului cu cel mai mare scor
+- `"promovati"` — o **listă** cu numele celor al căror scor este **50 sau mai mare**
 
-```python
-scoruri = {"Tommy": 95, "Lance": 42, "Cortez": 88, "Phil": 37, "Mira": 76}
-```
-
-Apelează funcția, apoi afișează raportul:
+Apoi **apelează** funcția și folosește dicționarul returnat ca să afișezi raportul:
 
 1. `Medie: ` apoi media
 2. `Cel mai bun: ` apoi numele celui mai bun
-3. `Promovați:` pe linia lui, apoi fiecare nume care a trecut pe liniile următoare (parcurge lista)
+3. `Promovati:` pe linia lui, apoi fiecare nume promovat pe câte o linie (parcurge lista)
 
 **Ieșire**
 

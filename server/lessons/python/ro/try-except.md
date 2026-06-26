@@ -17,7 +17,7 @@ print(nume[10])
 print(10 / 0)
 ```
 
-**Rulează**-l. **ZeroDivisionError**. Matematica zice nu :)
+**Rulează**-l. **ZeroDivisionError**. Matematica zice nu
 
 ---
 
@@ -109,7 +109,7 @@ Asta ruleaza mereu
 
 ## Misiune: Curățarea Senzorilor
 
-Stația primește o listă de citiri de senzori sub formă de **string-uri**, dar unele sunt corupte — nu sunt deloc numere (deja în dreapta). Parcurge lista și, folosind **try/except**, transformă fiecare element într-un întreg:
+Stația primește o listă de citiri de senzori sub formă de **string-uri**, dar unele sunt corupte — nu sunt deloc numere. Parcurge lista și, folosind **try/except**, transformă fiecare element într-un întreg:
 
 - dacă se convertește, adaugă-l la un **total** curent
 - dacă `int()` aruncă o `ValueError`, numără-l drept **corupt** și mergi mai departe (fără prăbușire)
