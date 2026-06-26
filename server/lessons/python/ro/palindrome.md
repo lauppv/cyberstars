@@ -12,7 +12,7 @@ else:
 
 Rezultat **Palindrom!**
 
-Asta e tot. O singură linie de logică. Inversăm șirul și verificăm dacă este la fel ca originalul. Python face asta absurd de simplu :)
+Asta e tot. O singură linie de logică. Inversăm șirul și verificăm dacă este la fel ca originalul. Python face asta absurd de simplu
 
 ---
 
@@ -69,15 +69,15 @@ True
 False
 ```
 
-Mai întâi **curățăm** șirul: păstrăm doar literele și le transformăm în litere mici. Apoi verificăm dacă este palindrom. Pas cu pas, exact cum am învățat în lecția despre descompunere :)
+Mai întâi **curățăm** șirul: păstrăm doar literele și le transformăm în litere mici. Apoi verificăm dacă este palindrom. Pas cu pas, exact cum am învățat în lecția despre descompunere
 
 ---
 
 ## Misiune: Verificarea Integrității Semnalului
 
-Un cod de semnal este de încredere doar dacă se citește la fel de la stânga la dreapta și invers — un **palindrom**. Stația a înregistrat un lot de coduri (deja în dreapta) și trebuie verificate.
+Un cod de semnal este de încredere doar dacă se citește la fel de la stânga la dreapta și invers — un **palindrom**. Stația a înregistrat un lot de coduri și trebuie verificate.
 
-1. Scrie o funcție **is_palindrome(cuvant)** care returnează `True` dacă cuvântul este palindrom, `False` altfel. Folosește o **buclă** (compară prima literă cu ultima, a doua cu penultima, ...), nu `[::-1]`.
+1. Scrie o funcție **este_palindrom(cuvant)** care returnează `True` dacă cuvântul este palindrom, `False` altfel. Folosește o **buclă** (compară prima literă cu ultima, a doua cu penultima, ...), nu `[::-1]`.
 2. Pentru fiecare cod, afișează codul, apoi `: `, apoi rezultatul.
 3. Numără câte coduri sunt palindroame și afișează `Semnale valide: ` urmat de acel număr.
 

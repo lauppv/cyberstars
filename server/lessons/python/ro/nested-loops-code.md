@@ -1,1 +1,0 @@
-randuri = int(input())

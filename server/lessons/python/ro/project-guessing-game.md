@@ -101,11 +101,11 @@ Observă cum am folosit **tot**: import, funcție, buclă for, try/except, if/el
 
 ## Misiune: Spărgătorul de Cod al Reactorului
 
-Reactorul este blocat în spatele unui cod numeric secret. Un instrument de diagnosticare a înregistrat deja o secvență de ghiciri (deja în dreapta) — redă-le și raportează cum a decurs spargerea. Nu există nimic aleatoriu aici, așa că rezultatul este același la fiecare rulare.
+Reactorul este blocat în spatele unui cod numeric secret. Un instrument de diagnosticare a înregistrat deja o secvență de ghiciri — redă-le și raportează cum a decurs spargerea. Nu există nimic aleatoriu aici, așa că rezultatul este același la fiecare rulare.
 
 1. Scrie o funcție **verifica_ghicirea(numar_secret, ghicire)** care returnează `"prea mic"` dacă ghicirea e mai mică decât secretul, `"prea mare"` dacă e mai mare, și `"corect"` dacă se potrivesc.
 2. Parcurge ghicirile, numărând încercările. Pentru fiecare ghicire, afișează ghicirea, apoi `: `, apoi rezultatul.
-3. **Oprește-te** imediat ce o ghicire e corectă, apoi afișează `Spart în N încercări!` (cu numărul real de încercări).
+3. **Oprește-te** imediat ce o ghicire e corectă, apoi afișează `Spart in N incercari!` (cu numărul real de încercări).
 
 **Ieșire**
 

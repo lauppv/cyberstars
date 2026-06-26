@@ -4,7 +4,7 @@ Combină **tuple**, **set-uri**, **bucle imbricate** și **list comprehension**
 
 ## Misiune: Analiza Echipajului
 
-Compari două echipe. Fiecare membru al echipajului este un **tuple** de forma `(nume, scor)` (ambele liste sunt deja în dreapta):
+Compari două echipe. Fiecare membru al echipajului este un **tuple** de forma `(nume, scor)`:
 
 ```python
 echipa_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]

@@ -23,7 +23,7 @@ rezultat = cautare_liniara(nume, "Shrek")
 print(rezultat)
 ```
 
-Afișează **-1**. Shrek nu este în Vice City :)
+Afișează **-1**. Shrek nu este în Vice City
 
 ---
 

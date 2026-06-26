@@ -90,7 +90,7 @@ Why **range(i + 1, len(numbers))**? Because we don't want to pair a number with 
 
 ## Mission: Log Analyzer
 
-The station log is a single string of event codes separated by spaces (already on the right). **Break the work into three functions**, then use them together:
+The station log is a single string of event codes separated by spaces. **Break the work into three functions**, then use them together:
 
 1. `split_codes(log)` — returns the **list** of codes (use `.split(" ")`)
 2. `count_codes(codes)` — returns a **dictionary** mapping each code to how many times it appears

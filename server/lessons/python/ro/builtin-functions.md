@@ -73,7 +73,7 @@ Afișează
 2: Cortez
 ```
 
-Același rezultat, dar nu mai trebuie să scriem **range(len(...))** și **nume[i]**. Mult mai frumos :)
+Același rezultat, dar nu mai trebuie să scriem **range(len(...))** și **nume[i]**. Mult mai frumos
 
 ---
 
@@ -83,8 +83,8 @@ Același rezultat, dar nu mai trebuie să scriem **range(len(...))** și **nume[
 nume = ["Tommy", "Lance", "Cortez"]
 scoruri = [95, 80, 70]
 
-for nume, scor in zip(nume, scoruri):
-    print(f"{nume}: {scor}")
+for membru, scor in zip(nume, scoruri):
+    print(f"{membru}: {scor}")
 ```
 
 Afișează
@@ -164,7 +164,7 @@ Al doilea argument îi spune lui Python câte zecimale vrem
 
 ## Misiune: Clasamentul Echipajului
 
-Ai două liste: `echipaj` (nume) și `scoruri` (deja în dreapta). Folosind **funcțiile încorporate** pe care tocmai le-ai învățat:
+Ai două liste: `echipaj` (nume) și `scoruri`. Folosind **funcțiile încorporate** pe care tocmai le-ai învățat:
 
 1. Folosește `zip` ca să afișezi fiecare membru al echipajului cu scorul său ca `nume: scor`
 2. Afișează `Sortate: ` apoi scorurile sortate de la **cel mai mare la cel mai mic** (`sorted(..., reverse=True)`)

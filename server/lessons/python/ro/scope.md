@@ -9,7 +9,7 @@ saluta()
 print(mesaj)
 ```
 
-**Rulează** asta. Primul **print** funcționează (în interiorul funcției), dar al doilea se prăbușește cu o **NameError**: nume 'mesaj' is not defined
+**Rulează** asta. Primul **print** funcționează (în interiorul funcției), dar al doilea se prăbușește cu o **NameError**: name 'mesaj' is not defined
 
 De ce? Pentru că **mesaj** a fost creat **în interiorul** funcției și există doar acolo. Odată ce funcția se termină, **mesaj** dispare. Asta se numește **scope** (domeniu de vizibilitate)
 
@@ -114,9 +114,9 @@ Scrie o funcție `amplifica(scut)` care **returnează** valoarea scutului dublat
 Apoi, în programul principal:
 
 1. Setează `scut = 100`
-2. Afișează `Înainte: ` apoi scut
+2. Afișează `Inainte: ` apoi scut
 3. Apelează `amplifica(scut)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi scut — observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
-4. Acum fă `scut = amplifica(scut)` și afișează `După: ` apoi scut
+4. Acum fă `scut = amplifica(scut)` și afișează `Dupa: ` apoi scut
 
 **Ieșire**
 

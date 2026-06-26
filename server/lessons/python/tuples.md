@@ -14,7 +14,7 @@ coordinates = (10, 20)
 coordinates[0] = 99
 ```
 
-**Run** it. Python will scream at us with a **TypeError**: 'tuple' object does not support item assignment. In other words: "you can't change me" :)
+**Run** it. Python will scream at us with a **TypeError**: 'tuple' object does not support item assignment. In other words: "you can't change me"
 
 ---
 
@@ -96,7 +96,7 @@ Output
 20
 ```
 
-This is the same **unpacking** we saw in **.items()** when looping through dictionaries. Now you know where it comes from :)
+This is the same **unpacking** we saw in **.items()** when looping through dictionaries. Now you know where it comes from
 
 ---
 
@@ -120,10 +120,10 @@ Donkey
 
 ## Mission: Star Chart
 
-The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`. You have a list of them (already on the right).
+The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`
 
 1. Loop over the list and **unpack** each tuple into three variables: `name`, `distance`, `planets`
-2. Print each system as `name: distance ly, planets planets` — for example `Sol: 0 ly, 8 planets`
+2. Print each system as `name: distance ly, planets planets` — for example `Sol: 0 ly, 8 planets` (`ly` = light years)
 3. After the loop, print `Total planets: ` then the sum of all the planets
 
 **Output**

@@ -17,7 +17,7 @@ print(names[10])
 print(10 / 0)
 ```
 
-**Run** it. **ZeroDivisionError**. Math says no :)
+**Run** it. **ZeroDivisionError**. Math says no
 
 ---
 
@@ -109,7 +109,7 @@ This always runs
 
 ## Mission: Sensor Cleanup
 
-The station receives a list of sensor readings as **strings**, but some are corrupted — they aren't numbers at all (already on the right). Go through the list and, using **try/except**, turn each one into an integer:
+The station receives a list of sensor readings as **strings**, but some are corrupted — they aren't numbers at all. Go through the list and, using **try/except**, turn each one into an integer:
 
 - if it converts, add it to a running **total**
 - if `int()` raises a `ValueError`, count it as **corrupted** and move on (no crash)

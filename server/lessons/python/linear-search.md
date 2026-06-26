@@ -23,7 +23,7 @@ result = linear_search(names, "Shrek")
 print(result)
 ```
 
-Output **-1**. Shrek is not in Vice City :)
+Output **-1**. Shrek is not in Vice City
 
 ---
 

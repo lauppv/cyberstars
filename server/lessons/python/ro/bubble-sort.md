@@ -67,7 +67,7 @@ De aceea, în codul real folosim **sorted()**, care folosește un algoritm mult 
 
 Reactoarele stației raportează valorile puterii într-o ordine aleatorie. Inginerii au nevoie ca acestea să fie aliniate de la cea mai mică la cea mai mare ca să observe dintr-o privire cel mai slab reactor.
 
-Scrie o funcție **bubble_sort(numere)** care sortează o listă în ordine **crescătoare** folosind bubble sort și **returnează** lista sortată.
+Scrie o funcție **sortare_bule(numere)** care sortează o listă în ordine **crescătoare** folosind bubble sort și **returnează** lista sortată.
 
 Apoi sortează două loturi de valori și afișează fiecare rezultat.
 

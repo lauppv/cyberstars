@@ -87,7 +87,7 @@ Here we compare each element with the **previous** one. If they're different, it
 
 ## Mission: Docking Pairs
 
-Ships waiting to dock each carry a fuel load (already on the right, sorted from lowest to highest). Two ships may share a docking clamp only if their fuel loads add up to exactly the target. Find every valid pair.
+Ships waiting to dock each carry a fuel load (sorted from lowest to highest). Two ships may share a docking clamp only if their fuel loads add up to exactly the `target`. Find every valid pair.
 
 Write a function **pair_with_sum(numbers, target)** that takes a **sorted** list and a target number, and returns a list of **all** pairs that add up to the target. Use the **two pointers** technique (one pointer at the start, one at the end, move them towards each other).
 
@@ -95,6 +95,7 @@ Then print `Pairs: ` followed by the list of pairs, and `Total pairs: ` followed
 
 ```py
 fuels = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+target = 10
 ```
 
 **Output**

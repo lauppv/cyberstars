@@ -14,7 +14,7 @@ coordonate = (10, 20)
 coordonate[0] = 99
 ```
 
-**Rulează**-l. Python va țipa la noi cu o **TypeError**: 'tuple' object does not support item assignment. Cu alte cuvinte: „nu mă poți schimba" :)
+**Rulează**-l. Python va țipa la noi cu o **TypeError**: 'tuple' object does not support item assignment. Cu alte cuvinte: „nu mă poți schimba"
 
 ---
 
@@ -96,7 +96,7 @@ Ieșire
 20
 ```
 
-Aceasta este aceeași **despachetare** pe care am văzut-o la **.items()** când parcurgeam dicționare. Acum știi de unde vine :)
+Aceasta este aceeași **despachetare** pe care am văzut-o la **.items()** când parcurgeam dicționare. Acum știi de unde vine
 
 ---
 
@@ -120,10 +120,10 @@ Donkey
 
 ## Misiune: Harta Stelară
 
-Calculatorul de navigație al stației stochează fiecare sistem stelar ca un **tuple** de `(nume, distance, planets)`. Ai o listă cu ele (deja în dreapta).
+Calculatorul de navigație al stației stochează fiecare sistem stelar ca un **tuple** de `(nume, distanta, planete)`
 
-1. Parcurge lista și **despachetează** (unpack) fiecare tuple în trei variabile: `nume`, `distance`, `planets`
-2. Afișează fiecare sistem ca `nume: distance al, planets planete` — de exemplu `Sol: 0 al, 8 planete`
+1. Parcurge lista și **despachetează** (unpack) fiecare tuple în trei variabile: `nume`, `distanta`, `planete`
+2. Afișează fiecare sistem ca `nume: distanta al, planete planete` — de exemplu `Sol: 0 al, 8 planete` (`al` = ani-lumină)
 3. După buclă, afișează `Total planete: ` apoi suma tuturor planetelor
 
 **Ieșire**

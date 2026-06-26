@@ -105,7 +105,7 @@ result = [min(g + 5, 100) for g in grades if g >= 50]
 
 ## Mission: Power Grid Filter
 
-The station's reactors report power readings (already on the right). Engineering wants to focus on the **stable** reactors and give them a small boost — but no reactor may exceed 100.
+The station's reactors report power readings. Engineering wants to focus on the **stable** reactors and give them a small boost — but no reactor may exceed 100.
 
 1. **Filter**: keep only readings that are `>= 50` (the stable reactors).
 2. **Transform**: add a 5-point boost to each kept reading, **capped at 100** (use `min(reading + 5, 100)` so nothing goes over).

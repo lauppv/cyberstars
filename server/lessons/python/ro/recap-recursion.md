@@ -4,7 +4,7 @@ Combină **recursivitatea**, **matricele (liste 2D)** și **căutarea binară**
 
 ## Misiune: Scanarea Sectorului
 
-O scanare pe rază lungă întoarce o **hartă a sectorului** sub forma unei grile 2D (o listă de liste, deja în dreapta) unde:
+O scanare pe rază lungă întoarce o **hartă a sectorului** sub forma unei grile 2D (o listă de liste) unde:
 
 - **0** = spațiu liber
 - **1** = resturi
@@ -12,11 +12,11 @@ O scanare pe rază lungă întoarce o **hartă a sectorului** sub forma unei gri
 
 Adună tot din acest capitol — **matrice**, **recursivitate** și **căutare binară**:
 
-**count_beacons(sector)** — folosește **bucle imbricate** pe grilă ca să numeri câte faruri (`2`-urile) conține.
+**numara_balize(sector)** — folosește **bucle imbricate** pe grilă ca să numeri câte faruri (`2`-urile) conține.
 
-**flatten_sorted(sector)** — restrânge grila 2D într-o **listă sortată cu valorile unice** care apar în ea.
+**aplatizeaza_sortat(sector)** — restrânge grila 2D într-o **listă sortată cu valorile unice** care apar în ea.
 
-**find_value(sorted_list, tinta)** — folosește **căutare binară recursivă** ca să verifici dacă o valoare se află în lista sortată. Întoarce `True` sau `False`.
+**gaseste_valoare(lista_sortata, tinta)** — folosește **căutare binară recursivă** ca să verifici dacă o valoare se află în lista sortată. Întoarce `True` sau `False`.
 
 Testează cu:
 

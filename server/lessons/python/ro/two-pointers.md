@@ -26,7 +26,7 @@ True
 False
 ```
 
-**left** pornește de la 0, **right** pornește de la ultimul index. Comparăm, apoi îi mișcăm unul către celălalt. Când se întâlnesc la mijloc, am terminat
+**stanga** pornește de la 0, **dreapta** pornește de la ultimul index. Comparăm, apoi îi mișcăm unul către celălalt. Când se întâlnesc la mijloc, am terminat
 
 ---
 
@@ -57,9 +57,9 @@ print(rezultat)
 
 Rezultat **(2, 7)**
 
-Cum funcționează? Adunăm cel mai mic număr (left) și cel mai mare (right). Dacă suma este **prea mică**, avem nevoie de un număr mai mare → mută **left** spre dreapta. Dacă suma este **prea mare**, avem nevoie de un număr mai mic → mută **right** spre stânga. Dacă este **exact bună**, am găsit perechea
+Cum funcționează? Adunăm cel mai mic număr (stanga) și cel mai mare (dreapta). Dacă suma este **prea mică**, avem nevoie de un număr mai mare → mută **stanga** spre dreapta. Dacă suma este **prea mare**, avem nevoie de un număr mai mic → mută **dreapta** spre stânga. Dacă este **exact bună**, am găsit perechea
 
-Asta funcționează pentru că lista este **sortată**. Mutarea lui left crește suma, mutarea lui right o scade. Restrângem din ambele părți până când găsim răspunsul (sau pointerii se întâlnesc, ceea ce înseamnă că nu există nicio pereche)
+Asta funcționează pentru că lista este **sortată**. Mutarea lui stanga crește suma, mutarea lui dreapta o scade. Restrângem din ambele părți până când găsim răspunsul (sau pointerii se întâlnesc, ceea ce înseamnă că nu există nicio pereche)
 
 ---
 
@@ -87,14 +87,15 @@ Aici comparăm fiecare element cu cel **anterior**. Dacă sunt diferite, este o 
 
 ## Misiune: Perechi de Andocare
 
-Navele care așteaptă să andocheze poartă fiecare o încărcătură de combustibil (deja în dreapta, sortată de la cea mai mică la cea mai mare). Două nave pot împărți o clemă de andocare doar dacă încărcăturile lor de combustibil se adună exact până la țintă. Găsește fiecare pereche validă.
+Navele care așteaptă să andocheze poartă fiecare o încărcătură de combustibil (sortată de la cea mai mică la cea mai mare). Două nave pot împărți o clemă de andocare doar dacă încărcăturile lor de combustibil se adună exact până la `tinta`. Găsește fiecare pereche validă.
 
-Scrie o funcție **pair_with_sum(numere, tinta)** care primește o listă **sortată** și un număr țintă și returnează o listă cu **toate** perechile care se adună până la țintă. Folosește tehnica **two pointers** (un pointer la început, unul la sfârșit, mută-i unul către celălalt).
+Scrie o funcție **pereche_cu_suma(numere, tinta)** care primește o listă **sortată** și un număr țintă și returnează o listă cu **toate** perechile care se adună până la țintă. Folosește tehnica **two pointers** (un pointer la început, unul la sfârșit, mută-i unul către celălalt).
 
 Apoi afișează `Perechi: ` urmat de lista de perechi și `Total perechi: ` urmat de câte sunt.
 
 ```py
 combustibili = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+tinta = 10
 ```
 
 **Ieșire**

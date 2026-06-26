@@ -68,7 +68,7 @@ Notice the **early exit**: if the lengths are different, they can't be anagrams 
 
 ---
 
-The frequency approach is actually **faster** than sorting for very long strings. Sorting takes roughly **n × log(n)** steps, while counting takes only **n** steps. For this exercise, both are fine, but it's good to think about these things :)
+The frequency approach is actually **faster** than sorting for very long strings. Sorting takes roughly **n × log(n)** steps, while counting takes only **n** steps. For this exercise, both are fine, but it's good to think about these things
 
 ---
 

@@ -115,7 +115,7 @@ def count_not_done(todos):
 
 ## Mission: Mission Task Board
 
-The crew tracks its work on a shared task board. Build the functions that manage it, then print the finished board. Each task is a dictionary with a `name` and a `done` status, and the board is a list of those dictionaries.
+The crew tracks its work on a shared task board. You'll **read the tasks from input**, build the board, mark some as complete, then print it. Each task is a dictionary with a `name` and a `done` status, and the board is a list of those dictionaries.
 
 Write three functions:
 
@@ -123,7 +123,22 @@ Write three functions:
 - **complete_task(tasks, index)** — mark the task at that index as done.
 - **count_done(tasks)** — return how many tasks are done.
 
-The starter on the right already builds the board (add three tasks, complete two of them). After that, **display** the board: for each task print its index, then `. `, then `[done]` or `[pending]`, then the task name. Finally print `Completed: ` followed by the number done, a `/`, and the total.
+Then:
+
+1. Read a number **N**, then read **N task names** (one per line) and add each one to the board.
+2. Read one more line of **indices to complete**, separated by spaces (for example `0 2`), and mark each of those tasks as done.
+3. **Display** the board: for each task print its index, then `. `, then `[done]` or `[pending]`, then the task name.
+4. Finally print `Completed: ` followed by the number done, a `/`, and the total.
+
+**Input** (typed by the user when the program runs):
+
+```text
+3
+Run diagnostics
+Refuel reactor
+Chart course
+0 2
+```
 
 **Output**
 

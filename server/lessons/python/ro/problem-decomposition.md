@@ -90,11 +90,11 @@ De ce **range(i + 1, len(numere))**? Pentru că nu vrem să formăm o pereche di
 
 ## Misiune: Analizatorul de Jurnal
 
-Jurnalul stației este un singur șir de coduri de eveniment separate prin spații (deja în dreapta). **Împarte munca în trei funcții**, apoi folosește-le împreună:
+Jurnalul stației este un singur șir de coduri de eveniment separate prin spații. **Împarte munca în trei funcții**, apoi folosește-le împreună:
 
 1. `desparte_coduri(jurnal)` — returnează **lista** de coduri (folosește `.split(" ")`)
 2. `numara_coduri(coduri)` — returnează un **dicționar** care asociază fiecărui cod de câte ori apare
-3. `cel_mai_frecvent(numere)` — returnează codul cu numărul **cel mai mare**
+3. `cel_mai_frecvent(contor)` — returnează codul cu numărul **cel mai mare**
 
 În programul principal, apelează funcțiile în ordine, apoi afișează:
 

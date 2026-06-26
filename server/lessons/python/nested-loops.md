@@ -77,15 +77,55 @@ When **j** hits **2**, **break** stops the inner loop, but the outer loop keeps 
 
 ---
 
+## Printing on the same line with end=""
+
+So far, every **print()** automatically moved to a new line after printing. We can change that with **end**
+
+```py
+print("a", end="")
+print("b", end="")
+print("c")
+```
+
+Prints
+
+```text
+abc
+```
+
+Normally, the three **print()** calls would put **a**, **b**, and **c** on separate lines. With **end=""** we tell **print** "don't move to a new line, leave the cursor right here". The last **print("c")** has no **end=""**, so after it we do drop to the next line
+
+This gets powerful together with nested loops: we can draw a shape **row by row**
+
+```py
+for row in range(3):
+    for star in range(3):
+        print("*", end="")
+    print()
+```
+
+Prints
+
+```text
+***
+***
+***
+```
+
+Let's trace what happens:
+
+- the outer loop starts with **row = 0**
+- the inner loop prints `*` three times, all on the same line thanks to **end=""** → `***`
+- after the inner loop, **print()** alone (empty) drops to the next line
+- the outer loop continues with **row = 1**, then **row = 2**, and it all repeats
+
+The inner loop draws one full row, and the **print()** at the end drops to the next row
+
+---
+
 ## Mission: Signal Tower
 
-Build a tower of stars for the station's antenna. **Read** a number `rows`, then print a right triangle where the first row has **1** star, the second has **2**, and so on, down to `rows` rows.
-
-The outer loop controls the **row**, and the inner loop prints the right number of **stars** for that row. Use `print("*", end="")` to print a star **without** moving to a new line, then `print()` alone after the inner loop to go to the next line.
-
-**Input** (typed by the user when the program runs):
-
-- `rows` — how many rows the tower has
+Build a tower of stars for the station's antenna. **Read** from the user how many rows the tower has, then print a triangle: the first row has **1** star, the second **2**, the third **3**, and so on down to the last row
 
 **Example**
 
@@ -95,7 +135,7 @@ If the user types
 5
 ```
 
-the program should print
+the program prints
 
 ```text
 *

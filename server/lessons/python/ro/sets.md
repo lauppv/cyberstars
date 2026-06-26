@@ -91,12 +91,12 @@ Rezultatul **3**, nu 4, pentru că duplicatul **red** a fost eliminat
 
 ## Misiune: Jurnalul de Semnale
 
-Stația a recepționat o listă de coduri de semnal, iar multe se repetă (deja sunt în dreapta). Fă următoarele:
+Stația a recepționat o listă de coduri de semnal, iar multe se repetă. Fă următoarele:
 
 1. Afișează `Total: ` apoi numărul total de semnale (lungimea listei)
 2. Creează o **mulțime** cu codurile unice
 3. Afișează `Unice: ` apoi câte coduri unice există
-4. Verifică dacă a fost recepționat codul `D4` — afișează `D4 detectat` dacă **se află în** mulțime, altfel `D4 lipsește`
+4. Verifică dacă a fost recepționat codul `D4` — afișează `D4 detectat` dacă **se află în** mulțime, altfel `D4 lipseste`
 
 **Ieșire**
 

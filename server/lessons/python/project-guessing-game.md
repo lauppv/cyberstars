@@ -101,7 +101,7 @@ Notice how we used **everything**: import, function, for loop, try/except, if/el
 
 ## Mission: Reactor Code Cracker
 
-The reactor is locked behind a secret numeric code. A diagnostics tool already recorded a sequence of guesses (already on the right) — replay them and report how the crack went. No randomness here, so the result is the same every run.
+The reactor is locked behind a secret numeric code. A diagnostics tool already recorded a sequence of guesses — replay them and report how the crack went. No randomness here, so the result is the same every run.
 
 1. Write a function **check_guess(secret, guess)** that returns `"too low"` if the guess is smaller than the secret, `"too high"` if it's bigger, and `"correct"` if they match.
 2. Loop through the guesses, counting attempts. For each guess, print the guess, then `: `, then the result.

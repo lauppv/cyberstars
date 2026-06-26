@@ -111,7 +111,7 @@ Rezultat **Parolă puternică**. Trei steaguri, câte unul pentru fiecare cerin�
 
 Un cod de acces al stației este **valid** doar dacă îndeplinește **toate cele trei** reguli: are cel puțin o literă **majusculă**, cel puțin o **cifră** și are cel puțin **6 caractere** lungime.
 
-**Citește** un cod, apoi folosește **steaguri** (`has_upper` și `has_digit`, fiecare pornind de la `False` și schimbat la `True` când găsești unul) plus o verificare a lungimii. Afișează fiecare rezultat, apoi verdictul:
+**Citește** un cod, apoi folosește **steaguri** (`are_majuscula` și `are_cifra`, fiecare pornind de la `False` și schimbat la `True` când găsești unul) plus o verificare a lungimii. Afișează fiecare rezultat, apoi verdictul:
 
 **Intrare** (tastat de utilizator când rulează programul):
 

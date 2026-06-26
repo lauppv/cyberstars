@@ -79,7 +79,7 @@ Output **120** (2 × 3 × 4 × 5). Notice that we start with **1** not **0**. Wh
 
 ## Mission: Signal Accumulator
 
-You have a list of signal `strengths` and a `code` word (both on the right). Using the **accumulator pattern** for each step:
+You have a list of signal `strengths` and a `code` word. Using the **accumulator pattern** for each step:
 
 1. `Sum: ` then the total of all strengths (accumulate from `0`)
 2. `Strong: ` then a **list** of only the strengths **above 50** (accumulate into an empty `[]`)

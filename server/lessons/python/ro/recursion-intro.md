@@ -30,7 +30,7 @@ Ieșire
 Start!
 ```
 
-**countdown(5)** afișează 5, apoi cheamă **countdown(4)**. Care afișează 4, apoi cheamă **countdown(3)**. Și așa mai departe. Când **n == 0**, afișăm "Start!" și **ne oprim** (return). Fără acea condiție de oprire, funcția s-ar chema pe ea însăși la nesfârșit — o **recursivitate infinită**, exact ca o buclă infinită
+**numaratoare_inversa(5)** afișează 5, apoi cheamă **numaratoare_inversa(4)**. Care afișează 4, apoi cheamă **numaratoare_inversa(3)**. Și așa mai departe. Când **n == 0**, afișăm "Start!" și **ne oprim** (return). Fără acea condiție de oprire, funcția s-ar chema pe ea însăși la nesfârșit — o **recursivitate infinită**, exact ca o buclă infinită
 
 Condiția de oprire se numește **cazul de bază**. Fiecare funcție recursivă are nevoie de unul
 
@@ -79,7 +79,7 @@ def suma_lista(numere):
 print(suma_lista([1, 2, 3, 4, 5]))
 ```
 
-Output **15**
+Rezultat **15**
 
 Ideea: suma unei liste este **primul element** plus **suma restului**. Restul devine din ce în ce mai mic până e gol (cazul de bază: return 0)
 
@@ -95,8 +95,8 @@ Pentru lucruri simple precum numărarea sau însumarea, o **buclă** este de obi
 
 Amplificatorul de semnal al stației își dublează puterea la fiecare etapă. Ca să prezici rezultatul, trebuie să calculezi puteri ale lui 2 — și o vei face cu **recursivitate**.
 
-1. Scrie o funcție recursivă **power(base, exp)** care întoarce `base` ridicat la puterea `exp`. Regula: `base^exp = base * base^(exp - 1)`. Cazul de bază: `base^0 = 1` (fără bucle, fără `**`).
-2. Cu `baza = 2`, folosește o **buclă for** peste `range(5)` ca să afișezi tabelul amplificatorului: pentru fiecare `exp` de la 0 la 4, afișează linia `2^exp = rezultat` (folosind numerele reale).
+1. Scrie o funcție recursivă **putere(baza, exponent)** care întoarce `baza` ridicată la puterea `exponent`. Regula: `baza^exponent = baza * baza^(exponent - 1)`. Cazul de bază: `baza^0 = 1` (fără bucle, fără `**`).
+2. Cu `baza = 2`, folosește o **buclă for** peste `range(5)` ca să afișezi tabelul amplificatorului: pentru fiecare `exponent` de la 0 la 4, afișează linia `2^exponent = rezultat` (folosind numerele reale).
 
 **Ieșire**
 

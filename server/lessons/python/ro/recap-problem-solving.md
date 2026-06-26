@@ -6,11 +6,11 @@ Combină **inversarea șirurilor**, **palindrom**, **anagramă**, **filtrare/tra
 
 Transmisiile primite sunt pline de zgomot și amestecate. Construiește o mică trusă de funcții ajutătoare, apoi folosește-le împreună ca să dai sens semnalului. Adună tot din acest capitol:
 
-**clean_text(text)** — **filtrare și transformare**: păstrează doar literele și transformă-le în litere mici (folosește `.isalpha()`).
+**curata_text(text)** — **filtrare și transformare**: păstrează doar literele și transformă-le în litere mici (folosește `.isalpha()`).
 
-**is_palindrome(cuvant)** — verifică dacă cuvântul se citește la fel în ambele sensuri, folosind tehnica **celor doi pointeri** (un pointer la început, unul la sfârșit, mută-i spre centru).
+**este_palindrom(cuvant)** — verifică dacă cuvântul se citește la fel în ambele sensuri, folosind tehnica **celor doi pointeri** (un pointer la început, unul la sfârșit, mută-i spre centru).
 
-**are_anagrams(a, b)** — curăță ambele cuvinte, apoi verifică dacă sunt anagrame (aceleași litere, ordine diferită). Sortează literele și compară.
+**sunt_anagrame(a, b)** — curăță ambele cuvinte, apoi verifică dacă sunt anagrame (aceleași litere, ordine diferită). Sortează literele și compară.
 
 **inverseaza_cuvinte(propozitie)** — inversează **ordinea cuvintelor** dintr-o propoziție (nu literele). Desparte, inversează lista, lipește înapoi cu spații.
 

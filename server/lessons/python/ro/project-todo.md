@@ -115,7 +115,7 @@ def numara_nefinalizate(todos):
 
 ## Misiune: Tabla de Sarcini a Misiunii
 
-Echipajul își urmărește munca pe o tablă de sarcini comună. Construiește funcțiile care o gestionează, apoi afișează tabla finalizată. Fiecare sarcină este un dicționar cu un `nume` și o stare `done`, iar tabla este o listă din aceste dicționare.
+Echipajul își urmărește munca pe o tablă de sarcini comună. Vei **citi sarcinile de la tastatură**, vei construi tabla, vei marca unele ca terminate, apoi o afișezi. Fiecare sarcină este un dicționar cu un `nume` și o stare `done`, iar tabla este o listă din aceste dicționare.
 
 Scrie trei funcții:
 
@@ -123,7 +123,22 @@ Scrie trei funcții:
 - **finalizeaza_sarcina(sarcini, index)** — marchează sarcina de la acel index ca terminată.
 - **numara_finalizate(sarcini)** — returnează câte sarcini sunt terminate.
 
-Codul de start din dreapta construiește deja tabla (adaugă trei sarcini, finalizează două dintre ele). După aceea, **afișează** tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[în așteptare]`, apoi numele sarcinii. La final afișează `Finalizat: ` urmat de numărul de sarcini terminate, un `/`, și totalul.
+Apoi:
+
+1. Citește un număr **N**, apoi citește **N nume de sarcini** (câte unul pe linie) și adaugă fiecare în tablă.
+2. Citește încă o linie cu **indecșii de finalizat**, separați prin spații (de exemplu `0 2`), și marchează fiecare dintre acele sarcini ca terminată.
+3. **Afișează** tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[in asteptare]`, apoi numele sarcinii.
+4. La final afișează `Finalizat: ` urmat de numărul de sarcini terminate, un `/`, și totalul.
+
+**Intrare** (tastat de utilizator când rulează programul):
+
+```text
+3
+Ruleaza diagnoza
+Realimenteaza reactorul
+Traseaza traseul
+0 2
+```
 
 **Ieșire**
 

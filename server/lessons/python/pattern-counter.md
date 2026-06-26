@@ -82,7 +82,7 @@ Output **3**. Works with other operators too: **x -= 1**, **x \*= 2**, **x /= 3*
 
 ## Mission: Reading Bands
 
-You have a list of reactor readings (already on the right). Using the **counter pattern**, count how many fall into each band and print the totals:
+You have a list of reactor readings. Using the **counter pattern**, count how many fall into each band and print the totals:
 
 - `Low: ` then how many readings are **below 50**
 - `Mid: ` then how many are **from 50 to 99** (inclusive)
