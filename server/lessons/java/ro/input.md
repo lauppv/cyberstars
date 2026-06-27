@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Cum te cheamă? ");
+        System.out.print("Cum te cheama? ");
         String nume = scanner.nextLine();
 
         System.out.println("Salut, " + nume + "!");
@@ -35,7 +35,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Vârsta ta: ");
+        System.out.print("Varsta ta: ");
         int varsta = scanner.nextInt();
 
         System.out.println("Anul viitor vei avea " + (varsta + 1));
@@ -43,7 +43,7 @@ public class Main {
 }
 ```
 
-**scanner.nextInt()** citește un număr întreg direct. Nu trebuie să convertim dintr-un String ca în Python (**int(input())**) — Java o face pentru noi
+**scanner.nextInt()** citește un număr întreg direct și ni-l dă gata ca **int**, fără să mai convertim noi nimic
 
 Pentru numere zecimale, există **scanner.nextDouble()**
 
@@ -63,7 +63,7 @@ O mică **capcană** care îi prinde pe toți. Dacă amesteci **nextInt()** și 
 public class Main {
     public static void main(String[] args) {
         int varsta = scanner.nextInt();
-        String nume = scanner.nextLine();   // asta pare goală!
+        String nume = scanner.nextLine();   // asta pare goala!
     }
 }
 ```
@@ -76,13 +76,13 @@ Soluția: adaugă un **scanner.nextLine()** suplimentar ca să "mănânce" newli
 public class Main {
     public static void main(String[] args) {
         int varsta = scanner.nextInt();
-        scanner.nextLine();   // consumă newline-ul rămas
+        scanner.nextLine();   // consuma newline-ul ramas
         String nume = scanner.nextLine();
     }
 }
 ```
 
-Enervant, dar trebuie să-l ții minte o singură dată :)
+Enervant, dar trebuie să-l ții minte o singură dată
 
 Ca să păstrăm lucrurile simple în acest exercițiu, vom **citi mai întâi numele**, apoi vârsta
 
@@ -92,10 +92,9 @@ Ca să păstrăm lucrurile simple în acest exercițiu, vom **citi mai întâi n
 
 Fiecare membru al echipajului care ajunge la stație trebuie să se înregistreze la terminal. Sistemul îi citește numele și vârsta, apoi afișează o linie de bun venit.
 
-1. Codul citește deja `nume` (String) și `varsta` (int) din input
-2. Construiește și afișează mesajul de bun venit folosind **+** ca să lipești bucățile împreună
+Creează un **Scanner**, citește mai întâi numele (prima linie), apoi vârsta (a doua linie). Apoi construiește și afișează mesajul de bun venit folosind **+**.
 
-**Input** (tastat de utilizator când rulează programul):
+**Intrare** (tastată de utilizator când rulează programul):
 
 - Prima linie — numele membrului echipajului
 - A doua linie — vârsta membrului echipajului

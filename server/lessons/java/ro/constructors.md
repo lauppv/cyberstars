@@ -1,4 +1,4 @@
-Când creezi un obiect nou, Java apelează o metodă specială numită **constructor**. Este codul care rulează **la naștere** — pregătind obiectul înainte ca cineva să-l poată folosi
+wCând creezi un obiect nou, Java apelează o metodă specială numită **constructor**. Este codul care rulează **la naștere** — pregătind obiectul înainte ca cineva să-l poată folosi
 
 Gândește-te așa: când Tommy Vercetti ajunge în Vice City, începe cu un nume, o reputație și poate ceva bani. Constructorul este cel care îi dă acele statistici de start
 
@@ -48,15 +48,23 @@ Probabil ai remarcat `this.nume = nume` și te-ai întrebat ce se întâmplă. I
 - `nume` (fără `this`) se referă la **parametru** — valoarea pasată
 - `this.nume` se referă la **câmpul** de pe obiectul însuși
 
-E ca și cum ai spune "numele **acestui** obiect este egal cu numele pe care mi l-ai dat"
+E ca și cum ai spune „numele **acestui** obiect este egal cu numele pe care mi l-ai dat"
 
 ```java
+class Jucator {
+    String nume;
+    int scor;
+
+    Jucator(String nume, int scor) {
+        this.nume = nume;     // numele obiectului = parametrul nume
+        this.scor = scor;     // scorul obiectului = parametrul scor
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Jucator(String nume, int scor) {
-            this.nume = nume;     // numele obiectului = parametrul nume
-            this.scor = scor;   // scorul obiectului = parametrul scor
-        }
+        Jucator p = new Jucator("Tommy", 100);
+        System.out.println(p.nume + " " + p.scor);
     }
 }
 ```
@@ -64,12 +72,20 @@ public class Main {
 Dacă parametrul ar avea un nume diferit, nici nu ai avea nevoie de `this`:
 
 ```java
+class Jucator {
+    String nume;
+    int scor;
+
+    Jucator(String n, int s) {
+        nume = n;    // nicio confuzie, deci "this" e optional
+        scor = s;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Jucator(String n, int s) {
-            nume = n;    // nicio confuzie, deci "this" e opțional
-            scor = s;
-        }
+        Jucator p = new Jucator("Lance", 80);
+        System.out.println(p.nume + " " + p.scor);
     }
 }
 ```
@@ -90,7 +106,7 @@ class Inamic {
 
 public class Main {
     public static void main(String[] args) {
-        Inamic e = new Inamic();   // funcționează! Java a făcut un constructor implicit
+        Inamic e = new Inamic();   // merge! Java a facut un constructor implicit
         System.out.println(e.tip);    // null (String-urile pornesc implicit de la null)
         System.out.println(e.viata);  // 0 (int-urile pornesc implicit de la 0)
     }
@@ -112,8 +128,8 @@ class Inamic {
 
 public class Main {
     public static void main(String[] args) {
-        // Inamic e = new Inamic();  // EROARE! Nu mai există constructor fără argumente
-        Inamic e = new Inamic("Goon");  // Asta funcționează
+        // Inamic e = new Inamic();  // nu compileaza, nu mai exista constructor fara argumente
+        Inamic e = new Inamic("Goon");  // asta merge
         System.out.println(e.tip);
         System.out.println(e.viata);
     }
@@ -131,7 +147,7 @@ Goon
 
 ## Constructori Multipli
 
-Poți avea mai mult de un constructor — atâta timp cât primesc parametri diferiți. Asta se numește **suprasolicitare** (overloading):
+Poți avea mai mult de un constructor — atâta timp cât primesc parametri diferiți. Asta se numește **supraîncărcare** (overloading):
 
 ```java
 class Arma {
@@ -145,7 +161,7 @@ class Arma {
 
     Arma(String nume) {
         this.nume = nume;
-        this.dauna = 10;  // dauna implicită
+        this.dauna = 10;  // dauna implicita
     }
 }
 
@@ -153,8 +169,8 @@ public class Main {
     public static void main(String[] args) {
         Arma a1 = new Arma("Katana", 75);
         Arma a2 = new Arma("Fists");
-        System.out.println(a1.nume + " provoacă " + a1.dauna + " daune");
-        System.out.println(a2.nume + " provoacă " + a2.dauna + " daune");
+        System.out.println(a1.nume + " provoaca " + a1.dauna + " daune");
+        System.out.println(a2.nume + " provoaca " + a2.dauna + " daune");
     }
 }
 ```
@@ -162,50 +178,30 @@ public class Main {
 Output
 
 ```text
-Katana provoacă 75 daune
-Fists provoacă 10 daune
+Katana provoaca 75 daune
+Fists provoaca 10 daune
 ```
-
----
-
-## Comparație cu Python
-
-În Python, constructorul este `__init__` și `self` este pasat explicit:
-
-```python
-class Jucator:
-    def __init__(self, nume, scor):
-        self.nume = nume
-        self.scor = scor
-```
-
-În Java, numele constructorului se potrivește cu numele clasei, iar `this` este disponibil automat — nu îl pui în lista de parametri
 
 ---
 
 ## Misiune: Fișa de Scor a Echipajului
 
-Comandantul stației are nevoie de un sistem rapid de fișe de scor pentru a urmări evaluările de performanță ale echipajului după fiecare ciclu de misiune. Fiecare membru al echipajului este înregistrat cu un nume și un scor.
+Tommy ține o evidență a echipajului său din Vice City. Fiecare membru este înregistrat cu un nume și un scor — reputația lui pe străzi.
 
-Creează o clasă `Jucator` cu două câmpuri: `nume` (String) și `scor` (int). Scrie un constructor care primește ambele valori și le setează folosind `this`.
+Creează o **clasă** care reprezintă un membru al echipajului, cu un câmp pentru **nume** (String) și unul pentru **scor** (int). Scrie un **constructor** care primește ambele valori și le setează folosind `this`.
 
-În `main`, creează doi jucători:
+În `main`, construiește **doi** membri cu valori la alegere, apoi afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
 
-1. `"Tommy Vercetti"` cu scorul `500`
-2. `"Lance Vance"` cu scorul `300`
-
-Afișează fiecare jucător în formatul `Nume are Scor puncte`.
-
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- `"Tommy Vercetti"` / `500` — numele și scorul primului jucător
-- `"Lance Vance"` / `300` — numele și scorul celui de-al doilea jucător
-
-**Exemplu**
-
-Cu valorile de start, programul tău ar trebui să afișeze
+**Exemplu** pentru `Tommy Vercetti` cu scorul `500` și `Lance Vance` cu scorul `300`
 
 ```text
 Tommy Vercetti are 500 puncte
 Lance Vance are 300 puncte
+```
+
+**Exemplu** pentru `Diaz` cu scorul `800` și `Cortez` cu scorul `650`
+
+```text
+Diaz are 800 puncte
+Cortez are 650 puncte
 ```

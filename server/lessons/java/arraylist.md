@@ -1,6 +1,6 @@
-Arrays are great, but they have one big limitation: their **size is fixed**. Once you create an array of 5 elements, it's stuck at 5. You can't add a 6th. In real programs, you often don't know how many items you'll need. Enter **ArrayList**
+Arrays are great, but they have one big limitation: their **size is fixed**. Once you create an array of 5 elements, you can't add a 6th. In real programs, you often don't know upfront how many items you'll need. This is where **ArrayList** comes in
 
-An **ArrayList** is a **dynamic array** — it grows and shrinks as needed. In Python, regular lists already work this way (you just **append** stuff). In Java, you need ArrayList for that flexibility
+An **ArrayList** is a **dynamic array** — it grows and shrinks as needed. You need to import it from `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -23,84 +23,11 @@ Output
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
 ```
 
-A few things to unpack here
+The **\<String\>** part is called a **generic type** — it tells Java what type of elements the list holds. `ArrayList<String>` means "a list that holds Strings." For numbers you use **ArrayList\<Integer\>** or **ArrayList\<Double\>** (not `int`/`double` directly — Java converts automatically)
 
 ---
 
-First, the **import**. ArrayList lives in the **java.util** package, so we need to import it at the top of the file. This is like Python's **from collections import something** — Java just needs you to be explicit about what you're using
-
----
-
-Second, the **\<String\>** part. This is called a **generic type**. It tells Java what type of things the list holds. Think of it as a label on a box: **ArrayList\<String\>** is "a list that holds Strings." You can also have **ArrayList\<Integer\>**, **ArrayList\<Double\>**, etc.
-
-Small gotcha: you can't use primitive types like **int** or **double** directly. You have to use their "wrapper" versions: **Integer**, **Double**, **Boolean**. Java auto-converts between them, so it's mostly painless
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> scores = new ArrayList<Integer>();
-        scores.add(100);    // Java auto-converts int 100 to Integer 100
-        scores.add(85);
-        scores.add(92);
-        System.out.println(scores);   // [100, 85, 92]
-    }
-}
-```
-
----
-
-The main methods you'll use on an ArrayList
-
-**add(item)** — adds an item to the end
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("first");
-        list.add("second");
-        // list is now [first, second]
-    }
-}
-```
-
-**get(index)** — gets the item at that index (starting from 0, like arrays)
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(list.get(0));   // first
-        System.out.println(list.get(1));   // second
-    }
-}
-```
-
-**size()** — returns how many items are in the list
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(list.size());   // 2
-    }
-}
-```
-
-Notice it's **.size()** with parentheses, not **.length** like arrays. Yes, this is another one of Java's charming inconsistencies
-
-**remove(index)** — removes the item at that index, and shifts everything after it down
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        list.remove(0);   // removes "first"
-        // list is now [second]
-    }
-}
-```
-
----
-
-Let's see it all together. Lance is managing Cortez's guest list for a yacht party
+Main methods
 
 ```java
 import java.util.ArrayList;
@@ -109,15 +36,19 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<String> guests = new ArrayList<String>();
 
+        // add -- adds to the end
         guests.add("Tommy");
         guests.add("Lance");
         guests.add("Mercedes");
         guests.add("Sonny");
 
-        System.out.println("Guest count: " + guests.size());
-        System.out.println("First guest: " + guests.get(0));
+        // size -- how many elements
+        System.out.println("Total: " + guests.size());
 
-        // Sonny is NOT invited
+        // get -- element at an index (starting from 0)
+        System.out.println("First: " + guests.get(0));
+
+        // remove -- removes at an index
         guests.remove(3);
         System.out.println("After removal: " + guests);
     }
@@ -127,43 +58,137 @@ public class Main {
 Output
 
 ```text
-Guest count: 4
-First guest: Tommy
+Total: 4
+First: Tommy
 After removal: [Tommy, Lance, Mercedes]
 ```
 
+`.size()` with parentheses, not `.length` like arrays — one of the differences to remember
+
 ---
 
-In Python, this would be
+**Iterating with a classic for** — when you need the index
 
-```python
-guests = ["Tommy", "Lance", "Mercedes", "Sonny"]
-print(len(guests))
-print(guests[0])
-guests.pop(3)   # or del guests[3]
-print(guests)
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> crew = new ArrayList<String>();
+        crew.add("Tommy Vercetti");
+        crew.add("Lance Vance");
+        crew.add("Phil Cassidy");
+
+        for (int i = 0; i < crew.size(); i++) {
+            System.out.println(i + ": " + crew.get(i));
+        }
+    }
+}
 ```
 
-Pretty similar! Java just needs more ceremony with the types
+Output
+
+```text
+0: Tommy Vercetti
+1: Lance Vance
+2: Phil Cassidy
+```
+
+**Iterating with for-each** — cleaner when you don't need the index
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> crew = new ArrayList<String>();
+        crew.add("Tommy Vercetti");
+        crew.add("Lance Vance");
+        crew.add("Phil Cassidy");
+
+        for (String name : crew) {
+            System.out.println("Member: " + name);
+        }
+    }
+}
+```
+
+Output
+
+```text
+Member: Tommy Vercetti
+Member: Lance Vance
+Member: Phil Cassidy
+```
+
+Read `for (String name : crew)` as: "for each String called `name` in `crew`"
 
 ---
 
-## Mission: Rec-Room Playlist
+ArrayList becomes really powerful when you hold **objects** in it — not just Strings or numbers, but instances of your own classes
 
-The station's rec room keeps a dynamic playlist of games. Build it step by step:
+```java
+import java.util.ArrayList;
 
-1. Create an `ArrayList<String>` called `games`
-2. Add three games: `"GTA"`, `"Minecraft"`, `"Zelda"`
-3. Add a 4th game: `"Elden Ring"`
-4. Remove the 2nd game (index 1)
-5. Print each remaining game on its own line using a for loop with `.get(i)` and `.size()`
+class Car {
+    String name;
+    int speed;
+
+    Car(String name, int speed) {
+        this.name = name;
+        this.speed = speed;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Car> garage = new ArrayList<Car>();
+        garage.add(new Car("Infernus", 240));
+        garage.add(new Car("Cheetah", 230));
+        garage.add(new Car("Banshee", 200));
+
+        for (Car c : garage) {
+            System.out.println(c.name + " - " + c.speed + " km/h");
+        }
+    }
+}
+```
+
+Output
+
+```text
+Infernus - 240 km/h
+Cheetah - 230 km/h
+Banshee - 200 km/h
+```
+
+`ArrayList<Car>` holds objects of type `Car`. You can access each object's fields directly in the loop
+
+---
+
+Quick comparison
+
+|          | Array   | ArrayList   |
+| -------- | ------- | ----------- |
+| Size     | Fixed   | Dynamic     |
+| Length   | .length | .size()     |
+| Access   | arr[i]  | list.get(i) |
+| For-each | works   | works       |
+| Adding   | no      | .add()      |
+| Removing | no      | .remove()   |
+
+---
+
+## Mission: The Crew List
+
+Tommy keeps a list of his Vice City crew members. Each member has a name and a role. Tommy starts with Lance Vance (driver), Phil Cassidy (weapons), Umberto Robina (ally), and Hilary King (driver). At some point, Lance betrays him and needs to be removed from the list
+
+Build a class for crew members. In `main`, create an ArrayList with all the members, remove Lance (the first in the list), then iterate through the list and print each remaining member
 
 **Example**
 
-After the additions and removal, your program should print
-
 ```text
-GTA
-Zelda
-Elden Ring
+Phil Cassidy - weapons
+Umberto Robina - ally
+Hilary King - driver
 ```

@@ -17,7 +17,7 @@ public class Main {
 
 Afișează **25**
 
-Tipul returnat **int** dinaintea numelui metodei îi spune lui Java: „această metodă va da înapoi un int." În interiorul metodei, **return** trimite acea valoare înapoi celui care a apelat-o
+Tipul returnat **int** dinaintea numelui metodei îi spune lui Java: „această metodă va da înapoi un int". În interiorul metodei, **return** trimite acea valoare înapoi celui care a apelat-o
 
 ---
 
@@ -26,7 +26,7 @@ Putem returna **orice tip** — nu doar int. Iată câteva exemple
 ```java
 public class Main {
     public static String saluta(String nume) {
-        return "Bun venit în Vice City, " + nume + "!";
+        return "Bun venit in Vice City, " + nume;
     }
 
     public static double jumatate(double n) {
@@ -49,7 +49,7 @@ public class Main {
 Afișează
 
 ```text
-Bun venit în Vice City, Lance Vance!
+Bun venit in Vice City, Lance Vance
 50.0
 true
 false
@@ -68,14 +68,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Folosește valoarea returnată direct într-un calcul
+        // foloseste valoarea returnata direct intr-un calcul
         int total = aduna(10, 20) + aduna(5, 5);
         System.out.println(total);   // 40
 
-        // Folosește-o direct în println
+        // foloseste-o direct in println
         System.out.println(aduna(100, 200));   // 300
 
-        // Folosește-o într-o condiție
+        // foloseste-o intr-o conditie
         if (aduna(2, 3) > 4) {
             System.out.println("Da, 5 > 4");
         }
@@ -99,20 +99,20 @@ O greșeală frecventă: să încerci să faci **return** într-o metodă **void
 
 ```java
 public class Main {
-    // EROARE: o metodă void nu poate returna o valoare
+    // eroare: o metoda void nu poate returna o valoare
     public static void faceTreaba() {
         return 42;   // nu se va compila
     }
 
-    // EROARE: metoda promite int, dar nu are return
+    // eroare: metoda promite int, dar nu are return
     public static int getNumar() {
         int x = 42;
-        // am uitat să facem return x!
+        // am uitat sa facem return x
     }
 }
 ```
 
-Java le prinde pe amândouă la compilare. Mulțumim, Java :)
+Java le prinde pe amândouă la compilare, înainte ca programul să ruleze măcar
 
 ---
 
@@ -121,26 +121,23 @@ Java le prinde pe amândouă la compilare. Mulțumim, Java :)
 - Folosește **void** când metoda doar **face** ceva (afișează, modifică date etc.)
 - Folosește un **tip returnat** când metoda **calculează** ceva și ai nevoie de rezultat
 
-Tommy Vercetti nu doar duce la capăt misiuni — el **aduce înapoi banii**. Asta este o valoare returnată. Dacă doar provoacă haos fără nicio răsplată, asta este void
+Tommy nu doar duce la capăt misiuni — el **aduce înapoi banii**. Asta este o valoare returnată. Dacă doar provoacă haos fără nicio răsplată, asta este void
 
 ---
 
-## Misiune: Forța Motorului
+## Misiune: Creșterea Imperiului
 
-Puterea propulsorului stației se calculează ca `baza` ridicată la puterea `exponent`. Scrie o metodă numită `putere` care primește doi parametri `int` (`baza` și `exponent`) și **returnează** rezultatul.
+Imperiul lui Tommy crește pe zi ce trece. Stocul pornește de la **1**, iar în fiecare zi se înmulțește cu un factor fix. Vrei o metodă care îți spune cât ai după un anumit număr de zile.
 
-Calculează-l cu o buclă: pornește de la `rezultat = 1`, apoi înmulțește cu `baza` de un total de `exponent` ori. Orice ridicat la puterea **0** este **1** — bucla ta gestionează asta natural dacă rulează de 0 ori.
+Scrie o metodă care primește **factorul** și **numărul de zile** și **întoarce** stocul de la final. Calculează-l cu o buclă: pornește de la **1**, apoi înmulțește cu factorul de un număr de ori egal cu zilele. Dacă au trecut **0** zile, bucla nu rulează deloc și rămâi cu **1**. Apoi, în **main**, apeleaz-o pentru câteva scenarii și afișează rezultatul fiecăruia.
 
-Apelurile sunt deja în `main` în dreapta.
+Apeleaz-o pentru:
 
-**Input** (schimbă apelurile din `main` ca să testezi):
-
-- `baza` — numărul de bază
-- `exponent` — de câte ori să înmulțești
+- factor **2**, **3** zile
+- factor **5**, **2** zile
+- factor **7**, **0** zile (nicio zi trecută)
 
 **Exemplu**
-
-Cu apelurile de start, programul tău ar trebui să afișeze
 
 ```text
 8

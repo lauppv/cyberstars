@@ -1,27 +1,26 @@
-În viața reală ne confruntăm adesea cu decizii: **dacă** e frig, iei un pulover, **altfel** un tricou este de ajuns. **Dacă** mi-e somn, mă culc, **altfel** programez :)
+În viața reală ne confruntăm adesea cu decizii: **dacă** e frig, ne punem o bluză groasă, **altfel** un tricou e de ajuns
 
 În cod, spunem
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        int varsta = 18;
-        if (varsta < 18) {
-            System.out.println("Acces refuzat pentru că nu ai 18 ani");
+        int temperatura = 10;
+        if (temperatura < 15) {
+            System.out.println("pune-ti o bluza");
         } else {
-            System.out.println("Bun venit în club");
+            System.out.println("un tricou e de ajuns");
         }
     }
 }
 ```
 
-Trei lucruri de observat în Java
+Două lucruri de observat în Java
 
 - Condiția stă între **paranteze** **( )**
 - Blocul de cod stă între **acolade** **{ }**
-- Nu avem nevoie de **:** ca în Python
 
-Dacă **varsta** este mai mică de **18**, intrăm în blocul **if**. **Altfel**, intrăm în blocul **else**. Rulează codul, schimbă vârsta, vezi ce se întâmplă
+Dacă **temperatura** este mai mică de **15**, intrăm în blocul **if** (e frig, ne îmbrăcăm gros). **Altfel**, intrăm în blocul **else**. Rulează codul, schimbă temperatura, vezi ce se întâmplă
 
 ---
 
@@ -40,14 +39,14 @@ Operatorii de comparație sunt exact cei la care te aștepți
 public class Main {
     public static void main(String[] args) {
         int x = 4;
-        if (x = 4) {       // EROARE
+        if (x = 4) {       // eroare
             System.out.println("Boo");
         }
     }
 }
 ```
 
-Aceasta nu va compila. Java nici măcar nu te lasă să faci această greșeală (spre deosebire de alte limbaje). Versiunea corectă este
+Aceasta nu va compila. Java nici măcar nu te lasă să faci această greșeală. Versiunea corectă este
 
 ```java
 public class Main {
@@ -88,7 +87,7 @@ public class Main {
         boolean utilizatorOnline = true;
 
         if (utilizatorOnline) {
-            System.out.println(nume + " joacă GTA Vice City");
+            System.out.println(nume + " joaca GTA Vice City");
         } else {
             System.out.println(nume + " este offline");
         }
@@ -96,25 +95,23 @@ public class Main {
 }
 ```
 
-Schimbă **utilizatorOnline** la **false** și rulează din nou. Citește noul rezultat. Programarea devine distractivă din momentul în care începi să **te joci** cu valorile :)
+Schimbă **utilizatorOnline** la **false** și rulează din nou. Citește noul rezultat. Programarea devine distractivă din momentul în care începi să **te joci** cu valorile
 
 ---
 
 ## Misiune: Alertă Temperatură Carenă
 
-Senzorul de carenă al stației raportează temperatura de afară. Scrie un **if / else** care o verifică:
+Senzorul de carenă al stației raportează temperatura de afară.
 
-- dacă `temperatura` este **mai mică de 0** → afișează `afară e ger`
-- altfel → afișează `apa nu îngheață`
+Creează o variabilă `int` pentru temperatură. Apoi scrie un **if / else** care o verifică:
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `temperatura` — temperatura carenei în grade Celsius (int)
+- dacă temperatura este **mai mică de 0** → afișează `afara e ger`
+- altfel → afișează `apa nu ingheata`
 
 **Exemplu**
 
-Cu `temperatura = -5`, programul tău ar trebui să afișeze
+Cu o temperatură de `-5`, programul tău ar trebui să afișeze
 
 ```text
-afară e ger
+afara e ger
 ```

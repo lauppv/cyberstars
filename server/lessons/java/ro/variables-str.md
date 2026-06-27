@@ -40,16 +40,16 @@ Paul
 Paul
 ```
 
-Observă că **a doua oară** când schimbăm **nume**, **nu** mai scriem **String** din nou. Scriem tipul **o singură dată**, când **declarăm prima dată** variabila. După aceea, Java știe deja tipul :)
+Observă că **a doua oară** când schimbăm **nume**, **nu** mai scriem **String** din nou. Scriem tipul **o singură dată**, când **declarăm prima dată** variabila. După aceea, Java știe deja tipul
 
 ---
 
-Exact ca în Python, **nu uita ghilimelele**. Codul de mai jos nu va funcționa
+**Nu uita ghilimelele**. Codul de mai jos nu va funcționa
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        String nume = Paul;   // EROARE
+        String nume = Paul;   // eroare
     }
 }
 ```
@@ -107,7 +107,7 @@ Repară cele trei atribuiri de variabile astfel încât programul să compileze 
 Programul tău ar trebui să afișeze
 
 ```text
-Shrek
-Fiona
-Donkey
+Lance Vance
+Diaz
+Mercedes
 ```

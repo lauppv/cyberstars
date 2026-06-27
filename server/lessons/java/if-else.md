@@ -1,31 +1,30 @@
-In real life we often face decisions: **if** it’s cold, take a sweater, **otherwise** a t-shirt is enough. **If** I’m sleepy, I go to sleep, **otherwise** I program :)
+In real life we often face decisions: **if** it's cold, we put on a warm sweater, **otherwise** a t-shirt is enough
 
 In code, we say
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        int age = 18;
-        if (age < 18) {
-            System.out.println("Access denied because you are not 18 years old");
+        int temperature = 10;
+        if (temperature < 15) {
+            System.out.println("put on a sweater");
         } else {
-            System.out.println("Welcome to the club");
+            System.out.println("a t-shirt is enough");
         }
     }
 }
 ```
 
-Three things to notice in Java
+Two things to notice in Java
 
 - The condition goes inside **parentheses** **( )**
 - The block of code goes inside **braces** **{ }**
-- We don’t need a **:** like in Python
 
-If the **age** is less than **18**, we enter the **if** block. **Otherwise**, we enter the **else** block. Run the code, change the age, see what happens
+If the **temperature** is less than **15**, we enter the **if** block (it's cold, dress warm). **Otherwise**, we enter the **else** block. Run the code, change the temperature, see what happens
 
 ---
 
-The comparison operators are exactly the ones you’d expect
+The comparison operators are exactly the ones you'd expect
 
 - **<** less than
 - **<=** less than or equal
@@ -40,14 +39,14 @@ The comparison operators are exactly the ones you’d expect
 public class Main {
     public static void main(String[] args) {
         int x = 4;
-        if (x = 4) {       // ERROR
+        if (x = 4) {       // error
             System.out.println("Boo");
         }
     }
 }
 ```
 
-This won’t compile. Java won’t even let you make this mistake (unlike some other languages). The correct version is
+This won't compile. Java won't even let you make this mistake. The correct version is
 
 ```java
 public class Main {
@@ -62,7 +61,7 @@ public class Main {
 
 ---
 
-We don’t always need an **else**. Sometimes we just want to do something **if** a condition is true, and otherwise do nothing
+We don't always need an **else**. Sometimes we just want to do something **if** a condition is true, and otherwise do nothing
 
 ```java
 public class Main {
@@ -96,24 +95,22 @@ public class Main {
 }
 ```
 
-Change **isUserOnline** to **false** and run again. Read the new output. Programming becomes fun the moment you start **playing** with the values :)
+Change **isUserOnline** to **false** and run again. Read the new output. Programming becomes fun the moment you start **playing** with the values
 
 ---
 
 ## Mission: Hull Temperature Alert
 
-The station's hull sensor reports the outside temperature. Write an **if / else** that checks it:
+The station's hull sensor reports the outside temperature.
 
-- if `temperature` is **less than 0** → print `it's freezing outside`
+Create an `int` variable for the temperature. Then write an **if / else** that checks it:
+
+- if the temperature is **less than 0** → print `it's freezing outside`
 - otherwise → print `water does not freeze`
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `temperature` — hull temperature in degrees Celsius (int)
 
 **Example**
 
-With `temperature = -5`, your program should print
+With a temperature of `-5`, your program should print
 
 ```text
 it's freezing outside

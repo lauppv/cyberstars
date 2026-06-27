@@ -165,26 +165,9 @@ Enemies spawned: 4
 
 ---
 
-## Python Comparison
+## Mission: The Club Door List
 
-Python has class variables (similar to static fields) and `@staticmethod`:
-
-```python
-class Visitor:
-    total_visits = 0  # class variable (shared)
-
-    def __init__(self, name):
-        self.name = name  # instance variable
-        Visitor.total_visits += 1
-```
-
-Same concept — the class variable belongs to the class, not to any instance
-
----
-
-## Mission: Airlock Traffic Monitor
-
-The station's main airlock logs every crew member who passes through. Individual names are tracked per person, but the total number of entries is a station-wide counter shared across all records.
+Tommy's Malibu Club keeps track of who comes in. Each visitor has their own name, but the total number of entries is shared — it belongs to the club, not to any single person.
 
 Create a `Visitor` class with:
 
@@ -194,13 +177,7 @@ Create a `Visitor` class with:
 
 In `main`, register 3 visitors: `"Tommy"`, `"Lance"`, and `"Cortez"`. Then print the total visit count.
 
-**Input** (already set in your code — change the values to test):
-
-- `"Tommy"`, `"Lance"`, `"Cortez"` — crew members passing through the airlock
-
-**Example**
-
-With three visitors registered, your program should print
+**Example** — three visitors registered at the door
 
 ```text
 3

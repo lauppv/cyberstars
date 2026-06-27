@@ -130,20 +130,6 @@ Whenever Java needs to turn your object into a `String`, it calls `toString()`. 
 
 ---
 
-## Python Comparison
-
-In Python, the equivalent is `__str__`:
-
-```python
-class Car:
-    def __str__(self):
-        return f"{self.make} ({self.year})"
-```
-
-Same idea — Java just calls it `toString()` and uses `@Override` instead of dunder methods
-
----
-
 ## A More Detailed Example
 
 Tommy Vercetti's squad needs proper string representations:
@@ -185,25 +171,15 @@ Lance Vance - Partner (Respect: 60)
 
 ---
 
-## Mission: Fleet Manifest
+## Mission: Tommy's Garage
 
-The station's hangar needs a display system for its vehicle fleet. Each vehicle should print its own formatted summary when logged to the console — no manual string building required.
+Tommy keeps his cars in a garage and wants each one to print nicely when he prints it, without building the string by hand every time
 
-Create a `Car` class with `make` (String) and `year` (int) fields. Write a constructor and override `toString()` to return the format `Make (Year)`.
+Create a `Car` class with a `make` (String) field and a `year` (int) field. Write a constructor and override `toString()` to return the make, then ` (`, the year, and `)` — for example `Infernus (1986)`
 
-In `main`, create two vehicles and print them directly:
+In `main`, create two cars with values of your choice and print them directly with `System.out.println`
 
-1. `"Infernus"`, year `1986`
-2. `"Cheetah"`, year `1984`
-
-**Input** (already set in your code — change the values to test):
-
-- `"Infernus"` / `1986` — first vehicle
-- `"Cheetah"` / `1984` — second vehicle
-
-**Example**
-
-With the starter values, your program should print
+**Example** — `Infernus` from `1986` and `Cheetah` from `1984`
 
 ```text
 Infernus (1986)

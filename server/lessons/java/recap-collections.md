@@ -1,34 +1,19 @@
-Combine **ArrayList**, **ArrayList loops**, **HashMap**, and **HashMap loops**
+Combine **ArrayList**, **HashMap**, and **Collections.sort()**
 
 ---
 
-## Mission: Station Trade Ledger
+## Mission: The Vice City Arsenal
 
-The station's trading post logged today's sales, but the data is raw. The quartermaster needs a summary report: how many of each item sold, which item sold the most, and which items are popular.
+Tommy tracks the weapons he bought from Phil Cassidy over a week. He has a list of purchases: Pistol, Shotgun, Pistol, Automatic, Shotgun, Pistol, Automatic. He wants to know how many of each weapon he bought, which weapon was bought the most, and a sorted list of weapons bought more than once
 
-The data is already on the right:
+Count each weapon in a HashMap. Find the weapon with the most purchases. Collect weapons bought more than once into an ArrayList, sort it alphabetically, and print everything
 
-```java
-String[] sales = {"Sword", "Shield", "Potion", "Sword", "Potion", "Potion", "Armor", "Sword"};
-```
-
-Do the following, in order:
-
-1. Build a **`HashMap<String, Integer>`** counting how many of each item was sold
-2. Loop through the HashMap and print each item with its count
-3. Find the **best seller** (most sold item) by looping through the HashMap
-4. Build an **`ArrayList<String>`** of items that were sold **more than once**
-5. Print the best seller and the popular items list
-
-Note: if two items tie for best seller, either one is fine.
-
-**Output**
+**Example** (first lines order may vary)
 
 ```text
-Sword: 3
-Shield: 1
-Potion: 3
-Armor: 1
-Best seller: Sword
-Popular items: [Sword, Potion]
+Pistol: 3
+Shotgun: 2
+Automatic: 2
+Most bought: Pistol
+Popular (sorted): [Automatic, Pistol, Shotgun]
 ```

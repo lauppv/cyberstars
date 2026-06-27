@@ -121,7 +121,7 @@ public class Main {
         Jucator p = new Jucator("Tommy Vercetti", 100);
         p.setViata(75);
         System.out.println(p.getNume() + ": " + p.getViata() + " HP");
-        p.setViata(-50);  // Ignorat! Valoare invalidă
+        p.setViata(-50);  // Ignorat! Valoare invalida
         System.out.println(p.getNume() + ": " + p.getViata() + " HP");
     }
 }
@@ -138,22 +138,6 @@ Apelul `setViata(-50)` a fost ignorat în tăcere pentru că setterul nostru res
 
 ---
 
-## Comparație cu Python
-
-Python folosește decoratorii `@property` pentru aceeași idee, dar este opțional. În Java, a face câmpurile `private` și a oferi getteri/setteri este modul standard de a scrie clase. Vei vedea acest tipar peste tot
-
-```python
-# Python property (opțional)
-class Jucator:
-    @property
-    def viata(self):
-        return self._viata
-```
-
-În Java, sunt mereu metode explicite: `getViata()`, `setViata()`
-
----
-
 ## Când să Sari Peste Setteri
 
 Nu fiecare câmp are nevoie de un setter. Uneori un câmp ar trebui setat o singură dată (în constructor) și niciodată schimbat. Dacă `nume` nu ar trebui să se schimbe după creare, pur și simplu nu scrie `setNume()` — problemă rezolvată
@@ -162,9 +146,9 @@ Getterul tot le permite oamenilor să **citească** numele, dar nimeni nu îl po
 
 ---
 
-## Misiune: Seiful de Credite al Stației
+## Misiune: Contul lui Tommy
 
-Seiful de credite al stației are nevoie de un sistem de tranzacții sigur. Membrii echipajului pot depune și retrage credite, dar sistemul trebuie să respingă operațiunile invalide — fără depuneri negative și fără descoperiri de cont (overdraft).
+Tommy își ține banii la bancă și vrea un sistem sigur de tranzacții. Poate depune și retrage bani, dar contul trebuie să respingă operațiunile invalide — fără depuneri negative și fără să retragă mai mult decât are în cont.
 
 Creează o clasă `ContBancar` cu:
 
@@ -174,17 +158,9 @@ Creează o clasă `ContBancar` cu:
 4. O metodă `depune(int suma)` care adaugă la sold (doar dacă suma > 0)
 5. O metodă `retrage(int suma)` care scade din sold (doar dacă suma > 0 și suma <= sold)
 
-În `main`, creează un cont cu `1000` credite, depune `500`, retrage `200`, apoi încearcă să retragi `2000` (ar trebui să eșueze în tăcere) și afișează soldul final.
+În `main`, creează un cont cu `1000$`, depune `500`, retrage `200`, apoi încearcă să retragi `2000` (ar trebui să eșueze în tăcere, fiindcă Tommy n-are atâția bani) și afișează soldul final.
 
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- `1000` — soldul inițial
-- `500` — suma depusă
-- `200`, `2000` — sumele retrase
-
-**Exemplu**
-
-Cu valorile de start, programul tău ar trebui să afișeze
+**Exemplu** — cont pornit cu 1000, +500, -200, apoi -2000 respins
 
 ```text
 1300

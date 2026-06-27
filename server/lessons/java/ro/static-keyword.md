@@ -52,7 +52,7 @@ Metodele statice aparțin și ele clasei. Le-ai folosit tot timpul:
 ```java
 public class Main {
     public static void main(String[] args) {
-        int maiMare = Math.max(10, 20);   // Math este clasa, max este o metodă statică
+        int maiMare = Math.max(10, 20);   // Math este clasa, max este o metoda statica
     }
 }
 ```
@@ -98,8 +98,8 @@ Când pornește programul tău, încă nu există niciun obiect. Java are nevoie
 ```java
 public class Main {
     public static void main(String[] args) {
-        // Asta rulează prima. Niciun obiect nu există încă.
-        // De aici, CREEZI obiecte și le apelezi metodele.
+        // Asta ruleaza prima. Niciun obiect nu exista inca.
+        // De aici, CREEZI obiecte si le apelezi metodele.
     }
 }
 ```
@@ -112,17 +112,17 @@ O metodă statică nu are `this` — nu există niciun obiect asociat cu ea. Aș
 
 ```java
 class Exemplu {
-    int x = 10;           // câmp de instanță
-    static int y = 20;    // câmp static
+    int x = 10;           // camp de instanta
+    static int y = 20;    // camp static
 
     static void afiseaza() {
-        System.out.println(y);   // OK — y este static
-        // System.out.println(x); // EROARE — x are nevoie de un obiect
+        System.out.println(y);   // OK - y este static
+        // System.out.println(x); // EROARE - x are nevoie de un obiect
     }
 
     void arata() {
-        System.out.println(x);   // OK — metoda de instanță are un obiect
-        System.out.println(y);   // OK — câmpurile statice sunt mereu accesibile
+        System.out.println(x);   // OK - metoda de instanta are un obiect
+        System.out.println(y);   // OK - campurile statice sunt mereu accesibile
     }
 }
 ```
@@ -152,7 +152,7 @@ public class Main {
         Inamic e2 = new Inamic("Boss");
         Inamic e3 = new Inamic("Sniper");
         Inamic e4 = new Inamic("Goon");
-        System.out.println("Inamici apăruți: " + Inamic.numarInamici);
+        System.out.println("Inamici aparuti: " + Inamic.numarInamici);
     }
 }
 ```
@@ -160,31 +160,14 @@ public class Main {
 Afișează
 
 ```text
-Inamici apăruți: 4
+Inamici aparuti: 4
 ```
 
 ---
 
-## Comparație cu Python
+## Misiune: Lista de la Intrarea Clubului
 
-Python are variabile de clasă (similare câmpurilor statice) și `@staticmethod`:
-
-```python
-class Visitator:
-    total_vizite = 0  # variabilă de clasă (partajată)
-
-    def __init__(self, nume):
-        self.nume = nume  # variabilă de instanță
-        Visitator.total_vizite += 1
-```
-
-Același concept — variabila de clasă aparține clasei, nu vreunei instanțe
-
----
-
-## Misiune: Monitor de Trafic al Ecluzei
-
-Ecluza principală a stației înregistrează fiecare membru al echipajului care trece prin ea. Numele individuale sunt urmărite per persoană, dar numărul total de intrări este un contor la nivel de stație, partajat de toate înregistrările.
+Clubul Malibu al lui Tommy ține evidența cui intră. Fiecare vizitator are numele lui, dar numărul total de intrări este partajat — aparține clubului, nu vreunei persoane.
 
 Creează o clasă `Vizitator` cu:
 
@@ -194,13 +177,7 @@ Creează o clasă `Vizitator` cu:
 
 În `main`, înregistrează 3 vizitatori: `"Tommy"`, `"Lance"` și `"Cortez"`. Apoi afișează numărul total de vizite.
 
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- `"Tommy"`, `"Lance"`, `"Cortez"` — membri ai echipajului care trec prin ecluză
-
-**Exemplu**
-
-Cu trei vizitatori înregistrați, programul tău ar trebui să afișeze
+**Exemplu** — trei vizitatori înregistrați la intrare
 
 ```text
 3

@@ -27,7 +27,7 @@ Două lucruri noi
 - Tipul este **String[]** (observă **[]**) — „un array de String-uri"
 - Folosim **{ }** ca să listăm valorile, separate prin virgule
 
-La fel ca în Python, **numărarea începe de la 0**. **nume[0]** este primul element, **nume[1]** al doilea, și așa mai departe
+**Numărarea începe de la 0**. **nume[0]** este primul element, **nume[1]** al doilea, și așa mai departe
 
 ---
 
@@ -44,7 +44,7 @@ public class Main {
 }
 ```
 
-**Observă**: **nume.length** **nu are paranteze**, spre deosebire de **String.length()**. Da, asta este enervant de inconsecvent — array-urile folosesc un **câmp** numit **length**, în timp ce String-urile au o **metodă** numită **length()**. Bun venit la Java :)
+**Observă**: **nume.length** **nu are paranteze**, spre deosebire de **String.length()**. Da, asta este enervant de inconsecvent — array-urile folosesc un **câmp** numit **length**, în timp ce String-urile au o **metodă** numită **length()**
 
 ---
 
@@ -93,31 +93,129 @@ public class Main {
 }
 ```
 
-Rulează-l. Java aruncă o **ArrayIndexOutOfBoundsException** și se prăbușește. Citește eroarea :)
+Rulează-l. Java aruncă o **ArrayIndexOutOfBoundsException** și se prăbușește. Citește mereu mesajul de eroare — îți spune exact ce indice ai cerut și care era limita
 
 ---
 
-## Misiune: Registrul Echipajului
+Acum partea cea mai utilă: să parcurgem **toate** elementele. Să afișăm câte un salut pentru fiecare nume. **Am putea** scrie o linie pentru fiecare
 
-Stația are un registru al echipajului gol cu **3 sloturi**. Sarcina ta este să-l completezi și să faci o verificare rapidă a stării.
+```java
+public class Main {
+    public static void main(String[] args) {
+        String[] nume = { "Tommy", "Lance", "Cortez" };
+        System.out.println("Salut, " + nume[0] + "!");
+        System.out.println("Salut, " + nume[1] + "!");
+        System.out.println("Salut, " + nume[2] + "!");
+    }
+}
+```
 
-1. Setează `eroi[0]` la `"Shrek"`
-2. Setează `eroi[1]` la `"Fiona"`
-3. Setează `eroi[2]` la `"Donkey"`
-4. Afișează **lungimea** array-ului
-5. Afișează **primul** erou
-6. Afișează **ultimul** erou
+Repetitiv, și se rupe în clipa în care array-ul are mai multe elemente. Bucla **for** merge mână în mână cu array-urile
 
-**Input** (deja setat în partea de sus a codului tău):
+```java
+public class Main {
+    public static void main(String[] args) {
+        String[] nume = { "Tommy", "Lance", "Cortez" };
 
-- `eroi` — un array `String[]` cu 3 sloturi goale
+        for (int i = 0; i < nume.length; i++) {
+            System.out.println("Salut, " + nume[i] + "!");
+        }
+    }
+}
+```
+
+Observă că am folosit **i < nume.length**, **nu** **i <= nume.length**. De ce? Pentru că indicii merg de la **0** la **length - 1**. Pentru un array de **3** elemente, indicii sunt **0, 1, 2**. **i = 3** este în afara limitelor. **i < length** se oprește exact la locul potrivit
+
+---
+
+Java are o formă mai scurtă când nu avem nevoie de indice — **bucla for îmbunătățită** (numită și **for-each**)
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String[] nume = { "Tommy", "Lance", "Cortez" };
+
+        for (String n : nume) {
+            System.out.println("Salut, " + n + "!");
+        }
+    }
+}
+```
+
+Citește-o ca: „pentru fiecare **n** din **nume**, fă asta". Mai curată când vrem doar valoarea
+
+Forma este **for (Tip variabila : array) { ... }**. **:**-ul din mijloc este esențial
+
+Când alegi una față de cealaltă?
+
+- Folosește **for clasic** când ai nevoie de **indice** (de exemplu, pentru a afișa numerele pozițiilor)
+- Folosește **for îmbunătățit** când ai nevoie doar de **valoare**
+
+Ambele sunt comune — codul Java le folosește pe amândouă în funcție de situație
+
+---
+
+Un șablon clasic: **adunarea** numerelor dintr-un array
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int[] preturi = { 10, 20, 30, 40 };
+        int total = 0;
+        for (int pret : preturi) {
+            total = total + pret;
+        }
+        System.out.println(total);
+    }
+}
+```
+
+Output **100**. Începe cu **total = 0**, parcurge fiecare preț, adaugă-l la total. Vei scrie acest gen de buclă **mult** în cariera ta. Citește-o linie cu linie până devine a doua natură
+
+---
+
+## Misiune: Raportul Imperiului
+
+Fiecare afacere a lui Tommy din Vice City și-a raportat încasările pe ziua de azi. Sarcina ta este să produci un raport rapid: listează fiecare sumă, apoi arată **totalul** și **media**.
+
+Pune încasările într-un array de `int`. Apoi:
+
+1. Afișează fiecare sumă pe linia ei
+2. Afișează **totalul** tuturor sumelor
+3. Afișează **media** ca număr zecimal (folosește o conversie la `double`)
+
+**Sfat**: dacă împarți `total / numarul_de_sume` ca int-uri, obții un întreg trunchiat, nu un zecimal. Convertește o parte la `double` ca să păstrezi zecimalele:
+
+```text
+double media = (double) total / incasari.length;
+```
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Pentru încasările `{ 1200, 3400, 800, 2600 }`, programul tău ar trebui să afișeze
 
 ```text
-3
-Shrek
-Donkey
+1200
+3400
+800
+2600
+8000
+2000.0
+```
+
+**Exemplu** pentru o singură afacere `{ 5000 }` (media este chiar acea sumă)
+
+```text
+5000
+5000
+5000.0
+```
+
+**Exemplu** când media **nu** este un număr rotund `{ 125, 200 }`
+
+```text
+125
+200
+325
+162.5
 ```

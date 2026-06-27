@@ -1,16 +1,16 @@
 Last lesson we saw that a child class can replace a parent's method with its own version. That's called **overriding**. Java has a special annotation for it: **@Override**
 
 ```java
-class Animal {
+class Criminal {
     void speak() {
         System.out.println("...");
     }
 }
 
-class Dog extends Animal {
+class Driver extends Criminal {
     @Override
     void speak() {
-        System.out.println("Woof!");
+        System.out.println("Get in the car!");
     }
 }
 ```
@@ -18,10 +18,10 @@ class Dog extends Animal {
 The `@Override` annotation isn't technically required — your code compiles without it. But you should **always** use it. Here's why: if you accidentally misspell the method name, Java will think you're creating a NEW method instead of overriding the old one. With `@Override`, Java checks that the parent actually has that method and yells at you if it doesn't
 
 ```java
-class Dog extends Animal {
+class Driver extends Criminal {
     @Override
-    void speek() {  // TYPO! Compiler error because Animal has no speek()
-        System.out.println("Woof!");
+    void speek() {  // TYPO! Compiler error because Criminal has no speek()
+        System.out.println("Get in the car!");
     }
 }
 ```
@@ -71,10 +71,10 @@ Car engine revving!
 **Overriding**: child class replaces a parent method (same name, same parameters)
 
 ```java
-class Animal {
+class Criminal {
     void speak() { ... }
 }
-class Dog extends Animal {
+class Driver extends Criminal {
     @Override
     void speak() { ... }  // OVERRIDING — replaces parent's speak()
 }
@@ -83,15 +83,12 @@ class Dog extends Animal {
 **Overloading**: same class has multiple methods with the same name but DIFFERENT parameters
 
 ```java
-class Calculator {
-    int add(int a, int b) {
-        return a + b;
+class Garage {
+    void repair(String car) {
+        System.out.println("Repairing " + car);
     }
-    double add(double a, double b) {  // OVERLOADING — different param types
-        return a + b;
-    }
-    int add(int a, int b, int c) {  // OVERLOADING — different param count
-        return a + b + c;
+    void repair(String car, int hours) {  // OVERLOADING — different param count
+        System.out.println("Repairing " + car + " in " + hours + " hours");
     }
 }
 ```
@@ -100,48 +97,49 @@ Overriding = between parent and child, same signature. Overloading = same class,
 
 ---
 
-Here's a full example with shapes
+Here's a full example with Tommy's businesses
 
 ```java
-class Shape {
-    double area() {
+class Business {
+    int earnings() {
         return 0;
     }
 }
 
-class Circle extends Shape {
-    double radius;
+class Club extends Business {
+    int customers;
 
-    Circle(double radius) {
-        this.radius = radius;
+    Club(int customers) {
+        this.customers = customers;
     }
 
     @Override
-    double area() {
-        return Math.PI * radius * radius;
+    int earnings() {
+        return customers * 50;
     }
 }
 
-class Rectangle extends Shape {
-    double width, height;
+class CarWash extends Business {
+    int cars;
+    int price;
 
-    Rectangle(double width, double height) {
-        this.width = width;
-        this.height = height;
+    CarWash(int cars, int price) {
+        this.cars = cars;
+        this.price = price;
     }
 
     @Override
-    double area() {
-        return width * height;
+    int earnings() {
+        return cars * price;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Circle c = new Circle(5);
-        Rectangle r = new Rectangle(4, 6);
-        System.out.println("Circle area: " + String.format("%.2f", c.area()));
-        System.out.println("Rectangle area: " + r.area());
+        Club c = new Club(120);
+        CarWash w = new CarWash(30, 8);
+        System.out.println("Club earnings: " + c.earnings());
+        System.out.println("Car wash earnings: " + w.earnings());
     }
 }
 ```
@@ -149,33 +147,26 @@ public class Main {
 Output
 
 ```text
-Circle area: 78.54
-Rectangle area: 24.0
+Club earnings: 6000
+Car wash earnings: 240
 ```
 
 ---
 
-## Mission: Hull Plate Calculator
+## Mission: Tommy's Business Earnings
 
-The station's engineering team is replacing hull plates of different shapes. They need a program that calculates the area of each plate so they can order the right amount of material.
+Tommy owns several businesses in Vice City, each making money its own way. He needs a program that calculates the earnings of each one.
 
-Create a `Shape` class with an `area()` method that returns `0`. Then create two child classes:
+Create a `Business` class with an `earnings()` method that returns `0`. Then create two child classes:
 
-1. `Circle` — has a `double radius` field, overrides `area()` to return `Math.PI * radius * radius`
-2. `Rectangle` — has `double width` and `double height` fields, overrides `area()` to return `width * height`
+1. `Club` — has an `int customers` field, overrides `earnings()` to return `customers * 50`
+2. `CarWash` — has `int cars` and `int price` fields, overrides `earnings()` to return `cars * price`
 
-Use `@Override` on both. In `main`, create a Circle with radius `5` and a Rectangle with width `4` and height `6`. Print each area with the labels shown below — use `String.format("%.2f", ...)` for the circle.
-
-**Input** (already set in your code — change the values to test):
-
-- `5` — circle radius
-- `4`, `6` — rectangle width and height
+Use `@Override` on both. In `main`, create a `Club` with `120` customers and a `CarWash` with `30` cars and price `8`. Print each one's earnings with the labels shown below.
 
 **Example**
 
-With the starter values, your program should print
-
 ```text
-Circle area: 78.54
-Rectangle area: 24.0
+Club earnings: 6000
+Car wash earnings: 240
 ```

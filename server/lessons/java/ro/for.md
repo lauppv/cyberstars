@@ -8,7 +8,7 @@ public class Main {
         System.out.println(1);
         System.out.println(2);
         System.out.println(3);
-        // ... și tot așa, de zece ori
+        // ... si tot asa, de zece ori
     }
 }
 ```
@@ -49,12 +49,14 @@ Citit ca o poveste: "pornește cu **i = 1**. Cât timp **i <= 10**, rulează cor
 
 Așadar **i** ia valorile **1, 2, 3, 4, 5, 6, 7, 8, 9, 10**. Când **i** devine **11**, condiția **11 <= 10** este **falsă**, iar bucla se termină
 
-Acesta este **diferit față de Python**. În Python scriam **for i in range(1, 11)**. În Java suntem mai expliciți, dar și mai flexibili. Putem număra din 2 în 2, putem număra descrescător, putem face orice vrem
+---
+
+Cele trei părți sunt complet sub controlul tău. Putem număra din 2 în 2, putem număra descrescător, putem face orice vrem
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        // numărând din 2 în 2
+        // numarand din 2 in 2
         for (int i = 0; i <= 10; i = i + 2) {
             System.out.println(i);
         }
@@ -67,7 +69,7 @@ Rezultat: 0, 2, 4, 6, 8, 10
 ```java
 public class Main {
     public static void main(String[] args) {
-        // numărând descrescător
+        // numarand descrescator
         for (int i = 10; i >= 1; i--) {
             System.out.println(i);
         }
@@ -91,39 +93,73 @@ public class Main {
 }
 ```
 
-Aceasta este o **buclă infinită**. **i** rămâne **1** pentru totdeauna, condiția rămâne **adevărată** pentru totdeauna, iar programul afișează **1** până când îl oprești tu. Rulează-l (scurt) ca să vezi ce se întâmplă, apoi închide-l :)
+Aceasta este o **buclă infinită**. **i** rămâne **1** pentru totdeauna, condiția rămâne **adevărată** pentru totdeauna, iar programul afișează **1** până când îl oprești tu. Mereu asigură-te că ceva din buclă apropie condiția de a deveni **falsă**
 
 ---
 
-## Misiune: Scanarea Sectoarelor
+Putem pune **orice** în corpul buclei, inclusiv un **if**. Aici parcurgem sectoarele de la 1 la 5 și marcăm sectorul 3 ca fiind cel de patrulat
 
-Scannerul stației parcurge **toate sectoarele** de la `sectorStart` la `sectorFinal`. Majoritatea sectoarelor primesc o citire numerică normală, dar două sectoare speciale (`sectorAlerta1` și `sectorAlerta2`) declanșează în schimb un semnal **Pizza Margherita** în loc de număr.
-
-Scrie un program care folosește o buclă **for** ca să parcurgă fiecare număr de sector de la `sectorStart` la `sectorFinal`. Pentru fiecare sector:
-
-- dacă sectorul este `sectorAlerta1` sau `sectorAlerta2` → afișează `Pizza Margherita`
-- altfel → afișează numărul sectorului
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `sectorStart` — primul sector de scanat
-- `sectorFinal` — ultimul sector de scanat
-- `sectorAlerta1` — primul sector special
-- `sectorAlerta2` — al doilea sector special
-
-**Exemplu**
-
-Cu `sectorStart = 0`, `sectorFinal = 100`, `sectorAlerta1 = 10` și `sectorAlerta2 = 50`, primele câteva linii din rezultat ar trebui să fie
-
-```text
-0
-1
-2
-...
-9
-Pizza Margherita
-11
-...
+```java
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                System.out.println("Sector de patrulat");
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}
 ```
 
-iar la sectorul 50 vei vedea alt `Pizza Margherita`
+Rezultat
+
+```text
+1
+2
+Sector de patrulat
+4
+5
+```
+
+---
+
+## Misiune: Inspecția Garajului
+
+Tommy inspectează garajul vilei Vercetti. Locurile de parcare sunt numerotate de la **1** până la un număr total. Pe unul dintre locuri e parcat **Infernus**-ul lui — acolo, în loc de număr, vrei să afișezi numele mașinii.
+
+Stochează numărul total de locuri și locul pe care se află Infernus-ul. Apoi folosește o buclă **for** care parcurge locurile de la **1** la total. Pentru fiecare loc:
+
+- dacă e locul unde stă Infernus-ul → afișează `Infernus`
+- altfel → afișează numărul locului
+
+**Exemplu** pentru **5** locuri, cu Infernus pe locul **3**:
+
+```text
+1
+2
+Infernus
+4
+5
+```
+
+**Exemplu** pentru **5** locuri, cu Infernus pe locul **1** (primul):
+
+```text
+Infernus
+2
+3
+4
+5
+```
+
+**Exemplu** pentru **5** locuri, cu Infernus pe locul **5** (ultimul):
+
+```text
+1
+2
+3
+4
+Infernus
+```

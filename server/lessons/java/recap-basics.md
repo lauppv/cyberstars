@@ -4,26 +4,25 @@ Combine **print**, **variables (numbers and strings)**, and **string concatenati
 
 ## Mission: Supply Depot Receipt
 
-A cargo shipment just arrived at the station's supply depot. Before the crates can be stored, you need to print an official receipt for the quartermaster's records.
+A cargo shipment just arrived at the station's supply depot. Before the crates can be stored, print an official receipt for the quartermaster's records.
 
-Create these variables:
+Create variables for the three products (each name and price) and for the tax:
 
-- **item1** = `"Laptop"` with price **999.99**
-- **item2** = `"Mouse"` with price **29.50**
-- **item3** = `"USB Cable"` with price **5.99**
-- **tax** = 19 (percent, as an `int`)
+- **Oxygen module** — price **999.99**
+- **Water filter** — price **29.50**
+- **Solar battery** — price **5.99**
+- **Tax** — **19** (percent, as an `int`)
 
-Calculate the **subtotal**, the **tax amount**, and the **total**. Print a formatted receipt using concatenation and `System.out.println`. Don't worry about rounding — just let Java calculate the numbers and print them as-is.
+Calculate the **subtotal** (sum of the three prices), the **tax amount** (subtotal × tax ÷ 100), and the **total** (subtotal + tax amount). Print the receipt exactly like the example, with amounts rounded to 2 decimals (`%.2f`).
 
-**Output**
+**Example**
 
 ```text
-=== RECEIPT ===
-Laptop: 999.99 EUR
-Mouse: 29.50 EUR
-USB Cable: 5.99 EUR
+Supply receipt
+Oxygen module: 999.99 EUR
+Water filter: 29.50 EUR
+Solar battery: 5.99 EUR
 Subtotal: 1035.48 EUR
-Tax (19%): 196.7412 EUR
-Total: 1232.2212 EUR
-===============
+Tax (19%): 196.74 EUR
+Total: 1232.22 EUR
 ```

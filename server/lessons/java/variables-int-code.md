@@ -3,6 +3,6 @@ public class Main {
         int age = 0;
         double height = 0;
 
-        System.out.println("My name is Cortez, I am " + age + " years old, and I am " + height + " tall");
+        System.out.println("My name is Cortez, I am " + age + " years old and " + height + " m tall");
     }
 }

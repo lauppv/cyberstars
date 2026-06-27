@@ -1,25 +1,25 @@
-Combine **classes/objects**, **constructors**, **methods inside classes**, and **Math class**
+Combine everything from this module: **classes and objects**, **constructors**, **instance methods** that modify the object, and **`toString()`**
 
 ---
 
-## Mission: Station Pet Bay
+## Mission: Tommy's Crew
 
-The crew adopted a few animals for morale. The station's pet bay needs a tracking system to monitor each pet's happiness after play and feeding sessions.
+Tommy is building a crew in Vice City and wants to track each member's respect. Respect goes up when a member trains or runs a mission, but never goes above 100
 
-Create a class **`Pet`** with:
+Create a class **`CrewMember`** with:
 
-- Fields: `name` (String), `species` (String), `age` (int), `happiness` (int, starts at 50)
-- **Constructor** that takes name, species, and age
-- Method **`play()`** — increases happiness by 15, but caps at 100 (use `Math.min`)
-- Method **`feed()`** — increases happiness by 10, but caps at 100
-- Method **`status()`** — returns a String: `"Name (Species, age Y) - Happiness: X"`
+- fields for name (String), role (String), years (int, how long they've been in the crew), and respect (int, starting at 50)
+- a **constructor** that takes the name, role, and years
+- a method **`train()`** that raises respect by 15, without going above 100
+- a method **`mission()`** that raises respect by 10, without going above 100
+- a text representation in the format `Name (Role, Y years) - Respect: X`, so you can print a member directly with `System.out.println`
 
-The interaction sequence in main is already on the right. Fill in the `Pet` class so that Rex, Whiskers, and Nemo report the correct happiness after their sessions. Nemo caps at 100 even though 50 + 4\*15 = 110.
+In `main`, create a few members, train them and send them on missions however you like, then print them. Train one member enough times to go past 100, so you can see the cap in action
 
-**Output**
+**Example** — Tommy (Boss, 3 years) trained twice and sent on one mission, Lance (Partner, 5 years) sent on one mission, Phil (Gunsmith, 2 years) trained four times
 
 ```text
-Rex (Dog, age 3) - Happiness: 90
-Whiskers (Cat, age 5) - Happiness: 60
-Nemo (Fish, age 1) - Happiness: 100
+Tommy Vercetti (Boss, 3 years) - Respect: 90
+Lance Vance (Partner, 5 years) - Respect: 60
+Phil Cassidy (Gunsmith, 2 years) - Respect: 100
 ```

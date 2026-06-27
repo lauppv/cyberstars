@@ -1,6 +1,6 @@
-Imagine you're coding a Vice City mission system and you need to represent the current **weather**: sunny, rainy, foggy, or stormy. You _could_ use Strings like `"sunny"` and `"rainy"`, but then someone could accidentally type `"suny"` and your code wouldn't catch the typo until runtime. Enter **enums**
+Imagine you're coding a Vice City mission system and you need to represent the current **weather**: sunny, rainy, foggy, or stormy. You _could_ use Strings like `"sunny"` and `"rainy"`, but someone could accidentally type `"suny"` and your code wouldn't catch the typo until runtime. This is where **enums** come in
 
-An **enum** (short for enumeration) is a special type that represents a **fixed set of named values**. Once you define them, those are the ONLY valid options
+An **enum** (short for enumeration) is a special type that represents a **fixed set of named values**. Once you define them, those are the only valid options
 
 ```java
 enum Weather {
@@ -21,30 +21,34 @@ Output
 Today's weather: SUNNY
 ```
 
-By convention, enum values are written in **ALL_CAPS**. You access them with the enum name, a dot, then the value: `Weather.SUNNY`
+By convention, enum values are written in **UPPER_SNAKE_CASE**. You access them with the enum name, a dot, then the value: `Weather.SUNNY`
 
 ---
 
-Python doesn't have enums built into the language the same way (there's an `enum` module, but most beginners never use it). In Python, you'd probably just use strings or constants. Java's approach is **safer** because the compiler checks that you only use valid values
+If you try to use a value that doesn't exist in the enum, the compiler stops everything before the program even runs
 
 ```java
+enum Weather {
+    SUNNY, RAINY, FOGGY, STORMY
+}
+
 public class Main {
     public static void main(String[] args) {
-        Weather w = Weather.RAINY;    // works
-        Weather w = Weather.SNOWY;    // ERROR — SNOWY doesn't exist in Weather
+        Weather w = Weather.RAINY;   // works
+        Weather w2 = Weather.SNOWY;  // ERROR -- SNOWY doesn't exist in Weather
     }
 }
 ```
 
-The compiler catches your mistake before the program even runs. This is one of those Java superpowers that saves you from sneaky bugs
+The compiler catches the mistake before the program even starts. That's one of Java's superpowers
 
 ---
 
-Enums work beautifully with **switch** statements. Each case handles one possible value
+Enums work perfectly with **switch** statements. Each case handles one possible value
 
 ```java
 enum Weapon {
-    PISTOL, SHOTGUN, ROCKET_LAUNCHER, KATANA
+    PISTOL, SHOTGUN, AUTOMATIC, ROCKET_LAUNCHER
 }
 
 public class Main {
@@ -56,18 +60,18 @@ public class Main {
             case SHOTGUN:
                 System.out.println("Devastating up close. Tommy's favorite.");
                 break;
+            case AUTOMATIC:
+                System.out.println("High fire rate. Good for intense missions.");
+                break;
             case ROCKET_LAUNCHER:
                 System.out.println("Overkill? Never heard of it.");
-                break;
-            case KATANA:
-                System.out.println("Silent and deadly. Samurai style.");
                 break;
         }
     }
 
     public static void main(String[] args) {
         describeWeapon(Weapon.SHOTGUN);
-        describeWeapon(Weapon.KATANA);
+        describeWeapon(Weapon.AUTOMATIC);
     }
 }
 ```
@@ -76,18 +80,18 @@ Output
 
 ```text
 Devastating up close. Tommy's favorite.
-Silent and deadly. Samurai style.
+High fire rate. Good for intense missions.
 ```
 
-Notice: inside the switch, you write just `PISTOL`, not `Weapon.PISTOL`. Java already knows you're switching on a `Weapon`, so it lets you skip the prefix
+Inside a switch you write just `PISTOL`, not `Weapon.PISTOL` — Java already knows you're switching on a `Weapon`, so it lets you skip the prefix
 
 ---
 
-You can loop through **all values** of an enum using the **values()** method
+You can iterate through **all values** of an enum using the **values()** method
 
 ```java
 enum Gang {
-    VERCETTI, CUBANS, HAITIANS, BIKERS
+    VERCETTI, CUBANS, BIKERS, DIAZ
 }
 
 public class Main {
@@ -104,43 +108,34 @@ Output
 ```text
 VERCETTI
 CUBANS
-HAITIANS
 BIKERS
+DIAZ
 ```
 
-`Gang.values()` returns an array of all the enum constants in the order they were declared. Super useful when you want to process every option
+`Gang.values()` returns an array of all enum constants in the order they were declared. Useful when you want to process every option
 
 ---
 
-When should you use enums vs Strings?
+When should you use enums instead of Strings?
 
-- **Use enums** when you have a **fixed, known set** of options: days of the week, seasons, difficulty levels, game states (MENU, PLAYING, PAUSED, GAME_OVER)
-- **Use Strings** when the value is **free-form** or user-provided: player names, messages, file paths
+- **Enums** — when you have a **fixed, known** set of options: days of the week, seasons, difficulty levels, game states
+- **Strings** — when the value is **free-form** or comes from the user: player names, messages, file paths
 
-If you find yourself writing `if (status.equals("active") || status.equals("inactive") || ...)` — that's a sign you probably want an enum
+If you find yourself writing `if (status.equals("active") || status.equals("inactive") || ...)` — you probably want an enum
 
 ---
 
-## Mission: Climate Control Module
+## Mission: Business Report
 
-The station orbits a planet with four distinct climate cycles. The environmental systems need a status report for each season so the crew knows what to expect on surface missions.
+Tommy has several businesses in Vice City and wants a quick report. Each business can be in one of a few fixed states — making money, temporarily closed, under renovation, or destroyed by a rival gang. For example, Malibu Club is doing well and making money, Print Works is under renovation, Boatyard is temporarily closed, and Kaufman Cabs was destroyed by a rival gang
 
-Create an enum called `Season` with four values: `SPRING`, `SUMMER`, `AUTUMN`, `WINTER`. Write a static method `describeSeason(Season s)` that prints a description for each:
-
-1. SPRING: `"Spring: flowers bloom"`
-2. SUMMER: `"Summer: time for the beach"`
-3. AUTUMN: `"Autumn: leaves are falling"`
-4. WINTER: `"Winter: stay inside and code"`
-
-In `main`, loop through **all** seasons using `Season.values()` and call `describeSeason` for each one.
+Define the possible states as a fixed set of values. Write a method that takes a state and prints what it means. In `main`, iterate through all states and call the method for each one
 
 **Example**
 
-Your program should print
-
 ```text
-Spring: flowers bloom
-Summer: time for the beach
-Autumn: leaves are falling
-Winter: stay inside and code
+Active: making money every day
+Closed: not generating income right now
+Renovation: work in progress, opening soon
+Destroyed: needs to be rebuilt from scratch
 ```

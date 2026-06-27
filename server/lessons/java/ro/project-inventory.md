@@ -1,4 +1,4 @@
-E timpul pentru un proiect adevărat! O să construim un **sistem de inventar** — ca inventarul de arme/obiecte din GTA Vice City. Tommy ridică obiecte, le stochează, și trebuie să știe ce are și cât valorează totul
+E timpul pentru un proiect adevărat! O să construim un **sistem de inventar** — Tommy gestionează depozitul stației, ține evidența proviziilor și trebuie să știe ce are și cât valorează totul
 
 Acest proiect aduce împreună tot ce ai învățat: **clase**, **constructori**, **ArrayList-uri**, **metode**, și **bucle**. Hai să-l construim bucată cu bucată
 
@@ -28,7 +28,7 @@ Simplu și curat. Un `Articol` își știe numele, câte avem, și cât costă f
 
 **Pasul 2: Clasa Inventar**
 
-Clasa `Inventar` ține o listă de obiecte și oferă metode ca să le gestioneze. Aici intră în scenă ArrayList — nu știm câte obiecte va aduna Tommy, așa că un array de dimensiune fixă nu e de ajuns
+Clasa `Inventar` ține o listă de obiecte și oferă metode ca să le gestioneze. Aici intră în scenă ArrayList — nu știm câte provizii vor fi stocate, așa că un array de dimensiune fixă nu e de ajuns
 
 ```java
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ class Inventar {
 }
 ```
 
-Inventarul începe gol. `adaugaArticol` doar adaugă un obiect la listă. Gândește-te la asta ca la Tommy trecând peste o iconiță de pickup — obiectul intră în inventar
+Inventarul începe gol. `adaugaArticol` adaugă un obiect la listă
 
 ---
 
@@ -85,10 +85,10 @@ public class Main {
 }
 ```
 
-Pentru un obiect numit "Health Pack" cu cantitate 3 și pret 25.50, asta afișează:
+Pentru un articol numit "Trusa medicala" cu cantitate 5 și pret 25.00, asta afișează:
 
 ```text
-Health Pack x3 @ $25.50
+Trusa medicala x5 @ $25.00
 ```
 
 ---
@@ -166,9 +166,9 @@ class Inventar {
 public class Main {
     public static void main(String[] args) {
         Inventar inv = new Inventar();
-        inv.adaugaArticol(new Articol("Pistol", 1, 100.00));
-        inv.adaugaArticol(new Articol("Health Pack", 5, 25.00));
-        inv.adaugaArticol(new Articol("Body Armor", 2, 75.50));
+        inv.adaugaArticol(new Articol("Trusa medicala", 5, 25.00));
+        inv.adaugaArticol(new Articol("Rezerva oxigen", 2, 75.50));
+        inv.adaugaArticol(new Articol("Baterie solara", 1, 100.00));
 
         inv.afiseazaTot();
         System.out.println("Total: $" + String.format("%.2f", inv.valoareTotala()));
@@ -179,9 +179,9 @@ public class Main {
 Output
 
 ```text
-Pistol x1 @ $100.00
-Health Pack x5 @ $25.00
-Body Armor x2 @ $75.50
+Trusa medicala x5 @ $25.00
+Rezerva oxigen x2 @ $75.50
+Baterie solara x1 @ $100.00
 Total: $376.00
 ```
 
@@ -195,23 +195,23 @@ Observă și: `Articol` și `Inventar` NU sunt public — doar `Main` este publi
 
 ## Misiune: Manifestul Compartimentului de Marfă
 
-Compartimentul de marfă al stației are nevoie de un sistem de manifest digital. Fiecare obiect de proviziuni are un nume, o cantitate, și un preț unitar. Construiește urmăritorul de inventar ca intendentul să poată lista totul și să calculeze valoarea totală dintr-o privire.
+Compartimentul de marfă al stației are nevoie de un sistem de manifest digital. Fiecare provizii are un nume, o cantitate și un preț unitar. Construiește urmăritorul de inventar ca intendentul să poată lista totul și să calculeze valoarea totală dintr-o privire.
 
 1. Creează o clasă `Articol` cu câmpurile: `nume` (String), `cantitate` (int), `pret` (double) și un constructor
 2. Creează o clasă `Inventar` cu un `ArrayList<Articol>`, și metodele: `adaugaArticol(Articol articol)`, `stergeArticol(String nume)`, `afiseazaTot()`, și `double valoareTotala()`
 3. `afiseazaTot()` afișează fiecare obiect ca `"nume xCantitate @ $pret"` (folosește `String.format("%.2f", pret)`)
 4. `valoareTotala()` returnează suma lui `cantitate * pret` pentru toate obiectele
-5. În main, creează un Inventar și adaugă aceste obiecte:
-   - "Shotgun", cantitate 2, pret 350.00
-   - "Medkit", cantitate 10, pret 15.50
-   - "Kevlar Vest", cantitate 1, pret 200.00
+5. În main, creează un Inventar și adaugă aceste provizii:
+   - "Filtru aer", cantitate 4, pret 35.00
+   - "Pachet hrana", cantitate 10, pret 12.00
+   - "Kit reparatii", cantitate 3, pret 85.00
 6. Apelează `afiseazaTot()`, apoi afișează `"Total: $"` urmat de totalul formatat
 
 **Output**
 
 ```text
-Shotgun x2 @ $350.00
-Medkit x10 @ $15.50
-Kevlar Vest x1 @ $200.00
-Total: $1055.00
+Filtru aer x4 @ $35.00
+Pachet hrana x10 @ $12.00
+Kit reparatii x3 @ $85.00
+Total: $515.00
 ```

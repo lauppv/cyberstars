@@ -4,6 +4,12 @@ class Articol {
     String nume;
     int cantitate;
     double pret;
+
+    Articol(String nume, int cantitate, double pret) {
+        this.nume = nume;
+        this.cantitate = cantitate;
+        this.pret = pret;
+    }
 }
 
 class Inventar {

@@ -1,4 +1,4 @@
-În Python aveam **f-string-uri**, acel truc drăguț **f"Hello, {name}"**. Java **nu** are f-string-uri (ei bine, versiunile recente au, dar într-o formă diferită). Modul clasic în Java de a combina text și variabile este cu operatorul **+**
+Avem deja **+**, **-**, **\***, **/** și **%**. Dar **+** are un al doilea talent: pe lângă adunarea numerelor, poate **lipi text**. Acesta este modul clasic în Java de a combina text și variabile
 
 ```java
 public class Main {
@@ -7,7 +7,7 @@ public class Main {
         int varsta = 32;
         double inaltime = 1.97;
 
-        System.out.println("Salut. Mă numesc " + nume + ", am " + varsta + " ani și înălțimea de " + inaltime + " m");
+        System.out.println("Salut. Ma numesc " + nume + ", am " + varsta + " ani si inaltimea de " + inaltime + " m");
     }
 }
 ```
@@ -15,7 +15,7 @@ public class Main {
 Output
 
 ```text
-Salut. Mă numesc Quincy, am 32 ani și înălțimea de 1.97 m
+Salut. Ma numesc Quincy, am 32 ani si inaltimea de 1.97 m
 ```
 
 Ce se întâmplă aici? Când punem un **String** și o altă valoare împreună cu **+**, Java **convertește totul în text** și le lipește. Asta se numește **concatenare de string-uri** (string concatenation)
@@ -23,10 +23,10 @@ Ce se întâmplă aici? Când punem un **String** și o altă valoare împreună
 Fii atent la spații
 
 ```text
-"Salut. Mă numesc " + nume
+"Salut. Ma numesc " + nume
 ```
 
-Avem un spațiu **înainte de ghilimeaua de închidere**, altfel am obține **Salut. Mă numescQuincy** totul lipit. Asta e ceva ce aproape toată lumea greșește la început. **Verifică-ți mereu spațiile**
+Avem un spațiu **înainte de ghilimeaua de închidere**, altfel am obține **Salut. Ma numescQuincy**, totul lipit. Asta e ceva ce aproape toată lumea greșește la început. **Verifică-ți mereu spațiile**
 
 ---
 
@@ -62,30 +62,107 @@ Output
 Rezultat: 5
 ```
 
-Acum **(2 + 3)** este calculat mai întâi (dând **5**), apoi lipit de string. Ține minte regula asta, o să dai de ea în cod real :)
+Acum **(2 + 3)** este calculat mai întâi (dând **5**), apoi lipit de string. Ține minte regula asta, o să dai de ea în cod real
 
 ---
 
-Există și **System.out.printf** pentru o formatare mai sofisticată, dar e puțin mai greu de citit, așa că o să rămânem la **+** deocamdată. **+** va fi mai mult decât suficient pentru restul acestor lecții
+**+** este suficient pentru cazuri simple, dar când ai mult text de combinat devine greu de citit, plin de ghilimele și de **+**-uri. Java are o alternativă mai curată: **String.format()**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nume = "Tommy Vercetti";
+        String mesaj = String.format("Salut, %s!", nume);
+        System.out.println(mesaj);
+    }
+}
+```
+
+Output
+
+```text
+Salut, Tommy Vercetti!
+```
+
+**%s** este un **placeholder** (un loc rezervat) — înseamnă „pune un String aici". Când Java rulează `String.format(...)`, înlocuiește `%s` cu valoarea lui `nume`. Gândește-te la el ca la un șablon în care umpli spațiile goale
 
 ---
 
-## Misiune: Bariera de Vârstă a Ecluzei
+Există placeholder-e diferite pentru tipuri diferite
 
-Ecluza stației are o restricție de vârstă minimă. Tocmai a încercat să intre o recrută tânără. Folosește concatenarea de string-uri ca să afișezi mesajul de respingere.
+- **%s** — String (sau orice altceva — Java îl convertește în text)
+- **%d** — număr întreg (int)
+- **%f** — număr cu virgulă (double)
 
-Variabilele `numeUtilizator`, `varstaUtilizator` și `varstaNecesara` sunt deja setate în dreapta. Folosește **+** ca să construiești și să afișezi mesajul.
+```java
+public class Main {
+    public static void main(String[] args) {
+        String jucator = "Lance Vance";
+        int eliminari = 47;
+        double acuratete = 82.5;
 
-**Input** (deja setat la începutul codului tău — schimbă valorile ca să testezi):
+        System.out.println(String.format("Jucator: %s | Eliminari: %d | Acuratete: %f", jucator, eliminari, acuratete));
+    }
+}
+```
 
-- `numeUtilizator` — numele recrutei (String)
-- `varstaUtilizator` — vârsta recrutei (int)
-- `varstaNecesara` — vârsta minimă pentru a intra (int)
+Output
+
+```text
+Jucator: Lance Vance | Eliminari: 47 | Acuratete: 82.500000
+```
+
+Stai, o grămadă de zecimale! În mod implicit, **%f** afișează 6 zecimale. Ca să controlezi asta, folosește **%.Nf**, unde N este numărul de zecimale dorit
+
+---
+
+**%.2f** înseamnă „afișează 2 zecimale". Acesta e cel pe care îl vei folosi cel mai des
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        double pret = 4.5;
+        System.out.println(String.format("Pret: $%.2f", pret));
+    }
+}
+```
+
+Output
+
+```text
+Pret: $4.50
+```
+
+---
+
+Java are și **printf()**, care formatează ȘI afișează într-un singur pas, așa că nu mai ai nevoie de `String.format()` plus `System.out.println()` separat
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String nume = "Tommy";
+        int scor = 1500;
+        System.out.printf("Jucator: %s | Scor: %d%n", nume, scor);
+    }
+}
+```
+
+Observă **%n** la final — acela e caracterul de linie nouă pentru printf. Fără el, următoarea afișare ar continua pe aceeași linie
+
+Folosește ce preferi — `String.format()` e bună când vrei să stochezi textul într-o variabilă, iar `printf()` e bună când vrei doar să-l afișezi imediat
+
+---
+
+## Misiune: Tabloul de Scor
+
+Sala de jocuri a stației tocmai a terminat un turneu. Afișează statisticile câștigătorului pe o singură linie.
+
+Creează trei variabile: numele jucătorului (String), scorul total (int) și ratingul de performanță (double). Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Rating: <rating>`. Poți folosi **+** sau **String.format()** — cum preferi.
 
 **Exemplu**
 
-Cu `numeUtilizator = "Quincy"`, `varstaUtilizator = 16` și `varstaNecesara = 18`, programul tău ar trebui să afișeze
+Cu numele `Tommy Vercetti`, scorul `1500` și ratingul `4.75`, programul tău ar trebui să afișeze
 
 ```text
-Salut, Quincy! Îmi pare rău, dar vârsta minimă este 18. Tu ai 16 ani
+Jucator: Tommy Vercetti | Scor: 1500 | Rating: 4.75
 ```

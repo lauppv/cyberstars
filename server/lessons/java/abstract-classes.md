@@ -1,6 +1,6 @@
 Sometimes you want a class that's a **blueprint** — it defines what child classes MUST do, but it can't be used on its own. That's an **abstract class**
 
-Think of it this way: "Vehicle" is a concept. You can't just build a generic "vehicle" — you build a car, a truck, a motorcycle. But they all share the idea of being a vehicle. In Java, you'd make Vehicle **abstract**
+Think of it this way: "Vehicle" is a concept. You can't just build a generic "vehicle" — you build a sports car, a motorcycle, a truck. But they all share the idea of being a vehicle. In Java, you'd make Vehicle **abstract**
 
 ```java
 abstract class Vehicle {
@@ -10,7 +10,7 @@ abstract class Vehicle {
         this.name = name;
     }
 
-    abstract String fuelType();  // no body! children MUST implement this
+    abstract int topSpeed();  // no body! children MUST implement this
 
     void honk() {
         System.out.println(name + " goes BEEP!");
@@ -21,7 +21,7 @@ abstract class Vehicle {
 Two key things here:
 
 - The class is marked `abstract` — you CANNOT do `new Vehicle("something")`
-- The method `fuelType()` is marked `abstract` — it has NO body (no curly braces), just a semicolon. Any non-abstract child MUST provide the body
+- The method `topSpeed()` is marked `abstract` — it has NO body (no curly braces), just a semicolon. Any non-abstract child MUST provide the body
 
 ---
 
@@ -43,37 +43,37 @@ A child class that extends an abstract class MUST implement all abstract methods
 abstract class Vehicle {
     String name;
     Vehicle(String name) { this.name = name; }
-    abstract String fuelType();
+    abstract int topSpeed();
 }
 
-class ElectricCar extends Vehicle {
-    ElectricCar(String name) {
+class SportsCar extends Vehicle {
+    SportsCar(String name) {
         super(name);
     }
 
     @Override
-    String fuelType() {
-        return "Electric";
+    int topSpeed() {
+        return 240;
     }
 }
 
-class GasTruck extends Vehicle {
-    GasTruck(String name) {
+class Motorcycle extends Vehicle {
+    Motorcycle(String name) {
         super(name);
     }
 
     @Override
-    String fuelType() {
-        return "Gasoline";
+    int topSpeed() {
+        return 200;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        ElectricCar tesla = new ElectricCar("Tesla Model 3");
-        GasTruck truck = new GasTruck("Ford F-150");
-        System.out.println(tesla.name + ": " + tesla.fuelType());
-        System.out.println(truck.name + ": " + truck.fuelType());
+        SportsCar infernus = new SportsCar("Infernus");
+        Motorcycle angel = new Motorcycle("Angel");
+        System.out.println(infernus.name + ": " + infernus.topSpeed() + " km/h");
+        System.out.println(angel.name + ": " + angel.topSpeed() + " km/h");
     }
 }
 ```
@@ -81,8 +81,8 @@ public class Main {
 Output
 
 ```text
-Tesla Model 3: Electric
-Ford F-150: Gasoline
+Infernus: 240 km/h
+Angel: 200 km/h
 ```
 
 ---
@@ -99,10 +99,10 @@ abstract class Character {
         this.health = health;
     }
 
-    // Abstract — each character fights differently
+    // Abstract - each character fights differently
     abstract void attack();
 
-    // Concrete — all characters take damage the same way
+    // Concrete - all characters take damage the same way
     void takeDamage(int amount) {
         health -= amount;
         System.out.println(name + " takes " + amount + " damage! HP: " + health);
@@ -116,39 +116,28 @@ Tommy Vercetti and Lance Vance would both extend `Character`. They'd each have t
 
 **When to use abstract class vs regular class?**
 
-Use a **regular class** when it makes sense to create objects of that type directly. A `Dog` is a real thing — you can create one
+Use a **regular class** when it makes sense to create objects of that type directly. A `Car` is a real thing — you can create one
 
-Use an **abstract class** when the class is just a concept or category. "Shape" is abstract — there's no such thing as a generic shape. "Animal" could go either way depending on your design
+Use an **abstract class** when the class is just a concept or category. "Vehicle" is abstract — there's no such thing as a generic vehicle. "Character" could go either way depending on your design
 
 The rule of thumb: if you'd never want someone to write `new YourClass()`, make it abstract
 
 ---
 
-In Python, there's no built-in `abstract` keyword — you'd use the `abc` module. Java makes it a first-class feature because Java loves being explicit about everything
+## Mission: Tommy's Fleet
 
----
+Tommy has several vehicles in his garage, each with its own top speed. He needs a report showing every vehicle and its speed — but "Vehicle" itself is just a concept, not something you can build directly.
 
-## Mission: Fleet Fuel Report
+Create an abstract class `Vehicle` with a `String name` field, a constructor, and an abstract method `topSpeed()` that returns an int. Then create two concrete classes:
 
-The station's ground fleet has different vehicle types, each running on a different fuel. The logistics officer needs a report showing every vehicle and its fuel type — but "Vehicle" itself is just a concept, not something you can build directly.
+1. `SportsCar` — `topSpeed()` returns `240`
+2. `Motorcycle` — `topSpeed()` returns `200`
 
-Create an abstract class `Vehicle` with a `String name` field, a constructor, and an abstract method `fuelType()` that returns a String. Then create two concrete classes:
-
-1. `ElectricCar` — `fuelType()` returns `"Electric"`
-2. `GasTruck` — `fuelType()` returns `"Gasoline"`
-
-In `main`, create an ElectricCar named `"Tesla"` and a GasTruck named `"Ford"`. Print each in the format `Name: FuelType`.
-
-**Input** (already set in your code — change the values to test):
-
-- `"Tesla"` — electric car name
-- `"Ford"` — gas truck name
+In `main`, create a `SportsCar` named `"Infernus"` and a `Motorcycle` named `"Angel"`. Print each in the format `Name: X km/h`.
 
 **Example**
 
-With the starter values, your program should print
-
 ```text
-Tesla: Electric
-Ford: Gasoline
+Infernus: 240 km/h
+Angel: 200 km/h
 ```

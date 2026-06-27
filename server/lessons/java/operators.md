@@ -84,7 +84,7 @@ You’ll see **i++** in **for** loops literally everywhere
 
 ---
 
-What about **powers**? Unlike Python’s **\*\***, Java doesn’t have a power operator. We use **Math.pow**
+What about **powers**? Java doesn’t have a dedicated power operator. Instead, we use **Math.pow**
 
 ```java
 public class Main {
@@ -109,22 +109,19 @@ public class Main {
 }
 ```
 
-When in doubt, **add parentheses**. They make the code easier to read anyway :)
+When in doubt, **add parentheses**. They make the code easier to read anyway
 
 ---
 
 ## Mission: Engine Diagnostics
 
-The station's diagnostic console needs a quick arithmetic readout of two sensor values. Print each operation on its own line: addition, subtraction, multiplication, integer division, and remainder.
+The station's diagnostic console needs a quick arithmetic readout of two sensor values.
 
-**Input** (already set at the top of your code — change the values to test):
-
-- `a` — first sensor reading (int)
-- `b` — second sensor reading (int)
+Create two `int` variables to store two whole numbers. Then print, each on its own line, the result of: addition, subtraction, multiplication, integer division, and remainder.
 
 **Example**
 
-With `a = 17` and `b = 5`, your program should print
+If the two numbers are `17` and `5`, your program should print
 
 ```text
 22

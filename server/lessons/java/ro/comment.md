@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         // acesta este un comentariu
         int a = 1 + 2 + 3;
-        System.out.println(a); // afișează variabila a
+        System.out.println(a); // afiseaza variabila a
     }
 }
 ```
@@ -44,10 +44,10 @@ mai multe linii
 Totuși, în practică, majoritatea codului Java folosește **//** chiar și pentru câteva linii la rând
 
 ```text
-// așa o să ne scriem
+// asa o sa ne scriem
 // comentariile
-// ca să dăm indicii
-// și să explicăm lucruri
+// ca sa dam indicii
+// si sa explicam lucruri
 ```
 
 ---
@@ -62,7 +62,7 @@ Manifestul navei este afișat pe ecranul principal, dar o linie conține **marf�
 
 Comentează **o singură linie** astfel încât să fie afișate doar numele navei, numele misiunii și puterea maximă. Nu șterge nimic — doar folosește `//` ca să ascunzi secretul.
 
-**Input** (deja setat la începutul codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat la începutul codului tău — schimbă valorile ca să testezi):
 
 - `numeNava` — numele navei
 - `numeMisiune` — misiunea curentă

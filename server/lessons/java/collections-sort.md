@@ -1,4 +1,4 @@
-In Python, sorting a list is as easy as `my_list.sort()`. Java has something very similar for ArrayLists: **Collections.sort()**
+Java can sort any ArrayList of Strings or numbers with **Collections.sort()** — just import it from `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ public class Main {
 
         Collections.sort(names);
 
-        for (String name : names) {
-            System.out.println(name);
+        for (String n : names) {
+            System.out.println(n);
         }
     }
 }
@@ -28,13 +28,11 @@ Lance
 Tommy
 ```
 
-**Collections.sort()** sorts the list **in place** — it modifies the original list directly, just like Python's `.sort()`. For strings, it sorts **alphabetically** (A-Z). For numbers, it sorts **smallest to largest**
+`Collections.sort()` sorts **in place** — it modifies the original list directly. Strings are sorted **alphabetically**, numbers **ascending**
 
 ---
 
-You need to **import** `java.util.Collections` at the top of your file (notice: `Collections` with an **s** — it's different from `Collection`). This is a utility class full of handy methods for working with lists
-
-Let's sort some numbers
+Want **reverse** order? Use `Collections.reverse()` after sorting
 
 ```java
 import java.util.ArrayList;
@@ -46,41 +44,6 @@ public class Main {
         scores.add(88);
         scores.add(42);
         scores.add(95);
-        scores.add(67);
-
-        Collections.sort(scores);
-
-        for (int s : scores) {
-            System.out.println(s);
-        }
-    }
-}
-```
-
-Output
-
-```text
-42
-67
-88
-95
-```
-
----
-
-Want to sort in **reverse** order? Use **Collections.reverse()** after sorting — it flips the list around
-
-```java
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> scores = new ArrayList<>();
-        scores.add(88);
-        scores.add(42);
-        scores.add(95);
-        scores.add(67);
 
         Collections.sort(scores);
         Collections.reverse(scores);
@@ -97,76 +60,91 @@ Output
 ```text
 95
 88
-67
 42
 ```
 
-Now the scores go from highest to lowest. Think of it like a Vice City leaderboard — the top player first
+`reverse()` doesn't sort — it just **flips** the current order. To get descending order, sort first then reverse
 
 ---
 
-**Collections.reverse()** doesn't sort — it just **flips** whatever order the list is in. So if you call reverse without sorting first, you just get the original list backwards
+But how do you sort a list of **objects**? If you have an `ArrayList<Car>`, Java doesn't know what to sort by — name? speed? You have to tell it by implementing the **Comparable** interface
 
 ```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Car implements Comparable<Car> {
+    String name;
+    int speed;
+
+    Car(String name, int speed) {
+        this.name = name;
+        this.speed = speed;
+    }
+
+    public int compareTo(Car other) {
+        return this.speed - other.speed;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> crew = new ArrayList<>();
-        crew.add("Tommy");
-        crew.add("Lance");
-        crew.add("Phil");
+        ArrayList<Car> garage = new ArrayList<>();
+        garage.add(new Car("Infernus", 240));
+        garage.add(new Car("Admiral", 150));
+        garage.add(new Car("Cheetah", 230));
 
-        Collections.reverse(crew);
-        // Now it's: Phil, Lance, Tommy (reversed insertion order, NOT sorted)
+        Collections.sort(garage);
+
+        for (Car c : garage) {
+            System.out.println(c.name + " - " + c.speed + " km/h");
+        }
     }
 }
 ```
 
-To get reverse alphabetical order, you need **sort first, then reverse**
+Output
+
+```text
+Admiral - 150 km/h
+Cheetah - 230 km/h
+Infernus - 240 km/h
+```
+
+Let's trace what happens:
+
+1. `Car implements Comparable<Car>` — the class promises it knows how to compare itself with other cars
+2. The `compareTo` method returns a number:
+   - **negative** if `this` comes before `other`
+   - **zero** if they're equal
+   - **positive** if `this` comes after `other`
+3. `this.speed - other.speed` sorts ascending by speed
+
+For **descending** order, flip it: `other.speed - this.speed`
 
 ---
 
-Here's a quick comparison with Python
-
-```python
-# Python
-names = ["Cortez", "Tommy", "Lance"]
-names.sort()           # sorts in place
-names.reverse()        # reverses in place
-```
+To sort by **String** (e.g., by name), use String's own `.compareTo()`
 
 ```java
-public class Main {
-    public static void main(String[] args) {
-        // Java
-        ArrayList<String> names = new ArrayList<>();
-        names.add("Cortez");
-        names.add("Tommy");
-        names.add("Lance");
-        Collections.sort(names);       // sorts in place
-        Collections.reverse(names);    // reverses in place
-    }
+public int compareTo(Car other) {
+    return this.name.compareTo(other.name);
 }
 ```
 
-Pretty similar, right? The main difference is that Java uses a separate **Collections** utility class instead of methods directly on the list
-
 ---
 
-## Mission: Roll Call
+## Mission: Crew Ranking
 
-The captain wants the crew roster printed in **alphabetical order**. The names are already loaded into an `ArrayList<String>` on the right. Sort them with `Collections.sort()`, then print each name on its own line.
+Cortez wants a crew ranking sorted by number of completed missions — from least productive to most active. Tommy completed 47 missions, Lance 12, Phil 8, and Mercedes 23
 
-**Input** (already set in your code — change the values to test):
-
-- Names: `"Cortez"`, `"Tommy"`, `"Lance"`, `"Phil"`
+Build a class for crew members that implements `Comparable` and compares by mission count. Create an ArrayList with all members, sort it, and print the ranking
 
 **Example**
 
-With the starter values, your program should print
-
 ```text
-Cortez
-Lance
-Phil
-Tommy
+Phil - 8 missions
+Lance - 12 missions
+Mercedes - 23 missions
+Tommy - 47 missions
 ```

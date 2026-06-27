@@ -1,30 +1,22 @@
-Combine **interfaces**, **casting**, **exceptions**, and **String.format**
+Combine **interfaces**, **enums**, and **instanceof / casting**
 
 ---
 
-## Mission: Hull Geometry Scanner
+## Mission: Tommy's Empire
 
-The station's hull integrity scanner detects structural shapes and calculates their area for stress analysis. Build the shape system using interfaces, then demonstrate safe casting with exception handling.
+Tommy wants an inventory of his Vice City empire. He has two types of assets — businesses and vehicles. Each asset has a name, a dollar value, and a status from a fixed set of options. Vehicles also have a top speed
 
-Create an interface **`Shape`** with:
+Build the system: a common interface that both types implement, an enum for statuses, and the necessary classes. In `main`, create a few assets of both types, iterate through them, and print the information. For vehicles, use `instanceof` to also show the top speed
 
-- `double area()`
-- `String describe()`
+For example, Malibu Club is an active business worth $120000, Infernus is an active vehicle worth $150000 with a top speed of 240 km/h, Print Works is under renovation ($70000), and Cheetah is a closed vehicle worth $110000 with 230 km/h
 
-Create three classes that implement Shape:
-
-- **Circle** — takes radius. Area = PI _ r _ r. Describe returns `"Circle (r=X.X)"`
-- **Rectangle** — takes width and height. Area = w \* h. Describe returns `"Rectangle (X.X x X.X)"`
-- **Triangle** — takes base and height. Area = 0.5 _ b _ h. Describe returns `"Triangle (b=X.X, h=X.X)"`
-
-The `printShape` method and shape array are already on the right. After printing all shapes, cast `shapes[0]` to Circle and print its radius, then try casting `shapes[1]` to Circle and catch the `ClassCastException`.
-
-**Output**
+**Example**
 
 ```text
-Circle (r=5.0) — Area: 78.54
-Rectangle (4.0 x 6.0) — Area: 24.00
-Triangle (b=3.0, h=8.0) — Area: 12.00
-Circle radius: 5.0
-Not a circle!
+Malibu Club - $120000 - active
+Infernus - $150000 - active
+Top speed: 240 km/h
+Print Works - $70000 - renovation
+Cheetah - $110000 - closed
+Top speed: 230 km/h
 ```

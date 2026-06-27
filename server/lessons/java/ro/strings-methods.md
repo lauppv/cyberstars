@@ -13,7 +13,7 @@ public class Main {
 }
 ```
 
-Output **14**. Spațiile contează și ele. Observă **parantezele** **()** de la final — în Java, **length** este o **metodă**, așa că o apelăm ca atare. (Pentru array-uri sintaxa este diferită, doar **arr.length** fără paranteze. Java e plin de mici inconsecvențe ca asta :)
+Output **14**. Spațiile contează și ele. Observă **parantezele** **()** de la final — pentru String, **length** este o **metodă**, așa că o apelăm cu paranteze
 
 ---
 
@@ -29,25 +29,26 @@ public class Main {
 }
 ```
 
-**Important**: aceste metode **NU** schimbă variabila originală. Ele dau înapoi un string **nou**
+**Important**: aceste metode **nu** schimbă variabila originală. Ele dau înapoi un string **nou**
 
 ```java
 public class Main {
     public static void main(String[] args) {
         String nume = "tommy";
         nume.toUpperCase();
-        System.out.println(nume);   // tot "tommy"
+        System.out.println(nume);   // tot tommy
     }
 }
 ```
 
-Ca să păstrăm efectiv versiunea cu majuscule
+Ca să păstrăm efectiv versiunea cu majuscule, trebuie să **reasignăm**
 
 ```java
 public class Main {
     public static void main(String[] args) {
+        String nume = "tommy";
         nume = nume.toUpperCase();
-        System.out.println(nume);   // "TOMMY"
+        System.out.println(nume);   // TOMMY
     }
 }
 ```
@@ -68,11 +69,11 @@ public class Main {
 }
 ```
 
-**substring(start, end)** dă caracterele de la poziția **start** până la (dar **fără** a include) poziția **end**. Exact ca **range()** în Python și ca slicing-ul — capătul este exclusiv
+**substring(start, end)** dă caracterele de la poziția **start** până la (dar **fără** a include) poziția **end** — capătul este exclusiv
 
 **substring(start)** cu un singur argument dă tot de la **start** până la finalul string-ului
 
-Numărarea începe de la **0**, ca întotdeauna în programare. **nume.substring(0, 5)** înseamnă pozițiile **0, 1, 2, 3, 4** care formează **Tommy**
+Numărarea începe de la **0**. **nume.substring(0, 5)** înseamnă pozițiile **0, 1, 2, 3, 4** care formează **Tommy**
 
 ---
 
@@ -88,7 +89,7 @@ public class Main {
 }
 ```
 
-**charAt(i)** dă înapoi un **char** (un singur caracter). Pentru scopurile noastre, te poți gândi la el ca la un string mititel
+**charAt(i)** dă înapoi un **char** (un singur caracter). Combinat cu **length()**, poți lua și ultimul caracter: **nume.charAt(nume.length() - 1)**
 
 ---
 
@@ -97,8 +98,8 @@ Compararea string-urilor — și **cea mai des întâlnită capcană din Java di
 ```java
 public class Main {
     public static void main(String[] args) {
-        String a = "hello";
-        String b = "hello";
+        String a = "salut";
+        String b = "salut";
 
         if (a == b) {
             System.out.println("egal");
@@ -114,6 +115,9 @@ Asta **ar putea** afișa **egal**, dar **e greșit**. Cu obiectele (și **String
 ```java
 public class Main {
     public static void main(String[] args) {
+        String a = "salut";
+        String b = "salut";
+
         if (a.equals(b)) {
             System.out.println("egal");
         }
@@ -121,23 +125,26 @@ public class Main {
 }
 ```
 
-**Folosește întotdeauna .equals() ca să compari string-uri în Java**. Memorează asta. Îți vei mulțumi mai târziu :)
+**Folosește întotdeauna .equals() ca să compari string-uri în Java**. Memorează asta de pe acum
 
 ---
 
 ## Misiune: Decodorul de Semnal
 
-Un nume de membru al echipajului a sosit bruiat prin stația de comunicații. Modulul de decriptare are nevoie să-l afișezi în fiecare format ca analiștii să-l poată verifica încrucișat.
+Un nume a sosit bruiat prin stația de comunicații a lui Tommy. Modulul de decriptare are nevoie să-l afișezi în mai multe formate, ca analiștii să-l poată verifica.
 
-Afișează aceste șase valori pe **linii separate**: cu majuscule, cu minuscule, lungimea, primul caracter, primele 5 caractere și ultimele 5 caractere (pozițiile 6 până la 11).
+Stochează numele într-un String. Apoi afișează aceste șase valori pe **linii separate**, în această ordine:
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+- numele cu majuscule
+- numele cu minuscule
+- lungimea numelui
+- primul caracter
+- primele **5** caractere
+- ultimele **5** caractere
 
-- `nume` — numele membrului echipajului (String)
+Pentru „ultimele 5 caractere" folosește **length()** ca să calculezi poziția de start, ca să meargă pentru orice nume (de cel puțin 5 litere).
 
-**Exemplu**
-
-Cu `nume = "lance vance"`, programul tău ar trebui să afișeze
+**Exemplu** pentru numele `lance vance`:
 
 ```text
 LANCE VANCE
@@ -146,4 +153,26 @@ lance vance
 l
 lance
 vance
+```
+
+**Exemplu** pentru numele `tommy vercetti`:
+
+```text
+TOMMY VERCETTI
+tommy vercetti
+14
+t
+tommy
+cetti
+```
+
+**Exemplu** pentru numele `lance` (exact 5 litere — primele 5 și ultimele 5 sunt tot numele):
+
+```text
+LANCE
+lance
+5
+l
+lance
+lance
 ```

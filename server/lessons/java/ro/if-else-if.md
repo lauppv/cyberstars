@@ -10,7 +10,7 @@ Dacă mai avem **10** secunde → pornim motoarele principale
 
 Altfel → nu facem nimic special
 
-În Java folosim **else if** (în Python era **elif** — Java îl scrie pe larg)
+În Java folosim **else if** — două cuvinte, scrise pe larg
 
 ```java
 public class Main {
@@ -68,32 +68,47 @@ public class Main {
 
         if (secunde < 10) {
             if (eroareDetectata) {
-                System.out.println("Eroare detectată. Anulez misiunea");
+                System.out.println("Eroare detectata. Anulez misiunea");
             } else {
-                System.out.println("Nicio eroare detectată. Decolez...");
+                System.out.println("Nicio eroare detectata. Decolez...");
             }
         }
     }
 }
 ```
 
-Aici, doar **dacă** suntem în ultimele 10 secunde, verificăm indicatorul de eroare. **if**-urile imbricate sunt în regulă, dar dacă imbrici pe 5 niveluri adâncime, codul devine ilizibil. Încearcă să păstrezi lucrurile plate când poți :)
+Aici, doar **dacă** suntem în ultimele 10 secunde, verificăm indicatorul de eroare. **if**-urile imbricate sunt în regulă, dar dacă imbrici pe 5 niveluri adâncime, codul devine ilizibil. Încearcă să păstrezi lucrurile plate când poți
 
 ---
 
 ## Misiune: Secvența de Lansare
 
-Cronometrul de numărătoare inversă rulează. În funcție de câte secunde rămân, sistemul trebuie să execute o acțiune diferită. Codul din dreapta are deja întregul lanț — încearcă să schimbi `secunde` și `eroareDetectata` ca să vezi cum se declanșează fiecare ramură.
+Cronometrul de numărătoare inversă rulează. În funcție de câte secunde rămân până la lansare, sistemul execută o acțiune diferită:
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+- la **100** de secunde → afișează `Pornesc toate calculatoarele de la bord`
+- la **60** de secunde → afișează `Verific conexiunea cu turnul de control`
+- la **20** de secunde → afișează `Pornesc motoarele secundare`
+- la **10** secunde → afișează `Pornesc motoarele principale`
+- în orice alt caz → afișează `Astept...`
 
-- `secunde` — secunde rămase până la lansare (int)
-- `eroareDetectata` — dacă a fost detectată o eroare (boolean)
+Reține numărul de secunde într-o variabilă `int` și scrie un lanț `if / else if / else` care afișează acțiunea corectă.
 
-**Exemplu**
+**Exemple**
 
-Cu `secunde = 60` și `eroareDetectata = false`, programul tău ar trebui să afișeze
+La `100` de secunde:
+
+```text
+Pornesc toate calculatoarele de la bord
+```
+
+La `60` de secunde:
 
 ```text
 Verific conexiunea cu turnul de control
+```
+
+La `200` de secunde (nicio ramură nu se potrivește, intră `else`):
+
+```text
+Astept...
 ```

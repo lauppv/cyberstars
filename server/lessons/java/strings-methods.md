@@ -13,7 +13,7 @@ public class Main {
 }
 ```
 
-Output **14**. Spaces count too. Notice the **parentheses** **()** at the end — in Java, **length** is a **method**, so we call it like one. (For arrays the syntax is different, just **arr.length** without parentheses. Java is full of small inconsistencies like this :)
+Output **14**. Spaces count too. Notice the **parentheses** **()** at the end — for a String, **length** is a **method**, so we call it with parentheses
 
 ---
 
@@ -29,25 +29,26 @@ public class Main {
 }
 ```
 
-**Important**: these methods do **NOT** change the original variable. They give back a **new** string
+**Important**: these methods do **not** change the original variable. They give back a **new** string
 
 ```java
 public class Main {
     public static void main(String[] args) {
         String name = "tommy";
         name.toUpperCase();
-        System.out.println(name);   // still "tommy"
+        System.out.println(name);   // still tommy
     }
 }
 ```
 
-To actually keep the uppercase version
+To actually keep the uppercase version, we must **reassign**
 
 ```java
 public class Main {
     public static void main(String[] args) {
+        String name = "tommy";
         name = name.toUpperCase();
-        System.out.println(name);   // "TOMMY"
+        System.out.println(name);   // TOMMY
     }
 }
 ```
@@ -68,11 +69,11 @@ public class Main {
 }
 ```
 
-**substring(start, end)** gives the characters from position **start** up to (but **not** including) position **end**. Just like **range()** in Python and slicing — the end is exclusive
+**substring(start, end)** gives the characters from position **start** up to (but **not** including) position **end** — the end is exclusive
 
 **substring(start)** with one argument gives everything from **start** to the end of the string
 
-Counting starts from **0**, like always in programming. **name.substring(0, 5)** means positions **0, 1, 2, 3, 4** which spell **Tommy**
+Counting starts from **0**. **name.substring(0, 5)** means positions **0, 1, 2, 3, 4** which spell **Tommy**
 
 ---
 
@@ -88,7 +89,7 @@ public class Main {
 }
 ```
 
-**charAt(i)** gives back a **char** (a single character). For our purposes, you can think of it as a tiny string
+**charAt(i)** gives back a **char** (a single character). Combined with **length()**, you can grab the last character too: **name.charAt(name.length() - 1)**
 
 ---
 
@@ -109,11 +110,14 @@ public class Main {
 }
 ```
 
-This **might** print **equal**, but **it’s wrong**. With objects (and **String** is an object in Java), **==** compares whether they are the **same object in memory**, not whether they have the same content. The correct way is
+This **might** print **equal**, but **it's wrong**. With objects (and **String** is an object in Java), **==** compares whether they are the **same object in memory**, not whether they have the same content. The correct way is
 
 ```java
 public class Main {
     public static void main(String[] args) {
+        String a = "hello";
+        String b = "hello";
+
         if (a.equals(b)) {
             System.out.println("equal");
         }
@@ -121,23 +125,26 @@ public class Main {
 }
 ```
 
-**Always use .equals() to compare strings in Java**. Memorize this. You’ll thank yourself later :)
+**Always use .equals() to compare strings in Java**. Memorize this right now
 
 ---
 
 ## Mission: Signal Decoder
 
-A garbled crew name arrived over the comms. The decryption module needs you to display it in every format so the analysts can cross-reference it.
+A garbled name arrived over Tommy's comms. The decryption module needs you to display it in several formats so the analysts can check it.
 
-Print these six values on **separate lines**: uppercase, lowercase, length, first character, first 5 characters, and last 5 characters (positions 6 to 11).
+Store the name in a String. Then print these six values on **separate lines**, in this order:
 
-**Input** (already set at the top of your code — change the values to test):
+- the name in uppercase
+- the name in lowercase
+- the length of the name
+- the first character
+- the first **5** characters
+- the last **5** characters
 
-- `name` — the crew member's name (String)
+For "the last 5 characters" use **length()** to compute the start position, so it works for any name (of at least 5 letters).
 
-**Example**
-
-With `name = "lance vance"`, your program should print
+**Example** for the name `lance vance`:
 
 ```text
 LANCE VANCE
@@ -146,4 +153,26 @@ lance vance
 l
 lance
 vance
+```
+
+**Example** for the name `tommy vercetti`:
+
+```text
+TOMMY VERCETTI
+tommy vercetti
+14
+t
+tommy
+cetti
+```
+
+**Example** for the name `lance` (exactly 5 letters — the first 5 and the last 5 are the whole name):
+
+```text
+LANCE
+lance
+5
+l
+lance
+lance
 ```

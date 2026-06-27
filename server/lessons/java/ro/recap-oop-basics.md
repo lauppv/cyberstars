@@ -1,25 +1,25 @@
-Combină **clase/obiecte**, **constructori**, **metode în interiorul claselor** și **clasa Math**
+Combină tot ce ai învățat în acest modul: **clase și obiecte**, **constructori**, **metode de instanță** care modifică obiectul și **`toString()`**
 
 ---
 
-## Misiune: Compartimentul de Animale al Stației
+## Misiune: Banda lui Tommy
 
-Echipajul a adoptat câteva animale pentru moral. Compartimentul de animale al stației are nevoie de un sistem de urmărire care să monitorizeze fericirea fiecărui animal după sesiunile de joacă și de hrănire.
+Tommy își construiește o bandă în Vice City și vrea să urmărească respectul fiecărui membru. Respectul crește când un membru se antrenează sau iese la o misiune, dar nu trece niciodată de 100
 
-Creează o clasă **`AnimalCompanie`** cu:
+Creează o clasă **`MembruBanda`** cu:
 
-- Câmpuri: `nume` (String), `specie` (String), `varsta` (int), `fericire` (int, începe de la 50)
-- **Constructor** care primește nume, specie și vârstă
-- Metoda **`joaca()`** — crește fericirea cu 15, dar se plafonează la 100 (folosește `Math.min`)
-- Metoda **`hraneste()`** — crește fericirea cu 10, dar se plafonează la 100
-- Metoda **`status()`** — returnează un String: `"Nume (Specie, Y ani) - Fericire: X"`
+- câmpuri pentru nume (String), rol (String), ani (int, de câți ani e în bandă) și respect (int, care pornește de la 50)
+- un **constructor** care primește numele, rolul și anii
+- o metodă **`antreneaza()`** care crește respectul cu 15, fără să treacă de 100
+- o metodă **`misiune()`** care crește respectul cu 10, fără să treacă de 100
+- o reprezentare ca text în formatul `Nume (Rol, Y ani) - Respect: X`, ca să poți afișa un membru direct cu `System.out.println`
 
-Secvența de interacțiuni din main este deja pregătită în dreapta. Completează clasa `AnimalCompanie` astfel încât Rex, Whiskers și Nemo să raporteze fericirea corectă după sesiunile lor. Nemo se plafonează la 100 chiar dacă 50 + 4\*15 = 110.
+În `main`, creează câțiva membri, antrenează-i și trimite-i în misiuni cum vrei, apoi afișează-i. Antrenează un membru de destule ori cât să depășească 100, ca să vezi plafonarea în acțiune
 
-**Output**
+**Exemplu** — Tommy (Sef, 3 ani) antrenat de 2 ori și trimis într-o misiune, Lance (Partener, 5 ani) trimis într-o misiune, Phil (Armurier, 2 ani) antrenat de 4 ori
 
 ```text
-Rex (Caine, 3 ani) - Fericire: 90
-Whiskers (Pisica, 5 ani) - Fericire: 60
-Nemo (Peste, 1 ani) - Fericire: 100
+Tommy Vercetti (Sef, 3 ani) - Respect: 90
+Lance Vance (Partener, 5 ani) - Respect: 60
+Phil Cassidy (Armurier, 2 ani) - Respect: 100
 ```

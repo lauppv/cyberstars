@@ -13,8 +13,8 @@ public class Main {
     public static void main(String[] args) {
         HashMap<String, Integer> note = new HashMap<>();
         note.put("Mate", 92);
-        note.put("Engleză", 85);
-        note.put("Științe", 78);
+        note.put("Engleza", 85);
+        note.put("Stiinte", 78);
 
         System.out.println("Mate: " + note.get("Mate"));
     }
@@ -109,7 +109,7 @@ public class Main {
 
 **Notă importantă despre ordinea în HashMap**
 
-HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleză, Științe — s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
+HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleza, Stiinte — s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
 
 Pentru exercițiul nostru, o să folosim un **LinkedHashMap** ca rezultatul să fie previzibil
 
@@ -170,8 +170,8 @@ public class Main {
     public static void main(String[] args) {
         Student s1 = new Student("Tommy");
         s1.adaugaNota("Mate", 85);
-        s1.adaugaNota("Engleză", 92);
-        s1.adaugaNota("Științe", 78);
+        s1.adaugaNota("Engleza", 92);
+        s1.adaugaNota("Stiinte", 78);
         s1.afiseazaRaport();
     }
 }
@@ -182,8 +182,8 @@ Output
 ```text
 Student: Tommy
   Mate: 85
-  Engleză: 92
-  Științe: 78
+  Engleza: 92
+  Stiinte: 78
   Media: 85.0
 ```
 
@@ -206,8 +206,8 @@ Academia de antrenament a stației tocmai a terminat examenele. Fiecare cadet ar
    - `"  MATERIE: NOTA"` pentru fiecare materie (două spații înainte de fiecare)
    - `"  Media: X.X"` la final (o zecimală, două spații înainte)
 4. În main, creează doi studenți:
-   - "Tommy" cu notele: Mate 90, Engleză 85, Științe 92
-   - "Lance" cu notele: Mate 78, Engleză 82, Științe 88
+   - "Tommy" cu notele: Mate 90, Engleza 85, Stiinte 92
+   - "Lance" cu notele: Mate 78, Engleza 82, Stiinte 88
 5. Afișează ambele rapoarte
 
 **Output**
@@ -215,12 +215,12 @@ Academia de antrenament a stației tocmai a terminat examenele. Fiecare cadet ar
 ```text
 Student: Tommy
   Mate: 90
-  Engleză: 85
-  Științe: 92
+  Engleza: 85
+  Stiinte: 92
   Media: 89.0
 Student: Lance
   Mate: 78
-  Engleză: 82
-  Științe: 88
+  Engleza: 82
+  Stiinte: 88
   Media: 82.7
 ```

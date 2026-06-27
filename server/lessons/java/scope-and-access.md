@@ -180,9 +180,9 @@ Access modifiers (`public`, `private`) are only for class members — fields, me
 
 ---
 
-## Mission: Crew Wallet
+## Mission: Tommy's Wallet
 
-Each crew member has a personal `Wallet` on the station, protected by access controls. Build the `Wallet` class with:
+Tommy wants a wallet protected by access controls, so nobody can mess with his money directly. Build the `Wallet` class with:
 
 1. A `private int money` field
 2. A `public` constructor that takes starting money
@@ -192,16 +192,7 @@ Each crew member has a personal `Wallet` on the station, protected by access con
 
 In `main`, create a wallet with **100**, add **50**, spend **30**, try to spend **200** (should fail silently), then print the balance.
 
-**Input** (already set in the starter code — change the values to test):
-
-- Starting money: `100`
-- Add: `50`
-- Spend: `30`
-- Attempted overspend: `200`
-
-**Example**
-
-With the starter values, your program should print
+**Example** — wallet started at 100, +50, -30, then -200 rejected
 
 ```text
 120

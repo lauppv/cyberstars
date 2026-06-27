@@ -12,10 +12,10 @@ public class Main {
         int x = 10;
         if (x > 5) {
             int y = 20;
-            System.out.println(x + y);  // 30 — atât x cât și y sunt vizibile aici
+            System.out.println(x + y);  // 30 - atat x cat si y sunt vizibile aici
         }
-        // System.out.println(y);  // EROARE! y nu există în afara blocului if
-        System.out.println(x);     // în regulă — x este în vizibilitatea metodei
+        // System.out.println(y);  // EROARE! y nu exista in afara blocului if
+        System.out.println(x);     // in regula - x este in vizibilitatea metodei
     }
 }
 ```
@@ -37,7 +37,7 @@ Câmpurile declarate într-o clasă există atâta timp cât există obiectul. T
 
 ```java
 class Jucator {
-    String nume;    // vizibilitate de clasă — vizibil pentru toate metodele
+    String nume;    // vizibilitate de clasa - vizibil pentru toate metodele
     int viata;
 
     Jucator(String nume) {
@@ -46,7 +46,7 @@ class Jucator {
     }
 
     void primesteDaune(int suma) {
-        viata -= suma;    // poate accesa viata — este un câmp al clasei
+        viata -= suma;    // poate accesa viata - este un camp al clasei
     }
 
     void afiseazaStatus() {
@@ -84,7 +84,7 @@ Pentru moment, concentrează-te pe `public` și `private`. Ele sunt ce vei folos
 
 ```java
 class Seif {
-    public String proprietar;  // oricine poate vedea cine îl deține
+    public String proprietar;  // oricine poate vedea cine il detine
     private int codSecret;     // doar clasa Seif poate accesa asta
     private int bani;          // doar clasa Seif se poate atinge de bani
 
@@ -95,7 +95,7 @@ class Seif {
     }
 
     public boolean deblocheaza(int cod) {
-        return cod == codSecret;   // câmp privat folosit în interiorul clasei
+        return cod == codSecret;   // camp privat folosit in interiorul clasei
     }
 
     public int getBani() {
@@ -106,9 +106,9 @@ class Seif {
 public class Main {
     public static void main(String[] args) {
         Seif v = new Seif("Cortez", 1234, 50000);
-        System.out.println("Proprietar: " + v.proprietar);  // OK — public
-        // System.out.println(v.codSecret);             // EROARE — private!
-        // System.out.println(v.bani);                  // EROARE — private!
+        System.out.println("Proprietar: " + v.proprietar);  // OK - public
+        // System.out.println(v.codSecret);             // EROARE - private!
+        // System.out.println(v.bani);                  // EROARE - private!
         System.out.println("Deblocat: " + v.deblocheaza(1234));
         System.out.println("Bani: " + v.getBani());
     }
@@ -170,8 +170,8 @@ Asta îți menține datele în siguranță. Nimeni nu poate seta `bani` la -999,
 ```java
 public class Main {
     void faceTreaba() {
-        int temp = 42;          // fără public/private — este locală
-        // temp există doar în interiorul lui faceTreaba()
+        int temp = 42;          // fara public/private - este locala
+        // temp exista doar in interiorul lui faceTreaba()
     }
 }
 ```
@@ -180,9 +180,9 @@ Modificatorii de acces (`public`, `private`) sunt doar pentru membrii clasei —
 
 ---
 
-## Misiune: Portofelul Echipajului
+## Misiune: Portofelul lui Tommy
 
-Fiecare membru al echipajului are un `Portofel` personal pe stație, protejat de controale de acces. Construiește clasa `Portofel` cu:
+Tommy vrea un portofel protejat de controale de acces, ca nimeni să nu-i poată umbla la bani direct. Construiește clasa `Portofel` cu:
 
 1. Un câmp `private int bani`
 2. Un constructor `public` care primește banii de start
@@ -192,16 +192,7 @@ Fiecare membru al echipajului are un `Portofel` personal pe stație, protejat de
 
 În `main`, creează un portofel cu **100**, adaugă **50**, cheltuie **30**, încearcă să cheltui **200** (ar trebui să eșueze în tăcere), apoi afișează soldul.
 
-**Input** (deja setat în codul de start — schimbă valorile ca să testezi):
-
-- Bani de start: `100`
-- Adaugă: `50`
-- Cheltuie: `30`
-- Cheltuială excesivă încercată: `200`
-
-**Exemplu**
-
-Cu valorile de start, programul tău ar trebui să afișeze
+**Exemplu** — portofel pornit cu 100, +50, -30, apoi -200 respins
 
 ```text
 120

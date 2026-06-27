@@ -1,16 +1,16 @@
 public class Main {
-    public static void describe(String item) {
+    public static void describe(String name) {
     }
 
-    public static void describe(String item, int quantity) {
+    public static void describe(String name, int quantity) {
     }
 
-    public static void describe(String item, int quantity, double price) {
+    public static void describe(String name, int quantity, int price) {
     }
 
     public static void main(String[] args) {
-        describe("Sword");
-        describe("Shield", 5);
-        describe("Potion", 3, 9.99);
+        describe("Sniper");
+        describe("Sniper", 4);
+        describe("Sniper", 4, 10);
     }
 }

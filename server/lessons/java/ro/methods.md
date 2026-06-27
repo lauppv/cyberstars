@@ -1,9 +1,11 @@
-În Python le-am numit **funcții**. În Java, sunt de obicei numite **metode**. Ideea este aceeași: o bucată de cod pe care o scriem **o singură dată** și o refolosim de multe ori
+Până acum tot codul nostru a stat înghesuit în **main**. O **metodă** este o bucată de cod căreia îi dăm un nume, o scriem **o singură dată** și o refolosim de câte ori vrem. De fapt ai folosit deja una de zeci de ori: **System.out.println** este o metodă
+
+Hai să ne scriem propria metodă
 
 ```java
 public class Main {
     public static void saluta(String nume) {
-        System.out.println("Salut, " + nume + "!");
+        System.out.println("Salut, " + nume);
     }
 
     public static void main(String[] args) {
@@ -17,32 +19,30 @@ public class Main {
 Output
 
 ```text
-Salut, Cortez!
-Salut, Tommy Vercetti!
-Salut, Lance Vance!
+Salut, Cortez
+Salut, Tommy Vercetti
+Salut, Lance Vance
 ```
 
-Hai să descompunem asta. Linia
+Am scris logica de salut **o singură dată**, dar am folosit-o de trei ori. Hai să descompunem linia care declară metoda
 
 ```java
-public class Main {
-    public static void saluta(String nume)
-}
+public static void saluta(String nume)
 ```
 
-declară o metodă numită **saluta**. Fiecare parte are un sens, și vom explica deocamdată doar esențialul
+Fiecare parte are un sens — deocamdată explicăm doar esențialul
 
 - **public** — oricine poate apela această metodă
 - **static** — deocamdată, doar scrie-l. Îl vei înțelege în profunzime când vei studia clasele și obiectele
-- **void** — metoda **NU** întoarce nimic (doar afișează)
+- **void** — metoda **nu** întoarce nimic (doar afișează ceva)
 - **saluta** — numele metodei
-- **(String nume)** — primește un **parametru** numit **nume**, de tip **String**. Observă tipul **înaintea** parametrului, nu după
+- **(String nume)** — primește un **parametru** numit **nume**, de tip **String**. Observă tipul **înaintea** parametrului
 
-Trebuie să punem **public static void** la început. Nu-ți face griji de ce deocamdată, doar **ai încredere în boilerplate** :)
+Trebuie să punem **public static void** la început. Nu-ți face griji de ce deocamdată, doar ai încredere în acest tipar
 
 ---
 
-O metodă poate și **întoarce** o valoare. În acel caz, în loc de **void**, scriem tipul de retur
+O metodă poate și **întoarce** o valoare. În acel caz, în loc de **void**, scriem tipul valorii întoarse
 
 ```java
 public class Main {
@@ -59,7 +59,7 @@ public class Main {
 
 Output **5**
 
-Metoda **aduna** primește două int-uri și întoarce un int. Înăuntru, folosim **return** ca să dăm înapoi valoarea. Imediat ce Java ajunge la **return**, metoda **iese imediat** — orice scris după **return** este cod mort
+Metoda **aduna** primește două int-uri și întoarce un int. Înăuntru, folosim **return** ca să dăm înapoi valoarea. Imediat ce Java ajunge la **return**, metoda **iese imediat** — orice e scris după **return** este cod mort
 
 Putem folosi rezultatul și direct într-o altă expresie
 
@@ -84,16 +84,16 @@ Tipul de retur **trebuie să se potrivească** cu ceea ce întoarcem de fapt
 ```java
 public class Main {
     public static int aduna(int a, int b) {
-        return "hello";   // EROARE
+        return "salut";   // eroare
     }
 }
 ```
 
-Metoda promite să întoarcă un **int**, dar încearcă să dea înapoi un **String**. Java refuză să compileze. Este unul dintre obiceiurile **stricte**, dar **utile**, ale Java — multe bug-uri sunt prinse înainte ca programul să ruleze măcar :)
+Metoda promite să întoarcă un **int**, dar încearcă să dea înapoi un **String**. Java refuză să compileze. Este unul dintre obiceiurile **stricte**, dar **utile**, ale Java — multe bug-uri sunt prinse înainte ca programul să ruleze măcar
 
 ---
 
-O metodă fără **return**, declarată ca **void**, doar își face treaba și iese. Putem totuși folosi **return** singur (fără valoare) ca să ieșim mai devreme
+O metodă **void** doar își face treaba și iese. Putem totuși folosi **return** singur (fără valoare) ca să ieșim mai devreme
 
 ```java
 public class Main {
@@ -101,37 +101,29 @@ public class Main {
         if (nume.length() == 0) {
             return;   // iese mai devreme, niciun salut pentru nume goale
         }
-        System.out.println("Salut, " + nume + "!");
+        System.out.println("Salut, " + nume);
     }
 }
 ```
 
 ---
 
-## Misiune: Calculatorul Navei
+## Misiune: Împărțirea Prăzii
 
-Calculatorul de bord al stației are nevoie de o metodă **calculator**. Deja se ocupă de adunare, dar echipajul are nevoie și de **scădere** (`-`), **înmulțire** (`*`) și **împărțire** (`/`).
+După o lovitură reușită, Tommy împarte prada în mod egal între membrii echipei. Vrei o metodă care face calculul o singură dată și pe care o poți refolosi pentru fiecare lovitură.
 
-Completează metoda `calculator` din dreapta ca să trateze toți cei patru operatori. Pentru orice operator nerecunoscut, ar trebui să afișeze `Operator invalid`.
+Scrie o metodă care primește **prada totală** și **numărul de membri** din echipă și **întoarce** partea fiecăruia (folosește împărțirea întreagă — ce nu se împarte exact se pierde). Apoi, în **main**, apeleaz-o pentru trei lovituri și afișează pentru fiecare o linie de forma `prada / membri = parte`.
 
-Metoda primește trei parametri: `numar1`, `numar2` și `operator`. Ar trebui să afișeze o linie de forma `14 + 12 = 26`.
+Apeleaz-o pentru:
 
-O mică **capcană**: în Java, compari șirurile cu `.equals(...)`, **NU** cu `==`. Deci scrie `operator.equals("+")`, nu `operator == "+"`.
-
-**Input** (apelurile sunt deja în `main` — schimbă valorile ca să testezi):
-
-- `numar1` — primul operand
-- `numar2` — al doilea operand
-- `operator` — unul dintre `"+"`, `"-"`, `"*"`, `"/"`
+- **10000** de prada, **4** membri
+- **5000** de prada, **3** membri (nu se împarte exact)
+- **8000** de prada, **1** membru (totul pentru el)
 
 **Exemplu**
 
-Cu apelurile de start, programul tău ar trebui să afișeze
-
 ```text
-14 + 12 = 26
-10 - 3 = 7
-5 * 4 = 20
-10 / 2 = 5
-Operator invalid
+10000 / 4 = 2500
+5000 / 3 = 1666
+8000 / 1 = 8000
 ```

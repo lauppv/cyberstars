@@ -1,25 +1,41 @@
-Combine **while loops**, **methods**, and **input**
+Combine **for and while loops**, **break / continue**, and **conditions**
 
 ---
 
-## Mission: Navigation Computer Diagnostics
+## Mission: Collection Run
 
-The station's navigation computer needs a diagnostic check. The engineering team wrote three test routines that crunch numbers using while loops — your job is to implement them.
+Tommy is doing his collection run across Vice City. The shops on the strip are numbered from **1** up to a total, and he visits them one by one, in increasing order. Each shop pays an amount equal to its number (shop 1 pays 1, shop 2 pays 2, and so on).
 
-Write these methods:
+Two things can ruin his run:
 
-1. **`static int factorial(int n)`** — calculate factorial using a **while loop** (not recursion). `5! = 5 * 4 * 3 * 2 * 1 = 120`
-2. **`static boolean isPrime(int n)`** — check if a number is prime using a **while loop**. A prime is only divisible by 1 and itself
-3. **`static int sumDigits(int n)`** — sum all digits of a number using a **while loop** (use `% 10` and `/ 10`)
+- one shop is **closed** today — skip it with **continue** (he collects nothing there) and move on
+- at one shop the **police are waiting** — stop the whole run immediately with **break** and collect nothing at that shop
 
-The test calls in main are already on the right.
+Store the total number of shops, the closed shop, and the shop where the police wait. Then use a loop that goes through the shops from **1** to the total. For each shop he actually collects from, print `Shop N` (where **N** is the shop number) and add the amount to a running total. At the end, print `Total: X`.
 
-**Output**
+**Example** for **6** shops, with the closed shop **3** and police at shop **5**:
 
 ```text
-5! = 120
-7! = 5040
-13 prime? true
-15 prime? false
-Digits of 9876: 30
+Shop 1
+Shop 2
+Shop 4
+Total: 7
+```
+
+(Shop 3 is skipped, and at shop 5 he stops, so 6 is never reached. The total is 1 + 2 + 4 = 7.)
+
+**Example** for **4** shops, with closed **10** and police at **10** (neither shows up, the run goes to the end):
+
+```text
+Shop 1
+Shop 2
+Shop 3
+Shop 4
+Total: 10
+```
+
+**Example** for **6** shops, with closed **2** and police at shop **1** (he stops on the first, collecting nothing):
+
+```text
+Total: 0
 ```
