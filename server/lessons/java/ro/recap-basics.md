@@ -1,29 +1,28 @@
-Combină **print**, **variabile (numere și șiruri)**, și **concatenarea șirurilor**
+Combină **print**, **variabile (numere și șiruri)** și **concatenarea șirurilor**
 
 ---
 
 ## Misiune: Bonul Depozitului de Provizii
 
-Tocmai a sosit o încărcătură de marfă la depozitul de provizii al stației. Înainte ca lăzile să poată fi depozitate, trebuie să afișezi un bon oficial pentru evidențele intendentului.
+Tocmai a sosit o încărcătură la depozitul de provizii al stației. Înainte ca lăzile să fie depozitate, afișează un bon oficial pentru evidențele intendentului.
 
-Creează aceste variabile:
+Creează variabile pentru cele trei produse (numele și prețul fiecăruia) și pentru taxă:
 
-- **item1** = `"Laptop"` cu prețul **999.99**
-- **item2** = `"Mouse"` cu prețul **29.50**
-- **item3** = `"USB Cable"` cu prețul **5.99**
-- **tax** = 19 (procente, ca `int`)
+- **Modul oxigen** — preț **999.99**
+- **Filtru apa** — preț **29.50**
+- **Baterie solara** — preț **5.99**
+- **Taxa** — **19** (procente, ca `int`)
 
-Calculează **subtotalul**, **valoarea taxei**, și **totalul**. Afișează un bon formatat folosind concatenarea și `System.out.println`. Nu te îngrijora de rotunjire — lasă pur și simplu Java să calculeze numerele și afișează-le așa cum sunt.
+Calculează **subtotalul** (suma celor trei prețuri), **valoarea taxei** (subtotal × taxa ÷ 100) și **totalul** (subtotal + valoarea taxei). Afișează bonul exact ca în exemplu, cu sumele rotunjite la 2 zecimale (`%.2f`).
 
-**Output**
+**Exemplu**
 
 ```text
-=== RECEIPT ===
-Laptop: 999.99 EUR
-Mouse: 29.50 EUR
-USB Cable: 5.99 EUR
+Bon depozit
+Modul oxigen: 999.99 EUR
+Filtru apa: 29.50 EUR
+Baterie solara: 5.99 EUR
 Subtotal: 1035.48 EUR
-Tax (19%): 196.7412 EUR
-Total: 1232.2212 EUR
-===============
+Taxa (19%): 196.74 EUR
+Total: 1232.22 EUR
 ```

@@ -1,65 +1,63 @@
 Polimorfismul este un cuvânt sofisticat care înseamnă „multe forme." În Java, înseamnă că o variabilă de tip **părinte** poate conține un obiect de orice tip **copil** — și Java va apela metoda CORECTĂ automat
 
 ```java
-class Animal {
+class Criminal {
     String nume;
-    Animal(String nume) { this.nume = nume; }
+    Criminal(String nume) { this.nume = nume; }
     void vorbeste() { System.out.println("..."); }
 }
 
-class Caine extends Animal {
-    Caine(String nume) { super(nume); }
+class Sofer extends Criminal {
+    Sofer(String nume) { super(nume); }
     @Override
-    void vorbeste() { System.out.println("Ham!"); }
+    void vorbeste() { System.out.println("Sunt soferul " + nume); }
 }
 
-class Pisica extends Animal {
-    Pisica(String nume) { super(nume); }
+class Tragator extends Criminal {
+    Tragator(String nume) { super(nume); }
     @Override
-    void vorbeste() { System.out.println("Miau!"); }
+    void vorbeste() { System.out.println("Sunt tragatorul " + nume); }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Animal a = new Caine("Rex");  // tip părinte, obiect copil
-        a.vorbeste();  // afișează "Ham!" nu "..."
+        Criminal c = new Sofer("Tommy");  // tip parinte, obiect copil
+        c.vorbeste();  // afiseaza "Sunt soferul Tommy" nu "..."
     }
 }
 ```
 
-Chiar dacă `a` este declarat ca `Animal`, Java știe că este de fapt un `Caine` la rulare și apelează `vorbeste()` al lui Caine. Asta se numește **dynamic dispatch** — Java direcționează apelul de metodă către tipul real al obiectului, nu către tipul declarat
+Chiar dacă `c` este declarat ca `Criminal`, Java știe că este de fapt un `Sofer` la rulare și apelează `vorbeste()` al lui Sofer. Asta se numește **dynamic dispatch** — Java direcționează apelul de metodă către tipul real al obiectului, nu către tipul declarat
 
 ---
 
-Asta devine CU ADEVĂRAT puternic cu array-uri și bucle. Imaginează-ți că construiești un joc ca GTA Vice City și ai diferite tipuri de personaje — toate extinzând o clasă de bază `Personaj`. Le poți stoca pe toate într-UN SINGUR array
+Asta devine CU ADEVĂRAT puternic cu array-uri și bucle. Gândește-te la Vice City: ai diferite tipuri de criminali — toți extinzând clasa de bază `Criminal`. Îi poți stoca pe toți într-UN SINGUR array
 
 ```java
-class Forma {
-    double arie() { return 0; }
+class Criminal {
+    String nume;
+    Criminal(String nume) { this.nume = nume; }
+    void vorbeste() { System.out.println("..."); }
 }
 
-class Cerc extends Forma {
-    double raza;
-    Cerc(double raza) { this.raza = raza; }
-
+class Sofer extends Criminal {
+    Sofer(String nume) { super(nume); }
     @Override
-    double arie() { return Math.PI * raza * raza; }
+    void vorbeste() { System.out.println("Sunt soferul " + nume); }
 }
 
-class Dreptunghi extends Forma {
-    double latime, inaltime;
-    Dreptunghi(double latime, double inaltime) { this.latime = latime; this.inaltime = inaltime; }
-
+class Tragator extends Criminal {
+    Tragator(String nume) { super(nume); }
     @Override
-    double arie() { return latime * inaltime; }
+    void vorbeste() { System.out.println("Sunt tragatorul " + nume); }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Forma[] forme = { new Cerc(5), new Dreptunghi(4, 6) };
+        Criminal[] banda = { new Sofer("Tommy"), new Tragator("Lance") };
 
-        for (Forma f : forme) {
-            System.out.println(f.arie());
+        for (Criminal c : banda) {
+            c.vorbeste();
         }
     }
 }
@@ -68,15 +66,11 @@ public class Main {
 Output
 
 ```text
-78.53981633974483
-24.0
+Sunt soferul Tommy
+Sunt tragatorul Lance
 ```
 
-Nu am verificat niciodată „este asta un cerc sau un dreptunghi?" — Java și-a dat seama pentru noi. Bucla doar apelează `f.arie()` și Java o direcționează către override-ul corect. Asta este polimorfismul în acțiune
-
----
-
-În Python asta funcționează și (duck typing), dar Java o face cu **siguranță de tip**. Compilatorul garantează că fiecare obiect din acel array `Forma[]` are o metodă `arie()`. Niciun `AttributeError` surpriză la rulare
+Nu am verificat niciodată „este ăsta un șofer sau un trăgător?" — Java și-a dat seama pentru noi. Bucla doar apelează `c.vorbeste()` și Java o direcționează către override-ul corect. Asta este polimorfismul în acțiune
 
 ---
 
@@ -85,10 +79,10 @@ Uneori trebuie să verifici ce tip este de fapt un obiect. Java are cuvântul ch
 ```java
 public class Main {
     public static void main(String[] args) {
-        Animal a = new Caine("Rex");
+        Criminal c = new Sofer("Tommy");
 
-        if (a instanceof Caine) {
-            System.out.println("Este un câine!");
+        if (c instanceof Sofer) {
+            System.out.println("Este un sofer!");
         }
     }
 }
@@ -98,40 +92,33 @@ Asta este util când trebuie să accesezi metode specifice copilului. Dar în ge
 
 ---
 
-Iată de ce contează asta în cod real. Imaginează-ți o metodă care primește orice Forma
+Iată de ce contează asta în cod real. Imaginează-ți o metodă care primește orice `Criminal`
 
 ```java
 public class Main {
-    static void afiseazaArie(Forma f) {
-        System.out.println("Arie: " + f.arie());
+    static void prezinta(Criminal c) {
+        c.vorbeste();
     }
 }
 ```
 
-Poți trece un Cerc, un Dreptunghi, un Triunghi — orice extinde Forma. Metodei nu trebuie să-i pese sau să știe. Asta e puterea. O singură metodă tratează TOATE formele, actuale și viitoare
+Poți trece un Sofer, un Tragator, un Sef — orice extinde Criminal. Metodei nu trebuie să-i pese sau să știe. Asta e puterea. O singură metodă tratează TOȚI criminalii, actuali și viitori
 
 Ca Cortez în Vice City — el dă misiuni lui Tommy, Lance, oricui. Nu-i pasă de persoana specifică, doar că își pot face treaba. „Treaba" este semnătura metodei, iar polimorfismul se asigură că persoana potrivită o face în felul ei
 
 ---
 
-## Misiune: Auditul Calei de Marfă
+## Misiune: Apelul Bandei
 
-Cala de marfă a stației conține containere de forme diferite. Cartnicul are nevoie de o singură buclă care calculează și afișează aria amprentei fiecărui container — fără să verifice ce formă are fiecare.
+Tommy își strigă banda la apel. Fiecare membru răspunde în felul lui, dar tu vrei o singură buclă care îi pune pe toți să vorbească — fără să verifici ce tip e fiecare.
 
-Creează clasele `Forma`, `Cerc` și `Dreptunghi` (Forma are `arie()` care întoarce 0; Cerc face override cu `Math.PI * raza * raza`; Dreptunghi face override cu `latime * inaltime`).
+Creează clasele `Criminal`, `Sofer` și `Tragator` (Criminal are `vorbeste()` care afișează „..."; Sofer face override cu „Sunt soferul " + nume; Tragator face override cu „Sunt tragatorul " + nume).
 
-În `main`, creează un array `Forma[]` care conține un Cerc cu raza `5` și un Dreptunghi cu lățimea `4` și înălțimea `6`. Parcurge array-ul și afișează fiecare arie folosind `String.format("%.2f", f.arie())`.
-
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- `5` — raza cercului
-- `4`, `6` — lățimea și înălțimea dreptunghiului
+În `main`, creează un array `Criminal[]` care conține un `Sofer` numit `"Tommy"` și un `Tragator` numit `"Lance"`. Parcurge array-ul și apelează `vorbeste()` pe fiecare.
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
-
 ```text
-78.54
-24.00
+Sunt soferul Tommy
+Sunt tragatorul Lance
 ```

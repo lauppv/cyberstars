@@ -11,7 +11,7 @@ public class Main {
 }
 ```
 
-**Important**: în Java, **true** și **false** se scriu **cu literă mică**. (În Python erau **True** și **False** cu literă mare.) Nu le încurca
+**Important**: în Java, **true** și **false** se scriu **cu literă mică**. Ai grijă să nu le scrii cu literă mare
 
 Condiții precum **varsta < 18** sau **x == 5** produc de asemenea booleans
 
@@ -115,18 +115,11 @@ false || false = false
 
 Scrii sistemul de acces pentru stație. O persoană poate intra dacă este **angajat ȘI este zi lucrătoare**, SAU dacă este **oaspete CU o invitație**.
 
-Scrie un `if / else` folosind `&&` și `||` ca să verifici condițiile.
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `esteAngajat` — dacă persoana este angajat (boolean)
-- `esteZiLucratoare` — dacă azi este zi lucrătoare (boolean)
-- `esteOaspete` — dacă persoana este oaspete (boolean)
-- `areInvitatie` — dacă are o invitație (boolean)
+Reține în patru variabile `boolean` dacă persoana este angajat, dacă azi e zi lucrătoare, dacă este oaspete și dacă are invitație. Apoi scrie un `if / else` folosind `&&` și `||` care afișează `Acces permis` sau `Acces refuzat`.
 
 **Exemplu**
 
-Cu `esteAngajat = true`, `esteZiLucratoare = true`, `esteOaspete = false`, `areInvitatie = false`, programul tău ar trebui să afișeze
+Dacă persoana este angajat și azi e zi lucrătoare (chiar dacă nu e oaspete și nu are invitație), programul tău ar trebui să afișeze
 
 ```text
 Acces permis

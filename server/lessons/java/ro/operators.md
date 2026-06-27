@@ -7,9 +7,9 @@ public class Main {
         int b = 5;
 
         System.out.println(a + b);   // adunare
-        System.out.println(a - b);   // scădere
-        System.out.println(a * b);   // înmulțire
-        System.out.println(a / b);   // împărțire
+        System.out.println(a - b);   // scadere
+        System.out.println(a * b);   // inmultire
+        System.out.println(a / b);   // impartire
         System.out.println(a % b);   // rest (modulo)
     }
 }
@@ -84,7 +84,7 @@ Vei vedea **i++** în bucle **for** absolut peste tot
 
 ---
 
-Dar **puterile**? Spre deosebire de **\*\*** din Python, Java nu are un operator pentru putere. Folosim **Math.pow**
+Dar **puterile**? Java nu are un operator dedicat pentru putere. În schimb, folosim **Math.pow**
 
 ```java
 public class Main {
@@ -109,22 +109,19 @@ public class Main {
 }
 ```
 
-Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit :)
+Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
 
 ---
 
 ## Misiune: Diagnostic Motoare
 
-Consola de diagnostic a stației are nevoie de o citire aritmetică rapidă a două valori de la senzori. Afișează fiecare operație pe propria linie: adunare, scădere, înmulțire, împărțire întreagă și rest.
+Consola de diagnostic a stației are nevoie de o citire aritmetică rapidă a două valori de la senzori.
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `a` — prima citire de la senzor (int)
-- `b` — a doua citire de la senzor (int)
+Creează două variabile `int` care să stocheze două numere întregi. Apoi afișează, fiecare pe propria linie, rezultatul pentru: adunare, scădere, înmulțire, împărțire întreagă și rest.
 
 **Exemplu**
 
-Cu `a = 17` și `b = 5`, programul tău ar trebui să afișeze
+Dacă cele două numere sunt `17` și `5`, programul tău ar trebui să afișeze
 
 ```text
 22

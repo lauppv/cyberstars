@@ -5,24 +5,24 @@
 ## Metode de Instanță
 
 ```java
-class Caine {
-    String nume;
+class Masina {
+    String model;
 
-    Caine(String nume) {
-        this.nume = nume;
+    Masina(String model) {
+        this.model = model;
     }
 
-    void latra() {
-        System.out.println(nume + " spune: Ham!");
+    void claxoneaza() {
+        System.out.println(model + " face: Biiip!");
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Caine c1 = new Caine("Rex");
-        Caine c2 = new Caine("Buddy");
-        c1.latra();
-        c2.latra();
+        Masina m1 = new Masina("Infernus");
+        Masina m2 = new Masina("Cheetah");
+        m1.claxoneaza();
+        m2.claxoneaza();
     }
 }
 ```
@@ -30,11 +30,11 @@ public class Main {
 Output
 
 ```text
-Rex spune: Ham!
-Buddy spune: Ham!
+Infernus face: Biiip!
+Cheetah face: Biiip!
 ```
 
-Observă: `latra()` **nu are** cuvântul cheie `static`. Asta pentru că este o metodă de instanță — operează pe un câine specific. Când apelezi `c1.latra()`, Java știe că `nume` se referă la numele lui `c1`
+Observă: `claxoneaza()` **nu are** cuvântul cheie `static`. Asta pentru că este o metodă de instanță — operează pe o mașină anume. Când apelezi `m1.claxoneaza()`, Java știe că `model` se referă la modelul lui `m1`
 
 ---
 
@@ -116,6 +116,13 @@ Tommy Vercetti a completat o misiune! Respect: 20
 Tommy Vercetti a completat o misiune! Respect: 30
 ```
 
+Hai să urmărim ce se întâmplă cu `tommy`:
+
+- La creare, constructorul pune `respect` pe `0`
+- Primul `completeazaMisiune()`: `respect` crește la `10`, apoi se afișează linia cu `Respect: 10`
+- Al doilea apel pleacă de la `10` și ajunge la `20`
+- Al treilea pleacă de la `20` și ajunge la `30`
+
 Fiecare apel la `completeazaMisiune()` modifică câmpul `respect` al **acelui obiect specific**. Dacă am avea un alt `MembruGasca`, respectul lui ar fi separat
 
 ---
@@ -131,13 +138,13 @@ Metodele statice nu pot accesa câmpuri de instanță (pentru că nu există nic
 
 ```java
 class Exemplu {
-    int x = 10;          // câmp de instanță
+    int x = 10;          // camp de instanta
 
-    void arata() {       // metodă de instanță — poate folosi x
+    void arata() {       // metoda de instanta - poate folosi x
         System.out.println(x);
     }
 
-    static void saluta() { // metodă statică — NU poate folosi x
+    static void saluta() { // metoda statica - NU poate folosi x
         System.out.println("Salut");
         // System.out.println(x);  // EROARE! Niciun obiect, niciun x
     }
@@ -148,37 +155,24 @@ De aceea `main` este `static` — rulează înainte să existe orice obiect. Est
 
 ---
 
-## Comparație cu Python
+## Misiune: Încasările Afacerilor
 
-În Python, metodele de instanță iau `self` ca primul parametru:
+Tommy deține mai multe afaceri în Vice City. Fiecare afacere are un nume și un total de încasări care pornește de la 0. De fiecare dată când afacerea aduce bani, totalul crește
 
-```python
-class Caine:
-    def latra(self):
-        print(f"{self.nume} spune: Ham!")
-```
+Creează o clasă care reprezintă o afacere, cu un câmp pentru nume și unul pentru totalul încasărilor. Scrie o metodă care adaugă o sumă la total și o metodă care returnează totalul curent
 
-În Java, `this` este mereu disponibil înăuntrul metodelor de instanță — nu trebuie să-l listezi ca parametru. Și ai nevoie de `this.` doar când există un conflict de denumire
+În `main`, creează **două** afaceri cu nume la alegere. Adaugă câteva încasări la fiecare, apoi afișează pentru fiecare afacere numele, apoi `: `, apoi totalul — de exemplu `Malibu Club: 650`
 
----
-
-## Misiune: Contor Doc de Andocare
-
-Docul de andocare al stației are nevoie de un contor digital care să țină evidența câte nave au sosit în timpul fiecărei ture. De fiecare dată când o navă andochează, contorul crește cu unu.
-
-Creează o clasă `Contor` cu:
-
-1. Un câmp `int` numit `numar`, începând de la 0
-2. Un constructor care setează `numar` la 0
-3. O metodă `increment()` care adaugă 1 la `numar`
-4. O metodă `getNumar()` care returnează `numar`-ul curent
-
-În `main`, creează un `Contor`, apelează `increment()` de trei ori (trei nave au andocat), apoi afișează numărul.
-
-**Exemplu**
-
-După trei andocări, programul tău ar trebui să afișeze
+**Exemplu** — `Malibu Club` cu încasările 200, 300, 150 și `Print Works` cu 500, 250
 
 ```text
-3
+Malibu Club: 650
+Print Works: 750
+```
+
+**Exemplu** — `Cherry Popper` cu încasările 100, 100 și `Sunshine Autos` cu 1000
+
+```text
+Cherry Popper: 200
+Sunshine Autos: 1000
 ```

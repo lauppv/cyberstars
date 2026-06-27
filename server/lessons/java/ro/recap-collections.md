@@ -1,34 +1,19 @@
-Combină **ArrayList**, **buclele pe ArrayList**, **HashMap**, și **buclele pe HashMap**
+Combină **ArrayList**, **HashMap** și **Collections.sort()**
 
 ---
 
-## Misiune: Registrul de Comerț al Stației
+## Misiune: Arsenalul din Vice City
 
-Postul de comerț al stației a înregistrat vânzările de azi, dar datele sunt brute. Intendentul are nevoie de un raport-sumar: câte din fiecare obiect s-au vândut, care obiect s-a vândut cel mai mult, și care obiecte sunt populare.
+Tommy ține evidența armelor cumpărate de la Phil Cassidy într-o săptămână. Are o listă cu achizițiile: Pistol, Pusca, Pistol, Automat, Pusca, Pistol, Automat. Vrea să știe câte bucăți din fiecare armă a cumpărat, care e arma cumpărată cel mai des, și o listă sortată alfabetic cu armele cumpărate de mai mult de o dată
 
-Datele sunt deja în dreapta:
+Numără fiecare armă într-un HashMap. Găsește arma cu cele mai multe achiziții. Colectează armele cumpărate de mai mult de o dată într-un ArrayList, sortează-l alfabetic și afișează totul
 
-```java
-String[] vanzari = {"Sword", "Shield", "Potion", "Sword", "Potion", "Potion", "Armor", "Sword"};
-```
-
-Fă următoarele, în ordine:
-
-1. Construiește un **`HashMap<String, Integer>`** care numără câte din fiecare obiect s-au vândut
-2. Parcurge HashMap-ul și afișează fiecare obiect cu numărul lui
-3. Găsește **cel mai bine vândut** (obiectul vândut cel mai mult) parcurgând HashMap-ul
-4. Construiește un **`ArrayList<String>`** cu obiectele care s-au vândut de **mai multe ori**
-5. Afișează cel mai bine vândut și lista cu obiectele populare
-
-Notă: dacă două obiecte sunt la egalitate pentru primul loc, oricare dintre ele e bun.
-
-**Output**
+**Exemplu** (ordinea primelor linii poate varia)
 
 ```text
-Sword: 3
-Shield: 1
-Potion: 3
-Armor: 1
-Cel mai vândut: Sword
-Obiecte populare: [Sword, Potion]
+Pistol: 3
+Pusca: 2
+Automat: 2
+Cel mai cumparat: Pistol
+Populare (sortat): [Automat, Pistol, Pusca]
 ```

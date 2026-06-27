@@ -1,16 +1,16 @@
 public class Main {
-    public static void descrie(String articol) {
+    public static void descrie(String nume) {
     }
 
-    public static void descrie(String articol, int cantitate) {
+    public static void descrie(String nume, int cantitate) {
     }
 
-    public static void descrie(String articol, int cantitate, double pret) {
+    public static void descrie(String nume, int cantitate, int pret) {
     }
 
     public static void main(String[] args) {
-        descrie("Sword");
-        descrie("Shield", 5);
-        descrie("Potion", 3, 9.99);
+        descrie("Sniper");
+        descrie("Sniper", 4);
+        descrie("Sniper", 4, 10);
     }
 }

@@ -138,22 +138,6 @@ The `setHealth(-50)` call was silently ignored because our setter rejects negati
 
 ---
 
-## Python Comparison
-
-Python uses `@property` decorators for the same idea, but it's optional. In Java, making fields `private` and providing getters/setters is the standard way to write classes. You'll see this pattern everywhere
-
-```python
-# Python property (optional)
-class Player:
-    @property
-    def health(self):
-        return self._health
-```
-
-In Java, it's always explicit methods: `getHealth()`, `setHealth()`
-
----
-
 ## When to Skip Setters
 
 Not every field needs a setter. Sometimes a field should be set once (in the constructor) and never changed. If `name` shouldn't change after creation, just don't write `setName()` — problem solved
@@ -162,9 +146,9 @@ The getter still lets people **read** the name, but nobody can change it. This i
 
 ---
 
-## Mission: Station Credit Vault
+## Mission: Tommy's Account
 
-The station's credit vault needs a secure transaction system. Crew members can deposit and withdraw credits, but the system must reject invalid operations — no negative deposits and no overdrafts allowed.
+Tommy keeps his money at the bank and wants a secure transaction system. He can deposit and withdraw money, but the account must reject invalid operations — no negative deposits and no withdrawing more than he has.
 
 Create a `BankAccount` class with:
 
@@ -174,17 +158,9 @@ Create a `BankAccount` class with:
 4. A `deposit(int amount)` method that adds to balance (only if amount > 0)
 5. A `withdraw(int amount)` method that subtracts from balance (only if amount > 0 and amount <= balance)
 
-In `main`, create an account with `1000` credits, deposit `500`, withdraw `200`, then try to withdraw `2000` (should fail silently), and print the final balance.
+In `main`, create an account with `1000$`, deposit `500`, withdraw `200`, then try to withdraw `2000` (should fail silently, since Tommy doesn't have that much) and print the final balance.
 
-**Input** (already set in your code — change the values to test):
-
-- `1000` — starting balance
-- `500` — deposit amount
-- `200`, `2000` — withdrawal amounts
-
-**Example**
-
-With the starter values, your program should print
+**Example** — account started at 1000, +500, -200, then -2000 rejected
 
 ```text
 1300

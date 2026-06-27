@@ -25,7 +25,7 @@ public class Main {
 }
 ```
 
-Run it. You’ll see numbers from **1** to **10**, one per line
+Run it. You'll see numbers from **1** to **10**, one per line
 
 ---
 
@@ -49,7 +49,9 @@ Reading it like a story: "start with **i = 1**. While **i <= 10**, run the body.
 
 So **i** takes the values **1, 2, 3, 4, 5, 6, 7, 8, 9, 10**. When **i** becomes **11**, the condition **11 <= 10** is **false**, and the loop ends
 
-This is **different from Python**. In Python we wrote **for i in range(1, 11)**. In Java we are more explicit, but more flexible too. We can count by 2s, count down, do whatever we want
+---
+
+The three parts are entirely under your control. We can count by 2s, count down, do whatever we want
 
 ```java
 public class Main {
@@ -91,39 +93,73 @@ public class Main {
 }
 ```
 
-This is an **infinite loop**. **i** stays **1** forever, the condition stays **true** forever, and the program prints **1** until you stop it. Run it (briefly) to see what happens, then close it :)
+This is an **infinite loop**. **i** stays **1** forever, the condition stays **true** forever, and the program prints **1** until you stop it. Always make sure something inside the loop moves the condition closer to becoming **false**
 
 ---
 
-## Mission: Sector Scan
+We can put **anything** in the loop body, including an **if**. Here we go through sectors 1 to 5 and mark sector 3 as the one to patrol
 
-The station's scanner sweeps through **all sectors** from `startSector` to `endSector`. Most sectors get a normal numeric readout, but two special sectors (`alertSector1` and `alertSector2`) trigger a **Pizza Margherita** signal instead of the number.
-
-Write a program that uses a **for** loop to go through every sector number from `startSector` to `endSector`. For each sector:
-
-- if the sector is `alertSector1` or `alertSector2` → print `Pizza Margherita`
-- otherwise → print the sector number
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `startSector` — first sector to scan
-- `endSector` — last sector to scan
-- `alertSector1` — first special sector
-- `alertSector2` — second special sector
-
-**Example**
-
-With `startSector = 0`, `endSector = 100`, `alertSector1 = 10`, and `alertSector2 = 50`, the first few lines of output should be
-
-```text
-0
-1
-2
-...
-9
-Pizza Margherita
-11
-...
+```java
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                System.out.println("Patrol sector");
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}
 ```
 
-and at sector 50 you'll see another `Pizza Margherita`
+Output
+
+```text
+1
+2
+Patrol sector
+4
+5
+```
+
+---
+
+## Mission: Garage Inspection
+
+Tommy is inspecting the Vercetti mansion garage. The parking spots are numbered from **1** up to a total. One of the spots holds his **Infernus** — there, instead of the number, you want to print the car's name.
+
+Store the total number of spots and the spot where the Infernus sits. Then use a **for** loop that goes through the spots from **1** to the total. For each spot:
+
+- if it is the spot holding the Infernus → print `Infernus`
+- otherwise → print the spot number
+
+**Example** for **5** spots, with the Infernus on spot **3**:
+
+```text
+1
+2
+Infernus
+4
+5
+```
+
+**Example** for **5** spots, with the Infernus on spot **1** (the first):
+
+```text
+Infernus
+2
+3
+4
+5
+```
+
+**Example** for **5** spots, with the Infernus on spot **5** (the last):
+
+```text
+1
+2
+3
+4
+Infernus
+```

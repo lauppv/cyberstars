@@ -17,7 +17,7 @@ public class Main {
 
 Output **25**
 
-The return type **int** before the method name tells Java: "this method will give back an int." Inside the method, **return** sends that value back to whoever called it
+The return type **int** before the method name tells Java: "this method will give back an int". Inside the method, **return** sends that value back to whoever called it
 
 ---
 
@@ -26,7 +26,7 @@ We can return **any type** — not just int. Here are a few examples
 ```java
 public class Main {
     public static String greet(String name) {
-        return "Welcome to Vice City, " + name + "!";
+        return "Welcome to Vice City, " + name;
     }
 
     public static double half(double n) {
@@ -49,7 +49,7 @@ public class Main {
 Output
 
 ```text
-Welcome to Vice City, Lance Vance!
+Welcome to Vice City, Lance Vance
 50.0
 true
 false
@@ -68,14 +68,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Use the return value directly in math
+        // use the return value directly in math
         int total = add(10, 20) + add(5, 5);
         System.out.println(total);   // 40
 
-        // Use it directly in println
+        // use it directly in println
         System.out.println(add(100, 200));   // 300
 
-        // Use it in a condition
+        // use it in a condition
         if (add(2, 3) > 4) {
             System.out.println("Yep, 5 > 4");
         }
@@ -99,20 +99,20 @@ A common mistake: trying to **return** inside a **void** method, or forgetting t
 
 ```java
 public class Main {
-    // ERROR: void method can't return a value
+    // error: void method can't return a value
     public static void doStuff() {
         return 42;   // won't compile
     }
 
-    // ERROR: method promises int but has no return
+    // error: method promises int but has no return
     public static int getNumber() {
         int x = 42;
-        // forgot to return x!
+        // forgot to return x
     }
 }
 ```
 
-Java catches both of these at compile time. Thanks, Java :)
+Java catches both of these at compile time, before the program even runs
 
 ---
 
@@ -121,26 +121,23 @@ Java catches both of these at compile time. Thanks, Java :)
 - Use **void** when the method just **does** something (prints, modifies data, etc.)
 - Use a **return type** when the method **computes** something and you need the result
 
-Tommy Vercetti doesn't just run missions — he **brings back the money**. That's a return value. If he just causes chaos with no reward, that's void
+Tommy doesn't just run missions — he **brings back the money**. That's a return value. If he just causes chaos with no reward, that's void
 
 ---
 
-## Mission: Engine Thrust
+## Mission: Growing the Empire
 
-The station's thruster power is calculated as `base` raised to the power of `exponent`. Write a method called `power` that takes two `int` parameters (`base` and `exponent`) and **returns** the result.
+Tommy's empire grows day by day. The stash starts at **1**, and each day it multiplies by a fixed factor. You want a method that tells you how much you have after a given number of days.
 
-Compute it with a loop: start with `result = 1`, then multiply by `base` a total of `exponent` times. Anything raised to the power of **0** is **1** — your loop naturally handles this if it runs 0 times.
+Write a method that takes the **factor** and the **number of days** and **returns** the final stash. Compute it with a loop: start at **1**, then multiply by the factor a number of times equal to the days. If **0** days have passed, the loop doesn't run at all and you're left with **1**. Then, in **main**, call it for a few scenarios and print each result.
 
-The calls are already in `main` on the right.
+Call it for:
 
-**Input** (change the calls in `main` to test):
-
-- `base` — the base number
-- `exponent` — how many times to multiply
+- factor **2**, **3** days
+- factor **5**, **2** days
+- factor **7**, **0** days (no days passed)
 
 **Example**
-
-With the starter calls, your program should print
 
 ```text
 8

@@ -1,6 +1,4 @@
-In Python, you had **dictionaries** — those awesome key-value pairs where you could look up a value by its key. In Java, the equivalent is **HashMap**
-
-Think of it like Tommy Vercetti's contact list. Each name (the **key**) maps to a phone number (the **value**). You look up the name, you get the number. Fast and simple
+A **HashMap** is a structure that stores **key-value** pairs. Think of it like Tommy's contact list — each name (the key) maps to a phone number (the value). You look up the name, you get the number
 
 ```java
 import java.util.HashMap;
@@ -25,11 +23,51 @@ Output
 555-0002
 ```
 
+**HashMap\<String, String\>** — the first type is for keys, the second for values. You can mix them: **HashMap\<String, Integer\>** has String keys and numeric values. Just like ArrayList, you use **Integer** instead of **int**, **Double** instead of **double**
+
 ---
 
-Let's break down that type: **HashMap\<String, String\>**. The first type in the angle brackets is the **key type**, the second is the **value type**. So this map has String keys and String values
+Main methods
 
-You can mix types. Want String keys and Integer values? That's **HashMap\<String, Integer\>**
+```java
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, Integer> scores = new HashMap<String, Integer>();
+
+        // put -- adds or updates a pair
+        scores.put("Tommy", 9500);
+        scores.put("Lance", 7200);
+        scores.put("Tommy", 10000);  // updates Tommy's score
+
+        // get -- value for a key (null if not found)
+        System.out.println("Tommy: " + scores.get("Tommy"));
+        System.out.println("Sonny: " + scores.get("Sonny"));
+
+        // containsKey -- checks if a key exists
+        System.out.println(scores.containsKey("Lance"));
+
+        // size -- how many pairs
+        System.out.println("Total: " + scores.size());
+    }
+}
+```
+
+Output
+
+```text
+Tommy: 10000
+Sonny: null
+true
+Total: 2
+```
+
+`put` with the same key doesn't add a duplicate — it **updates** the existing value
+
+---
+
+**Iterating with keySet()** — get all keys and loop with for-each
 
 ```java
 import java.util.HashMap;
@@ -41,145 +79,88 @@ public class Main {
         scores.put("Lance", 7200);
         scores.put("Phil", 3100);
 
-        System.out.println("Tommy's score: " + scores.get("Tommy"));
+        for (String name : scores.keySet()) {
+            System.out.println(name + ": " + scores.get(name));
+        }
     }
 }
 ```
 
-Output **Tommy's score: 9500**
+Output (order may vary — HashMap doesn't guarantee order)
 
-Just like with ArrayList, you can't use primitive types directly — use **Integer** instead of **int**, **Double** instead of **double**, etc.
+```text
+Tommy: 9500
+Phil: 3100
+Lance: 7200
+```
+
+Read `for (String name : scores.keySet())` as: "for each key in the map"
 
 ---
 
-The main HashMap methods
-
-**put(key, value)** — adds or updates a key-value pair
+**Iterating with entrySet()** — when you want the key and value directly, without an extra `.get()` call
 
 ```java
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
-        scores.put("Tommy", 9500);     // adds Tommy
-        scores.put("Tommy", 10000);    // updates Tommy's score to 10000
+        HashMap<String, Integer> scores = new HashMap<String, Integer>();
+        scores.put("Tommy", 9500);
+        scores.put("Lance", 7200);
+        scores.put("Phil", 3100);
+
+        for (Map.Entry<String, Integer> entry : scores.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
     }
 }
 ```
 
-**get(key)** — gets the value for that key (returns **null** if the key doesn't exist)
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(scores.get("Tommy"));   // 10000
-        System.out.println(scores.get("Sonny"));   // null
-    }
-}
-```
-
-**containsKey(key)** — checks if a key exists, returns true/false
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(scores.containsKey("Tommy"));   // true
-        System.out.println(scores.containsKey("Sonny"));    // false
-    }
-}
-```
-
-**keySet()** — returns all the keys (useful for looping, which we'll cover next lesson)
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(scores.keySet());   // [Tommy, Lance, Phil] (order may vary)
-    }
-}
-```
-
-**size()** — returns how many key-value pairs are in the map
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(scores.size());   // 3
-    }
-}
-```
+`Map.Entry<String, Integer>` holds a key-value pair. `.getKey()` returns the key, `.getValue()` returns the value
 
 ---
 
-In Python you'd write
-
-```python
-scores = {"Tommy": 9500, "Lance": 7200, "Phil": 3100}
-print(scores["Tommy"])
-print("Tommy" in scores)
-```
-
-Java's version is more verbose but the concept is identical. **put** is like Python's **scores["Tommy"] = 9500**, and **get** is like **scores["Tommy"]**
-
----
-
-One important difference from Python: HashMap does **NOT** guarantee order. If you add Tommy first, then Lance, then Phil, when you print the map or loop over it, they might come out in **any order**. Don't rely on insertion order with HashMap. (If you need order, there's **LinkedHashMap**, but we'll keep things simple for now)
-
----
-
-Here's a practical example. Cortez is tracking how many missions each crew member has completed
+Let's filter — Sonny Forelli wants to know who owes him more than $5000
 
 ```java
 import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<String, Integer> missions = new HashMap<String, Integer>();
-        missions.put("Tommy", 47);
-        missions.put("Lance", 12);
-        missions.put("Phil", 8);
+        HashMap<String, Integer> debts = new HashMap<String, Integer>();
+        debts.put("Tommy", 10000);
+        debts.put("Lance", 3000);
+        debts.put("Phil", 7500);
+        debts.put("Cortez", 500);
 
-        if (missions.containsKey("Tommy")) {
-            System.out.println("Tommy completed " + missions.get("Tommy") + " missions");
+        for (String name : debts.keySet()) {
+            if (debts.get(name) > 5000) {
+                System.out.println(name + " owes $" + debts.get(name));
+            }
         }
-
-        // Update a value
-        missions.put("Lance", missions.get("Lance") + 1);
-        System.out.println("Lance now has " + missions.get("Lance") + " missions");
     }
 }
 ```
 
-Output
-
-```text
-Tommy completed 47 missions
-Lance now has 13 missions
-```
+Only Tommy and Phil show up — they owe more than $5000
 
 ---
 
-## Mission: Crew Registry
+HashMap does **not** guarantee order. If you add Tommy, Lance, Phil, they might come out in any order when you iterate. Don't rely on insertion order
 
-The station's personnel database was wiped during a solar flare. You need to rebuild the crew roster from memory before the next shift starts.
+---
 
-Create a **HashMap\<String, Integer\>** called `scores` that maps crew member names to their performance scores. Register these three members:
+## Mission: Mission Log
 
-1. `"Tommy"` with score `9500`
-2. `"Lance"` with score `7200`
-3. `"Phil"` with score `3100`
+Cortez keeps track of how many missions each crew member has completed. Tommy completed 47, Lance 12, Phil 8, and Mercedes 23. Cortez wants a report showing only those who completed more than 15 missions
 
-Then print each member and their score on its own line using `.get()`, in the format `Name: score`.
+Build a HashMap that maps each member's name to their mission count. Iterate through the map and print only the members who exceed the threshold, in the format `name: count`
 
-**Input** (already set in your code — change the values to test):
-
-- `"Tommy"`, `"Lance"`, `"Phil"` — crew member names
-- `9500`, `7200`, `3100` — their performance scores
-
-**Example**
-
-With the starter values, your program should print
+**Example** (order may vary)
 
 ```text
-Tommy: 9500
-Lance: 7200
-Phil: 3100
+Tommy: 47
+Mercedes: 23
 ```

@@ -1,6 +1,6 @@
-Array-urile sunt grozave, dar au o limitare mare: **mărimea lor este fixă**. Odată ce creezi un array cu 5 elemente, este blocat la 5. Nu poți adăuga un al 6-lea. În programele reale, adesea nu știi câte elemente vei avea nevoie. Intră în scenă **ArrayList**
+Array-urile sunt utile, dar au o limitare mare: **mărimea lor este fixă**. Odată ce creezi un array cu 5 elemente, nu poți adăuga un al 6-lea. În programele reale, adesea nu știi de la început câte elemente vei avea. Aici intervine **ArrayList**
 
-Un **ArrayList** este un **array dinamic** — crește și se micșorează după nevoie. În Python, listele obișnuite funcționează deja așa (doar faci **append** la lucruri). În Java, ai nevoie de ArrayList pentru acea flexibilitate
+Un **ArrayList** este un **array dinamic** — crește și se micșorează după nevoie. Trebuie importat din `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -23,84 +23,11 @@ Output
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
 ```
 
-Câteva lucruri de desfăcut aici
+Partea **\<String\>** se numește **tip generic** — îi spune lui Java ce tip de elemente ține lista. `ArrayList<String>` înseamnă „o listă care ține String-uri." Pentru numere folosești **ArrayList\<Integer\>** sau **ArrayList\<Double\>** (nu `int`/`double` direct — Java face conversia automat)
 
 ---
 
-Mai întâi, **import**-ul. ArrayList trăiește în pachetul **java.util**, așa că trebuie să-l importăm în partea de sus a fișierului. Asta este ca **from collections import something** din Python — Java doar are nevoie să fii explicit despre ce folosești
-
----
-
-Apoi, partea **\<String\>**. Asta se numește **tip generic**. Îi spune lui Java ce tip de lucruri ține lista. Gândește-te la ea ca la o etichetă pe o cutie: **ArrayList\<String\>** este „o listă care ține String-uri." Poți avea și **ArrayList\<Integer\>**, **ArrayList\<Double\>**, etc.
-
-O mică capcană: nu poți folosi tipuri primitive precum **int** sau **double** direct. Trebuie să folosești versiunile lor „wrapper": **Integer**, **Double**, **Boolean**. Java convertește automat între ele, așa că este în mare parte nedureros
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> scoruri = new ArrayList<Integer>();
-        scoruri.add(100);    // Java convertește automat int 100 în Integer 100
-        scoruri.add(85);
-        scoruri.add(92);
-        System.out.println(scoruri);   // [100, 85, 92]
-    }
-}
-```
-
----
-
-Principalele metode pe care le vei folosi pe un ArrayList
-
-**add(element)** — adaugă un element la final
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<String> lista = new ArrayList<String>();
-        lista.add("primul");
-        lista.add("al doilea");
-        // lista este acum [primul, al doilea]
-    }
-}
-```
-
-**get(indice)** — ia elementul de la acel indice (începând de la 0, ca array-urile)
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(lista.get(0));   // primul
-        System.out.println(lista.get(1));   // al doilea
-    }
-}
-```
-
-**size()** — returnează câte elemente sunt în listă
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(lista.size());   // 2
-    }
-}
-```
-
-Observă că este **.size()** cu paranteze, nu **.length** ca la array-uri. Da, asta este încă una dintre inconsecvențele fermecătoare ale lui Java
-
-**remove(indice)** — elimină elementul de la acel indice și mută tot ce vine după el în jos
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        lista.remove(0);   // elimină "primul"
-        // lista este acum [al doilea]
-    }
-}
-```
-
----
-
-Hai să vedem totul împreună. Lance gestionează lista de invitați a lui Cortez pentru o petrecere pe iaht
+Principalele metode
 
 ```java
 import java.util.ArrayList;
@@ -109,15 +36,19 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<String> invitati = new ArrayList<String>();
 
+        // add -- adauga la final
         invitati.add("Tommy");
         invitati.add("Lance");
         invitati.add("Mercedes");
         invitati.add("Sonny");
 
-        System.out.println("Numar invitati: " + invitati.size());
-        System.out.println("Primul invitat: " + invitati.get(0));
+        // size -- cate elemente
+        System.out.println("Total: " + invitati.size());
 
-        // Sonny NU este invitat
+        // get -- elementul de la un indice (de la 0)
+        System.out.println("Primul: " + invitati.get(0));
+
+        // remove -- elimina de la un indice
         invitati.remove(3);
         System.out.println("Dupa eliminare: " + invitati);
     }
@@ -127,43 +58,137 @@ public class Main {
 Output
 
 ```text
-Numar invitati: 4
-Primul invitat: Tommy
+Total: 4
+Primul: Tommy
 Dupa eliminare: [Tommy, Lance, Mercedes]
 ```
 
+`.size()` cu paranteze, nu `.length` ca la array-uri — e una dintre diferențele de reținut
+
 ---
 
-În Python, asta ar fi
+**Parcurgere cu for clasic** — când ai nevoie de indice
 
-```python
-invitati = ["Tommy", "Lance", "Mercedes", "Sonny"]
-print(len(invitati))
-print(invitati[0])
-invitati.pop(3)   # sau del invitati[3]
-print(invitati)
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> echipaj = new ArrayList<String>();
+        echipaj.add("Tommy Vercetti");
+        echipaj.add("Lance Vance");
+        echipaj.add("Phil Cassidy");
+
+        for (int i = 0; i < echipaj.size(); i++) {
+            System.out.println(i + ": " + echipaj.get(i));
+        }
+    }
+}
 ```
 
-Destul de asemănător! Java doar are nevoie de mai mult ceremonial cu tipurile
+Output
+
+```text
+0: Tommy Vercetti
+1: Lance Vance
+2: Phil Cassidy
+```
+
+**Parcurgere cu for-each** — mai curat când nu ai nevoie de indice
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> echipaj = new ArrayList<String>();
+        echipaj.add("Tommy Vercetti");
+        echipaj.add("Lance Vance");
+        echipaj.add("Phil Cassidy");
+
+        for (String nume : echipaj) {
+            System.out.println("Membru: " + nume);
+        }
+    }
+}
+```
+
+Output
+
+```text
+Membru: Tommy Vercetti
+Membru: Lance Vance
+Membru: Phil Cassidy
+```
+
+Citește `for (String nume : echipaj)` ca: „pentru fiecare String numit `nume` din `echipaj`"
 
 ---
 
-## Misiune: Playlist Sala de Recreere
+ArrayList devine cu adevărat puternic când ții **obiecte** în el — nu doar String-uri sau numere, ci instanțe ale claselor tale
 
-Sala de recreere a stației ține un playlist dinamic de jocuri. Construiește-l pas cu pas:
+```java
+import java.util.ArrayList;
 
-1. Creează un `ArrayList<String>` numit `jocuri`
-2. Adaugă trei jocuri: `"GTA"`, `"Minecraft"`, `"Zelda"`
-3. Adaugă un al 4-lea joc: `"Elden Ring"`
-4. Elimină al 2-lea joc (indicele 1)
-5. Afișează fiecare joc rămas pe linia lui folosind o buclă for cu `.get(i)` și `.size()`
+class Masina {
+    String nume;
+    int viteza;
+
+    Masina(String nume, int viteza) {
+        this.nume = nume;
+        this.viteza = viteza;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Masina> garaj = new ArrayList<Masina>();
+        garaj.add(new Masina("Infernus", 240));
+        garaj.add(new Masina("Cheetah", 230));
+        garaj.add(new Masina("Banshee", 200));
+
+        for (Masina m : garaj) {
+            System.out.println(m.nume + " - " + m.viteza + " km/h");
+        }
+    }
+}
+```
+
+Output
+
+```text
+Infernus - 240 km/h
+Cheetah - 230 km/h
+Banshee - 200 km/h
+```
+
+`ArrayList<Masina>` ține obiecte de tip `Masina`. Poți accesa câmpurile fiecărui obiect direct în buclă
+
+---
+
+Comparație rapidă
+
+|          | Array   | ArrayList   |
+| -------- | ------- | ----------- |
+| Mărime   | Fixă    | Dinamică    |
+| Lungime  | .length | .size()     |
+| Acces    | arr[i]  | list.get(i) |
+| For-each | merge   | merge       |
+| Adăugare | nu      | .add()      |
+| Ștergere | nu      | .remove()   |
+
+---
+
+## Misiune: Lista Echipajului
+
+Tommy ține o listă cu membrii echipei sale din Vice City. Fiecare membru are un nume și un rol. Tommy începe cu Lance Vance (șofer), Phil Cassidy (armament), Umberto Robina (aliat) și Hilary King (șofer). La un moment dat, Lance îl trădează și trebuie eliminat din listă
+
+Construiește o clasă pentru membrii echipei. În `main`, creează un ArrayList cu toți membrii, elimină-l pe Lance (primul din listă), apoi parcurge lista și afișează fiecare membru rămas
 
 **Exemplu**
 
-După adăugări și eliminare, programul tău ar trebui să afișeze
-
 ```text
-GTA
-Zelda
-Elden Ring
+Phil Cassidy - armament
+Umberto Robina - aliat
+Hilary King - sofer
 ```

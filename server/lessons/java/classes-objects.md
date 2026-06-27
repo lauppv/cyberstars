@@ -49,20 +49,6 @@ Speed: 120
 
 **new Car()** creates a new Car object. We store it in a variable called **myCar**. Then we use **dot notation** (myCar.color, myCar.speed) to set and read its fields
 
-This is like Python's classes
-
-```python
-class Car:
-    def __init__(self):
-        self.color = ""
-        self.speed = 0
-
-my_car = Car()
-my_car.color = "red"
-```
-
-Same idea, just slightly different syntax
-
 ---
 
 The power of classes is that you can create **multiple objects** from the same blueprint
@@ -167,7 +153,7 @@ public class Main {
         w2.damage = 200;
         w2.weight = 15.0;
 
-        // Compare them
+        // compare them
         if (w1.damage > w2.damage) {
             System.out.println(w1.name + " deals more damage");
         } else {
@@ -183,29 +169,24 @@ Without classes, you'd need separate variables for every single field: **w1Name,
 
 ---
 
-## Mission: K-9 Unit Roster
+## Mission: Guard Dogs
 
-The station's security division is registering its K-9 patrol dogs into the new crew database. Each dog needs a name and age on file before they can be assigned to a sector.
+Tommy is registering the guard dogs at his Vice City mansion. Each dog needs a name and an age on record before it goes on rotation.
 
-Create a class called `Dog` with two fields: `String name` and `int age`.
+Create a **class** that represents a guard dog, with a field for the **name** (String) and one for the **age** (int).
 
-In `main`, create two Dog objects:
+In `main`, build **two** dog objects with values of your choice, then print each dog on its own line in the format `Name is X years old`.
 
-1. A dog named `"Rex"` who is `5` years old
-2. A dog named `"Buddy"` who is `3` years old
-
-Print each dog in the format `Name is X years old`.
-
-**Input** (already set in your code — change the values to test):
-
-- `"Rex"` / `5` — first dog's name and age
-- `"Buddy"` / `3` — second dog's name and age
-
-**Example**
-
-With the starter values, your program should print
+**Example** for a dog `Rex` aged `5` and one `Buddy` aged `3`
 
 ```text
 Rex is 5 years old
 Buddy is 3 years old
+```
+
+**Example** for a dog `Bruno` aged `7` and one `Ace` aged `2`
+
+```text
+Bruno is 7 years old
+Ace is 2 years old
 ```

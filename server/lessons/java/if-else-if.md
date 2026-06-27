@@ -10,7 +10,7 @@ If we have **10** seconds left → start the main engines
 
 Otherwise → do nothing special
 
-In Java we use **else if** (in Python it was **elif** — Java spells it out)
+In Java we use **else if** — two words, spelled out
 
 ```java
 public class Main {
@@ -77,23 +77,38 @@ public class Main {
 }
 ```
 
-Here, only **if** we’re in the last 10 seconds, we check the error flag. Nested **if**s are fine, but if you nest 5 levels deep, your code becomes unreadable. Try to keep things flat when you can :)
+Here, only **if** we’re in the last 10 seconds, we check the error flag. Nested **if**s are fine, but if you nest 5 levels deep, your code becomes unreadable. Try to keep things flat when you can
 
 ---
 
 ## Mission: Launch Sequence
 
-The countdown timer is running. Depending on how many seconds remain, the system must perform a different action. The code on the right already has the full chain — try changing `seconds` and `errorDetected` to see every branch fire.
+The countdown timer is running. Depending on how many seconds remain until launch, the system performs a different action:
 
-**Input** (already set at the top of your code — change the values to test):
+- at **100** seconds → print `Starting all onboard computers`
+- at **60** seconds → print `Checking connection with the control tower`
+- at **20** seconds → print `Starting secondary engines`
+- at **10** seconds → print `Starting the main engines`
+- in any other case → print `Standing by...`
 
-- `seconds` — seconds remaining until launch (int)
-- `errorDetected` — whether an error has been detected (boolean)
+Store the number of seconds in an `int` variable and write an `if / else if / else` chain that prints the correct action.
 
-**Example**
+**Examples**
 
-With `seconds = 60` and `errorDetected = false`, your program should print
+At `100` seconds:
+
+```text
+Starting all onboard computers
+```
+
+At `60` seconds:
 
 ```text
 Checking connection with the control tower
+```
+
+At `200` seconds (no branch matches, `else` runs):
+
+```text
+Standing by...
 ```

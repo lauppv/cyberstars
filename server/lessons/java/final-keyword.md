@@ -1,4 +1,4 @@
-Sometimes you have a value that should **never change**. A player's max health, the name of the game, the speed of light — these are constants. In Java, the keyword `final` locks a variable so it can't be reassigned
+Sometimes you have a value that should **never change**. A crew member's max respect, the name of the city, the maximum wanted level — these are constants. In Java, the keyword `final` locks a variable so it can't be reassigned
 
 ---
 
@@ -7,10 +7,10 @@ Sometimes you have a value that should **never change**. A player's max health, 
 ```java
 public class Main {
     public static void main(String[] args) {
-        final int MAX_HEALTH = 100;
-        final String GAME_NAME = "CyberQuest";
+        final int MAX_RESPECT = 100;
+        final String CITY = "Vice City";
 
-        System.out.println(GAME_NAME + " - Max HP: " + MAX_HEALTH);
+        System.out.println(CITY + " - Max respect: " + MAX_RESPECT);
     }
 }
 ```
@@ -18,7 +18,7 @@ public class Main {
 Output
 
 ```text
-CyberQuest - Max HP: 100
+Vice City - Max respect: 100
 ```
 
 Once a `final` variable is set, it's done. Try to change it and Java will refuse to compile:
@@ -26,8 +26,8 @@ Once a `final` variable is set, it's done. Try to change it and Java will refuse
 ```java
 public class Main {
     public static void main(String[] args) {
-        final int MAX_HEALTH = 100;
-        MAX_HEALTH = 200;  // ERROR: cannot assign a value to final variable
+        final int MAX_RESPECT = 100;
+        MAX_RESPECT = 200;  // ERROR: cannot assign a value to final variable
     }
 }
 ```
@@ -43,7 +43,7 @@ public class Main {
     public static void main(String[] args) {
         final int MAX_SPEED = 250;
         final String PLAYER_NAME = "Tommy Vercetti";
-        final double GRAVITY = 9.81;
+        final double COMMISSION = 0.15;
         final int LIVES_AT_START = 3;
     }
 }
@@ -58,17 +58,17 @@ This makes constants instantly recognizable in your code. When you see `MAX_SPEE
 You can use `final` on class fields too. A common pattern is `static final` for class-wide constants:
 
 ```java
-class Game {
-    static final int MAX_PLAYERS = 4;
-    static final String VERSION = "1.0";
-    static final int WINNING_SCORE = 1000;
+class City {
+    static final String NAME = "Vice City";
+    static final int DISTRICTS = 6;
+    static final int YEAR = 1986;
 }
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Game version: " + Game.VERSION);
-        System.out.println("Max players: " + Game.MAX_PLAYERS);
-        System.out.println("Win at: " + Game.WINNING_SCORE + " points");
+        System.out.println("City: " + City.NAME);
+        System.out.println("Districts: " + City.DISTRICTS);
+        System.out.println("Year: " + City.YEAR);
     }
 }
 ```
@@ -76,9 +76,9 @@ public class Main {
 Output
 
 ```text
-Game version: 1.0
-Max players: 4
-Win at: 1000 points
+City: Vice City
+Districts: 6
+Year: 1986
 ```
 
 `static final` means "one copy for the whole class, and it never changes." This is the Java equivalent of a true constant. You'll see this pattern in real Java code everywhere
@@ -92,20 +92,20 @@ You can also make instance fields `final` — they get set once (in the construc
 ```java
 class Player {
     final String name;
-    int score;
+    int respect;
 
     Player(String name) {
         this.name = name;  // set once
-        this.score = 0;
+        this.respect = 0;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         Player p = new Player("Lance Vance");
-        p.score = 50;     // fine — score isn't final
+        p.respect = 50;     // fine — respect isn't final
         // p.name = "Tommy";  // ERROR — name is final
-        System.out.println(p.name + ": " + p.score);
+        System.out.println(p.name + ": " + p.respect);
     }
 }
 ```
@@ -116,20 +116,7 @@ Output
 Lance Vance: 50
 ```
 
-This is great for fields that should be set at creation and never modified — like a player's ID or username
-
----
-
-## Python Comparison
-
-Python doesn't have a real `final` keyword. By convention, constants are written in ALL_CAPS, but nothing actually prevents you from changing them:
-
-```python
-MAX_HEALTH = 100
-MAX_HEALTH = 200  # Python won't stop you
-```
-
-Java actually enforces it. If you say `final`, you mean it, and the compiler holds you to it
+This is great for fields that should be set at creation and never modified — like a crew member's name
 
 ---
 
@@ -140,10 +127,10 @@ Java actually enforces it. If you say `final`, you mean it, and the compiler hol
 ```java
 public class Main {
     public static void main(String[] args) {
-        final int[] scores = {10, 20, 30};
-        scores[0] = 99;   // allowed! We changed the content, not the variable
-        // scores = new int[]{1, 2, 3};  // ERROR! Can't reassign the variable
-        System.out.println(scores[0]);
+        final int[] earnings = {10, 20, 30};
+        earnings[0] = 99;   // allowed! We changed the content, not the variable
+        // earnings = new int[]{1, 2, 3};  // ERROR! Can't reassign the variable
+        System.out.println(earnings[0]);
     }
 }
 ```
@@ -158,22 +145,20 @@ Output
 
 ---
 
-## Mission: Station Configuration Lock
+## Mission: Tommy's Constants
 
-The station's core parameters — maximum shield capacity and the station's official designation — must never change once initialized. Your job is to define these as locked constants that no code can accidentally overwrite.
+Some values in Tommy's empire must never change: the maximum respect a member can have and the name of the city. Define them as locked constants that no code can accidentally overwrite.
 
 Create two `final` constants:
 
-1. `MAX_HEALTH` set to `100`
-2. `GAME_NAME` set to `"CyberQuest"`
+1. `MAX_RESPECT` set to `100`
+2. `CITY` set to `"Vice City"`
 
 Print both constants on separate lines.
 
 **Example**
 
-Your program should print
-
 ```text
 100
-CyberQuest
+Vice City
 ```

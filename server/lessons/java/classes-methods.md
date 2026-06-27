@@ -5,24 +5,24 @@ You know how to write methods with `static` — those belong to the class itself
 ## Instance Methods
 
 ```java
-class Dog {
-    String name;
+class Car {
+    String model;
 
-    Dog(String name) {
-        this.name = name;
+    Car(String model) {
+        this.model = model;
     }
 
-    void bark() {
-        System.out.println(name + " says: Woof!");
+    void honk() {
+        System.out.println(model + " goes: Beep!");
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Dog d1 = new Dog("Rex");
-        Dog d2 = new Dog("Buddy");
-        d1.bark();
-        d2.bark();
+        Car c1 = new Car("Infernus");
+        Car c2 = new Car("Cheetah");
+        c1.honk();
+        c2.honk();
     }
 }
 ```
@@ -30,11 +30,11 @@ public class Main {
 Output
 
 ```text
-Rex says: Woof!
-Buddy says: Woof!
+Infernus goes: Beep!
+Cheetah goes: Beep!
 ```
 
-Notice: `bark()` has **no `static`** keyword. That's because it's an instance method — it operates on a specific dog. When you call `d1.bark()`, Java knows `name` refers to `d1`'s name
+Notice: `honk()` has **no `static`** keyword. That's because it's an instance method — it operates on a specific car. When you call `c1.honk()`, Java knows `model` refers to `c1`'s model
 
 ---
 
@@ -116,6 +116,13 @@ Tommy Vercetti completed a mission! Respect: 20
 Tommy Vercetti completed a mission! Respect: 30
 ```
 
+Let's trace what happens to `tommy`:
+
+- At creation, the constructor sets `respect` to `0`
+- First `completeMission()`: `respect` rises to `10`, then the line with `Respect: 10` is printed
+- The second call starts from `10` and reaches `20`
+- The third starts from `20` and reaches `30`
+
 Each call to `completeMission()` modifies **that specific object's** `respect` field. If we had another `GangMember`, their respect would be separate
 
 ---
@@ -148,37 +155,24 @@ That's why `main` is `static` — it runs before any objects exist. It's the sta
 
 ---
 
-## Python Comparison
+## Mission: Business Earnings
 
-In Python, instance methods take `self` as the first parameter:
+Tommy owns several businesses in Vice City. Each business has a name and a total of earnings that starts at 0. Every time the business brings in money, the total grows
 
-```python
-class Dog:
-    def bark(self):
-        print(f"{self.name} says: Woof!")
-```
+Create a class that represents a business, with a field for the name and one for the total earnings. Write a method that adds an amount to the total and a method that returns the current total
 
-In Java, `this` is always available inside instance methods — you don't need to list it as a parameter. And you only need `this.` when there's a naming conflict
+In `main`, create **two** businesses with names of your choice. Add a few earnings to each, then print for each business the name, then `: `, then the total — for example `Malibu Club: 650`
 
----
-
-## Mission: Docking Bay Counter
-
-The station's docking bay needs a digital counter to track how many ships have arrived during each shift. Every time a ship docks, the counter increments by one.
-
-Create a `Counter` class with:
-
-1. An `int` field called `count`, starting at 0
-2. A constructor that sets `count` to 0
-3. An `increment()` method that adds 1 to `count`
-4. A `getCount()` method that returns the current `count`
-
-In `main`, create a `Counter`, call `increment()` three times (three ships docked), then print the count.
-
-**Example**
-
-After three dockings, your program should print
+**Example** — `Malibu Club` with earnings 200, 300, 150 and `Print Works` with 500, 250
 
 ```text
-3
+Malibu Club: 650
+Print Works: 750
+```
+
+**Example** — `Cherry Popper` with earnings 100, 100 and `Sunshine Autos` with 1000
+
+```text
+Cherry Popper: 200
+Sunshine Autos: 1000
 ```

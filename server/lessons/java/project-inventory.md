@@ -1,4 +1,4 @@
-Time for a real project! We're going to build an **inventory system** — like the weapon/item inventory in GTA Vice City. Tommy picks up items, stores them, and needs to know what he's got and how much it's all worth
+Time for a real project! We're going to build an **inventory system** — Tommy manages the station's supply depot, keeps track of provisions and needs to know what he's got and how much it's all worth
 
 This project brings together everything you've learned: **classes**, **constructors**, **ArrayLists**, **methods**, and **loops**. Let's build it piece by piece
 
@@ -28,7 +28,7 @@ Simple and clean. An `Item` knows its name, how many we have, and what each one 
 
 **Step 2: The Inventory class**
 
-The `Inventory` class holds a list of items and provides methods to manage them. This is where ArrayList comes in — we don't know how many items Tommy will collect, so a fixed-size array won't cut it
+The `Inventory` class holds a list of items and provides methods to manage them. This is where ArrayList comes in — we don't know how many supplies will be stored, so a fixed-size array won't cut it
 
 ```java
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ class Inventory {
 }
 ```
 
-The inventory starts empty. `addItem` just adds an item to the list. Think of it like Tommy walking over a pickup icon — the item goes into inventory
+The inventory starts empty. `addItem` adds an item to the list
 
 ---
 
@@ -85,10 +85,10 @@ public class Main {
 }
 ```
 
-For an item named "Health Pack" with quantity 3 and price 25.50, this prints:
+For an item named "Medical kit" with quantity 5 and price 25.00, this prints:
 
 ```text
-Health Pack x3 @ $25.50
+Medical kit x5 @ $25.00
 ```
 
 ---
@@ -166,9 +166,9 @@ class Inventory {
 public class Main {
     public static void main(String[] args) {
         Inventory inv = new Inventory();
-        inv.addItem(new Item("Pistol", 1, 100.00));
-        inv.addItem(new Item("Health Pack", 5, 25.00));
-        inv.addItem(new Item("Body Armor", 2, 75.50));
+        inv.addItem(new Item("Medical kit", 5, 25.00));
+        inv.addItem(new Item("Oxygen reserve", 2, 75.50));
+        inv.addItem(new Item("Solar battery", 1, 100.00));
 
         inv.printAll();
         System.out.println("Total: $" + String.format("%.2f", inv.totalValue()));
@@ -179,9 +179,9 @@ public class Main {
 Output
 
 ```text
-Pistol x1 @ $100.00
-Health Pack x5 @ $25.00
-Body Armor x2 @ $75.50
+Medical kit x5 @ $25.00
+Oxygen reserve x2 @ $75.50
+Solar battery x1 @ $100.00
 Total: $376.00
 ```
 
@@ -201,17 +201,17 @@ The station's cargo bay needs a digital manifest system. Every supply item has a
 2. Create an `Inventory` class with an `ArrayList<Item>`, and methods: `addItem(Item item)`, `removeItem(String name)`, `printAll()`, and `double totalValue()`
 3. `printAll()` prints each item as `"name xQuantity @ $price"` (use `String.format("%.2f", price)`)
 4. `totalValue()` returns the sum of `quantity * price` for all items
-5. In main, create an Inventory and add these items:
-   - "Shotgun", quantity 2, price 350.00
-   - "Medkit", quantity 10, price 15.50
-   - "Kevlar Vest", quantity 1, price 200.00
+5. In main, create an Inventory and add these supplies:
+   - "Air filter", quantity 4, price 35.00
+   - "Food pack", quantity 10, price 12.00
+   - "Repair kit", quantity 3, price 85.00
 6. Call `printAll()`, then print `"Total: $"` followed by the formatted total
 
 **Output**
 
 ```text
-Shotgun x2 @ $350.00
-Medkit x10 @ $15.50
-Kevlar Vest x1 @ $200.00
-Total: $1055.00
+Air filter x4 @ $35.00
+Food pack x10 @ $12.00
+Repair kit x3 @ $85.00
+Total: $515.00
 ```

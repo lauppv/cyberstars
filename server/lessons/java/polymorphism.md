@@ -1,65 +1,63 @@
 Polymorphism is a fancy word that means "many forms." In Java, it means a variable of a **parent** type can hold an object of any **child** type — and Java will call the RIGHT method automatically
 
 ```java
-class Animal {
+class Criminal {
     String name;
-    Animal(String name) { this.name = name; }
+    Criminal(String name) { this.name = name; }
     void speak() { System.out.println("..."); }
 }
 
-class Dog extends Animal {
-    Dog(String name) { super(name); }
+class Driver extends Criminal {
+    Driver(String name) { super(name); }
     @Override
-    void speak() { System.out.println("Woof!"); }
+    void speak() { System.out.println("I'm the driver " + name); }
 }
 
-class Cat extends Animal {
-    Cat(String name) { super(name); }
+class Gunman extends Criminal {
+    Gunman(String name) { super(name); }
     @Override
-    void speak() { System.out.println("Meow!"); }
+    void speak() { System.out.println("I'm the gunman " + name); }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Animal a = new Dog("Rex");  // parent type, child object
-        a.speak();  // prints "Woof!" not "..."
+        Criminal c = new Driver("Tommy");  // parent type, child object
+        c.speak();  // prints "I'm the driver Tommy" not "..."
     }
 }
 ```
 
-Even though `a` is declared as `Animal`, Java knows it's actually a `Dog` at runtime and calls Dog's `speak()`. This is called **dynamic dispatch** — Java dispatches the method call to the actual object type, not the declared type
+Even though `c` is declared as `Criminal`, Java knows it's actually a `Driver` at runtime and calls Driver's `speak()`. This is called **dynamic dispatch** — Java dispatches the method call to the actual object type, not the declared type
 
 ---
 
-This gets REALLY powerful with arrays and loops. Imagine you're building a game like GTA Vice City and you have different types of characters — all extending a base `Character` class. You can store them all in ONE array
+This gets REALLY powerful with arrays and loops. Think about Vice City: you have different types of criminals — all extending the base `Criminal` class. You can store them all in ONE array
 
 ```java
-class Shape {
-    double area() { return 0; }
+class Criminal {
+    String name;
+    Criminal(String name) { this.name = name; }
+    void speak() { System.out.println("..."); }
 }
 
-class Circle extends Shape {
-    double radius;
-    Circle(double radius) { this.radius = radius; }
-
+class Driver extends Criminal {
+    Driver(String name) { super(name); }
     @Override
-    double area() { return Math.PI * radius * radius; }
+    void speak() { System.out.println("I'm the driver " + name); }
 }
 
-class Rectangle extends Shape {
-    double width, height;
-    Rectangle(double w, double h) { this.width = w; this.height = h; }
-
+class Gunman extends Criminal {
+    Gunman(String name) { super(name); }
     @Override
-    double area() { return width * height; }
+    void speak() { System.out.println("I'm the gunman " + name); }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Shape[] shapes = { new Circle(5), new Rectangle(4, 6) };
+        Criminal[] crew = { new Driver("Tommy"), new Gunman("Lance") };
 
-        for (Shape s : shapes) {
-            System.out.println(s.area());
+        for (Criminal c : crew) {
+            c.speak();
         }
     }
 }
@@ -68,15 +66,11 @@ public class Main {
 Output
 
 ```text
-78.53981633974483
-24.0
+I'm the driver Tommy
+I'm the gunman Lance
 ```
 
-We never checked "is this a circle or rectangle?" — Java figured it out for us. The loop just calls `s.area()` and Java routes it to the correct override. That's polymorphism in action
-
----
-
-In Python this works too (duck typing), but Java does it with **type safety**. The compiler guarantees that every object in that `Shape[]` array has an `area()` method. No surprise `AttributeError` at runtime
+We never checked "is this a driver or a gunman?" — Java figured it out for us. The loop just calls `c.speak()` and Java routes it to the correct override. That's polymorphism in action
 
 ---
 
@@ -85,10 +79,10 @@ Sometimes you need to check what type an object actually is. Java has the **inst
 ```java
 public class Main {
     public static void main(String[] args) {
-        Animal a = new Dog("Rex");
+        Criminal c = new Driver("Tommy");
 
-        if (a instanceof Dog) {
-            System.out.println("It's a dog!");
+        if (c instanceof Driver) {
+            System.out.println("It's a driver!");
         }
     }
 }
@@ -98,40 +92,33 @@ This is useful when you need to access child-specific methods. But in general, i
 
 ---
 
-Here's why this matters in real code. Imagine a method that takes any Shape
+Here's why this matters in real code. Imagine a method that takes any `Criminal`
 
 ```java
 public class Main {
-    static void printArea(Shape s) {
-        System.out.println("Area: " + s.area());
+    static void present(Criminal c) {
+        c.speak();
     }
 }
 ```
 
-You can pass a Circle, a Rectangle, a Triangle — anything that extends Shape. The method doesn't need to know or care. That's the power. One method handles ALL shapes, current and future
+You can pass a Driver, a Gunman, a Boss — anything that extends Criminal. The method doesn't need to know or care. That's the power. One method handles ALL criminals, current and future
 
 Like Cortez in Vice City — he gives missions to Tommy, Lance, whoever. He doesn't care about the specific person, just that they can do the job. The "job" is the method signature, and polymorphism makes sure the right person does it their way
 
 ---
 
-## Mission: Cargo Bay Audit
+## Mission: Gang Roll Call
 
-The station's cargo bay holds containers of different shapes. The quartermaster needs a single loop that calculates and prints the footprint area of every container — without checking what shape each one is.
+Tommy calls his crew for a roll call. Each member answers their own way, but you want a single loop that makes them all speak — without checking what type each one is.
 
-Create the `Shape`, `Circle`, and `Rectangle` classes (Shape has `area()` returning 0; Circle overrides with `Math.PI * radius * radius`; Rectangle overrides with `width * height`).
+Create the `Criminal`, `Driver`, and `Gunman` classes (Criminal has `speak()` printing `"..."`; Driver overrides with `"I'm the driver "` + name; Gunman overrides with `"I'm the gunman "` + name).
 
-In `main`, create a `Shape[]` array containing a Circle with radius `5` and a Rectangle with width `4` and height `6`. Loop through the array and print each area using `String.format("%.2f", s.area())`.
-
-**Input** (already set in your code — change the values to test):
-
-- `5` — circle radius
-- `4`, `6` — rectangle width and height
+In `main`, create a `Criminal[]` array containing a `Driver` named `"Tommy"` and a `Gunman` named `"Lance"`. Loop through the array and call `speak()` on each.
 
 **Example**
 
-With the starter values, your program should print
-
 ```text
-78.54
-24.00
+I'm the driver Tommy
+I'm the gunman Lance
 ```

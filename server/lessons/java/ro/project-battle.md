@@ -20,7 +20,7 @@ class Personaj {
 
     void ataca(Personaj tinta) {
         tinta.viata -= this.putereAtac;
-        System.out.println(this.nume + " atacă " + tinta.nume + " cu " + this.putereAtac + " daune!");
+        System.out.println(this.nume + " ataca " + tinta.nume + " cu " + this.putereAtac + " daune!");
     }
 
     void afiseazaStatus() {
@@ -49,7 +49,7 @@ class Razboinic extends Personaj {
     void ataca(Personaj tinta) {
         int daune = this.putereAtac;
         tinta.viata -= daune;
-        System.out.println(this.nume + " lovește cu sabia pe " + tinta.nume + " cu " + daune + " daune!");
+        System.out.println(this.nume + " loveste cu sabia pe " + tinta.nume + " cu " + daune + " daune!");
     }
 }
 ```
@@ -74,7 +74,7 @@ class Mag extends Personaj {
     void ataca(Personaj tinta) {
         int daune = this.putereAtac + this.putereVraja;
         tinta.viata -= daune;
-        System.out.println(this.nume + " lansează o vrajă asupra lui " + tinta.nume + " cu " + daune + " daune!");
+        System.out.println(this.nume + " lanseaza o vraja asupra lui " + tinta.nume + " cu " + daune + " daune!");
     }
 }
 ```
@@ -99,7 +99,7 @@ class Personaj {
 
     void ataca(Personaj tinta) {
         tinta.viata -= this.putereAtac;
-        System.out.println(this.nume + " atacă " + tinta.nume + " cu " + this.putereAtac + " daune!");
+        System.out.println(this.nume + " ataca " + tinta.nume + " cu " + this.putereAtac + " daune!");
     }
 
     void afiseazaStatus() {
@@ -118,7 +118,7 @@ class Razboinic extends Personaj {
     void ataca(Personaj tinta) {
         int daune = this.putereAtac;
         tinta.viata -= daune;
-        System.out.println(this.nume + " lovește cu sabia pe " + tinta.nume + " cu " + daune + " daune!");
+        System.out.println(this.nume + " loveste cu sabia pe " + tinta.nume + " cu " + daune + " daune!");
     }
 }
 
@@ -133,7 +133,7 @@ class Mag extends Personaj {
     void ataca(Personaj tinta) {
         int daune = this.putereAtac + this.putereVraja;
         tinta.viata -= daune;
-        System.out.println(this.nume + " lansează o vrajă asupra lui " + tinta.nume + " cu " + daune + " daune!");
+        System.out.println(this.nume + " lanseaza o vraja asupra lui " + tinta.nume + " cu " + daune + " daune!");
     }
 }
 
@@ -154,9 +154,9 @@ public class Main {
 Output
 
 ```text
-Tommy lovește cu sabia pe Lance cu 25 daune!
+Tommy loveste cu sabia pe Lance cu 25 daune!
 Lance - HP: 55
-Lance lansează o vrajă asupra lui Tommy cu 35 daune!
+Lance lanseaza o vraja asupra lui Tommy cu 35 daune!
 Tommy - HP: 65
 ```
 
@@ -172,17 +172,17 @@ Observă cum `afiseazaStatus()` este definită o singură dată în clasa părin
 
 Doi membri ai echipajului au intrat în arena de antrenament holografică a stației. Tommy este un Razboinic de luptă apropiată, cu armură grea, iar Lance este un Mag care canalizează rafale de energie. Construiește sistemul de luptă și simulează o rundă de atacuri.
 
-1. Creează o clasă `Personaj` cu `nume` (String), `viata` (int), `putereAtac` (int), un constructor, o metodă `ataca(Personaj tinta)` care reduce viața țintei cu `putereAtac` și afișează `"NUME atacă TINTA cu DAUNE daune!"`, și o metodă `afiseazaStatus()` care afișează `"NUME - HP: VIATA"`
-2. Creează o clasă `Razboinic` care extinde Personaj cu `armura` (int). Suprascrie ataca ca să afișeze: `"NUME lovește cu sabia pe TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac
-3. Creează o clasă `Mag` care extinde Personaj cu `putereVraja` (int). Suprascrie ataca ca să afișeze: `"NUME lansează o vrajă asupra lui TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac + putereVraja
+1. Creează o clasă `Personaj` cu `nume` (String), `viata` (int), `putereAtac` (int), un constructor, o metodă `ataca(Personaj tinta)` care reduce viața țintei cu `putereAtac` și afișează `"NUME ataca TINTA cu DAUNE daune!"`, și o metodă `afiseazaStatus()` care afișează `"NUME - HP: VIATA"`
+2. Creează o clasă `Razboinic` care extinde Personaj cu `armura` (int). Suprascrie ataca ca să afișeze: `"NUME loveste cu sabia pe TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac
+3. Creează o clasă `Mag` care extinde Personaj cu `putereVraja` (int). Suprascrie ataca ca să afișeze: `"NUME lanseaza o vraja asupra lui TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac + putereVraja
 4. În main, creează Razboinicul Tommy (viata 100, putereAtac 25, armura 10) și Mag-ul Lance (viata 80, putereAtac 15, putereVraja 20)
 5. Tommy îl atacă pe Lance, afișează statusul lui Lance. Apoi Lance îl atacă pe Tommy, afișează statusul lui Tommy
 
 **Output**
 
 ```text
-Tommy lovește cu sabia pe Lance cu 25 daune!
+Tommy loveste cu sabia pe Lance cu 25 daune!
 Lance - HP: 55
-Lance lansează o vrajă asupra lui Tommy cu 35 daune!
+Lance lanseaza o vraja asupra lui Tommy cu 35 daune!
 Tommy - HP: 65
 ```

@@ -1,10 +1,10 @@
-În Python, dacă voiai o clasă `Caine` care e practic un `Animal` cu extra, scriai `class Caine(Animal):`. Java face același lucru dar folosește cuvântul cheie **extends**
+Uneori vrei o clasă care e practic o altă clasă, dar cu ceva în plus. În Java, o clasă poate **moșteni** de la alta folosind cuvântul cheie **extends**
 
 ```java
-class Animal {
+class Criminal {
     String nume;
 
-    Animal(String nume) {
+    Criminal(String nume) {
         this.nume = nume;
     }
 
@@ -13,43 +13,43 @@ class Animal {
     }
 }
 
-class Caine extends Animal {
-    Caine(String nume) {
+class Sofer extends Criminal {
+    Sofer(String nume) {
         super(nume);
     }
 
     void vorbeste() {
-        System.out.println("Ham! Sunt " + nume);
+        System.out.println("Sunt soferul " + nume + ", urca in masina!");
     }
 }
 ```
 
-Clasa `Caine` **moștenește** totul de la `Animal` — câmpul ei `nume`, logica constructorului, totul. Apoi **suprascrie** metoda `vorbeste()` ca să facă propriul ei lucru. Aceasta este **moștenirea** — una dintre cele mai mari idei din Java
+Clasa `Sofer` **moștenește** totul de la `Criminal` — câmpul ei `nume`, logica constructorului, totul. Apoi **suprascrie** metoda `vorbeste()` ca să facă propriul ei lucru. Aceasta este **moștenirea** — una dintre cele mai mari idei din Java
 
 ---
 
-Gândește-te la asta ca la GTA Vice City. Tommy Vercetti este un **criminal** (clasa părinte). Lance Vance este și el un criminal, dar este un _tip specific_ — un criminal care te trădează pe la spate. El **extinde** clasa de bază criminal cu propriul lui comportament special (trădarea). El are în continuare toate abilitățile de bază ale unui criminal, plus propria lui răsucire
+Un exemplu din Vice City: Tommy Vercetti este un **criminal** (clasa părinte). Lance Vance este și el un criminal, dar este un _tip specific_ — un criminal care te trădează pe la spate. El **extinde** clasa de bază criminal cu propriul lui comportament special (trădarea). El are în continuare toate abilitățile de bază ale unui criminal, plus propria lui răsucire
 
 ---
 
-Cuvântul cheie **super** este modul în care un copil vorbește cu părintele lui. Când `Caine` apelează `super(nume)`, spune "hei Animal, rulează constructorul TĂU cu acest nume." Constructorul părinte setează `this.nume = nume`, iar acum câinele are un nume
+Cuvântul cheie **super** este modul în care un copil vorbește cu părintele lui. Când `Sofer` apelează `super(nume)`, spune "hei Criminal, rulează constructorul TĂU cu acest nume." Constructorul părinte setează `this.nume = nume`, iar acum șoferul are un nume
 
 **Trebuie** să apelezi `super(...)` în constructorul copilului dacă părintele nu are un constructor fără argumente. Java nu te lasă să-l sari — părintele trebuie configurat înainte ca copilul să-și poată adăuga propriile lucruri
 
 ```java
-class Animal {
+class Criminal {
     String nume;
-    int picioare;
+    int respect;
 
-    Animal(String nume, int picioare) {
+    Criminal(String nume, int respect) {
         this.nume = nume;
-        this.picioare = picioare;
+        this.respect = respect;
     }
 }
 
-class Paianjen extends Animal {
-    Paianjen(String nume) {
-        super(nume, 8);  // păianjenii au mereu 8 picioare
+class Sef extends Criminal {
+    Sef(String nume) {
+        super(nume, 100);  // un sef porneste mereu cu respect maxim
     }
 }
 ```
@@ -59,10 +59,10 @@ class Paianjen extends Animal {
 O clasă copil poate de asemenea **adăuga** câmpuri și metode noi pe care părintele nu le are
 
 ```java
-class Animal {
+class Criminal {
     String nume;
 
-    Animal(String nume) {
+    Criminal(String nume) {
         this.nume = nume;
     }
 
@@ -71,69 +71,69 @@ class Animal {
     }
 }
 
-class Caine extends Animal {
-    String rasa;
+class Sofer extends Criminal {
+    String masina;
 
-    Caine(String nume, String rasa) {
+    Sofer(String nume, String masina) {
         super(nume);
-        this.rasa = rasa;
+        this.masina = masina;
     }
 
     void vorbeste() {
-        System.out.println("Ham! Sunt " + nume);
+        System.out.println("Sunt soferul " + nume);
     }
 
-    void aduMingea() {
-        System.out.println(nume + " aduce mingea!");
+    void conduce() {
+        System.out.println(nume + " conduce un " + masina + "!");
     }
 }
 ```
 
-Acum `Caine` are tot ce are `Animal`, PLUS un câmp `rasa` și o metodă `aduMingea()`. Părintele `Animal` nu știe despre fetch — acela e propriul lucru al câinelui
+Acum `Sofer` are tot ce are `Criminal`, PLUS un câmp `masina` și o metodă `conduce()`. Părintele `Criminal` nu știe despre condus — acela e propriul lucru al șoferului
 
 ---
 
 Iată un exemplu complet care poate fi rulat
 
 ```java
-class Animal {
+class Criminal {
     String nume;
 
-    Animal(String nume) {
+    Criminal(String nume) {
         this.nume = nume;
     }
 
     void vorbeste() {
-        System.out.println("Un sunet generic de animal");
+        System.out.println("Un criminal oarecare din Vice City");
     }
 }
 
-class Caine extends Animal {
-    Caine(String nume) {
+class Sofer extends Criminal {
+    Sofer(String nume) {
         super(nume);
     }
 
     void vorbeste() {
-        System.out.println("Ham! Mă cheamă " + nume);
+        System.out.println("Sunt soferul " + nume);
     }
 }
 
-class Pisica extends Animal {
-    Pisica(String nume) {
+class Tragator extends Criminal {
+    Tragator(String nume) {
         super(nume);
     }
 
     void vorbeste() {
-        System.out.println("Miau! Mă cheamă " + nume);
+        System.out.println("Sunt tragatorul " + nume);
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Caine d = new Caine("Rex");
-        Pisica c = new Pisica("Whiskers");
-        d.vorbeste();
-        c.vorbeste();
+        Sofer s = new Sofer("Tommy");
+        Tragator t = new Tragator("Lance");
+        s.vorbeste();
+        t.vorbeste();
     }
 }
 ```
@@ -141,28 +141,26 @@ public class Main {
 Rezultat
 
 ```text
-Ham! Mă cheamă Rex
-Miau! Mă cheamă Whiskers
+Sunt soferul Tommy
+Sunt tragatorul Lance
 ```
 
 ---
 
-## Misiune: Registrul Animalelor de Companie
+## Misiune: Banda lui Tommy
 
-Stația le permite membrilor echipajului să aducă la bord animale de companie. Fiecare companion are un nume și poate vocaliza, dar câinii și pisicile o fac diferit. Trebuie să construiești ierarhia de moștenire pentru registru.
+Banda lui Tommy are roluri diferite, dar toți sunt criminali. Fiecare se prezintă în felul lui. Construiește ierarhia de moștenire.
 
-Creează o clasă `Animal` cu un câmp `nume`, un constructor și o metodă `vorbeste()` care afișează `"..."`. Apoi creează două clase copil:
+Creează o clasă `Criminal` cu un câmp `nume`, un constructor și o metodă `vorbeste()` care afișează `"..."`. Apoi creează două clase copil:
 
-1. `Caine` extends `Animal` — suprascrie `vorbeste()` ca să afișeze `"Ham! Mă cheamă "` + nume
-2. `Pisica` extends `Animal` — suprascrie `vorbeste()` ca să afișeze `"Miau! Mă cheamă "` + nume
+1. `Sofer` extends `Criminal` — suprascrie `vorbeste()` ca să afișeze `"Sunt soferul "` + nume
+2. `Tragator` extends `Criminal` — suprascrie `vorbeste()` ca să afișeze `"Sunt tragatorul "` + nume
 
-În `main`, creează un `Caine` numit `"Tommy"` și o `Pisica` numită `"Lance"`, și apelează `vorbeste()` pe amândoi.
+În `main`, creează un `Sofer` numit `"Tommy"` și un `Tragator` numit `"Lance"`, și apelează `vorbeste()` pe amândoi.
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
-
 ```text
-Ham! Mă cheamă Tommy
-Miau! Mă cheamă Lance
+Sunt soferul Tommy
+Sunt tragatorul Lance
 ```

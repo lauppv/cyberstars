@@ -40,16 +40,16 @@ Paul
 Paul
 ```
 
-Notice that the **second time** we change **name**, we **don’t** write **String** again. We only write the type **once**, when we **first declare** the variable. After that, Java already knows the type :)
+Notice that the **second time** we change **name**, we **don’t** write **String** again. We only write the type **once**, when we **first declare** the variable. After that, Java already knows the type
 
 ---
 
-Just like in Python, **don’t forget the quotes**. The code below will not work
+**Don’t forget the quotes**. The code below will not work
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        String name = Paul;   // ERROR
+        String name = Paul;   // error
     }
 }
 ```
@@ -107,7 +107,7 @@ Fix the three variable assignments so the program compiles and prints the crew n
 Your program should print
 
 ```text
-Shrek
-Fiona
-Donkey
+Lance Vance
+Diaz
+Mercedes
 ```

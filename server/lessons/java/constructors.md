@@ -51,12 +51,20 @@ You probably spotted `this.name = name` and wondered what's going on. Here's the
 It's like saying "**this** object's name equals the name you gave me"
 
 ```java
+class Player {
+    String name;
+    int score;
+
+    Player(String name, int score) {
+        this.name = name;     // object's name = parameter name
+        this.score = score;   // object's score = parameter score
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Player(String name, int score) {
-            this.name = name;     // object's name = parameter name
-            this.score = score;   // object's score = parameter score
-        }
+        Player p = new Player("Tommy", 100);
+        System.out.println(p.name + " " + p.score);
     }
 }
 ```
@@ -64,12 +72,20 @@ public class Main {
 If the parameter had a different name, you wouldn't even need `this`:
 
 ```java
+class Player {
+    String name;
+    int score;
+
+    Player(String n, int s) {
+        name = n;    // no confusion, so "this" is optional
+        score = s;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Player(String n, int s) {
-            name = n;    // no confusion, so "this" is optional
-            score = s;
-        }
+        Player p = new Player("Lance", 80);
+        System.out.println(p.name + " " + p.score);
     }
 }
 ```
@@ -112,8 +128,8 @@ class Enemy {
 
 public class Main {
     public static void main(String[] args) {
-        // Enemy e = new Enemy();  // ERROR! No zero-arg constructor anymore
-        Enemy e = new Enemy("Goon");  // This works
+        // Enemy e = new Enemy();  // won't compile, no zero-arg constructor anymore
+        Enemy e = new Enemy("Goon");  // this works
         System.out.println(e.type);
         System.out.println(e.health);
     }
@@ -168,44 +184,24 @@ Fists deals 10 damage
 
 ---
 
-## Python Comparison
-
-In Python, the constructor is `__init__` and `self` is passed explicitly:
-
-```python
-class Player:
-    def __init__(self, name, score):
-        self.name = name
-        self.score = score
-```
-
-In Java, the constructor name matches the class name, and `this` is available automatically — you don't put it in the parameter list
-
----
-
 ## Mission: Crew Scorecard
 
-The station commander needs a quick scorecard system to track crew performance ratings after each mission cycle. Each crew member is registered with a name and a score.
+Tommy keeps a record of his Vice City crew. Each member is registered with a name and a score — their reputation on the streets.
 
-Create a `Player` class with two fields: `name` (String) and `score` (int). Write a constructor that takes both values and sets them using `this`.
+Create a **class** that represents a crew member, with a field for the **name** (String) and one for the **score** (int). Write a **constructor** that takes both values and sets them using `this`.
 
-In `main`, create two players:
+In `main`, build **two** members with values of your choice, then print each one on its own line in the format `Name has Score points`.
 
-1. `"Tommy Vercetti"` with score `500`
-2. `"Lance Vance"` with score `300`
-
-Print each player in the format `Name has Score points`.
-
-**Input** (already set in your code — change the values to test):
-
-- `"Tommy Vercetti"` / `500` — first player's name and score
-- `"Lance Vance"` / `300` — second player's name and score
-
-**Example**
-
-With the starter values, your program should print
+**Example** for `Tommy Vercetti` with score `500` and `Lance Vance` with score `300`
 
 ```text
 Tommy Vercetti has 500 points
 Lance Vance has 300 points
+```
+
+**Example** for `Diaz` with score `800` and `Cortez` with score `650`
+
+```text
+Diaz has 800 points
+Cortez has 650 points
 ```

@@ -1,4 +1,4 @@
-Here's something Java can do that Python can't (at least not natively): you can have **multiple methods with the same name**, as long as they take **different parameters**. This is called **method overloading**
+Java lets you have **multiple methods with the same name**, as long as they take **different parameters**. This is called **method overloading**
 
 Imagine Phil Cassidy's gun shop. You walk in and say "I want a weapon." Phil's response depends on **what info you give him**:
 
@@ -33,6 +33,11 @@ Weapon: Pistol (x3)
 ```
 
 Java looks at **how many arguments** you pass and **what types** they are, then picks the right version of the method. This happens at compile time — Java figures it out before the program even runs
+
+Let's trace the two calls:
+
+- `weapon("Shotgun")` has a single String argument, so Java picks the first version and prints `Weapon: Shotgun`
+- `weapon("Pistol", 3)` has a String and an int, so Java picks the second version and prints `Weapon: Pistol (x3)`
 
 ---
 
@@ -101,32 +106,22 @@ public class Main {
 
 ---
 
-In Python, if you wanted something similar, you'd use default arguments or **\*args**. Java doesn't have **\*args**, so overloading is the Java way to handle "same action, different inputs"
+## Mission: Phil's Orders
 
----
+Phil Cassidy keeps track of weapon orders. He wants to print an order with more or less detail, depending on what information he has
 
-## Mission: Cargo Manifest
+Write three overloaded methods called `describe`:
 
-The cargo bay needs an inventory printer. Create three overloaded methods called `describe` — each prints a different level of detail depending on what information is available:
+- one that takes only the weapon name and prints `Weapon: ` followed by the name — for example `Weapon: Sniper`
+- one that takes the name and how many pieces are ordered and adds the number followed by ` ordered` — for example `Weapon: Sniper - 4 ordered`
+- one that takes the name, how many pieces, and the price of one piece, computes the total (price times quantity), and prints the price, the quantity, and the total — for example `Weapon: Sniper - $10 x 4 ordered - $40`
 
-1. `describe(String item)` — prints `Item: X`
-2. `describe(String item, int quantity)` — prints `Item: X (x5)` (where 5 is the quantity)
-3. `describe(String item, int quantity, double price)` — prints `Item: X (x5) - $P` (where P is the price)
-
-The method signatures and calls are already on the right. Fill in each method body.
-
-**Input** (change the calls in `main` to test):
-
-- `item` — the cargo name
-- `quantity` — how many units (optional, second overload)
-- `price` — unit price (optional, third overload)
+The test calls are already written; you only fill in the body of each method
 
 **Example**
 
-With the starter calls, your program should print
-
 ```text
-Item: Sword
-Item: Shield (x5)
-Item: Potion (x3) - $9.99
+Weapon: Sniper
+Weapon: Sniper - 4 ordered
+Weapon: Sniper - $10 x 4 ordered - $40
 ```

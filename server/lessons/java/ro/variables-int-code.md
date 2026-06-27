@@ -3,6 +3,6 @@ public class Main {
         int varsta = 0;
         double inaltime = 0;
 
-        System.out.println("Mă numesc Cortez, am " + varsta + " ani și înălțimea de " + inaltime + " m");
+        System.out.println("Ma numesc Cortez, am " + varsta + " ani si inaltimea de " + inaltime + " m");
     }
 }

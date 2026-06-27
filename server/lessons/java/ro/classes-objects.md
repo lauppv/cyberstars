@@ -49,20 +49,6 @@ Viteza: 120
 
 **new Masina()** creează un nou obiect Masina. Îl stocăm într-o variabilă numită **masinaMea**. Apoi folosim **notația cu punct** (masinaMea.culoare, masinaMea.viteza) ca să-i setăm și să-i citim câmpurile
 
-Asta seamănă cu clasele din Python
-
-```python
-class Masina:
-    def __init__(self):
-        self.culoare = ""
-        self.viteza = 0
-
-masina_mea = Masina()
-masina_mea.culoare = "rosu"
-```
-
-Aceeași idee, doar o sintaxă puțin diferită
-
 ---
 
 Puterea claselor este că poți crea **mai multe obiecte** din același plan
@@ -86,8 +72,8 @@ public class Main {
         lance.viata = 80;
         lance.arma = "Pistol";
 
-        System.out.println(tommy.nume + " are " + tommy.viata + " HP și poartă un " + tommy.arma);
-        System.out.println(lance.nume + " are " + lance.viata + " HP și poartă un " + lance.arma);
+        System.out.println(tommy.nume + " are " + tommy.viata + " HP si poarta un " + tommy.arma);
+        System.out.println(lance.nume + " are " + lance.viata + " HP si poarta un " + lance.arma);
     }
 }
 ```
@@ -95,8 +81,8 @@ public class Main {
 Output
 
 ```text
-Tommy Vercetti are 100 HP și poartă un M4
-Lance Vance are 80 HP și poartă un Pistol
+Tommy Vercetti are 100 HP si poarta un M4
+Lance Vance are 80 HP si poarta un Pistol
 ```
 
 **tommy** și **lance** sunt două obiecte diferite, ambele construite din aceeași clasă **Personaj**. Fiecare are propriile valori pentru **nume**, **viata** și **arma** — schimbarea unuia nu afectează pe celălalt
@@ -134,12 +120,12 @@ Clasa pe care o definești (cum ar fi **Masina** sau **Personaj**) merge **în a
 
 ```java
 class LucrulMeu {
-    // câmpurile merg aici
+    // campurile merg aici
 }
 
 public class Main {
     public static void main(String[] args) {
-        // creează obiecte și folosește-le aici
+        // creeaza obiecte si foloseste-le aici
     }
 }
 ```
@@ -167,45 +153,40 @@ public class Main {
         a2.dauna = 200;
         a2.greutate = 15.0;
 
-        // Compară-le
+        // compara-le
         if (a1.dauna > a2.dauna) {
-            System.out.println(a1.nume + " provoacă mai multe daune");
+            System.out.println(a1.nume + " provoaca mai multe daune");
         } else {
-            System.out.println(a2.nume + " provoacă mai multe daune");
+            System.out.println(a2.nume + " provoaca mai multe daune");
         }
     }
 }
 ```
 
-Output **Rocket Launcher provoacă mai multe daune**
+Output **Rocket Launcher provoaca mai multe daune**
 
 Fără clase, ai avea nevoie de variabile separate pentru fiecare câmp în parte: **a1Nume, a1Dauna, a1Greutate, a2Nume, a2Dauna, a2Greutate**... Devine repede dezordonat. Clasele îți permit să grupezi date înrudite într-un singur pachet curat
 
 ---
 
-## Misiune: Echipajul K-9
+## Misiune: Câinii de Pază
 
-Divizia de securitate a stației își înregistrează câinii de patrulă K-9 în noua bază de date a echipajului. Fiecare câine are nevoie de un nume și de o vârstă în fișă înainte de a putea fi repartizat într-un sector.
+Tommy își înregistrează câinii de pază de la conacul din Vice City. Fiecare câine are nevoie de un nume și de o vârstă în evidență înainte de a fi pus pe ture.
 
-Creează o clasă numită `Caine` cu două câmpuri: `String nume` și `int varsta`.
+Creează o **clasă** care reprezintă un câine de pază, cu un câmp pentru **nume** (String) și unul pentru **vârstă** (int).
 
-În `main`, creează două obiecte Caine:
+În `main`, construiește **două** obiecte câine cu valori la alegere, apoi afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
 
-1. Un câine numit `"Rex"` care are `5` ani
-2. Un câine numit `"Buddy"` care are `3` ani
-
-Afișează fiecare câine în formatul `Nume are X ani`.
-
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- `"Rex"` / `5` — numele și vârsta primului câine
-- `"Buddy"` / `3` — numele și vârsta celui de-al doilea câine
-
-**Exemplu**
-
-Cu valorile de start, programul tău ar trebui să afișeze
+**Exemplu** pentru un câine `Rex` de `5` ani și unul `Buddy` de `3` ani
 
 ```text
 Rex are 5 ani
 Buddy are 3 ani
+```
+
+**Exemplu** pentru un câine `Bruno` de `7` ani și unul `Ace` de `2` ani
+
+```text
+Bruno are 7 ani
+Ace are 2 ani
 ```

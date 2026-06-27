@@ -1,4 +1,4 @@
-În Python, sortarea unei liste e la fel de simplă ca `my_list.sort()`. Java are ceva foarte asemănător pentru ArrayList-uri: **Collections.sort()**
+Java poate sorta orice ArrayList de String-uri sau numere cu **Collections.sort()** — trebuie doar importat din `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -28,13 +28,11 @@ Lance
 Tommy
 ```
 
-**Collections.sort()** sortează lista **pe loc** (in place) — modifică direct lista originală, exact ca `.sort()` din Python. Pentru string-uri, sortează **alfabetic** (A-Z). Pentru numere, sortează **de la cel mai mic la cel mai mare**
+`Collections.sort()` sortează **pe loc** — modifică direct lista originală. String-urile se sortează **alfabetic**, numerele **crescător**
 
 ---
 
-Trebuie să **imporți** `java.util.Collections` la începutul fișierului (atenție: `Collections` cu **s** — e diferit de `Collection`). Aceasta este o clasă utilitară plină de metode practice pentru lucrul cu liste
-
-Hai să sortăm niște numere
+Vrei ordine **inversă**? Folosește `Collections.reverse()` după sortare
 
 ```java
 import java.util.ArrayList;
@@ -46,41 +44,6 @@ public class Main {
         scoruri.add(88);
         scoruri.add(42);
         scoruri.add(95);
-        scoruri.add(67);
-
-        Collections.sort(scoruri);
-
-        for (int s : scoruri) {
-            System.out.println(s);
-        }
-    }
-}
-```
-
-Output
-
-```text
-42
-67
-88
-95
-```
-
----
-
-Vrei să sortezi în ordine **inversă**? Folosește **Collections.reverse()** după sortare — întoarce lista pe dos
-
-```java
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> scoruri = new ArrayList<>();
-        scoruri.add(88);
-        scoruri.add(42);
-        scoruri.add(95);
-        scoruri.add(67);
 
         Collections.sort(scoruri);
         Collections.reverse(scoruri);
@@ -97,76 +60,91 @@ Output
 ```text
 95
 88
-67
 42
 ```
 
-Acum scorurile merg de la cel mai mare la cel mai mic. Gândește-te la el ca la un clasament din Vice City — primul e jucătorul de top
+`reverse()` nu sortează — doar **întoarce** ordinea actuală. Ca să obții ordine descrescătoare, sortezi întâi, apoi întorci
 
 ---
 
-**Collections.reverse()** nu sortează — doar **întoarce** orice ordine ar avea lista. Deci dacă apelezi reverse fără să sortezi întâi, obții pur și simplu lista originală întoarsă invers
+Dar cum sortezi o listă de **obiecte**? Dacă ai un `ArrayList<Masina>`, Java nu știe după ce criteriu să sorteze — după nume? după viteză? Trebuie să-i spui implementând interfața **Comparable**
 
 ```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Masina implements Comparable<Masina> {
+    String nume;
+    int viteza;
+
+    Masina(String nume, int viteza) {
+        this.nume = nume;
+        this.viteza = viteza;
+    }
+
+    public int compareTo(Masina alta) {
+        return this.viteza - alta.viteza;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> echipaj = new ArrayList<>();
-        echipaj.add("Tommy");
-        echipaj.add("Lance");
-        echipaj.add("Phil");
+        ArrayList<Masina> garaj = new ArrayList<>();
+        garaj.add(new Masina("Infernus", 240));
+        garaj.add(new Masina("Admiral", 150));
+        garaj.add(new Masina("Cheetah", 230));
 
-        Collections.reverse(echipaj);
-        // Acum este: Phil, Lance, Tommy (ordinea de inserare inversată, NU sortată)
+        Collections.sort(garaj);
+
+        for (Masina m : garaj) {
+            System.out.println(m.nume + " - " + m.viteza + " km/h");
+        }
     }
 }
 ```
 
-Ca să obții ordinea alfabetică inversă, trebuie să **sortezi întâi, apoi să întorci**
+Output
+
+```text
+Admiral - 150 km/h
+Cheetah - 230 km/h
+Infernus - 240 km/h
+```
+
+Hai să urmărim ce se întâmplă:
+
+1. `Masina implements Comparable<Masina>` — clasa promite că știe să se compare cu alte mașini
+2. Metoda `compareTo` returnează un număr:
+   - **negativ** dacă `this` vine înainte de `alta`
+   - **zero** dacă sunt egale
+   - **pozitiv** dacă `this` vine după `alta`
+3. `this.viteza - alta.viteza` sortează crescător după viteză
+
+Dacă vrei sortare **descrescătoare**, inversezi: `alta.viteza - this.viteza`
 
 ---
 
-Iată o comparație rapidă cu Python
-
-```python
-# Python
-nume = ["Cortez", "Tommy", "Lance"]
-nume.sort()           # sortează pe loc
-nume.reverse()        # întoarce pe loc
-```
+Pentru sortare după **String** (de exemplu, după nume), folosești `.compareTo()` de pe String
 
 ```java
-public class Main {
-    public static void main(String[] args) {
-        // Java
-        ArrayList<String> nume = new ArrayList<>();
-        nume.add("Cortez");
-        nume.add("Tommy");
-        nume.add("Lance");
-        Collections.sort(nume);       // sortează pe loc
-        Collections.reverse(nume);    // întoarce pe loc
-    }
+public int compareTo(Masina alta) {
+    return this.nume.compareTo(alta.nume);
 }
 ```
 
-Destul de asemănătoare, nu? Diferența principală este că Java folosește o clasă utilitară separată **Collections** în loc de metode direct pe listă
-
 ---
 
-## Misiune: Apelul Echipajului
+## Misiune: Clasamentul Echipajului
 
-Căpitanul vrea ca lista echipajului să fie afișată în **ordine alfabetică**. Numele sunt deja încărcate într-un `ArrayList<String>` în dreapta. Sortează-le cu `Collections.sort()`, apoi afișează fiecare nume pe linia lui.
+Cortez vrea un clasament al echipajului, sortat după numărul de misiuni completate — de la cel mai puțin productiv la cel mai activ. Tommy a completat 47 de misiuni, Lance 12, Phil 8 și Mercedes 23
 
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- Nume: `"Cortez"`, `"Tommy"`, `"Lance"`, `"Phil"`
+Construiește o clasă pentru membrii echipajului care implementează `Comparable` și se compară după numărul de misiuni. Creează un ArrayList cu toți membrii, sortează-l și afișează clasamentul
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
-
 ```text
-Cortez
-Lance
-Phil
-Tommy
+Phil - 8 misiuni
+Lance - 12 misiuni
+Mercedes - 23 misiuni
+Tommy - 47 misiuni
 ```

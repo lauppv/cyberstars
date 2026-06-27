@@ -1,4 +1,4 @@
-You know if-else chains. They work great for 2-3 options. But when you have **many** options — like checking which day of the week it is, or which weapon Tommy picked — the code gets ugly fast. That's where **switch** comes in
+You know if-else chains. They work great for 2-3 options. But when you have **many** options — like which weapon Tommy picked — the code gets ugly fast. That's where **switch** comes in
 
 ```java
 public class Main {
@@ -48,7 +48,7 @@ public class Main {
             case 3:
                 System.out.println("Helicopter shows up");
             case 4:
-                System.out.println("SWAT arrives");
+                System.out.println("Special forces arrive");
             case 5:
                 System.out.println("Army tanks roll in");
         }
@@ -60,11 +60,11 @@ Output
 
 ```text
 Helicopter shows up
-SWAT arrives
+Special forces arrive
 Army tanks roll in
 ```
 
-Whoa — we only wanted the 3-star message, but it printed 3, 4, AND 5! That's because without **break**, Java falls through every case below the match. Sometimes this is useful on purpose, but usually it's a bug. **Always add break** unless you specifically want fall-through
+Whoa — we only wanted the 3-star message, but it printed 3, 4, and 5! That's because without **break**, Java falls through every case below the match. Sometimes this is useful on purpose, but usually it's a bug. **Always add break** unless you specifically want fall-through
 
 ---
 
@@ -80,7 +80,7 @@ public class Main {
                 System.out.println("Helicopter shows up");
                 break;
             case 4:
-                System.out.println("SWAT arrives");
+                System.out.println("Special forces arrive");
                 break;
             case 5:
                 System.out.println("Army tanks roll in");
@@ -128,21 +128,11 @@ Some other vehicle: boat
 
 ---
 
-Python didn't have switch until recently (match/case in 3.10+). In Java, switch has been around forever and works with **int**, **String**, **char**, and **enum** types. Here's a comparison
-
-```python
-# Python if-else chain
-day = "Monday"
-if day == "Saturday" or day == "Sunday":
-    print("Weekend")
-else:
-    print("Weekday")
-```
+**switch** works with **int**, **String**, **char**, and **enum** types. Sometimes we want **several cases** to run the same code — then we stack them on top of each other, with no code between them
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        // Java switch
         String day = "Monday";
         switch (day) {
             case "Saturday":
@@ -157,7 +147,7 @@ public class Main {
 }
 ```
 
-Notice how we stacked `case "Saturday":` and `case "Sunday":` together with no code between them — that's **intentional fall-through**. Both cases run the same code. This is the one time fall-through is actually handy
+Notice how we stacked `case "Saturday":` and `case "Sunday":` together, with no code between them — that's **intentional fall-through**. Both cases run the same code. This is the one time fall-through is actually handy
 
 ---
 
@@ -196,22 +186,30 @@ Load saved game
 
 ## Mission: Duty Roster Classifier
 
-The station's duty roster needs a quick classifier: given a day name, print whether it is a **Weekday** or a **Weekend** shift.
+The station's duty roster needs a quick classifier: given a day name, print whether it is a **weekday** or a **weekend** shift.
 
-Write the body of the `dayType` method using a **switch** on `day`:
+Store the day in a `String` variable and write a **switch** that:
 
-1. For `"Monday"` through `"Friday"` → print `Weekday`
-2. For `"Saturday"` and `"Sunday"` → print `Weekend`
-3. Default → print `Unknown day`
+- for `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"` → prints `Weekday`
+- for `"Saturday"` and `"Sunday"` → prints `Weekend`
+- in any other case → prints `Unknown day`
 
-The `main` method already calls `dayType` three times.
+**Examples**
 
-**Example**
-
-With the calls `dayType("Monday")`, `dayType("Saturday")`, `dayType("Wednesday")`, your program should print
+For `"Monday"`:
 
 ```text
 Weekday
+```
+
+For `"Saturday"`:
+
+```text
 Weekend
-Weekday
+```
+
+For `"Christmas"` (not a day of the week):
+
+```text
+Unknown day
 ```

@@ -43,7 +43,7 @@ public class Main {
 }
 ```
 
-**scanner.nextInt()** reads a whole number directly. We don’t need to convert from a String like in Python (**int(input())**) — Java does it for us
+**scanner.nextInt()** reads a whole number directly and hands it to us as an **int**, with no conversion needed on our side
 
 For decimal numbers, there’s **scanner.nextDouble()**
 
@@ -82,7 +82,7 @@ public class Main {
 }
 ```
 
-Annoying, but you only need to remember it once :)
+Annoying, but you only need to remember it once
 
 To keep things simple in this exercise, we’ll **read the name first**, then the age
 
@@ -92,8 +92,7 @@ To keep things simple in this exercise, we’ll **read the name first**, then th
 
 Every crew member arriving at the station must scan in at the terminal. The system reads their name and age, then prints a welcome line.
 
-1. The code already reads `name` (String) and `age` (int) from the input
-2. Build and print the welcome message using **+** to glue the pieces together
+Create a **Scanner**, read the name first (first line), then the age (second line). Then build and print the welcome message using **+**.
 
 **Input** (typed by the user when the program runs):
 

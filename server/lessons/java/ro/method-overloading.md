@@ -1,4 +1,4 @@
-Iată ceva ce Java poate face și Python nu (cel puțin nu nativ): poți avea **mai multe metode cu același nume**, atâta timp cât primesc **parametri diferiți**. Asta se numește **supraîncărcarea metodelor** (method overloading)
+Java îți permite să ai **mai multe metode cu același nume**, atâta timp cât primesc **parametri diferiți**. Asta se numește **supraîncărcarea metodelor** (method overloading)
 
 Imaginează-ți magazinul de arme al lui Phil Cassidy. Intri și spui „Vreau o armă." Răspunsul lui Phil depinde de **ce informații îi dai**:
 
@@ -11,11 +11,11 @@ Aceeași cerere („Vreau o armă"), detalii diferite. Asta e supraîncărcarea
 ```java
 public class Main {
     public static void arma(String nume) {
-        System.out.println("Armă: " + nume);
+        System.out.println("Arma: " + nume);
     }
 
     public static void arma(String nume, int numar) {
-        System.out.println("Armă: " + nume + " (x" + numar + ")");
+        System.out.println("Arma: " + nume + " (x" + numar + ")");
     }
 
     public static void main(String[] args) {
@@ -28,11 +28,16 @@ public class Main {
 Output
 
 ```text
-Armă: Shotgun
-Armă: Pistol (x3)
+Arma: Shotgun
+Arma: Pistol (x3)
 ```
 
 Java se uită la **câte argumente** treci și **ce tipuri** au, apoi alege versiunea corectă a metodei. Asta se întâmplă la compilare — Java își dă seama înainte ca programul să ruleze măcar
+
+Hai să urmărim cele două apeluri:
+
+- `arma("Shotgun")` are un singur argument String, deci Java alege prima versiune și afișează `Arma: Shotgun`
+- `arma("Pistol", 3)` are un String și un int, deci Java alege a doua versiune și afișează `Arma: Pistol (x3)`
 
 ---
 
@@ -45,11 +50,11 @@ public class Main {
     }
 
     public static void info(int numar) {
-        System.out.println("Număr: " + numar);
+        System.out.println("Numar: " + numar);
     }
 
     public static void info(String text, int numar) {
-        System.out.println("Text: " + text + ", Număr: " + numar);
+        System.out.println("Text: " + text + ", Numar: " + numar);
     }
 
     public static void main(String[] args) {
@@ -64,8 +69,8 @@ Output
 
 ```text
 Text: Tommy
-Număr: 42
-Text: Lance, Număr: 100
+Numar: 42
+Text: Lance, Numar: 100
 ```
 
 Trei metode, toate numite **info**, dar Java știe pe care s-o apeleze în funcție de ce treci
@@ -76,7 +81,7 @@ Ce **NU** contează ca supraîncărcare? Schimbarea doar a **tipului de retur**
 
 ```java
 public class Main {
-    // Asta NU va compila — aceiași parametri, tip de retur diferit
+    // Asta NU va compila - aceiasi parametri, tip de retur diferit
     public static int calculeaza(int a) { return a * 2; }
     public static double calculeaza(int a) { return a * 2.0; }
 }
@@ -101,32 +106,22 @@ public class Main {
 
 ---
 
-În Python, dacă ai fi vrut ceva similar, ai fi folosit argumente implicite sau **\*args**. Java nu are **\*args**, așa că supraîncărcarea este modul Java de a trata „aceeași acțiune, intrări diferite"
+## Misiune: Comenzile lui Phil
 
----
+Phil Cassidy ține evidența comenzilor de arme. Vrea să poată afișa o comandă cu mai mult sau mai puțin detaliu, în funcție de ce informații are
 
-## Misiune: Manifestul de Marfă
+Scrie trei metode supraîncărcate numite `descrie`:
 
-Cala de marfă are nevoie de un afișator de inventar. Creează trei metode supraîncărcate numite `descrie` — fiecare afișează un nivel diferit de detaliu în funcție de informația disponibilă:
+- una care primește doar numele armei și afișează `Arma: ` urmat de nume — de exemplu `Arma: Sniper`
+- una care primește numele și câte bucăți se comandă și adaugă numărul urmat de ` arme comandate` — de exemplu `Arma: Sniper - 4 arme comandate`
+- una care primește numele, câte bucăți și prețul unei bucăți, calculează totalul (preț ori cantitate) și afișează prețul, cantitatea și totalul — de exemplu `Arma: Sniper - 10$ x 4 arme comandate - 40$`
 
-1. `descrie(String articol)` — afișează `Articol: X`
-2. `descrie(String articol, int cantitate)` — afișează `Articol: X (x5)` (unde 5 este cantitatea)
-3. `descrie(String articol, int cantitate, double pret)` — afișează `Articol: X (x5) - $P` (unde P este prețul)
-
-Semnăturile metodelor și apelurile sunt deja în dreapta. Completează corpul fiecărei metode.
-
-**Input** (schimbă apelurile din `main` ca să testezi):
-
-- `articol` — numele mărfii
-- `cantitate` — câte unități (opțional, a doua supraîncărcare)
-- `pret` — prețul pe unitate (opțional, a treia supraîncărcare)
+Apelurile de test sunt deja scrise; tu completezi doar corpul fiecărei metode
 
 **Exemplu**
 
-Cu apelurile de start, programul tău ar trebui să afișeze
-
 ```text
-Articol: Sword
-Articol: Shield (x5)
-Articol: Potion (x3) - $9.99
+Arma: Sniper
+Arma: Sniper - 4 arme comandate
+Arma: Sniper - 10$ x 4 arme comandate - 40$
 ```

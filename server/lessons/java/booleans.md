@@ -11,7 +11,7 @@ public class Main {
 }
 ```
 
-**Important**: in Java, **true** and **false** are **lowercase**. (In Python they were **True** and **False** with a capital letter.) Don’t mix them up
+**Important**: in Java, **true** and **false** are **lowercase**. Be careful not to capitalize them
 
 Conditions like **age < 18** or **x == 5** also produce booleans
 
@@ -115,18 +115,11 @@ false || false = false
 
 You are writing the access system for the station. A person can enter if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
 
-Write an `if / else` using `&&` and `||` to check the conditions.
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `isEmployee` — whether the person is an employee (boolean)
-- `isWorkingDay` — whether today is a working day (boolean)
-- `isGuest` — whether the person is a guest (boolean)
-- `hasInvitation` — whether they have an invitation (boolean)
+Store in four `boolean` variables whether the person is an employee, whether today is a working day, whether they are a guest, and whether they have an invitation. Then write an `if / else` using `&&` and `||` that prints `Access granted` or `Access denied`.
 
 **Example**
 
-With `isEmployee = true`, `isWorkingDay = true`, `isGuest = false`, `hasInvitation = false`, your program should print
+If the person is an employee and today is a working day (even if they are not a guest and have no invitation), your program should print
 
 ```text
 Access granted

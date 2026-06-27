@@ -2,29 +2,29 @@ Combină **getteri/setteri**, **toString**, **cuvântul-cheie static**, și **cu
 
 ---
 
-## Misiune: Registrul de Credite al Stației
+## Misiune: Conturile lui Tommy
 
-Stația funcționează pe o economie bazată pe credite. Fiecare membru al echipajului are un cont gestionat de registrul central. Construiește sistemul de conturi cu o încapsulare corectă, ca nimeni să nu poată modifica soldurile direct.
+Tommy ține banii bandei la bancă, iar fiecare membru are propriul cont. Construiește sistemul de conturi cu o încapsulare corectă, ca nimeni să nu poată modifica soldurile direct.
 
 Creează o clasă **`ContBancar`** cu:
 
-- câmpuri **private**: `proprietar` (String), `sold` (double), `idCont` (int)
-- Un **`private static int urmatorulId`** = 1 (ține evidența următorului ID de atribuit)
-- Un **`final double SOLD_MINIM`** = 0.0 (nu poate coborî sub zero)
-- **Constructor** care primește proprietar și soldul inițial. Atribuie automat `idCont` din `urmatorulId` și îl incrementează
-- **Getteri** pentru proprietar, sold, și idCont
-- **`depune(double suma)`** — adaugă la sold
-- **`retrage(double suma)`** — scade dacă sold rămâne >= SOLD_MINIM, altfel afișează `"Fonduri insuficiente"`
-- **`toString()`** — returnează `"Cont #X (Proprietar) - Sold: Y EUR"`
+- câmpuri **private**: `proprietar` (String), `sold` (int), `idCont` (int)
+- un **`private static int urmatorulId`** = 1 (ține evidența următorului ID de atribuit)
+- un **`final int SOLD_MINIM`** = 0 (soldul nu poate coborî sub zero)
+- un **constructor** care primește proprietarul și soldul inițial; atribuie automat `idCont` din `urmatorulId` și îl incrementează
+- **getteri** pentru proprietar, sold și idCont
+- **`depune(int suma)`** — adaugă la sold
+- **`retrage(int suma)`** — scade doar dacă soldul rămâne >= `SOLD_MINIM`, altfel afișează `"Fonduri insuficiente"`
+- **`toString()`** — returnează `"Cont #X (Proprietar) - Sold: Y$"`
 - **`static int getTotalConturi()`** — returnează câte conturi au fost create
 
-Apelurile de test din main sunt deja în dreapta.
+În `main`, creează câteva conturi, fă depuneri și retrageri cum vrei tu (inclusiv o retragere care eșuează, ca să vezi mesajul), apoi afișează conturile și totalul
 
-**Output**
+**Exemplu** — Tommy deschide cu 1000 și depune 250; Lance deschide cu 500, retrage 200, apoi încearcă să retragă 400 (eșuează)
 
 ```text
 Fonduri insuficiente
-Cont #1 (Tommy) - Sold: 1250.0 EUR
-Cont #2 (Lance) - Sold: 300.0 EUR
+Cont #1 (Tommy) - Sold: 1250$
+Cont #2 (Lance) - Sold: 300$
 Total conturi: 2
 ```

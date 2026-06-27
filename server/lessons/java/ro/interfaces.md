@@ -1,4 +1,4 @@
-O **interfață** este ca un contract. Spune „orice clasă care mă implementează TREBUIE să aibă aceste metode." Este similară cu o clasă abstractă, dar și mai strictă — o interfață nu poate avea câmpuri obișnuite sau constructori (cu câteva excepții pe care le sărim deocamdată)
+O **interfață** este ca un contract. Spune „orice clasă care mă implementează TREBUIE să aibă aceste metode." Seamănă cu o clasă abstractă, dar e și mai strictă — o interfață nu poate avea câmpuri obișnuite sau constructori (cu câteva excepții pe care le sărim deocamdată)
 
 ```java
 interface Afisabil {
@@ -25,43 +25,39 @@ class Carte implements Afisabil {
 }
 ```
 
-Observă că metoda din clasă trebuie să fie **public**. Metodele de interfață sunt mereu publice în mod implicit, așa că și implementarea ta trebuie să fie
+Observă că metoda din clasă trebuie să fie **public**. Metodele de interfață sunt mereu publice implicit, așa că și implementarea ta trebuie să fie la fel
 
 ---
 
-În Python, ai folosi poate duck typing — „dacă are o metodă `afiseazaInfo`, e printabil." Java nu are atâta încredere în tine. Java vrea un contract semnat: `implements Afisabil`. Apoi ȘTIE la compilare că metoda există
-
----
-
-Diferența mare dintre interfețe și clase abstracte: o clasă poate implementa **mai multe** interfețe, dar poate extinde doar **O SINGURĂ** clasă
+Marea diferență dintre interfețe și clase abstracte: o clasă poate implementa **mai multe** interfețe, dar poate extinde doar **O SINGURĂ** clasă
 
 ```java
-interface Afisabil {
-    void afiseazaInfo();
+interface Sofer {
+    void conduce();
 }
 
-interface Salvabil {
-    void salveaza();
+interface Tragator {
+    void trage();
 }
 
-class Document implements Afisabil, Salvabil {
+class Asociat implements Sofer, Tragator {
     @Override
-    public void afiseazaInfo() {
-        System.out.println("Info document");
+    public void conduce() {
+        System.out.println("Conduc masina de evadare");
     }
 
     @Override
-    public void salveaza() {
-        System.out.println("Document salvat!");
+    public void trage() {
+        System.out.println("Acopar echipa");
     }
 }
 ```
 
-Acesta este răspunsul Java la moștenirea multiplă. În Python poți face `class Caine(Animal, AnimalCompanie):` — în Java, ai face `class Caine extends Animal implements AnimalCompanie`. O singură clasă părinte, dar câte interfețe vrei
+Acesta este răspunsul Java la moștenirea multiplă: o singură clasă părinte, dar câte interfețe vrei
 
 ---
 
-Gândește-te la asta ca la misiunile din GTA. Tommy Vercetti este un `Criminal` (clasa lui părinte). Dar el și `implements Inotator, Sofer, Tragator`. Acestea sunt toate „contracte" — abilități pe care le are. Personaje diferite ar putea implementa combinații diferite. Lance implementează `Sofer, Tragator` dar poate nu și `Inotator`. Cortez implementează `Comandant, Negociator`
+Gândește-te la asta ca la abilitățile din Vice City. Tommy Vercetti este un `Criminal` (clasa lui părinte). Dar el și `implements Inotator, Sofer, Tragator` — sunt „contracte", abilități pe care le are. Personaje diferite implementează combinații diferite: Lance implementează `Sofer, Tragator`, dar poate nu și `Inotator`. Cortez implementează `Comandant, Negociator`
 
 ---
 
@@ -102,8 +98,8 @@ class Film implements Afisabil {
 
 public class Main {
     public static void main(String[] args) {
-        Carte c = new Carte("1984", "George Orwell");
-        Film f = new Film("Inception", "Christopher Nolan");
+        Carte c = new Carte("Manualul Mafiotului", "Sonny Forelli");
+        Film f = new Film("Scarface", "Brian De Palma");
         c.afiseazaInfo();
         f.afiseazaInfo();
     }
@@ -113,8 +109,8 @@ public class Main {
 Output
 
 ```text
-Carte: 1984 de George Orwell
-Film: Inception regizat de Christopher Nolan
+Carte: Manualul Mafiotului de Sonny Forelli
+Film: Scarface regizat de Brian De Palma
 ```
 
 Și exact ca la polimorfism, poți folosi tipul interfeței pentru variabile
@@ -122,7 +118,7 @@ Film: Inception regizat de Christopher Nolan
 ```java
 public class Main {
     public static void main(String[] args) {
-        Afisabil[] elemente = { new Carte("1984", "Orwell"), new Film("Inception", "Nolan") };
+        Afisabil[] elemente = { new Carte("Manualul Mafiotului", "Sonny Forelli"), new Film("Scarface", "Brian De Palma") };
         for (Afisabil el : elemente) {
             el.afiseazaInfo();
         }
@@ -134,25 +130,25 @@ public class Main {
 
 **Când folosim interfață vs clasă abstractă?**
 
-- **Interfață**: când vrei să definești o capabilitate pe care clase neînrudite o pot împărtăși. Cărțile și filmele nu sunt înrudite, dar amândouă pot fi Afisabil
-- **Clasă abstractă**: când ai o familie de clase înrudite care împart cod comun. Câinii și pisicile sunt amândoi Animale, și împart câmpuri precum `nume`
+- **Interfață**: când vrei să definești o capabilitate pe care clase neînrudite o pot împărtăși. O carte și un film nu sunt înrudite, dar amândouă pot fi Afisabil
+- **Clasă abstractă**: când ai o familie de clase înrudite care împart cod comun. Un `Sofer` și un `Tragator` sunt amândoi `Criminal` și împart câmpuri precum `nume`
 
-Le poți chiar combina: `abstract class Animal implements Afisabil`
+Le poți chiar combina: `abstract class Criminal implements Afisabil`
 
 ---
 
-## Misiune: Catalogul Arhivei Stației
+## Misiune: Catalogul lui Tommy
 
-Arhiva digitală a stației spațiale conține atât cărți, cât și filme, dar vechiul software de catalog s-a prăbușit. Trebuie să reconstruiești sistemul de listare folosind o interfață `Afisabil` comună, astfel încât fiecare element să se poată descrie singur.
+Tommy ține în vila lui din Vice City o colecție amestecată: cărți și filme. Vrea un catalog care listează fiecare obiect, indiferent de tip. Construiește-l folosind o interfață `Afisabil` comună, astfel încât fiecare element să se poată descrie singur.
 
 1. Creează o interfață `Afisabil` cu o metodă `afiseazaInfo()`
-2. Creează o clasă `Carte` cu câmpurile `titlu` și `autor` care implementează `Afisabil` — `afiseazaInfo()` ar trebui să afișeze `"Carte: TITLU de AUTOR"`
-3. Creează o clasă `Film` cu câmpurile `titlu` și `regizor` care implementează `Afisabil` — `afiseazaInfo()` ar trebui să afișeze `"Film: TITLU regizat de REGIZOR"`
-4. În main, creează un `Carte("Vice City Stories", "Rockstar")` și un `Film("Scarface", "Brian De Palma")`, apoi apelează `afiseazaInfo()` pe amândouă
+2. Creează o clasă `Carte` cu câmpurile `titlu` și `autor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Carte: TITLU de AUTOR"`
+3. Creează o clasă `Film` cu câmpurile `titlu` și `regizor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Film: TITLU regizat de REGIZOR"`
+4. În `main`, creează un `Carte("Cronicile din Vice City", "Tommy Vercetti")` și un `Film("Top Gun", "Tony Scott")`, apoi apelează `afiseazaInfo()` pe amândouă
 
 **Output**
 
 ```text
-Carte: Vice City Stories de Rockstar
-Film: Scarface regizat de Brian De Palma
+Carte: Cronicile din Vice City de Tommy Vercetti
+Film: Top Gun regizat de Tony Scott
 ```

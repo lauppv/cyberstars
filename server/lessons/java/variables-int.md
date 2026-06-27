@@ -1,4 +1,4 @@
-In programming we often want to **store** things to use them later. The simplest example: numbers. In Java, before storing something, we need to tell the language **what kind of value** we want to store. This is called a **type**
+In programming we often want to **store** things so we can use them later. The simplest example: numbers. In Java, before storing something, we have to tell the language **what kind of value** we want to store. That is called a **type**
 
 ```java
 public class Main {
@@ -11,13 +11,13 @@ public class Main {
 }
 ```
 
-**int** is the **type** for whole numbers (1, 2, 100, -20, 0). We are telling Java: "I’m about to store a whole number, and its name is **age**"
+**int** is the **type** for whole numbers (1, 2, 100, -20, 0). We tell Java: "I am about to store a whole number, and its name is **age**"
 
-This is **different from Python**. In Python we just wrote **age = 18**. Java is **stricter** — it wants to know the type. The advantage is that Java can catch many mistakes before the program even runs
+Java is **strict** about types — it always wants to know what kind of value you put in a variable. The upside is that Java can catch many mistakes before the program even runs
 
 ---
 
-We can do math with numbers, just like in Python
+We can do calculations with numbers
 
 ```java
 public class Main {
@@ -30,7 +30,7 @@ public class Main {
 }
 ```
 
-Same rule as Python: with **=**, Java first computes what is on the **right**, then stores the result on the **left**. So **c = a + b** stores **8** in **c**
+With the **=** sign, Java first computes what is on the **right**, then stores the result in the variable on the **left**. So **c = a + b** stores **8** in **c**
 
 The classic increment by 1
 
@@ -58,7 +58,7 @@ public class Main {
 }
 ```
 
-**n++** is the same as **n = n + 1**. Very common in Java
+**n++** is the same thing as **n = n + 1**. Very common in Java
 
 ---
 
@@ -82,12 +82,12 @@ Output
 
 The result is a **double** because we mixed an **int** with a **double**
 
-**Important**: if you try to store a decimal into an **int**, Java will refuse
+**Important**: if you try to store a decimal in an **int**, Java will refuse
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        int x = 3.14;   // ERROR
+        int x = 3.14;   // error
     }
 }
 ```
@@ -96,7 +96,7 @@ Try it. Read the error. Java protects us from accidentally losing the decimal pa
 
 ---
 
-A small surprise that catches everyone. Try this
+A little surprise that catches everyone. Try this
 
 ```java
 public class Main {
@@ -108,7 +108,7 @@ public class Main {
 }
 ```
 
-You might expect **3.5**. But you’ll see **3**. Why? Because when we divide an **int** by an **int**, Java gives us back an **int**, throwing away the decimals. To get **3.5**, we’d need at least one **double**
+You might expect **3.5**. But you will see **3**. Why? Because when we divide an **int** by an **int**, Java gives us back an **int**, dropping the decimals. To get **3.5**, we need at least one **double**
 
 ```java
 public class Main {
@@ -120,27 +120,27 @@ public class Main {
 }
 ```
 
-Now we see **3.5**. Remember this — it’s a very common bug for beginners :)
+Now we see **3.5**. Keep this in mind — it is a very common beginner bug
 
 ---
 
-## Mission: Officer ID Card
+## Mission: Officer Badge
 
-Commander Cortez needs a new ID card printed. Set the correct values for `age` and `height`, then display the full badge line.
+Commander Cortez needs a new badge printed. Set the correct values for `age` and `height`, then print the full line on the badge.
 
 1. Set `age` to `57`
 2. Set `height` to `1.67`
-3. The `println` at the bottom already builds the message with **+** — just make sure the variables hold the right values
+3. The final `println` already builds the message with **+** — just make sure the variables hold the right values
 
 **Input** (already set at the top of your code — change the values to test):
 
-- `age` — officer’s age (int)
-- `height` — officer’s height in metres (double)
+- `age` — the officer's age (int)
+- `height` — the officer's height in metres (double)
 
 **Example**
 
 With `age = 57` and `height = 1.67`, your program should print
 
 ```text
-My name is Cortez, I am 57 years old, and I am 1.67 tall
+My name is Cortez, I am 57 years old and 1.67 m tall
 ```

@@ -77,7 +77,7 @@ Acel `@Override` de deasupra metodei este o **adnotare**. Îi spune lui Java "î
 ```java
 public class Main {
     @Override
-    public String toString() {   // Java verifică: are părintele toString()? Da. Bun.
+    public String toString() {   // Java verifica: are parintele toString()? Da. Bun.
         return "something";
     }
 }
@@ -109,8 +109,8 @@ public class Main {
     public static void main(String[] args) {
         Arma w = new Arma("Katana", 75);
 
-        // Toate acestea apelează toString() automat:
-        System.out.println(w);                    // afișare directă
+        // Toate acestea apeleaza toString() automat:
+        System.out.println(w);                    // afisare directa
         System.out.println("Arma: " + w);         // concatenare de string-uri
         String s = "Am primit o " + w;             // construirea unui string
         System.out.println(s);
@@ -127,20 +127,6 @@ Am primit o Katana (daune: 75)
 ```
 
 Oricând Java are nevoie să transforme obiectul tău într-un `String`, apelează `toString()`. Concatenarea cu `+` face asta, `println()` face asta — e peste tot
-
----
-
-## Comparație cu Python
-
-În Python, echivalentul este `__str__`:
-
-```python
-class Car:
-    def __str__(self):
-        return f"{self.make} ({self.year})"
-```
-
-Aceeași idee — Java doar o numește `toString()` și folosește `@Override` în loc de metode dunder
 
 ---
 
@@ -185,25 +171,15 @@ Lance Vance - Partener (Respect: 60)
 
 ---
 
-## Misiune: Manifestul Flotei
+## Misiune: Garajul lui Tommy
 
-Hangarul stației are nevoie de un sistem de afișare pentru flota sa de vehicule. Fiecare vehicul ar trebui să-și afișeze propriul rezumat formatat când este înregistrat în consolă — fără construire manuală de string-uri.
+Tommy își ține mașinile într-un garaj și vrea ca fiecare să se afișeze frumos când o tipărește, fără să construiască de mână string-ul de fiecare dată
 
-Creează o clasă `Masina` cu câmpurile `marca` (String) și `an` (int). Scrie un constructor și suprascrie `toString()` ca să întoarcă formatul `Marca (An)`.
+Creează o clasă `Masina` cu un câmp `marca` (String) și unul `an` (int). Scrie un constructor și suprascrie `toString()` ca să întoarcă marca, apoi ` (`, anul și `)` — de exemplu `Infernus (1986)`
 
-În `main`, creează două vehicule și afișează-le direct:
+În `main`, creează două mașini cu valori la alegere și afișează-le direct cu `System.out.println`
 
-1. `"Infernus"`, anul `1986`
-2. `"Cheetah"`, anul `1984`
-
-**Input** (deja setat în codul tău — schimbă valorile ca să testezi):
-
-- `"Infernus"` / `1986` — primul vehicul
-- `"Cheetah"` / `1984` — al doilea vehicul
-
-**Exemplu**
-
-Cu valorile de start, programul tău ar trebui să afișeze
+**Exemplu** — `Infernus` din `1986` și `Cheetah` din `1984`
 
 ```text
 Infernus (1986)

@@ -1,4 +1,4 @@
-În Python, când ceva merge prost, primești o excepție și programul se prăbușește. La fel și în Java — dar Java îți dă **try/catch** ca să tratezi situația elegant
+Când ceva merge prost la rulare — împărțire la zero, acces la un indice inexistent, parsare de text invalid — Java aruncă o **excepție** și programul se prăbușește. **try/catch** te lasă să prinzi eroarea și să continui
 
 ```java
 public class Main {
@@ -7,9 +7,9 @@ public class Main {
             int rezultat = 10 / 0;
             System.out.println(rezultat);
         } catch (ArithmeticException e) {
-            System.out.println("Nu se poate împărți la zero!");
+            System.out.println("Nu se poate imparti la zero!");
         }
-        System.out.println("Programul continuă...");
+        System.out.println("Programul continua...");
     }
 }
 ```
@@ -17,11 +17,11 @@ public class Main {
 Output
 
 ```text
-Nu se poate împărți la zero!
-Programul continuă...
+Nu se poate imparti la zero!
+Programul continua...
 ```
 
-Fără try/catch, programul s-ar prăbuși la `10 / 0`. Cu el, Java **prinde** eroarea, rulează blocul tău catch și merge mai departe. Echivalentul din Python este `try/except` — aceeași idee, cuvinte cheie diferite
+Fără try/catch, programul s-ar opri la `10 / 0`. Cu el, Java **prinde** eroarea, rulează blocul catch și merge mai departe
 
 ---
 
@@ -31,15 +31,15 @@ Structura de bază
 public class Main {
     public static void main(String[] args) {
         try {
-            // cod care ar putea eșua
-        } catch (SomeException e) {
-            // ce să faci dacă eșuează
+            // cod care ar putea esua
+        } catch (TipExceptie e) {
+            // ce sa faci daca esueza
         }
     }
 }
 ```
 
-`e` este obiectul excepție. Poți apela `e.getMessage()` ca să obții o descriere lizibilă a ceea ce a mers prost
+`e` este obiectul excepție. Poți apela `e.getMessage()` ca să obții o descriere a ce a mers prost
 
 ```java
 public class Main {
@@ -62,19 +62,19 @@ Eroare: Index 10 out of bounds for length 3
 
 ---
 
-Erori diferite aruncă tipuri diferite de excepții. Iată cele mai comune
+Tipurile cele mai comune de excepții
 
 - **ArithmeticException** — împărțire la zero
-- **ArrayIndexOutOfBoundsException** — accesarea unui indice de array care nu există
-- **NumberFormatException** — încercarea de a parsa un string care nu este un număr valid
-- **NullPointerException** — folosirea unei variabile care este null (faimoasa NPE)
+- **ArrayIndexOutOfBoundsException** — indice de array inexistent
+- **NumberFormatException** — parsare de string care nu e număr valid
+- **NullPointerException** — folosirea unei variabile care este null
 - **ClassCastException** — conversie de obiect invalidă
 
-Poți prinde o `Exception` generală ca să prinzi totul, dar e mai bine să fii specific. E ca Tommy Vercetti care face o misiune — vrei să planifici pentru lucruri SPECIFICE care pot merge prost, nu doar pentru un vag "s-ar putea întâmpla ceva rău"
+Poți prinde o `Exception` generală, dar e mai bine să fii specific — tratezi fiecare situație diferit
 
 ---
 
-Poți avea **mai multe blocuri catch** pentru tipuri diferite de excepții
+Poți avea **mai multe blocuri catch**
 
 ```java
 public class Main {
@@ -83,7 +83,7 @@ public class Main {
             String text = "hello";
             int numar = Integer.parseInt(text);
         } catch (NumberFormatException e) {
-            System.out.println("Nu e un număr: " + e.getMessage());
+            System.out.println("Nu e un numar: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Altceva a mers prost: " + e.getMessage());
         }
@@ -91,22 +91,22 @@ public class Main {
 }
 ```
 
-Java încearcă fiecare bloc catch de sus în jos și îl folosește pe **primul care se potrivește**. Pune excepțiile specifice ÎNAINTEA celor generale
+Java încearcă fiecare catch de sus în jos și îl folosește pe **primul care se potrivește**. Pune excepțiile specifice înaintea celor generale
 
 ---
 
-Blocul **finally** rulează ORICUM — fie că try-ul a reușit, fie că o excepție a fost prinsă
+Blocul **finally** rulează oricum — fie că try-ul a reușit, fie că o excepție a fost prinsă
 
 ```java
 public class Main {
     public static void main(String[] args) {
         try {
-            System.out.println("Se încearcă...");
+            System.out.println("Se incearca...");
             int x = 10 / 0;
         } catch (ArithmeticException e) {
-            System.out.println("Eroare prinsă!");
+            System.out.println("Eroare prinsa!");
         } finally {
-            System.out.println("Asta rulează ÎNTOTDEAUNA");
+            System.out.println("Asta ruleaza mereu");
         }
     }
 }
@@ -115,87 +115,32 @@ public class Main {
 Output
 
 ```text
-Se încearcă...
-Eroare prinsă!
-Asta rulează ÎNTOTDEAUNA
+Se incearca...
+Eroare prinsa!
+Asta ruleaza mereu
 ```
 
-Finally este util pentru curățenie — închiderea fișierelor, eliberarea resurselor etc. Chiar dacă se termină lumea (o excepție este aruncată), blocul finally tot rulează. La fel cum în Vice City poliția apare mereu până la urmă, indiferent de situație
+Util pentru curățenie — închiderea fișierelor, eliberarea resurselor
 
 ---
 
-**Când să prinzi vs când să repari?**
+**Când try/catch vs verificare directă?**
 
-Nu folosi try/catch ca pe o cârjă. Dacă știi că un array are 3 elemente, nu accesa indicele 10 ca să prinzi eroarea — verifică pur și simplu indicele întâi. Folosește try/catch pentru lucruri pe care chiar nu le poți prezice: input de la utilizator, citirea fișierelor, apeluri de rețea
-
-Rău:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        try {
-            System.out.println(arr[indice]);
-        } catch (ArrayIndexOutOfBoundsException e) { }
-    }
-}
-```
-
-Bine:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        if (indice >= 0 && indice < arr.length) {
-            System.out.println(arr[indice]);
-        }
-    }
-}
-```
+Nu folosi try/catch ca pe o cârjă. Dacă știi că un array are 3 elemente, nu accesa indicele 10 — verifică pur și simplu. Folosește try/catch pentru lucruri pe care nu le poți prezice: input de la utilizator, parsare de text
 
 ---
 
-Parsarea string-urilor în numere este un caz de utilizare clasic pentru try/catch, pentru că nu poți controla mereu ce string primești
+## Misiune: Plățile din Vice City
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        try {
-            int numar = Integer.parseInt("hello");
-        } catch (NumberFormatException e) {
-            System.out.println("Număr invalid: hello");
-        }
+Tommy primește plăți de la afacerile sale, dar unele rapoarte vin corupte. Phil trimite `"7500"`, Lance trimite `"nu stiu"`, Mercedes trimite `"23000"` și Cortez trimite `"eroare"`. Tommy trebuie să parseze fiecare sumă și să trateze rapoartele invalide
 
-        try {
-            int numar = Integer.parseInt("42");
-            System.out.println("Parsat: " + numar);
-        } catch (NumberFormatException e) {
-            System.out.println("Număr invalid");
-        }
-    }
-}
-```
-
-Output
-
-```text
-Număr invalid: hello
-Parsat: 42
-```
-
----
-
-## Misiune: Validatorul de Date de la Senzori
-
-Stația primește citiri brute de la senzori sub formă de string-uri text de la sonde din spațiul cosmic. Unele sunt numere valide, altele sunt gunoi corupt. Sarcina ta este să construiești un validator care încearcă să parseze fiecare citire și tratează eșecurile elegant.
-
-1. Încearcă să parsezi string-ul `"hello"` ca întreg folosind `Integer.parseInt()`. Prinde `NumberFormatException` și afișează `"Număr invalid: hello"`.
-2. Încearcă să parsezi string-ul `"42"` — acesta ar trebui să reușească. Afișează `"Parsat: 42"`.
+Parcurge lista de rapoarte, încearcă să parsezi fiecare ca număr cu `Integer.parseInt()`. Dacă reușește, afișează suma. Dacă nu, prinde excepția și afișează ce a mers prost
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
-
 ```text
-Număr invalid: hello
-Parsat: 42
+Plata: 7500
+Raport invalid: nu stiu
+Plata: 23000
+Raport invalid: eroare
 ```

@@ -1,4 +1,4 @@
-In Python we had **f-strings**, that nice **f"Hello, {name}"** trick. Java does **not** have f-strings (well, recent versions do, but in a different form). The classic Java way to combine text and variables is with the **+** operator
+We already have **+**, **-**, **\***, **/**, and **%**. But **+** has a second talent: besides adding numbers, it can **glue text together**. This is the classic Java way to combine text and variables
 
 ```java
 public class Main {
@@ -7,7 +7,7 @@ public class Main {
         int age = 32;
         double height = 1.97;
 
-        System.out.println("Hello. My name is " + name + ", I am " + age + " years old, and I am " + height + " tall");
+        System.out.println("Hello. My name is " + name + ", I am " + age + " years old and " + height + " m tall");
     }
 }
 ```
@@ -15,7 +15,7 @@ public class Main {
 Output
 
 ```text
-Hello. My name is Quincy, I am 32 years old, and I am 1.97 tall
+Hello. My name is Quincy, I am 32 years old and 1.97 m tall
 ```
 
 What is happening here? When we put a **String** and another value together with **+**, Java **converts everything to text** and glues them. This is called **string concatenation**
@@ -62,30 +62,107 @@ Output
 Result: 5
 ```
 
-Now **(2 + 3)** is computed first (giving **5**), then glued to the string. Remember this rule, you will hit it in real code :)
+Now **(2 + 3)** is computed first (giving **5**), then glued to the string. Remember this rule, you will hit it in real code
 
 ---
 
-There is also **System.out.printf** for fancier formatting, but it’s a bit harder to read, so we’ll stick with **+** for now. **+** will be more than enough for the rest of these lessons
+**+** is enough for simple cases, but when you have a lot of text to combine it gets hard to read, full of quotes and **+** signs. Java has a cleaner alternative: **String.format()**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String name = "Tommy Vercetti";
+        String message = String.format("Hello, %s!", name);
+        System.out.println(message);
+    }
+}
+```
+
+Output
+
+```text
+Hello, Tommy Vercetti!
+```
+
+**%s** is a **placeholder** — it means "put a String here". When Java runs `String.format(...)`, it replaces `%s` with the value of `name`. Think of it as a template where you fill in the blanks
 
 ---
 
-## Mission: Airlock Age Gate
+There are different placeholders for different types
 
-The station’s airlock has a minimum-age restriction. A young recruit just tried to enter. Use string concatenation to display the rejection message.
+- **%s** — String (or anything else — Java converts it to text)
+- **%d** — whole number (int)
+- **%f** — number with a decimal point (double)
 
-The variables `username`, `userAge`, and `requiredAge` are already set on the right. Use **+** to build and print the message.
+```java
+public class Main {
+    public static void main(String[] args) {
+        String player = "Lance Vance";
+        int kills = 47;
+        double accuracy = 82.5;
 
-**Input** (already set at the top of your code — change the values to test):
+        System.out.println(String.format("Player: %s | Kills: %d | Accuracy: %f", player, kills, accuracy));
+    }
+}
+```
 
-- `username` — the recruit’s name (String)
-- `userAge` — the recruit’s age (int)
-- `requiredAge` — minimum age to enter (int)
+Output
+
+```text
+Player: Lance Vance | Kills: 47 | Accuracy: 82.500000
+```
+
+Wait, that’s a lot of decimals! By default, **%f** prints 6 decimals. To control that, use **%.Nf**, where N is the number of decimals you want
+
+---
+
+**%.2f** means "print 2 decimals". This is the one you’ll use most often
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        double price = 4.5;
+        System.out.println(String.format("Price: $%.2f", price));
+    }
+}
+```
+
+Output
+
+```text
+Price: $4.50
+```
+
+---
+
+Java also has **printf()**, which formats AND prints in a single step, so you don’t need a separate `String.format()` plus `System.out.println()`
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String name = "Tommy";
+        int score = 1500;
+        System.out.printf("Player: %s | Score: %d%n", name, score);
+    }
+}
+```
+
+Notice the **%n** at the end — that is the newline character for printf. Without it, the next print would continue on the same line
+
+Use whichever you prefer — `String.format()` is great when you want to store the text in a variable, and `printf()` is great when you just want to print it right away
+
+---
+
+## Mission: Scoreboard
+
+The station’s arcade just finished a tournament. Print the winner’s stats on a single line.
+
+Create three variables: the player’s name (String), the total score (int), and the performance rating (double). Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use **+** or **String.format()** — whichever you prefer.
 
 **Example**
 
-With `username = "Quincy"`, `userAge = 16`, and `requiredAge = 18`, your program should print
+With the name `Tommy Vercetti`, the score `1500`, and the rating `4.75`, your program should print
 
 ```text
-Hello, Quincy! I’m sorry but the minimum age is 18. You are 16 years old
+Player: Tommy Vercetti | Score: 1500 | Rating: 4.75
 ```

@@ -1,33 +1,50 @@
-Combine **string methods**, **arrays**, **looping over arrays**, and **break/continue**
+Combine **methods**, **return values**, **string methods**, **arrays**, **looping over arrays**, and **break/continue** in a single mission
 
 ---
 
-## Mission: Comms Signal Filter
+## Mission: Radio Station Filter
 
-The station's communication array is picking up corrupted transmissions. Some messages are spam, and the stream cuts off at an `"exit"` signal. Write a filter that cleans up the incoming data.
+Tommy is listening to the Vice City police radio. The feed is full of static, and at some point the operator signs off. Write a filter that cleans up the transmission and keeps only the real names.
 
-The data is already on the right:
+Put the signals in a `String` array, for example:
 
 ```java
-String[] words = {"hello", "SPAM", "world", "SPAM", "java", "SPAM", "rocks", "exit", "bonus"};
+String[] signals = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };
 ```
 
-Write a method **`static String[] filterWords(String[] words)`** that:
+Write a **method** that takes the array of signals and **returns** a new array containing only the valid names, in **uppercase**. The method should:
 
-1. Loops through the array
-2. **Skips** any word that equals `"SPAM"` (use `continue` and `.equals()`)
-3. **Stops** when it finds `"exit"` (use `break`)
-4. Converts valid words to **uppercase** (use `.toUpperCase()`)
-5. Collects them into a result array and returns it
+1. Loop through the array
+2. **Skip** any signal equal to `"static"` (use `continue` and `.equals()`)
+3. **Stop** completely when it hits `"out"` (use `break`) — everything after it is ignored
+4. Turn the valid names with `.toUpperCase()` and collect them into the result array
 
-In main, call the method, print each result, then print the count. Hint: since you don't know the final size, first count valid words in a separate loop, then create the array.
+In `main`, call the method, print each name on its own line, then print **how many** names are left.
 
-**Output**
+**Tip**: since you don’t know up front how many names will be valid, walk the array **twice** — first just count them, then create the result array of the right size and fill it on the second pass.
+
+**Example**
+
+For `{ "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" }`
 
 ```text
-HELLO
-WORLD
-JAVA
-ROCKS
-Total: 4 words
+TOMMY
+LANCE
+CORTEZ
+DIAZ
+Total: 4
+```
+
+**Example** when the sign-off comes first `{ "out", "tommy", "lance" }` (no valid names)
+
+```text
+Total: 0
+```
+
+**Example** with no static and no sign-off `{ "tommy", "lance" }`
+
+```text
+TOMMY
+LANCE
+Total: 2
 ```

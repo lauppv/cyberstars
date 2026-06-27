@@ -1,4 +1,4 @@
-Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar când ai **multe** opțiuni — cum ar fi verificarea zilei din săptămână, sau ce armă a ales Tommy — codul devine urât rapid. Aici intră în scenă **switch**
+Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar când ai **multe** opțiuni — cum ar fi ce armă a ales Tommy — codul devine urât rapid. Aici intră în scenă **switch**
 
 ```java
 public class Main {
@@ -7,16 +7,16 @@ public class Main {
 
         switch (arma) {
             case "pistol":
-                System.out.println("De bază dar de încredere");
+                System.out.println("De baza dar de incredere");
                 break;
             case "shotgun":
-                System.out.println("Devastator la distanță apropiată");
+                System.out.println("Devastator la distanta apropiata");
                 break;
             case "rocket":
-                System.out.println("Exagerare totală");
+                System.out.println("Exagerare totala");
                 break;
             default:
-                System.out.println("Armă necunoscută");
+                System.out.println("Arma necunoscuta");
                 break;
         }
     }
@@ -26,14 +26,14 @@ public class Main {
 Output
 
 ```text
-Devastator la distanță apropiată
+Devastator la distanta apropiata
 ```
 
 **switch** verifică valoarea lui `arma` și sare la **case**-ul care se potrivește. Când găsește `"shotgun"`, rulează acel bloc, apoi **break** îi spune să se oprească și să iasă din switch
 
 ---
 
-**break** este crucial. Fără el, Java "cade prin" (fall-through) la următorul case și continuă să ruleze
+**break** este crucial. Fără el, Java „cade prin" (fall-through) la următorul case și continuă să ruleze
 
 ```java
 public class Main {
@@ -42,15 +42,15 @@ public class Main {
 
         switch (stele) {
             case 1:
-                System.out.println("Poliția te observă");
+                System.out.println("Politia te observa");
             case 2:
-                System.out.println("Poliția te urmărește");
+                System.out.println("Politia te urmareste");
             case 3:
                 System.out.println("Apare elicopterul");
             case 4:
-                System.out.println("Sosește SWAT");
+                System.out.println("Sosesc fortele speciale");
             case 5:
-                System.out.println("Intră tancurile armatei");
+                System.out.println("Intra tancurile armatei");
         }
     }
 }
@@ -60,11 +60,11 @@ Output
 
 ```text
 Apare elicopterul
-Sosește SWAT
-Intră tancurile armatei
+Sosesc fortele speciale
+Intra tancurile armatei
 ```
 
-Uau — voiam doar mesajul de 3 stele, dar a afișat 3, 4 ȘI 5! Asta pentru că fără **break**, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
+Uau — voiam doar mesajul de 3 stele, dar a afișat 3, 4 și 5! Asta pentru că fără **break**, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
 
 ---
 
@@ -80,10 +80,10 @@ public class Main {
                 System.out.println("Apare elicopterul");
                 break;
             case 4:
-                System.out.println("Sosește SWAT");
+                System.out.println("Sosesc fortele speciale");
                 break;
             case 5:
-                System.out.println("Intră tancurile armatei");
+                System.out.println("Intra tancurile armatei");
                 break;
         }
     }
@@ -110,7 +110,7 @@ public class Main {
                 System.out.println("Condu pe drumuri");
                 break;
             case "bike":
-                System.out.println("Strecoară-te prin trafic");
+                System.out.println("Strecoara-te prin trafic");
                 break;
             default:
                 System.out.println("Alt vehicul: " + vehicul);
@@ -128,36 +128,26 @@ Alt vehicul: boat
 
 ---
 
-Python nu a avut switch până de curând (match/case în 3.10+). În Java, switch există dintotdeauna și funcționează cu tipurile **int**, **String**, **char** și **enum**. Iată o comparație
-
-```python
-# lanț if-else în Python
-zi = "Luni"
-if zi == "Sâmbătă" or zi == "Duminică":
-    print("Weekend")
-else:
-    print("Zi lucrătoare")
-```
+**switch** funcționează cu **int**, **String**, **char** și **enum**. Uneori vrem ca **mai multe case-uri** să ruleze același cod — atunci le stivuim unul peste altul, fără cod între ele
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        // switch în Java
         String zi = "Luni";
         switch (zi) {
-            case "Sâmbătă":
-            case "Duminică":
+            case "Sambata":
+            case "Duminica":
                 System.out.println("Weekend");
                 break;
             default:
-                System.out.println("Zi lucrătoare");
+                System.out.println("Zi lucratoare");
                 break;
         }
     }
 }
 ```
 
-Observă cum am stivuit `case "Saturday":` și `case "Sunday":` împreună fără cod între ele — acela este **fall-through intenționat**. Ambele case-uri rulează același cod. Aceasta este singura dată când fall-through chiar e la îndemână
+Observă cum am stivuit `case "Sambata":` și `case "Duminica":` împreună, fără cod între ele — acela este **fall-through intenționat**. Ambele case-uri rulează același cod. Aceasta este singura dată când fall-through chiar e la îndemână
 
 ---
 
@@ -170,16 +160,16 @@ public class Main {
 
         switch (optiuneMeniu) {
             case 1:
-                System.out.println("Începe joc nou");
+                System.out.println("Incepe joc nou");
                 break;
             case 2:
-                System.out.println("Încarcă jocul salvat");
+                System.out.println("Incarca jocul salvat");
                 break;
             case 3:
-                System.out.println("Setări");
+                System.out.println("Setari");
                 break;
             default:
-                System.out.println("Alegere invalidă");
+                System.out.println("Alegere invalida");
                 break;
         }
     }
@@ -189,29 +179,37 @@ public class Main {
 Output
 
 ```text
-Încarcă jocul salvat
+Incarca jocul salvat
 ```
 
 ---
 
 ## Misiune: Clasificatorul Programului de Tură
 
-Programul de tură al stației are nevoie de un clasificator rapid: dată fiind o zi, afișează dacă este o tură de **zi lucrătoare** (Weekday) sau de **weekend** (Weekend).
+Programul de tură al stației are nevoie de un clasificator rapid: dată fiind o zi, afișează dacă este o tură de **zi lucrătoare** sau de **weekend**.
 
-Scrie corpul metodei `tipZi` folosind un **switch** pe `zi`:
+Reține ziua într-o variabilă `String` și scrie un **switch** care:
 
-1. Pentru `"Luni"` până la `"Vineri"` → afișează `Zi lucrătoare`
-2. Pentru `"Sâmbătă"` și `"Duminică"` → afișează `Weekend`
-3. Default → afișează `Zi necunoscută`
+- pentru `"Luni"`, `"Marti"`, `"Miercuri"`, `"Joi"`, `"Vineri"` → afișează `Zi lucratoare`
+- pentru `"Sambata"` și `"Duminica"` → afișează `Weekend`
+- în orice alt caz → afișează `Zi necunoscuta`
 
-Metoda `main` apelează deja `tipZi` de trei ori.
+**Exemple**
 
-**Exemplu**
-
-Cu apelurile `tipZi("Luni")`, `tipZi("Sâmbătă")`, `tipZi("Miercuri")`, programul tău ar trebui să afișeze
+Pentru `"Luni"`:
 
 ```text
-Zi lucrătoare
+Zi lucratoare
+```
+
+Pentru `"Sambata"`:
+
+```text
 Weekend
-Zi lucrătoare
+```
+
+Pentru `"Craciun"` (nu e o zi a săptămânii):
+
+```text
+Zi necunoscuta
 ```

@@ -1,43 +1,50 @@
-Combine **if/else**, **if/else if**, and **for loops**
+Combine **if/else**, **if/else if** and **switch**
 
 ---
 
-## Mission: Crew Fitness Evaluation
+## Mission: Police Dispatch Center
 
-The station commander ordered a fitness evaluation for all 20 crew members. Each crew member scored between 1 and 20 on the physical test. You need to classify every score and report how many passed.
+Tommy has caused chaos in Vice City and the police are tracking his wanted level. The dispatch center needs a system that, given the number of wanted stars, reports **which force responds** and **how serious the situation is**.
 
-Loop through scores from **1 to 20** (use the loop variable `i` as the score) and classify each:
+Store the number of stars in an integer variable. Then:
 
-- **18-20**: `"Excellent"`
-- **15-17**: `"Good"`
-- **10-14**: `"Pass"`
-- **5-9**: `"Fail"`
-- **1-4**: `"Very Poor"`
+Use a **switch** on the number of stars to print the responding force:
 
-At the end, print how many crew members passed (score >= 10).
+- **0** → `You are clean, no pursuit`
+- **1** → `One police car spots you`
+- **2** → `Several cars chase you`
+- **3** → `A helicopter shows up`
+- **4** → `Special forces arrive`
+- **5** → `The FBI moves in`
+- **6** → `The army rolls in tanks`
+- any other value → `Invalid wanted level`
 
-**Output**
+Then, on a second line, use an **if / else if** chain to print the danger assessment:
+
+- **5 or more** stars → `Critical situation, run now`
+- **3 or 4** stars → `High danger, escape fast`
+- **1 or 2** stars → `Under control, lose them in the streets`
+- otherwise → `All quiet`
+
+Watch the boundaries: at **5** stars the situation turns critical, at **3** it goes from "under control" to "high danger".
+
+**Example** for **3** stars:
 
 ```text
-Score 1: Very Poor
-Score 2: Very Poor
-Score 3: Very Poor
-Score 4: Very Poor
-Score 5: Fail
-Score 6: Fail
-Score 7: Fail
-Score 8: Fail
-Score 9: Fail
-Score 10: Pass
-Score 11: Pass
-Score 12: Pass
-Score 13: Pass
-Score 14: Pass
-Score 15: Good
-Score 16: Good
-Score 17: Good
-Score 18: Excellent
-Score 19: Excellent
-Score 20: Excellent
-Passed: 11
+A helicopter shows up
+High danger, escape fast
+```
+
+**Example** for **6** stars:
+
+```text
+The army rolls in tanks
+Critical situation, run now
+```
+
+**Example** for **-1** stars (invalid value):
+
+```text
+Invalid wanted level
+All quiet
 ```
