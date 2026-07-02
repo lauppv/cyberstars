@@ -37,6 +37,29 @@ Dan 50
 Eve 50
 ```
 
+```
+Intrare:
+1
+Alice 85
+Ieșire:
+Alice 85
+```
+
+```
+Intrare:
+3
+Amy 70
+Zoe 70
+Bob 70
+Ieșire:
+Amy 70
+Zoe 70
+Bob 70
+```
+
+Când toate notele sunt egale, sortarea stabilă păstrează ordinea originală
+din intrare — observă că **nu** este alfabetică.
+
 ### Indicii
 
 - Definește o structură: `struct Student { char name[51]; int grade; };`

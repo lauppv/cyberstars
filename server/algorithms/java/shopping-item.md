@@ -36,6 +36,17 @@ Output:
 Total: 12.99
 ```
 
+```
+Input:
+1
+Water 0.99 1
+
+Output:
+Total: 0.99
+```
+
+A single item with quantity 1 — the total is just its price.
+
 ### Hints
 
 - `getTotal()` should return a `double` — multiply price by quantity.

@@ -38,6 +38,24 @@ Output:
 false
 ```
 
+```
+Input:
+0
+
+Output:
+true
+```
+
+A single-digit number, including 0, always reads the same both ways.
+
+```
+Input:
+12321
+
+Output:
+true
+```
+
 ### Hints
 
 - Negative numbers always return `false`.

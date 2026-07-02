@@ -31,6 +31,26 @@ Ieșire:
 1
 ```
 
+```
+Intrare:
+1
+7
+
+Ieșire:
+7
+```
+
+```
+Intrare:
+4
+1 2 3 4
+
+Ieșire:
+1 2 3 4
+```
+
+Când nu există deloc duplicate, rezultatul este identic cu intrarea.
+
 ### Indicii
 
 - Folosește un `set` pentru a urmări ce numere ai văzut deja.

@@ -33,6 +33,51 @@ Output:
 False
 ```
 
+```
+Input:
+Elvis
+Lives
+
+Output:
+True
+```
+
+The comparison is case-insensitive: `Elvis` and `Lives` only match once both are
+lowercased.
+
+```
+Input:
+aabb
+abab
+
+Output:
+True
+```
+
+Repeated letters still count as a match as long as each letter appears the same
+number of times in both strings — order does not matter, only the letter counts.
+
+```
+Input:
+a
+a
+
+Output:
+True
+```
+
+```
+Input:
+ab
+abc
+
+Output:
+False
+```
+
+Different lengths can never be anagrams — that is a fast way to rule out a
+non-match before comparing letters.
+
 ### Hints
 
 - Convert both strings to lowercase first with `.lower()`.

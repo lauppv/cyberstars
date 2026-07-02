@@ -34,6 +34,15 @@ Output:
 *****
 ```
 
+```
+Input:
+1
+Output:
+*
+```
+
+The smallest case: a single row with a single star.
+
 ### Hints
 
 - Use a `for` loop from `1` to `N` for the rows.

@@ -103,13 +103,13 @@ Apare elicopterul
 ```java
 public class Main {
     public static void main(String[] args) {
-        String vehicul = "boat";
+        String vehicul = "barca";
 
         switch (vehicul) {
-            case "car":
+            case "masina":
                 System.out.println("Condu pe drumuri");
                 break;
-            case "bike":
+            case "bicicleta":
                 System.out.println("Strecoara-te prin trafic");
                 break;
             default:
@@ -123,7 +123,7 @@ public class Main {
 Output
 
 ```text
-Alt vehicul: boat
+Alt vehicul: barca
 ```
 
 ---

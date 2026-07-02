@@ -27,6 +27,13 @@ Input:  AEIOU
 Output: 5
 ```
 
+```
+Input:  xyz
+Output: 0
+```
+
+No vowels at all is a valid case — the count is simply `0`.
+
 ### Hints
 
 - Use `.lower()` to handle both uppercase and lowercase letters.

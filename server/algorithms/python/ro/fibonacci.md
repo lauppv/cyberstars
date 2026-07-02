@@ -28,6 +28,24 @@ Ieșire:
 0 1 1 2 3 5 8 13
 ```
 
+```
+Intrare:
+1
+
+Ieșire:
+0
+```
+
+Cu `n = 1` afișezi doar primul termen — fără spațiu, fără al doilea număr.
+
+```
+Intrare:
+2
+
+Ieșire:
+0 1
+```
+
 ### Indicii
 
 - Începe cu două variabile: `a = 0` și `b = 1`.

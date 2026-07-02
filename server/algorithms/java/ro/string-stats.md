@@ -40,6 +40,19 @@ Consonants: 5
 Words: 3
 ```
 
+```
+Intrare:
+Sky
+
+Ieșire:
+Vowels: 0
+Consonants: 3
+Words: 1
+```
+
+`y` nu este numărat aici ca vocală — contează doar a, e, i, o, u, deci toate
+cele trei litere din "Sky" sunt consoane.
+
 ### Indicii
 
 - Folosește `Character.toLowerCase()` pentru a trata verificările de vocale fără sensibilitate la majuscule.

@@ -29,6 +29,22 @@ xyz
 Ieșire: zab
 ```
 
+```
+Intrare:
+A
+1
+Ieșire: B
+```
+
+```
+Intrare:
+123
+5
+Ieșire: 123
+```
+
+Cifrele nu sunt litere, deci trec prin cifru neschimbate.
+
 ### Indicii
 
 - Folosește `fgets` pentru a citi șirul (gestionează spațiile). Elimină caracterul newline de la final, dacă există.

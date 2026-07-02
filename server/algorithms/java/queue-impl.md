@@ -49,6 +49,19 @@ Output:
 15
 ```
 
+```
+Input:
+2
+dequeue
+peek
+
+Output:
+Empty
+Empty
+```
+
+Both `dequeue` and `peek` must print `Empty` when the queue has nothing in it.
+
 ### Hints
 
 - Use `ArrayList<Integer>` to store elements.

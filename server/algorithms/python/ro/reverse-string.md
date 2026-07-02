@@ -22,6 +22,21 @@ Intrare:  CyberStars
 Ieșire: sratSrebyC
 ```
 
+```
+Intrare:  a
+Ieșire: a
+```
+
+Un singur caracter inversat este el însuși.
+
+```
+Intrare:  noon
+Ieșire: noon
+```
+
+Unele șiruri arată la fel inversate — e o coincidență a literelor lor, nu un
+caz special pe care codul tău trebuie să-l detecteze.
+
 ### Indicii
 
 - Șirurile suportă felierea (slicing) — `s[::-1]` inversează un șir într-un singur pas.

@@ -29,6 +29,24 @@ Input:
 Output: 1 2 3 4
 ```
 
+```
+Input:
+1
+42
+Output: 42
+```
+
+The base case: a single-element array is already sorted.
+
+```
+Input:
+5
+-1 -5 0 -5 3
+Output: -5 -5 -1 0 3
+```
+
+Negative numbers and duplicates sort the same way as any other integers.
+
 ### Hints
 
 - Write a `merge` function that merges two sorted subarrays into one.

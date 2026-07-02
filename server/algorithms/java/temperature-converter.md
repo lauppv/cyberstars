@@ -43,6 +43,28 @@ Celsius: 0.0
 Fahrenheit: 32.0
 ```
 
+```
+Input:
+0.0 C
+
+Output:
+Celsius: 0.0
+Fahrenheit: 32.0
+```
+
+The reverse direction: starting from 0°C also lands on 32°F.
+
+```
+Input:
+-40.0 C
+
+Output:
+Celsius: -40.0
+Fahrenheit: -40.0
+```
+
+-40 is the one point where the Celsius and Fahrenheit scales agree.
+
 ### Hints
 
 - Use `double` for the temperature value to handle decimals.

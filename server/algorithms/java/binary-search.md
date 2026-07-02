@@ -36,6 +36,41 @@ Output:
 -1
 ```
 
+```
+Input:
+1
+5
+5
+
+Output:
+0
+```
+
+A single-element array works the same way — `low` and `high` both start at 0.
+
+```
+Input:
+1
+5
+3
+
+Output:
+-1
+```
+
+```
+Input:
+6
+1 2 3 4 5 6
+1
+
+Output:
+0
+```
+
+The target can be the very first or very last element — the search still
+narrows down to it correctly.
+
 ### Hints
 
 - Start with `low = 0` and `high = N - 1`.

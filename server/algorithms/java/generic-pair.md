@@ -46,6 +46,18 @@ Output:
 (0, world)
 ```
 
+```
+Input:
+x
+-5
+
+Output:
+(x, -5)
+(-5, x)
+```
+
+Negative integers swap the same way as any other value.
+
 ### Hints
 
 - Use generics: `class Pair<A, B>`.

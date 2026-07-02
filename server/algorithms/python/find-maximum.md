@@ -31,6 +31,26 @@ Output:
 -3
 ```
 
+```
+Input:
+1
+42
+
+Output:
+42
+```
+
+With a single number, that number is automatically the maximum.
+
+```
+Input:
+4
+5 5 5 5
+
+Output:
+5
+```
+
 ### Hints
 
 - Use `.split()` to break the second line into a list of strings, then convert each to `int`.

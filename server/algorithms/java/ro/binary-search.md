@@ -36,6 +36,41 @@ Ieșire:
 -1
 ```
 
+```
+Intrare:
+1
+5
+5
+
+Ieșire:
+0
+```
+
+Un tablou cu un singur element funcționează la fel — `low` și `high` pornesc amândoi de la 0.
+
+```
+Intrare:
+1
+5
+3
+
+Ieșire:
+-1
+```
+
+```
+Intrare:
+6
+1 2 3 4 5 6
+1
+
+Ieșire:
+0
+```
+
+Ținta poate fi chiar primul sau ultimul element — căutarea tot se restrânge
+corect până la el.
+
 ### Indicii
 
 - Pornește cu `low = 0` și `high = N - 1`.

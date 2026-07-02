@@ -27,6 +27,19 @@ Input:  a
 Output: True
 ```
 
+```
+Input:  abba
+Output: True
+```
+
+Palindromes can have an even number of characters too — there's no middle
+character to ignore, the two halves just need to mirror each other.
+
+```
+Input:  ab
+Output: False
+```
+
 ### Hints
 
 - A string is a palindrome if `s == s[::-1]`.

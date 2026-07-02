@@ -29,6 +29,20 @@ Input:
 Output: 14
 ```
 
+```
+Input:
+1
+7
+Output: 7
+```
+
+```
+Input:
+3
+-1 -2 -3
+Output: -6
+```
+
 ### Hints
 
 - Initialize a `sum` variable to `0` before the loop.

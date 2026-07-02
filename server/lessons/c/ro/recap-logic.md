@@ -12,8 +12,8 @@ Citește o parolă (un singur cuvânt, fără spații) cu **scanf**, apoi fă ur
 2. **Are literă mare**: conține cel puțin o literă mare? (A-Z înseamnă că char-ul este **>= 'A' && <= 'Z'**)
 3. **Are cifră**: conține cel puțin o cifră? ('0'-'9')
 4. **Are caracter special**: conține **'!'** sau **'@'** sau **'#'**?
-5. Pentru fiecare verificare, afișează **PASS** sau **FAIL**
-6. Afișează dacă **toate verificările au trecut** (**YES** sau **NO**)
+5. Pentru fiecare verificare, afișează **OK** sau **NU**
+6. Afișează dacă **toate verificările au trecut** (**DA** sau **NU**)
 
 Folosește o **buclă for** pentru a scana fiecare caracter, **flag-uri int** (0/1) pentru a urmări rezultatele, și **string.h** pentru **strlen**
 
@@ -28,11 +28,11 @@ Cyber2025!
 Output
 
 ```text
-Length >= 8: PASS
-Has uppercase: PASS
-Has digit: PASS
-Has special char: PASS
-Password valid: YES
+Lungime >= 8: OK
+Are litera mare: OK
+Are cifra: OK
+Are caracter special: OK
+Parola valida: DA
 ```
 
 **Exemplu**
@@ -46,9 +46,9 @@ abcdef
 Output
 
 ```text
-Length >= 8: FAIL
-Has uppercase: FAIL
-Has digit: FAIL
-Has special char: FAIL
-Password valid: NO
+Lungime >= 8: NU
+Are litera mare: NU
+Are cifra: NU
+Are caracter special: NU
+Parola valida: NU
 ```

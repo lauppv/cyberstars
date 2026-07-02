@@ -43,6 +43,31 @@ hello
 listen silent
 ```
 
+```
+Input:
+3
+abc
+def
+ghi
+
+Output:
+abc
+def
+ghi
+```
+
+When no words are anagrams of each other, every group has exactly one word —
+groups are still printed in alphabetical order by their first (and only) word.
+
+```
+Input:
+1
+cat
+
+Output:
+cat
+```
+
 ### Hints
 
 - Two words are anagrams if sorting their characters gives the same string: `sorted("eat") == sorted("tea")`.

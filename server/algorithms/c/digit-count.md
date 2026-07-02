@@ -26,6 +26,18 @@ Input:
 Output: 1
 ```
 
+```
+Input:
+7
+Output: 1
+```
+
+```
+Input:
+1000000000
+Output: 10
+```
+
 ### Hints
 
 - Special case: if the number is `0`, the answer is `1`.

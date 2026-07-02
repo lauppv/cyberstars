@@ -31,6 +31,28 @@ Ieșire:
 Mjqqt, Btwqi!
 ```
 
+```
+Intrare:
+az
+1
+
+Ieșire:
+ba
+```
+
+Alfabetul se reia de la capăt: deplasând `z` cu 1 ajungi înapoi la `a`.
+
+```
+Intrare:
+Zebra
+1
+
+Ieșire:
+Afcsb
+```
+
+Literele mari se reiau la fel, rămânând mari: `Z` devine `A`.
+
 ### Indicii
 
 - Folosește `ord()` pentru a obține codul ASCII al unui caracter și `chr()` pentru a converti înapoi.

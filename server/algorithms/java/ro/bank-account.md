@@ -41,6 +41,32 @@ Ieșire:
 Balance: 0
 ```
 
+```
+Intrare:
+50
+1
+withdraw 50
+
+Ieșire:
+Balance: 0
+```
+
+Retragerea sumei **exacte** din sold este permisă — eșuează doar atunci când suma
+este strict mai mare decât ce este disponibil.
+
+```
+Intrare:
+10
+2
+withdraw 20
+withdraw 15
+
+Ieșire:
+Insufficient funds
+Insufficient funds
+Balance: 10
+```
+
 ### Indicii
 
 - Analizează fiecare linie de operație împărțind-o după spațiu.

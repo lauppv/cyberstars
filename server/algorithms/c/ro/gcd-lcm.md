@@ -31,6 +31,16 @@ GCD: 1
 LCM: 91
 ```
 
+```
+Intrare:
+9 9
+Ieșire:
+GCD: 9
+LCM: 9
+```
+
+Când cele două numere sunt egale, CMMDC-ul și CMMMC-ul sunt amândouă chiar acel număr.
+
 ### Indicii
 
 - Implementează algoritmul lui Euclid: cât timp `b != 0`, setează `temp = b`, `b = a % b`, `a = temp`. CMMDC-ul este `a`.

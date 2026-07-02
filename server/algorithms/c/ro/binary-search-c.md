@@ -32,6 +32,24 @@ Intrare:
 Ieșire: -1
 ```
 
+```
+Intrare:
+1
+5
+5
+Ieșire: 0
+```
+
+Un tablou cu un singur element funcționează la fel — `left` și `right` pornesc amândoi de la 0.
+
+```
+Intrare:
+1
+5
+3
+Ieșire: -1
+```
+
 ### Indicii
 
 - Menține doi indici `left` și `right` care reprezintă intervalul curent de căutare.

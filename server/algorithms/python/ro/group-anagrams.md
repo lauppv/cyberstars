@@ -43,6 +43,32 @@ hello
 listen silent
 ```
 
+```
+Intrare:
+3
+abc
+def
+ghi
+
+Ieșire:
+abc
+def
+ghi
+```
+
+Când niciun cuvânt nu este anagrama altuia, fiecare grup are exact un cuvânt —
+grupurile sunt afișate în continuare în ordine alfabetică după primul (și
+singurul) cuvânt.
+
+```
+Intrare:
+1
+cat
+
+Ieșire:
+cat
+```
+
 ### Indicii
 
 - Două cuvinte sunt anagrame dacă sortarea caracterelor lor dă același șir: `sorted("eat") == sorted("tea")`.

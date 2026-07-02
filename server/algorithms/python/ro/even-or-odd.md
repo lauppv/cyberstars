@@ -22,6 +22,19 @@ Intrare:  7
 Ieșire: Odd
 ```
 
+```
+Intrare:  0
+Ieșire: Even
+```
+
+```
+Intrare:  -3
+Ieșire: Odd
+```
+
+Numerele negative funcționează la fel: `-3 % 2` este `1` în Python — nu este
+`0`, deci `-3` este impar.
+
 ### Indicii
 
 - Operatorul modulo `%` îți dă restul unei împărțiri.

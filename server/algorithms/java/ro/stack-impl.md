@@ -47,6 +47,19 @@ Ieșire:
 15
 ```
 
+```
+Intrare:
+2
+pop
+peek
+
+Ieșire:
+Empty
+Empty
+```
+
+Atât `pop`, cât și `peek` trebuie să afișeze `Empty` când stiva nu conține nimic.
+
 ### Indicii
 
 - Folosește `ArrayList<Integer>` pentru a stoca elementele.

@@ -31,6 +31,26 @@ Output:
 1
 ```
 
+```
+Input:
+1
+7
+
+Output:
+7
+```
+
+```
+Input:
+4
+1 2 3 4
+
+Output:
+1 2 3 4
+```
+
+When there are no duplicates at all, the output is identical to the input.
+
 ### Hints
 
 - Use a `set` to track which numbers you've already seen.

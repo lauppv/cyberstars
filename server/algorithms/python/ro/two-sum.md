@@ -33,6 +33,29 @@ Ieșire:
 1 2
 ```
 
+```
+Intrare:
+3 3
+6
+
+Ieșire:
+0 1
+```
+
+Aceeași valoare poate apărea de două ori — atât timp cât se află la indici
+diferiți, tot contează ca două numere separate.
+
+```
+Intrare:
+-3 4 3 90
+0
+
+Ieșire:
+0 2
+```
+
+Numerele negative funcționează la fel: `-3 + 3 == 0`.
+
 ### Indicii
 
 - **Forță brută**: încearcă fiecare pereche cu două bucle `for` imbricate — funcționează, dar este O(n^2).

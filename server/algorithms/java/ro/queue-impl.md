@@ -49,6 +49,19 @@ Ieșire:
 15
 ```
 
+```
+Intrare:
+2
+dequeue
+peek
+
+Ieșire:
+Empty
+Empty
+```
+
+Atât `dequeue`, cât și `peek` trebuie să afișeze `Empty` când coada nu conține nimic.
+
 ### Indicii
 
 - Folosește `ArrayList<Integer>` pentru a stoca elementele.

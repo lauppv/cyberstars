@@ -29,6 +29,22 @@ Input:
 Output: 1 2 3 4
 ```
 
+```
+Input:
+1
+9
+Output: 9
+```
+
+```
+Input:
+4
+1 1 2 2
+Output: 1 1 2 2
+```
+
+An already-sorted array (with duplicates) needs no shifting at all.
+
 ### Hints
 
 - Start from the second element (index 1) and work forward.

@@ -33,6 +33,29 @@ Output:
 1 2
 ```
 
+```
+Input:
+3 3
+6
+
+Output:
+0 1
+```
+
+The same value can appear twice — as long as they are at different indices,
+they still count as two separate numbers.
+
+```
+Input:
+-3 4 3 90
+0
+
+Output:
+0 2
+```
+
+Negative numbers work the same way: `-3 + 3 == 0`.
+
 ### Hints
 
 - **Brute force**: try every pair with two nested `for` loops — works but is O(n^2).

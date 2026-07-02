@@ -42,6 +42,22 @@ Empty
 5
 ```
 
+```
+Input:
+5
+push 1
+push 2
+pop
+pop
+pop
+Output:
+2
+1
+Empty
+```
+
+Once the stack is fully drained, further `pop` calls keep printing `Empty`.
+
 ### Hints
 
 - Use an array of fixed size (e.g., 100) and a `top` variable initialized to `-1`.

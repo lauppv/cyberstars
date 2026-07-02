@@ -31,6 +31,26 @@ Ieșire:
 -3
 ```
 
+```
+Intrare:
+1
+42
+
+Ieșire:
+42
+```
+
+Cu un singur număr, acel număr este automat maximul.
+
+```
+Intrare:
+4
+5 5 5 5
+
+Ieșire:
+5
+```
+
 ### Indicii
 
 - Folosește `.split()` pentru a împărți a doua linie într-o listă de șiruri, apoi convertește fiecare la `int`.

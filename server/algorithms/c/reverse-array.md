@@ -29,6 +29,15 @@ Input:
 Output: 30 20 10
 ```
 
+```
+Input:
+1
+9
+Output: 9
+```
+
+Reversing a single-element array leaves it unchanged.
+
 ### Hints
 
 - Declare an array of size 100 (or use `N` with a VLA).

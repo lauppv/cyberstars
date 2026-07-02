@@ -46,6 +46,16 @@ Fizz
 FizzBuzz
 ```
 
+```
+Input:
+1
+
+Output:
+1
+```
+
+With `n = 1` there is only one line of output: the number `1` itself.
+
 ### Hints
 
 - Check divisibility by **both** 3 and 5 first — if you check for 3 alone first, you'll never reach `FizzBuzz`.

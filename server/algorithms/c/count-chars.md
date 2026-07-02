@@ -29,6 +29,23 @@ z
 Output: 0
 ```
 
+```
+Input:
+aaaa
+a
+Output: 4
+```
+
+```
+Input:
+Apple
+a
+Output: 0
+```
+
+The comparison is case-sensitive: `Apple` has an uppercase `A`, so it doesn't
+match the lowercase `a` being counted.
+
 ### Hints
 
 - Read the string with `scanf("%s", str)` and the char with `scanf(" %c", &ch)` (note the space before `%c` to skip whitespace).

@@ -37,6 +37,29 @@ Dan 50
 Eve 50
 ```
 
+```
+Input:
+1
+Alice 85
+Output:
+Alice 85
+```
+
+```
+Input:
+3
+Amy 70
+Zoe 70
+Bob 70
+Output:
+Amy 70
+Zoe 70
+Bob 70
+```
+
+When every grade ties, the stable sort keeps the original input order —
+notice it's **not** alphabetical.
+
 ### Hints
 
 - Define a struct: `struct Student { char name[51]; int grade; };`

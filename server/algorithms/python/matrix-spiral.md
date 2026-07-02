@@ -36,6 +36,27 @@ Output:
 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
 ```
 
+```
+Input:
+1
+5
+
+Output:
+5
+```
+
+A 1x1 matrix has nowhere to spiral — the single element is the whole answer.
+
+```
+Input:
+2
+1 2
+3 4
+
+Output:
+1 2 4 3
+```
+
 ### Hints
 
 - Maintain four boundaries: `top`, `bottom`, `left`, `right`. After traversing one side, shrink the corresponding boundary.

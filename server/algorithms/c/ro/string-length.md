@@ -24,6 +24,14 @@ Intrare:  C
 Ieșire: 1
 ```
 
+```
+Intrare:  12345
+Ieșire: 5
+```
+
+Cifrele sunt tot caractere — numărătoarea lungimii nu ține cont de ce fel de
+caractere sunt.
+
 ### Indicii
 
 - Folosește `scanf("%s", str)` pentru a citi un cuvânt.

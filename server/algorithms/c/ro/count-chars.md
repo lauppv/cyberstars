@@ -29,6 +29,23 @@ z
 Ieșire: 0
 ```
 
+```
+Intrare:
+aaaa
+a
+Ieșire: 4
+```
+
+```
+Intrare:
+Apple
+a
+Ieșire: 0
+```
+
+Comparația ține cont de majuscule: `Apple` are un `A` mare, deci nu se
+potrivește cu litera mică `a` numărată.
+
 ### Indicii
 
 - Citește șirul cu `scanf("%s", str)` și caracterul cu `scanf(" %c", &ch)` (observă spațiul înainte de `%c` pentru a sări peste spațiile albe).

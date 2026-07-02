@@ -33,6 +33,51 @@ Ieșire:
 False
 ```
 
+```
+Intrare:
+Elvis
+Lives
+
+Ieșire:
+True
+```
+
+Comparația nu ține cont de litere mari/mici: `Elvis` și `Lives` se potrivesc doar
+după ce ambele sunt convertite la litere mici.
+
+```
+Intrare:
+aabb
+abab
+
+Ieșire:
+True
+```
+
+Literele repetate contează la fel, atât timp cât fiecare literă apare de același
+număr de ori în ambele șiruri — ordinea nu contează, doar numărul de apariții.
+
+```
+Intrare:
+a
+a
+
+Ieșire:
+True
+```
+
+```
+Intrare:
+ab
+abc
+
+Ieșire:
+False
+```
+
+Șiruri de lungimi diferite nu pot fi niciodată anagrame — e un mod rapid de a
+elimina o nepotrivire înainte de a compara literele.
+
 ### Indicii
 
 - Convertește mai întâi ambele șiruri la litere mici cu `.lower()`.

@@ -37,6 +37,16 @@ Ieșire:
 3 6 9
 ```
 
+```
+Intrare:
+1
+5
+Ieșire:
+5
+```
+
+O matrice 1x1 este propria ei transpusă.
+
 ### Indicii
 
 - Folosește un tablou bidimensional: `int mat[20][20]`.

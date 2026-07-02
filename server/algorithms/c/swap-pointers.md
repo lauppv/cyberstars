@@ -24,6 +24,13 @@ Input:  10 10
 Output: 10 10
 ```
 
+```
+Input:  -3 8
+Output: 8 -3
+```
+
+Negative numbers swap through the pointers the same as any other value.
+
 ### Hints
 
 - Your `swap` function signature should be `void swap(int *a, int *b)`.

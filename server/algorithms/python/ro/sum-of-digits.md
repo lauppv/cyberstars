@@ -22,6 +22,18 @@ Intrare:  -56
 Ieșire: 11
 ```
 
+```
+Intrare:  0
+Ieșire: 0
+```
+
+```
+Intrare:  100
+Ieșire: 1
+```
+
+Zerourile din `100` nu adaugă nimic la sumă — doar `1` contează.
+
 ### Indicii
 
 - Convertește numărul într-un șir, apoi parcurge fiecare caracter.

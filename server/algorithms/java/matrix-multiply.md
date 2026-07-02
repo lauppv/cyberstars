@@ -46,6 +46,19 @@ Output:
 43 50
 ```
 
+```
+Input:
+1 1
+3
+1 1
+4
+
+Output:
+12
+```
+
+The 1x1 case is the base case of the formula: `C[0][0] = A[0][0] * B[0][0]`.
+
 ### Hints
 
 - The result matrix C has dimensions R1 x C2.

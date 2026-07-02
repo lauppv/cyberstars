@@ -41,6 +41,17 @@ EMPTY
 5
 ```
 
+```
+Intrare:
+2
+INSERT 7
+PRINT
+Ieșire:
+7
+```
+
+O listă cu un singur nod afișează tot doar acea valoare, fără spațiu la final.
+
 ### Indicii
 
 - Definește o structură: `struct Node { int data; struct Node *next; };`

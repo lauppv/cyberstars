@@ -29,6 +29,22 @@ xyz
 Output: zab
 ```
 
+```
+Input:
+A
+1
+Output: B
+```
+
+```
+Input:
+123
+5
+Output: 123
+```
+
+Digits aren't letters, so they pass through the cipher unchanged.
+
 ### Hints
 
 - Use `fgets` to read the string (it handles spaces). Remove the trailing newline if present.

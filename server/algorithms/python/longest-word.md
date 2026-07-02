@@ -22,6 +22,19 @@ Input:  The quick brown fox
 Output: quick
 ```
 
+```
+Input:  cat bat rat
+Output: cat
+```
+
+All three words are the same length, so it's a tie — print the one that
+appears **first**.
+
+```
+Input:  hi
+Output: hi
+```
+
 ### Hints
 
 - Use `split()` to break the sentence into a list of words.

@@ -24,6 +24,14 @@ Input:  C
 Output: 1
 ```
 
+```
+Input:  12345
+Output: 5
+```
+
+Digits are still just characters — the length count doesn't care what kind
+of characters they are.
+
 ### Hints
 
 - Use `scanf("%s", str)` to read a word.

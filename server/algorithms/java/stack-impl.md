@@ -47,6 +47,19 @@ Output:
 15
 ```
 
+```
+Input:
+2
+pop
+peek
+
+Output:
+Empty
+Empty
+```
+
+Both `pop` and `peek` must print `Empty` when the stack has nothing in it.
+
 ### Hints
 
 - Use `ArrayList<Integer>` to store elements.

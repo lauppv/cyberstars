@@ -43,6 +43,28 @@ Celsius: 0.0
 Fahrenheit: 32.0
 ```
 
+```
+Intrare:
+0.0 C
+
+Ieșire:
+Celsius: 0.0
+Fahrenheit: 32.0
+```
+
+Direcția inversă: pornind de la 0°C se ajunge tot la 32°F.
+
+```
+Intrare:
+-40.0 C
+
+Ieșire:
+Celsius: -40.0
+Fahrenheit: -40.0
+```
+
+-40 este singurul punct în care scalele Celsius și Fahrenheit coincid.
+
 ### Indicii
 
 - Folosește `double` pentru valoarea temperaturii pentru a gestiona zecimalele.

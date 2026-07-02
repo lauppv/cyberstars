@@ -45,6 +45,32 @@ Ieșire:
 -3
 ```
 
+```
+Intrare:
+1
+get
+
+Ieșire:
+0
+```
+
+Apelarea `get` înainte de orice `inc`/`dec` returnează valoarea de start, 0.
+
+```
+Intrare:
+5
+inc
+dec
+inc
+dec
+get
+
+Ieșire:
+0
+```
+
+Incrementările și decrementările se anulează reciproc — contorul revine la 0.
+
 ### Indicii
 
 - Folosește un câmp privat pentru a stoca valoarea contorului și metode publice pentru a o modifica.

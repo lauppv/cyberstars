@@ -22,6 +22,13 @@ Intrare:  Python is really fun
 Ieșire: 4
 ```
 
+```
+Intrare:  hello
+Ieșire: 1
+```
+
+Un singur cuvânt tot un cuvânt rămâne.
+
 ### Indicii
 
 - Metoda `split()` împarte un șir într-o listă de cuvinte.

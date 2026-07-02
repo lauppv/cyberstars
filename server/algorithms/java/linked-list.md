@@ -47,6 +47,22 @@ Not found
 Empty
 ```
 
+```
+Input:
+5
+add 1
+add 2
+add 3
+remove 1
+print
+
+Output:
+2 -> 3
+```
+
+Removing the **head** node means the list's `head` reference itself has to
+move to the second node — there's no "previous" node to relink.
+
 ### Hints
 
 - `Node` holds a value and a reference to the next node.

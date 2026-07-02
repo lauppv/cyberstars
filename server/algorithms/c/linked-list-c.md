@@ -41,6 +41,17 @@ EMPTY
 5
 ```
 
+```
+Input:
+2
+INSERT 7
+PRINT
+Output:
+7
+```
+
+A list with a single node still prints just that one value, no trailing space.
+
 ### Hints
 
 - Define a struct: `struct Node { int data; struct Node *next; };`

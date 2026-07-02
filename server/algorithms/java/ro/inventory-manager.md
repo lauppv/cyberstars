@@ -46,6 +46,23 @@ milk: 2
 Items: 1
 ```
 
+```
+Intrare:
+4
+add apple 3
+remove apple 3
+check apple
+check apple
+
+Ieșire:
+apple: 0
+apple: 0
+Items: 0
+```
+
+Eliminarea exact a întregului stoc al unui articol îl aduce la 0 — rămâne
+cunoscut, dar nu mai contează pentru `Items: N`.
+
 ### Indicii
 
 - Folosește `HashMap<String, Integer>` pentru a stoca inventarul.

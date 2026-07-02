@@ -33,6 +33,17 @@ Output:
 100.00
 ```
 
+```
+Input:
+Carol
+95
+
+Output:
+95.00
+```
+
+A single grade — the average is just that grade, still formatted to 2 decimals.
+
 ### Hints
 
 - Store grades in an `int[]` or `ArrayList<Integer>`.

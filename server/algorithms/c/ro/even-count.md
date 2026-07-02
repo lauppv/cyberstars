@@ -29,6 +29,15 @@ Intrare:
 Ieșire: 4
 ```
 
+```
+Intrare:
+3
+1 3 5
+Ieșire: 0
+```
+
+Când niciunul dintre numere nu e par, numărătoarea rămâne la 0 — se afișează totuși.
+
 ### Indicii
 
 - Un număr este par dacă `x % 2 == 0`.

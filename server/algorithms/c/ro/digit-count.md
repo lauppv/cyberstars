@@ -26,6 +26,18 @@ Intrare:
 Ieșire: 1
 ```
 
+```
+Intrare:
+7
+Ieșire: 1
+```
+
+```
+Intrare:
+1000000000
+Ieșire: 10
+```
+
 ### Indicii
 
 - Caz special: dacă numărul este `0`, răspunsul este `1`.

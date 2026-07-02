@@ -22,6 +22,19 @@ Input:  7
 Output: Odd
 ```
 
+```
+Input:  0
+Output: Even
+```
+
+```
+Input:  -3
+Output: Odd
+```
+
+Negative numbers work the same way: `-3 % 2` is `-1` in most languages, but in
+Python it's `1` — either way, it's not `0`, so `-3` is odd.
+
 ### Hints
 
 - The modulo operator `%` gives you the remainder of a division.
