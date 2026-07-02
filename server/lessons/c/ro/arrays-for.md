@@ -1,20 +1,20 @@
-Avem un array de scoruri. Vrem să facem ceva cu fiecare. **Am putea** face
+Avem un array de citiri. Vrem să facem ceva cu fiecare. **Am putea** face
 
 ```c
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[5] = { 80, 95, 60, 72, 88 };
-    printf("%d\n", scoruri[0]);
-    printf("%d\n", scoruri[1]);
-    printf("%d\n", scoruri[2]);
-    printf("%d\n", scoruri[3]);
-    printf("%d\n", scoruri[4]);
+    int citiri[5] = { 80, 95, 60, 72, 88 };
+    printf("%d\n", citiri[0]);
+    printf("%d\n", citiri[1]);
+    printf("%d\n", citiri[2]);
+    printf("%d\n", citiri[3]);
+    printf("%d\n", citiri[4]);
     return 0;
 }
 ```
 
-Repetitiv. **Interzis**, cum am spus în lecțiile anterioare :)
+Repetitiv. Exact ce am spus în lecțiile anterioare că trebuie evitat
 
 Bucla clasică **for** din C merge mână în mână cu array-urile
 
@@ -22,10 +22,10 @@ Bucla clasică **for** din C merge mână în mână cu array-urile
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[5] = { 80, 95, 60, 72, 88 };
+    int citiri[5] = { 80, 95, 60, 72, 88 };
 
     for (int i = 0; i < 5; i++) {
-        printf("%d\n", scoruri[i]);
+        printf("%d\n", citiri[i]);
     }
 
     return 0;
@@ -42,17 +42,17 @@ Hardcodarea lui **5** în buclă este fragilă. Dacă adăugăm sau eliminăm un
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[] = { 80, 95, 60, 72, 88 };
-    int n = sizeof(scoruri) / sizeof(scoruri[0]);
+    int citiri[] = { 80, 95, 60, 72, 88 };
+    int n = sizeof(citiri) / sizeof(citiri[0]);
 
     for (int i = 0; i < n; i++) {
-        printf("%d\n", scoruri[i]);
+        printf("%d\n", citiri[i]);
     }
     return 0;
 }
 ```
 
-Acum bucla funcționează indiferent câte elemente are array-ul. Adaugă sau elimină un scor, rulează din nou, funcționează pur și simplu
+Acum bucla funcționează indiferent câte elemente are array-ul. Adaugă sau elimină o citire, rulează din nou, funcționează pur și simplu
 
 ---
 
@@ -74,7 +74,7 @@ int main(void) {
 }
 ```
 
-Începe cu **total = 0**, parcurge fiecare element, adaugă-l. Vei scrie acest gen de buclă de multe ori în cariera ta. Citește-o linie cu linie și asigură-te că înțelegi **de ce** funcționează :)
+Începe cu **total = 0**, parcurge fiecare element, adaugă-l. Vei scrie acest gen de buclă de multe ori în cariera ta. Citește-o linie cu linie și asigură-te că înțelegi **de ce** funcționează
 
 ---
 
@@ -90,32 +90,37 @@ void afiseaza_tot(int arr[], int n) {
 }
 
 int main(void) {
-    int scoruri[] = { 80, 95, 60, 72, 88 };
-    int n = sizeof(scoruri) / sizeof(scoruri[0]);
-    afiseaza_tot(scoruri, n);
+    int citiri[] = { 80, 95, 60, 72, 88 };
+    int n = sizeof(citiri) / sizeof(citiri[0]);
+    afiseaza_tot(citiri, n);
     return 0;
 }
 ```
 
-Acesta este un idiom foarte comun în C. Obișnuiește-te să-l scrii :)
+Acesta este un idiom foarte comun în C. Obișnuiește-te să-l scrii
 
 ---
 
-## Misiune: Analiza Array-ului de Senzori
+## Misiune: Registrul zilnic al liniei de bandă
 
-Senzorii externi ai stației tocmai au livrat un lot de citiri. Comandantul Rex are nevoie de un rezumat complet: fiecare citire individuală, totalul și media.
+Linia de bandă magnetică trimite un lot de citiri pentru schimbul curent. Numărul de citiri variază de la o zi la alta, deci primul lucru pe care îl primești este **câte** citiri urmează.
 
-1. Afișează fiecare scor pe linia lui proprie (folosește o buclă **for**)
-2. Afișează **totalul** tuturor scorurilor
-3. Afișează **media** (cast la **double** ca să eviți împărțirea de întregi — folosește **(double) total / n**)
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `scoruri` — un array de int cu valorile **{80, 95, 60, 72, 88}**
+1. Citește un întreg **n** din input — numărul de citiri
+2. Citește **n** numere întregi într-un array (folosește o buclă pentru citire, cu **scanf** în interiorul ei)
+3. Afișează fiecare citire pe linia ei proprie (folosește o buclă **for**)
+4. Afișează **totalul** tuturor citirilor
+5. Afișează **media** (cast la **double** ca să eviți împărțirea de întregi — folosește **(double) total / n**)
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
+
+```text
+5
+80 95 60 72 88
+```
+
+Output
 
 ```text
 80
@@ -125,4 +130,23 @@ Cu valorile de start, programul tău ar trebui să afișeze
 88
 395
 79.000000
+```
+
+**Exemplu**
+
+Input
+
+```text
+3
+10 20 30
+```
+
+Output
+
+```text
+10
+20
+30
+60
+20.000000
 ```

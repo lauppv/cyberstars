@@ -1,4 +1,4 @@
-Programele trebuie să citească și să scrie în **fișiere** — configurări, log-uri, date salvate. C ne oferă **fopen**, **fclose**, **fprintf**, **fscanf** și **fgets** pentru asta
+Programele trebuie să citească și să scrie în **fișiere** — configurări, jurnale de tură, date salvate. C ne oferă **fopen**, **fclose**, **fprintf**, **fscanf** și **fgets** pentru asta
 
 ```c
 #include <stdio.h>
@@ -10,7 +10,7 @@ int main(void) {
         return 1;
     }
 
-    fprintf(f, "Salut, CyberStars!\n");
+    fprintf(f, "Salut de la terminal\n");
     fprintf(f, "Aceasta este linia 2\n");
     fclose(f);
 
@@ -61,19 +61,19 @@ Putem folosi și **fscanf** pentru date structurate
 #include <stdio.h>
 
 int main(void) {
-    FILE *f = fopen("scoruri.txt", "r");
+    FILE *f = fopen("jurnal.txt", "r");
     char nume[50];
-    int scor;
+    int cod;
 
-    while (fscanf(f, "%s %d", nume, &scor) == 2) {
-        printf("%s a obtinut %d puncte\n", nume, scor);
+    while (fscanf(f, "%s %d", nume, &cod) == 2) {
+        printf("%s a raportat codul %d\n", nume, cod);
     }
     fclose(f);
     return 0;
 }
 ```
 
-**fscanf** returnează numărul de elemente pe care le-a citit cu succes. Când așteptăm 2 elemente (nume și scor), verificăm **== 2**
+**fscanf** returnează numărul de elemente pe care le-a citit cu succes. Când așteptăm 2 elemente (nume și cod), verificăm **== 2**
 
 ---
 
@@ -88,22 +88,15 @@ A uita de **fclose** este ca și cum ai lăsa robinetul deschis. Programul ar pu
 
 ---
 
-## Misiune: Arhiva Jurnalului Echipajului
+## Misiune: Registrul de tură al centrului de calcul
 
-Stația are nevoie de un jurnal permanent al echipajului. Scrie numele și scorurile membrilor echipajului într-un fișier, apoi citește înapoi fișierul și afișează un raport formatat pentru căpitan.
+Centrul de calcul ține un registru al fiecărei ture: numele tehnicianului de serviciu și numărul de incidente pe care le-a rezolvat. La finalul turei, registrul trebuie scris pe disc, apoi citit înapoi pentru raportul de dimineață.
 
-1. Deschide un fișier **"grades.txt"** pentru **scriere**
-2. Scrie aceste 3 linii (folosește **fprintf**):
-
-```text
-Tommy 95
-Lance 82
-Cortez 98
-```
-
+1. Deschide un fișier **"tura.txt"** pentru **scriere**
+2. Scrie aceste 3 linii cu **fprintf**: `Enescu 95`, `Vlad 82`, `Dobre 98` (nume și număr de incidente, separate prin spațiu)
 3. Închide fișierul
-4. Deschide **"grades.txt"** pentru **citire**
-5. Citește fiecare nume și notă folosind **fscanf** și afișează-le ca: **"Name: Tommy, Grade: 95"**
+4. Deschide **"tura.txt"** pentru **citire**
+5. Citește fiecare nume și număr folosind **fscanf** și afișează-le ca: **"Tehnician: Enescu, Incidente: 95"**
 6. Închide fișierul
 
 **Exemplu**
@@ -111,7 +104,7 @@ Cortez 98
 Programul tău ar trebui să afișeze
 
 ```text
-Name: Tommy, Grade: 95
-Name: Lance, Grade: 82
-Name: Cortez, Grade: 98
+Tehnician: Enescu, Incidente: 95
+Tehnician: Vlad, Incidente: 82
+Tehnician: Dobre, Incidente: 98
 ```

@@ -4,7 +4,7 @@
 
 ```c
 #include <stdio.h>    // header de sistem — din biblioteca standard C
-#include "fisierul_meu.h"   // fișierul tău — caută mai întâi în directorul curent
+#include "fisierul_meu.h"   // fisierul tau — cauta mai intai in directorul curent
 ```
 
 Diferența: **< >** pentru header-ele de sistem, **" "** pentru fișierele tale. Când scrii **#include <stdio.h>**, preprocesorul lipește literalmente mii de linii de declarații în fișierul tău înainte de compilare. Așa devine **printf** disponibil
@@ -16,18 +16,18 @@ Diferența: **< >** pentru header-ele de sistem, **" "** pentru fișierele tale.
 ```c
 #include <stdio.h>
 
-#define MAX_HEALTH 100
+#define VITEZA_MAX 9600
 #define PI 3.14159
 
 int main(void) {
-    int hp = MAX_HEALTH;
-    printf("HP: %d\n", hp);
+    int baud = VITEZA_MAX;
+    printf("Viteza: %d\n", baud);
     printf("PI: %f\n", PI);
     return 0;
 }
 ```
 
-Oriunde preprocesorul vede **MAX_HEALTH**, îl înlocuiește cu **100**. Este o simplă substituție de text, ca un find-and-replace dintr-un editor de text. Compilatorul nu vede niciodată "MAX_HEALTH" — vede doar "100"
+Oriunde preprocesorul vede **VITEZA_MAX**, îl înlocuiește cu **9600**. Este o simplă substituție de text, ca un find-and-replace dintr-un editor de text. Compilatorul nu vede niciodată "VITEZA_MAX" — vede doar "9600"
 
 Prin convenție, macro-urile se scriu cu **MAJUSCULE** ca să le poți distinge de variabilele obișnuite
 
@@ -39,16 +39,16 @@ Prin convenție, macro-urile se scriu cu **MAJUSCULE** ca să le poți distinge 
 #include <stdio.h>
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define SQUARE(x) ((x) * (x))
+#define PATRAT(x) ((x) * (x))
 
 int main(void) {
     printf("%d\n", MAX(10, 20));   // 20
-    printf("%d\n", SQUARE(5));     // 25
+    printf("%d\n", PATRAT(5));     // 25
     return 0;
 }
 ```
 
-Parantezele suplimentare sunt importante! Fără ele, **SQUARE(2+3)** s-ar expanda la **2+3 \* 2+3** = **2 + 6 + 3** = **11** în loc de **25**. Pune întotdeauna parametrii macro-urilor între paranteze
+Parantezele suplimentare sunt importante! Fără ele, **PATRAT(2+3)** s-ar expanda la **2+3 \* 2+3** = **2 + 6 + 3** = **11** în loc de **25**. Pune întotdeauna parametrii macro-urilor între paranteze
 
 ---
 
@@ -61,36 +61,41 @@ Parantezele suplimentare sunt importante! Fără ele, **SQUARE(2+3)** s-ar expan
 
 int main(void) {
     #ifdef DEBUG
-        printf("Modul debug este ACTIV\n");
+        printf("Mod debug activ\n");
     #endif
 
-    printf("Programul ruleaza\n");
+    printf("Terminal pornit\n");
     return 0;
 }
 ```
 
-Dacă **DEBUG** este definit, mesajul de debug este compilat. Dacă scoatem linia **#define DEBUG**, compilatorul sare complet peste acel printf — nici măcar nu există în programul final. Asta este folosit masiv în proiectele reale pentru a include/exclude logging-ul de debug
+Dacă **DEBUG** este definit, mesajul de debug este compilat. Dacă scoatem linia **#define DEBUG**, compilatorul sare complet peste acel printf — nici măcar nu există în programul final. Asta este folosit masiv în proiectele reale pentru a include/exclude logging-ul de debug fără să ștergi codul
 
 ---
 
-## Misiune: Configurarea Scuturilor
+## Misiune: Fișa de instalare a echipamentelor
 
-Generatorul de scuturi al stației folosește macro-uri de preprocesor pentru calculele geometrice. Trebuie să definești trei macro-uri pentru ca panoul de diagnostice să compileze și să afișeze citirile corecte.
+Ești tehnician la centrul de calcul. Înainte de a preda noul rack de servere și antena satelit de pe acoperiș, trebuie să completezi fișa de configurare a compilatorului cu macro-urile folosite la calculele geometrice — panoul de diagnostice depinde de ele ca să compileze.
 
-Creează aceste macro-uri deasupra lui **main**:
+Deasupra lui **main**, definește:
 
-- **AREA_RECT(w, h)** — returnează `((w) * (h))`
-- **AREA_CIRCLE(r)** — returnează `((PI) * (r) * (r))` (PI este deja definit ca 3.14159)
-- **MAX_SIZE** — definește-l ca `100`
+- **PI** — `3.14159`
+- **AREA_RECT(w, h)** — returnează `((w) * (h))` (suprafața sălii de echipamente)
+- **AREA_CIRCLE(r)** — returnează `((PI) * (r) * (r))` (suprafața antenei)
+- **MAX_SIZE** — `100` (limita de temperatură a sălii, în grade)
 
-Funcția **main** le apelează deja — doar adaugă definițiile macro-urilor.
+În **main**, folosește macro-urile ca să afișezi:
+
+1. `AREA_RECT(5, 3)` pe formatul **"Sala: %d"**
+2. `AREA_CIRCLE(4.0)` pe formatul **"Antena: %.2f"**
+3. `MAX_SIZE` pe formatul **"Limita: %d"**
 
 **Exemplu**
 
 Programul tău ar trebui să afișeze
 
 ```text
-Dreptunghi: 15
-Cerc: 50.27
-Max: 100
+Sala: 15
+Antena: 50.27
+Limita: 100
 ```

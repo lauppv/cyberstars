@@ -1,17 +1,21 @@
-We learned that strings in C are arrays of **char** ending with **'\0'**. Working with them manually (character by character) is tedious. The **string.h** library gives us ready-made functions
+We learned that strings in C are arrays of **char** that end with **'\0'**. Working with them manually (character by character) is tedious. The **string.h** library gives us ready-made functions
 
 ```c
 #include <stdio.h>
 #include <string.h>
 
 int main(void) {
-    char name[] = "Tommy Vercetti";
+    char name[] = "Dennis Ritchie";
     printf("Length: %lu\n", strlen(name));
     return 0;
 }
 ```
 
-Output: **Length: 14**
+Output
+
+```text
+Length: 14
+```
 
 **strlen** returns the number of characters in the string, **NOT** counting the **'\0'**. The actual array has 15 chars (14 letters + '\0'), but strlen says 14. This is an important distinction
 
@@ -67,8 +71,8 @@ int main(void) {
 
 int main(void) {
     char greeting[50] = "Hello, ";
-    strcat(greeting, "CyberStars!");
-    printf("%s\n", greeting);   // Hello, CyberStars!
+    strcat(greeting, "teletype!");
+    printf("%s\n", greeting);   // Hello, teletype!
     return 0;
 }
 ```
@@ -98,25 +102,42 @@ int main(void) {
 
 ---
 
-## Mission: Assemble the Station Code Name
+## Mission: Assembling the Tape Label
 
-HQ sent two halves of the station's new code name in separate transmissions. Your job: measure the first fragment, then join both fragments into one string and broadcast the full name.
+An old magnetic tape has lost its label. Two different operators each transcribed half of it, on separate teletypes. Your job: measure the first fragment, then join both fragments into a single string and print the full label.
 
-1. Print the length of **first** (use **strlen**)
-2. Copy **first** into a **result** array (use **strcpy**, make result big enough: `char result[50]`)
-3. Concatenate **second** onto **result** (use **strcat**)
-4. Print **result**
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `first` — a char array set to **"Cyber"**
-- `second` — a char array set to **"Stars"**
+1. Read two words from input, **first** and **second** (no internal spaces)
+2. Print the length of **first** (use **strlen**)
+3. Copy **first** into an array **result** (use **strcpy**, make result big enough: `char result[50]`)
+4. Concatenate **second** onto **result** (use **strcat**)
+5. Print **result**
 
 **Example**
 
-With the starter values, your program should print
+Input
 
 ```text
-5
-CyberStars
+Bell Labs
+```
+
+Output
+
+```text
+4
+BellLabs
+```
+
+**Example**
+
+Input
+
+```text
+Tele type
+```
+
+Output
+
+```text
+4
+Teletype
 ```

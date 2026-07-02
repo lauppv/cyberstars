@@ -1,16 +1,16 @@
-Time for a real project! We'll build a **student database** that uses everything we've learned: structs, pointers, dynamic memory, arrays, and string functions
+Time for a real project. We will build a **student registry**, using everything we have learned: structs, pointers, dynamic memory, arrays and string functions
 
-The program manages a list of students. Each student has a **name** and a **grade**. We'll:
+The program manages a list of students. Each student has a **name** and a **grade**. We will
 
 1. Create students dynamically with **malloc**
-2. Store them in an array
+2. Store them in an array of pointers
 3. Print all students
 4. Find the student with the highest grade
 5. Free the memory
 
 ---
 
-Here's the struct we'll use
+Here is the struct we will use
 
 ```c
 #include <stdio.h>
@@ -23,13 +23,13 @@ typedef struct {
 } Student;
 
 int main(void) {
-    Student s = {"Tommy", 95};
+    Student s = {"Ritchie", 95};
     printf("%s: %d\n", s.name, s.grade);
     return 0;
 }
 ```
 
-And here's how to create a student dynamically
+And here is how we create a student dynamically
 
 ```c
 Student *create_student(const char *name, int grade) {
@@ -41,7 +41,7 @@ Student *create_student(const char *name, int grade) {
 }
 ```
 
-The function allocates memory on the heap, fills in the fields, and returns a pointer. The caller is now **responsible** for freeing that memory later
+The function allocates memory on the heap, fills in the fields and returns a pointer. The caller becomes **responsible** for freeing that memory later
 
 ---
 
@@ -55,50 +55,74 @@ void print_all(Student *students[], int n) {
 }
 ```
 
-Notice we use **students[i]->name** because each element is a **pointer to a Student**
+Notice **students[i]->name** — each element of the array is a **pointer to a Student**, so we use **->** instead of **.**
 
 ---
 
-To find the best student
+To find the top student
 
 ```c
-Student *find_best(Student *students[], int n) {
-    Student *best = students[0];
+Student *find_top(Student *students[], int n) {
+    Student *top = students[0];
     for (int i = 1; i < n; i++) {
-        if (students[i]->grade > best->grade) {
-            best = students[i];
+        if (students[i]->grade > top->grade) {
+            top = students[i];
         }
     }
-    return best;
+    return top;
 }
 ```
 
 ---
 
-## Mission: Station Crew Database
+## Mission: The computer lab registry
 
-The station needs a personnel database that tracks every crew member's name and performance grade. You have the building blocks above — now wire them together into a working system.
+It's 1974. You are the shift operator at the university's computer lab. Students finishing the programming exam come to your teletype and dictate their name and grade — you enter them into the registry, one student at a time
 
-1. Complete the **print_all** function to print each student as **"Name: Grade"**
-2. Complete the **find_best** function to return a pointer to the student with the highest grade
-3. In **main**, the 4 crew members are already created — call **print_all**, then **find_best**, and print the best one
-4. Free all allocated memory at the end
+Write a program that
 
-**Input** (already set at the top of your code — change the values to test):
-
-- **"Tommy"**, 95
-- **"Lance"**, 82
-- **"Cortez"**, 98
-- **"Rex"**, 76
+1. Reads an integer **n** — the number of students
+2. Reads, **n** times, a name and a grade (integer), and creates a student with **create_student**, storing the pointer in an array
+3. Calls **print_all** to print each student as **"Name: Grade"**
+4. Calls **find_top** and prints **"Top student: Name (Grade)"**
+5. Frees all allocated memory, with **free**, before finishing
 
 **Example**
 
-With the starter values, your program should print
+Input
 
 ```text
-Tommy: 95
-Lance: 82
-Cortez: 98
-Rex: 76
-Best: Cortez (98)
+4
+Ritchie 95
+Thompson 82
+Kernighan 98
+McIlroy 76
+```
+
+Output
+
+```text
+Ritchie: 95
+Thompson: 82
+Kernighan: 98
+McIlroy: 76
+Top student: Kernighan (98)
+```
+
+**Example**
+
+Input
+
+```text
+2
+Ana 88
+Mihai 91
+```
+
+Output
+
+```text
+Ana: 88
+Mihai: 91
+Top student: Mihai (91)
 ```

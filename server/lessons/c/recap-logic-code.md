@@ -2,7 +2,5 @@
 #include <string.h>
 
 int main(void) {
-    char password[] = "Cyber2025!";
-
     return 0;
 }

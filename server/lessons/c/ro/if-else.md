@@ -1,4 +1,4 @@
-În viața reală luăm decizii: **dacă** e frig, iei un pulover, **altfel** un tricou este de ajuns. **Dacă** mi-e somn, dorm, **altfel** programez :)
+În viața reală luăm decizii: **dacă** e frig, iei un pulover, **altfel** un tricou este de ajuns. **Dacă** mi-e somn, dorm, **altfel** programez
 
 În C spunem
 
@@ -18,11 +18,11 @@ int main(void) {
 }
 ```
 
-Sintaxa din C este **aproape identică** cu cea din Java
+Câteva reguli de sintaxă
 
 - Condiția stă între **paranteze** **( )**
 - Corpul stă între **acolade** **{ }**
-- Nu există **:** la final ca în Python
+- Nu există **:** la final
 
 Dacă **varsta** este mai mică decât **18**, intrăm în blocul **if**. Altfel intrăm în **else**. Rulează codul, schimbă vârsta, vezi ce se întâmplă
 
@@ -51,7 +51,7 @@ int main(void) {
 }
 ```
 
-Acesta este un **bug clasic în C**. Spre deosebire de Java (care refuză să compileze așa ceva), **C acceptă acest cod fără nicio eroare**. **x = 4** stochează **4** în **x** și returnează valoarea **4**, pe care C o tratează ca "adevărat" (orice valoare diferită de zero înseamnă adevărat). Așadar codul intră mereu în **if**, indiferent ce era **x** înainte. Multe bug-uri din proiecte reale, faimoase, vin exact din această greșeală de tastare. Folosește **==** când compari :)
+Acesta este un **bug clasic în C**: **C acceptă acest cod fără nicio eroare de compilare**. **x = 4** stochează **4** în **x** și returnează valoarea **4**, pe care C o tratează ca "adevărat" (orice valoare diferită de zero înseamnă adevărat). Așadar codul intră mereu în **if**, indiferent ce era **x** înainte. Multe bug-uri din proiecte reale, faimoase, vin exact din această greșeală de tastare. Folosește **==** când compari
 
 ---
 
@@ -79,45 +79,55 @@ Un exemplu complet
 #include <stdio.h>
 
 int main(void) {
-    int utilizator_online = 1;
+    int terminal_conectat = 1;
 
-    if (utilizator_online) {
-        printf("Tommy Vercetti joaca GTA Vice City\n");
+    if (terminal_conectat) {
+        printf("Sesiune deschisa\n");
     } else {
-        printf("Tommy Vercetti este offline\n");
+        printf("Terminal deconectat\n");
     }
 
     return 0;
 }
 ```
 
-Schimbă **utilizator_online** la **0** și rulează din nou. Rezultatul se inversează. Programarea devine distractivă din momentul în care începi să **te joci** cu valorile :)
+Schimbă **terminal_conectat** la **0** și rulează din nou. Rezultatul se inversează. Programarea devine interesantă din momentul în care începi să **te joci** cu valorile
 
 ---
 
-## Misiune: Alertă Temperatură Carenă
+## Misiune: Termostatul camerei calculatoarelor
 
-Senzorii de carenă ai stației raportează temperatura de afară. Dacă scade sub zero, echipajul trebuie avertizat.
+Mainframe-urile centrului de calcul nu tolerează frigul: sub zero grade, uleiul din unitățile de bandă înghesuiește mecanismele. Termostatul trebuie să avertizeze operatorul de tură.
 
-Scrie un **if / else** care verifică `temperatura`:
+Scrie un **if / else** care citește un întreg **temperatura** din input:
 
-- dacă `temperatura` este **mai mică decât 0** → afișează `afara e ger`
-- altfel → afișează `apa nu ingheata`
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `temperatura` — temperatura carenei în grade Celsius
+- dacă `temperatura` este **mai mică decât 0** → afișează `alerta frig`
+- altfel → afișează `temperatura normala`
 
 **Exemplu**
 
-Cu `temperatura = -5`, programul tău ar trebui să afișeze
+Input
 
 ```text
-afara e ger
+-5
 ```
 
-Acum setează `temperatura = 10` și rulează din nou
+Output
 
 ```text
-apa nu ingheata
+alerta frig
+```
+
+**Exemplu**
+
+Input
+
+```text
+10
+```
+
+Output
+
+```text
+temperatura normala
 ```

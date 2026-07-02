@@ -24,7 +24,7 @@ int main(void) {
   1000  (8)
 ```
 
-Each position: if both are 1, result is 1. Otherwise 0
+At each position: if both are 1, the result is 1. Otherwise 0
 
 ---
 
@@ -64,7 +64,7 @@ int main(void) {
   0111  (7)
 ```
 
-**~ (NOT)** — flip every bit
+**~ (NOT)** — flips every bit
 
 ```c
 #include <stdio.h>
@@ -79,7 +79,7 @@ int main(void) {
 
 **Shift operators** move bits left or right
 
-**<< (left shift)** — shift bits left, fill with 0s. Each left shift **multiplies by 2**
+**<< (left shift)** — shifts bits left, filling with 0s. Each left shift **multiplies by 2**
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main(void) {
 }
 ```
 
-**>> (right shift)** — shift bits right. Each right shift **divides by 2**
+**>> (right shift)** — shifts bits right. Each right shift **divides by 2**
 
 ```c
 #include <stdio.h>
@@ -104,63 +104,81 @@ int main(void) {
 }
 ```
 
-**1 << n** gives us **2^n**. This is one of the most common tricks in programming
+**1 << n** gives us **2^n**. This is one of the most used tricks in programming
 
 ---
 
-A classic use: **flags**. Imagine a game character with abilities
+A classic use case: **permission flags**, exactly like they work on UNIX files
 
 ```c
 #include <stdio.h>
 
-#define CAN_FLY    (1 << 0)   // 0001 = 1
-#define CAN_SWIM   (1 << 1)   // 0010 = 2
-#define CAN_FIGHT  (1 << 2)   // 0100 = 4
-#define CAN_HEAL   (1 << 3)   // 1000 = 8
+#define PERM_READ    (1 << 0)   // 001 = 1
+#define PERM_WRITE   (1 << 1)   // 010 = 2
+#define PERM_EXECUTE (1 << 2)   // 100 = 4
 
 int main(void) {
-    int abilities = CAN_FLY | CAN_FIGHT;   // 0101 = 5
+    int permissions = PERM_READ | PERM_WRITE;   // 011 = 3
 
-    // check if can fly
-    if (abilities & CAN_FLY) {
-        printf("Can fly!\n");
+    // check if allowed to read
+    if (permissions & PERM_READ) {
+        printf("Can read\n");
     }
 
-    // add swim ability
-    abilities = abilities | CAN_SWIM;       // 0111 = 7
+    // add execute permission
+    permissions = permissions | PERM_EXECUTE;      // 111 = 7
 
-    // remove fly ability
-    abilities = abilities & ~CAN_FLY;       // 0110 = 6
+    // remove write permission
+    permissions = permissions & ~PERM_WRITE;       // 101 = 5
 
     return 0;
 }
 ```
 
-A single **int** stores multiple yes/no properties using individual bits. This is used in operating systems, network protocols, and game engines. Linux file permissions work exactly like this
+A single **int** stores multiple yes/no properties using individual bits. This is exactly what UNIX does when you run `ls -l` and see `rwx` next to a file — each letter is a bit in an integer
 
 ---
 
-## Mission: Airlock Access Codes
+## Mission: Terminal access codes
 
-The station's airlock system uses bitwise flags to encode access permissions. Given two security codes, run the four core bitwise operations so the security officer can verify the lock configuration.
+The computing center checks pairs of security codes received from terminals. The shift operator enters two integers, and the system must print the four basic bitwise operations to confirm the configuration.
 
-1. Print **a & b** (AND)
-2. Print **a | b** (OR)
-3. Print **a ^ b** (XOR)
-4. Print **a << 2** (left shift by 2)
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `a` — int with value **12** (binary: 1100)
-- `b` — int with value **10** (binary: 1010)
+1. Read two integers **a** and **b**
+2. Print **a & b** (AND)
+3. Print **a | b** (OR)
+4. Print **a ^ b** (XOR)
+5. Print **a << 2** (left shift by 2)
 
 **Example**
 
-With the starter values, your program should print
+Input
+
+```text
+12 10
+```
+
+Output
 
 ```text
 8
 14
 6
 48
+```
+
+**Example**
+
+Input
+
+```text
+5 3
+```
+
+Output
+
+```text
+1
+7
+6
+20
 ```

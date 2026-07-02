@@ -1,4 +1,4 @@
-We already saw **+**, **-**, **\***, **/** in earlier lessons. Let’s look at the rest of C’s arithmetic toolkit
+We already saw **+**, **-**, **\***, **/** in earlier lessons. Let's look at the rest of C's arithmetic toolkit
 
 ```c
 #include <stdio.h>
@@ -63,7 +63,7 @@ int main(void) {
 
 ---
 
-C has handy **shortcuts** (same as Java)
+C has handy **shortcuts**
 
 - **a++** is the same as **a = a + 1**
 - **a--** is the same as **a = a - 1**
@@ -72,11 +72,11 @@ C has handy **shortcuts** (same as Java)
 - **a \*= 2** is the same as **a = a \* 2**
 - **a /= 4** is the same as **a = a / 4**
 
-You’ll see **i++** in **for** loops literally everywhere :)
+You'll see **i++** in **for** loops absolutely everywhere
 
 ---
 
-What about **powers**? C doesn’t have a built-in power operator. We use **pow()** from the math library
+What about **powers**? C doesn't have a built-in power operator. We use **pow()** from the math library
 
 ```c
 #include <stdio.h>
@@ -88,9 +88,9 @@ int main(void) {
 }
 ```
 
-**pow()** always returns a **double**, so even **2 ** 3** comes out as **8.000000**, not **8\*\*
+**pow()** always returns a **double**, so even **2 to the power of 3** comes out as **8.000000**, not **8**
 
-To use **pow()** we need **#include <math.h>**. On some systems, you also need to link the math library with **-lm** when compiling, but our platform handles that for us :)
+To use **pow()** we need **#include <math.h>**. On some systems, you also need to link the math library with **-lm** when compiling, but our platform handles that for us
 
 ---
 
@@ -110,20 +110,21 @@ When in doubt, **add parentheses**. They make the code easier to read anyway
 
 ---
 
-## Mission: Power Grid Calculator
+## Mission: The Mainframe's Diagnostic Panel
 
-The station's power grid runs diagnostics using two sensor values. Your job is to display all five arithmetic results so the engineering team can verify the grid is stable.
+The mainframe's diagnostic panel reads two values from the console and runs the five basic arithmetic operations, so the shift technician can quickly verify the arithmetic unit is working correctly.
 
-Print the results of `a + b`, `a - b`, `a * b`, `a / b`, and `a % b` — each on its own line.
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `a` — primary sensor reading
-- `b` — secondary sensor reading
+Read two integers **a** and **b** using **scanf**, then print the results of `a + b`, `a - b`, `a * b`, `a / b`, and `a % b` — each on its own line.
 
 **Example**
 
-With `a = 17` and `b = 5`, your program should print
+Input
+
+```text
+17 5
+```
+
+Output
 
 ```text
 22
@@ -133,4 +134,20 @@ With `a = 17` and `b = 5`, your program should print
 2
 ```
 
-Change the values and run again — see how the output changes :)
+**Example**
+
+Input
+
+```text
+20 4
+```
+
+Output
+
+```text
+24
+16
+80
+5
+0
+```

@@ -1,16 +1,16 @@
-Sometimes we need **more than two** branches. Imagine a rocket launching from the ground. Depending on how many seconds remain, we want to do different things
+Sometimes we need **more than two** branches. Picture a mainframe booting up in the morning at the computing center. Depending on how many seconds remain until it's fully up, the system goes through different stages
 
-If **100** seconds left → start the onboard computers
+If **100** seconds remain → check memory
 
-If **60** seconds left → check the connection with the control tower
+If **60** seconds remain → check peripherals
 
-If **20** seconds left → start secondary engines
+If **20** seconds remain → load the operating system kernel
 
-If **10** seconds left → start the main engines
+If **10** seconds remain → start system processes
 
-Otherwise → no special action
+Otherwise → do nothing special
 
-In C, we chain branches with **else if** (just like Java)
+In C we chain branches with **else if**
 
 ```c
 #include <stdio.h>
@@ -19,24 +19,24 @@ int main(void) {
     int seconds = 100;
 
     if (seconds == 100) {
-        printf("Starting all onboard computers\n");
+        printf("Checking memory\n");
     } else if (seconds == 60) {
-        printf("Checking connection with the control tower\n");
+        printf("Checking peripherals\n");
     } else if (seconds == 20) {
-        printf("Starting secondary engines\n");
+        printf("Loading operating system kernel\n");
     } else if (seconds == 10) {
-        printf("Starting the main engines\n");
+        printf("Starting system processes\n");
     } else {
-        printf("%d seconds has no effect\n", seconds);
+        printf("%d seconds have no effect\n", seconds);
     }
 
     return 0;
 }
 ```
 
-**Run** it. Then change **seconds** to **60**, **20**, **10**, **42**. See how the output changes
+Let's trace what happens if we change **seconds** to **60**, **20**, **10**, **42**
 
-The chain runs **top to bottom**. At the **first** branch that is **true**, C runs that block and then **jumps out** of the entire chain. The remaining branches are **never checked**. So for **seconds = 60**, only one line is printed, not all of them
+The chain runs **top to bottom**. At the **first** branch that is **true**, C runs that block and then **exits** the whole chain. The remaining branches are **never** checked. So for **seconds = 60**, only one line is printed, not all of them
 
 ---
 
@@ -55,17 +55,17 @@ int main(void) {
 }
 ```
 
-The problem: each **if** is independent. The **else** at the end only belongs to the **last** **if**. So for **seconds = 60**, the third condition fails (60 != 20), and the **else** would print **"60 seconds has no effect"** — wrong, we already handled 60 above
+The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third condition fails (60 != 20), and the **else** would print **"other"** — wrong, we already handled 60 above
 
-**Rule of thumb**: when we test the **same variable** for multiple values, **chain** with **if / else if / else**
-
----
-
-C also has a **switch** statement that fits this pattern nicely, but we’ll save it for a more advanced lesson. For now, **if / else if / else** is enough :)
+**Rule of thumb**: when testing the **same variable** against multiple values, **chain** with **if / else if / else**
 
 ---
 
-We can nest **if**s inside one another
+C also has a **switch** statement that fits this pattern well, but we'll leave it for a more advanced lesson. For now, **if / else if / else** is enough
+
+---
+
+We can nest **if**s inside each other
 
 ```c
 #include <stdio.h>
@@ -76,36 +76,56 @@ int main(void) {
 
     if (seconds < 10) {
         if (error_detected) {
-            printf("Error detected. Canceling the mission\n");
+            printf("Error detected. Aborting launch\n");
         } else {
-            printf("No error detected. Taking off...\n");
+            printf("No error detected. Starting the system...\n");
         }
     }
     return 0;
 }
 ```
 
-Nested **if**s are fine, but if you go 5 levels deep, the code gets unreadable. Try to keep things flat when you can
+Nested **if**s are fine, but if you go 5 levels deep, the code becomes unreadable. Try to keep things flat when you can
 
 ---
 
-## Mission: Launch Sequence
+## Mission: Mainframe Boot Sequence
 
-You are the launch controller. The countdown timer shows `seconds` remaining. Depending on the value, different systems must activate.
+You are the shift operator. The boot timer shows how many seconds remain until full boot, while a separate sensor tells you whether any hardware error was detected.
 
-The code on the right already has the full chain. Your task: **add a new else if** branch for **30 seconds** that prints `Pressurizing fuel tanks`.
+Write an **if / else if / else** chain that reads two whole numbers from the input, in this order: **seconds** and **error_detected**
 
-**Input** (already set at the top of your code — change the values to test):
-
-- `seconds` — seconds remaining until launch
-- `error_detected` — whether an error was detected (0 = no, 1 = yes)
+- if `seconds` is **100** → print `Checking memory`
+- otherwise if `seconds` is **60** → print `Checking peripherals`
+- otherwise if `seconds` is **30** → print `Loading operating system kernel`
+- otherwise if `seconds` is **10** → print `Starting system processes`
+- otherwise if `seconds` is **less than 10** → check `error_detected`: if it is **1**, print `Error detected. Aborting launch`, otherwise print `No error detected. Starting the system...`
+- otherwise → print `%d seconds have no effect` (with the number of seconds in place of `%d`)
 
 **Example**
 
-With `seconds = 30`, your program should print
+Input
 
 ```text
-Pressurizing fuel tanks
+30 0
 ```
 
-Change `seconds` to `60`, `10`, `5` and run again — see the whole sequence in action :)
+Output
+
+```text
+Loading operating system kernel
+```
+
+**Example**
+
+Input
+
+```text
+5 1
+```
+
+Output
+
+```text
+Error detected. Aborting launch
+```

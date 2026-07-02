@@ -1,6 +1,8 @@
-Welcome to **C**. C is the **foundation** of modern programming. Almost every language you’ve heard of (Python, Java, JavaScript, Go, Rust, even your operating system) is built on top of ideas, or even directly on top of code, written in C
+Welcome to **C**.
 
-C is **lower-level** than Python or Java. That means it gives us more **control** over what the computer does, but it also asks us to be more **careful**. Don’t worry, we’ll take it step by step :)
+C was born in **1972** at **Bell Labs**, where Dennis Ritchie created it to write the **UNIX** operating system. Back then there were no color monitors or mice: programmers worked at a **teletype** — a machine that looked like a typewriter and printed the computer's response directly on paper. Over 50 years later, C is still everywhere: in operating systems, routers, satellites, and the engines of other programming languages.
+
+In this course you'll work like a programmer from the early days of UNIX: close to the machine, with full control over what happens. Let's go step by step.
 
 ---
 
@@ -10,37 +12,39 @@ The simplest C program looks like this
 #include <stdio.h>
 
 int main(void) {
-    printf("hey, I like pizza\n");
+    printf("hello, world\n");
     return 0;
 }
 ```
 
-**Run** it. You’ll see
+**Run** it. You'll see
 
 ```text
-hey, I like pizza
+hello, world
 ```
 
-There is some boilerplate. Let’s go through it briefly — for now, **trust it**, we’ll understand more as we go
+By the way, `hello, world` isn't just any message: it's the **first example** from the classic C book written by the language's own creators. Every C programmer has started with exactly this program.
 
-- **#include <stdio.h>** — we’re saying "I need the standard input/output tools". Without this line, **printf** doesn’t exist
+There's some boilerplate here. Let's walk through it briefly — for now, just **trust** it, we'll understand more along the way
+
+- **#include <stdio.h>** — we're saying "I need the standard input/output tools". Without this line, **printf** doesn't exist
 - **int main(void)** — every C program starts here. This is the **entry point**
-- **{ ... }** — the **block** of code that **main** runs. Just like in Java
-- **return 0;** — we tell the operating system "the program ended successfully". **0** means "all good"
+- **{ ... }** — the **block** of code that **main** runs
+- **return 0;** — we're telling the operating system "the program finished successfully". **0** means "everything's fine"
 
 The line that does the actual work is
 
 ```c
-printf("hey, I like pizza\n");
+printf("hello, world\n");
 ```
 
-**printf** is C’s way of printing text on the screen. It comes from **print formatted**
+**printf** is how C displays text on screen. It stands for **print formatted**
 
 ---
 
-Notice that strange **\n** at the end of the string. What is it?
+Notice that odd **\n** at the end of the string. What is it?
 
-**\n** means **new line**. Unlike Python’s **print()** and Java’s **System.out.println**, C’s **printf** does **NOT** automatically go to a new line. If you want a new line, you have to ask for it with **\n**
+**\n** means **new line**. **printf** doesn't automatically move to a new line after printing: it prints exactly what you give it, character by character, like a teletype. If you want a new line, you have to ask for it with **\n**
 
 ```c
 #include <stdio.h>
@@ -52,7 +56,10 @@ int main(void) {
 }
 ```
 
-Output
+Let's trace what happens:
+
+1. the first **printf** prints `Hello` and the cursor stays right after the `o`
+2. the second **printf** prints `World` right from there
 
 ```text
 HelloWorld
@@ -77,31 +84,31 @@ Hello
 World
 ```
 
-This is a small but important detail. Forget **\n** at your own risk :)
+It's a small detail, but an important one.
 
 ---
 
-A few small reminders, just like in Java
+Two rules to remember
 
-- Text goes inside **double quotes** **""**
+- Text goes between **double quotes** **""**
 - Every statement ends with a **semicolon** **;**
 
-Try removing the **;** and run the code. Read the compile error :)
+Try removing the **;** and run the code. Read the compile error — the C compiler always tells you exactly which line upset it.
 
 ---
 
-## Mission: First Transmission
+## Mission: Your first day at the lab
 
-You just boarded the CyberStars space station and the comms console is waiting for your first broadcast.
+It's your first day at the computing lab. The teletype is humming, the paper roll is loaded, and your colleagues are waiting to see if the new programmer knows the tradition.
 
-Inside **main**, write a single **printf** that transmits the message below to Mission Control.
+Inside **main**, write a single **printf** that prints the message below.
 
 **Example**
 
 Your program should print
 
 ```text
-Hello, CyberStars!
+hello, world
 ```
 
-Don’t forget the **\n** at the end of the string :)
+Don't forget the **\n** at the end of the string.

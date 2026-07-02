@@ -1,22 +1,22 @@
-Să scrii **struct Jucator** peste tot devine obositor. **typedef** ne lasă să creăm un nume mai scurt pentru orice tip
+Să scrii **struct Angajat** peste tot devine obositor. **typedef** ne lasă să creăm un nume mai scurt pentru orice tip
 
 ```c
 #include <stdio.h>
 
 typedef struct {
     char nume[50];
-    int viata;
-    int scor;
-} Jucator;
+    int tura;
+    int sarcini;
+} Angajat;
 
 int main(void) {
-    Jucator j = {"Tommy", 100, 500};
-    printf("%s: %d HP\n", j.nume, j.viata);
+    Angajat a = {"op7", 2, 5};
+    printf("%s: tura %d\n", a.nume, a.tura);
     return 0;
 }
 ```
 
-Acum scriem **Jucator** în loc de **struct Jucator**. Mult mai curat. Așa își definesc majoritatea codebase-urilor C struct-urile
+Acum scriem **Angajat** în loc de **struct Angajat**. Mult mai curat. Așa își definesc majoritatea codebase-urilor C struct-urile
 
 ---
 
@@ -25,18 +25,18 @@ Tiparul este **typedef tip_existent nume_nou**
 ```c
 #include <stdio.h>
 
-typedef int Scor;
+typedef int Ore;
 typedef char* Sir;
 
 int main(void) {
-    Scor scor_maxim = 9999;
-    Sir nume = "Vercetti";
-    printf("%d %s\n", scor_maxim, nume);
+    Ore ore_lucrate = 9999;
+    Sir nume = "op7";
+    printf("%d %s\n", ore_lucrate, nume);
     return 0;
 }
 ```
 
-Putem da nume cu sens tipurilor. **Scor** este tot un int dedesubt, dar numele îți spune ce reprezintă
+Putem da nume cu sens tipurilor. **Ore** este tot un int dedesubt, dar numele îți spune ce reprezintă
 
 ---
 
@@ -46,51 +46,71 @@ Putem da nume cu sens tipurilor. **Scor** este tot un int dedesubt, dar numele �
 #include <stdio.h>
 
 typedef struct {
-    double x;
-    double y;
-} Punct;
+    int registru;
+    int valoare;
+} Celula;
 
 typedef struct {
-    Punct centru;
-    double raza;
-} Cerc;
+    Celula prima;
+    int total;
+} Banca;
 
-void afiseaza_cerc(Cerc *c) {
-    printf("Centru: (%.1f, %.1f), Raza: %.1f\n",
-           c->centru.x, c->centru.y, c->raza);
+void afiseaza_banca(Banca *b) {
+    printf("Registru: %d, Valoare: %d, Total: %d\n",
+           b->prima.registru, b->prima.valoare, b->total);
 }
 
 int main(void) {
-    Cerc c = {{2.0, 3.0}, 5.0};
-    afiseaza_cerc(&c);
+    Banca b = {{0, 512}, 512};
+    afiseaza_banca(&b);
     return 0;
 }
 ```
 
-Observă cum putem folosi **Punct** în interiorul lui **Cerc**. Struct-uri în struct-uri — **compoziție**. Așa construiesc programele C structuri de date complexe fără clase
+Observă cum putem folosi **Celula** în interiorul lui **Banca**. Struct-uri în struct-uri — **compoziție**. Așa construiesc programele C structuri de date complexe fără clase
 
 ---
 
-## Misiune: Raport de Performanță al Echipajului
+## Misiune: Raportul de Performanță al Turei
 
-Căpitanul stației vrea un raport formatat al scorurilor de performanță ale membrilor echipajului. Folosește **typedef** pentru a defini un struct curat și parcurge lista.
+Șeful de tură vrea un raport formatat al evaluărilor operatorilor din centrul de calcul. Folosește **typedef** pentru a defini un struct curat și parcurge lista.
 
-1. Definește un struct **typedef** numit **MembruEchipaj** cu câmpurile: **nume** (array de char), **grad** (int), **evaluare** (double)
-2. Creează un array de **3 membri ai echipajului** cu valorile arătate mai jos
+1. Definește un struct **typedef** numit **Operator** cu câmpurile: **nume** (array de char), **grad** (int), **evaluare** (double)
+2. Citește din input un număr **n** de operatori, urmat de **n** linii, fiecare cu **nume grad evaluare**
 3. Parcurge-i și afișează fiecare în formatul **"Nume - Grad X - Evaluare Y.YY"**
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- **"Tommy"**, grad **10**, evaluare **9.50**
-- **"Lance"**, grad **11**, evaluare **8.20**
-- **"Cortez"**, grad **10**, evaluare **9.80**
 
 **Exemplu**
 
-Cu valorile de pornire, programul tău ar trebui să afișeze
+Input
 
 ```text
-Tommy - Grad 10 - Evaluare 9.50
-Lance - Grad 11 - Evaluare 8.20
-Cortez - Grad 10 - Evaluare 9.80
+3
+op1 10 9.50
+op2 11 8.20
+op3 10 9.80
+```
+
+Output
+
+```text
+op1 - Grad 10 - Evaluare 9.50
+op2 - Grad 11 - Evaluare 8.20
+op3 - Grad 10 - Evaluare 9.80
+```
+
+**Exemplu**
+
+Input
+
+```text
+2
+tura1 7 6.75
+tura2 9 8.00
+```
+
+Output
+
+```text
+tura1 - Grad 7 - Evaluare 6.75
+tura2 - Grad 9 - Evaluare 8.00
 ```

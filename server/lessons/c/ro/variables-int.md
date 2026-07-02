@@ -73,7 +73,7 @@ Primul **%d** este înlocuit cu **a**, al doilea cu **b**, în ordine
 
 ---
 
-Putem face calcule, exact ca în orice alt limbaj
+Putem face calcule, exact ca la orice calcul obișnuit
 
 ```c
 #include <stdio.h>
@@ -106,7 +106,7 @@ Afișează **11**. **n++** este același lucru cu **n = n + 1**
 
 ---
 
-O mică surpriză. Încearcă asta
+O mică surpriză. Hai să urmărim ce se întâmplă
 
 ```c
 #include <stdio.h>
@@ -123,22 +123,40 @@ Afișează **3**, nu **3.5**. De ce? Pentru că **a / b** cu doi int-i dă înap
 
 ---
 
-## Misiune: Registrul Echipajului
+## Misiune: Fișa unui nou operator
 
-Baza de date a echipajului stației are nevoie ca două înregistrări să fie afișate în consolă: vârsta unui membru al echipajului și nivelul lui de acces.
+La centrul de calcul, fiecare operator nou primește o fișă cu două numere: vârsta lui și nivelul de acces la sistem alocat de administrator.
 
-Folosind variabilele `varsta` și `x` deja declarate în dreapta, scrie **două apeluri printf** care afișează fiecare valoare cu o etichetă.
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `varsta` — vârsta membrului echipajului
-- `x` — nivelul de acces
+- Citește două numere întregi din input, în această ordine: **varsta** și **nivel_acces**
+- Afișează **varsta** pe o linie, cu eticheta `Varsta: `
+- Afișează **nivel_acces** pe linie separată, cu eticheta `Acces: `
 
 **Exemplu**
 
-Cu `varsta = 60` și `x = 5`, programul tău ar trebui să afișeze
+Input
 
 ```text
-Varsta mea este 60
-x este 5
+60 5
+```
+
+Output
+
+```text
+Varsta: 60
+Acces: 5
+```
+
+**Exemplu**
+
+Input
+
+```text
+25 2
+```
+
+Output
+
+```text
+Varsta: 25
+Acces: 2
 ```

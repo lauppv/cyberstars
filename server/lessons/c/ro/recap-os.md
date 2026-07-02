@@ -2,9 +2,9 @@ Combină **fork**, **pipes** și **thread-uri** — toate conceptele de OS într
 
 ---
 
-## Misiune: Analiza Semnalului din Spațiul Adânc
+## Misiune: Numărătoarea de cuvinte pe banda perforată
 
-Stația a interceptat o transmisie din spațiul adânc. Semnalul este prea lung ca să fie decodat într-un singur proces, așa că Tommy împarte munca: un proces copil numără cuvintele și trimite rezultatul înapoi la părinte prin pipe pentru înregistrare.
+O bandă perforată foarte lungă a ajuns la centrul de calcul și trebuie numărate cuvintele de pe ea. Un proces copil face numărătoarea și trimite rezultatul înapoi la părinte printr-un pipe, ca să fie înregistrat în jurnal.
 
 Datele sunt deja în dreapta. Fă următoarele, în ordine:
 
@@ -13,7 +13,9 @@ Datele sunt deja în dreapta. Fă următoarele, în ordine:
 3. **Copilul** numără cuvintele din **"Vulpea bruna sare repede peste cainele lenes din curte"**, convertește numărul într-un șir cu **sprintf**, îl scrie în pipe și iese
 4. **Părintele** citește numărul din pipe și afișează rezultatul, apoi așteaptă copilul
 
-**Output**
+**Exemplu**
+
+Programul tău ar trebui să afișeze
 
 ```text
 Copilul a numarat: 9 cuvinte

@@ -8,9 +8,9 @@ int main(void) {
     int b = 5;
 
     printf("%d\n", a + b);   // adunare
-    printf("%d\n", a - b);   // scădere
-    printf("%d\n", a * b);   // înmulțire
-    printf("%d\n", a / b);   // împărțire
+    printf("%d\n", a - b);   // scadere
+    printf("%d\n", a * b);   // inmultire
+    printf("%d\n", a / b);   // impartire
     printf("%d\n", a % b);   // rest (modulo)
 
     return 0;
@@ -63,7 +63,7 @@ int main(void) {
 
 ---
 
-C are **scurtături** la îndemână (aceleași ca în Java)
+C are **scurtături** la îndemână
 
 - **a++** este același lucru cu **a = a + 1**
 - **a--** este același lucru cu **a = a - 1**
@@ -72,7 +72,7 @@ C are **scurtături** la îndemână (aceleași ca în Java)
 - **a \*= 2** este același lucru cu **a = a \* 2**
 - **a /= 4** este același lucru cu **a = a / 4**
 
-Vei vedea **i++** în bucle **for** absolut peste tot :)
+Vei vedea **i++** în bucle **for** absolut peste tot
 
 ---
 
@@ -90,7 +90,7 @@ int main(void) {
 
 **pow()** întoarce mereu un **double**, deci chiar și **2 la puterea 3** iese ca **8.000000**, nu **8**
 
-Ca să folosim **pow()** avem nevoie de **#include <math.h>**. Pe unele sisteme, trebuie și să legi biblioteca matematică cu **-lm** când compilezi, dar platforma noastră se ocupă de asta pentru noi :)
+Ca să folosim **pow()** avem nevoie de **#include <math.h>**. Pe unele sisteme, trebuie și să legi biblioteca matematică cu **-lm** când compilezi, dar platforma noastră se ocupă de asta pentru noi
 
 ---
 
@@ -110,20 +110,21 @@ Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
 
 ---
 
-## Misiune: Calculatorul Rețelei de Energie
+## Misiune: Panoul de diagnostic al mainframe-ului
 
-Rețeaua de energie a stației rulează diagnostice folosind două valori de la senzori. Treaba ta este să afișezi toate cele cinci rezultate aritmetice ca echipa de inginerie să poată verifica dacă rețeaua este stabilă.
+Panoul de diagnostic al mainframe-ului citește două valori de pe consolă și rulează cele cinci operații aritmetice de bază, ca tehnicianul de tură să poată verifica rapid dacă unitatea aritmetică funcționează corect.
 
-Afișează rezultatele lui `a + b`, `a - b`, `a * b`, `a / b` și `a % b` — fiecare pe propria linie.
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `a` — citirea principală de la senzor
-- `b` — citirea secundară de la senzor
+Citește două numere întregi **a** și **b** folosind **scanf**, apoi afișează rezultatele lui `a + b`, `a - b`, `a * b`, `a / b` și `a % b` — fiecare pe propria linie.
 
 **Exemplu**
 
-Cu `a = 17` și `b = 5`, programul tău ar trebui să afișeze
+Input
+
+```text
+17 5
+```
+
+Output
 
 ```text
 22
@@ -133,4 +134,20 @@ Cu `a = 17` și `b = 5`, programul tău ar trebui să afișeze
 2
 ```
 
-Schimbă valorile și rulează din nou — vezi cum se schimbă output-ul :)
+**Exemplu**
+
+Input
+
+```text
+20 4
+```
+
+Output
+
+```text
+24
+16
+80
+5
+0
+```

@@ -1,4 +1,4 @@
-Până acum, fiecare variabilă ținea **un** singur lucru. Dar dacă vrem să stocăm scorurile unei clase întregi? Cinci variabile separate ar fi urât. Cincizeci ar fi imposibil. Avem nevoie de un **array**
+Până acum, fiecare variabilă ținea **un** singur lucru. Dar dacă vrem să stocăm consumul orar al unei benzi magnetice pe mai multe ore? Cinci variabile separate ar fi urât. Cincizeci ar fi imposibil. Avem nevoie de un **array**
 
 Un **array** în C este o colecție cu mărime fixă de valori de **același tip**
 
@@ -6,19 +6,19 @@ Un **array** în C este o colecție cu mărime fixă de valori de **același tip
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[5] = { 80, 95, 60, 72, 88 };
+    int consum[5] = { 80, 95, 60, 72, 88 };
 
-    printf("%d\n", scoruri[0]);   // 80
-    printf("%d\n", scoruri[1]);   // 95
-    printf("%d\n", scoruri[4]);   // 88
+    printf("%d\n", consum[0]);   // 80
+    printf("%d\n", consum[1]);   // 95
+    printf("%d\n", consum[4]);   // 88
 
     return 0;
 }
 ```
 
-Forma este **tip nume[marime]**. Am declarat **scoruri** ca un array de **5 int-uri**, apoi l-am umplut cu **{ ... }**
+Forma este **tip nume[marime]**. Am declarat **consum** ca un array de **5 int-uri**, apoi l-am umplut cu **{ ... }**
 
-Exact ca în Python și Java, **numărarea începe de la 0**. **scoruri[0]** este primul element, **scoruri[4]** este ultimul (pentru că mărimea este 5, indicii sunt 0-4)
+**Numărarea începe de la 0**. **consum[0]** este primul element, **consum[4]** este ultimul (pentru că mărimea este 5, indicii sunt 0-4)
 
 ---
 
@@ -28,7 +28,7 @@ Putem lăsa C să **deducă mărimea** din inițializator
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[] = { 80, 95, 60, 72, 88 };
+    int consum[] = { 80, 95, 60, 72, 88 };
     return 0;
 }
 ```
@@ -41,12 +41,12 @@ Putem de asemenea să creăm un array **fără** a-l inițializa, apoi să-l ump
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[5];
-    scoruri[0] = 80;
-    scoruri[1] = 95;
-    scoruri[2] = 60;
-    scoruri[3] = 72;
-    scoruri[4] = 88;
+    int consum[5];
+    consum[0] = 80;
+    consum[1] = 95;
+    consum[2] = 60;
+    consum[3] = 72;
+    consum[4] = 88;
     return 0;
 }
 ```
@@ -55,13 +55,7 @@ int main(void) {
 
 ---
 
-Câte elemente are un array? Aici C este neprietenos comparat cu Python și Java
-
-- Python: **len(arr)**
-- Java: **arr.length**
-- **C: nu există nicio metodă încorporată**
-
-Array-ul nu **își cunoaște** propria mărime — este doar o bucată de memorie
+Câte elemente are un array? Aici C nu ne ajută cu nimic — array-ul nu **își cunoaște** propria mărime, este doar o bucată de memorie
 
 Soluția clasică folosește **sizeof**
 
@@ -69,28 +63,28 @@ Soluția clasică folosește **sizeof**
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[] = { 80, 95, 60, 72, 88 };
-    int n = sizeof(scoruri) / sizeof(scoruri[0]);
+    int consum[] = { 80, 95, 60, 72, 88 };
+    int n = sizeof(consum) / sizeof(consum[0]);
     printf("%d\n", n);   // 5
     return 0;
 }
 ```
 
-**sizeof(scoruri)** dă numărul total de bytes ai array-ului, **sizeof(scoruri[0])** dă numărul de bytes ai unui element. Împărțindu-i obținem numărul
+**sizeof(consum)** dă numărul total de bytes ai array-ului, **sizeof(consum[0])** dă numărul de bytes ai unui element. Împărțindu-i obținem numărul de elemente
 
 **Capcană mare**: acest truc funcționează doar pe array-ul **original**. În momentul în care **pasezi un array unei funcții**, C îl convertește pe ascuns la un pointer, iar **sizeof** dă un rezultat diferit (greșit). Deci în practică, când scriem funcții care iau array-uri, **pasăm mărimea ca parametru separat**. Vom vedea asta în lecția următoare
 
 ---
 
-Putem schimba valori exact ca în orice alt limbaj
+Putem schimba valori exact ca la orice variabilă normală
 
 ```c
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[5] = { 80, 95, 60, 72, 88 };
-    scoruri[1] = 100;
-    printf("%d\n", scoruri[1]);   // 100
+    int consum[5] = { 80, 95, 60, 72, 88 };
+    consum[1] = 100;
+    printf("%d\n", consum[1]);   // 100
     return 0;
 }
 ```
@@ -103,39 +97,55 @@ Ce se întâmplă dacă cerem un indice care nu există?
 #include <stdio.h>
 
 int main(void) {
-    int scoruri[5] = { 80, 95, 60, 72, 88 };
-    printf("%d\n", scoruri[10]);
+    int consum[5] = { 80, 95, 60, 72, 88 };
+    printf("%d\n", consum[10]);
     return 0;
 }
 ```
 
-Rulează-l. **C NU verifică** dacă indicele este valid. Spre deosebire de Python (care aruncă **IndexError**) sau Java (care aruncă **ArrayIndexOutOfBoundsException**), C citește pur și simplu orice se întâmplă să fie la acea locație de memorie. Ai putea vedea **0**, sau gunoi aleator, sau programul tău s-ar putea prăbuși
+Rulează-l. **C NU verifică** dacă indicele este valid. C citește pur și simplu orice se întâmplă să fie la acea locație de memorie. Ai putea vedea **0**, sau gunoi aleator, sau programul tău s-ar putea prăbuși
 
-**Verifică întotdeauna indicii**. Ieșirea în afara limitelor este unul dintre cele **mai periculoase bug-uri** din C și cauza multor **vulnerabilități reale de securitate** (buffer overflows). Bine ai venit la programarea low-level :)
+**Verifică întotdeauna indicii**. Ieșirea în afara limitelor este unul dintre cele **mai periculoase bug-uri** din C și cauza multor **vulnerabilități reale de securitate** (buffer overflows). Bine ai venit la programarea low-level
 
 ---
 
-## Misiune: Verificarea Registrului Echipajului
+## Misiune: Jurnalul de tură
 
-Manifestul echipajului stației tocmai a sosit ca un bloc gol de date. Sarcina ta este să completezi nivelurile de putere ale echipajului și să rulezi un diagnostic rapid.
+Centrul de calcul rulează în trei schimburi. La finalul fiecărei ture, operatorul notează pe banda teletype-ului trei citiri de consum ale unității de bandă magnetică.
 
-1. Setează **eroi[0]** la **10**
-2. Setează **eroi[1]** la **20**
-3. Setează **eroi[2]** la **30**
-4. Afișează **mărimea** array-ului (folosește trucul **sizeof**)
-5. Afișează **primul** element
-6. Afișează **ultimul** element (indicele **2**)
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `eroi` — un array de int cu 3 sloturi goale
+1. Citește **3 numere întregi** din input, unul câte unul, în array-ul **consum** (mărime 3): **consum[0]**, **consum[1]**, **consum[2]**
+2. Afișează **mărimea** array-ului (folosește trucul **sizeof**)
+3. Afișează **primul** element
+4. Afișează **ultimul** element (indicele **2**)
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
+
+```text
+10 20 30
+```
+
+Output
 
 ```text
 3
 10
 30
+```
+
+**Exemplu**
+
+Input
+
+```text
+5 15 25
+```
+
+Output
+
+```text
+3
+5
+25
 ```

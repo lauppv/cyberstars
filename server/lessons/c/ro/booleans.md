@@ -109,28 +109,35 @@ int main(void) {
 
 ---
 
-## Misiune: Accesul în Ecluză
+## Misiune: Accesul în sala calculatoarelor
 
-Programezi panoul de acces al ecluzei pentru sediul central CyberStars. O persoană poate trece dacă este **angajat ȘI este zi lucrătoare**, SAU dacă este **oaspete CU o invitație**.
+Sala calculatoarelor centrului de date se încuie automat. Poarta programează un panou care decide cine intră: o persoană poate trece dacă este **angajat ȘI este zi lucrătoare**, SAU dacă este **oaspete CU o invitație**.
 
-Scrie un **if / else** folosind `&&` și `||` care afișează verdictul corect.
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `este_angajat` — dacă persoana este angajat
-- `este_zi_lucratoare` — dacă azi este zi lucrătoare
-- `este_oaspete` — dacă persoana este oaspete
-- `are_invitatie` — dacă persoana are invitație
+Citește patru numere întregi (**0** sau **1**), separate prin spațiu, în această ordine: **este_angajat**, **este_zi_lucratoare**, **este_oaspete**, **are_invitatie**. Scrie un **if / else** folosind `&&` și `||` care afișează verdictul corect
 
 **Exemplu**
 
-Cu `este_angajat = true`, `este_zi_lucratoare = true`, `este_oaspete = false`, `are_invitatie = false`, programul tău ar trebui să afișeze
+Input
+
+```text
+1 1 0 0
+```
+
+Output
 
 ```text
 Acces permis
 ```
 
-Acum setează `este_angajat = false` și `este_oaspete = true`, `are_invitatie = false` și rulează din nou
+**Exemplu**
+
+Input
+
+```text
+0 0 1 0
+```
+
+Output
 
 ```text
 Acces refuzat

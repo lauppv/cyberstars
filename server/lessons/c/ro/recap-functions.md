@@ -2,9 +2,9 @@ Combină **bucle while**, **funcții**, **input** și **operatori**
 
 ---
 
-## Misiune: Computerul de Navigație
+## Misiune: Coada de calcul a centrului de date
 
-Computerul de navigație al stației procesează calcule de traiectorie dintr-o coadă. Fiecare calcul specifică doi operanzi și un cod de operație. Computerul trebuie să continue procesarea până când primește un semnal de oprire (cod op 0).
+Centrul de calcul primește o coadă de comenzi de la teletype-uri conectate. Fiecare linie din coadă conține doi operanzi și un cod de operație. Ferma de calcul trebuie să proceseze coada până primește semnalul de oprire (cod op 0).
 
 Scrie aceste funcții:
 
@@ -19,7 +19,9 @@ Programul principal citește trei numere întregi din input: **a**, **b** și **
 - Dacă **op** este **3**, afișează rezultatul lui **putere(a, b)**
 - Dacă **op** este **0**, oprește programul
 
-Input-ul va fi
+**Exemplu**
+
+Input
 
 ```text
 3 4 1
@@ -28,7 +30,7 @@ Input-ul va fi
 0 0 0
 ```
 
-**Output**
+Output
 
 ```text
 7
@@ -36,4 +38,19 @@ Input-ul va fi
 256
 ```
 
-Fiecare linie de input are trei numere. Procesează-le una câte una până când op este 0. Implementează **putere** cu o buclă while, nu cu o funcție de bibliotecă
+**Exemplu**
+
+Input
+
+```text
+10 20 1
+0 0 0
+```
+
+Output
+
+```text
+30
+```
+
+Fiecare linie de input are trei numere. Procesează-le una câte una până când op este 0. Implementează **putere** cu o buclă while, nu cu o funcție de bibliotecă.

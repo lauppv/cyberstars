@@ -1,4 +1,4 @@
-In programming we often want to **store** values to use them later. The simplest example: numbers. In C, before storing anything, we have to tell the language **what kind of value** we’re storing. This is called a **type**
+In programming we often want to **store** values so we can use them later. The simplest example: numbers. In C, before storing something, we have to tell the language **what kind of value** we're storing. This is called a **type**
 
 ```c
 #include <stdio.h>
@@ -21,14 +21,14 @@ Output
 1
 ```
 
-**int** is the type for **whole numbers** (1, 2, 100, -20, 0). C cares about types — it won’t let us store a number in a variable without saying what kind of number
+**int** is the type for **whole numbers** (1, 2, 100, -20, 0). C cares about types — it won't let us store a number in a variable without telling it what kind of number it is
 
 ---
 
-Notice the new thing: **%d** inside the **printf**. This is a **format specifier**. **printf** doesn’t know how to display an **int** by itself, we have to tell it: "here’s an int, please print it"
+Notice the new thing: **%d** inside **printf**. This is a **format specifier**. **printf** doesn't know on its own how to display an **int**, we have to tell it: "here's an int, please display it"
 
 - **%d** → for an **int**
-- **\n** → new line, as before
+- **\n** → new line, same as before
 
 The format specifier (**%d**) is replaced with the value (the variable that comes after the comma)
 
@@ -50,7 +50,7 @@ Output
 My age is 60
 ```
 
-We can use multiple specifiers in one line
+We can use several specifiers on a single line
 
 ```c
 #include <stdio.h>
@@ -69,11 +69,11 @@ Output
 a = 10, b = 20
 ```
 
-The first **%d** is replaced by **a**, the second by **b**, in order
+The first **%d** is replaced with **a**, the second with **b**, in order
 
 ---
 
-We can do math, just like in any other language
+We can do arithmetic, just like any regular calculation
 
 ```c
 #include <stdio.h>
@@ -87,7 +87,7 @@ int main(void) {
 }
 ```
 
-Output **8**. Same rule: the **right side** of **=** is computed first, then stored on the left
+Prints **8**. Same rule: the **right side** of **=** is computed first, then stored on the left
 
 The classic **increment by 1** also has a shortcut in C
 
@@ -102,11 +102,11 @@ int main(void) {
 }
 ```
 
-Output **11**. **n++** is the same as **n = n + 1**
+Prints **11**. **n++** is the same thing as **n = n + 1**
 
 ---
 
-A small surprise. Try this
+A little surprise. Let's trace what happens
 
 ```c
 #include <stdio.h>
@@ -119,26 +119,44 @@ int main(void) {
 }
 ```
 
-Output **3**, not **3.5**. Why? Because **a / b** with two ints gives back an **int** — C throws away the decimal part. We’ll see how to keep the decimals in the next lesson, with **float**
+Prints **3**, not **3.5**. Why? Because **a / b** with two ints returns an **int** — C throws away the decimal part. We'll see how to keep decimals in the next lesson, with **float**
 
 ---
 
-## Mission: Crew Registry
+## Mission: New Operator's File
 
-The station’s crew database needs two entries logged to the console: a crew member’s age and their security clearance level.
+At the computing center, every new operator gets a file with two numbers: their age and the system access level assigned by the administrator.
 
-Using the variables `age` and `x` already declared on the right, write **two printf** calls that display each value with a label.
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `age` — crew member’s age
-- `x` — security clearance level
+- Read two whole numbers from the input, in this order: **age** and **access_level**
+- Print **age** on one line, with the label `Age: `
+- Print **access_level** on a separate line, with the label `Access: `
 
 **Example**
 
-With `age = 60` and `x = 5`, your program should print
+Input
 
 ```text
-My age is 60
-x is 5
+60 5
+```
+
+Output
+
+```text
+Age: 60
+Access: 5
+```
+
+**Example**
+
+Input
+
+```text
+25 2
+```
+
+Output
+
+```text
+Age: 25
+Access: 2
 ```

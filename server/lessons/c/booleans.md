@@ -1,11 +1,11 @@
-In the **if-else** lesson we saw a small surprise: **C doesn’t have a native boolean type**. It uses **integers**, where **0** means **false** and **anything else** means **true**
+In the **if-else** lesson we saw a small surprise: **C doesn't have a native boolean type**. It uses **integers**, where **0** means **false** and **anything else** means **true**
 
 ```c
 #include <stdio.h>
 
 int main(void) {
     int is_user_online = 1;   // "true"
-    int is_hidden = 0;       // "false"
+    int is_hidden = 0;        // "false"
 
     if (is_user_online) {
         printf("online\n");
@@ -18,7 +18,7 @@ This works, but reading **int is_user_online = 1** is awkward. It looks like a c
 
 ---
 
-The good news: since C99, the standard library gives us a real boolean type
+The good news: starting with C99, the standard library gives us a real boolean type
 
 ```c
 #include <stdio.h>
@@ -39,7 +39,7 @@ After we **#include <stdbool.h>**, three new identifiers exist: **bool**, **true
 
 Behind the scenes, **bool** is still essentially an int — **true** is **1**, **false** is **0** — but the names make our code much more **readable**. From now on, when something can only be true or false, prefer **bool** over **int**
 
-There is no special format specifier for **bool** in **printf** — just use **%d** (it’ll print **0** or **1**)
+There is no special format specifier for **bool** in **printf** — just use **%d** (it will print **0** or **1**)
 
 ---
 
@@ -109,28 +109,35 @@ int main(void) {
 
 ---
 
-## Mission: Airlock Access
+## Mission: Access to the Computer Room
 
-You are programming the airlock access panel for CyberStars HQ. A person can pass through if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
+The data center's computer room locks itself automatically. The gate runs a panel that decides who gets in: a person can pass if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
 
-Write an **if / else** using `&&` and `||` that prints the correct verdict.
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `is_employee` — whether the person is an employee
-- `is_working_day` — whether today is a working day
-- `is_guest` — whether the person is a guest
-- `has_invitation` — whether the person has an invitation
+Read four integers (**0** or **1**), separated by space, in this order: **is_employee**, **is_working_day**, **is_guest**, **has_invitation**. Write an **if / else** using `&&` and `||` that prints the correct verdict
 
 **Example**
 
-With `is_employee = true`, `is_working_day = true`, `is_guest = false`, `has_invitation = false`, your program should print
+Input
+
+```text
+1 1 0 0
+```
+
+Output
 
 ```text
 Access granted
 ```
 
-Now set `is_employee = false` and `is_guest = true`, `has_invitation = false` and run again
+**Example**
+
+Input
+
+```text
+0 0 1 0
+```
+
+Output
 
 ```text
 Access denied

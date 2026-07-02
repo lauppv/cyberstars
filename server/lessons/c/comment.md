@@ -13,7 +13,7 @@ int main(void) {
 }
 ```
 
-Everything after **//** on a given line is ignored. The program runs as if those parts weren’t there
+Everything after **//** on a line is ignored. The program runs as if those parts weren't there
 
 ---
 
@@ -29,7 +29,7 @@ int main(void) {
 }
 ```
 
-Now nothing is printed, because the **printf** is **commented out**. Very useful when debugging — instead of deleting code and rewriting later, just comment it out
+Now nothing is printed, because the **printf** is **commented out**. Very useful when debugging — instead of deleting code and rewriting it later, you just comment it out
 
 ---
 
@@ -53,20 +53,21 @@ In old C code (before C99), only **/\* \*/** existed. **//** was added later, co
 
 ---
 
-## Mission: Classified Cargo
+## Mission: System Log
 
-The station’s cargo manifest is displayed on screen, but one line contains **classified information** that must not appear in the public log.
+The system prints a boot log to the teletype, but one of the lines contains an internal access code that must not end up in the public log.
 
-Comment out the line that prints the secret code, so only the approved entries are transmitted.
+- Write four **printf** calls, in order, that print: `PDP-11`, `Bell Labs Computing Center`, `ACCESS-7734-SECRET`, and the number `1972`
+- Comment out the third printf call (the one with the access code), so that its line no longer appears in the output
 
 **Example**
 
 Your program should print
 
 ```text
-Voyager
-Deep Space Exploration
-9001
+PDP-11
+Bell Labs Computing Center
+1972
 ```
 
-Don’t delete anything — just **comment** the line you don’t want to run :)
+Don't delete anything — just **comment** the line you don't want to run

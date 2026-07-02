@@ -108,59 +108,77 @@ int main(void) {
 
 ---
 
-O utilizare clasică: **flag-urile**. Imaginează-ți un personaj de joc cu abilități
+O utilizare clasică: **flag-urile de permisiuni**, exact cum funcționează pe fișierele UNIX
 
 ```c
 #include <stdio.h>
 
-#define POATE_ZBURA   (1 << 0)   // 0001 = 1
-#define POATE_INOTA   (1 << 1)   // 0010 = 2
-#define POATE_LUPTA   (1 << 2)   // 0100 = 4
-#define POATE_VINDECA (1 << 3)   // 1000 = 8
+#define PERM_READ    (1 << 0)   // 001 = 1
+#define PERM_WRITE   (1 << 1)   // 010 = 2
+#define PERM_EXECUTE (1 << 2)   // 100 = 4
 
 int main(void) {
-    int abilitati = POATE_ZBURA | POATE_LUPTA;   // 0101 = 5
+    int permisiuni = PERM_READ | PERM_WRITE;   // 011 = 3
 
-    // verifica daca poate zbura
-    if (abilitati & POATE_ZBURA) {
-        printf("Poate zbura!\n");
+    // verifica daca are voie sa citeasca
+    if (permisiuni & PERM_READ) {
+        printf("Poate citi\n");
     }
 
-    // adauga abilitatea de a inota
-    abilitati = abilitati | POATE_INOTA;       // 0111 = 7
+    // adauga permisiunea de executie
+    permisiuni = permisiuni | PERM_EXECUTE;      // 111 = 7
 
-    // scoate abilitatea de a zbura
-    abilitati = abilitati & ~POATE_ZBURA;      // 0110 = 6
+    // scoate permisiunea de scriere
+    permisiuni = permisiuni & ~PERM_WRITE;       // 101 = 5
 
     return 0;
 }
 ```
 
-Un singur **int** stochează mai multe proprietăți da/nu folosind biți individuali. Asta este folosit în sistemele de operare, în protocoalele de rețea și în motoarele de joc. Permisiunile de fișiere din Linux funcționează exact așa
+Un singur **int** stochează mai multe proprietăți da/nu folosind biți individuali. Asta este exact ce face UNIX când afișezi `ls -l` și vezi `rwx` lângă un fișier — fiecare literă este un bit dintr-un întreg
 
 ---
 
-## Misiune: Codurile de Acces la Ecluză
+## Misiune: Codurile de acces ale terminalului
 
-Sistemul ecluzei stației folosește flag-uri pe biți pentru a codifica permisiunile de acces. Cu două coduri de securitate, rulează cele patru operații de bază pe biți ca ofițerul de securitate să poată verifica configurația încuietorii.
+Centrul de calcul verifică perechi de coduri de securitate primite de la terminale. Operatorul de tură introduce doi întregi, iar sistemul trebuie să afișeze cele patru operații de bază pe biți ca să confirme configurația.
 
-1. Afișează **a & b** (AND)
-2. Afișează **a | b** (OR)
-3. Afișează **a ^ b** (XOR)
-4. Afișează **a << 2** (shift la stânga cu 2)
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `a` — int cu valoarea **12** (binar: 1100)
-- `b` — int cu valoarea **10** (binar: 1010)
+1. Citește doi întregi **a** și **b**
+2. Afișează **a & b** (AND)
+3. Afișează **a | b** (OR)
+4. Afișează **a ^ b** (XOR)
+5. Afișează **a << 2** (shift la stânga cu 2)
 
 **Exemplu**
 
-Cu valorile de pornire, programul tău ar trebui să afișeze
+Input
+
+```text
+12 10
+```
+
+Output
 
 ```text
 8
 14
 6
 48
+```
+
+**Exemplu**
+
+Input
+
+```text
+5 3
+```
+
+Output
+
+```text
+1
+7
+6
+20
 ```
