@@ -32,8 +32,8 @@ grep -r "error" .
 Căutarea recursivă funcționează împreună cu opțiunile pe care le știi deja:
 
 ```bash
-grep -ri "error" logs     # recursivă + insensibilă la majuscule
-grep -rn "error" logs     # recursivă + cu numere de linie
+grep -ri "error" logs     # recursiva + insensibila la majuscule
+grep -rn "error" logs     # recursiva + cu numere de linie
 ```
 
 `grep -r` este modul în care răspunzi la întrebarea „este menționat acest cuvânt

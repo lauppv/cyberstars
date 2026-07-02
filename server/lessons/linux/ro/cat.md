@@ -9,8 +9,8 @@ cat mission.txt
 ```
 
 ```text
-Misiune: explorează sectorul 7.
-Stare: în desfășurare.
+Misiune: exploreaza sectorul 7.
+Stare: in desfasurare.
 ```
 
 Tot fișierul este aruncat în terminal dintr-odată.
