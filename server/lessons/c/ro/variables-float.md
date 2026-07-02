@@ -113,36 +113,18 @@ int main(void) {
 
 Camera calculatoarelor centrului de calcul are un termometru și un higrometru conectate la un teleimprimator. Fiecare tură, operatorul citește cele două valori și le notează în jurnal, rotunjite la 2 zecimale.
 
-- Citește două numere reale din input, în această ordine: **temperatura** și **umiditate**
-- Afișează **temperatura** pe o linie, cu eticheta `Temperatura: `, rotunjită la **2 zecimale**
-- Afișează **umiditate** pe linie separată, cu eticheta `Umiditate: `, rotunjită la **2 zecimale**
+Scrie un program care, în interiorul lui **main**
+
+- declară **double temperatura = 21.6;**
+- declară **double umiditate = 45.5;**
+- afișează **temperatura** pe o linie, cu eticheta `Temperatura: `, rotunjită la **2 zecimale**
+- afișează **umiditate** pe linie separată, cu eticheta `Umiditate: `, rotunjită la **2 zecimale**
 
 **Exemplu**
 
-Input
-
-```text
-21.6 45.5
-```
-
-Output
+Programul tău ar trebui să afișeze
 
 ```text
 Temperatura: 21.60
 Umiditate: 45.50
-```
-
-**Exemplu**
-
-Input
-
-```text
-19.25 60.75
-```
-
-Output
-
-```text
-Temperatura: 19.25
-Umiditate: 60.75
 ```

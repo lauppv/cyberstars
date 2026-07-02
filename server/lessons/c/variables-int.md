@@ -127,36 +127,18 @@ Prints **3**, not **3.5**. Why? Because **a / b** with two ints returns an **int
 
 At the computing center, every new operator gets a file with two numbers: their age and the system access level assigned by the administrator.
 
-- Read two whole numbers from the input, in this order: **age** and **access_level**
-- Print **age** on one line, with the label `Age: `
-- Print **access_level** on a separate line, with the label `Access: `
+Write a program that, inside **main**
+
+- declares **int age = 45;**
+- declares **int access_level = 3;**
+- prints **age** on one line, with the label `Age: `
+- prints **access_level** on a separate line, with the label `Access: `
 
 **Example**
 
-Input
+Your program should print
 
 ```text
-60 5
-```
-
-Output
-
-```text
-Age: 60
-Access: 5
-```
-
-**Example**
-
-Input
-
-```text
-25 2
-```
-
-Output
-
-```text
-Age: 25
-Access: 2
+Age: 45
+Access: 3
 ```

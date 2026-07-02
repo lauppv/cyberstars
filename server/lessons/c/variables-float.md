@@ -113,36 +113,18 @@ int main(void) {
 
 The computing center's machine room has a thermometer and a hygrometer connected to a teletype. Every shift, the operator reads the two values and logs them, rounded to 2 decimal places.
 
-- Read two real numbers from the input, in this order: **temperature** and **humidity**
-- Print **temperature** on one line, with the label `Temperature: `, rounded to **2 decimals**
-- Print **humidity** on a separate line, with the label `Humidity: `, rounded to **2 decimals**
+Write a program that, inside **main**
+
+- declares **double temperature = 21.6;**
+- declares **double humidity = 45.5;**
+- prints **temperature** on one line, with the label `Temperature: `, rounded to **2 decimals**
+- prints **humidity** on a separate line, with the label `Humidity: `, rounded to **2 decimals**
 
 **Example**
 
-Input
-
-```text
-21.6 45.5
-```
-
-Output
+Your program should print
 
 ```text
 Temperature: 21.60
 Humidity: 45.50
-```
-
-**Example**
-
-Input
-
-```text
-19.25 60.75
-```
-
-Output
-
-```text
-Temperature: 19.25
-Humidity: 60.75
 ```

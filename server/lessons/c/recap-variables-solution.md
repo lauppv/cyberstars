@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 int main(void) {
-    int distance_km;
-    double consumption_per_km, price_per_liter;
-    scanf("%d %lf %lf", &distance_km, &consumption_per_km, &price_per_liter);
+    int distance_km = 450;
+    double consumption_per_km = 0.07;
+    double price_per_liter = 1.75;
 
     // total fuel needed for the trip
     double total_fuel = distance_km * consumption_per_km;

@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 int main(void) {
-    int distanta_km;
-    double consum_per_km, pret_per_litru;
-    scanf("%d %lf %lf", &distanta_km, &consum_per_km, &pret_per_litru);
+    int distanta_km = 450;
+    double consum_per_km = 0.07;
+    double pret_per_litru = 1.75;
 
     // combustibilul total necesar pentru drum
     double combustibil_total = distanta_km * consum_per_km;

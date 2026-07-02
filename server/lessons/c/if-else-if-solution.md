@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 int main(void) {
-    int seconds, error_detected;
-    scanf("%d %d", &seconds, &error_detected);
+    int seconds = 5;
+    int error_detected = 1;
 
     if (seconds == 100) {
         printf("Checking memory\n");
