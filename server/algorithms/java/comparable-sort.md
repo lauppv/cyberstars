@@ -39,6 +39,32 @@ Amy 4.0
 Zoe 4.0
 ```
 
+```
+Input:
+1
+Max 3.5
+
+Output:
+Max 3.5
+```
+
+A single student needs no comparison — it's already "sorted".
+
+```
+Input:
+3
+Eve 3.5
+Ana 3.5
+Bob 3.5
+
+Output:
+Ana 3.5
+Bob 3.5
+Eve 3.5
+```
+
+When every GPA ties, the whole list falls back to alphabetical order.
+
 ### Hints
 
 - Implement `compareTo` in the Student class.

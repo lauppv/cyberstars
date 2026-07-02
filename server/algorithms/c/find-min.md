@@ -29,6 +29,20 @@ Input:
 Output: 10
 ```
 
+```
+Input:
+1
+7
+Output: 7
+```
+
+```
+Input:
+4
+-5 -1 -10 -3
+Output: -10
+```
+
 ### Hints
 
 - Read the first number and set it as your initial `min`.

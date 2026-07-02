@@ -29,6 +29,22 @@ Intrare:
 Ieșire: 1 2 3 4
 ```
 
+```
+Intrare:
+1
+9
+Ieșire: 9
+```
+
+```
+Intrare:
+4
+1 1 2 2
+Ieșire: 1 1 2 2
+```
+
+Un tablou deja sortat (cu duplicate) nu necesită nicio deplasare.
+
 ### Indicii
 
 - Începe de la al doilea element (indicele 1) și avansează înainte.

@@ -27,6 +27,13 @@ Intrare:  AEIOU
 Ieșire: 5
 ```
 
+```
+Intrare:  xyz
+Ieșire: 0
+```
+
+Fără nicio vocală e un caz valid — numărul este pur și simplu `0`.
+
 ### Indicii
 
 - Folosește `.lower()` pentru a trata atât literele mari, cât și cele mici.

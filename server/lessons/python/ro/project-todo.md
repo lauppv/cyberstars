@@ -2,19 +2,19 @@ Ultimul nostru mini-proiect: un **manager de listă de sarcini**. O să construi
 
 ---
 
-Fiecare sarcină este un dicționar cu un **nume** și o stare **done**
+Fiecare sarcină este un dicționar cu un **nume** și o stare **terminat**
 
 ```py
-sarcina = {"nume": "Invata Python", "done": False}
+sarcina = {"nume": "Invata Python", "terminat": False}
 ```
 
 Lista noastră de sarcini este o **listă** din aceste dicționare
 
 ```py
-todos = [
-    {"nume": "Invata Python", "done": True},
-    {"nume": "Construieste un proiect", "done": False},
-    {"nume": "Obtine un job la CyberStars", "done": False}
+sarcini = [
+    {"nume": "Invata Python", "terminat": True},
+    {"nume": "Construieste un proiect", "terminat": False},
+    {"nume": "Obtine un job la CyberStars", "terminat": False}
 ]
 ```
 
@@ -25,24 +25,24 @@ Hai să construim funcțiile una câte una
 **Adăugarea unei sarcini**
 
 ```py
-def adauga_sarcina(todos, nume):
-    todos.append({"nume": nume, "done": False})
+def adauga_sarcina(sarcini, nume):
+    sarcini.append({"nume": nume, "terminat": False})
 ```
 
 **Marcarea unei sarcini ca terminată** (după index)
 
 ```py
-def finalizeaza_sarcina(todos, index):
-    if 0 <= index < len(todos):
-        todos[index]["done"] = True
+def finalizeaza_sarcina(sarcini, index):
+    if 0 <= index < len(sarcini):
+        sarcini[index]["terminat"] = True
 ```
 
 **Eliminarea unei sarcini** (după index)
 
 ```py
-def elimina_sarcina(todos, index):
-    if 0 <= index < len(todos):
-        todos.pop(index)
+def elimina_sarcina(sarcini, index):
+    if 0 <= index < len(sarcini):
+        sarcini.pop(index)
 ```
 
 **.pop(index)** elimină elementul de pe acea poziție din listă
@@ -50,9 +50,9 @@ def elimina_sarcina(todos, index):
 **Afișarea tuturor sarcinilor**
 
 ```py
-def afiseaza_sarcini(todos):
-    for i, sarcina in enumerate(todos):
-        stare = "terminat" if sarcina["done"] else "neterminat"
+def afiseaza_sarcini(sarcini):
+    for i, sarcina in enumerate(sarcini):
+        stare = "terminat" if sarcina["terminat"] else "neterminat"
         print(f"{i}. [{stare}] {sarcina['nume']}")
 ```
 
@@ -61,21 +61,21 @@ def afiseaza_sarcini(todos):
 Punând totul cap la cap
 
 ```py
-todos = []
+sarcini = []
 
-adauga_sarcina(todos, "Termina curriculumul de Python")
-adauga_sarcina(todos, "Incepe curriculumul de Java")
-adauga_sarcina(todos, "Iesi la aer")
+adauga_sarcina(sarcini, "Termina curriculumul de Python")
+adauga_sarcina(sarcini, "Incepe curriculumul de Java")
+adauga_sarcina(sarcini, "Iesi la aer")
 
-afiseaza_sarcini(todos)
+afiseaza_sarcini(sarcini)
 print("---")
 
-finalizeaza_sarcina(todos, 0)
-afiseaza_sarcini(todos)
+finalizeaza_sarcina(sarcini, 0)
+afiseaza_sarcini(sarcini)
 print("---")
 
-elimina_sarcina(todos, 2)
-afiseaza_sarcini(todos)
+elimina_sarcina(sarcini, 2)
+afiseaza_sarcini(sarcini)
 ```
 
 Ieșire
@@ -100,26 +100,26 @@ Fiecare funcție face **un singur lucru** și îl face bine. Acesta este un prin
 O funcție de **numărare** este și ea utilă
 
 ```py
-def numara_finalizate(todos):
+def numara_finalizate(sarcini):
     contor = 0
-    for sarcina in todos:
-        if sarcina["done"]:
+    for sarcina in sarcini:
+        if sarcina["terminat"]:
             contor += 1
     return contor
 
-def numara_nefinalizate(todos):
-    return len(todos) - numara_finalizate(todos)
+def numara_nefinalizate(sarcini):
+    return len(sarcini) - numara_finalizate(sarcini)
 ```
 
 ---
 
 ## Misiune: Tabla de Sarcini a Misiunii
 
-Echipajul își urmărește munca pe o tablă de sarcini comună. Vei **citi sarcinile de la tastatură**, vei construi tabla, vei marca unele ca terminate, apoi o afișezi. Fiecare sarcină este un dicționar cu un `nume` și o stare `done`, iar tabla este o listă din aceste dicționare.
+Echipajul își urmărește munca pe o tablă de sarcini comună. Vei **citi sarcinile de la tastatură**, vei construi tabla, vei marca unele ca terminate, apoi o afișezi. Fiecare sarcină este un dicționar cu un `nume` și o stare `terminat`, iar tabla este o listă din aceste dicționare.
 
 Scrie trei funcții:
 
-- **adauga_sarcina(sarcini, nume)** — adaugă o sarcină nouă la listă cu `done` setat pe `False`.
+- **adauga_sarcina(sarcini, nume)** — adaugă o sarcină nouă la listă cu `terminat` setat pe `False`.
 - **finalizeaza_sarcina(sarcini, index)** — marchează sarcina de la acel index ca terminată.
 - **numara_finalizate(sarcini)** — returnează câte sarcini sunt terminate.
 

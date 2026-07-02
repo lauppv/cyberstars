@@ -24,6 +24,13 @@ Intrare:  I love Python
 Ieșire: Python love I
 ```
 
+```
+Intrare:  hello
+Ieșire: hello
+```
+
+Un singur cuvânt nu are ce să fie reordonat, deci rămâne la fel.
+
 ### Indicii
 
 - Folosește `split()` pentru a obține o listă de cuvinte.

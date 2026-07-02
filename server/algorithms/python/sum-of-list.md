@@ -32,6 +32,24 @@ Input:
 Output: 10
 ```
 
+```
+Input:
+1
+42
+Output: 42
+```
+
+With `N = 1`, the sum is just that single number.
+
+```
+Input:
+3
+-5
+-10
+15
+Output: 0
+```
+
 ### Hints
 
 - Use a `for` loop with `range(n)` to read each number.

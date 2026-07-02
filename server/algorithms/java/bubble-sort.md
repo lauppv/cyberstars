@@ -33,6 +33,29 @@ Output:
 1 2 3
 ```
 
+```
+Input:
+1
+7
+
+Output:
+7
+```
+
+A single-element array is already sorted — no swaps needed.
+
+```
+Input:
+4
+2 2 1 1
+
+Output:
+1 1 2 2
+```
+
+Duplicate values are handled the same way as any other comparison — only
+swap when strictly greater.
+
 ### Hints
 
 - Use two nested loops: the outer loop runs N-1 times, the inner loop compares adjacent elements.

@@ -29,6 +29,20 @@ Intrare:
 Ieșire: 14
 ```
 
+```
+Intrare:
+1
+7
+Ieșire: 7
+```
+
+```
+Intrare:
+3
+-1 -2 -3
+Ieșire: -6
+```
+
 ### Indicii
 
 - Inițializează o variabilă `sum` cu `0` înainte de buclă.

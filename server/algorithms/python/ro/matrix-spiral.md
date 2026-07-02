@@ -36,6 +36,28 @@ Ieșire:
 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
 ```
 
+```
+Intrare:
+1
+5
+
+Ieșire:
+5
+```
+
+O matrice 1x1 nu are unde să spiraleze — singurul element este întregul
+rezultat.
+
+```
+Intrare:
+2
+1 2
+3 4
+
+Ieșire:
+1 2 4 3
+```
+
 ### Indicii
 
 - Menține patru limite: `top`, `bottom`, `left`, `right`. După parcurgerea unei laturi, micșorează limita corespunzătoare.

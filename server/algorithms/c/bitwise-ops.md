@@ -41,6 +41,19 @@ NO
 YES
 ```
 
+```
+Input:
+2
+1073741824
+1073741823
+Output:
+YES
+NO
+```
+
+`1073741824` is 2^30. `1073741823` is one less — in binary that's thirty
+`1` bits, which is as far from "exactly one bit set" as you can get.
+
 ### Hints
 
 - The bitwise trick: `(n & (n - 1)) == 0` is true only for powers of 2 (and zero, but input is positive).

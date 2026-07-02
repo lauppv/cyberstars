@@ -40,6 +40,19 @@ Consonants: 5
 Words: 3
 ```
 
+```
+Input:
+Sky
+
+Output:
+Vowels: 0
+Consonants: 3
+Words: 1
+```
+
+`y` is not counted as a vowel here — only a, e, i, o, u count, so all three
+letters in "Sky" are consonants.
+
 ### Hints
 
 - Use `Character.toLowerCase()` to handle case-insensitive vowel checks.

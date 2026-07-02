@@ -29,6 +29,24 @@ Intrare:
 Ieșire: 1 2 3 4
 ```
 
+```
+Intrare:
+1
+42
+Ieșire: 42
+```
+
+Cazul de bază: un tablou cu un singur element este deja sortat.
+
+```
+Intrare:
+5
+-1 -5 0 -5 3
+Ieșire: -5 -5 -1 0 3
+```
+
+Numerele negative și duplicatele se sortează la fel ca orice alte numere întregi.
+
 ### Indicii
 
 - Scrie o funcție `merge` care interclasează două subtablouri sortate într-unul singur.

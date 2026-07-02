@@ -101,7 +101,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Separate from main lessons — mapped via `server/services/paths.ts`: course keys `algo-python`, `algo-java`, `algo-c` resolve to `server/algorithms/{python,java,c}/`
 - Each challenge has 2 files: `<slug>.md` (problem statement with Input/Output/Examples/Hints) and `<slug>-code.md` (starter code)
 - 20 challenges per language (Easy/Medium/Hard), registered in `prisma/seed.ts`
-- Starter code reads input and has `# TODO` comments — students fill in the logic
+- Starter code (`<slug>-code.md`) is empty — Python is 0 bytes, Java/C are 3 blank lines (no compilable wrapper); students write the full solution, including the `class Main`/`#include`+`int main()` boilerplate for Java/C, from scratch
 - Lessons and challenges have no automated grading: students Run their code (Docker-backed `code-execution.service`) and decide when to click "Mark Complete" themselves
 
 ### Testing (`test/`)

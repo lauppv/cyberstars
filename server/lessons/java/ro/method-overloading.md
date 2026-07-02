@@ -96,7 +96,7 @@ Supraîncărcarea este extrem de frecventă în bibliotecile încorporate ale Ja
 ```java
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello");   // println(String)
+        System.out.println("salut");   // println(String)
         System.out.println(42);        // println(int)
         System.out.println(3.14);      // println(double)
         System.out.println(true);      // println(boolean)

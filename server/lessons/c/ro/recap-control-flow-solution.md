@@ -17,7 +17,7 @@ int main(void) {
         }
     }
 
-    printf("FizzBuzz count: %d\n", numar_fizzbuzz);
+    printf("Numar fizzbuzz: %d\n", numar_fizzbuzz);
     return 0;
 }
 ```

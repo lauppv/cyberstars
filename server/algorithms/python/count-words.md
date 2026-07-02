@@ -22,6 +22,13 @@ Input:  Python is really fun
 Output: 4
 ```
 
+```
+Input:  hello
+Output: 1
+```
+
+A single word is still one word.
+
 ### Hints
 
 - The `split()` method breaks a string into a list of words.

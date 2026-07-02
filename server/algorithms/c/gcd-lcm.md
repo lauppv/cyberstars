@@ -31,6 +31,16 @@ GCD: 1
 LCM: 91
 ```
 
+```
+Input:
+9 9
+Output:
+GCD: 9
+LCM: 9
+```
+
+When both numbers are equal, the GCD and LCM are both just that number.
+
 ### Hints
 
 - Implement Euclid's algorithm: while `b != 0`, set `temp = b`, `b = a % b`, `a = temp`. The GCD is `a`.

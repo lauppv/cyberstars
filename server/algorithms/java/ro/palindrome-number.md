@@ -38,6 +38,24 @@ Ieșire:
 false
 ```
 
+```
+Intrare:
+0
+
+Ieșire:
+true
+```
+
+Un număr dintr-o singură cifră, inclusiv 0, se citește mereu la fel în ambele sensuri.
+
+```
+Intrare:
+12321
+
+Ieșire:
+true
+```
+
 ### Indicii
 
 - Numerele negative returnează întotdeauna `false`.

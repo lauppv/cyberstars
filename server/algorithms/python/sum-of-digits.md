@@ -22,6 +22,18 @@ Input:  -56
 Output: 11
 ```
 
+```
+Input:  0
+Output: 0
+```
+
+```
+Input:  100
+Output: 1
+```
+
+The zeros in `100` don't add anything to the sum — only the `1` counts.
+
 ### Hints
 
 - Convert the number to a string, then loop through each character.

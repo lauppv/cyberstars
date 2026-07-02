@@ -22,6 +22,21 @@ Input:  CyberStars
 Output: sratSrebyC
 ```
 
+```
+Input:  a
+Output: a
+```
+
+A single character reversed is itself.
+
+```
+Input:  noon
+Output: noon
+```
+
+Some strings look the same reversed — that's a coincidence of their letters,
+not a special case your code needs to detect.
+
 ### Hints
 
 - Strings support slicing — `s[::-1]` reverses a string in one step.

@@ -47,6 +47,22 @@ Not found
 Empty
 ```
 
+```
+Intrare:
+5
+add 1
+add 2
+add 3
+remove 1
+print
+
+Ieșire:
+2 -> 3
+```
+
+Eliminarea nodului **head** înseamnă că referința `head` a listei trebuie
+mutată chiar ea către al doilea nod — nu există un nod „anterior" de relegat.
+
 ### Indicii
 
 - `Node` conține o valoare și o referință către nodul următor.

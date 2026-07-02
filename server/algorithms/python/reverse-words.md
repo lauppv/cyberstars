@@ -24,6 +24,13 @@ Input:  I love Python
 Output: Python love I
 ```
 
+```
+Input:  hello
+Output: hello
+```
+
+A single word has nothing to reorder, so it stays the same.
+
 ### Hints
 
 - Use `split()` to get a list of words.

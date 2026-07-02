@@ -24,13 +24,13 @@ int main(void) {
         }
     }
 
-    printf("Length >= 8: %s\n", are_lungime ? "PASS" : "FAIL");
-    printf("Has uppercase: %s\n", are_litera_mare ? "PASS" : "FAIL");
-    printf("Has digit: %s\n", are_cifra ? "PASS" : "FAIL");
-    printf("Has special char: %s\n", are_special ? "PASS" : "FAIL");
+    printf("Lungime >= 8: %s\n", are_lungime ? "OK" : "NU");
+    printf("Are litera mare: %s\n", are_litera_mare ? "OK" : "NU");
+    printf("Are cifra: %s\n", are_cifra ? "OK" : "NU");
+    printf("Are caracter special: %s\n", are_special ? "OK" : "NU");
 
     int valid = are_lungime && are_litera_mare && are_cifra && are_special;
-    printf("Password valid: %s\n", valid ? "YES" : "NO");
+    printf("Parola valida: %s\n", valid ? "DA" : "NU");
 
     return 0;
 }

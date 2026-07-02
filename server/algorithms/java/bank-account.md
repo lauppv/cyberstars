@@ -41,6 +41,32 @@ Output:
 Balance: 0
 ```
 
+```
+Input:
+50
+1
+withdraw 50
+
+Output:
+Balance: 0
+```
+
+Withdrawing the **exact** balance is allowed — it only fails when the amount
+is strictly greater than what's available.
+
+```
+Input:
+10
+2
+withdraw 20
+withdraw 15
+
+Output:
+Insufficient funds
+Insufficient funds
+Balance: 10
+```
+
 ### Hints
 
 - Parse each operation line by splitting on space.

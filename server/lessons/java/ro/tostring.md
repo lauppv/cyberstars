@@ -78,7 +78,7 @@ Acel `@Override` de deasupra metodei este o **adnotare**. Îi spune lui Java "î
 public class Main {
     @Override
     public String toString() {   // Java verifica: are parintele toString()? Da. Bun.
-        return "something";
+        return "altceva";
     }
 }
 ```

@@ -36,5 +36,5 @@ Un program de diagnostic verifică 20 de bobine de bandă magnetică, numerotate
 18: fizz
 19: normal
 20: buzz
-FizzBuzz count: 1
+Numar fizzbuzz: 1
 ```

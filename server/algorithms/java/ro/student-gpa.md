@@ -33,6 +33,17 @@ Ieșire:
 100.00
 ```
 
+```
+Intrare:
+Carol
+95
+
+Ieșire:
+95.00
+```
+
+O singură notă — media este chiar acea notă, formatată tot la 2 zecimale.
+
 ### Indicii
 
 - Stochează notele într-un `int[]` sau `ArrayList<Integer>`.

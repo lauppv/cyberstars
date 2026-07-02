@@ -29,6 +29,20 @@ Intrare:
 Ieșire: 10
 ```
 
+```
+Intrare:
+1
+7
+Ieșire: 7
+```
+
+```
+Intrare:
+4
+-5 -1 -10 -3
+Ieșire: -10
+```
+
 ### Indicii
 
 - Citește primul număr și setează-l ca `min` inițial.

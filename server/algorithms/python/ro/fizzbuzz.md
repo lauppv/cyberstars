@@ -46,6 +46,16 @@ Fizz
 FizzBuzz
 ```
 
+```
+Intrare:
+1
+
+Ieșire:
+1
+```
+
+Cu `n = 1` există o singură linie de rezultat: numărul `1` însuși.
+
 ### Indicii
 
 - Verifică divizibilitatea cu **ambele** 3 și 5 mai întâi — dacă verifici doar pentru 3 prima dată, nu vei ajunge niciodată la `FizzBuzz`.

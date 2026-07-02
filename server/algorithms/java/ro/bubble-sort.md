@@ -33,6 +33,29 @@ Ieșire:
 1 2 3
 ```
 
+```
+Intrare:
+1
+7
+
+Ieșire:
+7
+```
+
+Un tablou cu un singur element este deja sortat — nu e nevoie de nicio interschimbare.
+
+```
+Intrare:
+4
+2 2 1 1
+
+Ieșire:
+1 1 2 2
+```
+
+Valorile duplicate sunt tratate la fel ca orice altă comparație — se
+interschimbă doar când sunt strict mai mari.
+
 ### Indicii
 
 - Folosește două bucle imbricate: bucla exterioară rulează de N-1 ori, bucla interioară compară elementele adiacente.

@@ -36,6 +36,27 @@ Ieșire:
 5.00
 ```
 
+```
+Intrare:
+1
+7
+Ieșire:
+7
+7.00
+```
+
+```
+Intrare:
+3
+-5 5 10
+Ieșire:
+10
+3.33
+```
+
+Numerele negative funcționează la fel — suma poate fi mai mică decât oricare
+valoare pozitivă individuală, iar media tot se rotunjește la 2 zecimale.
+
 ### Indicii
 
 - Alocă cu `int *arr = (int *)malloc(n * sizeof(int));`

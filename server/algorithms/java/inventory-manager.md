@@ -46,6 +46,23 @@ milk: 2
 Items: 1
 ```
 
+```
+Input:
+4
+add apple 3
+remove apple 3
+check apple
+check apple
+
+Output:
+apple: 0
+apple: 0
+Items: 0
+```
+
+Removing exactly all of an item's stock brings it to 0 — it stays known but
+no longer counts toward `Items: N`.
+
 ### Hints
 
 - Use `HashMap<String, Integer>` to store inventory.

@@ -31,6 +31,28 @@ Output:
 Mjqqt, Btwqi!
 ```
 
+```
+Input:
+az
+1
+
+Output:
+ba
+```
+
+The alphabet wraps around: shifting `z` by 1 lands back on `a`.
+
+```
+Input:
+Zebra
+1
+
+Output:
+Afcsb
+```
+
+Uppercase letters wrap the same way, staying uppercase: `Z` shifts to `A`.
+
 ### Hints
 
 - Use `ord()` to get a character's ASCII code and `chr()` to convert back.

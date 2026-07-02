@@ -37,6 +37,16 @@ Output:
 3 6 9
 ```
 
+```
+Input:
+1
+5
+Output:
+5
+```
+
+A 1x1 matrix is its own transpose.
+
 ### Hints
 
 - Use a 2D array: `int mat[20][20]`.

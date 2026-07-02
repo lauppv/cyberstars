@@ -45,6 +45,32 @@ Output:
 -3
 ```
 
+```
+Input:
+1
+get
+
+Output:
+0
+```
+
+Calling `get` before any `inc`/`dec` returns the starting value, 0.
+
+```
+Input:
+5
+inc
+dec
+inc
+dec
+get
+
+Output:
+0
+```
+
+Increments and decrements cancel out — the counter returns to 0.
+
 ### Hints
 
 - Use a private field to store the counter value and public methods to modify it.

@@ -35,6 +35,16 @@ Ieșire:
 Total: 100.00
 ```
 
+```
+Intrare:
+0
+
+Ieșire:
+Total: 0.00
+```
+
+Fără nicio formă, suma pornește și rămâne la zero — se afișează totuși `Total: 0.00`.
+
 ### Indicii
 
 - Folosește `Math.PI` pentru aria cercului (pi _ r _ r).

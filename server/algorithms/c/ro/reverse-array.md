@@ -29,6 +29,15 @@ Intrare:
 Ieșire: 30 20 10
 ```
 
+```
+Intrare:
+1
+9
+Ieșire: 9
+```
+
+Inversarea unui tablou cu un singur element îl lasă neschimbat.
+
 ### Indicii
 
 - Declară un tablou de dimensiune 100 (sau folosește `N` cu un VLA).

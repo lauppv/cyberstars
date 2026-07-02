@@ -42,6 +42,22 @@ Empty
 5
 ```
 
+```
+Intrare:
+5
+push 1
+push 2
+pop
+pop
+pop
+Ieșire:
+2
+1
+Empty
+```
+
+Odată ce stiva e complet golită, apelurile `pop` următoare afișează în continuare `Empty`.
+
 ### Indicii
 
 - Folosește un tablou de dimensiune fixă (de ex., 100) și o variabilă `top` inițializată cu `-1`.

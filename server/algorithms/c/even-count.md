@@ -29,6 +29,15 @@ Input:
 Output: 4
 ```
 
+```
+Input:
+3
+1 3 5
+Output: 0
+```
+
+When none of the numbers are even, the count stays at 0 — still print it.
+
 ### Hints
 
 - A number is even if `x % 2 == 0`.

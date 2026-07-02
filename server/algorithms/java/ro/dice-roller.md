@@ -21,8 +21,41 @@ Intrare:
 6 42 1
 
 Ieșire:
-1
+3
 ```
+
+```
+Intrare:
+6 1 3
+
+Ieșire:
+4
+5
+2
+```
+
+```
+Intrare:
+20 7 1
+
+Ieșire:
+17
+```
+
+```
+Intrare:
+2 100 5
+
+Ieșire:
+2
+2
+1
+2
+2
+```
+
+Seed-uri diferite (și `sides` diferit) produc secvențe complet diferite — dar
+același seed reproduce mereu aceeași secvență.
 
 ### Indicii
 

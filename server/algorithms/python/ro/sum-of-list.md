@@ -32,6 +32,24 @@ Intrare:
 Ieșire: 10
 ```
 
+```
+Intrare:
+1
+42
+Ieșire: 42
+```
+
+Cu `N = 1`, suma este chiar acel singur număr.
+
+```
+Intrare:
+3
+-5
+-10
+15
+Ieșire: 0
+```
+
 ### Indicii
 
 - Folosește o buclă `for` cu `range(n)` pentru a citi fiecare număr.

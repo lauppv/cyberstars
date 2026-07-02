@@ -21,8 +21,41 @@ Input:
 6 42 1
 
 Output:
-1
+3
 ```
+
+```
+Input:
+6 1 3
+
+Output:
+4
+5
+2
+```
+
+```
+Input:
+20 7 1
+
+Output:
+17
+```
+
+```
+Input:
+2 100 5
+
+Output:
+2
+2
+1
+2
+2
+```
+
+Different seeds (and different `sides`) produce completely different
+sequences — but the same seed always reproduces the same sequence.
 
 ### Hints
 

@@ -36,6 +36,17 @@ Ieșire:
 Total: 12.99
 ```
 
+```
+Intrare:
+1
+Water 0.99 1
+
+Ieșire:
+Total: 0.99
+```
+
+Un singur articol cu cantitatea 1 — totalul este chiar prețul său.
+
 ### Indicii
 
 - `getTotal()` ar trebui să returneze un `double` — înmulțește price cu quantity.

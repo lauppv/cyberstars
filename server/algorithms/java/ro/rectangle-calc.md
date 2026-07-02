@@ -33,6 +33,17 @@ Area: 100
 Perimeter: 40
 ```
 
+```
+Intrare:
+1 1
+
+Ieșire:
+Area: 1
+Perimeter: 4
+```
+
+Cel mai mic dreptunghi posibil — un pătrat 1x1.
+
 ### Indicii
 
 - Aria = width \* height.

@@ -31,6 +31,29 @@ Ieșire:
 1 2 3 4
 ```
 
+```
+Intrare:
+1
+9
+
+Ieșire:
+9
+```
+
+O listă cu un singur element este deja sortată.
+
+```
+Intrare:
+4
+3 1 3 1
+
+Ieșire:
+1 1 3 3
+```
+
+Valorile duplicate sunt păstrate — sortarea trebuie doar să plaseze valorile
+egale una lângă alta.
+
 ### Indicii
 
 - Începe de la al doilea element (indicele 1). Compară-l cu elementele din stânga sa și deplasează elementele mai mari o poziție la dreapta.

@@ -32,6 +32,24 @@ Input:
 Output: -1
 ```
 
+```
+Input:
+1
+5
+5
+Output: 0
+```
+
+A single-element array works the same way — `left` and `right` both start at 0.
+
+```
+Input:
+1
+5
+3
+Output: -1
+```
+
 ### Hints
 
 - Maintain two pointers `left` and `right` representing the current search range.

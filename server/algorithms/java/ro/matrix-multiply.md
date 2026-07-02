@@ -46,6 +46,19 @@ Ieșire:
 43 50
 ```
 
+```
+Intrare:
+1 1
+3
+1 1
+4
+
+Ieșire:
+12
+```
+
+Cazul 1x1 este cazul de bază al formulei: `C[0][0] = A[0][0] * B[0][0]`.
+
 ### Indicii
 
 - Matricea rezultat C are dimensiunile R1 x C2.

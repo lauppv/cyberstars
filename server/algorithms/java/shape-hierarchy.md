@@ -35,6 +35,16 @@ Output:
 Total: 100.00
 ```
 
+```
+Input:
+0
+
+Output:
+Total: 0.00
+```
+
+With no shapes, the sum starts and stays at zero — still print `Total: 0.00`.
+
 ### Hints
 
 - Use `Math.PI` for the circle area (pi _ r _ r).

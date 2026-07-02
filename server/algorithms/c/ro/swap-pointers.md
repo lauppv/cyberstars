@@ -24,6 +24,13 @@ Intrare:  10 10
 Ieșire: 10 10
 ```
 
+```
+Intrare:  -3 8
+Ieșire: 8 -3
+```
+
+Numerele negative se interschimbă prin pointeri la fel ca orice altă valoare.
+
 ### Indicii
 
 - Semnătura funcției tale `swap` ar trebui să fie `void swap(int *a, int *b)`.

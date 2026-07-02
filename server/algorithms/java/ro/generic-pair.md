@@ -46,6 +46,18 @@ Ieșire:
 (0, world)
 ```
 
+```
+Intrare:
+x
+-5
+
+Ieșire:
+(x, -5)
+(-5, x)
+```
+
+Numerele întregi negative se interschimbă la fel ca orice altă valoare.
+
 ### Indicii
 
 - Folosește generice: `class Pair<A, B>`.

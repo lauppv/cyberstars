@@ -36,6 +36,27 @@ Output:
 5.00
 ```
 
+```
+Input:
+1
+7
+Output:
+7
+7.00
+```
+
+```
+Input:
+3
+-5 5 10
+Output:
+10
+3.33
+```
+
+Negative numbers work the same way — the sum can be smaller than any single
+positive value, and the average still rounds to 2 decimal places.
+
 ### Hints
 
 - Allocate with `int *arr = (int *)malloc(n * sizeof(int));`

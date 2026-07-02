@@ -22,6 +22,19 @@ Intrare:  The quick brown fox
 Ieșire: quick
 ```
 
+```
+Intrare:  cat bat rat
+Ieșire: cat
+```
+
+Toate cele trei cuvinte au aceeași lungime, deci e egalitate — afișează-l pe
+cel care apare **primul**.
+
+```
+Intrare:  hi
+Ieșire: hi
+```
+
 ### Indicii
 
 - Folosește `split()` pentru a împărți propoziția într-o listă de cuvinte.

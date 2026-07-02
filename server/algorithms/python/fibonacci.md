@@ -28,6 +28,24 @@ Output:
 0 1 1 2 3 5 8 13
 ```
 
+```
+Input:
+1
+
+Output:
+0
+```
+
+With `n = 1` you only print the very first term — no space, no second number.
+
+```
+Input:
+2
+
+Output:
+0 1
+```
+
 ### Hints
 
 - Start with two variables: `a = 0` and `b = 1`.

@@ -33,6 +33,17 @@ Area: 100
 Perimeter: 40
 ```
 
+```
+Input:
+1 1
+
+Output:
+Area: 1
+Perimeter: 4
+```
+
+The smallest possible rectangle — a 1x1 square.
+
 ### Hints
 
 - Area = width \* height.

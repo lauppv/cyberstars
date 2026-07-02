@@ -34,6 +34,15 @@ Ieșire:
 *****
 ```
 
+```
+Intrare:
+1
+Ieșire:
+*
+```
+
+Cel mai mic caz: un singur rând cu o singură stea.
+
 ### Indicii
 
 - Folosește o buclă `for` de la `1` la `N` pentru rânduri.
