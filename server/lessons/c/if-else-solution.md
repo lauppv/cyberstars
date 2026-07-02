@@ -2,8 +2,7 @@
 #include <stdio.h>
 
 int main(void) {
-    int temperature;
-    scanf("%d", &temperature);
+    int temperature = -5;
 
     if (temperature < 0) {
         printf("cold alert\n");

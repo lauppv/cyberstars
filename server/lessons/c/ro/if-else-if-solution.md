@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 int main(void) {
-    int secunde, eroare_detectata;
-    scanf("%d %d", &secunde, &eroare_detectata);
+    int secunde = 5;
+    int eroare_detectata = 1;
 
     if (secunde == 100) {
         printf("Verific memoria\n");

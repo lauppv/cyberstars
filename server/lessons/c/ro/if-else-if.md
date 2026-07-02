@@ -93,38 +93,21 @@ int main(void) {
 
 Tu ești operatorul de tură. Cronometrul de pornire afișează câte secunde mai sunt până la boot complet, iar un senzor separat îți spune dacă a fost detectată vreo eroare hardware.
 
-Scrie un lanț **if / else if / else** care citește două numere întregi din input, în această ordine: **secunde** și **eroare_detectata**
+Scrie un program care, în interiorul lui **main**
 
-- dacă `secunde` este **100** → afișează `Verific memoria`
-- altfel dacă `secunde` este **60** → afișează `Verific perifericele`
-- altfel dacă `secunde` este **30** → afișează `Incarc nucleul sistemului de operare`
-- altfel dacă `secunde` este **10** → afișează `Pornesc procesele de sistem`
-- altfel dacă `secunde` este **mai mic decât 10** → verifică `eroare_detectata`: dacă este **1**, afișează `Eroare detectata. Anulez pornirea`, altfel afișează `Nicio eroare detectata. Pornesc sistemul...`
-- altfel → afișează `%d secunde nu au niciun efect` (cu numărul de secunde în loc de `%d`)
-
-**Exemplu**
-
-Input
-
-```text
-30 0
-```
-
-Output
-
-```text
-Incarc nucleul sistemului de operare
-```
+- declară **int secunde = 5;**
+- declară **int eroare_detectata = 1;**
+- folosește un lanț **if / else if / else**:
+  - dacă `secunde` este **100** → afișează `Verific memoria`
+  - altfel dacă `secunde` este **60** → afișează `Verific perifericele`
+  - altfel dacă `secunde` este **30** → afișează `Incarc nucleul sistemului de operare`
+  - altfel dacă `secunde` este **10** → afișează `Pornesc procesele de sistem`
+  - altfel dacă `secunde` este **mai mic decât 10** → verifică `eroare_detectata`: dacă este **1**, afișează `Eroare detectata. Anulez pornirea`, altfel afișează `Nicio eroare detectata. Pornesc sistemul...`
+  - altfel → afișează `%d secunde nu au niciun efect` (cu numărul de secunde în loc de `%d`)
 
 **Exemplu**
 
-Input
-
-```text
-5 1
-```
-
-Output
+Programul tău ar trebui să afișeze
 
 ```text
 Eroare detectata. Anulez pornirea

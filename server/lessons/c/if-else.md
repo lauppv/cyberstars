@@ -99,35 +99,15 @@ Change **terminal_connected** to **0** and run again. The result flips. Programm
 
 The computing center's mainframes don't tolerate cold: below zero degrees, the oil in the tape units jams the mechanisms. The thermostat has to warn the shift operator.
 
-Write an **if / else** that reads an integer **temperature** from the input:
+Write a program that, inside **main**
 
-- if `temperature` is **less than 0** → print `cold alert`
-- otherwise → print `temperature normal`
+- declares **int temperature = -5;**
+- uses an **if / else**: if `temperature` is **less than 0** → print `cold alert`, otherwise → print `temperature normal`
 
 **Example**
 
-Input
-
-```text
--5
-```
-
-Output
+Your program should print
 
 ```text
 cold alert
-```
-
-**Example**
-
-Input
-
-```text
-10
-```
-
-Output
-
-```text
-temperature normal
 ```

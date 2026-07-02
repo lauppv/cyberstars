@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 int main(void) {
-    int varsta, nivel_acces;
-    scanf("%d %d", &varsta, &nivel_acces);
+    int varsta = 45;
+    int nivel_acces = 3;
 
     printf("Varsta: %d\n", varsta);
     printf("Acces: %d\n", nivel_acces);
