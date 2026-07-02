@@ -1,6 +1,6 @@
-In Python and Java, when you pass a variable to a function, the function gets a **copy**. In C it's the same — but pointers let us do something special: **pass by reference**
+When you pass a variable to a function, the function receives a **copy**. Pointers let us do something special: **pass by reference**
 
-First, let's see the problem. This function tries to swap two numbers but **fails**
+First, let's look at the problem. This function tries to swap two numbers but **fails**
 
 ```c
 #include <stdio.h>
@@ -25,7 +25,7 @@ Output
 x = 10, y = 20
 ```
 
-Nothing happened! The function swapped its **local copies**, but the original **x** and **y** didn't change. The copies were destroyed when the function returned
+Nothing happened! The function swapped its **local copies**, but the original **x** and **y** never changed. The copies were destroyed when the function ended
 
 ---
 
@@ -54,11 +54,11 @@ Output
 x = 20, y = 10
 ```
 
-Now it works. We passed the **addresses** of x and y. The function followed those addresses and changed the actual values. This is **pass by reference** — the most important use of pointers
+Now it works. We passed the **addresses** of x and y. The function followed those addresses and changed the real values. This is **pass by reference** — the most important use of pointers
 
 ---
 
-This pattern is everywhere in C. Want a function to modify a variable? Pass its address
+This pattern shows up everywhere in C. Want a function to modify a variable? Pass it the address
 
 ```c
 #include <stdio.h>
@@ -75,7 +75,7 @@ int main(void) {
 }
 ```
 
-Another common use: functions that need to **return multiple values**. C functions can only return one thing, but with pointers we can "return" as many as we want
+Another common use: functions that need to **return multiple values**. A C function can only return a single thing, but with pointers we can "return" as many as we want
 
 ```c
 #include <stdio.h>
@@ -90,35 +90,57 @@ void min_max(int arr[], int n, int *min, int *max) {
 }
 
 int main(void) {
-    int nums[] = {3, 7, 1, 9, 4};
+    int numbers[] = {3, 7, 1, 9, 4};
     int lo, hi;
-    min_max(nums, 5, &lo, &hi);
+    min_max(numbers, 5, &lo, &hi);
     printf("Min: %d, Max: %d\n", lo, hi);
     return 0;
 }
 ```
 
-Output: **Min: 1, Max: 9**
+Output
 
-The function "returns" both the minimum and maximum through pointers. This is idiomatic C — you'll see it everywhere
+```text
+Min: 1, Max: 9
+```
+
+The function "returns" both the minimum and the maximum through pointers. This is idiomatic C — you'll see it everywhere
 
 ---
 
-## Mission: Engine Power Boost
+## Mission: The Signal Amplifier
 
-The reactor output is too low for the jump to hyperspace. Engineer Phil wrote a boost function, but it only doubles the value. You need a **triple_it** function that triples the engine power through a pointer — no copies, direct memory access.
+At the computing center, a signal translator reads a raw value off a magnetic tape. The amplifier needs to **triple** it before sending it onward — but direct access to the variable isn't allowed, only through a pointer.
 
-1. Write a function **triple_it** that takes an **int pointer** and triples the value it points to
-2. In **main**, call **triple_it(&num)** and print the result
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `num` — an int with value **5**
+1. Read an **int** **signal** from input
+2. Write a function **triple_it** that takes a **pointer to int** and triples the value it points to
+3. Call **triple_it(&signal)** from **main**
+4. Print the result
 
 **Example**
 
-With the starter values, your program should print
+Input
+
+```text
+5
+```
+
+Output
 
 ```text
 15
+```
+
+**Example**
+
+Input
+
+```text
+10
+```
+
+Output
+
+```text
+30
 ```

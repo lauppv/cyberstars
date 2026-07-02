@@ -72,18 +72,20 @@ Pipes are **the** fundamental building block for process communication in Unix. 
 
 ---
 
-## Mission: Encrypted Relay
+## Mission: The Teleprinter Message
 
-Sector 7's sensor array detected an anomaly, but comms are down. The only way to relay the data to the bridge is through a one-way pipe between two processes.
+Two processes need to communicate through a pipe, exactly like a message passing from one teleprinter to another over a dedicated line.
 
 1. Create a pipe and fork
-2. The **child** writes the message **"CyberStars"** to the pipe, then closes its ends
-3. The **parent** reads the message and prints **"Received: CyberStars"**, then closes its ends and waits for the child
+2. The **child** writes the message **"Bell Labs"** to the pipe, then closes its ends
+3. The **parent** reads the message and prints **"Received: Bell Labs"**, then closes its ends and waits for the child
 
-**Output**
+**Example**
+
+Your program should print
 
 ```text
-Received: CyberStars
+Received: Bell Labs
 ```
 
 Remember to close the pipe ends you do not use

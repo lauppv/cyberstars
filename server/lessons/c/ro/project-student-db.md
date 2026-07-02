@@ -1,12 +1,12 @@
-E timpul pentru un proiect real! Vom construi o **bază de date cu studenți** care folosește tot ce am învățat: struct-uri, pointeri, memorie dinamică, array-uri și funcții pentru șiruri
+E timpul pentru un proiect real. Vom construi un **registru de studenți**, folosind tot ce am învățat: struct-uri, pointeri, memorie dinamică, array-uri și funcții pentru șiruri
 
-Programul gestionează o listă de studenți. Fiecare student are un **nume** și o **notă**. Vom:
+Programul gestionează o listă de studenți. Fiecare student are un **nume** și o **notă**. Vom
 
 1. Crea studenți dinamic cu **malloc**
-2. Îi stocăm într-un array
-3. Afișăm toți studenții
-4. Găsim studentul cu cea mai mare notă
-5. Eliberăm memoria
+2. Îi stoca într-un array de pointeri
+3. Afișa toți studenții
+4. Găsi studentul cu cea mai mare notă
+5. Elibera memoria
 
 ---
 
@@ -23,7 +23,7 @@ typedef struct {
 } Student;
 
 int main(void) {
-    Student s = {"Tommy", 95};
+    Student s = {"Ritchie", 95};
     printf("%s: %d\n", s.nume, s.nota);
     return 0;
 }
@@ -41,7 +41,7 @@ Student *creeaza_student(const char *nume, int nota) {
 }
 ```
 
-Funcția alocă memorie pe heap, completează câmpurile și returnează un pointer. Apelantul este acum **responsabil** să elibereze acea memorie mai târziu
+Funcția alocă memorie pe heap, completează câmpurile și întoarce un pointer. Apelantul devine **responsabil** să elibereze acea memorie mai târziu
 
 ---
 
@@ -55,7 +55,7 @@ void afiseaza_toti(Student *studenti[], int n) {
 }
 ```
 
-Observă că folosim **studenti[i]->nume** pentru că fiecare element este un **pointer la un Student**
+Observă **studenti[i]->nume** — fiecare element al array-ului este un **pointer către un Student**, așa că folosim **->** în loc de **.**
 
 ---
 
@@ -75,30 +75,54 @@ Student *gaseste_cel_mai_bun(Student *studenti[], int n) {
 
 ---
 
-## Misiune: Baza de Date a Echipajului Stației
+## Misiune: Registrul laboratorului de calcul
 
-Stația are nevoie de o bază de date a personalului care să țină evidența numelui și notei de performanță a fiecărui membru al echipajului. Ai piesele de bază mai sus — acum leagă-le într-un sistem funcțional.
+E anul 1974. Ești operator de tură la laboratorul de calcul al universității. Studenții care termină examenul de programare vin la teletype-ul tău și îți dictează numele și nota — tu le introduci în registru, un student pe rând
 
-1. Completează funcția **afiseaza_toti** ca să afișeze fiecare student sub forma **"Nume: Nota"**
-2. Completează funcția **gaseste_cel_mai_bun** ca să returneze un pointer către studentul cu cea mai mare notă
-3. În **main**, cei 4 membri ai echipajului sunt deja creați — apelează **afiseaza_toti**, apoi **gaseste_cel_mai_bun**, și afișează-l pe cel mai bun
-4. Eliberează toată memoria alocată la final
+Scrie un program care
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- **"Tommy"**, 95
-- **"Lance"**, 82
-- **"Cortez"**, 98
-- **"Rex"**, 76
+1. Citește un întreg **n** — numărul de studenți
+2. Citește, de **n** ori, un nume și o notă (întreg), și creează un student cu **creeaza_student**, stocând pointerul într-un array
+3. Apelează **afiseaza_toti** ca să afișeze fiecare student sub forma **"Nume: Nota"**
+4. Apelează **gaseste_cel_mai_bun** și afișează **"Cel mai bun: Nume (Nota)"**
+5. Eliberează toată memoria alocată, cu **free**, înainte de final
 
 **Exemplu**
 
-Cu valorile de pornire, programul tău ar trebui să afișeze
+Input
 
 ```text
-Tommy: 95
-Lance: 82
-Cortez: 98
-Rex: 76
-Cel mai bun: Cortez (98)
+4
+Ritchie 95
+Thompson 82
+Kernighan 98
+McIlroy 76
+```
+
+Output
+
+```text
+Ritchie: 95
+Thompson: 82
+Kernighan: 98
+McIlroy: 76
+Cel mai bun: Kernighan (98)
+```
+
+**Exemplu**
+
+Input
+
+```text
+2
+Ana 88
+Mihai 91
+```
+
+Output
+
+```text
+Ana: 88
+Mihai: 91
+Cel mai bun: Mihai (91)
 ```

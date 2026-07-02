@@ -1,4 +1,4 @@
-În Python și Java, când treci o variabilă către o funcție, funcția primește o **copie**. În C este la fel — dar pointerii ne lasă să facem ceva special: **transmitere prin referință**
+Când treci o variabilă către o funcție, funcția primește o **copie**. Pointerii ne lasă să facem ceva special: **transmitere prin referință**
 
 Mai întâi, hai să vedem problema. Această funcție încearcă să interschimbe două numere dar **eșuează**
 
@@ -75,7 +75,7 @@ int main(void) {
 }
 ```
 
-Altă utilizare comună: funcții care trebuie să **returneze mai multe valori**. Funcțiile din C pot returna doar un singur lucru, dar cu pointeri putem "returna" câte vrem
+Altă utilizare comună: funcții care trebuie să **returneze mai multe valori**. O funcție din C poate returna doar un singur lucru, dar cu pointeri putem "returna" câte vrem
 
 ```c
 #include <stdio.h>
@@ -98,27 +98,49 @@ int main(void) {
 }
 ```
 
-Output: **Min: 1, Max: 9**
+Output
+
+```text
+Min: 1, Max: 9
+```
 
 Funcția "returnează" atât minimul cât și maximul prin pointeri. Este idiomatic în C — vei vedea asta peste tot
 
 ---
 
-## Misiune: Boost de Putere pentru Reactor
+## Misiune: Amplificatorul de semnal
 
-Output-ul reactorului este prea mic pentru saltul în hiperspațiu. Inginerul Phil a scris o funcție de boost, dar ea doar dublează valoarea. Ai nevoie de o funcție **tripleaza** care triplează puterea reactorului printr-un pointer — fără copii, acces direct la memorie.
+La centrul de calcul, un traductor de semnal citește o valoare brută de pe bandă magnetică. Amplificatorul trebuie s-o **tripleze** înainte de a o trimite mai departe — dar accesul direct la variabilă nu e permis, doar prin pointer.
 
-1. Scrie o funcție **tripleaza** care primește un **pointer la int** și triplează valoarea către care pointează
-2. În **main**, apelează **tripleaza(&numar)** și afișează rezultatul
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `numar` — un int cu valoarea **5**
+1. Citește un **int** **semnal** din input
+2. Scrie o funcție **tripleaza** care primește un **pointer la int** și triplează valoarea către care pointează
+3. Apelează **tripleaza(&semnal)** din **main**
+4. Afișează rezultatul
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
+
+```text
+5
+```
+
+Output
 
 ```text
 15
+```
+
+**Exemplu**
+
+Input
+
+```text
+10
+```
+
+Output
+
+```text
+30
 ```

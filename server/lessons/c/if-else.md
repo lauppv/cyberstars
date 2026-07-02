@@ -1,4 +1,4 @@
-In real life we make decisions: **if** it’s cold, take a sweater, **otherwise** a t-shirt is enough. **If** I’m sleepy I sleep, **otherwise** I program :)
+In real life we make decisions: **if** it's cold, take a sweater, **otherwise** a t-shirt is enough. **If** I'm sleepy, I sleep, **otherwise** I code
 
 In C we say
 
@@ -18,13 +18,13 @@ int main(void) {
 }
 ```
 
-The C syntax is **almost identical** to Java
+A few syntax rules
 
-- The condition goes in **parentheses** **( )**
-- The body goes inside **braces** **{ }**
-- No **:** at the end like Python
+- The condition goes between **parentheses** **( )**
+- The body goes between **braces** **{ }**
+- There is no **:** at the end
 
-If **age** is less than **18**, we enter the **if** block. Otherwise we enter the **else**. Run the code, change the age, see what happens
+If **age** is less than **18**, we enter the **if** block. Otherwise we enter **else**. Run the code, change the age, see what happens
 
 ---
 
@@ -34,10 +34,10 @@ The comparison operators
 - **<=** less than or equal
 - **>** greater than
 - **>=** greater than or equal
-- **==** equal (note **two** equals signs)
-- **!=** not equal
+- **==** equal (careful, **two** equal signs)
+- **!=** **not** equal
 
-**Be very careful** about **=** vs **==**. **=** assigns, **==** compares
+**Be very careful** about the difference between **=** and **==**. **=** assigns, **==** compares
 
 ```c
 #include <stdio.h>
@@ -51,25 +51,25 @@ int main(void) {
 }
 ```
 
-This is a **classic C bug**. Unlike Java (which refuses to compile this), **C accepts it without an error**. **x = 4** stores **4** in **x** and gives back the value **4**, which C treats as "true" (any non-zero value is true). So this code always enters the **if**, no matter what **x** was before. Many real-world bugs in famous projects come from exactly this typo. Use **==** when comparing :)
+This is a **classic C bug**: **C accepts this code without any compile error**. **x = 4** stores **4** in **x** and returns the value **4**, which C treats as "true" (any non-zero value means true). So the code always enters the **if**, no matter what **x** was before. Many famous bugs in real-world projects come from exactly this typo. Use **==** when comparing
 
 ---
 
-We don’t always need **else**. Sometimes we just want to act **if** something is true and otherwise do nothing
+We don't always need **else**. Sometimes we just want to do something **if** a condition is true, and otherwise do nothing
 
 ```c
 #include <stdio.h>
 
 int main(void) {
-    int is_user_online = 1;
-    if (is_user_online) {
+    int user_online = 1;
+    if (user_online) {
         printf("Welcome back\n");
     }
     return 0;
 }
 ```
 
-Wait, **is_user_online = 1**? Where is **true**? Well, **C doesn’t have a real boolean type by default**. It uses integers: **0** means **false**, **anything else** (1, 2, -5, ...) means **true**. We’ll see a real **bool** type in a later lesson, with **#include <stdbool.h>**
+Wait, **user_online = 1**? Where is **true**? Well, **C doesn't have a true boolean type by default**. It uses whole numbers: **0** means **false**, **anything else** (1, 2, -5, ...) means **true**. We'll see a real **bool** type in a future lesson, with **#include <stdbool.h>**
 
 ---
 
@@ -79,45 +79,55 @@ A complete example
 #include <stdio.h>
 
 int main(void) {
-    int is_user_online = 1;
+    int terminal_connected = 1;
 
-    if (is_user_online) {
-        printf("Tommy Vercetti is playing GTA Vice City\n");
+    if (terminal_connected) {
+        printf("Session open\n");
     } else {
-        printf("Tommy Vercetti is offline\n");
+        printf("Terminal disconnected\n");
     }
 
     return 0;
 }
 ```
 
-Change **is_user_online** to **0** and run again. The output flips. Programming becomes fun the moment you start **playing** with the values :)
+Change **terminal_connected** to **0** and run again. The result flips. Programming becomes interesting the moment you start **playing** with values
 
 ---
 
-## Mission: Hull Temperature Alert
+## Mission: Machine Room Thermostat
 
-The station's hull sensors report the outside temperature. If it drops below zero, the crew must be warned.
+The computing center's mainframes don't tolerate cold: below zero degrees, the oil in the tape units jams the mechanisms. The thermostat has to warn the shift operator.
 
-Write an **if / else** that checks `temperature`:
+Write an **if / else** that reads an integer **temperature** from the input:
 
-- if `temperature` is **less than 0** → print `it's freezing outside`
-- otherwise → print `water does not freeze`
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `temperature` — hull temperature in degrees Celsius
+- if `temperature` is **less than 0** → print `cold alert`
+- otherwise → print `temperature normal`
 
 **Example**
 
-With `temperature = -5`, your program should print
+Input
 
 ```text
-it's freezing outside
+-5
 ```
 
-Now set `temperature = 10` and run again
+Output
 
 ```text
-water does not freeze
+cold alert
+```
+
+**Example**
+
+Input
+
+```text
+10
+```
+
+Output
+
+```text
+temperature normal
 ```

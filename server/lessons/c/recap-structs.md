@@ -2,20 +2,54 @@ Combine **pointer arithmetic**, **string functions**, and **structs with pointer
 
 ---
 
-## Mission: Crew Directory Lookup
+## Mission: Rebuilding the Internal Directory
 
-The station's crew directory crashed and needs to be rebuilt from scratch. Cortez has the backup data for three crew members. Build the lookup system using structs and pointer arithmetic.
+The computing center's internal phone directory crashed on disk and must be rebuilt from scratch, from a backup tape. Build the lookup system using structs and pointer arithmetic.
 
-The data is already on the right. Do the following, in order:
+1. Define a struct **Contact** with fields **name** (char array) and **phone** (char array)
+2. Write **void add_contact(Contact \*book, int \*count, const char \*name, const char \*phone)** — adds a contact at position **\*count** and increments the counter. Use **strcpy** to copy the strings
+3. Write **void find_contact(Contact \*book, int count, const char \*query)** — walks the contacts using **pointer arithmetic** (`(book + i)->name`). If found, print **"Found: name - phone"**. If not found, print **"Not found: query"**
+4. Read from input: a count **n** of contacts, followed by **n** lines with **name phone**. Then read a count **q** of queries, followed by **q** lines with the searched name
 
-1. Write **void add_contact(Contact *book, int *count, const char *name, const char *phone)** — adds a contact at position **\*count** and increments the counter. Use **strcpy** to copy strings
-2. Write **void search_contact(Contact *book, int count, const char *query)** — loops through contacts using **pointer arithmetic** (`(book + i)->name`). If found, print **"Found: name - phone"**. If not found, print **"Not found: query"**
-3. Add these crew members: Tommy (0722111222), Lance (0733222333), Ken (0744333444)
-4. Search for "Lance" and "Diaz"
+**Example**
 
-**Output**
+Input
 
 ```text
-Found: Lance - 0733222333
-Not found: Diaz
+3
+op7 0722111222
+op12 0733222333
+op9 0744333444
+2
+op12
+op5
+```
+
+Output
+
+```text
+Found: op12 - 0733222333
+Not found: op5
+```
+
+**Example**
+
+Input
+
+```text
+2
+shift1 0711000111
+shift2 0722000222
+3
+shift2
+shift9
+shift1
+```
+
+Output
+
+```text
+Found: shift2 - 0722000222
+Not found: shift9
+Found: shift1 - 0711000111
 ```

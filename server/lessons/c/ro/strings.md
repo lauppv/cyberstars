@@ -1,18 +1,18 @@
-În Python și Java, **string-urile** sunt un tip încorporat cu metode prietenoase. **În C, string-urile sunt diferite** — sunt **array-uri de caractere**. Mai puțin convenabile, dar vei înțelege exact cum funcționează textul în memorie
+**În C, string-urile** sunt **array-uri de caractere**. Mai puțin convenabile decât un tip încorporat, dar vei înțelege exact cum funcționează textul în memorie
 
 ```c
 #include <stdio.h>
 
 int main(void) {
-    char nume[] = "Tommy Vercetti";
+    char nume[] = "Ken Thompson";
     printf("%s\n", nume);
     return 0;
 }
 ```
 
-Afișează **Tommy Vercetti**. Format specifier-ul pentru un string este **%s**
+Afișează **Ken Thompson**. Format specifier-ul pentru un string este **%s**
 
-Ce înseamnă **char nume[] = "Tommy Vercetti"**? Creează un array de **char**-uri care conține literele textului. **char[]** este "array de caractere", iar **""** este modul de a scrie un literal string care umple array-ul
+Ce înseamnă **char nume[] = "Ken Thompson"**? Creează un array de **char**-uri care conține literele textului. **char[]** este "array de caractere", iar **""** este modul de a scrie un literal string care umple array-ul
 
 ---
 
@@ -22,15 +22,15 @@ De obicei nu scrii **\0** singur atunci când folosești literali string. C îl 
 
 ---
 
-Cât de lung este un string? Nu putem folosi **nume.length** ca în Java, pentru că C nu are metode. În schimb, folosim o funcție din biblioteca standard
+Cât de lung este un string? C nu are metode pe string-uri, așa că folosim o funcție din biblioteca standard
 
 ```c
 #include <stdio.h>
 #include <string.h>
 
 int main(void) {
-    char nume[] = "Tommy Vercetti";
-    printf("%zu\n", strlen(nume));   // 14
+    char nume[] = "Ken Thompson";
+    printf("%zu\n", strlen(nume));   // 12
     return 0;
 }
 ```
@@ -40,7 +40,7 @@ Două lucruri noi
 - **#include <string.h>** — necesar pentru **strlen** și prietenii ei
 - **%zu** — format specifier pentru tipul pe care **strlen** îl întoarce (un **size_t**, un fel de unsigned int). Pentru scopurile noastre, poți folosi și **%d** cu un cast: **printf("%d\n", (int) strlen(nume))**
 
-**strlen** numără până la **\0**, fără a-l include. Deci **strlen("Tommy")** este **5**, deși array-ul are **6** sloturi în memorie
+**strlen** numără până la **\0**, fără a-l include. Deci **strlen("Ken")** este **3**, deși array-ul are **4** sloturi în memorie
 
 ---
 
@@ -53,7 +53,7 @@ int main(void) {
     char a[] = "salut";
     char b[] = "salut";
 
-    if (a == b) {   // GREȘIT
+    if (a == b) {   // GRESIT
         printf("egale\n");
     }
     return 0;
@@ -78,7 +78,7 @@ int main(void) {
 }
 ```
 
-**strcmp** întoarce **0** când string-urile sunt **egale**. (Da, egal = 0. C este plin de mici ciudățenii ca asta :))
+**strcmp** întoarce **0** când string-urile sunt **egale**. (Da, egal = 0. C este plin de mici ciudățenii ca asta)
 
 ---
 
@@ -88,9 +88,9 @@ Un singur caracter la o poziție. Pentru că un string este doar un array, folos
 #include <stdio.h>
 
 int main(void) {
-    char nume[] = "Tommy Vercetti";
-    printf("%c\n", nume[0]);    // T
-    printf("%c\n", nume[6]);    // V
+    char nume[] = "Ken Thompson";
+    printf("%c\n", nume[0]);    // K
+    printf("%c\n", nume[4]);    // T
     return 0;
 }
 ```
@@ -105,37 +105,58 @@ Modificarea caracterelor
 #include <stdio.h>
 
 int main(void) {
-    char nume[] = "tommy";
-    nume[0] = 'T';
-    printf("%s\n", nume);   // Tommy
+    char nume[] = "ken";
+    nume[0] = 'K';
+    printf("%s\n", nume);   // Ken
     return 0;
 }
 ```
 
-Putem schimba caractere individuale pentru că **nume** este un array pe care îl deținem. Observă **ghilimelele simple** pentru un singur char (**'T'**), și **ghilimelele duble** pentru un string (**"Tommy"**). Confundarea lor este una dintre cele mai comune greșeli în C
+Putem schimba caractere individuale pentru că **nume** este un array pe care îl deținem. Observă **ghilimelele simple** pentru un singur char (**'K'**), și **ghilimelele duble** pentru un string (**"Ken"**). Confundarea lor este una dintre cele mai comune greșeli în C
 
 ---
 
-## Misiune: Decriptează Codul de Apel
+## Misiune: Decodifică indicativul de apel
 
-O transmisie distorsionată tocmai a intrat. Ofițerul de comunicații a stocat-o într-un array de char. Sarcina ta: afișează codul complet de apel, lungimea lui, primul caracter și ultimul caracter ca puntea de comandă să poată verifica semnalul.
+O transmisie distorsionată tocmai a intrat pe linie. Operatorul de la centrala telefonică a stocat-o într-un array de char. Sarcina ta: afișează indicativul complet, lungimea lui, primul caracter și ultimul caracter, ca operatorul să poată verifica semnalul.
+
+Citește o linie de text (poate conține spații) cu **fgets** într-un array **nume[64]**, apoi elimină linia nouă de la final cu **strcspn**
 
 1. Afișează string-ul **nume** complet
 2. Afișează **lungimea** lui (folosește **strlen**)
 3. Afișează **primul** caracter (indicele **0**, folosește **%c**)
 4. Afișează **ultimul** caracter (indicele **strlen(nume) - 1**, folosește **%c**)
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Exemplu**
 
-- `nume` — un array de char setat la **"lance vance"**
+Input
+
+```text
+dennis ritchie
+```
+
+Output
+
+```text
+dennis ritchie
+14
+d
+e
+```
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
 
 ```text
-lance vance
-11
-l
-e
+ken thompson
+```
+
+Output
+
+```text
+ken thompson
+12
+k
+n
 ```

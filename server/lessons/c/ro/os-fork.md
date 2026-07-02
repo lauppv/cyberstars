@@ -53,7 +53,7 @@ int main(void) {
 }
 ```
 
-Dacă faci fork din nou înăuntrul unuia dintre acele procese, obții 4 procese. Fork este **exponențial**. Ai grijă :)
+Dacă faci fork din nou înăuntrul unuia dintre acele procese, obții 4 procese. Fork este **exponențial**. Ai grijă.
 
 ---
 
@@ -68,19 +68,21 @@ Acest pattern fork-apoi-exec este peste tot:
 
 ---
 
-## Misiune: Activarea Camerei de Clonare
+## Misiune: Terminalul de diagnostic
 
-Camera de Clonare a stației trebuie să producă o clonă-muncitor care să ruleze un diagnostic. Clona își raportează propriul ID, iar operatorul original așteaptă până când clona termină înainte de a înregistra finalizarea.
+Un tehnician de la centrul de calcul trebuie să lanseze un proces de diagnostic care raportează propriul PID, în timp ce terminalul principal așteaptă confirmarea înainte să continue tura.
 
 1. Apelează **fork()** pentru a crea un proces copil
 2. **Copilul** afișează **"Copil: salut de la PID X"** (unde X este PID-ul său real din **getpid()**)
 3. **Părintele** apelează **wait(NULL)**, apoi afișează **"Parinte: copilul a terminat"**
 
-**Output**
+**Exemplu**
+
+Programul tău ar trebui să afișeze (PID-ul va varia la fiecare rulare)
 
 ```text
 Copil: salut de la PID 12345
 Parinte: copilul a terminat
 ```
 
-PID-ul va varia la fiecare rulare. Folosește **fork()**, **getpid()** și **wait(NULL)** din **unistd.h** și **sys/wait.h**
+Folosește **fork()**, **getpid()** și **wait(NULL)** din **unistd.h** și **sys/wait.h**

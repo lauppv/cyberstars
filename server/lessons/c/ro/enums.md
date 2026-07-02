@@ -24,15 +24,15 @@ Putem alege propriile noastre valori dacă vrem
 ```c
 #include <stdio.h>
 
-enum HttpStatus {
-    OK = 200,
-    NOT_FOUND = 404,
-    SERVER_ERROR = 500
+enum CoduIesire {
+    SUCCES = 0,
+    EROARE_CITIRE = 1,
+    EROARE_MEMORIE = 2
 };
 
 int main(void) {
-    enum HttpStatus cod = NOT_FOUND;
-    printf("Status: %d\n", cod);   // Status: 404
+    enum CoduIesire cod = EROARE_CITIRE;
+    printf("Cod iesire: %d\n", cod);   // Cod iesire: 1
     return 0;
 }
 ```
@@ -66,33 +66,35 @@ Asta e mult mai bine decât `if (c == 0)` — oricine citește codul știe exact
 
 ---
 
-O folosință clasică: stările unui joc
+O folosință clasică: stările unui job din coada de procesare
 
 ```c
 #include <stdio.h>
 
-enum StareJoc { MENIU, IN_JOC, PAUZAT, GAME_OVER };
+enum StareJob { COADA, RULEAZA, SUSPENDAT, TERMINAT };
 
 int main(void) {
-    enum StareJoc stare = MENIU;
-    // jucatorul apasa start
-    stare = IN_JOC;
-    // jucatorul apasa escape
-    stare = PAUZAT;
+    enum StareJob stare = COADA;
+    // operatorul porneste jobul
+    stare = RULEAZA;
+    // operatorul il suspenda pentru un job prioritar
+    stare = SUSPENDAT;
     printf("%d\n", stare);
     return 0;
 }
 ```
 
-În loc să ținem minte "era 2 pauzat sau game over?", folosim pur și simplu numele. Codul se citește ca limba engleză
+În loc să ținem minte "era 2 suspendat sau terminat?", folosim pur și simplu numele. Codul se citește aproape ca engleza obișnuită
 
 ---
 
-## Misiune: Modulul de Climă
+## Misiune: Calendarul de Mentenanță
 
-Stația orbitează în jurul unei planete cu patru anotimpuri distincte. Modulul de climă are nevoie de o funcție care traduce fiecare cod de anotimp într-un nume citibil pentru afișajul echipajului.
+Centrul de calcul rulează un ciclu de mentenanță trimestrial, câte o rundă pentru fiecare anotimp. Consola de operare are nevoie de o funcție care traduce fiecare cod de anotimp într-un nume citibil pe ecranul teletype-ului.
 
-**enum Anotimp** și scheletul funcției **afiseaza_anotimp** sunt deja în dreapta. Completează instrucțiunea **switch** astfel încât fiecare caz să afișeze numele anotimpului.
+1. Definește **enum Anotimp** cu valorile **PRIMAVARA**, **VARA**, **TOAMNA**, **IARNA**
+2. Scrie funcția **void afiseaza_anotimp(enum Anotimp a)** cu o instrucțiune **switch** care afișează numele anotimpului
+3. În **main**, apelează funcția pentru toate cele patru anotimpuri, în ordine
 
 **Exemplu**
 

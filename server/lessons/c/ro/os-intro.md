@@ -31,17 +31,17 @@ Fiecare proces are un **PID** unic (Process ID). **getpid()** îl returnează pe
 
 ```text
 Adrese mari
-┌──────────────┐
-│    Stiva      │  ← variabile locale, apeluri de funcții (crește în JOS)
-│      ↓        │
-│              │
-│      ↑        │
-│    Heap       │  ← malloc, memorie dinamică (crește în SUS)
-├──────────────┤
-│    Date       │  ← variabile globale/statice
-├──────────────┤
-│    Cod        │  ← instrucțiunile tale compilate
-└──────────────┘
++--------------+
+|    Stiva     |  <- variabile locale, apeluri de functii (creste in JOS)
+|      v       |
+|              |
+|      ^       |
+|    Heap      |  <- malloc, memorie dinamica (creste in SUS)
++--------------+
+|    Date      |  <- variabile globale/statice
++--------------+
+|    Cod       |  <- instructiunile tale compilate
++--------------+
 Adrese mici
 ```
 
@@ -70,22 +70,24 @@ int main(void) {
 }
 ```
 
-**return 0** înseamnă "totul a mers bine". Orice valoare diferită de zero înseamnă o eroare. Într-un terminal, poți verifica codul de ieșire al ultimei comenzi cu **echo $?**. De asta am tot scris **return 0** în main de la început — acum știi motivul real :)
+**return 0** înseamnă "totul a mers bine". Orice valoare diferită de zero înseamnă o eroare. Într-un terminal, poți verifica codul de ieșire al ultimei comenzi cu **echo $?**. De asta am tot scris **return 0** în main de la început — acum știi motivul real.
 
 ---
 
-## Misiune: Secvența de Boot a Stației
+## Misiune: Jurnalul de tură
 
-Reactorul principal al stației tocmai a repornit după o supraîncărcare. Fiecare subsistem trebuie să transmită ID-ul său de proces ca Mission Control să confirme că a revenit online.
+E ora opt dimineața la centrul de calcul Bell Labs. Înainte să înceapă lucrul, fiecare terminal conectat la mainframe trebuie să-și înregistreze procesul în jurnalul de tură al operatorului.
 
 1. Afișează ID-ul procesului curent folosind **getpid()**
 2. Afișează un mesaj care confirmă codul de ieșire
 
-**Output**
+**Exemplu**
+
+Programul tău ar trebui să afișeze (PID-ul tău va fi diferit — asta este de așteptat)
 
 ```text
 PID: 12345
 Iesire cu codul 0
 ```
 
-PID-ul tău va fi diferit — asta este de așteptat. Folosește **getpid()** din **unistd.h**
+Folosește **getpid()** din **unistd.h**

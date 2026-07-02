@@ -1,10 +1,10 @@
-Final project! We'll build a tiny piece of a **shell** — the program that runs when you open a terminal. This combines fork, pipes, and everything we've learned
+The final project. We will build a piece of a **shell** — the program that runs when you open a terminal. This combines **fork**, **wait** and everything we have learned about processes
 
-A real shell does: read a command → fork → child runs the command → parent waits. We'll build a simplified version that runs a fixed sequence of "commands" (functions), demonstrating the fork-and-wait pattern
+A real shell works like this: it reads a command, does **fork**, the child runs the command, the parent waits. We will build a simplified version that reads commands from a teletype queue and runs them one by one, demonstrating the fork-and-wait pattern
 
 ---
 
-Here's the core idea
+Here is the basic idea
 
 ```c
 #include <stdio.h>
@@ -12,67 +12,97 @@ Here's the core idea
 #include <sys/wait.h>
 #include <string.h>
 
-void run_command(const char *cmd) {
+void run_command(const char *command) {
     pid_t pid = fork();
 
     if (pid == 0) {
-        // Child: execute the command
-        printf("[child %d] Running: %s\n", getpid(), cmd);
-
-        if (strcmp(cmd, "hello") == 0) {
-            printf("Hello, CyberStars!\n");
-        } else if (strcmp(cmd, "date") == 0) {
-            printf("2025-01-01\n");
+        // Child: run the command
+        if (strcmp(command, "hello") == 0) {
+            printf("Hello from the lab!\n");
+        } else if (strcmp(command, "date") == 0) {
+            printf("1974\n");
         } else {
-            printf("Unknown command: %s\n", cmd);
+            printf("Unknown command: %s\n", command);
         }
-        _exit(0);   // child exits
+        fflush(stdout);   // flush the buffer before we exit
+        _exit(0);         // the child exits
     } else {
-        // Parent: wait for child
-        int status;
-        waitpid(pid, &status, 0);
-        printf("[parent] Child finished with code %d\n",
-               WEXITSTATUS(status));
+        // Parent: wait for the child
+        wait(NULL);
+        printf("Done\n");
+        fflush(stdout);   // flush here too
     }
 }
 
 int main(void) {
     run_command("hello");
     run_command("date");
-    run_command("unknown_cmd");
+    run_command("unknown");
     return 0;
 }
 ```
 
-**\_exit(0)** is like **return 0** but for child processes after fork — it exits immediately without running cleanup that could mess up the parent
+**\_exit(0)** is like **return 0**, but for child processes after **fork** — it exits immediately, without extra cleanup that could confuse the parent. It has a side effect though: it does not flush **printf**'s buffer, so we have to call **fflush(stdout)** ourselves, right before **\_exit**, so the text actually reaches the teletype
 
-**WEXITSTATUS(status)** extracts the actual exit code from the status value that **waitpid** gives us
-
----
-
-The parent creates a child for each command, waits for it to finish, then moves to the next. This is exactly what bash does (simplified). Each command runs in **isolation** — if the child crashes, the parent survives and moves on
+**wait(NULL)** blocks the parent until the child finishes. We don't care about the exact exit code, only that it's done
 
 ---
 
-## Mission: Station Command Terminal
+The parent creates one child per command, waits for it to finish, then moves to the next. This is exactly how a shell works, simplified. Each command runs in **isolation** — if a child crashes, the parent survives and keeps going
 
-The station's emergency terminal is offline. Rex needs you to rebuild a minimal shell that can dispatch commands to child processes. Each command runs in isolation — if one crashes, the shell survives.
+---
 
-Complete the **run_command** function on the right and call it from main with these commands: **"greet"**, **"count"**, and **"unknown"**
+## Mission: The lab's command terminal
 
-1. The child process checks the command string and runs the matching action:
-   - **"greet"** prints **"Hello from CyberStars!"**
-   - **"count"** prints **"1 2 3"** (on the same line, separated by spaces)
-   - anything else prints **"Error: unknown command"**
-2. The parent waits for the child, then prints **"Done"**
+You are the night-shift operator at the computing center. A teletype in the lab sends you commands to run, one at a time. Each command must be handled by a separate child process, so the lab doesn't go down if one of them fails. The command queue always ends with the word **"exit"**
 
-**Output**
+Write a program that
+
+1. Reads words from input, one at a time, with **scanf("%s", ...)**, in a loop
+2. If you just read **"exit"**, stop the loop immediately, without calling **run_command**
+3. Otherwise, call **run_command** with the word you read. The child process checks the string and prints
+   - **"time"** prints **"12:04"**
+   - **"space"** prints **"128K free"**
+   - any other command prints **"Unknown command: X"**, where **X** is the command received
+
+   Don't forget **fflush(stdout)** before **\_exit(0)**, otherwise the text printed by the child is lost
+
+4. The parent waits for the child with **wait(NULL)**, prints **"Done"**, then flushes its own buffer with **fflush(stdout)**
+
+**Example**
+
+Input
 
 ```text
-Hello from CyberStars!
+time
+space
+unknown
+exit
+```
+
+Output
+
+```text
+12:04
 Done
-1 2 3
+128K free
 Done
-Error: unknown command
+Unknown command: unknown
+Done
+```
+
+**Example**
+
+Input
+
+```text
+space
+exit
+```
+
+Output
+
+```text
+128K free
 Done
 ```

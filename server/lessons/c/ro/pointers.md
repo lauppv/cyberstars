@@ -1,6 +1,6 @@
 Aceasta este lecția care separă C de aproape orice alt limbaj. **Pointerii**. Sună înfricoșător, dar odată ce înțelegi ideea, sunt de fapt destul de eleganți
 
-Un **pointer** este o variabilă care stochează **adresa** altei variabile. Gândește-te așa: fiecare variabilă trăiește undeva în memorie, la o **adresă** specifică. Un pointer este o bucată de hârtie pe care ai notat acea adresă
+Un **pointer** este o variabilă care stochează **adresa** altei variabile. Gândește-te așa: fiecare variabilă trăiește undeva în memoria calculatorului, la o **adresă** specifică — un număr, exact ca un număr de cameră într-un imobil de birouri. Un pointer este o bucată de hârtie pe care ai notat acel număr de cameră
 
 ```c
 #include <stdio.h>
@@ -33,9 +33,9 @@ Declarația **int \*ptr** spune "ptr este un pointer către un int". **\*** de a
 
 int main(void) {
     int x = 10;
-    int *p = &x;    // p pointează către x
+    int *p = &x;    // p pointeaza catre x
 
-    printf("%d\n", *p);   // 10 — valoarea de la adresa pe care o ține p
+    printf("%d\n", *p);   // 10 - valoarea de la adresa pe care o tine p
     return 0;
 }
 ```
@@ -49,16 +49,23 @@ int main(void) {
     int x = 10;
     int *p = &x;
     *p = 42;
-    printf("%d\n", x);   // 42 — x s-a schimbat!
+    printf("%d\n", x);   // 42 - x s-a schimbat!
     return 0;
 }
 ```
 
-Nu am atins **x** direct. Am trecut prin **p**, am urmat adresa, și am schimbat valoarea de acolo. Pentru că **p** pointează către **x**, schimbând **\*p** schimbăm **x**. Aceasta este puterea pointerilor
+Hai să urmărim ce se întâmplă:
+
+1. **x** e creat cu valoarea 10, undeva în memorie
+2. **p** este un pointer care primește adresa lui **x** — acum **p** "știe" unde locuiește **x**
+3. **\*p = 42** nu schimbă pointerul, ci merge la adresa din **p** și scrie 42 acolo
+4. cum **p** ținea adresa lui **x**, valoarea scrisă acolo este chiar **x**
+
+Nu am atins **x** direct. Am trecut prin **p**, am urmat adresa, și am schimbat valoarea de acolo. Aceasta este puterea pointerilor
 
 ---
 
-O analogie utilă: gândește-te la un **pin de Google Maps**. Pin-ul nu este restaurantul — este o **referință către** restaurant. Dacă împărtășești pin-ul cu cineva și acea persoană merge acolo și revopsește clădirea, restaurantul s-a schimbat, chiar dacă tu nu ai mers acolo personal. Asta face un pointer
+Pe primele sisteme UNIX de la Bell Labs, programatorii lucrau cu memoria exact la acest nivel: fiecare octet avea o adresă, iar un pointer greșit putea scrie peste memoria altui program. Din acest motiv, C te lasă foarte aproape de mașină — și de aceea trebuie să fii atent la ce pointer citești și ce pointer scrii
 
 ---
 
@@ -69,41 +76,60 @@ Tipuri diferite de pointeri pentru tipuri diferite:
 
 int main(void) {
     int a = 10;
-    int *ip = &a;       // pointer către int
+    int *ip = &a;       // pointer catre int
 
     double b = 3.14;
-    double *dp = &b;    // pointer către double
+    double *dp = &b;    // pointer catre double
 
     char c = 'A';
-    char *cp = &c;      // pointer către char
+    char *cp = &c;       // pointer catre char
 
     printf("%d %f %c\n", *ip, *dp, *cp);
     return 0;
 }
 ```
 
-Tipul pointerului trebuie să se potrivească cu tipul către care pointează. Un **int \*** poate pointa doar către un **int**. Așa știe C câți bytes să citească atunci când dereferențiezi
+Tipul pointerului trebuie să se potrivească cu tipul către care pointează. Un **int \*** poate pointa doar către un **int**. Așa știe C câți octeți să citească atunci când dereferențiezi
 
 ---
 
-## Misiune: Suprascrierea Valvei de la Distanță
+## Misiune: Registrul de control al bandă magnetică
 
-O valvă de presiune de pe Puntea 7 este blocată. Nu o poți atinge fizic, dar ai un pointer către registrul ei de control. Folosește pointerul ca să schimbi setarea valvei de la distanță.
+Ești operator de tură la centrul de calcul. Un cititor de bandă magnetică ți-a transmis o valoare inițială pentru registrul său de control, dar comanda nouă trebuie scrisă prin pointer — accesul direct la hardware nu e permis, doar prin adresă.
 
-1. Declară o variabilă **int** **x** cu valoarea **7**
+1. Citește un **int** **x** din input
 2. Creează un pointer **ptr** care pointează către **x**
 3. Folosește pointerul ca să schimbi **x** în **42** (atribuie prin **\*ptr**)
-4. Afișează atât **x** cât și **\*ptr**
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `x` — un int cu valoarea inițială **7**
+4. Afișează atât **x** cât și **\*ptr**, fiecare pe linia lui
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
+
+```text
+7
+```
+
+Output
 
 ```text
 42
 42
 ```
+
+**Exemplu**
+
+Input
+
+```text
+100
+```
+
+Output
+
+```text
+42
+42
+```
+
+Indiferent ce valoare are **x** la citire, după ce scrii prin pointer, **x** devine **42**.

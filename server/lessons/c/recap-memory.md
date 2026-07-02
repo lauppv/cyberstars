@@ -2,23 +2,51 @@ Combine **malloc/free**, **enums**, and **typedef**
 
 ---
 
-## Mission: Repair Queue Tracker
+## Mission: The Technical Intervention Queue
 
-The station took damage from a micrometeorite shower. Phil needs a dynamic task tracker to manage repair jobs. Each task is heap-allocated, has a status, and must be freed when the queue is cleared.
+A short-circuit fire has knocked out half the computer room. The shift technician needs a dynamic task tracker to manage the repair jobs. Each task is heap-allocated, has a status, and must be freed when the queue is cleared.
 
-The data is already on the right. Do the following, in order:
+1. Define **typedef enum { TODO, IN_PROGRESS, DONE } Status;**
+2. Define **typedef struct { char title[100]; Status status; } Task;**
+3. Write **Task \*create_task(const char \*title)** — allocates a Task with malloc, copies the title, sets the status to **TODO**, returns the pointer
+4. Write **void update_status(Task \*t, Status s)** — updates the task's status
+5. Write **const char \*status_name(Status s)** — returns "TODO", "IN_PROGRESS", or "DONE" (use a switch)
+6. Write **void print_task(Task \*t)** — prints the task as **"[STATUS] Title"**
+7. Read from input a count **n** of tasks, followed by **n** lines, each with a title (a single word) and a status code (**0** = TODO, **1** = IN_PROGRESS, **2** = DONE). Create each task and update it to the status read
+8. Print all the tasks, in order, then free the memory
 
-1. Write **Task *create_task(const char *title)** — allocates a Task with malloc, copies the title, sets status to **TODO**, returns the pointer
-2. Write **void update_status(Task \*t, Status s)** — updates the task's status
-3. Write **const char \*status_name(Status s)** — returns "TODO", "IN_PROGRESS", or "DONE" (use a switch)
-4. Write **void print_task(Task \*t)** — prints the task as **"[STATUS] Title"**
-5. Create 3 tasks: "Learn pointers" (update to DONE), "Practice structs" (update to IN_PROGRESS), "Master malloc" (leave as TODO)
-6. Print all three, then free the memory
+**Example**
 
-**Output**
+Input
 
 ```text
-[DONE] Learn pointers
-[IN_PROGRESS] Practice structs
-[TODO] Master malloc
+3
+Check_tape 2
+Fix_teletype 1
+Recalibrate_reader 0
+```
+
+Output
+
+```text
+[DONE] Check_tape
+[IN_PROGRESS] Fix_teletype
+[TODO] Recalibrate_reader
+```
+
+**Example**
+
+Input
+
+```text
+2
+Replace_fuse 2
+Clean_fans 0
+```
+
+Output
+
+```text
+[DONE] Replace_fuse
+[TODO] Clean_fans
 ```

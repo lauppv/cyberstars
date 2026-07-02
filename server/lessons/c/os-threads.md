@@ -111,15 +111,17 @@ When to use **threads** vs **processes**:
 
 ---
 
-## Mission: Dual Thruster Calibration
+## Mission: The Two-Teleprinter Test
 
-The station's twin thrusters must fire test pulses simultaneously. Each thruster runs on its own thread, repeating its callsign to confirm alignment. Once both finish, the bridge logs the calibration as complete.
+The computing center is testing two teleprinters connected to the mainframe at the same time. Each runs on its own thread, repeating its test signal. The operator waits for both to finish before confirming the test.
 
 1. Create **two threads**, passing **"Ping"** to the first and **"Pong"** to the second
 2. Each thread prints its string **3 times**
-3. The main thread waits for both to finish, then prints **"Game over"**
+3. The main thread waits for both to finish, then prints **"Test complete"**
 
-**Output**
+**Example**
+
+Your program should print (the order of Ping/Pong lines may vary)
 
 ```text
 Ping
@@ -128,7 +130,7 @@ Ping
 Pong
 Pong
 Pong
-Game over
+Test complete
 ```
 
-The order of Ping and Pong lines may vary, but **"Game over"** must always be last
+The order of the Ping and Pong lines may vary, but **"Test complete"** must always be last

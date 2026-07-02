@@ -2,9 +2,9 @@ Combină **if/else**, **if/else if** și **buclele for** într-o singură provoc
 
 ---
 
-## Misiune: Protocol de Scanare a Sectoarelor
+## Misiune: Diagnosticul bobinelor de bandă
 
-Scannerul cu rază lungă al stației parcurge sectoarele 1 până la 20. Fiecare sector primește o etichetă de clasificare pe baza frecvenței sale de rezonanță — tiparele de divizibilitate determină eticheta.
+Un program de diagnostic verifică 20 de bobine de bandă magnetică, numerotate de la 1 la 20, aflate la un centru de calcul. Fiecare bobină primește o etichetă bazată pe niște tipare de divizibilitate stabilite de administratorul sistemului.
 
 1. Parcurge numerele de la **1 la 20**
 2. Dacă numărul este **divizibil cu 3 și 5**, afișează **"X: fizzbuzz"**

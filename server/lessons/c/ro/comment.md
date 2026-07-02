@@ -8,7 +8,7 @@
 int main(void) {
     // acesta este un comentariu
     int a = 1 + 2 + 3;
-    printf("%d\n", a);   // afișează variabila a
+    printf("%d\n", a);   // afiseaza variabila a
     return 0;
 }
 ```
@@ -53,20 +53,21 @@ int main(void) {
 
 ---
 
-## Misiune: Marfă Clasificată
+## Misiune: Jurnalul de sistem
 
-Manifestul de marfă al stației este afișat pe ecran, dar o linie conține **informații clasificate** care nu au voie să apară în jurnalul public.
+Sistemul afișează un jurnal de pornire pe teleimprimator, dar una dintre linii conține un cod de acces intern care nu are voie să ajungă în jurnalul public.
 
-Comentează linia care afișează codul secret, astfel încât doar înregistrările aprobate să fie transmise.
+- Scrie patru apeluri **printf**, în ordine, care afișează: `PDP-11`, `Bell Labs Computing Center`, `ACCES-7734-SECRET` și numărul `1972`
+- Comentează al treilea apel **printf** (cel cu codul de acces), astfel încât linia lui să nu mai apară în output
 
 **Exemplu**
 
 Programul tău ar trebui să afișeze
 
 ```text
-Voyager
-Deep Space Exploration
-9001
+PDP-11
+Bell Labs Computing Center
+1972
 ```
 
-Nu șterge nimic — doar **comentează** linia pe care nu vrei să o rulezi :)
+Nu șterge nimic — doar **comentează** linia pe care nu vrei să o rulezi.

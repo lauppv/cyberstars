@@ -15,9 +15,9 @@ int main(void) {
 }
 ```
 
-**malloc** (memory allocate) asks the operating system for a chunk of memory on the **heap**. It returns a **pointer** to that memory. **sizeof(int)** tells it how many bytes we need (4 on most systems)
+**malloc** (memory allocate) asks the operating system for a block of memory on the **heap**. It returns a **pointer** to that memory. **sizeof(int)** tells it how many bytes we need (4 on most systems)
 
-**free** gives the memory back. If you don't free it, the memory stays allocated until your program ends — this is called a **memory leak**. In a long-running program, memory leaks can eat all your RAM
+**free** returns the memory. If you don't free it, the memory stays allocated until your program ends — this is called a **memory leak**. In a long-running program, memory leaks can eat up all the RAM
 
 ---
 
@@ -47,7 +47,7 @@ int main(void) {
 }
 ```
 
-We use **scores[i]** just like a normal array — because an array name is a pointer anyway. The only difference: we allocated it ourselves and we **must free it** when we're done
+We use **scores[i]** exactly like a normal array — because the name of an array is a pointer anyway. The only difference: we allocated it ourselves and **must free it** when we're done
 
 ---
 
@@ -73,9 +73,9 @@ With **malloc**, the memory contains garbage (whatever was there before). With *
 The golden rules of dynamic memory:
 
 1. Every **malloc** or **calloc** must have a matching **free**
-2. Never use memory after freeing it (**use after free** — a dangerous bug)
+2. Never use memory after it's been freed (**use after free** — a dangerous bug)
 3. Never free the same memory twice (**double free** — also dangerous)
-4. Always check if malloc returned **NULL** (it does when the system is out of memory)
+4. Always check whether malloc returned **NULL** (it does when the system is out of memory)
 
 ```c
 #include <stdio.h>
@@ -94,26 +94,30 @@ int main(void) {
 }
 ```
 
-These rules sound simple but violating them causes some of the hardest bugs in the world. Real-world security vulnerabilities like buffer overflows and use-after-free are caused by breaking these rules
+These rules sound simple, but breaking them causes some of the nastiest bugs in the world. Real-world security vulnerabilities like buffer overflows and use-after-free come from breaking these rules
 
 ---
 
-## Mission: Dynamic Sensor Buffer
+## Mission: Dynamic Buffer for the Card Reader
 
-The station just detected 5 new objects on radar, but the sensor array size isn't known at compile time. Allocate a buffer dynamically, fill it with the readings, display them, and release the memory before the next scan cycle.
+The punch card reader sends a batch of readings, but the number of cards in the batch isn't known at compile time — it comes from the first line of the input tape. Allocate a dynamic buffer of exactly the right size, fill it with the readings, print them, and free the memory before the next batch.
 
-1. Allocate a dynamic array of **5 ints** using **malloc**
-2. Fill it with the values **{2, 4, 6, 8, 10}**
-3. Print each value on a separate line
-4. **free** the memory when done
-
-**Input** (already set at the top of your code — change the values to test):
-
-- 5 sensor readings: **2, 4, 6, 8, 10**
+1. Read an integer **n** — the number of readings in the batch
+2. Allocate a dynamic array of **n ints** using **malloc**
+3. Read the **n** values from input and put them in the array
+4. Print each value on its own line
+5. **free** the memory when you're done
 
 **Example**
 
-With the starter values, your program should print
+Input
+
+```text
+5
+2 4 6 8 10
+```
+
+Output
 
 ```text
 2
@@ -121,4 +125,21 @@ With the starter values, your program should print
 6
 8
 10
+```
+
+**Example**
+
+Input
+
+```text
+3
+7 14 21
+```
+
+Output
+
+```text
+7
+14
+21
 ```

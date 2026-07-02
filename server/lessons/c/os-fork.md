@@ -1,4 +1,4 @@
-How does the OS create new processes? In Unix/Linux, there's a fascinating system call: **fork()**. It **clones** the current process, creating an exact copy
+How does the operating system create new processes? On Unix/Linux, there's a fascinating system call: **fork()**. It **clones** the current process, creating an exact copy
 
 ```c
 #include <stdio.h>
@@ -13,7 +13,7 @@ int main(void) {
     if (pid == 0) {
         printf("I am the CHILD, my PID: %d\n", getpid());
     } else {
-        printf("I am the PARENT, child PID: %d\n", pid);
+        printf("I am the PARENT, child's PID: %d\n", pid);
         wait(NULL);
     }
 
@@ -22,65 +22,67 @@ int main(void) {
 }
 ```
 
-After **fork()**, there are **two processes** running the same code. The original is the **parent**, the copy is the **child**. How do they know who's who? **fork()** returns:
+After **fork()**, there are **two processes** running the same code. The original is the **parent**, the copy is the **child**. How do you know which one you are? **fork()** returns:
 
 - **0** to the child process
-- The **child's PID** to the parent process
+- the **child's PID** to the parent process
 
-That's why we check **pid == 0** — it's the only way to tell which one we are
-
----
-
-Think of it like cell division in biology. One cell splits into two identical cells. Both have the same DNA (code), but they can then go in different directions. The **if/else** after fork is how we send parent and child on different paths
-
-**wait(NULL)** makes the parent **pause** until the child finishes. Without it, the parent might finish first, and things get messy. It's like a parent waiting at the school gate — don't leave without your kid
+That's why we check **pid == 0** — it's the only way to figure out which one we are
 
 ---
 
-The "Before fork" message prints **once** (before the split). The "Done" message prints **twice** — once from the parent and once from the child. This is the mind-bending part: after fork, both processes continue from the **same point** in the code
+Think of it like cell division in biology. A cell splits into two identical cells. Both have the same DNA (code), but then they can go different directions. The **if/else** after fork is how we send the parent and the child down different paths
+
+**wait(NULL)** makes the parent **stop** until the child finishes. Without it, the parent could finish first and things get messy. It's like a parent waiting at the school gate — you don't leave without your kid
+
+---
+
+The "Before fork" message is printed **once** (before the split). The "Done" message is printed **twice** — once from the parent and once from the child. That's the part that makes you do a double take: after fork, both processes continue from the **same point** in the code
 
 ```c
 #include <stdio.h>
 #include <unistd.h>
 
 int main(void) {
-    printf("Before fork\n");     // prints 1 time
+    printf("Before fork\n");     // printed 1 time
 
     fork();
 
-    printf("After fork\n");      // prints 2 times!
+    printf("After fork\n");      // printed 2 times!
     return 0;
 }
 ```
 
-If you fork again inside one of those processes, you get 4 processes. Fork is **exponential**. Be careful :)
+If you fork again inside one of those processes, you get 4 processes. Fork is **exponential**. Be careful.
 
 ---
 
-**fork** is the foundation of how Unix works. When you open a terminal and type a command, the shell **forks** itself, and the child process **replaces itself** with the new program (using a function called **exec**, which we won't cover in detail but it's good to know it exists)
+**fork** is the foundation of how Unix works. When you open a terminal and type a command, the shell **forks** itself, and the child process **replaces itself** with the new program (using a function called **exec**, which we won't cover in detail, but it's good to know it exists)
 
 This fork-then-exec pattern is everywhere:
 
-1. Shell forks → now there are 2 shells
-2. Child shell calls exec("ls") → child is now running "ls"
-3. Parent shell waits for child to finish
-4. "ls" finishes, parent shell shows the prompt again
+1. The shell forks → now there are 2 shells
+2. The child shell calls exec("ls") → the child now runs "ls"
+3. The parent shell waits for the child to finish
+4. "ls" finishes, the parent shell prints the prompt again
 
 ---
 
-## Mission: Clone Bay Activation
+## Mission: The Diagnostic Terminal
 
-The station's Clone Bay needs to spawn a worker clone to run a diagnostic. The clone reports its own ID, and the original operator waits until the clone finishes before logging completion.
+A technician at the computing center needs to launch a diagnostic process that reports its own PID, while the main terminal waits for confirmation before continuing the shift.
 
 1. Call **fork()** to create a child process
-2. The **child** prints **"Child: hello from PID X"** (where X is its actual PID from **getpid()**)
-3. The **parent** calls **wait(NULL)**, then prints **"Parent: child finished"**
+2. The **child** prints **"Child: hello from PID X"** (where X is its real PID from **getpid()**)
+3. The **parent** calls **wait(NULL)**, then prints **"Parent: child has finished"**
 
-**Output**
+**Example**
+
+Your program should print (the PID will vary on each run)
 
 ```text
 Child: hello from PID 12345
-Parent: child finished
+Parent: child has finished
 ```
 
-The PID will vary on each run. Use **fork()**, **getpid()**, and **wait(NULL)** from **unistd.h** and **sys/wait.h**
+Use **fork()**, **getpid()**, and **wait(NULL)** from **unistd.h** and **sys/wait.h**

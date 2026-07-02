@@ -111,15 +111,17 @@ Când să folosești **thread-uri** vs **procese**:
 
 ---
 
-## Misiune: Calibrarea Propulsoarelor Gemene
+## Misiune: Testul celor două teleimprimante
 
-Propulsoarele gemene ale stației trebuie să tragă impulsuri de test simultan. Fiecare propulsor rulează pe propriul thread, repetând semnalul său pentru a confirma alinierea. Odată ce ambele termină, puntea înregistrează calibrarea ca finalizată.
+Centrul de calcul testează două teleimprimante conectate simultan la mainframe. Fiecare rulează pe propriul thread, repetând semnalul ei de test. Operatorul așteaptă ca ambele să termine înainte să confirme testul.
 
 1. Creează **două thread-uri**, transmițând **"Ping"** primului și **"Pong"** celui de-al doilea
 2. Fiecare thread afișează șirul său **de 3 ori**
-3. Thread-ul principal așteaptă ca ambele să termine, apoi afișează **"Game over"**
+3. Thread-ul principal așteaptă ca ambele să termine, apoi afișează **"Test complet"**
 
-**Output**
+**Exemplu**
+
+Programul tău ar trebui să afișeze (ordinea liniilor Ping/Pong poate varia)
 
 ```text
 Ping
@@ -128,7 +130,7 @@ Ping
 Pong
 Pong
 Pong
-Game over
+Test complet
 ```
 
-Ordinea liniilor Ping și Pong poate varia, dar **"Game over"** trebuie să fie întotdeauna ultimul
+Ordinea liniilor Ping și Pong poate varia, dar **"Test complet"** trebuie să fie întotdeauna ultimul

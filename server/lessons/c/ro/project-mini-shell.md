@@ -1,6 +1,6 @@
-Proiectul final! Vom construi o piesă mică dintr-un **shell** — programul care rulează când deschizi un terminal. Acesta combină fork, pipe-uri și tot ce am învățat
+Proiectul final. Vom construi o bucată dintr-un **shell** — programul care rulează când deschizi un terminal. Acesta combină **fork**, **wait** și tot ce am învățat despre procese
 
-Un shell real face așa: citește o comandă → fork → copilul rulează comanda → părintele așteaptă. Vom construi o versiune simplificată care rulează o secvență fixă de "comenzi" (funcții), demonstrând tiparul fork-and-wait
+Un shell real face așa: citește o comandă, face **fork**, copilul execută comanda, părintele așteaptă. Vom construi o versiune simplificată care citește comenzi dintr-o coadă de teletype și le rulează una câte una, demonstrând tiparul fork-and-wait
 
 ---
 
@@ -16,63 +16,93 @@ void ruleaza_comanda(const char *comanda) {
     pid_t pid = fork();
 
     if (pid == 0) {
-        // Copilul: execută comanda
-        printf("[copil %d] Ruleaza: %s\n", getpid(), comanda);
-
-        if (strcmp(comanda, "hello") == 0) {
-            printf("Salut, CyberStars!\n");
+        // Copilul: executa comanda
+        if (strcmp(comanda, "salut") == 0) {
+            printf("Salut din laborator!\n");
         } else if (strcmp(comanda, "data") == 0) {
-            printf("2025-01-01\n");
+            printf("1974\n");
         } else {
             printf("Comanda necunoscuta: %s\n", comanda);
         }
-        _exit(0);   // copilul iese
+        fflush(stdout);   // scrie bufferul inainte sa iesim
+        _exit(0);         // copilul iese
     } else {
-        // Părintele: așteaptă copilul
-        int status;
-        waitpid(pid, &status, 0);
-        printf("[parinte] Copilul a terminat cu codul %d\n",
-               WEXITSTATUS(status));
+        // Parintele: asteapta copilul
+        wait(NULL);
+        printf("Gata\n");
+        fflush(stdout);   // la fel, golim bufferul aici
     }
 }
 
 int main(void) {
-    ruleaza_comanda("hello");
+    ruleaza_comanda("salut");
     ruleaza_comanda("data");
-    ruleaza_comanda("comanda_necunoscuta");
+    ruleaza_comanda("necunoscuta");
     return 0;
 }
 ```
 
-**\_exit(0)** este ca **return 0** dar pentru procesele copil după fork — iese imediat fără să ruleze curățenie care ar putea încurca părintele
+**\_exit(0)** este ca **return 0**, dar pentru procesele copil după **fork** — iese imediat, fără curățenie suplimentară care ar putea încurca părintele. Are însă un efect secundar: nu golește bufferul lui **printf**, așa că trebuie să chemăm **fflush(stdout)** noi înșine, chiar înainte de **\_exit**, ca textul să ajungă cu adevărat pe teletype
 
-**WEXITSTATUS(status)** extrage codul real de ieșire din valoarea status pe care ne-o dă **waitpid**
-
----
-
-Părintele creează un copil pentru fiecare comandă, așteaptă să termine, apoi trece la următoarea. Exact asta face bash (simplificat). Fiecare comandă rulează în **izolare** — dacă copilul crapă, părintele supraviețuiește și merge mai departe
+**wait(NULL)** îl blochează pe părinte până când copilul termină. Nu ne interesează codul de ieșire exact, doar faptul că a terminat
 
 ---
 
-## Misiune: Terminalul de Comandă al Stației
+Părintele creează câte un copil pentru fiecare comandă, așteaptă să termine, apoi trece la următoarea. Exact așa funcționează un shell, simplificat. Fiecare comandă rulează în **izolare** — dacă un copil crapă, părintele supraviețuiește și merge mai departe
 
-Terminalul de urgență al stației este offline. Rex are nevoie de tine să reconstruiești un shell minimal care să poată dispecera comenzi către procese copil. Fiecare comandă rulează în izolare — dacă una crapă, shell-ul supraviețuiește.
+---
 
-Completează funcția **ruleaza_comanda** din dreapta și apeleaz-o din main cu aceste comenzi: **"saluta"**, **"numara"** și **"necunoscut"**
+## Misiune: Terminalul de comenzi al laboratorului
 
-1. Procesul copil verifică șirul comenzii și rulează acțiunea corespunzătoare:
-   - **"saluta"** afișează **"Salut de la CyberStars!"**
-   - **"numara"** afișează **"1 2 3"** (pe aceeași linie, separate prin spații)
-   - orice altceva afișează **"Eroare: comanda necunoscuta"**
-2. Părintele așteaptă copilul, apoi afișează **"Gata"**
+Ești operator de noapte la centrul de calcul. Un teletype din laborator îți trimite, pe rând, comenzi de rulat. Fiecare comandă trebuie procesată de un proces copil separat, ca laboratorul să nu cadă dacă una dintre ele eșuează. Coada de comenzi se termină mereu cu cuvântul **"iesire"**
 
-**Output**
+Scrie un program care
+
+1. Citește cuvinte din input, unul câte unul, cu **scanf("%s", ...)**, într-o buclă
+2. Dacă tocmai ai citit **"iesire"**, oprește bucla imediat, fără să mai apelezi **ruleaza_comanda**
+3. Altfel, apelează **ruleaza_comanda** cu cuvântul citit. Procesul copil verifică șirul și afișează
+   - **"ora"** afișează **"12:04"**
+   - **"spatiu"** afișează **"128K liber"**
+   - orice altă comandă afișează **"Comanda necunoscuta: X"**, unde **X** este comanda primită
+
+   Nu uita **fflush(stdout)** înainte de **\_exit(0)**, altfel textul afișat de copil se pierde
+
+4. Părintele așteaptă copilul cu **wait(NULL)**, afișează **"Gata"**, apoi golește el însuși bufferul cu **fflush(stdout)**
+
+**Exemplu**
+
+Input
 
 ```text
-Salut de la CyberStars!
+ora
+spatiu
+necunoscuta
+iesire
+```
+
+Output
+
+```text
+12:04
 Gata
-1 2 3
+128K liber
 Gata
-Eroare: comanda necunoscuta
+Comanda necunoscuta: necunoscuta
+Gata
+```
+
+**Exemplu**
+
+Input
+
+```text
+spatiu
+iesire
+```
+
+Output
+
+```text
+128K liber
 Gata
 ```

@@ -1,4 +1,4 @@
-O **funcție** în C este o bucată de cod pe care o scriem **o singură dată** și o refolosim de **multe ori**. Ideea este exact aceeași ca în Python și Java, dar sintaxa este în stil C
+O **funcție** în C este o bucată de cod pe care o scriem **o singură dată** și o refolosim de **multe ori**
 
 ```c
 #include <stdio.h>
@@ -8,9 +8,9 @@ void saluta(char nume[]) {
 }
 
 int main(void) {
-    saluta("Cortez");
-    saluta("Tommy Vercetti");
-    saluta("Lance Vance");
+    saluta("Ritchie");
+    saluta("Thompson");
+    saluta("Kernighan");
     return 0;
 }
 ```
@@ -18,9 +18,9 @@ int main(void) {
 Output
 
 ```text
-Salut, Cortez!
-Salut, Tommy Vercetti!
-Salut, Lance Vance!
+Salut, Ritchie!
+Salut, Thompson!
+Salut, Kernighan!
 ```
 
 Hai să descompunem antetul funcției
@@ -80,11 +80,11 @@ int main(void) {
 #include <stdio.h>
 
 int main(void) {
-    int x = aduna(2, 3);   // EROARE: aduna nu este încă cunoscută
+    int x = aduna(2, 3);   // EROARE: aduna nu este inca cunoscuta
     return 0;
 }
 
-int aduna(int a, int b) {   // declarată prea târziu
+int aduna(int a, int b) {   // declarata prea tarziu
     return a + b;
 }
 ```
@@ -101,35 +101,38 @@ int main(void) {
     return 0;
 }
 
-int aduna(int a, int b) {   // corpul, scris mai târziu
+int aduna(int a, int b) {   // corpul, scris mai tarziu
     return a + b;
 }
 ```
 
-Observă **;**-ul de la finalul prototipului — este o declarație, nu un corp. Deocamdată, cel mai simplu este să-ți scrii funcțiile ajutătoare **deasupra** lui **main** și să nu-ți mai faci griji :)
+Observă **;**-ul de la finalul prototipului — este o declarație, nu un corp. Deocamdată, cel mai simplu este să-ți scrii funcțiile ajutătoare **deasupra** lui **main** și să nu-ți mai faci griji
 
 ---
 
-## Misiune: Calculatorul de Energie al Stației
+## Misiune: Modulul aritmetic al terminalului
 
-Consola de inginerie a stației are nevoie de un modul aritmetic rapid. Comandantul Cortez vrea o singură funcție care să gestioneze toate cele patru operații de bază, ca să poată membrii echipajului să facă rapid calcule.
+Într-un centru de calcul de altădată, fiecare terminal avea nevoie de propriul modul de aritmetică rapidă, ca operatorii să nu mai facă aceleași calcule de mână de fiecare dată.
 
-Scrie o funcție **calculator** care primește trei parametri: un **int numar1**, un **int numar2** și un **char operator** (un singur caracter precum **'+'**, **'-'**, **'\*'**, **'/'** — observă **ghilimelele simple** pentru un singur char în C).
+Scrie o funcție **calculator** care primește trei parametri: **int numar1**, **int numar2** și **char operator** (un singur caracter precum **'+'**, **'-'**, **'\*'**, **'/'** — observă **ghilimelele simple** pentru un singur char în C).
 
-Funcția ar trebui să afișeze rezultatul operației. Dacă operatorul nu este recunoscut, afișează **"Operator invalid"**.
+Funcția ar trebui să afișeze rezultatul operației, în formatul **numar1 operator numar2 = rezultat**. Dacă operatorul nu este recunoscut, afișează **Operator invalid**.
 
 1. Tratează **adunarea** (**'+'**), **scăderea** (**'-'**), **înmulțirea** (**'\*'**) și **împărțirea** (**'/'**)
 2. Folosește **%c** ca format specifier pentru un singur **char**
 3. Folosește **==** ca să compari char-ul (asta funcționează în C pentru că char-urile sunt, sub capotă, întregi mici)
 
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+În **main**, apelează **calculator** de cinci ori, cu exact aceste seturi de argumente, în ordine:
 
-- `numar1`, `numar2` — cei doi operanzi
-- `operator` — caracterul operației
+- **14, 12, '+'**
+- **10, 3, '-'**
+- **5, 4, '\*'**
+- **10, 2, '/'**
+- **1, 1, 'x'**
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Programul tău ar trebui să afișeze
 
 ```text
 14 + 12 = 26

@@ -48,7 +48,7 @@ int main(void) {
 }
 ```
 
-**Important**: pentru **scanf**, double-urile folosesc **%lf** (l de la "long", f de la "float"), nu **%f**. **%f** în **scanf** ar citi un **float** obișnuit în schimb. Acesta este un mic **capriciu al C-ului** care îi prinde pe mulți începători. (Pentru **printf**, atât **%f** cât și **%lf** funcționează la fel pe double-uri. Inconsistent? Da :))
+**Important**: pentru **scanf**, double-urile folosesc **%lf** (l de la "long", f de la "float"), nu **%f**. **%f** în **scanf** ar citi un **float** obișnuit în schimb. Acesta este un mic **capriciu al C-ului** care îi prinde pe mulți începători. (Pentru **printf**, atât **%f** cât și **%lf** funcționează la fel pe double-uri. Inconsistent? Da)
 
 ---
 
@@ -69,7 +69,7 @@ Utilizatorul tastează două numere separate prin spațiu (sau Enter), **scanf**
 
 ---
 
-Dar ce facem dacă vrem să citim o **linie întreagă** cu spații? **scanf("%s")** se oprește la primul spațiu, deci dacă utilizatorul tastează **Tommy Vercetti**, scanf citește doar **Tommy**. Pentru linii întregi, folosim **fgets**
+Dar ce facem dacă vrem să citim o **linie întreagă** cu spații? **scanf("%s")** se oprește la primul spațiu, deci dacă utilizatorul tastează **Dennis Ritchie**, scanf citește doar **Dennis**. Pentru linii întregi, folosim **fgets**
 
 ```c
 #include <stdio.h>
@@ -115,25 +115,38 @@ int main(void) {
 
 ---
 
-## Misiune: Înregistrarea Echipajului
+## Misiune: Registrul de acces al centrului de calcul
 
-Fiecare membru al echipajului care ajunge la stație trebuie să se înregistreze la terminal. Sistemul îi citește **numele** și **vârsta**, apoi afișează un mesaj de bun venit cu vârsta lui de anul viitor.
+Fiecare operator care ajunge la centrul de calcul trebuie să se înregistreze la terminalul de la intrare. Sistemul îi citește **numele** și **vârsta**, apoi afișează un mesaj de bun venit cu vârsta lui de anul viitor.
 
 Citește un nume (un singur cuvânt, fără spații) și o vârstă folosind **scanf**, apoi afișează linia de bun venit.
 
 **Exemplu**
 
-Dacă utilizatorul tastează
+Input
 
 ```text
-Cortez
+Ritchie
 60
 ```
 
-programul tău ar trebui să afișeze
+Output
 
 ```text
-Salut Cortez, ai 60 de ani. Anul viitor vei avea 61
+Salut Ritchie, ai 60 de ani. Anul viitor vei avea 61
 ```
 
-Încearcă diferite nume și vârste — stația întâmpină pe toată lumea :)
+**Exemplu**
+
+Input
+
+```text
+Thompson
+33
+```
+
+Output
+
+```text
+Salut Thompson, ai 33 de ani. Anul viitor vei avea 34
+```

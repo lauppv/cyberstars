@@ -1,53 +1,53 @@
-When we pass a struct to a function, C copies the **entire struct**. For a small struct that's fine. But for a struct with a 1000-char name and dozens of fields, copying is wasteful. The solution: **pass a pointer to the struct**
+When we pass a struct to a function, C copies the **entire struct**. For a small struct that's fine. But for a struct with a 1000-character buffer and dozens of fields, copying is wasteful. The solution: **pass a pointer to the struct**
 
 ```c
 #include <stdio.h>
 #include <string.h>
 
-struct Player {
-    char name[50];
-    int health;
-    int score;
+struct Terminal {
+    char id[50];
+    int sessions;
+    int errors;
 };
 
-void print_player(struct Player *p) {
-    printf("%s: %d HP, %d pts\n", (*p).name, (*p).health, (*p).score);
+void print_terminal(struct Terminal *p) {
+    printf("%s: %d sessions, %d errors\n", (*p).id, (*p).sessions, (*p).errors);
 }
 
 int main(void) {
-    struct Player t = {"Tommy", 100, 500};
-    print_player(&t);
+    struct Terminal t = {"tty7", 3, 0};
+    print_terminal(&t);
     return 0;
 }
 ```
 
-We pass **&t** (the address of the struct), and the function receives a **struct Player \***. To access fields through a pointer, we write **(\*p).health** — first dereference, then access the field
+We pass **&t** (the address of the struct), and the function receives a **struct Terminal \***. To access fields through a pointer, we write **(\*p).sessions** — first dereference, then access the field
 
 ---
 
-Writing **(\*p).health** everywhere is ugly. C gives us a shortcut: the **arrow operator ->**
+Writing **(\*p).sessions** everywhere is ugly. C gives us a shortcut: the **arrow operator ->**
 
 ```c
 #include <stdio.h>
 
-struct Player {
-    char name[50];
-    int health;
-    int score;
+struct Terminal {
+    char id[50];
+    int sessions;
+    int errors;
 };
 
-void print_player(struct Player *p) {
-    printf("%s: %d HP, %d pts\n", p->name, p->health, p->score);
+void print_terminal(struct Terminal *p) {
+    printf("%s: %d sessions, %d errors\n", p->id, p->sessions, p->errors);
 }
 
 int main(void) {
-    struct Player t = {"Tommy", 100, 500};
-    print_player(&t);
+    struct Terminal t = {"tty7", 3, 0};
+    print_terminal(&t);
     return 0;
 }
 ```
 
-**p->health** is exactly the same as **(\*p).health**. It's cleaner and everyone uses it. The rule is simple: **dot** for structs, **arrow** for pointers to structs
+**p->sessions** is exactly the same thing as **(\*p).sessions**. It's cleaner and everyone uses it. The rule is simple: **dot** for structs, **arrow** for pointers to structs
 
 ---
 
@@ -56,56 +56,83 @@ The real power: functions that **modify** a struct through a pointer
 ```c
 #include <stdio.h>
 
-struct Player {
-    char name[50];
-    int health;
-    int score;
+struct Terminal {
+    char id[50];
+    int sessions;
+    int errors;
 };
 
-void take_damage(struct Player *p, int dmg) {
-    p->health -= dmg;
-    if (p->health < 0) {
-        p->health = 0;
+void log_error(struct Terminal *p) {
+    p->errors += 1;
+    if (p->errors >= 3) {
+        p->sessions = 0;
     }
 }
 
-void add_score(struct Player *p, int points) {
-    p->score += points;
+void open_session(struct Terminal *p) {
+    p->sessions += 1;
 }
 
 int main(void) {
-    struct Player t = {"Tommy", 100, 0};
-    take_damage(&t, 30);
-    add_score(&t, 200);
-    printf("%s: %d HP, %d pts\n", t.name, t.health, t.score);
+    struct Terminal t = {"tty7", 0, 0};
+    open_session(&t);
+    open_session(&t);
+    log_error(&t);
+    printf("%s: %d sessions, %d errors\n", t.id, t.sessions, t.errors);
     return 0;
 }
 ```
 
-Output: **Tommy: 70 HP, 200 pts**
+Output: **tty7: 2 sessions, 1 errors**
 
-The functions modified the **original struct**, not a copy. This is the same "pass by reference" pattern we learned with int pointers, but now with structs. This is how real C programs manage state
+The functions modified the **original struct**, not a copy. It's the same "pass by reference" pattern we learned with pointers to int, but now with structs. This is how real C programs manage state
 
 ---
 
-## Mission: Station Credit System
+## Mission: Compute-Time Account Ledger
 
-The station's treasury module needs two core functions: deposit and withdraw. Crew accounts are stored as structs, and all updates go through pointers so the original balance changes in place.
+The computing center bills processor time by the hour. Each user has an account with a balance in hours, and shift operators make allocations and withdrawals throughout the day. All updates must go through a pointer, so the original balance in the ledger changes in place.
 
-1. The struct **BankAccount** (with **owner** and **balance**) is already defined on the right
-2. Complete the **deposit** function: add the amount to the balance via the pointer
-3. Complete the **withdraw** function: subtract the amount if the balance is enough, otherwise print **"Insufficient funds"**
-
-**Input** (already set at the top of your code — change the values to test):
-
-- Account owner: **"Lance"**, starting balance: **1000**
-- Operations: deposit **500**, withdraw **200**, withdraw **2000**
+1. Define a struct **HourAccount** with fields **owner** (char array) and **balance** (int)
+2. Write the function **void allocate(struct HourAccount \*acc, int hours)** — adds hours to the balance through the pointer
+3. Write the function **void withdraw(struct HourAccount \*acc, int hours)** — subtracts hours from the balance if there's enough, otherwise print **"Insufficient funds"**
+4. Read from input: the owner's name, the initial balance, then three operations. Each operation has a code (**1** = allocate, **2** = withdraw) followed by a value
+5. After all operations, print **"Balance: X"**
 
 **Example**
 
-With the starter values, your program should print
+Input
+
+```text
+op7
+1000
+1 500
+2 200
+2 2000
+```
+
+Output
 
 ```text
 Insufficient funds
 Balance: 1300
+```
+
+**Example**
+
+Input
+
+```text
+op12
+200
+2 50
+1 100
+2 300
+```
+
+Output
+
+```text
+Insufficient funds
+Balance: 250
 ```

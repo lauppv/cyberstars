@@ -72,18 +72,20 @@ Pipe-urile sunt blocul fundamental de construcție pentru comunicarea între pro
 
 ---
 
-## Misiune: Releu Criptat
+## Misiune: Mesajul prin teleimprimantă
 
-Senzorii din Sectorul 7 au detectat o anomalie, dar comunicațiile sunt picate. Singurul mod de a transmite datele către punte este printr-un pipe unidirecțional între două procese.
+Două procese trebuie să comunice printr-un pipe, exact cum ar trece un mesaj de la o teleimprimantă la alta printr-o linie dedicată.
 
 1. Creează un pipe și fă fork
-2. **Copilul** scrie mesajul **"CyberStars"** în pipe, apoi închide capetele sale
-3. **Părintele** citește mesajul și afișează **"Primit: CyberStars"**, apoi închide capetele sale și așteaptă copilul
+2. **Copilul** scrie mesajul **"Bell Labs"** în pipe, apoi închide capetele sale
+3. **Părintele** citește mesajul și afișează **"Primit: Bell Labs"**, apoi închide capetele sale și așteaptă copilul
 
-**Output**
+**Exemplu**
+
+Programul tău ar trebui să afișeze
 
 ```text
-Primit: CyberStars
+Primit: Bell Labs
 ```
 
 Nu uita să închizi capetele de pipe pe care nu le folosești

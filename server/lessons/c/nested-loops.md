@@ -22,7 +22,7 @@ Output
 (3, 1) (3, 2) (3, 3)
 ```
 
-The **outer loop** controls the **rows**, the **inner loop** controls the **columns**. For every single value of **i**, the inner loop runs **completely** from start to finish. Read the output carefully and trace through the code in your head :)
+The **outer loop** controls the **rows**, the **inner loop** controls the **columns**. For every single value of **i**, the inner loop runs **completely** from start to finish. Read the output carefully and trace through the code in your head
 
 ---
 
@@ -78,15 +78,23 @@ This prints **every combination** of two elements from the array. If the array h
 
 ---
 
-## Mission: Star Map Grid
+## Mission: The Line Printer Log
 
-The navigation console needs a star map rendered row by row. Each row **i** displays the sector numbers from **1** up to **i**.
+The computing center's line printer receives a job: the number of lines to print. Each line **i** must contain the numbers from **1** to **i**, as a print-head calibration test.
 
-Write **nested for loops**: the outer loop goes from 1 to 5 (rows), the inner loop prints numbers from 1 to i. Use `printf("%d ", j)` inside the inner loop and `printf("\n")` after it.
+1. Read an integer **n** from input — the number of lines
+2. Write **nested for loops**: the outer loop goes from **1** to **n**, the inner loop prints the numbers from **1** to **i**, separated by a space
+3. Print `printf("\n")` at the end of each line
 
 **Example**
 
-Your program should print
+Input
+
+```text
+5
+```
+
+Output
 
 ```text
 1
@@ -96,4 +104,18 @@ Your program should print
 1 2 3 4 5
 ```
 
-Note: there is a trailing space after each number — that is fine :)
+**Example**
+
+Input
+
+```text
+3
+```
+
+Output
+
+```text
+1
+1 2
+1 2 3
+```

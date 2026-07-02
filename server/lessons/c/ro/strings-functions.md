@@ -5,13 +5,17 @@ Am învățat că string-urile în C sunt tablouri de **char** care se termină 
 #include <string.h>
 
 int main(void) {
-    char nume[] = "Tommy Vercetti";
+    char nume[] = "Dennis Ritchie";
     printf("Lungime: %lu\n", strlen(nume));
     return 0;
 }
 ```
 
-Output: **Lungime: 14**
+Output
+
+```text
+Lungime: 14
+```
 
 **strlen** returnează numărul de caractere din string, **FĂRĂ** a număra **'\0'**. Tabloul real are 15 char-uri (14 litere + '\0'), dar strlen spune 14. Este o distincție importantă
 
@@ -67,8 +71,8 @@ int main(void) {
 
 int main(void) {
     char salut[50] = "Salut, ";
-    strcat(salut, "CyberStars!");
-    printf("%s\n", salut);   // Salut, CyberStars!
+    strcat(salut, "teletype!");
+    printf("%s\n", salut);   // Salut, teletype!
     return 0;
 }
 ```
@@ -98,25 +102,42 @@ int main(void) {
 
 ---
 
-## Misiune: Asamblarea Numelui de Cod al Stației
+## Misiune: Asamblarea etichetei de bandă
 
-HQ a trimis două jumătăți ale noului nume de cod al stației în transmisii separate. Treaba ta: măsoară primul fragment, apoi unește ambele fragmente într-un singur string și transmite numele complet.
+O bandă magnetică veche și-a pierdut eticheta. Doi operatori diferiți au retranscris fiecare câte o jumătate, pe teletype-uri separate. Treaba ta: măsoară primul fragment, apoi unește ambele fragmente într-un singur string și afișează eticheta completă.
 
-1. Afișează lungimea lui **primul** (folosește **strlen**)
-2. Copiază **primul** într-un tablou **rezultat** (folosește **strcpy**, fă rezultat suficient de mare: `char rezultat[50]`)
-3. Concatenează **al_doilea** la **rezultat** (folosește **strcat**)
-4. Afișează **rezultat**
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `primul` — un tablou de char setat la **"Cyber"**
-- `al_doilea` — un tablou de char setat la **"Stars"**
+1. Citește două cuvinte din input, **primul** și **al_doilea** (fără spații în interior)
+2. Afișează lungimea lui **primul** (folosește **strlen**)
+3. Copiază **primul** într-un tablou **rezultat** (folosește **strcpy**, fă rezultat suficient de mare: `char rezultat[50]`)
+4. Concatenează **al_doilea** la **rezultat** (folosește **strcat**)
+5. Afișează **rezultat**
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
 
 ```text
-5
-CyberStars
+Bell Labs
+```
+
+Output
+
+```text
+4
+BellLabs
+```
+
+**Exemplu**
+
+Input
+
+```text
+Tele type
+```
+
+Output
+
+```text
+4
+Teletype
 ```

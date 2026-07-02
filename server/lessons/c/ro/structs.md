@@ -1,35 +1,31 @@
-Până acum am stocat valori simple: un int, un char, un șir. Dar dacă vrem să reprezentăm un **jucător** cu nume, viață și scor? Am putea folosi trei variabile separate, dar lucrurile se complică repede. Aici intră în scenă **struct-urile**
+Până acum am stocat valori simple: un int, un char, un șir. Dar dacă vrem să reprezentăm un **angajat** al centrului de calcul, cu nume, tură și număr de sarcini rezolvate? Am putea folosi trei variabile separate, dar lucrurile se complică repede când avem zeci de angajați. Aici intră în scenă **struct-urile**
 
-Un **struct** este o modalitate de a grupa date înrudite într-un singur tip. Gândește-te la el ca la o cutie personalizată care conține mai multe lucruri
+Un **struct** este o modalitate de a grupa date înrudite într-un singur tip. Gândește-te la el ca la o cutie personalizată care conține mai multe câmpuri
 
 ```c
 #include <stdio.h>
 #include <string.h>
 
-struct Jucator {
+struct Angajat {
     char nume[50];
-    int viata;
-    int scor;
+    int tura;
+    int sarcini;
 };
 
 int main(void) {
-    struct Jucator j1;
-    strcpy(j1.nume, "Tommy");
-    j1.viata = 100;
-    j1.scor = 0;
+    struct Angajat a1;
+    strcpy(a1.nume, "op7");
+    a1.tura = 2;
+    a1.sarcini = 0;
 
-    printf("Nume: %s\n", j1.nume);
-    printf("Viata: %d\n", j1.viata);
-    printf("Scor: %d\n", j1.scor);
+    printf("Nume: %s\n", a1.nume);
+    printf("Tura: %d\n", a1.tura);
+    printf("Sarcini: %d\n", a1.sarcini);
     return 0;
 }
 ```
 
-**Definim** struct-ul cu **struct Jucator { ... };** — observă **punctul și virgula** după acolada de închidere. Apoi **creăm** o variabilă de tipul acela cu **struct Jucator j1**. Accesăm câmpurile cu **operatorul punct**: **j1.viata**
-
----
-
-Dacă știi Java, un struct este similar cu o clasă cu doar câmpuri publice și fără metode. Dacă știi Python, gândește-te la el ca la un obiect simplu cu doar atribute. C nu are clase sau metode — struct-urile sunt instrumentul nostru pentru organizarea datelor
+**Definim** struct-ul cu **struct Angajat { ... };** — observă **punctul și virgula** după acolada de închidere. Apoi **creăm** o variabilă de tipul acela cu **struct Angajat a1**. Accesăm câmpurile cu **operatorul punct**: **a1.tura**
 
 ---
 
@@ -38,33 +34,33 @@ Putem inițializa și un struct dintr-o singură mișcare
 ```c
 #include <stdio.h>
 
-struct Jucator {
+struct Angajat {
     char nume[50];
-    int viata;
-    int scor;
+    int tura;
+    int sarcini;
 };
 
 int main(void) {
-    struct Jucator j1 = {"Vercetti", 100, 500};
-    printf("%s: %d HP, %d pts\n", j1.nume, j1.viata, j1.scor);
+    struct Angajat a1 = {"op7", 2, 5};
+    printf("%s: tura %d, %d sarcini\n", a1.nume, a1.tura, a1.sarcini);
     return 0;
 }
 ```
 
-Valorile completează câmpurile **în ordine**: nume, viață, scor. Sau, mai explicit
+Valorile completează câmpurile **în ordine**: nume, tură, sarcini. Sau, mai explicit
 
 ```c
 #include <stdio.h>
 
-struct Jucator {
+struct Angajat {
     char nume[50];
-    int viata;
-    int scor;
+    int tura;
+    int sarcini;
 };
 
 int main(void) {
-    struct Jucator j1 = {.nume = "Vercetti", .viata = 100, .scor = 500};
-    printf("%s: %d HP, %d pts\n", j1.nume, j1.viata, j1.scor);
+    struct Angajat a1 = {.nume = "op7", .tura = 2, .sarcini = 5};
+    printf("%s: tura %d, %d sarcini\n", a1.nume, a1.tura, a1.sarcini);
     return 0;
 }
 ```
@@ -78,21 +74,21 @@ Array-urile de struct-uri sunt super utile
 ```c
 #include <stdio.h>
 
-struct Jucator {
+struct Angajat {
     char nume[50];
-    int viata;
-    int scor;
+    int tura;
+    int sarcini;
 };
 
 int main(void) {
-    struct Jucator echipa[3] = {
-        {"Tommy", 100, 500},
-        {"Lance", 80, 300},
-        {"Ken", 60, 100}
+    struct Angajat echipa[3] = {
+        {"op7", 1, 5},
+        {"op12", 2, 3},
+        {"op9", 3, 8}
     };
 
     for (int i = 0; i < 3; i++) {
-        printf("%s: %d HP, %d pts\n", echipa[i].nume, echipa[i].viata, echipa[i].scor);
+        printf("%s: tura %d, %d sarcini\n", echipa[i].nume, echipa[i].tura, echipa[i].sarcini);
     }
     return 0;
 }
@@ -101,31 +97,49 @@ int main(void) {
 Output
 
 ```text
-Tommy: 100 HP, 500 pts
-Lance: 80 HP, 300 pts
-Ken: 60 HP, 100 pts
+op7: tura 1, 5 sarcini
+op12: tura 2, 3 sarcini
+op9: tura 3, 8 sarcini
 ```
 
 ---
 
-## Misiune: Raport Inventar Flotă
+## Misiune: Inventarul Arhivei de Benzi Magnetice
 
-Hangarul stației are nevoie de un inventar rapid al navetelor sale. Definește un struct care să reprezinte fiecare vehicul și afișează un manifest formatat pentru Comandantul Lance.
+Arhiva centrului de calcul ține evidența fiecărei bobine de bandă magnetică pe care s-au stocat programe și rezultate. Șeful arhivei vrea un raport rapid, generat direct din registrul de intrare.
 
-1. Definește un struct **Masina** cu câmpurile: **marca** (array de char), **an** (int), **km** (int)
-2. Creează **două** mașini cu valorile arătate mai jos
-3. Afișează fiecare în formatul **"Marca (An) - Km km"**
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- Mașina 1: **"BMW"**, **2015**, **120000**
-- Mașina 2: **"Dacia"**, **2020**, **45000**
+1. Definește un struct **Banda** cu câmpurile: **eticheta** (array de char), **an** (int), **metri** (int)
+2. Citește **două** benzi din input: pe fiecare linie, o etichetă (un singur cuvânt, fără spații), un an și o lungime în metri
+3. Afișează fiecare bandă în formatul **"Eticheta (An) - Metri m"**
 
 **Exemplu**
 
-Cu valorile de pornire, programul tău ar trebui să afișeze
+Input
 
 ```text
-BMW (2015) - 120000 km
-Dacia (2020) - 45000 km
+IBM7090 1969 730
+DEC10 1972 500
+```
+
+Output
+
+```text
+IBM7090 (1969) - 730 m
+DEC10 (1972) - 500 m
+```
+
+**Exemplu**
+
+Input
+
+```text
+UNIVAC 1965 900
+PDP7 1970 250
+```
+
+Output
+
+```text
+UNIVAC (1965) - 900 m
+PDP7 (1970) - 250 m
 ```

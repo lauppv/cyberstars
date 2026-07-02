@@ -1,20 +1,20 @@
-We have an array of scores. We want to do something with each one. We **could** do
+We have an array of readings. We want to do something with each one. We **could** do
 
 ```c
 #include <stdio.h>
 
 int main(void) {
-    int scores[5] = { 80, 95, 60, 72, 88 };
-    printf("%d\n", scores[0]);
-    printf("%d\n", scores[1]);
-    printf("%d\n", scores[2]);
-    printf("%d\n", scores[3]);
-    printf("%d\n", scores[4]);
+    int readings[5] = { 80, 95, 60, 72, 88 };
+    printf("%d\n", readings[0]);
+    printf("%d\n", readings[1]);
+    printf("%d\n", readings[2]);
+    printf("%d\n", readings[3]);
+    printf("%d\n", readings[4]);
     return 0;
 }
 ```
 
-Repetitive. **Forbidden**, as we said in earlier lessons :)
+Repetitive. Exactly what we said in earlier lessons to avoid
 
 The classic C **for** loop goes hand in hand with arrays
 
@@ -22,10 +22,10 @@ The classic C **for** loop goes hand in hand with arrays
 #include <stdio.h>
 
 int main(void) {
-    int scores[5] = { 80, 95, 60, 72, 88 };
+    int readings[5] = { 80, 95, 60, 72, 88 };
 
     for (int i = 0; i < 5; i++) {
-        printf("%d\n", scores[i]);
+        printf("%d\n", readings[i]);
     }
 
     return 0;
@@ -42,17 +42,17 @@ Hardcoding **5** in the loop is fragile. If we add or remove an element, we have
 #include <stdio.h>
 
 int main(void) {
-    int scores[] = { 80, 95, 60, 72, 88 };
-    int n = sizeof(scores) / sizeof(scores[0]);
+    int readings[] = { 80, 95, 60, 72, 88 };
+    int n = sizeof(readings) / sizeof(readings[0]);
 
     for (int i = 0; i < n; i++) {
-        printf("%d\n", scores[i]);
+        printf("%d\n", readings[i]);
     }
     return 0;
 }
 ```
 
-Now the loop works no matter how many elements the array has. Add or remove a score, run again, it just works
+Now the loop works no matter how many elements the array has. Add or remove a reading, run again, it just works
 
 ---
 
@@ -74,7 +74,7 @@ int main(void) {
 }
 ```
 
-Start with **total = 0**, walk through every element, add it. You will write this kind of loop many times in your career. Read it line by line and make sure you understand **why** it works :)
+Start with **total = 0**, walk through every element, add it. You will write this kind of loop many times in your career. Read it line by line and make sure you understand **why** it works
 
 ---
 
@@ -90,32 +90,37 @@ void print_all(int arr[], int n) {
 }
 
 int main(void) {
-    int scores[] = { 80, 95, 60, 72, 88 };
-    int n = sizeof(scores) / sizeof(scores[0]);
-    print_all(scores, n);
+    int readings[] = { 80, 95, 60, 72, 88 };
+    int n = sizeof(readings) / sizeof(readings[0]);
+    print_all(readings, n);
     return 0;
 }
 ```
 
-This is a very common C idiom. Get used to writing it :)
+This is a very common C idiom. Get used to writing it
 
 ---
 
-## Mission: Sensor Array Analysis
+## Mission: The Tape Line Daily Register
 
-The station's external sensors just delivered a batch of readings. Commander Rex needs a full summary: every individual reading, the total, and the average.
+The magnetic tape line sends a batch of readings for the current shift. The number of readings varies from day to day, so the first thing you receive is **how many** readings are coming.
 
-1. Print each score on its own line (use a **for** loop)
-2. Print the **total** of all scores
-3. Print the **average** (cast to **double** to avoid integer division — use **(double) total / n**)
-
-**Input** (already set at the top of your code — change the values to test):
-
-- `scores` — an int array with values **{80, 95, 60, 72, 88}**
+1. Read an integer **n** from input — the number of readings
+2. Read **n** integers into an array (use a loop for reading, with **scanf** inside it)
+3. Print each reading on its own line (use a **for** loop)
+4. Print the **total** of all the readings
+5. Print the **average** (cast to **double** to avoid integer division — use **(double) total / n**)
 
 **Example**
 
-With the starter values, your program should print
+Input
+
+```text
+5
+80 95 60 72 88
+```
+
+Output
 
 ```text
 80
@@ -125,4 +130,23 @@ With the starter values, your program should print
 88
 395
 79.000000
+```
+
+**Example**
+
+Input
+
+```text
+3
+10 20 30
+```
+
+Output
+
+```text
+10
+20
+30
+60
+20.000000
 ```

@@ -60,9 +60,9 @@ Oricând scrii un **while**, întreabă-te: "ce face ca această condiție să d
 Când să alegi **for** vs **while**?
 
 - **for** când numărul este cunoscut ("fă asta de 10 ori", "parcurge fiecare element al unui array")
-- **while** când condiția de oprire depinde de ceva din interiorul buclei ("continuă să citești input de la utilizator până când scrie **quit**", "continuă să împarți până când numărul este sub 1")
+- **while** când condiția de oprire depinde de ceva din interiorul buclei ("continuă cât timp mai sunt cartele perforate în stivă", "continuă să împarți până când numărul este sub 1")
 
-Ambele sunt la fel de puternice — orice poți face cu una, poți face cu cealaltă. Stilul și lizibilitatea decid :)
+Ambele sunt la fel de puternice — orice poți face cu una, poți face cu cealaltă. Stilul și lizibilitatea decid
 
 ---
 
@@ -70,21 +70,25 @@ C are și forma **do { ... } while (...)** care rulează corpul **cel puțin o d
 
 ---
 
-## Misiune: Far de Semnalizare
+## Misiune: Numărătoarea Teleimprimantei
 
-Farul de semnalizare al stației transmite `Sunt online` la fiecare ciclu cât timp `este_online` este adevărat. Dar momentan codul din dreapta se învârte la infinit pentru că nimeni nu oprește farul.
+La Bell Labs, înainte de a lansa o rulare de compilare pe mainframe, operatorul de tură pornea o numărătoare inversă pe teleimprimantă, ca toată lumea din centrul de calcul să știe când începe zgomotul benzii magnetice.
 
-Repară bucla astfel încât să ruleze **o singură dată**, apoi să iasă. Trebuie să **setezi `este_online` la 0** în interiorul buclei astfel încât condiția să devină falsă după o singură transmisie.
+Scrie un program care, în interiorul lui **main**
 
-**Input** (deja setat în partea de sus a codului tău):
-
-- `este_online` — 1 înseamnă că farul este activ, 0 înseamnă oprit
+- declară **int n = 5;**
+- folosește o buclă **while** care afișează valoarea lui **n**, apoi o scade cu 1, cât timp **n** este mai mare decât 0
+- după ce bucla se termină, afișează **Start**
 
 **Exemplu**
 
-După reparația ta, programul ar trebui să afișeze
+Programul tău ar trebui să afișeze
 
 ```text
-Sunt online
-Acum sunt offline
+5
+4
+3
+2
+1
+Start
 ```

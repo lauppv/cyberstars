@@ -1,6 +1,6 @@
 Buclele **for** și **while** își fac treaba de la început până la sfârșit. Dar dacă, în mijlocul unei bucle, vrem să spunem „ok, e suficient, oprește-te"? Sau „sari peste asta, treci la următoarea"?
 
-C ne oferă **break** și **continue** — aceleași nume, același comportament ca în Python și Java :)
+C ne oferă două cuvinte cheie pentru asta: **break** și **continue**
 
 ---
 
@@ -116,7 +116,7 @@ Ambele cuvinte cheie funcționează la fel în **while**, nu doar în **for**
 
 int main(void) {
     int i = 0;
-    while (1) {   // ține minte: 1 este "true" în C
+    while (1) {   // tine minte: 1 este "true" in C
         if (i >= 5) {
             break;
         }
@@ -131,19 +131,29 @@ int main(void) {
 
 ---
 
-O mică avertizare: **break** și **continue** pot face codul mai greu de citit dacă abuzezi de ele. Folosește-le când fac logica mai clară, nu doar ca să fii deștept :)
+O mică avertizare: **break** și **continue** pot face codul mai greu de citit dacă abuzezi de ele. Folosește-le când fac logica mai clară, nu doar ca să pară cod deștept
 
 ---
 
-## Misiune: Patrula Punților
+## Misiune: Inspecția sălii de cartele perforate
 
-Scanezi punțile **1** până la **20** la bordul stației. Puntea **13** este sigilată pentru decontaminare — **sari peste ea** cu **continue**. Când ajungi la puntea **17**, sistemul de alertă declanșează un blocaj — **oprește** scanarea cu **break** (nu afișa 17).
+Faci inspecția anuală a sălii cu cititoare de cartele perforate, numerotate de la **1** la **20**. Un cititor este marcat ca **sigilat pentru reparații** — trebuie **sărit** cu **continue**, fără să-l afișezi. Un alt cititor declanșează **alarma de fum** — de îndată ce ajungi la el, **oprești** inspecția cu **break** (fără să-l afișezi nici pe el).
 
-Scrie verificările **if** potrivite în interiorul buclei.
+1. Citește două numere întregi din input: **sigilat** și **alarma**
+2. Parcurge cititoarele de la **1** la **20** cu o buclă **for**
+3. Dacă numărul curent este egal cu **sigilat**, sari peste el cu **continue**
+4. Dacă numărul curent este egal cu **alarma**, oprește bucla cu **break**
+5. Altfel, afișează numărul cititorului
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Input
+
+```text
+13 17
+```
+
+Output
 
 ```text
 1
@@ -163,4 +173,23 @@ Programul tău ar trebui să afișeze
 16
 ```
 
-**13** lipsește (sărit), iar **17, 18, 19, 20** nu apar niciodată (oprit) :)
+**Exemplu**
+
+Input
+
+```text
+5 10
+```
+
+Output
+
+```text
+1
+2
+3
+4
+6
+7
+8
+9
+```

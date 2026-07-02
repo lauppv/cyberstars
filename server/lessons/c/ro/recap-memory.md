@@ -2,23 +2,51 @@ Combină **malloc/free**, **enum-uri** și **typedef**
 
 ---
 
-## Misiune: Tracker pentru Coada de Reparații
+## Misiune: Coada de Intervenții Tehnice
 
-Stația a fost avariată de o ploaie de micrometeoriți. Phil are nevoie de un tracker dinamic de sarcini pentru a gestiona lucrările de reparații. Fiecare sarcină este alocată pe heap, are un status și trebuie eliberată când coada este golită.
+Un incendiu de scurtcircuit a scos din funcțiune jumătate din sala de calcul. Tehnicianul de tură are nevoie de un tracker dinamic de sarcini pentru a gestiona lucrările de reparații. Fiecare sarcină este alocată pe heap, are un status și trebuie eliberată când coada este golită.
 
-Datele sunt deja în dreapta. Fă următoarele, în ordine:
+1. Definește **typedef enum { DE_FACUT, IN_LUCRU, GATA } Status;**
+2. Definește **typedef struct { char titlu[100]; Status status; } Sarcina;**
+3. Scrie **Sarcina \*creeaza_sarcina(const char \*titlu)** — alocă o Sarcina cu malloc, copiază titlul, setează statusul la **DE_FACUT**, returnează pointerul
+4. Scrie **void actualizeaza_status(Sarcina \*s, Status st)** — actualizează statusul sarcinii
+5. Scrie **const char \*nume_status(Status st)** — returnează "DE_FACUT", "IN_LUCRU" sau "GATA" (folosește un switch)
+6. Scrie **void afiseaza_sarcina(Sarcina \*s)** — afișează sarcina ca **"[STATUS] Titlu"**
+7. Citește din input un număr **n** de sarcini, urmat de **n** linii, fiecare cu un titlu (un singur cuvânt) și un cod de status (**0** = DE_FACUT, **1** = IN_LUCRU, **2** = GATA). Creează fiecare sarcină și actualizeaz-o la statusul citit
+8. Afișează toate sarcinile, în ordine, apoi eliberează memoria
 
-1. Scrie **Sarcina *creeaza_sarcina(const char *titlu)** — alocă o Sarcina cu malloc, copiază titlul, setează statusul la **DE_FACUT**, returnează pointerul
-2. Scrie **void actualizeaza_status(Sarcina \*s, Status st)** — actualizează statusul sarcinii
-3. Scrie **const char \*nume_status(Status st)** — returnează "DE_FACUT", "IN_LUCRU" sau "GATA" (folosește un switch)
-4. Scrie **void afiseaza_sarcina(Sarcina \*s)** — afișează sarcina ca **"[STATUS] Titlu"**
-5. Creează 3 sarcini: "Invata pointeri" (actualizează la GATA), "Exerseaza struct-uri" (actualizează la IN_LUCRU), "Stapaneste malloc" (lasă la DE_FACUT)
-6. Afișează toate trei, apoi eliberează memoria
+**Exemplu**
 
-**Output**
+Input
 
 ```text
-[GATA] Invata pointeri
-[IN_LUCRU] Exerseaza struct-uri
-[DE_FACUT] Stapaneste malloc
+3
+Verifica_banda 2
+Repara_teletip 1
+Recalibreaza_cititor 0
+```
+
+Output
+
+```text
+[GATA] Verifica_banda
+[IN_LUCRU] Repara_teletip
+[DE_FACUT] Recalibreaza_cititor
+```
+
+**Exemplu**
+
+Input
+
+```text
+2
+Inlocuieste_siguranta 2
+Curata_ventilatoare 0
+```
+
+Output
+
+```text
+[GATA] Inlocuieste_siguranta
+[DE_FACUT] Curata_ventilatoare
 ```

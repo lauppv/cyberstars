@@ -2,26 +2,52 @@ Combină **macro-urile de preprocesor**, **operațiile cu fișiere** și **opera
 
 ---
 
-## Misiune: Matricea de Control al Accesului
+## Misiune: Matricea de control al accesului
 
-Sistemul de securitate al stației stochează nivelurile de acces ale echipajului într-un fișier de configurare. Rex are nevoie de un program care scrie matricea de acces pe disc, o citește înapoi și decodează flag-urile de permisiuni ale fiecărui membru al echipajului folosind operații pe biți.
+Centrul de calcul stochează nivelurile de acces ale conturilor într-un fișier de configurare. Ai nevoie de un program care citește conturile de la operator, le scrie pe disc, le citește înapoi și decodează flag-urile de permisiuni ale fiecărui cont folosind operații pe biți.
 
-Datele sunt deja în dreapta. Fă următoarele, în ordine:
+Fă următoarele, în ordine:
 
 1. Scrie **void afiseaza_permisiuni(const char \*nume, int permisiuni)** — folosește **&** pe biți ca să verifice fiecare flag și afișează permisiunile setate
-2. Creează un fișier **"config.txt"** și scrie aceste 3 linii cu **fprintf**:
-   - admin 7
-   - editor 3
-   - viewer 1
-3. Citește fișierul înapoi cu **fscanf**
-4. Pentru fiecare intrare, apelează **afiseaza_permisiuni** ca să decodezi flag-urile
+2. Citește perechi **nume permisiuni** din input, câte una pe linie, până la sfârșitul intrării (folosește `while (scanf("%s %d", nume, &permisiuni) == 2)`)
+3. Pentru fiecare pereche citită, scrie-o cu **fprintf** într-un fișier **"config.txt"**
+4. După ce ai scris toate perechile, închide fișierul, apoi deschide-l din nou pentru **citire**
+5. Citește fiecare pereche înapoi cu **fscanf** și apelează **afiseaza_permisiuni** pentru fiecare, ca să decodezi flag-urile
 
 Numărul **7** este **111** în binar (toate permisiunile). **3** este **011** (read + write). **1** este **001** (doar read)
 
-**Output**
+**Exemplu**
+
+Input
+
+```text
+admin 7
+editor 3
+viewer 1
+```
+
+Output
 
 ```text
 admin: READ WRITE EXECUTE
 editor: READ WRITE
 viewer: READ
+```
+
+**Exemplu**
+
+Input
+
+```text
+root 4
+guest 2
+ops 6
+```
+
+Output
+
+```text
+root: EXECUTE
+guest: WRITE
+ops: WRITE EXECUTE
 ```

@@ -98,22 +98,26 @@ Aceste reguli sună simple dar încălcarea lor cauzează unele dintre cele mai 
 
 ---
 
-## Misiune: Buffer Dinamic pentru Senzori
+## Misiune: Buffer Dinamic pentru Cititorul de Cartele
 
-Stația tocmai a detectat 5 obiecte noi pe radar, dar dimensiunea array-ului de senzori nu este cunoscută la compilare. Alocă un buffer dinamic, umple-l cu citirile, afișează-le și eliberează memoria înainte de următorul ciclu de scanare.
+Cititorul de cartele perforate trimite un lot de citiri, dar numărul de cartele din lot nu este cunoscut la compilare — vine din primul rând al benzii de intrare. Alocă un buffer dinamic exact de dimensiunea potrivită, umple-l cu citirile, afișează-le și eliberează memoria înainte de următorul lot.
 
-1. Alocă un array dinamic de **5 int-uri** folosind **malloc**
-2. Umple-l cu valorile **{2, 4, 6, 8, 10}**
-3. Afișează fiecare valoare pe o linie separată
-4. **free** la memorie când termini
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- 5 citiri de senzor: **2, 4, 6, 8, 10**
+1. Citește un întreg **n** — numărul de citiri din lot
+2. Alocă un array dinamic de **n int-uri** folosind **malloc**
+3. Citește cele **n** valori din input și pune-le în array
+4. Afișează fiecare valoare pe o linie separată
+5. **free** la memorie când termini
 
 **Exemplu**
 
-Cu valorile de pornire, programul tău ar trebui să afișeze
+Input
+
+```text
+5
+2 4 6 8 10
+```
+
+Output
 
 ```text
 2
@@ -121,4 +125,21 @@ Cu valorile de pornire, programul tău ar trebui să afișeze
 6
 8
 10
+```
+
+**Exemplu**
+
+Input
+
+```text
+3
+7 14 21
+```
+
+Output
+
+```text
+7
+14
+21
 ```

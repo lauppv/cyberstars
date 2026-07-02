@@ -1,6 +1,6 @@
-**for** and **while** loops do their job from start to finish. But what if, in the middle of a loop, we want to say "ok, that’s enough, stop"? Or "skip this one, go to the next"?
+**for** and **while** loops do their job from start to finish. But what if, in the middle of a loop, we want to say "ok, that's enough, stop"? Or "skip this one, go to the next"?
 
-C gives us **break** and **continue** — same names, same behavior as in Python and Java :)
+C gives us two keywords for this: **break** and **continue**
 
 ---
 
@@ -53,11 +53,11 @@ int main(void) {
 }
 ```
 
-The loop stops as soon as we find what we’re looking for. **break** saves us time
+The loop stops as soon as we find what we're looking for. **break** saves us time
 
 ---
 
-**continue** is different. It doesn’t stop the loop — it just **skips** the rest of the current iteration and **jumps to the next one**
+**continue** is different. It doesn't stop the loop — it just **skips the rest** of the current iteration and **moves on to the next one**
 
 ```c
 #include <stdio.h>
@@ -87,7 +87,7 @@ Output
 9
 ```
 
-**5** is missing. When **i** was **5**, **continue** jumped over **printf** and the loop kept going
+**5** is missing. When **i** was **5**, **continue** skipped over **printf** and the loop kept going
 
 A real example: print only **even** numbers
 
@@ -131,19 +131,29 @@ int main(void) {
 
 ---
 
-A small warning: **break** and **continue** can make code harder to read if you abuse them. Use them when they make the logic clearer, not just to be clever :)
+A small warning: **break** and **continue** can make code harder to read if you abuse them. Use them when they make the logic clearer, not just to look clever
 
 ---
 
-## Mission: Deck Patrol
+## Mission: The Punch Card Room Inspection
 
-You are scanning decks **1** through **20** aboard the station. Deck **13** is sealed for decontamination — **skip** it with **continue**. When you reach deck **17**, the alert system triggers a lockdown — **stop** the scan with **break** (do not print 17).
+You are doing the annual inspection of the punch card reader room, numbered from **1** to **20**. One reader is marked **sealed for repairs** — it must be **skipped** with **continue**, without printing it. Another reader triggers the **smoke alarm** — the moment you reach it, you **stop** the inspection with **break** (without printing it either).
 
-Write the appropriate **if** checks inside the loop.
+1. Read two integers from input: **sealed** and **alarm**
+2. Walk through readers **1** to **20** with a **for** loop
+3. If the current number equals **sealed**, skip it with **continue**
+4. If the current number equals **alarm**, stop the loop with **break**
+5. Otherwise, print the reader number
 
 **Example**
 
-Your program should print
+Input
+
+```text
+13 17
+```
+
+Output
 
 ```text
 1
@@ -163,4 +173,23 @@ Your program should print
 16
 ```
 
-**13** is missing (skipped), and **17, 18, 19, 20** never show up (stopped) :)
+**Example**
+
+Input
+
+```text
+5 10
+```
+
+Output
+
+```text
+1
+2
+3
+4
+6
+7
+8
+9
+```

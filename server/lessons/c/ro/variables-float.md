@@ -109,24 +109,40 @@ int main(void) {
 
 ---
 
-## Misiune: Calibrare Senzori
+## Misiune: Jurnalul camerei calculatoarelor
 
-Senzorii stației au nevoie ca datele de calibrare să fie afișate în consolă. Două citiri sunt deja stocate în `inaltime` și `pi` în dreapta.
+Camera calculatoarelor centrului de calcul are un termometru și un higrometru conectate la un teleimprimator. Fiecare tură, operatorul citește cele două valori și le notează în jurnal, rotunjite la 2 zecimale.
 
-Scrie **două apeluri printf** care afișează fiecare valoare cu o etichetă, rotunjite la **2 zecimale**.
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `inaltime` — citirea înălțimii în metri
-- `pi` — constanta matematică pi
+- Citește două numere reale din input, în această ordine: **temperatura** și **umiditate**
+- Afișează **temperatura** pe o linie, cu eticheta `Temperatura: `, rotunjită la **2 zecimale**
+- Afișează **umiditate** pe linie separată, cu eticheta `Umiditate: `, rotunjită la **2 zecimale**
 
 **Exemplu**
 
-Cu `inaltime = 1.75` și `pi = 3.14159`, programul tău ar trebui să afișeze
+Input
 
 ```text
-Inaltimea mea este 1.75
-Pi este aproximativ 3.14
+21.6 45.5
 ```
 
-Pont: folosește **%.2f** ca să afișezi cu doar 2 zecimale :)
+Output
+
+```text
+Temperatura: 21.60
+Umiditate: 45.50
+```
+
+**Exemplu**
+
+Input
+
+```text
+19.25 60.75
+```
+
+Output
+
+```text
+Temperatura: 19.25
+Umiditate: 60.75
+```

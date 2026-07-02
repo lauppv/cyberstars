@@ -22,7 +22,7 @@ Output
 (3, 1) (3, 2) (3, 3)
 ```
 
-**Bucla exterioară** controlează **liniile**, **bucla interioară** controlează **coloanele**. Pentru fiecare valoare a lui **i**, bucla interioară rulează **complet** de la început până la sfârșit. Citește output-ul cu atenție și parcurge codul în minte :)
+**Bucla exterioară** controlează **liniile**, **bucla interioară** controlează **coloanele**. Pentru fiecare valoare a lui **i**, bucla interioară rulează **complet** de la început până la sfârșit. Citește output-ul cu atenție și parcurge codul în minte
 
 ---
 
@@ -78,15 +78,23 @@ Asta afișează **fiecare combinație** de două elemente din tablou. Dacă tabl
 
 ---
 
-## Misiune: Harta Stelară pe Grilă
+## Misiune: Jurnalul liniilor de imprimantă
 
-Consola de navigație are nevoie de o hartă stelară desenată linie cu linie. Fiecare linie **i** afișează numerele sectoarelor de la **1** până la **i**.
+Imprimanta liniară a centrului de calcul primește o comandă: numărul de linii de tipărit. Fiecare linie **i** trebuie să conțină numerele de la **1** până la **i**, ca un test de calibrare a capului de tipărire.
 
-Scrie **bucle for imbricate**: bucla exterioară merge de la 1 la 5 (liniile), bucla interioară afișează numerele de la 1 la i. Folosește `printf("%d ", j)` în interiorul buclei interioare și `printf("\n")` după ea.
+1. Citește un întreg **n** din input — numărul de linii
+2. Scrie **bucle for imbricate**: bucla exterioară merge de la **1** la **n**, bucla interioară afișează numerele de la **1** la **i**, separate prin spațiu
+3. Afișează `printf("\n")` la finalul fiecărei linii
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Input
+
+```text
+5
+```
+
+Output
 
 ```text
 1
@@ -96,4 +104,18 @@ Programul tău ar trebui să afișeze
 1 2 3 4 5
 ```
 
-Notă: există un spațiu la finalul fiecărui număr — e în regulă :)
+**Exemplu**
+
+Input
+
+```text
+3
+```
+
+Output
+
+```text
+1
+1 2
+1 2 3
+```

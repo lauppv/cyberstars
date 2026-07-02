@@ -26,7 +26,7 @@ Asta înseamnă că **tablou[i]** este doar zahăr sintactic pentru **\*(tablou 
 int main(void) {
     int numere[] = {10, 20, 30};
     printf("%d\n", numere[1]);       // 20
-    printf("%d\n", *(numere + 1));   // 20 — același lucru!
+    printf("%d\n", *(numere + 1));   // 20 — acelasi lucru!
     return 0;
 }
 ```
@@ -69,26 +69,45 @@ compilatorul vede de fapt
 void afiseaza(int *tablou) { }
 ```
 
-Tabloul **decade** într-un pointer. Funcția primește doar adresa primului element — **nu are nicio idee** cât de mare este tabloul. De aceea transmitem mereu **mărimea** ca parametru separat. Mister rezolvat :)
+Tabloul **decade** într-un pointer. Funcția primește doar adresa primului element — **nu are nicio idee** cât de mare este tabloul. De aceea transmitem mereu **mărimea** ca parametru separat
 
 ---
 
-## Misiune: Numărătoarea Greutății Cargo
+## Misiune: Sumatorul buffer-ului de bandă
 
-Senzorii din cala de marfă raportează greutățile containerelor printr-un buffer brut de memorie. Scrie o funcție care parcurge buffer-ul folosind aritmetica de pointeri și returnează greutatea totală, ca puntea de comandă să știe dacă nava este supraîncărcată.
+Un buffer brut de memorie a fost citit de pe bandă magnetică: mai întâi mărimea lui, apoi valorile propriu-zise. Scrie o funcție care parcurge buffer-ul folosind **aritmetica de pointeri** și returnează suma tuturor valorilor.
 
-1. Scrie o funcție **suma_tablou** care primește un **pointer la int** și o **mărime**, și returnează **suma** tuturor elementelor
-2. Folosește **aritmetică de pointeri** în interiorul funcției: accesează elementele cu **\*(ptr + i)** în loc de **ptr[i]**
-3. În **main**, tabloul **{5, 10, 15, 20}** este deja setat — apelează **suma_tablou** și afișează rezultatul
-
-**Input** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
-
-- `numere` — un tablou de int-i cu valorile **{5, 10, 15, 20}**
+1. Citește un întreg **n**, apoi **n** numere întregi, într-un tablou **numere**
+2. Scrie o funcție **suma_tablou** care primește un **pointer la int** și o **mărime**, și returnează **suma** tuturor elementelor
+3. Folosește **aritmetică de pointeri** în interiorul funcției: accesează elementele cu **\*(ptr + i)** în loc de **ptr[i]**
+4. În **main**, apelează **suma_tablou** și afișează rezultatul
 
 **Exemplu**
 
-Cu valorile de start, programul tău ar trebui să afișeze
+Input
+
+```text
+4
+5 10 15 20
+```
+
+Output
 
 ```text
 50
+```
+
+**Exemplu**
+
+Input
+
+```text
+3
+1 2 3
+```
+
+Output
+
+```text
+6
 ```
