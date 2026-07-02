@@ -127,36 +127,18 @@ Afișează **3**, nu **3.5**. De ce? Pentru că **a / b** cu doi int-i dă înap
 
 La centrul de calcul, fiecare operator nou primește o fișă cu două numere: vârsta lui și nivelul de acces la sistem alocat de administrator.
 
-- Citește două numere întregi din input, în această ordine: **varsta** și **nivel_acces**
-- Afișează **varsta** pe o linie, cu eticheta `Varsta: `
-- Afișează **nivel_acces** pe linie separată, cu eticheta `Acces: `
+Scrie un program care, în interiorul lui **main**
+
+- declară **int varsta = 45;**
+- declară **int nivel_acces = 3;**
+- afișează **varsta** pe o linie, cu eticheta `Varsta: `
+- afișează **nivel_acces** pe linie separată, cu eticheta `Acces: `
 
 **Exemplu**
 
-Input
+Programul tău ar trebui să afișeze
 
 ```text
-60 5
-```
-
-Output
-
-```text
-Varsta: 60
-Acces: 5
-```
-
-**Exemplu**
-
-Input
-
-```text
-25 2
-```
-
-Output
-
-```text
-Varsta: 25
-Acces: 2
+Varsta: 45
+Acces: 3
 ```

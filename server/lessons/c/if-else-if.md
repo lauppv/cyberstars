@@ -93,38 +93,21 @@ Nested **if**s are fine, but if you go 5 levels deep, the code becomes unreadabl
 
 You are the shift operator. The boot timer shows how many seconds remain until full boot, while a separate sensor tells you whether any hardware error was detected.
 
-Write an **if / else if / else** chain that reads two whole numbers from the input, in this order: **seconds** and **error_detected**
+Write a program that, inside **main**
 
-- if `seconds` is **100** → print `Checking memory`
-- otherwise if `seconds` is **60** → print `Checking peripherals`
-- otherwise if `seconds` is **30** → print `Loading operating system kernel`
-- otherwise if `seconds` is **10** → print `Starting system processes`
-- otherwise if `seconds` is **less than 10** → check `error_detected`: if it is **1**, print `Error detected. Aborting launch`, otherwise print `No error detected. Starting the system...`
-- otherwise → print `%d seconds have no effect` (with the number of seconds in place of `%d`)
-
-**Example**
-
-Input
-
-```text
-30 0
-```
-
-Output
-
-```text
-Loading operating system kernel
-```
+- declares **int seconds = 5;**
+- declares **int error_detected = 1;**
+- uses an **if / else if / else** chain:
+  - if `seconds` is **100** → print `Checking memory`
+  - otherwise if `seconds` is **60** → print `Checking peripherals`
+  - otherwise if `seconds` is **30** → print `Loading operating system kernel`
+  - otherwise if `seconds` is **10** → print `Starting system processes`
+  - otherwise if `seconds` is **less than 10** → check `error_detected`: if it is **1**, print `Error detected. Aborting launch`, otherwise print `No error detected. Starting the system...`
+  - otherwise → print `%d seconds have no effect` (with the number of seconds in place of `%d`)
 
 **Example**
 
-Input
-
-```text
-5 1
-```
-
-Output
+Your program should print
 
 ```text
 Error detected. Aborting launch

@@ -99,35 +99,15 @@ Schimbă **terminal_conectat** la **0** și rulează din nou. Rezultatul se inve
 
 Mainframe-urile centrului de calcul nu tolerează frigul: sub zero grade, uleiul din unitățile de bandă înghesuiește mecanismele. Termostatul trebuie să avertizeze operatorul de tură.
 
-Scrie un **if / else** care citește un întreg **temperatura** din input:
+Scrie un program care, în interiorul lui **main**
 
-- dacă `temperatura` este **mai mică decât 0** → afișează `alerta frig`
-- altfel → afișează `temperatura normala`
+- declară **int temperatura = -5;**
+- folosește un **if / else**: dacă `temperatura` este **mai mică decât 0** → afișează `alerta frig`, altfel → afișează `temperatura normala`
 
 **Exemplu**
 
-Input
-
-```text
--5
-```
-
-Output
+Programul tău ar trebui să afișeze
 
 ```text
 alerta frig
-```
-
-**Exemplu**
-
-Input
-
-```text
-10
-```
-
-Output
-
-```text
-temperatura normala
 ```
