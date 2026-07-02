@@ -56,10 +56,3 @@ Ieșire:
 
 Numerele negative funcționează la fel — suma poate fi mai mică decât oricare
 valoare pozitivă individuală, iar media tot se rotunjește la 2 zecimale.
-
-### Indicii
-
-- Alocă cu `int *arr = (int *)malloc(n * sizeof(int));`
-- Calculează suma într-o buclă, apoi împarte la `n` (convertit la `double`) pentru a obține media.
-- Folosește `printf("%.2f\n", avg)` pentru 2 zecimale.
-- Eliberează întotdeauna memoria cu `free(arr)` la final.

@@ -37,9 +37,3 @@ Output: 9
 ```
 
 Reversing a single-element array leaves it unchanged.
-
-### Hints
-
-- Declare an array of size 100 (or use `N` with a VLA).
-- Use `scanf` in a loop to read the values.
-- Loop from `N-1` down to `0` to print in reverse.

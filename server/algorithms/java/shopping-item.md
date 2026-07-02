@@ -46,10 +46,3 @@ Total: 0.99
 ```
 
 A single item with quantity 1 — the total is just its price.
-
-### Hints
-
-- `getTotal()` should return a `double` — multiply price by quantity.
-- Use `String.format("%.2f", total)` to format the output to two decimal places.
-- Accumulate the grand total by summing `getTotal()` for each item.
-- Each `ShoppingItem` is its own object — this is OOP in action!

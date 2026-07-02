@@ -49,10 +49,3 @@ Intrare:
 3
 Ieșire: -1
 ```
-
-### Indicii
-
-- Menține doi indici `left` și `right` care reprezintă intervalul curent de căutare.
-- Calculează `mid = (left + right) / 2` și compară `arr[mid]` cu valoarea căutată.
-- Dacă `arr[mid] == target`, afișează `mid` și oprește-te.
-- Dacă bucla se termină fără a găsi valoarea, afișează `-1`.

@@ -49,9 +49,3 @@ Input:
 15
 Output: 0
 ```
-
-### Hints
-
-- Use a `for` loop with `range(n)` to read each number.
-- Keep a running total by adding each number to an accumulator variable.
-- You can also collect numbers into a list and use the built-in `sum()` function.

@@ -33,9 +33,3 @@ Output: 0
 ```
 
 No vowels at all is a valid case — the count is simply `0`.
-
-### Hints
-
-- Use `.lower()` to handle both uppercase and lowercase letters.
-- Check if each character is `in "aeiou"`.
-- A `for` loop with a counter variable works great here.

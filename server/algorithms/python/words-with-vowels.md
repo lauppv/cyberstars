@@ -36,9 +36,3 @@ free
 ```
 
 Every word can match — there's no rule saying only some words are allowed to.
-
-### Hints
-
-- Use `.split()` to break the sentence into words.
-- For each word, count how many characters are in `"aeiouAEIOU"`.
-- A `for` loop inside a `for` loop — one for words, one for characters.

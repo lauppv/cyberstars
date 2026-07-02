@@ -64,11 +64,3 @@ Eve 3.5
 ```
 
 When every GPA ties, the whole list falls back to alphabetical order.
-
-### Hints
-
-- Implement `compareTo` in the Student class.
-- For descending GPA: compare other's GPA to this GPA with `Double.compare()`.
-- For ties, use `this.name.compareTo(other.name)`.
-- Use `Collections.sort()` or `Arrays.sort()` after collecting students.
-- Format GPA with `String.format("%.1f", gpa)`.

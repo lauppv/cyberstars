@@ -53,10 +53,3 @@ Output:
 
 Duplicate values are kept — the sort just needs to place equal values next to
 each other.
-
-### Hints
-
-- Start from the second element (index 1). Compare it with elements to its left and shift larger elements one position to the right.
-- Use a `while` loop inside the `for` loop to find the correct insertion position.
-- The outer loop runs from index 1 to n-1; the inner loop moves leftward while the current element is smaller.
-- Do **not** use Python's built-in `sort()` or `sorted()` — implement the algorithm yourself!

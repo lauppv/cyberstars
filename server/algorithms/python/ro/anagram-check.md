@@ -77,10 +77,3 @@ False
 
 Șiruri de lungimi diferite nu pot fi niciodată anagrame — e un mod rapid de a
 elimina o nepotrivire înainte de a compara literele.
-
-### Indicii
-
-- Convertește mai întâi ambele șiruri la litere mici cu `.lower()`.
-- O abordare: sortează ambele șiruri și compară-le — `sorted(a) == sorted(b)`.
-- O altă abordare: numără frecvența fiecărei litere folosind un `dict` sau `collections.Counter`.
-- Anagramele trebuie să aibă aceeași lungime, așa că poți verifica asta mai întâi ca ieșire timpurie.

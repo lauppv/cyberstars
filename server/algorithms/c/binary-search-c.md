@@ -49,10 +49,3 @@ Input:
 3
 Output: -1
 ```
-
-### Hints
-
-- Maintain two pointers `left` and `right` representing the current search range.
-- Compute `mid = (left + right) / 2` and compare `arr[mid]` with the target.
-- If `arr[mid] == target`, print `mid` and stop.
-- If the loop ends without finding the target, print `-1`.

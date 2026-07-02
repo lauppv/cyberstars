@@ -42,9 +42,3 @@ Input:
 -5 -1 -10 -3
 Output: -10
 ```
-
-### Hints
-
-- Read the first number and set it as your initial `min`.
-- Loop through the remaining numbers; if a number is less than `min`, update `min`.
-- You can also store everything in an array first and then scan it — either approach works.

@@ -46,10 +46,3 @@ Output: -5 -5 -1 0 3
 ```
 
 Negative numbers and duplicates sort the same way as any other integers.
-
-### Hints
-
-- Write a `merge` function that merges two sorted subarrays into one.
-- Write a `mergeSort` function that recursively splits and merges.
-- You'll need a temporary array for merging — you can allocate it with `malloc` or use a global/local array.
-- Base case: an array of size 0 or 1 is already sorted.

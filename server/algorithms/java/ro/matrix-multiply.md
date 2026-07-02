@@ -58,11 +58,3 @@ Ieșire:
 ```
 
 Cazul 1x1 este cazul de bază al formulei: `C[0][0] = A[0][0] * B[0][0]`.
-
-### Indicii
-
-- Matricea rezultat C are dimensiunile R1 x C2.
-- Folosește trei bucle imbricate: `i` peste rândurile lui A, `j` peste coloanele lui B, `k` peste dimensiunea comună.
-- `C[i][j] += A[i][k] * B[k][j]` pentru fiecare k de la 0 la C1-1.
-- Inițializează matricea rezultat cu zerouri înainte de a calcula.
-- Afișează fiecare rând pe propria linie, cu valorile separate prin spații.

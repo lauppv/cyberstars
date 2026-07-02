@@ -66,10 +66,3 @@ Insufficient funds
 Insufficient funds
 Balance: 10
 ```
-
-### Indicii
-
-- Analizează fiecare linie de operație împărțind-o după spațiu.
-- În `withdraw()`, verifică dacă amount <= balance înainte de a scădea.
-- Soldul nu trebuie să devină niciodată negativ.
-- Afișează `Insufficient funds` imediat ce o retragere eșuează.

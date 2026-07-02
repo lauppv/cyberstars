@@ -42,9 +42,3 @@ Input:
 -1 -2 -3
 Output: -6
 ```
-
-### Hints
-
-- Initialize a `sum` variable to `0` before the loop.
-- Use `scanf("%d", &x)` inside a `for` loop to read each number.
-- Add each number to `sum` as you read it — you don't even need an array!

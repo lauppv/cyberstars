@@ -57,12 +57,3 @@ Intrare:
 Ieșire:
 1 2 4 3
 ```
-
-### Indicii
-
-- Menține patru limite: `top`, `bottom`, `left`, `right`. După parcurgerea unei laturi, micșorează limita corespunzătoare.
-- Dreapta: parcurge coloanele `left` la `right` pe rândul `top`, apoi `top += 1`.
-- Jos: parcurge rândurile `top` la `bottom` pe coloana `right`, apoi `right -= 1`.
-- Stânga: parcurge coloanele `right` la `left` pe rândul `bottom`, apoi `bottom -= 1`.
-- Sus: parcurge rândurile `bottom` la `top` pe coloana `left`, apoi `left += 1`.
-- Continuă cât timp `top <= bottom` și `left <= right`.

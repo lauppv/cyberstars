@@ -34,9 +34,3 @@ appears **first**.
 Input:  hi
 Output: hi
 ```
-
-### Hints
-
-- Use `split()` to break the sentence into a list of words.
-- The `len()` function tells you how long a string is.
-- You can use `max()` with a `key` argument: `max(words, key=len)`.

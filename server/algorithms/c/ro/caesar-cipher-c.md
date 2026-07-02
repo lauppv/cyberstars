@@ -44,10 +44,3 @@ Ieșire: 123
 ```
 
 Cifrele nu sunt litere, deci trec prin cifru neschimbate.
-
-### Indicii
-
-- Folosește `fgets` pentru a citi șirul (gestionează spațiile). Elimină caracterul newline de la final, dacă există.
-- Pentru o literă mică `c`: `encrypted = (c - 'a' + shift) % 26 + 'a'`.
-- Pentru o literă mare `c`: `encrypted = (c - 'A' + shift) % 26 + 'A'`.
-- Folosește `strlen` din `<string.h>` pentru a parcurge șirul.

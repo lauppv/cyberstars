@@ -46,9 +46,3 @@ Ieșire:
 ```
 
 O matrice 1x1 este propria ei transpusă.
-
-### Indicii
-
-- Folosește un tablou bidimensional: `int mat[20][20]`.
-- Transpunerea schimbă rândurile cu coloanele: elementul `[i][j]` devine `[j][i]`.
-- Poți fie să construiești o matrice nouă, fie să afișezi direct parcurgând coloanele apoi rândurile.

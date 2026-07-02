@@ -62,11 +62,3 @@ Ieșire:
 
 Eliminarea nodului **head** înseamnă că referința `head` a listei trebuie
 mutată chiar ea către al doilea nod — nu există un nod „anterior" de relegat.
-
-### Indicii
-
-- `Node` conține o valoare și o referință către nodul următor.
-- `LinkedList` conține o referință către nodul `head`.
-- Pentru `add`: parcurge până la sfârșit, setează `next` al ultimului nod.
-- Pentru `remove`: găsește nodul, leagă nodul anterior la `node.next`.
-- Caz special: eliminarea nodului head.

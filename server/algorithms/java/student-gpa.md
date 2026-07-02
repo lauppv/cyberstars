@@ -43,10 +43,3 @@ Output:
 ```
 
 A single grade — the average is just that grade, still formatted to 2 decimals.
-
-### Hints
-
-- Store grades in an `int[]` or `ArrayList<Integer>`.
-- Use `String.format("%.2f", value)` to format to 2 decimal places.
-- Sum all grades and divide by the count (use `double` division).
-- The `Student` class should have a constructor that takes name and grades.

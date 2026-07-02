@@ -67,10 +67,3 @@ cat
 Output:
 cat
 ```
-
-### Hints
-
-- Two words are anagrams if sorting their characters gives the same string: `sorted("eat") == sorted("tea")`.
-- Use a dictionary with the sorted characters as the key, and a list of words as the value.
-- After grouping, sort each group alphabetically, then sort all groups by their first word.
-- `collections.defaultdict(list)` is handy for building the groups.

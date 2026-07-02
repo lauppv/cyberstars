@@ -57,11 +57,3 @@ Empty
 ```
 
 Odată ce stiva e complet golită, apelurile `pop` următoare afișează în continuare `Empty`.
-
-### Indicii
-
-- Folosește un tablou de dimensiune fixă (de ex., 100) și o variabilă `top` inițializată cu `-1`.
-- `push`: incrementează `top`, apoi setează `arr[top] = X`.
-- `pop`: dacă `top >= 0`, afișează `arr[top]` și decrementează `top`; altfel afișează `Empty`.
-- `peek`: dacă `top >= 0`, afișează `arr[top]`; altfel afișează `Empty`.
-- Folosește `strcmp` pentru a compara șirurile de comenzi — nu uita să incluzi `#include <string.h>`.

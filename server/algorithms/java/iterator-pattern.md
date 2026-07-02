@@ -47,11 +47,3 @@ Output:
 1
 2
 ```
-
-### Hints
-
-- `NumberRange` should `implement Iterable<Integer>`.
-- You need to implement `iterator()` which returns an `Iterator<Integer>`.
-- The Iterator needs `hasNext()` and `next()` methods.
-- You can use an inner class or anonymous class for the Iterator.
-- The for-each loop `for (int n : range)` works on any Iterable.

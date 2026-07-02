@@ -43,10 +43,3 @@ Perimeter: 4
 ```
 
 Cel mai mic dreptunghi posibil — un pătrat 1x1.
-
-### Indicii
-
-- Aria = width \* height.
-- Perimetrul = 2 \* (width + height).
-- Clasa ar trebui să încapsuleze câmpurile și să expună metode de tip getter.
-- Folosește aritmetică cu numere întregi — nu sunt necesare zecimale.

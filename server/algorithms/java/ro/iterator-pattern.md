@@ -47,11 +47,3 @@ Ieșire:
 1
 2
 ```
-
-### Indicii
-
-- `NumberRange` ar trebui să implementeze `Iterable<Integer>`.
-- Trebuie să implementezi `iterator()` care returnează un `Iterator<Integer>`.
-- Iteratorul are nevoie de metodele `hasNext()` și `next()`.
-- Poți folosi o clasă internă sau o clasă anonimă pentru Iterator.
-- Bucla for-each `for (int n : range)` funcționează pe orice Iterable.

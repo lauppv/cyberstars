@@ -54,9 +54,3 @@ NO
 `1073741824` este 2^30. `1073741823` este cu unu mai puțin — în binar
 înseamnă treizeci de biți de `1`, ceea ce e cât se poate de departe de
 „exact un bit setat”.
-
-### Indicii
-
-- Trucul pe biți: `(n & (n - 1)) == 0` este adevărat doar pentru puterile lui 2 (și zero, dar datele de intrare sunt pozitive).
-- `&` este operatorul ȘI pe biți în C.
-- Puterile lui 2 în binar au exact un bit setat: `1, 10, 100, 1000, ...`

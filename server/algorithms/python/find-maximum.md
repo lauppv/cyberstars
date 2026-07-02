@@ -50,9 +50,3 @@ Input:
 Output:
 5
 ```
-
-### Hints
-
-- Use `.split()` to break the second line into a list of strings, then convert each to `int`.
-- Python has a built-in `max()` function — but try solving it with a loop first!
-- Start by assuming the first element is the maximum, then compare with the rest.

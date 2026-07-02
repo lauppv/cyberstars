@@ -52,10 +52,3 @@ Words: 1
 
 `y` is not counted as a vowel here — only a, e, i, o, u count, so all three
 letters in "Sky" are consonants.
-
-### Hints
-
-- Use `Character.toLowerCase()` to handle case-insensitive vowel checks.
-- `Character.isLetter()` helps you skip spaces when counting consonants.
-- `String.split(" ")` splits a string into words by spaces.
-- Store the string as a private field and compute the stats in each method.

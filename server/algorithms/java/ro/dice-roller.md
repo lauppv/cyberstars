@@ -56,10 +56,3 @@ Ieșire:
 
 Seed-uri diferite (și `sides` diferit) produc secvențe complet diferite — dar
 același seed reproduce mereu aceeași secvență.
-
-### Indicii
-
-- `new Random(seed)` creează un generator de numere aleatoare reproductibil.
-- `random.nextInt(sides)` returnează o valoare de la 0 la sides-1, deci adaugă 1.
-- Încapsulează obiectul `Random` ca un câmp privat în clasa ta `Dice`.
-- Folosirea unui seed înseamnă că aceleași intrări produc întotdeauna aceleași ieșiri — excelent pentru testare!

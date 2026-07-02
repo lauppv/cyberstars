@@ -37,9 +37,3 @@ Output: 0
 ```
 
 When none of the numbers are even, the count stays at 0 — still print it.
-
-### Hints
-
-- A number is even if `x % 2 == 0`.
-- Keep a counter variable, starting at `0`. Increment it each time you read an even number.
-- You can check each number as you read it with `scanf` — no array needed.

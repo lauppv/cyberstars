@@ -55,11 +55,3 @@ Intrare:
 Ieșire:
 true
 ```
-
-### Indicii
-
-- Numerele negative returnează întotdeauna `false`.
-- O abordare: inversează numărul cifră cu cifră și compară-l cu cel original.
-- Pentru a obține ultima cifră: `num % 10`. Pentru a elimina ultima cifră: `num / 10`.
-- Construiește numărul inversat înmulțind cu 10 și adăugând fiecare cifră.
-- O altă abordare: convertește la un șir și verifică dacă este egal cu inversul său.

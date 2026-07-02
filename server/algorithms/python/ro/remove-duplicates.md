@@ -50,10 +50,3 @@ Ieșire:
 ```
 
 Când nu există deloc duplicate, rezultatul este identic cu intrarea.
-
-### Indicii
-
-- Folosește un `set` pentru a urmări ce numere ai văzut deja.
-- Parcurge lista — dacă un număr nu este în set, adaugă-l la rezultat și la set.
-- Set-urile au căutare O(1), deci verificarea `if x in seen` este rapidă.
-- Unește lista de rezultate cu `" ".join(...)` pentru a o afișa frumos.

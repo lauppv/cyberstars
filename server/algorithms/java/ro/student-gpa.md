@@ -43,10 +43,3 @@ Ieșire:
 ```
 
 O singură notă — media este chiar acea notă, formatată tot la 2 zecimale.
-
-### Indicii
-
-- Stochează notele într-un `int[]` sau `ArrayList<Integer>`.
-- Folosește `String.format("%.2f", value)` pentru a formata la 2 zecimale.
-- Însumează toate notele și împarte la numărul lor (folosește împărțire de tip `double`).
-- Clasa `Student` ar trebui să aibă un constructor care primește numele și notele.

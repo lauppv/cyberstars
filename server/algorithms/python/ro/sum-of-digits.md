@@ -33,10 +33,3 @@ Ieșire: 1
 ```
 
 Zerourile din `100` nu adaugă nimic la sumă — doar `1` contează.
-
-### Indicii
-
-- Convertește numărul într-un șir, apoi parcurge fiecare caracter.
-- Folosește `abs()` pentru a trata numerele negative, sau pur și simplu sari peste caracterele care nu sunt cifre.
-- `int(ch)` convertește un caracter cifră înapoi într-un număr.
-- Poți de asemenea rezolva asta cu `%` și `//` într-o buclă `while` — încearcă ambele abordări!

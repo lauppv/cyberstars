@@ -70,10 +70,3 @@ Output:
 ```
 
 Increments and decrements cancel out — the counter returns to 0.
-
-### Hints
-
-- Use a private field to store the counter value and public methods to modify it.
-- A constructor can initialize the value to 0 (or rely on Java's default for `int`).
-- Only print when you encounter a `get` command.
-- This is a great exercise for understanding encapsulation in Java!

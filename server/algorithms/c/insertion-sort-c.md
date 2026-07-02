@@ -44,10 +44,3 @@ Output: 1 1 2 2
 ```
 
 An already-sorted array (with duplicates) needs no shifting at all.
-
-### Hints
-
-- Start from the second element (index 1) and work forward.
-- For each element, save it in a `key` variable, then shift all larger elements one position to the right.
-- Insert the `key` at the position where the shifting stopped.
-- The portion of the array before the current index is always sorted.

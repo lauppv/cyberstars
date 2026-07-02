@@ -50,10 +50,3 @@ Output:
 ```
 
 When there are no duplicates at all, the output is identical to the input.
-
-### Hints
-
-- Use a `set` to track which numbers you've already seen.
-- Loop through the list — if a number is not in the set, add it to the result and to the set.
-- Sets have O(1) lookup, so checking `if x in seen` is fast.
-- Join your result list with `" ".join(...)` to print it nicely.

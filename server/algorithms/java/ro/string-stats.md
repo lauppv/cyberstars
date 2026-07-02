@@ -52,10 +52,3 @@ Words: 1
 
 `y` nu este numărat aici ca vocală — contează doar a, e, i, o, u, deci toate
 cele trei litere din "Sky" sunt consoane.
-
-### Indicii
-
-- Folosește `Character.toLowerCase()` pentru a trata verificările de vocale fără sensibilitate la majuscule.
-- `Character.isLetter()` te ajută să sari peste spații când numeri consoanele.
-- `String.split(" ")` împarte un șir în cuvinte după spații.
-- Stochează șirul ca un câmp privat și calculează statisticile în fiecare metodă.

@@ -36,9 +36,3 @@ Output: noon
 
 Some strings look the same reversed — that's a coincidence of their letters,
 not a special case your code needs to detect.
-
-### Hints
-
-- Strings support slicing — `s[::-1]` reverses a string in one step.
-- You can also build the reversed string with a `for` loop going backwards.
-- Don't forget to `print()` the result!

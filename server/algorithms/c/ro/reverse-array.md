@@ -37,9 +37,3 @@ Ieșire: 9
 ```
 
 Inversarea unui tablou cu un singur element îl lasă neschimbat.
-
-### Indicii
-
-- Declară un tablou de dimensiune 100 (sau folosește `N` cu un VLA).
-- Folosește `scanf` într-o buclă pentru a citi valorile.
-- Parcurge de la `N-1` până la `0` pentru a afișa în sens invers.

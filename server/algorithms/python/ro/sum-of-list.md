@@ -49,9 +49,3 @@ Intrare:
 15
 Ieșire: 0
 ```
-
-### Indicii
-
-- Folosește o buclă `for` cu `range(n)` pentru a citi fiecare număr.
-- Păstrează un total curent adăugând fiecare număr la o variabilă acumulator.
-- Poți de asemenea să colectezi numerele într-o listă și să folosești funcția încorporată `sum()`.

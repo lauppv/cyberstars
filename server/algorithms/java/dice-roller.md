@@ -56,10 +56,3 @@ Output:
 
 Different seeds (and different `sides`) produce completely different
 sequences — but the same seed always reproduces the same sequence.
-
-### Hints
-
-- `new Random(seed)` creates a reproducible random number generator.
-- `random.nextInt(sides)` returns a value from 0 to sides-1, so add 1.
-- Encapsulate the `Random` object as a private field inside your `Dice` class.
-- Using a seed means the same inputs always produce the same outputs — great for testing!

@@ -46,10 +46,3 @@ Total: 0.99
 ```
 
 Un singur articol cu cantitatea 1 — totalul este chiar prețul său.
-
-### Indicii
-
-- `getTotal()` ar trebui să returneze un `double` — înmulțește price cu quantity.
-- Folosește `String.format("%.2f", total)` pentru a formata rezultatul la două zecimale.
-- Acumulează totalul general însumând `getTotal()` pentru fiecare articol.
-- Fiecare `ShoppingItem` este propriul său obiect — aceasta este POO în acțiune!

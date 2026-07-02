@@ -44,10 +44,3 @@ Total: 0.00
 ```
 
 Fără nicio formă, suma pornește și rămâne la zero — se afișează totuși `Total: 0.00`.
-
-### Indicii
-
-- Folosește `Math.PI` pentru aria cercului (pi _ r _ r).
-- Declară `Shape` ca `abstract class Shape` cu `abstract double getArea()`.
-- Stochează toate formele într-un `ArrayList<Shape>` — acesta este **polimorfismul** în acțiune.
-- Însumează `getArea()` pentru fiecare formă din listă.

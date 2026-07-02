@@ -64,10 +64,3 @@ Fahrenheit: -40.0
 ```
 
 -40 este singurul punct în care scalele Celsius și Fahrenheit coincid.
-
-### Indicii
-
-- Folosește `double` pentru valoarea temperaturii pentru a gestiona zecimalele.
-- `String.format("%.1f", value)` formatează un double la o zecimală.
-- Stochează unitatea ca un câmp `char` sau `String` în clasa ta.
-- Gândește-te care metodă necesită o conversie și care returnează doar valoarea stocată.

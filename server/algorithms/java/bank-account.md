@@ -66,10 +66,3 @@ Insufficient funds
 Insufficient funds
 Balance: 10
 ```
-
-### Hints
-
-- Parse each operation line by splitting on space.
-- In `withdraw()`, check if amount <= balance before subtracting.
-- The balance should never go negative.
-- Print `Insufficient funds` immediately when a withdrawal fails.

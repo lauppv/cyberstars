@@ -56,12 +56,3 @@ Input:
 Output:
 1 2 4 3
 ```
-
-### Hints
-
-- Maintain four boundaries: `top`, `bottom`, `left`, `right`. After traversing one side, shrink the corresponding boundary.
-- Right: traverse columns `left` to `right` at row `top`, then `top += 1`.
-- Down: traverse rows `top` to `bottom` at column `right`, then `right -= 1`.
-- Left: traverse columns `right` to `left` at row `bottom`, then `bottom -= 1`.
-- Up: traverse rows `bottom` to `top` at column `left`, then `left += 1`.
-- Continue while `top <= bottom` and `left <= right`.

@@ -62,10 +62,3 @@ Items: 0
 
 Eliminarea exact a întregului stoc al unui articol îl aduce la 0 — rămâne
 cunoscut, dar nu mai contează pentru `Items: N`.
-
-### Indicii
-
-- Folosește `HashMap<String, Integer>` pentru a stoca inventarul.
-- `getOrDefault(item, 0)` este util pentru articolele care nu sunt încă în map.
-- Când elimini, verifică mai întâi cantitatea înainte de a scădea.
-- Numără doar articolele cu cantitatea > 0 pentru linia finală `Items: N`.

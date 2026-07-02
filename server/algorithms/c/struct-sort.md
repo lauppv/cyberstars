@@ -59,9 +59,3 @@ Bob 70
 
 When every grade ties, the stable sort keeps the original input order —
 notice it's **not** alphabetical.
-
-### Hints
-
-- Define a struct: `struct Student { char name[51]; int grade; };`
-- Use bubble sort or selection sort to sort the array by the `grade` field.
-- For a stable sort, bubble sort works well — it preserves order of equal elements.

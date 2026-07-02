@@ -61,11 +61,3 @@ Empty
 ```
 
 Atât `dequeue`, cât și `peek` trebuie să afișeze `Empty` când coada nu conține nimic.
-
-### Indicii
-
-- Folosește `ArrayList<Integer>` pentru a stoca elementele.
-- Enqueue adaugă la sfârșitul listei cu `add()`.
-- Dequeue elimină din față cu `remove(0)`.
-- `list.get(0)` îți dă elementul din față pentru peek.
-- Verifică întotdeauna `isEmpty()` înainte de dequeue/peek.

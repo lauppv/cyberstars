@@ -51,10 +51,3 @@ Ieșire:
 ```
 
 O listă cu un singur nod afișează tot doar acea valoare, fără spațiu la final.
-
-### Indicii
-
-- Definește o structură: `struct Node { int data; struct Node *next; };`
-- Menține un pointer `head`, inițial `NULL`.
-- Pentru INSERT, alocă un nod nou cu `malloc`, parcurge până la final și leagă-l.
-- Pentru PRINT, parcurge de la `head` și afișează datele fiecărui nod.

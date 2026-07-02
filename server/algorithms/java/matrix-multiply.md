@@ -58,11 +58,3 @@ Output:
 ```
 
 The 1x1 case is the base case of the formula: `C[0][0] = A[0][0] * B[0][0]`.
-
-### Hints
-
-- The result matrix C has dimensions R1 x C2.
-- Use three nested loops: `i` over rows of A, `j` over columns of B, `k` over the shared dimension.
-- `C[i][j] += A[i][k] * B[k][j]` for each k from 0 to C1-1.
-- Initialize the result matrix with zeros before computing.
-- Print each row on its own line with values separated by spaces.

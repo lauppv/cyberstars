@@ -52,10 +52,3 @@ Afcsb
 ```
 
 Uppercase letters wrap the same way, staying uppercase: `Z` shifts to `A`.
-
-### Hints
-
-- Use `ord()` to get a character's ASCII code and `chr()` to convert back.
-- For a lowercase letter: `chr((ord(ch) - ord('a') + shift) % 26 + ord('a'))`.
-- Handle uppercase letters separately with `ord('A')`.
-- Use `.isalpha()` to check if a character is a letter.

@@ -44,10 +44,3 @@ Output: 123
 ```
 
 Digits aren't letters, so they pass through the cipher unchanged.
-
-### Hints
-
-- Use `fgets` to read the string (it handles spaces). Remove the trailing newline if present.
-- For a lowercase letter `c`: `encrypted = (c - 'a' + shift) % 26 + 'a'`.
-- For an uppercase letter `c`: `encrypted = (c - 'A' + shift) % 26 + 'A'`.
-- Use `strlen` from `<string.h>` to iterate over the string.

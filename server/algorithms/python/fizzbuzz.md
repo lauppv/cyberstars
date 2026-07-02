@@ -55,10 +55,3 @@ Output:
 ```
 
 With `n = 1` there is only one line of output: the number `1` itself.
-
-### Hints
-
-- Check divisibility by **both** 3 and 5 first — if you check for 3 alone first, you'll never reach `FizzBuzz`.
-- Use the modulo operator `%`: `n % 3 == 0` means `n` is divisible by 3.
-- A number is divisible by both 3 and 5 if and only if it's divisible by 15.
-- Print each result on its own line.

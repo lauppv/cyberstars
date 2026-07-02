@@ -31,9 +31,3 @@ Ieșire: 5
 
 Cifrele sunt tot caractere — numărătoarea lungimii nu ține cont de ce fel de
 caractere sunt.
-
-### Indicii
-
-- Folosește `scanf("%s", str)` pentru a citi un cuvânt.
-- Parcurge caracterele: `while (str[i] != '\0')` și numără.
-- NU folosi `strlen` — scopul este să o implementezi singur.

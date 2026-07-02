@@ -37,9 +37,3 @@ Intrare:
 1000000000
 Ieșire: 10
 ```
-
-### Indicii
-
-- Caz special: dacă numărul este `0`, răspunsul este `1`.
-- Altfel, continuă să împarți la `10` într-o buclă și numără de câte ori poți face acest lucru înainte ca numărul să devină `0`.
-- Folosește `n = n / 10` (sau `n /= 10`) pentru a elimina ultima cifră la fiecare iterație.

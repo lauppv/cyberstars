@@ -40,9 +40,3 @@ LCM: 9
 ```
 
 Când cele două numere sunt egale, CMMDC-ul și CMMMC-ul sunt amândouă chiar acel număr.
-
-### Indicii
-
-- Implementează algoritmul lui Euclid: cât timp `b != 0`, setează `temp = b`, `b = a % b`, `a = temp`. CMMDC-ul este `a`.
-- Calculează CMMMC-ul folosind formula `A * B / CMMDC` — împarte înainte de a înmulți pentru a evita depășirea: `A / CMMDC * B`.
-- Salvează valorile originale ale lui A și B înainte de a rula bucla CMMDC, deoarece bucla le modifică.

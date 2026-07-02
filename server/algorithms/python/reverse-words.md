@@ -30,9 +30,3 @@ Output: hello
 ```
 
 A single word has nothing to reorder, so it stays the same.
-
-### Hints
-
-- Use `split()` to get a list of words.
-- You can reverse a list with `[::-1]` or the `reversed()` function.
-- Use `" ".join(...)` to combine the words back into a single string.

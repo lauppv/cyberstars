@@ -50,9 +50,3 @@ Intrare:
 Ieșire:
 5
 ```
-
-### Indicii
-
-- Folosește `.split()` pentru a împărți a doua linie într-o listă de șiruri, apoi convertește fiecare la `int`.
-- Python are o funcție încorporată `max()` — dar încearcă mai întâi să o rezolvi cu o buclă!
-- Începe presupunând că primul element este maximul, apoi compară cu restul.

@@ -62,11 +62,3 @@ Output:
 
 Removing the **head** node means the list's `head` reference itself has to
 move to the second node — there's no "previous" node to relink.
-
-### Hints
-
-- `Node` holds a value and a reference to the next node.
-- `LinkedList` holds a reference to the `head` node.
-- For `add`: traverse to the end, set `next` of the last node.
-- For `remove`: find the node, link the previous node to `node.next`.
-- Special case: removing the head node.

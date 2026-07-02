@@ -64,11 +64,3 @@ Eve 3.5
 ```
 
 Când toate GPA-urile sunt egale, întreaga listă cade înapoi pe ordinea alfabetică.
-
-### Indicii
-
-- Implementează `compareTo` în clasa Student.
-- Pentru GPA descrescător: compară GPA-ul celuilalt cu acest GPA folosind `Double.compare()`.
-- La egalitate, folosește `this.name.compareTo(other.name)`.
-- Folosește `Collections.sort()` sau `Arrays.sort()` după ce ai colectat studenții.
-- Formatează GPA cu `String.format("%.1f", gpa)`.

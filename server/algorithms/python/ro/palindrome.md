@@ -39,9 +39,3 @@ din mijloc de ignorat, cele două jumătăți trebuie doar să se oglindească.
 Intrare:  ab
 Ieșire: False
 ```
-
-### Indicii
-
-- Un șir este palindrom dacă `s == s[::-1]`.
-- Poți de asemenea să compari caracterele de la ambele capete folosind o buclă.
-- Caracterele singulare și șirurile goale sunt palindromuri.

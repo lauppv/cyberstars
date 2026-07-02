@@ -42,9 +42,3 @@ Intrare:
 -5 -1 -10 -3
 Ieșire: -10
 ```
-
-### Indicii
-
-- Citește primul număr și setează-l ca `min` inițial.
-- Parcurge numerele rămase; dacă un număr este mai mic decât `min`, actualizează `min`.
-- Poți de asemenea să stochezi totul mai întâi într-un tablou și apoi să-l parcurgi — ambele abordări funcționează.

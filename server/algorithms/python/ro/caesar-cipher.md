@@ -52,10 +52,3 @@ Afcsb
 ```
 
 Literele mari se reiau la fel, rămânând mari: `Z` devine `A`.
-
-### Indicii
-
-- Folosește `ord()` pentru a obține codul ASCII al unui caracter și `chr()` pentru a converti înapoi.
-- Pentru o literă mică: `chr((ord(ch) - ord('a') + shift) % 26 + ord('a'))`.
-- Tratează literele mari separat cu `ord('A')`.
-- Folosește `.isalpha()` pentru a verifica dacă un caracter este o literă.

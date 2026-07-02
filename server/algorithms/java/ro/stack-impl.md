@@ -59,11 +59,3 @@ Empty
 ```
 
 Atât `pop`, cât și `peek` trebuie să afișeze `Empty` când stiva nu conține nimic.
-
-### Indicii
-
-- Folosește `ArrayList<Integer>` pentru a stoca elementele.
-- Push adaugă la sfârșitul listei, pop elimină de la sfârșit.
-- `list.get(list.size() - 1)` îți dă elementul din vârf.
-- `list.remove(list.size() - 1)` elimină și returnează elementul din vârf.
-- Verifică întotdeauna `isEmpty()` înainte de pop/peek.

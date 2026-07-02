@@ -43,10 +43,3 @@ Perimeter: 4
 ```
 
 The smallest possible rectangle — a 1x1 square.
-
-### Hints
-
-- Area = width \* height.
-- Perimeter = 2 \* (width + height).
-- The class should encapsulate the fields and expose getter-style methods.
-- Use integer arithmetic — no decimals needed.
