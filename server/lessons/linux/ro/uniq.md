@@ -29,9 +29,9 @@ Fără sortare, `uniq` colapsează doar secvențele de linii identice consecutiv
 
 ```text
 alpha
-alpha    ← eliminată (duplicat adiacent)
+alpha    <- eliminata (duplicat adiacent)
 beta
-alpha    ← NU este eliminată (nu este adiacentă)
+alpha    <- NU este eliminata (nu este adiacenta)
 ```
 
 Combinația `sort | uniq` este atât de des folosită încât merită să o ai în memoria musculară.

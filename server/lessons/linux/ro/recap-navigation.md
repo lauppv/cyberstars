@@ -9,8 +9,8 @@ Niciuna dintre aceste comenzi nu modifică sau șterge ceva, așa că poți expl
 voie. Obiceiul de aur al oricărui cadet:
 
 ```bash
-pwd            # confirmă unde te afli
-ls             # privește ce se află aici
+pwd            # confirma unde te afli
+ls             # priveste ce se afla aici
 cd undeva      # mergi mai departe
 ```
 
