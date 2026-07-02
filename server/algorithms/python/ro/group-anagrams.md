@@ -68,10 +68,3 @@ cat
 Ieșire:
 cat
 ```
-
-### Indicii
-
-- Două cuvinte sunt anagrame dacă sortarea caracterelor lor dă același șir: `sorted("eat") == sorted("tea")`.
-- Folosește un dicționar cu caracterele sortate drept cheie, și o listă de cuvinte drept valoare.
-- După grupare, sortează fiecare grup alfabetic, apoi sortează toate grupurile după primul lor cuvânt.
-- `collections.defaultdict(list)` este util pentru construirea grupurilor.

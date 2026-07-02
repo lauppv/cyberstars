@@ -42,9 +42,3 @@ Ieșire:
 ```
 
 Cel mai mic caz: un singur rând cu o singură stea.
-
-### Indicii
-
-- Folosește o buclă `for` de la `1` la `N` pentru rânduri.
-- În interior, folosește o altă buclă `for` pentru a afișa `i` stele pe rândul `i`.
-- Folosește `printf("\n")` după fiecare rând pentru a trece la linia următoare.

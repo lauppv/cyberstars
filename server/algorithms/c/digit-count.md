@@ -37,9 +37,3 @@ Input:
 1000000000
 Output: 10
 ```
-
-### Hints
-
-- Special case: if the number is `0`, the answer is `1`.
-- Otherwise, keep dividing by `10` in a loop and count how many times you can do it before the number becomes `0`.
-- Use `n = n / 10` (or `n /= 10`) to remove the last digit each iteration.

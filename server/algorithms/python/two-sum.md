@@ -55,10 +55,3 @@ Output:
 ```
 
 Negative numbers work the same way: `-3 + 3 == 0`.
-
-### Hints
-
-- **Brute force**: try every pair with two nested `for` loops — works but is O(n^2).
-- **Optimal**: use a `dict` to map each value to its index. For each number `x`, check if `target - x` is already in the dict.
-- Don't forget to print the smaller index first!
-- This is a classic problem that shows the power of dictionaries for fast lookups.

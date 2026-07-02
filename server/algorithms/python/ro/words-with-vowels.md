@@ -37,9 +37,3 @@ free
 
 Toate cuvintele se pot potrivi — nu există o regulă care să spună că doar unele
 au voie.
-
-### Indicii
-
-- Folosește `.split()` pentru a împărți propoziția în cuvinte.
-- Pentru fiecare cuvânt, numără câte caractere sunt în `"aeiouAEIOU"`.
-- O buclă `for` în interiorul unei bucle `for` — una pentru cuvinte, una pentru caractere.

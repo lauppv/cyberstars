@@ -51,10 +51,3 @@ Output:
 ```
 
 A list with a single node still prints just that one value, no trailing space.
-
-### Hints
-
-- Define a struct: `struct Node { int data; struct Node *next; };`
-- Keep a `head` pointer, initially `NULL`.
-- For INSERT, allocate a new node with `malloc`, traverse to the end, and link it.
-- For PRINT, traverse from `head` and print each node's data.

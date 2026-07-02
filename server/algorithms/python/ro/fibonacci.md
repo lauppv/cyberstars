@@ -45,10 +45,3 @@ Intrare:
 Ieșire:
 0 1
 ```
-
-### Indicii
-
-- Începe cu două variabile: `a = 0` și `b = 1`.
-- La fiecare pas, afișează `a`, apoi actualizează: `a, b = b, a + b`.
-- Python suportă atribuirea de tuple, ceea ce face schimbarea elegantă.
-- Fii atent la cazul limită `n = 1` — afișează doar `0`.

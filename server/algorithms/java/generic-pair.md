@@ -57,11 +57,3 @@ Output:
 ```
 
 Negative integers swap the same way as any other value.
-
-### Hints
-
-- Use generics: `class Pair<A, B>`.
-- `swap()` returns `new Pair<B, A>(second, first)`.
-- Override `toString()` to return `(first, second)`.
-- When creating the pair, use `Pair<String, Integer>`.
-- The swapped pair has type `Pair<Integer, String>`.

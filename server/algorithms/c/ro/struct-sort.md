@@ -59,9 +59,3 @@ Bob 70
 
 Când toate notele sunt egale, sortarea stabilă păstrează ordinea originală
 din intrare — observă că **nu** este alfabetică.
-
-### Indicii
-
-- Definește o structură: `struct Student { char name[51]; int grade; };`
-- Folosește sortarea prin metoda bulelor sau sortarea prin selecție pentru a sorta tabloul după câmpul `grade`.
-- Pentru o sortare stabilă, sortarea prin metoda bulelor funcționează bine — păstrează ordinea elementelor egale.

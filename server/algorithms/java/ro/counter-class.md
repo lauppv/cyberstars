@@ -70,10 +70,3 @@ Ieșire:
 ```
 
 Incrementările și decrementările se anulează reciproc — contorul revine la 0.
-
-### Indicii
-
-- Folosește un câmp privat pentru a stoca valoarea contorului și metode publice pentru a o modifica.
-- Un constructor poate inițializa valoarea la 0 (sau te poți baza pe valoarea implicită a Java pentru `int`).
-- Afișează doar atunci când întâlnești o comandă `get`.
-- Acesta este un exercițiu excelent pentru a înțelege încapsularea în Java!

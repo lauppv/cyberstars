@@ -62,10 +62,3 @@ Items: 0
 
 Removing exactly all of an item's stock brings it to 0 — it stays known but
 no longer counts toward `Items: N`.
-
-### Hints
-
-- Use `HashMap<String, Integer>` to store inventory.
-- `getOrDefault(item, 0)` is useful for items not yet in the map.
-- When removing, check quantity first before subtracting.
-- Count only items with quantity > 0 for the final `Items: N` line.

@@ -53,10 +53,3 @@ Ieșire:
 
 Valorile duplicate sunt păstrate — sortarea trebuie doar să plaseze valorile
 egale una lângă alta.
-
-### Indicii
-
-- Începe de la al doilea element (indicele 1). Compară-l cu elementele din stânga sa și deplasează elementele mai mari o poziție la dreapta.
-- Folosește o buclă `while` în interiorul buclei `for` pentru a găsi poziția corectă de inserție.
-- Bucla exterioară rulează de la indicele 1 la n-1; bucla interioară se deplasează spre stânga cât timp elementul curent este mai mic.
-- **Nu** folosi funcțiile încorporate `sort()` sau `sorted()` din Python — implementează singur algoritmul!

@@ -46,10 +46,3 @@ Ieșire: -5 -5 -1 0 3
 ```
 
 Numerele negative și duplicatele se sortează la fel ca orice alte numere întregi.
-
-### Indicii
-
-- Scrie o funcție `merge` care interclasează două subtablouri sortate într-unul singur.
-- Scrie o funcție `mergeSort` care împarte și interclasează recursiv.
-- Vei avea nevoie de un tablou temporar pentru interclasare — îl poți aloca cu `malloc` sau poți folosi un tablou global/local.
-- Caz de bază: un tablou de dimensiune 0 sau 1 este deja sortat.

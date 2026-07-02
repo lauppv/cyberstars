@@ -34,9 +34,3 @@ cel care apare **primul**.
 Intrare:  hi
 Ieșire: hi
 ```
-
-### Indicii
-
-- Folosește `split()` pentru a împărți propoziția într-o listă de cuvinte.
-- Funcția `len()` îți spune cât de lung este un șir.
-- Poți folosi `max()` cu un argument `key`: `max(words, key=len)`.

@@ -33,10 +33,3 @@ Output: 1
 ```
 
 The zeros in `100` don't add anything to the sum — only the `1` counts.
-
-### Hints
-
-- Convert the number to a string, then loop through each character.
-- Use `abs()` to handle negative numbers, or just skip non-digit characters.
-- `int(ch)` converts a digit character back to a number.
-- You can also solve this with `%` and `//` in a `while` loop — try both approaches!

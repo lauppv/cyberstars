@@ -28,9 +28,3 @@ Output: 1
 ```
 
 A single word is still one word.
-
-### Hints
-
-- The `split()` method breaks a string into a list of words.
-- Use `len()` to get the length of a list.
-- `split()` with no arguments handles multiple spaces correctly.

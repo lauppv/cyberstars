@@ -55,10 +55,3 @@ Ieșire:
 ```
 
 Cu `n = 1` există o singură linie de rezultat: numărul `1` însuși.
-
-### Indicii
-
-- Verifică divizibilitatea cu **ambele** 3 și 5 mai întâi — dacă verifici doar pentru 3 prima dată, nu vei ajunge niciodată la `FizzBuzz`.
-- Folosește operatorul modulo `%`: `n % 3 == 0` înseamnă că `n` este divizibil cu 3.
-- Un număr este divizibil atât cu 3 cât și cu 5 dacă și numai dacă este divizibil cu 15.
-- Afișează fiecare rezultat pe propria sa linie.

@@ -28,9 +28,3 @@ Ieșire: 1
 ```
 
 Un singur cuvânt tot un cuvânt rămâne.
-
-### Indicii
-
-- Metoda `split()` împarte un șir într-o listă de cuvinte.
-- Folosește `len()` pentru a obține lungimea unei liste.
-- `split()` fără argumente tratează corect spațiile multiple.

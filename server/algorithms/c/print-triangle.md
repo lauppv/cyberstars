@@ -42,9 +42,3 @@ Output:
 ```
 
 The smallest case: a single row with a single star.
-
-### Hints
-
-- Use a `for` loop from `1` to `N` for the rows.
-- Inside, use another `for` loop to print `i` stars on row `i`.
-- Use `printf("\n")` after each row to move to the next line.

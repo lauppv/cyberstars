@@ -39,9 +39,3 @@ character to ignore, the two halves just need to mirror each other.
 Input:  ab
 Output: False
 ```
-
-### Hints
-
-- A string is a palindrome if `s == s[::-1]`.
-- You can also compare characters from both ends using a loop.
-- Single characters and empty strings are palindromes.

@@ -56,10 +56,3 @@ Output:
 
 Negative numbers work the same way — the sum can be smaller than any single
 positive value, and the average still rounds to 2 decimal places.
-
-### Hints
-
-- Allocate with `int *arr = (int *)malloc(n * sizeof(int));`
-- Compute the sum in a loop, then divide by `n` (cast to `double`) for the average.
-- Use `printf("%.2f\n", avg)` for 2 decimal places.
-- Always `free(arr)` at the end.

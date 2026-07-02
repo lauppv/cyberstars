@@ -70,12 +70,3 @@ Output:
 
 The target can be the very first or very last element — the search still
 narrows down to it correctly.
-
-### Hints
-
-- Start with `low = 0` and `high = N - 1`.
-- Compute `mid = (low + high) / 2`.
-- If `arr[mid] == target`, you found it — print `mid`.
-- If `arr[mid] < target`, search the right half: `low = mid + 1`.
-- If `arr[mid] > target`, search the left half: `high = mid - 1`.
-- If `low > high`, the target is not in the array.

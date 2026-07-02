@@ -34,9 +34,3 @@ Output: Odd
 
 Negative numbers work the same way: `-3 % 2` is `-1` in most languages, but in
 Python it's `1` — either way, it's not `0`, so `-3` is odd.
-
-### Hints
-
-- The modulo operator `%` gives you the remainder of a division.
-- A number is even when `n % 2 == 0`.
-- Remember to convert the input to an integer with `int()`.

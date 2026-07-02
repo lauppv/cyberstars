@@ -57,11 +57,3 @@ Ieșire:
 ```
 
 Numerele întregi negative se interschimbă la fel ca orice altă valoare.
-
-### Indicii
-
-- Folosește generice: `class Pair<A, B>`.
-- `swap()` returnează `new Pair<B, A>(second, first)`.
-- Suprascrie `toString()` pentru a returna `(first, second)`.
-- Când creezi perechea, folosește `Pair<String, Integer>`.
-- Perechea interschimbată are tipul `Pair<Integer, String>`.

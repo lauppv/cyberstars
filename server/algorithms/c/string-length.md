@@ -31,9 +31,3 @@ Output: 5
 
 Digits are still just characters — the length count doesn't care what kind
 of characters they are.
-
-### Hints
-
-- Use `scanf("%s", str)` to read a word.
-- Loop through the characters: `while (str[i] != '\0')` and count.
-- Do NOT use `strlen` — the point is to implement it yourself.

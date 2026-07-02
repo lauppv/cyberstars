@@ -64,10 +64,3 @@ Fahrenheit: -40.0
 ```
 
 -40 is the one point where the Celsius and Fahrenheit scales agree.
-
-### Hints
-
-- Use `double` for the temperature value to handle decimals.
-- `String.format("%.1f", value)` formats a double to one decimal place.
-- Store the unit as a `char` or `String` field in your class.
-- Think about which method needs a conversion and which just returns the stored value.

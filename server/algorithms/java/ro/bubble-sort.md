@@ -55,11 +55,3 @@ Ieșire:
 
 Valorile duplicate sunt tratate la fel ca orice altă comparație — se
 interschimbă doar când sunt strict mai mari.
-
-### Indicii
-
-- Folosește două bucle imbricate: bucla exterioară rulează de N-1 ori, bucla interioară compară elementele adiacente.
-- Dacă `arr[j] > arr[j+1]`, interschimbă-le.
-- După fiecare parcurgere a buclei exterioare, cel mai mare element nesortat „urcă la suprafață” în poziția sa corectă.
-- Poți optimiza oprindu-te din timp dacă nu apare nicio interschimbare într-o parcurgere — tabloul este deja sortat.
-- Folosește `System.out.print` cu spații între elemente (fără spațiu la final).

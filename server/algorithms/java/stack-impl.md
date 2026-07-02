@@ -59,11 +59,3 @@ Empty
 ```
 
 Both `pop` and `peek` must print `Empty` when the stack has nothing in it.
-
-### Hints
-
-- Use `ArrayList<Integer>` to store elements.
-- Push adds to the end of the list, pop removes from the end.
-- `list.get(list.size() - 1)` gives you the top element.
-- `list.remove(list.size() - 1)` removes and returns the top.
-- Always check `isEmpty()` before pop/peek.

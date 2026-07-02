@@ -45,10 +45,3 @@ Input:
 Output:
 0 1
 ```
-
-### Hints
-
-- Start with two variables: `a = 0` and `b = 1`.
-- In each step, print `a`, then update: `a, b = b, a + b`.
-- Python supports tuple assignment, which makes the swap elegant.
-- Be careful with the edge case `n = 1` — just print `0`.

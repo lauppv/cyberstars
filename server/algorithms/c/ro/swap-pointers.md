@@ -30,9 +30,3 @@ Ieșire: 8 -3
 ```
 
 Numerele negative se interschimbă prin pointeri la fel ca orice altă valoare.
-
-### Indicii
-
-- Semnătura funcției tale `swap` ar trebui să fie `void swap(int *a, int *b)`.
-- Folosește o variabilă temporară în interiorul lui `swap` pentru a păstra `*a` înainte de a-l suprascrie.
-- Apeleaz-o cu `swap(&x, &y)` din `main`.

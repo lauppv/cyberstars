@@ -30,9 +30,3 @@ Output: 8 -3
 ```
 
 Negative numbers swap through the pointers the same as any other value.
-
-### Hints
-
-- Your `swap` function signature should be `void swap(int *a, int *b)`.
-- Use a temporary variable inside `swap` to hold `*a` before overwriting it.
-- Call it with `swap(&x, &y)` from `main`.

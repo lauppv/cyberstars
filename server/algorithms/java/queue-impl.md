@@ -61,11 +61,3 @@ Empty
 ```
 
 Both `dequeue` and `peek` must print `Empty` when the queue has nothing in it.
-
-### Hints
-
-- Use `ArrayList<Integer>` to store elements.
-- Enqueue adds to the end of the list with `add()`.
-- Dequeue removes from the front with `remove(0)`.
-- `list.get(0)` gives you the front element for peek.
-- Always check `isEmpty()` before dequeue/peek.

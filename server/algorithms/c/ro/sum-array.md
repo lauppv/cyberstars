@@ -42,9 +42,3 @@ Intrare:
 -1 -2 -3
 Ieșire: -6
 ```
-
-### Indicii
-
-- Inițializează o variabilă `sum` cu `0` înainte de buclă.
-- Folosește `scanf("%d", &x)` în interiorul unei bucle `for` pentru a citi fiecare număr.
-- Adaugă fiecare număr la `sum` pe măsură ce îl citești — nici măcar nu ai nevoie de un tablou!

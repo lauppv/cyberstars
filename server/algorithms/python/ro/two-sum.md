@@ -55,10 +55,3 @@ Ieșire:
 ```
 
 Numerele negative funcționează la fel: `-3 + 3 == 0`.
-
-### Indicii
-
-- **Forță brută**: încearcă fiecare pereche cu două bucle `for` imbricate — funcționează, dar este O(n^2).
-- **Optim**: folosește un `dict` pentru a asocia fiecare valoare cu indicele său. Pentru fiecare număr `x`, verifică dacă `target - x` este deja în dicționar.
-- Nu uita să afișezi primul indicele mai mic!
-- Aceasta este o problemă clasică ce arată puterea dicționarelor pentru căutări rapide.

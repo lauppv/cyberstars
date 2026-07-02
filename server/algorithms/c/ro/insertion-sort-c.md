@@ -44,10 +44,3 @@ Ieșire: 1 1 2 2
 ```
 
 Un tablou deja sortat (cu duplicate) nu necesită nicio deplasare.
-
-### Indicii
-
-- Începe de la al doilea element (indicele 1) și avansează înainte.
-- Pentru fiecare element, salvează-l într-o variabilă `key`, apoi deplasează toate elementele mai mari cu o poziție spre dreapta.
-- Inserează `key` în poziția în care s-a oprit deplasarea.
-- Porțiunea tabloului dinaintea indicelui curent este întotdeauna sortată.

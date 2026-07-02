@@ -55,11 +55,3 @@ Output:
 
 Duplicate values are handled the same way as any other comparison — only
 swap when strictly greater.
-
-### Hints
-
-- Use two nested loops: the outer loop runs N-1 times, the inner loop compares adjacent elements.
-- If `arr[j] > arr[j+1]`, swap them.
-- After each pass of the outer loop, the largest unsorted element "bubbles up" to its correct position.
-- You can optimize by stopping early if no swaps occur in a pass — the array is already sorted.
-- Use `System.out.print` with spaces between elements (no trailing space).

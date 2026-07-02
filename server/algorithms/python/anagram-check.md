@@ -77,10 +77,3 @@ False
 
 Different lengths can never be anagrams — that is a fast way to rule out a
 non-match before comparing letters.
-
-### Hints
-
-- Convert both strings to lowercase first with `.lower()`.
-- One approach: sort both strings and compare — `sorted(a) == sorted(b)`.
-- Another approach: count the frequency of each letter using a `dict` or `collections.Counter`.
-- Anagrams must have the same length, so you can check that first as an early exit.

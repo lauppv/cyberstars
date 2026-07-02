@@ -40,9 +40,3 @@ LCM: 9
 ```
 
 When both numbers are equal, the GCD and LCM are both just that number.
-
-### Hints
-
-- Implement Euclid's algorithm: while `b != 0`, set `temp = b`, `b = a % b`, `a = temp`. The GCD is `a`.
-- Compute LCM using the formula `A * B / GCD` — divide before multiplying to avoid overflow: `A / GCD * B`.
-- Save the original values of A and B before running the GCD loop, since the loop modifies them.

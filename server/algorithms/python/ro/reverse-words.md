@@ -30,9 +30,3 @@ Ieșire: hello
 ```
 
 Un singur cuvânt nu are ce să fie reordonat, deci rămâne la fel.
-
-### Indicii
-
-- Folosește `split()` pentru a obține o listă de cuvinte.
-- Poți inversa o listă cu `[::-1]` sau cu funcția `reversed()`.
-- Folosește `" ".join(...)` pentru a recombina cuvintele într-un singur șir.

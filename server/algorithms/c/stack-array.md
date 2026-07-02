@@ -57,11 +57,3 @@ Empty
 ```
 
 Once the stack is fully drained, further `pop` calls keep printing `Empty`.
-
-### Hints
-
-- Use an array of fixed size (e.g., 100) and a `top` variable initialized to `-1`.
-- `push`: increment `top`, then set `arr[top] = X`.
-- `pop`: if `top >= 0`, print `arr[top]` and decrement `top`; otherwise print `Empty`.
-- `peek`: if `top >= 0`, print `arr[top]`; otherwise print `Empty`.
-- Use `strcmp` to compare command strings — remember to `#include <string.h>`.

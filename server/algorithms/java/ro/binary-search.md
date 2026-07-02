@@ -70,12 +70,3 @@ Ieșire:
 
 Ținta poate fi chiar primul sau ultimul element — căutarea tot se restrânge
 corect până la el.
-
-### Indicii
-
-- Pornește cu `low = 0` și `high = N - 1`.
-- Calculează `mid = (low + high) / 2`.
-- Dacă `arr[mid] == target`, ai găsit-o — afișează `mid`.
-- Dacă `arr[mid] < target`, caută în jumătatea dreaptă: `low = mid + 1`.
-- Dacă `arr[mid] > target`, caută în jumătatea stângă: `high = mid - 1`.
-- Dacă `low > high`, ținta nu se află în tablou.

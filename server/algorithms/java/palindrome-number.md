@@ -55,11 +55,3 @@ Input:
 Output:
 true
 ```
-
-### Hints
-
-- Negative numbers always return `false`.
-- One approach: reverse the number digit by digit and compare with the original.
-- To get the last digit: `num % 10`. To remove the last digit: `num / 10`.
-- Build the reversed number by multiplying by 10 and adding each digit.
-- Another approach: convert to a string and check if it equals its reverse.
