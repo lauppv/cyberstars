@@ -3,7 +3,7 @@ funcționează doar pe linii care sunt una lângă alta. De aceea, aproape înto
 mai întâi **sort** și apoi se trimite prin pipe spre `uniq`.
 
 ```bash
-sort access.log | uniq
+sort acces.log | uniq
 ```
 
 Această comandă elimină toate duplicatele și afișează fiecare linie unică o singură dată.
@@ -11,7 +11,7 @@ Această comandă elimină toate duplicatele și afișează fiecare linie unică
 ### Numărarea duplicatelor cu `-c`
 
 ```bash
-sort access.log | uniq -c
+sort acces.log | uniq -c
 ```
 
 ```text

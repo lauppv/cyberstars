@@ -3,7 +3,7 @@ Opusul lui `head` este **tail**. Acesta afișează **ultimele linii** ale unui f
 În mod implicit, `tail` arată **ultimele 10 linii**:
 
 ```bash
-tail bigfile.log
+tail fisier_mare.log
 ```
 
 ### Alegerea câte linii: `-n`
@@ -11,7 +11,7 @@ tail bigfile.log
 Exact ca la `head`, opțiunea `-n` stabilește numărul:
 
 ```bash
-tail -n 3 bigfile.log
+tail -n 3 fisier_mare.log
 ```
 
 ```text
@@ -27,7 +27,7 @@ recente_ evenimente sunt mereu la **sfârșit**. Când tocmai s-a întâmplat ce
 răspunsul este aproape întotdeauna în ultimele câteva linii:
 
 ```bash
-tail -n 5 error.log
+tail -n 5 eroare.log
 ```
 
 `head` îți arată cum _a început_ un fișier; `tail` îți arată _cele mai recente_

@@ -5,7 +5,7 @@ Comanda **mkdir** (**make directory**) creează un folder. Dă-i numele pe care 
 dorești:
 
 ```bash
-mkdir reports
+mkdir rapoarte
 ```
 
 Nimic nu este afișat când reușește — Linux tace când totul merge bine. Rulează `ls`
@@ -16,7 +16,7 @@ ls
 ```
 
 ```text
-reports
+rapoarte
 ```
 
 ### Crearea mai multor foldere simultan
@@ -24,7 +24,7 @@ reports
 `mkdir` acceptă mai multe nume:
 
 ```bash
-mkdir logs data backups
+mkdir jurnale date backupuri
 ```
 
 Astfel creezi trei foldere dintr-o singură comandă.
@@ -35,21 +35,21 @@ Ce faci dacă vrei un folder _în interiorul_ unui alt folder care nu există î
 Asta eșuează:
 
 ```bash
-mkdir projects/website
+mkdir proiecte/website
 ```
 
 ```text
-mkdir: cannot create directory 'projects/website': No such file or directory
+mkdir: cannot create directory 'proiecte/website': No such file or directory
 ```
 
 Opțiunea `-p` (**parents**) îi spune lui `mkdir` să creeze fiecare folder lipsă de pe
 parcurs:
 
 ```bash
-mkdir -p projects/website
+mkdir -p proiecte/website
 ```
 
-Acum există atât `projects`, cât și `projects/website`.
+Acum există atât `proiecte`, cât și `proiecte/website`.
 
 ---
 
@@ -57,9 +57,9 @@ Acum există atât `projects`, cât și `projects/website`.
 
 Stația are nevoie de o nouă structură de directoare pentru misiunea care urmează. O vei configura de la zero.
 
-1. Creează un folder numit `mission`.
-2. Folosind o singură comandă `mkdir -p`, creează calea imbricată `mission/logs/day1`.
+1. Creează un folder numit `misiune`.
+2. Folosind o singură comandă `mkdir -p`, creează calea imbricată `misiune/jurnale/ziua1`.
 
 **Rezultat așteptat**
 
-Directorul `mission/logs/day1` există. Poți verifica cu `ls mission/logs` pentru a vedea `day1` înăuntru.
+Directorul `misiune/jurnale/ziua1` există. Poți verifica cu `ls misiune/jurnale` pentru a vedea `ziua1` înăuntru.

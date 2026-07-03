@@ -4,7 +4,7 @@ faci dacă vrei să **derulezi** printr-un fișier lung în ritmul tău, în sus
 Aceasta este treaba lui **less**.
 
 ```bash
-less bigfile.log
+less fisier_mare.log
 ```
 
 `less` deschide fișierul într-un **vizualizator**. Nu aruncă totul — afișează un

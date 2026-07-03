@@ -1,7 +1,7 @@
 ```bash
-echo Mission control online
+echo Centru de comanda online
 ```
 
 ```text
-Mission control online
+Centru de comanda online
 ```

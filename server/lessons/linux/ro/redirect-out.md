@@ -5,17 +5,17 @@ salvezi acel rezultat? Operatorul **`>`** trimite (redirecționează) ieșirea u
 Tiparul este: `COMANDĂ > FIȘIER`.
 
 ```bash
-echo "Reactor online" > status.txt
+echo "Reactor online" > stare.txt
 ```
 
 ```text
 
 ```
 
-Nu a apărut nimic pe ecran — textul a ajuns în `status.txt`. Poți verifica cu `cat`:
+Nu a apărut nimic pe ecran — textul a ajuns în `stare.txt`. Poți verifica cu `cat`:
 
 ```bash
-cat status.txt
+cat stare.txt
 ```
 
 ```text
@@ -28,8 +28,8 @@ Dacă fișierul există deja, `>` îi **înlocuiește** complet conținutul. Gâ
 ca la „creează sau suprascrie".
 
 ```bash
-echo "Reactor offline" > status.txt
-cat status.txt
+echo "Reactor offline" > stare.txt
+cat stare.txt
 ```
 
 ```text

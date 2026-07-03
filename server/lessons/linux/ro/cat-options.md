@@ -5,7 +5,7 @@
 Opțiunea `-n` pune un **număr de linie** în fața fiecărei linii:
 
 ```bash
-cat -n crew.txt
+cat -n echipaj.txt
 ```
 
 ```text
@@ -23,14 +23,14 @@ numeri cât de jos se află ceva.
 superputere — **concatenarea** lor:
 
 ```bash
-cat header.txt body.txt footer.txt
+cat antet.txt corp.txt subsol.txt
 ```
 
 Cele trei fișiere sunt afișate unul după altul, de sus în jos, ca și cum ar fi un
 singur document. Combină asta cu numerotarea:
 
 ```bash
-cat -n part1.txt part2.txt
+cat -n parte1.txt parte2.txt
 ```
 
 Numerotarea curge continuu prin ambele fișiere.

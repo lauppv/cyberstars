@@ -1,9 +1,9 @@
 ```bash
-mkdir mission
-mkdir -p mission/logs/day1
-ls mission/logs
+mkdir misiune
+mkdir -p misiune/jurnale/ziua1
+ls misiune/jurnale
 ```
 
 ```text
-day1
+ziua1
 ```

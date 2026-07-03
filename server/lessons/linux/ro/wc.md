@@ -4,11 +4,11 @@ cuvinte? Comanda **wc** (**word count**) îți spune.
 Rulează un `wc` simplu pe un fișier:
 
 ```bash
-wc crew.txt
+wc echipaj.txt
 ```
 
 ```text
- 3  3 15 crew.txt
+ 3  3 15 echipaj.txt
 ```
 
 Cele trei numere sunt, în ordine:
@@ -28,11 +28,11 @@ Opțiunile reduc rezultatul la un singur număr:
 | `wc -c` | doar **caracterele** |
 
 ```bash
-wc -l crew.txt
+wc -l echipaj.txt
 ```
 
 ```text
-3 crew.txt
+3 echipaj.txt
 ```
 
 ### De ce este util

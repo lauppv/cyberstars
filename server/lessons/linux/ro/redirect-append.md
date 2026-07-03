@@ -4,14 +4,14 @@ fără să distrugi conținutul existent, folosește `>>` (săgeată dublă).
 Tiparul este: `COMANDĂ >> FIȘIER`.
 
 ```bash
-echo "Entry 1: docking complete" >> ship.log
-echo "Entry 2: cargo loaded" >> ship.log
-cat ship.log
+echo "Intrarea 1: andocare finalizata" >> nava.log
+echo "Intrarea 2: marfa incarcata" >> nava.log
+cat nava.log
 ```
 
 ```text
-Entry 1: docking complete
-Entry 2: cargo loaded
+Intrarea 1: andocare finalizata
+Intrarea 2: marfa incarcata
 ```
 
 Ambele linii s-au păstrat. Fiecare `>>` adaugă la final.
@@ -35,15 +35,15 @@ ca să acumulezi date în timp — ca un jurnal de stație care crește cu fieca
 
 Ofițerul de gardă ieșit din tură a notat secvența de lansare în `misiune.log`. Tura ta începe acum și trebuie să adaugi două intrări noi de stare, fără să ștergi înregistrarea existentă.
 
-1. Adaugă `status: scuturi nominale` la `misiune.log` folosind `>>`.
-2. Adaugă `status: echipaj pregatit` la `misiune.log` folosind `>>`.
+1. Adaugă `stare: scuturi nominale` la `misiune.log` folosind `>>`.
+2. Adaugă `stare: echipaj pregatit` la `misiune.log` folosind `>>`.
 
 Când termini, `cat misiune.log` ar trebui să afișeze toate cele trei linii — intrarea inițială plus cele două actualizări.
 
 **Rezultat așteptat**
 
 ```text
-status: secventa de lansare initiata
-status: scuturi nominale
-status: echipaj pregatit
+stare: secventa de lansare initiata
+stare: scuturi nominale
+stare: echipaj pregatit
 ```

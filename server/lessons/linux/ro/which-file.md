@@ -31,11 +31,11 @@ Numele unui fișier nu îți spune întotdeauna ce se află în el. Comanda **fi
 **inspectează conținutul** și raportează tipul:
 
 ```bash
-file notes.txt
+file notite.txt
 ```
 
 ```text
-notes.txt: ASCII text
+notite.txt: ASCII text
 ```
 
 ```bash

@@ -2,7 +2,7 @@
   "cwd": "/home/student",
   "files": [
     {
-      "path": "deploy.sh",
+      "path": "lansare.sh",
       "content": "#!/bin/bash\necho 'Se instaleaza actualizarea de firmware a statiei...'\necho 'Gata.'\n"
     }
   ],

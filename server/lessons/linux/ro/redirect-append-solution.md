@@ -1,11 +1,11 @@
 ```bash
-echo "status: scuturi nominale" >> misiune.log
-echo "status: echipaj pregatit" >> misiune.log
+echo "stare: scuturi nominale" >> misiune.log
+echo "stare: echipaj pregatit" >> misiune.log
 cat misiune.log
 ```
 
 ```text
-status: secventa de lansare initiata
-status: scuturi nominale
-status: echipaj pregatit
+stare: secventa de lansare initiata
+stare: scuturi nominale
+stare: echipaj pregatit
 ```
