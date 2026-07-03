@@ -94,7 +94,7 @@ Asta este util când trebuie să accesezi metode specifice copilului. Dar în ge
 
 Iată de ce contează asta în cod real. Imaginează-ți o metodă care primește orice `Criminal`
 
-```java
+```text
 public class Main {
     static void prezinta(Criminal c) {
         c.vorbeste();

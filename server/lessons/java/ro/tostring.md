@@ -74,7 +74,7 @@ Acel `@Override` de deasupra metodei este o **adnotare**. Îi spune lui Java "î
 - Dacă scrii din greșeală metoda greșit (cum ar fi `tostring()` cu S mic), Java îți va da o eroare în loc să creeze pe tăcute o metodă nouă care nu face nimic
 - Face codul tău mai clar pentru oricine îl citește
 
-```java
+```text
 public class Main {
     @Override
     public String toString() {   // Java verifica: are parintele toString()? Da. Bun.

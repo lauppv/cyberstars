@@ -136,7 +136,7 @@ Here's the rule:
 
 Static methods can't access instance fields (because there's no object). Instance methods can access everything
 
-```java
+```text
 class Example {
     int x = 10;          // instance field
 

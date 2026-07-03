@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "senzori.dat",
+      "content": "alpha temperatura 72\nbeta presiune 101\ngamma radiatie 15\ndelta temperatura 68\nepsilon presiune 99\n"
+    }
+  ],
+  "dirs": []
+}

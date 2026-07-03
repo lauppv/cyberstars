@@ -1,0 +1,15 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "rezumat.log", "content": "Toate verificarile au trecut.\nGata de lansare.\n" },
+    {
+      "path": "evenimente.log",
+      "content": "eveniment 1: pornire alimentare\neveniment 2: usi blocate\neveniment 3: motoare incalzite\neveniment 4: curs setat\neveniment 5: decolare\neveniment 6: orbita atinsa\n"
+    },
+    {
+      "path": "erori.log",
+      "content": "eroare: senzor 3 offline\neroare: agent de racire scazut\neroare: intarziere comunicatii\n"
+    }
+  ],
+  "dirs": []
+}

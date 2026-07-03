@@ -6,7 +6,7 @@ Let's build something fun — a **battle simulator**! Think of it like a turn-ba
 
 Every character has a **name**, **health**, and **attackPower**. They can also **attack** another character
 
-```java
+```text
 class Character {
     String name;
     int health;
@@ -37,7 +37,7 @@ The `attack` method reduces the target's health by the attacker's power. Simple 
 
 A Warrior has bonus **armor** that reduces incoming damage. We override the parent's fields and add damage reduction logic. When a Warrior gets attacked, the armor absorbs some damage
 
-```java
+```text
 class Warrior extends Character {
     int armor;
 
@@ -62,7 +62,7 @@ The Warrior's attack method overrides the parent's to print a more specific mess
 
 A Mage has **spellPower** — their magic does extra damage on top of their base attack
 
-```java
+```text
 class Mage extends Character {
     int spellPower;
 

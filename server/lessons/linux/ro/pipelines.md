@@ -3,7 +3,7 @@ Un singur pipe este util. Un **pipeline** de trei sau mai multe comenzi este în
 rezultatul mai departe.
 
 ```bash
-cat access.log | grep "denied" | wc -l
+cat acces.log | grep "denied" | wc -l
 ```
 
 ```text
@@ -16,7 +16,7 @@ numără.
 ### Sortare într-un pipeline
 
 ```bash
-cat names.txt | sort | head -3
+cat nume.txt | sort | head -3
 ```
 
 Acest pipeline afișează primele 3 nume în ordine alfabetică — `sort` le reordonează,
@@ -47,7 +47,7 @@ Dacă ceva nu merge, scoate ultimul pipe și inspectează rezultatul intermediar
 
 Echipajul de pe punte are nevoie de un briefing rapid — doar cele mai urgente două alerte din jurnalul de evenimente al zilei, sortate alfabetic, ca să le poată confrunta cu lista de tură.
 
-Construiește un pipeline care citește `events.log`, filtrează liniile care conțin `alert`, le sortează alfabetic și afișează doar **primele 2** rezultate. Pipeline-ul tău trebuie să înlănțuiască cel puțin 3 pipe-uri.
+Construiește un pipeline care citește `evenimente.log`, filtrează liniile care conțin `alert`, le sortează alfabetic și afișează doar **primele 2** rezultate. Pipeline-ul tău trebuie să înlănțuiască cel puțin 3 pipe-uri.
 
 **Rezultat așteptat**
 

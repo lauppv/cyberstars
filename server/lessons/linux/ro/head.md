@@ -41,12 +41,12 @@ La fel ca `cat`, `head` doar citește — nu schimbă nimic.
 
 ## Misiune: Verifică secvența de pornire
 
-Fișierul `system.log` al stației înregistrează totul de la ultima repornire.
+Fișierul `sistem.log` al stației înregistrează totul de la ultima repornire.
 Departamentul tehnic vrea să verifice secvența de pornire uitându-se doar la chiar
 începutul log-ului.
 
 Folosește `head` cu opțiunea `-n` pentru a afișa doar **primele 5 linii** din
-`system.log`.
+`sistem.log`.
 
 **Rezultat așteptat**
 

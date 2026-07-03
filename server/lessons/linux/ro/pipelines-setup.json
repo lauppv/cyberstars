@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "evenimente.log",
+      "content": "info: lumini aprinse\nalert: incendiu puntea 2\ninfo: inceput de tura\nalert: bresa sectorul 8\nalert: intrus in hangarul 5\ninfo: andocare\nalert: supratensiune motor 1\ninfo: verificare comunicatii\n"
+    }
+  ],
+  "dirs": []
+}

@@ -97,7 +97,7 @@ Te poți gândi la un apel de metodă precum **aduna(10, 20)** ca fiind **înloc
 
 O greșeală frecventă: să încerci să faci **return** într-o metodă **void** sau să uiți să faci **return** într-o metodă care nu este void
 
-```java
+```text
 public class Main {
     // eroare: o metoda void nu poate returna o valoare
     public static void faceTreaba() {

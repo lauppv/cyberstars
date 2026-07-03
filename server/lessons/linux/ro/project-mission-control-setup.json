@@ -1,0 +1,37 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "intrari/reactor.log",
+      "content": "[OK] Temperatura reactorului 350K\n[WARN] Presiunea agentului de racire scade\n[CRITICAL] Reactor supraincalzit - actiune imediata necesara\n[OK] Reactor stabilizat dupa interventie manuala\n"
+    },
+    {
+      "path": "intrari/navigatie.log",
+      "content": "[OK] Directia de curs 270.5\n[OK] Viteza 12000 km/s\n[WARN] Camp de asteroizi in 48h\n[CRITICAL] Dezaliniere detectata in matricea de navigatie\n"
+    },
+    {
+      "path": "intrari/comunicatii.log",
+      "content": "[OK] Puterea semnalului este nominala\n[OK] Reteaua de relee este conectata\n[WARN] Bruiaj minor pe canalul 4\n"
+    },
+    {
+      "path": "intrari/securitate.conf",
+      "content": "firewall=enabled\nauth_method=biometric\naccess_level=restricted\nencryption=AES256\n"
+    },
+    {
+      "path": "intrari/retea.conf",
+      "content": "gateway=10.0.0.1\ndns=10.0.0.2\nbandwidth=1000Mbps\nprotocol=TCP\n"
+    },
+    {
+      "path": "intrari/suport-vital.conf",
+      "content": "oxygen_target=21%\ntemperature=22C\nhumidity=45%\nco2_scrubber=active\n"
+    },
+    {
+      "path": "intrari/notite-vechi.txt",
+      "content": "Nu uita sa verifici garniturile sasului de aer joi\nTODO: Actualizeaza manifestul echipajului\n"
+    },
+    { "path": "jurnale/.gitkeep", "content": "" },
+    { "path": "config/.gitkeep", "content": "" },
+    { "path": "rapoarte/.gitkeep", "content": "" }
+  ],
+  "dirs": ["intrari", "jurnale", "config", "rapoarte"]
+}

@@ -9,7 +9,7 @@ Deci ce este o **clasă**? Gândește-te la ea ca la un **plan de construcție**
 - O **clasă** este planul
 - Un **obiect** este un lucru concret construit din acel plan (numit și **instanță**)
 
-```java
+```text
 class Masina {
     String culoare;
     int viteza;

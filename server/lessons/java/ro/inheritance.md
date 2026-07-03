@@ -1,6 +1,6 @@
 Uneori vrei o clasă care e practic o altă clasă, dar cu ceva în plus. În Java, o clasă poate **moșteni** de la alta folosind cuvântul cheie **extends**
 
-```java
+```text
 class Criminal {
     String nume;
 
@@ -36,7 +36,7 @@ Cuvântul cheie **super** este modul în care un copil vorbește cu părintele l
 
 **Trebuie** să apelezi `super(...)` în constructorul copilului dacă părintele nu are un constructor fără argumente. Java nu te lasă să-l sari — părintele trebuie configurat înainte ca copilul să-și poată adăuga propriile lucruri
 
-```java
+```text
 class Criminal {
     String nume;
     int respect;
@@ -58,7 +58,7 @@ class Sef extends Criminal {
 
 O clasă copil poate de asemenea **adăuga** câmpuri și metode noi pe care părintele nu le are
 
-```java
+```text
 class Criminal {
     String nume;
 

@@ -37,10 +37,10 @@ La fel ca `ls` și `pwd`, `cat` doar citește — nu modifică niciodată fișie
 
 ## Misiune: Citește briefing-ul
 
-Un nou briefing de misiune a sosit și este stocat în `briefing.txt` în directorul tău
+Un nou briefing de misiune a sosit și este stocat în `instructaj.txt` în directorul tău
 home. Citește-l pentru a afla care este următorul obiectiv al echipajului.
 
-Folosește `cat` pentru a afișa conținutul fișierului `briefing.txt`.
+Folosește `cat` pentru a afișa conținutul fișierului `instructaj.txt`.
 
 **Rezultat așteptat**
 

@@ -31,7 +31,7 @@ int main(void) {
 
 Și iată cum creăm un student dinamic
 
-```c
+```text
 Student *creeaza_student(const char *nume, int nota) {
     Student *s = malloc(sizeof(Student));
     strncpy(s->nume, nume, sizeof(s->nume) - 1);
@@ -47,7 +47,7 @@ Funcția alocă memorie pe heap, completează câmpurile și întoarce un pointe
 
 Ca să afișăm toți studenții
 
-```c
+```text
 void afiseaza_toti(Student *studenti[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%s: %d\n", studenti[i]->nume, studenti[i]->nota);
@@ -61,7 +61,7 @@ Observă **studenti[i]->nume** — fiecare element al array-ului este un **point
 
 Ca să găsim cel mai bun student
 
-```c
+```text
 Student *gaseste_cel_mai_bun(Student *studenti[], int n) {
     Student *cel_mai_bun = studenti[0];
     for (int i = 1; i < n; i++) {

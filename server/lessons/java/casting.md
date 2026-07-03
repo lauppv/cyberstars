@@ -52,7 +52,7 @@ Converting a double to int **truncates** (chops off the decimal), it doesn't rou
 
 Casting also works with **objects** in inheritance hierarchies
 
-```java
+```text
 class Animal {
     void speak() { System.out.println("..."); }
 }

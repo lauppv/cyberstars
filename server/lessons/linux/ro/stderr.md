@@ -46,10 +46,10 @@ fluxul 2 acolo unde merge fluxul 1".
 
 ## Misiune: Investigația fișierului fantomă
 
-Senzorii stației au semnalat o referință la un fișier numit `ghost.txt` care s-ar putea să nu mai existe. Trebuie să rulezi `ls report.txt ghost.txt` ca să verifici ambele fișiere, dar mesajul de eroare îți aglomerează consola principală.
+Senzorii stației au semnalat o referință la un fișier numit `ghost.txt` care s-ar putea să nu mai existe. Trebuie să rulezi `ls raport.txt ghost.txt` ca să verifici ambele fișiere, dar mesajul de eroare îți aglomerează consola principală.
 
-Redirecționează **doar eroarea** într-un fișier numit `errors.log` folosind `2>`, ca rezultatul normal să rămână pe ecran și eroarea să fie captată separat.
+Redirecționează **doar eroarea** într-un fișier numit `erori.log` folosind `2>`, ca rezultatul normal să rămână pe ecran și eroarea să fie captată separat.
 
 **Rezultat așteptat**
 
-Terminalul afișează `report.txt` pe ecran, iar `cat errors.log` dezvăluie eroarea „No such file" pentru `ghost.txt`.
+Terminalul afișează `raport.txt` pe ecran, iar `cat erori.log` dezvăluie eroarea „No such file" pentru `ghost.txt`.

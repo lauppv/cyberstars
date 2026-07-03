@@ -34,7 +34,7 @@ There's some boilerplate here. Let's walk through it briefly — for now, just *
 
 The line that does the actual work is
 
-```c
+```text
 printf("hello, world\n");
 ```
 

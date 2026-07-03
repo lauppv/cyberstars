@@ -1,0 +1,12 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "diagnostics.sh",
+      "content": "#!/bin/bash\necho 'Se ruleaza diagnosticarea...'\n"
+    },
+    { "path": "notite.txt", "content": "Nu uita sa verifici garniturile sasului de aer.\n" },
+    { "path": "manifest.dat", "content": "item1 100\nitem2 200\n" }
+  ],
+  "dirs": []
+}

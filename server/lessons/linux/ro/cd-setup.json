@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "misiune.txt", "content": "Misiune: exploreaza sectorul 7.\n" },
+    { "path": "unelte/scripturi/deploy.sh", "content": "echo se instaleaza\n" },
+    { "path": "unelte/citeste-ma.txt", "content": "Unelte pentru misiune.\n" }
+  ],
+  "dirs": ["rapoarte", "unelte", "unelte/scripturi"]
+}

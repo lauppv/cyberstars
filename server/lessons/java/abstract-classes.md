@@ -2,7 +2,7 @@ Sometimes you want a class that's a **blueprint** — it defines what child clas
 
 Think of it this way: "Vehicle" is a concept. You can't just build a generic "vehicle" — you build a sports car, a motorcycle, a truck. But they all share the idea of being a vehicle. In Java, you'd make Vehicle **abstract**
 
-```java
+```text
 abstract class Vehicle {
     String name;
 
@@ -89,7 +89,7 @@ Angel: 200 km/h
 
 An abstract class can have **both** abstract methods (that children must implement) and **regular** methods (that children inherit for free)
 
-```java
+```text
 abstract class Character {
     String name;
     int health;

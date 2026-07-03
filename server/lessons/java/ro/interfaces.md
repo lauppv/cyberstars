@@ -1,6 +1,6 @@
 O **interfață** este ca un contract. Spune „orice clasă care mă implementează TREBUIE să aibă aceste metode." Seamănă cu o clasă abstractă, dar e și mai strictă — o interfață nu poate avea câmpuri obișnuite sau constructori (cu câteva excepții pe care le sărim deocamdată)
 
-```java
+```text
 interface Afisabil {
     void afiseazaInfo();
 }
@@ -8,7 +8,7 @@ interface Afisabil {
 
 Asta e tot. Niciun corp, niciun câmp, doar semnături de metode. Orice clasă care spune `implements Afisabil` TREBUIE să furnizeze o metodă `afiseazaInfo()`
 
-```java
+```text
 class Carte implements Afisabil {
     String titlu;
     String autor;
@@ -31,7 +31,7 @@ Observă că metoda din clasă trebuie să fie **public**. Metodele de interfaț
 
 Marea diferență dintre interfețe și clase abstracte: o clasă poate implementa **mai multe** interfețe, dar poate extinde doar **O SINGURĂ** clasă
 
-```java
+```text
 interface Sofer {
     void conduce();
 }

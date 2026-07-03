@@ -33,17 +33,17 @@ ca să acumulezi date în timp — ca un jurnal de stație care crește cu fieca
 
 ## Misiune: Actualizarea jurnalului de tură
 
-Ofițerul de gardă ieșit din tură a notat secvența de lansare în `mission.log`. Tura ta începe acum și trebuie să adaugi două intrări noi de stare, fără să ștergi înregistrarea existentă.
+Ofițerul de gardă ieșit din tură a notat secvența de lansare în `misiune.log`. Tura ta începe acum și trebuie să adaugi două intrări noi de stare, fără să ștergi înregistrarea existentă.
 
-1. Adaugă `status: shields nominal` la `mission.log` folosind `>>`.
-2. Adaugă `status: crew ready` la `mission.log` folosind `>>`.
+1. Adaugă `status: scuturi nominale` la `misiune.log` folosind `>>`.
+2. Adaugă `status: echipaj pregatit` la `misiune.log` folosind `>>`.
 
-Când termini, `cat mission.log` ar trebui să afișeze toate cele trei linii — intrarea inițială plus cele două actualizări.
+Când termini, `cat misiune.log` ar trebui să afișeze toate cele trei linii — intrarea inițială plus cele două actualizări.
 
 **Rezultat așteptat**
 
 ```text
-status: launch sequence initiated
-status: shields nominal
-status: crew ready
+status: secventa de lansare initiata
+status: scuturi nominale
+status: echipaj pregatit
 ```

@@ -6,7 +6,7 @@ doar de liniile care menționează un anumit cuvânt. Comanda **grep** ți le g�
 Tiparul este: `grep CUVÂNT FIȘIER`.
 
 ```bash
-grep error system.log
+grep error sistem.log
 ```
 
 ```text
@@ -21,7 +21,7 @@ Fiecare linie care conține `error` este afișată; toate celelalte sunt ascunse
 Dacă textul căutat conține spații, pune-l între ghilimele:
 
 ```bash
-grep "low coolant" system.log
+grep "low coolant" sistem.log
 ```
 
 ### Când nu se potrivește nimic
@@ -37,10 +37,10 @@ este menționat acest cuvânt?” — `grep` îți răspunde instant.
 ## Misiune: Scanare avertismente
 
 Comandantul stației vrea un briefing rapid cu toate avertismentele înregistrate în
-această tură. Jurnalul de evenimente se află în `system.log`.
+această tură. Jurnalul de evenimente se află în `sistem.log`.
 
 Folosește `grep` pentru a afișa doar liniile care conțin cuvântul `warning`.
 
 **Rezultat așteptat**
 
-În terminal apar doar liniile cu avertismente din `system.log`.
+În terminal apar doar liniile cu avertismente din `sistem.log`.

@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "echipaj.txt",
+      "content": "Comandant Voss\nInginer Tanaka\nPilot Okafor\nMedic Chen\nOm de stiinta Ruiz\nNavigator Park\n"
+    }
+  ],
+  "dirs": []
+}

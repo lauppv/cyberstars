@@ -74,7 +74,7 @@ That `@Override` thing above the method is an **annotation**. It tells Java "I'm
 - If you accidentally misspell the method (like `tostring()` with a lowercase S), Java will give you an error instead of silently creating a new method that does nothing
 - It makes your code clearer to anyone reading it
 
-```java
+```text
 public class Main {
     @Override
     public String toString() {   // Java checks: does the parent have toString()? Yes. Good.

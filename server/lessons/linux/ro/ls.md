@@ -11,24 +11,24 @@ ls
 Dacă folderul conține câteva elemente, ar putea afișa:
 
 ```text
-mission.txt  reports  tools
+misiune.txt  rapoarte  unelte
 ```
 
-Fiecare nume este fie un **fișier** (precum `mission.txt`), fie un **folder /
-director** (precum `reports` și `tools`). Cu simpla comandă `ls`, ele pot părea
+Fiecare nume este fie un **fișier** (precum `misiune.txt`), fie un **folder /
+director** (precum `rapoarte` și `unelte`). Cu simpla comandă `ls`, ele pot părea
 identice — într-o lecție viitoare vei învăța cum să le deosebești dintr-o privire.
 
 Poți lista și conținutul unui folder **fără a intra în el**, dându-i numele lui `ls`:
 
 ```bash
-ls reports
+ls rapoarte
 ```
 
 ```text
-january.log  february.log
+ianuarie.log  februarie.log
 ```
 
-Astfel arunci o privire înăuntrul lui `reports` în timp ce rămâi pe loc.
+Astfel arunci o privire înăuntrul lui `rapoarte` în timp ce rămâi pe loc.
 
 La fel ca `pwd`, `ls` doar _privește_ — nu modifică și nu șterge nimic. Îl poți
 rula oricând te simți pierdut.

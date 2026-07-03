@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "date_brute.csv",
+      "content": "Voss,scanare,3\nTanaka,reparatie,1\nChen,scanare,2\nVoss,patrula,1\nTanaka,reparatie,2\nVoss,scanare,1\nChen,patrula,4\n"
+    }
+  ],
+  "dirs": []
+}

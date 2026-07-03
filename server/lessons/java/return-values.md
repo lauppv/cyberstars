@@ -97,7 +97,7 @@ You can think of a method call like **add(10, 20)** as being **replaced** by its
 
 A common mistake: trying to **return** inside a **void** method, or forgetting to **return** in a non-void method
 
-```java
+```text
 public class Main {
     // error: void method can't return a value
     public static void doStuff() {

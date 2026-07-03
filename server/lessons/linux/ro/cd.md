@@ -9,20 +9,20 @@ _directorul tău curent de lucru_ se schimbă — iar `pwd` o va confirma.
 Dă-i lui `cd` numele unui folder care există în locul unde te afli:
 
 ```bash
-cd reports
+cd rapoarte
 pwd
 ```
 
 ```text
-/home/student/reports
+/home/student/rapoarte
 ```
 
-Te-ai deplasat **în jos**, în `reports`.
+Te-ai deplasat **în jos**, în `rapoarte`.
 
 ### Întoarcerea în sus: `..`
 
 Numele special `..` înseamnă **directorul părinte** — un nivel mai sus. Pentru a
-ieși din `reports` și a te întoarce în `/home/student`:
+ieși din `rapoarte` și a te întoarce în `/home/student`:
 
 ```bash
 cd ..
@@ -47,11 +47,11 @@ pwd
 Poți sări și peste mai multe niveluri deodată, dând o **cale** completă:
 
 ```bash
-cd /home/student/reports
+cd /home/student/rapoarte
 ```
 
 O cale care începe cu `/` este **absolută** — funcționează indiferent unde te
-afli. O cale fără `/` la început (precum `reports`) este **relativă** — se
+afli. O cale fără `/` la început (precum `rapoarte`) este **relativă** — se
 interpretează pornind de la locația ta curentă.
 
 Sfat: te-ai pierdut? `cd ~` te aduce mereu acasă, iar `pwd` îți spune mereu unde te afli.
@@ -60,11 +60,11 @@ Sfat: te-ai pierdut? `cd ~` te aduce mereu acasă, iar `pwd` îți spune mereu u
 
 ## Misiune: Ajunge la Seiful de Scripturi
 
-Un script de automatizare critic este stocat adânc în sistemul de fișiere al stației. Directorul tău personal conține un folder `tools`, iar în interiorul acestuia se află un folder `scripts`.
+Un script de automatizare critic este stocat adânc în sistemul de fișiere al stației. Directorul tău personal conține un folder `unelte`, iar în interiorul acestuia se află un folder `scripturi`.
 
-1. Navighează în folderul `tools`.
-2. De acolo, navighează în folderul `scripts`.
+1. Navighează în folderul `unelte`.
+2. De acolo, navighează în folderul `scripturi`.
 
 **Rezultat așteptat**
 
-Rulând `pwd` se afișează `/home/student/tools/scripts` — ai ajuns la seif.
+Rulând `pwd` se afișează `/home/student/unelte/scripturi` — ai ajuns la seif.

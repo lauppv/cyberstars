@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "manual.txt",
+      "content": "MANUALUL STATIEI\nCapitolul 1: Sasuri de aer\nCapitolul 2: Suport vital\nCapitolul 3: Navigatie\nCapitolul 4: Comunicatii\nCapitolul 5: Proceduri de urgenta\nSfarsitul manualului.\n"
+    }
+  ],
+  "dirs": []
+}

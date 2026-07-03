@@ -11,11 +11,12 @@ export function resolveOwnerKey(req: Request): string | null {
 
 export async function createSession(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug } = req.body;
+    const { courseKey, lessonSlug, lang } = req.body;
     const session = await sessionService.createSession(
       courseKey,
       lessonSlug,
       resolveOwnerKey(req)!,
+      lang,
     );
     res.json(session);
   } catch (err) {

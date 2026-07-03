@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "sistem.log",
+      "content": "info: pornire completa\nwarning: temperatura carenei in crestere\ninfo: echipaj la bord\nwarning: rezerva de combustibil scazuta\nerror: sensor 3 offline\ninfo: orbita stabila\nwarning: latenta comunicatii ridicata\n"
+    }
+  ],
+  "dirs": []
+}

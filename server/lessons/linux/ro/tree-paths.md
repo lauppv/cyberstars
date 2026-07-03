@@ -7,12 +7,12 @@ tree
 
 ```text
 .
-├── mission.txt
-├── reports
-│   ├── january.log
-│   └── february.log
-└── tools
-    └── deploy.sh
+├── misiune.txt
+├── rapoarte
+│   ├── ianuarie.log
+│   └── februarie.log
+└── unelte
+    └── lanseaza.sh
 
 2 directories, 4 files
 ```
@@ -27,7 +27,7 @@ O **cale** este adresa unui fișier sau folder. Există două feluri.
 O **cale absolută** începe la rădăcină `/` și descrie fiecare pas:
 
 ```text
-/home/student/reports/january.log
+/home/student/rapoarte/ianuarie.log
 ```
 
 Funcționează de **oriunde** — este adresa completă.
@@ -36,7 +36,7 @@ O **cale relativă** începe de _oriunde te afli în acel moment_. Dacă ești �
 `/home/student`, atunci:
 
 ```text
-reports/january.log
+rapoarte/ianuarie.log
 ```
 
 indică același fișier. Lipsa lui `/` la început înseamnă „pornește de aici".
@@ -46,7 +46,7 @@ Două nume speciale ajută la căile relative:
 - `.` — directorul curent
 - `..` — directorul părinte (un nivel mai sus)
 
-Așadar `../tools/deploy.sh` înseamnă „urcă un nivel, apoi intră în `tools`".
+Așadar `../unelte/lanseaza.sh` înseamnă „urcă un nivel, apoi intră în `unelte`".
 
 Folosește `pwd` pentru a vedea locația ta absolută și `tree` pentru a vedea structura de sub tine.
 

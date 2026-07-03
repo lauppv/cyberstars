@@ -79,7 +79,7 @@ Trei metode, toate numite **info**, dar Java știe pe care s-o apeleze în func�
 
 Ce **NU** contează ca supraîncărcare? Schimbarea doar a **tipului de retur**
 
-```java
+```text
 public class Main {
     // Asta NU va compila - aceiasi parametri, tip de retur diferit
     public static int calculeaza(int a) { return a * 2; }

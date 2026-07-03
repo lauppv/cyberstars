@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "manifest.csv",
+      "content": "rezervoare_oxigen,50,deck1\npachete_ratii,200,deck3\ntruse_medicale,30,infirmerie\nbaterii,100,inginerie\nfiltre_apa,20,suport_vital\n"
+    }
+  ],
+  "dirs": []
+}

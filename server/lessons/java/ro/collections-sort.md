@@ -126,7 +126,7 @@ Dacă vrei sortare **descrescătoare**, inversezi: `alta.viteza - this.viteza`
 
 Pentru sortare după **String** (de exemplu, după nume), folosești `.compareTo()` de pe String
 
-```java
+```text
 public int compareTo(Masina alta) {
     return this.nume.compareTo(alta.nume);
 }

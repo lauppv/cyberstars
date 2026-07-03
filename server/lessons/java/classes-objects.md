@@ -9,7 +9,7 @@ In Java terms
 - A **class** is the blueprint
 - An **object** is a specific thing built from that blueprint (also called an **instance**)
 
-```java
+```text
 class Car {
     String color;
     int speed;

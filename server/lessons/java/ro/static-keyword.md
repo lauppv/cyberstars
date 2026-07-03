@@ -110,7 +110,7 @@ public class Main {
 
 O metodă statică nu are `this` — nu există niciun obiect asociat cu ea. Așa că **nu poate** accesa câmpuri de instanță sau metode de instanță:
 
-```java
+```text
 class Exemplu {
     int x = 10;           // camp de instanta
     static int y = 20;    // camp static

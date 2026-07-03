@@ -8,7 +8,7 @@ Tommy ascultă stația radio a poliției din Vice City. Fluxul este plin de para
 
 Pune semnalele într-un array de `String`, de exemplu:
 
-```java
+```text
 String[] semnale = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };
 ```
 

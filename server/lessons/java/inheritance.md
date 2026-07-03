@@ -1,6 +1,6 @@
 Sometimes you want a class that's basically another class, but with extras. In Java, a class can **inherit** from another using the keyword **extends**
 
-```java
+```text
 class Criminal {
     String name;
 
@@ -36,7 +36,7 @@ The **super** keyword is how a child talks to its parent. When `Driver` calls `s
 
 You **must** call `super(...)` in the child constructor if the parent doesn't have a no-argument constructor. Java won't let you skip it — the parent needs to be set up before the child can add its own stuff
 
-```java
+```text
 class Criminal {
     String name;
     int respect;
@@ -58,7 +58,7 @@ class Boss extends Criminal {
 
 A child class can also **add** new fields and methods that the parent doesn't have
 
-```java
+```text
 class Criminal {
     String name;
 

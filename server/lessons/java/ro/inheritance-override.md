@@ -1,6 +1,6 @@
 Lecția trecută am văzut că o clasă copil poate înlocui metoda unui părinte cu propria ei versiune. Asta se numește **suprascriere (overriding)**. Java are o adnotare specială pentru asta: **@Override**
 
-```java
+```text
 class Criminal {
     void vorbeste() {
         System.out.println("...");
@@ -17,7 +17,7 @@ class Sofer extends Criminal {
 
 Adnotarea `@Override` nu este tehnic obligatorie — codul tău compilează și fără ea. Dar ar trebui **mereu** să o folosești. Iată de ce: dacă scrii din greșeală numele metodei greșit, Java va crede că creezi o metodă NOUĂ în loc să o suprascrii pe cea veche. Cu `@Override`, Java verifică dacă părintele are într-adevăr acea metodă și se răstește la tine dacă nu o are
 
-```java
+```text
 class Sofer extends Criminal {
     @Override
     void vorbeshte() {  // GRESEALA DE SCRIERE! Eroare de compilare - Criminal nu are vorbeshte()
@@ -70,7 +70,7 @@ Motorul masinii tureaza!
 
 **Suprascriere (Overriding)**: clasa copil înlocuiește o metodă a părintelui (același nume, aceiași parametri)
 
-```java
+```text
 class Criminal {
     void vorbeste() { ... }
 }
@@ -82,7 +82,7 @@ class Sofer extends Criminal {
 
 **Supraîncărcare (Overloading)**: aceeași clasă are mai multe metode cu același nume dar parametri DIFERIȚI
 
-```java
+```text
 class Garaj {
     void repara(String masina) {
         System.out.println("Repar " + masina);

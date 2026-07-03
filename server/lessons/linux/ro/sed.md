@@ -40,9 +40,9 @@ Folosirea lui `|` evită să escapezi toate slash-urile.
 
 ## Misiune: Reparare raport de inspecție
 
-Stația tocmai a trecut reinspectia de siguranță, dar `report.txt` mai conține rezultate vechi `FAIL` din runda anterioară. Căpitanul vrea un raport curat înainte să sosească delegația.
+Stația tocmai a trecut reinspectia de siguranță, dar `raport.txt` mai conține rezultate vechi `FAIL` din runda anterioară. Căpitanul vrea un raport curat înainte să sosească delegația.
 
-Folosește `sed` ca să înlocuiești **toate** aparițiile lui `FAIL` cu `PASS` în `report.txt` și să afișezi raportul corectat pe ecran.
+Folosește `sed` ca să înlocuiești **toate** aparițiile lui `FAIL` cu `PASS` în `raport.txt` și să afișezi raportul corectat pe ecran.
 
 **Rezultat așteptat**
 

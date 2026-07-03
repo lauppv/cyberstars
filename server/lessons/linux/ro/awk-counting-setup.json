@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "greutate_marfa.txt",
+      "content": "oxigen 120\nhrana 85\nunelte 45\ncombustibil 300\npiese_schimb 60\n"
+    }
+  ],
+  "dirs": []
+}

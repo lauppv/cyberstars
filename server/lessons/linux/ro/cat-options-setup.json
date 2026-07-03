@@ -1,0 +1,8 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "echipa-a.txt", "content": "Ava\nBen\nChloe\n" },
+    { "path": "echipa-b.txt", "content": "Dan\nEve\nFinn\n" }
+  ],
+  "dirs": []
+}

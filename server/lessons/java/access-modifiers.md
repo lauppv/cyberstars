@@ -133,7 +133,7 @@ In well-written Java code, the pattern is:
 2. Methods are **`public`** — they provide controlled access
 3. The constructor is **`public`** — so people can actually create objects
 
-```java
+```text
 class Wallet {
     private int money;
 
@@ -167,7 +167,7 @@ This keeps your data safe. Nobody can set `money` to -999 because they have to g
 
 One more thing: local variables (inside methods) don't use access modifiers at all. They're automatically invisible outside their method — no keyword needed:
 
-```java
+```text
 public class Main {
     void doStuff() {
         int temp = 42;          // no public/private — it's local

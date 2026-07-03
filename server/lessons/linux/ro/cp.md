@@ -4,10 +4,10 @@ pentru ceva nou. Comanda **cp** (**copy**) face exact asta.
 Tiparul este întotdeauna: `cp SURSĂ DESTINAȚIE`.
 
 ```bash
-cp mission.txt mission-backup.txt
+cp misiune.txt misiune-backup.txt
 ```
 
-Astfel se creează un al doilea fișier, `mission-backup.txt`, cu același conținut.
+Astfel se creează un al doilea fișier, `misiune-backup.txt`, cu același conținut.
 Originalul rămâne neatins.
 
 ### Copierea într-un folder
@@ -16,30 +16,30 @@ Dacă destinația este un folder existent, copia își păstrează numele origin
 ajunge în interiorul acelui folder:
 
 ```bash
-cp mission.txt backups
+cp misiune.txt backups
 ```
 
-Astfel se creează `backups/mission.txt`.
+Astfel se creează `backups/misiune.txt`.
 
 ### Copierea unui folder întreg: `cp -r`
 
 Un `cp` simplu refuză să copieze un director:
 
 ```bash
-cp reports reports-backup
+cp rapoarte rapoarte-backup
 ```
 
 ```text
-cp: -r not specified; omitting directory 'reports'
+cp: -r not specified; omitting directory 'rapoarte'
 ```
 
 Opțiunea `-r` (**recursive**) copiază folderul _și tot ce se află în el_:
 
 ```bash
-cp -r reports reports-backup
+cp -r rapoarte rapoarte-backup
 ```
 
-Acum `reports-backup` este o copie completă a lui `reports`.
+Acum `rapoarte-backup` este o copie completă a lui `rapoarte`.
 
 ### O notă de prudență
 
@@ -52,9 +52,9 @@ cu grijă numele destinațiilor.
 
 A fost emisă o avertizare de furtună solară. Datele critice ale stației trebuie salvate imediat, înainte să apară vreo defecțiune.
 
-1. Fă o copie de siguranță a fișierului `mission.txt` numită `mission-backup.txt`.
-2. Copiază întregul folder `reports` într-un folder nou numit `reports-backup`.
+1. Fă o copie de siguranță a fișierului `misiune.txt` numită `misiune-backup.txt`.
+2. Copiază întregul folder `rapoarte` într-un folder nou numit `rapoarte-backup`.
 
 **Rezultat așteptat**
 
-Directorul tău home conține acum atât `mission-backup.txt`, cât și un folder `reports-backup` cu același conținut ca `reports`.
+Directorul tău home conține acum atât `misiune-backup.txt`, cât și un folder `rapoarte-backup` cu același conținut ca `rapoarte`.

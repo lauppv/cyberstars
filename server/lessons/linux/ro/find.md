@@ -1,5 +1,5 @@
 `grep` caută text _în interiorul_ fișierelor. Dar uneori cauți **fișierul în sine**
-— „unde am pus fișierul ăla numit `report.txt`?”. Pentru asta există **find**.
+— „unde am pus fișierul ăla numit `raport.txt`?”. Pentru asta există **find**.
 
 `find` parcurge un arbore de directoare și listează fișierele care se potrivesc cu
 descrierea ta.
@@ -11,12 +11,12 @@ Forma de bază este: `find UNDE-SĂ-CAUT CONDIȚII`.
 Cea mai folosită condiție este `-name` — potrivește fișierele după nume:
 
 ```bash
-find . -name report.txt
+find . -name raport.txt
 ```
 
 ```text
-./docs/report.txt
-./archive/old/report.txt
+./documente/raport.txt
+./arhiva/vechi/raport.txt
 ```
 
 `.` înseamnă „pornește de aici”. `find` caută în acel folder **și în fiecare
@@ -38,7 +38,7 @@ Astfel găsești fiecare fișier care se termină în `.log`, oriunde în arbore
 Poți să-i indici lui `find` orice folder, nu doar `.`:
 
 ```bash
-find logs -name "error.txt"
+find jurnale -name "eroare.txt"
 ```
 
 `find` este unealta ta pentru „știu numele, nu și locația”.

@@ -1,0 +1,12 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "coduri_lansare.txt", "content": "CODE-ALPHA-7749\nCODE-BRAVO-3312\n" },
+    {
+      "path": "status_raport.sh",
+      "content": "#!/bin/bash\necho 'Toate sistemele sunt nominale'\n"
+    },
+    { "path": "public_buletin.txt", "content": "Seara de film a statiei: vineri, ora 2000.\n" }
+  ],
+  "dirs": []
+}

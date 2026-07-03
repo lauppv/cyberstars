@@ -25,7 +25,7 @@ Hello, Kernighan!
 
 Let's break down the function header
 
-```c
+```text
 void greet(char name[])
 ```
 

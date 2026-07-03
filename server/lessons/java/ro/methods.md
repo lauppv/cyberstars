@@ -26,7 +26,7 @@ Salut, Lance Vance
 
 Am scris logica de salut **o singură dată**, dar am folosit-o de trei ori. Hai să descompunem linia care declară metoda
 
-```java
+```text
 public static void saluta(String nume)
 ```
 
@@ -81,7 +81,7 @@ Output **50**. Java calculează mai întâi **aduna(2, 3) = 5**, apoi **5 \* 10 
 
 Tipul de retur **trebuie să se potrivească** cu ceea ce întoarcem de fapt
 
-```java
+```text
 public class Main {
     public static int aduna(int a, int b) {
         return "salut";   // eroare
@@ -95,7 +95,7 @@ Metoda promite să întoarcă un **int**, dar încearcă să dea înapoi un **St
 
 O metodă **void** doar își face treaba și iese. Putem totuși folosi **return** singur (fără valoare) ca să ieșim mai devreme
 
-```java
+```text
 public class Main {
     public static void saluta(String nume) {
         if (nume.length() == 0) {

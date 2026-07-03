@@ -27,13 +27,13 @@ fișierelor. Folosește-l ori de câte ori trebuie să știi în ce nume poți i
 
 ## Misiune: Seiful Ascuns
 
-Serviciile de informații ale stației raportează un seif ascuns undeva în adâncul directorului `station`. Sarcina ta este să navighezi prin structura de foldere și să-l găsești. Se zvonește că seiful este invizibil pentru un simplu `ls`.
+Serviciile de informații ale stației raportează un seif ascuns undeva în adâncul directorului `statie`. Sarcina ta este să navighezi prin structura de foldere și să-l găsești. Se zvonește că seiful este invizibil pentru un simplu `ls`.
 
 1. Folosește `ls` pentru a vedea ce se află în directorul tău personal.
-2. Intră în folderul `station`.
-3. De acolo, intră în folderul `archive`.
-4. În interiorul lui `archive`, te așteaptă un director ascuns. Folosește `ls -a` ca să-l scoți la iveală, apoi intră în el cu `cd`.
+2. Intră în folderul `statie`.
+3. De acolo, intră în folderul `arhiva`.
+4. În interiorul lui `arhiva`, te așteaptă un director ascuns. Folosește `ls -a` ca să-l scoți la iveală, apoi intră în el cu `cd`.
 
 **Rezultat așteptat**
 
-Rulând `pwd` se afișează `/home/student/station/archive/.vault`. Ai găsit seiful.
+Rulând `pwd` se afișează `/home/student/statie/arhiva/.seif`. Ai găsit seiful.

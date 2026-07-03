@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   createTerminalSession,
   execTerminalCommand,
@@ -12,6 +13,8 @@ export interface TerminalLine {
 }
 
 export function useTerminalSession(courseKey: string, lessonSlug: string) {
+  const { i18n } = useTranslation();
+  const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [cwd, setCwd] = useState('/home/student');
   const [lines, setLines] = useState<TerminalLine[]>([]);
@@ -24,7 +27,7 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
     setIsReady(false);
     setLines([]);
     try {
-      const info = await createTerminalSession(courseKey, lessonSlug);
+      const info = await createTerminalSession(courseKey, lessonSlug, lang);
       setSessionId(info.sessionId);
       sessionRef.current = info.sessionId;
       setCwd(info.cwd);
@@ -40,7 +43,7 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
         },
       ]);
     }
-  }, [courseKey, lessonSlug]);
+  }, [courseKey, lessonSlug, lang]);
 
   useEffect(() => {
     if (!courseKey || !lessonSlug) return;

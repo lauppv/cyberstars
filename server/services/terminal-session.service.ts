@@ -57,8 +57,21 @@ function docker(args: string[], timeout = 10_000, stdin?: string): Promise<strin
   });
 }
 
-export function loadSetup(courseKey: string, lessonSlug: string): TerminalSetup | null {
-  const filePath = path.join(contentDir(courseKey), `${lessonSlug}-setup.json`);
+// Translated sandbox filesystems live in a ro/ subfolder beside the English
+// source (server/lessons/linux/ro/<slug>-setup.json), mirroring lesson prose
+// translations. English stays the source of truth; a missing RO variant falls
+// back to it so a course can be translated one lesson at a time.
+export function loadSetup(
+  courseKey: string,
+  lessonSlug: string,
+  lang?: string,
+): TerminalSetup | null {
+  const base = contentDir(courseKey);
+  if (lang === 'ro') {
+    const roPath = path.join(base, 'ro', `${lessonSlug}-setup.json`);
+    if (fs.existsSync(roPath)) return JSON.parse(fs.readFileSync(roPath, 'utf-8'));
+  }
+  const filePath = path.join(base, `${lessonSlug}-setup.json`);
   if (!fs.existsSync(filePath)) return null;
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
@@ -67,8 +80,9 @@ export async function createSession(
   courseKey: string,
   lessonSlug: string,
   ownerKey: string,
+  lang?: string,
 ): Promise<TerminalSessionInfo> {
-  const setup = loadSetup(courseKey, lessonSlug);
+  const setup = loadSetup(courseKey, lessonSlug, lang);
   const cwd = setup?.cwd ?? '/home/student';
 
   const containerId = await docker([

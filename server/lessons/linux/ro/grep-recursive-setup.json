@@ -1,0 +1,15 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "jurnale/ianuarie.log",
+      "content": "verificare sistem ok\nfailure in pompa de racire\nrepornire reusita\n"
+    },
+    { "path": "jurnale/februarie.log", "content": "tot verde\nmentenanta de rutina\n" },
+    {
+      "path": "jurnale/vechi/arhiva.log",
+      "content": "failure inregistrat in ziua 12\ndate arhivate\n"
+    }
+  ],
+  "dirs": ["jurnale", "jurnale/vechi"]
+}

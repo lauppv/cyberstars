@@ -50,11 +50,11 @@ sigur ce conține.
 
 ## Misiune: Dezafectează vechile compartimente
 
-Două compartimente de depozitare ale stației sunt programate pentru dezafectare. Folderul `empty-bay` a fost deja golit, dar `old-data` mai conține fișiere reziduale.
+Două compartimente de depozitare ale stației sunt programate pentru dezafectare. Folderul `compartiment-gol` a fost deja golit, dar `date-vechi` mai conține fișiere reziduale.
 
-1. Șterge folderul gol `empty-bay` folosind `rmdir`.
-2. Șterge folderul `old-data` și tot conținutul său folosind `rm -r`.
+1. Șterge folderul gol `compartiment-gol` folosind `rmdir`.
+2. Șterge folderul `date-vechi` și tot conținutul său folosind `rm -r`.
 
 **Rezultat așteptat**
 
-Ambele foldere au dispărut, dar folderul `mission` rămâne neatins.
+Ambele foldere au dispărut, dar folderul `misiune` rămâne neatins.

@@ -59,13 +59,13 @@ int main(void) {
 
 Îți amintești când am spus că transmiterea unui tablou către o funcție face **sizeof** să nu mai funcționeze? Acum înțelegi **de ce**. Când scrii
 
-```c
+```text
 void afiseaza(int tablou[]) { }
 ```
 
 compilatorul vede de fapt
 
-```c
+```text
 void afiseaza(int *tablou) { }
 ```
 
