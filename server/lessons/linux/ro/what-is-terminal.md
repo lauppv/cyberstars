@@ -9,34 +9,34 @@ Prima comandă pe care o vom învăța este **echo**. Ea afișează pur și simp
 pe care i-l dai.
 
 ```bash
-echo Hello
+echo Salut
 ```
 
 Va afișa:
 
 ```text
-Hello
+Salut
 ```
 
 Poți afișa orice text dorești:
 
 ```bash
-echo Welcome to Linux
+echo Bun venit in Linux
 ```
 
 ```text
-Welcome to Linux
+Bun venit in Linux
 ```
 
 Dacă textul trebuie să rămână exact așa cum este scris (cu spații), îl poți pune
 între ghilimele:
 
 ```bash
-echo "Linux is fun"
+echo "Linux e distractiv"
 ```
 
 ```text
-Linux is fun
+Linux e distractiv
 ```
 
 Nu-ți face griji că trebuie să memorezi totul — terminalul este un loc unde poți
@@ -48,8 +48,8 @@ Nu-ți face griji că trebuie să memorezi totul — terminalul este un loc unde
 
 Sistemul de comunicații al stației tocmai a fost activat și are nevoie de un test de semnal. Sarcina ta este să trimiți primul mesaj de la acest terminal.
 
-Folosește comanda `echo` pentru a transmite exact mesajul: `Mission control online`
+Folosește comanda `echo` pentru a transmite exact mesajul: `Centru de comanda online`
 
 **Rezultat așteptat**
 
-Terminalul afișează `Mission control online`, confirmând că transmisiunea ta a fost recepționată.
+Terminalul afișează `Centru de comanda online`, confirmând că transmisiunea ta a fost recepționată.

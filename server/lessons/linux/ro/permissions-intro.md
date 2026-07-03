@@ -6,9 +6,9 @@ ls -l
 ```
 
 ```text
--rwxr-xr-- 1 student crew  4096 Jan 10 08:00 launch.sh
--rw-r--r-- 1 student crew  2048 Jan 10 08:00 config.txt
-drwxr-x--- 2 student crew  4096 Jan 10 08:00 logs
+-rwxr-xr-- 1 student echipaj  4096 Jan 10 08:00 lanseaza.sh
+-rw-r--r-- 1 student echipaj  2048 Jan 10 08:00 config.txt
+drwxr-x--- 2 student echipaj  4096 Jan 10 08:00 jurnale
 ```
 
 Șirul de permisiuni are 10 caractere. Primul indică tipul (`-` = fișier, `d` =
@@ -40,4 +40,4 @@ Rulează `ls -l` pentru a afișa șirurile de permisiuni ale tuturor fișierelor
 
 **Rezultat așteptat**
 
-Ar trebui să vezi trei fișiere listate. Unul dintre ele are `x` în grupul de permisiuni al proprietarului (pozițiile 2-4) — acela este fișierul executabil (`diagnostics.sh`).
+Ar trebui să vezi trei fișiere listate. Unul dintre ele are `x` în grupul de permisiuni al proprietarului (pozițiile 2-4) — acela este fișierul executabil (`diagnostic.sh`).

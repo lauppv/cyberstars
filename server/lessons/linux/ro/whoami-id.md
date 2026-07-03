@@ -19,7 +19,7 @@ id
 ```
 
 ```text
-uid=1000(student) gid=1000(crew) groups=1000(crew),27(sudo)
+uid=1000(student) gid=1000(echipaj) groups=1000(echipaj),27(sudo)
 ```
 
 Afișează **ID-ul de utilizator** (uid), **grupul principal** (gid) și toate grupurile din care faci parte. Grupurile determină ce permisiuni de „group" se aplică pentru tine.
@@ -27,14 +27,14 @@ Afișează **ID-ul de utilizator** (uid), **grupul principal** (gid) și toate g
 ### Proprietatea în `ls -l`
 
 ```bash
-ls -l mission.txt
+ls -l misiune.txt
 ```
 
 ```text
--rw-r--r-- 1 student crew 512 Jan 10 08:00 mission.txt
+-rw-r--r-- 1 student echipaj 512 Jan 10 08:00 misiune.txt
 ```
 
-Cele două nume de după numărul de legături sunt **proprietarul** (`student`) și **grupul** (`crew`). Coloana proprietarului determină pentru cine se aplică permisiunile de „user".
+Cele două nume de după numărul de legături sunt **proprietarul** (`student`) și **grupul** (`echipaj`). Coloana proprietarului determină pentru cine se aplică permisiunile de „user".
 
 ### De ce contează
 
@@ -52,4 +52,4 @@ Un document clasificat a fost găsit în directorul tău home. Înainte ca cinev
 
 **Rezultat așteptat**
 
-Vezi numele tău de utilizator (`student`), uid/gid/grupurile tale, și că `clasificat.doc` este deținut de `student` în grupul `crew`.
+Vezi numele tău de utilizator (`student`), uid/gid/grupurile tale, și că `clasificat.doc` este deținut de `student` în grupul `echipaj`.

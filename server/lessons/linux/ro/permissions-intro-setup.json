@@ -2,7 +2,7 @@
   "cwd": "/home/student",
   "files": [
     {
-      "path": "diagnostics.sh",
+      "path": "diagnostic.sh",
       "content": "#!/bin/bash\necho 'Se ruleaza diagnosticarea...'\n"
     },
     { "path": "notite.txt", "content": "Nu uita sa verifici garniturile sasului de aer.\n" },

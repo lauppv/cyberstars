@@ -2,7 +2,7 @@ Folderele au nevoie de **fișiere** în interiorul lor. Cea mai rapidă cale de 
 un fișier nou, gol, este comanda **touch**.
 
 ```bash
-touch notes.txt
+touch notite.txt
 ```
 
 Din nou, succesul este tăcut. Confirmă cu `ls`:
@@ -12,7 +12,7 @@ ls
 ```
 
 ```text
-notes.txt
+notite.txt
 ```
 
 Fișierul există, dar este complet gol (0 octeți) până când pui ceva în el.
@@ -22,7 +22,7 @@ Fișierul există, dar este complet gol (0 octeți) până când pui ceva în el
 La fel ca `mkdir`, `touch` acceptă mai multe nume:
 
 ```bash
-touch log1.txt log2.txt log3.txt
+touch jurnal1.txt jurnal2.txt jurnal3.txt
 ```
 
 ### Crearea unui fișier într-un folder

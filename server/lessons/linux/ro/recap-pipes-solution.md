@@ -1,12 +1,12 @@
 ```bash
-grep WARN telemetrie.raw | sort > warnings_sorted.txt
-echo "-- end of report --" >> warnings_sorted.txt
-cat warnings_sorted.txt
+grep WARN telemetrie.raw | sort > avertismente_sortat.txt
+echo "-- sfarsit de raport --" >> avertismente_sortat.txt
+cat avertismente_sortat.txt
 ```
 
 ```text
 WARN: antena dezaliniata
 WARN: celula de combustibil B scazuta
 WARN: presiune agent de racire in scadere
--- end of report --
+-- sfarsit de raport --
 ```

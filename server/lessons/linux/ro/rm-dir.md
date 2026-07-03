@@ -7,17 +7,17 @@ Comanda **rmdir** (**remove directory**) șterge un folder — dar **doar dacă 
 gol**:
 
 ```bash
-rmdir old-folder
+rmdir folder-vechi
 ```
 
 Dacă folderul mai conține ceva, `rmdir` refuză:
 
 ```bash
-rmdir reports
+rmdir rapoarte
 ```
 
 ```text
-rmdir: failed to remove 'reports': Directory not empty
+rmdir: failed to remove 'rapoarte': Directory not empty
 ```
 
 Acest refuz este o **măsură de siguranță** — te împiedică să ștergi fișiere din
@@ -29,10 +29,10 @@ Pentru a șterge un folder _și tot ce se află în el_, folosește `rm` cu opț
 (**recursive**):
 
 ```bash
-rm -r reports
+rm -r rapoarte
 ```
 
-Astfel se șterge `reports`, fiecare fișier din el, fiecare subfolder și conținutul
+Astfel se șterge `rapoarte`, fiecare fișier din el, fiecare subfolder și conținutul
 lor — totul permanent.
 
 ### Manevrează cu grijă
