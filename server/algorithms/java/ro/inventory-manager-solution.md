@@ -19,7 +19,7 @@ public class Main {
                 int cantitate = Integer.parseInt(parti[2]);
                 int curent = inventar.getOrDefault(articol, 0);
                 if (cantitate > curent) {
-                    System.out.println("Not enough " + articol);
+                    System.out.println("Insuficient " + articol);
                 } else {
                     inventar.put(articol, curent - cantitate);
                 }
@@ -34,7 +34,7 @@ public class Main {
                 numar++;
             }
         }
-        System.out.println("Items: " + numar);
+        System.out.println("Articole: " + numar);
     }
 }
 ```

@@ -38,11 +38,11 @@ public class Main {
                 cont.depune(suma);
             } else {
                 if (!cont.retrage(suma)) {
-                    System.out.println("Insufficient funds");
+                    System.out.println("Fonduri insuficiente");
                 }
             }
         }
-        System.out.println("Balance: " + cont.getSold());
+        System.out.println("Sold: " + cont.getSold());
     }
 }
 ```

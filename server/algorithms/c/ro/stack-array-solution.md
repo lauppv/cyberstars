@@ -19,13 +19,13 @@ int main(void) {
             stiva[++varf] = x;
         } else if (strcmp(comanda, "pop") == 0) {
             if (varf == -1) {
-                printf("Empty\n");
+                printf("Goala\n");
             } else {
                 printf("%d\n", stiva[varf--]);
             }
         } else if (strcmp(comanda, "peek") == 0) {
             if (varf == -1) {
-                printf("Empty\n");
+                printf("Goala\n");
             } else {
                 printf("%d\n", stiva[varf]);
             }

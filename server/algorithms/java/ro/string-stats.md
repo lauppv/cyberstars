@@ -14,9 +14,9 @@ Citește o singură linie de text de la stdin. Creează un `StringAnalyzer` și 
 
 ### Rezultat
 
-- Linia 1: `Vowels: X`
-- Linia 2: `Consonants: X`
-- Linia 3: `Words: X`
+- Linia 1: `Vocale: X`
+- Linia 2: `Consoane: X`
+- Linia 3: `Cuvinte: X`
 
 ### Exemple
 
@@ -25,9 +25,9 @@ Intrare:
 Hello World
 
 Ieșire:
-Vowels: 3
-Consonants: 7
-Words: 2
+Vocale: 3
+Consoane: 7
+Cuvinte: 2
 ```
 
 ```
@@ -35,9 +35,9 @@ Intrare:
 Java is fun
 
 Ieșire:
-Vowels: 4
-Consonants: 5
-Words: 3
+Vocale: 4
+Consoane: 5
+Cuvinte: 3
 ```
 
 ```
@@ -45,9 +45,9 @@ Intrare:
 Sky
 
 Ieșire:
-Vowels: 0
-Consonants: 3
-Words: 1
+Vocale: 0
+Consoane: 3
+Cuvinte: 1
 ```
 
 `y` nu este numărat aici ca vocală — contează doar a, e, i, o, u, deci toate

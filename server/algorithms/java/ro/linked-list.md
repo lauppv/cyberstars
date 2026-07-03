@@ -9,13 +9,13 @@ Procesează comenzile de la stdin.
 - Linia 1: numărul de comenzi N
 - Următoarele N linii: una dintre:
   - `add X` — adaugă numărul întreg X la sfârșitul listei
-  - `remove X` — elimină prima apariție a lui X (afișează `Not found` dacă X nu se află în listă)
-  - `print` — afișează toate elementele separate prin `->`, sau `Empty` dacă lista este goală
+  - `remove X` — elimină prima apariție a lui X (afișează `Negasit` dacă X nu se află în listă)
+  - `print` — afișează toate elementele separate prin `->`, sau `Goala` dacă lista este goală
 
 ### Rezultat
 
-- Pentru fiecare `print`: elementele în ordine separate prin `->`, sau `Empty`
-- Pentru fiecare `remove` eșuat: `Not found`
+- Pentru fiecare `print`: elementele în ordine separate prin `->`, sau `Goala`
+- Pentru fiecare `remove` eșuat: `Negasit`
 
 ### Exemple
 
@@ -43,8 +43,8 @@ remove 5
 print
 
 Ieșire:
-Not found
-Empty
+Negasit
+Goala
 ```
 
 ```

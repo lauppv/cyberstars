@@ -9,9 +9,9 @@ int main(void) {
         long numar;
         scanf("%ld", &numar);
         if (numar > 0 && (numar & (numar - 1)) == 0) {
-            printf("YES\n");
+            printf("DA\n");
         } else {
-            printf("NO\n");
+            printf("NU\n");
         }
     }
 

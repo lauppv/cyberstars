@@ -14,7 +14,7 @@ Folosește `malloc` pentru a aloca fiecare nod. Fiecare nod are un câmp `int da
 
 ### Rezultat
 
-Pentru fiecare comandă `PRINT`, afișează elementele listei separate prin spații. Dacă lista este goală, afișează `EMPTY`.
+Pentru fiecare comandă `PRINT`, afișează elementele listei separate prin spații. Dacă lista este goală, afișează `Goala`.
 
 ### Exemple
 
@@ -37,7 +37,7 @@ PRINT
 INSERT 5
 PRINT
 Ieșire:
-EMPTY
+Goala
 5
 ```
 

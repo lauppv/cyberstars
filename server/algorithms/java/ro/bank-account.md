@@ -1,6 +1,6 @@
 # Ușor · Cont bancar
 
-Creează o clasă **ContBancar** cu un câmp `sold` și metodele `depune(suma)` și `retrage(suma)`. Retragerile trebuie respinse dacă suma depășește soldul curent (afișează `Insufficient funds`).
+Creează o clasă **ContBancar** cu un câmp `sold` și metodele `depune(suma)` și `retrage(suma)`. Retragerile trebuie respinse dacă suma depășește soldul curent (afișează `Fonduri insuficiente`).
 
 Citește soldul inițial pe prima linie, apoi procesează operațiile de la stdin. La final, afișează soldul final.
 
@@ -12,8 +12,8 @@ Citește soldul inițial pe prima linie, apoi procesează operațiile de la stdi
 
 ### Rezultat
 
-- Pentru fiecare retragere respinsă: `Insufficient funds`
-- Ultima linie: `Balance: X`
+- Pentru fiecare retragere respinsă: `Fonduri insuficiente`
+- Ultima linie: `Sold: X`
 
 ### Exemple
 
@@ -26,8 +26,8 @@ withdraw 30
 withdraw 200
 
 Ieșire:
-Insufficient funds
-Balance: 120
+Fonduri insuficiente
+Sold: 120
 ```
 
 ```
@@ -38,7 +38,7 @@ deposit 500
 withdraw 500
 
 Ieșire:
-Balance: 0
+Sold: 0
 ```
 
 ```
@@ -48,7 +48,7 @@ Intrare:
 withdraw 50
 
 Ieșire:
-Balance: 0
+Sold: 0
 ```
 
 Retragerea sumei **exacte** din sold este permisă — eșuează doar atunci când suma
@@ -62,7 +62,7 @@ withdraw 20
 withdraw 15
 
 Ieșire:
-Insufficient funds
-Insufficient funds
-Balance: 10
+Fonduri insuficiente
+Fonduri insuficiente
+Sold: 10
 ```

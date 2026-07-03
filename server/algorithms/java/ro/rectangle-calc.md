@@ -10,8 +10,8 @@ Citește latime și inaltime de la stdin, creează un obiect `Rectangle` și afi
 
 ### Rezultat
 
-- Linia 1: `Area: X`
-- Linia 2: `Perimeter: X`
+- Linia 1: `Arie: X`
+- Linia 2: `Perimetru: X`
 
 ### Exemple
 
@@ -20,8 +20,8 @@ Intrare:
 5 3
 
 Ieșire:
-Area: 15
-Perimeter: 16
+Arie: 15
+Perimetru: 16
 ```
 
 ```
@@ -29,8 +29,8 @@ Intrare:
 10 10
 
 Ieșire:
-Area: 100
-Perimeter: 40
+Arie: 100
+Perimetru: 40
 ```
 
 ```
@@ -38,8 +38,8 @@ Intrare:
 1 1
 
 Ieșire:
-Area: 1
-Perimeter: 4
+Arie: 1
+Perimetru: 4
 ```
 
 Cel mai mic dreptunghi posibil — un pătrat 1x1.

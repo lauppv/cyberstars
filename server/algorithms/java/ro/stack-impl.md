@@ -2,7 +2,7 @@
 
 Implementează o clasă **Stack** folosind un `ArrayList` ca stocare internă. Stiva trebuie să suporte operațiile `push`, `pop` și `peek`.
 
-Procesează comenzile de la stdin și afișează rezultatele pentru `pop` și `peek`. Dacă `pop` sau `peek` este apelat pe o stivă goală, afișează `Empty`.
+Procesează comenzile de la stdin și afișează rezultatele pentru `pop` și `peek`. Dacă `pop` sau `peek` este apelat pe o stivă goală, afișează `Goala`.
 
 ### Date de intrare
 
@@ -14,8 +14,8 @@ Procesează comenzile de la stdin și afișează rezultatele pentru `pop` și `p
 
 ### Rezultat
 
-- Pentru fiecare `pop`: valoarea eliminată, sau `Empty`
-- Pentru fiecare `peek`: valoarea din vârf, sau `Empty`
+- Pentru fiecare `pop`: valoarea eliminată, sau `Goala`
+- Pentru fiecare `peek`: valoarea din vârf, sau `Goala`
 
 ### Exemple
 
@@ -33,7 +33,7 @@ Ieșire:
 20
 20
 10
-Empty
+Goala
 ```
 
 ```
@@ -54,8 +54,8 @@ pop
 peek
 
 Ieșire:
-Empty
-Empty
+Goala
+Goala
 ```
 
-Atât `pop`, cât și `peek` trebuie să afișeze `Empty` când stiva nu conține nimic.
+Atât `pop`, cât și `peek` trebuie să afișeze `Goala` când stiva nu conține nimic.

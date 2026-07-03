@@ -8,28 +8,28 @@ O singură linie care conține un număr întreg `n`.
 
 ### Rezultat
 
-Afișează `Even` dacă numărul este par, sau `Odd` dacă numărul este impar.
+Afișează `Par` dacă numărul este par, sau `Impar` dacă numărul este impar.
 
 ### Exemple
 
 ```
 Intrare:  4
-Ieșire: Even
+Ieșire: Par
 ```
 
 ```
 Intrare:  7
-Ieșire: Odd
+Ieșire: Impar
 ```
 
 ```
 Intrare:  0
-Ieșire: Even
+Ieșire: Par
 ```
 
 ```
 Intrare:  -3
-Ieșire: Odd
+Ieșire: Impar
 ```
 
 Numerele negative funcționează la fel: `-3 % 2` este `1` în Python — nu este

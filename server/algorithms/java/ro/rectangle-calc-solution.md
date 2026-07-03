@@ -26,8 +26,8 @@ public class Main {
         int latime = Integer.parseInt(parti[0]);
         int inaltime = Integer.parseInt(parti[1]);
         Rectangle dreptunghi = new Rectangle(latime, inaltime);
-        System.out.println("Area: " + dreptunghi.getArea());
-        System.out.println("Perimeter: " + dreptunghi.getPerimeter());
+        System.out.println("Arie: " + dreptunghi.getArea());
+        System.out.println("Perimetru: " + dreptunghi.getPerimeter());
     }
 }
 ```

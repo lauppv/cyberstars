@@ -47,7 +47,7 @@ class ListaInlantuita {
 
     String afiseaza() {
         if (cap == null) {
-            return "Empty";
+            return "Goala";
         }
         StringBuilder sb = new StringBuilder();
         Nod cur = cap;
@@ -77,7 +77,7 @@ public class Main {
                 case "remove":
                     int valoare = Integer.parseInt(parti[1]);
                     if (!lista.elimina(valoare)) {
-                        System.out.println("Not found");
+                        System.out.println("Negasit");
                     }
                     break;
                 case "print":

@@ -38,12 +38,12 @@ public class Main {
                     break;
                 case "dequeue": {
                     Integer valoare = coada.dequeue();
-                    System.out.println(valoare == null ? "Empty" : valoare.toString());
+                    System.out.println(valoare == null ? "Goala" : valoare.toString());
                     break;
                 }
                 case "peek": {
                     Integer valoare = coada.peek();
-                    System.out.println(valoare == null ? "Empty" : valoare.toString());
+                    System.out.println(valoare == null ? "Goala" : valoare.toString());
                     break;
                 }
             }
