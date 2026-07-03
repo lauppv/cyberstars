@@ -1,6 +1,6 @@
 # Mediu · Implementarea unei cozi
 
-Implementează o clasă **Queue** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `enqueue`, `dequeue` și `peek`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
+Implementează o clasă **Coada** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `enqueue`, `dequeue` și `peek`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
 
 Procesează comenzile de la stdin și afișează rezultatele pentru `dequeue` și `peek`. Dacă `dequeue` sau `peek` este apelat pe o coadă goală, afișează `Empty`.
 

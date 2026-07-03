@@ -1,6 +1,6 @@
 # Ușor · Cont bancar
 
-Creează o clasă **BankAccount** cu un câmp `balance` și metodele `deposit(amount)` și `withdraw(amount)`. Retragerile trebuie respinse dacă suma depășește soldul curent (afișează `Insufficient funds`).
+Creează o clasă **ContBancar** cu un câmp `sold` și metodele `depune(suma)` și `retrage(suma)`. Retragerile trebuie respinse dacă suma depășește soldul curent (afișează `Insufficient funds`).
 
 Citește soldul inițial pe prima linie, apoi procesează operațiile de la stdin. La final, afișează soldul final.
 

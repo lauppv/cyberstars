@@ -1,12 +1,12 @@
 # Ușor · Calculator de dreptunghi
 
-Creează o clasă **Rectangle** cu câmpurile `width` și `height`. Adaugă metodele `getArea()` și `getPerimeter()` care returnează aria și perimetrul dreptunghiului.
+Creează o clasă **Rectangle** cu câmpurile `latime` și `inaltime`. Adaugă metodele `getArea()` și `getPerimeter()` care returnează aria și perimetrul dreptunghiului.
 
-Citește width și height de la stdin, creează un obiect `Rectangle` și afișează aria și perimetrul pe linii separate.
+Citește latime și inaltime de la stdin, creează un obiect `Rectangle` și afișează aria și perimetrul pe linii separate.
 
 ### Date de intrare
 
-- Linia 1: două numere întregi separate printr-un spațiu — width și height
+- Linia 1: două numere întregi separate printr-un spațiu — latime și inaltime
 
 ### Rezultat
 

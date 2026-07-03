@@ -1,6 +1,6 @@
 # Dificil · Listă înlănțuită
 
-Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Node` cu câmpurile `value` și `next`, și o clasă `LinkedList` cu operațiile `add`, `remove` și `print`.
+Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Nod` cu câmpurile `valoare` și `urmator`, și o clasă `ListaInlantuita` cu operațiile `add`, `remove` și `print`.
 
 Procesează comenzile de la stdin.
 
@@ -60,5 +60,5 @@ Ieșire:
 2 -> 3
 ```
 
-Eliminarea nodului **head** înseamnă că referința `head` a listei trebuie
-mutată chiar ea către al doilea nod — nu există un nod „anterior" de relegat.
+Eliminarea nodului **cap** înseamnă că referința `cap` a listei trebuie
+mutată chiar ea către al doilea nod — nu există un nod „anterior” de relegat.

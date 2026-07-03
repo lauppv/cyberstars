@@ -4,8 +4,8 @@ Criptează un șir folosind **cifrul Caesar**: deplasează fiecare literă înai
 
 ### Date de intrare
 
-- Linia 1: un șir `s` (poate conține litere mari, litere mici, spații și semne de punctuație).
-- Linia 2: un număr întreg `shift` (1-25).
+- Linia 1: un șir `sir` (poate conține litere mari, litere mici, spații și semne de punctuație).
+- Linia 2: un număr întreg `deplasare` (1-25).
 
 ### Rezultat
 

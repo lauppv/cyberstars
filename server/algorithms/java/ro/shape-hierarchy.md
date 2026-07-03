@@ -1,13 +1,13 @@
 # Mediu · Ierarhia formelor
 
-Creează o clasă **abstractă** `Shape` cu o metodă abstractă `getArea()`. Implementează două subclase: `Circle` (cu radius) și `Rectangle` (cu width și height).
+Creează o clasă **abstractă** `Shape` cu o metodă abstractă `getArea()`. Implementează două subclase: `Circle` (cu radius) și `Rectangle` (cu latime și inaltime).
 
 Citește formele de la stdin, creează obiectele corespunzătoare și afișează **aria totală** a tuturor formelor, rotunjită la 2 zecimale.
 
 ### Date de intrare
 
 - Linia 1: numărul de forme N
-- Următoarele N linii: fie `circle RADIUS`, fie `rectangle WIDTH HEIGHT`
+- Următoarele N linii: fie `circle RADIUS`, fie `rectangle LATIME INALTIME`
 
 ### Rezultat
 

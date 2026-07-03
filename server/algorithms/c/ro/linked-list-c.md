@@ -5,7 +5,7 @@ Implementează o **listă simplu înlănțuită** în C. Citește comenzi de la 
 - `INSERT x` — inserează numărul întreg `x` la **finalul** listei
 - `PRINT` — afișează toate elementele separate prin spații pe o singură linie
 
-Folosește `malloc` pentru a aloca fiecare nod. Fiecare nod are un câmp `int data` și un pointer `struct Node *next`.
+Folosește `malloc` pentru a aloca fiecare nod. Fiecare nod are un câmp `int data` și un pointer `struct Nod *urmator`.
 
 ### Date de intrare
 

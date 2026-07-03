@@ -1,6 +1,6 @@
 # Mediu · Interschimbare cu pointeri
 
-Citește două numere întregi. Scrie o funcție `swap` care primește doi **pointeri la int** și interschimbă valorile lor. Apeleaz-o din `main`, apoi afișează valorile interschimbate.
+Citește două numere întregi. Scrie o funcție `interschimba` care primește doi **pointeri la int** și interschimbă valorile lor. Apeleaz-o din `main`, apoi afișează valorile interschimbate.
 
 Acest exercițiu antrenează transmiterea prin referință în C folosind pointeri și operatorul de dereferențiere `*`.
 

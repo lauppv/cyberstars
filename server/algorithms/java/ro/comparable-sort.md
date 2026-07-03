@@ -1,17 +1,17 @@
 # Mediu · Sortează studenții
 
-Creează o clasă **Student** care implementează `Comparable<Student>`. Fiecare student are un `name` și un `gpa` (double). Studenții trebuie sortați după GPA în ordine **descrescătoare**. Dacă doi studenți au același GPA, sortează-i după nume în **ordine alfabetică**.
+Creează o clasă **Student** care implementează `Comparable<Student>`. Fiecare student are un `nume` și o `medie` (double). Studenții trebuie sortați după GPA în ordine **descrescătoare**. Dacă doi studenți au același GPA, sortează-i după nume în **ordine alfabetică**.
 
 Citește studenții de la stdin, sortează-i și afișează fiecare student pe o linie separată.
 
 ### Date de intrare
 
 - Linia 1: numărul de studenți N
-- Următoarele N linii: `name gpa` (numele este un singur cuvânt, gpa este un număr zecimal)
+- Următoarele N linii: `nume medie` (numele este un singur cuvânt, media este un număr zecimal)
 
 ### Rezultat
 
-N linii, fiecare în formatul: `name gpa` (GPA cu 1 zecimală), sortate după GPA descrescător, apoi după nume crescător.
+N linii, fiecare în formatul: `nume medie` (media cu 1 zecimală), sortate după medie descrescător, apoi după nume crescător.
 
 ### Exemple
 

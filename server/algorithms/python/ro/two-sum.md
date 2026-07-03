@@ -7,11 +7,11 @@ Poți presupune că există **exact o singură** pereche validă, și nu poți f
 ### Date de intrare
 
 - Linia 1: `n` numere întregi separate prin spații (lista).
-- Linia 2: un singur număr întreg `target`.
+- Linia 2: un singur număr întreg `tinta`.
 
 ### Rezultat
 
-Doi indici `i j` indexați de la 0 (cu `i < j`) astfel încât `nums[i] + nums[j] == target`.
+Doi indici `i j` indexați de la 0 (cu `i < j`) astfel încât `numere[i] + numere[j] == tinta`.
 
 ### Exemple
 
