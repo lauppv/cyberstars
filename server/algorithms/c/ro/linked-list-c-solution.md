@@ -34,7 +34,7 @@ int main(void) {
             }
         } else if (strcmp(comanda, "PRINT") == 0) {
             if (cap == NULL) {
-                printf("EMPTY\n");
+                printf("Goala\n");
             } else {
                 Nod *curent = cap;
                 int primul = 1;

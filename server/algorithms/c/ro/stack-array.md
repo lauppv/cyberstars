@@ -3,8 +3,8 @@
 Implementează o structură de date de tip **stivă** folosind un tablou. Citește o secvență de comenzi și procesează-le:
 
 - **push X** — adaugă numărul întreg X în vârful stivei
-- **pop** — elimină și afișează elementul din vârf, sau afișează `Empty` dacă stiva este goală
-- **peek** — afișează elementul din vârf fără a-l elimina, sau afișează `Empty` dacă stiva este goală
+- **pop** — elimină și afișează elementul din vârf, sau afișează `Goala` dacă stiva este goală
+- **peek** — afișează elementul din vârf fără a-l elimina, sau afișează `Goala` dacă stiva este goală
 
 ### Date de intrare
 
@@ -13,7 +13,7 @@ Implementează o structură de date de tip **stivă** folosind un tablou. Citeș
 
 ### Rezultat
 
-Pentru fiecare comandă `pop` sau `peek`, afișează o linie: valoarea sau `Empty`.
+Pentru fiecare comandă `pop` sau `peek`, afișează o linie: valoarea sau `Goala`.
 
 ### Exemple
 
@@ -38,7 +38,7 @@ pop
 push 5
 peek
 Ieșire:
-Empty
+Goala
 5
 ```
 
@@ -53,7 +53,7 @@ pop
 Ieșire:
 2
 1
-Empty
+Goala
 ```
 
-Odată ce stiva e complet golită, apelurile `pop` următoare afișează în continuare `Empty`.
+Odată ce stiva e complet golită, apelurile `pop` următoare afișează în continuare `Goala`.

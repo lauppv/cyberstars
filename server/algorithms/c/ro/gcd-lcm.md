@@ -10,8 +10,8 @@ Algoritmul lui Euclid găsește CMMDC-ul înlocuind în mod repetat numărul mai
 
 ### Rezultat
 
-- Prima linie: `GCD: X` unde X este cel mai mare divizor comun.
-- A doua linie: `LCM: Y` unde Y este cel mai mic multiplu comun.
+- Prima linie: `CMMDC: X` unde X este cel mai mare divizor comun.
+- A doua linie: `CMMMC: Y` unde Y este cel mai mic multiplu comun.
 
 ### Exemple
 
@@ -19,24 +19,24 @@ Algoritmul lui Euclid găsește CMMDC-ul înlocuind în mod repetat numărul mai
 Intrare:
 12 8
 Ieșire:
-GCD: 4
-LCM: 24
+CMMDC: 4
+CMMMC: 24
 ```
 
 ```
 Intrare:
 7 13
 Ieșire:
-GCD: 1
-LCM: 91
+CMMDC: 1
+CMMMC: 91
 ```
 
 ```
 Intrare:
 9 9
 Ieșire:
-GCD: 9
-LCM: 9
+CMMDC: 9
+CMMMC: 9
 ```
 
 Când cele două numere sunt egale, CMMDC-ul și CMMMC-ul sunt amândouă chiar acel număr.

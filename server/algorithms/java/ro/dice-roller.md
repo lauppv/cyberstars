@@ -1,18 +1,18 @@
 # Ușor · Aruncător de zaruri
 
-Creează o clasă **Dice** care simulează aruncarea unui zar. Constructorul primește numărul de fețe și un **seed**. Adaugă o metodă `roll()` care returnează următorul rezultat folosind `java.util.Random`.
+Creează o clasă **Zar** care simulează aruncarea unui zar. Constructorul primește numărul de fețe și un **seed**. Adaugă o metodă `arunca()` care returnează următorul rezultat folosind `java.util.Random`.
 
-**Important:** Creează obiectul `Random` cu `new Random(seed)` și folosește `nextInt(sides) + 1` astfel încât rezultatele să fie reproductibile pentru un anumit seed.
+**Important:** Creează obiectul `Random` cu `new Random(seed)` și folosește `nextInt(fete) + 1` astfel încât rezultatele să fie reproductibile pentru un anumit seed.
 
-Citește numărul de fețe, seed-ul și numărul de aruncări de la stdin. Creează un obiect `Dice` și afișează rezultatul fiecărei aruncări pe o linie separată.
+Citește numărul de fețe, seed-ul și numărul de aruncări de la stdin. Creează un obiect `Zar` și afișează rezultatul fiecărei aruncări pe o linie separată.
 
 ### Date de intrare
 
-- Linia 1: trei numere întregi separate prin spații — sides, seed, numberOfRolls
+- Linia 1: trei numere întregi separate prin spații — fete, seed, aruncari
 
 ### Rezultat
 
-- O linie pe aruncare, cu rezultatul (un număr întreg între 1 și sides).
+- O linie pe aruncare, cu rezultatul (un număr întreg între 1 și fete).
 
 ### Exemple
 
@@ -54,5 +54,5 @@ Ieșire:
 2
 ```
 
-Seed-uri diferite (și `sides` diferit) produc secvențe complet diferite — dar
+Seed-uri diferite (și `fete` diferit) produc secvențe complet diferite — dar
 același seed reproduce mereu aceeași secvență.

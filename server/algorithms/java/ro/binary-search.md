@@ -2,7 +2,7 @@
 
 Implementează **căutarea binară** pe un tablou sortat de numere întregi. Având un tablou sortat și o valoare țintă, găsește indicele țintei. Dacă ținta nu se află în tablou, afișează `-1`.
 
-Folosește algoritmul clasic de căutare binară: menține doi indicatori `low` și `high`, verifică elementul din mijloc și restrânge intervalul de căutare la jumătate la fiecare pas.
+Folosește algoritmul clasic de căutare binară: menține doi indicatori `jos` și `sus`, verifică elementul din mijloc și restrânge intervalul de căutare la jumătate la fiecare pas.
 
 ### Date de intrare
 
@@ -46,7 +46,7 @@ Ieșire:
 0
 ```
 
-Un tablou cu un singur element funcționează la fel — `low` și `high` pornesc amândoi de la 0.
+Un tablou cu un singur element funcționează la fel — `jos` și `sus` pornesc amândoi de la 0.
 
 ```
 Intrare:

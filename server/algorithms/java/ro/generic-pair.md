@@ -1,8 +1,8 @@
 # Dificil · Pereche generică
 
-Creează o clasă generică **Pair<A, B>** care conține două valori de tipuri potențial diferite. Clasa trebuie să aibă metodele `getFirst()`, `getSecond()` și o metodă `swap()` care returnează un nou `Pair<B, A>` cu valorile interschimbate.
+Creează o clasă generică **Pereche<A, B>** care conține două valori de tipuri potențial diferite. Clasa trebuie să aibă metodele `getFirst()`, `getSecond()` și o metodă `swap()` care returnează un nou `Pereche<B, A>` cu valorile interschimbate.
 
-Citește două valori de la stdin (un șir și un număr întreg), creează un Pair, interschimbă-l și afișează atât perechea originală, cât și cea interschimbată.
+Citește două valori de la stdin (un șir și un număr întreg), creează un Pereche, interschimbă-l și afișează atât perechea originală, cât și cea interschimbată.
 
 ### Date de intrare
 

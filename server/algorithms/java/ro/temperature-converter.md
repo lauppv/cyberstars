@@ -7,8 +7,8 @@ Creează o clasă **Temperature** care stochează o valoare de temperatură și 
 
 Dacă temperatura este deja în unitatea țintă, returnează-o neschimbată. Folosește formulele:
 
-- °F la °C: `(value - 32) * 5 / 9`
-- °C la °F: `value * 9 / 5 + 32`
+- °F la °C: `(valoare - 32) * 5 / 9`
+- °C la °F: `valoare * 9 / 5 + 32`
 
 Citește o valoare și o unitate de la stdin. Afișează ambele conversii, rotunjite la o zecimală.
 

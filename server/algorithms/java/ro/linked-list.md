@@ -1,6 +1,6 @@
 # Dificil · Listă înlănțuită
 
-Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Node` cu câmpurile `value` și `next`, și o clasă `LinkedList` cu operațiile `add`, `remove` și `print`.
+Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Nod` cu câmpurile `valoare` și `urmator`, și o clasă `ListaInlantuita` cu operațiile `add`, `remove` și `print`.
 
 Procesează comenzile de la stdin.
 
@@ -9,13 +9,13 @@ Procesează comenzile de la stdin.
 - Linia 1: numărul de comenzi N
 - Următoarele N linii: una dintre:
   - `add X` — adaugă numărul întreg X la sfârșitul listei
-  - `remove X` — elimină prima apariție a lui X (afișează `Not found` dacă X nu se află în listă)
-  - `print` — afișează toate elementele separate prin `->`, sau `Empty` dacă lista este goală
+  - `remove X` — elimină prima apariție a lui X (afișează `Negasit` dacă X nu se află în listă)
+  - `print` — afișează toate elementele separate prin `->`, sau `Goala` dacă lista este goală
 
 ### Rezultat
 
-- Pentru fiecare `print`: elementele în ordine separate prin `->`, sau `Empty`
-- Pentru fiecare `remove` eșuat: `Not found`
+- Pentru fiecare `print`: elementele în ordine separate prin `->`, sau `Goala`
+- Pentru fiecare `remove` eșuat: `Negasit`
 
 ### Exemple
 
@@ -43,8 +43,8 @@ remove 5
 print
 
 Ieșire:
-Not found
-Empty
+Negasit
+Goala
 ```
 
 ```
@@ -60,5 +60,5 @@ Ieșire:
 2 -> 3
 ```
 
-Eliminarea nodului **head** înseamnă că referința `head` a listei trebuie
-mutată chiar ea către al doilea nod — nu există un nod „anterior" de relegat.
+Eliminarea nodului **cap** înseamnă că referința `cap` a listei trebuie
+mutată chiar ea către al doilea nod — nu există un nod „anterior” de relegat.

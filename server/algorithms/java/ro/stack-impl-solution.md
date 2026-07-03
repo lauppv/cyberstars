@@ -38,12 +38,12 @@ public class Main {
                     break;
                 case "pop": {
                     Integer valoare = stiva.pop();
-                    System.out.println(valoare == null ? "Empty" : valoare.toString());
+                    System.out.println(valoare == null ? "Goala" : valoare.toString());
                     break;
                 }
                 case "peek": {
                     Integer valoare = stiva.peek();
-                    System.out.println(valoare == null ? "Empty" : valoare.toString());
+                    System.out.println(valoare == null ? "Goala" : valoare.toString());
                     break;
                 }
             }

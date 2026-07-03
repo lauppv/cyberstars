@@ -14,8 +14,8 @@ int main(void) {
     long cmmdc = x;
     long cmmmc = a / cmmdc * b;
 
-    printf("GCD: %ld\n", cmmdc);
-    printf("LCM: %ld\n", cmmmc);
+    printf("CMMDC: %ld\n", cmmdc);
+    printf("CMMMC: %ld\n", cmmmc);
 
     return 0;
 }

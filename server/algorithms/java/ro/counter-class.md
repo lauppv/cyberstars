@@ -1,6 +1,6 @@
 # Ușor · Clasă contor
 
-Creează o clasă **Counter** care ține evidența unei valori întregi. Aceasta trebuie să suporte trei operații:
+Creează o clasă **Contor** care ține evidența unei valori întregi. Aceasta trebuie să suporte trei operații:
 
 - `increment()` — adaugă 1 la valoare
 - `decrement()` — scade 1 din valoare

@@ -1,6 +1,6 @@
 # Dificil · Putere a lui doi pe biți
 
-Citește un întreg **N**, apoi citește **N** numere întregi pozitive. Pentru fiecare număr, afișează `"YES"` dacă este o **putere a lui 2**, sau `"NO"` în caz contrar. Trebuie să folosești **operatori pe biți** pentru verificare — fără bucle care numără împărțiri.
+Citește un întreg **N**, apoi citește **N** numere întregi pozitive. Pentru fiecare număr, afișează `"DA"` dacă este o **putere a lui 2**, sau `"NU"` în caz contrar. Trebuie să folosești **operatori pe biți** pentru verificare — fără bucle care numără împărțiri.
 
 Un număr `x` este o putere a lui 2 dacă și numai dacă `x > 0` și `(x & (x - 1)) == 0`.
 
@@ -11,7 +11,7 @@ Un număr `x` este o putere a lui 2 dacă și numai dacă `x > 0` și `(x & (x -
 
 ### Rezultat
 
-`N` linii, fiecare `YES` sau `NO`.
+`N` linii, fiecare `DA` sau `NU`.
 
 ### Exemple
 
@@ -23,10 +23,10 @@ Intrare:
 3
 4
 Ieșire:
-YES
-YES
-NO
-YES
+DA
+DA
+NU
+DA
 ```
 
 ```
@@ -36,9 +36,9 @@ Intrare:
 15
 1024
 Ieșire:
-YES
-NO
-YES
+DA
+NU
+DA
 ```
 
 ```
@@ -47,8 +47,8 @@ Intrare:
 1073741824
 1073741823
 Ieșire:
-YES
-NO
+DA
+NU
 ```
 
 `1073741824` este 2^30. `1073741823` este cu unu mai puțin — în binar

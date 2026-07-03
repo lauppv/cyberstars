@@ -1,8 +1,8 @@
 # Mediu · Implementarea unei cozi
 
-Implementează o clasă **Queue** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `enqueue`, `dequeue` și `peek`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
+Implementează o clasă **Coada** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `enqueue`, `dequeue` și `peek`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
 
-Procesează comenzile de la stdin și afișează rezultatele pentru `dequeue` și `peek`. Dacă `dequeue` sau `peek` este apelat pe o coadă goală, afișează `Empty`.
+Procesează comenzile de la stdin și afișează rezultatele pentru `dequeue` și `peek`. Dacă `dequeue` sau `peek` este apelat pe o coadă goală, afișează `Goala`.
 
 ### Date de intrare
 
@@ -14,8 +14,8 @@ Procesează comenzile de la stdin și afișează rezultatele pentru `dequeue` ș
 
 ### Rezultat
 
-- Pentru fiecare `dequeue`: valoarea eliminată, sau `Empty`
-- Pentru fiecare `peek`: valoarea din față, sau `Empty`
+- Pentru fiecare `dequeue`: valoarea eliminată, sau `Goala`
+- Pentru fiecare `peek`: valoarea din față, sau `Goala`
 
 ### Exemple
 
@@ -33,7 +33,7 @@ Ieșire:
 10
 10
 20
-Empty
+Goala
 ```
 
 ```
@@ -56,8 +56,8 @@ dequeue
 peek
 
 Ieșire:
-Empty
-Empty
+Goala
+Goala
 ```
 
-Atât `dequeue`, cât și `peek` trebuie să afișeze `Empty` când coada nu conține nimic.
+Atât `dequeue`, cât și `peek` trebuie să afișeze `Goala` când coada nu conține nimic.

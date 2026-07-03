@@ -42,9 +42,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String linie = sc.nextLine();
         StringAnalyzer analizator = new StringAnalyzer(linie);
-        System.out.println("Vowels: " + analizator.vowelCount());
-        System.out.println("Consonants: " + analizator.consonantCount());
-        System.out.println("Words: " + analizator.wordCount());
+        System.out.println("Vocale: " + analizator.vowelCount());
+        System.out.println("Consoane: " + analizator.consonantCount());
+        System.out.println("Cuvinte: " + analizator.wordCount());
     }
 }
 ```
