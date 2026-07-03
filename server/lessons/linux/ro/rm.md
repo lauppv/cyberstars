@@ -1,7 +1,7 @@
 Când un fișier nu mai este necesar, comanda **rm** (**remove**) îl șterge.
 
 ```bash
-rm old-notes.txt
+rm old-notite.txt
 ```
 
 Fișierul dispare imediat. Rulează `ls` pentru a confirma că a dispărut.
@@ -19,7 +19,7 @@ bun este să rulezi `ls` mai întâi și să te asiguri că ștergi exact ceea c
 `rm` acceptă mai multe nume:
 
 ```bash
-rm log1.txt log2.txt log3.txt
+rm jurnal1.txt jurnal2.txt jurnal3.txt
 ```
 
 ### Întrebare înainte de fiecare ștergere: `rm -i`

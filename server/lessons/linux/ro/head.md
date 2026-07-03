@@ -5,7 +5,7 @@ Comanda **head** afișează doar **primele linii** ale unui fișier. În mod imp
 **primele 10 linii**:
 
 ```bash
-head bigfile.log
+head fisier_mare.log
 ```
 
 ```text
@@ -20,7 +20,7 @@ linia 10
 Opțiunea `-n` setează exact câte linii vrei:
 
 ```bash
-head -n 3 bigfile.log
+head -n 3 fisier_mare.log
 ```
 
 ```text

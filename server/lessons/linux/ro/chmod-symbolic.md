@@ -23,7 +23,7 @@ Grupul și ceilalți nu mai pot modifica acest fișier.
 ### Setarea unor permisiuni exacte
 
 ```bash
-chmod u=rwx,g=rx,o=r file.txt
+chmod u=rwx,g=rx,o=r fisier.txt
 ```
 
 Acest lucru setează proprietarului acces complet, grupului citire+execuție, iar celorlalți doar citire.
@@ -31,7 +31,7 @@ Acest lucru setează proprietarului acces complet, grupului citire+execuție, ia
 ### Mai multe modificări deodată
 
 ```bash
-chmod u+x,g-w file.txt
+chmod u+x,g-w fisier.txt
 ```
 
 Adaugă execuție pentru user ȘI elimină scrierea pentru grup într-o singură comandă.
@@ -42,11 +42,11 @@ După fiecare `chmod`, verifică cu `ls -l` ca să confirmi că schimbarea a avu
 
 ## Misiune: Activează deployerul de firmware
 
-O actualizare critică de firmware este pregătită în `deploy.sh`, dar scriptul nu poate rula încă — îi lipsește permisiunea de execuție pentru proprietar.
+O actualizare critică de firmware este pregătită în `lansare.sh`, dar scriptul nu poate rula încă — îi lipsește permisiunea de execuție pentru proprietar.
 
-1. Folosește `chmod` pentru a adăuga **permisiunea de execuție pentru user (proprietar)** pe `deploy.sh`.
-2. Rulează `ls -l deploy.sh` pentru a confirma schimbarea.
+1. Folosește `chmod` pentru a adăuga **permisiunea de execuție pentru user (proprietar)** pe `lansare.sh`.
+2. Rulează `ls -l lansare.sh` pentru a confirma schimbarea.
 
 **Rezultat așteptat**
 
-`ls -l` arată că proprietarul are acum permisiune de execuție (`x`) pe `deploy.sh`.
+`ls -l` arată că proprietarul are acum permisiune de execuție (`x`) pe `lansare.sh`.

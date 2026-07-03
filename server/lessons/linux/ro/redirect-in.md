@@ -25,7 +25,7 @@ necesar. Devine valoros atunci când:
 
 - Un program citește doar din stdin (nu acceptă nume de fișier ca argument).
 - Vrei să ascunzi numele fișierului din rezultat.
-- Combini `<` cu `>` într-o singură comandă: `sort < unsorted.txt > sorted.txt`.
+- Combini `<` cu `>` într-o singură comandă: `sort < nesortat.txt > sortat.txt`.
 
 ---
 

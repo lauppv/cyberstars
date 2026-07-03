@@ -5,7 +5,7 @@ Numele vine prescurtat de la **concatenate**, dar utilizarea de zi cu zi este si
 **afișează conținutul unui fișier pe ecran**.
 
 ```bash
-cat mission.txt
+cat misiune.txt
 ```
 
 ```text
@@ -26,7 +26,7 @@ mai potrivite (`head`, `tail`, `less`) pentru astfel de situații.
 Dă-i lui `cat` mai multe fișiere și le va afișa unul după altul, lipite împreună:
 
 ```bash
-cat part1.txt part2.txt
+cat parte1.txt parte2.txt
 ```
 
 Această „lipire” este motivul pentru care comanda se numește _concatenate_.

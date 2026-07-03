@@ -2,7 +2,7 @@ Comanda **sed** (stream editor) face transformări de text din mers. Cea mai
 folosită utilizare a ei este **caută și înlocuiește**:
 
 ```bash
-sed 's/old/new/' file.txt
+sed 's/old/new/' fisier.txt
 ```
 
 `s` vine de la **substitute**. Aceasta înlocuiește **prima** apariție a lui `old` cu
@@ -11,7 +11,7 @@ sed 's/old/new/' file.txt
 ### Înlocuiește toate aparițiile pe fiecare linie cu `g`
 
 ```bash
-sed 's/error/WARNING/g' log.txt
+sed 's/error/WARNING/g' jurnal.txt
 ```
 
 `g`-ul de la final (de la _global_) înlocuiește fiecare potrivire de pe linie, nu doar
@@ -23,7 +23,7 @@ Implicit, `sed` afișează rezultatul la stdout. Fișierul rămâne neschimbat. 
 salvezi, folosește redirectarea:
 
 ```bash
-sed 's/old/new/g' data.txt > data_fixed.txt
+sed 's/old/new/g' date.txt > date_reparate.txt
 ```
 
 ### Delimitatori
@@ -31,7 +31,7 @@ sed 's/old/new/g' data.txt > data_fixed.txt
 `/` este convenția, dar poți folosi orice caracter:
 
 ```bash
-sed 's|/usr/bin|/opt/bin|g' paths.txt
+sed 's|/usr/bin|/opt/bin|g' cai.txt
 ```
 
 Folosirea lui `|` evită să escapezi toate slash-urile.

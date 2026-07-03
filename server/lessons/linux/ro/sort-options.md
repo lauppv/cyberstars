@@ -2,7 +2,7 @@
 vine după `8` alfabetic. Ca să sortezi după valoarea numerică reală, folosește `-n`:
 
 ```bash
-sort -n scores.txt
+sort -n scoruri.txt
 ```
 
 ```text
@@ -20,14 +20,14 @@ Multe fișiere de date au coloane separate prin spații. Folosește `-k` pentru 
 un anumit număr de coloană:
 
 ```bash
-sort -k2 roster.txt
+sort -k2 registru.txt
 ```
 
 Aceasta sortează după a **doua** coloană. Combină cu `-n` pentru a sorta numeric după
 acea coloană:
 
 ```bash
-sort -k2 -n roster.txt
+sort -k2 -n registru.txt
 ```
 
 ### Specificarea unui delimitator cu `-t`
@@ -35,7 +35,7 @@ sort -k2 -n roster.txt
 Dacă coloanele sunt separate prin altceva decât spațiu (de exemplu două puncte), spune-i lui sort:
 
 ```bash
-sort -t: -k3 -n data.txt
+sort -t: -k3 -n date.txt
 ```
 
 Aici se folosește `:` ca delimitator și se sortează numeric după coloana 3.

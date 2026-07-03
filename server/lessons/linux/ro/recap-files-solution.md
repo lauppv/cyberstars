@@ -1,14 +1,14 @@
 ```bash
-mkdir project
-mkdir -p project/src project/docs
-touch project/src/main.sh
-cp sablon.txt project/docs/readme.txt
+mkdir proiect
+mkdir -p proiect/sursa proiect/documente
+touch proiect/sursa/principal.sh
+cp sablon.txt proiect/documente/citeste-ma.txt
 rm gunoi.txt
-ls project/src
-cat project/docs/readme.txt
+ls proiect/sursa
+cat proiect/documente/citeste-ma.txt
 ```
 
 ```text
-main.sh
+principal.sh
 Sablon de proiect. Completeaza detaliile.
 ```

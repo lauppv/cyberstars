@@ -4,7 +4,7 @@ tipare și blocuri speciale precum `END` ca să produci rezumate.
 ### Adunarea unei coloane
 
 ```bash
-awk '{sum += $2} END {print sum}' readings.txt
+awk '{sum += $2} END {print sum}' citiri.txt
 ```
 
 Aceasta adună fiecare valoare din coloana 2 și afișează totalul după ce toate
@@ -13,7 +13,7 @@ liniile sunt procesate. Blocul `END` rulează o singură dată, după ultima lin
 ### Numărarea liniilor care se potrivesc cu un tipar
 
 ```bash
-awk '/error/ {count++} END {print count}' log.txt
+awk '/error/ {count++} END {print count}' jurnal.txt
 ```
 
 `/error/` este un tipar — doar liniile care conțin "error" declanșează acțiunea. La
@@ -22,7 +22,7 @@ final, afișăm câte s-au potrivit.
 ### Combinarea tiparului cu calculul
 
 ```bash
-awk '$3 > 100 {print $1, $3}' data.txt
+awk '$3 > 100 {print $1, $3}' date.txt
 ```
 
 Aceasta afișează câmpurile 1 și 3 doar pentru liniile în care câmpul 3 este mai
