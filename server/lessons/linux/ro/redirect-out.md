@@ -46,10 +46,10 @@ orice.
 
 ## Misiune: Extragerea alertelor critice
 
-Rețeaua de senzori a înregistrat citiri în `sensors.log`, dar inginerul-șef vrea să vadă doar avertismentele critice. Extrage-le într-un fișier separat, ca echipa de reparații să știe exact ce trebuie remediat.
+Rețeaua de senzori a înregistrat citiri în `senzori.log`, dar inginerul-șef vrea să vadă doar avertismentele critice. Extrage-le într-un fișier separat, ca echipa de reparații să știe exact ce trebuie remediat.
 
-Folosește `grep` ca să găsești liniile care conțin `critical` în `sensors.log` și redirecționează rezultatul într-un fișier nou numit `alerts.txt`.
+Folosește `grep` ca să găsești liniile care conțin `critical` în `senzori.log` și redirecționează rezultatul într-un fișier nou numit `alerte.txt`.
 
 **Rezultat așteptat**
 
-Rulând `cat alerts.txt`, vei vedea doar cele două linii critice din jurnalul senzorilor.
+Rulând `cat alerte.txt`, vei vedea doar cele două linii critice din jurnalul senzorilor.

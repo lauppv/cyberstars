@@ -1,0 +1,18 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "depozit/manifest.txt",
+      "content": "Articol: propulsor de rezerva x4\nArticol: placare corp x12\nArticol: pachete de ratii de urgenta x200\nArticol: butoaie cu lichid de racire x8\n"
+    },
+    {
+      "path": "depozit/inventar.dat",
+      "content": "PROPULSOR,4,120kg\nPLACA_CORP,12,3400kg\nRATIE,200,50kg\nRACIRE,8,640kg\n"
+    },
+    {
+      "path": "depozit/arhive-vechi/jurnal2019.bak",
+      "content": "date arhivate din expeditia din 2019\ncontine 500 de intrari de date de la senzori\ncopie de rezerva comprimata a istoricului de navigatie\n"
+    }
+  ],
+  "dirs": ["depozit", "depozit/arhive-vechi"]
+}

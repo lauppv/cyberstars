@@ -6,7 +6,7 @@ Hai să construim ceva distractiv — un **simulator de luptă**! Gândește-te 
 
 Fiecare personaj are un **nume**, **viata**, și **putereAtac**. De asemenea, poate să **atace** alt personaj
 
-```java
+```text
 class Personaj {
     String nume;
     int viata;
@@ -37,7 +37,7 @@ Metoda `ataca` reduce viața țintei cu puterea atacatorului. Simplu și eficien
 
 Un Razboinic are **armura** în plus, care reduce daunele primite. Suprascriem câmpurile părintelui și adăugăm logica de reducere a daunelor. Când un Razboinic e atacat, armura absoarbe o parte din daune
 
-```java
+```text
 class Razboinic extends Personaj {
     int armura;
 
@@ -62,7 +62,7 @@ Metoda `ataca` a Razboinicului o suprascrie pe cea a părintelui ca să afișeze
 
 Un Mag are **putereVraja** — magia lui face daune suplimentare peste atacul de bază
 
-```java
+```text
 class Mag extends Personaj {
     int putereVraja;
 

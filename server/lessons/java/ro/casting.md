@@ -52,7 +52,7 @@ Convertirea unui double în int **trunchiază** (taie zecimala), nu rotunjește.
 
 Casting funcționează și cu **obiecte** în ierarhiile de moștenire
 
-```java
+```text
 class Animal {
     void vorbeste() { System.out.println("..."); }
 }

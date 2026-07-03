@@ -110,7 +110,7 @@ public class Main {
 
 A static method has no `this` — there's no object associated with it. So it **cannot** access instance fields or instance methods:
 
-```java
+```text
 class Example {
     int x = 10;           // instance field
     static int y = 20;    // static field

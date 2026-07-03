@@ -94,7 +94,7 @@ This is useful when you need to access child-specific methods. But in general, i
 
 Here's why this matters in real code. Imagine a method that takes any `Criminal`
 
-```java
+```text
 public class Main {
     static void present(Criminal c) {
         c.speak();

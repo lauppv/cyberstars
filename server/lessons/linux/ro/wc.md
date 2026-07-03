@@ -46,12 +46,12 @@ rezultatele automat.
 
 ## Misiune: Numără inventarul
 
-Sistemul de gestionare a proviziilor raportează că `inventory.txt` listează fiecare
+Sistemul de gestionare a proviziilor raportează că `inventar.txt` listează fiecare
 articol din cala de marfă, câte unul pe linie. Logisticianul are nevoie de un număr
 exact înainte ca naveta de reaprovizionare să sosească.
 
 Folosește `wc` cu opțiunea potrivită pentru a număra **câte linii** sunt în
-`inventory.txt`.
+`inventar.txt`.
 
 **Rezultat așteptat**
 

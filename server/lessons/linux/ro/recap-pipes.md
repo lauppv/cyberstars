@@ -19,9 +19,9 @@ Regula de aur: **fiecare comandă face o singură treabă**. Pipe-urile leagă t
 
 ## Misiune: Raportul de telemetrie
 
-Puntea de inginerie tocmai a aruncat telemetrie brută în `telemetry.raw`. Inginerul-șef are nevoie de o listă curată și sortată a tuturor avertismentelor, depusă la dosar înainte de următoarea revizie de sisteme.
+Puntea de inginerie tocmai a aruncat telemetrie brută în `telemetrie.raw`. Inginerul-șef are nevoie de o listă curată și sortată a tuturor avertismentelor, depusă la dosar înainte de următoarea revizie de sisteme.
 
-1. Construiește un pipeline care găsește toate liniile care conțin `WARN` în `telemetry.raw`, le sortează alfabetic și salvează rezultatul în `warnings_sorted.txt` folosind `>`.
+1. Construiește un pipeline care găsește toate liniile care conțin `WARN` în `telemetrie.raw`, le sortează alfabetic și salvează rezultatul în `warnings_sorted.txt` folosind `>`.
 2. Adaugă linia `-- end of report --` la `warnings_sorted.txt` folosind `>>`.
 
 În total, două comenzi.

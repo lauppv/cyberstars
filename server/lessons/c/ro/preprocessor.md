@@ -2,7 +2,7 @@
 
 **#include** copiază întregul conținut al unui fișier în codul tău
 
-```c
+```text
 #include <stdio.h>    // header de sistem — din biblioteca standard C
 #include "fisierul_meu.h"   // fisierul tau — cauta mai intai in directorul curent
 ```

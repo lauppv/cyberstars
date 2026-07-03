@@ -34,12 +34,12 @@ history
 ```text
     1  ls
     2  cd logs
-    3  grep error system.log
+    3  grep error sistem.log
     4  history
 ```
 
 Poți rerula o comandă anterioară tastând `!NUMĂR`; de exemplu, `!3` ar rula din
-nou `grep error system.log`. Asta economisește timp atunci când repeți comenzi
+nou `grep error sistem.log`. Asta economisește timp atunci când repeți comenzi
 complexe.
 
 ---

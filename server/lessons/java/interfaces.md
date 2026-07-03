@@ -1,6 +1,6 @@
 An **interface** is like a contract. It says "any class that implements me MUST have these methods." It's similar to an abstract class, but even more strict — an interface can't have regular fields or constructors (with some exceptions we'll skip for now)
 
-```java
+```text
 interface Printable {
     void printInfo();
 }
@@ -8,7 +8,7 @@ interface Printable {
 
 That's it. No body, no fields, just method signatures. Any class that says `implements Printable` MUST provide a `printInfo()` method
 
-```java
+```text
 class Book implements Printable {
     String title;
     String author;
@@ -31,7 +31,7 @@ Notice the method in the class must be **public**. Interface methods are always 
 
 The big difference between interfaces and abstract classes: a class can implement **multiple** interfaces, but can only extend **ONE** class
 
-```java
+```text
 interface Driver {
     void drive();
 }

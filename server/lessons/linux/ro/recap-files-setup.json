@@ -1,0 +1,8 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "sablon.txt", "content": "Sablon de proiect. Completeaza detaliile.\n" },
+    { "path": "gunoi.txt", "content": "sterge-ma\n" }
+  ],
+  "dirs": []
+}

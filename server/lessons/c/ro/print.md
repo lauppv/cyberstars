@@ -34,7 +34,7 @@ Există ceva boilerplate. Să trecem prin el pe scurt — deocamdată, **ai înc
 
 Linia care face treaba propriu-zisă este
 
-```c
+```text
 printf("hello, world\n");
 ```
 

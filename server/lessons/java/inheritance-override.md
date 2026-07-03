@@ -1,6 +1,6 @@
 Last lesson we saw that a child class can replace a parent's method with its own version. That's called **overriding**. Java has a special annotation for it: **@Override**
 
-```java
+```text
 class Criminal {
     void speak() {
         System.out.println("...");
@@ -17,7 +17,7 @@ class Driver extends Criminal {
 
 The `@Override` annotation isn't technically required — your code compiles without it. But you should **always** use it. Here's why: if you accidentally misspell the method name, Java will think you're creating a NEW method instead of overriding the old one. With `@Override`, Java checks that the parent actually has that method and yells at you if it doesn't
 
-```java
+```text
 class Driver extends Criminal {
     @Override
     void speek() {  // TYPO! Compiler error because Criminal has no speek()
@@ -70,7 +70,7 @@ Car engine revving!
 
 **Overriding**: child class replaces a parent method (same name, same parameters)
 
-```java
+```text
 class Criminal {
     void speak() { ... }
 }
@@ -82,7 +82,7 @@ class Driver extends Criminal {
 
 **Overloading**: same class has multiple methods with the same name but DIFFERENT parameters
 
-```java
+```text
 class Garage {
     void repair(String car) {
         System.out.println("Repairing " + car);

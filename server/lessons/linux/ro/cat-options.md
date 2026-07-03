@@ -42,13 +42,13 @@ fișier nou folosind redirecționarea. Deocamdată, bucură-te doar de vederea p
 
 ## Misiune: Asamblează lista echipajului
 
-Lista echipajului stației s-a împărțit în două fișiere: `team-a.txt` și `team-b.txt`.
+Lista echipajului stației s-a împărțit în două fișiere: `echipa-a.txt` și `echipa-b.txt`.
 Centrul de comandă are nevoie de o vedere combinată și de un apel nominal numerotat
 al echipei A.
 
-1. Folosește `cat` pentru a afișa `team-a.txt` și `team-b.txt` împreună, dintr-o
+1. Folosește `cat` pentru a afișa `echipa-a.txt` și `echipa-b.txt` împreună, dintr-o
    singură comandă.
-2. Rulează `cat -n` pe `team-a.txt` pentru a vedea liniile sale numerotate.
+2. Rulează `cat -n` pe `echipa-a.txt` pentru a vedea liniile sale numerotate.
 
 **Rezultat așteptat**
 

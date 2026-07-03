@@ -20,10 +20,10 @@ Echipajul anterior a evacuat în grabă și a lăsat în urmă trei fișiere de 
 Centrul de comandă are nevoie de un raport de stare rapid înainte să putem reocupa
 stația.
 
-1. Folosește `cat` pentru a citi `summary.log` integral.
-2. Folosește `head -n 3` pentru a vedea **primele 3 linii** din `events.log`.
-3. Folosește `tail -n 3` pentru a vedea **ultimele 3 linii** din `events.log`.
-4. Folosește `wc -l` pentru a număra liniile din `errors.log`.
+1. Folosește `cat` pentru a citi `rezumat.log` integral.
+2. Folosește `head -n 3` pentru a vedea **primele 3 linii** din `evenimente.log`.
+3. Folosește `tail -n 3` pentru a vedea **ultimele 3 linii** din `evenimente.log`.
+4. Folosește `wc -l` pentru a număra liniile din `erori.log`.
 
 **Rezultat așteptat**
 

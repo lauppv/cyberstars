@@ -1,0 +1,24 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "jurnale/reactor.log",
+      "content": "[OK] Temperatura nominala\n[OK] Presiune stabila\n[WARN] Nivel agent de racire 42%\n"
+    },
+    {
+      "path": "jurnale/comunicatii.log",
+      "content": "[OK] Putere semnal 98%\n[OK] Antena aliniata\n"
+    },
+    {
+      "path": "jurnale/navigatie.log",
+      "content": "[OK] Curs blocat\n[OK] ETA 3 zile\n[WARN] Micro-resturi detectate in fata\n"
+    }
+  ],
+  "dirs": ["jurnale"],
+  "processes": [
+    { "user": "root", "pid": "1", "cmd": "/sbin/init" },
+    { "user": "root", "pid": "42", "cmd": "/usr/bin/reactor-monitor" },
+    { "user": "root", "pid": "305", "cmd": "/usr/sbin/life-support" },
+    { "user": "student", "pid": "1201", "cmd": "bash" }
+  ]
+}

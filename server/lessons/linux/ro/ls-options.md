@@ -12,7 +12,7 @@ ls -a
 ```
 
 ```text
-.  ..  .secret.txt  crew.txt  mission.txt
+.  ..  .secret.txt  echipaj.txt  misiune.txt
 ```
 
 Vei vedea și `.` (directorul curent) și `..` (directorul părinte) — mai multe
@@ -28,8 +28,8 @@ ls -l
 ```
 
 ```text
--rw-r--r-- 1 student student   24 May 16 10:00 crew.txt
-drwxr-xr-x 2 student student 4096 May 16 10:00 reports
+-rw-r--r-- 1 student student   14 May 16 10:00 echipaj.txt
+drwxr-xr-x 2 student student 4096 May 16 10:00 rapoarte
 ```
 
 Primul caracter îți spune tipul:

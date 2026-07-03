@@ -31,7 +31,7 @@ int main(void) {
 
 And here is how we create a student dynamically
 
-```c
+```text
 Student *create_student(const char *name, int grade) {
     Student *s = malloc(sizeof(Student));
     strncpy(s->name, name, sizeof(s->name) - 1);
@@ -47,7 +47,7 @@ The function allocates memory on the heap, fills in the fields and returns a poi
 
 To print all students
 
-```c
+```text
 void print_all(Student *students[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%s: %d\n", students[i]->name, students[i]->grade);
@@ -61,7 +61,7 @@ Notice **students[i]->name** — each element of the array is a **pointer to a S
 
 To find the top student
 
-```c
+```text
 Student *find_top(Student *students[], int n) {
     Student *top = students[0];
     for (int i = 1; i < n; i++) {

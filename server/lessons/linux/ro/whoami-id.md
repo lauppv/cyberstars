@@ -48,8 +48,8 @@ Un document clasificat a fost găsit în directorul tău home. Înainte ca cinev
 
 1. Rulează `whoami` pentru a-ți confirma numele de utilizator.
 2. Rulează `id` pentru a-ți vedea identitatea completă, inclusiv grupurile.
-3. Rulează `ls -l classified.doc` pentru a verifica cine deține fișierul.
+3. Rulează `ls -l clasificat.doc` pentru a verifica cine deține fișierul.
 
 **Rezultat așteptat**
 
-Vezi numele tău de utilizator (`student`), uid/gid/grupurile tale, și că `classified.doc` este deținut de `student` în grupul `crew`.
+Vezi numele tău de utilizator (`student`), uid/gid/grupurile tale, și că `clasificat.doc` este deținut de `student` în grupul `crew`.

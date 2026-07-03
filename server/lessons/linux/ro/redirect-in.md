@@ -31,9 +31,9 @@ necesar. Devine valoros atunci când:
 
 ## Misiune: Numărătoarea echipajului
 
-Sistemul de menținere a vieții are nevoie de un număr exact al echipajului ca să calibreze nivelurile de oxigen. Lista este stocată în `crew.txt`, câte un nume pe linie.
+Sistemul de menținere a vieții are nevoie de un număr exact al echipajului ca să calibreze nivelurile de oxigen. Lista este stocată în `echipaj.txt`, câte un nume pe linie.
 
-Folosește redirecționarea intrării pentru a număra echipajul: `wc -l < crew.txt`.
+Folosește redirecționarea intrării pentru a număra echipajul: `wc -l < echipaj.txt`.
 
 **Rezultat așteptat**
 

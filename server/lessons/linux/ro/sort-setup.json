@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "provizii.txt",
+      "content": "rezervoare de oxigen\nbaterii\npachete de ratii\ntruse medicale\nfiltre de apa\nlazi cu munitie\n"
+    }
+  ],
+  "dirs": []
+}

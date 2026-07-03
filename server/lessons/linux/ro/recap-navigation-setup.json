@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "citeste-ma.txt", "content": "Bun venit la bord, cadet.\n" },
+    { "path": "statie/jurnal.txt", "content": "Statia este online.\n" },
+    { "path": "statie/arhiva/vechi.txt", "content": "Inregistrare arhivata.\n" },
+    { "path": "statie/arhiva/.seif/coduri.txt", "content": "cod seif: 9920\n" }
+  ],
+  "dirs": ["statie", "statie/arhiva", "statie/arhiva/.seif"]
+}

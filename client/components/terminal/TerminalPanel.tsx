@@ -12,6 +12,8 @@ interface Props {
   lessonCompleted?: boolean;
   isMarking?: boolean;
   onMarkComplete?: () => void;
+  hasSolution?: boolean;
+  onShowSolution?: () => void;
 }
 
 export function TerminalPanel({
@@ -24,6 +26,8 @@ export function TerminalPanel({
   lessonCompleted,
   isMarking,
   onMarkComplete,
+  hasSolution,
+  onShowSolution,
 }: Props) {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
@@ -84,6 +88,14 @@ export function TerminalPanel({
           {t('terminal.label')}
         </div>
         <div className="flex items-center gap-2">
+          {hasSolution && onShowSolution && (
+            <button
+              onClick={onShowSolution}
+              className="text-[12px] px-3 py-1 rounded-[var(--radius-sm)] bg-[var(--warning)]/10 border border-[var(--warning)]/30 text-[var(--warning)] font-semibold hover:bg-[var(--warning)]/20 transition cursor-pointer"
+            >
+              {t('lesson.showSolution')}
+            </button>
+          )}
           {onMarkComplete && (
             <button
               onClick={onMarkComplete}

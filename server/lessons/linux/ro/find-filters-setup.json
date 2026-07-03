@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "statie/notite.txt", "content": "notite\n" },
+    { "path": "statie/rulare.log", "content": "jurnal\n" },
+    { "path": "statie/hangar/manifest.txt", "content": "manifest\n" },
+    { "path": "statie/hangar/date.bin", "content": "binar\n" }
+  ],
+  "dirs": ["statie", "statie/hangar"]
+}

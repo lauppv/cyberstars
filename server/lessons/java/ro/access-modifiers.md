@@ -133,7 +133,7 @@ Bani: 50000
 2. Metodele sunt **`public`** — ele oferă acces controlat
 3. Constructorul este **`public`** — ca oamenii să poată crea efectiv obiecte
 
-```java
+```text
 class Portofel {
     private int bani;
 
@@ -167,7 +167,7 @@ Asta îți menține datele în siguranță. Nimeni nu poate seta `bani` la -999,
 
 Încă un lucru: variabilele locale (din interiorul metodelor) nu folosesc deloc modificatori de acces. Ele sunt automat invizibile în afara metodei lor — fără niciun cuvânt-cheie:
 
-```java
+```text
 public class Main {
     void faceTreaba() {
         int temp = 42;          // fara public/private - este locala

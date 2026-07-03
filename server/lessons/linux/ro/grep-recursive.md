@@ -6,12 +6,12 @@ Opțiunea `-r` (**recursivă**) îi spune lui `grep` să caute în **fiecare fi�
 dintr-un întreg arbore de directoare**.
 
 ```bash
-grep -r "sector 7" logs
+grep -r "sector 7" jurnale
 ```
 
 ```text
-logs/january.log:Mission to sector 7 approved.
-logs/old/archive.log:Sector 7 survey complete.
+jurnale/ianuarie.log:Misiune spre sectorul 7 aprobata.
+jurnale/vechi/arhiva.log:Recunoastere sector 7 finalizata.
 ```
 
 Observă că ieșirea începe acum cu **numele fișierului** pentru fiecare potrivire,
@@ -32,8 +32,8 @@ grep -r "error" .
 Căutarea recursivă funcționează împreună cu opțiunile pe care le știi deja:
 
 ```bash
-grep -ri "error" logs     # recursiva + insensibila la majuscule
-grep -rn "error" logs     # recursiva + cu numere de linie
+grep -ri "error" jurnale     # recursiva + insensibila la majuscule
+grep -rn "error" jurnale     # recursiva + cu numere de linie
 ```
 
 `grep -r` este modul în care răspunzi la întrebarea „este menționat acest cuvânt
@@ -44,10 +44,10 @@ _undeva_ în proiectul meu?”.
 ## Misiune: Investigarea defecțiunilor
 
 A fost raportată o defecțiune recurentă, iar echipa de mentenanță are nevoie de
-fiecare apariție a cuvântului `failure` din jurnalele stației. Folderul `logs`
+fiecare apariție a cuvântului `failure` din jurnalele stației. Folderul `jurnale`
 conține fișiere răspândite în mai multe sub-foldere.
 
-Folosește `grep -r` pentru a căuta `failure` în întregul director `logs`.
+Folosește `grep -r` pentru a căuta `failure` în întregul director `jurnale`.
 
 **Rezultat așteptat**
 

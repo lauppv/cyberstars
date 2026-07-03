@@ -22,9 +22,9 @@ O nouă misiune de explorare în spațiu îndepărtat a fost aprobată și are n
 1. Creează un folder numit `project`.
 2. În interiorul lui, creează două subfoldere printr-o singură comandă: `mkdir -p project/src project/docs`.
 3. În `project/src`, creează un fișier gol numit `main.sh`.
-4. Copiază fișierul existent `template.txt` în `project/docs/readme.txt`.
-5. Șterge fișierul rezidual `junk.txt` din directorul tău home.
+4. Copiază fișierul existent `sablon.txt` în `project/docs/readme.txt`.
+5. Șterge fișierul rezidual `gunoi.txt` din directorul tău home.
 
 **Rezultat așteptat**
 
-Rulând `ls project/src` apare `main.sh`. Rulând `cat project/docs/readme.txt` apare textul template-ului. Fișierul `junk.txt` nu mai există în directorul tău home.
+Rulând `ls project/src` apare `main.sh`. Rulând `cat project/docs/readme.txt` apare textul șablonului. Fișierul `gunoi.txt` nu mai există în directorul tău home.

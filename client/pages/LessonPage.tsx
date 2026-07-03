@@ -290,6 +290,8 @@ export function LessonPage() {
               lessonCompleted={lessonCompleted}
               isMarking={isMarking}
               onMarkComplete={isLoggedIn ? handleMarkComplete : undefined}
+              hasSolution={!!solution}
+              onShowSolution={() => setShowSolution(true)}
             />
           </div>
         ) : (

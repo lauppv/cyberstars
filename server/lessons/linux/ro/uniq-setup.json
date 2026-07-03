@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "acces_usa.log",
+      "content": "Tanaka\nVoss\nTanaka\nChen\nVoss\nVoss\nTanaka\nChen\n"
+    }
+  ],
+  "dirs": []
+}

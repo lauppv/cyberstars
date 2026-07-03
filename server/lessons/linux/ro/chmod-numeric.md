@@ -21,7 +21,7 @@ cifră reprezintă un grup (user, group, others) și este **suma** dintre:
 
 ```bash
 chmod 755 script.sh
-chmod 644 readme.txt
+chmod 644 citeste-ma.txt
 ```
 
 Forma numerică setează **toate** permisiunile deodată — nu există „adaugă" sau „elimină", înlocuiești întregul set.
@@ -35,11 +35,11 @@ Forma numerică setează **toate** permisiunile deodată — nu există „adaug
 
 ## Misiune: Securizează scriptul propulsorului
 
-Scriptul `engine_control.sh` aprinde propulsorul principal — doar personalul autorizat ar trebui să aibă acces la el. Politica de securitate a stației cere permisiunea `750` (proprietar: acces complet, grup: citire și execuție, ceilalți: nimic).
+Scriptul `control_motor.sh` aprinde propulsorul principal — doar personalul autorizat ar trebui să aibă acces la el. Politica de securitate a stației cere permisiunea `750` (proprietar: acces complet, grup: citire și execuție, ceilalți: nimic).
 
-1. Folosește `chmod 750` pentru a seta permisiunile corecte pe `engine_control.sh`.
-2. Rulează `ls -l engine_control.sh` pentru a verifica schimbarea.
+1. Folosește `chmod 750` pentru a seta permisiunile corecte pe `control_motor.sh`.
+2. Rulează `ls -l control_motor.sh` pentru a verifica schimbarea.
 
 **Rezultat așteptat**
 
-`ls -l` arată `-rwxr-x---` pentru `engine_control.sh`.
+`ls -l` arată `-rwxr-x---` pentru `control_motor.sh`.

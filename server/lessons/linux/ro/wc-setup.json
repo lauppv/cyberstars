@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "inventar.txt",
+      "content": "rezervor oxigen\nfiltru apa\npachet ratii\ntrusa unelte\npistol semnalizare\ntrusa medicala\n"
+    }
+  ],
+  "dirs": []
+}

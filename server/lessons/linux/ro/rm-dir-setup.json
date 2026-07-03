@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "misiune/plan.txt", "content": "Planul misiunii.\n" },
+    { "path": "date-vechi/a.log", "content": "jurnal vechi a\n" },
+    { "path": "date-vechi/b.log", "content": "jurnal vechi b\n" }
+  ],
+  "dirs": ["compartiment-gol", "date-vechi", "misiune"]
+}

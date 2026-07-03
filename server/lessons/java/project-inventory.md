@@ -8,7 +8,7 @@ This project brings together everything you've learned: **classes**, **construct
 
 Every item in our inventory has a **name**, a **quantity**, and a **price** per unit. Let's model that
 
-```java
+```text
 class Item {
     String name;
     int quantity;
@@ -30,7 +30,7 @@ Simple and clean. An `Item` knows its name, how many we have, and what each one 
 
 The `Inventory` class holds a list of items and provides methods to manage them. This is where ArrayList comes in — we don't know how many supplies will be stored, so a fixed-size array won't cut it
 
-```java
+```text
 import java.util.ArrayList;
 
 class Inventory {
@@ -54,7 +54,7 @@ The inventory starts empty. `addItem` adds an item to the list
 
 For `removeItem`, we'll search by name and remove the first match. We need a regular for loop (not for-each) because we need the index to remove
 
-```java
+```text
 public class Main {
     void removeItem(String name) {
         for (int i = 0; i < items.size(); i++) {
@@ -75,7 +75,7 @@ We loop through items, check if the name matches, remove it, and **return** imme
 
 Let's print each item in a nice format. This is where String.format comes in handy
 
-```java
+```text
 public class Main {
     void printAll() {
         for (Item item : items) {
@@ -97,7 +97,7 @@ Medical kit x5 @ $25.00
 
 The total value is the sum of `quantity * price` for every item. Classic loop-and-accumulate pattern
 
-```java
+```text
 public class Main {
     double totalValue() {
         double total = 0;

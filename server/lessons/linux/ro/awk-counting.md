@@ -33,7 +33,7 @@ mare decât 100. Tiparele awk pot fi regex (`/word/`) sau condiții
 
 ## Misiune: Raport greutate marfă
 
-Stația se apropie de o manevră cu asistență gravitațională, iar pilotul are nevoie să știe masa totală a încărcăturii. Fișierul `cargo_weight.txt` listează fiecare obiect și greutatea sa în coloana 2.
+Stația se apropie de o manevră cu asistență gravitațională, iar pilotul are nevoie să știe masa totală a încărcăturii. Fișierul `greutate_marfa.txt` listează fiecare obiect și greutatea sa în coloana 2.
 
 Folosește `awk` ca să **aduni toate greutățile** (coloana 2) și să afișezi totalul.
 

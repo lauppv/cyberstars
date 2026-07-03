@@ -58,16 +58,16 @@ sau este greșită.
 
 ## Misiune: Sondarea datelor necunoscute
 
-O scanare de rutină a găsit un fișier numit `mystery.dat` în directorul tău
+O scanare de rutină a găsit un fișier numit `mister.dat` în directorul tău
 personal. Extensia este necunoscută și nimeni nu știe ce conține. Înainte de a-l
 deschide, trebuie să investighezi.
 
 1. Folosește `which ls` pentru a confirma că uneltele de bază sunt disponibile pe
    acest sistem.
-2. Folosește `file mystery.dat` pentru a identifica ce fel de date se află de
+2. Folosește `file mister.dat` pentru a identifica ce fel de date se află de
    fapt înăuntru.
 
 **Rezultat așteptat**
 
-Vezi calea unde este instalat `ls`, iar `file` dezvăluie că `mystery.dat` este
+Vezi calea unde este instalat `ls`, iar `file` dezvăluie că `mister.dat` este
 text ASCII simplu, în ciuda numelui său suspect.

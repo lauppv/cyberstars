@@ -51,10 +51,10 @@ Această comandă filtrează mai întâi erorile, apoi le sortează alfabetic.
 
 ## Misiune: Lista de priorități pentru cargo
 
-O navetă de aprovizionare tocmai a andocat, iar manifestul din cala de marfă (`supplies.txt`) este în dezordine. Ofițerul cu logistica vrea ca articolele să fie listate în ordine alfabetică inversă pentru echipa de descărcare.
+O navetă de aprovizionare tocmai a andocat, iar manifestul din cala de marfă (`provizii.txt`) este în dezordine. Ofițerul cu logistica vrea ca articolele să fie listate în ordine alfabetică inversă pentru echipa de descărcare.
 
-Sortează `supplies.txt` în **ordine alfabetică inversă** și afișează rezultatul pe ecran.
+Sortează `provizii.txt` în **ordine alfabetică inversă** și afișează rezultatul pe ecran.
 
 **Rezultat așteptat**
 
-Cele șase articole apar de la `water filters` până la `ammo crates`.
+Cele șase articole apar de la `truse medicale` până la `baterii`.

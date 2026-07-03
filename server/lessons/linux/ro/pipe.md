@@ -5,7 +5,7 @@ niciun fișier intermediar.
 Tiparul este: `COMANDĂ1 | COMANDĂ2`.
 
 ```bash
-cat system.log | grep error
+cat sistem.log | grep error
 ```
 
 ```text
@@ -16,7 +16,7 @@ error: low coolant
 Aici `cat` afișează fișierul, iar `grep` primește acel rezultat și îl filtrează. Pipe-ul
 le conectează în timp real.
 
-### De ce nu doar `grep error system.log`?
+### De ce nu doar `grep error sistem.log`?
 
 Ambele funcționează! Dar pipe-urile strălucesc atunci când înlănțui comenzi care **nu**
 pot accepta un nume de fișier ca argument sau când construiești lanțuri mai lungi
@@ -36,9 +36,9 @@ liniile.
 
 ## Misiune: Filtrul semnalelor de pericol
 
-Ofițerul de comunicații al stației a marcat `transmissions.log` — conține mesaje de rutină amestecate cu apeluri de pericol. Centrul de comandă vrea doar urgențele.
+Ofițerul de comunicații al stației a marcat `transmisii.log` — conține mesaje de rutină amestecate cu apeluri de pericol. Centrul de comandă vrea doar urgențele.
 
-Folosește un **pipe** ca să trimiți rezultatul lui `cat transmissions.log` în `grep` și să afișezi doar liniile care conțin `mayday`.
+Folosește un **pipe** ca să trimiți rezultatul lui `cat transmisii.log` în `grep` și să afișezi doar liniile care conțin `mayday`.
 
 **Rezultat așteptat**
 

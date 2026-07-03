@@ -28,7 +28,7 @@ diagnoză.
    monitorul reactorului și suportul vital rulează.
 2. Rulează `df -h` pentru a verifica spațiul disponibil pe toate sistemele de
    fișiere.
-3. Rulează `du -sh logs/` pentru a măsura cât de mult a crescut directorul de
+3. Rulează `du -sh jurnale/` pentru a măsura cât de mult a crescut directorul de
    loguri.
 4. Rulează `date` pentru a marca temporal această inspecție.
 5. Rulează `history` pentru a confirma că fiecare comandă de diagnoză este
@@ -38,4 +38,4 @@ diagnoză.
 
 Ar trebui să vezi procesele `reactor-monitor` și `life-support` active,
 statisticile de utilizare a discului pentru toate punctele de montare,
-dimensiunea lui `logs/`, data curentă și istoricul complet al comenzilor tale.
+dimensiunea lui `jurnale/`, data curentă și istoricul complet al comenzilor tale.

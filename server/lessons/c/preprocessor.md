@@ -2,7 +2,7 @@ Before the compiler even sees your code, a special step runs first: the **prepro
 
 **#include** copies the entire contents of a file into your code
 
-```c
+```text
 #include <stdio.h>    // system header — from the standard C library
 #include "myheader.h"   // your own file — searched for in the current directory first
 ```

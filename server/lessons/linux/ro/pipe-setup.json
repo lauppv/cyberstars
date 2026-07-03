@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "transmisii.log",
+      "content": "rutina: zona de andocare libera\nmayday: defectiune motor pod 9\nrutina: schimb de tura alpha\nmayday: scurgere de oxigen sectorul 4\nrutina: transfer marfa finalizat\nrutina: patrulare finalizata\nmayday: avertizare coliziune centura de asteroizi\n"
+    }
+  ],
+  "dirs": []
+}

@@ -6,7 +6,7 @@ Comanda `grep` simplă este utilă, dar câteva opțiuni o fac mult mai intelige
 Opțiunea `-i` face căutarea **insensibilă la majuscule/minuscule**:
 
 ```bash
-grep -i error system.log
+grep -i error sistem.log
 ```
 
 Astfel se potrivesc `error`, `Error`, `ERROR` și orice combinație.
@@ -17,7 +17,7 @@ Opțiunea `-c` afișează doar **numărul** de linii care se potrivesc, nu și l
 sine:
 
 ```bash
-grep -c warning system.log
+grep -c warning sistem.log
 ```
 
 ```text
@@ -29,7 +29,7 @@ grep -c warning system.log
 Opțiunea `-v` inversează căutarea — afișează liniile care **NU** conțin cuvântul:
 
 ```bash
-grep -v info system.log
+grep -v info sistem.log
 ```
 
 Astfel se ascund toate liniile cu `info` și se afișează tot restul.
@@ -39,14 +39,14 @@ Astfel se ascund toate liniile cu `info` și se afișează tot restul.
 Opțiunea `-n` pune **numărul liniei** în fața fiecărei potriviri:
 
 ```bash
-grep -n error system.log
+grep -n error sistem.log
 ```
 
 ```text
 5:error: sensor 3 offline
 ```
 
-Opțiunile se pot combina, la fel ca la `ls`: `grep -in error system.log` este
+Opțiunile se pot combina, la fel ca la `ls`: `grep -in error sistem.log` este
 insensibilă la majuscule _și_ numerotată.
 
 ---
@@ -54,12 +54,12 @@ insensibilă la majuscule _și_ numerotată.
 ## Misiune: Raport de final de tură
 
 Înainte de a preda schimbul echipajului de noapte, trebuie să pregătești un rezumat
-al fișierului `system.log`: câte avertismente s-au înregistrat și ce evenimente
+al fișierului `sistem.log`: câte avertismente s-au înregistrat și ce evenimente
 neobișnuite au avut loc.
 
-1. Folosește `grep -c warning system.log` pentru a număra câte linii conțin
+1. Folosește `grep -c warning sistem.log` pentru a număra câte linii conțin
    `warning`.
-2. Folosește `grep -v info system.log` pentru a afișa fiecare linie care **nu**
+2. Folosește `grep -v info sistem.log` pentru a afișa fiecare linie care **nu**
    conține `info`.
 
 **Rezultat așteptat**

@@ -1,0 +1,9 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "documente/citeste-ma.txt", "content": "documentatie\n" },
+    { "path": "date/jurnale/rulare.log", "content": "date de jurnal\n" },
+    { "path": "date/seif/secret.txt", "content": "clasificat\n" }
+  ],
+  "dirs": ["documente", "date", "date/jurnale", "date/seif"]
+}

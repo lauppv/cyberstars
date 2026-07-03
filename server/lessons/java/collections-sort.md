@@ -126,7 +126,7 @@ For **descending** order, flip it: `other.speed - this.speed`
 
 To sort by **String** (e.g., by name), use String's own `.compareTo()`
 
-```java
+```text
 public int compareTo(Car other) {
     return this.name.compareTo(other.name);
 }

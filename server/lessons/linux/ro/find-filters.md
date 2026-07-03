@@ -48,14 +48,14 @@ Asta găsește fiecare fișier mai mare de 1 KB.
 ## Misiune: Scanarea directorului stației
 
 Inginerul-șef are nevoie de o privire de ansamblu asupra structurii folderului
-`station` înainte de a reorganiza sistemul de fișiere.
+`statie` înainte de a reorganiza sistemul de fișiere.
 
-1. Folosește `find station -type d` pentru a lista **doar directoarele** din
-   `station`.
-2. Folosește `find station -type f -name "*.txt"` pentru a lista **doar fișierele
-   `.txt`** din `station`.
+1. Folosește `find statie -type d` pentru a lista **doar directoarele** din
+   `statie`.
+2. Folosește `find statie -type f -name "*.txt"` pentru a lista **doar fișierele
+   `.txt`** din `statie`.
 
 **Rezultat așteptat**
 
 Mai întâi vezi căile directoarelor, apoi căile tuturor fișierelor `.txt` găsite sub
-`station`.
+`statie`.

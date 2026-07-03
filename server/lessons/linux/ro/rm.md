@@ -44,9 +44,9 @@ este un obicei sigur atunci când ștergi ceva de care nu ești sigur.
 
 Un scan de mentenanță de rutină a detectat fișiere reziduale care aglomerează spațiul de lucru al stației. Trebuie eliminate, dar ai grijă să nu ștergi ceva important.
 
-1. Șterge fișierul `junk.txt`.
+1. Șterge fișierul `gunoi.txt`.
 2. Șterge fișierul `temp.log`.
 
 **Rezultat așteptat**
 
-Ambele fișiere inutile au dispărut, dar `mission.txt` rămâne în siguranță în directorul tău home.
+Ambele fișiere inutile au dispărut, dar `misiune.txt` rămâne în siguranță în directorul tău home.

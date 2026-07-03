@@ -1,0 +1,5 @@
+{
+  "cwd": "/home/student",
+  "files": [{ "path": "ciorna.txt", "content": "Raport de teren din sectorul 7.\n" }],
+  "dirs": ["arhiva"]
+}

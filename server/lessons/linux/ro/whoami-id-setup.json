@@ -1,0 +1,8 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "clasificat.doc", "content": "TOP SECRET: Coordonatele statiei sunt criptate.\n" },
+    { "path": "anunt_public.txt", "content": "Cantina se inchide la ora 2200.\n" }
+  ],
+  "dirs": []
+}

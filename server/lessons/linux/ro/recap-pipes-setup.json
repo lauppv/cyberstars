@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "telemetrie.raw",
+      "content": "OK: propulsor 1 nominal\nWARN: celula de combustibil B scazuta\nOK: panou solar aliniat\nWARN: antena dezaliniata\nERR: defect giroscop\nWARN: presiune agent de racire in scadere\nOK: suport vital verde\nERR: alimentare de rezerva offline\n"
+    }
+  ],
+  "dirs": []
+}

@@ -41,10 +41,10 @@ să citești mijlocul.
 ## Misiune: Verifică ultimele alerte
 
 Ceva a declanșat o alertă pe stație. Cele mai recente evenimente sunt mereu la
-sfârșitul fișierului `system.log`. Trebuie să verifici ce tocmai s-a întâmplat.
+sfârșitul fișierului `sistem.log`. Trebuie să verifici ce tocmai s-a întâmplat.
 
 Folosește `tail` cu opțiunea `-n` pentru a afișa doar **ultimele 4 linii** din
-`system.log`.
+`sistem.log`.
 
 **Rezultat așteptat**
 

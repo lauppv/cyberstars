@@ -1,8 +1,8 @@
 import { api } from './apiClient.js';
 import type { TerminalSessionInfo, TerminalExecResult } from '../../shared/terminal.js';
 
-export function createTerminalSession(courseKey: string, lessonSlug: string) {
-  return api.post<TerminalSessionInfo>('/api/terminal/session', { courseKey, lessonSlug });
+export function createTerminalSession(courseKey: string, lessonSlug: string, lang?: string) {
+  return api.post<TerminalSessionInfo>('/api/terminal/session', { courseKey, lessonSlug, lang });
 }
 
 export function execTerminalCommand(sessionId: string, command: string) {

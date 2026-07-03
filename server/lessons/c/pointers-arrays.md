@@ -59,13 +59,13 @@ int main(void) {
 
 Remember when we said that passing an array to a function makes **sizeof** stop working? Now you understand **why**. When you write
 
-```c
+```text
 void print(int array[]) { }
 ```
 
 the compiler actually sees
 
-```c
+```text
 void print(int *array) { }
 ```
 

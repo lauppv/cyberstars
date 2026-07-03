@@ -2,7 +2,7 @@ Uneori vrei o clasă care este un **șablon** — definește ce TREBUIE să fac�
 
 Gândește-te așa: „Vehicul" este un concept. Nu poți construi pur și simplu un „vehicul" generic — construiești o mașină sport, o motocicletă, un camion. Dar toate împărtășesc ideea de a fi un vehicul. În Java, ai face Vehicul **abstract**
 
-```java
+```text
 abstract class Vehicul {
     String nume;
 
@@ -89,7 +89,7 @@ Angel: 200 km/h
 
 O clasă abstractă poate avea **atât** metode abstracte (pe care copiii trebuie să le implementeze) **cât și** metode **obișnuite** (pe care copiii le moștenesc gratuit)
 
-```java
+```text
 abstract class Personaj {
     String nume;
     int viata;

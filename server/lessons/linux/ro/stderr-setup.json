@@ -1,0 +1,7 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "raport.txt", "content": "Raport de misiune: toate sistemele sunt verzi.\n" }
+  ],
+  "dirs": []
+}

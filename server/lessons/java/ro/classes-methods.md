@@ -136,7 +136,7 @@ Iată regula:
 
 Metodele statice nu pot accesa câmpuri de instanță (pentru că nu există niciun obiect). Metodele de instanță pot accesa orice
 
-```java
+```text
 class Exemplu {
     int x = 10;          // camp de instanta
 

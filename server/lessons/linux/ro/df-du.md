@@ -17,13 +17,13 @@ tmpfs           2.0G     0  2.0G   0% /tmp
 **`du`** (disk usage) arată cât spațiu ocupă un director sau un fișier:
 
 ```bash
-du -h logs/
+du -h jurnale/
 ```
 
 ```text
-4.0K    logs/access.log
-12K     logs/error.log
-16K     logs/
+4.0K    jurnale/acces.log
+12K     jurnale/eroare.log
+16K     jurnale/
 ```
 
 ### Sumarizează un director
@@ -32,11 +32,11 @@ Când vrei doar **totalul**, fără să listezi fiecare fișier, folosește `-s`
 (summary):
 
 ```bash
-du -sh logs/
+du -sh jurnale/
 ```
 
 ```text
-16K     logs/
+16K     jurnale/
 ```
 
 Împreună: `df -h` răspunde la „cât de plin este discul?”, iar `du -sh FOLDER`
@@ -46,13 +46,13 @@ răspunde la „cât de mare este folderul ăsta?”.
 
 ## Misiune: Audit de stocare
 
-Inginerii stației suspectează că `cargo-bay/` mănâncă din rezervele limitate de
+Inginerii stației suspectează că `depozit/` mănâncă din rezervele limitate de
 disc. Înainte să aprobe următoarea arhivă de date, trebuie să știe exact cât
 spațiu ocupă directorul.
 
-Rulează `du -sh cargo-bay/` pentru a afișa dimensiunea totală a directorului.
+Rulează `du -sh depozit/` pentru a afișa dimensiunea totală a directorului.
 
 **Rezultat așteptat**
 
 O singură linie care arată dimensiunea în format ușor de citit a directorului
-`cargo-bay/`.
+`depozit/`.

@@ -1,0 +1,11 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "control_motor.sh",
+      "content": "#!/bin/bash\necho 'Aprindere propulsor principal'\n"
+    },
+    { "path": "citeste-ma.txt", "content": "Documentatie control motor.\n" }
+  ],
+  "dirs": []
+}

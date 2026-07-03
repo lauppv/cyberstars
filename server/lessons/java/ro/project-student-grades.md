@@ -35,7 +35,7 @@ Mate: 92
 
 Fiecare student are un **nume** și un **HashMap** care mapează numele materiilor la note
 
-```java
+```text
 import java.util.HashMap;
 
 class Student {
@@ -55,7 +55,7 @@ Creăm un HashMap gol în constructor. Studentul începe fără note — le vom 
 
 **Pasul 2: Adăugarea notelor**
 
-```java
+```text
 public class Main {
     void adaugaNota(String materie, int nota) {
         note.put(materie, nota);
@@ -71,7 +71,7 @@ Foarte simplu. `note.put("Mate", 95)` stochează nota 95 pentru Mate. Dacă stud
 
 Ca să obținem media, trebuie să adunăm toate notele și să împărțim la câte sunt. Parcurgem **values** din HashMap
 
-```java
+```text
 public class Main {
     double getMedia() {
         int suma = 0;
@@ -91,7 +91,7 @@ public class Main {
 
 Hai să afișăm un raport frumos cu numele studentului, fiecare materie cu nota ei, și media. O să parcurgem **keySet** din HashMap ca să obținem atât cheile cât și valorile
 
-```java
+```text
 public class Main {
     void afiseazaRaport() {
         System.out.println("Student: " + nume);
@@ -113,7 +113,7 @@ HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleza, Stiinte �
 
 Pentru exercițiul nostru, o să folosim un **LinkedHashMap** ca rezultatul să fie previzibil
 
-```java
+```text
 import java.util.LinkedHashMap;
 
 class Student {

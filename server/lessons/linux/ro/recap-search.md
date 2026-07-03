@@ -15,18 +15,18 @@ majusculele/minusculele, `grep -v` inversează; `find -name` potrivește după n
 
 ## Misiune: Urmărirea semnalului de salvare
 
-Un semnal de SOS slab vine de undeva din structura de directoare `station`.
+Un semnal de SOS slab vine de undeva din structura de directoare `statie`.
 Centrul de comandă are nevoie de tine ca să identifici sursa și să extragi fiecare
 transmisiune SOS.
 
-1. Folosește `find station -name "distress.log"` pentru a localiza fișierul cu
+1. Folosește `find statie -name "pericol.log"` pentru a localiza fișierul cu
    semnalul de pericol.
-2. Folosește `grep -r "SOS" station` pentru a găsi fiecare linie care menționează
-   `SOS` oriunde în `station`.
+2. Folosește `grep -r "SOS" statie` pentru a găsi fiecare linie care menționează
+   `SOS` oriunde în `statie`.
 3. Folosește `which grep` pentru a confirma unde este instalat programul `grep`.
 
 **Rezultat așteptat**
 
-`find` dezvăluie `station/comms/distress.log`. `grep -r` arată două linii cu SOS
-distribuite în două fișiere din `station/comms/`. `which` afișează calea către
+`find` dezvăluie `statie/comunicatii/pericol.log`. `grep -r` arată două linii cu SOS
+distribuite în două fișiere din `statie/comunicatii/`. `which` afișează calea către
 binarul `grep`. Coordonatele de salvare confirmate.

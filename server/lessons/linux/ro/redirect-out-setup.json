@@ -1,0 +1,10 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    {
+      "path": "senzori.log",
+      "content": "ok: oxigen normal\ncritical: scadere presiune puntea 7\nok: temperatura stabila\ncritical: radiatii crescute laboratorul 3\nok: gravitate nominala\n"
+    }
+  ],
+  "dirs": []
+}

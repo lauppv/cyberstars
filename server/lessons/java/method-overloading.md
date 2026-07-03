@@ -79,7 +79,7 @@ Three methods, all named **info**, but Java knows which one to call based on wha
 
 What does **NOT** count as overloading? Changing only the **return type**
 
-```java
+```text
 public class Main {
     // This WON'T compile — same parameters, different return type
     public static int calculate(int a) { return a * 2; }

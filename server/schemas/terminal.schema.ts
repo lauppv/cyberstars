@@ -3,6 +3,7 @@ import { z } from 'zod';
 export const createSessionSchema = z.object({
   courseKey: z.string().min(1),
   lessonSlug: z.string().min(1),
+  lang: z.enum(['en', 'ro']).optional(),
 });
 
 export const execSchema = z.object({

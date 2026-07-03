@@ -40,9 +40,9 @@ Combinația `sort | uniq` este atât de des folosită încât merită să o ai �
 
 ## Misiune: Audit acces la uși
 
-Securitatea a semnalat activitate neobișnuită pe Puntea 7. Fișierul `door_access.log` înregistrează fiecare membru al echipajului care a trecut prin ușă. Află cine a intrat și ieșit cel mai des.
+Securitatea a semnalat activitate neobișnuită pe Puntea 7. Fișierul `acces_usa.log` înregistrează fiecare membru al echipajului care a trecut prin ușă. Află cine a intrat și ieșit cel mai des.
 
-Combină `sort` și `uniq -c` prin pipe pe `door_access.log` pentru a număra de câte ori a accesat ușa fiecare membru al echipajului.
+Combină `sort` și `uniq -c` prin pipe pe `acces_usa.log` pentru a număra de câte ori a accesat ușa fiecare membru al echipajului.
 
 **Rezultat așteptat**
 

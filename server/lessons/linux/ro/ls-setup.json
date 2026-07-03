@@ -1,0 +1,8 @@
+{
+  "cwd": "/home/student",
+  "files": [
+    { "path": "misiune.txt", "content": "Misiune: exploreaza sectorul 7.\n" },
+    { "path": "echipaj.txt", "content": "Ava\nBen\nChloe\n" }
+  ],
+  "dirs": ["rapoarte", "unelte"]
+}

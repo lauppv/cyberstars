@@ -8,7 +8,7 @@ Acest proiect aduce împreună tot ce ai învățat: **clase**, **constructori**
 
 Fiecare obiect din inventarul nostru are un **nume**, o **cantitate**, și un **pret** per unitate. Hai să modelăm asta
 
-```java
+```text
 class Articol {
     String nume;
     int cantitate;
@@ -30,7 +30,7 @@ Simplu și curat. Un `Articol` își știe numele, câte avem, și cât costă f
 
 Clasa `Inventar` ține o listă de obiecte și oferă metode ca să le gestioneze. Aici intră în scenă ArrayList — nu știm câte provizii vor fi stocate, așa că un array de dimensiune fixă nu e de ajuns
 
-```java
+```text
 import java.util.ArrayList;
 
 class Inventar {
@@ -54,7 +54,7 @@ Inventarul începe gol. `adaugaArticol` adaugă un obiect la listă
 
 Pentru `stergeArticol`, o să căutăm după nume și o să eliminăm prima potrivire. Avem nevoie de o buclă for obișnuită (nu for-each) pentru că ne trebuie indicele ca să eliminăm
 
-```java
+```text
 public class Main {
     void stergeArticol(String nume) {
         for (int i = 0; i < articole.size(); i++) {
@@ -75,7 +75,7 @@ Parcurgem obiectele, verificăm dacă numele se potrivește, îl eliminăm, și 
 
 Hai să afișăm fiecare obiect într-un format frumos. Aici devine util String.format
 
-```java
+```text
 public class Main {
     void afiseazaTot() {
         for (Articol articol : articole) {
@@ -97,7 +97,7 @@ Trusa medicala x5 @ $25.00
 
 Valoarea totală este suma lui `cantitate * pret` pentru fiecare obiect. Tiparul clasic de buclă-și-acumulare
 
-```java
+```text
 public class Main {
     double valoareTotala() {
         double total = 0;

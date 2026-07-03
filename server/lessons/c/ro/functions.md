@@ -25,7 +25,7 @@ Salut, Kernighan!
 
 Hai să descompunem antetul funcției
 
-```c
+```text
 void saluta(char nume[])
 ```
 

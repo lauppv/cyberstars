@@ -8,7 +8,7 @@ Tommy is listening to the Vice City police radio. The feed is full of static, an
 
 Put the signals in a `String` array, for example:
 
-```java
+```text
 String[] signals = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };
 ```
 

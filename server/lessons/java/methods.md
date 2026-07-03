@@ -26,7 +26,7 @@ Hello, Lance Vance
 
 We wrote the greeting logic **once**, but used it three times. Let's break down the line that declares the method
 
-```java
+```text
 public static void greet(String name)
 ```
 
@@ -81,7 +81,7 @@ Output **50**. Java first computes **add(2, 3) = 5**, then **5 \* 10 = 50**, the
 
 The return type **must match** what we actually return
 
-```java
+```text
 public class Main {
     public static int add(int a, int b) {
         return "hello";   // error
@@ -95,7 +95,7 @@ The method promises to return an **int**, but tries to give back a **String**. J
 
 A **void** method just does its job and exits. We can still use **return** alone (without a value) to exit early
 
-```java
+```text
 public class Main {
     public static void greet(String name) {
         if (name.length() == 0) {
