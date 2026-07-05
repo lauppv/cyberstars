@@ -6,9 +6,16 @@ public class Main {
         if (number < 0) {
             return false;
         }
-        String s = Integer.toString(number);
-        String reversed = new StringBuilder(s).reverse().toString();
-        return s.equals(reversed);
+
+        int original = number;
+        int reversed = 0;
+        while (number > 0) {
+            int digit = number % 10;
+            reversed = reversed * 10 + digit;
+            number = number / 10;
+        }
+
+        return original == reversed;
     }
 
     public static void main(String[] args) {
