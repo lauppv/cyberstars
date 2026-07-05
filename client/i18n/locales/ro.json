@@ -11,6 +11,7 @@
     "toggleMenu": "Comută meniul",
     "toggleSidebar": "Comută bara laterală",
     "profile": "Profil",
+    "language": "Limbă",
     "support": "Suport",
     "rules": "Reguli",
     "welcomeTour": "Tur de bun venit",
@@ -273,6 +274,10 @@
         "desc": "Dacă găsești un bug sau un exploit, raportează-l prin Suport în loc să-l folosești abuziv pentru insigne sau alte avantaje."
       },
       {
+        "title": "Confidențialitate",
+        "desc": "Nu distribui informații personale (email, număr de telefon, adresă de acasă, locul de muncă) — ale tale sau ale altora — în forum sau în orice parte publică a platformei."
+      },
+      {
         "title": "Engleză",
         "desc": "Aceasta este o comunitate de limbă engleză. Folosirea altor limbi nu este permisă."
       }
@@ -292,7 +297,16 @@
     "set": "Setează",
     "lessonsDone": "Lecții terminate",
     "activeCourses": "Cursuri active",
-    "badges": "Insigne"
+    "badges": "Insigne",
+    "streak": "Zile consecutive",
+    "memberSince": "Membru din {{date}}",
+    "security": "Securitate",
+    "changePassword": "Schimbă parola",
+    "currentPassword": "Parola curentă",
+    "newPassword": "Parolă nouă",
+    "passwordUpdated": "Parola a fost actualizată",
+    "passwordMinLength": "Minim 6 caractere",
+    "update": "Actualizează"
   },
   "support": {
     "title": "Suport",

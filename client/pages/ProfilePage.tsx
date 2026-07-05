@@ -16,7 +16,7 @@ const INPUT_CLS =
 
 export function ProfilePage() {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user, isLoggedIn, isLoading, refreshUser } = useAuth();
   const g = useGamification();
   const { courses: allCourses } = useCurriculum();
@@ -32,6 +32,11 @@ export function ProfilePage() {
   const [status, setStatus] = useState('');
   const [saving, setSaving] = useState(false);
   const [uploadError, setUploadError] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [pwdSaving, setPwdSaving] = useState(false);
+  const [pwdMessage, setPwdMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
+  const [streak, setStreak] = useState<number | null>(null);
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) navigate('/getstarted');
@@ -43,6 +48,22 @@ export function ProfilePage() {
       setStatus(user.status ?? '');
     }
   }, [user]);
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+    let cancelled = false;
+    profileService
+      .getActivity()
+      .then((data) => {
+        if (!cancelled) setStreak(data.streak);
+      })
+      .catch(() => {
+        if (!cancelled) setStreak(0);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoggedIn]);
 
   const saveBio = async () => {
     setSaving(true);
@@ -85,6 +106,26 @@ export function ProfilePage() {
     refreshUser();
   };
 
+  const submitPasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPwdMessage(null);
+    if (newPassword.length < 6) {
+      setPwdMessage({ type: 'err', text: t('profile.passwordMinLength') });
+      return;
+    }
+    setPwdSaving(true);
+    try {
+      await profileService.changePassword({ currentPassword, newPassword });
+      setPwdMessage({ type: 'ok', text: t('profile.passwordUpdated') });
+      setCurrentPassword('');
+      setNewPassword('');
+    } catch (err) {
+      setPwdMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+    } finally {
+      setPwdSaving(false);
+    }
+  };
+
   if (isLoading || !user) {
     return (
       <div className="h-screen flex flex-col bg-transparent">
@@ -99,15 +140,22 @@ export function ProfilePage() {
   const statusExpired = user.statusExpiresAt && new Date(user.statusExpiresAt) < new Date();
   const activeStatus = statusExpired ? null : user.status;
   const earnedBadges = g.badges.filter((b) => b.earned).length;
+  const memberSinceLabel = user.createdAt
+    ? new Date(user.createdAt).toLocaleDateString(i18n.resolvedLanguage ?? 'en', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : null;
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
 
       <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[520px]">
+        <div className="w-full max-w-[520px] rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] px-6 py-6">
           {/* Header with avatar */}
-          <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
+          <div className="flex items-center gap-5 pb-5 border-b border-[var(--accent)]/20">
             <div className="relative group">
               {user.avatarUrl ? (
                 <img
@@ -137,6 +185,11 @@ export function ProfilePage() {
             <div className="flex-1 min-w-0">
               <h1 className="text-[22px] font-bold tracking-[-0.3px]">{user.name}</h1>
               <p className="text-[12px] text-[var(--text3)] mt-0.5">{user.email}</p>
+              {memberSinceLabel && (
+                <p className="text-[11px] text-[var(--text3)] mt-0.5">
+                  {t('profile.memberSince', { date: memberSinceLabel })}
+                </p>
+              )}
               {activeStatus && (
                 <p className="text-[11px] text-[var(--accent)] mt-1">💬 {activeStatus}</p>
               )}
@@ -153,7 +206,7 @@ export function ProfilePage() {
           )}
 
           {/* Bio & Status */}
-          <div className="py-4 border-b border-[var(--border)] flex flex-col gap-3">
+          <div className="py-4 border-b border-[var(--accent)]/20 flex flex-col gap-3">
             <div>
               <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
                 {t('profile.bio')}
@@ -196,29 +249,38 @@ export function ProfilePage() {
           </div>
 
           {/* Stat grid */}
-          <div className="grid grid-cols-3 border-b border-[var(--border)]">
+          <div className="grid grid-cols-4 border-b border-[var(--accent)]/20">
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{g.totalCompleted}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
                 {t('profile.lessonsDone')}
               </div>
             </div>
-            <div className="py-4 text-center border-x border-[var(--border)]">
+            <div className="py-4 text-center border-l border-[var(--accent)]/20">
               <div className="text-[24px] font-bold">{activeCourses}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
                 {t('profile.activeCourses')}
               </div>
             </div>
-            <div className="py-4 text-center">
+            <div className="py-4 text-center border-l border-[var(--accent)]/20">
               <div className="text-[24px] font-bold">{earnedBadges}</div>
               <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
                 {t('profile.badges')}
               </div>
             </div>
+            <div className="py-4 text-center border-l border-[var(--accent)]/20">
+              <div className="text-[24px] font-bold">
+                {streak === null ? '—' : streak}
+                {streak !== null && streak > 0 && <span className="text-[16px] ml-1">🔥</span>}
+              </div>
+              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+                {t('profile.streak')}
+              </div>
+            </div>
           </div>
 
           {/* Badges */}
-          <div className="py-5">
+          <div className="py-5 border-b border-[var(--accent)]/20">
             <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
               {t('profile.badges')}
             </h2>
@@ -233,6 +295,58 @@ export function ProfilePage() {
                 />
               ))}
             </div>
+          </div>
+
+          {/* Security / change password */}
+          <div className="py-5">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+              {t('profile.security')}
+            </h2>
+            <form onSubmit={submitPasswordChange} className="flex flex-col gap-3">
+              <div>
+                <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                  {t('profile.currentPassword')}
+                </label>
+                <input
+                  type="password"
+                  autoComplete="current-password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  className={INPUT_CLS}
+                  required
+                />
+              </div>
+              <div>
+                <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                  {t('profile.newPassword')}
+                </label>
+                <input
+                  type="password"
+                  autoComplete="new-password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className={INPUT_CLS}
+                  minLength={6}
+                  required
+                />
+              </div>
+              {pwdMessage && (
+                <p
+                  className={`text-[12px] ${
+                    pwdMessage.type === 'ok' ? 'text-[var(--accent)]' : 'text-[var(--error)]'
+                  }`}
+                >
+                  {pwdMessage.text}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={pwdSaving || !currentPassword || !newPassword}
+                className="self-start px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+              >
+                {pwdSaving ? '...' : t('profile.update')}
+              </button>
+            </form>
           </div>
         </div>
       </main>

@@ -63,6 +63,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     bio: user.bio,
     status: statusExpired ? null : user.status,
     statusExpiresAt: statusExpired ? null : (user.statusExpiresAt?.toISOString() ?? null),
+    createdAt: user.createdAt.toISOString(),
   };
 }
 

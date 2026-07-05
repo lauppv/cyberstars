@@ -18,7 +18,7 @@ describe('i18n', () => {
     await import('./index');
     await i18n.changeLanguage('ro');
 
-    expect(setItem).toHaveBeenCalledWith('cyberstars.lang', 'ro');
+    expect(setItem).toHaveBeenCalledWith('cyberstars.lang.v2', 'ro');
   });
 
   it('exports SUPPORTED_LANGS', async () => {

@@ -1,8 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import fs from 'fs/promises';
+import bcrypt from 'bcryptjs';
 import { fileTypeFromBuffer } from 'file-type';
 import * as userRepo from '../repositories/user.repository.js';
+import * as progressRepo from '../repositories/progress.repository.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 const UPLOAD_DIR = path.resolve('uploads/avatars');
@@ -116,6 +118,85 @@ export async function deleteAvatar(req: Request, res: Response, next: NextFuncti
       await userRepo.updateProfile(userId, { avatarUrl: null });
     });
     res.json({ message: 'Avatar removed' });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function changePassword(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await userRepo.findByIdWithPassword(userId);
+    if (!user) throw new AppError(404, 'User not found');
+
+    const valid = bcrypt.compareSync(currentPassword, user.password);
+    if (!valid) throw new AppError(401, 'Current password is incorrect');
+
+    const hashed = bcrypt.hashSync(newPassword, 10);
+    await userRepo.updatePassword(userId, hashed);
+    res.json({ message: 'Password updated' });
+  } catch (err) {
+    next(err);
+  }
+}
+
+// Streak = consecutive days (ending at the most recent activity day) with at
+// least one completed lesson. UTC-based day boundaries so timezone drift
+// doesn't split a single session across two calendar days.
+export async function getActivity(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const rows = await progressRepo.getActivityDates(userId);
+
+    const days = new Set<number>();
+    let lastActiveAt: Date | null = null;
+    for (const r of rows) {
+      if (r.lastAccessedAt && (!lastActiveAt || r.lastAccessedAt > lastActiveAt)) {
+        lastActiveAt = r.lastAccessedAt;
+      }
+      if (r.completedAt) {
+        const d = new Date(
+          Date.UTC(
+            r.completedAt.getUTCFullYear(),
+            r.completedAt.getUTCMonth(),
+            r.completedAt.getUTCDate(),
+          ),
+        );
+        days.add(d.getTime());
+      }
+    }
+
+    const MS_PER_DAY = 86_400_000;
+    const sortedDays = [...days].sort((a, b) => b - a);
+    let streak = 0;
+    if (sortedDays.length > 0) {
+      const today = Date.UTC(
+        new Date().getUTCFullYear(),
+        new Date().getUTCMonth(),
+        new Date().getUTCDate(),
+      );
+      const mostRecent = sortedDays[0];
+      // Start counting from the most recent activity day if it is today or
+      // yesterday; if the last activity was older than yesterday, streak is 0.
+      if (mostRecent === today || mostRecent === today - MS_PER_DAY) {
+        streak = 1;
+        for (let i = 1; i < sortedDays.length; i++) {
+          if (sortedDays[i] === sortedDays[i - 1] - MS_PER_DAY) streak++;
+          else break;
+        }
+      }
+    }
+
+    res.json({
+      streak,
+      lastActiveAt: lastActiveAt?.toISOString() ?? null,
+    });
   } catch (err) {
     next(err);
   }
