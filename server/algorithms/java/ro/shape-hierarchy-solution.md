@@ -1,34 +1,34 @@
 ```java
 import java.util.Scanner;
 
-abstract class Shape {
-    abstract double getArea();
+abstract class Forma {
+    abstract double getArie();
 }
 
-class Circle extends Shape {
-    private final double radius;
+class Cerc extends Forma {
+    private final double raza;
 
-    Circle(double radius) {
-        this.radius = radius;
+    Cerc(double raza) {
+        this.raza = raza;
     }
 
     @Override
-    double getArea() {
-        return Math.PI * radius * radius;
+    double getArie() {
+        return Math.PI * raza * raza;
     }
 }
 
-class Rectangle extends Shape {
+class Dreptunghi extends Forma {
     private final double latime;
     private final double inaltime;
 
-    Rectangle(double latime, double inaltime) {
+    Dreptunghi(double latime, double inaltime) {
         this.latime = latime;
         this.inaltime = inaltime;
     }
 
     @Override
-    double getArea() {
+    double getArie() {
         return latime * inaltime;
     }
 }
@@ -36,18 +36,27 @@ class Rectangle extends Shape {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         double total = 0;
+
         for (int i = 0; i < n; i++) {
-            String[] parti = sc.nextLine().trim().split("\\s+");
-            Shape forma;
-            if (parti[0].equals("circle")) {
-                forma = new Circle(Double.parseDouble(parti[1]));
+            String tip = sc.nextLine();
+
+            Forma forma;
+            if (tip.equals("cerc")) {
+                double raza = Double.parseDouble(sc.nextLine());
+                forma = new Cerc(raza);
             } else {
-                forma = new Rectangle(Double.parseDouble(parti[1]), Double.parseDouble(parti[2]));
+                double latime = Double.parseDouble(sc.nextLine());
+                double inaltime = Double.parseDouble(sc.nextLine());
+                forma = new Dreptunghi(latime, inaltime);
             }
-            total += forma.getArea();
+
+            total = total + forma.getArie();
         }
+
         System.out.printf("Total: %.2f%n", total);
     }
 }

@@ -2,20 +2,26 @@
 #include <stdio.h>
 
 int main(void) {
-    long a, b;
-    scanf("%ld %ld", &a, &b);
+    int a, b;
+    scanf("%d", &a);
+    scanf("%d", &b);
 
-    long x = a, y = b;
+    // Euclid's algorithm: repeatedly replace the pair (x, y)
+    // with (y, x % y) until y becomes 0. The final x is the GCD.
+    int x = a;
+    int y = b;
     while (y != 0) {
-        long temp = y;
+        int temp = y;
         y = x % y;
         x = temp;
     }
-    long gcd = x;
-    long lcm = a / gcd * b;
+    int gcd = x;
 
-    printf("GCD: %ld\n", gcd);
-    printf("LCM: %ld\n", lcm);
+    // Divide by gcd first, then multiply, to avoid large intermediate values.
+    int lcm = a / gcd * b;
+
+    printf("GCD: %d\n", gcd);
+    printf("LCM: %d\n", lcm);
 
     return 0;
 }

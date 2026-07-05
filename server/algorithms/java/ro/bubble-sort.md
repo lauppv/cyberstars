@@ -7,7 +7,7 @@ Bubble sort funcționează parcurgând repetat lista, comparând elementele adia
 ### Date de intrare
 
 - Linia 1: numărul întreg N — numărul de elemente
-- Linia 2: N numere întregi separate prin spațiu
+- Următoarele N linii: câte un număr întreg
 
 ### Rezultat
 
@@ -18,7 +18,11 @@ Bubble sort funcționează parcurgând repetat lista, comparând elementele adia
 ```
 Intrare:
 5
-5 3 8 1 2
+5
+3
+8
+1
+2
 
 Ieșire:
 1 2 3 5 8
@@ -27,7 +31,9 @@ Ieșire:
 ```
 Intrare:
 3
-3 2 1
+3
+2
+1
 
 Ieșire:
 1 2 3
@@ -47,7 +53,10 @@ Un tablou cu un singur element este deja sortat — nu e nevoie de nicio intersc
 ```
 Intrare:
 4
-2 2 1 1
+2
+2
+1
+1
 
 Ieșire:
 1 1 2 2

@@ -10,15 +10,17 @@ class Queue {
         data.add(value);
     }
 
+    // We use Integer (not int) so we can return null when the queue is empty.
     Integer dequeue() {
-        if (data.isEmpty()) {
+        if (data.size() == 0) {
             return null;
         }
+        // FIFO: remove the front element (position 0).
         return data.remove(0);
     }
 
     Integer peek() {
-        if (data.isEmpty()) {
+        if (data.size() == 0) {
             return null;
         }
         return data.get(0);
@@ -28,23 +30,30 @@ class Queue {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         Queue queue = new Queue();
+
         for (int i = 0; i < n; i++) {
-            String[] parts = sc.nextLine().trim().split("\\s+");
-            switch (parts[0]) {
-                case "enqueue":
-                    queue.enqueue(Integer.parseInt(parts[1]));
-                    break;
-                case "dequeue": {
-                    Integer value = queue.dequeue();
-                    System.out.println(value == null ? "Empty" : value.toString());
-                    break;
+            String cmd = sc.nextLine();
+
+            if (cmd.equals("enqueue")) {
+                int value = Integer.parseInt(sc.nextLine());
+                queue.enqueue(value);
+            } else if (cmd.equals("dequeue")) {
+                Integer value = queue.dequeue();
+                if (value == null) {
+                    System.out.println("Empty");
+                } else {
+                    System.out.println(value);
                 }
-                case "peek": {
-                    Integer value = queue.peek();
-                    System.out.println(value == null ? "Empty" : value.toString());
-                    break;
+            } else {
+                Integer value = queue.peek();
+                if (value == null) {
+                    System.out.println("Empty");
+                } else {
+                    System.out.println(value);
                 }
             }
         }

@@ -6,7 +6,8 @@ Algoritmul lui Euclid găsește CMMDC-ul înlocuind în mod repetat numărul mai
 
 ### Date de intrare
 
-- O linie care conține două numere întregi `A` și `B` (1 ≤ A, B ≤ 100000), separate printr-un spațiu.
+- Linia 1: numărul întreg `A` (1 ≤ A ≤ 10000)
+- Linia 2: numărul întreg `B` (1 ≤ B ≤ 10000)
 
 ### Rezultat
 
@@ -17,7 +18,8 @@ Algoritmul lui Euclid găsește CMMDC-ul înlocuind în mod repetat numărul mai
 
 ```
 Intrare:
-12 8
+12
+8
 Ieșire:
 CMMDC: 4
 CMMMC: 24
@@ -25,7 +27,8 @@ CMMMC: 24
 
 ```
 Intrare:
-7 13
+7
+13
 Ieșire:
 CMMDC: 1
 CMMMC: 91
@@ -33,7 +36,8 @@ CMMMC: 91
 
 ```
 Intrare:
-9 9
+9
+9
 Ieșire:
 CMMDC: 9
 CMMMC: 9

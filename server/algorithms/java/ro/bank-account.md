@@ -8,7 +8,9 @@ Citește soldul inițial pe prima linie, apoi procesează operațiile de la stdi
 
 - Linia 1: soldul inițial (număr întreg)
 - Linia 2: numărul de operații N
-- Următoarele N linii: fie `deposit X`, fie `withdraw X`
+- Pentru fiecare operație, două linii:
+  - Linia 1: tipul operației (`depune` sau `retrage`)
+  - Linia 2: suma (număr întreg)
 
 ### Rezultat
 
@@ -21,9 +23,12 @@ Citește soldul inițial pe prima linie, apoi procesează operațiile de la stdi
 Intrare:
 100
 3
-deposit 50
-withdraw 30
-withdraw 200
+depune
+50
+retrage
+30
+retrage
+200
 
 Ieșire:
 Fonduri insuficiente
@@ -34,8 +39,10 @@ Sold: 120
 Intrare:
 0
 2
-deposit 500
-withdraw 500
+depune
+500
+retrage
+500
 
 Ieșire:
 Sold: 0
@@ -45,7 +52,8 @@ Sold: 0
 Intrare:
 50
 1
-withdraw 50
+retrage
+50
 
 Ieșire:
 Sold: 0
@@ -58,8 +66,10 @@ este strict mai mare decât ce este disponibil.
 Intrare:
 10
 2
-withdraw 20
-withdraw 15
+retrage
+20
+retrage
+15
 
 Ieșire:
 Fonduri insuficiente

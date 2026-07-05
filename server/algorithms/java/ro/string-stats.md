@@ -1,12 +1,12 @@
 # Ușor · Statistici despre șir
 
-Creează o clasă **StringAnalyzer** care primește un șir în constructorul său și oferă trei metode:
+Creează o clasă **AnalizatorText** care primește un șir în constructorul său și oferă trei metode:
 
-- `vowelCount()` — returnează numărul de vocale (a, e, i, o, u — fără sensibilitate la majuscule)
-- `consonantCount()` — returnează numărul de consoane (litere care nu sunt vocale)
-- `wordCount()` — returnează numărul de cuvinte (separate prin spații)
+- `numarVocale()` — returnează numărul de vocale (a, e, i, o, u — fără sensibilitate la majuscule)
+- `numarConsoane()` — returnează numărul de consoane (litere care nu sunt vocale)
+- `numarCuvinte()` — returnează numărul de cuvinte (separate prin spații)
 
-Citește o singură linie de text de la stdin. Creează un `StringAnalyzer` și afișează cele trei statistici.
+Citește o singură linie de text de la stdin. Creează un `AnalizatorText` și afișează cele trei statistici.
 
 ### Date de intrare
 
@@ -22,33 +22,32 @@ Citește o singură linie de text de la stdin. Creează un `StringAnalyzer` și 
 
 ```
 Intrare:
-Hello World
+Salut lume
 
 Ieșire:
-Vocale: 3
-Consoane: 7
+Vocale: 4
+Consoane: 5
 Cuvinte: 2
 ```
 
 ```
 Intrare:
-Java is fun
+Java e fain
 
 Ieșire:
-Vocale: 4
-Consoane: 5
+Vocale: 5
+Consoane: 4
 Cuvinte: 3
 ```
 
 ```
 Intrare:
-Sky
+Cer
 
 Ieșire:
-Vocale: 0
-Consoane: 3
+Vocale: 1
+Consoane: 2
 Cuvinte: 1
 ```
 
-`y` nu este numărat aici ca vocală — contează doar a, e, i, o, u, deci toate
-cele trei litere din "Sky" sunt consoane.
+`y` nu este numărat aici ca vocală — contează doar a, e, i, o, u.

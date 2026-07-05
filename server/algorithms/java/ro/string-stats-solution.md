@@ -1,50 +1,74 @@
 ```java
 import java.util.Scanner;
 
-class StringAnalyzer {
+class AnalizatorText {
     private final String text;
 
-    StringAnalyzer(String text) {
+    AnalizatorText(String text) {
         this.text = text;
     }
 
-    int vowelCount() {
+    private boolean esteVocala(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+
+    private boolean esteLitera(char c) {
+        return c >= 'a' && c <= 'z';
+    }
+
+    int numarVocale() {
+        String jos = text.toLowerCase();
         int numar = 0;
-        for (char c : text.toLowerCase().toCharArray()) {
-            if ("aeiou".indexOf(c) >= 0) {
-                numar++;
+        for (int i = 0; i < jos.length(); i++) {
+            if (esteVocala(jos.charAt(i))) {
+                numar = numar + 1;
             }
         }
         return numar;
     }
 
-    int consonantCount() {
+    int numarConsoane() {
+        String jos = text.toLowerCase();
         int numar = 0;
-        for (char c : text.toLowerCase().toCharArray()) {
-            if (Character.isLetter(c) && "aeiou".indexOf(c) < 0) {
-                numar++;
+        for (int i = 0; i < jos.length(); i++) {
+            char c = jos.charAt(i);
+            if (esteLitera(c) && !esteVocala(c)) {
+                numar = numar + 1;
             }
         }
         return numar;
     }
 
-    int wordCount() {
-        String curatat = text.trim();
-        if (curatat.isEmpty()) {
-            return 0;
+    int numarCuvinte() {
+        // Un cuvant incepe cand trecem de la spatiu la o litera.
+        // Folosim pattern-ul flag ca sa numaram tranzitiile.
+        int numar = 0;
+        boolean inCuvant = false;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (c != ' ') {
+                if (!inCuvant) {
+                    numar = numar + 1;
+                    inCuvant = true;
+                }
+            } else {
+                inCuvant = false;
+            }
         }
-        return curatat.split("\\s+").length;
+        return numar;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         String linie = sc.nextLine();
-        StringAnalyzer analizator = new StringAnalyzer(linie);
-        System.out.println("Vocale: " + analizator.vowelCount());
-        System.out.println("Consoane: " + analizator.consonantCount());
-        System.out.println("Cuvinte: " + analizator.wordCount());
+        AnalizatorText analizator = new AnalizatorText(linie);
+
+        System.out.println("Vocale: " + analizator.numarVocale());
+        System.out.println("Consoane: " + analizator.numarConsoane());
+        System.out.println("Cuvinte: " + analizator.numarCuvinte());
     }
 }
 ```

@@ -6,6 +6,8 @@ int main(void) {
     int m;
     scanf("%d", &m);
 
+    // Represent the stack as an array + a "top" index telling the last occupied
+    // position. top = -1 means empty stack.
     int stack[100];
     int top = -1;
 
@@ -16,12 +18,14 @@ int main(void) {
         if (strcmp(cmd, "push") == 0) {
             int x;
             scanf("%d", &x);
-            stack[++top] = x;
+            top++;
+            stack[top] = x;
         } else if (strcmp(cmd, "pop") == 0) {
             if (top == -1) {
                 printf("Empty\n");
             } else {
-                printf("%d\n", stack[top--]);
+                printf("%d\n", stack[top]);
+                top--;
             }
         } else if (strcmp(cmd, "peek") == 0) {
             if (top == -1) {

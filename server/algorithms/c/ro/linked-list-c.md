@@ -2,30 +2,36 @@
 
 Implementează o **listă simplu înlănțuită** în C. Citește comenzi de la stdin și execută-le:
 
-- `INSERT x` — inserează numărul întreg `x` la **finalul** listei
-- `PRINT` — afișează toate elementele separate prin spații pe o singură linie
+- `insereaza x` — inserează numărul întreg `x` la **finalul** listei
+- `afiseaza` — afișează toate elementele separate prin spații pe o singură linie
 
 Folosește `malloc` pentru a aloca fiecare nod. Fiecare nod are un câmp `int data` și un pointer `struct Nod *urmator`.
 
 ### Date de intrare
 
 - Prima linie: un întreg `N` (numărul de comenzi)
-- Următoarele `N` linii: o comandă (`INSERT x` sau `PRINT`)
+- Pentru fiecare comandă:
+  - Linia 1: tipul comenzii (`insereaza` sau `afiseaza`)
+  - Doar pentru `insereaza`, linia 2: numărul întreg `x`
 
 ### Rezultat
 
-Pentru fiecare comandă `PRINT`, afișează elementele listei separate prin spații. Dacă lista este goală, afișează `Goala`.
+Pentru fiecare comandă `afiseaza`, afișează elementele listei separate prin spații. Dacă lista este goală, afișează `Goala`.
 
 ### Exemple
 
 ```
 Intrare:
 5
-INSERT 10
-INSERT 20
-INSERT 30
-PRINT
-INSERT 40
+insereaza
+10
+insereaza
+20
+insereaza
+30
+afiseaza
+insereaza
+40
 Ieșire:
 10 20 30
 ```
@@ -33,9 +39,10 @@ Ieșire:
 ```
 Intrare:
 3
-PRINT
-INSERT 5
-PRINT
+afiseaza
+insereaza
+5
+afiseaza
 Ieșire:
 Goala
 5
@@ -44,8 +51,9 @@ Goala
 ```
 Intrare:
 2
-INSERT 7
-PRINT
+insereaza
+7
+afiseaza
 Ieșire:
 7
 ```

@@ -8,7 +8,9 @@ Citește numărul de fețe, seed-ul și numărul de aruncări de la stdin. Creea
 
 ### Date de intrare
 
-- Linia 1: trei numere întregi separate prin spații — fete, seed, aruncari
+- Linia 1: numărul de fețe (număr întreg)
+- Linia 2: seed (număr întreg)
+- Linia 3: numărul de aruncări (număr întreg)
 
 ### Rezultat
 
@@ -18,7 +20,9 @@ Citește numărul de fețe, seed-ul și numărul de aruncări de la stdin. Creea
 
 ```
 Intrare:
-6 42 1
+6
+42
+1
 
 Ieșire:
 3
@@ -26,7 +30,9 @@ Ieșire:
 
 ```
 Intrare:
-6 1 3
+6
+1
+3
 
 Ieșire:
 4
@@ -36,7 +42,9 @@ Ieșire:
 
 ```
 Intrare:
-20 7 1
+20
+7
+1
 
 Ieșire:
 17
@@ -44,7 +52,9 @@ Ieșire:
 
 ```
 Intrare:
-2 100 5
+2
+100
+5
 
 Ieșire:
 2

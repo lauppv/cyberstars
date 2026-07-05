@@ -1,9 +1,9 @@
 # Ușor · Convertor de temperatură
 
-Creează o clasă **Temperature** care stochează o valoare de temperatură și unitatea ei (`C` pentru Celsius, `F` pentru Fahrenheit). Adaugă două metode:
+Creează o clasă **Temperatura** care stochează o valoare de temperatură și unitatea ei (`C` pentru Celsius, `F` pentru Fahrenheit). Adaugă două metode:
 
-- `toCelsius()` — returnează valoarea în Celsius
-- `toFahrenheit()` — returnează valoarea în Fahrenheit
+- `laCelsius()` — returnează valoarea în Celsius
+- `laFahrenheit()` — returnează valoarea în Fahrenheit
 
 Dacă temperatura este deja în unitatea țintă, returnează-o neschimbată. Folosește formulele:
 
@@ -14,7 +14,8 @@ Citește o valoare și o unitate de la stdin. Afișează ambele conversii, rotun
 
 ### Date de intrare
 
-- Linia 1: un double și un caracter separate printr-un spațiu — valoarea și unitatea (ex. `100.0 C`)
+- Linia 1: valoarea (număr zecimal)
+- Linia 2: unitatea (un singur caracter: `C` sau `F`)
 
 ### Rezultat
 
@@ -27,7 +28,8 @@ Citește o valoare și o unitate de la stdin. Afișează ambele conversii, rotun
 
 ```
 Intrare:
-100.0 C
+100.0
+C
 
 Ieșire:
 Celsius: 100.0
@@ -36,7 +38,8 @@ Fahrenheit: 212.0
 
 ```
 Intrare:
-32.0 F
+32.0
+F
 
 Ieșire:
 Celsius: 0.0
@@ -45,7 +48,8 @@ Fahrenheit: 32.0
 
 ```
 Intrare:
-0.0 C
+0.0
+C
 
 Ieșire:
 Celsius: 0.0
@@ -56,7 +60,8 @@ Direcția inversă: pornind de la 0°C se ajunge tot la 32°F.
 
 ```
 Intrare:
--40.0 C
+-40.0
+C
 
 Ieșire:
 Celsius: -40.0

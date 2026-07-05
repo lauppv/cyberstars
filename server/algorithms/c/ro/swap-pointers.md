@@ -2,11 +2,10 @@
 
 Citește două numere întregi. Scrie o funcție `interschimba` care primește doi **pointeri la int** și interschimbă valorile lor. Apeleaz-o din `main`, apoi afișează valorile interschimbate.
 
-Acest exercițiu antrenează transmiterea prin referință în C folosind pointeri și operatorul de dereferențiere `*`.
-
 ### Date de intrare
 
-Două numere întregi pe o singură linie, separate printr-un spațiu.
+- Linia 1: primul număr întreg
+- Linia 2: al doilea număr întreg
 
 ### Rezultat
 
@@ -15,17 +14,23 @@ Cele două numere întregi interschimbate, separate prin spații, pe o singură 
 ### Exemple
 
 ```
-Intrare:  3 7
+Intrare:
+3
+7
 Ieșire: 7 3
 ```
 
 ```
-Intrare:  10 10
+Intrare:
+10
+10
 Ieșire: 10 10
 ```
 
 ```
-Intrare:  -3 8
+Intrare:
+-3
+8
 Ieșire: 8 -3
 ```
 

@@ -10,6 +10,7 @@ int main(void) {
         scanf("%d", &vector[i]);
     }
 
+    // Parcurgem tabloul de la coada spre cap si afisam fiecare element.
     for (int i = n - 1; i >= 0; i--) {
         printf("%d", vector[i]);
         if (i > 0) {

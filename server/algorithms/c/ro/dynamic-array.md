@@ -2,12 +2,10 @@
 
 Citește un întreg **N**, apoi citește **N** numere întregi. Stochează-le într-un tablou **alocat dinamic** (folosind `malloc`). Afișează **suma** și **media** (cu 2 zecimale) numerelor. Nu uita să eliberezi memoria cu `free`.
 
-Acest exercițiu antrenează alocarea dinamică de memorie cu `malloc` și `free`.
-
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
-- A doua linie: `N` numere întregi separate prin spații
+- Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
 
@@ -21,7 +19,10 @@ Două linii:
 ```
 Intrare:
 4
-10 20 30 40
+10
+20
+30
+40
 Ieșire:
 100
 25.00
@@ -30,7 +31,9 @@ Ieșire:
 ```
 Intrare:
 3
-5 5 5
+5
+5
+5
 Ieșire:
 15
 5.00
@@ -48,7 +51,9 @@ Ieșire:
 ```
 Intrare:
 3
--5 5 10
+-5
+5
+10
 Ieșire:
 10
 3.33

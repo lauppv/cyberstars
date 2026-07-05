@@ -1,10 +1,14 @@
 ```c
 #include <stdio.h>
 
+// Merge two sorted sub-arrays: [left..mid] and [mid+1..right].
+// We copy the two parts into temporary arrays, then merge them back into arr
+// always picking the smaller element at the front of each.
 void merge(int arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
-    int L[1000], R[1000];
+    int L[1000];
+    int R[1000];
 
     for (int i = 0; i < n1; i++) {
         L[i] = arr[left + i];
@@ -13,22 +17,33 @@ void merge(int arr[], int left, int mid, int right) {
         R[j] = arr[mid + 1 + j];
     }
 
-    int i = 0, j = 0, k = left;
+    int i = 0;
+    int j = 0;
+    int k = left;
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
-            arr[k++] = L[i++];
+            arr[k] = L[i];
+            i++;
         } else {
-            arr[k++] = R[j++];
+            arr[k] = R[j];
+            j++;
         }
+        k++;
     }
+    // Copy the remaining elements (one of the two loops will be empty).
     while (i < n1) {
-        arr[k++] = L[i++];
+        arr[k] = L[i];
+        i++;
+        k++;
     }
     while (j < n2) {
-        arr[k++] = R[j++];
+        arr[k] = R[j];
+        j++;
+        k++;
     }
 }
 
+// Split the range in two, recursively sort each part, then merge them back.
 void mergeSort(int arr[], int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;

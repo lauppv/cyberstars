@@ -2,8 +2,6 @@
 
 Citește un șir (un singur cuvânt, fără spații) și calculează lungimea lui **fără** a folosi `strlen()`. Afișează lungimea.
 
-Acest exercițiu antrenează parcurgerea manuală a unui șir în C — iterarea caracter cu caracter până la terminatorul nul `'\0'`.
-
 ### Date de intrare
 
 Un singur cuvânt (maxim 1000 de caractere, fără spații).

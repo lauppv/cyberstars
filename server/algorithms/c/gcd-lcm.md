@@ -6,7 +6,8 @@ Euclid's algorithm finds the GCD by repeatedly replacing the larger number with 
 
 ### Input
 
-- One line containing two integers `A` and `B` (1 ≤ A, B ≤ 100000), separated by a space.
+- Line 1: integer `A` (1 ≤ A ≤ 10000)
+- Line 2: integer `B` (1 ≤ B ≤ 10000)
 
 ### Output
 
@@ -17,7 +18,8 @@ Euclid's algorithm finds the GCD by repeatedly replacing the larger number with 
 
 ```
 Input:
-12 8
+12
+8
 Output:
 GCD: 4
 LCM: 24
@@ -25,7 +27,8 @@ LCM: 24
 
 ```
 Input:
-7 13
+7
+13
 Output:
 GCD: 1
 LCM: 91
@@ -33,7 +36,8 @@ LCM: 91
 
 ```
 Input:
-9 9
+9
+9
 Output:
 GCD: 9
 LCM: 9

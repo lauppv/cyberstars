@@ -1,24 +1,26 @@
 # Dificil · Iterator pentru interval de numere
 
-Implementează interfețele **Iterable** și **Iterator** pentru a crea o clasă `NumberRange` care iterează peste un interval de numere întregi.
+Implementează interfețele **Iterable** și **Iterator** pentru a crea o clasă `IntervalNumere` care iterează peste un interval de numere întregi.
 
-`NumberRange` primește o valoare `start` și o valoare `end` și îți permite să iterezi peste toate numerele întregi de la `start` la `end` (inclusiv) folosind o buclă for-each.
+`IntervalNumere` primește o valoare `inceput` și o valoare `sfarsit` și îți permite să iterezi peste toate numerele întregi de la `inceput` la `sfarsit` (inclusiv) folosind o buclă for-each.
 
-Citește start și end de la stdin, creează un `NumberRange` și afișează fiecare număr pe o linie separată.
+Citește începutul și sfârșitul de la stdin, creează un `IntervalNumere` și afișează fiecare număr pe o linie separată.
 
 ### Date de intrare
 
-- Linia 1: două numere întregi — start și end
+- Linia 1: începutul intervalului (număr întreg)
+- Linia 2: sfârșitul intervalului (număr întreg)
 
 ### Rezultat
 
-Fiecare număr de la start la end (inclusiv), câte unul pe linie.
+Fiecare număr de la început la sfârșit (inclusiv), câte unul pe linie.
 
 ### Exemple
 
 ```
 Intrare:
-1 5
+1
+5
 
 Ieșire:
 1
@@ -30,7 +32,8 @@ Ieșire:
 
 ```
 Intrare:
-3 3
+3
+3
 
 Ieșire:
 3
@@ -38,7 +41,8 @@ Ieșire:
 
 ```
 Intrare:
--2 2
+-2
+2
 
 Ieșire:
 -2

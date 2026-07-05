@@ -15,10 +15,14 @@ class ListaInlantuita {
 
     void adauga(int valoare) {
         Nod nod = new Nod(valoare);
+
+        // Lista goala: nodul nou devine capul.
         if (cap == null) {
             cap = nod;
             return;
         }
+
+        // Mergem pana la ultimul nod si legam noul nod dupa el.
         Nod cur = cap;
         while (cur.urmator != null) {
             cur = cur.urmator;
@@ -30,10 +34,15 @@ class ListaInlantuita {
         if (cap == null) {
             return false;
         }
+
+        // Caz special: valoarea de eliminat este chiar in cap.
         if (cap.valoare == valoare) {
             cap = cap.urmator;
             return true;
         }
+
+        // Cautam nodul care are ca urmator un nod cu valoarea data.
+        // Cand il gasim, il ocolim: cur.urmator = cur.urmator.urmator.
         Nod cur = cap;
         while (cur.urmator != null) {
             if (cur.urmator.valoare == valoare) {
@@ -42,6 +51,7 @@ class ListaInlantuita {
             }
             cur = cur.urmator;
         }
+
         return false;
     }
 
@@ -49,40 +59,41 @@ class ListaInlantuita {
         if (cap == null) {
             return "Goala";
         }
-        StringBuilder sb = new StringBuilder();
+
+        String rezultat = "";
         Nod cur = cap;
         while (cur != null) {
-            if (sb.length() > 0) {
-                sb.append(" -> ");
+            if (rezultat.length() > 0) {
+                rezultat = rezultat + " -> ";
             }
-            sb.append(cur.valoare);
+            rezultat = rezultat + cur.valoare;
             cur = cur.urmator;
         }
-        return sb.toString();
+        return rezultat;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         ListaInlantuita lista = new ListaInlantuita();
+
         for (int i = 0; i < n; i++) {
-            String linie = sc.nextLine().trim();
-            String[] parti = linie.split("\\s+");
-            switch (parti[0]) {
-                case "add":
-                    lista.adauga(Integer.parseInt(parti[1]));
-                    break;
-                case "remove":
-                    int valoare = Integer.parseInt(parti[1]);
-                    if (!lista.elimina(valoare)) {
-                        System.out.println("Negasit");
-                    }
-                    break;
-                case "print":
-                    System.out.println(lista.afiseaza());
-                    break;
+            String comanda = sc.nextLine();
+
+            if (comanda.equals("adauga")) {
+                int valoare = Integer.parseInt(sc.nextLine());
+                lista.adauga(valoare);
+            } else if (comanda.equals("elimina")) {
+                int valoare = Integer.parseInt(sc.nextLine());
+                if (!lista.elimina(valoare)) {
+                    System.out.println("Negasit");
+                }
+            } else {
+                System.out.println(lista.afiseaza());
             }
         }
     }

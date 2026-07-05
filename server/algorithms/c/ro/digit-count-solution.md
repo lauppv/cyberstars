@@ -2,16 +2,20 @@
 #include <stdio.h>
 
 int main(void) {
-    long numar;
-    scanf("%ld", &numar);
+    int numar;
+    scanf("%d", &numar);
 
+    // Impartim repetat la 10 si numaram cate impartiri fac numarul sa devina 0.
+    // Fiecare impartire "sterge" ultima cifra.
     int numarCifre = 0;
+
+    // Cazul special: 0 are o singura cifra, dar bucla nu s-ar executa deloc.
     if (numar == 0) {
         numarCifre = 1;
     } else {
         while (numar > 0) {
             numarCifre++;
-            numar /= 10;
+            numar = numar / 10;
         }
     }
 

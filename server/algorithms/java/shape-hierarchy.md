@@ -7,7 +7,10 @@ Read shapes from stdin, create the appropriate objects, and print the **total ar
 ### Input
 
 - Line 1: number of shapes N
-- Next N lines: either `circle RADIUS` or `rectangle WIDTH HEIGHT`
+- For each shape:
+  - Line 1: the type (`circle` or `rectangle`)
+  - For `circle`, line 2: the radius (decimal number)
+  - For `rectangle`, line 2: the width, line 3: the height (decimal numbers)
 
 ### Output
 
@@ -18,9 +21,13 @@ A single line: `Total: X` where X is the sum of all areas, formatted to 2 decima
 ```
 Input:
 3
-circle 5
-rectangle 4 6
-circle 3
+circle
+5
+rectangle
+4
+6
+circle
+3
 
 Output:
 Total: 130.81
@@ -29,7 +36,9 @@ Total: 130.81
 ```
 Input:
 1
-rectangle 10 10
+rectangle
+10
+10
 
 Output:
 Total: 100.00

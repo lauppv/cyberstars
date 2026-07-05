@@ -2,30 +2,36 @@
 
 Implement a **singly linked list** in C. Read commands from stdin and execute them:
 
-- `INSERT x` — insert integer `x` at the **end** of the list
-- `PRINT` — print all elements space-separated on one line
+- `insert x` — insert integer `x` at the **end** of the list
+- `print` — print all elements space-separated on one line
 
 Use `malloc` to allocate each node. Each node has an `int data` field and a `struct Node *next` pointer.
 
 ### Input
 
 - First line: an integer `N` (number of commands)
-- Next `N` lines: a command (`INSERT x` or `PRINT`)
+- For each command:
+  - Line 1: command type (`insert` or `print`)
+  - Only for `insert`, line 2: the integer `x`
 
 ### Output
 
-For each `PRINT` command, output the list elements space-separated. If the list is empty, print `EMPTY`.
+For each `print` command, output the list elements space-separated. If the list is empty, print `Empty`.
 
 ### Examples
 
 ```
 Input:
 5
-INSERT 10
-INSERT 20
-INSERT 30
-PRINT
-INSERT 40
+insert
+10
+insert
+20
+insert
+30
+print
+insert
+40
 Output:
 10 20 30
 ```
@@ -33,19 +39,21 @@ Output:
 ```
 Input:
 3
-PRINT
-INSERT 5
-PRINT
+print
+insert
+5
+print
 Output:
-EMPTY
+Empty
 5
 ```
 
 ```
 Input:
 2
-INSERT 7
-PRINT
+insert
+7
+print
 Output:
 7
 ```

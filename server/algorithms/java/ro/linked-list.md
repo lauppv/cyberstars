@@ -1,33 +1,42 @@
 # Dificil · Listă înlănțuită
 
-Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Nod` cu câmpurile `valoare` și `urmator`, și o clasă `ListaInlantuita` cu operațiile `add`, `remove` și `print`.
+Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Nod` cu câmpurile `valoare` și `urmator`, și o clasă `ListaInlantuita` cu operațiile `adauga`, `elimina` și `afiseaza`.
 
 Procesează comenzile de la stdin.
 
 ### Date de intrare
 
 - Linia 1: numărul de comenzi N
-- Următoarele N linii: una dintre:
-  - `add X` — adaugă numărul întreg X la sfârșitul listei
-  - `remove X` — elimină prima apariție a lui X (afișează `Negasit` dacă X nu se află în listă)
-  - `print` — afișează toate elementele separate prin `->`, sau `Goala` dacă lista este goală
+- Pentru fiecare comandă:
+  - Linia 1: tipul comenzii (`adauga`, `elimina` sau `afiseaza`)
+  - Doar pentru `adauga` și `elimina`, linia 2: numărul întreg X
+
+Comportament:
+
+- `adauga X` — adaugă numărul întreg X la sfârșitul listei
+- `elimina X` — elimină prima apariție a lui X (afișează `Negasit` dacă X nu se află în listă)
+- `afiseaza` — afișează toate elementele separate prin `->`, sau `Goala` dacă lista este goală
 
 ### Rezultat
 
-- Pentru fiecare `print`: elementele în ordine separate prin `->`, sau `Goala`
-- Pentru fiecare `remove` eșuat: `Negasit`
+- Pentru fiecare `afiseaza`: elementele în ordine separate prin `->`, sau `Goala`
+- Pentru fiecare `elimina` eșuat: `Negasit`
 
 ### Exemple
 
 ```
 Intrare:
 6
-add 10
-add 20
-add 30
-print
-remove 20
-print
+adauga
+10
+adauga
+20
+adauga
+30
+afiseaza
+elimina
+20
+afiseaza
 
 Ieșire:
 10 -> 20 -> 30
@@ -37,10 +46,13 @@ Ieșire:
 ```
 Intrare:
 4
-add 5
-remove 5
-remove 5
-print
+adauga
+5
+elimina
+5
+elimina
+5
+afiseaza
 
 Ieșire:
 Negasit
@@ -50,11 +62,15 @@ Goala
 ```
 Intrare:
 5
-add 1
-add 2
-add 3
-remove 1
-print
+adauga
+1
+adauga
+2
+adauga
+3
+elimina
+1
+afiseaza
 
 Ieșire:
 2 -> 3

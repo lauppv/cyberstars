@@ -7,7 +7,7 @@ Sortarea prin interclasare este un algoritm de tip „divide și stăpânește�
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
-- A doua linie: `N` numere întregi separate prin spații
+- Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
 
@@ -18,14 +18,21 @@ Cele `N` numere întregi sortate crescător, separate prin spații, pe o singur�
 ```
 Intrare:
 5
-38 27 43 3 9
+38
+27
+43
+3
+9
 Ieșire: 3 9 27 38 43
 ```
 
 ```
 Intrare:
 4
-4 3 2 1
+4
+3
+2
+1
 Ieșire: 1 2 3 4
 ```
 
@@ -41,7 +48,11 @@ Cazul de bază: un tablou cu un singur element este deja sortat.
 ```
 Intrare:
 5
--1 -5 0 -5 3
+-1
+-5
+0
+-5
+3
 Ieșire: -5 -5 -1 0 3
 ```
 

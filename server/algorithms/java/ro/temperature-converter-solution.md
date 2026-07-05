@@ -1,23 +1,23 @@
 ```java
 import java.util.Scanner;
 
-class Temperature {
+class Temperatura {
     private final double valoare;
     private final char unitate;
 
-    Temperature(double valoare, char unitate) {
+    Temperatura(double valoare, char unitate) {
         this.valoare = valoare;
         this.unitate = unitate;
     }
 
-    double toCelsius() {
+    double laCelsius() {
         if (unitate == 'C') {
             return valoare;
         }
         return (valoare - 32) * 5 / 9;
     }
 
-    double toFahrenheit() {
+    double laFahrenheit() {
         if (unitate == 'F') {
             return valoare;
         }
@@ -28,12 +28,15 @@ class Temperature {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parti = sc.nextLine().trim().split("\\s+");
-        double valoare = Double.parseDouble(parti[0]);
-        char unitate = parti[1].charAt(0);
-        Temperature temp = new Temperature(valoare, unitate);
-        System.out.printf("Celsius: %.1f%n", temp.toCelsius());
-        System.out.printf("Fahrenheit: %.1f%n", temp.toFahrenheit());
+
+        double valoare = Double.parseDouble(sc.nextLine());
+        // Unitatea vine ca sir de 1 caracter; luam primul caracter.
+        char unitate = sc.nextLine().charAt(0);
+
+        Temperatura temp = new Temperatura(valoare, unitate);
+
+        System.out.printf("Celsius: %.1f%n", temp.laCelsius());
+        System.out.printf("Fahrenheit: %.1f%n", temp.laFahrenheit());
     }
 }
 ```

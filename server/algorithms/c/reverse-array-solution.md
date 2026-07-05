@@ -10,6 +10,7 @@ int main(void) {
         scanf("%d", &arr[i]);
     }
 
+    // Walk the array from tail to head and print each element.
     for (int i = n - 1; i >= 0; i--) {
         printf("%d", arr[i]);
         if (i > 0) {

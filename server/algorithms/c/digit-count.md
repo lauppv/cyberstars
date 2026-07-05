@@ -2,8 +2,6 @@
 
 Read a single integer and print how many **digits** it has.
 
-This exercise practices using a `while` loop and integer division.
-
 ### Input
 
 - A single integer `N` (0 ≤ N ≤ 1 000 000 000)

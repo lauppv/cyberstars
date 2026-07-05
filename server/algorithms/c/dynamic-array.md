@@ -2,12 +2,10 @@
 
 Read an integer **N**, then read **N** integers. Store them in a **dynamically allocated** array (using `malloc`). Print the **sum** and the **average** (with 2 decimal places) of the numbers. Don't forget to `free` the memory.
 
-This exercise practices dynamic memory allocation with `malloc` and `free`.
-
 ### Input
 
 - First line: an integer `N` (1 ≤ N ≤ 1000)
-- Second line: `N` integers separated by spaces
+- The next `N` lines: one integer per line
 
 ### Output
 
@@ -21,7 +19,10 @@ Two lines:
 ```
 Input:
 4
-10 20 30 40
+10
+20
+30
+40
 Output:
 100
 25.00
@@ -30,7 +31,9 @@ Output:
 ```
 Input:
 3
-5 5 5
+5
+5
+5
 Output:
 15
 5.00
@@ -48,7 +51,9 @@ Output:
 ```
 Input:
 3
--5 5 10
+-5
+5
+10
 Output:
 10
 3.33

@@ -7,10 +7,15 @@ Process commands from stdin and print results for `pop` and `peek`. If `pop` or 
 ### Input
 
 - Line 1: number of commands N
-- Next N lines: one of:
-  - `push X` — push integer X onto the stack
-  - `pop` — remove and print the top element
-  - `peek` — print the top element without removing it
+- For each command:
+  - Line 1: command type (`push`, `pop`, or `peek`)
+  - Only for `push`, line 2: the integer X
+
+Behavior:
+
+- `push X` — push X onto the stack
+- `pop` — remove and print the top element
+- `peek` — print the top element without removing it
 
 ### Output
 
@@ -22,8 +27,10 @@ Process commands from stdin and print results for `pop` and `peek`. If `pop` or 
 ```
 Input:
 6
-push 10
-push 20
+push
+10
+push
+20
 peek
 pop
 pop
@@ -39,8 +46,10 @@ Empty
 ```
 Input:
 3
-push 5
-push 15
+push
+5
+push
+15
 peek
 
 Output:

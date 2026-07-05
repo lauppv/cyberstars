@@ -2,8 +2,6 @@
 
 Citește un întreg **N** și afișează un triunghi aliniat la stânga format din caractere `*`. Linia 1 are 1 stea, linia 2 are 2 stele și așa mai departe până la linia N.
 
-Acest exercițiu antrenează buclele imbricate și afișarea tiparelor.
-
 ### Date de intrare
 
 - Un singur întreg `N` (1 ≤ N ≤ 20)

@@ -2,29 +2,33 @@
 
 Implementează o structură de date de tip **stivă** folosind un tablou. Citește o secvență de comenzi și procesează-le:
 
-- **push X** — adaugă numărul întreg X în vârful stivei
-- **pop** — elimină și afișează elementul din vârf, sau afișează `Goala` dacă stiva este goală
-- **peek** — afișează elementul din vârf fără a-l elimina, sau afișează `Goala` dacă stiva este goală
+- **pune X** — adaugă numărul întreg X în vârful stivei
+- **scoate** — elimină și afișează elementul din vârf, sau afișează `Goala` dacă stiva este goală
+- **varf** — afișează elementul din vârf fără a-l elimina, sau afișează `Goala` dacă stiva este goală
 
 ### Date de intrare
 
 - Prima linie: un întreg `M` (1 ≤ M ≤ 100), numărul de comenzi
-- Următoarele `M` linii: o comandă pe linie (`push X`, `pop` sau `peek`)
+- Pentru fiecare comandă:
+  - Linia 1: tipul comenzii (`pune`, `scoate` sau `varf`)
+  - Doar pentru `pune`, linia 2: numărul întreg X
 
 ### Rezultat
 
-Pentru fiecare comandă `pop` sau `peek`, afișează o linie: valoarea sau `Goala`.
+Pentru fiecare comandă `scoate` sau `varf`, afișează o linie: valoarea sau `Goala`.
 
 ### Exemple
 
 ```
 Intrare:
 5
-push 10
-push 20
-peek
-pop
-pop
+pune
+10
+pune
+20
+varf
+scoate
+scoate
 Ieșire:
 20
 20
@@ -34,9 +38,10 @@ Ieșire:
 ```
 Intrare:
 3
-pop
-push 5
-peek
+scoate
+pune
+5
+varf
 Ieșire:
 Goala
 5
@@ -45,15 +50,17 @@ Goala
 ```
 Intrare:
 5
-push 1
-push 2
-pop
-pop
-pop
+pune
+1
+pune
+2
+scoate
+scoate
+scoate
 Ieșire:
 2
 1
 Goala
 ```
 
-Odată ce stiva e complet golită, apelurile `pop` următoare afișează în continuare `Goala`.
+Odată ce stiva e complet golită, apelurile `scoate` următoare afișează în continuare `Goala`.

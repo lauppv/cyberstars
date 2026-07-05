@@ -7,10 +7,15 @@ Process commands from stdin and print results for `dequeue` and `peek`. If `dequ
 ### Input
 
 - Line 1: number of commands N
-- Next N lines: one of:
-  - `enqueue X` — add integer X to the back of the queue
-  - `dequeue` — remove and print the front element
-  - `peek` — print the front element without removing it
+- For each command:
+  - Line 1: command type (`enqueue`, `dequeue`, or `peek`)
+  - Only for `enqueue`, line 2: the integer X
+
+Behavior:
+
+- `enqueue X` — add X to the back of the queue
+- `dequeue` — remove and print the front element
+- `peek` — print the front element without removing it
 
 ### Output
 
@@ -22,8 +27,10 @@ Process commands from stdin and print results for `dequeue` and `peek`. If `dequ
 ```
 Input:
 6
-enqueue 10
-enqueue 20
+enqueue
+10
+enqueue
+20
 peek
 dequeue
 dequeue
@@ -39,8 +46,10 @@ Empty
 ```
 Input:
 4
-enqueue 5
-enqueue 15
+enqueue
+5
+enqueue
+15
 dequeue
 peek
 

@@ -1,10 +1,14 @@
 ```c
 #include <stdio.h>
 
+// Interclaseaza doua sub-tablouri sortate: [stanga..mijloc] si [mijloc+1..dreapta].
+// Copiem cele doua parti in tablouri temporare, apoi le imbinam inapoi in vector
+// alegand mereu elementul mai mic din capetele lor.
 void interclaseaza(int vector[], int stanga, int mijloc, int dreapta) {
     int n1 = mijloc - stanga + 1;
     int n2 = dreapta - mijloc;
-    int stang[1000], dreapt[1000];
+    int stang[1000];
+    int dreapt[1000];
 
     for (int i = 0; i < n1; i++) {
         stang[i] = vector[stanga + i];
@@ -13,22 +17,33 @@ void interclaseaza(int vector[], int stanga, int mijloc, int dreapta) {
         dreapt[j] = vector[mijloc + 1 + j];
     }
 
-    int i = 0, j = 0, k = stanga;
+    int i = 0;
+    int j = 0;
+    int k = stanga;
     while (i < n1 && j < n2) {
         if (stang[i] <= dreapt[j]) {
-            vector[k++] = stang[i++];
+            vector[k] = stang[i];
+            i++;
         } else {
-            vector[k++] = dreapt[j++];
+            vector[k] = dreapt[j];
+            j++;
         }
+        k++;
     }
+    // Copiem elementele ramase (una din cele doua bucle o sa fie goala).
     while (i < n1) {
-        vector[k++] = stang[i++];
+        vector[k] = stang[i];
+        i++;
+        k++;
     }
     while (j < n2) {
-        vector[k++] = dreapt[j++];
+        vector[k] = dreapt[j];
+        j++;
+        k++;
     }
 }
 
+// Impartim intervalul in doua, sortam recursiv fiecare parte, apoi le imbinam.
 void sorteazaInterclasare(int vector[], int stanga, int dreapta) {
     if (stanga < dreapta) {
         int mijloc = stanga + (dreapta - stanga) / 2;

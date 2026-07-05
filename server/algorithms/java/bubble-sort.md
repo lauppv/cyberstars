@@ -7,7 +7,7 @@ Bubble sort works by repeatedly stepping through the list, comparing adjacent el
 ### Input
 
 - Line 1: integer N — the number of elements
-- Line 2: N space-separated integers
+- The next N lines: one integer per line
 
 ### Output
 
@@ -18,7 +18,11 @@ Bubble sort works by repeatedly stepping through the list, comparing adjacent el
 ```
 Input:
 5
-5 3 8 1 2
+5
+3
+8
+1
+2
 
 Output:
 1 2 3 5 8
@@ -27,7 +31,9 @@ Output:
 ```
 Input:
 3
-3 2 1
+3
+2
+1
 
 Output:
 1 2 3
@@ -47,7 +53,10 @@ A single-element array is already sorted — no swaps needed.
 ```
 Input:
 4
-2 2 1 1
+2
+2
+1
+1
 
 Output:
 1 1 2 2

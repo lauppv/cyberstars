@@ -1,6 +1,6 @@
 # Dificil · Pereche generică
 
-Creează o clasă generică **Pereche<A, B>** care conține două valori de tipuri potențial diferite. Clasa trebuie să aibă metodele `getFirst()`, `getSecond()` și o metodă `swap()` care returnează un nou `Pereche<B, A>` cu valorile interschimbate.
+Creează o clasă generică **Pereche<A, B>** care conține două valori de tipuri potențial diferite. Clasa trebuie să aibă metodele `getPrim()`, `getSecund()` și o metodă `interschimba()` care returnează un nou `Pereche<B, A>` cu valorile interschimbate.
 
 Citește două valori de la stdin (un șir și un număr întreg), creează un Pereche, interschimbă-l și afișează atât perechea originală, cât și cea interschimbată.
 
@@ -11,19 +11,19 @@ Citește două valori de la stdin (un șir și un număr întreg), creează un P
 
 ### Rezultat
 
-- Linia 1: `(FIRST, SECOND)` — perechea originală
-- Linia 2: `(FIRST, SECOND)` — perechea interschimbată
+- Linia 1: `(PRIM, SECUND)` — perechea originală
+- Linia 2: `(PRIM, SECUND)` — perechea interschimbată
 
 ### Exemple
 
 ```
 Intrare:
-hello
+salut
 42
 
 Ieșire:
-(hello, 42)
-(42, hello)
+(salut, 42)
+(42, salut)
 ```
 
 ```
@@ -38,12 +38,12 @@ Ieșire:
 
 ```
 Intrare:
-world
+lume
 0
 
 Ieșire:
-(world, 0)
-(0, world)
+(lume, 0)
+(0, lume)
 ```
 
 ```

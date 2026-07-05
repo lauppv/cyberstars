@@ -14,9 +14,14 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student other) {
-        if (this.gpa != other.gpa) {
-            return Double.compare(other.gpa, this.gpa);
+        // GPA descending: higher GPA comes first.
+        if (this.gpa > other.gpa) {
+            return -1;
         }
+        if (this.gpa < other.gpa) {
+            return 1;
+        }
+        // Same GPA: break the tie alphabetically by name.
         return this.name.compareTo(other.name);
     }
 
@@ -42,13 +47,18 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         List<Student> students = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            String[] parts = sc.nextLine().trim().split("\\s+");
-            students.add(new Student(parts[0], Double.parseDouble(parts[1])));
+            String name = sc.nextLine();
+            double gpa = Double.parseDouble(sc.nextLine());
+            students.add(new Student(name, gpa));
         }
+
         bubbleSort(students);
+
         for (Student s : students) {
             System.out.println(s);
         }

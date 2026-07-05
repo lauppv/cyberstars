@@ -7,8 +7,8 @@ Binary search works by repeatedly halving the search range. Compare the target w
 ### Input
 
 - First line: an integer `N` (1 ≤ N ≤ 1000)
-- Second line: `N` integers sorted in ascending order, separated by spaces
-- Third line: an integer `target` to search for
+- The next `N` lines: one integer per line, sorted in ascending order
+- The next line: an integer `target` — the value to search for
 
 ### Output
 
@@ -19,7 +19,11 @@ A single integer: the 0-based index of the target in the array, or `-1` if not f
 ```
 Input:
 5
-1 3 5 7 9
+1
+3
+5
+7
+9
 5
 Output: 2
 ```
@@ -27,7 +31,10 @@ Output: 2
 ```
 Input:
 4
-10 20 30 40
+10
+20
+30
+40
 25
 Output: -1
 ```

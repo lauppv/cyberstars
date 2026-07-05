@@ -2,12 +2,10 @@
 
 Citește un întreg **N**, apoi citește **N** numere întregi. Afișează **suma** lor.
 
-Acest exercițiu antrenează citirea valorilor cu `scanf` într-o buclă și acumularea unui total.
-
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 ≤ N ≤ 100)
-- A doua linie: `N` numere întregi separate prin spații
+- Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
 
@@ -18,14 +16,20 @@ Un singur întreg: suma tuturor celor `N` numere.
 ```
 Intrare:
 5
-1 2 3 4 5
+1
+2
+3
+4
+5
 Ieșire: 15
 ```
 
 ```
 Intrare:
 3
-10 -3 7
+10
+-3
+7
 Ieșire: 14
 ```
 
@@ -39,6 +43,8 @@ Ieșire: 7
 ```
 Intrare:
 3
--1 -2 -3
+-1
+-2
+-3
 Ieșire: -6
 ```

@@ -7,10 +7,15 @@ Process commands from stdin.
 ### Input
 
 - Line 1: number of commands N
-- Next N lines: one of:
-  - `add X` — add integer X to the end of the list
-  - `remove X` — remove the first occurrence of X (print `Not found` if X is not in the list)
-  - `print` — print all elements separated by `->`, or `Empty` if the list is empty
+- For each command:
+  - Line 1: command type (`add`, `remove`, or `print`)
+  - Only for `add` and `remove`, line 2: the integer X
+
+Behavior:
+
+- `add X` — add integer X to the end of the list
+- `remove X` — remove the first occurrence of X (print `Not found` if X is not in the list)
+- `print` — print all elements separated by `->`, or `Empty` if the list is empty
 
 ### Output
 
@@ -22,11 +27,15 @@ Process commands from stdin.
 ```
 Input:
 6
-add 10
-add 20
-add 30
+add
+10
+add
+20
+add
+30
 print
-remove 20
+remove
+20
 print
 
 Output:
@@ -37,9 +46,12 @@ Output:
 ```
 Input:
 4
-add 5
-remove 5
-remove 5
+add
+5
+remove
+5
+remove
+5
 print
 
 Output:
@@ -50,10 +62,14 @@ Empty
 ```
 Input:
 5
-add 1
-add 2
-add 3
-remove 1
+add
+1
+add
+2
+add
+3
+remove
+1
 print
 
 Output:

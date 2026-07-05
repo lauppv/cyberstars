@@ -8,7 +8,8 @@ Read start and end from stdin, create a `NumberRange`, and print each number on 
 
 ### Input
 
-- Line 1: two integers — start and end
+- Line 1: the start of the range (integer)
+- Line 2: the end of the range (integer)
 
 ### Output
 
@@ -18,7 +19,8 @@ Each number from start to end (inclusive), one per line.
 
 ```
 Input:
-1 5
+1
+5
 
 Output:
 1
@@ -30,7 +32,8 @@ Output:
 
 ```
 Input:
-3 3
+3
+3
 
 Output:
 3
@@ -38,7 +41,8 @@ Output:
 
 ```
 Input:
--2 2
+-2
+2
 
 Output:
 -2

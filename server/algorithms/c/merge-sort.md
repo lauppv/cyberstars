@@ -7,7 +7,7 @@ Merge sort is a divide-and-conquer algorithm: split the array in half, recursive
 ### Input
 
 - First line: an integer `N` (1 ≤ N ≤ 1000)
-- Second line: `N` integers separated by spaces
+- The next `N` lines: one integer per line
 
 ### Output
 
@@ -18,14 +18,21 @@ The `N` integers sorted in ascending order, space-separated, on one line.
 ```
 Input:
 5
-38 27 43 3 9
+38
+27
+43
+3
+9
 Output: 3 9 27 38 43
 ```
 
 ```
 Input:
 4
-4 3 2 1
+4
+3
+2
+1
 Output: 1 2 3 4
 ```
 
@@ -41,7 +48,11 @@ The base case: a single-element array is already sorted.
 ```
 Input:
 5
--1 -5 0 -5 3
+-1
+-5
+0
+-5
+3
 Output: -5 -5 -1 0 3
 ```
 
