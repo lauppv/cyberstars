@@ -29,6 +29,12 @@ vi.mock('../repositories/user.repository.js', () => ({
   updateProfile: (...a: unknown[]) => mockUpdateProfile(...a),
 }));
 
+// progress.repository pulls in db.ts -> env.ts (requires JWT_SECRET). Stub it
+// so the controller module can import in envs without a full .env (e.g. CI).
+vi.mock('../repositories/progress.repository.js', () => ({
+  getActivityDates: vi.fn(),
+}));
+
 const { uploadAvatar, deleteAvatar } = await import('./profile.controller.js');
 
 // Stateful DB stand-in so a later request sees the avatarUrl an earlier one set.
