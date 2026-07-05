@@ -85,7 +85,7 @@
       "linux": "Stăpânește terminalul — fișiere, navigare și comenzi shell",
       "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare",
       "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții",
-      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, structuri și memorie",
+      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, memorie și concurență (fork, threads, semafoare)",
       "kotlin": "Limbaj JVM modern — concis, sigur și interoperabil"
     }
   },
@@ -94,7 +94,7 @@
     "desc": {
       "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare. Ideal pentru a-ți dezvolta gândirea de rezolvare a problemelor.",
       "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții. Exersează proiectarea cu obiecte.",
-      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, structuri și memorie. Gândește aproape de hardware."
+      "algo-c": "Provocări de nivel jos cu tablouri, pointeri, memorie și concurență (fork, threads, semafoare). Gândește aproape de hardware."
     }
   },
   "algoList": {

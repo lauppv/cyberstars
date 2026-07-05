@@ -85,7 +85,7 @@
       "linux": "Master the terminal — files, navigation, and shell commands",
       "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries",
       "algo-java": "OOP-focused challenges — classes, objects, inheritance, and collections",
-      "algo-c": "Low-level challenges with arrays, pointers, structs, and memory",
+      "algo-c": "Low-level challenges with arrays, pointers, memory, and concurrency (fork, threads, semaphores)",
       "kotlin": "Modern JVM language — concise, safe, and interoperable"
     }
   },
@@ -94,7 +94,7 @@
     "desc": {
       "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries. Great for building problem-solving skills.",
       "algo-java": "OOP-focused challenges — classes, objects, inheritance, and collections. Practice designing with objects.",
-      "algo-c": "Low-level challenges with arrays, pointers, structs, and memory. Think close to the hardware."
+      "algo-c": "Low-level challenges with arrays, pointers, memory, and concurrency (fork, threads, semaphores). Think close to the hardware."
     }
   },
   "algoList": {
