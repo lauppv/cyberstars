@@ -2,8 +2,6 @@
 
 Read an integer **N** and print a left-aligned triangle of `*` characters. Line 1 has 1 star, line 2 has 2 stars, and so on up to line N.
 
-This exercise practices nested loops and printing patterns.
-
 ### Input
 
 - A single integer `N` (1 ≤ N ≤ 20)

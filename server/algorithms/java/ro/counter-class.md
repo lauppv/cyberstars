@@ -2,31 +2,31 @@
 
 Creează o clasă **Contor** care ține evidența unei valori întregi. Aceasta trebuie să suporte trei operații:
 
-- `increment()` — adaugă 1 la valoare
-- `decrement()` — scade 1 din valoare
-- `getValue()` — returnează valoarea curentă
+- `creste()` — adaugă 1 la valoare
+- `scade()` — scade 1 din valoare
+- `getValoare()` — returnează valoarea curentă
 
-Contorul pornește de la **0**. Citește comenzile de la stdin (una pe linie): `inc`, `dec` sau `get`. Pentru fiecare comandă `get`, afișează valoarea curentă pe o linie nouă.
+Contorul pornește de la **0**. Citește comenzile de la stdin (una pe linie): `creste`, `scade` sau `arata`. Pentru fiecare comandă `arata`, afișează valoarea curentă pe o linie nouă.
 
 ### Date de intrare
 
 - Linia 1: un număr întreg N — numărul de comenzi
-- Următoarele N linii: o comandă (`inc`, `dec` sau `get`)
+- Următoarele N linii: o comandă (`creste`, `scade` sau `arata`)
 
 ### Rezultat
 
-- Pentru fiecare comandă `get`, afișează valoarea curentă a contorului pe o linie separată.
+- Pentru fiecare comandă `arata`, afișează valoarea curentă a contorului pe o linie separată.
 
 ### Exemple
 
 ```
 Intrare:
 5
-inc
-inc
-get
-dec
-get
+creste
+creste
+arata
+scade
+arata
 
 Ieșire:
 2
@@ -36,10 +36,10 @@ Ieșire:
 ```
 Intrare:
 4
-dec
-dec
-dec
-get
+scade
+scade
+scade
+arata
 
 Ieșire:
 -3
@@ -48,22 +48,22 @@ Ieșire:
 ```
 Intrare:
 1
-get
+arata
 
 Ieșire:
 0
 ```
 
-Apelarea `get` înainte de orice `inc`/`dec` returnează valoarea de start, 0.
+Apelarea `arata` înainte de orice `creste`/`scade` returnează valoarea de start, 0.
 
 ```
 Intrare:
 5
-inc
-dec
-inc
-dec
-get
+creste
+scade
+creste
+scade
+arata
 
 Ieșire:
 0

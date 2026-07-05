@@ -31,10 +31,13 @@ class Pair<A, B> {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine().trim();
-        int num = Integer.parseInt(sc.nextLine().trim());
+
+        String str = sc.nextLine();
+        int num = Integer.parseInt(sc.nextLine());
+
         Pair<String, Integer> pair = new Pair<>(str, num);
         Pair<Integer, String> swapped = pair.swap();
+
         System.out.println(pair);
         System.out.println(swapped);
     }

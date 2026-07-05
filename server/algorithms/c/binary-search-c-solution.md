@@ -13,11 +13,16 @@ int main(void) {
     int target;
     scanf("%d", &target);
 
-    int left = 0, right = n - 1;
+    // We keep two pointers: left and right. Each step we cut the range in half.
+    int left = 0;
+    int right = n - 1;
     int result = -1;
 
     while (left <= right) {
+        // left + (right - left) / 2 avoids the overflow that would happen
+        // with (left + right) / 2 for very large numbers.
         int mid = left + (right - left) / 2;
+
         if (arr[mid] == target) {
             result = mid;
             break;

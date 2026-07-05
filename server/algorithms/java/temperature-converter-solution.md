@@ -28,10 +28,13 @@ class Temperature {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parts = sc.nextLine().trim().split("\\s+");
-        double value = Double.parseDouble(parts[0]);
-        char unit = parts[1].charAt(0);
+
+        double value = Double.parseDouble(sc.nextLine());
+        // The unit is a 1-character string; grab the first character.
+        char unit = sc.nextLine().charAt(0);
+
         Temperature temp = new Temperature(value, unit);
+
         System.out.printf("Celsius: %.1f%n", temp.toCelsius());
         System.out.printf("Fahrenheit: %.1f%n", temp.toFahrenheit());
     }

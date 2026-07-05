@@ -7,7 +7,7 @@ Insertion sort works by building a sorted portion of the array one element at a 
 ### Input
 
 - First line: an integer `N` (1 ≤ N ≤ 1000)
-- Second line: `N` integers separated by spaces
+- The next `N` lines: one integer per line
 
 ### Output
 
@@ -18,14 +18,21 @@ The `N` integers sorted in ascending order, space-separated, on one line.
 ```
 Input:
 5
-12 11 13 5 6
+12
+11
+13
+5
+6
 Output: 5 6 11 12 13
 ```
 
 ```
 Input:
 4
-4 3 2 1
+4
+3
+2
+1
 Output: 1 2 3 4
 ```
 
@@ -39,7 +46,10 @@ Output: 9
 ```
 Input:
 4
-1 1 2 2
+1
+1
+2
+2
 Output: 1 1 2 2
 ```
 

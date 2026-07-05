@@ -5,10 +5,10 @@ Use a **HashMap** to manage an inventory of items and their quantities. Process 
 ### Input
 
 - Line 1: number of commands N
-- Next N lines: one of:
-  - `add item qty` — add qty units of item (or increase if exists)
-  - `remove item qty` — remove qty units (if not enough, print `Not enough ITEM`)
-  - `check item` — print `ITEM: QTY` (or `ITEM: 0` if not in inventory)
+- For each command:
+  - Line 1: command type (`add`, `remove`, or `check`)
+  - Line 2: the item name
+  - Only for `add` and `remove`, line 3: the quantity (integer)
 
 ### Output
 
@@ -21,11 +21,19 @@ Use a **HashMap** to manage an inventory of items and their quantities. Process 
 ```
 Input:
 5
-add apple 10
-add banana 5
-remove apple 3
-check apple
-check orange
+add
+apple
+10
+add
+banana
+5
+remove
+apple
+3
+check
+apple
+check
+orange
 
 Output:
 apple: 7
@@ -36,9 +44,14 @@ Items: 2
 ```
 Input:
 3
-add milk 2
-remove milk 5
-check milk
+add
+milk
+2
+remove
+milk
+5
+check
+milk
 
 Output:
 Not enough milk
@@ -49,10 +62,16 @@ Items: 1
 ```
 Input:
 4
-add apple 3
-remove apple 3
-check apple
-check apple
+add
+apple
+3
+remove
+apple
+3
+check
+apple
+check
+apple
 
 Output:
 apple: 0

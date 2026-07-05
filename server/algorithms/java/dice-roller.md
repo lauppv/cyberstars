@@ -8,7 +8,9 @@ Read the number of sides, the seed, and the number of rolls from stdin. Create a
 
 ### Input
 
-- Line 1: three integers separated by spaces — sides, seed, numberOfRolls
+- Line 1: the number of sides (integer)
+- Line 2: seed (integer)
+- Line 3: the number of rolls (integer)
 
 ### Output
 
@@ -18,7 +20,9 @@ Read the number of sides, the seed, and the number of rolls from stdin. Create a
 
 ```
 Input:
-6 42 1
+6
+42
+1
 
 Output:
 3
@@ -26,7 +30,9 @@ Output:
 
 ```
 Input:
-6 1 3
+6
+1
+3
 
 Output:
 4
@@ -36,7 +42,9 @@ Output:
 
 ```
 Input:
-20 7 1
+20
+7
+1
 
 Output:
 17
@@ -44,7 +52,9 @@ Output:
 
 ```
 Input:
-2 100 5
+2
+100
+5
 
 Output:
 2

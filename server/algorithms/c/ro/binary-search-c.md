@@ -7,8 +7,8 @@ Căutarea binară funcționează înjumătățind în mod repetat intervalul de 
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
-- A doua linie: `N` numere întregi sortate crescător, separate prin spații
-- A treia linie: un întreg `target` de căutat
+- Următoarele `N` linii: câte un număr întreg, sortate crescător
+- Linia următoare: un întreg `cautat` — valoarea de găsit
 
 ### Rezultat
 
@@ -19,7 +19,11 @@ Un singur întreg: indicele (începând de la 0) al valorii căutate în tablou,
 ```
 Intrare:
 5
-1 3 5 7 9
+1
+3
+5
+7
+9
 5
 Ieșire: 2
 ```
@@ -27,7 +31,10 @@ Ieșire: 2
 ```
 Intrare:
 4
-10 20 30 40
+10
+20
+30
+40
 25
 Ieșire: -1
 ```
@@ -40,7 +47,7 @@ Intrare:
 Ieșire: 0
 ```
 
-Un tablou cu un singur element funcționează la fel — `left` și `right` pornesc amândoi de la 0.
+Un tablou cu un singur element funcționează la fel — `stanga` și `dreapta` pornesc amândoi de la 0.
 
 ```
 Intrare:

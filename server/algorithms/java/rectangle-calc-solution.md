@@ -22,10 +22,12 @@ class Rectangle {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parts = sc.nextLine().trim().split("\\s+");
-        int width = Integer.parseInt(parts[0]);
-        int height = Integer.parseInt(parts[1]);
+
+        int width = Integer.parseInt(sc.nextLine());
+        int height = Integer.parseInt(sc.nextLine());
+
         Rectangle rect = new Rectangle(width, height);
+
         System.out.println("Area: " + rect.getArea());
         System.out.println("Perimeter: " + rect.getPerimeter());
     }

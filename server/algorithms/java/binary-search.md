@@ -7,8 +7,8 @@ Use the classic binary search algorithm: maintain two pointers `low` and `high`,
 ### Input
 
 - Line 1: integer N — the number of elements
-- Line 2: N space-separated integers in ascending order
-- Line 3: integer T — the target value to search for
+- The next N lines: one integer per line, in ascending order
+- The next line: integer T — the target value to search for
 
 ### Output
 
@@ -19,7 +19,11 @@ Use the classic binary search algorithm: maintain two pointers `low` and `high`,
 ```
 Input:
 5
-1 3 5 7 9
+1
+3
+5
+7
+9
 5
 
 Output:
@@ -29,7 +33,10 @@ Output:
 ```
 Input:
 4
-2 4 6 8
+2
+4
+6
+8
 5
 
 Output:
@@ -61,7 +68,12 @@ Output:
 ```
 Input:
 6
-1 2 3 4 5 6
+1
+2
+3
+4
+5
+6
 1
 
 Output:

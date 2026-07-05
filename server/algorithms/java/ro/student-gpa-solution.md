@@ -10,10 +10,10 @@ class Student {
         this.note = note;
     }
 
-    double getGPA() {
+    double getMedie() {
         int suma = 0;
-        for (int nota : note) {
-            suma += nota;
+        for (int i = 0; i < note.length; i++) {
+            suma = suma + note[i];
         }
         return (double) suma / note.length;
     }
@@ -22,14 +22,17 @@ class Student {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String nume = sc.nextLine().trim();
-        String[] parti = sc.nextLine().trim().split("\\s+");
-        int[] note = new int[parti.length];
-        for (int i = 0; i < parti.length; i++) {
-            note[i] = Integer.parseInt(parti[i]);
+
+        String nume = sc.nextLine();
+        int n = Integer.parseInt(sc.nextLine());
+
+        int[] note = new int[n];
+        for (int i = 0; i < n; i++) {
+            note[i] = Integer.parseInt(sc.nextLine());
         }
+
         Student student = new Student(nume, note);
-        System.out.printf("%.2f%n", student.getGPA());
+        System.out.printf("%.2f%n", student.getMedie());
     }
 }
 ```

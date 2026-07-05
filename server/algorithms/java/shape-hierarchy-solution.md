@@ -36,18 +36,27 @@ class Rectangle extends Shape {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         double total = 0;
+
         for (int i = 0; i < n; i++) {
-            String[] parts = sc.nextLine().trim().split("\\s+");
+            String type = sc.nextLine();
+
             Shape shape;
-            if (parts[0].equals("circle")) {
-                shape = new Circle(Double.parseDouble(parts[1]));
+            if (type.equals("circle")) {
+                double radius = Double.parseDouble(sc.nextLine());
+                shape = new Circle(radius);
             } else {
-                shape = new Rectangle(Double.parseDouble(parts[1]), Double.parseDouble(parts[2]));
+                double width = Double.parseDouble(sc.nextLine());
+                double height = Double.parseDouble(sc.nextLine());
+                shape = new Rectangle(width, height);
             }
-            total += shape.getArea();
+
+            total = total + shape.getArea();
         }
+
         System.out.printf("Total: %.2f%n", total);
     }
 }

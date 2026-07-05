@@ -3,10 +3,13 @@ import java.util.Scanner;
 
 public class Main {
     static int cautareBinara(int[] tablou, int tinta) {
+        // Tinem doi indicatori: jos si sus. In fiecare pas taiem intervalul la jumatate.
         int jos = 0;
         int sus = tablou.length - 1;
+
         while (jos <= sus) {
             int mijloc = (jos + sus) / 2;
+
             if (tablou[mijloc] == tinta) {
                 return mijloc;
             } else if (tablou[mijloc] < tinta) {
@@ -15,18 +18,22 @@ public class Main {
                 sus = mijloc - 1;
             }
         }
+
         return -1;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
-        String[] parti = sc.nextLine().trim().split("\\s+");
+
+        int n = Integer.parseInt(sc.nextLine());
+
         int[] tablou = new int[n];
         for (int i = 0; i < n; i++) {
-            tablou[i] = Integer.parseInt(parti[i]);
+            tablou[i] = Integer.parseInt(sc.nextLine());
         }
-        int tinta = Integer.parseInt(sc.nextLine().trim());
+
+        int tinta = Integer.parseInt(sc.nextLine());
+
         System.out.println(cautareBinara(tablou, tinta));
     }
 }

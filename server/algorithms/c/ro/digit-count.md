@@ -2,8 +2,6 @@
 
 Citește un singur număr întreg și afișează câte **cifre** are.
 
-Acest exercițiu antrenează folosirea unei bucle `while` și a împărțirii întregi.
-
 ### Date de intrare
 
 - Un singur întreg `N` (0 ≤ N ≤ 1 000 000 000)

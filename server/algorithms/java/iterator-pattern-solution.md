@@ -23,7 +23,9 @@ class NumberRange implements Iterable<Integer> {
 
             @Override
             public Integer next() {
-                return current++;
+                int value = current;
+                current = current + 1;
+                return value;
             }
         };
     }
@@ -32,10 +34,12 @@ class NumberRange implements Iterable<Integer> {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parts = sc.nextLine().trim().split("\\s+");
-        int start = Integer.parseInt(parts[0]);
-        int end = Integer.parseInt(parts[1]);
+
+        int start = Integer.parseInt(sc.nextLine());
+        int end = Integer.parseInt(sc.nextLine());
+
         NumberRange range = new NumberRange(start, end);
+
         for (int value : range) {
             System.out.println(value);
         }

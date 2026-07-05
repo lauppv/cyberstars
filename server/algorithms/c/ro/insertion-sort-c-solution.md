@@ -10,6 +10,9 @@ int main(void) {
         scanf("%d", &vector[i]);
     }
 
+    // La pasul i, primele i elemente sunt deja sortate.
+    // Luam elementul de pe pozitia i si il "inseram" in ordine
+    // mutand la dreapta orice element mai mare decat el.
     for (int i = 1; i < n; i++) {
         int cheie = vector[i];
         int j = i - 1;

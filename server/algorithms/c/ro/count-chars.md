@@ -2,8 +2,6 @@
 
 Citește un șir (un singur cuvânt) și un caracter. Numără de câte ori apare acel caracter în șir și afișează numărul.
 
-Acest exercițiu antrenează parcurgerea unui șir C și compararea caracterelor.
-
 ### Date de intrare
 
 - Prima linie: un singur cuvânt (maxim 1000 de caractere)

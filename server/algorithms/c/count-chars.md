@@ -2,8 +2,6 @@
 
 Read a string (single word) and a character. Count how many times that character appears in the string and print the count.
 
-This exercise practices iterating through a C string and comparing characters.
-
 ### Input
 
 - First line: a single word (max 1000 characters)

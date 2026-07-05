@@ -12,9 +12,14 @@ int main(void) {
 
     Student studenti[50];
     for (int i = 0; i < n; i++) {
-        scanf("%49s %d", studenti[i].nume, &studenti[i].nota);
+        scanf("%49s", studenti[i].nume);
+        scanf("%d", &studenti[i].nota);
     }
 
+    // Insertion sort: la pasul i, primii i studenti sunt deja sortati.
+    // Il mutam pe studenti[i] in pozitia corecta, deplasand la dreapta
+    // orice student cu nota mai mare. Insertion sort este stabil pentru
+    // ca folosim > (nu >=), deci elementele egale isi pastreaza ordinea.
     for (int i = 1; i < n; i++) {
         Student cheie = studenti[i];
         int j = i - 1;

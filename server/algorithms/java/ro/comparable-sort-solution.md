@@ -14,9 +14,14 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student altul) {
-        if (this.medie != altul.medie) {
-            return Double.compare(altul.medie, this.medie);
+        // Media descrescator: cine are media mai mare vine primul.
+        if (this.medie > altul.medie) {
+            return -1;
         }
+        if (this.medie < altul.medie) {
+            return 1;
+        }
+        // Media egala: departajam alfabetic dupa nume.
         return this.nume.compareTo(altul.nume);
     }
 
@@ -27,7 +32,7 @@ class Student implements Comparable<Student> {
 }
 
 public class Main {
-    static void bubbleSort(List<Student> studenti) {
+    static void sorteazaBule(List<Student> studenti) {
         int n = studenti.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - 1 - i; j++) {
@@ -42,13 +47,18 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         List<Student> studenti = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            String[] parti = sc.nextLine().trim().split("\\s+");
-            studenti.add(new Student(parti[0], Double.parseDouble(parti[1])));
+            String nume = sc.nextLine();
+            double medie = Double.parseDouble(sc.nextLine());
+            studenti.add(new Student(nume, medie));
         }
-        bubbleSort(studenti);
+
+        sorteazaBule(studenti);
+
         for (Student s : studenti) {
             System.out.println(s);
         }

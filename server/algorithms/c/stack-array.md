@@ -9,7 +9,9 @@ Implement a **stack** data structure using an array. Read a sequence of commands
 ### Input
 
 - First line: an integer `M` (1 ≤ M ≤ 100), the number of commands
-- Next `M` lines: one command per line (`push X`, `pop`, or `peek`)
+- For each command:
+  - Line 1: command type (`push`, `pop`, or `peek`)
+  - Only for `push`, line 2: the integer X
 
 ### Output
 
@@ -20,8 +22,10 @@ For each `pop` or `peek` command, print one line: the value or `Empty`.
 ```
 Input:
 5
-push 10
-push 20
+push
+10
+push
+20
 peek
 pop
 pop
@@ -35,7 +39,8 @@ Output:
 Input:
 3
 pop
-push 5
+push
+5
 peek
 Output:
 Empty
@@ -45,8 +50,10 @@ Empty
 ```
 Input:
 5
-push 1
-push 2
+push
+1
+push
+2
 pop
 pop
 pop

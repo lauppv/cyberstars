@@ -2,28 +2,30 @@
 import java.util.Iterator;
 import java.util.Scanner;
 
-class NumberRange implements Iterable<Integer> {
-    private final int start;
-    private final int end;
+class IntervalNumere implements Iterable<Integer> {
+    private final int inceput;
+    private final int sfarsit;
 
-    NumberRange(int start, int end) {
-        this.start = start;
-        this.end = end;
+    IntervalNumere(int inceput, int sfarsit) {
+        this.inceput = inceput;
+        this.sfarsit = sfarsit;
     }
 
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<Integer>() {
-            private int curent = start;
+            private int curent = inceput;
 
             @Override
             public boolean hasNext() {
-                return curent <= end;
+                return curent <= sfarsit;
             }
 
             @Override
             public Integer next() {
-                return curent++;
+                int valoare = curent;
+                curent = curent + 1;
+                return valoare;
             }
         };
     }
@@ -32,10 +34,12 @@ class NumberRange implements Iterable<Integer> {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parti = sc.nextLine().trim().split("\\s+");
-        int start = Integer.parseInt(parti[0]);
-        int end = Integer.parseInt(parti[1]);
-        NumberRange interval = new NumberRange(start, end);
+
+        int inceput = Integer.parseInt(sc.nextLine());
+        int sfarsit = Integer.parseInt(sc.nextLine());
+
+        IntervalNumere interval = new IntervalNumere(inceput, sfarsit);
+
         for (int valoare : interval) {
             System.out.println(valoare);
         }

@@ -1,48 +1,30 @@
 # Mediu · Transpusa unei matrice
 
-Citește un întreg **N**, apoi citește o matrice de numere întregi de dimensiune **N×N**. Afișează **transpusa** ei (rândurile devin coloane).
+Calculează **transpusa** unei matrice N×N (rândurile devin coloane) și afișează rezultatul.
 
-Acest exercițiu antrenează lucrul cu tablouri bidimensionale în C și buclele imbricate.
+Pentru acest exercițiu, matricea este **hardcodată** direct în cod — nu se citește nimic de la stdin. Folosește:
+
+```
+matrice = [ [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9] ]
+```
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 ≤ N ≤ 20)
-- Următoarele `N` linii: fiecare cu `N` numere întregi separate prin spații
+Niciuna. Matricea este scrisă direct în cod.
 
 ### Rezultat
 
-`N` linii, fiecare cu `N` numere întregi separate prin spații, reprezentând matricea transpusă.
+3 linii cu 3 numere întregi separate prin spații — matricea transpusă.
 
-### Exemple
-
-```
-Intrare:
-2
-1 2
-3 4
-Ieșire:
-1 3
-2 4
-```
+### Exemplu
 
 ```
-Intrare:
-3
-1 2 3
-4 5 6
-7 8 9
 Ieșire:
 1 4 7
 2 5 8
 3 6 9
 ```
 
-```
-Intrare:
-1
-5
-Ieșire:
-5
-```
-
-O matrice 1x1 este propria ei transpusă.
+Verifică: elementul de pe pozitia `[i][j]` din original devine `[j][i]` in transpusa.

@@ -12,10 +12,14 @@ int main(void) {
 
     Student students[50];
     for (int i = 0; i < n; i++) {
-        scanf("%49s %d", students[i].name, &students[i].grade);
+        scanf("%49s", students[i].name);
+        scanf("%d", &students[i].grade);
     }
 
-    /* stable insertion sort by grade ascending */
+    // Insertion sort: at step i, the first i students are already sorted.
+    // We move students[i] into the correct position by shifting to the right
+    // any student with a greater grade. Insertion sort is stable because we
+    // use > (not >=), so equal elements keep their original order.
     for (int i = 1; i < n; i++) {
         Student key = students[i];
         int j = i - 1;

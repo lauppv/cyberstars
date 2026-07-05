@@ -7,8 +7,8 @@ Folosește algoritmul clasic de căutare binară: menține doi indicatori `jos` 
 ### Date de intrare
 
 - Linia 1: numărul întreg N — numărul de elemente
-- Linia 2: N numere întregi separate prin spațiu, în ordine crescătoare
-- Linia 3: numărul întreg T — valoarea țintă căutată
+- Următoarele N linii: câte un număr întreg, în ordine crescătoare
+- Linia următoare: numărul întreg T — valoarea țintă căutată
 
 ### Rezultat
 
@@ -19,7 +19,11 @@ Folosește algoritmul clasic de căutare binară: menține doi indicatori `jos` 
 ```
 Intrare:
 5
-1 3 5 7 9
+1
+3
+5
+7
+9
 5
 
 Ieșire:
@@ -29,7 +33,10 @@ Ieșire:
 ```
 Intrare:
 4
-2 4 6 8
+2
+4
+6
+8
 5
 
 Ieșire:
@@ -61,7 +68,12 @@ Ieșire:
 ```
 Intrare:
 6
-1 2 3 4 5 6
+1
+2
+3
+4
+5
+6
 1
 
 Ieșire:

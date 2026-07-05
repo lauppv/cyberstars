@@ -1,14 +1,36 @@
 ```py
 n = int(input())
-nums = list(map(int, input().split()))
+parts = input().split()
 
-for i in range(1, len(nums)):
-    key = nums[i]
+nums = []
+i = 0
+while i < n:
+    nums.append(int(parts[i]))
+    i = i + 1
+
+# At step i, the first i elements are already sorted.
+# We take the element at position i and "insert" it in order
+# by shifting to the right any element bigger than it.
+i = 1
+while i < n:
+    current = nums[i]
+
     j = i - 1
-    while j >= 0 and nums[j] > key:
+    while j >= 0 and nums[j] > current:
         nums[j + 1] = nums[j]
-        j -= 1
-    nums[j + 1] = key
+        j = j - 1
 
-print(' '.join(str(x) for x in nums))
+    nums[j + 1] = current
+    i = i + 1
+
+# Build the output manually, separated by spaces.
+out = ""
+i = 0
+while i < n:
+    out = out + str(nums[i])
+    if i < n - 1:
+        out = out + " "
+    i = i + 1
+
+print(out)
 ```

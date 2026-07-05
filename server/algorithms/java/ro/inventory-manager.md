@@ -5,15 +5,15 @@ Folosește un **HashMap** pentru a gestiona un inventar de articole și cantită
 ### Date de intrare
 
 - Linia 1: numărul de comenzi N
-- Următoarele N linii: una dintre:
-  - `add item qty` — adaugă qty unități de item (sau crește dacă există)
-  - `remove item qty` — elimină qty unități (dacă nu sunt suficiente, afișează `Insuficient ITEM`)
-  - `check item` — afișează `ITEM: QTY` (sau `ITEM: 0` dacă nu se află în inventar)
+- Pentru fiecare comandă:
+  - Linia 1: tipul comenzii (`adauga`, `elimina` sau `verifica`)
+  - Linia 2: numele articolului
+  - Doar pentru `adauga` și `elimina`, linia 3: cantitatea (număr întreg)
 
 ### Rezultat
 
-- Pentru fiecare comandă `check`: afișează `ITEM: QTY`
-- Pentru fiecare `remove` eșuat: afișează `Insuficient ITEM`
+- Pentru fiecare comandă `verifica`: afișează `ARTICOL: QTY`
+- Pentru fiecare `elimina` eșuat: afișează `Insuficient ARTICOL`
 - Ultima linie: `Articole: N` (numărul total de articole distincte cu qty > 0)
 
 ### Exemple
@@ -21,11 +21,19 @@ Folosește un **HashMap** pentru a gestiona un inventar de articole și cantită
 ```
 Intrare:
 5
-add mar 10
-add banana 5
-remove mar 3
-check mar
-check portocala
+adauga
+mar
+10
+adauga
+banana
+5
+elimina
+mar
+3
+verifica
+mar
+verifica
+portocala
 
 Ieșire:
 mar: 7
@@ -36,9 +44,14 @@ Articole: 2
 ```
 Intrare:
 3
-add lapte 2
-remove lapte 5
-check lapte
+adauga
+lapte
+2
+elimina
+lapte
+5
+verifica
+lapte
 
 Ieșire:
 Insuficient lapte
@@ -49,10 +62,16 @@ Articole: 1
 ```
 Intrare:
 4
-add mar 3
-remove mar 3
-check mar
-check mar
+adauga
+mar
+3
+elimina
+mar
+3
+verifica
+mar
+verifica
+mar
 
 Ieșire:
 mar: 0

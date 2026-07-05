@@ -13,11 +13,16 @@ int main(void) {
     int cautat;
     scanf("%d", &cautat);
 
-    int stanga = 0, dreapta = n - 1;
+    // Tinem doi indicatori: stanga si dreapta. In fiecare pas taiem intervalul la jumatate.
+    int stanga = 0;
+    int dreapta = n - 1;
     int rezultat = -1;
 
     while (stanga <= dreapta) {
+        // stanga + (dreapta - stanga) / 2 evita overflow-ul care ar aparea
+        // cu (stanga + dreapta) / 2 pentru numere foarte mari.
         int mijloc = stanga + (dreapta - stanga) / 2;
+
         if (vector[mijloc] == cautat) {
             rezultat = mijloc;
             break;

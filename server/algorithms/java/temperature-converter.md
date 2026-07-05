@@ -14,7 +14,8 @@ Read a value and unit from stdin. Print both conversions, rounded to one decimal
 
 ### Input
 
-- Line 1: a double and a character separated by a space — the value and unit (e.g. `100.0 C`)
+- Line 1: the value (decimal number)
+- Line 2: the unit (a single character: `C` or `F`)
 
 ### Output
 
@@ -27,7 +28,8 @@ Read a value and unit from stdin. Print both conversions, rounded to one decimal
 
 ```
 Input:
-100.0 C
+100.0
+C
 
 Output:
 Celsius: 100.0
@@ -36,7 +38,8 @@ Fahrenheit: 212.0
 
 ```
 Input:
-32.0 F
+32.0
+F
 
 Output:
 Celsius: 0.0
@@ -45,7 +48,8 @@ Fahrenheit: 32.0
 
 ```
 Input:
-0.0 C
+0.0
+C
 
 Output:
 Celsius: 0.0
@@ -56,7 +60,8 @@ The reverse direction: starting from 0°C also lands on 32°F.
 
 ```
 Input:
--40.0 C
+-40.0
+C
 
 Output:
 Celsius: -40.0

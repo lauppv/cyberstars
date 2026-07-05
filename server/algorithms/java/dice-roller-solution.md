@@ -19,11 +19,13 @@ class Dice {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parts = sc.nextLine().trim().split("\\s+");
-        int sides = Integer.parseInt(parts[0]);
-        long seed = Long.parseLong(parts[1]);
-        int rolls = Integer.parseInt(parts[2]);
+
+        int sides = Integer.parseInt(sc.nextLine());
+        long seed = Long.parseLong(sc.nextLine());
+        int rolls = Integer.parseInt(sc.nextLine());
+
         Dice dice = new Dice(sides, seed);
+
         for (int i = 0; i < rolls; i++) {
             System.out.println(dice.roll());
         }

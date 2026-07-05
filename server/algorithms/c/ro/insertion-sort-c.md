@@ -7,7 +7,7 @@ Sortarea prin inserție funcționează construind o porțiune sortată a tabloul
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
-- A doua linie: `N` numere întregi separate prin spații
+- Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
 
@@ -18,14 +18,21 @@ Cele `N` numere întregi sortate crescător, separate prin spații, pe o singur�
 ```
 Intrare:
 5
-12 11 13 5 6
+12
+11
+13
+5
+6
 Ieșire: 5 6 11 12 13
 ```
 
 ```
 Intrare:
 4
-4 3 2 1
+4
+3
+2
+1
 Ieșire: 1 2 3 4
 ```
 
@@ -39,7 +46,10 @@ Ieșire: 9
 ```
 Intrare:
 4
-1 1 2 2
+1
+1
+2
+2
 Ieșire: 1 1 2 2
 ```
 

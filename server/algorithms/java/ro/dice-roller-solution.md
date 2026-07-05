@@ -19,11 +19,13 @@ class Zar {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] parti = sc.nextLine().trim().split("\\s+");
-        int fete = Integer.parseInt(parti[0]);
-        long seed = Long.parseLong(parti[1]);
-        int aruncari = Integer.parseInt(parti[2]);
+
+        int fete = Integer.parseInt(sc.nextLine());
+        long seed = Long.parseLong(sc.nextLine());
+        int aruncari = Integer.parseInt(sc.nextLine());
+
         Zar zar = new Zar(fete, seed);
+
         for (int i = 0; i < aruncari; i++) {
             System.out.println(zar.arunca());
         }

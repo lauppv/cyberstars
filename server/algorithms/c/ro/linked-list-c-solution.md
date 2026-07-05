@@ -12,19 +12,24 @@ int main(void) {
     int n;
     scanf("%d", &n);
 
+    // Pastram doi pointeri: cap = inceputul listei, coada = ultimul nod.
+    // coada ne ajuta sa inseram la final in O(1), fara sa parcurgem lista.
     Nod *cap = NULL;
     Nod *coada = NULL;
 
     for (int i = 0; i < n; i++) {
-        char comanda[10];
-        scanf("%9s", comanda);
+        char comanda[15];
+        scanf("%14s", comanda);
 
-        if (strcmp(comanda, "INSERT") == 0) {
+        if (strcmp(comanda, "insereaza") == 0) {
             int x;
             scanf("%d", &x);
+
+            // Alocam un nod nou in heap si il legam la coada listei.
             Nod *nod = malloc(sizeof(Nod));
             nod->data = x;
             nod->urmator = NULL;
+
             if (cap == NULL) {
                 cap = nod;
                 coada = nod;
@@ -32,7 +37,7 @@ int main(void) {
                 coada->urmator = nod;
                 coada = nod;
             }
-        } else if (strcmp(comanda, "PRINT") == 0) {
+        } else if (strcmp(comanda, "afiseaza") == 0) {
             if (cap == NULL) {
                 printf("Goala\n");
             } else {
@@ -51,6 +56,7 @@ int main(void) {
         }
     }
 
+    // Eliberam memoria alocata pentru fiecare nod (evitam memory leak).
     Nod *curent = cap;
     while (curent != NULL) {
         Nod *urmator = curent->urmator;

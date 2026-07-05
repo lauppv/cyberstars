@@ -10,15 +10,15 @@ class Pereche<A, B> {
         this.secund = secund;
     }
 
-    A getFirst() {
+    A getPrim() {
         return prim;
     }
 
-    B getSecond() {
+    B getSecund() {
         return secund;
     }
 
-    Pereche<B, A> swap() {
+    Pereche<B, A> interschimba() {
         return new Pereche<>(secund, prim);
     }
 
@@ -31,10 +31,13 @@ class Pereche<A, B> {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String sir = sc.nextLine().trim();
-        int numar = Integer.parseInt(sc.nextLine().trim());
+
+        String sir = sc.nextLine();
+        int numar = Integer.parseInt(sc.nextLine());
+
         Pereche<String, Integer> pereche = new Pereche<>(sir, numar);
-        Pereche<Integer, String> interschimbata = pereche.swap();
+        Pereche<Integer, String> interschimbata = pereche.interschimba();
+
         System.out.println(pereche);
         System.out.println(interschimbata);
     }

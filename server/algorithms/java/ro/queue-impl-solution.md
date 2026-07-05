@@ -6,19 +6,21 @@ import java.util.Scanner;
 class Coada {
     private final List<Integer> date = new ArrayList<>();
 
-    void enqueue(int valoare) {
+    void adauga(int valoare) {
         date.add(valoare);
     }
 
-    Integer dequeue() {
-        if (date.isEmpty()) {
+    // Folosim Integer (nu int) ca sa putem returna null cand coada este goala.
+    Integer scoate() {
+        if (date.size() == 0) {
             return null;
         }
+        // FIFO: scoatem elementul din fata (pozitia 0).
         return date.remove(0);
     }
 
-    Integer peek() {
-        if (date.isEmpty()) {
+    Integer varf() {
+        if (date.size() == 0) {
             return null;
         }
         return date.get(0);
@@ -28,23 +30,30 @@ class Coada {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         Coada coada = new Coada();
+
         for (int i = 0; i < n; i++) {
-            String[] parti = sc.nextLine().trim().split("\\s+");
-            switch (parti[0]) {
-                case "enqueue":
-                    coada.enqueue(Integer.parseInt(parti[1]));
-                    break;
-                case "dequeue": {
-                    Integer valoare = coada.dequeue();
-                    System.out.println(valoare == null ? "Goala" : valoare.toString());
-                    break;
+            String comanda = sc.nextLine();
+
+            if (comanda.equals("adauga")) {
+                int valoare = Integer.parseInt(sc.nextLine());
+                coada.adauga(valoare);
+            } else if (comanda.equals("scoate")) {
+                Integer valoare = coada.scoate();
+                if (valoare == null) {
+                    System.out.println("Goala");
+                } else {
+                    System.out.println(valoare);
                 }
-                case "peek": {
-                    Integer valoare = coada.peek();
-                    System.out.println(valoare == null ? "Goala" : valoare.toString());
-                    break;
+            } else {
+                Integer valoare = coada.varf();
+                if (valoare == null) {
+                    System.out.println("Goala");
+                } else {
+                    System.out.println(valoare);
                 }
             }
         }

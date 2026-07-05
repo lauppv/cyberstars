@@ -4,15 +4,15 @@ import java.util.Scanner;
 class Contor {
     private int valoare = 0;
 
-    void increment() {
-        valoare++;
+    void creste() {
+        valoare = valoare + 1;
     }
 
-    void decrement() {
-        valoare--;
+    void scade() {
+        valoare = valoare - 1;
     }
 
-    int getValue() {
+    int getValoare() {
         return valoare;
     }
 }
@@ -20,20 +20,20 @@ class Contor {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine().trim());
+
+        int n = Integer.parseInt(sc.nextLine());
+
         Contor contor = new Contor();
+
         for (int i = 0; i < n; i++) {
-            String comanda = sc.nextLine().trim();
-            switch (comanda) {
-                case "inc":
-                    contor.increment();
-                    break;
-                case "dec":
-                    contor.decrement();
-                    break;
-                case "get":
-                    System.out.println(contor.getValue());
-                    break;
+            String comanda = sc.nextLine();
+
+            if (comanda.equals("creste")) {
+                contor.creste();
+            } else if (comanda.equals("scade")) {
+                contor.scade();
+            } else {
+                System.out.println(contor.getValoare());
             }
         }
     }

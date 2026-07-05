@@ -1,13 +1,16 @@
 # Mediu · Ierarhia formelor
 
-Creează o clasă **abstractă** `Shape` cu o metodă abstractă `getArea()`. Implementează două subclase: `Circle` (cu radius) și `Rectangle` (cu latime și inaltime).
+Creează o clasă **abstractă** `Forma` cu o metodă abstractă `getArie()`. Implementează două subclase: `Cerc` (cu raza) și `Dreptunghi` (cu latime și inaltime).
 
 Citește formele de la stdin, creează obiectele corespunzătoare și afișează **aria totală** a tuturor formelor, rotunjită la 2 zecimale.
 
 ### Date de intrare
 
 - Linia 1: numărul de forme N
-- Următoarele N linii: fie `circle RADIUS`, fie `rectangle LATIME INALTIME`
+- Pentru fiecare formă:
+  - Linia 1: tipul (`cerc` sau `dreptunghi`)
+  - Pentru `cerc`, linia 2: raza (număr zecimal)
+  - Pentru `dreptunghi`, linia 2: latimea, linia 3: înălțimea (numere zecimale)
 
 ### Rezultat
 
@@ -18,9 +21,13 @@ O singură linie: `Total: X` unde X este suma tuturor ariilor, formatată la 2 z
 ```
 Intrare:
 3
-circle 5
-rectangle 4 6
-circle 3
+cerc
+5
+dreptunghi
+4
+6
+cerc
+3
 
 Ieșire:
 Total: 130.81
@@ -29,7 +36,9 @@ Total: 130.81
 ```
 Intrare:
 1
-rectangle 10 10
+dreptunghi
+10
+10
 
 Ieșire:
 Total: 100.00

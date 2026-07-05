@@ -1,33 +1,40 @@
 # Mediu · Implementarea unei cozi
 
-Implementează o clasă **Coada** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `enqueue`, `dequeue` și `peek`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
+Implementează o clasă **Coada** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `adauga`, `scoate` și `varf`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
 
-Procesează comenzile de la stdin și afișează rezultatele pentru `dequeue` și `peek`. Dacă `dequeue` sau `peek` este apelat pe o coadă goală, afișează `Goala`.
+Procesează comenzile de la stdin și afișează rezultatele pentru `scoate` și `varf`. Dacă `scoate` sau `varf` este apelat pe o coadă goală, afișează `Goala`.
 
 ### Date de intrare
 
 - Linia 1: numărul de comenzi N
-- Următoarele N linii: una dintre:
-  - `enqueue X` — adaugă numărul întreg X la spatele cozii
-  - `dequeue` — elimină și afișează elementul din față
-  - `peek` — afișează elementul din față fără a-l elimina
+- Pentru fiecare comandă:
+  - Linia 1: tipul comenzii (`adauga`, `scoate` sau `varf`)
+  - Doar pentru `adauga`, linia 2: numărul întreg X
+
+Comportament:
+
+- `adauga X` — adaugă X la spatele cozii
+- `scoate` — elimină și afișează elementul din față
+- `varf` — afișează elementul din față fără a-l elimina
 
 ### Rezultat
 
-- Pentru fiecare `dequeue`: valoarea eliminată, sau `Goala`
-- Pentru fiecare `peek`: valoarea din față, sau `Goala`
+- Pentru fiecare `scoate`: valoarea eliminată, sau `Goala`
+- Pentru fiecare `varf`: valoarea din față, sau `Goala`
 
 ### Exemple
 
 ```
 Intrare:
 6
-enqueue 10
-enqueue 20
-peek
-dequeue
-dequeue
-dequeue
+adauga
+10
+adauga
+20
+varf
+scoate
+scoate
+scoate
 
 Ieșire:
 10
@@ -39,10 +46,12 @@ Goala
 ```
 Intrare:
 4
-enqueue 5
-enqueue 15
-dequeue
-peek
+adauga
+5
+adauga
+15
+scoate
+varf
 
 Ieșire:
 5
@@ -52,12 +61,12 @@ Ieșire:
 ```
 Intrare:
 2
-dequeue
-peek
+scoate
+varf
 
 Ieșire:
 Goala
 Goala
 ```
 
-Atât `dequeue`, cât și `peek` trebuie să afișeze `Goala` când coada nu conține nimic.
+Atât `scoate`, cât și `varf` trebuie să afișeze `Goala` când coada nu conține nimic.

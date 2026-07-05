@@ -12,6 +12,8 @@ int main(void) {
     int n;
     scanf("%d", &n);
 
+    // We keep two pointers: head = start of the list, tail = last node.
+    // tail lets us insert at the end in O(1) without walking the list.
     Node *head = NULL;
     Node *tail = NULL;
 
@@ -19,12 +21,15 @@ int main(void) {
         char cmd[10];
         scanf("%9s", cmd);
 
-        if (strcmp(cmd, "INSERT") == 0) {
+        if (strcmp(cmd, "insert") == 0) {
             int x;
             scanf("%d", &x);
+
+            // Allocate a new node on the heap and link it at the tail of the list.
             Node *node = malloc(sizeof(Node));
             node->data = x;
             node->next = NULL;
+
             if (head == NULL) {
                 head = node;
                 tail = node;
@@ -32,9 +37,9 @@ int main(void) {
                 tail->next = node;
                 tail = node;
             }
-        } else if (strcmp(cmd, "PRINT") == 0) {
+        } else if (strcmp(cmd, "print") == 0) {
             if (head == NULL) {
-                printf("EMPTY\n");
+                printf("Empty\n");
             } else {
                 Node *cur = head;
                 int first = 1;
@@ -51,6 +56,7 @@ int main(void) {
         }
     }
 
+    // Free the memory allocated for each node (avoid a memory leak).
     Node *cur = head;
     while (cur != NULL) {
         Node *next = cur->next;
