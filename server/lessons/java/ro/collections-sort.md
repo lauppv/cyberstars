@@ -20,7 +20,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Cortez
@@ -55,7 +55,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 95
@@ -103,7 +103,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Admiral - 150 km/h

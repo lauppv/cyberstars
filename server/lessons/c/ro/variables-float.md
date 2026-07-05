@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 3.140000
@@ -39,7 +39,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 3.14

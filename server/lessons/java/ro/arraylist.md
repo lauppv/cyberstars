@@ -17,7 +17,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
@@ -55,7 +55,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Total: 4
@@ -86,7 +86,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 0: Tommy Vercetti
@@ -113,7 +113,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Membru: Tommy Vercetti
@@ -154,7 +154,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Infernus - 240 km/h

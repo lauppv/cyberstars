@@ -14,7 +14,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 42.0
@@ -38,7 +38,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 9
@@ -87,7 +87,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Aduc mingea!
@@ -109,7 +109,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Nu e caine

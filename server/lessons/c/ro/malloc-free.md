@@ -110,14 +110,14 @@ Cititorul de cartele perforate trimite un lot de citiri, dar numărul de cartele
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5
 2 4 6 8 10
 ```
 
-Output
+Ieșire
 
 ```text
 2
@@ -129,14 +129,14 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
 7 14 21
 ```
 
-Output
+Ieșire
 
 ```text
 7

@@ -20,7 +20,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 0
@@ -73,7 +73,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 0
@@ -147,13 +147,13 @@ Faci inspecția anuală a sălii cu cititoare de cartele perforate, numerotate d
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 13 17
 ```
 
-Output
+Ieșire
 
 ```text
 1
@@ -175,13 +175,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5 10
 ```
 
-Output
+Ieșire
 
 ```text
 1

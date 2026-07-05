@@ -151,13 +151,13 @@ Centrul de calcul verifică perechi de coduri de securitate primite de la termin
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 12 10
 ```
 
-Output
+Ieșire
 
 ```text
 8
@@ -168,13 +168,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5 3
 ```
 
-Output
+Ieșire
 
 ```text
 1

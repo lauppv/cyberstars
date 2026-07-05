@@ -21,7 +21,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Mate: 92
@@ -177,7 +177,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Student: Tommy
@@ -210,7 +210,7 @@ Academia de antrenament a stației tocmai a terminat examenele. Fiecare cadet ar
    - "Lance" cu notele: Mate 78, Engleza 82, Stiinte 88
 5. Afișează ambele rapoarte
 
-**Output**
+**Ieșire**
 
 ```text
 Student: Tommy

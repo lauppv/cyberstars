@@ -12,7 +12,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Salut. Ma numesc Quincy, am 32 ani si inaltimea de 1.97 m
@@ -56,7 +56,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Rezultat: 5
@@ -78,7 +78,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Salut, Tommy Vercetti!
@@ -106,7 +106,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Jucator: Lance Vance | Eliminari: 47 | Acuratete: 82.500000
@@ -127,7 +127,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Pret: $4.50

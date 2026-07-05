@@ -15,14 +15,14 @@ Combină **array-uri**, **parcurgerea array-urilor**, **break/continue** și **f
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 8
 85 42 91 67 38 73 95 55
 ```
 
-Output
+Ieșire
 
 ```text
 Promovati: 6
@@ -32,14 +32,14 @@ Prima cadere: 42
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 4
 60 70 80 90
 ```
 
-Output
+Ieșire
 
 ```text
 Promovati: 4

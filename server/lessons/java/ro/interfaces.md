@@ -106,7 +106,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Carte: Manualul Mafiotului de Sonny Forelli
@@ -146,7 +146,7 @@ Tommy ține în vila lui din Vice City o colecție amestecată: cărți și film
 3. Creează o clasă `Film` cu câmpurile `titlu` și `regizor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Film: TITLU regizat de REGIZOR"`
 4. În `main`, creează un `Carte("Cronicile din Vice City", "Tommy Vercetti")` și un `Film("Top Gun", "Tony Scott")`, apoi apelează `afiseazaInfo()` pe amândouă
 
-**Output**
+**Ieșire**
 
 ```text
 Carte: Cronicile din Vice City de Tommy Vercetti

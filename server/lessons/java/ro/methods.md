@@ -16,7 +16,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Salut, Cortez

@@ -19,7 +19,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 x = 10, y = 20
@@ -48,7 +48,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 x = 20, y = 10
@@ -98,7 +98,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Min: 1, Max: 9
@@ -119,13 +119,13 @@ La centrul de calcul, un traductor de semnal citește o valoare brută de pe ban
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5
 ```
 
-Output
+Ieșire
 
 ```text
 15
@@ -133,13 +133,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 10
 ```
 
-Output
+Ieșire
 
 ```text
 30

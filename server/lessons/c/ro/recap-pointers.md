@@ -13,7 +13,7 @@ Un bloc de memorie de 3x3 celule tocmai a fost citit de pe bandă. Înainte să-
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5 12 3
@@ -21,7 +21,7 @@ Input
 7 9 4
 ```
 
-Output
+Ieșire
 
 ```text
 Suma: 64
@@ -31,7 +31,7 @@ Max: 15
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 2 4 6
@@ -39,7 +39,7 @@ Input
 14 16 18
 ```
 
-Output
+Ieșire
 
 ```text
 Suma: 90

@@ -74,7 +74,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 36.14159

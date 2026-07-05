@@ -81,7 +81,7 @@ Observă cum putem folosi **Celula** în interiorul lui **Banca**. Struct-uri î
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
@@ -90,7 +90,7 @@ op2 11 8.20
 op3 10 9.80
 ```
 
-Output
+Ieșire
 
 ```text
 op1 - Grad 10 - Evaluare 9.50
@@ -100,7 +100,7 @@ op3 - Grad 10 - Evaluare 9.80
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 2
@@ -108,7 +108,7 @@ tura1 7 6.75
 tura2 9 8.00
 ```
 
-Output
+Ieșire
 
 ```text
 tura1 - Grad 7 - Evaluare 6.75

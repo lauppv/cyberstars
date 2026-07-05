@@ -30,7 +30,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy Vercetti

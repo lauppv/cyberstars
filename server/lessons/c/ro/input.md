@@ -123,14 +123,14 @@ Citește un nume (un singur cuvânt, fără spații) și o vârstă folosind **s
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 Ritchie
 60
 ```
 
-Output
+Ieșire
 
 ```text
 Salut Ritchie, ai 60 de ani. Anul viitor vei avea 61
@@ -138,14 +138,14 @@ Salut Ritchie, ai 60 de ani. Anul viitor vei avea 61
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 Thompson
 33
 ```
 
-Output
+Ieșire
 
 ```text
 Salut Thompson, ai 33 de ani. Anul viitor vei avea 34

@@ -17,7 +17,7 @@ Un incendiu de scurtcircuit a scos din funcțiune jumătate din sala de calcul. 
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
@@ -26,7 +26,7 @@ Repara_teletip 1
 Recalibreaza_cititor 0
 ```
 
-Output
+Ieșire
 
 ```text
 [GATA] Verifica_banda
@@ -36,7 +36,7 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 2
@@ -44,7 +44,7 @@ Inlocuieste_siguranta 2
 Curata_ventilatoare 0
 ```
 
-Output
+Ieșire
 
 ```text
 [GATA] Inlocuieste_siguranta

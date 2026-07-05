@@ -15,7 +15,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Salut, Ritchie!

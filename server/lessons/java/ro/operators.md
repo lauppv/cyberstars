@@ -15,7 +15,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 22

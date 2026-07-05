@@ -26,7 +26,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy
@@ -136,7 +136,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Goon
@@ -175,7 +175,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Katana provoaca 75 daune

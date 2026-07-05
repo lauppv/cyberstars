@@ -16,7 +16,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 555-0001
@@ -54,7 +54,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy: 10000

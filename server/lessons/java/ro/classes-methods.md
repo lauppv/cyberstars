@@ -27,7 +27,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Infernus face: Biiip!
@@ -68,7 +68,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Bani: 80
@@ -108,7 +108,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy Vercetti a completat o misiune! Respect: 10
