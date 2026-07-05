@@ -91,6 +91,7 @@ describe('getUser', () => {
       bio: 'hello',
       status: 'coding',
       statusExpiresAt: future,
+      createdAt: new Date('2024-01-01T00:00:00Z'),
     });
     const user = await getUser(1);
     expect(user.status).toBe('coding');
@@ -108,6 +109,7 @@ describe('getUser', () => {
       bio: null,
       status: 'old status',
       statusExpiresAt: past,
+      createdAt: new Date('2024-01-01T00:00:00Z'),
     });
     const user = await getUser(1);
     expect(user.status).toBeNull();

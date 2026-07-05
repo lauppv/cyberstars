@@ -11,6 +11,7 @@
     "toggleMenu": "Toggle menu",
     "toggleSidebar": "Toggle sidebar",
     "profile": "Profile",
+    "language": "Language",
     "support": "Support",
     "rules": "Rules",
     "welcomeTour": "Welcome Tour",
@@ -273,6 +274,10 @@
         "desc": "If you find a bug or exploit, report it via Support instead of abusing it for badges or other gains."
       },
       {
+        "title": "Privacy",
+        "desc": "Do not share personal information (email, phone number, home address, workplace) — your own or anyone else's — in the forum or in any public part of the platform."
+      },
+      {
         "title": "English",
         "desc": "This is an English-speaking community. Using other languages is not allowed."
       }
@@ -292,7 +297,16 @@
     "set": "Set",
     "lessonsDone": "Lessons Done",
     "activeCourses": "Active Courses",
-    "badges": "Badges"
+    "badges": "Badges",
+    "streak": "Day Streak",
+    "memberSince": "Member since {{date}}",
+    "security": "Security",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "passwordUpdated": "Password updated",
+    "passwordMinLength": "Must be at least 6 characters",
+    "update": "Update"
   },
   "support": {
     "title": "Support",

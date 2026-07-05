@@ -17,7 +17,17 @@ export async function findById(id: number) {
       bio: true,
       status: true,
       statusExpiresAt: true,
+      createdAt: true,
     },
+  });
+}
+
+export async function findByIdWithPassword(
+  id: number,
+): Promise<{ id: number; password: string } | null> {
+  return prisma.user.findUnique({
+    where: { id },
+    select: { id: true, password: true },
   });
 }
 

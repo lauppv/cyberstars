@@ -58,3 +58,15 @@ export async function upsertCode(
     update: { code, updatedAt: new Date() },
   });
 }
+
+export async function getActivityDates(userId: number): Promise<
+  {
+    completedAt: Date | null;
+    lastAccessedAt: Date;
+  }[]
+> {
+  return prisma.userLessonProgress.findMany({
+    where: { userId },
+    select: { completedAt: true, lastAccessedAt: true },
+  });
+}

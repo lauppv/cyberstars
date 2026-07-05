@@ -24,3 +24,11 @@ export async function uploadAvatar(file: File): Promise<{ avatarUrl: string }> {
 export function removeAvatar() {
   return api.delete<{ message: string }>('/api/profile/avatar');
 }
+
+export function changePassword(data: { currentPassword: string; newPassword: string }) {
+  return api.post<{ message: string }>('/api/profile/password', data);
+}
+
+export function getActivity() {
+  return api.get<{ streak: number; lastActiveAt: string | null }>('/api/profile/activity');
+}
