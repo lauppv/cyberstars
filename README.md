@@ -18,7 +18,7 @@ A free, open-source interactive coding education platform. Learn Python, C, Java
 
 ## Quick start
 
-**Prerequisites:** Node.js 24+, PostgreSQL 14+, Docker
+**Prerequisites:** Node.js 24+, PostgreSQL 14+, Docker.
 
 ```bash
 git clone https://github.com/lauppv/cyberstars.git
