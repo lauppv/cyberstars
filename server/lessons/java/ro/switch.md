@@ -23,7 +23,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Devastator la distanta apropiata
@@ -56,7 +56,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Apare elicopterul
@@ -90,7 +90,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Apare elicopterul
@@ -120,7 +120,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Alt vehicul: barca
@@ -176,7 +176,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Incarca jocul salvat

@@ -19,13 +19,13 @@ Folosește o **buclă for** pentru a scana fiecare caracter, **flag-uri int** (0
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 Cyber2025!
 ```
 
-Output
+Ieșire
 
 ```text
 Lungime >= 8: OK
@@ -37,13 +37,13 @@ Parola valida: DA
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 abcdef
 ```
 
-Output
+Ieșire
 
 ```text
 Lungime >= 8: NU

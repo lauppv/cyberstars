@@ -94,7 +94,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 op7: tura 1, 5 sarcini
@@ -114,14 +114,14 @@ Arhiva centrului de calcul ține evidența fiecărei bobine de bandă magnetică
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 IBM7090 1969 730
 DEC10 1972 500
 ```
 
-Output
+Ieșire
 
 ```text
 IBM7090 (1969) - 730 m
@@ -130,14 +130,14 @@ DEC10 (1972) - 500 m
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 UNIVAC 1965 900
 PDP7 1970 250
 ```
 
-Output
+Ieșire
 
 ```text
 UNIVAC (1965) - 900 m

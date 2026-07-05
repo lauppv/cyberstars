@@ -15,7 +15,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Vremea de azi: INSORIT
@@ -76,7 +76,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Devastatoare de aproape. Preferata lui Tommy.
@@ -103,7 +103,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 VERCETTI

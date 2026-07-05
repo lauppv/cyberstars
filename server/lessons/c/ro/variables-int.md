@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 18
@@ -44,7 +44,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Varsta mea este 60
@@ -63,7 +63,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 a = 10, b = 20

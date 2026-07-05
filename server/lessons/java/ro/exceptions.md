@@ -14,7 +14,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Nu se poate imparti la zero!
@@ -54,7 +54,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Eroare: Index 10 out of bounds for length 3
@@ -112,7 +112,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Se incearca...

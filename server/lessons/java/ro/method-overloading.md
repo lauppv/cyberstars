@@ -25,7 +25,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Arma: Shotgun
@@ -65,7 +65,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Text: Tommy

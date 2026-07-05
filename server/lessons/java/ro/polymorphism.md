@@ -63,7 +63,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Sunt soferul Tommy

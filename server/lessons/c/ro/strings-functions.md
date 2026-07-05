@@ -11,7 +11,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Lungime: 14
@@ -114,13 +114,13 @@ O bandă magnetică veche și-a pierdut eticheta. Doi operatori diferiți au ret
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 Bell Labs
 ```
 
-Output
+Ieșire
 
 ```text
 4
@@ -129,13 +129,13 @@ BellLabs
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 Tele type
 ```
 
-Output
+Ieșire
 
 ```text
 4

@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 (1, 1) (1, 2) (1, 3)
@@ -42,7 +42,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 *
@@ -88,13 +88,13 @@ Imprimanta liniară a centrului de calcul primește o comandă: numărul de lini
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5
 ```
 
-Output
+Ieșire
 
 ```text
 1
@@ -106,13 +106,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
 ```
 
-Output
+Ieșire
 
 ```text
 1

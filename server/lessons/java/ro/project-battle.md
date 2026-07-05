@@ -151,7 +151,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy loveste cu sabia pe Lance cu 25 daune!
@@ -178,7 +178,7 @@ Doi membri ai echipajului au intrat în arena de antrenament holografică a sta�
 4. În main, creează Razboinicul Tommy (viata 100, putereAtac 25, armura 10) și Mag-ul Lance (viata 80, putereAtac 15, putereVraja 20)
 5. Tommy îl atacă pe Lance, afișează statusul lui Lance. Apoi Lance îl atacă pe Tommy, afișează statusul lui Tommy
 
-**Output**
+**Ieșire**
 
 ```text
 Tommy loveste cu sabia pe Lance cu 25 daune!

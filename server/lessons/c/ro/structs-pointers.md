@@ -101,7 +101,7 @@ Centrul de calcul facturează timpul de procesor pe ore. Fiecare utilizator are 
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 op7
@@ -111,7 +111,7 @@ op7
 2 2000
 ```
 
-Output
+Ieșire
 
 ```text
 Fonduri insuficiente
@@ -120,7 +120,7 @@ Sold: 1300
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 op12
@@ -130,7 +130,7 @@ op12
 2 300
 ```
 
-Output
+Ieșire
 
 ```text
 Fonduri insuficiente

@@ -176,7 +176,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Trusa medicala x5 @ $25.00
@@ -207,7 +207,7 @@ Compartimentul de marfă al stației are nevoie de un sistem de manifest digital
    - "Kit reparatii", cantitate 3, pret 85.00
 6. Apelează `afiseazaTot()`, apoi afișează `"Total: $"` urmat de totalul formatat
 
-**Output**
+**Ieșire**
 
 ```text
 Filtru aer x4 @ $35.00

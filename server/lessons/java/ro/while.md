@@ -12,7 +12,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 0
@@ -77,7 +77,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 0
@@ -108,7 +108,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Verific Tommy
@@ -135,7 +135,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 0

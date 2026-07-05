@@ -19,7 +19,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Masina@6d06d69c
@@ -57,7 +57,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Infernus (1986)
@@ -118,7 +118,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Katana (daune: 75)
@@ -162,7 +162,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy Vercetti - Sef (Respect: 100)

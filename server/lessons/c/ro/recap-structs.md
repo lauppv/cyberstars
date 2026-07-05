@@ -13,7 +13,7 @@ Registrul de linii telefonice interne ale centrului de calcul a crăpat pe disc 
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
@@ -25,7 +25,7 @@ op12
 op5
 ```
 
-Output
+Ieșire
 
 ```text
 Gasit: op12 - 0733222333
@@ -34,7 +34,7 @@ Negasit: op5
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 2
@@ -46,7 +46,7 @@ tura9
 tura1
 ```
 
-Output
+Ieșire
 
 ```text
 Gasit: tura2 - 0722000222

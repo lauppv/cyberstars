@@ -21,7 +21,7 @@ Programul principal citește trei numere întregi din input: **a**, **b** și **
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3 4 1
@@ -30,7 +30,7 @@ Input
 0 0 0
 ```
 
-Output
+Ieșire
 
 ```text
 7
@@ -40,14 +40,14 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 10 20 1
 0 0 0
 ```
 
-Output
+Ieșire
 
 ```text
 30

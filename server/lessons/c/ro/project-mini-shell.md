@@ -71,7 +71,7 @@ Scrie un program care
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 ora
@@ -80,7 +80,7 @@ necunoscuta
 iesire
 ```
 
-Output
+Ieșire
 
 ```text
 12:04
@@ -93,14 +93,14 @@ Gata
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 spatiu
 iesire
 ```
 
-Output
+Ieșire
 
 ```text
 128K liber

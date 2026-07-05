@@ -129,13 +129,13 @@ Citește o linie de text (poate conține spații) cu **fgets** într-un array **
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 dennis ritchie
 ```
 
-Output
+Ieșire
 
 ```text
 dennis ritchie
@@ -146,13 +146,13 @@ e
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 ken thompson
 ```
 
-Output
+Ieșire
 
 ```text
 ken thompson

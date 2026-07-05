@@ -89,7 +89,7 @@ Scrie un program care
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 4
@@ -99,7 +99,7 @@ Kernighan 98
 McIlroy 76
 ```
 
-Output
+Ieșire
 
 ```text
 Ritchie: 95
@@ -111,7 +111,7 @@ Cel mai bun: Kernighan (98)
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 2
@@ -119,7 +119,7 @@ Ana 88
 Mihai 91
 ```
 
-Output
+Ieșire
 
 ```text
 Ana: 88

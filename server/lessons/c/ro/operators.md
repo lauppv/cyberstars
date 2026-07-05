@@ -17,7 +17,7 @@ int main(void) {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 22
@@ -118,13 +118,13 @@ Citește două numere întregi **a** și **b** folosind **scanf**, apoi afișeaz
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 17 5
 ```
 
-Output
+Ieșire
 
 ```text
 22
@@ -136,13 +136,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 20 4
 ```
 
-Output
+Ieșire
 
 ```text
 24

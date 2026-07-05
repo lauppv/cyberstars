@@ -13,7 +13,7 @@ Un program de diagnostic verifică 20 de bobine de bandă magnetică, numerotate
 5. Altfel, afișează **"X: normal"**
 6. La final, afișează câte sectoare **fizzbuzz** ai găsit
 
-**Output**
+**Ieșire**
 
 ```text
 1: normal

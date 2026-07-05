@@ -15,7 +15,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Vice City - Respect maxim: 100
@@ -73,7 +73,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Oras: Vice City
@@ -110,7 +110,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Lance Vance: 50
@@ -135,7 +135,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 99

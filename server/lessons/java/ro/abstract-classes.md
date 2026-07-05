@@ -78,7 +78,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Infernus: 240 km/h

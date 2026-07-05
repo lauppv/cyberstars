@@ -120,13 +120,13 @@ Centrul de calcul rulează în trei schimburi. La finalul fiecărei ture, operat
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 10 20 30
 ```
 
-Output
+Ieșire
 
 ```text
 3
@@ -136,13 +136,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5 15 25
 ```
 
-Output
+Ieșire
 
 ```text
 3

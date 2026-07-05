@@ -40,7 +40,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Culoare: rosu
@@ -78,7 +78,7 @@ public class Main {
 }
 ```
 
-Output
+Ieșire
 
 ```text
 Tommy Vercetti are 100 HP si poarta un M4

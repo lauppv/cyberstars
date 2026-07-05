@@ -113,14 +113,14 @@ Linia de bandă magnetică trimite un lot de citiri pentru schimbul curent. Num�
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 5
 80 95 60 72 88
 ```
 
-Output
+Ieșire
 
 ```text
 80
@@ -134,14 +134,14 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
 10 20 30
 ```
 
-Output
+Ieșire
 
 ```text
 10

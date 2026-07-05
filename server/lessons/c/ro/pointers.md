@@ -104,13 +104,13 @@ Ești operator de tură la centrul de calcul. Un cititor de bandă magnetică ț
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 7
 ```
 
-Output
+Ieșire
 
 ```text
 42
@@ -119,13 +119,13 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 100
 ```
 
-Output
+Ieșire
 
 ```text
 42

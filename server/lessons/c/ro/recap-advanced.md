@@ -18,7 +18,7 @@ Numărul **7** este **111** în binar (toate permisiunile). **3** este **011** (
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 admin 7
@@ -26,7 +26,7 @@ editor 3
 viewer 1
 ```
 
-Output
+Ieșire
 
 ```text
 admin: READ WRITE EXECUTE
@@ -36,7 +36,7 @@ viewer: READ
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 root 4
@@ -44,7 +44,7 @@ guest 2
 ops 6
 ```
 
-Output
+Ieșire
 
 ```text
 root: EXECUTE

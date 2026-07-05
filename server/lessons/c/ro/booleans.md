@@ -117,13 +117,13 @@ Citește patru numere întregi (**0** sau **1**), separate prin spațiu, în ace
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 1 1 0 0
 ```
 
-Output
+Ieșire
 
 ```text
 Acces permis
@@ -131,13 +131,13 @@ Acces permis
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 0 0 1 0
 ```
 
-Output
+Ieșire
 
 ```text
 Acces refuzat

@@ -84,14 +84,14 @@ Un buffer brut de memorie a fost citit de pe bandă magnetică: mai întâi măr
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 4
 5 10 15 20
 ```
 
-Output
+Ieșire
 
 ```text
 50
@@ -99,14 +99,14 @@ Output
 
 **Exemplu**
 
-Input
+Intrare
 
 ```text
 3
 1 2 3
 ```
 
-Output
+Ieșire
 
 ```text
 6
