@@ -1,9 +1,14 @@
 ```py
 propozitie = input()
-vocale = set('aeiouAEIOU')
+cuvinte = propozitie.split()
 
-for cuvant in propozitie.split():
-    numar = sum(1 for litera in cuvant if litera in vocale)
+for cuvant in cuvinte:
+    numar = 0
+    for litera in cuvant:
+        if litera == 'a' or litera == 'e' or litera == 'i' or litera == 'o' or litera == 'u':
+            numar = numar + 1
+        elif litera == 'A' or litera == 'E' or litera == 'I' or litera == 'O' or litera == 'U':
+            numar = numar + 1
     if numar == 2:
         print(cuvant)
 ```

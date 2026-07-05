@@ -1,7 +1,13 @@
 ```py
-n = input()
+n = int(input())
 
-total = sum(int(ch) for ch in n if ch.isdigit())
+if n < 0:
+    n = -n
+
+total = 0
+while n > 0:
+    total = total + n % 10
+    n = n // 10
 
 print(total)
 ```

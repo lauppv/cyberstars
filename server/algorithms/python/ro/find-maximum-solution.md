@@ -2,5 +2,10 @@
 n = int(input())
 numere = list(map(int, input().split()))
 
-print(max(numere))
+maxim = numere[0]
+for i in range(1, n):
+    if numere[i] > maxim:
+        maxim = numere[i]
+
+print(maxim)
 ```
