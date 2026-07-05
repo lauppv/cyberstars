@@ -49,9 +49,8 @@ vi.mock('../repositories/progress.repository.js', () => ({
   getActivityDates: (...a: unknown[]) => mockGetActivityDates(...a),
 }));
 
-const { uploadAvatar, deleteAvatar, updateProfile, changePassword, getActivity } = await import(
-  './profile.controller.js'
-);
+const { uploadAvatar, deleteAvatar, updateProfile, changePassword, getActivity } =
+  await import('./profile.controller.js');
 
 // Stateful DB stand-in so a later request sees the avatarUrl an earlier one set.
 let currentAvatar: string | null;
@@ -243,8 +242,7 @@ describe('getActivity', () => {
   const utcDay = (offsetDays: number): Date => {
     const now = new Date();
     return new Date(
-      Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) -
-        offsetDays * 86_400_000,
+      Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) - offsetDays * 86_400_000,
     );
   };
 
