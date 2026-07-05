@@ -38,7 +38,8 @@ export const courses = [
   {
     key: 'algo-c',
     title: 'C Algorithms',
-    description: 'Low-level challenges with arrays, pointers, structs, and memory',
+    description:
+      'Low-level challenges with arrays, pointers, memory, and concurrency (fork, threads, semaphores)',
     sortOrder: 7,
   },
   {
@@ -532,23 +533,37 @@ export const lessons = [
   { courseKey: 'c', slug: 'os-threads', title: 'OS: Threads', sortOrder: 42, hasCodeFile: true },
   {
     courseKey: 'c',
+    slug: 'os-semaphores',
+    title: 'OS: Semaphores',
+    sortOrder: 43,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'c',
+    slug: 'os-semaphores-signal',
+    title: 'OS: Semaphore Signalling',
+    sortOrder: 44,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'c',
     slug: 'recap-os',
     title: 'Recap: Parallel Word Counter',
-    sortOrder: 43,
+    sortOrder: 45,
     hasCodeFile: true,
   },
   {
     courseKey: 'c',
     slug: 'project-student-db',
     title: 'Project: Student Database',
-    sortOrder: 44,
+    sortOrder: 46,
     hasCodeFile: true,
   },
   {
     courseKey: 'c',
     slug: 'project-mini-shell',
     title: 'Project: Mini Shell',
-    sortOrder: 45,
+    sortOrder: 47,
     hasCodeFile: true,
   },
   // Module 1 — Basics (control flow + I/O) [16]
@@ -1629,6 +1644,20 @@ export const lessons = [
     slug: 'threads-parallel-search',
     title: 'Hard · Parallel Search',
     sortOrder: 30,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'algo-c',
+    slug: 'sem-ping-pong',
+    title: 'Medium · Ping-pong with Semaphores',
+    sortOrder: 31,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'algo-c',
+    slug: 'sem-producer-consumer',
+    title: 'Hard · Producer-Consumer with Semaphores',
+    sortOrder: 32,
     hasCodeFile: true,
   },
   {
