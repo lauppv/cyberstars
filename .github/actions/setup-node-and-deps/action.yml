@@ -26,3 +26,11 @@ runs:
       shell: bash
       if: steps.cache-deps.outputs.cache-hit != 'true'
       run: npm ci
+
+    # Regenerate the Prisma client even on cache hit: `npm ci` (with its
+    # `postinstall`) is skipped when node_modules is restored, so a schema
+    # change lands with a stale generated client if we don't do this.
+    - name: Regenerate Prisma client
+      shell: bash
+      if: steps.cache-deps.outputs.cache-hit == 'true'
+      run: npx prisma generate
