@@ -54,6 +54,12 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
   }
   const now = new Date();
   const statusExpired = user.statusExpiresAt && user.statusExpiresAt < now;
+  // Only surface a pending email change while the confirmation code is still
+  // valid; expired requests should look like nothing is pending.
+  const pendingEmailActive =
+    user.pendingEmail && user.emailChangeCodeExpiresAt && user.emailChangeCodeExpiresAt > now
+      ? user.pendingEmail
+      : null;
   return {
     id: user.id,
     name: user.name,
@@ -63,6 +69,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     bio: user.bio,
     status: statusExpired ? null : user.status,
     statusExpiresAt: statusExpired ? null : (user.statusExpiresAt?.toISOString() ?? null),
+    pendingEmail: pendingEmailActive,
     createdAt: user.createdAt.toISOString(),
   };
 }

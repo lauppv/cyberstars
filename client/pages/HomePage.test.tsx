@@ -80,6 +80,7 @@ const loggedInAuth = {
     bio: null,
     status: null,
     statusExpiresAt: null,
+    pendingEmail: null,
     createdAt: '2024-01-01T00:00:00Z',
   },
   login: vi.fn(),

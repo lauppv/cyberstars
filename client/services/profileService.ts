@@ -29,6 +29,18 @@ export function changePassword(data: { currentPassword: string; newPassword: str
   return api.post<{ message: string }>('/api/profile/password', data);
 }
 
+export function requestEmailChange(data: { currentPassword: string; newEmail: string }) {
+  return api.post<{ message: string }>('/api/profile/email/request', data);
+}
+
+export function confirmEmailChange(data: { code: string }) {
+  return api.post<{ message: string; email: string }>('/api/profile/email/confirm', data);
+}
+
+export function cancelEmailChange() {
+  return api.delete<{ message: string }>('/api/profile/email/pending');
+}
+
 export function getActivity() {
   return api.get<{ streak: number; lastActiveAt: string | null }>('/api/profile/activity');
 }

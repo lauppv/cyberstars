@@ -306,7 +306,16 @@
     "passwordMismatch": "Parolele nu coincid",
     "showPassword": "Arată parola",
     "hidePassword": "Ascunde parola",
-    "update": "Actualizează"
+    "update": "Actualizează",
+    "emailSection": "Adresă de email",
+    "newEmail": "Email nou",
+    "emailSendCode": "Trimite codul de confirmare",
+    "emailCodeSent": "Am trimis un cod de 6 cifre la {{email}}. Introdu-l mai jos pentru a confirma.",
+    "emailPendingHint": "Introdu codul trimis la {{email}} pentru a comuta contul pe această adresă.",
+    "emailCode": "Cod de confirmare",
+    "emailConfirm": "Confirmă emailul nou",
+    "emailCancel": "Anulează",
+    "emailUpdated": "Email actualizat la {{email}}"
   },
   "support": {
     "title": "Suport",

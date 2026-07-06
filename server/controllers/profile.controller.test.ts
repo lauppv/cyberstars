@@ -49,6 +49,12 @@ vi.mock('../repositories/progress.repository.js', () => ({
   getActivityDates: (...a: unknown[]) => mockGetActivityDates(...a),
 }));
 
+// email.service pulls in config -> env.ts (JWT_SECRET), same story as above.
+vi.mock('../services/email.service.js', () => ({
+  sendResetCode: vi.fn(),
+  sendEmailChangeCode: vi.fn(),
+}));
+
 const { uploadAvatar, deleteAvatar, updateProfile, changePassword, getActivity } =
   await import('./profile.controller.js');
 

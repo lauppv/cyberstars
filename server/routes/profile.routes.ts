@@ -3,7 +3,12 @@ import multer from 'multer';
 import rateLimit from 'express-rate-limit';
 import { authenticateToken } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
-import { updateProfileSchema, changePasswordSchema } from '../schemas/profile.schema.js';
+import {
+  updateProfileSchema,
+  changePasswordSchema,
+  requestEmailChangeSchema,
+  confirmEmailChangeSchema,
+} from '../schemas/profile.schema.js';
 import * as profileController from '../controllers/profile.controller.js';
 
 const upload = multer({
@@ -37,6 +42,21 @@ router.post(
   validateBody(changePasswordSchema),
   profileController.changePassword,
 );
+router.post(
+  '/email/request',
+  authenticateToken,
+  passwordLimiter,
+  validateBody(requestEmailChangeSchema),
+  profileController.requestEmailChange,
+);
+router.post(
+  '/email/confirm',
+  authenticateToken,
+  passwordLimiter,
+  validateBody(confirmEmailChangeSchema),
+  profileController.confirmEmailChange,
+);
+router.delete('/email/pending', authenticateToken, profileController.cancelEmailChange);
 router.get('/activity', authenticateToken, profileController.getActivity);
 
 export default router;

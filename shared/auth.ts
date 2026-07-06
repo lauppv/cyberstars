@@ -9,6 +9,7 @@ export interface AuthenticatedUser {
   bio: string | null;
   status: string | null;
   statusExpiresAt: string | null;
+  pendingEmail: string | null;
   createdAt: string;
 }
 
