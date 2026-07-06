@@ -13,6 +13,7 @@ import * as forumController from '../controllers/forum.controller.js';
 
 const forumWriteLimiter = rateLimit({
   windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
   limit: process.env.NODE_ENV === 'test' ? 10_000 : 10,
 });
 
@@ -20,6 +21,7 @@ const forumWriteLimiter = rateLimit({
 // counter can't be inflated by hammering the endpoint (audit H7).
 const forumReadLimiter = rateLimit({
   windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
   limit: process.env.NODE_ENV === 'test' ? 100_000 : 120,
 });
 

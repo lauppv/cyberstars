@@ -216,6 +216,49 @@ describe('HomePage', () => {
     expect(screen.getAllByText('Intro').length).toBeGreaterThanOrEqual(1);
   });
 
+  it('renders the recently accessed list with formatted timestamps for each entry', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    const now = Date.now();
+    const iso = (msAgo: number) => new Date(now - msAgo).toISOString();
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          completed: 0,
+          total: 2,
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: iso(5 * 60_000), // 5 min ago → minAgo
+            },
+            {
+              slug: 'booleans',
+              title: 'Booleans',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: iso(3 * 60 * 60_000), // 3 hours ago → hourAgo
+            },
+          ],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getByText('Recently accessed')).toBeInTheDocument();
+    // At least one of the entries renders with an "ago" timestamp string.
+    expect(screen.getAllByText(/ago$/i).length).toBeGreaterThan(0);
+  });
+
   it('continue section navigates on click', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     mockUseCurriculum.mockReturnValue({

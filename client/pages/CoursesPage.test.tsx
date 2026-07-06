@@ -217,6 +217,23 @@ describe('CoursesPage', () => {
     expect(screen.getByText('Booleans')).toBeDefined();
   });
 
+  it('clicking the View Syllabus button opens the drawer without navigating', () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    fireEvent.click(screen.getByText('View Syllabus →'));
+    expect(screen.getByText('Chapters')).toBeDefined();
+  });
+
   it('closing the syllabus drawer via close button', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],

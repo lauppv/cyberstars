@@ -31,4 +31,19 @@ describe('MarkdownRenderer', () => {
     const { container } = render(<MarkdownRenderer content={'```python\nprint(1)\n```'} />);
     expect(container.querySelector('code')).toBeNull();
   });
+
+  it('styles bold text with the accent colour', () => {
+    const { container } = render(<MarkdownRenderer content={'This is **bold** text'} />);
+    const strong = container.querySelector('strong');
+    expect(strong).not.toBeNull();
+    expect(strong!.textContent).toBe('bold');
+    expect(strong!.style.color).toBe('rgb(90, 160, 224)');
+  });
+
+  it('renders a ```strindex fence as the string-index visual', () => {
+    const { container } = render(<MarkdownRenderer content={'```strindex\nhello\n^0,2,4\n```'} />);
+    // StringIndexTable renders the characters as its own children.
+    expect(container.textContent).toContain('h');
+    expect(container.textContent).toContain('l');
+  });
 });
