@@ -17,6 +17,8 @@ export async function findById(id: number) {
       bio: true,
       status: true,
       statusExpiresAt: true,
+      pendingEmail: true,
+      emailChangeCodeExpiresAt: true,
       createdAt: true,
     },
   });
@@ -87,5 +89,68 @@ export async function updatePassword(id: number, hashedPassword: string): Promis
   await prisma.user.update({
     where: { id },
     data: { password: hashedPassword, resetCode: null, resetCodeExpiresAt: null },
+  });
+}
+
+export async function setPendingEmailChange(
+  id: number,
+  pendingEmail: string,
+  code: string,
+  expiresAt: Date,
+): Promise<void> {
+  await prisma.user.update({
+    where: { id },
+    data: {
+      pendingEmail,
+      emailChangeCode: code,
+      emailChangeCodeExpiresAt: expiresAt,
+    },
+  });
+}
+
+export async function findPendingEmailChange(id: number): Promise<{
+  pendingEmail: string;
+  emailChangeCode: string;
+  emailChangeCodeExpiresAt: Date;
+} | null> {
+  const user = await prisma.user.findUnique({
+    where: { id },
+    select: {
+      pendingEmail: true,
+      emailChangeCode: true,
+      emailChangeCodeExpiresAt: true,
+    },
+  });
+  if (!user?.pendingEmail || !user.emailChangeCode || !user.emailChangeCodeExpiresAt) return null;
+  return {
+    pendingEmail: user.pendingEmail,
+    emailChangeCode: user.emailChangeCode,
+    emailChangeCodeExpiresAt: user.emailChangeCodeExpiresAt,
+  };
+}
+
+// Swap the account's email to pendingEmail and clear the change fields in a
+// single transaction so a concurrent signup on the same address can't slip in
+// between the uniqueness check and the update.
+export async function applyPendingEmailChange(id: number, newEmail: string): Promise<void> {
+  await prisma.user.update({
+    where: { id },
+    data: {
+      email: newEmail,
+      pendingEmail: null,
+      emailChangeCode: null,
+      emailChangeCodeExpiresAt: null,
+    },
+  });
+}
+
+export async function clearPendingEmailChange(id: number): Promise<void> {
+  await prisma.user.update({
+    where: { id },
+    data: {
+      pendingEmail: null,
+      emailChangeCode: null,
+      emailChangeCodeExpiresAt: null,
+    },
   });
 }

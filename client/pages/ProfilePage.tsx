@@ -72,6 +72,15 @@ export function ProfilePage() {
   const [pwdMessage, setPwdMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
   const [streak, setStreak] = useState<number | null>(null);
 
+  const [emailPw, setEmailPw] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [showEmailPw, setShowEmailPw] = useState(false);
+  const [emailCode, setEmailCode] = useState('');
+  const [emailSaving, setEmailSaving] = useState(false);
+  const [emailMessage, setEmailMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(
+    null,
+  );
+
   useEffect(() => {
     if (!isLoading && !isLoggedIn) navigate('/getstarted');
   }, [isLoading, isLoggedIn, navigate]);
@@ -138,6 +147,54 @@ export function ProfilePage() {
   const removeAvatar = async () => {
     await profileService.removeAvatar();
     refreshUser();
+  };
+
+  const submitEmailRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmailMessage(null);
+    setEmailSaving(true);
+    try {
+      await profileService.requestEmailChange({
+        currentPassword: emailPw,
+        newEmail: newEmail.trim(),
+      });
+      setEmailMessage({ type: 'ok', text: t('profile.emailCodeSent', { email: newEmail.trim() }) });
+      setEmailPw('');
+      refreshUser();
+    } catch (err) {
+      setEmailMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+    } finally {
+      setEmailSaving(false);
+    }
+  };
+
+  const submitEmailConfirm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmailMessage(null);
+    setEmailSaving(true);
+    try {
+      const res = await profileService.confirmEmailChange({ code: emailCode.trim() });
+      setEmailMessage({ type: 'ok', text: t('profile.emailUpdated', { email: res.email }) });
+      setEmailCode('');
+      setNewEmail('');
+      refreshUser();
+    } catch (err) {
+      setEmailMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+    } finally {
+      setEmailSaving(false);
+    }
+  };
+
+  const cancelEmailChange = async () => {
+    setEmailMessage(null);
+    try {
+      await profileService.cancelEmailChange();
+      setEmailCode('');
+      setNewEmail('');
+      refreshUser();
+    } catch (err) {
+      setEmailMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
+    }
   };
 
   const submitPasswordChange = async (e: React.FormEvent) => {
@@ -334,6 +391,116 @@ export function ProfilePage() {
                 />
               ))}
             </div>
+          </div>
+
+          {/* Email change */}
+          <div className="py-5 border-b border-[var(--accent)]/20">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+              {t('profile.emailSection')}
+            </h2>
+            {user.pendingEmail ? (
+              <form onSubmit={submitEmailConfirm} className="flex flex-col gap-3">
+                <p className="text-[12px] text-[var(--text2)]">
+                  {t('profile.emailPendingHint', { email: user.pendingEmail })}
+                </p>
+                <div>
+                  <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                    {t('profile.emailCode')}
+                  </label>
+                  <input
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    value={emailCode}
+                    onChange={(e) => setEmailCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                    className={INPUT_CLS + ' tracking-[6px] text-center'}
+                    maxLength={6}
+                    required
+                  />
+                </div>
+                {emailMessage && (
+                  <p
+                    className={`text-[12px] ${
+                      emailMessage.type === 'ok' ? 'text-[var(--success)]' : 'text-[var(--error)]'
+                    }`}
+                  >
+                    {emailMessage.text}
+                  </p>
+                )}
+                <div className="flex items-center gap-3">
+                  <button
+                    type="submit"
+                    disabled={emailSaving || emailCode.length !== 6}
+                    className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                  >
+                    {emailSaving ? '...' : t('profile.emailConfirm')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={cancelEmailChange}
+                    className="text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer transition"
+                  >
+                    {t('profile.emailCancel')}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={submitEmailRequest} className="flex flex-col gap-3">
+                <div>
+                  <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                    {t('profile.newEmail')}
+                  </label>
+                  <input
+                    type="email"
+                    autoComplete="email"
+                    value={newEmail}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                    className={INPUT_CLS}
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                    {t('profile.currentPassword')}
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showEmailPw ? 'text' : 'password'}
+                      autoComplete="current-password"
+                      value={emailPw}
+                      onChange={(e) => setEmailPw(e.target.value)}
+                      className={INPUT_CLS + ' pr-9'}
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowEmailPw((v) => !v)}
+                      aria-label={
+                        showEmailPw ? t('profile.hidePassword') : t('profile.showPassword')
+                      }
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition leading-none p-1 flex items-center"
+                    >
+                      <EyeIcon off={showEmailPw} />
+                    </button>
+                  </div>
+                </div>
+                {emailMessage && (
+                  <p
+                    className={`text-[12px] ${
+                      emailMessage.type === 'ok' ? 'text-[var(--success)]' : 'text-[var(--error)]'
+                    }`}
+                  >
+                    {emailMessage.text}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={emailSaving || !emailPw || !newEmail}
+                  className="self-start px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                >
+                  {emailSaving ? '...' : t('profile.emailSendCode')}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Security / change password */}

@@ -306,7 +306,16 @@
     "passwordMismatch": "Passwords do not match",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
-    "update": "Update"
+    "update": "Update",
+    "emailSection": "Email address",
+    "newEmail": "New email",
+    "emailSendCode": "Send confirmation code",
+    "emailCodeSent": "We sent a 6-digit code to {{email}}. Enter it below to confirm.",
+    "emailPendingHint": "Enter the code we sent to {{email}} to switch your account to it.",
+    "emailCode": "Confirmation code",
+    "emailConfirm": "Confirm new email",
+    "emailCancel": "Cancel",
+    "emailUpdated": "Email updated to {{email}}"
   },
   "support": {
     "title": "Support",

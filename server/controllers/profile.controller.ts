@@ -1,10 +1,12 @@
 import type { Request, Response, NextFunction } from 'express';
 import path from 'path';
+import crypto from 'node:crypto';
 import fs from 'fs/promises';
 import bcrypt from 'bcryptjs';
 import { fileTypeFromBuffer } from 'file-type';
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
+import * as emailService from '../services/email.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 const UPLOAD_DIR = path.resolve('uploads/avatars');
@@ -141,6 +143,91 @@ export async function changePassword(
     const hashed = bcrypt.hashSync(newPassword, 10);
     await userRepo.updatePassword(userId, hashed);
     res.json({ message: 'Password updated' });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function requestEmailChange(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const { currentPassword, newEmail } = req.body as { currentPassword: string; newEmail: string };
+    const normalized = newEmail.toLowerCase().trim();
+
+    const user = await userRepo.findByIdWithPassword(userId);
+    if (!user) throw new AppError(404, 'User not found');
+
+    const valid = bcrypt.compareSync(currentPassword, user.password);
+    if (!valid) throw new AppError(401, 'Current password is incorrect');
+
+    const current = await userRepo.findById(userId);
+    if (current && current.email.toLowerCase() === normalized) {
+      throw new AppError(400, 'New email is the same as the current one');
+    }
+
+    const existing = await userRepo.findByEmail(normalized);
+    if (existing) throw new AppError(409, 'Email is already in use');
+
+    const code = crypto.randomInt(100_000, 999_999).toString();
+    const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
+    await userRepo.setPendingEmailChange(userId, normalized, code, expiresAt);
+
+    // Send outside the request path, same pattern as forgot-password: keep
+    // response timing insensitive to SMTP latency and don't 500 the request if
+    // SMTP is down — the code is already persisted.
+    void emailService.sendEmailChangeCode(normalized, code).catch((err) => {
+      console.error('[email-change] failed to send confirmation code:', err);
+    });
+
+    res.json({ message: 'Confirmation code sent' });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function confirmEmailChange(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    const { code } = req.body as { code: string };
+
+    const pending = await userRepo.findPendingEmailChange(userId);
+    if (!pending) throw new AppError(400, 'No pending email change');
+    if (pending.emailChangeCodeExpiresAt < new Date() || pending.emailChangeCode !== code) {
+      throw new AppError(400, 'Invalid or expired code');
+    }
+
+    // Re-check uniqueness at commit time: someone else may have registered the
+    // pending address between request and confirm.
+    const existing = await userRepo.findByEmail(pending.pendingEmail);
+    if (existing && existing.id !== userId) {
+      await userRepo.clearPendingEmailChange(userId);
+      throw new AppError(409, 'Email is already in use');
+    }
+
+    await userRepo.applyPendingEmailChange(userId, pending.pendingEmail);
+    res.json({ message: 'Email updated', email: pending.pendingEmail });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function cancelEmailChange(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const userId = req.user!.id;
+    await userRepo.clearPendingEmailChange(userId);
+    res.json({ message: 'Pending email change cancelled' });
   } catch (err) {
     next(err);
   }
