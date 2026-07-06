@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
@@ -13,6 +13,36 @@ import * as profileService from '../services/profileService';
 
 const INPUT_CLS =
   'w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]';
+
+function EyeIcon({ off }: { off: boolean }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {off ? (
+        <>
+          <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.9 19.9 0 0 1 5.06-5.94" />
+          <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a19.86 19.86 0 0 1-3.17 4.19" />
+          <path d="M14.12 14.12A3 3 0 1 1 9.88 9.88" />
+          <line x1="2" y1="2" x2="22" y2="22" />
+        </>
+      ) : (
+        <>
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" />
+          <circle cx="12" cy="12" r="3" />
+        </>
+      )}
+    </svg>
+  );
+}
 
 export function ProfilePage() {
   const navigate = useNavigate();
@@ -34,6 +64,10 @@ export function ProfilePage() {
   const [uploadError, setUploadError] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showCurrentPw, setShowCurrentPw] = useState(false);
+  const [showNewPw, setShowNewPw] = useState(false);
+  const [showConfirmPw, setShowConfirmPw] = useState(false);
   const [pwdSaving, setPwdSaving] = useState(false);
   const [pwdMessage, setPwdMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
   const [streak, setStreak] = useState<number | null>(null);
@@ -113,12 +147,17 @@ export function ProfilePage() {
       setPwdMessage({ type: 'err', text: t('profile.passwordMinLength') });
       return;
     }
+    if (newPassword !== confirmPassword) {
+      setPwdMessage({ type: 'err', text: t('profile.passwordMismatch') });
+      return;
+    }
     setPwdSaving(true);
     try {
       await profileService.changePassword({ currentPassword, newPassword });
       setPwdMessage({ type: 'ok', text: t('profile.passwordUpdated') });
       setCurrentPassword('');
       setNewPassword('');
+      setConfirmPassword('');
     } catch (err) {
       setPwdMessage({ type: 'err', text: err instanceof Error ? err.message : 'Error' });
     } finally {
@@ -307,45 +346,102 @@ export function ProfilePage() {
                 <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
                   {t('profile.currentPassword')}
                 </label>
-                <input
-                  type="password"
-                  autoComplete="current-password"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                  className={INPUT_CLS}
-                  required
-                />
+                <div className="relative">
+                  <input
+                    type={showCurrentPw ? 'text' : 'password'}
+                    autoComplete="current-password"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    className={INPUT_CLS + ' pr-9'}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowCurrentPw((v) => !v)}
+                    aria-label={
+                      showCurrentPw ? t('profile.hidePassword') : t('profile.showPassword')
+                    }
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition leading-none p-1 flex items-center"
+                  >
+                    <EyeIcon off={showCurrentPw} />
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
                   {t('profile.newPassword')}
                 </label>
-                <input
-                  type="password"
-                  autoComplete="new-password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  className={INPUT_CLS}
-                  minLength={6}
-                  required
-                />
+                <div className="relative">
+                  <input
+                    type={showNewPw ? 'text' : 'password'}
+                    autoComplete="new-password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className={INPUT_CLS + ' pr-9'}
+                    minLength={6}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowNewPw((v) => !v)}
+                    aria-label={showNewPw ? t('profile.hidePassword') : t('profile.showPassword')}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition leading-none p-1 flex items-center"
+                  >
+                    <EyeIcon off={showNewPw} />
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                  {t('profile.confirmNewPassword')}
+                </label>
+                <div className="relative">
+                  <input
+                    type={showConfirmPw ? 'text' : 'password'}
+                    autoComplete="new-password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className={INPUT_CLS + ' pr-9'}
+                    minLength={6}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPw((v) => !v)}
+                    aria-label={
+                      showConfirmPw ? t('profile.hidePassword') : t('profile.showPassword')
+                    }
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-transparent border-none cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition leading-none p-1 flex items-center"
+                  >
+                    <EyeIcon off={showConfirmPw} />
+                  </button>
+                </div>
               </div>
               {pwdMessage && (
                 <p
                   className={`text-[12px] ${
-                    pwdMessage.type === 'ok' ? 'text-[var(--accent)]' : 'text-[var(--error)]'
+                    pwdMessage.type === 'ok' ? 'text-[var(--success)]' : 'text-[var(--error)]'
                   }`}
                 >
                   {pwdMessage.text}
                 </p>
               )}
-              <button
-                type="submit"
-                disabled={pwdSaving || !currentPassword || !newPassword}
-                className="self-start px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
-              >
-                {pwdSaving ? '...' : t('profile.update')}
-              </button>
+              <div className="flex items-center justify-between gap-3">
+                <button
+                  type="submit"
+                  disabled={pwdSaving || !currentPassword || !newPassword || !confirmPassword}
+                  className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                >
+                  {pwdSaving ? '...' : t('profile.update')}
+                </button>
+                <Link
+                  to="/getstarted"
+                  state={{ mode: 'forgot', email: user.email }}
+                  className="text-[12px] text-[var(--accent)] hover:underline"
+                >
+                  {t('auth.forgotPassword')}
+                </Link>
+              </div>
             </form>
           </div>
         </div>

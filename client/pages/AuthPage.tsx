@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { ApiClientError } from '../services/apiClient';
@@ -142,9 +142,16 @@ function Starfield() {
 }
 
 export function AuthPage() {
-  const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'reset'>('login');
+  const location = useLocation();
+  const initial = (location.state ?? null) as {
+    mode?: 'login' | 'signup' | 'forgot' | 'reset';
+    email?: string;
+  } | null;
+  const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'reset'>(
+    initial?.mode ?? 'login',
+  );
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(initial?.email ?? '');
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
   const [showPw, setShowPw] = useState(false);
