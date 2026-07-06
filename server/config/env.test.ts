@@ -74,16 +74,23 @@ describe('env config', () => {
     expect(noPort.db.port).toBe(5432);
   });
 
-  it('reads SMTP credentials when provided, empty string otherwise', async () => {
-    setEnv({ NODE_ENV: 'development', SMTP_USER: 'a@b.c', SMTP_PASS: 'pw' });
-    const { env: withSmtp } = await import('./env.js');
-    expect(withSmtp.smtp).toEqual({ user: 'a@b.c', pass: 'pw' });
+  it('reads Resend credentials when provided, empty/default otherwise', async () => {
+    setEnv({
+      NODE_ENV: 'development',
+      RESEND_API_KEY: 're_test',
+      RESEND_FROM: 'X <x@y.z>',
+    });
+    const { env: withResend } = await import('./env.js');
+    expect(withResend.resend).toEqual({ apiKey: 're_test', from: 'X <x@y.z>' });
 
     vi.resetModules();
     vi.unstubAllEnvs();
     setEnv({ NODE_ENV: 'development' });
-    const { env: noSmtp } = await import('./env.js');
-    expect(noSmtp.smtp).toEqual({ user: '', pass: '' });
+    const { env: noResend } = await import('./env.js');
+    expect(noResend.resend).toEqual({
+      apiKey: '',
+      from: 'CyberStars <noreply@cyber-stars.org>',
+    });
   });
 
   it('throws when a required variable is missing', async () => {

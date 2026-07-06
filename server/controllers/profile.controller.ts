@@ -177,8 +177,8 @@ export async function requestEmailChange(
     await userRepo.setPendingEmailChange(userId, normalized, code, expiresAt);
 
     // Send outside the request path, same pattern as forgot-password: keep
-    // response timing insensitive to SMTP latency and don't 500 the request if
-    // SMTP is down — the code is already persisted.
+    // response timing insensitive to mail latency and don't 500 the request if
+    // the provider is down — the code is already persisted.
     void emailService.sendEmailChangeCode(normalized, code).catch((err) => {
       console.error('[email-change] failed to send confirmation code:', err);
     });

@@ -35,8 +35,8 @@ export const env = {
     sameSite: 'lax' as const,
     maxAge: 24 * 60 * 60 * 1000,
   },
-  smtp: {
-    user: process.env.SMTP_USER ?? '',
-    pass: process.env.SMTP_PASS ?? '',
+  resend: {
+    apiKey: process.env.RESEND_API_KEY ?? '',
+    from: process.env.RESEND_FROM ?? 'CyberStars <noreply@cyber-stars.org>',
   },
 } as const;
