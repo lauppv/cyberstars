@@ -300,8 +300,12 @@
     "changePassword": "Schimbă parola",
     "currentPassword": "Parola curentă",
     "newPassword": "Parolă nouă",
+    "confirmNewPassword": "Confirmă parola nouă",
     "passwordUpdated": "Parola a fost actualizată",
     "passwordMinLength": "Minim 6 caractere",
+    "passwordMismatch": "Parolele nu coincid",
+    "showPassword": "Arată parola",
+    "hidePassword": "Ascunde parola",
     "update": "Actualizează"
   },
   "support": {

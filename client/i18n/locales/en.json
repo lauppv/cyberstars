@@ -300,8 +300,12 @@
     "changePassword": "Change password",
     "currentPassword": "Current password",
     "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
     "passwordUpdated": "Password updated",
     "passwordMinLength": "Must be at least 6 characters",
+    "passwordMismatch": "Passwords do not match",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "update": "Update"
   },
   "support": {
