@@ -251,4 +251,12 @@ describe('StoryModal', () => {
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(onClose).toHaveBeenCalled();
   });
+
+  it('ignores other keys', () => {
+    const onClose = vi.fn();
+    render(<StoryModal story={story} onClose={onClose} />);
+    fireEvent.keyDown(document, { key: 'Enter' });
+    fireEvent.keyDown(document, { key: 'a' });
+    expect(onClose).not.toHaveBeenCalled();
+  });
 });

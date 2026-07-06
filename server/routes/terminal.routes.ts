@@ -36,6 +36,7 @@ function keyGenerator(req: Request): string {
 // Each exec is a real docker exec fork; cap per user or guest.
 const terminalExecLimiter = rateLimit({
   windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
   limit: process.env.NODE_ENV === 'test' ? 10_000 : 30,
   standardHeaders: true,
   legacyHeaders: false,

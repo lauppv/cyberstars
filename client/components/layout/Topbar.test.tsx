@@ -89,6 +89,16 @@ describe('Topbar', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/profile');
   });
 
+  it('switches the UI language via the EN/RO toggle in the menu', async () => {
+    const { default: i18n } = await import('i18next');
+    const original = i18n.language;
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.click(screen.getByRole('button', { name: 'RO' }));
+    expect(i18n.language).toBe('ro');
+    await i18n.changeLanguage(original);
+  });
+
   it('closes menu on Escape', () => {
     renderTopbar();
     fireEvent.click(screen.getByText('Test'));

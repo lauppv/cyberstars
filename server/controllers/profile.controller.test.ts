@@ -13,6 +13,12 @@ const {
   mockFindByIdWithPassword,
   mockUpdatePassword,
   mockGetActivityDates,
+  mockFindByEmail,
+  mockSetPendingEmailChange,
+  mockFindPendingEmailChange,
+  mockApplyPendingEmailChange,
+  mockClearPendingEmailChange,
+  mockSendEmailChangeCode,
 } = vi.hoisted(() => ({
   mockMkdir: vi.fn(),
   mockWriteFile: vi.fn(),
@@ -23,6 +29,12 @@ const {
   mockFindByIdWithPassword: vi.fn(),
   mockUpdatePassword: vi.fn(),
   mockGetActivityDates: vi.fn(),
+  mockFindByEmail: vi.fn(),
+  mockSetPendingEmailChange: vi.fn(),
+  mockFindPendingEmailChange: vi.fn(),
+  mockApplyPendingEmailChange: vi.fn(),
+  mockClearPendingEmailChange: vi.fn(),
+  mockSendEmailChangeCode: vi.fn(),
 }));
 
 vi.mock('fs/promises', () => {
@@ -41,6 +53,11 @@ vi.mock('../repositories/user.repository.js', () => ({
   updateProfile: (...a: unknown[]) => mockUpdateProfile(...a),
   findByIdWithPassword: (...a: unknown[]) => mockFindByIdWithPassword(...a),
   updatePassword: (...a: unknown[]) => mockUpdatePassword(...a),
+  findByEmail: (...a: unknown[]) => mockFindByEmail(...a),
+  setPendingEmailChange: (...a: unknown[]) => mockSetPendingEmailChange(...a),
+  findPendingEmailChange: (...a: unknown[]) => mockFindPendingEmailChange(...a),
+  applyPendingEmailChange: (...a: unknown[]) => mockApplyPendingEmailChange(...a),
+  clearPendingEmailChange: (...a: unknown[]) => mockClearPendingEmailChange(...a),
 }));
 
 // progress.repository pulls in db.ts -> env.ts (requires JWT_SECRET). Stub it
@@ -52,11 +69,19 @@ vi.mock('../repositories/progress.repository.js', () => ({
 // email.service pulls in config -> env.ts (JWT_SECRET), same story as above.
 vi.mock('../services/email.service.js', () => ({
   sendResetCode: vi.fn(),
-  sendEmailChangeCode: vi.fn(),
+  sendEmailChangeCode: (...a: unknown[]) => mockSendEmailChangeCode(...a),
 }));
 
-const { uploadAvatar, deleteAvatar, updateProfile, changePassword, getActivity } =
-  await import('./profile.controller.js');
+const {
+  uploadAvatar,
+  deleteAvatar,
+  updateProfile,
+  changePassword,
+  getActivity,
+  requestEmailChange,
+  confirmEmailChange,
+  cancelEmailChange,
+} = await import('./profile.controller.js');
 
 // Stateful DB stand-in so a later request sees the avatarUrl an earlier one set.
 let currentAvatar: string | null;
@@ -331,6 +356,229 @@ describe('getActivity', () => {
     mockGetActivityDates.mockRejectedValueOnce(boom);
     const next = vi.fn();
     await getActivity(mkActivityReq(), mkRes(), next);
+    expect(next).toHaveBeenCalledWith(boom);
+  });
+});
+
+describe('requestEmailChange', () => {
+  const mkReq = (body: Record<string, unknown>) =>
+    ({ user: { id: 7 }, body }) as unknown as Request;
+
+  it('rejects with 404 when user cannot be found', async () => {
+    mockFindByIdWithPassword.mockResolvedValueOnce(null);
+    const next = vi.fn();
+    await requestEmailChange(mkReq({ currentPassword: 'a', newEmail: 'new@t.com' }), mkRes(), next);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+    expect(mockSetPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('rejects with 401 when password is wrong', async () => {
+    const { default: bcrypt } = await import('bcryptjs');
+    mockFindByIdWithPassword.mockResolvedValueOnce({ password: bcrypt.hashSync('right', 4) });
+    const next = vi.fn();
+    await requestEmailChange(
+      mkReq({ currentPassword: 'wrong', newEmail: 'new@t.com' }),
+      mkRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(401);
+    expect(mockSetPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('rejects with 400 when the new email equals the current one', async () => {
+    const { default: bcrypt } = await import('bcryptjs');
+    mockFindByIdWithPassword.mockResolvedValueOnce({ password: bcrypt.hashSync('right', 4) });
+    mockFindById.mockResolvedValueOnce({ email: 'Same@t.com' });
+    const next = vi.fn();
+    await requestEmailChange(
+      mkReq({ currentPassword: 'right', newEmail: 'SAME@t.com' }),
+      mkRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockSetPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('rejects with 409 when the new email is already in use', async () => {
+    const { default: bcrypt } = await import('bcryptjs');
+    mockFindByIdWithPassword.mockResolvedValueOnce({ password: bcrypt.hashSync('right', 4) });
+    mockFindById.mockResolvedValueOnce({ email: 'me@t.com' });
+    mockFindByEmail.mockResolvedValueOnce({ id: 42 });
+    const next = vi.fn();
+    await requestEmailChange(
+      mkReq({ currentPassword: 'right', newEmail: 'taken@t.com' }),
+      mkRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(409);
+    expect(mockSetPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('stores a normalised pending email and sends a 6-digit code', async () => {
+    const { default: bcrypt } = await import('bcryptjs');
+    mockFindByIdWithPassword.mockResolvedValueOnce({ password: bcrypt.hashSync('right', 4) });
+    mockFindById.mockResolvedValueOnce({ email: 'old@t.com' });
+    mockFindByEmail.mockResolvedValueOnce(null);
+    mockSetPendingEmailChange.mockResolvedValueOnce(undefined);
+    mockSendEmailChangeCode.mockResolvedValueOnce(undefined);
+
+    const res = mkRes();
+    await requestEmailChange(
+      mkReq({ currentPassword: 'right', newEmail: '  New@t.COM  ' }),
+      res,
+      vi.fn(),
+    );
+
+    expect(mockSetPendingEmailChange).toHaveBeenCalledTimes(1);
+    const [uid, email, code, expiresAt] = mockSetPendingEmailChange.mock.calls[0] as [
+      number,
+      string,
+      string,
+      Date,
+    ];
+    expect(uid).toBe(7);
+    expect(email).toBe('new@t.com');
+    expect(code).toMatch(/^\d{6}$/);
+    expect(expiresAt).toBeInstanceOf(Date);
+    expect(mockSendEmailChangeCode).toHaveBeenCalledWith('new@t.com', code);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Confirmation code sent' });
+  });
+
+  it('still resolves 200 when SMTP send fails asynchronously', async () => {
+    const { default: bcrypt } = await import('bcryptjs');
+    mockFindByIdWithPassword.mockResolvedValueOnce({ password: bcrypt.hashSync('right', 4) });
+    mockFindById.mockResolvedValueOnce({ email: 'old@t.com' });
+    mockFindByEmail.mockResolvedValueOnce(null);
+    mockSetPendingEmailChange.mockResolvedValueOnce(undefined);
+    mockSendEmailChangeCode.mockRejectedValueOnce(new Error('smtp down'));
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const res = mkRes();
+    await requestEmailChange(
+      mkReq({ currentPassword: 'right', newEmail: 'new@t.com' }),
+      res,
+      vi.fn(),
+    );
+    // Give the fire-and-forget send() catch() handler a tick to run.
+    await new Promise((r) => setImmediate(r));
+    expect(res.json).toHaveBeenCalledWith({ message: 'Confirmation code sent' });
+    expect(errSpy).toHaveBeenCalled();
+    errSpy.mockRestore();
+  });
+
+  it('forwards unexpected errors to next', async () => {
+    const boom = new Error('db down');
+    mockFindByIdWithPassword.mockRejectedValueOnce(boom);
+    const next = vi.fn();
+    await requestEmailChange(mkReq({ currentPassword: 'a', newEmail: 'b@t.com' }), mkRes(), next);
+    expect(next).toHaveBeenCalledWith(boom);
+  });
+});
+
+describe('confirmEmailChange', () => {
+  const mkReq = (body: Record<string, unknown>) =>
+    ({ user: { id: 7 }, body }) as unknown as Request;
+
+  it('rejects with 400 when there is no pending change', async () => {
+    mockFindPendingEmailChange.mockResolvedValueOnce(null);
+    const next = vi.fn();
+    await confirmEmailChange(mkReq({ code: '123456' }), mkRes(), next);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
+  it('rejects with 400 when the code has expired', async () => {
+    mockFindPendingEmailChange.mockResolvedValueOnce({
+      pendingEmail: 'new@t.com',
+      emailChangeCode: '123456',
+      emailChangeCodeExpiresAt: new Date('2000-01-01T00:00:00Z'),
+    });
+    const next = vi.fn();
+    await confirmEmailChange(mkReq({ code: '123456' }), mkRes(), next);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockApplyPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('rejects with 400 when the code does not match', async () => {
+    mockFindPendingEmailChange.mockResolvedValueOnce({
+      pendingEmail: 'new@t.com',
+      emailChangeCode: '123456',
+      emailChangeCodeExpiresAt: new Date('2999-12-31T23:59:59Z'),
+    });
+    const next = vi.fn();
+    await confirmEmailChange(mkReq({ code: '999999' }), mkRes(), next);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockApplyPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('clears the pending change and rejects 409 when someone else took the email', async () => {
+    mockFindPendingEmailChange.mockResolvedValueOnce({
+      pendingEmail: 'race@t.com',
+      emailChangeCode: '123456',
+      emailChangeCodeExpiresAt: new Date('2999-12-31T23:59:59Z'),
+    });
+    mockFindByEmail.mockResolvedValueOnce({ id: 99 });
+    mockClearPendingEmailChange.mockResolvedValueOnce(undefined);
+    const next = vi.fn();
+    await confirmEmailChange(mkReq({ code: '123456' }), mkRes(), next);
+    expect(mockClearPendingEmailChange).toHaveBeenCalledWith(7);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(409);
+    expect(mockApplyPendingEmailChange).not.toHaveBeenCalled();
+  });
+
+  it('applies the change and returns the new email on success', async () => {
+    mockFindPendingEmailChange.mockResolvedValueOnce({
+      pendingEmail: 'new@t.com',
+      emailChangeCode: '123456',
+      emailChangeCodeExpiresAt: new Date('2999-12-31T23:59:59Z'),
+    });
+    mockFindByEmail.mockResolvedValueOnce(null);
+    mockApplyPendingEmailChange.mockResolvedValueOnce(undefined);
+    const res = mkRes();
+    await confirmEmailChange(mkReq({ code: '123456' }), res, vi.fn());
+    expect(mockApplyPendingEmailChange).toHaveBeenCalledWith(7, 'new@t.com');
+    expect(res.json).toHaveBeenCalledWith({ message: 'Email updated', email: 'new@t.com' });
+  });
+
+  it('treats a stale row owned by the same user as a no-op collision', async () => {
+    mockFindPendingEmailChange.mockResolvedValueOnce({
+      pendingEmail: 'same@t.com',
+      emailChangeCode: '123456',
+      emailChangeCodeExpiresAt: new Date('2999-12-31T23:59:59Z'),
+    });
+    mockFindByEmail.mockResolvedValueOnce({ id: 7 });
+    mockApplyPendingEmailChange.mockResolvedValueOnce(undefined);
+    const res = mkRes();
+    await confirmEmailChange(mkReq({ code: '123456' }), res, vi.fn());
+    // Same-user match is not a conflict; the apply still runs (idempotent).
+    expect(mockApplyPendingEmailChange).toHaveBeenCalledWith(7, 'same@t.com');
+    expect(res.json).toHaveBeenCalledWith({ message: 'Email updated', email: 'same@t.com' });
+  });
+
+  it('forwards unexpected errors to next', async () => {
+    const boom = new Error('db down');
+    mockFindPendingEmailChange.mockRejectedValueOnce(boom);
+    const next = vi.fn();
+    await confirmEmailChange(mkReq({ code: '123456' }), mkRes(), next);
+    expect(next).toHaveBeenCalledWith(boom);
+  });
+});
+
+describe('cancelEmailChange', () => {
+  const mkReq = () => ({ user: { id: 7 } }) as unknown as Request;
+
+  it('clears the pending change', async () => {
+    mockClearPendingEmailChange.mockResolvedValueOnce(undefined);
+    const res = mkRes();
+    await cancelEmailChange(mkReq(), res, vi.fn());
+    expect(mockClearPendingEmailChange).toHaveBeenCalledWith(7);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Pending email change cancelled' });
+  });
+
+  it('forwards unexpected errors to next', async () => {
+    const boom = new Error('db down');
+    mockClearPendingEmailChange.mockRejectedValueOnce(boom);
+    const next = vi.fn();
+    await cancelEmailChange(mkReq(), mkRes(), next);
     expect(next).toHaveBeenCalledWith(boom);
   });
 });

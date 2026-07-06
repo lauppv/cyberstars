@@ -19,6 +19,7 @@ const upload = multer({
 // Same shape as authLimiter: caps password guessing on the change endpoint.
 const passwordLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
   max: process.env.NODE_ENV === 'test' ? 10_000 : 10,
   message: { error: 'Too many attempts, try again later' },
   standardHeaders: true,

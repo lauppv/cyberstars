@@ -139,4 +139,26 @@ describe('lessonService cache', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock).toHaveBeenCalledWith('/curriculum.json');
   });
+
+  it('fetchLessonSolution caches and hits the -solution.md path', async () => {
+    const fetchMock = vi.fn(() => textResponse('```py\nprint(1)\n```'));
+    vi.stubGlobal('fetch', fetchMock);
+    const a = await lessonService.fetchLessonSolution('python', 'vars');
+    const b = await lessonService.fetchLessonSolution('python', 'vars');
+    expect(a).toBe(b);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledWith('/lessons/python/vars-solution.md');
+  });
+
+  it('fetchLessonSolution with lang=ro falls back to English when missing', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockReturnValueOnce(textResponse('', false))
+      .mockReturnValueOnce(textResponse('en solution'));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await lessonService.fetchLessonSolution('python', 'solve-me', 'ro');
+    expect(result).toBe('en solution');
+    expect(fetchMock).toHaveBeenNthCalledWith(1, '/lessons/python/ro/solve-me-solution.md');
+    expect(fetchMock).toHaveBeenNthCalledWith(2, '/lessons/python/solve-me-solution.md');
+  });
 });

@@ -120,6 +120,60 @@ describe('getUser', () => {
     mockUserRepo.findById.mockResolvedValue(null);
     await expect(getUser(999)).rejects.toThrow(AppError);
   });
+
+  it('nullifies both status and statusExpiresAt when neither is set', async () => {
+    mockUserRepo.findById.mockResolvedValue({
+      id: 1,
+      name: 'Ada',
+      email: 'ada@test.com',
+      role: 'USER',
+      avatarUrl: null,
+      bio: null,
+      status: null,
+      statusExpiresAt: null,
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+    });
+    const user = await getUser(1);
+    expect(user.status).toBeNull();
+    expect(user.statusExpiresAt).toBeNull();
+    expect(user.pendingEmail).toBeNull();
+  });
+
+  it('surfaces pendingEmail when the change code has not expired yet', async () => {
+    mockUserRepo.findById.mockResolvedValue({
+      id: 1,
+      name: 'Ada',
+      email: 'ada@test.com',
+      role: 'USER',
+      avatarUrl: null,
+      bio: null,
+      status: null,
+      statusExpiresAt: null,
+      pendingEmail: 'new@test.com',
+      emailChangeCodeExpiresAt: new Date('2999-12-31T23:59:59Z'),
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+    });
+    const user = await getUser(1);
+    expect(user.pendingEmail).toBe('new@test.com');
+  });
+
+  it('nullifies pendingEmail when the change code has already expired', async () => {
+    mockUserRepo.findById.mockResolvedValue({
+      id: 1,
+      name: 'Ada',
+      email: 'ada@test.com',
+      role: 'USER',
+      avatarUrl: null,
+      bio: null,
+      status: null,
+      statusExpiresAt: null,
+      pendingEmail: 'new@test.com',
+      emailChangeCodeExpiresAt: new Date('2000-01-01T00:00:00Z'),
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+    });
+    const user = await getUser(1);
+    expect(user.pendingEmail).toBeNull();
+  });
 });
 
 describe('forgotPassword', () => {
@@ -139,6 +193,17 @@ describe('forgotPassword', () => {
     mockUserRepo.setResetCode.mockResolvedValue(false);
     await forgotPassword('nobody@test.com');
     expect(mockSendResetCode).not.toHaveBeenCalled();
+  });
+
+  it('logs and swallows SMTP failures instead of surfacing them', async () => {
+    mockUserRepo.setResetCode.mockResolvedValue(true);
+    mockSendResetCode.mockRejectedValue(new Error('smtp down'));
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    await forgotPassword('user@test.com');
+    // Give the fire-and-forget send() catch() handler a tick to run.
+    await new Promise((r) => setImmediate(r));
+    expect(errSpy).toHaveBeenCalled();
+    errSpy.mockRestore();
   });
 });
 
