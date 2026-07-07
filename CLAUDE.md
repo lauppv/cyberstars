@@ -23,7 +23,7 @@ npm run test:coverage     # Vitest + v8 coverage (./coverage/); fails if below t
 npm run test:integration  # Real-Postgres integration tests (test/integration/, requires .env.test)
 npm run test:e2e          # Playwright (both projects: browser + docker)
 npm run test:e2e:browser  # Playwright browser-only (auth/forum/support/courses/profile)
-npm run test:e2e:docker   # Playwright docker runners (Python/C/Java/terminal/ws-stdin)
+npm run test:e2e:docker   # Playwright docker runners (Python/C/Java/Kotlin/terminal/ws-stdin)
 npm run test:e2e:ui       # Playwright UI mode
 npm run typecheck         # tsc --noEmit
 npm run lint              # ESLint
