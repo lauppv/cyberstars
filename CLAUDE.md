@@ -86,9 +86,9 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 - DTO types and constants imported by both client and server — keeps request/response shapes and course key constants in sync. Badges are derived client-side only (`useGamification`) from completion counts
 
-### Lesson content (`server/lessons/{python,c,java,linux}/`)
+### Lesson content (`server/lessons/{python,c,java,kotlin,linux}/`)
 
-- Markdown files with fenced code blocks (` ```python `, ` ```c `, ` ```java `, ` ```bash `) for runnable examples and ` ```text ` for output
+- Markdown files with fenced code blocks (` ```python `, ` ```c `, ` ```java `, ` ```kotlin `, ` ```bash `) for runnable examples and ` ```text ` for output
 - Every C code block must include `#include`, `int main(void)`, `return 0` (full compilable program)
 - Every Java code block must include `public class Main` with `public static void main(String[] args)` wrapper
 - Intentional compile errors (e.g., demonstrating `if(x=2)` bug) still have full boilerplate — the error is only on the line being demonstrated
@@ -135,7 +135,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - Gamification is badge-only (no XP), derived client-side from `UserLessonProgress` counts — no separate gamification tables. Badges include "First Steps" (1 lesson) and Bronze/Silver/Gold tiers (10/20/30 lessons per course). New badge earnings trigger a 5s toast notification
 - Profile features (avatar upload, bio, status with 24h expiry) via `/api/profile` routes with multer + magic-byte validation. Uploads served from `/uploads` static dir
 - Dark theme uses CSS custom properties with accent purple `#6C5CE7`, Space Grotesk font for UI, JetBrains Mono for code
-- Lesson completion is user-driven: students click "Mark Complete" (calls `POST /api/progress/:courseKey/:lessonSlug/complete`). There is no automated grading
+- Lesson completion is user-driven and toggleable: `POST /api/progress/:courseKey/:lessonSlug/complete` marks a lesson complete, `DELETE` on the same path un-marks it. The button updates optimistically and the client debounces the network call by 5s so rapid toggles coalesce (a keepalive `fetch` on `beforeunload` persists a pending toggle on tab close). There is no automated grading
 - The user communicates in Romanian; code and docs stay in English
 - i18n: bilingual UI (English default + Romanian) via i18next; toggle persists to `localStorage` (`cyberstars.lang`). UI strings in `client/i18n/locales/{en,ro}.json` (keep keys in sync). Lesson/almanac content is translated by file in `/ro` subfolders with English fallback (see Lesson content). `SUPPORTED_LANGS = ['en', 'ro']` in `client/i18n/index.ts`
 - Page wrapper divs use `bg-transparent` (not `bg-[var(--bg)]`) so the global cosmos starfield shows through
