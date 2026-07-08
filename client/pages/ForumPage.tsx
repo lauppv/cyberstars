@@ -1,8 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import i18next from 'i18next';
 import { Topbar } from '../components/layout/Topbar';
+import { ForumPostContent } from '../components/forum/ForumPostContent';
 import { useAuth } from '../context/AuthContext';
+import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants';
 import * as forumService from '../services/forumService';
 import type {
   ForumCategoryDTO,
@@ -24,9 +27,6 @@ function timeAgo(iso: string): string {
   if (days < 30) return i18next.t('forum.time.dayAgo', { count: days });
   return new Date(iso).toLocaleDateString();
 }
-
-/** Categories where only moderators and admins may start threads or reply. */
-const RESTRICTED_CATEGORIES = new Set(['announcements']);
 
 const ROLE_CLS: Record<UserRole, string> = {
   ADMIN: 'role-admin',
@@ -50,9 +50,22 @@ type View = 'index' | 'category' | 'thread';
 
 export function ForumPage() {
   const { isLoggedIn, user } = useAuth();
-  const [view, setView] = useState<View>('index');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pendingThreadId =
+    (location.state as { openThreadId?: number } | null)?.openThreadId ?? null;
+  const [view, setView] = useState<View>(pendingThreadId != null ? 'thread' : 'index');
   const [categorySlug, setCategorySlug] = useState<string | null>(null);
-  const [threadId, setThreadId] = useState<number | null>(null);
+  const [threadId, setThreadId] = useState<number | null>(pendingThreadId);
+
+  // Consume the one-shot navigation state (e.g. after sharing code) so a
+  // refresh or back-navigation doesn't force the thread view again.
+  useEffect(() => {
+    if (pendingThreadId != null) {
+      window.scrollTo(0, 0);
+      navigate('/forum', { replace: true, state: null });
+    }
+  }, [pendingThreadId, navigate]);
 
   const openCategory = (slug: string) => {
     setCategorySlug(slug);
@@ -259,7 +272,7 @@ function CategoryView({
   user: AuthenticatedUser | null;
 }) {
   const { t } = useTranslation();
-  const restricted = RESTRICTED_CATEGORIES.has(categorySlug);
+  const restricted = RESTRICTED_FORUM_CATEGORIES.has(categorySlug);
   const canPost = isLoggedIn && (!restricted || (user != null && user.role !== 'USER'));
   const [category, setCategory] = useState<{
     slug: string;
@@ -573,7 +586,7 @@ function ThreadView({
     );
   }
 
-  const restricted = RESTRICTED_CATEGORIES.has(thread.categorySlug);
+  const restricted = RESTRICTED_FORUM_CATEGORIES.has(thread.categorySlug);
   const canReply =
     isLoggedIn && !thread.locked && (!restricted || (user != null && user.role !== 'USER'));
 
@@ -790,7 +803,9 @@ function PostCard({
             </div>
           </div>
         ) : (
-          <div className="post-content">{post.content}</div>
+          <div className="post-content">
+            <ForumPostContent content={post.content} />
+          </div>
         )}
         <div className="post-footer">
           <div className="reactions">

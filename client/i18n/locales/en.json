@@ -362,6 +362,20 @@
       "hourAgo": "{{count}}h ago",
       "dayAgo": "{{count}}d ago"
     },
+    "share": {
+      "title": "Share to forum",
+      "threadTitle": "Title",
+      "threadTitlePlaceholder": "Describe your code or question",
+      "category": "Category",
+      "attachedCode": "Attached code",
+      "description": "Description (optional)",
+      "descriptionPlaceholder": "Add context, ask a question, or explain what you tried",
+      "cancel": "Cancel",
+      "post": "Post",
+      "posting": "Posting...",
+      "loadError": "Could not load categories.",
+      "postError": "Could not post to the forum. Try again."
+    },
     "roles": { "ADMIN": "Admin", "MODERATOR": "Moderator", "USER": "User" },
     "groups": {
       "Community": "Community",
@@ -509,6 +523,7 @@
     "reset": "↺ Reset",
     "confirmReset": "Reset the code to the lesson's default template? Your current code will be lost.",
     "save": "💾 Save",
+    "shareToForum": "📤 Share to forum",
     "codeSaved": "Code saved!",
     "showSolution": "💡 Show Solution",
     "solutionTitle": "Solution",

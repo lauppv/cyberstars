@@ -3,6 +3,7 @@ import type { Role } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { AppError } from '../middleware/errorHandler.js';
 import * as userRepo from '../repositories/user.repository.js';
+import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants.js';
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
@@ -10,9 +11,6 @@ import type {
   ForumPostDTO,
   ForumReactionGroupDTO,
 } from '../../shared/forum.js';
-
-// Categories where only moderators and admins may start threads or reply.
-const RESTRICTED_CATEGORIES = new Set(['announcements']);
 
 /**
  * Whether an actor may edit/delete content authored by someone else.
@@ -232,7 +230,7 @@ export async function createThread(req: Request, res: Response, next: NextFuncti
     const category = await prisma.forumCategory.findUnique({ where: { slug: categorySlug } });
     if (!category) throw new AppError(404, 'Category not found');
 
-    if (RESTRICTED_CATEGORIES.has(category.slug)) {
+    if (RESTRICTED_FORUM_CATEGORIES.has(category.slug)) {
       const role = await userRepo.getRole(userId);
       if (role === 'USER') {
         throw new AppError(403, 'Only moderators and admins can post in this category');
@@ -271,7 +269,7 @@ export async function createPost(req: Request, res: Response, next: NextFunction
     if (!thread) throw new AppError(404, 'Thread not found');
     if (thread.locked) throw new AppError(403, 'Thread is locked');
 
-    if (RESTRICTED_CATEGORIES.has(thread.category.slug)) {
+    if (RESTRICTED_FORUM_CATEGORIES.has(thread.category.slug)) {
       const role = await userRepo.getRole(userId);
       if (role === 'USER') {
         throw new AppError(403, 'Only moderators and admins can post in this category');
