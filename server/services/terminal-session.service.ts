@@ -1,4 +1,3 @@
-import { execFile } from 'child_process';
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
@@ -8,6 +7,7 @@ import type {
   TerminalExecResult,
 } from '../../shared/terminal.js';
 import { contentDir } from './paths.js';
+import { dockerExec } from './docker-exec.js';
 
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
@@ -40,23 +40,6 @@ function startGC() {
   gcTimer.unref();
 }
 
-function docker(args: string[], timeout = 10_000, stdin?: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const proc = execFile(
-      'docker',
-      args,
-      { maxBuffer: 1024 * 1024, timeout },
-      (err, stdout, stderr) => {
-        if (err) reject(new Error(stderr || err.message));
-        else resolve(stdout.trim());
-      },
-    );
-    if (stdin != null) {
-      proc.stdin?.end(stdin);
-    }
-  });
-}
-
 // Translated sandbox filesystems live in a ro/ subfolder beside the English
 // source (server/lessons/linux/ro/<slug>-setup.json), mirroring lesson prose
 // translations. English stays the source of truth; a missing RO variant falls
@@ -85,7 +68,7 @@ export async function createSession(
   const setup = loadSetup(courseKey, lessonSlug, lang);
   const cwd = setup?.cwd ?? '/home/student';
 
-  const containerId = await docker([
+  const containerId = await dockerExec([
     'run',
     '-d',
     '--rm',
@@ -103,15 +86,15 @@ export async function createSession(
 
   if (setup) {
     for (const dir of setup.dirs) {
-      await docker(['exec', containerId, 'mkdir', '-p', `/home/student/${dir}`]);
+      await dockerExec(['exec', containerId, 'mkdir', '-p', `/home/student/${dir}`]);
     }
     for (const file of setup.files) {
       const fullPath = file.path.startsWith('/') ? file.path : `/home/student/${file.path}`;
       const dir2 = fullPath.substring(0, fullPath.lastIndexOf('/'));
       if (dir2 && dir2 !== '/home/student') {
-        await docker(['exec', containerId, 'mkdir', '-p', dir2]);
+        await dockerExec(['exec', containerId, 'mkdir', '-p', dir2]);
       }
-      await docker(
+      await dockerExec(
         ['exec', '-i', containerId, 'bash', '-c', `cat > '${fullPath.replace(/'/g, "'\\''")}'`],
         10_000,
         file.content,
@@ -119,7 +102,7 @@ export async function createSession(
     }
   }
 
-  await docker(['exec', '-i', containerId, 'bash', '-c', 'cat > /tmp/.cwd'], 10_000, cwd);
+  await dockerExec(['exec', '-i', containerId, 'bash', '-c', 'cat > /tmp/.cwd'], 10_000, cwd);
 
   const sessionId = crypto.randomUUID();
   sessions.set(sessionId, {
@@ -158,7 +141,7 @@ export async function execCommand(
 
     let output: string;
     try {
-      output = await docker(
+      output = await dockerExec(
         ['exec', session.containerId, 'timeout', String(EXEC_TIMEOUT), 'bash', '-c', script],
         (EXEC_TIMEOUT + 2) * 1000,
       );
@@ -168,7 +151,7 @@ export async function execCommand(
 
     let newCwd = session.cwd;
     try {
-      newCwd = await docker(['exec', session.containerId, 'cat', '/tmp/.cwd']);
+      newCwd = await dockerExec(['exec', session.containerId, 'cat', '/tmp/.cwd']);
     } catch {
       /* cwd read is best-effort */
     }
@@ -190,7 +173,7 @@ export async function destroySession(sessionId: string, ownerKey?: string): Prom
   if (ownerKey !== undefined && session.ownerKey !== ownerKey) return;
   sessions.delete(sessionId);
   try {
-    await docker(['rm', '-f', session.containerId], 5000);
+    await dockerExec(['rm', '-f', session.containerId], 5000);
   } catch {
     /* container may already be gone */
   }
