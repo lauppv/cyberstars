@@ -24,7 +24,7 @@ The problem is that with this approach you have to be careful with spaces, comma
 
 We believe the best approach is the first one
 
-```python
+```py
 name = "Cortez"
 age = 57
 height = 1.67

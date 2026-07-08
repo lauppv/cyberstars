@@ -6,7 +6,7 @@ Combine **tuples**, **sets**, **nested loops**, and **list comprehension**
 
 You're comparing two teams. Each crew member is a **tuple** of `(name, score)`:
 
-```python
+```py
 team_a = [("Tommy", 85), ("Lance", 72), ("Cortez", 91), ("Phil", 60)]
 team_b = [("Mira", 88), ("Lance", 65), ("Tommy", 91), ("Quinn", 72)]
 ```

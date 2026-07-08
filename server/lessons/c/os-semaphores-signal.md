@@ -40,7 +40,7 @@ You might say: "But `pthread_join` does the same thing — it waits for the thre
 
 Chain two semaphores together and you can synchronize two actors trading messages — a pattern called **rendezvous**. The producer puts a value in a shared variable, signals `full`, then waits for `empty`; the consumer waits for `full`, reads, then signals `empty` back. Both threads take turns through a single slot.
 
-```c
+```text
 sem_t full;    // init 0 — signalled by producer when the slot has data
 sem_t empty;   // init 1 — signalled by consumer when the slot is free again
 ```

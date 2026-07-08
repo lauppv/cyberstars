@@ -40,7 +40,7 @@ Poți zice: "Dar `pthread_join` face același lucru — așteaptă firul." Corec
 
 Când combini două semafoare, poți sincroniza doi actori care fac schimb de mesaje — un pattern numit **rendezvous**. Producătorul pune o valoare într-o variabilă partajată, semnalează `plin`, apoi așteaptă `gol`; consumatorul așteaptă `plin`, citește, apoi semnalează `gol` înapoi. Ambele fire alternează controlul printr-un singur slot.
 
-```c
+```text
 sem_t plin;   // init 0 — semnalat de producator cand slotul are date
 sem_t gol;    // init 1 — semnalat de consumator cand slotul e liber
 ```

@@ -24,7 +24,7 @@ Problema e că, cu această abordare, trebuie să fii atent la spații, virgule 
 
 Credem că cea mai bună abordare este prima
 
-```python
+```py
 nume = "Cortez"
 varsta = 57
 inaltime = 1.67
