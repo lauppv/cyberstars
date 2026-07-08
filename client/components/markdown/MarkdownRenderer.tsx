@@ -75,7 +75,7 @@ const components: Components = {
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="prose text-[#b0b8c5] break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
+    <div className="prose text-[#d0d4de] break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
       <ReactMarkdown components={components}>{content}</ReactMarkdown>
     </div>
   );

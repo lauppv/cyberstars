@@ -12,6 +12,7 @@
     "toggleSidebar": "Toggle sidebar",
     "profile": "Profile",
     "language": "Language",
+    "background": "Background",
     "support": "Support",
     "rules": "Rules",
     "welcomeTour": "Welcome Tour",
@@ -22,6 +23,11 @@
     "switch": "Switch language",
     "en": "EN",
     "ro": "RO"
+  },
+  "background": {
+    "switch": "Switch background",
+    "minimal": "Minimal",
+    "cosmos": "Cosmos"
   },
   "home": {
     "continueWhereLeftOff": "Continue where you left off",
