@@ -509,6 +509,9 @@
     "codeSaved": "Code saved!",
     "showSolution": "💡 Show Solution",
     "solutionTitle": "Solution",
+    "compare": "Compare",
+    "yourCode": "Your code",
+    "yourCodeEmpty": "The editor is empty.",
     "badgeEarned": "Badge earned: {{label}}"
   },
   "laniakea": {

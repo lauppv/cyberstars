@@ -10,11 +10,12 @@ import { Prec, type Extension } from '@codemirror/state';
 
 interface CodeEditorProps {
   value: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   language: string;
   minHeight?: string;
   fontSize?: string;
   onRun?: () => void;
+  readOnly?: boolean;
 }
 
 const transparentBg = EditorView.theme({
@@ -56,6 +57,7 @@ export function CodeEditor({
   minHeight = '100px',
   fontSize = '16px',
   onRun,
+  readOnly = false,
 }: CodeEditorProps) {
   const extensions = getExtensions(language);
   if (onRun) {
@@ -82,6 +84,11 @@ export function CodeEditor({
       extensions={extensions}
       onChange={onChange}
       style={{ fontSize }}
+      readOnly={readOnly}
+      editable={!readOnly}
+      basicSetup={
+        readOnly ? { lineNumbers: true, foldGutter: false, highlightActiveLine: false } : undefined
+      }
     />
   );
 }
