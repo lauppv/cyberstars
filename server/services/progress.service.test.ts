@@ -23,7 +23,7 @@ const mockCurriculumRepo = {
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
 
-const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
+const { getCourseProgress, markComplete, markIncomplete, saveCode, getSavedCode, trackAccess } =
   await import('./progress.service.js');
 
 beforeEach(() => {
@@ -71,6 +71,13 @@ describe('markComplete', () => {
   it('delegates to repo', async () => {
     await markComplete(1, 'python', 'booleans');
     expect(mockProgressRepo.upsertProgress).toHaveBeenCalledWith(1, 'python', 'booleans', true);
+  });
+});
+
+describe('markIncomplete', () => {
+  it('delegates to repo with completed=false', async () => {
+    await markIncomplete(1, 'python', 'booleans');
+    expect(mockProgressRepo.upsertProgress).toHaveBeenCalledWith(1, 'python', 'booleans', false);
   });
 });
 

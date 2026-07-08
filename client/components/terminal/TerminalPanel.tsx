@@ -99,17 +99,18 @@ export function TerminalPanel({
           {onMarkComplete && (
             <button
               onClick={onMarkComplete}
-              disabled={lessonCompleted || isMarking}
+              disabled={isMarking}
+              title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
               className={`text-[12px] px-3 py-1 rounded-[var(--radius-sm)] transition cursor-pointer border ${
                 lessonCompleted
-                  ? 'bg-[var(--success)]/15 border-[var(--success)]/30 text-[var(--success)]'
+                  ? 'bg-[var(--success)]/15 border-[var(--success)]/30 text-[var(--success)] hover:bg-[var(--success)]/25'
                   : 'bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20'
-              } font-semibold disabled:cursor-default`}
+              } font-semibold disabled:cursor-default disabled:opacity-70`}
             >
-              {lessonCompleted
-                ? t('lesson.completed')
-                : isMarking
-                  ? t('lesson.marking')
+              {isMarking
+                ? t('lesson.marking')
+                : lessonCompleted
+                  ? t('lesson.completed')
                   : t('lesson.markComplete')}
             </button>
           )}
