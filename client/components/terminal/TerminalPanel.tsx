@@ -33,8 +33,26 @@ export function TerminalPanel({
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
+  const [menuOpen, setMenuOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -88,39 +106,66 @@ export function TerminalPanel({
           {t('terminal.label')}
         </div>
         <div className="flex items-center gap-2">
-          {hasSolution && onShowSolution && (
-            <button
-              onClick={onShowSolution}
-              className="text-[12px] px-3 py-1 rounded-[var(--radius-sm)] bg-[var(--warning)]/10 border border-[var(--warning)]/30 text-[var(--warning)] font-semibold hover:bg-[var(--warning)]/20 transition cursor-pointer"
-            >
-              {t('lesson.showSolution')}
-            </button>
+          {lessonCompleted && (
+            <span className="text-[12px] font-semibold text-[var(--success)]">
+              {t('lesson.completed')}
+            </span>
           )}
-          {onMarkComplete && (
+          <div className="relative" ref={menuRef}>
             <button
-              onClick={onMarkComplete}
-              disabled={isMarking}
-              title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
-              className={`text-[12px] px-3 py-1 rounded-[var(--radius-sm)] transition cursor-pointer border ${
-                lessonCompleted
-                  ? 'bg-[var(--success)]/15 border-[var(--success)]/30 text-[var(--success)] hover:bg-[var(--success)]/25'
-                  : 'bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20'
-              } font-semibold disabled:cursor-default disabled:opacity-70`}
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-haspopup="menu"
+              aria-expanded={menuOpen}
+              aria-label={t('lesson.actions')}
+              className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
             >
-              {isMarking
-                ? t('lesson.marking')
-                : lessonCompleted
-                  ? t('lesson.completed')
-                  : t('lesson.markComplete')}
+              <span className="text-[16px] leading-none">⋯</span>
             </button>
-          )}
-          <button
-            onClick={onReset}
-            className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
-            title={t('terminal.resetTitle')}
-          >
-            {t('lesson.reset')}
-          </button>
+            {menuOpen && (
+              <div
+                role="menu"
+                className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+              >
+                {hasSolution && onShowSolution && (
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onShowSolution();
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                  >
+                    {t('lesson.showSolution')}
+                  </button>
+                )}
+                {onMarkComplete && (
+                  <button
+                    role="menuitem"
+                    onClick={onMarkComplete}
+                    disabled={isMarking}
+                    title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none disabled:cursor-default disabled:opacity-70"
+                  >
+                    {isMarking
+                      ? t('lesson.marking')
+                      : lessonCompleted
+                        ? t('lesson.unmark')
+                        : t('lesson.markComplete')}
+                  </button>
+                )}
+                <button
+                  role="menuitem"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    onReset();
+                  }}
+                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  {t('lesson.reset')}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
