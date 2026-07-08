@@ -5,9 +5,9 @@ import { test, expect } from '../fixtures/test.js';
 const KOTLIN_CODE = `fun main() { println("hello") }`;
 
 test('run Kotlin println("hello") → output "hello"', async ({ authedPage: page }) => {
-  // kotlinc -include-runtime is heavy and the run container is CPU-capped
-  // (--cpus), so on slower CI runners the compile can approach a minute.
-  test.setTimeout(120_000);
+  // kotlinc -include-runtime is the heaviest compile of any runtime, so give it
+  // extra headroom over the default per-test timeout on slower CI runners.
+  test.setTimeout(90_000);
   await page.goto('/#/lesson/kotlin/hello-world');
 
   const editor = page.locator('.cm-content').last();
@@ -17,5 +17,5 @@ test('run Kotlin println("hello") → output "hello"', async ({ authedPage: page
 
   await page.getByRole('button', { name: '▶ Run' }).last().click();
 
-  await expect(page.getByTestId('code-output').last()).toContainText('hello', { timeout: 90_000 });
+  await expect(page.getByTestId('code-output').last()).toContainText('hello', { timeout: 60_000 });
 });

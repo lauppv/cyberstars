@@ -42,7 +42,9 @@ function hardeningArgs(): string[] {
   return args;
 }
 
-function createContainer(image: string, memory?: string): Promise<string> {
+function createContainer(image: string, memory?: string, cpus?: string | null): Promise<string> {
+  // undefined -> default cap; null -> uncapped (omit the flag entirely).
+  const cpuCap = cpus === undefined ? RUN_CPUS : cpus;
   return dockerExec(
     [
       'run',
@@ -51,7 +53,7 @@ function createContainer(image: string, memory?: string): Promise<string> {
       '--network=none',
       `--memory=${memory ?? RUN_MEMORY}`,
       `--pids-limit=${RUN_PIDS}`,
-      `--cpus=${RUN_CPUS}`,
+      ...(cpuCap !== null ? [`--cpus=${cpuCap}`] : []),
       ...hardeningArgs(),
       '-w',
       '/work',
@@ -136,7 +138,7 @@ export async function acquireForRun(ownerKey: string, language: string): Promise
 
   let containerId: string;
   try {
-    containerId = await createContainer(runtime.image, runtime.memory);
+    containerId = await createContainer(runtime.image, runtime.memory, runtime.cpus);
   } catch (err) {
     if (containers.get(ownerKey) === reserved) containers.delete(ownerKey);
     throw err;
