@@ -65,7 +65,9 @@ export function LessonPage() {
   const [isMarking, setIsMarking] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  const menuRef = useRef<HTMLDivElement>(null);
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
@@ -78,6 +80,22 @@ export function LessonPage() {
     courseKey: string;
     lessonSlug: string;
   } | null>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
 
   const course = courses.find((c) => c.key === category) ?? null;
 
@@ -380,56 +398,83 @@ export function LessonPage() {
                 {courseMeta(category).langLabel}
               </div>
               <div className="flex items-center gap-2">
-                {solution && (
-                  <button
-                    onClick={() => setShowSolution(true)}
-                    className="text-[12px] px-3 py-1 rounded-[var(--radius-sm)] bg-[var(--warning)]/10 border border-[var(--warning)]/30 text-[var(--warning)] font-semibold hover:bg-[var(--warning)]/20 transition cursor-pointer"
-                  >
-                    {t('lesson.showSolution')}
-                  </button>
+                {showSaveToast && (
+                  <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
+                    {t('lesson.codeSaved')}
+                  </span>
                 )}
-                {isLoggedIn && (
-                  <button
-                    onClick={handleToggleComplete}
-                    disabled={isMarking}
-                    title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
-                    className={`text-[12px] px-3 py-1 rounded-[var(--radius-sm)] transition cursor-pointer border ${
-                      lessonCompleted
-                        ? 'bg-[var(--success)]/15 border-[var(--success)]/30 text-[var(--success)] hover:bg-[var(--success)]/25'
-                        : 'bg-[var(--accent)]/10 border-[var(--accent)]/30 text-[var(--accent)] hover:bg-[var(--accent)]/20'
-                    } font-semibold disabled:cursor-default disabled:opacity-70`}
-                  >
-                    {isMarking
-                      ? t('lesson.marking')
-                      : lessonCompleted
-                        ? t('lesson.completed')
-                        : t('lesson.markComplete')}
-                  </button>
+                {lessonCompleted && (
+                  <span className="text-[12px] font-semibold text-[var(--success)]">
+                    {t('lesson.completed')}
+                  </span>
                 )}
-                <button
-                  onClick={() => {
-                    if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
-                  }}
-                  className="text-[12px] text-[var(--text3)] hover:text-[var(--text)] px-2 py-1 rounded transition cursor-pointer bg-transparent border-none"
-                  title={t('lesson.resetTitle')}
-                >
-                  {t('lesson.reset')}
-                </button>
-                {isLoggedIn && (
-                  <>
-                    <button
-                      onClick={handleSave}
-                      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-[13px] font-semibold hover:text-[var(--text)] transition cursor-pointer"
+                <div className="relative" ref={menuRef}>
+                  <button
+                    onClick={() => setMenuOpen((v) => !v)}
+                    aria-haspopup="menu"
+                    aria-expanded={menuOpen}
+                    aria-label={t('lesson.actions')}
+                    className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
+                  >
+                    <span className="text-[16px] leading-none">⋯</span>
+                  </button>
+                  {menuOpen && (
+                    <div
+                      role="menu"
+                      className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
                     >
-                      {t('lesson.save')}
-                    </button>
-                    {showSaveToast && (
-                      <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                        {t('lesson.codeSaved')}
-                      </span>
-                    )}
-                  </>
-                )}
+                      {solution && (
+                        <button
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setShowSolution(true);
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                        >
+                          {t('lesson.showSolution')}
+                        </button>
+                      )}
+                      {isLoggedIn && (
+                        <button
+                          role="menuitem"
+                          onClick={handleToggleComplete}
+                          disabled={isMarking}
+                          title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
+                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none disabled:cursor-default disabled:opacity-70"
+                        >
+                          {isMarking
+                            ? t('lesson.marking')
+                            : lessonCompleted
+                              ? t('lesson.unmark')
+                              : t('lesson.markComplete')}
+                        </button>
+                      )}
+                      {isLoggedIn && (
+                        <button
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            handleSave();
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                        >
+                          {t('lesson.save')}
+                        </button>
+                      )}
+                      <button
+                        role="menuitem"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                      >
+                        {t('lesson.reset')}
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
