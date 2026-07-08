@@ -20,7 +20,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import type { LessonMeta } from '../../shared/lesson';
 import * as progressService from '../services/progressService';
 import { courseMeta } from '../constants/courses';
-import { TERMINAL_COURSE_KEYS } from '../../shared/constants';
+import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS } from '../../shared/constants';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -45,6 +45,7 @@ export function LessonPage() {
   const { isLoggedIn } = useAuth();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
+  const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
 
   const { title, content, starterCode, savedCode, solution, isLoading } = useLesson(
     category,
@@ -313,7 +314,7 @@ export function LessonPage() {
                 <>
                   <div className="flex items-center gap-3 mb-2 flex-wrap">
                     <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                      {t('lesson.lessonNofM', {
+                      {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
                         n: currentIndex + 1,
                         total: lessonList.length,
                       })}

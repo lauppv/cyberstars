@@ -496,6 +496,7 @@
     "tabTerminal": "⌨️ Terminal",
     "tabCode": "💻 Cod",
     "lessonNofM": "Lecția {{n}} din {{total}}",
+    "algoNofM": "Algoritmul {{n}} din {{total}}",
     "completed": "✓ Finalizat",
     "previous": "← Anterioara",
     "next": "Următoarea →",

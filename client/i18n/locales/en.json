@@ -496,6 +496,7 @@
     "tabTerminal": "⌨️ Terminal",
     "tabCode": "💻 Code",
     "lessonNofM": "Lesson {{n}} of {{total}}",
+    "algoNofM": "Algorithm {{n}} of {{total}}",
     "completed": "✓ Completed",
     "previous": "← Previous",
     "next": "Next →",
