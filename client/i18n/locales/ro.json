@@ -510,6 +510,9 @@
     "codeSaved": "Cod salvat!",
     "showSolution": "💡 Arată soluția",
     "solutionTitle": "Soluția",
+    "compare": "Compară",
+    "yourCode": "Codul tău",
+    "yourCodeEmpty": "Editorul este gol.",
     "badgeEarned": "Insignă obținută: {{label}}"
   },
   "laniakea": {

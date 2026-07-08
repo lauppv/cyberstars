@@ -398,7 +398,12 @@ export function LessonPage() {
         onClose={gamification.dismissNewBadge}
       />
       {showSolution && solution && (
-        <SolutionModal solution={solution} onClose={() => setShowSolution(false)} />
+        <SolutionModal
+          solution={solution}
+          currentCode={isTerminal ? undefined : userCode}
+          language={category}
+          onClose={() => setShowSolution(false)}
+        />
       )}
     </div>
   );
