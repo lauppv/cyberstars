@@ -9,6 +9,7 @@ process.env.DB_PASSWORD = 'test';
 
 const mockGetCourseProgress = vi.fn();
 const mockMarkComplete = vi.fn();
+const mockMarkIncomplete = vi.fn();
 const mockGetSavedCode = vi.fn();
 const mockSaveCode = vi.fn();
 const mockTrackAccess = vi.fn();
@@ -16,6 +17,7 @@ const mockTrackAccess = vi.fn();
 vi.mock('../services/progress.service.js', () => ({
   getCourseProgress: (...args: unknown[]) => mockGetCourseProgress(...args),
   markComplete: (...args: unknown[]) => mockMarkComplete(...args),
+  markIncomplete: (...args: unknown[]) => mockMarkIncomplete(...args),
   getSavedCode: (...args: unknown[]) => mockGetSavedCode(...args),
   saveCode: (...args: unknown[]) => mockSaveCode(...args),
   trackAccess: (...args: unknown[]) => mockTrackAccess(...args),
@@ -67,6 +69,17 @@ describe('markComplete', () => {
     await ctrl.markComplete(req, res);
     expect(mockMarkComplete).toHaveBeenCalledWith(1, 'python', 'booleans');
     expect(res.json).toHaveBeenCalledWith({ message: 'Lesson marked as complete' });
+  });
+});
+
+describe('markIncomplete', () => {
+  it('marks a lesson as incomplete', async () => {
+    mockMarkIncomplete.mockResolvedValue(undefined);
+    const req = mockReq({ params: { courseKey: 'python', lessonSlug: 'booleans' } });
+    const res = mockRes();
+    await ctrl.markIncomplete(req, res);
+    expect(mockMarkIncomplete).toHaveBeenCalledWith(1, 'python', 'booleans');
+    expect(res.json).toHaveBeenCalledWith({ message: 'Lesson marked as incomplete' });
   });
 });
 

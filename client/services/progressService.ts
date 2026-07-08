@@ -9,6 +9,10 @@ export function markLessonComplete(courseKey: string, lessonSlug: string) {
   return api.post<{ message: string }>(`/api/progress/${courseKey}/${lessonSlug}/complete`);
 }
 
+export function markLessonIncomplete(courseKey: string, lessonSlug: string) {
+  return api.delete<{ message: string }>(`/api/progress/${courseKey}/${lessonSlug}/complete`);
+}
+
 export function getSavedCode(courseKey: string, lessonSlug: string) {
   return api.get<{ code: string | null }>(`/api/progress/${courseKey}/${lessonSlug}/code`);
 }

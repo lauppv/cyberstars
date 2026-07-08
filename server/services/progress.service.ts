@@ -59,6 +59,15 @@ export async function markComplete(
   await progressRepo.upsertProgress(userId, courseKey, lessonSlug, true);
 }
 
+export async function markIncomplete(
+  userId: number,
+  courseKey: string,
+  lessonSlug: string,
+): Promise<void> {
+  await assertLesson(courseKey, lessonSlug);
+  await progressRepo.upsertProgress(userId, courseKey, lessonSlug, false);
+}
+
 export async function saveCode(
   userId: number,
   courseKey: string,

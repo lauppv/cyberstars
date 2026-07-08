@@ -502,6 +502,7 @@
     "next": "Următoarea →",
     "marking": "Se marchează...",
     "markComplete": "Marchează ca finalizat",
+    "unmarkTitle": "Apasă pentru a anula",
     "resetTitle": "Resetează codul",
     "reset": "↺ Resetează",
     "confirmReset": "Resetezi codul la șablonul implicit al lecției? Codul actual se va pierde.",
