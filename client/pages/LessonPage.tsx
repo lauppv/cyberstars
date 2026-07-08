@@ -64,16 +64,25 @@ export function LessonPage() {
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
 
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const loadedLessonRef = useRef('');
   const loadedStarterRef = useRef('');
+  const completeFlushTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingCompleteRef = useRef<{
+    desired: boolean;
+    startingServer: boolean;
+    courseKey: string;
+    lessonSlug: string;
+  } | null>(null);
 
   const course = courses.find((c) => c.key === category) ?? null;
 
-  const lessonCompleted = progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
+  const serverCompleted = progress?.lessons.find((l) => l.slug === lesson)?.completed ?? false;
+  const lessonCompleted = optimisticCompleted ?? serverCompleted;
 
   // Populate the editor once a lesson's code is loaded. Opening a lesson loads
   // the user's saved code (or the starter). A language switch within the same
@@ -102,6 +111,7 @@ export function LessonPage() {
     setTimeout(() => {
       setShowToast(false);
       setShowSolution(false);
+      setOptimisticCompleted(null);
     }, 0);
   }, [lesson, clearOutput]);
 
@@ -134,22 +144,81 @@ export function LessonPage() {
     execute(userCode, category);
   }, [isRunning, execute, userCode, category]);
 
-  const handleToggleComplete = useCallback(async () => {
-    if (!isLoggedIn) return;
+  // Push the pending desired completion state to the server. Called by the 5s
+  // debounce timer or eagerly when the user leaves the lesson. Skips the round
+  // trip when the desired state matches what the server had at the start of the
+  // debounce window (net-zero toggle: user clicked an even number of times).
+  const flushToggleComplete = useCallback(async () => {
+    if (completeFlushTimerRef.current) {
+      clearTimeout(completeFlushTimerRef.current);
+      completeFlushTimerRef.current = null;
+    }
+    const pending = pendingCompleteRef.current;
+    pendingCompleteRef.current = null;
+    if (!pending) return;
+    if (pending.desired === pending.startingServer) return;
     setIsMarking(true);
     try {
-      if (lessonCompleted) {
-        await progressService.markLessonIncomplete(category, lesson);
+      if (pending.desired) {
+        await progressService.markLessonComplete(pending.courseKey, pending.lessonSlug);
       } else {
-        justMarkedRef.current = true;
-        await progressService.markLessonComplete(category, lesson);
+        await progressService.markLessonIncomplete(pending.courseKey, pending.lessonSlug);
       }
       loadProgress();
       refreshGamification();
     } finally {
       setIsMarking(false);
     }
-  }, [isLoggedIn, lessonCompleted, category, lesson, loadProgress, refreshGamification]);
+  }, [loadProgress, refreshGamification]);
+
+  const handleToggleComplete = useCallback(() => {
+    if (!isLoggedIn) return;
+    const next = !lessonCompleted;
+    setOptimisticCompleted(next);
+    // First click in a window seeds startingServer with the current server
+    // value; subsequent clicks keep the same anchor so a net-zero toggle skips
+    // the API call.
+    const existing = pendingCompleteRef.current;
+    pendingCompleteRef.current = {
+      desired: next,
+      startingServer: existing?.startingServer ?? serverCompleted,
+      courseKey: category,
+      lessonSlug: lesson,
+    };
+    if (next && !serverCompleted) justMarkedRef.current = true;
+    if (completeFlushTimerRef.current) clearTimeout(completeFlushTimerRef.current);
+    completeFlushTimerRef.current = setTimeout(flushToggleComplete, 5000);
+  }, [isLoggedIn, lessonCompleted, serverCompleted, category, lesson, flushToggleComplete]);
+
+  // Fire a keepalive request on tab close for any pending toggle — our fetch
+  // client can't run during unload, so bypass it here.
+  useEffect(() => {
+    const onBeforeUnload = () => {
+      const pending = pendingCompleteRef.current;
+      if (!pending || pending.desired === pending.startingServer) return;
+      try {
+        fetch(`/api/progress/${pending.courseKey}/${pending.lessonSlug}/complete`, {
+          method: pending.desired ? 'POST' : 'DELETE',
+          credentials: 'include',
+          keepalive: true,
+        });
+      } catch {
+        // best effort
+      }
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, []);
+
+  // On lesson change or unmount, flush the pending toggle synchronously. The
+  // pending record still points at the previous lesson because handleToggle
+  // captured it at click time, so the API call goes to the right slug even
+  // after the URL has already swapped.
+  useEffect(() => {
+    return () => {
+      flushToggleComplete();
+    };
+  }, [category, lesson, flushToggleComplete]);
 
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
