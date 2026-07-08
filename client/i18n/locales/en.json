@@ -312,7 +312,6 @@
     "passwordMismatch": "Passwords do not match",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
-    "update": "Update",
     "emailSection": "Email address",
     "newEmail": "New email",
     "emailSendCode": "Send confirmation code",
