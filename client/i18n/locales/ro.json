@@ -362,6 +362,20 @@
       "hourAgo": "acum {{count}}h",
       "dayAgo": "acum {{count}}z"
     },
+    "share": {
+      "title": "Partajează pe forum",
+      "threadTitle": "Titlu",
+      "threadTitlePlaceholder": "Descrie codul sau întrebarea ta",
+      "category": "Categorie",
+      "attachedCode": "Cod atașat",
+      "description": "Descriere (opțional)",
+      "descriptionPlaceholder": "Adaugă context, pune o întrebare sau explică ce ai încercat",
+      "cancel": "Anulează",
+      "post": "Publică",
+      "posting": "Se publică...",
+      "loadError": "Nu s-au putut încărca categoriile.",
+      "postError": "Nu s-a putut publica pe forum. Încearcă din nou."
+    },
     "roles": { "ADMIN": "Admin", "MODERATOR": "Moderator", "USER": "Utilizator" },
     "groups": {
       "Community": "Comunitate",
@@ -509,6 +523,7 @@
     "reset": "↺ Resetează",
     "confirmReset": "Resetezi codul la șablonul implicit al lecției? Codul actual se va pierde.",
     "save": "💾 Salvează",
+    "shareToForum": "📤 Partajează pe forum",
     "codeSaved": "Cod salvat!",
     "showSolution": "💡 Arată soluția",
     "solutionTitle": "Soluția",

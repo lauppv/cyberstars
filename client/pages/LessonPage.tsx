@@ -14,6 +14,7 @@ import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
 import { SolutionModal } from '../components/code/SolutionModal';
+import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -65,6 +66,7 @@ export function LessonPage() {
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -463,6 +465,18 @@ export function LessonPage() {
                           {t('lesson.save')}
                         </button>
                       )}
+                      {isLoggedIn && userCode.trim().length > 0 && (
+                        <button
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setShowShareModal(true);
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                        >
+                          {t('lesson.shareToForum')}
+                        </button>
+                      )}
                       <button
                         role="menuitem"
                         onClick={() => {
@@ -518,6 +532,14 @@ export function LessonPage() {
           currentCode={isTerminal ? undefined : userCode}
           language={category}
           onClose={() => setShowSolution(false)}
+        />
+      )}
+      {showShareModal && (
+        <ShareToForumModal
+          code={userCode}
+          language={category}
+          lessonTitle={title}
+          onClose={() => setShowShareModal(false)}
         />
       )}
     </div>
