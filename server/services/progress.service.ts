@@ -1,14 +1,8 @@
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
-import { ALL_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants.js';
 import { AppError } from '../middleware/errorHandler.js';
+import { assertValidCourse } from './paths.js';
 import type { CourseProgress } from '../../shared/progress.js';
-
-const VALID_COURSE_KEYS = new Set<string>([...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
-
-function assertValidCourse(courseKey: string): void {
-  if (!VALID_COURSE_KEYS.has(courseKey)) throw new AppError(400, 'Invalid course');
-}
 
 // Guards lesson-level writes/reads: reject unknown courses and slugs so the
 // URL can't seed garbage rows in user_lesson_progress (audit H11).

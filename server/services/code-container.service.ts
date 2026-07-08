@@ -1,5 +1,5 @@
-import { execFile } from 'child_process';
 import { getRuntime } from '../runtimes/registry.js';
+import { dockerExec } from './docker-exec.js';
 
 // One long-lived Docker container per owner (a logged-in user or a guest), on
 // the language they last ran. The container is reused across many runs so the
@@ -11,6 +11,7 @@ const IDLE_TTL = Number(process.env.CODE_CONTAINER_IDLE_MS ?? 15 * 60 * 1000);
 const MAX_CONTAINERS = Number(process.env.CODE_MAX_CONTAINERS ?? 50);
 const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? '128m';
 const RUN_PIDS = process.env.CODE_RUN_PIDS ?? '64';
+const RUN_CPUS = process.env.CODE_RUN_CPUS ?? '0.5';
 
 interface OwnerContainer {
   language: string;
@@ -21,15 +22,6 @@ interface OwnerContainer {
 
 const containers = new Map<string, OwnerContainer>();
 let gcTimer: ReturnType<typeof setInterval> | null = null;
-
-function docker(args: string[], timeout = 10_000): Promise<string> {
-  return new Promise((resolve, reject) => {
-    execFile('docker', args, { maxBuffer: 1024 * 1024, timeout }, (err, stdout, stderr) => {
-      if (err) reject(new Error(stderr || err.message));
-      else resolve(stdout.trim());
-    });
-  });
-}
 
 // Hardening shared with the editor's one-shot runner: no network, dropped caps,
 // read-only root with writable tmpfs scratch, and (when possible) a non-root uid.
@@ -51,7 +43,7 @@ function hardeningArgs(): string[] {
 }
 
 function createContainer(image: string, memory?: string): Promise<string> {
-  return docker(
+  return dockerExec(
     [
       'run',
       '-d',
@@ -59,6 +51,7 @@ function createContainer(image: string, memory?: string): Promise<string> {
       '--network=none',
       `--memory=${memory ?? RUN_MEMORY}`,
       `--pids-limit=${RUN_PIDS}`,
+      `--cpus=${RUN_CPUS}`,
       ...hardeningArgs(),
       '-w',
       '/work',
@@ -72,7 +65,7 @@ function createContainer(image: string, memory?: string): Promise<string> {
 
 function removeContainer(containerId: string): Promise<void> {
   if (!containerId) return Promise.resolve();
-  return docker(['rm', '-f', containerId], 5_000).then(
+  return dockerExec(['rm', '-f', containerId], 5_000).then(
     () => {},
     () => {},
   );
