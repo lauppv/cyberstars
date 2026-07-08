@@ -99,6 +99,21 @@ describe('Topbar', () => {
     await i18n.changeLanguage(original);
   });
 
+  it('switches the background preference via the Minimal/Cosmos toggle', () => {
+    localStorage.removeItem('cyberstars.background');
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    const minimalBtn = screen.getByRole('button', { name: 'Minimal' });
+    const cosmosBtn = screen.getByRole('button', { name: 'Cosmos' });
+    expect(minimalBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(cosmosBtn).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(cosmosBtn);
+    expect(localStorage.getItem('cyberstars.background')).toBe('cosmos');
+    expect(cosmosBtn).toHaveAttribute('aria-pressed', 'true');
+    fireEvent.click(minimalBtn);
+    expect(localStorage.getItem('cyberstars.background')).toBe('minimal');
+  });
+
   it('closes menu on Escape', () => {
     renderTopbar();
     fireEvent.click(screen.getByText('Test'));

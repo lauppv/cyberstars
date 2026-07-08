@@ -12,6 +12,7 @@
     "toggleSidebar": "Comută bara laterală",
     "profile": "Profil",
     "language": "Limbă",
+    "background": "Fundal",
     "support": "Suport",
     "rules": "Reguli",
     "welcomeTour": "Tur de bun venit",
@@ -22,6 +23,11 @@
     "switch": "Schimbă limba",
     "en": "EN",
     "ro": "RO"
+  },
+  "background": {
+    "switch": "Schimbă fundalul",
+    "minimal": "Minimal",
+    "cosmos": "Cosmos"
   },
   "home": {
     "continueWhereLeftOff": "Continuă de unde ai rămas",

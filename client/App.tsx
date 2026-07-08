@@ -4,7 +4,9 @@ import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { CosmosBackground } from './components/ui/CosmosBackground';
+import { MinimalBackground } from './components/ui/MinimalBackground';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
+import { useBackgroundPref } from './hooks/useBackgroundPref';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
 
@@ -45,8 +47,9 @@ const WelcomePage = lazy(() =>
 
 function GlobalBackground() {
   const { pathname } = useLocation();
+  const [kind] = useBackgroundPref();
   if (pathname === '/getstarted' || pathname === '/welcome') return null;
-  return <CosmosBackground />;
+  return kind === 'cosmos' ? <CosmosBackground /> : <MinimalBackground />;
 }
 
 function App() {
