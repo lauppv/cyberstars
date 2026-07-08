@@ -47,7 +47,7 @@ The result is always **200000**. The code is equivalent to the mutex version fro
 
 A **counting semaphore** (initialized to N > 1) models a number of **shared resources**. Picture the computing centre with **5 printers**: five jobs can run at once, and the sixth one waits until one of them frees up.
 
-```c
+```text
 sem_t printers;
 sem_init(&printers, 0, 5);
 

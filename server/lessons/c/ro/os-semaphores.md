@@ -47,7 +47,7 @@ Rezultatul e mereu **200000**. Codul e echivalent cu versiunea din lecția anter
 
 Un **semafor cu contor** (inițializat cu N > 1) modelează un număr de **resurse partajate**. Imaginează-ți centrul de calcul cu **5 imprimante**: cinci lucrări pot rula deodată, iar a șasea așteaptă până se eliberează una.
 
-```c
+```text
 sem_t imprimante;
 sem_init(&imprimante, 0, 5);
 
