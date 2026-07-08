@@ -105,13 +105,13 @@ describe('Topbar', () => {
     fireEvent.click(screen.getByText('Test'));
     const minimalBtn = screen.getByRole('button', { name: 'Minimal' });
     const cosmosBtn = screen.getByRole('button', { name: 'Cosmos' });
-    expect(minimalBtn).toHaveAttribute('aria-pressed', 'true');
-    expect(cosmosBtn).toHaveAttribute('aria-pressed', 'false');
-    fireEvent.click(cosmosBtn);
-    expect(localStorage.getItem('cyberstars.background')).toBe('cosmos');
     expect(cosmosBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(minimalBtn).toHaveAttribute('aria-pressed', 'false');
     fireEvent.click(minimalBtn);
     expect(localStorage.getItem('cyberstars.background')).toBe('minimal');
+    expect(minimalBtn).toHaveAttribute('aria-pressed', 'true');
+    fireEvent.click(cosmosBtn);
+    expect(localStorage.getItem('cyberstars.background')).toBe('cosmos');
   });
 
   it('closes menu on Escape', () => {

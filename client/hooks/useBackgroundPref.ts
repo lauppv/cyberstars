@@ -4,11 +4,11 @@ export type BackgroundKind = 'minimal' | 'cosmos';
 
 const STORAGE_KEY = 'cyberstars.background';
 const CHANGE_EVENT = 'cyberstars:backgroundchange';
-const DEFAULT: BackgroundKind = 'minimal';
+const DEFAULT: BackgroundKind = 'cosmos';
 
 function read(): BackgroundKind {
   try {
-    return localStorage.getItem(STORAGE_KEY) === 'cosmos' ? 'cosmos' : DEFAULT;
+    return localStorage.getItem(STORAGE_KEY) === 'minimal' ? 'minimal' : DEFAULT;
   } catch {
     return DEFAULT;
   }
