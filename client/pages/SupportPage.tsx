@@ -11,6 +11,7 @@ import type {
   TicketType,
   TicketStatus,
 } from '../../shared/support';
+import { INPUT_CLS } from '../constants/styles';
 
 const TICKET_TYPE_VALUES: TicketType[] = [
   'BUG',
@@ -27,9 +28,6 @@ const STATUS_COLOR: Record<TicketStatus, string> = {
   RESOLVED: 'var(--success)',
   CLOSED: 'var(--text3)',
 };
-
-const INPUT_CLS =
-  'w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]';
 
 export function SupportPage() {
   const navigate = useNavigate();

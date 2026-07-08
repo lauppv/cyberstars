@@ -10,9 +10,7 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
 import * as profileService from '../services/profileService';
-
-const INPUT_CLS =
-  'w-full bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-[13px] px-3 py-2 outline-none transition focus:border-[var(--accent)]';
+import { INPUT_CLS } from '../constants/styles';
 
 function EyeIcon({ off }: { off: boolean }) {
   return (
@@ -599,7 +597,7 @@ export function ProfilePage() {
                   disabled={pwdSaving || !currentPassword || !newPassword || !confirmPassword}
                   className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
                 >
-                  {pwdSaving ? '...' : t('profile.update')}
+                  {pwdSaving ? '...' : t('profile.changePassword')}
                 </button>
                 <Link
                   to="/getstarted"
