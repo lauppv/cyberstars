@@ -1,0 +1,20 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "cells" },
+      { "kind": "variable", "name": "total" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ],
+    "forbids": [{ "kind": "int_literal", "values": [9] }]
+  },
+  "cases": [
+    { "visible": true, "inject": { "cells": 6 } },
+    { "visible": true, "inject": { "cells": 0 } },
+    { "inject": { "cells": 1 } },
+    { "inject": { "cells": 2 } },
+    { "inject": { "cells": 7 } },
+    { "inject": { "cells": 100 } }
+  ]
+}

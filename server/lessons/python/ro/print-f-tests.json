@@ -1,0 +1,22 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "pilot": "Shadow", "nume_nava": "Orion", "combustibil": 400, "viteza": 7.5 }
+    },
+    { "inject": { "pilot": "Nova", "nume_nava": "Zenit", "combustibil": 0, "viteza": 0.5 } },
+    {
+      "inject": {
+        "pilot": "Big Mitch",
+        "nume_nava": "Steaua Diminetii",
+        "combustibil": 999999,
+        "viteza": 12.25
+      }
+    },
+    { "inject": { "pilot": "Rex", "nume_nava": "Aurora", "combustibil": 1, "viteza": 99.9 } }
+  ]
+}

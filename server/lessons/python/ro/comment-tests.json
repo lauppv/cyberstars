@@ -1,0 +1,36 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "viteza_vant" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume_racheta": "Laniakea-Explorer",
+        "misiune": "MARS-IX-5000",
+        "putere_maxima": 804225,
+        "viteza_vant": 45.4
+      }
+    },
+    {
+      "inject": {
+        "nume_racheta": "Falcon-X",
+        "misiune": "LUNA-2",
+        "putere_maxima": 1,
+        "viteza_vant": 0.1
+      }
+    },
+    {
+      "inject": {
+        "nume_racheta": "Orion",
+        "misiune": "VENUS-7",
+        "putere_maxima": 123456,
+        "viteza_vant": 99.9
+      }
+    }
+  ]
+}

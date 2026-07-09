@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "temperatura" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "temperatura": 1200 } },
+    { "visible": true, "inject": { "temperatura": 800 } },
+    { "inject": { "temperatura": 1000 } },
+    { "inject": { "temperatura": 1001 } },
+    { "inject": { "temperatura": 0 } }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nume": "Shadow", "nivel": 42, "viata": 97.5, "breasla": "CyberStars" }
+    },
+    { "inject": { "nume": "Vercetti", "nivel": 1, "viata": 0.5, "breasla": "Vice" } },
+    { "inject": { "nume": "Nova", "nivel": 100, "viata": 99.9, "breasla": "Laniakea" } },
+    { "inject": { "nume": "breasla", "nivel": 0, "viata": 12.75, "breasla": "nume" } }
+  ]
+}

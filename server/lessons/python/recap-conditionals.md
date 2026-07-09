@@ -16,6 +16,8 @@ A ticket has a standard price of 10 EUR (the full price, without any discount). 
 
 If the movie is 3D, a **2 EUR** fee is added
 
+Store the customer's age in a variable named `age` and whether the movie is 3D in a variable named `is_3d` (`True` or `False`) — pick any values you like
+
 You must print the final ticket price
 
 **Example**
