@@ -72,6 +72,35 @@ Exact ca în matematică, parantezele **()** forțează ce să se facă mai înt
 
 ---
 
-## Joacă-te
+## Misiune: Panoul de calcul
 
-Nu e nicio misiune de data asta. Ia codul de start, schimbă valorile lui `a` și `b`, încearcă fiecare operator și vezi ce afișează. Experimentează până înțelegi cum se comportă fiecare.
+Stația primește două numere și trebuie să afișeze rezultatul fiecărei operații. Citește două numere întregi `a` și `b` (poți presupune că `b` nu este 0), apoi afișează, câte unul pe linie, în această ordine:
+
+- suma (`a + b`)
+- diferența (`a - b`)
+- produsul (`a * b`)
+- împărțirea (`a / b`)
+- împărțirea întreagă (`a // b`)
+- restul (`a % b`)
+- `a` la puterea `b` (`a ** b`)
+
+**Exemplu**
+
+Dacă utilizatorul tastează
+
+```text
+17
+5
+```
+
+programul afișează ceva de forma
+
+```text
+22
+12
+85
+3.4
+3
+2
+1419857
+```

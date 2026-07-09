@@ -1,10 +1,10 @@
 ```py
 incarcatura = []
 
-incarcatura.append("oxigen")
-incarcatura.append("apa")
-incarcatura.append("mancare")
-incarcatura.append("combustibil")
+incarcatura.append(input())
+incarcatura.append(input())
+incarcatura.append(input())
+incarcatura.append(input())
 
 print(incarcatura)
 print(incarcatura[0])

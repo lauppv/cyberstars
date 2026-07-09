@@ -113,12 +113,24 @@ f(nume, este_online) # afiseaza admin este offline
 
 ## Misiune: Calculatorul de la Bord
 
-Stația are nevoie de un calculator de bord. Scrie o funcție care primește două numere și un operator (`+`, `-`, `*`, `/`) și afișează operația cu rezultatul ei. Dacă operatorul nu este unul dintre cele patru, afișează `Operator invalid`.
+Stația are nevoie de un calculator de bord. Scrie o funcție `calculator(a, b, operator)` care primește două numere și un operator (`+`, `-`, `*`, `/`) și afișează operația cu rezultatul ei. Dacă operatorul nu este unul dintre cele patru, afișează `Operator invalid`.
 
-**Exemple de intrare și ieșire**
+Apoi citește din input, câte unul pe linie, cele două numere `a` și `b` și `operator`, și apelează funcția cu ele.
 
-- `calculator(14, 12, "+")` afișează `14 + 12 = 26`
-- `calculator(20, 8, "-")` afișează `20 - 8 = 12`
-- `calculator(6, 7, "*")` afișează `6 * 7 = 42`
-- `calculator(20, 4, "/")` afișează `20 / 4 = 5.0`
-- `calculator(5, 2, "%")` afișează `Operator invalid`
+**Exemple**
+
+Dacă utilizatorul tastează
+
+```text
+14
+12
++
+```
+
+programul afișează
+
+```text
+14 + 12 = 26
+```
+
+Alte exemple: pentru `20`, `8`, `-` afișează `20 - 8 = 12`; pentru `6`, `7`, `*` afișează `6 * 7 = 42`; pentru `20`, `4`, `/` afișează `20 / 4 = 5.0`; pentru `5`, `2`, `%` afișează `Operator invalid`.

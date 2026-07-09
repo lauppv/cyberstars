@@ -1,10 +1,10 @@
 ```py
 cargo = []
 
-cargo.append("oxygen")
-cargo.append("water")
-cargo.append("food")
-cargo.append("fuel")
+cargo.append(input())
+cargo.append(input())
+cargo.append(input())
+cargo.append(input())
 
 print(cargo)
 print(cargo[0])

@@ -11,9 +11,8 @@ def calculator(a, b, operator):
     else:
         print("Operator invalid")
 
-calculator(14, 12, "+")
-calculator(20, 8, "-")
-calculator(6, 7, "*")
-calculator(20, 4, "/")
-calculator(5, 2, "%")
+a = int(input())
+b = int(input())
+operator = input()
+calculator(a, b, operator)
 ```

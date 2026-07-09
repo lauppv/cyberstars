@@ -111,17 +111,28 @@ We can even mix them, but in practice it’s rare and usually a sign that someth
 
 ## Mission: Cargo Bay
 
-The station tracks its cargo in a list. Create an empty list called `cargo`. Do the following, in order:
+The station tracks its cargo in a list. Create an empty list called `cargo`. Then read **4 items** from input, one per line, and do the following, in order:
 
-1. **Add** `"oxygen"`, `"water"`, `"food"`, and `"fuel"`
+1. **Add** each of the 4 items you read to the list
 2. Print the list
 3. Print the **first** item
 4. Print the **last** item
 5. Print how many items are loaded
-6. A leak empties the water — replace the item at index 1 with `empty`
+6. A leak empties the item at index 1 — replace it with `empty`
 7. Print the list
 
-**Output**
+**Example**
+
+If the user types
+
+```text
+oxygen
+water
+food
+fuel
+```
+
+the program prints
 
 ```text
 ['oxygen', 'water', 'food', 'fuel']

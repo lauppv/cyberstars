@@ -113,12 +113,24 @@ f(name, is_online) # prints admin is offline
 
 ## Mission: Onboard Calculator
 
-The station needs an onboard calculator. Write a function that takes two numbers and an operator (`+`, `-`, `*`, `/`) and prints the operation with its result. If the operator is not one of the four, print `Invalid operator`.
+The station needs an onboard calculator. Write a function `calculator(a, b, operator)` that takes two numbers and an operator (`+`, `-`, `*`, `/`) and prints the operation with its result. If the operator is not one of the four, print `Invalid operator`.
 
-**Input and output examples**
+Then read from input, one per line, the two numbers `a` and `b` and the `operator`, and call the function with them.
 
-- `calculator(14, 12, "+")` prints `14 + 12 = 26`
-- `calculator(20, 8, "-")` prints `20 - 8 = 12`
-- `calculator(6, 7, "*")` prints `6 * 7 = 42`
-- `calculator(20, 4, "/")` prints `20 / 4 = 5.0`
-- `calculator(5, 2, "%")` prints `Invalid operator`
+**Examples**
+
+If the user types
+
+```text
+14
+12
++
+```
+
+the program prints
+
+```text
+14 + 12 = 26
+```
+
+More examples: for `20`, `8`, `-` it prints `20 - 8 = 12`; for `6`, `7`, `*` it prints `6 * 7 = 42`; for `20`, `4`, `/` it prints `20 / 4 = 5.0`; for `5`, `2`, `%` it prints `Invalid operator`.
