@@ -1,0 +1,17 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "Cortez\n60\n" },
+    { "visible": true, "stdin": "Zoe\n0\n" },
+    { "stdin": "Ada\n1\n" },
+    { "stdin": "Neil\n17\n" },
+    { "stdin": "Max\n99\n" },
+    { "stdin": "Kai\n150\n" }
+  ]
+}

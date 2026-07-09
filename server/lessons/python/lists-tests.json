@@ -1,0 +1,18 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "cargo" },
+      { "kind": "call", "name": "append" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "oxygen\nwater\nfood\nfuel\n" },
+    { "visible": true, "stdin": "helmet\nrope\nlamp\nradio\n" },
+    { "stdin": "bolt\nwrench\ncable\nfilter\n" },
+    { "stdin": "seed\nsoil\nwater\nlight\n" },
+    { "stdin": "map\ncompass\nflare\nkit\n" }
+  ]
+}

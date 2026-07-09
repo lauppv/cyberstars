@@ -1,0 +1,17 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "Andromeda\n" },
+    { "visible": true, "stdin": "Nebula\n" },
+    { "stdin": "Orion\n" },
+    { "stdin": "Quasar\n" },
+    { "stdin": "Meteor\n" },
+    { "stdin": "Pulsar\n" }
+  ]
+}

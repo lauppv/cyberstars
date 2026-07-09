@@ -1,0 +1,18 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "loop" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "90\n75\n0\n" },
+    { "visible": true, "stdin": "90\n-5\n30\n80\n0\n" },
+    { "stdin": "49\n0\n" },
+    { "stdin": "50\n0\n" },
+    { "stdin": "0\n" },
+    { "stdin": "-1\n-2\n0\n" }
+  ]
+}
