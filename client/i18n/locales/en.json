@@ -122,17 +122,38 @@
     "noMatch": "No challenges match this filter."
   },
   "auth": {
-    "tabs": { "login": "Log In", "signup": "Sign Up" },
+    "tabs": {
+      "login": "Log In",
+      "signup": "Sign Up"
+    },
     "brand": {
       "tagline": "Learn to code through interactive lessons. Write real code and collect badges as you go."
     },
     "features": [
-      { "bold": "Live code editor", "rest": " — write & run code instantly" },
-      { "bold": "Python, C, Java & Linux", "rest": " — structured curriculum" },
-      { "bold": "Badges", "rest": " — celebrate every lesson you finish" },
-      { "bold": "Community forum", "rest": " — ask, share, and help others" },
-      { "bold": "The Almanac", "rest": " — tech history, facts & legends" },
-      { "bold": "Laniakea Explorer", "rest": " — explore the universe in your cockpit" }
+      {
+        "bold": "Live code editor",
+        "rest": " — write & run code instantly"
+      },
+      {
+        "bold": "Python, C, Java & Linux",
+        "rest": " — structured curriculum"
+      },
+      {
+        "bold": "Badges",
+        "rest": " — celebrate every lesson you finish"
+      },
+      {
+        "bold": "Community forum",
+        "rest": " — ask, share, and help others"
+      },
+      {
+        "bold": "The Almanac",
+        "rest": " — tech history, facts & legends"
+      },
+      {
+        "bold": "Laniakea Explorer",
+        "rest": " — explore the universe in your cockpit"
+      }
     ],
     "backToLogin": "← Back to login",
     "forgotTitle": "Forgot Password",
@@ -159,7 +180,11 @@
     "signUpFree": "Sign up free",
     "haveAccount": "Already have an account?",
     "logIn": "Log in",
-    "strength": { "weak": "Weak", "medium": "Getting better", "strong": "Strong password!" },
+    "strength": {
+      "weak": "Weak",
+      "medium": "Getting better",
+      "strong": "Strong password!"
+    },
     "successForgot": "If that email exists, a reset code was sent. Check your inbox.",
     "successReset": "Password reset! You can now log in.",
     "serverError": "Server error, try again later"
@@ -224,13 +249,21 @@
       "num": "// 03 — REFERENCE",
       "title": "The <1>Almanac</1>.<3></3>Every fact, one search away.",
       "subtitle": "Stuck on a syntax detail? The almanac has 2,400+ entries across every language we teach — functions, keywords, commands, gotchas — all cross-linked to the lessons that introduced them.",
-      "stats": { "entries": "entries", "examples": "examples", "search": "search" }
+      "stats": {
+        "entries": "entries",
+        "examples": "examples",
+        "search": "search"
+      }
     },
     "forum": {
       "num": "// 04 — COMMUNITY",
       "title": "A <1>forum</1> where<3></3>answers actually arrive.",
       "subtitle": "Every lesson has its own thread. Mentors and senior learners triage questions hourly. Code blocks render with syntax highlighting and one-click sandboxing.",
-      "stats": { "avgReply": "avg reply", "threads": "threads", "solved": "solved" }
+      "stats": {
+        "avgReply": "avg reply",
+        "threads": "threads",
+        "solved": "solved"
+      }
     },
     "laniakea": {
       "num": "// 05 — LANIAKEA EXPLORER",
@@ -376,7 +409,11 @@
       "loadError": "Could not load categories.",
       "postError": "Could not post to the forum. Try again."
     },
-    "roles": { "ADMIN": "Admin", "MODERATOR": "Moderator", "USER": "User" },
+    "roles": {
+      "ADMIN": "Admin",
+      "MODERATOR": "Moderator",
+      "USER": "User"
+    },
     "groups": {
       "Community": "Community",
       "Help & Support": "Help & Support",
@@ -421,7 +458,11 @@
     "loadingForum": "Loading forum...",
     "subtitle": "Ask, share, and hang out with other CyberStars. Be kind, search before posting, and have fun.",
     "newThread": "+ New Thread",
-    "stats": { "threads": "Threads", "posts": "Posts", "categories": "Categories" },
+    "stats": {
+      "threads": "Threads",
+      "posts": "Posts",
+      "categories": "Categories"
+    },
     "threadsLower": "threads",
     "postsCount": "{{count}} posts",
     "by": "by",
@@ -503,7 +544,11 @@
     "timelineTitle": "Moments that bent the trajectory"
   },
   "lesson": {
-    "difficulty": { "Easy": "Easy", "Medium": "Medium", "Hard": "Hard" },
+    "difficulty": {
+      "Easy": "Easy",
+      "Medium": "Medium",
+      "Hard": "Hard"
+    },
     "courseMilestone": "Course Milestone!",
     "lessonComplete": "Lesson Complete!",
     "tabLesson": "📖 Lesson",
@@ -585,5 +630,40 @@
     "silver": "Silver",
     "gold": "Gold",
     "notEarned": " (not yet earned)"
+  },
+  "tests": {
+    "run": "🧪 Run Tests",
+    "running": "Testing...",
+    "comingSoon": "Coming soon",
+    "passedTitle": "All tests passed!",
+    "failedTitle": "Some tests failed",
+    "syntaxError": "Syntax error: {{message}}",
+    "structureTitle": "Code checks",
+    "caseN": "Test {{n}}",
+    "hidden": "hidden",
+    "passed": "Passed",
+    "failed": "Failed",
+    "timeout": "Your program took too long (5s limit)",
+    "runtimeError": "Your program crashed",
+    "input": "Input",
+    "expected": "Expected output",
+    "actual": "Your output",
+    "close": "Close",
+    "structure": {
+      "require": {
+        "call": "Your code must call {{name}}()",
+        "variable": "Your code must define the variable {{name}}",
+        "function": "Your code must define the function {{name}}()",
+        "loop": "Use a loop (for or while)",
+        "fstring": "Use an f-string (f\"...\")"
+      },
+      "forbid": {
+        "call": "Don't call {{name}}() here",
+        "variable": "Don't use the variable {{name}}",
+        "function": "Don't define the function {{name}}()",
+        "loop": "Don't use a loop here",
+        "int_literal": "Don't hardcode the result — compute it (found {{values}} in your code)"
+      }
+    }
   }
 }

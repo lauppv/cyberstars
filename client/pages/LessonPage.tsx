@@ -13,15 +13,18 @@ import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
+import { TestResults } from '../components/code/TestResults';
 import { SolutionModal } from '../components/code/SolutionModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import type { LessonMeta } from '../../shared/lesson';
+import type { RunTestsResponse } from '../../shared/tests';
 import * as progressService from '../services/progressService';
+import * as testsService from '../services/testsService';
 import { courseMeta } from '../constants/courses';
-import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS } from '../../shared/constants';
+import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -40,13 +43,14 @@ const DIFFICULTY_COLOR: Record<string, string> = {
 };
 
 export function LessonPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
   const { isLoggedIn } = useAuth();
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
   const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
+  const isMainCourse = (MAIN_COURSE_KEYS as readonly string[]).includes(category);
 
   const { title, content, starterCode, savedCode, solution, isLoading } = useLesson(
     category,
@@ -69,6 +73,9 @@ export function LessonPage() {
   const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [testResults, setTestResults] = useState<RunTestsResponse | null>(null);
+  const [isTesting, setIsTesting] = useState(false);
+  const [testsError, setTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const justMarkedRef = useRef(false);
@@ -133,6 +140,8 @@ export function LessonPage() {
       setShowToast(false);
       setShowSolution(false);
       setOptimisticCompleted(null);
+      setTestResults(null);
+      setTestsError(null);
     }, 0);
   }, [lesson, clearOutput]);
 
@@ -160,10 +169,54 @@ export function LessonPage() {
   const nextLesson =
     currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
+  const hasTests = lessonList.find((l) => l.slug === lesson)?.hasTests ?? false;
+
   const handleRun = useCallback(() => {
     if (isRunning) return;
+    setTestResults(null);
+    setTestsError(null);
     execute(userCode, category);
   }, [isRunning, execute, userCode, category]);
+
+  // Judge run: all test cases pass → the lesson marks itself complete (lessons
+  // with tests have no manual Mark Complete). Guests see the verdict but have
+  // no progress to persist.
+  const handleRunTests = useCallback(async () => {
+    if (isTesting || isRunning) return;
+    setIsTesting(true);
+    setTestsError(null);
+    try {
+      const lang = i18n.language === 'ro' ? 'ro' : 'en';
+      const results = await testsService.runTests(category, lesson, userCode, lang);
+      setTestResults(results);
+      if (results.status === 'passed' && isLoggedIn && !lessonCompleted) {
+        justMarkedRef.current = true;
+        setOptimisticCompleted(true);
+        try {
+          await progressService.markLessonComplete(category, lesson);
+          loadProgress();
+          refreshGamification();
+        } catch {
+          setOptimisticCompleted(null);
+        }
+      }
+    } catch (err) {
+      setTestsError(err instanceof Error ? err.message : 'Something went wrong');
+    } finally {
+      setIsTesting(false);
+    }
+  }, [
+    isTesting,
+    isRunning,
+    category,
+    lesson,
+    userCode,
+    i18n,
+    isLoggedIn,
+    lessonCompleted,
+    loadProgress,
+    refreshGamification,
+  ]);
 
   // Push the pending desired completion state to the server. Called by the 5s
   // debounce timer or eagerly when the user leaves the lesson. Skips the round
@@ -438,7 +491,7 @@ export function LessonPage() {
                           {t('lesson.showSolution')}
                         </button>
                       )}
-                      {isLoggedIn && (
+                      {isLoggedIn && !hasTests && (
                         <button
                           role="menuitem"
                           onClick={handleToggleComplete}
@@ -506,9 +559,45 @@ export function LessonPage() {
             <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
               <div className="flex gap-2 mb-3 items-center flex-wrap">
                 <RunButton onClick={handleRun} isRunning={isRunning} />
+                {hasTests ? (
+                  <button
+                    onClick={handleRunTests}
+                    disabled={isTesting || isRunning}
+                    className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+                  >
+                    {isTesting ? (
+                      <>
+                        <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        {t('tests.running')}
+                      </>
+                    ) : (
+                      <>{t('tests.run')}</>
+                    )}
+                  </button>
+                ) : (
+                  isMainCourse && (
+                    <span title={t('tests.comingSoon')} className="inline-flex">
+                      <button
+                        disabled
+                        className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 opacity-60 cursor-not-allowed"
+                      >
+                        {t('tests.run')}
+                      </button>
+                    </span>
+                  )
+                )}
+                {testsError && (
+                  <span className="text-[var(--error)] text-[12px] font-semibold">
+                    {testsError}
+                  </span>
+                )}
               </div>
 
-              <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
+              {testResults ? (
+                <TestResults results={testResults} onClose={() => setTestResults(null)} />
+              ) : (
+                <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
+              )}
             </div>
           </div>
         )}

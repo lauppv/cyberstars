@@ -122,17 +122,38 @@
     "noMatch": "Nicio provocare nu corespunde acestui filtru."
   },
   "auth": {
-    "tabs": { "login": "Autentificare", "signup": "Înregistrare" },
+    "tabs": {
+      "login": "Autentificare",
+      "signup": "Înregistrare"
+    },
     "brand": {
       "tagline": "Învață să programezi prin lecții interactive. Scrie cod real și colecționează insigne pe parcurs."
     },
     "features": [
-      { "bold": "Editor de cod live", "rest": " — scrie și rulează cod instant" },
-      { "bold": "Python, C, Java și Linux", "rest": " — programă structurată" },
-      { "bold": "Insigne", "rest": " — sărbătorește fiecare lecție terminată" },
-      { "bold": "Forum comunitar", "rest": " — întreabă, împărtășește și ajută-i pe alții" },
-      { "bold": "Almanahul", "rest": " — istorie tech, curiozități și legende" },
-      { "bold": "Laniakea Explorer", "rest": " — explorează universul din cabina ta" }
+      {
+        "bold": "Editor de cod live",
+        "rest": " — scrie și rulează cod instant"
+      },
+      {
+        "bold": "Python, C, Java și Linux",
+        "rest": " — programă structurată"
+      },
+      {
+        "bold": "Insigne",
+        "rest": " — sărbătorește fiecare lecție terminată"
+      },
+      {
+        "bold": "Forum comunitar",
+        "rest": " — întreabă, împărtășește și ajută-i pe alții"
+      },
+      {
+        "bold": "Almanahul",
+        "rest": " — istorie tech, curiozități și legende"
+      },
+      {
+        "bold": "Laniakea Explorer",
+        "rest": " — explorează universul din cabina ta"
+      }
     ],
     "backToLogin": "← Înapoi la autentificare",
     "forgotTitle": "Ai uitat parola",
@@ -159,7 +180,11 @@
     "signUpFree": "Înregistrează-te gratuit",
     "haveAccount": "Ai deja cont?",
     "logIn": "Autentifică-te",
-    "strength": { "weak": "Slabă", "medium": "Devine mai bună", "strong": "Parolă puternică!" },
+    "strength": {
+      "weak": "Slabă",
+      "medium": "Devine mai bună",
+      "strong": "Parolă puternică!"
+    },
     "successForgot": "Dacă acel email există, a fost trimis un cod de resetare. Verifică-ți inboxul.",
     "successReset": "Parolă resetată! Acum te poți autentifica.",
     "serverError": "Eroare de server, încearcă mai târziu"
@@ -224,13 +249,21 @@
       "num": "// 03 — REFERINȚĂ",
       "title": "<1>Almanahul</1>.<3></3>Orice informație, la o căutare distanță.",
       "subtitle": "Te-ai blocat la un detaliu de sintaxă? Almanahul are peste 2.400 de intrări pentru fiecare limbaj pe care îl predăm — funcții, cuvinte cheie, comenzi, capcane — toate legate de lecțiile care le-au introdus.",
-      "stats": { "entries": "intrări", "examples": "exemple", "search": "căutare" }
+      "stats": {
+        "entries": "intrări",
+        "examples": "exemple",
+        "search": "căutare"
+      }
     },
     "forum": {
       "num": "// 04 — COMUNITATE",
       "title": "Un <1>forum</1> unde<3></3>răspunsurile chiar ajung.",
       "subtitle": "Fiecare lecție are propriul fir de discuție. Mentorii și cursanții avansați triază întrebările din oră în oră. Blocurile de cod sunt afișate cu evidențiere de sintaxă și sandbox dintr-un clic.",
-      "stats": { "avgReply": "răspuns mediu", "threads": "discuții", "solved": "rezolvate" }
+      "stats": {
+        "avgReply": "răspuns mediu",
+        "threads": "discuții",
+        "solved": "rezolvate"
+      }
     },
     "laniakea": {
       "num": "// 05 — LANIAKEA EXPLORER",
@@ -376,7 +409,11 @@
       "loadError": "Nu s-au putut încărca categoriile.",
       "postError": "Nu s-a putut publica pe forum. Încearcă din nou."
     },
-    "roles": { "ADMIN": "Admin", "MODERATOR": "Moderator", "USER": "Utilizator" },
+    "roles": {
+      "ADMIN": "Admin",
+      "MODERATOR": "Moderator",
+      "USER": "Utilizator"
+    },
     "groups": {
       "Community": "Comunitate",
       "Help & Support": "Ajutor și suport",
@@ -421,7 +458,11 @@
     "loadingForum": "Se încarcă forumul...",
     "subtitle": "Întreabă, împărtășește și petrece timp cu ceilalți CyberStars. Fii amabil, caută înainte de a posta și distrează-te.",
     "newThread": "+ Discuție nouă",
-    "stats": { "threads": "Discuții", "posts": "Postări", "categories": "Categorii" },
+    "stats": {
+      "threads": "Discuții",
+      "posts": "Postări",
+      "categories": "Categorii"
+    },
     "threadsLower": "discuții",
     "postsCount": "{{count}} postări",
     "by": "de",
@@ -503,7 +544,11 @@
     "timelineTitle": "Momente care au schimbat traiectoria"
   },
   "lesson": {
-    "difficulty": { "Easy": "Ușor", "Medium": "Mediu", "Hard": "Greu" },
+    "difficulty": {
+      "Easy": "Ușor",
+      "Medium": "Mediu",
+      "Hard": "Greu"
+    },
     "courseMilestone": "Etapă de curs!",
     "lessonComplete": "Lecție finalizată!",
     "tabLesson": "📖 Lecție",
@@ -585,5 +630,40 @@
     "silver": "Argint",
     "gold": "Aur",
     "notEarned": " (neobținută încă)"
+  },
+  "tests": {
+    "run": "🧪 Rulează testele",
+    "running": "Se testează...",
+    "comingSoon": "Urmează",
+    "passedTitle": "Toate testele au trecut!",
+    "failedTitle": "Unele teste au picat",
+    "syntaxError": "Eroare de sintaxă: {{message}}",
+    "structureTitle": "Verificări pe cod",
+    "caseN": "Testul {{n}}",
+    "hidden": "ascuns",
+    "passed": "Trecut",
+    "failed": "Picat",
+    "timeout": "Programul tău a durat prea mult (limită 5s)",
+    "runtimeError": "Programul tău a crăpat",
+    "input": "Input",
+    "expected": "Output așteptat",
+    "actual": "Outputul tău",
+    "close": "Închide",
+    "structure": {
+      "require": {
+        "call": "Codul tău trebuie să apeleze {{name}}()",
+        "variable": "Codul tău trebuie să definească variabila {{name}}",
+        "function": "Codul tău trebuie să definească funcția {{name}}()",
+        "loop": "Folosește o buclă (for sau while)",
+        "fstring": "Folosește un f-string (f\"...\")"
+      },
+      "forbid": {
+        "call": "Nu apela {{name}}() aici",
+        "variable": "Nu folosi variabila {{name}}",
+        "function": "Nu defini funcția {{name}}()",
+        "loop": "Nu folosi o buclă aici",
+        "int_literal": "Nu scrie rezultatul de-a gata — calculează-l (am găsit {{values}} în cod)"
+      }
+    }
   }
 }
