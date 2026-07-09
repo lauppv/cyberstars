@@ -40,7 +40,16 @@ const curriculum = [...courses]
     lessons: lessons
       .filter((lesson) => lesson.courseKey === course.key)
       .sort((a, b) => a.sortOrder - b.sortOrder)
-      .map((lesson) => ({ slug: lesson.slug, title: lesson.title, sortOrder: lesson.sortOrder })),
+      .map((lesson) => ({
+        slug: lesson.slug,
+        title: lesson.title,
+        sortOrder: lesson.sortOrder,
+        // Lessons with a <slug>-tests.json are validated by the server judge;
+        // the client uses this flag to show the Run Tests button.
+        ...(fs.existsSync(path.join(sourceDir(course.key), `${lesson.slug}-tests.json`))
+          ? { hasTests: true }
+          : {}),
+      })),
   }));
 
 fs.mkdirSync(PUBLIC_DIR, { recursive: true });

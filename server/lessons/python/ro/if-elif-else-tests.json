@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "oxigen" },
+      { "kind": "variable", "name": "echipaj_la_bord" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "oxigen": 65, "echipaj_la_bord": true } },
+    { "inject": { "oxigen": 80, "echipaj_la_bord": true } },
+    { "inject": { "oxigen": 50, "echipaj_la_bord": false } },
+    { "inject": { "oxigen": 20, "echipaj_la_bord": false } },
+    { "inject": { "oxigen": 19, "echipaj_la_bord": true } },
+    { "inject": { "oxigen": 12, "echipaj_la_bord": false } },
+    { "inject": { "oxigen": 100, "echipaj_la_bord": false } }
+  ]
+}

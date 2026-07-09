@@ -1,0 +1,15 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "name": "Shadow", "level": 42, "health": 97.5, "guild": "CyberStars" }
+    },
+    { "inject": { "name": "Vercetti", "level": 1, "health": 0.5, "guild": "Vice" } },
+    { "inject": { "name": "Nova", "level": 100, "health": 99.9, "guild": "Laniakea" } },
+    { "inject": { "name": "guild", "level": 0, "health": 12.75, "guild": "name" } }
+  ]
+}

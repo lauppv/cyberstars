@@ -92,6 +92,7 @@ describe('endpoint smoke tests — auth-protected routes return 401 without toke
     ['post', '/api/terminal/session'],
     ['post', '/api/terminal/exec'],
     ['delete', '/api/terminal/session/123'],
+    ['post', '/api/tests/python/print/run'],
     ['post', '/api/support/tickets'],
     ['get', '/api/support/tickets/mine'],
     ['patch', '/api/profile'],

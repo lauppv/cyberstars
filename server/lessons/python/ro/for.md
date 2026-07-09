@@ -148,7 +148,7 @@ Observă cele **două** niveluri de spațiere: **if** este indentat o dată (e �
 
 Stația adună energie de la o serie de celule numerotate de la **1** la `celule`. Doar celulele cu număr **impar** funcționează — restul sunt defecte.
 
-Fă-ți o variabilă pentru câte `celule` sunt (alege tu numele și valoarea), apoi scrie un program care:
+Fă-ți o variabilă numită `celule` pentru câte celule sunt (alege ce valoare vrei), apoi scrie un program care:
 
 - dacă sunt **0** celule → afișează `Fără celule`
 - dacă este **1** celulă → afișează `O singură celulă`

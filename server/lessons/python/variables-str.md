@@ -63,9 +63,9 @@ So, anything we write between **" and "** is called a **string** and is used whe
 
 ## Mission: Crew Roster
 
-Three crew members are assigned to the station. Their names are stored in the variables `commander`, `pilot`, and `engineer` at the top of your code.
+Three crew members are assigned to the station. Their names are stored in the variables `commander`, `pilot`, and `engineer` at the top of your code — the starter names are just examples, put any names you like in them.
 
-Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission — add a line that changes `pilot` to `"Jess"` and print `pilot` one more time.
+Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission — add a line that changes `pilot` to a **new name of your choice** and print `pilot` one more time.
 
 **Input** (already set at the top of your code — change the values to test):
 
@@ -73,7 +73,7 @@ Print the three names, **each on its own line**, in this order: commander, pilot
 
 **Example**
 
-With the starter values, your program should print
+With the starter values, and `"Jess"` as the new pilot, your program would print something like
 
 ```text
 Shadow

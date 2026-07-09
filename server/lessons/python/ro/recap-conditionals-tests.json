@@ -1,0 +1,20 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "varsta" },
+      { "kind": "variable", "name": "este_3d" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "varsta": 8, "este_3d": true } },
+    { "visible": true, "inject": { "varsta": 30, "este_3d": false } },
+    { "inject": { "varsta": 70, "este_3d": true } },
+    { "inject": { "varsta": 4, "este_3d": false } },
+    { "inject": { "varsta": 5, "este_3d": true } },
+    { "inject": { "varsta": 6, "este_3d": false } },
+    { "inject": { "varsta": 13, "este_3d": true } },
+    { "inject": { "varsta": 65, "este_3d": false } }
+  ]
+}

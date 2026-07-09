@@ -102,9 +102,7 @@ The reactor reports its temperature in degrees Celsius. Write an **if / else** t
 - if `temperature` is **greater than 1000** → print `Danger: reactor at`, the temperature, then `degrees - shutting down` (for `temperature = 1200` that is `Danger: reactor at 1200 degrees - shutting down`)
 - otherwise → print `Reactor stable at`, the temperature, then `degrees` (for `temperature = 800` that is `Reactor stable at 800 degrees`)
 
-Create a variable that stores the temperature
-
-You could create the variable `temperature`. Technically, you could also create a variable `x`, but descriptive names are recommended. If someone else sees `x`, they’ll immediately wonder "what is x? Who is x?". We recommend `temperature`
+Create a variable named `temperature` that stores the temperature — pick any value you like. Descriptive names matter: if someone sees a variable called `x`, they'll immediately wonder "what is x? Who is x?"
 
 **Example**
 

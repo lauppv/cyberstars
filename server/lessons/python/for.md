@@ -148,7 +148,7 @@ Notice the **two** levels of spacing: **if** is indented once (it's inside **for
 
 The station gathers energy from a series of cells numbered from **1** to `cells`. Only the cells with an **odd** number work — the rest are broken.
 
-Make a variable for how many `cells` there are (you choose the name and value), then write a program that:
+Make a variable named `cells` for how many cells there are (pick any value you like), then write a program that:
 
 - if there are **0** cells → print `No cells`
 - if there is **1** cell → print `A single cell`

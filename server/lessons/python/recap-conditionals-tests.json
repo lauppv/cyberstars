@@ -1,0 +1,20 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "age" },
+      { "kind": "variable", "name": "is_3d" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "age": 8, "is_3d": true } },
+    { "visible": true, "inject": { "age": 30, "is_3d": false } },
+    { "inject": { "age": 70, "is_3d": true } },
+    { "inject": { "age": 4, "is_3d": false } },
+    { "inject": { "age": 5, "is_3d": true } },
+    { "inject": { "age": 6, "is_3d": false } },
+    { "inject": { "age": 13, "is_3d": true } },
+    { "inject": { "age": 65, "is_3d": false } }
+  ]
+}

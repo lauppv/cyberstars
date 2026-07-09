@@ -1,0 +1,14 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "variable", "name": "total" }],
+    "forbids": [{ "kind": "int_literal", "values": [400, 350] }]
+  },
+  "cases": [
+    { "visible": true, "inject": { "rezervor_a": 120, "rezervor_b": 80, "rezervor_c": 200 } },
+    { "inject": { "rezervor_a": 0, "rezervor_b": 0, "rezervor_c": 0 } },
+    { "inject": { "rezervor_a": 15, "rezervor_b": 20, "rezervor_c": 10 } },
+    { "inject": { "rezervor_a": 999999, "rezervor_b": 1, "rezervor_c": 0 } },
+    { "inject": { "rezervor_a": 50, "rezervor_b": 0, "rezervor_c": 0 } }
+  ]
+}

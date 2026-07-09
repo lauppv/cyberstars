@@ -1,0 +1,36 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "wind_speed" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "rocket_name": "Laniakea-Explorer",
+        "mission": "MARS-IX-5000",
+        "max_power": 804225,
+        "wind_speed": 45.4
+      }
+    },
+    {
+      "inject": {
+        "rocket_name": "Falcon-X",
+        "mission": "LUNA-2",
+        "max_power": 1,
+        "wind_speed": 0.1
+      }
+    },
+    {
+      "inject": {
+        "rocket_name": "Orion",
+        "mission": "VENUS-7",
+        "max_power": 123456,
+        "wind_speed": 99.9
+      }
+    }
+  ]
+}

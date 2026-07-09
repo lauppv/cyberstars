@@ -12,6 +12,7 @@ import forumRoutes from './routes/forum.routes.js';
 import terminalRoutes from './routes/terminal.routes.js';
 import supportRoutes from './routes/support.routes.js';
 import profileRoutes from './routes/profile.routes.js';
+import testsRoutes from './routes/tests.routes.js';
 
 export const app = express();
 
@@ -41,6 +42,7 @@ app.use('/api/forum', forumRoutes);
 app.use('/api/terminal', terminalRoutes);
 app.use('/api/support', supportRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/tests', testsRoutes);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));

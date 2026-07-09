@@ -29,6 +29,17 @@ export function useLesson(courseKey: string, lessonSlug: string) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // A lesson switch must flip isLoading within the same render: the fetch
+  // effect below only sets it after the commit, and in that gap the page's
+  // editor effect would populate the NEW lesson with the PREVIOUS lesson's
+  // savedCode (stale isLoading=false + stale savedCode).
+  const paramsKey = `${courseKey}/${lessonSlug}`;
+  const [loadedKey, setLoadedKey] = useState(paramsKey);
+  if (loadedKey !== paramsKey) {
+    setLoadedKey(paramsKey);
+    setIsLoading(true);
+  }
+
   useEffect(() => {
     let cancelled = false;
     setIsLoading(true); // eslint-disable-line react-hooks/set-state-in-effect

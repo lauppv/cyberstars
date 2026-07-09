@@ -1,0 +1,20 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "commander" },
+      { "kind": "variable", "name": "pilot" },
+      { "kind": "variable", "name": "engineer" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "commander": "Shadow", "pilot": ["Lance", "Jess"], "engineer": "Quincy" }
+    },
+    { "inject": { "commander": "Nova", "pilot": ["Rex", "Kai"], "engineer": "Mira" } },
+    { "inject": { "commander": "Big Mitch", "pilot": ["Jess", "Rex"], "engineer": "Rex" } },
+    { "inject": { "commander": "engineer", "pilot": ["print", "pilot"], "engineer": "commander" } }
+  ]
+}

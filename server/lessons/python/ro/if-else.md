@@ -102,9 +102,7 @@ Reactorul își raportează temperatura în `temperatura` (grade Celsius). Scrie
 - dacă `temperatura` este **mai mare de 1000** → afișează `Pericol: reactor la`, temperatura, apoi `grade - oprire` (pentru `temperatura = 1200` asta înseamnă `Pericol: reactor la 1200 grade - oprire`)
 - altfel → afișează `Reactor stabil la`, temperatura, apoi `grade` (pentru `temperatura = 800` asta înseamnă `Reactor stabil la 800 grade`)
 
-Creează o variabilă care să stocheze temperatura
-
-Ai putea crea variabila `temperatura`. În realitate, poți crea și variabila `x`, dar se recomandă nume descriptive. Dacă altcineva vede `x`, atunci automat se va întreba 'cum adică x? Cine este x?'. Noi recomandăm `temperatura`
+Creează o variabilă numită `temperatura` care să stocheze temperatura — alege ce valoare vrei. Numele descriptive contează: dacă cineva vede o variabilă `x`, automat se va întreba „cum adică x? Cine este x?”
 
 **Exemplu**
 

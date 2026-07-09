@@ -16,6 +16,8 @@ Un bilet are prețul standard de 10 EUR (adică prețul întreg, fără reducere
 
 Dacă filmul este 3D, se adaugă o taxă de **2 EUR**
 
+Pune vârsta clientului într-o variabilă numită `varsta` și dacă filmul e 3D într-o variabilă numită `este_3d` (`True` sau `False`) — alege ce valori vrei
+
 Trebuie să afișezi prețul final al biletului
 
 **Exemplu**
