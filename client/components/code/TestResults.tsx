@@ -1,5 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import type { RunTestsResponse, StructureFailure, TestCaseResult } from '../../../shared/tests';
+import type {
+  InjectValue,
+  RunTestsResponse,
+  StructureFailure,
+  TestCaseResult,
+} from '../../../shared/tests';
 
 interface TestResultsProps {
   results: RunTestsResponse;
@@ -17,8 +22,11 @@ function structureMessage(
 }
 
 // Booleans render as Python literals — that's what the student would type.
-function formatValue(value: string | number | boolean): string {
+function formatValue(value: InjectValue): string {
   if (typeof value === 'boolean') return value ? 'True' : 'False';
+  if (value !== null && typeof value === 'object' && '$list' in value) {
+    return `[${value.$list.map(formatValue).join(', ')}]`;
+  }
   return JSON.stringify(value);
 }
 
@@ -48,6 +56,14 @@ function CaseRow({ result }: { result: TestCaseResult }) {
                   {Array.isArray(value) ? value.map(formatValue).join(' → ') : formatValue(value)}
                 </div>
               ))}
+            </div>
+          )}
+          {result.stdin !== undefined && (
+            <div>
+              <span className="text-[var(--text3)]">{t('tests.input')}:</span>
+              <pre className="pl-3 text-[var(--text2)] whitespace-pre-wrap m-0">
+                {result.stdin.replace(/\n$/, '') || '∅'}
+              </pre>
             </div>
           )}
           {result.error === 'timeout' ? (

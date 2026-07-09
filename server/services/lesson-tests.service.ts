@@ -97,6 +97,7 @@ function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsR
     const visible = specCase?.visible ?? false;
     const base: TestCaseResult = { index, visible, passed: false };
     if (specCase?.inject) base.inject = specCase.inject;
+    if (specCase?.stdin !== undefined) base.stdin = specCase.stdin;
 
     // A broken reference solution is our bug, not the student's.
     if (!c.user || !c.solution || c.injectError || c.solution.timedOut || c.solution.exit !== 0) {

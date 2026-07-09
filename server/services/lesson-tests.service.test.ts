@@ -160,6 +160,21 @@ describe('runLessonTests', () => {
     expect(res.cases[1]).toMatchObject({ visible: false, inject: { tank_a: 0 } });
   });
 
+  it('attaches the case stdin to failed results so the student can debug', async () => {
+    stubFiles({
+      comparator: 'trimmed',
+      structure: {},
+      cases: [{ visible: true, stdin: '1234\n' }],
+    });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ user: program({ stdout: 'wrong\n' }), solution: program() }],
+    });
+    const res = await runLessonTests('user:1', 'python', 'while', 'code');
+    expect(res.cases[0]).toMatchObject({ visible: true, stdin: '1234\n', actual: 'wrong' });
+  });
+
   it('reports structure failures and syntax errors', async () => {
     stubFiles();
     stubVerdict({
