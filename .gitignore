@@ -12,6 +12,8 @@ node_modules
 .env
 .env.test
 
+TESTS-DESIGN.md
+
 dist
 dist-ssr
 coverage
