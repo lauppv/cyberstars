@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "dock" },
+      { "kind": "call", "name": "dock" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "ship1": "Voyager", "ship2": "Odyssey", "ship3": "Pioneer" }
+    },
+    {
+      "inject": { "ship1": "Nostromo", "ship2": "Serenity", "ship3": "Rocinante" }
+    },
+    {
+      "inject": { "ship1": "X", "ship2": "Y", "ship3": "Z" }
+    },
+    {
+      "inject": { "ship1": "Enterprise", "ship2": "Defiant", "ship3": "Discovery" }
+    }
+  ]
+}

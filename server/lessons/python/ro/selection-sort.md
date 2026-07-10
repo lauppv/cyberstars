@@ -69,11 +69,13 @@ Scanerul din zona de marfă raportează greutățile containerelor în ordinea �
 
 Scrie o funcție **sortare_selectie(numere)** care sortează o listă în ordine **crescătoare** folosind selection sort și **returnează** lista sortată.
 
-Apoi sortează două loturi de greutăți și afișează fiecare rezultat.
+Apoi sortează cele două loturi de greutăți (`lot1` și `lot2`, deja în starter) și afișează fiecare rezultat.
 
 ```py
-print(sortare_selectie([64, 25, 12, 22, 11]))
-print(sortare_selectie([9, 7, 5, 3, 1]))
+lot1 = [64, 25, 12, 22, 11]
+lot2 = [9, 7, 5, 3, 1]
+print(sortare_selectie(lot1))
+print(sortare_selectie(lot2))
 ```
 
 **Ieșire**

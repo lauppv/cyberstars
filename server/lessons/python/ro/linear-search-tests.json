@@ -1,0 +1,34 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "gaseste_echipaj" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Cara\n"
+    },
+    {
+      "visible": true,
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Tommy\n"
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Ghost\n"
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Solo"] } },
+      "stdin": "Solo\n"
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Ada", "Ben", "Cyd", "Dot"] } },
+      "stdin": "Dot\n"
+    }
+  ]
+}

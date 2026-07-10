@@ -74,12 +74,12 @@ Am sărit peste **viata** (am păstrat valoarea implicită 100) și am schimbat 
 
 Scrie o funcție `andocheaza(nava, bay="A1", prioritate="normal")` care afișează `nava andocat la bay (prioritate)`. Parametrii `bay` și `prioritate` au **valori implicite**, deci pot fi omiși.
 
-Apeleaz-o exact așa (apelurile sunt deja în starter):
+Cele trei nume de nave sunt deja în starter ca variabile `nava1`, `nava2` și `nava3`. Apeleaz-o exact așa (apelurile sunt deja în starter):
 
 ```py
-andocheaza("Voyager")
-andocheaza("Odyssey", "B7")
-andocheaza("Pioneer", prioritate="urgent")
+andocheaza(nava1)
+andocheaza(nava2, "B7")
+andocheaza(nava3, prioritate="urgent")
 ```
 
 Observă că ultimul apel folosește un **argument cu nume** (`prioritate="urgent"`) ca să sară peste `bay` și să-i păstreze valoarea implicită în timp ce setează totuși prioritatea.

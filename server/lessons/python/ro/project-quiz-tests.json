@@ -1,0 +1,75 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "noteaza_test" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Care comanda arata rezultatul?", "raspuns": "B" } },
+            { "$dict": { "text": "Ce incepe un comentariu?", "raspuns": "C" } },
+            { "$dict": { "text": "Ce returneaza len()?", "raspuns": "A" } },
+            { "$dict": { "text": "Care cuvant-cheie defineste o functie?", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "C", "A", "B"] }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "B"] }
+      }
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["X", "Y"] }
+      }
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "A" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "A", "B", "B"] }
+      }
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "X", "Y", "Z"] }
+      }
+    }
+  ]
+}

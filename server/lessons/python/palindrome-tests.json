@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "is_palindrome" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "codes": { "$list": ["racecar", "signal", "level", "orbit", "radar"] } }
+    },
+    {
+      "visible": true,
+      "inject": { "codes": { "$list": ["abc", "aba"] } }
+    },
+    { "inject": { "codes": { "$list": ["x"] } } },
+    { "inject": { "codes": { "$list": ["noon", "test", "kayak"] } } },
+    { "inject": { "codes": { "$list": ["aa", "ab", "aaa"] } } }
+  ]
+}

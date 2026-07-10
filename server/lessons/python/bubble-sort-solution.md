@@ -6,6 +6,8 @@ def bubble_sort(numbers):
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
     return numbers
 
-print(bubble_sort([42, 17, 88, 9, 23]))
-print(bubble_sort([5, 4, 3, 2, 1]))
+batch1 = [42, 17, 88, 9, 23]
+batch2 = [5, 4, 3, 2, 1]
+print(bubble_sort(batch1))
+print(bubble_sort(batch2))
 ```

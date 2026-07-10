@@ -8,6 +8,8 @@ def sortare_selectie(numere):
         numere[i], numere[index_minim] = numere[index_minim], numere[i]
     return numere
 
-print(sortare_selectie([64, 25, 12, 22, 11]))
-print(sortare_selectie([9, 7, 5, 3, 1]))
+lot1 = [64, 25, 12, 22, 11]
+lot2 = [9, 7, 5, 3, 1]
+print(sortare_selectie(lot1))
+print(sortare_selectie(lot2))
 ```

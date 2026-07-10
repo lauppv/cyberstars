@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "count_word" },
+      { "kind": "function", "name": "longest_word" },
+      { "kind": "function", "name": "has_duplicate" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "log": "scan probe scan analyze probe scan boot" } },
+    { "visible": true, "inject": { "log": "boot boot reset" } },
+    { "inject": { "log": "solo" } },
+    { "inject": { "log": "scan scan" } },
+    { "inject": { "log": "alpha beta gamma delta" } }
+  ]
+}

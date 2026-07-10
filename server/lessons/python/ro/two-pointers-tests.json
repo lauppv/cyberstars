@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "pereche_cu_suma" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "tinta": 10 }
+    },
+    {
+      "visible": true,
+      "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5] }, "tinta": 6 }
+    },
+    { "inject": { "combustibili": { "$list": [1, 5] }, "tinta": 6 } },
+    { "inject": { "combustibili": { "$list": [2, 4, 6, 8] }, "tinta": 7 } },
+    { "inject": { "combustibili": { "$list": [1, 1, 2, 3, 3] }, "tinta": 4 } }
+  ]
+}

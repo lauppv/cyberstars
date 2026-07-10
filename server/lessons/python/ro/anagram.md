@@ -80,7 +80,7 @@ Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se
 2. **Citește** două parole, apoi afișează `Anagrama: ` urmat de rezultat.
 3. Pe linia următoare, afișează `Acces permis` dacă se potrivesc, sau `Acces refuzat` dacă nu.
 
-**Intrare** (tastat de utilizator când rulează programul):
+**Intrare:**
 
 - prima parolă
 - a doua parolă

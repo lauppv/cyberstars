@@ -1,0 +1,17 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "power" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "base": 2 } },
+    { "visible": true, "inject": { "base": 3 } },
+    { "inject": { "base": 1 } },
+    { "inject": { "base": 5 } },
+    { "inject": { "base": 10 } }
+  ]
+}

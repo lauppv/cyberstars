@@ -65,7 +65,7 @@ A garbled transmission just arrived. The crew suspects it was sent **backwards**
 2. **Read** the transmission, then print `Reversed: ` followed by the character-reversed text.
 3. Also reverse the **order of the words** (split into words, reverse the list, join back with spaces) and print `Word order: ` followed by the result.
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 - the transmission, a line of words separated by spaces
 

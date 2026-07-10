@@ -1,0 +1,20 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "adauga_sarcina" },
+      { "kind": "function", "name": "finalizeaza_sarcina" },
+      { "kind": "function", "name": "numara_finalizate" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "3\nScan sector\nCharge shields\nPlot course\n0 2" },
+    { "visible": true, "stdin": "1\nRun diagnostics\n0" },
+    { "stdin": "2\nAlpha\nBravo\n9" },
+    { "stdin": "2\nAlpha\nBravo\n0 5" },
+    { "stdin": "3\nOne\nTwo\nThree\n0 1 2" }
+  ]
+}

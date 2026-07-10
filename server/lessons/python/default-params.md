@@ -74,12 +74,12 @@ We skipped **health** (kept the default 100) and only changed **city** by using 
 
 Write a function `dock(ship, bay="A1", priority="normal")` that prints `ship docked at bay (priority)`. The `bay` and `priority` parameters have **default values**, so they can be left out.
 
-Call it exactly like this (the calls are already in the starter):
+The three ship names are already in the starter as variables `ship1`, `ship2`, and `ship3`. Call `dock` exactly like this (the calls are already in the starter too):
 
 ```py
-dock("Voyager")
-dock("Odyssey", "B7")
-dock("Pioneer", priority="urgent")
+dock(ship1)
+dock(ship2, "B7")
+dock(ship3, priority="urgent")
 ```
 
 Notice the last call uses a **keyword argument** (`priority="urgent"`) to skip `bay` and keep its default while still setting the priority.

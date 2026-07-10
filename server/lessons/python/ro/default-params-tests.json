@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "andocheaza" },
+      { "kind": "call", "name": "andocheaza" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nava1": "Voyager", "nava2": "Odyssey", "nava3": "Pioneer" }
+    },
+    {
+      "inject": { "nava1": "Nostromo", "nava2": "Serenity", "nava3": "Rocinante" }
+    },
+    {
+      "inject": { "nava1": "X", "nava2": "Y", "nava3": "Z" }
+    },
+    {
+      "inject": { "nava1": "Enterprise", "nava2": "Defiant", "nava3": "Discovery" }
+    }
+  ]
+}

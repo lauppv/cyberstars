@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "boost" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "shield": 100 } },
+    { "inject": { "shield": 1 } },
+    { "inject": { "shield": 0 } },
+    { "inject": { "shield": 7 } },
+    { "inject": { "shield": 256 } }
+  ]
+}

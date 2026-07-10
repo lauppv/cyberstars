@@ -62,7 +62,7 @@ Write a function **find_crew(crew, target)** that uses **linear search** to retu
 
 Then **read** a name and report the result.
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 - the crew member's name to find
 

@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "este_palindrom" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "coduri": { "$list": ["racecar", "signal", "level", "orbit", "radar"] } }
+    },
+    {
+      "visible": true,
+      "inject": { "coduri": { "$list": ["abc", "aba"] } }
+    },
+    { "inject": { "coduri": { "$list": ["x"] } } },
+    { "inject": { "coduri": { "$list": ["noon", "test", "kayak"] } } },
+    { "inject": { "coduri": { "$list": ["aa", "ab", "aaa"] } } }
+  ]
+}

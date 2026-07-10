@@ -1,0 +1,17 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "sunt_anagrame" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "listen\nsilent" },
+    { "visible": true, "stdin": "hello\nworld" },
+    { "stdin": "abc\ncba" },
+    { "stdin": "aabb\nbbaa" },
+    { "stdin": "cat\ncats" }
+  ]
+}

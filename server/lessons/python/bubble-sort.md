@@ -69,11 +69,13 @@ The station's reactors report power readings in a random order. Engineering need
 
 Write a function **bubble_sort(numbers)** that sorts a list in **ascending** order using bubble sort and **returns** the sorted list.
 
-Then sort two batches of readings and print each result.
+Then sort the two batches of readings (`batch1` and `batch2`, already in the starter) and print each result.
 
 ```py
-print(bubble_sort([42, 17, 88, 9, 23]))
-print(bubble_sort([5, 4, 3, 2, 1]))
+batch1 = [42, 17, 88, 9, 23]
+batch2 = [5, 4, 3, 2, 1]
+print(bubble_sort(batch1))
+print(bubble_sort(batch2))
 ```
 
 **Output**

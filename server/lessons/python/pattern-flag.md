@@ -113,7 +113,7 @@ A station access code is **valid** only if it meets **all three** rules: it has 
 
 **Read** a code, then use **flags** (`has_upper` and `has_digit`, each starting `False` and flipped to `True` when you find one) plus a length check. Print each result, then the verdict:
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 - the access code
 

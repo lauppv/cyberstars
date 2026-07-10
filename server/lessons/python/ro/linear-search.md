@@ -62,7 +62,7 @@ Scrie o funcție **gaseste_echipaj(echipaj, tinta)** care folosește **căutarea
 
 Apoi **citește** un nume și raportează rezultatul.
 
-**Intrare** (tastat de utilizator când rulează programul):
+**Intrare:**
 
 - numele membrului echipajului de găsit
 

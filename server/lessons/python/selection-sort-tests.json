@@ -1,0 +1,36 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "selection_sort" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "sorted" },
+      { "kind": "call", "name": "sort" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "batch1": { "$list": [64, 25, 12, 22, 11] },
+        "batch2": { "$list": [9, 7, 5, 3, 1] }
+      }
+    },
+    {
+      "visible": true,
+      "inject": { "batch1": { "$list": [3, 1, 2] }, "batch2": { "$list": [10] } }
+    },
+    {
+      "inject": { "batch1": { "$list": [1] }, "batch2": { "$list": [8, 8, 2, 5] } }
+    },
+    {
+      "inject": { "batch1": { "$list": [100, 50, 50, 1] }, "batch2": { "$list": [2, 2, 1] } }
+    },
+    {
+      "inject": { "batch1": { "$list": [0, -5, 3] }, "batch2": { "$list": [7, 7, 7] } }
+    }
+  ]
+}

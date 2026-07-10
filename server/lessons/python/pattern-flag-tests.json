@@ -1,0 +1,18 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "loop" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "AB12cd\n" },
+    { "visible": true, "stdin": "abc\n" },
+    { "stdin": "ABCDEF\n" },
+    { "stdin": "a1\n" },
+    { "stdin": "Zx9qwe\n" },
+    { "stdin": "PASSWORD1\n" }
+  ]
+}

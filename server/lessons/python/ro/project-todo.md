@@ -130,7 +130,7 @@ Apoi:
 3. **Afișează** tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[in asteptare]`, apoi numele sarcinii.
 4. La final afișează `Finalizat: ` urmat de numărul de sarcini terminate, un `/`, și totalul.
 
-**Intrare** (tastat de utilizator când rulează programul):
+**Intrare:**
 
 ```text
 3
