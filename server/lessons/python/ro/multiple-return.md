@@ -100,7 +100,7 @@ Scrie o funcție `analizeaza(citire)` care primește un șir de trei numere sepa
 
 În programul principal, **citește** o linie, apelează `analizeaza`, **despachetează** cele trei valori și afișează-le.
 
-**Intrare** (tastat de utilizator când rulează programul):
+**Intrare:**
 
 - trei numere pe o singură linie, separate prin spații
 

@@ -61,7 +61,7 @@ Stația spațială înregistrează fiecare nou membru al echipajului. Scrie un p
 
 Ține minte că **input()** returnează întotdeauna un **șir de caractere (string)**, așa că trebuie să transformi vârsta într-un număr cu **int()** înainte să poți să-i aduni **1**.
 
-**Intrare** (tastat de utilizator când rulează programul):
+**Intrare:**
 
 - numele membrului echipajului
 - vârsta membrului echipajului

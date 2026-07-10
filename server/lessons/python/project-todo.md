@@ -130,7 +130,7 @@ Then:
 3. **Display** the board: for each task print its index, then `. `, then `[done]` or `[pending]`, then the task name.
 4. Finally print `Completed: ` followed by the number done, a `/`, and the total.
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 ```text
 3

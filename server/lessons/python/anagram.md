@@ -80,7 +80,7 @@ Two crew members each transmit a scrambled passphrase. The airlock only opens if
 2. **Read** two passphrases, then print `Anagram: ` followed by the result.
 3. On the next line, print `Access granted` if they match, or `Access denied` if they don't.
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 - the first passphrase
 - the second passphrase

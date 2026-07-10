@@ -61,7 +61,7 @@ The space station registers every new crew member. Write a program that **asks**
 
 Remember that **input()** always gives back a **string**, so you must turn the age into a number with **int()** before you can add **1** to it.
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 - the crew member's name
 - the crew member's age

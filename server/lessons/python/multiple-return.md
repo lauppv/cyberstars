@@ -100,7 +100,7 @@ Inside the function, use `.split(" ")` to break the string into parts and turn e
 
 In the main program, **read** a line, call `parse`, **unpack** the three values, and print them.
 
-**Input** (typed by the user when the program runs):
+**Input:**
 
 - three numbers on one line, separated by spaces
 
