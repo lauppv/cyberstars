@@ -1,7 +1,11 @@
 ```py
-crew = {"name": "Tommy", "role": "Pilot", "age": 34}
+name = "Tommy"
+role = "Pilot"
+age = 34
+station = "Laniakea"
 
-crew["station"] = "Laniakea"
+crew = {"name": name, "role": role, "age": age}
+crew["station"] = station
 crew["age"] = crew["age"] + 1
 
 print(crew["name"])

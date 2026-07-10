@@ -15,8 +15,16 @@ interface StructureRule {
   values?: number[];
 }
 
-/** A scalar, or `{ $list: [...] }` to inject a whole list as one value. */
-export type InjectValue = string | number | boolean | { $list: InjectValue[] };
+/**
+ * A scalar, `{ $list: [...] }` to inject a whole list as one value, or
+ * `{ $dict: {...} }` to inject a whole dict (insertion order preserved).
+ */
+export type InjectValue =
+  | string
+  | number
+  | boolean
+  | { $list: InjectValue[] }
+  | { $dict: Record<string, InjectValue> };
 
 interface LessonTestCase {
   /** Visible cases show expected vs actual on failure; hidden ones only the input. */

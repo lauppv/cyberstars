@@ -169,7 +169,7 @@ None
 
 In the editor you already have **five galaxies**, each a **list** of ten star names.
 
-Write **one** function that takes a galaxy (the list) and **returns** the name of the star with the most letters in that galaxy.
+Write **one** function called `longest_star` that takes a galaxy (the list) and **returns** the name of the star with the most letters in that galaxy.
 
 Then **call it five times**, once for each galaxy, and print what it returns. You write the function once, but use it for all five lists — without repeating the code in the body.
 

@@ -133,17 +133,19 @@ print(player["weapons"])
 
 ## Mission: Crew Database
 
-This time **you** build the dictionary from scratch — there's nothing on the right.
+In the editor you're given four details about a crew member as variables: `name`, `role`, `age`, and `station`.
 
 Do the following, in order:
 
-1. **Create** a dictionary `crew` with three keys: `name` with the value `Tommy`, `role` with the value `Pilot`, and `age` with the value `34`
-2. **Add** a new key `station` with the value `Laniakea`
-3. It's Tommy's birthday — **update** `age` to `35` (using the + operator)
+1. **Create** a dictionary `crew` with three keys — `"name"`, `"role"`, and `"age"` — using the `name`, `role`, and `age` variables as their values
+2. **Add** a new key `"station"`, using the `station` variable as its value
+3. It's the crew member's birthday — **update** `age` inside the dictionary by adding **1** to it (use the + operator)
 4. Print the values for `name`, `role`, `age`, and `station`, each on its own line
-5. We don't track rank yet — if the key `rank` is **not in** the dictionary, print `Rank: unknown`
+5. We don't track rank yet — if the key `"rank"` is **not in** the dictionary, print `Rank: unknown`
 
 **Output**
+
+For the values in the editor, the program prints something like
 
 ```text
 Tommy
@@ -152,3 +154,5 @@ Pilot
 Laniakea
 Rank: unknown
 ```
+
+Change a value at the top and run again — the report follows.

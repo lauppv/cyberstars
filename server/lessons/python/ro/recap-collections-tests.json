@@ -1,0 +1,56 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "curate" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "elemente": {
+          "$list": ["lapte", "con-oua", "paine", "unt", "branza", "con-ulei", "gem"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "elemente": {
+          "$list": ["con-apa", "mar", "faina", "sare", "unt", "extra", "zahar"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["unt", "lapte", "paine", "branza"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["lapte", "con-x", "paine", "branza", "gem"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["con-a", "con-b", "con-c"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["con-lapte", "oua", "con-gem", "faina", "zahar", "unt", "orez"]
+        }
+      }
+    }
+  ]
+}

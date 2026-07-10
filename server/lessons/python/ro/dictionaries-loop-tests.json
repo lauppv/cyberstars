@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "scoruri": { "$dict": { "Ana": 40, "Bob": 90, "Cara": 70 } } }
+    },
+    {
+      "visible": true,
+      "inject": { "scoruri": { "$dict": { "Tommy": 88, "Lance": 95, "Cortez": 70 } } }
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "Solo": 50 } } }
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40 } } }
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "X": 100, "Y": 55, "Z": 80, "W": 99 } } }
+    }
+  ]
+}

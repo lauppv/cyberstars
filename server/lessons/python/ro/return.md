@@ -169,7 +169,7 @@ None
 
 În editor ai deja **cinci galaxii**, fiecare o **listă** cu zece nume de stele.
 
-Scrie **o singură** funcție care primește o galaxie (lista) și **returnează** numele stelei cu cele mai multe litere din acea galaxie.
+Scrie **o singură** funcție numită `cea_mai_lunga_stea` care primește o galaxie (lista) și **returnează** numele stelei cu cele mai multe litere din acea galaxie.
 
 Apoi **apeleaz-o de cinci ori**, o dată pentru fiecare galaxie, și afișează ce returnează. Scrii funcția o dată, dar o folosești pentru toate cele cinci liste — fără să repeți codul din corp.
 

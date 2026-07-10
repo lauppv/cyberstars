@@ -1,0 +1,66 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Ann", 90] }, { "$list": ["Bob", 70] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["Cara", 70] }, { "$list": ["Ann", 55] }]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Tommy", 85] },
+            { "$list": ["Lance", 72] },
+            { "$list": ["Cortez", 91] },
+            { "$list": ["Phil", 60] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Mira", 88] },
+            { "$list": ["Lance", 65] },
+            { "$list": ["Tommy", 91] },
+            { "$list": ["Quinn", 72] }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Xa", 50] }] },
+        "team_b": { "$list": [{ "$list": ["Ya", 50] }] }
+      }
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["P", 81] }, { "$list": ["Q", 40] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["R", 30] }, { "$list": ["S", 99] }]
+        }
+      }
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["A", 60] }, { "$list": ["B", 60] }, { "$list": ["C", 95] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["B", 60] }, { "$list": ["D", 60] }, { "$list": ["C", 30] }]
+        }
+      }
+    }
+  ]
+}

@@ -1,7 +1,11 @@
 ```py
-echipaj = {"nume": "Tommy", "rol": "Pilot", "varsta": 34}
+nume = "Tommy"
+rol = "Pilot"
+varsta = 34
+statie = "Laniakea"
 
-echipaj["statie"] = "Laniakea"
+echipaj = {"nume": nume, "rol": rol, "varsta": varsta}
+echipaj["statie"] = statie
 echipaj["varsta"] = echipaj["varsta"] + 1
 
 print(echipaj["nume"])

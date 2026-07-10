@@ -27,6 +27,12 @@ function formatValue(value: InjectValue): string {
   if (value !== null && typeof value === 'object' && '$list' in value) {
     return `[${value.$list.map(formatValue).join(', ')}]`;
   }
+  if (value !== null && typeof value === 'object' && '$dict' in value) {
+    const pairs = Object.entries(value.$dict).map(
+      ([k, v]) => `${JSON.stringify(k)}: ${formatValue(v)}`,
+    );
+    return `{${pairs.join(', ')}}`;
+  }
   return JSON.stringify(value);
 }
 

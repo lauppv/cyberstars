@@ -1,0 +1,40 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "cea_mai_lunga_stea" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "galaxie1": { "$list": ["sun", "aldebaran", "vega", "rigel"] },
+        "galaxie2": { "$list": ["mira", "capella", "io", "sol"] },
+        "galaxie3": { "$list": ["dubhe", "fomalhaut", "atria"] },
+        "galaxie4": { "$list": ["hamal", "betelgeuse", "menkar"] },
+        "galaxie5": { "$list": ["chara", "vindemiatrix", "zosma"] }
+      }
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["antares", "vega", "sol"] },
+        "galaxie2": { "$list": ["arcturus", "castor", "io"] },
+        "galaxie3": { "$list": ["regulus", "atria", "merak"] },
+        "galaxie4": { "$list": ["diphda", "rasalhague", "gienah"] },
+        "galaxie5": { "$list": ["alkaid", "eltanin", "zosma"] }
+      }
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["betelgeuse"] },
+        "galaxie2": { "$list": ["proxima", "sol", "io"] },
+        "galaxie3": { "$list": ["a", "bb", "ccc"] },
+        "galaxie4": { "$list": ["polaris", "mizar"] },
+        "galaxie5": { "$list": ["sirius", "deneb", "spica"] }
+      }
+    }
+  ]
+}

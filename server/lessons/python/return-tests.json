@@ -1,0 +1,40 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "longest_star" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "galaxy1": { "$list": ["sun", "aldebaran", "vega", "rigel"] },
+        "galaxy2": { "$list": ["mira", "capella", "io", "sol"] },
+        "galaxy3": { "$list": ["dubhe", "fomalhaut", "atria"] },
+        "galaxy4": { "$list": ["hamal", "betelgeuse", "menkar"] },
+        "galaxy5": { "$list": ["chara", "vindemiatrix", "zosma"] }
+      }
+    },
+    {
+      "inject": {
+        "galaxy1": { "$list": ["antares", "vega", "sol"] },
+        "galaxy2": { "$list": ["arcturus", "castor", "io"] },
+        "galaxy3": { "$list": ["regulus", "atria", "merak"] },
+        "galaxy4": { "$list": ["diphda", "rasalhague", "gienah"] },
+        "galaxy5": { "$list": ["alkaid", "eltanin", "zosma"] }
+      }
+    },
+    {
+      "inject": {
+        "galaxy1": { "$list": ["betelgeuse"] },
+        "galaxy2": { "$list": ["proxima", "sol", "io"] },
+        "galaxy3": { "$list": ["a", "bb", "ccc"] },
+        "galaxy4": { "$list": ["polaris", "mizar"] },
+        "galaxy5": { "$list": ["sirius", "deneb", "spica"] }
+      }
+    }
+  ]
+}

@@ -133,17 +133,19 @@ print(jucator["arme"])
 
 ## Misiune: Baza de Date a Echipajului
 
-De data asta **tu** construiești dicționarul de la zero — în dreapta nu e nimic scris.
+În editor primești patru detalii despre un membru al echipajului sub formă de variabile: `nume`, `rol`, `varsta` și `statie`.
 
 Fă următoarele, în ordine:
 
-1. **Creează** un dicționar `echipaj` cu trei chei: `nume` cu valoarea `Tommy`, `rol` cu valoarea `Pilot` și `varsta` cu valoarea `34`
-2. **Adaugă** o cheie nouă `statie` cu valoarea `Laniakea`
-3. E ziua de naștere a lui Tommy — **actualizează** `varsta` la `35` (folosind operatorul +)
+1. **Creează** un dicționar `echipaj` cu trei chei — `"nume"`, `"rol"` și `"varsta"` — folosind variabilele `nume`, `rol` și `varsta` ca valori
+2. **Adaugă** o cheie nouă `"statie"`, folosind variabila `statie` ca valoare
+3. E ziua de naștere a membrului — **actualizează** `varsta` din dicționar adăugându-i **1** (folosind operatorul +)
 4. Afișează valorile pentru `nume`, `rol`, `varsta` și `statie`, fiecare pe propria linie
-5. Încă nu urmărim rangul — dacă cheia `rang` **nu este în** dicționar, afișează `Rang: necunoscut`
+5. Încă nu urmărim rangul — dacă cheia `"rang"` **nu este în** dicționar, afișează `Rang: necunoscut`
 
 **Ieșire**
+
+Pentru valorile din editor, programul afișează ceva de genul
 
 ```text
 Tommy
@@ -152,3 +154,5 @@ Pilot
 Laniakea
 Rang: necunoscut
 ```
+
+Schimbă o valoare de sus și rulează din nou — raportul se schimbă și el.
