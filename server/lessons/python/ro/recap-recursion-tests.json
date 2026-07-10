@@ -1,0 +1,53 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "numara_balize" },
+      { "kind": "function", "name": "aplatizeaza_sortat" },
+      { "kind": "function", "name": "gaseste_valoare" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "sector": {
+          "$list": [
+            { "$list": [0, 1, 0, 0, 0] },
+            { "$list": [0, 1, 0, 1, 0] },
+            { "$list": [0, 0, 0, 1, 0] },
+            { "$list": [1, 1, 0, 0, 0] },
+            { "$list": [0, 0, 0, 1, 2] }
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "sector": {
+          "$list": [{ "$list": [2, 3, 2] }, { "$list": [1, 0, 3] }]
+        }
+      }
+    },
+    {
+      "inject": { "sector": { "$list": [{ "$list": [0, 1] }] } }
+    },
+    {
+      "inject": {
+        "sector": {
+          "$list": [{ "$list": [2, 2] }, { "$list": [2, 2] }]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sector": {
+          "$list": [{ "$list": [0, 1, 2, 3, 4] }, { "$list": [5, 4, 3, 2, 1] }]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "curata_text" },
+      { "kind": "function", "name": "este_palindrom" },
+      { "kind": "function", "name": "sunt_anagrame" },
+      { "kind": "function", "name": "inverseaza_cuvinte" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "text_palindrom": "A man, a plan, a canal: Panama",
+        "anagrama_a": "Listen!",
+        "anagrama_b": "Silent",
+        "propozitie": "navigation system is online",
+        "text_murdar": "S3ct0r 7 cl34r!"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "text_palindrom": "Was it a car or a cat I saw?",
+        "anagrama_a": "Dormitory",
+        "anagrama_b": "Dirty room",
+        "propozitie": "alpha bravo charlie",
+        "text_murdar": "C0d3 R3d!"
+      }
+    },
+    {
+      "inject": {
+        "text_palindrom": "Hello World",
+        "anagrama_a": "abc",
+        "anagrama_b": "cab",
+        "propozitie": "one",
+        "text_murdar": "a1b2c3"
+      }
+    },
+    {
+      "inject": {
+        "text_palindrom": "No lemon, no melon",
+        "anagrama_a": "listen",
+        "anagrama_b": "silent",
+        "propozitie": "deep space nine",
+        "text_murdar": "123 !!! 456"
+      }
+    },
+    {
+      "inject": {
+        "text_palindrom": "Not a palindrome",
+        "anagrama_a": "hello",
+        "anagrama_b": "world",
+        "propozitie": "warp core online now",
+        "text_murdar": "Sector7"
+      }
+    }
+  ]
+}

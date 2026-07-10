@@ -1,0 +1,17 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "putere" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "baza": 2 } },
+    { "visible": true, "inject": { "baza": 3 } },
+    { "inject": { "baza": 1 } },
+    { "inject": { "baza": 5 } },
+    { "inject": { "baza": 10 } }
+  ]
+}

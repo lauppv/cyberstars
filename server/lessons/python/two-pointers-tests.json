@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "pair_with_sum" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "fuels": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "target": 10 }
+    },
+    {
+      "visible": true,
+      "inject": { "fuels": { "$list": [1, 2, 3, 4, 5] }, "target": 6 }
+    },
+    { "inject": { "fuels": { "$list": [1, 5] }, "target": 6 } },
+    { "inject": { "fuels": { "$list": [2, 4, 6, 8] }, "target": 7 } },
+    { "inject": { "fuels": { "$list": [1, 1, 2, 3, 3] }, "target": 4 } }
+  ]
+}

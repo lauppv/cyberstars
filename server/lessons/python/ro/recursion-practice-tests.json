@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "suma_cifre" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "coduri": { "$list": [1234, 999, 5, 4070, 88] } }
+    },
+    {
+      "visible": true,
+      "inject": { "coduri": { "$list": [0, 9, 10] } }
+    },
+    { "inject": { "coduri": { "$list": [5] } } },
+    { "inject": { "coduri": { "$list": [100, 200, 999] } } },
+    { "inject": { "coduri": { "$list": [1000000, 7, 4321] } } }
+  ]
+}

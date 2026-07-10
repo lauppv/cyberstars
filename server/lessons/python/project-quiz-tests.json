@@ -1,0 +1,75 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "grade_quiz" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Which command shows output?", "answer": "B" } },
+            { "$dict": { "text": "What starts a comment?", "answer": "C" } },
+            { "$dict": { "text": "What does len() return?", "answer": "A" } },
+            { "$dict": { "text": "Which keyword defines a function?", "answer": "D" } }
+          ]
+        },
+        "player_answers": { "$list": ["B", "C", "A", "B"] }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "answer": "A" } },
+            { "$dict": { "text": "Q2", "answer": "B" } }
+          ]
+        },
+        "player_answers": { "$list": ["A", "B"] }
+      }
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "answer": "A" } },
+            { "$dict": { "text": "Q2", "answer": "B" } }
+          ]
+        },
+        "player_answers": { "$list": ["X", "Y"] }
+      }
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "answer": "A" } },
+            { "$dict": { "text": "Q2", "answer": "A" } },
+            { "$dict": { "text": "Q3", "answer": "A" } },
+            { "$dict": { "text": "Q4", "answer": "A" } }
+          ]
+        },
+        "player_answers": { "$list": ["A", "A", "B", "B"] }
+      }
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "answer": "A" } },
+            { "$dict": { "text": "Q2", "answer": "B" } },
+            { "$dict": { "text": "Q3", "answer": "C" } },
+            { "$dict": { "text": "Q4", "answer": "D" } }
+          ]
+        },
+        "player_answers": { "$list": ["A", "X", "Y", "Z"] }
+      }
+    }
+  ]
+}

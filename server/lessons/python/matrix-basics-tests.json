@@ -1,0 +1,46 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [5, 8, 3, 6] },
+            { "$list": [9, 2, 7, 8] },
+            { "$list": [1, 4, 6, 4] },
+            { "$list": [10, 9, 8, 10] }
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [1, 2] }, { "$list": [3, 4] }]
+        }
+      }
+    },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [7] }] } }
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [8, 8, 8] }, { "$list": [6, 7, 9] }]
+        }
+      }
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [0, 0] }, { "$list": [0, 15] }, { "$list": [3, 3] }]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "clean_text" },
+      { "kind": "function", "name": "is_palindrome" },
+      { "kind": "function", "name": "are_anagrams" },
+      { "kind": "function", "name": "reverse_words" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "palindrome_text": "A man, a plan, a canal: Panama",
+        "anagram_a": "Listen!",
+        "anagram_b": "Silent",
+        "sentence": "navigation system is online",
+        "messy": "S3ct0r 7 cl34r!"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "palindrome_text": "Was it a car or a cat I saw?",
+        "anagram_a": "Dormitory",
+        "anagram_b": "Dirty room",
+        "sentence": "alpha bravo charlie",
+        "messy": "C0d3 R3d!"
+      }
+    },
+    {
+      "inject": {
+        "palindrome_text": "Hello World",
+        "anagram_a": "abc",
+        "anagram_b": "cab",
+        "sentence": "one",
+        "messy": "a1b2c3"
+      }
+    },
+    {
+      "inject": {
+        "palindrome_text": "No lemon, no melon",
+        "anagram_a": "listen",
+        "anagram_b": "silent",
+        "sentence": "deep space nine",
+        "messy": "123 !!! 456"
+      }
+    },
+    {
+      "inject": {
+        "palindrome_text": "Not a palindrome",
+        "anagram_a": "hello",
+        "anagram_b": "world",
+        "sentence": "warp core online now",
+        "messy": "Sector7"
+      }
+    }
+  ]
+}

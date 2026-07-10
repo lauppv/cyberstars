@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "verifica_ghicirea" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "numar_secret": 42, "ghiciri": { "$list": [50, 30, 40, 45, 42] } }
+    },
+    {
+      "visible": true,
+      "inject": { "numar_secret": 10, "ghiciri": { "$list": [5, 15, 10] } }
+    },
+    { "inject": { "numar_secret": 7, "ghiciri": { "$list": [7] } } },
+    { "inject": { "numar_secret": 100, "ghiciri": { "$list": [1, 2, 3] } } },
+    { "inject": { "numar_secret": 5, "ghiciri": { "$list": [10, 5, 1] } } }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "binary_search" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "ids": { "$list": [2, 5, 8, 12, 16, 23, 38, 56, 72, 91] },
+        "queries": { "$list": [23, 50, 8, 91, 100] }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "ids": { "$list": [1, 3, 5, 7] },
+        "queries": { "$list": [1, 7, 4] }
+      }
+    },
+    {
+      "inject": {
+        "ids": { "$list": [42] },
+        "queries": { "$list": [42, 10] }
+      }
+    },
+    {
+      "inject": {
+        "ids": { "$list": [10, 20, 30, 40, 50] },
+        "queries": { "$list": [10, 20, 30, 40, 50] }
+      }
+    },
+    {
+      "inject": {
+        "ids": { "$list": [4, 8, 15, 16, 23, 42] },
+        "queries": { "$list": [1, 9, 100] }
+      }
+    }
+  ]
+}

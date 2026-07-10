@@ -1,0 +1,23 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "check_guess" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "secret": 42, "guesses": { "$list": [50, 30, 40, 45, 42] } }
+    },
+    {
+      "visible": true,
+      "inject": { "secret": 10, "guesses": { "$list": [5, 15, 10] } }
+    },
+    { "inject": { "secret": 7, "guesses": { "$list": [7] } } },
+    { "inject": { "secret": 100, "guesses": { "$list": [1, 2, 3] } } },
+    { "inject": { "secret": 5, "guesses": { "$list": [10, 5, 1] } } }
+  ]
+}
