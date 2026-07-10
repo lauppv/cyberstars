@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "strengths": { "$list": [30, 65, 20, 90, 50] }, "code": "ORBIT" }
+    },
+    {
+      "visible": true,
+      "inject": { "strengths": { "$list": [51, 50, 100] }, "code": "AB" }
+    },
+    {
+      "inject": { "strengths": { "$list": [10] }, "code": "X" }
+    },
+    {
+      "inject": { "strengths": { "$list": [60, 70, 80] }, "code": "HELLO" }
+    },
+    {
+      "inject": { "strengths": { "$list": [1, 2, 3] }, "code": "SIGNAL" }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "safe_int" },
+      { "kind": "function", "name": "summarize" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "readings": { "$list": ["10", "bad", "25", "7", "x"] } }
+    },
+    {
+      "visible": true,
+      "inject": { "readings": { "$list": ["3", "4", "5"] } }
+    },
+    {
+      "inject": { "readings": { "$list": ["nope", "bad"] } }
+    },
+    {
+      "inject": { "readings": { "$list": ["100", "zz", "50", "1", "q", "9"] } }
+    },
+    {
+      "inject": { "readings": { "$list": ["42"] } }
+    }
+  ]
+}

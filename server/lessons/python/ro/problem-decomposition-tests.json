@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "desparte_coduri" },
+      { "kind": "function", "name": "numara_coduri" },
+      { "kind": "function", "name": "cel_mai_frecvent" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "jurnal": "alpha beta alpha gamma beta alpha" } },
+    { "visible": true, "inject": { "jurnal": "sos sos ok ok ok bye" } },
+    { "inject": { "jurnal": "x y z" } },
+    { "inject": { "jurnal": "a a a" } },
+    { "inject": { "jurnal": "one" } }
+  ]
+}

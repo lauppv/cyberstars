@@ -1,0 +1,18 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "parse" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "45 90 12\n" },
+    { "visible": true, "stdin": "1 1 1\n" },
+    { "stdin": "0 5 0\n" },
+    { "stdin": "100 2 50\n" },
+    { "stdin": "-3 -1 -2\n" },
+    { "stdin": "7 7 8\n" }
+  ]
+}

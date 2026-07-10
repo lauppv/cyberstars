@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "split_codes" },
+      { "kind": "function", "name": "count_codes" },
+      { "kind": "function", "name": "most_common" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "log": "alpha beta alpha gamma beta alpha" } },
+    { "visible": true, "inject": { "log": "sos sos ok ok ok bye" } },
+    { "inject": { "log": "x y z" } },
+    { "inject": { "log": "a a a" } },
+    { "inject": { "log": "one" } }
+  ]
+}

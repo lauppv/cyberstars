@@ -1,0 +1,29 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "loop" },
+      { "kind": "call", "name": "int" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "citiri": { "$list": ["42", "x9", "100", "7", "bad", "13"] } }
+    },
+    {
+      "visible": true,
+      "inject": { "citiri": { "$list": ["1", "2", "3"] } }
+    },
+    {
+      "inject": { "citiri": { "$list": ["a", "b", "c"] } }
+    },
+    {
+      "inject": { "citiri": { "$list": ["50", "zz", "50", "0"] } }
+    },
+    {
+      "inject": { "citiri": { "$list": ["999"] } }
+    }
+  ]
+}

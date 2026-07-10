@@ -1,0 +1,13 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    { "visible": true, "inject": { "readings": { "$list": [42, 75, 100, 30, 88, 120, 55, 99] } } },
+    { "visible": true, "inject": { "readings": { "$list": [49, 50, 99, 100] } } },
+    { "inject": { "readings": { "$list": [0] } } },
+    { "inject": { "readings": { "$list": [200, 300] } } },
+    { "inject": { "readings": { "$list": [10, 20, 30] } } }
+  ]
+}
