@@ -1,0 +1,28 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "echipaj" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nume": "Tommy", "rol": "Pilot", "varsta": 34, "statie": "Laniakea" }
+    },
+    {
+      "visible": true,
+      "inject": { "nume": "Ana", "rol": "Inginer", "varsta": 29, "statie": "Orion" }
+    },
+    {
+      "inject": { "nume": "Zed", "rol": "Medic", "varsta": 0, "statie": "Baza" }
+    },
+    {
+      "inject": { "nume": "Kai", "rol": "Capitan", "varsta": 99, "statie": "Adanc" }
+    },
+    {
+      "inject": { "nume": "Mo", "rol": "Bucatar", "varsta": 17, "statie": "Hub" }
+    }
+  ]
+}

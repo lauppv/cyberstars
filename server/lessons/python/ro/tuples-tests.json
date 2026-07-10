@@ -1,0 +1,51 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "sisteme": {
+          "$list": [{ "$list": ["Kepler", 1200, 7] }, { "$list": ["Trappist", 39, 3] }]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Sol", 0, 8] },
+            { "$list": ["Alpha", 4, 3] },
+            { "$list": ["Vega", 25, 5] }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sisteme": { "$list": [{ "$list": ["Proxima", 4, 1] }] }
+      }
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [{ "$list": ["A", 0, 0] }, { "$list": ["B", 10, 0] }]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["X", 100, 12] },
+            { "$list": ["Y", 5, 4] },
+            { "$list": ["Z", 50, 9] }
+          ]
+        }
+      }
+    }
+  ]
+}

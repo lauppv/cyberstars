@@ -1,0 +1,56 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "clean" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "items": {
+          "$list": ["milk", "con-eggs", "bread", "butter", "cheese", "con-oil", "jam"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "items": {
+          "$list": ["con-water", "apple", "flour", "salt", "butter", "extra", "sugar"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": ["butter", "milk", "bread", "cheese"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": ["milk", "con-x", "bread", "cheese", "jam"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": ["con-a", "con-b", "con-c"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": ["con-milk", "eggs", "con-jam", "flour", "sugar", "butter", "rice"]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "analizeaza" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "scoruri": { "$dict": { "Tommy": 95, "Lance": 42, "Cortez": 88, "Phil": 37, "Mira": 76 } }
+      }
+    },
+    {
+      "visible": true,
+      "inject": { "scoruri": { "$dict": { "A": 60, "B": 49, "C": 50, "D": 30 } } }
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "Solo": 100 } } }
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "P": 10, "Q": 20 } } }
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "M": 80, "N": 55, "O": 90, "K": 49 } } }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "set" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "signals": { "$list": ["A1", "B2", "A1", "C3", "D4", "D4"] }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "signals": { "$list": ["X1", "X1", "X1"] }
+      }
+    },
+    {
+      "inject": {
+        "signals": { "$list": ["D4"] }
+      }
+    },
+    {
+      "inject": {
+        "signals": { "$list": ["A", "B", "C", "A", "B"] }
+      }
+    },
+    {
+      "inject": {
+        "signals": { "$list": ["D4", "E5", "D4", "F6", "E5", "G7"] }
+      }
+    }
+  ]
+}

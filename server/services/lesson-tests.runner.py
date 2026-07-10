@@ -100,9 +100,17 @@ def check_structure(tree, structure):
 def to_ast_value(v):
     # A bare scalar becomes a Constant; {"$list": [...]} becomes a whole list
     # value (so a variable holding a list can be injected — a bare JSON array is
-    # already taken by per-occurrence injection for reassignment lessons).
+    # already taken by per-occurrence injection for reassignment lessons);
+    # {"$dict": {...}} becomes a whole dict value (insertion order preserved by
+    # the JSON parser, which matters for lessons that loop over keys/values).
     if isinstance(v, dict) and "$list" in v:
         return ast.List(elts=[to_ast_value(e) for e in v["$list"]], ctx=ast.Load())
+    if isinstance(v, dict) and "$dict" in v:
+        pairs = v["$dict"]
+        return ast.Dict(
+            keys=[to_ast_value(k) for k in pairs],
+            values=[to_ast_value(val) for val in pairs.values()],
+        )
     return ast.Constant(v)
 
 
