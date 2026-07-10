@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "loop" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "1111\n2222\n1234\n" },
+    { "visible": true, "stdin": "1234\n" },
+    { "stdin": "0000\n1234\n" },
+    { "stdin": "9999\n8888\n7777\n1234\n" }
+  ]
+}

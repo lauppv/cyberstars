@@ -1,0 +1,18 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "calculator" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "14\n12\n+\n" },
+    { "visible": true, "stdin": "20\n8\n-\n" },
+    { "stdin": "6\n7\n*\n" },
+    { "stdin": "20\n4\n/\n" },
+    { "stdin": "5\n2\n%\n" },
+    { "stdin": "100\n25\n/\n" }
+  ]
+}

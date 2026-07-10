@@ -2,8 +2,9 @@
 # (python:3.10-slim, --network=none, pids/memory capped). Reads a payload JSON
 # ({userCode, solutionCode, structure, cases}), checks the user code's
 # structure with the ast module, injects each case's values into the lesson's
-# input variables (in BOTH the user code and the reference solution), runs the
-# two programs per case, and prints a single JSON verdict to stdout.
+# input variables (in BOTH the user code and the reference solution) and/or
+# feeds the case's stdin to both, runs the two programs per case, and prints a
+# single JSON verdict to stdout.
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
@@ -96,6 +97,15 @@ def check_structure(tree, structure):
     return failures
 
 
+def to_ast_value(v):
+    # A bare scalar becomes a Constant; {"$list": [...]} becomes a whole list
+    # value (so a variable holding a list can be injected — a bare JSON array is
+    # already taken by per-occurrence injection for reassignment lessons).
+    if isinstance(v, dict) and "$list" in v:
+        return ast.List(elts=[to_ast_value(e) for e in v["$list"]], ctx=ast.Load())
+    return ast.Constant(v)
+
+
 def inject_values(code, values):
     # Replace successive module-level assignments of each input variable with
     # the test values: a scalar targets the first assignment, a list feeds one
@@ -113,10 +123,10 @@ def inject_values(code, values):
         if isinstance(node, ast.Assign) and len(node.targets) == 1:
             target = node.targets[0]
             if isinstance(target, ast.Name) and remaining.get(target.id):
-                node.value = ast.Constant(remaining[target.id].pop(0))
+                node.value = to_ast_value(remaining[target.id].pop(0))
                 consumed.add(target.id)
     prelude = [
-        ast.Assign(targets=[ast.Name(id=name, ctx=ast.Store())], value=ast.Constant(vals[0]))
+        ast.Assign(targets=[ast.Name(id=name, ctx=ast.Store())], value=to_ast_value(vals[0]))
         for name, vals in remaining.items()
         if name not in consumed and vals
     ]
@@ -124,17 +134,24 @@ def inject_values(code, values):
     return ast.unparse(ast.fix_missing_locations(tree))
 
 
-def run_program(code):
+# Neutralize input() prompts: lessons teach input("prompt"), but a prompt writes
+# to stdout and would pollute the compared output. Overriding input to ignore
+# its prompt argument (applied to BOTH user and solution) makes input("...") and
+# bare input() produce identical output, so students aren't graded on prompts.
+INPUT_PREAMBLE = "import builtins as _b\n_oi = _b.input\n_b.input = lambda *a, **k: _oi()\n"
+
+
+def run_program(code, stdin=None):
     path = "/tmp/_judged.py"
     with open(path, "w") as f:
-        f.write(code)
+        f.write(INPUT_PREAMBLE + code)
     try:
         proc = subprocess.run(
             [sys.executable, "-u", path],
             capture_output=True,
             text=True,
             timeout=CASE_TIMEOUT,
-            stdin=subprocess.DEVNULL,
+            input=stdin if stdin is not None else "",
         )
         return {
             "stdout": proc.stdout[:OUTPUT_CAP],
@@ -174,6 +191,7 @@ def main():
 
     for case in payload["cases"]:
         inject = case.get("inject") or {}
+        stdin = case.get("stdin")
         try:
             user_src = inject_values(payload["userCode"], inject)
             solution_src = inject_values(payload["solutionCode"], inject)
@@ -181,8 +199,8 @@ def main():
             # solution is trusted; user code already parsed — should not happen
             result["cases"].append({"injectError": True})
             continue
-        user_run = run_program(user_src)
-        result["cases"].append({"user": user_run, "solution": run_program(solution_src)})
+        user_run = run_program(user_src, stdin)
+        result["cases"].append({"user": user_run, "solution": run_program(solution_src, stdin)})
         # A hung program would burn 5s on every remaining case too — stop here.
         if user_run["timedOut"]:
             break

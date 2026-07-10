@@ -15,7 +15,8 @@ interface StructureRule {
   values?: number[];
 }
 
-type InjectValue = string | number | boolean;
+/** A scalar, or `{ $list: [...] }` to inject a whole list as one value. */
+export type InjectValue = string | number | boolean | { $list: InjectValue[] };
 
 interface LessonTestCase {
   /** Visible cases show expected vs actual on failure; hidden ones only the input. */
@@ -26,6 +27,13 @@ interface LessonTestCase {
    * the value a student picked never matters — only the behavior.
    */
   inject?: Record<string, InjectValue | InjectValue[]>;
+  /**
+   * Text fed to the program's stdin (for lessons that read with input(),
+   * including loops that read repeatedly — injection only reaches module-level
+   * assignments). The reference solution receives the same stdin, so the value
+   * the student typed never matters — only the behavior. Combinable with inject.
+   */
+  stdin?: string;
 }
 
 export interface LessonTestsSpec {
@@ -47,6 +55,8 @@ export interface TestCaseResult {
   visible: boolean;
   passed: boolean;
   inject?: Record<string, InjectValue | InjectValue[]>;
+  /** stdin fed to the program — shown on failed visible cases so the student can debug. */
+  stdin?: string;
   /** Only present on failed visible cases. */
   expected?: string;
   actual?: string;

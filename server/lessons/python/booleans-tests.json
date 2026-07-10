@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "loop" },
+      { "kind": "call", "name": "input" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "status\nhello\nshutdown\n" },
+    { "visible": true, "stdin": "shutdown\n" },
+    { "stdin": "status\nstatus\nshutdown\n" },
+    { "stdin": "foo\nbar\nstatus\nshutdown\n" }
+  ]
+}

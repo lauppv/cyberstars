@@ -1,0 +1,137 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "crew" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "crew": {
+          "$list": [
+            "Alice",
+            "Bob",
+            "Carol",
+            "Dan",
+            "Eve",
+            "Frank",
+            "Grace",
+            "Heidi",
+            "Ivan",
+            "Judy",
+            "Ken",
+            "Liam",
+            "Mona",
+            "Nina",
+            "Oscar",
+            "Peggy",
+            "Quinn",
+            "Ruth",
+            "Sam",
+            "Tina"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "crew": {
+          "$list": [
+            "Ada",
+            "Blake",
+            "Cora",
+            "Dean",
+            "Ella",
+            "Finn",
+            "Gwen",
+            "Hugo",
+            "Iris",
+            "Jack",
+            "Kira",
+            "Leo",
+            "Maya"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            "Nora",
+            "Owen",
+            "Piper",
+            "Reed",
+            "Sara",
+            "Theo",
+            "Ursula",
+            "Vince",
+            "Wren",
+            "Xena",
+            "Yuri",
+            "Zara",
+            "Abel",
+            "Beth"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            "Cleo",
+            "Drew",
+            "Esme",
+            "Ford",
+            "Gaia",
+            "Hank",
+            "Ines",
+            "Jonas",
+            "Kai",
+            "Lena",
+            "Milo",
+            "Naomi",
+            "Orla",
+            "Pax",
+            "Remy",
+            "Sage"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            "Tara",
+            "Uri",
+            "Vera",
+            "Wade",
+            "Xander",
+            "Yara",
+            "Zeke",
+            "Anya",
+            "Boris",
+            "Cora",
+            "Dane",
+            "Elsa",
+            "Finn",
+            "Gwyn",
+            "Hana",
+            "Igor",
+            "Jade",
+            "Karl",
+            "Lucy",
+            "Mace"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -72,6 +72,35 @@ Just like in math, parentheses **()** force what to do first. When in doubt, **a
 
 ---
 
-## Play Around
+## Mission: The Calculation Panel
 
-No mission this time. Take the starter code, change the values of `a` and `b`, try each operator and see what it prints. Experiment until you understand how each one behaves.
+The station receives two numbers and must display the result of each operation. Read two integers `a` and `b` (you may assume `b` is not 0), then print, one per line, in this order:
+
+- the sum (`a + b`)
+- the difference (`a - b`)
+- the product (`a * b`)
+- the division (`a / b`)
+- the integer division (`a // b`)
+- the remainder (`a % b`)
+- `a` to the power of `b` (`a ** b`)
+
+**Example**
+
+If the user types
+
+```text
+17
+5
+```
+
+the program prints something like
+
+```text
+22
+12
+85
+3.4
+3
+2
+1419857
+```

@@ -1,0 +1,137 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "echipaj" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Ana",
+            "Bogdan",
+            "Corina",
+            "Dan",
+            "Elena",
+            "Florin",
+            "Gabriela",
+            "Horia",
+            "Ioana",
+            "Radu",
+            "Carmen",
+            "Liviu",
+            "Mona",
+            "Nadia",
+            "Octav",
+            "Paula",
+            "Razvan",
+            "Sorina",
+            "Tudor",
+            "Vlad"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Adela",
+            "Barbu",
+            "Cezar",
+            "Doina",
+            "Emil",
+            "Filip",
+            "George",
+            "Hanna",
+            "Irina",
+            "Jean",
+            "Karina",
+            "Luca",
+            "Maria"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Nicu",
+            "Otilia",
+            "Petru",
+            "Rodica",
+            "Sandu",
+            "Teodora",
+            "Ursu",
+            "Victor",
+            "Zamfir",
+            "Alina",
+            "Bianca",
+            "Costin",
+            "Delia",
+            "Eugen"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Flavia",
+            "Grigore",
+            "Hortensia",
+            "Ilie",
+            "Jenica",
+            "Kevin",
+            "Lavinia",
+            "Marius",
+            "Nelu",
+            "Oana",
+            "Pavel",
+            "Rares",
+            "Silvia",
+            "Toma",
+            "Ulise",
+            "Valeria"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Zoe",
+            "Adrian",
+            "Beatrice",
+            "Ciprian",
+            "Daniela",
+            "Eduard",
+            "Felicia",
+            "Gheorghe",
+            "Hermina",
+            "Iulian",
+            "Jasmin",
+            "Klaus",
+            "Lidia",
+            "Mihail",
+            "Natalia",
+            "Ovidiu",
+            "Petra",
+            "Robert",
+            "Simona",
+            "Traian"
+          ]
+        }
+      }
+    }
+  ]
+}

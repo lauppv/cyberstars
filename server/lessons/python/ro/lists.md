@@ -111,17 +111,28 @@ Le putem chiar amesteca, dar în practică este rar și de obicei un semn că ce
 
 ## Misiune: Cala de Marfă
 
-Stația își ține evidența mărfii într-o listă. Creează o listă goală numită `incarcatura`. Fă următoarele, în ordine:
+Stația își ține evidența mărfii într-o listă. Creează o listă goală numită `incarcatura`. Apoi citește din input **4 articole**, câte unul pe linie, și fă următoarele, în ordine:
 
-1. **Adaugă** `"oxigen"`, `"apa"`, `"mancare"` și `"combustibil"`
+1. **Adaugă** fiecare dintre cele 4 articole citite în listă
 2. Afișează lista
 3. Afișează **primul** articol
 4. Afișează **ultimul** articol
 5. Afișează câte articole sunt încărcate
-6. O scurgere golește apa — înlocuiește articolul de la indexul 1 cu `gol`
+6. O scurgere golește articolul de la indexul 1 — înlocuiește-l cu `gol`
 7. Afișează lista
 
-**Ieșire**
+**Exemplu**
+
+Dacă utilizatorul tastează
+
+```text
+oxigen
+apa
+mancare
+combustibil
+```
+
+programul afișează
 
 ```text
 ['oxigen', 'apa', 'mancare', 'combustibil']
