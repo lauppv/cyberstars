@@ -69,11 +69,13 @@ Reactoarele stației raportează valorile puterii într-o ordine aleatorie. Ingi
 
 Scrie o funcție **sortare_bule(numere)** care sortează o listă în ordine **crescătoare** folosind bubble sort și **returnează** lista sortată.
 
-Apoi sortează două loturi de valori și afișează fiecare rezultat.
+Apoi sortează cele două loturi de valori (`lot1` și `lot2`, deja în starter) și afișează fiecare rezultat.
 
 ```py
-print(sortare_bule([42, 17, 88, 9, 23]))
-print(sortare_bule([5, 4, 3, 2, 1]))
+lot1 = [42, 17, 88, 9, 23]
+lot2 = [5, 4, 3, 2, 1]
+print(sortare_bule(lot1))
+print(sortare_bule(lot2))
 ```
 
 **Ieșire**

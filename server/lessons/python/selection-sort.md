@@ -69,11 +69,13 @@ The cargo bay scanner reports container weights in whatever order they were load
 
 Write a function **selection_sort(numbers)** that sorts a list in **ascending** order using selection sort and **returns** the sorted list.
 
-Then sort two batches of weights and print each result.
+Then sort the two batches of weights (`batch1` and `batch2`, already in the starter) and print each result.
 
 ```py
-print(selection_sort([64, 25, 12, 22, 11]))
-print(selection_sort([9, 7, 5, 3, 1]))
+batch1 = [64, 25, 12, 22, 11]
+batch2 = [9, 7, 5, 3, 1]
+print(selection_sort(batch1))
+print(selection_sort(batch2))
 ```
 
 **Output**

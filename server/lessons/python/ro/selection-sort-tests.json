@@ -1,0 +1,33 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "sortare_selectie" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "print" }
+    ],
+    "forbids": [
+      { "kind": "call", "name": "sorted" },
+      { "kind": "call", "name": "sort" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "lot1": { "$list": [64, 25, 12, 22, 11] }, "lot2": { "$list": [9, 7, 5, 3, 1] } }
+    },
+    {
+      "visible": true,
+      "inject": { "lot1": { "$list": [3, 1, 2] }, "lot2": { "$list": [10] } }
+    },
+    {
+      "inject": { "lot1": { "$list": [1] }, "lot2": { "$list": [8, 8, 2, 5] } }
+    },
+    {
+      "inject": { "lot1": { "$list": [100, 50, 50, 1] }, "lot2": { "$list": [2, 2, 1] } }
+    },
+    {
+      "inject": { "lot1": { "$list": [0, -5, 3] }, "lot2": { "$list": [7, 7, 7] } }
+    }
+  ]
+}
