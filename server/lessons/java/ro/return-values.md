@@ -129,18 +129,12 @@ Tommy nu doar duce la capăt misiuni — el **aduce înapoi banii**. Asta este o
 
 Imperiul lui Tommy crește pe zi ce trece. Stocul pornește de la **1**, iar în fiecare zi se înmulțește cu un factor fix. Vrei o metodă care îți spune cât ai după un anumit număr de zile.
 
-Scrie o metodă care primește **factorul** și **numărul de zile** și **întoarce** stocul de la final. Calculează-l cu o buclă: pornește de la **1**, apoi înmulțește cu factorul de un număr de ori egal cu zilele. Dacă au trecut **0** zile, bucla nu rulează deloc și rămâi cu **1**. Apoi, în **main**, apeleaz-o pentru câteva scenarii și afișează rezultatul fiecăruia.
-
-Apeleaz-o pentru:
-
-- factor **2**, **3** zile
-- factor **5**, **2** zile
-- factor **7**, **0** zile (nicio zi trecută)
+Scrie o metodă care primește **factorul** și **numărul de zile** și **întoarce** stocul de la final. Calculează-l cu o buclă: pornește de la **1**, apoi înmulțește cu factorul de un număr de ori egal cu zilele. Dacă au trecut **0** zile, bucla nu rulează deloc și rămâi cu **1**. Apoi, în **main**, stochează factorul într-o variabilă numită `factor` și numărul de zile într-o variabilă numită `zile`, apelează metoda și afișează rezultatul.
 
 **Exemplu**
 
+Pentru factor `2` pe `3` zile (`2 × 2 × 2`), programul tău ar trebui să afișeze
+
 ```text
 8
-25
-1
 ```

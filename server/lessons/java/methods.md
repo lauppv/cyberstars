@@ -112,18 +112,12 @@ public class Main {
 
 After a successful heist, Tommy splits the loot equally among the crew. You want a method that does the math once and that you can reuse for every heist.
 
-Write a method that takes the **total loot** and the **number of crew members** and **returns** each member's share (use integer division — whatever doesn't divide evenly is lost). Then, in **main**, call it for three heists and print a line of the form `loot / crew = share` for each.
-
-Call it for:
-
-- **10000** loot, **4** members
-- **5000** loot, **3** members (does not divide evenly)
-- **8000** loot, **1** member (all of it for him)
+Write a method that takes the **total loot** and the **number of crew members** and **returns** each member's share (use integer division — whatever doesn't divide evenly is lost). Then, in **main**, store the loot in a variable named `loot` and the crew size in a variable named `crew`, call the method, and print a line of the form `loot / crew = share`.
 
 **Example**
 
+If the loot is `10000` and the crew has `4` members, your program should print
+
 ```text
 10000 / 4 = 2500
-5000 / 3 = 1666
-8000 / 1 = 8000
 ```

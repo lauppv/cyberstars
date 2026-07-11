@@ -1,0 +1,35 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "filtreaza" },
+      { "kind": "call", "name": "filtreaza" },
+      { "kind": "variable", "name": "semnale" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "semnale": {
+          "$list": [
+            "tommy",
+            "static",
+            "lance",
+            "static",
+            "cortez",
+            "static",
+            "diaz",
+            "out",
+            "mercedes"
+          ]
+        }
+      }
+    },
+    { "inject": { "semnale": { "$list": ["out", "tommy", "lance"] } } },
+    { "inject": { "semnale": { "$list": ["tommy", "lance"] } } },
+    { "inject": { "semnale": { "$list": ["static", "static"] } } },
+    { "inject": { "semnale": { "$list": ["alpha", "static", "beta", "out", "gamma"] } } }
+  ]
+}

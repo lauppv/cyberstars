@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "incasari" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "incasari": { "$list": [1200, 3400, 800, 2600] } } },
+    { "inject": { "incasari": { "$list": [5000] } } },
+    { "inject": { "incasari": { "$list": [125, 200] } } },
+    { "inject": { "incasari": { "$list": [100, 200, 300] } } },
+    { "inject": { "incasari": { "$list": [1, 2] } } }
+  ]
+}

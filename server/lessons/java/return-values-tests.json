@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "growth" },
+      { "kind": "call", "name": "growth" },
+      { "kind": "variable", "name": "factor" },
+      { "kind": "variable", "name": "days" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "factor": 2, "days": 3 } },
+    { "inject": { "factor": 5, "days": 2 } },
+    { "inject": { "factor": 7, "days": 0 } },
+    { "inject": { "factor": 3, "days": 4 } },
+    { "inject": { "factor": 10, "days": 3 } }
+  ]
+}
