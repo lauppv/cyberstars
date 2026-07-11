@@ -25,12 +25,13 @@ export function baseLanguage(key: string): string {
 // These functions live in shared/ so client and server use the identical math.
 
 // A lesson's award grows with its position in the course, so later (harder)
-// lessons are worth more. sortOrder is 0-based per course.
+// lessons are worth more. sortOrder is 1-based per course (see
+// prisma/curriculum.data.ts): the first lesson is worth 10 XP.
 export function xpForLesson(sortOrder: number): number {
-  return 10 + sortOrder;
+  return 10 + (sortOrder - 1);
 }
 
-// Total XP an n-lesson course is worth: Σ (10 + i) for i in 0..n-1.
+// Total XP an n-lesson course is worth: Σ xpForLesson(s) for s in 1..n.
 export function xpForCourse(lessonCount: number): number {
   return 10 * lessonCount + (lessonCount * (lessonCount - 1)) / 2;
 }

@@ -91,6 +91,21 @@ describe('runTests', () => {
     expect(res.json).toHaveBeenCalledWith({ status: 'failed' });
   });
 
+  it('still returns the passing verdict when persisting completion fails', async () => {
+    mockRunLessonTests.mockResolvedValue({ status: 'passed' });
+    mockMarkComplete.mockRejectedValue(new Error('db down'));
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const req = mockReq({ user: { id: 7 } as Request['user'] });
+    const res = mockRes();
+
+    await ctrl.runTests(req, res, next);
+
+    expect(res.json).toHaveBeenCalledWith({ status: 'passed' });
+    expect(next).not.toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalled();
+    errorSpy.mockRestore();
+  });
+
   it('forwards errors to next', async () => {
     const err = new Error('judge exploded');
     mockRunLessonTests.mockRejectedValue(err);

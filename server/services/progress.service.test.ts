@@ -34,9 +34,9 @@ beforeEach(() => {
 describe('getCourseProgress', () => {
   it('aggregates lessons and progress correctly', async () => {
     mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
-      { slug: 'a', title: 'Lesson A', sortOrder: 0 },
-      { slug: 'b', title: 'Lesson B', sortOrder: 1 },
-      { slug: 'c', title: 'Lesson C', sortOrder: 2 },
+      { slug: 'a', title: 'Lesson A', sortOrder: 1 },
+      { slug: 'b', title: 'Lesson B', sortOrder: 2 },
+      { slug: 'c', title: 'Lesson C', sortOrder: 3 },
     ]);
     mockProgressRepo.getByCourse.mockResolvedValue([
       {
@@ -54,14 +54,14 @@ describe('getCourseProgress', () => {
     expect(result.lessons).toHaveLength(3);
     expect(result.lessons[0].completed).toBe(true);
     expect(result.lessons[1].completed).toBe(false);
-    // XP derived from sortOrder: lesson 'a' (sortOrder 0) worth 10; total 10+11+12.
+    // XP derived from 1-based sortOrder: lesson 'a' (sortOrder 1) worth 10; total 10+11+12.
     expect(result.earnedXp).toBe(10);
     expect(result.totalXp).toBe(33);
   });
 
   it('returns zero progress when no lessons completed', async () => {
     mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
-      { slug: 'a', title: 'A', sortOrder: 0 },
+      { slug: 'a', title: 'A', sortOrder: 1 },
     ]);
     mockProgressRepo.getByCourse.mockResolvedValue([]);
 

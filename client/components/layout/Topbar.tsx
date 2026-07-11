@@ -200,9 +200,7 @@ export function Topbar({
               >
                 <div
                   className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
-                  style={{
-                    width: `${xp.xpForLevelSpan > 0 ? Math.round((xp.xpIntoLevel / xp.xpForLevelSpan) * 100) : 0}%`,
-                  }}
+                  style={{ width: `${xp.xpPct}%` }}
                 />
               </div>
               <span className="tabular-nums text-[11px] text-[var(--text3)]">

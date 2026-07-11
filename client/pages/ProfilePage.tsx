@@ -360,9 +360,7 @@ export function ProfilePage() {
             <div className="h-2 rounded-full bg-[var(--surface2)] overflow-hidden">
               <div
                 className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
-                style={{
-                  width: `${g.xp.xpForLevelSpan > 0 ? Math.round((g.xp.xpIntoLevel / g.xp.xpForLevelSpan) * 100) : 0}%`,
-                }}
+                style={{ width: `${g.xp.xpPct}%` }}
               />
             </div>
             <div className="text-[10px] text-[var(--text3)] mt-1">

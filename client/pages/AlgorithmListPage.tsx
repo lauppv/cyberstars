@@ -8,7 +8,6 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseMeta } from '../constants/courses';
-import { xpForLesson, xpForCourse } from '../../shared/constants';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
@@ -100,11 +99,8 @@ export function AlgorithmListPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold">{t('algoList.title', { lang: meta.label })}</h1>
-                <p className="text-[var(--text3)] text-xs flex items-center gap-2">
+                <p className="text-[var(--text3)] text-xs">
                   {t('algoList.challenges', { count: lessons.length })}
-                  <span className="text-[var(--accent)]">
-                    ⭐ {t('common.xpTotal', { xp: xpForCourse(lessons.length) })}
-                  </span>
                 </p>
               </div>
             </div>
@@ -158,11 +154,6 @@ export function AlgorithmListPage() {
                   </span>
                   <span className="text-[14px] font-medium leading-tight group-hover:text-[var(--accent)] transition flex-1">
                     {lesson.displayName}
-                  </span>
-                  <span
-                    className={`text-[10px] font-semibold tabular-nums ${lesson.completed ? 'text-[var(--success)]' : 'text-[var(--text3)]'}`}
-                  >
-                    {t('common.xpReward', { xp: xpForLesson(lesson.sortOrder) })}
                   </span>
                   <span
                     className="text-[10px] font-semibold px-2 py-0.5 rounded-full"

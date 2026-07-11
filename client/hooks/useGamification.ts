@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { levelFromXp, xpForLevel, levelTitleKey } from '../../shared/constants';
+import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '../../shared/constants';
 
 interface BadgeDef {
   icon: string;
@@ -22,6 +22,7 @@ interface XpState {
   titleKey: string;
   xpIntoLevel: number; // XP accumulated within the current level
   xpForLevelSpan: number; // XP needed to advance from this level to the next
+  xpPct: number; // 0-100 progress through the current level
 }
 
 export interface Gamification {
@@ -75,19 +76,22 @@ export function useGamification(): Gamification {
       comp += done;
       tot += total;
       earnedXp += p?.earnedXp ?? 0;
-      totalXp += p?.totalXp ?? 0;
+      totalXp += p?.totalXp ?? xpForCourse(c.lessons.length);
       pc[c.key] = { done, total };
     }
 
     const level = levelFromXp(earnedXp);
     const levelStart = xpForLevel(level);
+    const xpIntoLevel = earnedXp - levelStart;
+    const xpForLevelSpan = xpForLevel(level + 1) - levelStart;
     const xpState: XpState = {
       earnedXp,
       totalXp,
       level,
       titleKey: levelTitleKey(level),
-      xpIntoLevel: earnedXp - levelStart,
-      xpForLevelSpan: xpForLevel(level + 1) - levelStart,
+      xpIntoLevel,
+      xpForLevelSpan,
+      xpPct: xpForLevelSpan > 0 ? Math.round((xpIntoLevel / xpForLevelSpan) * 100) : 0,
     };
 
     return { totalCompleted: comp, totalLessons: tot, perCourse: pc, xp: xpState };

@@ -41,9 +41,9 @@ describe('baseLanguage', () => {
 });
 
 describe('xpForLesson', () => {
-  it('awards 10 for the first lesson and grows with position', () => {
-    expect(xpForLesson(0)).toBe(10);
-    expect(xpForLesson(5)).toBe(15);
+  it('awards 10 for the first lesson (sortOrder 1) and grows with position', () => {
+    expect(xpForLesson(1)).toBe(10);
+    expect(xpForLesson(6)).toBe(15);
   });
 });
 
@@ -55,9 +55,9 @@ describe('xpForCourse', () => {
     expect(xpForCourse(3)).toBe(33);
   });
 
-  it('matches the explicit sum of xpForLesson', () => {
+  it('matches the explicit sum of xpForLesson over 1-based sortOrders', () => {
     let sum = 0;
-    for (let i = 0; i < 12; i++) sum += xpForLesson(i);
+    for (let s = 1; s <= 12; s++) sum += xpForLesson(s);
     expect(xpForCourse(12)).toBe(sum);
   });
 });

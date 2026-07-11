@@ -24,7 +24,16 @@ export async function runTests(req: Request, res: Response, next: NextFunction) 
     // lesson complete, and only for a logged-in user (guests have no progress).
     // There is no client-writable completion endpoint, so this can't be spoofed.
     if (result.status === 'passed' && req.user?.id) {
-      await progressService.markComplete(req.user.id, courseKey, lessonSlug);
+      try {
+        await progressService.markComplete(req.user.id, courseKey, lessonSlug);
+      } catch (err) {
+        // Don't turn a passing verdict into a 500 — the student's next passing
+        // run (or refresh-triggered progress fetch) will reconcile.
+        console.error(
+          `[tests] failed to persist completion for user ${req.user.id} on ${courseKey}/${lessonSlug}:`,
+          err,
+        );
+      }
     }
     res.json(result);
   } catch (err) {

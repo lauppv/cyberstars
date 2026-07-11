@@ -147,10 +147,10 @@ export function LessonPage() {
   useEffect(() => {
     if (lessonCompleted && justMarkedRef.current) {
       justMarkedRef.current = false;
-      const idx = course?.lessons.findIndex((l) => l.slug === lesson) ?? -1;
+      const meta = course?.lessons.find((l) => l.slug === lesson);
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
       const base = isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete');
-      const xpGain = idx >= 0 ? t('lesson.xpGained', { xp: xpForLesson(idx) }) : '';
+      const xpGain = meta ? t('lesson.xpGained', { xp: xpForLesson(meta.sortOrder) }) : '';
       setToastData({
         icon: isLast ? '🏆' : '✅',
         title: xpGain ? `${base} ${xpGain}` : base,
@@ -307,12 +307,17 @@ export function LessonPage() {
                         {t('lesson.completed')}
                       </span>
                     )}
-                    {currentIndex >= 0 && (
+                    {currentIndex >= 0 && !isAlgo && (
                       <span
                         className={`ml-auto text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
-                        title={t('common.xpReward', { xp: xpForLesson(currentIndex) })}
+                        title={t('common.xpReward', {
+                          xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                        })}
                       >
-                        ⭐ {t('common.xpReward', { xp: xpForLesson(currentIndex) })}
+                        ⭐{' '}
+                        {t('common.xpReward', {
+                          xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                        })}
                       </span>
                     )}
                   </div>

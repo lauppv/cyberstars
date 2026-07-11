@@ -36,6 +36,7 @@ vi.mock('../../hooks/useGamification', () => ({
       titleKey: 'level.title.2',
       xpIntoLevel: 20,
       xpForLevelSpan: 300,
+      xpPct: 7,
     },
   }),
 }));
