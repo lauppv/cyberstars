@@ -1,0 +1,25 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "erou1" },
+      { "kind": "variable", "name": "erou2" },
+      { "kind": "variable", "name": "erou3" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "erou1": "Lance Vance", "erou2": "Diaz", "erou3": "Mercedes" }
+    },
+    {
+      "inject": { "erou1": "Tommy Vercetti", "erou2": "Ken Rosenberg", "erou3": "Kent Paul" }
+    },
+    {
+      "inject": { "erou1": "Sonny Forelli", "erou2": "Avery Carrington", "erou3": "Phil Cassidy" }
+    },
+    {
+      "inject": { "erou1": "Cortez", "erou2": "Candy Suxxx", "erou3": "Umberto Robina" }
+    }
+  ]
+}

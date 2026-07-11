@@ -6,7 +6,7 @@ Combină **print**, **variabile (numere și șiruri)** și **concatenarea șirur
 
 Tocmai a sosit o încărcătură la depozitul de provizii al stației. Înainte ca lăzile să fie depozitate, afișează un bon oficial pentru evidențele intendentului.
 
-Creează variabile pentru cele trei produse (numele și prețul fiecăruia) și pentru taxă:
+Creează variabile pentru cele trei produse și pentru taxă — numește-le `produs1`/`pret1`, `produs2`/`pret2`, `produs3`/`pret3` și `taxa`:
 
 - **Modul oxigen** — preț **999.99**
 - **Filtru apa** — preț **29.50**

@@ -1,0 +1,46 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "numeNava" },
+      { "kind": "variable", "name": "numeMisiune" },
+      { "kind": "variable", "name": "incarcaturaSecreta" },
+      { "kind": "variable", "name": "putereMax" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "numeNava": "Voyager",
+        "numeMisiune": "Deep Space Exploration",
+        "incarcaturaSecreta": "TopSecret-Alpha-7",
+        "putereMax": 9001
+      }
+    },
+    {
+      "inject": {
+        "numeNava": "Nebula",
+        "numeMisiune": "Asteroid Survey",
+        "incarcaturaSecreta": "Crate-X-99",
+        "putereMax": 450
+      }
+    },
+    {
+      "inject": {
+        "numeNava": "Aurora",
+        "numeMisiune": "Rescue Run",
+        "incarcaturaSecreta": "Omega-Files",
+        "putereMax": 0
+      }
+    },
+    {
+      "inject": {
+        "numeNava": "Star Hopper",
+        "numeMisiune": "Supply Loop",
+        "incarcaturaSecreta": "Blue-Box-3",
+        "putereMax": 12000
+      }
+    }
+  ]
+}

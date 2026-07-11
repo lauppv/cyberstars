@@ -157,7 +157,7 @@ Use whichever you prefer — `String.format()` is great when you want to store t
 
 The station’s arcade just finished a tournament. Print the winner’s stats on a single line.
 
-Create three variables: the player’s name (String), the total score (int), and the performance rating (double). Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use **+** or **String.format()** — whichever you prefer.
+Create three variables: `name` (String) for the player’s name, `score` (int) for the total score, and `rating` (double) for the performance rating. Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use **+** or **String.format()** — whichever you prefer.
 
 **Example**
 

@@ -1,0 +1,61 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "product1" },
+      { "kind": "variable", "name": "price1" },
+      { "kind": "variable", "name": "product2" },
+      { "kind": "variable", "name": "price2" },
+      { "kind": "variable", "name": "product3" },
+      { "kind": "variable", "name": "price3" },
+      { "kind": "variable", "name": "tax" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "product1": "Oxygen module",
+        "price1": 999.99,
+        "product2": "Water filter",
+        "price2": 29.5,
+        "product3": "Solar battery",
+        "price3": 5.99,
+        "tax": 19
+      }
+    },
+    {
+      "inject": {
+        "product1": "Fuel cell",
+        "price1": 450.25,
+        "product2": "Air filter",
+        "price2": 12.75,
+        "product3": "Battery pack",
+        "price3": 99.99,
+        "tax": 10
+      }
+    },
+    {
+      "inject": {
+        "product1": "Nav computer",
+        "price1": 1.01,
+        "product2": "Cable kit",
+        "price2": 2.02,
+        "product3": "Duct tape",
+        "price3": 3.03,
+        "tax": 21
+      }
+    },
+    {
+      "inject": {
+        "product1": "Space snack",
+        "price1": 0.99,
+        "product2": "Water pouch",
+        "price2": 0.49,
+        "product3": "Gum",
+        "price3": 0.05,
+        "tax": 5
+      }
+    }
+  ]
+}

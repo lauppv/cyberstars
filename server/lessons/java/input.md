@@ -94,6 +94,8 @@ Every crew member arriving at the station must scan in at the terminal. The syst
 
 Create a **Scanner**, read the name first (first line), then the age (second line). Then build and print the welcome message using **+**.
 
+Read the input directly — don't print a question before reading. The check-in terminal stays silent until the welcome line.
+
 **Input** (typed by the user when the program runs):
 
 - First line — crew member's name

@@ -117,7 +117,7 @@ Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
 
 Consola de diagnostic a stației are nevoie de o citire aritmetică rapidă a două valori de la senzori.
 
-Creează două variabile `int` care să stocheze două numere întregi. Apoi afișează, fiecare pe propria linie, rezultatul pentru: adunare, scădere, înmulțire, împărțire întreagă și rest.
+Creează două variabile `int` numite `a` și `b` (cu orice valori vrei). Apoi afișează, fiecare pe propria linie, rezultatul pentru: adunare, scădere, înmulțire, împărțire întreagă și rest.
 
 **Exemplu**
 
