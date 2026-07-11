@@ -362,7 +362,7 @@ export function HomePage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-3xl mx-auto text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 max-w-4xl mx-auto text-left">
             <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
               <div className="text-2xl mb-2">📖</div>
               <div className="font-semibold mb-1">{t('home.marketing.readCard')}</div>
@@ -377,6 +377,11 @@ export function HomePage() {
               <div className="text-2xl mb-2">⚡</div>
               <div className="font-semibold mb-1">{t('home.marketing.runCard')}</div>
               <div className="text-sm text-[var(--text2)]">{t('home.marketing.runCardDesc')}</div>
+            </div>
+            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+              <div className="text-2xl mb-2">⭐</div>
+              <div className="font-semibold mb-1">{t('home.marketing.levelCard')}</div>
+              <div className="text-sm text-[var(--text2)]">{t('home.marketing.levelCardDesc')}</div>
             </div>
           </div>
         </div>
