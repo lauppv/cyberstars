@@ -243,6 +243,40 @@ describe('runLessonTests', () => {
     expect(res.status).toBe('passed');
   });
 
+  it('dispatches java lessons to the java runner', async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program({ stdout: '0\n' }), solution: program({ stdout: '0\n' }) },
+      ],
+    });
+
+    const res = await runLessonTests('user:1', 'java', 'variables-int', 'code');
+    expect(res.status).toBe('passed');
+    expect(
+      mockReadFileSync.mock.calls.some((c) => String(c[0]).endsWith('lesson-tests.runner.java')),
+    ).toBe(true);
+    // Runner source lands in /work; the bootstrap compiles it once into
+    // /tmp/_judge and hands stdout over to the runner via exec.
+    expect((mockDockerExec.mock.calls[0][0] as string[]).join(' ')).toContain(
+      'cat > /work/Runner.java',
+    );
+    const runArgs = mockDockerExec.mock.calls[2][0] as string[];
+    expect(runArgs).toContain('sh');
+    expect(runArgs.join(' ')).toContain('javac -d /tmp/_judge /work/Runner.java');
+  });
+
+  it('404s when the course language has no judge runner', async () => {
+    stubFiles();
+    await expect(runLessonTests('user:1', 'c', 'print', 'code')).rejects.toMatchObject({
+      statusCode: 404,
+    });
+    expect(mockAcquire).not.toHaveBeenCalled();
+  });
+
   it('409s when the owner already has a run in progress', async () => {
     stubFiles();
     mockAcquire.mockRejectedValue(new Error('A run is already in progress'));
