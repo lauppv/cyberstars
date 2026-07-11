@@ -1,0 +1,48 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Carte" },
+      { "kind": "call", "name": "Film" },
+      { "kind": "variable", "name": "titlu1" },
+      { "kind": "variable", "name": "autor1" },
+      { "kind": "variable", "name": "titlu2" },
+      { "kind": "variable", "name": "regizor2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "titlu1": "Cronicile din Vice City",
+        "autor1": "Tommy Vercetti",
+        "titlu2": "Top Gun",
+        "regizor2": "Tony Scott"
+      }
+    },
+    {
+      "inject": {
+        "titlu1": "Manualul Mafiotului",
+        "autor1": "Sonny Forelli",
+        "titlu2": "Scarface",
+        "regizor2": "Brian De Palma"
+      }
+    },
+    {
+      "inject": {
+        "titlu1": "Plimbari cu barca",
+        "autor1": "Ricardo Diaz",
+        "titlu2": "Miami Heat",
+        "regizor2": "Michael Mann"
+      }
+    },
+    {
+      "inject": {
+        "titlu1": "Tipografia",
+        "autor1": "Earnest Kelly",
+        "titlu2": "The Driver",
+        "regizor2": "Walter Hill"
+      }
+    }
+  ]
+}

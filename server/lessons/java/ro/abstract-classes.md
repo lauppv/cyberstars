@@ -133,7 +133,7 @@ Creează o clasă abstractă `Vehicul` cu un câmp `String nume`, un constructor
 1. `Sportiva` — `vitezaMaxima()` returnează `240`
 2. `Motocicleta` — `vitezaMaxima()` returnează `200`
 
-În `main`, creează o `Sportiva` numită `"Infernus"` și o `Motocicleta` numită `"Angel"`. Afișează fiecare în formatul `Nume: X km/h`.
+În `main`, stochează cele două nume în variabilele `nume1` și `nume2` (pornește cu `"Infernus"` și `"Angel"`). Creează o `Sportiva` din `nume1` și o `Motocicleta` din `nume2`. Afișează fiecare în formatul `Nume: X km/h`.
 
 **Exemplu**
 

@@ -114,7 +114,7 @@ Tommy își strigă banda la apel. Fiecare membru răspunde în felul lui, dar t
 
 Creează clasele `Criminal`, `Sofer` și `Tragator` (Criminal are `vorbeste()` care afișează „..."; Sofer face override cu „Sunt soferul " + nume; Tragator face override cu „Sunt tragatorul " + nume).
 
-În `main`, creează un array `Criminal[]` care conține un `Sofer` numit `"Tommy"` și un `Tragator` numit `"Lance"`. Parcurge array-ul și apelează `vorbeste()` pe fiecare.
+În `main`, stochează cele două nume în variabilele `nume1` și `nume2` (pornește cu `"Tommy"` și `"Lance"`). Creează un array `Criminal[]` care conține un `Sofer` din `nume1` și un `Tragator` din `nume2`. Parcurge array-ul și apelează `vorbeste()` pe fiecare.
 
 **Exemplu**
 

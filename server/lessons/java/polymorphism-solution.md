@@ -19,7 +19,10 @@ class Gunman extends Criminal {
 
 public class Main {
     public static void main(String[] args) {
-        Criminal[] crew = { new Driver("Tommy"), new Gunman("Lance") };
+        String name1 = "Tommy";
+        String name2 = "Lance";
+
+        Criminal[] crew = { new Driver(name1), new Gunman(name2) };
 
         for (Criminal c : crew) {
             c.speak();

@@ -1,0 +1,54 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Sofer" },
+      { "kind": "call", "name": "MembruEchipa" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "masina1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "nume3" },
+      { "kind": "variable", "name": "masina3" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Lance Vance",
+        "masina1": "Infernus",
+        "nume2": "Mercedes Cortez",
+        "nume3": "Hilary King",
+        "masina3": "Sentinel"
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Ken Rosenberg",
+        "masina1": "Stretch",
+        "nume2": "Ricardo Diaz",
+        "nume3": "Phil Cassidy",
+        "masina3": "Patriot"
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Cam Jones",
+        "masina1": "Sabre",
+        "nume2": "Umberto Robina",
+        "nume3": "Tommy Vercetti",
+        "masina3": "Cheetah"
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Mitch Baker",
+        "masina1": "Angel",
+        "nume2": "Sonny Forelli",
+        "nume3": "Love Fist",
+        "masina3": "Limo"
+      }
+    }
+  ]
+}

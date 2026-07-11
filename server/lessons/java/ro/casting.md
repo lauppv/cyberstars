@@ -134,7 +134,7 @@ Referință rapidă
 
 Tommy are o echipă de oameni în Vice City. Fiecare are un nume, dar unii sunt șoferi și știu să conducă o mașină anume. Lance Vance e șofer pe Infernus, Mercedes Cortez nu conduce, iar Hilary King e șofer pe Sentinel
 
-Construiește o clasă de bază pentru membrii echipei și una derivată pentru șoferi. În `main`, creează câțiva membri amestecați, parcurge-i și folosește `instanceof` ca să afișezi mașina doar la șoferi
+Construiește o clasă de bază `MembruEchipa` (cu un `nume`) și una derivată `Sofer` (adaugă o `masina`). În `main`, stochează datele echipei în variabile — `nume1` și `masina1` pentru primul șofer, `nume2` pentru membrul simplu, `nume3` și `masina3` pentru al doilea șofer (pornește cu Lance/Infernus, Mercedes, Hilary/Sentinel). Pune-i într-un tablou `MembruEchipa[]` (un `Sofer` din `nume1`/`masina1`, un `MembruEchipa` din `nume2`, un `Sofer` din `nume3`/`masina3`), parcurge-l și folosește `instanceof` ca să afișezi mașina doar la șoferi
 
 **Exemplu**
 

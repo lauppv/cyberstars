@@ -1,0 +1,54 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Driver" },
+      { "kind": "call", "name": "CrewMember" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "car1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "name3" },
+      { "kind": "variable", "name": "car3" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Lance Vance",
+        "car1": "Infernus",
+        "name2": "Mercedes Cortez",
+        "name3": "Hilary King",
+        "car3": "Sentinel"
+      }
+    },
+    {
+      "inject": {
+        "name1": "Ken Rosenberg",
+        "car1": "Stretch",
+        "name2": "Ricardo Diaz",
+        "name3": "Phil Cassidy",
+        "car3": "Patriot"
+      }
+    },
+    {
+      "inject": {
+        "name1": "Cam Jones",
+        "car1": "Sabre",
+        "name2": "Umberto Robina",
+        "name3": "Tommy Vercetti",
+        "car3": "Cheetah"
+      }
+    },
+    {
+      "inject": {
+        "name1": "Mitch Baker",
+        "car1": "Angel",
+        "name2": "Sonny Forelli",
+        "name3": "Love Fist",
+        "car3": "Limo"
+      }
+    }
+  ]
+}

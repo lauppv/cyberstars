@@ -35,8 +35,12 @@ class Spalatorie extends Afacere {
 
 public class Main {
     public static void main(String[] args) {
-        Club c = new Club(120);
-        Spalatorie s = new Spalatorie(30, 8);
+        int clienti = 120;
+        int masini = 30;
+        int pret = 8;
+
+        Club c = new Club(clienti);
+        Spalatorie s = new Spalatorie(masini, pret);
         System.out.println("Incasari club: " + c.incasari());
         System.out.println("Incasari spalatorie: " + s.incasari());
     }

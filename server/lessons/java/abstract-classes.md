@@ -133,7 +133,7 @@ Create an abstract class `Vehicle` with a `String name` field, a constructor, an
 1. `SportsCar` — `topSpeed()` returns `240`
 2. `Motorcycle` — `topSpeed()` returns `200`
 
-In `main`, create a `SportsCar` named `"Infernus"` and a `Motorcycle` named `"Angel"`. Print each in the format `Name: X km/h`.
+In `main`, store the two names in variables `name1` and `name2` (start with `"Infernus"` and `"Angel"`). Create a `SportsCar` from `name1` and a `Motorcycle` from `name2`. Print each in the format `Name: X km/h`.
 
 **Example**
 

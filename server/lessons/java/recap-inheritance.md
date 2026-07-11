@@ -21,7 +21,7 @@ Then create three concrete subclasses:
 - `Truck` — `fuelPerKm()` returns `5`, `type()` returns `"Truck"`
 - `Motorcycle` — `fuelPerKm()` returns `1`, `type()` returns `"Motorcycle"`
 
-In `main`, put a few vehicles in a `Vehicle[]` array, drive them however you like, then print each one. Play with the distances so you force at least one `"Not enough fuel!"`.
+In `main`, store the three vehicle names in `name1`, `name2`, `name3` and the four driving distances in `km1`, `km2`, `km3`, `km4`. Put a `SportsCar` (from `name1`), a `Truck` (from `name2`), and a `Motorcycle` (from `name3`) in a `Vehicle[]` array, then drive: the first vehicle `km1`, the second `km2`, the second again `km3`, and the third `km4`. Finally print each one. The distances are chosen so the second vehicle's second drive can force a `"Not enough fuel!"`.
 
 **Example**
 

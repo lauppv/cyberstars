@@ -51,16 +51,24 @@ class Motocicleta extends Vehicul {
 
 public class Main {
     public static void main(String[] args) {
+        String nume1 = "Infernus";
+        String nume2 = "Linerunner";
+        String nume3 = "Angel";
+        int km1 = 15;
+        int km2 = 15;
+        int km3 = 20;
+        int km4 = 15;
+
         Vehicul[] flota = {
-            new Sportiva("Infernus"),
-            new Camion("Linerunner"),
-            new Motocicleta("Angel")
+            new Sportiva(nume1),
+            new Camion(nume2),
+            new Motocicleta(nume3)
         };
 
-        flota[0].condu(15);
-        flota[1].condu(15);
-        flota[1].condu(20);
-        flota[2].condu(15);
+        flota[0].condu(km1);
+        flota[1].condu(km2);
+        flota[1].condu(km3);
+        flota[2].condu(km4);
 
         for (Vehicul v : flota) {
             System.out.println(v);

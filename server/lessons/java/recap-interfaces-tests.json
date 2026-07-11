@@ -1,0 +1,79 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Business" },
+      { "kind": "call", "name": "Vehicle" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "value1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "value2" },
+      { "kind": "variable", "name": "speed2" },
+      { "kind": "variable", "name": "name3" },
+      { "kind": "variable", "name": "value3" },
+      { "kind": "variable", "name": "name4" },
+      { "kind": "variable", "name": "value4" },
+      { "kind": "variable", "name": "speed4" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Malibu Club",
+        "value1": 120000,
+        "name2": "Infernus",
+        "value2": 150000,
+        "speed2": 240,
+        "name3": "Print Works",
+        "value3": 70000,
+        "name4": "Cheetah",
+        "value4": 110000,
+        "speed4": 230
+      }
+    },
+    {
+      "inject": {
+        "name1": "Pole Position",
+        "value1": 85000,
+        "name2": "Banshee",
+        "value2": 95000,
+        "speed2": 250,
+        "name3": "Cherry Popper",
+        "value3": 60000,
+        "name4": "Stinger",
+        "value4": 130000,
+        "speed4": 220
+      }
+    },
+    {
+      "inject": {
+        "name1": "Kaufman Cabs",
+        "value1": 45000,
+        "name2": "Sabre",
+        "value2": 40000,
+        "speed2": 200,
+        "name3": "Boatyard",
+        "value3": 90000,
+        "name4": "Deluxo",
+        "value4": 160000,
+        "speed4": 260
+      }
+    },
+    {
+      "inject": {
+        "name1": "Sunshine Autos",
+        "value1": 200000,
+        "name2": "Comet",
+        "value2": 175000,
+        "speed2": 245,
+        "name3": "Ice Cream Factory",
+        "value3": 55000,
+        "name4": "Hotring Racer",
+        "value4": 300000,
+        "speed4": 290
+      }
+    }
+  ]
+}

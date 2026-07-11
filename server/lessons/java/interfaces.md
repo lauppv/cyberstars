@@ -144,7 +144,7 @@ Tommy keeps a mixed collection in his Vice City mansion: books and movies. He wa
 1. Create an interface `Printable` with a method `printInfo()`
 2. Create a `Book` class with `title` and `author` fields that implements `Printable` — `printInfo()` prints `"Book: TITLE by AUTHOR"`
 3. Create a `Movie` class with `title` and `director` fields that implements `Printable` — `printInfo()` prints `"Movie: TITLE directed by DIRECTOR"`
-4. In `main`, create a `Book("Vice City Chronicles", "Tommy Vercetti")` and a `Movie("Top Gun", "Tony Scott")`, then call `printInfo()` on both
+4. In `main`, store the book's title and author in `title1` and `author1`, and the movie's title and director in `title2` and `director2` (start with `"Vice City Chronicles"`/`"Tommy Vercetti"` and `"Top Gun"`/`"Tony Scott"`). Create a `Book` from `title1` and `author1` and a `Movie` from `title2` and `director2`, then call `printInfo()` on both
 
 **Output**
 

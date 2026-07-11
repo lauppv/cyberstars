@@ -144,7 +144,7 @@ Tommy ține în vila lui din Vice City o colecție amestecată: cărți și film
 1. Creează o interfață `Afisabil` cu o metodă `afiseazaInfo()`
 2. Creează o clasă `Carte` cu câmpurile `titlu` și `autor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Carte: TITLU de AUTOR"`
 3. Creează o clasă `Film` cu câmpurile `titlu` și `regizor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Film: TITLU regizat de REGIZOR"`
-4. În `main`, creează un `Carte("Cronicile din Vice City", "Tommy Vercetti")` și un `Film("Top Gun", "Tony Scott")`, apoi apelează `afiseazaInfo()` pe amândouă
+4. În `main`, stochează titlul și autorul cărții în `titlu1` și `autor1`, iar titlul și regizorul filmului în `titlu2` și `regizor2` (pornește cu `"Cronicile din Vice City"`/`"Tommy Vercetti"` și `"Top Gun"`/`"Tony Scott"`). Creează o `Carte` din `titlu1` și `autor1` și un `Film` din `titlu2` și `regizor2`, apoi apelează `afiseazaInfo()` pe amândouă
 
 **Ieșire**
 

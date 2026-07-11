@@ -134,7 +134,7 @@ Quick reference
 
 Tommy has a crew of people in Vice City. Everyone has a name, but some are drivers and know how to handle a specific car. Lance Vance drives an Infernus, Mercedes Cortez doesn't drive, and Hilary King drives a Sentinel
 
-Build a base class for crew members and a derived class for drivers. In `main`, create a few mixed members, iterate through them, and use `instanceof` to show the car only for drivers
+Build a base class `CrewMember` (with a `name`) and a derived class `Driver` (adds a `car`). In `main`, store the crew's data in variables — `name1` and `car1` for the first driver, `name2` for the plain member, `name3` and `car3` for the second driver (start with Lance/Infernus, Mercedes, Hilary/Sentinel). Put them in a `CrewMember[]` array (a `Driver` from `name1`/`car1`, a `CrewMember` from `name2`, a `Driver` from `name3`/`car3`), iterate through it, and use `instanceof` to show the car only for drivers
 
 **Example**
 

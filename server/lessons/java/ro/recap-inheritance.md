@@ -21,7 +21,7 @@ Apoi creează trei subclase concrete:
 - `Camion` — `consumPeKm()` returnează `5`, `tip()` returnează `"Camion"`
 - `Motocicleta` — `consumPeKm()` returnează `1`, `tip()` returnează `"Motocicleta"`
 
-În `main`, pune câteva vehicule într-un tablou `Vehicul[]`, condu-le cât vrei tu, apoi afișează fiecare vehicul. Joacă-te cu kilometrii cât să forțezi măcar un `"Combustibil insuficient!"`.
+În `main`, stochează cele trei nume de vehicule în `nume1`, `nume2`, `nume3` și cele patru distanțe în `km1`, `km2`, `km3`, `km4`. Pune o `Sportiva` (din `nume1`), un `Camion` (din `nume2`) și o `Motocicleta` (din `nume3`) într-un tablou `Vehicul[]`, apoi condu: primul vehicul `km1`, al doilea `km2`, al doilea din nou `km3` și al treilea `km4`. La final afișează fiecare vehicul. Distanțele sunt alese astfel încât a doua conducere a celui de-al doilea vehicul să poată forța un `"Combustibil insuficient!"`.
 
 **Exemplu**
 

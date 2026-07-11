@@ -1,0 +1,22 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Club" },
+      { "kind": "call", "name": "Spalatorie" },
+      { "kind": "function", "name": "incasari" },
+      { "kind": "variable", "name": "clienti" },
+      { "kind": "variable", "name": "masini" },
+      { "kind": "variable", "name": "pret" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "clienti": 120, "masini": 30, "pret": 8 }
+    },
+    { "inject": { "clienti": 0, "masini": 10, "pret": 15 } },
+    { "inject": { "clienti": 50, "masini": 100, "pret": 3 } },
+    { "inject": { "clienti": 200, "masini": 1, "pret": 999 } }
+  ]
+}

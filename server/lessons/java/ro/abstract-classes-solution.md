@@ -19,8 +19,11 @@ class Motocicleta extends Vehicul {
 
 public class Main {
     public static void main(String[] args) {
-        Sportiva infernus = new Sportiva("Infernus");
-        Motocicleta angel = new Motocicleta("Angel");
+        String nume1 = "Infernus";
+        String nume2 = "Angel";
+
+        Sportiva infernus = new Sportiva(nume1);
+        Motocicleta angel = new Motocicleta(nume2);
         System.out.println(infernus.nume + ": " + infernus.vitezaMaxima() + " km/h");
         System.out.println(angel.nume + ": " + angel.vitezaMaxima() + " km/h");
     }

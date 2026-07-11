@@ -19,7 +19,10 @@ class Tragator extends Criminal {
 
 public class Main {
     public static void main(String[] args) {
-        Criminal[] banda = { new Sofer("Tommy"), new Tragator("Lance") };
+        String nume1 = "Tommy";
+        String nume2 = "Lance";
+
+        Criminal[] banda = { new Sofer(nume1), new Tragator(nume2) };
 
         for (Criminal c : banda) {
             c.vorbeste();

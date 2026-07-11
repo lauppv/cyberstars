@@ -19,8 +19,11 @@ class Motorcycle extends Vehicle {
 
 public class Main {
     public static void main(String[] args) {
-        SportsCar infernus = new SportsCar("Infernus");
-        Motorcycle angel = new Motorcycle("Angel");
+        String name1 = "Infernus";
+        String name2 = "Angel";
+
+        SportsCar infernus = new SportsCar(name1);
+        Motorcycle angel = new Motorcycle(name2);
         System.out.println(infernus.name + ": " + infernus.topSpeed() + " km/h");
         System.out.println(angel.name + ": " + angel.topSpeed() + " km/h");
     }

@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "SportsCar" },
+      { "kind": "call", "name": "Motorcycle" },
+      { "kind": "function", "name": "topSpeed" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "name1": "Infernus", "name2": "Angel" }
+    },
+    { "inject": { "name1": "Cheetah", "name2": "PCJ600" } },
+    { "inject": { "name1": "Banshee", "name2": "Freeway" } },
+    { "inject": { "name1": "Comet", "name2": "Sanchez" } }
+  ]
+}

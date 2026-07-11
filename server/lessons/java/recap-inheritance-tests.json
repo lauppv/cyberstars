@@ -1,0 +1,68 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "SportsCar" },
+      { "kind": "call", "name": "Truck" },
+      { "kind": "call", "name": "Motorcycle" },
+      { "kind": "function", "name": "drive" },
+      { "kind": "function", "name": "type" },
+      { "kind": "function", "name": "fuelPerKm" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "name3" },
+      { "kind": "variable", "name": "km1" },
+      { "kind": "variable", "name": "km2" },
+      { "kind": "variable", "name": "km3" },
+      { "kind": "variable", "name": "km4" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Infernus",
+        "name2": "Linerunner",
+        "name3": "Angel",
+        "km1": 15,
+        "km2": 15,
+        "km3": 20,
+        "km4": 15
+      }
+    },
+    {
+      "inject": {
+        "name1": "Cheetah",
+        "name2": "Flatbed",
+        "name3": "PCJ600",
+        "km1": 40,
+        "km2": 10,
+        "km3": 5,
+        "km4": 90
+      }
+    },
+    {
+      "inject": {
+        "name1": "Banshee",
+        "name2": "Packer",
+        "name3": "Freeway",
+        "km1": 0,
+        "km2": 20,
+        "km3": 1,
+        "km4": 100
+      }
+    },
+    {
+      "inject": {
+        "name1": "Comet",
+        "name2": "Yankee",
+        "name3": "Sanchez",
+        "km1": 50,
+        "km2": 21,
+        "km3": 1,
+        "km4": 60
+      }
+    }
+  ]
+}

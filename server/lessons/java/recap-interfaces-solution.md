@@ -43,11 +43,21 @@ class Vehicle implements Asset {
 
 public class Main {
     public static void main(String[] args) {
+        String name1 = "Malibu Club";
+        int value1 = 120000;
+        String name2 = "Infernus";
+        int value2 = 150000;
+        int speed2 = 240;
+        String name3 = "Print Works";
+        int value3 = 70000;
+        String name4 = "Cheetah";
+        int value4 = 110000;
+        int speed4 = 230;
         Asset[] assets = {
-            new Business("Malibu Club", 120000, Status.ACTIVE),
-            new Vehicle("Infernus", 150000, Status.ACTIVE, 240),
-            new Business("Print Works", 70000, Status.RENOVATION),
-            new Vehicle("Cheetah", 110000, Status.CLOSED, 230)
+            new Business(name1, value1, Status.ACTIVE),
+            new Vehicle(name2, value2, Status.ACTIVE, speed2),
+            new Business(name3, value3, Status.RENOVATION),
+            new Vehicle(name4, value4, Status.CLOSED, speed4)
         };
         for (Asset a : assets) {
             a.display();

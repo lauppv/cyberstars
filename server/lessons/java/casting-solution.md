@@ -16,10 +16,15 @@ class Driver extends CrewMember {
 
 public class Main {
     public static void main(String[] args) {
+        String name1 = "Lance Vance";
+        String car1 = "Infernus";
+        String name2 = "Mercedes Cortez";
+        String name3 = "Hilary King";
+        String car3 = "Sentinel";
         CrewMember[] crew = {
-            new Driver("Lance Vance", "Infernus"),
-            new CrewMember("Mercedes Cortez"),
-            new Driver("Hilary King", "Sentinel")
+            new Driver(name1, car1),
+            new CrewMember(name2),
+            new Driver(name3, car3)
         };
         for (CrewMember m : crew) {
             System.out.println("Name: " + m.name);

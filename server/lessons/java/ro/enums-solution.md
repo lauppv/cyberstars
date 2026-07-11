@@ -22,8 +22,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        for (Stare s : Stare.values()) {
-            descrieStare(s);
+        String[] nume = { "Malibu Club", "Boatyard", "Print Works", "Kaufman Cabs" };
+        Stare[] stari = Stare.values();
+        for (int i = 0; i < stari.length; i++) {
+            System.out.print(nume[i] + " - ");
+            descrieStare(stari[i]);
         }
     }
 }
