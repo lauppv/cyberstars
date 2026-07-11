@@ -74,7 +74,9 @@
   },
   "common": {
     "loading": "Se încarcă...",
-    "close": "Închide"
+    "close": "Închide",
+    "xpTotal": "{{xp}} XP",
+    "xpReward": "+{{xp}} XP"
   },
   "courses": {
     "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
@@ -334,6 +336,8 @@
     "activeCourses": "Cursuri active",
     "badges": "Insigne",
     "streak": "Zile consecutive",
+    "xp": "XP",
+    "levelProgress": "{{current}} / {{needed}} XP până la nivelul {{next}}",
     "memberSince": "Membru din {{date}}",
     "security": "Securitate",
     "changePassword": "Schimbă parola",
@@ -559,10 +563,6 @@
     "completed": "✓ Finalizat",
     "previous": "← Anterioara",
     "next": "Următoarea →",
-    "marking": "Se marchează...",
-    "markComplete": "✅ Marchează ca finalizat",
-    "unmark": "↩️ Anulează finalizarea",
-    "unmarkTitle": "Apasă pentru a anula",
     "actions": "Acțiuni",
     "resetTitle": "Resetează codul",
     "reset": "↺ Resetează",
@@ -575,7 +575,8 @@
     "compare": "Compară",
     "yourCode": "Codul tău",
     "yourCodeEmpty": "Editorul este gol.",
-    "badgeEarned": "Insignă obținută: {{label}}"
+    "badgeEarned": "Insignă obținută: {{label}}",
+    "xpGained": "+{{xp}} XP"
   },
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",
@@ -630,6 +631,23 @@
     "silver": "Argint",
     "gold": "Aur",
     "notEarned": " (neobținută încă)"
+  },
+  "level": {
+    "label": "Nivel {{n}}",
+    "short": "Niv {{n}}",
+    "levelUp": "Nivel nou! {{title}}",
+    "title": {
+      "1": "Cadet",
+      "2": "Pilot",
+      "3": "Navigator",
+      "4": "Explorator",
+      "5": "Comandant",
+      "6": "Căpitan",
+      "7": "Amiral",
+      "8": "Pionier",
+      "9": "Legendă stelară",
+      "10": "Maestru al Cosmosului"
+    }
   },
   "tests": {
     "run": "🧪 Rulează testele",

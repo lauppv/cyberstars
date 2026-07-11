@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
+import { levelFromXp, xpForLevel, levelTitleKey } from '../../shared/constants';
 
 interface BadgeDef {
   icon: string;
@@ -14,9 +15,19 @@ interface BadgeDef {
   earned: boolean;
 }
 
+interface XpState {
+  earnedXp: number;
+  totalXp: number;
+  level: number;
+  titleKey: string;
+  xpIntoLevel: number; // XP accumulated within the current level
+  xpForLevelSpan: number; // XP needed to advance from this level to the next
+}
+
 export interface Gamification {
   totalCompleted: number;
   totalLessons: number;
+  xp: XpState;
   badges: BadgeDef[];
   newBadge: BadgeDef | null;
   dismissNewBadge: () => void;
@@ -50,9 +61,11 @@ export function useGamification(): Gamification {
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
-  const { totalCompleted, totalLessons, perCourse } = useMemo(() => {
+  const { totalCompleted, totalLessons, perCourse, xp } = useMemo(() => {
     let comp = 0;
     let tot = 0;
+    let earnedXp = 0;
+    let totalXp = 0;
     const pc: Record<string, { done: number; total: number }> = {};
 
     for (const c of courses) {
@@ -61,10 +74,23 @@ export function useGamification(): Gamification {
       const total = p?.total ?? c.lessons.length;
       comp += done;
       tot += total;
+      earnedXp += p?.earnedXp ?? 0;
+      totalXp += p?.totalXp ?? 0;
       pc[c.key] = { done, total };
     }
 
-    return { totalCompleted: comp, totalLessons: tot, perCourse: pc };
+    const level = levelFromXp(earnedXp);
+    const levelStart = xpForLevel(level);
+    const xpState: XpState = {
+      earnedXp,
+      totalXp,
+      level,
+      titleKey: levelTitleKey(level),
+      xpIntoLevel: earnedXp - levelStart,
+      xpForLevelSpan: xpForLevel(level + 1) - levelStart,
+    };
+
+    return { totalCompleted: comp, totalLessons: tot, perCourse: pc, xp: xpState };
   }, [courses, progressMap]);
 
   const badges: BadgeDef[] = useMemo(() => {
@@ -134,6 +160,7 @@ export function useGamification(): Gamification {
   return {
     totalCompleted,
     totalLessons,
+    xp,
     badges,
     newBadge,
     dismissNewBadge,

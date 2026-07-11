@@ -16,6 +16,12 @@ vi.mock('../context/ProgressContext', () => ({
   useProgress: () => ({ completedLessons: [] }),
 }));
 
+vi.mock('../hooks/useGamification', () => ({
+  useGamification: () => ({
+    xp: { earnedXp: 0, totalXp: 0, level: 1, titleKey: 'level.title.1' },
+  }),
+}));
+
 const { MOCK_INDEX, MOCK_EXTRAS } = vi.hoisted(() => {
   const hero = {
     slug: 'hero-story',

@@ -9,8 +9,6 @@ const router = Router();
 router.use(authenticateToken);
 
 router.get('/:courseKey', progressController.getCourseProgress);
-router.post('/:courseKey/:lessonSlug/complete', progressController.markComplete);
-router.delete('/:courseKey/:lessonSlug/complete', progressController.markIncomplete);
 router.get('/:courseKey/:lessonSlug/code', progressController.getSavedCode);
 router.put(
   '/:courseKey/:lessonSlug/code',

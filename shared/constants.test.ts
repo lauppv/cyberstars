@@ -5,6 +5,12 @@ import {
   MAIN_COURSE_KEYS,
   ALGO_COURSE_KEYS,
   ALL_COURSE_KEYS,
+  xpForLesson,
+  xpForCourse,
+  levelFromXp,
+  xpForLevel,
+  levelTitleKey,
+  MAX_TITLED_LEVEL,
 } from './constants';
 
 describe('progressPct', () => {
@@ -31,6 +37,65 @@ describe('baseLanguage', () => {
 
   it('leaves plain language keys untouched', () => {
     expect(baseLanguage('java')).toBe('java');
+  });
+});
+
+describe('xpForLesson', () => {
+  it('awards 10 for the first lesson and grows with position', () => {
+    expect(xpForLesson(0)).toBe(10);
+    expect(xpForLesson(5)).toBe(15);
+  });
+});
+
+describe('xpForCourse', () => {
+  it('sums the per-lesson awards for an n-lesson course', () => {
+    expect(xpForCourse(0)).toBe(0);
+    expect(xpForCourse(1)).toBe(10);
+    // 10 + 11 + 12 = 33
+    expect(xpForCourse(3)).toBe(33);
+  });
+
+  it('matches the explicit sum of xpForLesson', () => {
+    let sum = 0;
+    for (let i = 0; i < 12; i++) sum += xpForLesson(i);
+    expect(xpForCourse(12)).toBe(sum);
+  });
+});
+
+describe('levelFromXp / xpForLevel', () => {
+  it('starts everyone at level 1', () => {
+    expect(levelFromXp(0)).toBe(1);
+    expect(levelFromXp(99)).toBe(1);
+  });
+
+  it('crosses to level 2 at 100 XP (c=100 quadratic curve)', () => {
+    expect(levelFromXp(100)).toBe(2);
+    expect(levelFromXp(399)).toBe(2);
+    expect(levelFromXp(400)).toBe(3);
+  });
+
+  it('clamps negative XP to level 1', () => {
+    expect(levelFromXp(-50)).toBe(1);
+  });
+
+  it('xpForLevel is the inverse threshold of levelFromXp', () => {
+    for (let lvl = 1; lvl <= 12; lvl++) {
+      const threshold = xpForLevel(lvl);
+      expect(levelFromXp(threshold)).toBe(lvl);
+      if (threshold > 0) expect(levelFromXp(threshold - 1)).toBe(lvl - 1);
+    }
+  });
+});
+
+describe('levelTitleKey', () => {
+  it('maps a level to its i18n title key', () => {
+    expect(levelTitleKey(1)).toBe('level.title.1');
+    expect(levelTitleKey(5)).toBe('level.title.5');
+  });
+
+  it('clamps below 1 and above the max titled level', () => {
+    expect(levelTitleKey(0)).toBe('level.title.1');
+    expect(levelTitleKey(99)).toBe(`level.title.${MAX_TITLED_LEVEL}`);
   });
 });
 

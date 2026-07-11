@@ -2,6 +2,7 @@ import * as progressRepo from '../repositories/progress.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { assertValidCourse } from './paths.js';
+import { xpForLesson } from '../../shared/constants.js';
 import type { CourseProgress } from '../../shared/progress.js';
 
 // Guards lesson-level writes/reads: reject unknown courses and slugs so the
@@ -25,12 +26,18 @@ export async function getCourseProgress(
 
   const progressMap = new Map(progress.map((p) => [p.lessonSlug, p]));
 
+  let earnedXp = 0;
+  let totalXp = 0;
   const lessonItems = lessons.map((l) => {
     const p = progressMap.get(l.slug);
+    const completed = p?.completed ?? false;
+    const xp = xpForLesson(l.sortOrder);
+    totalXp += xp;
+    if (completed) earnedXp += xp;
     return {
       slug: l.slug,
       title: l.title,
-      completed: p?.completed ?? false,
+      completed,
       completedAt: p?.completedAt?.toISOString() ?? null,
       lastAccessedAt: p?.lastAccessedAt?.toISOString() ?? null,
     };
@@ -40,6 +47,8 @@ export async function getCourseProgress(
     courseKey,
     completed: progress.filter((p) => p.completed).length,
     total: lessons.length,
+    earnedXp,
+    totalXp,
     lessons: lessonItems,
   };
 }
@@ -51,15 +60,6 @@ export async function markComplete(
 ): Promise<void> {
   await assertLesson(courseKey, lessonSlug);
   await progressRepo.upsertProgress(userId, courseKey, lessonSlug, true);
-}
-
-export async function markIncomplete(
-  userId: number,
-  courseKey: string,
-  lessonSlug: string,
-): Promise<void> {
-  await assertLesson(courseKey, lessonSlug);
-  await progressRepo.upsertProgress(userId, courseKey, lessonSlug, false);
 }
 
 export async function saveCode(

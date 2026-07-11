@@ -187,6 +187,8 @@ describe('HomePage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 1,
           total: 2,
           lessons: [
@@ -229,6 +231,8 @@ describe('HomePage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 0,
           total: 2,
           lessons: [
@@ -270,6 +274,8 @@ describe('HomePage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 0,
           total: 2,
           lessons: [
@@ -352,6 +358,8 @@ describe('HomePage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 1,
           total: 2,
           lessons: [
@@ -400,6 +408,8 @@ describe('HomePage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 1,
           total: 2,
           lessons: [
@@ -414,6 +424,8 @@ describe('HomePage', () => {
         },
         c: {
           courseKey: 'c',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 0,
           total: 1,
           lessons: [
@@ -463,6 +475,8 @@ describe('HomePage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 5,
           total: 5,
           lessons: Array.from({ length: 5 }, (_, i) => ({

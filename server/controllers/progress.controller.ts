@@ -7,20 +7,6 @@ export async function getCourseProgress(req: Request, res: Response): Promise<vo
   res.json(progress);
 }
 
-export async function markComplete(req: Request, res: Response): Promise<void> {
-  const courseKey = req.params.courseKey as string;
-  const lessonSlug = req.params.lessonSlug as string;
-  await progressService.markComplete(req.user!.id, courseKey, lessonSlug);
-  res.json({ message: 'Lesson marked as complete' });
-}
-
-export async function markIncomplete(req: Request, res: Response): Promise<void> {
-  const courseKey = req.params.courseKey as string;
-  const lessonSlug = req.params.lessonSlug as string;
-  await progressService.markIncomplete(req.user!.id, courseKey, lessonSlug);
-  res.json({ message: 'Lesson marked as incomplete' });
-}
-
 export async function getSavedCode(req: Request, res: Response): Promise<void> {
   const courseKey = req.params.courseKey as string;
   const lessonSlug = req.params.lessonSlug as string;

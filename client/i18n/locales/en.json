@@ -74,7 +74,9 @@
   },
   "common": {
     "loading": "Loading...",
-    "close": "Close"
+    "close": "Close",
+    "xpTotal": "{{xp}} XP",
+    "xpReward": "+{{xp}} XP"
   },
   "courses": {
     "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
@@ -334,6 +336,8 @@
     "activeCourses": "Active Courses",
     "badges": "Badges",
     "streak": "Day Streak",
+    "xp": "XP",
+    "levelProgress": "{{current}} / {{needed}} XP to level {{next}}",
     "memberSince": "Member since {{date}}",
     "security": "Security",
     "changePassword": "Change password",
@@ -559,10 +563,6 @@
     "completed": "✓ Completed",
     "previous": "← Previous",
     "next": "Next →",
-    "marking": "Marking...",
-    "markComplete": "✅ Mark Complete",
-    "unmark": "↩️ Unmark Complete",
-    "unmarkTitle": "Click to undo",
     "actions": "Actions",
     "resetTitle": "Reset code",
     "reset": "↺ Reset",
@@ -575,7 +575,8 @@
     "compare": "Compare",
     "yourCode": "Your code",
     "yourCodeEmpty": "The editor is empty.",
-    "badgeEarned": "Badge earned: {{label}}"
+    "badgeEarned": "Badge earned: {{label}}",
+    "xpGained": "+{{xp}} XP"
   },
   "laniakea": {
     "introTitle": "Welcome aboard, captain.",
@@ -630,6 +631,23 @@
     "silver": "Silver",
     "gold": "Gold",
     "notEarned": " (not yet earned)"
+  },
+  "level": {
+    "label": "Level {{n}}",
+    "short": "Lv {{n}}",
+    "levelUp": "Level up! {{title}}",
+    "title": {
+      "1": "Cadet",
+      "2": "Pilot",
+      "3": "Navigator",
+      "4": "Explorer",
+      "5": "Commander",
+      "6": "Captain",
+      "7": "Admiral",
+      "8": "Pioneer",
+      "9": "Star Legend",
+      "10": "Cosmos Master"
+    }
   },
   "tests": {
     "run": "🧪 Run Tests",

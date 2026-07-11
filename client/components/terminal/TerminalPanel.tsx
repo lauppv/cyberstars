@@ -10,8 +10,6 @@ interface Props {
   onExecute: (cmd: string) => void;
   onReset: () => void;
   lessonCompleted?: boolean;
-  isMarking?: boolean;
-  onMarkComplete?: () => void;
   hasSolution?: boolean;
   onShowSolution?: () => void;
 }
@@ -24,8 +22,6 @@ export function TerminalPanel({
   onExecute,
   onReset,
   lessonCompleted,
-  isMarking,
-  onMarkComplete,
   hasSolution,
   onShowSolution,
 }: Props) {
@@ -136,21 +132,6 @@ export function TerminalPanel({
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                   >
                     {t('lesson.showSolution')}
-                  </button>
-                )}
-                {onMarkComplete && (
-                  <button
-                    role="menuitem"
-                    onClick={onMarkComplete}
-                    disabled={isMarking}
-                    title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none disabled:cursor-default disabled:opacity-70"
-                  >
-                    {isMarking
-                      ? t('lesson.marking')
-                      : lessonCompleted
-                        ? t('lesson.unmark')
-                        : t('lesson.markComplete')}
                   </button>
                 )}
                 <button

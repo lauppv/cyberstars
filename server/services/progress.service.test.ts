@@ -23,7 +23,7 @@ const mockCurriculumRepo = {
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
 
-const { getCourseProgress, markComplete, markIncomplete, saveCode, getSavedCode, trackAccess } =
+const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
   await import('./progress.service.js');
 
 beforeEach(() => {
@@ -54,6 +54,9 @@ describe('getCourseProgress', () => {
     expect(result.lessons).toHaveLength(3);
     expect(result.lessons[0].completed).toBe(true);
     expect(result.lessons[1].completed).toBe(false);
+    // XP derived from sortOrder: lesson 'a' (sortOrder 0) worth 10; total 10+11+12.
+    expect(result.earnedXp).toBe(10);
+    expect(result.totalXp).toBe(33);
   });
 
   it('returns zero progress when no lessons completed', async () => {
@@ -64,6 +67,8 @@ describe('getCourseProgress', () => {
 
     const result = await getCourseProgress(1, 'python');
     expect(result.completed).toBe(0);
+    expect(result.earnedXp).toBe(0);
+    expect(result.totalXp).toBe(10);
   });
 });
 
@@ -71,13 +76,6 @@ describe('markComplete', () => {
   it('delegates to repo', async () => {
     await markComplete(1, 'python', 'booleans');
     expect(mockProgressRepo.upsertProgress).toHaveBeenCalledWith(1, 'python', 'booleans', true);
-  });
-});
-
-describe('markIncomplete', () => {
-  it('delegates to repo with completed=false', async () => {
-    await markIncomplete(1, 'python', 'booleans');
-    expect(mockProgressRepo.upsertProgress).toHaveBeenCalledWith(1, 'python', 'booleans', false);
   });
 });
 
