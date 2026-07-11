@@ -188,7 +188,7 @@ Fists provoaca 10 daune
 
 Tommy ține o evidență a echipajului său din Vice City. Fiecare membru este înregistrat cu un nume și un scor — reputația lui pe străzi.
 
-Creează o **clasă** care reprezintă un membru al echipajului, cu un câmp pentru **nume** (String) și unul pentru **scor** (int). Scrie un **constructor** care primește ambele valori și le setează folosind `this`.
+Creează o **clasă** `Jucator` care reprezintă un membru al echipajului, cu un câmp pentru **nume** (String) și unul pentru **scor** (int). Scrie un **constructor** care primește ambele valori și le setează folosind `this`.
 
 În `main`, stochează mai întâi valorile în variabile locale — `nume1` și `scor1` pentru primul membru, `nume2` și `scor2` pentru al doilea. Apoi construiește **doi** membri pasând acele variabile constructorului și afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
 
