@@ -188,7 +188,7 @@ Fists deals 10 damage
 
 Tommy keeps a record of his Vice City crew. Each member is registered with a name and a score — their reputation on the streets.
 
-Create a **class** that represents a crew member, with a field for the **name** (String) and one for the **score** (int). Write a **constructor** that takes both values and sets them using `this`.
+Create a **class** `Player` that represents a crew member, with a field for the **name** (String) and one for the **score** (int). Write a **constructor** that takes both values and sets them using `this`.
 
 In `main`, first store the values in local variables — `name1` and `score1` for the first member, `name2` and `score2` for the second. Then build **two** members by passing those variables to the constructor, and print each one on its own line in the format `Name has Score points`.
 
