@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "zi" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "zi": "Luni" } },
+    { "inject": { "zi": "Vineri" } },
+    { "inject": { "zi": "Sambata" } },
+    { "inject": { "zi": "Duminica" } },
+    { "inject": { "zi": "Craciun" } }
+  ]
+}

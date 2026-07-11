@@ -6,7 +6,7 @@ Combine **if/else**, **if/else if** and **switch**
 
 Tommy has caused chaos in Vice City and the police are tracking his wanted level. The dispatch center needs a system that, given the number of wanted stars, reports **which force responds** and **how serious the situation is**.
 
-Store the number of stars in an integer variable. Then:
+Store the number of stars in an `int` variable named `stars`. Then:
 
 Use a **switch** on the number of stars to print the responding force:
 

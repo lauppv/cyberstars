@@ -103,7 +103,7 @@ Schimbă **utilizatorOnline** la **false** și rulează din nou. Citește noul r
 
 Senzorul de carenă al stației raportează temperatura de afară.
 
-Creează o variabilă `int` pentru temperatură. Apoi scrie un **if / else** care o verifică:
+Creează o variabilă `int` numită `temperatura` (cu orice valoare vrei). Apoi scrie un **if / else** care o verifică:
 
 - dacă temperatura este **mai mică de 0** → afișează `afara e ger`
 - altfel → afișează `apa nu ingheata`

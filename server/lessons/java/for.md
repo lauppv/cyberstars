@@ -129,7 +129,7 @@ Patrol sector
 
 Tommy is inspecting the Vercetti mansion garage. The parking spots are numbered from **1** up to a total. One of the spots holds his **Infernus** — there, instead of the number, you want to print the car's name.
 
-Store the total number of spots and the spot where the Infernus sits. Then use a **for** loop that goes through the spots from **1** to the total. For each spot:
+Store the total number of spots in an `int` named `totalSpots` and the spot where the Infernus sits in `infernusSpot`. Then use a **for** loop that goes through the spots from **1** to the total. For each spot:
 
 - if it is the spot holding the Infernus → print `Infernus`
 - otherwise → print the spot number

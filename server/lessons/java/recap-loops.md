@@ -11,7 +11,7 @@ Two things can ruin his run:
 - one shop is **closed** today — skip it with **continue** (he collects nothing there) and move on
 - at one shop the **police are waiting** — stop the whole run immediately with **break** and collect nothing at that shop
 
-Store the total number of shops, the closed shop, and the shop where the police wait. Then use a loop that goes through the shops from **1** to the total. For each shop he actually collects from, print `Shop N` (where **N** is the shop number) and add the amount to a running total. At the end, print `Total: X`.
+Store the total number of shops in `totalShops`, the closed shop in `closedShop`, and the shop where the police wait in `policeShop`. Then use a loop that goes through the shops from **1** to the total. For each shop he actually collects from, print `Shop N` (where **N** is the shop number) and add the amount to a running total. At the end, print `Total: X`.
 
 **Example** for **6** shops, with the closed shop **3** and police at shop **5**:
 

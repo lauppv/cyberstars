@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "totalMagazine" },
+      { "kind": "variable", "name": "magazinInchis" },
+      { "kind": "variable", "name": "magazinPolitie" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "totalMagazine": 6, "magazinInchis": 3, "magazinPolitie": 5 } },
+    { "inject": { "totalMagazine": 4, "magazinInchis": 10, "magazinPolitie": 10 } },
+    { "inject": { "totalMagazine": 6, "magazinInchis": 2, "magazinPolitie": 1 } },
+    { "inject": { "totalMagazine": 5, "magazinInchis": 4, "magazinPolitie": 10 } }
+  ]
+}

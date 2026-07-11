@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "temperature" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "temperature": -5 } },
+    { "inject": { "temperature": 0 } },
+    { "inject": { "temperature": -1 } },
+    { "inject": { "temperature": 25 } },
+    { "inject": { "temperature": -40 } }
+  ]
+}

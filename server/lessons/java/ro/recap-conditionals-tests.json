@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "stele" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "stele": 3 } },
+    { "inject": { "stele": 0 } },
+    { "inject": { "stele": 1 } },
+    { "inject": { "stele": 2 } },
+    { "inject": { "stele": 4 } },
+    { "inject": { "stele": 5 } },
+    { "inject": { "stele": 6 } },
+    { "inject": { "stele": 7 } }
+  ]
+}

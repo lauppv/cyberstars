@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "totalShops" },
+      { "kind": "variable", "name": "closedShop" },
+      { "kind": "variable", "name": "policeShop" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "totalShops": 6, "closedShop": 3, "policeShop": 5 } },
+    { "inject": { "totalShops": 4, "closedShop": 10, "policeShop": 10 } },
+    { "inject": { "totalShops": 6, "closedShop": 2, "policeShop": 1 } },
+    { "inject": { "totalShops": 5, "closedShop": 4, "policeShop": 10 } }
+  ]
+}

@@ -115,7 +115,7 @@ false || false = false
 
 Scrii sistemul de acces pentru stație. O persoană poate intra dacă este **angajat ȘI este zi lucrătoare**, SAU dacă este **oaspete CU o invitație**.
 
-Reține în patru variabile `boolean` dacă persoana este angajat, dacă azi e zi lucrătoare, dacă este oaspete și dacă are invitație. Apoi scrie un `if / else` folosind `&&` și `||` care afișează `Acces permis` sau `Acces refuzat`.
+Reține în patru variabile `boolean` — `angajat`, `ziLucratoare`, `oaspete` și `invitatie` — dacă persoana este angajat, dacă azi e zi lucrătoare, dacă este oaspete și dacă are invitație. Apoi scrie un `if / else` folosind `&&` și `||` care afișează `Acces permis` sau `Acces refuzat`.
 
 **Exemplu**
 

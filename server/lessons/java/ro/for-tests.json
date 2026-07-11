@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "totalLocuri" },
+      { "kind": "variable", "name": "loculInfernus" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "totalLocuri": 5, "loculInfernus": 3 } },
+    { "inject": { "totalLocuri": 5, "loculInfernus": 1 } },
+    { "inject": { "totalLocuri": 5, "loculInfernus": 5 } },
+    { "inject": { "totalLocuri": 1, "loculInfernus": 1 } },
+    { "inject": { "totalLocuri": 4, "loculInfernus": 10 } }
+  ]
+}

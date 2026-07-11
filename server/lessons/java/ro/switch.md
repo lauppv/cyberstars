@@ -188,7 +188,7 @@ Incarca jocul salvat
 
 Programul de tură al stației are nevoie de un clasificator rapid: dată fiind o zi, afișează dacă este o tură de **zi lucrătoare** sau de **weekend**.
 
-Reține ziua într-o variabilă `String` și scrie un **switch** care:
+Reține ziua într-o variabilă `String` numită `zi` și scrie un **switch** care:
 
 - pentru `"Luni"`, `"Marti"`, `"Miercuri"`, `"Joi"`, `"Vineri"` → afișează `Zi lucratoare`
 - pentru `"Sambata"` și `"Duminica"` → afișează `Weekend`

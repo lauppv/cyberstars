@@ -1,0 +1,22 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "angajat" },
+      { "kind": "variable", "name": "ziLucratoare" },
+      { "kind": "variable", "name": "oaspete" },
+      { "kind": "variable", "name": "invitatie" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "angajat": true, "ziLucratoare": true, "oaspete": false, "invitatie": false }
+    },
+    { "inject": { "angajat": true, "ziLucratoare": false, "oaspete": false, "invitatie": false } },
+    { "inject": { "angajat": false, "ziLucratoare": false, "oaspete": true, "invitatie": true } },
+    { "inject": { "angajat": false, "ziLucratoare": false, "oaspete": true, "invitatie": false } },
+    { "inject": { "angajat": false, "ziLucratoare": false, "oaspete": false, "invitatie": false } },
+    { "inject": { "angajat": true, "ziLucratoare": true, "oaspete": true, "invitatie": true } }
+  ]
+}

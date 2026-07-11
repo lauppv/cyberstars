@@ -6,7 +6,7 @@ Combină **if/else**, **if/else if** și **switch**
 
 Tommy a stârnit haos în Vice City și poliția îi monitorizează nivelul de urmărire. Centrul de dispecerat are nevoie de un sistem care, pornind de la numărul de stele de urmărire, raportează **ce forță răspunde** și **cât de gravă e situația**.
 
-Stochează numărul de stele într-o variabilă întreagă. Apoi:
+Stochează numărul de stele într-o variabilă `int` numită `stele`. Apoi:
 
 Folosește un **switch** pe numărul de stele ca să afișezi forța care răspunde:
 
