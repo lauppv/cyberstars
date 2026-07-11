@@ -190,7 +190,7 @@ Tommy vrea un portofel protejat de controale de acces, ca nimeni să nu-i poată
 4. O metodă `public void cheltuieBani(int suma)` — cheltuie doar dacă `suma > 0` **și** `suma <= bani`
 5. O metodă `public int getSold()` care returnează soldul curent
 
-În `main`, creează un portofel cu **100**, adaugă **50**, cheltuie **30**, încearcă să cheltui **200** (ar trebui să eșueze în tăcere), apoi afișează soldul.
+În `main`, stochează valorile în variabile — `start` pentru banii de start, `venit` pentru cât adaugi, `cheltuiala1` și `cheltuiala2` pentru cele două sume pe care încerci să le cheltui. Apoi creează un portofel cu `start`, adaugă `venit`, cheltuie `cheltuiala1`, încearcă să cheltui `cheltuiala2` (care ar trebui să eșueze în tăcere când depășește soldul), apoi afișează soldul.
 
 **Exemplu** — portofel pornit cu 100, +50, -30, apoi -200 respins
 

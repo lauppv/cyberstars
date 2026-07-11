@@ -178,7 +178,7 @@ Output **100**. Start with **total = 0**, walk through every price, add it to to
 
 Every one of Tommy’s Vice City businesses reported its takings for today. Your job is to produce a quick report: list every amount, then show the **total** and the **average**.
 
-Put the takings in an `int` array. Then:
+Put the takings in an `int` array named `takings`. Then:
 
 1. Print each amount on its own line
 2. Print the **total** of all amounts

@@ -129,7 +129,7 @@ Sector de patrulat
 
 Tommy inspectează garajul vilei Vercetti. Locurile de parcare sunt numerotate de la **1** până la un număr total. Pe unul dintre locuri e parcat **Infernus**-ul lui — acolo, în loc de număr, vrei să afișezi numele mașinii.
 
-Stochează numărul total de locuri și locul pe care se află Infernus-ul. Apoi folosește o buclă **for** care parcurge locurile de la **1** la total. Pentru fiecare loc:
+Stochează numărul total de locuri în `totalLocuri` și locul pe care se află Infernus-ul în `loculInfernus`. Apoi folosește o buclă **for** care parcurge locurile de la **1** la total. Pentru fiecare loc:
 
 - dacă e locul unde stă Infernus-ul → afișează `Infernus`
 - altfel → afișează numărul locului

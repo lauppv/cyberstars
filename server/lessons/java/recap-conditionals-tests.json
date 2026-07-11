@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "stars" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "stars": 3 } },
+    { "inject": { "stars": 0 } },
+    { "inject": { "stars": 1 } },
+    { "inject": { "stars": 2 } },
+    { "inject": { "stars": 4 } },
+    { "inject": { "stars": 5 } },
+    { "inject": { "stars": 6 } },
+    { "inject": { "stars": 7 } }
+  ]
+}

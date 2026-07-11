@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "totalSpots" },
+      { "kind": "variable", "name": "infernusSpot" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "totalSpots": 5, "infernusSpot": 3 } },
+    { "inject": { "totalSpots": 5, "infernusSpot": 1 } },
+    { "inject": { "totalSpots": 5, "infernusSpot": 5 } },
+    { "inject": { "totalSpots": 1, "infernusSpot": 1 } },
+    { "inject": { "totalSpots": 4, "infernusSpot": 10 } }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "varsta" },
+      { "kind": "variable", "name": "inaltime" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "varsta": 57, "inaltime": 1.67 } },
+    { "inject": { "varsta": 30, "inaltime": 1.8 } },
+    { "inject": { "varsta": 0, "inaltime": 2.05 } },
+    { "inject": { "varsta": 101, "inaltime": 1.5 } }
+  ]
+}

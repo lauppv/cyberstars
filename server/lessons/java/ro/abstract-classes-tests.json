@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Sportiva" },
+      { "kind": "call", "name": "Motocicleta" },
+      { "kind": "function", "name": "vitezaMaxima" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nume1": "Infernus", "nume2": "Angel" }
+    },
+    { "inject": { "nume1": "Cheetah", "nume2": "PCJ600" } },
+    { "inject": { "nume1": "Banshee", "nume2": "Freeway" } },
+    { "inject": { "nume1": "Comet", "nume2": "Sanchez" } }
+  ]
+}

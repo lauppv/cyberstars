@@ -91,7 +91,7 @@ The countdown timer is running. Depending on how many seconds remain until launc
 - at **10** seconds → print `Starting the main engines`
 - in any other case → print `Standing by...`
 
-Store the number of seconds in an `int` variable and write an `if / else if / else` chain that prints the correct action.
+Store the number of seconds in an `int` variable named `seconds` and write an `if / else if / else` chain that prints the correct action.
 
 **Examples**
 

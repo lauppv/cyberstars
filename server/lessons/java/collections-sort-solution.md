@@ -18,11 +18,16 @@ class CrewMember implements Comparable<CrewMember> {
 
 public class Main {
     public static void main(String[] args) {
+        int missions1 = 47;
+        int missions2 = 12;
+        int missions3 = 8;
+        int missions4 = 23;
+
         ArrayList<CrewMember> crew = new ArrayList<>();
-        crew.add(new CrewMember("Tommy", 47));
-        crew.add(new CrewMember("Lance", 12));
-        crew.add(new CrewMember("Phil", 8));
-        crew.add(new CrewMember("Mercedes", 23));
+        crew.add(new CrewMember("Tommy", missions1));
+        crew.add(new CrewMember("Lance", missions2));
+        crew.add(new CrewMember("Phil", missions3));
+        crew.add(new CrewMember("Mercedes", missions4));
 
         Collections.sort(crew);
 

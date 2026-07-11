@@ -16,8 +16,14 @@ class Masina {
 
 public class Main {
     public static void main(String[] args) {
-        Masina m1 = new Masina("Infernus", 1986);
-        Masina m2 = new Masina("Cheetah", 1984);
+        String marca1 = "Infernus";
+        int an1 = 1986;
+        String marca2 = "Cheetah";
+        int an2 = 1984;
+
+        Masina m1 = new Masina(marca1, an1);
+        Masina m2 = new Masina(marca2, an2);
+
         System.out.println(m1);
         System.out.println(m2);
     }

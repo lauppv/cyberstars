@@ -178,7 +178,7 @@ Output **100**. Începe cu **total = 0**, parcurge fiecare preț, adaugă-l la t
 
 Fiecare afacere a lui Tommy din Vice City și-a raportat încasările pe ziua de azi. Sarcina ta este să produci un raport rapid: listează fiecare sumă, apoi arată **totalul** și **media**.
 
-Pune încasările într-un array de `int`. Apoi:
+Pune încasările într-un array de `int` numit `incasari`. Apoi:
 
 1. Afișează fiecare sumă pe linia ei
 2. Afișează **totalul** tuturor sumelor

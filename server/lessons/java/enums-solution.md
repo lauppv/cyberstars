@@ -22,8 +22,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        for (Status s : Status.values()) {
-            describeStatus(s);
+        String[] names = { "Malibu Club", "Boatyard", "Print Works", "Kaufman Cabs" };
+        Status[] statuses = Status.values();
+        for (int i = 0; i < statuses.length; i++) {
+            System.out.print(names[i] + " - ");
+            describeStatus(statuses[i]);
         }
     }
 }

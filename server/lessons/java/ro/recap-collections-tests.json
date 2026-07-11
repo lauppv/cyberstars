@@ -1,0 +1,33 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "achizitii" },
+      { "kind": "call", "name": "put" },
+      { "kind": "call", "name": "get" },
+      { "kind": "call", "name": "sort" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "achizitii": {
+          "$list": ["Pistol", "Pusca", "Pistol", "Automat", "Pusca", "Pistol", "Automat"]
+        }
+      }
+    },
+    {
+      "inject": { "achizitii": { "$list": ["Uzi", "Uzi", "Uzi", "Uzi", "Pusca", "Grenada"] } }
+    },
+    {
+      "inject": {
+        "achizitii": { "$list": ["Luneta", "Luneta", "Maceta", "Maceta", "Maceta", "Racheta"] }
+      }
+    },
+    {
+      "inject": { "achizitii": { "$list": ["Katana", "Katana", "Drujba"] } }
+    }
+  ]
+}

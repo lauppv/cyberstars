@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "takings" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "takings": { "$list": [1200, 3400, 800, 2600] } } },
+    { "inject": { "takings": { "$list": [5000] } } },
+    { "inject": { "takings": { "$list": [125, 200] } } },
+    { "inject": { "takings": { "$list": [100, 200, 300] } } },
+    { "inject": { "takings": { "$list": [1, 2] } } }
+  ]
+}

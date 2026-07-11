@@ -1,0 +1,35 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "filter" },
+      { "kind": "call", "name": "filter" },
+      { "kind": "variable", "name": "signals" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "signals": {
+          "$list": [
+            "tommy",
+            "static",
+            "lance",
+            "static",
+            "cortez",
+            "static",
+            "diaz",
+            "out",
+            "mercedes"
+          ]
+        }
+      }
+    },
+    { "inject": { "signals": { "$list": ["out", "tommy", "lance"] } } },
+    { "inject": { "signals": { "$list": ["tommy", "lance"] } } },
+    { "inject": { "signals": { "$list": ["static", "static"] } } },
+    { "inject": { "signals": { "$list": ["alpha", "static", "beta", "out", "gamma"] } } }
+  ]
+}

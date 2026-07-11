@@ -5,9 +5,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("10000 / 4 = " + impartePrada(10000, 4));
-        System.out.println("5000 / 3 = " + impartePrada(5000, 3));
-        System.out.println("8000 / 1 = " + impartePrada(8000, 1));
+        int prada = 10000;
+        int membri = 4;
+
+        System.out.println(prada + " / " + membri + " = " + impartePrada(prada, membri));
     }
 }
 ```

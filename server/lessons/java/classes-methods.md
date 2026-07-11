@@ -161,16 +161,16 @@ Tommy owns several businesses in Vice City. Each business has a name and a total
 
 Create a class that represents a business, with a field for the name and one for the total earnings. Write a method that adds an amount to the total and a method that returns the current total
 
-In `main`, create **two** businesses with names of your choice. Add a few earnings to each, then print for each business the name, then `: `, then the total — for example `Malibu Club: 650`
+In `main`, store the first business's name in `name1` and its two takings in `sale1` and `sale2`; store the second's name in `name2` and its two takings in `sale3` and `sale4`. Create **two** businesses from those variables, add each business's two takings, then print for each business the name, then `: `, then the total — for example `Malibu Club: 500`
 
-**Example** — `Malibu Club` with earnings 200, 300, 150 and `Print Works` with 500, 250
+**Example** — `Malibu Club` with takings 200, 300 and `Print Works` with 500, 250
 
 ```text
-Malibu Club: 650
+Malibu Club: 500
 Print Works: 750
 ```
 
-**Example** — `Cherry Popper` with earnings 100, 100 and `Sunshine Autos` with 1000
+**Example** — `Cherry Popper` with takings 100, 100 and `Sunshine Autos` with 700, 300
 
 ```text
 Cherry Popper: 200

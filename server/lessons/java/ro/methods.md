@@ -112,18 +112,12 @@ public class Main {
 
 După o lovitură reușită, Tommy împarte prada în mod egal între membrii echipei. Vrei o metodă care face calculul o singură dată și pe care o poți refolosi pentru fiecare lovitură.
 
-Scrie o metodă care primește **prada totală** și **numărul de membri** din echipă și **întoarce** partea fiecăruia (folosește împărțirea întreagă — ce nu se împarte exact se pierde). Apoi, în **main**, apeleaz-o pentru trei lovituri și afișează pentru fiecare o linie de forma `prada / membri = parte`.
-
-Apeleaz-o pentru:
-
-- **10000** de prada, **4** membri
-- **5000** de prada, **3** membri (nu se împarte exact)
-- **8000** de prada, **1** membru (totul pentru el)
+Scrie o metodă care primește **prada totală** și **numărul de membri** din echipă și **întoarce** partea fiecăruia (folosește împărțirea întreagă — ce nu se împarte exact se pierde). Apoi, în **main**, stochează prada într-o variabilă numită `prada` și mărimea echipei într-o variabilă numită `membri`, apelează metoda și afișează o linie de forma `prada / membri = parte`.
 
 **Exemplu**
 
+Dacă prada e `10000` și echipa are `4` membri, programul tău ar trebui să afișeze
+
 ```text
 10000 / 4 = 2500
-5000 / 3 = 1666
-8000 / 1 = 8000
 ```

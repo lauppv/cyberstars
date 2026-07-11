@@ -162,7 +162,7 @@ Create a `Business` class with an `earnings()` method that returns `0`. Then cre
 1. `Club` — has an `int customers` field, overrides `earnings()` to return `customers * 50`
 2. `CarWash` — has `int cars` and `int price` fields, overrides `earnings()` to return `cars * price`
 
-Use `@Override` on both. In `main`, create a `Club` with `120` customers and a `CarWash` with `30` cars and price `8`. Print each one's earnings with the labels shown below.
+Use `@Override` on both. In `main`, store the values in variables — `customers` for the club, `cars` and `price` for the car wash. Create a `Club` from `customers` and a `CarWash` from `cars` and `price`, then print each one's earnings with the labels shown below.
 
 **Example**
 

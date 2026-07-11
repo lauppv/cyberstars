@@ -29,8 +29,12 @@ class Film implements Afisabil {
 
 public class Main {
     public static void main(String[] args) {
-        Carte c = new Carte("Cronicile din Vice City", "Tommy Vercetti");
-        Film f = new Film("Top Gun", "Tony Scott");
+        String titlu1 = "Cronicile din Vice City";
+        String autor1 = "Tommy Vercetti";
+        String titlu2 = "Top Gun";
+        String regizor2 = "Tony Scott";
+        Carte c = new Carte(titlu1, autor1);
+        Film f = new Film(titlu2, regizor2);
         c.afiseazaInfo();
         f.afiseazaInfo();
     }

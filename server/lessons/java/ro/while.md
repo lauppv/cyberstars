@@ -195,7 +195,7 @@ O capcană: într-un **while**, **continue** sare direct înapoi la condiție. D
 
 Tommy a dat de seiful lui Diaz și încearcă combinațiile pe rând: **1**, apoi **2**, apoi **3**, și tot așa în sus. Nu știi dinainte câte încercări durează — exact genul de problemă pentru **while (true)** plus **break**.
 
-Stochează combinația secretă a seifului. Apoi folosește o buclă **while (true)** care numără încercările pornind de la **1**. La fiecare încercare:
+Stochează combinația secretă a seifului într-o variabilă `int` numită `combinatiaSecreta`. Apoi folosește o buclă **while (true)** care numără încercările pornind de la **1**. La fiecare încercare:
 
 - dacă încercarea curentă este egală cu combinația secretă → afișează `Seif deschis` și ieși din buclă cu **break**
 - altfel → afișează `Incerc N`, unde **N** este numărul încercării, apoi treci la următoarea

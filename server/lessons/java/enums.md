@@ -129,13 +129,13 @@ If you find yourself writing `if (status.equals("active") || status.equals("inac
 
 Tommy has several businesses in Vice City and wants a quick report. Each business can be in one of a few fixed states — making money, temporarily closed, under renovation, or destroyed by a rival gang. For example, Malibu Club is doing well and making money, Print Works is under renovation, Boatyard is temporarily closed, and Kaufman Cabs was destroyed by a rival gang
 
-Define the possible states as a fixed set of values. Write a method that takes a state and prints what it means. In `main`, iterate through all states and call the method for each one
+Define the possible states as a fixed set of values (`Status`). Write a method `describeStatus` that takes a state and prints what it means. In `main`, store the four business names in a `names` array (one per state, in the **same order** as the enum's values). Then iterate over `Status.values()`; for each state, print the matching business name followed by `" - "`, then describe the state.
 
 **Example**
 
 ```text
-Active: making money every day
-Closed: not generating income right now
-Renovation: work in progress, opening soon
-Destroyed: needs to be rebuilt from scratch
+Malibu Club - Active: making money every day
+Boatyard - Closed: not generating income right now
+Print Works - Renovation: work in progress, opening soon
+Kaufman Cabs - Destroyed: needs to be rebuilt from scratch
 ```

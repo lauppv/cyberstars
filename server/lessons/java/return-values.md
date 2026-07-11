@@ -129,18 +129,12 @@ Tommy doesn't just run missions — he **brings back the money**. That's a retur
 
 Tommy's empire grows day by day. The stash starts at **1**, and each day it multiplies by a fixed factor. You want a method that tells you how much you have after a given number of days.
 
-Write a method that takes the **factor** and the **number of days** and **returns** the final stash. Compute it with a loop: start at **1**, then multiply by the factor a number of times equal to the days. If **0** days have passed, the loop doesn't run at all and you're left with **1**. Then, in **main**, call it for a few scenarios and print each result.
-
-Call it for:
-
-- factor **2**, **3** days
-- factor **5**, **2** days
-- factor **7**, **0** days (no days passed)
+Write a method that takes the **factor** and the **number of days** and **returns** the final stash. Compute it with a loop: start at **1**, then multiply by the factor a number of times equal to the days. If **0** days have passed, the loop doesn't run at all and you're left with **1**. Then, in **main**, store the factor in a variable named `factor` and the number of days in a variable named `days`, call the method, and print the result.
 
 **Example**
 
+For factor `2` over `3` days (`2 × 2 × 2`), your program should print
+
 ```text
 8
-25
-1
 ```

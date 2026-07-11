@@ -94,6 +94,8 @@ Fiecare membru al echipajului care ajunge la stație trebuie să se înregistrez
 
 Creează un **Scanner**, citește mai întâi numele (prima linie), apoi vârsta (a doua linie). Apoi construiește și afișează mesajul de bun venit folosind **+**.
 
+Citește datele direct — nu afișa nicio întrebare înainte de citire. Terminalul de înregistrare rămâne tăcut până la linia de bun venit.
+
 **Intrare** (tastată de utilizator când rulează programul):
 
 - Prima linie — numele membrului echipajului

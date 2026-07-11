@@ -114,7 +114,7 @@ Tommy calls his crew for a roll call. Each member answers their own way, but you
 
 Create the `Criminal`, `Driver`, and `Gunman` classes (Criminal has `speak()` printing `"..."`; Driver overrides with `"I'm the driver "` + name; Gunman overrides with `"I'm the gunman "` + name).
 
-In `main`, create a `Criminal[]` array containing a `Driver` named `"Tommy"` and a `Gunman` named `"Lance"`. Loop through the array and call `speak()` on each.
+In `main`, store the two names in variables `name1` and `name2` (start with `"Tommy"` and `"Lance"`). Create a `Criminal[]` array containing a `Driver` from `name1` and a `Gunman` from `name2`. Loop through the array and call `speak()` on each.
 
 **Example**
 

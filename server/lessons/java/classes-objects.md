@@ -175,7 +175,7 @@ Tommy is registering the guard dogs at his Vice City mansion. Each dog needs a n
 
 Create a **class** that represents a guard dog, with a field for the **name** (String) and one for the **age** (int).
 
-In `main`, build **two** dog objects with values of your choice, then print each dog on its own line in the format `Name is X years old`.
+In `main`, first store the values in local variables — `name1` and `age1` for the first dog, `name2` and `age2` for the second. Then build **two** dog objects and set each object's fields from those variables. Finally print each dog on its own line in the format `Name is X years old`.
 
 **Example** for a dog `Rex` aged `5` and one `Buddy` aged `3`
 

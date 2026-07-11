@@ -1,0 +1,46 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "shipName" },
+      { "kind": "variable", "name": "missionName" },
+      { "kind": "variable", "name": "secretCargo" },
+      { "kind": "variable", "name": "maxPower" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "shipName": "Voyager",
+        "missionName": "Deep Space Exploration",
+        "secretCargo": "TopSecret-Alpha-7",
+        "maxPower": 9001
+      }
+    },
+    {
+      "inject": {
+        "shipName": "Nebula",
+        "missionName": "Asteroid Survey",
+        "secretCargo": "Crate-X-99",
+        "maxPower": 450
+      }
+    },
+    {
+      "inject": {
+        "shipName": "Aurora",
+        "missionName": "Rescue Run",
+        "secretCargo": "Omega-Files",
+        "maxPower": 0
+      }
+    },
+    {
+      "inject": {
+        "shipName": "Star Hopper",
+        "missionName": "Supply Loop",
+        "secretCargo": "Blue-Box-3",
+        "maxPower": 12000
+      }
+    }
+  ]
+}

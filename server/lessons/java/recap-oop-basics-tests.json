@@ -1,0 +1,74 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "CrewMember" },
+      { "kind": "function", "name": "train" },
+      { "kind": "function", "name": "mission" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "role1" },
+      { "kind": "variable", "name": "years1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "role2" },
+      { "kind": "variable", "name": "years2" },
+      { "kind": "variable", "name": "name3" },
+      { "kind": "variable", "name": "role3" },
+      { "kind": "variable", "name": "years3" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Tommy Vercetti",
+        "role1": "Boss",
+        "years1": 3,
+        "name2": "Lance Vance",
+        "role2": "Partner",
+        "years2": 5,
+        "name3": "Phil Cassidy",
+        "role3": "Gunsmith",
+        "years3": 2
+      }
+    },
+    {
+      "inject": {
+        "name1": "Sonny",
+        "role1": "Don",
+        "years1": 20,
+        "name2": "Ken",
+        "role2": "Lawyer",
+        "years2": 8,
+        "name3": "Diaz",
+        "role3": "Dealer",
+        "years3": 1
+      }
+    },
+    {
+      "inject": {
+        "name1": "Mercedes",
+        "role1": "Manager",
+        "years1": 4,
+        "name2": "Kent",
+        "role2": "Bodyguard",
+        "years2": 6,
+        "name3": "Avery",
+        "role3": "Developer",
+        "years3": 12
+      }
+    },
+    {
+      "inject": {
+        "name1": "Cortez",
+        "role1": "Colonel",
+        "years1": 30,
+        "name2": "Mitch",
+        "role2": "Biker",
+        "years2": 9,
+        "name3": "Umberto",
+        "role3": "Cuban",
+        "years3": 7
+      }
+    }
+  ]
+}

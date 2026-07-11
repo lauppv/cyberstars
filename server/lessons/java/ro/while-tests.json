@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "combinatiaSecreta" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "combinatiaSecreta": 3 } },
+    { "inject": { "combinatiaSecreta": 1 } },
+    { "inject": { "combinatiaSecreta": 5 } },
+    { "inject": { "combinatiaSecreta": 8 } }
+  ]
+}

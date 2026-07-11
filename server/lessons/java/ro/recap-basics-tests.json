@@ -1,0 +1,61 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "produs1" },
+      { "kind": "variable", "name": "pret1" },
+      { "kind": "variable", "name": "produs2" },
+      { "kind": "variable", "name": "pret2" },
+      { "kind": "variable", "name": "produs3" },
+      { "kind": "variable", "name": "pret3" },
+      { "kind": "variable", "name": "taxa" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "produs1": "Modul oxigen",
+        "pret1": 999.99,
+        "produs2": "Filtru apa",
+        "pret2": 29.5,
+        "produs3": "Baterie solara",
+        "pret3": 5.99,
+        "taxa": 19
+      }
+    },
+    {
+      "inject": {
+        "produs1": "Celula combustibil",
+        "pret1": 450.25,
+        "produs2": "Filtru aer",
+        "pret2": 12.75,
+        "produs3": "Set baterii",
+        "pret3": 99.99,
+        "taxa": 10
+      }
+    },
+    {
+      "inject": {
+        "produs1": "Computer navigatie",
+        "pret1": 1.01,
+        "produs2": "Kit cabluri",
+        "pret2": 2.02,
+        "produs3": "Banda adeziva",
+        "pret3": 3.03,
+        "taxa": 21
+      }
+    },
+    {
+      "inject": {
+        "produs1": "Gustare spatiala",
+        "pret1": 0.99,
+        "produs2": "Punga apa",
+        "pret2": 0.49,
+        "produs3": "Guma",
+        "pret3": 0.05,
+        "taxa": 5
+      }
+    }
+  ]
+}

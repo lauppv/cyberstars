@@ -1,0 +1,24 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "ContBancar" },
+      { "kind": "function", "name": "depune" },
+      { "kind": "function", "name": "retrage" },
+      { "kind": "function", "name": "getSold" },
+      { "kind": "variable", "name": "start" },
+      { "kind": "variable", "name": "depunere" },
+      { "kind": "variable", "name": "retragere1" },
+      { "kind": "variable", "name": "retragere2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "start": 1000, "depunere": 500, "retragere1": 200, "retragere2": 2000 }
+    },
+    { "inject": { "start": 300, "depunere": 0, "retragere1": 100, "retragere2": 500 } },
+    { "inject": { "start": 500, "depunere": 500, "retragere1": 1000, "retragere2": 300 } },
+    { "inject": { "start": 2000, "depunere": 1000, "retragere1": 1500, "retragere2": 400 } }
+  ]
+}

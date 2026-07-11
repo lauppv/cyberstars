@@ -14,9 +14,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        describe("Sniper");
-        describe("Sniper", 4);
-        describe("Sniper", 4, 10);
+        String weapon = "Sniper";
+        int quantity = 4;
+        int price = 10;
+
+        describe(weapon);
+        describe(weapon, quantity);
+        describe(weapon, quantity, price);
     }
 }
 ```

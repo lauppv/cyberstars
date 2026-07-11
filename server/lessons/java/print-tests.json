@@ -1,0 +1,6 @@
+{
+  "structure": {
+    "requires": [{ "kind": "call", "name": "println" }]
+  },
+  "cases": [{ "visible": true }]
+}

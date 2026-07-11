@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "seconds" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "seconds": 100 } },
+    { "inject": { "seconds": 60 } },
+    { "inject": { "seconds": 20 } },
+    { "inject": { "seconds": 10 } },
+    { "inject": { "seconds": 200 } },
+    { "inject": { "seconds": 0 } }
+  ]
+}

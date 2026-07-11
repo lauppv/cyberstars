@@ -1,0 +1,24 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "CrewMember" },
+      { "kind": "variable", "name": "missions1" },
+      { "kind": "variable", "name": "missions2" },
+      { "kind": "variable", "name": "missions3" },
+      { "kind": "variable", "name": "missions4" },
+      { "kind": "function", "name": "compareTo" },
+      { "kind": "call", "name": "sort" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "missions1": 47, "missions2": 12, "missions3": 8, "missions4": 23 }
+    },
+    { "inject": { "missions1": 5, "missions2": 90, "missions3": 40, "missions4": 15 } },
+    { "inject": { "missions1": 100, "missions2": 3, "missions3": 77, "missions4": 60 } },
+    { "inject": { "missions1": 1, "missions2": 2, "missions3": 4, "missions4": 3 } }
+  ]
+}

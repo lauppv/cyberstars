@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Jucator" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "scor1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "scor2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nume1": "Tommy Vercetti", "scor1": 500, "nume2": "Lance Vance", "scor2": 300 }
+    },
+    { "inject": { "nume1": "Diaz", "scor1": 800, "nume2": "Cortez", "scor2": 650 } },
+    { "inject": { "nume1": "Ken", "scor1": 0, "nume2": "Sonny", "scor2": 999 } },
+    { "inject": { "nume1": "Mercedes", "scor1": 42, "nume2": "Kent", "scor2": 7 } }
+  ]
+}

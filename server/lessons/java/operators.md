@@ -117,7 +117,7 @@ When in doubt, **add parentheses**. They make the code easier to read anyway
 
 The station's diagnostic console needs a quick arithmetic readout of two sensor values.
 
-Create two `int` variables to store two whole numbers. Then print, each on its own line, the result of: addition, subtraction, multiplication, integer division, and remainder.
+Create two `int` variables named `a` and `b` (any values you like). Then print, each on its own line, the result of: addition, subtraction, multiplication, integer division, and remainder.
 
 **Example**
 

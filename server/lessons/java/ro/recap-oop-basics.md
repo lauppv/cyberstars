@@ -14,7 +14,13 @@ Creează o clasă **`MembruBanda`** cu:
 - o metodă **`misiune()`** care crește respectul cu 10, fără să treacă de 100
 - o reprezentare ca text în formatul `Nume (Rol, Y ani) - Respect: X`, ca să poți afișa un membru direct cu `System.out.println`
 
-În `main`, creează câțiva membri, antrenează-i și trimite-i în misiuni cum vrei, apoi afișează-i. Antrenează un membru de destule ori cât să depășească 100, ca să vezi plafonarea în acțiune
+În `main`, stochează detaliile fiecărui membru în variabile — `nume1`, `rol1`, `ani1` pentru primul, `nume2`, `rol2`, `ani2` pentru al doilea, `nume3`, `rol3`, `ani3` pentru al treilea. Creează cei trei membri din acele variabile, apoi aplică exact acest antrenament, ca să iasă rezultatul potrivit:
+
+- membrul 1: `antreneaza()` de două ori, apoi `misiune()` o dată
+- membrul 2: `misiune()` o dată
+- membrul 3: `antreneaza()` de patru ori (asta trece de 100, ca să vezi plafonarea)
+
+La final afișează-i pe toți trei. Al patrulea `antreneaza()` pe membrul 3 este cel care declanșează plafonarea
 
 **Exemplu** — Tommy (Sef, 3 ani) antrenat de 2 ori și trimis într-o misiune, Lance (Partener, 5 ani) trimis într-o misiune, Phil (Armurier, 2 ani) antrenat de 4 ori
 

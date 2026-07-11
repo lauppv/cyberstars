@@ -161,16 +161,16 @@ Tommy deține mai multe afaceri în Vice City. Fiecare afacere are un nume și u
 
 Creează o clasă care reprezintă o afacere, cu un câmp pentru nume și unul pentru totalul încasărilor. Scrie o metodă care adaugă o sumă la total și o metodă care returnează totalul curent
 
-În `main`, creează **două** afaceri cu nume la alegere. Adaugă câteva încasări la fiecare, apoi afișează pentru fiecare afacere numele, apoi `: `, apoi totalul — de exemplu `Malibu Club: 650`
+În `main`, stochează numele primei afaceri în `nume1` și cele două încasări ale ei în `vanzare1` și `vanzare2`; stochează numele celei de-a doua în `nume2` și cele două încasări ale ei în `vanzare3` și `vanzare4`. Creează **două** afaceri din acele variabile, adaugă cele două încasări la fiecare afacere, apoi afișează pentru fiecare afacere numele, apoi `: `, apoi totalul — de exemplu `Malibu Club: 500`
 
-**Exemplu** — `Malibu Club` cu încasările 200, 300, 150 și `Print Works` cu 500, 250
+**Exemplu** — `Malibu Club` cu încasările 200, 300 și `Print Works` cu 500, 250
 
 ```text
-Malibu Club: 650
+Malibu Club: 500
 Print Works: 750
 ```
 
-**Exemplu** — `Cherry Popper` cu încasările 100, 100 și `Sunshine Autos` cu 1000
+**Exemplu** — `Cherry Popper` cu încasările 100, 100 și `Sunshine Autos` cu 700, 300
 
 ```text
 Cherry Popper: 200

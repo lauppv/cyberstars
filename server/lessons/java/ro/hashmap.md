@@ -156,7 +156,7 @@ HashMap **nu** garantează ordinea. Dacă adaugi Tommy, Lance, Phil, la parcurge
 
 Cortez ține evidența câte misiuni a completat fiecare membru al echipajului. Tommy a completat 47, Lance 12, Phil 8 și Mercedes 23. Cortez vrea un raport doar cu cei care au completat mai mult de 15 misiuni
 
-Construiește un HashMap care mapează numele fiecărui membru la numărul de misiuni. Parcurge map-ul și afișează doar membrii care depășesc pragul, în formatul `nume: numar`
+Stochează cele patru numere de misiuni în variabilele `nr1` (Tommy), `nr2` (Lance), `nr3` (Phil) și `nr4` (Mercedes). Construiește un `HashMap<String, Integer>` care mapează numele fiecărui membru la numărul lui. Parcurge map-ul și afișează doar membrii al căror număr depășește `15`, în formatul `nume: numar`
 
 **Exemplu** (ordinea poate varia)
 

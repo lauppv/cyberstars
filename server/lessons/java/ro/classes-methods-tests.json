@@ -1,0 +1,59 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Afacere" },
+      { "kind": "function", "name": "adauga" },
+      { "kind": "function", "name": "getIncasari" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "vanzare1" },
+      { "kind": "variable", "name": "vanzare2" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "vanzare3" },
+      { "kind": "variable", "name": "vanzare4" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Malibu Club",
+        "vanzare1": 200,
+        "vanzare2": 300,
+        "nume2": "Print Works",
+        "vanzare3": 500,
+        "vanzare4": 250
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Cherry Popper",
+        "vanzare1": 100,
+        "vanzare2": 100,
+        "nume2": "Sunshine Autos",
+        "vanzare3": 700,
+        "vanzare4": 300
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Kaufman Cabs",
+        "vanzare1": 0,
+        "vanzare2": 0,
+        "nume2": "Boatyard",
+        "vanzare3": 1000,
+        "vanzare4": 0
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Ice Cream",
+        "vanzare1": 42,
+        "vanzare2": 8,
+        "nume2": "Film Studio",
+        "vanzare3": 999,
+        "vanzare4": 1
+      }
+    }
+  ]
+}

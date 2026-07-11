@@ -9,9 +9,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(growth(2, 3));
-        System.out.println(growth(5, 2));
-        System.out.println(growth(7, 0));
+        int factor = 2;
+        int days = 3;
+
+        System.out.println(growth(factor, days));
     }
 }
 ```

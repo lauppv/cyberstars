@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "age" },
+      { "kind": "variable", "name": "height" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "age": 57, "height": 1.67 } },
+    { "inject": { "age": 30, "height": 1.8 } },
+    { "inject": { "age": 0, "height": 2.05 } },
+    { "inject": { "age": 101, "height": 1.5 } }
+  ]
+}

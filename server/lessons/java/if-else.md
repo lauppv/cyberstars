@@ -103,7 +103,7 @@ Change **isUserOnline** to **false** and run again. Read the new output. Program
 
 The station's hull sensor reports the outside temperature.
 
-Create an `int` variable for the temperature. Then write an **if / else** that checks it:
+Create an `int` variable named `temperature` (any value you like). Then write an **if / else** that checks it:
 
 - if the temperature is **less than 0** → print `it's freezing outside`
 - otherwise → print `water does not freeze`

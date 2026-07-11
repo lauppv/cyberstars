@@ -1,0 +1,70 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "MembruEchipa" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "rol1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "rol2" },
+      { "kind": "variable", "name": "nume3" },
+      { "kind": "variable", "name": "rol3" },
+      { "kind": "variable", "name": "nume4" },
+      { "kind": "variable", "name": "rol4" },
+      { "kind": "call", "name": "add" },
+      { "kind": "call", "name": "remove" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Lance Vance",
+        "rol1": "sofer",
+        "nume2": "Phil Cassidy",
+        "rol2": "armament",
+        "nume3": "Umberto Robina",
+        "rol3": "aliat",
+        "nume4": "Hilary King",
+        "rol4": "sofer"
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Ken Rosenberg",
+        "rol1": "avocat",
+        "nume2": "Ricardo Diaz",
+        "rol2": "sef",
+        "nume3": "Mercedes Cortez",
+        "rol3": "contact",
+        "nume4": "Cam Jones",
+        "rol4": "hacker"
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Mitch Baker",
+        "rol1": "motociclist",
+        "nume2": "Sonny Forelli",
+        "rol2": "mafiot",
+        "nume3": "Avery Carrington",
+        "rol3": "magnat",
+        "nume4": "Love Fist",
+        "rol4": "trupa"
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Auntie Poulet",
+        "rol1": "voodoo",
+        "nume2": "Kent Paul",
+        "rol2": "manager",
+        "nume3": "Steve Scott",
+        "rol3": "regizor",
+        "nume4": "BJ Smith",
+        "rol4": "atlet"
+      }
+    }
+  ]
+}

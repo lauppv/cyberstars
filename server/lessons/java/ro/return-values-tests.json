@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "crestere" },
+      { "kind": "call", "name": "crestere" },
+      { "kind": "variable", "name": "factor" },
+      { "kind": "variable", "name": "zile" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "factor": 2, "zile": 3 } },
+    { "inject": { "factor": 5, "zile": 2 } },
+    { "inject": { "factor": 7, "zile": 0 } },
+    { "inject": { "factor": 3, "zile": 4 } },
+    { "inject": { "factor": 10, "zile": 3 } }
+  ]
+}

@@ -52,8 +52,17 @@ class Mag extends Personaj {
 
 public class Main {
     public static void main(String[] args) {
-        Razboinic w = new Razboinic("Tommy", 100, 25, 10);
-        Mag m = new Mag("Lance", 80, 15, 20);
+        String nume1 = "Tommy";
+        int viata1 = 100;
+        int atac1 = 25;
+        int armura1 = 10;
+        String nume2 = "Lance";
+        int viata2 = 80;
+        int atac2 = 15;
+        int vraja2 = 20;
+
+        Razboinic w = new Razboinic(nume1, viata1, atac1, armura1);
+        Mag m = new Mag(nume2, viata2, atac2, vraja2);
 
         w.ataca(m);
         m.afiseazaStatus();

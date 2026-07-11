@@ -156,7 +156,7 @@ Creează o clasă `Criminal` cu un câmp `nume`, un constructor și o metodă `v
 1. `Sofer` extends `Criminal` — suprascrie `vorbeste()` ca să afișeze `"Sunt soferul "` + nume
 2. `Tragator` extends `Criminal` — suprascrie `vorbeste()` ca să afișeze `"Sunt tragatorul "` + nume
 
-În `main`, creează un `Sofer` numit `"Tommy"` și un `Tragator` numit `"Lance"`, și apelează `vorbeste()` pe amândoi.
+În `main`, stochează cele două nume în variabilele `nume1` și `nume2` (pornește cu `"Tommy"` și `"Lance"`). Creează un `Sofer` din `nume1` și un `Tragator` din `nume2`, apoi apelează `vorbeste()` pe amândoi.
 
 **Exemplu**
 

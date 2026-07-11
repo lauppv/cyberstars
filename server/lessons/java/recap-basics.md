@@ -6,7 +6,7 @@ Combine **print**, **variables (numbers and strings)**, and **string concatenati
 
 A cargo shipment just arrived at the station's supply depot. Before the crates can be stored, print an official receipt for the quartermaster's records.
 
-Create variables for the three products (each name and price) and for the tax:
+Create variables for the three products and the tax — name them `product1`/`price1`, `product2`/`price2`, `product3`/`price3` and `tax`:
 
 - **Oxygen module** — price **999.99**
 - **Water filter** — price **29.50**

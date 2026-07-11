@@ -9,9 +9,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(crestere(2, 3));
-        System.out.println(crestere(5, 2));
-        System.out.println(crestere(7, 0));
+        int factor = 2;
+        int zile = 3;
+
+        System.out.println(crestere(factor, zile));
     }
 }
 ```

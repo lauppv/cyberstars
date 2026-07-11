@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Masina" },
+      { "kind": "variable", "name": "marca1" },
+      { "kind": "variable", "name": "an1" },
+      { "kind": "variable", "name": "marca2" },
+      { "kind": "variable", "name": "an2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "marca1": "Infernus", "an1": 1986, "marca2": "Cheetah", "an2": 1984 }
+    },
+    { "inject": { "marca1": "Banshee", "an1": 1990, "marca2": "Stinger", "an2": 1987 } },
+    { "inject": { "marca1": "Sabre", "an1": 1979, "marca2": "Comet", "an2": 1992 } },
+    { "inject": { "marca1": "Deluxo", "an1": 1985, "marca2": "Sentinel", "an2": 1994 } }
+  ]
+}

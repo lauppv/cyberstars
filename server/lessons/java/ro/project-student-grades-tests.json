@@ -1,0 +1,69 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Student" },
+      { "kind": "function", "name": "adaugaNota" },
+      { "kind": "function", "name": "getMedia" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "mate1" },
+      { "kind": "variable", "name": "engleza1" },
+      { "kind": "variable", "name": "stiinte1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "mate2" },
+      { "kind": "variable", "name": "engleza2" },
+      { "kind": "variable", "name": "stiinte2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Tommy",
+        "mate1": 90,
+        "engleza1": 85,
+        "stiinte1": 92,
+        "nume2": "Lance",
+        "mate2": 78,
+        "engleza2": 82,
+        "stiinte2": 88
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Cortez",
+        "mate1": 100,
+        "engleza1": 60,
+        "stiinte1": 75,
+        "nume2": "Mercedes",
+        "mate2": 55,
+        "engleza2": 95,
+        "stiinte2": 80
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Phil",
+        "mate1": 40,
+        "engleza1": 50,
+        "stiinte1": 66,
+        "nume2": "Ken",
+        "mate2": 99,
+        "engleza2": 100,
+        "stiinte2": 98
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Sonny",
+        "mate1": 70,
+        "engleza1": 71,
+        "stiinte1": 72,
+        "nume2": "Diaz",
+        "mate2": 63,
+        "engleza2": 64,
+        "stiinte2": 65
+      }
+    }
+  ]
+}

@@ -175,7 +175,7 @@ Doi membri ai echipajului au intrat în arena de antrenament holografică a sta�
 1. Creează o clasă `Personaj` cu `nume` (String), `viata` (int), `putereAtac` (int), un constructor, o metodă `ataca(Personaj tinta)` care reduce viața țintei cu `putereAtac` și afișează `"NUME ataca TINTA cu DAUNE daune!"`, și o metodă `afiseazaStatus()` care afișează `"NUME - HP: VIATA"`
 2. Creează o clasă `Razboinic` care extinde Personaj cu `armura` (int). Suprascrie ataca ca să afișeze: `"NUME loveste cu sabia pe TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac
 3. Creează o clasă `Mag` care extinde Personaj cu `putereVraja` (int). Suprascrie ataca ca să afișeze: `"NUME lanseaza o vraja asupra lui TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac + putereVraja
-4. În main, creează Razboinicul Tommy (viata 100, putereAtac 25, armura 10) și Mag-ul Lance (viata 80, putereAtac 15, putereVraja 20)
+4. În main, stochează statisticile luptătorilor în variabile — `nume1`/`viata1`/`atac1`/`armura1` pentru Razboinic și `nume2`/`viata2`/`atac2`/`vraja2` pentru Mag (pornește cu Tommy/100/25/10 și Lance/80/15/20). Creează `Razboinic`-ul și `Mag`-ul din aceste variabile
 5. Tommy îl atacă pe Lance, afișează statusul lui Lance. Apoi Lance îl atacă pe Tommy, afișează statusul lui Tommy
 
 **Ieșire**

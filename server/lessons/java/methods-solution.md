@@ -5,9 +5,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("10000 / 4 = " + splitLoot(10000, 4));
-        System.out.println("5000 / 3 = " + splitLoot(5000, 3));
-        System.out.println("8000 / 1 = " + splitLoot(8000, 1));
+        int loot = 10000;
+        int crew = 4;
+
+        System.out.println(loot + " / " + crew + " = " + splitLoot(loot, crew));
     }
 }
 ```

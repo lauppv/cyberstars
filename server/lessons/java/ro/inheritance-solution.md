@@ -33,8 +33,11 @@ class Tragator extends Criminal {
 
 public class Main {
     public static void main(String[] args) {
-        Sofer s = new Sofer("Tommy");
-        Tragator t = new Tragator("Lance");
+        String nume1 = "Tommy";
+        String nume2 = "Lance";
+
+        Sofer s = new Sofer(nume1);
+        Tragator t = new Tragator(nume2);
         s.vorbeste();
         t.vorbeste();
     }

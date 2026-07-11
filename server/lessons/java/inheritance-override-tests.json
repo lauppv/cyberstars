@@ -1,0 +1,22 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Club" },
+      { "kind": "call", "name": "CarWash" },
+      { "kind": "function", "name": "earnings" },
+      { "kind": "variable", "name": "customers" },
+      { "kind": "variable", "name": "cars" },
+      { "kind": "variable", "name": "price" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "customers": 120, "cars": 30, "price": 8 }
+    },
+    { "inject": { "customers": 0, "cars": 10, "price": 15 } },
+    { "inject": { "customers": 50, "cars": 100, "price": 3 } },
+    { "inject": { "customers": 200, "cars": 1, "price": 999 } }
+  ]
+}

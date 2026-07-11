@@ -1,0 +1,69 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Warrior" },
+      { "kind": "call", "name": "Mage" },
+      { "kind": "function", "name": "attack" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "health1" },
+      { "kind": "variable", "name": "attack1" },
+      { "kind": "variable", "name": "armor1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "health2" },
+      { "kind": "variable", "name": "attack2" },
+      { "kind": "variable", "name": "spell2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Tommy",
+        "health1": 100,
+        "attack1": 25,
+        "armor1": 10,
+        "name2": "Lance",
+        "health2": 80,
+        "attack2": 15,
+        "spell2": 20
+      }
+    },
+    {
+      "inject": {
+        "name1": "Cortez",
+        "health1": 120,
+        "attack1": 30,
+        "armor1": 15,
+        "name2": "Diaz",
+        "health2": 90,
+        "attack2": 10,
+        "spell2": 35
+      }
+    },
+    {
+      "inject": {
+        "name1": "Phil",
+        "health1": 150,
+        "attack1": 18,
+        "armor1": 20,
+        "name2": "Mercedes",
+        "health2": 70,
+        "attack2": 22,
+        "spell2": 8
+      }
+    },
+    {
+      "inject": {
+        "name1": "Sonny",
+        "health1": 200,
+        "attack1": 40,
+        "armor1": 5,
+        "name2": "Ken",
+        "health2": 60,
+        "attack2": 12,
+        "spell2": 50
+      }
+    }
+  ]
+}

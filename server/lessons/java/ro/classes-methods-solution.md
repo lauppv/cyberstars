@@ -19,14 +19,21 @@ class Afacere {
 
 public class Main {
     public static void main(String[] args) {
-        Afacere a1 = new Afacere("Malibu Club");
-        a1.adauga(200);
-        a1.adauga(300);
-        a1.adauga(150);
+        String nume1 = "Malibu Club";
+        int vanzare1 = 200;
+        int vanzare2 = 300;
 
-        Afacere a2 = new Afacere("Print Works");
-        a2.adauga(500);
-        a2.adauga(250);
+        Afacere a1 = new Afacere(nume1);
+        a1.adauga(vanzare1);
+        a1.adauga(vanzare2);
+
+        String nume2 = "Print Works";
+        int vanzare3 = 500;
+        int vanzare4 = 250;
+
+        Afacere a2 = new Afacere(nume2);
+        a2.adauga(vanzare3);
+        a2.adauga(vanzare4);
 
         System.out.println(a1.nume + ": " + a1.getIncasari());
         System.out.println(a2.nume + ": " + a2.getIncasari());

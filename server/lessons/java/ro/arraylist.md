@@ -183,7 +183,7 @@ Comparație rapidă
 
 Tommy ține o listă cu membrii echipei sale din Vice City. Fiecare membru are un nume și un rol. Tommy începe cu Lance Vance (șofer), Phil Cassidy (armament), Umberto Robina (aliat) și Hilary King (șofer). La un moment dat, Lance îl trădează și trebuie eliminat din listă
 
-Construiește o clasă pentru membrii echipei. În `main`, creează un ArrayList cu toți membrii, elimină-l pe Lance (primul din listă), apoi parcurge lista și afișează fiecare membru rămas
+Construiește o clasă `MembruEchipa` (cu `nume` și `rol`). În `main`, stochează datele fiecărui membru în variabile — `nume1`/`rol1` până la `nume4`/`rol4` (pornește cu Lance/sofer, Phil/armament, Umberto/aliat, Hilary/sofer). Adaugă-i pe toți patru într-un `ArrayList<MembruEchipa>`, elimină-l pe Lance (indexul `0`), apoi parcurge lista și afișează fiecare membru rămas ca `"nume - rol"`
 
 **Exemplu**
 

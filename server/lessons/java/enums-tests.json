@@ -1,0 +1,33 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "describeStatus" },
+      { "kind": "variable", "name": "names" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": { "$list": ["Malibu Club", "Boatyard", "Print Works", "Kaufman Cabs"] }
+      }
+    },
+    {
+      "inject": {
+        "names": { "$list": ["Pole Position", "Cherry Popper", "Sunshine Autos", "Cafe Robina"] }
+      }
+    },
+    {
+      "inject": {
+        "names": { "$list": ["Ice Cream Factory", "Film Studio", "Taxi Firm", "Vercetti Estate"] }
+      }
+    },
+    {
+      "inject": {
+        "names": { "$list": ["Ammu-Nation", "Ocean View", "Skumole Shack", "Hyman Condo"] }
+      }
+    }
+  ]
+}

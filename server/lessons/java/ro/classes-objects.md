@@ -175,7 +175,7 @@ Tommy își înregistrează câinii de pază de la conacul din Vice City. Fiecar
 
 Creează o **clasă** care reprezintă un câine de pază, cu un câmp pentru **nume** (String) și unul pentru **vârstă** (int).
 
-În `main`, construiește **două** obiecte câine cu valori la alegere, apoi afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
+În `main`, stochează mai întâi valorile în variabile locale — `nume1` și `varsta1` pentru primul câine, `nume2` și `varsta2` pentru al doilea. Apoi construiește **două** obiecte câine și setează câmpurile fiecărui obiect din acele variabile. La final afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
 
 **Exemplu** pentru un câine `Rex` de `5` ani și unul `Buddy` de `3` ani
 

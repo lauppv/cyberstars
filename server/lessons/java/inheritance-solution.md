@@ -33,8 +33,11 @@ class Gunman extends Criminal {
 
 public class Main {
     public static void main(String[] args) {
-        Driver d = new Driver("Tommy");
-        Gunman g = new Gunman("Lance");
+        String name1 = "Tommy";
+        String name2 = "Lance";
+
+        Driver d = new Driver(name1);
+        Gunman g = new Gunman(name2);
         d.speak();
         g.speak();
     }

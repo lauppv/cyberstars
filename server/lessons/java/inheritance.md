@@ -156,7 +156,7 @@ Create a `Criminal` class with a `name` field, a constructor, and a `speak()` me
 1. `Driver` extends `Criminal` — overrides `speak()` to print `"I'm the driver "` + name
 2. `Gunman` extends `Criminal` — overrides `speak()` to print `"I'm the gunman "` + name
 
-In `main`, create a `Driver` named `"Tommy"` and a `Gunman` named `"Lance"`, and call `speak()` on both.
+In `main`, store the two names in variables `name1` and `name2` (start with `"Tommy"` and `"Lance"`). Create a `Driver` from `name1` and a `Gunman` from `name2`, then call `speak()` on both.
 
 **Example**
 

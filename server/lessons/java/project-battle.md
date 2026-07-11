@@ -175,7 +175,7 @@ Two crew members have entered the station's holographic training arena. Tommy is
 1. Create a `Character` class with `name` (String), `health` (int), `attackPower` (int), a constructor, an `attack(Character target)` method that reduces target health by `attackPower` and prints `"NAME attacks TARGET for DAMAGE damage!"`, and a `printStatus()` method that prints `"NAME - HP: HEALTH"`
 2. Create a `Warrior` class extending Character with `armor` (int). Override attack to print: `"NAME swings sword at TARGET for DAMAGE damage!"` where damage equals attackPower
 3. Create a `Mage` class extending Character with `spellPower` (int). Override attack to print: `"NAME casts spell on TARGET for DAMAGE damage!"` where damage equals attackPower + spellPower
-4. In main, create Warrior Tommy (health 100, attack 25, armor 10) and Mage Lance (health 80, attack 15, spellPower 20)
+4. In main, store the fighters' stats in variables — `name1`/`health1`/`attack1`/`armor1` for the Warrior and `name2`/`health2`/`attack2`/`spell2` for the Mage (start with Tommy/100/25/10 and Lance/80/15/20). Create the `Warrior` and the `Mage` from those variables
 5. Tommy attacks Lance, print Lance's status. Then Lance attacks Tommy, print Tommy's status
 
 **Output**

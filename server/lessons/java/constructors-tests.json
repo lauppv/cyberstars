@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Player" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "score1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "score2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "name1": "Tommy Vercetti", "score1": 500, "name2": "Lance Vance", "score2": 300 }
+    },
+    { "inject": { "name1": "Diaz", "score1": 800, "name2": "Cortez", "score2": 650 } },
+    { "inject": { "name1": "Ken", "score1": 0, "name2": "Sonny", "score2": 999 } },
+    { "inject": { "name1": "Mercedes", "score1": 42, "name2": "Kent", "score2": 7 } }
+  ]
+}

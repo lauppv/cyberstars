@@ -115,7 +115,7 @@ false || false = false
 
 You are writing the access system for the station. A person can enter if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
 
-Store in four `boolean` variables whether the person is an employee, whether today is a working day, whether they are a guest, and whether they have an invitation. Then write an `if / else` using `&&` and `||` that prints `Access granted` or `Access denied`.
+Store in four `boolean` variables — `employee`, `workingDay`, `guest`, and `invitation` — whether the person is an employee, whether today is a working day, whether they are a guest, and whether they have an invitation. Then write an `if / else` using `&&` and `||` that prints `Access granted` or `Access denied`.
 
 **Example**
 

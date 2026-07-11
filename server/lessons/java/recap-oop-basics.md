@@ -14,7 +14,13 @@ Create a class **`CrewMember`** with:
 - a method **`mission()`** that raises respect by 10, without going above 100
 - a text representation in the format `Name (Role, Y years) - Respect: X`, so you can print a member directly with `System.out.println`
 
-In `main`, create a few members, train them and send them on missions however you like, then print them. Train one member enough times to go past 100, so you can see the cap in action
+In `main`, store each member's details in variables — `name1`, `role1`, `years1` for the first, `name2`, `role2`, `years2` for the second, `name3`, `role3`, `years3` for the third. Create the three members from those variables, then apply exactly this training so the output lines up:
+
+- member 1: `train()` twice, then `mission()` once
+- member 2: `mission()` once
+- member 3: `train()` four times (this pushes past 100, so you see the cap)
+
+Finally print all three. The fourth `train()` on member 3 is what triggers the cap in action
 
 **Example** — Tommy (Boss, 3 years) trained twice and sent on one mission, Lance (Partner, 5 years) sent on one mission, Phil (Gunsmith, 2 years) trained four times
 

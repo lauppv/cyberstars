@@ -1,0 +1,65 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "BankAccount" },
+      { "kind": "function", "name": "deposit" },
+      { "kind": "function", "name": "withdraw" },
+      { "kind": "function", "name": "getTotalAccounts" },
+      { "kind": "variable", "name": "owner1" },
+      { "kind": "variable", "name": "balance1" },
+      { "kind": "variable", "name": "owner2" },
+      { "kind": "variable", "name": "balance2" },
+      { "kind": "variable", "name": "deposit1" },
+      { "kind": "variable", "name": "withdraw1" },
+      { "kind": "variable", "name": "withdraw2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "owner1": "Tommy",
+        "balance1": 1000,
+        "owner2": "Lance",
+        "balance2": 500,
+        "deposit1": 250,
+        "withdraw1": 200,
+        "withdraw2": 400
+      }
+    },
+    {
+      "inject": {
+        "owner1": "Diaz",
+        "balance1": 5000,
+        "owner2": "Cortez",
+        "balance2": 800,
+        "deposit1": 1000,
+        "withdraw1": 800,
+        "withdraw2": 100
+      }
+    },
+    {
+      "inject": {
+        "owner1": "Ken",
+        "balance1": 300,
+        "owner2": "Sonny",
+        "balance2": 1500,
+        "deposit1": 0,
+        "withdraw1": 300,
+        "withdraw2": 2000
+      }
+    },
+    {
+      "inject": {
+        "owner1": "Mercedes",
+        "balance1": 750,
+        "owner2": "Kent",
+        "balance2": 200,
+        "deposit1": 500,
+        "withdraw1": 100,
+        "withdraw2": 50
+      }
+    }
+  ]
+}

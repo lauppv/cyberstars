@@ -1,0 +1,48 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Book" },
+      { "kind": "call", "name": "Movie" },
+      { "kind": "variable", "name": "title1" },
+      { "kind": "variable", "name": "author1" },
+      { "kind": "variable", "name": "title2" },
+      { "kind": "variable", "name": "director2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "title1": "Vice City Chronicles",
+        "author1": "Tommy Vercetti",
+        "title2": "Top Gun",
+        "director2": "Tony Scott"
+      }
+    },
+    {
+      "inject": {
+        "title1": "The Mobster's Handbook",
+        "author1": "Sonny Forelli",
+        "title2": "Scarface",
+        "director2": "Brian De Palma"
+      }
+    },
+    {
+      "inject": {
+        "title1": "Boat Rides",
+        "author1": "Ricardo Diaz",
+        "title2": "Miami Heat",
+        "director2": "Michael Mann"
+      }
+    },
+    {
+      "inject": {
+        "title1": "Print Works",
+        "author1": "Earnest Kelly",
+        "title2": "The Driver",
+        "director2": "Walter Hill"
+      }
+    }
+  ]
+}

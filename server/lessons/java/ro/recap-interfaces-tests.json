@@ -1,0 +1,79 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Afacere" },
+      { "kind": "call", "name": "Vehicul" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "valoare1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "valoare2" },
+      { "kind": "variable", "name": "viteza2" },
+      { "kind": "variable", "name": "nume3" },
+      { "kind": "variable", "name": "valoare3" },
+      { "kind": "variable", "name": "nume4" },
+      { "kind": "variable", "name": "valoare4" },
+      { "kind": "variable", "name": "viteza4" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Malibu Club",
+        "valoare1": 120000,
+        "nume2": "Infernus",
+        "valoare2": 150000,
+        "viteza2": 240,
+        "nume3": "Print Works",
+        "valoare3": 70000,
+        "nume4": "Cheetah",
+        "valoare4": 110000,
+        "viteza4": 230
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Pole Position",
+        "valoare1": 85000,
+        "nume2": "Banshee",
+        "valoare2": 95000,
+        "viteza2": 250,
+        "nume3": "Cherry Popper",
+        "valoare3": 60000,
+        "nume4": "Stinger",
+        "valoare4": 130000,
+        "viteza4": 220
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Kaufman Cabs",
+        "valoare1": 45000,
+        "nume2": "Sabre",
+        "valoare2": 40000,
+        "viteza2": 200,
+        "nume3": "Boatyard",
+        "valoare3": 90000,
+        "nume4": "Deluxo",
+        "valoare4": 160000,
+        "viteza4": 260
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Sunshine Autos",
+        "valoare1": 200000,
+        "nume2": "Comet",
+        "valoare2": 175000,
+        "viteza2": 245,
+        "nume3": "Ice Cream Factory",
+        "valoare3": 55000,
+        "nume4": "Hotring Racer",
+        "valoare4": 300000,
+        "viteza4": 290
+      }
+    }
+  ]
+}

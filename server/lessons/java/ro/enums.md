@@ -129,13 +129,13 @@ Dacă te trezești scriind `if (status.equals("activ") || status.equals("inactiv
 
 Tommy are mai multe afaceri în Vice City și vrea un raport rapid. Fiecare afacere poate fi într-una din câteva stări fixe — produce bani, e închisă temporar, e în renovare sau a fost distrusă de o bandă rivală. De exemplu, Malibu Club merge bine și produce bani, Print Works e în renovare, Boatyard e închis temporar, iar Kaufman Cabs a fost distrus de o bandă rivală
 
-Definește stările posibile ca un set fix de valori. Scrie o metodă care primește o stare și afișează ce înseamnă. În `main`, parcurge toate stările și apelează metoda pentru fiecare
+Definește stările posibile ca un set fix de valori (`Stare`). Scrie o metodă `descrieStare` care primește o stare și afișează ce înseamnă. În `main`, stochează cele patru nume de afaceri într-un array `nume` (unul pentru fiecare stare, în **aceeași ordine** ca valorile enum-ului). Apoi parcurge `Stare.values()`; pentru fiecare stare, afișează numele afacerii corespunzătoare urmat de `" - "`, apoi descrie starea.
 
 **Exemplu**
 
 ```text
-Activa: produce bani in fiecare zi
-Inchisa: nu genereaza venit momentan
-Renovare: se lucreaza, deschidere in curand
-Distrusa: trebuie reconstruita de la zero
+Malibu Club - Activa: produce bani in fiecare zi
+Boatyard - Inchisa: nu genereaza venit momentan
+Print Works - Renovare: se lucreaza, deschidere in curand
+Kaufman Cabs - Distrusa: trebuie reconstruita de la zero
 ```

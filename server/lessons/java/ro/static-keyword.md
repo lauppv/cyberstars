@@ -175,7 +175,7 @@ Creează o clasă `Vizitator` cu:
 2. Un câmp `static int totalVizite` care începe de la 0
 3. Un constructor care primește un nume și incrementează `totalVizite`
 
-În `main`, înregistrează 3 vizitatori: `"Tommy"`, `"Lance"` și `"Cortez"`. Apoi afișează numărul total de vizite.
+În `main`, stochează numele vizitatorilor într-un array `String[] nume` (pornește cu `"Tommy"`, `"Lance"`, `"Cortez"`). Parcurge array-ul cu o buclă și creează câte un `Vizitator` pentru fiecare nume. Apoi afișează numărul total de vizite.
 
 **Exemplu** — trei vizitatori înregistrați la intrare
 

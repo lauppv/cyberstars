@@ -116,7 +116,7 @@ Scrie trei metode supraîncărcate numite `descrie`:
 - una care primește numele și câte bucăți se comandă și adaugă numărul urmat de ` arme comandate` — de exemplu `Arma: Sniper - 4 arme comandate`
 - una care primește numele, câte bucăți și prețul unei bucăți, calculează totalul (preț ori cantitate) și afișează prețul, cantitatea și totalul — de exemplu `Arma: Sniper - 10$ x 4 arme comandate - 40$`
 
-Apelurile de test sunt deja scrise; tu completezi doar corpul fiecărei metode
+În `main`, stochează numele armei în `arma`, cantitatea în `cantitate` și prețul unei bucăți în `pret`, apoi fă cele trei apeluri folosind acele variabile: `descrie(arma)`, `descrie(arma, cantitate)` și `descrie(arma, cantitate, pret)`
 
 **Exemplu**
 

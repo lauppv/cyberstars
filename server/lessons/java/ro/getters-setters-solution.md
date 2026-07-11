@@ -25,10 +25,15 @@ class ContBancar {
 
 public class Main {
     public static void main(String[] args) {
-        ContBancar cont = new ContBancar(1000);
-        cont.depune(500);
-        cont.retrage(200);
-        cont.retrage(2000);
+        int start = 1000;
+        int depunere = 500;
+        int retragere1 = 200;
+        int retragere2 = 2000;
+
+        ContBancar cont = new ContBancar(start);
+        cont.depune(depunere);
+        cont.retrage(retragere1);
+        cont.retrage(retragere2);
         System.out.println(cont.getSold());
     }
 }

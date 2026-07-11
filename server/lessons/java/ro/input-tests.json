@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "nextLine" },
+      { "kind": "call", "name": "nextInt" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "Cortez\n60\n" },
+    { "stdin": "Ana\n5\n" },
+    { "stdin": "Zex Umbrella\n0\n" },
+    { "stdin": "Vex\n99\n" }
+  ]
+}

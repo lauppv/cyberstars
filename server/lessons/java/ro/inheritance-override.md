@@ -162,7 +162,7 @@ Creează o clasă `Afacere` cu o metodă `incasari()` care returnează `0`. Apoi
 1. `Club` — are un câmp `int clienti`, suprascrie `incasari()` ca să returneze `clienti * 50`
 2. `Spalatorie` — are câmpurile `int masini` și `int pret`, suprascrie `incasari()` ca să returneze `masini * pret`
 
-Folosește `@Override` pe amândouă. În `main`, creează un `Club` cu `120` clienți și o `Spalatorie` cu `30` mașini și prețul `8`. Afișează fiecare încasare cu etichetele de mai jos.
+Folosește `@Override` pe amândouă. În `main`, stochează valorile în variabile — `clienti` pentru club, `masini` și `pret` pentru spălătorie. Creează un `Club` din `clienti` și o `Spalatorie` din `masini` și `pret`, apoi afișează fiecare încasare cu etichetele de mai jos.
 
 **Exemplu**
 

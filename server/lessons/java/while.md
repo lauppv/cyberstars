@@ -195,7 +195,7 @@ One trap: inside a **while**, **continue** jumps straight back to the condition.
 
 Tommy found Diaz's safe and tries the combinations one by one: **1**, then **2**, then **3**, and so on upward. You don't know in advance how many tries it takes — exactly the kind of problem for **while (true)** plus **break**.
 
-Store the safe's secret combination. Then use a **while (true)** loop that counts the attempts starting from **1**. On each attempt:
+Store the safe's secret combination in an `int` named `secretCombination`. Then use a **while (true)** loop that counts the attempts starting from **1**. On each attempt:
 
 - if the current attempt equals the secret combination → print `Safe open` and leave the loop with **break**
 - otherwise → print `Trying N`, where **N** is the attempt number, then move to the next

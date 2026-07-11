@@ -183,7 +183,7 @@ Quick comparison
 
 Tommy keeps a list of his Vice City crew members. Each member has a name and a role. Tommy starts with Lance Vance (driver), Phil Cassidy (weapons), Umberto Robina (ally), and Hilary King (driver). At some point, Lance betrays him and needs to be removed from the list
 
-Build a class for crew members. In `main`, create an ArrayList with all the members, remove Lance (the first in the list), then iterate through the list and print each remaining member
+Build a `CrewMember` class (with `name` and `role`). In `main`, store each member's data in variables — `name1`/`role1` through `name4`/`role4` (start with Lance/driver, Phil/weapons, Umberto/ally, Hilary/driver). Add all four to an `ArrayList<CrewMember>`, remove Lance (index `0`), then iterate through the list and print each remaining member as `"name - role"`
 
 **Example**
 

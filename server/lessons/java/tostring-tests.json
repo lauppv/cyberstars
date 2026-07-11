@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Car" },
+      { "kind": "variable", "name": "make1" },
+      { "kind": "variable", "name": "year1" },
+      { "kind": "variable", "name": "make2" },
+      { "kind": "variable", "name": "year2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "make1": "Infernus", "year1": 1986, "make2": "Cheetah", "year2": 1984 }
+    },
+    { "inject": { "make1": "Banshee", "year1": 1990, "make2": "Stinger", "year2": 1987 } },
+    { "inject": { "make1": "Sabre", "year1": 1979, "make2": "Comet", "year2": 1992 } },
+    { "inject": { "make1": "Deluxo", "year1": 1985, "make2": "Sentinel", "year2": 1994 } }
+  ]
+}

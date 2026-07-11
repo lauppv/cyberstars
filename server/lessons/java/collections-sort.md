@@ -138,7 +138,7 @@ public int compareTo(Car other) {
 
 Cortez wants a crew ranking sorted by number of completed missions — from least productive to most active. Tommy completed 47 missions, Lance 12, Phil 8, and Mercedes 23
 
-Build a class for crew members that implements `Comparable` and compares by mission count. Create an ArrayList with all members, sort it, and print the ranking
+Build a `CrewMember` class that implements `Comparable` and compares by mission count. Store the four counts in variables `missions1` (Tommy), `missions2` (Lance), `missions3` (Phil), and `missions4` (Mercedes). Create an `ArrayList<CrewMember>` with all members, sort it with `Collections.sort`, and print the ranking as `"name - count missions"`
 
 **Example**
 

@@ -16,10 +16,15 @@ class Sofer extends MembruEchipa {
 
 public class Main {
     public static void main(String[] args) {
+        String nume1 = "Lance Vance";
+        String masina1 = "Infernus";
+        String nume2 = "Mercedes Cortez";
+        String nume3 = "Hilary King";
+        String masina3 = "Sentinel";
         MembruEchipa[] echipa = {
-            new Sofer("Lance Vance", "Infernus"),
-            new MembruEchipa("Mercedes Cortez"),
-            new Sofer("Hilary King", "Sentinel")
+            new Sofer(nume1, masina1),
+            new MembruEchipa(nume2),
+            new Sofer(nume3, masina3)
         };
         for (MembruEchipa m : echipa) {
             System.out.println("Nume: " + m.nume);

@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "day" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "day": "Monday" } },
+    { "inject": { "day": "Friday" } },
+    { "inject": { "day": "Saturday" } },
+    { "inject": { "day": "Sunday" } },
+    { "inject": { "day": "Christmas" } }
+  ]
+}

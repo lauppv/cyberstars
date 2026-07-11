@@ -50,10 +50,20 @@ class Inventar {
 
 public class Main {
     public static void main(String[] args) {
+        String nume1 = "Filtru aer";
+        int cantitate1 = 4;
+        double pret1 = 35.00;
+        String nume2 = "Pachet hrana";
+        int cantitate2 = 10;
+        double pret2 = 12.00;
+        String nume3 = "Kit reparatii";
+        int cantitate3 = 3;
+        double pret3 = 85.00;
+
         Inventar inv = new Inventar();
-        inv.adaugaArticol(new Articol("Filtru aer", 4, 35.00));
-        inv.adaugaArticol(new Articol("Pachet hrana", 10, 12.00));
-        inv.adaugaArticol(new Articol("Kit reparatii", 3, 85.00));
+        inv.adaugaArticol(new Articol(nume1, cantitate1, pret1));
+        inv.adaugaArticol(new Articol(nume2, cantitate2, pret2));
+        inv.adaugaArticol(new Articol(nume3, cantitate3, pret3));
 
         inv.afiseazaTot();
         System.out.println("Total: $" + String.format("%.2f", inv.valoareTotala()));

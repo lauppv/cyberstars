@@ -1,0 +1,69 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Razboinic" },
+      { "kind": "call", "name": "Mag" },
+      { "kind": "function", "name": "ataca" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "viata1" },
+      { "kind": "variable", "name": "atac1" },
+      { "kind": "variable", "name": "armura1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "viata2" },
+      { "kind": "variable", "name": "atac2" },
+      { "kind": "variable", "name": "vraja2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Tommy",
+        "viata1": 100,
+        "atac1": 25,
+        "armura1": 10,
+        "nume2": "Lance",
+        "viata2": 80,
+        "atac2": 15,
+        "vraja2": 20
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Cortez",
+        "viata1": 120,
+        "atac1": 30,
+        "armura1": 15,
+        "nume2": "Diaz",
+        "viata2": 90,
+        "atac2": 10,
+        "vraja2": 35
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Phil",
+        "viata1": 150,
+        "atac1": 18,
+        "armura1": 20,
+        "nume2": "Mercedes",
+        "viata2": 70,
+        "atac2": 22,
+        "vraja2": 8
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Sonny",
+        "viata1": 200,
+        "atac1": 40,
+        "armura1": 5,
+        "nume2": "Ken",
+        "viata2": 60,
+        "atac2": 12,
+        "vraja2": 50
+      }
+    }
+  ]
+}

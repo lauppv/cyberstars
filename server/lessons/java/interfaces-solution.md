@@ -29,8 +29,12 @@ class Movie implements Printable {
 
 public class Main {
     public static void main(String[] args) {
-        Book b = new Book("Vice City Chronicles", "Tommy Vercetti");
-        Movie m = new Movie("Top Gun", "Tony Scott");
+        String title1 = "Vice City Chronicles";
+        String author1 = "Tommy Vercetti";
+        String title2 = "Top Gun";
+        String director2 = "Tony Scott";
+        Book b = new Book(title1, author1);
+        Movie m = new Movie(title2, director2);
         b.printInfo();
         m.printInfo();
     }

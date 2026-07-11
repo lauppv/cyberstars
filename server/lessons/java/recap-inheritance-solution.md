@@ -51,16 +51,24 @@ class Motorcycle extends Vehicle {
 
 public class Main {
     public static void main(String[] args) {
+        String name1 = "Infernus";
+        String name2 = "Linerunner";
+        String name3 = "Angel";
+        int km1 = 15;
+        int km2 = 15;
+        int km3 = 20;
+        int km4 = 15;
+
         Vehicle[] fleet = {
-            new SportsCar("Infernus"),
-            new Truck("Linerunner"),
-            new Motorcycle("Angel")
+            new SportsCar(name1),
+            new Truck(name2),
+            new Motorcycle(name3)
         };
 
-        fleet[0].drive(15);
-        fleet[1].drive(15);
-        fleet[1].drive(20);
-        fleet[2].drive(15);
+        fleet[0].drive(km1);
+        fleet[1].drive(km2);
+        fleet[1].drive(km3);
+        fleet[2].drive(km4);
 
         for (Vehicle v : fleet) {
             System.out.println(v);

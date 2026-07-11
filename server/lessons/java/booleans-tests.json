@@ -1,0 +1,22 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "employee" },
+      { "kind": "variable", "name": "workingDay" },
+      { "kind": "variable", "name": "guest" },
+      { "kind": "variable", "name": "invitation" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "employee": true, "workingDay": true, "guest": false, "invitation": false }
+    },
+    { "inject": { "employee": true, "workingDay": false, "guest": false, "invitation": false } },
+    { "inject": { "employee": false, "workingDay": false, "guest": true, "invitation": true } },
+    { "inject": { "employee": false, "workingDay": false, "guest": true, "invitation": false } },
+    { "inject": { "employee": false, "workingDay": false, "guest": false, "invitation": false } },
+    { "inject": { "employee": true, "workingDay": true, "guest": true, "invitation": true } }
+  ]
+}

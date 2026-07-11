@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "impartePrada" },
+      { "kind": "call", "name": "impartePrada" },
+      { "kind": "variable", "name": "prada" },
+      { "kind": "variable", "name": "membri" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "prada": 10000, "membri": 4 } },
+    { "inject": { "prada": 5000, "membri": 3 } },
+    { "inject": { "prada": 8000, "membri": 1 } },
+    { "inject": { "prada": 7, "membri": 7 } },
+    { "inject": { "prada": 100, "membri": 3 } }
+  ]
+}

@@ -11,7 +11,7 @@ Două lucruri îi pot strica tura:
 - un magazin este **închis** azi — sare peste el cu **continue** (nu colectează nimic acolo) și merge mai departe
 - la un magazin îl **așteaptă poliția** — oprește toată tura imediat cu **break** și nu colectează de la acel magazin
 
-Stochează numărul total de magazine, magazinul închis și magazinul unde așteaptă poliția. Apoi folosește o buclă care parcurge magazinele de la **1** la total. Pentru fiecare magazin de la care chiar colectează, afișează `Magazin N` (unde **N** e numărul magazinului) și adună suma într-un total. La final, afișează `Total: X`.
+Stochează numărul total de magazine în `totalMagazine`, magazinul închis în `magazinInchis` și magazinul unde așteaptă poliția în `magazinPolitie`. Apoi folosește o buclă care parcurge magazinele de la **1** la total. Pentru fiecare magazin de la care chiar colectează, afișează `Magazin N` (unde **N** e numărul magazinului) și adună suma într-un total. La final, afișează `Total: X`.
 
 **Exemplu** pentru **6** magazine, cu magazinul închis **3** și poliția la magazinul **5**:
 

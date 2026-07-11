@@ -52,8 +52,17 @@ class Mage extends Character {
 
 public class Main {
     public static void main(String[] args) {
-        Warrior w = new Warrior("Tommy", 100, 25, 10);
-        Mage m = new Mage("Lance", 80, 15, 20);
+        String name1 = "Tommy";
+        int health1 = 100;
+        int attack1 = 25;
+        int armor1 = 10;
+        String name2 = "Lance";
+        int health2 = 80;
+        int attack2 = 15;
+        int spell2 = 20;
+
+        Warrior w = new Warrior(name1, health1, attack1, armor1);
+        Mage m = new Mage(name2, health2, attack2, spell2);
 
         w.attack(m);
         m.printStatus();

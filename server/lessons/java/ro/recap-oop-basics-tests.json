@@ -1,0 +1,74 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "MembruBanda" },
+      { "kind": "function", "name": "antreneaza" },
+      { "kind": "function", "name": "misiune" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "rol1" },
+      { "kind": "variable", "name": "ani1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "rol2" },
+      { "kind": "variable", "name": "ani2" },
+      { "kind": "variable", "name": "nume3" },
+      { "kind": "variable", "name": "rol3" },
+      { "kind": "variable", "name": "ani3" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Tommy Vercetti",
+        "rol1": "Sef",
+        "ani1": 3,
+        "nume2": "Lance Vance",
+        "rol2": "Partener",
+        "ani2": 5,
+        "nume3": "Phil Cassidy",
+        "rol3": "Armurier",
+        "ani3": 2
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Sonny",
+        "rol1": "Don",
+        "ani1": 20,
+        "nume2": "Ken",
+        "rol2": "Avocat",
+        "ani2": 8,
+        "nume3": "Diaz",
+        "rol3": "Traficant",
+        "ani3": 1
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Mercedes",
+        "rol1": "Manager",
+        "ani1": 4,
+        "nume2": "Kent",
+        "rol2": "Bodyguard",
+        "ani2": 6,
+        "nume3": "Avery",
+        "rol3": "Dezvoltator",
+        "ani3": 12
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Cortez",
+        "rol1": "Colonel",
+        "ani1": 30,
+        "nume2": "Mitch",
+        "rol2": "Motociclist",
+        "ani2": 9,
+        "nume3": "Umberto",
+        "rol3": "Cubanez",
+        "ani3": 7
+      }
+    }
+  ]
+}

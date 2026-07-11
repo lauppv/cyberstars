@@ -91,7 +91,7 @@ Cronometrul de numărătoare inversă rulează. În funcție de câte secunde r�
 - la **10** secunde → afișează `Pornesc motoarele principale`
 - în orice alt caz → afișează `Astept...`
 
-Reține numărul de secunde într-o variabilă `int` și scrie un lanț `if / else if / else` care afișează acțiunea corectă.
+Reține numărul de secunde într-o variabilă `int` numită `secunde` și scrie un lanț `if / else if / else` care afișează acțiunea corectă.
 
 **Exemple**
 

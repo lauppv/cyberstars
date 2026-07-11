@@ -1,0 +1,24 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Wallet" },
+      { "kind": "function", "name": "addMoney" },
+      { "kind": "function", "name": "spendMoney" },
+      { "kind": "function", "name": "getBalance" },
+      { "kind": "variable", "name": "start" },
+      { "kind": "variable", "name": "income" },
+      { "kind": "variable", "name": "spend1" },
+      { "kind": "variable", "name": "spend2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "start": 100, "income": 50, "spend1": 30, "spend2": 200 }
+    },
+    { "inject": { "start": 500, "income": 0, "spend1": 100, "spend2": 50 } },
+    { "inject": { "start": 200, "income": 100, "spend1": 300, "spend2": 50 } },
+    { "inject": { "start": 1000, "income": 250, "spend1": 250, "spend2": 250 } }
+  ]
+}

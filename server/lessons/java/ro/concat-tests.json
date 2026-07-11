@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "nume" },
+      { "kind": "variable", "name": "scor" },
+      { "kind": "variable", "name": "rating" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "nume": "Tommy Vercetti", "scor": 1500, "rating": 4.75 } },
+    { "inject": { "nume": "Lance Vance", "scor": 90, "rating": 3.25 } },
+    { "inject": { "nume": "Ricardo Diaz", "scor": 0, "rating": 1.99 } },
+    { "inject": { "nume": "Candy Suxxx", "scor": 100000, "rating": 0.05 } }
+  ]
+}

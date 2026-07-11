@@ -188,7 +188,7 @@ Load saved game
 
 The station's duty roster needs a quick classifier: given a day name, print whether it is a **weekday** or a **weekend** shift.
 
-Store the day in a `String` variable and write a **switch** that:
+Store the day in a `String` variable named `day` and write a **switch** that:
 
 - for `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"` → prints `Weekday`
 - for `"Saturday"` and `"Sunday"` → prints `Weekend`

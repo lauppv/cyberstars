@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "splitLoot" },
+      { "kind": "call", "name": "splitLoot" },
+      { "kind": "variable", "name": "loot" },
+      { "kind": "variable", "name": "crew" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "loot": 10000, "crew": 4 } },
+    { "inject": { "loot": 5000, "crew": 3 } },
+    { "inject": { "loot": 8000, "crew": 1 } },
+    { "inject": { "loot": 7, "crew": 7 } },
+    { "inject": { "loot": 100, "crew": 3 } }
+  ]
+}

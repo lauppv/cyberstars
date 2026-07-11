@@ -1,0 +1,25 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "hero1" },
+      { "kind": "variable", "name": "hero2" },
+      { "kind": "variable", "name": "hero3" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "hero1": "Lance Vance", "hero2": "Diaz", "hero3": "Mercedes" }
+    },
+    {
+      "inject": { "hero1": "Tommy Vercetti", "hero2": "Ken Rosenberg", "hero3": "Kent Paul" }
+    },
+    {
+      "inject": { "hero1": "Sonny Forelli", "hero2": "Avery Carrington", "hero3": "Phil Cassidy" }
+    },
+    {
+      "inject": { "hero1": "Cortez", "hero2": "Candy Suxxx", "hero3": "Umberto Robina" }
+    }
+  ]
+}

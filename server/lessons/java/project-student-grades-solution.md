@@ -33,16 +33,25 @@ class Student {
 
 public class Main {
     public static void main(String[] args) {
-        Student s1 = new Student("Tommy");
-        s1.addGrade("Math", 90);
-        s1.addGrade("English", 85);
-        s1.addGrade("Science", 92);
+        String name1 = "Tommy";
+        int math1 = 90;
+        int english1 = 85;
+        int science1 = 92;
+        String name2 = "Lance";
+        int math2 = 78;
+        int english2 = 82;
+        int science2 = 88;
+
+        Student s1 = new Student(name1);
+        s1.addGrade("Math", math1);
+        s1.addGrade("English", english1);
+        s1.addGrade("Science", science1);
         s1.printReport();
 
-        Student s2 = new Student("Lance");
-        s2.addGrade("Math", 78);
-        s2.addGrade("English", 82);
-        s2.addGrade("Science", 88);
+        Student s2 = new Student(name2);
+        s2.addGrade("Math", math2);
+        s2.addGrade("English", english2);
+        s2.addGrade("Science", science2);
         s2.printReport();
     }
 }

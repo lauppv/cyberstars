@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "a" },
+      { "kind": "variable", "name": "b" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "a": 17, "b": 5 } },
+    { "inject": { "a": 100, "b": 7 } },
+    { "inject": { "a": 5, "b": 17 } },
+    { "inject": { "a": 36, "b": 6 } },
+    { "inject": { "a": 0, "b": 9 } }
+  ]
+}

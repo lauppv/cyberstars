@@ -35,8 +35,12 @@ class CarWash extends Business {
 
 public class Main {
     public static void main(String[] args) {
-        Club c = new Club(120);
-        CarWash w = new CarWash(30, 8);
+        int customers = 120;
+        int cars = 30;
+        int price = 8;
+
+        Club c = new Club(customers);
+        CarWash w = new CarWash(cars, price);
         System.out.println("Club earnings: " + c.earnings());
         System.out.println("Car wash earnings: " + w.earnings());
     }

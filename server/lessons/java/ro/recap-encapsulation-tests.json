@@ -1,0 +1,65 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "ContBancar" },
+      { "kind": "function", "name": "depune" },
+      { "kind": "function", "name": "retrage" },
+      { "kind": "function", "name": "getTotalConturi" },
+      { "kind": "variable", "name": "proprietar1" },
+      { "kind": "variable", "name": "sold1" },
+      { "kind": "variable", "name": "proprietar2" },
+      { "kind": "variable", "name": "sold2" },
+      { "kind": "variable", "name": "depunere1" },
+      { "kind": "variable", "name": "retragere1" },
+      { "kind": "variable", "name": "retragere2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "proprietar1": "Tommy",
+        "sold1": 1000,
+        "proprietar2": "Lance",
+        "sold2": 500,
+        "depunere1": 250,
+        "retragere1": 200,
+        "retragere2": 400
+      }
+    },
+    {
+      "inject": {
+        "proprietar1": "Diaz",
+        "sold1": 5000,
+        "proprietar2": "Cortez",
+        "sold2": 800,
+        "depunere1": 1000,
+        "retragere1": 800,
+        "retragere2": 100
+      }
+    },
+    {
+      "inject": {
+        "proprietar1": "Ken",
+        "sold1": 300,
+        "proprietar2": "Sonny",
+        "sold2": 1500,
+        "depunere1": 0,
+        "retragere1": 300,
+        "retragere2": 2000
+      }
+    },
+    {
+      "inject": {
+        "proprietar1": "Mercedes",
+        "sold1": 750,
+        "proprietar2": "Kent",
+        "sold2": 200,
+        "depunere1": 500,
+        "retragere1": 100,
+        "retragere2": 50
+      }
+    }
+  ]
+}

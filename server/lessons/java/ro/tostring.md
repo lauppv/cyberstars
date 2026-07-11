@@ -177,7 +177,7 @@ Tommy își ține mașinile într-un garaj și vrea ca fiecare să se afișeze f
 
 Creează o clasă `Masina` cu un câmp `marca` (String) și unul `an` (int). Scrie un constructor și suprascrie `toString()` ca să întoarcă marca, apoi ` (`, anul și `)` — de exemplu `Infernus (1986)`
 
-În `main`, creează două mașini cu valori la alegere și afișează-le direct cu `System.out.println`
+În `main`, stochează mai întâi valorile în variabile locale — `marca1` și `an1` pentru prima mașină, `marca2` și `an2` pentru a doua. Apoi creează două mașini din acele variabile și afișează-le direct cu `System.out.println`
 
 **Exemplu** — `Infernus` din `1986` și `Cheetah` din `1984`
 

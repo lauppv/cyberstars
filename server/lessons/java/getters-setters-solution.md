@@ -25,10 +25,15 @@ class BankAccount {
 
 public class Main {
     public static void main(String[] args) {
-        BankAccount acc = new BankAccount(1000);
-        acc.deposit(500);
-        acc.withdraw(200);
-        acc.withdraw(2000);
+        int start = 1000;
+        int deposit = 500;
+        int withdraw1 = 200;
+        int withdraw2 = 2000;
+
+        BankAccount acc = new BankAccount(start);
+        acc.deposit(deposit);
+        acc.withdraw(withdraw1);
+        acc.withdraw(withdraw2);
         System.out.println(acc.getBalance());
     }
 }

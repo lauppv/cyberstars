@@ -175,7 +175,7 @@ Create a `Visitor` class with:
 2. A `static int totalVisits` field starting at 0
 3. A constructor that takes a name and increments `totalVisits`
 
-In `main`, register 3 visitors: `"Tommy"`, `"Lance"`, and `"Cortez"`. Then print the total visit count.
+In `main`, store the visitor names in a `String[] names` array (start with `"Tommy"`, `"Lance"`, `"Cortez"`). Loop over the array and create a `Visitor` for each name. Then print the total visit count.
 
 **Example** — three visitors registered at the door
 

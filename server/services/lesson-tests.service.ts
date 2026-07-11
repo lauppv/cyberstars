@@ -3,6 +3,7 @@ import path from 'path';
 import { contentDir } from './paths.js';
 import { dockerExec } from './docker-exec.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
+import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import type {
   LessonTestsSpec,
@@ -13,17 +14,54 @@ import type {
 
 // Server-side judge for lessons that ship a <slug>-tests.json. The heavy
 // lifting happens inside the owner's sandbox container (same one the editor
-// Run uses): a trusted Python runner checks code structure via ast, injects
-// each case's values into the lesson's input variables in both the user code
-// and the reference solution, and runs the two programs. Outputs are compared
+// Run uses): a trusted per-language runner checks code structure via the
+// language's own parser (Python ast / javac Compiler Tree API), injects each
+// case's values into the lesson's input variables in both the user code and
+// the reference solution, and runs the two programs. Outputs are compared
 // HERE, on the server — expected outputs never enter the container, so user
 // code cannot read them.
-const RUNNER_PATH = path.join(process.cwd(), 'server', 'services', 'lesson-tests.runner.py');
+const SERVICES_DIR = path.join(process.cwd(), 'server', 'services');
 
 const WRITE_TIMEOUT_MS = 10_000;
-// Per case the runner may spend up to 2×5s (user + solution programs).
-const CASE_BUDGET_MS = 11_000;
-const BASE_TIMEOUT_MS = 15_000;
+
+// The Java runner is compiled once per container into /tmp/_judge (only /work
+// is wiped between runs) and recompiled when the shipped source changes (a
+// deploy while the container is warm). `exec` keeps the verdict as the sole
+// stdout of the docker exec.
+const JAVA_BOOT =
+  'cmp -s /work/Runner.java /tmp/_judge/Runner.java 2>/dev/null || ' +
+  '{ mkdir -p /tmp/_judge && javac -d /tmp/_judge /work/Runner.java && cp /work/Runner.java /tmp/_judge/Runner.java; } && ' +
+  'exec java -XX:+UseSerialGC -Xmx96m -cp /tmp/_judge Runner /work/_payload.json';
+
+interface JudgeRunner {
+  runnerPath: string;
+  /** Where the runner source is written inside the container (under /work). */
+  containerFile: string;
+  /** Argv executed in the container to produce the verdict JSON on stdout. */
+  runCmd: string[];
+  /** Per-case runner budget: 2×5s programs, plus compiles where applicable. */
+  caseBudgetMs: number;
+  baseTimeoutMs: number;
+}
+
+const RUNNERS: Record<string, JudgeRunner> = {
+  python: {
+    runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.py'),
+    containerFile: '/work/_runner.py',
+    runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
+    caseBudgetMs: 11_000,
+    baseTimeoutMs: 15_000,
+  },
+  java: {
+    runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.java'),
+    containerFile: '/work/Runner.java',
+    runCmd: ['sh', '-c', JAVA_BOOT],
+    // Each case may compile user + solution in-process on top of the two runs;
+    // the base covers the one-time runner bootstrap compile on a cold container.
+    caseBudgetMs: 16_000,
+    baseTimeoutMs: 30_000,
+  },
+};
 
 // Same ro/-subfolder localization convention as lesson markdown / terminal
 // -setup.json — but the tests spec and the solution are a UNIT (the spec's
@@ -134,6 +172,8 @@ export async function runLessonTests(
 ): Promise<RunTestsResponse> {
   const spec = loadTestsSpec(courseKey, lessonSlug, lang);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
+  const judge = RUNNERS[getRuntime(courseKey)?.name ?? ''];
+  if (!judge) throw new AppError(404, 'This lesson has no tests');
   const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang);
 
   let containerId: string;
@@ -148,7 +188,7 @@ export async function runLessonTests(
 
   let keep = true;
   try {
-    const runner = fs.readFileSync(RUNNER_PATH, 'utf8');
+    const runner = fs.readFileSync(judge.runnerPath, 'utf8');
     const payload = JSON.stringify({
       userCode,
       solutionCode,
@@ -156,7 +196,7 @@ export async function runLessonTests(
       cases: spec.cases,
     });
     await dockerExec(
-      ['exec', '-i', containerId, 'sh', '-c', 'rm -rf /work/* && cat > /work/_runner.py'],
+      ['exec', '-i', containerId, 'sh', '-c', `rm -rf /work/* && cat > ${judge.containerFile}`],
       WRITE_TIMEOUT_MS,
       runner,
     );
@@ -166,8 +206,8 @@ export async function runLessonTests(
       payload,
     );
     const raw = await dockerExec(
-      ['exec', containerId, 'python3', '/work/_runner.py', '/work/_payload.json'],
-      BASE_TIMEOUT_MS + spec.cases.length * CASE_BUDGET_MS,
+      ['exec', containerId, ...judge.runCmd],
+      judge.baseTimeoutMs + spec.cases.length * judge.caseBudgetMs,
     );
     return buildResponse(spec, JSON.parse(raw) as RunnerVerdict);
   } catch (err) {
