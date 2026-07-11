@@ -50,10 +50,20 @@ class Inventory {
 
 public class Main {
     public static void main(String[] args) {
+        String name1 = "Air filter";
+        int quantity1 = 4;
+        double price1 = 35.00;
+        String name2 = "Food pack";
+        int quantity2 = 10;
+        double price2 = 12.00;
+        String name3 = "Repair kit";
+        int quantity3 = 3;
+        double price3 = 85.00;
+
         Inventory inv = new Inventory();
-        inv.addItem(new Item("Air filter", 4, 35.00));
-        inv.addItem(new Item("Food pack", 10, 12.00));
-        inv.addItem(new Item("Repair kit", 3, 85.00));
+        inv.addItem(new Item(name1, quantity1, price1));
+        inv.addItem(new Item(name2, quantity2, price2));
+        inv.addItem(new Item(name3, quantity3, price3));
 
         inv.printAll();
         System.out.println("Total: $" + String.format("%.2f", inv.totalValue()));

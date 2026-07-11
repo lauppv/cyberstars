@@ -138,7 +138,7 @@ public int compareTo(Masina alta) {
 
 Cortez vrea un clasament al echipajului, sortat după numărul de misiuni completate — de la cel mai puțin productiv la cel mai activ. Tommy a completat 47 de misiuni, Lance 12, Phil 8 și Mercedes 23
 
-Construiește o clasă pentru membrii echipajului care implementează `Comparable` și se compară după numărul de misiuni. Creează un ArrayList cu toți membrii, sortează-l și afișează clasamentul
+Construiește o clasă `MembruEchipa` care implementează `Comparable` și se compară după numărul de misiuni. Stochează cele patru numere în variabilele `misiuni1` (Tommy), `misiuni2` (Lance), `misiuni3` (Phil) și `misiuni4` (Mercedes). Creează un `ArrayList<MembruEchipa>` cu toți membrii, sortează-l cu `Collections.sort` și afișează clasamentul ca `"nume - numar misiuni"`
 
 **Exemplu**
 

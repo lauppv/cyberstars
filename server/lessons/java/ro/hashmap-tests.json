@@ -1,0 +1,23 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "nr1" },
+      { "kind": "variable", "name": "nr2" },
+      { "kind": "variable", "name": "nr3" },
+      { "kind": "variable", "name": "nr4" },
+      { "kind": "call", "name": "put" },
+      { "kind": "call", "name": "get" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nr1": 47, "nr2": 12, "nr3": 8, "nr4": 23 }
+    },
+    { "inject": { "nr1": 3, "nr2": 40, "nr3": 16, "nr4": 15 } },
+    { "inject": { "nr1": 100, "nr2": 99, "nr3": 50, "nr4": 30 } },
+    { "inject": { "nr1": 10, "nr2": 5, "nr3": 2, "nr4": 1 } }
+  ]
+}

@@ -205,9 +205,7 @@ Academia de antrenament a stației tocmai a terminat examenele. Fiecare cadet ar
    - `"Student: NUME"` pe prima linie
    - `"  MATERIE: NOTA"` pentru fiecare materie (două spații înainte de fiecare)
    - `"  Media: X.X"` la final (o zecimală, două spații înainte)
-4. În main, creează doi studenți:
-   - "Tommy" cu notele: Mate 90, Engleza 85, Stiinte 92
-   - "Lance" cu notele: Mate 78, Engleza 82, Stiinte 88
+4. În main, stochează datele în variabile — `nume1` plus `mate1`/`engleza1`/`stiinte1` pentru primul student, `nume2` plus `mate2`/`engleza2`/`stiinte2` pentru al doilea (pornește cu Tommy: 90/85/92 și Lance: 78/82/88). Creează cei doi `Student` din aceste variabile și adaugă-le notele
 5. Afișează ambele rapoarte
 
 **Ieșire**

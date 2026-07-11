@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "reports" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "parseInt" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "reports": { "$list": ["7500", "dunno", "23000", "error"] } }
+    },
+    { "inject": { "reports": { "$list": ["100", "200", "300"] } } },
+    { "inject": { "reports": { "$list": ["oops", "abc", "N/A"] } } },
+    { "inject": { "reports": { "$list": ["42", "bad", "0", "lost", "9999", "x"] } } }
+  ]
+}

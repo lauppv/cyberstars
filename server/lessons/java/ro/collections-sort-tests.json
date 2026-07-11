@@ -1,0 +1,24 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "MembruEchipa" },
+      { "kind": "variable", "name": "misiuni1" },
+      { "kind": "variable", "name": "misiuni2" },
+      { "kind": "variable", "name": "misiuni3" },
+      { "kind": "variable", "name": "misiuni4" },
+      { "kind": "function", "name": "compareTo" },
+      { "kind": "call", "name": "sort" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "misiuni1": 47, "misiuni2": 12, "misiuni3": 8, "misiuni4": 23 }
+    },
+    { "inject": { "misiuni1": 5, "misiuni2": 90, "misiuni3": 40, "misiuni4": 15 } },
+    { "inject": { "misiuni1": 100, "misiuni2": 3, "misiuni3": 77, "misiuni4": 60 } },
+    { "inject": { "misiuni1": 1, "misiuni2": 2, "misiuni3": 4, "misiuni4": 3 } }
+  ]
+}

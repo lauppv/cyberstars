@@ -205,9 +205,7 @@ The station's training academy just finished exams. Each cadet has grades in mul
    - `"Student: NAME"` on the first line
    - `"  SUBJECT: GRADE"` for each subject (two spaces before each)
    - `"  Average: X.X"` at the end (one decimal place, two spaces before)
-4. In main, create two students:
-   - "Tommy" with grades: Math 90, English 85, Science 92
-   - "Lance" with grades: Math 78, English 82, Science 88
+4. In main, store the data in variables — `name1` plus `math1`/`english1`/`science1` for the first student, `name2` plus `math2`/`english2`/`science2` for the second (start with Tommy: 90/85/92 and Lance: 78/82/88). Create the two `Student`s from those variables and add their grades
 5. Print both reports
 
 **Output**

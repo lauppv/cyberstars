@@ -134,7 +134,7 @@ Don't use try/catch as a crutch. If you know an array has 3 elements, don't acce
 
 Tommy receives payments from his businesses, but some reports come corrupted. Phil sends `"7500"`, Lance sends `"dunno"`, Mercedes sends `"23000"`, and Cortez sends `"error"`. Tommy needs to parse each amount and handle the invalid reports
 
-Loop through the list of reports, try to parse each one as a number with `Integer.parseInt()`. If it works, print the payment. If not, catch the exception and print what went wrong
+Store the incoming reports in a `String[] reports` array. Loop through it and try to parse each one as a number with `Integer.parseInt()`. If it works, print `"Payment: amount"`. If not, catch the `NumberFormatException` and print `"Invalid report: report"`
 
 **Example**
 

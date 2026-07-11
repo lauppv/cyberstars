@@ -201,10 +201,7 @@ Compartimentul de marfă al stației are nevoie de un sistem de manifest digital
 2. Creează o clasă `Inventar` cu un `ArrayList<Articol>`, și metodele: `adaugaArticol(Articol articol)`, `stergeArticol(String nume)`, `afiseazaTot()`, și `double valoareTotala()`
 3. `afiseazaTot()` afișează fiecare obiect ca `"nume xCantitate @ $pret"` (folosește `String.format("%.2f", pret)`)
 4. `valoareTotala()` returnează suma lui `cantitate * pret` pentru toate obiectele
-5. În main, creează un Inventar și adaugă aceste provizii:
-   - "Filtru aer", cantitate 4, pret 35.00
-   - "Pachet hrana", cantitate 10, pret 12.00
-   - "Kit reparatii", cantitate 3, pret 85.00
+5. În main, stochează datele fiecărei provizii în variabile — `nume1`/`cantitate1`/`pret1`, `nume2`/`cantitate2`/`pret2`, `nume3`/`cantitate3`/`pret3` (pornește cu Filtru aer/4/35.00, Pachet hrana/10/12.00, Kit reparatii/3/85.00). Creează un `Inventar` și adaugă cele trei articole construite din aceste variabile
 6. Apelează `afiseazaTot()`, apoi afișează `"Total: $"` urmat de totalul formatat
 
 **Ieșire**

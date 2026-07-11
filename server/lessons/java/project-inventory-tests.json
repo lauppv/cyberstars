@@ -1,0 +1,75 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Item" },
+      { "kind": "call", "name": "Inventory" },
+      { "kind": "function", "name": "addItem" },
+      { "kind": "function", "name": "totalValue" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "quantity1" },
+      { "kind": "variable", "name": "price1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "quantity2" },
+      { "kind": "variable", "name": "price2" },
+      { "kind": "variable", "name": "name3" },
+      { "kind": "variable", "name": "quantity3" },
+      { "kind": "variable", "name": "price3" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Air filter",
+        "quantity1": 4,
+        "price1": 35.0,
+        "name2": "Food pack",
+        "quantity2": 10,
+        "price2": 12.0,
+        "name3": "Repair kit",
+        "quantity3": 3,
+        "price3": 85.0
+      }
+    },
+    {
+      "inject": {
+        "name1": "Medical kit",
+        "quantity1": 5,
+        "price1": 25.5,
+        "name2": "Oxygen reserve",
+        "quantity2": 2,
+        "price2": 75.5,
+        "name3": "Solar battery",
+        "quantity3": 1,
+        "price3": 100.0
+      }
+    },
+    {
+      "inject": {
+        "name1": "Coolant",
+        "quantity1": 7,
+        "price1": 9.99,
+        "name2": "Fuel cell",
+        "quantity2": 12,
+        "price2": 40.25,
+        "name3": "Antenna",
+        "quantity3": 2,
+        "price3": 150.0
+      }
+    },
+    {
+      "inject": {
+        "name1": "Ration",
+        "quantity1": 20,
+        "price1": 3.5,
+        "name2": "Wrench",
+        "quantity2": 1,
+        "price2": 18.0,
+        "name3": "Sensor",
+        "quantity3": 6,
+        "price3": 62.75
+      }
+    }
+  ]
+}

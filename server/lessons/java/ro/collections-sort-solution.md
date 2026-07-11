@@ -18,11 +18,16 @@ class MembruEchipa implements Comparable<MembruEchipa> {
 
 public class Main {
     public static void main(String[] args) {
+        int misiuni1 = 47;
+        int misiuni2 = 12;
+        int misiuni3 = 8;
+        int misiuni4 = 23;
+
         ArrayList<MembruEchipa> echipa = new ArrayList<>();
-        echipa.add(new MembruEchipa("Tommy", 47));
-        echipa.add(new MembruEchipa("Lance", 12));
-        echipa.add(new MembruEchipa("Phil", 8));
-        echipa.add(new MembruEchipa("Mercedes", 23));
+        echipa.add(new MembruEchipa("Tommy", misiuni1));
+        echipa.add(new MembruEchipa("Lance", misiuni2));
+        echipa.add(new MembruEchipa("Phil", misiuni3));
+        echipa.add(new MembruEchipa("Mercedes", misiuni4));
 
         Collections.sort(echipa);
 

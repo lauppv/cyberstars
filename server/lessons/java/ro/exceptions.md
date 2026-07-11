@@ -134,7 +134,7 @@ Nu folosi try/catch ca pe o cârjă. Dacă știi că un array are 3 elemente, nu
 
 Tommy primește plăți de la afacerile sale, dar unele rapoarte vin corupte. Phil trimite `"7500"`, Lance trimite `"nu stiu"`, Mercedes trimite `"23000"` și Cortez trimite `"eroare"`. Tommy trebuie să parseze fiecare sumă și să trateze rapoartele invalide
 
-Parcurge lista de rapoarte, încearcă să parsezi fiecare ca număr cu `Integer.parseInt()`. Dacă reușește, afișează suma. Dacă nu, prinde excepția și afișează ce a mers prost
+Stochează rapoartele primite într-un array `String[] rapoarte`. Parcurge-l și încearcă să parsezi fiecare ca număr cu `Integer.parseInt()`. Dacă reușește, afișează `"Plata: suma"`. Dacă nu, prinde `NumberFormatException` și afișează `"Raport invalid: raport"`
 
 **Exemplu**
 

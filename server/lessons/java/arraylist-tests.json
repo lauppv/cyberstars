@@ -1,0 +1,70 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "CrewMember" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "role1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "role2" },
+      { "kind": "variable", "name": "name3" },
+      { "kind": "variable", "name": "role3" },
+      { "kind": "variable", "name": "name4" },
+      { "kind": "variable", "name": "role4" },
+      { "kind": "call", "name": "add" },
+      { "kind": "call", "name": "remove" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Lance Vance",
+        "role1": "driver",
+        "name2": "Phil Cassidy",
+        "role2": "weapons",
+        "name3": "Umberto Robina",
+        "role3": "ally",
+        "name4": "Hilary King",
+        "role4": "driver"
+      }
+    },
+    {
+      "inject": {
+        "name1": "Ken Rosenberg",
+        "role1": "lawyer",
+        "name2": "Ricardo Diaz",
+        "role2": "boss",
+        "name3": "Mercedes Cortez",
+        "role3": "contact",
+        "name4": "Cam Jones",
+        "role4": "hacker"
+      }
+    },
+    {
+      "inject": {
+        "name1": "Mitch Baker",
+        "role1": "biker",
+        "name2": "Sonny Forelli",
+        "role2": "mafia",
+        "name3": "Avery Carrington",
+        "role3": "tycoon",
+        "name4": "Love Fist",
+        "role4": "band"
+      }
+    },
+    {
+      "inject": {
+        "name1": "Auntie Poulet",
+        "role1": "voodoo",
+        "name2": "Kent Paul",
+        "role2": "manager",
+        "name3": "Steve Scott",
+        "role3": "director",
+        "name4": "BJ Smith",
+        "role4": "athlete"
+      }
+    }
+  ]
+}

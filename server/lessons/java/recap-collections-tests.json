@@ -1,0 +1,33 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "purchases" },
+      { "kind": "call", "name": "put" },
+      { "kind": "call", "name": "get" },
+      { "kind": "call", "name": "sort" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "purchases": {
+          "$list": ["Pistol", "Shotgun", "Pistol", "Automatic", "Shotgun", "Pistol", "Automatic"]
+        }
+      }
+    },
+    {
+      "inject": { "purchases": { "$list": ["Uzi", "Uzi", "Uzi", "Uzi", "Rifle", "Grenade"] } }
+    },
+    {
+      "inject": {
+        "purchases": { "$list": ["Sniper", "Sniper", "Machete", "Machete", "Machete", "Rocket"] }
+      }
+    },
+    {
+      "inject": { "purchases": { "$list": ["Katana", "Katana", "Chainsaw"] } }
+    }
+  ]
+}

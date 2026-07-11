@@ -156,7 +156,7 @@ HashMap does **not** guarantee order. If you add Tommy, Lance, Phil, they might 
 
 Cortez keeps track of how many missions each crew member has completed. Tommy completed 47, Lance 12, Phil 8, and Mercedes 23. Cortez wants a report showing only those who completed more than 15 missions
 
-Build a HashMap that maps each member's name to their mission count. Iterate through the map and print only the members who exceed the threshold, in the format `name: count`
+Store the four mission counts in variables `count1` (Tommy), `count2` (Lance), `count3` (Phil), and `count4` (Mercedes). Build a `HashMap<String, Integer>` that maps each member's name to their count. Iterate through the map and print only the members whose count exceeds `15`, in the format `name: count`
 
 **Example** (order may vary)
 

@@ -1,0 +1,75 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Articol" },
+      { "kind": "call", "name": "Inventar" },
+      { "kind": "function", "name": "adaugaArticol" },
+      { "kind": "function", "name": "valoareTotala" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "cantitate1" },
+      { "kind": "variable", "name": "pret1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "cantitate2" },
+      { "kind": "variable", "name": "pret2" },
+      { "kind": "variable", "name": "nume3" },
+      { "kind": "variable", "name": "cantitate3" },
+      { "kind": "variable", "name": "pret3" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume1": "Filtru aer",
+        "cantitate1": 4,
+        "pret1": 35.0,
+        "nume2": "Pachet hrana",
+        "cantitate2": 10,
+        "pret2": 12.0,
+        "nume3": "Kit reparatii",
+        "cantitate3": 3,
+        "pret3": 85.0
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Kit medical",
+        "cantitate1": 5,
+        "pret1": 25.5,
+        "nume2": "Rezerva oxigen",
+        "cantitate2": 2,
+        "pret2": 75.5,
+        "nume3": "Baterie solara",
+        "cantitate3": 1,
+        "pret3": 100.0
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Lichid racire",
+        "cantitate1": 7,
+        "pret1": 9.99,
+        "nume2": "Celula combustibil",
+        "cantitate2": 12,
+        "pret2": 40.25,
+        "nume3": "Antena",
+        "cantitate3": 2,
+        "pret3": 150.0
+      }
+    },
+    {
+      "inject": {
+        "nume1": "Ratie",
+        "cantitate1": 20,
+        "pret1": 3.5,
+        "nume2": "Cheie",
+        "cantitate2": 1,
+        "pret2": 18.0,
+        "nume3": "Senzor",
+        "cantitate3": 6,
+        "pret3": 62.75
+      }
+    }
+  ]
+}

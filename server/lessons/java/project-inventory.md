@@ -201,10 +201,7 @@ The station's cargo bay needs a digital manifest system. Every supply item has a
 2. Create an `Inventory` class with an `ArrayList<Item>`, and methods: `addItem(Item item)`, `removeItem(String name)`, `printAll()`, and `double totalValue()`
 3. `printAll()` prints each item as `"name xQuantity @ $price"` (use `String.format("%.2f", price)`)
 4. `totalValue()` returns the sum of `quantity * price` for all items
-5. In main, create an Inventory and add these supplies:
-   - "Air filter", quantity 4, price 35.00
-   - "Food pack", quantity 10, price 12.00
-   - "Repair kit", quantity 3, price 85.00
+5. In main, store each supply's data in variables — `name1`/`quantity1`/`price1`, `name2`/`quantity2`/`price2`, `name3`/`quantity3`/`price3` (start with Air filter/4/35.00, Food pack/10/12.00, Repair kit/3/85.00). Create an `Inventory` and add the three items built from those variables
 6. Call `printAll()`, then print `"Total: $"` followed by the formatted total
 
 **Output**

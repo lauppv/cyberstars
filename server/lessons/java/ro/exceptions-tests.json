@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "rapoarte" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "parseInt" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "rapoarte": { "$list": ["7500", "nu stiu", "23000", "eroare"] } }
+    },
+    { "inject": { "rapoarte": { "$list": ["100", "200", "300"] } } },
+    { "inject": { "rapoarte": { "$list": ["gresit", "abc", "N/A"] } } },
+    { "inject": { "rapoarte": { "$list": ["42", "stricat", "0", "pierdut", "9999", "x"] } } }
+  ]
+}

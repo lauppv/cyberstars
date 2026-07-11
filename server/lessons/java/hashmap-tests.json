@@ -1,0 +1,23 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "count1" },
+      { "kind": "variable", "name": "count2" },
+      { "kind": "variable", "name": "count3" },
+      { "kind": "variable", "name": "count4" },
+      { "kind": "call", "name": "put" },
+      { "kind": "call", "name": "get" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "count1": 47, "count2": 12, "count3": 8, "count4": 23 }
+    },
+    { "inject": { "count1": 3, "count2": 40, "count3": 16, "count4": 15 } },
+    { "inject": { "count1": 100, "count2": 99, "count3": 50, "count4": 30 } },
+    { "inject": { "count1": 10, "count2": 5, "count3": 2, "count4": 1 } }
+  ]
+}
