@@ -69,7 +69,9 @@
       "writeCard": "Write",
       "writeCardDesc": "Interactive editor right in the browser",
       "runCard": "Run",
-      "runCardDesc": "Real code execution with instant feedback"
+      "runCardDesc": "Real code execution with instant feedback",
+      "levelCard": "Level up",
+      "levelCardDesc": "Earn XP and climb cosmic levels as you finish lessons"
     }
   },
   "common": {
@@ -141,8 +143,8 @@
         "rest": " — structured curriculum"
       },
       {
-        "bold": "Badges",
-        "rest": " — celebrate every lesson you finish"
+        "bold": "XP & levels",
+        "rest": " — earn XP and climb cosmic ranks with every lesson"
       },
       {
         "bold": "Community forum",

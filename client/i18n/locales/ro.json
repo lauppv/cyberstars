@@ -69,7 +69,9 @@
       "writeCard": "Scrie",
       "writeCardDesc": "Editor interactiv direct în browser",
       "runCard": "Rulează",
-      "runCardDesc": "Execuție reală de cod cu feedback instant"
+      "runCardDesc": "Execuție reală de cod cu feedback instant",
+      "levelCard": "Urcă în nivel",
+      "levelCardDesc": "Câștigă XP și urcă în niveluri cosmice pe măsură ce termini lecții"
     }
   },
   "common": {
@@ -141,8 +143,8 @@
         "rest": " — programă structurată"
       },
       {
-        "bold": "Insigne",
-        "rest": " — sărbătorește fiecare lecție terminată"
+        "bold": "XP & niveluri",
+        "rest": " — câștigă XP și urcă în ranguri cosmice cu fiecare lecție"
       },
       {
         "bold": "Forum comunitar",
