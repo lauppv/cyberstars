@@ -83,8 +83,6 @@ describe('guest id cookie', () => {
 describe('endpoint smoke tests — auth-protected routes return 401 without token', () => {
   const authRequired: [string, string][] = [
     ['get', '/api/progress/python'],
-    ['post', '/api/progress/python/booleans/complete'],
-    ['delete', '/api/progress/python/booleans/complete'],
     ['get', '/api/progress/python/booleans/code'],
     ['put', '/api/progress/python/booleans/code'],
     ['post', '/api/progress/python/booleans/access'],

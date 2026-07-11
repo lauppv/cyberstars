@@ -6,7 +6,13 @@ import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { courseMeta } from '../constants/courses';
-import { progressPct, MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
+import {
+  progressPct,
+  xpForCourse,
+  xpForLesson,
+  MAIN_COURSE_KEYS,
+  TERMINAL_COURSE_KEYS,
+} from '../../shared/constants';
 
 interface CourseData {
   key: string;
@@ -14,9 +20,10 @@ interface CourseData {
   name: string;
   color: string;
   lessonCount: number;
+  totalXp: number;
   progress: number;
   desc: string;
-  chapters: { name: string; slug: string; sortOrder: number; done: boolean }[];
+  chapters: { name: string; slug: string; sortOrder: number; xp: number; done: boolean }[];
   firstSlug?: string;
 }
 
@@ -44,12 +51,14 @@ export function CoursesPage() {
           name: course.title,
           color: courseMeta(course.key).color,
           lessonCount: course.lessons.length,
+          totalXp: xpForCourse(course.lessons.length),
           progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
           desc: t(`courses.descriptions.${course.key}`, { defaultValue: course.description }),
           chapters: course.lessons.map((l) => ({
             name: l.title,
             slug: l.slug,
             sortOrder: l.sortOrder,
+            xp: xpForLesson(l.sortOrder),
             done: doneSet.has(l.slug),
           })),
           firstSlug: course.lessons[0]?.slug,
@@ -121,6 +130,12 @@ export function CoursesPage() {
                     <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
                     {t('courses.lessons', { count: c.lessonCount })}
                   </span>
+                  <span
+                    className="text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]"
+                    title={t('common.xpTotal', { xp: c.totalXp })}
+                  >
+                    ⭐ {t('common.xpTotal', { xp: c.totalXp })}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   {c.progress > 0 ? (
@@ -189,6 +204,9 @@ export function CoursesPage() {
                 <div className="flex gap-3 text-xs text-[var(--text3)]">
                   <span>
                     {syllabus.lessonCount} {t('courses.lessons', { count: syllabus.lessonCount })}
+                  </span>
+                  <span className="text-[var(--accent)]">
+                    ⭐ {t('common.xpTotal', { xp: syllabus.totalXp })}
                   </span>
                 </div>
               </div>
@@ -276,6 +294,11 @@ export function CoursesPage() {
                               {ch.name}
                             </div>
                           </div>
+                          <span
+                            className={`text-[10px] font-semibold tabular-nums flex-shrink-0 ${ch.done ? 'text-[var(--success)]' : 'text-[var(--text3)]'}`}
+                          >
+                            {t('common.xpReward', { xp: ch.xp })}
+                          </span>
                         </div>
                       );
                     })}

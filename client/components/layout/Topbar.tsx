@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { SUPPORTED_LANGS } from '../../i18n';
 import { useBackgroundPref, type BackgroundKind } from '../../hooks/useBackgroundPref';
+import { useGamification } from '../../hooks/useGamification';
 
 const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
 
@@ -34,6 +35,7 @@ export function Topbar({
   const { t, i18n } = useTranslation();
   const currentLang = i18n.resolvedLanguage ?? i18n.language;
   const { isLoggedIn, user, logout } = useAuth();
+  const { xp } = useGamification();
   const [backgroundKind, setBackgroundKind] = useBackgroundPref();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -183,7 +185,28 @@ export function Topbar({
 
       <div className="flex items-center gap-4">
         {isLoggedIn && user ? (
-          <div className="relative" ref={menuRef}>
+          <div className="relative flex items-center gap-2" ref={menuRef}>
+            <div
+              className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
+              title={t(xp.titleKey)}
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <span>⭐</span>
+                {t('level.short', { n: xp.level })}
+              </span>
+              <div
+                className="w-24 h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden"
+                aria-hidden
+              >
+                <div
+                  className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
+                  style={{ width: `${xp.xpPct}%` }}
+                />
+              </div>
+              <span className="tabular-nums text-[11px] text-[var(--text3)]">
+                {xp.xpIntoLevel}/{xp.xpForLevelSpan}
+              </span>
+            </div>
             <button
               onClick={() => setMenuOpen((v) => !v)}
               className="flex items-center gap-2 px-2 py-1 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--surface)] transition cursor-pointer"
@@ -209,7 +232,7 @@ export function Topbar({
             {menuOpen && (
               <div
                 role="menu"
-                className="absolute right-0 mt-2 w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+                className="absolute top-full right-0 mt-2 w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
               >
                 <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
                   {user.avatarUrl ? (

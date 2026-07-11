@@ -132,6 +132,8 @@ describe('CoursesPage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 1,
           total: 2,
 
@@ -175,6 +177,8 @@ describe('CoursesPage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 1,
           total: 2,
 
@@ -284,6 +288,8 @@ describe('CoursesPage', () => {
       progressMap: {
         python: {
           courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
           completed: 1,
           total: 2,
 

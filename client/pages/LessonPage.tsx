@@ -8,6 +8,7 @@ import { useProgress } from '../hooks/useProgress';
 import { useGamification } from '../hooks/useGamification';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
+import { xpForLesson } from '../../shared/constants';
 import { Topbar } from '../components/layout/Topbar';
 import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
@@ -68,7 +69,6 @@ export function LessonPage() {
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState({ icon: '✅', title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
-  const [isMarking, setIsMarking] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
@@ -83,13 +83,6 @@ export function LessonPage() {
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const loadedLessonRef = useRef('');
   const loadedStarterRef = useRef('');
-  const completeFlushTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const pendingCompleteRef = useRef<{
-    desired: boolean;
-    startingServer: boolean;
-    courseKey: string;
-    lessonSlug: string;
-  } | null>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -154,10 +147,13 @@ export function LessonPage() {
   useEffect(() => {
     if (lessonCompleted && justMarkedRef.current) {
       justMarkedRef.current = false;
+      const meta = course?.lessons.find((l) => l.slug === lesson);
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
+      const base = isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete');
+      const xpGain = meta ? t('lesson.xpGained', { xp: xpForLesson(meta.sortOrder) }) : '';
       setToastData({
         icon: isLast ? '🏆' : '✅',
-        title: isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete'),
+        title: xpGain ? `${base} ${xpGain}` : base,
       });
       setShowToast(true);
     }
@@ -189,16 +185,13 @@ export function LessonPage() {
       const lang = i18n.language === 'ro' ? 'ro' : 'en';
       const results = await testsService.runTests(category, lesson, userCode, lang);
       setTestResults(results);
+      // The server marks the lesson complete on a passing verdict (see
+      // tests.controller). Reflect it optimistically, then refresh from the DB.
       if (results.status === 'passed' && isLoggedIn && !lessonCompleted) {
         justMarkedRef.current = true;
         setOptimisticCompleted(true);
-        try {
-          await progressService.markLessonComplete(category, lesson);
-          loadProgress();
-          refreshGamification();
-        } catch {
-          setOptimisticCompleted(null);
-        }
+        loadProgress();
+        refreshGamification();
       }
     } catch (err) {
       setTestsError(err instanceof Error ? err.message : 'Something went wrong');
@@ -217,82 +210,6 @@ export function LessonPage() {
     loadProgress,
     refreshGamification,
   ]);
-
-  // Push the pending desired completion state to the server. Called by the 5s
-  // debounce timer or eagerly when the user leaves the lesson. Skips the round
-  // trip when the desired state matches what the server had at the start of the
-  // debounce window (net-zero toggle: user clicked an even number of times).
-  const flushToggleComplete = useCallback(async () => {
-    if (completeFlushTimerRef.current) {
-      clearTimeout(completeFlushTimerRef.current);
-      completeFlushTimerRef.current = null;
-    }
-    const pending = pendingCompleteRef.current;
-    pendingCompleteRef.current = null;
-    if (!pending) return;
-    if (pending.desired === pending.startingServer) return;
-    setIsMarking(true);
-    try {
-      if (pending.desired) {
-        await progressService.markLessonComplete(pending.courseKey, pending.lessonSlug);
-      } else {
-        await progressService.markLessonIncomplete(pending.courseKey, pending.lessonSlug);
-      }
-      loadProgress();
-      refreshGamification();
-    } finally {
-      setIsMarking(false);
-    }
-  }, [loadProgress, refreshGamification]);
-
-  const handleToggleComplete = useCallback(() => {
-    if (!isLoggedIn) return;
-    const next = !lessonCompleted;
-    setOptimisticCompleted(next);
-    // First click in a window seeds startingServer with the current server
-    // value; subsequent clicks keep the same anchor so a net-zero toggle skips
-    // the API call.
-    const existing = pendingCompleteRef.current;
-    pendingCompleteRef.current = {
-      desired: next,
-      startingServer: existing?.startingServer ?? serverCompleted,
-      courseKey: category,
-      lessonSlug: lesson,
-    };
-    if (next && !serverCompleted) justMarkedRef.current = true;
-    if (completeFlushTimerRef.current) clearTimeout(completeFlushTimerRef.current);
-    completeFlushTimerRef.current = setTimeout(flushToggleComplete, 5000);
-  }, [isLoggedIn, lessonCompleted, serverCompleted, category, lesson, flushToggleComplete]);
-
-  // Fire a keepalive request on tab close for any pending toggle — our fetch
-  // client can't run during unload, so bypass it here.
-  useEffect(() => {
-    const onBeforeUnload = () => {
-      const pending = pendingCompleteRef.current;
-      if (!pending || pending.desired === pending.startingServer) return;
-      try {
-        fetch(`/api/progress/${pending.courseKey}/${pending.lessonSlug}/complete`, {
-          method: pending.desired ? 'POST' : 'DELETE',
-          credentials: 'include',
-          keepalive: true,
-        });
-      } catch {
-        // best effort
-      }
-    };
-    window.addEventListener('beforeunload', onBeforeUnload);
-    return () => window.removeEventListener('beforeunload', onBeforeUnload);
-  }, []);
-
-  // On lesson change or unmount, flush the pending toggle synchronously. The
-  // pending record still points at the previous lesson because handleToggle
-  // captured it at click time, so the API call goes to the right slug even
-  // after the URL has already swapped.
-  useEffect(() => {
-    return () => {
-      flushToggleComplete();
-    };
-  }, [category, lesson, flushToggleComplete]);
 
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
@@ -390,6 +307,19 @@ export function LessonPage() {
                         {t('lesson.completed')}
                       </span>
                     )}
+                    {currentIndex >= 0 && !isAlgo && (
+                      <span
+                        className={`ml-auto text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+                        title={t('common.xpReward', {
+                          xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                        })}
+                      >
+                        ⭐{' '}
+                        {t('common.xpReward', {
+                          xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                        })}
+                      </span>
+                    )}
                   </div>
 
                   <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
@@ -435,8 +365,6 @@ export function LessonPage() {
               onExecute={terminal.execute}
               onReset={terminal.reset}
               lessonCompleted={lessonCompleted}
-              isMarking={isMarking}
-              onMarkComplete={isLoggedIn ? handleToggleComplete : undefined}
               hasSolution={!!solution}
               onShowSolution={() => setShowSolution(true)}
             />
@@ -489,21 +417,6 @@ export function LessonPage() {
                           className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                         >
                           {t('lesson.showSolution')}
-                        </button>
-                      )}
-                      {isLoggedIn && !hasTests && (
-                        <button
-                          role="menuitem"
-                          onClick={handleToggleComplete}
-                          disabled={isMarking}
-                          title={lessonCompleted ? t('lesson.unmarkTitle') : undefined}
-                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none disabled:cursor-default disabled:opacity-70"
-                        >
-                          {isMarking
-                            ? t('lesson.marking')
-                            : lessonCompleted
-                              ? t('lesson.unmark')
-                              : t('lesson.markComplete')}
                         </button>
                       )}
                       {isLoggedIn && (

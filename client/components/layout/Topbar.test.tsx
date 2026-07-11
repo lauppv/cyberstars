@@ -27,6 +27,20 @@ vi.mock('../../context/AuthContext', () => ({
   useAuth: () => ({ ...mockAuthState, logout: mockLogout }),
 }));
 
+vi.mock('../../hooks/useGamification', () => ({
+  useGamification: () => ({
+    xp: {
+      earnedXp: 120,
+      totalXp: 8000,
+      level: 2,
+      titleKey: 'level.title.2',
+      xpIntoLevel: 20,
+      xpForLevelSpan: 300,
+      xpPct: 7,
+    },
+  }),
+}));
+
 import { Topbar } from './Topbar';
 
 function renderTopbar(props = {}) {

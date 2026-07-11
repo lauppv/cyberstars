@@ -1,11 +1,20 @@
 import { describe, it, expect } from 'vitest';
 import { createAuthenticatedAgent } from './helpers.js';
+import { prisma } from '../../server/config/db.js';
+import { markComplete } from '../../server/services/progress.service.js';
+
+// Completion is server-authoritative: there is no client-writable endpoint,
+// so tests mark completion through the same service the judge uses.
+async function userIdFor(email: string): Promise<number> {
+  const user = await prisma.user.findUniqueOrThrow({ where: { email } });
+  return user.id;
+}
 
 describe('Progress flow', () => {
   it('mark lesson complete → shows in progress', async () => {
-    const { agent: a } = await createAuthenticatedAgent();
+    const { agent: a, email } = await createAuthenticatedAgent();
 
-    await a.post('/api/progress/python/booleans/complete').expect(200);
+    await markComplete(await userIdFor(email), 'python', 'booleans');
 
     const progress = await a.get('/api/progress/python').expect(200);
     const lesson = progress.body.lessons.find((l: { slug: string }) => l.slug === 'booleans');
@@ -14,10 +23,11 @@ describe('Progress flow', () => {
   });
 
   it('mark complete is idempotent', async () => {
-    const { agent: a } = await createAuthenticatedAgent();
+    const { agent: a, email } = await createAuthenticatedAgent();
 
-    await a.post('/api/progress/python/booleans/complete').expect(200);
-    await a.post('/api/progress/python/booleans/complete').expect(200);
+    const userId = await userIdFor(email);
+    await markComplete(userId, 'python', 'booleans');
+    await markComplete(userId, 'python', 'booleans');
 
     const progress = await a.get('/api/progress/python').expect(200);
     expect(progress.body.completed).toBe(1);
@@ -33,10 +43,10 @@ describe('Progress flow', () => {
   });
 
   it('progress is per-user', async () => {
-    const { agent: userA } = await createAuthenticatedAgent();
+    const { email: emailA } = await createAuthenticatedAgent();
     const { agent: userB } = await createAuthenticatedAgent();
 
-    await userA.post('/api/progress/python/booleans/complete').expect(200);
+    await markComplete(await userIdFor(emailA), 'python', 'booleans');
 
     const progressB = await userB.get('/api/progress/python').expect(200);
     expect(progressB.body.completed).toBe(0);

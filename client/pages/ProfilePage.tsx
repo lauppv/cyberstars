@@ -342,6 +342,36 @@ export function ProfilePage() {
             </div>
           </div>
 
+          {/* Level & XP */}
+          <div className="py-4 border-b border-[var(--accent)]/20">
+            <div className="flex items-baseline justify-between mb-2">
+              <div className="flex items-baseline gap-2">
+                <span className="text-[15px] font-bold text-[var(--accent)]">
+                  {t('level.label', { n: g.xp.level })}
+                </span>
+                <span className="text-[13px] font-semibold text-[var(--text)]">
+                  {t(g.xp.titleKey)}
+                </span>
+              </div>
+              <span className="text-[12px] text-[var(--text3)] tabular-nums">
+                {g.xp.earnedXp} {t('profile.xp')}
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-[var(--surface2)] overflow-hidden">
+              <div
+                className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
+                style={{ width: `${g.xp.xpPct}%` }}
+              />
+            </div>
+            <div className="text-[10px] text-[var(--text3)] mt-1">
+              {t('profile.levelProgress', {
+                current: g.xp.xpIntoLevel,
+                needed: g.xp.xpForLevelSpan,
+                next: g.xp.level + 1,
+              })}
+            </div>
+          </div>
+
           {/* Stat grid */}
           <div className="grid grid-cols-4 border-b border-[var(--accent)]/20">
             <div className="py-4 text-center">
