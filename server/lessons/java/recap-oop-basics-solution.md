@@ -28,9 +28,19 @@ class CrewMember {
 
 public class Main {
     public static void main(String[] args) {
-        CrewMember p1 = new CrewMember("Tommy Vercetti", "Boss", 3);
-        CrewMember p2 = new CrewMember("Lance Vance", "Partner", 5);
-        CrewMember p3 = new CrewMember("Phil Cassidy", "Gunsmith", 2);
+        String name1 = "Tommy Vercetti";
+        String role1 = "Boss";
+        int years1 = 3;
+        String name2 = "Lance Vance";
+        String role2 = "Partner";
+        int years2 = 5;
+        String name3 = "Phil Cassidy";
+        String role3 = "Gunsmith";
+        int years3 = 2;
+
+        CrewMember p1 = new CrewMember(name1, role1, years1);
+        CrewMember p2 = new CrewMember(name2, role2, years2);
+        CrewMember p3 = new CrewMember(name3, role3, years3);
 
         p1.train();
         p1.train();

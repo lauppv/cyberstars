@@ -18,7 +18,7 @@ Create a class **`BankAccount`** with:
 - **`toString()`** — returns `"Account #X (Owner) - Balance: Y$"`
 - **`static int getTotalAccounts()`** — returns how many accounts were created
 
-In `main`, create a few accounts, make deposits and withdrawals however you like (including one withdrawal that fails, so you see the message), then print the accounts and the total
+In `main`, store the details in variables — `owner1`/`balance1` for the first account and `owner2`/`balance2` for the second; `deposit1` for the deposit into the first account and `withdraw1`/`withdraw2` for the two withdrawals from the second. Create the two accounts, then: deposit `deposit1` into the first, withdraw `withdraw1` from the second, and withdraw `withdraw2` from the second (this one can fail, so you see the message). Then print both accounts and the total
 
 **Example** — Tommy opens with 1000 and deposits 250; Lance opens with 500, withdraws 200, then tries to withdraw 400 (fails)
 

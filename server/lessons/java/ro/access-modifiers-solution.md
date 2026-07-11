@@ -25,10 +25,15 @@ class Portofel {
 
 public class Main {
     public static void main(String[] args) {
-        Portofel p = new Portofel(100);
-        p.adaugaBani(50);
-        p.cheltuieBani(30);
-        p.cheltuieBani(200);
+        int start = 100;
+        int venit = 50;
+        int cheltuiala1 = 30;
+        int cheltuiala2 = 200;
+
+        Portofel p = new Portofel(start);
+        p.adaugaBani(venit);
+        p.cheltuieBani(cheltuiala1);
+        p.cheltuieBani(cheltuiala2);
         System.out.println(p.getSold());
     }
 }

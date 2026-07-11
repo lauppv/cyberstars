@@ -11,9 +11,10 @@ class Vizitator {
 
 public class Main {
     public static void main(String[] args) {
-        Vizitator v1 = new Vizitator("Tommy");
-        Vizitator v2 = new Vizitator("Lance");
-        Vizitator v3 = new Vizitator("Cortez");
+        String[] nume = {"Tommy", "Lance", "Cortez"};
+        for (String n : nume) {
+            new Vizitator(n);
+        }
         System.out.println(Vizitator.totalVizite);
     }
 }

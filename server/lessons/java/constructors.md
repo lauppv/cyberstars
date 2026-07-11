@@ -190,7 +190,7 @@ Tommy keeps a record of his Vice City crew. Each member is registered with a nam
 
 Create a **class** that represents a crew member, with a field for the **name** (String) and one for the **score** (int). Write a **constructor** that takes both values and sets them using `this`.
 
-In `main`, build **two** members with values of your choice, then print each one on its own line in the format `Name has Score points`.
+In `main`, first store the values in local variables — `name1` and `score1` for the first member, `name2` and `score2` for the second. Then build **two** members by passing those variables to the constructor, and print each one on its own line in the format `Name has Score points`.
 
 **Example** for `Tommy Vercetti` with score `500` and `Lance Vance` with score `300`
 

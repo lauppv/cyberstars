@@ -28,9 +28,19 @@ class MembruBanda {
 
 public class Main {
     public static void main(String[] args) {
-        MembruBanda p1 = new MembruBanda("Tommy Vercetti", "Sef", 3);
-        MembruBanda p2 = new MembruBanda("Lance Vance", "Partener", 5);
-        MembruBanda p3 = new MembruBanda("Phil Cassidy", "Armurier", 2);
+        String nume1 = "Tommy Vercetti";
+        String rol1 = "Sef";
+        int ani1 = 3;
+        String nume2 = "Lance Vance";
+        String rol2 = "Partener";
+        int ani2 = 5;
+        String nume3 = "Phil Cassidy";
+        String rol3 = "Armurier";
+        int ani3 = 2;
+
+        MembruBanda p1 = new MembruBanda(nume1, rol1, ani1);
+        MembruBanda p2 = new MembruBanda(nume2, rol2, ani2);
+        MembruBanda p3 = new MembruBanda(nume3, rol3, ani3);
 
         p1.antreneaza();
         p1.antreneaza();

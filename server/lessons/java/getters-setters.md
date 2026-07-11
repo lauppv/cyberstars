@@ -158,7 +158,7 @@ Create a `BankAccount` class with:
 4. A `deposit(int amount)` method that adds to balance (only if amount > 0)
 5. A `withdraw(int amount)` method that subtracts from balance (only if amount > 0 and amount <= balance)
 
-In `main`, create an account with `1000$`, deposit `500`, withdraw `200`, then try to withdraw `2000` (should fail silently, since Tommy doesn't have that much) and print the final balance.
+In `main`, store the values in variables — `start` for the starting balance, `deposit` for the amount you deposit, `withdraw1` and `withdraw2` for the two withdrawals. Then create an account with `start`, deposit `deposit`, withdraw `withdraw1`, then try to withdraw `withdraw2` (should fail silently when it's more than the balance) and print the final balance.
 
 **Example** — account started at 1000, +500, -200, then -2000 rejected
 

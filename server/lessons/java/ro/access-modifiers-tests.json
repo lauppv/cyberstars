@@ -1,0 +1,24 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Portofel" },
+      { "kind": "function", "name": "adaugaBani" },
+      { "kind": "function", "name": "cheltuieBani" },
+      { "kind": "function", "name": "getSold" },
+      { "kind": "variable", "name": "start" },
+      { "kind": "variable", "name": "venit" },
+      { "kind": "variable", "name": "cheltuiala1" },
+      { "kind": "variable", "name": "cheltuiala2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "start": 100, "venit": 50, "cheltuiala1": 30, "cheltuiala2": 200 }
+    },
+    { "inject": { "start": 500, "venit": 0, "cheltuiala1": 100, "cheltuiala2": 50 } },
+    { "inject": { "start": 200, "venit": 100, "cheltuiala1": 300, "cheltuiala2": 50 } },
+    { "inject": { "start": 1000, "venit": 250, "cheltuiala1": 250, "cheltuiala2": 250 } }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Dog" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "age1" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "age2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "name1": "Rex", "age1": 5, "name2": "Buddy", "age2": 3 }
+    },
+    { "inject": { "name1": "Bruno", "age1": 7, "name2": "Ace", "age2": 2 } },
+    { "inject": { "name1": "Zeus", "age1": 1, "name2": "Luna", "age2": 12 } },
+    { "inject": { "name1": "Rocky", "age1": 9, "name2": "Bella", "age2": 4 } }
+  ]
+}

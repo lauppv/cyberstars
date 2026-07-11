@@ -19,14 +19,21 @@ class Business {
 
 public class Main {
     public static void main(String[] args) {
-        Business b1 = new Business("Malibu Club");
-        b1.add(200);
-        b1.add(300);
-        b1.add(150);
+        String name1 = "Malibu Club";
+        int sale1 = 200;
+        int sale2 = 300;
 
-        Business b2 = new Business("Print Works");
-        b2.add(500);
-        b2.add(250);
+        Business b1 = new Business(name1);
+        b1.add(sale1);
+        b1.add(sale2);
+
+        String name2 = "Print Works";
+        int sale3 = 500;
+        int sale4 = 250;
+
+        Business b2 = new Business(name2);
+        b2.add(sale3);
+        b2.add(sale4);
 
         System.out.println(b1.name + ": " + b1.getEarnings());
         System.out.println(b2.name + ": " + b2.getEarnings());

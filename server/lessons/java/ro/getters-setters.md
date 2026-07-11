@@ -158,7 +158,7 @@ Creează o clasă `ContBancar` cu:
 4. O metodă `depune(int suma)` care adaugă la sold (doar dacă suma > 0)
 5. O metodă `retrage(int suma)` care scade din sold (doar dacă suma > 0 și suma <= sold)
 
-În `main`, creează un cont cu `1000$`, depune `500`, retrage `200`, apoi încearcă să retragi `2000` (ar trebui să eșueze în tăcere, fiindcă Tommy n-are atâția bani) și afișează soldul final.
+În `main`, stochează valorile în variabile — `start` pentru soldul inițial, `depunere` pentru suma pe care o depui, `retragere1` și `retragere2` pentru cele două retrageri. Apoi creează un cont cu `start`, depune `depunere`, retrage `retragere1`, apoi încearcă să retragi `retragere2` (ar trebui să eșueze în tăcere când depășește soldul) și afișează soldul final.
 
 **Exemplu** — cont pornit cu 1000, +500, -200, apoi -2000 respins
 

@@ -1,0 +1,59 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Business" },
+      { "kind": "function", "name": "add" },
+      { "kind": "function", "name": "getEarnings" },
+      { "kind": "variable", "name": "name1" },
+      { "kind": "variable", "name": "sale1" },
+      { "kind": "variable", "name": "sale2" },
+      { "kind": "variable", "name": "name2" },
+      { "kind": "variable", "name": "sale3" },
+      { "kind": "variable", "name": "sale4" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name1": "Malibu Club",
+        "sale1": 200,
+        "sale2": 300,
+        "name2": "Print Works",
+        "sale3": 500,
+        "sale4": 250
+      }
+    },
+    {
+      "inject": {
+        "name1": "Cherry Popper",
+        "sale1": 100,
+        "sale2": 100,
+        "name2": "Sunshine Autos",
+        "sale3": 700,
+        "sale4": 300
+      }
+    },
+    {
+      "inject": {
+        "name1": "Kaufman Cabs",
+        "sale1": 0,
+        "sale2": 0,
+        "name2": "Boatyard",
+        "sale3": 1000,
+        "sale4": 0
+      }
+    },
+    {
+      "inject": {
+        "name1": "Ice Cream",
+        "sale1": 42,
+        "sale2": 8,
+        "name2": "Film Studio",
+        "sale3": 999,
+        "sale4": 1
+      }
+    }
+  ]
+}

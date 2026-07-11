@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "descrie" },
+      { "kind": "call", "name": "descrie" },
+      { "kind": "variable", "name": "arma" },
+      { "kind": "variable", "name": "cantitate" },
+      { "kind": "variable", "name": "pret" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "arma": "Sniper", "cantitate": 4, "pret": 10 }
+    },
+    { "inject": { "arma": "Uzi", "cantitate": 2, "pret": 25 } },
+    { "inject": { "arma": "Katana", "cantitate": 1, "pret": 75 } },
+    { "inject": { "arma": "Grenade", "cantitate": 10, "pret": 3 } }
+  ]
+}

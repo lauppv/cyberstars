@@ -190,7 +190,7 @@ Tommy wants a wallet protected by access controls, so nobody can mess with his m
 4. A `public void spendMoney(int amount)` method — only spends if `amount > 0` **and** `amount <= money`
 5. A `public int getBalance()` method that returns the current balance
 
-In `main`, create a wallet with **100**, add **50**, spend **30**, try to spend **200** (should fail silently), then print the balance.
+In `main`, store the values in variables — `start` for the starting money, `income` for what you add, `spend1` and `spend2` for the two amounts you try to spend. Then create a wallet with `start`, add `income`, spend `spend1`, try to spend `spend2` (which should fail silently when it's more than the balance), then print the balance.
 
 **Example** — wallet started at 100, +50, -30, then -200 rejected
 

@@ -177,7 +177,7 @@ Tommy keeps his cars in a garage and wants each one to print nicely when he prin
 
 Create a `Car` class with a `make` (String) field and a `year` (int) field. Write a constructor and override `toString()` to return the make, then ` (`, the year, and `)` — for example `Infernus (1986)`
 
-In `main`, create two cars with values of your choice and print them directly with `System.out.println`
+In `main`, first store the values in local variables — `make1` and `year1` for the first car, `make2` and `year2` for the second. Then create two cars from those variables and print them directly with `System.out.println`
 
 **Example** — `Infernus` from `1986` and `Cheetah` from `1984`
 

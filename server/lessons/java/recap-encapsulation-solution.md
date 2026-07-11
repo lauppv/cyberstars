@@ -49,12 +49,21 @@ class BankAccount {
 
 public class Main {
     public static void main(String[] args) {
-        BankAccount a1 = new BankAccount("Tommy", 1000);
-        BankAccount a2 = new BankAccount("Lance", 500);
+        String owner1 = "Tommy";
+        int balance1 = 1000;
+        String owner2 = "Lance";
+        int balance2 = 500;
 
-        a1.deposit(250);
-        a2.withdraw(200);
-        a2.withdraw(400);
+        BankAccount a1 = new BankAccount(owner1, balance1);
+        BankAccount a2 = new BankAccount(owner2, balance2);
+
+        int deposit1 = 250;
+        int withdraw1 = 200;
+        int withdraw2 = 400;
+
+        a1.deposit(deposit1);
+        a2.withdraw(withdraw1);
+        a2.withdraw(withdraw2);
 
         System.out.println(a1);
         System.out.println(a2);

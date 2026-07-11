@@ -190,7 +190,7 @@ Tommy ține o evidență a echipajului său din Vice City. Fiecare membru este �
 
 Creează o **clasă** care reprezintă un membru al echipajului, cu un câmp pentru **nume** (String) și unul pentru **scor** (int). Scrie un **constructor** care primește ambele valori și le setează folosind `this`.
 
-În `main`, construiește **doi** membri cu valori la alegere, apoi afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
+În `main`, stochează mai întâi valorile în variabile locale — `nume1` și `scor1` pentru primul membru, `nume2` și `scor2` pentru al doilea. Apoi construiește **doi** membri pasând acele variabile constructorului și afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
 
 **Exemplu** pentru `Tommy Vercetti` cu scorul `500` și `Lance Vance` cu scorul `300`
 

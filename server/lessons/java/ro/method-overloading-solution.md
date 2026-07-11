@@ -14,9 +14,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        descrie("Sniper");
-        descrie("Sniper", 4);
-        descrie("Sniper", 4, 10);
+        String arma = "Sniper";
+        int cantitate = 4;
+        int pret = 10;
+
+        descrie(arma);
+        descrie(arma, cantitate);
+        descrie(arma, cantitate, pret);
     }
 }
 ```

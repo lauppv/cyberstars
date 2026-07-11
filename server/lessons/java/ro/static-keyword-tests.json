@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Vizitator" },
+      { "kind": "variable", "name": "nume" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nume": { "$list": ["Tommy", "Lance", "Cortez"] } }
+    },
+    { "inject": { "nume": { "$list": ["Diaz", "Ken", "Sonny", "Mercedes", "Kent"] } } },
+    { "inject": { "nume": { "$list": ["Avery"] } } },
+    { "inject": { "nume": { "$list": ["Phil", "Mitch", "Umberto", "Auntie"] } } }
+  ]
+}

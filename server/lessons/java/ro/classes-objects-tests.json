@@ -1,0 +1,21 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "Caine" },
+      { "kind": "variable", "name": "nume1" },
+      { "kind": "variable", "name": "varsta1" },
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "variable", "name": "varsta2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "nume1": "Rex", "varsta1": 5, "nume2": "Buddy", "varsta2": 3 }
+    },
+    { "inject": { "nume1": "Bruno", "varsta1": 7, "nume2": "Ace", "varsta2": 2 } },
+    { "inject": { "nume1": "Zeus", "varsta1": 1, "nume2": "Luna", "varsta2": 12 } },
+    { "inject": { "nume1": "Rocky", "varsta1": 9, "nume2": "Bella", "varsta2": 4 } }
+  ]
+}

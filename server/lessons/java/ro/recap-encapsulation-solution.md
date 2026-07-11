@@ -49,12 +49,21 @@ class ContBancar {
 
 public class Main {
     public static void main(String[] args) {
-        ContBancar a1 = new ContBancar("Tommy", 1000);
-        ContBancar a2 = new ContBancar("Lance", 500);
+        String proprietar1 = "Tommy";
+        int sold1 = 1000;
+        String proprietar2 = "Lance";
+        int sold2 = 500;
 
-        a1.depune(250);
-        a2.retrage(200);
-        a2.retrage(400);
+        ContBancar a1 = new ContBancar(proprietar1, sold1);
+        ContBancar a2 = new ContBancar(proprietar2, sold2);
+
+        int depunere1 = 250;
+        int retragere1 = 200;
+        int retragere2 = 400;
+
+        a1.depune(depunere1);
+        a2.retrage(retragere1);
+        a2.retrage(retragere2);
 
         System.out.println(a1);
         System.out.println(a2);

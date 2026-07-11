@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "MAX_RESPECT" },
+      { "kind": "variable", "name": "CITY" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "MAX_RESPECT": 100, "CITY": "Vice City" }
+    },
+    { "inject": { "MAX_RESPECT": 200, "CITY": "Liberty City" } },
+    { "inject": { "MAX_RESPECT": 0, "CITY": "San Andreas" } },
+    { "inject": { "MAX_RESPECT": 50, "CITY": "Los Santos" } }
+  ]
+}

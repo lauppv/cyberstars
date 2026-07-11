@@ -1,0 +1,24 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "BankAccount" },
+      { "kind": "function", "name": "deposit" },
+      { "kind": "function", "name": "withdraw" },
+      { "kind": "function", "name": "getBalance" },
+      { "kind": "variable", "name": "start" },
+      { "kind": "variable", "name": "deposit" },
+      { "kind": "variable", "name": "withdraw1" },
+      { "kind": "variable", "name": "withdraw2" },
+      { "kind": "call", "name": "println" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "start": 1000, "deposit": 500, "withdraw1": 200, "withdraw2": 2000 }
+    },
+    { "inject": { "start": 300, "deposit": 0, "withdraw1": 100, "withdraw2": 500 } },
+    { "inject": { "start": 500, "deposit": 500, "withdraw1": 1000, "withdraw2": 300 } },
+    { "inject": { "start": 2000, "deposit": 1000, "withdraw1": 1500, "withdraw2": 400 } }
+  ]
+}

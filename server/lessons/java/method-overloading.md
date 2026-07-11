@@ -116,7 +116,7 @@ Write three overloaded methods called `describe`:
 - one that takes the name and how many pieces are ordered and adds the number followed by ` ordered` — for example `Weapon: Sniper - 4 ordered`
 - one that takes the name, how many pieces, and the price of one piece, computes the total (price times quantity), and prints the price, the quantity, and the total — for example `Weapon: Sniper - $10 x 4 ordered - $40`
 
-The test calls are already written; you only fill in the body of each method
+In `main`, store the weapon name in `weapon`, the quantity in `quantity`, and the unit price in `price`, then make the three calls using those variables: `describe(weapon)`, `describe(weapon, quantity)`, and `describe(weapon, quantity, price)`
 
 **Example**
 

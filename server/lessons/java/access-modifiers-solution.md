@@ -25,10 +25,15 @@ class Wallet {
 
 public class Main {
     public static void main(String[] args) {
-        Wallet w = new Wallet(100);
-        w.addMoney(50);
-        w.spendMoney(30);
-        w.spendMoney(200);
+        int start = 100;
+        int income = 50;
+        int spend1 = 30;
+        int spend2 = 200;
+
+        Wallet w = new Wallet(start);
+        w.addMoney(income);
+        w.spendMoney(spend1);
+        w.spendMoney(spend2);
         System.out.println(w.getBalance());
     }
 }
