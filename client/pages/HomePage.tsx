@@ -37,10 +37,10 @@ function extractActivityCounts(
 }
 
 const HEATMAP_COLORS = [
-  'rgba(30,30,40,0.4)',
-  'rgba(108,92,231,0.25)',
-  'rgba(108,92,231,0.5)',
-  'rgba(108,92,231,0.85)',
+  'rgba(120,120,140,0.35)',
+  'rgba(108,92,231,0.45)',
+  'rgba(108,92,231,0.7)',
+  'rgba(108,92,231,0.95)',
 ];
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
