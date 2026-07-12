@@ -8,6 +8,7 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseMeta } from '../constants/courses';
+import { xpForLesson } from '../../shared/constants';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
@@ -155,6 +156,14 @@ export function AlgorithmListPage() {
                   <span className="text-[14px] font-medium leading-tight group-hover:text-[var(--accent)] transition flex-1">
                     {lesson.displayName}
                   </span>
+                  {lesson.hasTests && (
+                    <span
+                      className={`text-[10px] font-semibold tabular-nums flex items-center gap-0.5 ${lesson.completed ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+                      title={t('common.xpReward', { xp: xpForLesson(lesson.sortOrder) })}
+                    >
+                      ⭐ {t('common.xpReward', { xp: xpForLesson(lesson.sortOrder) })}
+                    </span>
+                  )}
                   <span
                     className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                     style={{ background: dc.bg, color: dc.text }}
