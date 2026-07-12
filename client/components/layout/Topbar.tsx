@@ -232,7 +232,7 @@ export function Topbar({
             {menuOpen && (
               <div
                 role="menu"
-                className="absolute top-full right-0 mt-2 w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+                className="absolute top-full right-0 mt-2 w-72 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
               >
                 <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
                   {user.avatarUrl ? (

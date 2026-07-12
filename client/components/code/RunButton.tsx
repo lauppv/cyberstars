@@ -13,7 +13,7 @@ export function RunButton({ onClick, isRunning, className = '' }: RunButtonProps
       onClick={onClick}
       disabled={isRunning}
       title={t('code.runTitle')}
-      className={`px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--success)] text-black font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer ${className}`}
+      className={`px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--output)] text-black font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer ${className}`}
     >
       {isRunning ? (
         <>
