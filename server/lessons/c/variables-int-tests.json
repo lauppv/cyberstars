@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "age" },
+      { "kind": "variable", "name": "access_level" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "age": 45, "access_level": 3 } },
+    { "inject": { "age": 0, "access_level": 0 } },
+    { "inject": { "age": 1, "access_level": 1 } },
+    { "inject": { "age": 120, "access_level": 9 } },
+    { "inject": { "age": -5, "access_level": 7 } }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "ptr" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [{ "visible": true, "stdin": "7\n" }, { "stdin": "0\n" }, { "stdin": "-5\n" }]
+}

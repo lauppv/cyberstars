@@ -101,12 +101,12 @@ The computing center's mainframes don't tolerate cold: below zero degrees, the o
 
 Write a program that, inside **main**
 
-- declares **int temperature = -5;**
+- declares an **int** named **temperature**
 - uses an **if / else**: if `temperature` is **less than 0** → print `cold alert`, otherwise → print `temperature normal`
 
 **Example**
 
-Your program should print
+For a **temperature** of -5, your program would print something like
 
 ```text
 cold alert

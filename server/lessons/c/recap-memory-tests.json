@@ -1,0 +1,20 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "create_task" },
+      { "kind": "function", "name": "update_status" },
+      { "kind": "function", "name": "status_name" },
+      { "kind": "function", "name": "print_task" },
+      { "kind": "call", "name": "malloc" },
+      { "kind": "call", "name": "free" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" },
+      { "kind": "loop" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "2\nDeploy 0\nReview 2\n" },
+    { "visible": true, "stdin": "1\nBuild 1\n" },
+    { "stdin": "3\nAlpha 2\nBravo 0\nCharlie 1\n" }
+  ]
+}

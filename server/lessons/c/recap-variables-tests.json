@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "distance_km" },
+      { "kind": "variable", "name": "consumption_per_km" },
+      { "kind": "variable", "name": "price_per_liter" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "distance_km": 450, "consumption_per_km": 0.07, "price_per_liter": 1.75 }
+    },
+    { "inject": { "distance_km": 0, "consumption_per_km": 0.05, "price_per_liter": 2.0 } },
+    { "inject": { "distance_km": 1000, "consumption_per_km": 0.1, "price_per_liter": 1.5 } },
+    { "inject": { "distance_km": 250, "consumption_per_km": 0.08, "price_per_liter": 1.99 } }
+  ]
+}

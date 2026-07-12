@@ -1,0 +1,13 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "fopen" },
+      { "kind": "call", "name": "fprintf" },
+      { "kind": "call", "name": "fscanf" },
+      { "kind": "call", "name": "fclose" },
+      { "kind": "call", "name": "printf" },
+      { "kind": "loop" }
+    ]
+  },
+  "cases": [{ "visible": true }]
+}

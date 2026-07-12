@@ -1,0 +1,9 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "calculator" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [{ "visible": true }]
+}

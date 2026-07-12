@@ -5,6 +5,7 @@ import { dockerExec } from './docker-exec.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
+import { prepareC, type PrepareResult } from './c-analysis.js';
 import type {
   LessonTestsSpec,
   RunTestsResponse,
@@ -42,6 +43,19 @@ interface JudgeRunner {
   /** Per-case runner budget: 2×5s programs, plus compiles where applicable. */
   caseBudgetMs: number;
   baseTimeoutMs: number;
+  /**
+   * Languages with no in-container parser (C) do structure checks + value
+   * injection HERE on the server, then ship pre-injected sources to a thin
+   * compile+run runner. When set, a truthy `syntaxError` short-circuits before
+   * any container is touched (syntax gate 1); otherwise the runner receives
+   * `{ pristineUser, cases }` and its verdict is merged with these structure
+   * failures. py/java leave this unset (runner does structure+injection).
+   */
+  prepare?: (
+    userCode: string,
+    solutionCode: string,
+    spec: LessonTestsSpec,
+  ) => Promise<PrepareResult>;
 }
 
 const RUNNERS: Record<string, JudgeRunner> = {
@@ -60,6 +74,17 @@ const RUNNERS: Record<string, JudgeRunner> = {
     // the base covers the one-time runner bootstrap compile on a cold container.
     caseBudgetMs: 16_000,
     baseTimeoutMs: 30_000,
+  },
+  c: {
+    runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.c.py'),
+    containerFile: '/work/_runner.py',
+    runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
+    // Per case: up to 2 gcc compiles + 2×5s runs; the source cache makes
+    // identical stdin-only sources compile once. gcc is heavier than a python
+    // parse, lighter than javac+JVM.
+    caseBudgetMs: 8_000,
+    baseTimeoutMs: 20_000,
+    prepare: prepareC,
   },
 };
 
@@ -176,6 +201,17 @@ export async function runLessonTests(
   if (!judge) throw new AppError(404, 'This lesson has no tests');
   const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang);
 
+  // Server-side prep (C): structure + injection happen here; a syntax error in
+  // the pristine user code is caught before any container is touched (gate 1).
+  const prepared = judge.prepare ? await judge.prepare(userCode, solutionCode, spec) : null;
+  if (prepared?.syntaxError) {
+    return buildResponse(spec, {
+      syntaxError: prepared.syntaxError,
+      structureFailures: [],
+      cases: [],
+    });
+  }
+
   let containerId: string;
   try {
     containerId = await acquireForRun(ownerKey, courseKey);
@@ -189,12 +225,16 @@ export async function runLessonTests(
   let keep = true;
   try {
     const runner = fs.readFileSync(judge.runnerPath, 'utf8');
-    const payload = JSON.stringify({
-      userCode,
-      solutionCode,
-      structure: spec.structure ?? {},
-      cases: spec.cases,
-    });
+    // The C runner receives pre-injected sources; py/java runners inject in the
+    // container from the raw code + spec.
+    const payload = prepared
+      ? JSON.stringify({ pristineUser: userCode, cases: prepared.cases })
+      : JSON.stringify({
+          userCode,
+          solutionCode,
+          structure: spec.structure ?? {},
+          cases: spec.cases,
+        });
     await dockerExec(
       ['exec', '-i', containerId, 'sh', '-c', `rm -rf /work/* && cat > ${judge.containerFile}`],
       WRITE_TIMEOUT_MS,
@@ -209,7 +249,17 @@ export async function runLessonTests(
       ['exec', containerId, ...judge.runCmd],
       judge.baseTimeoutMs + spec.cases.length * judge.caseBudgetMs,
     );
-    return buildResponse(spec, JSON.parse(raw) as RunnerVerdict);
+    const runnerOut = JSON.parse(raw) as RunnerVerdict;
+    // Server-prepped runs carry structure failures from the server (the thin
+    // runner only reports gcc syntax errors + per-case program results).
+    const verdict: RunnerVerdict = prepared
+      ? {
+          syntaxError: runnerOut.syntaxError,
+          structureFailures: prepared.structureFailures,
+          cases: runnerOut.cases,
+        }
+      : runnerOut;
+    return buildResponse(spec, verdict);
   } catch (err) {
     // Anything that breaks the run (stuck exec, bad container state) — drop the
     // container so the next attempt starts clean.

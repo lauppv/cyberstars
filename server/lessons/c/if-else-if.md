@@ -95,8 +95,8 @@ You are the shift operator. The boot timer shows how many seconds remain until f
 
 Write a program that, inside **main**
 
-- declares **int seconds = 5;**
-- declares **int error_detected = 1;**
+- declares an **int** named **seconds**
+- declares an **int** named **error_detected**
 - uses an **if / else if / else** chain:
   - if `seconds` is **100** → print `Checking memory`
   - otherwise if `seconds` is **60** → print `Checking peripherals`
@@ -107,7 +107,7 @@ Write a program that, inside **main**
 
 **Example**
 
-Your program should print
+For a **seconds** of 5 and an **error_detected** of 1, your program would print something like
 
 ```text
 Error detected. Aborting launch

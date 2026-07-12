@@ -115,14 +115,14 @@ Camera calculatoarelor centrului de calcul are un termometru și un higrometru c
 
 Scrie un program care, în interiorul lui **main**
 
-- declară **double temperatura = 21.6;**
-- declară **double umiditate = 45.5;**
+- declară un **double** numit **temperatura**
+- declară un **double** numit **umiditate**
 - afișează **temperatura** pe o linie, cu eticheta `Temperatura: `, rotunjită la **2 zecimale**
 - afișează **umiditate** pe linie separată, cu eticheta `Umiditate: `, rotunjită la **2 zecimale**
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Pentru o **temperatura** de 21.6 și o **umiditate** de 45.5, programul tău ar afișa ceva de genul
 
 ```text
 Temperatura: 21.60

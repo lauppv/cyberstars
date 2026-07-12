@@ -115,14 +115,14 @@ The computing center's machine room has a thermometer and a hygrometer connected
 
 Write a program that, inside **main**
 
-- declares **double temperature = 21.6;**
-- declares **double humidity = 45.5;**
+- declares a **double** named **temperature**
+- declares a **double** named **humidity**
 - prints **temperature** on one line, with the label `Temperature: `, rounded to **2 decimals**
 - prints **humidity** on a separate line, with the label `Humidity: `, rounded to **2 decimals**
 
 **Example**
 
-Your program should print
+For a **temperature** of 21.6 and a **humidity** of 45.5, your program would print something like
 
 ```text
 Temperature: 21.60

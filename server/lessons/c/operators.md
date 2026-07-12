@@ -114,7 +114,7 @@ When in doubt, **add parentheses**. They make the code easier to read anyway
 
 The mainframe's diagnostic panel reads two values from the console and runs the five basic arithmetic operations, so the shift technician can quickly verify the arithmetic unit is working correctly.
 
-Read two integers **a** and **b** using **scanf**, then print the results of `a + b`, `a - b`, `a * b`, `a / b`, and `a % b` — each on its own line.
+Read two integers **a** and **b** using **scanf**, then print the results of `a + b`, `a - b`, `a * b`, `a / b`, and `a % b` — each on its own line. Read the input directly — don't print a question before reading.
 
 **Example**
 

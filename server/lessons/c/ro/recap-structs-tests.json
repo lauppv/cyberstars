@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "adauga_contact" },
+      { "kind": "function", "name": "cauta_contact" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "2\nAlice 123\nBob 456\n2\nBob\nEve\n" },
+    { "visible": true, "stdin": "1\nKen 555\n1\nKen\n" },
+    { "stdin": "3\nA 1\nB 2\nC 3\n2\nC\nZ\n" }
+  ]
+}

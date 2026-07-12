@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "1 1 0 0\n" },
+    { "visible": true, "stdin": "0 0 1 1\n" },
+    { "stdin": "1 0 0 0\n" },
+    { "stdin": "0 0 1 0\n" },
+    { "stdin": "1 1 1 1\n" },
+    { "stdin": "0 0 0 0\n" }
+  ]
+}

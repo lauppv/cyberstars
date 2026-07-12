@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "add" },
+      { "kind": "function", "name": "multiply" },
+      { "kind": "function", "name": "power" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "3 4 1\n2 5 2\n2 8 3\n0 0 0\n" },
+    { "visible": true, "stdin": "10 20 1\n0 0 0\n" },
+    { "stdin": "2 10 3\n0 0 0\n" },
+    { "stdin": "0 0 0\n" },
+    { "stdin": "7 6 2\n5 5 1\n0 0 0\n" }
+  ]
+}

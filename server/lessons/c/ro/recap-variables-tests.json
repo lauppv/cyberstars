@@ -1,0 +1,19 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "distanta_km" },
+      { "kind": "variable", "name": "consum_per_km" },
+      { "kind": "variable", "name": "pret_per_litru" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": { "distanta_km": 450, "consum_per_km": 0.07, "pret_per_litru": 1.75 }
+    },
+    { "inject": { "distanta_km": 0, "consum_per_km": 0.05, "pret_per_litru": 2.0 } },
+    { "inject": { "distanta_km": 1000, "consum_per_km": 0.1, "pret_per_litru": 1.5 } },
+    { "inject": { "distanta_km": 250, "consum_per_km": 0.08, "pret_per_litru": 1.99 } }
+  ]
+}
