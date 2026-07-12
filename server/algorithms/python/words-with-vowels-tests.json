@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "hello world apple\n" },
+    { "visible": true, "stdin": "cat dog fly\n" },
+    { "stdin": "bee tree free\n" },
+    { "stdin": "apple banana kiwi\n" },
+    { "stdin": "seed book rain\n" }
+  ]
+}

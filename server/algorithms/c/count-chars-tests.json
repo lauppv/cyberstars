@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "banana\na\n" },
+    { "visible": true, "stdin": "hello\nz\n" },
+    { "stdin": "mississippi\ns\n" },
+    { "stdin": "Apple\np\n" }
+  ]
+}

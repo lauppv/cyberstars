@@ -1,0 +1,7 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }]
+  },
+  "cases": [{ "visible": true, "stdin": "" }]
+}

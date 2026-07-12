@@ -1,0 +1,11 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "5\n1\n2\n3\n4\n5\n" },
+    { "visible": true, "stdin": "3\n10\n-3\n7\n" },
+    { "stdin": "1\n7\n" },
+    { "stdin": "3\n-1\n-2\n-3\n" },
+    { "stdin": "4\n100\n200\n300\n400\n" },
+    { "stdin": "2\n-50\n50\n" }
+  ]
+}

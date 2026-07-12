@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "100\n3\ndepune\n50\nretrage\n30\nretrage\n200\n" },
+    { "visible": true, "stdin": "0\n2\ndepune\n500\nretrage\n500\n" },
+    { "stdin": "50\n1\nretrage\n50\n" },
+    { "stdin": "10\n2\nretrage\n20\nretrage\n15\n" },
+    { "stdin": "100\n4\ndepune\n100\ndepune\n50\nretrage\n30\nretrage\n500\n" }
+  ]
+}

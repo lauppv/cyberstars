@@ -307,7 +307,7 @@ export function LessonPage() {
                         {t('lesson.completed')}
                       </span>
                     )}
-                    {currentIndex >= 0 && !isAlgo && (
+                    {currentIndex >= 0 && (
                       <span
                         className={`ml-auto text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
                         title={t('common.xpReward', {

@@ -1,0 +1,14 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "5\nadauga\nmar\n10\nadauga\nbanana\n5\nelimina\nmar\n3\nverifica\nmar\nverifica\nportocala\n"
+    },
+    { "visible": true, "stdin": "3\nadauga\nlapte\n2\nelimina\nlapte\n5\nverifica\nlapte\n" },
+    { "stdin": "4\nadauga\nmar\n3\nelimina\nmar\n3\nverifica\nmar\nverifica\nmar\n" },
+    {
+      "stdin": "6\nadauga\nx\n5\nadauga\nx\n3\nverifica\nx\nelimina\nx\n8\nverifica\nx\nverifica\nx\n"
+    }
+  ]
+}

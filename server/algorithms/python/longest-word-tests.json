@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "I love programming\n" },
+    { "visible": true, "stdin": "The quick brown fox\n" },
+    { "stdin": "cat bat rat\n" },
+    { "stdin": "hi\n" },
+    { "stdin": "a bb ccc dd\n" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "5\ninsereaza\n10\ninsereaza\n20\ninsereaza\n30\nafiseaza\ninsereaza\n40\n"
+    },
+    { "visible": true, "stdin": "3\nafiseaza\ninsereaza\n5\nafiseaza\n" },
+    { "stdin": "2\ninsereaza\n7\nafiseaza\n" },
+    { "stdin": "6\ninsereaza\n1\ninsereaza\n2\nafiseaza\ninsereaza\n3\nafiseaza\n" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "Hello World\n" },
+    { "visible": true, "stdin": "Java is fun\n" },
+    { "stdin": "Sky\n" },
+    { "stdin": "aeiou\n" }
+  ]
+}

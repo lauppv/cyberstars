@@ -1,0 +1,11 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "listen\nsilent\n" },
+    { "visible": true, "stdin": "hello\nworld\n" },
+    { "stdin": "Elvis\nLives\n" },
+    { "stdin": "aabb\nabab\n" },
+    { "stdin": "ab\nabc\n" },
+    { "stdin": "a\na\n" }
+  ]
+}

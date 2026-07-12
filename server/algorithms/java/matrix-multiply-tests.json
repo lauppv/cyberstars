@@ -1,0 +1,8 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }],
+    "forbids": [{ "kind": "int_literal", "values": [58, 64, 139, 154] }]
+  },
+  "cases": [{ "visible": true, "stdin": "" }]
+}

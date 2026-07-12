@@ -1,0 +1,11 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "abc\n3\n" },
+    { "visible": true, "stdin": "Hello, World!\n5\n" },
+    { "stdin": "az\n1\n" },
+    { "stdin": "Zebra\n1\n" },
+    { "stdin": "xyz\n2\n" },
+    { "stdin": "The quick brown fox\n13\n" }
+  ]
+}

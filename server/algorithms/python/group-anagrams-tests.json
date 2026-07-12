@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "6\neat\ntea\ntan\nate\nnat\nbat\n" },
+    { "visible": true, "stdin": "3\nlisten\nsilent\nhello\n" },
+    { "stdin": "3\nabc\ndef\nghi\n" },
+    { "stdin": "1\ncat\n" },
+    { "stdin": "4\nab\nba\nabc\ncba\n" }
+  ]
+}

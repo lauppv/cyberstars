@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "3\ncircle\n5\nrectangle\n4\n6\ncircle\n3\n" },
+    { "visible": true, "stdin": "1\nrectangle\n10\n10\n" },
+    { "stdin": "0\n" },
+    { "stdin": "2\ncircle\n1\ncircle\n2\n" }
+  ]
+}
