@@ -13,7 +13,8 @@
   --text: #ececf3;
   --text2: #b8b8ca;
   --text3: #8a8aa4;
-  --success: #5aa0e0;
+  --success: #00d68f;
+  --output: #5aa0e0;
   --warning: #ffaa00;
   --error: #ff6b6b;
   --font: 'Space Grotesk', system-ui, sans-serif;
@@ -92,7 +93,7 @@ samp {
   font-family: var(--mono);
   font-size: 13px;
   background: var(--surface2);
-  color: var(--accent);
+  color: #b3a4ff;
   padding: 2px 6px;
   border-radius: 4px;
 }

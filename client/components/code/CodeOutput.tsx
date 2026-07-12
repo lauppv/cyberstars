@@ -64,8 +64,8 @@ export function CodeOutput({
       >
         {output || isRunning ? (
           <>
-            {beforeLastLine && <span className="text-[var(--success)]">{beforeLastLine}</span>}
-            <span className="text-[var(--success)]">{lastLine}</span>
+            {beforeLastLine && <span className="text-[var(--output)]">{beforeLastLine}</span>}
+            <span className="text-[var(--output)]">{lastLine}</span>
             {isRunning && onInput && (
               <span
                 ref={inputRef}

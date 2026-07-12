@@ -26,7 +26,7 @@ describe('CodeOutput', () => {
 
   it('splits multi-line output into a before-last-line and last-line span', () => {
     const { container } = render(<CodeOutput output={'line1\nline2'} />);
-    const spans = container.querySelectorAll('span.text-\\[var\\(--success\\)\\]');
+    const spans = container.querySelectorAll('span.text-\\[var\\(--output\\)\\]');
     expect(spans.length).toBe(2);
     expect(spans[0].textContent).toBe('line1\n');
     expect(spans[1].textContent).toBe('line2');
@@ -34,7 +34,7 @@ describe('CodeOutput', () => {
 
   it('renders a single success span for single-line output (no trailing newline)', () => {
     const { container } = render(<CodeOutput output="oneline" />);
-    const spans = container.querySelectorAll('span.text-\\[var\\(--success\\)\\]');
+    const spans = container.querySelectorAll('span.text-\\[var\\(--output\\)\\]');
     expect(spans.length).toBe(1);
     expect(spans[0].textContent).toBe('oneline');
   });
