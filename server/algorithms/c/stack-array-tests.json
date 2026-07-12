@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "5\npush\n10\npush\n20\npeek\npop\npop\n" },
+    { "visible": true, "stdin": "3\npop\npush\n5\npeek\n" },
+    { "stdin": "5\npush\n1\npush\n2\npop\npop\npop\n" },
+    { "stdin": "4\npush\n7\npeek\npop\npeek\n" }
+  ]
+}
