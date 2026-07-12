@@ -2,11 +2,12 @@ import { Router, type Request, type Response, type NextFunction } from 'express'
 import rateLimit from 'express-rate-limit';
 import { optionalAuth } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
-import { createSessionSchema, execSchema } from '../schemas/terminal.schema.js';
+import { createSessionSchema, execSchema, checkSchema } from '../schemas/terminal.schema.js';
 import {
   resolveOwnerKey,
   createSession,
   exec,
+  checkTests,
   destroy,
 } from '../controllers/terminal.controller.js';
 
@@ -44,6 +45,18 @@ const terminalExecLimiter = rateLimit({
   handler: execRateLimitHandler,
 });
 
+// A check is one docker exec (all state probes batched) — cap like the code
+// judge's Run Tests (10/min/owner) rather than the looser per-command exec cap.
+const checkLimiter = rateLimit({
+  windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
+  limit: process.env.NODE_ENV === 'test' ? 10_000 : 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator,
+  handler: execRateLimitHandler,
+});
+
 const router = Router();
 
 router.post(
@@ -60,6 +73,14 @@ router.post(
   terminalExecLimiter,
   validateBody(execSchema),
   exec,
+);
+router.post(
+  '/check',
+  optionalAuth,
+  requireOwner,
+  checkLimiter,
+  validateBody(checkSchema),
+  checkTests,
 );
 router.delete('/session/:sessionId', optionalAuth, requireOwner, destroy);
 
