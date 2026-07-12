@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "mission.txt"
+    },
+    {
+      "kind": "file_exists",
+      "path": "crew.txt"
+    },
+    {
+      "kind": "file_exists",
+      "path": "reports/summary.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "touch"
+    }
+  ]
+}

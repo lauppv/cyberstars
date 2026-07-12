@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat alerte.txt",
+      "expected": "critical: scadere presiune puntea 7\ncritical: radiatii crescute laboratorul 3"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*critical"
+    }
+  ]
+}

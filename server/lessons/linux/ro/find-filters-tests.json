@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "find\\b.*statie.*-type\\s+d"
+    },
+    {
+      "kind": "command",
+      "pattern": "find\\b.*statie.*-type\\s+f.*-name"
+    }
+  ]
+}

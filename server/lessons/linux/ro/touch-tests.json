@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "misiune.txt"
+    },
+    {
+      "kind": "file_exists",
+      "path": "echipaj.txt"
+    },
+    {
+      "kind": "file_exists",
+      "path": "rapoarte/rezumat.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "touch"
+    }
+  ]
+}

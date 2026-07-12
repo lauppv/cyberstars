@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*-c\\b.*warning.*system\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*-v\\b.*info.*system\\.log"
+    }
+  ]
+}

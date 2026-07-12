@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "kind": "file_mode",
+      "path": "coduri_lansare.txt",
+      "mode": "600"
+    },
+    {
+      "kind": "file_mode",
+      "path": "status_raport.sh",
+      "mode": "750"
+    },
+    {
+      "kind": "file_mode",
+      "path": "public_buletin.txt",
+      "mode": "644"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "chmod"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "grep alert events.log | sort | head -n 2",
+      "expected": "alert: breach sector 8\nalert: fire deck 2"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "events\\.log.*\\|.*grep.*alert.*\\|.*sort.*\\|.*head"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "find\\b.*station.*-type\\s+d"
+    },
+    {
+      "kind": "command",
+      "pattern": "find\\b.*station.*-type\\s+f.*-name"
+    }
+  ]
+}

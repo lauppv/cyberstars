@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "cut\\b.*-f\\s*1.*manifest\\.csv"
+    },
+    {
+      "kind": "command",
+      "pattern": "cut\\b.*-d.*manifest\\.csv"
+    }
+  ]
+}

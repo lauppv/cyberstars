@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "name": "tree"
+    },
+    {
+      "kind": "command",
+      "name": "pwd"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*-k\\s*2.*power_readings\\.txt"
+    },
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*-n.*power_readings\\.txt"
+    }
+  ]
+}

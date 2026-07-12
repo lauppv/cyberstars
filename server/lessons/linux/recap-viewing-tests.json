@@ -1,0 +1,20 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "cat\\b.*summary\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "head\\b.*\\b3\\b.*events\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "tail\\b.*\\b3\\b.*events\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "wc\\b.*-l\\b.*errors\\.log"
+    }
+  ]
+}

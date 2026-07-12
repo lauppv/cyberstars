@@ -165,6 +165,22 @@ export async function execCommand(
   }
 }
 
+export interface SessionView {
+  containerId: string;
+  history: string[];
+  cwd: string;
+}
+
+// Read-only snapshot for the state-check judge (terminal-tests.service). A
+// mismatched owner returns null (reported as "not found" upstream). Reading for
+// a check counts as activity so the session isn't GC'd mid-run.
+export function getSessionView(sessionId: string, ownerKey: string): SessionView | null {
+  const session = sessions.get(sessionId);
+  if (!session || session.ownerKey !== ownerKey) return null;
+  session.lastActivity = Date.now();
+  return { containerId: session.containerId, history: [...session.history], cwd: session.cwd };
+}
+
 export async function destroySession(sessionId: string, ownerKey?: string): Promise<void> {
   const session = sessions.get(sessionId);
   if (!session) return;

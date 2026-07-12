@@ -1,0 +1,24 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "ps\\b.*aux"
+    },
+    {
+      "kind": "command",
+      "pattern": "df\\b.*-h"
+    },
+    {
+      "kind": "command",
+      "pattern": "du\\b.*-s.*logs"
+    },
+    {
+      "kind": "command",
+      "name": "date"
+    },
+    {
+      "kind": "command",
+      "name": "history"
+    }
+  ]
+}

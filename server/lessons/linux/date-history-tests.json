@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "name": "date"
+    },
+    {
+      "kind": "command",
+      "name": "history"
+    }
+  ]
+}

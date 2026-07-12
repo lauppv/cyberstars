@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "tail\\b.*\\b4\\b.*sistem\\.log"
+    }
+  ]
+}

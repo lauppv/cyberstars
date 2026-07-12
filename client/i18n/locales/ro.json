@@ -685,5 +685,27 @@
         "int_literal": "Nu scrie rezultatul de-a gata — calculează-l (am găsit {{values}} în cod)"
       }
     }
+  },
+  "terminalTests": {
+    "passedTitle": "Misiune îndeplinită!",
+    "failedTitle": "Aproape — mai încearcă",
+    "check": {
+      "file_exists": "Fișierul {{path}} există",
+      "dir_exists": "Folderul {{path}} există",
+      "path_exists": "{{path}} există",
+      "path_absent": "{{path}} nu mai există",
+      "files_equal": "{{b}} are același conținut ca {{a}}",
+      "dirs_equal": "{{b}} este o copie completă a {{a}}",
+      "file_contains": "{{path}} conține „{{text}}”",
+      "file_mode": "{{path}} are permisiunile {{mode}}",
+      "command_output": "Comanda {{cmd}} dă rezultatul așteptat",
+      "cwd_is": "Ești în {{path}}"
+    },
+    "require": {
+      "command": "Folosește comanda {{name}}"
+    },
+    "forbid": {
+      "command": "Nu folosi {{name}} aici"
+    }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "kind": "dir_exists",
+      "path": "mission/logs/day1"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mkdir"
+    }
+  ]
+}

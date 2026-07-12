@@ -685,5 +685,27 @@
         "int_literal": "Don't hardcode the result — compute it (found {{values}} in your code)"
       }
     }
+  },
+  "terminalTests": {
+    "passedTitle": "Mission accomplished!",
+    "failedTitle": "Not quite — keep going",
+    "check": {
+      "file_exists": "The file {{path}} exists",
+      "dir_exists": "The folder {{path}} exists",
+      "path_exists": "{{path}} exists",
+      "path_absent": "{{path}} no longer exists",
+      "files_equal": "{{b}} has the same contents as {{a}}",
+      "dirs_equal": "{{b}} is a full copy of {{a}}",
+      "file_contains": "{{path}} contains \"{{text}}\"",
+      "file_mode": "{{path}} has permissions {{mode}}",
+      "command_output": "Running {{cmd}} gives the expected result",
+      "cwd_is": "You are in {{path}}"
+    },
+    "require": {
+      "command": "Use the {{name}} command"
+    },
+    "forbid": {
+      "command": "Don't use {{name}} here"
+    }
   }
 }

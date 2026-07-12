@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat misiune.log",
+      "expected": "stare: secventa de lansare initiata\nstare: scuturi nominale\nstare: echipaj pregatit"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": ">>"
+    }
+  ]
+}

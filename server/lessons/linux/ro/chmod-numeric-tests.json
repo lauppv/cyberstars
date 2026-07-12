@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "file_mode",
+      "path": "control_motor.sh",
+      "mode": "750"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "chmod"
+    }
+  ]
+}

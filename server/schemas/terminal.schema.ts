@@ -14,3 +14,10 @@ export const execSchema = z.object({
 export const destroySchema = z.object({
   sessionId: z.string().uuid(),
 });
+
+export const checkSchema = z.object({
+  sessionId: z.string().uuid(),
+  courseKey: z.string().min(1),
+  lessonSlug: z.string().min(1),
+  lang: z.enum(['en', 'ro']).optional(),
+});

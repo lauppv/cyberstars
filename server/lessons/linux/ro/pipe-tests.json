@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "cat\\b.*transmisii\\.log\\s*\\|\\s*grep\\b.*mayday"
+    }
+  ]
+}

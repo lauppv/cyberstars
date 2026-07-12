@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "kind": "path_absent",
+      "path": "gunoi.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "temp.log"
+    },
+    {
+      "kind": "file_exists",
+      "path": "misiune.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "rm"
+    }
+  ]
+}

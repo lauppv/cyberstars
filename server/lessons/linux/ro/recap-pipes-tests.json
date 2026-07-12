@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat avertismente_sortat.txt",
+      "expected": "WARN: antena dezaliniata\nWARN: celula de combustibil B scazuta\nWARN: presiune agent de racire in scadere\n-- sfarsit de raport --"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": ">>"
+    }
+  ]
+}

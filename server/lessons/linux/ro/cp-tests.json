@@ -1,0 +1,7 @@
+{
+  "checks": [
+    { "kind": "files_equal", "a": "misiune.txt", "b": "misiune-backup.txt" },
+    { "kind": "dirs_equal", "a": "rapoarte", "b": "rapoarte-backup" }
+  ],
+  "requires": [{ "kind": "command", "name": "cp" }]
+}

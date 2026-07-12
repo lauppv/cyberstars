@@ -1,0 +1,10 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "grep warning sistem.log",
+      "expected": "warning: temperatura carenei in crestere\nwarning: rezerva de combustibil scazuta\nwarning: latenta comunicatii ridicata"
+    }
+  ],
+  "requires": [{ "kind": "command", "pattern": "grep\\b.*\\bwarning\\b.*sistem\\.log" }]
+}

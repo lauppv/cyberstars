@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "cat\\b.*team-a\\.txt.*team-b\\.txt|cat\\b.*team-b\\.txt.*team-a\\.txt"
+    },
+    {
+      "kind": "command",
+      "pattern": "cat\\b.*-n\\b.*team-a\\.txt"
+    }
+  ]
+}

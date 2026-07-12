@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*door_access\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "uniq\\b.*-c"
+    }
+  ]
+}

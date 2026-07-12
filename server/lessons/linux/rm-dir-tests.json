@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "kind": "path_absent",
+      "path": "empty-bay"
+    },
+    {
+      "kind": "path_absent",
+      "path": "old-data"
+    },
+    {
+      "kind": "dir_exists",
+      "path": "mission"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "rmdir"
+    },
+    {
+      "kind": "command",
+      "pattern": "rm\\b.*-r"
+    }
+  ]
+}
