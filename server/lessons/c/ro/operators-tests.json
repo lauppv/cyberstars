@@ -1,0 +1,13 @@
+{
+  "structure": {
+    "requires": [{ "kind": "call", "name": "scanf" }]
+  },
+  "cases": [
+    { "visible": true, "stdin": "17 5\n" },
+    { "visible": true, "stdin": "20 4\n" },
+    { "stdin": "100 7\n" },
+    { "stdin": "-15 4\n" },
+    { "stdin": "9 3\n" },
+    { "stdin": "8 1\n" }
+  ]
+}

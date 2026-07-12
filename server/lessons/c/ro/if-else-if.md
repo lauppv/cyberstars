@@ -95,8 +95,8 @@ Tu ești operatorul de tură. Cronometrul de pornire afișează câte secunde ma
 
 Scrie un program care, în interiorul lui **main**
 
-- declară **int secunde = 5;**
-- declară **int eroare_detectata = 1;**
+- declară un **int** numit **secunde**
+- declară un **int** numit **eroare_detectata**
 - folosește un lanț **if / else if / else**:
   - dacă `secunde` este **100** → afișează `Verific memoria`
   - altfel dacă `secunde` este **60** → afișează `Verific perifericele`
@@ -107,7 +107,7 @@ Scrie un program care, în interiorul lui **main**
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Pentru un **secunde** de 5 și un **eroare_detectata** de 1, programul tău ar afișa ceva de genul
 
 ```text
 Eroare detectata. Anulez pornirea

@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "n" },
+      { "kind": "loop" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "n": 5 } },
+    { "inject": { "n": 1 } },
+    { "inject": { "n": 0 } },
+    { "inject": { "n": 3 } },
+    { "inject": { "n": 8 } }
+  ]
+}

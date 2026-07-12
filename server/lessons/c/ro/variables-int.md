@@ -129,14 +129,14 @@ La centrul de calcul, fiecare operator nou primește o fișă cu două numere: v
 
 Scrie un program care, în interiorul lui **main**
 
-- declară **int varsta = 45;**
-- declară **int nivel_acces = 3;**
+- declară un **int** numit **varsta** (orice număr întreg vrei)
+- declară un **int** numit **nivel_acces** (orice număr întreg vrei)
 - afișează **varsta** pe o linie, cu eticheta `Varsta: `
 - afișează **nivel_acces** pe linie separată, cu eticheta `Acces: `
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Pentru o **varsta** de 45 și un **nivel_acces** de 3, programul tău ar afișa ceva de genul
 
 ```text
 Varsta: 45

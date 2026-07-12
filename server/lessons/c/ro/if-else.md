@@ -101,12 +101,12 @@ Mainframe-urile centrului de calcul nu tolerează frigul: sub zero grade, uleiul
 
 Scrie un program care, în interiorul lui **main**
 
-- declară **int temperatura = -5;**
+- declară un **int** numit **temperatura**
 - folosește un **if / else**: dacă `temperatura` este **mai mică decât 0** → afișează `alerta frig`, altfel → afișează `temperatura normala`
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Pentru o **temperatura** de -5, programul tău ar afișa ceva de genul
 
 ```text
 alerta frig

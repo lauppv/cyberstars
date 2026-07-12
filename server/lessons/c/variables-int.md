@@ -129,14 +129,14 @@ At the computing center, every new operator gets a file with two numbers: their 
 
 Write a program that, inside **main**
 
-- declares **int age = 45;**
-- declares **int access_level = 3;**
+- declares an **int** named **age** (any whole number you like)
+- declares an **int** named **access_level** (any whole number you like)
 - prints **age** on one line, with the label `Age: `
 - prints **access_level** on a separate line, with the label `Access: `
 
 **Example**
 
-Your program should print
+For an **age** of 45 and an **access_level** of 3, your program would print something like
 
 ```text
 Age: 45

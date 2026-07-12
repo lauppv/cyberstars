@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "malloc" },
+      { "kind": "call", "name": "free" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" },
+      { "kind": "loop" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "3\n10 20 30\n" },
+    { "visible": true, "stdin": "1\n99\n" },
+    { "stdin": "5\n-1 -2 -3 -4 -5\n" },
+    { "stdin": "2\n0 1000\n" }
+  ]
+}

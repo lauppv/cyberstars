@@ -1,0 +1,13 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "TapeA 1970 500\nTapeB 1972 600\n" },
+    { "visible": true, "stdin": "X 2000 1\nY 2001 2\n" },
+    { "stdin": "Reel1 1965 300\nReel2 1966 350\n" }
+  ]
+}

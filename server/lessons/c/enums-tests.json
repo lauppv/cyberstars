@@ -1,0 +1,9 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "print_season" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [{ "visible": true }]
+}

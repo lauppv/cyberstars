@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "temperature" },
+      { "kind": "variable", "name": "humidity" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "temperature": 21.6, "humidity": 45.5 } },
+    { "inject": { "temperature": 4.75, "humidity": 0.05 } },
+    { "inject": { "temperature": 100, "humidity": 3.25 } },
+    { "inject": { "temperature": 0, "humidity": 12.5 } }
+  ]
+}

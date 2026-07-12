@@ -1,0 +1,14 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "fgets" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "dennis ritchie\n" },
+    { "visible": true, "stdin": "ken thompson\n" },
+    { "stdin": "a\n" },
+    { "stdin": "brian\n" }
+  ]
+}

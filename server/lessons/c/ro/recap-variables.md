@@ -8,16 +8,16 @@ O dubă transportă bobine de bandă magnetică între două centre de calcul. O
 
 Scrie un program care, în interiorul lui **main**
 
-- declară **int distanta_km = 450;**
-- declară **double consum_per_km = 0.07;**
-- declară **double pret_per_litru = 1.75;**
+- declară un **int** numit **distanta_km** (orice număr întreg vrei)
+- declară un **double** numit **consum_per_km** (orice valoare vrei)
+- declară un **double** numit **pret_per_litru** (orice valoare vrei)
 - calculează **combustibilul total** necesar (**distanta_km \* consum_per_km**) — pune un **comentariu** deasupra acestui calcul
 - calculează **costul total** (**combustibil total \* pret_per_litru**) — pune un **comentariu** deasupra acestui calcul
 - afișează cele trei valori, fiecare pe linia ei, rotunjite la **2 zecimale** unde e cazul
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Pentru **distanta_km = 450**, **consum_per_km = 0.07** și **pret_per_litru = 1.75**, programul tău ar afișa ceva de genul
 
 ```text
 Distanta: 450 km

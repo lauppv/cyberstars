@@ -76,13 +76,13 @@ At Bell Labs, before kicking off a compile run on the mainframe, the shift opera
 
 Write a program that, inside **main**
 
-- declares **int n = 5;**
+- declares an **int** named **n**
 - uses a **while** loop that prints the value of **n**, then decreases it by 1, as long as **n** is greater than 0
 - after the loop ends, prints **Start**
 
 **Example**
 
-Your program should print
+For an **n** of 5, your program would print something like
 
 ```text
 5

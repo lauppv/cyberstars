@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "secunde" },
+      { "kind": "variable", "name": "eroare_detectata" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "secunde": 5, "eroare_detectata": 1 } },
+    { "inject": { "secunde": 100, "eroare_detectata": 0 } },
+    { "inject": { "secunde": 60, "eroare_detectata": 0 } },
+    { "inject": { "secunde": 30, "eroare_detectata": 0 } },
+    { "inject": { "secunde": 10, "eroare_detectata": 0 } },
+    { "inject": { "secunde": 5, "eroare_detectata": 0 } },
+    { "inject": { "secunde": 200, "eroare_detectata": 0 } }
+  ]
+}

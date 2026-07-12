@@ -76,13 +76,13 @@ La Bell Labs, înainte de a lansa o rulare de compilare pe mainframe, operatorul
 
 Scrie un program care, în interiorul lui **main**
 
-- declară **int n = 5;**
+- declară un **int** numit **n**
 - folosește o buclă **while** care afișează valoarea lui **n**, apoi o scade cu 1, cât timp **n** este mai mare decât 0
 - după ce bucla se termină, afișează **Start**
 
 **Exemplu**
 
-Programul tău ar trebui să afișeze
+Pentru un **n** de 5, programul tău ar afișa ceva de genul
 
 ```text
 5

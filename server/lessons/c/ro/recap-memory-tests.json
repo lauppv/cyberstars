@@ -1,0 +1,20 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "creeaza_sarcina" },
+      { "kind": "function", "name": "actualizeaza_status" },
+      { "kind": "function", "name": "nume_status" },
+      { "kind": "function", "name": "afiseaza_sarcina" },
+      { "kind": "call", "name": "malloc" },
+      { "kind": "call", "name": "free" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" },
+      { "kind": "loop" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "2\nDeploy 0\nReview 2\n" },
+    { "visible": true, "stdin": "1\nBuild 1\n" },
+    { "stdin": "3\nAlpha 2\nBravo 0\nCharlie 1\n" }
+  ]
+}

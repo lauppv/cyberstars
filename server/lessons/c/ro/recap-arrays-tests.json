@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "numara_promovati" },
+      { "kind": "function", "name": "gaseste_max" },
+      { "kind": "function", "name": "gaseste_prima_cadere" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "5\n40 90 55 30 70\n" },
+    { "visible": true, "stdin": "3\n100 80 60\n" },
+    { "stdin": "4\n45 30 20 10\n" },
+    { "stdin": "1\n75\n" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "print_permissions" },
+      { "kind": "call", "name": "fopen" },
+      { "kind": "call", "name": "fprintf" },
+      { "kind": "call", "name": "fscanf" },
+      { "kind": "call", "name": "fclose" },
+      { "kind": "call", "name": "printf" },
+      { "kind": "loop" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "docs 5\nbin 7\nlog 1\n" },
+    { "visible": true, "stdin": "note 2\n" },
+    { "stdin": "alpha 0\nbravo 4\n" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "loop" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "Abcdef1!\n" },
+    { "visible": true, "stdin": "abcdef\n" },
+    { "stdin": "Abcdefgh\n" },
+    { "stdin": "abcdefg1\n" },
+    { "stdin": "ABCDEFG@\n" },
+    { "stdin": "Xy9@zzzz\n" }
+  ]
+}

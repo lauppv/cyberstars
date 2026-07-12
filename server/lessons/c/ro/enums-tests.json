@@ -1,0 +1,9 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "afiseaza_anotimp" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [{ "visible": true }]
+}

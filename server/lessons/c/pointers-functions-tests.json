@@ -1,0 +1,15 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "function", "name": "triple_it" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "stdin": "5\n" },
+    { "stdin": "0\n" },
+    { "stdin": "-4\n" },
+    { "stdin": "100\n" }
+  ]
+}

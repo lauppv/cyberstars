@@ -114,7 +114,7 @@ Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
 
 Panoul de diagnostic al mainframe-ului citește două valori de pe consolă și rulează cele cinci operații aritmetice de bază, ca tehnicianul de tură să poată verifica rapid dacă unitatea aritmetică funcționează corect.
 
-Citește două numere întregi **a** și **b** folosind **scanf**, apoi afișează rezultatele lui `a + b`, `a - b`, `a * b`, `a / b` și `a % b` — fiecare pe propria linie.
+Citește două numere întregi **a** și **b** folosind **scanf**, apoi afișează rezultatele lui `a + b`, `a - b`, `a * b`, `a / b` și `a % b` — fiecare pe propria linie. Citește datele direct — nu afișa nicio întrebare înainte de citire.
 
 **Exemplu**
 

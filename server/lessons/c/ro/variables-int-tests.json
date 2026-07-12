@@ -1,0 +1,16 @@
+{
+  "structure": {
+    "requires": [
+      { "kind": "variable", "name": "varsta" },
+      { "kind": "variable", "name": "nivel_acces" },
+      { "kind": "call", "name": "printf" }
+    ]
+  },
+  "cases": [
+    { "visible": true, "inject": { "varsta": 45, "nivel_acces": 3 } },
+    { "inject": { "varsta": 0, "nivel_acces": 0 } },
+    { "inject": { "varsta": 1, "nivel_acces": 1 } },
+    { "inject": { "varsta": 120, "nivel_acces": 9 } },
+    { "inject": { "varsta": -5, "nivel_acces": 7 } }
+  ]
+}

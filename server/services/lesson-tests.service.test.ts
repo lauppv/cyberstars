@@ -32,6 +32,14 @@ vi.mock('./code-container.service.js', () => ({
   destroyOwner: (...args: unknown[]) => mockDestroy(...args),
 }));
 
+// C does structure + injection on the server via web-tree-sitter, which can't
+// load its wasm under jsdom — mock it here so dispatch is testable without a
+// real parser (the parser itself is covered in c-analysis.test.ts, node env).
+const { mockPrepareC } = vi.hoisted(() => ({ mockPrepareC: vi.fn() }));
+vi.mock('./c-analysis.js', () => ({
+  prepareC: (...args: unknown[]) => mockPrepareC(...args),
+}));
+
 const { loadTestsSpec, compareOutputs, runLessonTests } = await import('./lesson-tests.service.js');
 
 const SPEC = {
@@ -271,10 +279,66 @@ describe('runLessonTests', () => {
 
   it('404s when the course language has no judge runner', async () => {
     stubFiles();
-    await expect(runLessonTests('user:1', 'c', 'print', 'code')).rejects.toMatchObject({
+    await expect(runLessonTests('user:1', 'kotlin', 'print', 'code')).rejects.toMatchObject({
       statusCode: 404,
     });
     expect(mockAcquire).not.toHaveBeenCalled();
+  });
+
+  it('dispatches c lessons to the c runner with a server-prepped payload', async () => {
+    stubFiles();
+    mockPrepareC.mockResolvedValue({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '' }],
+    });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ user: program(), solution: program() }],
+    });
+
+    const res = await runLessonTests('user:1', 'c', 'variables-int', 'code');
+    expect(res.status).toBe('passed');
+    expect(
+      mockReadFileSync.mock.calls.some((c) => String(c[0]).endsWith('lesson-tests.runner.c.py')),
+    ).toBe(true);
+    // The C runner gets pre-injected sources, not the raw code + spec.
+    const payload = mockDockerExec.mock.calls[1][2] as string;
+    expect(payload).toContain('pristineUser');
+    expect(JSON.parse(payload).cases).toEqual([{ userSrc: 'U', solutionSrc: 'S', stdin: '' }]);
+  });
+
+  it('short-circuits a c syntax error before touching a container', async () => {
+    stubFiles();
+    mockPrepareC.mockResolvedValue({
+      syntaxError: 'line 1: syntax error',
+      structureFailures: [],
+      cases: [],
+    });
+    const res = await runLessonTests('user:1', 'c', 'variables-int', 'int x =');
+    expect(res.status).toBe('failed');
+    expect(res.syntaxError).toContain('syntax error');
+    expect(mockAcquire).not.toHaveBeenCalled();
+  });
+
+  it('merges c structure failures from the server prep, not the runner', async () => {
+    stubFiles();
+    mockPrepareC.mockResolvedValue({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule: { kind: 'variable', name: 'age' } }],
+      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '' }],
+    });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ user: program(), solution: program() }],
+    });
+    const res = await runLessonTests('user:1', 'c', 'variables-int', 'code');
+    expect(res.status).toBe('failed');
+    expect(res.structureFailures).toEqual([
+      { type: 'require', rule: { kind: 'variable', name: 'age' } },
+    ]);
   });
 
   it('409s when the owner already has a run in progress', async () => {
