@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
+import type { TerminalTestResult } from '../../../shared/terminal';
+import { TerminalTestResults } from './TerminalTestResults';
 
 interface Props {
   lines: TerminalLine[];
@@ -12,6 +14,12 @@ interface Props {
   lessonCompleted?: boolean;
   hasSolution?: boolean;
   onShowSolution?: () => void;
+  hasTests?: boolean;
+  isChecking?: boolean;
+  onRunTests?: () => void;
+  testResult?: TerminalTestResult | null;
+  onCloseTests?: () => void;
+  testsError?: string | null;
 }
 
 export function TerminalPanel({
@@ -24,6 +32,12 @@ export function TerminalPanel({
   lessonCompleted,
   hasSolution,
   onShowSolution,
+  hasTests,
+  isChecking,
+  onRunTests,
+  testResult,
+  onCloseTests,
+  testsError,
 }: Props) {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
@@ -106,6 +120,25 @@ export function TerminalPanel({
             <span className="text-[12px] font-semibold text-[var(--success)]">
               {t('lesson.completed')}
             </span>
+          )}
+          {testsError && (
+            <span className="text-[var(--error)] text-[12px] font-semibold">{testsError}</span>
+          )}
+          {hasTests && onRunTests && (
+            <button
+              onClick={onRunTests}
+              disabled={isChecking || !isReady}
+              className="px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[12px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+            >
+              {isChecking ? (
+                <>
+                  <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  {t('tests.running')}
+                </>
+              ) : (
+                t('tests.run')
+              )}
+            </button>
           )}
           <div className="relative" ref={menuRef}>
             <button
@@ -192,6 +225,10 @@ export function TerminalPanel({
           <div className="text-[var(--text3)] animate-pulse">{t('terminal.starting')}</div>
         )}
       </div>
+
+      {testResult && onCloseTests && (
+        <TerminalTestResults results={testResult} onClose={onCloseTests} />
+      )}
     </div>
   );
 }

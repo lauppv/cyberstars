@@ -22,8 +22,10 @@ import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import type { LessonMeta } from '../../shared/lesson';
 import type { RunTestsResponse } from '../../shared/tests';
+import type { TerminalTestResult } from '../../shared/terminal';
 import * as progressService from '../services/progressService';
 import * as testsService from '../services/testsService';
+import * as terminalService from '../services/terminalService';
 import { courseMeta } from '../constants/courses';
 import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
 
@@ -76,6 +78,9 @@ export function LessonPage() {
   const [testResults, setTestResults] = useState<RunTestsResponse | null>(null);
   const [isTesting, setIsTesting] = useState(false);
   const [testsError, setTestsError] = useState<string | null>(null);
+  const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
+  const [isChecking, setIsChecking] = useState(false);
+  const [terminalTestsError, setTerminalTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const justMarkedRef = useRef(false);
@@ -135,6 +140,8 @@ export function LessonPage() {
       setOptimisticCompleted(null);
       setTestResults(null);
       setTestsError(null);
+      setTerminalTestResult(null);
+      setTerminalTestsError(null);
     }, 0);
   }, [lesson, clearOutput]);
 
@@ -204,6 +211,45 @@ export function LessonPage() {
     category,
     lesson,
     userCode,
+    i18n,
+    isLoggedIn,
+    lessonCompleted,
+    loadProgress,
+    refreshGamification,
+  ]);
+
+  // Terminal (Linux) judge: validates sandbox state against the live session
+  // container (no code — the student's typed commands built the state). Same
+  // server-authoritative completion as the code judge.
+  const handleRunTerminalChecks = useCallback(async () => {
+    if (isChecking || !terminal.sessionId) return;
+    setIsChecking(true);
+    setTerminalTestsError(null);
+    try {
+      const lang = i18n.language === 'ro' ? 'ro' : 'en';
+      const results = await terminalService.checkTerminalTests(
+        terminal.sessionId,
+        category,
+        lesson,
+        lang,
+      );
+      setTerminalTestResult(results);
+      if (results.status === 'passed' && isLoggedIn && !lessonCompleted) {
+        justMarkedRef.current = true;
+        setOptimisticCompleted(true);
+        loadProgress();
+        refreshGamification();
+      }
+    } catch (err) {
+      setTerminalTestsError(err instanceof Error ? err.message : 'Something went wrong');
+    } finally {
+      setIsChecking(false);
+    }
+  }, [
+    isChecking,
+    terminal.sessionId,
+    category,
+    lesson,
     i18n,
     isLoggedIn,
     lessonCompleted,
@@ -363,10 +409,20 @@ export function LessonPage() {
               isReady={terminal.isReady}
               isExecuting={terminal.isExecuting}
               onExecute={terminal.execute}
-              onReset={terminal.reset}
+              onReset={() => {
+                setTerminalTestResult(null);
+                setTerminalTestsError(null);
+                terminal.reset();
+              }}
               lessonCompleted={lessonCompleted}
               hasSolution={!!solution}
               onShowSolution={() => setShowSolution(true)}
+              hasTests={hasTests}
+              isChecking={isChecking}
+              onRunTests={handleRunTerminalChecks}
+              testResult={terminalTestResult}
+              onCloseTests={() => setTerminalTestResult(null)}
+              testsError={terminalTestsError}
             />
           </div>
         ) : (
