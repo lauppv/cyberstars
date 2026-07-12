@@ -20,6 +20,8 @@ import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { ResizeHandle } from '../components/ui/ResizeHandle';
+import { useResizeSplit } from '../hooks/useResizeSplit';
 import type { LessonMeta } from '../../shared/lesson';
 import type { RunTestsResponse } from '../../shared/tests';
 import type { TerminalTestResult } from '../../shared/terminal';
@@ -85,6 +87,35 @@ export function LessonPage() {
   const menuRef = useRef<HTMLDivElement>(null);
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const bandRef = useRef<HTMLDivElement>(null);
+  const workspaceRef = useRef<HTMLDivElement>(null);
+
+  // Draggable split only applies on the lg+ side-by-side layout; below that the
+  // panels are tab-switched and take the full width.
+  const [isLg, setIsLg] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const onChange = () => setIsLg(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  const hSplit = useResizeSplit({
+    axis: 'x',
+    initial: 50,
+    min: 28,
+    max: 68,
+    containerRef: bandRef,
+  });
+  const vSplit = useResizeSplit({
+    axis: 'y',
+    initial: 60,
+    min: 25,
+    max: 80,
+    containerRef: workspaceRef,
+  });
   const saveToastTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const loadedLessonRef = useRef('');
   const loadedStarterRef = useRef('');
@@ -320,256 +351,285 @@ export function LessonPage() {
       </div>
 
       <div className="flex flex-1 overflow-hidden justify-center">
-        {/* Lesson content */}
-        <div
-          ref={contentRef}
-          className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full lg:w-[40%] overflow-y-auto bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-r border-[var(--accent)]/30`}
-        >
-          <div className="px-9 py-8">
-            {(() => {
-              const { difficulty, rest } = parseDifficulty(title);
-              return (
-                <>
-                  <div className="flex items-center gap-3 mb-2 flex-wrap">
-                    <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                      {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
-                        n: currentIndex + 1,
-                        total: lessonList.length,
-                      })}
+        <div ref={bandRef} className="flex w-full lg:w-4/5 overflow-hidden">
+          {/* Lesson content */}
+          <div
+            ref={contentRef}
+            style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
+            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px]`}
+          >
+            <div className="px-9 py-8">
+              {(() => {
+                const { difficulty, rest } = parseDifficulty(title);
+                return (
+                  <>
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
+                        {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
+                          n: currentIndex + 1,
+                          total: lessonList.length,
+                        })}
+                      </span>
+                      {difficulty && (
+                        <span
+                          className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-[1px]"
+                          style={{
+                            background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
+                            color: DIFFICULTY_COLOR[difficulty],
+                          }}
+                        >
+                          {t(`lesson.difficulty.${difficulty}`)}
+                        </span>
+                      )}
+                      {lessonCompleted && (
+                        <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
+                          {t('lesson.completed')}
+                        </span>
+                      )}
+                      {currentIndex >= 0 && (
+                        <span
+                          className={`ml-auto text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+                          title={t('common.xpReward', {
+                            xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                          })}
+                        >
+                          ⭐{' '}
+                          {t('common.xpReward', {
+                            xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                          })}
+                        </span>
+                      )}
+                    </div>
+
+                    <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
+                      {rest}
+                    </h1>
+                  </>
+                );
+              })()}
+
+              <div className="lesson-body">
+                <MarkdownRenderer content={content} />
+              </div>
+
+              <div className="flex gap-3 mt-10 pb-4">
+                <button
+                  onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
+                  disabled={!prevLesson}
+                  className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                >
+                  {t('lesson.previous')}
+                </button>
+                <button
+                  onClick={() => nextLesson && navigate(`/lesson/${category}/${nextLesson.slug}`)}
+                  disabled={!nextLesson}
+                  className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                >
+                  {t('lesson.next')}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {isLg && (
+            <ResizeHandle
+              axis="x"
+              onPointerDown={hSplit.onPointerDown}
+              dragging={hSplit.dragging}
+            />
+          )}
+
+          {/* Right panel: terminal or editor */}
+          {isTerminal ? (
+            <div
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden`}
+            >
+              <TerminalPanel
+                lines={terminal.lines}
+                cwd={terminal.cwd}
+                isReady={terminal.isReady}
+                isExecuting={terminal.isExecuting}
+                onExecute={terminal.execute}
+                onReset={() => {
+                  setTerminalTestResult(null);
+                  setTerminalTestsError(null);
+                  terminal.reset();
+                }}
+                lessonCompleted={lessonCompleted}
+                hasSolution={!!solution}
+                onShowSolution={() => setShowSolution(true)}
+                hasTests={hasTests}
+                isChecking={isChecking}
+                onRunTests={handleRunTerminalChecks}
+                testResult={terminalTestResult}
+                onCloseTests={() => setTerminalTestResult(null)}
+                testsError={terminalTestsError}
+              />
+            </div>
+          ) : (
+            <div
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden`}
+            >
+              <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
+                <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
+                  <span
+                    className="inline-block w-2 h-2 rounded-full"
+                    style={{ background: courseMeta(category).color }}
+                  />
+                  {courseMeta(category).langLabel}
+                </div>
+                <div className="flex items-center gap-2">
+                  {showSaveToast && (
+                    <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
+                      {t('lesson.codeSaved')}
                     </span>
-                    {difficulty && (
-                      <span
-                        className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-[1px]"
-                        style={{
-                          background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
-                          color: DIFFICULTY_COLOR[difficulty],
-                        }}
+                  )}
+                  {lessonCompleted && (
+                    <span className="text-[12px] font-semibold text-[var(--success)]">
+                      {t('lesson.completed')}
+                    </span>
+                  )}
+                  <div className="relative" ref={menuRef}>
+                    <button
+                      onClick={() => setMenuOpen((v) => !v)}
+                      aria-haspopup="menu"
+                      aria-expanded={menuOpen}
+                      aria-label={t('lesson.actions')}
+                      className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
+                    >
+                      <span className="text-[16px] leading-none">⋯</span>
+                    </button>
+                    {menuOpen && (
+                      <div
+                        role="menu"
+                        className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
                       >
-                        {t(`lesson.difficulty.${difficulty}`)}
-                      </span>
+                        {solution && (
+                          <button
+                            role="menuitem"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              setShowSolution(true);
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                          >
+                            {t('lesson.showSolution')}
+                          </button>
+                        )}
+                        {isLoggedIn && (
+                          <button
+                            role="menuitem"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              handleSave();
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                          >
+                            {t('lesson.save')}
+                          </button>
+                        )}
+                        {isLoggedIn && userCode.trim().length > 0 && (
+                          <button
+                            role="menuitem"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              setShowShareModal(true);
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                          >
+                            {t('lesson.shareToForum')}
+                          </button>
+                        )}
+                        <button
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                        >
+                          {t('lesson.reset')}
+                        </button>
+                      </div>
                     )}
-                    {lessonCompleted && (
-                      <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
-                        {t('lesson.completed')}
-                      </span>
-                    )}
-                    {currentIndex >= 0 && (
-                      <span
-                        className={`ml-auto text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
-                        title={t('common.xpReward', {
-                          xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                        })}
+                  </div>
+                </div>
+              </div>
+
+              <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
+                <div
+                  className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)]"
+                  style={isLg ? { height: `${vSplit.size}%` } : { maxHeight: '60%' }}
+                >
+                  <CodeEditor
+                    value={userCode}
+                    onChange={setUserCode}
+                    language={category}
+                    fontSize="16px"
+                    onRun={handleRun}
+                  />
+                </div>
+
+                {isLg && (
+                  <ResizeHandle
+                    axis="y"
+                    onPointerDown={vSplit.onPointerDown}
+                    dragging={vSplit.dragging}
+                  />
+                )}
+
+                <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
+                  <div className="flex gap-2 mb-3 items-center flex-wrap">
+                    <RunButton onClick={handleRun} isRunning={isRunning} />
+                    {hasTests ? (
+                      <button
+                        onClick={handleRunTests}
+                        disabled={isTesting || isRunning}
+                        className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
                       >
-                        ⭐{' '}
-                        {t('common.xpReward', {
-                          xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                        })}
+                        {isTesting ? (
+                          <>
+                            <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            {t('tests.running')}
+                          </>
+                        ) : (
+                          <>{t('tests.run')}</>
+                        )}
+                      </button>
+                    ) : (
+                      isMainCourse && (
+                        <span title={t('tests.comingSoon')} className="inline-flex">
+                          <button
+                            disabled
+                            className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 opacity-60 cursor-not-allowed"
+                          >
+                            {t('tests.run')}
+                          </button>
+                        </span>
+                      )
+                    )}
+                    {testsError && (
+                      <span className="text-[var(--error)] text-[12px] font-semibold">
+                        {testsError}
                       </span>
                     )}
                   </div>
 
-                  <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
-                    {rest}
-                  </h1>
-                </>
-              );
-            })()}
-
-            <div className="lesson-body">
-              <MarkdownRenderer content={content} />
-            </div>
-
-            <div className="flex gap-3 mt-10 pb-4">
-              <button
-                onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
-                disabled={!prevLesson}
-                className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
-              >
-                {t('lesson.previous')}
-              </button>
-              <button
-                onClick={() => nextLesson && navigate(`/lesson/${category}/${nextLesson.slug}`)}
-                disabled={!nextLesson}
-                className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
-              >
-                {t('lesson.next')}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Right panel: terminal or editor */}
-        {isTerminal ? (
-          <div
-            className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex w-full lg:w-[40%] flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-l border-[var(--accent)]/30 overflow-hidden`}
-          >
-            <TerminalPanel
-              lines={terminal.lines}
-              cwd={terminal.cwd}
-              isReady={terminal.isReady}
-              isExecuting={terminal.isExecuting}
-              onExecute={terminal.execute}
-              onReset={() => {
-                setTerminalTestResult(null);
-                setTerminalTestsError(null);
-                terminal.reset();
-              }}
-              lessonCompleted={lessonCompleted}
-              hasSolution={!!solution}
-              onShowSolution={() => setShowSolution(true)}
-              hasTests={hasTests}
-              isChecking={isChecking}
-              onRunTests={handleRunTerminalChecks}
-              testResult={terminalTestResult}
-              onCloseTests={() => setTerminalTestResult(null)}
-              testsError={terminalTestsError}
-            />
-          </div>
-        ) : (
-          <div
-            className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex w-full lg:w-[40%] flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border-l border-[var(--accent)]/30 overflow-hidden`}
-          >
-            <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
-              <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
-                <span
-                  className="inline-block w-2 h-2 rounded-full"
-                  style={{ background: courseMeta(category).color }}
-                />
-                {courseMeta(category).langLabel}
-              </div>
-              <div className="flex items-center gap-2">
-                {showSaveToast && (
-                  <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                    {t('lesson.codeSaved')}
-                  </span>
-                )}
-                {lessonCompleted && (
-                  <span className="text-[12px] font-semibold text-[var(--success)]">
-                    {t('lesson.completed')}
-                  </span>
-                )}
-                <div className="relative" ref={menuRef}>
-                  <button
-                    onClick={() => setMenuOpen((v) => !v)}
-                    aria-haspopup="menu"
-                    aria-expanded={menuOpen}
-                    aria-label={t('lesson.actions')}
-                    className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
-                  >
-                    <span className="text-[16px] leading-none">⋯</span>
-                  </button>
-                  {menuOpen && (
-                    <div
-                      role="menu"
-                      className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
-                    >
-                      {solution && (
-                        <button
-                          role="menuitem"
-                          onClick={() => {
-                            setMenuOpen(false);
-                            setShowSolution(true);
-                          }}
-                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                        >
-                          {t('lesson.showSolution')}
-                        </button>
-                      )}
-                      {isLoggedIn && (
-                        <button
-                          role="menuitem"
-                          onClick={() => {
-                            setMenuOpen(false);
-                            handleSave();
-                          }}
-                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                        >
-                          {t('lesson.save')}
-                        </button>
-                      )}
-                      {isLoggedIn && userCode.trim().length > 0 && (
-                        <button
-                          role="menuitem"
-                          onClick={() => {
-                            setMenuOpen(false);
-                            setShowShareModal(true);
-                          }}
-                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                        >
-                          {t('lesson.shareToForum')}
-                        </button>
-                      )}
-                      <button
-                        role="menuitem"
-                        onClick={() => {
-                          setMenuOpen(false);
-                          if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                      >
-                        {t('lesson.reset')}
-                      </button>
-                    </div>
+                  {testResults ? (
+                    <TestResults results={testResults} onClose={() => setTestResults(null)} />
+                  ) : (
+                    <CodeOutput
+                      output={output}
+                      isRunning={isRunning}
+                      onInput={sendInput}
+                      fillHeight
+                    />
                   )}
                 </div>
               </div>
             </div>
-
-            <div className="overflow-auto bg-[rgba(13,17,23,0.3)]" style={{ maxHeight: '60%' }}>
-              <CodeEditor
-                value={userCode}
-                onChange={setUserCode}
-                language={category}
-                fontSize="16px"
-                onRun={handleRun}
-              />
-            </div>
-
-            <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
-              <div className="flex gap-2 mb-3 items-center flex-wrap">
-                <RunButton onClick={handleRun} isRunning={isRunning} />
-                {hasTests ? (
-                  <button
-                    onClick={handleRunTests}
-                    disabled={isTesting || isRunning}
-                    className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
-                  >
-                    {isTesting ? (
-                      <>
-                        <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        {t('tests.running')}
-                      </>
-                    ) : (
-                      <>{t('tests.run')}</>
-                    )}
-                  </button>
-                ) : (
-                  isMainCourse && (
-                    <span title={t('tests.comingSoon')} className="inline-flex">
-                      <button
-                        disabled
-                        className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 opacity-60 cursor-not-allowed"
-                      >
-                        {t('tests.run')}
-                      </button>
-                    </span>
-                  )
-                )}
-                {testsError && (
-                  <span className="text-[var(--error)] text-[12px] font-semibold">
-                    {testsError}
-                  </span>
-                )}
-              </div>
-
-              {testResults ? (
-                <TestResults results={testResults} onClose={() => setTestResults(null)} />
-              ) : (
-                <CodeOutput output={output} isRunning={isRunning} onInput={sendInput} fillHeight />
-              )}
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <AchievementToast
