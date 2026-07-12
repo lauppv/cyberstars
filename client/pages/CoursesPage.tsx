@@ -97,7 +97,7 @@ export function CoursesPage() {
             >
               <div className="h-1.5 w-full" style={{ background: c.color }} />
               <div className="p-5">
-                <div className="flex items-start gap-3.5 mb-3.5">
+                <div className="flex items-center gap-3.5 mb-3.5">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
                     style={{ background: c.color + '20' }}
@@ -123,18 +123,18 @@ export function CoursesPage() {
                       )}
                     </div>
                   </div>
-                </div>
-                <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
-                <div className="flex items-end justify-between gap-4 mb-4">
-                  <span className="text-[11px] text-[var(--text3)]">
-                    <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
-                    {t('courses.lessons', { count: c.lessonCount })}
-                  </span>
                   <span
-                    className="text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]"
+                    className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]"
                     title={t('common.xpTotal', { xp: c.totalXp })}
                   >
                     ⭐ {t('common.xpTotal', { xp: c.totalXp })}
+                  </span>
+                </div>
+                <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
+                <div className="mb-4">
+                  <span className="text-[11px] text-[var(--text3)]">
+                    <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
+                    {t('courses.lessons', { count: c.lessonCount })}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
