@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "5\ncreste\ncreste\narata\nscade\narata\n" },
+    { "visible": true, "stdin": "4\nscade\nscade\nscade\narata\n" },
+    { "stdin": "1\narata\n" },
+    { "stdin": "5\ncreste\nscade\ncreste\nscade\narata\n" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "6\npune\n10\npune\n20\nvarf\nscoate\nscoate\nscoate\n" },
+    { "visible": true, "stdin": "3\npune\n5\npune\n15\nvarf\n" },
+    { "stdin": "2\nscoate\nvarf\n" },
+    { "stdin": "5\npune\n1\npune\n2\nscoate\npune\n3\nvarf\n" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "3\ncerc\n5\ndreptunghi\n4\n6\ncerc\n3\n" },
+    { "visible": true, "stdin": "1\ndreptunghi\n10\n10\n" },
+    { "stdin": "0\n" },
+    { "stdin": "2\ncerc\n1\ncerc\n2\n" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "Alice\n4\n90\n85\n92\n88\n" },
+    { "visible": true, "stdin": "Bob\n3\n100\n100\n100\n" },
+    { "stdin": "Carol\n1\n95\n" },
+    { "stdin": "Dan\n2\n70\n75\n" }
+  ]
+}

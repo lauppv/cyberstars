@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "6\nenqueue\n10\nenqueue\n20\npeek\ndequeue\ndequeue\ndequeue\n" },
+    { "visible": true, "stdin": "4\nenqueue\n5\nenqueue\n15\ndequeue\npeek\n" },
+    { "stdin": "2\ndequeue\npeek\n" },
+    { "stdin": "5\nenqueue\n1\nenqueue\n2\nenqueue\n3\ndequeue\npeek\n" }
+  ]
+}

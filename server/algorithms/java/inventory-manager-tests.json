@@ -1,0 +1,12 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "5\nadd\napple\n10\nadd\nbanana\n5\nremove\napple\n3\ncheck\napple\ncheck\norange\n"
+    },
+    { "visible": true, "stdin": "3\nadd\nmilk\n2\nremove\nmilk\n5\ncheck\nmilk\n" },
+    { "stdin": "4\nadd\napple\n3\nremove\napple\n3\ncheck\napple\ncheck\napple\n" },
+    { "stdin": "6\nadd\nx\n5\nadd\nx\n3\ncheck\nx\nremove\nx\n8\ncheck\nx\ncheck\nx\n" }
+  ]
+}

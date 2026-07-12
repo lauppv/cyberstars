@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "2\nApple\n1.50\n3\nBread\n2.00\n2\n" },
+    { "visible": true, "stdin": "3\nMilk\n3.99\n1\nEggs\n2.50\n2\nButter\n4.00\n1\n" },
+    { "stdin": "1\nWater\n0.99\n1\n" },
+    { "stdin": "2\nX\n1.00\n5\nY\n0.50\n4\n" }
+  ]
+}

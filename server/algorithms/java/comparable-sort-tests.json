@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "3\nAlice\n3.8\nBob\n3.9\nCarol\n3.8\n" },
+    { "visible": true, "stdin": "2\nZoe\n4.0\nAmy\n4.0\n" },
+    { "stdin": "1\nMax\n3.5\n" },
+    { "stdin": "3\nEve\n3.5\nAna\n3.5\nBob\n3.5\n" },
+    { "stdin": "4\nDan\n2.0\nCleo\n3.7\nBeth\n3.7\nAmy\n1.5\n" }
+  ]
+}
