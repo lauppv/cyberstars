@@ -55,6 +55,7 @@ Pull the Docker images for code execution:
 docker pull gcc:latest
 docker pull python:3.10-slim
 docker pull eclipse-temurin:21-jdk-alpine
+docker pull danysk/kotlin:latest   # Kotlin runtime (course is badged "Coming Soon")
 ```
 
 **Linux only** — your user must be in the `docker` group:
@@ -107,7 +108,7 @@ Open an issue with:
 
 ### Adding lessons
 
-Lesson content lives in `server/lessons/{python,c,java,linux}/`. Python, C, and Java lessons need two files:
+Lesson content lives in `server/lessons/{python,c,java,kotlin,linux}/`. Python, C, Java, and Kotlin lessons need two files:
 
 1. `<slug>.md` — the lesson content (Markdown with runnable code blocks)
 2. `<slug>-code.md` — the starter code template shown in the editor
@@ -116,7 +117,11 @@ Then register the lesson in `prisma/curriculum.data.ts` (the `lessons` array) wi
 
 Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `scripts/generate-static-content.ts`, which copies the lesson Markdown into `public/lessons/` and writes `public/curriculum.json`. Those outputs are generated, not committed — never edit them by hand; edit `server/lessons/` and `prisma/curriculum.data.ts` instead.
 
-There is no automated grading: students run their code and click "Mark Complete" themselves.
+Completion is **judge-driven**, not honor-system: to make a lesson completable, add an
+optional `<slug>-tests.json` (judge test cases) and `<slug>-solution.md` (reference
+solution) beside the lesson. Passing the judge (the "Run Tests" button) is the only way
+to complete a lesson — the server verifies it, so there is no manual "Mark Complete"
+button. Lessons without test files still work; they just aren't completable yet.
 
 Important rules:
 

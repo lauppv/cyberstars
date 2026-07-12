@@ -30,7 +30,7 @@ cyberstars/
 │   ├── controllers/               # Thin req/res layer
 │   ├── routes/                    # Route wiring + middleware
 │   ├── runtimes/                  # Per-language Docker execution config
-│   ├── lessons/                   # Lesson Markdown content (python, c, java, linux)
+│   ├── lessons/                   # Lesson Markdown content (python, c, java, kotlin, linux)
 │   └── algorithms/                # Algorithm challenge content
 │
 ├── client/
@@ -111,13 +111,26 @@ not localized per-language.
 
 ### Progress (all authenticated)
 
-| Method | Endpoint                                        | Auth | Description               |
-| ------ | ----------------------------------------------- | ---- | ------------------------- |
-| GET    | `/api/progress/:courseKey`                      | Yes  | Get progress for a course |
-| POST   | `/api/progress/:courseKey/:lessonSlug/complete` | Yes  | Mark lesson complete      |
-| GET    | `/api/progress/:courseKey/:lessonSlug/code`     | Yes  | Get saved code            |
-| PUT    | `/api/progress/:courseKey/:lessonSlug/code`     | Yes  | Save code                 |
-| POST   | `/api/progress/:courseKey/:lessonSlug/access`   | Yes  | Track last access time    |
+| Method | Endpoint                                      | Auth | Description               |
+| ------ | --------------------------------------------- | ---- | ------------------------- |
+| GET    | `/api/progress/:courseKey`                    | Yes  | Get progress for a course |
+| GET    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Get saved code            |
+| PUT    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Save code                 |
+| POST   | `/api/progress/:courseKey/:lessonSlug/access` | Yes  | Track last access time    |
+
+There is **no client-writable completion endpoint** — completion is server-authoritative
+and only ever set by the judge (see below) when tests pass for a logged-in user.
+
+### Judge (lesson tests)
+
+| Method | Endpoint                                | Auth  | Description                                                                                                                                         |
+| ------ | --------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/tests/:courseKey/:lessonSlug/run` | Owner | Run the lesson's test suite; marks complete on a `passed` verdict (logged-in only). Works for guests (they can run but not save). 10 runs/min/owner |
+
+"Owner" means a logged-in user or a guest keyed by the per-browser `guestId` cookie.
+The judge runs the student's code (and the reference solution) in the owner's warm
+Docker container and compares outputs **on the server** — expected output never enters
+the container, so a tampered client can only fool its own display.
 
 ### Forum
 
@@ -137,11 +150,16 @@ not localized per-language.
 
 ### Terminal (Linux sandbox)
 
-| Method | Endpoint                    | Auth | Description                       |
-| ------ | --------------------------- | ---- | --------------------------------- |
-| POST   | `/api/terminal/session`     | Yes  | Create sandboxed terminal session |
-| POST   | `/api/terminal/exec`        | Yes  | Execute command in session        |
-| DELETE | `/api/terminal/session/:id` | Yes  | Destroy session                   |
+| Method | Endpoint                    | Auth  | Description                                                                                   |
+| ------ | --------------------------- | ----- | --------------------------------------------------------------------------------------------- |
+| POST   | `/api/terminal/session`     | Owner | Create sandboxed terminal session                                                             |
+| POST   | `/api/terminal/exec`        | Owner | Execute command in session (30/min/owner)                                                     |
+| POST   | `/api/terminal/check`       | Owner | Terminal judge: validate sandbox state; marks complete on pass (logged-in only), 10/min/owner |
+| DELETE | `/api/terminal/session/:id` | Owner | Destroy session                                                                               |
+
+Like the code judge, terminal routes use `optionalAuth` and key sessions by
+`userId ?? guestId`, so guests can run and be judged but only logged-in users get
+their completion saved.
 
 ### Support
 
@@ -190,11 +208,12 @@ Lesson content is stored as Markdown files on disk, not in the database. The `Le
 
 User code runs in Docker containers, never in the browser.
 
-| Language | Docker Image                    | Behavior                                |
-| -------- | ------------------------------- | --------------------------------------- |
-| Python   | `python:3.10-slim`              | Run with `-u` (unbuffered), 20s timeout |
-| C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout       |
-| Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout          |
+| Language | Docker Image                    | Behavior                                                           |
+| -------- | ------------------------------- | ------------------------------------------------------------------ |
+| Python   | `python:3.10-slim`              | Run with `-u` (unbuffered), 20s timeout                            |
+| C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout                                  |
+| Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout                                     |
+| Kotlin   | `danysk/kotlin:latest`          | Compile to a jar (512m), 20s timeout; UI card badged "Coming Soon" |
 
 **One persistent container per owner.** Each owner — a logged-in user, or a guest keyed by a per-browser `guestId` cookie — gets a single long-lived container for the language they're currently running, created lazily on their first run and managed by `code-container.service.ts`. It is reused across runs (the cold start is paid once), swapped when they switch language (the previous one is torn down on the first run of the new language), garbage-collected after 15 min idle, and bounded by a global LRU cap. `interactive-execution.service.ts` writes the source into the container's `/work` tmpfs and `docker exec`s the compile/run there.
 
@@ -218,7 +237,11 @@ Each lesson consists of two files in `server/lessons/:lang/`:
 - `<slug>.md` — educational content with runnable code blocks
 - `<slug>-code.md` — starter code template
 
-Lessons have no automated grading: students run their code and click "Mark Complete" themselves.
+A lesson may also ship an optional `<slug>-tests.json` (judge test cases) and
+`<slug>-solution.md` (reference solution). Completion is **judge-driven**: the
+student presses "Run Tests", the server runs their code against the cases and marks
+the lesson complete only on a passing verdict — there is no manual "Mark Complete"
+button. Courses without test files (e.g. Kotlin) are not completable yet.
 
 A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
 
@@ -251,7 +274,7 @@ A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<
 - **Shared types** — `shared/` folder prevents client/server type drift
 - **Cookie auth** — httpOnly cookies prevent XSS access to tokens
 - **Filesystem lessons** — easy to author with git, metadata in PostgreSQL for querying
-- **Derived gamification** — badges computed client-side from `UserLessonProgress` counts, no extra tables
+- **Derived gamification** — badges computed client-side from `UserLessonProgress` counts; XP/levels derived from judge-completed lessons (the server recomputes XP authoritatively, never storing or trusting a client value), no extra gamification tables
 - **CurriculumContext** — curriculum fetched once at startup, shared via context
 - **CSS variables** — all theming via custom properties, re-theming is a one-file change
 - **`npm run dev` does everything** — DB setup, migration, seeding, server start in one command
