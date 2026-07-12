@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "file_contains",
+      "path": "erori.log",
+      "text": "No such file"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "2>"
+    }
+  ]
+}

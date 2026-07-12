@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "kind": "dir_exists",
+      "path": "misiune/jurnale/ziua1"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mkdir"
+    }
+  ]
+}

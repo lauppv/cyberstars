@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "echo\\b.*Centru de comanda online"
+    }
+  ]
+}

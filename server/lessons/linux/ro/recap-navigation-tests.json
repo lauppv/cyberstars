@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "kind": "cwd_is",
+      "path": "statie/arhiva/.seif"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "cd"
+    }
+  ]
+}

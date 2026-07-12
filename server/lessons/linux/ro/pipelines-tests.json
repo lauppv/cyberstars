@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "grep alert evenimente.log | sort | head -n 2",
+      "expected": "alert: bresa sectorul 8\nalert: incendiu puntea 2"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "evenimente\\.log.*\\|.*grep.*alert.*\\|.*sort.*\\|.*head"
+    }
+  ]
+}

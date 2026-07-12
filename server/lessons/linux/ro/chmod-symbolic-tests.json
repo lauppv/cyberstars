@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "stat -c %A lansare.sh | cut -c4",
+      "expected": "x"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "chmod"
+    }
+  ]
+}

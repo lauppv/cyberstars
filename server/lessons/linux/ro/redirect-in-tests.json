@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < echipaj.txt",
+      "expected": "6"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "wc\\b.*-l.*<.*echipaj\\.txt"
+    }
+  ]
+}

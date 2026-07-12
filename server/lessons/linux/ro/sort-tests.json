@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*-r\\b.*provizii\\.txt"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "arhiva/raport.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "ciorna.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mv"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "sed\\b.*s/FAIL/PASS/g.*raport\\.txt"
+    }
+  ]
+}

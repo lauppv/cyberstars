@@ -1,0 +1,16 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "find\\b.*statie.*pericol\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*-r\\b.*SOS.*statie"
+    },
+    {
+      "kind": "command",
+      "pattern": "which\\b.*grep"
+    }
+  ]
+}

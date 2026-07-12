@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*-k\\s*2.*citiri_putere\\.txt"
+    },
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*-n.*citiri_putere\\.txt"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "kind": "path_absent",
+      "path": "compartiment-gol"
+    },
+    {
+      "kind": "path_absent",
+      "path": "date-vechi"
+    },
+    {
+      "kind": "dir_exists",
+      "path": "misiune"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "rmdir"
+    },
+    {
+      "kind": "command",
+      "pattern": "rm\\b.*-r"
+    }
+  ]
+}

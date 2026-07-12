@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "sort\\b.*acces_usa\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "uniq\\b.*-c"
+    }
+  ]
+}

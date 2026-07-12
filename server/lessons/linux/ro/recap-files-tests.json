@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "proiect/sursa/principal.sh"
+    },
+    {
+      "kind": "files_equal",
+      "a": "sablon.txt",
+      "b": "proiect/documente/citeste-ma.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "gunoi.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mkdir"
+    },
+    {
+      "kind": "command",
+      "name": "cp"
+    }
+  ]
+}

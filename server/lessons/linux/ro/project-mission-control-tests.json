@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "jurnale/reactor.log"
+    },
+    {
+      "kind": "file_exists",
+      "path": "config/securitate.conf"
+    },
+    {
+      "kind": "file_mode",
+      "path": "config/securitate.conf",
+      "mode": "600"
+    },
+    {
+      "kind": "file_contains",
+      "path": "rapoarte/probleme-critice.txt",
+      "text": "CRITICAL"
+    },
+    {
+      "kind": "file_exists",
+      "path": "rapoarte/config-sortat.txt"
+    },
+    {
+      "kind": "file_contains",
+      "path": "rapoarte/rezumat-misiune.txt",
+      "text": "Stare: complet"
+    },
+    {
+      "kind": "file_exists",
+      "path": "intrari/notite-vechi.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "intrari/reactor.log"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "chmod"
+    },
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*-r"
+    }
+  ]
+}
