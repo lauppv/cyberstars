@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "hello\n" },
+    { "visible": true, "stdin": "CyberStars\n" },
+    { "stdin": "a\n" },
+    { "stdin": "noon\n" },
+    { "stdin": "12345\n" }
+  ]
+}

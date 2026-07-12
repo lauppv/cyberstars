@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "racecar\n" },
+    { "visible": true, "stdin": "hello\n" },
+    { "stdin": "a\n" },
+    { "stdin": "abba\n" },
+    { "stdin": "ab\n" }
+  ]
+}

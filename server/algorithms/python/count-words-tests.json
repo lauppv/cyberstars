@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "hello world\n" },
+    { "visible": true, "stdin": "Python is really fun\n" },
+    { "stdin": "hello\n" },
+    { "stdin": "one two three four five\n" },
+    { "stdin": "  spaced  out  \n" }
+  ]
+}

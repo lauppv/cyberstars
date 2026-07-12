@@ -1,0 +1,9 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    { "visible": true, "stdin": "hello world\n" },
+    { "visible": true, "stdin": "I love Python\n" },
+    { "stdin": "hello\n" },
+    { "stdin": "a b c d e\n" }
+  ]
+}
