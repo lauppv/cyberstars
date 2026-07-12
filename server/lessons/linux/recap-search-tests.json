@@ -1,0 +1,16 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "find\\b.*station.*distress\\.log"
+    },
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*-r\\b.*SOS.*station"
+    },
+    {
+      "kind": "command",
+      "pattern": "which\\b.*grep"
+    }
+  ]
+}

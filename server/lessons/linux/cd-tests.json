@@ -1,0 +1,4 @@
+{
+  "checks": [{ "kind": "cwd_is", "path": "tools/scripts" }],
+  "requires": [{ "kind": "command", "name": "cd" }]
+}

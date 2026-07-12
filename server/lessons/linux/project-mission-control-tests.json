@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "logs/reactor.log"
+    },
+    {
+      "kind": "file_exists",
+      "path": "config/security.conf"
+    },
+    {
+      "kind": "file_mode",
+      "path": "config/security.conf",
+      "mode": "600"
+    },
+    {
+      "kind": "file_contains",
+      "path": "reports/critical-issues.txt",
+      "text": "CRITICAL"
+    },
+    {
+      "kind": "file_exists",
+      "path": "reports/sorted-config.txt"
+    },
+    {
+      "kind": "file_contains",
+      "path": "reports/mission-summary.txt",
+      "text": "STATUS: COMPLETE"
+    },
+    {
+      "kind": "file_exists",
+      "path": "inbox/old-notes.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "inbox/reactor.log"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "chmod"
+    },
+    {
+      "kind": "command",
+      "pattern": "grep\\b.*-r"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "awk\\b.*\\$1.*\\$3.*sensors\\.dat"
+    }
+  ]
+}

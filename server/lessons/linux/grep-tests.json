@@ -1,0 +1,10 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "grep warning system.log",
+      "expected": "warning: hull temperature rising\nwarning: fuel reserve low\nwarning: comms latency high"
+    }
+  ],
+  "requires": [{ "kind": "command", "pattern": "grep\\b.*\\bwarning\\b.*system\\.log" }]
+}

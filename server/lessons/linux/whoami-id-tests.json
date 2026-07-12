@@ -1,0 +1,16 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "name": "whoami"
+    },
+    {
+      "kind": "command",
+      "name": "id"
+    },
+    {
+      "kind": "command",
+      "pattern": "ls\\b.*-l\\b.*classified\\.doc"
+    }
+  ]
+}

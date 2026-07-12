@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat warnings_sorted.txt",
+      "expected": "WARN: antenna misaligned\nWARN: coolant pressure dropping\nWARN: fuel cell B low\n-- end of report --"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": ">>"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "report.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "cut\\b.*-f\\s*1.*raw_data\\.csv"
+    },
+    {
+      "kind": "command",
+      "pattern": "uniq\\b.*-c"
+    },
+    {
+      "kind": "command",
+      "pattern": ">\\s*report\\.txt"
+    }
+  ]
+}

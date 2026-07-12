@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "wc\\b.*-l\\b.*inventory\\.txt"
+    }
+  ]
+}

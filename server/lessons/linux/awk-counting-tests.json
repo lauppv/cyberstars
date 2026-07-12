@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "awk '{s+=$2} END{print s}' cargo_weight.txt",
+      "expected": "610"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "awk\\b.*\\$2.*cargo_weight\\.txt"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "kind": "cwd_is",
+      "path": "station/archive/.vault"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "cd"
+    }
+  ]
+}

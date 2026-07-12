@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "find\\b.*-name\\b.*secret\\.txt"
+    }
+  ]
+}

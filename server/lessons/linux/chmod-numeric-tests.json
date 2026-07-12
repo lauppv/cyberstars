@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "file_mode",
+      "path": "engine_control.sh",
+      "mode": "750"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "chmod"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "kind": "path_absent",
+      "path": "junk.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "temp.log"
+    },
+    {
+      "kind": "file_exists",
+      "path": "mission.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "rm"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "which\\b.*ls"
+    },
+    {
+      "kind": "command",
+      "pattern": "file\\b.*mystery\\.dat"
+    }
+  ]
+}

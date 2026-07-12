@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "archive/report.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "draft.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mv"
+    }
+  ]
+}

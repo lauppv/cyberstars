@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat mission.log",
+      "expected": "status: launch sequence initiated\nstatus: shields nominal\nstatus: crew ready"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": ">>"
+    }
+  ]
+}

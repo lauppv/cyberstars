@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "kind": "file_exists",
+      "path": "project/src/main.sh"
+    },
+    {
+      "kind": "files_equal",
+      "a": "template.txt",
+      "b": "project/docs/readme.txt"
+    },
+    {
+      "kind": "path_absent",
+      "path": "junk.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mkdir"
+    },
+    {
+      "kind": "command",
+      "name": "cp"
+    }
+  ]
+}

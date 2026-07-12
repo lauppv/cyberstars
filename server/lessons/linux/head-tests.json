@@ -1,0 +1,8 @@
+{
+  "requires": [
+    {
+      "kind": "command",
+      "pattern": "head\\b.*\\b5\\b.*system\\.log"
+    }
+  ]
+}
