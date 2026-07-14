@@ -1,0 +1,13 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "pipe" }]
+  },
+  "cases": [
+    { "visible": true, "stdin": "hello\n" },
+    { "visible": true, "stdin": "cyberstars\n" },
+    { "stdin": "a\n" },
+    { "stdin": "MixedCase\n" },
+    { "stdin": "abc123xyz\n" }
+  ]
+}

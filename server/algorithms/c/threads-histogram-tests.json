@@ -1,0 +1,13 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "pthread_create" }]
+  },
+  "cases": [
+    { "visible": true, "stdin": "programming\n" },
+    { "visible": true, "stdin": "aabbcc\n" },
+    { "stdin": "z\n" },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\n" },
+    { "stdin": "aaaa\n" }
+  ]
+}

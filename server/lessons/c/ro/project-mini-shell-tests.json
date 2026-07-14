@@ -1,0 +1,12 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "fork" }]
+  },
+  "cases": [
+    { "visible": true, "stdin": "ora\nspatiu\nnecunoscuta\niesire\n" },
+    { "visible": true, "stdin": "spatiu\niesire\n" },
+    { "stdin": "iesire\n" },
+    { "stdin": "ora\nora\niesire\n" }
+  ]
+}

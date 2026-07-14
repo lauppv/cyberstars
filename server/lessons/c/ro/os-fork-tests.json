@@ -1,0 +1,10 @@
+{
+  "comparator": "masked",
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "fork" },
+      { "kind": "call", "name": "getpid" }
+    ]
+  },
+  "cases": [{ "visible": true, "stdin": "" }]
+}

@@ -1,0 +1,10 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "pipe" },
+      { "kind": "call", "name": "fork" }
+    ]
+  },
+  "cases": [{ "visible": true, "stdin": "" }]
+}

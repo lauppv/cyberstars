@@ -133,7 +133,22 @@ export function compareOutputs(
   comparator: TestComparator,
 ): boolean {
   if (comparator === 'exact') return expected === actual;
+  if (comparator === 'masked') return maskInts(normalize(expected)) === maskInts(normalize(actual));
+  if (comparator === 'unordered')
+    return sortLines(normalize(expected)) === sortLines(normalize(actual));
   return normalize(expected) === normalize(actual);
+}
+
+// Collapse every run of digits to a single token so nondeterministic values
+// (PIDs printed by fork/getpid lessons) don't break an otherwise-fixed output.
+function maskInts(output: string): string {
+  return output.replace(/\d+/g, '#');
+}
+
+// Compare outputs as a multiset of lines — thread/process lessons whose line
+// order varies between runs still match when the set of lines is identical.
+function sortLines(output: string): string {
+  return output.split('\n').sort().join('\n');
 }
 
 interface RunnerProgram {

@@ -1,0 +1,7 @@
+{
+  "comparator": "unordered",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "sem_wait" }]
+  },
+  "cases": [{ "visible": true, "stdin": "" }]
+}

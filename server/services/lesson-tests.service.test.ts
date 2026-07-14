@@ -121,6 +121,24 @@ describe('compareOutputs', () => {
     expect(compareOutputs('a\n', 'a\n', 'exact')).toBe(true);
     expect(compareOutputs('a\n', 'a \n', 'exact')).toBe(false);
   });
+
+  it('masked ignores differing integer runs (PIDs) but keeps surrounding text', () => {
+    expect(compareOutputs('Child: my parent is 42\n', 'Child: my parent is 1337\n', 'masked')).toBe(
+      true,
+    );
+    expect(compareOutputs('PID: 7\n', 'PIT: 7\n', 'masked')).toBe(false);
+  });
+
+  it('unordered matches the same lines in any order but catches missing lines', () => {
+    expect(
+      compareOutputs(
+        'Child 1 ready\nChild 2 ready\n',
+        'Child 2 ready\nChild 1 ready\n',
+        'unordered',
+      ),
+    ).toBe(true);
+    expect(compareOutputs('Ping\nPong\n', 'Ping\nPing\n', 'unordered')).toBe(false);
+  });
 });
 
 describe('runLessonTests', () => {
