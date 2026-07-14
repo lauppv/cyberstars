@@ -698,7 +698,8 @@ function OfTheDayCard({
           </div>
           <span className="text-[11px] text-[var(--text3)] font-medium">{courseTitle}</span>
           {!completed && (
-            <span className="ml-auto text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
+            <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
+              <span aria-hidden>⭐</span>
               {t('home.dailyXp', { xp })}
               {bonusRatio > 0 && (
                 <span className="text-[var(--text3)]">
