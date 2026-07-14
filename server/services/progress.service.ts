@@ -1,8 +1,10 @@
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
+import * as dailyRepo from '../repositories/daily.repository.js';
+import * as dailyService from './daily.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { assertValidCourse } from './paths.js';
-import { xpForLesson } from '../../shared/constants.js';
+import { xpForLesson, dailyBonusXp } from '../../shared/constants.js';
 import type { CourseProgress } from '../../shared/progress.js';
 
 // Guards lesson-level writes/reads: reject unknown courses and slugs so the
@@ -19,12 +21,14 @@ export async function getCourseProgress(
   courseKey: string,
 ): Promise<CourseProgress> {
   assertValidCourse(courseKey);
-  const [lessons, progress] = await Promise.all([
+  const [lessons, progress, awardedSlugs] = await Promise.all([
     curriculumRepo.getLessonsByCourse(courseKey),
     progressRepo.getByCourse(userId, courseKey),
+    dailyRepo.getAwardedSlugs(userId, courseKey),
   ]);
 
   const progressMap = new Map(progress.map((p) => [p.lessonSlug, p]));
+  const bonusSlugs = new Set(awardedSlugs);
 
   let earnedXp = 0;
   let totalXp = 0;
@@ -33,7 +37,10 @@ export async function getCourseProgress(
     const completed = p?.completed ?? false;
     const xp = xpForLesson(l.sortOrder);
     totalXp += xp;
-    if (completed) earnedXp += xp;
+    // The daily-of-the-day bonus is extra on top of the base award, so it
+    // counts toward earned XP (and thus level) without inflating the course's
+    // baseline total.
+    if (completed) earnedXp += xp + (bonusSlugs.has(l.slug) ? dailyBonusXp(l.sortOrder) : 0);
     return {
       slug: l.slug,
       title: l.title,
@@ -60,6 +67,9 @@ export async function markComplete(
 ): Promise<void> {
   await assertLesson(courseKey, lessonSlug);
   await progressRepo.upsertProgress(userId, courseKey, lessonSlug, true);
+  // Grant the daily bonus if this lesson is today's pick. Idempotent no-op
+  // otherwise, so it's safe on every completion (including re-runs).
+  await dailyService.awardBonusForCompletion(userId, courseKey, lessonSlug);
 }
 
 export async function saveCode(

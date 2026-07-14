@@ -52,6 +52,7 @@
     "lessonOfTheDay": "Lecția zilei",
     "algoOfTheDay": "Algoritmul zilei",
     "recommended": "Recomandat",
+    "dailyBonus": "+{{pct}}% XP",
     "continueJourney": "Continuă-ți călătoria în {{course}} cu această lecție.",
     "algoChallengeToday": "Antrenează-ți mintea cu provocarea de azi.",
     "completed": "Completată",

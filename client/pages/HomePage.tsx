@@ -9,15 +9,12 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '../../shared/lesson';
 import { courseMeta } from '../constants/courses';
-import {
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
-  ALGO_COURSE_KEYS,
-  progressPct,
-} from '../../shared/constants';
+import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from '../../shared/constants';
 import { StoryModal } from './StoryModal';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
 import type { AlmanacArticle } from '../../shared/almanac';
+import { fetchDaily } from '../services/dailyService';
+import type { DailyResponse } from '../../shared/daily';
 
 function localDateStr(d: Date): string {
   const y = d.getFullYear();
@@ -76,66 +73,12 @@ function seededPick<T>(items: T[], count: number, seed: number): T[] {
   return indices.slice(0, count).map((i) => items[i]);
 }
 
-interface PickOfTheDay {
-  course: Course;
+interface ResolvedPick {
+  courseKey: string;
+  courseTitle: string;
   slug: string;
   title: string;
   completed: boolean;
-}
-
-// Deterministically pick one lesson/challenge for the day out of the given
-// courses and lock it in (persisted per user in localStorage keyed by date), so
-// it stays put across completion and reloads. Returns the pick plus its live
-// completed state.
-function pickOfTheDay(
-  courses: Course[],
-  progressMap: Record<string, import('../../shared/progress').CourseProgress>,
-  storeKey: string,
-): PickOfTheDay | null {
-  if (!courses.length) return null;
-  const todayKey = localDateStr(new Date());
-
-  const resolve = (courseKey: string, slug: string): PickOfTheDay | null => {
-    const course = courses.find((c) => c.key === courseKey);
-    const lesson = course?.lessons.find((l) => l.slug === slug);
-    if (!course || !lesson) return null;
-    const completed =
-      progressMap[course.key]?.lessons.find((l) => l.slug === slug)?.completed ?? false;
-    return { course, slug, title: lesson.title, completed };
-  };
-
-  try {
-    const raw = localStorage.getItem(storeKey);
-    if (raw) {
-      const saved = JSON.parse(raw) as { date?: string; courseKey?: string; slug?: string };
-      if (saved.date === todayKey && saved.courseKey && saved.slug) {
-        const picked = resolve(saved.courseKey, saved.slug);
-        if (picked) return picked;
-      }
-    }
-  } catch {
-    // ignore malformed storage and pick fresh below
-  }
-
-  const incomplete: { courseKey: string; slug: string }[] = [];
-  for (const c of courses) {
-    const p = progressMap[c.key];
-    const doneSet = new Set(p?.lessons.filter((l) => l.completed).map((l) => l.slug));
-    for (const l of c.lessons) {
-      if (!doneSet.has(l.slug)) incomplete.push({ courseKey: c.key, slug: l.slug });
-    }
-  }
-  if (!incomplete.length) return null;
-  const chosen = incomplete[TODAY_SEED % incomplete.length];
-  try {
-    localStorage.setItem(
-      storeKey,
-      JSON.stringify({ date: todayKey, courseKey: chosen.courseKey, slug: chosen.slug }),
-    );
-  } catch {
-    // storage unavailable — the pick is still stable for this render session
-  }
-  return resolve(chosen.courseKey, chosen.slug);
 }
 
 export function HomePage() {
@@ -145,16 +88,12 @@ export function HomePage() {
   const { isLoggedIn, isLoading, user } = useAuth();
   const [almanacStory, setAlmanacStory] = useState<AlmanacArticle | null>(null);
   const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
+  const [daily, setDaily] = useState<DailyResponse | null>(null);
   const { courses: allCourses } = useCurriculum();
   const { progressMap, refresh: refreshProgress } = useAllProgress();
 
   const allNonAlgoCourses = useMemo(() => {
     const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
-    return allCourses.filter((c) => keys.includes(c.key));
-  }, [allCourses]);
-
-  const allAlgoCourses = useMemo(() => {
-    const keys = ALGO_COURSE_KEYS as readonly string[];
     return allCourses.filter((c) => keys.includes(c.key));
   }, [allCourses]);
 
@@ -193,29 +132,47 @@ export function HomePage() {
     return items.slice(0, 4);
   }, [isLoggedIn, progressMap]);
 
-  // The lesson/algo of the day are each locked in once per day (persisted per
-  // user in localStorage) so completing one doesn't rotate to a new pick —
-  // there is a single item per day that stays put and simply flips to a
-  // "completed" state once done.
-  const lessonOfTheDay = useMemo(
-    () =>
-      isLoggedIn && user
-        ? pickOfTheDay(allNonAlgoCourses, progressMap, `cyberstars.lotd.${user.id}`)
-        : null,
-    [isLoggedIn, user, allNonAlgoCourses, progressMap],
-  );
+  // The lesson/algo of the day are owned by the server (persisted per user per
+  // day in the daily_picks table), so each is a single locked-in item that
+  // stays put across completion and simply flips to a "completed" state once
+  // done. We resolve its live completed state + course title from local data.
+  const resolvePick = useMemo(() => {
+    return (pick: DailyResponse['lesson']): ResolvedPick | null => {
+      if (!pick) return null;
+      const course = allCourses.find((c) => c.key === pick.courseKey);
+      const completed =
+        progressMap[pick.courseKey]?.lessons.find((l) => l.slug === pick.slug)?.completed ?? false;
+      return {
+        courseKey: pick.courseKey,
+        courseTitle: course?.title ?? pick.courseKey,
+        slug: pick.slug,
+        title: pick.title,
+        completed,
+      };
+    };
+  }, [allCourses, progressMap]);
 
-  const algoOfTheDay = useMemo(
-    () =>
-      isLoggedIn && user
-        ? pickOfTheDay(allAlgoCourses, progressMap, `cyberstars.aotd.${user.id}`)
-        : null,
-    [isLoggedIn, user, allAlgoCourses, progressMap],
-  );
+  const lessonOfTheDay = useMemo(() => resolvePick(daily?.lesson ?? null), [resolvePick, daily]);
+  const algoOfTheDay = useMemo(() => resolvePick(daily?.algo ?? null), [resolvePick, daily]);
 
   useEffect(() => {
     if (isLoggedIn) refreshProgress();
   }, [isLoggedIn, refreshProgress]);
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+    let cancelled = false;
+    fetchDaily()
+      .then((d) => {
+        if (!cancelled) setDaily(d);
+      })
+      .catch(() => {
+        if (!cancelled) setDaily(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -324,11 +281,13 @@ export function HomePage() {
                   {lessonOfTheDay && (
                     <OfTheDayCard
                       heading={t('home.lessonOfTheDay')}
-                      course={lessonOfTheDay.course}
+                      courseKey={lessonOfTheDay.courseKey}
+                      courseTitle={lessonOfTheDay.courseTitle}
                       slug={lessonOfTheDay.slug}
                       title={lessonOfTheDay.title}
                       completed={lessonOfTheDay.completed}
-                      subtitle={t('home.continueJourney', { course: lessonOfTheDay.course.title })}
+                      bonusRatio={daily?.bonusRatio ?? 0}
+                      subtitle={t('home.continueJourney', { course: lessonOfTheDay.courseTitle })}
                       completedText={t('home.completedLessonToday')}
                       cta={t('home.startLesson')}
                     />
@@ -336,10 +295,12 @@ export function HomePage() {
                   {algoOfTheDay && (
                     <OfTheDayCard
                       heading={t('home.algoOfTheDay')}
-                      course={algoOfTheDay.course}
+                      courseKey={algoOfTheDay.courseKey}
+                      courseTitle={algoOfTheDay.courseTitle}
                       slug={algoOfTheDay.slug}
                       title={algoOfTheDay.title}
                       completed={algoOfTheDay.completed}
+                      bonusRatio={daily?.bonusRatio ?? 0}
                       subtitle={t('home.algoChallengeToday')}
                       completedText={t('home.completedAlgoToday')}
                       cta={t('home.solveChallenge')}
@@ -666,26 +627,30 @@ function ActivityHeatmap({
 
 function OfTheDayCard({
   heading,
-  course,
+  courseKey,
+  courseTitle,
   slug,
   title,
   completed,
+  bonusRatio,
   subtitle,
   completedText,
   cta,
 }: {
   heading: string;
-  course: Course;
+  courseKey: string;
+  courseTitle: string;
   slug: string;
   title: string;
   completed: boolean;
+  bonusRatio: number;
   subtitle: string;
   completedText: string;
   cta: string;
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const meta = courseMeta(course.key);
+  const meta = courseMeta(courseKey);
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col flex-1">
       <div className="flex items-center justify-between mb-4">
@@ -715,7 +680,12 @@ function OfTheDayCard({
           >
             {meta.icon}
           </div>
-          <span className="text-[11px] text-[var(--text3)] font-medium">{course.title}</span>
+          <span className="text-[11px] text-[var(--text3)] font-medium">{courseTitle}</span>
+          {bonusRatio > 0 && !completed && (
+            <span className="ml-auto text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
+              {t('home.dailyBonus', { pct: Math.round(bonusRatio * 100) })}
+            </span>
+          )}
         </div>
         <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
         <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
@@ -723,7 +693,7 @@ function OfTheDayCard({
         </p>
       </div>
       <button
-        onClick={() => navigate(`/lesson/${course.key}/${slug}`)}
+        onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
         className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] text-white rounded-[var(--radius-sm)] text-xs font-semibold hover:brightness-110 transition cursor-pointer self-start"
       >
         {completed ? t('home.review') : cta}

@@ -58,8 +58,31 @@ model User {
   reactions ForumReaction[]
   tickets         SupportTicket[]
   supportMessages SupportMessage[]
+  dailyPicks      DailyPick[]
 
   @@map("users")
+}
+
+// One lesson and one algorithm challenge picked per user per day (kind =
+// "lesson" | "algo"). The pick is frozen for the day so completing it doesn't
+// rotate the choice, and completing it on its day grants a bonus (bonusAwarded)
+// that the derived XP calc credits — see daily.service and progress.service.
+model DailyPick {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @map("user_id")
+  date         String   @db.VarChar(10)
+  kind         String   @db.VarChar(10)
+  courseKey    String   @map("course_key") @db.VarChar(50)
+  lessonSlug   String   @map("lesson_slug") @db.VarChar(100)
+  title        String   @db.VarChar(255)
+  bonusAwarded Boolean  @default(false) @map("bonus_awarded")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date, kind])
+  @@index([userId, courseKey])
+  @@map("daily_picks")
 }
 
 model SupportTicket {
