@@ -44,12 +44,10 @@ function extractActivityCounts(
   return counts;
 }
 
-const HEATMAP_COLORS = [
-  'rgba(120,120,140,0.35)',
-  'rgba(108,92,231,0.45)',
-  'rgba(108,92,231,0.7)',
-  'rgba(108,92,231,0.95)',
-];
+// GitHub-style green scale — reads far better over the dark cosmos than the
+// old purple, which blended into the accent-tinted panels. Index 0 is the
+// empty/no-activity cell; 1–3 are increasing activity.
+const HEATMAP_COLORS = ['rgba(120,120,140,0.25)', '#0e6b3a', '#1f9d54', '#39d353'];
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
 
