@@ -135,7 +135,7 @@ export function TestResults({ results, onClose }: TestResultsProps) {
 
       {results.structureFailures.length > 0 && (
         <div className="mb-3">
-          <div className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-1.5">
+          <div className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-1.5">
             {t('tests.structureTitle')}
           </div>
           <ul className="flex flex-col gap-1 m-0 pl-0 list-none">

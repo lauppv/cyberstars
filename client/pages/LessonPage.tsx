@@ -364,7 +364,7 @@ export function LessonPage() {
                 return (
                   <>
                     <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
                         {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
                           n: currentIndex + 1,
                           total: lessonList.length,
@@ -372,7 +372,7 @@ export function LessonPage() {
                       </span>
                       {difficulty && (
                         <span
-                          className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-[1px]"
+                          className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
                           style={{
                             background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
                             color: DIFFICULTY_COLOR[difficulty],

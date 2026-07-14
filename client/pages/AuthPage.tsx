@@ -373,7 +373,7 @@ export function AuthPage() {
             <form onSubmit={handleSubmit}>
               {mode === 'signup' && (
                 <div className="mb-5">
-                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 tracking-[0.5px]">
                     {t('auth.displayName')}
                   </label>
                   <input
@@ -389,7 +389,7 @@ export function AuthPage() {
 
               {mode !== 'reset' && (
                 <div className="mb-5">
-                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 tracking-[0.5px]">
                     {t('auth.email')}
                   </label>
                   <input
@@ -407,7 +407,7 @@ export function AuthPage() {
 
               {mode === 'reset' && (
                 <div className="mb-5">
-                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 tracking-[0.5px]">
                     {t('auth.resetCode')}
                   </label>
                   <input
@@ -426,7 +426,7 @@ export function AuthPage() {
 
               {mode !== 'forgot' && (
                 <div className="mb-5">
-                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 uppercase tracking-[0.5px]">
+                  <label className="block text-xs font-semibold text-[var(--text2)] mb-1.5 tracking-[0.5px]">
                     {mode === 'reset' ? t('auth.newPassword') : t('auth.password')}
                   </label>
                   <div className="relative">

@@ -183,7 +183,7 @@ export function SupportPage() {
 
           {/* My tickets */}
           <div className="mb-8">
-            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
+            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
               {t('support.yourTickets')}
             </h2>
             {myTickets.length === 0 ? (
@@ -200,7 +200,7 @@ export function SupportPage() {
           {/* Admin view */}
           {isAdmin && (
             <div>
-              <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--accent)] mb-3">
+              <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--accent)] mb-3">
                 {t('support.allTickets')}
               </h2>
               {allTickets.length === 0 ? (

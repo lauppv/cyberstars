@@ -221,7 +221,6 @@
   font-size: 10px;
   color: var(--text3);
   white-space: nowrap;
-  text-transform: uppercase;
   letter-spacing: 2px;
   background: rgba(11, 11, 17, 0.85);
   padding: 5px 10px;
@@ -281,7 +280,6 @@
   font-family: var(--mono);
   font-size: 11px;
   color: var(--accent);
-  text-transform: uppercase;
   letter-spacing: 2px;
   padding: 6px 12px;
   background: rgba(108, 92, 231, 0.1);
@@ -450,7 +448,6 @@
   font-family: var(--mono);
   font-size: 11px;
   color: var(--text3);
-  text-transform: uppercase;
   letter-spacing: 2px;
   opacity: 0;
   animation: wc-fadeIn 0.9s ease 1.2s forwards;
@@ -614,7 +611,6 @@
   font-family: var(--mono);
   font-size: 10px;
   color: var(--text3);
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 14px;
 }
@@ -708,7 +704,6 @@
   font-family: var(--mono);
   font-size: 11px;
   color: var(--text3);
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -791,7 +786,6 @@
   border-radius: 4px;
   background: var(--bg3);
   color: var(--text3);
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 .wc-kind.fn {
@@ -881,7 +875,6 @@
   border-radius: 4px;
   background: rgba(108, 92, 231, 0.15);
   color: var(--accent);
-  text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 500;
 }
@@ -1311,7 +1304,6 @@
 .wc-controls-title {
   font-size: 10px;
   color: var(--text3);
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
 }
@@ -1447,6 +1439,5 @@
   font-size: 11px;
   color: var(--text3);
   margin-top: 24px;
-  text-transform: uppercase;
   letter-spacing: 2px;
 }

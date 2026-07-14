@@ -112,7 +112,7 @@ export function CoursesPage() {
                       {c.name}
                       {courseMeta(c.key).badge && (
                         <span
-                          className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                          className="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded"
                           style={{
                             background: courseMeta(c.key).color + '30',
                             color: courseMeta(c.key).color,
@@ -223,7 +223,7 @@ export function CoursesPage() {
             </div>
 
             <div className="px-6 py-4">
-              <div className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3">
+              <div className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
                 {t('courses.chapters')}
               </div>
               {(() => {
