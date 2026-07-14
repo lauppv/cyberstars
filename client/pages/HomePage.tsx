@@ -9,7 +9,13 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '../../shared/lesson';
 import { courseMeta } from '../constants/courses';
-import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS, progressPct } from '../../shared/constants';
+import {
+  MAIN_COURSE_KEYS,
+  TERMINAL_COURSE_KEYS,
+  progressPct,
+  xpForLesson,
+  dailyBonusXp,
+} from '../../shared/constants';
 import { StoryModal } from './StoryModal';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
 import type { AlmanacArticle } from '../../shared/almanac';
@@ -79,6 +85,7 @@ interface ResolvedPick {
   slug: string;
   title: string;
   completed: boolean;
+  xp: number;
 }
 
 export function HomePage() {
@@ -140,14 +147,19 @@ export function HomePage() {
     return (pick: DailyResponse['lesson']): ResolvedPick | null => {
       if (!pick) return null;
       const course = allCourses.find((c) => c.key === pick.courseKey);
+      const lesson = course?.lessons.find((l) => l.slug === pick.slug);
       const completed =
         progressMap[pick.courseKey]?.lessons.find((l) => l.slug === pick.slug)?.completed ?? false;
+      const sortOrder = lesson?.sortOrder ?? 1;
+      // XP the user actually earns for the daily pick = base + daily bonus.
+      const xp = xpForLesson(sortOrder) + dailyBonusXp(sortOrder);
       return {
         courseKey: pick.courseKey,
         courseTitle: course?.title ?? pick.courseKey,
         slug: pick.slug,
         title: pick.title,
         completed,
+        xp,
       };
     };
   }, [allCourses, progressMap]);
@@ -286,6 +298,7 @@ export function HomePage() {
                       slug={lessonOfTheDay.slug}
                       title={lessonOfTheDay.title}
                       completed={lessonOfTheDay.completed}
+                      xp={lessonOfTheDay.xp}
                       bonusRatio={daily?.bonusRatio ?? 0}
                       subtitle={t('home.continueJourney', { course: lessonOfTheDay.courseTitle })}
                       completedText={t('home.completedLessonToday')}
@@ -300,6 +313,7 @@ export function HomePage() {
                       slug={algoOfTheDay.slug}
                       title={algoOfTheDay.title}
                       completed={algoOfTheDay.completed}
+                      xp={algoOfTheDay.xp}
                       bonusRatio={daily?.bonusRatio ?? 0}
                       subtitle={t('home.algoChallengeToday')}
                       completedText={t('home.completedAlgoToday')}
@@ -632,6 +646,7 @@ function OfTheDayCard({
   slug,
   title,
   completed,
+  xp,
   bonusRatio,
   subtitle,
   completedText,
@@ -643,6 +658,7 @@ function OfTheDayCard({
   slug: string;
   title: string;
   completed: boolean;
+  xp: number;
   bonusRatio: number;
   subtitle: string;
   completedText: string;
@@ -681,9 +697,15 @@ function OfTheDayCard({
             {meta.icon}
           </div>
           <span className="text-[11px] text-[var(--text3)] font-medium">{courseTitle}</span>
-          {bonusRatio > 0 && !completed && (
+          {!completed && (
             <span className="ml-auto text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
-              {t('home.dailyBonus', { pct: Math.round(bonusRatio * 100) })}
+              {t('home.dailyXp', { xp })}
+              {bonusRatio > 0 && (
+                <span className="text-[var(--text3)]">
+                  {' '}
+                  ({t('home.dailyBonus', { pct: Math.round(bonusRatio * 100) })})
+                </span>
+              )}
             </span>
           )}
         </div>
