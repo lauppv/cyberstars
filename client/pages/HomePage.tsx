@@ -121,21 +121,57 @@ export function HomePage() {
     return items.slice(0, 4);
   }, [isLoggedIn, progressMap]);
 
+  // The lesson of the day is locked in once per day (persisted per user in
+  // localStorage) so completing it doesn't rotate to a new lesson — there is a
+  // single lesson per day that stays put and simply flips to a "completed"
+  // state once done.
   const lessonOfTheDay = useMemo(() => {
-    if (!isLoggedIn || !allNonAlgoCourses.length) return null;
-    const incomplete: { course: Course; slug: string; title: string }[] = [];
+    if (!isLoggedIn || !user || !allNonAlgoCourses.length) return null;
+    const todayKey = localDateStr(new Date());
+    const storeKey = `cyberstars.lotd.${user.id}`;
+
+    const resolve = (courseKey: string, slug: string) => {
+      const course = allNonAlgoCourses.find((c) => c.key === courseKey);
+      const lesson = course?.lessons.find((l) => l.slug === slug);
+      if (!course || !lesson) return null;
+      const completed =
+        progressMap[course.key]?.lessons.find((l) => l.slug === slug)?.completed ?? false;
+      return { course, slug, title: lesson.title, completed };
+    };
+
+    try {
+      const raw = localStorage.getItem(storeKey);
+      if (raw) {
+        const saved = JSON.parse(raw) as { date?: string; courseKey?: string; slug?: string };
+        if (saved.date === todayKey && saved.courseKey && saved.slug) {
+          const picked = resolve(saved.courseKey, saved.slug);
+          if (picked) return picked;
+        }
+      }
+    } catch {
+      // ignore malformed storage and pick a fresh lesson below
+    }
+
+    const incomplete: { courseKey: string; slug: string }[] = [];
     for (const c of allNonAlgoCourses) {
       const p = progressMap[c.key];
       const doneSet = new Set(p?.lessons.filter((l) => l.completed).map((l) => l.slug));
       for (const l of c.lessons) {
-        if (!doneSet.has(l.slug)) {
-          incomplete.push({ course: c, slug: l.slug, title: l.title });
-        }
+        if (!doneSet.has(l.slug)) incomplete.push({ courseKey: c.key, slug: l.slug });
       }
     }
     if (!incomplete.length) return null;
-    return incomplete[TODAY_SEED % incomplete.length];
-  }, [isLoggedIn, allNonAlgoCourses, progressMap]);
+    const chosen = incomplete[TODAY_SEED % incomplete.length];
+    try {
+      localStorage.setItem(
+        storeKey,
+        JSON.stringify({ date: todayKey, courseKey: chosen.courseKey, slug: chosen.slug }),
+      );
+    } catch {
+      // storage unavailable — the pick is still stable for this render session
+    }
+    return resolve(chosen.courseKey, chosen.slug);
+  }, [isLoggedIn, user, allNonAlgoCourses, progressMap]);
 
   useEffect(() => {
     if (isLoggedIn) refreshProgress();
@@ -248,6 +284,7 @@ export function HomePage() {
                   course={lessonOfTheDay.course}
                   slug={lessonOfTheDay.slug}
                   title={lessonOfTheDay.title}
+                  completed={lessonOfTheDay.completed}
                 />
               )}
               <CourseMilestones courses={allNonAlgoCourses} progressMap={progressMap} />
@@ -567,7 +604,17 @@ function ActivityHeatmap({
 
 /* ── Lesson of the Day ── */
 
-function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string; title: string }) {
+function LessonOfTheDay({
+  course,
+  slug,
+  title,
+  completed,
+}: {
+  course: Course;
+  slug: string;
+  title: string;
+  completed: boolean;
+}) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const meta = courseMeta(course.key);
@@ -577,9 +624,22 @@ function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string;
         <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
           {t('home.lessonOfTheDay')}
         </h3>
-        <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
-          {t('home.recommended')}
-        </span>
+        {completed ? (
+          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[rgba(0,214,143,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
+            <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+              <path
+                fillRule="evenodd"
+                d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.8 6.8-6.8a1 1 0 0 1 1.4 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            {t('home.completed')}
+          </span>
+        ) : (
+          <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
+            {t('home.recommended')}
+          </span>
+        )}
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-2.5">
@@ -593,14 +653,16 @@ function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string;
         </div>
         <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
         <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
-          {t('home.continueJourney', { course: course.title })}
+          {completed
+            ? t('home.completedLessonToday')
+            : t('home.continueJourney', { course: course.title })}
         </p>
       </div>
       <button
         onClick={() => navigate(`/lesson/${course.key}/${slug}`)}
         className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] text-white rounded-[var(--radius-sm)] text-xs font-semibold hover:brightness-110 transition cursor-pointer self-start"
       >
-        {t('home.startLesson')}
+        {completed ? t('home.review') : t('home.startLesson')}
       </button>
     </div>
   );

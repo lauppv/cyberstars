@@ -225,11 +225,17 @@ export function LessonPage() {
       setTestResults(results);
       // The server marks the lesson complete on a passing verdict (see
       // tests.controller). Reflect it optimistically, then refresh from the DB.
-      if (results.status === 'passed' && isLoggedIn && !lessonCompleted) {
-        justMarkedRef.current = true;
-        setOptimisticCompleted(true);
-        loadProgress();
-        refreshGamification();
+      if (results.status === 'passed' && isLoggedIn) {
+        // Persist the passing code so reopening the lesson (e.g. "Review")
+        // shows the solved state instead of an empty editor. Stays until the
+        // student resets or saves again manually.
+        saveCode(lesson, userCode).catch(() => {});
+        if (!lessonCompleted) {
+          justMarkedRef.current = true;
+          setOptimisticCompleted(true);
+          loadProgress();
+          refreshGamification();
+        }
       }
     } catch (err) {
       setTestsError(err instanceof Error ? err.message : 'Something went wrong');
@@ -247,6 +253,7 @@ export function LessonPage() {
     lessonCompleted,
     loadProgress,
     refreshGamification,
+    saveCode,
   ]);
 
   // Terminal (Linux) judge: validates sandbox state against the live session
