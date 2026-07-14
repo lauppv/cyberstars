@@ -2106,7 +2106,7 @@ const laniakeaStyles = `
 /* ── HUD cells (label+value) ── */
 .hud-cells{display:flex;gap:16px;align-items:flex-start}
 .hud-cell{display:flex;flex-direction:column;gap:2px}
-.hud-label{font-size:8px;letter-spacing:2.5px;color:rgba(220,120,255,.75);text-transform:uppercase;font-weight:600}
+.hud-label{font-size:8px;letter-spacing:2.5px;color:rgba(220,120,255,.75);font-weight:600}
 .hud-label.hud-amber-text{color:rgba(255,170,68,.65)}
 .hud-label.hud-teal-text{color:rgba(0,214,143,.65)}
 .hud-value{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
@@ -2152,7 +2152,7 @@ const laniakeaStyles = `
 .hud-approach-icon{font-size:16px;color:rgba(108,92,231,.85);text-shadow:0 0 10px rgba(108,92,231,.85);animation:approachPulse 2.5s ease-in-out infinite}
 @keyframes approachPulse{0%,100%{opacity:.6;text-shadow:0 0 8px rgba(108,92,231,.4)}50%{opacity:1;text-shadow:0 0 16px rgba(108,92,231,.8)}}
 .hud-approach-info{display:flex;flex-direction:column;gap:1px}
-.hud-approach-label{font-size:7px;letter-spacing:3px;color:rgba(108,92,231,.65);text-transform:uppercase;font-weight:600}
+.hud-approach-label{font-size:7px;letter-spacing:3px;color:rgba(108,92,231,.65);font-weight:600}
 .hud-approach-name{font-family:var(--font);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.3px}
 .hud-approach-dist{font-size:13px;font-weight:700;color:rgba(0,214,143,.9);text-shadow:0 0 8px rgba(0,214,143,.3);font-variant-numeric:tabular-nums;margin-left:6px;padding-left:12px;border-left:1px solid rgba(108,92,231,.25)}
 
@@ -2163,7 +2163,7 @@ const laniakeaStyles = `
 /* ── Intro ── */
 .intro{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at center,rgba(10,8,24,.92) 0%,#000 80%);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;cursor:pointer;transition:opacity .8s ease,visibility .8s ease}
 .intro.gone{opacity:0;visibility:hidden;pointer-events:none}
-.intro-kicker{font-family:var(--mono);font-size:11px;letter-spacing:4px;color:rgba(108,92,231,.9);text-transform:uppercase;margin-bottom:14px}
+.intro-kicker{font-family:var(--mono);font-size:11px;letter-spacing:4px;color:rgba(108,92,231,.9);margin-bottom:14px}
 .intro-title{font-family:var(--font);font-size:42px;font-weight:700;letter-spacing:-1px;margin-bottom:14px;max-width:640px;line-height:1.15;color:#e8e8f0}
 .intro-sub{font-size:14px;color:rgba(180,180,210,.7);max-width:520px;line-height:1.6;margin-bottom:24px}
 .intro-controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px;font-family:var(--mono);font-size:11px;color:rgba(200,200,220,.8);text-align:left;margin:0 auto 28px;padding:18px 26px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;max-width:520px}
@@ -2171,7 +2171,7 @@ const laniakeaStyles = `
 .intro-controls kbd{font-family:var(--mono);font-size:10px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:3px 7px;border-radius:4px;color:#fff;min-width:22px;text-align:center;letter-spacing:0;display:inline-block}
 .intro-btn{padding:14px 32px;background:rgba(108,92,231,.15);border:1px solid rgba(108,92,231,.5);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;border-radius:30px;cursor:pointer;transition:all .2s;backdrop-filter:blur(8px)}
 .intro-btn:hover{background:var(--accent);box-shadow:0 0 30px rgba(108,92,231,.5)}
-.intro-hint{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(150,150,170,.5);text-transform:uppercase}
+.intro-hint{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(150,150,170,.5)}
 
 /* ── Pause ── */
 .pause{position:fixed;inset:0;z-index:40;background:rgba(5,5,15,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;pointer-events:auto;cursor:pointer;color:#e8e8f0}

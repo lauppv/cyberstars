@@ -181,7 +181,7 @@ export function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               {continueTo && (
                 <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
-                  <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+                  <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
                     {t('home.continueWhereLeftOff')}
                   </h3>
                   <button
@@ -195,7 +195,7 @@ export function HomePage() {
                       {courseMeta(continueTo.course.key).icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="inline-block px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.5px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-1">
+                      <span className="inline-block px-2 py-0.5 text-[10px] font-semibold tracking-[0.5px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-1">
                         {continueTo.course.title}
                       </span>
                       <div className="font-semibold text-[14px] truncate">{continueTo.title}</div>
@@ -205,7 +205,7 @@ export function HomePage() {
                   {recentLessons.length > 1 && (
                     <>
                       <div className="border-t border-[var(--accent)]/20 my-3" />
-                      <h4 className="text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--text3)] mb-2">
+                      <h4 className="text-[10px] font-semibold tracking-[0.5px] text-[var(--text3)] mb-2">
                         {t('home.recentlyAccessed')}
                       </h4>
                       <div className="flex flex-col gap-1.5">
@@ -282,7 +282,7 @@ export function HomePage() {
                         onClick={() => setAlmanacStory(a)}
                         className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
                       >
-                        <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.8px] mb-2">
+                        <div className="flex items-center gap-1.5 text-[9px] font-semibold tracking-[0.8px] mb-2">
                           <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                           <span style={{ color }}>{a.tag}</span>
                         </div>
@@ -397,7 +397,7 @@ export function HomePage() {
 function SectionHeader({ children, noMargin }: { children: React.ReactNode; noMargin?: boolean }) {
   return (
     <h2
-      className={`text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] ${noMargin ? '' : 'mb-3'}`}
+      className={`text-[11px] font-semibold tracking-[1px] text-[var(--text3)] ${noMargin ? '' : 'mb-3'}`}
     >
       {children}
     </h2>
@@ -489,7 +489,7 @@ function ActivityHeatmap({
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
       <div className="flex items-center justify-between mb-3.5">
-        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
+        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
           {t('home.activity')}
         </h3>
         <span className="text-xs text-[var(--text2)]">
@@ -574,10 +574,10 @@ function LessonOfTheDay({ course, slug, title }: { course: Course; slug: string;
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
+        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
           {t('home.lessonOfTheDay')}
         </h3>
-        <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full uppercase tracking-[0.5px]">
+        <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
           {t('home.recommended')}
         </span>
       </div>
@@ -623,7 +623,7 @@ function CourseMilestones({
   return (
     <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
       <div className="mb-4">
-        <h3 className="text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)]">
+        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
           {t('home.courseMilestones')}
         </h3>
       </div>

@@ -302,7 +302,7 @@ export function ProfilePage() {
           {/* Bio & Status */}
           <div className="py-4 border-b border-[var(--accent)]/20 flex flex-col gap-3">
             <div>
-              <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+              <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                 {t('profile.bio')}
               </label>
               <textarea
@@ -319,7 +319,7 @@ export function ProfilePage() {
               </div>
             </div>
             <div>
-              <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+              <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                 {t('profile.status')}{' '}
                 <span className="normal-case">{t('profile.statusExpires')}</span>
               </label>
@@ -376,19 +376,19 @@ export function ProfilePage() {
           <div className="grid grid-cols-4 border-b border-[var(--accent)]/20">
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{g.totalCompleted}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+              <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.lessonsDone')}
               </div>
             </div>
             <div className="py-4 text-center border-l border-[var(--accent)]/20">
               <div className="text-[24px] font-bold">{activeCourses}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+              <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.activeCourses')}
               </div>
             </div>
             <div className="py-4 text-center border-l border-[var(--accent)]/20">
               <div className="text-[24px] font-bold">{earnedBadges}</div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+              <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.badges')}
               </div>
             </div>
@@ -397,7 +397,7 @@ export function ProfilePage() {
                 {streak === null ? '—' : streak}
                 {streak !== null && streak > 0 && <span className="text-[16px] ml-1">🔥</span>}
               </div>
-              <div className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mt-0.5">
+              <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.streak')}
               </div>
             </div>
@@ -405,7 +405,7 @@ export function ProfilePage() {
 
           {/* Badges */}
           <div className="py-5 border-b border-[var(--accent)]/20">
-            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
               {t('profile.badges')}
             </h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
@@ -423,7 +423,7 @@ export function ProfilePage() {
 
           {/* Email change */}
           <div className="py-5 border-b border-[var(--accent)]/20">
-            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
               {t('profile.emailSection')}
             </h2>
             {user.pendingEmail ? (
@@ -432,7 +432,7 @@ export function ProfilePage() {
                   {t('profile.emailPendingHint', { email: user.pendingEmail })}
                 </p>
                 <div>
-                  <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                  <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                     {t('profile.emailCode')}
                   </label>
                   <input
@@ -474,7 +474,7 @@ export function ProfilePage() {
             ) : (
               <form onSubmit={submitEmailRequest} className="flex flex-col gap-3">
                 <div>
-                  <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                  <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                     {t('profile.newEmail')}
                   </label>
                   <input
@@ -487,7 +487,7 @@ export function ProfilePage() {
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                  <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                     {t('profile.currentPassword')}
                   </label>
                   <div className="relative">
@@ -533,12 +533,12 @@ export function ProfilePage() {
 
           {/* Security / change password */}
           <div className="py-5">
-            <h2 className="text-[13px] font-semibold uppercase tracking-[1px] text-[var(--text3)] mb-3.5">
+            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
               {t('profile.security')}
             </h2>
             <form onSubmit={submitPasswordChange} className="flex flex-col gap-3">
               <div>
-                <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                   {t('profile.currentPassword')}
                 </label>
                 <div className="relative">
@@ -563,7 +563,7 @@ export function ProfilePage() {
                 </div>
               </div>
               <div>
-                <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                   {t('profile.newPassword')}
                 </label>
                 <div className="relative">
@@ -587,7 +587,7 @@ export function ProfilePage() {
                 </div>
               </div>
               <div>
-                <label className="text-[11px] text-[var(--text3)] uppercase tracking-[0.5px] mb-1 block">
+                <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                   {t('profile.confirmNewPassword')}
                 </label>
                 <div className="relative">

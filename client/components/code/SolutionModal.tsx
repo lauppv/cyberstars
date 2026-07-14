@@ -73,7 +73,7 @@ export function SolutionModal({
         {compare && canCompare ? (
           <div className="grid grid-cols-2 gap-0 border-t border-[var(--accent)]/10">
             <div className="border-r border-[var(--accent)]/20">
-              <div className="px-4 py-2 text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] border-b border-[var(--accent)]/20 bg-[rgba(30,30,40,0.3)]">
+              <div className="px-4 py-2 text-[11px] font-semibold tracking-[1px] text-[var(--text3)] border-b border-[var(--accent)]/20 bg-[rgba(30,30,40,0.3)]">
                 {t('lesson.yourCode')}
               </div>
               <div className="bg-[rgba(13,17,23,0.3)]">
@@ -87,7 +87,7 @@ export function SolutionModal({
               </div>
             </div>
             <div>
-              <div className="px-4 py-2 text-[11px] font-semibold uppercase tracking-[1px] text-[var(--text3)] border-b border-[var(--accent)]/20 bg-[rgba(30,30,40,0.3)]">
+              <div className="px-4 py-2 text-[11px] font-semibold tracking-[1px] text-[var(--text3)] border-b border-[var(--accent)]/20 bg-[rgba(30,30,40,0.3)]">
                 {t('lesson.solutionTitle')}
               </div>
               <div className="bg-[rgba(13,17,23,0.3)]">
