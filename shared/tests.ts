@@ -3,7 +3,9 @@
 // shipping a <slug>-tests.json next to its markdown (server-side only — the
 // static-content generator does not copy it into public/).
 
-export type TestComparator = 'exact' | 'trimmed';
+// 'masked' ignores integer runs (nondeterministic PIDs); 'unordered' compares
+// the set of lines (thread/process output whose line order is nondeterministic).
+export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered';
 
 type StructureKind = 'call' | 'variable' | 'function' | 'loop' | 'fstring' | 'int_literal';
 

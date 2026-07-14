@@ -1,0 +1,12 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "fork" }]
+  },
+  "cases": [
+    { "visible": true, "stdin": "time\nspace\nunknown\nexit\n" },
+    { "visible": true, "stdin": "space\nexit\n" },
+    { "stdin": "exit\n" },
+    { "stdin": "time\ntime\nexit\n" }
+  ]
+}

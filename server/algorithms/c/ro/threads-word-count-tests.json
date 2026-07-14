@@ -1,0 +1,12 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "call", "name": "pthread_create" }]
+  },
+  "cases": [
+    { "visible": true, "stdin": "hello world\nthe code is clean\n" },
+    { "visible": true, "stdin": "one two three four\nfive six\n" },
+    { "stdin": "single\nword\n" },
+    { "stdin": "the quick brown\nfox jumps over\n" }
+  ]
+}
