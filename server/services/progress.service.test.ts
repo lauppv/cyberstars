@@ -20,8 +20,18 @@ const mockCurriculumRepo = {
   lessonExists: vi.fn(),
 };
 
+const mockDailyRepo = {
+  getAwardedSlugs: vi.fn(),
+};
+
+const mockDailyService = {
+  awardBonusForCompletion: vi.fn(),
+};
+
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
+vi.mock('../repositories/daily.repository.js', () => mockDailyRepo);
+vi.mock('./daily.service.js', () => mockDailyService);
 
 const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
   await import('./progress.service.js');
@@ -29,6 +39,7 @@ const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
 beforeEach(() => {
   vi.clearAllMocks();
   mockCurriculumRepo.lessonExists.mockResolvedValue(true);
+  mockDailyRepo.getAwardedSlugs.mockResolvedValue([]);
 });
 
 describe('getCourseProgress', () => {
@@ -59,6 +70,34 @@ describe('getCourseProgress', () => {
     expect(result.totalXp).toBe(33);
   });
 
+  it('adds the daily bonus XP for a completed lesson that won the daily pick', async () => {
+    mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
+      { slug: 'a', title: 'Lesson A', sortOrder: 1 },
+      { slug: 'b', title: 'Lesson B', sortOrder: 2 },
+    ]);
+    mockProgressRepo.getByCourse.mockResolvedValue([
+      {
+        lessonSlug: 'a',
+        completed: true,
+        completedAt: new Date('2025-01-01'),
+        lastAccessedAt: null,
+      },
+      {
+        lessonSlug: 'b',
+        completed: true,
+        completedAt: new Date('2025-01-01'),
+        lastAccessedAt: null,
+      },
+    ]);
+    // 'a' won the daily bonus; base XP a=10, b=11. Bonus = round(10*0.2)=2.
+    mockDailyRepo.getAwardedSlugs.mockResolvedValue(['a']);
+
+    const result = await getCourseProgress(1, 'python');
+    expect(result.earnedXp).toBe(10 + 11 + 2);
+    // Bonus never inflates the course baseline total.
+    expect(result.totalXp).toBe(21);
+  });
+
   it('returns zero progress when no lessons completed', async () => {
     mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
       { slug: 'a', title: 'A', sortOrder: 1 },
@@ -73,9 +112,10 @@ describe('getCourseProgress', () => {
 });
 
 describe('markComplete', () => {
-  it('delegates to repo', async () => {
+  it('delegates to repo and attempts the daily bonus award', async () => {
     await markComplete(1, 'python', 'booleans');
     expect(mockProgressRepo.upsertProgress).toHaveBeenCalledWith(1, 'python', 'booleans', true);
+    expect(mockDailyService.awardBonusForCompletion).toHaveBeenCalledWith(1, 'python', 'booleans');
   });
 });
 
