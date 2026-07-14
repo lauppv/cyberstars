@@ -38,6 +38,11 @@ describe('detectSyntaxError', () => {
     const err = detectSyntaxError(await parseC('int main(void){ int x = 1;'));
     expect(err).toMatch(/line \d+/);
   });
+
+  it('quotes the offending snippet for a stray-token error', async () => {
+    const err = detectSyntaxError(await parseC('int main(void){ return 0; } @ bogus'));
+    expect(err).toMatch(/syntax error/);
+  });
 });
 
 describe('checkStructure', () => {
@@ -52,6 +57,13 @@ describe('checkStructure', () => {
       ],
     });
     expect(failures).toHaveLength(0);
+  });
+
+  it('recognises a variable declared without an initializer', async () => {
+    const root = await parseC('int main(void){ int total; return 0; }');
+    expect(checkStructure(root, { requires: [{ kind: 'variable', name: 'total' }] })).toHaveLength(
+      0,
+    );
   });
 
   it('flags a missing required variable', async () => {
@@ -75,6 +87,40 @@ describe('checkStructure', () => {
     const root = await parseC(PROGRAM);
     expect(checkStructure(root, { requires: [{ kind: 'fstring' }] })).toHaveLength(0);
     expect(checkStructure(root, { forbids: [{ kind: 'fstring' }] })).toHaveLength(1);
+  });
+
+  it('flags a required function whose name is absent', async () => {
+    const root = await parseC(PROGRAM);
+    const failures = checkStructure(root, { requires: [{ kind: 'function', name: 'helper' }] });
+    expect(failures).toEqual([{ type: 'require', rule: { kind: 'function', name: 'helper' } }]);
+  });
+
+  it('does not fire a forbidden int literal that is not present', async () => {
+    const root = await parseC(PROGRAM);
+    expect(
+      checkStructure(root, { forbids: [{ kind: 'int_literal', values: [999] }] }),
+    ).toHaveLength(0);
+  });
+
+  it('an int_literal rule without values never matches', async () => {
+    const root = await parseC(PROGRAM);
+    expect(checkStructure(root, { forbids: [{ kind: 'int_literal' }] })).toHaveLength(0);
+  });
+
+  it('matches hex and skips float literals for int_literal rules', async () => {
+    const hex = await parseC('int main(void){ int x = 0xFF; return 0; }');
+    expect(checkStructure(hex, { forbids: [{ kind: 'int_literal', values: [255] }] })).toHaveLength(
+      1,
+    );
+    const flt = await parseC('int main(void){ double d = 2.5; return 0; }');
+    expect(checkStructure(flt, { forbids: [{ kind: 'int_literal', values: [2] }] })).toHaveLength(
+      0,
+    );
+  });
+
+  it('ignores a call made through a non-identifier expression', async () => {
+    const root = await parseC('int main(void){ int (*fp)(void) = 0; (*fp)(); return 0; }');
+    expect(checkStructure(root, { requires: [{ kind: 'call', name: 'fp' }] })).toHaveLength(1);
   });
 });
 
@@ -115,6 +161,33 @@ describe('collectInjectionSites + applyInjection', () => {
     const src = '#include <stdbool.h>\nint main(void){ bool ok = true; return 0; }';
     const sites = collectInjectionSites(await parseC(src));
     expect(applyInjection(src, sites, { ok: false })).toContain('bool ok = 0;');
+    expect(applyInjection(src, sites, { ok: true })).toContain('bool ok = 1;');
+  });
+
+  it('renders a float declarator, adding a decimal point for whole values', async () => {
+    const src = 'int main(void){ float rate = 1.5f; return 0; }';
+    const sites = collectInjectionSites(await parseC(src));
+    expect(applyInjection(src, sites, { rate: 2.5 })).toContain('float rate = 2.5f;');
+    expect(applyInjection(src, sites, { rate: 3 })).toContain('float rate = 3.0f;');
+  });
+
+  it('renders a boolean injected into an int declarator as 1/0', async () => {
+    const src = 'int main(void){ int flag = 0; return 0; }';
+    const sites = collectInjectionSites(await parseC(src));
+    expect(applyInjection(src, sites, { flag: true })).toContain('int flag = 1;');
+    expect(applyInjection(src, sites, { flag: false })).toContain('int flag = 0;');
+  });
+
+  it('skips declarations without an initializer', async () => {
+    const src = 'int main(void){ int x; int y = 5; return 0; }';
+    const sites = collectInjectionSites(await parseC(src));
+    expect(sites.map((s) => s.name)).toEqual(['y']);
+  });
+
+  it('throws when asked to inject a $list/$dict value', async () => {
+    const src = 'int main(void){ int x = 1; return 0; }';
+    const sites = collectInjectionSites(await parseC(src));
+    expect(() => applyInjection(src, sites, { x: { $list: [1, 2] } })).toThrow(/does not support/);
   });
 });
 
@@ -142,6 +215,16 @@ describe('prepareC', () => {
     const result = await prepareC('int main(void){ int x = ; }', PROGRAM, spec);
     expect(result.syntaxError).toMatch(/line \d+/);
     expect(result.cases).toHaveLength(0);
+  });
+
+  it('handles cases with no inject block', async () => {
+    const noInjectSpec = {
+      structure: { requires: [{ kind: 'variable' as const, name: 'age' }] },
+      cases: [{ visible: true }],
+    };
+    const result = await prepareC(PROGRAM, PROGRAM, noInjectSpec);
+    expect(result.cases).toHaveLength(1);
+    expect(result.cases[0].userSrc).toContain('int age = 45;');
   });
 
   it('reports structure failures from the pristine user code', async () => {
