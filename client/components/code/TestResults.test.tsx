@@ -66,6 +66,47 @@ describe('TestResults', () => {
     expect(screen.getByText(/took too long/)).toBeInTheDocument();
   });
 
+  it('formats boolean, $list, and $dict inject values as Python literals', () => {
+    const results: RunTestsResponse = {
+      status: 'failed',
+      structureFailures: [],
+      cases: [
+        {
+          index: 0,
+          visible: true,
+          passed: false,
+          inject: {
+            active: true,
+            done: false,
+            nums: { $list: [1, 2] },
+            cfg: { $dict: { a: 1 } },
+          },
+          actual: '1',
+        },
+      ],
+    };
+    render(<TestResults results={results} onClose={() => {}} />);
+    expect(screen.getByText(/active = True/)).toBeInTheDocument();
+    expect(screen.getByText(/done = False/)).toBeInTheDocument();
+    expect(screen.getByText(/nums = \[1, 2\]/)).toBeInTheDocument();
+    expect(screen.getByText(/cfg = \{"a": 1\}/)).toBeInTheDocument();
+  });
+
+  it('renders stdin (including the empty placeholder) and runtime errors', () => {
+    const results: RunTestsResponse = {
+      status: 'failed',
+      structureFailures: [],
+      cases: [
+        { index: 0, visible: true, passed: false, stdin: '5 3\n', expected: '8', actual: '' },
+        { index: 1, visible: true, passed: false, stdin: '', error: 'NameError: x' },
+      ],
+    };
+    render(<TestResults results={results} onClose={() => {}} />);
+    expect(screen.getByText(/5 3/)).toBeInTheDocument();
+    expect(screen.getAllByText('∅').length).toBeGreaterThan(0);
+    expect(screen.getByText(/NameError: x/)).toBeInTheDocument();
+  });
+
   it('calls onClose when the close button is clicked', () => {
     const onClose = vi.fn();
     render(<TestResults results={passedResults} onClose={onClose} />);

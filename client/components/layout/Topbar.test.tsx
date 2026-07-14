@@ -136,6 +136,21 @@ describe('Topbar', () => {
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
 
+  it('keeps the user menu open when clicking inside it', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    const menu = screen.getByRole('menu');
+    fireEvent.mouseDown(menu);
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+  });
+
+  it('ignores non-Escape keys while the user menu is open', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.keyDown(document, { key: 'a' });
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+  });
+
   it('navigates to dashboard on logo click', () => {
     renderTopbar();
     fireEvent.click(screen.getByText('CyberStars'));
