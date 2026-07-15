@@ -38,6 +38,7 @@ export async function getCategories(
             id: true,
             title: true,
             posts: {
+              where: { deleted: false },
               orderBy: { createdAt: 'desc' },
               take: 1,
               select: { createdAt: true, author: { select: { name: true } } },
@@ -99,6 +100,7 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
       include: {
         author: { select: { name: true, role: true } },
         posts: {
+          where: { deleted: false },
           orderBy: { createdAt: 'desc' },
           take: 1,
           include: { author: { select: { name: true } } },

@@ -113,6 +113,13 @@ describe('getCategories', () => {
     ]);
   });
 
+  it('excludes deleted posts when picking the category last-post', async () => {
+    mockPrisma.forumCategory.findMany.mockResolvedValue([]);
+    await getCategories(mockReq(), mockRes(), vi.fn());
+    const arg = mockPrisma.forumCategory.findMany.mock.calls[0][0];
+    expect(arg.include.threads.select.posts.where).toEqual({ deleted: false });
+  });
+
   it('picks the most recent post across threads and ignores empty ones', async () => {
     mockPrisma.forumCategory.findMany.mockResolvedValue([
       {
@@ -255,6 +262,8 @@ describe('getThreads', () => {
         include: expect.objectContaining({ _count: { select: { posts: true } } }),
       }),
     );
+    const findManyArg = mockPrisma.forumThread.findMany.mock.calls[0][0];
+    expect(findManyArg.include.posts.where).toEqual({ deleted: false });
     expect(res.json).toHaveBeenCalledWith(
       expect.objectContaining({ threads: [expect.objectContaining({ id: 12, replyCount: 2 })] }),
     );
