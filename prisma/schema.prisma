@@ -63,10 +63,11 @@ model User {
   @@map("users")
 }
 
-// One lesson and one algorithm challenge picked per user per day (kind =
-// "lesson" | "algo"). The pick is frozen for the day so completing it doesn't
-// rotate the choice, and completing it on its day grants a bonus (bonusAwarded)
-// that the derived XP calc credits — see daily.service and progress.service.
+// One lesson and one algorithm challenge picked per day (kind = "lesson" |
+// "algo"), shared by every user — the same choice is stored in each user's row
+// so the per-user bonus (bonusAwarded) can be tracked. Completing the pick on
+// its day grants a bonus that the derived XP calc credits — see daily.service
+// and progress.service.
 model DailyPick {
   id           Int      @id @default(autoincrement())
   userId       Int      @map("user_id")

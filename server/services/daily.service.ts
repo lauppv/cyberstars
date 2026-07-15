@@ -1,6 +1,5 @@
 import * as dailyRepo from '../repositories/daily.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
-import * as progressRepo from '../repositories/progress.repository.js';
 import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
@@ -20,8 +19,9 @@ export function todayKey(): string {
   return dateKey(new Date());
 }
 
-// Stable non-negative hash so the pick is deterministic per user/day/kind (the
-// concrete choice is then frozen by persisting it — see getOrCreatePick).
+// Stable non-negative hash so the pick is deterministic per day/kind — the same
+// choice for every user (the concrete row is then persisted per user only so the
+// per-user bonus can be tracked — see getOrCreatePick).
 function hash(seed: string): number {
   let h = 2166136261;
   for (let i = 0; i < seed.length; i++) {
@@ -30,19 +30,14 @@ function hash(seed: string): number {
   return h >>> 0;
 }
 
-async function incompleteLessons(
-  userId: number,
+async function poolLessons(
   courses: readonly string[],
 ): Promise<{ courseKey: string; slug: string; title: string }[]> {
   const out: { courseKey: string; slug: string; title: string }[] = [];
   for (const courseKey of courses) {
-    const [lessons, progress] = await Promise.all([
-      curriculumRepo.getLessonsByCourse(courseKey),
-      progressRepo.getByCourse(userId, courseKey),
-    ]);
-    const done = new Set(progress.filter((p) => p.completed).map((p) => p.lessonSlug));
+    const lessons = await curriculumRepo.getLessonsByCourse(courseKey);
     for (const l of lessons) {
-      if (!done.has(l.slug)) out.push({ courseKey, slug: l.slug, title: l.title });
+      out.push({ courseKey, slug: l.slug, title: l.title });
     }
   }
   return out;
@@ -63,9 +58,9 @@ async function getOrCreatePick(
     };
   }
 
-  const candidates = await incompleteLessons(userId, POOLS[kind]);
+  const candidates = await poolLessons(POOLS[kind]);
   if (!candidates.length) return null;
-  const chosen = candidates[hash(`${userId}-${date}-${kind}`) % candidates.length];
+  const chosen = candidates[hash(`${date}-${kind}`) % candidates.length];
 
   try {
     await dailyRepo.createPick(userId, date, kind, chosen.courseKey, chosen.slug, chosen.title);

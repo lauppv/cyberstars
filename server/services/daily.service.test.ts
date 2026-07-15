@@ -17,20 +17,14 @@ const mockCurriculumRepo = {
   getLessonsByCourse: vi.fn(),
 };
 
-const mockProgressRepo = {
-  getByCourse: vi.fn(),
-};
-
 vi.mock('../repositories/daily.repository.js', () => mockDailyRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
-vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 
 const { getDaily, awardBonusForCompletion, todayKey } = await import('./daily.service.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
   mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
-  mockProgressRepo.getByCourse.mockResolvedValue([]);
 });
 
 describe('getDaily', () => {
@@ -60,7 +54,7 @@ describe('getDaily', () => {
     expect(mockDailyRepo.createPick).not.toHaveBeenCalled();
   });
 
-  it('draws and persists a deterministic pick from incomplete lessons', async () => {
+  it('draws the same deterministic pick for different users on the same day', async () => {
     mockDailyRepo.getPick.mockResolvedValue(null);
     mockCurriculumRepo.getLessonsByCourse.mockImplementation(async (courseKey: string) =>
       courseKey === 'python'
@@ -71,23 +65,18 @@ describe('getDaily', () => {
         : [],
     );
 
-    const first = await getDaily(1);
-    const second = await getDaily(1);
+    const userOne = await getDaily(1);
+    const userTwo = await getDaily(2);
 
-    // Deterministic for the same user/day: both draws land on the same lesson.
-    expect(first.lesson).toEqual(second.lesson);
-    expect(first.lesson?.courseKey).toBe('python');
+    // Global pick: the choice no longer depends on the user id.
+    expect(userOne.lesson).toEqual(userTwo.lesson);
+    expect(userOne.lesson?.courseKey).toBe('python');
     expect(mockDailyRepo.createPick).toHaveBeenCalled();
   });
 
-  it('returns a null pick when the pool has no incomplete lessons', async () => {
+  it('returns a null pick when the pool has no lessons', async () => {
     mockDailyRepo.getPick.mockResolvedValue(null);
-    mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
-      { slug: 'a', title: 'A', sortOrder: 1 },
-    ]);
-    mockProgressRepo.getByCourse.mockImplementation(async () => [
-      { lessonSlug: 'a', completed: true },
-    ]);
+    mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
 
     const res = await getDaily(1);
     expect(res.lesson).toBeNull();
