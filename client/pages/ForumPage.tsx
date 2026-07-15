@@ -28,6 +28,11 @@ function timeAgo(iso: string): string {
   return new Date(iso).toLocaleDateString();
 }
 
+/** Surfaces the server's error message (e.g. "Thread is locked") when present. */
+function errMsg(err: unknown): string {
+  return err instanceof Error && err.message ? err.message : i18next.t('forum.actionError');
+}
+
 const ROLE_CLS: Record<UserRole, string> = {
   ADMIN: 'role-admin',
   MODERATOR: 'role-mod',
@@ -502,6 +507,7 @@ function ThreadView({
   const [error, setError] = useState<string | null>(null);
   const [replyContent, setReplyContent] = useState('');
   const [posting, setPosting] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const loadThread = useCallback(() => {
     forumService
@@ -540,10 +546,13 @@ function ThreadView({
   const handleReply = async () => {
     if (!replyContent.trim() || !thread) return;
     setPosting(true);
+    setActionError(null);
     try {
       await forumService.createPost(threadId, { content: replyContent.trim() });
       setReplyContent('');
       loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
     } finally {
       setPosting(false);
     }
@@ -551,34 +560,64 @@ function ThreadView({
 
   const handleReaction = async (postId: number, emoji: string) => {
     if (!isLoggedIn) return;
-    await forumService.toggleReaction(postId, { emoji });
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.toggleReaction(postId, { emoji });
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleMarkSolution = async (postId: number) => {
-    await forumService.markSolution(postId);
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.markSolution(postId);
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleEditPost = async (postId: number, content: string) => {
-    await forumService.updatePost(postId, { content });
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.updatePost(postId, { content });
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleDeletePost = async (postId: number) => {
-    const res = await forumService.deletePost(postId);
-    if (res.threadDeleted) onBack();
-    else loadThread();
+    setActionError(null);
+    try {
+      const res = await forumService.deletePost(postId);
+      if (res.threadDeleted) onBack();
+      else loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleDeleteThread = async () => {
-    await forumService.deleteThread(threadId);
-    onBack();
+    setActionError(null);
+    try {
+      await forumService.deleteThread(threadId);
+      onBack();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleChangeRole = async (userId: number, role: UserRole) => {
-    await forumService.updateUserRole(userId, role);
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.updateUserRole(userId, role);
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   if (loading || (!thread && !error)) {
@@ -644,12 +683,18 @@ function ThreadView({
         </div>
       </div>
 
+      {actionError && (
+        <div className="forum-restricted-note forum-action-error" role="alert">
+          {actionError}
+        </div>
+      )}
+
       {thread.posts.map((post, i) => (
         <PostCard
           key={post.id}
           post={post}
           isOp={i === 0}
-          canMarkSolution={isLoggedIn && !thread.solved && i > 0}
+          canMarkSolution={user != null && user.id === thread.authorId && i > 0}
           currentUser={user}
           onReaction={(emoji) => handleReaction(post.id, emoji)}
           onMarkSolution={() => handleMarkSolution(post.id)}
@@ -844,6 +889,11 @@ function PostCard({
             {canMarkSolution && !post.solution && (
               <button className="post-btn solution-btn" onClick={onMarkSolution}>
                 {t('forum.markSolution')}
+              </button>
+            )}
+            {canMarkSolution && post.solution && (
+              <button className="post-btn solution-btn" onClick={onMarkSolution}>
+                {t('forum.unmarkSolution')}
               </button>
             )}
             {canManage && !editing && (

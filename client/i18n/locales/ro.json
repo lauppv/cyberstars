@@ -515,11 +515,13 @@
     "solutionBanner": "Marcat ca soluție — acest răspuns a rezolvat întrebarea",
     "save": "Salvează",
     "markSolution": "✓ Marchează ca soluție",
+    "unmarkSolution": "✕ Anulează soluția",
     "edit": "✎ Editează",
     "confirmDeleteThread": "Ștergi întreaga discuție?",
     "confirmDeletePost": "Ștergi această postare?",
     "deleteThread": "🗑 Șterge discuția",
-    "delete": "Șterge"
+    "delete": "Șterge",
+    "actionError": "Ceva n-a mers. Încearcă din nou."
   },
   "almanac": {
     "categories": {

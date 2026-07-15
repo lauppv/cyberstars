@@ -515,11 +515,13 @@
     "solutionBanner": "Marked as solution — this answer solved the question",
     "save": "Save",
     "markSolution": "✓ Mark as solution",
+    "unmarkSolution": "✕ Unmark solution",
     "edit": "✎ Edit",
     "confirmDeleteThread": "Delete this entire thread?",
     "confirmDeletePost": "Delete this post?",
     "deleteThread": "🗑 Delete thread",
-    "delete": "Delete"
+    "delete": "Delete",
+    "actionError": "Something went wrong. Please try again."
   },
   "almanac": {
     "categories": {
