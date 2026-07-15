@@ -103,7 +103,10 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
           take: 1,
           include: { author: { select: { name: true } } },
         },
-        _count: { select: { posts: { where: { deleted: false } } } },
+        // Count every post (incl. soft-deleted tombstones, which still render as
+        // slots in the thread) so replyCount matches getCategories' postCount and
+        // never undercounts when the opening post itself was deleted.
+        _count: { select: { posts: true } },
       },
     });
 

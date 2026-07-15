@@ -217,6 +217,49 @@ describe('getThreads', () => {
     );
   });
 
+  it('counts every post (incl. deleted) so replyCount survives a deleted opener', async () => {
+    mockPrisma.forumCategory.findUnique.mockResolvedValue({
+      id: 1,
+      slug: 'general',
+      name: 'General',
+      description: '',
+      icon: '',
+      color: '',
+    });
+    mockPrisma.forumThread.findMany.mockResolvedValue([
+      {
+        id: 12,
+        title: 'Opener deleted',
+        pinned: false,
+        locked: false,
+        solved: false,
+        views: 0,
+        authorId: 1,
+        author: { name: 'Alice', role: 'USER' },
+        posts: [{ author: { name: 'Bob' }, createdAt: new Date('2025-01-03') }],
+        // OP + 2 replies = 3 total; replyCount must be 2, not undercounted.
+        _count: { posts: 3 },
+        createdAt: new Date('2025-01-01'),
+        updatedAt: new Date('2025-01-02'),
+      },
+    ]);
+
+    const res = mockRes();
+    await getThreads(
+      mockReq({ params: { categorySlug: 'general' } as Record<string, string> }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThread.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        include: expect.objectContaining({ _count: { select: { posts: true } } }),
+      }),
+    );
+    expect(res.json).toHaveBeenCalledWith(
+      expect.objectContaining({ threads: [expect.objectContaining({ id: 12, replyCount: 2 })] }),
+    );
+  });
+
   it('reports null last-post fields for a thread with no posts', async () => {
     mockPrisma.forumCategory.findUnique.mockResolvedValue({
       id: 1,
