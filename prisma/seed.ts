@@ -83,18 +83,20 @@ const forumCategories = [
 
 async function main() {
   for (const course of courses) {
+    const { key: _key, ...courseFields } = course;
     await prisma.curriculum.upsert({
       where: { key: course.key },
       create: course,
-      update: {},
+      update: courseFields,
     });
   }
 
   for (const lesson of lessons) {
+    const { courseKey: _courseKey, slug: _slug, ...lessonFields } = lesson;
     await prisma.lesson.upsert({
       where: { courseKey_slug: { courseKey: lesson.courseKey, slug: lesson.slug } },
       create: lesson,
-      update: {},
+      update: lessonFields,
     });
   }
 
