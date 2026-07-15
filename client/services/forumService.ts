@@ -38,7 +38,7 @@ export function toggleReaction(postId: number, data: ToggleReactionRequest) {
 }
 
 export function markSolution(postId: number) {
-  return api.post<{ ok: boolean }>(`/api/forum/posts/${postId}/solution`);
+  return api.post<{ solved: boolean }>(`/api/forum/posts/${postId}/solution`);
 }
 
 export function updatePost(postId: number, data: UpdatePostRequest) {

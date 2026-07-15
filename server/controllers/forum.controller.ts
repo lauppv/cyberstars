@@ -38,6 +38,7 @@ export async function getCategories(
             id: true,
             title: true,
             posts: {
+              where: { deleted: false },
               orderBy: { createdAt: 'desc' },
               take: 1,
               select: { createdAt: true, author: { select: { name: true } } },
@@ -99,11 +100,15 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
       include: {
         author: { select: { name: true, role: true } },
         posts: {
+          where: { deleted: false },
           orderBy: { createdAt: 'desc' },
           take: 1,
           include: { author: { select: { name: true } } },
         },
-        _count: { select: { posts: { where: { deleted: false } } } },
+        // Count every post (incl. soft-deleted tombstones, which still render as
+        // slots in the thread) so replyCount matches getCategories' postCount and
+        // never undercounts when the opening post itself was deleted.
+        _count: { select: { posts: true } },
       },
     });
 
@@ -300,6 +305,13 @@ export async function toggleReaction(
 
     const { emoji } = req.body;
 
+    const post = await prisma.forumPost.findUnique({
+      where: { id: postId },
+      select: { deleted: true },
+    });
+    if (!post) throw new AppError(404, 'Post not found');
+    if (post.deleted) throw new AppError(403, 'Cannot react to a deleted post');
+
     const existing = await prisma.forumReaction.findUnique({
       where: { postId_userId_emoji: { postId, userId, emoji } },
     });
@@ -328,8 +340,20 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
     });
 
     if (!post) throw new AppError(404, 'Post not found');
+    if (post.deleted) throw new AppError(400, 'Cannot mark a deleted post as solution');
     if (post.thread.authorId !== userId)
       throw new AppError(403, 'Only the thread author can mark a solution');
+
+    // Toggle: re-marking the current solution clears it and reopens the thread,
+    // so the author can pick a different answer or unset it entirely.
+    if (post.solution) {
+      await prisma.$transaction([
+        prisma.forumPost.update({ where: { id: postId }, data: { solution: false } }),
+        prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: false } }),
+      ]);
+      res.json({ solved: false });
+      return;
+    }
 
     await prisma.$transaction([
       prisma.forumPost.updateMany({
@@ -340,7 +364,7 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
       prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: true } }),
     ]);
 
-    res.json({ ok: true });
+    res.json({ solved: true });
   } catch (err) {
     next(err);
   }
@@ -444,6 +468,11 @@ export async function updateUserRole(
     if (targetId === actorId) throw new AppError(400, 'You cannot change your own role');
 
     const role = req.body.role as Role;
+    // Don't let the platform be left with zero admins.
+    if (role !== 'ADMIN' && (await userRepo.getRole(targetId)) === 'ADMIN') {
+      const adminCount = await userRepo.countByRole('ADMIN');
+      if (adminCount <= 1) throw new AppError(400, 'Cannot demote the last remaining admin');
+    }
     await userRepo.updateRole(targetId, role);
     res.json({ ok: true });
   } catch (err) {

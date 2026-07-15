@@ -28,6 +28,11 @@ function timeAgo(iso: string): string {
   return new Date(iso).toLocaleDateString();
 }
 
+/** Surfaces the server's error message (e.g. "Thread is locked") when present. */
+function errMsg(err: unknown): string {
+  return err instanceof Error && err.message ? err.message : i18next.t('forum.actionError');
+}
+
 const ROLE_CLS: Record<UserRole, string> = {
   ADMIN: 'role-admin',
   MODERATOR: 'role-mod',
@@ -56,6 +61,7 @@ export function ForumPage() {
     (location.state as { openThreadId?: number } | null)?.openThreadId ?? null;
   const [view, setView] = useState<View>(pendingThreadId != null ? 'thread' : 'index');
   const [categorySlug, setCategorySlug] = useState<string | null>(null);
+  const [composeIntent, setComposeIntent] = useState(false);
   const [threadId, setThreadId] = useState<number | null>(pendingThreadId);
 
   // Consume the one-shot navigation state (e.g. after sharing code) so a
@@ -67,13 +73,15 @@ export function ForumPage() {
     }
   }, [pendingThreadId, navigate]);
 
-  const openCategory = (slug: string) => {
+  const openCategory = (slug: string, compose = false) => {
     setCategorySlug(slug);
+    setComposeIntent(compose);
     setView('category');
     window.scrollTo(0, 0);
   };
   const openThread = (id: number) => {
     setThreadId(id);
+    setComposeIntent(false);
     setView('thread');
     window.scrollTo(0, 0);
   };
@@ -90,11 +98,16 @@ export function ForumPage() {
     <>
       <Topbar />
       {view === 'index' && (
-        <ForumIndex onOpenCategory={openCategory} isLoggedIn={isLoggedIn} onNewThread={() => {}} />
+        <ForumIndex
+          onOpenCategory={openCategory}
+          isLoggedIn={isLoggedIn}
+          onNewThread={(slug) => openCategory(slug, true)}
+        />
       )}
       {view === 'category' && categorySlug && (
         <CategoryView
           categorySlug={categorySlug}
+          startCompose={composeIntent}
           onBack={backToIndex}
           onOpenThread={openThread}
           isLoggedIn={isLoggedIn}
@@ -123,7 +136,7 @@ function ForumIndex({
 }: {
   onOpenCategory: (slug: string) => void;
   isLoggedIn: boolean;
-  onNewThread: () => void;
+  onNewThread: (slug: string) => void;
 }) {
   const { t } = useTranslation();
   const [categories, setCategories] = useState<ForumCategoryDTO[]>([]);
@@ -158,6 +171,9 @@ function ForumIndex({
 
   const totalThreads = categories.reduce((s, c) => s + c.threadCount, 0);
   const totalPosts = categories.reduce((s, c) => s + c.postCount, 0);
+  // The composer needs a category; the index has none, so start a thread in the
+  // first category any logged-in user is allowed to post in.
+  const firstPostable = categories.find((c) => !RESTRICTED_FORUM_CATEGORIES.has(c.slug));
 
   if (loading) {
     return (
@@ -181,8 +197,11 @@ function ForumIndex({
         <div>
           <p className="forum-page-subtitle">{t('forum.subtitle')}</p>
         </div>
-        {isLoggedIn && (
-          <button className="forum-btn forum-btn-primary" onClick={onNewThread}>
+        {isLoggedIn && firstPostable && (
+          <button
+            className="forum-btn forum-btn-primary"
+            onClick={() => onNewThread(firstPostable.slug)}
+          >
             {t('forum.newThread')}
           </button>
         )}
@@ -260,12 +279,14 @@ function ForumIndex({
 
 function CategoryView({
   categorySlug,
+  startCompose = false,
   onBack,
   onOpenThread,
   isLoggedIn,
   user,
 }: {
   categorySlug: string;
+  startCompose?: boolean;
   onBack: () => void;
   onOpenThread: (id: number) => void;
   isLoggedIn: boolean;
@@ -284,7 +305,7 @@ function CategoryView({
   const [threads, setThreads] = useState<ForumThreadSummaryDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [showComposer, setShowComposer] = useState(false);
+  const [showComposer, setShowComposer] = useState(startCompose);
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [posting, setPosting] = useState(false);
@@ -486,6 +507,7 @@ function ThreadView({
   const [error, setError] = useState<string | null>(null);
   const [replyContent, setReplyContent] = useState('');
   const [posting, setPosting] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const loadThread = useCallback(() => {
     forumService
@@ -524,10 +546,13 @@ function ThreadView({
   const handleReply = async () => {
     if (!replyContent.trim() || !thread) return;
     setPosting(true);
+    setActionError(null);
     try {
       await forumService.createPost(threadId, { content: replyContent.trim() });
       setReplyContent('');
       loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
     } finally {
       setPosting(false);
     }
@@ -535,34 +560,64 @@ function ThreadView({
 
   const handleReaction = async (postId: number, emoji: string) => {
     if (!isLoggedIn) return;
-    await forumService.toggleReaction(postId, { emoji });
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.toggleReaction(postId, { emoji });
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleMarkSolution = async (postId: number) => {
-    await forumService.markSolution(postId);
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.markSolution(postId);
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleEditPost = async (postId: number, content: string) => {
-    await forumService.updatePost(postId, { content });
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.updatePost(postId, { content });
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleDeletePost = async (postId: number) => {
-    const res = await forumService.deletePost(postId);
-    if (res.threadDeleted) onBack();
-    else loadThread();
+    setActionError(null);
+    try {
+      const res = await forumService.deletePost(postId);
+      if (res.threadDeleted) onBack();
+      else loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleDeleteThread = async () => {
-    await forumService.deleteThread(threadId);
-    onBack();
+    setActionError(null);
+    try {
+      await forumService.deleteThread(threadId);
+      onBack();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   const handleChangeRole = async (userId: number, role: UserRole) => {
-    await forumService.updateUserRole(userId, role);
-    loadThread();
+    setActionError(null);
+    try {
+      await forumService.updateUserRole(userId, role);
+      loadThread();
+    } catch (err) {
+      setActionError(errMsg(err));
+    }
   };
 
   if (loading || (!thread && !error)) {
@@ -628,12 +683,18 @@ function ThreadView({
         </div>
       </div>
 
+      {actionError && (
+        <div className="forum-restricted-note forum-action-error" role="alert">
+          {actionError}
+        </div>
+      )}
+
       {thread.posts.map((post, i) => (
         <PostCard
           key={post.id}
           post={post}
           isOp={i === 0}
-          canMarkSolution={isLoggedIn && !thread.solved && i > 0}
+          canMarkSolution={user != null && user.id === thread.authorId && i > 0}
           currentUser={user}
           onReaction={(emoji) => handleReaction(post.id, emoji)}
           onMarkSolution={() => handleMarkSolution(post.id)}
@@ -828,6 +889,11 @@ function PostCard({
             {canMarkSolution && !post.solution && (
               <button className="post-btn solution-btn" onClick={onMarkSolution}>
                 {t('forum.markSolution')}
+              </button>
+            )}
+            {canMarkSolution && post.solution && (
+              <button className="post-btn solution-btn" onClick={onMarkSolution}>
+                {t('forum.unmarkSolution')}
               </button>
             )}
             {canManage && !editing && (

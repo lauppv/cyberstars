@@ -45,6 +45,7 @@ vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
 const mockUserRepo = {
   getRole: vi.fn(),
   updateRole: vi.fn(),
+  countByRole: vi.fn(),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
@@ -111,6 +112,13 @@ describe('getCategories', () => {
         lastPost: expect.objectContaining({ threadTitle: 'Hello' }),
       }),
     ]);
+  });
+
+  it('excludes deleted posts when picking the category last-post', async () => {
+    mockPrisma.forumCategory.findMany.mockResolvedValue([]);
+    await getCategories(mockReq(), mockRes(), vi.fn());
+    const arg = mockPrisma.forumCategory.findMany.mock.calls[0][0];
+    expect(arg.include.threads.select.posts.where).toEqual({ deleted: false });
   });
 
   it('picks the most recent post across threads and ignores empty ones', async () => {
@@ -214,6 +222,51 @@ describe('getThreads', () => {
         category: expect.objectContaining({ slug: 'general' }),
         threads: [expect.objectContaining({ id: 10, replyCount: 1 })],
       }),
+    );
+  });
+
+  it('counts every post (incl. deleted) so replyCount survives a deleted opener', async () => {
+    mockPrisma.forumCategory.findUnique.mockResolvedValue({
+      id: 1,
+      slug: 'general',
+      name: 'General',
+      description: '',
+      icon: '',
+      color: '',
+    });
+    mockPrisma.forumThread.findMany.mockResolvedValue([
+      {
+        id: 12,
+        title: 'Opener deleted',
+        pinned: false,
+        locked: false,
+        solved: false,
+        views: 0,
+        authorId: 1,
+        author: { name: 'Alice', role: 'USER' },
+        posts: [{ author: { name: 'Bob' }, createdAt: new Date('2025-01-03') }],
+        // OP + 2 replies = 3 total; replyCount must be 2, not undercounted.
+        _count: { posts: 3 },
+        createdAt: new Date('2025-01-01'),
+        updatedAt: new Date('2025-01-02'),
+      },
+    ]);
+
+    const res = mockRes();
+    await getThreads(
+      mockReq({ params: { categorySlug: 'general' } as Record<string, string> }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThread.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        include: expect.objectContaining({ _count: { select: { posts: true } } }),
+      }),
+    );
+    const findManyArg = mockPrisma.forumThread.findMany.mock.calls[0][0];
+    expect(findManyArg.include.posts.where).toEqual({ deleted: false });
+    expect(res.json).toHaveBeenCalledWith(
+      expect.objectContaining({ threads: [expect.objectContaining({ id: 12, replyCount: 2 })] }),
     );
   });
 
@@ -605,7 +658,38 @@ describe('createPost', () => {
 });
 
 describe('toggleReaction', () => {
+  it('returns 404 when the post does not exist', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await toggleReaction(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+        body: { emoji: '👍' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
+  it('returns 403 when reacting to a deleted post', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: true });
+    const next = vi.fn();
+    await toggleReaction(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+        body: { emoji: '👍' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
   it('removes existing reaction', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: false });
     mockPrisma.forumReaction.findUnique.mockResolvedValue({ id: 5 });
     mockPrisma.forumReaction.delete.mockResolvedValue({});
     const res = mockRes();
@@ -622,6 +706,7 @@ describe('toggleReaction', () => {
   });
 
   it('adds new reaction', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: false });
     mockPrisma.forumReaction.findUnique.mockResolvedValue(null);
     mockPrisma.forumReaction.create.mockResolvedValue({});
     const res = mockRes();
@@ -694,10 +779,30 @@ describe('markSolution', () => {
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
   });
 
+  it('returns 400 when marking a deleted post as solution', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      id: 1,
+      deleted: true,
+      thread: { authorId: 1 },
+    });
+    const next = vi.fn();
+    await markSolution(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
   it('marks post as solution', async () => {
     mockPrisma.forumPost.findUnique.mockResolvedValue({
       id: 1,
       threadId: 10,
+      solution: false,
+      deleted: false,
       thread: { authorId: 1 },
     });
     mockPrisma.forumPost.updateMany.mockResolvedValue({});
@@ -713,7 +818,30 @@ describe('markSolution', () => {
       vi.fn(),
     );
     expect(mockPrisma.$transaction).toHaveBeenCalled();
-    expect(res.json).toHaveBeenCalledWith({ ok: true });
+    expect(res.json).toHaveBeenCalledWith({ solved: true });
+  });
+
+  it('toggles the current solution off and reopens the thread', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      id: 1,
+      threadId: 10,
+      solution: true,
+      deleted: false,
+      thread: { authorId: 1 },
+    });
+    mockPrisma.forumPost.update.mockResolvedValue({});
+    mockPrisma.forumThread.update.mockResolvedValue({});
+    const res = mockRes();
+    await markSolution(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumPost.updateMany).not.toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalledWith({ solved: false });
   });
 });
 
@@ -943,7 +1071,7 @@ describe('updateUserRole', () => {
   });
 
   it('updates role successfully', async () => {
-    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('USER');
     mockUserRepo.updateRole.mockResolvedValue(undefined);
     const res = mockRes();
     await updateUserRole(
@@ -956,6 +1084,41 @@ describe('updateUserRole', () => {
       vi.fn(),
     );
     expect(mockUserRepo.updateRole).toHaveBeenCalledWith(2, 'MODERATOR');
+    expect(res.json).toHaveBeenCalledWith({ ok: true });
+  });
+
+  it('blocks demoting the last remaining admin', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('ADMIN');
+    mockUserRepo.countByRole.mockResolvedValue(1);
+    const next = vi.fn();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'USER' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockUserRepo.updateRole).not.toHaveBeenCalled();
+  });
+
+  it('allows demoting an admin when others remain', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('ADMIN');
+    mockUserRepo.countByRole.mockResolvedValue(2);
+    mockUserRepo.updateRole.mockResolvedValue(undefined);
+    const res = mockRes();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'USER' },
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockUserRepo.updateRole).toHaveBeenCalledWith(2, 'USER');
     expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
 });
