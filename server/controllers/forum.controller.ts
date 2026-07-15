@@ -468,6 +468,11 @@ export async function updateUserRole(
     if (targetId === actorId) throw new AppError(400, 'You cannot change your own role');
 
     const role = req.body.role as Role;
+    // Don't let the platform be left with zero admins.
+    if (role !== 'ADMIN' && (await userRepo.getRole(targetId)) === 'ADMIN') {
+      const adminCount = await userRepo.countByRole('ADMIN');
+      if (adminCount <= 1) throw new AppError(400, 'Cannot demote the last remaining admin');
+    }
     await userRepo.updateRole(targetId, role);
     res.json({ ok: true });
   } catch (err) {

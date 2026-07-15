@@ -69,6 +69,10 @@ export async function updateRole(id: number, role: Role): Promise<void> {
   await prisma.user.update({ where: { id }, data: { role } });
 }
 
+export async function countByRole(role: Role): Promise<number> {
+  return prisma.user.count({ where: { role } });
+}
+
 export async function setResetCode(email: string, code: string, expiresAt: Date): Promise<boolean> {
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) return false;

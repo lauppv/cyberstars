@@ -109,6 +109,15 @@ describe('updateRole', () => {
   });
 });
 
+describe('countByRole', () => {
+  it('counts users with the given role', async () => {
+    mockPrisma.user.count.mockResolvedValue(3);
+    const n = await repo.countByRole('ADMIN');
+    expect(n).toBe(3);
+    expect(mockPrisma.user.count).toHaveBeenCalledWith({ where: { role: 'ADMIN' } });
+  });
+});
+
 describe('setResetCode', () => {
   it('returns false when the email is unknown', async () => {
     mockPrisma.user.findUnique.mockResolvedValue(null);

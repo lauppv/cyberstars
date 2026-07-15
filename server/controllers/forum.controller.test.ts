@@ -45,6 +45,7 @@ vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
 const mockUserRepo = {
   getRole: vi.fn(),
   updateRole: vi.fn(),
+  countByRole: vi.fn(),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
@@ -1070,7 +1071,7 @@ describe('updateUserRole', () => {
   });
 
   it('updates role successfully', async () => {
-    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('USER');
     mockUserRepo.updateRole.mockResolvedValue(undefined);
     const res = mockRes();
     await updateUserRole(
@@ -1083,6 +1084,41 @@ describe('updateUserRole', () => {
       vi.fn(),
     );
     expect(mockUserRepo.updateRole).toHaveBeenCalledWith(2, 'MODERATOR');
+    expect(res.json).toHaveBeenCalledWith({ ok: true });
+  });
+
+  it('blocks demoting the last remaining admin', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('ADMIN');
+    mockUserRepo.countByRole.mockResolvedValue(1);
+    const next = vi.fn();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'USER' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockUserRepo.updateRole).not.toHaveBeenCalled();
+  });
+
+  it('allows demoting an admin when others remain', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('ADMIN');
+    mockUserRepo.countByRole.mockResolvedValue(2);
+    mockUserRepo.updateRole.mockResolvedValue(undefined);
+    const res = mockRes();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'USER' },
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockUserRepo.updateRole).toHaveBeenCalledWith(2, 'USER');
     expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
 });
