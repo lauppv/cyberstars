@@ -657,7 +657,38 @@ describe('createPost', () => {
 });
 
 describe('toggleReaction', () => {
+  it('returns 404 when the post does not exist', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await toggleReaction(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+        body: { emoji: '👍' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
+  it('returns 403 when reacting to a deleted post', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: true });
+    const next = vi.fn();
+    await toggleReaction(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+        body: { emoji: '👍' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
   it('removes existing reaction', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: false });
     mockPrisma.forumReaction.findUnique.mockResolvedValue({ id: 5 });
     mockPrisma.forumReaction.delete.mockResolvedValue({});
     const res = mockRes();
@@ -674,6 +705,7 @@ describe('toggleReaction', () => {
   });
 
   it('adds new reaction', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: false });
     mockPrisma.forumReaction.findUnique.mockResolvedValue(null);
     mockPrisma.forumReaction.create.mockResolvedValue({});
     const res = mockRes();

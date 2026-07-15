@@ -305,6 +305,13 @@ export async function toggleReaction(
 
     const { emoji } = req.body;
 
+    const post = await prisma.forumPost.findUnique({
+      where: { id: postId },
+      select: { deleted: true },
+    });
+    if (!post) throw new AppError(404, 'Post not found');
+    if (post.deleted) throw new AppError(403, 'Cannot react to a deleted post');
+
     const existing = await prisma.forumReaction.findUnique({
       where: { postId_userId_emoji: { postId, userId, emoji } },
     });
