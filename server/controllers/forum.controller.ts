@@ -340,8 +340,20 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
     });
 
     if (!post) throw new AppError(404, 'Post not found');
+    if (post.deleted) throw new AppError(400, 'Cannot mark a deleted post as solution');
     if (post.thread.authorId !== userId)
       throw new AppError(403, 'Only the thread author can mark a solution');
+
+    // Toggle: re-marking the current solution clears it and reopens the thread,
+    // so the author can pick a different answer or unset it entirely.
+    if (post.solution) {
+      await prisma.$transaction([
+        prisma.forumPost.update({ where: { id: postId }, data: { solution: false } }),
+        prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: false } }),
+      ]);
+      res.json({ solved: false });
+      return;
+    }
 
     await prisma.$transaction([
       prisma.forumPost.updateMany({
@@ -352,7 +364,7 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
       prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: true } }),
     ]);
 
-    res.json({ ok: true });
+    res.json({ solved: true });
   } catch (err) {
     next(err);
   }

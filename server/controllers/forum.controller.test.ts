@@ -778,10 +778,30 @@ describe('markSolution', () => {
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
   });
 
+  it('returns 400 when marking a deleted post as solution', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      id: 1,
+      deleted: true,
+      thread: { authorId: 1 },
+    });
+    const next = vi.fn();
+    await markSolution(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+
   it('marks post as solution', async () => {
     mockPrisma.forumPost.findUnique.mockResolvedValue({
       id: 1,
       threadId: 10,
+      solution: false,
+      deleted: false,
       thread: { authorId: 1 },
     });
     mockPrisma.forumPost.updateMany.mockResolvedValue({});
@@ -797,7 +817,30 @@ describe('markSolution', () => {
       vi.fn(),
     );
     expect(mockPrisma.$transaction).toHaveBeenCalled();
-    expect(res.json).toHaveBeenCalledWith({ ok: true });
+    expect(res.json).toHaveBeenCalledWith({ solved: true });
+  });
+
+  it('toggles the current solution off and reopens the thread', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      id: 1,
+      threadId: 10,
+      solution: true,
+      deleted: false,
+      thread: { authorId: 1 },
+    });
+    mockPrisma.forumPost.update.mockResolvedValue({});
+    mockPrisma.forumThread.update.mockResolvedValue({});
+    const res = mockRes();
+    await markSolution(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumPost.updateMany).not.toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalledWith({ solved: false });
   });
 });
 
