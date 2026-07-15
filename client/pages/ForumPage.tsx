@@ -56,6 +56,7 @@ export function ForumPage() {
     (location.state as { openThreadId?: number } | null)?.openThreadId ?? null;
   const [view, setView] = useState<View>(pendingThreadId != null ? 'thread' : 'index');
   const [categorySlug, setCategorySlug] = useState<string | null>(null);
+  const [composeIntent, setComposeIntent] = useState(false);
   const [threadId, setThreadId] = useState<number | null>(pendingThreadId);
 
   // Consume the one-shot navigation state (e.g. after sharing code) so a
@@ -67,13 +68,15 @@ export function ForumPage() {
     }
   }, [pendingThreadId, navigate]);
 
-  const openCategory = (slug: string) => {
+  const openCategory = (slug: string, compose = false) => {
     setCategorySlug(slug);
+    setComposeIntent(compose);
     setView('category');
     window.scrollTo(0, 0);
   };
   const openThread = (id: number) => {
     setThreadId(id);
+    setComposeIntent(false);
     setView('thread');
     window.scrollTo(0, 0);
   };
@@ -90,11 +93,16 @@ export function ForumPage() {
     <>
       <Topbar />
       {view === 'index' && (
-        <ForumIndex onOpenCategory={openCategory} isLoggedIn={isLoggedIn} onNewThread={() => {}} />
+        <ForumIndex
+          onOpenCategory={openCategory}
+          isLoggedIn={isLoggedIn}
+          onNewThread={(slug) => openCategory(slug, true)}
+        />
       )}
       {view === 'category' && categorySlug && (
         <CategoryView
           categorySlug={categorySlug}
+          startCompose={composeIntent}
           onBack={backToIndex}
           onOpenThread={openThread}
           isLoggedIn={isLoggedIn}
@@ -123,7 +131,7 @@ function ForumIndex({
 }: {
   onOpenCategory: (slug: string) => void;
   isLoggedIn: boolean;
-  onNewThread: () => void;
+  onNewThread: (slug: string) => void;
 }) {
   const { t } = useTranslation();
   const [categories, setCategories] = useState<ForumCategoryDTO[]>([]);
@@ -158,6 +166,9 @@ function ForumIndex({
 
   const totalThreads = categories.reduce((s, c) => s + c.threadCount, 0);
   const totalPosts = categories.reduce((s, c) => s + c.postCount, 0);
+  // The composer needs a category; the index has none, so start a thread in the
+  // first category any logged-in user is allowed to post in.
+  const firstPostable = categories.find((c) => !RESTRICTED_FORUM_CATEGORIES.has(c.slug));
 
   if (loading) {
     return (
@@ -181,8 +192,11 @@ function ForumIndex({
         <div>
           <p className="forum-page-subtitle">{t('forum.subtitle')}</p>
         </div>
-        {isLoggedIn && (
-          <button className="forum-btn forum-btn-primary" onClick={onNewThread}>
+        {isLoggedIn && firstPostable && (
+          <button
+            className="forum-btn forum-btn-primary"
+            onClick={() => onNewThread(firstPostable.slug)}
+          >
             {t('forum.newThread')}
           </button>
         )}
@@ -260,12 +274,14 @@ function ForumIndex({
 
 function CategoryView({
   categorySlug,
+  startCompose = false,
   onBack,
   onOpenThread,
   isLoggedIn,
   user,
 }: {
   categorySlug: string;
+  startCompose?: boolean;
   onBack: () => void;
   onOpenThread: (id: number) => void;
   isLoggedIn: boolean;
@@ -284,7 +300,7 @@ function CategoryView({
   const [threads, setThreads] = useState<ForumThreadSummaryDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [showComposer, setShowComposer] = useState(false);
+  const [showComposer, setShowComposer] = useState(startCompose);
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [posting, setPosting] = useState(false);
