@@ -161,16 +161,26 @@ describe('Forum flow', () => {
     expect(thumbs.count).toBe(3);
   });
 
-  it('thread views increment on each GET', async () => {
-    const { agent: a } = await createAuthenticatedAgent();
+  it('counts a view once per viewer and never for the author', async () => {
+    const { agent: author } = await createAuthenticatedAgent();
+    const { agent: viewer } = await createAuthenticatedAgent();
 
-    const create = await a
+    const create = await author
       .post('/api/forum/threads')
       .send({ categorySlug: 'help-python', title: 'Views test', content: 'Content' })
       .expect(201);
+    const url = `/api/forum/threads/${create.body.threadId}`;
 
-    const first = await agent().get(`/api/forum/threads/${create.body.threadId}`).expect(200);
-    const second = await agent().get(`/api/forum/threads/${create.body.threadId}`).expect(200);
-    expect(second.body.views).toBeGreaterThan(first.body.views);
+    // Author viewing their own thread does not count.
+    const authorView = await author.get(url).expect(200);
+    expect(authorView.body.views).toBe(0);
+
+    // First view from another user counts once...
+    const firstView = await viewer.get(url).expect(200);
+    expect(firstView.body.views).toBe(1);
+
+    // ...and a refresh within 24h does not count again.
+    const secondView = await viewer.get(url).expect(200);
+    expect(secondView.body.views).toBe(1);
   });
 });

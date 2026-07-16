@@ -536,6 +536,7 @@
     "editedBy": "edited by {{name}}",
     "solutionBanner": "Marked as solution — this answer solved the question",
     "save": "Save",
+    "addReaction": "Add reaction",
     "markSolution": "✓ Mark as solution",
     "unmarkSolution": "✕ Unmark solution",
     "edit": "✎ Edit",

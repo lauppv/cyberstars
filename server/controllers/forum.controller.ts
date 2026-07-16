@@ -163,6 +163,38 @@ export async function getThreads(req: Request, res: Response, next: NextFunction
   }
 }
 
+const VIEW_DEDUP_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Count a thread view at most once per viewer per 24h, and never for the thread's
+ * own author. Viewers are keyed by user id (logged in) or the per-browser guestId
+ * cookie. Returns whether the view counter was incremented.
+ */
+async function countThreadView(
+  threadId: number,
+  userId: number | undefined,
+  authorId: number,
+  guestId: string | undefined,
+): Promise<boolean> {
+  if (userId != null && userId === authorId) return false;
+  const viewerKey = userId != null ? `user:${userId}` : guestId ? `guest:${guestId}` : null;
+  if (!viewerKey) return false;
+
+  const now = new Date();
+  const existing = await prisma.forumThreadView.findUnique({
+    where: { threadId_viewerKey: { threadId, viewerKey } },
+  });
+  if (existing && now.getTime() - existing.viewedAt.getTime() < VIEW_DEDUP_MS) return false;
+
+  if (existing) {
+    await prisma.forumThreadView.update({ where: { id: existing.id }, data: { viewedAt: now } });
+  } else {
+    await prisma.forumThreadView.create({ data: { threadId, viewerKey, viewedAt: now } });
+  }
+  await prisma.forumThread.update({ where: { id: threadId }, data: { views: { increment: 1 } } });
+  return true;
+}
+
 export async function getThread(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const threadId = parseInt(req.params.threadId as string);
@@ -185,9 +217,8 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
 
     if (!thread) throw new AppError(404, 'Thread not found');
 
-    await prisma.forumThread.update({ where: { id: threadId }, data: { views: { increment: 1 } } });
-
     const userId = req.user?.id;
+    const counted = await countThreadView(threadId, userId, thread.authorId, req.cookies?.guestId);
 
     const posts: ForumPostDTO[] = thread.posts.map((p) => {
       const reactionMap = new Map<string, { count: number; active: boolean; users: string[] }>();
@@ -230,7 +261,7 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
       pinned: thread.pinned,
       locked: thread.locked,
       solved: thread.solved,
-      views: thread.views + 1,
+      views: thread.views + (counted ? 1 : 0),
       categorySlug: thread.category.slug,
       categoryName: thread.category.name,
       authorName: thread.author.name,

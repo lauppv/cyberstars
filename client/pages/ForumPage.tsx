@@ -34,6 +34,8 @@ function errMsg(err: unknown): string {
   return err instanceof Error && err.message ? err.message : i18next.t('forum.actionError');
 }
 
+const REACTION_EMOJIS = ['👍', '❤️', '😄', '🎉', '🚀', '👀', '🤔', '🙏'];
+
 const ROLE_CLS: Record<UserRole, string> = {
   ADMIN: 'role-admin',
   MODERATOR: 'role-mod',
@@ -793,6 +795,7 @@ function PostCard({
   const { t } = useTranslation();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(post.content);
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   const isOwner = currentUser != null && currentUser.id === post.authorId;
   const canManage = currentUser != null && canModerate(currentUser.role, post.authorRole, isOwner);
@@ -913,9 +916,34 @@ function PostCard({
                 <span>{r.count}</span>
               </button>
             ))}
-            <button className="reaction reaction-add" onClick={() => onReaction('👍')}>
-              +
-            </button>
+            <div className="reaction-picker-wrap">
+              <button
+                className="reaction reaction-add"
+                onClick={() => setPickerOpen((o) => !o)}
+                title={t('forum.addReaction')}
+              >
+                +
+              </button>
+              {pickerOpen && (
+                <>
+                  <div className="reaction-picker-backdrop" onClick={() => setPickerOpen(false)} />
+                  <div className="reaction-picker">
+                    {REACTION_EMOJIS.map((emoji) => (
+                      <button
+                        key={emoji}
+                        className="reaction-picker-emoji"
+                        onClick={() => {
+                          onReaction(emoji);
+                          setPickerOpen(false);
+                        }}
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
           <div className="post-buttons">
             {canMarkSolution && !post.solution && (

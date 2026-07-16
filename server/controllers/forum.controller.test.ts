@@ -38,6 +38,11 @@ const mockPrisma = {
     create: vi.fn(),
     delete: vi.fn(),
   },
+  forumThreadView: {
+    findUnique: vi.fn(),
+    create: vi.fn(),
+    update: vi.fn(),
+  },
   user: {
     findUnique: vi.fn(),
   },
@@ -346,28 +351,109 @@ describe('getThread', () => {
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
   });
 
-  it('returns thread detail and increments views', async () => {
-    mockPrisma.forumThread.findUnique.mockResolvedValue({
-      id: 1,
-      title: 'T',
-      pinned: false,
-      locked: false,
-      solved: false,
-      views: 5,
-      authorId: 1,
-      author: { name: 'A', role: 'USER' },
-      category: { slug: 'general', name: 'General' },
-      createdAt: new Date(),
-      posts: [],
-    });
+  const threadFixture = (views: number, authorId = 1) => ({
+    id: 1,
+    title: 'T',
+    pinned: false,
+    locked: false,
+    solved: false,
+    views,
+    authorId,
+    author: { name: 'A', role: 'USER' },
+    category: { slug: 'general', name: 'General' },
+    createdAt: new Date(),
+    posts: [],
+  });
+
+  it('counts a first-time view from a non-author and increments views', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue(threadFixture(5));
+    mockPrisma.forumThreadView.findUnique.mockResolvedValue(null);
+    mockPrisma.forumThreadView.create.mockResolvedValue({});
     mockPrisma.forumThread.update.mockResolvedValue({});
 
     const res = mockRes();
-    await getThread(mockReq({ params: { threadId: '1' } as Record<string, string> }), res, vi.fn());
+    await getThread(
+      mockReq({ params: { threadId: '1' }, user: { id: 7 } as Request['user'] }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThreadView.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: expect.objectContaining({ viewerKey: 'user:7' }) }),
+    );
     expect(mockPrisma.forumThread.update).toHaveBeenCalledWith(
       expect.objectContaining({ where: { id: 1 }, data: { views: { increment: 1 } } }),
     );
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ id: 1, views: 6 }));
+  });
+
+  it('does not count a view from the thread author', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue(threadFixture(5, 7));
+
+    const res = mockRes();
+    await getThread(
+      mockReq({ params: { threadId: '1' }, user: { id: 7 } as Request['user'] }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThreadView.findUnique).not.toHaveBeenCalled();
+    expect(mockPrisma.forumThread.update).not.toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ views: 5 }));
+  });
+
+  it('does not re-count a view within 24h', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue(threadFixture(5));
+    mockPrisma.forumThreadView.findUnique.mockResolvedValue({ id: 9, viewedAt: new Date() });
+
+    const res = mockRes();
+    await getThread(
+      mockReq({ params: { threadId: '1' }, user: { id: 7 } as Request['user'] }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThread.update).not.toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ views: 5 }));
+  });
+
+  it('re-counts a view once the 24h window has elapsed', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue(threadFixture(5));
+    mockPrisma.forumThreadView.findUnique.mockResolvedValue({
+      id: 9,
+      viewedAt: new Date(Date.now() - 25 * 60 * 60 * 1000),
+    });
+    mockPrisma.forumThreadView.update.mockResolvedValue({});
+    mockPrisma.forumThread.update.mockResolvedValue({});
+
+    const res = mockRes();
+    await getThread(
+      mockReq({ params: { threadId: '1' }, user: { id: 7 } as Request['user'] }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThreadView.update).toHaveBeenCalledWith(
+      expect.objectContaining({ where: { id: 9 } }),
+    );
+    expect(mockPrisma.forumThread.update).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { views: { increment: 1 } } }),
+    );
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ views: 6 }));
+  });
+
+  it('counts a guest view keyed by the guestId cookie', async () => {
+    mockPrisma.forumThread.findUnique.mockResolvedValue(threadFixture(5));
+    mockPrisma.forumThreadView.findUnique.mockResolvedValue(null);
+    mockPrisma.forumThreadView.create.mockResolvedValue({});
+    mockPrisma.forumThread.update.mockResolvedValue({});
+
+    const res = mockRes();
+    await getThread(
+      mockReq({ params: { threadId: '1' }, cookies: { guestId: 'g-1' } } as Partial<Request>),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumThreadView.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: expect.objectContaining({ viewerKey: 'guest:g-1' }) }),
+    );
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ views: 6 }));
   });
 
   it('groups reactions (marking the viewer active) and blanks deleted posts', async () => {
