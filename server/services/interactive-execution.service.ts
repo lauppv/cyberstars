@@ -196,6 +196,18 @@ export async function handleInteractiveRun(
     keepContainer(); // program finished normally — keep the container for reuse
   });
 
+  // spawn itself can fail (ENOENT if docker is missing, EMFILE under load). Without
+  // this listener the 'error' event would throw and crash the whole process.
+  proc.on('error', () => {
+    if (ws.readyState === ws.OPEN) {
+      ws.send(
+        JSON.stringify({ type: 'stderr', data: 'Could not start the runner. Please try again.\n' }),
+      );
+    }
+    sendExit(1);
+    dropContainer();
+  });
+
   const onMessage = (raw: Buffer | string) => {
     const msg = typeof raw === 'string' ? raw : raw.toString();
     try {
