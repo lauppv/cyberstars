@@ -127,6 +127,20 @@ describe('handleInteractiveRun', () => {
     expect(releaseMock).not.toHaveBeenCalled();
   });
 
+  it('reports an error and drops the container when the spawn fails', async () => {
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:err');
+    proc.emit('error', new Error('spawn docker ENOENT'));
+
+    expect(sent(ws).some((m) => m.type === 'stderr' && /Could not start/.test(m.data))).toBe(true);
+    expect(sent(ws).some((m) => m.type === 'exit' && m.code === 1)).toBe(true);
+    expect(destroyMock).toHaveBeenCalledWith('user:err');
+    expect(releaseMock).not.toHaveBeenCalled();
+  });
+
   it('reports a busy message and runs nothing when a run is already in progress', async () => {
     acquireMock.mockRejectedValueOnce(new Error('A run is already in progress'));
     const ws = new FakeWs();
