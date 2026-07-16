@@ -205,14 +205,28 @@ model ForumThread {
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @default(now()) @updatedAt @map("updated_at")
 
-  category ForumCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  posts    ForumPost[]
+  category  ForumCategory     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  author    User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  posts     ForumPost[]
+  viewLogs  ForumThreadView[]
 
   @@index([categoryId])
   @@index([authorId])
   @@index([updatedAt])
   @@map("forum_threads")
+}
+
+model ForumThreadView {
+  id        Int      @id @default(autoincrement())
+  threadId  Int      @map("thread_id")
+  viewerKey String   @map("viewer_key") @db.VarChar(80)
+  viewedAt  DateTime @default(now()) @map("viewed_at")
+
+  thread ForumThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+
+  @@unique([threadId, viewerKey])
+  @@index([threadId])
+  @@map("forum_thread_views")
 }
 
 model ForumPost {
