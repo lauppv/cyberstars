@@ -122,6 +122,14 @@ describe('endpoint smoke tests — unknown routes', () => {
   });
 });
 
+describe('trust proxy', () => {
+  it('is disabled outside production so X-Forwarded-For is not trusted', () => {
+    // In dev/test there is no reverse proxy in front of Express, so the header
+    // must not be trusted. Production enables one hop (nginx) — see app.ts.
+    expect(app.get('trust proxy')).toBe(false);
+  });
+});
+
 describe('SPA fallback', () => {
   it('non-api/auth path invokes the index.html fallback handler', async () => {
     // dist/index.html may not exist in tests; we only need the handler to run.
