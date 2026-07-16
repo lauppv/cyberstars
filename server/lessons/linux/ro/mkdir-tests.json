@@ -1,14 +1,11 @@
 {
   "checks": [
-    {
-      "kind": "dir_exists",
-      "path": "misiune/jurnale/ziua1"
-    }
+    { "kind": "dir_exists", "path": "misiune/jurnale/ziua1" },
+    { "kind": "dir_exists", "path": "misiune/date" },
+    { "kind": "dir_exists", "path": "misiune/backupuri" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "mkdir"
-    }
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "tree" }
   ]
 }

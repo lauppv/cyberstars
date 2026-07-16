@@ -47,11 +47,13 @@ names carefully.
 
 ## Mission: File Relocation
 
-The station's filing system is being reorganised. A draft document needs to be finalised and moved to the archive. Your home directory contains `draft.txt` and an `archive` folder.
+The station's filing system is being reorganised. A draft needs finalising, loose notes need archiving, and the archive folder itself is getting a new name. Your home directory contains `draft.txt`, `notes.txt` and an `archive` folder.
 
 1. Rename `draft.txt` to `report.txt`.
 2. Move `report.txt` into the `archive` folder.
+3. Move `notes.txt` into `archive` and rename it to `notes-2026.txt` in a **single** command.
+4. Rename the `archive` folder itself to `records`.
 
 **Expected result**
 
-The file now lives at `archive/report.txt` and is no longer in your home directory.
+The `records` folder holds `report.txt` and `notes-2026.txt`; the old `draft.txt`, `notes.txt` and `archive` names are gone.

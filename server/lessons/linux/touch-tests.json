@@ -1,22 +1,12 @@
 {
   "checks": [
-    {
-      "kind": "file_exists",
-      "path": "mission.txt"
-    },
-    {
-      "kind": "file_exists",
-      "path": "crew.txt"
-    },
-    {
-      "kind": "file_exists",
-      "path": "reports/summary.txt"
-    }
+    { "kind": "file_exists", "path": "mission.txt" },
+    { "kind": "file_exists", "path": "crew.txt" },
+    { "kind": "file_exists", "path": "reports/logs/day1.log" },
+    { "kind": "file_exists", "path": "reports/logs/day2.log" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "touch"
-    }
+    { "kind": "command", "name": "touch" },
+    { "kind": "command", "name": "mkdir" }
   ]
 }

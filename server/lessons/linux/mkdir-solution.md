@@ -1,9 +1,16 @@
 ```bash
 mkdir mission
+mkdir mission/logs mission/data mission/backups
 mkdir -p mission/logs/day1
-ls mission/logs
+tree mission
 ```
 
 ```text
-day1
+mission
+├── backups
+├── data
+└── logs
+    └── day1
+
+4 directories, 0 files
 ```

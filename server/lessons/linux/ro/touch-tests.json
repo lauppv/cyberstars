@@ -1,22 +1,12 @@
 {
   "checks": [
-    {
-      "kind": "file_exists",
-      "path": "misiune.txt"
-    },
-    {
-      "kind": "file_exists",
-      "path": "echipaj.txt"
-    },
-    {
-      "kind": "file_exists",
-      "path": "rapoarte/rezumat.txt"
-    }
+    { "kind": "file_exists", "path": "misiune.txt" },
+    { "kind": "file_exists", "path": "echipaj.txt" },
+    { "kind": "file_exists", "path": "rapoarte/jurnale/ziua1.log" },
+    { "kind": "file_exists", "path": "rapoarte/jurnale/ziua2.log" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "touch"
-    }
+    { "kind": "command", "name": "touch" },
+    { "kind": "command", "name": "mkdir" }
   ]
 }

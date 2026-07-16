@@ -45,12 +45,13 @@ simply as **"create an empty file"**.
 
 ## Mission: Prepare Mission Files
 
-The station commander needs three new files for today's briefing. Your home directory already has a `reports` folder ready.
+The station commander needs new files for today's briefing, plus a fresh place to keep the daily logs. Your home directory already has a `reports` folder ready.
 
-1. Create an empty file called `mission.txt`.
-2. Create an empty file called `crew.txt`.
-3. Create an empty file called `summary.txt` **inside** the `reports` folder.
+1. Create two empty files `mission.txt` and `crew.txt` in your home directory with a **single** command.
+2. Make a new folder `logs` inside `reports`.
+3. Create two empty log files inside it: `reports/logs/day1.log` and `reports/logs/day2.log`.
+4. Verify the log folder as a tree.
 
 **Expected result**
 
-Running `ls` in your home directory shows `mission.txt` and `crew.txt`, and running `ls reports` shows `summary.txt`.
+The listing shows `mission.txt` and `crew.txt`, and the tree of `reports` shows `day1.log` and `day2.log` inside `reports/logs`.

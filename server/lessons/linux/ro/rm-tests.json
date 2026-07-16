@@ -1,22 +1,13 @@
 {
   "checks": [
-    {
-      "kind": "path_absent",
-      "path": "gunoi.txt"
-    },
-    {
-      "kind": "path_absent",
-      "path": "temp.log"
-    },
-    {
-      "kind": "file_exists",
-      "path": "misiune.txt"
-    }
+    { "kind": "file_exists", "path": "pastreaza/misiune.txt" },
+    { "kind": "file_exists", "path": "misiune.txt" },
+    { "kind": "path_absent", "path": "gunoi.txt" },
+    { "kind": "path_absent", "path": "temp.log" },
+    { "kind": "path_absent", "path": "cache.tmp" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "rm"
-    }
+    { "kind": "command", "name": "rm" },
+    { "kind": "command", "name": "cp" }
   ]
 }

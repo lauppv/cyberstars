@@ -1,5 +1,8 @@
 {
   "cwd": "/home/student",
-  "files": [{ "path": "draft.txt", "content": "Field report from sector 7.\n" }],
+  "files": [
+    { "path": "draft.txt", "content": "Field report from sector 7.\n" },
+    { "path": "notes.txt", "content": "Loose notes to file away.\n" }
+  ],
   "dirs": ["archive"]
 }

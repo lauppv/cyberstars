@@ -42,11 +42,12 @@ deleting anything you are unsure about.
 
 ## Mission: Purge Junk Data
 
-Routine maintenance scan detected leftover junk files cluttering the station workspace. They need to be removed, but be careful not to delete anything important.
+A routine maintenance scan flagged leftover junk cluttering the station workspace. Before you delete anything, secure the one file that matters — there is no undo for `rm`.
 
-1. Delete the file `junk.txt`.
-2. Delete the file `temp.log`.
+1. Create a `keep` folder and copy `mission.txt` into it as a safety backup.
+2. Review the workspace before deleting anything.
+3. Delete the three junk files `junk.txt`, `temp.log` and `cache.tmp` in a **single** command.
 
 **Expected result**
 
-Both junk files are gone, but `mission.txt` is still safely in your home directory.
+The junk files are gone, `mission.txt` is still in your home directory, and a safety copy sits in `keep`.

@@ -48,11 +48,13 @@ undo. Always `ls` the folder first to be certain of what is inside.
 
 ## Mission: Decommission Old Bays
 
-Two storage bays on the station are scheduled for decommissioning. The `empty-bay` folder has already been cleared out, but `old-data` still contains leftover files.
+Two storage bays on the station are scheduled for decommissioning. The `empty-bay` folder has already been cleared out, but `old-data` still holds leftover files — and one of them, `a.log`, must be preserved before the bay is wiped.
 
-1. Remove the empty `empty-bay` folder using `rmdir`.
-2. Remove the `old-data` folder and all its contents using `rm -r`.
+1. Inspect the workspace, then look inside `old-data`, to see exactly what is there before you delete anything.
+2. Create an `archive` folder and copy `old-data/a.log` into it as a safety backup.
+3. Remove the empty `empty-bay` folder — the safe way that only works on empty folders.
+4. Remove the `old-data` folder and everything inside it.
 
 **Expected result**
 
-Both folders are gone, but the `mission` folder remains untouched.
+Both bays are gone, `a.log` survives inside `archive`, and the `mission` folder is untouched.

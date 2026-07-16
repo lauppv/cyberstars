@@ -1,18 +1,9 @@
 {
   "checks": [
-    {
-      "kind": "file_exists",
-      "path": "arhiva/raport.txt"
-    },
-    {
-      "kind": "path_absent",
-      "path": "ciorna.txt"
-    }
+    { "kind": "file_exists", "path": "registre/raport.txt" },
+    { "kind": "file_exists", "path": "registre/notite-2026.txt" },
+    { "kind": "path_absent", "path": "ciorna.txt" },
+    { "kind": "path_absent", "path": "arhiva" }
   ],
-  "requires": [
-    {
-      "kind": "command",
-      "name": "mv"
-    }
-  ]
+  "requires": [{ "kind": "command", "name": "mv" }]
 }

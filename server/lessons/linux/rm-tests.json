@@ -1,22 +1,13 @@
 {
   "checks": [
-    {
-      "kind": "path_absent",
-      "path": "junk.txt"
-    },
-    {
-      "kind": "path_absent",
-      "path": "temp.log"
-    },
-    {
-      "kind": "file_exists",
-      "path": "mission.txt"
-    }
+    { "kind": "file_exists", "path": "keep/mission.txt" },
+    { "kind": "file_exists", "path": "mission.txt" },
+    { "kind": "path_absent", "path": "junk.txt" },
+    { "kind": "path_absent", "path": "temp.log" },
+    { "kind": "path_absent", "path": "cache.tmp" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "rm"
-    }
+    { "kind": "command", "name": "rm" },
+    { "kind": "command", "name": "cp" }
   ]
 }

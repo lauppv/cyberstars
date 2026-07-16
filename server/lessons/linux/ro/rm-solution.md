@@ -1,8 +1,12 @@
 ```bash
-rm gunoi.txt temp.log
+mkdir pastreaza
+cp misiune.txt pastreaza
+ls
+rm gunoi.txt temp.log cache.tmp
 ls
 ```
 
 ```text
-misiune.txt
+cache.tmp  gunoi.txt  misiune.txt  pastreaza  temp.log
+misiune.txt  pastreaza
 ```
