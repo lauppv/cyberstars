@@ -36,10 +36,13 @@ liniile.
 
 ## Misiune: Filtrul semnalelor de pericol
 
-Ofițerul de comunicații al stației a marcat `transmisii.log` — conține mesaje de rutină amestecate cu apeluri de pericol. Centrul de comandă vrea doar urgențele.
+Ofițerul de comunicații al stației a marcat `transmisii.log` — conține mesaje de rutină amestecate cu apeluri de pericol. Centrul de comandă vrea urgențele izolate și arhivate.
 
-Folosește un **pipe** ca să trimiți rezultatul lui `cat transmisii.log` în `grep` și să afișezi doar liniile care conțin `mayday`.
+1. Folosește un **pipe** ca să trimiți rezultatul lui `cat transmisii.log` în `grep` și să păstrezi doar liniile care conțin `mayday`.
+2. Trimite acel flux filtrat într-un fișier nou numit `pericol.txt`, în loc de ecran.
+3. Creează un folder numit `centru-comanda` și mută `pericol.txt` în el.
+4. Numără câte apeluri de pericol conține fișierul.
 
 **Rezultat așteptat**
 
-Ar trebui să apară trei linii, fiecare începând cu `mayday:`.
+`centru-comanda/pericol.txt` conține cele trei linii `mayday:`.

@@ -1,15 +1,21 @@
 {
   "checks": [
+    { "kind": "dir_exists", "path": "raport" },
     {
       "kind": "command_output",
-      "cmd": "cat alerte.txt",
+      "cmd": "cat raport/alerte.txt",
       "expected": "critical: scadere presiune puntea 7\ncritical: radiatii crescute laboratorul 3"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat raport/sanatoase.txt",
+      "expected": "ok: oxigen normal\nok: temperatura stabila\nok: gravitate nominala"
     }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "grep\\b.*critical"
-    }
+    { "kind": "command", "pattern": "grep\\b.*critical" },
+    { "kind": "command", "pattern": "grep\\b.*\\bok\\b" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

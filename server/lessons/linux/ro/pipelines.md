@@ -47,8 +47,11 @@ Dacă ceva nu merge, scoate ultimul pipe și inspectează rezultatul intermediar
 
 Echipajul de pe punte are nevoie de un briefing rapid — doar cele mai urgente două alerte din jurnalul de evenimente al zilei, sortate alfabetic, ca să le poată confrunta cu lista de tură.
 
-Construiește un pipeline care citește `evenimente.log`, filtrează liniile care conțin `alert`, le sortează alfabetic și afișează doar **primele 2** rezultate. Pipeline-ul tău trebuie să înlănțuiască cel puțin 3 pipe-uri.
+1. Construiește un pipeline care citește `evenimente.log`, păstrează doar liniile care conțin `alert`, le sortează alfabetic și afișează doar **primele 2** rezultate. Înlănțuie cel puțin 3 pipe-uri.
+2. Trimite acel briefing de două linii într-un fișier numit `briefing.txt`.
+3. Creează un folder numit `punte` și mută `briefing.txt` în el.
+4. Într-un pipeline separat, numără câte linii `alert` conține jurnalul complet.
 
 **Rezultat așteptat**
 
-Pe ecran ar trebui să apară două linii cu `alert`, sortate.
+`punte/briefing.txt` conține cele două linii `alert`, sortate.

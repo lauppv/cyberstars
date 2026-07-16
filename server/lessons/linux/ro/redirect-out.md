@@ -46,10 +46,13 @@ orice.
 
 ## Misiune: Extragerea alertelor critice
 
-Rețeaua de senzori a înregistrat citiri în `senzori.log`, dar inginerul-șef vrea să vadă doar avertismentele critice. Extrage-le într-un fișier separat, ca echipa de reparații să știe exact ce trebuie remediat.
+Rețeaua de senzori a înregistrat citiri în `senzori.log`, dar inginerul-șef vrea liniile importante separate în fișiere proprii, ca echipa de reparații să știe exact ce trebuie remediat.
 
-Folosește `grep` ca să găsești liniile care conțin `critical` în `senzori.log` și redirecționează rezultatul într-un fișier nou numit `alerte.txt`.
+1. Găsește liniile care conțin `critical` în `senzori.log` și salvează acel rezultat într-un fișier nou numit `alerte.txt`, în loc să-l afișezi pe ecran.
+2. Fă la fel pentru citirile sănătoase: capturează liniile care conțin `ok` într-un fișier numit `sanatoase.txt`.
+3. Creează un folder numit `raport` și mută ambele fișiere în el.
+4. Afișează `raport/alerte.txt` ca să confirmi că lista echipei de reparații este corectă.
 
 **Rezultat așteptat**
 
-Rulând `cat alerte.txt`, vei vedea doar cele două linii critice din jurnalul senzorilor.
+Folderul `raport` conține `alerte.txt` (cele două linii critice) și `sanatoase.txt` (cele trei citiri sănătoase).

@@ -46,10 +46,13 @@ wherever stream 1 is going."
 
 ## Mission: Ghost File Investigation
 
-Station sensors flagged a reference to a file called `ghost.txt` that may no longer exist. You need to run `ls report.txt ghost.txt` to check both files, but the error output is cluttering the main console.
+Station sensors flagged a reference to a file called `ghost.txt` that may no longer exist. You need to check both files, but the error output is cluttering the main console and you want it filed away.
 
-Redirect **only the error** into a file called `errors.log` using `2>`, so the normal output stays on screen and the error is captured separately.
+1. Run `ls report.txt ghost.txt` to check both files, but capture **only the error** into a file called `errors.log` — the normal output should stay on screen.
+2. Display `errors.log` to read the captured error.
+3. Create a folder called `logs` and move `errors.log` into it.
+4. Search the captured log for the words `No such` to confirm the failure was recorded.
 
 **Expected result**
 
-The terminal shows `report.txt` on screen, and `cat errors.log` reveals the "No such file" error for `ghost.txt`.
+`logs/errors.log` contains the "No such file" error for `ghost.txt`.

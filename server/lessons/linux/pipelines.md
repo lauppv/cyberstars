@@ -44,8 +44,11 @@ If something goes wrong, remove the last pipe and inspect the intermediate outpu
 
 The bridge crew needs a quick briefing — only the two most urgent alerts from today's event log, sorted alphabetically so they can cross-reference the duty roster.
 
-Build a pipeline that reads `events.log`, filters lines containing `alert`, sorts them alphabetically, and shows only the **first 2** results. Your pipeline should chain at least 3 pipes.
+1. Build a pipeline that reads `events.log`, keeps only the lines containing `alert`, sorts them alphabetically, and shows only the **first 2** results. Chain at least 3 pipes.
+2. Send that two-line briefing into a file called `briefing.txt`.
+3. Create a folder called `bridge` and move `briefing.txt` into it.
+4. In a separate pipeline, count how many `alert` lines the full log contains.
 
 **Expected result**
 
-Two sorted `alert` lines should appear on screen.
+`bridge/briefing.txt` holds the two sorted `alert` lines.

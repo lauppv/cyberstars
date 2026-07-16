@@ -1,6 +1,9 @@
 ```bash
 grep critical sensors.log > alerts.txt
-cat alerts.txt
+grep ok sensors.log > healthy.txt
+mkdir report
+mv alerts.txt healthy.txt report/
+cat report/alerts.txt
 ```
 
 ```text

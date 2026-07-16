@@ -35,10 +35,13 @@ lines.
 
 ## Mission: Distress Signal Filter
 
-The station's comms officer has flagged `transmissions.log` — it contains routine chatter mixed with distress calls. Command needs only the emergencies.
+The station's comms officer has flagged `transmissions.log` — it contains routine chatter mixed with distress calls. Command needs the emergencies isolated and filed.
 
-Use a **pipe** to send the output of `cat transmissions.log` into `grep` and show only lines containing `mayday`.
+1. Use a **pipe** to send the output of `cat transmissions.log` into `grep` and keep only the lines containing `mayday`.
+2. Send that filtered stream into a new file called `distress.txt` instead of the screen.
+3. Create a folder called `command-center` and move `distress.txt` into it.
+4. Count how many distress calls the file holds.
 
 **Expected result**
 
-Three lines should appear, each starting with `mayday:`.
+`command-center/distress.txt` holds the three `mayday:` lines.
