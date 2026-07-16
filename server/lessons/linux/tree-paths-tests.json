@@ -1,12 +1,8 @@
 {
+  "checks": [{ "kind": "cwd_is", "path": "reports" }],
   "requires": [
-    {
-      "kind": "command",
-      "name": "tree"
-    },
-    {
-      "kind": "command",
-      "name": "pwd"
-    }
+    { "kind": "command", "name": "tree" },
+    { "kind": "command", "name": "cd" },
+    { "kind": "command", "pattern": "ls\\b.*tools" }
   ]
 }

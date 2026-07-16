@@ -40,10 +40,12 @@ mereu cu ce lucrezi.
 
 ## Misiune: Inventar
 
-Echipajul anterior a lăsat în urmă fișiere și foldere în directorul tău personal. Înainte de a-ți începe tura, trebuie să știi cu ce ai de-a face.
+Echipajul anterior a lăsat în urmă fișiere și foldere în directorul tău personal, iar unul dintre acele foldere păstrează rapoartele lor vechi. Înainte de a-ți începe tura, trebuie să știi cu ce ai de-a face.
 
-Rulează `ls` pentru a lista tot ce se află în directorul curent.
+1. Confirmă unde te afli în sistemul de fișiere.
+2. Listează tot ce se află în directorul curent ca să vezi ce a lăsat echipajul anterior.
+3. Aruncă o privire în folderul `rapoarte` fără a intra în el.
 
 **Rezultat așteptat**
 
-Terminalul afișează numele tuturor fișierelor și folderelor lăsate de echipajul anterior.
+Confirmi că ești în `/home/student`, listarea scoate la iveală ce a lăsat echipajul anterior, iar privirea în `rapoarte` afișează jurnalele de raport din acel folder.

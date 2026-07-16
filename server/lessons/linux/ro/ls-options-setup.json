@@ -3,7 +3,8 @@
   "files": [
     { "path": "echipaj.txt", "content": "Ava\nBen\nChloe\n" },
     { "path": "misiune.txt", "content": "Misiune: exploreaza sectorul 7.\n" },
-    { "path": ".secret.txt", "content": "cod de acces: 4471\n" }
+    { "path": ".secret.txt", "content": "cod de acces: 4471\n" },
+    { "path": "rapoarte/jurnal.txt", "content": "Jurnal de bord.\n" }
   ],
   "dirs": ["rapoarte"]
 }

@@ -1,4 +1,7 @@
 {
   "checks": [{ "kind": "cwd_is", "path": "unelte/scripturi" }],
-  "requires": [{ "kind": "command", "name": "cd" }]
+  "requires": [
+    { "kind": "command", "name": "cd" },
+    { "kind": "command", "name": "ls" }
+  ]
 }

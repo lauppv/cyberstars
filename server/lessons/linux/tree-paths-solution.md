@@ -1,6 +1,8 @@
 ```bash
 tree
+cd reports
 pwd
+ls ../tools
 ```
 
 ```text
@@ -13,5 +15,6 @@ pwd
     └── deploy.sh
 
 2 directories, 4 files
-/home/student
+/home/student/reports
+deploy.sh
 ```

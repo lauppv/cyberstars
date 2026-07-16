@@ -59,11 +59,12 @@ Tip: lost? `cd ~` always brings you home, and `pwd` always tells you where you a
 
 ## Mission: Reach the Scripts Vault
 
-A critical automation script is stored deep inside the station's file system. Your home directory contains a `tools` folder, and inside it there is a `scripts` folder.
+A critical automation script is stored deep inside the station's file system. Your home directory contains a `tools` folder, and inside it there is a `scripts` folder. Look around at each stop instead of walking blindly.
 
-1. Navigate into the `tools` folder.
+1. Navigate into the `tools` folder, then list what is inside it.
 2. From there, navigate into the `scripts` folder.
+3. Confirm your position, then list the vault contents.
 
 **Expected result**
 
-Running `pwd` shows `/home/student/tools/scripts` — you have reached the vault.
+Your position shows `/home/student/tools/scripts`, and the final listing reveals the automation script waiting in the vault.

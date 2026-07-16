@@ -41,10 +41,12 @@ what you are working with.
 
 ## Mission: Inventory Check
 
-The previous crew left behind files and folders in your home directory. Before you can start your shift, you need to know what you are working with.
+The previous crew left behind files and folders in your home directory, and one of those folders holds their old reports. Before you can start your shift, you need to know what you are working with.
 
-Run `ls` to list everything in your current directory.
+1. Confirm where you are in the filesystem.
+2. List everything in your current directory to see what the previous crew left behind.
+3. Peek inside the `reports` folder without entering it.
 
 **Expected result**
 
-The terminal displays the names of all files and folders the previous crew left behind.
+You confirm you are in `/home/student`, the listing reveals what the previous crew left behind, and looking inside `reports` shows the report logs stored in that folder.
