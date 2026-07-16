@@ -44,6 +44,7 @@ const SupportPage = lazy(() =>
 const WelcomePage = lazy(() =>
   import('./pages/WelcomePage').then((m) => ({ default: m.WelcomePage })),
 );
+const AdminPage = lazy(() => import('./pages/AdminPage').then((m) => ({ default: m.AdminPage })));
 
 function GlobalBackground() {
   const { pathname } = useLocation();
@@ -81,6 +82,7 @@ function App() {
                 <Route path="/rules" element={<RulesPage />} />
                 <Route path="/support" element={<SupportPage />} />
                 <Route path="/welcome" element={<WelcomePage />} />
+                <Route path="/admin" element={<AdminPage />} />
               </Routes>
             </Suspense>
           </ProgressProvider>
