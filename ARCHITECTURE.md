@@ -24,7 +24,7 @@ cyberstars/
 │   ├── server.ts                  # Express entry point
 │   ├── config/                    # Environment, Prisma client singleton
 │   ├── schemas/                   # Zod request validation schemas
-│   ├── middleware/                 # Auth (JWT), validation, error handler
+│   ├── middleware/                 # Auth (JWT + requireAdmin), validation, error handler
 │   ├── repositories/              # Data access (Prisma only, no business logic)
 │   ├── services/                  # Business logic (no req/res, no SQL)
 │   ├── controllers/               # Thin req/res layer
@@ -179,6 +179,14 @@ their completion saved.
 | PATCH  | `/api/profile`        | Yes  | Update profile (bio, status) |
 | POST   | `/api/profile/avatar` | Yes  | Upload avatar                |
 | DELETE | `/api/profile/avatar` | Yes  | Remove avatar                |
+
+### Admin
+
+Gated by `requireAdmin` (after `authenticateToken`) — the role is read fresh from the DB, never from the JWT.
+
+| Method | Endpoint           | Auth  | Description                                                                                                          |
+| ------ | ------------------ | ----- | -------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/admin/stats` | Admin | Platform stats (users/progress/forum/support, cached ~5min, + live code-exec metrics); `?fresh=1` bypasses the cache |
 
 ## Database schema
 

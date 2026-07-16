@@ -263,6 +263,18 @@ export function Topbar({
                 >
                   <span className="w-4 text-center">👤</span> {t('topbar.profile')}
                 </button>
+                {user.role === 'ADMIN' && (
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate('/admin');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--accent)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">📊</span> {t('topbar.admin')}
+                  </button>
+                )}
                 <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
                   <span className="w-4 text-center">🌐</span>
                   <span className="flex-1">{t('topbar.language')}</span>

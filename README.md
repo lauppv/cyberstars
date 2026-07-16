@@ -15,6 +15,7 @@ A free, open-source interactive coding education platform. Learn Python, C, Java
 - **Code persistence** — saved per lesson, restored on revisit
 - **Community forum** — threaded discussions with reactions and solution marking
 - **Linux terminal** — interactive sandboxed shell for learning Linux commands
+- **Admin dashboard** — admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics); access is server-authoritative, the role is read from the DB, never trusted from the client
 
 ## Quick start
 
