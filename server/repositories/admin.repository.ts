@@ -41,28 +41,28 @@ export async function progressStats(): Promise<AdminProgressStats> {
     }),
   ]);
 
-  const courses = new Map<string, { completions: number; learners: Set<number> }>();
+  // groupBy on [courseKey, userId] yields one row per (course, user), so the
+  // number of rows for a course is its distinct-learner count.
+  const learnersByCourse = new Map<string, Set<number>>();
   for (const g of courseUserGroups) {
-    const entry = courses.get(g.courseKey) ?? { completions: 0, learners: new Set<number>() };
-    entry.completions += g._count?._all ?? 0;
-    entry.learners.add(g.userId);
-    courses.set(g.courseKey, entry);
+    const learners = learnersByCourse.get(g.courseKey) ?? new Set<number>();
+    learners.add(g.userId);
+    learnersByCourse.set(g.courseKey, learners);
   }
 
-  // groupBy on [courseKey, userId] yields one row per (course, user); _count is
-  // absent because no aggregate was requested, so recount completions per course.
+  // Completions per course need a separate aggregate (the query above requested
+  // no _count).
   const completionCounts = await prisma.userLessonProgress.groupBy({
     by: ['courseKey'],
     where,
     _count: { _all: true },
   });
-  const completionsByCourse = new Map(completionCounts.map((c) => [c.courseKey, c._count._all]));
 
-  const byCourse = [...courses.entries()]
-    .map(([courseKey, v]) => ({
-      courseKey,
-      completions: completionsByCourse.get(courseKey) ?? 0,
-      learners: v.learners.size,
+  const byCourse = completionCounts
+    .map((c) => ({
+      courseKey: c.courseKey,
+      completions: c._count._all,
+      learners: learnersByCourse.get(c.courseKey)?.size ?? 0,
     }))
     .sort((a, b) => b.completions - a.completions);
 
