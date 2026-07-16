@@ -35,12 +35,15 @@ everything `more` does _and_ lets you scroll **backwards** — hence the joke na
 
 ---
 
-## Mission: Review the Operations Manual
+## Mission: Review and Archive the Operations Manual
 
-The station's operations manual has been updated and saved to `manual.txt`. You need to review its contents. In this sandbox, use `cat` to display the file (on a real system you would use `less` to scroll through it page by page).
+The station's operations manual has been updated and saved to `manual.txt`. You need to review it and keep a copy on file. (On a real system you would scroll through it page by page; in this sandbox the scrolling viewer is limited, so display the file instead.)
 
-Display the contents of `manual.txt`.
+1. Display the whole manual to review its chapters.
+2. Count **how many lines** the manual has.
+3. Create a folder called `manuals` and copy `manual.txt` into it as `manual-archive.txt`.
+4. Confirm the archived copy by displaying its contents.
 
 **Expected result**
 
-The full text of the operations manual appears in your terminal.
+The full manual appears, you learn its line count, and the `manuals` folder holds a faithful copy of it.

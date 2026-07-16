@@ -44,16 +44,20 @@ rezultatele automat.
 
 ---
 
-## Misiune: Numără inventarul
+## Misiune: Numără și depune inventarul
 
-Sistemul de gestionare a proviziilor raportează că `inventar.txt` listează fiecare
-articol din cala de marfă, câte unul pe linie. Logisticianul are nevoie de un număr
-exact înainte ca naveta de reaprovizionare să sosească.
+`inventar.txt` listează fiecare articol din cala de marfă, câte unul pe linie.
+Logisticianul are nevoie de un număr exact înainte ca naveta de reaprovizionare să
+sosească, plus o copie depusă a manifestului.
 
-Folosește `wc` cu opțiunea potrivită pentru a număra **câte linii** sunt în
-`inventar.txt`.
+1. Numără **câte linii** sunt în `inventar.txt` — acela este numărul de articole.
+2. Rulează o măsurătoare completă a lui `inventar.txt` ca să vezi liniile, cuvintele și
+   caracterele împreună.
+3. Creează un folder numit `manifest` și copiază `inventar.txt` în el sub numele
+   `inventar-verificat.txt`.
+4. Confirmă că fișierul depus are același număr de articole numărând și **liniile** lui.
 
 **Rezultat așteptat**
 
-Terminalul afișează numărul de linii, spunându-ți exact câte articole se află în
-inventar.
+Vezi numărul de articole și măsurătoarea completă, iar folderul `manifest` conține o
+copie al cărei număr de linii se potrivește cu originalul.

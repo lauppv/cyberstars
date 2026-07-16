@@ -1,8 +1,23 @@
 {
+  "checks": [
+    {
+      "kind": "dir_exists",
+      "path": "arhiva"
+    },
+    {
+      "kind": "files_equal",
+      "a": "instructaj.txt",
+      "b": "arhiva/instructaj-vechi.txt"
+    }
+  ],
   "requires": [
     {
       "kind": "command",
-      "pattern": "cat\\b.*instructaj\\.txt"
+      "pattern": "cat\\b.*instructaj\\.txt.*anexa\\.txt"
+    },
+    {
+      "kind": "command",
+      "name": "cp"
     }
   ]
 }

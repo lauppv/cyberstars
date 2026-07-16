@@ -40,13 +40,15 @@ using redirection. For now, just enjoy seeing it on screen.)
 
 ---
 
-## Mission: Assemble the Crew Roster
+## Mission: Assemble and Archive the Crew Roster
 
-The station's crew list got split into two files: `team-a.txt` and `team-b.txt`. Command needs a combined view and a numbered roll call of Team A.
+The station's crew list got split into two files: `team-a.txt` and `team-b.txt`. Command needs a combined view, a numbered roll call, and both files kept together for the record.
 
-1. Use `cat` to print `team-a.txt` and `team-b.txt` together in one go.
-2. Run `cat -n` on `team-a.txt` to see its lines numbered.
+1. Print `team-a.txt` and `team-b.txt` together in one go.
+2. Print both files again, this time with a line number in front of every line, running continuously across both.
+3. Create a folder called `roster` and copy both team files into it.
+4. Confirm the archive by printing `roster/team-a.txt` with its lines numbered.
 
 **Expected result**
 
-You see both teams listed one after another, then Team A's roster with line numbers in front of each name.
+Both teams appear one after another, then the same names with continuous line numbers. The `roster` folder holds a copy of each team file.

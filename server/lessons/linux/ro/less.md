@@ -35,15 +35,20 @@ numele glumeț: „less is more” („mai puțin înseamnă mai mult”).
 
 ---
 
-## Misiune: Revizuiește manualul de operațiuni
+## Misiune: Revizuiește și arhivează manualul de operațiuni
 
 Manualul de operațiuni al stației a fost actualizat și salvat în `manual.txt`.
-Trebuie să îi revizuiești conținutul. În acest sandbox, folosește `cat` pentru a
-afișa fișierul (pe un sistem real ai folosi `less` pentru a derula prin el pagină
-cu pagină).
+Trebuie să îl revizuiești și să păstrezi o copie la dosar. (Pe un sistem real ai derula
+prin el pagină cu pagină; în acest sandbox vizualizatorul cu derulare este limitat, așa
+că afișează fișierul în schimb.)
 
-Afișează conținutul fișierului `manual.txt`.
+1. Afișează întregul manual ca să îi revizuiești capitolele.
+2. Numără **câte linii** are manualul.
+3. Creează un folder numit `manuale` și copiază `manual.txt` în el sub numele
+   `manual-arhiva.txt`.
+4. Confirmă copia arhivată afișându-i conținutul.
 
 **Rezultat așteptat**
 
-Textul complet al manualului de operațiuni apare în terminalul tău.
+Manualul complet apare, afli numărul lui de linii, iar folderul `manuale` conține o
+copie fidelă a lui.

@@ -1,7 +1,7 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "manuals" },
-    { "kind": "files_equal", "a": "manual.txt", "b": "manuals/manual-archive.txt" }
+    { "kind": "dir_exists", "path": "manuale" },
+    { "kind": "files_equal", "a": "manual.txt", "b": "manuale/manual-arhiva.txt" }
   ],
   "requires": [
     { "kind": "command", "pattern": "cat\\b.*manual\\.txt" },

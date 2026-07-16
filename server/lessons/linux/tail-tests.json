@@ -1,8 +1,11 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "alerts" },
+    { "kind": "files_equal", "a": "system.log", "b": "alerts/incident.log" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "tail\\b.*\\b4\\b.*system\\.log"
-    }
+    { "kind": "command", "pattern": "head\\b.*\\b3\\b.*system\\.log" },
+    { "kind": "command", "pattern": "tail\\b.*\\b4\\b.*system\\.log" },
+    { "kind": "command", "name": "cp" }
   ]
 }

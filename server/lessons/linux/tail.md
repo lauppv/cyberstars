@@ -37,12 +37,14 @@ let you sample a big file from both ends without reading the middle.
 
 ---
 
-## Mission: Check the Latest Alerts
+## Mission: Sample and Archive the Alert
 
-Something triggered an alert on the station. The most recent events are always at the end of `system.log`. You need to check what just happened.
+Something triggered an alert on the station. Before filing the incident report, you want to sample the log from both ends and keep a copy.
 
-Use `tail` with the `-n` option to print only the **last 4 lines** of `system.log`.
+1. Look at just the **first 3 lines** of `system.log` to see how it began after boot.
+2. Read the **last 4 lines** of `system.log` — the most recent events that triggered the alert.
+3. Create a folder called `alerts` and copy `system.log` into it as `incident.log` for the report.
 
 **Expected result**
 
-The 4 most recent log entries appear, showing you the latest station events.
+You see the first few boot lines, then the latest 4 alert lines. The `alerts` folder holds a copy of the log for the incident record.

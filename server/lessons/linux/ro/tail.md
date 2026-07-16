@@ -38,15 +38,19 @@ să citești mijlocul.
 
 ---
 
-## Misiune: Verifică ultimele alerte
+## Misiune: Eșantionează și arhivează alerta
 
-Ceva a declanșat o alertă pe stație. Cele mai recente evenimente sunt mereu la
-sfârșitul fișierului `sistem.log`. Trebuie să verifici ce tocmai s-a întâmplat.
+Ceva a declanșat o alertă pe stație. Înainte de a completa raportul de incident, vrei
+să eșantionezi log-ul de la ambele capete și să păstrezi o copie.
 
-Folosește `tail` cu opțiunea `-n` pentru a afișa doar **ultimele 4 linii** din
-`sistem.log`.
+1. Uită-te doar la **primele 3 linii** din `sistem.log` ca să vezi cum a început după
+   pornire.
+2. Citește **ultimele 4 linii** din `sistem.log` — cele mai recente evenimente care au
+   declanșat alerta.
+3. Creează un folder numit `alerte` și copiază `sistem.log` în el sub numele
+   `incident.log` pentru raport.
 
 **Rezultat așteptat**
 
-Apar cele mai recente 4 înregistrări din log, arătându-ți cele mai noi evenimente ale
-stației.
+Vezi primele linii de pornire, apoi cele mai recente 4 linii de alertă. Folderul
+`alerte` conține o copie a log-ului pentru evidența incidentului.

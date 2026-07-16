@@ -4,6 +4,10 @@
     {
       "path": "instructaj.txt",
       "content": "Instructaj cadeti.\nDestinatie: sectorul 7.\nRaporteaza la 0900.\n"
+    },
+    {
+      "path": "anexa.txt",
+      "content": "Anexa: verifica nivelul de oxigen inainte de plecare.\nCod de andocare: 7742.\n"
     }
   ],
   "dirs": []
