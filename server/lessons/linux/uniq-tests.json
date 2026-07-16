@@ -1,12 +1,13 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "security" },
+    { "kind": "file_contains", "path": "security/access-tally.txt", "text": "Voss" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "sort\\b.*door_access\\.log"
-    },
-    {
-      "kind": "command",
-      "pattern": "uniq\\b.*-c"
-    }
+    { "kind": "command", "pattern": "sort\\b.*door_access\\.log" },
+    { "kind": "command", "pattern": "uniq\\b.*-c" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "grep\\b.*Voss" }
   ]
 }

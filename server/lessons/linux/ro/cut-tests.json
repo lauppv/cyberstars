@@ -2,10 +2,10 @@
   "checks": [
     {
       "kind": "command_output",
-      "cmd": "cat deck-office/item-list.txt",
-      "expected": "oxygen_tanks\nration_packs\nmedkits\nbatteries\nwater_filters"
+      "cmd": "cat birou-punte/lista-articole.txt",
+      "expected": "rezervoare_oxigen\npachete_ratii\ntruse_medicale\nbaterii\nfiltre_apa"
     },
-    { "kind": "dir_exists", "path": "deck-office" }
+    { "kind": "dir_exists", "path": "birou-punte" }
   ],
   "requires": [
     { "kind": "command", "pattern": "cut\\b.*-f\\s*1.*manifest\\.csv" },

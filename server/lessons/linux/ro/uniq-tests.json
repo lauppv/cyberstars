@@ -1,12 +1,13 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "securitate" },
+    { "kind": "file_contains", "path": "securitate/bilant-acces.txt", "text": "Voss" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "sort\\b.*acces_usa\\.log"
-    },
-    {
-      "kind": "command",
-      "pattern": "uniq\\b.*-c"
-    }
+    { "kind": "command", "pattern": "sort\\b.*acces_usa\\.log" },
+    { "kind": "command", "pattern": "uniq\\b.*-c" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "grep\\b.*Voss" }
   ]
 }

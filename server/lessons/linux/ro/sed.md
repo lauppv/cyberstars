@@ -40,10 +40,13 @@ Folosirea lui `|` evită să escapezi toate slash-urile.
 
 ## Misiune: Reparare raport de inspecție
 
-Stația tocmai a trecut reinspectia de siguranță, dar `raport.txt` mai conține rezultate vechi `FAIL` din runda anterioară. Căpitanul vrea un raport curat înainte să sosească delegația.
+Stația tocmai a trecut reinspectia de siguranță, dar `raport.txt` mai conține rezultate vechi `FAIL` din runda anterioară. Căpitanul vrea un raport curat la dosar înainte să sosească delegația.
 
-Folosește `sed` ca să înlocuiești **toate** aparițiile lui `FAIL` cu `PASS` în `raport.txt` și să afișezi raportul corectat pe ecran.
+1. Folosește `sed` ca să înlocuiești **toate** aparițiile lui `FAIL` cu `PASS` în `raport.txt` și afișează raportul corectat.
+2. Salvează raportul corectat într-un fișier nou numit `raport-curat.txt`.
+3. Creează un folder numit `arhiva` și mută `raport-curat.txt` în el.
+4. Numără câte teste afișează acum `PASS`.
 
 **Rezultat așteptat**
 
-Fiecare linie de test afișează `PASS` — nicio intrare `FAIL` nu mai rămâne în output.
+`arhiva/raport-curat.txt` afișează `PASS` pe fiecare linie de test — nicio intrare `FAIL` nu mai rămâne.

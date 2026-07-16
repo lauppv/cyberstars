@@ -51,10 +51,13 @@ Această comandă filtrează mai întâi erorile, apoi le sortează alfabetic.
 
 ## Misiune: Lista de priorități pentru marfă
 
-O navetă de aprovizionare tocmai a andocat, iar manifestul din cala de marfă (`provizii.txt`) este în dezordine. Ofițerul cu logistica vrea ca articolele să fie listate în ordine alfabetică inversă pentru echipa de descărcare.
+O navetă de aprovizionare tocmai a andocat, iar manifestul din cala de marfă (`provizii.txt`) este în dezordine. Ofițerul cu logistica vrea o ordine curată de descărcare pentru echipă.
 
-Sortează `provizii.txt` în **ordine alfabetică inversă** și afișează rezultatul pe ecran.
+1. Sortează `provizii.txt` în **ordine alfabetică inversă** și afișează rezultatul pe ecran.
+2. Salvează acea listă sortată invers într-un fișier nou numit `ordine-descarcare.txt`.
+3. Creează un folder numit `cala-marfa` și mută `ordine-descarcare.txt` în el.
+4. Afișează doar primul articol din listă — acela este ce descarcă echipa prima dată.
 
 **Rezultat așteptat**
 
-Cele șase articole apar de la `truse medicale` până la `baterii`.
+`cala-marfa/ordine-descarcare.txt` conține cele șase articole, de la `truse medicale` până la `baterii`.

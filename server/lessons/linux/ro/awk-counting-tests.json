@@ -2,14 +2,15 @@
   "checks": [
     {
       "kind": "command_output",
-      "cmd": "awk '{s+=$2} END{print s}' greutate_marfa.txt",
+      "cmd": "cat punte-zbor/greutate-totala.txt",
       "expected": "610"
-    }
+    },
+    { "kind": "dir_exists", "path": "punte-zbor" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "awk\\b.*\\$2.*greutate_marfa\\.txt"
-    }
+    { "kind": "command", "pattern": "awk\\b.*\\$2.*greutate_marfa\\.txt" },
+    { "kind": "command", "pattern": "awk\\b.*\\$2\\s*>\\s*100" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

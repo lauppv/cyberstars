@@ -1,8 +1,16 @@
 {
-  "requires": [
+  "checks": [
     {
-      "kind": "command",
-      "pattern": "awk\\b.*\\$1.*\\$3.*senzori\\.dat"
-    }
+      "kind": "command_output",
+      "cmd": "cat jurnal-senzori/citire.txt",
+      "expected": "alpha 72\nbeta 101\ngamma 15\ndelta 68\nepsilon 99"
+    },
+    { "kind": "dir_exists", "path": "jurnal-senzori" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "awk\\b.*\\$1.*\\$3.*senzori\\.dat" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "sort\\b.*-n" }
   ]
 }

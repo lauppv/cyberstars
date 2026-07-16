@@ -40,8 +40,11 @@ Extracts the second comma-separated column from a CSV stream.
 
 The supply shuttle is docking in minutes and the deck officer needs a plain list of item names from `manifest.csv` — no quantities, no destinations, just the items.
 
-Use `cut` to extract **only the item names** (field 1) from the comma-delimited `manifest.csv`.
+1. Use `cut` to extract **only the item names** (field 1) from the comma-delimited `manifest.csv`, and display them.
+2. Save that item list into a new file called `item-list.txt`.
+3. Create a folder called `deck-office` and move `item-list.txt` into it.
+4. Count how many items ended up on the list.
 
 **Expected result**
 
-A list of item names, one per line, with no other columns.
+`deck-office/item-list.txt` holds the five item names, one per line, with no other columns.

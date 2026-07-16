@@ -1,8 +1,16 @@
 {
-  "requires": [
+  "checks": [
     {
-      "kind": "command",
-      "pattern": "sort\\b.*-r\\b.*provizii\\.txt"
-    }
+      "kind": "command_output",
+      "cmd": "cat cala-marfa/ordine-descarcare.txt",
+      "expected": "truse medicale\nrezervoare de oxigen\npachete de ratii\nlazi cu munitie\nfiltre de apa\nbaterii"
+    },
+    { "kind": "dir_exists", "path": "cala-marfa" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "sort\\b.*-r\\b.*provizii\\.txt" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "head" }
   ]
 }
