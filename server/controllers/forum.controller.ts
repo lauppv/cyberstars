@@ -24,6 +24,25 @@ function canModerate(actorRole: Role, targetRole: Role, isOwner: boolean): boole
   return isOwner;
 }
 
+/** Only moderators and admins may create/edit/delete forum categories. */
+function requireStaff(role: Role): void {
+  if (role !== 'ADMIN' && role !== 'MODERATOR') {
+    throw new AppError(403, 'Only moderators and admins can manage categories');
+  }
+}
+
+/** Derive a URL-safe, <=50-char slug from a category name. */
+function slugify(name: string): string {
+  const base = name
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 50)
+    .replace(/-+$/, '');
+  return base || 'category';
+}
+
 export async function getCategories(
   _req: Request,
   res: Response,
@@ -474,6 +493,88 @@ export async function updateUserRole(
       if (adminCount <= 1) throw new AppError(400, 'Cannot demote the last remaining admin');
     }
     await userRepo.updateRole(targetId, role);
+    res.json({ ok: true });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function createCategory(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    requireStaff(await userRepo.getRole(req.user!.id));
+
+    const { name, description, icon, color, groupName } = req.body;
+
+    // Derive a unique slug from the name (append -2, -3… on collision).
+    const base = slugify(name);
+    let slug = base;
+    for (let n = 2; await prisma.forumCategory.findUnique({ where: { slug } }); n++) {
+      const suffix = `-${n}`;
+      slug = base.slice(0, 50 - suffix.length) + suffix;
+    }
+
+    const max = await prisma.forumCategory.aggregate({ _max: { sortOrder: true } });
+    const category = await prisma.forumCategory.create({
+      data: {
+        slug,
+        name,
+        description,
+        icon,
+        color,
+        groupName,
+        sortOrder: (max._max.sortOrder ?? 0) + 1,
+      },
+    });
+
+    res.status(201).json({ slug: category.slug });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function updateCategory(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    requireStaff(await userRepo.getRole(req.user!.id));
+
+    const slug = req.params.categorySlug as string;
+    const existing = await prisma.forumCategory.findUnique({ where: { slug } });
+    if (!existing) throw new AppError(404, 'Category not found');
+
+    const { name, description, icon, color, groupName } = req.body;
+    await prisma.forumCategory.update({
+      where: { slug },
+      data: { name, description, icon, color, groupName },
+    });
+
+    res.json({ ok: true });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function deleteCategory(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    requireStaff(await userRepo.getRole(req.user!.id));
+
+    const slug = req.params.categorySlug as string;
+    const existing = await prisma.forumCategory.findUnique({ where: { slug } });
+    if (!existing) throw new AppError(404, 'Category not found');
+
+    // Threads/posts cascade-delete via the schema relation.
+    await prisma.forumCategory.delete({ where: { slug } });
+
     res.json({ ok: true });
   } catch (err) {
     next(err);
