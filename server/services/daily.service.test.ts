@@ -17,14 +17,21 @@ const mockCurriculumRepo = {
   getLessonsByCourse: vi.fn(),
 };
 
+const hasTestsFileMock = vi.fn();
+
 vi.mock('../repositories/daily.repository.js', () => mockDailyRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
+vi.mock('./paths.js', () => ({
+  hasTestsFile: (...args: unknown[]) => hasTestsFileMock(...args),
+}));
 
 const { getDaily, awardBonusForCompletion, todayKey } = await import('./daily.service.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
   mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
+  // Default: every lesson is judge-completable unless a test says otherwise.
+  hasTestsFileMock.mockReturnValue(true);
 });
 
 describe('getDaily', () => {
@@ -81,6 +88,32 @@ describe('getDaily', () => {
     const res = await getDaily(1);
     expect(res.lesson).toBeNull();
     expect(mockDailyRepo.createPick).not.toHaveBeenCalled();
+  });
+
+  it('excludes lessons without a tests file so every pick is claimable', async () => {
+    mockDailyRepo.getPick.mockResolvedValue(null);
+    mockCurriculumRepo.getLessonsByCourse.mockImplementation(async (courseKey: string) =>
+      courseKey === 'python'
+        ? [
+            { slug: 'tested', title: 'Tested', sortOrder: 1 },
+            { slug: 'untested', title: 'Untested', sortOrder: 2 },
+          ]
+        : [],
+    );
+    hasTestsFileMock.mockImplementation((_course: string, slug: string) => slug === 'tested');
+
+    const res = await getDaily(1);
+
+    // Only the tested lesson can be picked, regardless of the hash landing.
+    expect(res.lesson?.slug).toBe('tested');
+    expect(mockDailyRepo.createPick).toHaveBeenCalledWith(
+      1,
+      expect.any(String),
+      'lesson',
+      'python',
+      'tested',
+      'Tested',
+    );
   });
 
   it('reuses the raced-in pick when createPick loses a concurrent race', async () => {

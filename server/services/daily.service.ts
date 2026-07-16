@@ -1,5 +1,6 @@
 import * as dailyRepo from '../repositories/daily.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
+import { hasTestsFile } from './paths.js';
 import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
@@ -37,6 +38,11 @@ async function poolLessons(
   for (const courseKey of courses) {
     const lessons = await curriculumRepo.getLessonsByCourse(courseKey);
     for (const l of lessons) {
+      // Only judge-completable lessons can earn the daily bonus. Skipping
+      // untested ones (Kotlin, main-course lessons without a tests file) keeps
+      // every daily pick claimable — otherwise the deterministic global pick
+      // could land on a lesson nobody can complete.
+      if (!hasTestsFile(courseKey, l.slug)) continue;
       out.push({ courseKey, slug: l.slug, title: l.title });
     }
   }
