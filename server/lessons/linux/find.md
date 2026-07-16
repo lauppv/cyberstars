@@ -45,12 +45,14 @@ find logs -name "error.txt"
 
 ---
 
-## Mission: Locate the Classified File
+## Mission: Locate and Secure the Classified File
 
-Intelligence reports that a classified document called `secret.txt` is stored somewhere in your home directory tree, but no one remembers the exact path.
+Intelligence reports that a classified document called `secret.txt` is stored somewhere in your home directory tree, but no one remembers the exact path. Once located, it must be secured.
 
-Use `find` with `-name` to locate `secret.txt` and print its full path.
+1. Search the whole tree for the file named `secret.txt` and print its full path.
+2. Search the tree again for every file ending in `.log`, using a wildcard.
+3. Now that you know where it lives, create a folder called `vault-copy` and copy the classified file `data/vault/secret.txt` into it as `secret-backup.txt`.
 
 **Expected result**
 
-The terminal displays the path to `secret.txt` within the directory tree.
+The path to `secret.txt` appears, then the `.log` files, and the `vault-copy` folder holds a secured backup of the classified file.

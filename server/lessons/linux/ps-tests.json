@@ -1,8 +1,17 @@
 {
-  "requires": [
+  "checks": [
+    { "kind": "dir_exists", "path": "health-check" },
     {
-      "kind": "command",
-      "pattern": "ps\\b.*aux"
+      "kind": "file_contains",
+      "path": "health-check/reactor-status.txt",
+      "text": "reactor-monitor"
     }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "ps\\b.*aux" },
+    { "kind": "command", "name": "grep" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "wc\\b.*-l" }
   ]
 }

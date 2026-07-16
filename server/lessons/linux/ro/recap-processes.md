@@ -24,15 +24,13 @@ Stația se apropie de un câmp de resturi și căpitanul vrea o verificare compl
 a sistemelor înregistrată înainte de intrare. Parcurge secvența standard de
 diagnoză.
 
-1. Rulează `ps aux` pentru a inspecta toate procesele active — confirmă că
-   monitorul reactorului și suportul vital rulează.
-2. Rulează `df -h` pentru a verifica spațiul disponibil pe toate sistemele de
-   fișiere.
-3. Rulează `du -sh jurnale/` pentru a măsura cât de mult a crescut directorul de
-   loguri.
-4. Rulează `date` pentru a marca temporal această inspecție.
-5. Rulează `history` pentru a confirma că fiecare comandă de diagnoză este
-   înregistrată în jurnalul de audit.
+1. Inspectează toate procesele active — confirmă că monitorul reactorului și
+   suportul vital rulează.
+2. Verifică spațiul disponibil pe toate sistemele de fișiere.
+3. Măsoară cât de mult a crescut directorul `jurnale/`.
+4. Marchează temporal această inspecție cu data și ora curentă.
+5. Revizuiește lista completă a comenzilor înregistrate în această sesiune pentru
+   a confirma jurnalul de audit.
 
 **Rezultat așteptat**
 

@@ -34,8 +34,11 @@ becomes valuable when:
 
 Life support needs an exact headcount to calibrate oxygen levels. The manifest is stored in `crew.txt`, one name per line.
 
-Use input redirection to count the crew: `wc -l < crew.txt`.
+1. Count the crew from `crew.txt` using input redirection, so only the number appears — no filename beside it.
+2. Save that clean count into a new file called `headcount.txt`, combining input and output redirection in a single command.
+3. Create a folder called `life-support` and move `headcount.txt` into it.
+4. Display the stored file to confirm it holds only the number.
 
 **Expected result**
 
-The terminal prints only the number `6` with no filename beside it.
+`life-support/headcount.txt` contains just the number `6`.

@@ -4,12 +4,14 @@
       "kind": "command_output",
       "cmd": "cat misiune.log",
       "expected": "stare: secventa de lansare initiata\nstare: scuturi nominale\nstare: echipaj pregatit"
-    }
+    },
+    { "kind": "dir_exists", "path": "arhiva" },
+    { "kind": "files_equal", "a": "misiune.log", "b": "arhiva/misiune-backup.log" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": ">>"
-    }
+    { "kind": "command", "pattern": ">>" },
+    { "kind": "command", "pattern": "wc\\b.*-l" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "cp" }
   ]
 }

@@ -44,12 +44,15 @@ automatically.
 
 ---
 
-## Mission: Count the Inventory
+## Mission: Count and File the Inventory
 
-Supply tracking reports that `inventory.txt` lists every item in the cargo bay, one per line. The quartermaster needs an exact count before the next resupply shuttle arrives.
+`inventory.txt` lists every item in the cargo bay, one per line. The quartermaster needs an exact count before the next resupply shuttle arrives, plus a filed copy of the manifest.
 
-Use `wc` with the right option to count **how many lines** are in `inventory.txt`.
+1. Count **how many lines** are in `inventory.txt` — that is the number of items.
+2. Run a full measure of `inventory.txt` to see its lines, words and characters together.
+3. Create a folder called `manifest` and copy `inventory.txt` into it as `inventory-checked.txt`.
+4. Confirm the filed copy has the same item count by counting **its** lines too.
 
 **Expected result**
 
-The terminal displays the number of lines, telling you exactly how many items are in the inventory.
+You see the item count and the full measurement, and the `manifest` folder holds a copy whose line count matches the original.

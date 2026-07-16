@@ -1,0 +1,7 @@
+{
+  "requires": [
+    { "kind": "command", "pattern": "ls\\b.*-\\S*a" },
+    { "kind": "command", "pattern": "ls\\b.*-\\S*l" },
+    { "kind": "command", "pattern": "ls\\b.*rapoarte" }
+  ]
+}

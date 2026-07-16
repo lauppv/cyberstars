@@ -1,8 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "audit" },
+    { "kind": "file_contains", "path": "audit/storage-report.txt", "text": "cargo-bay" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "du\\b.*-s.*cargo-bay"
-    }
+    { "kind": "command", "pattern": "df\\b.*-h" },
+    { "kind": "command", "pattern": "du\\b.*-s.*cargo-bay" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

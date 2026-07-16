@@ -1,0 +1,16 @@
+{
+  "checks": [
+    { "kind": "dir_exists", "path": "raport-cpu" },
+    {
+      "kind": "file_contains",
+      "path": "raport-cpu/vinovat-principal.txt",
+      "text": "reactor-monitor"
+    }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "ps\\b.*aux.*--sort" },
+    { "kind": "command", "name": "head" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
+  ]
+}

@@ -1,9 +1,16 @@
 ```bash
 mkdir misiune
+mkdir misiune/jurnale misiune/date misiune/backupuri
 mkdir -p misiune/jurnale/ziua1
-ls misiune/jurnale
+tree misiune
 ```
 
 ```text
-ziua1
+misiune
+├── backupuri
+├── date
+└── jurnale
+    └── ziua1
+
+4 directories, 0 files
 ```

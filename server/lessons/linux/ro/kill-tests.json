@@ -1,0 +1,16 @@
+{
+  "checks": [
+    { "kind": "dir_exists", "path": "jurnal-incident" },
+    { "kind": "file_exists", "path": "jurnal-incident/dupa-oprire.txt" },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c nav-computer jurnal-incident/dupa-oprire.txt",
+      "expected": "0"
+    }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "kill\\b.*-9\\b.*510" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
+  ]
+}

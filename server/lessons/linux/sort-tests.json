@@ -1,8 +1,16 @@
 {
-  "requires": [
+  "checks": [
     {
-      "kind": "command",
-      "pattern": "sort\\b.*-r\\b.*supplies\\.txt"
-    }
+      "kind": "command_output",
+      "cmd": "cat cargo-bay/unload-order.txt",
+      "expected": "water filters\nration packs\noxygen tanks\nmedkits\nbatteries\nammo crates"
+    },
+    { "kind": "dir_exists", "path": "cargo-bay" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "sort\\b.*-r\\b.*supplies\\.txt" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "head" }
   ]
 }

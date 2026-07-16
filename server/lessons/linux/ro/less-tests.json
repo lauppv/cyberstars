@@ -1,0 +1,11 @@
+{
+  "checks": [
+    { "kind": "dir_exists", "path": "manuale" },
+    { "kind": "files_equal", "a": "manual.txt", "b": "manuale/manual-arhiva.txt" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "cat\\b.*manual\\.txt" },
+    { "kind": "command", "pattern": "wc\\b.*-l\\b.*manual\\.txt" },
+    { "kind": "command", "name": "cp" }
+  ]
+}

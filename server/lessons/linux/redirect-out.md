@@ -47,10 +47,13 @@ anything.
 
 ## Mission: Critical Alert Extraction
 
-The sensor array has been logging readings to `sensors.log`, but the chief engineer only wants to see the critical warnings. Extract them into a separate file so the repair crew knows exactly what to fix.
+The sensor array has been logging readings to `sensors.log`, but the chief engineer wants the important lines split into their own files so the repair crew knows exactly what to fix.
 
-Use `grep` to find lines containing `critical` in `sensors.log` and redirect the output into a new file called `alerts.txt`.
+1. Find the lines containing `critical` in `sensors.log` and save that output into a new file called `alerts.txt` instead of printing it to the screen.
+2. Do the same for the healthy readings: capture the lines containing `ok` into a file called `healthy.txt`.
+3. Create a folder called `report` and move both files into it.
+4. Display `report/alerts.txt` to confirm the repair crew's list is correct.
 
 **Expected result**
 
-Running `cat alerts.txt` shows only the two critical lines from the sensor log.
+The `report` folder holds `alerts.txt` (the two critical lines) and `healthy.txt` (the three healthy readings).

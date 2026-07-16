@@ -1,9 +1,11 @@
 ```bash
 mv ciorna.txt raport.txt
 mv raport.txt arhiva
-ls arhiva
+mv notite.txt arhiva/notite-2026.txt
+mv arhiva registre
+ls registre
 ```
 
 ```text
-raport.txt
+notite-2026.txt  raport.txt
 ```

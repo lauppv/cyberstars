@@ -36,14 +36,16 @@ practic.
 
 ## Misiune: Vânătoare după procesul scăpat de sub control
 
-Computerul principal al stației se încălzește, iar puntea vrea să știe de ce.
-Ceva mănâncă cicluri de CPU și trebuie să-l găsești înainte ca alarmele termice
-să se declanșeze.
+Computerul principal al stației se încălzește, iar puntea vrea un raport scris
+despre vinovat înainte ca alarmele termice să se declanșeze.
 
-Rulează `ps aux --sort=-%cpu` pentru a lista toate procesele sortate după
-consumul de CPU, cu cel mai mare primul.
+1. Listează toate procesele sortate după consumul de CPU, cu cel mai mare primul.
+2. Capturează vârful acelei liste sortate — linia de antet plus singurul proces cel
+   mai lacom — într-un fișier numit `vinovat-principal.txt`.
+3. Creează un folder numit `raport-cpu` și mută `vinovat-principal.txt` în el.
+4. Afișează fișierul salvat pentru a confirma care program este vinovatul.
 
 **Rezultat așteptat**
 
-Apare lista de procese cu cel mai mare consumator de CPU în vârf — identifică
-ce program acaparează procesorul.
+`raport-cpu/vinovat-principal.txt` indică `/usr/bin/reactor-monitor` drept cel mai
+mare consumator de CPU.

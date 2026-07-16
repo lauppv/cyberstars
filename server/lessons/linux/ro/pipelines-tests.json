@@ -2,14 +2,15 @@
   "checks": [
     {
       "kind": "command_output",
-      "cmd": "grep alert evenimente.log | sort | head -n 2",
+      "cmd": "cat punte/briefing.txt",
       "expected": "alert: bresa sectorul 8\nalert: incendiu puntea 2"
-    }
+    },
+    { "kind": "dir_exists", "path": "punte" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "evenimente\\.log.*\\|.*grep.*alert.*\\|.*sort.*\\|.*head"
-    }
+    { "kind": "command", "pattern": "evenimente\\.log.*\\|.*grep.*alert.*\\|.*sort.*\\|.*head" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "wc\\b.*-l" }
   ]
 }

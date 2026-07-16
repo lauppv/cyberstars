@@ -1,16 +1,14 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "verificare-id" },
+    { "kind": "file_exists", "path": "verificare-id/identitate.txt" },
+    { "kind": "file_mode", "path": "clasificat.doc", "mode": "600" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "whoami"
-    },
-    {
-      "kind": "command",
-      "name": "id"
-    },
-    {
-      "kind": "command",
-      "pattern": "ls\\b.*-l\\b.*clasificat\\.doc"
-    }
+    { "kind": "command", "name": "whoami" },
+    { "kind": "command", "name": "id" },
+    { "kind": "command", "name": "chmod" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

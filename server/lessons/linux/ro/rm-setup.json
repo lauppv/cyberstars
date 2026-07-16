@@ -3,7 +3,8 @@
   "files": [
     { "path": "misiune.txt", "content": "Misiune: exploreaza sectorul 7.\n" },
     { "path": "gunoi.txt", "content": "sterge-ma\n" },
-    { "path": "temp.log", "content": "date temporare\n" }
+    { "path": "temp.log", "content": "date temporare\n" },
+    { "path": "cache.tmp", "content": "gunoi din cache\n" }
   ],
   "dirs": []
 }

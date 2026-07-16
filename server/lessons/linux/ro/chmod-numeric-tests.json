@@ -1,15 +1,12 @@
 {
   "checks": [
-    {
-      "kind": "file_mode",
-      "path": "control_motor.sh",
-      "mode": "750"
-    }
+    { "kind": "dir_exists", "path": "sala-motoare" },
+    { "kind": "file_mode", "path": "sala-motoare/control_motor.sh", "mode": "750" },
+    { "kind": "file_mode", "path": "sala-motoare/citeste-ma.txt", "mode": "644" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "chmod"
-    }
+    { "kind": "command", "name": "chmod" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

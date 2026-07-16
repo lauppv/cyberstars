@@ -4,7 +4,13 @@
       "kind": "command_output",
       "cmd": "grep warning sistem.log",
       "expected": "warning: temperatura carenei in crestere\nwarning: rezerva de combustibil scazuta\nwarning: latenta comunicatii ridicata"
-    }
+    },
+    { "kind": "dir_exists", "path": "scanare" },
+    { "kind": "files_equal", "a": "sistem.log", "b": "scanare/tura.log" }
   ],
-  "requires": [{ "kind": "command", "pattern": "grep\\b.*\\bwarning\\b.*sistem\\.log" }]
+  "requires": [
+    { "kind": "command", "pattern": "grep\\b.*\\bwarning\\b.*sistem\\.log" },
+    { "kind": "command", "pattern": "grep\\b.*\\berror\\b.*sistem\\.log" },
+    { "kind": "command", "name": "cp" }
+  ]
 }

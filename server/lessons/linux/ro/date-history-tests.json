@@ -1,0 +1,13 @@
+{
+  "checks": [
+    { "kind": "dir_exists", "path": "evidente-schimb" },
+    { "kind": "file_exists", "path": "evidente-schimb/jurnal-schimb.txt" }
+  ],
+  "requires": [
+    { "kind": "command", "name": "date" },
+    { "kind": "command", "name": "uptime" },
+    { "kind": "command", "name": "history" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
+  ]
+}

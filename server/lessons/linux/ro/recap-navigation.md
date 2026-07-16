@@ -29,11 +29,11 @@ fișierelor. Folosește-l ori de câte ori trebuie să știi în ce nume poți i
 
 Serviciile de informații ale stației raportează un seif ascuns undeva în adâncul directorului `statie`. Sarcina ta este să navighezi prin structura de foldere și să-l găsești. Se zvonește că seiful este invizibil pentru un simplu `ls`.
 
-1. Folosește `ls` pentru a vedea ce se află în directorul tău personal.
+1. Vezi ce se află în directorul tău personal.
 2. Intră în folderul `statie`.
 3. De acolo, intră în folderul `arhiva`.
-4. În interiorul lui `arhiva`, te așteaptă un director ascuns. Folosește `ls -a` ca să-l scoți la iveală, apoi intră în el cu `cd`.
+4. În interiorul lui `arhiva`, te așteaptă un director ascuns — scoate la iveală intrările ascunse, apoi intră în el.
 
 **Rezultat așteptat**
 
-Rulând `pwd` se afișează `/home/student/statie/arhiva/.seif`. Ai găsit seiful.
+Locația ta curentă este `/home/student/statie/arhiva/.seif`. Ai găsit seiful.

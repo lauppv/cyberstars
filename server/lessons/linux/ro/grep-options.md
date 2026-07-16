@@ -54,15 +54,17 @@ insensibilă la majuscule _și_ numerotată.
 ## Misiune: Raport de final de tură
 
 Înainte de a preda schimbul echipajului de noapte, trebuie să pregătești un rezumat
-al fișierului `sistem.log`: câte avertismente s-au înregistrat și ce evenimente
-neobișnuite au avut loc.
+al fișierului `sistem.log`: câte avertismente s-au înregistrat, ce evenimente
+neobișnuite au avut loc și o copie depusă pentru tura următoare.
 
-1. Folosește `grep -c warning sistem.log` pentru a număra câte linii conțin
-   `warning`.
-2. Folosește `grep -v info sistem.log` pentru a afișa fiecare linie care **nu**
-   conține `info`.
+1. Numără câte linii conțin `warning` — doar numărul, nu și liniile în sine.
+2. Afișează fiecare linie care **nu** conține `info` — evenimentele neobișnuite.
+3. Afișează liniile cu `error` cu un număr de linie în față, ca echipajul de noapte să
+   sară direct la ele.
+4. Creează un folder numit `predare` și copiază `sistem.log` în el sub numele
+   `brief-noapte.log`.
 
 **Rezultat așteptat**
 
-Mai întâi vezi numărul de avertismente (un singur număr), apoi liniile filtrate care
-arată doar avertismentele și erorile.
+Vezi numărul de avertismente, liniile neobișnuite filtrate, linia de eroare numerotată
+și o copie a jurnalului care așteaptă în `predare`.

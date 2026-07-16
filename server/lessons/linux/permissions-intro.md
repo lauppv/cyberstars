@@ -34,10 +34,13 @@ For directories: `r` = list contents, `w` = add/remove files, `x` = enter (`cd`)
 
 ## Mission: Security Audit
 
-The station commander has ordered a permissions audit on your workstation. You need to inspect every file in your home directory and identify which ones have executable access.
+The station commander has ordered a permissions audit on your workstation and wants a written record filed away.
 
-Run `ls -l` to display the permission strings for all files. Find the file that the owner can execute.
+1. Display the full permission details for every file in your home directory.
+2. Save that detailed listing into a new file called `audit.txt`.
+3. Create a folder called `audit-report` and move `audit.txt` into it.
+4. Count how many lines the saved audit contains.
 
 **Expected result**
 
-You should see three files listed. One of them has `x` in the owner permission group (positions 2-4) — that is the executable file (`diagnostics.sh`).
+`audit-report/audit.txt` holds the permission listing for every file in your home directory.

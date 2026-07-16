@@ -40,10 +40,13 @@ Combinația `sort | uniq` este atât de des folosită încât merită să o ai �
 
 ## Misiune: Audit acces la uși
 
-Securitatea a semnalat activitate neobișnuită pe Puntea 7. Fișierul `acces_usa.log` înregistrează fiecare membru al echipajului care a trecut prin ușă. Află cine a intrat și ieșit cel mai des.
+Securitatea a semnalat activitate neobișnuită pe Puntea 7. Fișierul `acces_usa.log` înregistrează fiecare membru al echipajului care a trecut prin ușă. Află cine a intrat și ieșit cel mai des, apoi arhivează bilanțul.
 
-Combină `sort` și `uniq -c` prin pipe pe `acces_usa.log` pentru a număra de câte ori a accesat ușa fiecare membru al echipajului.
+1. Combină `sort` și `uniq -c` printr-un pipe pe `acces_usa.log` ca să numeri de câte ori a accesat ușa fiecare membru al echipajului, și afișează.
+2. Salvează acel bilanț într-un fișier nou numit `bilant-acces.txt`.
+3. Creează un folder numit `securitate` și mută `bilant-acces.txt` în el.
+4. Caută în bilanț `Voss` ca să confirmi membrul echipajului cu cele mai multe intrări.
 
 **Rezultat așteptat**
 
-Numele fiecărui membru al echipajului apare o singură dată, precedat de numărul său de accesări. Ar trebui să vezi că Voss a avut cele mai multe intrări (3).
+`securitate/bilant-acces.txt` conține fiecare nume o singură dată, precedat de numărul de accesări; `Voss` are cele mai multe (3).

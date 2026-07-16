@@ -60,11 +60,12 @@ Sfat: te-ai pierdut? `cd ~` te aduce mereu acasă, iar `pwd` îți spune mereu u
 
 ## Misiune: Ajunge la Seiful de Scripturi
 
-Un script de automatizare critic este stocat adânc în sistemul de fișiere al stației. Directorul tău personal conține un folder `unelte`, iar în interiorul acestuia se află un folder `scripturi`.
+Un script de automatizare critic este stocat adânc în sistemul de fișiere al stației. Directorul tău personal conține un folder `unelte`, iar în interiorul acestuia se află un folder `scripturi`. Uită-te în jur la fiecare oprire, nu merge orbește.
 
-1. Navighează în folderul `unelte`.
+1. Navighează în folderul `unelte`, apoi listează ce se află înăuntru.
 2. De acolo, navighează în folderul `scripturi`.
+3. Confirmă-ți poziția, apoi listează conținutul seifului.
 
 **Rezultat așteptat**
 
-Rulând `pwd` se afișează `/home/student/unelte/scripturi` — ai ajuns la seif.
+Poziția ta afișează `/home/student/unelte/scripturi`, iar ultima listare scoate la iveală scriptul de automatizare care te aștepta în seif.

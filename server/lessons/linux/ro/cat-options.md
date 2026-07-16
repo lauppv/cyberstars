@@ -40,17 +40,19 @@ fișier nou folosind redirecționarea. Deocamdată, bucură-te doar de vederea p
 
 ---
 
-## Misiune: Asamblează lista echipajului
+## Misiune: Asamblează și arhivează lista echipajului
 
 Lista echipajului stației s-a împărțit în două fișiere: `echipa-a.txt` și `echipa-b.txt`.
-Centrul de comandă are nevoie de o vedere combinată și de un apel nominal numerotat
-al echipei A.
+Centrul de comandă are nevoie de o vedere combinată, de un apel nominal numerotat și
+de ambele fișiere păstrate împreună pentru evidență.
 
-1. Folosește `cat` pentru a afișa `echipa-a.txt` și `echipa-b.txt` împreună, dintr-o
-   singură comandă.
-2. Rulează `cat -n` pe `echipa-a.txt` pentru a vedea liniile sale numerotate.
+1. Afișează `echipa-a.txt` și `echipa-b.txt` împreună, dintr-o singură comandă.
+2. Afișează din nou ambele fișiere, de data asta cu un număr de linie în fața fiecărei
+   linii, numerotarea curgând continuu peste ambele.
+3. Creează un folder numit `lista` și copiază ambele fișiere de echipă în el.
+4. Confirmă arhiva afișând `lista/echipa-a.txt` cu liniile numerotate.
 
 **Rezultat așteptat**
 
-Vezi ambele echipe listate una după alta, apoi lista echipei A cu numere de linie în
-fața fiecărui nume.
+Ambele echipe apar una după alta, apoi aceleași nume cu numere de linie continue.
+Folderul `lista` conține câte o copie a fiecărui fișier de echipă.

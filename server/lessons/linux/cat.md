@@ -35,12 +35,17 @@ Like `ls` and `pwd`, `cat` only reads — it never changes the file.
 
 ---
 
-## Mission: Read the Briefing
+## Mission: Read and Archive the Briefing
 
-A new mission briefing has arrived and is stored in `briefing.txt` in your home directory. Read it to find out what the crew's next objective is.
+A new briefing has arrived split across two files in your home directory: the main order in `briefing.txt` and an `addendum.txt` with last-minute details. Read them, then set aside a copy of the main briefing for the archive.
 
-Use `cat` to display the contents of `briefing.txt`.
+1. Display `briefing.txt` to see the main order.
+2. Display **both** files joined together in a single command, so you have the full
+   briefing at a glance.
+3. Create a folder called `archive` and copy `briefing.txt` into it under the name
+   `briefing-old.txt`.
+4. Confirm the archive by displaying the contents of `archive/briefing-old.txt`.
 
 **Expected result**
 
-The full text of the briefing appears in your terminal.
+Both briefings appear in the terminal. The `archive` folder holds a faithful copy of the briefing, and displaying it shows exactly the same text as the original.

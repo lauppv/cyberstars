@@ -33,8 +33,11 @@ necesar. Devine valoros atunci când:
 
 Sistemul de menținere a vieții are nevoie de un număr exact al echipajului ca să calibreze nivelurile de oxigen. Lista este stocată în `echipaj.txt`, câte un nume pe linie.
 
-Folosește redirecționarea intrării pentru a număra echipajul: `wc -l < echipaj.txt`.
+1. Numără echipajul din `echipaj.txt` folosind redirecționarea intrării, ca să apară doar numărul — fără nume de fișier lângă el.
+2. Salvează acea numărătoare curată într-un fișier nou numit `numar-echipaj.txt`, combinând redirecționarea intrării și a ieșirii într-o singură comandă.
+3. Creează un folder numit `suport-viata` și mută `numar-echipaj.txt` în el.
+4. Afișează fișierul stocat ca să confirmi că are doar numărul.
 
 **Rezultat așteptat**
 
-Terminalul afișează doar numărul `6`, fără niciun nume de fișier lângă el.
+`suport-viata/numar-echipaj.txt` conține doar numărul `6`.

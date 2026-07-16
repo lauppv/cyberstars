@@ -1,9 +1,16 @@
 ```bash
-cp misiune.txt misiune-backup.txt
-cp -r rapoarte rapoarte-backup
-ls
+mkdir backupuri
+cp misiune.txt backupuri
+cp -r rapoarte backupuri
+tree backupuri
 ```
 
 ```text
-misiune-backup.txt  misiune.txt  rapoarte  rapoarte-backup
+backupuri
+├── misiune.txt
+└── rapoarte
+    ├── ianuarie.log
+    └── februarie.log
+
+1 directory, 3 files
 ```

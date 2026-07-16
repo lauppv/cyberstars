@@ -1,0 +1,11 @@
+{
+  "checks": [
+    { "kind": "dir_exists", "path": "copie-seif" },
+    { "kind": "files_equal", "a": "date/seif/secret.txt", "b": "copie-seif/secret-backup.txt" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "find\\b.*-name\\b.*secret\\.txt" },
+    { "kind": "command", "pattern": "find\\b.*-name\\b.*\\.log" },
+    { "kind": "command", "name": "cp" }
+  ]
+}

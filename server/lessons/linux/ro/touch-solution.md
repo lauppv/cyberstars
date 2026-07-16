@@ -1,10 +1,15 @@
 ```bash
-touch misiune.txt echipaj.txt rapoarte/rezumat.txt
-ls
-ls rapoarte
+touch misiune.txt echipaj.txt
+mkdir rapoarte/jurnale
+touch rapoarte/jurnale/ziua1.log rapoarte/jurnale/ziua2.log
+tree rapoarte
 ```
 
 ```text
-echipaj.txt  misiune.txt  rapoarte
-rezumat.txt
+rapoarte
+└── jurnale
+    ├── ziua1.log
+    └── ziua2.log
+
+1 directory, 2 files
 ```

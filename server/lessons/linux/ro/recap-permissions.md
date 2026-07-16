@@ -17,12 +17,12 @@ Numeric: r=4, w=2, x=1 — adună-le pe grup.
 
 A fost detectată o breșă de securitate pe puntea 3. Căpitanul a emis un ordin de izolare — trei fișiere din directorul tău trebuie să aibă permisiunile restrânse imediat.
 
-1. `coduri_lansare.txt` — Strict secret. Doar proprietarul poate citi și scrie. Niciun acces pentru grup sau ceilalți. Setează la `600`.
-2. `status_raport.sh` — Script operațional. Proprietarul primește acces complet (rwx), grupul poate citi și executa, ceilalți nimic. Setează la `750`.
-3. `public_buletin.txt` — Buletin pentru întreaga stație. Toți pot citi, dar doar proprietarul poate scrie. Setează la `644`.
+1. `coduri_lansare.txt` — Strict secret. Doar proprietarul poate citi și scrie; grupul și ceilalți nu au niciun acces.
+2. `status_raport.sh` — Script operațional. Proprietarul primește acces complet, grupul poate citi și executa, iar ceilalți nimic.
+3. `public_buletin.txt` — Buletin pentru întreaga stație. Toți pot citi, dar doar proprietarul poate scrie.
 
-Folosește `chmod` pe fiecare fișier, apoi rulează `ls -l` pentru a verifica.
+Setează permisiunile fiecărui fișier în consecință, apoi confirmă rezultatul.
 
 **Rezultat așteptat**
 
-`ls -l` arată `-rw-------` pentru `coduri_lansare.txt`, `-rwxr-x---` pentru `status_raport.sh` și `-rw-r--r--` pentru `public_buletin.txt`. Izolare completă.
+Cele trei fișiere ajung să fie `-rw-------` pentru `coduri_lansare.txt`, `-rwxr-x---` pentru `status_raport.sh` și `-rw-r--r--` pentru `public_buletin.txt`. Izolare completă.

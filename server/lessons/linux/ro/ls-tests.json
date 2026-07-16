@@ -1,0 +1,7 @@
+{
+  "requires": [
+    { "kind": "command", "name": "pwd" },
+    { "kind": "command", "name": "ls" },
+    { "kind": "command", "pattern": "ls\\b.*rapoarte" }
+  ]
+}

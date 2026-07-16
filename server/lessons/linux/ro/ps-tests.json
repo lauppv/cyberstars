@@ -1,0 +1,17 @@
+{
+  "checks": [
+    { "kind": "dir_exists", "path": "verificare-stare" },
+    {
+      "kind": "file_contains",
+      "path": "verificare-stare/stare-reactor.txt",
+      "text": "reactor-monitor"
+    }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "ps\\b.*aux" },
+    { "kind": "command", "name": "grep" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "wc\\b.*-l" }
+  ]
+}

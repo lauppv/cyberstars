@@ -54,11 +54,12 @@ Use `pwd` to see your absolute location, and `tree` to see the structure below y
 
 ## Mission: Map the Station
 
-Before starting repairs, you need a complete map of the station's file system layout and confirmation of your current position.
+Before starting repairs, you need a complete map of the station's file system and then to walk one of its branches to reach the reports archive.
 
-1. Run `tree` to see the full directory structure at a glance.
-2. Run `pwd` to confirm your absolute path.
+1. See the full directory structure at a glance.
+2. Using a relative path, move into `reports`, then confirm you landed in `/home/student/reports`.
+3. From there, list the neighbouring `tools` folder without moving, using a relative path that steps back up one level.
 
 **Expected result**
 
-You see a tree diagram showing all files and folders in your home directory, and `pwd` confirms you are at `/home/student`.
+The tree map shows every file and folder, your position confirms you are inside `reports`, and the final listing reveals `deploy.sh` living over in `tools`.

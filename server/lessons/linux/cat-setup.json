@@ -4,6 +4,10 @@
     {
       "path": "briefing.txt",
       "content": "Cadet briefing.\nDestination: sector 7.\nReport back at 0900.\n"
+    },
+    {
+      "path": "addendum.txt",
+      "content": "Addendum: check oxygen levels before departure.\nDocking code: 7742.\n"
     }
   ],
   "dirs": []

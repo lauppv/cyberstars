@@ -39,16 +39,19 @@ La fel ca `cat`, `head` doar citește — nu schimbă nimic.
 
 ---
 
-## Misiune: Verifică secvența de pornire
+## Misiune: Verifică și arhivează secvența de pornire
 
 Fișierul `sistem.log` al stației înregistrează totul de la ultima repornire.
-Departamentul tehnic vrea să verifice secvența de pornire uitându-se doar la chiar
-începutul log-ului.
+Departamentul tehnic vrea să verifice secvența de pornire și să păstreze o copie a
+log-ului în folderul de diagnostic.
 
-Folosește `head` cu opțiunea `-n` pentru a afișa doar **primele 5 linii** din
-`sistem.log`.
+1. Afișează doar **primele 5 linii** din `sistem.log` — cele mai vechi evenimente de
+   pornire.
+2. Creează un folder numit `diagnostic` și copiază `sistem.log` în el sub numele
+   `pornire.log`.
+3. Verifică copia afișând doar **primele 3 linii** din `diagnostic/pornire.log`.
 
 **Rezultat așteptat**
 
-Apar doar primele 5 linii din log — cele mai vechi evenimente înregistrate după
-pornire.
+Apar primele evenimente de pornire, apoi un eșantion mai scurt de 3 linii din copia
+arhivată. Folderul `diagnostic` conține o copie fidelă a log-ului.

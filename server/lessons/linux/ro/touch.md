@@ -45,12 +45,13 @@ la el pur și simplu ca la **„creează un fișier gol"**.
 
 ## Misiune: Pregătește fișierele de misiune
 
-Comandantul stației are nevoie de trei fișiere noi pentru briefing-ul de astăzi. Directorul tău home are deja pregătit un folder `rapoarte`.
+Comandantul stației are nevoie de fișiere noi pentru briefing-ul de astăzi, plus un loc proaspăt pentru jurnalele zilnice. Directorul tău home are deja pregătit un folder `rapoarte`.
 
-1. Creează un fișier gol numit `misiune.txt`.
-2. Creează un fișier gol numit `echipaj.txt`.
-3. Creează un fișier gol numit `rezumat.txt` **în interiorul** folderului `rapoarte`.
+1. Creează două fișiere goale `misiune.txt` și `echipaj.txt` în directorul home printr-o **singură** comandă.
+2. Creează un folder nou `jurnale` în interiorul lui `rapoarte`.
+3. Creează două fișiere de jurnal goale în interiorul lui: `rapoarte/jurnale/ziua1.log` și `rapoarte/jurnale/ziua2.log`.
+4. Verifică folderul de jurnale ca arbore.
 
 **Rezultat așteptat**
 
-Rulând `ls` în directorul tău home apar `misiune.txt` și `echipaj.txt`, iar rulând `ls rapoarte` apare `rezumat.txt`.
+Listarea afișează `misiune.txt` și `echipaj.txt`, iar arborele lui `rapoarte` afișează `ziua1.log` și `ziua2.log` în interiorul lui `rapoarte/jurnale`.

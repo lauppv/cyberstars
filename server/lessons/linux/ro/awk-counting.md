@@ -33,10 +33,13 @@ mare decât 100. Tiparele awk pot fi regex (`/word/`) sau condiții
 
 ## Misiune: Raport greutate marfă
 
-Stația se apropie de o manevră cu asistență gravitațională, iar pilotul are nevoie să știe masa totală a încărcăturii. Fișierul `greutate_marfa.txt` listează fiecare obiect și greutatea sa în coloana 2.
+Stația se apropie de o manevră cu asistență gravitațională, iar pilotul are nevoie de un raport complet al masei încărcăturii. Fișierul `greutate_marfa.txt` listează fiecare obiect și greutatea sa în coloana 2.
 
-Folosește `awk` ca să **aduni toate greutățile** (coloana 2) și să afișezi totalul.
+1. Adună fiecare greutate din coloana 2 și afișează totalul combinat.
+2. Salvează acel total într-un fișier nou numit `greutate-totala.txt`.
+3. Listează doar obiectele grele — cele cu o greutate peste 100 — arătând numele și greutatea.
+4. Creează un folder numit `punte-zbor` și mută `greutate-totala.txt` în el.
 
 **Rezultat așteptat**
 
-Un singur număr care reprezintă greutatea combinată a tuturor obiectelor din marfă.
+`punte-zbor/greutate-totala.txt` conține greutatea combinată a tuturor obiectelor din marfă (`610`).

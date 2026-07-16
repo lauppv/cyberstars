@@ -4,7 +4,13 @@
       "kind": "command_output",
       "cmd": "grep warning system.log",
       "expected": "warning: hull temperature rising\nwarning: fuel reserve low\nwarning: comms latency high"
-    }
+    },
+    { "kind": "dir_exists", "path": "scan" },
+    { "kind": "files_equal", "a": "system.log", "b": "scan/shift.log" }
   ],
-  "requires": [{ "kind": "command", "pattern": "grep\\b.*\\bwarning\\b.*system\\.log" }]
+  "requires": [
+    { "kind": "command", "pattern": "grep\\b.*\\bwarning\\b.*system\\.log" },
+    { "kind": "command", "pattern": "grep\\b.*\\berror\\b.*system\\.log" },
+    { "kind": "command", "name": "cp" }
+  ]
 }

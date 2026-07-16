@@ -47,12 +47,16 @@ răspunde la „cât de mare este folderul ăsta?”.
 ## Misiune: Audit de stocare
 
 Inginerii stației suspectează că `depozit/` mănâncă din rezervele limitate de
-disc. Înainte să aprobe următoarea arhivă de date, trebuie să știe exact cât
-spațiu ocupă directorul.
+disc. Înainte să aprobe următoarea arhivă de date, vor un raport depus la dosar
+atât despre situația generală a discului, cât și despre amprenta folderului.
 
-Rulează `du -sh depozit/` pentru a afișa dimensiunea totală a directorului.
+1. Afișează cât spațiu este liber pe sistemele de fișiere ale stației.
+2. Măsoară dimensiunea totală a directorului `depozit/` și salvează acea măsurătoare
+   într-un fișier numit `raport-stocare.txt`.
+3. Creează un folder numit `audit` și mută `raport-stocare.txt` în el.
+4. Afișează raportul salvat pentru a-l confirma.
 
 **Rezultat așteptat**
 
-O singură linie care arată dimensiunea în format ușor de citit a directorului
-`depozit/`.
+`audit/raport-stocare.txt` conține dimensiunea în format ușor de citit a
+directorului `depozit/`.

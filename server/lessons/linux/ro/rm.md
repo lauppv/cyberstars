@@ -42,11 +42,12 @@ este un obicei sigur atunci când ștergi ceva de care nu ești sigur.
 
 ## Misiune: Curăță datele inutile
 
-Un scan de mentenanță de rutină a detectat fișiere reziduale care aglomerează spațiul de lucru al stației. Trebuie eliminate, dar ai grijă să nu ștergi ceva important.
+Un scan de mentenanță de rutină a semnalat reziduuri care aglomerează spațiul de lucru al stației. Înainte de a șterge ceva, pune la adăpost singurul fișier care contează — pentru `rm` nu există „undo".
 
-1. Șterge fișierul `gunoi.txt`.
-2. Șterge fișierul `temp.log`.
+1. Creează un folder `pastreaza` și copiază `misiune.txt` în el ca backup de siguranță.
+2. Inspectează spațiul de lucru înainte de a șterge ceva.
+3. Șterge cele trei fișiere inutile `gunoi.txt`, `temp.log` și `cache.tmp` printr-o **singură** comandă.
 
 **Rezultat așteptat**
 
-Ambele fișiere inutile au dispărut, dar `misiune.txt` rămâne în siguranță în directorul tău home.
+Fișierele inutile au dispărut, `misiune.txt` rămâne în directorul tău home, iar o copie de siguranță se află în `pastreaza`.

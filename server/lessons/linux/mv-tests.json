@@ -1,18 +1,9 @@
 {
   "checks": [
-    {
-      "kind": "file_exists",
-      "path": "archive/report.txt"
-    },
-    {
-      "kind": "path_absent",
-      "path": "draft.txt"
-    }
+    { "kind": "file_exists", "path": "records/report.txt" },
+    { "kind": "file_exists", "path": "records/notes-2026.txt" },
+    { "kind": "path_absent", "path": "draft.txt" },
+    { "kind": "path_absent", "path": "archive" }
   ],
-  "requires": [
-    {
-      "kind": "command",
-      "name": "mv"
-    }
-  ]
+  "requires": [{ "kind": "command", "name": "mv" }]
 }

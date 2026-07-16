@@ -1,8 +1,16 @@
 {
-  "requires": [
+  "checks": [
     {
-      "kind": "command",
-      "pattern": "sed\\b.*s/FAIL/PASS/g.*raport\\.txt"
-    }
+      "kind": "command_output",
+      "cmd": "cat arhiva/raport-curat.txt",
+      "expected": "Test 1: PASS\nTest 2: PASS\nTest 3: PASS\nTest 4: PASS\nTest 5: PASS"
+    },
+    { "kind": "dir_exists", "path": "arhiva" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "sed\\b.*s/FAIL/PASS/g.*raport\\.txt" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "grep\\b.*-c\\b.*PASS" }
   ]
 }

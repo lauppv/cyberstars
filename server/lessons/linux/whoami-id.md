@@ -48,12 +48,13 @@ to you. Understanding your identity helps you predict what you can and cannot do
 
 ## Mission: Identity Verification
 
-A classified document was found in your home directory. Before anyone can access it, station protocol requires you to verify your identity and confirm file ownership.
+A classified document was found in your home directory. Before anyone can access it, station protocol requires you to log your identity and lock the file down.
 
-1. Run `whoami` to confirm your username.
-2. Run `id` to see your full identity, including your groups.
-3. Run `ls -l classified.doc` to check who owns the file.
+1. Confirm your username.
+2. Save your full identity details, including your groups, into a file called `identity.txt`.
+3. Lock down `classified.doc` so only the owner can read and write it, and no one else has any access.
+4. Create a folder called `id-check` and move `identity.txt` into it.
 
 **Expected result**
 
-You see your username (`student`), your uid/gid/groups, and that `classified.doc` is owned by `student` in group `crew`.
+`id-check/identity.txt` holds your identity details, and `classified.doc` is `-rw-------`.

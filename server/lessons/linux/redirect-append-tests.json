@@ -4,12 +4,14 @@
       "kind": "command_output",
       "cmd": "cat mission.log",
       "expected": "status: launch sequence initiated\nstatus: shields nominal\nstatus: crew ready"
-    }
+    },
+    { "kind": "dir_exists", "path": "archive" },
+    { "kind": "files_equal", "a": "mission.log", "b": "archive/mission-backup.log" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": ">>"
-    }
+    { "kind": "command", "pattern": ">>" },
+    { "kind": "command", "pattern": "wc\\b.*-l" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "cp" }
   ]
 }

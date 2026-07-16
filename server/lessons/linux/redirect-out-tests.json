@@ -1,15 +1,21 @@
 {
   "checks": [
+    { "kind": "dir_exists", "path": "report" },
     {
       "kind": "command_output",
-      "cmd": "cat alerts.txt",
+      "cmd": "cat report/alerts.txt",
       "expected": "critical: pressure drop deck 7\ncritical: radiation spike lab 3"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat report/healthy.txt",
+      "expected": "ok: oxygen normal\nok: temperature stable\nok: gravity nominal"
     }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "grep\\b.*critical"
-    }
+    { "kind": "command", "pattern": "grep\\b.*critical" },
+    { "kind": "command", "pattern": "grep\\b.*\\bok\\b" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

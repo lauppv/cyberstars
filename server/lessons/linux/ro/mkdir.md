@@ -58,8 +58,10 @@ Acum există atât `proiecte`, cât și `proiecte/website`.
 Stația are nevoie de o nouă structură de directoare pentru misiunea care urmează. O vei configura de la zero.
 
 1. Creează un folder numit `misiune`.
-2. Folosind o singură comandă `mkdir -p`, creează calea imbricată `misiune/jurnale/ziua1`.
+2. În interiorul lui, creează trei foldere frați printr-o **singură** comandă: `misiune/jurnale`, `misiune/date` și `misiune/backupuri`.
+3. Dintr-o singură comandă, creează dintr-odată calea imbricată `misiune/jurnale/ziua1` — inclusiv folderele părinte care nu există încă.
+4. Verifică întreaga structură ca arbore.
 
 **Rezultat așteptat**
 
-Directorul `misiune/jurnale/ziua1` există. Poți verifica cu `ls misiune/jurnale` pentru a vedea `ziua1` înăuntru.
+Arborele lui `misiune` afișează `jurnale`, `date` și `backupuri`, cu `ziua1` imbricat în interiorul lui `jurnale`.

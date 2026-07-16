@@ -1,12 +1,15 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "lista" },
+    { "kind": "files_equal", "a": "echipa-a.txt", "b": "lista/echipa-a.txt" },
+    { "kind": "files_equal", "a": "echipa-b.txt", "b": "lista/echipa-b.txt" }
+  ],
   "requires": [
     {
       "kind": "command",
       "pattern": "cat\\b.*echipa-a\\.txt.*echipa-b\\.txt|cat\\b.*echipa-b\\.txt.*echipa-a\\.txt"
     },
-    {
-      "kind": "command",
-      "pattern": "cat\\b.*-n\\b.*echipa-a\\.txt"
-    }
+    { "kind": "command", "pattern": "cat\\b.*-n\\b.*echipa-a\\.txt" },
+    { "kind": "command", "name": "cp" }
   ]
 }

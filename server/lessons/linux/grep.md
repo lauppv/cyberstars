@@ -36,10 +36,12 @@ mentioned?" — `grep` answers it instantly.
 
 ## Mission: Warning Scan
 
-The station commander wants a quick briefing on all warnings logged during this shift. The event log is in `system.log`.
+The station commander wants a quick briefing on the warnings logged during this shift, and a copy of the log filed for the record. The event log is in `system.log`.
 
-Use `grep` to print only the lines that contain the word `warning`.
+1. Print only the lines that contain the word `warning`.
+2. Run a second search for the lines that contain `error`.
+3. Create a folder called `scan` and copy `system.log` into it as `shift.log` for the record.
 
 **Expected result**
 
-Only the warning lines from `system.log` appear in the terminal.
+The warning lines appear, then the error line, and the `scan` folder holds a copy of the shift log.

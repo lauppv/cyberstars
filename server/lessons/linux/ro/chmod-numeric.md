@@ -35,11 +35,13 @@ Forma numerică setează **toate** permisiunile deodată — nu există „adaug
 
 ## Misiune: Securizează scriptul propulsorului
 
-Scriptul `control_motor.sh` aprinde propulsorul principal — doar personalul autorizat ar trebui să aibă acces la el. Politica de securitate a stației cere permisiunea `750` (proprietar: acces complet, grup: citire și execuție, ceilalți: nimic).
+Scriptul `control_motor.sh` aprinde propulsorul principal și vine împreună cu un `citeste-ma.txt`. Politica de securitate a stației stabilește niveluri de acces stricte pentru ambele.
 
-1. Folosește `chmod 750` pentru a seta permisiunile corecte pe `control_motor.sh`.
-2. Rulează `ls -l control_motor.sh` pentru a verifica schimbarea.
+1. Setează permisiunile pe `control_motor.sh` astfel încât proprietarul să aibă acces complet, grupul să îl poată citi și rula, iar ceilalți să nu aibă nimic.
+2. Setează permisiunile pe `citeste-ma.txt` astfel încât proprietarul să îl poată citi și modifica, iar grupul și ceilalți doar să îl poată citi.
+3. Creează un folder numit `sala-motoare` și mută ambele fișiere în el.
+4. Afișează listarea detaliată a folderului pentru a confirma permisiunile.
 
 **Rezultat așteptat**
 
-`ls -l` arată `-rwxr-x---` pentru `control_motor.sh`.
+În `sala-motoare`, `control_motor.sh` este `-rwxr-x---`, iar `citeste-ma.txt` este `-rw-r--r--`.

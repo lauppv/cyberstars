@@ -1,6 +1,8 @@
 ```bash
 tree
+cd rapoarte
 pwd
+ls ../unelte
 ```
 
 ```text
@@ -13,5 +15,6 @@ pwd
     └── lanseaza.sh
 
 2 directories, 4 files
-/home/student
+/home/student/rapoarte
+lanseaza.sh
 ```

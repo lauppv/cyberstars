@@ -1,8 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "cpu-report" },
+    { "kind": "file_contains", "path": "cpu-report/top-offender.txt", "text": "reactor-monitor" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "ps\\b.*aux.*--sort"
-    }
+    { "kind": "command", "pattern": "ps\\b.*aux.*--sort" },
+    { "kind": "command", "name": "head" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

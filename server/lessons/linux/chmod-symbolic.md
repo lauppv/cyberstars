@@ -42,11 +42,13 @@ After each `chmod`, verify with `ls -l` to confirm the change took effect.
 
 ## Mission: Activate the Firmware Deployer
 
-A critical firmware update is ready in `deploy.sh`, but the script cannot run yet — it is missing execute permission for the owner.
+A critical firmware update is ready in `deploy.sh`, but the script cannot run yet — and it also carries sensitive settings that outsiders should never read.
 
-1. Use `chmod` to add **execute permission for the user (owner)** on `deploy.sh`.
-2. Run `ls -l deploy.sh` to confirm the permission change.
+1. Give the owner permission to run `deploy.sh` as a program.
+2. Remove read access from others on `deploy.sh` so outsiders cannot view it.
+3. Confirm the changes by viewing the file's detailed permissions.
+4. Create a folder called `deploy-ready` and copy `deploy.sh` into it.
 
 **Expected result**
 
-`ls -l` shows the owner now has execute (`x`) permission on `deploy.sh`.
+`deploy.sh` is executable by the owner and unreadable by others, and a copy sits in `deploy-ready`.

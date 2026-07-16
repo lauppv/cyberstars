@@ -20,10 +20,8 @@ The golden rule: **each command does one job**. Pipes connect the jobs into a wo
 
 The engineering deck just dumped raw telemetry into `telemetry.raw`. The chief engineer needs a clean, sorted list of all warnings filed away before the next systems review.
 
-1. Build a pipeline that finds all lines containing `WARN` in `telemetry.raw`, sorts them alphabetically, and saves the result into `warnings_sorted.txt` using `>`.
-2. Append the line `-- end of report --` to `warnings_sorted.txt` using `>>`.
-
-Two commands total.
+1. Build a pipeline that finds all lines containing `WARN` in `telemetry.raw`, sorts them alphabetically, and saves the result into a new file `warnings_sorted.txt`.
+2. Add the line `-- end of report --` to the end of `warnings_sorted.txt`, without erasing what is already there.
 
 **Expected result**
 

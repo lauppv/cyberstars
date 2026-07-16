@@ -4,12 +4,18 @@
       "kind": "command_output",
       "cmd": "stat -c %A deploy.sh | cut -c4",
       "expected": "x"
-    }
+    },
+    {
+      "kind": "command_output",
+      "cmd": "stat -c %A deploy.sh | cut -c10",
+      "expected": "-"
+    },
+    { "kind": "dir_exists", "path": "deploy-ready" },
+    { "kind": "file_exists", "path": "deploy-ready/deploy.sh" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "chmod"
-    }
+    { "kind": "command", "name": "chmod" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "cp" }
   ]
 }

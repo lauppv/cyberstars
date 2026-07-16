@@ -1,26 +1,14 @@
 {
   "checks": [
-    {
-      "kind": "path_absent",
-      "path": "compartiment-gol"
-    },
-    {
-      "kind": "path_absent",
-      "path": "date-vechi"
-    },
-    {
-      "kind": "dir_exists",
-      "path": "misiune"
-    }
+    { "kind": "file_exists", "path": "arhiva/a.log" },
+    { "kind": "path_absent", "path": "compartiment-gol" },
+    { "kind": "path_absent", "path": "date-vechi" },
+    { "kind": "dir_exists", "path": "misiune" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "rmdir"
-    },
-    {
-      "kind": "command",
-      "pattern": "rm\\b.*-r"
-    }
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "cp" },
+    { "kind": "command", "name": "rmdir" },
+    { "kind": "command", "pattern": "rm\\b.*-r" }
   ]
 }

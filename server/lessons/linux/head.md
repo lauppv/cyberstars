@@ -39,12 +39,14 @@ Like `cat`, `head` only reads — it changes nothing.
 
 ---
 
-## Mission: Check the Boot Sequence
+## Mission: Check and Archive the Boot Sequence
 
-The station's `system.log` file records everything since the last reboot. Engineering wants to verify the boot sequence by looking at just the very beginning of the log.
+The station's `system.log` records everything since the last reboot. Engineering wants to verify the boot sequence and keep a copy of the log for the diagnostics folder.
 
-Use `head` with the `-n` option to print only the **first 5 lines** of `system.log`.
+1. Print only the **first 5 lines** of `system.log` — the earliest boot events.
+2. Create a folder called `diagnostics` and copy `system.log` into it as `boot.log`.
+3. Verify the copy by printing just the **first 3 lines** of `diagnostics/boot.log`.
 
 **Expected result**
 
-Only the first 5 lines of the log appear — the earliest events recorded after boot.
+The first boot events appear, then a shorter 3-line sample of the archived copy. The `diagnostics` folder holds a faithful copy of the log.

@@ -36,14 +36,17 @@ de diagnoză.
 
 ## Misiune: Verificare medicală a inginerilor
 
-Inginerii tocmai au transmis prin radio — au nevoie să confirmi că daemonul de
-monitorizare a reactorului încă rulează. Fără el, citirile de temperatură nu mai
+Inginerii tocmai au transmis prin radio — au nevoie de o dovadă scrisă că daemonul
+de monitorizare a reactorului încă rulează. Fără el, citirile de temperatură nu mai
 ajung la punte.
 
-Rulează `ps aux` pentru a lista toate procesele de pe computerul stației.
-Caută în output orice proces a cărui comandă conține `reactor`.
+1. Listează toate procesele care rulează pe computerul stației.
+2. Filtrează acea listare doar la liniile care menționează reactorul și salvează-le
+   într-un fișier numit `stare-reactor.txt`.
+3. Creează un folder numit `verificare-stare` și mută `stare-reactor.txt` în el.
+4. Numără câte procese de reactor au fost găsite.
 
 **Rezultat așteptat**
 
-Ar trebui să vezi un proces care rulează `/usr/bin/reactor-monitor --port=7700`
-deținut de `root`. Raportează confirmarea către ingineri.
+`verificare-stare/stare-reactor.txt` conține linia pentru `/usr/bin/reactor-monitor`,
+confirmând că daemonul este activ.

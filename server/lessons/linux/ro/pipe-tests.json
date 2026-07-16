@@ -1,8 +1,16 @@
 {
-  "requires": [
+  "checks": [
     {
-      "kind": "command",
-      "pattern": "cat\\b.*transmisii\\.log\\s*\\|\\s*grep\\b.*mayday"
-    }
+      "kind": "command_output",
+      "cmd": "cat centru-comanda/pericol.txt",
+      "expected": "mayday: defectiune motor pod 9\nmayday: scurgere de oxigen sectorul 4\nmayday: avertizare coliziune centura de asteroizi"
+    },
+    { "kind": "dir_exists", "path": "centru-comanda" }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "cat\\b.*transmisii\\.log\\s*\\|\\s*grep\\b.*mayday" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" },
+    { "kind": "command", "pattern": "wc\\b.*-l" }
   ]
 }

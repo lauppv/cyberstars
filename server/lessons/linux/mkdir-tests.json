@@ -1,14 +1,11 @@
 {
   "checks": [
-    {
-      "kind": "dir_exists",
-      "path": "mission/logs/day1"
-    }
+    { "kind": "dir_exists", "path": "mission/logs/day1" },
+    { "kind": "dir_exists", "path": "mission/data" },
+    { "kind": "dir_exists", "path": "mission/backups" }
   ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "mkdir"
-    }
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "tree" }
   ]
 }

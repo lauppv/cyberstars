@@ -1,7 +1,10 @@
 {
   "checks": [
-    { "kind": "files_equal", "a": "mission.txt", "b": "mission-backup.txt" },
-    { "kind": "dirs_equal", "a": "reports", "b": "reports-backup" }
+    { "kind": "files_equal", "a": "mission.txt", "b": "backups/mission.txt" },
+    { "kind": "dirs_equal", "a": "reports", "b": "backups/reports" }
   ],
-  "requires": [{ "kind": "command", "name": "cp" }]
+  "requires": [
+    { "kind": "command", "name": "cp" },
+    { "kind": "command", "name": "mkdir" }
+  ]
 }

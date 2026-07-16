@@ -1,8 +1,16 @@
 {
-  "requires": [
+  "checks": [
+    { "kind": "dir_exists", "path": "incident-log" },
+    { "kind": "file_exists", "path": "incident-log/after-kill.txt" },
     {
-      "kind": "command",
-      "pattern": "kill\\b.*-9\\b.*510"
+      "kind": "command_output",
+      "cmd": "grep -c nav-computer incident-log/after-kill.txt",
+      "expected": "0"
     }
+  ],
+  "requires": [
+    { "kind": "command", "pattern": "kill\\b.*-9\\b.*510" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }

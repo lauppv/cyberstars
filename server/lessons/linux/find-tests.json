@@ -1,8 +1,11 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "vault-copy" },
+    { "kind": "files_equal", "a": "data/vault/secret.txt", "b": "vault-copy/secret-backup.txt" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "find\\b.*-name\\b.*secret\\.txt"
-    }
+    { "kind": "command", "pattern": "find\\b.*-name\\b.*secret\\.txt" },
+    { "kind": "command", "pattern": "find\\b.*-name\\b.*\\.log" },
+    { "kind": "command", "name": "cp" }
   ]
 }

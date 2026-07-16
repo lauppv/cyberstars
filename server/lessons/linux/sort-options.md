@@ -44,10 +44,13 @@ This uses `:` as the delimiter and sorts by column 3 numerically.
 
 ## Mission: Power Grid Diagnostics
 
-Engineering detected fluctuations in the station's power grid. The file `power_readings.txt` lists each sector and its current power level. To find the weakest sector first, you need to sort by power output.
+Engineering detected fluctuations in the station's power grid. The file `power_readings.txt` lists each sector and its current power level. To act on the weakest sector first, you need the readings ordered and filed.
 
-Sort `power_readings.txt` **numerically by the second column** so the lowest power reading appears at the top.
+1. Sort `power_readings.txt` **numerically by the second column** so the lowest power reading appears at the top, and display it.
+2. Save that sorted diagnostic into a new file called `diagnostics.txt`.
+3. Create a folder called `engineering` and move `diagnostics.txt` into it.
+4. Show just the top line — the weakest sector, which the repair crew handles first.
 
 **Expected result**
 
-The sectors appear in ascending power order, starting with `epsilon 5` and ending with `delta 800`.
+`engineering/diagnostics.txt` lists the sectors in ascending power order, from `epsilon 5` to `delta 800`.

@@ -1,8 +1,10 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "archive" },
+    { "kind": "files_equal", "a": "briefing.txt", "b": "archive/briefing-old.txt" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "cat\\b.*briefing\\.txt"
-    }
+    { "kind": "command", "pattern": "cat\\b.*briefing\\.txt.*addendum\\.txt" },
+    { "kind": "command", "name": "cp" }
   ]
 }

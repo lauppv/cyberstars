@@ -45,11 +45,13 @@ You can re-run a previous command by typing `!NUMBER`, for example `!3` would re
 
 ## Mission: Log the Timestamp
 
-Station protocol requires logging the current date and time at the start of every shift, then reviewing recent terminal activity.
+Station protocol requires a written shift log at the start of every watch: the current time, how long the station has been online, and a review of terminal activity.
 
-1. Run `date` to record the current timestamp.
-2. Run `history` to see a record of the commands you have typed in this session.
+1. Record the current date and time into a new file called `shift-log.txt`.
+2. Append the station's uptime to that same file.
+3. Create a folder called `shift-records` and move `shift-log.txt` into it.
+4. Review the numbered list of commands you have typed this session.
 
 **Expected result**
 
-You see today's date and time, followed by a numbered list of all commands from your session so far.
+`shift-records/shift-log.txt` holds the timestamp followed by the station's uptime.

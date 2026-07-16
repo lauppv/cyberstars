@@ -33,7 +33,10 @@ describe('loadTerminalTestsSpec', () => {
   it('loads the English spec for a lesson that has tests', () => {
     const spec = loadTerminalTestsSpec('linux', 'cd');
     expect(spec?.checks).toEqual([{ kind: 'cwd_is', path: 'tools/scripts' }]);
-    expect(spec?.requires).toEqual([{ kind: 'command', name: 'cd' }]);
+    expect(spec?.requires).toEqual([
+      { kind: 'command', name: 'cd' },
+      { kind: 'command', name: 'ls' },
+    ]);
   });
 
   it('prefers the ro/ spec when lang is ro and the file exists', () => {
@@ -42,8 +45,8 @@ describe('loadTerminalTestsSpec', () => {
   });
 
   it('falls back to the English spec when no ro/ file exists', () => {
-    expect(loadTerminalTestsSpec('linux', 'ls', 'ro')).toEqual(
-      loadTerminalTestsSpec('linux', 'ls'),
+    expect(loadTerminalTestsSpec('linux', 'pwd', 'ro')).toEqual(
+      loadTerminalTestsSpec('linux', 'pwd'),
     );
   });
 
@@ -69,7 +72,7 @@ describe('runTerminalTests', () => {
 
   it('evaluates cwd_is server-side without touching the container', async () => {
     mockGetSessionView.mockReturnValue(
-      view({ cwd: '/home/student/tools/scripts', history: ['cd tools', 'cd scripts'] }),
+      view({ cwd: '/home/student/tools/scripts', history: ['cd tools', 'ls', 'cd scripts'] }),
     );
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'cd');
     expect(res.status).toBe('passed');
@@ -97,8 +100,10 @@ describe('runTerminalTests', () => {
   });
 
   it('passes container state checks when the probe returns P for each', async () => {
-    mockGetSessionView.mockReturnValue(view({ history: ['touch mission.txt crew.txt'] }));
-    mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n');
+    mockGetSessionView.mockReturnValue(
+      view({ history: ['touch mission.txt crew.txt', 'mkdir -p reports/logs'] }),
+    );
+    mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n3 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'touch');
     expect(res.status).toBe('passed');
     expect(mockDockerExec).toHaveBeenCalledOnce();
@@ -114,8 +119,16 @@ describe('runTerminalTests', () => {
   it('compares command_output on the server (decoding base64)', async () => {
     const expected =
       'warning: hull temperature rising\nwarning: fuel reserve low\nwarning: comms latency high';
-    mockGetSessionView.mockReturnValue(view({ history: ['grep warning system.log'] }));
-    mockDockerExec.mockResolvedValue(`0 O ${b64(expected + '\n')}\n`);
+    mockGetSessionView.mockReturnValue(
+      view({
+        history: [
+          'grep warning system.log',
+          'grep error system.log',
+          'cp system.log scan/shift.log',
+        ],
+      }),
+    );
+    mockDockerExec.mockResolvedValue(`0 O ${b64(expected + '\n')}\n1 P\n2 P\n`);
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'grep');
     expect(res.status).toBe('passed');
     expect(
@@ -140,7 +153,9 @@ describe('runTerminalTests', () => {
 
   it('covers files_equal + dirs_equal check messages (cp)', async () => {
     mockGetSessionView.mockReturnValue(
-      view({ history: ['cp mission.txt mission-backup.txt', 'cp -r reports reports-backup'] }),
+      view({
+        history: ['mkdir backups', 'cp mission.txt backups/mission.txt', 'cp -r reports backups'],
+      }),
     );
     mockDockerExec.mockResolvedValue('0 P\n1 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'cp');
@@ -150,8 +165,16 @@ describe('runTerminalTests', () => {
   });
 
   it('covers the file_mode check message (chmod-numeric)', async () => {
-    mockGetSessionView.mockReturnValue(view({ history: ['chmod 750 engine_control.sh'] }));
-    mockDockerExec.mockResolvedValue('0 P\n');
+    mockGetSessionView.mockReturnValue(
+      view({
+        history: [
+          'mkdir engine-bay',
+          'mv engine_control.sh engine-bay/',
+          'chmod 750 engine-bay/engine_control.sh',
+        ],
+      }),
+    );
+    mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'chmod-numeric');
     expect(res.status).toBe('passed');
     expect(res.checks.some((c) => c.messageKey === 'terminalTests.check.file_mode')).toBe(true);
@@ -159,21 +182,36 @@ describe('runTerminalTests', () => {
 
   it('covers the file_contains check message (stderr)', async () => {
     mockGetSessionView.mockReturnValue(
-      view({ history: ['ls report.txt ghost.txt 2> errors.log'] }),
+      view({
+        history: [
+          'ls report.txt ghost.txt 2> errors.log',
+          'mkdir logs',
+          'mv errors.log logs/',
+          'grep "No such" logs/errors.log',
+        ],
+      }),
     );
-    mockDockerExec.mockResolvedValue('0 P\n');
+    mockDockerExec.mockResolvedValue('0 P\n1 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'stderr');
     expect(res.status).toBe('passed');
     expect(res.checks.some((c) => c.messageKey === 'terminalTests.check.file_contains')).toBe(true);
   });
 
   it('covers dir_exists (mkdir) and path_absent (rm) checks', async () => {
-    mockGetSessionView.mockReturnValue(view({ history: ['mkdir -p mission/logs/day1'] }));
-    mockDockerExec.mockResolvedValue('0 P\n');
+    mockGetSessionView.mockReturnValue(
+      view({
+        history: ['mkdir -p mission/logs/day1 mission/data mission/backups', 'tree mission'],
+      }),
+    );
+    mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n');
     expect((await runTerminalTests('user:1', 'sid', 'linux', 'mkdir')).status).toBe('passed');
 
-    mockGetSessionView.mockReturnValue(view({ history: ['rm junk.txt', 'rm temp.log'] }));
-    mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n');
+    mockGetSessionView.mockReturnValue(
+      view({
+        history: ['cp mission.txt keep/mission.txt', 'rm junk.txt', 'rm temp.log cache.tmp'],
+      }),
+    );
+    mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n3 P\n4 P\n');
     expect((await runTerminalTests('user:1', 'sid', 'linux', 'rm')).status).toBe('passed');
   });
 

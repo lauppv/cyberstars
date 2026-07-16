@@ -1,10 +1,15 @@
 ```bash
-date
+date > shift-log.txt
+uptime >> shift-log.txt
+mkdir shift-records
+mv shift-log.txt shift-records/
 history
 ```
 
 ```text
-Mon Mar 17 14:32:01 UTC 2157
     1  date
-    2  history
+    2  uptime
+    3  mkdir shift-records
+    4  mv shift-log.txt shift-records/
+    5  history
 ```

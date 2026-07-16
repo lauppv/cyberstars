@@ -32,10 +32,13 @@ patterns can be regex (`/word/`) or conditions (`$2 == "alpha"`).
 
 ## Mission: Cargo Weight Report
 
-The station is approaching a gravity-assist manoeuvre and the pilot needs to know the total cargo mass. The file `cargo_weight.txt` lists each item and its weight in column 2.
+The station is approaching a gravity-assist manoeuvre and the pilot needs a full cargo mass report. The file `cargo_weight.txt` lists each item and its weight in column 2.
 
-Use `awk` to **sum all the weights** (column 2) and print the total.
+1. Add up every weight in column 2 and print the combined total.
+2. Save that total into a new file called `total-weight.txt`.
+3. List only the heavy items — those with a weight above 100 — showing the name and the weight.
+4. Create a folder called `flight-deck` and move `total-weight.txt` into it.
 
 **Expected result**
 
-A single number representing the combined weight of all cargo items.
+`flight-deck/total-weight.txt` holds the combined weight of all cargo items (`610`).
