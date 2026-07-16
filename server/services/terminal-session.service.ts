@@ -12,6 +12,9 @@ import { dockerExec } from './docker-exec.js';
 const IMAGE = 'cyberstars-linux-sandbox';
 const IDLE_TTL = 15 * 60 * 1000;
 const EXEC_TIMEOUT = 5;
+// Each session is a live 128 MB sandbox container, so the total must be bounded
+// or a burst of /session calls OOMs the box. Mirrors code-container's global cap.
+const MAX_SESSIONS = Number(process.env.TERMINAL_MAX_SESSIONS ?? 50);
 
 interface Session {
   ownerKey: string;
@@ -26,6 +29,30 @@ const sessions = new Map<string, Session>();
 const executing = new Set<string>();
 
 let gcTimer: ReturnType<typeof setInterval> | null = null;
+
+// At the global cap, free one slot by destroying the least-recently-active
+// session that isn't mid-command. A session currently executing is never
+// evicted (it would kill a live command). `preferOwnerKey` recycles the
+// requesting owner's own idle session first, so an owner spamming /session
+// reclaims their own footprint before evicting other users' idle sessions.
+function evictLruIdleSession(preferOwnerKey?: string): void {
+  let lruId: string | null = null;
+  let oldest = Infinity;
+  for (const [id, s] of sessions) {
+    if (executing.has(id)) continue;
+    if (preferOwnerKey !== undefined && s.ownerKey !== preferOwnerKey) continue;
+    if (s.lastActivity < oldest) {
+      oldest = s.lastActivity;
+      lruId = id;
+    }
+  }
+  // No idle session owned by the requester — fall back to the global LRU idle.
+  if (!lruId && preferOwnerKey !== undefined) {
+    evictLruIdleSession();
+    return;
+  }
+  if (lruId) void destroySession(lruId);
+}
 
 function startGC() {
   if (gcTimer) return;
@@ -67,6 +94,9 @@ export async function createSession(
 ): Promise<TerminalSessionInfo> {
   const setup = loadSetup(courseKey, lessonSlug, lang);
   const cwd = setup?.cwd ?? '/home/student';
+
+  // Bound total live containers before spinning up another one.
+  if (sessions.size >= MAX_SESSIONS) evictLruIdleSession(ownerKey);
 
   const containerId = await dockerExec([
     'run',
@@ -193,6 +223,10 @@ export async function destroySession(sessionId: string, ownerKey?: string): Prom
   } catch {
     /* container may already be gone */
   }
+}
+
+export function activeCount(): number {
+  return sessions.size;
 }
 
 export async function destroyAllSessions(): Promise<void> {
