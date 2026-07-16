@@ -115,11 +115,17 @@ def to_ast_value(v):
 
 
 def inject_values(code, values):
-    # Replace successive module-level assignments of each input variable with
-    # the test values: a scalar targets the first assignment, a list feeds one
-    # value per assignment in order (reassignment lessons). A variable that is
-    # never assigned gets its first value re-inserted at the top so the program
-    # still runs (a hardcoded/incomplete program then fails on output anyway).
+    # Replace successive assignments of each input variable with the test
+    # values: a scalar targets the first assignment, a list feeds one value per
+    # assignment in order (reassignment lessons). A variable that is never
+    # assigned gets its first value re-inserted at the top so the program still
+    # runs (a hardcoded/incomplete program then fails on output anyway).
+    #
+    # Assignments are collected tree-wide (not just module level) in source
+    # order, so a solution that wraps its logic in a function/`main()` or an
+    # `if __name__ == "__main__":` block still gets its input variables injected.
+    # The structure check (`has_variable`) already looks tree-wide; injection has
+    # to match, or an honestly-scoped solution would diverge from the oracle.
     if not values:
         return code
     tree = ast.parse(code)
@@ -127,12 +133,19 @@ def inject_values(code, values):
         name: list(v) if isinstance(v, list) else [v] for name, v in values.items()
     }
     consumed = set()
-    for node in tree.body:
-        if isinstance(node, ast.Assign) and len(node.targets) == 1:
-            target = node.targets[0]
-            if isinstance(target, ast.Name) and remaining.get(target.id):
-                node.value = to_ast_value(remaining[target.id].pop(0))
-                consumed.add(target.id)
+    assigns = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Assign)
+        and len(node.targets) == 1
+        and isinstance(node.targets[0], ast.Name)
+    ]
+    assigns.sort(key=lambda n: (getattr(n, "lineno", 0), getattr(n, "col_offset", 0)))
+    for node in assigns:
+        name = node.targets[0].id
+        if remaining.get(name):
+            node.value = to_ast_value(remaining[name].pop(0))
+            consumed.add(name)
     prelude = [
         ast.Assign(targets=[ast.Name(id=name, ctx=ast.Store())], value=to_ast_value(vals[0]))
         for name, vals in remaining.items()
