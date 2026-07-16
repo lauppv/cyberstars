@@ -1,12 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "identificat" },
+    { "kind": "files_equal", "a": "mister.dat", "b": "identificat/readme.txt" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "which\\b.*ls"
-    },
-    {
-      "kind": "command",
-      "pattern": "file\\b.*mister\\.dat"
-    }
+    { "kind": "command", "pattern": "which\\b.*ls" },
+    { "kind": "command", "pattern": "file\\b.*mister\\.dat" },
+    { "kind": "command", "name": "cat" },
+    { "kind": "command", "name": "cp" }
   ]
 }

@@ -48,14 +48,15 @@ Asta găsește fiecare fișier mai mare de 1 KB.
 ## Misiune: Scanarea directorului stației
 
 Inginerul-șef are nevoie de o privire de ansamblu asupra structurii folderului
-`statie` înainte de a reorganiza sistemul de fișiere.
+`statie` înainte de a reorganiza sistemul de fișiere, și de notițele text strânse
+într-un singur loc.
 
-1. Folosește `find statie -type d` pentru a lista **doar directoarele** din
-   `statie`.
-2. Folosește `find statie -type f -name "*.txt"` pentru a lista **doar fișierele
-   `.txt`** din `statie`.
+1. Listează **doar directoarele** din `statie`.
+2. Listează **doar fișierele `.txt`** din `statie` (fișiere, nu foldere).
+3. Strânge notițele text pe care le-ai găsit — creează un folder numit `index-txt` și
+   copiază `statie/notite.txt` și `statie/hangar/manifest.txt` în el.
 
 **Rezultat așteptat**
 
-Mai întâi vezi căile directoarelor, apoi căile tuturor fișierelor `.txt` găsite sub
-`statie`.
+Vezi căile directoarelor, apoi căile fișierelor `.txt`, iar folderul `index-txt`
+conține copii ale ambelor notițe text.

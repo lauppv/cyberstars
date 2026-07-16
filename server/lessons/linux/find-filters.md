@@ -47,11 +47,12 @@ That finds every file larger than 1 KB.
 
 ## Mission: Station Directory Scan
 
-The chief engineer needs a structural overview of the `station` folder before reorganising the file system.
+The chief engineer needs a structural overview of the `station` folder before reorganising the file system, and the text notes gathered in one place.
 
-1. Use `find station -type d` to list **only the directories** inside `station`.
-2. Use `find station -type f -name "*.txt"` to list **only the `.txt` files** inside `station`.
+1. List **only the directories** inside `station`.
+2. List **only the `.txt` files** inside `station` (files, not folders).
+3. Gather the text notes you found — create a folder called `txt-index` and copy `station/notes.txt` and `station/bay/manifest.txt` into it.
 
 **Expected result**
 
-First you see the directory paths, then the paths of all `.txt` files found under `station`.
+You see the directory paths, then the `.txt` file paths, and the `txt-index` folder holds copies of both text notes.

@@ -1,12 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "handoff" },
+    { "kind": "files_equal", "a": "system.log", "b": "handoff/night-brief.log" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "grep\\b.*-c\\b.*warning.*system\\.log"
-    },
-    {
-      "kind": "command",
-      "pattern": "grep\\b.*-v\\b.*info.*system\\.log"
-    }
+    { "kind": "command", "pattern": "grep\\b.*-c\\b.*warning.*system\\.log" },
+    { "kind": "command", "pattern": "grep\\b.*-v\\b.*info.*system\\.log" },
+    { "kind": "command", "pattern": "grep\\b.*-n\\b.*error.*system\\.log" },
+    { "kind": "command", "name": "cp" }
   ]
 }

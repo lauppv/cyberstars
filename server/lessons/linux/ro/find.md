@@ -45,15 +45,19 @@ find jurnale -name "eroare.txt"
 
 ---
 
-## Misiune: Localizează fișierul clasificat
+## Misiune: Localizează și pune la adăpost fișierul clasificat
 
 Serviciul de informații raportează că un document clasificat numit `secret.txt`
 este stocat undeva în arborele directorului tău personal, dar nimeni nu mai
-ține minte calea exactă.
+ține minte calea exactă. Odată găsit, trebuie pus la adăpost.
 
-Folosește `find` cu `-name` pentru a localiza `secret.txt` și a-i afișa calea
-completă.
+1. Caută în tot arborele fișierul numit `secret.txt` și afișează-i calea completă.
+2. Caută din nou în arbore fiecare fișier care se termină în `.log`, folosind un
+   caracter joker.
+3. Acum că știi unde se află, creează un folder numit `copie-seif` și copiază fișierul
+   clasificat `date/seif/secret.txt` în el sub numele `secret-backup.txt`.
 
 **Rezultat așteptat**
 
-Terminalul afișează calea către `secret.txt` din arborele de directoare.
+Apare calea către `secret.txt`, apoi fișierele `.log`, iar folderul `copie-seif`
+conține un backup pus la adăpost al fișierului clasificat.

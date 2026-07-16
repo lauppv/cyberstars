@@ -1,7 +1,7 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "vault-copy" },
-    { "kind": "files_equal", "a": "data/vault/secret.txt", "b": "vault-copy/secret-backup.txt" }
+    { "kind": "dir_exists", "path": "copie-seif" },
+    { "kind": "files_equal", "a": "date/seif/secret.txt", "b": "copie-seif/secret-backup.txt" }
   ],
   "requires": [
     { "kind": "command", "pattern": "find\\b.*-name\\b.*secret\\.txt" },

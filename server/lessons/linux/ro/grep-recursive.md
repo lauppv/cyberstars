@@ -44,12 +44,18 @@ _undeva_ în proiectul meu?”.
 ## Misiune: Investigarea defecțiunilor
 
 A fost raportată o defecțiune recurentă, iar echipa de mentenanță are nevoie de
-fiecare apariție a cuvântului `failure` din jurnalele stației. Folderul `jurnale`
-conține fișiere răspândite în mai multe sub-foldere.
+fiecare apariție a cuvântului `failure` din jurnalele stației, plus fișierul vinovat
+scos deoparte ca dovadă. Folderul `jurnale` conține fișiere răspândite în mai multe
+sub-foldere.
 
-Folosește `grep -r` pentru a căuta `failure` în întregul director `jurnale`.
+1. Caută recursiv `failure` peste tot sub folderul `jurnale` — fiecare rezultat arată
+   din ce fișier provine.
+2. Creează un folder numit `investigatie` și copiază jurnalul din ianuarie
+   `jurnale/ianuarie.log`, care conține defecțiunea pompei de răcire, în el sub numele
+   `dovada.log`.
+3. Afișează fișierul-dovadă ca să confirmi că a captat linia cu defecțiunea.
 
 **Rezultat așteptat**
 
-Fiecare potrivire afișează calea fișierului, două puncte și linia care conține
-`failure`.
+Fiecare linie cu `failure` apare cu calea fișierului ei, iar folderul `investigatie`
+conține o copie a jurnalului din ianuarie sub numele `dovada.log`.

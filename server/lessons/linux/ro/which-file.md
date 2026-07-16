@@ -59,15 +59,19 @@ sau este greșită.
 ## Misiune: Sondarea datelor necunoscute
 
 O scanare de rutină a găsit un fișier numit `mister.dat` în directorul tău
-personal. Extensia este necunoscută și nimeni nu știe ce conține. Înainte de a-l
-deschide, trebuie să investighezi.
+personal. Extensia este necunoscută și nimeni nu știe ce conține. Investighează-l,
+apoi arhivează-l cum se cuvine.
 
-1. Folosește `which ls` pentru a confirma că uneltele de bază sunt disponibile pe
-   acest sistem.
-2. Folosește `file mister.dat` pentru a identifica ce fel de date se află de
-   fapt înăuntru.
+1. Confirmă că unealta de bază pentru listare (`ls`) este chiar instalată pe acest
+   sistem.
+2. Identifică ce fel de date se află de fapt în `mister.dat`.
+3. Se dovedește a fi text simplu, lizibil — afișează-i conținutul ca să vezi
+   mesajul.
+4. Creează un folder numit `identificat` și copiază fișierul în el sub numele mai
+   clar `readme.txt`.
 
 **Rezultat așteptat**
 
-Vezi calea unde este instalat `ls`, iar `file` dezvăluie că `mister.dat` este
-text ASCII simplu, în ciuda numelui său suspect.
+Vezi unde se află `ls`, inspecția dezvăluie că `mister.dat` este text ASCII simplu
+în ciuda numelui său suspect, citești mesajul, iar o copie stă în
+`identificat/readme.txt` sub un nume care în sfârșit are sens.

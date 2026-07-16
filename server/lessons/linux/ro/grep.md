@@ -36,11 +36,15 @@ este menționat acest cuvânt?” — `grep` îți răspunde instant.
 
 ## Misiune: Scanare avertismente
 
-Comandantul stației vrea un briefing rapid cu toate avertismentele înregistrate în
-această tură. Jurnalul de evenimente se află în `sistem.log`.
+Comandantul stației vrea un briefing rapid cu avertismentele înregistrate în această
+tură și o copie a jurnalului la dosar. Jurnalul de evenimente se află în `sistem.log`.
 
-Folosește `grep` pentru a afișa doar liniile care conțin cuvântul `warning`.
+1. Afișează doar liniile care conțin cuvântul `warning`.
+2. Fă o a doua căutare pentru liniile care conțin `error`.
+3. Creează un folder numit `scanare` și copiază `sistem.log` în el sub numele
+   `tura.log` pentru evidență.
 
 **Rezultat așteptat**
 
-În terminal apar doar liniile cu avertismente din `sistem.log`.
+Apar liniile de avertisment, apoi linia de eroare, iar folderul `scanare` conține o
+copie a jurnalului turei.

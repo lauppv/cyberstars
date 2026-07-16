@@ -1,12 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "predare" },
+    { "kind": "files_equal", "a": "sistem.log", "b": "predare/brief-noapte.log" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "grep\\b.*-c\\b.*warning.*sistem\\.log"
-    },
-    {
-      "kind": "command",
-      "pattern": "grep\\b.*-v\\b.*info.*sistem\\.log"
-    }
+    { "kind": "command", "pattern": "grep\\b.*-c\\b.*warning.*sistem\\.log" },
+    { "kind": "command", "pattern": "grep\\b.*-v\\b.*info.*sistem\\.log" },
+    { "kind": "command", "pattern": "grep\\b.*-n\\b.*error.*sistem\\.log" },
+    { "kind": "command", "name": "cp" }
   ]
 }

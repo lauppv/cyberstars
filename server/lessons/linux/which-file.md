@@ -57,11 +57,13 @@ wrong.
 
 ## Mission: Unknown Data Probe
 
-A routine scan found a file called `mystery.dat` in your home directory. The extension is unfamiliar and nobody knows what it contains. Before opening it, you need to investigate.
+A routine scan found a file called `mystery.dat` in your home directory. The extension is unfamiliar and nobody knows what it contains. Investigate it, then file it away properly.
 
-1. Use `which ls` to confirm that basic tools are available on this system.
-2. Use `file mystery.dat` to identify what kind of data is actually inside.
+1. Confirm that the basic listing tool (`ls`) is actually installed on this system.
+2. Identify what kind of data is really inside `mystery.dat`.
+3. It turns out to be plain readable text — display its contents to see the message.
+4. Create a folder called `identified` and copy the file into it under the clearer name `readme.txt`.
 
 **Expected result**
 
-You see the path where `ls` is installed, and `file` reveals that `mystery.dat` is plain ASCII text despite its suspicious name.
+You see where `ls` lives, the inspection reveals `mystery.dat` is plain ASCII text despite its suspicious name, you read the message, and a copy sits in `identified/readme.txt` under a name that finally makes sense.

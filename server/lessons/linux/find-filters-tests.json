@@ -1,12 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "txt-index" },
+    { "kind": "files_equal", "a": "station/notes.txt", "b": "txt-index/notes.txt" },
+    { "kind": "files_equal", "a": "station/bay/manifest.txt", "b": "txt-index/manifest.txt" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "find\\b.*station.*-type\\s+d"
-    },
-    {
-      "kind": "command",
-      "pattern": "find\\b.*station.*-type\\s+f.*-name"
-    }
+    { "kind": "command", "pattern": "find\\b.*station.*-type\\s+d" },
+    { "kind": "command", "pattern": "find\\b.*station.*-type\\s+f.*-name" },
+    { "kind": "command", "name": "cp" }
   ]
 }

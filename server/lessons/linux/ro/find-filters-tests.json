@@ -1,12 +1,12 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "index-txt" },
+    { "kind": "files_equal", "a": "statie/notite.txt", "b": "index-txt/notite.txt" },
+    { "kind": "files_equal", "a": "statie/hangar/manifest.txt", "b": "index-txt/manifest.txt" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "pattern": "find\\b.*statie.*-type\\s+d"
-    },
-    {
-      "kind": "command",
-      "pattern": "find\\b.*statie.*-type\\s+f.*-name"
-    }
+    { "kind": "command", "pattern": "find\\b.*statie.*-type\\s+d" },
+    { "kind": "command", "pattern": "find\\b.*statie.*-type\\s+f.*-name" },
+    { "kind": "command", "name": "cp" }
   ]
 }

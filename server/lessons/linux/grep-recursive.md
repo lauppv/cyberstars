@@ -40,10 +40,12 @@ grep -rn "error" logs     # recursive + line numbers
 
 ## Mission: Failure Investigation
 
-A recurring malfunction has been reported and the maintenance team needs every mention of `failure` from the station logs. The `logs` folder contains files spread across several sub-folders.
+A recurring malfunction has been reported and the maintenance team needs every mention of `failure` from the station logs, plus the offending file pulled out for evidence. The `logs` folder contains files spread across several sub-folders.
 
-Use `grep -r` to search for `failure` across the entire `logs` directory.
+1. Search recursively for `failure` everywhere under the `logs` folder — each hit shows which file it came from.
+2. Create a folder called `investigation` and copy the January log `logs/january.log`, which holds the coolant-pump failure, into it as `evidence.log`.
+3. Display the evidence file to confirm it captured the failure line.
 
 **Expected result**
 
-Each match shows the file path, a colon, and the line containing `failure`.
+Every `failure` line appears with its file path, and the `investigation` folder holds a copy of the January log as `evidence.log`.
