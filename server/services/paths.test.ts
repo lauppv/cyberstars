@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { contentDir } from './paths.js';
+import { contentDir, hasTestsFile } from './paths.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 describe('contentDir', () => {
@@ -28,5 +28,15 @@ describe('contentDir', () => {
   it('rejects unknown course keys', () => {
     expect(() => contentDir('unknown-course')).toThrow(AppError);
     expect(() => contentDir('')).toThrow(AppError);
+  });
+});
+
+describe('hasTestsFile', () => {
+  it('is true for a lesson shipping a tests file', () => {
+    expect(hasTestsFile('python', 'anagram')).toBe(true);
+  });
+
+  it('is false for a lesson without a tests file (Kotlin)', () => {
+    expect(hasTestsFile('kotlin', 'hello-world')).toBe(false);
   });
 });

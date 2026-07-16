@@ -26,7 +26,25 @@ export const app = express();
 /* v8 ignore next -- isProduction is fixed at module load; only the dev/test branch runs under tests. */
 app.set('trust proxy', config.isProduction ? 1 : false);
 
-app.use(helmet({ contentSecurityPolicy: false }));
+// Restricted CSP as defence-in-depth: scripts/objects locked to our own origin
+// (plus the unpkg three.js bundle the Laniakea explorer loads at runtime), so a
+// future regression that injects raw HTML can't pull in arbitrary scripts.
+// 'unsafe-inline' stays for styles only — React inline styles and CodeMirror's
+// injected <style> tags need it, and inline styles are not an XSS vector.
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        scriptSrc: ["'self'", 'https://unpkg.com'],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        imgSrc: ["'self'", 'data:', 'blob:'],
+        connectSrc: ["'self'"],
+      },
+    },
+  }),
+);
 app.use(cors({ origin: config.corsOrigin, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());

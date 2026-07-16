@@ -17,14 +17,23 @@ const mockCurriculumRepo = {
   getLessonsByCourse: vi.fn(),
 };
 
+const hasTestsFileMock = vi.fn();
+
 vi.mock('../repositories/daily.repository.js', () => mockDailyRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
+vi.mock('./paths.js', () => ({
+  hasTestsFile: (...args: unknown[]) => hasTestsFileMock(...args),
+}));
 
-const { getDaily, awardBonusForCompletion, todayKey } = await import('./daily.service.js');
+const { getDaily, awardBonusForCompletion, todayKey, clearDailyPoolCache } =
+  await import('./daily.service.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
+  clearDailyPoolCache(); // pool is memoized per process/day — reset for isolation
   mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
+  // Default: every lesson is judge-completable unless a test says otherwise.
+  hasTestsFileMock.mockReturnValue(true);
 });
 
 describe('getDaily', () => {
@@ -74,6 +83,21 @@ describe('getDaily', () => {
     expect(mockDailyRepo.createPick).toHaveBeenCalled();
   });
 
+  it('memoizes the candidate pool so a second user does not re-query the DB', async () => {
+    mockDailyRepo.getPick.mockResolvedValue(null);
+    mockCurriculumRepo.getLessonsByCourse.mockImplementation(async (courseKey: string) =>
+      courseKey === 'python' ? [{ slug: 'a', title: 'A', sortOrder: 1 }] : [],
+    );
+
+    await getDaily(1);
+    const callsAfterFirstUser = mockCurriculumRepo.getLessonsByCourse.mock.calls.length;
+    expect(callsAfterFirstUser).toBeGreaterThan(0);
+
+    await getDaily(2);
+    // The pool is cached for the day — the second user triggers no new queries.
+    expect(mockCurriculumRepo.getLessonsByCourse.mock.calls.length).toBe(callsAfterFirstUser);
+  });
+
   it('returns a null pick when the pool has no lessons', async () => {
     mockDailyRepo.getPick.mockResolvedValue(null);
     mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
@@ -81,6 +105,32 @@ describe('getDaily', () => {
     const res = await getDaily(1);
     expect(res.lesson).toBeNull();
     expect(mockDailyRepo.createPick).not.toHaveBeenCalled();
+  });
+
+  it('excludes lessons without a tests file so every pick is claimable', async () => {
+    mockDailyRepo.getPick.mockResolvedValue(null);
+    mockCurriculumRepo.getLessonsByCourse.mockImplementation(async (courseKey: string) =>
+      courseKey === 'python'
+        ? [
+            { slug: 'tested', title: 'Tested', sortOrder: 1 },
+            { slug: 'untested', title: 'Untested', sortOrder: 2 },
+          ]
+        : [],
+    );
+    hasTestsFileMock.mockImplementation((_course: string, slug: string) => slug === 'tested');
+
+    const res = await getDaily(1);
+
+    // Only the tested lesson can be picked, regardless of the hash landing.
+    expect(res.lesson?.slug).toBe('tested');
+    expect(mockDailyRepo.createPick).toHaveBeenCalledWith(
+      1,
+      expect.any(String),
+      'lesson',
+      'python',
+      'tested',
+      'Tested',
+    );
   });
 
   it('reuses the raced-in pick when createPick loses a concurrent race', async () => {

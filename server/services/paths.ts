@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import { ALL_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants.js';
 import { AppError } from '../middleware/errorHandler.js';
@@ -25,4 +26,11 @@ export function contentDir(courseKey: string): string {
   assertValidCourse(courseKey);
   const algoSubdir = ALGO_MAP[courseKey];
   return algoSubdir ? path.join(ALGO_DIR, algoSubdir) : path.join(LESSONS_DIR, courseKey);
+}
+
+// A lesson is judge-completable iff it ships an EN <slug>-tests.json — the same
+// definition the static-content generator uses to emit `hasTests` into
+// curriculum.json. Kotlin (no tests) and untested main-course lessons are false.
+export function hasTestsFile(courseKey: string, slug: string): boolean {
+  return fs.existsSync(path.join(contentDir(courseKey), `${slug}-tests.json`));
 }
