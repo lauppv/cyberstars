@@ -85,6 +85,17 @@ export interface CreatePostRequest {
   content: string;
 }
 
+interface CategoryInput {
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  groupName: string;
+}
+
+export type CreateCategoryRequest = CategoryInput;
+export type UpdateCategoryRequest = CategoryInput;
+
 export interface UpdatePostRequest {
   content: string;
 }

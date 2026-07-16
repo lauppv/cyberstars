@@ -24,6 +24,9 @@ vi.mock('../middleware/validate.js', () => ({
 
 vi.mock('../controllers/forum.controller.js', () => ({
   getCategories: vi.fn(),
+  createCategory: vi.fn(),
+  updateCategory: vi.fn(),
+  deleteCategory: vi.fn(),
   getThreads: vi.fn(),
   getThread: vi.fn(),
   createThread: vi.fn(),

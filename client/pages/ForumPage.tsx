@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import i18next from 'i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { ForumPostContent } from '../components/forum/ForumPostContent';
+import { CategoryModal } from '../components/forum/CategoryModal';
 import { useAuth } from '../context/AuthContext';
 import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants';
 import * as forumService from '../services/forumService';
@@ -97,13 +98,7 @@ export function ForumPage() {
   return (
     <>
       <Topbar />
-      {view === 'index' && (
-        <ForumIndex
-          onOpenCategory={openCategory}
-          isLoggedIn={isLoggedIn}
-          onNewThread={(slug) => openCategory(slug, true)}
-        />
-      )}
+      {view === 'index' && <ForumIndex onOpenCategory={openCategory} user={user} />}
       {view === 'category' && categorySlug && (
         <CategoryView
           categorySlug={categorySlug}
@@ -131,49 +126,55 @@ export function ForumPage() {
 
 function ForumIndex({
   onOpenCategory,
-  isLoggedIn,
-  onNewThread,
+  user,
 }: {
   onOpenCategory: (slug: string) => void;
-  isLoggedIn: boolean;
-  onNewThread: (slug: string) => void;
+  user: AuthenticatedUser | null;
 }) {
   const { t } = useTranslation();
   const [categories, setCategories] = useState<ForumCategoryDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // null = closed; { category: undefined } = create; { category } = edit.
+  const [modal, setModal] = useState<{ category?: ForumCategoryDTO } | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
+  const isStaff = user != null && user.role !== 'USER';
+
+  const load = useCallback(() => {
     forumService
       .getCategories()
       .then((cats) => {
-        if (!cancelled) {
-          setCategories(cats);
-          setLoading(false);
-        }
+        setCategories(cats);
+        setLoading(false);
       })
       .catch(() => {
-        if (!cancelled) {
-          setError(t('forum.loadCategoriesError'));
-          setLoading(false);
-        }
+        setError(t('forum.loadCategoriesError'));
+        setLoading(false);
       });
-    return () => {
-      cancelled = true;
-    };
   }, [t]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const handleDelete = async (cat: ForumCategoryDTO) => {
+    if (!window.confirm(t('forum.confirmDeleteCategory'))) return;
+    try {
+      await forumService.deleteCategory(cat.slug);
+      load();
+    } catch (err) {
+      window.alert(errMsg(err));
+    }
+  };
 
   const groups = categories.reduce<Record<string, ForumCategoryDTO[]>>((acc, cat) => {
     (acc[cat.groupName] ??= []).push(cat);
     return acc;
   }, {});
+  const groupNames = Object.keys(groups);
 
   const totalThreads = categories.reduce((s, c) => s + c.threadCount, 0);
   const totalPosts = categories.reduce((s, c) => s + c.postCount, 0);
-  // The composer needs a category; the index has none, so start a thread in the
-  // first category any logged-in user is allowed to post in.
-  const firstPostable = categories.find((c) => !RESTRICTED_FORUM_CATEGORIES.has(c.slug));
 
   if (loading) {
     return (
@@ -197,12 +198,9 @@ function ForumIndex({
         <div>
           <p className="forum-page-subtitle">{t('forum.subtitle')}</p>
         </div>
-        {isLoggedIn && firstPostable && (
-          <button
-            className="forum-btn forum-btn-primary"
-            onClick={() => onNewThread(firstPostable.slug)}
-          >
-            {t('forum.newThread')}
+        {isStaff && (
+          <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
+            {t('forum.newCategory')}
           </button>
         )}
       </div>
@@ -234,7 +232,11 @@ function ForumIndex({
               </div>
               <div className="cat-table">
                 {cats.map((c) => (
-                  <div className="cat-row" key={c.slug} onClick={() => onOpenCategory(c.slug)}>
+                  <div
+                    className={`cat-row${isStaff ? ' cat-row-staff' : ''}`}
+                    key={c.slug}
+                    onClick={() => onOpenCategory(c.slug)}
+                  >
                     <div className="cat-main">
                       <div className="cat-icon" style={{ background: c.color + '22' }}>
                         {c.icon}
@@ -264,6 +266,24 @@ function ForumIndex({
                         </div>
                       </div>
                     )}
+                    {isStaff && (
+                      <div className="cat-actions" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          className="cat-action-btn"
+                          title={t('forum.editCategoryTitle')}
+                          onClick={() => setModal({ category: c })}
+                        >
+                          ✎
+                        </button>
+                        <button
+                          className="cat-action-btn cat-action-danger"
+                          title={t('forum.deleteCategoryTitle')}
+                          onClick={() => handleDelete(c)}
+                        >
+                          🗑
+                        </button>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -271,6 +291,18 @@ function ForumIndex({
           ))}
         </div>
       </div>
+
+      {modal && (
+        <CategoryModal
+          category={modal.category}
+          groups={groupNames}
+          onClose={() => setModal(null)}
+          onSaved={() => {
+            setModal(null);
+            load();
+          }}
+        />
+      )}
     </main>
   );
 }

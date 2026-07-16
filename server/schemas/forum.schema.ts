@@ -21,3 +21,14 @@ export const toggleReactionSchema = z.object({
 export const updateUserRoleSchema = z.object({
   role: z.enum(['USER', 'MODERATOR', 'ADMIN']),
 });
+
+export const categorySchema = z.object({
+  name: z.string().trim().min(1, 'Name is required').max(100),
+  description: z.string().trim().min(1, 'Description is required').max(500),
+  icon: z.string().trim().min(1, 'Icon is required').max(10),
+  color: z
+    .string()
+    .trim()
+    .regex(/^#[0-9a-fA-F]{6}$/, 'Color must be a hex value like #6C5CE7'),
+  groupName: z.string().trim().min(1, 'Group is required').max(50),
+});

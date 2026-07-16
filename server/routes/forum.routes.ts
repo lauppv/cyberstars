@@ -8,6 +8,7 @@ import {
   updatePostSchema,
   toggleReactionSchema,
   updateUserRoleSchema,
+  categorySchema,
 } from '../schemas/forum.schema.js';
 import * as forumController from '../controllers/forum.controller.js';
 
@@ -29,6 +30,22 @@ const router = Router();
 
 router.get('/categories', forumController.getCategories);
 router.get('/categories/:categorySlug/threads', forumController.getThreads);
+
+router.post(
+  '/categories',
+  authenticateToken,
+  forumWriteLimiter,
+  validateBody(categorySchema),
+  forumController.createCategory,
+);
+router.put(
+  '/categories/:categorySlug',
+  authenticateToken,
+  forumWriteLimiter,
+  validateBody(categorySchema),
+  forumController.updateCategory,
+);
+router.delete('/categories/:categorySlug', authenticateToken, forumController.deleteCategory);
 router.get('/threads/:threadId', forumReadLimiter, optionalAuth, forumController.getThread);
 
 router.post(

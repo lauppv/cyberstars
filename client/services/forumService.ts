@@ -7,11 +7,25 @@ import type {
   CreatePostRequest,
   ToggleReactionRequest,
   UpdatePostRequest,
+  CreateCategoryRequest,
+  UpdateCategoryRequest,
 } from '../../shared/forum';
 import type { UserRole } from '../../shared/auth';
 
 export function getCategories() {
   return api.get<ForumCategoryDTO[]>('/api/forum/categories');
+}
+
+export function createCategory(data: CreateCategoryRequest) {
+  return api.post<{ slug: string }>('/api/forum/categories', data);
+}
+
+export function updateCategory(slug: string, data: UpdateCategoryRequest) {
+  return api.put<{ ok: boolean }>(`/api/forum/categories/${slug}`, data);
+}
+
+export function deleteCategory(slug: string) {
+  return api.delete<{ ok: boolean }>(`/api/forum/categories/${slug}`);
 }
 
 export function getThreads(categorySlug: string) {

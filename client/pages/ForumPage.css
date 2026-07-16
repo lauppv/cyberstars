@@ -172,6 +172,41 @@
   transition: background 0.15s;
 }
 
+.cat-row-staff {
+  grid-template-columns: 1fr 90px 230px auto;
+}
+
+.cat-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.cat-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(22, 22, 29, 0.4);
+  color: var(--text2);
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.cat-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cat-action-danger:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
 .cat-row:last-child {
   border-bottom: none;
 }

@@ -12,6 +12,10 @@ const mockPrisma = {
   forumCategory: {
     findMany: vi.fn(),
     findUnique: vi.fn(),
+    aggregate: vi.fn(),
+    create: vi.fn(),
+    update: vi.fn(),
+    delete: vi.fn(),
   },
   forumThread: {
     count: vi.fn(),
@@ -61,6 +65,9 @@ const {
   deletePost,
   deleteThread,
   updateUserRole,
+  createCategory,
+  updateCategory,
+  deleteCategory,
 } = await import('./forum.controller.js');
 
 function mockReq(overrides: Partial<Request> = {}): Request {
@@ -1202,5 +1209,171 @@ describe('deleteThread authorization', () => {
       next,
     );
     expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+  });
+});
+
+describe('createCategory', () => {
+  it('returns 403 for a plain USER', async () => {
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await createCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { name: 'X', description: 'd', icon: '💬', color: '#6C5CE7', groupName: 'G' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('creates a category with a slug derived from the name', async () => {
+    mockUserRepo.getRole.mockResolvedValue('MODERATOR');
+    mockPrisma.forumCategory.findUnique.mockResolvedValue(null);
+    mockPrisma.forumCategory.aggregate.mockResolvedValue({ _max: { sortOrder: 4 } });
+    mockPrisma.forumCategory.create.mockResolvedValue({ slug: 'python-help' });
+    const res = mockRes();
+    await createCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: {
+          name: 'Python Help!',
+          description: 'd',
+          icon: '🐍',
+          color: '#6C5CE7',
+          groupName: 'Help',
+        },
+      }),
+      res,
+      vi.fn(),
+    );
+    const createArg = mockPrisma.forumCategory.create.mock.calls[0][0];
+    expect(createArg.data.slug).toBe('python-help');
+    expect(createArg.data.sortOrder).toBe(5);
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(res.json).toHaveBeenCalledWith({ slug: 'python-help' });
+  });
+
+  it('appends a numeric suffix when the slug already exists', async () => {
+    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockPrisma.forumCategory.findUnique
+      .mockResolvedValueOnce({ slug: 'general' })
+      .mockResolvedValueOnce(null);
+    mockPrisma.forumCategory.aggregate.mockResolvedValue({ _max: { sortOrder: null } });
+    mockPrisma.forumCategory.create.mockResolvedValue({ slug: 'general-2' });
+    const res = mockRes();
+    await createCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        body: { name: 'General', description: 'd', icon: '💬', color: '#ffffff', groupName: 'G' },
+      }),
+      res,
+      vi.fn(),
+    );
+    const createArg = mockPrisma.forumCategory.create.mock.calls[0][0];
+    expect(createArg.data.slug).toBe('general-2');
+    expect(createArg.data.sortOrder).toBe(1);
+    expect(res.json).toHaveBeenCalledWith({ slug: 'general-2' });
+  });
+});
+
+describe('updateCategory', () => {
+  it('returns 403 for a plain USER', async () => {
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await updateCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { categorySlug: 'general' } as Record<string, string>,
+        body: { name: 'X', description: 'd', icon: '💬', color: '#6C5CE7', groupName: 'G' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('returns 404 when the category is missing', async () => {
+    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockPrisma.forumCategory.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await updateCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { categorySlug: 'nope' } as Record<string, string>,
+        body: { name: 'X', description: 'd', icon: '💬', color: '#6C5CE7', groupName: 'G' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
+  it('updates an existing category', async () => {
+    mockUserRepo.getRole.mockResolvedValue('MODERATOR');
+    mockPrisma.forumCategory.findUnique.mockResolvedValue({ slug: 'general' });
+    mockPrisma.forumCategory.update.mockResolvedValue({});
+    const res = mockRes();
+    await updateCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { categorySlug: 'general' } as Record<string, string>,
+        body: { name: 'New', description: 'd', icon: '✨', color: '#000000', groupName: 'G' },
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumCategory.update).toHaveBeenCalledWith(
+      expect.objectContaining({ where: { slug: 'general' } }),
+    );
+    expect(res.json).toHaveBeenCalledWith({ ok: true });
+  });
+});
+
+describe('deleteCategory', () => {
+  it('returns 403 for a plain USER', async () => {
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    const next = vi.fn();
+    await deleteCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { categorySlug: 'general' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+  });
+
+  it('returns 404 when the category is missing', async () => {
+    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockPrisma.forumCategory.findUnique.mockResolvedValue(null);
+    const next = vi.fn();
+    await deleteCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { categorySlug: 'nope' } as Record<string, string>,
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(404);
+  });
+
+  it('deletes an existing category (cascading its threads)', async () => {
+    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockPrisma.forumCategory.findUnique.mockResolvedValue({ slug: 'general' });
+    mockPrisma.forumCategory.delete.mockResolvedValue({});
+    const res = mockRes();
+    await deleteCategory(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { categorySlug: 'general' } as Record<string, string>,
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockPrisma.forumCategory.delete).toHaveBeenCalledWith({ where: { slug: 'general' } });
+    expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
 });
