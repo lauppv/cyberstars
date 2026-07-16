@@ -46,14 +46,15 @@ complexe.
 
 ## Misiune: Înregistrează marca temporală
 
-Protocolul stației cere înregistrarea datei și orei curente la începutul
-fiecărui schimb, urmată de revizuirea activității recente din terminal.
+Protocolul stației cere un jurnal de schimb scris la începutul fiecărei ture: ora
+curentă, de cât timp este online stația și o revizuire a activității din terminal.
 
-1. Rulează `date` pentru a înregistra marca temporală curentă.
-2. Rulează `history` pentru a vedea o evidență a comenzilor pe care le-ai tastat
-   în această sesiune.
+1. Înregistrează data și ora curentă într-un fișier nou numit `jurnal-schimb.txt`.
+2. Adaugă la același fișier de cât timp rulează stația.
+3. Creează un folder numit `evidente-schimb` și mută `jurnal-schimb.txt` în el.
+4. Revizuiește lista numerotată cu comenzile pe care le-ai tastat în această sesiune.
 
 **Rezultat așteptat**
 
-Vezi data și ora de astăzi, urmate de o listă numerotată cu toate comenzile din
-sesiunea ta de până acum.
+`evidente-schimb/jurnal-schimb.txt` conține marca temporală urmată de timpul de
+funcționare al stației.

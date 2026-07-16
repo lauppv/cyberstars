@@ -43,11 +43,15 @@ nevoie.
 ## Misiune: Termină computerul de navigație blocat
 
 Computerul de navigație (PID **510**) s-a blocat la jumătatea unui calcul și nu
-mai răspunde. Pilotul nu poate trasa o rută până când nu este repornit.
+mai răspunde. Pilotul îl vrea oprit și un raport de incident depus la dosar.
 
-1. Folosește `kill -9 510` pentru a termina forțat procesul blocat.
-2. Rulează `ps aux` pentru a confirma că nu mai rulează.
+1. Termină forțat computerul de navigație blocat (PID **510**).
+2. Salvează o instantanee proaspătă a tuturor proceselor încă active într-un fișier
+   numit `dupa-oprire.txt`.
+3. Creează un folder numit `jurnal-incident` și mută `dupa-oprire.txt` în el.
+4. Numără de câte ori mai apare `nav-computer` în instantaneea salvată.
 
 **Rezultat așteptat**
 
-Output-ul `ps aux` nu mai listează procesul `nav-computer`.
+`jurnal-incident/dupa-oprire.txt` nu mai listează procesul `nav-computer`
+(numărul este `0`).

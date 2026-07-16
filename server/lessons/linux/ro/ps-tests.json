@@ -1,9 +1,9 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "health-check" },
+    { "kind": "dir_exists", "path": "verificare-stare" },
     {
       "kind": "file_contains",
-      "path": "health-check/reactor-status.txt",
+      "path": "verificare-stare/stare-reactor.txt",
       "text": "reactor-monitor"
     }
   ],

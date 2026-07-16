@@ -1,10 +1,15 @@
 ```bash
-date
+date > jurnal-schimb.txt
+uptime >> jurnal-schimb.txt
+mkdir evidente-schimb
+mv jurnal-schimb.txt evidente-schimb/
 history
 ```
 
 ```text
-Mon Mar 17 14:32:01 UTC 2157
     1  date
-    2  history
+    2  uptime
+    3  mkdir evidente-schimb
+    4  mv jurnal-schimb.txt evidente-schimb/
+    5  history
 ```

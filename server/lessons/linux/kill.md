@@ -41,11 +41,13 @@ The shell gives you its PID (`1312`) so you can `kill` it later if needed.
 
 ## Mission: Terminate the Frozen Nav-Computer
 
-The navigation computer (PID **510**) has locked up mid-calculation and is no longer responding. The pilot cannot plot a course until it is restarted.
+The navigation computer (PID **510**) has locked up mid-calculation and is no longer responding. The pilot needs it gone and an incident record filed.
 
-1. Use `kill -9 510` to forcefully terminate the frozen process.
-2. Run `ps aux` to confirm it is no longer running.
+1. Forcefully terminate the frozen navigation computer (PID **510**).
+2. Save a fresh snapshot of all still-running processes into a file called `after-kill.txt`.
+3. Create a folder called `incident-log` and move `after-kill.txt` into it.
+4. Count how many times `nav-computer` still appears in the saved snapshot.
 
 **Expected result**
 
-The `ps aux` output no longer lists the `nav-computer` process.
+`incident-log/after-kill.txt` no longer lists the `nav-computer` process (the count is `0`).

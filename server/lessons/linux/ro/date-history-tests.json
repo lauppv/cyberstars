@@ -1,7 +1,7 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "shift-records" },
-    { "kind": "file_exists", "path": "shift-records/shift-log.txt" }
+    { "kind": "dir_exists", "path": "evidente-schimb" },
+    { "kind": "file_exists", "path": "evidente-schimb/jurnal-schimb.txt" }
   ],
   "requires": [
     { "kind": "command", "name": "date" },

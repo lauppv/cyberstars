@@ -36,10 +36,13 @@ diagnostic tool.
 
 ## Mission: Engineering Health Check
 
-Engineering just radioed in — they need you to confirm the reactor monitoring daemon is still running. Without it, temperature readings stop flowing to the bridge.
+Engineering just radioed in — they need written proof that the reactor monitoring daemon is still running. Without it, temperature readings stop flowing to the bridge.
 
-Run `ps aux` to list all processes on the station's computer. Scan the output for any process whose command contains `reactor`.
+1. List all processes running on the station's computer.
+2. Filter that listing down to only the lines mentioning the reactor and save them into a file called `reactor-status.txt`.
+3. Create a folder called `health-check` and move `reactor-status.txt` into it.
+4. Count how many reactor processes were found.
 
 **Expected result**
 
-You should see a process running `/usr/bin/reactor-monitor --port=7700` owned by `root`. Report confirmed to engineering.
+`health-check/reactor-status.txt` contains the line for `/usr/bin/reactor-monitor`, confirming the daemon is alive.
