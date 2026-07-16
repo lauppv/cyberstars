@@ -203,3 +203,29 @@ export async function drainAll(): Promise<void> {
 export function activeCount(): number {
   return containers.size;
 }
+
+// Snapshot of the in-memory code-execution load for the admin dashboard. No
+// runs are persisted, so this reflects only the current instant.
+export interface CodeExecMetrics {
+  activeContainers: number;
+  runningNow: number;
+  maxContainers: number;
+  openSessions: number;
+  perLanguage: Record<string, number>;
+}
+
+export function liveMetrics(): CodeExecMetrics {
+  const perLanguage: Record<string, number> = {};
+  let runningNow = 0;
+  for (const c of containers.values()) {
+    perLanguage[c.language] = (perLanguage[c.language] ?? 0) + 1;
+    if (c.busy) runningNow++;
+  }
+  return {
+    activeContainers: containers.size,
+    runningNow,
+    maxContainers: MAX_CONTAINERS,
+    openSessions: sessionRefs.size,
+    perLanguage,
+  };
+}

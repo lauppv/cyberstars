@@ -8,7 +8,12 @@ process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
 
-const { authenticateToken, optionalAuth } = await import('./auth.js');
+const getRole = vi.fn();
+vi.mock('../repositories/user.repository.js', () => ({
+  getRole: (...args: unknown[]) => getRole(...args),
+}));
+
+const { authenticateToken, optionalAuth, requireAdmin } = await import('./auth.js');
 
 function makeReqRes(token?: string) {
   const req = { cookies: token ? { token } : {} } as unknown as Request;
@@ -42,6 +47,51 @@ describe('authenticateToken', () => {
     authenticateToken(req, res, next);
     expect(res.status).toHaveBeenCalledWith(403);
     expect(next).not.toHaveBeenCalled();
+  });
+});
+
+describe('requireAdmin', () => {
+  function makeAdminReq(id: number) {
+    const req = { user: { id } } as unknown as Request;
+    const res = {
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn().mockReturnThis(),
+    } as unknown as Response;
+    const next = vi.fn() as unknown as NextFunction;
+    return { req, res, next };
+  }
+
+  it('calls next for an ADMIN (role read from DB, not the token)', async () => {
+    getRole.mockResolvedValueOnce('ADMIN');
+    const { req, res, next } = makeAdminReq(42);
+    await requireAdmin(req, res, next);
+    expect(getRole).toHaveBeenCalledWith(42);
+    expect(next).toHaveBeenCalledWith();
+    expect(res.status).not.toHaveBeenCalled();
+  });
+
+  it('returns 403 for a non-admin USER', async () => {
+    getRole.mockResolvedValueOnce('USER');
+    const { req, res, next } = makeAdminReq(7);
+    await requireAdmin(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(403);
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it('returns 403 for a MODERATOR', async () => {
+    getRole.mockResolvedValueOnce('MODERATOR');
+    const { req, res, next } = makeAdminReq(7);
+    await requireAdmin(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(403);
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it('forwards errors to next', async () => {
+    const boom = new Error('db down');
+    getRole.mockRejectedValueOnce(boom);
+    const { req, res, next } = makeAdminReq(7);
+    await requireAdmin(req, res, next);
+    expect(next).toHaveBeenCalledWith(boom);
   });
 });
 
