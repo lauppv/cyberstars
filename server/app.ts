@@ -17,6 +17,15 @@ import dailyRoutes from './routes/daily.routes.js';
 
 export const app = express();
 
+// In production the app sits behind a single nginx reverse proxy
+// (443 -> localhost:8080), so every request's socket address is 127.0.0.1.
+// Trust exactly one proxy hop so `req.ip` (and thus the IP-keyed rate limiters
+// for auth/password/forum) resolves to the real client from X-Forwarded-For
+// instead of collapsing all users into one shared bucket. Off in dev/test,
+// where there is no proxy and the header must not be trusted.
+/* v8 ignore next -- isProduction is fixed at module load; only the dev/test branch runs under tests. */
+app.set('trust proxy', config.isProduction ? 1 : false);
+
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: config.corsOrigin, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
