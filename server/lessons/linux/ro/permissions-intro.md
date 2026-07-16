@@ -34,10 +34,13 @@ Pentru directoare: `r` = listezi conținutul, `w` = adaugi/ștergi fișiere, `x`
 
 ## Misiune: Audit de securitate
 
-Comandantul stației a ordonat un audit al permisiunilor pe stația ta de lucru. Trebuie să inspectezi fiecare fișier din directorul tău home și să identifici care dintre ele au acces de execuție.
+Comandantul stației a ordonat un audit al permisiunilor pe stația ta de lucru și vrea o evidență scrisă arhivată.
 
-Rulează `ls -l` pentru a afișa șirurile de permisiuni ale tuturor fișierelor. Găsește fișierul pe care proprietarul îl poate executa.
+1. Afișează detaliile complete ale permisiunilor pentru fiecare fișier din directorul tău home.
+2. Salvează acea listare detaliată într-un fișier nou numit `audit.txt`.
+3. Creează un folder numit `raport-audit` și mută `audit.txt` în el.
+4. Numără câte linii conține auditul salvat.
 
 **Rezultat așteptat**
 
-Ar trebui să vezi trei fișiere listate. Unul dintre ele are `x` în grupul de permisiuni al proprietarului (pozițiile 2-4) — acela este fișierul executabil (`diagnostic.sh`).
+`raport-audit/audit.txt` conține listarea permisiunilor pentru fiecare fișier din directorul tău home.

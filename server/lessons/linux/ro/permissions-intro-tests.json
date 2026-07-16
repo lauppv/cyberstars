@@ -1,7 +1,7 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "audit-report" },
-    { "kind": "file_exists", "path": "audit-report/audit.txt" }
+    { "kind": "dir_exists", "path": "raport-audit" },
+    { "kind": "file_exists", "path": "raport-audit/audit.txt" }
   ],
   "requires": [
     { "kind": "command", "pattern": "ls\\b.*-l" },

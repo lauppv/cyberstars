@@ -44,12 +44,13 @@ Dacă nu ești proprietarul unui fișier și nu faci parte din grupul lui, ți s
 
 ## Misiune: Verificarea identității
 
-Un document clasificat a fost găsit în directorul tău home. Înainte ca cineva să-l poată accesa, protocolul stației cere să-ți verifici identitatea și să confirmi proprietatea fișierului.
+Un document clasificat a fost găsit în directorul tău home. Înainte ca cineva să-l poată accesa, protocolul stației cere să-ți înregistrezi identitatea și să blochezi fișierul.
 
-1. Rulează `whoami` pentru a-ți confirma numele de utilizator.
-2. Rulează `id` pentru a-ți vedea identitatea completă, inclusiv grupurile.
-3. Rulează `ls -l clasificat.doc` pentru a verifica cine deține fișierul.
+1. Confirmă numele tău de utilizator.
+2. Salvează detaliile complete ale identității tale, inclusiv grupurile, într-un fișier numit `identitate.txt`.
+3. Blochează `clasificat.doc` astfel încât doar proprietarul să îl poată citi și modifica, iar nimeni altcineva să nu aibă acces.
+4. Creează un folder numit `verificare-id` și mută `identitate.txt` în el.
 
 **Rezultat așteptat**
 
-Vezi numele tău de utilizator (`student`), uid/gid/grupurile tale, și că `clasificat.doc` este deținut de `student` în grupul `echipaj`.
+`verificare-id/identitate.txt` conține detaliile identității tale, iar `clasificat.doc` este `-rw-------`.

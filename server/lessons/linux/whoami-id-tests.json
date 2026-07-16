@@ -1,16 +1,14 @@
 {
+  "checks": [
+    { "kind": "dir_exists", "path": "id-check" },
+    { "kind": "file_exists", "path": "id-check/identity.txt" },
+    { "kind": "file_mode", "path": "classified.doc", "mode": "600" }
+  ],
   "requires": [
-    {
-      "kind": "command",
-      "name": "whoami"
-    },
-    {
-      "kind": "command",
-      "name": "id"
-    },
-    {
-      "kind": "command",
-      "pattern": "ls\\b.*-l\\b.*classified\\.doc"
-    }
+    { "kind": "command", "name": "whoami" },
+    { "kind": "command", "name": "id" },
+    { "kind": "command", "name": "chmod" },
+    { "kind": "command", "name": "mkdir" },
+    { "kind": "command", "name": "mv" }
   ]
 }
