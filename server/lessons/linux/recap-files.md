@@ -20,11 +20,11 @@ files into them. Plan the structure first, then build it step by step. Use `ls` 
 A new deep-space survey mission has been approved and needs a proper project directory before the science team can start uploading data. You also need to clean up leftover junk from the last officer's shift.
 
 1. Create a folder called `project`.
-2. Inside it, create two sub-folders in one command: `mkdir -p project/src project/docs`.
+2. Inside it, create two sub-folders in a single step: `project/src` and `project/docs`.
 3. Inside `project/src`, create an empty file called `main.sh`.
 4. Copy the existing `template.txt` into `project/docs/readme.txt`.
 5. Delete the leftover `junk.txt` from your home directory.
 
 **Expected result**
 
-Running `ls project/src` shows `main.sh`. Running `cat project/docs/readme.txt` shows the template text. The file `junk.txt` no longer exists in your home directory.
+`project/src` contains `main.sh`, `project/docs/readme.txt` holds the template text, and `junk.txt` no longer exists in your home directory.

@@ -17,12 +17,12 @@ Numeric: r=4, w=2, x=1 — add them up per group.
 
 A security breach was detected on deck 3. The captain has issued a lockdown order — three files in your directory need their permissions tightened immediately.
 
-1. `launch_codes.txt` — Top secret. Only the owner may read and write. No group or other access. Set to `600`.
-2. `status_report.sh` — Operational script. Owner gets full access (rwx), group can read and execute, others get nothing. Set to `750`.
-3. `public_bulletin.txt` — Station-wide bulletin. Everyone can read, but only the owner can write. Set to `644`.
+1. `launch_codes.txt` — Top secret. Only the owner may read and write it; the group and others get no access at all.
+2. `status_report.sh` — Operational script. The owner gets full access, the group can read and execute it, and others get nothing.
+3. `public_bulletin.txt` — Station-wide bulletin. Everyone can read it, but only the owner can write.
 
-Use `chmod` on each file, then run `ls -l` to verify.
+Set each file's permissions accordingly, then confirm the result.
 
 **Expected result**
 
-`ls -l` shows `-rw-------` for `launch_codes.txt`, `-rwxr-x---` for `status_report.sh`, and `-rw-r--r--` for `public_bulletin.txt`. Lockdown complete.
+The three files end up as `-rw-------` for `launch_codes.txt`, `-rwxr-x---` for `status_report.sh`, and `-rw-r--r--` for `public_bulletin.txt`. Lockdown complete.

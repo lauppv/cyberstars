@@ -17,7 +17,7 @@ raw data into a clean report.
 
 The station administrator needs a summary of crew activity from `raw_data.csv`. The file contains comma-separated records (`name,action,count`), but some entries are duplicated and it is not sorted. Turn this raw data into a clean report — in a single pipeline.
 
-Use `cut` to extract only the name column (field 1, comma-delimited), pipe to `sort`, pipe to `uniq -c` to count occurrences, and redirect the result into `report.txt` using `>`.
+Extract only the name column (field 1, comma-delimited) from `raw_data.csv`, sort those names, count how many times each one occurs, and save the result into `report.txt`.
 
 **Expected result**
 

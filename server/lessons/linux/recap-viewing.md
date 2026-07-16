@@ -18,10 +18,10 @@ begins, `tail` to see the newest entries.
 
 The previous crew evacuated in a hurry and left three log files behind. Command needs a quick status report before we can re-occupy the station.
 
-1. Use `cat` to read `summary.log` in full.
-2. Use `head -n 3` to view the **first 3 lines** of `events.log`.
-3. Use `tail -n 3` to view the **last 3 lines** of `events.log`.
-4. Use `wc -l` to count the lines in `errors.log`.
+1. Read `summary.log` in full.
+2. View the **first 3 lines** of `events.log`.
+3. View the **last 3 lines** of `events.log`.
+4. Count the lines in `errors.log`.
 
 **Expected result**
 

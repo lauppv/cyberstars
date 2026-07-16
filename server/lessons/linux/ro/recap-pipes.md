@@ -21,10 +21,8 @@ Regula de aur: **fiecare comandă face o singură treabă**. Pipe-urile leagă t
 
 Puntea de inginerie tocmai a aruncat telemetrie brută în `telemetrie.raw`. Inginerul-șef are nevoie de o listă curată și sortată a tuturor avertismentelor, depusă la dosar înainte de următoarea revizie de sisteme.
 
-1. Construiește un pipeline care găsește toate liniile care conțin `WARN` în `telemetrie.raw`, le sortează alfabetic și salvează rezultatul în `avertismente_sortat.txt` folosind `>`.
-2. Adaugă linia `-- sfarsit de raport --` la `avertismente_sortat.txt` folosind `>>`.
-
-În total, două comenzi.
+1. Construiește un pipeline care găsește toate liniile care conțin `WARN` în `telemetrie.raw`, le sortează alfabetic și salvează rezultatul într-un fișier nou `avertismente_sortat.txt`.
+2. Adaugă linia `-- sfarsit de raport --` la sfârșitul lui `avertismente_sortat.txt`, fără a șterge ce se află deja acolo.
 
 **Rezultat așteptat**
 
