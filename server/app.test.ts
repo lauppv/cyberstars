@@ -66,6 +66,17 @@ describe('endpoint smoke tests — public routes return 200', () => {
   }
 });
 
+describe('content security policy', () => {
+  it('emits a restricted CSP header instead of disabling it', async () => {
+    const res = await request(app).get('/api/forum/categories');
+    const csp = res.headers['content-security-policy'];
+    expect(csp).toBeDefined();
+    expect(csp).toContain("script-src 'self' https://unpkg.com");
+    expect(csp).toContain('https://fonts.gstatic.com');
+    expect(csp).toContain("object-src 'none'");
+  });
+});
+
 describe('guest id cookie', () => {
   it('sets a guestId cookie for signed-out visitors', async () => {
     const res = await request(app).get('/api/forum/categories');
