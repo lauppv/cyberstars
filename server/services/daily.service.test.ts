@@ -25,10 +25,12 @@ vi.mock('./paths.js', () => ({
   hasTestsFile: (...args: unknown[]) => hasTestsFileMock(...args),
 }));
 
-const { getDaily, awardBonusForCompletion, todayKey } = await import('./daily.service.js');
+const { getDaily, awardBonusForCompletion, todayKey, clearDailyPoolCache } =
+  await import('./daily.service.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
+  clearDailyPoolCache(); // pool is memoized per process/day — reset for isolation
   mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
   // Default: every lesson is judge-completable unless a test says otherwise.
   hasTestsFileMock.mockReturnValue(true);
@@ -79,6 +81,21 @@ describe('getDaily', () => {
     expect(userOne.lesson).toEqual(userTwo.lesson);
     expect(userOne.lesson?.courseKey).toBe('python');
     expect(mockDailyRepo.createPick).toHaveBeenCalled();
+  });
+
+  it('memoizes the candidate pool so a second user does not re-query the DB', async () => {
+    mockDailyRepo.getPick.mockResolvedValue(null);
+    mockCurriculumRepo.getLessonsByCourse.mockImplementation(async (courseKey: string) =>
+      courseKey === 'python' ? [{ slug: 'a', title: 'A', sortOrder: 1 }] : [],
+    );
+
+    await getDaily(1);
+    const callsAfterFirstUser = mockCurriculumRepo.getLessonsByCourse.mock.calls.length;
+    expect(callsAfterFirstUser).toBeGreaterThan(0);
+
+    await getDaily(2);
+    // The pool is cached for the day — the second user triggers no new queries.
+    expect(mockCurriculumRepo.getLessonsByCourse.mock.calls.length).toBe(callsAfterFirstUser);
   });
 
   it('returns a null pick when the pool has no lessons', async () => {

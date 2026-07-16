@@ -31,10 +31,10 @@ function hash(seed: string): number {
   return h >>> 0;
 }
 
-async function poolLessons(
-  courses: readonly string[],
-): Promise<{ courseKey: string; slug: string; title: string }[]> {
-  const out: { courseKey: string; slug: string; title: string }[] = [];
+type Candidate = { courseKey: string; slug: string; title: string };
+
+async function poolLessons(courses: readonly string[]): Promise<Candidate[]> {
+  const out: Candidate[] = [];
   for (const courseKey of courses) {
     const lessons = await curriculumRepo.getLessonsByCourse(courseKey);
     for (const l of lessons) {
@@ -47,6 +47,30 @@ async function poolLessons(
     }
   }
   return out;
+}
+
+// The candidate list is static between seeds, but getOrCreatePick runs it on
+// every user's first request of the day (two DB fan-outs per user). Memoize it
+// per (kind) for the current day so the pool is built at most once per kind per
+// day per process; a new day drops the cache. Curriculum re-seeds mid-day won't
+// show until the next day — acceptable, the pool only changes at seed time.
+let poolCache: { date: string; byKind: Map<DailyKind, Candidate[]> } | null = null;
+
+async function candidatesFor(kind: DailyKind, date: string): Promise<Candidate[]> {
+  if (!poolCache || poolCache.date !== date) {
+    poolCache = { date, byKind: new Map() };
+  }
+  const cached = poolCache.byKind.get(kind);
+  if (cached) return cached;
+  const fresh = await poolLessons(POOLS[kind]);
+  poolCache.byKind.set(kind, fresh);
+  return fresh;
+}
+
+// Drop the memoized pools — for test isolation and as a hook to run after a
+// re-seed within a long-lived process.
+export function clearDailyPoolCache(): void {
+  poolCache = null;
 }
 
 async function getOrCreatePick(
@@ -64,7 +88,7 @@ async function getOrCreatePick(
     };
   }
 
-  const candidates = await poolLessons(POOLS[kind]);
+  const candidates = await candidatesFor(kind, date);
   if (!candidates.length) return null;
   const chosen = candidates[hash(`${date}-${kind}`) % candidates.length];
 
