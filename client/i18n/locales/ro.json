@@ -834,6 +834,8 @@
     "hide": "Ascunde",
     "show": "Arată radioul",
     "live": "Live",
+    "loading": "Se încarcă",
+    "offline": "Offline",
     "volume": "Volum",
     "liveNote": "O singură transmisie live — toți aud același moment. La reluare te reconectezi la live.",
     "track": {

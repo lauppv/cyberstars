@@ -20,6 +20,8 @@ function Probe() {
       <span data-testid="enabled">{String(r.enabled)}</span>
       <span data-testid="volume">{r.volume}</span>
       <span data-testid="playing">{String(r.playing)}</span>
+      <span data-testid="buffering">{String(r.buffering)}</span>
+      <span data-testid="offline">{String(r.offline)}</span>
       <button onClick={() => r.togglePlay()}>toggle</button>
       <button onClick={() => r.setVolume(200)}>overvol</button>
     </div>
@@ -36,6 +38,7 @@ function renderProbe() {
 
 let playSpy: ReturnType<typeof vi.fn>;
 let pauseSpy: ReturnType<typeof vi.fn>;
+let loadSpy: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -48,9 +51,11 @@ beforeEach(() => {
   );
   playSpy = vi.fn(() => Promise.resolve());
   pauseSpy = vi.fn();
+  loadSpy = vi.fn();
   // jsdom doesn't implement media playback — stub it.
   HTMLMediaElement.prototype.play = playSpy as unknown as HTMLMediaElement['play'];
   HTMLMediaElement.prototype.pause = pauseSpy as unknown as HTMLMediaElement['pause'];
+  HTMLMediaElement.prototype.load = loadSpy as unknown as HTMLMediaElement['load'];
 });
 
 afterEach(() => {
@@ -161,6 +166,50 @@ describe('RadioContext', () => {
     Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
     act(() => audio.dispatchEvent(new Event('loadedmetadata')));
     expect(ct).toBeGreaterThanOrEqual(0);
+  });
+
+  it('does not preload the stream (large file, most visitors never play)', () => {
+    const { container } = renderProbe();
+    expect(container.querySelector('audio')?.getAttribute('preload')).toBe('none');
+  });
+
+  it('buffers from pressing play until sound actually starts', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    fireEvent.click(screen.getByText('toggle'));
+    expect(screen.getByTestId('buffering')).toHaveTextContent('true');
+    act(() => audio.dispatchEvent(new Event('playing')));
+    expect(screen.getByTestId('buffering')).toHaveTextContent('false');
+  });
+
+  it('flags buffering on a mid-stream stall and clears it on pause', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    act(() => audio.dispatchEvent(new Event('waiting')));
+    expect(screen.getByTestId('buffering')).toHaveTextContent('true');
+    act(() => audio.dispatchEvent(new Event('pause')));
+    expect(screen.getByTestId('buffering')).toHaveTextContent('false');
+  });
+
+  it('clears buffering when play() is rejected (autoplay gesture)', async () => {
+    playSpy.mockReturnValue(Promise.reject(new Error('gesture')));
+    renderProbe();
+    fireEvent.click(screen.getByText('toggle'));
+    await act(async () => {});
+    expect(screen.getByTestId('buffering')).toHaveTextContent('false');
+  });
+
+  it('goes offline on a load error and retries via play', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    act(() => audio.dispatchEvent(new Event('error')));
+    expect(screen.getByTestId('offline')).toHaveTextContent('true');
+    expect(screen.getByTestId('playing')).toHaveTextContent('false');
+    // Pressing play again reloads the source and clears the offline flag.
+    fireEvent.click(screen.getByText('toggle'));
+    expect(loadSpy).toHaveBeenCalled();
+    expect(screen.getByTestId('offline')).toHaveTextContent('false');
+    expect(playSpy).toHaveBeenCalled();
   });
 
   it('resyncs the position when drift exceeds the threshold while playing', () => {

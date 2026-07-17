@@ -7,6 +7,8 @@ const h = vi.hoisted(() => ({
     track: { src: '/radio/neon-skylines.mp3', titleKey: 'radio.track.neonSkylines' },
     volume: 40,
     playing: false,
+    buffering: false,
+    offline: false,
     hidden: false,
     expanded: false,
     setVolume: vi.fn(),
@@ -26,26 +28,18 @@ beforeEach(() => {
     enabled: true,
     volume: 40,
     playing: false,
+    buffering: false,
+    offline: false,
     hidden: false,
     expanded: false,
   });
 });
 
 describe('RadioPlayer gate', () => {
-  it('renders the locked chip with a coming-soon hint when disabled', () => {
+  it('renders nothing when disabled', () => {
     h.radio.enabled = false;
-    render(<RadioPlayer />);
-    const btn = screen.getByRole('button', { name: /Coming soon/ });
-    fireEvent.click(btn);
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
-    fireEvent.keyDown(document, { key: 'Escape' });
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-  });
-
-  it('does not render the functional play control when disabled', () => {
-    h.radio.enabled = false;
-    render(<RadioPlayer />);
-    expect(screen.queryByRole('button', { name: 'Play' })).not.toBeInTheDocument();
+    const { container } = render(<RadioPlayer />);
+    expect(container).toBeEmptyDOMElement();
   });
 });
 
@@ -61,6 +55,23 @@ describe('RadioPlayer controls', () => {
     render(<RadioPlayer />);
     expect(screen.getByRole('button', { name: 'Pause' })).toBeInTheDocument();
     expect(screen.getByText('Live')).toBeInTheDocument();
+  });
+
+  it('shows a spinner instead of the LIVE badge while buffering', () => {
+    h.radio.playing = true;
+    h.radio.buffering = true;
+    render(<RadioPlayer />);
+    expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument();
+    expect(screen.queryByText('Live')).not.toBeInTheDocument();
+  });
+
+  it('shows an offline label when the stream failed to load', () => {
+    h.radio.offline = true;
+    render(<RadioPlayer />);
+    expect(screen.getByText('Offline')).toBeInTheDocument();
+    // Play stays clickable — pressing it retries the load.
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    expect(h.radio.togglePlay).toHaveBeenCalled();
   });
 
   it('toggles the expanded volume panel', () => {
@@ -96,16 +107,5 @@ describe('RadioPlayer controls', () => {
     h.radio.playing = true;
     const { container } = render(<RadioPlayer />);
     expect(container.querySelector('.animate-pulse')).not.toBeNull();
-  });
-});
-
-describe('RadioPlayer locked chip dismissal', () => {
-  it('closes the coming-soon dialog on an outside mousedown', () => {
-    h.radio.enabled = false;
-    render(<RadioPlayer />);
-    fireEvent.click(screen.getByRole('button', { name: /Coming soon/ }));
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
-    fireEvent.mouseDown(document.body);
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 });

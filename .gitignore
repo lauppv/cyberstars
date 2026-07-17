@@ -12,8 +12,10 @@ node_modules
 .env
 .env.test
 
+# temp files
 TESTS-DESIGN.md
 FEATURES-PLAN.md
+AUDIT-FEATURES.md
 
 dist
 dist-ssr
@@ -43,5 +45,7 @@ public/curriculum.json
 .runs
 .direnv/
 
-# Self-hosted focus-radio audio (large binary, deployed manually to the server)
-public/radio/*.mp3
+# Self-hosted focus-radio audio (large binary, deployed manually to the server).
+# Lives outside public/ so Vite doesn't copy it into dist/ on every build;
+# served by nginx in prod and by Express (media/radio static mount) in dev.
+media/
