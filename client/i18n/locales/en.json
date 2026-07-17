@@ -409,7 +409,7 @@
       }
     ],
     "radioPrivacyTitle": "Focus Radio & privacy",
-    "radioPrivacyDesc": "The optional Focus Radio streams music through YouTube's privacy-enhanced player. Nothing loads until you press play; at that point YouTube may set cookies and show ads, exactly as on youtube.com. Prefer not to? Just leave it paused."
+    "radioPrivacyDesc": "The optional Focus Radio plays one royalty-free instrumental track we host ourselves — no third parties, no cookies, no ads. It's a single live broadcast, so everyone tuned in hears the same moment. Nothing loads until you press play. Prefer silence? Just leave it paused."
   },
   "profile": {
     "edit": "Edit",
@@ -828,15 +828,13 @@
     "pause": "Pause",
     "expand": "More",
     "collapse": "Less",
-    "stations": "Stations",
+    "hide": "Hide",
+    "show": "Show radio",
+    "live": "Live",
     "volume": "Volume",
-    "offline": "Station offline — pick another",
-    "adsNote": "Streams may include YouTube ads and load Google cookies on play.",
-    "station": {
-      "lofi": "Nebula Lo-Fi",
-      "synthwave": "Synthwave Drift",
-      "chillhop": "Chillhop Orbit",
-      "ambient": "Deep Space Ambient"
+    "liveNote": "One live broadcast — everyone hears the same moment. Resuming re-joins live.",
+    "track": {
+      "neonSkylines": "Neon Skylines"
     }
   }
 }

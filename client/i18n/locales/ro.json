@@ -412,7 +412,7 @@
       }
     ],
     "radioPrivacyTitle": "Radio Focus și confidențialitate",
-    "radioPrivacyDesc": "Radioul Focus (opțional) redă muzică prin player-ul YouTube cu confidențialitate îmbunătățită. Nimic nu se încarcă până nu apeși Redă; în acel moment YouTube poate seta cookie-uri și afișa reclame, exact ca pe youtube.com. Nu vrei? Lasă-l pe pauză."
+    "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi — fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză."
   },
   "profile": {
     "edit": "Editează",
@@ -831,15 +831,13 @@
     "pause": "Pauză",
     "expand": "Mai mult",
     "collapse": "Mai puțin",
-    "stations": "Stații",
+    "hide": "Ascunde",
+    "show": "Arată radioul",
+    "live": "Live",
     "volume": "Volum",
-    "offline": "Stație offline — alege alta",
-    "adsNote": "Stream-urile pot conține reclame YouTube și încarcă cookie-uri Google la redare.",
-    "station": {
-      "lofi": "Nebula Lo-Fi",
-      "synthwave": "Synthwave Drift",
-      "chillhop": "Chillhop Orbit",
-      "ambient": "Deep Space Ambient"
+    "liveNote": "O singură transmisie live — toți aud același moment. La reluare te reconectezi la live.",
+    "track": {
+      "neonSkylines": "Neon Skylines"
     }
   }
 }

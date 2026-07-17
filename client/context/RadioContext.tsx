@@ -1,49 +1,48 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 import { canAccessFeature } from '../../shared/features';
-import { RADIO_STATIONS, DEFAULT_STATION_ID } from '../constants/radioStations';
-import type { RadioStation } from '../constants/radioStations';
+import { RADIO_TRACK } from '../constants/radioTrack';
+import type { RadioTrack } from '../constants/radioTrack';
 
 const STORAGE_KEY = 'cyberstars.radio';
 const DEFAULT_VOLUME = 40;
+const MAX_DRIFT_SEC = 2; // resync only when we've slipped more than this
+const DRIFT_CHECK_MS = 5000;
 
-interface PersistedPrefs {
-  stationId: string;
-  volume: number;
-}
-
-function readPrefs(): PersistedPrefs {
+function readVolume(): number {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-      const parsed = JSON.parse(raw) as Partial<PersistedPrefs>;
-      const stationId = RADIO_STATIONS.some((s) => s.id === parsed.stationId)
-        ? (parsed.stationId as string)
-        : DEFAULT_STATION_ID;
-      const volume =
-        typeof parsed.volume === 'number'
-          ? Math.min(100, Math.max(0, parsed.volume))
-          : DEFAULT_VOLUME;
-      return { stationId, volume };
+      const parsed = JSON.parse(raw) as { volume?: unknown };
+      if (typeof parsed.volume === 'number') {
+        return Math.min(100, Math.max(0, parsed.volume));
+      }
     }
   } catch {
-    // storage blocked or corrupt — fall through to defaults
+    // storage blocked or corrupt — fall through to default
   }
-  return { stationId: DEFAULT_STATION_ID, volume: DEFAULT_VOLUME };
+  return DEFAULT_VOLUME;
 }
 
 interface RadioContextValue {
   enabled: boolean;
-  station: RadioStation;
-  stationId: string;
+  track: RadioTrack;
   volume: number;
   playing: boolean;
+  hidden: boolean; // player minimised to a launcher chip; audio keeps playing
   expanded: boolean;
-  started: boolean; // has the user pressed play at least once (gates the lazy iframe)
-  setStation: (id: string) => void;
   setVolume: (v: number) => void;
   togglePlay: () => void;
+  setHidden: (v: boolean) => void;
   setExpanded: (v: boolean) => void;
 }
 
@@ -53,71 +52,134 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const enabled = canAccessFeature('radio', user?.role, import.meta.env.PROD);
 
-  const initial = useMemo(() => readPrefs(), []);
-  const [stationId, setStationId] = useState(initial.stationId);
-  const [volume, setVolumeState] = useState(initial.volume);
+  const [volume, setVolumeState] = useState(() => readVolume());
   const [playing, setPlaying] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [started, setStarted] = useState(false);
 
-  // Persist only the durable prefs; playing/expanded are per-session (autoplay is
-  // blocked without a gesture, so we never resume playback automatically).
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const offsetRef = useRef(0); // serverNow - clientNow, in ms
+  const pendingPlayRef = useRef(false);
+
+  // Fetch the authoritative server clock once, correcting for round-trip so the
+  // "live" position is the same second for everyone regardless of local skew.
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ stationId, volume }));
-    } catch {
-      // storage blocked; keep in-memory state only
-    }
-  }, [stationId, volume]);
-
-  const station = useMemo(
-    () => RADIO_STATIONS.find((s) => s.id === stationId) ?? RADIO_STATIONS[0],
-    [stationId],
-  );
-
-  const setStation = useCallback((id: string) => {
-    if (!RADIO_STATIONS.some((s) => s.id === id)) return;
-    setStationId(id);
+    let cancelled = false;
+    const t0 = Date.now();
+    fetch('/api/time')
+      .then((r) => r.json() as Promise<{ now: number }>)
+      .then((d) => {
+        if (cancelled || typeof d.now !== 'number') return;
+        const rtt = Date.now() - t0;
+        offsetRef.current = d.now + rtt / 2 - Date.now();
+      })
+      .catch(() => {
+        // server unreachable — fall back to the local clock (offset 0)
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
+
+  const livePosition = useCallback((durationSec: number) => {
+    return ((Date.now() + offsetRef.current) / 1000) % durationSec;
+  }, []);
+
+  const seekLive = useCallback(() => {
+    const a = audioRef.current;
+    const d = a?.duration;
+    if (!a || !d || !Number.isFinite(d)) return false;
+    a.currentTime = livePosition(d);
+    return true;
+  }, [livePosition]);
 
   const setVolume = useCallback((v: number) => {
     setVolumeState(Math.min(100, Math.max(0, v)));
   }, []);
 
   const togglePlay = useCallback(() => {
-    setStarted(true);
-    setPlaying((p) => !p);
-  }, []);
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) {
+      a.pause();
+      return;
+    }
+    // Resuming re-joins the live position (you can't rewind a broadcast).
+    if (!seekLive()) pendingPlayRef.current = true;
+    a.play().catch(() => {
+      // autoplay/gesture rejection — leave state as paused
+    });
+  }, [playing, seekLive]);
+
+  // Apply volume to the element.
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume / 100;
+  }, [volume]);
+
+  // Persist volume only (playback is per-session; a broadcast never auto-resumes).
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ volume }));
+    } catch {
+      // storage blocked; keep in-memory state only
+    }
+  }, [volume]);
+
+  // Drift correction: while playing, snap back to the live position if we've
+  // slipped too far (accounting for the loop wrap).
+  useEffect(() => {
+    if (!playing) return;
+    const id = window.setInterval(() => {
+      const a = audioRef.current;
+      const d = a?.duration;
+      if (!a || a.paused || a.seeking || !d || !Number.isFinite(d)) return;
+      const expected = livePosition(d);
+      let drift = (((expected - a.currentTime) % d) + d) % d; // 0..d
+      if (drift > d / 2) drift -= d; // shortest signed distance across the wrap
+      if (Math.abs(drift) > MAX_DRIFT_SEC) a.currentTime = expected;
+    }, DRIFT_CHECK_MS);
+    return () => window.clearInterval(id);
+  }, [playing, livePosition]);
+
+  const onLoadedMetadata = useCallback(() => {
+    if (pendingPlayRef.current) {
+      pendingPlayRef.current = false;
+      seekLive();
+    }
+  }, [seekLive]);
 
   const value = useMemo(
     () => ({
       enabled,
-      station,
-      stationId,
+      track: RADIO_TRACK,
       volume,
       playing,
+      hidden,
       expanded,
-      started,
-      setStation,
       setVolume,
       togglePlay,
+      setHidden,
       setExpanded,
     }),
-    [
-      enabled,
-      station,
-      stationId,
-      volume,
-      playing,
-      expanded,
-      started,
-      setStation,
-      setVolume,
-      togglePlay,
-    ],
+    [enabled, volume, playing, hidden, expanded, setVolume, togglePlay],
   );
 
-  return <RadioContext value={value}>{children}</RadioContext>;
+  return (
+    <RadioContext value={value}>
+      {enabled && (
+        <audio
+          ref={audioRef}
+          src={RADIO_TRACK.src}
+          loop
+          preload="metadata"
+          onLoadedMetadata={onLoadedMetadata}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+        />
+      )}
+      {children}
+    </RadioContext>
+  );
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

@@ -42,3 +42,6 @@ public/curriculum.json
 *.sw?
 .runs
 .direnv/
+
+# Self-hosted focus-radio audio (large binary, deployed manually to the server)
+public/radio/*.mp3

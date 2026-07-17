@@ -81,6 +81,14 @@ app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use('/api/messages', messagesRoutes);
 
+// Authoritative server clock for the focus-radio "live" sync — clients seek to
+// (serverNow % trackDuration) so everyone hears the same second regardless of
+// local clock skew. No auth, no DB, cache-busting headers.
+app.get('/api/time', (_req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.json({ now: Date.now() });
+});
+
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 

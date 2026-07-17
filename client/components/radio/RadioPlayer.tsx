@@ -1,111 +1,65 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRadio } from '../../context/RadioContext';
-import { useYouTubePlayer } from '../../hooks/useYouTubePlayer';
-import { RADIO_STATIONS } from '../../constants/radioStations';
 
-// Floating focus-radio chip, bottom-right. Mounted once at the app root so
-// playback survives route changes. The YouTube iframe stays visible at 200×200
-// while playing (IFrame API terms — see FEATURES-PLAN.md §5.2); "collapsed" only
-// trims the station picker / volume, it never hides the video.
+// Floating focus-radio chip, bottom-right. Mounted once at the app root; the
+// actual <audio> element lives in RadioProvider so playback survives navigation
+// and minimising. This component is pure UI — play/pause, volume, hide.
 export function RadioPlayer() {
   const { t } = useTranslation();
   const {
     enabled,
-    station,
-    stationId,
+    track,
     volume,
     playing,
+    hidden,
     expanded,
-    started,
-    setStation,
     setVolume,
     togglePlay,
+    setHidden,
     setExpanded,
   } = useRadio();
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { state, load, play, pause, setVolume: setPlayerVolume } = useYouTubePlayer(containerRef);
-  const loadedPlaylistRef = useRef<string | null>(null);
-
-  // Drive the underlying player from context state. Loading (re)starts the
-  // playlist; play/pause toggle without reloading.
-  useEffect(() => {
-    if (!enabled || !started) return;
-    if (playing) {
-      if (loadedPlaylistRef.current !== station.playlistId) {
-        loadedPlaylistRef.current = station.playlistId;
-        load(station.playlistId, volume);
-      } else {
-        play();
-      }
-    } else {
-      pause();
-    }
-    // volume is applied by its own effect; excluded to avoid reloads on drag
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enabled, started, playing, station.playlistId]);
-
-  useEffect(() => {
-    setPlayerVolume(volume);
-  }, [volume, setPlayerVolume]);
-
   if (!enabled) return <LockedRadioChip />;
 
-  const offline = state === 'error' || state === 'ended';
+  const title = t(track.titleKey);
+
+  if (hidden) {
+    return (
+      <div className="fixed bottom-4 right-4 z-40">
+        <button
+          onClick={() => setHidden(false)}
+          className="flex items-center gap-2 rounded-full border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] px-3 py-1.5 backdrop-blur-[12px] transition hover:bg-[var(--surface)]"
+          aria-label={t('radio.show')}
+          title={title}
+        >
+          <span>📻</span>
+          {playing && (
+            <span className="h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-[var(--accent)]" />
+          )}
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 flex w-[220px] flex-col items-stretch gap-2">
-      {started && (
-        <div className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] p-2 backdrop-blur-[12px]">
-          <div
-            ref={containerRef}
-            className="mx-auto h-[200px] w-[200px] overflow-hidden rounded-[var(--radius-sm)] bg-black/40"
-          />
-          {offline && (
-            <p className="mt-2 text-center text-[11px] text-[var(--danger,#e06c75)]">
-              {t('radio.offline')}
-            </p>
-          )}
-        </div>
-      )}
-
+    <div className="fixed bottom-4 right-4 z-40 flex w-[240px] flex-col items-stretch gap-2">
       {expanded && (
         <div className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] p-3 backdrop-blur-[12px]">
-          <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text3)]">
-            {t('radio.stations')}
-          </div>
-          <div className="flex flex-col gap-1">
-            {RADIO_STATIONS.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => setStation(s.id)}
-                className={`rounded-[var(--radius-sm)] px-2 py-1.5 text-left text-[12px] transition ${
-                  s.id === stationId
-                    ? 'bg-[var(--accent)]/20 text-[var(--text)]'
-                    : 'text-[var(--text2)] hover:bg-[var(--surface)]'
-                }`}
-              >
-                {t(s.titleKey)}
-              </button>
-            ))}
-          </div>
-          <div className="mt-3 border-t border-[var(--accent)]/20 pt-3">
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-[var(--text3)]">
-              {t('radio.volume')}
-            </label>
-            <input
-              type="range"
-              min={0}
-              max={100}
-              value={volume}
-              onChange={(e) => setVolume(Number(e.target.value))}
-              className="w-full accent-[var(--accent)]"
-              aria-label={t('radio.volume')}
-            />
-          </div>
+          <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-[var(--text3)]">
+            {t('radio.volume')}
+          </label>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={volume}
+            onChange={(e) => setVolume(Number(e.target.value))}
+            className="w-full accent-[var(--accent)]"
+            aria-label={t('radio.volume')}
+          />
           <p className="mt-3 text-[10px] leading-relaxed text-[var(--text3)]">
-            {t('radio.adsNote')}
+            {t('radio.liveNote')}
           </p>
         </div>
       )}
@@ -118,11 +72,14 @@ export function RadioPlayer() {
         >
           {playing ? '⏸' : '▶'}
         </button>
-        <span
-          className="min-w-0 flex-1 truncate text-[12px] text-[var(--text2)]"
-          title={t(station.titleKey)}
-        >
-          {t(station.titleKey)}
+        {playing && (
+          <span className="flex flex-shrink-0 items-center gap-1 text-[9px] font-semibold uppercase tracking-wider text-[var(--accent)]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--accent)]" />
+            {t('radio.live')}
+          </span>
+        )}
+        <span className="min-w-0 flex-1 truncate text-[12px] text-[var(--text2)]" title={title}>
+          {title}
         </span>
         <button
           onClick={() => setExpanded(!expanded)}
@@ -131,6 +88,13 @@ export function RadioPlayer() {
           aria-expanded={expanded}
         >
           {expanded ? '▾' : '▴'}
+        </button>
+        <button
+          onClick={() => setHidden(true)}
+          className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[13px] text-[var(--text3)] transition hover:bg-[var(--surface)]"
+          aria-label={t('radio.hide')}
+        >
+          ✕
         </button>
       </div>
     </div>
