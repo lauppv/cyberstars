@@ -214,6 +214,10 @@ describe('RadioContext', () => {
 
   it('resyncs the position when drift exceeds the threshold while playing', () => {
     vi.useFakeTimers();
+    // Pin the clock: livePosition is (now/1000) % duration, so a real wall-clock
+    // that happens to land within MAX_DRIFT_SEC of the loop boundary would make
+    // the expected position ~0 and skip the resync. 90s in sits safely mid-loop.
+    vi.setSystemTime(90_000);
     try {
       const { container } = renderProbe();
       const audio = container.querySelector('audio') as HTMLAudioElement;
