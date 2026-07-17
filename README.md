@@ -14,6 +14,7 @@ A free, open-source interactive coding education platform. Learn Python, C, Java
 - **Progress tracking** — per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
 - **Code persistence** — saved per lesson, restored on revisit
 - **Community forum** — threaded discussions with reactions and solution marking
+- **In-app notifications** — live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket (currently behind an admins-only preview gate)
 - **Linux terminal** — interactive sandboxed shell for learning Linux commands
 - **Admin dashboard** — admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics); access is server-authoritative, the role is read from the DB, never trusted from the client
 

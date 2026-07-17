@@ -134,6 +134,22 @@
     "empty": "No one has earned XP yet. Complete a lesson to claim the top spot!",
     "error": "Could not load the leaderboard. Please try again later."
   },
+  "notif": {
+    "title": "Notifications",
+    "empty": "You're all caught up.",
+    "markAllRead": "Mark all read",
+    "loadMore": "Load more",
+    "someone": "Someone",
+    "forumReply_one": "{{name}} replied to \"{{title}}\"",
+    "forumReply_other": "{{count}} new replies on \"{{title}}\"",
+    "forumSolution": "{{name}} marked your reply as the solution on \"{{title}}\"",
+    "forumReaction": "{{name}} reacted to your post in \"{{title}}\"",
+    "dm_one": "{{name}} sent you a message",
+    "dm_other": "{{count}} new messages from {{name}}",
+    "ticketNew": "New support ticket: \"{{title}}\"",
+    "ticketReply": "New reply on ticket \"{{title}}\"",
+    "status": "Ticket \"{{title}}\" is now {{status}}"
+  },
   "courses": {
     "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
     "lessons_one": "lesson",

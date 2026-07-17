@@ -27,6 +27,19 @@ vi.mock('../../context/AuthContext', () => ({
   useAuth: () => ({ ...mockAuthState, logout: mockLogout }),
 }));
 
+vi.mock('../../context/NotificationContext', () => ({
+  useNotifications: () => ({
+    enabled: false,
+    items: [],
+    unreadCount: 0,
+    loading: false,
+    hasMore: false,
+    loadMore: vi.fn(),
+    markAllRead: vi.fn(),
+    markOneRead: vi.fn(),
+  }),
+}));
+
 vi.mock('../../hooks/useGamification', () => ({
   useGamification: () => ({
     xp: {

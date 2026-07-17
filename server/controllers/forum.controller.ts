@@ -3,6 +3,7 @@ import type { Role } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { AppError } from '../middleware/errorHandler.js';
 import * as userRepo from '../repositories/user.repository.js';
+import * as notificationsService from '../services/notifications.service.js';
 import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants.js';
 import type {
   ForumCategoryDTO,
@@ -337,6 +338,20 @@ export async function createPost(req: Request, res: Response, next: NextFunction
 
     await prisma.forumThread.update({ where: { id: threadId }, data: { updatedAt: new Date() } });
 
+    // Notify the thread author of the new reply (fire-and-forget; self-notify is
+    // skipped inside notify). Collapses per thread while unread.
+    void notificationsService.notify({
+      recipientIds: [thread.authorId],
+      actorId: userId,
+      type: 'FORUM_REPLY',
+      entityId: threadId,
+      data: {
+        title: thread.title,
+        excerpt: content.slice(0, 140),
+        categorySlug: thread.category.slug,
+      },
+    });
+
     res.status(201).json({ postId: post.id });
   } catch (err) {
     next(err);
@@ -386,7 +401,7 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
 
     const post = await prisma.forumPost.findUnique({
       where: { id: postId },
-      include: { thread: true },
+      include: { thread: { include: { category: true } } },
     });
 
     if (!post) throw new AppError(404, 'Post not found');
@@ -413,6 +428,15 @@ export async function markSolution(req: Request, res: Response, next: NextFuncti
       prisma.forumPost.update({ where: { id: postId }, data: { solution: true } }),
       prisma.forumThread.update({ where: { id: post.threadId }, data: { solved: true } }),
     ]);
+
+    // Notify the post's author that their answer was accepted as the solution.
+    void notificationsService.notify({
+      recipientIds: [post.authorId],
+      actorId: userId,
+      type: 'FORUM_SOLUTION',
+      entityId: post.threadId,
+      data: { title: post.thread.title, categorySlug: post.thread.category.slug },
+    });
 
     res.json({ solved: true });
   } catch (err) {

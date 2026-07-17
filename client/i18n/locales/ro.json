@@ -135,6 +135,24 @@
     "empty": "Nimeni nu a câștigat XP încă. Termină o lecție ca să ocupi primul loc!",
     "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu."
   },
+  "notif": {
+    "title": "Notificări",
+    "empty": "Ești la zi.",
+    "markAllRead": "Marchează toate citite",
+    "loadMore": "Încarcă mai multe",
+    "someone": "Cineva",
+    "forumReply_one": "{{name}} a răspuns la „{{title}}”",
+    "forumReply_few": "{{count}} răspunsuri noi la „{{title}}”",
+    "forumReply_other": "{{count}} de răspunsuri noi la „{{title}}”",
+    "forumSolution": "{{name}} a marcat răspunsul tău drept soluție la „{{title}}”",
+    "forumReaction": "{{name}} a reacționat la postarea ta din „{{title}}”",
+    "dm_one": "{{name}} ți-a trimis un mesaj",
+    "dm_few": "{{count}} mesaje noi de la {{name}}",
+    "dm_other": "{{count}} de mesaje noi de la {{name}}",
+    "ticketNew": "Tichet nou de suport: „{{title}}”",
+    "ticketReply": "Răspuns nou la tichetul „{{title}}”",
+    "status": "Tichetul „{{title}}” este acum {{status}}"
+  },
   "courses": {
     "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
     "lessons_one": "lecție",
