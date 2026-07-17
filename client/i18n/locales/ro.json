@@ -101,7 +101,7 @@
     "notStarted_one": "Neînceput · {{count}} lecție",
     "notStarted_other": "Neînceput · {{count}} lecții",
     "marketing": {
-      "title": "Învață să programezi, gratuit",
+      "title": "Învață să programezi gratuit",
       "subtitle": "Lecții interactive în <1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>. Citește, scrie, rulează — totul într-un singur loc.",
       "startLearning": "Începe să înveți →",
       "signIn": "Conectare",
