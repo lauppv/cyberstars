@@ -120,6 +120,7 @@
     "loading": "Se încarcă...",
     "close": "Închide",
     "comingSoon": "În curând",
+    "comingSoonHint": "Încă lucrăm la asta. Se va debloca pentru toți în curând.",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
   },
