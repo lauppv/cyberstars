@@ -172,6 +172,23 @@ their completion saved.
 | GET    | `/api/support/tickets/:id/messages` | Yes   | Get messages       |
 | POST   | `/api/support/tickets/:id/messages` | Yes   | Add reply          |
 
+### Notifications
+
+Preview-gated (`requireFeatureAccess('notifications')`): on prod a non-admin gets
+404, so the feature stays hidden until launch. Requires an identity (no guests).
+
+| Method | Endpoint                      | Auth | Description                                                                                                      |
+| ------ | ----------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                    |
+| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                   |
+| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                  |
+| WS     | `/ws/user`                    | Yes  | Shared per-user socket; pushes live `new` / `unread-count` frames (same preview gate). Reused later by messaging |
+
+Notifications are emitted fire-and-forget from the forum (reply, accepted solution)
+and support (new ticket, reply, status change) flows; the actor is always excluded
+from their own notification, repeat replies collapse into one unread row, and each
+user is capped at 100 retained rows.
+
 ### Profile
 
 | Method | Endpoint              | Auth | Description                  |
@@ -201,6 +218,7 @@ Defined in [`prisma/schema.prisma`](../prisma/schema.prisma). Field names use ca
 - **UserSavedCode** — per-user saved code per lesson
 - **ForumCategory / ForumThread / ForumPost / ForumReaction** — community forum
 - **SupportTicket / SupportMessage** — support system
+- **Notification** — per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
 
 ### Key relationships
 
