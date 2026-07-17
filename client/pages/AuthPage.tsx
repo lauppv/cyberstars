@@ -50,27 +50,17 @@ function Starfield() {
 
     let rafId: number;
     let lastT = performance.now();
-    let running = false;
 
-    const start = () => {
-      if (running) return;
-      running = true;
-      lastT = performance.now();
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const onVisibility = () => {
-      if (document.hidden) {
-        cancelAnimationFrame(rafId);
-        running = false;
-      } else {
-        ctx.clearRect(0, 0, w, h);
-        start();
-      }
-    };
-    document.addEventListener('visibilitychange', onVisibility);
-
+    // Self-scheduling loop that is never cancelled on visibility change — the
+    // browser throttles rAF for hidden tabs and resumes it on return, so the
+    // chain can't get stuck "paused with no event to restart it". While hidden
+    // we skip drawing and only keep lastT fresh to avoid a warp jump on return.
     const tick = (t: number) => {
+      rafId = requestAnimationFrame(tick);
+      if (document.hidden) {
+        lastT = t;
+        return;
+      }
       const dt = Math.min(50, t - lastT);
       lastT = t;
       ctx.fillStyle = 'rgba(10, 5, 24, 0.28)';
@@ -123,15 +113,12 @@ function Starfield() {
         }
       }
       ctx.globalAlpha = 1;
-      rafId = requestAnimationFrame(tick);
     };
-    if (!document.hidden) start();
+    rafId = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(rafId);
-      running = false;
       window.removeEventListener('resize', resize);
-      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
