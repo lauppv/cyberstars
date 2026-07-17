@@ -132,3 +132,28 @@ describe('NotificationDropdown pagination', () => {
     expect(screen.getByText('…')).toBeInTheDocument();
   });
 });
+
+describe('NotificationDropdown relative time', () => {
+  const ago = (ms: number) => new Date(Date.now() - ms).toISOString();
+
+  it('renders a minutes-ago timestamp', () => {
+    renderWith([n({ createdAt: ago(5 * 60_000) })]);
+    expect(screen.getByText('5m ago')).toBeInTheDocument();
+  });
+
+  it('renders an hours-ago timestamp', () => {
+    renderWith([n({ createdAt: ago(3 * 60 * 60_000) })]);
+    expect(screen.getByText('3h ago')).toBeInTheDocument();
+  });
+
+  it('renders a days-ago timestamp', () => {
+    renderWith([n({ createdAt: ago(3 * 24 * 60 * 60_000) })]);
+    expect(screen.getByText('3d ago')).toBeInTheDocument();
+  });
+
+  it('falls back to a full date for older notifications', () => {
+    const old = new Date(Date.now() - 60 * 24 * 60 * 60_000);
+    renderWith([n({ createdAt: old.toISOString() })]);
+    expect(screen.getByText(old.toLocaleDateString())).toBeInTheDocument();
+  });
+});

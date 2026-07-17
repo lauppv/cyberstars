@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import i18n from 'i18next';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
+import { fetchDaily } from '../services/dailyService';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async (importOriginal) => {
@@ -39,6 +40,9 @@ vi.mock('../components/layout/Topbar', () => ({
 }));
 vi.mock('../components/ui/LoadingSpinner', () => ({
   LoadingSpinner: () => <div>Loading...</div>,
+}));
+vi.mock('../services/dailyService', () => ({
+  fetchDaily: vi.fn(() => Promise.resolve(null)),
 }));
 vi.mock('../services/almanacService', () => ({
   fetchAlmanacSlugs: vi.fn(() => Promise.resolve(['a', 'b', 'c', 'd'])),
@@ -494,5 +498,72 @@ describe('HomePage', () => {
     });
     renderPage();
     expect(screen.getByText('Activity')).toBeDefined();
+  });
+
+  it('renders the lesson- and algo-of-the-day cards with XP and bonus', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    vi.mocked(fetchDaily).mockResolvedValueOnce({
+      lesson: { courseKey: 'python', slug: 'intro', title: 'Intro', kind: 'lesson' },
+      algo: { courseKey: 'python', slug: 'booleans', title: 'Booleans', kind: 'algo' },
+      bonusRatio: 0.2,
+    } as never);
+    renderPage();
+    expect(await screen.findByText('Lesson of the Day')).toBeInTheDocument();
+    expect(screen.getByText('Algorithm of the Day')).toBeInTheDocument();
+    // the "not completed" branch shows the recommended badge
+    expect(screen.getAllByText('Recommended').length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('shows the completed state and review CTA for a done daily pick', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
+          completed: 1,
+          total: 2,
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: true,
+              completedAt: '2025-01-01T00:00:00Z',
+              lastAccessedAt: '2025-01-01T00:00:00Z',
+            },
+          ],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    vi.mocked(fetchDaily).mockResolvedValueOnce({
+      lesson: { courseKey: 'python', slug: 'intro', title: 'Intro', kind: 'lesson' },
+      algo: null,
+      bonusRatio: 0,
+    } as never);
+    renderPage();
+    const review = await screen.findByText('Review');
+    fireEvent.click(review);
+    expect(mockNavigate).toHaveBeenCalledWith('/lesson/python/intro');
+  });
+
+  it('keeps the daily section empty when the fetch fails', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    vi.mocked(fetchDaily).mockRejectedValueOnce(new Error('boom'));
+    renderPage();
+    await waitFor(() => expect(screen.queryByText('Lesson of the Day')).not.toBeInTheDocument());
   });
 });

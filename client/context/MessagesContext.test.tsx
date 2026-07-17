@@ -182,6 +182,24 @@ describe('MessagesContext', () => {
     fireEvent.click(screen.getByText('read'));
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('0'));
   });
+
+  it('leaves other conversations untouched when one is marked read', async () => {
+    h.service.getConversations.mockResolvedValue({
+      conversations: [conv({ id: 10, unreadCount: 2 }), conv({ id: 11, unreadCount: 3 })],
+    });
+    renderProvider();
+    await screen.findByTestId('count');
+    expect(screen.getByTestId('unread')).toHaveTextContent('5');
+    fireEvent.click(screen.getByText('read')); // marks id 10 only
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('3'));
+  });
+
+  it('ignores a dm frame that is not a message event', async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    dispatch({ channel: 'dm', type: 'read', payload: { conversationId: 10 } } as never);
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
+  });
 });
 
 describe('useMessages guard', () => {
