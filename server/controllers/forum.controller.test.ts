@@ -55,8 +55,11 @@ const mockUserRepo = {
   getRole: vi.fn(),
   updateRole: vi.fn(),
   countByRole: vi.fn(),
+  getAdminIds: vi.fn().mockResolvedValue([]),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
+
+vi.mock('../services/notifications.service.js', () => ({ notify: vi.fn() }));
 
 const {
   getCategories,
@@ -896,7 +899,7 @@ describe('markSolution', () => {
       threadId: 10,
       solution: false,
       deleted: false,
-      thread: { authorId: 1 },
+      thread: { authorId: 1, title: 'T', category: { slug: 'general' } },
     });
     mockPrisma.forumPost.updateMany.mockResolvedValue({});
     mockPrisma.forumPost.update.mockResolvedValue({});

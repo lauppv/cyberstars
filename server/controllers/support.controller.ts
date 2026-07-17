@@ -3,6 +3,7 @@ import type { SupportTicket, User } from '@prisma/client';
 import { AppError } from '../middleware/errorHandler.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as supportService from '../services/support.service.js';
+import * as notificationsService from '../services/notifications.service.js';
 import type { SupportTicketDTO, SupportMessageDTO } from '../../shared/support.js';
 
 function toDTO(t: SupportTicket): SupportTicketDTO {
@@ -23,6 +24,16 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
     const { type, subject, message } = req.body;
 
     const ticket = await supportService.create(userId, type, subject.trim(), message.trim());
+
+    // Alert every admin about the new ticket (the actor, if themselves an admin,
+    // is excluded inside notify).
+    void notificationsService.notify({
+      recipientIds: await userRepo.getAdminIds(),
+      actorId: userId,
+      type: 'SUPPORT_TICKET_NEW',
+      entityId: ticket.id,
+      data: { title: ticket.subject },
+    });
 
     res.status(201).json({ ticketId: ticket.id });
   } catch (err) {
@@ -85,6 +96,17 @@ export async function updateTicketStatus(
     }
 
     await supportService.updateStatus(id, status);
+
+    // Notify the ticket owner of the status change (self-notify skipped when the
+    // owner closes their own ticket).
+    void notificationsService.notify({
+      recipientIds: [ticket.userId],
+      actorId: userId,
+      type: 'SUPPORT_STATUS',
+      entityId: id,
+      data: { title: ticket.subject, status },
+    });
+
     res.json({ ok: true });
   } catch (err) {
     next(err);
@@ -146,6 +168,15 @@ export async function addTicketMessage(
     }
 
     await supportService.addMessage(ticketId, userId, message.trim());
+
+    // Admin reply → notify the owner; user reply → notify all admins.
+    void notificationsService.notify({
+      recipientIds: role === 'ADMIN' ? [ticket.userId] : await userRepo.getAdminIds(),
+      actorId: userId,
+      type: 'SUPPORT_REPLY',
+      entityId: ticketId,
+      data: { title: ticket.subject },
+    });
 
     res.status(201).json({ ok: true });
   } catch (err) {

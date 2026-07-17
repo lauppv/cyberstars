@@ -22,8 +22,11 @@ vi.mock('../services/support.service.js', () => mockSupportService);
 
 const mockUserRepo = {
   getRole: vi.fn(),
+  getAdminIds: vi.fn().mockResolvedValue([]),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
+
+vi.mock('../services/notifications.service.js', () => ({ notify: vi.fn() }));
 
 const {
   createTicket,
