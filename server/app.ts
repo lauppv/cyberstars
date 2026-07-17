@@ -15,6 +15,7 @@ import profileRoutes from './routes/profile.routes.js';
 import testsRoutes from './routes/tests.routes.js';
 import dailyRoutes from './routes/daily.routes.js';
 import adminRoutes from './routes/admin.routes.js';
+import leaderboardRoutes from './routes/leaderboard.routes.js';
 
 export const app = express();
 
@@ -74,6 +75,7 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/tests', testsRoutes);
 app.use('/api/daily', dailyRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));

@@ -4,6 +4,7 @@
     "courses": "Courses",
     "algorithms": "Algorithms",
     "forum": "Forum",
+    "leaderboard": "Leaderboard",
     "almanac": "Almanac",
     "laniakea": "Laniakea Explorer"
   },
@@ -117,8 +118,21 @@
   "common": {
     "loading": "Loading...",
     "close": "Close",
+    "comingSoon": "Coming soon",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "Top explorers ranked by total XP earned across every course.",
+    "you": "You",
+    "yourRank": "Your rank",
+    "xp": "{{xp}} XP",
+    "lessons_one": "{{count}} lesson",
+    "lessons_other": "{{count}} lessons",
+    "loadMore": "Load more",
+    "empty": "No one has earned XP yet. Complete a lesson to claim the top spot!",
+    "error": "Could not load the leaderboard. Please try again later."
   },
   "courses": {
     "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
