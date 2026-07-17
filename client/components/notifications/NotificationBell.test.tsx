@@ -21,6 +21,7 @@ vi.mock('../../hooks/useUserSocket', () => ({
 const mockNavigate = h.navigate;
 const mockService = h.service;
 
+import { UserSocketProvider } from '../../context/UserSocketContext';
 import { NotificationProvider } from '../../context/NotificationContext';
 import { NotificationBell } from '../layout/NotificationBell';
 
@@ -39,9 +40,11 @@ function notif(over: Partial<NotificationDTO> = {}): NotificationDTO {
 
 function renderBell() {
   return render(
-    <NotificationProvider>
-      <NotificationBell />
-    </NotificationProvider>,
+    <UserSocketProvider>
+      <NotificationProvider>
+        <NotificationBell />
+      </NotificationProvider>
+    </UserSocketProvider>,
   );
 }
 

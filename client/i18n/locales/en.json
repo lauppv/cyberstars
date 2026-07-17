@@ -5,6 +5,7 @@
     "algorithms": "Algorithms",
     "forum": "Forum",
     "leaderboard": "Leaderboard",
+    "messages": "Messages",
     "almanac": "Almanac",
     "laniakea": "Laniakea Explorer"
   },
@@ -133,6 +134,21 @@
     "loadMore": "Load more",
     "empty": "No one has earned XP yet. Complete a lesson to claim the top spot!",
     "error": "Could not load the leaderboard. Please try again later."
+  },
+  "messages": {
+    "title": "Messages",
+    "emptyInbox": "No conversations yet.",
+    "selectPrompt": "Select a conversation to start chatting.",
+    "noMessagesYet": "No messages yet",
+    "deletedMessage": "Message deleted",
+    "youPrefix": "You: ",
+    "composerPlaceholder": "Write a message…",
+    "send": "Send",
+    "delete": "Delete",
+    "back": "Back",
+    "loadOlder": "Load older messages",
+    "read": "Read",
+    "sent": "Sent"
   },
   "notif": {
     "title": "Notifications",

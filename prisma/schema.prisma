@@ -73,7 +73,47 @@ model User {
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
 
+  conversationsA Conversation[]  @relation("ConvA")
+  conversationsB Conversation[]  @relation("ConvB")
+  sentMessages   DirectMessage[]
+
   @@map("users")
+}
+
+// A 1-to-1 direct-message thread. The two participants are stored as a canonical
+// ordered pair (userAId < userBId) so A<->B and B<->A can't create duplicate
+// rows — the @@unique enforces exactly one conversation per pair.
+model Conversation {
+  id        Int      @id @default(autoincrement())
+  userAId   Int      @map("user_a_id")
+  userBId   Int      @map("user_b_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  userA    User            @relation("ConvA", fields: [userAId], references: [id], onDelete: Cascade)
+  userB    User            @relation("ConvB", fields: [userBId], references: [id], onDelete: Cascade)
+  messages DirectMessage[]
+
+  @@unique([userAId, userBId])
+  @@index([userAId])
+  @@index([userBId])
+  @@map("conversations")
+}
+
+model DirectMessage {
+  id             Int       @id @default(autoincrement())
+  conversationId Int       @map("conversation_id")
+  senderId       Int       @map("sender_id")
+  content        String
+  readAt         DateTime? @map("read_at")
+  deleted        Boolean   @default(false)
+  createdAt      DateTime  @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@map("direct_messages")
 }
 
 // One lesson and one algorithm challenge picked per day (kind = "lesson" |

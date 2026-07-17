@@ -121,6 +121,12 @@ describe('endpoint smoke tests — auth-protected routes return 401 without toke
     ['get', '/api/notifications'],
     ['post', '/api/notifications/read'],
     ['post', '/api/notifications/123/read'],
+    ['get', '/api/messages/conversations'],
+    ['post', '/api/messages/conversations'],
+    ['get', '/api/messages/conversations/123'],
+    ['post', '/api/messages/conversations/123'],
+    ['post', '/api/messages/conversations/123/read'],
+    ['delete', '/api/messages/123'],
     ['get', '/auth/me'],
   ];
 
@@ -144,6 +150,13 @@ describe('preview feature gate', () => {
     } finally {
       process.env.NODE_ENV = original;
     }
+  });
+
+  it('401s messaging for a guest before the feature gate can 404 it', async () => {
+    // No token -> authenticateToken rejects first (401), so endpoint existence
+    // stays hidden from the unauthenticated even in dev.
+    const res = await request(app).get('/api/messages/conversations');
+    expect(res.status).toBe(401);
   });
 });
 

@@ -12,6 +12,10 @@ vi.mock('../context/CurriculumContext', () => ({
   useCurriculum: () => ({ curriculum: [] }),
 }));
 
+vi.mock('../context/MessagesContext', () => ({
+  useMessages: () => ({ enabled: false, totalUnread: 0 }),
+}));
+
 vi.mock('../context/ProgressContext', () => ({
   useProgress: () => ({ completedLessons: [] }),
 }));
