@@ -4,6 +4,7 @@ import { prisma } from '../../server/config/db.js';
 beforeEach(async () => {
   await prisma.$executeRawUnsafe(`
     TRUNCATE
+      "notifications",
       "forum_reactions",
       "forum_posts",
       "forum_threads",
