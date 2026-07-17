@@ -105,11 +105,31 @@ describe('RadioContext', () => {
     expect(fetch).toHaveBeenCalledWith('/api/time');
   });
 
-  it('renders no audio element when the feature gate is off', () => {
+  it('is disabled when the feature gate is off', () => {
     h.canAccess.mockReturnValue(false);
-    const { container } = renderProbe();
+    renderProbe();
     expect(screen.getByTestId('enabled')).toHaveTextContent('false');
-    expect(container.querySelector('audio')).toBeNull();
+  });
+
+  it('is disabled for guests (no signed-in user)', () => {
+    h.auth = { user: null };
+    renderProbe();
+    expect(screen.getByTestId('enabled')).toHaveTextContent('false');
+  });
+
+  it('stops playback when the user signs out', () => {
+    const { container, rerender } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    act(() => audio.dispatchEvent(new Event('play')));
+    expect(screen.getByTestId('playing')).toHaveTextContent('true');
+    h.auth = { user: null };
+    rerender(
+      <RadioProvider>
+        <Probe />
+      </RadioProvider>,
+    );
+    expect(pauseSpy).toHaveBeenCalled();
+    expect(screen.getByTestId('enabled')).toHaveTextContent('false');
   });
 
   it('throws when used outside the provider', () => {
