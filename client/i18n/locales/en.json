@@ -101,7 +101,7 @@
     "notStarted_one": "Not started yet · {{count}} lesson",
     "notStarted_other": "Not started yet · {{count}} lessons",
     "marketing": {
-      "title": "Learn to code, for free",
+      "title": "Learn to code for free",
       "subtitle": "Interactive lessons in <1>Python</1>, <3>Java</3>, <5>C</5>, and <7>Linux</7>. Read, write, run — all in one place.",
       "startLearning": "Start Learning →",
       "signIn": "Sign in",

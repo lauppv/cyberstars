@@ -143,7 +143,7 @@ describe('HomePage', () => {
   it('renders marketing view when logged out', () => {
     mockUseAuth.mockReturnValue(loggedOutAuth);
     renderPage();
-    expect(screen.getByText('Learn to code, for free')).toBeDefined();
+    expect(screen.getByText('Learn to code for free')).toBeDefined();
     expect(screen.getByText('Start Learning →')).toBeDefined();
     expect(screen.getByText('Sign in')).toBeDefined();
   });
