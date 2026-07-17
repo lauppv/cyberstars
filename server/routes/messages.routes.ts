@@ -17,6 +17,15 @@ const sendLimiter = rateLimit({
   limit: process.env.NODE_ENV === 'test' ? 10_000 : 20,
 });
 
+// Opening a conversation creates a row, so cap it too — otherwise a caller could
+// spam new conversations against every user id. Higher than sends since it's an
+// idempotent find-or-create.
+const openLimiter = rateLimit({
+  windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
+  limit: process.env.NODE_ENV === 'test' ? 10_000 : 30,
+});
+
 const router = Router();
 
 // Messaging requires an identity (no guests) and passes the preview gate: on
@@ -26,6 +35,7 @@ router.use(authenticateToken, requireFeatureAccess('messaging'));
 router.get('/conversations', messagesController.getInbox);
 router.post(
   '/conversations',
+  openLimiter,
   validateBody(openConversationSchema),
   messagesController.openConversation,
 );

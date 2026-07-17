@@ -106,12 +106,13 @@ export async function sendMessage(
   pushToUser(userId, { channel: 'dm', type: 'message', payload: message });
 
   // Bell notification for the recipient (collapses per conversation while unread).
+  // No message excerpt is snapshotted: the DM notification only renders a count,
+  // and storing content would leave a copy behind after a message is deleted.
   void notificationsService.notify({
     recipientIds: [recipientId],
     actorId: userId,
     type: 'DM_MESSAGE',
     entityId: conversationId,
-    data: { excerpt: content.slice(0, 140) },
   });
   return message;
 }

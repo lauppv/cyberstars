@@ -5,8 +5,8 @@ import { useAuth } from '../../context/AuthContext';
 import { SUPPORTED_LANGS } from '../../i18n';
 import { useBackgroundPref, type BackgroundKind } from '../../hooks/useBackgroundPref';
 import { useGamification } from '../../hooks/useGamification';
-import { useMessages } from '../../context/MessagesContext';
 import { NotificationBell } from './NotificationBell';
+import { MessagesButton } from './MessagesButton';
 import { canAccessFeature, type FeatureKey } from '../../../shared/features';
 
 const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
@@ -30,7 +30,6 @@ const NAV_ITEMS: NavItem[] = [
   { key: 'nav.algorithms', path: '/algorithms' },
   { key: 'nav.forum', path: '/forum' },
   { key: 'nav.leaderboard', path: '/leaderboard', feature: 'leaderboard' },
-  { key: 'nav.messages', path: '/messages', feature: 'messaging' },
   { key: 'nav.almanac', path: '/almanac' },
   { key: 'nav.laniakea', path: '/laniakea' },
 ];
@@ -47,7 +46,6 @@ export function Topbar({
   const currentLang = i18n.resolvedLanguage ?? i18n.language;
   const { isLoggedIn, user, logout } = useAuth();
   const { xp } = useGamification();
-  const { totalUnread } = useMessages();
   const isLocked = (feature?: FeatureKey) =>
     feature ? !canAccessFeature(feature, user?.role, import.meta.env.PROD) : false;
   const [backgroundKind, setBackgroundKind] = useBackgroundPref();
@@ -206,23 +204,17 @@ export function Topbar({
                     ? location.pathname.startsWith('/algorithms') ||
                       location.pathname.startsWith('/lesson/algo')
                     : location.pathname.startsWith(item.path);
-              const badge = item.feature === 'messaging' && totalUnread > 0;
               return (
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className={`relative px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer border-none transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer border-none transition-all ${
                     isActive
                       ? 'text-[var(--accent)] bg-[rgba(108,92,231,0.07)]'
                       : 'text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]'
                   }`}
                 >
                   {t(item.key)}
-                  {badge && (
-                    <span className="min-w-[16px] h-[16px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-bold leading-[16px] text-center tabular-nums">
-                      {totalUnread > 9 ? '9+' : totalUnread}
-                    </span>
-                  )}
                 </button>
               );
             })}
@@ -234,6 +226,7 @@ export function Topbar({
         {isLoggedIn && user ? (
           <>
             <NotificationBell />
+            <MessagesButton />
             <div className="relative flex items-center gap-2" ref={menuRef}>
               <div
                 className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
