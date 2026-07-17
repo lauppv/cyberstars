@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
+import { LockedIcon } from './LockedIcon';
 
 export function NotificationBell() {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const { enabled, unreadCount } = useNotifications();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -25,7 +28,10 @@ export function NotificationBell() {
     };
   }, [open]);
 
-  if (!enabled) return null;
+  if (!enabled) {
+    if (!user) return null;
+    return <LockedIcon emoji="🔔" label={t('notif.title')} />;
+  }
 
   return (
     <div className="relative" ref={ref}>

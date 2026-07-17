@@ -1,15 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
+import { LockedIcon } from './LockedIcon';
 
 // Letter icon sitting to the right of the notification bell; carries the same
-// unread badge the inbox does. Hidden entirely when messaging isn't available.
+// unread badge the inbox does. Non-admins on prod see it locked ("coming soon").
 export function MessagesButton() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { enabled, totalUnread } = useMessages();
 
-  if (!enabled) return null;
+  if (!enabled) {
+    if (!user) return null;
+    return <LockedIcon emoji="✉️" label={t('messages.title')} />;
+  }
 
   return (
     <button

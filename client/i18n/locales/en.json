@@ -120,6 +120,7 @@
     "loading": "Loading...",
     "close": "Close",
     "comingSoon": "Coming soon",
+    "comingSoonHint": "We're still building this. It'll unlock for everyone soon.",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
   },
