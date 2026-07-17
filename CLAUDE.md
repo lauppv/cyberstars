@@ -130,6 +130,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 - DigitalOcean VPS, app at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`)
 - nginx reverse proxy on port 443 → localhost:8080. The `/ws/` location block requires `proxy_set_header Upgrade` and `Connection "upgrade"` for WebSocket
+- Focus-radio mp3 (163MB, gitignored, CBR) lives at `media/radio/` — outside `public/` so builds don't copy it into `dist/`. nginx serves it directly from disk via a `location /radio/` block (`alias /opt/cyberstars/media/radio/;`); the Express static mount on `/radio` is the dev path/fallback
 - Deploy: `cd /opt/cyberstars && git pull && npm install && npm run build && pm2 restart cyberstars`
 - Docker images must be pre-pulled on the server: `docker pull gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine danysk/kotlin:latest`
 

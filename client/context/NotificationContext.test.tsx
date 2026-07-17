@@ -100,16 +100,30 @@ describe('NotificationContext', () => {
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('7'));
   });
 
-  it('hoists a new notification, de-duping a collapsed id', async () => {
+  it('hoists a new notification and drops the unread row it collapsed', async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    // Same collapsible type + entity, unread: the incoming frame is a
+    // replacement row (fresh id), so the superseded copy disappears.
+    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 101 }) });
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101'));
+    // A different entity is unrelated — both stay.
+    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 102, entityId: 6 }) });
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('102,101'));
+  });
+
+  it('keeps same-entity unread rows for non-collapsible types', async () => {
+    h.service.getNotifications.mockResolvedValue({
+      items: [notif({ id: 100, type: 'SUPPORT_REPLY' })],
+      unreadCount: 1,
+    });
     renderProvider();
     await screen.findByTestId('count');
     dispatch({
       channel: 'notification',
       type: 'new',
-      payload: notif({ id: 100, data: { title: 'X' } }),
+      payload: notif({ id: 101, type: 'SUPPORT_REPLY' }),
     });
-    await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'));
-    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 101 }) });
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101,100'));
   });
 
@@ -142,6 +156,20 @@ describe('NotificationContext', () => {
     fireEvent.click(screen.getByText('all'));
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('0'));
     expect(h.service.markRead).toHaveBeenCalledWith(100);
+  });
+
+  it('markAllRead uses the max id even when the top item is not the newest', async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    // An out-of-order frame (lower id) lands on top of the list.
+    dispatch({
+      channel: 'notification',
+      type: 'new',
+      payload: notif({ id: 60, type: 'SUPPORT_REPLY', entityId: 7 }),
+    });
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('60,100'));
+    fireEvent.click(screen.getByText('all'));
+    await waitFor(() => expect(h.service.markRead).toHaveBeenCalledWith(100));
   });
 
   it('markAllRead is a no-op when nothing is unread', async () => {

@@ -174,7 +174,9 @@ async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promis
   const isProd = process.env.NODE_ENV === 'production';
   const role = isProd ? await userRepo.getRole(userId) : undefined;
   // The socket carries both notifications and messaging; open it if the user can
-  // reach either feature. Each pushed frame still respects its own feature gate.
+  // reach either feature. NOTE: pushed frames are NOT gated per channel — if the
+  // two features' gates ever diverge, pushToUser needs a per-recipient channel
+  // filter, or the ungated feature's frames leak to users who only have the other.
   if (
     !canAccessFeature('notifications', role, isProd) &&
     !canAccessFeature('messaging', role, isProd)

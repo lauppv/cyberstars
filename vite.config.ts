@@ -9,6 +9,7 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:5000',
       '/auth': 'http://localhost:5000',
+      '/radio': 'http://localhost:5000',
       '/ws': { target: 'ws://localhost:5000', ws: true },
     },
   },

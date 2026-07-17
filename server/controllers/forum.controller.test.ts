@@ -59,7 +59,8 @@ const mockUserRepo = {
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
-vi.mock('../services/notifications.service.js', () => ({ notify: vi.fn() }));
+const mockNotifications = { notify: vi.fn(), redactExcerpt: vi.fn() };
+vi.mock('../services/notifications.service.js', () => mockNotifications);
 
 const {
   getCategories,
@@ -1057,10 +1058,13 @@ describe('updatePost', () => {
 });
 
 describe('deletePost', () => {
-  it('soft-deletes post with actor name', async () => {
+  it('soft-deletes post with actor name and redacts the notification excerpt', async () => {
     mockPrisma.forumPost.findUnique.mockResolvedValue({
       id: 1,
       authorId: 1,
+      threadId: 7,
+      deleted: false,
+      content: 'some reply text',
       author: { role: 'USER' },
     });
     mockUserRepo.getRole.mockResolvedValue('USER');
@@ -1080,7 +1084,35 @@ describe('deletePost', () => {
         data: { deleted: true, deletedByName: 'Alice', content: '' },
       }),
     );
+    expect(mockNotifications.redactExcerpt).toHaveBeenCalledWith(
+      'FORUM_REPLY',
+      7,
+      'some reply text',
+    );
     expect(res.json).toHaveBeenCalledWith({ ok: true, threadDeleted: false });
+  });
+
+  it('does not redact again for an already-deleted post', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      id: 1,
+      authorId: 1,
+      threadId: 7,
+      deleted: true,
+      content: '',
+      author: { role: 'USER' },
+    });
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    mockPrisma.user.findUnique.mockResolvedValue({ name: 'Alice' });
+    mockPrisma.forumPost.update.mockResolvedValue({});
+    await deletePost(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { postId: '1' } as Record<string, string>,
+      }),
+      mockRes(),
+      vi.fn(),
+    );
+    expect(mockNotifications.redactExcerpt).not.toHaveBeenCalled();
   });
 });
 

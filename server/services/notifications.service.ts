@@ -1,5 +1,6 @@
 import * as repo from '../repositories/notifications.repository.js';
 import { pushToUser } from './ws-user.js';
+import { COLLAPSIBLE_TYPES } from '../../shared/notifications.js';
 import type {
   NotificationData,
   NotificationDTO,
@@ -10,8 +11,6 @@ import type {
 // Deterministic per-user ceiling so the table cannot grow unbounded on the
 // 1GB VPS; enforced best-effort on every insert.
 const RETENTION_CAP = 100;
-// Repeat events on the same entity fold into one unread row instead of spamming.
-const COLLAPSIBLE = new Set<NotificationType>(['FORUM_REPLY', 'DM_MESSAGE']);
 
 function shape(row: repo.NotificationRow): NotificationDTO {
   return {
@@ -34,12 +33,12 @@ export interface NotifyInput {
 }
 
 async function upsertFor(userId: number, input: NotifyInput): Promise<repo.NotificationRow> {
-  if (COLLAPSIBLE.has(input.type)) {
+  if (COLLAPSIBLE_TYPES.has(input.type)) {
     const existing = await repo.findUnreadFor(userId, input.type, input.entityId);
     if (existing) {
       const prev = (existing.data as NotificationData | null) ?? {};
       const count = (prev.count ?? 1) + 1;
-      return repo.collapse(existing.id, input.actorId ?? null, { ...prev, ...input.data, count });
+      return repo.collapse(existing, input.actorId ?? null, { ...prev, ...input.data, count });
     }
   }
   return repo.create({
@@ -70,6 +69,21 @@ export async function notify(input: NotifyInput): Promise<void> {
     }
   } catch (err) {
     console.error('[notifications] notify failed:', err);
+  }
+}
+
+// Redaction hook for source-entity soft-deletes (forum post delete): drop the
+// snapshotted excerpt from matching notifications. Fire-and-forget like notify —
+// cleanup must never fail the delete that triggered it.
+export async function redactExcerpt(
+  type: NotificationType,
+  entityId: number,
+  excerpt: string,
+): Promise<void> {
+  try {
+    await repo.clearExcerpt(type, entityId, excerpt);
+  } catch (err) {
+    console.error('[notifications] redactExcerpt failed:', err);
   }
 }
 

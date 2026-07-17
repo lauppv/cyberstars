@@ -209,4 +209,34 @@ describe('messages.service deleteMessage', () => {
     expect(res.deleted).toBe(true);
     expect(res.content).toBe('');
   });
+
+  it('pushes the redacted message live to both participants', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.softDeleteMessage.mockResolvedValue(
+      msgRow({ senderId: 1, deleted: true, content: 'secret' }),
+    );
+    mockRepo.findConversation.mockResolvedValue(convRow());
+
+    await deleteMessage(1, 500);
+
+    const frame = {
+      channel: 'dm',
+      type: 'deleted',
+      payload: expect.objectContaining({ id: 500, deleted: true, content: '' }),
+    };
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(2, frame);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(1, frame);
+  });
+
+  it('skips the live push when the conversation cannot be loaded', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.softDeleteMessage.mockResolvedValue(
+      msgRow({ senderId: 1, deleted: true, content: '' }),
+    );
+    mockRepo.findConversation.mockResolvedValue(null);
+
+    const res = await deleteMessage(1, 500);
+    expect(res.deleted).toBe(true);
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
 });

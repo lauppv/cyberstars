@@ -38,6 +38,8 @@ interface RadioContextValue {
   track: RadioTrack;
   volume: number;
   playing: boolean;
+  buffering: boolean; // between pressing play and sound actually starting, or a mid-stream stall
+  offline: boolean; // the stream failed to load; pressing play retries
   hidden: boolean; // player minimised to a launcher chip; audio keeps playing
   expanded: boolean;
   setVolume: (v: number) => void;
@@ -54,6 +56,8 @@ export function RadioProvider({ children }: { children: ReactNode }) {
 
   const [volume, setVolumeState] = useState(() => readVolume());
   const [playing, setPlaying] = useState(false);
+  const [buffering, setBuffering] = useState(false);
+  const [offline, setOffline] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -104,12 +108,19 @@ export function RadioProvider({ children }: { children: ReactNode }) {
       a.pause();
       return;
     }
+    // After a load error, play is a retry: reload the source and try again.
+    if (offline) {
+      setOffline(false);
+      a.load();
+    }
+    setBuffering(true);
     // Resuming re-joins the live position (you can't rewind a broadcast).
     if (!seekLive()) pendingPlayRef.current = true;
     a.play().catch(() => {
       // autoplay/gesture rejection — leave state as paused
+      setBuffering(false);
     });
-  }, [playing, seekLive]);
+  }, [playing, offline, seekLive]);
 
   // Apply volume to the element.
   useEffect(() => {
@@ -154,6 +165,8 @@ export function RadioProvider({ children }: { children: ReactNode }) {
       track: RADIO_TRACK,
       volume,
       playing,
+      buffering,
+      offline,
       hidden,
       expanded,
       setVolume,
@@ -161,20 +174,34 @@ export function RadioProvider({ children }: { children: ReactNode }) {
       setHidden,
       setExpanded,
     }),
-    [enabled, volume, playing, hidden, expanded, setVolume, togglePlay],
+    [enabled, volume, playing, buffering, offline, hidden, expanded, setVolume, togglePlay],
   );
 
   return (
     <RadioContext value={value}>
       {enabled && (
+        // preload="none": nothing downloads until the first play — most visitors
+        // never press it, and the file is large. togglePlay's pendingPlayRef path
+        // already handles the duration arriving late.
         <audio
           ref={audioRef}
           src={RADIO_TRACK.src}
           loop
-          preload="metadata"
+          preload="none"
           onLoadedMetadata={onLoadedMetadata}
           onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
+          onPlaying={() => setBuffering(false)}
+          onWaiting={() => setBuffering(true)}
+          onPause={() => {
+            setPlaying(false);
+            setBuffering(false);
+          }}
+          onError={() => {
+            // Missing/unreachable file would otherwise fail silently — surface it.
+            setOffline(true);
+            setBuffering(false);
+            setPlaying(false);
+          }}
         />
       )}
       {children}
