@@ -410,7 +410,9 @@
         "title": "Confidențialitate",
         "desc": "Nu distribui informații personale (email, număr de telefon, adresă de acasă, locul de muncă) — ale tale sau ale altora — în forum sau în orice parte publică a platformei."
       }
-    ]
+    ],
+    "radioPrivacyTitle": "Radio Focus și confidențialitate",
+    "radioPrivacyDesc": "Radioul Focus (opțional) redă muzică prin player-ul YouTube cu confidențialitate îmbunătățită. Nimic nu se încarcă până nu apeși Redă; în acel moment YouTube poate seta cookie-uri și afișa reclame, exact ca pe youtube.com. Nu vrei? Lasă-l pe pauză."
   },
   "profile": {
     "edit": "Editează",
@@ -821,6 +823,23 @@
     },
     "forbid": {
       "command": "Nu folosi {{name}} aici"
+    }
+  },
+  "radio": {
+    "title": "Radio Focus",
+    "play": "Redă",
+    "pause": "Pauză",
+    "expand": "Mai mult",
+    "collapse": "Mai puțin",
+    "stations": "Stații",
+    "volume": "Volum",
+    "offline": "Stație offline — alege alta",
+    "adsNote": "Stream-urile pot conține reclame YouTube și încarcă cookie-uri Google la redare.",
+    "station": {
+      "lofi": "Nebula Lo-Fi",
+      "synthwave": "Synthwave Drift",
+      "chillhop": "Chillhop Orbit",
+      "ambient": "Deep Space Ambient"
     }
   }
 }

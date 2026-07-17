@@ -407,7 +407,9 @@
         "title": "Privacy",
         "desc": "Do not share personal information (email, phone number, home address, workplace) — your own or anyone else's — in the forum or in any public part of the platform."
       }
-    ]
+    ],
+    "radioPrivacyTitle": "Focus Radio & privacy",
+    "radioPrivacyDesc": "The optional Focus Radio streams music through YouTube's privacy-enhanced player. Nothing loads until you press play; at that point YouTube may set cookies and show ads, exactly as on youtube.com. Prefer not to? Just leave it paused."
   },
   "profile": {
     "edit": "Edit",
@@ -818,6 +820,23 @@
     },
     "forbid": {
       "command": "Don't use {{name}} here"
+    }
+  },
+  "radio": {
+    "title": "Focus Radio",
+    "play": "Play",
+    "pause": "Pause",
+    "expand": "More",
+    "collapse": "Less",
+    "stations": "Stations",
+    "volume": "Volume",
+    "offline": "Station offline — pick another",
+    "adsNote": "Streams may include YouTube ads and load Google cookies on play.",
+    "station": {
+      "lofi": "Nebula Lo-Fi",
+      "synthwave": "Synthwave Drift",
+      "chillhop": "Chillhop Orbit",
+      "ambient": "Deep Space Ambient"
     }
   }
 }

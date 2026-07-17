@@ -6,6 +6,8 @@ import { ProgressProvider } from './context/ProgressContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { UserSocketProvider } from './context/UserSocketContext';
 import { MessagesProvider } from './context/MessagesContext';
+import { RadioProvider } from './context/RadioContext';
+import { RadioPlayer } from './components/radio/RadioPlayer';
 import { CosmosBackground } from './components/ui/CosmosBackground';
 import { MinimalBackground } from './components/ui/MinimalBackground';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
@@ -62,6 +64,14 @@ function GlobalBackground() {
   return kind === 'cosmos' ? <CosmosBackground /> : <MinimalBackground />;
 }
 
+// The radio chip lives at the app root so playback survives navigation, but the
+// auth/welcome pages have their own immersive backgrounds and no chrome.
+function GlobalRadio() {
+  const { pathname } = useLocation();
+  if (pathname === '/getstarted' || pathname === '/welcome') return null;
+  return <RadioPlayer />;
+}
+
 function App() {
   usePresence();
   return (
@@ -72,33 +82,36 @@ function App() {
             <UserSocketProvider>
               <NotificationProvider>
                 <MessagesProvider>
-                  <GlobalBackground />
-                  <Suspense
-                    fallback={
-                      <div className="h-screen flex items-center justify-center bg-transparent">
-                        <LoadingSpinner />
-                      </div>
-                    }
-                  >
-                    <Routes>
-                      <Route path="/" element={<HomePage />} />
-                      <Route path="/getstarted" element={<AuthPage />} />
-                      <Route path="/courses" element={<CoursesPage />} />
-                      <Route path="/algorithms" element={<AlgorithmsPage />} />
-                      <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-                      <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
-                      <Route path="/profile" element={<ProfilePage />} />
-                      <Route path="/forum" element={<ForumPage />} />
-                      <Route path="/almanac" element={<AlmanacPage />} />
-                      <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-                      <Route path="/rules" element={<RulesPage />} />
-                      <Route path="/support" element={<SupportPage />} />
-                      <Route path="/welcome" element={<WelcomePage />} />
-                      <Route path="/admin" element={<AdminPage />} />
-                      <Route path="/leaderboard" element={<LeaderboardPage />} />
-                      <Route path="/messages" element={<MessagesPage />} />
-                    </Routes>
-                  </Suspense>
+                  <RadioProvider>
+                    <GlobalBackground />
+                    <GlobalRadio />
+                    <Suspense
+                      fallback={
+                        <div className="h-screen flex items-center justify-center bg-transparent">
+                          <LoadingSpinner />
+                        </div>
+                      }
+                    >
+                      <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/getstarted" element={<AuthPage />} />
+                        <Route path="/courses" element={<CoursesPage />} />
+                        <Route path="/algorithms" element={<AlgorithmsPage />} />
+                        <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                        <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/forum" element={<ForumPage />} />
+                        <Route path="/almanac" element={<AlmanacPage />} />
+                        <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                        <Route path="/rules" element={<RulesPage />} />
+                        <Route path="/support" element={<SupportPage />} />
+                        <Route path="/welcome" element={<WelcomePage />} />
+                        <Route path="/admin" element={<AdminPage />} />
+                        <Route path="/leaderboard" element={<LeaderboardPage />} />
+                        <Route path="/messages" element={<MessagesPage />} />
+                      </Routes>
+                    </Suspense>
+                  </RadioProvider>
                 </MessagesProvider>
               </NotificationProvider>
             </UserSocketProvider>
