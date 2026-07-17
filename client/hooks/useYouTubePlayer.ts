@@ -15,7 +15,7 @@ interface YTPlayer {
   playVideo(): void;
   pauseVideo(): void;
   setVolume(volume: number): void;
-  loadVideoById(videoId: string): void;
+  loadPlaylist(opts: { list: string; listType: string }): void;
   destroy(): void;
 }
 
@@ -28,7 +28,6 @@ interface YTPlayerOptions {
   host?: string;
   width?: string | number;
   height?: string | number;
-  videoId?: string;
   playerVars?: Record<string, number | string>;
   events?: {
     onReady?: (e: YTPlayerEvent) => void;
@@ -96,7 +95,7 @@ function mapState(yt: YTNamespace, data: number): RadioPlayerState {
 interface YouTubePlayerControls {
   ready: boolean;
   state: RadioPlayerState;
-  load: (videoId: string, volume: number) => void;
+  load: (playlistId: string, volume: number) => void;
   play: () => void;
   pause: () => void;
   setVolume: (volume: number) => void;
@@ -120,10 +119,10 @@ export function useYouTubePlayer(
   }, []);
 
   const load = useCallback(
-    (videoId: string, volume: number) => {
+    (playlistId: string, volume: number) => {
       if (playerRef.current && ytRef.current) {
         playerRef.current.setVolume(volume);
-        playerRef.current.loadVideoById(videoId);
+        playerRef.current.loadPlaylist({ list: playlistId, listType: 'playlist' });
         return;
       }
       loadYouTubeApi().then((yt) => {
@@ -136,8 +135,14 @@ export function useYouTubePlayer(
           host: 'https://www.youtube-nocookie.com',
           width: '200',
           height: '200',
-          videoId,
-          playerVars: { autoplay: 1, playsinline: 1, modestbranding: 1, rel: 0 },
+          playerVars: {
+            autoplay: 1,
+            playsinline: 1,
+            modestbranding: 1,
+            rel: 0,
+            listType: 'playlist',
+            list: playlistId,
+          },
           events: {
             onReady: (e) => {
               e.target.setVolume(volume);

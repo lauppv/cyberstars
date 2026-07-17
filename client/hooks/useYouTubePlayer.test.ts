@@ -11,6 +11,11 @@ interface FakePlayer {
   destroyed: boolean;
 }
 
+interface PlaylistOpts {
+  list: string;
+  listType: string;
+}
+
 const players: FakePlayer[] = [];
 
 function installFakeYT() {
@@ -37,8 +42,8 @@ function installFakeYT() {
     setVolume(v: number) {
       this.volume = v;
     }
-    loadVideoById(id: string) {
-      this.loaded.push(id);
+    loadPlaylist(opts: PlaylistOpts) {
+      this.loaded.push(opts.list);
     }
     destroy() {
       this.destroyed = true;
@@ -59,29 +64,31 @@ beforeEach(() => {
 });
 
 describe('useYouTubePlayer', () => {
-  it('creates a player and applies volume on first load', async () => {
+  it('creates a player with the playlist and applies volume on first load', async () => {
     const ref = makeRef();
     const { result } = renderHook(() => useYouTubePlayer(ref));
     await act(async () => {
-      result.current.load('vid1', 40);
+      result.current.load('PL1', 40);
     });
     expect(players).toHaveLength(1);
-    expect(players[0].opts.videoId).toBe('vid1');
+    const playerVars = players[0].opts.playerVars as { list: string; listType: string };
+    expect(playerVars.list).toBe('PL1');
+    expect(playerVars.listType).toBe('playlist');
     expect(players[0].volume).toBe(40);
     expect(result.current.ready).toBe(true);
   });
 
-  it('reuses the player and loads a new video on subsequent load', async () => {
+  it('reuses the player and loads a new playlist on subsequent load', async () => {
     const ref = makeRef();
     const { result } = renderHook(() => useYouTubePlayer(ref));
     await act(async () => {
-      result.current.load('vid1', 40);
+      result.current.load('PL1', 40);
     });
     await act(async () => {
-      result.current.load('vid2', 60);
+      result.current.load('PL2', 60);
     });
     expect(players).toHaveLength(1);
-    expect(players[0].loaded).toEqual(['vid2']);
+    expect(players[0].loaded).toEqual(['PL2']);
     expect(players[0].volume).toBe(60);
   });
 

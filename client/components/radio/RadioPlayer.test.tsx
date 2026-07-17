@@ -4,7 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 const h = vi.hoisted(() => ({
   radio: {
     enabled: true,
-    station: { id: 'lofi', titleKey: 'radio.station.lofi', videoId: 'vid1', mood: 'focus' },
+    station: { id: 'lofi', titleKey: 'radio.station.lofi', playlistId: 'PL1', mood: 'focus' },
     stationId: 'lofi',
     volume: 40,
     playing: false,
@@ -104,7 +104,7 @@ describe('RadioPlayer controls', () => {
     h.radio.started = true;
     h.radio.playing = true;
     render(<RadioPlayer />);
-    expect(h.player.load).toHaveBeenCalledWith('vid1', 40);
+    expect(h.player.load).toHaveBeenCalledWith('PL1', 40);
   });
 
   it('resumes without reloading when toggling play on the same station', () => {

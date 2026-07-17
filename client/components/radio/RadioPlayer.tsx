@@ -26,16 +26,16 @@ export function RadioPlayer() {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { state, load, play, pause, setVolume: setPlayerVolume } = useYouTubePlayer(containerRef);
-  const loadedVideoRef = useRef<string | null>(null);
+  const loadedPlaylistRef = useRef<string | null>(null);
 
-  // Drive the underlying player from context state. Loading (re)starts playback
-  // at the live edge; play/pause toggle without reloading.
+  // Drive the underlying player from context state. Loading (re)starts the
+  // playlist; play/pause toggle without reloading.
   useEffect(() => {
     if (!enabled || !started) return;
     if (playing) {
-      if (loadedVideoRef.current !== station.videoId) {
-        loadedVideoRef.current = station.videoId;
-        load(station.videoId, volume);
+      if (loadedPlaylistRef.current !== station.playlistId) {
+        loadedPlaylistRef.current = station.playlistId;
+        load(station.playlistId, volume);
       } else {
         play();
       }
@@ -44,7 +44,7 @@ export function RadioPlayer() {
     }
     // volume is applied by its own effect; excluded to avoid reloads on drag
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enabled, started, playing, station.videoId]);
+  }, [enabled, started, playing, station.playlistId]);
 
   useEffect(() => {
     setPlayerVolume(volume);
