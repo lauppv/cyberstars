@@ -128,15 +128,11 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     if (audioRef.current) audioRef.current.volume = volume / 100;
   }, [volume]);
 
-  // Signing out disables the radio: stop the stream and reset transient state so
-  // audio never keeps playing after the player is gone.
+  // Signing out disables the radio: imperatively stop the stream. pause() fires
+  // the element's 'pause' event, whose handler clears playing/buffering — so we
+  // don't (and mustn't, per react-hooks/set-state-in-effect) setState here.
   useEffect(() => {
-    if (enabled) return;
-    audioRef.current?.pause();
-    setPlaying(false);
-    setBuffering(false);
-    setExpanded(false);
-    setHidden(false);
+    if (!enabled) audioRef.current?.pause();
   }, [enabled]);
 
   // Persist volume only (playback is per-session; a broadcast never auto-resumes).
