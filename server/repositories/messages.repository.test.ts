@@ -43,6 +43,23 @@ describe('findOrCreatePair', () => {
       expect.objectContaining({ data: { userAId: 2, userBId: 5 } }),
     );
   });
+
+  it('re-reads the winner row when a concurrent create hits the unique constraint', async () => {
+    const { Prisma } = await import('@prisma/client');
+    mockPrisma.conversation.findUnique.mockResolvedValueOnce(null).mockResolvedValueOnce({ id: 7 });
+    mockPrisma.conversation.create.mockRejectedValue(
+      new Prisma.PrismaClientKnownRequestError('unique', { code: 'P2002', clientVersion: 'test' }),
+    );
+    const row = await repo.findOrCreatePair(2, 5);
+    expect(row).toEqual({ id: 7 });
+    expect(mockPrisma.conversation.findUnique).toHaveBeenCalledTimes(2);
+  });
+
+  it('rethrows non-P2002 create errors', async () => {
+    mockPrisma.conversation.findUnique.mockResolvedValue(null);
+    mockPrisma.conversation.create.mockRejectedValue(new Error('boom'));
+    await expect(repo.findOrCreatePair(2, 5)).rejects.toThrow('boom');
+  });
 });
 
 describe('findConversation', () => {

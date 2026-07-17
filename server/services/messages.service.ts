@@ -143,5 +143,14 @@ export async function deleteMessage(userId: number, messageId: number): Promise<
   if (!message || message.senderId !== userId) throw new AppError(404, 'Message not found');
   const updated = await repo.softDeleteMessage(messageId, userId);
   if (!updated) throw new AppError(404, 'Message not found');
-  return shapeMessage(updated);
+  const dto = shapeMessage(updated);
+
+  // A delete is a redaction — push it live to both sides (like send/read) so the
+  // deleted content doesn't linger on the other participant's screen.
+  const row = await repo.findConversation(message.conversationId);
+  if (row) {
+    pushToUser(otherParticipant(row, userId), { channel: 'dm', type: 'deleted', payload: dto });
+    pushToUser(userId, { channel: 'dm', type: 'deleted', payload: dto });
+  }
+  return dto;
 }

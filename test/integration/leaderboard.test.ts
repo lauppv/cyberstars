@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent } from './helpers.js';
 import { prisma } from '../../server/config/db.js';
 import { markComplete } from '../../server/services/progress.service.js';
+import { clearCache } from '../../server/services/leaderboard.service.js';
 import { xpForLesson } from '../../shared/constants.js';
 import type { LeaderboardPage, LeaderboardEntry } from '../../shared/leaderboard.js';
 
@@ -19,10 +20,11 @@ async function twoPythonLessons() {
   return lessons as { slug: string; sortOrder: number }[];
 }
 
-// Always refresh so the in-memory cache can't leak a prior test's (now
-// truncated) ranking into this one.
+// Clear the in-memory cache so it can't leak a prior test's (now truncated)
+// ranking into this one — the public ?fresh=1 bypass was removed by design.
 async function fetchBoard(): Promise<LeaderboardPage> {
-  const res = await agent().get('/api/leaderboard?fresh=1').expect(200);
+  clearCache();
+  const res = await agent().get('/api/leaderboard').expect(200);
   return res.body;
 }
 

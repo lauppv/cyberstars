@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRadio } from '../../context/RadioContext';
 
@@ -12,6 +11,8 @@ export function RadioPlayer() {
     track,
     volume,
     playing,
+    buffering,
+    offline,
     hidden,
     expanded,
     setVolume,
@@ -20,7 +21,7 @@ export function RadioPlayer() {
     setExpanded,
   } = useRadio();
 
-  if (!enabled) return <LockedRadioChip />;
+  if (!enabled) return null;
 
   const title = t(track.titleKey);
 
@@ -70,13 +71,30 @@ export function RadioPlayer() {
           className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/20 text-[13px] text-[var(--text)] transition hover:bg-[var(--accent)]/30"
           aria-label={playing ? t('radio.pause') : t('radio.play')}
         >
-          {playing ? '⏸' : '▶'}
+          {buffering ? (
+            <span
+              role="status"
+              aria-label={t('radio.loading')}
+              className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-[var(--accent)]/30 border-t-[var(--accent)]"
+            />
+          ) : playing ? (
+            '⏸'
+          ) : (
+            '▶'
+          )}
         </button>
-        {playing && (
-          <span className="flex flex-shrink-0 items-center gap-1 text-[9px] font-semibold uppercase tracking-wider text-[var(--accent)]">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--accent)]" />
-            {t('radio.live')}
+        {offline ? (
+          <span className="flex-shrink-0 text-[9px] font-semibold uppercase tracking-wider text-[var(--error)]">
+            {t('radio.offline')}
           </span>
+        ) : (
+          playing &&
+          !buffering && (
+            <span className="flex flex-shrink-0 items-center gap-1 text-[9px] font-semibold uppercase tracking-wider text-[var(--accent)]">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--accent)]" />
+              {t('radio.live')}
+            </span>
+          )
         )}
         <span className="min-w-0 flex-1 truncate text-[12px] text-[var(--text2)]" title={title}>
           {title}
@@ -97,64 +115,6 @@ export function RadioPlayer() {
           ✕
         </button>
       </div>
-    </div>
-  );
-}
-
-// Non-admins on prod (feature still in preview) see the chip locked, matching the
-// Topbar preview icons: a tooltip on hover and a "coming soon" hint on click.
-function LockedRadioChip() {
-  const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('mousedown', onClick);
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onClick);
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [open]);
-
-  return (
-    <div className="fixed bottom-4 right-4 z-40" ref={ref}>
-      {open && (
-        <div
-          role="dialog"
-          className="absolute bottom-full right-0 mb-2 w-60 overflow-hidden rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg2)] p-3 shadow-[0_8px_32px_#0008]"
-        >
-          <div className="mb-1.5 flex items-center gap-1.5 text-[12px] font-semibold text-[var(--text)]">
-            <span>📻</span>
-            <span className="truncate">{t('radio.title')}</span>
-            <span className="ml-auto rounded bg-[var(--accent)]/15 px-1 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[var(--accent)]">
-              {t('common.comingSoon')}
-            </span>
-          </div>
-          <p className="text-[11px] leading-relaxed text-[var(--text3)]">
-            {t('common.comingSoonHint')}
-          </p>
-        </div>
-      )}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-full border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] px-3 py-1.5 text-[13px] opacity-60 backdrop-blur-[12px] transition hover:opacity-80"
-        title={`${t('radio.title')} · ${t('common.comingSoon')}`}
-        aria-label={`${t('radio.title')} · ${t('common.comingSoon')}`}
-        aria-haspopup="dialog"
-        aria-expanded={open}
-      >
-        <span>📻</span>
-        <span className="text-[12px] text-[var(--text2)]">{t('radio.title')}</span>
-        <span className="text-[11px]">🔒</span>
-      </button>
     </div>
   );
 }

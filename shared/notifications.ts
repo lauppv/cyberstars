@@ -9,6 +9,15 @@ export type NotificationType =
   | 'SUPPORT_REPLY'
   | 'SUPPORT_STATUS';
 
+// Repeat events on the same entity fold into one unread row instead of
+// spamming. Shared because both sides need the same rule: the server collapses
+// on insert, the client drops the superseded unread row when the replacement
+// arrives over the socket.
+export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
+  'FORUM_REPLY',
+  'DM_MESSAGE',
+]);
+
 // Snapshot of the source entity, taken at creation time so the list renders
 // without N+1 joins and survives deletion of that entity (forum soft-delete, DM
 // cascade). The actor's name/avatar are NOT snapshotted — they come from the

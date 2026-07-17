@@ -4,6 +4,7 @@ import { useAuth } from './AuthContext';
 import { canAccessFeature } from '../../shared/features';
 import { useUserSocketFrames } from './UserSocketContext';
 import * as notificationsService from '../services/notificationsService';
+import { COLLAPSIBLE_TYPES } from '../../shared/notifications';
 import type { NotificationDTO, UserSocketFrame } from '../../shared/notifications';
 
 const PAGE_SIZE = 20;
@@ -64,9 +65,22 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
       setUnreadCount(frame.payload.unreadCount);
     } else if (frame.type === 'new') {
       const incoming = frame.payload;
-      // A collapsed event reuses the same id — drop any existing copy and hoist
-      // the fresh one to the top.
-      setItems((prev) => [incoming, ...prev.filter((n) => n.id !== incoming.id)]);
+      // A collapsed event arrives as a REPLACEMENT row (fresh id) — the unread
+      // row it superseded was deleted server-side, so drop our copy of it too.
+      const collapsible = COLLAPSIBLE_TYPES.has(incoming.type);
+      setItems((prev) => [
+        incoming,
+        ...prev.filter(
+          (n) =>
+            n.id !== incoming.id &&
+            !(
+              collapsible &&
+              !n.readAt &&
+              n.type === incoming.type &&
+              n.entityId === incoming.entityId
+            ),
+        ),
+      ]);
     }
   }, []);
   useUserSocketFrames(onFrame);
@@ -84,8 +98,10 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   }, [items]);
 
   const markAllRead = useCallback(() => {
-    const upToId = items[0]?.id;
-    if (upToId == null || unreadCount === 0) return;
+    if (items.length === 0 || unreadCount === 0) return;
+    // Not items[0]: the list is ordered by recency, which matches id order only
+    // as long as no stale row slipped in — take the true max to be safe.
+    const upToId = Math.max(...items.map((n) => n.id));
     const now = new Date().toISOString();
     setItems((prev) => prev.map((n) => (n.readAt ? n : { ...n, readAt: now })));
     setUnreadCount(0);

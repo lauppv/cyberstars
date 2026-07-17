@@ -92,6 +92,11 @@ app.get('/api/time', (_req, res) => {
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
+// Radio audio lives OUTSIDE public/ so the 163MB mp3 isn't copied into dist/
+// on every build. In production nginx serves /radio/ straight from disk and
+// requests never reach here; this static mount is the dev path (and fallback).
+app.use('/radio', express.static(path.join(process.cwd(), 'media/radio')));
+
 const buildPath = path.join(process.cwd(), 'dist');
 app.use(express.static(buildPath));
 

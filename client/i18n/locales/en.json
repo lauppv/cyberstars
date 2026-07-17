@@ -831,6 +831,8 @@
     "hide": "Hide",
     "show": "Show radio",
     "live": "Live",
+    "loading": "Loading",
+    "offline": "Offline",
     "volume": "Volume",
     "liveNote": "One live broadcast — everyone hears the same moment. Resuming re-joins live.",
     "track": {

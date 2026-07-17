@@ -36,6 +36,9 @@ export interface ConversationHistory {
 // `read` tells the other participant their messages were read up to an id.
 export type DmSocketFrame =
   | { channel: 'dm'; type: 'message'; payload: MessageDTO }
+  // Soft-delete redaction: the already-blanked DTO, so the deleted content
+  // disappears from the other participant's screen without a refetch.
+  | { channel: 'dm'; type: 'deleted'; payload: MessageDTO }
   | {
       channel: 'dm';
       type: 'read';
