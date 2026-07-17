@@ -40,6 +40,10 @@ vi.mock('../../context/NotificationContext', () => ({
   }),
 }));
 
+vi.mock('../../context/MessagesContext', () => ({
+  useMessages: () => ({ enabled: false, totalUnread: 0 }),
+}));
+
 vi.mock('../../hooks/useGamification', () => ({
   useGamification: () => ({
     xp: {

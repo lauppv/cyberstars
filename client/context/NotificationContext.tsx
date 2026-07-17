@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 import { canAccessFeature } from '../../shared/features';
-import { useUserSocket } from '../hooks/useUserSocket';
+import { useUserSocketFrames } from './UserSocketContext';
 import * as notificationsService from '../services/notificationsService';
 import type { NotificationDTO, UserSocketFrame } from '../../shared/notifications';
 
@@ -69,7 +69,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
       setItems((prev) => [incoming, ...prev.filter((n) => n.id !== incoming.id)]);
     }
   }, []);
-  useUserSocket(enabled, onFrame);
+  useUserSocketFrames(onFrame);
 
   const loadMore = useCallback(() => {
     const before = items[items.length - 1]?.id;

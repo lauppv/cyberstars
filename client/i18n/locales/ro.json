@@ -5,6 +5,7 @@
     "algorithms": "Algoritmi",
     "forum": "Forum",
     "leaderboard": "Clasament",
+    "messages": "Mesaje",
     "almanac": "Almanah",
     "laniakea": "Laniakea Explorer"
   },
@@ -134,6 +135,21 @@
     "loadMore": "Încarcă mai multe",
     "empty": "Nimeni nu a câștigat XP încă. Termină o lecție ca să ocupi primul loc!",
     "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu."
+  },
+  "messages": {
+    "title": "Mesaje",
+    "emptyInbox": "Nicio conversație încă.",
+    "selectPrompt": "Alege o conversație ca să începi discuția.",
+    "noMessagesYet": "Niciun mesaj încă",
+    "deletedMessage": "Mesaj șters",
+    "youPrefix": "Tu: ",
+    "composerPlaceholder": "Scrie un mesaj…",
+    "send": "Trimite",
+    "delete": "Șterge",
+    "back": "Înapoi",
+    "loadOlder": "Încarcă mesaje mai vechi",
+    "read": "Citit",
+    "sent": "Trimis"
   },
   "notif": {
     "title": "Notificări",

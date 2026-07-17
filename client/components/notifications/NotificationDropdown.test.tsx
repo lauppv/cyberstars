@@ -113,7 +113,9 @@ describe('NotificationDropdown routing', () => {
     fireEvent.click(items[0]);
     expect(mockNavigate).toHaveBeenCalledWith('/support', undefined);
     fireEvent.click(items[1]);
-    expect(mockNavigate).toHaveBeenCalledWith('/messages', undefined);
+    expect(mockNavigate).toHaveBeenCalledWith('/messages', {
+      state: { openConversationId: 5 },
+    });
   });
 });
 

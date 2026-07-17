@@ -89,6 +89,29 @@ export function markRead(userId: number, upToId: number): Promise<number> {
   return repo.markReadUpTo(userId, upToId);
 }
 
+// Auto-read the notification tied to a source entity (e.g. opening a DM
+// conversation clears its DM_MESSAGE bell entry). Pushes a fresh unread count so
+// the badge updates live. Fire-and-forget; never throws.
+export async function markEntityRead(
+  userId: number,
+  type: NotificationType,
+  entityId: number,
+): Promise<void> {
+  try {
+    const cleared = await repo.markReadByEntity(userId, type, entityId);
+    if (cleared > 0) {
+      const unreadCount = await repo.countUnread(userId);
+      pushToUser(userId, {
+        channel: 'notification',
+        type: 'unread-count',
+        payload: { unreadCount },
+      });
+    }
+  } catch (err) {
+    console.error('[notifications] markEntityRead failed:', err);
+  }
+}
+
 export function markOneRead(userId: number, id: number): Promise<void> {
   return repo.markOneRead(userId, id);
 }

@@ -73,7 +73,7 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
       case 'SUPPORT_STATUS':
         return { path: '/support' };
       case 'DM_MESSAGE':
-        return { path: '/messages' };
+        return { path: '/messages', state: { openConversationId: n.entityId } };
     }
   };
 

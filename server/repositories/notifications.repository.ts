@@ -81,6 +81,20 @@ export async function markReadUpTo(userId: number, upToId: number): Promise<numb
   return res.count;
 }
 
+// Mark every unread notification for a given source entity read (e.g. the
+// DM_MESSAGE for a conversation, when its thread is opened). Returns how many.
+export async function markReadByEntity(
+  userId: number,
+  type: NotificationType,
+  entityId: number,
+): Promise<number> {
+  const res = await prisma.notification.updateMany({
+    where: { userId, type, entityId, readAt: null },
+    data: { readAt: new Date() },
+  });
+  return res.count;
+}
+
 export async function markOneRead(userId: number, id: number): Promise<void> {
   // Scoped by userId so a caller can only mark their own notifications read.
   await prisma.notification.updateMany({

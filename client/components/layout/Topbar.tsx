@@ -6,6 +6,7 @@ import { SUPPORTED_LANGS } from '../../i18n';
 import { useBackgroundPref, type BackgroundKind } from '../../hooks/useBackgroundPref';
 import { useGamification } from '../../hooks/useGamification';
 import { NotificationBell } from './NotificationBell';
+import { MessagesButton } from './MessagesButton';
 import { canAccessFeature, type FeatureKey } from '../../../shared/features';
 
 const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
@@ -225,6 +226,7 @@ export function Topbar({
         {isLoggedIn && user ? (
           <>
             <NotificationBell />
+            <MessagesButton />
             <div className="relative flex items-center gap-2" ref={menuRef}>
               <div
                 className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"

@@ -173,7 +173,12 @@ async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promis
   }
   const isProd = process.env.NODE_ENV === 'production';
   const role = isProd ? await userRepo.getRole(userId) : undefined;
-  if (!canAccessFeature('notifications', role, isProd)) {
+  // The socket carries both notifications and messaging; open it if the user can
+  // reach either feature. Each pushed frame still respects its own feature gate.
+  if (
+    !canAccessFeature('notifications', role, isProd) &&
+    !canAccessFeature('messaging', role, isProd)
+  ) {
     ws.close(4404, 'Not found');
     return;
   }

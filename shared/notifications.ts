@@ -1,3 +1,5 @@
+import type { DmSocketFrame } from './messages.js';
+
 export type NotificationType =
   | 'FORUM_REPLY'
   | 'FORUM_SOLUTION'
@@ -40,8 +42,10 @@ export interface NotificationsPage {
   unreadCount: number;
 }
 
-// Frames pushed over the shared per-user socket (/ws/user). The socket is shared
-// with messaging (added later), which contributes its own `dm` channel members.
+// Frames pushed over the shared per-user socket (/ws/user). The socket carries
+// both notification frames and messaging's `dm` frames — one connection, demuxed
+// client-side on `channel`.
 export type UserSocketFrame =
   | { channel: 'notification'; type: 'new'; payload: NotificationDTO }
-  | { channel: 'notification'; type: 'unread-count'; payload: { unreadCount: number } };
+  | { channel: 'notification'; type: 'unread-count'; payload: { unreadCount: number } }
+  | DmSocketFrame;
