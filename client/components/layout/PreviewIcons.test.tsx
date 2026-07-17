@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 const h = vi.hoisted(() => ({
   navigate: vi.fn(),
-  canAccess: vi.fn(() => true),
+  canAccess: vi.fn((..._a: unknown[]) => true),
   auth: { user: { role: 'USER' } as { role: string } | null },
   messages: { enabled: true, totalUnread: 0 },
   notifications: { enabled: true, unreadCount: 0 },
