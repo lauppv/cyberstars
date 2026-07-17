@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { SUPPORTED_LANGS } from '../../i18n';
 import { useBackgroundPref, type BackgroundKind } from '../../hooks/useBackgroundPref';
 import { useGamification } from '../../hooks/useGamification';
+import { canAccessFeature, type FeatureKey } from '../../../shared/features';
 
 const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
 
@@ -15,11 +16,18 @@ interface TopbarProps {
   onSidebarToggle?: () => void;
 }
 
-const NAV_ITEMS = [
+interface NavItem {
+  key: string;
+  path: string;
+  feature?: FeatureKey; // preview-gated items render "Coming Soon" when locked
+}
+
+const NAV_ITEMS: NavItem[] = [
   { key: 'nav.dashboard', path: '/' },
   { key: 'nav.courses', path: '/courses' },
   { key: 'nav.algorithms', path: '/algorithms' },
   { key: 'nav.forum', path: '/forum' },
+  { key: 'nav.leaderboard', path: '/leaderboard', feature: 'leaderboard' },
   { key: 'nav.almanac', path: '/almanac' },
   { key: 'nav.laniakea', path: '/laniakea' },
 ];
@@ -36,6 +44,8 @@ export function Topbar({
   const currentLang = i18n.resolvedLanguage ?? i18n.language;
   const { isLoggedIn, user, logout } = useAuth();
   const { xp } = useGamification();
+  const isLocked = (feature?: FeatureKey) =>
+    feature ? !canAccessFeature(feature, user?.role, import.meta.env.PROD) : false;
   const [backgroundKind, setBackgroundKind] = useBackgroundPref();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -97,19 +107,32 @@ export function Topbar({
             role="menu"
             className="lg:hidden absolute left-2 top-[52px] w-56 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up py-1"
           >
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.path}
-                role="menuitem"
-                onClick={() => {
-                  setMobileNavOpen(false);
-                  navigate(item.path);
-                }}
-                className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-              >
-                {t(item.key)}
-              </button>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              isLocked(item.feature) ? (
+                <div
+                  key={item.path}
+                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text3)] opacity-60 cursor-not-allowed flex items-center justify-between gap-2"
+                  title={t('common.comingSoon')}
+                >
+                  {t(item.key)}
+                  <span className="text-[9px] font-semibold uppercase tracking-wider px-1 py-0.5 rounded bg-[var(--accent)]/15 text-[var(--accent)]">
+                    {t('common.comingSoon')}
+                  </span>
+                </div>
+              ) : (
+                <button
+                  key={item.path}
+                  role="menuitem"
+                  onClick={() => {
+                    setMobileNavOpen(false);
+                    navigate(item.path);
+                  }}
+                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  {t(item.key)}
+                </button>
+              ),
+            )}
           </div>
         )}
 
@@ -158,6 +181,20 @@ export function Topbar({
         ) : (
           <nav className="hidden lg:flex gap-1">
             {NAV_ITEMS.map((item) => {
+              if (isLocked(item.feature)) {
+                return (
+                  <span
+                    key={item.path}
+                    title={t('common.comingSoon')}
+                    className="px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium text-[var(--text3)] opacity-60 cursor-not-allowed flex items-center gap-1.5"
+                  >
+                    {t(item.key)}
+                    <span className="text-[9px] font-semibold uppercase tracking-wider px-1 py-0.5 rounded bg-[var(--accent)]/15 text-[var(--accent)]">
+                      {t('common.comingSoon')}
+                    </span>
+                  </span>
+                );
+              }
               const isActive =
                 item.path === '/'
                   ? location.pathname === '/'

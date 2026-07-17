@@ -52,11 +52,14 @@ vi.mock('./repositories/user.repository.js', () => ({
   create: vi.fn().mockResolvedValue(null),
   updateProfile: vi.fn().mockResolvedValue(null),
 }));
+vi.mock('./repositories/leaderboard.repository.js', () => ({
+  getRanked: vi.fn().mockResolvedValue([]),
+}));
 
 const { app } = await import('./app.js');
 
 describe('endpoint smoke tests — public routes return 200', () => {
-  const publicGets = ['/api/forum/categories'];
+  const publicGets = ['/api/forum/categories', '/api/leaderboard'];
 
   for (const path of publicGets) {
     it(`GET ${path}`, async () => {
@@ -114,6 +117,7 @@ describe('endpoint smoke tests — auth-protected routes return 401 without toke
     ['get', '/api/profile/activity'],
     ['get', '/api/daily'],
     ['get', '/api/admin/stats'],
+    ['get', '/api/leaderboard/me'],
     ['get', '/auth/me'],
   ];
 
@@ -125,6 +129,19 @@ describe('endpoint smoke tests — auth-protected routes return 401 without toke
       expect(res.status).toBe(401);
     });
   }
+});
+
+describe('preview feature gate', () => {
+  it('404s the leaderboard for a guest when NODE_ENV=production', async () => {
+    const original = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    try {
+      const res = await request(app).get('/api/leaderboard');
+      expect(res.status).toBe(404);
+    } finally {
+      process.env.NODE_ENV = original;
+    }
+  });
 });
 
 describe('endpoint smoke tests — unknown routes', () => {

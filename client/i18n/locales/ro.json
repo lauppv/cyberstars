@@ -4,6 +4,7 @@
     "courses": "Cursuri",
     "algorithms": "Algoritmi",
     "forum": "Forum",
+    "leaderboard": "Clasament",
     "almanac": "Almanah",
     "laniakea": "Laniakea Explorer"
   },
@@ -117,8 +118,22 @@
   "common": {
     "loading": "Se încarcă...",
     "close": "Închide",
+    "comingSoon": "În curând",
     "xpTotal": "{{xp}} XP",
     "xpReward": "+{{xp}} XP"
+  },
+  "leaderboard": {
+    "title": "Clasament",
+    "subtitle": "Cei mai buni exploratori, ordonați după XP-ul total câștigat în toate cursurile.",
+    "you": "Tu",
+    "yourRank": "Locul tău",
+    "xp": "{{xp}} XP",
+    "lessons_one": "{{count}} lecție",
+    "lessons_few": "{{count}} lecții",
+    "lessons_other": "{{count}} de lecții",
+    "loadMore": "Încarcă mai multe",
+    "empty": "Nimeni nu a câștigat XP încă. Termină o lecție ca să ocupi primul loc!",
+    "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu."
   },
   "courses": {
     "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
