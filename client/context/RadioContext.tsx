@@ -52,7 +52,8 @@ const RadioContext = createContext<RadioContextValue | null>(null);
 
 export function RadioProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
-  const enabled = canAccessFeature('radio', user?.role, import.meta.env.PROD);
+  // Radio is a signed-in perk: guests never see it, and signing out stops it.
+  const enabled = !!user && canAccessFeature('radio', user.role, import.meta.env.PROD);
 
   const [volume, setVolumeState] = useState(() => readVolume());
   const [playing, setPlaying] = useState(false);
@@ -127,6 +128,13 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     if (audioRef.current) audioRef.current.volume = volume / 100;
   }, [volume]);
 
+  // Signing out disables the radio: imperatively stop the stream. pause() fires
+  // the element's 'pause' event, whose handler clears playing/buffering — so we
+  // don't (and mustn't, per react-hooks/set-state-in-effect) setState here.
+  useEffect(() => {
+    if (!enabled) audioRef.current?.pause();
+  }, [enabled]);
+
   // Persist volume only (playback is per-session; a broadcast never auto-resumes).
   useEffect(() => {
     try {
@@ -179,31 +187,29 @@ export function RadioProvider({ children }: { children: ReactNode }) {
 
   return (
     <RadioContext value={value}>
-      {enabled && (
-        // preload="none": nothing downloads until the first play — most visitors
-        // never press it, and the file is large. togglePlay's pendingPlayRef path
-        // already handles the duration arriving late.
-        <audio
-          ref={audioRef}
-          src={RADIO_TRACK.src}
-          loop
-          preload="none"
-          onLoadedMetadata={onLoadedMetadata}
-          onPlay={() => setPlaying(true)}
-          onPlaying={() => setBuffering(false)}
-          onWaiting={() => setBuffering(true)}
-          onPause={() => {
-            setPlaying(false);
-            setBuffering(false);
-          }}
-          onError={() => {
-            // Missing/unreachable file would otherwise fail silently — surface it.
-            setOffline(true);
-            setBuffering(false);
-            setPlaying(false);
-          }}
-        />
-      )}
+      {/* Always mounted (preload="none" means nothing downloads until first
+          play) so the disable-on-logout effect can reliably pause via the ref —
+          conditionally unmounting would null the ref before we could stop it. */}
+      <audio
+        ref={audioRef}
+        src={RADIO_TRACK.src}
+        loop
+        preload="none"
+        onLoadedMetadata={onLoadedMetadata}
+        onPlay={() => setPlaying(true)}
+        onPlaying={() => setBuffering(false)}
+        onWaiting={() => setBuffering(true)}
+        onPause={() => {
+          setPlaying(false);
+          setBuffering(false);
+        }}
+        onError={() => {
+          // Missing/unreachable file would otherwise fail silently — surface it.
+          setOffline(true);
+          setBuffering(false);
+          setPlaying(false);
+        }}
+      />
       {children}
     </RadioContext>
   );
