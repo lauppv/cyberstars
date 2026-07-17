@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { SUPPORTED_LANGS } from '../../i18n';
 import { useBackgroundPref, type BackgroundKind } from '../../hooks/useBackgroundPref';
 import { useGamification } from '../../hooks/useGamification';
+import { NotificationBell } from './NotificationBell';
 import { canAccessFeature, type FeatureKey } from '../../../shared/features';
 
 const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
@@ -222,195 +223,198 @@ export function Topbar({
 
       <div className="flex items-center gap-4">
         {isLoggedIn && user ? (
-          <div className="relative flex items-center gap-2" ref={menuRef}>
-            <div
-              className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
-              title={t(xp.titleKey)}
-            >
-              <span className="inline-flex items-center gap-1.5">
-                <span>⭐</span>
-                {t('level.short', { n: xp.level })}
-              </span>
+          <>
+            <NotificationBell />
+            <div className="relative flex items-center gap-2" ref={menuRef}>
               <div
-                className="w-24 h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden"
-                aria-hidden
+                className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
+                title={t(xp.titleKey)}
               >
+                <span className="inline-flex items-center gap-1.5">
+                  <span>⭐</span>
+                  {t('level.short', { n: xp.level })}
+                </span>
                 <div
-                  className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
-                  style={{ width: `${xp.xpPct}%` }}
-                />
-              </div>
-              <span className="tabular-nums text-[11px] text-[var(--text3)]">
-                {xp.xpIntoLevel}/{xp.xpForLevelSpan}
-              </span>
-            </div>
-            <button
-              onClick={() => setMenuOpen((v) => !v)}
-              className="flex items-center gap-2 px-2 py-1 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--surface)] transition cursor-pointer"
-              aria-haspopup="menu"
-              aria-expanded={menuOpen}
-            >
-              {user.avatarUrl ? (
-                <img
-                  src={user.avatarUrl}
-                  alt=""
-                  className="w-[30px] h-[30px] rounded-full object-cover border-2 border-[var(--accent)]"
-                />
-              ) : (
-                <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
-                  🚀
-                </div>
-              )}
-              <span className="hidden sm:inline text-[13px] font-semibold text-[var(--text)] max-w-[120px] truncate">
-                {user.name}
-              </span>
-            </button>
-
-            {menuOpen && (
-              <div
-                role="menu"
-                className="absolute top-full right-0 mt-2 w-72 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
-              >
-                <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
-                  {user.avatarUrl ? (
-                    <img
-                      src={user.avatarUrl}
-                      alt=""
-                      className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0"
-                    />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg border-2 border-[var(--accent)] flex-shrink-0">
-                      🚀
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <div className="text-[13px] font-semibold text-[var(--text)] truncate">
-                      {user.name}
-                    </div>
-                    <div className="text-[11px] text-[var(--text3)] truncate">{user.email}</div>
-                  </div>
-                </div>
-                <button
-                  role="menuitem"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    navigate('/profile');
-                  }}
-                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  className="w-24 h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden"
+                  aria-hidden
                 >
-                  <span className="w-4 text-center">👤</span> {t('topbar.profile')}
-                </button>
-                {user.role === 'ADMIN' && (
+                  <div
+                    className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
+                    style={{ width: `${xp.xpPct}%` }}
+                  />
+                </div>
+                <span className="tabular-nums text-[11px] text-[var(--text3)]">
+                  {xp.xpIntoLevel}/{xp.xpForLevelSpan}
+                </span>
+              </div>
+              <button
+                onClick={() => setMenuOpen((v) => !v)}
+                className="flex items-center gap-2 px-2 py-1 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--surface)] transition cursor-pointer"
+                aria-haspopup="menu"
+                aria-expanded={menuOpen}
+              >
+                {user.avatarUrl ? (
+                  <img
+                    src={user.avatarUrl}
+                    alt=""
+                    className="w-[30px] h-[30px] rounded-full object-cover border-2 border-[var(--accent)]"
+                  />
+                ) : (
+                  <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
+                    🚀
+                  </div>
+                )}
+                <span className="hidden sm:inline text-[13px] font-semibold text-[var(--text)] max-w-[120px] truncate">
+                  {user.name}
+                </span>
+              </button>
+
+              {menuOpen && (
+                <div
+                  role="menu"
+                  className="absolute top-full right-0 mt-2 w-72 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+                >
+                  <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
+                    {user.avatarUrl ? (
+                      <img
+                        src={user.avatarUrl}
+                        alt=""
+                        className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg border-2 border-[var(--accent)] flex-shrink-0">
+                        🚀
+                      </div>
+                    )}
+                    <div className="min-w-0">
+                      <div className="text-[13px] font-semibold text-[var(--text)] truncate">
+                        {user.name}
+                      </div>
+                      <div className="text-[11px] text-[var(--text3)] truncate">{user.email}</div>
+                    </div>
+                  </div>
                   <button
                     role="menuitem"
                     onClick={() => {
                       setMenuOpen(false);
-                      navigate('/admin');
+                      navigate('/profile');
                     }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--accent)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">📊</span> {t('topbar.admin')}
+                    <span className="w-4 text-center">👤</span> {t('topbar.profile')}
                   </button>
-                )}
-                <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
-                  <span className="w-4 text-center">🌐</span>
-                  <span className="flex-1">{t('topbar.language')}</span>
-                  <div
-                    role="group"
-                    aria-label={t('lang.switch')}
-                    className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
-                  >
-                    {SUPPORTED_LANGS.map((lng) => {
-                      const active = currentLang === lng;
-                      return (
-                        <button
-                          key={lng}
-                          onClick={() => i18n.changeLanguage(lng)}
-                          aria-pressed={active}
-                          className={`px-2 py-0.5 text-[11px] font-semibold cursor-pointer border-none transition ${
-                            active
-                              ? 'bg-[var(--accent)] text-white'
-                              : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
-                          }`}
-                        >
-                          {t(`lang.${lng}`)}
-                        </button>
-                      );
-                    })}
+                  {user.role === 'ADMIN' && (
+                    <button
+                      role="menuitem"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate('/admin');
+                      }}
+                      className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--accent)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                    >
+                      <span className="w-4 text-center">📊</span> {t('topbar.admin')}
+                    </button>
+                  )}
+                  <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
+                    <span className="w-4 text-center">🌐</span>
+                    <span className="flex-1">{t('topbar.language')}</span>
+                    <div
+                      role="group"
+                      aria-label={t('lang.switch')}
+                      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
+                    >
+                      {SUPPORTED_LANGS.map((lng) => {
+                        const active = currentLang === lng;
+                        return (
+                          <button
+                            key={lng}
+                            onClick={() => i18n.changeLanguage(lng)}
+                            aria-pressed={active}
+                            className={`px-2 py-0.5 text-[11px] font-semibold cursor-pointer border-none transition ${
+                              active
+                                ? 'bg-[var(--accent)] text-white'
+                                : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
+                            }`}
+                          >
+                            {t(`lang.${lng}`)}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-                <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
-                  <span className="w-4 text-center">🎨</span>
-                  <span className="flex-1">{t('topbar.background')}</span>
-                  <div
-                    role="group"
-                    aria-label={t('background.switch')}
-                    className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
-                  >
-                    {BACKGROUND_OPTIONS.map((opt) => {
-                      const active = backgroundKind === opt;
-                      return (
-                        <button
-                          key={opt}
-                          onClick={() => setBackgroundKind(opt)}
-                          aria-pressed={active}
-                          className={`px-2 py-0.5 text-[11px] font-semibold cursor-pointer border-none transition ${
-                            active
-                              ? 'bg-[var(--accent)] text-white'
-                              : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
-                          }`}
-                        >
-                          {t(`background.${opt}`)}
-                        </button>
-                      );
-                    })}
+                  <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
+                    <span className="w-4 text-center">🎨</span>
+                    <span className="flex-1">{t('topbar.background')}</span>
+                    <div
+                      role="group"
+                      aria-label={t('background.switch')}
+                      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
+                    >
+                      {BACKGROUND_OPTIONS.map((opt) => {
+                        const active = backgroundKind === opt;
+                        return (
+                          <button
+                            key={opt}
+                            onClick={() => setBackgroundKind(opt)}
+                            aria-pressed={active}
+                            className={`px-2 py-0.5 text-[11px] font-semibold cursor-pointer border-none transition ${
+                              active
+                                ? 'bg-[var(--accent)] text-white'
+                                : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
+                            }`}
+                          >
+                            {t(`background.${opt}`)}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate('/support');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">🎫</span> {t('topbar.support')}
+                  </button>
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate('/rules');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">📋</span> {t('topbar.rules')}
+                  </button>
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate('/welcome');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">✨</span> {t('topbar.welcomeTour')}
+                  </button>
+                  <div className="border-t border-[var(--border)]" />
+                  <button
+                    role="menuitem"
+                    onClick={async () => {
+                      setMenuOpen(false);
+                      await logout();
+                      navigate('/getstarted');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--error)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">↪</span> {t('topbar.signOut')}
+                  </button>
                 </div>
-                <button
-                  role="menuitem"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    navigate('/support');
-                  }}
-                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                >
-                  <span className="w-4 text-center">🎫</span> {t('topbar.support')}
-                </button>
-                <button
-                  role="menuitem"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    navigate('/rules');
-                  }}
-                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                >
-                  <span className="w-4 text-center">📋</span> {t('topbar.rules')}
-                </button>
-                <button
-                  role="menuitem"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    navigate('/welcome');
-                  }}
-                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                >
-                  <span className="w-4 text-center">✨</span> {t('topbar.welcomeTour')}
-                </button>
-                <div className="border-t border-[var(--border)]" />
-                <button
-                  role="menuitem"
-                  onClick={async () => {
-                    setMenuOpen(false);
-                    await logout();
-                    navigate('/getstarted');
-                  }}
-                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--error)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                >
-                  <span className="w-4 text-center">↪</span> {t('topbar.signOut')}
-                </button>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          </>
         ) : (
           <button
             onClick={() => navigate('/getstarted')}
