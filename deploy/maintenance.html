@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="ro">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="refresh" content="5" />
-    <title>CyberStars · se actualizează</title>
+    <title>CyberStars · updating</title>
     <style>
       :root {
-        --bg: #0b0b12;
         --accent: #6c5ce7;
         --text: #e7e7ef;
         --muted: #9a9ab0;
@@ -24,10 +23,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background:
-          radial-gradient(1200px 600px at 70% -10%, rgba(108, 92, 231, 0.18), transparent 60%),
-          radial-gradient(900px 500px at 10% 110%, rgba(108, 92, 231, 0.12), transparent 60%),
-          var(--bg);
+        background: radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%);
         color: var(--text);
         font-family:
           'Space Grotesk',
@@ -39,8 +35,28 @@
           sans-serif;
         text-align: center;
         padding: 24px;
+        overflow: hidden;
+      }
+      #stars {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .vignette {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: radial-gradient(
+          ellipse 55% 45% at center,
+          rgba(10, 5, 24, 0.55) 0%,
+          transparent 75%
+        );
       }
       .card {
+        position: relative;
+        z-index: 2;
         max-width: 460px;
       }
       .orbit {
@@ -67,10 +83,17 @@
         line-height: 1.6;
         margin: 0;
       }
-      .hint {
-        margin-top: 18px;
-        font-size: 0.85rem;
-        color: rgba(154, 154, 176, 0.7);
+      .ro {
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(108, 92, 231, 0.2);
+      }
+      .ro h1 {
+        font-size: 1.15rem;
+        color: rgba(231, 231, 239, 0.85);
+      }
+      .ro p {
+        color: rgba(154, 154, 176, 0.8);
       }
       @media (prefers-reduced-motion: reduce) {
         .orbit {
@@ -80,14 +103,135 @@
     </style>
   </head>
   <body>
+    <canvas id="stars"></canvas>
+    <div class="vignette"></div>
     <div class="card">
       <div class="orbit"></div>
-      <h1>Aplicăm un update ✨</h1>
+      <h1>We're applying an update ✨</h1>
       <p>
-        CyberStars se actualizează chiar acum. Durează doar câteva secunde — pagina se reîncarcă
-        singură când totul e gata.
+        CyberStars is updating right now. It only takes a few seconds. This page reloads itself when
+        everything is ready.
       </p>
-      <p class="hint">Nu trebuie să faci nimic. Rămâi pe recepție.</p>
+      <div class="ro">
+        <h1>Aplicăm un update ✨</h1>
+        <p>
+          CyberStars se actualizează chiar acum. Durează doar câteva secunde. Pagina se reîncarcă
+          singură când totul e gata.
+        </p>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let w, h, cx, cy;
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          w = canvas.width = window.innerWidth * dpr;
+          h = canvas.height = window.innerHeight * dpr;
+          canvas.style.width = window.innerWidth + 'px';
+          canvas.style.height = window.innerHeight + 'px';
+          cx = w / 2;
+          cy = h / 2;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const NUM_STARS = 220;
+        const SPEED = 0.007;
+        const COLORS = ['#FFFFFF', '#E8E8FF', '#C8B8FF', '#FFD8B8', '#B8E8FF'];
+        const stars = Array.from({ length: NUM_STARS }, function () {
+          return {
+            x: (Math.random() - 0.5) * 2,
+            y: (Math.random() - 0.5) * 2,
+            z: Math.random(),
+            color: COLORS[Math.floor(Math.random() * COLORS.length)],
+            twinkle: Math.random() * Math.PI * 2,
+          };
+        });
+
+        let rafId;
+        let lastT = performance.now();
+        let running = false;
+
+        function start() {
+          if (running) return;
+          running = true;
+          lastT = performance.now();
+          rafId = requestAnimationFrame(tick);
+        }
+
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) {
+            cancelAnimationFrame(rafId);
+            running = false;
+          } else {
+            ctx.clearRect(0, 0, w, h);
+            start();
+          }
+        });
+
+        function tick(t) {
+          const dt = Math.min(50, t - lastT);
+          lastT = t;
+          ctx.fillStyle = 'rgba(10, 5, 24, 0.28)';
+          ctx.fillRect(0, 0, w, h);
+          const maxR = Math.max(w, h) * 0.7;
+          const dpr = window.devicePixelRatio || 1;
+
+          for (const s of stars) {
+            s.z -= SPEED * (dt / 16);
+            if (s.z <= 0) {
+              s.x = (Math.random() - 0.5) * 2;
+              s.y = (Math.random() - 0.5) * 2;
+              s.z = 1;
+              s.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            }
+            const scale = 1 / s.z;
+            const px = cx + s.x * scale * maxR;
+            const py = cy + s.y * scale * maxR;
+            if (px < -50 || px > w + 50 || py < -50 || py > h + 50) continue;
+
+            const prevScale = 1 / Math.min(1, s.z + SPEED * 4);
+            const ppx = cx + s.x * prevScale * maxR;
+            const ppy = cy + s.y * prevScale * maxR;
+
+            const size = (1 - s.z) * 2.5 * dpr;
+            const alpha = Math.min(1, (1 - s.z) * 1.5);
+            s.twinkle += 0.06;
+            const twink = 0.7 + Math.sin(s.twinkle) * 0.3;
+
+            ctx.strokeStyle = s.color;
+            ctx.globalAlpha = alpha * 0.55;
+            ctx.lineWidth = size * 0.7;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(ppx, ppy);
+            ctx.lineTo(px, py);
+            ctx.stroke();
+
+            ctx.globalAlpha = alpha * twink;
+            ctx.fillStyle = s.color;
+            ctx.beginPath();
+            ctx.arc(px, py, size, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (s.z < 0.4) {
+              ctx.globalAlpha = alpha * 0.25;
+              ctx.beginPath();
+              ctx.arc(px, py, size * 3, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+          ctx.globalAlpha = 1;
+          rafId = requestAnimationFrame(tick);
+        }
+
+        if (!document.hidden) start();
+      })();
+    </script>
   </body>
 </html>
