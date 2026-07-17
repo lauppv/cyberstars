@@ -497,6 +497,16 @@ export async function deletePost(req: Request, res: Response, next: NextFunction
       data: { deleted: true, deletedByName: actor!.name, content: '' },
     });
 
+    // The reply's excerpt was snapshotted into FORUM_REPLY notifications — a
+    // soft-delete redacts the post, so redact the snapshot too (fire-and-forget).
+    if (!post.deleted) {
+      void notificationsService.redactExcerpt(
+        'FORUM_REPLY',
+        post.threadId,
+        post.content.slice(0, 140),
+      );
+    }
+
     res.json({ ok: true, threadDeleted: false });
   } catch (err) {
     next(err);

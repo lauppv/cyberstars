@@ -10,6 +10,7 @@ const mockPrisma = {
     updateMany: vi.fn(),
     deleteMany: vi.fn(),
   },
+  $transaction: vi.fn((ops: Promise<unknown>[]) => Promise.all(ops)),
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
@@ -85,15 +86,63 @@ describe('create', () => {
   });
 });
 
+describe('clearExcerpt', () => {
+  it('drops the excerpt key from every row still carrying it', async () => {
+    mockPrisma.notification.findMany.mockResolvedValue([
+      { id: 4, data: { title: 'T', excerpt: 'gone', count: 2 } },
+    ]);
+    mockPrisma.notification.updateMany.mockResolvedValue({ count: 1 });
+
+    await repo.clearExcerpt('FORUM_REPLY', 5, 'gone');
+
+    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: { type: 'FORUM_REPLY', entityId: 5, data: { path: ['excerpt'], equals: 'gone' } },
+      }),
+    );
+    expect(mockPrisma.notification.updateMany).toHaveBeenCalledWith({
+      where: { id: 4 },
+      data: { data: { title: 'T', count: 2 } },
+    });
+  });
+
+  it('is a no-op when no row matches', async () => {
+    mockPrisma.notification.findMany.mockResolvedValue([]);
+    await repo.clearExcerpt('FORUM_REPLY', 5, 'gone');
+    expect(mockPrisma.notification.updateMany).not.toHaveBeenCalled();
+  });
+});
+
 describe('collapse', () => {
-  it('bumps actor, data, and createdAt', async () => {
-    mockPrisma.notification.update.mockResolvedValue({ id: 9 });
-    await repo.collapse(9, 3, { title: 'T', count: 2 });
-    const arg = mockPrisma.notification.update.mock.calls[0][0];
-    expect(arg.where).toEqual({ id: 9 });
-    expect(arg.data.actorId).toBe(3);
-    expect(arg.data.data).toEqual({ title: 'T', count: 2 });
-    expect(arg.data.createdAt).toBeInstanceOf(Date);
+  it('replaces the stale row with a fresh one (new id) in a transaction', async () => {
+    const existing = {
+      id: 9,
+      userId: 10,
+      actorId: 2,
+      type: 'FORUM_REPLY',
+      entityId: 5,
+      data: { title: 'T', count: 1 },
+      readAt: null,
+      createdAt: new Date('2026-07-17T10:00:00.000Z'),
+      actor: { name: 'Ada', avatarUrl: null },
+    } as Parameters<typeof repo.collapse>[0];
+    mockPrisma.notification.deleteMany.mockResolvedValue({ count: 1 });
+    mockPrisma.notification.create.mockResolvedValue({ id: 12 });
+
+    const created = await repo.collapse(existing, 3, { title: 'T', count: 2 });
+
+    expect(created).toEqual({ id: 12 });
+    expect(mockPrisma.$transaction).toHaveBeenCalledTimes(1);
+    expect(mockPrisma.notification.deleteMany).toHaveBeenCalledWith({ where: { id: 9 } });
+    const arg = mockPrisma.notification.create.mock.calls[0][0];
+    expect(arg.data).toEqual({
+      userId: 10,
+      actorId: 3,
+      type: 'FORUM_REPLY',
+      entityId: 5,
+      data: { title: 'T', count: 2 },
+    });
+    expect(arg.include).toEqual({ actor: { select: { name: true, avatarUrl: true } } });
   });
 });
 

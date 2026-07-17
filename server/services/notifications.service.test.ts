@@ -9,13 +9,15 @@ const mockRepo = {
   list: vi.fn(),
   markReadUpTo: vi.fn(),
   markOneRead: vi.fn(),
+  clearExcerpt: vi.fn(),
 };
 const mockWs = { pushToUser: vi.fn() };
 
 vi.mock('../repositories/notifications.repository.js', () => mockRepo);
 vi.mock('./ws-user.js', () => mockWs);
 
-const { notify, getPage, markRead, markOneRead } = await import('./notifications.service.js');
+const { notify, getPage, markRead, markOneRead, redactExcerpt } =
+  await import('./notifications.service.js');
 
 function row(over: Partial<Record<string, unknown>> = {}) {
   return {
@@ -69,20 +71,22 @@ describe('notifications.service notify', () => {
     expect(mockRepo.create).toHaveBeenCalledTimes(1);
   });
 
-  it('collapses a repeat collapsible event into the existing unread row', async () => {
-    mockRepo.findUnreadFor.mockResolvedValue(row({ id: 9, data: { title: 'Thread', count: 1 } }));
+  it('collapses a repeat collapsible event into a replacement of the unread row', async () => {
+    const existing = row({ id: 9, data: { title: 'Thread', count: 1 } });
+    mockRepo.findUnreadFor.mockResolvedValue(existing);
     await notify({ recipientIds: [10], actorId: 2, type: 'FORUM_REPLY', entityId: 5 });
     expect(mockRepo.create).not.toHaveBeenCalled();
-    expect(mockRepo.collapse).toHaveBeenCalledWith(9, 2, {
+    expect(mockRepo.collapse).toHaveBeenCalledWith(existing, 2, {
       title: 'Thread',
       count: 2,
     });
   });
 
   it('collapses from a bare unread row with no prior data or count', async () => {
-    mockRepo.findUnreadFor.mockResolvedValue(row({ id: 9, data: null }));
+    const existing = row({ id: 9, data: null });
+    mockRepo.findUnreadFor.mockResolvedValue(existing);
     await notify({ recipientIds: [10], actorId: 4, type: 'DM_MESSAGE', entityId: 5 });
-    expect(mockRepo.collapse).toHaveBeenCalledWith(9, 4, { count: 2 });
+    expect(mockRepo.collapse).toHaveBeenCalledWith(existing, 4, { count: 2 });
   });
 
   it('does not collapse non-collapsible types even with an unread row present', async () => {
@@ -98,6 +102,21 @@ describe('notifications.service notify', () => {
     await expect(
       notify({ recipientIds: [10], type: 'FORUM_REPLY', entityId: 5 }),
     ).resolves.toBeUndefined();
+    spy.mockRestore();
+  });
+});
+
+describe('notifications.service redactExcerpt', () => {
+  it('delegates to the repository', async () => {
+    mockRepo.clearExcerpt.mockResolvedValue(undefined);
+    await redactExcerpt('FORUM_REPLY', 5, 'old excerpt');
+    expect(mockRepo.clearExcerpt).toHaveBeenCalledWith('FORUM_REPLY', 5, 'old excerpt');
+  });
+
+  it('never throws (fire-and-forget)', async () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.clearExcerpt.mockRejectedValue(new Error('db down'));
+    await expect(redactExcerpt('FORUM_REPLY', 5, 'x')).resolves.toBeUndefined();
     spy.mockRestore();
   });
 });
