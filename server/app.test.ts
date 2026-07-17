@@ -69,6 +69,15 @@ describe('endpoint smoke tests — public routes return 200', () => {
   }
 });
 
+describe('server clock', () => {
+  it('GET /api/time returns a numeric now and is not cached', async () => {
+    const res = await request(app).get('/api/time');
+    expect(res.status).toBe(200);
+    expect(typeof res.body.now).toBe('number');
+    expect(res.headers['cache-control']).toContain('no-store');
+  });
+});
+
 describe('content security policy', () => {
   it('emits a restricted CSP header instead of disabling it', async () => {
     const res = await request(app).get('/api/forum/categories');

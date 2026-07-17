@@ -407,7 +407,9 @@
         "title": "Privacy",
         "desc": "Do not share personal information (email, phone number, home address, workplace) — your own or anyone else's — in the forum or in any public part of the platform."
       }
-    ]
+    ],
+    "radioPrivacyTitle": "Focus Radio & privacy",
+    "radioPrivacyDesc": "The optional Focus Radio plays one royalty-free instrumental track we host ourselves — no third parties, no cookies, no ads. It's a single live broadcast, so everyone tuned in hears the same moment. Nothing loads until you press play. Prefer silence? Just leave it paused."
   },
   "profile": {
     "edit": "Edit",
@@ -818,6 +820,21 @@
     },
     "forbid": {
       "command": "Don't use {{name}} here"
+    }
+  },
+  "radio": {
+    "title": "Focus Radio",
+    "play": "Play",
+    "pause": "Pause",
+    "expand": "More",
+    "collapse": "Less",
+    "hide": "Hide",
+    "show": "Show radio",
+    "live": "Live",
+    "volume": "Volume",
+    "liveNote": "One live broadcast — everyone hears the same moment. Resuming re-joins live.",
+    "track": {
+      "neonSkylines": "Neon Skylines"
     }
   }
 }
