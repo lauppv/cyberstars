@@ -90,4 +90,22 @@ describe('RadioPlayer controls', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Show radio' }));
     expect(h.radio.setHidden).toHaveBeenCalledWith(false);
   });
+
+  it('shows a pulse indicator on the launcher chip while playing and hidden', () => {
+    h.radio.hidden = true;
+    h.radio.playing = true;
+    const { container } = render(<RadioPlayer />);
+    expect(container.querySelector('.animate-pulse')).not.toBeNull();
+  });
+});
+
+describe('RadioPlayer locked chip dismissal', () => {
+  it('closes the coming-soon dialog on an outside mousedown', () => {
+    h.radio.enabled = false;
+    render(<RadioPlayer />);
+    fireEvent.click(screen.getByRole('button', { name: /Coming soon/ }));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    fireEvent.mouseDown(document.body);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
 });

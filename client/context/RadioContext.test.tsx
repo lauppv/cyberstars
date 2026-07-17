@@ -112,4 +112,81 @@ describe('RadioContext', () => {
     expect(() => render(<Probe />)).toThrow(/RadioProvider/);
     spy.mockRestore();
   });
+
+  it('togglePlay pauses when already playing', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    act(() => audio.dispatchEvent(new Event('play')));
+    expect(screen.getByTestId('playing')).toHaveTextContent('true');
+    fireEvent.click(screen.getByText('toggle'));
+    expect(pauseSpy).toHaveBeenCalled();
+    act(() => audio.dispatchEvent(new Event('pause')));
+    expect(screen.getByTestId('playing')).toHaveTextContent('false');
+  });
+
+  it('seeks to the live position when the duration is known on play', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
+    let ct = 0;
+    Object.defineProperty(audio, 'currentTime', {
+      configurable: true,
+      get: () => ct,
+      set: (v: number) => {
+        ct = v;
+      },
+    });
+    fireEvent.click(screen.getByText('toggle'));
+    expect(playSpy).toHaveBeenCalled();
+    expect(ct).toBeGreaterThanOrEqual(0);
+    expect(ct).toBeLessThan(180);
+  });
+
+  it('defers the seek until metadata loads when duration is unknown', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    Object.defineProperty(audio, 'duration', { configurable: true, value: NaN });
+    let ct = -1;
+    Object.defineProperty(audio, 'currentTime', {
+      configurable: true,
+      get: () => ct,
+      set: (v: number) => {
+        ct = v;
+      },
+    });
+    fireEvent.click(screen.getByText('toggle'));
+    // still unknown, no seek yet
+    expect(ct).toBe(-1);
+    // now metadata arrives with a real duration
+    Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
+    act(() => audio.dispatchEvent(new Event('loadedmetadata')));
+    expect(ct).toBeGreaterThanOrEqual(0);
+  });
+
+  it('resyncs the position when drift exceeds the threshold while playing', () => {
+    vi.useFakeTimers();
+    try {
+      const { container } = renderProbe();
+      const audio = container.querySelector('audio') as HTMLAudioElement;
+      Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
+      Object.defineProperty(audio, 'paused', { configurable: true, value: false });
+      Object.defineProperty(audio, 'seeking', { configurable: true, value: false });
+      let ct = 0;
+      Object.defineProperty(audio, 'currentTime', {
+        configurable: true,
+        get: () => ct,
+        set: (v: number) => {
+          ct = v;
+        },
+      });
+      act(() => audio.dispatchEvent(new Event('play')));
+      act(() => {
+        vi.advanceTimersByTime(5000);
+      });
+      // drifted from 0 to the live position (>2s), so it snapped forward
+      expect(ct).toBeGreaterThan(0);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });
