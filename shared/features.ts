@@ -11,7 +11,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   leaderboard: true,
   messaging: true,
   notifications: true,
-  radio: true,
+  radio: false,
 };
 
 // Shared access rule, used identically by the server (isProd = NODE_ENV ===
