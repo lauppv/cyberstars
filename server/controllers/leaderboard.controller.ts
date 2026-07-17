@@ -9,7 +9,7 @@ export async function getLeaderboard(
 ): Promise<void> {
   try {
     const { take, skip } = leaderboardQuerySchema.parse(req.query);
-    const page = await leaderboardService.getPage(take, skip, req.query.fresh === '1');
+    const page = await leaderboardService.getPage(take, skip);
     res.json(page);
   } catch (err) {
     next(err);

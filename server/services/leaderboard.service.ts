@@ -23,9 +23,9 @@ function shape(row: leaderboardRepo.LeaderboardRow): LeaderboardEntry {
 // The aggregate ranking query is DB-heavy, so the full ranked list is cached in
 // memory for a few minutes (like admin.service). Page slices and "my rank" are
 // derived from the cache — one query per window, not per request.
-async function getEntries(force: boolean): Promise<LeaderboardEntry[]> {
+async function getEntries(): Promise<LeaderboardEntry[]> {
   const now = Date.now();
-  if (!force && cached && cached.expiresAt > now) return cached.entries;
+  if (cached && cached.expiresAt > now) return cached.entries;
 
   const rows = await leaderboardRepo.getRanked();
   const entries = rows.map(shape);
@@ -33,13 +33,13 @@ async function getEntries(force: boolean): Promise<LeaderboardEntry[]> {
   return entries;
 }
 
-export async function getPage(take: number, skip: number, force = false): Promise<LeaderboardPage> {
-  const entries = await getEntries(force);
+export async function getPage(take: number, skip: number): Promise<LeaderboardPage> {
+  const entries = await getEntries();
   return { entries: entries.slice(skip, skip + take), total: entries.length };
 }
 
-export async function getMyRank(userId: number, force = false): Promise<LeaderboardEntry | null> {
-  const entries = await getEntries(force);
+export async function getMyRank(userId: number): Promise<LeaderboardEntry | null> {
+  const entries = await getEntries();
   return entries.find((e) => e.userId === userId) ?? null;
 }
 

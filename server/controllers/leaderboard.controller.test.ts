@@ -20,14 +20,8 @@ describe('getLeaderboard', () => {
     mockService.getPage.mockResolvedValue({ entries: [] });
     const res = mockRes();
     await getLeaderboard(mockReq({ query: { take: '5', skip: '10' } }), res, vi.fn());
-    expect(mockService.getPage).toHaveBeenCalledWith(5, 10, false);
+    expect(mockService.getPage).toHaveBeenCalledWith(5, 10);
     expect(res.json).toHaveBeenCalledWith({ entries: [] });
-  });
-
-  it('forces fresh with ?fresh=1', async () => {
-    mockService.getPage.mockResolvedValue({ entries: [] });
-    await getLeaderboard(mockReq({ query: { fresh: '1' } }), mockRes(), vi.fn());
-    expect(mockService.getPage).toHaveBeenCalledWith(expect.any(Number), expect.any(Number), true);
   });
 
   it('forwards errors to next', async () => {

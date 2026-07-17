@@ -59,12 +59,6 @@ describe('leaderboard.service getPage', () => {
     await getPage(10, 0);
     expect(mockRepo.getRanked).toHaveBeenCalledTimes(1);
   });
-
-  it('bypasses the cache when force=true', async () => {
-    await getPage(50, 0);
-    await getPage(50, 0, true);
-    expect(mockRepo.getRanked).toHaveBeenCalledTimes(2);
-  });
 });
 
 describe('leaderboard.service getMyRank', () => {
