@@ -50,19 +50,22 @@ function Starfield() {
 
     let rafId: number;
     let lastT = performance.now();
-    let running = true;
+    let running = false;
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      lastT = performance.now();
+      rafId = requestAnimationFrame(tick);
+    };
 
     const onVisibility = () => {
       if (document.hidden) {
         cancelAnimationFrame(rafId);
         running = false;
       } else {
-        if (!running) {
-          running = true;
-          lastT = performance.now();
-          ctx.clearRect(0, 0, w, h);
-          rafId = requestAnimationFrame(tick);
-        }
+        ctx.clearRect(0, 0, w, h);
+        start();
       }
     };
     document.addEventListener('visibilitychange', onVisibility);
@@ -122,7 +125,7 @@ function Starfield() {
       ctx.globalAlpha = 1;
       rafId = requestAnimationFrame(tick);
     };
-    rafId = requestAnimationFrame(tick);
+    if (!document.hidden) start();
 
     return () => {
       cancelAnimationFrame(rafId);
