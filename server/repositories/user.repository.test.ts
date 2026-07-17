@@ -4,6 +4,7 @@ const mockPrisma = {
   user: {
     findUnique: vi.fn(),
     findFirst: vi.fn(),
+    findMany: vi.fn(),
     update: vi.fn(),
     create: vi.fn(),
     count: vi.fn(),
@@ -115,6 +116,18 @@ describe('countByRole', () => {
     const n = await repo.countByRole('ADMIN');
     expect(n).toBe(3);
     expect(mockPrisma.user.count).toHaveBeenCalledWith({ where: { role: 'ADMIN' } });
+  });
+});
+
+describe('getAdminIds', () => {
+  it('returns the ids of all admins', async () => {
+    mockPrisma.user.findMany.mockResolvedValue([{ id: 1 }, { id: 4 }]);
+    const ids = await repo.getAdminIds();
+    expect(ids).toEqual([1, 4]);
+    expect(mockPrisma.user.findMany).toHaveBeenCalledWith({
+      where: { role: 'ADMIN' },
+      select: { id: true },
+    });
   });
 });
 

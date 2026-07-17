@@ -7,6 +7,9 @@ import type { TokenPayload } from '../../shared/auth.js';
 import { handleInteractiveRun } from './interactive-execution.service.js';
 import { openSession, closeSession } from './code-container.service.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
+import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
+import { canAccessFeature } from '../../shared/features.js';
+import * as userRepo from '../repositories/user.repository.js';
 
 // Reject oversized frames before they are buffered/parsed.
 const MAX_PAYLOAD_BYTES = 128 * 1024;
@@ -158,13 +161,35 @@ export function handlePresenceConnection(ws: WebSocket, req: IncomingMessage): v
   ws.on('close', () => closeSession(ownerKey));
 }
 
+// The shared per-user event socket. Requires a logged-in user and passes the
+// preview gate (on prod, admins only) — same rule as the REST endpoints. The
+// gate check is async, so it runs after the upgrade and closes the socket if the
+// user isn't allowed. No messages are read from the client; the server pushes.
+async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promise<void> {
+  const userId = verifyToken(parseTokenCookie(req.headers.cookie));
+  if (userId === null) {
+    ws.close(4401, 'Unauthorized');
+    return;
+  }
+  const isProd = process.env.NODE_ENV === 'production';
+  const role = isProd ? await userRepo.getRole(userId) : undefined;
+  if (!canAccessFeature('notifications', role, isProd)) {
+    ws.close(4404, 'Not found');
+    return;
+  }
+  registerUserSocket(userId, ws);
+  ws.on('close', () => unregisterUserSocket(userId, ws));
+}
+
 export function attachRunWebSocket(server: HttpServer): { close: () => void } {
   // Two paths share one HTTP server, so route upgrades manually (a `ws` server
   // can't reliably co-host paths via the `path` option — frames get crossed).
   const runWss = new WebSocketServer({ noServer: true, maxPayload: MAX_PAYLOAD_BYTES });
   const presenceWss = new WebSocketServer({ noServer: true, maxPayload: 1024 });
+  const userWss = new WebSocketServer({ noServer: true, maxPayload: 1024 });
   runWss.on('connection', handleConnection);
   presenceWss.on('connection', handlePresenceConnection);
+  userWss.on('connection', handleUserConnection);
 
   const onUpgrade = (req: IncomingMessage, socket: Duplex, head: Buffer) => {
     const pathname = new URL(req.url ?? '/', 'http://localhost').pathname;
@@ -172,6 +197,8 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
       runWss.handleUpgrade(req, socket, head, (ws) => runWss.emit('connection', ws, req));
     } else if (pathname === '/ws/presence') {
       presenceWss.handleUpgrade(req, socket, head, (ws) => presenceWss.emit('connection', ws, req));
+    } else if (pathname === '/ws/user') {
+      userWss.handleUpgrade(req, socket, head, (ws) => userWss.emit('connection', ws, req));
     } else {
       socket.destroy();
     }
@@ -183,6 +210,7 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
       server.off('upgrade', onUpgrade);
       runWss.close();
       presenceWss.close();
+      userWss.close();
     },
   };
 }
