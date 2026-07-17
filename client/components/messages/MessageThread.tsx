@@ -75,6 +75,9 @@ export function MessageThread({
         const msg = frame.payload;
         setMessages((prev) => (prev.some((m) => m.id === msg.id) ? prev : [...prev, msg]));
         if (msg.senderId !== currentUserId) markReadUpTo(msg.id);
+      } else if (frame.type === 'deleted' && frame.payload.conversationId === conversationId) {
+        const msg = frame.payload;
+        setMessages((prev) => prev.map((m) => (m.id === msg.id ? msg : m)));
       } else if (frame.type === 'read' && frame.payload.conversationId === conversationId) {
         const upTo = frame.payload.upToMessageId;
         const at = new Date().toISOString();

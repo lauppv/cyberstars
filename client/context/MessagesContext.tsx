@@ -90,12 +90,25 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     [user?.id, load],
   );
 
+  // A deleted message only needs the inbox preview redacted — no reordering, no
+  // unread change (deletion doesn't unread anything).
+  const applyDeleted = useCallback((message: MessageDTO) => {
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === message.conversationId && c.lastMessage?.id === message.id
+          ? { ...c, lastMessage: message }
+          : c,
+      ),
+    );
+  }, []);
+
   const onFrame = useCallback(
     (frame: UserSocketFrame) => {
       if (frame.channel !== 'dm') return;
       if (frame.type === 'message') applyIncoming(frame.payload);
+      else if (frame.type === 'deleted') applyDeleted(frame.payload);
     },
-    [applyIncoming],
+    [applyIncoming, applyDeleted],
   );
   useUserSocketFrames(onFrame);
 

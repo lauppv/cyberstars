@@ -23,15 +23,23 @@ const conversationInclude = {
 // same row. Idempotent: relies on the @@unique([userAId, userBId]).
 export async function findOrCreatePair(a: number, b: number): Promise<ConversationRow> {
   const [userAId, userBId] = a < b ? [a, b] : [b, a];
-  const existing = await prisma.conversation.findUnique({
-    where: { userAId_userBId: { userAId, userBId } },
-    include: conversationInclude,
-  });
+  const where = { userAId_userBId: { userAId, userBId } };
+  const existing = await prisma.conversation.findUnique({ where, include: conversationInclude });
   if (existing) return existing;
-  return prisma.conversation.create({
-    data: { userAId, userBId },
-    include: conversationInclude,
-  });
+  try {
+    return await prisma.conversation.create({
+      data: { userAId, userBId },
+      include: conversationInclude,
+    });
+  } catch (err) {
+    // Two concurrent opens can both miss the findUnique and race the create;
+    // the loser hits the unique constraint — re-read the winner's row.
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2002') {
+      const winner = await prisma.conversation.findUnique({ where, include: conversationInclude });
+      if (winner) return winner;
+    }
+    throw err;
+  }
 }
 
 export function findConversation(id: number): Promise<ConversationRow | null> {
