@@ -2,7 +2,13 @@ import { api } from './apiClient';
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
 
-export function updateProfile(data: { bio?: string | null; status?: string | null }) {
+export function updateProfile(data: {
+  bio?: string | null;
+  status?: string | null;
+  showBio?: boolean;
+  showStats?: boolean;
+  showProgress?: boolean;
+}) {
   return api.patch<{ message: string }>('/api/profile', data);
 }
 
