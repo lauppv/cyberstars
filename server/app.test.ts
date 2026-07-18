@@ -169,6 +169,31 @@ describe('preview feature gate', () => {
   });
 });
 
+describe('public profile route', () => {
+  it('validates the id param with a 400 before reaching the service', async () => {
+    const res = await request(app).get('/api/users/abc/profile');
+    expect(res.status).toBe(400);
+  });
+
+  it('404s a missing user (route is wired past the dev feature gate)', async () => {
+    // user.repository.findById is mocked to null, so the service throws 404 —
+    // proving optionalAuth + the leaderboard gate let a dev guest through.
+    const res = await request(app).get('/api/users/1/profile');
+    expect(res.status).toBe(404);
+  });
+
+  it('404s the profile for a guest when NODE_ENV=production', async () => {
+    const original = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    try {
+      const res = await request(app).get('/api/users/1/profile');
+      expect(res.status).toBe(404);
+    } finally {
+      process.env.NODE_ENV = original;
+    }
+  });
+});
+
 describe('endpoint smoke tests — unknown routes', () => {
   it('GET /api/does-not-exist → 404', async () => {
     const res = await request(app).get('/api/does-not-exist');

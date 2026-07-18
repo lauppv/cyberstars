@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -36,8 +36,9 @@ function Row({
 }) {
   const medal = MEDALS[entry.rank];
   return (
-    <div
-      className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 border-b border-[var(--accent)]/20 last:border-b-0 ${
+    <Link
+      to={`/u/${entry.userId}`}
+      className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 border-b border-[var(--accent)]/20 last:border-b-0 no-underline text-inherit hover:bg-[var(--accent)]/[0.07] transition ${
         isMe ? 'bg-[var(--accent)]/10' : ''
       }`}
     >
@@ -70,7 +71,7 @@ function Row({
           {t('leaderboard.lessons', { count: entry.lessonsDone })}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }
 

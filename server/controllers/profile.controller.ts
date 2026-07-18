@@ -7,6 +7,7 @@ import { fileTypeFromBuffer } from 'file-type';
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as emailService from '../services/email.service.js';
+import { computeStreak } from '../services/activity.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 const UPLOAD_DIR = path.resolve('uploads/avatars');
@@ -48,9 +49,16 @@ export async function updateProfile(
 ): Promise<void> {
   try {
     const userId = req.user!.id;
-    const { bio, status } = req.body;
+    const { bio, status, showBio, showStats, showProgress } = req.body;
 
-    const data: { bio?: string | null; status?: string | null; statusExpiresAt?: Date | null } = {};
+    const data: {
+      bio?: string | null;
+      status?: string | null;
+      statusExpiresAt?: Date | null;
+      showBio?: boolean;
+      showStats?: boolean;
+      showProgress?: boolean;
+    } = {};
 
     if (bio !== undefined) {
       data.bio = bio ? String(bio).slice(0, 200) : null;
@@ -65,6 +73,10 @@ export async function updateProfile(
         data.statusExpiresAt = null;
       }
     }
+
+    if (showBio !== undefined) data.showBio = showBio;
+    if (showStats !== undefined) data.showStats = showStats;
+    if (showProgress !== undefined) data.showProgress = showProgress;
 
     await userRepo.updateProfile(userId, data);
     res.json({ message: 'Profile updated' });
@@ -233,55 +245,20 @@ export async function cancelEmailChange(
   }
 }
 
-// Streak = consecutive days (ending at the most recent activity day) with at
-// least one completed lesson. UTC-based day boundaries so timezone drift
-// doesn't split a single session across two calendar days.
 export async function getActivity(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const userId = req.user!.id;
     const rows = await progressRepo.getActivityDates(userId);
 
-    const days = new Set<number>();
     let lastActiveAt: Date | null = null;
     for (const r of rows) {
       if (r.lastAccessedAt && (!lastActiveAt || r.lastAccessedAt > lastActiveAt)) {
         lastActiveAt = r.lastAccessedAt;
       }
-      if (r.completedAt) {
-        const d = new Date(
-          Date.UTC(
-            r.completedAt.getUTCFullYear(),
-            r.completedAt.getUTCMonth(),
-            r.completedAt.getUTCDate(),
-          ),
-        );
-        days.add(d.getTime());
-      }
-    }
-
-    const MS_PER_DAY = 86_400_000;
-    const sortedDays = [...days].sort((a, b) => b - a);
-    let streak = 0;
-    if (sortedDays.length > 0) {
-      const today = Date.UTC(
-        new Date().getUTCFullYear(),
-        new Date().getUTCMonth(),
-        new Date().getUTCDate(),
-      );
-      const mostRecent = sortedDays[0];
-      // Start counting from the most recent activity day if it is today or
-      // yesterday; if the last activity was older than yesterday, streak is 0.
-      if (mostRecent === today || mostRecent === today - MS_PER_DAY) {
-        streak = 1;
-        for (let i = 1; i < sortedDays.length; i++) {
-          if (sortedDays[i] === sortedDays[i - 1] - MS_PER_DAY) streak++;
-          else break;
-        }
-      }
     }
 
     res.json({
-      streak,
+      streak: computeStreak(rows),
       lastActiveAt: lastActiveAt?.toISOString() ?? null,
     });
   } catch (err) {

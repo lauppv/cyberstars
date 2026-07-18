@@ -61,6 +61,12 @@ model User {
   emailChangeCodeExpiresAt DateTime? @map("email_change_code_expires_at")
   createdAt          DateTime  @default(now()) @map("created_at")
 
+  // Public-profile privacy toggles (default: everything visible). Own view
+  // ignores these; other viewers see a field only when its flag is true.
+  showBio      Boolean @default(true) @map("show_bio")
+  showStats    Boolean @default(true) @map("show_stats")
+  showProgress Boolean @default(true) @map("show_progress")
+
   progress  UserLessonProgress[]
   savedCode UserSavedCode[]
   threads   ForumThread[]

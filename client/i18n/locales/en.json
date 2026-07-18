@@ -14,8 +14,7 @@
     "toggleSidebar": "Toggle sidebar",
     "profile": "Profile",
     "admin": "Admin Dashboard",
-    "language": "Language",
-    "background": "Background",
+    "settings": "Settings",
     "support": "Support",
     "rules": "Rules",
     "welcomeTour": "Welcome Tour",
@@ -448,7 +447,8 @@
     "emailCode": "Confirmation code",
     "emailConfirm": "Confirm new email",
     "emailCancel": "Cancel",
-    "emailUpdated": "Email updated to {{email}}"
+    "emailUpdated": "Email updated to {{email}}",
+    "openSettings": "Settings"
   },
   "support": {
     "title": "Support",
@@ -838,5 +838,30 @@
     "track": {
       "neonSkylines": "Neon Skylines"
     }
+  },
+  "publicProfile": {
+    "notFound": "This explorer could not be found.",
+    "error": "Could not load this profile.",
+    "rank": "Rank #{{n}}",
+    "sendMessage": "Send message",
+    "editProfile": "Edit profile",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Preferences, privacy and account.",
+    "preferences": "Preferences",
+    "language": "Language",
+    "background": "Background",
+    "privacy": "Privacy",
+    "privacyHint": "Choose what other explorers can see on your public profile. Everything is visible by default.",
+    "showBio": "Bio & status",
+    "showBioHint": "Your bio text and current status.",
+    "showStats": "Statistics",
+    "showStatsHint": "Lessons completed, active courses and streak.",
+    "showProgress": "Level, XP & badges",
+    "showProgressHint": "Your level, experience points and earned badges.",
+    "account": "Account",
+    "saved": "Saved"
   }
 }

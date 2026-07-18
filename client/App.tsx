@@ -56,6 +56,12 @@ const LeaderboardPage = lazy(() =>
 const MessagesPage = lazy(() =>
   import('./pages/MessagesPage').then((m) => ({ default: m.MessagesPage })),
 );
+const PublicProfilePage = lazy(() =>
+  import('./pages/PublicProfilePage').then((m) => ({ default: m.PublicProfilePage })),
+);
+const SettingsPage = lazy(() =>
+  import('./pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
+);
 
 function GlobalBackground() {
   const { pathname } = useLocation();
@@ -109,6 +115,8 @@ function App() {
                         <Route path="/admin" element={<AdminPage />} />
                         <Route path="/leaderboard" element={<LeaderboardPage />} />
                         <Route path="/messages" element={<MessagesPage />} />
+                        <Route path="/u/:userId" element={<PublicProfilePage />} />
+                        <Route path="/settings" element={<SettingsPage />} />
                       </Routes>
                     </Suspense>
                   </RadioProvider>

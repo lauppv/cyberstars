@@ -71,6 +71,9 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     statusExpiresAt: statusExpired ? null : (user.statusExpiresAt?.toISOString() ?? null),
     pendingEmail: pendingEmailActive,
     createdAt: user.createdAt.toISOString(),
+    showBio: user.showBio,
+    showStats: user.showStats,
+    showProgress: user.showProgress,
   };
 }
 

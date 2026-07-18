@@ -2,14 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
-import { SUPPORTED_LANGS } from '../../i18n';
-import { useBackgroundPref, type BackgroundKind } from '../../hooks/useBackgroundPref';
 import { useGamification } from '../../hooks/useGamification';
 import { NotificationBell } from './NotificationBell';
 import { LeaderboardButton } from './LeaderboardButton';
 import { MessagesButton } from './MessagesButton';
-
-const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
 
 interface TopbarProps {
   breadcrumb?: { course?: string; lesson?: string; courseHref?: string };
@@ -40,11 +36,9 @@ export function Topbar({
 }: TopbarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.resolvedLanguage ?? i18n.language;
+  const { t } = useTranslation();
   const { isLoggedIn, user, logout } = useAuth();
   const { xp } = useGamification();
-  const [backgroundKind, setBackgroundKind] = useBackgroundPref();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -287,60 +281,16 @@ export function Topbar({
                       <span className="w-4 text-center">📊</span> {t('topbar.admin')}
                     </button>
                   )}
-                  <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
-                    <span className="w-4 text-center">🌐</span>
-                    <span className="flex-1">{t('topbar.language')}</span>
-                    <div
-                      role="group"
-                      aria-label={t('lang.switch')}
-                      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
-                    >
-                      {SUPPORTED_LANGS.map((lng) => {
-                        const active = currentLang === lng;
-                        return (
-                          <button
-                            key={lng}
-                            onClick={() => i18n.changeLanguage(lng)}
-                            aria-pressed={active}
-                            className={`px-2 py-0.5 text-[11px] font-semibold cursor-pointer border-none transition ${
-                              active
-                                ? 'bg-[var(--accent)] text-white'
-                                : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
-                            }`}
-                          >
-                            {t(`lang.${lng}`)}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className="px-4 py-2 flex items-center gap-2 text-[13px] text-[var(--text)]">
-                    <span className="w-4 text-center">🎨</span>
-                    <span className="flex-1">{t('topbar.background')}</span>
-                    <div
-                      role="group"
-                      aria-label={t('background.switch')}
-                      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
-                    >
-                      {BACKGROUND_OPTIONS.map((opt) => {
-                        const active = backgroundKind === opt;
-                        return (
-                          <button
-                            key={opt}
-                            onClick={() => setBackgroundKind(opt)}
-                            aria-pressed={active}
-                            className={`px-2 py-0.5 text-[11px] font-semibold cursor-pointer border-none transition ${
-                              active
-                                ? 'bg-[var(--accent)] text-white'
-                                : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
-                            }`}
-                          >
-                            {t(`background.${opt}`)}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate('/settings');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">⚙️</span> {t('topbar.settings')}
+                  </button>
                   <button
                     role="menuitem"
                     onClick={() => {

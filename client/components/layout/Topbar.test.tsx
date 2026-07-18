@@ -120,29 +120,11 @@ describe('Topbar', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/profile');
   });
 
-  it('switches the UI language via the EN/RO toggle in the menu', async () => {
-    const { default: i18n } = await import('i18next');
-    const original = i18n.language;
+  it('navigates to settings when Settings is clicked', () => {
     renderTopbar();
     fireEvent.click(screen.getByText('Test'));
-    fireEvent.click(screen.getByRole('button', { name: 'RO' }));
-    expect(i18n.language).toBe('ro');
-    await i18n.changeLanguage(original);
-  });
-
-  it('switches the background preference via the Minimal/Cosmos toggle', () => {
-    localStorage.removeItem('cyberstars.background');
-    renderTopbar();
-    fireEvent.click(screen.getByText('Test'));
-    const minimalBtn = screen.getByRole('button', { name: 'Minimal' });
-    const cosmosBtn = screen.getByRole('button', { name: 'Cosmos' });
-    expect(cosmosBtn).toHaveAttribute('aria-pressed', 'true');
-    expect(minimalBtn).toHaveAttribute('aria-pressed', 'false');
-    fireEvent.click(minimalBtn);
-    expect(localStorage.getItem('cyberstars.background')).toBe('minimal');
-    expect(minimalBtn).toHaveAttribute('aria-pressed', 'true');
-    fireEvent.click(cosmosBtn);
-    expect(localStorage.getItem('cyberstars.background')).toBe('cosmos');
+    fireEvent.click(screen.getByText('Settings'));
+    expect(mockNavigate).toHaveBeenCalledWith('/settings');
   });
 
   it('closes menu on Escape', () => {

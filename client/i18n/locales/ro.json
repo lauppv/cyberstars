@@ -14,8 +14,7 @@
     "toggleSidebar": "Comută bara laterală",
     "profile": "Profil",
     "admin": "Panou admin",
-    "language": "Limbă",
-    "background": "Fundal",
+    "settings": "Setări",
     "support": "Suport",
     "rules": "Reguli",
     "welcomeTour": "Tur de bun venit",
@@ -451,7 +450,8 @@
     "emailCode": "Cod de confirmare",
     "emailConfirm": "Confirmă emailul nou",
     "emailCancel": "Anulează",
-    "emailUpdated": "Email actualizat la {{email}}"
+    "emailUpdated": "Email actualizat la {{email}}",
+    "openSettings": "Setări"
   },
   "support": {
     "title": "Suport",
@@ -841,5 +841,30 @@
     "track": {
       "neonSkylines": "Neon Skylines"
     }
+  },
+  "publicProfile": {
+    "notFound": "Acest explorator nu a putut fi găsit.",
+    "error": "Nu am putut încărca acest profil.",
+    "rank": "Loc #{{n}}",
+    "sendMessage": "Trimite mesaj",
+    "editProfile": "Editează profilul",
+    "settings": "Setări"
+  },
+  "settings": {
+    "title": "Setări",
+    "subtitle": "Preferințe, confidențialitate și cont.",
+    "preferences": "Preferințe",
+    "language": "Limbă",
+    "background": "Fundal",
+    "privacy": "Confidențialitate",
+    "privacyHint": "Alege ce pot vedea ceilalți exploratori pe profilul tău public. Totul este vizibil implicit.",
+    "showBio": "Bio și status",
+    "showBioHint": "Textul bio și statusul curent.",
+    "showStats": "Statistici",
+    "showStatsHint": "Lecții finalizate, cursuri active și streak.",
+    "showProgress": "Nivel, XP și insigne",
+    "showProgressHint": "Nivelul, punctele de experiență și insignele câștigate.",
+    "account": "Cont",
+    "saved": "Salvat"
   }
 }

@@ -59,6 +59,20 @@ export async function upsertCode(
   });
 }
 
+// Completed-lesson count per course for one user. Powers the public profile's
+// active-course and badge tallies (badges are derived from these counts, the
+// same way the client's useGamification does it).
+export async function getCompletedCountsByCourse(
+  userId: number,
+): Promise<{ courseKey: string; done: number }[]> {
+  const rows = await prisma.userLessonProgress.groupBy({
+    by: ['courseKey'],
+    where: { userId, completed: true },
+    _count: { _all: true },
+  });
+  return rows.map((r) => ({ courseKey: r.courseKey, done: r._count._all }));
+}
+
 export async function getActivityDates(userId: number): Promise<
   {
     completedAt: Date | null;
