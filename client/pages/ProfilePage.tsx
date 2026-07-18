@@ -6,6 +6,7 @@ import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
 import { Badge } from '../components/gamification/Badge';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { EmojiPicker } from '../components/ui/EmojiPicker';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
@@ -20,6 +21,24 @@ export function ProfilePage() {
   const { courses: allCourses } = useCurriculum();
   const { progressMap } = useAllProgress();
   const fileRef = useRef<HTMLInputElement>(null);
+  const statusRef = useRef<HTMLInputElement>(null);
+
+  const STATUS_MAX = 80;
+
+  // Insert an emoji at the caret (or the end), respecting the length cap, and
+  // keep focus/selection where the user expects it.
+  const insertEmoji = (emoji: string) => {
+    const el = statusRef.current;
+    const start = el?.selectionStart ?? status.length;
+    const end = el?.selectionEnd ?? status.length;
+    const next = (status.slice(0, start) + emoji + status.slice(end)).slice(0, STATUS_MAX);
+    setStatus(next);
+    requestAnimationFrame(() => {
+      el?.focus();
+      const pos = Math.min(start + emoji.length, next.length);
+      el?.setSelectionRange(pos, pos);
+    });
+  };
 
   const activeCourses = allCourses.filter((c) => {
     const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
@@ -205,12 +224,14 @@ export function ProfilePage() {
               </label>
               <div className="flex gap-2">
                 <input
+                  ref={statusRef}
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   placeholder={t('profile.statusPlaceholder')}
-                  maxLength={80}
+                  maxLength={STATUS_MAX}
                   className={INPUT_CLS + ' flex-1'}
                 />
+                <EmojiPicker onSelect={insertEmoji} disabled={saving} />
                 <button
                   onClick={saveStatus}
                   disabled={saving}

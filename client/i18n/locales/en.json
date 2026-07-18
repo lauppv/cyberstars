@@ -422,6 +422,7 @@
     "statusExpires": "(expires in 24h)",
     "statusPlaceholder": "What are you up to?",
     "set": "Set",
+    "addEmoji": "Add emoji",
     "lessonsDone": "Lessons Done",
     "activeCourses": "Active Courses",
     "badges": "Badges",
