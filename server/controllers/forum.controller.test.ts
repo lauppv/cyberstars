@@ -1215,9 +1215,24 @@ describe('updateUserRole', () => {
     expect(res.json).toHaveBeenCalledWith({ ok: true });
   });
 
-  it('blocks demoting the last remaining admin', async () => {
+  it('blocks a plain admin from promoting to admin', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('USER');
+    const next = vi.fn();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'ADMIN' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+    expect(mockUserRepo.updateRole).not.toHaveBeenCalled();
+  });
+
+  it('blocks a plain admin from demoting another admin', async () => {
     mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('ADMIN');
-    mockUserRepo.countByRole.mockResolvedValue(1);
     const next = vi.fn();
     await updateUserRole(
       mockReq({
@@ -1228,13 +1243,45 @@ describe('updateUserRole', () => {
       mockRes(),
       next,
     );
-    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
     expect(mockUserRepo.updateRole).not.toHaveBeenCalled();
   });
 
-  it('allows demoting an admin when others remain', async () => {
-    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('ADMIN');
-    mockUserRepo.countByRole.mockResolvedValue(2);
+  it('blocks anyone from modifying the founder', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('ADMIN').mockResolvedValueOnce('FOUNDER');
+    const next = vi.fn();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'USER' },
+      }),
+      mockRes(),
+      next,
+    );
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(403);
+    expect(mockUserRepo.updateRole).not.toHaveBeenCalled();
+  });
+
+  it('lets the founder promote a user to admin', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('FOUNDER').mockResolvedValueOnce('USER');
+    mockUserRepo.updateRole.mockResolvedValue(undefined);
+    const res = mockRes();
+    await updateUserRole(
+      mockReq({
+        user: { id: 1 } as Request['user'],
+        params: { userId: '2' } as Record<string, string>,
+        body: { role: 'ADMIN' },
+      }),
+      res,
+      vi.fn(),
+    );
+    expect(mockUserRepo.updateRole).toHaveBeenCalledWith(2, 'ADMIN');
+    expect(res.json).toHaveBeenCalledWith({ ok: true });
+  });
+
+  it('lets the founder demote an admin', async () => {
+    mockUserRepo.getRole.mockResolvedValueOnce('FOUNDER').mockResolvedValueOnce('ADMIN');
     mockUserRepo.updateRole.mockResolvedValue(undefined);
     const res = mockRes();
     await updateUserRole(

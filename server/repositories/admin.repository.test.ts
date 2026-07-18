@@ -39,7 +39,7 @@ describe('userStats', () => {
     const result = await repo.userStats();
 
     expect(result.total).toBe(10);
-    expect(result.byRole).toEqual({ USER: 8, MODERATOR: 0, ADMIN: 1 });
+    expect(result.byRole).toEqual({ USER: 8, MODERATOR: 0, ADMIN: 1, FOUNDER: 0 });
     expect(result.newLast7Days).toBe(3);
     expect(result.newLast30Days).toBe(6);
     expect(result.active).toBe(2);

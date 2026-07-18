@@ -5,6 +5,7 @@ import { AppError } from '../middleware/errorHandler.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as notificationsService from '../services/notifications.service.js';
 import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants.js';
+import { isAdmin } from '../../shared/auth.js';
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
@@ -20,14 +21,16 @@ import type {
  * - USER: only their own content.
  */
 function canModerate(actorRole: Role, targetRole: Role, isOwner: boolean): boolean {
-  if (actorRole === 'ADMIN') return true;
+  // The founder's content is untouchable by anyone but the founder themselves.
+  if (targetRole === 'FOUNDER') return actorRole === 'FOUNDER';
+  if (isAdmin(actorRole)) return true;
   if (actorRole === 'MODERATOR') return isOwner || targetRole === 'USER';
   return isOwner;
 }
 
 /** Only moderators and admins may create/edit/delete forum categories. */
 function requireStaff(role: Role): void {
-  if (role !== 'ADMIN' && role !== 'MODERATOR') {
+  if (!isAdmin(role) && role !== 'MODERATOR') {
     throw new AppError(403, 'Only moderators and admins can manage categories');
   }
 }
@@ -545,18 +548,25 @@ export async function updateUserRole(
   try {
     const actorId = req.user!.id;
     const actorRole = await userRepo.getRole(actorId);
-    if (actorRole !== 'ADMIN') throw new AppError(403, 'Only admins can change roles');
+    if (!isAdmin(actorRole)) throw new AppError(403, 'Only admins can change roles');
 
     const targetId = parseInt(req.params.userId as string);
     if (isNaN(targetId)) throw new AppError(400, 'Invalid user ID');
     if (targetId === actorId) throw new AppError(400, 'You cannot change your own role');
 
     const role = req.body.role as Role;
-    // Don't let the platform be left with zero admins.
-    if (role !== 'ADMIN' && (await userRepo.getRole(targetId)) === 'ADMIN') {
-      const adminCount = await userRepo.countByRole('ADMIN');
-      if (adminCount <= 1) throw new AppError(400, 'Cannot demote the last remaining admin');
+    const targetRole = await userRepo.getRole(targetId);
+
+    // The founder is untouchable — no admin (and FOUNDER is never assignable via
+    // the API, guarded by the request schema) can alter a founder account.
+    if (targetRole === 'FOUNDER') throw new AppError(403, 'The founder cannot be modified');
+
+    // Only the founder may appoint or remove admins. A plain admin is confined to
+    // toggling USER <-> MODERATOR on non-admin accounts.
+    if (actorRole !== 'FOUNDER' && (role === 'ADMIN' || targetRole === 'ADMIN')) {
+      throw new AppError(403, 'Only the founder can manage admins');
     }
+
     await userRepo.updateRole(targetId, role);
     res.json({ ok: true });
   } catch (err) {
