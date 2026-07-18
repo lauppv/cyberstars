@@ -13,6 +13,9 @@ cyberstars/
 │   ├── progress.ts                # CourseProgress, LessonProgressItem
 │   ├── forum.ts                   # Forum DTO types
 │   ├── support.ts                 # Support ticket DTO types
+│   ├── notifications.ts           # Notification DTOs + UserSocketFrame (notification/dm channels)
+│   ├── messages.ts                # DM DTOs + dm socket frames
+│   ├── connections.ts             # Connection DTOs
 │   └── terminal.ts                # Terminal session types
 │
 ├── prisma/
@@ -177,17 +180,60 @@ their completion saved.
 Preview-gated (`requireFeatureAccess('notifications')`): on prod a non-admin gets
 404, so the feature stays hidden until launch. Requires an identity (no guests).
 
-| Method | Endpoint                      | Auth | Description                                                                                                      |
-| ------ | ----------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------- |
-| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                    |
-| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                   |
-| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                  |
-| WS     | `/ws/user`                    | Yes  | Shared per-user socket; pushes live `new` / `unread-count` frames (same preview gate). Reused later by messaging |
+| Method | Endpoint                      | Auth | Description                                                                                                                                         |
+| ------ | ----------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/notifications`          | Yes  | List notifications (paginated) + unread count                                                                                                       |
+| POST   | `/api/notifications/read`     | Yes  | Mark all read up to a given id                                                                                                                      |
+| POST   | `/api/notifications/:id/read` | Yes  | Mark a single notification read                                                                                                                     |
+| WS     | `/ws/user`                    | Yes  | Shared per-user socket (same preview gate); pushes `notification` frames (`new` / `unread-count`) and `dm` frames (`message` / `read` / `reaction`) |
 
-Notifications are emitted fire-and-forget from the forum (reply, accepted solution)
-and support (new ticket, reply, status change) flows; the actor is always excluded
-from their own notification, repeat replies collapse into one unread row, and each
-user is capped at 100 retained rows.
+Notifications are emitted fire-and-forget from the forum (reply, accepted solution,
+reaction), support (new ticket, reply, status change), and connection (request,
+acceptance) flows; the actor is always excluded from their own notification, repeat
+replies/reactions collapse into one unread row, and each user is capped at 100
+retained rows. There is no DM notification type — the messages badge covers new
+messages (`DM_MESSAGE` was removed from the enum with a data migration).
+
+### Messages (DMs)
+
+Preview-gated (`requireFeatureAccess('messaging')`): on prod a non-admin gets 404.
+Requires an identity (no guests).
+
+| Method | Endpoint                               | Auth | Description                               |
+| ------ | -------------------------------------- | ---- | ----------------------------------------- |
+| GET    | `/api/messages/conversations`          | Yes  | Inbox: conversations + unread counts      |
+| POST   | `/api/messages/conversations`          | Yes  | Open (or find) a conversation with a user |
+| GET    | `/api/messages/conversations/:id`      | Yes  | Paginated message history                 |
+| POST   | `/api/messages/conversations/:id`      | Yes  | Send a message                            |
+| POST   | `/api/messages/conversations/:id/read` | Yes  | Mark read up to a message id              |
+| DELETE | `/api/messages/:messageId`             | Yes  | Soft-delete own message                   |
+| POST   | `/api/messages/:messageId/reactions`   | Yes  | Toggle an emoji reaction (60/min/user)    |
+
+Open/send/react are rate-limited per user (not per IP — students share NAT). Live
+updates ride the shared `/ws/user` socket's `dm` channel; a reaction toggle pushes
+the message's full refreshed reaction list to both participants. Reactions are
+stored per user+emoji (`DmReaction`, unique on message+user+emoji); the server
+returns raw rows and the client groups them by emoji.
+
+### Connections
+
+Preview-gated (`requireFeatureAccess('connections')`). A connection is a directed
+request (requester → addressee) that becomes mutual once accepted.
+
+| Method | Endpoint                       | Auth | Description                                                  |
+| ------ | ------------------------------ | ---- | ------------------------------------------------------------ |
+| GET    | `/api/connections`             | Yes  | Overview: accepted + incoming + outgoing pending             |
+| POST   | `/api/connections`             | Yes  | Send a request (30/min/user)                                 |
+| POST   | `/api/connections/:id/accept`  | Yes  | Accept an incoming request (addressee only)                  |
+| POST   | `/api/connections/:id/decline` | Yes  | Decline an incoming request (addressee only)                 |
+| DELETE | `/api/connections/:id`         | Yes  | Cancel own pending request, or remove an accepted connection |
+
+`@@unique([requesterId, addresseeId])` blocks a duplicate request in one direction;
+the service checks the reverse so A→B and B→A can't coexist. The recipient gets a
+`CONNECTION_REQUEST` notification and the requester a `CONNECTION_ACCEPTED` on
+acceptance; responding auto-reads the request's bell entry. Client: the
+`/connections` page and a Topbar `ConnectionsButton`; public profiles render a
+connect/pending/connected button from the payload's `connectionRelation`.
 
 ### Profile
 
@@ -197,9 +243,9 @@ user is capped at 100 retained rows.
 | POST   | `/api/profile/avatar` | Yes  | Upload avatar                               |
 | DELETE | `/api/profile/avatar` | Yes  | Remove avatar                               |
 
-`PATCH /api/profile` also carries the three per-user privacy flags (`showBio`,
-`showStats`, `showProgress`; default on). Profile editing and these toggles live
-on the `/settings` page.
+`PATCH /api/profile` also carries the five per-user privacy flags (`showBio`,
+`showStats`, `showProgress`, `showActivity`, `showConnections`; default on).
+Profile editing and these toggles live on the `/settings` page.
 
 ### Public profiles
 
@@ -211,9 +257,12 @@ dev). `optionalAuth` sets `req.user` so the service can tell "self" from "other"
 | GET    | `/api/users/:id/profile` | No\* | Public profile for `/u/:userId` (from leaderboard) |
 
 Name/avatar/member-since are always public. Bio/status, stats (lessons done,
-active courses, streak), and progress (level, XP, leaderboard rank, badges) each
-appear only when the target's matching privacy flag is on; the owner viewing
-their own profile always sees everything. Streak is computed by the shared
+active courses, streak), progress (level, XP, leaderboard rank, badges), the
+activity heatmap, and the connections list each appear only when the target's
+matching privacy flag is on; the owner viewing their own profile always sees
+everything. The payload also carries `connectionRelation`
+(`self`/`none`/`pending_outgoing`/`pending_incoming`/`connected`) for the
+profile's connect button. Streak is computed by the shared
 `activity.service.computeStreak` (also used by `GET /api/profile/activity`).
 
 ### Admin
@@ -238,6 +287,8 @@ Defined in [`prisma/schema.prisma`](../prisma/schema.prisma). Field names use ca
 - **ForumCategory / ForumThread / ForumPost / ForumReaction** — community forum
 - **SupportTicket / SupportMessage** — support system
 - **Notification** — per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
+- **Conversation / DirectMessage / DmReaction** — 1-on-1 messaging (messages soft-delete; reactions unique per message+user+emoji)
+- **Connection** — directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
 
 ### Key relationships
 
