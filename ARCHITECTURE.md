@@ -191,11 +191,30 @@ user is capped at 100 retained rows.
 
 ### Profile
 
-| Method | Endpoint              | Auth | Description                  |
-| ------ | --------------------- | ---- | ---------------------------- |
-| PATCH  | `/api/profile`        | Yes  | Update profile (bio, status) |
-| POST   | `/api/profile/avatar` | Yes  | Upload avatar                |
-| DELETE | `/api/profile/avatar` | Yes  | Remove avatar                |
+| Method | Endpoint              | Auth | Description                                 |
+| ------ | --------------------- | ---- | ------------------------------------------- |
+| PATCH  | `/api/profile`        | Yes  | Update profile (bio, status, privacy flags) |
+| POST   | `/api/profile/avatar` | Yes  | Upload avatar                               |
+| DELETE | `/api/profile/avatar` | Yes  | Remove avatar                               |
+
+`PATCH /api/profile` also carries the three per-user privacy flags (`showBio`,
+`showStats`, `showProgress`; default on). Profile editing and these toggles live
+on the `/settings` page.
+
+### Public profiles
+
+Behind the `leaderboard` preview gate (on prod only ADMINs can view; everyone on
+dev). `optionalAuth` sets `req.user` so the service can tell "self" from "other".
+
+| Method | Endpoint                 | Auth | Description                                        |
+| ------ | ------------------------ | ---- | -------------------------------------------------- |
+| GET    | `/api/users/:id/profile` | No\* | Public profile for `/u/:userId` (from leaderboard) |
+
+Name/avatar/member-since are always public. Bio/status, stats (lessons done,
+active courses, streak), and progress (level, XP, leaderboard rank, badges) each
+appear only when the target's matching privacy flag is on; the owner viewing
+their own profile always sees everything. Streak is computed by the shared
+`activity.service.computeStreak` (also used by `GET /api/profile/activity`).
 
 ### Admin
 
