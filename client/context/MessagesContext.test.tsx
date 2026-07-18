@@ -100,7 +100,9 @@ beforeEach(() => {
 describe('MessagesContext', () => {
   it('loads the inbox and sums unread counts', async () => {
     renderProvider();
-    expect(await screen.findByTestId('count')).toHaveTextContent('1');
+    // waitFor, not findByTestId: the span exists from the first render (with
+    // '0'), so "found" doesn't mean the inbox fetch has resolved yet.
+    await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'));
     expect(screen.getByTestId('unread')).toHaveTextContent('2');
   });
 
@@ -200,7 +202,7 @@ describe('MessagesContext', () => {
       conversations: [conv({ unreadCount: 2, lastMessage: last })],
     });
     renderProvider();
-    await screen.findByTestId('count');
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
     dispatch({
       channel: 'dm',
       type: 'deleted',
@@ -211,7 +213,7 @@ describe('MessagesContext', () => {
 
   it('does not decrement unread when my own message is deleted', async () => {
     renderProvider();
-    await screen.findByTestId('count');
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
     dispatch({
       channel: 'dm',
       type: 'deleted',
@@ -222,7 +224,7 @@ describe('MessagesContext', () => {
 
   it("clears a conversation's unread on my own read echo from another tab", async () => {
     renderProvider();
-    await screen.findByTestId('count');
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
     dispatch({
       channel: 'dm',
       type: 'read',
@@ -233,7 +235,7 @@ describe('MessagesContext', () => {
 
   it("ignores the other side's read receipt (their unread, not mine)", async () => {
     renderProvider();
-    await screen.findByTestId('count');
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
     dispatch({
       channel: 'dm',
       type: 'read',
