@@ -128,12 +128,16 @@ export async function markRead(
   void notificationsService.markEntityRead(userId, 'DM_MESSAGE', conversationId);
   if (count > 0) {
     // Tell the other participant their messages were read, so their read receipts
-    // update live.
-    pushToUser(otherParticipant(row, userId), {
+    // update live. Echo the same frame to the reader's own tabs so their inbox
+    // badge clears everywhere, not just in the tab that opened the thread
+    // (clients tell the two apart by readerId).
+    const frame = {
       channel: 'dm',
       type: 'read',
       payload: { conversationId, upToMessageId, readerId: userId },
-    });
+    } as const;
+    pushToUser(otherParticipant(row, userId), frame);
+    pushToUser(userId, frame);
   }
   return count;
 }

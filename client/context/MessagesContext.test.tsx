@@ -194,10 +194,51 @@ describe('MessagesContext', () => {
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('3'));
   });
 
-  it('ignores a dm frame that is not a message event', async () => {
+  it('decrements unread when an unread message from the other side is deleted', async () => {
+    const last = msg({ id: 100 });
+    h.service.getConversations.mockResolvedValue({
+      conversations: [conv({ unreadCount: 2, lastMessage: last })],
+    });
     renderProvider();
     await screen.findByTestId('count');
-    dispatch({ channel: 'dm', type: 'read', payload: { conversationId: 10 } } as never);
+    dispatch({
+      channel: 'dm',
+      type: 'deleted',
+      payload: { ...last, deleted: true, content: '' },
+    });
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('1'));
+  });
+
+  it('does not decrement unread when my own message is deleted', async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    dispatch({
+      channel: 'dm',
+      type: 'deleted',
+      payload: msg({ id: 101, senderId: 1, deleted: true, content: '' }),
+    });
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
+  });
+
+  it("clears a conversation's unread on my own read echo from another tab", async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    dispatch({
+      channel: 'dm',
+      type: 'read',
+      payload: { conversationId: 10, upToMessageId: 100, readerId: 1 },
+    });
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('0'));
+  });
+
+  it("ignores the other side's read receipt (their unread, not mine)", async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    dispatch({
+      channel: 'dm',
+      type: 'read',
+      payload: { conversationId: 10, upToMessageId: 100, readerId: 2 },
+    });
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
   });
 });

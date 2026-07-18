@@ -96,7 +96,7 @@ describe('unreadByConversation', () => {
     expect(map.get(2)).toBe(1);
     expect(mockPrisma.directMessage.groupBy).toHaveBeenCalledWith(
       expect.objectContaining({
-        where: expect.objectContaining({ readAt: null, senderId: { not: 7 } }),
+        where: expect.objectContaining({ readAt: null, deleted: false, senderId: { not: 7 } }),
       }),
     );
   });

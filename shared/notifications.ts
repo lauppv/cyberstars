@@ -15,6 +15,7 @@ export type NotificationType =
 // arrives over the socket.
 export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
   'FORUM_REPLY',
+  'FORUM_REACTION',
   'DM_MESSAGE',
 ]);
 
@@ -26,7 +27,8 @@ export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
 export interface NotificationData {
   title?: string; // thread title / ticket subject
   excerpt?: string;
-  count?: number; // collapsed count for FORUM_REPLY / DM_MESSAGE
+  postId?: number; // forum post the excerpt was snapshotted from (redaction key)
+  count?: number; // collapsed count for COLLAPSIBLE_TYPES
   categorySlug?: string; // forum deep-link
   status?: string; // new ticket status for SUPPORT_STATUS
 }

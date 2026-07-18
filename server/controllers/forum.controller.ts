@@ -351,6 +351,7 @@ export async function createPost(req: Request, res: Response, next: NextFunction
       data: {
         title: thread.title,
         excerpt: content.slice(0, 140),
+        postId: post.id,
         categorySlug: thread.category.slug,
       },
     });
@@ -375,7 +376,12 @@ export async function toggleReaction(
 
     const post = await prisma.forumPost.findUnique({
       where: { id: postId },
-      select: { deleted: true },
+      select: {
+        deleted: true,
+        authorId: true,
+        threadId: true,
+        thread: { select: { title: true, category: { select: { slug: true } } } },
+      },
     });
     if (!post) throw new AppError(404, 'Post not found');
     if (post.deleted) throw new AppError(403, 'Cannot react to a deleted post');
@@ -389,6 +395,18 @@ export async function toggleReaction(
       res.json({ active: false });
     } else {
       await prisma.forumReaction.create({ data: { postId, userId, emoji } });
+
+      // Notify the post author (only on add — removing a reaction is silent;
+      // self-reactions are excluded inside notify). Collapsible per thread so
+      // toggling on/off can't spam the author's bell.
+      void notificationsService.notify({
+        recipientIds: [post.authorId],
+        actorId: userId,
+        type: 'FORUM_REACTION',
+        entityId: post.threadId,
+        data: { title: post.thread.title, categorySlug: post.thread.category.slug },
+      });
+
       res.json({ active: true });
     }
   } catch (err) {
@@ -502,12 +520,10 @@ export async function deletePost(req: Request, res: Response, next: NextFunction
 
     // The reply's excerpt was snapshotted into FORUM_REPLY notifications — a
     // soft-delete redacts the post, so redact the snapshot too (fire-and-forget).
+    // Matched by the snapshotted postId, not the excerpt text: the content may
+    // have been edited since the notification was created.
     if (!post.deleted) {
-      void notificationsService.redactExcerpt(
-        'FORUM_REPLY',
-        post.threadId,
-        post.content.slice(0, 140),
-      );
+      void notificationsService.redactExcerpt('FORUM_REPLY', post.threadId, postId);
     }
 
     res.json({ ok: true, threadDeleted: false });

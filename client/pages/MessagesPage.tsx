@@ -22,6 +22,13 @@ export function MessagesPage() {
     (location.state as { openConversationId?: number } | null)?.openConversationId ?? null;
   const [selectedId, setSelectedId] = useState<number | null>(deepLinkId);
 
+  // Re-apply the deep-link on every navigation (location.key changes even when
+  // the target conversation id is the same) — an initializer alone would ignore
+  // clicks made while this page is already mounted.
+  useEffect(() => {
+    if (deepLinkId != null) setSelectedId(deepLinkId); // eslint-disable-line react-hooks/set-state-in-effect
+  }, [deepLinkId, location.key]);
+
   // Client-side guard is UX only — /api/messages is server-authoritative.
   useEffect(() => {
     if (authLoading) return;

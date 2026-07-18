@@ -104,19 +104,28 @@ describe('notifications.service notify', () => {
     ).resolves.toBeUndefined();
     spy.mockRestore();
   });
+
+  it('one recipient failing does not block the others', async () => {
+    mockRepo.create.mockRejectedValueOnce(new Error('db down')).mockResolvedValue(row());
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    await notify({ recipientIds: [10, 11], type: 'FORUM_REPLY', entityId: 5 });
+    expect(mockRepo.create).toHaveBeenCalledTimes(2);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(11, expect.objectContaining({ type: 'new' }));
+    spy.mockRestore();
+  });
 });
 
 describe('notifications.service redactExcerpt', () => {
   it('delegates to the repository', async () => {
     mockRepo.clearExcerpt.mockResolvedValue(undefined);
-    await redactExcerpt('FORUM_REPLY', 5, 'old excerpt');
-    expect(mockRepo.clearExcerpt).toHaveBeenCalledWith('FORUM_REPLY', 5, 'old excerpt');
+    await redactExcerpt('FORUM_REPLY', 5, 42);
+    expect(mockRepo.clearExcerpt).toHaveBeenCalledWith('FORUM_REPLY', 5, 42);
   });
 
   it('never throws (fire-and-forget)', async () => {
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
     mockRepo.clearExcerpt.mockRejectedValue(new Error('db down'));
-    await expect(redactExcerpt('FORUM_REPLY', 5, 'x')).resolves.toBeUndefined();
+    await expect(redactExcerpt('FORUM_REPLY', 5, 42)).resolves.toBeUndefined();
     spy.mockRestore();
   });
 });
@@ -145,15 +154,33 @@ describe('notifications.service getPage', () => {
 });
 
 describe('notifications.service mark helpers', () => {
-  it('markRead delegates to the repository', async () => {
+  it('markRead marks up-to-id and pushes the fresh unread count', async () => {
     mockRepo.markReadUpTo.mockResolvedValue(4);
-    await markRead(10, 99);
+    mockRepo.countUnread.mockResolvedValue(0);
+    expect(await markRead(10, 99)).toBe(4);
     expect(mockRepo.markReadUpTo).toHaveBeenCalledWith(10, 99);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
+      channel: 'notification',
+      type: 'unread-count',
+      payload: { unreadCount: 0 },
+    });
   });
 
-  it('markOneRead delegates to the repository', async () => {
-    mockRepo.markOneRead.mockResolvedValue(undefined);
+  it('markOneRead pushes the fresh unread count when a row was marked', async () => {
+    mockRepo.markOneRead.mockResolvedValue(1);
+    mockRepo.countUnread.mockResolvedValue(2);
     await markOneRead(10, 7);
     expect(mockRepo.markOneRead).toHaveBeenCalledWith(10, 7);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
+      channel: 'notification',
+      type: 'unread-count',
+      payload: { unreadCount: 2 },
+    });
+  });
+
+  it('markOneRead pushes nothing when the row was already read', async () => {
+    mockRepo.markOneRead.mockResolvedValue(0);
+    await markOneRead(10, 7);
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
   });
 });

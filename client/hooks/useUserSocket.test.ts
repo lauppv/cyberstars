@@ -8,7 +8,7 @@ class MockWebSocket {
   url: string;
   closed = false;
   onmessage: ((e: { data: string }) => void) | null = null;
-  onclose: (() => void) | null = null;
+  onclose: ((e: { code: number }) => void) | null = null;
   constructor(url: string) {
     this.url = url;
     wsInstances.push(this);
@@ -62,9 +62,17 @@ describe('useUserSocket', () => {
     vi.useFakeTimers();
     renderHook(() => useUserSocket(true, vi.fn()));
     expect(wsInstances).toHaveLength(1);
-    wsInstances[0].onclose?.();
+    wsInstances[0].onclose?.({ code: 1006 });
     vi.advanceTimersByTime(3000);
     expect(wsInstances).toHaveLength(2);
+  });
+
+  it.each([4401, 4404])('does not reconnect after a deliberate refusal (%i)', (code) => {
+    vi.useFakeTimers();
+    renderHook(() => useUserSocket(true, vi.fn()));
+    wsInstances[0].onclose?.({ code });
+    vi.advanceTimersByTime(3000);
+    expect(wsInstances).toHaveLength(1);
   });
 
   it('closes the socket and cancels reconnect on unmount', () => {
@@ -73,7 +81,7 @@ describe('useUserSocket', () => {
     const ws = wsInstances[0];
     unmount();
     expect(ws.closed).toBe(true);
-    ws.onclose?.();
+    ws.onclose?.({ code: 1006 });
     vi.advanceTimersByTime(3000);
     expect(wsInstances).toHaveLength(1);
   });

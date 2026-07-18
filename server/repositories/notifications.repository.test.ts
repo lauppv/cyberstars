@@ -87,19 +87,18 @@ describe('create', () => {
 });
 
 describe('clearExcerpt', () => {
-  it('drops the excerpt key from every row still carrying it', async () => {
+  it('drops the excerpt and postId keys from every row snapshotted from the post', async () => {
     mockPrisma.notification.findMany.mockResolvedValue([
-      { id: 4, data: { title: 'T', excerpt: 'gone', count: 2 } },
+      { id: 4, data: { title: 'T', excerpt: 'gone', postId: 42, count: 2 } },
     ]);
     mockPrisma.notification.updateMany.mockResolvedValue({ count: 1 });
 
-    await repo.clearExcerpt('FORUM_REPLY', 5, 'gone');
+    await repo.clearExcerpt('FORUM_REPLY', 5, 42);
 
-    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
-      expect.objectContaining({
-        where: { type: 'FORUM_REPLY', entityId: 5, data: { path: ['excerpt'], equals: 'gone' } },
-      }),
-    );
+    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith({
+      where: { type: 'FORUM_REPLY', entityId: 5, data: { path: ['postId'], equals: 42 } },
+      select: { id: true, data: true },
+    });
     expect(mockPrisma.notification.updateMany).toHaveBeenCalledWith({
       where: { id: 4 },
       data: { data: { title: 'T', count: 2 } },
@@ -108,7 +107,7 @@ describe('clearExcerpt', () => {
 
   it('is a no-op when no row matches', async () => {
     mockPrisma.notification.findMany.mockResolvedValue([]);
-    await repo.clearExcerpt('FORUM_REPLY', 5, 'gone');
+    await repo.clearExcerpt('FORUM_REPLY', 5, 42);
     expect(mockPrisma.notification.updateMany).not.toHaveBeenCalled();
   });
 });

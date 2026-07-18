@@ -55,12 +55,15 @@ export function listConversations(userId: number): Promise<ConversationRow[]> {
 }
 
 // Unread counts per conversation for a user: messages the *other* side sent that
-// this user hasn't read yet. One grouped query, not one per conversation.
+// this user hasn't read yet. Deleted messages don't count — there is nothing
+// left to read, and a badge pointing at a redacted bubble is just noise. One
+// grouped query, not one per conversation.
 export async function unreadByConversation(userId: number): Promise<Map<number, number>> {
   const rows = await prisma.directMessage.groupBy({
     by: ['conversationId'],
     where: {
       readAt: null,
+      deleted: false,
       senderId: { not: userId },
       conversation: { OR: [{ userAId: userId }, { userBId: userId }] },
     },

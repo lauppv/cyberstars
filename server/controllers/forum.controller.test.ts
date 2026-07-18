@@ -802,8 +802,13 @@ describe('toggleReaction', () => {
     expect(res.json).toHaveBeenCalledWith({ active: false });
   });
 
-  it('adds new reaction', async () => {
-    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: false });
+  it('adds new reaction and notifies the post author', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({
+      deleted: false,
+      authorId: 9,
+      threadId: 7,
+      thread: { title: 'T', category: { slug: 'general' } },
+    });
     mockPrisma.forumReaction.findUnique.mockResolvedValue(null);
     mockPrisma.forumReaction.create.mockResolvedValue({});
     const res = mockRes();
@@ -817,6 +822,13 @@ describe('toggleReaction', () => {
       vi.fn(),
     );
     expect(res.json).toHaveBeenCalledWith({ active: true });
+    expect(mockNotifications.notify).toHaveBeenCalledWith({
+      recipientIds: [9],
+      actorId: 1,
+      type: 'FORUM_REACTION',
+      entityId: 7,
+      data: { title: 'T', categorySlug: 'general' },
+    });
   });
 
   it('returns 400 for a non-numeric post ID', async () => {
@@ -1084,11 +1096,7 @@ describe('deletePost', () => {
         data: { deleted: true, deletedByName: 'Alice', content: '' },
       }),
     );
-    expect(mockNotifications.redactExcerpt).toHaveBeenCalledWith(
-      'FORUM_REPLY',
-      7,
-      'some reply text',
-    );
+    expect(mockNotifications.redactExcerpt).toHaveBeenCalledWith('FORUM_REPLY', 7, 1);
     expect(res.json).toHaveBeenCalledWith({ ok: true, threadDeleted: false });
   });
 
