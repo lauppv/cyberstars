@@ -506,6 +506,7 @@
       "postError": "Could not post to the forum. Try again."
     },
     "roles": {
+      "FOUNDER": "Founder",
       "ADMIN": "Admin",
       "MODERATOR": "Moderator",
       "USER": "User"

@@ -1013,6 +1013,12 @@
   border: 1px solid transparent;
 }
 
+.role-badge.role-founder {
+  color: #ffd479;
+  background: rgba(255, 191, 71, 0.16);
+  border-color: rgba(255, 191, 71, 0.45);
+}
+
 .role-badge.role-admin {
   color: #ff8585;
   background: rgba(255, 107, 107, 0.14);

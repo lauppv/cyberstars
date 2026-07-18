@@ -4,6 +4,7 @@ import i18next from 'i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import type { NotificationDTO, NotificationType } from '../../../shared/notifications';
+import { isAdmin } from '../../../shared/auth';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -69,7 +70,7 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
       case 'SUPPORT_TICKET_NEW':
         return { path: '/admin' };
       case 'SUPPORT_REPLY':
-        return { path: user?.role === 'ADMIN' ? '/admin' : '/support' };
+        return { path: isAdmin(user?.role) ? '/admin' : '/support' };
       case 'SUPPORT_STATUS':
         return { path: '/support' };
       case 'DM_MESSAGE':

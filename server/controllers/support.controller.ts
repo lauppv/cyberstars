@@ -5,6 +5,7 @@ import * as userRepo from '../repositories/user.repository.js';
 import * as supportService from '../services/support.service.js';
 import * as notificationsService from '../services/notifications.service.js';
 import type { SupportTicketDTO, SupportMessageDTO } from '../../shared/support.js';
+import { isAdmin } from '../../shared/auth.js';
 
 function toDTO(t: SupportTicket): SupportTicketDTO {
   return {
@@ -57,7 +58,7 @@ export async function getAllTickets(
 ): Promise<void> {
   try {
     const role = await userRepo.getRole(req.user!.id);
-    if (role !== 'ADMIN') throw new AppError(403, 'Only admins can view all tickets');
+    if (!isAdmin(role)) throw new AppError(403, 'Only admins can view all tickets');
 
     const tickets = await supportService.findAll();
 
@@ -90,7 +91,7 @@ export async function updateTicketStatus(
     if (!ticket) throw new AppError(404, 'Ticket not found');
 
     const role = await userRepo.getRole(userId);
-    if (role !== 'ADMIN') {
+    if (!isAdmin(role)) {
       if (ticket.userId !== userId) throw new AppError(403, 'Not authorized');
       if (status !== 'CLOSED') throw new AppError(403, 'You can only close your own tickets');
     }
@@ -127,7 +128,7 @@ export async function getTicketMessages(
     if (!ticket) throw new AppError(404, 'Ticket not found');
 
     const role = await userRepo.getRole(userId);
-    if (role !== 'ADMIN' && ticket.userId !== userId) {
+    if (!isAdmin(role) && ticket.userId !== userId) {
       throw new AppError(403, 'Not authorized');
     }
 
@@ -137,7 +138,7 @@ export async function getTicketMessages(
       id: m.id,
       userId: m.userId,
       authorName: m.user.name,
-      isAdmin: m.user.role === 'ADMIN',
+      isAdmin: isAdmin(m.user.role),
       message: m.message,
       createdAt: m.createdAt.toISOString(),
     }));
@@ -163,7 +164,7 @@ export async function addTicketMessage(
     if (!ticket) throw new AppError(404, 'Ticket not found');
 
     const role = await userRepo.getRole(userId);
-    if (role !== 'ADMIN' && ticket.userId !== userId) {
+    if (!isAdmin(role) && ticket.userId !== userId) {
       throw new AppError(403, 'Not authorized');
     }
 
@@ -171,7 +172,7 @@ export async function addTicketMessage(
 
     // Admin reply → notify the owner; user reply → notify all admins.
     void notificationsService.notify({
-      recipientIds: role === 'ADMIN' ? [ticket.userId] : await userRepo.getAdminIds(),
+      recipientIds: isAdmin(role) ? [ticket.userId] : await userRepo.getAdminIds(),
       actorId: userId,
       type: 'SUPPORT_REPLY',
       entityId: ticketId,

@@ -2,7 +2,7 @@ import type { TicketStatus } from './support.js';
 
 export interface AdminUserStats {
   total: number;
-  byRole: { USER: number; MODERATOR: number; ADMIN: number };
+  byRole: { USER: number; MODERATOR: number; ADMIN: number; FOUNDER: number };
   newLast7Days: number;
   newLast30Days: number;
   active: number; // users with at least one progress row

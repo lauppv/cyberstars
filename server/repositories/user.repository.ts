@@ -59,14 +59,22 @@ export async function getRole(id: number): Promise<Role> {
 }
 
 export async function create(name: string, email: string, hashedPassword: string): Promise<number> {
-  // The very first account to register bootstraps the platform as ADMIN.
+  // The account matching FOUNDER_EMAIL always bootstraps as FOUNDER (unique
+  // owner). Otherwise the very first account to register bootstraps as ADMIN.
   // Serialize the count+create with an advisory lock so two concurrent first
   // signups against an empty DB cannot both see count === 0 and both become ADMIN.
+  const founderEmail = process.env.FOUNDER_EMAIL?.toLowerCase();
   return prisma.$transaction(async (tx) => {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(4242)`;
     const existing = await tx.user.count();
+    const role: Role =
+      founderEmail && email.toLowerCase() === founderEmail
+        ? 'FOUNDER'
+        : existing === 0
+          ? 'ADMIN'
+          : 'USER';
     const user = await tx.user.create({
-      data: { name, email, password: hashedPassword, role: existing === 0 ? 'ADMIN' : 'USER' },
+      data: { name, email, password: hashedPassword, role },
       select: { id: true },
     });
     return user.id;
@@ -82,7 +90,10 @@ export async function countByRole(role: Role): Promise<number> {
 }
 
 export async function getAdminIds(): Promise<number[]> {
-  const admins = await prisma.user.findMany({ where: { role: 'ADMIN' }, select: { id: true } });
+  const admins = await prisma.user.findMany({
+    where: { role: { in: ['ADMIN', 'FOUNDER'] } },
+    select: { id: true },
+  });
   return admins.map((u) => u.id);
 }
 

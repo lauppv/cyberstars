@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { config } from '../config/index.js';
-import type { TokenPayload } from '../../shared/auth.js';
+import { isAdmin, type TokenPayload } from '../../shared/auth.js';
 import { canAccessFeature, type FeatureKey } from '../../shared/features.js';
 import * as userRepo from '../repositories/user.repository.js';
 
@@ -28,7 +28,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
 export async function requireAdmin(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const role = await userRepo.getRole(req.user!.id);
-    if (role !== 'ADMIN') {
+    if (!isAdmin(role)) {
       res.status(403).json({ error: 'Admin access required' });
       return;
     }

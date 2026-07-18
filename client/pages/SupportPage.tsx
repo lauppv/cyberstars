@@ -11,6 +11,7 @@ import type {
   TicketType,
   TicketStatus,
 } from '../../shared/support';
+import { isAdmin as isAdminRole } from '../../shared/auth';
 import { INPUT_CLS } from '../constants/styles';
 
 const TICKET_TYPE_VALUES: TicketType[] = [
@@ -33,7 +34,7 @@ export function SupportPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading } = useAuth();
-  const isAdmin = user?.role === 'ADMIN';
+  const isAdmin = isAdminRole(user?.role);
 
   const [type, setType] = useState<TicketType>('BUG');
   const [subject, setSubject] = useState('');

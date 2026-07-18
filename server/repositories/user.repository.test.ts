@@ -97,6 +97,21 @@ describe('create', () => {
       expect.objectContaining({ data: expect.objectContaining({ role: 'USER' }) }),
     );
   });
+
+  it('pins the FOUNDER_EMAIL account as FOUNDER regardless of order', async () => {
+    vi.stubEnv('FOUNDER_EMAIL', 'boss@b.com');
+    const tx = {
+      $executeRaw: vi.fn(),
+      user: { count: vi.fn().mockResolvedValue(5), create: vi.fn().mockResolvedValue({ id: 7 }) },
+    };
+    mockPrisma.$transaction.mockImplementation((fn: (t: typeof tx) => unknown) => fn(tx));
+    const id = await repo.create('Boss', 'BOSS@b.com', 'hash');
+    expect(id).toBe(7);
+    expect(tx.user.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: expect.objectContaining({ role: 'FOUNDER' }) }),
+    );
+    vi.unstubAllEnvs();
+  });
 });
 
 describe('updateRole', () => {
@@ -120,12 +135,12 @@ describe('countByRole', () => {
 });
 
 describe('getAdminIds', () => {
-  it('returns the ids of all admins', async () => {
+  it('returns the ids of all admins and the founder', async () => {
     mockPrisma.user.findMany.mockResolvedValue([{ id: 1 }, { id: 4 }]);
     const ids = await repo.getAdminIds();
     expect(ids).toEqual([1, 4]);
     expect(mockPrisma.user.findMany).toHaveBeenCalledWith({
-      where: { role: 'ADMIN' },
+      where: { role: { in: ['ADMIN', 'FOUNDER'] } },
       select: { id: true },
     });
   });

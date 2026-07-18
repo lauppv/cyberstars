@@ -21,7 +21,7 @@ export async function userStats(): Promise<AdminUserStats> {
     prisma.userLessonProgress.groupBy({ by: ['userId'] }),
   ]);
 
-  const byRole: Record<Role, number> = { USER: 0, MODERATOR: 0, ADMIN: 0 };
+  const byRole: Record<Role, number> = { USER: 0, MODERATOR: 0, ADMIN: 0, FOUNDER: 0 };
   for (const g of roleGroups) byRole[g.role] = g._count._all;
 
   return { total, byRole, newLast7Days, newLast30Days, active: activeGroups.length };
