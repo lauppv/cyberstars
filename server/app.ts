@@ -18,6 +18,7 @@ import adminRoutes from './routes/admin.routes.js';
 import leaderboardRoutes from './routes/leaderboard.routes.js';
 import notificationsRoutes from './routes/notifications.routes.js';
 import messagesRoutes from './routes/messages.routes.js';
+import usersRoutes from './routes/users.routes.js';
 
 export const app = express();
 
@@ -80,6 +81,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use('/api/messages', messagesRoutes);
+app.use('/api/users', usersRoutes);
 
 // Authoritative server clock for the focus-radio "live" sync — clients seek to
 // (serverNow % trackDuration) so everyone hears the same second regardless of

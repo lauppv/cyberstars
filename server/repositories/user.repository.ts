@@ -20,6 +20,9 @@ export async function findById(id: number) {
       pendingEmail: true,
       emailChangeCodeExpiresAt: true,
       createdAt: true,
+      showBio: true,
+      showStats: true,
+      showProgress: true,
     },
   });
 }
@@ -40,6 +43,9 @@ export async function updateProfile(
     status?: string | null;
     statusExpiresAt?: Date | null;
     avatarUrl?: string | null;
+    showBio?: boolean;
+    showStats?: boolean;
+    showProgress?: boolean;
   },
 ) {
   await prisma.user.update({ where: { id }, data });

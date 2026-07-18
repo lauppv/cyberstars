@@ -3,6 +3,9 @@ import { z } from 'zod';
 export const updateProfileSchema = z.object({
   bio: z.string().nullable().optional(),
   status: z.string().nullable().optional(),
+  showBio: z.boolean().optional(),
+  showStats: z.boolean().optional(),
+  showProgress: z.boolean().optional(),
 });
 
 export const changePasswordSchema = z.object({

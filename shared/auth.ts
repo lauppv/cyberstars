@@ -11,6 +11,9 @@ export interface AuthenticatedUser {
   statusExpiresAt: string | null;
   pendingEmail: string | null;
   createdAt: string;
+  showBio: boolean;
+  showStats: boolean;
+  showProgress: boolean;
 }
 
 export interface LoginPayload {
