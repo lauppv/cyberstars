@@ -91,7 +91,12 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     notificationsService
       .getNotifications(PAGE_SIZE, before)
       .then((page) => {
-        setItems((prev) => [...prev, ...page.items]);
+        // Dedupe: a server-side collapse between two pages replaces a row with a
+        // fresh id, which can shift the keyset and resend a row we already hold.
+        setItems((prev) => [
+          ...prev,
+          ...page.items.filter((item) => !prev.some((n) => n.id === item.id)),
+        ]);
         setHasMore(page.items.length === PAGE_SIZE);
       })
       .catch(() => {});

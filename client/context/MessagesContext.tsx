@@ -90,15 +90,31 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     [user?.id, load],
   );
 
-  // A deleted message only needs the inbox preview redacted — no reordering, no
-  // unread change (deletion doesn't unread anything).
-  const applyDeleted = useCallback((message: MessageDTO) => {
+  // A deleted message redacts the inbox preview — no reordering. If it was
+  // still unread (sent by the other side, never read), it no longer counts:
+  // the server excludes deleted messages from unread, so mirror that here.
+  const applyDeleted = useCallback(
+    (message: MessageDTO) => {
+      const wasUnread = message.senderId !== user?.id && !message.readAt;
+      setConversations((prev) =>
+        prev.map((c) => {
+          if (c.id !== message.conversationId) return c;
+          return {
+            ...c,
+            lastMessage: c.lastMessage?.id === message.id ? message : c.lastMessage,
+            unreadCount: wasUnread ? Math.max(0, c.unreadCount - 1) : c.unreadCount,
+          };
+        }),
+      );
+    },
+    [user?.id],
+  );
+
+  // The reader's own `read` echo (readerId === me, possibly from another tab):
+  // clear that conversation's unread count so the badge syncs across tabs.
+  const applyOwnRead = useCallback((conversationId: number) => {
     setConversations((prev) =>
-      prev.map((c) =>
-        c.id === message.conversationId && c.lastMessage?.id === message.id
-          ? { ...c, lastMessage: message }
-          : c,
-      ),
+      prev.map((c) => (c.id === conversationId ? { ...c, unreadCount: 0 } : c)),
     );
   }, []);
 
@@ -107,8 +123,10 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
       if (frame.channel !== 'dm') return;
       if (frame.type === 'message') applyIncoming(frame.payload);
       else if (frame.type === 'deleted') applyDeleted(frame.payload);
+      else if (frame.type === 'read' && frame.payload.readerId === user?.id)
+        applyOwnRead(frame.payload.conversationId);
     },
-    [applyIncoming, applyDeleted],
+    [applyIncoming, applyDeleted, applyOwnRead, user?.id],
   );
   useUserSocketFrames(onFrame);
 

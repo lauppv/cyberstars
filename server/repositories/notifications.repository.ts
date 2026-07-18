@@ -87,21 +87,22 @@ export async function collapse(
 }
 
 // A deleted forum post's excerpt shouldn't linger in notification snapshots.
-// Only rows still carrying exactly that excerpt are touched — a collapsed row
-// re-snapshotted by a newer reply keeps its (still-live) excerpt. updateMany
-// per id so a concurrent prune can't make this throw.
+// Rows are matched by the snapshotted postId (stable across edits), so only
+// notifications whose excerpt came from THIS post are touched — a collapsed row
+// re-snapshotted by a newer reply carries that reply's postId and keeps its
+// (still-live) excerpt. updateMany per id so a concurrent prune can't throw.
 export async function clearExcerpt(
   type: NotificationType,
   entityId: number,
-  excerpt: string,
+  postId: number,
 ): Promise<void> {
   const rows = await prisma.notification.findMany({
-    where: { type, entityId, data: { path: ['excerpt'], equals: excerpt } },
+    where: { type, entityId, data: { path: ['postId'], equals: postId } },
     select: { id: true, data: true },
   });
   await Promise.all(
     rows.map((row) => {
-      const { excerpt: _dropped, ...rest } = row.data as Record<string, unknown>;
+      const { excerpt: _dropped, postId: _key, ...rest } = row.data as Record<string, unknown>;
       return prisma.notification.updateMany({
         where: { id: row.id },
         data: { data: rest as Prisma.InputJsonValue },
@@ -132,12 +133,13 @@ export async function markReadByEntity(
   return res.count;
 }
 
-export async function markOneRead(userId: number, id: number): Promise<void> {
+export async function markOneRead(userId: number, id: number): Promise<number> {
   // Scoped by userId so a caller can only mark their own notifications read.
-  await prisma.notification.updateMany({
+  const res = await prisma.notification.updateMany({
     where: { id, userId, readAt: null },
     data: { readAt: new Date() },
   });
+  return res.count;
 }
 
 // Keep at most `cap` notifications per user: find the id at position `cap`

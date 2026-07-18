@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
+import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { canAccessFeature } from '../../shared/features';
@@ -12,7 +13,6 @@ import { Badge } from '../components/gamification/Badge';
 import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
 import { courseMeta, courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
-import * as messagesService from '../services/messagesService';
 import type { PublicProfile } from '../../shared/profile';
 import type { Course } from '../../shared/lesson';
 
@@ -116,8 +116,11 @@ export function PublicProfilePage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
+  const { openWith } = useMessages();
   const canAccess = canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
-  const canMessage = canAccessFeature('messaging', user?.role, import.meta.env.PROD);
+  // Messaging needs an identity: without the user check a logged-out visitor
+  // would see a Send Message button whose request can only 401.
+  const canMessage = !!user && canAccessFeature('messaging', user.role, import.meta.env.PROD);
 
   const [profile, setProfile] = useState<PublicProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -163,7 +166,9 @@ export function PublicProfilePage() {
     if (!profile) return;
     setMessaging(true);
     try {
-      const { conversation } = await messagesService.openConversation(profile.userId);
+      // Through the context (not the raw service) so a newly created
+      // conversation lands in the inbox state before /messages renders it.
+      const conversation = await openWith(profile.userId);
       navigate('/messages', { state: { openConversationId: conversation.id } });
     } catch {
       setMessaging(false);

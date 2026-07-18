@@ -31,8 +31,13 @@ export function useUserSocket(enabled: boolean, onFrame: (frame: UserSocketFrame
           /* ignore malformed frames */
         }
       };
-      ws.onclose = () => {
-        if (!closed) reconnect = setTimeout(connect, 3000);
+      ws.onclose = (e) => {
+        // 4401/4404 are the server's deliberate refusals (expired token, preview
+        // gate) — retrying every 3s would hammer it forever with the same answer.
+        // Re-login re-establishes the socket via `enabled`.
+        if (!closed && e.code !== 4401 && e.code !== 4404) {
+          reconnect = setTimeout(connect, 3000);
+        }
       };
     };
     connect();

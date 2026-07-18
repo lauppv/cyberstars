@@ -32,15 +32,38 @@ export function MessageThread({
   const [hasMore, setHasMore] = useState(false);
   const [loading, setLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Scroll height before a load-older prepend, so the effect below can restore
+  // the reading position instead of jumping to the bottom.
+  const prependRef = useRef<{ height: number; top: number } | null>(null);
+  // Newest unseen message id while the tab is hidden; flushed on visibility.
+  const pendingReadRef = useRef<number | null>(null);
 
-  // Mark everything up to the newest message read (server + inbox badge).
+  // Mark everything up to the newest message read (server + inbox badge). If
+  // the tab is hidden the user hasn't actually seen it — defer until visible so
+  // read receipts aren't sent for a background tab.
   const markReadUpTo = useCallback(
     (upToMessageId: number) => {
+      if (document.visibilityState !== 'visible') {
+        pendingReadRef.current = Math.max(pendingReadRef.current ?? 0, upToMessageId);
+        return;
+      }
       messagesService.markRead(conversationId, upToMessageId).catch(() => {});
       markConversationRead(conversationId);
     },
     [conversationId, markConversationRead],
   );
+
+  useEffect(() => {
+    const flush = () => {
+      const pending = pendingReadRef.current;
+      if (document.visibilityState === 'visible' && pending != null) {
+        pendingReadRef.current = null;
+        markReadUpTo(pending);
+      }
+    };
+    document.addEventListener('visibilitychange', flush);
+    return () => document.removeEventListener('visibilitychange', flush);
+  }, [markReadUpTo]);
 
   // Load history whenever the open conversation changes.
   useEffect(() => {
@@ -63,6 +86,7 @@ export function MessageThread({
       });
     return () => {
       cancelled = true;
+      pendingReadRef.current = null; // a deferred read must not leak across conversations
       setActiveConversation(null);
     };
   }, [conversationId, setActiveConversation, markReadUpTo]);
@@ -79,6 +103,10 @@ export function MessageThread({
         const msg = frame.payload;
         setMessages((prev) => prev.map((m) => (m.id === msg.id ? msg : m)));
       } else if (frame.type === 'read' && frame.payload.conversationId === conversationId) {
+        // Only the *other* participant's read marks my messages as seen — the
+        // frame is also echoed to my own tabs (to sync the inbox badge), and
+        // applying that echo here would fake read receipts.
+        if (frame.payload.readerId === currentUserId) return;
         const upTo = frame.payload.upToMessageId;
         const at = new Date().toISOString();
         setMessages((prev) =>
@@ -92,10 +120,18 @@ export function MessageThread({
   );
   useUserSocketFrames(onFrame);
 
-  // Keep the view pinned to the newest message.
+  // Keep the view pinned to the newest message — except after a load-older
+  // prepend, where the reading position is restored instead.
   useEffect(() => {
     const el = scrollRef.current;
-    if (el) el.scrollTop = el.scrollHeight;
+    if (!el) return;
+    const prepend = prependRef.current;
+    if (prepend) {
+      prependRef.current = null;
+      el.scrollTop = prepend.top + (el.scrollHeight - prepend.height);
+    } else {
+      el.scrollTop = el.scrollHeight;
+    }
   }, [messages]);
 
   const loadOlder = useCallback(() => {
@@ -104,6 +140,8 @@ export function MessageThread({
     messagesService
       .getHistory(conversationId, 30, oldest)
       .then((res) => {
+        const el = scrollRef.current;
+        if (el) prependRef.current = { height: el.scrollHeight, top: el.scrollTop };
         setMessages((prev) => [...[...res.messages].reverse(), ...prev]);
         setHasMore(res.hasMore);
       })

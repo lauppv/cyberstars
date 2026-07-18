@@ -17,7 +17,10 @@ vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
 vi.mock('../services/userService', () => ({ getPublicProfile: vi.fn() }));
-vi.mock('../services/messagesService', () => ({ openConversation: vi.fn() }));
+const mockOpenWith = vi.fn();
+vi.mock('../context/MessagesContext', () => ({
+  useMessages: () => ({ openWith: mockOpenWith }),
+}));
 vi.mock('../context/CurriculumContext', () => ({
   useCurriculum: () => ({
     courses: [
@@ -40,8 +43,6 @@ const { useAuth } = await import('../context/AuthContext');
 const mockUseAuth = vi.mocked(useAuth);
 const userService = await import('../services/userService');
 const mockGetPublicProfile = vi.mocked(userService.getPublicProfile);
-const messagesService = await import('../services/messagesService');
-const mockOpenConversation = vi.mocked(messagesService.openConversation);
 
 const { PublicProfilePage } = await import('./PublicProfilePage');
 
@@ -166,14 +167,22 @@ describe('PublicProfilePage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/settings');
   });
 
+  it('hides the Send message button for logged-out visitors', async () => {
+    renderPage();
+    await screen.findByText('Nova');
+    expect(screen.queryByText('Send message')).toBeNull();
+  });
+
   it('opens a conversation from the Send message button', async () => {
-    mockOpenConversation.mockResolvedValue({
-      conversation: { id: 55 },
-    } as Awaited<ReturnType<typeof messagesService.openConversation>>);
+    mockUseAuth.mockReturnValue({
+      user: { id: 1, role: 'USER' },
+      isLoading: false,
+    } as unknown as ReturnType<typeof useAuth>);
+    mockOpenWith.mockResolvedValue({ id: 55 });
     renderPage();
     const btn = await screen.findByText('Send message');
     fireEvent.click(btn);
-    await waitFor(() => expect(mockOpenConversation).toHaveBeenCalledWith(7));
+    await waitFor(() => expect(mockOpenWith).toHaveBeenCalledWith(7));
     expect(mockNavigate).toHaveBeenCalledWith('/messages', {
       state: { openConversationId: 55 },
     });
