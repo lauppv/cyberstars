@@ -56,19 +56,22 @@ export async function getPublicProfile(
 
   const [rank, counts, activityRows] = await Promise.all([
     leaderboardService.getMyRank(targetId),
-    needStats || needProgress
-      ? progressRepo.getCompletedCountsByCourse(targetId)
-      : Promise.resolve([]),
+    progressRepo.getCompletedCountsByCourse(targetId),
     needStats ? progressRepo.getActivityDates(targetId) : Promise.resolve([]),
   ]);
 
   const totalXp = rank?.totalXp ?? 0;
-  const lessonsDone = rank?.lessonsDone ?? 0;
 
   if (needStats) {
-    const activeCourses = counts.filter(
-      (c) => ACTIVE_COURSE_KEYS.has(c.courseKey) && c.done > 0,
-    ).length;
+    // Derive lessonsDone and activeCourses from the same live counts so the two
+    // stat cells stay consistent (the leaderboard rank is cached up to a few
+    // minutes, so reading lessonsDone off it could disagree with activeCourses).
+    let lessonsDone = 0;
+    let activeCourses = 0;
+    for (const c of counts) {
+      lessonsDone += c.done;
+      if (ACTIVE_COURSE_KEYS.has(c.courseKey) && c.done > 0) activeCourses += 1;
+    }
     profile.stats = {
       lessonsDone,
       activeCourses,
