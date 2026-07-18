@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { canAccessFeature } from '../../shared/features';
+import { useCurriculum } from '../context/CurriculumContext';
+import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
+import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
+import { courseMeta, courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
 import * as messagesService from '../services/messagesService';
 import type { PublicProfile } from '../../shared/profile';
+import type { Course } from '../../shared/lesson';
 
 function Avatar({ url }: { url: string | null }) {
   return url ? (
@@ -19,6 +24,87 @@ function Avatar({ url }: { url: string | null }) {
   ) : (
     <div className="w-20 h-20 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[36px] border-[3px] border-[var(--accent)] flex-shrink-0">
       🚀
+    </div>
+  );
+}
+
+// Resolve a course's completed slugs to lesson titles (via the loaded
+// curriculum), ordered by the lesson's position in the course. Falls back to the
+// raw slug for anything the curriculum doesn't know about.
+function completedLessonTitles(course: Course | undefined, slugs: string[]): string[] {
+  if (!course) return slugs;
+  const bySlug = new Map(course.lessons.map((l) => [l.slug, l]));
+  return slugs
+    .map((slug) => bySlug.get(slug) ?? { slug, title: slug, sortOrder: Number.MAX_SAFE_INTEGER })
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((l) => l.title);
+}
+
+function CompletedCourses({ courses }: { courses: { courseKey: string; lessons: string[] }[] }) {
+  const { t } = useTranslation();
+  const { courses: curriculum } = useCurriculum();
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  const toggle = (key: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+
+  return (
+    <div className="py-4 border-b border-[var(--accent)]/20">
+      <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] uppercase mb-2">
+        {t('publicProfile.completedCourses')}
+      </div>
+      <div className="flex flex-col gap-1.5">
+        {courses.map(({ courseKey, lessons }) => {
+          const meta = courseMeta(courseKey);
+          const isOpen = expanded.has(courseKey);
+          const titles = isOpen
+            ? completedLessonTitles(
+                curriculum.find((c) => c.key === courseKey),
+                lessons,
+              )
+            : [];
+          return (
+            <div key={courseKey}>
+              <button
+                onClick={() => toggle(courseKey)}
+                aria-expanded={isOpen}
+                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
+              >
+                <span className="text-[15px] leading-none">{meta.icon}</span>
+                <span className="text-[13px] font-semibold text-[var(--text)] flex-1 min-w-0 truncate">
+                  {courseTitle(courseKey)}
+                </span>
+                <span className="text-[11px] tabular-nums text-[var(--text3)]">
+                  {lessons.length}
+                </span>
+                <span
+                  className={`text-[10px] text-[var(--text3)] transition-transform ${isOpen ? 'rotate-90' : ''}`}
+                >
+                  ▶
+                </span>
+              </button>
+              {isOpen && (
+                <ul className="mt-1 mb-1 pl-8 pr-2 flex flex-col gap-0.5">
+                  {titles.map((title, i) => (
+                    <li
+                      key={i}
+                      className="text-[12px] text-[var(--text2)] flex items-baseline gap-1.5"
+                    >
+                      <span className="text-[var(--accent)] text-[10px]">✓</span>
+                      <span className="min-w-0 break-words">{title}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -81,6 +167,11 @@ export function PublicProfilePage() {
       setMessaging(false);
     }
   };
+
+  const activityCounts = useMemo(
+    () => bucketByLocalDay(profile?.activity ?? []),
+    [profile?.activity],
+  );
 
   const memberSinceLabel = profile
     ? new Date(profile.memberSince).toLocaleDateString(i18n.resolvedLanguage ?? 'en', {
@@ -199,6 +290,18 @@ export function PublicProfilePage() {
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Completed courses — expandable per-course lesson lists */}
+            {profile.stats && profile.stats.courses.length > 0 && (
+              <CompletedCourses courses={profile.stats.courses} />
+            )}
+
+            {/* Activity heatmap */}
+            {profile.activity && (
+              <div className="py-4 border-b border-[var(--accent)]/20">
+                <ActivityHeatmap activityCounts={activityCounts} />
               </div>
             )}
 

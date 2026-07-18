@@ -18,6 +18,23 @@ vi.mock('../components/layout/Topbar', () => ({
 }));
 vi.mock('../services/userService', () => ({ getPublicProfile: vi.fn() }));
 vi.mock('../services/messagesService', () => ({ openConversation: vi.fn() }));
+vi.mock('../context/CurriculumContext', () => ({
+  useCurriculum: () => ({
+    courses: [
+      {
+        key: 'python',
+        title: 'Python',
+        description: '',
+        lessons: [
+          { slug: 'py-1', title: 'Intro to Python', sortOrder: 1 },
+          { slug: 'py-2', title: 'Variables', sortOrder: 2 },
+        ],
+      },
+    ],
+    isLoading: false,
+    refresh: vi.fn(),
+  }),
+}));
 
 const { useAuth } = await import('../context/AuthContext');
 const mockUseAuth = vi.mocked(useAuth);
@@ -36,8 +53,17 @@ const fullProfile: PublicProfile = {
   isSelf: false,
   status: 'coding',
   bio: 'Exploring the cosmos',
-  stats: { lessonsDone: 12, activeCourses: 2, streak: 4 },
+  stats: {
+    lessonsDone: 12,
+    activeCourses: 2,
+    streak: 4,
+    courses: [
+      { courseKey: 'python', lessons: ['py-2', 'py-1'] },
+      { courseKey: 'algo-c', lessons: ['ac-1'] },
+    ],
+  },
   progress: { level: 3, totalXp: 250, titleKey: 'level.title.3', rank: 5, badges: 6 },
+  activity: ['2026-07-15T10:00:00.000Z', '2026-07-15T12:00:00.000Z', '2026-07-16T09:00:00.000Z'],
 };
 
 function renderPage() {
@@ -75,6 +101,25 @@ describe('PublicProfilePage', () => {
     expect(screen.getByText(/250/)).toBeDefined();
   });
 
+  it('lists completed courses and expands lessons on click, ordered by lesson position', async () => {
+    renderPage();
+    await screen.findByText('Nova');
+    expect(screen.getByText('Completed courses')).toBeDefined();
+    // Chips render for both courses; algo-c has no curriculum entry so it uses
+    // its derived title.
+    const chip = screen.getByText('Python');
+    expect(screen.getByText('C Algorithms')).toBeDefined();
+    // Lessons are hidden until the chip is expanded.
+    expect(screen.queryByText('Intro to Python')).toBeNull();
+    fireEvent.click(chip);
+    // Sorted by sortOrder even though the slugs arrived reversed.
+    const intro = screen.getByText('Intro to Python');
+    const vars = screen.getByText('Variables');
+    expect(intro).toBeDefined();
+    expect(vars).toBeDefined();
+    expect(intro.compareDocumentPosition(vars) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it('omits hidden sections', async () => {
     mockGetPublicProfile.mockResolvedValue({
       ...fullProfile,
@@ -82,12 +127,20 @@ describe('PublicProfilePage', () => {
       status: null,
       stats: null,
       progress: null,
+      activity: null,
     });
     renderPage();
     await screen.findByText('Nova');
     expect(screen.queryByText('Exploring the cosmos')).toBeNull();
     expect(screen.queryByText('Lessons Done')).toBeNull();
     expect(screen.queryByText('Badges')).toBeNull();
+    expect(screen.queryByText('Activity')).toBeNull();
+  });
+
+  it('renders the activity heatmap when activity is present', async () => {
+    renderPage();
+    await screen.findByText('Nova');
+    expect(screen.getByText('Activity')).toBeDefined();
   });
 
   it('shows owner actions when viewing your own profile', async () => {

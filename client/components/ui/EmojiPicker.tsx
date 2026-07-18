@@ -1,0 +1,99 @@
+import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+// A small curated palette — no external dependency. Enough for a status line
+// without shipping a full emoji database to a memory-constrained VPS.
+const EMOJIS = [
+  '😀',
+  '😎',
+  '🤓',
+  '🤩',
+  '🥳',
+  '😴',
+  '🤔',
+  '😤',
+  '🚀',
+  '🌟',
+  '⭐',
+  '🔥',
+  '💡',
+  '⚡',
+  '🌌',
+  '🪐',
+  '💻',
+  '⌨️',
+  '🐛',
+  '🧠',
+  '📚',
+  '✅',
+  '🎯',
+  '🏆',
+  '🐍',
+  '☕',
+  '⚙️',
+  '🐧',
+  '👾',
+  '💪',
+  '🎉',
+  '❤️',
+];
+
+export function EmojiPicker({
+  onSelect,
+  disabled,
+}: {
+  onSelect: (emoji: string) => void;
+  disabled?: boolean;
+}) {
+  const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDocClick = (e: MouseEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('mousedown', onDocClick);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDocClick);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={rootRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        disabled={disabled}
+        aria-label={t('profile.addEmoji')}
+        title={t('profile.addEmoji')}
+        className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[16px] leading-none cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
+      >
+        😊
+      </button>
+      {open && (
+        <div className="absolute right-0 z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.92)] backdrop-blur-[12px] shadow-lg grid grid-cols-8 gap-0.5">
+          {EMOJIS.map((emoji) => (
+            <button
+              key={emoji}
+              type="button"
+              onClick={() => {
+                onSelect(emoji);
+                setOpen(false);
+              }}
+              className="w-6 h-6 flex items-center justify-center text-[16px] rounded hover:bg-[var(--accent)]/20 transition cursor-pointer"
+            >
+              {emoji}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

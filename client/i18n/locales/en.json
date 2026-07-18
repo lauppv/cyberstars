@@ -422,6 +422,7 @@
     "statusExpires": "(expires in 24h)",
     "statusPlaceholder": "What are you up to?",
     "set": "Set",
+    "addEmoji": "Add emoji",
     "lessonsDone": "Lessons Done",
     "activeCourses": "Active Courses",
     "badges": "Badges",
@@ -845,7 +846,8 @@
     "rank": "Rank #{{n}}",
     "sendMessage": "Send message",
     "editProfile": "Edit profile",
-    "settings": "Settings"
+    "settings": "Settings",
+    "completedCourses": "Completed courses"
   },
   "settings": {
     "title": "Settings",
@@ -861,6 +863,8 @@
     "showStatsHint": "Lessons completed, active courses and streak.",
     "showProgress": "Level, XP & badges",
     "showProgressHint": "Your level, experience points and earned badges.",
+    "showActivity": "Activity heatmap",
+    "showActivityHint": "Your daily lesson-completion calendar.",
     "account": "Account",
     "saved": "Saved"
   }

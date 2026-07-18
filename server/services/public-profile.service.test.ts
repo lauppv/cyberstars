@@ -2,9 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockUserRepo = { findById: vi.fn() };
 const mockProgressRepo = {
-  getCompletedCountsByCourse: vi.fn(),
+  getCompletedByCourse: vi.fn(),
   getActivityDates: vi.fn(),
 };
+
+// Fabricate `n` completed lesson slugs for a course, matching the repo shape.
+function slugs(courseKey: string, n: number): string[] {
+  return Array.from({ length: n }, (_, i) => `${courseKey}-${i + 1}`);
+}
 const mockLeaderboardService = { getMyRank: vi.fn() };
 const mockActivityService = { computeStreak: vi.fn() };
 
@@ -27,13 +32,14 @@ function makeUser(overrides: Record<string, unknown> = {}) {
     showBio: true,
     showStats: true,
     showProgress: true,
+    showActivity: true,
     ...overrides,
   };
 }
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mockProgressRepo.getCompletedCountsByCourse.mockResolvedValue([]);
+  mockProgressRepo.getCompletedByCourse.mockResolvedValue([]);
   mockProgressRepo.getActivityDates.mockResolvedValue([]);
   mockLeaderboardService.getMyRank.mockResolvedValue(null);
   mockActivityService.computeStreak.mockReturnValue(0);
@@ -56,7 +62,7 @@ describe('getPublicProfile', () => {
 
   it('hides every optional section for another viewer when all flags are off', async () => {
     mockUserRepo.findById.mockResolvedValue(
-      makeUser({ showBio: false, showStats: false, showProgress: false }),
+      makeUser({ showBio: false, showStats: false, showProgress: false, showActivity: false }),
     );
     const p = await getPublicProfile(7, 42);
     expect(p.isSelf).toBe(false);
@@ -64,9 +70,10 @@ describe('getPublicProfile', () => {
     expect(p.status).toBeNull();
     expect(p.stats).toBeNull();
     expect(p.progress).toBeNull();
+    expect(p.activity).toBeNull();
     // Nothing beyond the base lookup should be fetched.
     expect(mockLeaderboardService.getMyRank).not.toHaveBeenCalled();
-    expect(mockProgressRepo.getCompletedCountsByCourse).not.toHaveBeenCalled();
+    expect(mockProgressRepo.getCompletedByCourse).not.toHaveBeenCalled();
     expect(mockProgressRepo.getActivityDates).not.toHaveBeenCalled();
   });
 
@@ -101,10 +108,10 @@ describe('getPublicProfile', () => {
 
   it('derives lessonsDone and activeCourses from live counts, not the cached rank', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showProgress: false }));
-    mockProgressRepo.getCompletedCountsByCourse.mockResolvedValue([
-      { courseKey: 'python', done: 12 },
-      { courseKey: 'linux', done: 3 },
-      { courseKey: 'algo-c', done: 5 }, // not a MAIN/TERMINAL course
+    mockProgressRepo.getCompletedByCourse.mockResolvedValue([
+      { courseKey: 'python', slugs: slugs('python', 12) },
+      { courseKey: 'linux', slugs: slugs('linux', 3) },
+      { courseKey: 'algo-c', slugs: slugs('algo-c', 5) }, // not a MAIN/TERMINAL course
     ]);
     // Stale leaderboard lessonsDone must be ignored in favour of the counts sum.
     mockLeaderboardService.getMyRank.mockResolvedValue({
@@ -117,14 +124,24 @@ describe('getPublicProfile', () => {
     mockActivityService.computeStreak.mockReturnValue(4);
 
     const p = await getPublicProfile(7, 42);
-    expect(p.stats).toEqual({ lessonsDone: 20, activeCourses: 2, streak: 4 });
+    expect(p.stats).toEqual({
+      lessonsDone: 20,
+      activeCourses: 2,
+      streak: 4,
+      // Sorted most-completed first, each carrying its completed slug list.
+      courses: [
+        { courseKey: 'python', lessons: slugs('python', 12) },
+        { courseKey: 'algo-c', lessons: slugs('algo-c', 5) },
+        { courseKey: 'linux', lessons: slugs('linux', 3) },
+      ],
+    });
   });
 
   it('builds the progress section from the leaderboard rank', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false }));
-    mockProgressRepo.getCompletedCountsByCourse.mockResolvedValue([
-      { courseKey: 'python', done: 12 },
-      { courseKey: 'algo-c', done: 3 },
+    mockProgressRepo.getCompletedByCourse.mockResolvedValue([
+      { courseKey: 'python', slugs: slugs('python', 12) },
+      { courseKey: 'algo-c', slugs: slugs('algo-c', 3) },
     ]);
     mockLeaderboardService.getMyRank.mockResolvedValue({
       rank: 5,
@@ -145,9 +162,33 @@ describe('getPublicProfile', () => {
     });
   });
 
+  it('returns recent completed-lesson timestamps for the heatmap, filtered to the window', async () => {
+    // Only showActivity is on; stats/progress stay hidden and their queries skip.
+    mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));
+    const recent = new Date();
+    const old = new Date(Date.now() - 200 * 86_400_000); // outside the ~150-day window
+    mockProgressRepo.getActivityDates.mockResolvedValue([
+      { completedAt: recent, lastAccessedAt: recent },
+      { completedAt: old, lastAccessedAt: old },
+      { completedAt: null, lastAccessedAt: recent }, // accessed but never completed
+    ]);
+
+    const p = await getPublicProfile(7, 42);
+    expect(p.activity).toEqual([recent.toISOString()]);
+    expect(p.stats).toBeNull();
+    expect(p.progress).toBeNull();
+    expect(mockProgressRepo.getCompletedByCourse).not.toHaveBeenCalled();
+  });
+
+  it('hides the heatmap when showActivity is off', async () => {
+    mockUserRepo.findById.mockResolvedValue(makeUser({ showActivity: false }));
+    const p = await getPublicProfile(7, 42);
+    expect(p.activity).toBeNull();
+  });
+
   it('reports rank as null and falls back to computed level for an unranked user', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false }));
-    mockProgressRepo.getCompletedCountsByCourse.mockResolvedValue([]);
+    mockProgressRepo.getCompletedByCourse.mockResolvedValue([]);
     mockLeaderboardService.getMyRank.mockResolvedValue(null);
 
     const p = await getPublicProfile(7, 42);

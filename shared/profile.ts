@@ -2,10 +2,16 @@
 // section is present only when the target user's matching privacy flag is on
 // (own view always sees everything). Name/avatar/memberSince are always public.
 
+interface PublicProfileCourse {
+  courseKey: string;
+  lessons: string[]; // completed lesson slugs; the client resolves titles from curriculum
+}
+
 interface PublicProfileStats {
   lessonsDone: number;
   activeCourses: number;
   streak: number;
+  courses: PublicProfileCourse[]; // per-course completed lessons, most completed first
 }
 
 interface PublicProfileProgress {
@@ -26,4 +32,7 @@ export interface PublicProfile {
   bio: string | null; // null when hidden or unset
   stats: PublicProfileStats | null; // null when hidden
   progress: PublicProfileProgress | null; // null when hidden
+  // ISO timestamps of completed lessons in the recent window, for the activity
+  // heatmap. Null when hidden; the client buckets them by local day.
+  activity: string[] | null;
 }

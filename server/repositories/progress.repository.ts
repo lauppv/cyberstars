@@ -59,18 +59,25 @@ export async function upsertCode(
   });
 }
 
-// Completed-lesson count per course for one user. Powers the public profile's
-// active-course and badge tallies (badges are derived from these counts, the
-// same way the client's useGamification does it).
-export async function getCompletedCountsByCourse(
+// Completed lesson slugs per course for one user (oldest-completed first).
+// Single source for the public profile's active-course/badge tallies (derived
+// from slugs.length, the same way the client's useGamification does it) and the
+// per-course lesson enumeration.
+export async function getCompletedByCourse(
   userId: number,
-): Promise<{ courseKey: string; done: number }[]> {
-  const rows = await prisma.userLessonProgress.groupBy({
-    by: ['courseKey'],
+): Promise<{ courseKey: string; slugs: string[] }[]> {
+  const rows = await prisma.userLessonProgress.findMany({
     where: { userId, completed: true },
-    _count: { _all: true },
+    select: { courseKey: true, lessonSlug: true, completedAt: true },
+    orderBy: { completedAt: 'asc' },
   });
-  return rows.map((r) => ({ courseKey: r.courseKey, done: r._count._all }));
+  const byCourse = new Map<string, string[]>();
+  for (const r of rows) {
+    const slugs = byCourse.get(r.courseKey) ?? [];
+    slugs.push(r.lessonSlug);
+    byCourse.set(r.courseKey, slugs);
+  }
+  return [...byCourse].map(([courseKey, slugs]) => ({ courseKey, slugs }));
 }
 
 export async function getActivityDates(userId: number): Promise<
