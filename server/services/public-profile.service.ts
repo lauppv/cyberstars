@@ -1,6 +1,7 @@
 import * as userRepo from '../repositories/user.repository.js';
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as leaderboardService from './leaderboard.service.js';
+import * as connectionsService from './connections.service.js';
 import { computeStreak } from './activity.service.js';
 import {
   levelFromXp,
@@ -55,11 +56,19 @@ export async function getPublicProfile(
     stats: null,
     progress: null,
     activity: null,
+    connections: null,
+    connectionRelation: await connectionsService.relationTo(viewerId, targetId),
   };
 
   const needStats = isSelf || user.showStats;
   const needProgress = isSelf || user.showProgress;
   const needActivity = isSelf || user.showActivity;
+  const needConnections = isSelf || user.showConnections;
+
+  if (needConnections) {
+    profile.connections = await connectionsService.publicConnections(targetId);
+  }
+
   if (!needStats && !needProgress && !needActivity) return profile;
 
   const [rank, completed, activityRows] = await Promise.all([

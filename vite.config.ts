@@ -15,7 +15,7 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
-    exclude: ['.direnv/**', 'test/integration/**', 'e2e/**', 'node_modules/**'],
+    exclude: ['.direnv/**', '.claude/**', 'test/integration/**', 'e2e/**', '**/node_modules/**'],
     setupFiles: ['./test/setup.ts'],
     coverage: {
       provider: 'v8',

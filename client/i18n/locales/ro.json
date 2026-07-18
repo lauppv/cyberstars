@@ -167,7 +167,9 @@
     "dm_other": "{{count}} de mesaje noi de la {{name}}",
     "ticketNew": "Tichet nou de suport: „{{title}}”",
     "ticketReply": "Răspuns nou la tichetul „{{title}}”",
-    "status": "Tichetul „{{title}}” este acum {{status}}"
+    "status": "Tichetul „{{title}}” este acum {{status}}",
+    "connectionRequest": "{{name}} vrea să se conecteze cu tine",
+    "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune"
   },
   "courses": {
     "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
@@ -849,9 +851,26 @@
     "error": "Nu am putut încărca acest profil.",
     "rank": "Loc #{{n}}",
     "sendMessage": "Trimite mesaj",
+    "connect": "Conectează-te",
+    "requestSent": "Cerere trimisă",
+    "respondRequest": "Răspunde la cerere",
+    "connected": "Conectat",
     "editProfile": "Editează profilul",
     "settings": "Setări",
     "completedCourses": "Cursuri completate"
+  },
+  "connections": {
+    "title": "Conexiuni",
+    "subtitle": "Conexiunile tale și cererile în așteptare.",
+    "empty": "Nicio conexiune încă. Vizitează profilul cuiva ca să te conectezi.",
+    "incoming": "Cereri primite",
+    "outgoing": "Cereri trimise",
+    "mine": "Conexiunile mele",
+    "accept": "Acceptă",
+    "decline": "Refuză",
+    "remove": "Elimină",
+    "cancel": "Anulează",
+    "pending": "În așteptare"
   },
   "settings": {
     "title": "Setări",
@@ -869,6 +888,8 @@
     "showProgressHint": "Nivelul, punctele de experiență și insignele câștigate.",
     "showActivity": "Hartă de activitate",
     "showActivityHint": "Calendarul zilnic cu lecțiile completate.",
+    "showConnections": "Conexiuni",
+    "showConnectionsHint": "Lista persoanelor cu care ești conectat.",
     "account": "Cont",
     "saved": "Salvat"
   }

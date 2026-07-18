@@ -22,6 +22,7 @@ export interface AuthenticatedUser {
   showStats: boolean;
   showProgress: boolean;
   showActivity: boolean;
+  showConnections: boolean;
 }
 
 export interface LoginPayload {

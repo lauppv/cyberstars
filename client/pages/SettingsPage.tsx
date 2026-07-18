@@ -11,7 +11,7 @@ import { INPUT_CLS } from '../constants/styles';
 
 const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
 
-type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showActivity';
+type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showActivity' | 'showConnections';
 
 function EyeIcon({ off }: { off: boolean }) {
   return (
@@ -134,6 +134,7 @@ export function SettingsPage() {
     showStats: true,
     showProgress: true,
     showActivity: true,
+    showConnections: true,
   });
   const [savingFlag, setSavingFlag] = useState<PrivacyFlag | null>(null);
 
@@ -167,6 +168,7 @@ export function SettingsPage() {
         showStats: user.showStats,
         showProgress: user.showProgress,
         showActivity: user.showActivity,
+        showConnections: user.showConnections,
       });
     }
   }, [user]);
@@ -339,6 +341,13 @@ export function SettingsPage() {
                 onChange={(v) => toggleFlag('showActivity', v)}
                 label={t('settings.showActivity')}
                 hint={t('settings.showActivityHint')}
+              />
+              <Toggle
+                checked={privacy.showConnections}
+                disabled={savingFlag === 'showConnections'}
+                onChange={(v) => toggleFlag('showConnections', v)}
+                label={t('settings.showConnections')}
+                hint={t('settings.showConnectionsHint')}
               />
             </div>
           </section>

@@ -62,6 +62,9 @@ const PublicProfilePage = lazy(() =>
 const SettingsPage = lazy(() =>
   import('./pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
 );
+const ConnectionsPage = lazy(() =>
+  import('./pages/ConnectionsPage').then((m) => ({ default: m.ConnectionsPage })),
+);
 
 function GlobalBackground() {
   const { pathname } = useLocation();
@@ -117,6 +120,7 @@ function App() {
                         <Route path="/messages" element={<MessagesPage />} />
                         <Route path="/u/:userId" element={<PublicProfilePage />} />
                         <Route path="/settings" element={<SettingsPage />} />
+                        <Route path="/connections" element={<ConnectionsPage />} />
                       </Routes>
                     </Suspense>
                   </RadioProvider>

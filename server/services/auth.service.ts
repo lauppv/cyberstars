@@ -75,6 +75,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     showStats: user.showStats,
     showProgress: user.showProgress,
     showActivity: user.showActivity,
+    showConnections: user.showConnections,
   };
 }
 

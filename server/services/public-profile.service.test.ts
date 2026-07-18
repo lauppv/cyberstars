@@ -12,11 +12,13 @@ function slugs(courseKey: string, n: number): string[] {
 }
 const mockLeaderboardService = { getMyRank: vi.fn() };
 const mockActivityService = { computeStreak: vi.fn() };
+const mockConnectionsService = { relationTo: vi.fn(), publicConnections: vi.fn() };
 
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 vi.mock('./leaderboard.service.js', () => mockLeaderboardService);
 vi.mock('./activity.service.js', () => mockActivityService);
+vi.mock('./connections.service.js', () => mockConnectionsService);
 
 const { getPublicProfile } = await import('./public-profile.service.js');
 
@@ -33,6 +35,7 @@ function makeUser(overrides: Record<string, unknown> = {}) {
     showStats: true,
     showProgress: true,
     showActivity: true,
+    showConnections: true,
     ...overrides,
   };
 }
@@ -43,6 +46,8 @@ beforeEach(() => {
   mockProgressRepo.getActivityDates.mockResolvedValue([]);
   mockLeaderboardService.getMyRank.mockResolvedValue(null);
   mockActivityService.computeStreak.mockReturnValue(0);
+  mockConnectionsService.relationTo.mockResolvedValue('none');
+  mockConnectionsService.publicConnections.mockResolvedValue({ users: [], count: 0 });
 });
 
 describe('getPublicProfile', () => {
@@ -62,7 +67,13 @@ describe('getPublicProfile', () => {
 
   it('hides every optional section for another viewer when all flags are off', async () => {
     mockUserRepo.findById.mockResolvedValue(
-      makeUser({ showBio: false, showStats: false, showProgress: false, showActivity: false }),
+      makeUser({
+        showBio: false,
+        showStats: false,
+        showProgress: false,
+        showActivity: false,
+        showConnections: false,
+      }),
     );
     const p = await getPublicProfile(7, 42);
     expect(p.isSelf).toBe(false);
@@ -71,6 +82,7 @@ describe('getPublicProfile', () => {
     expect(p.stats).toBeNull();
     expect(p.progress).toBeNull();
     expect(p.activity).toBeNull();
+    expect(p.connections).toBeNull();
     // Nothing beyond the base lookup should be fetched.
     expect(mockLeaderboardService.getMyRank).not.toHaveBeenCalled();
     expect(mockProgressRepo.getCompletedByCourse).not.toHaveBeenCalled();

@@ -26,6 +26,8 @@ const ICONS: Record<NotificationType, string> = {
   SUPPORT_TICKET_NEW: '🎫',
   SUPPORT_REPLY: '🎫',
   SUPPORT_STATUS: '🔖',
+  CONNECTION_REQUEST: '🤝',
+  CONNECTION_ACCEPTED: '🌟',
 };
 
 function describe(n: NotificationDTO): string {
@@ -51,6 +53,10 @@ function describe(n: NotificationDTO): string {
         title,
         status: n.data?.status ? t(`support.status.${n.data.status}`) : '',
       });
+    case 'CONNECTION_REQUEST':
+      return t('notif.connectionRequest', { name });
+    case 'CONNECTION_ACCEPTED':
+      return t('notif.connectionAccepted', { name });
   }
 }
 
@@ -75,6 +81,9 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
         return { path: '/support' };
       case 'DM_MESSAGE':
         return { path: '/messages', state: { openConversationId: n.entityId } };
+      case 'CONNECTION_REQUEST':
+      case 'CONNECTION_ACCEPTED':
+        return { path: '/connections' };
     }
   };
 

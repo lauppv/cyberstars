@@ -7,7 +7,7 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', 'e2e', 'playwright-report', 'test-results']),
+  globalIgnores(['dist', 'coverage', 'e2e', 'playwright-report', 'test-results', '.claude']),
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {

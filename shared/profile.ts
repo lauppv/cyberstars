@@ -2,6 +2,8 @@
 // section is present only when the target user's matching privacy flag is on
 // (own view always sees everything). Name/avatar/memberSince are always public.
 
+import type { ConnectionRelation, ConnectionUser } from './connections.js';
+
 interface PublicProfileCourse {
   courseKey: string;
   lessons: string[]; // completed lesson slugs; the client resolves titles from curriculum
@@ -44,4 +46,11 @@ export interface PublicProfile {
   // ISO timestamps of completed lessons in the recent window, for the activity
   // heatmap. Null when hidden; the client buckets them by local day.
   activity: string[] | null;
+  // The target's accepted connections. Null when hidden (showConnections off and
+  // not self). `count` always reflects the true total even when the list is
+  // truncated for display.
+  connections: { users: ConnectionUser[]; count: number } | null;
+  // The viewer's relationship to this profile, for rendering the connect button.
+  // 'self' on own profile, 'none' for logged-out viewers.
+  connectionRelation: ConnectionRelation;
 }

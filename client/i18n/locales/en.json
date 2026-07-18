@@ -164,7 +164,9 @@
     "dm_other": "{{count}} new messages from {{name}}",
     "ticketNew": "New support ticket: \"{{title}}\"",
     "ticketReply": "New reply on ticket \"{{title}}\"",
-    "status": "Ticket \"{{title}}\" is now {{status}}"
+    "status": "Ticket \"{{title}}\" is now {{status}}",
+    "connectionRequest": "{{name}} wants to connect with you",
+    "connectionAccepted": "{{name}} accepted your connection request"
   },
   "courses": {
     "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
@@ -846,9 +848,26 @@
     "error": "Could not load this profile.",
     "rank": "Rank #{{n}}",
     "sendMessage": "Send message",
+    "connect": "Connect",
+    "requestSent": "Request sent",
+    "respondRequest": "Respond to request",
+    "connected": "Connected",
     "editProfile": "Edit profile",
     "settings": "Settings",
     "completedCourses": "Completed courses"
+  },
+  "connections": {
+    "title": "Connections",
+    "subtitle": "Your connections and pending requests.",
+    "empty": "No connections yet. Visit someone's profile to connect.",
+    "incoming": "Received requests",
+    "outgoing": "Sent requests",
+    "mine": "My connections",
+    "accept": "Accept",
+    "decline": "Decline",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "pending": "Pending"
   },
   "settings": {
     "title": "Settings",
@@ -866,6 +885,8 @@
     "showProgressHint": "Your level, experience points and earned badges.",
     "showActivity": "Activity heatmap",
     "showActivityHint": "Your daily lesson-completion calendar.",
+    "showConnections": "Connections",
+    "showConnectionsHint": "The list of people you're connected with.",
     "account": "Account",
     "saved": "Saved"
   }

@@ -13,7 +13,9 @@ import { Badge } from '../components/gamification/Badge';
 import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
 import { courseMeta, courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
+import * as connectionsService from '../services/connectionsService';
 import type { PublicProfile } from '../../shared/profile';
+import type { ConnectionRelation } from '../../shared/connections';
 import type { Course } from '../../shared/lesson';
 
 function Avatar({ url }: { url: string | null }) {
@@ -121,11 +123,14 @@ export function PublicProfilePage() {
   // Messaging needs an identity: without the user check a logged-out visitor
   // would see a Send Message button whose request can only 401.
   const canMessage = !!user && canAccessFeature('messaging', user.role, import.meta.env.PROD);
+  const canConnect = canAccessFeature('connections', user?.role, import.meta.env.PROD);
 
   const [profile, setProfile] = useState<PublicProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<'notFound' | 'generic' | null>(null);
   const [messaging, setMessaging] = useState(false);
+  const [relation, setRelation] = useState<ConnectionRelation>('none');
+  const [connecting, setConnecting] = useState(false);
 
   // Client-side guard is UX only — the API is server-authoritative.
   useEffect(() => {
@@ -147,7 +152,10 @@ export function PublicProfilePage() {
     userService
       .getPublicProfile(id)
       .then((p) => {
-        if (!cancelled) setProfile(p);
+        if (!cancelled) {
+          setProfile(p);
+          setRelation(p.connectionRelation);
+        }
       })
       .catch((err: unknown) => {
         if (cancelled) return;
@@ -172,6 +180,19 @@ export function PublicProfilePage() {
       navigate('/messages', { state: { openConversationId: conversation.id } });
     } catch {
       setMessaging(false);
+    }
+  };
+
+  const sendConnectionRequest = async () => {
+    if (!profile) return;
+    setConnecting(true);
+    try {
+      await connectionsService.sendRequest(profile.userId);
+      setRelation('pending_outgoing');
+    } catch {
+      // leave the relation as-is; the button re-enables so the user can retry
+    } finally {
+      setConnecting(false);
     }
   };
 
@@ -332,6 +353,42 @@ export function PublicProfilePage() {
               </div>
             )}
 
+            {/* Connections */}
+            {profile.connections && profile.connections.count > 0 && (
+              <div className="py-4 border-b border-[var(--accent)]/20">
+                <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] uppercase mb-2">
+                  {t('connections.title')}{' '}
+                  <span className="text-[var(--accent)] tabular-nums">
+                    ({profile.connections.count})
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  {profile.connections.users.map((c) => (
+                    <button
+                      key={c.id}
+                      onClick={() => navigate(`/u/${c.id}`)}
+                      className="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
+                    >
+                      {c.avatarUrl ? (
+                        <img
+                          src={c.avatarUrl}
+                          alt=""
+                          className="w-6 h-6 rounded-full object-cover border border-[var(--accent)] flex-shrink-0"
+                        />
+                      ) : (
+                        <span className="w-6 h-6 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[12px] border border-[var(--accent)] flex-shrink-0">
+                          🚀
+                        </span>
+                      )}
+                      <span className="text-[13px] font-semibold text-[var(--text)] truncate">
+                        {c.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Actions */}
             <div className="pt-5 flex items-center gap-3">
               {profile.isSelf ? (
@@ -350,15 +407,44 @@ export function PublicProfilePage() {
                   </button>
                 </>
               ) : (
-                canMessage && (
-                  <button
-                    onClick={startConversation}
-                    disabled={messaging}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
-                  >
-                    {t('publicProfile.sendMessage')}
-                  </button>
-                )
+                <>
+                  {canMessage && (
+                    <button
+                      onClick={startConversation}
+                      disabled={messaging}
+                      className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                    >
+                      {t('publicProfile.sendMessage')}
+                    </button>
+                  )}
+                  {canConnect && relation === 'none' && (
+                    <button
+                      onClick={sendConnectionRequest}
+                      disabled={connecting}
+                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
+                    >
+                      {t('publicProfile.connect')}
+                    </button>
+                  )}
+                  {canConnect && relation === 'pending_outgoing' && (
+                    <span className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 text-[var(--text3)] text-[13px] font-semibold">
+                      {t('publicProfile.requestSent')}
+                    </span>
+                  )}
+                  {canConnect && relation === 'pending_incoming' && (
+                    <button
+                      onClick={() => navigate('/connections')}
+                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
+                    >
+                      {t('publicProfile.respondRequest')}
+                    </button>
+                  )}
+                  {canConnect && relation === 'connected' && (
+                    <span className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold">
+                      {t('publicProfile.connected')} ✓
+                    </span>
+                  )}
+                </>
               )}
             </div>
           </div>
