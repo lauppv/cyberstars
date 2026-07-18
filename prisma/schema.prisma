@@ -43,6 +43,36 @@ enum NotificationType {
   SUPPORT_TICKET_NEW
   SUPPORT_REPLY
   SUPPORT_STATUS
+  CONNECTION_REQUEST
+  CONNECTION_ACCEPTED
+}
+
+// A connection between two users, modelled as a directed request that becomes
+// mutual once accepted. `requester` sent it, `addressee` received it; while
+// PENDING only the addressee can accept/decline, and once ACCEPTED the pair is
+// connected regardless of who initiated. The @@unique blocks a duplicate
+// request in the same direction — the reverse direction is checked in the
+// service so A->B and B->A can't coexist.
+enum ConnectionStatus {
+  PENDING
+  ACCEPTED
+}
+
+model Connection {
+  id          Int              @id @default(autoincrement())
+  requesterId Int              @map("requester_id")
+  addresseeId Int              @map("addressee_id")
+  status      ConnectionStatus @default(PENDING)
+  createdAt   DateTime         @default(now()) @map("created_at")
+  respondedAt DateTime?        @map("responded_at")
+
+  requester User @relation("ConnectionsRequested", fields: [requesterId], references: [id], onDelete: Cascade)
+  addressee User @relation("ConnectionsReceived", fields: [addresseeId], references: [id], onDelete: Cascade)
+
+  @@unique([requesterId, addresseeId])
+  @@index([addresseeId, status])
+  @@index([requesterId, status])
+  @@map("connections")
 }
 
 model User {
@@ -68,6 +98,10 @@ model User {
   showStats    Boolean @default(true) @map("show_stats")
   showProgress Boolean @default(true) @map("show_progress")
   showActivity Boolean @default(true) @map("show_activity")
+  // Whether other viewers see this user's connections list on their public
+  // profile (own view ignores it). The connections themselves stay functional
+  // when off — only the public listing is hidden.
+  showConnections Boolean @default(true) @map("show_connections")
 
   progress  UserLessonProgress[]
   savedCode UserSavedCode[]
@@ -84,6 +118,9 @@ model User {
   conversationsA Conversation[]  @relation("ConvA")
   conversationsB Conversation[]  @relation("ConvB")
   sentMessages   DirectMessage[]
+
+  connectionsRequested Connection[] @relation("ConnectionsRequested")
+  connectionsReceived  Connection[] @relation("ConnectionsReceived")
 
   @@map("users")
 }

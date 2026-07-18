@@ -6,6 +6,7 @@ import { isAdmin } from '../../../shared/auth';
 import { useGamification } from '../../hooks/useGamification';
 import { NotificationBell } from './NotificationBell';
 import { LeaderboardButton } from './LeaderboardButton';
+import { ConnectionsButton } from './ConnectionsButton';
 import { MessagesButton } from './MessagesButton';
 
 interface TopbarProps {
@@ -191,6 +192,7 @@ export function Topbar({
           <>
             <NotificationBell />
             <LeaderboardButton />
+            <ConnectionsButton />
             <MessagesButton />
             <div className="relative flex items-center gap-2" ref={menuRef}>
               <div

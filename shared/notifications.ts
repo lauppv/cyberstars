@@ -7,7 +7,9 @@ export type NotificationType =
   | 'DM_MESSAGE'
   | 'SUPPORT_TICKET_NEW'
   | 'SUPPORT_REPLY'
-  | 'SUPPORT_STATUS';
+  | 'SUPPORT_STATUS'
+  | 'CONNECTION_REQUEST'
+  | 'CONNECTION_ACCEPTED';
 
 // Repeat events on the same entity fold into one unread row instead of
 // spamming. Shared because both sides need the same rule: the server collapses

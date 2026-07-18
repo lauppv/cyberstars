@@ -1,6 +1,6 @@
 import { isAdmin, type UserRole } from './auth.js';
 
-export type FeatureKey = 'leaderboard' | 'messaging' | 'notifications' | 'radio';
+export type FeatureKey = 'leaderboard' | 'messaging' | 'notifications' | 'connections' | 'radio';
 
 // Features that are "preview": live in the code, but on production only ADMINs
 // can reach them — everyone else sees a "Coming Soon" treatment and the routes
@@ -11,6 +11,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   leaderboard: true,
   messaging: true,
   notifications: true,
+  connections: true,
   radio: false,
 };
 

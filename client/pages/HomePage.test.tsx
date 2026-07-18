@@ -90,6 +90,7 @@ const loggedInAuth = {
     showStats: true,
     showProgress: true,
     showActivity: true,
+    showConnections: true,
   },
   login: vi.fn(),
   signup: vi.fn(),
