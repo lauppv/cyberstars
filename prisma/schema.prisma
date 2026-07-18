@@ -66,6 +66,7 @@ model User {
   showBio      Boolean @default(true) @map("show_bio")
   showStats    Boolean @default(true) @map("show_stats")
   showProgress Boolean @default(true) @map("show_progress")
+  showActivity Boolean @default(true) @map("show_activity")
 
   progress  UserLessonProgress[]
   savedCode UserSavedCode[]

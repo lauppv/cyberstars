@@ -23,6 +23,7 @@ export async function findById(id: number) {
       showBio: true,
       showStats: true,
       showProgress: true,
+      showActivity: true,
     },
   });
 }
@@ -46,6 +47,7 @@ export async function updateProfile(
     showBio?: boolean;
     showStats?: boolean;
     showProgress?: boolean;
+    showActivity?: boolean;
   },
 ) {
   await prisma.user.update({ where: { id }, data });

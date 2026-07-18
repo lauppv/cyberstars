@@ -14,6 +14,7 @@ export interface AuthenticatedUser {
   showBio: boolean;
   showStats: boolean;
   showProgress: boolean;
+  showActivity: boolean;
 }
 
 export interface LoginPayload {

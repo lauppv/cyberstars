@@ -849,7 +849,8 @@
     "rank": "Loc #{{n}}",
     "sendMessage": "Trimite mesaj",
     "editProfile": "Editează profilul",
-    "settings": "Setări"
+    "settings": "Setări",
+    "completedCourses": "Cursuri completate"
   },
   "settings": {
     "title": "Setări",
@@ -865,6 +866,8 @@
     "showStatsHint": "Lecții finalizate, cursuri active și streak.",
     "showProgress": "Nivel, XP și insigne",
     "showProgressHint": "Nivelul, punctele de experiență și insignele câștigate.",
+    "showActivity": "Hartă de activitate",
+    "showActivityHint": "Calendarul zilnic cu lecțiile completate.",
     "account": "Cont",
     "saved": "Salvat"
   }

@@ -49,6 +49,7 @@ const baseUser: AuthenticatedUser = {
   showBio: true,
   showStats: true,
   showProgress: false,
+  showActivity: true,
 };
 
 const refreshUser = vi.fn();

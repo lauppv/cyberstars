@@ -6,6 +6,7 @@ export const updateProfileSchema = z.object({
   showBio: z.boolean().optional(),
   showStats: z.boolean().optional(),
   showProgress: z.boolean().optional(),
+  showActivity: z.boolean().optional(),
 });
 
 export const changePasswordSchema = z.object({
