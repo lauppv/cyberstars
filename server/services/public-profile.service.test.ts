@@ -159,6 +159,11 @@ describe('getPublicProfile', () => {
       titleKey: 'level.title.2',
       rank: 5,
       badges: 3,
+      badgeList: [
+        { courseKey: 'python', level: 0 },
+        { courseKey: 'python', level: 1 },
+        { courseKey: 'algo-c', level: 0 },
+      ],
     });
   });
 

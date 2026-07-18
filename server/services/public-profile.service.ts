@@ -8,7 +8,7 @@ import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
 } from '../../shared/constants.js';
-import type { PublicProfile } from '../../shared/profile.js';
+import type { PublicProfile, PublicProfileBadge } from '../../shared/profile.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 const ACTIVE_COURSE_KEYS = new Set<string>([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
@@ -19,17 +19,17 @@ const MS_PER_DAY = 86_400_000;
 const HEATMAP_WINDOW_DAYS = 150;
 
 // Earned badges from per-course completion counts, mirroring the client's
-// useGamification: "First Steps" at >=1 lesson, then one tier per 10 lessons
-// (Bronze/Silver/Gold...). done never exceeds a course's lesson count, so
-// floor(done/10) can't exceed the course's max tier.
-function earnedBadgeCount(courses: { slugs: string[] }[]): number {
-  let n = 0;
-  for (const { slugs } of courses) {
+// useGamification: "First Steps" at >=1 lesson (level 0), then one tier per 10
+// lessons (level 1=Bronze, 2=Silver, 3=Gold...). done never exceeds a course's
+// lesson count, so floor(done/10) can't exceed the course's max tier.
+function earnedBadges(courses: { courseKey: string; slugs: string[] }[]): PublicProfileBadge[] {
+  const badges: PublicProfileBadge[] = [];
+  for (const { courseKey, slugs } of courses) {
     const done = slugs.length;
-    if (done >= 1) n += 1;
-    n += Math.floor(done / 10);
+    if (done >= 1) badges.push({ courseKey, level: 0 });
+    for (let lvl = 1; lvl <= Math.floor(done / 10); lvl++) badges.push({ courseKey, level: lvl });
   }
-  return n;
+  return badges;
 }
 
 export async function getPublicProfile(
@@ -94,12 +94,14 @@ export async function getPublicProfile(
 
   if (needProgress) {
     const level = rank?.level ?? levelFromXp(totalXp);
+    const badgeList = earnedBadges(completed);
     profile.progress = {
       level,
       totalXp,
       titleKey: rank?.titleKey ?? levelTitleKey(level),
       rank: rank && totalXp > 0 ? rank.rank : null,
-      badges: earnedBadgeCount(completed),
+      badges: badgeList.length,
+      badgeList,
     };
   }
 

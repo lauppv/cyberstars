@@ -8,6 +8,8 @@ import { canAccessFeature } from '../../shared/features';
 import { useCurriculum } from '../context/CurriculumContext';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
+import { Badge } from '../components/gamification/Badge';
+import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
 import { courseMeta, courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
 import * as messagesService from '../services/messagesService';
@@ -290,6 +292,26 @@ export function PublicProfilePage() {
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Earned badges */}
+            {profile.progress && profile.progress.badgeList.length > 0 && (
+              <div className="py-4 border-b border-[var(--accent)]/20">
+                <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] uppercase mb-2">
+                  {t('profile.badges')}
+                </div>
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
+                  {profile.progress.badgeList.map((b) => (
+                    <Badge
+                      key={`${b.courseKey}-${b.level}`}
+                      icon={badgeIcon(b.courseKey)}
+                      label={badgeLabel(t, courseTitle(b.courseKey), b.level)}
+                      earned
+                      description={badgeDescription(t, courseTitle(b.courseKey), b.level)}
+                    />
+                  ))}
+                </div>
               </div>
             )}
 

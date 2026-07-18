@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '../../shared/constants';
+import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
 
 interface BadgeDef {
   icon: string;
@@ -36,18 +37,6 @@ export interface Gamification {
   isLoading: boolean;
   refresh: () => void;
 }
-
-const COURSE_BADGE_ICONS: Record<string, string> = {
-  python: '🐍',
-  java: '☕',
-  c: '⚙️',
-  linux: '🐧',
-  'algo-python': '🧩',
-  'algo-java': '🧩',
-  'algo-c': '🧩',
-};
-
-const TIER_KEYS = ['bronze', 'silver', 'gold'];
 
 export function useGamification(): Gamification {
   const { t } = useTranslation();
@@ -103,12 +92,12 @@ export function useGamification(): Gamification {
     for (const c of courses) {
       const { done, total } = perCourse[c.key] ?? { done: 0, total: 0 };
       const maxLevel = Math.max(1, Math.floor(total / 10));
-      const icon = COURSE_BADGE_ICONS[c.key] ?? '⭐';
+      const icon = badgeIcon(c.key);
 
       result.push({
         icon,
-        label: t('gamification.firstSteps', { course: c.title }),
-        description: t('gamification.firstStepsDesc', { course: c.title }),
+        label: badgeLabel(t, c.title, 0),
+        description: badgeDescription(t, c.title, 0),
         courseKey: c.key,
         level: 0,
         maxLevel,
@@ -116,17 +105,14 @@ export function useGamification(): Gamification {
       });
 
       for (let lvl = 1; lvl <= maxLevel; lvl++) {
-        const threshold = lvl * 10;
-        const tierKey = TIER_KEYS[lvl - 1];
-        const tier = tierKey ? t(`gamification.${tierKey}`) : `Lv${lvl}`;
         result.push({
           icon,
-          label: t('gamification.tier', { course: c.title, tier }),
-          description: t('gamification.tierDesc', { course: c.title, count: threshold }),
+          label: badgeLabel(t, c.title, lvl),
+          description: badgeDescription(t, c.title, lvl),
           courseKey: c.key,
           level: lvl,
           maxLevel,
-          earned: done >= threshold,
+          earned: done >= lvl * 10,
         });
       }
     }

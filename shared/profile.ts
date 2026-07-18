@@ -14,12 +14,21 @@ interface PublicProfileStats {
   courses: PublicProfileCourse[]; // per-course completed lessons, most completed first
 }
 
+// One earned badge. level 0 = "First Steps" (>=1 lesson), level N = the Nth
+// 10-lesson tier (1=Bronze, 2=Silver, 3=Gold...). The client resolves icon and
+// localized label from courseKey + level.
+export interface PublicProfileBadge {
+  courseKey: string;
+  level: number;
+}
+
 interface PublicProfileProgress {
   level: number;
   totalXp: number; // earned XP (same figure the leaderboard ranks on)
   titleKey: string; // i18n key for the cosmos level title
   rank: number | null; // leaderboard rank, null if unranked (0 XP)
   badges: number; // count of earned badges across all courses
+  badgeList: PublicProfileBadge[]; // the earned badges, for enumeration
 }
 
 export interface PublicProfile {

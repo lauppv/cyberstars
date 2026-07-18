@@ -62,7 +62,18 @@ const fullProfile: PublicProfile = {
       { courseKey: 'algo-c', lessons: ['ac-1'] },
     ],
   },
-  progress: { level: 3, totalXp: 250, titleKey: 'level.title.3', rank: 5, badges: 6 },
+  progress: {
+    level: 3,
+    totalXp: 250,
+    titleKey: 'level.title.3',
+    rank: 5,
+    badges: 6,
+    badgeList: [
+      { courseKey: 'python', level: 0 },
+      { courseKey: 'python', level: 1 },
+      { courseKey: 'algo-c', level: 0 },
+    ],
+  },
   activity: ['2026-07-15T10:00:00.000Z', '2026-07-15T12:00:00.000Z', '2026-07-16T09:00:00.000Z'],
 };
 
@@ -95,7 +106,8 @@ describe('PublicProfilePage', () => {
     await screen.findByText('Nova');
     expect(screen.getByText('Lessons Done')).toBeDefined();
     expect(screen.getByText('Active Courses')).toBeDefined();
-    expect(screen.getByText('Badges')).toBeDefined();
+    // "Badges" appears twice: the stat cell label and the enumerated section header.
+    expect(screen.getAllByText('Badges').length).toBeGreaterThan(0);
     expect(screen.getByText('Day Streak')).toBeDefined();
     expect(screen.getByText('#5')).toBeDefined();
     expect(screen.getByText(/250/)).toBeDefined();
