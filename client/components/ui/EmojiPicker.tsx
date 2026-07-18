@@ -41,9 +41,15 @@ const EMOJIS = [
 export function EmojiPicker({
   onSelect,
   disabled,
+  label,
+  triggerClassName,
+  align = 'right',
 }: {
   onSelect: (emoji: string) => void;
   disabled?: boolean;
+  label?: string;
+  triggerClassName?: string;
+  align?: 'left' | 'right';
 }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -71,14 +77,19 @@ export function EmojiPicker({
         type="button"
         onClick={() => setOpen((o) => !o)}
         disabled={disabled}
-        aria-label={t('profile.addEmoji')}
-        title={t('profile.addEmoji')}
-        className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[16px] leading-none cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
+        aria-label={label ?? t('profile.addEmoji')}
+        title={label ?? t('profile.addEmoji')}
+        className={
+          triggerClassName ??
+          'px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[16px] leading-none cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50'
+        }
       >
         😊
       </button>
       {open && (
-        <div className="absolute right-0 z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.92)] backdrop-blur-[12px] shadow-lg grid grid-cols-8 gap-0.5">
+        <div
+          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.92)] backdrop-blur-[12px] shadow-lg grid grid-cols-8 gap-0.5`}
+        >
           {EMOJIS.map((emoji) => (
             <button
               key={emoji}

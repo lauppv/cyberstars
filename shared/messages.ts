@@ -7,6 +7,14 @@ interface ConversationParticipant {
   avatarUrl: string | null;
 }
 
+// Raw per-user reaction rows; the client groups by emoji and derives `active`
+// from its own user id, so the same payload works for both participants (no
+// per-viewer shaping server-side, unlike the forum's grouped DTO).
+export interface MessageReactionDTO {
+  emoji: string;
+  userId: number;
+}
+
 export interface MessageDTO {
   id: number;
   conversationId: number;
@@ -15,6 +23,7 @@ export interface MessageDTO {
   deleted: boolean;
   readAt: string | null;
   createdAt: string;
+  reactions: MessageReactionDTO[];
 }
 
 export interface ConversationDTO {
@@ -43,4 +52,11 @@ export type DmSocketFrame =
       channel: 'dm';
       type: 'read';
       payload: { conversationId: number; upToMessageId: number; readerId: number };
+    }
+  // A reaction was toggled: the full refreshed list for one message, pushed to
+  // both participants (add and remove alike — the list is authoritative).
+  | {
+      channel: 'dm';
+      type: 'reaction';
+      payload: { conversationId: number; messageId: number; reactions: MessageReactionDTO[] };
     };

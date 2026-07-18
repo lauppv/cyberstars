@@ -10,18 +10,24 @@ const mockRepo = {
   markRead: vi.fn(),
   findMessage: vi.fn(),
   softDeleteMessage: vi.fn(),
+  toggleReaction: vi.fn(),
 };
 const mockUserRepo = { findById: vi.fn() };
-const mockNotifications = { notify: vi.fn(), markEntityRead: vi.fn() };
 const mockWs = { pushToUser: vi.fn() };
 
 vi.mock('../repositories/messages.repository.js', () => mockRepo);
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
-vi.mock('./notifications.service.js', () => mockNotifications);
 vi.mock('./ws-user.js', () => mockWs);
 
-const { getInbox, openConversation, getHistory, sendMessage, markRead, deleteMessage } =
-  await import('./messages.service.js');
+const {
+  getInbox,
+  openConversation,
+  getHistory,
+  sendMessage,
+  markRead,
+  deleteMessage,
+  toggleReaction,
+} = await import('./messages.service.js');
 
 function convRow(over: Partial<Record<string, unknown>> = {}) {
   return {
@@ -46,6 +52,7 @@ function msgRow(over: Partial<Record<string, unknown>> = {}) {
     readAt: null,
     deleted: false,
     createdAt: new Date('2026-07-17T11:00:00.000Z'),
+    reactions: [],
     ...over,
   };
 }
@@ -138,7 +145,7 @@ describe('messages.service sendMessage', () => {
     mockRepo.createMessage.mockResolvedValue(msgRow({ senderId: 1, content: 'buna' }));
   });
 
-  it('pushes the message to both participants and notifies the recipient', async () => {
+  it('pushes the message to both participants without a bell notification', async () => {
     const msg = await sendMessage(1, 100, 'buna');
 
     expect(msg.content).toBe('buna');
@@ -152,14 +159,6 @@ describe('messages.service sendMessage', () => {
       type: 'message',
       payload: expect.objectContaining({ id: 500 }),
     });
-    expect(mockNotifications.notify).toHaveBeenCalledWith(
-      expect.objectContaining({
-        recipientIds: [2],
-        actorId: 1,
-        type: 'DM_MESSAGE',
-        entityId: 100,
-      }),
-    );
   });
 
   it('404s when the caller is not a participant', async () => {
@@ -174,10 +173,9 @@ describe('messages.service markRead', () => {
     mockRepo.findConversation.mockResolvedValue(convRow());
   });
 
-  it('clears the DM bell notification and pushes a read frame to the other side', async () => {
+  it('pushes a read frame to the other side', async () => {
     mockRepo.markRead.mockResolvedValue(2);
     await markRead(1, 100, 500);
-    expect(mockNotifications.markEntityRead).toHaveBeenCalledWith(1, 'DM_MESSAGE', 100);
     expect(mockWs.pushToUser).toHaveBeenCalledWith(2, {
       channel: 'dm',
       type: 'read',
@@ -189,6 +187,46 @@ describe('messages.service markRead', () => {
     mockRepo.markRead.mockResolvedValue(0);
     await markRead(1, 100, 500);
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+});
+
+describe('messages.service toggleReaction', () => {
+  it('404s when the message does not exist', async () => {
+    mockRepo.findMessage.mockResolvedValue(null);
+    await expect(toggleReaction(1, 500, '🔥')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
+  });
+
+  it('404s when the caller is not a participant', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow());
+    mockRepo.findConversation.mockResolvedValue(convRow({ userAId: 5, userBId: 6 }));
+    await expect(toggleReaction(1, 500, '🔥')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
+  });
+
+  it('rejects reacting to a deleted message', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ deleted: true }));
+    mockRepo.findConversation.mockResolvedValue(convRow());
+    await expect(toggleReaction(1, 500, '🔥')).rejects.toMatchObject({ statusCode: 400 });
+    expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
+  });
+
+  it('toggles, pushes the refreshed list to both participants, and returns the message', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow());
+    mockRepo.findConversation.mockResolvedValue(convRow());
+    mockRepo.toggleReaction.mockResolvedValue([{ emoji: '🔥', userId: 1 }]);
+
+    const msg = await toggleReaction(1, 500, '🔥');
+
+    expect(mockRepo.toggleReaction).toHaveBeenCalledWith(500, 1, '🔥');
+    expect(msg.reactions).toEqual([{ emoji: '🔥', userId: 1 }]);
+    const frame = {
+      channel: 'dm',
+      type: 'reaction',
+      payload: { conversationId: 100, messageId: 500, reactions: [{ emoji: '🔥', userId: 1 }] },
+    };
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(2, frame);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(1, frame);
   });
 });
 

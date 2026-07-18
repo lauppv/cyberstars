@@ -32,3 +32,7 @@ export function markRead(conversationId: number, upToMessageId: number) {
 export function deleteMessage(messageId: number) {
   return api.delete<{ message: MessageDTO }>(`/api/messages/${messageId}`);
 }
+
+export function toggleReaction(messageId: number, emoji: string) {
+  return api.post<{ message: MessageDTO }>(`/api/messages/${messageId}/reactions`, { emoji });
+}

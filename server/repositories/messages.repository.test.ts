@@ -14,6 +14,12 @@ const mockPrisma = {
     updateMany: vi.fn(),
     findUnique: vi.fn(),
   },
+  dmReaction: {
+    findUnique: vi.fn(),
+    findMany: vi.fn(),
+    create: vi.fn(),
+    delete: vi.fn(),
+  },
   $transaction: vi.fn(),
 };
 
@@ -125,9 +131,9 @@ describe('createMessage', () => {
     mockPrisma.$transaction.mockResolvedValue([{ id: 11 }, { id: 1 }]);
     const msg = await repo.createMessage(1, 7, 'hi');
     expect(msg).toEqual({ id: 11 });
-    expect(mockPrisma.directMessage.create).toHaveBeenCalledWith({
-      data: { conversationId: 1, senderId: 7, content: 'hi' },
-    });
+    expect(mockPrisma.directMessage.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { conversationId: 1, senderId: 7, content: 'hi' } }),
+    );
     expect(mockPrisma.conversation.update).toHaveBeenCalledWith(
       expect.objectContaining({ where: { id: 1 } }),
     );
@@ -156,6 +162,28 @@ describe('findMessage', () => {
   it('finds a message by id', async () => {
     mockPrisma.directMessage.findUnique.mockResolvedValue({ id: 3 });
     expect(await repo.findMessage(3)).toEqual({ id: 3 });
+  });
+});
+
+describe('toggleReaction', () => {
+  it('adds when the (message, user, emoji) row does not exist yet', async () => {
+    mockPrisma.dmReaction.findUnique.mockResolvedValue(null);
+    mockPrisma.dmReaction.findMany.mockResolvedValue([{ emoji: '🔥', userId: 7 }]);
+    const list = await repo.toggleReaction(3, 7, '🔥');
+    expect(mockPrisma.dmReaction.create).toHaveBeenCalledWith({
+      data: { messageId: 3, userId: 7, emoji: '🔥' },
+    });
+    expect(mockPrisma.dmReaction.delete).not.toHaveBeenCalled();
+    expect(list).toEqual([{ emoji: '🔥', userId: 7 }]);
+  });
+
+  it('removes when the same row already exists', async () => {
+    mockPrisma.dmReaction.findUnique.mockResolvedValue({ id: 42 });
+    mockPrisma.dmReaction.findMany.mockResolvedValue([]);
+    const list = await repo.toggleReaction(3, 7, '🔥');
+    expect(mockPrisma.dmReaction.delete).toHaveBeenCalledWith({ where: { id: 42 } });
+    expect(mockPrisma.dmReaction.create).not.toHaveBeenCalled();
+    expect(list).toEqual([]);
   });
 });
 

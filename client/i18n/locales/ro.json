@@ -149,7 +149,8 @@
     "back": "Înapoi",
     "loadOlder": "Încarcă mesaje mai vechi",
     "read": "Citit",
-    "sent": "Trimis"
+    "sent": "Trimis",
+    "addReaction": "Adaugă o reacție"
   },
   "notif": {
     "title": "Notificări",
@@ -162,9 +163,6 @@
     "forumReply_other": "{{count}} de răspunsuri noi la „{{title}}”",
     "forumSolution": "{{name}} a marcat răspunsul tău drept soluție la „{{title}}”",
     "forumReaction": "{{name}} a reacționat la postarea ta din „{{title}}”",
-    "dm_one": "{{name}} ți-a trimis un mesaj",
-    "dm_few": "{{count}} mesaje noi de la {{name}}",
-    "dm_other": "{{count}} de mesaje noi de la {{name}}",
     "ticketNew": "Tichet nou de suport: „{{title}}”",
     "ticketReply": "Răspuns nou la tichetul „{{title}}”",
     "status": "Tichetul „{{title}}” este acum {{status}}",
@@ -796,14 +794,16 @@
         "variable": "Codul tău trebuie să definească variabila {{name}}",
         "function": "Codul tău trebuie să definească funcția {{name}}()",
         "loop": "Folosește o buclă (for sau while)",
-        "fstring": "Folosește un f-string (f\"...\")"
+        "fstring": "Folosește un f-string (f\"...\")",
+        "comment": "Linia cu {{contains}} trebuie să fie într-un comentariu adevărat"
       },
       "forbid": {
         "call": "Nu apela {{name}}() aici",
         "variable": "Nu folosi variabila {{name}}",
         "function": "Nu defini funcția {{name}}()",
         "loop": "Nu folosi o buclă aici",
-        "int_literal": "Nu scrie rezultatul de-a gata — calculează-l (am găsit {{values}} în cod)"
+        "int_literal": "Nu scrie rezultatul de-a gata — calculează-l (am găsit {{values}} în cod)",
+        "string_expr": "Linia pusă între ghilimele nu devine comentariu — rămâne un string care plutește în cod. Folosește un comentariu adevărat"
       }
     }
   },

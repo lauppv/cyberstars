@@ -120,6 +120,26 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
       }
       return false;
     }
+    case 'comment': {
+      // Whitespace-insensitive so `// printf( "..." );` still matches.
+      const needle = (rule.contains ?? '').replace(/\s+/g, '');
+      for (const node of walk(root)) {
+        if (node.type !== 'comment') continue;
+        if (!needle || node.text.replace(/\s+/g, '').includes(needle)) return true;
+      }
+      return false;
+    }
+    case 'string_expr':
+      // A bare string literal as a statement (`"printf(...)";`) — valid C, and
+      // the counterfeit students use instead of actually commenting a line out.
+      for (const node of walk(root)) {
+        if (node.type !== 'expression_statement') continue;
+        const expr = node.namedChild(0);
+        if (expr && (expr.type === 'string_literal' || expr.type === 'concatenated_string')) {
+          return true;
+        }
+      }
+      return false;
     default:
       // Unknown kind: require passes, forbid fires (same convention as py/java).
       return true;

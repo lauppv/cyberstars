@@ -5,7 +5,8 @@
       { "kind": "variable", "name": "numeMisiune" },
       { "kind": "variable", "name": "incarcaturaSecreta" },
       { "kind": "variable", "name": "putereMax" },
-      { "kind": "call", "name": "println" }
+      { "kind": "call", "name": "println" },
+      { "kind": "comment", "contains": "println(incarcaturaSecreta)" }
     ]
   },
   "cases": [

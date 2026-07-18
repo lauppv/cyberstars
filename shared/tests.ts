@@ -7,7 +7,15 @@
 // the set of lines (thread/process output whose line order is nondeterministic).
 export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered';
 
-type StructureKind = 'call' | 'variable' | 'function' | 'loop' | 'fstring' | 'int_literal';
+type StructureKind =
+  | 'call'
+  | 'variable'
+  | 'function'
+  | 'loop'
+  | 'fstring'
+  | 'int_literal'
+  | 'comment'
+  | 'string_expr';
 
 interface StructureRule {
   kind: StructureKind;
@@ -15,6 +23,13 @@ interface StructureRule {
   name?: string;
   /** int_literal: forbidden constant values */
   values?: number[];
+  /**
+   * comment: substring that must appear inside a comment (whitespace-
+   * insensitive), so "comment out this line" missions can verify the line
+   * really became a comment. string_expr (forbid) blocks the counterfeit:
+   * wrapping the line in quotes to make a dead "floating string" statement.
+   */
+  contains?: string;
 }
 
 /**

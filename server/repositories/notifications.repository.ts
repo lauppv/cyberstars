@@ -120,7 +120,7 @@ export async function markReadUpTo(userId: number, upToId: number): Promise<numb
 }
 
 // Mark every unread notification for a given source entity read (e.g. the
-// DM_MESSAGE for a conversation, when its thread is opened). Returns how many.
+// CONNECTION_REQUEST for a request, when it is responded to). Returns how many.
 export async function markReadByEntity(
   userId: number,
   type: NotificationType,

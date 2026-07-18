@@ -40,6 +40,16 @@ describe('MarkdownRenderer', () => {
     expect(strong!.style.color).toBe('rgb(90, 160, 224)');
   });
 
+  it('renders a GFM table as a real table element', () => {
+    const md = '| A | B |\n| - | - |\n| 1 | 2 |';
+    const { container } = render(<MarkdownRenderer content={md} />);
+    const table = container.querySelector('table');
+    expect(table).not.toBeNull();
+    expect(container.querySelectorAll('th')).toHaveLength(2);
+    expect(container.querySelectorAll('td')).toHaveLength(2);
+    expect(table!.textContent).toContain('1');
+  });
+
   it('renders a ```strindex fence as the string-index visual', () => {
     const { container } = render(<MarkdownRenderer content={'```strindex\nhello\n^0,2,4\n```'} />);
     // StringIndexTable renders the characters as its own children.

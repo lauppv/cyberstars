@@ -1,6 +1,5 @@
 import * as repo from '../repositories/messages.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
-import * as notificationsService from './notifications.service.js';
 import { pushToUser } from './ws-user.js';
 import { AppError } from '../middleware/errorHandler.js';
 import type { ConversationDTO, ConversationHistory, MessageDTO } from '../../shared/messages.js';
@@ -16,6 +15,7 @@ function shapeMessage(row: repo.MessageRow): MessageDTO {
     deleted: row.deleted,
     readAt: row.readAt ? row.readAt.toISOString() : null,
     createdAt: row.createdAt.toISOString(),
+    reactions: row.reactions.map((r) => ({ emoji: r.emoji, userId: r.userId })),
   };
 }
 
@@ -102,18 +102,9 @@ export async function sendMessage(
 
   // Live-deliver to both participants (recipient sees it instantly; the sender's
   // other tabs stay in sync). DB is the source of truth if either is offline.
+  // No bell notification: the messages button's unread badge already covers it.
   pushToUser(recipientId, { channel: 'dm', type: 'message', payload: message });
   pushToUser(userId, { channel: 'dm', type: 'message', payload: message });
-
-  // Bell notification for the recipient (collapses per conversation while unread).
-  // No message excerpt is snapshotted: the DM notification only renders a count,
-  // and storing content would leave a copy behind after a message is deleted.
-  void notificationsService.notify({
-    recipientIds: [recipientId],
-    actorId: userId,
-    type: 'DM_MESSAGE',
-    entityId: conversationId,
-  });
   return message;
 }
 
@@ -124,8 +115,6 @@ export async function markRead(
 ): Promise<number> {
   const row = await requireConversation(conversationId, userId);
   const count = await repo.markRead(conversationId, userId, upToMessageId);
-  // Opening the thread also clears its bell notification (§4.7).
-  void notificationsService.markEntityRead(userId, 'DM_MESSAGE', conversationId);
   if (count > 0) {
     // Tell the other participant their messages were read, so their read receipts
     // update live. Echo the same frame to the reader's own tabs so their inbox
@@ -140,6 +129,33 @@ export async function markRead(
     pushToUser(userId, frame);
   }
   return count;
+}
+
+export async function toggleReaction(
+  userId: number,
+  messageId: number,
+  emoji: string,
+): Promise<MessageDTO> {
+  const message = await repo.findMessage(messageId);
+  if (!message) throw new AppError(404, 'Message not found');
+  const row = await requireConversation(message.conversationId, userId);
+  // A deleted message shows only a placeholder — reacting to it is noise.
+  if (message.deleted) throw new AppError(400, 'Cannot react to a deleted message');
+
+  const reactions = await repo.toggleReaction(messageId, userId, emoji);
+
+  // Same live-delivery model as send/read/delete: both sides get the refreshed
+  // list; removals ride the same frame since the list is authoritative. Silent
+  // (no bell) — the thread UI updating live is signal enough for a 1-to-1 chat.
+  const frame = {
+    channel: 'dm',
+    type: 'reaction',
+    payload: { conversationId: message.conversationId, messageId, reactions },
+  } as const;
+  pushToUser(otherParticipant(row, userId), frame);
+  pushToUser(userId, frame);
+
+  return shapeMessage({ ...message, reactions });
 }
 
 export async function deleteMessage(userId: number, messageId: number): Promise<MessageDTO> {

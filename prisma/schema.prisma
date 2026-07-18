@@ -39,7 +39,6 @@ enum NotificationType {
   FORUM_REPLY
   FORUM_SOLUTION
   FORUM_REACTION
-  DM_MESSAGE
   SUPPORT_TICKET_NEW
   SUPPORT_REPLY
   SUPPORT_STATUS
@@ -118,6 +117,7 @@ model User {
   conversationsA Conversation[]  @relation("ConvA")
   conversationsB Conversation[]  @relation("ConvB")
   sentMessages   DirectMessage[]
+  dmReactions    DmReaction[]
 
   connectionsRequested Connection[] @relation("ConnectionsRequested")
   connectionsReceived  Connection[] @relation("ConnectionsReceived")
@@ -156,9 +156,24 @@ model DirectMessage {
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  reactions    DmReaction[]
 
   @@index([conversationId, createdAt])
   @@map("direct_messages")
+}
+
+model DmReaction {
+  id        Int    @id @default(autoincrement())
+  messageId Int    @map("message_id")
+  userId    Int    @map("user_id")
+  emoji     String @db.VarChar(10)
+
+  message DirectMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  user    User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([messageId, userId, emoji])
+  @@index([messageId])
+  @@map("dm_reactions")
 }
 
 // One lesson and one algorithm challenge picked per day (kind = "lesson" |

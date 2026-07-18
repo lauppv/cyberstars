@@ -85,7 +85,7 @@ describe('notifications.service notify', () => {
   it('collapses from a bare unread row with no prior data or count', async () => {
     const existing = row({ id: 9, data: null });
     mockRepo.findUnreadFor.mockResolvedValue(existing);
-    await notify({ recipientIds: [10], actorId: 4, type: 'DM_MESSAGE', entityId: 5 });
+    await notify({ recipientIds: [10], actorId: 4, type: 'FORUM_REACTION', entityId: 5 });
     expect(mockRepo.collapse).toHaveBeenCalledWith(existing, 4, { count: 2 });
   });
 

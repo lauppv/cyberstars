@@ -69,18 +69,16 @@ describe('NotificationDropdown copy', () => {
     expect(screen.getByText('Someone replied to "Thread"')).toBeInTheDocument();
   });
 
-  it('renders solution, reaction, dm, ticket, reply and status copy', () => {
+  it('renders solution, reaction, ticket, reply and status copy', () => {
     renderWith([
       n({ id: 1, type: 'FORUM_SOLUTION' }),
       n({ id: 2, type: 'FORUM_REACTION' }),
-      n({ id: 3, type: 'DM_MESSAGE', data: { count: 2 } }),
       n({ id: 4, type: 'SUPPORT_TICKET_NEW' }),
       n({ id: 5, type: 'SUPPORT_REPLY' }),
       n({ id: 6, type: 'SUPPORT_STATUS', data: { title: 'Thread', status: 'RESOLVED' } }),
     ]);
     expect(screen.getByText(/marked your reply as the solution/)).toBeInTheDocument();
     expect(screen.getByText(/reacted to your post/)).toBeInTheDocument();
-    expect(screen.getByText('2 new messages from Ada')).toBeInTheDocument();
     expect(screen.getByText('New support ticket: "Thread"')).toBeInTheDocument();
     expect(screen.getByText('New reply on ticket "Thread"')).toBeInTheDocument();
     expect(screen.getByText('Ticket "Thread" is now Resolved')).toBeInTheDocument();
@@ -107,15 +105,13 @@ describe('NotificationDropdown routing', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/admin', undefined);
   });
 
-  it('routes a status change to /support and a dm to /messages', () => {
-    renderWith([n({ id: 1, type: 'SUPPORT_STATUS' }), n({ id: 2, type: 'DM_MESSAGE' })]);
+  it('routes a status change to /support and a connection request to /connections', () => {
+    renderWith([n({ id: 1, type: 'SUPPORT_STATUS' }), n({ id: 2, type: 'CONNECTION_REQUEST' })]);
     const items = screen.getAllByRole('menuitem');
     fireEvent.click(items[0]);
     expect(mockNavigate).toHaveBeenCalledWith('/support', undefined);
     fireEvent.click(items[1]);
-    expect(mockNavigate).toHaveBeenCalledWith('/messages', {
-      state: { openConversationId: 5 },
-    });
+    expect(mockNavigate).toHaveBeenCalledWith('/connections', undefined);
   });
 });
 

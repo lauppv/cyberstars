@@ -24,7 +24,7 @@ interface CourseData {
   progress: number;
   desc: string;
   chapters: { name: string; slug: string; sortOrder: number; xp: number; done: boolean }[];
-  firstSlug?: string;
+  continueSlug?: string;
 }
 
 export function CoursesPage() {
@@ -45,6 +45,21 @@ export function CoursesPage() {
       .map((course) => {
         const p = progressMap[course.key];
         const doneSet = new Set((p?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug));
+        const slugSet = new Set(course.lessons.map((l) => l.slug));
+        let lastAccessed: { slug: string; at: string } | null = null;
+        for (const l of p?.lessons ?? []) {
+          if (
+            l.lastAccessedAt &&
+            slugSet.has(l.slug) &&
+            (!lastAccessed || l.lastAccessedAt > lastAccessed.at)
+          ) {
+            lastAccessed = { slug: l.slug, at: l.lastAccessedAt };
+          }
+        }
+        const continueSlug =
+          lastAccessed?.slug ??
+          course.lessons.find((l) => !doneSet.has(l.slug))?.slug ??
+          course.lessons[0]?.slug;
         return {
           key: course.key,
           icon: courseMeta(course.key).icon,
@@ -61,7 +76,7 @@ export function CoursesPage() {
             xp: xpForLesson(l.sortOrder),
             done: doneSet.has(l.slug),
           })),
-          firstSlug: course.lessons[0]?.slug,
+          continueSlug,
         };
       });
   }, [serverCourses, progressMap, t]);
@@ -154,8 +169,8 @@ export function CoursesPage() {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (c.firstSlug) {
-                            navigate(`/lesson/${c.key}/${c.firstSlug}`);
+                          if (c.continueSlug) {
+                            navigate(`/lesson/${c.key}/${c.continueSlug}`);
                           }
                         }}
                         className="px-4 py-[7px] rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-xs font-semibold cursor-pointer border-none hover:brightness-110 transition flex-shrink-0"
