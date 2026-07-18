@@ -16,6 +16,7 @@ enum Role {
   USER
   MODERATOR
   ADMIN
+  FOUNDER
 }
 
 enum TicketType {

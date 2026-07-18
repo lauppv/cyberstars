@@ -7,8 +7,9 @@ describe('canAccessFeature', () => {
     expect(canAccessFeature('leaderboard', 'USER', false)).toBe(true);
   });
 
-  it('on prod, a preview feature is admin-only', () => {
+  it('on prod, a preview feature is admin-only (founder included)', () => {
     expect(canAccessFeature('leaderboard', 'ADMIN', true)).toBe(true);
+    expect(canAccessFeature('leaderboard', 'FOUNDER', true)).toBe(true);
     expect(canAccessFeature('leaderboard', 'USER', true)).toBe(false);
     expect(canAccessFeature('leaderboard', 'MODERATOR', true)).toBe(false);
     expect(canAccessFeature('leaderboard', undefined, true)).toBe(false);

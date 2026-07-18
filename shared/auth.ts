@@ -1,4 +1,11 @@
-export type UserRole = 'USER' | 'MODERATOR' | 'ADMIN';
+export type UserRole = 'USER' | 'MODERATOR' | 'ADMIN' | 'FOUNDER';
+
+// Admin-level privilege. FOUNDER is a superset of ADMIN, so every admin-gated
+// check must accept both — use this instead of `role === 'ADMIN'` everywhere a
+// capability (not the exact role) is what matters.
+export function isAdmin(role: UserRole | undefined | null): boolean {
+  return role === 'ADMIN' || role === 'FOUNDER';
+}
 
 export interface AuthenticatedUser {
   id: number;

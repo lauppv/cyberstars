@@ -1,4 +1,4 @@
-import type { UserRole } from './auth.js';
+import { isAdmin, type UserRole } from './auth.js';
 
 export type FeatureKey = 'leaderboard' | 'messaging' | 'notifications' | 'radio';
 
@@ -24,5 +24,5 @@ export function canAccessFeature(
 ): boolean {
   if (!PREVIEW_FEATURES[key]) return true; // fully launched
   if (!isProd) return true; // dev: open to everyone
-  return role === 'ADMIN'; // prod preview: admins only
+  return isAdmin(role); // prod preview: admins (and founder) only
 }
