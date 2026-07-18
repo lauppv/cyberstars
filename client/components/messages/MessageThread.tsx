@@ -4,8 +4,10 @@ import i18next from 'i18next';
 import { useMessages } from '../../context/MessagesContext';
 import { useUserSocketFrames } from '../../context/UserSocketContext';
 import { MessageComposer } from './MessageComposer';
+import { EmojiPicker } from '../ui/EmojiPicker';
+import { UserLink } from '../ui/UserLink';
 import * as messagesService from '../../services/messagesService';
-import type { ConversationDTO, MessageDTO } from '../../../shared/messages';
+import type { ConversationDTO, MessageDTO, MessageReactionDTO } from '../../../shared/messages';
 import type { UserSocketFrame } from '../../../shared/notifications';
 
 function timeLabel(iso: string): string {
@@ -13,6 +15,19 @@ function timeLabel(iso: string): string {
     hour: '2-digit',
     minute: '2-digit',
   });
+}
+
+// The server ships raw per-user rows; group them per emoji here so `active`
+// reflects the viewing user without per-viewer shaping server-side.
+function groupReactions(reactions: MessageReactionDTO[], currentUserId: number) {
+  const groups = new Map<string, { count: number; active: boolean }>();
+  for (const r of reactions) {
+    const g = groups.get(r.emoji) ?? { count: 0, active: false };
+    g.count += 1;
+    if (r.userId === currentUserId) g.active = true;
+    groups.set(r.emoji, g);
+  }
+  return Array.from(groups, ([emoji, g]) => ({ emoji, ...g }));
 }
 
 export function MessageThread({
@@ -102,6 +117,9 @@ export function MessageThread({
       } else if (frame.type === 'deleted' && frame.payload.conversationId === conversationId) {
         const msg = frame.payload;
         setMessages((prev) => prev.map((m) => (m.id === msg.id ? msg : m)));
+      } else if (frame.type === 'reaction' && frame.payload.conversationId === conversationId) {
+        const { messageId, reactions } = frame.payload;
+        setMessages((prev) => prev.map((m) => (m.id === messageId ? { ...m, reactions } : m)));
       } else if (frame.type === 'read' && frame.payload.conversationId === conversationId) {
         // Only the *other* participant's read marks my messages as seen — the
         // frame is also echoed to my own tabs (to sync the inbox badge), and
@@ -165,6 +183,15 @@ export function MessageThread({
       .catch(() => {});
   }, []);
 
+  const react = useCallback((messageId: number, emoji: string) => {
+    messagesService
+      .toggleReaction(messageId, emoji)
+      .then(({ message }) => {
+        setMessages((prev) => prev.map((m) => (m.id === messageId ? message : m)));
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--accent)]/20 flex-shrink-0">
@@ -175,20 +202,22 @@ export function MessageThread({
         >
           ←
         </button>
-        {conversation.other.avatarUrl ? (
-          <img
-            src={conversation.other.avatarUrl}
-            alt=""
-            className="w-8 h-8 rounded-full object-cover border-2 border-[var(--accent)]/50"
-          />
-        ) : (
-          <div className="w-8 h-8 rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]/50">
-            🚀
-          </div>
-        )}
-        <span className="font-semibold text-[14px] text-[var(--text)] truncate">
-          {conversation.other.name}
-        </span>
+        <UserLink userId={conversation.other.id} className="flex items-center gap-3 min-w-0">
+          {conversation.other.avatarUrl ? (
+            <img
+              src={conversation.other.avatarUrl}
+              alt=""
+              className="w-8 h-8 rounded-full object-cover border-2 border-[var(--accent)]/50"
+            />
+          ) : (
+            <div className="w-8 h-8 rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]/50">
+              🚀
+            </div>
+          )}
+          <span className="font-semibold text-[14px] text-[var(--text)] truncate">
+            {conversation.other.name}
+          </span>
+        </UserLink>
       </div>
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
@@ -220,10 +249,41 @@ export function MessageThread({
                   >
                     {m.deleted ? t('messages.deletedMessage') : m.content}
                   </div>
+                  {!m.deleted && m.reactions.length > 0 && (
+                    <div className={`flex flex-wrap gap-1 mt-1 ${mine ? 'justify-end' : ''}`}>
+                      {groupReactions(m.reactions, currentUserId).map((g) => (
+                        <button
+                          key={g.emoji}
+                          onClick={() => react(m.id, g.emoji)}
+                          aria-pressed={g.active}
+                          className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[12px] leading-none border transition cursor-pointer ${
+                            g.active
+                              ? 'bg-[var(--accent)]/25 border-[var(--accent)]/50'
+                              : 'bg-[rgba(22,22,29,0.4)] border-[var(--accent)]/20 hover:bg-[var(--accent)]/15'
+                          }`}
+                        >
+                          <span>{g.emoji}</span>
+                          {g.count > 1 && (
+                            <span className="text-[10px] text-[var(--text3)] tabular-nums">
+                              {g.count}
+                            </span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex items-center gap-2 mt-0.5 px-1">
                     <span className="text-[10px] text-[var(--text3)] tabular-nums">
                       {timeLabel(m.createdAt)}
                     </span>
+                    {!m.deleted && (
+                      <EmojiPicker
+                        onSelect={(emoji) => react(m.id, emoji)}
+                        label={t('messages.addReaction')}
+                        align={mine ? 'right' : 'left'}
+                        triggerClassName="w-5 h-5 flex items-center justify-center text-[11px] leading-none p-0 rounded-full border border-[var(--accent)]/30 bg-transparent text-[var(--text3)] opacity-0 group-hover:opacity-100 hover:bg-[var(--accent)]/20 transition cursor-pointer"
+                      />
+                    )}
                     {mine && !m.deleted && (
                       <>
                         <span className="text-[10px] text-[var(--text3)]">

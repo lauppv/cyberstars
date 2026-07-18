@@ -75,3 +75,18 @@ export async function deleteMessage(
     next(err);
   }
 }
+
+export async function toggleReaction(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const id = parseInt(req.params.messageId as string);
+    if (isNaN(id)) throw new AppError(400, 'Invalid message ID');
+    const message = await messagesService.toggleReaction(req.user!.id, id, req.body.emoji);
+    res.json({ message });
+  } catch (err) {
+    next(err);
+  }
+}

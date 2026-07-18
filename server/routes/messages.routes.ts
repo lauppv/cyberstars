@@ -7,6 +7,7 @@ import {
   openConversationSchema,
   sendMessageSchema,
   markReadSchema,
+  toggleReactionSchema,
 } from '../schemas/messages.schema.js';
 import * as messagesController from '../controllers/messages.controller.js';
 
@@ -34,6 +35,15 @@ const openLimiter = rateLimit({
   keyGenerator: perUser,
 });
 
+// Reactions are toggles on existing rows (cheap, bounded by the unique index),
+// so the cap is looser than sends but still shields the DB from click-spam.
+const reactLimiter = rateLimit({
+  windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
+  limit: process.env.NODE_ENV === 'test' ? 10_000 : 60,
+  keyGenerator: perUser,
+});
+
 const router = Router();
 
 // Messaging requires an identity (no guests) and passes the preview gate: on
@@ -56,5 +66,11 @@ router.post(
 );
 router.post('/conversations/:id/read', validateBody(markReadSchema), messagesController.markRead);
 router.delete('/:messageId', messagesController.deleteMessage);
+router.post(
+  '/:messageId/reactions',
+  reactLimiter,
+  validateBody(toggleReactionSchema),
+  messagesController.toggleReaction,
+);
 
 export default router;

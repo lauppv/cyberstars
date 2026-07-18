@@ -8,9 +8,11 @@
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
+import io
 import json
 import subprocess
 import sys
+import tokenize
 
 CASE_TIMEOUT = 5
 OUTPUT_CAP = 64 * 1024
@@ -69,7 +71,33 @@ def int_literals(tree, values):
     return found
 
 
-def rule_holds(tree, rule):
+def has_comment(source, contains):
+    # Whitespace-insensitive match so `# print( wind_speed )` still contains
+    # `wind_speed` — students shouldn't fail on spacing inside the comment.
+    needle = "".join((contains or "").split())
+    try:
+        for tok in tokenize.generate_tokens(io.StringIO(source).readline):
+            if tok.type == tokenize.COMMENT:
+                if not needle or needle in "".join(tok.string.split()):
+                    return True
+    except (tokenize.TokenError, IndentationError):
+        pass
+    return False
+
+
+def has_string_expr(tree):
+    # A bare string as a statement — the "floating string" that students use to
+    # counterfeit a comment (wrapping a line in quotes, or ''' ''' blocks).
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Expr):
+            if isinstance(node.value, ast.JoinedStr):
+                return True
+            if isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+                return True
+    return False
+
+
+def rule_holds(tree, source, rule):
     kind = rule.get("kind")
     if kind == "call":
         return has_call(tree, rule["name"])
@@ -83,16 +111,20 @@ def rule_holds(tree, rule):
         return has_fstring(tree)
     if kind == "int_literal":
         return bool(int_literals(tree, set(rule.get("values", []))))
+    if kind == "comment":
+        return has_comment(source, rule.get("contains"))
+    if kind == "string_expr":
+        return has_string_expr(tree)
     return True
 
 
-def check_structure(tree, structure):
+def check_structure(tree, source, structure):
     failures = []
     for rule in structure.get("requires", []):
-        if not rule_holds(tree, rule):
+        if not rule_holds(tree, source, rule):
             failures.append({"type": "require", "rule": rule})
     for rule in structure.get("forbids", []):
-        if rule_holds(tree, rule):
+        if rule_holds(tree, source, rule):
             failures.append({"type": "forbid", "rule": rule})
     return failures
 
@@ -208,7 +240,9 @@ def main():
         print(json.dumps(result))
         return
 
-    result["structureFailures"] = check_structure(user_tree, payload.get("structure", {}))
+    result["structureFailures"] = check_structure(
+        user_tree, payload["userCode"], payload.get("structure", {})
+    )
 
     for case in payload["cases"]:
         inject = case.get("inject") or {}

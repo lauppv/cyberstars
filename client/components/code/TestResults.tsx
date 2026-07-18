@@ -18,6 +18,7 @@ function structureMessage(
   return t(`tests.structure.${failure.type}.${failure.rule.kind}`, {
     name: failure.rule.name,
     values: failure.rule.values?.join(', '),
+    contains: failure.rule.contains,
   });
 }
 

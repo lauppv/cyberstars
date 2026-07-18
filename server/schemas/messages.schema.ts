@@ -12,6 +12,10 @@ export const markReadSchema = z.object({
   upToMessageId: z.number().int().positive(),
 });
 
+export const toggleReactionSchema = z.object({
+  emoji: z.string().min(1).max(10),
+});
+
 // Lenient list query (like notifications/leaderboard): bad values fall back to
 // defaults so a hand-edited URL can't 400 the history.
 export const historyQuerySchema = z.object({

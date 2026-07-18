@@ -122,6 +122,44 @@ describe('checkStructure', () => {
     const root = await parseC('int main(void){ int (*fp)(void) = 0; (*fp)(); return 0; }');
     expect(checkStructure(root, { requires: [{ kind: 'call', name: 'fp' }] })).toHaveLength(1);
   });
+
+  it('finds a required substring inside a // comment, whitespace-insensitively', async () => {
+    const root = await parseC(
+      'int main(void){\n    // printf( "ACCESS-7734-SECRET\\n" );\n    return 0;\n}',
+    );
+    expect(
+      checkStructure(root, { requires: [{ kind: 'comment', contains: 'ACCESS-7734-SECRET' }] }),
+    ).toHaveLength(0);
+    expect(
+      checkStructure(root, {
+        requires: [{ kind: 'comment', contains: 'printf("ACCESS-7734-SECRET' }],
+      }),
+    ).toHaveLength(0);
+  });
+
+  it('finds a required substring inside a /* */ comment', async () => {
+    const root = await parseC('int main(void){\n    /* printf("secret"); */\n    return 0;\n}');
+    expect(
+      checkStructure(root, { requires: [{ kind: 'comment', contains: 'printf("secret")' }] }),
+    ).toHaveLength(0);
+  });
+
+  it('flags a missing comment requirement (string in code is not a comment)', async () => {
+    const root = await parseC('int main(void){ printf("ACCESS-7734-SECRET\\n"); return 0; }');
+    expect(
+      checkStructure(root, { requires: [{ kind: 'comment', contains: 'ACCESS-7734-SECRET' }] }),
+    ).toHaveLength(1);
+  });
+
+  it('fires string_expr on a bare string statement (the fake-comment cheat)', async () => {
+    const root = await parseC('int main(void){\n    "printf(\\"secret\\");";\n    return 0;\n}');
+    expect(checkStructure(root, { forbids: [{ kind: 'string_expr' }] })).toHaveLength(1);
+  });
+
+  it('does not fire string_expr on strings used as arguments', async () => {
+    const root = await parseC('int main(void){ printf("hello\\n"); return 0; }');
+    expect(checkStructure(root, { forbids: [{ kind: 'string_expr' }] })).toHaveLength(0);
+  });
 });
 
 describe('collectInjectionSites + applyInjection', () => {

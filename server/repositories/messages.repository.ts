@@ -3,20 +3,24 @@ import { prisma } from '../config/db.js';
 
 const participantSelect = { id: true, name: true, avatarUrl: true } as const;
 
-export type MessageRow = Prisma.DirectMessageGetPayload<object>;
+const reactionsInclude = {
+  reactions: { select: { emoji: true, userId: true }, orderBy: { id: 'asc' } },
+} as const;
+
+export type MessageRow = Prisma.DirectMessageGetPayload<{ include: typeof reactionsInclude }>;
 
 export type ConversationRow = Prisma.ConversationGetPayload<{
   include: {
     userA: { select: typeof participantSelect };
     userB: { select: typeof participantSelect };
-    messages: true;
+    messages: { include: typeof reactionsInclude };
   };
 }>;
 
 const conversationInclude = {
   userA: { select: participantSelect },
   userB: { select: participantSelect },
-  messages: { take: 1, orderBy: { id: 'desc' } },
+  messages: { take: 1, orderBy: { id: 'desc' }, include: reactionsInclude },
 } satisfies Prisma.ConversationInclude;
 
 // Canonical ordered pair (userAId < userBId) so A<->B and B<->A resolve to the
@@ -81,6 +85,7 @@ export function listMessages(
     where: { conversationId, ...(before ? { id: { lt: before } } : {}) },
     orderBy: { id: 'desc' },
     take,
+    include: reactionsInclude,
   });
 }
 
@@ -90,7 +95,10 @@ export async function createMessage(
   content: string,
 ): Promise<MessageRow> {
   const [message] = await prisma.$transaction([
-    prisma.directMessage.create({ data: { conversationId, senderId, content } }),
+    prisma.directMessage.create({
+      data: { conversationId, senderId, content },
+      include: reactionsInclude,
+    }),
     prisma.conversation.update({ where: { id: conversationId }, data: { updatedAt: new Date() } }),
   ]);
   return message;
@@ -115,7 +123,28 @@ export async function markRead(
 }
 
 export function findMessage(id: number): Promise<MessageRow | null> {
-  return prisma.directMessage.findUnique({ where: { id } });
+  return prisma.directMessage.findUnique({ where: { id }, include: reactionsInclude });
+}
+
+// Toggle semantics like ForumReaction: same (message, user, emoji) removes,
+// otherwise adds. Returns the refreshed reaction list for the message.
+export async function toggleReaction(
+  messageId: number,
+  userId: number,
+  emoji: string,
+): Promise<{ emoji: string; userId: number }[]> {
+  const where = { messageId_userId_emoji: { messageId, userId, emoji } };
+  const existing = await prisma.dmReaction.findUnique({ where });
+  if (existing) {
+    await prisma.dmReaction.delete({ where: { id: existing.id } });
+  } else {
+    await prisma.dmReaction.create({ data: { messageId, userId, emoji } });
+  }
+  return prisma.dmReaction.findMany({
+    where: { messageId },
+    select: { emoji: true, userId: true },
+    orderBy: { id: 'asc' },
+  });
 }
 
 // Soft-delete like ForumPost: the row stays (thread integrity) but content is
@@ -126,5 +155,5 @@ export async function softDeleteMessage(id: number, senderId: number): Promise<M
     data: { deleted: true, content: '' },
   });
   if (res.count === 0) return null;
-  return prisma.directMessage.findUnique({ where: { id } });
+  return prisma.directMessage.findUnique({ where: { id }, include: reactionsInclude });
 }

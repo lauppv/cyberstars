@@ -3,8 +3,10 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "viteza_vant" },
-      { "kind": "call", "name": "print" }
-    ]
+      { "kind": "call", "name": "print" },
+      { "kind": "comment", "contains": "print(viteza_vant)" }
+    ],
+    "forbids": [{ "kind": "string_expr" }]
   },
   "cases": [
     {

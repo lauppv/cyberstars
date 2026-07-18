@@ -164,7 +164,52 @@ describe('CoursesPage', () => {
     expect(screen.getByText('50% complete')).toBeDefined();
   });
 
-  it('Continue button navigates to first lesson', () => {
+  it('Continue button navigates to the most recently accessed lesson', () => {
+    mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
+          completed: 1,
+          total: 2,
+
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: true,
+              completedAt: null,
+              lastAccessedAt: '2026-07-01T10:00:00.000Z',
+            },
+            {
+              slug: 'booleans',
+              title: 'Booleans',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: '2026-07-02T10:00:00.000Z',
+            },
+          ],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    fireEvent.click(screen.getByText('Continue'));
+    expect(mockNavigate).toHaveBeenCalledWith('/lesson/python/booleans');
+  });
+
+  it('Continue button falls back to the first incomplete lesson when nothing was accessed', () => {
     mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<
       typeof useAuth
     >);
@@ -190,6 +235,13 @@ describe('CoursesPage', () => {
               completedAt: null,
               lastAccessedAt: null,
             },
+            {
+              slug: 'booleans',
+              title: 'Booleans',
+              completed: false,
+              completedAt: null,
+              lastAccessedAt: null,
+            },
           ],
         },
       },
@@ -199,7 +251,7 @@ describe('CoursesPage', () => {
     });
     renderPage();
     fireEvent.click(screen.getByText('Continue'));
-    expect(mockNavigate).toHaveBeenCalledWith('/lesson/python/intro');
+    expect(mockNavigate).toHaveBeenCalledWith('/lesson/python/booleans');
   });
 
   it('clicking a course card opens the syllabus drawer', () => {

@@ -4,7 +4,6 @@ export type NotificationType =
   | 'FORUM_REPLY'
   | 'FORUM_SOLUTION'
   | 'FORUM_REACTION'
-  | 'DM_MESSAGE'
   | 'SUPPORT_TICKET_NEW'
   | 'SUPPORT_REPLY'
   | 'SUPPORT_STATUS'
@@ -18,7 +17,6 @@ export type NotificationType =
 export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
   'FORUM_REPLY',
   'FORUM_REACTION',
-  'DM_MESSAGE',
 ]);
 
 // Snapshot of the source entity, taken at creation time so the list renders

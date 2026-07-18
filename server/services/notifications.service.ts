@@ -117,9 +117,9 @@ export async function markRead(userId: number, upToId: number): Promise<number> 
   return count;
 }
 
-// Auto-read the notification tied to a source entity (e.g. opening a DM
-// conversation clears its DM_MESSAGE bell entry). Pushes a fresh unread count so
-// the badge updates live. Fire-and-forget; never throws.
+// Auto-read the notification tied to a source entity (e.g. responding to a
+// connection request clears its CONNECTION_REQUEST bell entry). Pushes a fresh
+// unread count so the badge updates live. Fire-and-forget; never throws.
 export async function markEntityRead(
   userId: number,
   type: NotificationType,

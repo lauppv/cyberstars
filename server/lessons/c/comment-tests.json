@@ -1,6 +1,10 @@
 {
   "structure": {
-    "requires": [{ "kind": "call", "name": "printf" }]
+    "requires": [
+      { "kind": "call", "name": "printf" },
+      { "kind": "comment", "contains": "ACCESS-7734-SECRET" }
+    ],
+    "forbids": [{ "kind": "string_expr" }]
   },
   "cases": [{ "visible": true }]
 }

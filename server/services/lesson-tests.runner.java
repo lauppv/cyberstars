@@ -209,7 +209,48 @@ public class Runner {
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
     final java.util.Set<Long> intLiterals = new java.util.HashSet<>();
+    final List<String> comments = new ArrayList<>();
     boolean hasLoop;
+
+    // javac's tree drops comments, so they're collected lexically: walk the
+    // source skipping string/char literals (and text blocks), record // and
+    // /* */ comment bodies.
+    void collectComments() {
+      int i = 0;
+      int n = source.length();
+      while (i < n) {
+        char c = source.charAt(i);
+        if (c == '"' && i + 2 < n && source.charAt(i + 1) == '"' && source.charAt(i + 2) == '"') {
+          i += 3; // text block
+          while (i + 2 < n
+              && !(source.charAt(i) == '"'
+                  && source.charAt(i + 1) == '"'
+                  && source.charAt(i + 2) == '"')) {
+            i++;
+          }
+          i = Math.min(i + 3, n);
+        } else if (c == '"' || c == '\'') {
+          i++;
+          while (i < n && source.charAt(i) != c) {
+            if (source.charAt(i) == '\\') i++;
+            i++;
+          }
+          i++;
+        } else if (c == '/' && i + 1 < n && source.charAt(i + 1) == '/') {
+          int end = source.indexOf('\n', i);
+          if (end < 0) end = n;
+          comments.add(source.substring(i + 2, end));
+          i = end;
+        } else if (c == '/' && i + 1 < n && source.charAt(i + 1) == '*') {
+          int end = source.indexOf("*/", i + 2);
+          if (end < 0) end = n;
+          comments.add(source.substring(i + 2, Math.min(end, n)));
+          i = Math.min(end + 2, n);
+        } else {
+          i++;
+        }
+      }
+    }
 
     static Parsed of(String source) {
       Parsed parsed = new Parsed();
@@ -243,6 +284,7 @@ public class Runner {
       for (CompilationUnitTree unit : units) {
         parsed.scan(unit, positions);
       }
+      parsed.collectComments();
       return parsed;
     }
 
@@ -445,6 +487,15 @@ public class Runner {
             if (v instanceof Long l && parsed.intLiterals.contains(l)) return true;
           }
           return false;
+        case "comment":
+          {
+            String rawNeedle = rule.get("contains") instanceof String s ? s : "";
+            String needle = rawNeedle.replaceAll("\\s+", "");
+            for (String comment : parsed.comments) {
+              if (needle.isEmpty() || comment.replaceAll("\\s+", "").contains(needle)) return true;
+            }
+            return false;
+          }
         default:
           // Unknown kinds behave like the Python runner: a require passes, a
           // forbid always fires (so a typo'd spec is caught while authoring).

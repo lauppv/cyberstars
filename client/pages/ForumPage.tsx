@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import i18next from 'i18next';
 import { Topbar } from '../components/layout/Topbar';
+import { UserLink } from '../components/ui/UserLink';
 import { ForumPostContent } from '../components/forum/ForumPostContent';
 import { CategoryModal } from '../components/forum/CategoryModal';
 import { useAuth } from '../context/AuthContext';
@@ -496,7 +497,10 @@ function CategoryView({
                   {th.solved && <span className="badge badge-solved">{t('forum.solved')}</span>}
                 </div>
                 <div className="thread-author">
-                  {t('forum.by')} <span className="author">{th.authorName}</span>{' '}
+                  {t('forum.by')}{' '}
+                  <UserLink userId={th.authorId} className="author">
+                    {th.authorName}
+                  </UserLink>{' '}
                   <RoleBadge role={th.authorRole} /> · {timeAgo(th.createdAt)}
                 </div>
               </div>
@@ -698,7 +702,10 @@ function ThreadView({
           <h1 className="thread-head-title">{thread.title}</h1>
           <div className="thread-head-meta">
             <span>
-              {t('forum.startedBy')} <strong>{thread.authorName}</strong>
+              {t('forum.startedBy')}{' '}
+              <UserLink userId={thread.authorId}>
+                <strong>{thread.authorName}</strong>
+              </UserLink>
             </span>
             <RoleBadge role={thread.authorRole} />
             <span className="dot" />
@@ -819,12 +826,16 @@ function PostCard({
     return (
       <div className={`forum-post deleted${isOp ? ' op' : ''}`}>
         <div className="post-sidebar">
-          {post.authorAvatarUrl ? (
-            <img src={post.authorAvatarUrl} alt="" className="post-avatar" />
-          ) : (
-            <div className="post-avatar">{post.authorName.charAt(0).toUpperCase()}</div>
-          )}
-          <div className="post-username">{post.authorName}</div>
+          <UserLink userId={post.authorId}>
+            {post.authorAvatarUrl ? (
+              <img src={post.authorAvatarUrl} alt="" className="post-avatar" />
+            ) : (
+              <div className="post-avatar">{post.authorName.charAt(0).toUpperCase()}</div>
+            )}
+          </UserLink>
+          <UserLink userId={post.authorId}>
+            <div className="post-username">{post.authorName}</div>
+          </UserLink>
         </div>
         <div className="post-body">
           <div className="post-deleted-banner">
@@ -841,18 +852,22 @@ function PostCard({
   return (
     <div className={`forum-post${isOp ? ' op' : ''}`}>
       <div className="post-sidebar">
-        {post.authorAvatarUrl ? (
-          <img
-            src={post.authorAvatarUrl}
-            alt=""
-            className={`post-avatar${isOp ? ' op-avatar' : ''}`}
-          />
-        ) : (
-          <div className={`post-avatar${isOp ? ' op-avatar' : ''}`}>
-            {post.authorName.charAt(0).toUpperCase()}
-          </div>
-        )}
-        <div className="post-username">{post.authorName}</div>
+        <UserLink userId={post.authorId}>
+          {post.authorAvatarUrl ? (
+            <img
+              src={post.authorAvatarUrl}
+              alt=""
+              className={`post-avatar${isOp ? ' op-avatar' : ''}`}
+            />
+          ) : (
+            <div className={`post-avatar${isOp ? ' op-avatar' : ''}`}>
+              {post.authorName.charAt(0).toUpperCase()}
+            </div>
+          )}
+        </UserLink>
+        <UserLink userId={post.authorId}>
+          <div className="post-username">{post.authorName}</div>
+        </UserLink>
         <RoleBadge role={post.authorRole} />
         {canChangeRole && (
           <select

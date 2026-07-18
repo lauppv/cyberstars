@@ -22,7 +22,6 @@ const ICONS: Record<NotificationType, string> = {
   FORUM_REPLY: '💬',
   FORUM_SOLUTION: '✅',
   FORUM_REACTION: '❤️',
-  DM_MESSAGE: '✉️',
   SUPPORT_TICKET_NEW: '🎫',
   SUPPORT_REPLY: '🎫',
   SUPPORT_STATUS: '🔖',
@@ -42,8 +41,6 @@ function describe(n: NotificationDTO): string {
       return t('notif.forumSolution', { name, title });
     case 'FORUM_REACTION':
       return t('notif.forumReaction', { name, title });
-    case 'DM_MESSAGE':
-      return t('notif.dm', { count, name });
     case 'SUPPORT_TICKET_NEW':
       return t('notif.ticketNew', { title });
     case 'SUPPORT_REPLY':
@@ -79,8 +76,6 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
         return { path: isAdmin(user?.role) ? '/admin' : '/support' };
       case 'SUPPORT_STATUS':
         return { path: '/support' };
-      case 'DM_MESSAGE':
-        return { path: '/messages', state: { openConversationId: n.entityId } };
       case 'CONNECTION_REQUEST':
       case 'CONNECTION_ACCEPTED':
         return { path: '/connections' };

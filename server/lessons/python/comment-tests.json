@@ -3,8 +3,10 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "wind_speed" },
-      { "kind": "call", "name": "print" }
-    ]
+      { "kind": "call", "name": "print" },
+      { "kind": "comment", "contains": "print(wind_speed)" }
+    ],
+    "forbids": [{ "kind": "string_expr" }]
   },
   "cases": [
     {

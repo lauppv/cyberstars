@@ -148,7 +148,8 @@
     "back": "Back",
     "loadOlder": "Load older messages",
     "read": "Read",
-    "sent": "Sent"
+    "sent": "Sent",
+    "addReaction": "Add reaction"
   },
   "notif": {
     "title": "Notifications",
@@ -160,8 +161,6 @@
     "forumReply_other": "{{count}} new replies on \"{{title}}\"",
     "forumSolution": "{{name}} marked your reply as the solution on \"{{title}}\"",
     "forumReaction": "{{name}} reacted to your post in \"{{title}}\"",
-    "dm_one": "{{name}} sent you a message",
-    "dm_other": "{{count}} new messages from {{name}}",
     "ticketNew": "New support ticket: \"{{title}}\"",
     "ticketReply": "New reply on ticket \"{{title}}\"",
     "status": "Ticket \"{{title}}\" is now {{status}}",
@@ -793,14 +792,16 @@
         "variable": "Your code must define the variable {{name}}",
         "function": "Your code must define the function {{name}}()",
         "loop": "Use a loop (for or while)",
-        "fstring": "Use an f-string (f\"...\")"
+        "fstring": "Use an f-string (f\"...\")",
+        "comment": "The line with {{contains}} must be inside a real comment"
       },
       "forbid": {
         "call": "Don't call {{name}}() here",
         "variable": "Don't use the variable {{name}}",
         "function": "Don't define the function {{name}}()",
         "loop": "Don't use a loop here",
-        "int_literal": "Don't hardcode the result — compute it (found {{values}} in your code)"
+        "int_literal": "Don't hardcode the result — compute it (found {{values}} in your code)",
+        "string_expr": "Wrapping a line in quotes doesn't comment it — that's still a string floating in your code. Use a real comment"
       }
     }
   },

@@ -5,7 +5,8 @@
       { "kind": "variable", "name": "missionName" },
       { "kind": "variable", "name": "secretCargo" },
       { "kind": "variable", "name": "maxPower" },
-      { "kind": "call", "name": "println" }
+      { "kind": "call", "name": "println" },
+      { "kind": "comment", "contains": "println(secretCargo)" }
     ]
   },
   "cases": [

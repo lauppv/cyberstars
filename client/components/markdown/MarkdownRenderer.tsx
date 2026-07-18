@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { CodeCell } from '../code/CodeCell';
 import { StringIndexTable } from './StringIndexTable';
 import type { Components } from 'react-markdown';
@@ -13,6 +14,23 @@ const EDITABLE_LANGS = [...MAIN_COURSE_KEYS, 'py'];
 const components: Components = {
   strong({ children }) {
     return <strong style={{ color: '#5aa0e0' }}>{children}</strong>;
+  },
+  table({ children }) {
+    return (
+      <div className="overflow-x-auto my-4">
+        <table className="w-auto border-collapse text-sm">{children}</table>
+      </div>
+    );
+  },
+  th({ children }) {
+    return (
+      <th className="border border-[var(--accent)]/30 bg-[rgba(108,92,231,0.12)] px-4 py-2 text-left font-semibold">
+        {children}
+      </th>
+    );
+  },
+  td({ children }) {
+    return <td className="border border-[var(--accent)]/20 px-4 py-2">{children}</td>;
   },
   pre({ children }) {
     return <pre style={{ margin: 0, padding: 0, background: 'transparent' }}>{children}</pre>;
@@ -76,7 +94,9 @@ const components: Components = {
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <div className="prose text-[#d0d4de] break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
-      <ReactMarkdown components={components}>{content}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+        {content}
+      </ReactMarkdown>
     </div>
   );
 }
