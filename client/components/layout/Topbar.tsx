@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
+import { isAdmin } from '../../../shared/auth';
 import { useGamification } from '../../hooks/useGamification';
 import { NotificationBell } from './NotificationBell';
 import { LeaderboardButton } from './LeaderboardButton';
@@ -269,7 +270,7 @@ export function Topbar({
                   >
                     <span className="w-4 text-center">👤</span> {t('topbar.profile')}
                   </button>
-                  {user.role === 'ADMIN' && (
+                  {isAdmin(user.role) && (
                     <button
                       role="menuitem"
                       onClick={() => {

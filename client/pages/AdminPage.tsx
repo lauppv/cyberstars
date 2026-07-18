@@ -7,6 +7,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
 import type { AdminStatsDTO } from '../../shared/admin';
+import { isAdmin as isAdminRole } from '../../shared/auth';
 
 const CARD_CLS =
   'p-5 rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px]';
@@ -24,7 +25,7 @@ export function AdminPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading } = useAuth();
-  const isAdmin = user?.role === 'ADMIN';
+  const isAdmin = isAdminRole(user?.role);
 
   const [stats, setStats] = useState<AdminStatsDTO | null>(null);
   const [loading, setLoading] = useState(true);
@@ -106,6 +107,7 @@ export function AdminPage() {
                   <Stat label={t('admin.new30')} value={stats.users.newLast30Days} />
                 </div>
                 <div className="pt-3 border-t border-[var(--accent)]/20 flex gap-4 text-[12px] text-[var(--text2)]">
+                  <span>FOUNDER {stats.users.byRole.FOUNDER}</span>
                   <span>ADMIN {stats.users.byRole.ADMIN}</span>
                   <span>MODERATOR {stats.users.byRole.MODERATOR}</span>
                   <span>USER {stats.users.byRole.USER}</span>

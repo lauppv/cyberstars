@@ -14,7 +14,7 @@ import type {
   ForumThreadDetailDTO,
   ForumPostDTO,
 } from '../../shared/forum';
-import type { AuthenticatedUser, UserRole } from '../../shared/auth';
+import { isAdmin, type AuthenticatedUser, type UserRole } from '../../shared/auth';
 import './ForumPage.css';
 
 function timeAgo(iso: string): string {
@@ -37,6 +37,7 @@ function errMsg(err: unknown): string {
 const REACTION_EMOJIS = ['👍', '❤️', '😄', '🎉', '🚀', '👀', '🤔', '🙏'];
 
 const ROLE_CLS: Record<UserRole, string> = {
+  FOUNDER: 'role-founder',
   ADMIN: 'role-admin',
   MODERATOR: 'role-mod',
   USER: 'role-user',
@@ -49,7 +50,8 @@ function RoleBadge({ role }: { role: UserRole }) {
 
 /** Mirror of the server-side permission rule (server is authoritative). */
 function canModerate(actorRole: UserRole, targetRole: UserRole, isOwner: boolean): boolean {
-  if (actorRole === 'ADMIN') return true;
+  if (targetRole === 'FOUNDER') return actorRole === 'FOUNDER';
+  if (isAdmin(actorRole)) return true;
   if (actorRole === 'MODERATOR') return isOwner || targetRole === 'USER';
   return isOwner;
 }
@@ -799,7 +801,13 @@ function PostCard({
 
   const isOwner = currentUser != null && currentUser.id === post.authorId;
   const canManage = currentUser != null && canModerate(currentUser.role, post.authorRole, isOwner);
-  const isAdmin = currentUser?.role === 'ADMIN';
+  const isFounder = currentUser?.role === 'FOUNDER';
+  // Founder manages anyone (bar the founder); a plain admin only USER<->MODERATOR.
+  const canChangeRole =
+    currentUser != null &&
+    !isOwner &&
+    post.authorRole !== 'FOUNDER' &&
+    (isFounder || (isAdmin(currentUser.role) && post.authorRole !== 'ADMIN'));
 
   const saveEdit = () => {
     if (!draft.trim()) return;
@@ -846,7 +854,7 @@ function PostCard({
         )}
         <div className="post-username">{post.authorName}</div>
         <RoleBadge role={post.authorRole} />
-        {isAdmin && !isOwner && (
+        {canChangeRole && (
           <select
             className="role-select"
             value={post.authorRole}
@@ -855,7 +863,7 @@ function PostCard({
           >
             <option value="USER">{t('forum.roles.USER')}</option>
             <option value="MODERATOR">{t('forum.roles.MODERATOR')}</option>
-            <option value="ADMIN">{t('forum.roles.ADMIN')}</option>
+            {isFounder && <option value="ADMIN">{t('forum.roles.ADMIN')}</option>}
           </select>
         )}
       </div>

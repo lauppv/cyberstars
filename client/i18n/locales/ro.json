@@ -509,6 +509,7 @@
       "postError": "Nu s-a putut publica pe forum. Încearcă din nou."
     },
     "roles": {
+      "FOUNDER": "Fondator",
       "ADMIN": "Admin",
       "MODERATOR": "Moderator",
       "USER": "Utilizator"
