@@ -13,7 +13,7 @@
       "inject": { "signals": { "$list": ["X", "X", "Y"] } }
     },
     { "inject": { "signals": { "$list": ["Z"] } } },
-    { "inject": { "signals": { "$list": ["A", "B", "C"] } } },
+    { "inject": { "signals": { "$list": ["A", "B", "B", "C"] } } },
     { "inject": { "signals": { "$list": ["Q", "Q", "Q", "R", "R"] } } }
   ]
 }

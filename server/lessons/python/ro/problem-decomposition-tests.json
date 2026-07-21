@@ -12,7 +12,7 @@
   "cases": [
     { "visible": true, "inject": { "jurnal": "alpha beta alpha gamma beta alpha" } },
     { "visible": true, "inject": { "jurnal": "sos sos ok ok ok bye" } },
-    { "inject": { "jurnal": "x y z" } },
+    { "inject": { "jurnal": "x y y z" } },
     { "inject": { "jurnal": "a a a" } },
     { "inject": { "jurnal": "one" } }
   ]
