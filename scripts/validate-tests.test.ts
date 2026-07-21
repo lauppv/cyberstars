@@ -70,4 +70,24 @@ describe('auditSolution', () => {
     expect(problems).toHaveLength(1);
     expect(problems[0]).toContain('temperature');
   });
+
+  it('handles a case with no inject block (structure-only lesson)', async () => {
+    const code = 'age = 5\nprint(age)';
+    const spec: LessonTestsSpec = {
+      structure: { requires: [{ kind: 'variable', name: 'age' }] },
+      cases: [{}],
+    };
+    expect(await auditSolution('python', code, spec)).toEqual([]);
+  });
+
+  it('flags a C solution missing a required structure name', async () => {
+    const code =
+      '#include <stdio.h>\nint main(void) { int temperature = 20; printf("%d", temperature); return 0; }';
+    const spec: LessonTestsSpec = {
+      structure: { requires: [{ kind: 'variable', name: 'ghost' }] },
+      cases: [{ inject: { temperature: 5 } }],
+    };
+    const problems = await auditSolution('c', code, spec);
+    expect(problems.some((p) => p.includes('ghost'))).toBe(true);
+  });
 });

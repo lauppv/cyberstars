@@ -367,6 +367,37 @@ describe('runLessonTests', () => {
     });
   });
 
+  it('500s when the solution markdown has no fenced block', async () => {
+    mockExistsSync.mockReturnValue(true);
+    mockReadFileSync.mockImplementation((file: string) => {
+      if (file.endsWith('-tests.json')) return JSON.stringify(SPEC);
+      if (file.endsWith('-solution.md')) return 'no fence in here';
+      return '# runner';
+    });
+    await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
+      statusCode: 500,
+    });
+  });
+
+  it("falls back to a generic 'error' label when a crashed case has no stderr", async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ user: program({ exit: 1, stderr: '' }), solution: program() }],
+    });
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res.cases[0]).toMatchObject({ passed: false, error: 'error' });
+  });
+
+  it('500s when acquiring a runner fails for an unexpected reason', async () => {
+    stubFiles();
+    mockAcquire.mockRejectedValue(new Error('docker daemon down'));
+    await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
+      statusCode: 500,
+    });
+  });
+
   it('drops the container when the runner itself fails', async () => {
     stubFiles();
     mockDockerExec.mockRejectedValue(new Error('exec blew up'));

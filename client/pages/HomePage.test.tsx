@@ -571,4 +571,35 @@ describe('HomePage', () => {
     renderPage();
     await waitFor(() => expect(screen.queryByText('Lesson of the Day')).not.toBeInTheDocument());
   });
+
+  it('falls back to the raw course key when the daily pick course is unknown', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({ courses: [], isLoading: false, refresh: vi.fn() });
+    vi.mocked(fetchDaily).mockResolvedValueOnce({
+      lesson: { courseKey: 'ghost-course', slug: 'x', title: 'Ghost Lesson', kind: 'lesson' },
+      algo: null,
+      bonusRatio: 0,
+    } as never);
+    renderPage();
+    expect(await screen.findByText('Ghost Lesson')).toBeInTheDocument();
+  });
+
+  it('uses the default tag color for almanac articles with an unknown tag', async () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    vi.mocked(fetchAlmanacArticle).mockImplementation((slug: string) =>
+      Promise.resolve({
+        slug,
+        cat: 'oss',
+        tag: null,
+        title: `Story ${slug}`,
+        excerpt: 'excerpt',
+        fullText: 'body',
+        author: 'x',
+        readTime: '5 min',
+        emoji: '🐧',
+      } as never),
+    );
+    renderPage();
+    expect(await screen.findAllByText(/^Story /)).toHaveLength(3);
+  });
 });

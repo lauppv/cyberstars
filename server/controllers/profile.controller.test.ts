@@ -203,6 +203,28 @@ describe('updateProfile', () => {
     expect(res.json).toHaveBeenCalledWith({ message: 'Profile updated' });
   });
 
+  it('persists the privacy flags when provided', async () => {
+    mockUpdateProfile.mockResolvedValueOnce(undefined);
+    await updateProfile(
+      mkProfileReq({
+        showBio: false,
+        showStats: true,
+        showProgress: false,
+        showActivity: true,
+        showConnections: false,
+      }),
+      mkRes(),
+      vi.fn(),
+    );
+    expect(mockUpdateProfile).toHaveBeenLastCalledWith(7, {
+      showBio: false,
+      showStats: true,
+      showProgress: false,
+      showActivity: true,
+      showConnections: false,
+    });
+  });
+
   it('forwards repository errors to next', async () => {
     const boom = new Error('db down');
     mockUpdateProfile.mockRejectedValueOnce(boom);

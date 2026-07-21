@@ -32,6 +32,8 @@ const profileService = await import('../services/profileService');
 const mockUpdateProfile = vi.mocked(profileService.updateProfile);
 const mockChangePassword = vi.mocked(profileService.changePassword);
 const mockRequestEmailChange = vi.mocked(profileService.requestEmailChange);
+const mockConfirmEmailChange = vi.mocked(profileService.confirmEmailChange);
+const mockCancelEmailChange = vi.mocked(profileService.cancelEmailChange);
 
 const { SettingsPage } = await import('./SettingsPage');
 
@@ -194,5 +196,148 @@ describe('SettingsPage', () => {
         newEmail: 'new@example.com',
       }),
     );
+  });
+
+  it('shows an error message when the email request fails', async () => {
+    mockRequestEmailChange.mockRejectedValue(new Error('wrong password'));
+    renderPage();
+    const emailForm = screen.getByText('Send confirmation code').closest('form') as HTMLFormElement;
+    const emailInput = emailForm.querySelector('input[type=email]') as HTMLInputElement;
+    const pwInput = emailForm.querySelector('input[type=password]') as HTMLInputElement;
+    fireEvent.change(emailInput, { target: { value: 'new@example.com' } });
+    fireEvent.change(pwInput, { target: { value: 'bad' } });
+    fireEvent.submit(emailForm);
+    expect(await screen.findByText('wrong password')).toBeDefined();
+  });
+
+  it('falls back to a generic error when the email request throws a non-Error', async () => {
+    mockRequestEmailChange.mockRejectedValue('boom');
+    renderPage();
+    const emailForm = screen.getByText('Send confirmation code').closest('form') as HTMLFormElement;
+    const emailInput = emailForm.querySelector('input[type=email]') as HTMLInputElement;
+    const pwInput = emailForm.querySelector('input[type=password]') as HTMLInputElement;
+    fireEvent.change(emailInput, { target: { value: 'new@example.com' } });
+    fireEvent.change(pwInput, { target: { value: 'bad' } });
+    fireEvent.submit(emailForm);
+    expect(await screen.findByText('Error')).toBeDefined();
+  });
+
+  it('shows the error message when the password change fails with an Error', async () => {
+    mockChangePassword.mockRejectedValue(new Error('current password wrong'));
+    renderPage();
+    const [current, next, confirm] = passwordForm().querySelectorAll('input[type=password]');
+    fireEvent.change(current, { target: { value: 'oldpass' } });
+    fireEvent.change(next, { target: { value: '123456' } });
+    fireEvent.change(confirm, { target: { value: '123456' } });
+    fireEvent.submit(passwordForm());
+    expect(await screen.findByText('current password wrong')).toBeDefined();
+  });
+
+  it('shows a generic error when the password change throws a non-Error', async () => {
+    mockChangePassword.mockRejectedValue('kaboom');
+    renderPage();
+    const [current, next, confirm] = passwordForm().querySelectorAll('input[type=password]');
+    fireEvent.change(current, { target: { value: 'oldpass' } });
+    fireEvent.change(next, { target: { value: '123456' } });
+    fireEvent.change(confirm, { target: { value: '123456' } });
+    fireEvent.submit(passwordForm());
+    expect(await screen.findByText('Error')).toBeDefined();
+  });
+
+  it('toggles visibility of every password field', () => {
+    renderPage();
+    // Email form's password field.
+    const emailForm = screen.getByText('Send confirmation code').closest('form') as HTMLFormElement;
+    const emailPw = emailForm.querySelector('input[type=password]') as HTMLInputElement;
+    fireEvent.click(emailForm.querySelector('button[aria-label="Show password"]') as HTMLElement);
+    expect(emailPw).toHaveAttribute('type', 'text');
+    // All three password fields in the security form.
+    const inputs = passwordForm().querySelectorAll('input');
+    const toggles = passwordForm().querySelectorAll('button[aria-label="Show password"]');
+    expect(toggles).toHaveLength(3);
+    toggles.forEach((btn) => fireEvent.click(btn));
+    inputs.forEach((input) => expect(input).toHaveAttribute('type', 'text'));
+    passwordForm()
+      .querySelectorAll('button[aria-label="Hide password"]')
+      .forEach((btn) => fireEvent.click(btn));
+    inputs.forEach((input) => expect(input).toHaveAttribute('type', 'password'));
+  });
+
+  describe('with a pending email change', () => {
+    beforeEach(() => {
+      mockUseAuth.mockReturnValue(
+        authState({ user: { ...baseUser, pendingEmail: 'pending@example.com' } }),
+      );
+    });
+
+    it('renders the confirmation form', () => {
+      renderPage();
+      expect(screen.getByText('Confirm new email')).toBeDefined();
+    });
+
+    it('confirms the email change', async () => {
+      mockConfirmEmailChange.mockResolvedValue({ email: 'pending@example.com' } as Awaited<
+        ReturnType<typeof profileService.confirmEmailChange>
+      >);
+      renderPage();
+      const form = screen.getByText('Confirm new email').closest('form') as HTMLFormElement;
+      const codeInput = form.querySelector('input') as HTMLInputElement;
+      fireEvent.change(codeInput, { target: { value: '123456' } });
+      fireEvent.submit(form);
+      await waitFor(() => expect(mockConfirmEmailChange).toHaveBeenCalledWith({ code: '123456' }));
+      expect(refreshUser).toHaveBeenCalled();
+    });
+
+    it('shows an error when confirmation fails', async () => {
+      mockConfirmEmailChange.mockRejectedValue(new Error('bad code'));
+      renderPage();
+      const form = screen.getByText('Confirm new email').closest('form') as HTMLFormElement;
+      const codeInput = form.querySelector('input') as HTMLInputElement;
+      fireEvent.change(codeInput, { target: { value: '123456' } });
+      fireEvent.submit(form);
+      expect(await screen.findByText('bad code')).toBeDefined();
+    });
+
+    it('shows a generic error when confirmation throws a non-Error', async () => {
+      mockConfirmEmailChange.mockRejectedValue('boom');
+      renderPage();
+      const form = screen.getByText('Confirm new email').closest('form') as HTMLFormElement;
+      const codeInput = form.querySelector('input') as HTMLInputElement;
+      fireEvent.change(codeInput, { target: { value: '123456' } });
+      fireEvent.submit(form);
+      expect(await screen.findByText('Error')).toBeDefined();
+    });
+
+    it('shows a generic error when cancellation throws a non-Error', async () => {
+      mockCancelEmailChange.mockRejectedValue('boom');
+      renderPage();
+      fireEvent.click(screen.getByText('Cancel'));
+      expect(await screen.findByText('Error')).toBeDefined();
+    });
+
+    it('cancels the pending email change', async () => {
+      mockCancelEmailChange.mockResolvedValue({ message: 'ok' } as Awaited<
+        ReturnType<typeof profileService.cancelEmailChange>
+      >);
+      renderPage();
+      fireEvent.click(screen.getByText('Cancel'));
+      await waitFor(() => expect(mockCancelEmailChange).toHaveBeenCalled());
+      expect(refreshUser).toHaveBeenCalled();
+    });
+
+    it('shows an error when cancellation fails', async () => {
+      mockCancelEmailChange.mockRejectedValue(new Error('cannot cancel'));
+      renderPage();
+      fireEvent.click(screen.getByText('Cancel'));
+      expect(await screen.findByText('cannot cancel')).toBeDefined();
+    });
+
+    it('strips non-digits from the confirmation code', () => {
+      renderPage();
+      const form = screen.getByText('Confirm new email').closest('form') as HTMLFormElement;
+      const codeInput = form.querySelector('input') as HTMLInputElement;
+      fireEvent.change(codeInput, { target: { value: 'a1b2c3d4e5' } });
+      expect(codeInput.value).toBe('12345');
+    });
   });
 });

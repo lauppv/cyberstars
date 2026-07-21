@@ -137,6 +137,15 @@ describe('messages.service getHistory', () => {
     expect(res.messages[0].deleted).toBe(true);
     expect(res.messages[0].content).toBe('');
   });
+
+  it('serializes a message readAt timestamp to ISO', async () => {
+    mockRepo.findConversation.mockResolvedValue(convRow());
+    mockRepo.listMessages.mockResolvedValue([
+      msgRow({ readAt: new Date('2026-07-17T12:00:00.000Z') }),
+    ]);
+    const res = await getHistory(1, 100);
+    expect(res.messages[0].readAt).toBe('2026-07-17T12:00:00.000Z');
+  });
 });
 
 describe('messages.service sendMessage', () => {
@@ -187,6 +196,16 @@ describe('messages.service markRead', () => {
     mockRepo.markRead.mockResolvedValue(0);
     await markRead(1, 100, 500);
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+
+  it('pushes to userA when the caller is userB', async () => {
+    mockRepo.markRead.mockResolvedValue(1);
+    await markRead(2, 100, 500);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(1, {
+      channel: 'dm',
+      type: 'read',
+      payload: { conversationId: 100, upToMessageId: 500, readerId: 2 },
+    });
   });
 });
 
@@ -264,6 +283,12 @@ describe('messages.service deleteMessage', () => {
     };
     expect(mockWs.pushToUser).toHaveBeenCalledWith(2, frame);
     expect(mockWs.pushToUser).toHaveBeenCalledWith(1, frame);
+  });
+
+  it('404s when the soft-delete affects no row (already deleted)', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.softDeleteMessage.mockResolvedValue(null);
+    await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
   });
 
   it('skips the live push when the conversation cannot be loaded', async () => {

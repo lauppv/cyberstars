@@ -124,4 +124,50 @@ describe('ShareToForumModal', () => {
     fireEvent.click(screen.getByText('Cancel'));
     expect(onClose).toHaveBeenCalled();
   });
+
+  it('closes on the Escape key', async () => {
+    const onClose = vi.fn();
+    render(
+      <ShareToForumModal code="print(1)" language="python" lessonTitle="Loops" onClose={onClose} />,
+    );
+    await waitFor(() => expect(screen.getByText('General')).toBeInTheDocument());
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('ignores non-Escape keys', async () => {
+    const onClose = vi.fn();
+    render(
+      <ShareToForumModal code="print(1)" language="python" lessonTitle="Loops" onClose={onClose} />,
+    );
+    await waitFor(() => expect(screen.getByText('General')).toBeInTheDocument());
+    fireEvent.keyDown(document, { key: 'Enter' });
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('keeps a raw fence language for an unmapped language', async () => {
+    render(<ShareToForumModal code="puts 1" language="Ruby" lessonTitle="T" onClose={vi.fn()} />);
+    await waitFor(() => expect(screen.getByText('General')).toBeInTheDocument());
+    fireEvent.click(screen.getByText('Post'));
+    await waitFor(() => expect(createThread).toHaveBeenCalledTimes(1));
+    expect(createThread.mock.calls[0][0].content).toBe('```ruby\nputs 1\n```');
+  });
+
+  it('leaves the category unset when no categories are allowed', async () => {
+    getCategories.mockResolvedValue([]);
+    render(
+      <ShareToForumModal code="print(1)" language="python" lessonTitle="T" onClose={vi.fn()} />,
+    );
+    await waitFor(() => expect(getCategories).toHaveBeenCalled());
+    // With no category selected, Post stays disabled and no thread is created.
+    expect(screen.getByText('Post')).toBeDisabled();
+  });
+
+  it('shows a load error when categories fail to fetch', async () => {
+    getCategories.mockRejectedValue(new Error('boom'));
+    render(
+      <ShareToForumModal code="print(1)" language="python" lessonTitle="T" onClose={vi.fn()} />,
+    );
+    await waitFor(() => expect(screen.getByText('Could not load categories.')).toBeInTheDocument());
+  });
 });
