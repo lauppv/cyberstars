@@ -1,4 +1,4 @@
-# Dificil · Înmulțirea matricelor
+# Mediu · Înmulțirea matricelor
 
 Înmulțește două matrice **A** și **B** și afișează matricea rezultată **C**.
 

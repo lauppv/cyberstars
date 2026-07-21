@@ -1,4 +1,4 @@
-# Medium · Matrix Transpose
+# Easy · Matrix Transpose
 
 Compute the **transpose** of an N×N matrix (rows become columns) and print the result.
 

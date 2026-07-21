@@ -1,4 +1,4 @@
-# Easy · Binary Search
+# Medium · Binary Search
 
 Read a sorted array of **N** integers and a target value. Find the target using **binary search** and print its index (0-based), or **-1** if the target is not found.
 

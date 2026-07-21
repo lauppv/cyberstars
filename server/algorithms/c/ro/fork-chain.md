@@ -1,4 +1,4 @@
-# Dificil · Lanț de trei generații
+# Mediu · Lanț de trei generații
 
 Un proces "bunic" creează un proces "tată" prin fork. La rândul lui, "tatăl" creează un proces "nepot". Fiecare generație afișează nivelul ei și PID-ul propriu, dar tipărirea se face **de la nepot spre bunic**: fiecare părinte așteaptă cu **wait(NULL)** ca al lui copil să termine înainte să tipărească.
 

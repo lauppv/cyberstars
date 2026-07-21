@@ -1255,7 +1255,7 @@ export const lessons = [
   {
     courseKey: 'algo-python',
     slug: 'two-sum',
-    title: 'Hard · Two Sum',
+    title: 'Medium · Two Sum',
     sortOrder: 15,
     hasCodeFile: true,
   },
@@ -1403,14 +1403,14 @@ export const lessons = [
   {
     courseKey: 'algo-java',
     slug: 'binary-search',
-    title: 'Easy · Binary Search',
+    title: 'Medium · Binary Search',
     sortOrder: 16,
     hasCodeFile: true,
   },
   {
     courseKey: 'algo-java',
     slug: 'bubble-sort',
-    title: 'Easy · Bubble Sort',
+    title: 'Medium · Bubble Sort',
     sortOrder: 17,
     hasCodeFile: true,
   },
@@ -1431,7 +1431,7 @@ export const lessons = [
   {
     courseKey: 'algo-java',
     slug: 'matrix-multiply',
-    title: 'Hard · Matrix Multiplication',
+    title: 'Medium · Matrix Multiplication',
     sortOrder: 20,
     hasCodeFile: true,
   },
@@ -1509,7 +1509,7 @@ export const lessons = [
   {
     courseKey: 'algo-c',
     slug: 'matrix-transpose',
-    title: 'Medium · Matrix Transpose',
+    title: 'Easy · Matrix Transpose',
     sortOrder: 11,
     hasCodeFile: true,
   },
@@ -1523,7 +1523,7 @@ export const lessons = [
   {
     courseKey: 'algo-c',
     slug: 'bitwise-ops',
-    title: 'Hard · Bitwise Power of Two',
+    title: 'Medium · Bitwise Power of Two',
     sortOrder: 13,
     hasCodeFile: true,
   },
@@ -1551,7 +1551,7 @@ export const lessons = [
   {
     courseKey: 'algo-c',
     slug: 'binary-search-c',
-    title: 'Easy · Binary Search',
+    title: 'Medium · Binary Search',
     sortOrder: 17,
     hasCodeFile: true,
   },
@@ -1586,14 +1586,14 @@ export const lessons = [
   {
     courseKey: 'algo-c',
     slug: 'fork-workers',
-    title: 'Easy · Multiple Children',
+    title: 'Medium · Multiple Children',
     sortOrder: 22,
     hasCodeFile: true,
   },
   {
     courseKey: 'algo-c',
     slug: 'pipe-uppercase',
-    title: 'Easy · Uppercase Through a Pipe',
+    title: 'Medium · Uppercase Through a Pipe',
     sortOrder: 23,
     hasCodeFile: true,
   },
@@ -1628,21 +1628,21 @@ export const lessons = [
   {
     courseKey: 'algo-c',
     slug: 'threads-histogram',
-    title: 'Hard · Parallel Histogram',
+    title: 'Medium · Parallel Histogram',
     sortOrder: 28,
     hasCodeFile: true,
   },
   {
     courseKey: 'algo-c',
     slug: 'fork-chain',
-    title: 'Hard · Three-Generation Chain',
+    title: 'Medium · Three-Generation Chain',
     sortOrder: 29,
     hasCodeFile: true,
   },
   {
     courseKey: 'algo-c',
     slug: 'threads-parallel-search',
-    title: 'Hard · Parallel Search',
+    title: 'Medium · Parallel Search',
     sortOrder: 30,
     hasCodeFile: true,
   },

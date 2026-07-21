@@ -1,4 +1,4 @@
-# Easy · Uppercase Through a Pipe
+# Medium · Uppercase Through a Pipe
 
 A parent reads a word from the keyboard and sends it to the child through a pipe. The child receives the word, converts it to uppercase and prints it.
 

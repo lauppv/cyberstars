@@ -1,4 +1,4 @@
-# Ușor · Căutare binară
+# Mediu · Căutare binară
 
 Implementează **căutarea binară** pe un tablou sortat de numere întregi. Având un tablou sortat și o valoare țintă, găsește indicele țintei. Dacă ținta nu se află în tablou, afișează `-1`.
 

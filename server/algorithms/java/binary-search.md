@@ -1,4 +1,4 @@
-# Easy · Binary Search
+# Medium · Binary Search
 
 Implement **binary search** on a sorted array of integers. Given a sorted array and a target value, find the index of the target. If the target is not in the array, print `-1`.
 

@@ -1,4 +1,4 @@
-# Hard · Three-Generation Chain
+# Medium · Three-Generation Chain
 
 A "grandparent" process forks to create a "parent" process. That parent, in turn, forks to create a "grandchild". Each generation prints its level and its own PID, but printing goes **from grandchild up to grandparent**: every parent uses **wait(NULL)** to let its own child finish before printing.
 

@@ -1,4 +1,4 @@
-# Easy · Multiple Children
+# Medium · Multiple Children
 
 A computing centre receives an execution order specifying how many child processes to launch. Each child reports that it is ready, and the parent confirms at the end that all of them are done.
 

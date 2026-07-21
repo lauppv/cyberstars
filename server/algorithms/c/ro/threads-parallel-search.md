@@ -1,4 +1,4 @@
-# Dificil · Căutare paralelă
+# Mediu · Căutare paralelă
 
 Împarte un vector în două și caută valoarea `tinta` cu două fire în paralel. Firele scriu într-o variabilă globală `index_gasit` protejată de un **mutex**: fiecare fir, când găsește o potrivire, actualizează valoarea doar dacă noul index e mai mic decât cel deja înregistrat.
 

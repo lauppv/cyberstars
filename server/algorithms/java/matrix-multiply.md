@@ -1,4 +1,4 @@
-# Hard · Matrix Multiplication
+# Medium · Matrix Multiplication
 
 Multiply two matrices **A** and **B** and print the resulting matrix **C**.
 

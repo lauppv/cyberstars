@@ -1,4 +1,4 @@
-# Ușor · Căutare binară
+# Mediu · Căutare binară
 
 Citește un tablou sortat de **N** numere întregi și o valoare căutată. Găsește valoarea folosind **căutarea binară** și afișează indicele ei (începând de la 0), sau **-1** dacă valoarea nu este găsită.
 

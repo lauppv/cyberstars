@@ -1,4 +1,4 @@
-# Ușor · Litere mari prin pipe
+# Mediu · Litere mari prin pipe
 
 Un părinte citește un cuvânt de la tastatură și îl trimite copilului printr-un pipe. Copilul primește cuvântul, îl convertește la litere mari și îl afișează.
 

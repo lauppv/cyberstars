@@ -1,4 +1,4 @@
-# Easy · Bubble Sort
+# Medium · Bubble Sort
 
 Implement the **bubble sort** algorithm. Read an array of integers and sort them in ascending order using bubble sort, then print the sorted array.
 

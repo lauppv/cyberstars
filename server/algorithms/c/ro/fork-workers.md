@@ -1,4 +1,4 @@
-# Ușor · Mai mulți copii
+# Mediu · Mai mulți copii
 
 Un centru de calcul primește un ordin de execuție care specifică câte procese copii să lanseze. Fiecare copil raportează că e gata, iar părintele confirmă la final că toți au terminat.
 

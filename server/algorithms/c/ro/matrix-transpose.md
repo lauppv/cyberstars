@@ -1,4 +1,4 @@
-# Mediu · Transpusa unei matrice
+# Ușor · Transpusa unei matrice
 
 Calculează **transpusa** unei matrice N×N (rândurile devin coloane) și afișează rezultatul.
 

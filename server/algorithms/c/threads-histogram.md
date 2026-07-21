@@ -1,4 +1,4 @@
-# Hard · Parallel Histogram
+# Medium · Parallel Histogram
 
 Two threads count occurrences of lowercase letters in a string, sharing a 26-slot array (the histogram). Every increment of the histogram is protected by a **mutex** because both threads may touch the same slot at the same moment.
 

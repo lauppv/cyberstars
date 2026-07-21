@@ -1,4 +1,4 @@
-# Dificil · Putere a lui doi pe biți
+# Mediu · Putere a lui doi pe biți
 
 Citește un întreg **N**, apoi citește **N** numere întregi pozitive. Pentru fiecare număr, afișează `"DA"` dacă este o **putere a lui 2**, sau `"NU"` în caz contrar. Trebuie să folosești **operatori pe biți** pentru verificare — fără bucle care numără împărțiri.
 
