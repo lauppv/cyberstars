@@ -286,8 +286,11 @@
       "02 · Languages",
       "03 · Almanac",
       "04 · Forum",
-      "05 · Laniakea Explorer",
-      "06 · Launch"
+      "05 · Messaging",
+      "06 · Connections",
+      "07 · Leaderboard",
+      "08 · Laniakea Explorer",
+      "09 · Launch"
     ],
     "skip": "SKIP TO DASHBOARD →",
     "hero": {
@@ -303,7 +306,7 @@
       "steps": [
         "Mounting code editor",
         "Loading C / Java / Python / Bash kernels",
-        "Indexing almanac · 2,418 entries",
+        "Indexing almanac",
         "Syncing forum threads",
         "Charting the Laniakea universe"
       ]
@@ -337,13 +340,13 @@
       }
     },
     "almanac": {
-      "num": "// 03 — REFERENCE",
-      "title": "The <1>Almanac</1>.<3></3>Every fact, one search away.",
-      "subtitle": "Stuck on a syntax detail? The almanac has 2,400+ entries across every language we teach — functions, keywords, commands, gotchas — all cross-linked to the lessons that introduced them.",
+      "num": "// 03 — STORIES",
+      "title": "The <1>Almanac</1>.<3></3>Tech stories worth reading.",
+      "subtitle": "Open-source legends, hacker culture, tech history, space and the curious little fun facts behind the tools you use every day — a growing library of articles, quotes and a timeline, with new reads every week.",
       "stats": {
-        "entries": "entries",
-        "examples": "examples",
-        "search": "search"
+        "articles": "Articles worth reading",
+        "topics": "History, space & culture",
+        "funFacts": "Fun facts & quotes"
       }
     },
     "forum": {
@@ -351,13 +354,53 @@
       "title": "A <1>forum</1> where<3></3>answers actually arrive.",
       "subtitle": "Every lesson has its own thread. Mentors and senior learners triage questions hourly. Code blocks render with syntax highlighting and one-click sandboxing.",
       "stats": {
-        "avgReply": "avg reply",
-        "threads": "threads",
-        "solved": "solved"
+        "threads": "A thread per lesson",
+        "answers": "Answers that arrive",
+        "solved": "Accepted solutions"
+      }
+    },
+    "messaging": {
+      "num": "// 05 — MESSAGES",
+      "title": "Private <1>messages</1>,<3></3>in real time.",
+      "subtitle": "Take a conversation off the forum and into a direct chat. Messages arrive instantly, you can react with emoji, and everything stays between the two of you.",
+      "read": "Read",
+      "stats": {
+        "private": "One-to-one chats",
+        "realtime": "Instant delivery",
+        "reactions": "Emoji reactions"
+      }
+    },
+    "connections": {
+      "num": "// 06 — CONNECTIONS",
+      "title": "Build your <1>network</1><3></3>of fellow learners.",
+      "subtitle": "Send a connection request to anyone you meet in the forum or on the leaderboard. Once they accept, you're linked — a shortcut to their profile and a direct line to message them.",
+      "wantsToConnect": "wants to connect",
+      "requestSent": "request sent",
+      "accept": "Accept",
+      "decline": "Decline",
+      "pending": "Pending",
+      "connected": "Connected",
+      "stats": {
+        "requests": "Connection requests",
+        "network": "Link with fellow learners",
+        "profile": "Shortcut to profiles"
+      }
+    },
+    "leaderboard": {
+      "num": "// 07 — LEADERBOARD",
+      "title": "Climb the <1>leaderboard</1><3></3>one lesson at a time.",
+      "subtitle": "Every completed lesson earns XP and pushes you up the global ranking. Levels, badges and your rank update the moment the judge marks a solution correct — no grinding, just learning.",
+      "person": "Person",
+      "you": "you",
+      "lessons": "{{count}} lessons",
+      "stats": {
+        "perLesson": "XP for every lesson",
+        "levels": "Level up as you climb",
+        "climb": "Global ranking"
       }
     },
     "laniakea": {
-      "num": "// 05 — LANIAKEA EXPLORER",
+      "num": "// 08 — LANIAKEA EXPLORER",
       "title": "The <1>Laniakea Explorer</1><3></3>is a universe.",
       "subtitle": "When your brain needs a break, drift into the Laniakea Explorer — a navigable galaxy where each planet is a side-quest or a community room. Fly through it the way you'd play a game.",
       "controlsTitle": "Controls",
@@ -366,7 +409,7 @@
       "boost": "boost"
     },
     "network": {
-      "num": "// 06 — IT ALL CONNECTS",
+      "num": "// 09 — IT ALL CONNECTS",
       "title": "One platform, every piece <1>wired together</1>.",
       "subtitle": "Every lesson links to almanac entries. Every error suggests a forum thread. Every completed lesson unlocks a badge. Your progress shows up everywhere — instantly.",
       "nodes": {

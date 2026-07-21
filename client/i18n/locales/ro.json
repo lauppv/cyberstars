@@ -288,8 +288,11 @@
       "02 · Limbaje",
       "03 · Almanah",
       "04 · Forum",
-      "05 · Laniakea Explorer",
-      "06 · Lansare"
+      "05 · Mesagerie",
+      "06 · Conexiuni",
+      "07 · Clasament",
+      "08 · Laniakea Explorer",
+      "09 · Lansare"
     ],
     "skip": "SARI LA PANOU →",
     "hero": {
@@ -305,7 +308,7 @@
       "steps": [
         "Se montează editorul de cod",
         "Se încarcă nucleele C / Java / Python / Bash",
-        "Se indexează almanahul · 2.418 intrări",
+        "Se indexează almanahul",
         "Se sincronizează discuțiile din forum",
         "Se cartografiază universul Laniakea"
       ]
@@ -339,13 +342,13 @@
       }
     },
     "almanac": {
-      "num": "// 03 — REFERINȚĂ",
-      "title": "<1>Almanahul</1>.<3></3>Orice informație, la o căutare distanță.",
-      "subtitle": "Te-ai blocat la un detaliu de sintaxă? Almanahul are peste 2.400 de intrări pentru fiecare limbaj pe care îl predăm — funcții, cuvinte cheie, comenzi, capcane — toate legate de lecțiile care le-au introdus.",
+      "num": "// 03 — POVEȘTI",
+      "title": "<1>Almanahul</1>.<3></3>Povești tech care merită citite.",
+      "subtitle": "Legende open-source, cultură hacker, istoria tehnologiei, spațiu și curiozitățile din spatele uneltelor pe care le folosești zilnic — o bibliotecă în creștere de articole, citate și o cronologie, cu lecturi noi în fiecare săptămână.",
       "stats": {
-        "entries": "intrări",
-        "examples": "exemple",
-        "search": "căutare"
+        "articles": "Articole care merită citite",
+        "topics": "Istorie, spațiu și cultură",
+        "funFacts": "Curiozități și citate"
       }
     },
     "forum": {
@@ -353,13 +356,53 @@
       "title": "Un <1>forum</1> unde<3></3>răspunsurile chiar ajung.",
       "subtitle": "Fiecare lecție are propriul fir de discuție. Mentorii și cursanții avansați triază întrebările din oră în oră. Blocurile de cod sunt afișate cu evidențiere de sintaxă și sandbox dintr-un clic.",
       "stats": {
-        "avgReply": "răspuns mediu",
-        "threads": "discuții",
-        "solved": "rezolvate"
+        "threads": "Un thread pentru fiecare lecție",
+        "answers": "Răspunsuri care ajung",
+        "solved": "Soluții acceptate"
+      }
+    },
+    "messaging": {
+      "num": "// 05 — MESAJE",
+      "title": "Mesaje <1>private</1>,<3></3>în timp real.",
+      "subtitle": "Mută o discuție de pe forum într-un chat direct. Mesajele ajung instant, poți reacționa cu emoji, iar totul rămâne doar între voi doi.",
+      "read": "Citit",
+      "stats": {
+        "private": "Conversații unu-la-unu",
+        "realtime": "Livrare instantă",
+        "reactions": "Reacții emoji"
+      }
+    },
+    "connections": {
+      "num": "// 06 — CONEXIUNI",
+      "title": "Construiește-ți <1>rețeaua</1><3></3>de colegi de învățare.",
+      "subtitle": "Trimite o cerere de conexiune oricui întâlnești pe forum sau în clasament. Odată ce acceptă, sunteți conectați — o scurtătură către profilul lor și o linie directă pentru mesaje.",
+      "wantsToConnect": "vrea să se conecteze",
+      "requestSent": "cerere trimisă",
+      "accept": "Acceptă",
+      "decline": "Refuză",
+      "pending": "În așteptare",
+      "connected": "Conectat",
+      "stats": {
+        "requests": "Cereri de conexiune",
+        "network": "Te conectezi cu alți cursanți",
+        "profile": "Scurtătură spre profiluri"
+      }
+    },
+    "leaderboard": {
+      "num": "// 07 — CLASAMENT",
+      "title": "Urcă în <1>clasament</1><3></3>lecție cu lecție.",
+      "subtitle": "Fiecare lecție finalizată aduce XP și te împinge mai sus în clasamentul global. Nivelurile, insignele și locul tău se actualizează în clipa în care evaluatorul confirmă o soluție corectă — fără grind, doar învățare.",
+      "person": "Persoană",
+      "you": "tu",
+      "lessons": "{{count}} lecții",
+      "stats": {
+        "perLesson": "XP pentru fiecare lecție",
+        "levels": "Urci în niveluri",
+        "climb": "Clasament global"
       }
     },
     "laniakea": {
-      "num": "// 05 — LANIAKEA EXPLORER",
+      "num": "// 08 — LANIAKEA EXPLORER",
       "title": "<1>Laniakea Explorer</1><3></3>este un univers.",
       "subtitle": "Când creierul tău are nevoie de o pauză, plutește în Laniakea Explorer — o galaxie navigabilă unde fiecare planetă e o misiune secundară sau o cameră a comunității. Zboară prin ea ca într-un joc.",
       "controlsTitle": "Controale",
@@ -368,7 +411,7 @@
       "boost": "accelerează"
     },
     "network": {
-      "num": "// 06 — TOTUL SE CONECTEAZĂ",
+      "num": "// 09 — TOTUL SE CONECTEAZĂ",
       "title": "O platformă, fiecare piesă <1>conectată</1>.",
       "subtitle": "Fiecare lecție trimite la intrări din almanah. Fiecare eroare sugerează un fir din forum. Fiecare lecție finalizată deblochează o insignă. Progresul tău apare peste tot — instant.",
       "nodes": {
