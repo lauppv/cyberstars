@@ -296,8 +296,7 @@ export function WelcomePage() {
             name="C"
             tag={t('welcome.langs.cards.c.tag')}
             desc={t('welcome.langs.cards.c.desc')}
-            lessons={48}
-            hours="22h"
+            lessons={47}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="4" from="#7AB6FF" to="#FF9A6E" />
@@ -309,8 +308,7 @@ export function WelcomePage() {
             name="Java"
             tag={t('welcome.langs.cards.java.tag')}
             desc={t('welcome.langs.cards.java.desc')}
-            lessons={56}
-            hours="28h"
+            lessons={49}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="6" from="#FF9A6E" to="#FFD24A" />
@@ -322,8 +320,7 @@ export function WelcomePage() {
             name="Python"
             tag={t('welcome.langs.cards.python.tag')}
             desc={t('welcome.langs.cards.python.desc')}
-            lessons={62}
-            hours="26h"
+            lessons={60}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="8" from="#FFD24A" to="#7CEEAE" />
@@ -335,8 +332,7 @@ export function WelcomePage() {
             name="Bash"
             tag={t('welcome.langs.cards.bash.tag')}
             desc={t('welcome.langs.cards.bash.desc')}
-            lessons={34}
-            hours="14h"
+            lessons={55}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
         </div>
@@ -357,16 +353,16 @@ export function WelcomePage() {
               {t('welcome.almanac.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">100+</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">📚</span>
                 <div className="wc-stat-label">{t('welcome.almanac.stats.articles')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">11</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🗺️</span>
                 <div className="wc-stat-label">{t('welcome.almanac.stats.topics')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">50+</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">✨</span>
                 <div className="wc-stat-label">{t('welcome.almanac.stats.funFacts')}</div>
               </div>
             </div>
@@ -449,16 +445,16 @@ export function WelcomePage() {
               {t('welcome.forum.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">8min</div>
-                <div className="wc-stat-label">{t('welcome.forum.stats.avgReply')}</div>
-              </div>
-              <div>
-                <div className="wc-stat-num">14k</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🧵</span>
                 <div className="wc-stat-label">{t('welcome.forum.stats.threads')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">98%</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">💬</span>
+                <div className="wc-stat-label">{t('welcome.forum.stats.answers')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">✅</span>
                 <div className="wc-stat-label">{t('welcome.forum.stats.solved')}</div>
               </div>
             </div>
@@ -569,16 +565,16 @@ export function WelcomePage() {
               {t('welcome.messaging.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">1:1</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">👥</span>
                 <div className="wc-stat-label">{t('welcome.messaging.stats.private')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">⚡</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">⚡</span>
                 <div className="wc-stat-label">{t('welcome.messaging.stats.realtime')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">😀</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">😀</span>
                 <div className="wc-stat-label">{t('welcome.messaging.stats.reactions')}</div>
               </div>
             </div>
@@ -601,13 +597,17 @@ export function WelcomePage() {
               {t('welcome.connections.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">128</div>
-                <div className="wc-stat-label">{t('welcome.connections.stats.connections')}</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🤝</span>
+                <div className="wc-stat-label">{t('welcome.connections.stats.requests')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">3</div>
-                <div className="wc-stat-label">{t('welcome.connections.stats.pending')}</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🔗</span>
+                <div className="wc-stat-label">{t('welcome.connections.stats.network')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">👤</span>
+                <div className="wc-stat-label">{t('welcome.connections.stats.profile')}</div>
               </div>
             </div>
           </div>
@@ -759,16 +759,16 @@ export function WelcomePage() {
               {t('welcome.leaderboard.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">+10</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">⭐</span>
                 <div className="wc-stat-label">{t('welcome.leaderboard.stats.perLesson')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">24</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🚀</span>
                 <div className="wc-stat-label">{t('welcome.leaderboard.stats.levels')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">∞</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🌌</span>
                 <div className="wc-stat-label">{t('welcome.leaderboard.stats.climb')}</div>
               </div>
             </div>
@@ -978,7 +978,6 @@ function LangCard({
   tag,
   desc,
   lessons,
-  hours,
   lessonsLabel,
 }: {
   delay: string;
@@ -989,7 +988,6 @@ function LangCard({
   tag: string;
   desc: string;
   lessons: number;
-  hours: string;
   lessonsLabel: string;
 }) {
   return (
@@ -1006,9 +1004,6 @@ function LangCard({
       <div className="wc-lang-stats">
         <div className="wc-lang-stat">
           <strong>{lessons}</strong> {lessonsLabel}
-        </div>
-        <div className="wc-lang-stat">
-          <strong>{hours}</strong>
         </div>
       </div>
     </div>

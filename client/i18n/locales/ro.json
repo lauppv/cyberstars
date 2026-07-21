@@ -308,7 +308,7 @@
       "steps": [
         "Se montează editorul de cod",
         "Se încarcă nucleele C / Java / Python / Bash",
-        "Se indexează almanahul · 2.418 intrări",
+        "Se indexează almanahul",
         "Se sincronizează discuțiile din forum",
         "Se cartografiază universul Laniakea"
       ]
@@ -346,9 +346,9 @@
       "title": "<1>Almanahul</1>.<3></3>Povești tech care merită citite.",
       "subtitle": "Legende open-source, cultură hacker, istoria tehnologiei, spațiu și curiozitățile din spatele uneltelor pe care le folosești zilnic — o bibliotecă în creștere de articole, citate și o cronologie, cu lecturi noi în fiecare săptămână.",
       "stats": {
-        "articles": "articole",
-        "topics": "subiecte",
-        "funFacts": "curiozități"
+        "articles": "Articole care merită citite",
+        "topics": "Istorie, spațiu și cultură",
+        "funFacts": "Curiozități și citate"
       }
     },
     "forum": {
@@ -356,9 +356,9 @@
       "title": "Un <1>forum</1> unde<3></3>răspunsurile chiar ajung.",
       "subtitle": "Fiecare lecție are propriul fir de discuție. Mentorii și cursanții avansați triază întrebările din oră în oră. Blocurile de cod sunt afișate cu evidențiere de sintaxă și sandbox dintr-un clic.",
       "stats": {
-        "avgReply": "răspuns mediu",
-        "threads": "discuții",
-        "solved": "rezolvate"
+        "threads": "Un thread pentru fiecare lecție",
+        "answers": "Răspunsuri care ajung",
+        "solved": "Soluții acceptate"
       }
     },
     "messaging": {
@@ -367,9 +367,9 @@
       "subtitle": "Mută o discuție de pe forum într-un chat direct. Mesajele ajung instant, poți reacționa cu emoji, iar totul rămâne doar între voi doi.",
       "read": "Citit",
       "stats": {
-        "private": "conversații",
-        "realtime": "livrare live",
-        "reactions": "reacții emoji"
+        "private": "Conversații unu-la-unu",
+        "realtime": "Livrare instantă",
+        "reactions": "Reacții emoji"
       }
     },
     "connections": {
@@ -383,8 +383,9 @@
       "pending": "În așteptare",
       "connected": "Conectat",
       "stats": {
-        "connections": "conexiuni",
-        "pending": "în așteptare"
+        "requests": "Cereri de conexiune",
+        "network": "Te conectezi cu alți cursanți",
+        "profile": "Scurtătură spre profiluri"
       }
     },
     "leaderboard": {
@@ -395,9 +396,9 @@
       "you": "tu",
       "lessons": "{{count}} lecții",
       "stats": {
-        "perLesson": "XP pe lecție",
-        "levels": "niveluri cosmice",
-        "climb": "loc de urcat"
+        "perLesson": "XP pentru fiecare lecție",
+        "levels": "Urci în niveluri",
+        "climb": "Clasament global"
       }
     },
     "laniakea": {
