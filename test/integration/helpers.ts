@@ -1,7 +1,15 @@
 import request from 'supertest';
 import { app } from '../../server/app.js';
+import { prisma } from '../../server/config/db.js';
 
 let counter = 0;
+
+// Resolve a signed-up user's DB id from the email createAuthenticatedAgent
+// returns — needed when a test must act on ids the API only exposes indirectly.
+export async function userIdFor(email: string): Promise<number> {
+  const user = await prisma.user.findUniqueOrThrow({ where: { email } });
+  return user.id;
+}
 
 export function agent() {
   return request.agent(app);
