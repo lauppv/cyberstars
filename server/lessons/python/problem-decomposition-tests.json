@@ -12,7 +12,7 @@
   "cases": [
     { "visible": true, "inject": { "log": "alpha beta alpha gamma beta alpha" } },
     { "visible": true, "inject": { "log": "sos sos ok ok ok bye" } },
-    { "inject": { "log": "x y z" } },
+    { "inject": { "log": "x y y z" } },
     { "inject": { "log": "a a a" } },
     { "inject": { "log": "one" } }
   ]

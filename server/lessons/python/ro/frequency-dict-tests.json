@@ -13,7 +13,7 @@
       "inject": { "semnale": { "$list": ["X", "X", "Y"] } }
     },
     { "inject": { "semnale": { "$list": ["Z"] } } },
-    { "inject": { "semnale": { "$list": ["A", "B", "C"] } } },
+    { "inject": { "semnale": { "$list": ["A", "B", "B", "C"] } } },
     { "inject": { "semnale": { "$list": ["Q", "Q", "Q", "R", "R"] } } }
   ]
 }
