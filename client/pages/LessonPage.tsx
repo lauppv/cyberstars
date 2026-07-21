@@ -419,7 +419,10 @@ export function LessonPage() {
                 <MarkdownRenderer content={content} />
               </div>
 
-              <div className="flex gap-3 mt-10 pb-4">
+              <div
+                className="flex gap-3 mt-10"
+                style={{ paddingBottom: 'calc(1rem + var(--radio-clearance, 0px))' }}
+              >
                 <button
                   onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
                   disabled={!prevLesson}

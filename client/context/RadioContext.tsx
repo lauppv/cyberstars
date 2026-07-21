@@ -135,6 +135,15 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     if (!enabled) audioRef.current?.pause();
   }, [enabled]);
 
+  // The floating player sits bottom-right; expose its footprint as a global CSS
+  // var so bottom-anchored page chrome (message composer, lesson Prev/Next) can
+  // leave clearance and not sit under it. Zero when the radio isn't shown.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--radio-clearance', enabled ? '72px' : '0px');
+    return () => root.style.setProperty('--radio-clearance', '0px');
+  }, [enabled]);
+
   // Persist volume only (playback is per-session; a broadcast never auto-resumes).
   useEffect(() => {
     try {

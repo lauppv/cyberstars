@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { isAdmin } from '../../../shared/auth';
+import { canAccessFeature } from '../../../shared/features';
 import { useGamification } from '../../hooks/useGamification';
 import { NotificationBell } from './NotificationBell';
 import { LeaderboardButton } from './LeaderboardButton';
@@ -191,8 +192,12 @@ export function Topbar({
         {isLoggedIn && user ? (
           <>
             <NotificationBell />
-            <LeaderboardButton />
-            <ConnectionsButton />
+            <div className="hidden sm:flex">
+              <LeaderboardButton />
+            </div>
+            <div className="hidden sm:flex">
+              <ConnectionsButton />
+            </div>
             <MessagesButton />
             <div className="relative flex items-center gap-2" ref={menuRef}>
               <div
@@ -272,6 +277,30 @@ export function Topbar({
                   >
                     <span className="w-4 text-center">👤</span> {t('topbar.profile')}
                   </button>
+                  {canAccessFeature('leaderboard', user.role, import.meta.env.PROD) && (
+                    <button
+                      role="menuitem"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate('/leaderboard');
+                      }}
+                      className="sm:hidden w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                    >
+                      <span className="w-4 text-center">🏆</span> {t('nav.leaderboard')}
+                    </button>
+                  )}
+                  {canAccessFeature('connections', user.role, import.meta.env.PROD) && (
+                    <button
+                      role="menuitem"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        navigate('/connections');
+                      }}
+                      className="sm:hidden w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                    >
+                      <span className="w-4 text-center">🤝</span> {t('connections.title')}
+                    </button>
+                  )}
                   {isAdmin(user.role) && (
                     <button
                       role="menuitem"
