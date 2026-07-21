@@ -92,7 +92,7 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div
       role="menu"
-      className="absolute top-full right-0 mt-2 w-80 max-w-[calc(100vw-1rem)] bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+      className="fixed inset-x-2 top-[60px] w-auto sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:mt-2 sm:w-80 bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
     >
       <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--accent)]/20">
         <span className="text-[13px] font-semibold text-[var(--text)]">{t('notif.title')}</span>

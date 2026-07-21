@@ -41,7 +41,7 @@ export function LockedIcon({ emoji, label }: { emoji: string; label: string }) {
       {open && (
         <div
           role="dialog"
-          className="absolute top-full right-0 mt-2 w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up p-3"
+          className="fixed inset-x-2 top-[60px] w-auto sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:mt-2 sm:w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up p-3"
         >
           <div className="flex items-center gap-1.5 text-[12px] font-semibold text-[var(--text)] mb-1.5">
             <span>{emoji}</span>
