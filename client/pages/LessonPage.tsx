@@ -375,7 +375,8 @@ export function LessonPage() {
           >
             <div className="px-9 py-8">
               {(() => {
-                const { difficulty, rest } = parseDifficulty(title);
+                const { rest } = parseDifficulty(title);
+                const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
                 return (
                   <>
                     <div className="flex items-center gap-3 mb-2 flex-wrap">
@@ -385,35 +386,37 @@ export function LessonPage() {
                           total: lessonList.length,
                         })}
                       </span>
-                      {difficulty && (
-                        <span
-                          className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
-                          style={{
-                            background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
-                            color: DIFFICULTY_COLOR[difficulty],
-                          }}
-                        >
-                          {t(`lesson.difficulty.${difficulty}`)}
-                        </span>
-                      )}
                       {lessonCompleted && (
                         <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
                           {t('lesson.completed')}
                         </span>
                       )}
-                      {currentIndex >= 0 && (
-                        <span
-                          className={`ml-auto text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
-                          title={t('common.xpReward', {
-                            xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                          })}
-                        >
-                          ⭐{' '}
-                          {t('common.xpReward', {
-                            xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                          })}
-                        </span>
-                      )}
+                      <div className="ml-auto flex items-center gap-2">
+                        {difficulty && (
+                          <span
+                            className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
+                            style={{
+                              background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
+                              color: DIFFICULTY_COLOR[difficulty],
+                            }}
+                          >
+                            {t(`lesson.difficulty.${difficulty}`)}
+                          </span>
+                        )}
+                        {currentIndex >= 0 && (
+                          <span
+                            className={`text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+                            title={t('common.xpReward', {
+                              xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                            })}
+                          >
+                            ⭐{' '}
+                            {t('common.xpReward', {
+                              xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                            })}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
