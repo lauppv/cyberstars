@@ -3,6 +3,7 @@ import { CodeEditor } from './CodeEditor';
 import { RunButton } from './RunButton';
 import { CodeOutput } from './CodeOutput';
 import { useCodeExecution } from '../../hooks/useCodeExecution';
+import { useGuestSignupPrompt } from '../../context/GuestSignupPromptContext';
 
 interface CodeCellProps {
   initialCode: string;
@@ -19,7 +20,8 @@ const LANG_MAP: Record<string, string> = {
 export function CodeCell({ initialCode, language }: CodeCellProps) {
   const lang = LANG_MAP[language.toLowerCase()] || language.toLowerCase();
   const [code, setCode] = useState(initialCode);
-  const { output, isRunning, execute, sendInput } = useCodeExecution();
+  const { notifyRunComplete } = useGuestSignupPrompt();
+  const { output, isRunning, execute, sendInput } = useCodeExecution(notifyRunComplete);
 
   return (
     <div className="my-4 border border-[#1e2a38] rounded p-3 bg-[#111820]">

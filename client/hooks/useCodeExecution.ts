@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 
 function wsUrl(): string {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -16,11 +16,15 @@ function appendCapped(prev: string, chunk: string): string {
   return '... (output truncated) ...\n' + trimmed;
 }
 
-export function useCodeExecution() {
+export function useCodeExecution(onExit?: (code: number | undefined) => void) {
   const [output, setOutput] = useState('');
   const [isRunning, setIsRunning] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const sendInputRef = useRef<((data: string) => void) | null>(null);
+  const onExitRef = useRef(onExit);
+  useEffect(() => {
+    onExitRef.current = onExit;
+  }, [onExit]);
 
   const execute = useCallback((code: string, language: string) => {
     if (wsRef.current) {
@@ -51,6 +55,7 @@ export function useCodeExecution() {
         sendInputRef.current = null;
         ws.close();
         wsRef.current = null;
+        onExitRef.current?.(msg.code);
       }
     };
 
