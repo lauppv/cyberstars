@@ -1228,12 +1228,15 @@ export function LaniakeaExplorerPage() {
       const keys = { w: false, a: false, s: false, d: false };
       let yawRate = 0,
         pitchRate = 0;
+      let yawTarget = 0,
+        pitchTarget = 0;
       let started = false;
       let paused = false;
 
       const DEAD_ZONE = 0.18;
       const MAX_YAW_RATE = 2.4;
       const MAX_PITCH_RATE = 1.6;
+      const KEY_YAW_RATE = MAX_YAW_RATE * 0.5;
 
       const introEl = el.querySelector('#rest-intro') as HTMLElement;
       const cursorEl = el.querySelector('#rest-cursor') as HTMLElement;
@@ -1268,6 +1271,8 @@ export function LaniakeaExplorerPage() {
         if (v) {
           yawRate = 0;
           pitchRate = 0;
+          yawTarget = 0;
+          pitchTarget = 0;
         }
       }
 
@@ -1287,8 +1292,8 @@ export function LaniakeaExplorerPage() {
           ax < DEAD_ZONE ? 0 : Math.sign(nx) * steerCurve((ax - DEAD_ZONE) / (0.5 - DEAD_ZONE));
         const dy =
           ay < DEAD_ZONE ? 0 : Math.sign(ny) * steerCurve((ay - DEAD_ZONE) / (0.5 - DEAD_ZONE));
-        yawRate = -dx * MAX_YAW_RATE;
-        pitchRate = -dy * MAX_PITCH_RATE;
+        yawTarget = -dx * MAX_YAW_RATE;
+        pitchTarget = -dy * MAX_PITCH_RATE;
         const rotating = dx !== 0 || dy !== 0;
         cursorEl.classList.toggle('rotating', rotating);
         edgeLeft.classList.toggle('show', nx < -DEAD_ZONE);
@@ -1298,8 +1303,8 @@ export function LaniakeaExplorerPage() {
       };
 
       const onMouseLeave = () => {
-        yawRate = 0;
-        pitchRate = 0;
+        yawTarget = 0;
+        pitchTarget = 0;
         cursorEl.classList.remove('rotating');
         edgeLeft.classList.remove('show');
         edgeRight.classList.remove('show');
@@ -1389,8 +1394,8 @@ export function LaniakeaExplorerPage() {
           const cx = offX * clamp,
             cy = offY * clamp;
           knobEl.style.transform = `translate(calc(-50% + ${cx}px), calc(-50% + ${cy}px))`;
-          yawRate = -stickAxis(cx / STICK_R) * STICK_YAW;
-          pitchRate = -stickAxis(cy / STICK_R) * STICK_PITCH;
+          yawTarget = -stickAxis(cx / STICK_R) * STICK_YAW;
+          pitchTarget = -stickAxis(cy / STICK_R) * STICK_PITCH;
         };
         const stickMove = (e: PointerEvent) => {
           if (e.pointerId !== stickId) return;
@@ -1402,8 +1407,8 @@ export function LaniakeaExplorerPage() {
           if (e.pointerId !== stickId) return;
           stickId = -1;
           knobEl.style.transform = 'translate(-50%, -50%)';
-          yawRate = 0;
-          pitchRate = 0;
+          yawTarget = 0;
+          pitchTarget = 0;
         };
         stickEl.addEventListener('pointerdown', (e: PointerEvent) => {
           start();
@@ -1568,11 +1573,11 @@ export function LaniakeaExplorerPage() {
       let nearestTick = 0;
 
       // ===== Main loop =====
-      const fwd = new THREE.Vector3(),
-        right = new THREE.Vector3();
+      const fwd = new THREE.Vector3();
       const velocity = new THREE.Vector3();
       const targetVel = new THREE.Vector3();
       let velSmoothed = 0;
+      const ROT_TAU = 0.5;
       const MAX_SPEED = 3.6;
       const ACCEL_TAU = 2.8;
       const DECEL_TAU = 5.0;
@@ -1592,29 +1597,29 @@ export function LaniakeaExplorerPage() {
           return;
         }
 
+        let yawIn = yawTarget;
+        if (started) {
+          if (keys.a) yawIn += KEY_YAW_RATE;
+          if (keys.d) yawIn -= KEY_YAW_RATE;
+        }
+        const rotK = 1 - Math.exp(-dtSec / ROT_TAU);
+        yawRate += (yawIn - yawRate) * rotK;
+        pitchRate += (pitchTarget - pitchRate) * rotK;
         camera.rotateY(yawRate * dtSec);
         camera.rotateX(pitchRate * dtSec);
 
         fwd.set(0, 0, -1).applyQuaternion(camera.quaternion);
-        right.set(1, 0, 0).applyQuaternion(camera.quaternion);
 
-        let dirX = 0,
-          dirZ = 0;
+        let dirZ = 0;
         if (started) {
           if (keys.w) dirZ += 1;
           if (keys.s) dirZ -= 1;
-          if (keys.d) dirX += 1;
-          if (keys.a) dirX -= 1;
         }
-        const hasInput = dirX !== 0 || dirZ !== 0;
+        const hasInput = dirZ !== 0;
 
         targetVel.set(0, 0, 0);
         if (hasInput) {
-          const mag = Math.hypot(dirX, dirZ);
-          const nx = dirX / mag,
-            nz = dirZ / mag;
-          targetVel.addScaledVector(fwd, nz * MAX_SPEED);
-          targetVel.addScaledVector(right, nx * MAX_SPEED);
+          targetVel.addScaledVector(fwd, Math.sign(dirZ) * MAX_SPEED);
         }
 
         const tau = hasInput ? ACCEL_TAU : DECEL_TAU;
@@ -1741,10 +1746,13 @@ export function LaniakeaExplorerPage() {
         <div className="intro-controls">
           <div className="row">
             <kbd>W</kbd>
-            <kbd>A</kbd>
             <kbd>S</kbd>
+            <span>{t('laniakea.moveFwd')}</span>
+          </div>
+          <div className="row">
+            <kbd>A</kbd>
             <kbd>D</kbd>
-            <span>{t('laniakea.moveStrafe')}</span>
+            <span>{t('laniakea.turnLeftRight')}</span>
           </div>
           <div className="row">
             <kbd>Mouse</kbd>

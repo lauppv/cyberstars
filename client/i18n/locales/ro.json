@@ -745,7 +745,8 @@
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",
     "introSub": "O navă de derivă pentru explorare fără grabă. Preia cârma — alunecă prin peste 100 de lumi, pe lângă nebuloase și găuri negre. Fără obiective. Fără cronometru. Doar cosmosul prin vizorul tău.",
-    "moveStrafe": "Mișcare / deplasare laterală",
+    "moveFwd": "Zbor înainte / înapoi",
+    "turnLeftRight": "Rotire stânga / dreapta",
     "mouseLook": "Centru = nemișcat · margine = rotire (360°)",
     "pause": "Pauză",
     "exitToDashboard": "Ieșire la panou",

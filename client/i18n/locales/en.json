@@ -743,7 +743,8 @@
   "laniakea": {
     "introTitle": "Welcome aboard, captain.",
     "introSub": "A drift vessel for unhurried exploration. Take the helm — glide through 100+ worlds, past nebulae and black holes. No goals. No timer. Just the cosmos through your viewport.",
-    "moveStrafe": "Move / strafe",
+    "moveFwd": "Fly forward / back",
+    "turnLeftRight": "Turn left / right",
     "mouseLook": "Center = still · edge = rotate (360°)",
     "pause": "Pause",
     "exitToDashboard": "Exit to dashboard",
