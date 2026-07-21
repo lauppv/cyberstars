@@ -1,5 +1,8 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "forbids": [{ "kind": "call", "name": "qsort" }]
+  },
   "cases": [
     { "visible": true, "stdin": "5\n38\n27\n43\n3\n9\n" },
     { "visible": true, "stdin": "4\n4\n3\n2\n1\n" },
