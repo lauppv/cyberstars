@@ -9,6 +9,7 @@ const mockRepo = {
   list: vi.fn(),
   markReadUpTo: vi.fn(),
   markOneRead: vi.fn(),
+  markReadByEntity: vi.fn(),
   clearExcerpt: vi.fn(),
 };
 const mockWs = { pushToUser: vi.fn() };
@@ -16,7 +17,7 @@ const mockWs = { pushToUser: vi.fn() };
 vi.mock('../repositories/notifications.repository.js', () => mockRepo);
 vi.mock('./ws-user.js', () => mockWs);
 
-const { notify, getPage, markRead, markOneRead, redactExcerpt } =
+const { notify, getPage, markRead, markOneRead, markEntityRead, redactExcerpt } =
   await import('./notifications.service.js');
 
 function row(over: Partial<Record<string, unknown>> = {}) {
@@ -87,6 +88,13 @@ describe('notifications.service notify', () => {
     mockRepo.findUnreadFor.mockResolvedValue(existing);
     await notify({ recipientIds: [10], actorId: 4, type: 'FORUM_REACTION', entityId: 5 });
     expect(mockRepo.collapse).toHaveBeenCalledWith(existing, 4, { count: 2 });
+  });
+
+  it('collapses with a null actor when the event has no actorId', async () => {
+    const existing = row({ id: 9, data: { title: 'Thread', count: 1 } });
+    mockRepo.findUnreadFor.mockResolvedValue(existing);
+    await notify({ recipientIds: [10], type: 'FORUM_REPLY', entityId: 5 });
+    expect(mockRepo.collapse).toHaveBeenCalledWith(existing, null, { title: 'Thread', count: 2 });
   });
 
   it('does not collapse non-collapsible types even with an unread row present', async () => {
@@ -182,5 +190,30 @@ describe('notifications.service mark helpers', () => {
     mockRepo.markOneRead.mockResolvedValue(0);
     await markOneRead(10, 7);
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+
+  it('markEntityRead pushes a fresh count when a bell entry was cleared', async () => {
+    mockRepo.markReadByEntity.mockResolvedValue(1);
+    mockRepo.countUnread.mockResolvedValue(4);
+    await markEntityRead(10, 'CONNECTION_REQUEST', 5);
+    expect(mockRepo.markReadByEntity).toHaveBeenCalledWith(10, 'CONNECTION_REQUEST', 5);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
+      channel: 'notification',
+      type: 'unread-count',
+      payload: { unreadCount: 4 },
+    });
+  });
+
+  it('markEntityRead pushes nothing when there was no matching unread row', async () => {
+    mockRepo.markReadByEntity.mockResolvedValue(0);
+    await markEntityRead(10, 'CONNECTION_REQUEST', 5);
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+
+  it('markEntityRead never throws (fire-and-forget)', async () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.markReadByEntity.mockRejectedValue(new Error('db down'));
+    await expect(markEntityRead(10, 'CONNECTION_REQUEST', 5)).resolves.toBeUndefined();
+    spy.mockRestore();
   });
 });

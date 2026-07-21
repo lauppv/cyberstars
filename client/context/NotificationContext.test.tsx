@@ -198,6 +198,36 @@ describe('NotificationContext', () => {
     fireEvent.click(screen.getByText('one'));
     expect(h.service.markOneRead).not.toHaveBeenCalled();
   });
+
+  it('markOneRead is a no-op when the id is not in the list', async () => {
+    h.service.getNotifications.mockResolvedValue({
+      items: [notif({ id: 200 })],
+      unreadCount: 1,
+    });
+    renderProvider();
+    await screen.findByTestId('count');
+    fireEvent.click(screen.getByText('one'));
+    expect(h.service.markOneRead).not.toHaveBeenCalled();
+  });
+
+  it('loadMore is a no-op when there are no items yet', async () => {
+    h.auth = { isLoggedIn: false, user: null };
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('0'));
+    fireEvent.click(screen.getByText('more'));
+    expect(h.service.getNotifications).not.toHaveBeenCalled();
+  });
+
+  it('ignores a notification frame with an unknown type', async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    dispatch({
+      channel: 'notification',
+      type: 'bogus' as never,
+      payload: { unreadCount: 99 } as never,
+    });
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('1'));
+  });
 });
 
 describe('useNotifications guard', () => {

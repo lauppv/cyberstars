@@ -243,6 +243,57 @@ describe('runTerminalTests', () => {
     });
   });
 
+  describe('absolute paths, empty command_output, pattern forbids (via a temporary fixture)', () => {
+    const slug = 'zz-abs-fixture';
+    const file = path.join(contentDir('linux'), `${slug}-tests.json`);
+
+    beforeEach(() => {
+      fs.writeFileSync(
+        file,
+        JSON.stringify({
+          checks: [
+            { kind: 'path_exists', path: '/etc/hostname' },
+            { kind: 'command_output', cmd: 'true', expected: '' },
+          ],
+          forbids: [{ kind: 'command', pattern: 'rm\\s' }],
+        }),
+      );
+    });
+    afterAll(() => {
+      if (fs.existsSync(file)) fs.unlinkSync(file);
+    });
+
+    it('handles an absolute path, an empty-data O verdict, and a pattern-only forbid', async () => {
+      mockGetSessionView.mockReturnValue(view({ history: ['ls'] }));
+      // Index 1 is an O verdict with no base64 payload -> decodes to ''.
+      mockDockerExec.mockResolvedValue('0 P\n1 O\n');
+      const res = await runTerminalTests('user:1', 'sid', 'linux', slug);
+      expect(res.status).toBe('passed');
+      const forbid = res.checks.find((c) => c.messageKey === 'terminalTests.forbid.command');
+      expect(forbid?.params?.name).toBe('rm\\s');
+    });
+  });
+
+  describe('forbids with neither name nor pattern (via a temporary fixture)', () => {
+    const slug = 'zz-empty-forbid-fixture';
+    const file = path.join(contentDir('linux'), `${slug}-tests.json`);
+
+    beforeEach(() => {
+      fs.writeFileSync(file, JSON.stringify({ forbids: [{ kind: 'command' }] }));
+    });
+    afterAll(() => {
+      if (fs.existsSync(file)) fs.unlinkSync(file);
+    });
+
+    it('falls back to an empty name and passes (an empty rule never matches)', async () => {
+      mockGetSessionView.mockReturnValue(view({ history: ['ls'] }));
+      const res = await runTerminalTests('user:1', 'sid', 'linux', slug);
+      expect(res.status).toBe('passed');
+      const forbid = res.checks.find((c) => c.messageKey === 'terminalTests.forbid.command');
+      expect(forbid?.params?.name).toBe('');
+    });
+  });
+
   describe('forbids (via a temporary fixture)', () => {
     const slug = 'zz-forbids-fixture';
     const file = path.join(contentDir('linux'), `${slug}-tests.json`);

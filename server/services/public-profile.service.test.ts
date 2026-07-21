@@ -179,6 +179,20 @@ describe('getPublicProfile', () => {
     });
   });
 
+  it('skips the activity query and drops empty-slug courses from badges when only progress is shown', async () => {
+    mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showActivity: false }));
+    mockProgressRepo.getCompletedByCourse.mockResolvedValue([
+      { courseKey: 'python', slugs: slugs('python', 2) },
+      { courseKey: 'java', slugs: [] }, // no completions -> earns no badge
+    ]);
+    mockLeaderboardService.getMyRank.mockResolvedValue(null);
+
+    const p = await getPublicProfile(7, 42);
+    expect(p.activity).toBeNull();
+    expect(mockProgressRepo.getActivityDates).not.toHaveBeenCalled();
+    expect(p.progress?.badgeList).toEqual([{ courseKey: 'python', level: 0 }]);
+  });
+
   it('returns recent completed-lesson timestamps for the heatmap, filtered to the window', async () => {
     // Only showActivity is on; stats/progress stay hidden and their queries skip.
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));

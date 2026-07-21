@@ -232,6 +232,89 @@ describe('RadioContext', () => {
     expect(playSpy).toHaveBeenCalled();
   });
 
+  it('ignores a server clock payload whose now is not a number', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(() => Promise.resolve({ json: () => Promise.resolve({ now: 'nope' }) })),
+    );
+    renderProbe();
+    await act(async () => {});
+    // No throw, radio still usable — the offset simply stays 0.
+    expect(screen.getByTestId('enabled')).toHaveTextContent('true');
+  });
+
+  it('does nothing on loadedmetadata when no play is pending', () => {
+    const { container } = renderProbe();
+    const audio = container.querySelector('audio') as HTMLAudioElement;
+    let ct = -1;
+    Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
+    Object.defineProperty(audio, 'currentTime', {
+      configurable: true,
+      get: () => ct,
+      set: (v: number) => {
+        ct = v;
+      },
+    });
+    act(() => audio.dispatchEvent(new Event('loadedmetadata')));
+    expect(ct).toBe(-1);
+  });
+
+  it('skips the drift interval while the element is paused', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(90_000);
+    try {
+      const { container } = renderProbe();
+      const audio = container.querySelector('audio') as HTMLAudioElement;
+      Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
+      Object.defineProperty(audio, 'paused', { configurable: true, value: true });
+      let ct = 5;
+      Object.defineProperty(audio, 'currentTime', {
+        configurable: true,
+        get: () => ct,
+        set: (v: number) => {
+          ct = v;
+        },
+      });
+      act(() => audio.dispatchEvent(new Event('play')));
+      act(() => {
+        vi.advanceTimersByTime(5000);
+      });
+      // paused guard returned early — no resync.
+      expect(ct).toBe(5);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('leaves the position alone when drift is within the threshold', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(90_000);
+    try {
+      const { container } = renderProbe();
+      const audio = container.querySelector('audio') as HTMLAudioElement;
+      Object.defineProperty(audio, 'duration', { configurable: true, value: 180 });
+      Object.defineProperty(audio, 'paused', { configurable: true, value: false });
+      Object.defineProperty(audio, 'seeking', { configurable: true, value: false });
+      // The interval fires at t=95s where livePosition is 95; sit at 94 so drift
+      // (1s) stays under MAX_DRIFT_SEC and no resync happens.
+      let ct = 94;
+      Object.defineProperty(audio, 'currentTime', {
+        configurable: true,
+        get: () => ct,
+        set: (v: number) => {
+          ct = v;
+        },
+      });
+      act(() => audio.dispatchEvent(new Event('play')));
+      act(() => {
+        vi.advanceTimersByTime(5000);
+      });
+      expect(ct).toBe(94);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it('resyncs the position when drift exceeds the threshold while playing', () => {
     vi.useFakeTimers();
     // Pin the clock: livePosition is (now/1000) % duration, so a real wall-clock
