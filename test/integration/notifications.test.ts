@@ -72,9 +72,13 @@ describe('Notifications flow', () => {
 
     await b.post(`/api/connections/${requestId}/accept`).expect(200);
 
-    // Poll until the auto-read (also fire-and-forget) clears the badge.
+    // Poll until the auto-read (also fire-and-forget) is observable on the row
+    // itself. The list and the unread count are two separate reads, so the
+    // count can momentarily hit 0 a beat before the row's readAt is visible in
+    // the list snapshot — wait on the actual assertion target to avoid that
+    // race window.
     let after = await page(b);
-    for (let i = 0; i < 50 && after.unreadCount !== 0; i++) {
+    for (let i = 0; i < 50 && after.items[0]?.readAt == null; i++) {
       await new Promise((r) => setTimeout(r, 20));
       after = await page(b);
     }
