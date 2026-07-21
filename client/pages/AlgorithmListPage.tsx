@@ -12,10 +12,10 @@ import { xpForLesson } from '../../shared/constants';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
-const DIFF_COLORS: Record<string, { bg: string; text: string }> = {
-  easy: { bg: 'rgba(0,214,143,0.12)', text: 'var(--success)' },
-  medium: { bg: 'rgba(255,170,0,0.12)', text: 'var(--warning)' },
-  hard: { bg: 'rgba(255,107,107,0.12)', text: 'var(--error)' },
+const DIFF_COLORS: Record<string, { bg: string; border: string; text: string }> = {
+  easy: { bg: 'rgba(0,214,143,0.12)', border: 'rgba(0,214,143,0.5)', text: 'var(--success)' },
+  medium: { bg: 'rgba(255,170,0,0.12)', border: 'rgba(255,170,0,0.5)', text: 'var(--warning)' },
+  hard: { bg: 'rgba(255,107,107,0.12)', border: 'rgba(255,107,107,0.5)', text: 'var(--error)' },
 };
 
 function parseDifficulty(title: string): { diff: 'easy' | 'medium' | 'hard'; name: string } {
@@ -111,16 +111,30 @@ export function AlgorithmListPage() {
               {DIFF_FILTERS.map((d) => {
                 const isActive = filter === d;
                 const dc = d !== 'all' ? DIFF_COLORS[d] : null;
+                const style = dc
+                  ? isActive
+                    ? {
+                        background: dc.bg,
+                        color: dc.text,
+                        border: `1px solid ${dc.text}`,
+                        boxShadow: `0 0 10px ${dc.bg}`,
+                      }
+                    : {
+                        background: 'transparent',
+                        color: dc.text,
+                        border: `1px solid ${dc.border}`,
+                      }
+                  : {
+                      background: isActive ? 'var(--surface2)' : 'var(--bg3)',
+                      color: isActive ? 'var(--text)' : 'var(--text3)',
+                      border: '1px solid transparent',
+                    };
                 return (
                   <button
                     key={d}
                     onClick={() => setFilter(d)}
-                    className="px-3 py-1.5 rounded-full text-[11px] font-semibold cursor-pointer transition-all border-none"
-                    style={{
-                      background: isActive ? (dc ? dc.bg : 'var(--surface2)') : 'var(--bg3)',
-                      color: isActive && dc ? dc.text : isActive ? 'var(--text)' : 'var(--text3)',
-                      boxShadow: isActive && dc ? `0 0 8px ${dc.bg}` : 'none',
-                    }}
+                    className="px-3 py-1.5 rounded-full text-[11px] font-semibold cursor-pointer transition-all"
+                    style={style}
                   >
                     {t(`algoList.filters.${d}`)}
                   </button>
