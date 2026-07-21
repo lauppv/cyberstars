@@ -6,6 +6,7 @@ import { ProgressProvider } from './context/ProgressContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { UserSocketProvider } from './context/UserSocketContext';
 import { MessagesProvider } from './context/MessagesContext';
+import { GuestSignupPromptProvider } from './context/GuestSignupPromptContext';
 import { RadioProvider } from './context/RadioContext';
 import { RadioPlayer } from './components/radio/RadioPlayer';
 import { CosmosBackground } from './components/ui/CosmosBackground';
@@ -91,39 +92,41 @@ function App() {
             <UserSocketProvider>
               <NotificationProvider>
                 <MessagesProvider>
-                  <RadioProvider>
-                    <GlobalBackground />
-                    <GlobalRadio />
-                    <Suspense
-                      fallback={
-                        <div className="h-screen flex items-center justify-center bg-transparent">
-                          <LoadingSpinner />
-                        </div>
-                      }
-                    >
-                      <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/getstarted" element={<AuthPage />} />
-                        <Route path="/courses" element={<CoursesPage />} />
-                        <Route path="/algorithms" element={<AlgorithmsPage />} />
-                        <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-                        <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
-                        <Route path="/profile" element={<ProfilePage />} />
-                        <Route path="/forum" element={<ForumPage />} />
-                        <Route path="/almanac" element={<AlmanacPage />} />
-                        <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-                        <Route path="/rules" element={<RulesPage />} />
-                        <Route path="/support" element={<SupportPage />} />
-                        <Route path="/welcome" element={<WelcomePage />} />
-                        <Route path="/admin" element={<AdminPage />} />
-                        <Route path="/leaderboard" element={<LeaderboardPage />} />
-                        <Route path="/messages" element={<MessagesPage />} />
-                        <Route path="/u/:userId" element={<PublicProfilePage />} />
-                        <Route path="/settings" element={<SettingsPage />} />
-                        <Route path="/connections" element={<ConnectionsPage />} />
-                      </Routes>
-                    </Suspense>
-                  </RadioProvider>
+                  <GuestSignupPromptProvider>
+                    <RadioProvider>
+                      <GlobalBackground />
+                      <GlobalRadio />
+                      <Suspense
+                        fallback={
+                          <div className="h-screen flex items-center justify-center bg-transparent">
+                            <LoadingSpinner />
+                          </div>
+                        }
+                      >
+                        <Routes>
+                          <Route path="/" element={<HomePage />} />
+                          <Route path="/getstarted" element={<AuthPage />} />
+                          <Route path="/courses" element={<CoursesPage />} />
+                          <Route path="/algorithms" element={<AlgorithmsPage />} />
+                          <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                          <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+                          <Route path="/profile" element={<ProfilePage />} />
+                          <Route path="/forum" element={<ForumPage />} />
+                          <Route path="/almanac" element={<AlmanacPage />} />
+                          <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                          <Route path="/rules" element={<RulesPage />} />
+                          <Route path="/support" element={<SupportPage />} />
+                          <Route path="/welcome" element={<WelcomePage />} />
+                          <Route path="/admin" element={<AdminPage />} />
+                          <Route path="/leaderboard" element={<LeaderboardPage />} />
+                          <Route path="/messages" element={<MessagesPage />} />
+                          <Route path="/u/:userId" element={<PublicProfilePage />} />
+                          <Route path="/settings" element={<SettingsPage />} />
+                          <Route path="/connections" element={<ConnectionsPage />} />
+                        </Routes>
+                      </Suspense>
+                    </RadioProvider>
+                  </GuestSignupPromptProvider>
                 </MessagesProvider>
               </NotificationProvider>
             </UserSocketProvider>

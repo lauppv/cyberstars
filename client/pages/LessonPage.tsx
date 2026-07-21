@@ -8,6 +8,7 @@ import { useProgress } from '../hooks/useProgress';
 import { useGamification } from '../hooks/useGamification';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
+import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { xpForLesson } from '../../shared/constants';
 import { Topbar } from '../components/layout/Topbar';
 import { AchievementToast } from '../components/gamification/AchievementToast';
@@ -61,8 +62,15 @@ export function LessonPage() {
     category,
     lesson,
   );
-  const { output, isRunning, execute, sendInput, clearOutput } = useCodeExecution();
-  const terminal = useTerminalSession(isTerminal ? category : '', isTerminal ? lesson : '');
+  const { notifyRunComplete } = useGuestSignupPrompt();
+  const notifyGuestRun = useCallback(() => notifyRunComplete(0), [notifyRunComplete]);
+  const { output, isRunning, execute, sendInput, clearOutput } =
+    useCodeExecution(notifyRunComplete);
+  const terminal = useTerminalSession(
+    isTerminal ? category : '',
+    isTerminal ? lesson : '',
+    notifyGuestRun,
+  );
   const { saveCode, progress, loadProgress } = useProgress(category);
   const gamification = useGamification();
   const { refresh: refreshGamification } = gamification;

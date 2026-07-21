@@ -12,7 +12,11 @@ export interface TerminalLine {
   prompt?: string;
 }
 
-export function useTerminalSession(courseKey: string, lessonSlug: string) {
+export function useTerminalSession(
+  courseKey: string,
+  lessonSlug: string,
+  onCommandRun?: () => void,
+) {
   const { i18n } = useTranslation();
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -21,6 +25,10 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
   const [isReady, setIsReady] = useState(false);
   const [isExecuting, setIsExecuting] = useState(false);
   const sessionRef = useRef<string | null>(null);
+  const onCommandRunRef = useRef(onCommandRun);
+  useEffect(() => {
+    onCommandRunRef.current = onCommandRun;
+  }, [onCommandRun]);
 
   const init = useCallback(async () => {
     if (!courseKey || !lessonSlug) return;
@@ -68,6 +76,7 @@ export function useTerminalSession(courseKey: string, lessonSlug: string) {
           setLines((prev) => [...prev, { type: 'output', text: result.output }]);
         }
         setCwd(result.cwd);
+        onCommandRunRef.current?.();
       } catch (e: unknown) {
         setLines((prev) => [
           ...prev,
