@@ -1225,7 +1225,7 @@ export function LaniakeaExplorerPage() {
       scene.add(tealLight);
 
       // ===== Input =====
-      const keys = { w: false, a: false, s: false, d: false };
+      const keys = { w: false, a: false, s: false, d: false, o: false, k: false };
       let yawRate = 0,
         pitchRate = 0;
       let yawTarget = 0,
@@ -1233,18 +1233,13 @@ export function LaniakeaExplorerPage() {
       let started = false;
       let paused = false;
 
-      const DEAD_ZONE = 0.18;
       const MAX_YAW_RATE = 2.4;
       const MAX_PITCH_RATE = 1.6;
-      const KEY_YAW_RATE = MAX_YAW_RATE * 0.5;
+      const KEY_YAW_RATE = MAX_YAW_RATE * 0.3;
+      const KEY_PITCH_RATE = MAX_PITCH_RATE * 0.3;
 
       const introEl = el.querySelector('#rest-intro') as HTMLElement;
-      const cursorEl = el.querySelector('#rest-cursor') as HTMLElement;
       const pauseEl = el.querySelector('#rest-pause') as HTMLElement;
-      const edgeTop = el.querySelector('.edge-hint.top') as HTMLElement;
-      const edgeBottom = el.querySelector('.edge-hint.bottom') as HTMLElement;
-      const edgeLeft = el.querySelector('.edge-hint.left') as HTMLElement;
-      const edgeRight = el.querySelector('.edge-hint.right') as HTMLElement;
       const evaEl = el.querySelector('#hud-eva') as HTMLElement;
       const hrEl = el.querySelector('#hud-heart') as HTMLElement;
       const o2SatEl = el.querySelector('#hud-o2sat') as HTMLElement;
@@ -1276,42 +1271,6 @@ export function LaniakeaExplorerPage() {
         }
       }
 
-      function steerCurve(t: number) {
-        return Math.pow(t, 1.4);
-      }
-
-      const onMouseMove = (e: MouseEvent) => {
-        cursorEl.style.left = e.clientX + 'px';
-        cursorEl.style.top = e.clientY + 'px';
-        if (paused || !started) return;
-        const nx = e.clientX / innerWidth - 0.5;
-        const ny = e.clientY / innerHeight - 0.5;
-        const ax = Math.abs(nx),
-          ay = Math.abs(ny);
-        const dx =
-          ax < DEAD_ZONE ? 0 : Math.sign(nx) * steerCurve((ax - DEAD_ZONE) / (0.5 - DEAD_ZONE));
-        const dy =
-          ay < DEAD_ZONE ? 0 : Math.sign(ny) * steerCurve((ay - DEAD_ZONE) / (0.5 - DEAD_ZONE));
-        yawTarget = -dx * MAX_YAW_RATE;
-        pitchTarget = -dy * MAX_PITCH_RATE;
-        const rotating = dx !== 0 || dy !== 0;
-        cursorEl.classList.toggle('rotating', rotating);
-        edgeLeft.classList.toggle('show', nx < -DEAD_ZONE);
-        edgeRight.classList.toggle('show', nx > DEAD_ZONE);
-        edgeTop.classList.toggle('show', ny < -DEAD_ZONE);
-        edgeBottom.classList.toggle('show', ny > DEAD_ZONE);
-      };
-
-      const onMouseLeave = () => {
-        yawTarget = 0;
-        pitchTarget = 0;
-        cursorEl.classList.remove('rotating');
-        edgeLeft.classList.remove('show');
-        edgeRight.classList.remove('show');
-        edgeTop.classList.remove('show');
-        edgeBottom.classList.remove('show');
-      };
-
       function start() {
         if (started) return;
         started = true;
@@ -1337,16 +1296,18 @@ export function LaniakeaExplorerPage() {
         if (e.code === 'KeyA') keys.a = true;
         if (e.code === 'KeyS') keys.s = true;
         if (e.code === 'KeyD') keys.d = true;
+        if (e.code === 'KeyO') keys.o = true;
+        if (e.code === 'KeyK') keys.k = true;
       };
       const onKeyUp = (e: KeyboardEvent) => {
         if (e.code === 'KeyW') keys.w = false;
         if (e.code === 'KeyA') keys.a = false;
         if (e.code === 'KeyS') keys.s = false;
         if (e.code === 'KeyD') keys.d = false;
+        if (e.code === 'KeyO') keys.o = false;
+        if (e.code === 'KeyK') keys.k = false;
       };
 
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseleave', onMouseLeave);
       document.addEventListener('keydown', onKeyDown);
       document.addEventListener('keyup', onKeyUp);
 
@@ -1361,6 +1322,25 @@ export function LaniakeaExplorerPage() {
       });
       pauseEl.addEventListener('click', () => setPaused(false));
 
+      const menuEl = el.querySelector('#rest-menu') as HTMLElement | null;
+      (el.querySelector('#rest-menuToggle') as HTMLElement | null)?.addEventListener(
+        'click',
+        (e) => {
+          e.stopPropagation();
+          menuEl?.classList.toggle('open');
+        },
+      );
+      (el.querySelector('#rest-pauseBtn') as HTMLElement | null)?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuEl?.classList.remove('open');
+        start();
+        setPaused(true);
+      });
+      (el.querySelector('#rest-quitBtn') as HTMLElement | null)?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        handleExit();
+      });
+
       // ===== Touch controls (mobile) =====
       if (isTouch) {
         el.classList.add('is-touch');
@@ -1371,15 +1351,13 @@ export function LaniakeaExplorerPage() {
         const thrDownEl = el.querySelector('#rest-thrDown') as HTMLElement;
 
         touchEl.style.display = 'block';
-        cursorEl.style.display = 'none';
 
-        // Right-hand stick → yaw/pitch (replaces the desktop mouse reticle).
-        // Tuned softer than the mouse: the knob's physical travel is small, so a
+        // Right-hand stick → yaw/pitch. The knob's physical travel is small, so a
         // steep curve + lower max keep fine control near centre and full speed
         // only near the rim.
         const STICK_R = 46; // max knob travel in px
         const STICK_DEAD = 0.22; // ignore tiny jitter near centre
-        const STICK_EXP = 2.4; // steeper than steerCurve → gentle low end
+        const STICK_EXP = 2.4; // steep exponent → gentle low end
         const STICK_YAW = MAX_YAW_RATE * 0.4;
         const STICK_PITCH = MAX_PITCH_RATE * 0.4;
         let stickId = -1;
@@ -1445,10 +1423,23 @@ export function LaniakeaExplorerPage() {
       }
 
       // ===== Resize =====
+      // On touch the approach pill sits left of the vitals panel; cap its width so
+      // a 5%-of-viewport gap always remains between them (distance wraps under the
+      // name when it no longer fits on one line).
+      const vitalsEl = el.querySelector('#hud-vitals') as HTMLElement | null;
+      const layoutApproach = () => {
+        if (!isTouch || !vitalsEl) return;
+        const gap = window.innerWidth * 0.05;
+        const maxW = vitalsEl.getBoundingClientRect().left - gap - 12;
+        approachWrapEl.style.maxWidth = Math.max(0, maxW) + 'px';
+      };
+      layoutApproach();
+
       const onResize = () => {
         camera.aspect = innerWidth / innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(innerWidth, innerHeight);
+        layoutApproach();
       };
       window.addEventListener('resize', onResize);
 
@@ -1577,7 +1568,7 @@ export function LaniakeaExplorerPage() {
       const velocity = new THREE.Vector3();
       const targetVel = new THREE.Vector3();
       let velSmoothed = 0;
-      const ROT_TAU = 0.5;
+      const ROT_TAU = 0.7;
       const MAX_SPEED = 3.6;
       const ACCEL_TAU = 2.8;
       const DECEL_TAU = 5.0;
@@ -1598,13 +1589,16 @@ export function LaniakeaExplorerPage() {
         }
 
         let yawIn = yawTarget;
+        let pitchIn = pitchTarget;
         if (started) {
           if (keys.a) yawIn += KEY_YAW_RATE;
           if (keys.d) yawIn -= KEY_YAW_RATE;
+          if (keys.o) pitchIn += KEY_PITCH_RATE;
+          if (keys.k) pitchIn -= KEY_PITCH_RATE;
         }
         const rotK = 1 - Math.exp(-dtSec / ROT_TAU);
         yawRate += (yawIn - yawRate) * rotK;
-        pitchRate += (pitchTarget - pitchRate) * rotK;
+        pitchRate += (pitchIn - pitchRate) * rotK;
         camera.rotateY(yawRate * dtSec);
         camera.rotateX(pitchRate * dtSec);
 
@@ -1700,8 +1694,6 @@ export function LaniakeaExplorerPage() {
       cleanupRef.current = () => {
         destroyed = true;
         cancelAnimationFrame(rafId);
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseleave', onMouseLeave);
         document.removeEventListener('keydown', onKeyDown);
         document.removeEventListener('keyup', onKeyUp);
         window.removeEventListener('resize', onResize);
@@ -1713,11 +1705,6 @@ export function LaniakeaExplorerPage() {
       if (cleanupRef.current) cleanupRef.current();
       navigate('/');
     }
-
-    (container.querySelector('.rest-exit') as HTMLElement)?.addEventListener('click', (e) => {
-      e.preventDefault();
-      handleExit();
-    });
 
     return () => {
       destroyed = true;
@@ -1755,8 +1742,9 @@ export function LaniakeaExplorerPage() {
             <span>{t('laniakea.turnLeftRight')}</span>
           </div>
           <div className="row">
-            <kbd>Mouse</kbd>
-            <span>{t('laniakea.mouseLook')}</span>
+            <kbd>O</kbd>
+            <kbd>K</kbd>
+            <span>{t('laniakea.pitchUpDown')}</span>
           </div>
           <div className="row">
             <kbd>Esc</kbd>
@@ -1780,7 +1768,6 @@ export function LaniakeaExplorerPage() {
         <button className="intro-btn" id="rest-enterBtn">
           {'▸'} {t('laniakea.beginDrift')}
         </button>
-        <div className="intro-hint">{t('laniakea.introHint')}</div>
       </div>
 
       <div id="rest-scene" style={{ position: 'fixed', inset: 0, zIndex: 0 }} />
@@ -1871,6 +1858,7 @@ export function LaniakeaExplorerPage() {
       {/* ── TOP-RIGHT: Vitals ── */}
       <div
         className="hud-panel hud-tr"
+        id="hud-vitals"
         style={{ position: 'fixed', top: 20, right: 20, zIndex: 15 }}
       >
         <div className="hud-cells">
@@ -2021,21 +2009,14 @@ export function LaniakeaExplorerPage() {
       <div className="hud-approach" id="hud-approachWrap">
         <span className="hud-approach-icon">{'◎'}</span>
         <div className="hud-approach-info">
-          <span className="hud-approach-label">{t('laniakea.approaching')}</span>
           <span className="hud-approach-name" id="hud-approachName">
             {'—'}
           </span>
+          <span className="hud-approach-dist" id="hud-approachDist">
+            {'—'}
+          </span>
         </div>
-        <span className="hud-approach-dist" id="hud-approachDist">
-          {'—'}
-        </span>
       </div>
-
-      <div className="cursor-dot" id="rest-cursor" />
-      <div className="edge-hint top" />
-      <div className="edge-hint bottom" />
-      <div className="edge-hint left" />
-      <div className="edge-hint right" />
 
       {/* Touch controls (shown on touch devices) */}
       <div className="rest-touch" id="rest-touch">
@@ -2052,9 +2033,31 @@ export function LaniakeaExplorerPage() {
         </div>
       </div>
 
-      <a href="#" className="rest-exit exit">
-        {'✕'} {t('laniakea.exit')}
-      </a>
+      {isTouch ? (
+        <div className="laniakea-menu" id="rest-menu">
+          <div className="laniakea-menu-items">
+            <button type="button" id="rest-pauseBtn" className="laniakea-action-btn">
+              {'❚❚'} {t('laniakea.pause')}
+            </button>
+            <button type="button" id="rest-quitBtn" className="laniakea-action-btn">
+              {'✕'} {t('laniakea.quit')}
+            </button>
+          </div>
+          <button
+            type="button"
+            id="rest-menuToggle"
+            className="laniakea-menu-toggle"
+            aria-label={t('laniakea.menu')}
+          >
+            {'≡'}
+          </button>
+        </div>
+      ) : (
+        <div className="exit-hint">
+          <span>{t('laniakea.escToPause')}</span>
+          <span>{t('laniakea.qToQuit')}</span>
+        </div>
+      )}
 
       <div className="pause" id="rest-pause">
         <div className="pause-icon">{'✦'}</div>
@@ -2159,14 +2162,19 @@ const laniakeaStyles = `
 .hud-approach.visible{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .hud-approach-icon{font-size:16px;color:rgba(108,92,231,.85);text-shadow:0 0 10px rgba(108,92,231,.85);animation:approachPulse 2.5s ease-in-out infinite}
 @keyframes approachPulse{0%,100%{opacity:.6;text-shadow:0 0 8px rgba(108,92,231,.4)}50%{opacity:1;text-shadow:0 0 16px rgba(108,92,231,.8)}}
-.hud-approach-info{display:flex;flex-direction:column;gap:1px}
-.hud-approach-label{font-size:7px;letter-spacing:3px;color:rgba(108,92,231,.65);font-weight:600}
-.hud-approach-name{font-family:var(--font);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.3px}
-.hud-approach-dist{font-size:13px;font-weight:700;color:rgba(0,214,143,.9);text-shadow:0 0 8px rgba(0,214,143,.3);font-variant-numeric:tabular-nums;margin-left:6px;padding-left:12px;border-left:1px solid rgba(108,92,231,.25)}
+.hud-approach-info{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:12px;row-gap:1px;min-width:0}
+.hud-approach-name{font-family:var(--font);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.3px;white-space:nowrap}
+.hud-approach-dist{font-size:13px;font-weight:700;color:rgba(0,214,143,.9);text-shadow:0 0 8px rgba(0,214,143,.3);font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* ── Exit button ── */
-.exit{position:fixed;top:78px;right:18px;z-index:20;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);color:#e8e8f0;padding:7px 14px;border-radius:20px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:1.5px;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;pointer-events:auto}
-.exit:hover{background:rgba(255,107,107,.2);border-color:rgba(255,107,107,.5);color:#fff}
+/* ── Exit hint / mobile actions ── */
+.exit-hint{position:fixed;top:78px;right:18px;z-index:20;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);color:#e8e8f0;padding:8px 14px;border-radius:14px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:1.5px;backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:4px;text-align:right;pointer-events:none}
+.laniakea-menu{position:fixed;top:78px;right:12px;z-index:20;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.laniakea-menu-items{display:flex;gap:8px;overflow:hidden;max-width:0;opacity:0;pointer-events:none;transition:max-width .3s cubic-bezier(.22,1,.36,1),opacity .25s ease}
+.laniakea-menu.open .laniakea-menu-items{max-width:260px;opacity:1;pointer-events:auto}
+.laniakea-menu-toggle{flex-shrink:0;width:40px;height:40px;background:rgba(6,8,18,.6);border:1px solid rgba(108,92,231,.4);color:#e8e8f0;border-radius:12px;font-size:18px;line-height:1;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:auto;touch-action:manipulation;-webkit-user-select:none;user-select:none;display:flex;align-items:center;justify-content:center}
+.laniakea-menu.open .laniakea-menu-toggle{background:rgba(108,92,231,.3);border-color:rgba(108,92,231,.7)}
+.laniakea-action-btn{flex-shrink:0;white-space:nowrap;background:rgba(6,8,18,.6);border:1px solid rgba(108,92,231,.4);color:#e8e8f0;padding:8px 12px;border-radius:12px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:auto;touch-action:manipulation;-webkit-user-select:none;user-select:none;display:inline-flex;align-items:center;gap:6px}
+.laniakea-action-btn:active{background:rgba(108,92,231,.3)}
 
 /* ── Intro ── */
 .intro{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at center,rgba(10,8,24,.92) 0%,#000 80%);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;cursor:pointer;transition:opacity .8s ease,visibility .8s ease}
@@ -2179,7 +2187,6 @@ const laniakeaStyles = `
 .intro-controls kbd{font-family:var(--mono);font-size:10px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:3px 7px;border-radius:4px;color:#fff;min-width:22px;text-align:center;letter-spacing:0;display:inline-block}
 .intro-btn{padding:14px 32px;background:rgba(108,92,231,.15);border:1px solid rgba(108,92,231,.5);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;border-radius:30px;cursor:pointer;transition:all .2s;backdrop-filter:blur(8px)}
 .intro-btn:hover{background:var(--accent);box-shadow:0 0 30px rgba(108,92,231,.5)}
-.intro-hint{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(150,150,170,.5)}
 
 /* ── Pause ── */
 .pause{position:fixed;inset:0;z-index:40;background:rgba(5,5,15,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;pointer-events:auto;cursor:pointer;color:#e8e8f0}
@@ -2190,19 +2197,8 @@ const laniakeaStyles = `
 .pause-sub{font-size:13px;color:rgba(200,200,220,.65);max-width:380px;line-height:1.6}
 .pause-cta{margin-top:24px;padding:12px 28px;background:rgba(108,92,231,.2);border:1px solid rgba(108,92,231,.5);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;border-radius:30px;cursor:pointer}
 
-/* ── Cursor ── */
-.cursor-dot{position:fixed;width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(180,220,255,.7);background:rgba(180,220,255,.15);box-shadow:0 0 10px rgba(180,220,255,.4);pointer-events:none;z-index:30;transform:translate(-50%,-50%);left:50%;top:50%;transition:border-color .15s,background .15s,box-shadow .15s}
-.cursor-dot.rotating{border-color:rgba(255,170,60,.85);background:rgba(255,170,60,.15);box-shadow:0 0 12px rgba(255,170,60,.5)}
-.cursor-dot::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:3px;height:3px;border-radius:50%;background:rgba(180,220,255,.95);box-shadow:0 0 6px rgba(180,220,255,.8)}
-.cursor-dot.rotating::after{background:rgba(255,220,140,.95);box-shadow:0 0 6px rgba(255,200,100,.9)}
 
 /* ── Edge hints ── */
-.edge-hint{position:fixed;pointer-events:none;z-index:8;opacity:0;transition:opacity .2s}
-.edge-hint.show{opacity:.55}
-.edge-hint.top{top:0;left:0;right:0;height:90px;background:linear-gradient(to bottom,rgba(255,170,60,.25),transparent)}
-.edge-hint.bottom{bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,rgba(255,170,60,.25),transparent)}
-.edge-hint.left{top:0;bottom:0;left:0;width:90px;background:linear-gradient(to right,rgba(255,170,60,.25),transparent)}
-.edge-hint.right{top:0;bottom:0;right:0;width:90px;background:linear-gradient(to left,rgba(255,170,60,.25),transparent)}
 
 /* ── Touch controls (mobile) ── */
 .rest-touch{display:none}
@@ -2216,7 +2212,7 @@ const laniakeaStyles = `
 .intro-touch{display:none;flex-direction:column;gap:10px;margin:6px 0 4px}
 .intro-touch .row{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(200,205,235,.8)}
 .intro-touch-ic{min-width:36px;text-align:center;color:var(--accent);font-size:15px}
-.is-touch .intro-controls,.is-touch .intro-hint{display:none}
+.is-touch .intro-controls{display:none}
 .is-touch .intro-touch{display:flex}
 
 /* ── Mobile HUD adjustments ── */
@@ -2224,12 +2220,12 @@ const laniakeaStyles = `
 .is-touch .hud-panel{padding:8px 11px}
 .is-touch .hud-cells{gap:10px}
 .is-touch .hud-value{font-size:13px}
-/* Drop the ship-ID panel and reuse the top-left corner for the approach /
-   distance readout (moved out of the centre so nothing overlaps). */
+/* Drop the ship-ID panel; the approach readout sits top-left with its width
+   capped in JS so a 5vw gap to the vitals always remains (distance wraps below
+   the name when tight). */
 .is-touch .hud-tl{display:none}
-.is-touch .hud-approach{left:20px;max-width:calc(100vw - 150px);transform:translateY(-8px)}
+.is-touch .hud-approach{top:20px;left:12px;right:auto;overflow:hidden;transform:translateY(-8px)}
 .is-touch .hud-approach.visible{transform:translateY(0)}
-.is-touch .hud-approach-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width: 640px) {
   .is-touch .hud-tr{padding:7px 9px}
   .is-touch .hud-value{font-size:12px}
