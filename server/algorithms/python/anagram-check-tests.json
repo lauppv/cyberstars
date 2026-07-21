@@ -1,5 +1,9 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }],
+    "forbids": [{ "kind": "call", "name": "sorted" }]
+  },
   "cases": [
     { "visible": true, "stdin": "listen\nsilent\n" },
     { "visible": true, "stdin": "hello\nworld\n" },

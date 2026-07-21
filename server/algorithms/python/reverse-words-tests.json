@@ -1,5 +1,8 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }]
+  },
   "cases": [
     { "visible": true, "stdin": "hello world\n" },
     { "visible": true, "stdin": "I love Python\n" },
