@@ -9,6 +9,7 @@ const mockRepo = {
   createMessage: vi.fn(),
   markRead: vi.fn(),
   findMessage: vi.fn(),
+  editMessage: vi.fn(),
   softDeleteMessage: vi.fn(),
   toggleReaction: vi.fn(),
 };
@@ -25,6 +26,7 @@ const {
   getHistory,
   sendMessage,
   markRead,
+  editMessage,
   deleteMessage,
   toggleReaction,
 } = await import('./messages.service.js');
@@ -246,6 +248,66 @@ describe('messages.service toggleReaction', () => {
     };
     expect(mockWs.pushToUser).toHaveBeenCalledWith(2, frame);
     expect(mockWs.pushToUser).toHaveBeenCalledWith(1, frame);
+  });
+});
+
+describe('messages.service editMessage', () => {
+  it('404s when the message belongs to someone else', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
+    await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
+  });
+
+  it('404s when the message is already deleted', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1, deleted: true }));
+    await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
+  });
+
+  it('updates an owned message and stamps editedAt', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.editMessage.mockResolvedValue(
+      msgRow({ senderId: 1, content: 'nou', editedAt: new Date('2026-07-17T12:00:00.000Z') }),
+    );
+    mockRepo.findConversation.mockResolvedValue(convRow());
+    const res = await editMessage(1, 500, 'nou');
+    expect(mockRepo.editMessage).toHaveBeenCalledWith(500, 1, 'nou');
+    expect(res.content).toBe('nou');
+    expect(res.editedAt).toBe('2026-07-17T12:00:00.000Z');
+  });
+
+  it('pushes the edited message live to both participants', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.editMessage.mockResolvedValue(
+      msgRow({ senderId: 1, content: 'nou', editedAt: new Date('2026-07-17T12:00:00.000Z') }),
+    );
+    mockRepo.findConversation.mockResolvedValue(convRow());
+
+    await editMessage(1, 500, 'nou');
+
+    const frame = {
+      channel: 'dm',
+      type: 'edited',
+      payload: expect.objectContaining({ id: 500, content: 'nou' }),
+    };
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(2, frame);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(1, frame);
+  });
+
+  it('404s when the update affects no row (raced delete)', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.editMessage.mockResolvedValue(null);
+    await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
+  });
+
+  it('skips the live push when the conversation cannot be loaded', async () => {
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.editMessage.mockResolvedValue(msgRow({ senderId: 1, content: 'nou' }));
+    mockRepo.findConversation.mockResolvedValue(null);
+
+    const res = await editMessage(1, 500, 'nou');
+    expect(res.content).toBe('nou');
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
   });
 });
 

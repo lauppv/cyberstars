@@ -146,11 +146,16 @@
     "composerPlaceholder": "Scrie un mesaj…",
     "send": "Trimite",
     "delete": "Șterge",
+    "edit": "Editează",
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "editHint": "Enter pentru salvare · Esc pentru anulare",
+    "edited": "editat {{time}}",
     "back": "Înapoi",
     "loadOlder": "Încarcă mesaje mai vechi",
-    "read": "Citit",
+    "seen": "Văzut",
     "sent": "Trimis",
-    "addReaction": "Adaugă o reacție"
+    "actions": "Acțiuni mesaj"
   },
   "notif": {
     "title": "Notificări",

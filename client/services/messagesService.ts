@@ -29,6 +29,10 @@ export function markRead(conversationId: number, upToMessageId: number) {
   });
 }
 
+export function editMessage(messageId: number, content: string) {
+  return api.patch<{ message: MessageDTO }>(`/api/messages/${messageId}`, { content });
+}
+
 export function deleteMessage(messageId: number) {
   return api.delete<{ message: MessageDTO }>(`/api/messages/${messageId}`);
 }
