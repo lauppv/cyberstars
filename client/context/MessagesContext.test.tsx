@@ -48,6 +48,7 @@ function msg(over: Partial<MessageDTO> = {}): MessageDTO {
     content: 'salut',
     deleted: false,
     readAt: null,
+    editedAt: null,
     createdAt: '2026-07-17T11:00:00.000Z',
     reactions: [],
     ...over,

@@ -90,6 +90,18 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     [user?.id, load],
   );
 
+  // An edited message refreshes the inbox preview in place when it's the last
+  // message of its conversation — no reordering, no unread change.
+  const applyEdited = useCallback((message: MessageDTO) => {
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === message.conversationId && c.lastMessage?.id === message.id
+          ? { ...c, lastMessage: message }
+          : c,
+      ),
+    );
+  }, []);
+
   // A deleted message redacts the inbox preview — no reordering. If it was
   // still unread (sent by the other side, never read), it no longer counts:
   // the server excludes deleted messages from unread, so mirror that here.
@@ -122,11 +134,12 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     (frame: UserSocketFrame) => {
       if (frame.channel !== 'dm') return;
       if (frame.type === 'message') applyIncoming(frame.payload);
+      else if (frame.type === 'edited') applyEdited(frame.payload);
       else if (frame.type === 'deleted') applyDeleted(frame.payload);
       else if (frame.type === 'read' && frame.payload.readerId === user?.id)
         applyOwnRead(frame.payload.conversationId);
     },
-    [applyIncoming, applyDeleted, applyOwnRead, user?.id],
+    [applyIncoming, applyEdited, applyDeleted, applyOwnRead, user?.id],
   );
   useUserSocketFrames(onFrame);
 

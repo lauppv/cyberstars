@@ -145,11 +145,16 @@
     "composerPlaceholder": "Write a message…",
     "send": "Send",
     "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "editHint": "Enter to save · Esc to cancel",
+    "edited": "edited {{time}}",
     "back": "Back",
     "loadOlder": "Load older messages",
-    "read": "Read",
+    "seen": "Seen",
     "sent": "Sent",
-    "addReaction": "Add reaction"
+    "actions": "Message actions"
   },
   "notif": {
     "title": "Notifications",

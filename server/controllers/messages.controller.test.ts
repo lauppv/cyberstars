@@ -8,6 +8,7 @@ const mockService = {
   getHistory: vi.fn(),
   sendMessage: vi.fn(),
   markRead: vi.fn(),
+  editMessage: vi.fn(),
   deleteMessage: vi.fn(),
 };
 vi.mock('../services/messages.service.js', () => mockService);
@@ -115,6 +116,27 @@ describe('markRead', () => {
     );
     expect(mockService.markRead).toHaveBeenCalledWith(10, 3, 50);
     expect(res.json).toHaveBeenCalledWith({ ok: true });
+  });
+});
+
+describe('editMessage', () => {
+  it('edits a message by id', async () => {
+    mockService.editMessage.mockResolvedValue({ id: 7, content: 'nou' });
+    const res = mockRes();
+    await ctrl.editMessage(
+      mockReq({ params: { messageId: '7' }, body: { content: 'nou' } }),
+      res,
+      vi.fn(),
+    );
+    expect(mockService.editMessage).toHaveBeenCalledWith(10, 7, 'nou');
+    expect(res.json).toHaveBeenCalledWith({ message: { id: 7, content: 'nou' } });
+  });
+
+  it('rejects a non-numeric message id via next', async () => {
+    const next = vi.fn();
+    await ctrl.editMessage(mockReq({ params: { messageId: 'abc' } }), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(AppError));
+    expect(mockService.editMessage).not.toHaveBeenCalled();
   });
 });
 

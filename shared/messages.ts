@@ -22,6 +22,7 @@ export interface MessageDTO {
   content: string; // replaced with a placeholder when `deleted`
   deleted: boolean;
   readAt: string | null;
+  editedAt: string | null; // when the sender last edited the content, else null
   createdAt: string;
   reactions: MessageReactionDTO[];
 }
@@ -45,6 +46,9 @@ export interface ConversationHistory {
 // `read` tells the other participant their messages were read up to an id.
 export type DmSocketFrame =
   | { channel: 'dm'; type: 'message'; payload: MessageDTO }
+  // Edited content: the refreshed DTO (new content + editedAt), so the other
+  // participant's bubble updates in place without a refetch.
+  | { channel: 'dm'; type: 'edited'; payload: MessageDTO }
   // Soft-delete redaction: the already-blanked DTO, so the deleted content
   // disappears from the other participant's screen without a refetch.
   | { channel: 'dm'; type: 'deleted'; payload: MessageDTO }

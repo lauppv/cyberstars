@@ -147,6 +147,22 @@ export async function toggleReaction(
   });
 }
 
+// Edit like ForumPost: replace the content and stamp editedAt. Scoped to the
+// sender and to non-deleted rows so a caller can only edit their own live
+// message. Returns the refreshed row (with reactions) or null if nothing matched.
+export async function editMessage(
+  id: number,
+  senderId: number,
+  content: string,
+): Promise<MessageRow | null> {
+  const res = await prisma.directMessage.updateMany({
+    where: { id, senderId, deleted: false },
+    data: { content, editedAt: new Date() },
+  });
+  if (res.count === 0) return null;
+  return prisma.directMessage.findUnique({ where: { id }, include: reactionsInclude });
+}
+
 // Soft-delete like ForumPost: the row stays (thread integrity) but content is
 // blanked. Scoped to the sender so a caller can only delete their own message.
 export async function softDeleteMessage(id: number, senderId: number): Promise<MessageRow | null> {

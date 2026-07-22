@@ -61,6 +61,17 @@ export async function markRead(req: Request, res: Response, next: NextFunction):
   }
 }
 
+export async function editMessage(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const id = parseInt(req.params.messageId as string);
+    if (isNaN(id)) throw new AppError(400, 'Invalid message ID');
+    const message = await messagesService.editMessage(req.user!.id, id, req.body.content);
+    res.json({ message });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function deleteMessage(
   req: Request,
   res: Response,
