@@ -119,7 +119,8 @@ export function PublicProfilePage() {
   const { t, i18n } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
   const { openWith } = useMessages();
-  const canAccess = canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
+  // Logged-in only (no guests): profiles ride the leaderboard gate.
+  const canAccess = !!user && canAccessFeature('leaderboard', user.role, import.meta.env.PROD);
   // Messaging needs an identity: without the user check a logged-out visitor
   // would see a Send Message button whose request can only 401.
   const canMessage = !!user && canAccessFeature('messaging', user.role, import.meta.env.PROD);

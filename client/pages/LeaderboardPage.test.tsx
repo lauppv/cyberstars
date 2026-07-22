@@ -59,9 +59,12 @@ function renderPage() {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mockUseAuth.mockReturnValue({ user: null, isLoggedIn: false, isLoading: false } as ReturnType<
-    typeof useAuth
-  >);
+  // The board is logged-in only, so the default visitor is a signed-in USER.
+  mockUseAuth.mockReturnValue({
+    user: { role: 'USER' },
+    isLoggedIn: true,
+    isLoading: false,
+  } as ReturnType<typeof useAuth>);
   mockGetLeaderboard.mockResolvedValue({ entries: [ada, bo], total: 2 });
   mockGetMyRank.mockResolvedValue(null);
 });
@@ -74,10 +77,13 @@ describe('LeaderboardPage', () => {
     expect(screen.getByText('220 XP')).toBeDefined();
   });
 
-  it('does not fetch my rank when logged out', async () => {
+  it('redirects a guest away and does not fetch', async () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoggedIn: false, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
     renderPage();
-    await screen.findByText('Ada');
-    expect(mockGetMyRank).not.toHaveBeenCalled();
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
+    expect(mockGetLeaderboard).not.toHaveBeenCalled();
   });
 
   it('highlights the current user with a "You" badge', async () => {

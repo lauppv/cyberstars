@@ -15,6 +15,7 @@ vi.mock('../repositories/user.repository.js', () => ({
 
 const { authenticateToken, optionalAuth, requireAdmin, requireFeatureAccess } =
   await import('./auth.js');
+const { PREVIEW_FEATURES } = await import('../../shared/features.js');
 
 function makeReqRes(token?: string) {
   const req = { cookies: token ? { token } : {} } as unknown as Request;
@@ -100,6 +101,8 @@ describe('requireAdmin', () => {
   });
 });
 
+// Uses `messaging` as the sample preview feature — `leaderboard` is now
+// launched (logged-in only), so it no longer exercises the admin-only branch.
 describe('requireFeatureAccess (preview gate)', () => {
   function makeReq(user?: { id: number }) {
     const req = { user } as unknown as Request;
@@ -112,15 +115,22 @@ describe('requireFeatureAccess (preview gate)', () => {
   }
 
   const originalEnv = process.env.NODE_ENV;
+  const originalFlag = PREVIEW_FEATURES.messaging;
+  beforeEach(() => {
+    // Force the sample feature into preview so the admin-only assertions are
+    // independent of its real launch state (it may already be launched).
+    PREVIEW_FEATURES.messaging = true;
+  });
   afterEach(() => {
     process.env.NODE_ENV = originalEnv;
+    PREVIEW_FEATURES.messaging = originalFlag;
     vi.clearAllMocks();
   });
 
   it('lets anyone through on dev, without touching the DB', async () => {
     process.env.NODE_ENV = 'development';
     const { req, res, next } = makeReq();
-    await requireFeatureAccess('leaderboard')(req, res, next);
+    await requireFeatureAccess('messaging')(req, res, next);
     expect(next).toHaveBeenCalledWith();
     expect(getRole).not.toHaveBeenCalled();
     expect(res.status).not.toHaveBeenCalled();
@@ -129,7 +139,7 @@ describe('requireFeatureAccess (preview gate)', () => {
   it('404s a guest on prod (feature is hidden, no role lookup)', async () => {
     process.env.NODE_ENV = 'production';
     const { req, res, next } = makeReq();
-    await requireFeatureAccess('leaderboard')(req, res, next);
+    await requireFeatureAccess('messaging')(req, res, next);
     expect(res.status).toHaveBeenCalledWith(404);
     expect(getRole).not.toHaveBeenCalled();
     expect(next).not.toHaveBeenCalled();
@@ -139,7 +149,7 @@ describe('requireFeatureAccess (preview gate)', () => {
     process.env.NODE_ENV = 'production';
     getRole.mockResolvedValueOnce('USER');
     const { req, res, next } = makeReq({ id: 7 });
-    await requireFeatureAccess('leaderboard')(req, res, next);
+    await requireFeatureAccess('messaging')(req, res, next);
     expect(getRole).toHaveBeenCalledWith(7);
     expect(res.status).toHaveBeenCalledWith(404);
     expect(next).not.toHaveBeenCalled();
@@ -149,7 +159,7 @@ describe('requireFeatureAccess (preview gate)', () => {
     process.env.NODE_ENV = 'production';
     getRole.mockResolvedValueOnce('ADMIN');
     const { req, res, next } = makeReq({ id: 1 });
-    await requireFeatureAccess('leaderboard')(req, res, next);
+    await requireFeatureAccess('messaging')(req, res, next);
     expect(next).toHaveBeenCalledWith();
     expect(res.status).not.toHaveBeenCalled();
   });
@@ -159,7 +169,7 @@ describe('requireFeatureAccess (preview gate)', () => {
     const boom = new Error('db down');
     getRole.mockRejectedValueOnce(boom);
     const { req, res, next } = makeReq({ id: 7 });
-    await requireFeatureAccess('leaderboard')(req, res, next);
+    await requireFeatureAccess('messaging')(req, res, next);
     expect(next).toHaveBeenCalledWith(boom);
   });
 });

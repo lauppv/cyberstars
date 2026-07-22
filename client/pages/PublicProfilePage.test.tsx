@@ -100,7 +100,11 @@ function renderPage() {
 beforeEach(() => {
   vi.clearAllMocks();
   mockParams = { userId: '7' };
-  mockUseAuth.mockReturnValue({ user: null, isLoading: false } as ReturnType<typeof useAuth>);
+  // Profiles are logged-in only, so the default visitor is a signed-in USER.
+  mockUseAuth.mockReturnValue({
+    user: { id: 1, role: 'USER' },
+    isLoading: false,
+  } as unknown as ReturnType<typeof useAuth>);
   mockGetPublicProfile.mockResolvedValue(fullProfile);
 });
 
@@ -178,10 +182,11 @@ describe('PublicProfilePage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/settings');
   });
 
-  it('hides the Send message button for logged-out visitors', async () => {
+  it('redirects a guest away without fetching the profile', async () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false } as ReturnType<typeof useAuth>);
     renderPage();
-    await screen.findByText('Nova');
-    expect(screen.queryByText('Send message')).toBeNull();
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
+    expect(mockGetPublicProfile).not.toHaveBeenCalled();
   });
 
   it('opens a conversation from the Send message button', async () => {

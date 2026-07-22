@@ -1,11 +1,14 @@
 import { describe, it, expect, vi } from 'vitest';
 import request from 'supertest';
+import jwt from 'jsonwebtoken';
 
 process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
+
+const validToken = jwt.sign({ id: 1 }, 'test-secret');
 
 function makePrismaProxy() {
   return new Proxy(
@@ -59,7 +62,7 @@ vi.mock('./repositories/leaderboard.repository.js', () => ({
 const { app } = await import('./app.js');
 
 describe('endpoint smoke tests — public routes return 200', () => {
-  const publicGets = ['/api/forum/categories', '/api/leaderboard'];
+  const publicGets = ['/api/forum/categories'];
 
   for (const path of publicGets) {
     it(`GET ${path}`, async () => {
@@ -126,7 +129,9 @@ describe('endpoint smoke tests — auth-protected routes return 401 without toke
     ['get', '/api/profile/activity'],
     ['get', '/api/daily'],
     ['get', '/api/admin/stats'],
+    ['get', '/api/leaderboard'],
     ['get', '/api/leaderboard/me'],
+    ['get', '/api/users/123/profile'],
     ['get', '/api/notifications'],
     ['post', '/api/notifications/read'],
     ['post', '/api/notifications/123/read'],
@@ -158,17 +163,6 @@ describe('endpoint smoke tests — auth-protected routes return 401 without toke
 });
 
 describe('preview feature gate', () => {
-  it('404s the leaderboard for a guest when NODE_ENV=production', async () => {
-    const original = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'production';
-    try {
-      const res = await request(app).get('/api/leaderboard');
-      expect(res.status).toBe(404);
-    } finally {
-      process.env.NODE_ENV = original;
-    }
-  });
-
   it('401s messaging for a guest before the feature gate can 404 it', async () => {
     // No token -> authenticateToken rejects first (401), so endpoint existence
     // stays hidden from the unauthenticated even in dev.
@@ -179,26 +173,18 @@ describe('preview feature gate', () => {
 
 describe('public profile route', () => {
   it('validates the id param with a 400 before reaching the service', async () => {
-    const res = await request(app).get('/api/users/abc/profile');
+    // Profiles now require auth, so send a valid token to reach the validator.
+    const res = await request(app)
+      .get('/api/users/abc/profile')
+      .set('Cookie', `token=${validToken}`);
     expect(res.status).toBe(400);
   });
 
-  it('404s a missing user (route is wired past the dev feature gate)', async () => {
+  it('404s a missing user (route is wired past auth + the feature gate)', async () => {
     // user.repository.findById is mocked to null, so the service throws 404 —
-    // proving optionalAuth + the leaderboard gate let a dev guest through.
-    const res = await request(app).get('/api/users/1/profile');
+    // proving an authenticated request reaches the service past the gate in dev.
+    const res = await request(app).get('/api/users/1/profile').set('Cookie', `token=${validToken}`);
     expect(res.status).toBe(404);
-  });
-
-  it('404s the profile for a guest when NODE_ENV=production', async () => {
-    const original = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'production';
-    try {
-      const res = await request(app).get('/api/users/1/profile');
-      expect(res.status).toBe(404);
-    } finally {
-      process.env.NODE_ENV = original;
-    }
   });
 });
 
