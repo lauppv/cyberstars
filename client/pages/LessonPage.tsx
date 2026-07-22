@@ -653,18 +653,20 @@ export function LessonPage() {
         </div>
       </div>
 
-      <AchievementToast
-        icon={toastData.icon}
-        title={toastData.title}
-        visible={showToast}
-        onClose={() => setShowToast(false)}
-      />
-      <AchievementToast
-        icon={gamification.newBadge?.icon ?? '🏅'}
-        title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
-        visible={!!gamification.newBadge}
-        onClose={gamification.dismissNewBadge}
-      />
+      <div className="fixed bottom-5 right-5 z-[100] flex flex-col gap-3">
+        <AchievementToast
+          icon={toastData.icon}
+          title={toastData.title}
+          visible={showToast}
+          onClose={() => setShowToast(false)}
+        />
+        <AchievementToast
+          icon={gamification.newBadge?.icon ?? '🏅'}
+          title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
+          visible={!!gamification.newBadge}
+          onClose={gamification.dismissNewBadge}
+        />
+      </div>
       {showSolution && solution && (
         <SolutionModal
           solution={solution}
