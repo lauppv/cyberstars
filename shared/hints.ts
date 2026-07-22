@@ -5,12 +5,6 @@ export const MAX_HINT_LEVEL = 3;
 
 export type HintLevel = 1 | 2 | 3;
 
-export interface HintRequest {
-  code: string;
-  level: HintLevel;
-  lang: 'en' | 'ro';
-}
-
 export interface HintResponse {
   hint: string;
   level: HintLevel;
