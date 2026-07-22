@@ -752,7 +752,7 @@
     "loading": "Thinking…",
     "next": "More specific hint",
     "levelOf": "Hint {{n}} of {{max}}",
-    "noMore": "That's the most detailed hint. Try applying it!",
+    "noMore": "That's the most detailed hint.",
     "error": "Could not get a hint right now.",
     "retry": "Try again",
     "disclaimer": "Hints are AI-generated and guide you without giving the full answer — they may not be perfect."
