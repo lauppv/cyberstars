@@ -113,10 +113,9 @@ describe('AlmanacPage', () => {
     expect(vi.mocked(fetchAlmanacExtras)).toHaveBeenCalledWith('ro');
   });
 
-  it('renders the main heading and filters once loaded', async () => {
+  it('renders the filters once loaded', async () => {
     renderWithRouter(<AlmanacPage />);
-    expect(await screen.findByText(/The CyberStars Almanac/)).toBeInTheDocument();
-    expect(screen.getByText('All')).toBeInTheDocument();
+    expect(await screen.findByText('All')).toBeInTheDocument();
     expect(screen.getByText('History')).toBeInTheDocument();
   });
 
@@ -129,7 +128,7 @@ describe('AlmanacPage', () => {
     vi.mocked(fetchAlmanacIndex).mockRejectedValueOnce(new Error('boom'));
     vi.mocked(fetchAlmanacExtras).mockRejectedValueOnce(new Error('boom'));
     renderWithRouter(<AlmanacPage />);
-    expect(await screen.findByText(/The CyberStars Almanac/)).toBeInTheDocument();
+    expect(await screen.findByText('All')).toBeInTheDocument();
     expect(screen.queryByText('Read of the day')).not.toBeInTheDocument();
   });
 

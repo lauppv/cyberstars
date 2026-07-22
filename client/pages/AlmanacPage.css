@@ -5,52 +5,6 @@
   padding: 36px 28px 60px;
 }
 
-.almanac-header {
-  margin-bottom: 40px;
-  background: rgba(11, 11, 17, 0.55);
-  backdrop-filter: blur(6px);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  border: 1px solid rgba(46, 46, 62, 0.4);
-}
-
-.almanac-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 2.5px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.almanac-kicker::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.almanac-title {
-  font-size: 56px;
-  font-weight: 900;
-  letter-spacing: -2px;
-  line-height: 1;
-  margin-bottom: 14px;
-  background: linear-gradient(180deg, #fff 0%, #a8b0d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.almanac-subtitle {
-  font-size: 16px;
-  color: var(--text2);
-  line-height: 1.6;
-}
-
 /* ===== Filter chips ===== */
 .almanac-filters-bar {
   display: flex;
@@ -1059,10 +1013,6 @@
 
   .almanac-articles {
     grid-template-columns: 1fr;
-  }
-
-  .almanac-title {
-    font-size: 42px;
   }
 
   .story-overlay {

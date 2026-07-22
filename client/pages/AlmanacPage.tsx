@@ -153,16 +153,6 @@ export function AlmanacPage() {
     <>
       <Topbar />
       <main className="almanac-page">
-        <div className="almanac-header">
-          <div className="almanac-kicker">{t('almanac.kicker')}</div>
-          <h1 className="almanac-title">
-            {t('almanac.title')}
-            <br />
-            {t('almanac.titleLine2')}
-          </h1>
-          <p className="almanac-subtitle">{t('almanac.subtitle')}</p>
-        </div>
-
         <div className="almanac-filters-bar">
           {!showAllTopics && (
             <button
