@@ -733,12 +733,23 @@
     "shareToForum": "📤 Partajează pe forum",
     "codeSaved": "Cod salvat!",
     "showSolution": "💡 Arată soluția",
+    "getHint": "✨ Cere un indiciu",
     "solutionTitle": "Soluția",
     "compare": "Compară",
     "yourCode": "Codul tău",
     "yourCodeEmpty": "Editorul este gol.",
     "badgeEarned": "Insignă obținută: {{label}}",
     "xpGained": "+{{xp}} XP"
+  },
+  "hints": {
+    "title": "Indiciu AI",
+    "loading": "Se gândește…",
+    "next": "Indiciu mai specific",
+    "levelOf": "Indiciul {{n}} din {{max}}",
+    "noMore": "Acesta e cel mai detaliat indiciu. Încearcă să-l aplici!",
+    "error": "Nu am putut genera un indiciu acum.",
+    "retry": "Încearcă din nou",
+    "disclaimer": "Indiciile sunt generate de AI și te ghidează fără să-ți dea răspunsul complet — pot fi imperfecte."
   },
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",

@@ -39,4 +39,8 @@ export const env = {
     apiKey: process.env.RESEND_API_KEY ?? '',
     from: process.env.RESEND_FROM ?? 'CyberStars <noreply@cyber-stars.org>',
   },
+  gemini: {
+    apiKey: process.env.GEMINI_API_KEY ?? '',
+    model: process.env.GEMINI_MODEL ?? 'gemini-flash-lite-latest',
+  },
 } as const;
