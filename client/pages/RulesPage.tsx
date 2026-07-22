@@ -15,11 +15,7 @@ export function RulesPage() {
           </div>
           <div className="flex flex-col gap-4">
             {rules.map((rule, i) => (
-              <div
-                key={i}
-                className="flex gap-4 p-4 rounded-[var(--radius)] border border-[var(--border)]"
-                style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
-              >
+              <div key={i} className="panel flex gap-4 p-4">
                 <div className="w-7 h-7 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[12px] font-bold text-[var(--accent)] flex-shrink-0 border border-[var(--border)]">
                   {i + 1}
                 </div>
@@ -30,19 +26,13 @@ export function RulesPage() {
               </div>
             ))}
           </div>
-          <div
-            className="mt-6 p-4 rounded-[var(--radius)] border border-[var(--accent)]/30"
-            style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
-          >
+          <div className="panel mt-6 p-4">
             <div className="text-[14px] font-semibold mb-1">{t('rules.radioPrivacyTitle')}</div>
             <div className="text-[12px] text-[var(--text2)] leading-relaxed">
               {t('rules.radioPrivacyDesc')}
             </div>
           </div>
-          <div
-            className="mt-4 p-4 rounded-[var(--radius)] border border-[var(--accent)]/30"
-            style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
-          >
+          <div className="panel mt-4 p-4">
             <div className="text-[14px] font-semibold mb-1">{t('rules.aiPrivacyTitle')}</div>
             <div className="text-[12px] text-[var(--text2)] leading-relaxed">
               {t('rules.aiPrivacyDesc')}
