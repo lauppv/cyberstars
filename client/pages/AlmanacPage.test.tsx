@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import i18n from 'i18next';
@@ -91,8 +91,17 @@ function renderWithRouter(ui: React.ReactElement) {
 }
 
 describe('AlmanacPage', () => {
+  // The featured read is a deterministic per-day pick; pin the date so it lands
+  // on the first card (index 0) and the article list/pagination stay stable.
+  // Only Date is faked so testing-library's async polling keeps real timers.
+  beforeEach(() => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2026, 3, 14, 12, 0, 0));
+  });
+
   // The language is a global i18n singleton; reset it so the ro test can't leak.
   afterEach(async () => {
+    vi.useRealTimers();
     await i18n.changeLanguage('en');
   });
 
@@ -104,24 +113,23 @@ describe('AlmanacPage', () => {
     expect(vi.mocked(fetchAlmanacExtras)).toHaveBeenCalledWith('ro');
   });
 
-  it('renders the main heading and filters once loaded', async () => {
+  it('renders the filters once loaded', async () => {
     renderWithRouter(<AlmanacPage />);
-    expect(await screen.findByText(/The CyberStars Almanac/)).toBeInTheDocument();
-    expect(screen.getByText('All')).toBeInTheDocument();
+    expect(await screen.findByText('All')).toBeInTheDocument();
     expect(screen.getByText('History')).toBeInTheDocument();
   });
 
-  it('renders the hero section on "all" filter', async () => {
+  it('renders the featured read on "all" filter', async () => {
     renderWithRouter(<AlmanacPage />);
-    expect(await screen.findByText('Featured story')).toBeInTheDocument();
+    expect(await screen.findByText('Read of the day')).toBeInTheDocument();
   });
 
   it('renders without crashing when the data fails to load', async () => {
     vi.mocked(fetchAlmanacIndex).mockRejectedValueOnce(new Error('boom'));
     vi.mocked(fetchAlmanacExtras).mockRejectedValueOnce(new Error('boom'));
     renderWithRouter(<AlmanacPage />);
-    expect(await screen.findByText(/The CyberStars Almanac/)).toBeInTheDocument();
-    expect(screen.queryByText('Featured story')).not.toBeInTheDocument();
+    expect(await screen.findByText('All')).toBeInTheDocument();
+    expect(screen.queryByText('Read of the day')).not.toBeInTheDocument();
   });
 
   it('renders fun facts and quotes sidebar', async () => {
@@ -130,22 +138,16 @@ describe('AlmanacPage', () => {
     expect(screen.getByText(/Quotes/)).toBeInTheDocument();
   });
 
-  it('renders the timeline section', async () => {
-    renderWithRouter(<AlmanacPage />);
-    expect(await screen.findByText(/The Timeline/)).toBeInTheDocument();
-    expect(screen.getByText(/Moments that bent the trajectory/)).toBeInTheDocument();
-  });
-
   it('filters articles when a category chip is clicked', async () => {
     renderWithRouter(<AlmanacPage />);
-    await screen.findByText('Featured story');
+    await screen.findByText('Read of the day');
     fireEvent.click(screen.getByText('Security'));
-    expect(screen.queryByText('Featured story')).not.toBeInTheDocument();
+    expect(screen.queryByText('Read of the day')).not.toBeInTheDocument();
   });
 
   it('paginates articles', async () => {
     renderWithRouter(<AlmanacPage />);
-    await screen.findByText('Featured story');
+    await screen.findByText('Read of the day');
     expect(screen.getByText('Article 0')).toBeInTheDocument();
     expect(screen.queryByText('Article 10')).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: '2' }));
@@ -176,17 +178,17 @@ describe('AlmanacPage', () => {
 
   it('opens story modal when an article is clicked', async () => {
     renderWithRouter(<AlmanacPage />);
-    await screen.findByText('Featured story');
+    await screen.findByText('Read of the day');
     const articles = document.querySelectorAll('.almanac-article');
     expect(articles.length).toBeGreaterThan(0);
     fireEvent.click(articles[0]);
     expect(await screen.findByText('✕')).toBeInTheDocument();
   });
 
-  it('opens story modal when hero is clicked', async () => {
+  it('opens story modal when the featured read is clicked', async () => {
     renderWithRouter(<AlmanacPage />);
-    const hero = await screen.findByText('Featured story');
-    fireEvent.click(hero.closest('.almanac-hero')!);
+    const featured = await screen.findByText('Read of the day');
+    fireEvent.click(featured.closest('.almanac-hero')!);
     expect(await screen.findByText('✕')).toBeInTheDocument();
   });
 

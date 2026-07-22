@@ -690,11 +690,7 @@
     "nextTopics": "Next topics",
     "carousel": "Carousel",
     "showAll": "Show all",
-    "kicker": "✦ The CyberStars Almanac",
-    "title": "Tech stories, fun facts",
-    "titleLine2": "& everything in between.",
-    "subtitle": "Open-source legends and hacker culture, tech history, space, famous quotes, and the curious little fun facts behind the tools you use every day. New reads every week.",
-    "featured": "Featured story",
+    "featured": "Read of the day",
     "latestReads": "Latest reads",
     "articles": "articles",
     "inThisTopic": "in this topic",
@@ -704,9 +700,7 @@
     "prevQuote": "Previous quote",
     "nextQuote": "Next quote",
     "funFact": "🎲 Fun Fact",
-    "quotes": "💬 Quotes",
-    "timelineKicker": "⏳ The Timeline",
-    "timelineTitle": "Moments that bent the trajectory"
+    "quotes": "💬 Quotes"
   },
   "lesson": {
     "difficulty": {
