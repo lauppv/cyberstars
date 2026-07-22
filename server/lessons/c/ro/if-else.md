@@ -6,12 +6,12 @@
 #include <stdio.h>
 
 int main(void) {
-    int varsta = 18;
+    int temperatura = 10;
 
-    if (varsta < 18) {
-        printf("Acces refuzat pentru ca nu ai 18 ani\n");
+    if (temperatura < 15) {
+        printf("Pune-ti o bluza\n");
     } else {
-        printf("Bun venit in club\n");
+        printf("Un tricou e de ajuns\n");
     }
 
     return 0;
@@ -24,7 +24,7 @@ Câteva reguli de sintaxă
 - Corpul stă între **acolade** **{ }**
 - Nu există **:** la final
 
-Dacă **varsta** este mai mică decât **18**, intrăm în blocul **if**. Altfel intrăm în **else**. Rulează codul, schimbă vârsta, vezi ce se întâmplă
+Dacă **temperatura** este mai mică decât **15**, intrăm în blocul **if** (e frig, ne îmbrăcăm gros). Altfel intrăm în **else**. Rulează codul, schimbă temperatura, vezi ce se întâmplă
 
 ---
 
