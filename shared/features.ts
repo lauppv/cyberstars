@@ -19,7 +19,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   notifications: true,
   connections: true,
   radio: false,
-  aiHints: true,
+  aiHints: false,
 };
 
 // Shared access rule, used identically by the server (isProd = NODE_ENV ===
