@@ -17,7 +17,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   leaderboard: false,
   messaging: false,
   notifications: false,
-  connections: true,
+  connections: false,
   radio: false,
   aiHints: true,
 };
