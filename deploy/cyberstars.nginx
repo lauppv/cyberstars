@@ -1,0 +1,70 @@
+# Full nginx site config for cyber-stars.org, ready to copy into place:
+#   sudo cp /opt/cyberstars/deploy/cyberstars.nginx /etc/nginx/sites-available/cyberstars
+#   sudo nginx -t && sudo systemctl reload nginx
+#
+# Maintenance wiring: while /opt/cyberstars/maintenance.on exists (raised by
+# deploy/deploy.sh), the two `if ($maintenance) { return 503; }` guards force a
+# 503 for every request, which the existing `error_page 503 /maintenance.html`
+# serves as the static themed page — the backend is never touched during a deploy.
+
+server {
+    server_name cyber-stars.org www.cyber-stars.org;
+
+    set $maintenance 0;
+    if (-f /opt/cyberstars/maintenance.on) { set $maintenance 1; }
+
+    location /ws/ {
+        if ($maintenance) { return 503; }
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_read_timeout 300s;
+    }
+
+    location /radio/ {
+        alias /opt/cyberstars/media/radio/;
+    }
+
+    location / {
+        if ($maintenance) { return 503; }
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/cyber-stars.org/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/cyber-stars.org/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    error_page 502 503 504 /maintenance.html;
+
+    location = /maintenance.html {
+        root /opt/cyberstars/deploy;
+        internal;
+        add_header Cache-Control "no-store";
+    }
+}
+
+server {
+    if ($host = www.cyber-stars.org) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = cyber-stars.org) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name cyber-stars.org www.cyber-stars.org;
+    return 404; # managed by Certbot
+}
