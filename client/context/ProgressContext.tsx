@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 import { useCurriculum } from './CurriculumContext';
@@ -21,6 +21,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const [failedCourses, setFailedCourses] = useState<ReadonlySet<string>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const [refreshKey, setRefreshKey] = useState(0);
+  const hasDataRef = useRef(false);
 
   const refresh = useCallback(() => setRefreshKey((k) => k + 1), []);
 
@@ -30,8 +31,14 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       setProgressMap({}); // eslint-disable-line react-hooks/set-state-in-effect
       setFailedCourses(new Set());
       setIsLoading(false);
+      hasDataRef.current = false;
       return;
     }
+    // Report loading on the first fetch (incl. the not-logged-in → logged-in
+    // transition after auth resolves) so consumers don't observe a stale-empty
+    // progressMap as if it were the settled result. A manual refresh() with data
+    // already present stays silent to avoid a loading flash.
+    if (!hasDataRef.current) setIsLoading(true);
     let cancelled = false;
     (async () => {
       const map: Record<string, CourseProgress> = {};
@@ -49,6 +56,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         setProgressMap(map);
         setFailedCourses(failed);
         setIsLoading(false);
+        hasDataRef.current = true;
       }
     })();
     return () => {
