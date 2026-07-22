@@ -22,16 +22,13 @@ export function UsagePage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[560px]">
-          <div className="text-backdrop mb-8">
+          <div className="panel px-6 py-5 mb-8">
             <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">{t('usage.pageTitle')}</h1>
             <p className="text-[13px] text-[var(--text3)]">{t('usage.pageSubtitle')}</p>
           </div>
 
           {!isLoggedIn ? (
-            <div
-              className="p-4 rounded-[var(--radius)] border border-[var(--accent)]/30 text-[13px] text-[var(--text2)]"
-              style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
-            >
+            <div className="panel p-4 text-[13px] text-[var(--text2)]">
               {t('usage.signInPrompt')}
             </div>
           ) : !summary && loading ? (
@@ -40,14 +37,13 @@ export function UsagePage() {
             </div>
           ) : summary ? (
             <div className="flex flex-col gap-6">
-              <div
-                className="p-5 rounded-[var(--radius)] border border-[var(--accent)]/30 flex flex-col gap-5"
-                style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
-              >
+              <div className="panel p-5 flex flex-col gap-5">
                 <UsageMeter state={summary.showSolution} label={t('usage.solution')} />
                 <UsageMeter state={summary.getHint} label={t('usage.hints')} />
               </div>
-              <p className="text-[12px] text-[var(--text3)] leading-relaxed">{t('usage.about')}</p>
+              <p className="panel p-4 text-[12px] text-[var(--text3)] leading-relaxed">
+                {t('usage.about')}
+              </p>
             </div>
           ) : null}
         </div>

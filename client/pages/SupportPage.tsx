@@ -128,10 +128,7 @@ export function SupportPage() {
           </div>
 
           {/* New ticket form */}
-          <div
-            className="p-5 rounded-[var(--radius)] border border-[var(--border)] mb-8"
-            style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
-          >
+          <div className="panel p-5 mb-8">
             <h2 className="text-[14px] font-semibold mb-4">{t('support.newTicket')}</h2>
             <form
               onSubmit={(e) => {
@@ -234,8 +231,7 @@ function TicketRow({
   const color = STATUS_COLOR[ticket.status];
   return (
     <div
-      className="p-4 rounded-[var(--radius)] border border-[var(--border)] cursor-pointer hover:border-[var(--accent)] transition"
-      style={{ background: 'rgba(22,22,29,0.72)', backdropFilter: 'blur(12px)' }}
+      className="panel p-4 cursor-pointer hover:border-[var(--accent)] transition"
       onClick={onClick}
     >
       <div className="flex items-center justify-between gap-2 mb-1">
@@ -362,12 +358,8 @@ function TicketConversation({
 
       {/* Messages */}
       <div
-        className="flex-1 flex flex-col gap-3 p-4 rounded-[var(--radius)] border border-[var(--border)] overflow-y-auto"
-        style={{
-          background: 'rgba(22,22,29,0.72)',
-          backdropFilter: 'blur(12px)',
-          maxHeight: '60vh',
-        }}
+        className="panel flex-1 flex flex-col gap-3 p-4 overflow-y-auto"
+        style={{ maxHeight: '60vh' }}
       >
         {/* Original message */}
         <MessageBubble
