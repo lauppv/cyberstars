@@ -134,7 +134,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - DigitalOcean VPS, app at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`)
 - nginx reverse proxy on port 443 → localhost:8080. The `/ws/` location block requires `proxy_set_header Upgrade` and `Connection "upgrade"` for WebSocket
 - Focus-radio mp3 (163MB, gitignored, CBR) lives at `media/radio/` — outside `public/` so builds don't copy it into `dist/`. nginx serves it directly from disk via a `location /radio/` block (`alias /opt/cyberstars/media/radio/;`); the Express static mount on `/radio` is the dev path/fallback
-- Deploy: `cd /opt/cyberstars && git pull && npm install && npm run build && pm2 restart cyberstars`
+- Deploy: run `bash /opt/cyberstars/deploy/deploy.sh` — it raises a maintenance flag (`maintenance.on`), then pulls/installs/builds/restarts, and lowers the flag only after the new backend answers a health check (`/api/time`). While the flag exists, nginx serves the static themed page (`deploy/maintenance.html`) with a 503 for every request without touching the backend, so users never see half-built assets, 500s, or an infinite spinner during a deploy. nginx must be wired to the flag — see `deploy/nginx-maintenance.conf`. The old raw one-liner (`git pull && npm install && npm run build && pm2 restart cyberstars`) exposed broken windows during the build/restart and is superseded
 - Docker images must be pre-pulled on the server: `docker pull gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine danysk/kotlin:latest`
 
 ## Key conventions

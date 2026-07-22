@@ -85,7 +85,7 @@ export function HintModal({
 
           {hints.map((h) => (
             <div key={h.level} className="flex flex-col gap-1.5">
-              <span className="text-[11px] font-semibold tracking-[1px] text-[var(--accent)] uppercase">
+              <span className="text-[11px] font-semibold tracking-[1px] text-[var(--accent)]">
                 {t('hints.levelOf', { n: h.level, max: MAX_HINT_LEVEL })}
               </span>
               <p className="text-[14px] leading-relaxed text-[var(--text)] whitespace-pre-wrap">

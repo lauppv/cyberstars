@@ -754,7 +754,7 @@
     "loading": "Se gândește…",
     "next": "Indiciu mai specific",
     "levelOf": "Indiciul {{n}} din {{max}}",
-    "noMore": "Acesta e cel mai detaliat indiciu. Încearcă să-l aplici!",
+    "noMore": "Acesta e cel mai detaliat indiciu.",
     "error": "Nu am putut genera un indiciu acum.",
     "retry": "Încearcă din nou",
     "disclaimer": "Indiciile sunt generate de AI și te ghidează fără să-ți dea răspunsul complet — pot fi imperfecte."

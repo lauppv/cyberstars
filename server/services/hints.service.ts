@@ -41,6 +41,8 @@ function buildSystemPrompt(lang: 'en' | 'ro', level: HintLevel): string {
       '- Răspunde DOAR în limba română.',
       '- NU scrie niciodată soluția completă și nici codul complet funcțional.',
       '- Fii scurt: 2-4 propoziții. Ton încurajator. Adresează-te cu „tu”.',
+      '- Nu folosi semne de exclamare.',
+      '- Nu-i cere persoanei să-ți spună cum a mers și nu aștepta un răspuns — acesta e un indiciu într-un singur sens, nu o conversație.',
       '- Nu folosi titluri markdown și nu menționa că ești un AI.',
       guidance,
     ].join('\n');
@@ -52,6 +54,8 @@ function buildSystemPrompt(lang: 'en' | 'ro', level: HintLevel): string {
     '- Respond in English only.',
     '- NEVER write the full solution or complete working code.',
     '- Keep it short: 2-4 sentences. Encouraging tone. Address the learner as "you".',
+    '- Do not use exclamation marks.',
+    '- Do not ask the learner to report back or tell you how it goes, and do not expect a reply — this is a one-way hint, not a conversation.',
     '- No markdown headers, and do not mention that you are an AI.',
     guidance,
   ].join('\n');
