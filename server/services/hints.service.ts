@@ -91,7 +91,7 @@ export async function generateHint(
   code: string,
   level: HintLevel,
   lang: 'en' | 'ro',
-): Promise<HintResponse> {
+): Promise<Omit<HintResponse, 'usage'>> {
   if (!isGeminiConfigured()) {
     throw new AppError(503, 'AI hints are not available right now');
   }

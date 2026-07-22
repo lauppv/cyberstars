@@ -17,6 +17,7 @@ import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
 import { TestResults } from '../components/code/TestResults';
 import { SolutionModal } from '../components/code/SolutionModal';
+import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { HintModal } from '../components/code/HintModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
@@ -85,6 +86,7 @@ export function LessonPage() {
   const [toastData, setToastData] = useState({ icon: '✅', title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const [confirmSolution, setConfirmSolution] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
@@ -483,7 +485,7 @@ export function LessonPage() {
                 }}
                 lessonCompleted={lessonCompleted}
                 hasSolution={!!solution}
-                onShowSolution={() => setShowSolution(true)}
+                onShowSolution={() => setConfirmSolution(true)}
                 hasTests={hasTests}
                 isChecking={isChecking}
                 onRunTests={handleRunTerminalChecks}
@@ -547,7 +549,7 @@ export function LessonPage() {
                             role="menuitem"
                             onClick={() => {
                               setMenuOpen(false);
-                              setShowSolution(true);
+                              setConfirmSolution(true);
                             }}
                             className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >
@@ -682,6 +684,15 @@ export function LessonPage() {
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />
+      {confirmSolution && solution && (
+        <SolutionConfirmModal
+          onClose={() => setConfirmSolution(false)}
+          onConfirmed={() => {
+            setConfirmSolution(false);
+            setShowSolution(true);
+          }}
+        />
+      )}
       {showSolution && solution && (
         <SolutionModal
           solution={solution}

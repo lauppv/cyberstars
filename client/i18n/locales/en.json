@@ -118,6 +118,7 @@
   "common": {
     "loading": "Loading...",
     "close": "Close",
+    "cancel": "Cancel",
     "comingSoon": "Coming soon",
     "comingSoonHint": "We're still building this. It'll unlock for everyone soon.",
     "xpTotal": "{{xp}} XP",
@@ -456,7 +457,9 @@
       }
     ],
     "radioPrivacyTitle": "Focus Radio & privacy",
-    "radioPrivacyDesc": "The optional Focus Radio plays one royalty-free instrumental track we host ourselves — no third parties, no cookies, no ads. It's a single live broadcast, so everyone tuned in hears the same moment. Nothing loads until you press play. Prefer silence? Just leave it paused."
+    "radioPrivacyDesc": "The optional Focus Radio plays one royalty-free instrumental track we host ourselves — no third parties, no cookies, no ads. It's a single live broadcast, so everyone tuned in hears the same moment. Nothing loads until you press play. Prefer silence? Just leave it paused.",
+    "aiPrivacyTitle": "AI hints & your data",
+    "aiPrivacyDesc": "When you request an AI hint, the code you've written in the editor plus the lesson text are sent to a third-party AI provider (Google Gemini) to generate the hint. Don't paste personal or sensitive information into the editor before asking for a hint. AI hints and Show Solution are capped per day. You can always learn without them: they're optional aids, not a requirement."
   },
   "profile": {
     "edit": "Edit",
@@ -732,6 +735,9 @@
     "codeSaved": "Code saved!",
     "showSolution": "💡 Show Solution",
     "getHint": "✨ Get a hint",
+    "solutionConfirmTitle": "Show the solution?",
+    "solutionConfirmBody": "Try to solve it yourself first — you learn more from the struggle. Revealing the solution uses one of your daily reveals.",
+    "solutionConfirmCta": "Reveal solution",
     "solutionTitle": "Solution",
     "compare": "Compare",
     "yourCode": "Your code",
@@ -741,6 +747,8 @@
   },
   "hints": {
     "title": "AI Hint",
+    "getHint": "Get hint",
+    "startBlurb": "Hints are AI-generated from your current code and the lesson. Each hint you request counts against your daily budget.",
     "loading": "Thinking…",
     "next": "More specific hint",
     "levelOf": "Hint {{n}} of {{max}}",
@@ -748,6 +756,20 @@
     "error": "Could not get a hint right now.",
     "retry": "Try again",
     "disclaimer": "Hints are AI-generated and guide you without giving the full answer — they may not be perfect."
+  },
+  "usage": {
+    "title": "Daily usage",
+    "pageTitle": "Daily usage",
+    "pageSubtitle": "Your remaining Show Solution reveals and AI hints for the current 24-hour window.",
+    "about": "Show Solution and AI hints have a daily cap that refills on a rolling 24-hour window — the countdown starts the first time you use each one. Both are optional aids; you can complete every lesson without them.",
+    "signInPrompt": "Sign in to see your daily usage.",
+    "solution": "Show Solution",
+    "hints": "AI hints",
+    "unlimited": "Unlimited",
+    "resetsAt": "Resets {{when}}",
+    "solutionError": "Could not reveal the solution right now.",
+    "solutionDepleted": "You've used all your solution reveals for today. Come back after the reset.",
+    "hintsDepleted": "You've used all your AI hints for today. Come back after the reset."
   },
   "laniakea": {
     "introTitle": "Welcome aboard, captain.",

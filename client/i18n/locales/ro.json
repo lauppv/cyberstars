@@ -118,6 +118,7 @@
   "common": {
     "loading": "Se încarcă...",
     "close": "Închide",
+    "cancel": "Anulează",
     "comingSoon": "În curând",
     "comingSoonHint": "Încă lucrăm la asta. Se va debloca pentru toți în curând.",
     "xpTotal": "{{xp}} XP",
@@ -458,7 +459,9 @@
       }
     ],
     "radioPrivacyTitle": "Radio Focus și confidențialitate",
-    "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi — fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză."
+    "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi — fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză.",
+    "aiPrivacyTitle": "Indiciile AI și datele tale",
+    "aiPrivacyDesc": "Când ceri un indiciu AI, codul scris de tine în editor plus textul lecției sunt trimise către un furnizor AI terț (Google Gemini) pentru a genera indiciul. Nu introduce informații personale sau sensibile în editor înainte de a cere un indiciu. Indiciile AI și Arată soluția au o limită zilnică. Poți învăța și fără ele: sunt ajutoare opționale, nu o obligație."
   },
   "profile": {
     "edit": "Editează",
@@ -734,6 +737,9 @@
     "codeSaved": "Cod salvat!",
     "showSolution": "💡 Arată soluția",
     "getHint": "✨ Cere un indiciu",
+    "solutionConfirmTitle": "Arăt soluția?",
+    "solutionConfirmBody": "Încearcă întâi să rezolvi singur — înveți mai mult din efort. Dezvăluirea soluției consumă una dintre dezvăluirile tale zilnice.",
+    "solutionConfirmCta": "Dezvăluie soluția",
     "solutionTitle": "Soluția",
     "compare": "Compară",
     "yourCode": "Codul tău",
@@ -743,6 +749,8 @@
   },
   "hints": {
     "title": "Indiciu AI",
+    "getHint": "Cere indiciu",
+    "startBlurb": "Indiciile sunt generate de AI din codul tău curent și din lecție. Fiecare indiciu cerut se scade din bugetul tău zilnic.",
     "loading": "Se gândește…",
     "next": "Indiciu mai specific",
     "levelOf": "Indiciul {{n}} din {{max}}",
@@ -750,6 +758,20 @@
     "error": "Nu am putut genera un indiciu acum.",
     "retry": "Încearcă din nou",
     "disclaimer": "Indiciile sunt generate de AI și te ghidează fără să-ți dea răspunsul complet — pot fi imperfecte."
+  },
+  "usage": {
+    "title": "Utilizare zilnică",
+    "pageTitle": "Utilizare zilnică",
+    "pageSubtitle": "Câte dezvăluiri de soluții și indicii AI ți-au mai rămas în fereastra curentă de 24 de ore.",
+    "about": "Arată soluția și indiciile AI au o limită zilnică care se reîncarcă într-o fereastră mobilă de 24 de ore — numărătoarea începe la prima folosire a fiecăreia. Ambele sunt ajutoare opționale; poți termina orice lecție și fără ele.",
+    "signInPrompt": "Autentifică-te ca să-ți vezi utilizarea zilnică.",
+    "solution": "Arată soluția",
+    "hints": "Indicii AI",
+    "unlimited": "Nelimitat",
+    "resetsAt": "Se reînnoiește {{when}}",
+    "solutionError": "Nu am putut dezvălui soluția acum.",
+    "solutionDepleted": "Ai folosit toate dezvăluirile de soluții pe azi. Revino după reînnoire.",
+    "hintsDepleted": "Ai folosit toate indiciile AI pe azi. Revino după reînnoire."
   },
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",

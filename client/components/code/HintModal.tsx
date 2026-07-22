@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as hintsService from '../../services/hintsService';
+import { useUsage } from '../../context/UsageContext';
+import { UsageMeter } from '../usage/UsageMeter';
 import { MAX_HINT_LEVEL, type HintLevel } from '../../../shared/hints';
 
 interface Hint {
@@ -22,10 +24,10 @@ export function HintModal({
   onClose: () => void;
 }) {
   const { t } = useTranslation();
+  const { summary, applySummary } = useUsage();
   const [hints, setHints] = useState<Hint[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const requestedRef = useRef(false);
 
   const fetchLevel = useCallback(
     async (level: HintLevel) => {
@@ -33,6 +35,7 @@ export function HintModal({
       setError(null);
       try {
         const res = await hintsService.getHint(courseKey, lessonSlug, code, level, lang);
+        applySummary(res.usage);
         setHints((prev) => [...prev, { level, text: res.hint }]);
       } catch (err) {
         setError(err instanceof Error ? err.message : t('hints.error'));
@@ -40,15 +43,8 @@ export function HintModal({
         setIsLoading(false);
       }
     },
-    [courseKey, lessonSlug, code, lang, t],
+    [courseKey, lessonSlug, code, lang, t, applySummary],
   );
-
-  // Fetch the first hint on open. Guard against React 18 StrictMode double-invoke.
-  useEffect(() => {
-    if (requestedRef.current) return;
-    requestedRef.current = true;
-    fetchLevel(1);
-  }, [fetchLevel]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -61,6 +57,8 @@ export function HintModal({
   const nextLevel = (hints.length + 1) as HintLevel;
   const canGetMore = hints.length > 0 && hints.length < MAX_HINT_LEVEL;
   const retryLevel = (hints.length === 0 ? 1 : hints.length) as HintLevel;
+  const usageState = summary?.getHint;
+  const depleted = !!usageState && !usageState.unlimited && usageState.remaining <= 0;
 
   return (
     <div
@@ -83,6 +81,8 @@ export function HintModal({
         </div>
 
         <div className="px-6 py-5 flex flex-col gap-4">
+          {usageState && <UsageMeter state={usageState} label={t('usage.hints')} />}
+
           {hints.map((h) => (
             <div key={h.level} className="flex flex-col gap-1.5">
               <span className="text-[11px] font-semibold tracking-[1px] text-[var(--accent)] uppercase">
@@ -104,19 +104,39 @@ export function HintModal({
           {error && (
             <div className="flex flex-col gap-2">
               <span className="text-[13px] text-[var(--error)] font-semibold">{error}</span>
-              <button
-                onClick={() => fetchLevel(retryLevel)}
-                className="self-start px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 transition cursor-pointer"
-              >
-                {t('hints.retry')}
-              </button>
+              {!depleted && (
+                <button
+                  onClick={() => fetchLevel(retryLevel)}
+                  className="self-start px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 transition cursor-pointer"
+                >
+                  {t('hints.retry')}
+                </button>
+              )}
             </div>
+          )}
+
+          {/* Manual start: the AI does NOT run on open — the person clicks first,
+              having seen how many hints today's budget still allows. */}
+          {!isLoading && !error && hints.length === 0 && (
+            <>
+              <p className="text-[13px] text-[var(--text2)] leading-relaxed">
+                {t('hints.startBlurb')}
+              </p>
+              <button
+                onClick={() => fetchLevel(1)}
+                disabled={depleted}
+                className="self-start px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+              >
+                {t('hints.getHint')}
+              </button>
+            </>
           )}
 
           {!isLoading && !error && canGetMore && (
             <button
               onClick={() => fetchLevel(nextLevel)}
-              className="self-start px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 transition cursor-pointer"
+              disabled={depleted}
+              className="self-start px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
             >
               {t('hints.next')}
             </button>
@@ -124,6 +144,12 @@ export function HintModal({
 
           {!isLoading && !error && hints.length >= MAX_HINT_LEVEL && (
             <span className="text-[13px] italic text-[var(--text3)]">{t('hints.noMore')}</span>
+          )}
+
+          {depleted && (
+            <span className="text-[12px] text-[var(--error)] font-semibold">
+              {t('usage.hintsDepleted')}
+            </span>
           )}
 
           <span className="text-[11px] text-[var(--text3)] border-t border-[var(--accent)]/15 pt-3">
