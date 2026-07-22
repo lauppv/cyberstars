@@ -15,7 +15,7 @@ export type FeatureKey =
 // `false` (or drop the key) — a single edit, no refactor.
 export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   leaderboard: true,
-  messaging: true,
+  messaging: false,
   notifications: false,
   connections: true,
   radio: false,
