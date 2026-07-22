@@ -79,7 +79,9 @@ export function LeaderboardPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading: authLoading } = useAuth();
-  const canAccess = canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
+  // Logged-in only: the page shows the platform-wide account total, so guests
+  // are kept out even though the feature is launched.
+  const canAccess = isLoggedIn && canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
 
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [total, setTotal] = useState(0);
@@ -101,9 +103,10 @@ export function LeaderboardPage() {
       setLoading(true);
       setError(false);
       try {
+        // canAccess implies the visitor is logged in, so always fetch my rank.
         const [page, myRank] = await Promise.all([
           leaderboardService.getLeaderboard(PAGE_SIZE, 0),
-          isLoggedIn ? leaderboardService.getMyRank() : Promise.resolve(null),
+          leaderboardService.getMyRank(),
         ]);
         if (cancelled) return;
         setEntries(page.entries);
@@ -119,7 +122,7 @@ export function LeaderboardPage() {
     return () => {
       cancelled = true;
     };
-  }, [authLoading, canAccess, isLoggedIn]);
+  }, [authLoading, canAccess]);
 
   const loadMore = useCallback(() => {
     setLoadingMore(true);
