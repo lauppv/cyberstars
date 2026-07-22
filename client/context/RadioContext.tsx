@@ -18,19 +18,26 @@ const DEFAULT_VOLUME = 40;
 const MAX_DRIFT_SEC = 2; // resync only when we've slipped more than this
 const DRIFT_CHECK_MS = 5000;
 
-function readVolume(): number {
+// The player starts minimised to just the launcher chip; opening it (setHidden
+// false) is remembered so a refresh keeps it open. This is UI state only — it
+// never auto-starts playback.
+function readStored(): { volume: number; hidden: boolean } {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-      const parsed = JSON.parse(raw) as { volume?: unknown };
-      if (typeof parsed.volume === 'number') {
-        return Math.min(100, Math.max(0, parsed.volume));
-      }
+      const parsed = JSON.parse(raw) as { volume?: unknown; hidden?: unknown };
+      return {
+        volume:
+          typeof parsed.volume === 'number'
+            ? Math.min(100, Math.max(0, parsed.volume))
+            : DEFAULT_VOLUME,
+        hidden: typeof parsed.hidden === 'boolean' ? parsed.hidden : true,
+      };
     }
   } catch {
-    // storage blocked or corrupt — fall through to default
+    // storage blocked or corrupt — fall through to defaults
   }
-  return DEFAULT_VOLUME;
+  return { volume: DEFAULT_VOLUME, hidden: true };
 }
 
 interface RadioContextValue {
@@ -55,11 +62,11 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   // Radio is a signed-in perk: guests never see it, and signing out stops it.
   const enabled = !!user && canAccessFeature('radio', user.role, import.meta.env.PROD);
 
-  const [volume, setVolumeState] = useState(() => readVolume());
+  const [volume, setVolumeState] = useState(() => readStored().volume);
   const [playing, setPlaying] = useState(false);
   const [buffering, setBuffering] = useState(false);
   const [offline, setOffline] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(() => readStored().hidden);
   const [expanded, setExpanded] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -144,14 +151,15 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     return () => root.style.setProperty('--radio-clearance', '0px');
   }, [enabled]);
 
-  // Persist volume only (playback is per-session; a broadcast never auto-resumes).
+  // Persist volume and the minimised/open state (playback itself is per-session;
+  // a broadcast never auto-resumes).
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ volume }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ volume, hidden }));
     } catch {
       // storage blocked; keep in-memory state only
     }
-  }, [volume]);
+  }, [volume, hidden]);
 
   // Drift correction: while playing, snap back to the live position if we've
   // slipped too far (accounting for the loop wrap).
