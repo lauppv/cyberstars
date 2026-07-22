@@ -1,6 +1,12 @@
 import { isAdmin, type UserRole } from './auth.js';
 
-export type FeatureKey = 'leaderboard' | 'messaging' | 'notifications' | 'connections' | 'radio';
+export type FeatureKey =
+  | 'leaderboard'
+  | 'messaging'
+  | 'notifications'
+  | 'connections'
+  | 'radio'
+  | 'aiHints';
 
 // Features that are "preview": live in the code, but on production only ADMINs
 // can reach them — everyone else sees a "Coming Soon" treatment and the routes
@@ -13,6 +19,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   notifications: true,
   connections: true,
   radio: false,
+  aiHints: true,
 };
 
 // Shared access rule, used identically by the server (isProd = NODE_ENV ===

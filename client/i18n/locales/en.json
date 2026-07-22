@@ -731,12 +731,23 @@
     "shareToForum": "📤 Share to forum",
     "codeSaved": "Code saved!",
     "showSolution": "💡 Show Solution",
+    "getHint": "✨ Get a hint",
     "solutionTitle": "Solution",
     "compare": "Compare",
     "yourCode": "Your code",
     "yourCodeEmpty": "The editor is empty.",
     "badgeEarned": "Badge earned: {{label}}",
     "xpGained": "+{{xp}} XP"
+  },
+  "hints": {
+    "title": "AI Hint",
+    "loading": "Thinking…",
+    "next": "More specific hint",
+    "levelOf": "Hint {{n}} of {{max}}",
+    "noMore": "That's the most detailed hint. Try applying it!",
+    "error": "Could not get a hint right now.",
+    "retry": "Try again",
+    "disclaimer": "Hints are AI-generated and guide you without giving the full answer — they may not be perfect."
   },
   "laniakea": {
     "introTitle": "Welcome aboard, captain.",

@@ -17,6 +17,7 @@ import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
 import { TestResults } from '../components/code/TestResults';
 import { SolutionModal } from '../components/code/SolutionModal';
+import { HintModal } from '../components/code/HintModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
@@ -31,6 +32,7 @@ import * as testsService from '../services/testsService';
 import * as terminalService from '../services/terminalService';
 import { courseMeta } from '../constants/courses';
 import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
+import { canAccessFeature } from '../../shared/features';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -52,7 +54,8 @@ export function LessonPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
+  const canUseHints = isLoggedIn && canAccessFeature('aiHints', user?.role, import.meta.env.PROD);
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
   const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
@@ -82,6 +85,7 @@ export function LessonPage() {
   const [toastData, setToastData] = useState({ icon: '✅', title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -176,6 +180,7 @@ export function LessonPage() {
     setTimeout(() => {
       setShowToast(false);
       setShowSolution(false);
+      setShowHint(false);
       setOptimisticCompleted(null);
       setTestResults(null);
       setTestsError(null);
@@ -525,6 +530,18 @@ export function LessonPage() {
                         role="menu"
                         className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
                       >
+                        {canUseHints && (
+                          <button
+                            role="menuitem"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              setShowHint(true);
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                          >
+                            {t('lesson.getHint')}
+                          </button>
+                        )}
                         {solution && (
                           <button
                             role="menuitem"
@@ -671,6 +688,15 @@ export function LessonPage() {
           currentCode={isTerminal ? undefined : userCode}
           language={category}
           onClose={() => setShowSolution(false)}
+        />
+      )}
+      {showHint && canUseHints && (
+        <HintModal
+          courseKey={category}
+          lessonSlug={lesson}
+          code={userCode}
+          lang={i18n.language === 'ro' ? 'ro' : 'en'}
+          onClose={() => setShowHint(false)}
         />
       )}
       {showShareModal && (
