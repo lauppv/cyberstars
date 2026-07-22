@@ -16,7 +16,7 @@ export type FeatureKey =
 export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   leaderboard: true,
   messaging: true,
-  notifications: true,
+  notifications: false,
   connections: true,
   radio: false,
   aiHints: true,
