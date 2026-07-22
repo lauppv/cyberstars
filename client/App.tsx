@@ -8,6 +8,7 @@ import { UserSocketProvider } from './context/UserSocketContext';
 import { MessagesProvider } from './context/MessagesContext';
 import { GuestSignupPromptProvider } from './context/GuestSignupPromptContext';
 import { RadioProvider } from './context/RadioContext';
+import { UsageProvider } from './context/UsageContext';
 import { RadioPlayer } from './components/radio/RadioPlayer';
 import { CosmosBackground } from './components/ui/CosmosBackground';
 import { MinimalBackground } from './components/ui/MinimalBackground';
@@ -44,6 +45,7 @@ const LaniakeaExplorerPage = lazy(() =>
   import('./pages/LaniakeaExplorerPage').then((m) => ({ default: m.LaniakeaExplorerPage })),
 );
 const RulesPage = lazy(() => import('./pages/RulesPage').then((m) => ({ default: m.RulesPage })));
+const UsagePage = lazy(() => import('./pages/UsagePage').then((m) => ({ default: m.UsagePage })));
 const SupportPage = lazy(() =>
   import('./pages/SupportPage').then((m) => ({ default: m.SupportPage })),
 );
@@ -94,37 +96,40 @@ function App() {
                 <MessagesProvider>
                   <GuestSignupPromptProvider>
                     <RadioProvider>
-                      <GlobalBackground />
-                      <GlobalRadio />
-                      <Suspense
-                        fallback={
-                          <div className="h-screen flex items-center justify-center bg-transparent">
-                            <LoadingSpinner />
-                          </div>
-                        }
-                      >
-                        <Routes>
-                          <Route path="/" element={<HomePage />} />
-                          <Route path="/getstarted" element={<AuthPage />} />
-                          <Route path="/courses" element={<CoursesPage />} />
-                          <Route path="/algorithms" element={<AlgorithmsPage />} />
-                          <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-                          <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
-                          <Route path="/profile" element={<ProfilePage />} />
-                          <Route path="/forum" element={<ForumPage />} />
-                          <Route path="/almanac" element={<AlmanacPage />} />
-                          <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-                          <Route path="/rules" element={<RulesPage />} />
-                          <Route path="/support" element={<SupportPage />} />
-                          <Route path="/welcome" element={<WelcomePage />} />
-                          <Route path="/admin" element={<AdminPage />} />
-                          <Route path="/leaderboard" element={<LeaderboardPage />} />
-                          <Route path="/messages" element={<MessagesPage />} />
-                          <Route path="/u/:userId" element={<PublicProfilePage />} />
-                          <Route path="/settings" element={<SettingsPage />} />
-                          <Route path="/connections" element={<ConnectionsPage />} />
-                        </Routes>
-                      </Suspense>
+                      <UsageProvider>
+                        <GlobalBackground />
+                        <GlobalRadio />
+                        <Suspense
+                          fallback={
+                            <div className="h-screen flex items-center justify-center bg-transparent">
+                              <LoadingSpinner />
+                            </div>
+                          }
+                        >
+                          <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/getstarted" element={<AuthPage />} />
+                            <Route path="/courses" element={<CoursesPage />} />
+                            <Route path="/algorithms" element={<AlgorithmsPage />} />
+                            <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                            <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+                            <Route path="/profile" element={<ProfilePage />} />
+                            <Route path="/forum" element={<ForumPage />} />
+                            <Route path="/almanac" element={<AlmanacPage />} />
+                            <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                            <Route path="/rules" element={<RulesPage />} />
+                            <Route path="/usage" element={<UsagePage />} />
+                            <Route path="/support" element={<SupportPage />} />
+                            <Route path="/welcome" element={<WelcomePage />} />
+                            <Route path="/admin" element={<AdminPage />} />
+                            <Route path="/leaderboard" element={<LeaderboardPage />} />
+                            <Route path="/messages" element={<MessagesPage />} />
+                            <Route path="/u/:userId" element={<PublicProfilePage />} />
+                            <Route path="/settings" element={<SettingsPage />} />
+                            <Route path="/connections" element={<ConnectionsPage />} />
+                          </Routes>
+                        </Suspense>
+                      </UsageProvider>
                     </RadioProvider>
                   </GuestSignupPromptProvider>
                 </MessagesProvider>

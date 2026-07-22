@@ -327,6 +327,16 @@ export function Topbar({
                     role="menuitem"
                     onClick={() => {
                       setMenuOpen(false);
+                      navigate('/usage');
+                    }}
+                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
+                  >
+                    <span className="w-4 text-center">🔋</span> {t('usage.title')}
+                  </button>
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
                       navigate('/support');
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"

@@ -16,6 +16,10 @@ vi.mock('../context/MessagesContext', () => ({
   useMessages: () => ({ enabled: false, totalUnread: 0 }),
 }));
 
+vi.mock('../context/UsageContext', () => ({
+  useUsage: () => ({ summary: null, loading: false, refresh: vi.fn(), applySummary: vi.fn() }),
+}));
+
 vi.mock('../context/ProgressContext', () => ({
   useProgress: () => ({ completedLessons: [] }),
 }));

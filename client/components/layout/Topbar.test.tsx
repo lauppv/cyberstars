@@ -113,6 +113,13 @@ describe('Topbar', () => {
     expect(screen.getByText('Sign out')).toBeInTheDocument();
   });
 
+  it('navigates to usage when Daily usage is clicked', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.click(screen.getByText('Daily usage'));
+    expect(mockNavigate).toHaveBeenCalledWith('/usage');
+  });
+
   it('navigates to profile when Profile is clicked', () => {
     renderTopbar();
     fireEvent.click(screen.getByText('Test'));
