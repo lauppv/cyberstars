@@ -22,8 +22,10 @@ function Probe() {
       <span data-testid="playing">{String(r.playing)}</span>
       <span data-testid="buffering">{String(r.buffering)}</span>
       <span data-testid="offline">{String(r.offline)}</span>
+      <span data-testid="hidden">{String(r.hidden)}</span>
       <button onClick={() => r.togglePlay()}>toggle</button>
       <button onClick={() => r.setVolume(200)}>overvol</button>
+      <button onClick={() => r.setHidden(!r.hidden)}>togglehide</button>
     </div>
   );
 }
@@ -87,6 +89,25 @@ describe('RadioContext', () => {
     expect(screen.getByTestId('volume')).toHaveTextContent('100');
     const stored = JSON.parse(localStorage.getItem('cyberstars.radio') as string);
     expect(stored.volume).toBe(100);
+  });
+
+  it('starts minimised with no stored prefs', () => {
+    renderProbe();
+    expect(screen.getByTestId('hidden')).toHaveTextContent('true');
+  });
+
+  it('restores the open/minimised state from localStorage', () => {
+    localStorage.setItem('cyberstars.radio', JSON.stringify({ hidden: false }));
+    renderProbe();
+    expect(screen.getByTestId('hidden')).toHaveTextContent('false');
+  });
+
+  it('persists the open/minimised state when toggled', () => {
+    renderProbe();
+    fireEvent.click(screen.getByText('togglehide'));
+    expect(screen.getByTestId('hidden')).toHaveTextContent('false');
+    const stored = JSON.parse(localStorage.getItem('cyberstars.radio') as string);
+    expect(stored.hidden).toBe(false);
   });
 
   it('togglePlay starts the audio element', () => {
