@@ -1,5 +1,3 @@
-# Ușor · Sortare cu bule
-
 Implementează algoritmul **bubble sort**. Citește un tablou de numere întregi și sortează-le în ordine crescătoare folosind bubble sort, apoi afișează tabloul sortat.
 
 Bubble sort funcționează parcurgând repetat lista, comparând elementele adiacente și interschimbându-le dacă sunt în ordine greșită. Parcurgerea listei se repetă până când lista este sortată.

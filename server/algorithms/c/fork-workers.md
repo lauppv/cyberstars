@@ -1,5 +1,3 @@
-# Easy · Multiple Children
-
 A computing centre receives an execution order specifying how many child processes to launch. Each child reports that it is ready, and the parent confirms at the end that all of them are done.
 
 Each iteration of the loop calls **fork()**. In the child, we print the message and **exit immediately** — if we don't exit, the child keeps running the loop and forks its own children, exponentially.

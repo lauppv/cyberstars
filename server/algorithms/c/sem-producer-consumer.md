@@ -1,5 +1,3 @@
-# Hard · Producer-Consumer with Semaphores
-
 A "producer" thread reads N numbers and pushes them one at a time into a **shared buffer** with a single slot. A "consumer" thread reads from the buffer and prints each number. Because the buffer has only 1 slot, the producer must wait until the consumer has taken the previous value.
 
 The synchronization uses **two semaphores**:

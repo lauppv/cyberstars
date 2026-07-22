@@ -1,5 +1,3 @@
-# Sum of a List
-
 Given a count `N` followed by `N` numbers (one per line), print their **sum**.
 
 ### Input

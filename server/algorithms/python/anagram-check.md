@@ -1,5 +1,3 @@
-# Anagram Check
-
 Two strings are **anagrams** if they contain the exact same characters, just in a different order. Given two strings, determine if they are anagrams of each other (case-insensitive).
 
 ### Input

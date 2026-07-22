@@ -1,5 +1,3 @@
-# Hard · Matrix Spiral
-
 Read an NxN matrix of integers and print its elements in **spiral order**: start from the top-left corner, move right along the top row, then down the right column, then left along the bottom row, then up the left column, and repeat inward.
 
 ### Input

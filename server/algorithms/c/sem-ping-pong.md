@@ -1,5 +1,3 @@
-# Medium · Ping-pong with Semaphores
-
 Two threads must print **alternating** "Ping" and "Pong" — Ping first, then Pong, then Ping again, and so on. Mutexes and `pthread_join` alone can't enforce that order. You need a **signalling** mechanism between the threads.
 
 Use **two semaphores** to pass control from one thread to the other. The "Ping" thread starts with its semaphore at 1 (allowed to print). The "Pong" thread starts with its semaphore at 0 (waiting). After Ping prints, it calls `sem_post` on Pong's semaphore. Pong unblocks, prints, calls `sem_post` on Ping's semaphore. Repeat N times.

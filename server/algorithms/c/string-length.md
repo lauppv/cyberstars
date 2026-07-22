@@ -1,5 +1,3 @@
-# Easy · String Length
-
 Read a string (single word, no spaces) and compute its length **without** using `strlen()`. Print the length.
 
 ### Input

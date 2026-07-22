@@ -1,5 +1,3 @@
-# Ușor · Calculator de dreptunghi
-
 Creează o clasă **Dreptunghi** cu câmpurile `latime` și `inaltime`. Adaugă metodele `getArie()` și `getPerimetru()` care returnează aria și perimetrul dreptunghiului.
 
 Citește latimea și înălțimea de la stdin, creează un obiect `Dreptunghi` și afișează aria și perimetrul pe linii separate.

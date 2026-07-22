@@ -1,5 +1,3 @@
-# Reverse Words
-
 Given a sentence, print the **words in reverse order**.
 
 Note: you are reversing the order of the words, not the characters within them.

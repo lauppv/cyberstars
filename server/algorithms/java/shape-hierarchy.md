@@ -1,5 +1,3 @@
-# Medium · Shape Hierarchy
-
 Create an **abstract** `Shape` class with an abstract method `getArea()`. Implement two subclasses: `Circle` (with radius) and `Rectangle` (with width and height).
 
 Read shapes from stdin, create the appropriate objects, and print the **total area** of all shapes rounded to 2 decimal places.

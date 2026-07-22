@@ -1,5 +1,3 @@
-# Mediu · Stivă folosind un tablou
-
 Implementează o structură de date de tip **stivă** folosind un tablou. Citește o secvență de comenzi și procesează-le:
 
 - **pune X** — adaugă numărul întreg X în vârful stivei

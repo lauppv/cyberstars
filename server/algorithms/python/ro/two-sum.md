@@ -1,5 +1,3 @@
-# Suma a două numere
-
 Având o listă de numere întregi și o valoare țintă, găsește **cei doi indici** ale căror valori însumate dau ținta.
 
 Poți presupune că există **exact o singură** pereche validă, și nu poți folosi același element de două ori. Afișează indicii în ordine crescătoare.

@@ -1,5 +1,3 @@
-# Count Words
-
 Given a sentence, count how many **words** it contains.
 
 ### Input

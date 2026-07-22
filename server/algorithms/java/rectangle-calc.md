@@ -1,5 +1,3 @@
-# Easy · Rectangle Calculator
-
 Create a **Rectangle** class with `width` and `height` fields. Add methods `getArea()` and `getPerimeter()` that return the area and perimeter of the rectangle.
 
 Read the width and height from stdin, create a `Rectangle` object, and print the area and perimeter on separate lines.

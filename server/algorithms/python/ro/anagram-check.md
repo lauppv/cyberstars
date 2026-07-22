@@ -1,5 +1,3 @@
-# Verificare anagramă
-
 Două șiruri sunt **anagrame** dacă conțin exact aceleași caractere, doar într-o ordine diferită. Având două șiruri, determină dacă sunt anagrame unul față de celălalt (fără a ține cont de litere mari/mici).
 
 ### Date de intrare

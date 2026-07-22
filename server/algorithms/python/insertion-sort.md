@@ -1,5 +1,3 @@
-# Medium · Insertion Sort
-
 Read a list of numbers and sort them using the **insertion sort** algorithm. Insertion sort works by building a sorted portion of the list one element at a time: pick the next unsorted element and insert it into the correct position in the sorted portion.
 
 ### Input

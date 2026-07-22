@@ -1,5 +1,3 @@
-# Dificil · Sortare prin interclasare
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Sortează-le folosind algoritmul de **sortare prin interclasare** și afișează rezultatul sortat.
 
 Sortarea prin interclasare este un algoritm de tip „divide și stăpânește”: împarte tabloul în jumătate, sortează recursiv fiecare jumătate, apoi interclasează cele două jumătăți sortate. Se execută în timp O(N log N).

@@ -1,5 +1,3 @@
-# Ușor · Numără cifrele
-
 Citește un singur număr întreg și afișează câte **cifre** are.
 
 ### Date de intrare

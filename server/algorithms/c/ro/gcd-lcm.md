@@ -1,5 +1,3 @@
-# Ușor · CMMDC și CMMMC
-
 Calculează **Cel Mai Mare Divizor Comun (CMMDC)** și **Cel Mai Mic Multiplu Comun (CMMMC)** a două numere întregi pozitive folosind **algoritmul lui Euclid**.
 
 Algoritmul lui Euclid găsește CMMDC-ul înlocuind în mod repetat numărul mai mare cu restul împărțirii lui la numărul mai mic, până când restul devine 0. Odată ce ai CMMDC-ul, CMMMC-ul poate fi calculat astfel: `CMMMC(A, B) = A * B / CMMDC(A, B)`.

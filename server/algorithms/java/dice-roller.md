@@ -1,5 +1,3 @@
-# Easy · Dice Roller
-
 Create a **Dice** class that simulates rolling a die. The constructor takes the number of sides and a **seed**. Add a `roll()` method that returns the next result using `java.util.Random`.
 
 **Important:** Create the `Random` object with `new Random(seed)` and use `nextInt(sides) + 1` so results are reproducible for a given seed.

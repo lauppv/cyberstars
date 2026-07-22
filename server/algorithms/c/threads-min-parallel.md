@@ -1,5 +1,3 @@
-# Medium · Parallel Minimum with Threads
-
 Split an array in two and search for the minimum in parallel: thread t1 works on the first half, thread t2 on the second. Each thread receives **a pointer** to a slot where it writes its result, and the main thread compares the two minima at the end.
 
 Threads take a single `void *` argument, so we pack the start, the stop, the array and the result slot into a struct. Each thread writes to its own slot, so no mutex is needed.

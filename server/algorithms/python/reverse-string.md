@@ -1,5 +1,3 @@
-# Reverse a String
-
 Given a single line of text, print it **reversed**.
 
 ### Input

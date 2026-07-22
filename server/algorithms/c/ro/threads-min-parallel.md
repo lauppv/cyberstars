@@ -1,5 +1,3 @@
-# Mediu · Minim paralel cu threads
-
 Împarte un vector în două și caută minimul în paralel: firul t1 lucrează pe prima jumătate, firul t2 pe a doua. Fiecare fir primește **un pointer** către un slot unde își scrie rezultatul, iar firul principal compară cele două minime la final.
 
 Firele primesc un singur argument `void *`, așa că împachetăm începutul, sfârșitul, vectorul și slot-ul de rezultat într-o structură. Fiecare fir scrie într-un slot separat, deci nu avem nevoie de mutex.

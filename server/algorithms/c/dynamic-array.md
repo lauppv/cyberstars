@@ -1,5 +1,3 @@
-# Medium · Dynamic Array
-
 Read an integer **N**, then read **N** integers. Store them in a **dynamically allocated** array (using `malloc`). Print the **sum** and the **average** (with 2 decimal places) of the numbers. Don't forget to `free` the memory.
 
 ### Input

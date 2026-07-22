@@ -1,5 +1,3 @@
-# Easy · Binary Search
-
 Implement **binary search** on a sorted array of integers. Given a sorted array and a target value, find the index of the target. If the target is not in the array, print `-1`.
 
 Use the classic binary search algorithm: maintain two pointers `low` and `high`, check the middle element, and narrow the search range by half each step.

@@ -1,5 +1,3 @@
-# Words with Two Vowels
-
 Given a sentence, print every word that contains **exactly 2 vowels**.
 
 ### Input

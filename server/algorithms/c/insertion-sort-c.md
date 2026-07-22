@@ -1,5 +1,3 @@
-# Medium · Insertion Sort
-
 Read an integer **N**, then read **N** integers. Sort them using the **insertion sort** algorithm and print the sorted result.
 
 Insertion sort works by building a sorted portion of the array one element at a time. For each new element, shift larger elements to the right and insert it into its correct position. It runs in O(N²) time but is efficient for small or nearly-sorted arrays.

@@ -1,5 +1,3 @@
-# Remove Duplicates
-
 Given a list of numbers, print them **without duplicates**, preserving the original order.
 
 ### Input

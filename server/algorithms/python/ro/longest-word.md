@@ -1,5 +1,3 @@
-# Cel mai lung cuvânt
-
 Având o propoziție, găsește și afișează **cel mai lung cuvânt**.
 
 ### Date de intrare

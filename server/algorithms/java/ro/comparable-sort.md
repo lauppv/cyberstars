@@ -1,5 +1,3 @@
-ai# Mediu · Sortează studenții
-
 Creează o clasă **Student** care implementează `Comparable<Student>`. Fiecare student are un `nume` și o `medie` (double). Studenții trebuie sortați după medie în ordine **descrescătoare**. Dacă doi studenți au aceeași medie, sortează-i după nume în **ordine alfabetică**.
 
 Citește studenții de la stdin, sortează-i și afișează fiecare student pe o linie separată.

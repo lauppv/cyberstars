@@ -1,5 +1,3 @@
-# Easy · Binary Search
-
 Read a sorted array of **N** integers and a target value. Find the target using **binary search** and print its index (0-based), or **-1** if the target is not found.
 
 Binary search works by repeatedly halving the search range. Compare the target with the middle element: if equal, you found it; if smaller, search the left half; if larger, search the right half. It runs in O(log N) time.

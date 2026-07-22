@@ -1,5 +1,3 @@
-# Numără cuvintele
-
 Având o propoziție, numără câte **cuvinte** conține.
 
 ### Date de intrare

@@ -1,5 +1,3 @@
-# Mediu · Pare și impare cu fork
-
 Un părinte și un copil își împart munca: copilul numără numerele pare, iar părintele numerele impare. Copilul îi trimite părintelui rezultatul lui printr-un pipe, iar părintele afișează amândouă numerele.
 
 Trimitem un `int` prin pipe cu **write(p[1], &pare, sizeof(int))** și îl citim la celălalt capăt cu **read(p[0], &pare, sizeof(int))** — pipe-urile transportă orice octeți, nu doar text.

@@ -1,5 +1,3 @@
-# Easy · String Stats
-
 Create a **StringAnalyzer** class that takes a string in its constructor and provides three methods:
 
 - `vowelCount()` — returns the number of vowels (a, e, i, o, u — case-insensitive)

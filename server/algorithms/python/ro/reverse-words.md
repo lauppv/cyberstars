@@ -1,5 +1,3 @@
-# Inversează cuvintele
-
 Având o propoziție, afișează **cuvintele în ordine inversă**.
 
 Notă: inversezi ordinea cuvintelor, nu caracterele din interiorul lor.
