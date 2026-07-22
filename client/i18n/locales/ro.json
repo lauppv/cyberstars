@@ -696,7 +696,7 @@
     "title": "Povești tech, curiozități",
     "titleLine2": "și tot ce e între ele.",
     "subtitle": "Legende open-source și cultură hacker, istorie tech, spațiu, citate celebre și micile curiozități din spatele instrumentelor pe care le folosești zilnic. Lecturi noi în fiecare săptămână.",
-    "featured": "Poveste recomandată",
+    "featured": "Lectura zilei",
     "latestReads": "Cele mai noi lecturi",
     "articles": "articole",
     "inThisTopic": "în acest subiect",
@@ -706,9 +706,7 @@
     "prevQuote": "Citatul anterior",
     "nextQuote": "Citatul următor",
     "funFact": "🎲 Curiozitate",
-    "quotes": "💬 Citate",
-    "timelineKicker": "⏳ Cronologia",
-    "timelineTitle": "Momente care au schimbat traiectoria"
+    "quotes": "💬 Citate"
   },
   "lesson": {
     "difficulty": {

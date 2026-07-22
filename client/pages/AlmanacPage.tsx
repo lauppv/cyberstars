@@ -9,7 +9,19 @@ import {
   fetchAlmanacArticle,
 } from '../services/almanacService';
 import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/almanac';
+import { dateKey } from '../../shared/constants';
 import './AlmanacPage.css';
+
+// Deterministic per-day index so the featured read rotates once every 24h — the
+// same pick for everyone on a given local day (mirrors the daily lesson/algo).
+function dailyIndex(len: number): number {
+  const seed = dateKey(new Date());
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i++) {
+    h = Math.imul(h ^ seed.charCodeAt(i), 16777619);
+  }
+  return (h >>> 0) % len;
+}
 
 const CATEGORIES = [
   { id: 'all', em: '✦' },
@@ -123,9 +135,9 @@ export function AlmanacPage() {
   }
 
   const PER_PAGE = 10;
-  const hero = cards.find((c) => c.isHero);
-  const articleCards = cards.filter((c) => !c.isHero);
-  const filtered = filter === 'all' ? articleCards : articleCards.filter((a) => a.cat === filter);
+  const featured = filter === 'all' && cards.length ? cards[dailyIndex(cards.length)] : null;
+  const listCards = featured ? cards.filter((c) => c.slug !== featured.slug) : cards;
+  const filtered = filter === 'all' ? listCards : cards.filter((a) => a.cat === filter);
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   const fact = extras.funFacts[factIdx];
@@ -190,20 +202,20 @@ export function AlmanacPage() {
           </button>
         </div>
 
-        {filter === 'all' && hero && (
-          <article className="almanac-hero" onClick={() => openArticle(hero.slug)}>
+        {featured && (
+          <article className="almanac-hero" onClick={() => openArticle(featured.slug)}>
             <div className="hero-art">
               <div className="hero-art-bg" />
               <div className="hero-art-stars" />
-              <div className="hero-art-icon">{hero.emoji}</div>
+              <div className="hero-art-icon">{featured.emoji}</div>
               <div className="hero-art-badge">{t('almanac.featured')}</div>
             </div>
             <div className="hero-content">
-              <div className="hero-cat">✦ {hero.catLabel}</div>
-              <h2 className="hero-title">{hero.title}</h2>
-              <p className="hero-excerpt">{hero.excerpt}</p>
+              <div className="hero-cat">✦ {featured.catLabel}</div>
+              <h2 className="hero-title">{featured.title}</h2>
+              <p className="hero-excerpt">{featured.excerpt}</p>
               <div className="hero-meta">
-                <span>{hero.date}</span>
+                <span>{featured.date}</span>
               </div>
             </div>
           </article>
@@ -247,21 +259,25 @@ export function AlmanacPage() {
 
           <aside className="almanac-sidebar">
             <div className="side-card factcard">
-              <button
-                className="card-arrow card-arrow-left"
-                onClick={prevFact}
-                aria-label={t('almanac.prevFact')}
-              >
-                ‹
-              </button>
-              <button
-                className="card-arrow card-arrow-right"
-                onClick={nextFact}
-                aria-label={t('almanac.nextFact')}
-              >
-                ›
-              </button>
-              <h3>{t('almanac.funFact')}</h3>
+              <div className="card-head">
+                <h3>{t('almanac.funFact')}</h3>
+                <div className="card-arrows">
+                  <button
+                    className="card-arrow"
+                    onClick={prevFact}
+                    aria-label={t('almanac.prevFact')}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    className="card-arrow"
+                    onClick={nextFact}
+                    aria-label={t('almanac.nextFact')}
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
               <span className="fact-emoji">{fact?.em}</span>
               <div className="fact-text">{fact?.text}</div>
               <div className="fact-source">{fact?.src}</div>
@@ -271,21 +287,25 @@ export function AlmanacPage() {
             </div>
 
             <div className="side-card quote-card">
-              <button
-                className="card-arrow card-arrow-left"
-                onClick={prevQuote}
-                aria-label={t('almanac.prevQuote')}
-              >
-                ‹
-              </button>
-              <button
-                className="card-arrow card-arrow-right"
-                onClick={nextQuote}
-                aria-label={t('almanac.nextQuote')}
-              >
-                ›
-              </button>
-              <h3>{t('almanac.quotes')}</h3>
+              <div className="card-head">
+                <h3>{t('almanac.quotes')}</h3>
+                <div className="card-arrows">
+                  <button
+                    className="card-arrow"
+                    onClick={prevQuote}
+                    aria-label={t('almanac.prevQuote')}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    className="card-arrow"
+                    onClick={nextQuote}
+                    aria-label={t('almanac.nextQuote')}
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
               <div className="quote-mark">&ldquo;</div>
               <div className="quote-text">{quote?.text}</div>
               <div className="quote-author">
@@ -298,28 +318,6 @@ export function AlmanacPage() {
             </div>
           </aside>
         </div>
-
-        <section className="bigtl-section">
-          <div className="section-head" style={{ marginBottom: 8 }}>
-            <div>
-              <div className="almanac-kicker" style={{ marginBottom: 6 }}>
-                {t('almanac.timelineKicker')}
-              </div>
-              <h2>{t('almanac.timelineTitle')}</h2>
-            </div>
-          </div>
-          <div className="bigtl">
-            {extras.timeline.map((m, i) => (
-              <div className="bigtl-item" key={i}>
-                <div className="bigtl-dot">{m.emoji}</div>
-                <div className="bigtl-year">{m.year}</div>
-                <h3 className="bigtl-title">{m.title}</h3>
-                <p className="bigtl-text">{m.text}</p>
-                <span className="bigtl-tag">{m.tag}</span>
-              </div>
-            ))}
-          </div>
-        </section>
       </main>
 
       {openStory && <StoryModal story={openStory} onClose={() => setOpenStory(null)} />}
