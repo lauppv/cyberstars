@@ -529,24 +529,24 @@ export function WelcomePage() {
                 className="wc-forum-avatar"
                 style={{ background: 'linear-gradient(135deg,#7CEEAE,#3aa76a)', color: '#1a1a1a' }}
               >
-                NV
+                RO
               </div>
               <div className="wc-dm-head-meta">
-                <div className="wc-dm-head-name">nova_dev</div>
+                <div className="wc-dm-head-name">Rodawrath</div>
               </div>
             </div>
             <div className="wc-dm-body">
               <div className="wc-dm-bubble wc-dm-in">
-                Hey! Did you finish the pointers lesson? 👀
+                Yo, you around? Stuck on the recursion challenge 😅
                 <span className="wc-dm-time">14:02</span>
               </div>
               <div className="wc-dm-bubble wc-dm-out">
-                Almost — stuck on the double free part
+                Yeah! Just cleared that one, took me a while
                 <span className="wc-dm-time">14:03</span>
               </div>
               <div className="wc-dm-receipt">{t('welcome.messaging.read')}</div>
               <div className="wc-dm-bubble wc-dm-in">
-                Send me your code, I'll take a look
+                Nice, drop me your solution when you can
                 <div className="wc-dm-reactions">
                   <span className="wc-dm-reaction">🙌 1</span>
                 </div>
@@ -617,10 +617,10 @@ export function WelcomePage() {
                 className="wc-forum-avatar"
                 style={{ background: 'linear-gradient(135deg,#7AB6FF,#3a73c7)' }}
               >
-                LG
+                YR
               </div>
               <div className="wc-conn-meta">
-                <div className="wc-conn-name">luna_g</div>
+                <div className="wc-conn-name">YehoslavR</div>
                 <div className="wc-conn-sub">{t('welcome.connections.wantsToConnect')}</div>
               </div>
               <div className="wc-conn-actions">
@@ -637,10 +637,10 @@ export function WelcomePage() {
                 className="wc-forum-avatar"
                 style={{ background: 'linear-gradient(135deg,#FF9A6E,#c66b40)' }}
               >
-                KZ
+                SI
               </div>
               <div className="wc-conn-meta">
-                <div className="wc-conn-name">kilo_z</div>
+                <div className="wc-conn-name">Simon11</div>
                 <div className="wc-conn-sub">{t('welcome.connections.requestSent')}</div>
               </div>
               <div className="wc-conn-actions">
@@ -652,10 +652,10 @@ export function WelcomePage() {
                 className="wc-forum-avatar"
                 style={{ background: 'linear-gradient(135deg,#FFD24A,#c79a1a)', color: '#1a1a1a' }}
               >
-                RB
+                YY
               </div>
               <div className="wc-conn-meta">
-                <div className="wc-conn-name">rho_b</div>
+                <div className="wc-conn-name">yyosako</div>
               </div>
               <div className="wc-conn-actions">
                 <span className="wc-conn-pill wc-conn-connected">
@@ -683,9 +683,9 @@ export function WelcomePage() {
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#FFD24A,#c79a1a)', color: '#1a1a1a' }}
               >
-                OR
+                TO
               </div>
-              <span className="wc-lb-name">orion_x</span>
+              <span className="wc-lb-name">TON618</span>
               <span className="wc-lb-lvl">⭐ L24</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">18,420 XP</span>
@@ -700,9 +700,9 @@ export function WelcomePage() {
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#cbd5e1,#94a3b8)', color: '#1a1a1a' }}
               >
-                VE
+                LA
               </div>
-              <span className="wc-lb-name">vega_e</span>
+              <span className="wc-lb-name">LaniakeaPRJ</span>
               <span className="wc-lb-lvl">⭐ L21</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">15,905 XP</span>
@@ -717,9 +717,9 @@ export function WelcomePage() {
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#d08b5b,#a25f31)' }}
               >
-                CY
+                MH
               </div>
-              <span className="wc-lb-name">cygnus_y</span>
+              <span className="wc-lb-name">Marco Hoeger</span>
               <span className="wc-lb-lvl">⭐ L19</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">13,240 XP</span>
@@ -729,15 +729,15 @@ export function WelcomePage() {
               </div>
             </div>
             <div className="wc-lb-row wc-lb-you">
-              <span className="wc-lb-rank">#7</span>
+              <span className="wc-lb-rank">#46</span>
               <div
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#6C5CE7,#a855f7)' }}
               >
-                YO
+                TV
               </div>
               <span className="wc-lb-name">
-                {t('welcome.leaderboard.you')} <span className="wc-lb-youtag">YOU</span>
+                Tommy Vercetti <span className="wc-lb-youtag">YOU</span>
               </span>
               <span className="wc-lb-lvl">⭐ L12</span>
               <div className="wc-lb-xpcell">
