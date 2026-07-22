@@ -6,12 +6,12 @@ In C we say
 #include <stdio.h>
 
 int main(void) {
-    int age = 18;
+    int temperature = 10;
 
-    if (age < 18) {
-        printf("Access denied because you are not 18 years old\n");
+    if (temperature < 15) {
+        printf("Put on a sweater\n");
     } else {
-        printf("Welcome to the club\n");
+        printf("A t-shirt is enough\n");
     }
 
     return 0;
@@ -24,7 +24,7 @@ A few syntax rules
 - The body goes between **braces** **{ }**
 - There is no **:** at the end
 
-If **age** is less than **18**, we enter the **if** block. Otherwise we enter **else**. Run the code, change the age, see what happens
+If **temperature** is less than **15**, we enter the **if** block (it's cold, we bundle up). Otherwise we enter **else**. Run the code, change the temperature, see what happens
 
 ---
 
