@@ -1,5 +1,3 @@
-# Hard · Group Anagrams
-
 Given a list of words, group all **anagrams** together. Two words are anagrams if they contain the same letters in a different order (e.g., "listen" and "silent").
 
 Print each group on a separate line with words sorted alphabetically within the group. Sort groups by their first word (alphabetically).

@@ -1,5 +1,3 @@
-# Dificil · Spirală în matrice
-
 Citește o matrice NxN de numere întregi și afișează elementele ei în **ordine spirală**: începe din colțul din stânga sus, deplasează-te la dreapta de-a lungul rândului de sus, apoi în jos pe coloana din dreapta, apoi la stânga de-a lungul rândului de jos, apoi în sus pe coloana din stânga, și repetă spre interior.
 
 ### Date de intrare

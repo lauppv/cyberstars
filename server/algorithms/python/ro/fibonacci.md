@@ -1,5 +1,3 @@
-# Mediu · Fibonacci
-
 Afișează primele N numere Fibonacci. Șirul Fibonacci începe cu 0 și 1, iar fiecare număr următor este suma celor două precedente: 0, 1, 1, 2, 3, 5, 8, 13, ...
 
 ### Date de intrare

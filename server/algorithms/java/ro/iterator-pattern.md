@@ -1,5 +1,3 @@
-# Dificil · Iterator pentru interval de numere
-
 Implementează interfețele **Iterable** și **Iterator** pentru a crea o clasă `IntervalNumere` care iterează peste un interval de numere întregi.
 
 `IntervalNumere` primește o valoare `inceput` și o valoare `sfarsit` și îți permite să iterezi peste toate numerele întregi de la `inceput` la `sfarsit` (inclusiv) folosind o buclă for-each.

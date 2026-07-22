@@ -1,5 +1,3 @@
-# Easy · Reverse an Array
-
 Read an integer **N**, then read **N** integers. Print them in **reverse** order, separated by spaces.
 
 ### Input

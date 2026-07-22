@@ -1,5 +1,3 @@
-# Medium · Caesar Cipher
-
 Encrypt a string using the **Caesar cipher**. Each letter is shifted forward in the alphabet by a given amount. Uppercase letters stay uppercase, lowercase letters stay lowercase, and non-letter characters are left unchanged.
 
 For example, with a shift of 3: `A` becomes `D`, `z` becomes `c`, and `5` stays `5`.

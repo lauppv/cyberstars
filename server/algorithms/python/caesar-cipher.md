@@ -1,5 +1,3 @@
-# Caesar Cipher
-
 Encrypt a string using the **Caesar cipher**: shift every letter forward by a given number of positions in the alphabet. Non-letter characters stay the same.
 
 ### Input

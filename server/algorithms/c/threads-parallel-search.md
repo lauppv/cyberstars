@@ -1,5 +1,3 @@
-# Hard · Parallel Search
-
 Split an array in two and search for a `target` in parallel with two threads. The threads write to a shared global `found_index` protected by a **mutex**: whenever a thread finds a match, it updates the value only if the new index is smaller than the one already recorded.
 
 At the end, the main thread prints the smallest index where `target` appears, or `Not found` if it doesn't appear anywhere.

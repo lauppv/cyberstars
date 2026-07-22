@@ -1,5 +1,3 @@
-# Verificare palindrom
-
 Având un șir, verifică dacă este un **palindrom** (se citește la fel de la stânga la dreapta și invers).
 
 ### Date de intrare

@@ -1,5 +1,3 @@
-# Easy · Count Even Numbers
-
 Read an integer **N**, then read **N** integers. Print how many of them are **even**.
 
 ### Input

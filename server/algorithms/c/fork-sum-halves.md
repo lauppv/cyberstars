@@ -1,5 +1,3 @@
-# Medium · Sum in Halves with Fork
-
 Split an array into two halves and parallelise the addition: the child sums the first half, the parent sums the second. The child sends its partial sum through a pipe, then the parent adds the two parts and prints the total.
 
 When `N` is odd, the first half has `N/2` elements and the second has `N - N/2` — a split that comes out cleanly with no awkward remainders.

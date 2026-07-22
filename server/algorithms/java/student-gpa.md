@@ -1,5 +1,3 @@
-# Easy · Student GPA
-
 Create a **Student** class that stores a student's name and an array of grades. The class should have a method `getGPA()` that computes the average of all grades.
 
 Read the student's name and grades from stdin, create a `Student` object, and print the average rounded to **2 decimal places**.

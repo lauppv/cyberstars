@@ -1,5 +1,3 @@
-# Medium · Sort Students
-
 Create a **Student** class that implements `Comparable<Student>`. Each student has a `name` and a `gpa` (double). Students should be sorted by GPA in **descending** order. If two students have the same GPA, sort by name **alphabetically**.
 
 Read students from stdin, sort them, and print each student on a separate line.

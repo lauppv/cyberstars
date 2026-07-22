@@ -1,5 +1,3 @@
-# Medium · Even and Odd with Fork
-
 A parent and a child split the work: the child counts the even numbers, the parent counts the odd ones. The child sends its result to the parent through a pipe, and the parent prints both counts.
 
 We send an `int` through the pipe with **write(p[1], &evens, sizeof(int))** and read it on the other end with **read(p[0], &evens, sizeof(int))** — pipes carry raw bytes, not just text.

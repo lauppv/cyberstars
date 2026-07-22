@@ -1,5 +1,3 @@
-# Mediu · Interschimbare cu pointeri
-
 Citește două numere întregi. Scrie o funcție `interschimba` care primește doi **pointeri la int** și interschimbă valorile lor. Apeleaz-o din `main`, apoi afișează valorile interschimbate.
 
 ### Date de intrare

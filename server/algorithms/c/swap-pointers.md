@@ -1,5 +1,3 @@
-# Medium · Swap with Pointers
-
 Read two integers. Write a function `swap` that takes two **int pointers** and swaps their values. Call it from `main`, then print the swapped values.
 
 ### Input

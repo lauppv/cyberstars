@@ -1,5 +1,3 @@
-# Medium · Inventory Manager
-
 Use a **HashMap** to manage an inventory of items and their quantities. Process commands to add items, remove items, and check stock.
 
 ### Input

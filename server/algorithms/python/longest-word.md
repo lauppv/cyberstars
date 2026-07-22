@@ -1,5 +1,3 @@
-# Longest Word
-
 Given a sentence, find and print the **longest word**.
 
 ### Input

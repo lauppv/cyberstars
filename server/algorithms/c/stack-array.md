@@ -1,5 +1,3 @@
-# Medium · Stack Using Array
-
 Implement a **stack** data structure using an array. Read a sequence of commands and process them:
 
 - **push X** — push integer X onto the stack

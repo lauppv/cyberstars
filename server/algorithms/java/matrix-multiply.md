@@ -1,5 +1,3 @@
-# Hard · Matrix Multiplication
-
 Multiply two matrices **A** and **B** and print the resulting matrix **C**.
 
 Matrix multiplication is defined as: `C[i][j] = sum of A[i][k] * B[k][j]` for all k. The number of columns in A must equal the number of rows in B.

@@ -1,5 +1,3 @@
-# Ușor · Suma unui tablou
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Afișează **suma** lor.
 
 ### Date de intrare

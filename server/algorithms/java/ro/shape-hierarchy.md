@@ -1,5 +1,3 @@
-# Mediu · Ierarhia formelor
-
 Creează o clasă **abstractă** `Forma` cu o metodă abstractă `getArie()`. Implementează două subclase: `Cerc` (cu raza) și `Dreptunghi` (cu latime și inaltime).
 
 Citește formele de la stdin, creează obiectele corespunzătoare și afișează **aria totală** a tuturor formelor, rotunjită la 2 zecimale.

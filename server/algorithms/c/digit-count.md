@@ -1,5 +1,3 @@
-# Easy · Count Digits
-
 Read a single integer and print how many **digits** it has.
 
 ### Input

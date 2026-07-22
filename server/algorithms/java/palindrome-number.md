@@ -1,5 +1,3 @@
-# Easy · Palindrome Number
-
 Check if an integer is a **palindrome** — a number that reads the same forwards and backwards.
 
 Negative numbers are never palindromes (because of the minus sign). Single-digit numbers are always palindromes.

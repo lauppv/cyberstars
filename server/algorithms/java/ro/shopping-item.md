@@ -1,5 +1,3 @@
-# Ușor · Produs de cumpărături
-
 Creează o clasă **Articol** cu trei câmpuri: `nume` (String), `pret` (double) și `cantitate` (int). Adaugă o metodă `getTotal()` care returnează `pret * cantitate`.
 
 Citește N articole de la stdin. Pentru fiecare articol, creează un obiect `Articol`. La final, afișează costul total al tuturor articolelor, formatat la două zecimale.

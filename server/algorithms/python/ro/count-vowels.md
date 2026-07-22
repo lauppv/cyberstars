@@ -1,5 +1,3 @@
-# Numără vocalele
-
 Având un șir, numără câte **vocale** conține.
 
 ### Date de intrare

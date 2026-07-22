@@ -1,5 +1,3 @@
-# Ușor · Găsește minimul
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Afișează cea mai **mică** valoare.
 
 ### Date de intrare

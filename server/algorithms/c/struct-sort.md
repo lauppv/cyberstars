@@ -1,5 +1,3 @@
-# Medium · Sort Students
-
 Read **N** students, each with a **name** (single word) and a **grade** (integer). Sort them by grade in **ascending** order. If two students have the same grade, keep their original order (stable sort). Print the sorted list.
 
 ### Input

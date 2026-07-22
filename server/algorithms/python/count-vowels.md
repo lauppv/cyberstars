@@ -1,5 +1,3 @@
-# Count Vowels
-
 Given a string, count how many **vowels** it contains.
 
 ### Input

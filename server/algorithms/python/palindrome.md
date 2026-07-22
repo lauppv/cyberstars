@@ -1,5 +1,3 @@
-# Palindrome Check
-
 Given a string, check whether it is a **palindrome** (reads the same forwards and backwards).
 
 ### Input

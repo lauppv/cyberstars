@@ -1,5 +1,3 @@
-# Ușor · Număr palindrom
-
 Verifică dacă un număr întreg este un **palindrom** — un număr care se citește la fel de la stânga la dreapta și de la dreapta la stânga.
 
 Numerele negative nu sunt niciodată palindroame (din cauza semnului minus). Numerele dintr-o singură cifră sunt întotdeauna palindroame.

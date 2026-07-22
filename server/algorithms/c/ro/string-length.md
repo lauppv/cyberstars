@@ -1,5 +1,3 @@
-# Ușor · Lungimea unui șir
-
 Citește un șir (un singur cuvânt, fără spații) și calculează lungimea lui **fără** a folosi `strlen()`. Afișează lungimea.
 
 ### Date de intrare

@@ -1,5 +1,3 @@
-# Easy · Sum of Array
-
 Read an integer **N**, then read **N** integers. Print their **sum**.
 
 ### Input

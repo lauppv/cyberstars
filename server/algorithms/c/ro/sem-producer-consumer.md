@@ -1,5 +1,3 @@
-# Dificil · Producător-consumator cu semafoare
-
 Un fir "producător" citește N numere și le pune pe rând într-un **buffer partajat** cu un singur slot. Un fir "consumator" citește din buffer și tipărește fiecare număr. Pentru că buffer-ul are doar 1 slot, producătorul trebuie să aștepte până când consumatorul consumă valoarea precedentă.
 
 Sincronizarea se face cu **două semafoare**:
