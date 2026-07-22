@@ -22,16 +22,18 @@ async function twoPythonLessons() {
 
 // Clear the in-memory cache so it can't leak a prior test's (now truncated)
 // ranking into this one — the public ?fresh=1 bypass was removed by design.
-async function fetchBoard(): Promise<LeaderboardPage> {
+// The board is logged-in only now, so fetch it through an existing authenticated
+// agent (reusing one already in the ranking keeps the total counts stable).
+async function fetchBoard(a: ReturnType<typeof agent>): Promise<LeaderboardPage> {
   clearCache();
-  const res = await agent().get('/api/leaderboard').expect(200);
+  const res = await a.get('/api/leaderboard').expect(200);
   return res.body;
 }
 
 describe('Leaderboard', () => {
   it('ranks users by derived XP, highest first (Sentinel with 0 XP is last)', async () => {
     const [l0, l1] = await twoPythonLessons();
-    const { name: nameA, email: emailA } = await createAuthenticatedAgent();
+    const { agent: aA, name: nameA, email: emailA } = await createAuthenticatedAgent();
     const { name: nameB, email: emailB } = await createAuthenticatedAgent();
 
     const idA = await userIdFor(emailA);
@@ -39,7 +41,7 @@ describe('Leaderboard', () => {
     await markComplete(idA, 'python', l1.slug);
     await markComplete(await userIdFor(emailB), 'python', l0.slug);
 
-    const board = await fetchBoard();
+    const board = await fetchBoard(aA);
     expect(board.total).toBe(3); // A, B, Sentinel
 
     const [first, second] = board.entries;
@@ -60,13 +62,13 @@ describe('Leaderboard', () => {
 
   it('uses RANK() with gaps on ties', async () => {
     const [l0] = await twoPythonLessons();
-    const { email: emailA } = await createAuthenticatedAgent();
+    const { agent: aA, email: emailA } = await createAuthenticatedAgent();
     const { email: emailB } = await createAuthenticatedAgent();
 
     await markComplete(await userIdFor(emailA), 'python', l0.slug);
     await markComplete(await userIdFor(emailB), 'python', l0.slug);
 
-    const board = await fetchBoard();
+    const board = await fetchBoard(aA);
     const tied = board.entries.filter(
       (e: LeaderboardEntry) => e.totalXp === xpForLesson(l0.sortOrder),
     );
@@ -84,7 +86,7 @@ describe('Leaderboard', () => {
     await markComplete(await userIdFor(email), 'python', l0.slug);
     await markComplete(await userIdFor(email), 'python', l1.slug);
 
-    await fetchBoard(); // refresh cache with current data
+    await fetchBoard(a); // refresh cache with current data
     const me = await a.get('/api/leaderboard/me').expect(200);
     expect(me.body.rank).toBe(1);
     expect(me.body.totalXp).toBe(xpForLesson(l0.sortOrder) + xpForLesson(l1.sortOrder));

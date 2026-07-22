@@ -14,9 +14,9 @@ export type FeatureKey =
 // team can build and test them. To launch a feature publicly, flip its value to
 // `false` (or drop the key) — a single edit, no refactor.
 export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
-  leaderboard: true,
-  messaging: true,
-  notifications: true,
+  leaderboard: false,
+  messaging: false,
+  notifications: false,
   connections: true,
   radio: false,
   aiHints: false,
