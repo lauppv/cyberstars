@@ -185,7 +185,7 @@ export function SupportPage() {
               {t('support.yourTickets')}
             </h2>
             {myTickets.length === 0 ? (
-              <p className="text-[12px] text-[var(--text3)]">{t('support.noTickets')}</p>
+              <p className="panel p-4 text-[12px] text-[var(--text3)]">{t('support.noTickets')}</p>
             ) : (
               <div className="flex flex-col gap-2.5">
                 {myTickets.map((tk) => (
@@ -202,7 +202,9 @@ export function SupportPage() {
                 {t('support.allTickets')}
               </h2>
               {allTickets.length === 0 ? (
-                <p className="text-[12px] text-[var(--text3)]">{t('support.noTicketsAdmin')}</p>
+                <p className="panel p-4 text-[12px] text-[var(--text3)]">
+                  {t('support.noTicketsAdmin')}
+                </p>
               ) : (
                 <div className="flex flex-col gap-2.5">
                   {allTickets.map((tk) => (

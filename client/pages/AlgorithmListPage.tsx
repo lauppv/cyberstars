@@ -86,7 +86,7 @@ export function AlgorithmListPage() {
 
       <main className="flex-1 max-w-lg mx-auto w-full px-4 py-8">
         <div
-          className="bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border border-[var(--accent)]/30 rounded-[14px] overflow-hidden flex flex-col"
+          className="panel rounded-[14px] overflow-hidden flex flex-col"
           style={{ maxHeight: 'calc(100vh - 180px)' }}
         >
           {/* Header */}

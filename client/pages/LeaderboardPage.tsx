@@ -158,7 +158,7 @@ export function LeaderboardPage() {
           <div className="text-center text-[var(--text3)] py-16">{t('leaderboard.empty')}</div>
         ) : (
           <>
-            <div className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden">
+            <div className="rounded-[var(--radius)] panel overflow-hidden">
               {entries.map((e) => (
                 <Row key={e.userId} entry={e} isMe={e.userId === me?.userId} t={t} />
               ))}
@@ -182,7 +182,7 @@ export function LeaderboardPage() {
                 <div className="text-[11px] uppercase tracking-wider text-[var(--text3)] mb-1.5 px-1">
                   {t('leaderboard.yourRank')}
                 </div>
-                <div className="rounded-[var(--radius)] border border-[var(--accent)]/40 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden">
+                <div className="rounded-[var(--radius)] panel border-[var(--accent)]/40 overflow-hidden">
                   <Row entry={me} isMe t={t} />
                 </div>
               </div>
