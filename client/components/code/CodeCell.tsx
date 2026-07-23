@@ -24,7 +24,7 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
   const { output, isRunning, execute, sendInput } = useCodeExecution(notifyRunComplete);
 
   return (
-    <div className="my-4 border border-[#1e2a38] rounded p-3 bg-[#111820]">
+    <div className="my-4 panel rounded p-3">
       <CodeEditor value={code} onChange={setCode} language={lang} minHeight="60px" />
       <RunButton onClick={() => execute(code, lang)} isRunning={isRunning} className="mt-2" />
       {(output || isRunning) && (

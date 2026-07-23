@@ -378,7 +378,7 @@ export function LessonPage() {
           <div
             ref={contentRef}
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
-            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px]`}
+            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)]`}
           >
             <div className="px-9 py-8">
               {(() => {
@@ -470,7 +470,7 @@ export function LessonPage() {
           {/* Right panel: terminal or editor */}
           {isTerminal ? (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
             >
               <TerminalPanel
                 lines={terminal.lines}
@@ -496,7 +496,7 @@ export function LessonPage() {
             </div>
           ) : (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
             >
               <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
                 <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">

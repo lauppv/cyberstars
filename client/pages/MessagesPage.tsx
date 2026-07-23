@@ -52,7 +52,7 @@ export function MessagesPage() {
     <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <main className="flex-1 min-h-0 max-w-[980px] w-full mx-auto px-0 sm:px-4 py-0 sm:py-4">
-        <div className="h-full flex rounded-none sm:rounded-[var(--radius)] border-y sm:border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden">
+        <div className="h-full flex rounded-none sm:rounded-[var(--radius)] border-y sm:border border-[var(--panel-border)] bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden">
           {/* Conversation list — full width on mobile until one is picked. */}
           <div
             className={`w-full md:w-[300px] md:flex-shrink-0 flex-col border-r border-[var(--accent)]/20 ${

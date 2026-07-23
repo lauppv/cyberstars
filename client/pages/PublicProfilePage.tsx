@@ -252,7 +252,7 @@ export function PublicProfilePage() {
             {t(error === 'notFound' ? 'publicProfile.notFound' : 'publicProfile.error')}
           </div>
         ) : (
-          <div className="w-full max-w-[520px] rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] px-6 py-6">
+          <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
             {/* Header */}
             <div className="flex items-center gap-5 pb-5 border-b border-[var(--accent)]/20">
               <Avatar url={profile.avatarUrl} />

@@ -32,7 +32,7 @@ export function AlgorithmsPage() {
               <button
                 key={lang.key}
                 onClick={() => navigate(`/algorithms/${lang.key.replace('algo-', '')}`)}
-                className="text-left p-6 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border border-[var(--accent)]/30 rounded-xl hover:border-[var(--accent)] transition cursor-pointer group flex flex-col"
+                className="text-left p-6 panel rounded-xl hover:border-[var(--accent)] transition cursor-pointer group flex flex-col"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div

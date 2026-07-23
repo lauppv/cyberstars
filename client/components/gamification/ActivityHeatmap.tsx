@@ -78,7 +78,7 @@ export function ActivityHeatmap({
   const colWidth = 19;
 
   return (
-    <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+    <div className="p-5 panel rounded-[var(--radius)]">
       <div className="flex items-center justify-between mb-3.5">
         <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
           {t('home.activity')}

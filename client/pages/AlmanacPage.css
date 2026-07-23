@@ -113,7 +113,7 @@
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: rgba(22, 22, 29, 0.6);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   margin-bottom: 48px;
   min-height: 380px;
@@ -320,7 +320,7 @@
 }
 
 .almanac-article {
-  background: rgba(22, 22, 29, 0.72);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -465,7 +465,7 @@
 }
 
 .side-card {
-  background: rgba(22, 22, 29, 0.72);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 14px;

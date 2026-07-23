@@ -84,7 +84,7 @@
 .forum-stats {
   display: flex;
   gap: 0;
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(108, 92, 231, 0.3);
@@ -153,7 +153,7 @@
 
 /* ===== Category table ===== */
 .cat-table {
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(108, 92, 231, 0.3);
@@ -347,7 +347,7 @@
   align-items: flex-start;
   gap: 18px;
   padding: 22px 24px;
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(108, 92, 231, 0.3);
@@ -416,7 +416,7 @@
 
 /* ===== Thread table ===== */
 .thread-table {
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(108, 92, 231, 0.3);
@@ -599,7 +599,7 @@
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 0;
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(108, 92, 231, 0.3);
@@ -864,7 +864,7 @@
 
 /* ===== Composer ===== */
 .forum-composer {
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(108, 92, 231, 0.3);
@@ -936,7 +936,7 @@
 .thread-locked-banner {
   text-align: center;
   padding: 16px;
-  background: rgba(22, 22, 29, 0.1);
+  background: var(--panel-bg);
   border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   margin-top: 18px;

@@ -111,7 +111,7 @@ export function TestResults({ results, onClose }: TestResultsProps) {
   const passed = results.status === 'passed';
 
   return (
-    <div className="flex-1 min-h-0 overflow-y-auto rounded-[var(--radius-sm)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] p-3">
+    <div className="flex-1 min-h-0 overflow-y-auto rounded-[var(--radius-sm)] panel p-3">
       <div className="flex items-center justify-between mb-3">
         <div
           className={`flex items-center gap-2 font-bold text-[14px] ${passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}`}
