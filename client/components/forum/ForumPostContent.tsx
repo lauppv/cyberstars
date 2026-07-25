@@ -30,7 +30,7 @@ export function ForumPostContent({ content }: { content: string }) {
   }
 
   if (last < content.length) {
-    parts.push(<Fragment key={key++}>{content.slice(last)}</Fragment>);
+    parts.push(<Fragment key={key}>{content.slice(last)}</Fragment>);
   }
 
   return <>{parts}</>;
