@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { ALGO_COURSE_KEYS, xpForCourse } from '../../shared/constants';

@@ -8,7 +8,7 @@ const h = vi.hoisted(() => ({
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
-vi.mock('react-router-dom', () => ({ useNavigate: () => h.navigate }));
+vi.mock('react-router', () => ({ useNavigate: () => h.navigate }));
 vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: (k: string) => k }) }));
 vi.mock('../../../shared/features', () => ({ canAccessFeature: () => h.access }));
 vi.mock('./LockedIcon', () => ({

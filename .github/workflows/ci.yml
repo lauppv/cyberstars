@@ -106,7 +106,9 @@ jobs:
         with:
           path: node_modules
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
-      - run: npm audit --audit-level=high
+      # Audits what actually ships. Dev-only findings (linters, bundlers, test
+      # runners) never reach a user and would otherwise block unrelated merges.
+      - run: npm audit --audit-level=high --omit=dev
 
   dead-code:
     runs-on: ubuntu-latest

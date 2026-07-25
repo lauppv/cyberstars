@@ -7,7 +7,7 @@ const h = vi.hoisted(() => ({
 }));
 
 vi.mock('./AuthContext', () => ({ useAuth: () => h.auth }));
-vi.mock('react-router-dom', () => ({ useNavigate: () => h.navigate }));
+vi.mock('react-router', () => ({ useNavigate: () => h.navigate }));
 
 import { GuestSignupPromptProvider, useGuestSignupPrompt } from './GuestSignupPromptContext';
 
