@@ -170,7 +170,7 @@ public class Main {
 }
 ```
 
-Output **100**. Start with **total = 0**, walk through every price, add it to total. You will write this kind of loop **a lot** in your career. Read it line by line until it’s second nature
+Output **100**. Start with **total = 0**, walk through every price, add it to total. You will write this kind of loop a lot in your career. Read it line by line until it’s second nature
 
 ---
 
