@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import type { NotificationDTO } from '../../../shared/notifications';
 
 const mockNavigate = vi.fn();
-vi.mock('react-router-dom', () => ({ useNavigate: () => mockNavigate }));
+vi.mock('react-router', () => ({ useNavigate: () => mockNavigate }));
 
 let role = 'USER';
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => ({ user: { role } }) }));

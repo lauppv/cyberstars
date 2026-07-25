@@ -9,7 +9,7 @@ const h = vi.hoisted(() => ({
   frameHandler: null as ((f: UserSocketFrame) => void) | null,
 }));
 
-vi.mock('react-router-dom', () => ({ useNavigate: () => h.navigate }));
+vi.mock('react-router', () => ({ useNavigate: () => h.navigate }));
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.authState }));
 vi.mock('../../services/notificationsService', () => h.service);
 vi.mock('../../hooks/useUserSocket', () => ({

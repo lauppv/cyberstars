@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useTerminalSession } from '../hooks/useTerminalSession';
