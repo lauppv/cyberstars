@@ -15,6 +15,7 @@ set -euo pipefail
 APP_DIR="${APP_DIR:-/opt/cyberstars}"
 FLAG="$APP_DIR/maintenance.on"
 HEALTH_URL="${HEALTH_URL:-http://localhost:8080/api/time}"
+HEALTH_TIMEOUT="${HEALTH_TIMEOUT:-240}"
 PM2_NAME="${PM2_NAME:-cyberstars}"
 
 cd "$APP_DIR"
@@ -42,8 +43,16 @@ git pull
 # install` does rewrite it on the server, which left the working tree dirty and
 # made the *next* deploy's `git pull` abort. It also fails loudly when
 # package.json and the lockfile disagree, instead of silently resolving around it.
+#
+# The fallback is not cosmetic: npm 10 and npm 11 disagree about how optional
+# peer dependencies are recorded, so a lockfile written by one can make the
+# other's `npm ci` refuse the tree outright. A deploy must not die on that.
+# `npm install` resolves it, and the lockfile guard above cleans up next run.
 echo "==> Installing dependencies"
-npm ci
+npm ci || {
+  echo "!! npm ci refused the lockfile — falling back to npm install" >&2
+  npm install
+}
 
 echo "==> Building"
 npm run build
@@ -62,8 +71,12 @@ npm run db:seed
 echo "==> Restarting app"
 pm2 restart "$PM2_NAME" --update-env
 
+# Generous on purpose. pm2 starts the app through `npm start`, which rebuilds
+# before it ever opens the port, and a cold build on the VPS has taken over a
+# minute. A window that ends while the app is still starting leaves the
+# maintenance page up on a deploy that actually worked.
 echo "==> Waiting for backend to become healthy"
-for _ in $(seq 1 60); do
+for _ in $(seq 1 "$HEALTH_TIMEOUT"); do
   if curl -fsS -o /dev/null "$HEALTH_URL"; then
     rm -f "$FLAG"
     echo "==> Backend healthy — maintenance page disabled, deploy complete"
@@ -72,6 +85,6 @@ for _ in $(seq 1 60); do
   sleep 1
 done
 
-echo "!! Backend did not become healthy within 60s — leaving maintenance page up" >&2
+echo "!! Backend did not become healthy within ${HEALTH_TIMEOUT}s — leaving maintenance page up" >&2
 echo "!! Investigate with: pm2 logs $PM2_NAME" >&2
 exit 1
