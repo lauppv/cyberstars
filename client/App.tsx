@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router';
 import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import * as forumService from '../../services/forumService';
 import { RESTRICTED_FORUM_CATEGORIES } from '../../../shared/constants';
 import type { ForumCategoryDTO } from '../../../shared/forum';
