@@ -28,8 +28,12 @@ touch "$FLAG"
 echo "==> Pulling latest"
 git pull
 
+# `npm ci` installs strictly from the lockfile and never writes to it. `npm
+# install` does rewrite it on the server, which left the working tree dirty and
+# made the *next* deploy's `git pull` abort. It also fails loudly when
+# package.json and the lockfile disagree, instead of silently resolving around it.
 echo "==> Installing dependencies"
-npm install
+npm ci
 
 echo "==> Building"
 npm run build
