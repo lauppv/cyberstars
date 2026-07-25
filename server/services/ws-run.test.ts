@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { EventEmitter } from 'node:events';
 import jwt from 'jsonwebtoken';
 import type { IncomingMessage } from 'http';
@@ -21,6 +21,40 @@ vi.mock('./code-container.service.js', () => ({
   openSession: (...args: unknown[]) => openSessionMock(...args),
   closeSession: (...args: unknown[]) => closeSessionMock(...args),
 }));
+
+const registerUserSocketMock = vi.fn();
+const unregisterUserSocketMock = vi.fn();
+vi.mock('./ws-user.js', () => ({
+  registerUserSocket: (...args: unknown[]) => registerUserSocketMock(...args),
+  unregisterUserSocket: (...args: unknown[]) => unregisterUserSocketMock(...args),
+}));
+
+const getRoleMock = vi.fn();
+vi.mock('../repositories/user.repository.js', () => ({
+  getRole: (...args: unknown[]) => getRoleMock(...args),
+}));
+
+// A stand-in WebSocketServer that hands the upgrade straight to the connection
+// handler, so the upgrade router can be driven without real sockets.
+vi.mock('ws', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('ws')>();
+  const { EventEmitter: EE } = await import('node:events');
+  class FakeWebSocketServer extends EE {
+    close = vi.fn();
+    handleUpgrade(
+      req: unknown,
+      _socket: unknown,
+      _head: unknown,
+      cb: (ws: unknown, req: unknown) => void,
+    ) {
+      cb(upgradedSocket, req);
+    }
+  }
+  return { ...actual, WebSocketServer: FakeWebSocketServer };
+});
+
+/** The socket the faked WebSocketServer hands to the connection handlers. */
+let upgradedSocket: { close: ReturnType<typeof vi.fn>; emit: (event: string) => void };
 
 const {
   parseTokenCookie,
@@ -351,5 +385,72 @@ describe('attachRunWebSocket', () => {
     expect((server as unknown as EventEmitter).listenerCount('upgrade')).toBe(1);
     handle.close();
     expect((server as unknown as EventEmitter).listenerCount('upgrade')).toBe(0);
+  });
+});
+
+describe('upgrade routing', () => {
+  /** Drives one upgrade through the real path router with a faked socket. */
+  function upgrade(url: string, cookie?: string) {
+    const server = new EventEmitter();
+    attachRunWebSocket(server as unknown as Parameters<typeof attachRunWebSocket>[0]);
+    const ws = new FakeWs();
+    upgradedSocket = ws as unknown as typeof upgradedSocket;
+    server.emit(
+      'upgrade',
+      { url, headers: cookie ? { cookie } : {}, socket: { remoteAddress: '127.0.0.1' } },
+      { destroy: vi.fn() },
+      Buffer.alloc(0),
+    );
+    return ws;
+  }
+
+  it('routes /ws/run to the run handler', () => {
+    const ws = upgrade('/ws/run');
+    ws.emit('message', JSON.stringify({ type: 'run', language: 'python', code: 'print(1)' }));
+    expect(mockRun).toHaveBeenCalled();
+  });
+
+  it('routes /ws/presence to the presence handler', () => {
+    upgrade('/ws/presence', `token=${token(7)}`);
+    expect(openSessionMock).toHaveBeenCalledWith('user:7');
+  });
+
+  it('rejects a /ws/user upgrade with no session', async () => {
+    const ws = upgrade('/ws/user');
+    await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4401, 'Unauthorized'));
+    expect(registerUserSocketMock).not.toHaveBeenCalled();
+  });
+
+  it('registers a /ws/user socket and unregisters it on close', async () => {
+    const ws = upgrade('/ws/user', `token=${token(7)}`);
+    await vi.waitFor(() => expect(registerUserSocketMock).toHaveBeenCalledWith(7, ws));
+
+    ws.emit('close');
+    expect(unregisterUserSocketMock).toHaveBeenCalledWith(7, ws);
+  });
+
+  describe('on production', () => {
+    beforeEach(() => {
+      vi.stubEnv('NODE_ENV', 'production');
+    });
+    afterEach(() => {
+      vi.unstubAllEnvs();
+    });
+
+    it('closes the socket for a user outside the preview gate', async () => {
+      getRoleMock.mockResolvedValue('USER');
+      const ws = upgrade('/ws/user', `token=${token(7)}`);
+
+      await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4404, 'Not found'));
+      expect(getRoleMock).toHaveBeenCalledWith(7);
+      expect(registerUserSocketMock).not.toHaveBeenCalled();
+    });
+
+    it('lets an admin through the preview gate', async () => {
+      getRoleMock.mockResolvedValue('ADMIN');
+      const ws = upgrade('/ws/user', `token=${token(7)}`);
+
+      await vi.waitFor(() => expect(registerUserSocketMock).toHaveBeenCalledWith(7, ws));
+    });
   });
 });
