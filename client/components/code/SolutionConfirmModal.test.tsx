@@ -72,10 +72,45 @@ describe('SolutionConfirmModal', () => {
     await waitFor(() => expect(screen.getByText('nope')).toBeInTheDocument());
   });
 
+  it('falls back to a generic message when the failure carries none', async () => {
+    h.service.consumeSolution.mockRejectedValue('nope');
+    render(<SolutionConfirmModal onConfirmed={vi.fn()} onClose={vi.fn()} />);
+    fireEvent.click(screen.getByText('Reveal solution'));
+    await waitFor(() =>
+      expect(screen.getByText('Could not reveal the solution right now.')).toBeInTheDocument(),
+    );
+  });
+
   it('closes on cancel', () => {
     const onClose = vi.fn();
     render(<SolutionConfirmModal onConfirmed={vi.fn()} onClose={onClose} />);
     fireEvent.click(screen.getByText('Cancel'));
     expect(onClose).toHaveBeenCalled();
+  });
+
+  it('closes on the backdrop but not on a click inside the dialog', () => {
+    const onClose = vi.fn();
+    const { container } = render(<SolutionConfirmModal onConfirmed={vi.fn()} onClose={onClose} />);
+
+    fireEvent.mouseDown(screen.getByText('Cancel'));
+    expect(onClose).not.toHaveBeenCalled();
+
+    fireEvent.mouseDown(container.firstChild!);
+    expect(onClose).toHaveBeenCalledOnce();
+  });
+
+  it('closes on Escape and stops listening once unmounted', () => {
+    const onClose = vi.fn();
+    const { unmount } = render(<SolutionConfirmModal onConfirmed={vi.fn()} onClose={onClose} />);
+
+    fireEvent.keyDown(document, { key: 'Enter' });
+    expect(onClose).not.toHaveBeenCalled();
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(onClose).toHaveBeenCalledOnce();
+
+    unmount();
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(onClose).toHaveBeenCalledOnce();
   });
 });
