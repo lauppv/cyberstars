@@ -28,7 +28,7 @@ student   1201  0.0  0.2  22340  2048 pts/0    S    09:12   0:00 bash
 student   1245  0.0  0.1  18432   896 pts/0    R+   09:15   0:00 ps aux
 ```
 
-The columns tell you: **who** owns the process, its PID, resource usage, and the
+The columns tell you: who owns the process, its PID, resource usage, and the
 command that started it. When the station feels sluggish, `ps aux` is your first
 diagnostic tool.
 

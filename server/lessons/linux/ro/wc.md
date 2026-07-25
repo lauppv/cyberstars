@@ -55,7 +55,7 @@ sosească, plus o copie depusă a manifestului.
    caracterele împreună.
 3. Creează un folder numit `manifest` și copiază `inventar.txt` în el sub numele
    `inventar-verificat.txt`.
-4. Confirmă că fișierul depus are același număr de articole numărând și **liniile** lui.
+4. Confirmă că fișierul depus are același număr de articole numărând și liniile lui.
 
 **Rezultat așteptat**
 

@@ -51,7 +51,7 @@ automatically.
 1. Count **how many lines** are in `inventory.txt` — that is the number of items.
 2. Run a full measure of `inventory.txt` to see its lines, words and characters together.
 3. Create a folder called `manifest` and copy `inventory.txt` into it as `inventory-checked.txt`.
-4. Confirm the filed copy has the same item count by counting **its** lines too.
+4. Confirm the filed copy has the same item count by counting its lines too.
 
 **Expected result**
 

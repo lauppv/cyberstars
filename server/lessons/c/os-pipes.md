@@ -68,7 +68,7 @@ When you write **printf("hello")**, it goes to fd 1 (stdout → your screen). Wh
 
 ---
 
-Pipes are **the** fundamental building block for process communication in Unix. Shells use them, web servers use them, even Docker uses them internally. The philosophy is simple: small programs that do one thing well, connected by pipes
+Pipes are the fundamental building block for process communication in Unix. Shells use them, web servers use them, even Docker uses them internally. The philosophy is simple: small programs that do one thing well, connected by pipes
 
 ---
 

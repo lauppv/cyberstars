@@ -1,4 +1,4 @@
-As we mentioned in a previous lesson, it’s not a good idea to **repeat** code. If we have to write the same thing twice, chances are we’ll need to write it three times or **more**. This is where the notion of a **function** comes in. A **function** is a piece of code that we write **once** and can reuse **multiple** times
+As we mentioned in a previous lesson, it’s not a good idea to **repeat** code. If we have to write the same thing twice, chances are we’ll need to write it three times or more. This is where the notion of a **function** comes in. A **function** is a piece of code that we write **once** and can reuse **multiple** times
 
 ```py
 name = "Cortez"

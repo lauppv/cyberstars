@@ -28,7 +28,7 @@ student   1201  0.0  0.2  22340  2048 pts/0    S    09:12   0:00 bash
 student   1245  0.0  0.1  18432   896 pts/0    R+   09:15   0:00 ps aux
 ```
 
-Coloanele îți spun: **cine** deține procesul, PID-ul său, consumul de resurse și
+Coloanele îți spun: cine deține procesul, PID-ul său, consumul de resurse și
 comanda care l-a pornit. Când stația merge greoi, `ps aux` este prima ta unealtă
 de diagnoză.
 
