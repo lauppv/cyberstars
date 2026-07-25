@@ -81,7 +81,7 @@ describe('ShareToForumModal', () => {
       content: '```python\nprint(1)\n```',
     });
     expect(onClose).toHaveBeenCalled();
-    expect(mockNavigate).toHaveBeenCalledWith('/forum', { state: { openThreadId: 42 } });
+    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/42');
   });
 
   it('maps course keys to a canonical fence language', async () => {

@@ -641,6 +641,8 @@
     "loadingThreads": "Loading threads...",
     "crumbForum": "Forum",
     "crumbError": "Error",
+    "breadcrumbLabel": "Forum navigation",
+    "backTo": "Back to {{name}}",
     "categoryNotFound": "Category not found.",
     "bannerThreads": "threads",
     "restrictedThreads": "🔒 Only moderators and admins can start threads in this category.",

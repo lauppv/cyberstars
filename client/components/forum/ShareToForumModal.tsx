@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import * as forumService from '../../services/forumService';
+import { forumRoutes } from '../../constants/forumRoutes';
 import { RESTRICTED_FORUM_CATEGORIES } from '../../../shared/constants';
 import type { ForumCategoryDTO } from '../../../shared/forum';
 import { CodeEditor } from '../code/CodeEditor';
@@ -75,7 +76,7 @@ export function ShareToForumModal({
         content,
       });
       onClose();
-      navigate('/forum', { state: { openThreadId: threadId } });
+      navigate(forumRoutes.thread(threadId));
     } catch {
       setError(t('forum.share.postError'));
       setSubmitting(false);

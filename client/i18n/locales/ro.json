@@ -643,6 +643,8 @@
     "loadingThreads": "Se încarcă discuțiile...",
     "crumbForum": "Forum",
     "crumbError": "Eroare",
+    "breadcrumbLabel": "Navigare în forum",
+    "backTo": "Înapoi la {{name}}",
     "categoryNotFound": "Categoria nu a fost găsită.",
     "bannerThreads": "discuții",
     "restrictedThreads": "🔒 Doar moderatorii și administratorii pot începe discuții în această categorie.",

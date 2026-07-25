@@ -85,12 +85,12 @@ describe('NotificationBell', () => {
     await waitFor(() => expect(screen.queryByText('1')).not.toBeInTheDocument());
   });
 
-  it('marks one read and deep-links a forum notification to /forum', async () => {
+  it('marks one read and deep-links a forum notification to the thread URL', async () => {
     renderBell();
     fireEvent.click(await screen.findByRole('button', { name: 'Notifications' }));
     fireEvent.click(await screen.findByText(/Ada replied to/));
     expect(mockService.markOneRead).toHaveBeenCalledWith(1);
-    expect(mockNavigate).toHaveBeenCalledWith('/forum', { state: { openThreadId: 5 } });
+    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/5');
   });
 
   it('applies live unread-count and new frames from the socket', async () => {
@@ -150,6 +150,6 @@ describe('NotificationBell', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Notifications' }));
     fireEvent.click(await screen.findByText(/Ada replied to/));
     expect(mockService.markOneRead).not.toHaveBeenCalled();
-    expect(mockNavigate).toHaveBeenCalledWith('/forum', { state: { openThreadId: 5 } });
+    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/5');
   });
 });
