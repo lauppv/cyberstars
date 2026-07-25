@@ -115,6 +115,8 @@ function App() {
                             <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
                             <Route path="/profile" element={<ProfilePage />} />
                             <Route path="/forum" element={<ForumPage />} />
+                            <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
+                            <Route path="/forum/t/:threadId" element={<ForumPage />} />
                             <Route path="/almanac" element={<AlmanacPage />} />
                             <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
                             <Route path="/rules" element={<RulesPage />} />
