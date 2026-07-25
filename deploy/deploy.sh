@@ -25,6 +25,16 @@ touch "$FLAG"
 # Everything below runs with the flag up. If any step fails we deliberately
 # leave the flag in place: a maintenance page is better than a half-updated,
 # broken site. Fix the problem and re-run; the flag lifts on the next success.
+
+# The lockfile is generated, never hand-edited on the server, so a dirty copy
+# here is always leftover noise from an older `npm install` deploy — and it is
+# enough to make `git pull` abort. Drop it so the deploy is self-healing.
+# Any *other* dirty file is a real surprise: let git stop us and say so.
+if ! git diff --quiet -- package-lock.json; then
+  echo "==> Discarding locally regenerated package-lock.json"
+  git checkout -- package-lock.json
+fi
+
 echo "==> Pulling latest"
 git pull
 
