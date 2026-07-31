@@ -1,5 +1,3 @@
-# Medium · Three-Generation Chain
-
 A "grandparent" process forks to create a "parent" process. That parent, in turn, forks to create a "grandchild". Each generation prints its level and its own PID, but printing goes **from grandchild up to grandparent**: every parent uses **wait(NULL)** to let its own child finish before printing.
 
 The structure looks like **fork inside fork**: after the first `fork()`, the child calls `fork()` again. Watch the `return 0` placement — if it's missing, the "wrong" processes continue running the code below.

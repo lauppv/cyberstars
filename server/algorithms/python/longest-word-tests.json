@@ -1,5 +1,9 @@
 {
   "comparator": "trimmed",
+  "structure": {
+    "requires": [{ "kind": "loop" }],
+    "forbids": [{ "kind": "call", "name": "max" }]
+  },
   "cases": [
     { "visible": true, "stdin": "I love programming\n" },
     { "visible": true, "stdin": "The quick brown fox\n" },

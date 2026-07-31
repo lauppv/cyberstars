@@ -1,5 +1,3 @@
-# Ușor · Transpusa unei matrice
-
 Calculează **transpusa** unei matrice N×N (rândurile devin coloane) și afișează rezultatul.
 
 Pentru acest exercițiu, matricea este **hardcodată** direct în cod — nu se citește nimic de la stdin. Folosește:

@@ -28,7 +28,7 @@
       "inject": { "results": { "$list": ["A", "A", "B"] } }
     },
     { "inject": { "results": { "$list": ["Solo"] } } },
-    { "inject": { "results": { "$list": ["X", "Y", "X", "Y", "Z"] } } },
+    { "inject": { "results": { "$list": ["X", "Y", "X", "Y", "Y", "Z"] } } },
     {
       "inject": { "results": { "$list": ["Kai", "Kai", "Kai", "Rex", "Rex", "Uma"] } }
     }

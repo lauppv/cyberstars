@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import i18next from 'i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
+import { forumRoutes } from '../../constants/forumRoutes';
 import type { NotificationDTO, NotificationType } from '../../../shared/notifications';
 import { isAdmin } from '../../../shared/auth';
 
@@ -64,29 +65,28 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
   const { items, unreadCount, loading, hasMore, loadMore, markAllRead, markOneRead } =
     useNotifications();
 
-  const targetFor = (n: NotificationDTO): { path: string; state?: unknown } => {
+  const targetFor = (n: NotificationDTO): string => {
     switch (n.type) {
       case 'FORUM_REPLY':
       case 'FORUM_SOLUTION':
       case 'FORUM_REACTION':
-        return { path: '/forum', state: { openThreadId: n.entityId } };
+        return forumRoutes.thread(n.entityId);
       case 'SUPPORT_TICKET_NEW':
-        return { path: '/admin' };
+        return '/admin';
       case 'SUPPORT_REPLY':
-        return { path: isAdmin(user?.role) ? '/admin' : '/support' };
+        return isAdmin(user?.role) ? '/admin' : '/support';
       case 'SUPPORT_STATUS':
-        return { path: '/support' };
+        return '/support';
       case 'CONNECTION_REQUEST':
       case 'CONNECTION_ACCEPTED':
-        return { path: '/connections' };
+        return '/connections';
     }
   };
 
   const onItemClick = (n: NotificationDTO) => {
     markOneRead(n.id);
-    const { path, state } = targetFor(n);
     onClose();
-    navigate(path, state ? { state } : undefined);
+    navigate(targetFor(n));
   };
 
   return (

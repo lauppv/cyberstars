@@ -1,5 +1,3 @@
-# Medium · Bitwise Power of Two
-
 Read an integer **N**, then read **N** positive integers. For each number, print `"YES"` if it is a **power of 2**, or `"NO"` otherwise. You must use **bitwise operators** to check — no loops counting divisions.
 
 A number `x` is a power of 2 if and only if `x > 0` and `(x & (x - 1)) == 0`.

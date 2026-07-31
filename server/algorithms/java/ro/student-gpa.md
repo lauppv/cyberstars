@@ -1,5 +1,3 @@
-# Ușor · Media studentului
-
 Creează o clasă **Student** care stochează numele unui student și un tablou de note. Clasa trebuie să aibă o metodă `getMedie()` care calculează media tuturor notelor.
 
 Citește numele studentului și notele de la stdin, creează un obiect `Student` și afișează media rotunjită la **2 zecimale**.

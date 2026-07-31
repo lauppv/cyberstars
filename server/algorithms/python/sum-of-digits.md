@@ -1,5 +1,3 @@
-# Sum of Digits
-
 Given an integer, print the **sum of its digits**.
 
 ### Input

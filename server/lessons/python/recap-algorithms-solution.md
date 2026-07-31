@@ -7,7 +7,6 @@ for name in results:
         wins[name] += 1
     else:
         wins[name] = 1
-print(f"Wins: {wins}")
 
 champion = ""
 highest = 0

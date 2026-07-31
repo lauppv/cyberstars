@@ -5,53 +5,6 @@
   padding: 36px 28px 60px;
 }
 
-.almanac-header {
-  margin-bottom: 40px;
-  background: rgba(11, 11, 17, 0.55);
-  backdrop-filter: blur(6px);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  border: 1px solid rgba(46, 46, 62, 0.4);
-}
-
-.almanac-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 2.5px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.almanac-kicker::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.almanac-title {
-  font-size: 56px;
-  font-weight: 900;
-  letter-spacing: -2px;
-  line-height: 1;
-  margin-bottom: 14px;
-  background: linear-gradient(180deg, #fff 0%, #a8b0d4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.almanac-subtitle {
-  font-size: 16px;
-  color: var(--text2);
-  line-height: 1.6;
-  max-width: 640px;
-}
-
 /* ===== Filter chips ===== */
 .almanac-filters-bar {
   display: flex;
@@ -160,7 +113,7 @@
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: rgba(22, 22, 29, 0.6);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   margin-bottom: 48px;
   min-height: 380px;
@@ -367,7 +320,7 @@
 }
 
 .almanac-article {
-  background: rgba(22, 22, 29, 0.72);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -512,7 +465,7 @@
 }
 
 .side-card {
-  background: rgba(22, 22, 29, 0.72);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -557,7 +510,7 @@
 /* Fun fact card */
 .factcard {
   position: relative;
-  padding: 22px 44px;
+  padding: 22px;
   background: linear-gradient(135deg, rgba(108, 92, 231, 0.15) 0%, rgba(255, 107, 107, 0.08) 100%);
   border: 1px solid rgba(108, 92, 231, 0.25);
 }
@@ -598,10 +551,26 @@
   z-index: 1;
 }
 
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 3;
+}
+
+.card-head h3 {
+  margin-bottom: 0;
+}
+
+.card-arrows {
+  display: flex;
+  gap: 6px;
+}
+
 .card-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -616,21 +585,12 @@
   font-size: 16px;
   line-height: 1;
   transition: all 0.15s;
-  z-index: 3;
 }
 
 .card-arrow:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
-}
-
-.card-arrow-left {
-  left: 9px;
-}
-
-.card-arrow-right {
-  right: 9px;
 }
 
 .card-counter {
@@ -738,7 +698,7 @@
 
 /* Quote of day */
 .quote-card {
-  padding: 24px 44px;
+  padding: 24px;
   background: linear-gradient(135deg, rgba(0, 214, 143, 0.08) 0%, rgba(108, 92, 231, 0.06) 100%);
   border: 1px solid rgba(0, 214, 143, 0.18);
 }
@@ -772,83 +732,6 @@
 .quote-author strong {
   color: var(--text);
   font-weight: 600;
-}
-
-/* ===== Big timeline section ===== */
-.bigtl-section {
-  margin-bottom: 56px;
-}
-
-.bigtl {
-  position: relative;
-  padding-left: 34px;
-  border-left: 2px dashed var(--border);
-  margin-top: 24px;
-}
-
-.bigtl-item {
-  position: relative;
-  padding-bottom: 28px;
-}
-
-.bigtl-item:last-child {
-  padding-bottom: 0;
-}
-
-.bigtl-dot {
-  position: absolute;
-  left: -44px;
-  top: 2px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  box-shadow:
-    0 0 0 4px var(--bg),
-    0 0 16px var(--accent-glow);
-}
-
-.bigtl-year {
-  font-family: var(--mono);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.8px;
-  margin-bottom: 6px;
-}
-
-.bigtl-title {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  margin-bottom: 6px;
-  line-height: 1.25;
-}
-
-.bigtl-text {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.65;
-  max-width: 680px;
-  text-wrap: pretty;
-}
-
-.bigtl-tag {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--text3);
-  letter-spacing: 1px;
-  margin-top: 8px;
-  padding: 3px 8px;
-  background: var(--bg3);
-  border-radius: 6px;
 }
 
 /* ===== Story modal ===== */
@@ -1130,10 +1013,6 @@
 
   .almanac-articles {
     grid-template-columns: 1fr;
-  }
-
-  .almanac-title {
-    font-size: 42px;
   }
 
   .story-overlay {

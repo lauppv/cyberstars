@@ -1,5 +1,3 @@
-# Ușor · Inversează un tablou
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Afișează-le în ordine **inversă**, separate prin spații.
 
 ### Date de intrare

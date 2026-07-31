@@ -1,5 +1,3 @@
-# Ușor · Doi PID-uri
-
 Un părinte și un copil vor să confirme legătura dintre ei: fiecare afișează PID-ul celuilalt. Copilul află PID-ul părintelui folosind **getppid()**, iar părintele primește PID-ul copilului direct din valoarea returnată de **fork()**.
 
 Fork returnează:

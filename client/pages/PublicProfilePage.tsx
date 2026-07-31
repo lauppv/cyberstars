@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
@@ -119,7 +119,8 @@ export function PublicProfilePage() {
   const { t, i18n } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
   const { openWith } = useMessages();
-  const canAccess = canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
+  // Logged-in only (no guests): profiles ride the leaderboard gate.
+  const canAccess = !!user && canAccessFeature('leaderboard', user.role, import.meta.env.PROD);
   // Messaging needs an identity: without the user check a logged-out visitor
   // would see a Send Message button whose request can only 401.
   const canMessage = !!user && canAccessFeature('messaging', user.role, import.meta.env.PROD);
@@ -251,7 +252,7 @@ export function PublicProfilePage() {
             {t(error === 'notFound' ? 'publicProfile.notFound' : 'publicProfile.error')}
           </div>
         ) : (
-          <div className="w-full max-w-[520px] rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] px-6 py-6">
+          <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
             {/* Header */}
             <div className="flex items-center gap-5 pb-5 border-b border-[var(--accent)]/20">
               <Avatar url={profile.avatarUrl} />

@@ -1,5 +1,3 @@
-# Hard · Linked List
-
 Implement a **singly linked list** in C. Read commands from stdin and execute them:
 
 - `insert x` — insert integer `x` at the **end** of the list

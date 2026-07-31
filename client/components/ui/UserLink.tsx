@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { canAccessFeature } from '../../../shared/features';
 
-// Wraps a user's name (or avatar) in a link to their public profile. Public
-// profiles ride the `leaderboard` preview gate, so while that gate is closed
-// the children render as plain text instead of a dead link. stopPropagation
-// lets the link live inside clickable rows (thread lists, inbox rows) without
-// triggering the row's own navigation.
+// Wraps a user's name (or avatar) in a link to their public profile. Profiles
+// are logged-in only (they ride the `leaderboard` gate), so for guests — or
+// while the gate is closed — the children render as plain text instead of a
+// dead link. stopPropagation lets the link live inside clickable rows (thread
+// lists, inbox rows) without triggering the row's own navigation.
 export function UserLink({
   userId,
   className,
@@ -18,7 +18,7 @@ export function UserLink({
   children: ReactNode;
 }) {
   const { user } = useAuth();
-  if (!canAccessFeature('leaderboard', user?.role, import.meta.env.PROD)) {
+  if (!user || !canAccessFeature('leaderboard', user.role, import.meta.env.PROD)) {
     return <span className={className}>{children}</span>;
   }
   return (

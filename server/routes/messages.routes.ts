@@ -65,6 +65,12 @@ router.post(
   messagesController.sendMessage,
 );
 router.post('/conversations/:id/read', validateBody(markReadSchema), messagesController.markRead);
+router.patch(
+  '/:messageId',
+  sendLimiter,
+  validateBody(sendMessageSchema),
+  messagesController.editMessage,
+);
 router.delete('/:messageId', messagesController.deleteMessage);
 router.post(
   '/:messageId/reactions',

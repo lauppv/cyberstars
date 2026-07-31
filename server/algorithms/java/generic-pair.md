@@ -1,5 +1,3 @@
-# Hard · Generic Pair
-
 Create a generic **Pair<A, B>** class that holds two values of potentially different types. The class should have `getFirst()`, `getSecond()`, and a `swap()` method that returns a new `Pair<B, A>` with the values swapped.
 
 Read two values from stdin (a string and an integer), create a Pair, swap it, and print both the original and swapped pairs.

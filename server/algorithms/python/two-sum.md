@@ -1,5 +1,3 @@
-# Two Sum
-
 Given a list of integers and a target value, find the **two indices** whose values add up to the target.
 
 You may assume there is **exactly one** valid pair, and you cannot use the same element twice. Print the indices in ascending order.

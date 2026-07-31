@@ -1,5 +1,3 @@
-# Cuvinte cu două vocale
-
 Având o propoziție, afișează fiecare cuvânt care conține **exact 2 vocale**.
 
 ### Date de intrare

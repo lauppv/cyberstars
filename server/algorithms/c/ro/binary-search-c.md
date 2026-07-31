@@ -1,5 +1,3 @@
-# Mediu · Căutare binară
-
 Citește un tablou sortat de **N** numere întregi și o valoare căutată. Găsește valoarea folosind **căutarea binară** și afișează indicele ei (începând de la 0), sau **-1** dacă valoarea nu este găsită.
 
 Căutarea binară funcționează înjumătățind în mod repetat intervalul de căutare. Compară valoarea căutată cu elementul din mijloc: dacă sunt egale, ai găsit-o; dacă este mai mică, caută în jumătatea stângă; dacă este mai mare, caută în jumătatea dreaptă. Se execută în timp O(log N).

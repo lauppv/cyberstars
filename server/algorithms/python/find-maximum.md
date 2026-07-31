@@ -1,5 +1,3 @@
-# Find Maximum
-
 Given a list of numbers, find and print the **largest** one.
 
 ### Input

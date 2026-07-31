@@ -1,5 +1,3 @@
-# Mediu · Mai mulți copii
-
 Un centru de calcul primește un ordin de execuție care specifică câte procese copii să lanseze. Fiecare copil raportează că e gata, iar părintele confirmă la final că toți au terminat.
 
 Fiecare iterație a buclei apelează **fork()**. În copil, tipărim mesajul și **ieșim imediat** — dacă nu ieșim, copilul continuă bucla și creează la rândul lui alte forkuri, exponențial.

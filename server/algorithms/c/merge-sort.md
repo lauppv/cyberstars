@@ -1,5 +1,3 @@
-# Hard · Merge Sort
-
 Read an integer **N**, then read **N** integers. Sort them using the **merge sort** algorithm and print the sorted result.
 
 Merge sort is a divide-and-conquer algorithm: split the array in half, recursively sort each half, then merge the two sorted halves together. It runs in O(N log N) time.

@@ -86,6 +86,37 @@ describe('Messaging flow', () => {
     expect(removed.body.message.reactions).toHaveLength(0);
   });
 
+  it('sender can edit their own message; editedAt is stamped, others cannot', async () => {
+    const { a, b, conversationId } = await pair();
+    const sent = await a
+      .post(`/api/messages/conversations/${conversationId}`)
+      .send({ content: 'typpo' })
+      .expect(201);
+    const messageId = sent.body.message.id;
+    expect(sent.body.message.editedAt).toBeNull();
+
+    const edited = await a
+      .patch(`/api/messages/${messageId}`)
+      .send({ content: 'typo fixed' })
+      .expect(200);
+    expect(edited.body.message.content).toBe('typo fixed');
+    expect(edited.body.message.editedAt).not.toBeNull();
+
+    // The recipient cannot edit someone else's message (404 hides it).
+    await b.patch(`/api/messages/${messageId}`).send({ content: 'hijack' }).expect(404);
+  });
+
+  it('cannot edit a deleted message', async () => {
+    const { a, conversationId } = await pair();
+    const sent = await a
+      .post(`/api/messages/conversations/${conversationId}`)
+      .send({ content: 'bye' })
+      .expect(201);
+    const messageId = sent.body.message.id;
+    await a.delete(`/api/messages/${messageId}`).expect(200);
+    await a.patch(`/api/messages/${messageId}`).send({ content: 'back' }).expect(404);
+  });
+
   it('sender can soft-delete their own message; reacting to it then fails', async () => {
     const { a, b, conversationId } = await pair();
     const sent = await a

@@ -1,5 +1,3 @@
-# Mediu · Tablou dinamic
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Stochează-le într-un tablou **alocat dinamic** (folosind `malloc`). Afișează **suma** și **media** (cu 2 zecimale) numerelor. Nu uita să eliberezi memoria cu `free`.
 
 ### Date de intrare

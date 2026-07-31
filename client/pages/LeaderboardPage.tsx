@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -79,7 +79,9 @@ export function LeaderboardPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading: authLoading } = useAuth();
-  const canAccess = canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
+  // Logged-in only: the page shows the platform-wide account total, so guests
+  // are kept out even though the feature is launched.
+  const canAccess = isLoggedIn && canAccessFeature('leaderboard', user?.role, import.meta.env.PROD);
 
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [total, setTotal] = useState(0);
@@ -101,9 +103,10 @@ export function LeaderboardPage() {
       setLoading(true);
       setError(false);
       try {
+        // canAccess implies the visitor is logged in, so always fetch my rank.
         const [page, myRank] = await Promise.all([
           leaderboardService.getLeaderboard(PAGE_SIZE, 0),
-          isLoggedIn ? leaderboardService.getMyRank() : Promise.resolve(null),
+          leaderboardService.getMyRank(),
         ]);
         if (cancelled) return;
         setEntries(page.entries);
@@ -119,7 +122,7 @@ export function LeaderboardPage() {
     return () => {
       cancelled = true;
     };
-  }, [authLoading, canAccess, isLoggedIn]);
+  }, [authLoading, canAccess]);
 
   const loadMore = useCallback(() => {
     setLoadingMore(true);
@@ -155,7 +158,7 @@ export function LeaderboardPage() {
           <div className="text-center text-[var(--text3)] py-16">{t('leaderboard.empty')}</div>
         ) : (
           <>
-            <div className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden">
+            <div className="rounded-[var(--radius)] panel overflow-hidden">
               {entries.map((e) => (
                 <Row key={e.userId} entry={e} isMe={e.userId === me?.userId} t={t} />
               ))}
@@ -179,7 +182,7 @@ export function LeaderboardPage() {
                 <div className="text-[11px] uppercase tracking-wider text-[var(--text3)] mb-1.5 px-1">
                   {t('leaderboard.yourRank')}
                 </div>
-                <div className="rounded-[var(--radius)] border border-[var(--accent)]/40 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] overflow-hidden">
+                <div className="rounded-[var(--radius)] panel border-[var(--accent)]/40 overflow-hidden">
                   <Row entry={me} isMe t={t} />
                 </div>
               </div>

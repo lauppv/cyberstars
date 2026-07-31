@@ -1,5 +1,3 @@
-# Medium · Uppercase Through a Pipe
-
 A parent reads a word from the keyboard and sends it to the child through a pipe. The child receives the word, converts it to uppercase and prints it.
 
 A **pipe** is a one-way channel between processes: one writes to one end (`p[1]`), the other reads from the opposite end (`p[0]`). We close the unused ends to avoid trouble — if the parent doesn't close `p[0]`, the child never sees end-of-stream when it reads.

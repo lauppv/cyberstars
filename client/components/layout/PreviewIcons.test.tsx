@@ -9,7 +9,7 @@ const h = vi.hoisted(() => ({
   notifications: { enabled: true, unreadCount: 0 },
 }));
 
-vi.mock('react-router-dom', () => ({ useNavigate: () => h.navigate }));
+vi.mock('react-router', () => ({ useNavigate: () => h.navigate }));
 vi.mock('../../../shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));

@@ -1,5 +1,3 @@
-# Medium · Stack Implementation
-
 Implement a **Stack** class using an `ArrayList` as the internal storage. The stack should support `push`, `pop`, and `peek` operations.
 
 Process commands from stdin and print results for `pop` and `peek`. If `pop` or `peek` is called on an empty stack, print `Empty`.

@@ -1,5 +1,3 @@
-# Easy · Bank Account
-
 Create a **BankAccount** class with a `balance` field and methods `deposit(amount)` and `withdraw(amount)`. Withdrawals should be rejected if the amount exceeds the current balance (print `Insufficient funds`).
 
 Read the initial balance on the first line, then process operations from stdin. Print the final balance at the end.

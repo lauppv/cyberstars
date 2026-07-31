@@ -1,5 +1,3 @@
-# Mediu · Putere a lui doi pe biți
-
 Citește un întreg **N**, apoi citește **N** numere întregi pozitive. Pentru fiecare număr, afișează `"DA"` dacă este o **putere a lui 2**, sau `"NU"` în caz contrar. Trebuie să folosești **operatori pe biți** pentru verificare — fără bucle care numără împărțiri.
 
 Un număr `x` este o putere a lui 2 dacă și numai dacă `x > 0` și `(x & (x - 1)) == 0`.

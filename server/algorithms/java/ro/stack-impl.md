@@ -1,5 +1,3 @@
-# Mediu · Implementarea unei stive
-
 Implementează o clasă **Stiva** folosind un `ArrayList` ca stocare internă. Stiva trebuie să suporte operațiile `pune`, `scoate` și `varf`.
 
 Procesează comenzile de la stdin și afișează rezultatele pentru `scoate` și `varf`. Dacă `scoate` sau `varf` este apelat pe o stivă goală, afișează `Goala`.

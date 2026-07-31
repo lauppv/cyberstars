@@ -1,5 +1,3 @@
-# Mediu · Sortare prin inserție
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Sortează-le folosind algoritmul de **sortare prin inserție** și afișează rezultatul sortat.
 
 Sortarea prin inserție funcționează construind o porțiune sortată a tabloului câte un element pe rând. Pentru fiecare element nou, deplasează elementele mai mari spre dreapta și inserează-l în poziția sa corectă. Se execută în timp O(N²), dar este eficientă pentru tablouri mici sau aproape sortate.

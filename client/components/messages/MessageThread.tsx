@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import { useMessages } from '../../context/MessagesContext';
 import { useUserSocketFrames } from '../../context/UserSocketContext';
 import { MessageComposer } from './MessageComposer';
-import { EmojiPicker } from '../ui/EmojiPicker';
+import { MessageActions } from './MessageActions';
 import { UserLink } from '../ui/UserLink';
 import * as messagesService from '../../services/messagesService';
 import type { ConversationDTO, MessageDTO, MessageReactionDTO } from '../../../shared/messages';
@@ -12,6 +12,16 @@ import type { UserSocketFrame } from '../../../shared/notifications';
 
 function timeLabel(iso: string): string {
   return new Date(iso).toLocaleTimeString(i18next.language, {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+// Day + time for the message's timestamp line (e.g. "22 iul. 14:32").
+function dateTimeLabel(iso: string): string {
+  return new Date(iso).toLocaleString(i18next.language, {
+    day: 'numeric',
+    month: 'short',
     hour: '2-digit',
     minute: '2-digit',
   });
@@ -46,6 +56,8 @@ export function MessageThread({
   const [messages, setMessages] = useState<MessageDTO[]>([]);
   const [hasMore, setHasMore] = useState(false);
   const [loading, setLoading] = useState(true);
+  // The message being edited inline, plus its working draft. null = not editing.
+  const [editing, setEditing] = useState<{ id: number; draft: string } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   // Scroll height before a load-older prepend, so the effect below can restore
   // the reading position instead of jumping to the bottom.
@@ -114,7 +126,10 @@ export function MessageThread({
         const msg = frame.payload;
         setMessages((prev) => (prev.some((m) => m.id === msg.id) ? prev : [...prev, msg]));
         if (msg.senderId !== currentUserId) markReadUpTo(msg.id);
-      } else if (frame.type === 'deleted' && frame.payload.conversationId === conversationId) {
+      } else if (
+        (frame.type === 'edited' || frame.type === 'deleted') &&
+        frame.payload.conversationId === conversationId
+      ) {
         const msg = frame.payload;
         setMessages((prev) => prev.map((m) => (m.id === msg.id ? msg : m)));
       } else if (frame.type === 'reaction' && frame.payload.conversationId === conversationId) {
@@ -173,6 +188,26 @@ export function MessageThread({
     },
     [conversationId],
   );
+
+  const saveEdit = useCallback(() => {
+    if (!editing) return;
+    const { id, draft } = editing;
+    const content = draft.trim();
+    const current = messages.find((m) => m.id === id);
+    // Nothing to save on an empty draft; an unchanged draft just closes the
+    // editor without a needless request (and without stamping editedAt).
+    if (!content || content === current?.content) {
+      setEditing(null);
+      return;
+    }
+    messagesService
+      .editMessage(id, content)
+      .then(({ message }) => {
+        setMessages((prev) => prev.map((m) => (m.id === id ? message : m)));
+      })
+      .catch(() => {})
+      .finally(() => setEditing(null));
+  }, [editing, messages]);
 
   const remove = useCallback((id: number) => {
     messagesService
@@ -240,15 +275,65 @@ export function MessageThread({
                   key={m.id}
                   className={`group max-w-[75%] flex flex-col ${mine ? 'self-end items-end' : 'self-start items-start'}`}
                 >
-                  <div
-                    className={`px-3 py-2 rounded-[var(--radius)] text-[13px] leading-snug whitespace-pre-wrap break-words ${
-                      mine
-                        ? 'bg-[var(--accent)]/25 border border-[var(--accent)]/40 text-[var(--text)]'
-                        : 'bg-[rgba(22,22,29,0.4)] border border-[var(--accent)]/20 text-[var(--text)]'
-                    } ${m.deleted ? 'italic text-[var(--text3)]' : ''}`}
-                  >
-                    {m.deleted ? t('messages.deletedMessage') : m.content}
-                  </div>
+                  {editing?.id === m.id ? (
+                    <div className="flex flex-col gap-1 items-end w-full">
+                      <textarea
+                        autoFocus
+                        value={editing.draft}
+                        onChange={(e) => setEditing({ id: m.id, draft: e.target.value })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            saveEdit();
+                          } else if (e.key === 'Escape') {
+                            e.preventDefault();
+                            setEditing(null);
+                          }
+                        }}
+                        rows={1}
+                        maxLength={2000}
+                        className="w-full resize-none max-h-32 min-h-[38px] px-3 py-2 rounded-[var(--radius)] bg-[rgba(22,22,29,0.4)] border border-[var(--accent)]/40 text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
+                      />
+                      <div className="flex items-center gap-2 text-[10px] text-[var(--text3)]">
+                        <span>{t('messages.editHint')}</span>
+                        <button
+                          onClick={() => setEditing(null)}
+                          className="hover:text-[var(--text)] bg-transparent border-none cursor-pointer"
+                        >
+                          {t('messages.cancel')}
+                        </button>
+                        <button
+                          onClick={saveEdit}
+                          className="text-[var(--accent)] hover:brightness-125 bg-transparent border-none cursor-pointer font-semibold"
+                        >
+                          {t('messages.save')}
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      className={`flex items-center gap-1 max-w-full ${mine ? 'flex-row-reverse' : 'flex-row'}`}
+                    >
+                      <div
+                        className={`px-3 py-2 rounded-[var(--radius)] text-[13px] leading-snug whitespace-pre-wrap break-words min-w-0 ${
+                          mine
+                            ? 'bg-[var(--accent)]/25 border border-[var(--accent)]/40 text-[var(--text)]'
+                            : 'bg-[rgba(22,22,29,0.4)] border border-[var(--accent)]/20 text-[var(--text)]'
+                        } ${m.deleted ? 'italic text-[var(--text3)]' : ''}`}
+                      >
+                        {m.deleted ? t('messages.deletedMessage') : m.content}
+                      </div>
+                      {!m.deleted && (
+                        <MessageActions
+                          align={mine ? 'left' : 'right'}
+                          canModify={mine}
+                          onReact={(emoji) => react(m.id, emoji)}
+                          onEdit={() => setEditing({ id: m.id, draft: m.content })}
+                          onDelete={() => remove(m.id)}
+                        />
+                      )}
+                    </div>
+                  )}
                   {!m.deleted && m.reactions.length > 0 && (
                     <div className={`flex flex-wrap gap-1 mt-1 ${mine ? 'justify-end' : ''}`}>
                       {groupReactions(m.reactions, currentUserId).map((g) => (
@@ -272,32 +357,28 @@ export function MessageThread({
                       ))}
                     </div>
                   )}
-                  <div className="flex items-center gap-2 mt-0.5 px-1">
-                    <span className="text-[10px] text-[var(--text3)] tabular-nums">
-                      {timeLabel(m.createdAt)}
-                    </span>
-                    {!m.deleted && (
-                      <EmojiPicker
-                        onSelect={(emoji) => react(m.id, emoji)}
-                        label={t('messages.addReaction')}
-                        align={mine ? 'right' : 'left'}
-                        triggerClassName="w-5 h-5 flex items-center justify-center text-[11px] leading-none p-0 rounded-full border border-[var(--accent)]/30 bg-transparent text-[var(--text3)] opacity-0 group-hover:opacity-100 hover:bg-[var(--accent)]/20 transition cursor-pointer"
-                      />
-                    )}
-                    {mine && !m.deleted && (
-                      <>
-                        <span className="text-[10px] text-[var(--text3)]">
-                          {m.readAt ? t('messages.read') : t('messages.sent')}
-                        </span>
-                        <button
-                          onClick={() => remove(m.id)}
-                          className="text-[10px] text-[var(--text3)] opacity-0 group-hover:opacity-100 hover:text-[var(--error)] transition bg-transparent border-none cursor-pointer"
+                  {editing?.id !== m.id && (
+                    <div
+                      className={`flex items-center gap-2 mt-0.5 px-1 ${mine ? 'justify-end' : ''}`}
+                    >
+                      <span className="text-[10px] text-[var(--text3)] tabular-nums">
+                        {dateTimeLabel(m.createdAt)}
+                      </span>
+                      {!m.deleted && m.editedAt && (
+                        <span
+                          className="text-[10px] text-[var(--text3)] italic tabular-nums"
+                          title={t('messages.edited', { time: timeLabel(m.editedAt) })}
                         >
-                          {t('messages.delete')}
-                        </button>
-                      </>
-                    )}
-                  </div>
+                          {t('messages.edited', { time: timeLabel(m.editedAt) })}
+                        </span>
+                      )}
+                      {mine && !m.deleted && (
+                        <span className="text-[10px] text-[var(--text3)]">
+                          {m.readAt ? t('messages.seen') : t('messages.sent')}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

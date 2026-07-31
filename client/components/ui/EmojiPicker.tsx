@@ -1,42 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-// A small curated palette — no external dependency. Enough for a status line
-// without shipping a full emoji database to a memory-constrained VPS.
-const EMOJIS = [
-  '😀',
-  '😎',
-  '🤓',
-  '🤩',
-  '🥳',
-  '😴',
-  '🤔',
-  '😤',
-  '🚀',
-  '🌟',
-  '⭐',
-  '🔥',
-  '💡',
-  '⚡',
-  '🌌',
-  '🪐',
-  '💻',
-  '⌨️',
-  '🐛',
-  '🧠',
-  '📚',
-  '✅',
-  '🎯',
-  '🏆',
-  '🐍',
-  '☕',
-  '⚙️',
-  '🐧',
-  '👾',
-  '💪',
-  '🎉',
-  '❤️',
-];
+import { EMOJIS } from './emojiPalette';
 
 export function EmojiPicker({
   onSelect,

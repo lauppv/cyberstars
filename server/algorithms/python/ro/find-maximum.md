@@ -1,5 +1,3 @@
-# Găsește maximul
-
 Având o listă de numere, găsește și afișează **cel mai mare** dintre ele.
 
 ### Date de intrare

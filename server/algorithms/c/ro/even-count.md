@@ -1,5 +1,3 @@
-# Ușor · Numără numerele pare
-
 Citește un întreg **N**, apoi citește **N** numere întregi. Afișează câte dintre ele sunt **pare**.
 
 ### Date de intrare

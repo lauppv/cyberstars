@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -281,7 +281,7 @@ export function SettingsPage() {
           </div>
 
           {/* Preferences */}
-          <section className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] px-6 py-5">
+          <section className="rounded-[var(--radius)] panel px-6 py-5">
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
               {t('settings.preferences')}
             </h2>
@@ -308,7 +308,7 @@ export function SettingsPage() {
           </section>
 
           {/* Privacy */}
-          <section className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] px-6 py-5">
+          <section className="rounded-[var(--radius)] panel px-6 py-5">
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-1">
               {t('settings.privacy')}
             </h2>
@@ -353,7 +353,7 @@ export function SettingsPage() {
           </section>
 
           {/* Account */}
-          <section className="rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] px-6 py-5">
+          <section className="rounded-[var(--radius)] panel px-6 py-5">
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
               {t('settings.account')}
             </h2>

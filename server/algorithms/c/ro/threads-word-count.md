@@ -1,5 +1,3 @@
-# Mediu · Numărare cuvinte cu mutex
-
 Două fire de execuție primesc câte o propoziție și numără cuvintele din ea. Firele adaugă rezultatul lor la un contor global partajat, protejat de un **mutex** — altfel, două scrieri concurente pot pierde incrementări.
 
 Un cuvânt este orice secvență maximală de caractere care nu sunt spații. Fiecare fir numără local întâi, apoi ia lock-ul o singură dată la final ca să adauge contribuția lui la total — nu ținem mutexul mult timp.

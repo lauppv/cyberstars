@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { useAuth } from '../context/AuthContext';
@@ -212,7 +212,7 @@ export function HomePage() {
             {/* ── Continue Where You Left Off + Activity ── */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               {continueTo && (
-                <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
+                <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
                   <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
                     {t('home.continueWhereLeftOff')}
                   </h3>
@@ -330,7 +330,7 @@ export function HomePage() {
                       return (
                         <div
                           key={i}
-                          className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] animate-pulse h-[168px]"
+                          className="p-5 panel rounded-[var(--radius)] animate-pulse h-[168px]"
                         />
                       );
                     }
@@ -339,7 +339,7 @@ export function HomePage() {
                       <button
                         key={i}
                         onClick={() => setAlmanacStory(a)}
-                        className="text-left p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
+                        className="text-left p-5 panel rounded-[var(--radius)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
                       >
                         <div className="flex items-center gap-1.5 text-[9px] font-semibold tracking-[0.8px] mb-2">
                           <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
@@ -422,22 +422,22 @@ export function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 max-w-4xl mx-auto text-left">
-            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+            <div className="p-5 panel rounded-[var(--radius)]">
               <div className="text-2xl mb-2">📖</div>
               <div className="font-semibold mb-1">{t('home.marketing.readCard')}</div>
               <div className="text-sm text-[var(--text2)]">{t('home.marketing.readCardDesc')}</div>
             </div>
-            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+            <div className="p-5 panel rounded-[var(--radius)]">
               <div className="text-2xl mb-2">⌨️</div>
               <div className="font-semibold mb-1">{t('home.marketing.writeCard')}</div>
               <div className="text-sm text-[var(--text2)]">{t('home.marketing.writeCardDesc')}</div>
             </div>
-            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+            <div className="p-5 panel rounded-[var(--radius)]">
               <div className="text-2xl mb-2">⚡</div>
               <div className="font-semibold mb-1">{t('home.marketing.runCard')}</div>
               <div className="text-sm text-[var(--text2)]">{t('home.marketing.runCardDesc')}</div>
             </div>
-            <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)]">
+            <div className="p-5 panel rounded-[var(--radius)]">
               <div className="text-2xl mb-2">⭐</div>
               <div className="font-semibold mb-1">{t('home.marketing.levelCard')}</div>
               <div className="text-sm text-[var(--text2)]">{t('home.marketing.levelCardDesc')}</div>
@@ -504,7 +504,7 @@ function OfTheDayCard({
   const { t } = useTranslation();
   const meta = courseMeta(courseKey);
   return (
-    <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col flex-1">
+    <div className="p-5 panel rounded-[var(--radius)] flex flex-col flex-1">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">{heading}</h3>
         {completed ? (
@@ -576,7 +576,7 @@ function CourseMilestones({
   const notStarted = courses.filter((c) => !progressMap[c.key]?.completed);
 
   return (
-    <div className="p-5 border border-[var(--accent)]/30 rounded-[var(--radius)] backdrop-blur-[12px] bg-[rgba(22,22,29,0.1)] flex flex-col">
+    <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
       <div className="mb-4">
         <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
           {t('home.courseMilestones')}

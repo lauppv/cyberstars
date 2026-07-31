@@ -1,5 +1,3 @@
-# Easy · Count Characters
-
 Read a string (single word) and a character. Count how many times that character appears in the string and print the count.
 
 ### Input

@@ -1,5 +1,3 @@
-# Mediu · Ping-pong cu semafoare
-
 Două fire trebuie să tipărească **alternat** "Ping" și "Pong" — mai întâi Ping, apoi Pong, apoi din nou Ping etc. Cu doar mutex-uri și `pthread_join` nu poți impune ordinea. Ai nevoie de un mecanism de **semnalare** între fire.
 
 Folosește **două semafoare** ca să dai controlul de la un fir la celălalt. Firul "Ping" începe cu semaforul lui la 1 (are voie să tipărească). Firul "Pong" începe cu semaforul lui la 0 (așteaptă). După ce Ping tipărește, face `sem_post` pe semaforul lui Pong. Pong se deblochează, tipărește, face `sem_post` pe semaforul lui Ping. Se repetă de N ori.

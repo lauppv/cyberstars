@@ -1,5 +1,3 @@
-# Suma cifrelor
-
 Având un număr întreg, afișează **suma cifrelor sale**.
 
 ### Date de intrare

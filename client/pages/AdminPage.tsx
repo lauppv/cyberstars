@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -9,8 +9,7 @@ import * as adminService from '../services/adminService';
 import type { AdminStatsDTO } from '../../shared/admin';
 import { isAdmin as isAdminRole } from '../../shared/auth';
 
-const CARD_CLS =
-  'p-5 rounded-[var(--radius)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px]';
+const CARD_CLS = 'p-5 rounded-[var(--radius)] panel';
 
 function Stat({ label, value }: { label: string; value: number | string }) {
   return (

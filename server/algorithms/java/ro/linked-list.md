@@ -1,5 +1,3 @@
-# Dificil · Listă înlănțuită
-
 Implementează o **listă simplu înlănțuită** de la zero. Creează o clasă `Nod` cu câmpurile `valoare` și `urmator`, și o clasă `ListaInlantuita` cu operațiile `adauga`, `elimina` și `afiseaza`.
 
 Procesează comenzile de la stdin.

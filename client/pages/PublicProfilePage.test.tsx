@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import type { PublicProfile } from '../../shared/profile';
 
 const mockNavigate = vi.fn();
 let mockParams: { userId?: string } = { userId: '7' };
-vi.mock('react-router-dom', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('react-router-dom')>();
+vi.mock('react-router', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('react-router')>();
   return { ...actual, useNavigate: () => mockNavigate, useParams: () => mockParams };
 });
 
@@ -100,7 +100,11 @@ function renderPage() {
 beforeEach(() => {
   vi.clearAllMocks();
   mockParams = { userId: '7' };
-  mockUseAuth.mockReturnValue({ user: null, isLoading: false } as ReturnType<typeof useAuth>);
+  // Profiles are logged-in only, so the default visitor is a signed-in USER.
+  mockUseAuth.mockReturnValue({
+    user: { id: 1, role: 'USER' },
+    isLoading: false,
+  } as unknown as ReturnType<typeof useAuth>);
   mockGetPublicProfile.mockResolvedValue(fullProfile);
 });
 
@@ -178,10 +182,11 @@ describe('PublicProfilePage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/settings');
   });
 
-  it('hides the Send message button for logged-out visitors', async () => {
+  it('redirects a guest away without fetching the profile', async () => {
+    mockUseAuth.mockReturnValue({ user: null, isLoading: false } as ReturnType<typeof useAuth>);
     renderPage();
-    await screen.findByText('Nova');
-    expect(screen.queryByText('Send message')).toBeNull();
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
+    expect(mockGetPublicProfile).not.toHaveBeenCalled();
   });
 
   it('opens a conversation from the Send message button', async () => {

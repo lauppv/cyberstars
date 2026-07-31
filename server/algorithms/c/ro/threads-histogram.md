@@ -1,5 +1,3 @@
-# Mediu · Histogramă paralelă
-
 Două fire de execuție numără aparițiile literelor lowercase într-un șir, partajând un array de 26 de contoare (histograma). Fiecare incrementare din histogramă e protejată de un **mutex** pentru că cele două fire pot atinge același contor în același moment.
 
 Firul t1 procesează prima jumătate a șirului, t2 procesează a doua. Firul principal așteaptă amândouă terminările și afișează literele care au apărut cel puțin o dată, în ordine alfabetică.

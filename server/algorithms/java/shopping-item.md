@@ -1,5 +1,3 @@
-# Easy · Shopping Item
-
 Create an **Item** class with three fields: `name` (String), `price` (double), and `quantity` (int). Add a `getTotal()` method that returns `price * quantity`.
 
 Read N items from stdin. For each item, create an `Item` object. At the end, print the grand total cost of all items, formatted to two decimal places.

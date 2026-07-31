@@ -1,5 +1,3 @@
-# Dificil · Pereche generică
-
 Creează o clasă generică **Pereche<A, B>** care conține două valori de tipuri potențial diferite. Clasa trebuie să aibă metodele `getPrim()`, `getSecund()` și o metodă `interschimba()` care returnează un nou `Pereche<B, A>` cu valorile interschimbate.
 
 Citește două valori de la stdin (un șir și un număr întreg), creează un Pereche, interschimbă-l și afișează atât perechea originală, cât și cea interschimbată.

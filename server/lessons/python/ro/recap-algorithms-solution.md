@@ -7,7 +7,6 @@ for nume in rezultate:
         victorii[nume] += 1
     else:
         victorii[nume] = 1
-print(f"Victorii: {victorii}")
 
 campion = ""
 maxim = 0

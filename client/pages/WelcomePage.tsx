@@ -1,5 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import './WelcomePage.css';
 
@@ -116,7 +116,17 @@ export function WelcomePage() {
 
   useEffect(() => {
     const positionNodes = () => {
-      const sectionIds = ['s-boot', 's-langs', 's-almanac', 's-forum', 's-laniakea', 's-cta'];
+      const sectionIds = [
+        's-boot',
+        's-langs',
+        's-almanac',
+        's-forum',
+        's-messaging',
+        's-connections',
+        's-leaderboard',
+        's-laniakea',
+        's-cta',
+      ];
       nodesRef.current.forEach((n, i) => {
         if (!n) return;
         const target = document.getElementById(sectionIds[i]);
@@ -286,8 +296,7 @@ export function WelcomePage() {
             name="C"
             tag={t('welcome.langs.cards.c.tag')}
             desc={t('welcome.langs.cards.c.desc')}
-            lessons={48}
-            hours="22h"
+            lessons={47}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="4" from="#7AB6FF" to="#FF9A6E" />
@@ -299,8 +308,7 @@ export function WelcomePage() {
             name="Java"
             tag={t('welcome.langs.cards.java.tag')}
             desc={t('welcome.langs.cards.java.desc')}
-            lessons={56}
-            hours="28h"
+            lessons={49}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="6" from="#FF9A6E" to="#FFD24A" />
@@ -312,8 +320,7 @@ export function WelcomePage() {
             name="Python"
             tag={t('welcome.langs.cards.python.tag')}
             desc={t('welcome.langs.cards.python.desc')}
-            lessons={62}
-            hours="26h"
+            lessons={60}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
           <LangConnect delay="8" from="#FFD24A" to="#7CEEAE" />
@@ -325,8 +332,7 @@ export function WelcomePage() {
             name="Bash"
             tag={t('welcome.langs.cards.bash.tag')}
             desc={t('welcome.langs.cards.bash.desc')}
-            lessons={34}
-            hours="14h"
+            lessons={55}
             lessonsLabel={t('welcome.langs.lessonsLabel')}
           />
         </div>
@@ -347,54 +353,77 @@ export function WelcomePage() {
               {t('welcome.almanac.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">2,418</div>
-                <div className="wc-stat-label">{t('welcome.almanac.stats.entries')}</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">📚</span>
+                <div className="wc-stat-label">{t('welcome.almanac.stats.articles')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">9k+</div>
-                <div className="wc-stat-label">{t('welcome.almanac.stats.examples')}</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🗺️</span>
+                <div className="wc-stat-label">{t('welcome.almanac.stats.topics')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">&lt;1s</div>
-                <div className="wc-stat-label">{t('welcome.almanac.stats.search')}</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">✨</span>
+                <div className="wc-stat-label">{t('welcome.almanac.stats.funFacts')}</div>
               </div>
             </div>
           </div>
           <div className="wc-almanac-mock reveal" data-delay="4">
-            <div className="wc-almanac-tabs">
-              <div className="wc-almanac-tab active">ALL</div>
-              <div className="wc-almanac-tab">C</div>
-              <div className="wc-almanac-tab">JAVA</div>
-              <div className="wc-almanac-tab">PYTHON</div>
-              <div className="wc-almanac-tab">BASH</div>
+            <div className="wc-alm-chips">
+              <span className="wc-alm-chip active">✦ All</span>
+              <span className="wc-alm-chip">📜 History</span>
+              <span className="wc-alm-chip">🐧 Open Source</span>
+              <span className="wc-alm-chip">👑 Legends</span>
+              <span className="wc-alm-chip">🪐 Space</span>
             </div>
-            <div className="wc-almanac-search">
-              / search: <span className="wc-search-text">malloc</span>
-              <span className="wc-blink">▍</span>
-            </div>
-            <div className="wc-almanac-entry">
-              <div className="wc-almanac-entry-title">
-                <span className="wc-kind fn">FN</span> malloc <code>void *malloc(size_t)</code>
+            <div className="wc-alm-card">
+              <div
+                className="wc-alm-art"
+                style={{ background: 'linear-gradient(135deg,#6C5CE7,#3a2f8f)' }}
+              >
+                👑
               </div>
-              <div className="wc-almanac-entry-desc">
-                Allocates uninitialised memory on the heap. Pair with <code>free()</code> or leak.
-              </div>
-            </div>
-            <div className="wc-almanac-entry">
-              <div className="wc-almanac-entry-title">
-                <span className="wc-kind kw">KW</span> yield <code>generator semantics</code>
-              </div>
-              <div className="wc-almanac-entry-desc">
-                Pauses execution, returns a value, resumes on next iteration. Python's lazy hero.
+              <div className="wc-alm-body">
+                <div className="wc-alm-tag">LEGENDS · 1843</div>
+                <div className="wc-alm-title">Ada Lovelace wrote code before computers existed</div>
+                <div className="wc-alm-excerpt">
+                  The first algorithm in history — written a century before the machine to run it.
+                </div>
               </div>
             </div>
-            <div className="wc-almanac-entry">
-              <div className="wc-almanac-entry-title">
-                <span className="wc-kind cmd">CMD</span> grep <code>grep -rni pattern path</code>
+            <div className="wc-alm-card">
+              <div
+                className="wc-alm-art"
+                style={{ background: 'linear-gradient(135deg,#7CEEAE,#2f8f5c)' }}
+              >
+                🐧
               </div>
-              <div className="wc-almanac-entry-desc">
-                Recursive, line-numbered, case-insensitive search. Bash's first-aid kit.
+              <div className="wc-alm-body">
+                <div className="wc-alm-tag">OPEN SOURCE · 1991</div>
+                <div className="wc-alm-title">
+                  How a 21-year-old in Helsinki accidentally changed the world
+                </div>
+                <div className="wc-alm-excerpt">
+                  “Just a hobby, won't be big and professional like gnu.” Today Linux runs the
+                  cloud.
+                </div>
+              </div>
+            </div>
+            <div className="wc-alm-card">
+              <div
+                className="wc-alm-art"
+                style={{ background: 'linear-gradient(135deg,#FF9A6E,#8f452f)' }}
+              >
+                🚀
+              </div>
+              <div className="wc-alm-body">
+                <div className="wc-alm-tag">LEGENDS · 1969</div>
+                <div className="wc-alm-title">
+                  Margaret Hamilton wrote the code that landed Apollo 11
+                </div>
+                <div className="wc-alm-excerpt">
+                  She coined “software engineering” — and her overflow handling saved the moon
+                  landing.
+                </div>
               </div>
             </div>
           </div>
@@ -416,16 +445,16 @@ export function WelcomePage() {
               {t('welcome.forum.subtitle')}
             </p>
             <div className="wc-stats reveal" data-delay="3">
-              <div>
-                <div className="wc-stat-num">8min</div>
-                <div className="wc-stat-label">{t('welcome.forum.stats.avgReply')}</div>
-              </div>
-              <div>
-                <div className="wc-stat-num">14k</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🧵</span>
                 <div className="wc-stat-label">{t('welcome.forum.stats.threads')}</div>
               </div>
-              <div>
-                <div className="wc-stat-num">98%</div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">💬</span>
+                <div className="wc-stat-label">{t('welcome.forum.stats.answers')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">✅</span>
                 <div className="wc-stat-label">{t('welcome.forum.stats.solved')}</div>
               </div>
             </div>
@@ -440,7 +469,7 @@ export function WelcomePage() {
               </div>
               <div className="wc-forum-meta">
                 <div className="wc-forum-name">
-                  maria_r <span className="wc-forum-role">L7</span>
+                  maria_r
                   <span className="wc-forum-time">2m ago</span>
                 </div>
                 <div className="wc-forum-text">
@@ -458,7 +487,7 @@ export function WelcomePage() {
               </div>
               <div className="wc-forum-meta">
                 <div className="wc-forum-name">
-                  sk_mentor <span className="wc-forum-role wc-mentor">MENTOR</span>
+                  sk_dev <span className="wc-forum-role wc-mod">MOD</span>
                   <span className="wc-forum-time">just now</span>
                 </div>
                 <div className="wc-forum-text">
@@ -480,10 +509,267 @@ export function WelcomePage() {
               </div>
               <div className="wc-forum-meta">
                 <div className="wc-forum-name">
-                  alex_l <span className="wc-forum-role">L4</span>
-                  <span className="wc-forum-time">writing…</span>
+                  alex_l
+                  <span className="wc-forum-time">1m ago</span>
                 </div>
-                <div className="wc-forum-text wc-typing">alex_l is typing a reply…</div>
+                <div className="wc-forum-text">Ohh, that was it. Thanks — fixed! 🙏</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MESSAGING */}
+      <section className="wc-section" id="s-messaging">
+        <div className="wc-section-num reveal">{t('welcome.messaging.num')}</div>
+        <div className="wc-split">
+          <div className="wc-dm-mock forum-mock reveal" data-delay="4">
+            <div className="wc-dm-head">
+              <div
+                className="wc-forum-avatar"
+                style={{ background: 'linear-gradient(135deg,#7CEEAE,#3aa76a)', color: '#1a1a1a' }}
+              >
+                RO
+              </div>
+              <div className="wc-dm-head-meta">
+                <div className="wc-dm-head-name">Rodawrath</div>
+              </div>
+            </div>
+            <div className="wc-dm-body">
+              <div className="wc-dm-bubble wc-dm-in">
+                Yo, you around? Stuck on the recursion challenge 😅
+                <span className="wc-dm-time">14:02</span>
+              </div>
+              <div className="wc-dm-bubble wc-dm-out">
+                Yeah! Just cleared that one, took me a while
+                <span className="wc-dm-time">14:03</span>
+              </div>
+              <div className="wc-dm-receipt">{t('welcome.messaging.read')}</div>
+              <div className="wc-dm-bubble wc-dm-in">
+                Nice, drop me your solution when you can
+                <div className="wc-dm-reactions">
+                  <span className="wc-dm-reaction">🙌 1</span>
+                </div>
+                <span className="wc-dm-time">14:03</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="wc-title reveal" data-delay="1">
+              <Trans
+                i18nKey="welcome.messaging.title"
+                components={[<span />, ACCENT, <span />, <br />]}
+              />
+            </h2>
+            <p className="wc-subtitle reveal" data-delay="2">
+              {t('welcome.messaging.subtitle')}
+            </p>
+            <div className="wc-stats reveal" data-delay="3">
+              <div className="wc-stat">
+                <span className="wc-stat-ico">👥</span>
+                <div className="wc-stat-label">{t('welcome.messaging.stats.private')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">⚡</span>
+                <div className="wc-stat-label">{t('welcome.messaging.stats.realtime')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">😀</span>
+                <div className="wc-stat-label">{t('welcome.messaging.stats.reactions')}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONNECTIONS */}
+      <section className="wc-section" id="s-connections">
+        <div className="wc-section-num reveal">{t('welcome.connections.num')}</div>
+        <div className="wc-split wc-reverse">
+          <div>
+            <h2 className="wc-title reveal" data-delay="1">
+              <Trans
+                i18nKey="welcome.connections.title"
+                components={[<span />, ACCENT, <span />, <br />]}
+              />
+            </h2>
+            <p className="wc-subtitle reveal" data-delay="2">
+              {t('welcome.connections.subtitle')}
+            </p>
+            <div className="wc-stats reveal" data-delay="3">
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🤝</span>
+                <div className="wc-stat-label">{t('welcome.connections.stats.requests')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🔗</span>
+                <div className="wc-stat-label">{t('welcome.connections.stats.network')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">👤</span>
+                <div className="wc-stat-label">{t('welcome.connections.stats.profile')}</div>
+              </div>
+            </div>
+          </div>
+          <div className="wc-conn-mock forum-mock reveal" data-delay="4">
+            <div className="wc-conn-card">
+              <div
+                className="wc-forum-avatar"
+                style={{ background: 'linear-gradient(135deg,#7AB6FF,#3a73c7)' }}
+              >
+                YR
+              </div>
+              <div className="wc-conn-meta">
+                <div className="wc-conn-name">YehoslavR</div>
+                <div className="wc-conn-sub">{t('welcome.connections.wantsToConnect')}</div>
+              </div>
+              <div className="wc-conn-actions">
+                <button className="wc-conn-btn wc-conn-accept" type="button">
+                  {t('welcome.connections.accept')}
+                </button>
+                <button className="wc-conn-btn wc-conn-decline" type="button">
+                  {t('welcome.connections.decline')}
+                </button>
+              </div>
+            </div>
+            <div className="wc-conn-card">
+              <div
+                className="wc-forum-avatar"
+                style={{ background: 'linear-gradient(135deg,#FF9A6E,#c66b40)' }}
+              >
+                SI
+              </div>
+              <div className="wc-conn-meta">
+                <div className="wc-conn-name">Simon11</div>
+                <div className="wc-conn-sub">{t('welcome.connections.requestSent')}</div>
+              </div>
+              <div className="wc-conn-actions">
+                <span className="wc-conn-pill">{t('welcome.connections.pending')}</span>
+              </div>
+            </div>
+            <div className="wc-conn-card">
+              <div
+                className="wc-forum-avatar"
+                style={{ background: 'linear-gradient(135deg,#FFD24A,#c79a1a)', color: '#1a1a1a' }}
+              >
+                YY
+              </div>
+              <div className="wc-conn-meta">
+                <div className="wc-conn-name">yyosako</div>
+              </div>
+              <div className="wc-conn-actions">
+                <span className="wc-conn-pill wc-conn-connected">
+                  ✓ {t('welcome.connections.connected')}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LEADERBOARD */}
+      <section className="wc-section" id="s-leaderboard">
+        <div className="wc-section-num reveal">{t('welcome.leaderboard.num')}</div>
+        <div className="wc-split">
+          <div className="wc-lb-mock forum-mock reveal" data-delay="4">
+            <div className="wc-lb-head">
+              <span>#</span>
+              <span>{t('welcome.leaderboard.person')}</span>
+              <span className="wc-lb-xp-col">XP</span>
+            </div>
+            <div className="wc-lb-row">
+              <span className="wc-lb-rank">🥇</span>
+              <div
+                className="wc-forum-avatar wc-lb-av"
+                style={{ background: 'linear-gradient(135deg,#FFD24A,#c79a1a)', color: '#1a1a1a' }}
+              >
+                TO
+              </div>
+              <span className="wc-lb-name">TON618</span>
+              <span className="wc-lb-lvl">⭐ L24</span>
+              <div className="wc-lb-xpcell">
+                <span className="wc-lb-xp">18,420 XP</span>
+                <span className="wc-lb-lessons">
+                  {t('welcome.leaderboard.lessons', { count: 142 })}
+                </span>
+              </div>
+            </div>
+            <div className="wc-lb-row">
+              <span className="wc-lb-rank">🥈</span>
+              <div
+                className="wc-forum-avatar wc-lb-av"
+                style={{ background: 'linear-gradient(135deg,#cbd5e1,#94a3b8)', color: '#1a1a1a' }}
+              >
+                LA
+              </div>
+              <span className="wc-lb-name">LaniakeaPRJ</span>
+              <span className="wc-lb-lvl">⭐ L21</span>
+              <div className="wc-lb-xpcell">
+                <span className="wc-lb-xp">15,905 XP</span>
+                <span className="wc-lb-lessons">
+                  {t('welcome.leaderboard.lessons', { count: 121 })}
+                </span>
+              </div>
+            </div>
+            <div className="wc-lb-row">
+              <span className="wc-lb-rank">🥉</span>
+              <div
+                className="wc-forum-avatar wc-lb-av"
+                style={{ background: 'linear-gradient(135deg,#d08b5b,#a25f31)' }}
+              >
+                MH
+              </div>
+              <span className="wc-lb-name">Marco Hoeger</span>
+              <span className="wc-lb-lvl">⭐ L19</span>
+              <div className="wc-lb-xpcell">
+                <span className="wc-lb-xp">13,240 XP</span>
+                <span className="wc-lb-lessons">
+                  {t('welcome.leaderboard.lessons', { count: 98 })}
+                </span>
+              </div>
+            </div>
+            <div className="wc-lb-row wc-lb-you">
+              <span className="wc-lb-rank">#46</span>
+              <div
+                className="wc-forum-avatar wc-lb-av"
+                style={{ background: 'linear-gradient(135deg,#6C5CE7,#a855f7)' }}
+              >
+                TV
+              </div>
+              <span className="wc-lb-name">
+                Tommy Vercetti <span className="wc-lb-youtag">YOU</span>
+              </span>
+              <span className="wc-lb-lvl">⭐ L12</span>
+              <div className="wc-lb-xpcell">
+                <span className="wc-lb-xp">6,880 XP</span>
+                <span className="wc-lb-lessons">
+                  {t('welcome.leaderboard.lessons', { count: 52 })}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="wc-title reveal" data-delay="1">
+              <Trans
+                i18nKey="welcome.leaderboard.title"
+                components={[<span />, ACCENT, <span />, <br />]}
+              />
+            </h2>
+            <p className="wc-subtitle reveal" data-delay="2">
+              {t('welcome.leaderboard.subtitle')}
+            </p>
+            <div className="wc-stats reveal" data-delay="3">
+              <div className="wc-stat">
+                <span className="wc-stat-ico">⭐</span>
+                <div className="wc-stat-label">{t('welcome.leaderboard.stats.perLesson')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🚀</span>
+                <div className="wc-stat-label">{t('welcome.leaderboard.stats.levels')}</div>
+              </div>
+              <div className="wc-stat">
+                <span className="wc-stat-ico">🌌</span>
+                <div className="wc-stat-label">{t('welcome.leaderboard.stats.climb')}</div>
               </div>
             </div>
           </div>
@@ -692,7 +978,6 @@ function LangCard({
   tag,
   desc,
   lessons,
-  hours,
   lessonsLabel,
 }: {
   delay: string;
@@ -703,7 +988,6 @@ function LangCard({
   tag: string;
   desc: string;
   lessons: number;
-  hours: string;
   lessonsLabel: string;
 }) {
   return (
@@ -720,9 +1004,6 @@ function LangCard({
       <div className="wc-lang-stats">
         <div className="wc-lang-stat">
           <strong>{lessons}</strong> {lessonsLabel}
-        </div>
-        <div className="wc-lang-stat">
-          <strong>{hours}</strong>
         </div>
       </div>
     </div>

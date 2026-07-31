@@ -1,5 +1,3 @@
-# Easy · Counter Class
-
 Create a **Counter** class that keeps track of an integer value. It should support three operations:
 
 - `increment()` — adds 1 to the value

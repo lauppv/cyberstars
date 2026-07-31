@@ -29,6 +29,9 @@ uploads/
 public/lessons/
 public/curriculum.json
 
+# Deploy-time maintenance flag (created/removed by deploy/deploy.sh on the VPS)
+maintenance.on
+
 # Claude Code local state (worktrees, local settings)
 .claude/
 

@@ -1,12 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router';
 import i18next from 'i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { UserLink } from '../components/ui/UserLink';
 import { ForumPostContent } from '../components/forum/ForumPostContent';
 import { CategoryModal } from '../components/forum/CategoryModal';
 import { useAuth } from '../context/AuthContext';
+import { forumRoutes } from '../constants/forumRoutes';
 import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants';
 import * as forumService from '../services/forumService';
 import type {
@@ -57,73 +58,76 @@ function canModerate(actorRole: UserRole, targetRole: UserRole, isOwner: boolean
   return isOwner;
 }
 
-type View = 'index' | 'category' | 'thread';
-
 export function ForumPage() {
   const { isLoggedIn, user } = useAuth();
-  const location = useLocation();
+  const { categorySlug, threadId } = useParams<{ categorySlug?: string; threadId?: string }>();
   const navigate = useNavigate();
-  const pendingThreadId =
-    (location.state as { openThreadId?: number } | null)?.openThreadId ?? null;
-  const [view, setView] = useState<View>(pendingThreadId != null ? 'thread' : 'index');
-  const [categorySlug, setCategorySlug] = useState<string | null>(null);
-  const [composeIntent, setComposeIntent] = useState(false);
-  const [threadId, setThreadId] = useState<number | null>(pendingThreadId);
 
-  // Consume the one-shot navigation state (e.g. after sharing code) so a
-  // refresh or back-navigation doesn't force the thread view again.
   useEffect(() => {
-    if (pendingThreadId != null) {
-      window.scrollTo(0, 0);
-      navigate('/forum', { replace: true, state: null });
-    }
-  }, [pendingThreadId, navigate]);
+    window.scrollTo(0, 0);
+  }, [categorySlug, threadId]);
 
-  const openCategory = (slug: string, compose = false) => {
-    setCategorySlug(slug);
-    setComposeIntent(compose);
-    setView('category');
-    window.scrollTo(0, 0);
-  };
-  const openThread = (id: number) => {
-    setThreadId(id);
-    setComposeIntent(false);
-    setView('thread');
-    window.scrollTo(0, 0);
-  };
-  const backToIndex = () => {
-    setView('index');
-    window.scrollTo(0, 0);
-  };
-  const backToCategory = () => {
-    setView('category');
-    window.scrollTo(0, 0);
-  };
+  const openCategory = (slug: string) => navigate(forumRoutes.category(slug));
+  const openThread = (id: number) => navigate(forumRoutes.thread(id));
+
+  const parsedThreadId = threadId != null ? Number(threadId) : null;
+  if (parsedThreadId != null && !Number.isInteger(parsedThreadId)) {
+    return <Navigate to={forumRoutes.index} replace />;
+  }
 
   return (
     <>
       <Topbar />
-      {view === 'index' && <ForumIndex onOpenCategory={openCategory} user={user} />}
-      {view === 'category' && categorySlug && (
+      {parsedThreadId != null ? (
+        <ThreadView
+          key={parsedThreadId}
+          threadId={parsedThreadId}
+          isLoggedIn={isLoggedIn}
+          user={user}
+        />
+      ) : categorySlug ? (
         <CategoryView
+          key={categorySlug}
           categorySlug={categorySlug}
-          startCompose={composeIntent}
-          onBack={backToIndex}
           onOpenThread={openThread}
           isLoggedIn={isLoggedIn}
           user={user}
         />
-      )}
-      {view === 'thread' && threadId && (
-        <ThreadView
-          threadId={threadId}
-          onBack={backToIndex}
-          onBackToCategory={backToCategory}
-          isLoggedIn={isLoggedIn}
-          user={user}
-        />
+      ) : (
+        <ForumIndex onOpenCategory={openCategory} user={user} />
       )}
     </>
+  );
+}
+
+/**
+ * Breadcrumb trail with an explicit one-level-up back link, so a person who
+ * lands deep in the forum (shared link, notification) always has a way out.
+ */
+function ForumCrumbs({
+  trail,
+  current,
+}: {
+  trail: { label: string; to: string }[];
+  current: string;
+}) {
+  const { t } = useTranslation();
+  const parent = trail[trail.length - 1];
+  return (
+    <nav className="forum-crumbs" aria-label={t('forum.breadcrumbLabel')}>
+      {parent && (
+        <Link className="forum-back" to={parent.to}>
+          ← {t('forum.backTo', { name: parent.label })}
+        </Link>
+      )}
+      {trail.map((crumb) => (
+        <Fragment key={crumb.to}>
+          <Link to={crumb.to}>{crumb.label}</Link>
+          <span className="forum-crumb-sep">/</span>
+        </Fragment>
+      ))}
+      <span className="forum-crumb-here">{current}</span>
+    </nav>
   );
 }
 
@@ -316,15 +320,11 @@ function ForumIndex({
 
 function CategoryView({
   categorySlug,
-  startCompose = false,
-  onBack,
   onOpenThread,
   isLoggedIn,
   user,
 }: {
   categorySlug: string;
-  startCompose?: boolean;
-  onBack: () => void;
   onOpenThread: (id: number) => void;
   isLoggedIn: boolean;
   user: AuthenticatedUser | null;
@@ -342,7 +342,7 @@ function CategoryView({
   const [threads, setThreads] = useState<ForumThreadSummaryDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [showComposer, setShowComposer] = useState(startCompose);
+  const [showComposer, setShowComposer] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [posting, setPosting] = useState(false);
@@ -395,14 +395,12 @@ function CategoryView({
     );
   }
 
+  const forumCrumb = { label: t('forum.crumbForum'), to: forumRoutes.index };
+
   if (error || !category) {
     return (
       <main className="forum-page">
-        <div className="forum-crumbs">
-          <a onClick={onBack}>{t('forum.crumbForum')}</a>
-          <span className="forum-crumb-sep">/</span>
-          <span className="forum-crumb-here">{t('forum.crumbError')}</span>
-        </div>
+        <ForumCrumbs trail={[forumCrumb]} current={t('forum.crumbError')} />
         <div className="forum-loading">{error ?? t('forum.categoryNotFound')}</div>
       </main>
     );
@@ -410,13 +408,10 @@ function CategoryView({
 
   return (
     <main className="forum-page">
-      <div className="forum-crumbs">
-        <a onClick={onBack}>{t('forum.crumbForum')}</a>
-        <span className="forum-crumb-sep">/</span>
-        <span className="forum-crumb-here">
-          {t(`forum.categories.${category.slug}.name`, { defaultValue: category.name })}
-        </span>
-      </div>
+      <ForumCrumbs
+        trail={[forumCrumb]}
+        current={t(`forum.categories.${category.slug}.name`, { defaultValue: category.name })}
+      />
 
       <div className="cat-banner" style={{ borderColor: category.color + '44' }}>
         <div className="cat-banner-icon" style={{ background: category.color + '22' }}>
@@ -530,18 +525,15 @@ function CategoryView({
 
 function ThreadView({
   threadId,
-  onBack,
-  onBackToCategory,
   isLoggedIn,
   user,
 }: {
   threadId: number;
-  onBack: () => void;
-  onBackToCategory: () => void;
   isLoggedIn: boolean;
   user: AuthenticatedUser | null;
 }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [thread, setThread] = useState<ForumThreadDetailDTO | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -561,6 +553,13 @@ function ThreadView({
         setLoading(false);
       });
   }, [threadId, t]);
+
+  // Once the thread is gone its URL is dead, so fall back to its category.
+  const leaveThread = useCallback(() => {
+    navigate(thread ? forumRoutes.category(thread.categorySlug) : forumRoutes.index, {
+      replace: true,
+    });
+  }, [navigate, thread]);
 
   useEffect(() => {
     let cancelled = false;
@@ -633,7 +632,7 @@ function ThreadView({
     setActionError(null);
     try {
       const res = await forumService.deletePost(postId);
-      if (res.threadDeleted) onBack();
+      if (res.threadDeleted) leaveThread();
       else loadThread();
     } catch (err) {
       setActionError(errMsg(err));
@@ -644,7 +643,7 @@ function ThreadView({
     setActionError(null);
     try {
       await forumService.deleteThread(threadId);
-      onBack();
+      leaveThread();
     } catch (err) {
       setActionError(errMsg(err));
     }
@@ -671,11 +670,10 @@ function ThreadView({
   if (error || !thread) {
     return (
       <main className="forum-page">
-        <div className="forum-crumbs">
-          <a onClick={onBack}>{t('forum.crumbForum')}</a>
-          <span className="forum-crumb-sep">/</span>
-          <span className="forum-crumb-here">{t('forum.crumbError')}</span>
-        </div>
+        <ForumCrumbs
+          trail={[{ label: t('forum.crumbForum'), to: forumRoutes.index }]}
+          current={t('forum.crumbError')}
+        />
         <div className="forum-loading">{error ?? t('forum.threadNotFound')}</div>
       </main>
     );
@@ -687,15 +685,18 @@ function ThreadView({
 
   return (
     <main className="forum-page">
-      <div className="forum-crumbs">
-        <a onClick={onBack}>{t('forum.crumbForum')}</a>
-        <span className="forum-crumb-sep">/</span>
-        <a onClick={onBackToCategory}>
-          {t(`forum.categories.${thread.categorySlug}.name`, { defaultValue: thread.categoryName })}
-        </a>
-        <span className="forum-crumb-sep">/</span>
-        <span className="forum-crumb-here">{thread.title}</span>
-      </div>
+      <ForumCrumbs
+        trail={[
+          { label: t('forum.crumbForum'), to: forumRoutes.index },
+          {
+            label: t(`forum.categories.${thread.categorySlug}.name`, {
+              defaultValue: thread.categoryName,
+            }),
+            to: forumRoutes.category(thread.categorySlug),
+          },
+        ]}
+        current={thread.title}
+      />
 
       <div className="thread-head">
         <div className="thread-head-info">

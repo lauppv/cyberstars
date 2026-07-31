@@ -14,6 +14,7 @@ function shapeMessage(row: repo.MessageRow): MessageDTO {
     content: row.deleted ? '' : row.content,
     deleted: row.deleted,
     readAt: row.readAt ? row.readAt.toISOString() : null,
+    editedAt: row.editedAt ? row.editedAt.toISOString() : null,
     createdAt: row.createdAt.toISOString(),
     reactions: row.reactions.map((r) => ({ emoji: r.emoji, userId: r.userId })),
   };
@@ -156,6 +157,31 @@ export async function toggleReaction(
   pushToUser(userId, frame);
 
   return shapeMessage({ ...message, reactions });
+}
+
+export async function editMessage(
+  userId: number,
+  messageId: number,
+  content: string,
+): Promise<MessageDTO> {
+  const message = await repo.findMessage(messageId);
+  // 404 for a non-owner or a missing/deleted message — same as delete, so a
+  // caller can't probe which message ids exist or edit someone else's text.
+  if (!message || message.senderId !== userId || message.deleted) {
+    throw new AppError(404, 'Message not found');
+  }
+  const updated = await repo.editMessage(messageId, userId, content);
+  if (!updated) throw new AppError(404, 'Message not found');
+  const dto = shapeMessage(updated);
+
+  // Push the refreshed content live to both sides (like send/delete) so the
+  // edit lands on the other participant's screen without a refetch.
+  const row = await repo.findConversation(message.conversationId);
+  if (row) {
+    pushToUser(otherParticipant(row, userId), { channel: 'dm', type: 'edited', payload: dto });
+    pushToUser(userId, { channel: 'dm', type: 'edited', payload: dto });
+  }
+  return dto;
 }
 
 export async function deleteMessage(userId: number, messageId: number): Promise<MessageDTO> {

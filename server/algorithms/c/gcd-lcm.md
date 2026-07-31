@@ -1,5 +1,3 @@
-# Easy · GCD and LCM
-
 Compute the **Greatest Common Divisor (GCD)** and **Least Common Multiple (LCM)** of two positive integers using **Euclid's algorithm**.
 
 Euclid's algorithm finds the GCD by repeatedly replacing the larger number with the remainder of dividing it by the smaller number, until the remainder is 0. Once you have the GCD, the LCM can be computed as: `LCM(A, B) = A * B / GCD(A, B)`.

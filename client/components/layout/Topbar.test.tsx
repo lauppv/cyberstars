@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, within } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 
 const mockNavigate = vi.fn();
-vi.mock('react-router-dom', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('react-router-dom')>();
+vi.mock('react-router', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('react-router')>();
   return {
     ...actual,
     useNavigate: () => mockNavigate,
@@ -111,6 +111,13 @@ describe('Topbar', () => {
     expect(screen.getByText('Profile')).toBeInTheDocument();
     expect(screen.getByText('Support')).toBeInTheDocument();
     expect(screen.getByText('Sign out')).toBeInTheDocument();
+  });
+
+  it('navigates to usage when Daily usage is clicked', () => {
+    renderTopbar();
+    fireEvent.click(screen.getByText('Test'));
+    fireEvent.click(screen.getByText('Daily usage'));
+    expect(mockNavigate).toHaveBeenCalledWith('/usage');
   });
 
   it('navigates to profile when Profile is clicked', () => {

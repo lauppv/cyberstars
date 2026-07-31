@@ -1,4 +1,4 @@
-Așa cum am menționat într-o lecție anterioară, nu este o idee bună să **repetăm** cod. Dacă trebuie să scriem același lucru de două ori, șansele sunt că va trebui să-l scriem de trei ori sau **mai mult**. Aici intervine noțiunea de **funcție**. O **funcție** este o bucată de cod pe care o scriem **o dată** și o putem refolosi de **mai multe** ori
+Așa cum am menționat într-o lecție anterioară, nu este o idee bună să **repetăm** cod. Dacă trebuie să scriem același lucru de două ori, șansele sunt că va trebui să-l scriem de trei ori sau mai mult. Aici intervine noțiunea de **funcție**. O **funcție** este o bucată de cod pe care o scriem **o dată** și o putem refolosi de **mai multe** ori
 
 ```py
 nume = "Cortez"

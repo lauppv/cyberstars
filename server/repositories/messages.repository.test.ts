@@ -187,6 +187,27 @@ describe('toggleReaction', () => {
   });
 });
 
+describe('editMessage', () => {
+  it('returns null when nothing was updated (not sender / deleted)', async () => {
+    mockPrisma.directMessage.updateMany.mockResolvedValue({ count: 0 });
+    expect(await repo.editMessage(3, 7, 'nou')).toBeNull();
+    expect(mockPrisma.directMessage.findUnique).not.toHaveBeenCalled();
+  });
+
+  it('writes the new content, stamps editedAt, and returns the row', async () => {
+    mockPrisma.directMessage.updateMany.mockResolvedValue({ count: 1 });
+    mockPrisma.directMessage.findUnique.mockResolvedValue({ id: 3, content: 'nou' });
+    const row = await repo.editMessage(3, 7, 'nou');
+    expect(row).toEqual({ id: 3, content: 'nou' });
+    expect(mockPrisma.directMessage.updateMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: { id: 3, senderId: 7, deleted: false },
+        data: expect.objectContaining({ content: 'nou', editedAt: expect.any(Date) }),
+      }),
+    );
+  });
+});
+
 describe('softDeleteMessage', () => {
   it('returns null when nothing was deleted (not sender / already deleted)', async () => {
     mockPrisma.directMessage.updateMany.mockResolvedValue({ count: 0 });

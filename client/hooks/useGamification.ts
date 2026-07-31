@@ -40,7 +40,7 @@ export interface Gamification {
 
 export function useGamification(): Gamification {
   const { t } = useTranslation();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isLoading: authLoading } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
   const [, setTick] = useState(0);
@@ -49,7 +49,7 @@ export function useGamification(): Gamification {
     setTick((t) => t + 1);
   }, [refresh]);
 
-  const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
+  const isLoading = authLoading || curriculumLoading || (isLoggedIn && progressLoading);
 
   const { totalCompleted, totalLessons, perCourse, xp } = useMemo(() => {
     let comp = 0;

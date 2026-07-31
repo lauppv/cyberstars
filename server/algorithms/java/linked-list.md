@@ -1,5 +1,3 @@
-# Hard · Linked List
-
 Implement a **singly linked list** from scratch. Create a `Node` class with `value` and `next` fields, and a `LinkedList` class with `add`, `remove`, and `print` operations.
 
 Process commands from stdin.

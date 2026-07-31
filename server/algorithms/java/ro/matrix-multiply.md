@@ -1,5 +1,3 @@
-# Mediu · Înmulțirea matricelor
-
 Înmulțește două matrice **A** și **B** și afișează matricea rezultată **C**.
 
 Înmulțirea matricelor este definită ca: `C[i][j] = suma A[i][k] * B[k][j]` pentru toți k. Numărul de coloane din A trebuie să fie egal cu numărul de rânduri din B.

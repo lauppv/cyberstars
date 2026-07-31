@@ -3,8 +3,8 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import type { ForumCategoryDTO } from '../../../shared/forum';
 
 const mockNavigate = vi.fn();
-vi.mock('react-router-dom', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('react-router-dom')>();
+vi.mock('react-router', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('react-router')>();
   return { ...actual, useNavigate: () => mockNavigate };
 });
 
@@ -81,7 +81,7 @@ describe('ShareToForumModal', () => {
       content: '```python\nprint(1)\n```',
     });
     expect(onClose).toHaveBeenCalled();
-    expect(mockNavigate).toHaveBeenCalledWith('/forum', { state: { openThreadId: 42 } });
+    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/42');
   });
 
   it('maps course keys to a canonical fence language', async () => {

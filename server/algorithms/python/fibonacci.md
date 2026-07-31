@@ -1,5 +1,3 @@
-# Medium · Fibonacci
-
 Print the first N Fibonacci numbers. The Fibonacci sequence starts with 0 and 1, and each subsequent number is the sum of the two preceding ones: 0, 1, 1, 2, 3, 5, 8, 13, ...
 
 ### Input

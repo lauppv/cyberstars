@@ -1,5 +1,3 @@
-# Mediu · Suma pe jumătăți cu fork
-
 Împarte un vector în două jumătăți și paralelizează adunarea: copilul sumează prima jumătate, părintele sumează a doua. Copilul trimite suma lui printr-un pipe, iar părintele adună cele două părți și afișează totalul.
 
 Când `N` e impar, prima jumătate are `N/2` elemente, iar a doua jumătate `N - N/2` — o împărțire care iese cinstit fără resturi ciudate.

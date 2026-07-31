@@ -1,5 +1,3 @@
-# Easy · Two PIDs
-
 A parent and a child want to confirm the link between them: each one prints the PID of the other. The child gets the parent's PID via **getppid()**, while the parent receives the child's PID directly from **fork()**'s return value.
 
 Fork returns:

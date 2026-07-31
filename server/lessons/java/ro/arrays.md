@@ -170,7 +170,7 @@ public class Main {
 }
 ```
 
-Output **100**. Începe cu **total = 0**, parcurge fiecare preț, adaugă-l la total. Vei scrie acest gen de buclă **mult** în cariera ta. Citește-o linie cu linie până devine a doua natură
+Output **100**. Începe cu **total = 0**, parcurge fiecare preț, adaugă-l la total. Vei scrie acest gen de buclă mult în cariera ta. Citește-o linie cu linie până devine a doua natură
 
 ---
 

@@ -1,5 +1,3 @@
-# Hard · Number Range Iterator
-
 Implement the **Iterable** and **Iterator** interfaces to create a `NumberRange` class that iterates over a range of integers.
 
 `NumberRange` takes a `start` and `end` value and lets you iterate over all integers from `start` to `end` (inclusive) using a for-each loop.

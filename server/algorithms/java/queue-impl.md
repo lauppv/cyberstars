@@ -1,5 +1,3 @@
-# Medium · Queue Implementation
-
 Implement a **Queue** class using an `ArrayList` as the internal storage. The queue should support `enqueue`, `dequeue`, and `peek` operations following the FIFO (First In, First Out) principle.
 
 Process commands from stdin and print results for `dequeue` and `peek`. If `dequeue` or `peek` is called on an empty queue, print `Empty`.

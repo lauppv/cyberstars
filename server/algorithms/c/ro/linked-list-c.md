@@ -1,5 +1,3 @@
-# Dificil · Listă înlănțuită
-
 Implementează o **listă simplu înlănțuită** în C. Citește comenzi de la stdin și execută-le:
 
 - `insereaza x` — inserează numărul întreg `x` la **finalul** listei

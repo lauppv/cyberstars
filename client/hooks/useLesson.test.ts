@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { renderHook, waitFor } from '@testing-library/react';
+import { act, renderHook, waitFor } from '@testing-library/react';
 
 let mockLang = 'en';
 let mockLoggedIn = false;
@@ -120,5 +120,119 @@ describe('useLesson', () => {
     rerender({ slug: 'py-2' });
     expect(result.current.isLoading).toBe(true);
     await waitFor(() => expect(result.current.isLoading).toBe(false));
+  });
+});
+
+/**
+ * Leaving a lesson mid-load must not write the old lesson's data into the new
+ * one — every await is guarded by a cancellation check.
+ */
+describe('useLesson cancellation', () => {
+  function deferred<T>() {
+    let resolve!: (value: T) => void;
+    let reject!: (reason: unknown) => void;
+    const promise = new Promise<T>((res, rej) => {
+      resolve = res;
+      reject = rej;
+    });
+    return { promise, resolve, reject };
+  }
+
+  const flush = () => act(async () => {});
+
+  it('stops after the lesson resolves', async () => {
+    const d = deferred<Awaited<ReturnType<typeof lessonService.fetchLesson>>>();
+    mockFetchLesson.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+
+    unmount();
+    d.resolve({ title: 'Intro', content: '# Hello', slug: 'py-1' } as never);
+    await flush();
+
+    expect(mockFetchCode).not.toHaveBeenCalled();
+    expect(result.current.title).toBe('');
+  });
+
+  it('stops after the lesson rejects', async () => {
+    const d = deferred<never>();
+    mockFetchLesson.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+
+    unmount();
+    d.reject(new Error('404'));
+    await flush();
+
+    expect(mockFetchCode).not.toHaveBeenCalled();
+    expect(result.current.error).toBeNull();
+  });
+
+  it('stops after the starter code resolves', async () => {
+    const d = deferred<string>();
+    mockFetchCode.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(mockFetchCode).toHaveBeenCalled());
+
+    unmount();
+    d.resolve('print(1)');
+    await flush();
+
+    expect(mockFetchSolution).not.toHaveBeenCalled();
+    expect(result.current.starterCode).toBe('');
+  });
+
+  it('stops after the solution resolves', async () => {
+    const d = deferred<string>();
+    mockFetchSolution.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(mockFetchSolution).toHaveBeenCalled());
+
+    unmount();
+    d.resolve('print(42)');
+    await flush();
+
+    expect(result.current.solution).toBeNull();
+    expect(result.current.isLoading).toBe(true);
+  });
+
+  it('stops after the solution rejects', async () => {
+    const d = deferred<string>();
+    mockFetchSolution.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(mockFetchSolution).toHaveBeenCalled());
+
+    unmount();
+    d.reject(new Error('no solution'));
+    await flush();
+
+    expect(result.current.isLoading).toBe(true);
+  });
+
+  it('stops after the saved code resolves', async () => {
+    mockLoggedIn = true;
+    const d = deferred<{ code: string | null }>();
+    mockGetSaved.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(mockGetSaved).toHaveBeenCalled());
+
+    unmount();
+    d.resolve({ code: 'my saved code' });
+    await flush();
+
+    expect(result.current.savedCode).toBeNull();
+    expect(result.current.isLoading).toBe(true);
+  });
+
+  it('stops after the saved code rejects', async () => {
+    mockLoggedIn = true;
+    const d = deferred<{ code: string | null }>();
+    mockGetSaved.mockReturnValue(d.promise);
+    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
+    await waitFor(() => expect(mockGetSaved).toHaveBeenCalled());
+
+    unmount();
+    d.reject(new Error('nope'));
+    await flush();
+
+    expect(result.current.isLoading).toBe(true);
   });
 });

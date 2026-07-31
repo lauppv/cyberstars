@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { useAuth } from '../context/AuthContext';
@@ -108,7 +108,7 @@ export function CoursesPage() {
             <div
               key={c.key}
               onClick={() => setSelectedKey(c.key)}
-              className="bg-[rgba(22,22,29,0.1)] backdrop-blur-[12px] border border-[var(--accent)]/30 rounded-xl overflow-hidden cursor-pointer transition-all hover:border-[var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]"
+              className="panel rounded-xl overflow-hidden cursor-pointer transition-all hover:border-[var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]"
             >
               <div className="h-1.5 w-full" style={{ background: c.color }} />
               <div className="p-5">

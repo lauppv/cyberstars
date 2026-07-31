@@ -1,5 +1,3 @@
-# Mediu · Lanț de trei generații
-
 Un proces "bunic" creează un proces "tată" prin fork. La rândul lui, "tatăl" creează un proces "nepot". Fiecare generație afișează nivelul ei și PID-ul propriu, dar tipărirea se face **de la nepot spre bunic**: fiecare părinte așteaptă cu **wait(NULL)** ca al lui copil să termine înainte să tipărească.
 
 Structura seamănă cu **fork în fork**: după primul `fork()`, în copil apelăm din nou `fork()`. Trebuie multă grijă la ordinea `return 0` — dacă nu iese unde trebuie, procesele "greșite" continuă codul de mai jos.

@@ -76,10 +76,9 @@ const components: Components = {
 
     return (
       <code
-        className={className}
+        className={`${className ?? ''} panel`.trim()}
         style={{
           display: 'block',
-          background: '#111820',
           padding: '12px 16px',
           borderRadius: '6px',
         }}

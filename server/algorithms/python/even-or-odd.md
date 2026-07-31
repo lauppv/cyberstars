@@ -1,5 +1,3 @@
-# Even or Odd
-
 Given an integer, determine whether it is **even** or **odd**.
 
 ### Input

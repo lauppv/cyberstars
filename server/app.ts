@@ -20,6 +20,8 @@ import notificationsRoutes from './routes/notifications.routes.js';
 import messagesRoutes from './routes/messages.routes.js';
 import connectionsRoutes from './routes/connections.routes.js';
 import usersRoutes from './routes/users.routes.js';
+import hintsRoutes from './routes/hints.routes.js';
+import usageRoutes from './routes/usage.routes.js';
 
 export const app = express();
 
@@ -84,6 +86,8 @@ app.use('/api/notifications', notificationsRoutes);
 app.use('/api/messages', messagesRoutes);
 app.use('/api/connections', connectionsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/hints', hintsRoutes);
+app.use('/api/usage', usageRoutes);
 
 // Authoritative server clock for the focus-radio "live" sync — clients seek to
 // (serverNow % trackDuration) so everyone hears the same second regardless of

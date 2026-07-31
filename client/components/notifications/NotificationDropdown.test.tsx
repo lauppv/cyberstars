@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import type { NotificationDTO } from '../../../shared/notifications';
 
 const mockNavigate = vi.fn();
-vi.mock('react-router-dom', () => ({ useNavigate: () => mockNavigate }));
+vi.mock('react-router', () => ({ useNavigate: () => mockNavigate }));
 
 let role = 'USER';
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => ({ user: { role } }) }));
@@ -86,32 +86,38 @@ describe('NotificationDropdown copy', () => {
 });
 
 describe('NotificationDropdown routing', () => {
+  it('routes a forum notification to the thread URL', () => {
+    renderWith([n({ type: 'FORUM_REPLY', entityId: 7 })]);
+    fireEvent.click(screen.getByRole('menuitem'));
+    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/7');
+  });
+
   it('routes a support ticket to /admin', () => {
     renderWith([n({ type: 'SUPPORT_TICKET_NEW' })]);
     fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/admin', undefined);
+    expect(mockNavigate).toHaveBeenCalledWith('/admin');
   });
 
   it('routes a support reply to /support for a regular user', () => {
     renderWith([n({ type: 'SUPPORT_REPLY' })]);
     fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/support', undefined);
+    expect(mockNavigate).toHaveBeenCalledWith('/support');
   });
 
   it('routes a support reply to /admin for an admin', () => {
     role = 'ADMIN';
     renderWith([n({ type: 'SUPPORT_REPLY' })]);
     fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/admin', undefined);
+    expect(mockNavigate).toHaveBeenCalledWith('/admin');
   });
 
   it('routes a status change to /support and a connection request to /connections', () => {
     renderWith([n({ id: 1, type: 'SUPPORT_STATUS' }), n({ id: 2, type: 'CONNECTION_REQUEST' })]);
     const items = screen.getAllByRole('menuitem');
     fireEvent.click(items[0]);
-    expect(mockNavigate).toHaveBeenCalledWith('/support', undefined);
+    expect(mockNavigate).toHaveBeenCalledWith('/support');
     fireEvent.click(items[1]);
-    expect(mockNavigate).toHaveBeenCalledWith('/connections', undefined);
+    expect(mockNavigate).toHaveBeenCalledWith('/connections');
   });
 });
 

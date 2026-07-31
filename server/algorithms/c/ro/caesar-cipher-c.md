@@ -1,5 +1,3 @@
-# Mediu · Cifrul lui Caesar
-
 Criptează un șir folosind **cifrul lui Cezar**. Fiecare literă este deplasată înainte în alfabet cu o anumită valoare. Literele mari rămân mari, literele mici rămân mici, iar caracterele care nu sunt litere rămân neschimbate.
 
 De exemplu, cu o deplasare de 3: `A` devine `D`, `z` devine `c`, iar `5` rămâne `5`.

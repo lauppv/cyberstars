@@ -1,5 +1,3 @@
-# Easy · Find the Minimum
-
 Read an integer **N**, then read **N** integers. Print the **smallest** value.
 
 ### Input

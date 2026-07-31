@@ -21,6 +21,11 @@
   --mono: 'JetBrains Mono', 'Fira Code', monospace;
   --radius: 10px;
   --radius-sm: 6px;
+  /* Single source of truth for the glass panel surface (see .panel below).
+     Change these three to restyle every content panel across the app. */
+  --panel-bg: rgba(22, 22, 29, 0.1);
+  --panel-border: rgba(108, 92, 231, 0.3);
+  --panel-blur: 12px;
 }
 
 html,
@@ -247,13 +252,25 @@ samp {
   animation: spin 0.6s linear infinite;
 }
 
-/* ===== Text backdrop — subtle bg for readability over starfield ===== */
-.text-backdrop {
-  background: rgba(11, 11, 17, 0.55);
-  backdrop-filter: blur(6px);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  border: 1px solid rgba(46, 46, 62, 0.4);
+/* Glass surfaces live in the components layer so Tailwind utilities (hover
+   borders, per-element rounded-*, etc.) still override them where needed. */
+@layer components {
+  /* ===== Text backdrop — subtle bg for readability over starfield ===== */
+  .text-backdrop {
+    background: var(--panel-bg);
+    backdrop-filter: blur(var(--panel-blur));
+    border-radius: 0.75rem;
+    padding: 20px 24px;
+    border: 1px solid var(--panel-border);
+  }
+
+  /* ===== Glass panel — canonical semi-transparent surface (matches course cards) ===== */
+  .panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(var(--panel-blur));
+    border: 1px solid var(--panel-border);
+    border-radius: 0.75rem;
+  }
 }
 
 /* ===== Minimal background (global, default) ===== */

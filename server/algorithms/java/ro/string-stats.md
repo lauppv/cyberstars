@@ -1,5 +1,3 @@
-# Ușor · Statistici despre șir
-
 Creează o clasă **AnalizatorText** care primește un șir în constructorul său și oferă trei metode:
 
 - `numarVocale()` — returnează numărul de vocale (a, e, i, o, u — fără sensibilitate la majuscule)

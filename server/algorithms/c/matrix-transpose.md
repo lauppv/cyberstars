@@ -1,5 +1,3 @@
-# Easy · Matrix Transpose
-
 Compute the **transpose** of an N×N matrix (rows become columns) and print the result.
 
 For this exercise, the matrix is **hardcoded** directly in the code — nothing is read from stdin. Use:

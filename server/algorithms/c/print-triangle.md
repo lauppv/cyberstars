@@ -1,5 +1,3 @@
-# Easy · Print a Star Triangle
-
 Read an integer **N** and print a left-aligned triangle of `*` characters. Line 1 has 1 star, line 2 has 2 stars, and so on up to line N.
 
 ### Input
