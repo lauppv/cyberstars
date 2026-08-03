@@ -76,11 +76,7 @@ export function AdminPage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[960px]">
-          <div className="text-backdrop mb-8 flex items-end justify-between gap-4 flex-wrap">
-            <div>
-              <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">{t('admin.title')}</h1>
-              <p className="text-[13px] text-[var(--text3)]">{t('admin.subtitle')}</p>
-            </div>
+          <div className="mb-8 flex justify-end">
             <button
               onClick={refresh}
               disabled={refreshing}

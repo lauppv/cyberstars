@@ -143,11 +143,6 @@ export function LeaderboardPage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
       <main className="flex-1 max-w-[760px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
-        <div className="text-center mb-8 text-backdrop">
-          <h1 className="text-2xl font-bold mb-1">{t('leaderboard.title')}</h1>
-          <p className="text-[var(--text2)] text-sm">{t('leaderboard.subtitle')}</p>
-        </div>
-
         {loading ? (
           <div className="flex justify-center py-16">
             <LoadingSpinner />

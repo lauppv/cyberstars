@@ -20,10 +20,6 @@ export function AlgorithmsPage() {
       <Topbar />
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
-        <div className="text-center mb-10 text-backdrop">
-          <p className="text-[var(--text2)] text-sm">{t('algorithms.intro')}</p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {LANGS.map((lang) => {
             const course = courses.find((c) => c.key === lang.key);

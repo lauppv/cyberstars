@@ -22,8 +22,6 @@
     "signIn": "Sign in"
   },
   "admin": {
-    "title": "Admin Dashboard",
-    "subtitle": "Platform statistics and live activity",
     "refresh": "Refresh",
     "refreshing": "Refreshing…",
     "generatedAt": "Data as of {{time}}",
@@ -125,8 +123,6 @@
     "xpReward": "+{{xp}} XP"
   },
   "leaderboard": {
-    "title": "Leaderboard",
-    "subtitle": "Top explorers ranked by total XP earned across every course.",
     "you": "You",
     "yourRank": "Your rank",
     "xp": "{{xp}} XP",
@@ -174,7 +170,6 @@
     "connectionAccepted": "{{name}} accepted your connection request"
   },
   "courses": {
-    "intro": "Take your time, read carefully, and experiment. The goal is to understand, play around, and have fun.",
     "lessons_one": "lesson",
     "lessons_other": "lessons",
     "percentComplete": "{{pct}}% complete",
@@ -193,7 +188,6 @@
     }
   },
   "algorithms": {
-    "intro": "Pick a language and solve challenges that combine what you learned in the courses.",
     "desc": {
       "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries. Great for building problem-solving skills.",
       "algo-java": "OOP-focused challenges — classes, objects, inheritance, and collections. Practice designing with objects.",
@@ -436,8 +430,6 @@
     }
   },
   "rules": {
-    "title": "Community Rules",
-    "subtitle": "These rules help keep CyberStars a positive learning environment for everyone.",
     "items": [
       {
         "title": "Be respectful",
@@ -503,8 +495,6 @@
     "openSettings": "Settings"
   },
   "support": {
-    "title": "Support",
-    "subtitle": "Found a bug, have a question, or need to report something? Open a ticket and the team will take a look.",
     "newTicket": "New ticket",
     "subjectPlaceholder": "Subject",
     "messagePlaceholder": "Describe the issue or question in detail...",
@@ -604,7 +594,6 @@
     },
     "loadCategoriesError": "Failed to load forum categories.",
     "loadingForum": "Loading forum...",
-    "subtitle": "Ask, share, and hang out with other CyberStars. Be kind, search before posting, and have fun.",
     "newThread": "+ New Thread",
     "newCategory": "+ New Category",
     "editCategoryTitle": "Edit category",
@@ -937,7 +926,6 @@
   },
   "connections": {
     "title": "Connections",
-    "subtitle": "Your connections and pending requests.",
     "empty": "No connections yet. Visit someone's profile to connect.",
     "incoming": "Received requests",
     "outgoing": "Sent requests",
@@ -949,8 +937,6 @@
     "pending": "Pending"
   },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Preferences, privacy and account.",
     "preferences": "Preferences",
     "language": "Language",
     "background": "Background",
