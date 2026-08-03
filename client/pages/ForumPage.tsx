@@ -203,21 +203,6 @@ function ForumIndex({
 
   return (
     <main className="forum-page">
-      <div className="forum-stats">
-        <div className="fs-item">
-          <div className="fs-value">{totalThreads.toLocaleString()}</div>
-          <div className="fs-label">{t('forum.stats.threads')}</div>
-        </div>
-        <div className="fs-item">
-          <div className="fs-value">{totalPosts.toLocaleString()}</div>
-          <div className="fs-label">{t('forum.stats.posts')}</div>
-        </div>
-        <div className="fs-item">
-          <div className="fs-value">{categories.length}</div>
-          <div className="fs-label">{t('forum.stats.categories')}</div>
-        </div>
-      </div>
-
       <div className="forum-content">
         <div>
           {Object.entries(groups).map(([groupName, cats]) => (
@@ -287,6 +272,21 @@ function ForumIndex({
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="forum-stats">
+        <div className="fs-item">
+          <div className="fs-value">{totalThreads.toLocaleString()}</div>
+          <div className="fs-label">{t('forum.stats.threads')}</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value">{totalPosts.toLocaleString()}</div>
+          <div className="fs-label">{t('forum.stats.posts')}</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value">{categories.length}</div>
+          <div className="fs-label">{t('forum.stats.categories')}</div>
         </div>
       </div>
 

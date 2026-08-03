@@ -70,7 +70,7 @@
   border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: var(--radius);
   padding: 14px 4px;
-  margin-bottom: 22px;
+  margin-top: 22px;
   overflow: hidden;
 }
 
