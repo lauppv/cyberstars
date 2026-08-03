@@ -203,29 +203,6 @@ function ForumIndex({
 
   return (
     <main className="forum-page">
-      {isStaff && (
-        <div className="forum-page-actions">
-          <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
-            {t('forum.newCategory')}
-          </button>
-        </div>
-      )}
-
-      <div className="forum-stats">
-        <div className="fs-item">
-          <div className="fs-value">{totalThreads.toLocaleString()}</div>
-          <div className="fs-label">{t('forum.stats.threads')}</div>
-        </div>
-        <div className="fs-item">
-          <div className="fs-value">{totalPosts.toLocaleString()}</div>
-          <div className="fs-label">{t('forum.stats.posts')}</div>
-        </div>
-        <div className="fs-item">
-          <div className="fs-value">{categories.length}</div>
-          <div className="fs-label">{t('forum.stats.categories')}</div>
-        </div>
-      </div>
-
       <div className="forum-content">
         <div>
           {Object.entries(groups).map(([groupName, cats]) => (
@@ -261,8 +238,8 @@ function ForumIndex({
                       <span>{t('forum.threadsLower')}</span>
                       <span>{t('forum.postsCount', { count: c.postCount })}</span>
                     </div>
-                    {c.lastPost && (
-                      <div className="cat-lastpost">
+                    <div className="cat-lastpost">
+                      {c.lastPost && (
                         <div className="lp-info">
                           <div className="lp-title">{c.lastPost.threadTitle}</div>
                           <div className="lp-meta">
@@ -270,8 +247,8 @@ function ForumIndex({
                             · {timeAgo(c.lastPost.createdAt)}
                           </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                     {isStaff && (
                       <div className="cat-actions" onClick={(e) => e.stopPropagation()}>
                         <button
@@ -297,6 +274,29 @@ function ForumIndex({
           ))}
         </div>
       </div>
+
+      <div className="forum-stats">
+        <div className="fs-item">
+          <div className="fs-value">{totalThreads.toLocaleString()}</div>
+          <div className="fs-label">{t('forum.stats.threads')}</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value">{totalPosts.toLocaleString()}</div>
+          <div className="fs-label">{t('forum.stats.posts')}</div>
+        </div>
+        <div className="fs-item">
+          <div className="fs-value">{categories.length}</div>
+          <div className="fs-label">{t('forum.stats.categories')}</div>
+        </div>
+      </div>
+
+      {isStaff && (
+        <div className="forum-page-actions">
+          <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
+            {t('forum.newCategory')}
+          </button>
+        </div>
+      )}
 
       {modal && (
         <CategoryModal
