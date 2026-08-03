@@ -969,6 +969,12 @@
     border-top: 1px solid var(--border);
   }
 
+  /* Stacked layout has no columns to keep aligned, so drop the empty cell
+     instead of showing its separator as a stray rule. */
+  .cat-lastpost:empty {
+    display: none;
+  }
+
   .cat-counts {
     flex-direction: row;
     justify-content: flex-start;

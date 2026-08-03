@@ -238,8 +238,8 @@ function ForumIndex({
                       <span>{t('forum.threadsLower')}</span>
                       <span>{t('forum.postsCount', { count: c.postCount })}</span>
                     </div>
-                    {c.lastPost && (
-                      <div className="cat-lastpost">
+                    <div className="cat-lastpost">
+                      {c.lastPost && (
                         <div className="lp-info">
                           <div className="lp-title">{c.lastPost.threadTitle}</div>
                           <div className="lp-meta">
@@ -247,8 +247,8 @@ function ForumIndex({
                             · {timeAgo(c.lastPost.createdAt)}
                           </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                     {isStaff && (
                       <div className="cat-actions" onClick={(e) => e.stopPropagation()}>
                         <button
