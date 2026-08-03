@@ -22,8 +22,6 @@
     "signIn": "Conectare"
   },
   "admin": {
-    "title": "Panou admin",
-    "subtitle": "Statistici platformă și activitate live",
     "refresh": "Reîmprospătează",
     "refreshing": "Se reîmprospătează…",
     "generatedAt": "Date la {{time}}",
@@ -125,8 +123,6 @@
     "xpReward": "+{{xp}} XP"
   },
   "leaderboard": {
-    "title": "Clasament",
-    "subtitle": "Cei mai buni exploratori, ordonați după XP-ul total câștigat în toate cursurile.",
     "you": "Tu",
     "yourRank": "Locul tău",
     "xp": "{{xp}} XP",
@@ -176,7 +172,6 @@
     "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune"
   },
   "courses": {
-    "intro": "Fă-ți timp, citește cu atenție și experimentează. Scopul e să înțelegi, să te joci și să te distrezi.",
     "lessons_one": "lecție",
     "lessons_other": "lecții",
     "percentComplete": "{{pct}}% finalizat",
@@ -195,7 +190,6 @@
     }
   },
   "algorithms": {
-    "intro": "Alege un limbaj și rezolvă provocări care combină ce ai învățat la cursuri.",
     "desc": {
       "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare. Ideal pentru a-ți dezvolta gândirea de rezolvare a problemelor.",
       "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții. Exersează proiectarea cu obiecte.",
@@ -438,8 +432,6 @@
     }
   },
   "rules": {
-    "title": "Regulile comunității",
-    "subtitle": "Aceste reguli ajută la menținerea CyberStars ca un mediu de învățare pozitiv pentru toți.",
     "items": [
       {
         "title": "Fii respectuos",
@@ -505,8 +497,6 @@
     "openSettings": "Setări"
   },
   "support": {
-    "title": "Suport",
-    "subtitle": "Ai găsit un bug, ai o întrebare sau vrei să raportezi ceva? Deschide un tichet și echipa se va uita.",
     "newTicket": "Tichet nou",
     "subjectPlaceholder": "Subiect",
     "messagePlaceholder": "Descrie problema sau întrebarea în detaliu...",
@@ -606,7 +596,6 @@
     },
     "loadCategoriesError": "Nu s-au putut încărca categoriile forumului.",
     "loadingForum": "Se încarcă forumul...",
-    "subtitle": "Întreabă, împărtășește și petrece timp cu ceilalți CyberStars. Fii amabil, caută înainte de a posta și distrează-te.",
     "newThread": "+ Discuție nouă",
     "newCategory": "+ Categorie nouă",
     "editCategoryTitle": "Editează categoria",
@@ -939,7 +928,6 @@
   },
   "connections": {
     "title": "Conexiuni",
-    "subtitle": "Conexiunile tale și cererile în așteptare.",
     "empty": "Nicio conexiune încă. Vizitează profilul cuiva ca să te conectezi.",
     "incoming": "Cereri primite",
     "outgoing": "Cereri trimise",
@@ -951,8 +939,6 @@
     "pending": "În așteptare"
   },
   "settings": {
-    "title": "Setări",
-    "subtitle": "Preferințe, confidențialitate și cont.",
     "preferences": "Preferințe",
     "language": "Limbă",
     "background": "Fundal",

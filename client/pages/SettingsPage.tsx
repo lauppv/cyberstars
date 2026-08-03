@@ -275,11 +275,6 @@ export function SettingsPage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[520px] flex flex-col gap-5">
-          <div className="text-backdrop">
-            <h1 className="text-2xl font-bold">{t('settings.title')}</h1>
-            <p className="text-[var(--text2)] text-sm">{t('settings.subtitle')}</p>
-          </div>
-
           {/* Preferences */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">

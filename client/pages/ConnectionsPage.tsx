@@ -120,11 +120,6 @@ export function ConnectionsPage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[520px] flex flex-col gap-5">
-          <div className="text-backdrop">
-            <h1 className="text-2xl font-bold">{t('connections.title')}</h1>
-            <p className="text-[var(--text2)] text-sm">{t('connections.subtitle')}</p>
-          </div>
-
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <LoadingSpinner />

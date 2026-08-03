@@ -99,9 +99,6 @@ export function CoursesPage() {
       <Topbar />
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
-        <div className="text-center mb-8 text-backdrop">
-          <p className="text-[var(--text2)] text-sm">{t('courses.intro')}</p>
-        </div>
         {/* Course grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {allCourses.map((c) => (

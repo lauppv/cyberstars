@@ -122,11 +122,6 @@ export function SupportPage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[560px]">
-          <div className="text-backdrop mb-8">
-            <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">{t('support.title')}</h1>
-            <p className="text-[13px] text-[var(--text3)]">{t('support.subtitle')}</p>
-          </div>
-
           {/* New ticket form */}
           <div className="panel p-5 mb-8">
             <h2 className="text-[14px] font-semibold mb-4">{t('support.newTicket')}</h2>

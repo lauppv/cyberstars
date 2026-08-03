@@ -9,10 +9,6 @@ export function RulesPage() {
       <Topbar />
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[600px]">
-          <div className="text-backdrop mb-8">
-            <h1 className="text-[24px] font-bold tracking-[-0.5px] mb-2">{t('rules.title')}</h1>
-            <p className="text-[13px] text-[var(--text3)]">{t('rules.subtitle')}</p>
-          </div>
           <div className="flex flex-col gap-4">
             {rules.map((rule, i) => (
               <div key={i} className="panel flex gap-4 p-4">

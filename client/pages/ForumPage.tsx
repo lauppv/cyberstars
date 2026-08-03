@@ -203,16 +203,13 @@ function ForumIndex({
 
   return (
     <main className="forum-page">
-      <div className="forum-page-header">
-        <div>
-          <p className="forum-page-subtitle">{t('forum.subtitle')}</p>
-        </div>
-        {isStaff && (
+      {isStaff && (
+        <div className="forum-page-actions">
           <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
             {t('forum.newCategory')}
           </button>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="forum-stats">
         <div className="fs-item">
