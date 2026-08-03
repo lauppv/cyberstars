@@ -203,14 +203,6 @@ function ForumIndex({
 
   return (
     <main className="forum-page">
-      {isStaff && (
-        <div className="forum-page-actions">
-          <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
-            {t('forum.newCategory')}
-          </button>
-        </div>
-      )}
-
       <div className="forum-stats">
         <div className="fs-item">
           <div className="fs-value">{totalThreads.toLocaleString()}</div>
@@ -297,6 +289,14 @@ function ForumIndex({
           ))}
         </div>
       </div>
+
+      {isStaff && (
+        <div className="forum-page-actions">
+          <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
+            {t('forum.newCategory')}
+          </button>
+        </div>
+      )}
 
       {modal && (
         <CategoryModal
