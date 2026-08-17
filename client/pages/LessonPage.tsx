@@ -350,7 +350,7 @@ export function LessonPage() {
       />
 
       {/* Mobile panel switcher (split-screen stays on lg+) */}
-      <div className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)]">
+      <div className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)] backdrop-blur-[var(--panel-blur)]">
         <button
           onClick={() => setActiveTab('lesson')}
           className={`flex-1 py-3 text-[13px] font-semibold transition cursor-pointer bg-transparent border-b-2 ${
@@ -379,7 +379,7 @@ export function LessonPage() {
           <div
             ref={contentRef}
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
-            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)]`}
+            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)]`}
           >
             <div className="px-9 py-8">
               {(() => {
@@ -471,7 +471,7 @@ export function LessonPage() {
           {/* Right panel: terminal or editor */}
           {isTerminal ? (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
             >
               <TerminalPanel
                 lines={terminal.lines}
@@ -497,7 +497,7 @@ export function LessonPage() {
             </div>
           ) : (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
             >
               <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
                 <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">

@@ -52,7 +52,7 @@ export function EmojiPicker({
       </button>
       {open && (
         <div
-          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--popover)] shadow-lg grid grid-cols-8 gap-0.5`}
+          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--popover)] backdrop-blur-[var(--panel-blur)] shadow-lg grid grid-cols-8 gap-0.5`}
         >
           {EMOJIS.map((emoji) => (
             <button

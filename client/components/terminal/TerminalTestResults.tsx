@@ -12,7 +12,7 @@ export function TerminalTestResults({ results, onClose }: Props) {
   const passed = results.status === 'passed';
 
   return (
-    <div className="border-t border-[var(--border)] bg-[var(--glass)] p-3 max-h-[45%] overflow-y-auto">
+    <div className="border-t border-[var(--border)] bg-[var(--glass)] backdrop-blur-[var(--panel-blur)] p-3 max-h-[45%] overflow-y-auto">
       <div className="flex items-center justify-between mb-2">
         <div
           className={`flex items-center gap-2 font-bold text-[14px] ${passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}`}

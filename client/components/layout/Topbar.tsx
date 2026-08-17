@@ -86,7 +86,7 @@ export function Topbar({
   }, [mobileNavOpen]);
 
   return (
-    <header className="flex items-center justify-between px-4 sm:px-7 h-14 bg-[var(--chrome)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
+    <header className="flex items-center justify-between px-4 sm:px-7 h-14 bg-[var(--chrome)] backdrop-blur-[var(--panel-blur)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
       <div className="flex items-center gap-3 sm:gap-6 min-w-0" ref={mobileNavRef}>
         {/* Mobile hamburger (site nav collapses below lg) */}
         <button

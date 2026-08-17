@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { ApiClientError } from '../services/apiClient';
 import { forgotPassword, resetPassword } from '../services/authService';
 import { Deco } from '../components/ui/Deco';
+import { useGraphics } from '../hooks/useGraphics';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
 function getPasswordStrength(pw: string): number {
@@ -134,6 +135,7 @@ function Starfield() {
 }
 
 export function AuthPage() {
+  const [graphics] = useGraphics();
   const location = useLocation();
   const initial = (location.state ?? null) as {
     mode?: 'login' | 'signup' | 'forgot' | 'reset';
@@ -223,15 +225,11 @@ export function AuthPage() {
         .pw-bar.strong { background: var(--success); }
       `}</style>
 
-      <div
-        className="relative flex h-screen text-[var(--text)] overflow-hidden"
-        style={{
-          background: 'radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%)',
-        }}
-      >
+      <div className="auth-bg relative flex h-screen text-[var(--text)] overflow-hidden">
         {/* Cosmic background — full screen, behind both panels (visible on mobile too) */}
         {/* Pulsing accent glow */}
-        <div
+        <Deco
+          as="div"
           className="absolute pointer-events-none"
           style={{
             width: 600,
@@ -245,9 +243,10 @@ export function AuthPage() {
           }}
         />
         {/* Canvas starfield */}
-        <Starfield />
+        {graphics === 'max' && <Starfield />}
         {/* Vignette */}
-        <div
+        <Deco
+          as="div"
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
@@ -261,11 +260,7 @@ export function AuthPage() {
           {/* Brand content */}
           <div className="relative max-w-[400px] text-center" style={{ zIndex: 4 }}>
             <div className="flex items-center justify-center gap-3 mb-8">
-              <svg
-                className="w-10 h-10"
-                viewBox="0 0 64 64"
-                style={{ filter: 'drop-shadow(0 0 16px var(--accent-glow))' }}
-              >
+              <svg className="w-10 h-10 brand-mark" viewBox="0 0 64 64">
                 <polygon
                   points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
                   fill="var(--accent)"

@@ -90,6 +90,14 @@ body {
   font-family: var(--font);
 }
 
+/* The sign-in page paints its own full-screen background. */
+.auth-bg {
+  background: var(--page-bg);
+}
+:root[data-graphics='max'] .auth-bg {
+  background: radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%);
+}
+
 /* The brand mark keeps its shape in both modes; only max lights it up. */
 .brand-mark {
   filter: drop-shadow(0 0 8px var(--accent-glow));

@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from 'react';
+import type { CSSProperties, ElementType, ReactNode } from 'react';
 
 // Mode-specific presentation, switched by CSS alone (see index.css) so wrapping
 // something costs no subscription and no re-render.
@@ -17,14 +17,20 @@ export function Deco({
   className = '',
   only = 'max',
   as: Tag = 'span' as ElementType,
+  style,
 }: {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   only?: 'min' | 'max';
   as?: ElementType;
+  style?: CSSProperties;
 }) {
   return (
-    <Tag className={`deco-${only} ${className}`} aria-hidden={only === 'max' || undefined}>
+    <Tag
+      className={`deco-${only} ${className}`}
+      style={style}
+      aria-hidden={only === 'max' || undefined}
+    >
       {children}
     </Tag>
   );

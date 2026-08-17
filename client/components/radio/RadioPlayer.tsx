@@ -31,7 +31,7 @@ export function RadioPlayer() {
       <div className="fixed bottom-4 right-4 z-40">
         <button
           onClick={() => setHidden(false)}
-          className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel-bg)] px-3 py-1.5 transition hover:bg-[var(--surface)]"
+          className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] px-3 py-1.5 transition hover:bg-[var(--surface)]"
           aria-label={t('radio.show')}
           title={title}
         >
@@ -50,7 +50,7 @@ export function RadioPlayer() {
   return (
     <div className="fixed bottom-4 right-4 z-40 flex w-[240px] flex-col items-stretch gap-2">
       {expanded && (
-        <div className="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--panel-bg)] p-3">
+        <div className="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] p-3">
           <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-[var(--text3)]">
             {t('radio.volume')}
           </label>
@@ -69,7 +69,7 @@ export function RadioPlayer() {
         </div>
       )}
 
-      <div className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel-bg)] px-2 py-1.5">
+      <div className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] px-2 py-1.5">
         <button
           onClick={togglePlay}
           className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/20 text-[13px] text-[var(--text)] transition hover:bg-[var(--accent)]/30"
