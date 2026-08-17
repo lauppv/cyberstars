@@ -93,12 +93,13 @@ export function AlgorithmListPage() {
           {/* Header */}
           <div className="px-6 pt-6 pb-4 border-b border-[var(--border)]">
             <div className="flex items-center gap-3 mb-4">
-              <div
+              <Deco
+                as="div"
                 className="w-12 h-12 rounded-[10px] flex items-center justify-center text-2xl"
                 style={{ background: meta.color + '20' }}
               >
-                <Deco>{meta.icon}</Deco>
-              </div>
+                {meta.icon}
+              </Deco>
               <div>
                 <h1 className="text-xl font-bold">{t('algoList.title', { lang: meta.label })}</h1>
                 <p className="text-[var(--text3)] text-xs">

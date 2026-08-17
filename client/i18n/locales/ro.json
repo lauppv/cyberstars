@@ -62,8 +62,8 @@
   },
   "graphics": {
     "switch": "Schimbă grafica",
-    "min": "Minimal",
-    "max": "Cosmos"
+    "min": "Minim",
+    "max": "Maxim"
   },
   "home": {
     "continueWhereLeftOff": "Continuă de unde ai rămas",
@@ -952,7 +952,7 @@
     "preferences": "Preferințe",
     "language": "Limbă",
     "graphics": "Grafică",
-    "graphicsHint": "Minimal păstrează interfața plată și liniștită. Cosmos adaugă câmpul de stele, panourile de sticlă și iconurile.",
+    "graphicsHint": "Minim păstrează interfața plată și liniștită. Maxim adaugă câmpul de stele, panourile de sticlă și iconurile.",
     "privacy": "Confidențialitate",
     "privacyHint": "Alege ce pot vedea ceilalți exploratori pe profilul tău public. Totul este vizibil implicit.",
     "showBio": "Bio și status",

@@ -221,12 +221,13 @@ export function HomePage() {
                     onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
                     className="w-full text-left flex items-center gap-3 p-3 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer group"
                   >
-                    <div
+                    <Deco
+                      as="div"
                       className="w-10 h-10 rounded-[10px] flex items-center justify-center text-lg shrink-0"
                       style={{ background: courseMeta(continueTo.course.key).color + '20' }}
                     >
-                      <Deco>{courseMeta(continueTo.course.key).icon}</Deco>
-                    </div>
+                      {courseMeta(continueTo.course.key).icon}
+                    </Deco>
                     <div className="flex-1 min-w-0">
                       <span className="inline-block px-2 py-0.5 text-[10px] font-semibold tracking-[0.5px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-1">
                         {continueTo.course.title}
@@ -250,12 +251,13 @@ export function HomePage() {
                               onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
                               className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer text-left"
                             >
-                              <div
+                              <Deco
+                                as="div"
                                 className="w-7 h-7 rounded-lg flex items-center justify-center text-sm shrink-0"
                                 style={{ background: meta.color + '20' }}
                               >
-                                <Deco>{meta.icon}</Deco>
-                              </div>
+                                {meta.icon}
+                              </Deco>
                               <div className="flex-1 min-w-0">
                                 <div className="text-[12px] font-semibold truncate">{l.title}</div>
                                 <div className="text-[10px] text-[var(--text3)]">
@@ -535,12 +537,13 @@ function OfTheDayCard({
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-2.5">
-          <div
+          <Deco
+            as="div"
             className="w-9 h-9 rounded-lg flex items-center justify-center text-lg shrink-0"
             style={{ background: meta.color + '20' }}
           >
-            <Deco>{meta.icon}</Deco>
-          </div>
+            {meta.icon}
+          </Deco>
           <span className="text-[11px] text-[var(--text3)] font-medium">{courseTitle}</span>
           {!completed && (
             <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
@@ -607,12 +610,13 @@ function CourseMilestones({
               onClick={() => navigate(`/courses?open=${c.key}`)}
               className="flex items-center gap-3 text-left cursor-pointer hover:opacity-80 transition"
             >
-              <div
+              <Deco
+                as="div"
                 className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0"
                 style={{ background: meta.color + '20' }}
               >
-                <Deco>{meta.icon}</Deco>
-              </div>
+                {meta.icon}
+              </Deco>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold">{meta.label}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">
@@ -653,12 +657,13 @@ function CourseMilestones({
               onClick={() => navigate(`/courses?open=${c.key}`)}
               className="flex items-center gap-3 opacity-60 text-left cursor-pointer hover:opacity-80 transition"
             >
-              <div
+              <Deco
+                as="div"
                 className="w-10 h-10 rounded-[10px] flex items-center justify-center text-xl shrink-0"
                 style={{ background: meta.color + '20' }}
               >
-                <Deco>{meta.icon}</Deco>
-              </div>
+                {meta.icon}
+              </Deco>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold">{meta.label}</div>
                 <div className="text-[11px] text-[var(--text2)] mb-1.5">

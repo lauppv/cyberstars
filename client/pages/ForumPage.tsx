@@ -222,9 +222,9 @@ function ForumIndex({
                     onClick={() => onOpenCategory(c.slug)}
                   >
                     <div className="cat-main">
-                      <div className="cat-icon" style={{ background: c.color + '22' }}>
-                        <Deco>{c.icon}</Deco>
-                      </div>
+                      <Deco as="div" className="cat-icon" style={{ background: c.color + '22' }}>
+                        {c.icon}
+                      </Deco>
                       <div className="cat-info">
                         <div className="cat-name">
                           {t(`forum.categories.${c.slug}.name`, { defaultValue: c.name })}
@@ -413,9 +413,9 @@ function CategoryView({
       />
 
       <div className="cat-banner" style={{ borderColor: category.color + '44' }}>
-        <div className="cat-banner-icon" style={{ background: category.color + '22' }}>
-          <Deco>{category.icon}</Deco>
-        </div>
+        <Deco as="div" className="cat-banner-icon" style={{ background: category.color + '22' }}>
+          {category.icon}
+        </Deco>
         <div className="cat-banner-info">
           <div className="cat-banner-title">
             {t(`forum.categories.${category.slug}.name`, { defaultValue: category.name })}

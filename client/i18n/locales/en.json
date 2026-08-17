@@ -63,7 +63,7 @@
   "graphics": {
     "switch": "Switch graphics",
     "min": "Minimal",
-    "max": "Cosmos"
+    "max": "Maximal"
   },
   "home": {
     "continueWhereLeftOff": "Continue where you left off",
@@ -950,7 +950,7 @@
     "preferences": "Preferences",
     "language": "Language",
     "graphics": "Graphics",
-    "graphicsHint": "Minimal keeps the interface flat and quiet. Cosmos adds the starfield, glass panels and icons.",
+    "graphicsHint": "Minimal keeps the interface flat and quiet. Maximal adds the starfield, glass panels and icons.",
     "privacy": "Privacy",
     "privacyHint": "Choose what other explorers can see on your public profile. Everything is visible by default.",
     "showBio": "Bio & status",
