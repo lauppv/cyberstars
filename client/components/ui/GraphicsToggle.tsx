@@ -17,7 +17,10 @@ export function GraphicsToggle() {
   const [graphics, setGraphics] = useGraphicsPreview();
 
   return (
-    <div className="fixed bottom-4 left-4 z-40 rounded-full border border-[var(--border)] bg-[var(--popover)] backdrop-blur-[var(--panel-blur)] p-1.5">
+    // No frame of its own: the wrapper only positions the control and backs it
+    // with an opaque surface, so the inactive half stays readable over the
+    // starfield. It hugs the control exactly, at the control's own radius.
+    <div className="fixed bottom-4 left-4 z-40 w-fit overflow-hidden rounded-[var(--radius-sm)] bg-[var(--popover)] backdrop-blur-[var(--panel-blur)]">
       <Segmented
         value={graphics}
         options={OPTIONS}
