@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 
 // Site-wide graphics mode.
 //
@@ -100,16 +100,27 @@ export function syncGraphicsForRoute() {
   announce();
 }
 
-function useGraphicsSubscription() {
-  const [, bump] = useReducer((n: number) => n + 1, 0);
-  useEffect(() => {
-    window.addEventListener(CHANGE_EVENT, bump);
-    window.addEventListener('storage', bump);
-    return () => {
-      window.removeEventListener(CHANGE_EVENT, bump);
-      window.removeEventListener('storage', bump);
-    };
-  }, []);
+function subscribe(onChange: () => void) {
+  window.addEventListener(CHANGE_EVENT, onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    window.removeEventListener(CHANGE_EVENT, onChange);
+    window.removeEventListener('storage', onChange);
+  };
+}
+
+/**
+ * The mode as an external store.
+ *
+ * It has to be `useSyncExternalStore` rather than a listener in an effect: the
+ * app root settles the mode in a *layout* effect, which runs before a passive
+ * subscription is attached, so a component mounting in the same pass would miss
+ * that one notification and keep rendering the pre-settle value — a toggle
+ * showing max while the page had already gone min. This re-reads the snapshot
+ * after subscribing, so a change in that window is caught.
+ */
+function useGraphicsValue(): GraphicsMode {
+  return useSyncExternalStore(subscribe, effectiveGraphics, () => DEFAULT_GRAPHICS);
 }
 
 /**
@@ -119,7 +130,7 @@ function useGraphicsSubscription() {
  * of a preview route is picked up without its own subscription.
  */
 export function useGraphics(): [GraphicsMode, (next: GraphicsMode) => void] {
-  useGraphicsSubscription();
+  const mode = useGraphicsValue();
 
   const update = useCallback((next: GraphicsMode) => {
     try {
@@ -130,7 +141,7 @@ export function useGraphics(): [GraphicsMode, (next: GraphicsMode) => void] {
     announce();
   }, []);
 
-  return [effectiveGraphics(), update];
+  return [mode, update];
 }
 
 /**
@@ -138,12 +149,12 @@ export function useGraphics(): [GraphicsMode, (next: GraphicsMode) => void] {
  * visit looks like — nothing is written to storage and settings are untouched.
  */
 export function useGraphicsPreview(): [GraphicsMode, (next: GraphicsMode) => void] {
-  useGraphicsSubscription();
+  const mode = useGraphicsValue();
 
   const update = useCallback((next: GraphicsMode) => {
     preview = next;
     announce();
   }, []);
 
-  return [effectiveGraphics(), update];
+  return [mode, update];
 }

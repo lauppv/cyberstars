@@ -93,6 +93,20 @@ describe('useGraphics', () => {
       expect(effectiveGraphics()).toBe('min');
     });
 
+    it('shows the mode the page settled on, not the one it mounted with', () => {
+      // The app root settles the mode in a layout effect, which runs before a
+      // passive subscription would attach. A hook mounting in that window used
+      // to keep the pre-settle value, so the toggle read max on a page that had
+      // already gone min.
+      setPreviewAllowed(false);
+      goTo('/');
+      const { result } = renderHook(() => useGraphicsPreview());
+      expect(result.current[0]).toBe('max');
+
+      act(() => setPreviewAllowed(true));
+      expect(result.current[0]).toBe('min');
+    });
+
     it('hands the public routes back to the stored choice once someone signs in', () => {
       goTo('/');
       expect(effectiveGraphics()).toBe('min');
