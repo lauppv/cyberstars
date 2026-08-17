@@ -13,6 +13,8 @@ import type {
 } from '../../shared/support';
 import { isAdmin as isAdminRole } from '../../shared/auth';
 import { INPUT_CLS } from '../constants/styles';
+import { useGraphics, type GraphicsMode } from '../hooks/useGraphics';
+import type { TFunction } from 'i18next';
 
 const TICKET_TYPE_VALUES: TicketType[] = [
   'BUG',
@@ -22,6 +24,22 @@ const TICKET_TYPE_VALUES: TicketType[] = [
   'ACCOUNT',
   'OTHER',
 ];
+
+// Ticket types are rendered inside <option>, which cannot hold a <Deco> span,
+// so max graphics prefix the emoji onto the label string instead.
+const TYPE_EMOJI: Record<TicketType, string> = {
+  BUG: '🐞',
+  QUESTION: '❓',
+  RULE_VIOLATION: '🚫',
+  FEEDBACK: '💡',
+  ACCOUNT: '👤',
+  OTHER: '📋',
+};
+
+function typeLabel(v: TicketType, graphics: GraphicsMode, t: TFunction): string {
+  const label = t(`support.types.${v}`);
+  return graphics === 'max' ? `${TYPE_EMOJI[v]} ${label}` : label;
+}
 
 const STATUS_COLOR: Record<TicketStatus, string> = {
   OPEN: 'var(--warning)',
@@ -33,6 +51,7 @@ const STATUS_COLOR: Record<TicketStatus, string> = {
 export function SupportPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [graphics] = useGraphics();
   const { user, isLoggedIn, isLoading } = useAuth();
   const isAdmin = isAdminRole(user?.role);
 
@@ -139,7 +158,7 @@ export function SupportPage() {
               >
                 {TICKET_TYPE_VALUES.map((v) => (
                   <option key={v} value={v}>
-                    {t(`support.types.${v}`)}
+                    {typeLabel(v, graphics, t)}
                   </option>
                 ))}
               </select>
@@ -225,6 +244,7 @@ function TicketRow({
   onClick: () => void;
 }) {
   const { t } = useTranslation();
+  const [graphics] = useGraphics();
   const color = STATUS_COLOR[ticket.status];
   return (
     <div
@@ -232,7 +252,7 @@ function TicketRow({
       onClick={onClick}
     >
       <div className="flex items-center justify-between gap-2 mb-1">
-        <span className="text-[12px] font-semibold">{t(`support.types.${ticket.type}`)}</span>
+        <span className="text-[12px] font-semibold">{typeLabel(ticket.type, graphics, t)}</span>
         <span
           className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
           style={{
@@ -267,6 +287,7 @@ function TicketConversation({
   onStatusChange: (s: TicketStatus) => void;
 }) {
   const { t } = useTranslation();
+  const [graphics] = useGraphics();
   const [messages, setMessages] = useState<SupportMessageDTO[]>([]);
   const [reply, setReply] = useState('');
   const [sending, setSending] = useState(false);
@@ -313,7 +334,8 @@ function TicketConversation({
         <div className="flex-1 min-w-0">
           <div className="text-[15px] font-semibold truncate">{ticket.subject}</div>
           <div className="text-[11px] text-[var(--text3)]">
-            {t(`support.types.${ticket.type}`)} · {new Date(ticket.createdAt).toLocaleDateString()}
+            {typeLabel(ticket.type, graphics, t)} ·{' '}
+            {new Date(ticket.createdAt).toLocaleDateString()}
             {ticket.authorName ? ` · ${ticket.authorName}` : ''}
           </div>
         </div>

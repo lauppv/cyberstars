@@ -9,6 +9,7 @@ import { useAllProgress } from '../context/ProgressContext';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseMeta } from '../constants/courses';
 import { xpForLesson } from '../../shared/constants';
+import { Deco } from '../components/ui/Deco';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
@@ -92,12 +93,13 @@ export function AlgorithmListPage() {
           {/* Header */}
           <div className="px-6 pt-6 pb-4 border-b border-[var(--border)]">
             <div className="flex items-center gap-3 mb-4">
-              <div
+              <Deco
+                as="div"
                 className="w-12 h-12 rounded-[10px] flex items-center justify-center text-2xl"
                 style={{ background: meta.color + '20' }}
               >
                 {meta.icon}
-              </div>
+              </Deco>
               <div>
                 <h1 className="text-xl font-bold">{t('algoList.title', { lang: meta.label })}</h1>
                 <p className="text-[var(--text3)] text-xs">
@@ -175,7 +177,7 @@ export function AlgorithmListPage() {
                       className={`text-[10px] font-semibold tabular-nums flex items-center gap-0.5 ${lesson.completed ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
                       title={t('common.xpReward', { xp: xpForLesson(lesson.sortOrder) })}
                     >
-                      ⭐ {t('common.xpReward', { xp: xpForLesson(lesson.sortOrder) })}
+                      <Deco>⭐</Deco> {t('common.xpReward', { xp: xpForLesson(lesson.sortOrder) })}
                     </span>
                   )}
                   <span

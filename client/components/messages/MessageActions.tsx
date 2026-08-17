@@ -53,7 +53,7 @@ export function MessageActions({
       {open && (
         <div
           role="menu"
-          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.92)] backdrop-blur-[12px] shadow-lg`}
+          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--popover)] backdrop-blur-[var(--panel-blur)] shadow-lg`}
         >
           <div className="grid grid-cols-8 gap-0.5">
             {EMOJIS.map((emoji) => (
@@ -71,7 +71,7 @@ export function MessageActions({
             ))}
           </div>
           {canModify && (
-            <div className="mt-1 pt-1 border-t border-[var(--accent)]/20 flex flex-col">
+            <div className="mt-1 pt-1 border-t border-[var(--border)] flex flex-col">
               <button
                 type="button"
                 role="menuitem"

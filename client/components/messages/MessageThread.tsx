@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Avatar } from '../ui/Avatar';
 import i18next from 'i18next';
 import { useMessages } from '../../context/MessagesContext';
 import { useUserSocketFrames } from '../../context/UserSocketContext';
@@ -229,7 +230,7 @@ export function MessageThread({
 
   return (
     <div className="flex flex-col h-full" style={{ paddingBottom: 'var(--radio-clearance, 0px)' }}>
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--accent)]/20 flex-shrink-0">
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
         <button
           onClick={onBack}
           className="md:hidden text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[16px]"
@@ -238,17 +239,7 @@ export function MessageThread({
           ←
         </button>
         <UserLink userId={conversation.other.id} className="flex items-center gap-3 min-w-0">
-          {conversation.other.avatarUrl ? (
-            <img
-              src={conversation.other.avatarUrl}
-              alt=""
-              className="w-8 h-8 rounded-full object-cover border-2 border-[var(--accent)]/50"
-            />
-          ) : (
-            <div className="w-8 h-8 rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]/50">
-              🚀
-            </div>
-          )}
+          <Avatar url={conversation.other.avatarUrl} name={conversation.other.name} size={32} />
           <span className="font-semibold text-[14px] text-[var(--text)] truncate">
             {conversation.other.name}
           </span>
@@ -292,7 +283,7 @@ export function MessageThread({
                         }}
                         rows={1}
                         maxLength={2000}
-                        className="w-full resize-none max-h-32 min-h-[38px] px-3 py-2 rounded-[var(--radius)] bg-[rgba(22,22,29,0.4)] border border-[var(--accent)]/40 text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
+                        className="w-full resize-none max-h-32 min-h-[38px] px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
                       />
                       <div className="flex items-center gap-2 text-[10px] text-[var(--text3)]">
                         <span>{t('messages.editHint')}</span>
@@ -318,7 +309,7 @@ export function MessageThread({
                         className={`px-3 py-2 rounded-[var(--radius)] text-[13px] leading-snug whitespace-pre-wrap break-words min-w-0 ${
                           mine
                             ? 'bg-[var(--accent)]/25 border border-[var(--accent)]/40 text-[var(--text)]'
-                            : 'bg-[rgba(22,22,29,0.4)] border border-[var(--accent)]/20 text-[var(--text)]'
+                            : 'bg-[var(--glass)] border border-[var(--border)] text-[var(--text)]'
                         } ${m.deleted ? 'italic text-[var(--text3)]' : ''}`}
                       >
                         {m.deleted ? t('messages.deletedMessage') : m.content}
@@ -344,7 +335,7 @@ export function MessageThread({
                           className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[12px] leading-none border transition cursor-pointer ${
                             g.active
                               ? 'bg-[var(--accent)]/25 border-[var(--accent)]/50'
-                              : 'bg-[rgba(22,22,29,0.4)] border-[var(--accent)]/20 hover:bg-[var(--accent)]/15'
+                              : 'bg-[var(--glass)] border-[var(--border)] hover:bg-[var(--accent)]/15'
                           }`}
                         >
                           <span>{g.emoji}</span>

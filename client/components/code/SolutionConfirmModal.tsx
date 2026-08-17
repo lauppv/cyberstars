@@ -55,10 +55,10 @@ export function SolutionConfirmModal({
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[440px] bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-xl"
+        className="w-full max-w-[440px] bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-4 border-b border-[var(--accent)]/20 text-base font-bold">
+        <div className="px-6 py-4 border-b border-[var(--border)] text-base font-bold">
           {t('lesson.solutionConfirmTitle')}
         </div>
         <div className="px-6 py-5 flex flex-col gap-4">

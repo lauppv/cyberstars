@@ -217,14 +217,14 @@ describe('Topbar', () => {
     mockLocation = { pathname: '/lesson/algo-python/sum' };
     renderTopbar();
     const algBtn = screen.getByText('Algorithms');
-    expect(algBtn.className).toMatch(/text-\[var\(--accent\)\]/);
+    expect(algBtn.className).toMatch(/nav-active/);
   });
 
   it('marks Courses active on /courses paths', () => {
     mockLocation = { pathname: '/courses/python' };
     renderTopbar();
     const btn = screen.getByText('Courses');
-    expect(btn.className).toMatch(/text-\[var\(--accent\)\]/);
+    expect(btn.className).toMatch(/nav-active/);
   });
 
   it('navigates via nav buttons', () => {

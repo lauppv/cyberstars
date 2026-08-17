@@ -22,7 +22,7 @@ export function MessageComposer({ onSend }: { onSend: (content: string) => Promi
 
   return (
     <form
-      className="flex items-end gap-2 p-3 border-t border-[var(--accent)]/20"
+      className="flex items-end gap-2 p-3 border-t border-[var(--border)]"
       onSubmit={(e) => {
         e.preventDefault();
         void submit();
@@ -40,7 +40,7 @@ export function MessageComposer({ onSend }: { onSend: (content: string) => Promi
         rows={1}
         maxLength={2000}
         placeholder={t('messages.composerPlaceholder')}
-        className="flex-1 resize-none max-h-32 min-h-[40px] px-3 py-2 rounded-[var(--radius-sm)] bg-[rgba(22,22,29,0.4)] border border-[var(--accent)]/30 text-[13px] text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-none focus:border-[var(--accent)]/60"
+        className="flex-1 resize-none max-h-32 min-h-[40px] px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-none focus:border-[var(--accent)]/60"
       />
       <button
         type="submit"

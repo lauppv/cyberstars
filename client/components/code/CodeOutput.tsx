@@ -46,7 +46,7 @@ export function CodeOutput({
       data-testid="code-output"
       className={`rounded-[var(--radius-sm)] panel overflow-hidden${fillHeight ? ' flex-1 min-h-0 flex flex-col' : ''}`}
     >
-      <div className="px-3 py-1.5 text-[11px] tracking-[1px] text-[var(--text3)] font-semibold border-b border-[var(--accent)]/20 bg-[rgba(22,22,29,0.2)] flex items-center gap-2">
+      <div className="px-3 py-1.5 text-[11px] tracking-[1px] text-[var(--text3)] font-semibold border-b border-[var(--border)] bg-[var(--glass)] flex items-center gap-2">
         <span>{t('code.output')}</span>
         {isRunning && (
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />

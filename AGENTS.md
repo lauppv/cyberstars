@@ -16,7 +16,7 @@ Instructions for AI contributors (Claude, Copilot, Cursor, etc.) working on this
    npm run dead-code
    ```
 5. **No speculative features** — don't add abstractions, config options, or error handling beyond what's asked.
-6. **Keep commits atomic** — one logical change per commit, with a clear message.
+6. **Keep commits atomic** — one concern per commit, with a clear message, so any single piece can be reverted on its own without losing the rest. Split before committing rather than bundling a session's work: shared infrastructure, each behaviour change, the tests that belong to it, docs, and unrelated cleanups each get their own commit. Stage per path (or `git add -p`), not `git add -A`. The one limit on splitting: every commit must leave the tree green — never split so finely that an intermediate commit fails typecheck or tests.
 
 ## Architecture at a glance
 

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { Avatar } from '../components/ui/Avatar';
 import { canAccessFeature } from '../../shared/features';
 import * as connectionsService from '../services/connectionsService';
 import type {
@@ -11,20 +12,6 @@ import type {
   ConnectionsOverview,
   PendingConnection,
 } from '../../shared/connections';
-
-function Avatar({ url }: { url: string | null }) {
-  return url ? (
-    <img
-      src={url}
-      alt=""
-      className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0"
-    />
-  ) : (
-    <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[18px] border-2 border-[var(--accent)] flex-shrink-0">
-      🚀
-    </div>
-  );
-}
 
 function Row({
   userId,
@@ -45,7 +32,7 @@ function Row({
         onClick={() => onProfile(userId)}
         className="flex items-center gap-3 flex-1 min-w-0 bg-transparent border-none cursor-pointer text-left p-0"
       >
-        <Avatar url={avatarUrl} />
+        <Avatar url={avatarUrl} name={name} size={40} />
         <span className="text-[14px] font-semibold text-[var(--text)] truncate">{name}</span>
       </button>
       {children}
@@ -67,7 +54,7 @@ function Section({
       <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-2">
         {title} <span className="text-[var(--accent)] tabular-nums">({count})</span>
       </h2>
-      <div className="divide-y divide-[var(--accent)]/10">{children}</div>
+      <div className="divide-y divide-[var(--border)]">{children}</div>
     </section>
   );
 }
@@ -125,7 +112,7 @@ export function ConnectionsPage() {
               <LoadingSpinner />
             </div>
           ) : isEmpty ? (
-            <div className="text-center text-[var(--text3)] py-16 text-backdrop">
+            <div className="text-center text-[var(--text3)] py-16 panel px-6">
               {t('connections.empty')}
             </div>
           ) : (
@@ -151,7 +138,7 @@ export function ConnectionsPage() {
                         <button
                           disabled={busy === c.id}
                           onClick={() => act(c.id, connectionsService.decline)}
-                          className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
+                          className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
                         >
                           {t('connections.decline')}
                         </button>
@@ -174,7 +161,7 @@ export function ConnectionsPage() {
                       <button
                         disabled={busy === c.id}
                         onClick={() => act(c.id, connectionsService.remove)}
-                        className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
+                        className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
                       >
                         {t('connections.remove')}
                       </button>
@@ -200,7 +187,7 @@ export function ConnectionsPage() {
                         <button
                           disabled={busy === c.id}
                           onClick={() => act(c.id, connectionsService.remove)}
-                          className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
+                          className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
                         >
                           {t('connections.cancel')}
                         </button>

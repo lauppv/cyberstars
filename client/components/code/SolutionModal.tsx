@@ -41,10 +41,10 @@ export function SolutionModal({
       onMouseDown={onClose}
     >
       <div
-        className={`w-full ${compare ? 'max-w-[1100px]' : 'max-w-[680px]'} max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-xl transition-[max-width] duration-200`}
+        className={`w-full ${compare ? 'max-w-[1100px]' : 'max-w-[680px]'} max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl transition-[max-width] duration-200`}
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--accent)]/20 sticky top-0 bg-[var(--bg2)] z-[1]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
           <div className="text-base font-bold flex items-center gap-2">
             {t('lesson.solutionTitle')}
           </div>
@@ -55,7 +55,7 @@ export function SolutionModal({
                 aria-pressed={compare}
                 className={`text-[12px] px-3 py-1 rounded-[var(--radius-sm)] font-semibold cursor-pointer border transition ${
                   compare
-                    ? 'bg-[var(--accent)]/20 border-[var(--accent)]/50 text-[var(--accent)]'
+                    ? 'bg-[var(--accent)]/20 border-[var(--border)] text-[var(--accent)]'
                     : 'bg-transparent border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)]'
                 }`}
               >
@@ -71,9 +71,9 @@ export function SolutionModal({
           </div>
         </div>
         {compare && canCompare ? (
-          <div className="grid grid-cols-2 gap-0 border-t border-[var(--accent)]/10">
-            <div className="border-r border-[var(--accent)]/20">
-              <div className="px-4 py-2 text-[11px] font-semibold tracking-[1px] text-[var(--text3)] border-b border-[var(--accent)]/20 bg-[rgba(30,30,40,0.3)]">
+          <div className="grid grid-cols-2 gap-0 border-t border-[var(--border)]">
+            <div className="border-r border-[var(--border)]">
+              <div className="px-4 py-2 text-[11px] font-semibold tracking-[1px] text-[var(--text3)] border-b border-[var(--border)] bg-[rgba(30,30,40,0.3)]">
                 {t('lesson.yourCode')}
               </div>
               <div className="bg-[rgba(13,17,23,0.3)]">
@@ -87,7 +87,7 @@ export function SolutionModal({
               </div>
             </div>
             <div>
-              <div className="px-4 py-2 text-[11px] font-semibold tracking-[1px] text-[var(--text3)] border-b border-[var(--accent)]/20 bg-[rgba(30,30,40,0.3)]">
+              <div className="px-4 py-2 text-[11px] font-semibold tracking-[1px] text-[var(--text3)] border-b border-[var(--border)] bg-[rgba(30,30,40,0.3)]">
                 {t('lesson.solutionTitle')}
               </div>
               <div className="bg-[rgba(13,17,23,0.3)]">

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { TerminalTestResult } from '../../../shared/terminal';
+import { Deco } from '../ui/Deco';
 
 interface Props {
   results: TerminalTestResult;
@@ -11,18 +12,21 @@ export function TerminalTestResults({ results, onClose }: Props) {
   const passed = results.status === 'passed';
 
   return (
-    <div className="border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.4)] backdrop-blur-[12px] p-3 max-h-[45%] overflow-y-auto">
+    <div className="border-t border-[var(--border)] bg-[var(--glass)] backdrop-blur-[var(--panel-blur)] p-3 max-h-[45%] overflow-y-auto">
       <div className="flex items-center justify-between mb-2">
         <div
           className={`flex items-center gap-2 font-bold text-[14px] ${passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}`}
         >
-          <span className="text-[18px]">{passed ? '✅' : '❌'}</span>
+          <Deco className="text-[18px]">{passed ? '✅' : '❌'}</Deco>
+          <Deco only="min" className="text-[16px]">
+            {passed ? '✓' : '✗'}
+          </Deco>
           {passed ? t('terminalTests.passedTitle') : t('terminalTests.failedTitle')}
         </div>
         <button
           onClick={onClose}
           aria-label={t('tests.close')}
-          className="w-7 h-7 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
+          className="w-7 h-7 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
         >
           ✕
         </button>

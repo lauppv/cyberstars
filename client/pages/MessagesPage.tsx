@@ -55,11 +55,11 @@ export function MessagesPage() {
         <div className="h-full flex rounded-none sm:rounded-[var(--radius)] border-y sm:border border-[var(--panel-border)] bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden">
           {/* Conversation list — full width on mobile until one is picked. */}
           <div
-            className={`w-full md:w-[300px] md:flex-shrink-0 flex-col border-r border-[var(--accent)]/20 ${
+            className={`w-full md:w-[300px] md:flex-shrink-0 flex-col border-r border-[var(--border)] ${
               selected ? 'hidden md:flex' : 'flex'
             }`}
           >
-            <div className="px-4 py-3 border-b border-[var(--accent)]/20 flex-shrink-0">
+            <div className="px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
               <h1 className="text-[15px] font-bold">{t('messages.title')}</h1>
             </div>
             {loading && conversations.length === 0 ? (

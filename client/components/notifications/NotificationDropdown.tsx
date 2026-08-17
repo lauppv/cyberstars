@@ -6,6 +6,7 @@ import { useNotifications } from '../../context/NotificationContext';
 import { forumRoutes } from '../../constants/forumRoutes';
 import type { NotificationDTO, NotificationType } from '../../../shared/notifications';
 import { isAdmin } from '../../../shared/auth';
+import { Deco } from '../ui/Deco';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -92,9 +93,9 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div
       role="menu"
-      className="fixed inset-x-2 top-[60px] w-auto sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:mt-2 sm:w-80 bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+      className="fixed inset-x-2 top-[60px] w-auto sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:mt-2 sm:w-80 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
     >
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--accent)]/20">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
         <span className="text-[13px] font-semibold text-[var(--text)]">{t('notif.title')}</span>
         {unreadCount > 0 && (
           <button
@@ -117,11 +118,11 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
               key={n.id}
               role="menuitem"
               onClick={() => onItemClick(n)}
-              className={`w-full text-left px-4 py-3 flex items-start gap-3 border-b border-[var(--accent)]/10 last:border-b-0 hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-x-0 border-t-0 ${
+              className={`w-full text-left px-4 py-3 flex items-start gap-3 border-b border-[var(--border)] last:border-b-0 hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-x-0 border-t-0 ${
                 n.readAt ? 'opacity-60' : ''
               }`}
             >
-              <span className="text-[15px] leading-none mt-0.5 flex-shrink-0">{ICONS[n.type]}</span>
+              <Deco className="text-[15px] leading-none mt-0.5 flex-shrink-0">{ICONS[n.type]}</Deco>
               <span className="min-w-0 flex-1">
                 <span className="block text-[12.5px] text-[var(--text)] leading-snug">
                   {describe(n)}

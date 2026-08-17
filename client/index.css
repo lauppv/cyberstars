@@ -1,15 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import 'tailwindcss';
 
+/* ===========================================================================
+   Graphics modes.
+
+   `min` (the default, defined on :root) is flat and quiet: opaque surfaces,
+   neutral hairline borders, a three-step text hierarchy, no starfield.
+   `max` re-tints the same tokens into the cosmos look — glass panels, purple
+   borders, a lit background — so the whole app switches by attribute alone,
+   with no conditional markup. See client/hooks/useGraphics.ts.
+
+   Anything that differs between the two modes belongs here as a token. If you
+   find yourself branching on the mode inside a component, check first whether
+   a token would do it.
+   =========================================================================== */
+
 :root {
   --accent: #6c5ce7;
-  --accent-glow: #6c5ce733;
+  /* Decorative bloom around lit elements — off in min, so every glow across
+     the app (badges, toasts, hero marks, forum cards) goes quiet at once. */
+  --accent-glow: transparent;
+  /* The focus ring is not decoration: it stays visible in both modes. */
+  --focus-ring: rgba(108, 92, 231, 0.35);
+  --bg: #0b0b0e;
+  --bg2: #121216;
+  --bg3: #17171c;
+  --surface: #16161b;
+  --surface2: #1e1e24;
+  --border: #26262e;
+  /* Three-step text hierarchy: primary, secondary, muted. Secondary and muted
+     carry most of the body copy — keeping them a step down from --text is what
+     makes a dense page read as calm rather than shouted. */
+  --text: #e8e8ec;
+  --text2: #b2b2bd;
+  --text3: #7c7c88;
+  --success: #3ba776;
+  --output: #5183b8;
+  --warning: #c08a2e;
+  --error: #c25c5c;
+  --font: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --radius: 8px;
+  --radius-sm: 6px;
+  /* The panel surface — every card and container in the app (see .panel). */
+  --panel-bg: #16161b;
+  --panel-border: #26262e;
+  --panel-blur: 0px;
+  /* Tint sitting on top of a panel: inputs, message bubbles, output headers. */
+  --glass: #1e1e24;
+  /* Floating surfaces that must stay readable over whatever they cover. */
+  --popover: #1e1e24;
+  /* Sticky app chrome (the topbar). */
+  --chrome: #0b0b0e;
+  --page-bg: #0b0b0e;
+}
+
+:root[data-graphics='max'] {
   --bg: #0f0f14;
   --bg2: #16161d;
   --bg3: #1e1e28;
   --surface: #22222e;
   --surface2: #2a2a38;
-  --border: #2e2e3e;
+  /* In max, borders are the accent at 30% — that purple hairline is what ties
+     the glass panels to the starfield behind them. */
+  --border: rgba(108, 92, 231, 0.3);
+  --accent-glow: #6c5ce733;
   --text: #ececf3;
   --text2: #ececf3;
   --text3: #ececf3;
@@ -17,23 +72,56 @@
   --output: #5aa0e0;
   --warning: #ffaa00;
   --error: #ff6b6b;
-  --font: 'Space Grotesk', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', 'Fira Code', monospace;
   --radius: 10px;
-  --radius-sm: 6px;
-  /* Single source of truth for the glass panel surface (see .panel below).
-     Change these three to restyle every content panel across the app. */
   --panel-bg: rgba(22, 22, 29, 0.1);
   --panel-border: rgba(108, 92, 231, 0.3);
   --panel-blur: 12px;
+  --glass: rgba(22, 22, 29, 0.4);
+  --popover: rgba(22, 22, 29, 0.92);
+  --chrome: rgba(22, 22, 29, 0.78);
+  --page-bg: #06050d;
 }
 
 html,
 body {
   height: 100%;
-  background: #06050d;
+  background: var(--page-bg);
   color: var(--text);
   font-family: var(--font);
+}
+
+/* The sign-in page paints its own full-screen background. */
+.auth-bg {
+  background: var(--page-bg);
+}
+:root[data-graphics='max'] .auth-bg {
+  background: radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%);
+}
+
+/* The brand mark keeps its shape in both modes; only max lights it up. */
+.brand-mark {
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+/* Active top-level nav item. */
+.nav-active {
+  background: var(--surface);
+  color: var(--text);
+}
+:root[data-graphics='max'] .nav-active {
+  background: rgba(108, 92, 231, 0.07);
+  color: var(--accent);
+}
+
+/* Mode-specific presentation (see components/ui/Deco.tsx). These rules only
+   ever hide — they never impose a display value — so a Deco keeps whatever
+   layout its element and utility classes give it in the mode that shows it.
+   !important is what lets them beat a Tailwind display utility. */
+:root:not([data-graphics='max']) .deco-max {
+  display: none !important;
+}
+:root[data-graphics='max'] .deco-min {
+  display: none !important;
 }
 
 #root {
@@ -252,42 +340,21 @@ samp {
   animation: spin 0.6s linear infinite;
 }
 
-/* Glass surfaces live in the components layer so Tailwind utilities (hover
-   borders, per-element rounded-*, etc.) still override them where needed. */
+/* Surfaces live in the components layer so Tailwind utilities (hover borders,
+   per-element rounded-*, etc.) still override them where needed. */
 @layer components {
-  /* ===== Text backdrop — subtle bg for readability over starfield ===== */
-  .text-backdrop {
-    background: var(--panel-bg);
-    backdrop-filter: blur(var(--panel-blur));
-    border-radius: 0.75rem;
-    padding: 20px 24px;
-    border: 1px solid var(--panel-border);
-  }
-
-  /* ===== Glass panel — canonical semi-transparent surface (matches course cards) ===== */
+  /* ===== Panel — the canonical content surface. Every card, panel and
+     container in the app is this. Flat and opaque in min; in max the same
+     class becomes the glass the starfield shows through. ===== */
   .panel {
     background: var(--panel-bg);
     backdrop-filter: blur(var(--panel-blur));
     border: 1px solid var(--panel-border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
   }
 }
 
-/* ===== Minimal background (global, default) ===== */
-.minimal-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100lvh;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(108, 92, 231, 0.09), transparent 70%),
-    #0a0a0f;
-}
-
+/* ===== Cosmos background — max graphics only (see CosmosBackground.tsx) ===== */
 /* ===== Cosmos background (global) ===== */
 .cosmos-bg {
   position: fixed;

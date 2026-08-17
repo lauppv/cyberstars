@@ -1,19 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { ConversationDTO } from '../../../shared/messages';
-
-function Avatar({ url }: { url: string | null }) {
-  return url ? (
-    <img
-      src={url}
-      alt=""
-      className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)]/50 flex-shrink-0"
-    />
-  ) : (
-    <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-base border-2 border-[var(--accent)]/50 flex-shrink-0">
-      🚀
-    </div>
-  );
-}
+import { Avatar } from '../ui/Avatar';
 
 export function ConversationList({
   conversations,
@@ -48,11 +35,11 @@ export function ConversationList({
           <button
             key={c.id}
             onClick={() => onSelect(c.id)}
-            className={`w-full text-left px-3 py-3 flex items-center gap-3 border-b border-[var(--accent)]/15 last:border-b-0 transition cursor-pointer bg-transparent border-x-0 border-t-0 hover:bg-[var(--surface)] ${
+            className={`w-full text-left px-3 py-3 flex items-center gap-3 border-b border-[var(--border)] last:border-b-0 transition cursor-pointer bg-transparent border-x-0 border-t-0 hover:bg-[var(--surface)] ${
               selectedId === c.id ? 'bg-[var(--accent)]/10' : ''
             }`}
           >
-            <Avatar url={c.other.avatarUrl} />
+            <Avatar url={c.other.avatarUrl} name={c.other.name} size={40} />
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
                 <span className="truncate font-semibold text-[13.5px] text-[var(--text)]">
