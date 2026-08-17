@@ -5,6 +5,7 @@ import { useGraphics, type GraphicsMode } from '../hooks/useGraphics';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS } from '../i18n';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
@@ -12,46 +13,6 @@ import { Deco } from '../components/ui/Deco';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
 type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showActivity' | 'showConnections';
-
-function Segmented<T extends string>({
-  value,
-  options,
-  onChange,
-  optionLabel,
-  ariaLabel,
-}: {
-  value: T;
-  options: readonly T[];
-  onChange: (next: T) => void;
-  optionLabel: (opt: T) => string;
-  ariaLabel: string;
-}) {
-  return (
-    <div
-      role="group"
-      aria-label={ariaLabel}
-      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
-    >
-      {options.map((opt) => {
-        const active = value === opt;
-        return (
-          <button
-            key={opt}
-            onClick={() => onChange(opt)}
-            aria-pressed={active}
-            className={`px-3 py-1 text-[12px] font-semibold cursor-pointer border-none transition ${
-              active
-                ? 'bg-[var(--accent)] text-white'
-                : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
-            }`}
-          >
-            {optionLabel(opt)}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
 
 function Toggle({
   checked,
