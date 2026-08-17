@@ -34,6 +34,7 @@ import * as terminalService from '../services/terminalService';
 import { courseMeta } from '../constants/courses';
 import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
 import { canAccessFeature } from '../../shared/features';
+import { Deco } from '../components/ui/Deco';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -349,7 +350,7 @@ export function LessonPage() {
       />
 
       {/* Mobile panel switcher (split-screen stays on lg+) */}
-      <div className="lg:hidden flex border-b border-[var(--accent)]/20 bg-[rgba(22,22,29,0.5)] backdrop-blur-[12px]">
+      <div className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)]">
         <button
           onClick={() => setActiveTab('lesson')}
           className={`flex-1 py-3 text-[13px] font-semibold transition cursor-pointer bg-transparent border-b-2 ${
@@ -378,7 +379,7 @@ export function LessonPage() {
           <div
             ref={contentRef}
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
-            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)]`}
+            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)]`}
           >
             <div className="px-9 py-8">
               {(() => {
@@ -417,7 +418,7 @@ export function LessonPage() {
                               xp: xpForLesson(lessonList[currentIndex].sortOrder),
                             })}
                           >
-                            ⭐{' '}
+                            <Deco>⭐</Deco>{' '}
                             {t('common.xpReward', {
                               xp: xpForLesson(lessonList[currentIndex].sortOrder),
                             })}
@@ -470,7 +471,7 @@ export function LessonPage() {
           {/* Right panel: terminal or editor */}
           {isTerminal ? (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
             >
               <TerminalPanel
                 lines={terminal.lines}
@@ -496,9 +497,9 @@ export function LessonPage() {
             </div>
           ) : (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
             >
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
                 <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
                   <span
                     className="inline-block w-2 h-2 rounded-full"
@@ -523,7 +524,7 @@ export function LessonPage() {
                       aria-haspopup="menu"
                       aria-expanded={menuOpen}
                       aria-label={t('lesson.actions')}
-                      className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
+                      className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
                     >
                       <span className="text-[16px] leading-none">⋯</span>
                     </button>
@@ -618,7 +619,7 @@ export function LessonPage() {
                   />
                 )}
 
-                <div className="flex-1 min-h-0 p-3 border-t border-[var(--accent)]/20 bg-[rgba(22,22,29,0.15)] flex flex-col">
+                <div className="flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex flex-col">
                   <div className="flex gap-2 mb-3 items-center flex-wrap">
                     <RunButton onClick={handleRun} isRunning={isRunning} />
                     {hasTests ? (

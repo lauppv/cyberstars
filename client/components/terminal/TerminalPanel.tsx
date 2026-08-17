@@ -110,7 +110,7 @@ export function TerminalPanel({
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--accent)]/20">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
         <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
           <span className="inline-block w-2 h-2 rounded-full bg-[#FCC624]" />
           {t('terminal.label')}
@@ -146,7 +146,7 @@ export function TerminalPanel({
               aria-haspopup="menu"
               aria-expanded={menuOpen}
               aria-label={t('lesson.actions')}
-              className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
+              className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
             >
               <span className="text-[16px] leading-none">⋯</span>
             </button>

@@ -13,8 +13,8 @@ vi.mock('../context/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
-vi.mock('../hooks/useBackgroundPref', () => ({
-  useBackgroundPref: () => ['cosmos', mockSetBackground],
+vi.mock('../hooks/useGraphics', () => ({
+  useGraphics: () => ['max', mockSetGraphics],
 }));
 vi.mock('../services/profileService', () => ({
   updateProfile: vi.fn(),
@@ -24,7 +24,7 @@ vi.mock('../services/profileService', () => ({
   cancelEmailChange: vi.fn(),
 }));
 
-const mockSetBackground = vi.fn();
+const mockSetGraphics = vi.fn();
 
 const { useAuth } = await import('../context/AuthContext');
 const mockUseAuth = vi.mocked(useAuth);
@@ -132,10 +132,10 @@ describe('SettingsPage', () => {
     await waitFor(() => expect(toggle).toHaveAttribute('aria-checked', 'true'));
   });
 
-  it('switches the background preference', () => {
+  it('switches the graphics mode', () => {
     renderPage();
     fireEvent.click(screen.getByRole('button', { name: 'Minimal' }));
-    expect(mockSetBackground).toHaveBeenCalledWith('minimal');
+    expect(mockSetGraphics).toHaveBeenCalledWith('min');
   });
 
   it('rejects a too-short new password without calling the API', () => {

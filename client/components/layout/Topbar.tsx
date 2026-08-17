@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Avatar } from '../ui/Avatar';
+import { Deco } from '../ui/Deco';
 import { useAuth } from '../../context/AuthContext';
 import { isAdmin } from '../../../shared/auth';
 import { canAccessFeature } from '../../../shared/features';
@@ -84,7 +86,7 @@ export function Topbar({
   }, [mobileNavOpen]);
 
   return (
-    <header className="flex items-center justify-between px-4 sm:px-7 h-14 bg-[rgba(22,22,29,0.78)] backdrop-blur-[14px] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
+    <header className="flex items-center justify-between px-4 sm:px-7 h-14 bg-[var(--chrome)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
       <div className="flex items-center gap-3 sm:gap-6 min-w-0" ref={mobileNavRef}>
         {/* Mobile hamburger (site nav collapses below lg) */}
         <button
@@ -110,7 +112,7 @@ export function Topbar({
                   setMobileNavOpen(false);
                   navigate(item.path);
                 }}
-                className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
               >
                 {t(item.key)}
               </button>
@@ -128,11 +130,7 @@ export function Topbar({
           </button>
         )}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
-          <svg
-            className="w-[22px] h-[22px]"
-            viewBox="0 0 64 64"
-            style={{ filter: 'drop-shadow(0 0 8px var(--accent-glow))' }}
-          >
+          <svg className="w-[22px] h-[22px] brand-mark" viewBox="0 0 64 64">
             <polygon
               points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
               fill="var(--accent)"
@@ -176,7 +174,7 @@ export function Topbar({
                   onClick={() => navigate(item.path)}
                   className={`px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer border-none transition-all ${
                     isActive
-                      ? 'text-[var(--accent)] bg-[rgba(108,92,231,0.07)]'
+                      ? 'nav-active'
                       : 'text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]'
                   }`}
                 >
@@ -201,11 +199,11 @@ export function Topbar({
             <MessagesButton />
             <div className="relative flex items-center gap-2" ref={menuRef}>
               <div
-                className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
+                className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
                 title={t(xp.titleKey)}
               >
                 <span className="inline-flex items-center gap-1.5">
-                  <span>⭐</span>
+                  <Deco>⭐</Deco>
                   {t('level.short', { n: xp.level })}
                 </span>
                 <div
@@ -227,17 +225,7 @@ export function Topbar({
                 aria-haspopup="menu"
                 aria-expanded={menuOpen}
               >
-                {user.avatarUrl ? (
-                  <img
-                    src={user.avatarUrl}
-                    alt=""
-                    className="w-[30px] h-[30px] rounded-full object-cover border-2 border-[var(--accent)]"
-                  />
-                ) : (
-                  <div className="w-[30px] h-[30px] rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]">
-                    🚀
-                  </div>
-                )}
+                <Avatar url={user.avatarUrl} name={user.name} size={30} />
                 <span className="hidden sm:inline text-[13px] font-semibold text-[var(--text)] max-w-[120px] truncate">
                   {user.name}
                 </span>
@@ -249,17 +237,7 @@ export function Topbar({
                   className="absolute top-full right-0 mt-2 w-72 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
                 >
                   <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
-                    {user.avatarUrl ? (
-                      <img
-                        src={user.avatarUrl}
-                        alt=""
-                        className="w-10 h-10 rounded-full object-cover border-2 border-[var(--accent)] flex-shrink-0"
-                      />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg border-2 border-[var(--accent)] flex-shrink-0">
-                        🚀
-                      </div>
-                    )}
+                    <Avatar url={user.avatarUrl} name={user.name} size={40} />
                     <div className="min-w-0">
                       <div className="text-[13px] font-semibold text-[var(--text)] truncate">
                         {user.name}
@@ -275,7 +253,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">👤</span> {t('topbar.profile')}
+                    <Deco className="w-4 text-center">👤</Deco> {t('topbar.profile')}
                   </button>
                   {canAccessFeature('leaderboard', user.role, import.meta.env.PROD) && (
                     <button
@@ -286,7 +264,7 @@ export function Topbar({
                       }}
                       className="sm:hidden w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                     >
-                      <span className="w-4 text-center">🏆</span> {t('nav.leaderboard')}
+                      <Deco className="w-4 text-center">🏆</Deco> {t('nav.leaderboard')}
                     </button>
                   )}
                   {canAccessFeature('connections', user.role, import.meta.env.PROD) && (
@@ -298,7 +276,7 @@ export function Topbar({
                       }}
                       className="sm:hidden w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                     >
-                      <span className="w-4 text-center">🤝</span> {t('connections.title')}
+                      <Deco className="w-4 text-center">🤝</Deco> {t('connections.title')}
                     </button>
                   )}
                   {isAdmin(user.role) && (
@@ -310,7 +288,7 @@ export function Topbar({
                       }}
                       className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--accent)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                     >
-                      <span className="w-4 text-center">📊</span> {t('topbar.admin')}
+                      <Deco className="w-4 text-center">📊</Deco> {t('topbar.admin')}
                     </button>
                   )}
                   <button
@@ -321,7 +299,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">⚙️</span> {t('topbar.settings')}
+                    <Deco className="w-4 text-center">⚙️</Deco> {t('topbar.settings')}
                   </button>
                   <button
                     role="menuitem"
@@ -331,7 +309,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">🔋</span> {t('usage.title')}
+                    <Deco className="w-4 text-center">🔋</Deco> {t('usage.title')}
                   </button>
                   <button
                     role="menuitem"
@@ -341,7 +319,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">🎫</span> {t('topbar.support')}
+                    <Deco className="w-4 text-center">🎫</Deco> {t('topbar.support')}
                   </button>
                   <button
                     role="menuitem"
@@ -351,7 +329,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">📋</span> {t('topbar.rules')}
+                    <Deco className="w-4 text-center">📋</Deco> {t('topbar.rules')}
                   </button>
                   <button
                     role="menuitem"
@@ -361,7 +339,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">✨</span> {t('topbar.welcomeTour')}
+                    <Deco className="w-4 text-center">✨</Deco> {t('topbar.welcomeTour')}
                   </button>
                   <div className="border-t border-[var(--border)]" />
                   <button
@@ -373,7 +351,7 @@ export function Topbar({
                     }}
                     className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--error)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
                   >
-                    <span className="w-4 text-center">↪</span> {t('topbar.signOut')}
+                    <Deco className="w-4 text-center">↪</Deco> {t('topbar.signOut')}
                   </button>
                 </div>
               )}

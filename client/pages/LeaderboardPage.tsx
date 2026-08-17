@@ -4,26 +4,17 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { Avatar } from '../components/ui/Avatar';
+import { Deco } from '../components/ui/Deco';
+import { useGraphics } from '../hooks/useGraphics';
 import { canAccessFeature } from '../../shared/features';
 import * as leaderboardService from '../services/leaderboardService';
 import type { LeaderboardEntry } from '../../shared/leaderboard';
 
 const PAGE_SIZE = 50;
-const MEDALS: Record<number, string> = { 1: '🥇', 2: '🥈', 3: '🥉' };
 
-function Avatar({ url }: { url: string | null }) {
-  return url ? (
-    <img
-      src={url}
-      alt=""
-      className="w-9 h-9 rounded-full object-cover border-2 border-[var(--accent)]/60 flex-shrink-0"
-    />
-  ) : (
-    <div className="w-9 h-9 rounded-full bg-[var(--surface2)] flex items-center justify-center text-sm border-2 border-[var(--accent)]/60 flex-shrink-0">
-      🚀
-    </div>
-  );
-}
+// Max graphics medal the podium; min lets the rank number carry it.
+const MEDALS: Record<number, string> = { 1: '🥇', 2: '🥈', 3: '🥉' };
 
 function Row({
   entry,
@@ -34,18 +25,19 @@ function Row({
   isMe: boolean;
   t: (k: string, o?: Record<string, unknown>) => string;
 }) {
-  const medal = MEDALS[entry.rank];
+  const [graphics] = useGraphics();
+  const medal = graphics === 'max' ? MEDALS[entry.rank] : undefined;
   return (
     <Link
       to={`/u/${entry.userId}`}
-      className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 border-b border-[var(--accent)]/20 last:border-b-0 no-underline text-inherit hover:bg-[var(--accent)]/[0.07] transition ${
+      className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 border-b border-[var(--border)] last:border-b-0 no-underline text-inherit hover:bg-[var(--accent)]/[0.07] transition ${
         isMe ? 'bg-[var(--accent)]/10' : ''
       }`}
     >
       <span className="w-8 sm:w-10 text-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0">
-        {medal ?? `#${entry.rank}`}
+        {medal ?? entry.rank}
       </span>
-      <Avatar url={entry.avatarUrl} />
+      <Avatar url={entry.avatarUrl} name={entry.name} size={36} />
       <div className="min-w-0 flex-1">
         <div className="truncate font-semibold text-[14px] text-[var(--text)] flex items-center gap-2">
           {entry.name}
@@ -58,10 +50,10 @@ function Row({
         <div className="text-[11px] text-[var(--text3)] truncate">{t(entry.titleKey)}</div>
       </div>
       <span
-        className="hidden sm:inline-flex items-center gap-1 flex-shrink-0 text-[12px] font-semibold px-2 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]"
+        className="hidden sm:inline-flex items-center gap-1 flex-shrink-0 text-[12px] font-semibold px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
         title={t('level.short', { n: entry.level })}
       >
-        ⭐ {t('level.short', { n: entry.level })}
+        <Deco>⭐</Deco> {t('level.short', { n: entry.level })}
       </span>
       <div className="flex flex-col items-end flex-shrink-0 w-[92px]">
         <span className="tabular-nums font-bold text-[14px] text-[var(--text)]">
@@ -164,7 +156,7 @@ export function LeaderboardPage() {
                 <button
                   onClick={loadMore}
                   disabled={loadingMore}
-                  className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold hover:bg-[var(--accent)]/20 transition cursor-pointer disabled:opacity-60"
+                  className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold hover:bg-[var(--accent)]/20 transition cursor-pointer disabled:opacity-60"
                 >
                   {loadingMore ? t('common.loading') : t('leaderboard.loadMore')}
                 </button>
@@ -177,7 +169,7 @@ export function LeaderboardPage() {
                 <div className="text-[11px] uppercase tracking-wider text-[var(--text3)] mb-1.5 px-1">
                   {t('leaderboard.yourRank')}
                 </div>
-                <div className="rounded-[var(--radius)] panel border-[var(--accent)]/40 overflow-hidden">
+                <div className="rounded-[var(--radius)] panel border-[var(--border)] overflow-hidden">
                   <Row entry={me} isMe t={t} />
                 </div>
               </div>

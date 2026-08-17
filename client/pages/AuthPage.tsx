@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { ApiClientError } from '../services/apiClient';
 import { forgotPassword, resetPassword } from '../services/authService';
+import { Deco } from '../components/ui/Deco';
+import { EyeIcon } from '../components/ui/EyeIcon';
 
 function getPasswordStrength(pw: string): number {
   if (pw.length === 0) return 0;
@@ -285,16 +287,12 @@ export function AuthPage() {
                 };
                 return (
                   <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
-                    <div
-                      className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0"
-                      style={{
-                        background: 'rgba(34,34,46,.55)',
-                        border: '1px solid rgba(108,92,231,.35)',
-                        backdropFilter: 'blur(8px)',
-                      }}
+                    <Deco
+                      as="div"
+                      className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0 border border-[var(--panel-border)] bg-[var(--glass)]"
                     >
                       {f.icon}
-                    </div>
+                    </Deco>
                     <span>
                       <strong className="text-[var(--text)]">{f.bold}</strong>
                       {f.rest}
@@ -307,7 +305,7 @@ export function AuthPage() {
         </div>
 
         {/* Right form panel */}
-        <div className="relative z-[4] w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[rgba(13,10,24,0.6)] backdrop-blur-[10px] min-[900px]:bg-[var(--bg2)] min-[900px]:backdrop-blur-none border-l border-[var(--border)] flex flex-col justify-center px-6 sm:px-12 py-12 overflow-y-auto">
+        <div className="relative z-[4] w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[rgba(13,10,24,0.6)] min-[900px]:bg-[var(--bg2)] min-[900px]: border-l border-[var(--border)] flex flex-col justify-center px-6 sm:px-12 py-12 overflow-y-auto">
           {/* Tabs — only shown for login/signup */}
           <>
             {(mode === 'login' || mode === 'signup') && (
@@ -372,7 +370,7 @@ export function AuthPage() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--focus-ring)]"
                   />
                 </div>
               )}
@@ -388,7 +386,7 @@ export function AuthPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--focus-ring)]"
                   />
                 </div>
               )}
@@ -409,7 +407,7 @@ export function AuthPage() {
                     maxLength={6}
                     value={code}
                     onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)] text-center tracking-[6px] text-lg font-mono"
+                    className="w-full py-[11px] px-[14px] bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--focus-ring)] text-center tracking-[6px] text-lg font-mono"
                   />
                 </div>
               )}
@@ -439,14 +437,16 @@ export function AuthPage() {
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full py-[11px] px-[14px] pr-10 bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--accent-glow)]"
+                      className="w-full py-[11px] px-[14px] pr-10 bg-[var(--bg)] border border-[var(--border)] rounded-[var(--radius-sm)] text-[var(--text)] text-sm outline-none transition-all placeholder:text-[var(--text3)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_var(--focus-ring)]"
                     />
-                    <span
-                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-[var(--text3)]"
+                    <button
+                      type="button"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer bg-transparent border-none p-0 text-[var(--text3)] hover:text-[var(--text)] transition"
                       onClick={() => setShowPw(!showPw)}
+                      aria-label={t(showPw ? 'auth.hidePassword' : 'auth.showPassword')}
                     >
-                      {showPw ? '🙈' : '👁️'}
-                    </span>
+                      <EyeIcon off={showPw} />
+                    </button>
                   </div>
                   {(mode === 'signup' || mode === 'reset') && password.length > 0 && (
                     <>

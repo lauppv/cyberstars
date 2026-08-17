@@ -4,6 +4,7 @@ import { Topbar } from '../components/layout/Topbar';
 import { ALGO_COURSE_KEYS, xpForCourse } from '../../shared/constants';
 import { useCurriculum } from '../context/CurriculumContext';
 import { courseMeta } from '../constants/courses';
+import { Deco } from '../components/ui/Deco';
 
 const LANGS = ALGO_COURSE_KEYS.map((key) => {
   const m = courseMeta(key);
@@ -35,17 +36,17 @@ export function AlgorithmsPage() {
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
                     style={{ background: lang.color + '20' }}
                   >
-                    {lang.icon}
+                    <Deco>{lang.icon}</Deco>
                   </div>
                   <h3 className="flex-1 min-w-0 text-lg font-bold group-hover:text-[var(--accent)] transition truncate">
                     {lang.name}
                   </h3>
                   {totalXp > 0 && (
                     <span
-                      className="flex-shrink-0 text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]"
+                      className="flex-shrink-0 text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
                       title={t('common.xpTotal', { xp: totalXp })}
                     >
-                      ⭐ {t('common.xpTotal', { xp: totalXp })}
+                      <Deco>⭐</Deco> {t('common.xpTotal', { xp: totalXp })}
                     </span>
                   )}
                 </div>

@@ -89,10 +89,10 @@ export function ShareToForumModal({
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[600px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-xl"
+        className="w-full max-w-[600px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--accent)]/20 sticky top-0 bg-[var(--bg2)] z-[1]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
           <div className="text-base font-bold">{t('forum.share.title')}</div>
           <button
             onClick={onClose}
@@ -139,7 +139,7 @@ export function ShareToForumModal({
             <span className="text-[12px] font-semibold text-[var(--text2)]">
               {t('forum.share.attachedCode')}
             </span>
-            <div className="border border-[var(--accent)]/20 rounded-[var(--radius-sm)] overflow-hidden bg-[#111820]">
+            <div className="border border-[var(--border)] rounded-[var(--radius-sm)] overflow-hidden bg-[#111820]">
               <CodeEditor value={code} language={fenceLang} fontSize="13px" readOnly />
             </div>
           </div>

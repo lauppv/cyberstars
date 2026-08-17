@@ -34,8 +34,8 @@
   height: 32px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: rgba(22, 22, 29, 0.6);
-  backdrop-filter: blur(8px);
+  background: var(--glass);
+  backdrop-filter: blur(var(--panel-blur));
   color: var(--text2);
   font-size: 16px;
   line-height: 1;
@@ -76,8 +76,8 @@
   padding: 7px 16px;
   border-radius: 20px;
   border: 1px solid var(--border);
-  background: rgba(22, 22, 29, 0.6);
-  backdrop-filter: blur(8px);
+  background: var(--glass);
+  backdrop-filter: blur(var(--panel-blur));
   color: var(--text2);
   font-family: var(--font);
   font-size: 12px;
@@ -114,7 +114,7 @@
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--panel-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--panel-blur));
   margin-bottom: 48px;
   min-height: 380px;
   cursor: pointer;
@@ -204,7 +204,7 @@
   top: 20px;
   left: 20px;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--panel-blur));
   padding: 6px 14px;
   border-radius: 20px;
   font-family: var(--mono);
@@ -321,7 +321,7 @@
 
 .almanac-article {
   background: var(--panel-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
@@ -377,7 +377,7 @@
   border-radius: 12px;
   letter-spacing: 1px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(var(--panel-blur));
   z-index: 2;
 }
 
@@ -394,7 +394,7 @@
   border-radius: 12px;
   letter-spacing: 0.5px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(var(--panel-blur));
   z-index: 2;
 }
 
@@ -466,7 +466,7 @@
 
 .side-card {
   background: var(--panel-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 22px;
@@ -740,8 +740,8 @@
   inset: 0;
   z-index: 200;
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--panel-blur));
+  -webkit-backdrop-filter: blur(var(--panel-blur));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -802,7 +802,7 @@
   height: 36px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--panel-blur));
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   font-size: 16px;
@@ -854,7 +854,7 @@
   border-radius: 12px;
   letter-spacing: 1.2px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(var(--panel-blur));
   z-index: 2;
 }
 
@@ -871,7 +871,7 @@
   border-radius: 12px;
   letter-spacing: 0.5px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(var(--panel-blur));
   z-index: 2;
 }
 
@@ -954,8 +954,8 @@
   height: 36px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: rgba(22, 22, 29, 0.6);
-  backdrop-filter: blur(8px);
+  background: var(--glass);
+  backdrop-filter: blur(var(--panel-blur));
   color: var(--text2);
   font-family: var(--mono);
   font-size: 13px;
@@ -1034,4 +1034,15 @@
   .story-modal-emoji {
     font-size: 56px;
   }
+}
+
+/* ===== Minimal graphics =====
+   The almanac leans on emoji as per-entry art. Min graphics drop that art and
+   let the titles and categories carry the page on their own. */
+:root:not([data-graphics='max']) .chip-em,
+:root:not([data-graphics='max']) .hero-art-icon,
+:root:not([data-graphics='max']) .card .emoji,
+:root:not([data-graphics='max']) .fact-emoji,
+:root:not([data-graphics='max']) .story-modal-emoji {
+  display: none;
 }

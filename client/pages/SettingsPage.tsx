@@ -1,47 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { useGraphics, type GraphicsMode } from '../hooks/useGraphics';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { SUPPORTED_LANGS } from '../i18n';
-import { useBackgroundPref, type BackgroundKind } from '../hooks/useBackgroundPref';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
-
-const BACKGROUND_OPTIONS: BackgroundKind[] = ['minimal', 'cosmos'];
+import { Deco } from '../components/ui/Deco';
+import { EyeIcon } from '../components/ui/EyeIcon';
 
 type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showActivity' | 'showConnections';
-
-function EyeIcon({ off }: { off: boolean }) {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {off ? (
-        <>
-          <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.9 19.9 0 0 1 5.06-5.94" />
-          <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a19.86 19.86 0 0 1-3.17 4.19" />
-          <path d="M14.12 14.12A3 3 0 1 1 9.88 9.88" />
-          <line x1="2" y1="2" x2="22" y2="22" />
-        </>
-      ) : (
-        <>
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" />
-          <circle cx="12" cy="12" r="3" />
-        </>
-      )}
-    </svg>
-  );
-}
 
 function Segmented<T extends string>({
   value,
@@ -60,7 +30,7 @@ function Segmented<T extends string>({
     <div
       role="group"
       aria-label={ariaLabel}
-      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--accent)]/30 overflow-hidden"
+      className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
     >
       {options.map((opt) => {
         const active = value === opt;
@@ -122,12 +92,14 @@ function Toggle({
   );
 }
 
+const GRAPHICS_OPTIONS: GraphicsMode[] = ['min', 'max'];
+
 export function SettingsPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { user, isLoggedIn, isLoading, refreshUser } = useAuth();
   const currentLang = i18n.resolvedLanguage ?? i18n.language;
-  const [backgroundKind, setBackgroundKind] = useBackgroundPref();
+  const [graphics, setGraphics] = useGraphics();
 
   const [privacy, setPrivacy] = useState<Record<PrivacyFlag, boolean>>({
     showBio: true,
@@ -281,23 +253,30 @@ export function SettingsPage() {
               {t('settings.preferences')}
             </h2>
             <div className="flex items-center justify-between gap-4 py-2">
-              <span className="text-[13px] text-[var(--text)]">🌐 {t('settings.language')}</span>
+              <span className="text-[13px] text-[var(--text)]">
+                <Deco>🎨</Deco> {t('settings.graphics')}
+              </span>
+              <Segmented
+                value={graphics}
+                options={GRAPHICS_OPTIONS}
+                onChange={setGraphics}
+                optionLabel={(opt) => t(`graphics.${opt}`)}
+                ariaLabel={t('graphics.switch')}
+              />
+            </div>
+            <p className="text-[11px] text-[var(--text3)] -mt-1 mb-1">
+              {t('settings.graphicsHint')}
+            </p>
+            <div className="flex items-center justify-between gap-4 py-2">
+              <span className="text-[13px] text-[var(--text)]">
+                <Deco>🌐</Deco> {t('settings.language')}
+              </span>
               <Segmented
                 value={currentLang}
                 options={SUPPORTED_LANGS}
                 onChange={(lng) => i18n.changeLanguage(lng)}
                 optionLabel={(lng) => t(`lang.${lng}`)}
                 ariaLabel={t('lang.switch')}
-              />
-            </div>
-            <div className="flex items-center justify-between gap-4 py-2">
-              <span className="text-[13px] text-[var(--text)]">🎨 {t('settings.background')}</span>
-              <Segmented
-                value={backgroundKind}
-                options={BACKGROUND_OPTIONS}
-                onChange={setBackgroundKind}
-                optionLabel={(opt) => t(`background.${opt}`)}
-                ariaLabel={t('background.switch')}
               />
             </div>
           </section>
@@ -308,7 +287,7 @@ export function SettingsPage() {
               {t('settings.privacy')}
             </h2>
             <p className="text-[11px] text-[var(--text3)] mb-2">{t('settings.privacyHint')}</p>
-            <div className="divide-y divide-[var(--accent)]/10">
+            <div className="divide-y divide-[var(--border)]">
               <Toggle
                 checked={privacy.showBio}
                 disabled={savingFlag === 'showBio'}
@@ -354,7 +333,7 @@ export function SettingsPage() {
             </h2>
 
             {/* Email change */}
-            <div className="pb-5 border-b border-[var(--accent)]/20">
+            <div className="pb-5 border-b border-[var(--border)]">
               <h3 className="text-[12px] font-semibold text-[var(--text2)] mb-3">
                 {t('profile.emailSection')}
               </h3>

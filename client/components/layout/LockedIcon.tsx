@@ -1,10 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Deco } from '../ui/Deco';
+import { TopbarAction } from './TopbarAction';
 
-// Shared "preview locked" treatment for the top-right action icons (bell,
-// leaderboard, messages). On prod a non-admin sees the icon but can't enter the
-// feature: hovering shows a tooltip, clicking opens a small "coming soon" hint.
-export function LockedIcon({ emoji, label }: { emoji: string; label: string }) {
+// Shared "preview locked" treatment for the top-right actions (bell,
+// leaderboard, messages). On prod a non-admin sees the control but can't enter
+// the feature: hovering shows a tooltip, clicking opens a small "coming soon"
+// hint. It wears the same shape as the live action it stands in for.
+export function LockedIcon({
+  emoji,
+  label,
+  short,
+}: {
+  emoji: string;
+  label: string;
+  short: string;
+}) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -27,26 +38,26 @@ export function LockedIcon({ emoji, label }: { emoji: string; label: string }) {
 
   return (
     <div className="relative" ref={ref}>
-      <button
+      <TopbarAction
+        emoji={emoji}
+        label={`${label} · ${t('common.comingSoon')}`}
+        short={short}
+        dimmed
         onClick={() => setOpen((v) => !v)}
-        className="relative flex items-center justify-center w-9 h-9 rounded-[var(--radius-sm)] bg-transparent border-none text-[17px] opacity-60 hover:bg-[var(--surface)] hover:opacity-80 transition cursor-pointer"
-        title={`${label} · ${t('common.comingSoon')}`}
-        aria-label={`${label} · ${t('common.comingSoon')}`}
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        {emoji}
-        <span className="absolute -bottom-0.5 -right-0.5 text-[9px] leading-none">🔒</span>
-      </button>
+        <Deco className="absolute -bottom-0.5 -right-0.5 text-[9px] leading-none">🔒</Deco>
+      </TopbarAction>
       {open && (
         <div
           role="dialog"
           className="fixed inset-x-2 top-[60px] w-auto sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:mt-2 sm:w-60 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up p-3"
         >
           <div className="flex items-center gap-1.5 text-[12px] font-semibold text-[var(--text)] mb-1.5">
-            <span>{emoji}</span>
+            <Deco>{emoji}</Deco>
             <span className="truncate">{label}</span>
-            <span className="ml-auto text-[9px] font-semibold uppercase tracking-wider px-1 py-0.5 rounded bg-[var(--accent)]/15 text-[var(--accent)]">
+            <span className="ml-auto text-[9px] font-semibold tracking-wider px-1 py-0.5 rounded bg-[var(--accent)]/15 text-[var(--accent)]">
               {t('common.comingSoon')}
             </span>
           </div>

@@ -71,10 +71,10 @@ export function CategoryModal({
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[520px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-xl"
+        className="w-full max-w-[520px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--accent)]/20 sticky top-0 bg-[var(--bg2)] z-[1]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
           <div className="text-base font-bold">
             {editing ? t('forum.categoryModal.editTitle') : t('forum.categoryModal.createTitle')}
           </div>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Deco } from '../ui/Deco';
 
 interface AchievementToastProps {
   icon: string;
@@ -26,7 +27,7 @@ export function AchievementToast({ icon, title, visible, onClose }: AchievementT
         animation: 'toast-in 0.4s cubic-bezier(.22,1,.36,1)',
       }}
     >
-      <span className="text-3xl">{icon}</span>
+      <Deco className="text-3xl">{icon}</Deco>
       <span className="text-sm font-bold text-[var(--text)]">{title}</span>
       <button
         onClick={onClose}

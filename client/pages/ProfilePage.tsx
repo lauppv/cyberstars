@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Avatar } from '../components/ui/Avatar';
 import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
@@ -12,6 +13,7 @@ import { useAllProgress } from '../context/ProgressContext';
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
+import { Deco } from '../components/ui/Deco';
 
 export function ProfilePage() {
   const navigate = useNavigate();
@@ -148,19 +150,9 @@ export function ProfilePage() {
       <main className="flex-1 flex justify-center px-6 py-10">
         <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
           {/* Header with avatar */}
-          <div className="flex items-center gap-5 pb-5 border-b border-[var(--accent)]/20">
+          <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
             <div className="relative group">
-              {user.avatarUrl ? (
-                <img
-                  src={user.avatarUrl}
-                  alt={t('profile.avatarAlt')}
-                  className="w-16 h-16 rounded-full object-cover border-[3px] border-[var(--accent)] flex-shrink-0"
-                />
-              ) : (
-                <div className="w-16 h-16 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[32px] border-[3px] border-[var(--accent)] flex-shrink-0">
-                  🚀
-                </div>
-              )}
+              <Avatar url={user.avatarUrl} name={user.name} size={64} />
               <button
                 onClick={() => fileRef.current?.click()}
                 className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xs font-semibold cursor-pointer border-none"
@@ -184,7 +176,9 @@ export function ProfilePage() {
                 </p>
               )}
               {activeStatus && (
-                <p className="text-[11px] text-[var(--accent)] mt-1">💬 {activeStatus}</p>
+                <p className="text-[11px] text-[var(--accent)] mt-1">
+                  <Deco>💬</Deco> {activeStatus}
+                </p>
               )}
             </div>
           </div>
@@ -199,7 +193,7 @@ export function ProfilePage() {
           )}
 
           {/* Bio & Status */}
-          <div className="py-4 border-b border-[var(--accent)]/20 flex flex-col gap-3">
+          <div className="py-4 border-b border-[var(--border)] flex flex-col gap-3">
             <div>
               <label className="text-[11px] text-[var(--text3)] tracking-[0.5px] mb-1 block">
                 {t('profile.bio')}
@@ -244,7 +238,7 @@ export function ProfilePage() {
           </div>
 
           {/* Level & XP */}
-          <div className="py-4 border-b border-[var(--accent)]/20">
+          <div className="py-4 border-b border-[var(--border)]">
             <div className="flex items-baseline justify-between mb-2">
               <div className="flex items-baseline gap-2">
                 <span className="text-[15px] font-bold text-[var(--accent)]">
@@ -274,29 +268,29 @@ export function ProfilePage() {
           </div>
 
           {/* Stat grid */}
-          <div className="grid grid-cols-4 border-b border-[var(--accent)]/20">
+          <div className="grid grid-cols-4 border-b border-[var(--border)]">
             <div className="py-4 text-center">
               <div className="text-[24px] font-bold">{g.totalCompleted}</div>
               <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.lessonsDone')}
               </div>
             </div>
-            <div className="py-4 text-center border-l border-[var(--accent)]/20">
+            <div className="py-4 text-center border-l border-[var(--border)]">
               <div className="text-[24px] font-bold">{activeCourses}</div>
               <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.activeCourses')}
               </div>
             </div>
-            <div className="py-4 text-center border-l border-[var(--accent)]/20">
+            <div className="py-4 text-center border-l border-[var(--border)]">
               <div className="text-[24px] font-bold">{earnedBadges}</div>
               <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.badges')}
               </div>
             </div>
-            <div className="py-4 text-center border-l border-[var(--accent)]/20">
+            <div className="py-4 text-center border-l border-[var(--border)]">
               <div className="text-[24px] font-bold">
                 {streak === null ? '—' : streak}
-                {streak !== null && streak > 0 && <span className="text-[16px] ml-1">🔥</span>}
+                {streak !== null && streak > 0 && <Deco className="text-[16px] ml-1">🔥</Deco>}
               </div>
               <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.streak')}
@@ -305,7 +299,7 @@ export function ProfilePage() {
           </div>
 
           {/* Badges */}
-          <div className="py-5 border-b border-[var(--accent)]/20">
+          <div className="py-5 border-b border-[var(--border)]">
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
               {t('profile.badges')}
             </h2>
@@ -326,9 +320,9 @@ export function ProfilePage() {
           <div className="py-5">
             <button
               onClick={() => navigate('/settings')}
-              className="w-full px-4 py-2.5 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition flex items-center justify-center gap-2"
+              className="w-full px-4 py-2.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition flex items-center justify-center gap-2"
             >
-              <span>⚙️</span> {t('profile.openSettings')}
+              <Deco>⚙️</Deco> {t('profile.openSettings')}
             </button>
           </div>
         </div>

@@ -24,13 +24,13 @@ const components: Components = {
   },
   th({ children }) {
     return (
-      <th className="border border-[var(--accent)]/30 bg-[rgba(108,92,231,0.12)] px-4 py-2 text-left font-semibold">
+      <th className="border border-[var(--border)] bg-[rgba(108,92,231,0.12)] px-4 py-2 text-left font-semibold">
         {children}
       </th>
     );
   },
   td({ children }) {
-    return <td className="border border-[var(--accent)]/20 px-4 py-2">{children}</td>;
+    return <td className="border border-[var(--border)] px-4 py-2">{children}</td>;
   },
   pre({ children }) {
     return <pre style={{ margin: 0, padding: 0, background: 'transparent' }}>{children}</pre>;

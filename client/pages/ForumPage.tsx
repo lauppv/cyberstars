@@ -18,6 +18,7 @@ import type {
 } from '../../shared/forum';
 import { isAdmin, type AuthenticatedUser, type UserRole } from '../../shared/auth';
 import './ForumPage.css';
+import { Deco } from '../components/ui/Deco';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -222,7 +223,7 @@ function ForumIndex({
                   >
                     <div className="cat-main">
                       <div className="cat-icon" style={{ background: c.color + '22' }}>
-                        {c.icon}
+                        <Deco>{c.icon}</Deco>
                       </div>
                       <div className="cat-info">
                         <div className="cat-name">
@@ -263,7 +264,8 @@ function ForumIndex({
                           title={t('forum.deleteCategoryTitle')}
                           onClick={() => handleDelete(c)}
                         >
-                          🗑
+                          <Deco>🗑</Deco>
+                          <Deco only="min">✕</Deco>
                         </button>
                       </div>
                     )}
@@ -412,7 +414,7 @@ function CategoryView({
 
       <div className="cat-banner" style={{ borderColor: category.color + '44' }}>
         <div className="cat-banner-icon" style={{ background: category.color + '22' }}>
-          {category.icon}
+          <Deco>{category.icon}</Deco>
         </div>
         <div className="cat-banner-info">
           <div className="cat-banner-title">
@@ -481,11 +483,22 @@ function CategoryView({
               onClick={() => onOpenThread(th.id)}
             >
               <div className="thread-marker">
-                {th.pinned ? '📌' : th.locked ? '🔒' : th.solved ? '✓' : '●'}
+                <Deco>{th.pinned ? '📌' : th.locked ? '🔒' : th.solved ? '✓' : '●'}</Deco>
+                <Deco only="min">{th.solved ? '✓' : '●'}</Deco>
               </div>
               <div className="thread-main">
                 <div className="thread-title">
                   <span>{th.title}</span>
+                  {th.pinned && (
+                    <Deco only="min" className="badge">
+                      {t('forum.pinnedBadge')}
+                    </Deco>
+                  )}
+                  {th.locked && (
+                    <Deco only="min" className="badge">
+                      {t('forum.lockedBadge')}
+                    </Deco>
+                  )}
                   {th.solved && <span className="badge badge-solved">{t('forum.solved')}</span>}
                 </div>
                 <div className="thread-author">
@@ -837,7 +850,7 @@ function PostCard({
         </div>
         <div className="post-body">
           <div className="post-deleted-banner">
-            <span>🗑</span>
+            <Deco>🗑</Deco>
             <span>
               {t('forum.deletedBy')} <strong>{post.deletedByName}</strong>
             </span>
@@ -995,7 +1008,7 @@ function PostCard({
                   }
                 }}
               >
-                {isOp ? t('forum.deleteThread') : `🗑 ${t('forum.delete')}`}
+                {isOp ? t('forum.deleteThread') : t('forum.delete')}
               </button>
             )}
           </div>

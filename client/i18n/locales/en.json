@@ -10,6 +10,12 @@
     "laniakea": "Laniakea Explorer"
   },
   "topbar": {
+    "short": {
+      "notifications": "Alerts",
+      "messages": "Inbox",
+      "leaderboard": "Ranking",
+      "connections": "People"
+    },
     "toggleMenu": "Toggle menu",
     "toggleSidebar": "Toggle sidebar",
     "profile": "Profile",
@@ -54,10 +60,10 @@
     "en": "EN",
     "ro": "RO"
   },
-  "background": {
-    "switch": "Switch background",
-    "minimal": "Minimal",
-    "cosmos": "Cosmos"
+  "graphics": {
+    "switch": "Switch graphics",
+    "min": "Minimal",
+    "max": "Cosmos"
   },
   "home": {
     "continueWhereLeftOff": "Continue where you left off",
@@ -213,6 +219,8 @@
     "noMatch": "No challenges match this filter."
   },
   "auth": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "tabs": {
       "login": "Log In",
       "signup": "Sign Up"
@@ -506,12 +514,12 @@
     "allTickets": "All tickets · Admin",
     "noTicketsAdmin": "No tickets from anyone yet.",
     "types": {
-      "BUG": "🐞 Bug report",
-      "QUESTION": "❓ Question",
-      "RULE_VIOLATION": "🚫 Rule violation",
-      "FEEDBACK": "💡 Feedback / idea",
-      "ACCOUNT": "👤 Account issue",
-      "OTHER": "📋 Other"
+      "BUG": "Bug report",
+      "QUESTION": "Question",
+      "RULE_VIOLATION": "Rule violation",
+      "FEEDBACK": "Feedback / idea",
+      "ACCOUNT": "Account issue",
+      "OTHER": "Other"
     },
     "status": {
       "OPEN": "Open",
@@ -634,7 +642,7 @@
     "backTo": "Back to {{name}}",
     "categoryNotFound": "Category not found.",
     "bannerThreads": "threads",
-    "restrictedThreads": "🔒 Only moderators and admins can start threads in this category.",
+    "restrictedThreads": "Only moderators and admins can start threads in this category.",
     "threadTitlePlaceholder": "Thread title...",
     "composerPlaceholder": "Write your post... Markdown supported.",
     "cancel": "Cancel",
@@ -653,8 +661,8 @@
     "replyPlaceholder": "Type your reply...",
     "markdownSupported": "Markdown supported",
     "postReplyBtn": "Post Reply",
-    "restrictedReply": "🔒 Only moderators and admins can reply in this category.",
-    "locked": "🔒 This thread is locked. No new replies.",
+    "restrictedReply": "Only moderators and admins can reply in this category.",
+    "locked": "This thread is locked. No new replies.",
     "deletedBy": "This post was deleted by",
     "changeRole": "Change this member's role",
     "editedBy": "edited by {{name}}",
@@ -666,7 +674,9 @@
     "edit": "✎ Edit",
     "confirmDeleteThread": "Delete this entire thread?",
     "confirmDeletePost": "Delete this post?",
-    "deleteThread": "🗑 Delete thread",
+    "pinnedBadge": "Pinned",
+    "lockedBadge": "Locked",
+    "deleteThread": "Delete thread",
     "delete": "Delete",
     "actionError": "Something went wrong. Please try again."
   },
@@ -698,8 +708,8 @@
     "nextFact": "Next fun fact",
     "prevQuote": "Previous quote",
     "nextQuote": "Next quote",
-    "funFact": "🎲 Fun Fact",
-    "quotes": "💬 Quotes"
+    "funFact": "Fun Fact",
+    "quotes": "Quotes"
   },
   "lesson": {
     "difficulty": {
@@ -709,9 +719,9 @@
     },
     "courseMilestone": "Course Milestone!",
     "lessonComplete": "Lesson Complete!",
-    "tabLesson": "📖 Lesson",
-    "tabTerminal": "⌨️ Terminal",
-    "tabCode": "💻 Code",
+    "tabLesson": "Lesson",
+    "tabTerminal": "Terminal",
+    "tabCode": "Code",
     "lessonNofM": "Lesson {{n}} of {{total}}",
     "algoNofM": "Algorithm {{n}} of {{total}}",
     "completed": "✓ Completed",
@@ -721,11 +731,11 @@
     "resetTitle": "Reset code",
     "reset": "↺ Reset",
     "confirmReset": "Reset the code to the lesson's default template? Your current code will be lost.",
-    "save": "💾 Save",
-    "shareToForum": "📤 Share to forum",
+    "save": "Save",
+    "shareToForum": "Share to forum",
     "codeSaved": "Code saved!",
-    "showSolution": "💡 Show Solution",
-    "getHint": "✨ Get a hint",
+    "showSolution": "Show Solution",
+    "getHint": "Get a hint",
     "solutionConfirmTitle": "Show the solution?",
     "solutionConfirmBody": "Try to solve it yourself first — you learn more from the struggle. Revealing the solution uses one of your daily reveals.",
     "solutionConfirmCta": "Reveal solution",
@@ -799,7 +809,7 @@
     "run": "▶ Run",
     "running": "Running...",
     "runTitle": "Ctrl + Enter to run code",
-    "output": "★ Output",
+    "output": "Output",
     "runToSee": "Run your code to see the output..."
   },
   "terminal": {
@@ -836,7 +846,7 @@
     }
   },
   "tests": {
-    "run": "🧪 Run Tests",
+    "run": "Run Tests",
     "running": "Testing...",
     "comingSoon": "Coming soon",
     "passedTitle": "All tests passed!",
@@ -939,7 +949,8 @@
   "settings": {
     "preferences": "Preferences",
     "language": "Language",
-    "background": "Background",
+    "graphics": "Graphics",
+    "graphicsHint": "Minimal keeps the interface flat and quiet. Cosmos adds the starfield, glass panels and icons.",
     "privacy": "Privacy",
     "privacyHint": "Choose what other explorers can see on your public profile. Everything is visible by default.",
     "showBio": "Bio & status",

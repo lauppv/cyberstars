@@ -13,6 +13,7 @@ import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
 } from '../../shared/constants';
+import { Deco } from '../components/ui/Deco';
 
 interface CourseData {
   key: string;
@@ -114,7 +115,7 @@ export function CoursesPage() {
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
                     style={{ background: c.color + '20' }}
                   >
-                    {c.icon}
+                    <Deco>{c.icon}</Deco>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div
@@ -136,10 +137,10 @@ export function CoursesPage() {
                     </div>
                   </div>
                   <span
-                    className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]"
+                    className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
                     title={t('common.xpTotal', { xp: c.totalXp })}
                   >
-                    ⭐ {t('common.xpTotal', { xp: c.totalXp })}
+                    <Deco>⭐</Deco> {t('common.xpTotal', { xp: c.totalXp })}
                   </span>
                 </div>
                 <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
@@ -209,7 +210,7 @@ export function CoursesPage() {
                 className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center text-[26px] flex-shrink-0"
                 style={{ background: syllabus.color + '20' }}
               >
-                {syllabus.icon}
+                <Deco>{syllabus.icon}</Deco>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-xl font-bold mb-1">{syllabus.name}</div>
@@ -218,7 +219,7 @@ export function CoursesPage() {
                     {syllabus.lessonCount} {t('courses.lessons', { count: syllabus.lessonCount })}
                   </span>
                   <span className="text-[var(--accent)]">
-                    ⭐ {t('common.xpTotal', { xp: syllabus.totalXp })}
+                    <Deco>⭐</Deco> {t('common.xpTotal', { xp: syllabus.totalXp })}
                   </span>
                 </div>
               </div>

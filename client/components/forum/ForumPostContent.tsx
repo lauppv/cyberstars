@@ -21,7 +21,7 @@ export function ForumPostContent({ content }: { content: string }) {
     parts.push(
       <div
         key={key++}
-        className="my-2 border border-[var(--accent)]/20 rounded-[var(--radius-sm)] overflow-hidden bg-[#111820]"
+        className="my-2 border border-[var(--border)] rounded-[var(--radius-sm)] overflow-hidden bg-[#111820]"
       >
         <CodeEditor value={code} language={lang} fontSize="13px" readOnly />
       </div>,

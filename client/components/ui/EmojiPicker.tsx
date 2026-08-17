@@ -45,14 +45,14 @@ export function EmojiPicker({
         title={label ?? t('profile.addEmoji')}
         className={
           triggerClassName ??
-          'px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[16px] leading-none cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50'
+          'px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[16px] leading-none cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50'
         }
       >
         😊
       </button>
       {open && (
         <div
-          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 bg-[rgba(22,22,29,0.92)] backdrop-blur-[12px] shadow-lg grid grid-cols-8 gap-0.5`}
+          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} z-20 mt-1 w-[224px] p-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--popover)] shadow-lg grid grid-cols-8 gap-0.5`}
         >
           {EMOJIS.map((emoji) => (
             <button

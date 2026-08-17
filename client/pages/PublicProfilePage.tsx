@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Avatar } from '../components/ui/Avatar';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -17,20 +18,7 @@ import * as connectionsService from '../services/connectionsService';
 import type { PublicProfile } from '../../shared/profile';
 import type { ConnectionRelation } from '../../shared/connections';
 import type { Course } from '../../shared/lesson';
-
-function Avatar({ url }: { url: string | null }) {
-  return url ? (
-    <img
-      src={url}
-      alt=""
-      className="w-20 h-20 rounded-full object-cover border-[3px] border-[var(--accent)] flex-shrink-0"
-    />
-  ) : (
-    <div className="w-20 h-20 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[36px] border-[3px] border-[var(--accent)] flex-shrink-0">
-      🚀
-    </div>
-  );
-}
+import { Deco } from '../components/ui/Deco';
 
 // Resolve a course's completed slugs to lesson titles (via the loaded
 // curriculum), ordered by the lesson's position in the course. Falls back to the
@@ -58,7 +46,7 @@ function CompletedCourses({ courses }: { courses: { courseKey: string; lessons: 
     });
 
   return (
-    <div className="py-4 border-b border-[var(--accent)]/20">
+    <div className="py-4 border-b border-[var(--border)]">
       <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] uppercase mb-2">
         {t('publicProfile.completedCourses')}
       </div>
@@ -77,9 +65,9 @@ function CompletedCourses({ courses }: { courses: { courseKey: string; lessons: 
               <button
                 onClick={() => toggle(courseKey)}
                 aria-expanded={isOpen}
-                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
+                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
               >
-                <span className="text-[15px] leading-none">{meta.icon}</span>
+                <Deco className="text-[15px] leading-none">{meta.icon}</Deco>
                 <span className="text-[13px] font-semibold text-[var(--text)] flex-1 min-w-0 truncate">
                   {courseTitle(courseKey)}
                 </span>
@@ -232,7 +220,7 @@ export function PublicProfilePage() {
       value: (
         <>
           {profile.stats.streak}
-          {profile.stats.streak > 0 && <span className="text-[16px] ml-1">🔥</span>}
+          {profile.stats.streak > 0 && <Deco className="text-[16px] ml-1">🔥</Deco>}
         </>
       ),
       label: t('profile.streak'),
@@ -254,8 +242,8 @@ export function PublicProfilePage() {
         ) : (
           <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
             {/* Header */}
-            <div className="flex items-center gap-5 pb-5 border-b border-[var(--accent)]/20">
-              <Avatar url={profile.avatarUrl} />
+            <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
+              <Avatar url={profile.avatarUrl} name={profile.name} size={80} />
               <div className="flex-1 min-w-0">
                 <h1 className="text-[22px] font-bold tracking-[-0.3px] truncate">{profile.name}</h1>
                 {memberSinceLabel && (
@@ -264,20 +252,22 @@ export function PublicProfilePage() {
                   </p>
                 )}
                 {profile.status && (
-                  <p className="text-[11px] text-[var(--accent)] mt-1">💬 {profile.status}</p>
+                  <p className="text-[11px] text-[var(--accent)] mt-1">
+                    <Deco>💬</Deco> {profile.status}
+                  </p>
                 )}
               </div>
             </div>
 
             {profile.bio && (
-              <p className="py-4 border-b border-[var(--accent)]/20 text-[13px] text-[var(--text2)] whitespace-pre-wrap break-words">
+              <p className="py-4 border-b border-[var(--border)] text-[13px] text-[var(--text2)] whitespace-pre-wrap break-words">
                 {profile.bio}
               </p>
             )}
 
             {/* Level & XP */}
             {profile.progress && (
-              <div className="py-4 border-b border-[var(--accent)]/20 flex items-center justify-between">
+              <div className="py-4 border-b border-[var(--border)] flex items-center justify-between">
                 <div className="flex items-baseline gap-2">
                   <span className="text-[15px] font-bold text-[var(--accent)]">
                     {t('level.label', { n: profile.progress.level })}
@@ -289,7 +279,7 @@ export function PublicProfilePage() {
                 <div className="flex items-center gap-3 text-[12px] text-[var(--text3)] tabular-nums">
                   {profile.progress.rank != null && (
                     <span
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] font-semibold"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] font-semibold"
                       title={t('publicProfile.rank', { n: profile.progress.rank })}
                     >
                       #{profile.progress.rank}
@@ -305,13 +295,13 @@ export function PublicProfilePage() {
             {/* Stat grid — cells depend on which sections are visible */}
             {statCells.length > 0 && (
               <div
-                className="grid border-b border-[var(--accent)]/20"
+                className="grid border-b border-[var(--border)]"
                 style={{ gridTemplateColumns: `repeat(${statCells.length}, minmax(0, 1fr))` }}
               >
                 {statCells.map((cell, i) => (
                   <div
                     key={cell.key}
-                    className={`py-4 text-center ${i > 0 ? 'border-l border-[var(--accent)]/20' : ''}`}
+                    className={`py-4 text-center ${i > 0 ? 'border-l border-[var(--border)]' : ''}`}
                   >
                     <div className="text-[24px] font-bold">{cell.value}</div>
                     <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
@@ -324,7 +314,7 @@ export function PublicProfilePage() {
 
             {/* Earned badges */}
             {profile.progress && profile.progress.badgeList.length > 0 && (
-              <div className="py-4 border-b border-[var(--accent)]/20">
+              <div className="py-4 border-b border-[var(--border)]">
                 <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] uppercase mb-2">
                   {t('profile.badges')}
                 </div>
@@ -349,14 +339,14 @@ export function PublicProfilePage() {
 
             {/* Activity heatmap */}
             {profile.activity && (
-              <div className="py-4 border-b border-[var(--accent)]/20">
+              <div className="py-4 border-b border-[var(--border)]">
                 <ActivityHeatmap activityCounts={activityCounts} />
               </div>
             )}
 
             {/* Connections */}
             {profile.connections && profile.connections.count > 0 && (
-              <div className="py-4 border-b border-[var(--accent)]/20">
+              <div className="py-4 border-b border-[var(--border)]">
                 <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] uppercase mb-2">
                   {t('connections.title')}{' '}
                   <span className="text-[var(--accent)] tabular-nums">
@@ -368,19 +358,9 @@ export function PublicProfilePage() {
                     <button
                       key={c.id}
                       onClick={() => navigate(`/u/${c.id}`)}
-                      className="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
+                      className="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
                     >
-                      {c.avatarUrl ? (
-                        <img
-                          src={c.avatarUrl}
-                          alt=""
-                          className="w-6 h-6 rounded-full object-cover border border-[var(--accent)] flex-shrink-0"
-                        />
-                      ) : (
-                        <span className="w-6 h-6 rounded-full bg-[var(--surface2)] flex items-center justify-center text-[12px] border border-[var(--accent)] flex-shrink-0">
-                          🚀
-                        </span>
-                      )}
+                      <Avatar url={c.avatarUrl} name={c.name} size={24} />
                       <span className="text-[13px] font-semibold text-[var(--text)] truncate">
                         {c.name}
                       </span>
@@ -402,7 +382,7 @@ export function PublicProfilePage() {
                   </button>
                   <button
                     onClick={() => navigate('/settings')}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
+                    className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
                   >
                     {t('publicProfile.settings')}
                   </button>
@@ -422,26 +402,26 @@ export function PublicProfilePage() {
                     <button
                       onClick={sendConnectionRequest}
                       disabled={connecting}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
+                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
                     >
                       {t('publicProfile.connect')}
                     </button>
                   )}
                   {canConnect && relation === 'pending_outgoing' && (
-                    <span className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/30 text-[var(--text3)] text-[13px] font-semibold">
+                    <span className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] text-[var(--text3)] text-[13px] font-semibold">
                       {t('publicProfile.requestSent')}
                     </span>
                   )}
                   {canConnect && relation === 'pending_incoming' && (
                     <button
                       onClick={() => navigate('/connections')}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
+                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
                     >
                       {t('publicProfile.respondRequest')}
                     </button>
                   )}
                   {canConnect && relation === 'connected' && (
-                    <span className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold">
+                    <span className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold">
                       {t('publicProfile.connected')} ✓
                     </span>
                   )}

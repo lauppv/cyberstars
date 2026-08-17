@@ -10,6 +10,12 @@
     "laniakea": "Laniakea Explorer"
   },
   "topbar": {
+    "short": {
+      "notifications": "Alerte",
+      "messages": "Mesaje",
+      "leaderboard": "Clasament",
+      "connections": "Persoane"
+    },
     "toggleMenu": "Comută meniul",
     "toggleSidebar": "Comută bara laterală",
     "profile": "Profil",
@@ -54,10 +60,10 @@
     "en": "EN",
     "ro": "RO"
   },
-  "background": {
-    "switch": "Schimbă fundalul",
-    "minimal": "Minimal",
-    "cosmos": "Cosmos"
+  "graphics": {
+    "switch": "Schimbă grafica",
+    "min": "Minimal",
+    "max": "Cosmos"
   },
   "home": {
     "continueWhereLeftOff": "Continuă de unde ai rămas",
@@ -215,6 +221,8 @@
     "noMatch": "Nicio provocare nu corespunde acestui filtru."
   },
   "auth": {
+    "showPassword": "Arată parola",
+    "hidePassword": "Ascunde parola",
     "tabs": {
       "login": "Autentificare",
       "signup": "Înregistrare"
@@ -508,12 +516,12 @@
     "allTickets": "Toate tichetele · Admin",
     "noTicketsAdmin": "Niciun tichet de la nimeni încă.",
     "types": {
-      "BUG": "🐞 Raportare bug",
-      "QUESTION": "❓ Întrebare",
-      "RULE_VIOLATION": "🚫 Încălcare reguli",
-      "FEEDBACK": "💡 Feedback / idee",
-      "ACCOUNT": "👤 Problemă de cont",
-      "OTHER": "📋 Altele"
+      "BUG": "Raportare bug",
+      "QUESTION": "Întrebare",
+      "RULE_VIOLATION": "Încălcare reguli",
+      "FEEDBACK": "Feedback / idee",
+      "ACCOUNT": "Problemă de cont",
+      "OTHER": "Altele"
     },
     "status": {
       "OPEN": "Deschis",
@@ -636,7 +644,7 @@
     "backTo": "Înapoi la {{name}}",
     "categoryNotFound": "Categoria nu a fost găsită.",
     "bannerThreads": "discuții",
-    "restrictedThreads": "🔒 Doar moderatorii și administratorii pot începe discuții în această categorie.",
+    "restrictedThreads": "Doar moderatorii și administratorii pot începe discuții în această categorie.",
     "threadTitlePlaceholder": "Titlul discuției...",
     "composerPlaceholder": "Scrie postarea ta... Markdown acceptat.",
     "cancel": "Anulează",
@@ -655,8 +663,8 @@
     "replyPlaceholder": "Scrie răspunsul tău...",
     "markdownSupported": "Markdown acceptat",
     "postReplyBtn": "Postează răspunsul",
-    "restrictedReply": "🔒 Doar moderatorii și administratorii pot răspunde în această categorie.",
-    "locked": "🔒 Această discuție este blocată. Fără răspunsuri noi.",
+    "restrictedReply": "Doar moderatorii și administratorii pot răspunde în această categorie.",
+    "locked": "Această discuție este blocată. Fără răspunsuri noi.",
     "deletedBy": "Această postare a fost ștearsă de",
     "changeRole": "Schimbă rolul acestui membru",
     "editedBy": "editat de {{name}}",
@@ -668,7 +676,9 @@
     "edit": "✎ Editează",
     "confirmDeleteThread": "Ștergi întreaga discuție?",
     "confirmDeletePost": "Ștergi această postare?",
-    "deleteThread": "🗑 Șterge discuția",
+    "pinnedBadge": "Fixat",
+    "lockedBadge": "Blocat",
+    "deleteThread": "Șterge discuția",
     "delete": "Șterge",
     "actionError": "Ceva n-a mers. Încearcă din nou."
   },
@@ -700,8 +710,8 @@
     "nextFact": "Curiozitatea următoare",
     "prevQuote": "Citatul anterior",
     "nextQuote": "Citatul următor",
-    "funFact": "🎲 Curiozitate",
-    "quotes": "💬 Citate"
+    "funFact": "Curiozitate",
+    "quotes": "Citate"
   },
   "lesson": {
     "difficulty": {
@@ -711,9 +721,9 @@
     },
     "courseMilestone": "Etapă de curs!",
     "lessonComplete": "Lecție finalizată!",
-    "tabLesson": "📖 Lecție",
-    "tabTerminal": "⌨️ Terminal",
-    "tabCode": "💻 Cod",
+    "tabLesson": "Lecție",
+    "tabTerminal": "Terminal",
+    "tabCode": "Cod",
     "lessonNofM": "Lecția {{n}} din {{total}}",
     "algoNofM": "Algoritmul {{n}} din {{total}}",
     "completed": "✓ Finalizat",
@@ -723,11 +733,11 @@
     "resetTitle": "Resetează codul",
     "reset": "↺ Resetează",
     "confirmReset": "Resetezi codul la șablonul implicit al lecției? Codul actual se va pierde.",
-    "save": "💾 Salvează",
-    "shareToForum": "📤 Partajează pe forum",
+    "save": "Salvează",
+    "shareToForum": "Partajează pe forum",
     "codeSaved": "Cod salvat!",
-    "showSolution": "💡 Arată soluția",
-    "getHint": "✨ Cere un indiciu",
+    "showSolution": "Arată soluția",
+    "getHint": "Cere un indiciu",
     "solutionConfirmTitle": "Arăt soluția?",
     "solutionConfirmBody": "Încearcă întâi să rezolvi singur — înveți mai mult din efort. Dezvăluirea soluției consumă una dintre dezvăluirile tale zilnice.",
     "solutionConfirmCta": "Dezvăluie soluția",
@@ -801,7 +811,7 @@
     "run": "▶ Rulează",
     "running": "Se rulează...",
     "runTitle": "Ctrl + Enter pentru a rula codul",
-    "output": "★ Rezultat",
+    "output": "Rezultat",
     "runToSee": "Rulează codul pentru a vedea rezultatul..."
   },
   "terminal": {
@@ -838,7 +848,7 @@
     }
   },
   "tests": {
-    "run": "🧪 Rulează testele",
+    "run": "Rulează testele",
     "running": "Se testează...",
     "comingSoon": "Urmează",
     "passedTitle": "Toate testele au trecut!",
@@ -941,7 +951,8 @@
   "settings": {
     "preferences": "Preferințe",
     "language": "Limbă",
-    "background": "Fundal",
+    "graphics": "Grafică",
+    "graphicsHint": "Minimal păstrează interfața plată și liniștită. Cosmos adaugă câmpul de stele, panourile de sticlă și iconurile.",
     "privacy": "Confidențialitate",
     "privacyHint": "Alege ce pot vedea ceilalți exploratori pe profilul tău public. Totul este vizibil implicit.",
     "showBio": "Bio și status",

@@ -36,10 +36,10 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="guest-signup-title"
-        className="w-full max-w-[480px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--accent)]/30 rounded-xl"
+        className="w-full max-w-[480px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className="flex items-start justify-between px-6 py-4 border-b border-[var(--accent)]/20">
+        <div className="flex items-start justify-between px-6 py-4 border-b border-[var(--border)]">
           <div>
             <div id="guest-signup-title" className="text-base font-bold">
               Nice — your code just ran!
@@ -61,14 +61,14 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
           <ul className="flex flex-col gap-2.5">
             {BENEFITS.map((b) => (
               <li key={b} className="flex items-start gap-2.5 text-[14px] text-[var(--text)]">
-                <span className="text-[var(--accent)] mt-0.5">✦</span>
+                <span className="text-[var(--accent)] mt-0.5">•</span>
                 <span>{b}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[var(--accent)]/20">
+        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[var(--border)]">
           <button
             onClick={onClose}
             className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-transparent text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)] transition"
@@ -77,7 +77,7 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
           </button>
           <button
             onClick={goSignup}
-            className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--accent)]/50 bg-[var(--accent)]/20 text-[var(--accent)] hover:bg-[var(--accent)]/30 transition"
+            className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-[var(--accent)]/20 text-[var(--accent)] hover:bg-[var(--accent)]/30 transition"
           >
             Create free account
           </button>

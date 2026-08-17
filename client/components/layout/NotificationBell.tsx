@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
 import { LockedIcon } from './LockedIcon';
+import { TopbarAction } from './TopbarAction';
 
 export function NotificationBell() {
   const { t } = useTranslation();
@@ -30,25 +31,27 @@ export function NotificationBell() {
 
   if (!enabled) {
     if (!user) return null;
-    return <LockedIcon emoji="🔔" label={t('notif.title')} />;
+    return (
+      <LockedIcon emoji="🔔" label={t('notif.title')} short={t('topbar.short.notifications')} />
+    );
   }
 
   return (
     <div className="relative" ref={ref}>
-      <button
+      <TopbarAction
+        emoji="🔔"
+        label={t('notif.title')}
+        short={t('topbar.short.notifications')}
         onClick={() => setOpen((v) => !v)}
-        className="relative flex items-center justify-center w-9 h-9 rounded-[var(--radius-sm)] bg-transparent border-none text-[17px] hover:bg-[var(--surface)] transition cursor-pointer"
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label={t('notif.title')}
       >
-        🔔
         {unreadCount > 0 && (
           <span className="absolute top-0.5 right-0.5 min-w-[16px] h-[16px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-bold leading-[16px] text-center tabular-nums">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
-      </button>
+      </TopbarAction>
       {open && <NotificationDropdown onClose={() => setOpen(false)} />}
     </div>
   );

@@ -11,6 +11,7 @@ import {
 import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/almanac';
 import { dateKey } from '../../shared/constants';
 import './AlmanacPage.css';
+import { Deco } from '../components/ui/Deco';
 
 // Deterministic per-day index so the featured read rotates once every 24h — the
 // same pick for everyone on a given local day (mirrors the daily lesson/algo).
@@ -201,7 +202,9 @@ export function AlmanacPage() {
               <div className="hero-art-badge">{t('almanac.featured')}</div>
             </div>
             <div className="hero-content">
-              <div className="hero-cat">✦ {featured.catLabel}</div>
+              <div className="hero-cat">
+                <Deco>✦</Deco> {featured.catLabel}
+              </div>
               <h2 className="hero-title">{featured.title}</h2>
               <p className="hero-excerpt">{featured.excerpt}</p>
               <div className="hero-meta">

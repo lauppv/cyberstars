@@ -428,7 +428,9 @@ describe('CategoryView', () => {
     await screen.findByText('Pinned one');
     expect(screen.getByText('📌')).toBeInTheDocument();
     expect(screen.getByText('🔒')).toBeInTheDocument();
-    expect(screen.getByText('✓')).toBeInTheDocument();
+    expect(screen.getAllByText('✓').length).toBeGreaterThan(0);
+    expect(screen.getByText('Pinned')).toBeInTheDocument();
+    expect(screen.getByText('Locked')).toBeInTheDocument();
     expect(screen.getByText('2.5k')).toBeInTheDocument();
     expect(screen.getByText('Grace')).toBeInTheDocument();
     expect(screen.getByText('1h ago')).toBeInTheDocument();
@@ -822,7 +824,7 @@ describe('ThreadView moderation', () => {
 
     await screen.findByText('My answer');
     const reply = screen.getByText('My answer').closest('.forum-post')!;
-    fireEvent.click(within(reply as HTMLElement).getByText('🗑 Delete'));
+    fireEvent.click(within(reply as HTMLElement).getByText('Delete'));
 
     await waitFor(() => expect(mocked.deletePost).toHaveBeenCalledWith(11));
     await waitFor(() => expect(mocked.getThread).toHaveBeenCalledTimes(2));
@@ -837,7 +839,7 @@ describe('ThreadView moderation', () => {
 
     await screen.findByText('My answer');
     const reply = screen.getByText('My answer').closest('.forum-post')!;
-    fireEvent.click(within(reply as HTMLElement).getByText('🗑 Delete'));
+    fireEvent.click(within(reply as HTMLElement).getByText('Delete'));
 
     await waitFor(() => expect(mocked.getThreads).toHaveBeenCalledWith('python-help'));
   });
@@ -850,7 +852,7 @@ describe('ThreadView moderation', () => {
     renderAt('/forum/t/5');
 
     await screen.findByText('My question');
-    fireEvent.click(screen.getByText('🗑 Delete thread'));
+    fireEvent.click(screen.getByText('Delete thread'));
 
     await waitFor(() => expect(mocked.deleteThread).toHaveBeenCalledWith(5));
     await waitFor(() => expect(mocked.getThreads).toHaveBeenCalledWith('python-help'));
@@ -863,7 +865,7 @@ describe('ThreadView moderation', () => {
     renderAt('/forum/t/5');
 
     await screen.findByText('My question');
-    fireEvent.click(screen.getByText('🗑 Delete thread'));
+    fireEvent.click(screen.getByText('Delete thread'));
     expect(mocked.deleteThread).not.toHaveBeenCalled();
   });
 
@@ -875,7 +877,7 @@ describe('ThreadView moderation', () => {
     renderAt('/forum/t/5');
 
     await screen.findByText('My question');
-    fireEvent.click(screen.getByText('🗑 Delete thread'));
+    fireEvent.click(screen.getByText('Delete thread'));
 
     expect(await screen.findByRole('alert')).toHaveTextContent('Thread is pinned');
   });
@@ -889,7 +891,7 @@ describe('ThreadView moderation', () => {
 
     await screen.findByText('My answer');
     const reply = screen.getByText('My answer').closest('.forum-post')!;
-    fireEvent.click(within(reply as HTMLElement).getByText('🗑 Delete'));
+    fireEvent.click(within(reply as HTMLElement).getByText('Delete'));
 
     expect(await screen.findByRole('alert')).toHaveTextContent('Already gone');
   });
@@ -904,7 +906,7 @@ describe('ThreadView moderation', () => {
 
     await screen.findByText('Try a for loop');
     expect(screen.queryByText('✎ Edit')).not.toBeInTheDocument();
-    expect(screen.queryByText('🗑 Delete thread')).not.toBeInTheDocument();
+    expect(screen.queryByText('Delete thread')).not.toBeInTheDocument();
   });
 
   it('gives a moderator controls over a plain user post', async () => {

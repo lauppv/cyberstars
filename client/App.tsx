@@ -11,9 +11,8 @@ import { RadioProvider } from './context/RadioContext';
 import { UsageProvider } from './context/UsageContext';
 import { RadioPlayer } from './components/radio/RadioPlayer';
 import { CosmosBackground } from './components/ui/CosmosBackground';
-import { MinimalBackground } from './components/ui/MinimalBackground';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
-import { useBackgroundPref } from './hooks/useBackgroundPref';
+import { useGraphics } from './hooks/useGraphics';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
 
@@ -69,15 +68,17 @@ const ConnectionsPage = lazy(() =>
   import('./pages/ConnectionsPage').then((m) => ({ default: m.ConnectionsPage })),
 );
 
+// The starfield only exists in max graphics; min paints the page from the body
+// background alone. Auth/welcome bring their own backgrounds either way.
 function GlobalBackground() {
   const { pathname } = useLocation();
-  const [kind] = useBackgroundPref();
+  const [graphics] = useGraphics();
   if (pathname === '/getstarted' || pathname === '/welcome') return null;
-  return kind === 'cosmos' ? <CosmosBackground /> : <MinimalBackground />;
+  return graphics === 'max' ? <CosmosBackground /> : null;
 }
 
 // The radio chip lives at the app root so playback survives navigation, but the
-// auth/welcome pages have their own immersive backgrounds and no chrome.
+// auth/welcome pages carry no chrome.
 function GlobalRadio() {
   const { pathname } = useLocation();
   if (pathname === '/getstarted' || pathname === '/welcome') return null;

@@ -5,6 +5,7 @@ import type {
   StructureFailure,
   TestCaseResult,
 } from '../../../shared/tests';
+import { Deco } from '../ui/Deco';
 
 interface TestResultsProps {
   results: RunTestsResponse;
@@ -42,7 +43,7 @@ function CaseRow({ result }: { result: TestCaseResult }) {
   const label = `${t('tests.caseN', { n: result.index + 1 })}${result.visible ? '' : ` (${t('tests.hidden')})`}`;
 
   return (
-    <div className="border border-[var(--accent)]/20 rounded-[var(--radius-sm)] px-3 py-2">
+    <div className="border border-[var(--border)] rounded-[var(--radius-sm)] px-3 py-2">
       <div className="flex items-center gap-2 text-[12px] font-semibold">
         <span className={result.passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}>
           {result.passed ? '✓' : '✗'}
@@ -116,13 +117,16 @@ export function TestResults({ results, onClose }: TestResultsProps) {
         <div
           className={`flex items-center gap-2 font-bold text-[14px] ${passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}`}
         >
-          <span className="text-[18px]">{passed ? '✅' : '❌'}</span>
+          <Deco className="text-[18px]">{passed ? '✅' : '❌'}</Deco>
+          <Deco only="min" className="text-[16px]">
+            {passed ? '✓' : '✗'}
+          </Deco>
           {passed ? t('tests.passedTitle') : t('tests.failedTitle')}
         </div>
         <button
           onClick={onClose}
           aria-label={t('tests.close')}
-          className="w-7 h-7 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--accent)]/30"
+          className="w-7 h-7 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
         >
           ✕
         </button>

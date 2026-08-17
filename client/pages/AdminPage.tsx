@@ -101,7 +101,7 @@ export function AdminPage() {
                   <Stat label={t('admin.new7')} value={stats.users.newLast7Days} />
                   <Stat label={t('admin.new30')} value={stats.users.newLast30Days} />
                 </div>
-                <div className="pt-3 border-t border-[var(--accent)]/20 flex gap-4 text-[12px] text-[var(--text2)]">
+                <div className="pt-3 border-t border-[var(--border)] flex gap-4 text-[12px] text-[var(--text2)]">
                   <span>FOUNDER {stats.users.byRole.FOUNDER}</span>
                   <span>ADMIN {stats.users.byRole.ADMIN}</span>
                   <span>MODERATOR {stats.users.byRole.MODERATOR}</span>
@@ -120,7 +120,7 @@ export function AdminPage() {
                   <Stat label={t('admin.runningNow')} value={stats.codeExec.runningNow} />
                   <Stat label={t('admin.openSessions')} value={stats.codeExec.openSessions} />
                 </div>
-                <div className="pt-3 border-t border-[var(--accent)]/20 text-[12px] text-[var(--text2)]">
+                <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
                   <div className="text-[var(--text3)] mb-1">{t('admin.perLanguage')}</div>
                   {Object.keys(stats.codeExec.perLanguage).length === 0 ? (
                     <span className="text-[var(--text3)]">{t('admin.noData')}</span>
@@ -201,7 +201,7 @@ export function AdminPage() {
                   <Stat label={t('admin.reactions')} value={stats.forum.reactions} />
                   <Stat label={t('admin.tickets')} value={stats.support.total} />
                 </div>
-                <div className="pt-3 border-t border-[var(--accent)]/20 flex flex-wrap gap-4 text-[12px] text-[var(--text2)]">
+                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-4 text-[12px] text-[var(--text2)]">
                   {Object.entries(stats.support.byStatus).map(([status, n]) => (
                     <span key={status}>
                       {status} {n}
