@@ -6,17 +6,15 @@
     "forum": "Forum",
     "leaderboard": "Clasament",
     "messages": "Mesaje",
-    "almanac": "Almanah",
-    "laniakea": "Laniakea Explorer"
+    "almanac": "Almanah"
+  },
+  "sidebar": {
+    "label": "Navigare principală",
+    "community": "Comunitate",
+    "show": "Arată bara laterală",
+    "hide": "Ascunde bara laterală"
   },
   "topbar": {
-    "short": {
-      "notifications": "Alerte",
-      "messages": "Mesaje",
-      "leaderboard": "Clasament",
-      "connections": "Persoane"
-    },
-    "toggleMenu": "Comută meniul",
     "toggleSidebar": "Comută bara laterală",
     "profile": "Profil",
     "admin": "Panou admin",
