@@ -117,7 +117,7 @@ export function AuthPage() {
               {t('auth.brand.tagline')}
             </p>
             <div className="flex flex-col gap-4 text-left">
-              {[0, 1, 2, 3, 4, 5].map((i) => {
+              {[0, 1, 2, 3, 4].map((i) => {
                 const f = {
                   bold: t(`auth.features.${i}.bold`),
                   rest: t(`auth.features.${i}.rest`),
