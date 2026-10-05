@@ -179,7 +179,7 @@ If `format:check` fails, just run `format` — it fixes everything automatically
 - Zod for all request validation
 - CSS custom properties for theming (accent: `#6C5CE7`)
 - No comments unless the "why" is non-obvious
-- Transparent backgrounds on all panels/cards so the cosmos starfield shows through
+- Flat, opaque panels (`.panel`), lucide-react icons, no decorative emoji or animated backgrounds
 
 ## Code of conduct
 
