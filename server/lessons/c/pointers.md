@@ -1,6 +1,6 @@
 This is the lesson that separates C from almost every other language. **Pointers**. They sound scary, but once you understand the idea, they're actually quite elegant
 
-A **pointer** is a variable that stores the **address** of another variable. Think of it like this: every variable lives somewhere in the computer's memory, at a specific **address** — a number, just like a room number in an office building. A pointer is a piece of paper where you wrote down that room number
+A **pointer** is a variable that stores the **address** of another variable. Think of it like this: every variable lives somewhere in the computer's memory, at a specific **address**, a number, just like a room number in an office building. A pointer is a piece of paper where you wrote down that room number
 
 ```c
 #include <stdio.h>
@@ -19,8 +19,8 @@ int main(void) {
 
 Two new operators:
 
-- **&** — the **address-of** operator. **&age** gives us the **address** where `age` is stored in memory
-- **\*** — the **dereference** operator. **\*ptr** gives us the **value** at the address stored in `ptr`
+- **&**: the **address-of** operator. **&age** gives us the **address** where `age` is stored in memory
+- **\***: the **dereference** operator. **\*ptr** gives us the **value** at the address stored in `ptr`
 
 So **&age** gives the address, **\*ptr** reads the value at that address. They're like inverses of each other
 
@@ -57,7 +57,7 @@ int main(void) {
 Let's trace what happens:
 
 1. **x** is created with value 10, somewhere in memory
-2. **p** is a pointer that receives the address of **x** — now **p** "knows" where **x** lives
+2. **p** is a pointer that receives the address of **x**. Now **p** "knows" where **x** lives
 3. **\*p = 42** doesn't change the pointer, it goes to the address in **p** and writes 42 there
 4. since **p** held the address of **x**, the value written there is **x** itself
 
@@ -65,7 +65,7 @@ We didn't touch **x** directly. We went through **p**, followed the address, and
 
 ---
 
-On the early UNIX systems at Bell Labs, programmers worked with memory at exactly this level: every byte had an address, and a wrong pointer could write over another program's memory. This is why C keeps you this close to the machine — and why you have to pay attention to which pointer you're reading and which one you're writing
+On the early UNIX systems at Bell Labs, programmers worked with memory at exactly this level: every byte had an address, and a wrong pointer could write over another program's memory. This is why C keeps you this close to the machine, and why you have to pay attention to which pointer you're reading and which one you're writing
 
 ---
 
@@ -95,7 +95,7 @@ The pointer type must match the type it points to. An **int \*** can only point 
 
 ## Mission: The Tape Drive Control Register
 
-You're the shift operator at the computing center. A magnetic tape reader sent you an initial value for its control register, but the new command has to be written through a pointer — direct hardware access isn't allowed, only through an address.
+You're the shift operator at the computing center. A magnetic tape reader sent you an initial value for its control register, but the new command has to be written through a pointer: direct hardware access isn't allowed, only through an address.
 
 1. Read an **int** **x** from input
 2. Create a pointer **ptr** that points to **x**

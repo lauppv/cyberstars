@@ -5,16 +5,16 @@ Iată un secret: în C, **tablourile și pointerii sunt strâns legați**. Când
 
 int main(void) {
     int numere[] = {10, 20, 30, 40, 50};
-    int *p = numere;   // fara & — numere ESTE deja o adresa
+    int *p = numere;   // fara &: numere ESTE deja o adresa
 
-    printf("%d\n", *p);        // 10 — primul element
-    printf("%d\n", *(p + 1));  // 20 — al doilea element
-    printf("%d\n", *(p + 2));  // 30 — al treilea element
+    printf("%d\n", *p);        // 10, primul element
+    printf("%d\n", *(p + 1));  // 20, al doilea element
+    printf("%d\n", *(p + 2));  // 30, al treilea element
     return 0;
 }
 ```
 
-**numere** este în esență un pointer către primul element. **p + 1** nu adaugă 1 byte — se mută la **următorul int** (4 bytes înainte). Aceasta se numește **aritmetică de pointeri**, și C se ocupă automat de mărime în funcție de tip
+**numere** este în esență un pointer către primul element. **p + 1** nu adaugă 1 byte, ci se mută la **următorul int** (4 bytes înainte). Aceasta se numește **aritmetică de pointeri**, și C se ocupă automat de mărime în funcție de tip
 
 ---
 
@@ -26,7 +26,7 @@ Asta înseamnă că **tablou[i]** este doar zahăr sintactic pentru **\*(tablou 
 int main(void) {
     int numere[] = {10, 20, 30};
     printf("%d\n", numere[1]);       // 20
-    printf("%d\n", *(numere + 1));   // 20 — acelasi lucru!
+    printf("%d\n", *(numere + 1));   // 20, acelasi lucru!
     return 0;
 }
 ```
@@ -69,7 +69,7 @@ compilatorul vede de fapt
 void afiseaza(int *tablou) { }
 ```
 
-Tabloul **decade** într-un pointer. Funcția primește doar adresa primului element — **nu are nicio idee** cât de mare este tabloul. De aceea transmitem mereu **mărimea** ca parametru separat
+Tabloul **decade** într-un pointer. Funcția primește doar adresa primului element: **nu are nicio idee** cât de mare este tabloul. De aceea transmitem mereu **mărimea** ca parametru separat
 
 ---
 

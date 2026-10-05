@@ -25,7 +25,7 @@ int main(void) {
 }
 ```
 
-**Definim** struct-ul cu **struct Angajat { ... };** — observă **punctul și virgula** după acolada de închidere. Apoi **creăm** o variabilă de tipul acela cu **struct Angajat a1**. Accesăm câmpurile cu **operatorul punct**: **a1.tura**
+**Definim** struct-ul cu **struct Angajat { ... };**. Observă **punctul și virgula** după acolada de închidere. Apoi **creăm** o variabilă de tipul acela cu **struct Angajat a1**. Accesăm câmpurile cu **operatorul punct**: **a1.tura**
 
 ---
 
@@ -65,7 +65,7 @@ int main(void) {
 }
 ```
 
-A doua formă este mai clară — vezi exact ce valoare primește fiecare câmp
+A doua formă este mai clară: vezi exact ce valoare primește fiecare câmp
 
 ---
 

@@ -29,7 +29,7 @@ int main(void) {
 }
 ```
 
-Now nothing is printed, because the **printf** is **commented out**. Very useful when debugging — instead of deleting code and rewriting it later, you just comment it out
+Now nothing is printed, because the **printf** is **commented out**. Very useful when debugging: instead of deleting code and rewriting it later, you just comment it out
 
 ---
 
@@ -70,4 +70,4 @@ Bell Labs Computing Center
 1972
 ```
 
-Don't delete anything — just **comment** the line you don't want to run
+Don't delete anything, just **comment** the line you don't want to run

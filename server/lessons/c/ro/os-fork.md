@@ -27,17 +27,17 @@ După **fork()**, sunt **două procese** care rulează același cod. Originalul 
 - **0** către procesul copil
 - **PID-ul copilului** către procesul părinte
 
-De asta verificăm **pid == 0** — este singurul mod de a-ți da seama care suntem
+De asta verificăm **pid == 0**: este singurul mod de a-ți da seama care suntem
 
 ---
 
 Gândește-te la asta ca la diviziunea celulară în biologie. O celulă se împarte în două celule identice. Ambele au același ADN (cod), dar apoi pot merge în direcții diferite. **if/else**-ul de după fork este modul în care trimitem părintele și copilul pe căi diferite
 
-**wait(NULL)** face părintele să **se oprească** până când copilul termină. Fără el, părintele ar putea termina primul și lucrurile devin dezordonate. E ca un părinte care așteaptă la poarta școlii — nu pleca fără copilul tău
+**wait(NULL)** face părintele să **se oprească** până când copilul termină. Fără el, părintele ar putea termina primul și lucrurile devin dezordonate. E ca un părinte care așteaptă la poarta școlii: nu pleca fără copilul tău
 
 ---
 
-Mesajul "Inainte de fork" se afișează **o dată** (înainte de despărțire). Mesajul "Gata" se afișează de **două ori** — o dată de la părinte și o dată de la copil. Asta este partea care te face să întorci capul: după fork, ambele procese continuă din **același punct** în cod
+Mesajul "Inainte de fork" se afișează **o dată** (înainte de despărțire). Mesajul "Gata" se afișează de **două ori**: o dată de la părinte și o dată de la copil. Asta este partea care te face să întorci capul: după fork, ambele procese continuă din **același punct** în cod
 
 ```c
 #include <stdio.h>

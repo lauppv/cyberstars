@@ -62,7 +62,7 @@ int main(void) {
 }
 ```
 
-Asta e mult mai bine decât `if (c == 0)` — oricine citește codul știe exact ce înseamnă ROSU
+Asta e mult mai bine decât `if (c == 0)`: oricine citește codul știe exact ce înseamnă ROSU
 
 ---
 

@@ -1,4 +1,4 @@
-We've seen **for** loops. Now let's put a loop **inside** another loop — a **nested loop**
+We've seen **for** loops. Now let's put a loop **inside** another loop: a **nested loop**
 
 ```c
 #include <stdio.h>
@@ -82,7 +82,7 @@ This prints **every combination** of two elements from the array. If the array h
 
 The computing center's line printer receives a job: the number of lines to print. Each line **i** must contain the numbers from **1** to **i**, as a print-head calibration test.
 
-1. Read an integer **n** from input — the number of lines
+1. Read an integer **n** from input: the number of lines
 2. Write **nested for loops**: the outer loop goes from **1** to **n**, the inner loop prints the numbers from **1** to **i**, separated by a space
 3. Print `printf("\n")` at the end of each line
 

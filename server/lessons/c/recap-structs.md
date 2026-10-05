@@ -7,8 +7,8 @@ Combine **pointer arithmetic**, **string functions**, and **structs with pointer
 The computing center's internal phone directory crashed on disk and must be rebuilt from scratch, from a backup tape. Build the lookup system using structs and pointer arithmetic.
 
 1. Define a struct **Contact** with fields **name** (char array) and **phone** (char array)
-2. Write **void add_contact(Contact \*book, int \*count, const char \*name, const char \*phone)** — adds a contact at position **\*count** and increments the counter. Use **strcpy** to copy the strings
-3. Write **void find_contact(Contact \*book, int count, const char \*query)** — walks the contacts using **pointer arithmetic** (`(book + i)->name`). If found, print **"Found: name - phone"**. If not found, print **"Not found: query"**
+2. Write **void add_contact(Contact \*book, int \*count, const char \*name, const char \*phone)**: adds a contact at position **\*count** and increments the counter. Use **strcpy** to copy the strings
+3. Write **void find_contact(Contact \*book, int count, const char \*query)**: walks the contacts using **pointer arithmetic** (`(book + i)->name`). If found, print **"Found: name - phone"**. If not found, print **"Not found: query"**
 4. Read from input: a count **n** of contacts, followed by **n** lines with **name phone**. Then read a count **q** of queries, followed by **q** lines with the searched name
 
 **Example**

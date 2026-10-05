@@ -21,7 +21,7 @@ int main(void) {
 }
 ```
 
-Transmitem **&t** (adresa struct-ului), iar funcția primește un **struct Terminal \***. Pentru a accesa câmpurile printr-un pointer, scriem **(\*p).sesiuni** — întâi dereferențiem, apoi accesăm câmpul
+Transmitem **&t** (adresa struct-ului), iar funcția primește un **struct Terminal \***. Pentru a accesa câmpurile printr-un pointer, scriem **(\*p).sesiuni**: întâi dereferențiem, apoi accesăm câmpul
 
 ---
 
@@ -94,8 +94,8 @@ Funcțiile au modificat **struct-ul original**, nu o copie. Este același tipar 
 Centrul de calcul facturează timpul de procesor pe ore. Fiecare utilizator are un cont cu un sold de ore, iar operatorii de tură fac alocări și retrageri de-a lungul zilei. Toate actualizările trebuie să treacă printr-un pointer, ca soldul original din registru să se schimbe pe loc.
 
 1. Definește un struct **ContOre** cu câmpurile **proprietar** (array de char) și **sold** (int)
-2. Scrie funcția **void aloca(struct ContOre \*cont, int ore)** — adaugă ore la sold prin pointer
-3. Scrie funcția **void retrage(struct ContOre \*cont, int ore)** — scade ore din sold dacă e suficient, altfel afișează **"Fonduri insuficiente"**
+2. Scrie funcția **void aloca(struct ContOre \*cont, int ore)**: adaugă ore la sold prin pointer
+3. Scrie funcția **void retrage(struct ContOre \*cont, int ore)**: scade ore din sold dacă e suficient, altfel afișează **"Fonduri insuficiente"**
 4. Citește din input: numele proprietarului, soldul inițial, apoi trei operații. Fiecare operație are un cod (**1** = alocă, **2** = retrage) urmat de o valoare
 5. După toate operațiile, afișează **"Sold: X"**
 

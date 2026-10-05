@@ -29,9 +29,9 @@ Let's break down the function header
 void greet(char name[])
 ```
 
-- **void** — the function does **NOT** return anything (it just prints)
-- **greet** — the name of the function
-- **(char name[])** — the parameter list. **char name[]** means "a string" (a piece of text). We'll talk about strings in a dedicated lesson
+- **void**: the function does **NOT** return anything (it just prints)
+- **greet**: the name of the function
+- **(char name[])**: the parameter list. **char name[]** means "a string" (a piece of text). We'll talk about strings in a dedicated lesson
 
 The format specifier **%s** in **printf** is for strings, just like **%d** is for ints
 
@@ -106,7 +106,7 @@ int add(int a, int b) {   // body, written later
 }
 ```
 
-Notice the **;** at the end of the prototype — it's a declaration, not a body. For now, the simplest is to write your helper functions **above** **main** and stop worrying
+Notice the **;** at the end of the prototype: it's a declaration, not a body. For now, the simplest is to write your helper functions **above** **main** and stop worrying
 
 ---
 
@@ -114,7 +114,7 @@ Notice the **;** at the end of the prototype — it's a declaration, not a body.
 
 In an old-time computing center, every terminal needed its own quick arithmetic module, so operators wouldn't have to do the same calculations by hand every time.
 
-Write a function **calculator** that takes three parameters: **int number1**, **int number2**, and **char operator** (a single character like **'+'**, **'-'**, **'\*'**, **'/'** — note the **single quotes** for a single char in C).
+Write a function **calculator** that takes three parameters: **int number1**, **int number2**, and **char operator** (a single character like **'+'**, **'-'**, **'\*'**, **'/'**; note the **single quotes** for a single char in C).
 
 The function should print the result of the operation, in the format **number1 operator number2 = result**. If the operator is not recognized, print **Invalid operator**.
 

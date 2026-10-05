@@ -57,7 +57,7 @@ The loop stops as soon as we find what we're looking for. **break** saves us tim
 
 ---
 
-**continue** is different. It doesn't stop the loop — it just **skips the rest** of the current iteration and **moves on to the next one**
+**continue** is different. It doesn't stop the loop; it just **skips the rest** of the current iteration and **moves on to the next one**
 
 ```c
 #include <stdio.h>
@@ -137,7 +137,7 @@ A small warning: **break** and **continue** can make code harder to read if you 
 
 ## Mission: The Punch Card Room Inspection
 
-You are doing the annual inspection of the punch card reader room, numbered from **1** to **20**. One reader is marked **sealed for repairs** — it must be **skipped** with **continue**, without printing it. Another reader triggers the **smoke alarm** — the moment you reach it, you **stop** the inspection with **break** (without printing it either).
+You are doing the annual inspection of the punch card reader room, numbered from **1** to **20**. One reader is marked **sealed for repairs**: it must be **skipped** with **continue**, without printing it. Another reader triggers the **smoke alarm**: the moment you reach it, you **stop** the inspection with **break** (without printing it either).
 
 1. Read two integers from input: **sealed** and **alarm**
 2. Walk through readers **1** to **20** with a **for** loop

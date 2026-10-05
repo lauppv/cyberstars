@@ -1,4 +1,4 @@
-A semaphore's most powerful use isn't as a mutex — it's as a **signal** between threads. The trick: initialize the semaphore to **0**. Now `sem_wait` blocks right away, until another thread calls `sem_post`.
+A semaphore's most powerful use isn't as a mutex, it's as a **signal** between threads. The trick: initialize the semaphore to **0**. Now `sem_wait` blocks right away, until another thread calls `sem_post`.
 
 That's useful when we want one thread to wait for an **event** from another: a result being ready, an input being available, a job finishing. Unlike a mutex where both threads "compete" for a resource, here we have a clear relationship: one waits, the other signals.
 
@@ -19,7 +19,7 @@ void *compute(void *arg) {
 }
 
 int main(void) {
-    sem_init(&ready, 0, 0);   // init to 0 — sem_wait blocks immediately
+    sem_init(&ready, 0, 0);   // init to 0: sem_wait blocks immediately
 
     pthread_t worker;
     pthread_create(&worker, NULL, compute, NULL);
@@ -34,15 +34,15 @@ int main(void) {
 }
 ```
 
-You might say: "But `pthread_join` does the same thing — it waits for the thread." True, and in this example `pthread_join` alone would be enough. Semaphores shine when we want to **wait for an intermediate moment** during a thread's execution (not its full termination), or when the thread runs in an infinite loop and never really ends.
+You might say: "But `pthread_join` does the same thing: it waits for the thread." True, and in this example `pthread_join` alone would be enough. Semaphores shine when we want to **wait for an intermediate moment** during a thread's execution (not its full termination), or when the thread runs in an infinite loop and never really ends.
 
 ---
 
-Chain two semaphores together and you can synchronize two actors trading messages — a pattern called **rendezvous**. The producer puts a value in a shared variable, signals `full`, then waits for `empty`; the consumer waits for `full`, reads, then signals `empty` back. Both threads take turns through a single slot.
+Chain two semaphores together and you can synchronize two actors trading messages, a pattern called **rendezvous**. The producer puts a value in a shared variable, signals `full`, then waits for `empty`; the consumer waits for `full`, reads, then signals `empty` back. Both threads take turns through a single slot.
 
 ```text
-sem_t full;    // init 0 — signalled by producer when the slot has data
-sem_t empty;   // init 1 — signalled by consumer when the slot is free again
+sem_t full;    // init 0, signalled by producer when the slot has data
+sem_t empty;   // init 1, signalled by consumer when the slot is free again
 ```
 
 That pattern is the foundation of many message queues and pipelines.
@@ -64,6 +64,6 @@ A worker thread must compute the sum of the numbers **1 through 10** and store i
 Sum: 55
 ```
 
-The output is deterministic — the main thread can't print the value until the worker has written it and signalled.
+The output is deterministic: the main thread can't print the value until the worker has written it and signalled.
 
 Use `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` from **<semaphore.h>**, and `pthread_create`, `pthread_join` from **<pthread.h>**.

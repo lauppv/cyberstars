@@ -37,9 +37,9 @@ int main(void) {
 
 După ce facem **#include <stdbool.h>**, există trei identificatori noi: **bool**, **true** și **false**
 
-În spatele cortinei, **bool** este în esență tot un int — **true** este **1**, **false** este **0** — dar numele fac codul nostru mult mai **lizibil**. De acum încolo, când ceva poate fi doar true sau false, preferă **bool** în loc de **int**
+În spatele cortinei, **bool** este în esență tot un int (**true** este **1**, **false** este **0**), dar numele fac codul nostru mult mai **lizibil**. De acum încolo, când ceva poate fi doar true sau false, preferă **bool** în loc de **int**
 
-Nu există un format specifier special pentru **bool** în **printf** — folosește doar **%d** (va afișa **0** sau **1**)
+Nu există un format specifier special pentru **bool** în **printf**: folosește doar **%d** (va afișa **0** sau **1**)
 
 ---
 

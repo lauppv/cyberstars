@@ -1,10 +1,10 @@
-Computers think in **bits** — 0s and 1s. C lets us work directly with those bits using **bitwise operators**. This is as low-level as it gets without writing assembly
+Computers think in **bits**: 0s and 1s. C lets us work directly with those bits using **bitwise operators**. This is as low-level as it gets without writing assembly
 
 The number **13** in binary is **1101**. The number **10** is **1010**. Bitwise operators work on each bit individually
 
 ---
 
-**& (AND)** — both bits must be 1
+**& (AND)**: both bits must be 1
 
 ```c
 #include <stdio.h>
@@ -28,7 +28,7 @@ At each position: if both are 1, the result is 1. Otherwise 0
 
 ---
 
-**| (OR)** — at least one bit must be 1
+**| (OR)**: at least one bit must be 1
 
 ```c
 #include <stdio.h>
@@ -46,7 +46,7 @@ int main(void) {
   1111  (15)
 ```
 
-**^ (XOR)** — exactly one bit must be 1
+**^ (XOR)**: exactly one bit must be 1
 
 ```c
 #include <stdio.h>
@@ -64,7 +64,7 @@ int main(void) {
   0111  (7)
 ```
 
-**~ (NOT)** — flips every bit
+**~ (NOT)**: flips every bit
 
 ```c
 #include <stdio.h>
@@ -79,7 +79,7 @@ int main(void) {
 
 **Shift operators** move bits left or right
 
-**<< (left shift)** — shifts bits left, filling with 0s. Each left shift **multiplies by 2**
+**<< (left shift)**: shifts bits left, filling with 0s. Each left shift **multiplies by 2**
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main(void) {
 }
 ```
 
-**>> (right shift)** — shifts bits right. Each right shift **divides by 2**
+**>> (right shift)**: shifts bits right. Each right shift **divides by 2**
 
 ```c
 #include <stdio.h>
@@ -135,7 +135,7 @@ int main(void) {
 }
 ```
 
-A single **int** stores multiple yes/no properties using individual bits. This is exactly what UNIX does when you run `ls -l` and see `rwx` next to a file — each letter is a bit in an integer
+A single **int** stores multiple yes/no properties using individual bits. This is exactly what UNIX does when you run `ls -l` and see `rwx` next to a file: each letter is a bit in an integer
 
 ---
 

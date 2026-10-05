@@ -47,4 +47,4 @@ Min: 2
 Max: 18
 ```
 
-The function "returns" three values at once using pointers — the pass-by-reference pattern
+The function "returns" three values at once using pointers: the pass-by-reference pattern

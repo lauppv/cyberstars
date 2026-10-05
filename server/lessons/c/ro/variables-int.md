@@ -21,7 +21,7 @@ Ieșire
 1
 ```
 
-**int** este tipul pentru **numere întregi** (1, 2, 100, -20, 0). Lui C îi pasă de tipuri — nu ne va lăsa să stocăm un număr într-o variabilă fără să-i spunem ce fel de număr este
+**int** este tipul pentru **numere întregi** (1, 2, 100, -20, 0). Lui C îi pasă de tipuri: nu ne va lăsa să stocăm un număr într-o variabilă fără să-i spunem ce fel de număr este
 
 ---
 
@@ -119,7 +119,7 @@ int main(void) {
 }
 ```
 
-Afișează **3**, nu **3.5**. De ce? Pentru că **a / b** cu doi int-i dă înapoi un **int** — C aruncă partea zecimală. Vom vedea cum să păstrăm zecimalele în lecția următoare, cu **float**
+Afișează **3**, nu **3.5**. De ce? Pentru că **a / b** cu doi int-i dă înapoi un **int**: C aruncă partea zecimală. Vom vedea cum să păstrăm zecimalele în lecția următoare, cu **float**
 
 ---
 

@@ -1,6 +1,6 @@
 Welcome to **C**.
 
-C was born in **1972** at **Bell Labs**, where Dennis Ritchie created it to write the **UNIX** operating system. Back then there were no color monitors or mice: programmers worked at a **teletype** — a machine that looked like a typewriter and printed the computer's response directly on paper. Over 50 years later, C is still everywhere: in operating systems, routers, satellites, and the engines of other programming languages.
+C was born in **1972** at **Bell Labs**, where Dennis Ritchie created it to write the **UNIX** operating system. Back then there were no color monitors or mice: programmers worked at a **teletype**, a machine that looked like a typewriter and printed the computer's response directly on paper. Over 50 years later, C is still everywhere: in operating systems, routers, satellites, and the engines of other programming languages.
 
 In this course you'll work like a programmer from the early days of UNIX: close to the machine, with full control over what happens. Let's go step by step.
 
@@ -25,12 +25,12 @@ hello, world
 
 By the way, `hello, world` isn't just any message: it's the **first example** from the classic C book written by the language's own creators. Every C programmer has started with exactly this program.
 
-There's some boilerplate here. Let's walk through it briefly — for now, just **trust** it, we'll understand more along the way
+There's some boilerplate here. Let's walk through it briefly. For now, just **trust** it, we'll understand more along the way
 
-- **#include <stdio.h>** — we're saying "I need the standard input/output tools". Without this line, **printf** doesn't exist
-- **int main(void)** — every C program starts here. This is the **entry point**
-- **{ ... }** — the **block** of code that **main** runs
-- **return 0;** — we're telling the operating system "the program finished successfully". **0** means "everything's fine"
+- **#include <stdio.h>**: we're saying "I need the standard input/output tools". Without this line, **printf** doesn't exist
+- **int main(void)**: every C program starts here. This is the **entry point**
+- **{ ... }**: the **block** of code that **main** runs
+- **return 0;**: we're telling the operating system "the program finished successfully". **0** means "everything's fine"
 
 The line that does the actual work is
 
@@ -93,7 +93,7 @@ Two rules to remember
 - Text goes between **double quotes** **""**
 - Every statement ends with a **semicolon** **;**
 
-Try removing the **;** and run the code. Read the compile error — the C compiler always tells you exactly which line upset it.
+Try removing the **;** and run the code. Read the compile error: the C compiler always tells you exactly which line upset it.
 
 ---
 

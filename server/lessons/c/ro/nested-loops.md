@@ -1,4 +1,4 @@
-Am văzut buclele **for**. Acum hai să punem o buclă **înăuntrul** alteia — o **buclă imbricată**
+Am văzut buclele **for**. Acum hai să punem o buclă **înăuntrul** alteia: o **buclă imbricată**
 
 ```c
 #include <stdio.h>
@@ -82,7 +82,7 @@ Asta afișează **fiecare combinație** de două elemente din tablou. Dacă tabl
 
 Imprimanta liniară a centrului de calcul primește o comandă: numărul de linii de tipărit. Fiecare linie **i** trebuie să conțină numerele de la **1** până la **i**, ca un test de calibrare a capului de tipărire.
 
-1. Citește un întreg **n** din input — numărul de linii
+1. Citește un întreg **n** din input: numărul de linii
 2. Scrie **bucle for imbricate**: bucla exterioară merge de la **1** la **n**, bucla interioară afișează numerele de la **1** la **i**, separate prin spațiu
 3. Afișează `printf("\n")` la finalul fiecărei linii
 

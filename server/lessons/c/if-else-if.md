@@ -55,7 +55,7 @@ int main(void) {
 }
 ```
 
-The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third condition fails (60 != 20), and the **else** would print **"other"** — wrong, we already handled 60 above
+The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third condition fails (60 != 20), and the **else** would print **"other"**: wrong, we already handled 60 above
 
 **Rule of thumb**: when testing the **same variable** against multiple values, **chain** with **if / else if / else**
 

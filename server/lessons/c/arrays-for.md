@@ -105,11 +105,11 @@ This is a very common C idiom. Get used to writing it
 
 The magnetic tape line sends a batch of readings for the current shift. The number of readings varies from day to day, so the first thing you receive is **how many** readings are coming.
 
-1. Read an integer **n** from input — the number of readings
+1. Read an integer **n** from input: the number of readings
 2. Read **n** integers into an array (use a loop for reading, with **scanf** inside it)
 3. Print each reading on its own line (use a **for** loop)
 4. Print the **total** of all the readings
-5. Print the **average** (cast to **double** to avoid integer division — use **(double) total / n**)
+5. Print the **average** (cast to **double** to avoid integer division: use **(double) total / n**)
 
 **Example**
 

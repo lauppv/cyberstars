@@ -7,8 +7,8 @@ Combină **aritmetica pointerilor**, **funcțiile pentru șiruri** și **struct-
 Registrul de linii telefonice interne ale centrului de calcul a crăpat pe disc și trebuie reconstruit de la zero, dintr-o bandă de backup. Construiește sistemul de căutare folosind struct-uri și aritmetica pointerilor.
 
 1. Definește un struct **Contact** cu câmpurile **nume** (array de char) și **telefon** (array de char)
-2. Scrie **void adauga_contact(Contact \*agenda, int \*numar, const char \*nume, const char \*telefon)** — adaugă un contact pe poziția **\*numar** și incrementează contorul. Folosește **strcpy** pentru a copia șirurile
-3. Scrie **void cauta_contact(Contact \*agenda, int numar, const char \*cautare)** — parcurge contactele folosind **aritmetica pointerilor** (`(agenda + i)->nume`). Dacă e găsit, afișează **"Gasit: nume - telefon"**. Dacă nu e găsit, afișează **"Negasit: cautare"**
+2. Scrie **void adauga_contact(Contact \*agenda, int \*numar, const char \*nume, const char \*telefon)**: adaugă un contact pe poziția **\*numar** și incrementează contorul. Folosește **strcpy** pentru a copia șirurile
+3. Scrie **void cauta_contact(Contact \*agenda, int numar, const char \*cautare)**: parcurge contactele folosind **aritmetica pointerilor** (`(agenda + i)->nume`). Dacă e găsit, afișează **"Gasit: nume - telefon"**. Dacă nu e găsit, afișează **"Negasit: cautare"**
 4. Citește din input: un număr **n** de contacte, urmat de **n** linii cu **nume telefon**. Apoi citește un număr **q** de căutări, urmat de **q** linii cu numele căutat
 
 **Exemplu**

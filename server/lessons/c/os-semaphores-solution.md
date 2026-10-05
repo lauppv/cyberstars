@@ -15,7 +15,7 @@ void *work(void *arg) {
 }
 
 int main(void) {
-    // Counting semaphore with initial value 2 — at most 2 threads pass sem_wait at once.
+    // Counting semaphore with initial value 2: at most 2 threads pass sem_wait at once.
     sem_init(&printers, 0, 2);
 
     pthread_t threads[4];

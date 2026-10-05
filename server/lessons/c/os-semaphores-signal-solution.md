@@ -16,7 +16,7 @@ void *worker(void *arg) {
 }
 
 int main(void) {
-    // Init to 0 — sem_wait blocks until the worker calls sem_post.
+    // Init to 0: sem_wait blocks until the worker calls sem_post.
     sem_init(&ready, 0, 0);
 
     pthread_t t;

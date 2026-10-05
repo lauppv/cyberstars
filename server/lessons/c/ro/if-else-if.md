@@ -55,7 +55,7 @@ int main(void) {
 }
 ```
 
-Problema: fiecare **if** este independent. **else**-ul de la final aparține doar **ultimului if**. Așadar pentru **secunde = 60**, a treia condiție eșuează (60 != 20), iar **else**-ul ar afișa **"altceva"** — greșit, am tratat deja 60 mai sus
+Problema: fiecare **if** este independent. **else**-ul de la final aparține doar **ultimului if**. Așadar pentru **secunde = 60**, a treia condiție eșuează (60 != 20), iar **else**-ul ar afișa **"altceva"**: greșit, am tratat deja 60 mai sus
 
 **Regulă practică**: când testăm **aceeași variabilă** pentru mai multe valori, **înlănțuim** cu **if / else if / else**
 

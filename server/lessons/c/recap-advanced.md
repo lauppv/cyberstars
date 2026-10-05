@@ -8,7 +8,7 @@ The computing center stores account access levels in a configuration file. You n
 
 Do the following, in order:
 
-1. Write **void print_permissions(const char \*name, int permissions)** — use bitwise **&** to check each flag and print the permissions that are set
+1. Write **void print_permissions(const char \*name, int permissions)**. Use bitwise **&** to check each flag and print the permissions that are set
 2. Read **name permissions** pairs from input, one per line, until the end of input (use `while (scanf("%s %d", name, &permissions) == 2)`)
 3. For each pair read, write it with **fprintf** into a file **"config.txt"**
 4. After writing all the pairs, close the file, then open it again for **reading**

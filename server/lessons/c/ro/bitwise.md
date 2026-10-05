@@ -1,10 +1,10 @@
-Calculatoarele gândesc în **biți** — 0-uri și 1-uri. C ne lasă să lucrăm direct cu acei biți folosind **operatorii pe biți**. Ăsta este nivelul cel mai jos la care poți ajunge fără să scrii asamblare
+Calculatoarele gândesc în **biți**: 0-uri și 1-uri. C ne lasă să lucrăm direct cu acei biți folosind **operatorii pe biți**. Ăsta este nivelul cel mai jos la care poți ajunge fără să scrii asamblare
 
 Numărul **13** în binar este **1101**. Numărul **10** este **1010**. Operatorii pe biți acționează asupra fiecărui bit individual
 
 ---
 
-**& (AND)** — ambii biți trebuie să fie 1
+**& (AND)**: ambii biți trebuie să fie 1
 
 ```c
 #include <stdio.h>
@@ -28,7 +28,7 @@ Pe fiecare poziție: dacă ambii sunt 1, rezultatul este 1. Altfel 0
 
 ---
 
-**| (OR)** — cel puțin un bit trebuie să fie 1
+**| (OR)**: cel puțin un bit trebuie să fie 1
 
 ```c
 #include <stdio.h>
@@ -46,7 +46,7 @@ int main(void) {
   1111  (15)
 ```
 
-**^ (XOR)** — exact un bit trebuie să fie 1
+**^ (XOR)**: exact un bit trebuie să fie 1
 
 ```c
 #include <stdio.h>
@@ -64,7 +64,7 @@ int main(void) {
   0111  (7)
 ```
 
-**~ (NOT)** — inversează fiecare bit
+**~ (NOT)**: inversează fiecare bit
 
 ```c
 #include <stdio.h>
@@ -79,7 +79,7 @@ int main(void) {
 
 **Operatorii de shift** mută biții la stânga sau la dreapta
 
-**<< (shift la stânga)** — mută biții la stânga, umple cu 0-uri. Fiecare shift la stânga **înmulțește cu 2**
+**<< (shift la stânga)**: mută biții la stânga, umple cu 0-uri. Fiecare shift la stânga **înmulțește cu 2**
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main(void) {
 }
 ```
 
-**>> (shift la dreapta)** — mută biții la dreapta. Fiecare shift la dreapta **împarte la 2**
+**>> (shift la dreapta)**: mută biții la dreapta. Fiecare shift la dreapta **împarte la 2**
 
 ```c
 #include <stdio.h>
@@ -135,7 +135,7 @@ int main(void) {
 }
 ```
 
-Un singur **int** stochează mai multe proprietăți da/nu folosind biți individuali. Asta este exact ce face UNIX când afișezi `ls -l` și vezi `rwx` lângă un fișier — fiecare literă este un bit dintr-un întreg
+Un singur **int** stochează mai multe proprietăți da/nu folosind biți individuali. Asta este exact ce face UNIX când afișezi `ls -l` și vezi `rwx` lângă un fișier: fiecare literă este un bit dintr-un întreg
 
 ---
 

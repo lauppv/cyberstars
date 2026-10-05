@@ -1,6 +1,6 @@
 Un **proces** este un program întreg cu propria sa memorie. Dar uneori vrem să se întâmple mai multe lucruri în același timp **înăuntrul aceluiași program**, partajând aceeași memorie. Asta sunt **thread-urile**
 
-Un thread este ca un **proces ușor**. Mai multe thread-uri din interiorul unui proces partajează același heap, aceleași variabile globale și același cod — dar fiecare are **propria sa stivă** (propriile sale variabile locale)
+Un thread este ca un **proces ușor**. Mai multe thread-uri din interiorul unui proces partajează același heap, aceleași variabile globale și același cod, dar fiecare are **propria sa stivă** (propriile sale variabile locale)
 
 Gândește-te așa: un **proces** este o bucătărie (spațiu separat, ustensile separate). Un **thread** este un bucătar înăuntrul bucătăriei. Mai mulți bucătari (thread-uri) partajează aceeași bucătărie (procesul), folosind aceleași ingrediente (memoria), dar fiecare urmează propria sa rețetă (stivă)
 
@@ -32,9 +32,9 @@ int main(void) {
 }
 ```
 
-**pthread_create** pornește un thread nou care rulează funcția **spune_salut**. Ultimul argument este transmis funcției. **pthread_join** așteaptă ca thread-ul să termine — ca **wait()** pentru procese
+**pthread_create** pornește un thread nou care rulează funcția **spune_salut**. Ultimul argument este transmis funcției. **pthread_join** așteaptă ca thread-ul să termine, ca **wait()** pentru procese
 
-Semnătura funcției este specială: primește un **void \*** și returnează un **void \***. Aceasta este convenția pthread — **void \*** este "pointer-ul generic" din C care poate indica spre orice
+Semnătura funcției este specială: primește un **void \*** și returnează un **void \***. Aceasta este convenția pthread: **void \*** este "pointer-ul generic" din C care poate indica spre orice
 
 ---
 
@@ -67,7 +67,7 @@ int main(void) {
 }
 ```
 
-Te-ai aștepta la **200000**, dar rulează-l de câteva ori și ai putea obține numere diferite de fiecare dată! Aceasta este o **race condition** — ambele thread-uri modifică **contor** simultan, iar operațiile lor se pot interfera
+Te-ai aștepta la **200000**, dar rulează-l de câteva ori și ai putea obține numere diferite de fiecare dată! Aceasta este o **race condition**: ambele thread-uri modifică **contor** simultan, iar operațiile lor se pot interfera
 
 ---
 

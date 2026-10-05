@@ -27,17 +27,17 @@ After **fork()**, there are **two processes** running the same code. The origina
 - **0** to the child process
 - the **child's PID** to the parent process
 
-That's why we check **pid == 0** — it's the only way to figure out which one we are
+That's why we check **pid == 0**: it's the only way to figure out which one we are
 
 ---
 
 Think of it like cell division in biology. A cell splits into two identical cells. Both have the same DNA (code), but then they can go different directions. The **if/else** after fork is how we send the parent and the child down different paths
 
-**wait(NULL)** makes the parent **stop** until the child finishes. Without it, the parent could finish first and things get messy. It's like a parent waiting at the school gate — you don't leave without your kid
+**wait(NULL)** makes the parent **stop** until the child finishes. Without it, the parent could finish first and things get messy. It's like a parent waiting at the school gate: you don't leave without your kid
 
 ---
 
-The "Before fork" message is printed **once** (before the split). The "Done" message is printed **twice** — once from the parent and once from the child. That's the part that makes you do a double take: after fork, both processes continue from the **same point** in the code
+The "Before fork" message is printed **once** (before the split). The "Done" message is printed **twice**: once from the parent and once from the child. That's the part that makes you do a double take: after fork, both processes continue from the **same point** in the code
 
 ```c
 #include <stdio.h>

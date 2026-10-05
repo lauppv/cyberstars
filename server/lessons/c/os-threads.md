@@ -1,6 +1,6 @@
 A **process** is a whole program with its own memory. But sometimes we want multiple things happening at the same time **within the same program**, sharing the same memory. That's what **threads** are
 
-A thread is like a **lightweight process**. Multiple threads inside one process share the same heap, global variables, and code — but each has its **own stack** (its own local variables)
+A thread is like a **lightweight process**. Multiple threads inside one process share the same heap, global variables, and code, but each has its **own stack** (its own local variables)
 
 Think of it this way: a **process** is a kitchen (separate space, separate utensils). A **thread** is a cook inside the kitchen. Multiple cooks (threads) share the same kitchen (process), using the same ingredients (memory), but each follows their own recipe (stack)
 
@@ -32,9 +32,9 @@ int main(void) {
 }
 ```
 
-**pthread_create** starts a new thread running the function **say_hello**. The last argument is passed to the function. **pthread_join** waits for the thread to finish — like **wait()** for processes
+**pthread_create** starts a new thread running the function **say_hello**. The last argument is passed to the function. **pthread_join** waits for the thread to finish, like **wait()** for processes
 
-The function signature is special: it takes a **void \*** and returns a **void \***. That's the pthread convention — **void \*** is C's "generic pointer" that can point to anything
+The function signature is special: it takes a **void \*** and returns a **void \***. That's the pthread convention: **void \*** is C's "generic pointer" that can point to anything
 
 ---
 
@@ -67,7 +67,7 @@ int main(void) {
 }
 ```
 
-You'd expect **200000**, but run it a few times and you might get different numbers each time! This is a **race condition** — both threads are modifying **counter** simultaneously, and their operations can interfere with each other
+You'd expect **200000**, but run it a few times and you might get different numbers each time! This is a **race condition**: both threads are modifying **counter** simultaneously, and their operations can interfere with each other
 
 ---
 

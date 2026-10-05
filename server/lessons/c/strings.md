@@ -16,7 +16,7 @@ What does **char name[] = "Ken Thompson"** mean? It creates an array of **char**
 
 ---
 
-Behind the scenes, every C string ends with a special hidden character: **\0** (called the **null terminator**). It marks the end of the string. So **"Tommy"** in memory is really **T, o, m, m, y, \0** — six characters. Functions like **printf** keep reading until they hit **\0**
+Behind the scenes, every C string ends with a special hidden character: **\0** (called the **null terminator**). It marks the end of the string. So **"Tommy"** in memory is really **T, o, m, m, y, \0**: six characters. Functions like **printf** keep reading until they hit **\0**
 
 You don't usually write **\0** yourself when using string literals. C adds it for you. Just **be aware** it exists, because forgetting it is a classic source of bugs in C
 
@@ -37,14 +37,14 @@ int main(void) {
 
 Two new things
 
-- **#include <string.h>** — needed for **strlen** and friends
-- **%zu** — format specifier for the type **strlen** returns (a **size_t**, kind of an unsigned int). For our purposes, you can also use **%d** with a cast: **printf("%d\n", (int) strlen(name))**
+- **#include <string.h>**: needed for **strlen** and friends
+- **%zu**: format specifier for the type **strlen** returns (a **size_t**, kind of an unsigned int). For our purposes, you can also use **%d** with a cast: **printf("%d\n", (int) strlen(name))**
 
 **strlen** counts up to **\0**, without including it. So **strlen("Ken")** is **3**, even though the array has **4** spots in memory
 
 ---
 
-**Comparing strings** — and **the biggest C trap around strings**
+**Comparing strings**, and **the biggest C trap around strings**
 
 ```c
 #include <stdio.h>
