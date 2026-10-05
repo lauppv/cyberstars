@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import type { TerminalTestResult } from '../../../shared/terminal';
-import { Deco } from '../ui/Deco';
 
 interface Props {
   results: TerminalTestResult;
@@ -17,10 +16,7 @@ export function TerminalTestResults({ results, onClose }: Props) {
         <div
           className={`flex items-center gap-2 font-bold text-[14px] ${passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}`}
         >
-          <Deco className="text-[18px]">{passed ? '✅' : '❌'}</Deco>
-          <Deco only="min" className="text-[16px]">
-            {passed ? '✓' : '✗'}
-          </Deco>
+          <span className="text-[16px]">{passed ? '✓' : '✗'}</span>
           {passed ? t('terminalTests.passedTitle') : t('terminalTests.failedTitle')}
         </div>
         <button

@@ -58,11 +58,6 @@
     "en": "EN",
     "ro": "RO"
   },
-  "graphics": {
-    "switch": "Schimbă grafica",
-    "min": "Minim",
-    "max": "Maxim"
-  },
   "home": {
     "continueWhereLeftOff": "Continuă de unde ai rămas",
     "recentlyAccessed": "Accesate recent",
@@ -949,8 +944,6 @@
   "settings": {
     "preferences": "Preferințe",
     "language": "Limbă",
-    "graphics": "Grafică",
-    "graphicsHint": "Minim păstrează interfața plată și liniștită. Maxim adaugă câmpul de stele, panourile de sticlă și iconurile.",
     "privacy": "Confidențialitate",
     "privacyHint": "Alege ce pot vedea ceilalți exploratori pe profilul tău public. Totul este vizibil implicit.",
     "showBio": "Bio și status",

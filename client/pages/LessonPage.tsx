@@ -34,7 +34,6 @@ import * as terminalService from '../services/terminalService';
 import { courseMeta } from '../constants/courses';
 import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
 import { canAccessFeature } from '../../shared/features';
-import { Deco } from '../components/ui/Deco';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -84,7 +83,7 @@ export function LessonPage() {
   const [userCode, setUserCode] = useState('');
   const [activeTab, setActiveTab] = useState<'lesson' | 'workspace'>('lesson');
   const [showToast, setShowToast] = useState(false);
-  const [toastData, setToastData] = useState({ icon: '✅', title: '' });
+  const [toastData, setToastData] = useState({ title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const [confirmSolution, setConfirmSolution] = useState(false);
@@ -206,7 +205,6 @@ export function LessonPage() {
       const base = isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete');
       const xpGain = meta ? t('lesson.xpGained', { xp: xpForLesson(meta.sortOrder) }) : '';
       setToastData({
-        icon: isLast ? '🏆' : '✅',
         title: xpGain ? `${base} ${xpGain}` : base,
       });
       setShowToast(true);
@@ -418,7 +416,6 @@ export function LessonPage() {
                               xp: xpForLesson(lessonList[currentIndex].sortOrder),
                             })}
                           >
-                            <Deco>⭐</Deco>{' '}
                             {t('common.xpReward', {
                               xp: xpForLesson(lessonList[currentIndex].sortOrder),
                             })}
@@ -674,13 +671,11 @@ export function LessonPage() {
       </div>
 
       <AchievementToast
-        icon={toastData.icon}
         title={toastData.title}
         visible={showToast}
         onClose={() => setShowToast(false)}
       />
       <AchievementToast
-        icon={gamification.newBadge?.icon ?? '🏅'}
         title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}

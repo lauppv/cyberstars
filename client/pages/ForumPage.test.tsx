@@ -426,8 +426,6 @@ describe('CategoryView', () => {
     renderAt('/forum/c/python-help');
 
     await screen.findByText('Pinned one');
-    expect(screen.getByText('📌')).toBeInTheDocument();
-    expect(screen.getByText('🔒')).toBeInTheDocument();
     expect(screen.getAllByText('✓').length).toBeGreaterThan(0);
     expect(screen.getByText('Pinned')).toBeInTheDocument();
     expect(screen.getByText('Locked')).toBeInTheDocument();

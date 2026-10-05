@@ -11,14 +11,13 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
 import { Badge } from '../components/gamification/Badge';
-import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
-import { courseMeta, courseTitle } from '../constants/courses';
+import { badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
+import { courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
 import * as connectionsService from '../services/connectionsService';
 import type { PublicProfile } from '../../shared/profile';
 import type { ConnectionRelation } from '../../shared/connections';
 import type { Course } from '../../shared/lesson';
-import { Deco } from '../components/ui/Deco';
 
 // Resolve a course's completed slugs to lesson titles (via the loaded
 // curriculum), ordered by the lesson's position in the course. Falls back to the
@@ -52,7 +51,6 @@ function CompletedCourses({ courses }: { courses: { courseKey: string; lessons: 
       </div>
       <div className="flex flex-col gap-1.5">
         {courses.map(({ courseKey, lessons }) => {
-          const meta = courseMeta(courseKey);
           const isOpen = expanded.has(courseKey);
           const titles = isOpen
             ? completedLessonTitles(
@@ -67,7 +65,6 @@ function CompletedCourses({ courses }: { courses: { courseKey: string; lessons: 
                 aria-expanded={isOpen}
                 className="w-full flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
               >
-                <Deco className="text-[15px] leading-none">{meta.icon}</Deco>
                 <span className="text-[13px] font-semibold text-[var(--text)] flex-1 min-w-0 truncate">
                   {courseTitle(courseKey)}
                 </span>
@@ -217,12 +214,7 @@ export function PublicProfilePage() {
   if (profile?.stats) {
     statCells.push({
       key: 'streak',
-      value: (
-        <>
-          {profile.stats.streak}
-          {profile.stats.streak > 0 && <Deco className="text-[16px] ml-1">🔥</Deco>}
-        </>
-      ),
+      value: <>{profile.stats.streak}</>,
       label: t('profile.streak'),
     });
   }
@@ -252,9 +244,7 @@ export function PublicProfilePage() {
                   </p>
                 )}
                 {profile.status && (
-                  <p className="text-[11px] text-[var(--accent)] mt-1">
-                    <Deco>💬</Deco> {profile.status}
-                  </p>
+                  <p className="text-[11px] text-[var(--accent)] mt-1">{profile.status}</p>
                 )}
               </div>
             </div>
@@ -322,7 +312,6 @@ export function PublicProfilePage() {
                   {profile.progress.badgeList.map((b) => (
                     <Badge
                       key={`${b.courseKey}-${b.level}`}
-                      icon={badgeIcon(b.courseKey)}
                       label={badgeLabel(t, courseTitle(b.courseKey), b.level)}
                       earned
                       description={badgeDescription(t, courseTitle(b.courseKey), b.level)}
