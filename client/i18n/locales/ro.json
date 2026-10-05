@@ -6,17 +6,15 @@
     "forum": "Forum",
     "leaderboard": "Clasament",
     "messages": "Mesaje",
-    "almanac": "Almanah",
-    "laniakea": "Laniakea Explorer"
+    "almanac": "Almanah"
+  },
+  "sidebar": {
+    "label": "Navigare principală",
+    "community": "Comunitate",
+    "show": "Arată bara laterală",
+    "hide": "Ascunde bara laterală"
   },
   "topbar": {
-    "short": {
-      "notifications": "Alerte",
-      "messages": "Mesaje",
-      "leaderboard": "Clasament",
-      "connections": "Persoane"
-    },
-    "toggleMenu": "Comută meniul",
     "toggleSidebar": "Comută bara laterală",
     "profile": "Profil",
     "admin": "Panou admin",
@@ -59,11 +57,6 @@
     "switch": "Schimbă limba",
     "en": "EN",
     "ro": "RO"
-  },
-  "graphics": {
-    "switch": "Schimbă grafica",
-    "min": "Minim",
-    "max": "Maxim"
   },
   "home": {
     "continueWhereLeftOff": "Continuă de unde ai rămas",
@@ -250,10 +243,6 @@
       {
         "bold": "Almanahul",
         "rest": " — istorie tech, curiozități și legende"
-      },
-      {
-        "bold": "Laniakea Explorer",
-        "rest": " — explorează universul din cabina ta"
       }
     ],
     "backToLogin": "← Înapoi la autentificare",
@@ -299,8 +288,7 @@
       "05 · Mesagerie",
       "06 · Conexiuni",
       "07 · Clasament",
-      "08 · Laniakea Explorer",
-      "09 · Lansare"
+      "08 · Lansare"
     ],
     "skip": "SARI LA PANOU →",
     "hero": {
@@ -317,8 +305,7 @@
         "Se montează editorul de cod",
         "Se încarcă nucleele C / Java / Python / Bash",
         "Se indexează almanahul",
-        "Se sincronizează discuțiile din forum",
-        "Se cartografiază universul Laniakea"
+        "Se sincronizează discuțiile din forum"
       ]
     },
     "langs": {
@@ -408,24 +395,14 @@
         "climb": "Clasament global"
       }
     },
-    "laniakea": {
-      "num": "// 08 — LANIAKEA EXPLORER",
-      "title": "<1>Laniakea Explorer</1><3></3>este un univers.",
-      "subtitle": "Când creierul tău are nevoie de o pauză, plutește în Laniakea Explorer — o galaxie navigabilă unde fiecare planetă e o misiune secundară sau o cameră a comunității. Zboară prin ea ca într-un joc.",
-      "controlsTitle": "Controale",
-      "navigate": "navighează",
-      "steer": "direcționează",
-      "boost": "accelerează"
-    },
     "network": {
-      "num": "// 09 — TOTUL SE CONECTEAZĂ",
+      "num": "// 08 — TOTUL SE CONECTEAZĂ",
       "title": "O platformă, fiecare piesă <1>conectată</1>.",
       "subtitle": "Fiecare lecție trimite la intrări din almanah. Fiecare eroare sugerează un fir din forum. Fiecare lecție finalizată deblochează o insignă. Progresul tău apare peste tot — instant.",
       "nodes": {
         "lessons": "Lecții",
         "almanac": "Almanah",
         "forum": "Forum",
-        "laniakea": "Laniakea",
         "badges": "Insigne",
         "editor": "Editor",
         "you": "Tu"
@@ -951,8 +928,6 @@
   "settings": {
     "preferences": "Preferințe",
     "language": "Limbă",
-    "graphics": "Grafică",
-    "graphicsHint": "Minim păstrează interfața plată și liniștită. Maxim adaugă câmpul de stele, panourile de sticlă și iconurile.",
     "privacy": "Confidențialitate",
     "privacyHint": "Alege ce pot vedea ceilalți exploratori pe profilul tău public. Totul este vizibil implicit.",
     "showBio": "Bio și status",

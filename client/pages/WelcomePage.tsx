@@ -1,8 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
+import { BrandMark } from '../components/ui/BrandMark';
 import './WelcomePage.css';
-import { Deco } from '../components/ui/Deco';
 
 const ACCENT = <span className="wc-accent-text" />;
 
@@ -27,56 +27,6 @@ function useReveal() {
     return () => io.disconnect();
   }, []);
   return ref;
-}
-
-function HeroStarfield() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    let w: number, h: number;
-    const resize = () => {
-      const rect = canvas.parentElement!.getBoundingClientRect();
-      w = canvas.width = rect.width * devicePixelRatio;
-      h = canvas.height = rect.height * devicePixelRatio;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-    };
-    resize();
-    window.addEventListener('resize', resize);
-    const N = 90;
-    const stars = Array.from({ length: N }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      z: Math.random(),
-      s: Math.random() * 1.4 + 0.2,
-    }));
-    let raf: number;
-    function tick() {
-      ctx!.fillStyle = 'rgba(11,11,17,0.18)';
-      ctx!.fillRect(0, 0, w, h);
-      for (const s of stars) {
-        s.y += 0.00018 * (1 - s.z);
-        if (s.y > 1) s.y = 0;
-        const a = (1 - s.z) * 0.7;
-        ctx!.globalAlpha = a;
-        ctx!.fillStyle = '#E8E8FF';
-        ctx!.beginPath();
-        ctx!.arc(s.x * w, s.y * h, s.s * devicePixelRatio, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-      ctx!.globalAlpha = 1;
-      raf = requestAnimationFrame(tick);
-    }
-    tick();
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-  return <canvas ref={canvasRef} className="wc-hero-stars" />;
 }
 
 export function WelcomePage() {
@@ -125,7 +75,6 @@ export function WelcomePage() {
         's-messaging',
         's-connections',
         's-leaderboard',
-        's-laniakea',
         's-cta',
       ];
       nodesRef.current.forEach((n, i) => {
@@ -185,9 +134,6 @@ export function WelcomePage() {
 
   return (
     <div className="wc-page" ref={rootRef}>
-      <div className="wc-bg-grid" />
-      <div className="wc-bg-orbs" />
-
       {/* Scroll progress */}
       <div className="wc-scroll-progress">
         <div className="wc-scroll-progress-fill" ref={spRef} />
@@ -196,18 +142,7 @@ export function WelcomePage() {
       {/* Topbar */}
       <header className="wc-topbar">
         <div className="wc-logo" onClick={() => navigate('/')}>
-          <svg
-            className="wc-logo-icon"
-            viewBox="0 0 64 64"
-            width="22"
-            height="22"
-            style={{ filter: 'drop-shadow(0 0 8px var(--accent-glow))' }}
-          >
-            <polygon
-              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
-              fill="var(--accent)"
-            />
-          </svg>
+          <BrandMark size={22} />
           <span className="wc-logo-text">CyberStars</span>
         </div>
         <button className="wc-skip" onClick={() => navigate('/')}>
@@ -234,7 +169,6 @@ export function WelcomePage() {
 
       {/* HERO */}
       <section className="wc-section wc-hero" id="s-hero">
-        <HeroStarfield />
         <span className="wc-eyebrow wc-hero-eyebrow wc-fade-in">
           <span className="wc-eyebrow-dot" />
           {t('welcome.hero.eyebrow')}
@@ -355,45 +289,25 @@ export function WelcomePage() {
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">📚</Deco>
                 <div className="wc-stat-label">{t('welcome.almanac.stats.articles')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">🗺️</Deco>
                 <div className="wc-stat-label">{t('welcome.almanac.stats.topics')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">✨</Deco>
                 <div className="wc-stat-label">{t('welcome.almanac.stats.funFacts')}</div>
               </div>
             </div>
           </div>
           <div className="wc-almanac-mock reveal" data-delay="4">
             <div className="wc-alm-chips">
-              <span className="wc-alm-chip active">
-                <Deco>✦</Deco> All
-              </span>
-              <span className="wc-alm-chip">
-                <Deco>📜</Deco> History
-              </span>
-              <span className="wc-alm-chip">
-                <Deco>🐧</Deco> Open Source
-              </span>
-              <span className="wc-alm-chip">
-                <Deco>👑</Deco> Legends
-              </span>
-              <span className="wc-alm-chip">
-                <Deco>🪐</Deco> Space
-              </span>
+              <span className="wc-alm-chip active">All</span>
+              <span className="wc-alm-chip">History</span>
+              <span className="wc-alm-chip">Open Source</span>
+              <span className="wc-alm-chip">Legends</span>
+              <span className="wc-alm-chip">Space</span>
             </div>
             <div className="wc-alm-card">
-              <Deco
-                as="div"
-                className="wc-alm-art"
-                style={{ background: 'linear-gradient(135deg,#6C5CE7,#3a2f8f)' }}
-              >
-                👑
-              </Deco>
               <div className="wc-alm-body">
                 <div className="wc-alm-tag">LEGENDS · 1843</div>
                 <div className="wc-alm-title">Ada Lovelace wrote code before computers existed</div>
@@ -403,13 +317,6 @@ export function WelcomePage() {
               </div>
             </div>
             <div className="wc-alm-card">
-              <Deco
-                as="div"
-                className="wc-alm-art"
-                style={{ background: 'linear-gradient(135deg,#7CEEAE,#2f8f5c)' }}
-              >
-                🐧
-              </Deco>
               <div className="wc-alm-body">
                 <div className="wc-alm-tag">OPEN SOURCE · 1991</div>
                 <div className="wc-alm-title">
@@ -422,13 +329,6 @@ export function WelcomePage() {
               </div>
             </div>
             <div className="wc-alm-card">
-              <Deco
-                as="div"
-                className="wc-alm-art"
-                style={{ background: 'linear-gradient(135deg,#FF9A6E,#8f452f)' }}
-              >
-                🚀
-              </Deco>
               <div className="wc-alm-body">
                 <div className="wc-alm-tag">LEGENDS · 1969</div>
                 <div className="wc-alm-title">
@@ -460,15 +360,12 @@ export function WelcomePage() {
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">🧵</Deco>
                 <div className="wc-stat-label">{t('welcome.forum.stats.threads')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">💬</Deco>
                 <div className="wc-stat-label">{t('welcome.forum.stats.answers')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">✅</Deco>
                 <div className="wc-stat-label">{t('welcome.forum.stats.solved')}</div>
               </div>
             </div>
@@ -509,12 +406,8 @@ export function WelcomePage() {
                   <code>i &lt;= n</code> walks one past the end.
                 </div>
                 <div className="wc-forum-reactions">
-                  <span className="wc-forum-reaction">
-                    <Deco>🔥</Deco> 12
-                  </span>
-                  <span className="wc-forum-reaction">
-                    <Deco>✅</Deco> solved
-                  </span>
+                  <span className="wc-forum-reaction">12</span>
+                  <span className="wc-forum-reaction">solved</span>
                 </div>
               </div>
             </div>
@@ -566,9 +459,7 @@ export function WelcomePage() {
               <div className="wc-dm-bubble wc-dm-in">
                 Nice, drop me your solution when you can
                 <div className="wc-dm-reactions">
-                  <span className="wc-dm-reaction">
-                    <Deco>🙌</Deco> 1
-                  </span>
+                  <span className="wc-dm-reaction">1</span>
                 </div>
                 <span className="wc-dm-time">14:03</span>
               </div>
@@ -586,15 +477,12 @@ export function WelcomePage() {
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">👥</Deco>
                 <div className="wc-stat-label">{t('welcome.messaging.stats.private')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">⚡</Deco>
                 <div className="wc-stat-label">{t('welcome.messaging.stats.realtime')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">😀</Deco>
                 <div className="wc-stat-label">{t('welcome.messaging.stats.reactions')}</div>
               </div>
             </div>
@@ -618,15 +506,12 @@ export function WelcomePage() {
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">🤝</Deco>
                 <div className="wc-stat-label">{t('welcome.connections.stats.requests')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">🔗</Deco>
                 <div className="wc-stat-label">{t('welcome.connections.stats.network')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">👤</Deco>
                 <div className="wc-stat-label">{t('welcome.connections.stats.profile')}</div>
               </div>
             </div>
@@ -698,7 +583,6 @@ export function WelcomePage() {
               <span className="wc-lb-xp-col">XP</span>
             </div>
             <div className="wc-lb-row">
-              <Deco className="wc-lb-rank">🥇</Deco>
               <div
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#FFD24A,#c79a1a)', color: '#1a1a1a' }}
@@ -706,9 +590,7 @@ export function WelcomePage() {
                 TO
               </div>
               <span className="wc-lb-name">TON618</span>
-              <span className="wc-lb-lvl">
-                <Deco>⭐</Deco> L24
-              </span>
+              <span className="wc-lb-lvl">L24</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">18,420 XP</span>
                 <span className="wc-lb-lessons">
@@ -717,7 +599,6 @@ export function WelcomePage() {
               </div>
             </div>
             <div className="wc-lb-row">
-              <Deco className="wc-lb-rank">🥈</Deco>
               <div
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#cbd5e1,#94a3b8)', color: '#1a1a1a' }}
@@ -725,9 +606,7 @@ export function WelcomePage() {
                 LA
               </div>
               <span className="wc-lb-name">LaniakeaPRJ</span>
-              <span className="wc-lb-lvl">
-                <Deco>⭐</Deco> L21
-              </span>
+              <span className="wc-lb-lvl">L21</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">15,905 XP</span>
                 <span className="wc-lb-lessons">
@@ -736,7 +615,6 @@ export function WelcomePage() {
               </div>
             </div>
             <div className="wc-lb-row">
-              <Deco className="wc-lb-rank">🥉</Deco>
               <div
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#d08b5b,#a25f31)' }}
@@ -744,9 +622,7 @@ export function WelcomePage() {
                 MH
               </div>
               <span className="wc-lb-name">Marco Hoeger</span>
-              <span className="wc-lb-lvl">
-                <Deco>⭐</Deco> L19
-              </span>
+              <span className="wc-lb-lvl">L19</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">13,240 XP</span>
                 <span className="wc-lb-lessons">
@@ -755,7 +631,6 @@ export function WelcomePage() {
               </div>
             </div>
             <div className="wc-lb-row wc-lb-you">
-              <Deco className="wc-lb-rank">#46</Deco>
               <div
                 className="wc-forum-avatar wc-lb-av"
                 style={{ background: 'linear-gradient(135deg,#6C5CE7,#a855f7)' }}
@@ -765,9 +640,7 @@ export function WelcomePage() {
               <span className="wc-lb-name">
                 Tommy Vercetti <span className="wc-lb-youtag">YOU</span>
               </span>
-              <span className="wc-lb-lvl">
-                <Deco>⭐</Deco> L12
-              </span>
+              <span className="wc-lb-lvl">L12</span>
               <div className="wc-lb-xpcell">
                 <span className="wc-lb-xp">6,880 XP</span>
                 <span className="wc-lb-lessons">
@@ -788,102 +661,13 @@ export function WelcomePage() {
             </p>
             <div className="wc-stats reveal" data-delay="3">
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">⭐</Deco>
                 <div className="wc-stat-label">{t('welcome.leaderboard.stats.perLesson')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">🚀</Deco>
                 <div className="wc-stat-label">{t('welcome.leaderboard.stats.levels')}</div>
               </div>
               <div className="wc-stat">
-                <Deco className="wc-stat-ico">🌌</Deco>
                 <div className="wc-stat-label">{t('welcome.leaderboard.stats.climb')}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LANIAKEA EXPLORER */}
-      <section className="wc-section" id="s-laniakea">
-        <div className="wc-section-num reveal">{t('welcome.laniakea.num')}</div>
-        <div className="wc-split">
-          <div className="reveal" data-delay="3">
-            <div className="wc-viewport">
-              <div className="wc-vp-space" />
-              <VPStars />
-              <div className="wc-vp-top">
-                <span className="wc-vp-tt">CSTR-9</span>
-                <span className="wc-vp-vent">
-                  {Array.from({ length: 20 }, (_, i) => (
-                    <span key={i} />
-                  ))}
-                </span>
-                <span className="wc-vp-tt wc-green">NAV · OK</span>
-              </div>
-              <div className="wc-vp-rocky" />
-              <div className="wc-vp-moon" />
-              <div className="wc-vp-ring" />
-              <div className="wc-vp-planet wc-vp-gas" />
-              <div className="wc-vp-bh">
-                <div className="wc-vp-bh-disk" />
-                <div className="wc-vp-bh-photon" />
-                <div className="wc-vp-bh-core" />
-              </div>
-              <div className="wc-vp-hud">
-                <div className="wc-vp-hud-tl">
-                  <div className="wc-vp-ln">
-                    <span className="wc-vp-dot" />
-                    SECTOR ζ-4
-                  </div>
-                  <div>HDG 274° · SPD 0.42c</div>
-                </div>
-                <div className="wc-vp-hud-tr">
-                  BODIES · 3<br />
-                  FUEL · 87%
-                  <br />
-                  HULL · 100%
-                </div>
-              </div>
-              <div className="wc-vp-reticle">
-                <div className="wc-vp-rt-box" />
-              </div>
-              <div className="wc-vp-label wc-lbl-gas">SIENNA β · 4.2 AU</div>
-              <div className="wc-vp-label wc-lbl-bh">⚠ SINGULARITY</div>
-              <div className="wc-vp-bot">
-                <span className="wc-vp-gauge">
-                  <span className="wc-vp-lbl">PWR</span>
-                  <span className="wc-vp-val">98%</span>
-                </span>
-                <span className="wc-vp-bar" />
-                <span className="wc-vp-gauge">
-                  <span className="wc-vp-lbl">DIST</span>
-                  <span className="wc-vp-val">4.2 AU</span>
-                </span>
-              </div>
-              <div className="wc-vp-scan" />
-            </div>
-          </div>
-          <div>
-            <h2 className="wc-title reveal" data-delay="1">
-              <Trans
-                i18nKey="welcome.laniakea.title"
-                components={[<span />, ACCENT, <span />, <br />]}
-              />
-            </h2>
-            <p className="wc-subtitle reveal" data-delay="2">
-              {t('welcome.laniakea.subtitle')}
-            </p>
-            <div className="wc-controls reveal" data-delay="3">
-              <div className="wc-controls-title">{t('welcome.laniakea.controlsTitle')}</div>
-              <div>
-                <span className="wc-ctrl-key">WASD</span> · {t('welcome.laniakea.navigate')}
-              </div>
-              <div>
-                <span className="wc-ctrl-key">MOUSE</span> · {t('welcome.laniakea.steer')}
-              </div>
-              <div>
-                <span className="wc-ctrl-key">SHIFT</span> · {t('welcome.laniakea.boost')}
               </div>
             </div>
           </div>
@@ -914,7 +698,6 @@ export function WelcomePage() {
             <path className="wc-link" d="M 400 180 Q 280 100 130 80" />
             <path className="wc-link" d="M 400 180 Q 540 90 680 80" />
             <path className="wc-link" d="M 400 180 Q 230 220 90 270" />
-            <path className="wc-link" d="M 400 180 Q 540 250 700 270" />
             <path className="wc-link" d="M 400 180 Q 400 280 400 320" />
             <path className="wc-link" d="M 400 180 Q 400 100 400 50" />
             <circle className="wc-node-c" cx={130} cy={80} r={28} />
@@ -928,10 +711,6 @@ export function WelcomePage() {
             <circle className="wc-node-c" cx={90} cy={270} r={28} />
             <text className="wc-node-label" x={90} y={274}>
               {t('welcome.network.nodes.forum')}
-            </text>
-            <circle className="wc-node-c" cx={700} cy={270} r={28} />
-            <text className="wc-node-label" x={700} y={274}>
-              {t('welcome.network.nodes.laniakea')}
             </text>
             <circle className="wc-node-c" cx={400} cy={320} r={28} />
             <text className="wc-node-label" x={400} y={324}>

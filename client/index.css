@@ -1,26 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import 'tailwindcss';
 
-/* ===========================================================================
-   Graphics modes.
-
-   `min` (the default, defined on :root) is flat and quiet: opaque surfaces,
-   neutral hairline borders, a three-step text hierarchy, no starfield.
-   `max` re-tints the same tokens into the cosmos look — glass panels, purple
-   borders, a lit background — so the whole app switches by attribute alone,
-   with no conditional markup. See client/hooks/useGraphics.ts.
-
-   Anything that differs between the two modes belongs here as a token. If you
-   find yourself branching on the mode inside a component, check first whether
-   a token would do it.
-   =========================================================================== */
+/* The whole look lives in these tokens. Components reach for them rather than
+   for raw colours, so a change of palette is a change made here */
 
 :root {
   --accent: #6c5ce7;
-  /* Decorative bloom around lit elements — off in min, so every glow across
-     the app (badges, toasts, hero marks, forum cards) goes quiet at once. */
+  /* Decorative bloom around lit elements, kept off so every glow across the
+     app (badges, toasts, hero marks, forum cards) stays quiet */
   --accent-glow: transparent;
-  /* The focus ring is not decoration: it stays visible in both modes. */
   --focus-ring: rgba(108, 92, 231, 0.35);
   --bg: #0b0b0e;
   --bg2: #121216;
@@ -38,14 +26,13 @@
   --output: #5183b8;
   --warning: #c08a2e;
   --error: #c25c5c;
-  --font: 'Space Grotesk', system-ui, sans-serif;
+  --font: 'Inter', system-ui, sans-serif;
   --mono: 'JetBrains Mono', 'Fira Code', monospace;
   --radius: 8px;
   --radius-sm: 6px;
   /* The panel surface — every card and container in the app (see .panel). */
   --panel-bg: #16161b;
   --panel-border: #26262e;
-  --panel-blur: 0px;
   /* Tint sitting on top of a panel: inputs, message bubbles, output headers. */
   --glass: #1e1e24;
   /* Floating surfaces that must stay readable over whatever they cover. */
@@ -53,33 +40,6 @@
   /* Sticky app chrome (the topbar). */
   --chrome: #0b0b0e;
   --page-bg: #0b0b0e;
-}
-
-:root[data-graphics='max'] {
-  --bg: #0f0f14;
-  --bg2: #16161d;
-  --bg3: #1e1e28;
-  --surface: #22222e;
-  --surface2: #2a2a38;
-  /* In max, borders are the accent at 30% — that purple hairline is what ties
-     the glass panels to the starfield behind them. */
-  --border: rgba(108, 92, 231, 0.3);
-  --accent-glow: #6c5ce733;
-  --text: #ececf3;
-  --text2: #ececf3;
-  --text3: #ececf3;
-  --success: #00d68f;
-  --output: #5aa0e0;
-  --warning: #ffaa00;
-  --error: #ff6b6b;
-  --radius: 10px;
-  --panel-bg: rgba(22, 22, 29, 0.1);
-  --panel-border: rgba(108, 92, 231, 0.3);
-  --panel-blur: 12px;
-  --glass: rgba(22, 22, 29, 0.4);
-  --popover: rgba(22, 22, 29, 0.92);
-  --chrome: rgba(22, 22, 29, 0.78);
-  --page-bg: #06050d;
 }
 
 html,
@@ -93,35 +53,6 @@ body {
 /* The sign-in page paints its own full-screen background. */
 .auth-bg {
   background: var(--page-bg);
-}
-:root[data-graphics='max'] .auth-bg {
-  background: radial-gradient(ellipse at 50% 50%, #1a0d3d 0%, #0a0518 55%, #000 100%);
-}
-
-/* The brand mark keeps its shape in both modes; only max lights it up. */
-.brand-mark {
-  filter: drop-shadow(0 0 8px var(--accent-glow));
-}
-
-/* Active top-level nav item. */
-.nav-active {
-  background: var(--surface);
-  color: var(--text);
-}
-:root[data-graphics='max'] .nav-active {
-  background: rgba(108, 92, 231, 0.07);
-  color: var(--accent);
-}
-
-/* Mode-specific presentation (see components/ui/Deco.tsx). These rules only
-   ever hide — they never impose a display value — so a Deco keeps whatever
-   layout its element and utility classes give it in the mode that shows it.
-   !important is what lets them beat a Tailwind display utility. */
-:root:not([data-graphics='max']) .deco-max {
-  display: none !important;
-}
-:root[data-graphics='max'] .deco-min {
-  display: none !important;
 }
 
 #root {
@@ -344,95 +275,10 @@ samp {
    per-element rounded-*, etc.) still override them where needed. */
 @layer components {
   /* ===== Panel — the canonical content surface. Every card, panel and
-     container in the app is this. Flat and opaque in min; in max the same
-     class becomes the glass the starfield shows through. ===== */
+     container in the app is this ===== */
   .panel {
     background: var(--panel-bg);
-    backdrop-filter: blur(var(--panel-blur));
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
-  }
-}
-
-/* ===== Cosmos background — max graphics only (see CosmosBackground.tsx) ===== */
-/* ===== Cosmos background (global) ===== */
-.cosmos-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* Stable height: lvh = large viewport, does NOT change when the mobile URL
-     bar shows/hides on scroll (unlike `inset: 0`, which tracks the dynamic
-     viewport and was scaling the canvas on every scroll). vh is the fallback. */
-  height: 100vh;
-  height: 100lvh;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse at 50% 30%, #1a1040 0%, #0a0818 45%, #06050d 100%);
-}
-.cosmos-bg canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.nebula {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  mix-blend-mode: screen;
-  pointer-events: none;
-  will-change: transform;
-}
-.nebula.n1 {
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, #6c5ce7 0%, transparent 65%);
-  top: -120px;
-  left: -100px;
-  opacity: 0.35;
-  animation: nebula-drift1 38s ease-in-out infinite alternate;
-}
-.nebula.n2 {
-  width: 680px;
-  height: 680px;
-  background: radial-gradient(circle, #ff6b6b 0%, transparent 60%);
-  bottom: -200px;
-  right: -180px;
-  opacity: 0.22;
-  animation: nebula-drift2 46s ease-in-out infinite alternate;
-}
-.nebula.n3 {
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, #00d68f 0%, transparent 65%);
-  top: 40%;
-  left: 55%;
-  opacity: 0.18;
-  animation: nebula-drift3 52s ease-in-out infinite alternate;
-}
-@keyframes nebula-drift1 {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(120px, 80px) scale(1.15);
-  }
-}
-@keyframes nebula-drift2 {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(-160px, -90px) scale(1.2);
-  }
-}
-@keyframes nebula-drift3 {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(-90px, 120px) scale(0.85);
   }
 }

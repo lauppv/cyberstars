@@ -1,16 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { Avatar } from '../ui/Avatar';
-import { Deco } from '../ui/Deco';
+import { ListTree, PanelLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import { isAdmin } from '../../../shared/auth';
-import { canAccessFeature } from '../../../shared/features';
-import { useGamification } from '../../hooks/useGamification';
 import { NotificationBell } from './NotificationBell';
-import { LeaderboardButton } from './LeaderboardButton';
-import { ConnectionsButton } from './ConnectionsButton';
-import { MessagesButton } from './MessagesButton';
+import { useSidebar } from './AppShell';
 
 interface TopbarProps {
   breadcrumb?: { course?: string; lesson?: string; courseHref?: string };
@@ -19,19 +12,30 @@ interface TopbarProps {
   onSidebarToggle?: () => void;
 }
 
-interface NavItem {
-  key: string;
-  path: string;
+// What the header names when a page passes no breadcrumb, matched by prefix
+const TITLES: [string, string][] = [
+  ['/courses', 'nav.courses'],
+  ['/algorithms', 'nav.algorithms'],
+  ['/forum', 'nav.forum'],
+  ['/almanac', 'nav.almanac'],
+  ['/leaderboard', 'nav.leaderboard'],
+  ['/messages', 'messages.title'],
+  ['/connections', 'connections.title'],
+  ['/profile', 'topbar.profile'],
+  ['/settings', 'topbar.settings'],
+  ['/usage', 'usage.title'],
+  ['/support', 'topbar.support'],
+  ['/rules', 'topbar.rules'],
+  ['/admin', 'topbar.admin'],
+];
+
+function titleKey(pathname: string): string | null {
+  if (pathname === '/') return 'nav.dashboard';
+  return TITLES.find(([prefix]) => pathname.startsWith(prefix))?.[1] ?? null;
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { key: 'nav.dashboard', path: '/' },
-  { key: 'nav.courses', path: '/courses' },
-  { key: 'nav.algorithms', path: '/algorithms' },
-  { key: 'nav.forum', path: '/forum' },
-  { key: 'nav.almanac', path: '/almanac' },
-  { key: 'nav.laniakea', path: '/laniakea' },
-];
+const iconButton =
+  'w-7 h-7 flex items-center justify-center rounded-[var(--radius-sm)] bg-transparent border-none text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex-shrink-0';
 
 export function Topbar({
   breadcrumb,
@@ -42,110 +46,42 @@ export function Topbar({
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
-  const { isLoggedIn, user, logout } = useAuth();
-  const { xp } = useGamification();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const mobileNavRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const onClick = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMenuOpen(false);
-    };
-    document.addEventListener('mousedown', onClick);
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onClick);
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [menuOpen]);
-
-  useEffect(() => {
-    if (!mobileNavOpen) return;
-    const onClick = (e: MouseEvent) => {
-      if (mobileNavRef.current && !mobileNavRef.current.contains(e.target as Node)) {
-        setMobileNavOpen(false);
-      }
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileNavOpen(false);
-    };
-    document.addEventListener('mousedown', onClick);
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onClick);
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [mobileNavOpen]);
+  const { isLoggedIn, user } = useAuth();
+  const sidebar = useSidebar();
+  const title = titleKey(location.pathname);
 
   return (
-    <header className="flex items-center justify-between px-4 sm:px-7 h-14 bg-[var(--chrome)] backdrop-blur-[var(--panel-blur)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-50">
-      <div className="flex items-center gap-3 sm:gap-6 min-w-0" ref={mobileNavRef}>
-        {/* Mobile hamburger (site nav collapses below lg) */}
-        <button
-          onClick={() => setMobileNavOpen((v) => !v)}
-          className="lg:hidden bg-transparent border border-[var(--border)] text-[var(--text2)] w-8 h-8 rounded-[var(--radius-sm)] flex items-center justify-center text-[15px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer flex-shrink-0"
-          aria-label={t('topbar.toggleMenu')}
-          aria-haspopup="menu"
-          aria-expanded={mobileNavOpen}
-        >
-          ☰
-        </button>
-
-        {mobileNavOpen && (
-          <div
-            role="menu"
-            className="lg:hidden absolute left-2 top-[52px] w-56 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up py-1"
+    <header className="flex items-center justify-between gap-3 px-3 sm:px-4 h-12 bg-[var(--chrome)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-30">
+      <div className="flex items-center gap-1.5 min-w-0">
+        {sidebar && (
+          <button
+            onClick={sidebar.toggle}
+            className={iconButton}
+            aria-label={t(sidebar.state === 'closed' ? 'sidebar.show' : 'sidebar.hide')}
+            aria-expanded={sidebar.state !== 'closed'}
+            title={t(sidebar.state === 'closed' ? 'sidebar.show' : 'sidebar.hide')}
           >
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.path}
-                role="menuitem"
-                onClick={() => {
-                  setMobileNavOpen(false);
-                  navigate(item.path);
-                }}
-                className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-              >
-                {t(item.key)}
-              </button>
-            ))}
-          </div>
+            <PanelLeft size={16} strokeWidth={1.75} />
+          </button>
         )}
 
         {showSidebarToggle && (
           <button
             onClick={onSidebarToggle}
-            className="bg-transparent border border-[var(--border)] text-[var(--text3)] w-7 h-7 rounded-[var(--radius-sm)] flex items-center justify-center text-[11px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer"
+            className={`${iconButton} ${sidebarOpen ? 'text-[var(--text)]' : ''}`}
             aria-label={t('topbar.toggleSidebar')}
+            aria-pressed={sidebarOpen}
+            title={t('topbar.toggleSidebar')}
           >
-            {sidebarOpen ? '◀' : '▶'}
+            <ListTree size={16} strokeWidth={1.75} />
           </button>
         )}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
-          <svg className="w-[22px] h-[22px] brand-mark" viewBox="0 0 64 64">
-            <polygon
-              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
-              fill="var(--accent)"
-            />
-          </svg>
-          <span className="font-bold text-[17px]" style={{ letterSpacing: '-0.5px' }}>
-            CyberStars
-          </span>
-        </div>
 
         {breadcrumb ? (
-          <div className="flex items-center gap-2 text-[13px] text-[var(--text3)] min-w-0">
+          <div className="flex items-center gap-2 ml-1 text-[13px] text-[var(--text3)] min-w-0">
             {breadcrumb.course && (
               <span
-                className="hidden sm:inline text-[var(--text2)] hover:text-[var(--accent)] cursor-pointer transition whitespace-nowrap"
+                className="hidden sm:inline text-[var(--text2)] hover:text-[var(--text)] cursor-pointer transition whitespace-nowrap"
                 onClick={() => navigate(breadcrumb.courseHref ?? '/courses')}
               >
                 {breadcrumb.course}
@@ -159,208 +95,21 @@ export function Topbar({
             )}
           </div>
         ) : (
-          <nav className="hidden lg:flex gap-1">
-            {NAV_ITEMS.map((item) => {
-              const isActive =
-                item.path === '/'
-                  ? location.pathname === '/'
-                  : item.path === '/algorithms'
-                    ? location.pathname.startsWith('/algorithms') ||
-                      location.pathname.startsWith('/lesson/algo')
-                    : location.pathname.startsWith(item.path);
-              return (
-                <button
-                  key={item.path}
-                  onClick={() => navigate(item.path)}
-                  className={`px-3.5 py-[7px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer border-none transition-all ${
-                    isActive
-                      ? 'nav-active'
-                      : 'text-[var(--text3)] bg-transparent hover:text-[var(--text)] hover:bg-[var(--surface)]'
-                  }`}
-                >
-                  {t(item.key)}
-                </button>
-              );
-            })}
-          </nav>
+          title && (
+            <span className="ml-1 text-[13px] font-medium text-[var(--text)] truncate">
+              {t(title)}
+            </span>
+          )
         )}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         {isLoggedIn && user ? (
-          <>
-            <NotificationBell />
-            <div className="hidden sm:flex">
-              <LeaderboardButton />
-            </div>
-            <div className="hidden sm:flex">
-              <ConnectionsButton />
-            </div>
-            <MessagesButton />
-            <div className="relative flex items-center gap-2" ref={menuRef}>
-              <div
-                className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[12px] font-semibold text-[var(--accent)]"
-                title={t(xp.titleKey)}
-              >
-                <span className="inline-flex items-center gap-1.5">
-                  <Deco>⭐</Deco>
-                  {t('level.short', { n: xp.level })}
-                </span>
-                <div
-                  className="w-24 h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden"
-                  aria-hidden
-                >
-                  <div
-                    className="h-full bg-[var(--accent)] rounded-full transition-[width] duration-500"
-                    style={{ width: `${xp.xpPct}%` }}
-                  />
-                </div>
-                <span className="tabular-nums text-[11px] text-[var(--text3)]">
-                  {xp.xpIntoLevel}/{xp.xpForLevelSpan}
-                </span>
-              </div>
-              <button
-                onClick={() => setMenuOpen((v) => !v)}
-                className="flex items-center gap-2 px-2 py-1 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--surface)] transition cursor-pointer"
-                aria-haspopup="menu"
-                aria-expanded={menuOpen}
-              >
-                <Avatar url={user.avatarUrl} name={user.name} size={30} />
-                <span className="hidden sm:inline text-[13px] font-semibold text-[var(--text)] max-w-[120px] truncate">
-                  {user.name}
-                </span>
-              </button>
-
-              {menuOpen && (
-                <div
-                  role="menu"
-                  className="absolute top-full right-0 mt-2 w-72 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
-                >
-                  <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-3">
-                    <Avatar url={user.avatarUrl} name={user.name} size={40} />
-                    <div className="min-w-0">
-                      <div className="text-[13px] font-semibold text-[var(--text)] truncate">
-                        {user.name}
-                      </div>
-                      <div className="text-[11px] text-[var(--text3)] truncate">{user.email}</div>
-                    </div>
-                  </div>
-                  <button
-                    role="menuitem"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate('/profile');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">👤</Deco> {t('topbar.profile')}
-                  </button>
-                  {canAccessFeature('leaderboard', user.role, import.meta.env.PROD) && (
-                    <button
-                      role="menuitem"
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate('/leaderboard');
-                      }}
-                      className="sm:hidden w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                    >
-                      <Deco className="w-4 text-center">🏆</Deco> {t('nav.leaderboard')}
-                    </button>
-                  )}
-                  {canAccessFeature('connections', user.role, import.meta.env.PROD) && (
-                    <button
-                      role="menuitem"
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate('/connections');
-                      }}
-                      className="sm:hidden w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                    >
-                      <Deco className="w-4 text-center">🤝</Deco> {t('connections.title')}
-                    </button>
-                  )}
-                  {isAdmin(user.role) && (
-                    <button
-                      role="menuitem"
-                      onClick={() => {
-                        setMenuOpen(false);
-                        navigate('/admin');
-                      }}
-                      className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--accent)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                    >
-                      <Deco className="w-4 text-center">📊</Deco> {t('topbar.admin')}
-                    </button>
-                  )}
-                  <button
-                    role="menuitem"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate('/settings');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">⚙️</Deco> {t('topbar.settings')}
-                  </button>
-                  <button
-                    role="menuitem"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate('/usage');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">🔋</Deco> {t('usage.title')}
-                  </button>
-                  <button
-                    role="menuitem"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate('/support');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">🎫</Deco> {t('topbar.support')}
-                  </button>
-                  <button
-                    role="menuitem"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate('/rules');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">📋</Deco> {t('topbar.rules')}
-                  </button>
-                  <button
-                    role="menuitem"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      navigate('/welcome');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">✨</Deco> {t('topbar.welcomeTour')}
-                  </button>
-                  <div className="border-t border-[var(--border)]" />
-                  <button
-                    role="menuitem"
-                    onClick={async () => {
-                      setMenuOpen(false);
-                      await logout();
-                      navigate('/getstarted');
-                    }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--error)] hover:bg-[var(--surface)] transition cursor-pointer flex items-center gap-2 bg-transparent border-none"
-                  >
-                    <Deco className="w-4 text-center">↪</Deco> {t('topbar.signOut')}
-                  </button>
-                </div>
-              )}
-            </div>
-          </>
+          <NotificationBell />
         ) : (
           <button
             onClick={() => navigate('/getstarted')}
-            className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer"
+            className="h-7 px-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-medium border-none hover:brightness-110 transition cursor-pointer"
           >
             {t('topbar.signIn')}
           </button>

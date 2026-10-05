@@ -5,16 +5,11 @@ import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
-import { Deco } from '../components/ui/Deco';
-import { useGraphics } from '../hooks/useGraphics';
 import { canAccessFeature } from '../../shared/features';
 import * as leaderboardService from '../services/leaderboardService';
 import type { LeaderboardEntry } from '../../shared/leaderboard';
 
 const PAGE_SIZE = 50;
-
-// Max graphics medal the podium; min lets the rank number carry it.
-const MEDALS: Record<number, string> = { 1: '🥇', 2: '🥈', 3: '🥉' };
 
 function Row({
   entry,
@@ -25,8 +20,6 @@ function Row({
   isMe: boolean;
   t: (k: string, o?: Record<string, unknown>) => string;
 }) {
-  const [graphics] = useGraphics();
-  const medal = graphics === 'max' ? MEDALS[entry.rank] : undefined;
   return (
     <Link
       to={`/u/${entry.userId}`}
@@ -35,7 +28,7 @@ function Row({
       }`}
     >
       <span className="w-8 sm:w-10 text-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0">
-        {medal ?? entry.rank}
+        {entry.rank}
       </span>
       <Avatar url={entry.avatarUrl} name={entry.name} size={36} />
       <div className="min-w-0 flex-1">
@@ -53,7 +46,7 @@ function Row({
         className="hidden sm:inline-flex items-center gap-1 flex-shrink-0 text-[12px] font-semibold px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
         title={t('level.short', { n: entry.level })}
       >
-        <Deco>⭐</Deco> {t('level.short', { n: entry.level })}
+        {t('level.short', { n: entry.level })}
       </span>
       <div className="flex flex-col items-end flex-shrink-0 w-[92px]">
         <span className="tabular-nums font-bold text-[14px] text-[var(--text)]">

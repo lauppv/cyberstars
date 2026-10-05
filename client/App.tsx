@@ -1,6 +1,6 @@
-import { lazy, Suspense, useLayoutEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { NotificationProvider } from './context/NotificationContext';
@@ -10,15 +10,8 @@ import { GuestSignupPromptProvider } from './context/GuestSignupPromptContext';
 import { RadioProvider } from './context/RadioContext';
 import { UsageProvider } from './context/UsageContext';
 import { RadioPlayer } from './components/radio/RadioPlayer';
-import { CosmosBackground } from './components/ui/CosmosBackground';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
-import { GraphicsToggle } from './components/ui/GraphicsToggle';
-import {
-  isPreviewPath,
-  setPreviewAllowed,
-  syncGraphicsForRoute,
-  useGraphics,
-} from './hooks/useGraphics';
+import { AppShell } from './components/layout/AppShell';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
 
@@ -74,39 +67,6 @@ const ConnectionsPage = lazy(() =>
   import('./pages/ConnectionsPage').then((m) => ({ default: m.ConnectionsPage })),
 );
 
-// Keeps the graphics layer in step with where we are and who is looking. The
-// guest preview only applies once auth has resolved to "no account"; leaving or
-// re-entering a preview route drops whatever was previewed there. Layout effect,
-// not effect: this has to settle before the browser paints.
-function GraphicsController() {
-  const { pathname } = useLocation();
-  const { isLoading, isLoggedIn } = useAuth();
-  useLayoutEffect(() => {
-    setPreviewAllowed(!isLoading && !isLoggedIn);
-    syncGraphicsForRoute();
-  }, [pathname, isLoading, isLoggedIn]);
-  return null;
-}
-
-// The starfield only exists in max graphics; min paints the page from the body
-// background alone. Auth/welcome bring their own backgrounds either way.
-function GlobalBackground() {
-  const { pathname } = useLocation();
-  const [graphics] = useGraphics();
-  if (pathname === '/getstarted' || pathname === '/welcome') return null;
-  return graphics === 'max' ? <CosmosBackground /> : null;
-}
-
-// The graphics switch rides along on the routes a guest can reach. Mounted here
-// rather than inside the pages because home renders two different trees and the
-// switch belongs on both. Signed-in people have the same control in settings.
-function GlobalGraphicsToggle() {
-  const { pathname } = useLocation();
-  const { isLoading, isLoggedIn } = useAuth();
-  if (isLoading || isLoggedIn) return null;
-  return isPreviewPath(pathname) ? <GraphicsToggle /> : null;
-}
-
 // The radio chip lives at the app root so playback survives navigation, but the
 // auth/welcome pages carry no chrome.
 function GlobalRadio() {
@@ -128,42 +88,41 @@ function App() {
                   <GuestSignupPromptProvider>
                     <RadioProvider>
                       <UsageProvider>
-                        <GraphicsController />
-                        <GlobalBackground />
                         <GlobalRadio />
-                        <GlobalGraphicsToggle />
-                        <Suspense
-                          fallback={
-                            <div className="h-screen flex items-center justify-center bg-transparent">
-                              <LoadingSpinner />
-                            </div>
-                          }
-                        >
-                          <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/getstarted" element={<AuthPage />} />
-                            <Route path="/courses" element={<CoursesPage />} />
-                            <Route path="/algorithms" element={<AlgorithmsPage />} />
-                            <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-                            <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
-                            <Route path="/profile" element={<ProfilePage />} />
-                            <Route path="/forum" element={<ForumPage />} />
-                            <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
-                            <Route path="/forum/t/:threadId" element={<ForumPage />} />
-                            <Route path="/almanac" element={<AlmanacPage />} />
-                            <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-                            <Route path="/rules" element={<RulesPage />} />
-                            <Route path="/usage" element={<UsagePage />} />
-                            <Route path="/support" element={<SupportPage />} />
-                            <Route path="/welcome" element={<WelcomePage />} />
-                            <Route path="/admin" element={<AdminPage />} />
-                            <Route path="/leaderboard" element={<LeaderboardPage />} />
-                            <Route path="/messages" element={<MessagesPage />} />
-                            <Route path="/u/:userId" element={<PublicProfilePage />} />
-                            <Route path="/settings" element={<SettingsPage />} />
-                            <Route path="/connections" element={<ConnectionsPage />} />
-                          </Routes>
-                        </Suspense>
+                        <AppShell>
+                          <Suspense
+                            fallback={
+                              <div className="h-screen flex items-center justify-center bg-transparent">
+                                <LoadingSpinner />
+                              </div>
+                            }
+                          >
+                            <Routes>
+                              <Route path="/" element={<HomePage />} />
+                              <Route path="/getstarted" element={<AuthPage />} />
+                              <Route path="/courses" element={<CoursesPage />} />
+                              <Route path="/algorithms" element={<AlgorithmsPage />} />
+                              <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                              <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+                              <Route path="/profile" element={<ProfilePage />} />
+                              <Route path="/forum" element={<ForumPage />} />
+                              <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
+                              <Route path="/forum/t/:threadId" element={<ForumPage />} />
+                              <Route path="/almanac" element={<AlmanacPage />} />
+                              <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                              <Route path="/rules" element={<RulesPage />} />
+                              <Route path="/usage" element={<UsagePage />} />
+                              <Route path="/support" element={<SupportPage />} />
+                              <Route path="/welcome" element={<WelcomePage />} />
+                              <Route path="/admin" element={<AdminPage />} />
+                              <Route path="/leaderboard" element={<LeaderboardPage />} />
+                              <Route path="/messages" element={<MessagesPage />} />
+                              <Route path="/u/:userId" element={<PublicProfilePage />} />
+                              <Route path="/settings" element={<SettingsPage />} />
+                              <Route path="/connections" element={<ConnectionsPage />} />
+                            </Routes>
+                          </Suspense>
+                        </AppShell>
                       </UsageProvider>
                     </RadioProvider>
                   </GuestSignupPromptProvider>

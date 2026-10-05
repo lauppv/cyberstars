@@ -94,8 +94,8 @@ data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
 | `/almanac/{index,extras}.json`      | Almanac cards + sidebar data (English) and `ro/` peers |
 | `/almanac/articles/:slug.json`      | Almanac article body (English) and `ro/` peer          |
 
-**Localization** — the UI is bilingual (English + Romanian), toggled in the
-topbar; the choice persists in `localStorage` and is read from `i18n.language`.
+**Localization** — the UI is bilingual (English + Romanian), toggled in
+`/settings`; the choice persists in `localStorage` and is read from `i18n.language`.
 UI chrome strings come from `client/i18n/locales/{en,ro}.json`. Lesson and almanac
 content is localized by file: translated copies live in a per-language subfolder
 (`ro`) beside the English source, with the **same slug**. `lessonService` /
@@ -232,7 +232,7 @@ request (requester → addressee) that becomes mutual once accepted.
 the service checks the reverse so A→B and B→A can't coexist. The recipient gets a
 `CONNECTION_REQUEST` notification and the requester a `CONNECTION_ACCEPTED` on
 acceptance; responding auto-reads the request's bell entry. Client: the
-`/connections` page and a Topbar `ConnectionsButton`; public profiles render a
+`/connections` page and a sidebar entry; public profiles render a
 connect/pending/connected button from the payload's `connectionRelation`.
 
 ### Profile

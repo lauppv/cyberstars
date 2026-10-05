@@ -6,7 +6,6 @@ import { useNotifications } from '../../context/NotificationContext';
 import { forumRoutes } from '../../constants/forumRoutes';
 import type { NotificationDTO, NotificationType } from '../../../shared/notifications';
 import { isAdmin } from '../../../shared/auth';
-import { Deco } from '../ui/Deco';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -122,7 +121,6 @@ export function NotificationDropdown({ onClose }: { onClose: () => void }) {
                 n.readAt ? 'opacity-60' : ''
               }`}
             >
-              <Deco className="text-[15px] leading-none mt-0.5 flex-shrink-0">{ICONS[n.type]}</Deco>
               <span className="min-w-0 flex-1">
                 <span className="block text-[12.5px] text-[var(--text)] leading-snug">
                   {describe(n)}

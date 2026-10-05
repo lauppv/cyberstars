@@ -34,7 +34,6 @@ import * as terminalService from '../services/terminalService';
 import { courseMeta } from '../constants/courses';
 import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
 import { canAccessFeature } from '../../shared/features';
-import { Deco } from '../components/ui/Deco';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -84,7 +83,7 @@ export function LessonPage() {
   const [userCode, setUserCode] = useState('');
   const [activeTab, setActiveTab] = useState<'lesson' | 'workspace'>('lesson');
   const [showToast, setShowToast] = useState(false);
-  const [toastData, setToastData] = useState({ icon: '✅', title: '' });
+  const [toastData, setToastData] = useState({ title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const [confirmSolution, setConfirmSolution] = useState(false);
@@ -206,7 +205,6 @@ export function LessonPage() {
       const base = isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete');
       const xpGain = meta ? t('lesson.xpGained', { xp: xpForLesson(meta.sortOrder) }) : '';
       setToastData({
-        icon: isLast ? '🏆' : '✅',
         title: xpGain ? `${base} ${xpGain}` : base,
       });
       setShowToast(true);
@@ -350,7 +348,7 @@ export function LessonPage() {
       />
 
       {/* Mobile panel switcher (split-screen stays on lg+) */}
-      <div className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)] backdrop-blur-[var(--panel-blur)]">
+      <div className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)]">
         <button
           onClick={() => setActiveTab('lesson')}
           className={`flex-1 py-3 text-[13px] font-semibold transition cursor-pointer bg-transparent border-b-2 ${
@@ -379,7 +377,7 @@ export function LessonPage() {
           <div
             ref={contentRef}
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
-            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)]`}
+            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)]`}
           >
             <div className="px-9 py-8">
               {(() => {
@@ -418,7 +416,6 @@ export function LessonPage() {
                               xp: xpForLesson(lessonList[currentIndex].sortOrder),
                             })}
                           >
-                            <Deco>⭐</Deco>{' '}
                             {t('common.xpReward', {
                               xp: xpForLesson(lessonList[currentIndex].sortOrder),
                             })}
@@ -471,7 +468,7 @@ export function LessonPage() {
           {/* Right panel: terminal or editor */}
           {isTerminal ? (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
             >
               <TerminalPanel
                 lines={terminal.lines}
@@ -497,7 +494,7 @@ export function LessonPage() {
             </div>
           ) : (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] backdrop-blur-[var(--panel-blur)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
             >
               <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
                 <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
@@ -674,13 +671,11 @@ export function LessonPage() {
       </div>
 
       <AchievementToast
-        icon={toastData.icon}
         title={toastData.title}
         visible={showToast}
         onClose={() => setShowToast(false)}
       />
       <AchievementToast
-        icon={gamification.newBadge?.icon ?? '🏅'}
         title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}

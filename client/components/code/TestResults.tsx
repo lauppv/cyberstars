@@ -5,7 +5,6 @@ import type {
   StructureFailure,
   TestCaseResult,
 } from '../../../shared/tests';
-import { Deco } from '../ui/Deco';
 
 interface TestResultsProps {
   results: RunTestsResponse;
@@ -117,10 +116,7 @@ export function TestResults({ results, onClose }: TestResultsProps) {
         <div
           className={`flex items-center gap-2 font-bold text-[14px] ${passed ? 'text-[var(--success)]' : 'text-[var(--error)]'}`}
         >
-          <Deco className="text-[18px]">{passed ? '✅' : '❌'}</Deco>
-          <Deco only="min" className="text-[16px]">
-            {passed ? '✓' : '✗'}
-          </Deco>
+          <span className="text-[16px]">{passed ? '✓' : '✗'}</span>
           {passed ? t('tests.passedTitle') : t('tests.failedTitle')}
         </div>
         <button
