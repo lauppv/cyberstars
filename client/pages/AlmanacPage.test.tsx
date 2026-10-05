@@ -234,8 +234,6 @@ describe('StoryModal', () => {
     expect(screen.getByText('Test Story')).toBeInTheDocument();
     expect(screen.getByText('First paragraph')).toBeInTheDocument();
     expect(screen.getByText('Second paragraph')).toBeInTheDocument();
-    expect(screen.getByText('TEST')).toBeInTheDocument();
-    expect(screen.getByText('2024')).toBeInTheDocument();
   });
 
   it('calls onClose when close button is clicked', () => {

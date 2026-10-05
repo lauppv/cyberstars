@@ -659,60 +659,6 @@
   transform: scale(1.08);
 }
 
-.story-modal-art {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 18px 18px 0 0;
-}
-
-.story-modal-art-grad {
-  position: absolute;
-  inset: 0;
-}
-
-.story-modal-emoji {
-  position: relative;
-  z-index: 1;
-  font-size: 80px;
-  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.5));
-}
-
-.story-modal-tag {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 700;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 4px 12px;
-  border-radius: 12px;
-  letter-spacing: 1.2px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  z-index: 2;
-}
-
-.story-modal-year {
-  position: absolute;
-  top: 16px;
-  right: 56px;
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 700;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 4px 12px;
-  border-radius: 12px;
-  letter-spacing: 0.5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  z-index: 2;
-}
-
 .story-modal-body {
   padding: 32px 36px 40px;
 }
@@ -723,6 +669,7 @@
   line-height: 1.2;
   letter-spacing: -0.5px;
   margin-bottom: 16px;
+  padding-right: 44px;
   text-wrap: pretty;
 }
 
@@ -855,21 +802,12 @@
   .story-modal-title {
     font-size: 22px;
   }
-
-  .story-modal-art {
-    height: 150px;
-  }
-
-  .story-modal-emoji {
-    font-size: 56px;
-  }
 }
 
 /* The almanac data carries emoji as per-entry art. The page drops that art and
    lets the titles and categories carry it on their own */
 .chip-em,
 .card .emoji,
-.fact-emoji,
-.story-modal-emoji {
+.fact-emoji {
   display: none;
 }
