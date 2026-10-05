@@ -33,7 +33,6 @@
   /* The panel surface — every card and container in the app (see .panel). */
   --panel-bg: #16161b;
   --panel-border: #26262e;
-  --panel-blur: 0px;
   /* Tint sitting on top of a panel: inputs, message bubbles, output headers. */
   --glass: #1e1e24;
   /* Floating surfaces that must stay readable over whatever they cover. */
@@ -279,7 +278,6 @@ samp {
      container in the app is this ===== */
   .panel {
     background: var(--panel-bg);
-    backdrop-filter: blur(var(--panel-blur));
     border: 1px solid var(--panel-border);
     border-radius: var(--radius);
   }

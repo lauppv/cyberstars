@@ -65,8 +65,6 @@
   display: flex;
   gap: 0;
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   padding: 14px 4px;
@@ -134,8 +132,6 @@
 /* ===== Category table ===== */
 .cat-table {
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -320,8 +316,6 @@
   border: 1px solid var(--panel-border);
   border-radius: 999px;
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   color: var(--text);
   font-weight: 500;
   transition:
@@ -351,8 +345,6 @@
   gap: 18px;
   padding: 22px 24px;
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   margin-bottom: 18px;
@@ -420,8 +412,6 @@
 /* ===== Thread table ===== */
 .thread-table {
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -603,8 +593,6 @@
   grid-template-columns: 120px 1fr;
   gap: 0;
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -816,7 +804,6 @@
   border-radius: 12px;
   background: var(--popover);
   border: 1px solid var(--accent);
-  backdrop-filter: blur(var(--panel-blur));
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
@@ -868,8 +855,6 @@
 /* ===== Composer ===== */
 .forum-composer {
   background: var(--panel-bg);
-  backdrop-filter: blur(var(--panel-blur));
-  -webkit-backdrop-filter: blur(var(--panel-blur));
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   overflow: hidden;
