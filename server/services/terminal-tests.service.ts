@@ -154,7 +154,7 @@ export async function runTerminalTests(
         CHECK_TIMEOUT_MS,
       );
     } catch {
-      throw new AppError(500, 'Could not check your work — please try again');
+      throw new AppError(500, 'Could not check your work, please try again');
     }
     const verdicts = new Map<number, { flag: string; data?: string }>();
     for (const line of raw.split('\n')) {

@@ -126,7 +126,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
           ? `Rate limit: max ${MAX_RUNS_PER_WINDOW} runs per minute. Try again in ${Math.ceil(
               gate.retryAfterMs / 1000,
             )}s.\n`
-          : 'Too many runs in progress — wait for one to finish.\n';
+          : 'Too many runs in progress, wait for one to finish.\n';
       ws.send(JSON.stringify({ type: 'stderr', data }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       ws.close(4429, 'Rate limit');

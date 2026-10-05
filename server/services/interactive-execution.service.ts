@@ -151,7 +151,7 @@ export async function handleInteractiveRun(
     timer = setTimeout(() => {
       if (exited) return;
       killAll();
-      stderrBuf += '\nTime limit exceeded (20s) — program stopped.\n';
+      stderrBuf += '\nTime limit exceeded (20s), program stopped.\n';
       flushOutput();
       sendExit(124);
     }, TIMEOUT_MS);
@@ -179,7 +179,7 @@ export async function handleInteractiveRun(
     if (outputTotal >= OUTPUT_TOTAL_MAX) {
       outputCapped = true;
       killAll();
-      stderrBuf += '\nOutput limit exceeded — program stopped.\n';
+      stderrBuf += '\nOutput limit exceeded, program stopped.\n';
       flushOutput();
       sendExit(124);
       return;
