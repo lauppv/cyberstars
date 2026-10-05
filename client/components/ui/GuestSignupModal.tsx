@@ -42,7 +42,7 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
         <div className="flex items-start justify-between px-6 py-4 border-b border-[var(--border)]">
           <div>
             <div id="guest-signup-title" className="text-base font-bold">
-              Nice — your code just ran!
+              Nice, your code just ran!
             </div>
             <div className="text-[13px] text-[var(--text3)] mt-1">
               Create a free account to get the most out of CyberStars.
