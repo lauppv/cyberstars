@@ -32,7 +32,7 @@ Weapon: Shotgun
 Weapon: Pistol (x3)
 ```
 
-Java looks at **how many arguments** you pass and **what types** they are, then picks the right version of the method. This happens at compile time — Java figures it out before the program even runs
+Java looks at **how many arguments** you pass and **what types** they are, then picks the right version of the method. This happens at compile time: Java figures it out before the program even runs
 
 Let's trace the two calls:
 
@@ -81,7 +81,7 @@ What does **NOT** count as overloading? Changing only the **return type**
 
 ```text
 public class Main {
-    // This WON'T compile — same parameters, different return type
+    // This WON'T compile: same parameters, different return type
     public static int calculate(int a) { return a * 2; }
     public static double calculate(int a) { return a * 2.0; }
 }
@@ -91,7 +91,7 @@ Java says: "If someone calls **calculate(5)**, which one do I pick?" It can't te
 
 ---
 
-Overloading is super common in Java's built-in libraries. You've already used it without knowing — **System.out.println** is overloaded! It can take a String, an int, a double, a boolean... all different versions of the same method
+Overloading is super common in Java's built-in libraries. You've already used it without knowing: **System.out.println** is overloaded! It can take a String, an int, a double, a boolean... all different versions of the same method
 
 ```java
 public class Main {
@@ -112,9 +112,9 @@ Phil Cassidy keeps track of weapon orders. He wants to print an order with more 
 
 Write three overloaded methods called `describe`:
 
-- one that takes only the weapon name and prints `Weapon: ` followed by the name — for example `Weapon: Sniper`
-- one that takes the name and how many pieces are ordered and adds the number followed by ` ordered` — for example `Weapon: Sniper - 4 ordered`
-- one that takes the name, how many pieces, and the price of one piece, computes the total (price times quantity), and prints the price, the quantity, and the total — for example `Weapon: Sniper - $10 x 4 ordered - $40`
+- one that takes only the weapon name and prints `Weapon: ` followed by the name, for example `Weapon: Sniper`
+- one that takes the name and how many pieces are ordered and adds the number followed by ` ordered`, for example `Weapon: Sniper - 4 ordered`
+- one that takes the name, how many pieces, and the price of one piece, computes the total (price times quantity), and prints the price, the quantity, and the total, for example `Weapon: Sniper - $10 x 4 ordered - $40`
 
 In `main`, store the weapon name in `weapon`, the quantity in `quantity`, and the unit price in `price`, then make the three calls using those variables: `describe(weapon)`, `describe(weapon, quantity)`, and `describe(weapon, quantity, price)`
 

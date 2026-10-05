@@ -1,4 +1,4 @@
-O **interfață** este ca un contract. Spune „orice clasă care mă implementează TREBUIE să aibă aceste metode." Seamănă cu o clasă abstractă, dar e și mai strictă — o interfață nu poate avea câmpuri obișnuite sau constructori (cu câteva excepții pe care le sărim deocamdată)
+O **interfață** este ca un contract. Spune „orice clasă care mă implementează TREBUIE să aibă aceste metode." Seamănă cu o clasă abstractă, dar e și mai strictă: o interfață nu poate avea câmpuri obișnuite sau constructori (cu câteva excepții pe care le sărim deocamdată)
 
 ```text
 interface Afisabil {
@@ -57,7 +57,7 @@ Acesta este răspunsul Java la moștenirea multiplă: o singură clasă părinte
 
 ---
 
-Gândește-te la asta ca la abilitățile din Vice City. Tommy Vercetti este un `Criminal` (clasa lui părinte). Dar el și `implements Inotator, Sofer, Tragator` — sunt „contracte", abilități pe care le are. Personaje diferite implementează combinații diferite: Lance implementează `Sofer, Tragator`, dar poate nu și `Inotator`. Cortez implementează `Comandant, Negociator`
+Gândește-te la asta ca la abilitățile din Vice City. Tommy Vercetti este un `Criminal` (clasa lui părinte). Dar el și `implements Inotator, Sofer, Tragator`: sunt „contracte", abilități pe care le are. Personaje diferite implementează combinații diferite: Lance implementează `Sofer, Tragator`, dar poate nu și `Inotator`. Cortez implementează `Comandant, Negociator`
 
 ---
 
@@ -142,8 +142,8 @@ Le poți chiar combina: `abstract class Criminal implements Afisabil`
 Tommy ține în vila lui din Vice City o colecție amestecată: cărți și filme. Vrea un catalog care listează fiecare obiect, indiferent de tip. Construiește-l folosind o interfață `Afisabil` comună, astfel încât fiecare element să se poată descrie singur.
 
 1. Creează o interfață `Afisabil` cu o metodă `afiseazaInfo()`
-2. Creează o clasă `Carte` cu câmpurile `titlu` și `autor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Carte: TITLU de AUTOR"`
-3. Creează o clasă `Film` cu câmpurile `titlu` și `regizor` care implementează `Afisabil` — `afiseazaInfo()` afișează `"Film: TITLU regizat de REGIZOR"`
+2. Creează o clasă `Carte` cu câmpurile `titlu` și `autor` care implementează `Afisabil`; `afiseazaInfo()` afișează `"Carte: TITLU de AUTOR"`
+3. Creează o clasă `Film` cu câmpurile `titlu` și `regizor` care implementează `Afisabil`; `afiseazaInfo()` afișează `"Film: TITLU regizat de REGIZOR"`
 4. În `main`, stochează titlul și autorul cărții în `titlu1` și `autor1`, iar titlul și regizorul filmului în `titlu2` și `regizor2` (pornește cu `"Cronicile din Vice City"`/`"Tommy Vercetti"` și `"Top Gun"`/`"Tony Scott"`). Creează o `Carte` din `titlu1` și `autor1` și un `Film` din `titlu2` și `regizor2`, apoi apelează `afiseazaInfo()` pe amândouă
 
 **Ieșire**

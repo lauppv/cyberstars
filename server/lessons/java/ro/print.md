@@ -16,7 +16,7 @@ public class Main {
 salut, imi place pizza
 ```
 
-Ce este tot acel boilerplate din jurul lui **System.out.println**? Nu intra în panică. Deocamdată, nu trebuie să-l înțelegem complet. Reține doar că **orice program Java** are nevoie de această structură ca să funcționeze. Gândește-te la ea ca la **rama unui tablou** — este mereu acolo, codul propriu-zis merge **înăuntru**
+Ce este tot acel boilerplate din jurul lui **System.out.println**? Nu intra în panică. Deocamdată, nu trebuie să-l înțelegem complet. Reține doar că **orice program Java** are nevoie de această structură ca să funcționeze. Gândește-te la ea ca la **rama unui tablou**: este mereu acolo, codul propriu-zis merge **înăuntru**
 
 Linia care face treaba este
 
@@ -30,9 +30,9 @@ Trei lucruri de observat
 
 - Textul merge **între ghilimele duble** **""**
 - Fiecare instrucțiune se termină cu un **punct și virgulă** **;**. Uită-l și Java va refuza să ruleze
-- Acoladele **{ }** definesc **blocuri** de cod — ele grupează liniile care merg împreună
+- Acoladele **{ }** definesc **blocuri** de cod: ele grupează liniile care merg împreună
 
-Încearcă să elimini **;** și rulează codul. Citește eroarea — așa înveți să recunoști mesajele compilatorului
+Încearcă să elimini **;** și rulează codul. Citește eroarea, așa înveți să recunoști mesajele compilatorului
 
 ---
 

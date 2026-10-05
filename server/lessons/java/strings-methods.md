@@ -13,7 +13,7 @@ public class Main {
 }
 ```
 
-Output **14**. Spaces count too. Notice the **parentheses** **()** at the end — for a String, **length** is a **method**, so we call it with parentheses
+Output **14**. Spaces count too. Notice the **parentheses** **()** at the end: for a String, **length** is a **method**, so we call it with parentheses
 
 ---
 
@@ -53,7 +53,7 @@ public class Main {
 }
 ```
 
-This trap catches everyone in the beginning. Strings in Java are **immutable** — they cannot be changed. Methods always return a new string
+This trap catches everyone in the beginning. Strings in Java are **immutable**: they cannot be changed. Methods always return a new string
 
 ---
 
@@ -69,7 +69,7 @@ public class Main {
 }
 ```
 
-**substring(start, end)** gives the characters from position **start** up to (but **not** including) position **end** — the end is exclusive
+**substring(start, end)** gives the characters from position **start** up to (but **not** including) position **end**, the end is exclusive
 
 **substring(start)** with one argument gives everything from **start** to the end of the string
 
@@ -93,7 +93,7 @@ public class Main {
 
 ---
 
-Comparing strings — and **the most common Java trap of all time**
+Comparing strings, and **the most common Java trap of all time**
 
 ```java
 public class Main {
@@ -166,7 +166,7 @@ tommy
 cetti
 ```
 
-**Example** for the name `lance` (exactly 5 letters — the first 5 and the last 5 are the whole name):
+**Example** for the name `lance` (exactly 5 letters: the first 5 and the last 5 are the whole name):
 
 ```text
 LANCE

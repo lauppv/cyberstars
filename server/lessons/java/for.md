@@ -1,4 +1,4 @@
-Welcome to one of the **most important** concepts in programming — the **for** loop. With it, we can ask the computer to do something **many times**, **automatically**
+Welcome to one of the **most important** concepts in programming: the **for** loop. With it, we can ask the computer to do something **many times**, **automatically**
 
 Why does it matter? Imagine we want to display all numbers from **1** to **10**
 
@@ -41,9 +41,9 @@ public class Main {
 }
 ```
 
-1. **int i = 1** — the **starting point**. We create a new variable **i** and set it to **1**
-2. **i <= 10** — the **condition**. As long as this is **true**, the loop keeps running
-3. **i++** — what to do **after each iteration**. Here we increase **i** by 1
+1. **int i = 1**: the **starting point**. We create a new variable **i** and set it to **1**
+2. **i <= 10**: the **condition**. As long as this is **true**, the loop keeps running
+3. **i++**: what to do **after each iteration**. Here we increase **i** by 1
 
 Reading it like a story: "start with **i = 1**. While **i <= 10**, run the body. After each run, do **i++**"
 
@@ -127,7 +127,7 @@ Patrol sector
 
 ## Mission: Garage Inspection
 
-Tommy is inspecting the Vercetti mansion garage. The parking spots are numbered from **1** up to a total. One of the spots holds his **Infernus** — there, instead of the number, you want to print the car's name.
+Tommy is inspecting the Vercetti mansion garage. The parking spots are numbered from **1** up to a total. One of the spots holds his **Infernus**. There, instead of the number, you want to print the car's name.
 
 Store the total number of spots in an `int` named `totalSpots` and the spot where the Infernus sits in `infernusSpot`. Then use a **for** loop that goes through the spots from **1** to the total. For each spot:
 

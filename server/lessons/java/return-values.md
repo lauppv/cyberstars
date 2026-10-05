@@ -1,6 +1,6 @@
-In the methods lesson, we saw that a method can **return** a value instead of just printing. Let's dive deeper into **return values** — they're one of the most powerful tools in your Java toolbox
+In the methods lesson, we saw that a method can **return** a value instead of just printing. Let's dive deeper into **return values**: they're one of the most powerful tools in your Java toolbox
 
-Think of a method with a return value like a **vending machine**. You put something in (parameters), the machine does its thing, and it **gives you something back** (the return value). A **void** method is like a loudspeaker — it does something (plays sound) but doesn't hand you anything
+Think of a method with a return value like a **vending machine**. You put something in (parameters), the machine does its thing, and it **gives you something back** (the return value). A **void** method is like a loudspeaker: it does something (plays sound) but doesn't hand you anything
 
 ```java
 public class Main {
@@ -21,7 +21,7 @@ The return type **int** before the method name tells Java: "this method will giv
 
 ---
 
-We can return **any type** — not just int. Here are a few examples
+We can return **any type**, not just int. Here are a few examples
 
 ```java
 public class Main {
@@ -55,7 +55,7 @@ true
 false
 ```
 
-Each method declares its return type right before its name: **String**, **double**, **boolean**. The type must match what you actually return — Java won't let you return a String from a method that promises an int
+Each method declares its return type right before its name: **String**, **double**, **boolean**. The type must match what you actually return. Java won't let you return a String from a method that promises an int
 
 ---
 
@@ -116,12 +116,12 @@ Java catches both of these at compile time, before the program even runs
 
 ---
 
-**void vs return** — when do you use which?
+**void vs return**: when do you use which?
 
 - Use **void** when the method just **does** something (prints, modifies data, etc.)
 - Use a **return type** when the method **computes** something and you need the result
 
-Tommy doesn't just run missions — he **brings back the money**. That's a return value. If he just causes chaos with no reward, that's void
+Tommy doesn't just run missions, he **brings back the money**. That's a return value. If he just causes chaos with no reward, that's void
 
 ---
 

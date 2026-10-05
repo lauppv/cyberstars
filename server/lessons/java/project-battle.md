@@ -1,4 +1,4 @@
-Let's build something fun — a **battle simulator**! Think of it like a turn-based combat system from an RPG. We'll have characters with health and attack power, plus subclasses for Warriors and Mages with their own special abilities. This project uses **inheritance**, **methods**, and **OOP** all working together
+Let's build something fun: a **battle simulator**! Think of it like a turn-based combat system from an RPG. We'll have characters with health and attack power, plus subclasses for Warriors and Mages with their own special abilities. This project uses **inheritance**, **methods**, and **OOP** all working together
 
 ---
 
@@ -29,7 +29,7 @@ class Character {
 }
 ```
 
-The `attack` method reduces the target's health by the attacker's power. Simple and effective — like a basic melee hit in Vice City
+The `attack` method reduces the target's health by the attacker's power. Simple and effective, like a basic melee hit in Vice City
 
 ---
 
@@ -60,7 +60,7 @@ The Warrior's attack method overrides the parent's to print a more specific mess
 
 **Step 3: The Mage subclass**
 
-A Mage has **spellPower** — their magic does extra damage on top of their base attack
+A Mage has **spellPower**: their magic does extra damage on top of their base attack
 
 ```text
 class Mage extends Character {
@@ -79,7 +79,7 @@ class Mage extends Character {
 }
 ```
 
-The Mage's attack combines base attackPower and spellPower for bigger hits. Glass cannon style — lots of damage, but typically less health than a Warrior
+The Mage's attack combines base attackPower and spellPower for bigger hits. Glass cannon style: lots of damage, but typically less health than a Warrior
 
 ---
 
@@ -162,9 +162,9 @@ Tommy - HP: 65
 
 ---
 
-This is **polymorphism** in action — both Warrior and Mage ARE Characters, but they each attack differently. The `attack` method does different things depending on the actual type. In Vice City terms: Tommy punches hard (Warrior), while Lance uses sneaky tricks (Mage)
+This is **polymorphism** in action: both Warrior and Mage ARE Characters, but they each attack differently. The `attack` method does different things depending on the actual type. In Vice City terms: Tommy punches hard (Warrior), while Lance uses sneaky tricks (Mage)
 
-Notice how `printStatus()` is only defined once in the parent `Character` class, but both Warrior and Mage can use it. That's the power of inheritance — write it once, reuse everywhere
+Notice how `printStatus()` is only defined once in the parent `Character` class, but both Warrior and Mage can use it. That's the power of inheritance: write it once, reuse everywhere
 
 ---
 
@@ -175,7 +175,7 @@ Two crew members have entered the station's holographic training arena. Tommy is
 1. Create a `Character` class with `name` (String), `health` (int), `attackPower` (int), a constructor, an `attack(Character target)` method that reduces target health by `attackPower` and prints `"NAME attacks TARGET for DAMAGE damage!"`, and a `printStatus()` method that prints `"NAME - HP: HEALTH"`
 2. Create a `Warrior` class extending Character with `armor` (int). Override attack to print: `"NAME swings sword at TARGET for DAMAGE damage!"` where damage equals attackPower
 3. Create a `Mage` class extending Character with `spellPower` (int). Override attack to print: `"NAME casts spell on TARGET for DAMAGE damage!"` where damage equals attackPower + spellPower
-4. In main, store the fighters' stats in variables — `name1`/`health1`/`attack1`/`armor1` for the Warrior and `name2`/`health2`/`attack2`/`spell2` for the Mage (start with Tommy/100/25/10 and Lance/80/15/20). Create the `Warrior` and the `Mage` from those variables
+4. In main, store the fighters' stats in variables: `name1`/`health1`/`attack1`/`armor1` for the Warrior and `name2`/`health2`/`attack2`/`spell2` for the Mage (start with Tommy/100/25/10 and Lance/80/15/20). Create the `Warrior` and the `Mage` from those variables
 5. Tommy attacks Lance, print Lance's status. Then Lance attacks Tommy, print Tommy's status
 
 **Output**

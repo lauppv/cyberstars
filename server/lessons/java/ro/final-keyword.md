@@ -1,4 +1,4 @@
-Uneori ai o valoare care nu ar trebui **niciodată să se schimbe**. Respectul maxim al unui membru, numele orașului, numărul maxim de stele de urmărire — acestea sunt constante. În Java, cuvântul cheie `final` blochează o variabilă astfel încât să nu poată fi reatribuită
+Uneori ai o valoare care nu ar trebui **niciodată să se schimbe**. Respectul maxim al unui membru, numele orașului, numărul maxim de stele de urmărire: acestea sunt constante. În Java, cuvântul cheie `final` blochează o variabilă astfel încât să nu poată fi reatribuită
 
 ---
 
@@ -36,7 +36,7 @@ public class Main {
 
 ## Convenția de denumire: MAJUSCULE
 
-Prin convenție, constantele `final` folosesc **SCREAMING_SNAKE_CASE** — toate literele mari, cu underscore între cuvinte:
+Prin convenție, constantele `final` folosesc **SCREAMING_SNAKE_CASE**: toate literele mari, cu underscore între cuvinte:
 
 ```java
 public class Main {
@@ -87,7 +87,7 @@ Anul: 1986
 
 ## Câmpuri de instanță final
 
-Poți face și câmpurile de instanță `final` — ele se setează o singură dată (în constructor) și nu se schimbă niciodată:
+Poți face și câmpurile de instanță `final`: ele se setează o singură dată (în constructor) și nu se schimbă niciodată:
 
 ```java
 class Jucator {
@@ -116,7 +116,7 @@ Ieșire
 Lance Vance: 50
 ```
 
-Asta e grozav pentru câmpuri care ar trebui setate la creare și nemodificate niciodată — cum ar fi numele unui membru al bandei
+Asta e grozav pentru câmpuri care ar trebui setate la creare și nemodificate niciodată, cum ar fi numele unui membru al bandei
 
 ---
 

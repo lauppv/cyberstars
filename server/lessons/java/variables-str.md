@@ -98,7 +98,7 @@ Output **14**. **.length()** tells us how many characters the text has. Spaces c
 
 ## Mission: Crew Roster Fix
 
-The station’s crew roster has a bug — the names were entered without quotes, so Java thinks they are variables instead of text.
+The station’s crew roster has a bug: the names were entered without quotes, so Java thinks they are variables instead of text.
 
 Fix the three variable assignments so the program compiles and prints the crew names correctly.
 

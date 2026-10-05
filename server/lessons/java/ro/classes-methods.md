@@ -1,4 +1,4 @@
-Știi cum să scrii metode cu `static` — acelea aparțin clasei în sine. Dar când construiești obiecte, de obicei vrei metode care aparțin **fiecărui obiect**. Acestea se numesc **metode de instanță** și nu folosesc cuvântul cheie `static`
+Știi cum să scrii metode cu `static`: acelea aparțin clasei în sine. Dar când construiești obiecte, de obicei vrei metode care aparțin **fiecărui obiect**. Acestea se numesc **metode de instanță** și nu folosesc cuvântul cheie `static`
 
 ---
 
@@ -34,7 +34,7 @@ Infernus face: Biiip!
 Cheetah face: Biiip!
 ```
 
-Observă: `claxoneaza()` **nu are** cuvântul cheie `static`. Asta pentru că este o metodă de instanță — operează pe o mașină anume. Când apelezi `m1.claxoneaza()`, Java știe că `model` se referă la modelul lui `m1`
+Observă: `claxoneaza()` **nu are** cuvântul cheie `static`. Asta pentru că este o metodă de instanță: operează pe o mașină anume. Când apelezi `m1.claxoneaza()`, Java știe că `model` se referă la modelul lui `m1`
 
 ---
 
@@ -127,7 +127,7 @@ Fiecare apel la `completeazaMisiune()` modifică câmpul `respect` al **acelui o
 
 ---
 
-## Static vs Instanță — Diferența Cheie
+## Static vs Instanță: Diferența Cheie
 
 Iată regula:
 
@@ -151,7 +151,7 @@ class Exemplu {
 }
 ```
 
-De aceea `main` este `static` — rulează înainte să existe orice obiect. Este punctul de pornire, și de acolo creezi obiecte și apelezi metodele lor
+De aceea `main` este `static`: rulează înainte să existe orice obiect. Este punctul de pornire, și de acolo creezi obiecte și apelezi metodele lor
 
 ---
 
@@ -161,16 +161,16 @@ Tommy deține mai multe afaceri în Vice City. Fiecare afacere are un nume și u
 
 Creează o clasă care reprezintă o afacere, cu un câmp pentru nume și unul pentru totalul încasărilor. Scrie o metodă care adaugă o sumă la total și o metodă care returnează totalul curent
 
-În `main`, stochează numele primei afaceri în `nume1` și cele două încasări ale ei în `vanzare1` și `vanzare2`; stochează numele celei de-a doua în `nume2` și cele două încasări ale ei în `vanzare3` și `vanzare4`. Creează **două** afaceri din acele variabile, adaugă cele două încasări la fiecare afacere, apoi afișează pentru fiecare afacere numele, apoi `: `, apoi totalul — de exemplu `Malibu Club: 500`
+În `main`, stochează numele primei afaceri în `nume1` și cele două încasări ale ei în `vanzare1` și `vanzare2`; stochează numele celei de-a doua în `nume2` și cele două încasări ale ei în `vanzare3` și `vanzare4`. Creează **două** afaceri din acele variabile, adaugă cele două încasări la fiecare afacere, apoi afișează pentru fiecare afacere numele, apoi `: `, apoi totalul, de exemplu `Malibu Club: 500`
 
-**Exemplu** — `Malibu Club` cu încasările 200, 300 și `Print Works` cu 500, 250
+**Exemplu**: `Malibu Club` cu încasările 200, 300 și `Print Works` cu 500, 250
 
 ```text
 Malibu Club: 500
 Print Works: 750
 ```
 
-**Exemplu** — `Cherry Popper` cu încasările 100, 100 și `Sunshine Autos` cu 700, 300
+**Exemplu**: `Cherry Popper` cu încasările 100, 100 și `Sunshine Autos` cu 700, 300
 
 ```text
 Cherry Popper: 200

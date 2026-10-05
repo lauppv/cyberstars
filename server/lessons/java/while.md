@@ -116,11 +116,11 @@ Checking Lance
 Found Cortez
 ```
 
-The loop didn't check **Phil** and **Sonny** — we already found what we wanted
+The loop didn't check **Phil** and **Sonny**: we already found what we wanted
 
 ---
 
-**continue** is different. It doesn't stop the loop — it just **skips the rest** of the current iteration and **jumps to the next** one
+**continue** is different. It doesn't stop the loop, it just **skips the rest** of the current iteration and **jumps to the next** one
 
 ```java
 public class Main {
@@ -170,7 +170,7 @@ Output: **0 2 4 6 8 10**
 
 ---
 
-**break** and **continue** work the same way in **while**. A handy combination is **while (true)** — a loop that would normally be infinite — which we escape with **break**
+**break** and **continue** work the same way in **while**. A handy combination is **while (true)**, a loop that would normally be infinite, which we escape with **break**
 
 ```java
 public class Main {
@@ -193,7 +193,7 @@ One trap: inside a **while**, **continue** jumps straight back to the condition.
 
 ## Mission: Cracking the Safe
 
-Tommy found Diaz's safe and tries the combinations one by one: **1**, then **2**, then **3**, and so on upward. You don't know in advance how many tries it takes — exactly the kind of problem for **while (true)** plus **break**.
+Tommy found Diaz's safe and tries the combinations one by one: **1**, then **2**, then **3**, and so on upward. You don't know in advance how many tries it takes: exactly the kind of problem for **while (true)** plus **break**.
 
 Store the safe's secret combination in an `int` named `secretCombination`. Then use a **while (true)** loop that counts the attempts starting from **1**. On each attempt:
 

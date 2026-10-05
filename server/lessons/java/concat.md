@@ -84,15 +84,15 @@ Output
 Hello, Tommy Vercetti!
 ```
 
-**%s** is a **placeholder** — it means "put a String here". When Java runs `String.format(...)`, it replaces `%s` with the value of `name`. Think of it as a template where you fill in the blanks
+**%s** is a **placeholder**: it means "put a String here". When Java runs `String.format(...)`, it replaces `%s` with the value of `name`. Think of it as a template where you fill in the blanks
 
 ---
 
 There are different placeholders for different types
 
-- **%s** — String (or anything else — Java converts it to text)
-- **%d** — whole number (int)
-- **%f** — number with a decimal point (double)
+- **%s**: String (or anything else, Java converts it to text)
+- **%d**: whole number (int)
+- **%f**: number with a decimal point (double)
 
 ```java
 public class Main {
@@ -147,9 +147,9 @@ public class Main {
 }
 ```
 
-Notice the **%n** at the end — that is the newline character for printf. Without it, the next print would continue on the same line
+Notice the **%n** at the end: that is the newline character for printf. Without it, the next print would continue on the same line
 
-Use whichever you prefer — `String.format()` is great when you want to store the text in a variable, and `printf()` is great when you just want to print it right away
+Use whichever you prefer. `String.format()` is great when you want to store the text in a variable, and `printf()` is great when you just want to print it right away
 
 ---
 
@@ -157,7 +157,7 @@ Use whichever you prefer — `String.format()` is great when you want to store t
 
 The station’s arcade just finished a tournament. Print the winner’s stats on a single line.
 
-Create three variables: `name` (String) for the player’s name, `score` (int) for the total score, and `rating` (double) for the performance rating. Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use **+** or **String.format()** — whichever you prefer.
+Create three variables: `name` (String) for the player’s name, `score` (int) for the total score, and `rating` (double) for the performance rating. Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use **+** or **String.format()**, whichever you prefer.
 
 **Example**
 

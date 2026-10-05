@@ -16,12 +16,12 @@ Scrie o **metodă** care primește array-ul de semnale și **returnează** un no
 
 1. Parcurgă array-ul
 2. **Sară** peste orice semnal egal cu `"static"` (folosește `continue` și `.equals()`)
-3. **Se oprească** complet când întâlnește `"out"` (folosește `break`) — tot ce vine după este ignorat
+3. **Se oprească** complet când întâlnește `"out"` (folosește `break`); tot ce vine după este ignorat
 4. Transforme numele valide cu `.toUpperCase()` și să le strângă în array-ul rezultat
 
 În `main`, apelează metoda, afișează fiecare nume pe linia lui, apoi afișează **câte** nume au rămas.
 
-**Sfat**: din moment ce nu știi de la început câte nume vor fi valide, parcurge array-ul de **două** ori — prima dată doar le numeri, apoi creezi array-ul rezultat de mărimea potrivită și îl umpli la a doua parcurgere.
+**Sfat**: din moment ce nu știi de la început câte nume vor fi valide, parcurge array-ul de **două** ori: prima dată doar le numeri, apoi creezi array-ul rezultat de mărimea potrivită și îl umpli la a doua parcurgere.
 
 **Exemplu**
 

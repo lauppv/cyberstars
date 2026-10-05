@@ -1,4 +1,4 @@
-Ultimul proiect — hai să construim un **catalog de note**! Acesta combină **clase**, **HashMap**, și **ArrayList** într-o aplicație din lumea reală. Gândește-te la el ca la ecranul de statistici din Vice City, dar pentru școală în loc de crimă
+Ultimul proiect: hai să construim un **catalog de note**! Acesta combină **clase**, **HashMap**, și **ArrayList** într-o aplicație din lumea reală. Gândește-te la el ca la ecranul de statistici din Vice City, dar pentru școală în loc de crimă
 
 ---
 
@@ -49,7 +49,7 @@ class Student {
 }
 ```
 
-Creăm un HashMap gol în constructor. Studentul începe fără note — le vom adăuga mai târziu cu o metodă
+Creăm un HashMap gol în constructor. Studentul începe fără note, le vom adăuga mai târziu cu o metodă
 
 ---
 
@@ -109,7 +109,7 @@ public class Main {
 
 **Notă importantă despre ordinea în HashMap**
 
-HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleza, Stiinte — s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
+HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleza, Stiinte, s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
 
 Pentru exercițiul nostru, o să folosim un **LinkedHashMap** ca rezultatul să fie previzibil
 
@@ -127,7 +127,7 @@ class Student {
 }
 ```
 
-LinkedHashMap funcționează exact ca HashMap, dar ține minte ordinea în care ai adăugat lucrurile. Gândește-te la el ca la ecranul de statistici din Vice City — îți arată mereu statisticile în aceeași ordine
+LinkedHashMap funcționează exact ca HashMap, dar ține minte ordinea în care ai adăugat lucrurile. Gândește-te la el ca la ecranul de statistici din Vice City: îți arată mereu statisticile în aceeași ordine
 
 ---
 
@@ -189,9 +189,9 @@ Student: Tommy
 
 ---
 
-Observă cum am folosit din nou **compoziția** — un Student **are un** HashMap de note. Este același tipar ca în proiectul Inventar unde Inventar **are un** ArrayList de Articole. Java din lumea reală e plină de asta: obiecte care conțin alte obiecte, fiecare cu responsabilitățile lui
+Observă cum am folosit din nou **compoziția**: un Student **are un** HashMap de note. Este același tipar ca în proiectul Inventar unde Inventar **are un** ArrayList de Articole. Java din lumea reală e plină de asta: obiecte care conțin alte obiecte, fiecare cu responsabilitățile lui
 
-Clasa Student este de sine stătătoare — știe cum să adauge note, să-și calculeze propria medie, și să-și afișeze propriul raport. Fiecare obiect își gestionează propriile date. Acesta este un design OOP bun
+Clasa Student este de sine stătătoare: știe cum să adauge note, să-și calculeze propria medie, și să-și afișeze propriul raport. Fiecare obiect își gestionează propriile date. Acesta este un design OOP bun
 
 ---
 
@@ -205,7 +205,7 @@ Academia de antrenament a stației tocmai a terminat examenele. Fiecare cadet ar
    - `"Student: NUME"` pe prima linie
    - `"  MATERIE: NOTA"` pentru fiecare materie (două spații înainte de fiecare)
    - `"  Media: X.X"` la final (o zecimală, două spații înainte)
-4. În main, stochează datele în variabile — `nume1` plus `mate1`/`engleza1`/`stiinte1` pentru primul student, `nume2` plus `mate2`/`engleza2`/`stiinte2` pentru al doilea (pornește cu Tommy: 90/85/92 și Lance: 78/82/88). Creează cei doi `Student` din aceste variabile și adaugă-le notele
+4. În main, stochează datele în variabile: `nume1` plus `mate1`/`engleza1`/`stiinte1` pentru primul student, `nume2` plus `mate2`/`engleza2`/`stiinte2` pentru al doilea (pornește cu Tommy: 90/85/92 și Lance: 78/82/88). Creează cei doi `Student` din aceste variabile și adaugă-le notele
 5. Afișează ambele rapoarte
 
 **Ieșire**

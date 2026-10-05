@@ -1,10 +1,10 @@
-In Vice City, not everyone gets access to everything. Tommy's safe room is private — random pedestrians can't walk in. The front door of the Malibu Club is public. Java works the same way with **scope** and **access modifiers**
+In Vice City, not everyone gets access to everything. Tommy's safe room is private. Random pedestrians can't walk in. The front door of the Malibu Club is public. Java works the same way with **scope** and **access modifiers**
 
 ---
 
 ## Local Scope
 
-Variables declared inside a method only exist inside that method. They're **local** — born when the method runs, destroyed when it ends:
+Variables declared inside a method only exist inside that method. They're **local**: born when the method runs, destroyed when it ends:
 
 ```java
 public class Main {
@@ -12,10 +12,10 @@ public class Main {
         int x = 10;
         if (x > 5) {
             int y = 20;
-            System.out.println(x + y);  // 30 — both x and y are visible here
+            System.out.println(x + y);  // 30, both x and y are visible here
         }
         // System.out.println(y);  // ERROR! y doesn't exist outside the if block
-        System.out.println(x);     // fine — x is in the method scope
+        System.out.println(x);     // fine, x is in the method scope
     }
 }
 ```
@@ -37,7 +37,7 @@ Fields declared in a class exist as long as the object exists. All methods in th
 
 ```java
 class Player {
-    String name;    // class scope — visible to all methods
+    String name;    // class scope, visible to all methods
     int health;
 
     Player(String name) {
@@ -46,7 +46,7 @@ class Player {
     }
 
     void takeDamage(int amount) {
-        health -= amount;    // can access health — it's a class field
+        health -= amount;    // can access health, it's a class field
     }
 
     void showStatus() {
@@ -75,10 +75,10 @@ Tommy Vercetti: 70 HP
 
 You've seen `private` in the getters/setters lesson. Here's the full picture:
 
-- **`public`** — anyone can access this. Any class, any package, anywhere
-- **`private`** — only code **inside this class** can access it. Nobody else
-- **`protected`** — accessible within the class and by subclasses (we'll cover inheritance later)
-- **no modifier** (default) — accessible within the same package
+- **`public`**: anyone can access this. Any class, any package, anywhere
+- **`private`**: only code **inside this class** can access it. Nobody else
+- **`protected`**: accessible within the class and by subclasses (we'll cover inheritance later)
+- **no modifier** (default): accessible within the same package
 
 For now, focus on `public` and `private`. They're what you'll use 99% of the time:
 
@@ -106,9 +106,9 @@ class Vault {
 public class Main {
     public static void main(String[] args) {
         Vault v = new Vault("Cortez", 1234, 50000);
-        System.out.println("Owner: " + v.owner);       // OK — public
-        // System.out.println(v.secretCode);            // ERROR — private!
-        // System.out.println(v.money);                 // ERROR — private!
+        System.out.println("Owner: " + v.owner);       // OK, public
+        // System.out.println(v.secretCode);            // ERROR: private!
+        // System.out.println(v.money);                 // ERROR: private!
         System.out.println("Unlocked: " + v.unlock(1234));
         System.out.println("Money: " + v.getMoney());
     }
@@ -129,9 +129,9 @@ Money: 50000
 
 In well-written Java code, the pattern is:
 
-1. Fields are **`private`** — nobody touches them directly
-2. Methods are **`public`** — they provide controlled access
-3. The constructor is **`public`** — so people can actually create objects
+1. Fields are **`private`**: nobody touches them directly
+2. Methods are **`public`**: they provide controlled access
+3. The constructor is **`public`**, so people can actually create objects
 
 ```text
 class Wallet {
@@ -165,18 +165,18 @@ This keeps your data safe. Nobody can set `money` to -999 because they have to g
 
 ## Local Variables Are Always "Private"
 
-One more thing: local variables (inside methods) don't use access modifiers at all. They're automatically invisible outside their method — no keyword needed:
+One more thing: local variables (inside methods) don't use access modifiers at all. They're automatically invisible outside their method, no keyword needed:
 
 ```text
 public class Main {
     void doStuff() {
-        int temp = 42;          // no public/private — it's local
+        int temp = 42;          // no public/private, it's local
         // temp only exists inside doStuff()
     }
 }
 ```
 
-Access modifiers (`public`, `private`) are only for class members — fields, methods, and constructors
+Access modifiers (`public`, `private`) are only for class members: fields, methods, and constructors
 
 ---
 
@@ -186,13 +186,13 @@ Tommy wants a wallet protected by access controls, so nobody can mess with his m
 
 1. A `private int money` field
 2. A `public` constructor that takes starting money
-3. A `public void addMoney(int amount)` method — only adds if `amount > 0`
-4. A `public void spendMoney(int amount)` method — only spends if `amount > 0` **and** `amount <= money`
+3. A `public void addMoney(int amount)` method that only adds if `amount > 0`
+4. A `public void spendMoney(int amount)` method that only spends if `amount > 0` **and** `amount <= money`
 5. A `public int getBalance()` method that returns the current balance
 
-In `main`, store the values in variables — `start` for the starting money, `income` for what you add, `spend1` and `spend2` for the two amounts you try to spend. Then create a wallet with `start`, add `income`, spend `spend1`, try to spend `spend2` (which should fail silently when it's more than the balance), then print the balance.
+In `main`, store the values in variables: `start` for the starting money, `income` for what you add, `spend1` and `spend2` for the two amounts you try to spend. Then create a wallet with `start`, add `income`, spend `spend1`, try to spend `spend2` (which should fail silently when it's more than the balance), then print the balance.
 
-**Example** — wallet started at 100, +50, -30, then -200 rejected
+**Example**: wallet started at 100, +50, -30, then -200 rejected
 
 ```text
 120

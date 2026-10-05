@@ -32,7 +32,7 @@ Arma: Shotgun
 Arma: Pistol (x3)
 ```
 
-Java se uită la **câte argumente** treci și **ce tipuri** au, apoi alege versiunea corectă a metodei. Asta se întâmplă la compilare — Java își dă seama înainte ca programul să ruleze măcar
+Java se uită la **câte argumente** treci și **ce tipuri** au, apoi alege versiunea corectă a metodei. Asta se întâmplă la compilare: Java își dă seama înainte ca programul să ruleze măcar
 
 Hai să urmărim cele două apeluri:
 
@@ -91,7 +91,7 @@ Java spune: „Dacă cineva apelează **calculeaza(5)**, pe care o aleg?" Nu poa
 
 ---
 
-Supraîncărcarea este extrem de frecventă în bibliotecile încorporate ale Java. Deja ai folosit-o fără să știi — **System.out.println** este supraîncărcată! Poate primi un String, un int, un double, un boolean... toate versiuni diferite ale aceleiași metode
+Supraîncărcarea este extrem de frecventă în bibliotecile încorporate ale Java. Deja ai folosit-o fără să știi: **System.out.println** este supraîncărcată! Poate primi un String, un int, un double, un boolean... toate versiuni diferite ale aceleiași metode
 
 ```java
 public class Main {
@@ -112,9 +112,9 @@ Phil Cassidy ține evidența comenzilor de arme. Vrea să poată afișa o comand
 
 Scrie trei metode supraîncărcate numite `descrie`:
 
-- una care primește doar numele armei și afișează `Arma: ` urmat de nume — de exemplu `Arma: Sniper`
-- una care primește numele și câte bucăți se comandă și adaugă numărul urmat de ` arme comandate` — de exemplu `Arma: Sniper - 4 arme comandate`
-- una care primește numele, câte bucăți și prețul unei bucăți, calculează totalul (preț ori cantitate) și afișează prețul, cantitatea și totalul — de exemplu `Arma: Sniper - 10$ x 4 arme comandate - 40$`
+- una care primește doar numele armei și afișează `Arma: ` urmat de nume, de exemplu `Arma: Sniper`
+- una care primește numele și câte bucăți se comandă și adaugă numărul urmat de ` arme comandate`, de exemplu `Arma: Sniper - 4 arme comandate`
+- una care primește numele, câte bucăți și prețul unei bucăți, calculează totalul (preț ori cantitate) și afișează prețul, cantitatea și totalul, de exemplu `Arma: Sniper - 10$ x 4 arme comandate - 40$`
 
 În `main`, stochează numele armei în `arma`, cantitatea în `cantitate` și prețul unei bucăți în `pret`, apoi fă cele trei apeluri folosind acele variabile: `descrie(arma)`, `descrie(arma, cantitate)` și `descrie(arma, cantitate, pret)`
 

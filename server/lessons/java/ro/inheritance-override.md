@@ -15,7 +15,7 @@ class Sofer extends Criminal {
 }
 ```
 
-Adnotarea `@Override` nu este tehnic obligatorie — codul tău compilează și fără ea. Dar ar trebui **mereu** să o folosești. Iată de ce: dacă scrii din greșeală numele metodei greșit, Java va crede că creezi o metodă NOUĂ în loc să o suprascrii pe cea veche. Cu `@Override`, Java verifică dacă părintele are într-adevăr acea metodă și se răstește la tine dacă nu o are
+Adnotarea `@Override` nu este tehnic obligatorie, codul tău compilează și fără ea. Dar ar trebui **mereu** să o folosești. Iată de ce: dacă scrii din greșeală numele metodei greșit, Java va crede că creezi o metodă NOUĂ în loc să o suprascrii pe cea veche. Cu `@Override`, Java verifică dacă părintele are într-adevăr acea metodă și se răstește la tine dacă nu o are
 
 ```text
 class Sofer extends Criminal {
@@ -30,7 +30,7 @@ Fără `@Override`, asta ar crea în tăcere o metodă `vorbeshte()` inutilă, i
 
 ---
 
-Uneori nu vrei să ÎNLOCUIEȘTI comportamentul părintelui — vrei să ADAUGI la el. Aici intervine **super.method()**
+Uneori nu vrei să ÎNLOCUIEȘTI comportamentul părintelui, vrei să ADAUGI la el. Aici intervine **super.method()**
 
 ```java
 class Vehicul {
@@ -66,7 +66,7 @@ Motorul masinii tureaza!
 
 ---
 
-**Suprascriere vs Supraîncărcare (Overriding vs Overloading)** — sună asemănător dar sunt lucruri complet diferite
+**Suprascriere vs Supraîncărcare (Overriding vs Overloading)**: sună asemănător dar sunt lucruri complet diferite
 
 **Suprascriere (Overriding)**: clasa copil înlocuiește o metodă a părintelui (același nume, aceiași parametri)
 
@@ -159,10 +159,10 @@ Tommy deține mai multe afaceri în Vice City, fiecare cu felul ei de a face ban
 
 Creează o clasă `Afacere` cu o metodă `incasari()` care returnează `0`. Apoi creează două clase copil:
 
-1. `Club` — are un câmp `int clienti`, suprascrie `incasari()` ca să returneze `clienti * 50`
-2. `Spalatorie` — are câmpurile `int masini` și `int pret`, suprascrie `incasari()` ca să returneze `masini * pret`
+1. `Club`: are un câmp `int clienti`, suprascrie `incasari()` ca să returneze `clienti * 50`
+2. `Spalatorie`: are câmpurile `int masini` și `int pret`, suprascrie `incasari()` ca să returneze `masini * pret`
 
-Folosește `@Override` pe amândouă. În `main`, stochează valorile în variabile — `clienti` pentru club, `masini` și `pret` pentru spălătorie. Creează un `Club` din `clienti` și o `Spalatorie` din `masini` și `pret`, apoi afișează fiecare încasare cu etichetele de mai jos.
+Folosește `@Override` pe amândouă. În `main`, stochează valorile în variabile: `clienti` pentru club, `masini` și `pret` pentru spălătorie. Creează un `Club` din `clienti` și o `Spalatorie` din `masini` și `pret`, apoi afișează fiecare încasare cu etichetele de mai jos.
 
 **Exemplu**
 

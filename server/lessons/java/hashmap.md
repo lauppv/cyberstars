@@ -1,4 +1,4 @@
-A **HashMap** is a structure that stores **key-value** pairs. Think of it like Tommy's contact list — each name (the key) maps to a phone number (the value). You look up the name, you get the number
+A **HashMap** is a structure that stores **key-value** pairs. Think of it like Tommy's contact list: each name (the key) maps to a phone number (the value). You look up the name, you get the number
 
 ```java
 import java.util.HashMap;
@@ -23,7 +23,7 @@ Output
 555-0002
 ```
 
-**HashMap\<String, String\>** — the first type is for keys, the second for values. You can mix them: **HashMap\<String, Integer\>** has String keys and numeric values. Just like ArrayList, you use **Integer** instead of **int**, **Double** instead of **double**
+**HashMap\<String, String\>**: the first type is for keys, the second for values. You can mix them: **HashMap\<String, Integer\>** has String keys and numeric values. Just like ArrayList, you use **Integer** instead of **int**, **Double** instead of **double**
 
 ---
 
@@ -36,19 +36,19 @@ public class Main {
     public static void main(String[] args) {
         HashMap<String, Integer> scores = new HashMap<String, Integer>();
 
-        // put -- adds or updates a pair
+        // put: adds or updates a pair
         scores.put("Tommy", 9500);
         scores.put("Lance", 7200);
         scores.put("Tommy", 10000);  // updates Tommy's score
 
-        // get -- value for a key (null if not found)
+        // get: value for a key (null if not found)
         System.out.println("Tommy: " + scores.get("Tommy"));
         System.out.println("Sonny: " + scores.get("Sonny"));
 
-        // containsKey -- checks if a key exists
+        // containsKey: checks if a key exists
         System.out.println(scores.containsKey("Lance"));
 
-        // size -- how many pairs
+        // size: how many pairs
         System.out.println("Total: " + scores.size());
     }
 }
@@ -63,11 +63,11 @@ true
 Total: 2
 ```
 
-`put` with the same key doesn't add a duplicate — it **updates** the existing value
+`put` with the same key doesn't add a duplicate, it **updates** the existing value
 
 ---
 
-**Iterating with keySet()** — get all keys and loop with for-each
+**Iterating with keySet()**: get all keys and loop with for-each
 
 ```java
 import java.util.HashMap;
@@ -86,7 +86,7 @@ public class Main {
 }
 ```
 
-Output (order may vary — HashMap doesn't guarantee order)
+Output (order may vary, HashMap doesn't guarantee order)
 
 ```text
 Tommy: 9500
@@ -98,7 +98,7 @@ Read `for (String name : scores.keySet())` as: "for each key in the map"
 
 ---
 
-**Iterating with entrySet()** — when you want the key and value directly, without an extra `.get()` call
+**Iterating with entrySet()**: when you want the key and value directly, without an extra `.get()` call
 
 ```java
 import java.util.HashMap;
@@ -122,7 +122,7 @@ public class Main {
 
 ---
 
-Let's filter — Sonny Forelli wants to know who owes him more than $5000
+Let's filter: Sonny Forelli wants to know who owes him more than $5000
 
 ```java
 import java.util.HashMap;
@@ -144,7 +144,7 @@ public class Main {
 }
 ```
 
-Only Tommy and Phil show up — they owe more than $5000
+Only Tommy and Phil show up, they owe more than $5000
 
 ---
 

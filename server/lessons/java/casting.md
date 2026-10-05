@@ -1,4 +1,4 @@
-When working with data, sometimes you need to convert a value from one type to another — a decimal price turned into a whole number, or a general object treated as a specific type. This conversion is called **casting**. Java cares a lot about whether the conversion is safe — and forces you to be explicit when it's not
+When working with data, sometimes you need to convert a value from one type to another: a decimal price turned into a whole number, or a general object treated as a specific type. This conversion is called **casting**. Java cares a lot about whether the conversion is safe, and forces you to be explicit when it's not
 
 ---
 
@@ -20,7 +20,7 @@ Output
 42.0
 ```
 
-Java does this automatically because a `double` can hold any `int` value. It's like pouring a small cup of water into a big bucket — nothing spills
+Java does this automatically because a `double` can hold any `int` value. It's like pouring a small cup of water into a big bucket: nothing spills
 
 The widening chain: `byte -> short -> int -> long -> float -> double`
 
@@ -62,7 +62,7 @@ class Dog extends Animal {
 }
 ```
 
-**Upcasting** (child to parent) — always safe, automatic:
+**Upcasting** (child to parent): always safe, automatic:
 
 ```java
 public class Main {
@@ -70,12 +70,12 @@ public class Main {
         Dog d = new Dog();
         Animal a = d;  // automatic, like widening
         a.speak();  // works
-        // a.fetch();  // WON'T COMPILE -- Animal doesn't know about fetch()
+        // a.fetch();  // WON'T COMPILE: Animal doesn't know about fetch()
     }
 }
 ```
 
-**Downcasting** (parent to child) — dangerous, manual:
+**Downcasting** (parent to child): dangerous, manual:
 
 ```java
 public class Main {
@@ -115,7 +115,7 @@ Output
 Not a dog
 ```
 
-`instanceof` returns `true` only if the object really is that type. It's like an identity check — verify before you act
+`instanceof` returns `true` only if the object really is that type. It's like an identity check: verify before you act
 
 ---
 
@@ -134,7 +134,7 @@ Quick reference
 
 Tommy has a crew of people in Vice City. Everyone has a name, but some are drivers and know how to handle a specific car. Lance Vance drives an Infernus, Mercedes Cortez doesn't drive, and Hilary King drives a Sentinel
 
-Build a base class `CrewMember` (with a `name`) and a derived class `Driver` (adds a `car`). In `main`, store the crew's data in variables — `name1` and `car1` for the first driver, `name2` for the plain member, `name3` and `car3` for the second driver (start with Lance/Infernus, Mercedes, Hilary/Sentinel). Put them in a `CrewMember[]` array (a `Driver` from `name1`/`car1`, a `CrewMember` from `name2`, a `Driver` from `name3`/`car3`), iterate through it, and use `instanceof` to show the car only for drivers
+Build a base class `CrewMember` (with a `name`) and a derived class `Driver` (adds a `car`). In `main`, store the crew's data in variables: `name1` and `car1` for the first driver, `name2` for the plain member, `name3` and `car3` for the second driver (start with Lance/Infernus, Mercedes, Hilary/Sentinel). Put them in a `CrewMember[]` array (a `Driver` from `name1`/`car1`, a `CrewMember` from `name2`, a `Driver` from `name3`/`car3`), iterate through it, and use `instanceof` to show the car only for drivers
 
 **Example**
 

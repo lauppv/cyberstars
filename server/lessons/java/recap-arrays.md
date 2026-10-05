@@ -16,12 +16,12 @@ Write a **method** that takes the array of signals and **returns** a new array c
 
 1. Loop through the array
 2. **Skip** any signal equal to `"static"` (use `continue` and `.equals()`)
-3. **Stop** completely when it hits `"out"` (use `break`) — everything after it is ignored
+3. **Stop** completely when it hits `"out"` (use `break`); everything after it is ignored
 4. Turn the valid names with `.toUpperCase()` and collect them into the result array
 
 In `main`, call the method, print each name on its own line, then print **how many** names are left.
 
-**Tip**: since you don’t know up front how many names will be valid, walk the array **twice** — first just count them, then create the result array of the right size and fill it on the second pass.
+**Tip**: since you don’t know up front how many names will be valid, walk the array **twice**: first just count them, then create the result array of the right size and fill it on the second pass.
 
 **Example**
 

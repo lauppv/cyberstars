@@ -1,4 +1,4 @@
-Când lucrezi cu date, uneori trebuie să convertești o valoare dintr-un tip în altul — un preț zecimal transformat în număr întreg, sau un obiect general tratat ca tip specific. Această conversie se numește **casting**. Java îi pasă foarte mult dacă conversia este sigură — și te obligă să fii explicit când nu e
+Când lucrezi cu date, uneori trebuie să convertești o valoare dintr-un tip în altul: un preț zecimal transformat în număr întreg, sau un obiect general tratat ca tip specific. Această conversie se numește **casting**. Java îi pasă foarte mult dacă conversia este sigură, și te obligă să fii explicit când nu e
 
 ---
 
@@ -20,7 +20,7 @@ Ieșire
 42.0
 ```
 
-Java face asta automat, pentru că un `double` poate ține orice valoare `int`. E ca și cum ai turna o ceașcă mică de apă într-o găleată mare — nimic nu se varsă
+Java face asta automat, pentru că un `double` poate ține orice valoare `int`. E ca și cum ai turna o ceașcă mică de apă într-o găleată mare: nimic nu se varsă
 
 Lanțul lărgirii: `byte -> short -> int -> long -> float -> double`
 
@@ -62,7 +62,7 @@ class Caine extends Animal {
 }
 ```
 
-**Upcasting** (copil la părinte) — mereu sigur, automat:
+**Upcasting** (copil la părinte): mereu sigur, automat:
 
 ```java
 public class Main {
@@ -70,12 +70,12 @@ public class Main {
         Caine c = new Caine();
         Animal a = c;  // automat, ca largirea
         a.vorbeste();  // functioneaza
-        // a.adu();  // NU COMPILEAZA -- Animal nu stie despre adu()
+        // a.adu();  // NU COMPILEAZA: Animal nu stie despre adu()
     }
 }
 ```
 
-**Downcasting** (părinte la copil) — periculos, manual:
+**Downcasting** (părinte la copil): periculos, manual:
 
 ```java
 public class Main {
@@ -115,7 +115,7 @@ Ieșire
 Nu e caine
 ```
 
-`instanceof` returnează `true` doar dacă obiectul chiar este de acel tip. E ca un control de identitate — verifici înainte să acționezi
+`instanceof` returnează `true` doar dacă obiectul chiar este de acel tip. E ca un control de identitate: verifici înainte să acționezi
 
 ---
 
@@ -134,7 +134,7 @@ Referință rapidă
 
 Tommy are o echipă de oameni în Vice City. Fiecare are un nume, dar unii sunt șoferi și știu să conducă o mașină anume. Lance Vance e șofer pe Infernus, Mercedes Cortez nu conduce, iar Hilary King e șofer pe Sentinel
 
-Construiește o clasă de bază `MembruEchipa` (cu un `nume`) și una derivată `Sofer` (adaugă o `masina`). În `main`, stochează datele echipei în variabile — `nume1` și `masina1` pentru primul șofer, `nume2` pentru membrul simplu, `nume3` și `masina3` pentru al doilea șofer (pornește cu Lance/Infernus, Mercedes, Hilary/Sentinel). Pune-i într-un tablou `MembruEchipa[]` (un `Sofer` din `nume1`/`masina1`, un `MembruEchipa` din `nume2`, un `Sofer` din `nume3`/`masina3`), parcurge-l și folosește `instanceof` ca să afișezi mașina doar la șoferi
+Construiește o clasă de bază `MembruEchipa` (cu un `nume`) și una derivată `Sofer` (adaugă o `masina`). În `main`, stochează datele echipei în variabile: `nume1` și `masina1` pentru primul șofer, `nume2` pentru membrul simplu, `nume3` și `masina3` pentru al doilea șofer (pornește cu Lance/Infernus, Mercedes, Hilary/Sentinel). Pune-i într-un tablou `MembruEchipa[]` (un `Sofer` din `nume1`/`masina1`, un `MembruEchipa` din `nume2`, un `Sofer` din `nume3`/`masina3`), parcurge-l și folosește `instanceof` ca să afișezi mașina doar la șoferi
 
 **Exemplu**
 

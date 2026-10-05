@@ -24,17 +24,17 @@ class Sofer extends Criminal {
 }
 ```
 
-Clasa `Sofer` **moștenește** totul de la `Criminal` — câmpul ei `nume`, logica constructorului, totul. Apoi **suprascrie** metoda `vorbeste()` ca să facă propriul ei lucru. Aceasta este **moștenirea** — una dintre cele mai mari idei din Java
+Clasa `Sofer` **moștenește** totul de la `Criminal`: câmpul ei `nume`, logica constructorului, totul. Apoi **suprascrie** metoda `vorbeste()` ca să facă propriul ei lucru. Aceasta este **moștenirea**, una dintre cele mai mari idei din Java
 
 ---
 
-Un exemplu din Vice City: Tommy Vercetti este un **criminal** (clasa părinte). Lance Vance este și el un criminal, dar este un _tip specific_ — un criminal care te trădează pe la spate. El **extinde** clasa de bază criminal cu propriul lui comportament special (trădarea). El are în continuare toate abilitățile de bază ale unui criminal, plus propria lui răsucire
+Un exemplu din Vice City: Tommy Vercetti este un **criminal** (clasa părinte). Lance Vance este și el un criminal, dar este un _tip specific_: un criminal care te trădează pe la spate. El **extinde** clasa de bază criminal cu propriul lui comportament special (trădarea). El are în continuare toate abilitățile de bază ale unui criminal, plus propria lui răsucire
 
 ---
 
 Cuvântul cheie **super** este modul în care un copil vorbește cu părintele lui. Când `Sofer` apelează `super(nume)`, spune "hei Criminal, rulează constructorul TĂU cu acest nume." Constructorul părinte setează `this.nume = nume`, iar acum șoferul are un nume
 
-**Trebuie** să apelezi `super(...)` în constructorul copilului dacă părintele nu are un constructor fără argumente. Java nu te lasă să-l sari — părintele trebuie configurat înainte ca copilul să-și poată adăuga propriile lucruri
+**Trebuie** să apelezi `super(...)` în constructorul copilului dacă părintele nu are un constructor fără argumente. Java nu te lasă să-l sari: părintele trebuie configurat înainte ca copilul să-și poată adăuga propriile lucruri
 
 ```text
 class Criminal {
@@ -89,7 +89,7 @@ class Sofer extends Criminal {
 }
 ```
 
-Acum `Sofer` are tot ce are `Criminal`, PLUS un câmp `masina` și o metodă `conduce()`. Părintele `Criminal` nu știe despre condus — acela e propriul lucru al șoferului
+Acum `Sofer` are tot ce are `Criminal`, PLUS un câmp `masina` și o metodă `conduce()`. Părintele `Criminal` nu știe despre condus, acela e propriul lucru al șoferului
 
 ---
 
@@ -153,8 +153,8 @@ Banda lui Tommy are roluri diferite, dar toți sunt criminali. Fiecare se prezin
 
 Creează o clasă `Criminal` cu un câmp `nume`, un constructor și o metodă `vorbeste()` care afișează `"..."`. Apoi creează două clase copil:
 
-1. `Sofer` extends `Criminal` — suprascrie `vorbeste()` ca să afișeze `"Sunt soferul "` + nume
-2. `Tragator` extends `Criminal` — suprascrie `vorbeste()` ca să afișeze `"Sunt tragatorul "` + nume
+1. `Sofer` extends `Criminal` și suprascrie `vorbeste()` ca să afișeze `"Sunt soferul "` + nume
+2. `Tragator` extends `Criminal` și suprascrie `vorbeste()` ca să afișeze `"Sunt tragatorul "` + nume
 
 În `main`, stochează cele două nume în variabilele `nume1` și `nume2` (pornește cu `"Tommy"` și `"Lance"`). Creează un `Sofer` din `nume1` și un `Tragator` din `nume2`, apoi apelează `vorbeste()` pe amândoi.
 

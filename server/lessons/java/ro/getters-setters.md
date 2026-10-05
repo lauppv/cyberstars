@@ -1,4 +1,4 @@
-Până acum, am accesat câmpurile direct — `jucator.nume`, `jucator.scor`. Asta funcționează, dar e ca și cum ai lăsa ușa de la intrare larg deschisă. Oricine poate intra și schimba orice
+Până acum, am accesat câmpurile direct: `jucator.nume`, `jucator.scor`. Asta funcționează, dar e ca și cum ai lăsa ușa de la intrare larg deschisă. Oricine poate intra și schimba orice
 
 În cod Java real, **ascundem** câmpurile și controlăm accesul prin metode. Acest concept se numește **încapsulare**
 
@@ -134,13 +134,13 @@ Tommy Vercetti: 75 HP
 Tommy Vercetti: 75 HP
 ```
 
-Apelul `setViata(-50)` a fost ignorat în tăcere pentru că setterul nostru respinge valorile negative. Aceasta este puterea încapsulării — tu controlezi regulile
+Apelul `setViata(-50)` a fost ignorat în tăcere pentru că setterul nostru respinge valorile negative. Aceasta este puterea încapsulării: tu controlezi regulile
 
 ---
 
 ## Când să Sari Peste Setteri
 
-Nu fiecare câmp are nevoie de un setter. Uneori un câmp ar trebui setat o singură dată (în constructor) și niciodată schimbat. Dacă `nume` nu ar trebui să se schimbe după creare, pur și simplu nu scrie `setNume()` — problemă rezolvată
+Nu fiecare câmp are nevoie de un setter. Uneori un câmp ar trebui setat o singură dată (în constructor) și niciodată schimbat. Dacă `nume` nu ar trebui să se schimbe după creare, pur și simplu nu scrie `setNume()`, problemă rezolvată
 
 Getterul tot le permite oamenilor să **citească** numele, dar nimeni nu îl poate schimba. Acesta este un tipar comun și bun
 
@@ -148,7 +148,7 @@ Getterul tot le permite oamenilor să **citească** numele, dar nimeni nu îl po
 
 ## Misiune: Contul lui Tommy
 
-Tommy își ține banii la bancă și vrea un sistem sigur de tranzacții. Poate depune și retrage bani, dar contul trebuie să respingă operațiunile invalide — fără depuneri negative și fără să retragă mai mult decât are în cont.
+Tommy își ține banii la bancă și vrea un sistem sigur de tranzacții. Poate depune și retrage bani, dar contul trebuie să respingă operațiunile invalide: fără depuneri negative și fără să retragă mai mult decât are în cont.
 
 Creează o clasă `ContBancar` cu:
 
@@ -158,9 +158,9 @@ Creează o clasă `ContBancar` cu:
 4. O metodă `depune(int suma)` care adaugă la sold (doar dacă suma > 0)
 5. O metodă `retrage(int suma)` care scade din sold (doar dacă suma > 0 și suma <= sold)
 
-În `main`, stochează valorile în variabile — `start` pentru soldul inițial, `depunere` pentru suma pe care o depui, `retragere1` și `retragere2` pentru cele două retrageri. Apoi creează un cont cu `start`, depune `depunere`, retrage `retragere1`, apoi încearcă să retragi `retragere2` (ar trebui să eșueze în tăcere când depășește soldul) și afișează soldul final.
+În `main`, stochează valorile în variabile: `start` pentru soldul inițial, `depunere` pentru suma pe care o depui, `retragere1` și `retragere2` pentru cele două retrageri. Apoi creează un cont cu `start`, depune `depunere`, retrage `retragere1`, apoi încearcă să retragi `retragere2` (ar trebui să eșueze în tăcere când depășește soldul) și afișează soldul final.
 
-**Exemplu** — cont pornit cu 1000, +500, -200, apoi -2000 respins
+**Exemplu**: cont pornit cu 1000, +500, -200, apoi -2000 respins
 
 ```text
 1300

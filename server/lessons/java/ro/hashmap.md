@@ -1,4 +1,4 @@
-Un **HashMap** este o structură care stochează perechi **cheie-valoare**. Gândește-te la el ca la lista de contacte a lui Tommy — fiecare nume (cheia) mapează la un număr de telefon (valoarea). Cauți numele, primești numărul
+Un **HashMap** este o structură care stochează perechi **cheie-valoare**. Gândește-te la el ca la lista de contacte a lui Tommy: fiecare nume (cheia) mapează la un număr de telefon (valoarea). Cauți numele, primești numărul
 
 ```java
 import java.util.HashMap;
@@ -23,7 +23,7 @@ Ieșire
 555-0002
 ```
 
-**HashMap\<String, String\>** — primul tip este pentru chei, al doilea pentru valori. Poți amesteca: **HashMap\<String, Integer\>** are chei String și valori numerice. La fel ca la ArrayList, folosești **Integer** în loc de **int**, **Double** în loc de **double**
+**HashMap\<String, String\>**: primul tip este pentru chei, al doilea pentru valori. Poți amesteca: **HashMap\<String, Integer\>** are chei String și valori numerice. La fel ca la ArrayList, folosești **Integer** în loc de **int**, **Double** în loc de **double**
 
 ---
 
@@ -36,19 +36,19 @@ public class Main {
     public static void main(String[] args) {
         HashMap<String, Integer> scoruri = new HashMap<String, Integer>();
 
-        // put -- adauga sau actualizeaza o pereche
+        // put: adauga sau actualizeaza o pereche
         scoruri.put("Tommy", 9500);
         scoruri.put("Lance", 7200);
         scoruri.put("Tommy", 10000);  // actualizeaza scorul lui Tommy
 
-        // get -- valoarea pentru o cheie (null daca nu exista)
+        // get: valoarea pentru o cheie (null daca nu exista)
         System.out.println("Tommy: " + scoruri.get("Tommy"));
         System.out.println("Sonny: " + scoruri.get("Sonny"));
 
-        // containsKey -- verifica daca o cheie exista
+        // containsKey: verifica daca o cheie exista
         System.out.println(scoruri.containsKey("Lance"));
 
-        // size -- cate perechi
+        // size: cate perechi
         System.out.println("Total: " + scoruri.size());
     }
 }
@@ -63,11 +63,11 @@ true
 Total: 2
 ```
 
-`put` cu aceeași cheie nu adaugă un duplicat — **actualizează** valoarea existentă
+`put` cu aceeași cheie nu adaugă un duplicat, ci **actualizează** valoarea existentă
 
 ---
 
-**Parcurgere cu keySet()** — obții toate cheile și le parcurgi cu for-each
+**Parcurgere cu keySet()**: obții toate cheile și le parcurgi cu for-each
 
 ```java
 import java.util.HashMap;
@@ -86,7 +86,7 @@ public class Main {
 }
 ```
 
-Output (ordinea poate varia — HashMap nu garantează ordinea)
+Output (ordinea poate varia, HashMap nu garantează ordinea)
 
 ```text
 Tommy: 9500
@@ -98,7 +98,7 @@ Citește `for (String nume : scoruri.keySet())` ca: „pentru fiecare cheie din 
 
 ---
 
-**Parcurgere cu entrySet()** — când vrei cheia și valoarea direct, fără un apel extra la `.get()`
+**Parcurgere cu entrySet()**: când vrei cheia și valoarea direct, fără un apel extra la `.get()`
 
 ```java
 import java.util.HashMap;
@@ -122,7 +122,7 @@ public class Main {
 
 ---
 
-Hai să filtrăm — Sonny Forelli vrea să afle cine îi datorează mai mult de $5000
+Hai să filtrăm: Sonny Forelli vrea să afle cine îi datorează mai mult de $5000
 
 ```java
 import java.util.HashMap;
@@ -144,7 +144,7 @@ public class Main {
 }
 ```
 
-Afișează doar Tommy și Phil — ei datorează mai mult de $5000
+Afișează doar Tommy și Phil, ei datorează mai mult de $5000
 
 ---
 

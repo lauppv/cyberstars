@@ -35,7 +35,7 @@ enum Weather {
 public class Main {
     public static void main(String[] args) {
         Weather w = Weather.RAINY;   // works
-        Weather w2 = Weather.SNOWY;  // ERROR -- SNOWY doesn't exist in Weather
+        Weather w2 = Weather.SNOWY;  // ERROR: SNOWY doesn't exist in Weather
     }
 }
 ```
@@ -83,7 +83,7 @@ Devastating up close. Tommy's favorite.
 High fire rate. Good for intense missions.
 ```
 
-Inside a switch you write just `PISTOL`, not `Weapon.PISTOL` — Java already knows you're switching on a `Weapon`, so it lets you skip the prefix
+Inside a switch you write just `PISTOL`, not `Weapon.PISTOL`. Java already knows you're switching on a `Weapon`, so it lets you skip the prefix
 
 ---
 
@@ -118,16 +118,16 @@ DIAZ
 
 When should you use enums instead of Strings?
 
-- **Enums** — when you have a **fixed, known** set of options: days of the week, seasons, difficulty levels, game states
-- **Strings** — when the value is **free-form** or comes from the user: player names, messages, file paths
+- **Enums**: when you have a **fixed, known** set of options: days of the week, seasons, difficulty levels, game states
+- **Strings**: when the value is **free-form** or comes from the user: player names, messages, file paths
 
-If you find yourself writing `if (status.equals("active") || status.equals("inactive") || ...)` — you probably want an enum
+If you find yourself writing `if (status.equals("active") || status.equals("inactive") || ...)`, you probably want an enum
 
 ---
 
 ## Mission: Business Report
 
-Tommy has several businesses in Vice City and wants a quick report. Each business can be in one of a few fixed states — making money, temporarily closed, under renovation, or destroyed by a rival gang. For example, Malibu Club is doing well and making money, Print Works is under renovation, Boatyard is temporarily closed, and Kaufman Cabs was destroyed by a rival gang
+Tommy has several businesses in Vice City and wants a quick report. Each business can be in one of a few fixed states: making money, temporarily closed, under renovation, or destroyed by a rival gang. For example, Malibu Club is doing well and making money, Print Works is under renovation, Boatyard is temporarily closed, and Kaufman Cabs was destroyed by a rival gang
 
 Define the possible states as a fixed set of values (`Status`). Write a method `describeStatus` that takes a state and prints what it means. In `main`, store the four business names in a `names` array (one per state, in the **same order** as the enum's values). Then iterate over `Status.values()`; for each state, print the matching business name followed by `" - "`, then describe the state.
 

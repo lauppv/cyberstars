@@ -27,7 +27,7 @@ public class Main {
 }
 ```
 
-Now the program prints nothing, because we **commented out** the **println**. Very useful when debugging — instead of deleting code and rewriting it later, we just comment it out
+Now the program prints nothing, because we **commented out** the **println**. Very useful when debugging: instead of deleting code and rewriting it later, we just comment it out
 
 ---
 
@@ -60,14 +60,14 @@ There’s also a special kind, **/\*\* ... \*/**, used to document classes and m
 
 The ship’s manifest is displayed on the main screen, but one line contains **classified cargo** that must stay hidden from the crew.
 
-Comment out **one line** so that only the ship’s name, mission name, and maximum power are printed. Do not delete anything — just use `//` to hide the secret.
+Comment out **one line** so that only the ship’s name, mission name, and maximum power are printed. Do not delete anything, just use `//` to hide the secret.
 
-**Input** (already set at the top of your code — change the values to test):
+**Input** (already set at the top of your code; change the values to test):
 
-- `shipName` — the ship’s name
-- `missionName` — the current mission
-- `secretCargo` — classified item (this must NOT appear in the output)
-- `maxPower` — engine power level
+- `shipName`: the ship’s name
+- `missionName`: the current mission
+- `secretCargo`: classified item (this must NOT appear in the output)
+- `maxPower`: engine power level
 
 **Example**
 

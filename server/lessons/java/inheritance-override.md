@@ -15,7 +15,7 @@ class Driver extends Criminal {
 }
 ```
 
-The `@Override` annotation isn't technically required — your code compiles without it. But you should **always** use it. Here's why: if you accidentally misspell the method name, Java will think you're creating a NEW method instead of overriding the old one. With `@Override`, Java checks that the parent actually has that method and yells at you if it doesn't
+The `@Override` annotation isn't technically required, your code compiles without it. But you should **always** use it. Here's why: if you accidentally misspell the method name, Java will think you're creating a NEW method instead of overriding the old one. With `@Override`, Java checks that the parent actually has that method and yells at you if it doesn't
 
 ```text
 class Driver extends Criminal {
@@ -30,7 +30,7 @@ Without `@Override`, this would silently create a useless `speek()` method and t
 
 ---
 
-Sometimes you don't want to REPLACE the parent's behavior — you want to ADD to it. That's where **super.method()** comes in
+Sometimes you don't want to REPLACE the parent's behavior, you want to ADD to it. That's where **super.method()** comes in
 
 ```java
 class Vehicle {
@@ -66,7 +66,7 @@ Car engine revving!
 
 ---
 
-**Overriding vs Overloading** — these sound similar but they're completely different things
+**Overriding vs Overloading**: these sound similar but they're completely different things
 
 **Overriding**: child class replaces a parent method (same name, same parameters)
 
@@ -76,7 +76,7 @@ class Criminal {
 }
 class Driver extends Criminal {
     @Override
-    void speak() { ... }  // OVERRIDING — replaces parent's speak()
+    void speak() { ... }  // OVERRIDING: replaces parent's speak()
 }
 ```
 
@@ -87,7 +87,7 @@ class Garage {
     void repair(String car) {
         System.out.println("Repairing " + car);
     }
-    void repair(String car, int hours) {  // OVERLOADING — different param count
+    void repair(String car, int hours) {  // OVERLOADING: different param count
         System.out.println("Repairing " + car + " in " + hours + " hours");
     }
 }
@@ -159,10 +159,10 @@ Tommy owns several businesses in Vice City, each making money its own way. He ne
 
 Create a `Business` class with an `earnings()` method that returns `0`. Then create two child classes:
 
-1. `Club` — has an `int customers` field, overrides `earnings()` to return `customers * 50`
-2. `CarWash` — has `int cars` and `int price` fields, overrides `earnings()` to return `cars * price`
+1. `Club`: has an `int customers` field, overrides `earnings()` to return `customers * 50`
+2. `CarWash`: has `int cars` and `int price` fields, overrides `earnings()` to return `cars * price`
 
-Use `@Override` on both. In `main`, store the values in variables — `customers` for the club, `cars` and `price` for the car wash. Create a `Club` from `customers` and a `CarWash` from `cars` and `price`, then print each one's earnings with the labels shown below.
+Use `@Override` on both. In `main`, store the values in variables: `customers` for the club, `cars` and `price` for the car wash. Create a `Club` from `customers` and a `CarWash` from `cars` and `price`, then print each one's earnings with the labels shown below.
 
 **Example**
 

@@ -1,6 +1,6 @@
-Uneori vrei o clasă care este un **șablon** — definește ce TREBUIE să facă clasele copil, dar nu poate fi folosită singură. Asta este o **clasă abstractă**
+Uneori vrei o clasă care este un **șablon**: definește ce TREBUIE să facă clasele copil, dar nu poate fi folosită singură. Asta este o **clasă abstractă**
 
-Gândește-te așa: „Vehicul" este un concept. Nu poți construi pur și simplu un „vehicul" generic — construiești o mașină sport, o motocicletă, un camion. Dar toate împărtășesc ideea de a fi un vehicul. În Java, ai face Vehicul **abstract**
+Gândește-te așa: „Vehicul" este un concept. Nu poți construi pur și simplu un „vehicul" generic. Construiești o mașină sport, o motocicletă, un camion. Dar toate împărtășesc ideea de a fi un vehicul. În Java, ai face Vehicul **abstract**
 
 ```text
 abstract class Vehicul {
@@ -20,8 +20,8 @@ abstract class Vehicul {
 
 Două lucruri cheie aici:
 
-- Clasa este marcată `abstract` — NU poți face `new Vehicul("ceva")`
-- Metoda `vitezaMaxima()` este marcată `abstract` — NU are corp (fără acolade), doar un punct și virgulă. Orice copil ne-abstract TREBUIE să furnizeze corpul
+- Clasa este marcată `abstract`, deci NU poți face `new Vehicul("ceva")`
+- Metoda `vitezaMaxima()` este marcată `abstract`: NU are corp (fără acolade), doar un punct și virgulă. Orice copil ne-abstract TREBUIE să furnizeze corpul
 
 ---
 
@@ -37,7 +37,7 @@ Este ca și cum ai încerca să cumperi un „vehicul" de la un dealer. Vânzăt
 
 ---
 
-O clasă copil care extinde o clasă abstractă TREBUIE să implementeze toate metodele abstracte — sau trebuie să fie ea însăși abstractă
+O clasă copil care extinde o clasă abstractă TREBUIE să implementeze toate metodele abstracte, sau trebuie să fie ea însăși abstractă
 
 ```java
 abstract class Vehicul {
@@ -116,9 +116,9 @@ Tommy Vercetti și Lance Vance ar extinde amândoi `Personaj`. Fiecare ar avea p
 
 **Când folosești o clasă abstractă vs o clasă obișnuită?**
 
-Folosește o **clasă obișnuită** când are sens să creezi obiecte de acel tip direct. O `Masina` este un lucru real — poți crea una
+Folosește o **clasă obișnuită** când are sens să creezi obiecte de acel tip direct. O `Masina` este un lucru real, poți crea una
 
-Folosește o **clasă abstractă** când clasa este doar un concept sau o categorie. „Vehicul" este abstract — nu există așa ceva ca un vehicul generic. „Personaj" ar putea fi oricare dintre cele două, în funcție de designul tău
+Folosește o **clasă abstractă** când clasa este doar un concept sau o categorie. „Vehicul" este abstract: nu există așa ceva ca un vehicul generic. „Personaj" ar putea fi oricare dintre cele două, în funcție de designul tău
 
 Regula de bază: dacă nu ai vrea niciodată ca cineva să scrie `new ClasaTa()`, fă-o abstractă
 
@@ -126,12 +126,12 @@ Regula de bază: dacă nu ai vrea niciodată ca cineva să scrie `new ClasaTa()`
 
 ## Misiune: Flota lui Tommy
 
-Tommy are mai multe vehicule în garaj, fiecare cu viteza lui maximă. Are nevoie de un raport care arată fiecare vehicul și viteza lui — dar „Vehicul" în sine e doar un concept, nu ceva ce poți construi direct.
+Tommy are mai multe vehicule în garaj, fiecare cu viteza lui maximă. Are nevoie de un raport care arată fiecare vehicul și viteza lui, dar „Vehicul" în sine e doar un concept, nu ceva ce poți construi direct.
 
 Creează o clasă abstractă `Vehicul` cu un câmp `String nume`, un constructor și o metodă abstractă `vitezaMaxima()` care returnează un int. Apoi creează două clase concrete:
 
-1. `Sportiva` — `vitezaMaxima()` returnează `240`
-2. `Motocicleta` — `vitezaMaxima()` returnează `200`
+1. `Sportiva`: `vitezaMaxima()` returnează `240`
+2. `Motocicleta`: `vitezaMaxima()` returnează `200`
 
 În `main`, stochează cele două nume în variabilele `nume1` și `nume2` (pornește cu `"Infernus"` și `"Angel"`). Creează o `Sportiva` din `nume1` și o `Motocicleta` din `nume2`. Afișează fiecare în formatul `Nume: X km/h`.
 

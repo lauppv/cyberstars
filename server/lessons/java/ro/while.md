@@ -116,11 +116,11 @@ Verific Lance
 L-am gasit pe Cortez
 ```
 
-Bucla nu a verificat **Phil** și **Sonny** — am găsit deja ce voiam
+Bucla nu a verificat **Phil** și **Sonny**: am găsit deja ce voiam
 
 ---
 
-**continue** este diferit. Nu oprește bucla — doar **sare peste restul** iterației curente și **trece la următoarea**
+**continue** este diferit. Nu oprește bucla, doar **sare peste restul** iterației curente și **trece la următoarea**
 
 ```java
 public class Main {
@@ -170,7 +170,7 @@ Output: **0 2 4 6 8 10**
 
 ---
 
-**break** și **continue** funcționează la fel în **while**. O combinație utilă este **while (true)** — o buclă care, în mod normal, ar fi infinită — din care ieșim cu **break**
+**break** și **continue** funcționează la fel în **while**. O combinație utilă este **while (true)** (o buclă care, în mod normal, ar fi infinită), din care ieșim cu **break**
 
 ```java
 public class Main {
@@ -193,7 +193,7 @@ O capcană: într-un **while**, **continue** sare direct înapoi la condiție. D
 
 ## Misiune: Spargerea Seifului
 
-Tommy a dat de seiful lui Diaz și încearcă combinațiile pe rând: **1**, apoi **2**, apoi **3**, și tot așa în sus. Nu știi dinainte câte încercări durează — exact genul de problemă pentru **while (true)** plus **break**.
+Tommy a dat de seiful lui Diaz și încearcă combinațiile pe rând: **1**, apoi **2**, apoi **3**, și tot așa în sus. Nu știi dinainte câte încercări durează: exact genul de problemă pentru **while (true)** plus **break**.
 
 Stochează combinația secretă a seifului într-o variabilă `int` numită `combinatiaSecreta`. Apoi folosește o buclă **while (true)** care numără încercările pornind de la **1**. La fiecare încercare:
 

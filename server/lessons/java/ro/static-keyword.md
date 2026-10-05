@@ -6,7 +6,7 @@ Cuvântul-cheie `static` înseamnă **„asta aparține clasei însăși, nu vre
 
 ## Câmpuri Static vs Câmpuri de Instanță
 
-Imaginează-ți un club de noapte din Vice City care ține evidența vizitatorilor. Fiecare vizitator are propriul nume, dar **numărul total de vizite** este partajat între toți — aparține clubului, nu vreunei persoane:
+Imaginează-ți un club de noapte din Vice City care ține evidența vizitatorilor. Fiecare vizitator are propriul nume, dar **numărul total de vizite** este partajat între toți: aparține clubului, nu vreunei persoane:
 
 ```java
 class Vizitator {
@@ -37,11 +37,11 @@ Total vizite: 3
 
 Observă câteva lucruri:
 
-- `totalVizite` este `static` — există o **singură copie** partajată de toate obiectele Vizitator
+- `totalVizite` este `static`: există o **singură copie** partajată de toate obiectele Vizitator
 - De fiecare dată când creăm un nou Vizitator, constructorul mărește `totalVizite` cu 1
 - Îl accesăm cu `Vizitator.totalVizite` (numele clasei), nu cu `v1.totalVizite`
 
-Între timp, `nume` este un câmp de instanță — fiecare vizitator are propriul lui nume
+Între timp, `nume` este un câmp de instanță: fiecare vizitator are propriul lui nume
 
 ---
 
@@ -93,7 +93,7 @@ Niciun obiect necesar. Apelează-le direct pe clasă
 
 ## De Ce Este main() Static?
 
-Când pornește programul tău, încă nu există niciun obiect. Java are nevoie de o cale de a începe execuția fără să creeze mai întâi un obiect. De asta este `main` `static` — este o metodă la nivel de clasă care rulează fără să aibă nevoie de o instanță
+Când pornește programul tău, încă nu există niciun obiect. Java are nevoie de o cale de a începe execuția fără să creeze mai întâi un obiect. De asta este `main` `static`: este o metodă la nivel de clasă care rulează fără să aibă nevoie de o instanță
 
 ```java
 public class Main {
@@ -108,7 +108,7 @@ public class Main {
 
 ## Static Nu Poate Accesa Instanța
 
-O metodă statică nu are `this` — nu există niciun obiect asociat cu ea. Așa că **nu poate** accesa câmpuri de instanță sau metode de instanță:
+O metodă statică nu are `this`: nu există niciun obiect asociat cu ea. Așa că **nu poate** accesa câmpuri de instanță sau metode de instanță:
 
 ```text
 class Exemplu {
@@ -131,7 +131,7 @@ Regula: **instanța poate accesa static-ul, dar static-ul nu poate accesa instan
 
 ---
 
-## Numărarea Instanțelor — Un Tipar Clasic
+## Numărarea Instanțelor: Un Tipar Clasic
 
 Folosirea unui câmp static pentru a urmări câte obiecte au fost create este unul dintre cele mai comune tipare statice:
 
@@ -167,7 +167,7 @@ Inamici aparuti: 4
 
 ## Misiune: Lista de la Intrarea Clubului
 
-Clubul Malibu al lui Tommy ține evidența cui intră. Fiecare vizitator are numele lui, dar numărul total de intrări este partajat — aparține clubului, nu vreunei persoane.
+Clubul Malibu al lui Tommy ține evidența cui intră. Fiecare vizitator are numele lui, dar numărul total de intrări este partajat: aparține clubului, nu vreunei persoane.
 
 Creează o clasă `Vizitator` cu:
 
@@ -177,7 +177,7 @@ Creează o clasă `Vizitator` cu:
 
 În `main`, stochează numele vizitatorilor într-un array `String[] nume` (pornește cu `"Tommy"`, `"Lance"`, `"Cortez"`). Parcurge array-ul cu o buclă și creează câte un `Vizitator` pentru fiecare nume. Apoi afișează numărul total de vizite.
 
-**Exemplu** — trei vizitatori înregistrați la intrare
+**Exemplu**: trei vizitatori înregistrați la intrare
 
 ```text
 3

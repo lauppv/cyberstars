@@ -1,4 +1,4 @@
-When something goes wrong at runtime — division by zero, accessing a non-existent index, parsing invalid text — Java throws an **exception** and the program crashes. **try/catch** lets you catch the error and keep going
+When something goes wrong at runtime (division by zero, accessing a non-existent index, parsing invalid text), Java throws an **exception** and the program crashes. **try/catch** lets you catch the error and keep going
 
 ```java
 public class Main {
@@ -64,13 +64,13 @@ Error: Index 10 out of bounds for length 3
 
 Most common exception types
 
-- **ArithmeticException** — division by zero
-- **ArrayIndexOutOfBoundsException** — non-existent array index
-- **NumberFormatException** — parsing a string that isn't a valid number
-- **NullPointerException** — using a variable that is null
-- **ClassCastException** — invalid object conversion
+- **ArithmeticException**: division by zero
+- **ArrayIndexOutOfBoundsException**: non-existent array index
+- **NumberFormatException**: parsing a string that isn't a valid number
+- **NullPointerException**: using a variable that is null
+- **ClassCastException**: invalid object conversion
 
-You can catch a general `Exception`, but it's better to be specific — handle each situation differently
+You can catch a general `Exception`, but it's better to be specific: handle each situation differently
 
 ---
 
@@ -95,7 +95,7 @@ Java tries each catch from top to bottom and uses the **first one that matches**
 
 ---
 
-The **finally** block runs no matter what — whether try succeeded or an exception was caught
+The **finally** block runs no matter what, whether try succeeded or an exception was caught
 
 ```java
 public class Main {
@@ -120,13 +120,13 @@ Error caught!
 This always runs
 ```
 
-Useful for cleanup — closing files, releasing resources
+Useful for cleanup: closing files, releasing resources
 
 ---
 
 **When try/catch vs direct check?**
 
-Don't use try/catch as a crutch. If you know an array has 3 elements, don't access index 10 — just check first. Use try/catch for things you can't predict: user input, text parsing
+Don't use try/catch as a crutch. If you know an array has 3 elements, don't access index 10, just check first. Use try/catch for things you can't predict: user input, text parsing
 
 ---
 

@@ -1,4 +1,4 @@
-Java poate sorta orice ArrayList de String-uri sau numere cu **Collections.sort()** — trebuie doar importat din `java.util`
+Java poate sorta orice ArrayList de String-uri sau numere cu **Collections.sort()**, trebuie doar importat din `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ Lance
 Tommy
 ```
 
-`Collections.sort()` sortează **pe loc** — modifică direct lista originală. String-urile se sortează **alfabetic**, numerele **crescător**
+`Collections.sort()` sortează **pe loc**: modifică direct lista originală. String-urile se sortează **alfabetic**, numerele **crescător**
 
 ---
 
@@ -63,11 +63,11 @@ Ieșire
 42
 ```
 
-`reverse()` nu sortează — doar **întoarce** ordinea actuală. Ca să obții ordine descrescătoare, sortezi întâi, apoi întorci
+`reverse()` nu sortează, doar **întoarce** ordinea actuală. Ca să obții ordine descrescătoare, sortezi întâi, apoi întorci
 
 ---
 
-Dar cum sortezi o listă de **obiecte**? Dacă ai un `ArrayList<Masina>`, Java nu știe după ce criteriu să sorteze — după nume? după viteză? Trebuie să-i spui implementând interfața **Comparable**
+Dar cum sortezi o listă de **obiecte**? Dacă ai un `ArrayList<Masina>`, Java nu știe după ce criteriu să sorteze: după nume? după viteză? Trebuie să-i spui implementând interfața **Comparable**
 
 ```java
 import java.util.ArrayList;
@@ -113,7 +113,7 @@ Infernus - 240 km/h
 
 Hai să urmărim ce se întâmplă:
 
-1. `Masina implements Comparable<Masina>` — clasa promite că știe să se compare cu alte mașini
+1. `Masina implements Comparable<Masina>`: clasa promite că știe să se compare cu alte mașini
 2. Metoda `compareTo` returnează un număr:
    - **negativ** dacă `this` vine înainte de `alta`
    - **zero** dacă sunt egale
@@ -136,7 +136,7 @@ public int compareTo(Masina alta) {
 
 ## Misiune: Clasamentul Echipajului
 
-Cortez vrea un clasament al echipajului, sortat după numărul de misiuni completate — de la cel mai puțin productiv la cel mai activ. Tommy a completat 47 de misiuni, Lance 12, Phil 8 și Mercedes 23
+Cortez vrea un clasament al echipajului, sortat după numărul de misiuni completate, de la cel mai puțin productiv la cel mai activ. Tommy a completat 47 de misiuni, Lance 12, Phil 8 și Mercedes 23
 
 Construiește o clasă `MembruEchipa` care implementează `Comparable` și se compară după numărul de misiuni. Stochează cele patru numere în variabilele `misiuni1` (Tommy), `misiuni2` (Lance), `misiuni3` (Phil) și `misiuni4` (Mercedes). Creează un `ArrayList<MembruEchipa>` cu toți membrii, sortează-l cu `Collections.sort` și afișează clasamentul ca `"nume - numar misiuni"`
 

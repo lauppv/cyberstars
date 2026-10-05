@@ -31,7 +31,7 @@ Asta este... deloc util. Java nu știe cum vrei să fie afișat obiectul tău, a
 
 ## Suprascrierea lui toString()
 
-Fiecare obiect din Java are o metodă `toString()` (moștenită de la o clasă de bază numită `Object`). În mod implicit afișează acea aiureală urâtă. Dar poți să o **suprascrii** — să scrii propria ta versiune:
+Fiecare obiect din Java are o metodă `toString()` (moștenită de la o clasă de bază numită `Object`). În mod implicit afișează acea aiureală urâtă. Dar poți să o **suprascrii**: să scrii propria ta versiune:
 
 ```java
 class Masina {
@@ -126,7 +126,7 @@ Arma: Katana (daune: 75)
 Am primit o Katana (daune: 75)
 ```
 
-Oricând Java are nevoie să transforme obiectul tău într-un `String`, apelează `toString()`. Concatenarea cu `+` face asta, `println()` face asta — e peste tot
+Oricând Java are nevoie să transforme obiectul tău într-un `String`, apelează `toString()`. Concatenarea cu `+` face asta, `println()` face asta. E peste tot
 
 ---
 
@@ -175,11 +175,11 @@ Lance Vance - Partener (Respect: 60)
 
 Tommy își ține mașinile într-un garaj și vrea ca fiecare să se afișeze frumos când o tipărește, fără să construiască de mână string-ul de fiecare dată
 
-Creează o clasă `Masina` cu un câmp `marca` (String) și unul `an` (int). Scrie un constructor și suprascrie `toString()` ca să întoarcă marca, apoi ` (`, anul și `)` — de exemplu `Infernus (1986)`
+Creează o clasă `Masina` cu un câmp `marca` (String) și unul `an` (int). Scrie un constructor și suprascrie `toString()` ca să întoarcă marca, apoi ` (`, anul și `)`, de exemplu `Infernus (1986)`
 
-În `main`, stochează mai întâi valorile în variabile locale — `marca1` și `an1` pentru prima mașină, `marca2` și `an2` pentru a doua. Apoi creează două mașini din acele variabile și afișează-le direct cu `System.out.println`
+În `main`, stochează mai întâi valorile în variabile locale: `marca1` și `an1` pentru prima mașină, `marca2` și `an2` pentru a doua. Apoi creează două mașini din acele variabile și afișează-le direct cu `System.out.println`
 
-**Exemplu** — `Infernus` din `1986` și `Cheetah` din `1984`
+**Exemplu**: `Infernus` din `1986` și `Cheetah` din `1984`
 
 ```text
 Infernus (1986)

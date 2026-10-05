@@ -6,7 +6,7 @@ The `static` keyword means **"this belongs to the class itself, not to any indiv
 
 ## Static vs Instance Fields
 
-Imagine a Vice City nightclub tracking visitors. Each visitor has their own name, but the **total visit count** is shared across all of them — it belongs to the club, not to any single person:
+Imagine a Vice City nightclub tracking visitors. Each visitor has their own name, but the **total visit count** is shared across all of them: it belongs to the club, not to any single person:
 
 ```java
 class Visitor {
@@ -37,11 +37,11 @@ Total visits: 3
 
 Notice a few things:
 
-- `totalVisits` is `static` — there's only **one copy** shared by all Visitor objects
+- `totalVisits` is `static`: there's only **one copy** shared by all Visitor objects
 - Each time we create a new Visitor, the constructor bumps `totalVisits` by 1
 - We access it with `Visitor.totalVisits` (the class name), not `v1.totalVisits`
 
-Meanwhile, `name` is an instance field — each visitor has their own
+Meanwhile, `name` is an instance field: each visitor has their own
 
 ---
 
@@ -93,7 +93,7 @@ No objects needed. Call them on the class directly
 
 ## Why Is main() Static?
 
-When your program starts, no objects exist yet. Java needs a way to begin execution without creating an object first. That's why `main` is `static` — it's a class-level method that runs without needing an instance
+When your program starts, no objects exist yet. Java needs a way to begin execution without creating an object first. That's why `main` is `static`: it's a class-level method that runs without needing an instance
 
 ```java
 public class Main {
@@ -108,7 +108,7 @@ public class Main {
 
 ## Static Cannot Access Instance
 
-A static method has no `this` — there's no object associated with it. So it **cannot** access instance fields or instance methods:
+A static method has no `this`: there's no object associated with it. So it **cannot** access instance fields or instance methods:
 
 ```text
 class Example {
@@ -116,13 +116,13 @@ class Example {
     static int y = 20;    // static field
 
     static void show() {
-        System.out.println(y);   // OK — y is static
-        // System.out.println(x); // ERROR — x needs an object
+        System.out.println(y);   // OK, y is static
+        // System.out.println(x); // ERROR: x needs an object
     }
 
     void display() {
-        System.out.println(x);   // OK — instance method has an object
-        System.out.println(y);   // OK — static fields are always accessible
+        System.out.println(x);   // OK, instance method has an object
+        System.out.println(y);   // OK, static fields are always accessible
     }
 }
 ```
@@ -131,7 +131,7 @@ The rule: **instance can access static, but static cannot access instance**. Thi
 
 ---
 
-## Counting Instances — A Classic Pattern
+## Counting Instances: A Classic Pattern
 
 Using a static field to track how many objects have been created is one of the most common static patterns:
 
@@ -167,7 +167,7 @@ Enemies spawned: 4
 
 ## Mission: The Club Door List
 
-Tommy's Malibu Club keeps track of who comes in. Each visitor has their own name, but the total number of entries is shared — it belongs to the club, not to any single person.
+Tommy's Malibu Club keeps track of who comes in. Each visitor has their own name, but the total number of entries is shared: it belongs to the club, not to any single person.
 
 Create a `Visitor` class with:
 
@@ -177,7 +177,7 @@ Create a `Visitor` class with:
 
 In `main`, store the visitor names in a `String[] names` array (start with `"Tommy"`, `"Lance"`, `"Cortez"`). Loop over the array and create a `Visitor` for each name. Then print the total visit count.
 
-**Example** — three visitors registered at the door
+**Example**: three visitors registered at the door
 
 ```text
 3
