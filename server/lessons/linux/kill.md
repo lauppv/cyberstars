@@ -1,4 +1,4 @@
-Sometimes a process misbehaves — it freezes, consumes all the CPU, or simply needs
+Sometimes a process misbehaves: it freezes, consumes all the CPU, or simply needs
 to be stopped. The `kill` command sends a **signal** to a process, asking (or
 forcing) it to terminate.
 
@@ -8,12 +8,12 @@ The basic usage is: `kill PID`.
 kill 510
 ```
 
-This sends signal **15 (SIGTERM)** — a polite "please shut down." Most well-behaved
+This sends signal **15 (SIGTERM)**, a polite "please shut down." Most well-behaved
 programs will clean up and exit.
 
 ### Forcing a stubborn process
 
-If a process ignores SIGTERM, send signal **9 (SIGKILL)** — an immediate,
+If a process ignores SIGTERM, send signal **9 (SIGKILL)**, an immediate,
 unconditional termination:
 
 ```bash

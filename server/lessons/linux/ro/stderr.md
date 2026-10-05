@@ -1,7 +1,7 @@
 Linux separă rezultatul unei comenzi în două fluxuri:
 
-- **stdout** (fluxul 1) — rezultatul normal (ce vezi de obicei).
-- **stderr** (fluxul 2) — mesajele de eroare.
+- **stdout** (fluxul 1): rezultatul normal (ce vezi de obicei).
+- **stderr** (fluxul 2): mesajele de eroare.
 
 Când folosești `>`, se redirecționează doar stdout. Erorile tot apar pe ecran:
 
@@ -25,7 +25,7 @@ Acum erorile merg în `erori.txt`, iar rezultatul normal se afișează pe ecran.
 
 ### Aruncarea erorilor în `/dev/null`
 
-`/dev/null` este o gaură neagră — orice trimiți acolo dispare:
+`/dev/null` este o gaură neagră: orice trimiți acolo dispare:
 
 ```bash
 ls real.txt fals.txt 2> /dev/null
@@ -48,7 +48,7 @@ fluxul 2 acolo unde merge fluxul 1".
 
 Senzorii stației au semnalat o referință la un fișier numit `fantoma.txt` care s-ar putea să nu mai existe. Trebuie să verifici ambele fișiere, dar mesajul de eroare îți aglomerează consola principală și vrei să-l depui deoparte.
 
-1. Rulează `ls raport.txt fantoma.txt` ca să verifici ambele fișiere, dar captează **doar eroarea** într-un fișier numit `erori.log` — rezultatul normal trebuie să rămână pe ecran.
+1. Rulează `ls raport.txt fantoma.txt` ca să verifici ambele fișiere, dar captează **doar eroarea** într-un fișier numit `erori.log`. Rezultatul normal trebuie să rămână pe ecran.
 2. Afișează `erori.log` ca să citești eroarea captată.
 3. Creează un folder numit `jurnale` și mută `erori.log` în el.
 4. Caută în jurnalul captat cuvintele `No such` ca să confirmi că defecțiunea a fost înregistrată.

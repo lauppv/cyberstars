@@ -1,4 +1,4 @@
-You can move around the station — now it is time to **build**. The first building
+You can move around the station. Now it is time to **build**. The first building
 block is a new **directory** (folder).
 
 The **mkdir** command (**make directory**) creates a folder. Give it the name you
@@ -8,7 +8,7 @@ want:
 mkdir reports
 ```
 
-Nothing is printed when it succeeds — Linux stays quiet on success. Run `ls` to
+Nothing is printed when it succeeds: Linux stays quiet on success. Run `ls` to
 confirm the folder appeared:
 
 ```bash
@@ -58,7 +58,7 @@ The station needs a new directory structure for the upcoming mission. You will s
 
 1. Create a folder called `mission`.
 2. Inside it, create three sibling folders in a **single** command: `mission/logs`, `mission/data` and `mission/backups`.
-3. In one command, create the nested path `mission/logs/day1` at once — including any parent folders that don't exist yet.
+3. In one command, create the nested path `mission/logs/day1` at once, including any parent folders that don't exist yet.
 4. Verify the whole structure as a tree.
 
 **Expected result**

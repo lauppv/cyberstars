@@ -49,7 +49,7 @@ Engineering detected fluctuations in the station's power grid. The file `power_r
 1. Sort `power_readings.txt` **numerically by the second column** so the lowest power reading appears at the top, and display it.
 2. Save that sorted diagnostic into a new file called `diagnostics.txt`.
 3. Create a folder called `engineering` and move `diagnostics.txt` into it.
-4. Show just the top line — the weakest sector, which the repair crew handles first.
+4. Show just the top line: the weakest sector, which the repair crew handles first.
 
 **Expected result**
 

@@ -12,7 +12,7 @@ Tanaka
 Voss
 ```
 
-Fișierul original rămâne neschimbat — `sort` afișează rezultatul sortat la stdout. Îl poți
+Fișierul original rămâne neschimbat: `sort` afișează rezultatul sortat la stdout. Îl poți
 salva cu `> sortat.txt` dacă e nevoie.
 
 ### Ordine inversă cu `-r`
@@ -39,7 +39,7 @@ sort -f amestecat.txt
 
 ### Sort într-un pipeline
 
-`sort` se integrează perfect într-un pipeline — citește din stdin dacă nu i se dă fișier:
+`sort` se integrează perfect într-un pipeline: citește din stdin dacă nu i se dă fișier:
 
 ```bash
 grep "error" jurnal.txt | sort
@@ -56,7 +56,7 @@ O navetă de aprovizionare tocmai a andocat, iar manifestul din cala de marfă (
 1. Sortează `provizii.txt` în **ordine alfabetică inversă** și afișează rezultatul pe ecran.
 2. Salvează acea listă sortată invers într-un fișier nou numit `ordine-descarcare.txt`.
 3. Creează un folder numit `cala-marfa` și mută `ordine-descarcare.txt` în el.
-4. Afișează doar primul articol din listă — acela este ce descarcă echipa prima dată.
+4. Afișează doar primul articol din listă. Acela este ce descarcă echipa prima dată.
 
 **Rezultat așteptat**
 

@@ -33,7 +33,7 @@ tail -n 5 error.log
 `head` shows you how a file _began_; `tail` shows you the _latest_ news. Together they
 let you sample a big file from both ends without reading the middle.
 
-`tail`, like `head`, only reads — it never changes the file.
+`tail`, like `head`, only reads. It never changes the file.
 
 ---
 
@@ -42,7 +42,7 @@ let you sample a big file from both ends without reading the middle.
 Something triggered an alert on the station. Before filing the incident report, you want to sample the log from both ends and keep a copy.
 
 1. Look at just the **first 3 lines** of `system.log` to see how it began after boot.
-2. Read the **last 4 lines** of `system.log` — the most recent events that triggered the alert.
+2. Read the **last 4 lines** of `system.log`: the most recent events that triggered the alert.
 3. Create a folder called `alerts` and copy `system.log` into it as `incident.log` for the report.
 
 **Expected result**

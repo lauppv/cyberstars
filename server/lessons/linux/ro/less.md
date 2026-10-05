@@ -7,7 +7,7 @@ Aceasta este treaba lui **less**.
 less fisier_mare.log
 ```
 
-`less` deschide fișierul într-un **vizualizator**. Nu aruncă totul — afișează un
+`less` deschide fișierul într-un **vizualizator**. Nu aruncă totul, ci afișează un
 ecran și te așteaptă. În interiorul vizualizatorului poți:
 
 | Tastă           | Acțiune                      |
@@ -18,19 +18,19 @@ ecran și te așteaptă. În interiorul vizualizatorului poți:
 | `/cuvânt`       | caută înainte _cuvânt_       |
 | `q`             | **ieși** și revino la prompt |
 
-Cea mai importantă tastă este **`q`** — așa ieși din `less` și îți recapeți
+Cea mai importantă tastă este **`q`**: așa ieși din `less` și îți recapeți
 shell-ul.
 
 ### De ce „less”?
 
 A existat o unealtă mai veche numită `more` care putea parcurge doar **înainte**.
-`less` face tot ce face `more` _și_ îți permite să derulezi **înapoi** — de aici
+`less` face tot ce face `more` _și_ îți permite să derulezi **înapoi**, de aici
 numele glumeț: „less is more” („mai puțin înseamnă mai mult”).
 
 `less` nu modifică niciodată fișierul. Este un vizualizator pur.
 
 > În acest sandbox de antrenament vizualizatorul cu derulare este limitat, așa că
-> exersează _ideea_ cu `cat` — dar pe un sistem Linux real, apelează la `less` de
+> exersează _ideea_ cu `cat`, dar pe un sistem Linux real, apelează la `less` de
 > fiecare dată când un fișier este prea lung pentru un singur ecran.
 
 ---

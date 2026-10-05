@@ -12,7 +12,7 @@ Tanaka
 Voss
 ```
 
-The original file is unchanged — `sort` prints the sorted result to stdout. You can
+The original file is unchanged: `sort` prints the sorted result to stdout. You can
 save it with `> sorted.txt` if needed.
 
 ### Reverse order with `-r`
@@ -39,7 +39,7 @@ sort -f mixed.txt
 
 ### Sort in a pipeline
 
-`sort` is a perfect pipeline citizen — it reads stdin if no file is given:
+`sort` is a perfect pipeline citizen: it reads stdin if no file is given:
 
 ```bash
 grep "error" log.txt | sort
@@ -56,7 +56,7 @@ A supply shuttle just docked and the cargo bay manifest (`supplies.txt`) is a me
 1. Sort `supplies.txt` in **reverse alphabetical order** and display the result on screen.
 2. Save that reverse-sorted list into a new file called `unload-order.txt`.
 3. Create a folder called `cargo-bay` and move `unload-order.txt` into it.
-4. Show just the first item on the list — that is what the crew unloads first.
+4. Show just the first item on the list. That is what the crew unloads first.
 
 **Expected result**
 

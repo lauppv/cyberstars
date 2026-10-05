@@ -1,4 +1,4 @@
-Unele fișiere sunt uriașe — sute sau mii de linii. Aruncarea tuturor cu `cat` îți
+Unele fișiere sunt uriașe: sute sau mii de linii. Aruncarea tuturor cu `cat` îți
 inundă ecranul. Adesea vrei doar o privire rapidă la **începutul** unui fișier.
 
 Comanda **head** afișează doar **primele linii** ale unui fișier. În mod implicit,
@@ -35,7 +35,7 @@ linia 3
 - Vizualizarea modului în care _începe_ un fișier de log
 - Eșantionarea unui fișier fără a derula prin tot
 
-La fel ca `cat`, `head` doar citește — nu schimbă nimic.
+La fel ca `cat`, `head` doar citește. Nu schimbă nimic.
 
 ---
 
@@ -45,7 +45,7 @@ Fișierul `sistem.log` al stației înregistrează totul de la ultima repornire.
 Departamentul tehnic vrea să verifice secvența de pornire și să păstreze o copie a
 log-ului în folderul de diagnostic.
 
-1. Afișează doar **primele 5 linii** din `sistem.log` — cele mai vechi evenimente de
+1. Afișează doar **primele 5 linii** din `sistem.log`: cele mai vechi evenimente de
    pornire.
 2. Creează un folder numit `diagnostic` și copiază `sistem.log` în el sub numele
    `pornire.log`.

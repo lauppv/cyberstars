@@ -1,5 +1,5 @@
 Simpla comandă `ls` îți oferă o listă rapidă, dar ascunde unele lucruri și omite
-detalii utile. Comenzile acceptă adesea **opțiuni** — flag-uri suplimentare care
+detalii utile. Comenzile acceptă adesea **opțiuni**: flag-uri suplimentare care
 încep cu `-` și le modifică comportamentul.
 
 ### Afișează fișierele ascunse: `ls -a`
@@ -15,7 +15,7 @@ ls -a
 .  ..  .secret.txt  echipaj.txt  misiune.txt
 ```
 
-Vei vedea și `.` (directorul curent) și `..` (directorul părinte) — mai multe
+Vei vedea și `.` (directorul curent) și `..` (directorul părinte). Mai multe
 despre acestea în lecția următoare.
 
 ### Afișează detalii: `ls -l`
@@ -37,8 +37,8 @@ Primul caracter îți spune tipul:
 - `-` înseamnă **fișier**
 - `d` înseamnă **director**
 
-Așa că, în sfârșit, poți deosebi fișierele de foldere. (Celelalte coloane —
-permisiuni, dimensiune, dată — sunt acoperite în capitolele următoare.)
+Așa că, în sfârșit, poți deosebi fișierele de foldere. (Celelalte coloane,
+permisiuni, dimensiune, dată, sunt acoperite în capitolele următoare.)
 
 ### Combină opțiunile: `ls -la`
 
@@ -49,7 +49,7 @@ afișează toate":
 ls -la
 ```
 
-Poți scrie `ls -la`, `ls -al` sau `ls -l -a` — toate au același efect.
+Poți scrie `ls -la`, `ls -al` sau `ls -l -a`: toate au același efect.
 
 ---
 
@@ -62,4 +62,4 @@ Securitatea stației a semnalat un fișier ascuns undeva în directorul tău per
 
 **Rezultat așteptat**
 
-Vezi fiecare element — inclusiv fișierul ascuns care începe cu `.` — cu detalii care arată care intrări sunt fișiere și care directoare, plus o listare detaliată a ceea ce se află în `rapoarte`.
+Vezi fiecare element (inclusiv fișierul ascuns care începe cu `.`) cu detalii care arată care intrări sunt fișiere și care directoare, plus o listare detaliată a ceea ce se află în `rapoarte`.

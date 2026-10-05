@@ -20,7 +20,7 @@ numeri cât de jos se află ceva.
 ### Lipirea fișierelor
 
 Știi deja că `cat` poate afișa mai multe fișiere la rând. Aceasta este adevărata sa
-superputere — **concatenarea** lor:
+superputere, **concatenarea** lor:
 
 ```bash
 cat antet.txt corp.txt subsol.txt

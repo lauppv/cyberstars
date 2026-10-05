@@ -1,5 +1,5 @@
 Every program running on a Linux system is called a **process**. Each process has a
-unique number — its **PID** (Process ID). The `ps` command shows you a snapshot of
+unique number: its **PID** (Process ID). The `ps` command shows you a snapshot of
 processes running right now.
 
 By itself, `ps` shows only processes attached to your current terminal session:
@@ -36,7 +36,7 @@ diagnostic tool.
 
 ## Mission: Engineering Health Check
 
-Engineering just radioed in — they need written proof that the reactor monitoring daemon is still running. Without it, temperature readings stop flowing to the bridge.
+Engineering just radioed in: they need written proof that the reactor monitoring daemon is still running. Without it, temperature readings stop flowing to the bridge.
 
 1. List all processes running on the station's computer.
 2. Filter that listing down to only the lines mentioning the reactor and save them into a file called `reactor-status.txt`.

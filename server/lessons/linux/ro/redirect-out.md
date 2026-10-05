@@ -12,7 +12,7 @@ echo "Reactor online" > stare.txt
 
 ```
 
-Nu a apărut nimic pe ecran — textul a ajuns în `stare.txt`. Poți verifica cu `cat`:
+Nu a apărut nimic pe ecran: textul a ajuns în `stare.txt`. Poți verifica cu `cat`:
 
 ```bash
 cat stare.txt
@@ -39,7 +39,7 @@ Reactor offline
 Conținutul vechi a dispărut. Când vrei să păstrezi ce era deja acolo, vei folosi `>>`
 (lecția următoare).
 
-Orice comandă care produce ieșire poate fi redirecționată — `ls`, `grep`, `cat`, `date`,
+Orice comandă care produce ieșire poate fi redirecționată: `ls`, `grep`, `cat`, `date`,
 orice.
 
 ---

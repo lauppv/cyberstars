@@ -8,7 +8,7 @@ The file is gone immediately. Run `ls` to confirm it disappeared.
 
 ### A serious warning
 
-There is **no recycle bin** in the terminal. `rm` does not move files to trash — it
+There is **no recycle bin** in the terminal. `rm` does not move files to trash. It
 **destroys them permanently**. There is no "undo".
 
 So before you press Enter, always read your command twice. A good habit is to `ls`
@@ -42,7 +42,7 @@ deleting anything you are unsure about.
 
 ## Mission: Purge Junk Data
 
-A routine maintenance scan flagged leftover junk cluttering the station workspace. Before you delete anything, secure the one file that matters — there is no undo for `rm`.
+A routine maintenance scan flagged leftover junk cluttering the station workspace. Before you delete anything, secure the one file that matters. There is no undo for `rm`.
 
 1. Create a `keep` folder and copy `mission.txt` into it as a safety backup.
 2. Review the workspace before deleting anything.

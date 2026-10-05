@@ -1,6 +1,6 @@
 Înainte să schimbi proprietarul unui fișier, trebuie să știi **cine ești** în sistem. Două comenzi îți spun asta:
 
-### `whoami` — numele tău de utilizator
+### `whoami`: numele tău de utilizator
 
 ```bash
 whoami
@@ -10,9 +10,9 @@ whoami
 student
 ```
 
-Simplu și direct — afișează doar numele tău de login.
+Simplu și direct: afișează doar numele tău de login.
 
-### `id` — detaliile complete ale identității
+### `id`: detaliile complete ale identității
 
 ```bash
 id

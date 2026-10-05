@@ -1,7 +1,7 @@
 So far you have only _looked_ at directories. Now you will **move between them**.
 
 The **cd** command (**change directory**) takes you into a different folder. After
-`cd`, your _current working directory_ changes — and `pwd` will prove it.
+`cd`, your _current working directory_ changes, and `pwd` will prove it.
 
 ### Going into a folder
 
@@ -20,7 +20,7 @@ You have moved **down** into `reports`.
 
 ### Going back up: `..`
 
-The special name `..` means **the parent directory** — one level up. To leave
+The special name `..` means **the parent directory**, one level up. To leave
 `reports` and return to `/home/student`:
 
 ```bash
@@ -39,7 +39,7 @@ pwd
 | `cd ~`  | your **home** directory (`/home/student`)                     |
 | `cd /`  | the **root** of the whole system                              |
 | `cd ..` | one directory **up**                                          |
-| `cd`    | also home — typing `cd` with nothing is a shortcut for `cd ~` |
+| `cd`    | also home (typing `cd` with nothing is a shortcut for `cd ~`) |
 
 ### Paths
 
@@ -49,8 +49,8 @@ You can also jump several levels at once by giving a full **path**:
 cd /home/student/reports
 ```
 
-A path starting with `/` is **absolute** — it works no matter where you currently are.
-A path without a leading `/` (like `reports`) is **relative** — it is read starting
+A path starting with `/` is **absolute**: it works no matter where you currently are.
+A path without a leading `/` (like `reports`) is **relative**: it is read starting
 from your current location.
 
 Tip: lost? `cd ~` always brings you home, and `pwd` always tells you where you are.

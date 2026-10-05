@@ -11,7 +11,7 @@ commanding officer needs the directory organized and a final report generated
 
 ## Mission: Mission Control Overhaul
 
-A previous shift officer left the Mission Control directory in chaos — incoming files dumped in `inbox/`, nothing sorted, permissions wide open, and no status report for command. The captain wants this fixed before the next crew rotation. You have the tools. Get it done.
+A previous shift officer left the Mission Control directory in chaos: incoming files dumped in `inbox/`, nothing sorted, permissions wide open, and no status report for command. The captain wants this fixed before the next crew rotation. You have the tools. Get it done.
 
 1. **Sort the inbox.** Move all `.log` files from `inbox/` into `logs/`. Move all `.conf` files from `inbox/` into `config/`.
 
@@ -19,7 +19,7 @@ A previous shift officer left the Mission Control directory in chaos — incomin
 
 3. **Build a configuration manifest.** Use `cat` to combine all `.conf` files in `config/` and pipe through `sort` into `reports/sorted-config.txt`.
 
-4. **Lock down security.** The file `config/security.conf` contains sensitive access credentials. Set its permissions so only the owner can read and write it — no group or other access. Use `chmod 600`.
+4. **Lock down security.** The file `config/security.conf` contains sensitive access credentials. Set its permissions so only the owner can read and write it, no group or other access. Use `chmod 600`.
 
 5. **File the final report.** Create `reports/mission-summary.txt` containing the current date on the first line (use `date >`) and the text `STATUS: COMPLETE` on the second line (use `echo >>` to append).
 

@@ -1,5 +1,5 @@
 Orice program care rulează pe un sistem Linux se numește **proces**. Fiecare proces
-are un număr unic — **PID**-ul său (Process ID). Comanda `ps` îți arată o
+are un număr unic: **PID**-ul său (Process ID). Comanda `ps` îți arată o
 instantanee a proceselor care rulează chiar acum.
 
 Singură, `ps` afișează doar procesele legate de sesiunea ta curentă de terminal:
@@ -36,7 +36,7 @@ de diagnoză.
 
 ## Misiune: Verificare medicală a inginerilor
 
-Inginerii tocmai au transmis prin radio — au nevoie de o dovadă scrisă că daemonul
+Inginerii tocmai au transmis prin radio: au nevoie de o dovadă scrisă că daemonul
 de monitorizare a reactorului încă rulează. Fără el, citirile de temperatură nu mai
 ajung la punte.
 

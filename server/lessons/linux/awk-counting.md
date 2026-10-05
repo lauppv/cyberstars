@@ -16,7 +16,7 @@ processed. The `END` block runs once, after the last line.
 awk '/error/ {count++} END {print count}' log.txt
 ```
 
-The `/error/` is a pattern — only lines containing "error" trigger the action. At the
+The `/error/` is a pattern: only lines containing "error" trigger the action. At the
 end, we print how many matched.
 
 ### Combining pattern and calculation
@@ -36,7 +36,7 @@ The station is approaching a gravity-assist manoeuvre and the pilot needs a full
 
 1. Add up every weight in column 2 and print the combined total.
 2. Save that total into a new file called `total-weight.txt`.
-3. List only the heavy items — those with a weight above 100 — showing the name and the weight.
+3. List only the heavy items (those with a weight above 100), showing the name and the weight.
 4. Create a folder called `flight-deck` and move `total-weight.txt` into it.
 
 **Expected result**

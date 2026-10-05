@@ -33,11 +33,11 @@ If the folder already exists, you can `touch` a file straight into it:
 touch reports/summary.txt
 ```
 
-(The folder must exist first — `touch` does not create folders.)
+(The folder must exist first: `touch` does not create folders.)
 
 ### Why is it called "touch"?
 
-If the file _already_ exists, `touch` does not erase it — it just updates the file's
+If the file _already_ exists, `touch` does not erase it. It just updates the file's
 "last modified" time. That is its original purpose. For a beginner, think of it
 simply as **"create an empty file"**.
 

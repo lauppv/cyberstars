@@ -1,4 +1,4 @@
-Some files are huge — hundreds or thousands of lines. Dumping all of that with `cat`
+Some files are huge: hundreds or thousands of lines. Dumping all of that with `cat`
 floods your screen. Often you only want a quick peek at the **start** of a file.
 
 The **head** command prints just the **first lines** of a file. By default, the
@@ -35,7 +35,7 @@ line 3
 - Seeing how a log file _begins_
 - Sampling a file without scrolling through all of it
 
-Like `cat`, `head` only reads — it changes nothing.
+Like `cat`, `head` only reads. It changes nothing.
 
 ---
 
@@ -43,7 +43,7 @@ Like `cat`, `head` only reads — it changes nothing.
 
 The station's `system.log` records everything since the last reboot. Engineering wants to verify the boot sequence and keep a copy of the log for the diagnostics folder.
 
-1. Print only the **first 5 lines** of `system.log` — the earliest boot events.
+1. Print only the **first 5 lines** of `system.log`: the earliest boot events.
 2. Create a folder called `diagnostics` and copy `system.log` into it as `boot.log`.
 3. Verify the copy by printing just the **first 3 lines** of `diagnostics/boot.log`.
 

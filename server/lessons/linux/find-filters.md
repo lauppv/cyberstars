@@ -1,4 +1,4 @@
-`find -name` matches by name. But `find` can filter by other properties too — most
+`find -name` matches by name. But `find` can filter by other properties too, most
 usefully by **type** and **size**.
 
 ### Filter by type: `-type`
@@ -21,7 +21,7 @@ find . -type f -name "*.log"
 ```
 
 This reads as: under `.`, find things that are **files** _and_ whose name ends in
-`.log`. Multiple conditions are simply listed one after another — `find` requires
+`.log`. Multiple conditions are simply listed one after another: `find` requires
 **all** of them to match.
 
 ### Filter by size: `-size`
@@ -51,7 +51,7 @@ The chief engineer needs a structural overview of the `station` folder before re
 
 1. List **only the directories** inside `station`.
 2. List **only the `.txt` files** inside `station` (files, not folders).
-3. Gather the text notes you found — create a folder called `txt-index` and copy `station/notes.txt` and `station/bay/manifest.txt` into it.
+3. Gather the text notes you found: create a folder called `txt-index` and copy `station/notes.txt` and `station/bay/manifest.txt` into it.
 
 **Expected result**
 

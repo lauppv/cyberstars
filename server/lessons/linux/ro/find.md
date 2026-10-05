@@ -1,5 +1,5 @@
-`grep` caută text _în interiorul_ fișierelor. Dar uneori cauți **fișierul în sine**
-— „unde am pus fișierul ăla numit `raport.txt`?”. Pentru asta există **find**.
+`grep` caută text _în interiorul_ fișierelor. Dar uneori cauți **fișierul în sine**:
+„unde am pus fișierul ăla numit `raport.txt`?”. Pentru asta există **find**.
 
 `find` parcurge un arbore de directoare și listează fișierele care se potrivesc cu
 descrierea ta.
@@ -8,7 +8,7 @@ Forma de bază este: `find UNDE-SĂ-CAUT CONDIȚII`.
 
 ### Căutare după nume: `-name`
 
-Cea mai folosită condiție este `-name` — potrivește fișierele după nume:
+Cea mai folosită condiție este `-name`, care potrivește fișierele după nume:
 
 ```bash
 find . -name raport.txt

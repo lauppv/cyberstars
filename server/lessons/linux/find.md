@@ -1,5 +1,5 @@
 `grep` searches _inside_ files for text. But sometimes you are looking for the **file
-itself** — "where did I put that file called `report.txt`?". That is what **find**
+itself**: "where did I put that file called `report.txt`?". That is what **find**
 does.
 
 `find` walks through a directory tree and lists files that match what you describe.
@@ -8,7 +8,7 @@ The basic form is: `find WHERE-TO-LOOK CONDITIONS`.
 
 ### Find by name: `-name`
 
-The most common condition is `-name` — match files by their name:
+The most common condition is `-name`, to match files by their name:
 
 ```bash
 find . -name report.txt

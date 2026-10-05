@@ -1,5 +1,5 @@
 În timp ce `ps` îți oferă o instantanee unică, comanda `top` îți arată o vedere
-**live, actualizată continuu** a proceselor — sortate după consumul de CPU sau
+**live, actualizată continuu** a proceselor, sortate după consumul de CPU sau
 memorie. Este tabloul de bord al inginerului de stație.
 
 Într-un terminal complet ai tasta pur și simplu:
@@ -25,7 +25,7 @@ root       305  1.1  0.8  ...  /usr/sbin/life-support
 student   1201  0.0  0.2  ...  bash
 ```
 
-`-%cpu` înseamnă „sortează după CPU, descrescător” — procesul cel mai lacom apare
+`-%cpu` înseamnă „sortează după CPU, descrescător”: procesul cel mai lacom apare
 primul. Poți sorta și după memorie: `--sort=-%mem`.
 
 Pe o stație reală ai folosi `top` sau varianta sa mai prietenoasă, `htop`, ca să
@@ -40,8 +40,8 @@ Computerul principal al stației se încălzește, iar puntea vrea un raport scr
 despre vinovat înainte ca alarmele termice să se declanșeze.
 
 1. Listează toate procesele sortate după consumul de CPU, cu cel mai mare primul.
-2. Capturează vârful acelei liste sortate — linia de antet plus singurul proces cel
-   mai lacom — într-un fișier numit `vinovat-principal.txt`.
+2. Capturează vârful acelei liste sortate (linia de antet plus singurul proces cel
+   mai lacom) într-un fișier numit `vinovat-principal.txt`.
 3. Creează un folder numit `raport-cpu` și mută `vinovat-principal.txt` în el.
 4. Afișează fișierul salvat pentru a confirma care program este vinovatul.
 

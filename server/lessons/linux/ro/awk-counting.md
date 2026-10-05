@@ -16,7 +16,7 @@ liniile sunt procesate. Blocul `END` rulează o singură dată, după ultima lin
 awk '/error/ {count++} END {print count}' jurnal.txt
 ```
 
-`/error/` este un tipar — doar liniile care conțin "error" declanșează acțiunea. La
+`/error/` este un tipar: doar liniile care conțin "error" declanșează acțiunea. La
 final, afișăm câte s-au potrivit.
 
 ### Combinarea tiparului cu calculul
@@ -37,7 +37,7 @@ Stația se apropie de o manevră cu asistență gravitațională, iar pilotul ar
 
 1. Adună fiecare greutate din coloana 2 și afișează totalul combinat.
 2. Salvează acel total într-un fișier nou numit `greutate-totala.txt`.
-3. Listează doar obiectele grele — cele cu o greutate peste 100 — arătând numele și greutatea.
+3. Listează doar obiectele grele (cele cu o greutate peste 100), arătând numele și greutatea.
 4. Creează un folder numit `punte-zbor` și mută `greutate-totala.txt` în el.
 
 **Rezultat așteptat**

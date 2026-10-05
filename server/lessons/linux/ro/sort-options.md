@@ -49,7 +49,7 @@ Ingineria a detectat fluctuații în rețeaua de alimentare a stației. Fișieru
 1. Sortează `citiri_putere.txt` **numeric, după a doua coloană**, astfel încât valoarea cea mai mică să apară în vârf, și afișează.
 2. Salvează acel diagnostic sortat într-un fișier nou numit `diagnostic.txt`.
 3. Creează un folder numit `inginerie` și mută `diagnostic.txt` în el.
-4. Afișează doar prima linie — sectorul cel mai slab, de care se ocupă echipa prima dată.
+4. Afișează doar prima linie: sectorul cel mai slab, de care se ocupă echipa prima dată.
 
 **Rezultat așteptat**
 

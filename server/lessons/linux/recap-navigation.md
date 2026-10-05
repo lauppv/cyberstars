@@ -1,9 +1,9 @@
 Time to put the first chapter together. You now have three trusty tools for moving
 around a Linux system:
 
-- **pwd** — tells you _where_ you are
-- **ls** — tells you _what_ is around you
-- **cd** — _moves_ you to a new directory
+- **pwd**: tells you _where_ you are
+- **ls**: tells you _what_ is around you
+- **cd**: _moves_ you to a new directory
 
 None of these change or delete anything, so you can explore freely. The golden habit
 of every cadet:
@@ -31,7 +31,7 @@ Station intelligence reports a hidden vault somewhere deep in the `station` dire
 1. Look at what is in your home directory.
 2. Move into the `station` folder.
 3. From there, move into the `archive` folder.
-4. Inside `archive`, a hidden directory is waiting — reveal the hidden entries, then move into it.
+4. Inside `archive`, a hidden directory is waiting. Reveal the hidden entries, then move into it.
 
 **Expected result**
 

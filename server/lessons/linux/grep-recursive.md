@@ -1,5 +1,5 @@
 So far `grep` searched **one file**. But what if you do not know _which_ file contains
-the word — only that it is somewhere in a folder full of files and sub-folders?
+the word, only that it is somewhere in a folder full of files and sub-folders?
 
 The `-r` option (**recursive**) tells `grep` to search **every file in a whole
 directory tree**.
@@ -42,7 +42,7 @@ grep -rn "error" logs     # recursive + line numbers
 
 A recurring malfunction has been reported and the maintenance team needs every mention of `failure` from the station logs, plus the offending file pulled out for evidence. The `logs` folder contains files spread across several sub-folders.
 
-1. Search recursively for `failure` everywhere under the `logs` folder — each hit shows which file it came from.
+1. Search recursively for `failure` everywhere under the `logs` folder. Each hit shows which file it came from.
 2. Create a folder called `investigation` and copy the January log `logs/january.log`, which holds the coolant-pump failure, into it as `evidence.log`.
 3. Display the evidence file to confirm it captured the failure line.
 

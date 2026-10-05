@@ -20,7 +20,7 @@ uptime
  14:32:01 up 42 days,  3:17,  1 user,  load average: 0.12, 0.08, 0.05
 ```
 
-This station has been online for 42 days without a reboot — impressive stability.
+This station has been online for 42 days without a reboot. Impressive stability.
 
 ### Recalling past commands
 

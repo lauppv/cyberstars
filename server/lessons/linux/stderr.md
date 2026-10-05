@@ -1,7 +1,7 @@
 Linux separates command output into two streams:
 
-- **stdout** (stream 1) — normal output (what you usually see).
-- **stderr** (stream 2) — error messages.
+- **stdout** (stream 1): normal output (what you usually see).
+- **stderr** (stream 2): error messages.
 
 When you use `>`, only stdout is redirected. Errors still appear on screen:
 
@@ -25,7 +25,7 @@ Now errors go into `errors.txt`, and normal output prints to screen.
 
 ### Discarding errors with `/dev/null`
 
-`/dev/null` is a black hole — anything sent there disappears:
+`/dev/null` is a black hole: anything sent there disappears:
 
 ```bash
 ls real.txt fake.txt 2> /dev/null
@@ -48,7 +48,7 @@ wherever stream 1 is going."
 
 Station sensors flagged a reference to a file called `ghost.txt` that may no longer exist. You need to check both files, but the error output is cluttering the main console and you want it filed away.
 
-1. Run `ls report.txt ghost.txt` to check both files, but capture **only the error** into a file called `errors.log` — the normal output should stay on screen.
+1. Run `ls report.txt ghost.txt` to check both files, but capture **only the error** into a file called `errors.log`. The normal output should stay on screen.
 2. Display `errors.log` to read the captured error.
 3. Create a folder called `logs` and move `errors.log` into it.
 4. Search the captured log for the words `No such` to confirm the failure was recorded.

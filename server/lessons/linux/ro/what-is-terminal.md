@@ -3,7 +3,7 @@ comenzi** în loc să apeși butoane.
 
 Scrii o comandă, apeși **Enter**, iar calculatorul o execută și îți arată
 rezultatul. Simbolul mic de la începutul liniei (de obicei `$`) se numește
-**prompt** — înseamnă că sistemul este pregătit și te așteaptă.
+**prompt**. Înseamnă că sistemul este pregătit și te așteaptă.
 
 Prima comandă pe care o vom învăța este **echo**. Ea afișează pur și simplu textul
 pe care i-l dai.
@@ -39,7 +39,7 @@ echo "Linux e distractiv"
 Linux e distractiv
 ```
 
-Nu-ți face griji că trebuie să memorezi totul — terminalul este un loc unde poți
+Nu-ți face griji că trebuie să memorezi totul. Terminalul este un loc unde poți
 **experimenta**. Încearcă o comandă, vezi ce se întâmplă, încearcă alta.
 
 ---
