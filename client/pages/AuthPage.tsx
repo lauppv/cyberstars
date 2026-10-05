@@ -1,11 +1,9 @@
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { ApiClientError } from '../services/apiClient';
 import { forgotPassword, resetPassword } from '../services/authService';
-import { Deco } from '../components/ui/Deco';
-import { useGraphics } from '../hooks/useGraphics';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
 function getPasswordStrength(pw: string): number {
@@ -17,125 +15,7 @@ function getPasswordStrength(pw: string): number {
   return s;
 }
 
-function Starfield() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let w: number, h: number, cx: number, cy: number;
-    const resize = () => {
-      const rect = canvas.parentElement!.getBoundingClientRect();
-      const dpr = window.devicePixelRatio;
-      w = canvas.width = rect.width * dpr;
-      h = canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-      cx = w / 2;
-      cy = h / 2;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const NUM_STARS = 220;
-    const SPEED = 0.007;
-    const COLORS = ['#FFFFFF', '#E8E8FF', '#C8B8FF', '#FFD8B8', '#B8E8FF'];
-    const stars = Array.from({ length: NUM_STARS }, () => ({
-      x: (Math.random() - 0.5) * 2,
-      y: (Math.random() - 0.5) * 2,
-      z: Math.random(),
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      twinkle: Math.random() * Math.PI * 2,
-    }));
-
-    let rafId: number;
-    let lastT = performance.now();
-
-    // Self-scheduling loop that is never cancelled on visibility change — the
-    // browser throttles rAF for hidden tabs and resumes it on return, so the
-    // chain can't get stuck "paused with no event to restart it". While hidden
-    // we skip drawing and only keep lastT fresh to avoid a warp jump on return.
-    const tick = (t: number) => {
-      rafId = requestAnimationFrame(tick);
-      if (document.hidden) {
-        lastT = t;
-        return;
-      }
-      const dt = Math.min(50, t - lastT);
-      lastT = t;
-      ctx.fillStyle = 'rgba(10, 5, 24, 0.28)';
-      ctx.fillRect(0, 0, w, h);
-      const maxR = Math.max(w, h) * 0.7;
-
-      for (const s of stars) {
-        s.z -= SPEED * (dt / 16);
-        if (s.z <= 0) {
-          s.x = (Math.random() - 0.5) * 2;
-          s.y = (Math.random() - 0.5) * 2;
-          s.z = 1;
-          s.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-        }
-        const scale = 1 / s.z;
-        const px = cx + s.x * scale * maxR;
-        const py = cy + s.y * scale * maxR;
-        if (px < -50 || px > w + 50 || py < -50 || py > h + 50) continue;
-
-        const prevScale = 1 / Math.min(1, s.z + SPEED * 4);
-        const ppx = cx + s.x * prevScale * maxR;
-        const ppy = cy + s.y * prevScale * maxR;
-
-        const dpr = window.devicePixelRatio;
-        const size = (1 - s.z) * 2.5 * dpr;
-        const alpha = Math.min(1, (1 - s.z) * 1.5);
-        s.twinkle += 0.06;
-        const twink = 0.7 + Math.sin(s.twinkle) * 0.3;
-
-        ctx.strokeStyle = s.color;
-        ctx.globalAlpha = alpha * 0.55;
-        ctx.lineWidth = size * 0.7;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(ppx, ppy);
-        ctx.lineTo(px, py);
-        ctx.stroke();
-
-        ctx.globalAlpha = alpha * twink;
-        ctx.fillStyle = s.color;
-        ctx.beginPath();
-        ctx.arc(px, py, size, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (s.z < 0.4) {
-          ctx.globalAlpha = alpha * 0.25;
-          ctx.beginPath();
-          ctx.arc(px, py, size * 3, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-      ctx.globalAlpha = 1;
-    };
-    rafId = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
-      style={{ zIndex: 2 }}
-    />
-  );
-}
-
 export function AuthPage() {
-  const [graphics] = useGraphics();
   const location = useLocation();
   const initial = (location.state ?? null) as {
     mode?: 'login' | 'signup' | 'forgot' | 'reset';
@@ -209,10 +89,6 @@ export function AuthPage() {
   return (
     <>
       <style>{`
-        @keyframes pulse-glow {
-          0%, 100% { opacity: .5; transform: translate(-50%, -50%) scale(1); }
-          50% { opacity: .9; transform: translate(-50%, -50%) scale(1.15); }
-        }
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: none; }
@@ -226,35 +102,6 @@ export function AuthPage() {
       `}</style>
 
       <div className="auth-bg relative flex h-screen text-[var(--text)] overflow-hidden">
-        {/* Cosmic background — full screen, behind both panels (visible on mobile too) */}
-        {/* Pulsing accent glow */}
-        <Deco
-          as="div"
-          className="absolute pointer-events-none"
-          style={{
-            width: 600,
-            height: 600,
-            background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            animation: 'pulse-glow 8s ease-in-out infinite',
-            zIndex: 1,
-          }}
-        />
-        {/* Canvas starfield */}
-        {graphics === 'max' && <Starfield />}
-        {/* Vignette */}
-        <Deco
-          as="div"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 55% 45% at center, rgba(10,5,24,.55) 0%, transparent 75%)',
-            zIndex: 3,
-          }}
-        />
-
         {/* Left brand panel (desktop only) */}
         <div className="hidden min-[900px]:flex flex-1 flex-col justify-center items-center relative z-[4]">
           {/* Brand content */}
@@ -274,20 +121,13 @@ export function AuthPage() {
               {t('auth.brand.tagline')}
             </p>
             <div className="flex flex-col gap-4 text-left">
-              {['⌨️', '💻', '🏆', '💬', '📰', '🚀'].map((icon, i) => {
+              {[0, 1, 2, 3, 4, 5].map((i) => {
                 const f = {
-                  icon,
                   bold: t(`auth.features.${i}.bold`),
                   rest: t(`auth.features.${i}.rest`),
                 };
                 return (
                   <div key={f.bold} className="flex items-center gap-3 text-sm text-[var(--text2)]">
-                    <Deco
-                      as="div"
-                      className="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0 border border-[var(--panel-border)] bg-[var(--glass)]"
-                    >
-                      {f.icon}
-                    </Deco>
                     <span>
                       <strong className="text-[var(--text)]">{f.bold}</strong>
                       {f.rest}
@@ -300,7 +140,7 @@ export function AuthPage() {
         </div>
 
         {/* Right form panel */}
-        <div className="relative z-[4] w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[rgba(13,10,24,0.6)] min-[900px]:bg-[var(--bg2)] min-[900px]: border-l border-[var(--border)] flex flex-col justify-center px-6 sm:px-12 py-12 overflow-y-auto">
+        <div className="relative z-[4] w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[var(--bg2)] border-l border-[var(--border)] flex flex-col justify-center px-6 sm:px-12 py-12 overflow-y-auto">
           {/* Tabs — only shown for login/signup */}
           <>
             {(mode === 'login' || mode === 'signup') && (
@@ -312,7 +152,6 @@ export function AuthPage() {
                       ? 'bg-[var(--accent)] text-white'
                       : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
                   }`}
-                  style={mode === 'login' ? { boxShadow: '0 2px 8px #6C5CE744' } : undefined}
                 >
                   {t('auth.tabs.login')}
                 </button>
@@ -323,7 +162,6 @@ export function AuthPage() {
                       ? 'bg-[var(--accent)] text-white'
                       : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
                   }`}
-                  style={mode === 'signup' ? { boxShadow: '0 2px 8px #6C5CE744' } : undefined}
                 >
                   {t('auth.tabs.signup')}
                 </button>

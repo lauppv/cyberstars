@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useRadio } from '../../context/RadioContext';
-import { Deco } from '../ui/Deco';
 
 // Floating focus-radio chip, bottom-right. Mounted once at the app root; the
 // actual <audio> element lives in RadioProvider so playback survives navigation
@@ -35,10 +34,7 @@ export function RadioPlayer() {
           aria-label={t('radio.show')}
           title={title}
         >
-          <Deco>📻</Deco>
-          <Deco only="min" className="text-[12px] font-semibold text-[var(--text2)]">
-            {t('radio.title')}
-          </Deco>
+          <span className="text-[12px] font-semibold text-[var(--text2)]">{t('radio.title')}</span>
           {playing && (
             <span className="h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-[var(--accent)]" />
           )}

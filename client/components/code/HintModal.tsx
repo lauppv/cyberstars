@@ -4,7 +4,6 @@ import * as hintsService from '../../services/hintsService';
 import { useUsage } from '../../context/UsageContext';
 import { UsageMeter } from '../usage/UsageMeter';
 import { MAX_HINT_LEVEL, type HintLevel } from '../../../shared/hints';
-import { Deco } from '../ui/Deco';
 
 interface Hint {
   level: HintLevel;
@@ -71,9 +70,7 @@ export function HintModal({
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
-          <div className="text-base font-bold flex items-center gap-2">
-            <Deco>💡</Deco> {t('hints.title')}
-          </div>
+          <div className="text-base font-bold flex items-center gap-2">{t('hints.title')}</div>
           <button
             onClick={onClose}
             aria-label={t('common.close')}

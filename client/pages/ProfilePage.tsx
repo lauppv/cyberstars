@@ -13,7 +13,6 @@ import { useAllProgress } from '../context/ProgressContext';
 import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
-import { Deco } from '../components/ui/Deco';
 
 export function ProfilePage() {
   const navigate = useNavigate();
@@ -176,9 +175,7 @@ export function ProfilePage() {
                 </p>
               )}
               {activeStatus && (
-                <p className="text-[11px] text-[var(--accent)] mt-1">
-                  <Deco>💬</Deco> {activeStatus}
-                </p>
+                <p className="text-[11px] text-[var(--accent)] mt-1">{activeStatus}</p>
               )}
             </div>
           </div>
@@ -288,10 +285,7 @@ export function ProfilePage() {
               </div>
             </div>
             <div className="py-4 text-center border-l border-[var(--border)]">
-              <div className="text-[24px] font-bold">
-                {streak === null ? '—' : streak}
-                {streak !== null && streak > 0 && <Deco className="text-[16px] ml-1">🔥</Deco>}
-              </div>
+              <div className="text-[24px] font-bold">{streak === null ? '—' : streak}</div>
               <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.streak')}
               </div>
@@ -307,7 +301,6 @@ export function ProfilePage() {
               {g.badges.map((b) => (
                 <Badge
                   key={`${b.courseKey}-${b.level}`}
-                  icon={b.icon}
                   label={b.label}
                   earned={b.earned}
                   description={b.description}
@@ -322,7 +315,7 @@ export function ProfilePage() {
               onClick={() => navigate('/settings')}
               className="w-full px-4 py-2.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition flex items-center justify-center gap-2"
             >
-              <Deco>⚙️</Deco> {t('profile.openSettings')}
+              {t('profile.openSettings')}
             </button>
           </div>
         </div>

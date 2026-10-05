@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { useGraphics, type GraphicsMode } from '../hooks/useGraphics';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -9,7 +8,6 @@ import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS } from '../i18n';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
-import { Deco } from '../components/ui/Deco';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
 type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showActivity' | 'showConnections';
@@ -53,14 +51,11 @@ function Toggle({
   );
 }
 
-const GRAPHICS_OPTIONS: GraphicsMode[] = ['min', 'max'];
-
 export function SettingsPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { user, isLoggedIn, isLoading, refreshUser } = useAuth();
   const currentLang = i18n.resolvedLanguage ?? i18n.language;
-  const [graphics, setGraphics] = useGraphics();
 
   const [privacy, setPrivacy] = useState<Record<PrivacyFlag, boolean>>({
     showBio: true,
@@ -214,24 +209,7 @@ export function SettingsPage() {
               {t('settings.preferences')}
             </h2>
             <div className="flex items-center justify-between gap-4 py-2">
-              <span className="text-[13px] text-[var(--text)]">
-                <Deco>🎨</Deco> {t('settings.graphics')}
-              </span>
-              <Segmented
-                value={graphics}
-                options={GRAPHICS_OPTIONS}
-                onChange={setGraphics}
-                optionLabel={(opt) => t(`graphics.${opt}`)}
-                ariaLabel={t('graphics.switch')}
-              />
-            </div>
-            <p className="text-[11px] text-[var(--text3)] -mt-1 mb-1">
-              {t('settings.graphicsHint')}
-            </p>
-            <div className="flex items-center justify-between gap-4 py-2">
-              <span className="text-[13px] text-[var(--text)]">
-                <Deco>🌐</Deco> {t('settings.language')}
-              </span>
+              <span className="text-[13px] text-[var(--text)]">{t('settings.language')}</span>
               <Segmented
                 value={currentLang}
                 options={SUPPORTED_LANGS}

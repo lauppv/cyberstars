@@ -1036,13 +1036,12 @@
   }
 }
 
-/* ===== Minimal graphics =====
-   The almanac leans on emoji as per-entry art. Min graphics drop that art and
-   let the titles and categories carry the page on their own. */
-:root:not([data-graphics='max']) .chip-em,
-:root:not([data-graphics='max']) .hero-art-icon,
-:root:not([data-graphics='max']) .card .emoji,
-:root:not([data-graphics='max']) .fact-emoji,
-:root:not([data-graphics='max']) .story-modal-emoji {
+/* The almanac data carries emoji as per-entry art. The page drops that art and
+   lets the titles and categories carry it on their own */
+.chip-em,
+.hero-art-icon,
+.card .emoji,
+.fact-emoji,
+.story-modal-emoji {
   display: none;
 }

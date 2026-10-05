@@ -6,67 +6,6 @@
   font-family: var(--font);
 }
 
-/* Background */
-.wc-bg-orbs {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.wc-bg-orbs::before,
-.wc-bg-orbs::after {
-  content: '';
-  position: absolute;
-  width: 780px;
-  height: 780px;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.35;
-}
-.wc-bg-orbs::before {
-  background: radial-gradient(circle, #6c5ce7 0%, transparent 70%);
-  left: -200px;
-  top: 200px;
-  animation: wc-drift1 22s ease-in-out infinite;
-}
-.wc-bg-orbs::after {
-  background: radial-gradient(circle, #a855f7 0%, transparent 70%);
-  right: -150px;
-  top: 60vh;
-  animation: wc-drift2 26s ease-in-out infinite;
-}
-@keyframes wc-drift1 {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(120px, -80px);
-  }
-}
-@keyframes wc-drift2 {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-100px, 120px);
-  }
-}
-
-.wc-bg-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(108, 92, 231, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 92, 231, 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 0%, transparent 90%);
-}
-
 /* Scroll progress */
 .wc-scroll-progress {
   position: fixed;
@@ -1708,20 +1647,4 @@
   color: var(--text3);
   margin-top: 24px;
   letter-spacing: 2px;
-}
-
-/* ===== Minimal graphics =====
-   The tour is a walk through the product, so it follows whichever look the
-   product is wearing: min drops the drifting orbs and the grid overlay. */
-:root:not([data-graphics='max']) .wc-bg-orbs,
-:root:not([data-graphics='max']) .wc-bg-grid {
-  display: none;
-}
-
-/* ===== Minimal graphics =====
-   The tour walks through the product, so it wears whichever look the product
-   is wearing: min drops the drifting orbs and the grid overlay. */
-:root:not([data-graphics='max']) .wc-bg-orbs,
-:root:not([data-graphics='max']) .wc-bg-grid {
-  display: none;
 }
