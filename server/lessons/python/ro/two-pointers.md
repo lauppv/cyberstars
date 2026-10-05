@@ -1,4 +1,4 @@
-Tehnica **two pointers** (doi pointeri) este o idee simplă, dar puternică: în loc să folosim o singură variabilă pentru a parcurge datele, folosim **două** — una care pornește de la început și una de la sfârșit (sau una lentă și una rapidă)
+Tehnica **two pointers** (doi pointeri) este o idee simplă, dar puternică: în loc să folosim o singură variabilă pentru a parcurge datele, folosim **două**: una care pornește de la început și una de la sfârșit (sau una lentă și una rapidă)
 
 Am văzut-o deja fără să știm. Când verificam palindroamele, comparam primul caracter cu ultimul, apoi al doilea cu penultimul. Aceia erau doi pointeri
 
@@ -81,7 +81,7 @@ print(elimina_duplicatele([1, 1, 2, 2, 2, 3, 4, 4, 5]))
 
 Rezultat **[1, 2, 3, 4, 5]**
 
-Aici comparăm fiecare element cu cel **anterior**. Dacă sunt diferite, este o nouă valoare unică — păstreaz-o
+Aici comparăm fiecare element cu cel **anterior**. Dacă sunt diferite, este o nouă valoare unică, deci păstreaz-o
 
 ---
 

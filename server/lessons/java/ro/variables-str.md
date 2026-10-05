@@ -98,7 +98,7 @@ Output **14**. **.length()** ne spune câte caractere are textul. Spațiile cont
 
 ## Misiune: Reparația Listei Echipajului
 
-Lista echipajului stației are un bug — numele au fost introduse fără ghilimele, așa că Java crede că sunt variabile în loc de text.
+Lista echipajului stației are un bug: numele au fost introduse fără ghilimele, așa că Java crede că sunt variabile în loc de text.
 
 Repară cele trei atribuiri de variabile astfel încât programul să compileze și să afișeze corect numele echipajului.
 

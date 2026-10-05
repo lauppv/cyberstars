@@ -87,11 +87,11 @@ int main(void) {
 
 **fgets** takes three arguments:
 
-- **name** — where to store the text
-- **sizeof(name)** — the maximum number of characters to read (prevents a buffer overflow!)
-- **stdin** — read from standard input (the keyboard)
+- **name**: where to store the text
+- **sizeof(name)**: the maximum number of characters to read (prevents a buffer overflow!)
+- **stdin**: read from standard input (the keyboard)
 
-Unlike **scanf**, **fgets** is **safe** — it will never write more characters than the buffer can hold. This is why **fgets** is preferred over **scanf** for reading strings in real C programs
+Unlike **scanf**, **fgets** is **safe**: it will never write more characters than the buffer can hold. This is why **fgets** is preferred over **scanf** for reading strings in real C programs
 
 One small catch: **fgets** keeps the **newline** character (**\n**) at the end. To remove it
 

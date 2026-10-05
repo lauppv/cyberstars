@@ -18,7 +18,7 @@ Output
 9
 ```
 
-What happened? The function **returned two values** separated by a comma. On the outside, we **unpacked** them into two variables, just like we did with tuples. In fact, that's exactly what Python does behind the scenes — it creates a **tuple** and then unpacks it
+What happened? The function **returned two values** separated by a comma. On the outside, we **unpacked** them into two variables, just like we did with tuples. In fact, that's exactly what Python does behind the scenes: it creates a **tuple** and then unpacks it
 
 ```py
 def min_max(numbers):

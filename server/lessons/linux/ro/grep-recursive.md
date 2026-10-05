@@ -1,5 +1,5 @@
 Până acum, `grep` a căutat într-**un singur fișier**. Dar ce te faci dacă nu știi
-_în care_ fișier se află cuvântul — știi doar că este undeva într-un folder plin de
+_în care_ fișier se află cuvântul, știi doar că este undeva într-un folder plin de
 fișiere și sub-foldere?
 
 Opțiunea `-r` (**recursivă**) îi spune lui `grep` să caute în **fiecare fișier
@@ -48,7 +48,7 @@ fiecare apariție a cuvântului `failure` din jurnalele stației, plus fișierul
 scos deoparte ca dovadă. Folderul `jurnale` conține fișiere răspândite în mai multe
 sub-foldere.
 
-1. Caută recursiv `failure` peste tot sub folderul `jurnale` — fiecare rezultat arată
+1. Caută recursiv `failure` peste tot sub folderul `jurnale`. Fiecare rezultat arată
    din ce fișier provine.
 2. Creează un folder numit `investigatie` și copiază jurnalul din ianuarie
    `jurnale/ianuarie.log`, care conține defecțiunea pompei de răcire, în el sub numele

@@ -105,11 +105,11 @@ Acesta este un idiom foarte comun în C. Obișnuiește-te să-l scrii
 
 Linia de bandă magnetică trimite un lot de citiri pentru schimbul curent. Numărul de citiri variază de la o zi la alta, deci primul lucru pe care îl primești este **câte** citiri urmează.
 
-1. Citește un întreg **n** din input — numărul de citiri
+1. Citește un întreg **n** din input: numărul de citiri
 2. Citește **n** numere întregi într-un array (folosește o buclă pentru citire, cu **scanf** în interiorul ei)
 3. Afișează fiecare citire pe linia ei proprie (folosește o buclă **for**)
 4. Afișează **totalul** tuturor citirilor
-5. Afișează **media** (cast la **double** ca să eviți împărțirea de întregi — folosește **(double) total / n**)
+5. Afișează **media** (cast la **double** ca să eviți împărțirea de întregi: folosește **(double) total / n**)
 
 **Exemplu**
 

@@ -1,4 +1,4 @@
-Bun venit la unul dintre **cele mai importante** concepte din programare — bucla **for**. Cu ea, putem cere calculatorului să facă ceva **de multe ori, automat**
+Bun venit la unul dintre **cele mai importante** concepte din programare: bucla **for**. Cu ea, putem cere calculatorului să facă ceva **de multe ori, automat**
 
 Imaginează-ți că vrem să afișăm toate numerele de la **1** la **10**
 
@@ -44,9 +44,9 @@ int main(void) {
 }
 ```
 
-1. **int i = 1** — **punctul de pornire**. Declarăm o variabilă **i** și o setăm la **1**
-2. **i <= 10** — **condiția**. Atât timp cât aceasta este **adevărată**, bucla continuă să ruleze
-3. **i++** — ce să facă **după fiecare iterație**. Creștem **i** cu 1
+1. **int i = 1**: **punctul de pornire**. Declarăm o variabilă **i** și o setăm la **1**
+2. **i <= 10**: **condiția**. Atât timp cât aceasta este **adevărată**, bucla continuă să ruleze
+3. **i++**: ce să facă **după fiecare iterație**. Creștem **i** cu 1
 
 Așadar **i** ia valorile **1, 2, 3, ..., 10**. Când **i** devine **11**, condiția **11 <= 10** este **falsă** și bucla se termină
 
@@ -75,7 +75,7 @@ int main(void) {
 
 ---
 
-Fii atent — dacă uităm să actualizăm **i**, obținem o **buclă infinită**
+Fii atent: dacă uităm să actualizăm **i**, obținem o **buclă infinită**
 
 ```c
 #include <stdio.h>

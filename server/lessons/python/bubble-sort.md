@@ -57,7 +57,7 @@ The **inner loop** (j) goes through the list and compares neighbors. **j** goes 
 
 ---
 
-**Is Bubble Sort fast?** Honestly, no. For a list of **n** elements, it does roughly **n × n** comparisons. For 10 elements, that's about 100 comparisons — fine. For 1,000,000 elements, that's about 1,000,000,000,000 comparisons — very slow
+**Is Bubble Sort fast?** Honestly, no. For a list of **n** elements, it does roughly **n × n** comparisons. For 10 elements, that's about 100 comparisons, fine. For 1,000,000 elements, that's about 1,000,000,000,000 comparisons, very slow
 
 That's why in real code we use **sorted()**, which uses a much faster algorithm. But understanding Bubble Sort teaches us how to think about **comparisons** and **swaps**, which is the foundation of many algorithms
 

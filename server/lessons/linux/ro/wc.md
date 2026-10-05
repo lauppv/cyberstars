@@ -1,4 +1,4 @@
-Uneori nu vrei să _citești_ un fișier — vrei să îl **măsori**. Câte linii? Câte
+Uneori nu vrei să _citești_ un fișier. Vrei să îl **măsori**. Câte linii? Câte
 cuvinte? Comanda **wc** (**word count**) îți spune.
 
 Rulează un `wc` simplu pe un fișier:
@@ -38,7 +38,7 @@ wc -l echipaj.txt
 ### De ce este util
 
 `wc -l` este una dintre cele mai folosite comenzi pe Linux. „Câte intrări sunt în
-această listă?” „Câte erori sunt în acest log?” — numără liniile și ai răspunsul.
+această listă?” „Câte erori sunt în acest log?” Numără liniile și ai răspunsul.
 Mai târziu vei alimenta ieșirea altor comenzi direct în `wc` pentru a număra
 rezultatele automat.
 
@@ -50,7 +50,7 @@ rezultatele automat.
 Logisticianul are nevoie de un număr exact înainte ca naveta de reaprovizionare să
 sosească, plus o copie depusă a manifestului.
 
-1. Numără **câte linii** sunt în `inventar.txt` — acela este numărul de articole.
+1. Numără **câte linii** sunt în `inventar.txt`. Acela este numărul de articole.
 2. Rulează o măsurătoare completă a lui `inventar.txt` ca să vezi liniile, cuvintele și
    caracterele împreună.
 3. Creează un folder numit `manifest` și copiază `inventar.txt` în el sub numele

@@ -1,4 +1,4 @@
-Bubble Sort funcționează, dar este puțin risipitor — face o mulțime de interschimbări inutile. **Selection Sort** abordează lucrurile diferit: găsește cel **mai mic** element și îl pune pe poziția 0, apoi găsește **al doilea cel mai mic** și îl pune pe poziția 1, și așa mai departe
+Bubble Sort funcționează, dar este puțin risipitor: face o mulțime de interschimbări inutile. **Selection Sort** abordează lucrurile diferit: găsește cel **mai mic** element și îl pune pe poziția 0, apoi găsește **al doilea cel mai mic** și îl pune pe poziția 1, și așa mai departe
 
 Gândește-te la asta ca la organizarea unui pachet de cărți de joc. Te uiți prin toate cărțile, o găsești pe cea mai mică și o pui prima. Apoi te uiți prin cărțile rămase, o găsești pe cea mai mică dintre ele și o pui a doua. Repeți până când totul este în ordine
 

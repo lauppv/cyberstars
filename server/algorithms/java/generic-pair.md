@@ -9,8 +9,8 @@ Read two values from stdin (a string and an integer), create a Pair, swap it, an
 
 ### Output
 
-- Line 1: `(FIRST, SECOND)` — the original pair
-- Line 2: `(FIRST, SECOND)` — the swapped pair
+- Line 1: `(FIRST, SECOND)`, the original pair
+- Line 2: `(FIRST, SECOND)`, the swapped pair
 
 ### Examples
 

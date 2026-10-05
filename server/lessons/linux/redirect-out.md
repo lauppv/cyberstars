@@ -12,7 +12,7 @@ echo "Reactor online" > status.txt
 
 ```
 
-Nothing appeared on screen — the text went into `status.txt` instead. You can verify
+Nothing appeared on screen: the text went into `status.txt` instead. You can verify
 with `cat`:
 
 ```bash
@@ -40,7 +40,7 @@ Reactor offline
 The old content is gone. When you need to keep existing content, you will use `>>`
 (next lesson).
 
-Any command that produces output can be redirected — `ls`, `grep`, `cat`, `date`,
+Any command that produces output can be redirected: `ls`, `grep`, `cat`, `date`,
 anything.
 
 ---

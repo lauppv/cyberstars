@@ -8,9 +8,9 @@ Centrul de calcul primește o coadă de comenzi de la teletype-uri conectate. Fi
 
 Scrie aceste funcții:
 
-- **int aduna(int a, int b)** — întoarce a + b
-- **int inmulteste(int a, int b)** — întoarce a \* b
-- **int putere(int baza, int exp)** — întoarce baza^exp folosind o **buclă while**
+- **int aduna(int a, int b)**: întoarce a + b
+- **int inmulteste(int a, int b)**: întoarce a \* b
+- **int putere(int baza, int exp)**: întoarce baza^exp folosind o **buclă while**
 
 Programul principal citește trei numere întregi din input: **a**, **b** și **op**
 

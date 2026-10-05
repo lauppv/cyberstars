@@ -25,5 +25,5 @@ Intrare:  12345
 Ieșire: 5
 ```
 
-Cifrele sunt tot caractere — numărătoarea lungimii nu ține cont de ce fel de
+Cifrele sunt tot caractere: numărătoarea lungimii nu ține cont de ce fel de
 caractere sunt.

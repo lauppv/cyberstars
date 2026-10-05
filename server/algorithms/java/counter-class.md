@@ -1,14 +1,14 @@
 Create a **Counter** class that keeps track of an integer value. It should support three operations:
 
-- `increment()` — adds 1 to the value
-- `decrement()` — subtracts 1 from the value
-- `getValue()` — returns the current value
+- `increment()`: adds 1 to the value
+- `decrement()`: subtracts 1 from the value
+- `getValue()`: returns the current value
 
 The counter starts at **0**. Read commands from stdin (one per line): `inc`, `dec`, or `get`. For each `get` command, print the current value on a new line.
 
 ### Input
 
-- Line 1: an integer N — the number of commands
+- Line 1: an integer N, the number of commands
 - Next N lines: a command (`inc`, `dec`, or `get`)
 
 ### Output
@@ -67,4 +67,4 @@ Output:
 0
 ```
 
-Increments and decrements cancel out — the counter returns to 0.
+Increments and decrements cancel out: the counter returns to 0.

@@ -50,4 +50,4 @@ Output:
 Total: 0.00
 ```
 
-With no shapes, the sum starts and stays at zero — still print `Total: 0.00`.
+With no shapes, the sum starts and stays at zero. Still print `Total: 0.00`.

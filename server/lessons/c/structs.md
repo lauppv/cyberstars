@@ -25,7 +25,7 @@ int main(void) {
 }
 ```
 
-We **define** the struct with **struct Employee { ... };** — notice the **semicolon** after the closing brace. Then we **create** a variable of that type with **struct Employee e1**. We access fields with the **dot operator**: **e1.shift**
+We **define** the struct with **struct Employee { ... };**. Notice the **semicolon** after the closing brace. Then we **create** a variable of that type with **struct Employee e1**. We access fields with the **dot operator**: **e1.shift**
 
 ---
 
@@ -65,7 +65,7 @@ int main(void) {
 }
 ```
 
-This second form is clearer — you see exactly which value goes into which field
+This second form is clearer: you see exactly which value goes into which field
 
 ---
 

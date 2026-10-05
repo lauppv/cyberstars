@@ -1,4 +1,4 @@
-Polimorfismul este un cuvânt sofisticat care înseamnă „multe forme." În Java, înseamnă că o variabilă de tip **părinte** poate conține un obiect de orice tip **copil** — și Java va apela metoda CORECTĂ automat
+Polimorfismul este un cuvânt sofisticat care înseamnă „multe forme." În Java, înseamnă că o variabilă de tip **părinte** poate conține un obiect de orice tip **copil**, iar Java va apela metoda CORECTĂ automat
 
 ```java
 class Criminal {
@@ -27,11 +27,11 @@ public class Main {
 }
 ```
 
-Chiar dacă `c` este declarat ca `Criminal`, Java știe că este de fapt un `Sofer` la rulare și apelează `vorbeste()` al lui Sofer. Asta se numește **dynamic dispatch** — Java direcționează apelul de metodă către tipul real al obiectului, nu către tipul declarat
+Chiar dacă `c` este declarat ca `Criminal`, Java știe că este de fapt un `Sofer` la rulare și apelează `vorbeste()` al lui Sofer. Asta se numește **dynamic dispatch**: Java direcționează apelul de metodă către tipul real al obiectului, nu către tipul declarat
 
 ---
 
-Asta devine CU ADEVĂRAT puternic cu array-uri și bucle. Gândește-te la Vice City: ai diferite tipuri de criminali — toți extinzând clasa de bază `Criminal`. Îi poți stoca pe toți într-UN SINGUR array
+Asta devine CU ADEVĂRAT puternic cu array-uri și bucle. Gândește-te la Vice City: ai diferite tipuri de criminali, toți extinzând clasa de bază `Criminal`. Îi poți stoca pe toți într-UN SINGUR array
 
 ```java
 class Criminal {
@@ -70,7 +70,7 @@ Sunt soferul Tommy
 Sunt tragatorul Lance
 ```
 
-Nu am verificat niciodată „este ăsta un șofer sau un trăgător?" — Java și-a dat seama pentru noi. Bucla doar apelează `c.vorbeste()` și Java o direcționează către override-ul corect. Asta este polimorfismul în acțiune
+Nu am verificat niciodată „este ăsta un șofer sau un trăgător?" Java și-a dat seama pentru noi. Bucla doar apelează `c.vorbeste()` și Java o direcționează către override-ul corect. Asta este polimorfismul în acțiune
 
 ---
 
@@ -102,15 +102,15 @@ public class Main {
 }
 ```
 
-Poți trece un Sofer, un Tragator, un Sef — orice extinde Criminal. Metodei nu trebuie să-i pese sau să știe. Asta e puterea. O singură metodă tratează TOȚI criminalii, actuali și viitori
+Poți trece un Sofer, un Tragator, un Sef, orice extinde Criminal. Metodei nu trebuie să-i pese sau să știe. Asta e puterea. O singură metodă tratează TOȚI criminalii, actuali și viitori
 
-Ca Cortez în Vice City — el dă misiuni lui Tommy, Lance, oricui. Nu-i pasă de persoana specifică, doar că își pot face treaba. „Treaba" este semnătura metodei, iar polimorfismul se asigură că persoana potrivită o face în felul ei
+Ca Cortez în Vice City: el dă misiuni lui Tommy, Lance, oricui. Nu-i pasă de persoana specifică, doar că își pot face treaba. „Treaba" este semnătura metodei, iar polimorfismul se asigură că persoana potrivită o face în felul ei
 
 ---
 
 ## Misiune: Apelul Bandei
 
-Tommy își strigă banda la apel. Fiecare membru răspunde în felul lui, dar tu vrei o singură buclă care îi pune pe toți să vorbească — fără să verifici ce tip e fiecare.
+Tommy își strigă banda la apel. Fiecare membru răspunde în felul lui, dar tu vrei o singură buclă care îi pune pe toți să vorbească, fără să verifici ce tip e fiecare.
 
 Creează clasele `Criminal`, `Sofer` și `Tragator` (Criminal are `vorbeste()` care afișează „..."; Sofer face override cu „Sunt soferul " + nume; Tragator face override cu „Sunt tragatorul " + nume).
 

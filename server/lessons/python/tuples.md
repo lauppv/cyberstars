@@ -1,4 +1,4 @@
-We already know **lists**. A list can grow, shrink, and change — we can **append**, **remove**, and **modify** elements whenever we want. But sometimes we want a collection that **cannot change**. This is a **tuple**
+We already know **lists**. A list can grow, shrink, and change: we can **append**, **remove**, and **modify** elements whenever we want. But sometimes we want a collection that **cannot change**. This is a **tuple**
 
 ```py
 coordinates = (10, 20)
@@ -123,7 +123,7 @@ Donkey
 The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`
 
 1. Loop over the list and **unpack** each tuple into three variables: `name`, `distance`, `planets`
-2. Print each system as `name: distance ly, planets planets` — for example `Sol: 0 ly, 8 planets` (`ly` = light years)
+2. Print each system as `name: distance ly, planets planets`, for example `Sol: 0 ly, 8 planets` (`ly` = light years)
 3. After the loop, print `Total planets: ` then the sum of all the planets
 
 **Output**

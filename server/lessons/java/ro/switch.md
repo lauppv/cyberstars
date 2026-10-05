@@ -1,4 +1,4 @@
-Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar când ai **multe** opțiuni — cum ar fi ce armă a ales Tommy — codul devine urât rapid. Aici intră în scenă **switch**
+Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar când ai **multe** opțiuni (cum ar fi ce armă a ales Tommy), codul devine urât rapid. Aici intră în scenă **switch**
 
 ```java
 public class Main {
@@ -64,7 +64,7 @@ Sosesc fortele speciale
 Intra tancurile armatei
 ```
 
-Uau — voiam doar mesajul de 3 stele, dar a afișat 3, 4 și 5! Asta pentru că fără **break**, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
+Uau, voiam doar mesajul de 3 stele, dar a afișat 3, 4 și 5! Asta pentru că fără **break**, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
 
 ---
 
@@ -98,7 +98,7 @@ Apare elicopterul
 
 ---
 
-**default** este ca `else`-ul dintr-un lanț de if-else — se ocupă de orice nu se potrivește cu niciun case
+**default** este ca `else`-ul dintr-un lanț de if-else: se ocupă de orice nu se potrivește cu niciun case
 
 ```java
 public class Main {
@@ -128,7 +128,7 @@ Alt vehicul: barca
 
 ---
 
-**switch** funcționează cu **int**, **String**, **char** și **enum**. Uneori vrem ca **mai multe case-uri** să ruleze același cod — atunci le stivuim unul peste altul, fără cod între ele
+**switch** funcționează cu **int**, **String**, **char** și **enum**. Uneori vrem ca **mai multe case-uri** să ruleze același cod. Atunci le stivuim unul peste altul, fără cod între ele
 
 ```java
 public class Main {
@@ -147,7 +147,7 @@ public class Main {
 }
 ```
 
-Observă cum am stivuit `case "Sambata":` și `case "Duminica":` împreună, fără cod între ele — acela este **fall-through intenționat**. Ambele case-uri rulează același cod. Aceasta este singura dată când fall-through chiar e la îndemână
+Observă cum am stivuit `case "Sambata":` și `case "Duminica":` împreună, fără cod între ele: acela este **fall-through intenționat**. Ambele case-uri rulează același cod. Aceasta este singura dată când fall-through chiar e la îndemână
 
 ---
 

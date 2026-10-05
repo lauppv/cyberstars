@@ -22,7 +22,7 @@ timestamp the incident.
 
 The station is approaching a debris field and the captain wants a full systems check logged before entry. Run through the standard diagnostic sequence.
 
-1. Inspect all active processes — confirm the reactor monitor and life support are running.
+1. Inspect all active processes. Confirm the reactor monitor and life support are running.
 2. Check the available disk space on all filesystems.
 3. Measure how large the `logs/` directory has grown.
 4. Timestamp this inspection with the current date and time.

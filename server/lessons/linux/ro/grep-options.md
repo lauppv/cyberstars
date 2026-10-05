@@ -2,7 +2,7 @@ Comanda `grep` simplă este utilă, dar câteva opțiuni o fac mult mai intelige
 
 ### Ignoră majusculele/minusculele: `grep -i`
 
-În mod implicit, `grep` ține cont de majuscule — `Error` și `error` sunt diferite.
+În mod implicit, `grep` ține cont de majuscule: `Error` și `error` sunt diferite.
 Opțiunea `-i` face căutarea **insensibilă la majuscule/minuscule**:
 
 ```bash
@@ -26,7 +26,7 @@ grep -c warning sistem.log
 
 ### Inversează potrivirea: `grep -v`
 
-Opțiunea `-v` inversează căutarea — afișează liniile care **NU** conțin cuvântul:
+Opțiunea `-v` inversează căutarea: afișează liniile care **NU** conțin cuvântul:
 
 ```bash
 grep -v info sistem.log
@@ -57,8 +57,8 @@ insensibilă la majuscule _și_ numerotată.
 al fișierului `sistem.log`: câte avertismente s-au înregistrat, ce evenimente
 neobișnuite au avut loc și o copie depusă pentru tura următoare.
 
-1. Numără câte linii conțin `warning` — doar numărul, nu și liniile în sine.
-2. Afișează fiecare linie care **nu** conține `info` — evenimentele neobișnuite.
+1. Numără câte linii conțin `warning`, doar numărul, nu și liniile în sine.
+2. Afișează fiecare linie care **nu** conține `info`: evenimentele neobișnuite.
 3. Afișează liniile cu `error` cu un număr de linie în față, ca echipajul de noapte să
    sară direct la ele.
 4. Creează un folder numit `predare` și copiază `sistem.log` în el sub numele

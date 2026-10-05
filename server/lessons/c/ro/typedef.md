@@ -67,7 +67,7 @@ int main(void) {
 }
 ```
 
-Observă cum putem folosi **Celula** în interiorul lui **Banca**. Struct-uri în struct-uri — **compoziție**. Așa construiesc programele C structuri de date complexe fără clase
+Observă cum putem folosi **Celula** în interiorul lui **Banca**. Struct-uri în struct-uri: **compoziție**. Așa construiesc programele C structuri de date complexe fără clase
 
 ---
 

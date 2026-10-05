@@ -8,9 +8,9 @@ The compute center receives a queue of commands from connected teletypes. Each l
 
 Write these functions:
 
-- **int add(int a, int b)** — returns a + b
-- **int multiply(int a, int b)** — returns a \* b
-- **int power(int base, int exp)** — returns base^exp using a **while loop**
+- **int add(int a, int b)**: returns a + b
+- **int multiply(int a, int b)**: returns a \* b
+- **int power(int base, int exp)**: returns base^exp using a **while loop**
 
 The main program reads three integers from input: **a**, **b** and **op**
 

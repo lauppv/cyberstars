@@ -196,7 +196,7 @@ describe('execRateLimitHandler', () => {
     execRateLimitHandler(req, res);
     expect(res.status).toHaveBeenCalledWith(429);
     expect(res.json).toHaveBeenCalledWith({
-      error: expect.stringMatching(/^Too many attempts — try again in \d+s\.$/),
+      error: expect.stringMatching(/^Too many attempts, try again in \d+s\.$/),
     });
   });
 
@@ -204,6 +204,6 @@ describe('execRateLimitHandler', () => {
     const { execRateLimitHandler } = await import('../routes/terminal.routes.js');
     const res = mockRes();
     execRateLimitHandler({ rateLimit: {} } as unknown as Request, res);
-    expect(res.json).toHaveBeenCalledWith({ error: 'Too many attempts — try again in 1s.' });
+    expect(res.json).toHaveBeenCalledWith({ error: 'Too many attempts, try again in 1s.' });
   });
 });

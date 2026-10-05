@@ -4,7 +4,7 @@ Print each group on a separate line with words sorted alphabetically within the 
 
 ### Input
 
-- Line 1: an integer `n` — the number of words.
+- Line 1: an integer `n`, the number of words.
 - Next `n` lines: one word per line (lowercase letters only).
 
 ### Output
@@ -54,8 +54,8 @@ def
 ghi
 ```
 
-When no words are anagrams of each other, every group has exactly one word —
-groups are still printed in alphabetical order by their first (and only) word.
+When no words are anagrams of each other, every group has exactly one word.
+Groups are still printed in alphabetical order by their first (and only) word.
 
 ```
 Input:

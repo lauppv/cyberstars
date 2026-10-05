@@ -3,15 +3,15 @@ Before the compiler even sees your code, a special step runs first: the **prepro
 **#include** copies the entire contents of a file into your code
 
 ```text
-#include <stdio.h>    // system header — from the standard C library
-#include "myheader.h"   // your own file — searched for in the current directory first
+#include <stdio.h>    // system header, from the standard C library
+#include "myheader.h"   // your own file, searched for in the current directory first
 ```
 
 The difference: **< >** for system headers, **" "** for your own files. When you write **#include <stdio.h>**, the preprocessor literally pastes thousands of lines of declarations into your file before compilation. That's how **printf** becomes available
 
 ---
 
-**#define** creates a **macro** — a name that gets replaced with a value before compilation
+**#define** creates a **macro**: a name that gets replaced with a value before compilation
 
 ```c
 #include <stdio.h>
@@ -27,7 +27,7 @@ int main(void) {
 }
 ```
 
-Everywhere the preprocessor sees **MAX_SPEED**, it replaces it with **9600**. It's a plain text substitution, like find-and-replace in a text editor. The compiler never sees "MAX_SPEED" — it only sees "9600"
+Everywhere the preprocessor sees **MAX_SPEED**, it replaces it with **9600**. It's a plain text substitution, like find-and-replace in a text editor. The compiler never sees "MAX_SPEED", it only sees "9600"
 
 By convention, macros are written in **UPPERCASE** so you can tell them apart from regular variables
 
@@ -69,20 +69,20 @@ int main(void) {
 }
 ```
 
-If **DEBUG** is defined, the debug message gets compiled in. If we remove the **#define DEBUG** line, the compiler skips that printf entirely — it doesn't even exist in the final program. This is used heavily in real projects to include/exclude debug logging without deleting the code
+If **DEBUG** is defined, the debug message gets compiled in. If we remove the **#define DEBUG** line, the compiler skips that printf entirely: it doesn't even exist in the final program. This is used heavily in real projects to include/exclude debug logging without deleting the code
 
 ---
 
 ## Mission: Equipment installation sheet
 
-You're a technician at the computing center. Before handing off the new server rack and the satellite dish on the roof, you need to fill in the compiler's configuration sheet with the macros used for the geometry calculations — the diagnostics panel depends on them to compile.
+You're a technician at the computing center. Before handing off the new server rack and the satellite dish on the roof, you need to fill in the compiler's configuration sheet with the macros used for the geometry calculations. The diagnostics panel depends on them to compile.
 
 Above **main**, define:
 
-- **PI** — `3.14159`
-- **AREA_RECT(w, h)** — returns `((w) * (h))` (surface area of the equipment room)
-- **AREA_CIRCLE(r)** — returns `((PI) * (r) * (r))` (surface area of the dish)
-- **MAX_SIZE** — `100` (the room's temperature limit, in degrees)
+- **PI**: `3.14159`
+- **AREA_RECT(w, h)**: returns `((w) * (h))` (surface area of the equipment room)
+- **AREA_CIRCLE(r)**: returns `((PI) * (r) * (r))` (surface area of the dish)
+- **MAX_SIZE**: `100` (the room's temperature limit, in degrees)
 
 In **main**, use the macros to print:
 

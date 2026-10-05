@@ -5,7 +5,7 @@ Fork returns:
 - `0` to the child
 - the child's PID to the parent
 
-The child prints first, and the parent waits with **wait(NULL)** before printing its own line — that's how we guarantee the order.
+The child prints first, and the parent waits with **wait(NULL)** before printing its own line. That's how we guarantee the order.
 
 ### Input
 

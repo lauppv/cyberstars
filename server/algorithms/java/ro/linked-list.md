@@ -11,9 +11,9 @@ Procesează comenzile de la stdin.
 
 Comportament:
 
-- `adauga X` — adaugă numărul întreg X la sfârșitul listei
-- `elimina X` — elimină prima apariție a lui X (afișează `Negasit` dacă X nu se află în listă)
-- `afiseaza` — afișează toate elementele separate prin `->`, sau `Goala` dacă lista este goală
+- `adauga X`: adaugă numărul întreg X la sfârșitul listei
+- `elimina X`: elimină prima apariție a lui X (afișează `Negasit` dacă X nu se află în listă)
+- `afiseaza`: afișează toate elementele separate prin `->`, sau `Goala` dacă lista este goală
 
 ### Rezultat
 
@@ -75,4 +75,4 @@ Ieșire:
 ```
 
 Eliminarea nodului **cap** înseamnă că referința `cap` a listei trebuie
-mutată chiar ea către al doilea nod — nu există un nod „anterior” de relegat.
+mutată chiar ea către al doilea nod. Nu există un nod „anterior” de relegat.

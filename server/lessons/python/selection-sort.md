@@ -1,4 +1,4 @@
-Bubble Sort works, but it's a bit wasteful — it makes a lot of unnecessary swaps. **Selection Sort** takes a different approach: find the **smallest** element and put it in position 0, then find the **second smallest** and put it in position 1, and so on
+Bubble Sort works, but it's a bit wasteful: it makes a lot of unnecessary swaps. **Selection Sort** takes a different approach: find the **smallest** element and put it in position 0, then find the **second smallest** and put it in position 1, and so on
 
 Think of it like organizing a deck of cards. You look through all the cards, find the smallest, and put it first. Then look through the remaining cards, find the smallest of those, and put it second. Repeat until everything is in order
 

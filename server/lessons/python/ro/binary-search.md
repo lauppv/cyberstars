@@ -19,7 +19,7 @@ tinta = 13
 
 **Pasul 4**: [13]. Am găsit-o!
 
-Am verificat **4 elemente** în loc să le scanăm pe toate 10. Pentru 1.000.000 de elemente, căutarea binară verifică cel mult **20** — asta e magia înjumătățirii problemei la fiecare pas
+Am verificat **4 elemente** în loc să le scanăm pe toate 10. Pentru 1.000.000 de elemente, căutarea binară verifică cel mult **20**. Asta e magia înjumătățirii problemei la fiecare pas
 
 ---
 
@@ -97,7 +97,7 @@ Rezultat **6**. Aceeași logică, alt stil
 
 ## Misiune: Căutare în Arhivă
 
-Arhiva stației stochează ID-urile echipajului într-o listă **sortată**. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid — așa că vei folosi **căutarea binară**, nu o scanare liniară.
+Arhiva stației stochează ID-urile echipajului într-o listă **sortată**. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid, așa că vei folosi **căutarea binară**, nu o scanare liniară.
 
 1. Scrie o funcție **cautare_binara(numere, tinta)** care returnează **indexul** unde se află `tinta` în lista sortată, sau `-1` dacă nu este acolo.
 2. Pentru fiecare interogare, afișează interogarea, apoi `-> index ` și indexul dacă a fost găsit, sau `-> negasit` dacă nu.

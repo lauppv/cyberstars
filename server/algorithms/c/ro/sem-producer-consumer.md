@@ -2,14 +2,14 @@ Un fir "producător" citește N numere și le pune pe rând într-un **buffer pa
 
 Sincronizarea se face cu **două semafoare**:
 
-- `plin` (init 0) — semnalat de producător imediat ce a scris în buffer.
-- `gol` (init 1) — semnalat de consumator imediat ce a citit din buffer.
+- `plin` (init 0): semnalat de producător imediat ce a scris în buffer.
+- `gol` (init 1): semnalat de consumator imediat ce a citit din buffer.
 
 Producătorul face `sem_wait(&gol)` înainte să scrie, apoi `sem_post(&plin)` după. Consumatorul face `sem_wait(&plin)` înainte să citească, apoi `sem_post(&gol)` după. Cele două fire alternează perfect prin unicul slot.
 
 ### Date de intrare
 
-- Prima linie: numărul întreg `N` (1 ≤ N ≤ 20)
+- Prima linie: numărul întreg `N` (1 <= N <= 20)
 - Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
@@ -46,6 +46,6 @@ Ieșire:
 7
 ```
 
-Ordinea e mereu **deterministă** — consumatorul nu poate citi un număr până când producătorul nu l-a pus, iar producătorul nu poate scrie următorul până când consumatorul nu l-a luat pe precedentul.
+Ordinea e mereu **deterministă**: consumatorul nu poate citi un număr până când producătorul nu l-a pus, iar producătorul nu poate scrie următorul până când consumatorul nu l-a luat pe precedentul.
 
 Folosește **sem_t**, **sem_init**, **sem_wait**, **sem_post**, **sem_destroy** din `<semaphore.h>` și **pthread_create**, **pthread_join** din `<pthread.h>`.

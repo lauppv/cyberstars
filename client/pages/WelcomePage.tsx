@@ -312,7 +312,7 @@ export function WelcomePage() {
                 <div className="wc-alm-tag">LEGENDS · 1843</div>
                 <div className="wc-alm-title">Ada Lovelace wrote code before computers existed</div>
                 <div className="wc-alm-excerpt">
-                  The first algorithm in history — written a century before the machine to run it.
+                  The first algorithm in history, written a century before the machine to run it.
                 </div>
               </div>
             </div>
@@ -335,7 +335,7 @@ export function WelcomePage() {
                   Margaret Hamilton wrote the code that landed Apollo 11
                 </div>
                 <div className="wc-alm-excerpt">
-                  She coined “software engineering” — and her overflow handling saved the moon
+                  She coined “software engineering”, and her overflow handling saved the moon
                   landing.
                 </div>
               </div>
@@ -384,7 +384,7 @@ export function WelcomePage() {
                   <span className="wc-forum-time">2m ago</span>
                 </div>
                 <div className="wc-forum-text">
-                  Segfault on lesson 12 — am I freeing the right pointer?{' '}
+                  Segfault on lesson 12. Am I freeing the right pointer?{' '}
                   <code>free(buf); buf = NULL;</code>
                 </div>
               </div>
@@ -402,7 +402,7 @@ export function WelcomePage() {
                   <span className="wc-forum-time">just now</span>
                 </div>
                 <div className="wc-forum-text">
-                  That part's fine ✅ — but check the <code>for</code> loop right above:{' '}
+                  That part's fine ✅ but check the <code>for</code> loop right above:{' '}
                   <code>i &lt;= n</code> walks one past the end.
                 </div>
                 <div className="wc-forum-reactions">
@@ -423,7 +423,7 @@ export function WelcomePage() {
                   alex_l
                   <span className="wc-forum-time">1m ago</span>
                 </div>
-                <div className="wc-forum-text">Ohh, that was it. Thanks — fixed! 🙏</div>
+                <div className="wc-forum-text">Ohh, that was it. Thanks, fixed! 🙏</div>
               </div>
             </div>
           </div>

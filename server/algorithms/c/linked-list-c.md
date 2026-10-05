@@ -1,7 +1,7 @@
 Implement a **singly linked list** in C. Read commands from stdin and execute them:
 
-- `insert x` — insert integer `x` at the **end** of the list
-- `print` — print all elements space-separated on one line
+- `insert x`: insert integer `x` at the **end** of the list
+- `print`: print all elements space-separated on one line
 
 Use `malloc` to allocate each node. Each node has an `int data` field and a `struct Node *next` pointer.
 

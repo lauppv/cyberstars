@@ -48,7 +48,7 @@ print.
 
 ## Misiune: Extragere date senzori
 
-Inginerii au cerut o citire rapidă a numelor sectoarelor și a valorilor lor de la senzori — nu au nevoie de coloana cu tipul citirii care încarcă afișajul.
+Inginerii au cerut o citire rapidă a numelor sectoarelor și a valorilor lor de la senzori. Nu au nevoie de coloana cu tipul citirii care încarcă afișajul.
 
 1. Folosește `awk` ca să afișezi **doar coloanele 1 și 3** din `senzori.dat` (sectorul și valoarea), și afișează-le.
 2. Salvează acel extras cu două coloane într-un fișier nou numit `citire.txt`.

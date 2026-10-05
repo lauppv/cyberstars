@@ -1,4 +1,4 @@
-You know if-else chains. They work great for 2-3 options. But when you have **many** options — like which weapon Tommy picked — the code gets ugly fast. That's where **switch** comes in
+You know if-else chains. They work great for 2-3 options. But when you have **many** options (like which weapon Tommy picked), the code gets ugly fast. That's where **switch** comes in
 
 ```java
 public class Main {
@@ -64,7 +64,7 @@ Special forces arrive
 Army tanks roll in
 ```
 
-Whoa — we only wanted the 3-star message, but it printed 3, 4, and 5! That's because without **break**, Java falls through every case below the match. Sometimes this is useful on purpose, but usually it's a bug. **Always add break** unless you specifically want fall-through
+Whoa, we only wanted the 3-star message, but it printed 3, 4, and 5! That's because without **break**, Java falls through every case below the match. Sometimes this is useful on purpose, but usually it's a bug. **Always add break** unless you specifically want fall-through
 
 ---
 
@@ -98,7 +98,7 @@ Helicopter shows up
 
 ---
 
-**default** is like the `else` in an if-else chain — it handles anything that doesn't match any case
+**default** is like the `else` in an if-else chain: it handles anything that doesn't match any case
 
 ```java
 public class Main {
@@ -128,7 +128,7 @@ Some other vehicle: boat
 
 ---
 
-**switch** works with **int**, **String**, **char**, and **enum** types. Sometimes we want **several cases** to run the same code — then we stack them on top of each other, with no code between them
+**switch** works with **int**, **String**, **char**, and **enum** types. Sometimes we want **several cases** to run the same code. Then we stack them on top of each other, with no code between them
 
 ```java
 public class Main {
@@ -147,7 +147,7 @@ public class Main {
 }
 ```
 
-Notice how we stacked `case "Saturday":` and `case "Sunday":` together, with no code between them — that's **intentional fall-through**. Both cases run the same code. This is the one time fall-through is actually handy
+Notice how we stacked `case "Saturday":` and `case "Sunday":` together, with no code between them: that's **intentional fall-through**. Both cases run the same code. This is the one time fall-through is actually handy
 
 ---
 

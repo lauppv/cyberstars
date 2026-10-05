@@ -29,9 +29,9 @@ Hai să descompunem antetul funcției
 void saluta(char nume[])
 ```
 
-- **void** — funcția **NU** întoarce nimic (doar afișează)
-- **saluta** — numele funcției
-- **(char nume[])** — lista de parametri. **char nume[]** înseamnă "un șir de caractere" (o bucată de text). Vom discuta despre string-uri într-o lecție dedicată
+- **void**: funcția **NU** întoarce nimic (doar afișează)
+- **saluta**: numele funcției
+- **(char nume[])**: lista de parametri. **char nume[]** înseamnă "un șir de caractere" (o bucată de text). Vom discuta despre string-uri într-o lecție dedicată
 
 Format specifier-ul **%s** din **printf** este pentru string-uri, exact cum **%d** este pentru int-i
 
@@ -106,7 +106,7 @@ int aduna(int a, int b) {   // corpul, scris mai tarziu
 }
 ```
 
-Observă **;**-ul de la finalul prototipului — este o declarație, nu un corp. Deocamdată, cel mai simplu este să-ți scrii funcțiile ajutătoare **deasupra** lui **main** și să nu-ți mai faci griji
+Observă **;**-ul de la finalul prototipului: este o declarație, nu un corp. Deocamdată, cel mai simplu este să-ți scrii funcțiile ajutătoare **deasupra** lui **main** și să nu-ți mai faci griji
 
 ---
 
@@ -114,7 +114,7 @@ Observă **;**-ul de la finalul prototipului — este o declarație, nu un corp.
 
 Într-un centru de calcul de altădată, fiecare terminal avea nevoie de propriul modul de aritmetică rapidă, ca operatorii să nu mai facă aceleași calcule de mână de fiecare dată.
 
-Scrie o funcție **calculator** care primește trei parametri: **int numar1**, **int numar2** și **char operator** (un singur caracter precum **'+'**, **'-'**, **'\*'**, **'/'** — observă **ghilimelele simple** pentru un singur char în C).
+Scrie o funcție **calculator** care primește trei parametri: **int numar1**, **int numar2** și **char operator** (un singur caracter precum **'+'**, **'-'**, **'\*'**, **'/'**; observă **ghilimelele simple** pentru un singur char în C).
 
 Funcția ar trebui să afișeze rezultatul operației, în formatul **numar1 operator numar2 = rezultat**. Dacă operatorul nu este recunoscut, afișează **Operator invalid**.
 

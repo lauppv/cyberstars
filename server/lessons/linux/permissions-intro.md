@@ -24,9 +24,9 @@ A dash (`-`) means that permission is **not** granted.
 
 ### What do r, w, x mean?
 
-- **r** (read) — view the file's contents.
-- **w** (write) — modify or delete the file.
-- **x** (execute) — run the file as a program/script.
+- **r** (read): view the file's contents.
+- **w** (write): modify or delete the file.
+- **x** (execute): run the file as a program/script.
 
 For directories: `r` = list contents, `w` = add/remove files, `x` = enter (`cd`).
 

@@ -11,7 +11,7 @@ mv ciorna.txt final.txt
 ```
 
 `ciorna.txt` a dispărut; `final.txt` îi conține acum conținutul. Spre deosebire de
-`cp`, nu rămâne nicio copie în plus — `mv` _mută_, nu duplică.
+`cp`, nu rămâne nicio copie în plus: `mv` _mută_, nu duplică.
 
 ### Mutarea unui fișier într-un folder
 
@@ -26,7 +26,7 @@ Acum fișierul se află la `rapoarte/final.txt`.
 
 ### Mutare și redenumire dintr-o singură mișcare
 
-Poți face ambele într-o singură comandă — să muți într-un folder _și_ să dai un nume
+Poți face ambele într-o singură comandă: să muți într-un folder _și_ să dai un nume
 nou:
 
 ```bash

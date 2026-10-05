@@ -22,7 +22,7 @@ Two new things appeared
 - **import java.util.Scanner;** at the top, **before** the **public class**. This tells Java: "I want to use the Scanner tool from Java’s standard library"
 - **Scanner scanner = new Scanner(System.in);** creates a new scanner that reads from **standard input** (the keyboard)
 
-The actual reading happens with **scanner.nextLine()** — it waits for the user to type a line and press **Enter**, then gives back the typed text as a **String**
+The actual reading happens with **scanner.nextLine()**: it waits for the user to type a line and press **Enter**, then gives back the typed text as a **String**
 
 ---
 
@@ -94,12 +94,12 @@ Every crew member arriving at the station must scan in at the terminal. The syst
 
 Create a **Scanner**, read the name first (first line), then the age (second line). Then build and print the welcome message using **+**.
 
-Read the input directly — don't print a question before reading. The check-in terminal stays silent until the welcome line.
+Read the input directly, don't print a question before reading. The check-in terminal stays silent until the welcome line.
 
 **Input** (typed by the user when the program runs):
 
-- First line — crew member's name
-- Second line — crew member's age
+- First line: crew member's name
+- Second line: crew member's age
 
 **Example**
 

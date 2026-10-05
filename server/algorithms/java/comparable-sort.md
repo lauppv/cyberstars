@@ -54,7 +54,7 @@ Output:
 Max 3.5
 ```
 
-A single student needs no comparison — it's already "sorted".
+A single student needs no comparison. It's already "sorted".
 
 ```
 Input:

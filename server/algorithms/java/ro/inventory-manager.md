@@ -77,5 +77,5 @@ mar: 0
 Articole: 0
 ```
 
-Eliminarea exact a întregului stoc al unui articol îl aduce la 0 — rămâne
+Eliminarea exact a întregului stoc al unui articol îl aduce la 0. Rămâne
 cunoscut, dar nu mai contează pentru `Articole: N`.

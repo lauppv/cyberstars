@@ -28,7 +28,7 @@ print(name)
 ```
 
 If we run the code by pressing the Run Code button, we will see that Paul appears 3 times, because we used print(name) 3 times.
-We can see that we don’t necessarily care what the name is, because it can change — what matters is that we can display it and use it
+We can see that we don’t necessarily care what the name is, because it can change. What matters is that we can display it and use it
 
 However, be careful: if we don’t put **""**, we will get an error. The code below will not work
 
@@ -63,13 +63,13 @@ So, anything we write between **" and "** is called a **string** and is used whe
 
 ## Mission: Crew Roster
 
-Three crew members are assigned to the station. Their names are stored in the variables `commander`, `pilot`, and `engineer` at the top of your code — the starter names are just examples, put any names you like in them.
+Three crew members are assigned to the station. Their names are stored in the variables `commander`, `pilot`, and `engineer` at the top of your code. The starter names are just examples, put any names you like in them.
 
-Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission — add a line that changes `pilot` to a **new name of your choice** and print `pilot` one more time.
+Print the three names, **each on its own line**, in this order: commander, pilot, engineer. Then the pilot is swapped out mid-mission, so add a line that changes `pilot` to a **new name of your choice** and print `pilot` one more time.
 
-**Input** (already set at the top of your code — change the values to test):
+**Input** (already set at the top of your code, change the values to test):
 
-- `commander`, `pilot`, `engineer` — the crew member names
+- `commander`, `pilot`, `engineer`: the crew member names
 
 **Example**
 

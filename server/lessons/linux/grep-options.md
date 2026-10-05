@@ -2,7 +2,7 @@ Plain `grep` is useful, but a few options make it far smarter.
 
 ### Ignore case: `grep -i`
 
-By default `grep` is case-sensitive — `Error` and `error` are different. The `-i`
+By default `grep` is case-sensitive: `Error` and `error` are different. The `-i`
 option makes the search **case-insensitive**:
 
 ```bash
@@ -26,7 +26,7 @@ grep -c warning system.log
 
 ### Invert the match: `grep -v`
 
-The `-v` option flips the search — it prints lines that **do NOT** contain the word:
+The `-v` option flips the search: it prints lines that **do NOT** contain the word:
 
 ```bash
 grep -v info system.log
@@ -55,8 +55,8 @@ _and_ numbered.
 
 Before handing off to the night crew, you need to prepare a summary of `system.log`: how many warnings were logged, what non-routine events occurred, and a copy filed for the next shift.
 
-1. Count how many lines contain `warning` — just the number, not the lines themselves.
-2. Print every line that does **not** contain `info` — the non-routine events.
+1. Count how many lines contain `warning`, just the number, not the lines themselves.
+2. Print every line that does **not** contain `info`: the non-routine events.
 3. Print the `error` lines with a line number in front of each, so the night crew can jump straight to them.
 4. Create a folder called `handoff` and copy `system.log` into it as `night-brief.log`.
 

@@ -24,9 +24,9 @@ O liniuță (`-`) înseamnă că permisiunea respectivă **nu** este acordată.
 
 ### Ce înseamnă r, w, x?
 
-- **r** (read) — vezi conținutul fișierului.
-- **w** (write) — modifici sau ștergi fișierul.
-- **x** (execute) — rulezi fișierul ca program/script.
+- **r** (read): vezi conținutul fișierului.
+- **w** (write): modifici sau ștergi fișierul.
+- **x** (execute): rulezi fișierul ca program/script.
 
 Pentru directoare: `r` = listezi conținutul, `w` = adaugi/ștergi fișiere, `x` = intri în el (`cd`).
 

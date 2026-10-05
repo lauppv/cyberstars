@@ -24,13 +24,13 @@ chmod 755 script.sh
 chmod 644 readme.txt
 ```
 
-The numeric form sets **all** permissions at once — there is no "add" or "remove", you
+The numeric form sets **all** permissions at once: there is no "add" or "remove", you
 replace the entire set.
 
 ### When to use which form?
 
-- **Symbolic** (`u+x`) — when you want to change one thing without affecting the rest.
-- **Numeric** (`755`) — when you know exactly what the final permissions should be.
+- **Symbolic** (`u+x`): when you want to change one thing without affecting the rest.
+- **Numeric** (`755`): when you know exactly what the final permissions should be.
 
 ---
 

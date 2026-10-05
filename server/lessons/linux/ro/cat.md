@@ -1,4 +1,4 @@
-Poți să creezi și să muți fișiere — dar cum vezi _ce se află înăuntrul_ unuia? Cea
+Poți să creezi și să muți fișiere, dar cum vezi _ce se află înăuntrul_ unuia? Cea
 mai simplă unealtă este **cat**.
 
 Numele vine prescurtat de la **concatenate**, dar utilizarea de zi cu zi este simplă:
@@ -17,7 +17,7 @@ Tot fișierul este aruncat în terminal dintr-odată.
 
 ### Când să folosești cat
 
-`cat` este perfect pentru fișiere **scurte** — câteva linii pe care vrei să le citești
+`cat` este perfect pentru fișiere **scurte**: câteva linii pe care vrei să le citești
 dintr-o privire. Pentru fișiere foarte lungi inundă ecranul; vei întâlni curând unelte
 mai potrivite (`head`, `tail`, `less`) pentru astfel de situații.
 
@@ -31,7 +31,7 @@ cat parte1.txt parte2.txt
 
 Această „lipire” este motivul pentru care comanda se numește _concatenate_.
 
-La fel ca `ls` și `pwd`, `cat` doar citește — nu modifică niciodată fișierul.
+La fel ca `ls` și `pwd`, `cat` doar citește. Nu modifică niciodată fișierul.
 
 ---
 

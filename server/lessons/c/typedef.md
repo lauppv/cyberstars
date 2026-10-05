@@ -67,7 +67,7 @@ int main(void) {
 }
 ```
 
-Notice how we can use **Cell** inside **Bank**. Structs within structs — **composition**. This is how C programs build complex data structures without classes
+Notice how we can use **Cell** inside **Bank**. Structs within structs: **composition**. This is how C programs build complex data structures without classes
 
 ---
 

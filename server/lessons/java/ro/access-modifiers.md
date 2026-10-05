@@ -1,10 +1,10 @@
-În Vice City, nu toată lumea are acces la tot. Camera sigură a lui Tommy este privată — pietonii oarecare nu pot intra. Ușa din față a clubului Malibu este publică. Java funcționează la fel cu **vizibilitatea (scope)** și **modificatorii de acces**
+În Vice City, nu toată lumea are acces la tot. Camera sigură a lui Tommy este privată. Pietonii oarecare nu pot intra. Ușa din față a clubului Malibu este publică. Java funcționează la fel cu **vizibilitatea (scope)** și **modificatorii de acces**
 
 ---
 
 ## Vizibilitate Locală
 
-Variabilele declarate în interiorul unei metode există doar în interiorul acelei metode. Ele sunt **locale** — se nasc când rulează metoda, sunt distruse când se termină:
+Variabilele declarate în interiorul unei metode există doar în interiorul acelei metode. Ele sunt **locale**: se nasc când rulează metoda, sunt distruse când se termină:
 
 ```java
 public class Main {
@@ -75,10 +75,10 @@ Tommy Vercetti: 70 HP
 
 Ai văzut `private` în lecția despre getteri/setteri. Iată tabloul complet:
 
-- **`public`** — oricine poate accesa asta. Orice clasă, orice pachet, oriunde
-- **`private`** — doar codul **din interiorul acestei clase** poate accesa. Nimeni altcineva
-- **`protected`** — accesibil în interiorul clasei și de către subclase (vom acoperi moștenirea mai târziu)
-- **fără modificator** (implicit) — accesibil în interiorul aceluiași pachet
+- **`public`**: oricine poate accesa asta. Orice clasă, orice pachet, oriunde
+- **`private`**: doar codul **din interiorul acestei clase** poate accesa. Nimeni altcineva
+- **`protected`**: accesibil în interiorul clasei și de către subclase (vom acoperi moștenirea mai târziu)
+- **fără modificator** (implicit): accesibil în interiorul aceluiași pachet
 
 Pentru moment, concentrează-te pe `public` și `private`. Ele sunt ce vei folosi în 99% din cazuri:
 
@@ -129,9 +129,9 @@ Bani: 50000
 
 În cod Java bine scris, tiparul este:
 
-1. Câmpurile sunt **`private`** — nimeni nu le atinge direct
-2. Metodele sunt **`public`** — ele oferă acces controlat
-3. Constructorul este **`public`** — ca oamenii să poată crea efectiv obiecte
+1. Câmpurile sunt **`private`**: nimeni nu le atinge direct
+2. Metodele sunt **`public`**: ele oferă acces controlat
+3. Constructorul este **`public`**, ca oamenii să poată crea efectiv obiecte
 
 ```text
 class Portofel {
@@ -165,7 +165,7 @@ Asta îți menține datele în siguranță. Nimeni nu poate seta `bani` la -999,
 
 ## Variabilele Locale Sunt Mereu „Private"
 
-Încă un lucru: variabilele locale (din interiorul metodelor) nu folosesc deloc modificatori de acces. Ele sunt automat invizibile în afara metodei lor — fără niciun cuvânt-cheie:
+Încă un lucru: variabilele locale (din interiorul metodelor) nu folosesc deloc modificatori de acces. Ele sunt automat invizibile în afara metodei lor, fără niciun cuvânt-cheie:
 
 ```text
 public class Main {
@@ -176,7 +176,7 @@ public class Main {
 }
 ```
 
-Modificatorii de acces (`public`, `private`) sunt doar pentru membrii clasei — câmpuri, metode și constructori
+Modificatorii de acces (`public`, `private`) sunt doar pentru membrii clasei: câmpuri, metode și constructori
 
 ---
 
@@ -186,13 +186,13 @@ Tommy vrea un portofel protejat de controale de acces, ca nimeni să nu-i poată
 
 1. Un câmp `private int bani`
 2. Un constructor `public` care primește banii de start
-3. O metodă `public void adaugaBani(int suma)` — adaugă doar dacă `suma > 0`
-4. O metodă `public void cheltuieBani(int suma)` — cheltuie doar dacă `suma > 0` **și** `suma <= bani`
+3. O metodă `public void adaugaBani(int suma)` care adaugă doar dacă `suma > 0`
+4. O metodă `public void cheltuieBani(int suma)` care cheltuie doar dacă `suma > 0` **și** `suma <= bani`
 5. O metodă `public int getSold()` care returnează soldul curent
 
-În `main`, stochează valorile în variabile — `start` pentru banii de start, `venit` pentru cât adaugi, `cheltuiala1` și `cheltuiala2` pentru cele două sume pe care încerci să le cheltui. Apoi creează un portofel cu `start`, adaugă `venit`, cheltuie `cheltuiala1`, încearcă să cheltui `cheltuiala2` (care ar trebui să eșueze în tăcere când depășește soldul), apoi afișează soldul.
+În `main`, stochează valorile în variabile: `start` pentru banii de start, `venit` pentru cât adaugi, `cheltuiala1` și `cheltuiala2` pentru cele două sume pe care încerci să le cheltui. Apoi creează un portofel cu `start`, adaugă `venit`, cheltuie `cheltuiala1`, încearcă să cheltui `cheltuiala2` (care ar trebui să eșueze în tăcere când depășește soldul), apoi afișează soldul.
 
-**Exemplu** — portofel pornit cu 100, +50, -30, apoi -200 respins
+**Exemplu**: portofel pornit cu 100, +50, -30, apoi -200 respins
 
 ```text
 120

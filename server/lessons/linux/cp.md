@@ -1,4 +1,4 @@
-Sometimes you need a **copy** of a file — a backup, or a starting point for something
+Sometimes you need a **copy** of a file: a backup, or a starting point for something
 new. The **cp** command (**copy**) does exactly that.
 
 The pattern is always: `cp SOURCE DESTINATION`.
@@ -54,7 +54,7 @@ A solar storm warning has been issued. Critical station data must be backed up i
 
 1. Create a folder called `backups`.
 2. Copy `mission.txt` into `backups` (keeping its name).
-3. Copy the entire `reports` folder into `backups` — since it has contents, this needs a recursive copy.
+3. Copy the entire `reports` folder into `backups`. Since it has contents, this needs a recursive copy.
 4. Verify the backup as a tree.
 
 **Expected result**

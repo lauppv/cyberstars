@@ -57,7 +57,7 @@ Ieșire:
 Sold: 0
 ```
 
-Retragerea sumei **exacte** din sold este permisă — eșuează doar atunci când suma
+Retragerea sumei **exacte** din sold este permisă. Eșuează doar atunci când suma
 este strict mai mare decât ce este disponibil.
 
 ```

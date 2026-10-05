@@ -1,4 +1,4 @@
-We've been using variables everywhere: inside loops, inside functions, outside functions. But have you ever wondered — can a variable created **inside** a function be used **outside** of it?
+We've been using variables everywhere: inside loops, inside functions, outside functions. But have you ever wondered: can a variable created **inside** a function be used **outside** of it?
 
 ```py
 def greet():
@@ -109,13 +109,13 @@ Two different **x** variables. They just happen to have the same name, but they 
 
 ## Mission: Shield Boost
 
-Write a function `boost(shield)` that **returns** the shield value doubled. It must work only with its **parameter** and **return** the result — it should not reach out to any global variable (that's the whole point of scope).
+Write a function `boost(shield)` that **returns** the shield value doubled. It must work only with its **parameter** and **return** the result. It should not reach out to any global variable (that's the whole point of scope).
 
 Then, in the main program:
 
 1. Set `shield = 100`
 2. Print `Before: ` then shield
-3. Call `boost(shield)` **without storing** the result, then print `Ignored: ` then shield — notice it's unchanged, because the return value was thrown away
+3. Call `boost(shield)` **without storing** the result, then print `Ignored: ` then shield. Notice it's unchanged, because the return value was thrown away
 4. Now do `shield = boost(shield)` and print `After: ` then shield
 
 **Output**
@@ -126,4 +126,4 @@ Ignored: 100
 After: 200
 ```
 
-The `Ignored` line proves the function can't change the global on its own — the new value only sticks when you **store the return**.
+The `Ignored` line proves the function can't change the global on its own: the new value only sticks when you **store the return**.

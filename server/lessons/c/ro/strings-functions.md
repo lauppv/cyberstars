@@ -21,7 +21,7 @@ Lungime: 14
 
 ---
 
-**strcmp** — compară două string-uri
+**strcmp**: compară două string-uri
 
 ```c
 #include <stdio.h>
@@ -43,7 +43,7 @@ int main(void) {
 
 ---
 
-**strcpy** — copiază un string în altul
+**strcpy**: copiază un string în altul
 
 ```c
 #include <stdio.h>
@@ -59,11 +59,11 @@ int main(void) {
 }
 ```
 
-**strcpy(dest, sursa)** copiază totul din **sursa** în **dest**, inclusiv **'\0'**. Asigură-te că **dest** este suficient de mare! Dacă este prea mic, obții un **buffer overflow** — unul dintre cele mai periculoase bug-uri din programare. Așa apar vulnerabilitățile reale de securitate
+**strcpy(dest, sursa)** copiază totul din **sursa** în **dest**, inclusiv **'\0'**. Asigură-te că **dest** este suficient de mare! Dacă este prea mic, obții un **buffer overflow**, unul dintre cele mai periculoase bug-uri din programare. Așa apar vulnerabilitățile reale de securitate
 
 ---
 
-**strcat** — concatenează (unește) două string-uri
+**strcat**: concatenează (unește) două string-uri
 
 ```c
 #include <stdio.h>
@@ -81,7 +81,7 @@ int main(void) {
 
 ---
 
-Un truc util: **strstr** — găsește un sub-string
+Un truc util: **strstr** (găsește un sub-string)
 
 ```c
 #include <stdio.h>
@@ -98,7 +98,7 @@ int main(void) {
 }
 ```
 
-**strstr** returnează un pointer către locul unde începe sub-string-ul, sau **NULL** dacă nu este găsit. **NULL** este felul lui C de a spune "nimic" — este o valoare specială de pointer care înseamnă "pointează către nimic." Îl vom vedea des
+**strstr** returnează un pointer către locul unde începe sub-string-ul, sau **NULL** dacă nu este găsit. **NULL** este felul lui C de a spune "nimic": este o valoare specială de pointer care înseamnă "pointează către nimic." Îl vom vedea des
 
 ---
 

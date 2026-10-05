@@ -1,4 +1,4 @@
-Sometimes you have a value that should **never change**. A crew member's max respect, the name of the city, the maximum wanted level — these are constants. In Java, the keyword `final` locks a variable so it can't be reassigned
+Sometimes you have a value that should **never change**. A crew member's max respect, the name of the city, the maximum wanted level: these are constants. In Java, the keyword `final` locks a variable so it can't be reassigned
 
 ---
 
@@ -36,7 +36,7 @@ public class Main {
 
 ## Naming Convention: ALL_CAPS
 
-By convention, `final` constants use **SCREAMING_SNAKE_CASE** — all uppercase letters with underscores between words:
+By convention, `final` constants use **SCREAMING_SNAKE_CASE**: all uppercase letters with underscores between words:
 
 ```java
 public class Main {
@@ -87,7 +87,7 @@ Year: 1986
 
 ## final Instance Fields
 
-You can also make instance fields `final` — they get set once (in the constructor) and never change:
+You can also make instance fields `final`: they get set once (in the constructor) and never change:
 
 ```java
 class Player {
@@ -103,8 +103,8 @@ class Player {
 public class Main {
     public static void main(String[] args) {
         Player p = new Player("Lance Vance");
-        p.respect = 50;     // fine — respect isn't final
-        // p.name = "Tommy";  // ERROR — name is final
+        p.respect = 50;     // fine, respect isn't final
+        // p.name = "Tommy";  // ERROR: name is final
         System.out.println(p.name + ": " + p.respect);
     }
 }
@@ -116,7 +116,7 @@ Output
 Lance Vance: 50
 ```
 
-This is great for fields that should be set at creation and never modified — like a crew member's name
+This is great for fields that should be set at creation and never modified, like a crew member's name
 
 ---
 

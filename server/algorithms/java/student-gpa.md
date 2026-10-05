@@ -49,4 +49,4 @@ Output:
 95.00
 ```
 
-A single grade — the average is just that grade, still formatted to 2 decimals.
+A single grade: the average is just that grade, still formatted to 2 decimals.

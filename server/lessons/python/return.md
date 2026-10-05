@@ -75,7 +75,7 @@ Output
 212.0
 ```
 
-The function’s body — the formula — is written **once**. We reuse it three times, changing only the **argument**. That’s what a function gives us, in the end: you write the code once and never repeat it
+The function’s body, the formula, is written **once**. We reuse it three times, changing only the **argument**. That’s what a function gives us, in the end: you write the code once and never repeat it
 
 ---
 
@@ -171,7 +171,7 @@ In the editor you already have **five galaxies**, each a **list** of ten star na
 
 Write **one** function called `longest_star` that takes a galaxy (the list) and **returns** the name of the star with the most letters in that galaxy.
 
-Then **call it five times**, once for each galaxy, and print what it returns. You write the function once, but use it for all five lists — without repeating the code in the body.
+Then **call it five times**, once for each galaxy, and print what it returns. You write the function once, but use it for all five lists, without repeating the code in the body.
 
 **Output**
 

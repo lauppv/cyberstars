@@ -25,7 +25,7 @@ Output
 2
 ```
 
-The interesting one is **a / b = 3**, not **3.4**. Why? Because **a** and **b** are both **int**. Java does **integer division** when both operands are integers — it throws away the decimal part. We saw this in an earlier lesson
+The interesting one is **a / b = 3**, not **3.4**. Why? Because **a** and **b** are both **int**. Java does **integer division** when both operands are integers: it throws away the decimal part. We saw this in an earlier lesson
 
 If we want the decimal result, we need at least one **double**
 

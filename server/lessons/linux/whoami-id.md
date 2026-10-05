@@ -1,7 +1,7 @@
 Before changing ownership, you need to know **who you are** on the system. Two commands
 tell you:
 
-### `whoami` — your username
+### `whoami`: your username
 
 ```bash
 whoami
@@ -11,9 +11,9 @@ whoami
 student
 ```
 
-Simple and direct — prints just your login name.
+Simple and direct: prints just your login name.
 
-### `id` — full identity details
+### `id`: full identity details
 
 ```bash
 id

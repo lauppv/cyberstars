@@ -17,8 +17,8 @@ tree
 2 directories, 4 files
 ```
 
-Indentarea și liniile arată ce se află în ce. Este o comandă care doar citește —
-la fel ca `ls`, nu modifică nimic.
+Indentarea și liniile arată ce se află în ce. Este o comandă care doar citește.
+La fel ca `ls`, nu modifică nimic.
 
 ### Căi absolute vs relative
 
@@ -30,7 +30,7 @@ O **cale absolută** începe la rădăcină `/` și descrie fiecare pas:
 /home/student/rapoarte/ianuarie.log
 ```
 
-Funcționează de **oriunde** — este adresa completă.
+Funcționează de **oriunde**: este adresa completă.
 
 O **cale relativă** începe de _oriunde te afli în acel moment_. Dacă ești în
 `/home/student`, atunci:
@@ -43,8 +43,8 @@ indică același fișier. Lipsa lui `/` la început înseamnă „pornește de a
 
 Două nume speciale ajută la căile relative:
 
-- `.` — directorul curent
-- `..` — directorul părinte (un nivel mai sus)
+- `.`: directorul curent
+- `..`: directorul părinte (un nivel mai sus)
 
 Așadar `../unelte/lanseaza.sh` înseamnă „urcă un nivel, apoi intră în `unelte`".
 

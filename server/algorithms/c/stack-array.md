@@ -1,12 +1,12 @@
 Implement a **stack** data structure using an array. Read a sequence of commands and process them:
 
-- **push X** — push integer X onto the stack
-- **pop** — remove and print the top element, or print `Empty` if the stack is empty
-- **peek** — print the top element without removing it, or print `Empty` if the stack is empty
+- **push X**: push integer X onto the stack
+- **pop**: remove and print the top element, or print `Empty` if the stack is empty
+- **peek**: print the top element without removing it, or print `Empty` if the stack is empty
 
 ### Input
 
-- First line: an integer `M` (1 ≤ M ≤ 100), the number of commands
+- First line: an integer `M` (1 <= M <= 100), the number of commands
 - For each command:
   - Line 1: command type (`push`, `pop`, or `peek`)
   - Only for `push`, line 2: the integer X

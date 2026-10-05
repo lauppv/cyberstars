@@ -62,7 +62,7 @@ When to choose **for** vs **while**?
 - **for** when the count is known ("do this 10 times", "walk every element of an array")
 - **while** when the stopping condition depends on something inside the loop ("keep going while there are still punch cards in the stack", "keep dividing the number until it's below 1")
 
-Both are equally powerful — anything you can do with one, you can do with the other. Style and readability decide
+Both are equally powerful: anything you can do with one, you can do with the other. Style and readability decide
 
 ---
 

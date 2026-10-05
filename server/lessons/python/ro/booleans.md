@@ -131,7 +131,7 @@ Ieșire
 Gata
 ```
 
-Cât timp **ruleaza** este **True**, bucla continuă. Când **if**-ul îl face **False**, condiția **while ruleaza** devine falsă și bucla se oprește la următoarea verificare. Este o alternativă curată la **break** — în loc să sărim brusc afară, lăsăm condiția să se închidă singură
+Cât timp **ruleaza** este **True**, bucla continuă. Când **if**-ul îl face **False**, condiția **while ruleaza** devine falsă și bucla se oprește la următoarea verificare. Este o alternativă curată la **break**: în loc să sărim brusc afară, lăsăm condiția să se închidă singură
 
 ---
 

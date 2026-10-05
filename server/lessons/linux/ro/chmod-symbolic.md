@@ -42,7 +42,7 @@ După fiecare `chmod`, verifică cu `ls -l` ca să confirmi că schimbarea a avu
 
 ## Misiune: Activează deployerul de firmware
 
-O actualizare critică de firmware este pregătită în `lansare.sh`, dar scriptul nu poate rula încă — și conține setări sensibile pe care străinii nu ar trebui să le citească niciodată.
+O actualizare critică de firmware este pregătită în `lansare.sh`, dar scriptul nu poate rula încă și conține setări sensibile pe care străinii nu ar trebui să le citească niciodată.
 
 1. Dă proprietarului permisiunea de a rula `lansare.sh` ca program.
 2. Elimină accesul de citire pentru ceilalți pe `lansare.sh`, ca străinii să nu îl poată vedea.

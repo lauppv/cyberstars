@@ -6,8 +6,8 @@ Combine **scope**, **default parameters**, **multiple return values**, and **try
 
 Build a small toolkit. Each function should work only with its **parameters** and **return** its result (good scope discipline).
 
-1. `safe_int(text, fallback=0)` — uses **try/except** to turn `text` into an int. If `int()` fails, return `fallback`. The `fallback` parameter has a **default** of `0`.
-2. `summarize(numbers)` — returns **three values**: the total, the largest, and the smallest of a list of numbers.
+1. `safe_int(text, fallback=0)`: uses **try/except** to turn `text` into an int. If `int()` fails, return `fallback`. The `fallback` parameter has a **default** of `0`.
+2. `summarize(numbers)`: returns **three values**: the total, the largest, and the smallest of a list of numbers.
 
 In the main program, you have a list of readings (some are corrupted). Then:
 

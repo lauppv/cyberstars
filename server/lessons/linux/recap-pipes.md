@@ -9,7 +9,7 @@ Chapter 5 gave you the plumbing of the station. Here is your toolbox:
 | `2>`   | Redirect errors only                |
 | `2>&1` | Merge errors into stdout            |
 
-Pipes and redirection let you build **data pipelines** — take raw data, filter it,
+Pipes and redirection let you build **data pipelines**: take raw data, filter it,
 transform it, and save the result, all in one line.
 
 The golden rule: **each command does one job**. Pipes connect the jobs into a workflow.

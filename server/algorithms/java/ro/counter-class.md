@@ -1,14 +1,14 @@
 Creează o clasă **Contor** care ține evidența unei valori întregi. Aceasta trebuie să suporte trei operații:
 
-- `creste()` — adaugă 1 la valoare
-- `scade()` — scade 1 din valoare
-- `getValoare()` — returnează valoarea curentă
+- `creste()`: adaugă 1 la valoare
+- `scade()`: scade 1 din valoare
+- `getValoare()`: returnează valoarea curentă
 
 Contorul pornește de la **0**. Citește comenzile de la stdin (una pe linie): `creste`, `scade` sau `arata`. Pentru fiecare comandă `arata`, afișează valoarea curentă pe o linie nouă.
 
 ### Date de intrare
 
-- Linia 1: un număr întreg N — numărul de comenzi
+- Linia 1: un număr întreg N, numărul de comenzi
 - Următoarele N linii: o comandă (`creste`, `scade` sau `arata`)
 
 ### Rezultat
@@ -67,4 +67,4 @@ Ieșire:
 0
 ```
 
-Incrementările și decrementările se anulează reciproc — contorul revine la 0.
+Incrementările și decrementările se anulează reciproc: contorul revine la 0.

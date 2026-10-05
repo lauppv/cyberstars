@@ -21,7 +21,7 @@ which grep
 /usr/bin/grep
 ```
 
-This is useful when you want to know whether a command is installed at all — if
+This is useful when you want to know whether a command is installed at all: if
 `which` prints nothing, the command was not found.
 
 ### What kind of file is this? `file`
@@ -61,7 +61,7 @@ A routine scan found a file called `mystery.dat` in your home directory. The ext
 
 1. Confirm that the basic listing tool (`ls`) is actually installed on this system.
 2. Identify what kind of data is really inside `mystery.dat`.
-3. It turns out to be plain readable text — display its contents to see the message.
+3. It turns out to be plain readable text. Display its contents to see the message.
 4. Create a folder called `identified` and copy the file into it under the clearer name `readme.txt`.
 
 **Expected result**

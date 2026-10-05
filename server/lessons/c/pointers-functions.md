@@ -54,7 +54,7 @@ Output
 x = 20, y = 10
 ```
 
-Now it works. We passed the **addresses** of x and y. The function followed those addresses and changed the real values. This is **pass by reference** — the most important use of pointers
+Now it works. We passed the **addresses** of x and y. The function followed those addresses and changed the real values. This is **pass by reference**, the most important use of pointers
 
 ---
 
@@ -104,13 +104,13 @@ Output
 Min: 1, Max: 9
 ```
 
-The function "returns" both the minimum and the maximum through pointers. This is idiomatic C — you'll see it everywhere
+The function "returns" both the minimum and the maximum through pointers. This is idiomatic C. You'll see it everywhere
 
 ---
 
 ## Mission: The Signal Amplifier
 
-At the computing center, a signal translator reads a raw value off a magnetic tape. The amplifier needs to **triple** it before sending it onward — but direct access to the variable isn't allowed, only through a pointer.
+At the computing center, a signal translator reads a raw value off a magnetic tape. The amplifier needs to **triple** it before sending it onward, but direct access to the variable isn't allowed, only through a pointer.
 
 1. Read an **int** **signal** from input
 2. Write a function **triple_it** that takes a **pointer to int** and triples the value it points to

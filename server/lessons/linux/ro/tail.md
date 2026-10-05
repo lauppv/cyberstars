@@ -34,7 +34,7 @@ tail -n 5 eroare.log
 noutăți. Împreună îți permit să eșantionezi un fișier mare de la ambele capete fără
 să citești mijlocul.
 
-`tail`, la fel ca `head`, doar citește — nu modifică niciodată fișierul.
+`tail`, la fel ca `head`, doar citește. Nu modifică niciodată fișierul.
 
 ---
 
@@ -45,7 +45,7 @@ să eșantionezi log-ul de la ambele capete și să păstrezi o copie.
 
 1. Uită-te doar la **primele 3 linii** din `sistem.log` ca să vezi cum a început după
    pornire.
-2. Citește **ultimele 4 linii** din `sistem.log` — cele mai recente evenimente care au
+2. Citește **ultimele 4 linii** din `sistem.log`: cele mai recente evenimente care au
    declanșat alerta.
 3. Creează un folder numit `alerte` și copiază `sistem.log` în el sub numele
    `incident.log` pentru raport.

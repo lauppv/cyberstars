@@ -6,8 +6,8 @@ Combină **scope**, **parametri impliciți**, **valori multiple returnate** și 
 
 Construiește o mică trusă de unelte. Fiecare funcție ar trebui să lucreze doar cu **parametrii** ei și să **returneze** rezultatul (disciplină bună de scope).
 
-1. `int_sigur(text, valoare_implicita=0)` — folosește **try/except** ca să transforme `text` într-un int. Dacă `int()` eșuează, returnează `valoare_implicita`. Parametrul `valoare_implicita` are o valoare **implicită** de `0`.
-2. `sumeaza(numere)` — returnează **trei valori**: totalul, cel mai mare și cel mai mic dintr-o listă de numere.
+1. `int_sigur(text, valoare_implicita=0)`: folosește **try/except** ca să transforme `text` într-un int. Dacă `int()` eșuează, returnează `valoare_implicita`. Parametrul `valoare_implicita` are o valoare **implicită** de `0`.
+2. `sumeaza(numere)`: returnează **trei valori**: totalul, cel mai mare și cel mai mic dintr-o listă de numere.
 
 În programul principal, ai o listă de citiri (unele sunt corupte). Apoi:
 

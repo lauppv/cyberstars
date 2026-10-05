@@ -21,7 +21,7 @@ Output
 1
 ```
 
-**int** is the type for **whole numbers** (1, 2, 100, -20, 0). C cares about types — it won't let us store a number in a variable without telling it what kind of number it is
+**int** is the type for **whole numbers** (1, 2, 100, -20, 0). C cares about types: it won't let us store a number in a variable without telling it what kind of number it is
 
 ---
 
@@ -119,7 +119,7 @@ int main(void) {
 }
 ```
 
-Prints **3**, not **3.5**. Why? Because **a / b** with two ints returns an **int** — C throws away the decimal part. We'll see how to keep decimals in the next lesson, with **float**
+Prints **3**, not **3.5**. Why? Because **a / b** with two ints returns an **int**: C throws away the decimal part. We'll see how to keep decimals in the next lesson, with **float**
 
 ---
 

@@ -25,5 +25,5 @@ Input:  12345
 Output: 5
 ```
 
-Digits are still just characters — the length count doesn't care what kind
+Digits are still just characters: the length count doesn't care what kind
 of characters they are.

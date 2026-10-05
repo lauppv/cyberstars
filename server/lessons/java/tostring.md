@@ -31,7 +31,7 @@ That's... not helpful. Java doesn't know how you want your object displayed, so 
 
 ## Overriding toString()
 
-Every object in Java has a `toString()` method (inherited from a base class called `Object`). By default it prints that ugly gibberish. But you can **override** it — write your own version:
+Every object in Java has a `toString()` method (inherited from a base class called `Object`). By default it prints that ugly gibberish. But you can **override** it: write your own version:
 
 ```java
 class Car {
@@ -126,7 +126,7 @@ Weapon: Katana (damage: 75)
 Got a Katana (damage: 75)
 ```
 
-Whenever Java needs to turn your object into a `String`, it calls `toString()`. Concatenation with `+` does this, `println()` does this — it's everywhere
+Whenever Java needs to turn your object into a `String`, it calls `toString()`. Concatenation with `+` does this, `println()` does this. It's everywhere
 
 ---
 
@@ -175,11 +175,11 @@ Lance Vance - Partner (Respect: 60)
 
 Tommy keeps his cars in a garage and wants each one to print nicely when he prints it, without building the string by hand every time
 
-Create a `Car` class with a `make` (String) field and a `year` (int) field. Write a constructor and override `toString()` to return the make, then ` (`, the year, and `)` — for example `Infernus (1986)`
+Create a `Car` class with a `make` (String) field and a `year` (int) field. Write a constructor and override `toString()` to return the make, then ` (`, the year, and `)`, for example `Infernus (1986)`
 
-In `main`, first store the values in local variables — `make1` and `year1` for the first car, `make2` and `year2` for the second. Then create two cars from those variables and print them directly with `System.out.println`
+In `main`, first store the values in local variables: `make1` and `year1` for the first car, `make2` and `year2` for the second. Then create two cars from those variables and print them directly with `System.out.println`
 
-**Example** — `Infernus` from `1986` and `Cheetah` from `1984`
+**Example**: `Infernus` from `1986` and `Cheetah` from `1984`
 
 ```text
 Infernus (1986)

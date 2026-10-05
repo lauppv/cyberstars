@@ -2,7 +2,7 @@ This is the big one. Everything in Java revolves around **classes and objects**,
 
 ---
 
-So what's a **class**? Think of it as a **blueprint**. A blueprint for a car describes what a car **has** (color, speed, fuel) and what it can **do** (drive, brake, honk). But a blueprint isn't a car itself — you **build** cars from the blueprint
+So what's a **class**? Think of it as a **blueprint**. A blueprint for a car describes what a car **has** (color, speed, fuel) and what it can **do** (drive, brake, honk). But a blueprint isn't a car itself. You **build** cars from the blueprint
 
 In Java terms
 
@@ -16,7 +16,7 @@ class Car {
 }
 ```
 
-This creates a **class** called **Car** with two **fields** (also called attributes or properties): a **color** (String) and a **speed** (int). No actual car exists yet — it's just the blueprint
+This creates a **class** called **Car** with two **fields** (also called attributes or properties): a **color** (String) and a **speed** (int). No actual car exists yet, it's just the blueprint
 
 ---
 
@@ -85,7 +85,7 @@ Tommy Vercetti has 100 HP and carries a M4
 Lance Vance has 80 HP and carries a Pistol
 ```
 
-**tommy** and **lance** are two different objects, both built from the same **Character** class. They each have their own **name**, **health**, and **weapon** values — changing one doesn't affect the other
+**tommy** and **lance** are two different objects, both built from the same **Character** class. They each have their own **name**, **health**, and **weapon** values, and changing one doesn't affect the other
 
 ---
 
@@ -175,7 +175,7 @@ Tommy is registering the guard dogs at his Vice City mansion. Each dog needs a n
 
 Create a **class** that represents a guard dog, with a field for the **name** (String) and one for the **age** (int).
 
-In `main`, first store the values in local variables — `name1` and `age1` for the first dog, `name2` and `age2` for the second. Then build **two** dog objects and set each object's fields from those variables. Finally print each dog on its own line in the format `Name is X years old`.
+In `main`, first store the values in local variables: `name1` and `age1` for the first dog, `name2` and `age2` for the second. Then build **two** dog objects and set each object's fields from those variables. Finally print each dog on its own line in the format `Name is X years old`.
 
 **Example** for a dog `Rex` aged `5` and one `Buddy` aged `3`
 

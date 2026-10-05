@@ -1,4 +1,4 @@
-So far, we've been accessing fields directly — `player.name`, `player.score`. That works, but it's like leaving your front door wide open. Anyone can walk in and change anything
+So far, we've been accessing fields directly: `player.name`, `player.score`. That works, but it's like leaving your front door wide open. Anyone can walk in and change anything
 
 In real Java code, we **hide** fields and control access through methods. This concept is called **encapsulation**
 
@@ -134,13 +134,13 @@ Tommy Vercetti: 75 HP
 Tommy Vercetti: 75 HP
 ```
 
-The `setHealth(-50)` call was silently ignored because our setter rejects negative values. That's the power of encapsulation — you control the rules
+The `setHealth(-50)` call was silently ignored because our setter rejects negative values. That's the power of encapsulation: you control the rules
 
 ---
 
 ## When to Skip Setters
 
-Not every field needs a setter. Sometimes a field should be set once (in the constructor) and never changed. If `name` shouldn't change after creation, just don't write `setName()` — problem solved
+Not every field needs a setter. Sometimes a field should be set once (in the constructor) and never changed. If `name` shouldn't change after creation, just don't write `setName()`, problem solved
 
 The getter still lets people **read** the name, but nobody can change it. This is a common and good pattern
 
@@ -148,7 +148,7 @@ The getter still lets people **read** the name, but nobody can change it. This i
 
 ## Mission: Tommy's Account
 
-Tommy keeps his money at the bank and wants a secure transaction system. He can deposit and withdraw money, but the account must reject invalid operations — no negative deposits and no withdrawing more than he has.
+Tommy keeps his money at the bank and wants a secure transaction system. He can deposit and withdraw money, but the account must reject invalid operations: no negative deposits and no withdrawing more than he has.
 
 Create a `BankAccount` class with:
 
@@ -158,9 +158,9 @@ Create a `BankAccount` class with:
 4. A `deposit(int amount)` method that adds to balance (only if amount > 0)
 5. A `withdraw(int amount)` method that subtracts from balance (only if amount > 0 and amount <= balance)
 
-In `main`, store the values in variables — `start` for the starting balance, `deposit` for the amount you deposit, `withdraw1` and `withdraw2` for the two withdrawals. Then create an account with `start`, deposit `deposit`, withdraw `withdraw1`, then try to withdraw `withdraw2` (should fail silently when it's more than the balance) and print the final balance.
+In `main`, store the values in variables: `start` for the starting balance, `deposit` for the amount you deposit, `withdraw1` and `withdraw2` for the two withdrawals. Then create an account with `start`, deposit `deposit`, withdraw `withdraw1`, then try to withdraw `withdraw2` (should fail silently when it's more than the balance) and print the final balance.
 
-**Example** — account started at 1000, +500, -200, then -2000 rejected
+**Example**: account started at 1000, +500, -200, then -2000 rejected
 
 ```text
 1300

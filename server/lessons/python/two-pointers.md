@@ -1,4 +1,4 @@
-The **two pointers** technique is a simple but powerful idea: instead of using one variable to scan through data, we use **two** — one starting from the beginning and one from the end (or one slow and one fast)
+The **two pointers** technique is a simple but powerful idea: instead of using one variable to scan through data, we use **two**: one starting from the beginning and one from the end (or one slow and one fast)
 
 We've already seen it without knowing it. When we checked palindromes, we compared the first character with the last, then the second with the second-to-last. That was two pointers
 
@@ -81,7 +81,7 @@ print(remove_duplicates([1, 1, 2, 2, 2, 3, 4, 4, 5]))
 
 Output **[1, 2, 3, 4, 5]**
 
-Here we compare each element with the **previous** one. If they're different, it's a new unique value — keep it
+Here we compare each element with the **previous** one. If they're different, it's a new unique value, so keep it
 
 ---
 

@@ -51,11 +51,11 @@ int main(void) {
 }
 ```
 
-**Atenție**: până nu atribuim valori, array-ul conține **gunoi** (orice era în acea memorie înainte). Citirea dintr-un array neinițializat este **undefined behavior** în C — programul tău ar putea afișa **0**, sau numere aleatoare, sau să se prăbușească. Inițializează întotdeauna înainte de a citi
+**Atenție**: până nu atribuim valori, array-ul conține **gunoi** (orice era în acea memorie înainte). Citirea dintr-un array neinițializat este **undefined behavior** în C: programul tău ar putea afișa **0**, sau numere aleatoare, sau să se prăbușească. Inițializează întotdeauna înainte de a citi
 
 ---
 
-Câte elemente are un array? Aici C nu ne ajută cu nimic — array-ul nu **își cunoaște** propria mărime, este doar o bucată de memorie
+Câte elemente are un array? Aici C nu ne ajută cu nimic: array-ul nu **își cunoaște** propria mărime, este doar o bucată de memorie
 
 Soluția clasică folosește **sizeof**
 

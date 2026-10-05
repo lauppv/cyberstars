@@ -2,7 +2,7 @@ Asta e cea mare. Totul în Java se învârte în jurul **claselor și obiectelor
 
 ---
 
-Deci ce este o **clasă**? Gândește-te la ea ca la un **plan de construcție** (blueprint). Un plan pentru o mașină descrie ce **are** o mașină (culoare, viteză, combustibil) și ce poate **face** (merge, frânează, claxonează). Dar un plan nu este o mașină în sine — tu **construiești** mașini pornind de la plan
+Deci ce este o **clasă**? Gândește-te la ea ca la un **plan de construcție** (blueprint). Un plan pentru o mașină descrie ce **are** o mașină (culoare, viteză, combustibil) și ce poate **face** (merge, frânează, claxonează). Dar un plan nu este o mașină în sine. Tu **construiești** mașini pornind de la plan
 
 În termeni Java
 
@@ -16,7 +16,7 @@ class Masina {
 }
 ```
 
-Asta creează o **clasă** numită **Masina** cu două **câmpuri** (numite și atribute sau proprietăți): o **culoare** (String) și o **viteză** (int). Încă nu există nicio mașină reală — este doar planul
+Asta creează o **clasă** numită **Masina** cu două **câmpuri** (numite și atribute sau proprietăți): o **culoare** (String) și o **viteză** (int). Încă nu există nicio mașină reală, este doar planul
 
 ---
 
@@ -85,7 +85,7 @@ Tommy Vercetti are 100 HP si poarta un M4
 Lance Vance are 80 HP si poarta un Pistol
 ```
 
-**tommy** și **lance** sunt două obiecte diferite, ambele construite din aceeași clasă **Personaj**. Fiecare are propriile valori pentru **nume**, **viata** și **arma** — schimbarea unuia nu afectează pe celălalt
+**tommy** și **lance** sunt două obiecte diferite, ambele construite din aceeași clasă **Personaj**. Fiecare are propriile valori pentru **nume**, **viata** și **arma**, iar schimbarea unuia nu afectează pe celălalt
 
 ---
 
@@ -175,7 +175,7 @@ Tommy își înregistrează câinii de pază de la conacul din Vice City. Fiecar
 
 Creează o **clasă** care reprezintă un câine de pază, cu un câmp pentru **nume** (String) și unul pentru **vârstă** (int).
 
-În `main`, stochează mai întâi valorile în variabile locale — `nume1` și `varsta1` pentru primul câine, `nume2` și `varsta2` pentru al doilea. Apoi construiește **două** obiecte câine și setează câmpurile fiecărui obiect din acele variabile. La final afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
+În `main`, stochează mai întâi valorile în variabile locale: `nume1` și `varsta1` pentru primul câine, `nume2` și `varsta2` pentru al doilea. Apoi construiește **două** obiecte câine și setează câmpurile fiecărui obiect din acele variabile. La final afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
 
 **Exemplu** pentru un câine `Rex` de `5` ani și unul `Buddy` de `3` ani
 

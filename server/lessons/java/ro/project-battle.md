@@ -1,4 +1,4 @@
-Hai să construim ceva distractiv — un **simulator de luptă**! Gândește-te la el ca la un sistem de luptă pe ture dintr-un RPG. O să avem personaje cu viață și putere de atac, plus subclase pentru Razboinici și Magi cu propriile lor abilități speciale. Acest proiect folosește **moștenirea**, **metodele**, și **OOP** lucrând toate împreună
+Hai să construim ceva distractiv: un **simulator de luptă**! Gândește-te la el ca la un sistem de luptă pe ture dintr-un RPG. O să avem personaje cu viață și putere de atac, plus subclase pentru Razboinici și Magi cu propriile lor abilități speciale. Acest proiect folosește **moștenirea**, **metodele**, și **OOP** lucrând toate împreună
 
 ---
 
@@ -29,7 +29,7 @@ class Personaj {
 }
 ```
 
-Metoda `ataca` reduce viața țintei cu puterea atacatorului. Simplu și eficient — ca o lovitură corp-la-corp de bază în Vice City
+Metoda `ataca` reduce viața țintei cu puterea atacatorului. Simplu și eficient, ca o lovitură corp-la-corp de bază în Vice City
 
 ---
 
@@ -60,7 +60,7 @@ Metoda `ataca` a Razboinicului o suprascrie pe cea a părintelui ca să afișeze
 
 **Pasul 3: Subclasa Mag**
 
-Un Mag are **putereVraja** — magia lui face daune suplimentare peste atacul de bază
+Un Mag are **putereVraja**: magia lui face daune suplimentare peste atacul de bază
 
 ```text
 class Mag extends Personaj {
@@ -79,7 +79,7 @@ class Mag extends Personaj {
 }
 ```
 
-Metoda `ataca` a Mag-ului combină putereAtac-ul de bază și putereVraja pentru lovituri mai mari. Stil „tun de sticlă" — multe daune, dar de obicei mai puțină viață decât un Razboinic
+Metoda `ataca` a Mag-ului combină putereAtac-ul de bază și putereVraja pentru lovituri mai mari. Stil „tun de sticlă": multe daune, dar de obicei mai puțină viață decât un Razboinic
 
 ---
 
@@ -162,9 +162,9 @@ Tommy - HP: 65
 
 ---
 
-Acesta este **polimorfismul** în acțiune — atât Razboinic cât și Mag SUNT Personaje, dar fiecare atacă diferit. Metoda `ataca` face lucruri diferite în funcție de tipul real. În termeni de Vice City: Tommy lovește tare (Razboinic), în timp ce Lance folosește trucuri viclene (Mag)
+Acesta este **polimorfismul** în acțiune: atât Razboinic cât și Mag SUNT Personaje, dar fiecare atacă diferit. Metoda `ataca` face lucruri diferite în funcție de tipul real. În termeni de Vice City: Tommy lovește tare (Razboinic), în timp ce Lance folosește trucuri viclene (Mag)
 
-Observă cum `afiseazaStatus()` este definită o singură dată în clasa părinte `Personaj`, dar atât Razboinic cât și Mag o pot folosi. Asta este puterea moștenirii — o scrii o dată, o refolosești peste tot
+Observă cum `afiseazaStatus()` este definită o singură dată în clasa părinte `Personaj`, dar atât Razboinic cât și Mag o pot folosi. Asta este puterea moștenirii: o scrii o dată, o refolosești peste tot
 
 ---
 
@@ -175,7 +175,7 @@ Doi membri ai echipajului au intrat în arena de antrenament holografică a sta�
 1. Creează o clasă `Personaj` cu `nume` (String), `viata` (int), `putereAtac` (int), un constructor, o metodă `ataca(Personaj tinta)` care reduce viața țintei cu `putereAtac` și afișează `"NUME ataca TINTA cu DAUNE daune!"`, și o metodă `afiseazaStatus()` care afișează `"NUME - HP: VIATA"`
 2. Creează o clasă `Razboinic` care extinde Personaj cu `armura` (int). Suprascrie ataca ca să afișeze: `"NUME loveste cu sabia pe TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac
 3. Creează o clasă `Mag` care extinde Personaj cu `putereVraja` (int). Suprascrie ataca ca să afișeze: `"NUME lanseaza o vraja asupra lui TINTA cu DAUNE daune!"` unde daune e egal cu putereAtac + putereVraja
-4. În main, stochează statisticile luptătorilor în variabile — `nume1`/`viata1`/`atac1`/`armura1` pentru Razboinic și `nume2`/`viata2`/`atac2`/`vraja2` pentru Mag (pornește cu Tommy/100/25/10 și Lance/80/15/20). Creează `Razboinic`-ul și `Mag`-ul din aceste variabile
+4. În main, stochează statisticile luptătorilor în variabile: `nume1`/`viata1`/`atac1`/`armura1` pentru Razboinic și `nume2`/`viata2`/`atac2`/`vraja2` pentru Mag (pornește cu Tommy/100/25/10 și Lance/80/15/20). Creează `Razboinic`-ul și `Mag`-ul din aceste variabile
 5. Tommy îl atacă pe Lance, afișează statusul lui Lance. Apoi Lance îl atacă pe Tommy, afișează statusul lui Tommy
 
 **Ieșire**

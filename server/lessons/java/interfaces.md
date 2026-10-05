@@ -1,4 +1,4 @@
-An **interface** is like a contract. It says "any class that implements me MUST have these methods." It's similar to an abstract class, but even more strict — an interface can't have regular fields or constructors (with some exceptions we'll skip for now)
+An **interface** is like a contract. It says "any class that implements me MUST have these methods." It's similar to an abstract class, but even more strict: an interface can't have regular fields or constructors (with some exceptions we'll skip for now)
 
 ```text
 interface Printable {
@@ -57,7 +57,7 @@ This is Java's answer to multiple inheritance: one parent class, but as many int
 
 ---
 
-Think of it like the abilities in Vice City. Tommy Vercetti is a `Criminal` (his parent class). But he also `implements Swimmer, Driver, Shooter` — those are "contracts," abilities he has. Different characters implement different combinations: Lance implements `Driver, Shooter` but maybe not `Swimmer`. Cortez implements `Commander, Negotiator`
+Think of it like the abilities in Vice City. Tommy Vercetti is a `Criminal` (his parent class). But he also `implements Swimmer, Driver, Shooter`: those are "contracts," abilities he has. Different characters implement different combinations: Lance implements `Driver, Shooter` but maybe not `Swimmer`. Cortez implements `Commander, Negotiator`
 
 ---
 
@@ -142,8 +142,8 @@ You can even combine them: `abstract class Criminal implements Printable`
 Tommy keeps a mixed collection in his Vice City mansion: books and movies. He wants a catalog that lists every item, no matter the type. Build it using a shared `Printable` interface so every item can describe itself.
 
 1. Create an interface `Printable` with a method `printInfo()`
-2. Create a `Book` class with `title` and `author` fields that implements `Printable` — `printInfo()` prints `"Book: TITLE by AUTHOR"`
-3. Create a `Movie` class with `title` and `director` fields that implements `Printable` — `printInfo()` prints `"Movie: TITLE directed by DIRECTOR"`
+2. Create a `Book` class with `title` and `author` fields that implements `Printable`; `printInfo()` prints `"Book: TITLE by AUTHOR"`
+3. Create a `Movie` class with `title` and `director` fields that implements `Printable`; `printInfo()` prints `"Movie: TITLE directed by DIRECTOR"`
 4. In `main`, store the book's title and author in `title1` and `author1`, and the movie's title and director in `title2` and `director2` (start with `"Vice City Chronicles"`/`"Tommy Vercetti"` and `"Top Gun"`/`"Tony Scott"`). Create a `Book` from `title1` and `author1` and a `Movie` from `title2` and `director2`, then call `printInfo()` on both
 
 **Output**

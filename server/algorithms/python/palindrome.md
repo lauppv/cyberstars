@@ -30,7 +30,7 @@ Input:  abba
 Output: True
 ```
 
-Palindromes can have an even number of characters too — there's no middle
+Palindromes can have an even number of characters too. There's no middle
 character to ignore, the two halves just need to mirror each other.
 
 ```

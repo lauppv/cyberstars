@@ -24,12 +24,12 @@ chmod 755 script.sh
 chmod 644 citeste-ma.txt
 ```
 
-Forma numerică setează **toate** permisiunile deodată — nu există „adaugă" sau „elimină", înlocuiești întregul set.
+Forma numerică setează **toate** permisiunile deodată: nu există „adaugă" sau „elimină", înlocuiești întregul set.
 
 ### Când folosești fiecare formă?
 
-- **Simbolic** (`u+x`) — când vrei să schimbi un singur lucru fără să afectezi restul.
-- **Numeric** (`755`) — când știi exact care trebuie să fie permisiunile finale.
+- **Simbolic** (`u+x`): când vrei să schimbi un singur lucru fără să afectezi restul.
+- **Numeric** (`755`): când știi exact care trebuie să fie permisiunile finale.
 
 ---
 

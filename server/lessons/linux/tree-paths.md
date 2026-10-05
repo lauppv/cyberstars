@@ -17,7 +17,7 @@ tree
 2 directories, 4 files
 ```
 
-The indentation and lines show what is inside what. It is a read-only command — like
+The indentation and lines show what is inside what. It is a read-only command. Like
 `ls`, it never changes anything.
 
 ### Absolute vs relative paths
@@ -30,7 +30,7 @@ An **absolute path** starts at the root `/` and spells out every step:
 /home/student/reports/january.log
 ```
 
-It works from **anywhere** — it is the full address.
+It works from **anywhere**: it is the full address.
 
 A **relative path** starts from _wherever you currently are_. If you are in
 `/home/student`, then:
@@ -43,8 +43,8 @@ points to the same file. No leading `/` means "start from here".
 
 Two special names help with relative paths:
 
-- `.` — the current directory
-- `..` — the parent directory (one level up)
+- `.`: the current directory
+- `..`: the parent directory (one level up)
 
 So `../tools/deploy.sh` means "go up one level, then into `tools`".
 

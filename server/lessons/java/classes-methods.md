@@ -1,4 +1,4 @@
-You know how to write methods with `static` — those belong to the class itself. But when you're building objects, you usually want methods that belong to **each object**. These are called **instance methods**, and they don't use the `static` keyword
+You know how to write methods with `static`: those belong to the class itself. But when you're building objects, you usually want methods that belong to **each object**. These are called **instance methods**, and they don't use the `static` keyword
 
 ---
 
@@ -34,7 +34,7 @@ Infernus goes: Beep!
 Cheetah goes: Beep!
 ```
 
-Notice: `honk()` has **no `static`** keyword. That's because it's an instance method — it operates on a specific car. When you call `c1.honk()`, Java knows `model` refers to `c1`'s model
+Notice: `honk()` has **no `static`** keyword. That's because it's an instance method: it operates on a specific car. When you call `c1.honk()`, Java knows `model` refers to `c1`'s model
 
 ---
 
@@ -127,7 +127,7 @@ Each call to `completeMission()` modifies **that specific object's** `respect` f
 
 ---
 
-## Static vs Instance — The Key Difference
+## Static vs Instance: The Key Difference
 
 Here's the rule:
 
@@ -140,18 +140,18 @@ Static methods can't access instance fields (because there's no object). Instanc
 class Example {
     int x = 10;          // instance field
 
-    void show() {        // instance method — can use x
+    void show() {        // instance method, can use x
         System.out.println(x);
     }
 
-    static void greet() { // static method — CANNOT use x
+    static void greet() { // static method, CANNOT use x
         System.out.println("Hello");
         // System.out.println(x);  // ERROR! No object, no x
     }
 }
 ```
 
-That's why `main` is `static` — it runs before any objects exist. It's the starting point, and from there you create objects and call their methods
+That's why `main` is `static`: it runs before any objects exist. It's the starting point, and from there you create objects and call their methods
 
 ---
 
@@ -161,16 +161,16 @@ Tommy owns several businesses in Vice City. Each business has a name and a total
 
 Create a class that represents a business, with a field for the name and one for the total earnings. Write a method that adds an amount to the total and a method that returns the current total
 
-In `main`, store the first business's name in `name1` and its two takings in `sale1` and `sale2`; store the second's name in `name2` and its two takings in `sale3` and `sale4`. Create **two** businesses from those variables, add each business's two takings, then print for each business the name, then `: `, then the total — for example `Malibu Club: 500`
+In `main`, store the first business's name in `name1` and its two takings in `sale1` and `sale2`; store the second's name in `name2` and its two takings in `sale3` and `sale4`. Create **two** businesses from those variables, add each business's two takings, then print for each business the name, then `: `, then the total, for example `Malibu Club: 500`
 
-**Example** — `Malibu Club` with takings 200, 300 and `Print Works` with 500, 250
+**Example**: `Malibu Club` with takings 200, 300 and `Print Works` with 500, 250
 
 ```text
 Malibu Club: 500
 Print Works: 750
 ```
 
-**Example** — `Cherry Popper` with takings 100, 100 and `Sunshine Autos` with 700, 300
+**Example**: `Cherry Popper` with takings 100, 100 and `Sunshine Autos` with 700, 300
 
 ```text
 Cherry Popper: 200

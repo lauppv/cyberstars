@@ -2,7 +2,7 @@ Citește un întreg **N** și afișează un triunghi aliniat la stânga format d
 
 ### Date de intrare
 
-- Un singur întreg `N` (1 ≤ N ≤ 20)
+- Un singur întreg `N` (1 <= N <= 20)
 
 ### Rezultat
 

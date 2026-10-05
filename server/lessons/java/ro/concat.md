@@ -84,15 +84,15 @@ Ieșire
 Salut, Tommy Vercetti!
 ```
 
-**%s** este un **placeholder** (un loc rezervat) — înseamnă „pune un String aici". Când Java rulează `String.format(...)`, înlocuiește `%s` cu valoarea lui `nume`. Gândește-te la el ca la un șablon în care umpli spațiile goale
+**%s** este un **placeholder** (un loc rezervat): înseamnă „pune un String aici". Când Java rulează `String.format(...)`, înlocuiește `%s` cu valoarea lui `nume`. Gândește-te la el ca la un șablon în care umpli spațiile goale
 
 ---
 
 Există placeholder-e diferite pentru tipuri diferite
 
-- **%s** — String (sau orice altceva — Java îl convertește în text)
-- **%d** — număr întreg (int)
-- **%f** — număr cu virgulă (double)
+- **%s**: String (sau orice altceva, Java îl convertește în text)
+- **%d**: număr întreg (int)
+- **%f**: număr cu virgulă (double)
 
 ```java
 public class Main {
@@ -147,9 +147,9 @@ public class Main {
 }
 ```
 
-Observă **%n** la final — acela e caracterul de linie nouă pentru printf. Fără el, următoarea afișare ar continua pe aceeași linie
+Observă **%n** la final: acela e caracterul de linie nouă pentru printf. Fără el, următoarea afișare ar continua pe aceeași linie
 
-Folosește ce preferi — `String.format()` e bună când vrei să stochezi textul într-o variabilă, iar `printf()` e bună când vrei doar să-l afișezi imediat
+Folosește ce preferi. `String.format()` e bună când vrei să stochezi textul într-o variabilă, iar `printf()` e bună când vrei doar să-l afișezi imediat
 
 ---
 
@@ -157,7 +157,7 @@ Folosește ce preferi — `String.format()` e bună când vrei să stochezi text
 
 Sala de jocuri a stației tocmai a terminat un turneu. Afișează statisticile câștigătorului pe o singură linie.
 
-Creează trei variabile: `nume` (String) pentru numele jucătorului, `scor` (int) pentru scorul total și `rating` (double) pentru ratingul de performanță. Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Rating: <rating>`. Poți folosi **+** sau **String.format()** — cum preferi.
+Creează trei variabile: `nume` (String) pentru numele jucătorului, `scor` (int) pentru scorul total și `rating` (double) pentru ratingul de performanță. Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Rating: <rating>`. Poți folosi **+** sau **String.format()**, cum preferi.
 
 **Exemplu**
 

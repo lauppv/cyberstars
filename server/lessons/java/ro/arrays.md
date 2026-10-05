@@ -24,7 +24,7 @@ Cortez
 
 Două lucruri noi
 
-- Tipul este **String[]** (observă **[]**) — „un array de String-uri"
+- Tipul este **String[]** (observă **[]**): „un array de String-uri"
 - Folosim **{ }** ca să listăm valorile, separate prin virgule
 
 **Numărarea începe de la 0**. **nume[0]** este primul element, **nume[1]** al doilea, și așa mai departe
@@ -44,7 +44,7 @@ public class Main {
 }
 ```
 
-**Observă**: **nume.length** **nu are paranteze**, spre deosebire de **String.length()**. Da, asta este enervant de inconsecvent — array-urile folosesc un **câmp** numit **length**, în timp ce String-urile au o **metodă** numită **length()**
+**Observă**: **nume.length** **nu are paranteze**, spre deosebire de **String.length()**. Da, asta este enervant de inconsecvent: array-urile folosesc un **câmp** numit **length**, în timp ce String-urile au o **metodă** numită **length()**
 
 ---
 
@@ -93,7 +93,7 @@ public class Main {
 }
 ```
 
-Rulează-l. Java aruncă o **ArrayIndexOutOfBoundsException** și se prăbușește. Citește mereu mesajul de eroare — îți spune exact ce indice ai cerut și care era limita
+Rulează-l. Java aruncă o **ArrayIndexOutOfBoundsException** și se prăbușește. Citește mereu mesajul de eroare, îți spune exact ce indice ai cerut și care era limita
 
 ---
 
@@ -128,7 +128,7 @@ Observă că am folosit **i < nume.length**, **nu** **i <= nume.length**. De ce?
 
 ---
 
-Java are o formă mai scurtă când nu avem nevoie de indice — **bucla for îmbunătățită** (numită și **for-each**)
+Java are o formă mai scurtă când nu avem nevoie de indice: **bucla for îmbunătățită** (numită și **for-each**)
 
 ```java
 public class Main {
@@ -151,7 +151,7 @@ Când alegi una față de cealaltă?
 - Folosește **for clasic** când ai nevoie de **indice** (de exemplu, pentru a afișa numerele pozițiilor)
 - Folosește **for îmbunătățit** când ai nevoie doar de **valoare**
 
-Ambele sunt comune — codul Java le folosește pe amândouă în funcție de situație
+Ambele sunt comune. Codul Java le folosește pe amândouă în funcție de situație
 
 ---
 

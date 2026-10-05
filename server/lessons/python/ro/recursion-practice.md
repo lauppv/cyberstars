@@ -20,7 +20,7 @@ for i in range(10):
 
 Rezultat **0 1 1 2 3 5 8 13 21 34**
 
-Frumos? Da. Eficient? Nu prea. **fib(5)** apelează **fib(4)** și **fib(3)**. Dar **fib(4)** apelează și el **fib(3)** — deci calculăm același lucru de două ori. Pentru **fib(30)**, asta se repetă de milioane de ori. Deocamdată, nu-ți face griji — important e să înțelegi logica
+Frumos? Da. Eficient? Nu prea. **fib(5)** apelează **fib(4)** și **fib(3)**. Dar **fib(4)** apelează și el **fib(3)**, deci calculăm același lucru de două ori. Pentru **fib(30)**, asta se repetă de milioane de ori. Deocamdată, nu-ți face griji, important e să înțelegi logica
 
 ---
 
@@ -65,7 +65,7 @@ Verifică primul caracter. Dacă se potrivește, numără 1. Apoi numără recur
 
 ---
 
-**Aplatizează o listă imbricată**. Aici strălucește cu adevărat recursivitatea — când datele sunt **imbricate** și nu știm cât de adânc
+**Aplatizează o listă imbricată**. Aici strălucește cu adevărat recursivitatea: când datele sunt **imbricate** și nu știm cât de adânc
 
 ```py
 def aplatizeaza(lst):
@@ -82,13 +82,13 @@ print(aplatizeaza([1, [2, 3], [4, [5, 6]], 7]))
 
 Rezultat **[1, 2, 3, 4, 5, 6, 7]**
 
-Pentru fiecare element: dacă e o listă, aplatizeaz-o recursiv și adaugă rezultatele. Dacă nu e o listă, doar adaug-o. O simplă buclă nu poate gestiona o adâncime de imbricare arbitrară — recursivitatea poate
+Pentru fiecare element: dacă e o listă, aplatizeaz-o recursiv și adaugă rezultatele. Dacă nu e o listă, doar adaug-o. O simplă buclă nu poate gestiona o adâncime de imbricare arbitrară, recursivitatea poate
 
 ---
 
 ## Misiune: Sume de Control ale Transmisiunilor
 
-Fiecare transmisiune poartă un cod numeric, iar stația îl verifică cu o **sumă de control** (checksum) — suma cifrelor codului. Vei calcula aceste sume de control cu **recursivitate**.
+Fiecare transmisiune poartă un cod numeric, iar stația îl verifică cu o **sumă de control** (checksum): suma cifrelor codului. Vei calcula aceste sume de control cu **recursivitate**.
 
 1. Scrie o funcție recursivă **suma_cifre(n)** care returnează suma cifrelor unui număr întreg pozitiv. Trucul: `n % 10` este **ultima cifră**, `n // 10` este **restul numărului**. Cazul de bază: dacă `n < 10` (o singură cifră), returnează `n` însuși.
 2. Pentru fiecare cod din listă, afișează codul, apoi `: `, apoi suma lui de control.

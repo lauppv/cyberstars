@@ -1,4 +1,4 @@
-Proiectul final. Vom construi o bucată dintr-un **shell** — programul care rulează când deschizi un terminal. Acesta combină **fork**, **wait** și tot ce am învățat despre procese
+Proiectul final. Vom construi o bucată dintr-un **shell**, programul care rulează când deschizi un terminal. Acesta combină **fork**, **wait** și tot ce am învățat despre procese
 
 Un shell real face așa: citește o comandă, face **fork**, copilul execută comanda, părintele așteaptă. Vom construi o versiune simplificată care citește comenzi dintr-o coadă de teletype și le rulează una câte una, demonstrând tiparul fork-and-wait
 
@@ -42,13 +42,13 @@ int main(void) {
 }
 ```
 
-**\_exit(0)** este ca **return 0**, dar pentru procesele copil după **fork** — iese imediat, fără curățenie suplimentară care ar putea încurca părintele. Are însă un efect secundar: nu golește bufferul lui **printf**, așa că trebuie să chemăm **fflush(stdout)** noi înșine, chiar înainte de **\_exit**, ca textul să ajungă cu adevărat pe teletype
+**\_exit(0)** este ca **return 0**, dar pentru procesele copil după **fork**: iese imediat, fără curățenie suplimentară care ar putea încurca părintele. Are însă un efect secundar: nu golește bufferul lui **printf**, așa că trebuie să chemăm **fflush(stdout)** noi înșine, chiar înainte de **\_exit**, ca textul să ajungă cu adevărat pe teletype
 
 **wait(NULL)** îl blochează pe părinte până când copilul termină. Nu ne interesează codul de ieșire exact, doar faptul că a terminat
 
 ---
 
-Părintele creează câte un copil pentru fiecare comandă, așteaptă să termine, apoi trece la următoarea. Exact așa funcționează un shell, simplificat. Fiecare comandă rulează în **izolare** — dacă un copil crapă, părintele supraviețuiește și merge mai departe
+Părintele creează câte un copil pentru fiecare comandă, așteaptă să termine, apoi trece la următoarea. Exact așa funcționează un shell, simplificat. Fiecare comandă rulează în **izolare**: dacă un copil crapă, părintele supraviețuiește și merge mai departe
 
 ---
 

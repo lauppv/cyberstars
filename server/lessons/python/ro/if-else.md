@@ -67,7 +67,7 @@ if x == 4:
 
 Apropo, nu avem mereu nevoie de un **else** după **if**. Hai să ne gândim la o mașină. **Dacă** întoarcem cheia, motorul pornește, **altfel** nu se întâmplă nimic. Aici, nu avem neapărat nevoie de un **else**
 
-Totuși, există cazuri în care chiar avem nevoie de **else**. **Dacă** iau cel puțin 50% la un examen, trec, **altfel** nu trec. Aici vedem că există două posibilități: ori treci, ori nu treci. Nu e ca și cum aici poți spune 'dacă iau 50% trec, dacă nu, nu se întâmplă nimic' — se întâmplă să pici examenul, adică există o consecință
+Totuși, există cazuri în care chiar avem nevoie de **else**. **Dacă** iau cel puțin 50% la un examen, trec, **altfel** nu trec. Aici vedem că există două posibilități: ori treci, ori nu treci. Nu e ca și cum aici poți spune 'dacă iau 50% trec, dacă nu, nu se întâmplă nimic'. Se întâmplă să pici examenul, adică există o consecință
 
 ```py
 utilizator = "Tommy Vercetti"
@@ -102,7 +102,7 @@ Reactorul își raportează temperatura în `temperatura` (grade Celsius). Scrie
 - dacă `temperatura` este **mai mare de 1000** → afișează `Pericol: reactor la`, temperatura, apoi `grade - oprire` (pentru `temperatura = 1200` asta înseamnă `Pericol: reactor la 1200 grade - oprire`)
 - altfel → afișează `Reactor stabil la`, temperatura, apoi `grade` (pentru `temperatura = 800` asta înseamnă `Reactor stabil la 800 grade`)
 
-Creează o variabilă numită `temperatura` care să stocheze temperatura — alege ce valoare vrei. Numele descriptive contează: dacă cineva vede o variabilă `x`, automat se va întreba „cum adică x? Cine este x?”
+Creează o variabilă numită `temperatura` care să stocheze temperatura, alege ce valoare vrei. Numele descriptive contează: dacă cineva vede o variabilă `x`, automat se va întreba „cum adică x? Cine este x?”
 
 **Exemplu**
 

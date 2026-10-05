@@ -114,10 +114,10 @@ export function loadTestsSpec(
 
 function loadSolutionCode(courseKey: string, lessonSlug: string, lang?: string): string {
   const dir = testsDir(courseKey, lessonSlug, lang);
-  if (!dir) throw new AppError(500, 'Test run failed — please try again');
+  if (!dir) throw new AppError(500, 'Test run failed, please try again');
   const md = fs.readFileSync(path.join(dir, `${lessonSlug}-solution.md`), 'utf8');
   const fenced = md.match(/```[\w-]*\n([\s\S]*?)```/);
-  if (!fenced) throw new AppError(500, 'Test run failed — please try again');
+  if (!fenced) throw new AppError(500, 'Test run failed, please try again');
   return fenced[1];
 }
 
@@ -179,7 +179,7 @@ function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsR
 
     // A broken reference solution is our bug, not the student's.
     if (!c.user || !c.solution || c.injectError || c.solution.timedOut || c.solution.exit !== 0) {
-      throw new AppError(500, 'Test run failed — please try again');
+      throw new AppError(500, 'Test run failed, please try again');
     }
     if (c.user.timedOut) return { ...base, error: 'timeout' };
     if (c.user.exit !== 0)
@@ -279,7 +279,7 @@ export async function runLessonTests(
     // Anything that breaks the run (stuck exec, bad container state) — drop the
     // container so the next attempt starts clean.
     keep = false;
-    throw err instanceof AppError ? err : new AppError(500, 'Test run failed — please try again');
+    throw err instanceof AppError ? err : new AppError(500, 'Test run failed, please try again');
   } finally {
     if (keep) releaseAfterRun(ownerKey);
     else void destroyOwner(ownerKey);

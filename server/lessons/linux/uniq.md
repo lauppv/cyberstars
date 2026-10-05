@@ -1,4 +1,4 @@
-The **uniq** command removes **adjacent** duplicate lines. This is a key detail — it
+The **uniq** command removes **adjacent** duplicate lines. This is a key detail: it
 only works on lines that are next to each other. That is why you almost always **sort
 first**, then pipe to `uniq`.
 

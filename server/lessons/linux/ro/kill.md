@@ -1,4 +1,4 @@
-Uneori un proces se comportă urât — îngheață, consumă tot CPU-ul sau pur și
+Uneori un proces se comportă urât: îngheață, consumă tot CPU-ul sau pur și
 simplu trebuie oprit. Comanda `kill` trimite un **semnal** către un proces,
 cerându-i (sau forțându-l) să se termine.
 
@@ -8,12 +8,12 @@ Forma de bază este: `kill PID`.
 kill 510
 ```
 
-Aceasta trimite semnalul **15 (SIGTERM)** — un politicos „te rog să te oprești”.
+Aceasta trimite semnalul **15 (SIGTERM)**, un politicos „te rog să te oprești”.
 Majoritatea programelor bine educate își fac curățenie și ies.
 
 ### Forțarea unui proces încăpățânat
 
-Dacă un proces ignoră SIGTERM, trimite semnalul **9 (SIGKILL)** — o terminare
+Dacă un proces ignoră SIGTERM, trimite semnalul **9 (SIGKILL)**, o terminare
 imediată și necondiționată:
 
 ```bash

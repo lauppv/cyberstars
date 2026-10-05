@@ -27,7 +27,7 @@ public class Main {
 }
 ```
 
-Acum programul nu afișează nimic, pentru că am **comentat** **println**-ul. Foarte util când depanezi — în loc să ștergi codul și să-l rescrii mai târziu, doar îl comentăm
+Acum programul nu afișează nimic, pentru că am **comentat** **println**-ul. Foarte util când depanezi: în loc să ștergi codul și să-l rescrii mai târziu, doar îl comentăm
 
 ---
 
@@ -60,14 +60,14 @@ Mai există un tip special, **/\*\* ... \*/**, folosit pentru a documenta clase 
 
 Manifestul navei este afișat pe ecranul principal, dar o linie conține **marfă clasificată** care trebuie să rămână ascunsă de echipaj.
 
-Comentează **o singură linie** astfel încât să fie afișate doar numele navei, numele misiunii și puterea maximă. Nu șterge nimic — doar folosește `//` ca să ascunzi secretul.
+Comentează **o singură linie** astfel încât să fie afișate doar numele navei, numele misiunii și puterea maximă. Nu șterge nimic, doar folosește `//` ca să ascunzi secretul.
 
-**Intrare** (deja setat la începutul codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat la începutul codului tău; schimbă valorile ca să testezi):
 
-- `numeNava` — numele navei
-- `numeMisiune` — misiunea curentă
-- `incarcaturaSecreta` — obiect clasificat (acesta NU trebuie să apară în output)
-- `putereMax` — nivelul de putere al motorului
+- `numeNava`: numele navei
+- `numeMisiune`: misiunea curentă
+- `incarcaturaSecreta`: obiect clasificat (acesta NU trebuie să apară în output)
+- `putereMax`: nivelul de putere al motorului
 
 **Exemplu**
 

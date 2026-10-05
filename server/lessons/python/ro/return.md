@@ -75,7 +75,7 @@ Ieșire
 212.0
 ```
 
-Corpul funcției — formula — e scris **o singură dată**. Îl refolosim de trei ori, schimbând doar **argumentul**. Asta e, până la urmă, ce ne dă o funcție: scrii codul o dată și nu-l mai repeți
+Corpul funcției, formula, e scris **o singură dată**. Îl refolosim de trei ori, schimbând doar **argumentul**. Asta e, până la urmă, ce ne dă o funcție: scrii codul o dată și nu-l mai repeți
 
 ---
 
@@ -171,7 +171,7 @@ None
 
 Scrie **o singură** funcție numită `cea_mai_lunga_stea` care primește o galaxie (lista) și **returnează** numele stelei cu cele mai multe litere din acea galaxie.
 
-Apoi **apeleaz-o de cinci ori**, o dată pentru fiecare galaxie, și afișează ce returnează. Scrii funcția o dată, dar o folosești pentru toate cele cinci liste — fără să repeți codul din corp.
+Apoi **apeleaz-o de cinci ori**, o dată pentru fiecare galaxie, și afișează ce returnează. Scrii funcția o dată, dar o folosești pentru toate cele cinci liste, fără să repeți codul din corp.
 
 **Ieșire**
 

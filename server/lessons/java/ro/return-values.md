@@ -1,6 +1,6 @@
-În lecția despre metode, am văzut că o metodă poate **returna** o valoare în loc să doar afișeze. Hai să aprofundăm **valorile returnate** — sunt una dintre cele mai puternice unelte din trusa ta Java
+În lecția despre metode, am văzut că o metodă poate **returna** o valoare în loc să doar afișeze. Hai să aprofundăm **valorile returnate**: sunt una dintre cele mai puternice unelte din trusa ta Java
 
-Gândește-te la o metodă cu valoare returnată ca la un **automat de vânzări**. Pui ceva în el (parametrii), mașina își face treaba și **îți dă ceva înapoi** (valoarea returnată). O metodă **void** este ca un difuzor — face ceva (redă un sunet), dar nu îți dă nimic în mână
+Gândește-te la o metodă cu valoare returnată ca la un **automat de vânzări**. Pui ceva în el (parametrii), mașina își face treaba și **îți dă ceva înapoi** (valoarea returnată). O metodă **void** este ca un difuzor: face ceva (redă un sunet), dar nu îți dă nimic în mână
 
 ```java
 public class Main {
@@ -21,7 +21,7 @@ Tipul returnat **int** dinaintea numelui metodei îi spune lui Java: „această
 
 ---
 
-Putem returna **orice tip** — nu doar int. Iată câteva exemple
+Putem returna **orice tip**, nu doar int. Iată câteva exemple
 
 ```java
 public class Main {
@@ -55,7 +55,7 @@ true
 false
 ```
 
-Fiecare metodă își declară tipul returnat chiar înaintea numelui: **String**, **double**, **boolean**. Tipul trebuie să corespundă cu ce returnezi de fapt — Java nu te va lăsa să returnezi un String dintr-o metodă care promite un int
+Fiecare metodă își declară tipul returnat chiar înaintea numelui: **String**, **double**, **boolean**. Tipul trebuie să corespundă cu ce returnezi de fapt. Java nu te va lăsa să returnezi un String dintr-o metodă care promite un int
 
 ---
 
@@ -116,12 +116,12 @@ Java le prinde pe amândouă la compilare, înainte ca programul să ruleze măc
 
 ---
 
-**void vs return** — când le folosești pe fiecare?
+**void vs return**: când le folosești pe fiecare?
 
 - Folosește **void** când metoda doar **face** ceva (afișează, modifică date etc.)
 - Folosește un **tip returnat** când metoda **calculează** ceva și ai nevoie de rezultat
 
-Tommy nu doar duce la capăt misiuni — el **aduce înapoi banii**. Asta este o valoare returnată. Dacă doar provoacă haos fără nicio răsplată, asta este void
+Tommy nu doar duce la capăt misiuni, el **aduce înapoi banii**. Asta este o valoare returnată. Dacă doar provoacă haos fără nicio răsplată, asta este void
 
 ---
 

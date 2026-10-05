@@ -55,7 +55,7 @@ void print_all(Student *students[], int n) {
 }
 ```
 
-Notice **students[i]->name** — each element of the array is a **pointer to a Student**, so we use **->** instead of **.**
+Notice **students[i]->name**: each element of the array is a **pointer to a Student**, so we use **->** instead of **.**
 
 ---
 
@@ -77,11 +77,11 @@ Student *find_top(Student *students[], int n) {
 
 ## Mission: The computer lab registry
 
-It's 1974. You are the shift operator at the university's computer lab. Students finishing the programming exam come to your teletype and dictate their name and grade — you enter them into the registry, one student at a time
+It's 1974. You are the shift operator at the university's computer lab. Students finishing the programming exam come to your teletype and dictate their name and grade. You enter them into the registry, one student at a time
 
 Write a program that
 
-1. Reads an integer **n** — the number of students
+1. Reads an integer **n**: the number of students
 2. Reads, **n** times, a name and a grade (integer), and creates a student with **create_student**, storing the pointer in an array
 3. Calls **print_all** to print each student as **"Name: Grade"**
 4. Calls **find_top** and prints **"Top student: Name (Grade)"**

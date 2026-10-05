@@ -62,7 +62,7 @@ Când să alegi **for** vs **while**?
 - **for** când numărul este cunoscut ("fă asta de 10 ori", "parcurge fiecare element al unui array")
 - **while** când condiția de oprire depinde de ceva din interiorul buclei ("continuă cât timp mai sunt cartele perforate în stivă", "continuă să împarți până când numărul este sub 1")
 
-Ambele sunt la fel de puternice — orice poți face cu una, poți face cu cealaltă. Stilul și lizibilitatea decid
+Ambele sunt la fel de puternice: orice poți face cu una, poți face cu cealaltă. Stilul și lizibilitatea decid
 
 ---
 

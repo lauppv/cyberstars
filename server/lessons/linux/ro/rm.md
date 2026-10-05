@@ -8,7 +8,7 @@ Fișierul dispare imediat. Rulează `ls` pentru a confirma că a dispărut.
 
 ### O avertizare serioasă
 
-**Nu există coș de gunoi** în terminal. `rm` nu mută fișierele la coș — le
+**Nu există coș de gunoi** în terminal. `rm` nu mută fișierele la coș, ci le
 **distruge permanent**. Nu există „undo".
 
 Așa că, înainte să apeși Enter, citește-ți întotdeauna comanda de două ori. Un obicei
@@ -42,7 +42,7 @@ este un obicei sigur atunci când ștergi ceva de care nu ești sigur.
 
 ## Misiune: Curăță datele inutile
 
-Un scan de mentenanță de rutină a semnalat reziduuri care aglomerează spațiul de lucru al stației. Înainte de a șterge ceva, pune la adăpost singurul fișier care contează — pentru `rm` nu există „undo".
+Un scan de mentenanță de rutină a semnalat reziduuri care aglomerează spațiul de lucru al stației. Înainte de a șterge ceva, pune la adăpost singurul fișier care contează. Pentru `rm` nu există „undo".
 
 1. Creează un folder `pastreaza` și copiază `misiune.txt` în el ca backup de siguranță.
 2. Inspectează spațiul de lucru înainte de a șterge ceva.

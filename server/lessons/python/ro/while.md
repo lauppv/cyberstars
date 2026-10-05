@@ -79,7 +79,7 @@ Hai să urmărim ce se întâmplă:
 - dacă tastăm **steluta**, atunci **parola = "steluta"**, deci **parola != "steluta"** devine **fals** → bucla se oprește
 - programul afișează **Acces permis!**
 
-Observă lucrul important: aici **nu** știam de câte ori se va repeta bucla. Depinde complet de ce tastează utilizatorul. Cu un **for** ar fi fost greu, pentru că **for** vrea să știe de la început de câte ori să meargă. Cu **while** este natural — repetăm pur și simplu **cât timp** condiția este adevărată
+Observă lucrul important: aici **nu** știam de câte ori se va repeta bucla. Depinde complet de ce tastează utilizatorul. Cu un **for** ar fi fost greu, pentru că **for** vrea să știe de la început de câte ori să meargă. Cu **while** este natural: repetăm pur și simplu **cât timp** condiția este adevărată
 
 De ce am pus **parola = ""** înainte de buclă? Ca **while** să aibă ce verifica la prima trecere. Dacă variabila nu ar exista deloc, **Python** ar da eroare când ajunge la condiție
 

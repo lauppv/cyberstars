@@ -8,8 +8,8 @@ Tommy face turul de colectare prin Vice City. Magazinele de pe stradă sunt nume
 
 Două lucruri îi pot strica tura:
 
-- un magazin este **închis** azi — sare peste el cu **continue** (nu colectează nimic acolo) și merge mai departe
-- la un magazin îl **așteaptă poliția** — oprește toată tura imediat cu **break** și nu colectează de la acel magazin
+- un magazin este **închis** azi: sare peste el cu **continue** (nu colectează nimic acolo) și merge mai departe
+- la un magazin îl **așteaptă poliția**: oprește toată tura imediat cu **break** și nu colectează de la acel magazin
 
 Stochează numărul total de magazine în `totalMagazine`, magazinul închis în `magazinInchis` și magazinul unde așteaptă poliția în `magazinPolitie`. Apoi folosește o buclă care parcurge magazinele de la **1** la total. Pentru fiecare magazin de la care chiar colectează, afișează `Magazin N` (unde **N** e numărul magazinului) și adună suma într-un total. La final, afișează `Total: X`.
 

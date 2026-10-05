@@ -1,4 +1,4 @@
-Time for a real project! We're going to build an **inventory system** — Tommy manages the station's supply depot, keeps track of provisions and needs to know what he's got and how much it's all worth
+Time for a real project! We're going to build an **inventory system**: Tommy manages the station's supply depot, keeps track of provisions and needs to know what he's got and how much it's all worth
 
 This project brings together everything you've learned: **classes**, **constructors**, **ArrayLists**, **methods**, and **loops**. Let's build it piece by piece
 
@@ -28,7 +28,7 @@ Simple and clean. An `Item` knows its name, how many we have, and what each one 
 
 **Step 2: The Inventory class**
 
-The `Inventory` class holds a list of items and provides methods to manage them. This is where ArrayList comes in — we don't know how many supplies will be stored, so a fixed-size array won't cut it
+The `Inventory` class holds a list of items and provides methods to manage them. This is where ArrayList comes in: we don't know how many supplies will be stored, so a fixed-size array won't cut it
 
 ```text
 import java.util.ArrayList;
@@ -187,9 +187,9 @@ Total: $376.00
 
 ---
 
-Notice how the classes work together: `Item` is a simple data container, and `Inventory` manages a collection of items. This is **composition** — the Inventory **has** a list of Items. It's one of the most common patterns in real-world Java
+Notice how the classes work together: `Item` is a simple data container, and `Inventory` manages a collection of items. This is **composition**: the Inventory **has** a list of Items. It's one of the most common patterns in real-world Java
 
-Also notice: `Item` and `Inventory` are NOT public — only `Main` is public. That's because Java only allows one public class per file, and since the file is compiled as `Main.java`, the public class must be `Main`
+Also notice: `Item` and `Inventory` are NOT public, only `Main` is public. That's because Java only allows one public class per file, and since the file is compiled as `Main.java`, the public class must be `Main`
 
 ---
 
@@ -201,7 +201,7 @@ The station's cargo bay needs a digital manifest system. Every supply item has a
 2. Create an `Inventory` class with an `ArrayList<Item>`, and methods: `addItem(Item item)`, `removeItem(String name)`, `printAll()`, and `double totalValue()`
 3. `printAll()` prints each item as `"name xQuantity @ $price"` (use `String.format("%.2f", price)`)
 4. `totalValue()` returns the sum of `quantity * price` for all items
-5. In main, store each supply's data in variables — `name1`/`quantity1`/`price1`, `name2`/`quantity2`/`price2`, `name3`/`quantity3`/`price3` (start with Air filter/4/35.00, Food pack/10/12.00, Repair kit/3/85.00). Create an `Inventory` and add the three items built from those variables
+5. In main, store each supply's data in variables: `name1`/`quantity1`/`price1`, `name2`/`quantity2`/`price2`, `name3`/`quantity3`/`price3` (start with Air filter/4/35.00, Food pack/10/12.00, Repair kit/3/85.00). Create an `Inventory` and add the three items built from those variables
 6. Call `printAll()`, then print `"Total: $"` followed by the formatted total
 
 **Output**

@@ -55,7 +55,7 @@ void afiseaza_toti(Student *studenti[], int n) {
 }
 ```
 
-Observă **studenti[i]->nume** — fiecare element al array-ului este un **pointer către un Student**, așa că folosim **->** în loc de **.**
+Observă **studenti[i]->nume**: fiecare element al array-ului este un **pointer către un Student**, așa că folosim **->** în loc de **.**
 
 ---
 
@@ -77,11 +77,11 @@ Student *gaseste_cel_mai_bun(Student *studenti[], int n) {
 
 ## Misiune: Registrul laboratorului de calcul
 
-E anul 1974. Ești operator de tură la laboratorul de calcul al universității. Studenții care termină examenul de programare vin la teletype-ul tău și îți dictează numele și nota — tu le introduci în registru, un student pe rând
+E anul 1974. Ești operator de tură la laboratorul de calcul al universității. Studenții care termină examenul de programare vin la teletype-ul tău și îți dictează numele și nota. Tu le introduci în registru, un student pe rând
 
 Scrie un program care
 
-1. Citește un întreg **n** — numărul de studenți
+1. Citește un întreg **n**: numărul de studenți
 2. Citește, de **n** ori, un nume și o notă (întreg), și creează un student cu **creeaza_student**, stocând pointerul într-un array
 3. Apelează **afiseaza_toti** ca să afișeze fiecare student sub forma **"Nume: Nota"**
 4. Apelează **gaseste_cel_mai_bun** și afișează **"Cel mai bun: Nume (Nota)"**

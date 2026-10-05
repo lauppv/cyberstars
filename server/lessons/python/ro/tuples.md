@@ -1,4 +1,4 @@
-Cunoaștem deja **listele**. O listă poate crește, se poate micșora și se poate schimba — putem **adăuga** (append), **elimina** (remove) și **modifica** elemente oricând vrem. Dar uneori vrem o colecție care **nu se poate schimba**. Aceasta este un **tuple**
+Cunoaștem deja **listele**. O listă poate crește, se poate micșora și se poate schimba: putem **adăuga** (append), **elimina** (remove) și **modifica** elemente oricând vrem. Dar uneori vrem o colecție care **nu se poate schimba**. Aceasta este un **tuple**
 
 ```py
 coordonate = (10, 20)
@@ -123,7 +123,7 @@ Donkey
 Calculatorul de navigație al stației stochează fiecare sistem stelar ca un **tuple** de `(nume, distanta, planete)`
 
 1. Parcurge lista și **despachetează** (unpack) fiecare tuple în trei variabile: `nume`, `distanta`, `planete`
-2. Afișează fiecare sistem ca `nume: distanta al, planete planete` — de exemplu `Sol: 0 al, 8 planete` (`al` = ani-lumină)
+2. Afișează fiecare sistem ca `nume: distanta al, planete planete`, de exemplu `Sol: 0 al, 8 planete` (`al` = ani-lumină)
 3. După buclă, afișează `Total planete: ` apoi suma tuturor planetelor
 
 **Ieșire**

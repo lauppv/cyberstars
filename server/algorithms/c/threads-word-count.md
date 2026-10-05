@@ -1,6 +1,6 @@
-Two threads each receive a sentence and count the words in it. The threads add their result to a shared global counter, protected by a **mutex** — otherwise two concurrent writes can lose increments.
+Two threads each receive a sentence and count the words in it. The threads add their result to a shared global counter, protected by a **mutex**. Otherwise two concurrent writes can lose increments.
 
-A word is any maximal run of non-space characters. Each thread counts locally first, then takes the lock **once** at the end to add its contribution to the total — we don't hold the mutex for long.
+A word is any maximal run of non-space characters. Each thread counts locally first, then takes the lock **once** at the end to add its contribution to the total. We don't hold the mutex for long.
 
 ### Input
 

@@ -49,4 +49,4 @@ Stația tocmai a trecut reinspectia de siguranță, dar `raport.txt` mai conțin
 
 **Rezultat așteptat**
 
-`arhiva/raport-curat.txt` afișează `PASS` pe fiecare linie de test — nicio intrare `FAIL` nu mai rămâne.
+`arhiva/raport-curat.txt` afișează `PASS` pe fiecare linie de test. Nicio intrare `FAIL` nu mai rămâne.

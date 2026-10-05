@@ -31,4 +31,4 @@ Output: Odd
 ```
 
 Negative numbers work the same way: `-3 % 2` is `-1` in most languages, but in
-Python it's `1` — either way, it's not `0`, so `-3` is odd.
+Python it's `1`. Either way, it's not `0`, so `-3` is odd.

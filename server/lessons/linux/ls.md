@@ -15,7 +15,7 @@ mission.txt  reports  tools
 ```
 
 Each name is either a **file** (like `mission.txt`) or a **folder / directory** (like
-`reports` and `tools`). With the plain `ls` command they can look similar — in a later
+`reports` and `tools`). With the plain `ls` command they can look similar. In a later
 lesson you will learn how to tell them apart at a glance.
 
 You can also list the contents of a folder **without going into it** by giving its
@@ -31,7 +31,7 @@ january.log  february.log
 
 This peeks inside `reports` while you stay where you are.
 
-Like `pwd`, `ls` only _looks_ — it never changes or deletes anything. It is safe to
+Like `pwd`, `ls` only _looks_. It never changes or deletes anything. It is safe to
 run any time you feel lost.
 
 A useful habit: run `ls` whenever you arrive in a new directory, so you always know

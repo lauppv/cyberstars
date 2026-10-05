@@ -50,4 +50,4 @@ Ieșire:
 Total: 0.00
 ```
 
-Fără nicio formă, suma pornește și rămâne la zero — se afișează totuși `Total: 0.00`.
+Fără nicio formă, suma pornește și rămâne la zero. Se afișează totuși `Total: 0.00`.

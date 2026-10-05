@@ -13,7 +13,7 @@ public class Main {
 
 **int** is the **type** for whole numbers (1, 2, 100, -20, 0). We tell Java: "I am about to store a whole number, and its name is **age**"
 
-Java is **strict** about types — it always wants to know what kind of value you put in a variable. The upside is that Java can catch many mistakes before the program even runs
+Java is **strict** about types: it always wants to know what kind of value you put in a variable. The upside is that Java can catch many mistakes before the program even runs
 
 ---
 
@@ -120,7 +120,7 @@ public class Main {
 }
 ```
 
-Now we see **3.5**. Keep this in mind — it is a very common beginner bug
+Now we see **3.5**. Keep this in mind, it is a very common beginner bug
 
 ---
 
@@ -130,12 +130,12 @@ Commander Cortez needs a new badge printed. Set the correct values for `age` and
 
 1. Set `age` to `57`
 2. Set `height` to `1.67`
-3. The final `println` already builds the message with **+** — just make sure the variables hold the right values
+3. The final `println` already builds the message with **+**, just make sure the variables hold the right values
 
-**Input** (already set at the top of your code — change the values to test):
+**Input** (already set at the top of your code; change the values to test):
 
-- `age` — the officer's age (int)
-- `height` — the officer's height in metres (double)
+- `age`: the officer's age (int)
+- `height`: the officer's height in metres (double)
 
 **Example**
 

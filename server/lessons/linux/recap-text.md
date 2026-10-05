@@ -15,7 +15,7 @@ raw data into a clean report.
 
 ## Mission: Crew Activity Report
 
-The station administrator needs a summary of crew activity from `raw_data.csv`. The file contains comma-separated records (`name,action,count`), but some entries are duplicated and it is not sorted. Turn this raw data into a clean report — in a single pipeline.
+The station administrator needs a summary of crew activity from `raw_data.csv`. The file contains comma-separated records (`name,action,count`), but some entries are duplicated and it is not sorted. Turn this raw data into a clean report, in a single pipeline.
 
 Extract only the name column (field 1, comma-delimited) from `raw_data.csv`, sort those names, count how many times each one occurs, and save the result into `report.txt`.
 

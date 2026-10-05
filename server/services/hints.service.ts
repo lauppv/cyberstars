@@ -18,16 +18,16 @@ function readLocalized(dir: string, name: string, lang: 'en' | 'ro'): string {
 
 const LEVEL_GUIDANCE: Record<HintLevel, { en: string; ro: string }> = {
   1: {
-    en: 'Level 1 — a gentle conceptual nudge. Point at what to think about or which part of the task to focus on. NO code at all.',
-    ro: 'Nivel 1 — un indiciu conceptual blând. Arată la ce să se gândească sau pe ce parte a temei să se concentreze. FĂRĂ cod deloc.',
+    en: 'Level 1: a gentle conceptual nudge. Point at what to think about or which part of the task to focus on. NO code at all.',
+    ro: 'Nivel 1: un indiciu conceptual blând. Arată la ce să se gândească sau pe ce parte a temei să se concentreze. FĂRĂ cod deloc.',
   },
   2: {
-    en: 'Level 2 — more specific. Name the concept/approach needed and the likely mistake in their current code. At most one short line of code if truly essential.',
-    ro: 'Nivel 2 — mai specific. Numește conceptul/abordarea necesară și greșeala probabilă din codul curent. Cel mult o linie scurtă de cod dacă e chiar esențial.',
+    en: 'Level 2: more specific. Name the concept/approach needed and the likely mistake in their current code. At most one short line of code if truly essential.',
+    ro: 'Nivel 2: mai specific. Numește conceptul/abordarea necesară și greșeala probabilă din codul curent. Cel mult o linie scurtă de cod dacă e chiar esențial.',
   },
   3: {
-    en: 'Level 3 — the most detailed hint: a short step-by-step plan or pseudocode. Still NOT the full working solution — leave the actual coding to them.',
-    ro: 'Nivel 3 — cel mai detaliat indiciu: un plan scurt pas cu pas sau pseudocod. TOTUȘI nu soluția completă funcțională — lasă-i lor scrierea propriu-zisă a codului.',
+    en: 'Level 3: the most detailed hint: a short step-by-step plan or pseudocode. Still NOT the full working solution. Leave the actual coding to them.',
+    ro: 'Nivel 3: cel mai detaliat indiciu: un plan scurt pas cu pas sau pseudocod. TOTUȘI nu soluția completă funcțională. Lasă-i lor scrierea propriu-zisă a codului.',
   },
 };
 
@@ -42,7 +42,8 @@ function buildSystemPrompt(lang: 'en' | 'ro', level: HintLevel): string {
       '- NU scrie niciodată soluția completă și nici codul complet funcțional.',
       '- Fii scurt: 2-4 propoziții. Ton încurajator. Adresează-te cu „tu”.',
       '- Nu folosi semne de exclamare.',
-      '- Nu-i cere persoanei să-ți spună cum a mers și nu aștepta un răspuns — acesta e un indiciu într-un singur sens, nu o conversație.',
+      '- Nu folosi linii de pauză (em dash sau en dash); folosește virgulă, două puncte sau punct.',
+      '- Nu-i cere persoanei să-ți spună cum a mers și nu aștepta un răspuns, acesta e un indiciu într-un singur sens, nu o conversație.',
       '- Nu folosi titluri markdown și nu menționa că ești un AI.',
       guidance,
     ].join('\n');
@@ -55,7 +56,8 @@ function buildSystemPrompt(lang: 'en' | 'ro', level: HintLevel): string {
     '- NEVER write the full solution or complete working code.',
     '- Keep it short: 2-4 sentences. Encouraging tone. Address the learner as "you".',
     '- Do not use exclamation marks.',
-    '- Do not ask the learner to report back or tell you how it goes, and do not expect a reply — this is a one-way hint, not a conversation.',
+    '- Do not use em dashes or en dashes; use a comma, colon or period instead.',
+    '- Do not ask the learner to report back or tell you how it goes, and do not expect a reply, this is a one-way hint, not a conversation.',
     '- No markdown headers, and do not mention that you are an AI.',
     guidance,
   ].join('\n');
@@ -81,8 +83,8 @@ function buildUserPrompt(
     parts.push(
       '',
       lang === 'ro'
-        ? 'Soluția de referință (DOAR pentru context — nu o dezvălui):'
-        : 'Reference solution (for your context ONLY — do not reveal it):',
+        ? 'Soluția de referință (DOAR pentru context, nu o dezvălui):'
+        : 'Reference solution (for your context ONLY, do not reveal it):',
       solution,
     );
   }
@@ -115,11 +117,11 @@ export async function generateHint(
     });
   } catch (err) {
     console.error(`[hints] Gemini call failed for ${courseKey}/${lessonSlug}:`, err);
-    throw new AppError(502, 'Could not generate a hint right now — please try again');
+    throw new AppError(502, 'Could not generate a hint right now, please try again');
   }
 
   if (!hint) {
-    throw new AppError(502, 'Could not generate a hint right now — please try again');
+    throw new AppError(502, 'Could not generate a hint right now, please try again');
   }
 
   return { hint, level, maxLevel: MAX_HINT_LEVEL };

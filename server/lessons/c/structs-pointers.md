@@ -21,7 +21,7 @@ int main(void) {
 }
 ```
 
-We pass **&t** (the address of the struct), and the function receives a **struct Terminal \***. To access fields through a pointer, we write **(\*p).sessions** — first dereference, then access the field
+We pass **&t** (the address of the struct), and the function receives a **struct Terminal \***. To access fields through a pointer, we write **(\*p).sessions**: first dereference, then access the field
 
 ---
 
@@ -94,8 +94,8 @@ The functions modified the **original struct**, not a copy. It's the same "pass 
 The computing center bills processor time by the hour. Each user has an account with a balance in hours, and shift operators make allocations and withdrawals throughout the day. All updates must go through a pointer, so the original balance in the ledger changes in place.
 
 1. Define a struct **HourAccount** with fields **owner** (char array) and **balance** (int)
-2. Write the function **void allocate(struct HourAccount \*acc, int hours)** — adds hours to the balance through the pointer
-3. Write the function **void withdraw(struct HourAccount \*acc, int hours)** — subtracts hours from the balance if there's enough, otherwise print **"Insufficient funds"**
+2. Write the function **void allocate(struct HourAccount \*acc, int hours)**: adds hours to the balance through the pointer
+3. Write the function **void withdraw(struct HourAccount \*acc, int hours)**: subtracts hours from the balance if there's enough, otherwise print **"Insufficient funds"**
 4. Read from input: the owner's name, the initial balance, then three operations. Each operation has a code (**1** = allocate, **2** = withdraw) followed by a value
 5. After all operations, print **"Balance: X"**
 

@@ -140,7 +140,7 @@ player = {
 print(len(player))
 ```
 
-Output **3** — the dictionary has 3 key-value pairs
+Output **3**: the dictionary has 3 key-value pairs
 
 ---
 

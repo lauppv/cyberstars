@@ -60,11 +60,11 @@ asta afișează `text 36.159`
 
 Stația are trei rezervoare de oxigen, cu cantitățile lor (în litri) stocate în `rezervor_a`, `rezervor_b` și `rezervor_c`.
 
-Adună cele trei rezervoare laolaltă într-un `total` și afișează-l. Apoi o scurgere golește **50** de litri — scade 50 din `total` și afișează noua valoare.
+Adună cele trei rezervoare laolaltă într-un `total` și afișează-l. Apoi o scurgere golește **50** de litri, așa că scade 50 din `total` și afișează noua valoare.
 
-**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău, schimbă valorile ca să testezi):
 
-- `rezervor_a`, `rezervor_b`, `rezervor_c` — litri de oxigen din fiecare rezervor
+- `rezervor_a`, `rezervor_b`, `rezervor_c`: litri de oxigen din fiecare rezervor
 
 **Exemplu**
 

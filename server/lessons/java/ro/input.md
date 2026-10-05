@@ -22,7 +22,7 @@ Au apărut două lucruri noi
 - **import java.util.Scanner;** la început, **înainte** de **public class**. Asta îi spune lui Java: "Vreau să folosesc instrumentul Scanner din biblioteca standard a lui Java"
 - **Scanner scanner = new Scanner(System.in);** creează un nou scanner care citește de la **standard input** (tastatura)
 
-Citirea propriu-zisă se întâmplă cu **scanner.nextLine()** — așteaptă ca utilizatorul să tasteze o linie și să apese **Enter**, apoi returnează textul tastat ca un **String**
+Citirea propriu-zisă se întâmplă cu **scanner.nextLine()**: așteaptă ca utilizatorul să tasteze o linie și să apese **Enter**, apoi returnează textul tastat ca un **String**
 
 ---
 
@@ -94,12 +94,12 @@ Fiecare membru al echipajului care ajunge la stație trebuie să se înregistrez
 
 Creează un **Scanner**, citește mai întâi numele (prima linie), apoi vârsta (a doua linie). Apoi construiește și afișează mesajul de bun venit folosind **+**.
 
-Citește datele direct — nu afișa nicio întrebare înainte de citire. Terminalul de înregistrare rămâne tăcut până la linia de bun venit.
+Citește datele direct, nu afișa nicio întrebare înainte de citire. Terminalul de înregistrare rămâne tăcut până la linia de bun venit.
 
 **Intrare** (tastată de utilizator când rulează programul):
 
-- Prima linie — numele membrului echipajului
-- A doua linie — vârsta membrului echipajului
+- Prima linie: numele membrului echipajului
+- A doua linie: vârsta membrului echipajului
 
 **Exemplu**
 

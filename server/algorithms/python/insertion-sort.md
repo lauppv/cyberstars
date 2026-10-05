@@ -2,7 +2,7 @@ Read a list of numbers and sort them using the **insertion sort** algorithm. Ins
 
 ### Input
 
-- Line 1: an integer `n` — the count of numbers.
+- Line 1: an integer `n`, the count of numbers.
 - Line 2: `n` integers separated by spaces.
 
 ### Output
@@ -49,5 +49,5 @@ Output:
 1 1 3 3
 ```
 
-Duplicate values are kept — the sort just needs to place equal values next to
+Duplicate values are kept: the sort just needs to place equal values next to
 each other.

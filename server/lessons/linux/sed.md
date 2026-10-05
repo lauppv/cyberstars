@@ -48,4 +48,4 @@ The station just passed its safety re-inspection, but `report.txt` still shows o
 
 **Expected result**
 
-`records/report-clean.txt` shows `PASS` on every test line — no `FAIL` entries remain.
+`records/report-clean.txt` shows `PASS` on every test line. No `FAIL` entries remain.

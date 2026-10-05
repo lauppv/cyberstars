@@ -35,7 +35,7 @@ enum Vreme {
 public class Main {
     public static void main(String[] args) {
         Vreme v = Vreme.PLOIOS;     // functioneaza
-        Vreme v2 = Vreme.NINSOARE;  // EROARE -- NINSOARE nu exista in Vreme
+        Vreme v2 = Vreme.NINSOARE;  // EROARE: NINSOARE nu exista in Vreme
     }
 }
 ```
@@ -83,7 +83,7 @@ Devastatoare de aproape. Preferata lui Tommy.
 Rata de foc mare. Bun pentru misiuni intense.
 ```
 
-În interiorul switch-ului scrii doar `PISTOL`, nu `Arma.PISTOL` — Java știe deja că faci switch pe un `Arma`, așa că te lasă să sari peste prefix
+În interiorul switch-ului scrii doar `PISTOL`, nu `Arma.PISTOL`. Java știe deja că faci switch pe un `Arma`, așa că te lasă să sari peste prefix
 
 ---
 
@@ -118,16 +118,16 @@ DIAZ
 
 Când să folosești enum-uri în loc de String-uri?
 
-- **Enum-uri** — când ai un **set fix și cunoscut** de opțiuni: zilele săptămânii, anotimpurile, nivelurile de dificultate, stările jocului
-- **String-uri** — când valoarea e **liberă** sau provine de la utilizator: nume de jucători, mesaje, căi de fișiere
+- **Enum-uri**: când ai un **set fix și cunoscut** de opțiuni: zilele săptămânii, anotimpurile, nivelurile de dificultate, stările jocului
+- **String-uri**: când valoarea e **liberă** sau provine de la utilizator: nume de jucători, mesaje, căi de fișiere
 
-Dacă te trezești scriind `if (status.equals("activ") || status.equals("inactiv") || ...)` — probabil vrei un enum
+Dacă te trezești scriind `if (status.equals("activ") || status.equals("inactiv") || ...)`, probabil vrei un enum
 
 ---
 
 ## Misiune: Raportul Afacerilor
 
-Tommy are mai multe afaceri în Vice City și vrea un raport rapid. Fiecare afacere poate fi într-una din câteva stări fixe — produce bani, e închisă temporar, e în renovare sau a fost distrusă de o bandă rivală. De exemplu, Malibu Club merge bine și produce bani, Print Works e în renovare, Boatyard e închis temporar, iar Kaufman Cabs a fost distrus de o bandă rivală
+Tommy are mai multe afaceri în Vice City și vrea un raport rapid. Fiecare afacere poate fi într-una din câteva stări fixe: produce bani, e închisă temporar, e în renovare sau a fost distrusă de o bandă rivală. De exemplu, Malibu Club merge bine și produce bani, Print Works e în renovare, Boatyard e închis temporar, iar Kaufman Cabs a fost distrus de o bandă rivală
 
 Definește stările posibile ca un set fix de valori (`Stare`). Scrie o metodă `descrieStare` care primește o stare și afișează ce înseamnă. În `main`, stochează cele patru nume de afaceri într-un array `nume` (unul pentru fiecare stare, în **aceeași ordine** ca valorile enum-ului). Apoi parcurge `Stare.values()`; pentru fiecare stare, afișează numele afacerii corespunzătoare urmat de `" - "`, apoi descrie starea.
 

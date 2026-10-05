@@ -17,7 +17,7 @@ This pipeline: (1) reads the file, (2) keeps only "denied" lines, (3) counts the
 cat names.txt | sort | head -3
 ```
 
-This outputs the first 3 names in alphabetical order — `sort` reorders, `head` trims.
+This outputs the first 3 names in alphabetical order: `sort` reorders, `head` trims.
 
 ### Building step by step
 
@@ -42,7 +42,7 @@ If something goes wrong, remove the last pipe and inspect the intermediate outpu
 
 ## Mission: Priority Alert Briefing
 
-The bridge crew needs a quick briefing — only the two most urgent alerts from today's event log, sorted alphabetically so they can cross-reference the duty roster.
+The bridge crew needs a quick briefing: only the two most urgent alerts from today's event log, sorted alphabetically so they can cross-reference the duty roster.
 
 1. Build a pipeline that reads `events.log`, keeps only the lines containing `alert`, sorts them alphabetically, and shows only the **first 2** results. Chain at least 3 pipes.
 2. Send that two-line briefing into a file called `briefing.txt`.

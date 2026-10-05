@@ -16,7 +16,7 @@ Ce înseamnă **char nume[] = "Ken Thompson"**? Creează un array de **char**-ur
 
 ---
 
-În spatele scenei, fiecare string din C se termină cu un caracter ascuns special: **\0** (numit **null terminator**). El marchează sfârșitul string-ului. Deci **"Tommy"** în memorie este de fapt **T, o, m, m, y, \0** — șase caractere. Funcții precum **printf** continuă să citească până dau de **\0**
+În spatele scenei, fiecare string din C se termină cu un caracter ascuns special: **\0** (numit **null terminator**). El marchează sfârșitul string-ului. Deci **"Tommy"** în memorie este de fapt **T, o, m, m, y, \0**: șase caractere. Funcții precum **printf** continuă să citească până dau de **\0**
 
 De obicei nu scrii **\0** singur atunci când folosești literali string. C îl adaugă pentru tine. Doar **fii conștient** că există, pentru că uitarea lui este o sursă clasică de bug-uri în C
 
@@ -37,14 +37,14 @@ int main(void) {
 
 Două lucruri noi
 
-- **#include <string.h>** — necesar pentru **strlen** și prietenii ei
-- **%zu** — format specifier pentru tipul pe care **strlen** îl întoarce (un **size_t**, un fel de unsigned int). Pentru scopurile noastre, poți folosi și **%d** cu un cast: **printf("%d\n", (int) strlen(nume))**
+- **#include <string.h>**: necesar pentru **strlen** și prietenii ei
+- **%zu**: format specifier pentru tipul pe care **strlen** îl întoarce (un **size_t**, un fel de unsigned int). Pentru scopurile noastre, poți folosi și **%d** cu un cast: **printf("%d\n", (int) strlen(nume))**
 
 **strlen** numără până la **\0**, fără a-l include. Deci **strlen("Ken")** este **3**, deși array-ul are **4** sloturi în memorie
 
 ---
 
-**Compararea string-urilor** — și **CEA MAI mare capcană din C legată de string-uri**
+**Compararea string-urilor**, și **CEA MAI mare capcană din C legată de string-uri**
 
 ```c
 #include <stdio.h>

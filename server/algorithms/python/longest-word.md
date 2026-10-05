@@ -25,7 +25,7 @@ Input:  cat bat rat
 Output: cat
 ```
 
-All three words are the same length, so it's a tie — print the one that
+All three words are the same length, so it's a tie: print the one that
 appears **first**.
 
 ```

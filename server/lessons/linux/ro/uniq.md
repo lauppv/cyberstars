@@ -1,4 +1,4 @@
-Comanda **uniq** elimină liniile duplicate **adiacente**. Acesta este un detaliu esențial —
+Comanda **uniq** elimină liniile duplicate **adiacente**. Acesta este un detaliu esențial:
 funcționează doar pe linii care sunt una lângă alta. De aceea, aproape întotdeauna se face
 mai întâi **sort** și apoi se trimite prin pipe spre `uniq`.
 

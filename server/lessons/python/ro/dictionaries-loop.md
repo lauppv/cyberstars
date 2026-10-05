@@ -140,7 +140,7 @@ jucator = {
 print(len(jucator))
 ```
 
-Afișează **3** — dicționarul are 3 perechi cheie-valoare
+Afișează **3**: dicționarul are 3 perechi cheie-valoare
 
 ---
 

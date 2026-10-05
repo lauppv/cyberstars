@@ -1,4 +1,4 @@
-Java can sort any ArrayList of Strings or numbers with **Collections.sort()** — just import it from `java.util`
+Java can sort any ArrayList of Strings or numbers with **Collections.sort()**, just import it from `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ Lance
 Tommy
 ```
 
-`Collections.sort()` sorts **in place** — it modifies the original list directly. Strings are sorted **alphabetically**, numbers **ascending**
+`Collections.sort()` sorts **in place**: it modifies the original list directly. Strings are sorted **alphabetically**, numbers **ascending**
 
 ---
 
@@ -63,11 +63,11 @@ Output
 42
 ```
 
-`reverse()` doesn't sort — it just **flips** the current order. To get descending order, sort first then reverse
+`reverse()` doesn't sort, it just **flips** the current order. To get descending order, sort first then reverse
 
 ---
 
-But how do you sort a list of **objects**? If you have an `ArrayList<Car>`, Java doesn't know what to sort by — name? speed? You have to tell it by implementing the **Comparable** interface
+But how do you sort a list of **objects**? If you have an `ArrayList<Car>`, Java doesn't know what to sort by: name? speed? You have to tell it by implementing the **Comparable** interface
 
 ```java
 import java.util.ArrayList;
@@ -113,7 +113,7 @@ Infernus - 240 km/h
 
 Let's trace what happens:
 
-1. `Car implements Comparable<Car>` — the class promises it knows how to compare itself with other cars
+1. `Car implements Comparable<Car>`: the class promises it knows how to compare itself with other cars
 2. The `compareTo` method returns a number:
    - **negative** if `this` comes before `other`
    - **zero** if they're equal
@@ -136,7 +136,7 @@ public int compareTo(Car other) {
 
 ## Mission: Crew Ranking
 
-Cortez wants a crew ranking sorted by number of completed missions — from least productive to most active. Tommy completed 47 missions, Lance 12, Phil 8, and Mercedes 23
+Cortez wants a crew ranking sorted by number of completed missions, from least productive to most active. Tommy completed 47 missions, Lance 12, Phil 8, and Mercedes 23
 
 Build a `CrewMember` class that implements `Comparable` and compares by mission count. Store the four counts in variables `missions1` (Tommy), `missions2` (Lance), `missions3` (Phil), and `missions4` (Mercedes). Create an `ArrayList<CrewMember>` with all members, sort it with `Collections.sort`, and print the ranking as `"name - count missions"`
 

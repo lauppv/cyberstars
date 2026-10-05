@@ -8,7 +8,7 @@ The **|** symbol takes the output of **ls** and sends it as input to **grep**. T
 
 ---
 
-A pipe is a **one-way communication channel**. One process **writes** into it, another process **reads** from it. Think of it like a water pipe — water flows in one direction
+A pipe is a **one-way communication channel**. One process **writes** into it, another process **reads** from it. Think of it like a water pipe: water flows in one direction
 
 In C, we create a pipe with the **pipe()** function
 
@@ -54,11 +54,11 @@ Output: **Parent received: Hello from child!**
 Let's break it down:
 
 1. **pipe(fd)** creates two file descriptors: **fd[0]** for reading, **fd[1]** for writing
-2. We **fork** — now both parent and child have copies of the pipe
+2. We **fork**; now both parent and child have copies of the pipe
 3. The **child** closes the read end (it only needs to write), writes a message, and closes the write end
 4. The **parent** closes the write end (it only needs to read), reads the message, and closes the read end
 
-Why do we close the ends we don't use? It's like closing a door you don't need. If the parent doesn't close the write end, the read will **never know** when the child is done writing — it will wait forever
+Why do we close the ends we don't use? It's like closing a door you don't need. If the parent doesn't close the write end, the read will **never know** when the child is done writing: it will wait forever
 
 ---
 

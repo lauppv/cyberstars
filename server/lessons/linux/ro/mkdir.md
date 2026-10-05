@@ -1,4 +1,4 @@
-Te poți deplasa prin stație — acum este momentul să **construiești**. Prima cărămidă
+Te poți deplasa prin stație. Acum este momentul să **construiești**. Prima cărămidă
 de construcție este un nou **director** (folder).
 
 Comanda **mkdir** (**make directory**) creează un folder. Dă-i numele pe care îl
@@ -8,7 +8,7 @@ dorești:
 mkdir rapoarte
 ```
 
-Nimic nu este afișat când reușește — Linux tace când totul merge bine. Rulează `ls`
+Nimic nu este afișat când reușește: Linux tace când totul merge bine. Rulează `ls`
 pentru a confirma că folderul a apărut:
 
 ```bash
@@ -59,7 +59,7 @@ Stația are nevoie de o nouă structură de directoare pentru misiunea care urme
 
 1. Creează un folder numit `misiune`.
 2. În interiorul lui, creează trei foldere frați printr-o **singură** comandă: `misiune/jurnale`, `misiune/date` și `misiune/backupuri`.
-3. Dintr-o singură comandă, creează dintr-odată calea imbricată `misiune/jurnale/ziua1` — inclusiv folderele părinte care nu există încă.
+3. Dintr-o singură comandă, creează dintr-odată calea imbricată `misiune/jurnale/ziua1`, inclusiv folderele părinte care nu există încă.
 4. Verifică întreaga structură ca arbore.
 
 **Rezultat așteptat**

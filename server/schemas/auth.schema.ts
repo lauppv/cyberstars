@@ -7,7 +7,7 @@ export const signupSchema = z.object({
     .max(255, 'Email must be at most 255 characters'),
   password: z
     .string()
-    .min(6, 'Password is too short — must be at least 6 characters')
+    .min(6, 'Password is too short, must be at least 6 characters')
     .max(255, 'Password must be at most 255 characters'),
 });
 
@@ -34,6 +34,6 @@ export const resetPasswordSchema = z.object({
   code: z.string().length(6, 'Code must be 6 digits'),
   password: z
     .string()
-    .min(6, 'Password is too short — must be at least 6 characters')
+    .min(6, 'Password is too short, must be at least 6 characters')
     .max(255, 'Password must be at most 255 characters'),
 });

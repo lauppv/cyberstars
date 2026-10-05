@@ -33,11 +33,11 @@ Dacă folderul există deja, poți face `touch` la un fișier direct în interio
 touch rapoarte/rezumat.txt
 ```
 
-(Folderul trebuie să existe în prealabil — `touch` nu creează foldere.)
+(Folderul trebuie să existe în prealabil: `touch` nu creează foldere.)
 
 ### De ce se numește „touch"?
 
-Dacă fișierul _există deja_, `touch` nu îl șterge — doar îi actualizează ora de
+Dacă fișierul _există deja_, `touch` nu îl șterge, ci doar îi actualizează ora de
 „ultimă modificare". Acesta este scopul său original. Pentru un începător, gândește-te
 la el pur și simplu ca la **„creează un fișier gol"**.
 

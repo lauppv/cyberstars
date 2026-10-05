@@ -118,7 +118,7 @@ Stația își ține evidența mărfii într-o listă. Creează o listă goală n
 3. Afișează **primul** articol
 4. Afișează **ultimul** articol
 5. Afișează câte articole sunt încărcate
-6. O scurgere golește articolul de la indexul 1 — înlocuiește-l cu `gol`
+6. O scurgere golește articolul de la indexul 1, înlocuiește-l cu `gol`
 7. Afișează lista
 
 **Exemplu**

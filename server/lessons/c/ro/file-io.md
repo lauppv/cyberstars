@@ -1,4 +1,4 @@
-Programele trebuie să citească și să scrie în **fișiere** — configurări, jurnale de tură, date salvate. C ne oferă **fopen**, **fclose**, **fprintf**, **fscanf** și **fgets** pentru asta
+Programele trebuie să citească și să scrie în **fișiere**: configurări, jurnale de tură, date salvate. C ne oferă **fopen**, **fclose**, **fprintf**, **fscanf** și **fgets** pentru asta
 
 ```c
 #include <stdio.h>
@@ -21,11 +21,11 @@ int main(void) {
 
 **fopen** deschide un fișier și returnează un **pointer FILE**. Al doilea argument este **modul**:
 
-- **"w"** — scriere (creează fișierul sau îl **suprascrie** dacă există)
-- **"r"** — citire (fișierul trebuie să existe)
-- **"a"** — adăugare (adaugă la sfârșit, nu șterge)
+- **"w"**: scriere (creează fișierul sau îl **suprascrie** dacă există)
+- **"r"**: citire (fișierul trebuie să existe)
+- **"a"**: adăugare (adaugă la sfârșit, nu șterge)
 
-**fprintf** funcționează exact ca **printf**, dar scrie într-un fișier în loc de pe ecran. **fclose** închide fișierul — fă mereu asta, altfel datele s-ar putea să nu fie salvate
+**fprintf** funcționează exact ca **printf**, dar scrie într-un fișier în loc de pe ecran. **fclose** închide fișierul. Fă mereu asta, altfel datele s-ar putea să nu fie salvate
 
 ---
 
@@ -79,10 +79,10 @@ int main(void) {
 
 Tiparul pentru operații sigure pe fișiere este mereu același:
 
-1. **fopen** — deschide fișierul
-2. **Verifică pentru NULL** — tratează eroarea
-3. **Citește sau scrie** — fă-ți treaba
-4. **fclose** — închide fișierul
+1. **fopen**: deschide fișierul
+2. **Verifică pentru NULL**: tratează eroarea
+3. **Citește sau scrie**: fă-ți treaba
+4. **fclose**: închide fișierul
 
 A uita de **fclose** este ca și cum ai lăsa robinetul deschis. Programul ar putea funcționa o vreme, dar în cele din urmă vei rămâne fără descriptori de fișiere (o resursă limitată a sistemului de operare)
 

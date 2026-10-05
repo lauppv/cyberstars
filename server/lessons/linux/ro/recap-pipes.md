@@ -9,7 +9,7 @@ Capitolul 5 ți-a dat instalațiile sanitare ale stației. Iată trusa ta de une
 | `2>`   | Redirecționează doar erorile                   |
 | `2>&1` | Unește erorile cu stdout                       |
 
-Pipe-urile și redirecționarea îți permit să construiești **pipeline-uri de date** — iei
+Pipe-urile și redirecționarea îți permit să construiești **pipeline-uri de date**: iei
 date brute, le filtrezi, le transformi și salvezi rezultatul, totul într-o singură linie.
 
 Regula de aur: **fiecare comandă face o singură treabă**. Pipe-urile leagă treburile

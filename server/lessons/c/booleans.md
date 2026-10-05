@@ -37,9 +37,9 @@ int main(void) {
 
 After we **#include <stdbool.h>**, three new identifiers exist: **bool**, **true**, and **false**
 
-Behind the scenes, **bool** is still essentially an int — **true** is **1**, **false** is **0** — but the names make our code much more **readable**. From now on, when something can only be true or false, prefer **bool** over **int**
+Behind the scenes, **bool** is still essentially an int (**true** is **1**, **false** is **0**), but the names make our code much more **readable**. From now on, when something can only be true or false, prefer **bool** over **int**
 
-There is no special format specifier for **bool** in **printf** — just use **%d** (it will print **0** or **1**)
+There is no special format specifier for **bool** in **printf**: just use **%d** (it will print **0** or **1**)
 
 ---
 

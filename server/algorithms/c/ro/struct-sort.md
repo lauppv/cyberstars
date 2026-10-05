@@ -2,7 +2,7 @@ Citește **N** studenți, fiecare cu un **nume** (un singur cuvânt) și o **not
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 ≤ N ≤ 50)
+- Prima linie: un întreg `N` (1 <= N <= 50)
 - Pentru fiecare student, două linii:
   - Linia 1: numele (un singur cuvânt)
   - Linia 2: nota (număr întreg)
@@ -65,4 +65,4 @@ Bob 70
 ```
 
 Când toate notele sunt egale, sortarea stabilă păstrează ordinea originală
-din intrare — observă că **nu** este alfabetică.
+din intrare, observă că **nu** este alfabetică.

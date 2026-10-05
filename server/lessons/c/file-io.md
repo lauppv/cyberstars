@@ -1,4 +1,4 @@
-Programs need to read and write **files** — configurations, shift logs, saved data. C gives us **fopen**, **fclose**, **fprintf**, **fscanf**, and **fgets** for this
+Programs need to read and write **files**: configurations, shift logs, saved data. C gives us **fopen**, **fclose**, **fprintf**, **fscanf**, and **fgets** for this
 
 ```c
 #include <stdio.h>
@@ -21,11 +21,11 @@ int main(void) {
 
 **fopen** opens a file and returns a **FILE pointer**. The second argument is the **mode**:
 
-- **"w"** — write (creates the file, or **overwrites** it if it exists)
-- **"r"** — read (file must exist)
-- **"a"** — append (adds to the end, doesn't erase)
+- **"w"**: write (creates the file, or **overwrites** it if it exists)
+- **"r"**: read (file must exist)
+- **"a"**: append (adds to the end, doesn't erase)
 
-**fprintf** works exactly like **printf**, but writes to a file instead of the screen. **fclose** closes the file — always do this, or data might not be saved
+**fprintf** works exactly like **printf**, but writes to a file instead of the screen. **fclose** closes the file. Always do this, or data might not be saved
 
 ---
 
@@ -79,10 +79,10 @@ int main(void) {
 
 The pattern for safe file operations is always the same:
 
-1. **fopen** — open the file
-2. **Check for NULL** — handle the error
-3. **Read or write** — do your work
-4. **fclose** — close the file
+1. **fopen**: open the file
+2. **Check for NULL**: handle the error
+3. **Read or write**: do your work
+4. **fclose**: close the file
 
 Forgetting **fclose** is like leaving the tap running. The program might work fine for a while, but eventually you'll run out of file descriptors (a limited operating system resource)
 

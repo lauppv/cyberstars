@@ -54,7 +54,7 @@ Ieșire
 x = 20, y = 10
 ```
 
-Acum funcționează. Am transmis **adresele** lui x și y. Funcția a urmat acele adrese și a schimbat valorile reale. Aceasta este **transmiterea prin referință** — cea mai importantă utilizare a pointerilor
+Acum funcționează. Am transmis **adresele** lui x și y. Funcția a urmat acele adrese și a schimbat valorile reale. Aceasta este **transmiterea prin referință**, cea mai importantă utilizare a pointerilor
 
 ---
 
@@ -104,13 +104,13 @@ Ieșire
 Min: 1, Max: 9
 ```
 
-Funcția "returnează" atât minimul cât și maximul prin pointeri. Este idiomatic în C — vei vedea asta peste tot
+Funcția "returnează" atât minimul cât și maximul prin pointeri. Este idiomatic în C. Vei vedea asta peste tot
 
 ---
 
 ## Misiune: Amplificatorul de semnal
 
-La centrul de calcul, un traductor de semnal citește o valoare brută de pe bandă magnetică. Amplificatorul trebuie s-o **tripleze** înainte de a o trimite mai departe — dar accesul direct la variabilă nu e permis, doar prin pointer.
+La centrul de calcul, un traductor de semnal citește o valoare brută de pe bandă magnetică. Amplificatorul trebuie s-o **tripleze** înainte de a o trimite mai departe, dar accesul direct la variabilă nu e permis, doar prin pointer.
 
 1. Citește un **int** **semnal** din input
 2. Scrie o funcție **tripleaza** care primește un **pointer la int** și triplează valoarea către care pointează

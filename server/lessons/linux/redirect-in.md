@@ -3,7 +3,7 @@ controls where input **comes from**.
 
 The pattern is: `COMMAND < FILE`.
 
-Some commands read from **standard input** (stdin) — the keyboard by default. With `<`
+Some commands read from **standard input** (stdin), the keyboard by default. With `<`
 you can feed them a file instead:
 
 ```bash
@@ -15,7 +15,7 @@ wc -l < manifest.txt
 ```
 
 Here `wc -l` counts lines. Instead of typing lines on the keyboard, it reads them from
-`manifest.txt`. Note that the filename is **not** shown in the output — that is the
+`manifest.txt`. Note that the filename is **not** shown in the output. That is the
 subtle difference from `wc -l manifest.txt` (which prints the name alongside the
 count).
 
@@ -34,7 +34,7 @@ becomes valuable when:
 
 Life support needs an exact headcount to calibrate oxygen levels. The manifest is stored in `crew.txt`, one name per line.
 
-1. Count the crew from `crew.txt` using input redirection, so only the number appears — no filename beside it.
+1. Count the crew from `crew.txt` using input redirection, so only the number appears, no filename beside it.
 2. Save that clean count into a new file called `headcount.txt`, combining input and output redirection in a single command.
 3. Create a folder called `life-support` and move `headcount.txt` into it.
 4. Display the stored file to confirm it holds only the number.

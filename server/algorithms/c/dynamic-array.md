@@ -2,7 +2,7 @@ Read an integer **N**, then read **N** integers. Store them in a **dynamically a
 
 ### Input
 
-- First line: an integer `N` (1 ≤ N ≤ 1000)
+- First line: an integer `N` (1 <= N <= 1000)
 - The next `N` lines: one integer per line
 
 ### Output
@@ -57,5 +57,5 @@ Output:
 3.33
 ```
 
-Negative numbers work the same way — the sum can be smaller than any single
+Negative numbers work the same way: the sum can be smaller than any single
 positive value, and the average still rounds to 2 decimal places.

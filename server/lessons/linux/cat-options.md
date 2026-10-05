@@ -19,8 +19,8 @@ something is.
 
 ### Joining files
 
-You already know `cat` can print several files in a row. That is its real super-power
-— **concatenating** them:
+You already know `cat` can print several files in a row. That is its real super-power,
+**concatenating** them:
 
 ```bash
 cat header.txt body.txt footer.txt

@@ -19,7 +19,7 @@ numără.
 cat nume.txt | sort | head -3
 ```
 
-Acest pipeline afișează primele 3 nume în ordine alfabetică — `sort` le reordonează,
+Acest pipeline afișează primele 3 nume în ordine alfabetică: `sort` le reordonează,
 `head` le scurtează.
 
 ### Construire pas cu pas
@@ -45,7 +45,7 @@ Dacă ceva nu merge, scoate ultimul pipe și inspectează rezultatul intermediar
 
 ## Misiune: Briefing-ul alertelor prioritare
 
-Echipajul de pe punte are nevoie de un briefing rapid — doar cele mai urgente două alerte din jurnalul de evenimente al zilei, sortate alfabetic, ca să le poată confrunta cu lista de tură.
+Echipajul de pe punte are nevoie de un briefing rapid: doar cele mai urgente două alerte din jurnalul de evenimente al zilei, sortate alfabetic, ca să le poată confrunta cu lista de tură.
 
 1. Construiește un pipeline care citește `evenimente.log`, păstrează doar liniile care conțin `alert`, le sortează alfabetic și afișează doar **primele 2** rezultate. Înlănțuie cel puțin 3 pipe-uri.
 2. Trimite acel briefing de două linii într-un fișier numit `briefing.txt`.

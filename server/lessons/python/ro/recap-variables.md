@@ -1,4 +1,4 @@
-E timpul să combini ce ai învățat! Nicio teorie nouă — doar o provocare care folosește **print**, **variabile**, **f-string-uri** și **comentarii**
+E timpul să combini ce ai învățat! Nicio teorie nouă, doar o provocare care folosește **print**, **variabile**, **f-string-uri** și **comentarii**
 
 ---
 
@@ -25,6 +25,6 @@ Jucatorul Shadow(42) are viata 97.5 si face parte din CyberStars.
 
 Observație:
 
-- `nume`, `breasla` — text
-- `nivel` — un număr întreg
-- `viata` — un număr cu zecimale
+- `nume`, `breasla`: text
+- `nivel`: un număr întreg
+- `viata`: un număr cu zecimale

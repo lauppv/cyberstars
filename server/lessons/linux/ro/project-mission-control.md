@@ -11,7 +11,7 @@ organizat și un raport final generat **înainte să înceapă următorul schimb
 
 ## Misiune: Reorganizarea centrului de comandă
 
-Un ofițer din schimbul anterior a lăsat Centrul de Comandă în haos — fișiere noi
+Un ofițer din schimbul anterior a lăsat Centrul de Comandă în haos: fișiere noi
 aruncate în `intrari/`, nimic sortat, permisiuni larg deschise și niciun raport
 de stare pentru comandă. Căpitanul vrea asta reparat înainte de următoarea
 rotație de echipaj. Ai uneltele. Du treaba la capăt.
@@ -29,7 +29,7 @@ rotație de echipaj. Ai uneltele. Du treaba la capăt.
 
 4. **Blochează securitatea.** Fișierul `config/securitate.conf` conține
    credențiale sensibile de acces. Setează permisiunile astfel încât doar
-   proprietarul să le poată citi și scrie — fără acces pentru grup sau ceilalți.
+   proprietarul să le poată citi și scrie, fără acces pentru grup sau ceilalți.
    Folosește `chmod 600`.
 
 5. **Depune raportul final.** Creează `rapoarte/rezumat-misiune.txt` care

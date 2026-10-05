@@ -87,11 +87,11 @@ int main(void) {
 
 **fgets** primește trei argumente:
 
-- **nume** — unde să stocheze textul
-- **sizeof(nume)** — numărul maxim de caractere de citit (previne un buffer overflow!)
-- **stdin** — citește de la standard input (tastatura)
+- **nume**: unde să stocheze textul
+- **sizeof(nume)**: numărul maxim de caractere de citit (previne un buffer overflow!)
+- **stdin**: citește de la standard input (tastatura)
 
-Spre deosebire de **scanf**, **fgets** este **sigur** — nu va scrie niciodată mai multe caractere decât poate ține buffer-ul. De aceea **fgets** este preferat față de **scanf** pentru citirea string-urilor în programele C reale
+Spre deosebire de **scanf**, **fgets** este **sigur**: nu va scrie niciodată mai multe caractere decât poate ține buffer-ul. De aceea **fgets** este preferat față de **scanf** pentru citirea string-urilor în programele C reale
 
 O mică capcană: **fgets** păstrează caracterul de **linie nouă** (**\n**) la final. Ca să-l eliminăm
 

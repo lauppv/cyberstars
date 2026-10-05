@@ -25,7 +25,7 @@ Intrare:  cat bat rat
 Ieșire: cat
 ```
 
-Toate cele trei cuvinte au aceeași lungime, deci e egalitate — afișează-l pe
+Toate cele trei cuvinte au aceeași lungime, deci e egalitate: afișează-l pe
 cel care apare **primul**.
 
 ```

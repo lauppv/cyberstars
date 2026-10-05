@@ -11,9 +11,9 @@ Process commands from stdin and print results for `pop` and `peek`. If `pop` or 
 
 Behavior:
 
-- `push X` — push X onto the stack
-- `pop` — remove and print the top element
-- `peek` — print the top element without removing it
+- `push X`: push X onto the stack
+- `pop`: remove and print the top element
+- `peek`: print the top element without removing it
 
 ### Output
 

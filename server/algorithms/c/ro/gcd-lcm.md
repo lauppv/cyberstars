@@ -4,8 +4,8 @@ Algoritmul lui Euclid găsește CMMDC-ul înlocuind în mod repetat numărul mai
 
 ### Date de intrare
 
-- Linia 1: numărul întreg `A` (1 ≤ A ≤ 10000)
-- Linia 2: numărul întreg `B` (1 ≤ B ≤ 10000)
+- Linia 1: numărul întreg `A` (1 <= A <= 10000)
+- Linia 2: numărul întreg `B` (1 <= B <= 10000)
 
 ### Rezultat
 

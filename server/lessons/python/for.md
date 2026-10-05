@@ -146,7 +146,7 @@ Notice the **two** levels of spacing: **if** is indented once (it's inside **for
 
 ## Mission: The Energy Collector
 
-The station gathers energy from a series of cells numbered from **1** to `cells`. Only the cells with an **odd** number work — the rest are broken.
+The station gathers energy from a series of cells numbered from **1** to `cells`. Only the cells with an **odd** number work, the rest are broken.
 
 Make a variable named `cells` for how many cells there are (pick any value you like), then write a program that:
 

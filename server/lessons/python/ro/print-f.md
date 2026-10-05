@@ -58,15 +58,15 @@ Un pilot e pe cale să decoleze. Detaliile sunt stocate în `pilot`, `nume_nava`
 
 Folosind **f-string-uri**, afișează un raport de zbor pe trei linii:
 
-- numele pilotului și nava — de genul `Pilotul Shadow pilotează Orion`
-- combustibilul — de genul `Combustibil: 400 unități`
-- viteza — de genul `Viteză: 7.5 km/s`
+- numele pilotului și nava, de genul `Pilotul Shadow pilotează Orion`
+- combustibilul, de genul `Combustibil: 400 unități`
+- viteza, de genul `Viteză: 7.5 km/s`
 
-**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău, schimbă valorile ca să testezi):
 
-- `pilot`, `nume_nava` — text
-- `combustibil` — un număr întreg
-- `viteza` — un număr cu zecimale
+- `pilot`, `nume_nava`: text
+- `combustibil`: un număr întreg
+- `viteza`: un număr cu zecimale
 
 **Exemplu**
 

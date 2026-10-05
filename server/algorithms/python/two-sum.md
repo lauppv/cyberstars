@@ -40,7 +40,7 @@ Output:
 0 1
 ```
 
-The same value can appear twice — as long as they are at different indices,
+The same value can appear twice. As long as they are at different indices,
 they still count as two separate numbers.
 
 ```

@@ -11,9 +11,9 @@ Process commands from stdin and print results for `dequeue` and `peek`. If `dequ
 
 Behavior:
 
-- `enqueue X` — add X to the back of the queue
-- `dequeue` — remove and print the front element
-- `peek` — print the front element without removing it
+- `enqueue X`: add X to the back of the queue
+- `dequeue`: remove and print the front element
+- `peek`: print the front element without removing it
 
 ### Output
 

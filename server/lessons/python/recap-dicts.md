@@ -8,9 +8,9 @@ You have a dictionary of crew members and their scores from the last mission.
 
 Write a function `analyze(scores)` that takes this dictionary and **returns a new dictionary** with three keys:
 
-- `"average"` — the average score (sum of all scores divided by how many members there are)
-- `"top"` — the name of the member with the highest score
-- `"passing"` — a **list** of names whose score is **50 or more**
+- `"average"`: the average score (sum of all scores divided by how many members there are)
+- `"top"`: the name of the member with the highest score
+- `"passing"`: a **list** of names whose score is **50 or more**
 
 Then **call** the function and use the returned dictionary to print the report:
 

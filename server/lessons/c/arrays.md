@@ -51,11 +51,11 @@ int main(void) {
 }
 ```
 
-**Warning**: until we assign values, the array holds **garbage** (whatever was in that memory before). Reading from an uninitialized array is **undefined behavior** in C — your program might print **0**, or random numbers, or crash. Always initialize before reading
+**Warning**: until we assign values, the array holds **garbage** (whatever was in that memory before). Reading from an uninitialized array is **undefined behavior** in C: your program might print **0**, or random numbers, or crash. Always initialize before reading
 
 ---
 
-How many elements does an array have? Here C gives us no help at all — the array doesn't **know** its own size, it's just a chunk of memory
+How many elements does an array have? Here C gives us no help at all: the array doesn't **know** its own size, it's just a chunk of memory
 
 The classic trick uses **sizeof**
 

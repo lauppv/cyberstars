@@ -13,7 +13,7 @@ public class Main {
 }
 ```
 
-Output **14**. Spațiile contează și ele. Observă **parantezele** **()** de la final — pentru String, **length** este o **metodă**, așa că o apelăm cu paranteze
+Output **14**. Spațiile contează și ele. Observă **parantezele** **()** de la final: pentru String, **length** este o **metodă**, așa că o apelăm cu paranteze
 
 ---
 
@@ -53,7 +53,7 @@ public class Main {
 }
 ```
 
-Această capcană prinde pe toată lumea la început. String-urile în Java sunt **imutabile** — nu pot fi schimbate. Metodele întorc întotdeauna un string nou
+Această capcană prinde pe toată lumea la început. String-urile în Java sunt **imutabile**: nu pot fi schimbate. Metodele întorc întotdeauna un string nou
 
 ---
 
@@ -69,7 +69,7 @@ public class Main {
 }
 ```
 
-**substring(start, end)** dă caracterele de la poziția **start** până la (dar **fără** a include) poziția **end** — capătul este exclusiv
+**substring(start, end)** dă caracterele de la poziția **start** până la (dar **fără** a include) poziția **end**, capătul este exclusiv
 
 **substring(start)** cu un singur argument dă tot de la **start** până la finalul string-ului
 
@@ -93,7 +93,7 @@ public class Main {
 
 ---
 
-Compararea string-urilor — și **cea mai des întâlnită capcană din Java din toate timpurile**
+Compararea string-urilor, și **cea mai des întâlnită capcană din Java din toate timpurile**
 
 ```java
 public class Main {
@@ -166,7 +166,7 @@ tommy
 cetti
 ```
 
-**Exemplu** pentru numele `lance` (exact 5 litere — primele 5 și ultimele 5 sunt tot numele):
+**Exemplu** pentru numele `lance` (exact 5 litere: primele 5 și ultimele 5 sunt tot numele):
 
 ```text
 LANCE

@@ -118,7 +118,7 @@ The station tracks its cargo in a list. Create an empty list called `cargo`. The
 3. Print the **first** item
 4. Print the **last** item
 5. Print how many items are loaded
-6. A leak empties the item at index 1 — replace it with `empty`
+6. A leak empties the item at index 1, replace it with `empty`
 7. Print the list
 
 **Example**

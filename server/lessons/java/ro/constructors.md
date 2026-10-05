@@ -1,4 +1,4 @@
-wCând creezi un obiect nou, Java apelează o metodă specială numită **constructor**. Este codul care rulează **la naștere** — pregătind obiectul înainte ca cineva să-l poată folosi
+wCând creezi un obiect nou, Java apelează o metodă specială numită **constructor**. Este codul care rulează **la naștere**, pregătind obiectul înainte ca cineva să-l poată folosi
 
 Gândește-te așa: când Tommy Vercetti ajunge în Vice City, începe cu un nume, o reputație și poate ceva bani. Constructorul este cel care îi dă acele statistici de start
 
@@ -35,7 +35,7 @@ Tommy
 
 Câteva lucruri de observat:
 
-- Constructorul are **același nume** ca și clasa — `Jucator`
+- Constructorul are **același nume** ca și clasa: `Jucator`
 - Nu are **niciun tip de retur**. Nici `void`, nici `int`, literalmente nimic înainte de nume. Așa știe Java că este un constructor și nu o metodă obișnuită
 - Folosim `new Jucator("Tommy", 100)` ca să creăm obiectul și să apelăm constructorul în același timp
 
@@ -45,7 +45,7 @@ Câteva lucruri de observat:
 
 Probabil ai remarcat `this.nume = nume` și te-ai întrebat ce se întâmplă. Iată cum stă treaba:
 
-- `nume` (fără `this`) se referă la **parametru** — valoarea pasată
+- `nume` (fără `this`) se referă la **parametru**, valoarea pasată
 - `this.nume` se referă la **câmpul** de pe obiectul însuși
 
 E ca și cum ai spune „numele **acestui** obiect este egal cu numele pe care mi l-ai dat"
@@ -90,7 +90,7 @@ public class Main {
 }
 ```
 
-Dar folosirea lui `this` este considerată stil bun — îți face intenția clară
+Dar folosirea lui `this` este considerată stil bun: îți face intenția clară
 
 ---
 
@@ -147,7 +147,7 @@ Goon
 
 ## Constructori Multipli
 
-Poți avea mai mult de un constructor — atâta timp cât primesc parametri diferiți. Asta se numește **supraîncărcare** (overloading):
+Poți avea mai mult de un constructor, atâta timp cât primesc parametri diferiți. Asta se numește **supraîncărcare** (overloading):
 
 ```java
 class Arma {
@@ -186,11 +186,11 @@ Fists provoaca 10 daune
 
 ## Misiune: Fișa de Scor a Echipajului
 
-Tommy ține o evidență a echipajului său din Vice City. Fiecare membru este înregistrat cu un nume și un scor — reputația lui pe străzi.
+Tommy ține o evidență a echipajului său din Vice City. Fiecare membru este înregistrat cu un nume și un scor: reputația lui pe străzi.
 
 Creează o **clasă** `Jucator` care reprezintă un membru al echipajului, cu un câmp pentru **nume** (String) și unul pentru **scor** (int). Scrie un **constructor** care primește ambele valori și le setează folosind `this`.
 
-În `main`, stochează mai întâi valorile în variabile locale — `nume1` și `scor1` pentru primul membru, `nume2` și `scor2` pentru al doilea. Apoi construiește **doi** membri pasând acele variabile constructorului și afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
+În `main`, stochează mai întâi valorile în variabile locale: `nume1` și `scor1` pentru primul membru, `nume2` și `scor2` pentru al doilea. Apoi construiește **doi** membri pasând acele variabile constructorului și afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
 
 **Exemplu** pentru `Tommy Vercetti` cu scorul `500` și `Lance Vance` cu scorul `300`
 

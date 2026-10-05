@@ -1,4 +1,4 @@
-Uneori ai nevoie de o **copie** a unui fișier — un backup, sau un punct de pornire
+Uneori ai nevoie de o **copie** a unui fișier: un backup, sau un punct de pornire
 pentru ceva nou. Comanda **cp** (**copy**) face exact asta.
 
 Tiparul este întotdeauna: `cp SURSĂ DESTINAȚIE`.
@@ -54,7 +54,7 @@ A fost emisă o avertizare de furtună solară. Datele critice ale stației treb
 
 1. Creează un folder numit `backupuri`.
 2. Copiază `misiune.txt` în `backupuri` (păstrându-i numele).
-3. Copiază întregul folder `rapoarte` în `backupuri` — fiindcă are conținut, e nevoie de o copiere recursivă.
+3. Copiază întregul folder `rapoarte` în `backupuri`. Fiindcă are conținut, e nevoie de o copiere recursivă.
 4. Verifică backup-ul ca arbore.
 
 **Rezultat așteptat**

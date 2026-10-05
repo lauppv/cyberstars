@@ -124,8 +124,8 @@ Stația verifică în permanență nivelul ei de `oxigen` (în procente) și dac
   - dacă echipajul este încă la bord → `Urgența - evacuați acum`
   - altfel → `Nu avem echipaj la bord, deci aerisirea compartimentului este sigură`
 
-- `oxigen` — nivelul de oxigen în procente
-- `echipaj_la_bord` — dacă echipajul este încă pe stație
+- `oxigen`: nivelul de oxigen în procente
+- `echipaj_la_bord`: dacă echipajul este încă pe stație
 
 **Exemplu**
 

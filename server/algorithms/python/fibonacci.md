@@ -34,7 +34,7 @@ Output:
 0
 ```
 
-With `n = 1` you only print the very first term — no space, no second number.
+With `n = 1` you only print the very first term: no space, no second number.
 
 ```
 Input:

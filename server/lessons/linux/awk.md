@@ -45,7 +45,7 @@ You can mix literal strings and field variables freely inside the print statemen
 
 ## Mission: Sensor Data Extract
 
-Engineering has requested a quick readout of sector names and their sensor values — they do not need the reading type column cluttering the display.
+Engineering has requested a quick readout of sector names and their sensor values. They do not need the reading type column cluttering the display.
 
 1. Use `awk` to print **only columns 1 and 3** from `sensors.dat` (sector and value), and display them.
 2. Save that two-column extract into a new file called `readout.txt`.

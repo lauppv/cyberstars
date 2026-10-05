@@ -1,4 +1,4 @@
-You can create and move files — but how do you see _what is inside_ one? The simplest
+You can create and move files, but how do you see _what is inside_ one? The simplest
 tool is **cat**.
 
 The name is short for **concatenate**, but its everyday use is plain: **print a file's
@@ -17,7 +17,7 @@ The whole file is dumped into the terminal at once.
 
 ### When to use cat
 
-`cat` is perfect for **short** files — a few lines you want to read in one glance. For
+`cat` is perfect for **short** files: a few lines you want to read in one glance. For
 very long files it floods the screen; you will meet better tools (`head`, `tail`,
 `less`) for those soon.
 
@@ -31,7 +31,7 @@ cat part1.txt part2.txt
 
 That "joining" is where the name _concatenate_ comes from.
 
-Like `ls` and `pwd`, `cat` only reads — it never changes the file.
+Like `ls` and `pwd`, `cat` only reads. It never changes the file.
 
 ---
 

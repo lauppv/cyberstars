@@ -1,4 +1,4 @@
-Last project — let's build a **student gradebook**! This one combines **classes**, **HashMap**, and **ArrayList** into a real-world application. Think of it like the stats screen in Vice City, but for school instead of crime
+Last project: let's build a **student gradebook**! This one combines **classes**, **HashMap**, and **ArrayList** into a real-world application. Think of it like the stats screen in Vice City, but for school instead of crime
 
 ---
 
@@ -49,7 +49,7 @@ class Student {
 }
 ```
 
-We create an empty HashMap in the constructor. The student starts with no grades — we'll add them later with a method
+We create an empty HashMap in the constructor. The student starts with no grades, we'll add them later with a method
 
 ---
 
@@ -109,7 +109,7 @@ public class Main {
 
 **Important note about HashMap ordering**
 
-HashMaps do **NOT** guarantee order. If you add Math, English, Science — they might print in any order. That's just how HashMaps work internally. If you need a specific order, you'd use a `LinkedHashMap` instead (which preserves insertion order), but for now, regular HashMap is fine
+HashMaps do **NOT** guarantee order. If you add Math, English, Science, they might print in any order. That's just how HashMaps work internally. If you need a specific order, you'd use a `LinkedHashMap` instead (which preserves insertion order), but for now, regular HashMap is fine
 
 For our exercise, we'll use a **LinkedHashMap** so the output is predictable
 
@@ -127,7 +127,7 @@ class Student {
 }
 ```
 
-LinkedHashMap works exactly like HashMap but remembers the order you added things. Think of it like Vice City's stats screen — it always shows your stats in the same order
+LinkedHashMap works exactly like HashMap but remembers the order you added things. Think of it like Vice City's stats screen: it always shows your stats in the same order
 
 ---
 
@@ -189,9 +189,9 @@ Student: Tommy
 
 ---
 
-Notice how we used **composition** again — a Student **has a** HashMap of grades. This is the same pattern as the Inventory project where Inventory **has an** ArrayList of Items. Real-world Java is full of this: objects containing other objects, each with their own responsibilities
+Notice how we used **composition** again: a Student **has a** HashMap of grades. This is the same pattern as the Inventory project where Inventory **has an** ArrayList of Items. Real-world Java is full of this: objects containing other objects, each with their own responsibilities
 
-The Student class is self-contained — it knows how to add grades, calculate its own average, and print its own report. Each object manages its own data. That's good OOP design
+The Student class is self-contained: it knows how to add grades, calculate its own average, and print its own report. Each object manages its own data. That's good OOP design
 
 ---
 
@@ -205,7 +205,7 @@ The station's training academy just finished exams. Each cadet has grades in mul
    - `"Student: NAME"` on the first line
    - `"  SUBJECT: GRADE"` for each subject (two spaces before each)
    - `"  Average: X.X"` at the end (one decimal place, two spaces before)
-4. In main, store the data in variables — `name1` plus `math1`/`english1`/`science1` for the first student, `name2` plus `math2`/`english2`/`science2` for the second (start with Tommy: 90/85/92 and Lance: 78/82/88). Create the two `Student`s from those variables and add their grades
+4. In main, store the data in variables: `name1` plus `math1`/`english1`/`science1` for the first student, `name2` plus `math2`/`english2`/`science2` for the second (start with Tommy: 90/85/92 and Lance: 78/82/88). Create the two `Student`s from those variables and add their grades
 5. Print both reports
 
 **Output**

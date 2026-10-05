@@ -5,16 +5,16 @@ Here's a secret: in C, **arrays and pointers are closely related**. When you use
 
 int main(void) {
     int numbers[] = {10, 20, 30, 40, 50};
-    int *p = numbers;   // no & needed — numbers IS already an address
+    int *p = numbers;   // no & needed: numbers IS already an address
 
-    printf("%d\n", *p);        // 10 — first element
-    printf("%d\n", *(p + 1));  // 20 — second element
-    printf("%d\n", *(p + 2));  // 30 — third element
+    printf("%d\n", *p);        // 10, first element
+    printf("%d\n", *(p + 1));  // 20, second element
+    printf("%d\n", *(p + 2));  // 30, third element
     return 0;
 }
 ```
 
-**numbers** is essentially a pointer to the first element. **p + 1** doesn't add 1 byte — it moves to the **next int** (4 bytes forward). This is called **pointer arithmetic**, and C handles the size automatically based on the type
+**numbers** is essentially a pointer to the first element. **p + 1** doesn't add 1 byte, it moves to the **next int** (4 bytes forward). This is called **pointer arithmetic**, and C handles the size automatically based on the type
 
 ---
 
@@ -26,7 +26,7 @@ This means **array[i]** is just syntactic sugar for **\*(array + i)**. They are 
 int main(void) {
     int numbers[] = {10, 20, 30};
     printf("%d\n", numbers[1]);       // 20
-    printf("%d\n", *(numbers + 1));   // 20 — same thing!
+    printf("%d\n", *(numbers + 1));   // 20, same thing!
     return 0;
 }
 ```
@@ -69,7 +69,7 @@ the compiler actually sees
 void print(int *array) { }
 ```
 
-The array **decays** into a pointer. The function only receives the address of the first element — it has **no idea** how big the array is. That's why we always pass the **size** as a separate parameter
+The array **decays** into a pointer. The function only receives the address of the first element: it has **no idea** how big the array is. That's why we always pass the **size** as a separate parameter
 
 ---
 

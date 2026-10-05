@@ -27,7 +27,7 @@ Dacă fișierul nu există încă, **ambii** operatori `>` și `>>` îl vor crea
 contează doar atunci când fișierul are deja conținut.
 
 Un tipar des întâlnit este să folosești `>` o dată ca să pornești de la zero, apoi `>>`
-ca să acumulezi date în timp — ca un jurnal de stație care crește cu fiecare tură.
+ca să acumulezi date în timp, ca un jurnal de stație care crește cu fiecare tură.
 
 ---
 

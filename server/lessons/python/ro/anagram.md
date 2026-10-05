@@ -25,7 +25,7 @@ Folosim **.lower()** ca să nu conteze majusculele și minusculele
 
 ---
 
-Dar hai să o rezolvăm și folosind ce am învățat — un **dicționar de frecvențe**. Două cuvinte sunt anagrame dacă fiecare literă apare de **același număr de ori** în ambele cuvinte
+Dar hai să o rezolvăm și folosind ce am învățat: un **dicționar de frecvențe**. Două cuvinte sunt anagrame dacă fiecare literă apare de **același număr de ori** în ambele cuvinte
 
 ```py
 def este_anagrama(cuvant1, cuvant2):
@@ -64,7 +64,7 @@ False
 
 Construim un dicționar de frecvențe pentru fiecare cuvânt, apoi le comparăm. Dacă dicționarele sunt egale, cuvintele au aceleași litere cu aceleași cantități → anagramă
 
-Observă **ieșirea timpurie**: dacă lungimile sunt diferite, nu pot fi anagrame — nu are rost să numărăm nimic
+Observă **ieșirea timpurie**: dacă lungimile sunt diferite, nu pot fi anagrame, nu are rost să numărăm nimic
 
 ---
 
@@ -74,7 +74,7 @@ Abordarea cu frecvențe este de fapt **mai rapidă** decât sortarea pentru șir
 
 ## Misiune: Potrivirea Parolelor
 
-Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se deschide doar dacă cele două parole sunt **anagrame** una a celeilalte — aceleași litere într-o ordine diferită (nu contează majusculele).
+Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se deschide doar dacă cele două parole sunt **anagrame** una a celeilalte: aceleași litere într-o ordine diferită (nu contează majusculele).
 
 1. Scrie o funcție **sunt_anagrame(a, b)** care returnează `True` dacă cele două cuvinte sunt anagrame, `False` altfel. Folosește **oricare** abordare (sortează literele și compară, sau un dicționar de frecvențe). Transformă-le mai întâi în minuscule ca să nu conteze majusculele.
 2. **Citește** două parole, apoi afișează `Anagrama: ` urmat de rezultat.
@@ -85,7 +85,7 @@ Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se
 - prima parolă
 - a doua parolă
 
-**Ieșire** — două linii: verificarea anagramei, apoi verdictul accesului.
+**Ieșire**: două linii: verificarea anagramei, apoi verdictul accesului.
 
 **Exemplu**
 

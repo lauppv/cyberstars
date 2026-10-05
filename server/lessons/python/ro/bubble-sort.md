@@ -57,7 +57,7 @@ Hai să urmărim pas cu pas ca să ne asigurăm că înțelegem cele două bucle
 
 ---
 
-**Este Bubble Sort rapid?** Sincer, nu. Pentru o listă de **n** elemente, face aproximativ **n × n** comparații. Pentru 10 elemente, asta înseamnă aproximativ 100 de comparații — în regulă. Pentru 1.000.000 de elemente, asta înseamnă aproximativ 1.000.000.000.000 de comparații — foarte lent
+**Este Bubble Sort rapid?** Sincer, nu. Pentru o listă de **n** elemente, face aproximativ **n × n** comparații. Pentru 10 elemente, asta înseamnă aproximativ 100 de comparații, în regulă. Pentru 1.000.000 de elemente, asta înseamnă aproximativ 1.000.000.000.000 de comparații, foarte lent
 
 De aceea, în codul real folosim **sorted()**, care folosește un algoritm mult mai rapid. Dar înțelegerea Bubble Sort ne învață cum să ne gândim la **comparații** și **interschimbări**, care sunt fundamentul multor algoritmi
 

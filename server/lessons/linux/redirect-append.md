@@ -27,7 +27,7 @@ If the file does not exist yet, **both** `>` and `>>` will create it. The differ
 only matters when the file already has content.
 
 A common pattern is to use `>` once to start fresh, then `>>` to accumulate more data
-over time — like a station log that grows with each shift.
+over time, like a station log that grows with each shift.
 
 ---
 

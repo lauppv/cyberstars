@@ -42,7 +42,7 @@ After each `chmod`, verify with `ls -l` to confirm the change took effect.
 
 ## Mission: Activate the Firmware Deployer
 
-A critical firmware update is ready in `deploy.sh`, but the script cannot run yet — and it also carries sensitive settings that outsiders should never read.
+A critical firmware update is ready in `deploy.sh`, but the script cannot run yet, and it also carries sensitive settings that outsiders should never read.
 
 1. Give the owner permission to run `deploy.sh` as a program.
 2. Remove read access from others on `deploy.sh` so outsiders cannot view it.

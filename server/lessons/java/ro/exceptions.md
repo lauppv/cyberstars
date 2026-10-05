@@ -1,4 +1,4 @@
-Când ceva merge prost la rulare — împărțire la zero, acces la un indice inexistent, parsare de text invalid — Java aruncă o **excepție** și programul se prăbușește. **try/catch** te lasă să prinzi eroarea și să continui
+Când ceva merge prost la rulare (împărțire la zero, acces la un indice inexistent, parsare de text invalid), Java aruncă o **excepție** și programul se prăbușește. **try/catch** te lasă să prinzi eroarea și să continui
 
 ```java
 public class Main {
@@ -64,13 +64,13 @@ Eroare: Index 10 out of bounds for length 3
 
 Tipurile cele mai comune de excepții
 
-- **ArithmeticException** — împărțire la zero
-- **ArrayIndexOutOfBoundsException** — indice de array inexistent
-- **NumberFormatException** — parsare de string care nu e număr valid
-- **NullPointerException** — folosirea unei variabile care este null
-- **ClassCastException** — conversie de obiect invalidă
+- **ArithmeticException**: împărțire la zero
+- **ArrayIndexOutOfBoundsException**: indice de array inexistent
+- **NumberFormatException**: parsare de string care nu e număr valid
+- **NullPointerException**: folosirea unei variabile care este null
+- **ClassCastException**: conversie de obiect invalidă
 
-Poți prinde o `Exception` generală, dar e mai bine să fii specific — tratezi fiecare situație diferit
+Poți prinde o `Exception` generală, dar e mai bine să fii specific: tratezi fiecare situație diferit
 
 ---
 
@@ -95,7 +95,7 @@ Java încearcă fiecare catch de sus în jos și îl folosește pe **primul care
 
 ---
 
-Blocul **finally** rulează oricum — fie că try-ul a reușit, fie că o excepție a fost prinsă
+Blocul **finally** rulează oricum, fie că try-ul a reușit, fie că o excepție a fost prinsă
 
 ```java
 public class Main {
@@ -120,13 +120,13 @@ Eroare prinsa!
 Asta ruleaza mereu
 ```
 
-Util pentru curățenie — închiderea fișierelor, eliberarea resurselor
+Util pentru curățenie: închiderea fișierelor, eliberarea resurselor
 
 ---
 
 **Când try/catch vs verificare directă?**
 
-Nu folosi try/catch ca pe o cârjă. Dacă știi că un array are 3 elemente, nu accesa indicele 10 — verifică pur și simplu. Folosește try/catch pentru lucruri pe care nu le poți prezice: input de la utilizator, parsare de text
+Nu folosi try/catch ca pe o cârjă. Dacă știi că un array are 3 elemente, nu accesa indicele 10, verifică pur și simplu. Folosește try/catch pentru lucruri pe care nu le poți prezice: input de la utilizator, parsare de text
 
 ---
 

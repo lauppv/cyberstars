@@ -53,7 +53,7 @@ True
 ```
 
 Repeated letters still count as a match as long as each letter appears the same
-number of times in both strings — order does not matter, only the letter counts.
+number of times in both strings. Order does not matter, only the letter counts.
 
 ```
 Input:
@@ -73,5 +73,5 @@ Output:
 False
 ```
 
-Different lengths can never be anagrams — that is a fast way to rule out a
+Different lengths can never be anagrams. That is a fast way to rule out a
 non-match before comparing letters.

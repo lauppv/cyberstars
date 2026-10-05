@@ -119,9 +119,9 @@ Echipajul își urmărește munca pe o tablă de sarcini comună. Vei **citi sar
 
 Scrie trei funcții:
 
-- **adauga_sarcina(sarcini, nume)** — adaugă o sarcină nouă la listă cu `terminat` setat pe `False`.
-- **finalizeaza_sarcina(sarcini, index)** — marchează sarcina de la acel index ca terminată.
-- **numara_finalizate(sarcini)** — returnează câte sarcini sunt terminate.
+- **adauga_sarcina(sarcini, nume)**: adaugă o sarcină nouă la listă cu `terminat` setat pe `False`.
+- **finalizeaza_sarcina(sarcini, index)**: marchează sarcina de la acel index ca terminată.
+- **numara_finalizate(sarcini)**: returnează câte sarcini sunt terminate.
 
 Apoi:
 

@@ -4,7 +4,7 @@ La final, firul principal afișează cel mai mic index unde apare `tinta`, sau `
 
 ### Date de intrare
 
-- Prima linie: numărul întreg `N` (2 ≤ N ≤ 100)
+- Prima linie: numărul întreg `N` (2 <= N <= 100)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -1000 și 1000)
 - Ultima linie: numărul întreg `tinta`
 
@@ -55,6 +55,6 @@ Ieșire:
 Gasit la indexul 0
 ```
 
-Chiar dacă `tinta` apare de mai multe ori, afișăm întotdeauna cel mai mic index — de aceea comparăm `i < index_gasit` sub mutex.
+Chiar dacă `tinta` apare de mai multe ori, afișăm întotdeauna cel mai mic index. De aceea comparăm `i < index_gasit` sub mutex.
 
 Folosește **pthread_create**, **pthread_join** și un **pthread_mutex_t** partajat.

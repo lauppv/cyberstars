@@ -1,6 +1,6 @@
 Cunoaștem **listele**, **tuplurile** și **dicționarele**. E timpul pentru ultimul tip mare de colecție: **mulțimile** (sets)
 
-O **mulțime** (set) este o colecție în care **fiecare element este unic**. Nu sunt permise duplicate. Gândește-te la asta ca la lista de invitați la o petrecere — fiecare persoană poate fi pe listă o **singură** dată
+O **mulțime** (set) este o colecție în care **fiecare element este unic**. Nu sunt permise duplicate. Gândește-te la asta ca la lista de invitați la o petrecere: fiecare persoană poate fi pe listă o **singură** dată
 
 ```py
 oaspeti = {"Tommy", "Lance", "Cortez", "Tommy"}
@@ -13,7 +13,7 @@ Ieșire
 {'Lance', 'Cortez', 'Tommy'}
 ```
 
-Stai, am scris **Tommy** de două ori, dar el apare o singură dată. Asta este toată ideea unei mulțimi — elimină automat duplicatele. Observă de asemenea că **ordinea ar putea fi diferită** de cum le-am scris noi. Mulțimile nu țin cont de ordine, doar de **ce conțin**
+Stai, am scris **Tommy** de două ori, dar el apare o singură dată. Asta este toată ideea unei mulțimi: elimină automat duplicatele. Observă de asemenea că **ordinea ar putea fi diferită** de cum le-am scris noi. Mulțimile nu țin cont de ordine, doar de **ce conțin**
 
 ---
 
@@ -96,7 +96,7 @@ Stația a recepționat o listă de coduri de semnal, iar multe se repetă. Fă u
 1. Afișează `Total: ` apoi numărul total de semnale (lungimea listei)
 2. Creează o **mulțime** cu codurile unice
 3. Afișează `Unice: ` apoi câte coduri unice există
-4. Verifică dacă a fost recepționat codul `D4` — afișează `D4 detectat` dacă **se află în** mulțime, altfel `D4 lipseste`
+4. Verifică dacă a fost recepționat codul `D4`: afișează `D4 detectat` dacă **se află în** mulțime, altfel `D4 lipseste`
 
 **Ieșire**
 

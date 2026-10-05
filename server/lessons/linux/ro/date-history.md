@@ -19,7 +19,7 @@ uptime
  14:32:01 up 42 days,  3:17,  1 user,  load average: 0.12, 0.08, 0.05
 ```
 
-Această stație a fost online 42 de zile fără repornire — o stabilitate
+Această stație a fost online 42 de zile fără repornire, o stabilitate
 impresionantă.
 
 ### Reactualizarea comenzilor anterioare

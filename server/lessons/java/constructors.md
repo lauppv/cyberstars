@@ -1,4 +1,4 @@
-When you create a new object, Java calls a special method called a **constructor**. It's the code that runs **at birth** — setting up the object before anyone can use it
+When you create a new object, Java calls a special method called a **constructor**. It's the code that runs **at birth**, setting up the object before anyone can use it
 
 Think of it like this: when Tommy Vercetti arrives in Vice City, he starts with a name, a reputation, and maybe some cash. The constructor is what gives him those starting stats
 
@@ -35,7 +35,7 @@ Tommy
 
 A few things to notice:
 
-- The constructor has the **same name** as the class — `Player`
+- The constructor has the **same name** as the class: `Player`
 - It has **no return type**. Not `void`, not `int`, literally nothing before the name. That's how Java knows it's a constructor and not a regular method
 - We use `new Player("Tommy", 100)` to create the object and call the constructor at the same time
 
@@ -45,7 +45,7 @@ A few things to notice:
 
 You probably spotted `this.name = name` and wondered what's going on. Here's the deal:
 
-- `name` (without `this`) refers to the **parameter** — the value passed in
+- `name` (without `this`) refers to the **parameter**, the value passed in
 - `this.name` refers to the **field** on the object itself
 
 It's like saying "**this** object's name equals the name you gave me"
@@ -90,7 +90,7 @@ public class Main {
 }
 ```
 
-But using `this` is considered good style — it makes your intent clear
+But using `this` is considered good style: it makes your intent clear
 
 ---
 
@@ -147,7 +147,7 @@ Goon
 
 ## Multiple Constructors
 
-You can have more than one constructor — as long as they take different parameters. This is called **overloading**:
+You can have more than one constructor, as long as they take different parameters. This is called **overloading**:
 
 ```java
 class Weapon {
@@ -186,11 +186,11 @@ Fists deals 10 damage
 
 ## Mission: Crew Scorecard
 
-Tommy keeps a record of his Vice City crew. Each member is registered with a name and a score — their reputation on the streets.
+Tommy keeps a record of his Vice City crew. Each member is registered with a name and a score: their reputation on the streets.
 
 Create a **class** `Player` that represents a crew member, with a field for the **name** (String) and one for the **score** (int). Write a **constructor** that takes both values and sets them using `this`.
 
-In `main`, first store the values in local variables — `name1` and `score1` for the first member, `name2` and `score2` for the second. Then build **two** members by passing those variables to the constructor, and print each one on its own line in the format `Name has Score points`.
+In `main`, first store the values in local variables: `name1` and `score1` for the first member, `name2` and `score2` for the second. Then build **two** members by passing those variables to the constructor, and print each one on its own line in the format `Name has Score points`.
 
 **Example** for `Tommy Vercetti` with score `500` and `Lance Vance` with score `300`
 

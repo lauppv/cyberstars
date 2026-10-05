@@ -62,7 +62,7 @@ int main(void) {
 }
 ```
 
-This is much better than `if (c == 0)` — anyone reading the code knows exactly what RED means
+This is much better than `if (c == 0)`: anyone reading the code knows exactly what RED means
 
 ---
 

@@ -47,4 +47,4 @@ Min: 2
 Max: 18
 ```
 
-Funcția "returnează" trei valori deodată folosind pointeri — tiparul transmiterii prin referință
+Funcția "returnează" trei valori deodată folosind pointeri: tiparul transmiterii prin referință

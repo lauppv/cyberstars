@@ -16,7 +16,7 @@ public class Main {
 hey, I like pizza
 ```
 
-What is all that boilerplate around our **System.out.println**? Don’t panic. Right now, we don’t need to fully understand it. Just know that **every Java program** needs this structure to work. Think of it as the **frame of a painting** — it’s always there, the actual code goes **inside**
+What is all that boilerplate around our **System.out.println**? Don’t panic. Right now, we don’t need to fully understand it. Just know that **every Java program** needs this structure to work. Think of it as the **frame of a painting**: it’s always there, the actual code goes **inside**
 
 The line that does the work is
 
@@ -30,9 +30,9 @@ Three things to notice
 
 - The text goes **inside double quotes** **""**
 - Every statement ends with a **semicolon** **;**. Forget it and Java will refuse to run
-- The **{ }** braces define **blocks** of code — they group the lines that belong together
+- The **{ }** braces define **blocks** of code: they group the lines that belong together
 
-Try removing the **;** and run the code. Read the error — that’s how you learn to recognize the compiler’s messages
+Try removing the **;** and run the code. Read the error, that’s how you learn to recognize the compiler’s messages
 
 ---
 

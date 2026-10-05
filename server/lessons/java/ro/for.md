@@ -1,4 +1,4 @@
-Bun venit la unul dintre cele **mai importante** concepte din programare — bucla **for**. Cu ea, putem cere calculatorului să facă ceva **de multe ori**, **automat**
+Bun venit la unul dintre cele **mai importante** concepte din programare: bucla **for**. Cu ea, putem cere calculatorului să facă ceva **de multe ori**, **automat**
 
 De ce contează? Imaginează-ți că vrem să afișăm toate numerele de la **1** la **10**
 
@@ -41,9 +41,9 @@ public class Main {
 }
 ```
 
-1. **int i = 1** — **punctul de pornire**. Creăm o nouă variabilă **i** și o setăm la **1**
-2. **i <= 10** — **condiția**. Atât timp cât aceasta este **adevărată**, bucla continuă să ruleze
-3. **i++** — ce să facă **după fiecare iterație**. Aici creștem **i** cu 1
+1. **int i = 1**: **punctul de pornire**. Creăm o nouă variabilă **i** și o setăm la **1**
+2. **i <= 10**: **condiția**. Atât timp cât aceasta este **adevărată**, bucla continuă să ruleze
+3. **i++**: ce să facă **după fiecare iterație**. Aici creștem **i** cu 1
 
 Citit ca o poveste: "pornește cu **i = 1**. Cât timp **i <= 10**, rulează corpul. După fiecare rulare, fă **i++**"
 
@@ -127,7 +127,7 @@ Sector de patrulat
 
 ## Misiune: Inspecția Garajului
 
-Tommy inspectează garajul vilei Vercetti. Locurile de parcare sunt numerotate de la **1** până la un număr total. Pe unul dintre locuri e parcat **Infernus**-ul lui — acolo, în loc de număr, vrei să afișezi numele mașinii.
+Tommy inspectează garajul vilei Vercetti. Locurile de parcare sunt numerotate de la **1** până la un număr total. Pe unul dintre locuri e parcat **Infernus**-ul lui. Acolo, în loc de număr, vrei să afișezi numele mașinii.
 
 Stochează numărul total de locuri în `totalLocuri` și locul pe care se află Infernus-ul în `loculInfernus`. Apoi folosește o buclă **for** care parcurge locurile de la **1** la total. Pentru fiecare loc:
 

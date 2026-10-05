@@ -10,7 +10,7 @@ Dacă mai avem **10** secunde → pornim motoarele principale
 
 Altfel → nu facem nimic special
 
-În Java folosim **else if** — două cuvinte, scrise pe larg
+În Java folosim **else if**: două cuvinte, scrise pe larg
 
 ```java
 public class Main {
@@ -34,7 +34,7 @@ public class Main {
 
 **Rulează** asta. Apoi schimbă **secunde** la **60**, **20**, **10**, **9**, **42**. Vezi cum se schimbă rezultatul
 
-Lanțul rulează **de sus în jos**. La **prima** condiție care este **adevărată**, Java intră în acel bloc, îl rulează și **iese** din întregul lanț. Ramurile rămase **nu** sunt **niciodată** verificate. Asta este important — dacă **secunde == 60**, lanțul afișează **"Verific conexiunea..."** și apoi iese
+Lanțul rulează **de sus în jos**. La **prima** condiție care este **adevărată**, Java intră în acel bloc, îl rulează și **iese** din întregul lanț. Ramurile rămase **nu** sunt **niciodată** verificate. Asta este important: dacă **secunde == 60**, lanțul afișează **"Verific conexiunea..."** și apoi iese
 
 ---
 
@@ -52,7 +52,7 @@ public class Main {
 }
 ```
 
-Problema: fiecare **if** este independent. **else**-ul de la final aparține doar **ultimului if**. Așadar pentru **secunde = 60**, al treilea if eșuează (60 != 20), iar **else**-ul intră în acțiune afișând **"60 de secunde nu au niciun efect"**, ceea ce e greșit — am tratat deja 60 mai sus!
+Problema: fiecare **if** este independent. **else**-ul de la final aparține doar **ultimului if**. Așadar pentru **secunde = 60**, al treilea if eșuează (60 != 20), iar **else**-ul intră în acțiune afișând **"60 de secunde nu au niciun efect"**, ceea ce e greșit, am tratat deja 60 mai sus!
 
 **Regulă practică**: când testăm **aceeași variabilă** pentru mai multe valori, **înlănțuim** cu **if / else if / else**
 

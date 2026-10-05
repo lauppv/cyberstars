@@ -1,4 +1,4 @@
-Cea mai puternică utilizare a semaforului nu e ca mutex, ci ca **semnal** între fire. Trucul: inițializăm semaforul cu **0**. Astfel, `sem_wait` blochează imediat — până când un alt fir face `sem_post`.
+Cea mai puternică utilizare a semaforului nu e ca mutex, ci ca **semnal** între fire. Trucul: inițializăm semaforul cu **0**. Astfel, `sem_wait` blochează imediat, până când un alt fir face `sem_post`.
 
 Schema e utilă când vrem ca un fir să aștepte un **eveniment** de la altul: un rezultat pregătit, o intrare disponibilă, o comandă terminată. Diferit de mutex, unde ambele fire "concurează" pentru resursă, aici avem o relație clară: unul așteaptă, celălalt semnalează.
 
@@ -19,7 +19,7 @@ void *calculeaza(void *arg) {
 }
 
 int main(void) {
-    sem_init(&gata, 0, 0);   // init cu 0 — sem_wait blocheaza imediat
+    sem_init(&gata, 0, 0);   // init cu 0: sem_wait blocheaza imediat
 
     pthread_t worker;
     pthread_create(&worker, NULL, calculeaza, NULL);
@@ -34,15 +34,15 @@ int main(void) {
 }
 ```
 
-Poți zice: "Dar `pthread_join` face același lucru — așteaptă firul." Corect, aici `pthread_join` ar fi fost destul. Semaforul strălucește când vrem să **așteptăm un moment intermediar** din execuția firului (nu terminarea totală), sau când firul rulează într-o buclă infinită și niciodată nu se termină de tot.
+Poți zice: "Dar `pthread_join` face același lucru: așteaptă firul." Corect, aici `pthread_join` ar fi fost destul. Semaforul strălucește când vrem să **așteptăm un moment intermediar** din execuția firului (nu terminarea totală), sau când firul rulează într-o buclă infinită și niciodată nu se termină de tot.
 
 ---
 
-Când combini două semafoare, poți sincroniza doi actori care fac schimb de mesaje — un pattern numit **rendezvous**. Producătorul pune o valoare într-o variabilă partajată, semnalează `plin`, apoi așteaptă `gol`; consumatorul așteaptă `plin`, citește, apoi semnalează `gol` înapoi. Ambele fire alternează controlul printr-un singur slot.
+Când combini două semafoare, poți sincroniza doi actori care fac schimb de mesaje, un pattern numit **rendezvous**. Producătorul pune o valoare într-o variabilă partajată, semnalează `plin`, apoi așteaptă `gol`; consumatorul așteaptă `plin`, citește, apoi semnalează `gol` înapoi. Ambele fire alternează controlul printr-un singur slot.
 
 ```text
-sem_t plin;   // init 0 — semnalat de producator cand slotul are date
-sem_t gol;    // init 1 — semnalat de consumator cand slotul e liber
+sem_t plin;   // init 0, semnalat de producator cand slotul are date
+sem_t gol;    // init 1, semnalat de consumator cand slotul e liber
 ```
 
 Pattern-ul e fundamentul multor cozi de mesaje și pipeline-uri.
@@ -64,6 +64,6 @@ Un fir "worker" trebuie să calculeze suma numerelor **1 până la 10** și să 
 Suma: 55
 ```
 
-Rezultatul e deterministic — firul principal nu poate tipări valoarea până când worker-ul nu a scris-o și nu a semnalat.
+Rezultatul e deterministic: firul principal nu poate tipări valoarea până când worker-ul nu a scris-o și nu a semnalat.
 
 Folosește `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` din **<semaphore.h>**, și `pthread_create`, `pthread_join` din **<pthread.h>**.

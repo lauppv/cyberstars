@@ -15,7 +15,7 @@ void *lucreaza(void *arg) {
 }
 
 int main(void) {
-    // Semafor cu contor initial 2 — la orice moment cel mult 2 fire trec de sem_wait.
+    // Semafor cu contor initial 2: la orice moment cel mult 2 fire trec de sem_wait.
     sem_init(&imprimante, 0, 2);
 
     pthread_t fire[4];

@@ -1,6 +1,6 @@
-Welcome to **Kotlin** — a modern programming language that runs on the JVM. It's concise, safe, and fully interoperable with Java.
+Welcome to **Kotlin**, a modern programming language that runs on the JVM. It's concise, safe, and fully interoperable with Java.
 
-The first thing every programmer learns is **Hello, World!**. In Kotlin, every program needs a `main()` function — that's where the computer starts reading your code.
+The first thing every programmer learns is **Hello, World!**. In Kotlin, every program needs a `main()` function: that's where the computer starts reading your code.
 
 To display output we use `println()`:
 

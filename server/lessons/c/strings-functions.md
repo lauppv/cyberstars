@@ -21,7 +21,7 @@ Length: 14
 
 ---
 
-**strcmp** — compare two strings
+**strcmp**: compare two strings
 
 ```c
 #include <stdio.h>
@@ -43,7 +43,7 @@ int main(void) {
 
 ---
 
-**strcpy** — copy one string into another
+**strcpy**: copy one string into another
 
 ```c
 #include <stdio.h>
@@ -59,11 +59,11 @@ int main(void) {
 }
 ```
 
-**strcpy(dest, source)** copies everything from **source** into **dest**, including the **'\0'**. Make sure **dest** is big enough! If it's too small, you get a **buffer overflow** — one of the most dangerous bugs in programming. This is how real security vulnerabilities happen
+**strcpy(dest, source)** copies everything from **source** into **dest**, including the **'\0'**. Make sure **dest** is big enough! If it's too small, you get a **buffer overflow**, one of the most dangerous bugs in programming. This is how real security vulnerabilities happen
 
 ---
 
-**strcat** — concatenate (join) two strings
+**strcat**: concatenate (join) two strings
 
 ```c
 #include <stdio.h>
@@ -81,7 +81,7 @@ int main(void) {
 
 ---
 
-A useful trick: **strstr** — find a substring
+A useful trick: **strstr** (find a substring)
 
 ```c
 #include <stdio.h>
@@ -98,7 +98,7 @@ int main(void) {
 }
 ```
 
-**strstr** returns a pointer to where the substring starts, or **NULL** if it's not found. **NULL** is C's way of saying "nothing" — it's a special pointer value that means "points to nothing." We'll see it a lot
+**strstr** returns a pointer to where the substring starts, or **NULL** if it's not found. **NULL** is C's way of saying "nothing": it's a special pointer value that means "points to nothing." We'll see it a lot
 
 ---
 

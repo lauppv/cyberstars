@@ -16,7 +16,7 @@ import {
 export function execRateLimitHandler(req: Request, res: Response): void {
   const resetMs = (req.rateLimit?.resetTime?.getTime() ?? Date.now()) - Date.now();
   const seconds = Math.max(1, Math.ceil(resetMs / 1000));
-  res.status(429).json({ error: `Too many attempts — try again in ${seconds}s.` });
+  res.status(429).json({ error: `Too many attempts, try again in ${seconds}s.` });
 }
 
 // Check that the request carries an authenticated user or a guestId before

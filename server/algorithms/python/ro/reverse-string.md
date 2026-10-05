@@ -32,5 +32,5 @@ Intrare:  noon
 Ieșire: noon
 ```
 
-Unele șiruri arată la fel inversate — e o coincidență a literelor lor, nu un
+Unele șiruri arată la fel inversate. E o coincidență a literelor lor, nu un
 caz special pe care codul tău trebuie să-l detecteze.

@@ -2,7 +2,7 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Stochează-le î
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
+- Prima linie: un întreg `N` (1 <= N <= 1000)
 - Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
@@ -57,5 +57,5 @@ Ieșire:
 3.33
 ```
 
-Numerele negative funcționează la fel — suma poate fi mai mică decât oricare
+Numerele negative funcționează la fel: suma poate fi mai mică decât oricare
 valoare pozitivă individuală, iar media tot se rotunjește la 2 zecimale.

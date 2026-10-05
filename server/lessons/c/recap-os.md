@@ -1,4 +1,4 @@
-Combine **fork**, **pipes**, and **threads** — all the OS concepts in one challenge
+Combine **fork**, **pipes**, and **threads**: all the OS concepts in one challenge
 
 ---
 
@@ -8,7 +8,7 @@ A very long punch tape has arrived at the computing center and the words on it n
 
 The data is already on the right. Do the following, in order:
 
-1. Write **int count_words(const char \*text)** — counts words separated by spaces
+1. Write **int count_words(const char \*text)**: counts words separated by spaces
 2. Create a pipe, then fork
 3. The **child** counts the words in **"The quick brown fox jumps over the lazy dog"**, converts the count to a string with **sprintf**, writes it to the pipe, and exits
 4. The **parent** reads the count from the pipe and prints the result, then waits for the child

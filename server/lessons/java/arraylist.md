@@ -1,6 +1,6 @@
 Arrays are great, but they have one big limitation: their **size is fixed**. Once you create an array of 5 elements, you can't add a 6th. In real programs, you often don't know upfront how many items you'll need. This is where **ArrayList** comes in
 
-An **ArrayList** is a **dynamic array** — it grows and shrinks as needed. You need to import it from `java.util`
+An **ArrayList** is a **dynamic array**: it grows and shrinks as needed. You need to import it from `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ Output
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
 ```
 
-The **\<String\>** part is called a **generic type** — it tells Java what type of elements the list holds. `ArrayList<String>` means "a list that holds Strings." For numbers you use **ArrayList\<Integer\>** or **ArrayList\<Double\>** (not `int`/`double` directly — Java converts automatically)
+The **\<String\>** part is called a **generic type**: it tells Java what type of elements the list holds. `ArrayList<String>` means "a list that holds Strings." For numbers you use **ArrayList\<Integer\>** or **ArrayList\<Double\>** (not `int`/`double` directly, Java converts automatically)
 
 ---
 
@@ -36,19 +36,19 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<String> guests = new ArrayList<String>();
 
-        // add -- adds to the end
+        // add: adds to the end
         guests.add("Tommy");
         guests.add("Lance");
         guests.add("Mercedes");
         guests.add("Sonny");
 
-        // size -- how many elements
+        // size: how many elements
         System.out.println("Total: " + guests.size());
 
-        // get -- element at an index (starting from 0)
+        // get: element at an index (starting from 0)
         System.out.println("First: " + guests.get(0));
 
-        // remove -- removes at an index
+        // remove: removes at an index
         guests.remove(3);
         System.out.println("After removal: " + guests);
     }
@@ -63,11 +63,11 @@ First: Tommy
 After removal: [Tommy, Lance, Mercedes]
 ```
 
-`.size()` with parentheses, not `.length` like arrays — one of the differences to remember
+`.size()` with parentheses, not `.length` like arrays, one of the differences to remember
 
 ---
 
-**Iterating with a classic for** — when you need the index
+**Iterating with a classic for**: when you need the index
 
 ```java
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ Output
 2: Phil Cassidy
 ```
 
-**Iterating with for-each** — cleaner when you don't need the index
+**Iterating with for-each**: cleaner when you don't need the index
 
 ```java
 import java.util.ArrayList;
@@ -125,7 +125,7 @@ Read `for (String name : crew)` as: "for each String called `name` in `crew`"
 
 ---
 
-ArrayList becomes really powerful when you hold **objects** in it — not just Strings or numbers, but instances of your own classes
+ArrayList becomes really powerful when you hold **objects** in it, not just Strings or numbers, but instances of your own classes
 
 ```java
 import java.util.ArrayList;
@@ -183,7 +183,7 @@ Quick comparison
 
 Tommy keeps a list of his Vice City crew members. Each member has a name and a role. Tommy starts with Lance Vance (driver), Phil Cassidy (weapons), Umberto Robina (ally), and Hilary King (driver). At some point, Lance betrays him and needs to be removed from the list
 
-Build a `CrewMember` class (with `name` and `role`). In `main`, store each member's data in variables — `name1`/`role1` through `name4`/`role4` (start with Lance/driver, Phil/weapons, Umberto/ally, Hilary/driver). Add all four to an `ArrayList<CrewMember>`, remove Lance (index `0`), then iterate through the list and print each remaining member as `"name - role"`
+Build a `CrewMember` class (with `name` and `role`). In `main`, store each member's data in variables: `name1`/`role1` through `name4`/`role4` (start with Lance/driver, Phil/weapons, Umberto/ally, Hilary/driver). Add all four to an `ArrayList<CrewMember>`, remove Lance (index `0`), then iterate through the list and print each remaining member as `"name - role"`
 
 **Example**
 

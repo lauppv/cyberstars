@@ -5,7 +5,7 @@ For example, with a shift of 3: `A` becomes `D`, `z` becomes `c`, and `5` stays 
 ### Input
 
 - First line: a string (may contain spaces, up to 200 characters)
-- Second line: an integer `shift` (1 ≤ shift ≤ 25)
+- Second line: an integer `shift` (1 <= shift <= 25)
 
 ### Output
 

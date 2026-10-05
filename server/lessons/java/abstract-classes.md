@@ -1,6 +1,6 @@
-Sometimes you want a class that's a **blueprint** — it defines what child classes MUST do, but it can't be used on its own. That's an **abstract class**
+Sometimes you want a class that's a **blueprint**: it defines what child classes MUST do, but it can't be used on its own. That's an **abstract class**
 
-Think of it this way: "Vehicle" is a concept. You can't just build a generic "vehicle" — you build a sports car, a motorcycle, a truck. But they all share the idea of being a vehicle. In Java, you'd make Vehicle **abstract**
+Think of it this way: "Vehicle" is a concept. You can't just build a generic "vehicle". You build a sports car, a motorcycle, a truck. But they all share the idea of being a vehicle. In Java, you'd make Vehicle **abstract**
 
 ```text
 abstract class Vehicle {
@@ -20,8 +20,8 @@ abstract class Vehicle {
 
 Two key things here:
 
-- The class is marked `abstract` — you CANNOT do `new Vehicle("something")`
-- The method `topSpeed()` is marked `abstract` — it has NO body (no curly braces), just a semicolon. Any non-abstract child MUST provide the body
+- The class is marked `abstract`, so you CANNOT do `new Vehicle("something")`
+- The method `topSpeed()` is marked `abstract`: it has NO body (no curly braces), just a semicolon. Any non-abstract child MUST provide the body
 
 ---
 
@@ -37,7 +37,7 @@ It's like trying to buy a "vehicle" at a dealership. The salesperson would say "
 
 ---
 
-A child class that extends an abstract class MUST implement all abstract methods — or it has to be abstract itself
+A child class that extends an abstract class MUST implement all abstract methods, or it has to be abstract itself
 
 ```java
 abstract class Vehicle {
@@ -116,9 +116,9 @@ Tommy Vercetti and Lance Vance would both extend `Character`. They'd each have t
 
 **When to use abstract class vs regular class?**
 
-Use a **regular class** when it makes sense to create objects of that type directly. A `Car` is a real thing — you can create one
+Use a **regular class** when it makes sense to create objects of that type directly. A `Car` is a real thing, you can create one
 
-Use an **abstract class** when the class is just a concept or category. "Vehicle" is abstract — there's no such thing as a generic vehicle. "Character" could go either way depending on your design
+Use an **abstract class** when the class is just a concept or category. "Vehicle" is abstract: there's no such thing as a generic vehicle. "Character" could go either way depending on your design
 
 The rule of thumb: if you'd never want someone to write `new YourClass()`, make it abstract
 
@@ -126,12 +126,12 @@ The rule of thumb: if you'd never want someone to write `new YourClass()`, make 
 
 ## Mission: Tommy's Fleet
 
-Tommy has several vehicles in his garage, each with its own top speed. He needs a report showing every vehicle and its speed — but "Vehicle" itself is just a concept, not something you can build directly.
+Tommy has several vehicles in his garage, each with its own top speed. He needs a report showing every vehicle and its speed, but "Vehicle" itself is just a concept, not something you can build directly.
 
 Create an abstract class `Vehicle` with a `String name` field, a constructor, and an abstract method `topSpeed()` that returns an int. Then create two concrete classes:
 
-1. `SportsCar` — `topSpeed()` returns `240`
-2. `Motorcycle` — `topSpeed()` returns `200`
+1. `SportsCar`: `topSpeed()` returns `240`
+2. `Motorcycle`: `topSpeed()` returns `200`
 
 In `main`, store the two names in variables `name1` and `name2` (start with `"Infernus"` and `"Angel"`). Create a `SportsCar` from `name1` and a `Motorcycle` from `name2`. Print each in the format `Name: X km/h`.
 

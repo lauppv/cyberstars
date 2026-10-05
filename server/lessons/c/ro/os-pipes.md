@@ -8,7 +8,7 @@ Simbolul **|** ia output-ul lui **ls** și îl trimite ca input lui **grep**. Ac
 
 ---
 
-Un pipe este un **canal de comunicare unidirecțional**. Un proces **scrie** în el, alt proces **citește** din el. Gândește-te la el ca la o țeavă de apă — apa curge într-o singură direcție
+Un pipe este un **canal de comunicare unidirecțional**. Un proces **scrie** în el, alt proces **citește** din el. Gândește-te la el ca la o țeavă de apă: apa curge într-o singură direcție
 
 În C, creăm un pipe cu funcția **pipe()**
 
@@ -54,11 +54,11 @@ Output: **Parintele a primit: Salut de la copil!**
 Hai să descompunem:
 
 1. **pipe(fd)** creează doi file descriptori: **fd[0]** pentru citire, **fd[1]** pentru scriere
-2. Facem **fork** — acum atât părintele cât și copilul au copii ale pipe-ului
+2. Facem **fork**; acum atât părintele cât și copilul au copii ale pipe-ului
 3. **Copilul** închide capătul de citire (are nevoie doar să scrie), scrie un mesaj și închide capătul de scriere
 4. **Părintele** închide capătul de scriere (are nevoie doar să citească), citește mesajul și închide capătul de citire
 
-De ce închidem capetele pe care nu le folosim? E ca închiderea unei uși de care nu ai nevoie. Dacă părintele nu închide capătul de scriere, citirea **nu va ști niciodată** când a terminat copilul de scris — va aștepta la nesfârșit
+De ce închidem capetele pe care nu le folosim? E ca închiderea unei uși de care nu ai nevoie. Dacă părintele nu închide capătul de scriere, citirea **nu va ști niciodată** când a terminat copilul de scris: va aștepta la nesfârșit
 
 ---
 

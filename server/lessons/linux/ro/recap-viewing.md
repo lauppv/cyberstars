@@ -7,7 +7,7 @@ răspunde la o întrebare diferită:
 | `head`  | „Arată-mi _începutul_.”                       |
 | `tail`  | „Arată-mi _ultimele_ evenimente.”             |
 | `less`  | „Lasă-mă să _derulez_ printr-un fișier lung.” |
-| `wc`    | „Cât de mare este — câte linii/cuvinte?”      |
+| `wc`    | „Cât de mare este, câte linii/cuvinte?”       |
 
 Un flux comun când inspectezi log-uri: `wc -l` pentru a vedea dimensiunea fișierului,
 `head` pentru a vedea cum începe, `tail` pentru a vedea cele mai noi intrări.

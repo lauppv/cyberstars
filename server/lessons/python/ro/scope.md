@@ -1,4 +1,4 @@
-Am folosit variabile peste tot: în interiorul buclelor, în interiorul funcțiilor, în afara funcțiilor. Dar te-ai întrebat vreodată — poate o variabilă creată **în interiorul** unei funcții să fie folosită **în afara** ei?
+Am folosit variabile peste tot: în interiorul buclelor, în interiorul funcțiilor, în afara funcțiilor. Dar te-ai întrebat vreodată: poate o variabilă creată **în interiorul** unei funcții să fie folosită **în afara** ei?
 
 ```py
 def saluta():
@@ -109,13 +109,13 @@ Două variabile **x** diferite. Doar se întâmplă să aibă același nume, dar
 
 ## Misiune: Amplificare Scut
 
-Scrie o funcție `amplifica(scut)` care **returnează** valoarea scutului dublată. Trebuie să lucreze doar cu **parametrul** ei și să **returneze** rezultatul — nu trebuie să se întindă către nicio variabilă globală (ăsta e tot rostul scope-ului).
+Scrie o funcție `amplifica(scut)` care **returnează** valoarea scutului dublată. Trebuie să lucreze doar cu **parametrul** ei și să **returneze** rezultatul. Nu trebuie să se întindă către nicio variabilă globală (ăsta e tot rostul scope-ului).
 
 Apoi, în programul principal:
 
 1. Setează `scut = 100`
 2. Afișează `Inainte: ` apoi scut
-3. Apelează `amplifica(scut)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi scut — observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
+3. Apelează `amplifica(scut)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi scut. Observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
 4. Acum fă `scut = amplifica(scut)` și afișează `Dupa: ` apoi scut
 
 **Ieșire**
@@ -126,4 +126,4 @@ Ignorat: 100
 Dupa: 200
 ```
 
-Linia `Ignorat` dovedește că funcția nu poate schimba variabila globală de la sine — noua valoare se păstrează doar când **stochezi valoarea returnată**.
+Linia `Ignorat` dovedește că funcția nu poate schimba variabila globală de la sine: noua valoare se păstrează doar când **stochezi valoarea returnată**.

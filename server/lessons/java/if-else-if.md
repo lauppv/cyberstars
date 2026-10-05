@@ -10,7 +10,7 @@ If we have **10** seconds left → start the main engines
 
 Otherwise → do nothing special
 
-In Java we use **else if** — two words, spelled out
+In Java we use **else if**: two words, spelled out
 
 ```java
 public class Main {
@@ -34,7 +34,7 @@ public class Main {
 
 **Run** this. Then change **seconds** to **60**, **20**, **10**, **9**, **42**. See how the output changes
 
-The chain runs **top to bottom**. At the **first** condition that is **true**, Java enters that block, runs it, and **jumps out** of the whole chain. The remaining branches are **never** checked. This is important — if **seconds == 60**, the chain prints **"Checking connection..."** and then exits
+The chain runs **top to bottom**. At the **first** condition that is **true**, Java enters that block, runs it, and **jumps out** of the whole chain. The remaining branches are **never** checked. This is important: if **seconds == 60**, the chain prints **"Checking connection..."** and then exits
 
 ---
 
@@ -52,7 +52,7 @@ public class Main {
 }
 ```
 
-The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third if fails (60 != 20), and the **else** kicks in printing **"60 seconds has no effect"**, which is wrong — we already handled 60 above!
+The problem: each **if** is independent. The **else** at the end belongs only to the **last if**. So for **seconds = 60**, the third if fails (60 != 20), and the **else** kicks in printing **"60 seconds has no effect"**, which is wrong, we already handled 60 above!
 
 **Rule of thumb**: when we test the **same variable** for multiple values, we **chain** with **if / else if / else**
 

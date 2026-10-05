@@ -4,7 +4,7 @@ Afișează fiecare grup pe o linie separată, cu cuvintele sortate alfabetic în
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n` — numărul de cuvinte.
+- Linia 1: un număr întreg `n`, numărul de cuvinte.
 - Următoarele `n` linii: un cuvânt pe linie (doar litere mici).
 
 ### Rezultat
@@ -54,8 +54,8 @@ def
 ghi
 ```
 
-Când niciun cuvânt nu este anagrama altuia, fiecare grup are exact un cuvânt —
-grupurile sunt afișate în continuare în ordine alfabetică după primul (și
+Când niciun cuvânt nu este anagrama altuia, fiecare grup are exact un cuvânt.
+Grupurile sunt afișate în continuare în ordine alfabetică după primul (și
 singurul) cuvânt.
 
 ```

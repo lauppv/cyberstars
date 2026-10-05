@@ -35,7 +35,7 @@ const forumCategories = [
     slug: 'help-java',
     name: 'Java Help',
     description:
-      "Classes, inheritance, streams — and that one NullPointerException that won't go away.",
+      "Classes, inheritance, streams, and that one NullPointerException that won't go away.",
     icon: '☕',
     color: '#b07219',
     groupName: 'Help & Support',
@@ -45,7 +45,7 @@ const forumCategories = [
     slug: 'help-c',
     name: 'C Programming Help',
     description:
-      'Pointers, segfaults, malloc — the dark arts. Bring your gdb output, leave with answers.',
+      'Pointers, segfaults, malloc: the dark arts. Bring your gdb output, leave with answers.',
     icon: '⚙️',
     color: '#888899',
     groupName: 'Help & Support',
@@ -54,7 +54,7 @@ const forumCategories = [
   {
     slug: 'showcase',
     name: 'Show Your Project',
-    description: 'Built something cool? Share it here — even tiny scripts. Reactions encouraged.',
+    description: 'Built something cool? Share it here, even tiny scripts. Reactions encouraged.',
     icon: '🎨',
     color: '#FF6B6B',
     groupName: 'Show & Tell',
@@ -73,7 +73,7 @@ const forumCategories = [
   {
     slug: 'lounge',
     name: 'The Lounge',
-    description: 'Talk about anything — games, school, that weird dream you had. Be kind.',
+    description: 'Talk about anything: games, school, that weird dream you had. Be kind.',
     icon: '🛋️',
     color: '#9999B0',
     groupName: 'Off-Topic',

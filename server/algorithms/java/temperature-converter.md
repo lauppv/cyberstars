@@ -1,7 +1,7 @@
 Create a **Temperature** class that stores a temperature value and its unit (`C` for Celsius, `F` for Fahrenheit). Add two methods:
 
-- `toCelsius()` — returns the value in Celsius
-- `toFahrenheit()` — returns the value in Fahrenheit
+- `toCelsius()`: returns the value in Celsius
+- `toFahrenheit()`: returns the value in Fahrenheit
 
 If the temperature is already in the target unit, return it unchanged. Use the formulas:
 

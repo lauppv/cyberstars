@@ -1,12 +1,12 @@
 Implementează o structură de date de tip **stivă** folosind un tablou. Citește o secvență de comenzi și procesează-le:
 
-- **pune X** — adaugă numărul întreg X în vârful stivei
-- **scoate** — elimină și afișează elementul din vârf, sau afișează `Goala` dacă stiva este goală
-- **varf** — afișează elementul din vârf fără a-l elimina, sau afișează `Goala` dacă stiva este goală
+- **pune X**: adaugă numărul întreg X în vârful stivei
+- **scoate**: elimină și afișează elementul din vârf, sau afișează `Goala` dacă stiva este goală
+- **varf**: afișează elementul din vârf fără a-l elimina, sau afișează `Goala` dacă stiva este goală
 
 ### Date de intrare
 
-- Prima linie: un întreg `M` (1 ≤ M ≤ 100), numărul de comenzi
+- Prima linie: un întreg `M` (1 <= M <= 100), numărul de comenzi
 - Pentru fiecare comandă:
   - Linia 1: tipul comenzii (`pune`, `scoate` sau `varf`)
   - Doar pentru `pune`, linia 2: numărul întreg X

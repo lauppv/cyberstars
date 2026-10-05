@@ -2,7 +2,7 @@ Read an integer **N** and print a left-aligned triangle of `*` characters. Line 
 
 ### Input
 
-- A single integer `N` (1 ≤ N ≤ 20)
+- A single integer `N` (1 <= N <= 20)
 
 ### Output
 

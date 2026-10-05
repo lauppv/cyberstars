@@ -51,7 +51,7 @@ def f(a=10, b, c):
     print(a, b, c)
 ```
 
-**Rulează** asta. Python ne dă o **SyntaxError**. Nu poți pune un parametru fără valoare implicită **după** unul care are valoare implicită. Gândește-te — Python nu ar ști care valoare aparține cărui parametru
+**Rulează** asta. Python ne dă o **SyntaxError**. Nu poți pune un parametru fără valoare implicită **după** unul care are valoare implicită. Gândește-te: Python nu ar ști care valoare aparține cărui parametru
 
 ---
 
@@ -66,7 +66,7 @@ creaza_jucator("Tommy", oras="Liberty City")
 
 Afișează **Tommy | HP: 100 | City: Liberty City**
 
-Am sărit peste **viata** (am păstrat valoarea implicită 100) și am schimbat doar **oras** folosind **numele** lui. Fără argumente cu nume, ar trebui să scriem **creaza_jucator("Tommy", 100, "Liberty City")** — transmițând 100 deși este valoarea implicită
+Am sărit peste **viata** (am păstrat valoarea implicită 100) și am schimbat doar **oras** folosind **numele** lui. Fără argumente cu nume, ar trebui să scriem **creaza_jucator("Tommy", 100, "Liberty City")**, transmițând 100 deși este valoarea implicită
 
 ---
 

@@ -13,7 +13,7 @@ public class Main {
 
 **int** este **tipul** pentru numere întregi (1, 2, 100, -20, 0). Îi spunem lui Java: "sunt pe cale să stochez un număr întreg, iar numele lui este **varsta**"
 
-Java este **strict** cu tipurile — vrea mereu să știe ce fel de valoare pui într-o variabilă. Avantajul este că Java poate prinde multe greșeli înainte ca programul să ruleze măcar
+Java este **strict** cu tipurile: vrea mereu să știe ce fel de valoare pui într-o variabilă. Avantajul este că Java poate prinde multe greșeli înainte ca programul să ruleze măcar
 
 ---
 
@@ -120,7 +120,7 @@ public class Main {
 }
 ```
 
-Acum vedem **3.5**. Ține minte asta — este un bug foarte des întâlnit la începători
+Acum vedem **3.5**. Ține minte asta, este un bug foarte des întâlnit la începători
 
 ---
 
@@ -130,12 +130,12 @@ Comandantul Cortez are nevoie de o legitimație nouă tipărită. Setează valor
 
 1. Setează `varsta` la `57`
 2. Setează `inaltime` la `1.67`
-3. `println`-ul de la final construiește deja mesajul cu **+** — asigură-te doar că variabilele conțin valorile corecte
+3. `println`-ul de la final construiește deja mesajul cu **+**, asigură-te doar că variabilele conțin valorile corecte
 
-**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău; schimbă valorile ca să testezi):
 
-- `varsta` — vârsta ofițerului (int)
-- `inaltime` — înălțimea ofițerului în metri (double)
+- `varsta`: vârsta ofițerului (int)
+- `inaltime`: înălțimea ofițerului în metri (double)
 
 **Exemplu**
 

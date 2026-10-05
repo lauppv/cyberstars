@@ -51,7 +51,7 @@ def f(a=10, b, c):
     print(a, b, c)
 ```
 
-**Run** this. Python gives us a **SyntaxError**. You can't put a parameter without a default **after** one that has a default. Think about it — Python wouldn't know which value belongs to which parameter
+**Run** this. Python gives us a **SyntaxError**. You can't put a parameter without a default **after** one that has a default. Think about it: Python wouldn't know which value belongs to which parameter
 
 ---
 
@@ -66,7 +66,7 @@ create_player("Tommy", city="Liberty City")
 
 Output **Tommy | HP: 100 | City: Liberty City**
 
-We skipped **health** (kept the default 100) and only changed **city** by using its **name**. Without keyword arguments, we'd have to write **create_player("Tommy", 100, "Liberty City")** — passing 100 even though it's the default
+We skipped **health** (kept the default 100) and only changed **city** by using its **name**. Without keyword arguments, we'd have to write **create_player("Tommy", 100, "Liberty City")**, passing 100 even though it's the default
 
 ---
 

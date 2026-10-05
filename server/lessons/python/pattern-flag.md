@@ -117,7 +117,7 @@ A station access code is **valid** only if it meets **all three** rules: it has 
 
 - the access code
 
-**Output** — four lines: the three checks, then `Access code valid` or `Access code invalid`.
+**Output**: four lines: the three checks, then `Access code valid` or `Access code invalid`.
 
 **Example**
 

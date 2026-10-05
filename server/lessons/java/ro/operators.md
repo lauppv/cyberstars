@@ -25,7 +25,7 @@ Ieșire
 2
 ```
 
-Cel interesant este **a / b = 3**, nu **3.4**. De ce? Pentru că **a** și **b** sunt amândoi **int**. Java face **împărțire întreagă** când ambii operanzi sunt numere întregi — aruncă partea zecimală. Am văzut asta într-o lecție anterioară
+Cel interesant este **a / b = 3**, nu **3.4**. De ce? Pentru că **a** și **b** sunt amândoi **int**. Java face **împărțire întreagă** când ambii operanzi sunt numere întregi: aruncă partea zecimală. Am văzut asta într-o lecție anterioară
 
 Dacă vrem rezultatul cu zecimale, avem nevoie de cel puțin un **double**
 

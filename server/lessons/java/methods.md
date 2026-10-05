@@ -30,13 +30,13 @@ We wrote the greeting logic **once**, but used it three times. Let's break down 
 public static void greet(String name)
 ```
 
-Each part has a meaning — for now we explain only the essentials
+Each part has a meaning, for now we explain only the essentials
 
-- **public** — anyone can call this method
-- **static** — for now, just write it. You'll understand it deeply when you study classes and objects
-- **void** — the method does **not** return anything (it just prints something)
-- **greet** — the name of the method
-- **(String name)** — it takes a **parameter** called **name**, of type **String**. Notice the type **before** the parameter
+- **public**: anyone can call this method
+- **static**: for now, just write it. You'll understand it deeply when you study classes and objects
+- **void**: the method does **not** return anything (it just prints something)
+- **greet**: the name of the method
+- **(String name)**: it takes a **parameter** called **name**, of type **String**. Notice the type **before** the parameter
 
 We must put **public static void** at the start. Don't worry about why for now, just trust this pattern
 
@@ -59,7 +59,7 @@ public class Main {
 
 Output **5**
 
-The method **add** takes two ints and returns an int. Inside, we use **return** to give back the value. As soon as Java hits **return**, the method **exits immediately** — anything written after **return** is dead code
+The method **add** takes two ints and returns an int. Inside, we use **return** to give back the value. As soon as Java hits **return**, the method **exits immediately**: anything written after **return** is dead code
 
 We can also use the result directly inside another expression
 
@@ -89,7 +89,7 @@ public class Main {
 }
 ```
 
-The method promises to return an **int**, but tries to give back a **String**. Java refuses to compile. This is one of Java's **strict** but **helpful** habits — many bugs are caught before the program even runs
+The method promises to return an **int**, but tries to give back a **String**. Java refuses to compile. This is one of Java's **strict** but **helpful** habits: many bugs are caught before the program even runs
 
 ---
 
@@ -112,7 +112,7 @@ public class Main {
 
 After a successful heist, Tommy splits the loot equally among the crew. You want a method that does the math once and that you can reuse for every heist.
 
-Write a method that takes the **total loot** and the **number of crew members** and **returns** each member's share (use integer division — whatever doesn't divide evenly is lost). Then, in **main**, store the loot in a variable named `loot` and the crew size in a variable named `crew`, call the method, and print a line of the form `loot / crew = share`.
+Write a method that takes the **total loot** and the **number of crew members** and **returns** each member's share (use integer division; whatever doesn't divide evenly is lost). Then, in **main**, store the loot in a variable named `loot` and the crew size in a variable named `crew`, call the method, and print a line of the form `loot / crew = share`.
 
 **Example**
 

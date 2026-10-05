@@ -29,7 +29,7 @@ int main(void) {
 }
 ```
 
-Acum nu se mai afișează nimic, pentru că **printf**-ul este **comentat**. Foarte util când depanezi — în loc să ștergi codul și să-l rescrii mai târziu, doar îl comentezi
+Acum nu se mai afișează nimic, pentru că **printf**-ul este **comentat**. Foarte util când depanezi: în loc să ștergi codul și să-l rescrii mai târziu, doar îl comentezi
 
 ---
 
@@ -70,4 +70,4 @@ Bell Labs Computing Center
 1972
 ```
 
-Nu șterge nimic — doar **comentează** linia pe care nu vrei să o rulezi.
+Nu șterge nimic, doar **comentează** linia pe care nu vrei să o rulezi.

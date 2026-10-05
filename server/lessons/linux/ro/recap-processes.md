@@ -24,7 +24,7 @@ Stația se apropie de un câmp de resturi și căpitanul vrea o verificare compl
 a sistemelor înregistrată înainte de intrare. Parcurge secvența standard de
 diagnoză.
 
-1. Inspectează toate procesele active — confirmă că monitorul reactorului și
+1. Inspectează toate procesele active. Confirmă că monitorul reactorului și
    suportul vital rulează.
 2. Verifică spațiul disponibil pe toate sistemele de fișiere.
 3. Măsoară cât de mult a crescut directorul `jurnale/`.

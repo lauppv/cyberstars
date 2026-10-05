@@ -22,7 +22,7 @@ which grep
 /usr/bin/grep
 ```
 
-E util când vrei să știi dacă o comandă este sau nu instalată — dacă `which` nu
+E util când vrei să știi dacă o comandă este sau nu instalată: dacă `which` nu
 afișează nimic, comanda nu a fost găsită.
 
 ### Ce fel de fișier este acesta? `file`
@@ -65,7 +65,7 @@ apoi arhivează-l cum se cuvine.
 1. Confirmă că unealta de bază pentru listare (`ls`) este chiar instalată pe acest
    sistem.
 2. Identifică ce fel de date se află de fapt în `mister.dat`.
-3. Se dovedește a fi text simplu, lizibil — afișează-i conținutul ca să vezi
+3. Se dovedește a fi text simplu, lizibil. Afișează-i conținutul ca să vezi
    mesajul.
 4. Creează un folder numit `identificat` și copiază fișierul în el sub numele mai
    clar `readme.txt`.

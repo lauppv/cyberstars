@@ -119,9 +119,9 @@ The crew tracks its work on a shared task board. You'll **read the tasks from in
 
 Write three functions:
 
-- **add_task(tasks, name)** — append a new task to the list with `done` set to `False`.
-- **complete_task(tasks, index)** — mark the task at that index as done.
-- **count_done(tasks)** — return how many tasks are done.
+- **add_task(tasks, name)**: append a new task to the list with `done` set to `False`.
+- **complete_task(tasks, index)**: mark the task at that index as done.
+- **count_done(tasks)**: return how many tasks are done.
 
 Then:
 

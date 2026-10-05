@@ -1,4 +1,4 @@
-E timpul pentru un proiect adevărat! O să construim un **sistem de inventar** — Tommy gestionează depozitul stației, ține evidența proviziilor și trebuie să știe ce are și cât valorează totul
+E timpul pentru un proiect adevărat! O să construim un **sistem de inventar**: Tommy gestionează depozitul stației, ține evidența proviziilor și trebuie să știe ce are și cât valorează totul
 
 Acest proiect aduce împreună tot ce ai învățat: **clase**, **constructori**, **ArrayList-uri**, **metode**, și **bucle**. Hai să-l construim bucată cu bucată
 
@@ -28,7 +28,7 @@ Simplu și curat. Un `Articol` își știe numele, câte avem, și cât costă f
 
 **Pasul 2: Clasa Inventar**
 
-Clasa `Inventar` ține o listă de obiecte și oferă metode ca să le gestioneze. Aici intră în scenă ArrayList — nu știm câte provizii vor fi stocate, așa că un array de dimensiune fixă nu e de ajuns
+Clasa `Inventar` ține o listă de obiecte și oferă metode ca să le gestioneze. Aici intră în scenă ArrayList: nu știm câte provizii vor fi stocate, așa că un array de dimensiune fixă nu e de ajuns
 
 ```text
 import java.util.ArrayList;
@@ -187,9 +187,9 @@ Total: $376.00
 
 ---
 
-Observă cum clasele lucrează împreună: `Articol` este un simplu container de date, iar `Inventar` gestionează o colecție de obiecte. Asta este **compoziția** — Inventar **are** o listă de Articole. Este unul dintre cele mai comune tipare din Java din lumea reală
+Observă cum clasele lucrează împreună: `Articol` este un simplu container de date, iar `Inventar` gestionează o colecție de obiecte. Asta este **compoziția**: Inventar **are** o listă de Articole. Este unul dintre cele mai comune tipare din Java din lumea reală
 
-Observă și: `Articol` și `Inventar` NU sunt public — doar `Main` este public. Asta pentru că Java permite o singură clasă public per fișier, și cum fișierul este compilat ca `Main.java`, clasa public trebuie să fie `Main`
+Observă și: `Articol` și `Inventar` NU sunt public, doar `Main` este public. Asta pentru că Java permite o singură clasă public per fișier, și cum fișierul este compilat ca `Main.java`, clasa public trebuie să fie `Main`
 
 ---
 
@@ -201,7 +201,7 @@ Compartimentul de marfă al stației are nevoie de un sistem de manifest digital
 2. Creează o clasă `Inventar` cu un `ArrayList<Articol>`, și metodele: `adaugaArticol(Articol articol)`, `stergeArticol(String nume)`, `afiseazaTot()`, și `double valoareTotala()`
 3. `afiseazaTot()` afișează fiecare obiect ca `"nume xCantitate @ $pret"` (folosește `String.format("%.2f", pret)`)
 4. `valoareTotala()` returnează suma lui `cantitate * pret` pentru toate obiectele
-5. În main, stochează datele fiecărei provizii în variabile — `nume1`/`cantitate1`/`pret1`, `nume2`/`cantitate2`/`pret2`, `nume3`/`cantitate3`/`pret3` (pornește cu Filtru aer/4/35.00, Pachet hrana/10/12.00, Kit reparatii/3/85.00). Creează un `Inventar` și adaugă cele trei articole construite din aceste variabile
+5. În main, stochează datele fiecărei provizii în variabile: `nume1`/`cantitate1`/`pret1`, `nume2`/`cantitate2`/`pret2`, `nume3`/`cantitate3`/`pret3` (pornește cu Filtru aer/4/35.00, Pachet hrana/10/12.00, Kit reparatii/3/85.00). Creează un `Inventar` și adaugă cele trei articole construite din aceste variabile
 6. Apelează `afiseazaTot()`, apoi afișează `"Total: $"` urmat de totalul formatat
 
 **Ieșire**

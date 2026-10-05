@@ -28,7 +28,7 @@ print(nume)
 ```
 
 Dacă rulăm codul apăsând butonul Run Code, vom vedea că Paul apare de 3 ori, pentru că am folosit print(nume) de 3 ori.
-Putem observa că nu ne pasă neapărat care este numele, pentru că se poate schimba — ceea ce contează este că îl putem afișa și folosi
+Putem observa că nu ne pasă neapărat care este numele, pentru că se poate schimba. Ceea ce contează este că îl putem afișa și folosi
 
 Totuși, fii atent: dacă nu punem **""**, vom primi o eroare. Codul de mai jos nu va funcționa
 
@@ -63,13 +63,13 @@ Așadar, orice scriem între **" și "** se numește **string** și este folosit
 
 ## Misiune: Echipajul Stației
 
-Trei membri ai echipajului sunt repartizați la stație. Numele lor sunt stocate în variabilele `comandant`, `pilot` și `inginer` în partea de sus a codului tău — numele de start sunt doar exemple, pune orice nume vrei în ele.
+Trei membri ai echipajului sunt repartizați la stație. Numele lor sunt stocate în variabilele `comandant`, `pilot` și `inginer` în partea de sus a codului tău. Numele de start sunt doar exemple, pune orice nume vrei în ele.
 
-Afișează cele trei nume, **fiecare pe linia lui**, în această ordine: comandant, pilot, inginer. Apoi pilotul este schimbat la mijlocul misiunii — adaugă o linie care schimbă `pilot` într-un **nume nou la alegerea ta** și afișează `pilot` încă o dată.
+Afișează cele trei nume, **fiecare pe linia lui**, în această ordine: comandant, pilot, inginer. Apoi pilotul este schimbat la mijlocul misiunii, așa că adaugă o linie care schimbă `pilot` într-un **nume nou la alegerea ta** și afișează `pilot` încă o dată.
 
-**Intrare** (deja setat în partea de sus a codului tău — schimbă valorile ca să testezi):
+**Intrare** (deja setat în partea de sus a codului tău, schimbă valorile ca să testezi):
 
-- `comandant`, `pilot`, `inginer` — numele membrilor echipajului
+- `comandant`, `pilot`, `inginer`: numele membrilor echipajului
 
 **Exemplu**
 

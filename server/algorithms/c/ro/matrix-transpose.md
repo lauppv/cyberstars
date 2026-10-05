@@ -1,6 +1,6 @@
 Calculează **transpusa** unei matrice N×N (rândurile devin coloane) și afișează rezultatul.
 
-Pentru acest exercițiu, matricea este **hardcodată** direct în cod — nu se citește nimic de la stdin. Folosește:
+Pentru acest exercițiu, matricea este **hardcodată** direct în cod. Nu se citește nimic de la stdin. Folosește:
 
 ```
 matrice = [ [1, 2, 3],
@@ -14,7 +14,7 @@ Niciuna. Matricea este scrisă direct în cod.
 
 ### Rezultat
 
-3 linii cu 3 numere întregi separate prin spații — matricea transpusă.
+3 linii cu 3 numere întregi separate prin spații: matricea transpusă.
 
 ### Exemplu
 

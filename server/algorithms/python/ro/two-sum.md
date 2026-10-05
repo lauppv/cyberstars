@@ -40,7 +40,7 @@ Ieșire:
 0 1
 ```
 
-Aceeași valoare poate apărea de două ori — atât timp cât se află la indici
+Aceeași valoare poate apărea de două ori. Atât timp cât se află la indici
 diferiți, tot contează ca două numere separate.
 
 ```

@@ -16,7 +16,7 @@ void *worker(void *arg) {
 }
 
 int main(void) {
-    // Init cu 0 — sem_wait blocheaza pana cand worker face sem_post.
+    // Init cu 0: sem_wait blocheaza pana cand worker face sem_post.
     sem_init(&gata, 0, 0);
 
     pthread_t t;

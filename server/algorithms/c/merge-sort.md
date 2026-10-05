@@ -4,7 +4,7 @@ Merge sort is a divide-and-conquer algorithm: split the array in half, recursive
 
 ### Input
 
-- First line: an integer `N` (1 ≤ N ≤ 1000)
+- First line: an integer `N` (1 <= N <= 1000)
 - The next `N` lines: one integer per line
 
 ### Output

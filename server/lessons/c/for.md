@@ -1,4 +1,4 @@
-Welcome to one of the **most important** concepts in programming — the **for** loop. With it, we can tell the computer to do something **many times, automatically**
+Welcome to one of the **most important** concepts in programming: the **for** loop. With it, we can tell the computer to do something **many times, automatically**
 
 Imagine we want to print all the numbers from **1** to **10**
 
@@ -44,9 +44,9 @@ int main(void) {
 }
 ```
 
-1. **int i = 1** — the **starting point**. We declare a variable **i** and set it to **1**
-2. **i <= 10** — the **condition**. As long as this is **true**, the loop keeps running
-3. **i++** — what to do **after each iteration**. We increase **i** by 1
+1. **int i = 1**: the **starting point**. We declare a variable **i** and set it to **1**
+2. **i <= 10**: the **condition**. As long as this is **true**, the loop keeps running
+3. **i++**: what to do **after each iteration**. We increase **i** by 1
 
 So **i** takes the values **1, 2, 3, ..., 10**. When **i** becomes **11**, the condition **11 <= 10** is **false** and the loop ends
 
@@ -75,7 +75,7 @@ int main(void) {
 
 ---
 
-Be careful — if we forget to update **i**, we get an **infinite loop**
+Be careful: if we forget to update **i**, we get an **infinite loop**
 
 ```c
 #include <stdio.h>

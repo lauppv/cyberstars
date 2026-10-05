@@ -4,9 +4,9 @@ Căutarea binară funcționează înjumătățind în mod repetat intervalul de 
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 ≤ N ≤ 1000)
+- Prima linie: un întreg `N` (1 <= N <= 1000)
 - Următoarele `N` linii: câte un număr întreg, sortate crescător
-- Linia următoare: un întreg `cautat` — valoarea de găsit
+- Linia următoare: un întreg `cautat`, valoarea de găsit
 
 ### Rezultat
 
@@ -45,7 +45,7 @@ Intrare:
 Ieșire: 0
 ```
 
-Un tablou cu un singur element funcționează la fel — `stanga` și `dreapta` pornesc amândoi de la 0.
+Un tablou cu un singur element funcționează la fel: `stanga` și `dreapta` pornesc amândoi de la 0.
 
 ```
 Intrare:

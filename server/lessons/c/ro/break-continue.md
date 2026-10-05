@@ -57,7 +57,7 @@ Bucla se oprește de îndată ce găsim ce căutăm. **break** ne economisește 
 
 ---
 
-**continue** este diferit. Nu oprește bucla — doar **sare peste restul** iterației curente și **trece la următoarea**
+**continue** este diferit. Nu oprește bucla, doar **sare peste restul** iterației curente și **trece la următoarea**
 
 ```c
 #include <stdio.h>
@@ -137,7 +137,7 @@ O mică avertizare: **break** și **continue** pot face codul mai greu de citit 
 
 ## Misiune: Inspecția sălii de cartele perforate
 
-Faci inspecția anuală a sălii cu cititoare de cartele perforate, numerotate de la **1** la **20**. Un cititor este marcat ca **sigilat pentru reparații** — trebuie **sărit** cu **continue**, fără să-l afișezi. Un alt cititor declanșează **alarma de fum** — de îndată ce ajungi la el, **oprești** inspecția cu **break** (fără să-l afișezi nici pe el).
+Faci inspecția anuală a sălii cu cititoare de cartele perforate, numerotate de la **1** la **20**. Un cititor este marcat ca **sigilat pentru reparații**: trebuie **sărit** cu **continue**, fără să-l afișezi. Un alt cititor declanșează **alarma de fum**: de îndată ce ajungi la el, **oprești** inspecția cu **break** (fără să-l afișezi nici pe el).
 
 1. Citește două numere întregi din input: **sigilat** și **alarma**
 2. Parcurge cititoarele de la **1** la **20** cu o buclă **for**

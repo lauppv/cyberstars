@@ -24,7 +24,7 @@ Cortez
 
 Two new things
 
-- The type is **String[]** (notice the **[]**) — "an array of Strings"
+- The type is **String[]** (notice the **[]**): "an array of Strings"
 - We use **{ }** to list the values, separated by commas
 
 **Counting starts from 0**. **names[0]** is the first element, **names[1]** the second, and so on
@@ -44,7 +44,7 @@ public class Main {
 }
 ```
 
-**Notice**: **names.length** has **no parentheses**, unlike **String.length()**. Yes, this is annoyingly inconsistent — arrays use a **field** called **length**, while Strings have a **method** called **length()**
+**Notice**: **names.length** has **no parentheses**, unlike **String.length()**. Yes, this is annoyingly inconsistent: arrays use a **field** called **length**, while Strings have a **method** called **length()**
 
 ---
 
@@ -93,7 +93,7 @@ public class Main {
 }
 ```
 
-Run it. Java throws an **ArrayIndexOutOfBoundsException** and crashes. Always read the error message — it tells you exactly which index you asked for and what the limit was
+Run it. Java throws an **ArrayIndexOutOfBoundsException** and crashes. Always read the error message, it tells you exactly which index you asked for and what the limit was
 
 ---
 
@@ -128,7 +128,7 @@ Notice we used **i < names.length**, **not** **i <= names.length**. Why? Because
 
 ---
 
-Java has a shorter form when we don’t need the index — the **enhanced for loop** (also called **for-each**)
+Java has a shorter form when we don’t need the index: the **enhanced for loop** (also called **for-each**)
 
 ```java
 public class Main {
@@ -151,7 +151,7 @@ When do you choose one over the other?
 - Use the **classic for** when you need the **index** (e.g., for printing position numbers)
 - Use the **enhanced for** when you only need the **value**
 
-Both are common — Java code uses both depending on the situation
+Both are common. Java code uses both depending on the situation
 
 ---
 

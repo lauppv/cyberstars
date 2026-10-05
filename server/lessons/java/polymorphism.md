@@ -1,4 +1,4 @@
-Polymorphism is a fancy word that means "many forms." In Java, it means a variable of a **parent** type can hold an object of any **child** type — and Java will call the RIGHT method automatically
+Polymorphism is a fancy word that means "many forms." In Java, it means a variable of a **parent** type can hold an object of any **child** type, and Java will call the RIGHT method automatically
 
 ```java
 class Criminal {
@@ -27,11 +27,11 @@ public class Main {
 }
 ```
 
-Even though `c` is declared as `Criminal`, Java knows it's actually a `Driver` at runtime and calls Driver's `speak()`. This is called **dynamic dispatch** — Java dispatches the method call to the actual object type, not the declared type
+Even though `c` is declared as `Criminal`, Java knows it's actually a `Driver` at runtime and calls Driver's `speak()`. This is called **dynamic dispatch**: Java dispatches the method call to the actual object type, not the declared type
 
 ---
 
-This gets REALLY powerful with arrays and loops. Think about Vice City: you have different types of criminals — all extending the base `Criminal` class. You can store them all in ONE array
+This gets REALLY powerful with arrays and loops. Think about Vice City: you have different types of criminals, all extending the base `Criminal` class. You can store them all in ONE array
 
 ```java
 class Criminal {
@@ -70,7 +70,7 @@ I'm the driver Tommy
 I'm the gunman Lance
 ```
 
-We never checked "is this a driver or a gunman?" — Java figured it out for us. The loop just calls `c.speak()` and Java routes it to the correct override. That's polymorphism in action
+We never checked "is this a driver or a gunman?" Java figured it out for us. The loop just calls `c.speak()` and Java routes it to the correct override. That's polymorphism in action
 
 ---
 
@@ -102,15 +102,15 @@ public class Main {
 }
 ```
 
-You can pass a Driver, a Gunman, a Boss — anything that extends Criminal. The method doesn't need to know or care. That's the power. One method handles ALL criminals, current and future
+You can pass a Driver, a Gunman, a Boss, anything that extends Criminal. The method doesn't need to know or care. That's the power. One method handles ALL criminals, current and future
 
-Like Cortez in Vice City — he gives missions to Tommy, Lance, whoever. He doesn't care about the specific person, just that they can do the job. The "job" is the method signature, and polymorphism makes sure the right person does it their way
+Like Cortez in Vice City: he gives missions to Tommy, Lance, whoever. He doesn't care about the specific person, just that they can do the job. The "job" is the method signature, and polymorphism makes sure the right person does it their way
 
 ---
 
 ## Mission: Gang Roll Call
 
-Tommy calls his crew for a roll call. Each member answers their own way, but you want a single loop that makes them all speak — without checking what type each one is.
+Tommy calls his crew for a roll call. Each member answers their own way, but you want a single loop that makes them all speak, without checking what type each one is.
 
 Create the `Criminal`, `Driver`, and `Gunman` classes (Criminal has `speak()` printing `"..."`; Driver overrides with `"I'm the driver "` + name; Gunman overrides with `"I'm the gunman "` + name).
 
