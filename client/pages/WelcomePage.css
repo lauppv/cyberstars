@@ -387,12 +387,6 @@
   text-align: center;
   position: relative;
 }
-.wc-hero-stars {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
 .wc-hero-eyebrow {
   margin: 0 auto 24px;
 }

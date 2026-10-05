@@ -29,56 +29,6 @@ function useReveal() {
   return ref;
 }
 
-function HeroStarfield() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    let w: number, h: number;
-    const resize = () => {
-      const rect = canvas.parentElement!.getBoundingClientRect();
-      w = canvas.width = rect.width * devicePixelRatio;
-      h = canvas.height = rect.height * devicePixelRatio;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-    };
-    resize();
-    window.addEventListener('resize', resize);
-    const N = 90;
-    const stars = Array.from({ length: N }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      z: Math.random(),
-      s: Math.random() * 1.4 + 0.2,
-    }));
-    let raf: number;
-    function tick() {
-      ctx!.fillStyle = 'rgba(11,11,17,0.18)';
-      ctx!.fillRect(0, 0, w, h);
-      for (const s of stars) {
-        s.y += 0.00018 * (1 - s.z);
-        if (s.y > 1) s.y = 0;
-        const a = (1 - s.z) * 0.7;
-        ctx!.globalAlpha = a;
-        ctx!.fillStyle = '#E8E8FF';
-        ctx!.beginPath();
-        ctx!.arc(s.x * w, s.y * h, s.s * devicePixelRatio, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-      ctx!.globalAlpha = 1;
-      raf = requestAnimationFrame(tick);
-    }
-    tick();
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-  return <canvas ref={canvasRef} className="wc-hero-stars" />;
-}
-
 export function WelcomePage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -234,7 +184,6 @@ export function WelcomePage() {
 
       {/* HERO */}
       <section className="wc-section wc-hero" id="s-hero">
-        <HeroStarfield />
         <span className="wc-eyebrow wc-hero-eyebrow wc-fade-in">
           <span className="wc-eyebrow-dot" />
           {t('welcome.hero.eyebrow')}
