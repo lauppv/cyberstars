@@ -99,7 +99,7 @@
     "notStarted_other": "Neînceput · {{count}} lecții",
     "marketing": {
       "title": "Învață să programezi gratuit",
-      "subtitle": "Lecții interactive în <1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>. Citește, scrie, rulează — totul într-un singur loc.",
+      "subtitle": "Lecții interactive în <1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>. Citește, scrie, rulează, totul într-un singur loc.",
       "startLearning": "Începe să înveți →",
       "signIn": "Conectare",
       "readCard": "Citește",
@@ -181,17 +181,17 @@
       "python": "Începător în programare? Îți recomandăm cu căldură Python",
       "c": "Programare de nivel jos: pointeri, memorie și concepte de sistem de operare",
       "java": "Programare orientată pe obiecte",
-      "linux": "Stăpânește terminalul — fișiere, navigare și comenzi shell",
+      "linux": "Stăpânește terminalul: fișiere, navigare și comenzi shell",
       "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare",
-      "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții",
+      "algo-java": "Provocări axate pe OOP: clase, obiecte, moștenire și colecții",
       "algo-c": "Provocări de nivel jos cu tablouri, pointeri, memorie și concurență (fork, threads, semafoare)",
-      "kotlin": "Limbaj JVM modern — concis, sigur și interoperabil"
+      "kotlin": "Limbaj JVM modern: concis, sigur și interoperabil"
     }
   },
   "algorithms": {
     "desc": {
       "algo-python": "Algoritmi clasici cu șiruri, liste, bucle și dicționare. Ideal pentru a-ți dezvolta gândirea de rezolvare a problemelor.",
-      "algo-java": "Provocări axate pe OOP — clase, obiecte, moștenire și colecții. Exersează proiectarea cu obiecte.",
+      "algo-java": "Provocări axate pe OOP: clase, obiecte, moștenire și colecții. Exersează proiectarea cu obiecte.",
       "algo-c": "Provocări de nivel jos cu tablouri, pointeri, memorie și concurență (fork, threads, semafoare). Gândește aproape de hardware."
     }
   },
@@ -226,23 +226,23 @@
     "features": [
       {
         "bold": "Editor de cod live",
-        "rest": " — scrie și rulează cod instant"
+        "rest": ": scrie și rulează cod instant"
       },
       {
         "bold": "Python, C, Java și Linux",
-        "rest": " — programă structurată"
+        "rest": ": programă structurată"
       },
       {
         "bold": "XP & niveluri",
-        "rest": " — câștigă XP și urcă în ranguri cosmice cu fiecare lecție"
+        "rest": ": câștigă XP și urcă în ranguri cosmice cu fiecare lecție"
       },
       {
         "bold": "Forum comunitar",
-        "rest": " — întreabă, împărtășește și ajută-i pe alții"
+        "rest": ": întreabă, împărtășește și ajută-i pe alții"
       },
       {
         "bold": "Almanahul",
-        "rest": " — istorie tech, curiozități și legende"
+        "rest": ": istorie tech, curiozități și legende"
       }
     ],
     "backToLogin": "← Înapoi la autentificare",
@@ -294,11 +294,11 @@
     "hero": {
       "eyebrow": "Cont gata · Turul începe",
       "welcomeTo": "Bun venit la",
-      "sub": "Un tur rapid prin universul în care tocmai ai intrat. Continuă să derulezi — tot ce ai nevoie este mai jos.",
+      "sub": "Un tur rapid prin universul în care tocmai ai intrat. Continuă să derulezi, tot ce ai nevoie este mai jos.",
       "scroll": "Derulează pentru a începe"
     },
     "boot": {
-      "num": "// 01 — INIȚIALIZARE",
+      "num": "// 01: INIȚIALIZARE",
       "title": "Pornim <1>stația ta de lucru</1>.",
       "subtitle": "Încălzim editorul, sincronizăm programa și aprindem universul. Privește cum sistemele intră în funcțiune.",
       "steps": [
@@ -309,9 +309,9 @@
       ]
     },
     "langs": {
-      "num": "// 02 — LIMBAJE",
+      "num": "// 02: LIMBAJE",
       "title": "Patru limbaje.<1></1>Un singur <3>parcurs de învățare</3>.",
-      "subtitle": "Începe de oriunde. Fiecare curs e practic — scrii cod real din prima lecție, cu exerciții evaluate automat și almanahul la o apăsare de tastă.",
+      "subtitle": "Începe de oriunde. Fiecare curs e practic: scrii cod real din prima lecție, cu exerciții evaluate automat și almanahul la o apăsare de tastă.",
       "lessonsLabel": "lecții",
       "cards": {
         "c": {
@@ -337,9 +337,9 @@
       }
     },
     "almanac": {
-      "num": "// 03 — POVEȘTI",
+      "num": "// 03: POVEȘTI",
       "title": "<1>Almanahul</1>.<3></3>Povești tech care merită citite.",
-      "subtitle": "Legende open-source, cultură hacker, istoria tehnologiei, spațiu și curiozitățile din spatele uneltelor pe care le folosești zilnic — o bibliotecă în creștere de articole, citate și o cronologie, cu lecturi noi în fiecare săptămână.",
+      "subtitle": "Legende open-source, cultură hacker, istoria tehnologiei, spațiu și curiozitățile din spatele uneltelor pe care le folosești zilnic. O bibliotecă în creștere de articole, citate și o cronologie, cu lecturi noi în fiecare săptămână.",
       "stats": {
         "articles": "Articole care merită citite",
         "topics": "Istorie, spațiu și cultură",
@@ -347,7 +347,7 @@
       }
     },
     "forum": {
-      "num": "// 04 — COMUNITATE",
+      "num": "// 04: COMUNITATE",
       "title": "Un <1>forum</1> unde<3></3>răspunsurile chiar ajung.",
       "subtitle": "Fiecare lecție are propriul fir de discuție. Mentorii și cursanții avansați triază întrebările din oră în oră. Blocurile de cod sunt afișate cu evidențiere de sintaxă și sandbox dintr-un clic.",
       "stats": {
@@ -357,7 +357,7 @@
       }
     },
     "messaging": {
-      "num": "// 05 — MESAJE",
+      "num": "// 05: MESAJE",
       "title": "Mesaje <1>private</1>,<3></3>în timp real.",
       "subtitle": "Mută o discuție de pe forum într-un chat direct. Mesajele ajung instant, poți reacționa cu emoji, iar totul rămâne doar între voi doi.",
       "read": "Citit",
@@ -368,9 +368,9 @@
       }
     },
     "connections": {
-      "num": "// 06 — CONEXIUNI",
+      "num": "// 06: CONEXIUNI",
       "title": "Construiește-ți <1>rețeaua</1><3></3>de colegi de învățare.",
-      "subtitle": "Trimite o cerere de conexiune oricui întâlnești pe forum sau în clasament. Odată ce acceptă, sunteți conectați — o scurtătură către profilul lor și o linie directă pentru mesaje.",
+      "subtitle": "Trimite o cerere de conexiune oricui întâlnești pe forum sau în clasament. Odată ce acceptă, sunteți conectați: o scurtătură către profilul lor și o linie directă pentru mesaje.",
       "wantsToConnect": "vrea să se conecteze",
       "requestSent": "cerere trimisă",
       "accept": "Acceptă",
@@ -384,9 +384,9 @@
       }
     },
     "leaderboard": {
-      "num": "// 07 — CLASAMENT",
+      "num": "// 07: CLASAMENT",
       "title": "Urcă în <1>clasament</1><3></3>lecție cu lecție.",
-      "subtitle": "Fiecare lecție finalizată aduce XP și te împinge mai sus în clasamentul global. Nivelurile, insignele și locul tău se actualizează în clipa în care evaluatorul confirmă o soluție corectă — fără grind, doar învățare.",
+      "subtitle": "Fiecare lecție finalizată aduce XP și te împinge mai sus în clasamentul global. Nivelurile, insignele și locul tău se actualizează în clipa în care evaluatorul confirmă o soluție corectă. Fără grind, doar învățare.",
       "person": "Persoană",
       "lessons": "{{count}} lecții",
       "stats": {
@@ -396,9 +396,9 @@
       }
     },
     "network": {
-      "num": "// 08 — TOTUL SE CONECTEAZĂ",
+      "num": "// 08: TOTUL SE CONECTEAZĂ",
       "title": "O platformă, fiecare piesă <1>conectată</1>.",
-      "subtitle": "Fiecare lecție trimite la intrări din almanah. Fiecare eroare sugerează un fir din forum. Fiecare lecție finalizată deblochează o insignă. Progresul tău apare peste tot — instant.",
+      "subtitle": "Fiecare lecție trimite la intrări din almanah. Fiecare eroare sugerează un fir din forum. Fiecare lecție finalizată deblochează o insignă. Progresul tău apare peste tot, instant.",
       "nodes": {
         "lessons": "Lecții",
         "almanac": "Almanah",
@@ -432,11 +432,11 @@
       },
       {
         "title": "Confidențialitate",
-        "desc": "Nu distribui informații personale (email, număr de telefon, adresă de acasă, locul de muncă) — ale tale sau ale altora — în forum sau în orice parte publică a platformei."
+        "desc": "Nu distribui informații personale (email, număr de telefon, adresă de acasă, locul de muncă), ale tale sau ale altora, în forum sau în orice parte publică a platformei."
       }
     ],
     "radioPrivacyTitle": "Radio Focus și confidențialitate",
-    "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi — fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză.",
+    "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi: fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză.",
     "aiPrivacyTitle": "Indiciile AI și datele tale",
     "aiPrivacyDesc": "Când ceri un indiciu AI, codul scris de tine în editor plus textul lecției sunt trimise către un furnizor AI terț (Google Gemini) pentru a genera indiciul. Nu introduce informații personale sau sensibile în editor înainte de a cere un indiciu. Indiciile AI și Arată soluția au o limită zilnică. Poți învăța și fără ele: sunt ajutoare opționale, nu o obligație."
   },
@@ -560,15 +560,15 @@
       },
       "help-java": {
         "name": "Ajutor Java",
-        "desc": "Clase, moștenire, stream-uri — și acel NullPointerException care nu vrea să dispară."
+        "desc": "Clase, moștenire, stream-uri și acel NullPointerException care nu vrea să dispară."
       },
       "help-c": {
         "name": "Ajutor programare C",
-        "desc": "Pointeri, segfault-uri, malloc — artele întunecate. Adu output-ul gdb, pleacă cu răspunsuri."
+        "desc": "Pointeri, segfault-uri, malloc: artele întunecate. Adu output-ul gdb, pleacă cu răspunsuri."
       },
       "showcase": {
         "name": "Arată-ți proiectul",
-        "desc": "Ai construit ceva mișto? Împărtășește aici — chiar și scripturi mici. Reacțiile sunt încurajate."
+        "desc": "Ai construit ceva mișto? Împărtășește aici, chiar și scripturi mici. Reacțiile sunt încurajate."
       },
       "challenges": {
         "name": "Provocări și concursuri",
@@ -576,7 +576,7 @@
       },
       "lounge": {
         "name": "Lounge-ul",
-        "desc": "Vorbește despre orice — jocuri, școală, visul ciudat pe care l-ai avut. Fii amabil."
+        "desc": "Vorbește despre orice: jocuri, școală, visul ciudat pe care l-ai avut. Fii amabil."
       }
     },
     "loadCategoriesError": "Nu s-au putut încărca categoriile forumului.",
@@ -645,7 +645,7 @@
     "deletedBy": "Această postare a fost ștearsă de",
     "changeRole": "Schimbă rolul acestui membru",
     "editedBy": "editat de {{name}}",
-    "solutionBanner": "Marcat ca soluție — acest răspuns a rezolvat întrebarea",
+    "solutionBanner": "Marcat ca soluție: acest răspuns a rezolvat întrebarea",
     "save": "Salvează",
     "addReaction": "Adaugă reacție",
     "markSolution": "✓ Marchează ca soluție",
@@ -716,7 +716,7 @@
     "showSolution": "Arată soluția",
     "getHint": "Cere un indiciu",
     "solutionConfirmTitle": "Arăt soluția?",
-    "solutionConfirmBody": "Încearcă întâi să rezolvi singur — înveți mai mult din efort. Dezvăluirea soluției consumă una dintre dezvăluirile tale zilnice.",
+    "solutionConfirmBody": "Încearcă întâi să rezolvi singur. Înveți mai mult din efort. Dezvăluirea soluției consumă una dintre dezvăluirile tale zilnice.",
     "solutionConfirmCta": "Dezvăluie soluția",
     "solutionTitle": "Soluția",
     "compare": "Compară",
@@ -735,13 +735,13 @@
     "noMore": "Acesta e cel mai detaliat indiciu.",
     "error": "Nu am putut genera un indiciu acum.",
     "retry": "Încearcă din nou",
-    "disclaimer": "Indiciile sunt generate de AI și te ghidează fără să-ți dea răspunsul complet — pot fi imperfecte."
+    "disclaimer": "Indiciile sunt generate de AI și te ghidează fără să-ți dea răspunsul complet. Pot fi imperfecte."
   },
   "usage": {
     "title": "Utilizare zilnică",
     "pageTitle": "Utilizare zilnică",
     "pageSubtitle": "Câte dezvăluiri de soluții și indicii AI ți-au mai rămas în fereastra curentă de 24 de ore.",
-    "about": "Arată soluția și indiciile AI au o limită zilnică care se reîncarcă într-o fereastră mobilă de 24 de ore — numărătoarea începe la prima folosire a fiecăreia. Ambele sunt ajutoare opționale; poți termina orice lecție și fără ele.",
+    "about": "Arată soluția și indiciile AI au o limită zilnică care se reîncarcă într-o fereastră mobilă de 24 de ore. Numărătoarea începe la prima folosire a fiecăreia. Ambele sunt ajutoare opționale; poți termina orice lecție și fără ele.",
     "signInPrompt": "Autentifică-te ca să-ți vezi utilizarea zilnică.",
     "solution": "Arată soluția",
     "hints": "Indicii AI",
@@ -753,7 +753,7 @@
   },
   "laniakea": {
     "introTitle": "Bun venit la bord, căpitane.",
-    "introSub": "O navă de derivă pentru explorare fără grabă. Preia cârma — alunecă prin peste 100 de lumi, pe lângă nebuloase și găuri negre. Fără obiective. Fără cronometru. Doar cosmosul prin vizorul tău.",
+    "introSub": "O navă de derivă pentru explorare fără grabă. Preia cârma și alunecă prin peste 100 de lumi, pe lângă nebuloase și găuri negre. Fără obiective. Fără cronometru. Doar cosmosul prin vizorul tău.",
     "moveFwd": "Zbor înainte / înapoi",
     "turnLeftRight": "Rotire stânga / dreapta",
     "pitchUpDown": "Înclinare sus / jos",
@@ -856,14 +856,14 @@
         "variable": "Nu folosi variabila {{name}}",
         "function": "Nu defini funcția {{name}}()",
         "loop": "Nu folosi o buclă aici",
-        "int_literal": "Nu scrie rezultatul de-a gata — calculează-l (am găsit {{values}} în cod)",
-        "string_expr": "Linia pusă între ghilimele nu devine comentariu — rămâne un string care plutește în cod. Folosește un comentariu adevărat"
+        "int_literal": "Nu scrie rezultatul de-a gata, calculează-l (am găsit {{values}} în cod)",
+        "string_expr": "Linia pusă între ghilimele nu devine comentariu, rămâne un string care plutește în cod. Folosește un comentariu adevărat"
       }
     }
   },
   "terminalTests": {
     "passedTitle": "Misiune îndeplinită!",
-    "failedTitle": "Aproape — mai încearcă",
+    "failedTitle": "Aproape, mai încearcă",
     "check": {
       "file_exists": "Fișierul {{path}} există",
       "dir_exists": "Folderul {{path}} există",
@@ -895,7 +895,7 @@
     "loading": "Se încarcă",
     "offline": "Offline",
     "volume": "Volum",
-    "liveNote": "O singură transmisie live — toți aud același moment. La reluare te reconectezi la live.",
+    "liveNote": "O singură transmisie live: toți aud același moment. La reluare te reconectezi la live.",
     "track": {
       "neonSkylines": "Neon Skylines"
     }
