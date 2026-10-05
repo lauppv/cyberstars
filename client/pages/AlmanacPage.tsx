@@ -194,12 +194,6 @@ export function AlmanacPage() {
 
         {featured && (
           <article className="almanac-hero" onClick={() => openArticle(featured.slug)}>
-            <div className="hero-art">
-              <div className="hero-art-bg" />
-              <div className="hero-art-stars" />
-              <div className="hero-art-icon">{featured.emoji}</div>
-              <div className="hero-art-badge">{t('almanac.featured')}</div>
-            </div>
             <div className="hero-content">
               <div className="hero-cat">{featured.catLabel}</div>
               <h2 className="hero-title">{featured.title}</h2>
