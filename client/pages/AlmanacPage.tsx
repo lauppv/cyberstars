@@ -223,12 +223,6 @@ export function AlmanacPage() {
             <div className="almanac-articles">
               {paginated.map((a, i) => (
                 <article className="almanac-article" key={i} onClick={() => openArticle(a.slug)}>
-                  <div className="article-art">
-                    <div className="article-art-grad" style={{ background: a.grad }} />
-                    <span className="article-art-tag">{a.tag}</span>
-                    <span className="article-art-year">{a.year}</span>
-                    <span className="emoji">{a.emoji}</span>
-                  </div>
                   <div className="article-body">
                     <h3 className="article-title">{a.title}</h3>
                     <p className="article-excerpt">{a.excerpt}</p>
