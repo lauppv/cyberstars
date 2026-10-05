@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Bell } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
@@ -31,23 +32,20 @@ export function NotificationBell() {
 
   if (!enabled) {
     if (!user) return null;
-    return (
-      <LockedIcon emoji="🔔" label={t('notif.title')} short={t('topbar.short.notifications')} />
-    );
+    return <LockedIcon icon={<Bell size={16} strokeWidth={1.75} />} label={t('notif.title')} />;
   }
 
   return (
     <div className="relative" ref={ref}>
       <TopbarAction
-        emoji="🔔"
+        icon={<Bell size={16} strokeWidth={1.75} />}
         label={t('notif.title')}
-        short={t('topbar.short.notifications')}
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
       >
         {unreadCount > 0 && (
-          <span className="absolute top-0.5 right-0.5 min-w-[16px] h-[16px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-bold leading-[16px] text-center tabular-nums">
+          <span className="absolute -top-1 -right-1 min-w-[15px] h-[15px] px-1 rounded-full bg-[var(--accent)] text-white text-[9px] font-semibold leading-[15px] text-center tabular-nums">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}

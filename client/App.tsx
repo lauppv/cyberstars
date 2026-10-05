@@ -19,6 +19,7 @@ import {
   syncGraphicsForRoute,
   useGraphics,
 } from './hooks/useGraphics';
+import { AppShell } from './components/layout/AppShell';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
 
@@ -132,38 +133,40 @@ function App() {
                         <GlobalBackground />
                         <GlobalRadio />
                         <GlobalGraphicsToggle />
-                        <Suspense
-                          fallback={
-                            <div className="h-screen flex items-center justify-center bg-transparent">
-                              <LoadingSpinner />
-                            </div>
-                          }
-                        >
-                          <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/getstarted" element={<AuthPage />} />
-                            <Route path="/courses" element={<CoursesPage />} />
-                            <Route path="/algorithms" element={<AlgorithmsPage />} />
-                            <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-                            <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
-                            <Route path="/profile" element={<ProfilePage />} />
-                            <Route path="/forum" element={<ForumPage />} />
-                            <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
-                            <Route path="/forum/t/:threadId" element={<ForumPage />} />
-                            <Route path="/almanac" element={<AlmanacPage />} />
-                            <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-                            <Route path="/rules" element={<RulesPage />} />
-                            <Route path="/usage" element={<UsagePage />} />
-                            <Route path="/support" element={<SupportPage />} />
-                            <Route path="/welcome" element={<WelcomePage />} />
-                            <Route path="/admin" element={<AdminPage />} />
-                            <Route path="/leaderboard" element={<LeaderboardPage />} />
-                            <Route path="/messages" element={<MessagesPage />} />
-                            <Route path="/u/:userId" element={<PublicProfilePage />} />
-                            <Route path="/settings" element={<SettingsPage />} />
-                            <Route path="/connections" element={<ConnectionsPage />} />
-                          </Routes>
-                        </Suspense>
+                        <AppShell>
+                          <Suspense
+                            fallback={
+                              <div className="h-screen flex items-center justify-center bg-transparent">
+                                <LoadingSpinner />
+                              </div>
+                            }
+                          >
+                            <Routes>
+                              <Route path="/" element={<HomePage />} />
+                              <Route path="/getstarted" element={<AuthPage />} />
+                              <Route path="/courses" element={<CoursesPage />} />
+                              <Route path="/algorithms" element={<AlgorithmsPage />} />
+                              <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                              <Route path="/lesson/:category/:lesson" element={<LessonPage />} />
+                              <Route path="/profile" element={<ProfilePage />} />
+                              <Route path="/forum" element={<ForumPage />} />
+                              <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
+                              <Route path="/forum/t/:threadId" element={<ForumPage />} />
+                              <Route path="/almanac" element={<AlmanacPage />} />
+                              <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                              <Route path="/rules" element={<RulesPage />} />
+                              <Route path="/usage" element={<UsagePage />} />
+                              <Route path="/support" element={<SupportPage />} />
+                              <Route path="/welcome" element={<WelcomePage />} />
+                              <Route path="/admin" element={<AdminPage />} />
+                              <Route path="/leaderboard" element={<LeaderboardPage />} />
+                              <Route path="/messages" element={<MessagesPage />} />
+                              <Route path="/u/:userId" element={<PublicProfilePage />} />
+                              <Route path="/settings" element={<SettingsPage />} />
+                              <Route path="/connections" element={<ConnectionsPage />} />
+                            </Routes>
+                          </Suspense>
+                        </AppShell>
                       </UsageProvider>
                     </RadioProvider>
                   </GuestSignupPromptProvider>

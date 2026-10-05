@@ -6,17 +6,15 @@
     "forum": "Forum",
     "leaderboard": "Leaderboard",
     "messages": "Messages",
-    "almanac": "Almanac",
-    "laniakea": "Laniakea Explorer"
+    "almanac": "Almanac"
+  },
+  "sidebar": {
+    "label": "Main navigation",
+    "community": "Community",
+    "show": "Show sidebar",
+    "hide": "Hide sidebar"
   },
   "topbar": {
-    "short": {
-      "notifications": "Alerts",
-      "messages": "Inbox",
-      "leaderboard": "Ranking",
-      "connections": "People"
-    },
-    "toggleMenu": "Toggle menu",
     "toggleSidebar": "Toggle sidebar",
     "profile": "Profile",
     "admin": "Admin Dashboard",
