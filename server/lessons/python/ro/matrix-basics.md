@@ -1,4 +1,4 @@
-O **matrice** este o grilă de numere organizate în **rânduri** și **coloane**. Gândește-te la o foaie de calcul, o tablă de șah sau un ecran de pixeli — toate sunt grile. În Python, reprezentăm o matrice ca o **listă de liste**
+O **matrice** este o grilă de numere organizate în **rânduri** și **coloane**. Gândește-te la o foaie de calcul, o tablă de șah sau un ecran de pixeli: toate sunt grile. În Python, reprezentăm o matrice ca o **listă de liste**
 
 ```py
 matrice = [

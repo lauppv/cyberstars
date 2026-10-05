@@ -1,4 +1,4 @@
-Inversarea unui string sună simplu — și chiar este — dar este un exercițiu clasic pentru că te forțează să te gândești la **indexare**, **bucle** și **construirea treptată** a unui rezultat
+Inversarea unui string sună simplu (și chiar este), dar este un exercițiu clasic pentru că te forțează să te gândești la **indexare**, **bucle** și **construirea treptată** a unui rezultat
 
 Am văzut deja o metodă folosind pattern-ul de acumulator
 
@@ -69,7 +69,7 @@ Tocmai a sosit o transmisiune bruiată. Echipajul bănuiește că a fost trimis�
 
 - transmisiunea, o linie de cuvinte separate prin spații
 
-**Ieșire** — două linii: textul inversat caracter cu caracter, apoi textul cu ordinea cuvintelor inversată.
+**Ieșire**: două linii: textul inversat caracter cu caracter, apoi textul cu ordinea cuvintelor inversată.
 
 **Exemplu**
 

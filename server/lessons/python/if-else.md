@@ -67,7 +67,7 @@ if x == 4:
 
 By the way, we don’t always need an **else** after **if**. Let’s think about a car. **If** we turn the key, the engine starts, **otherwise** nothing happens. Here, we don’t necessarily need an **else**
 
-However, there are cases where we do need **else**. **If** I get at least 50% on an exam, I pass, **otherwise** I don’t. Here we see that there are two possibilities: either you pass or you don’t. It’s not like you can say 'if I get 50% I pass, if not, nothing happens' — what actually happens is you fail the exam, meaning there is a consequence
+However, there are cases where we do need **else**. **If** I get at least 50% on an exam, I pass, **otherwise** I don’t. Here we see that there are two possibilities: either you pass or you don’t. It’s not like you can say 'if I get 50% I pass, if not, nothing happens'. What actually happens is you fail the exam, meaning there is a consequence
 
 ```py
 username = "Tommy Vercetti"
@@ -102,7 +102,7 @@ The reactor reports its temperature in degrees Celsius. Write an **if / else** t
 - if `temperature` is **greater than 1000** → print `Danger: reactor at`, the temperature, then `degrees - shutting down` (for `temperature = 1200` that is `Danger: reactor at 1200 degrees - shutting down`)
 - otherwise → print `Reactor stable at`, the temperature, then `degrees` (for `temperature = 800` that is `Reactor stable at 800 degrees`)
 
-Create a variable named `temperature` that stores the temperature — pick any value you like. Descriptive names matter: if someone sees a variable called `x`, they'll immediately wonder "what is x? Who is x?"
+Create a variable named `temperature` that stores the temperature, pick any value you like. Descriptive names matter: if someone sees a variable called `x`, they'll immediately wonder "what is x? Who is x?"
 
 **Example**
 

@@ -131,7 +131,7 @@ Output
 Done
 ```
 
-As long as **running** is **True**, the loop continues. When the **if** makes it **False**, the condition **while running** becomes false and the loop stops at the next check. It's a clean alternative to **break** — instead of jumping out abruptly, we let the condition close itself
+As long as **running** is **True**, the loop continues. When the **if** makes it **False**, the condition **while running** becomes false and the loop stops at the next check. It's a clean alternative to **break**: instead of jumping out abruptly, we let the condition close itself
 
 ---
 

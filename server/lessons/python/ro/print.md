@@ -11,7 +11,7 @@ Apropo, poți **rula** aceste bucăți de cod ca să vezi rezultatul. Te **încu
 
 **print()** este o funcție (vom învăța în lecțiile următoare ce este de fapt o funcție). Deocamdată, trebuie doar să știm că **print()** este o instrucțiune, modul nostru de a-i spune calculatorului: „afișează ceva"
 
-Un lucru important de observat sunt **ghilimelele** —
+Un lucru important de observat sunt **ghilimelele**:
 
 ```py
 print(salut, imi place pizza)
@@ -46,4 +46,4 @@ Stare: ONLINE
 Bun venit la bord, cadet!
 ```
 
-Psst — nu uita **ghilimelele** :) Potrivește textul exact, linie cu linie.
+Psst, nu uita **ghilimelele** :) Potrivește textul exact, linie cu linie.

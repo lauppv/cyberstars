@@ -1,4 +1,4 @@
-Time to combine what you've learned! No new theory — just a challenge that uses **print**, **variables**, **f-strings**, and **comments**
+Time to combine what you've learned! No new theory, just a challenge that uses **print**, **variables**, **f-strings**, and **comments**
 
 ---
 
@@ -25,6 +25,6 @@ Player Shadow(42) has 97.5 health and is part of CyberStars.
 
 Note:
 
-- `name`, `guild` — text
-- `level` — a whole number
-- `health` — a number with decimals
+- `name`, `guild`: text
+- `level`: a whole number
+- `health`: a number with decimals

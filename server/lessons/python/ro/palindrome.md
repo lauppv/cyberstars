@@ -1,4 +1,4 @@
-Un **palindrom** este un cuvânt care se citește la fel de la stânga la dreapta și invers. **racecar**, **madam**, **level** — întoarce-le și sunt la fel
+Un **palindrom** este un cuvânt care se citește la fel de la stânga la dreapta și invers. **racecar**, **madam**, **level**: întoarce-le și sunt la fel
 
 Cum verificăm dacă un cuvânt este palindrom? Cea mai simplă abordare: **inversează-l și compară**
 
@@ -75,7 +75,7 @@ Mai întâi **curățăm** șirul: păstrăm doar literele și le transformăm �
 
 ## Misiune: Verificarea Integrității Semnalului
 
-Un cod de semnal este de încredere doar dacă se citește la fel de la stânga la dreapta și invers — un **palindrom**. Stația a înregistrat un lot de coduri și trebuie verificate.
+Un cod de semnal este de încredere doar dacă se citește la fel de la stânga la dreapta și invers: un **palindrom**. Stația a înregistrat un lot de coduri și trebuie verificate.
 
 1. Scrie o funcție **este_palindrom(cuvant)** care returnează `True` dacă cuvântul este palindrom, `False` altfel. Folosește o **buclă** (compară prima literă cu ultima, a doua cu penultima, ...), nu `[::-1]`.
 2. Pentru fiecare cod, afișează codul, apoi `: `, apoi rezultatul.

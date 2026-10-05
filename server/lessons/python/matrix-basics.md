@@ -1,4 +1,4 @@
-A **matrix** is a grid of numbers organized in **rows** and **columns**. Think of a spreadsheet, a chess board, or a pixel screen — all are grids. In Python, we represent a matrix as a **list of lists**
+A **matrix** is a grid of numbers organized in **rows** and **columns**. Think of a spreadsheet, a chess board, or a pixel screen: all are grids. In Python, we represent a matrix as a **list of lists**
 
 ```py
 matrix = [

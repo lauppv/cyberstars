@@ -58,15 +58,15 @@ A pilot is about to launch. The details are stored in `pilot`, `ship_name`, `fue
 
 Using **f-strings**, print a three-line flight report:
 
-- the pilot's name and the ship — like `Pilot Shadow is flying Orion`
-- the fuel — like `Fuel: 400 units`
-- the speed — like `Speed: 7.5 km/s`
+- the pilot's name and the ship, like `Pilot Shadow is flying Orion`
+- the fuel, like `Fuel: 400 units`
+- the speed, like `Speed: 7.5 km/s`
 
-**Input** (already set at the top of your code — change the values to test):
+**Input** (already set at the top of your code, change the values to test):
 
-- `pilot`, `ship_name` — text
-- `fuel` — a whole number
-- `speed` — a number with decimals
+- `pilot`, `ship_name`: text
+- `fuel`: a whole number
+- `speed`: a number with decimals
 
 **Example**
 

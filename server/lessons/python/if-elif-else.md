@@ -124,8 +124,8 @@ The station constantly checks its `oxygen` level (in percent) and whether there 
   - if the crew is still aboard → `Emergency - evacuate now`
   - otherwise → `We have no crew aboard, so venting the bay is safe`
 
-- `oxygen` — oxygen level in percent
-- `crew_aboard` — if the crew is still on the station
+- `oxygen`: oxygen level in percent
+- `crew_aboard`: if the crew is still on the station
 
 **Example**
 

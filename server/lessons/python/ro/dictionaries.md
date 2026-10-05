@@ -137,11 +137,11 @@ print(jucator["arme"])
 
 Fă următoarele, în ordine:
 
-1. **Creează** un dicționar `echipaj` cu trei chei — `"nume"`, `"rol"` și `"varsta"` — folosind variabilele `nume`, `rol` și `varsta` ca valori
+1. **Creează** un dicționar `echipaj` cu trei chei (`"nume"`, `"rol"` și `"varsta"`) folosind variabilele `nume`, `rol` și `varsta` ca valori
 2. **Adaugă** o cheie nouă `"statie"`, folosind variabila `statie` ca valoare
-3. E ziua de naștere a membrului — **actualizează** `varsta` din dicționar adăugându-i **1** (folosind operatorul +)
+3. E ziua de naștere a membrului, așa că **actualizează** `varsta` din dicționar adăugându-i **1** (folosind operatorul +)
 4. Afișează valorile pentru `nume`, `rol`, `varsta` și `statie`, fiecare pe propria linie
-5. Încă nu urmărim rangul — dacă cheia `"rang"` **nu este în** dicționar, afișează `Rang: necunoscut`
+5. Încă nu urmărim rangul, așa că dacă cheia `"rang"` **nu este în** dicționar, afișează `Rang: necunoscut`
 
 **Ieșire**
 
@@ -155,4 +155,4 @@ Laniakea
 Rang: necunoscut
 ```
 
-Schimbă o valoare de sus și rulează din nou — raportul se schimbă și el.
+Schimbă o valoare de sus și rulează din nou, raportul se schimbă și el.

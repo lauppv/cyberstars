@@ -86,9 +86,9 @@ Clean. Easy to read. Perfect use case
 
 You have a list of sensor readings. Using **list comprehension** for each step:
 
-1. Create `high` — only the readings **above 80**
-2. Create `doubled` — every reading **multiplied by 2**
-3. Create `passing` — only the readings that are **50 or more**
+1. Create `high`: only the readings **above 80**
+2. Create `doubled`: every reading **multiplied by 2**
+3. Create `passing`: only the readings that are **50 or more**
 4. Print all three lists, each on its own line
 
 **Output**

@@ -27,7 +27,7 @@ Afișează **-1**. Shrek nu este în Vice City
 
 ---
 
-Cum funcționează? Ne uităm la poziția **0** — este Cortez? Nu. Poziția **1** — este Cortez? Nu. Poziția **2** — este Cortez? **Da!** Returnăm **2**
+Cum funcționează? Ne uităm la poziția **0**: este Cortez? Nu. Poziția **1**: este Cortez? Nu. Poziția **2**: este Cortez? **Da!** Returnăm **2**
 
 Dacă parcurgem întreaga listă fără să găsim ținta, returnăm **-1**
 
@@ -50,7 +50,7 @@ Afișează **Am găsit un scor peste 90: 95 la indexul 3**
 
 **Cât de bună este căutarea liniară?** Dacă lista are **10** elemente, s-ar putea să verificăm toate cele 10. Dacă are **1.000.000** de elemente, s-ar putea să verificăm toate cele 1.000.000. Căutarea liniară verifică elementele **unul câte unul**. Cu cât mai multe elemente, cu atât durează mai mult. În cel mai rău caz (elementul negăsit), verificăm **fiecare element în parte**
 
-Există ceva mai rapid? Da — **căutarea binară**, pe care o vom învăța mai târziu. Dar căutarea binară funcționează doar pe liste **sortate**. Căutarea liniară funcționează pe **orice**
+Există ceva mai rapid? Da, **căutarea binară**, pe care o vom învăța mai târziu. Dar căutarea binară funcționează doar pe liste **sortate**. Căutarea liniară funcționează pe **orice**
 
 ---
 
@@ -66,7 +66,7 @@ Apoi **citește** un nume și raportează rezultatul.
 
 - numele membrului echipajului de găsit
 
-**Ieșire** — o linie. Dacă numele este la bord, afișează numele, apoi `este la stația`, apoi numărul stației. Dacă nu, afișează numele urmat de `nu este la bord`. Vezi exemplul de mai jos pentru formularea exactă.
+**Ieșire**: o linie. Dacă numele este la bord, afișează numele, apoi `este la stația`, apoi numărul stației. Dacă nu, afișează numele urmat de `nu este la bord`. Vezi exemplul de mai jos pentru formularea exactă.
 
 **Exemplu**
 

@@ -1,6 +1,6 @@
 Let's build a **quiz game**! We'll store questions, possible answers, and the correct answer in a data structure, then loop through them and keep score
 
-This project teaches us how to **organize data**, **loop through it**, and **track state** — skills that show up in every real program
+This project teaches us how to **organize data**, **loop through it**, and **track state**, skills that show up in every real program
 
 ---
 
@@ -93,7 +93,7 @@ print(f"\nFinal score: {score}/{total} ({percentage}%)")
 
 ## Mission: Crew Certification Quiz
 
-New crew must pass a certification quiz. The questions and the candidate's answers are already recorded, so no `input()` is needed — you just grade and report.
+New crew must pass a certification quiz. The questions and the candidate's answers are already recorded, so no `input()` is needed: you just grade and report.
 
 1. Write a function **grade_quiz(questions, answers)** that returns how many of the candidate's answers match the `"answer"` field of the matching question.
 2. Print `Score: ` followed by the number correct, a `/`, and the total number of questions.

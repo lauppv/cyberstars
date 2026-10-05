@@ -27,7 +27,7 @@ Output **-1**. Shrek is not in Vice City
 
 ---
 
-How does it work? We look at position **0** — is it Cortez? No. Position **1** — is it Cortez? No. Position **2** — is it Cortez? **Yes!** Return **2**
+How does it work? We look at position **0**: is it Cortez? No. Position **1**: is it Cortez? No. Position **2**: is it Cortez? **Yes!** Return **2**
 
 If we go through the entire list without finding the target, we return **-1**
 
@@ -50,7 +50,7 @@ Output **Found a score above 90: 95 at index 3**
 
 **How good is linear search?** If the list has **10** elements, we might check all 10. If it has **1,000,000** elements, we might check all 1,000,000. Linear search checks elements **one by one**. The more elements, the longer it takes. In the worst case (element not found), we check **every single one**
 
-Is there something faster? Yes — **binary search**, which we'll learn later. But binary search only works on **sorted** lists. Linear search works on **anything**
+Is there something faster? Yes, **binary search**, which we'll learn later. But binary search only works on **sorted** lists. Linear search works on **anything**
 
 ---
 
@@ -66,7 +66,7 @@ Then **read** a name and report the result.
 
 - the crew member's name to find
 
-**Output** — one line. If the name is on board, print the name, then `is at station`, then the station number. If not, print the name followed by `is not on board`. See the example below for the exact wording.
+**Output**: one line. If the name is on board, print the name, then `is at station`, then the station number. If not, print the name followed by `is not on board`. See the example below for the exact wording.
 
 **Example**
 

@@ -11,7 +11,7 @@ By the way, you can **run** these pieces of code to see the result. We **strongl
 
 **print()** is a function (we'll learn in later lessons what a function really is). For now, we only need to know that **print()** is an instruction, our way of telling the computer: "display something"
 
-An important thing to notice is the **quotes** —
+An important thing to notice is the **quotes**:
 
 ```py
 print(hey, I like pizza)
@@ -46,4 +46,4 @@ Status: ONLINE
 Welcome aboard, cadet!
 ```
 
-Psst — don't forget the **quotes** :) Match the text exactly, line by line.
+Psst, don't forget the **quotes** :) Match the text exactly, line by line.

@@ -67,7 +67,7 @@ Rezultat **100**. Am început cu **total = 0**, apoi pentru fiecare preț **i** 
 
 Ai în dreapta lista cu cei **20** de membri ai echipajului. Controlul de la sol a selectat trei oameni pentru o ieșire în spațiu (EVA): cei aflați la **indexurile 5, 10 și 12** din listă
 
-Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. Maria`, `2. Andrei` și tot așa — folosește indexul cu **i + 1**). Pentru membrii de la indexurile **5**, **10** și **12** adaugă la final ` -> selectat pentru EVA`
+Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. Maria`, `2. Andrei` și tot așa; folosește indexul cu **i + 1**). Pentru membrii de la indexurile **5**, **10** și **12** adaugă la final ` -> selectat pentru EVA`
 
 Ai grijă: numărăm de la **0**, deci indexul **5** este al **6**-lea membru afișat
 
@@ -96,4 +96,4 @@ Ai grijă: numărăm de la **0**, deci indexul **5** este al **6**-lea membru af
 20. Dan
 ```
 
-Schimbă indexurile selectate sau adaugă un membru nou și rulează din nou — vezi cum se mută eticheta de EVA
+Schimbă indexurile selectate sau adaugă un membru nou și rulează din nou, vezi cum se mută eticheta de EVA

@@ -1,6 +1,6 @@
 We know **lists**, **tuples**, and **dictionaries**. Time for the last big collection type: **sets**
 
-A **set** is a collection where **every element is unique**. No duplicates allowed. Think of it like a guest list for a party — each person can only be on the list **once**
+A **set** is a collection where **every element is unique**. No duplicates allowed. Think of it like a guest list for a party: each person can only be on the list **once**
 
 ```py
 guests = {"Tommy", "Lance", "Cortez", "Tommy"}
@@ -13,7 +13,7 @@ Output
 {'Lance', 'Cortez', 'Tommy'}
 ```
 
-Wait, we wrote **Tommy** twice, but he only appears once. That's the whole point of a set — it automatically removes duplicates. Also notice that the **order might be different** from how we wrote them. Sets don't care about order, only about **what's inside**
+Wait, we wrote **Tommy** twice, but he only appears once. That's the whole point of a set: it automatically removes duplicates. Also notice that the **order might be different** from how we wrote them. Sets don't care about order, only about **what's inside**
 
 ---
 
@@ -96,7 +96,7 @@ The station picked up a list of signal codes, and many repeat. Do the following:
 1. Print `Total: ` then the total number of signals (length of the list)
 2. Make a **set** of the unique codes
 3. Print `Unique: ` then how many unique codes there are
-4. Check whether the code `D4` was picked up — print `D4 detected` if it is **in** the set, otherwise `D4 missing`
+4. Check whether the code `D4` was picked up: print `D4 detected` if it is **in** the set, otherwise `D4 missing`
 
 **Output**
 

@@ -117,7 +117,7 @@ Un cod de acces al stației este **valid** doar dacă îndeplinește **toate cel
 
 - codul de acces
 
-**Ieșire** — patru linii: cele trei verificări, apoi `Cod de acces valid` sau `Cod de acces invalid`.
+**Ieșire**: patru linii: cele trei verificări, apoi `Cod de acces valid` sau `Cod de acces invalid`.
 
 **Exemplu**
 

@@ -18,7 +18,7 @@ Ieșire
 9
 ```
 
-Ce s-a întâmplat? Funcția a **returnat două valori** separate printr-o virgulă. În exterior, le-am **despachetat** în două variabile, exact cum am făcut cu tuplele. De fapt, asta este exact ce face Python în culise — creează o **tuplă** și apoi o despachetează
+Ce s-a întâmplat? Funcția a **returnat două valori** separate printr-o virgulă. În exterior, le-am **despachetat** în două variabile, exact cum am făcut cu tuplele. De fapt, asta este exact ce face Python în culise: creează o **tuplă** și apoi o despachetează
 
 ```py
 def minim_maxim(numere):

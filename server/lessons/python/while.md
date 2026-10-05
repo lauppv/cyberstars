@@ -79,7 +79,7 @@ Let's follow what happens:
 - if we type **starlet**, then **password = "starlet"**, so **password != "starlet"** becomes **false** → the loop stops
 - the program prints **Access granted!**
 
-Notice the important thing: here we did **not** know how many times the loop would repeat. It depends entirely on what the user types. With a **for** loop it would have been hard, because **for** wants to know up front how many times to go. With **while** it's natural — we simply repeat **as long as** the condition is true
+Notice the important thing: here we did **not** know how many times the loop would repeat. It depends entirely on what the user types. With a **for** loop it would have been hard, because **for** wants to know up front how many times to go. With **while** it's natural: we simply repeat **as long as** the condition is true
 
 Why did we put **password = ""** before the loop? So that **while** has something to check on the first pass. If the variable didn't exist at all, **Python** would give an error when it reaches the condition
 

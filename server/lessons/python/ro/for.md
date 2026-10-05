@@ -146,7 +146,7 @@ Observă cele **două** niveluri de spațiere: **if** este indentat o dată (e �
 
 ## Misiune: Colectorul de Energie
 
-Stația adună energie de la o serie de celule numerotate de la **1** la `celule`. Doar celulele cu număr **impar** funcționează — restul sunt defecte.
+Stația adună energie de la o serie de celule numerotate de la **1** la `celule`. Doar celulele cu număr **impar** funcționează, restul sunt defecte.
 
 Fă-ți o variabilă numită `celule` pentru câte celule sunt (alege ce valoare vrei), apoi scrie un program care:
 

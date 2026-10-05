@@ -67,7 +67,7 @@ Output **100**. We started with **total = 0**, then for each price **i** we adde
 
 On the right you have the list of the **20** crew members. Ground control has selected three people for a spacewalk (EVA): the ones at **indexes 5, 10 and 12** in the list
 
-Loop over the list with a **for** loop and print each member numbered (`1. Mary`, `2. Andrew` and so on — use the index with **i + 1**). For the members at indexes **5**, **10** and **12** add ` -> selected for EVA` at the end
+Loop over the list with a **for** loop and print each member numbered (`1. Mary`, `2. Andrew` and so on; use the index with **i + 1**). For the members at indexes **5**, **10** and **12** add ` -> selected for EVA` at the end
 
 Careful: we count from **0**, so index **5** is the **6**th member printed
 
@@ -96,4 +96,4 @@ Careful: we count from **0**, so index **5** is the **6**th member printed
 20. Daniel
 ```
 
-Change the selected indexes or add a new member and run again — watch the EVA tag move
+Change the selected indexes or add a new member and run again, watch the EVA tag move

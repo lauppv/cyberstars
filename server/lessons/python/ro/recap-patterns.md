@@ -6,11 +6,11 @@ Combină **funcțiile built-in**, **descompunerea problemei** și tiparele **cou
 
 Jurnalul de misiune este un singur șir de cuvinte. **Împarte munca în trei funcții**, fiecare folosind un alt tipar:
 
-1. `contor_cuvant(log, cuvant)` — **tiparul counter**: de câte ori apare `cuvant` în jurnal
-2. `cel_mai_lung_cuvant(log)` — **tiparul accumulator**: cel mai lung cuvânt din jurnal
-3. `are_duplicate(log)` — **tiparul flag**: întoarce `True` dacă vreun cuvânt apare de mai multe ori
+1. `contor_cuvant(log, cuvant)`: **tiparul counter**: de câte ori apare `cuvant` în jurnal
+2. `cel_mai_lung_cuvant(log)`: **tiparul accumulator**: cel mai lung cuvânt din jurnal
+3. `are_duplicate(log)`: **tiparul flag**: întoarce `True` dacă vreun cuvânt apare de mai multe ori
 
-În programul principal, folosește și **funcții built-in** — `len()` pentru numărul total de cuvinte și `sorted()` împreună cu un `set()` pentru cuvintele unice. Afișează:
+În programul principal, folosește și **funcții built-in**: `len()` pentru numărul total de cuvinte și `sorted()` împreună cu un `set()` pentru cuvintele unice. Afișează:
 
 - `Total cuvinte: ` apoi câte cuvinte sunt
 - `Apariții scan: ` apoi de câte ori apare `scan`

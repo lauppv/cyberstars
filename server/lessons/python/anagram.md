@@ -25,7 +25,7 @@ We use **.lower()** so that uppercase and lowercase don't matter
 
 ---
 
-But let's also solve it using what we learned — a **frequency dictionary**. Two words are anagrams if every letter appears the **same number of times** in both words
+But let's also solve it using what we learned: a **frequency dictionary**. Two words are anagrams if every letter appears the **same number of times** in both words
 
 ```py
 def is_anagram(word1, word2):
@@ -64,7 +64,7 @@ False
 
 We build a frequency dictionary for each word, then compare them. If the dictionaries are equal, the words have the same letters with the same counts → anagram
 
-Notice the **early exit**: if the lengths are different, they can't be anagrams — no need to count anything
+Notice the **early exit**: if the lengths are different, they can't be anagrams, no need to count anything
 
 ---
 
@@ -74,7 +74,7 @@ The frequency approach is actually **faster** than sorting for very long strings
 
 ## Mission: Passphrase Match
 
-Two crew members each transmit a scrambled passphrase. The airlock only opens if the two passphrases are **anagrams** of each other — the same letters in a different order (case doesn't matter).
+Two crew members each transmit a scrambled passphrase. The airlock only opens if the two passphrases are **anagrams** of each other: the same letters in a different order (case doesn't matter).
 
 1. Write a function **are_anagrams(a, b)** that returns `True` if the two words are anagrams, `False` otherwise. Use **either** approach (sort the letters and compare, or a frequency dictionary). Lowercase both first so capitals don't matter.
 2. **Read** two passphrases, then print `Anagram: ` followed by the result.
@@ -85,7 +85,7 @@ Two crew members each transmit a scrambled passphrase. The airlock only opens if
 - the first passphrase
 - the second passphrase
 
-**Output** — two lines: the anagram check, then the access verdict.
+**Output**: two lines: the anagram check, then the access verdict.
 
 **Example**
 

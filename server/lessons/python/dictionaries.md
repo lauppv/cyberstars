@@ -137,11 +137,11 @@ In the editor you're given four details about a crew member as variables: `name`
 
 Do the following, in order:
 
-1. **Create** a dictionary `crew` with three keys — `"name"`, `"role"`, and `"age"` — using the `name`, `role`, and `age` variables as their values
+1. **Create** a dictionary `crew` with three keys (`"name"`, `"role"`, and `"age"`) using the `name`, `role`, and `age` variables as their values
 2. **Add** a new key `"station"`, using the `station` variable as its value
-3. It's the crew member's birthday — **update** `age` inside the dictionary by adding **1** to it (use the + operator)
+3. It's the crew member's birthday, so **update** `age` inside the dictionary by adding **1** to it (use the + operator)
 4. Print the values for `name`, `role`, `age`, and `station`, each on its own line
-5. We don't track rank yet — if the key `"rank"` is **not in** the dictionary, print `Rank: unknown`
+5. We don't track rank yet, so if the key `"rank"` is **not in** the dictionary, print `Rank: unknown`
 
 **Output**
 
@@ -155,4 +155,4 @@ Laniakea
 Rank: unknown
 ```
 
-Change a value at the top and run again — the report follows.
+Change a value at the top and run again, the report follows.

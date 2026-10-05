@@ -1,4 +1,4 @@
-Reversing a string sounds simple — and it is — but it's a classic exercise because it forces you to think about **indexing**, **loops**, and **building up** a result
+Reversing a string sounds simple (and it is), but it's a classic exercise because it forces you to think about **indexing**, **loops**, and **building up** a result
 
 We already saw one way using the accumulator pattern
 
@@ -69,7 +69,7 @@ A garbled transmission just arrived. The crew suspects it was sent **backwards**
 
 - the transmission, a line of words separated by spaces
 
-**Output** — two lines: the character-reversed text, then the word-order-reversed text.
+**Output**: two lines: the character-reversed text, then the word-order-reversed text.
 
 **Example**
 

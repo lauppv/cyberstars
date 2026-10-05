@@ -1,6 +1,6 @@
 Hai să construim un **joc de tip quiz**! O să stocăm întrebări, răspunsuri posibile, și răspunsul corect într-o structură de date, apoi le parcurgem și ținem scorul
 
-Acest proiect ne învață cum să **organizăm datele**, să le **parcurgem**, și să **urmărim starea** — abilități care apar în orice program real
+Acest proiect ne învață cum să **organizăm datele**, să le **parcurgem**, și să **urmărim starea**, abilități care apar în orice program real
 
 ---
 
@@ -93,7 +93,7 @@ print(f"\nScor final: {scor}/{total} ({procent}%)")
 
 ## Misiune: Quiz-ul de Certificare al Echipajului
 
-Echipajul nou trebuie să treacă un quiz de certificare. Întrebările și răspunsurile candidatului sunt deja înregistrate, așa că nu e nevoie de `input()` — tu doar evaluezi și raportezi.
+Echipajul nou trebuie să treacă un quiz de certificare. Întrebările și răspunsurile candidatului sunt deja înregistrate, așa că nu e nevoie de `input()`: tu doar evaluezi și raportezi.
 
 1. Scrie o funcție **noteaza_test(intrebari, raspunsuri)** care returnează câte dintre răspunsurile candidatului se potrivesc cu câmpul `"raspuns"` al întrebării corespunzătoare.
 2. Afișează `Scor: ` urmat de numărul de răspunsuri corecte, un `/`, și numărul total de întrebări.

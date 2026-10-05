@@ -46,7 +46,7 @@ However, in future lessons we will use comments with **#**, even if they span mu
 
 ## Mission: Redact the Log
 
-The code at the right prints four lines about the rocket. But the **wind speed** is classified — you must hide it **without deleting it**.
+The code at the right prints four lines about the rocket. But the **wind speed** is classified: you must hide it **without deleting it**.
 
 **Comment** the single line that prints `wind_speed` so that the program shows only the **ship name**, **mission name**, and **maximum power**. Don't delete anything, just add a `#`.
 

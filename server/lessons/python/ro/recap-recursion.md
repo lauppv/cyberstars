@@ -10,13 +10,13 @@ O scanare pe rază lungă întoarce o **hartă a sectorului** sub forma unei gri
 - **1** = resturi
 - **2** = far
 
-Adună tot din acest capitol — **matrice**, **recursivitate** și **căutare binară**:
+Adună tot din acest capitol: **matrice**, **recursivitate** și **căutare binară**:
 
-**numara_balize(sector)** — folosește **bucle imbricate** pe grilă ca să numeri câte faruri (`2`-urile) conține.
+**numara_balize(sector)**: folosește **bucle imbricate** pe grilă ca să numeri câte faruri (`2`-urile) conține.
 
-**aplatizeaza_sortat(sector)** — restrânge grila 2D într-o **listă sortată cu valorile unice** care apar în ea.
+**aplatizeaza_sortat(sector)**: restrânge grila 2D într-o **listă sortată cu valorile unice** care apar în ea.
 
-**gaseste_valoare(lista_sortata, tinta)** — folosește **căutare binară recursivă** ca să verifici dacă o valoare se află în lista sortată. Întoarce `True` sau `False`.
+**gaseste_valoare(lista_sortata, tinta)**: folosește **căutare binară recursivă** ca să verifici dacă o valoare se află în lista sortată. Întoarce `True` sau `False`.
 
 Testează cu:
 

@@ -1,4 +1,4 @@
-A **palindrome** is a word that reads the same forwards and backwards. **racecar**, **madam**, **level** — flip them around and they're the same
+A **palindrome** is a word that reads the same forwards and backwards. **racecar**, **madam**, **level**: flip them around and they're the same
 
 How do we check if a word is a palindrome? The simplest approach: **reverse it and compare**
 
@@ -75,7 +75,7 @@ We first **clean** the string: keep only letters and convert to lowercase. Then 
 
 ## Mission: Signal Integrity Check
 
-A signal code is only trustworthy if it reads the same forwards and backwards — a **palindrome**. The station logged a batch of codes and needs them checked.
+A signal code is only trustworthy if it reads the same forwards and backwards: a **palindrome**. The station logged a batch of codes and needs them checked.
 
 1. Write a function **is_palindrome(word)** that returns `True` if the word is a palindrome, `False` otherwise. Use a **loop** (compare the first letter with the last, the second with the second-to-last, ...), not `[::-1]`.
 2. For each code, print the code, then `: `, then the result.
