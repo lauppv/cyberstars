@@ -43,11 +43,6 @@
   gap: 10px;
   cursor: pointer;
 }
-.wc-logo-icon {
-  font-size: 22px;
-  color: var(--accent);
-  filter: drop-shadow(0 0 10px rgba(108, 92, 231, 0.2));
-}
 .wc-logo-text {
   font-weight: 700;
   font-size: 17px;
