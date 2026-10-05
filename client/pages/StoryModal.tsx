@@ -21,18 +21,6 @@ export function StoryModal({ story, onClose }: { story: AlmanacArticle; onClose:
         <button className="story-close" onClick={onClose}>
           ✕
         </button>
-        <div className="story-modal-art">
-          <div
-            className="story-modal-art-grad"
-            style={{
-              background:
-                story.grad || 'linear-gradient(135deg,#000814 0%,#001d3d 60%,#003566 100%)',
-            }}
-          />
-          <span className="story-modal-emoji">{story.emoji}</span>
-          {story.tag && <span className="story-modal-tag">{story.tag}</span>}
-          {story.year && <span className="story-modal-year">{story.year}</span>}
-        </div>
         <div className="story-modal-body">
           <h2 className="story-modal-title">{story.title}</h2>
           <div className="story-modal-text">

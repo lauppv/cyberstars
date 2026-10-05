@@ -194,12 +194,6 @@ export function AlmanacPage() {
 
         {featured && (
           <article className="almanac-hero" onClick={() => openArticle(featured.slug)}>
-            <div className="hero-art">
-              <div className="hero-art-bg" />
-              <div className="hero-art-stars" />
-              <div className="hero-art-icon">{featured.emoji}</div>
-              <div className="hero-art-badge">{t('almanac.featured')}</div>
-            </div>
             <div className="hero-content">
               <div className="hero-cat">{featured.catLabel}</div>
               <h2 className="hero-title">{featured.title}</h2>
@@ -229,12 +223,6 @@ export function AlmanacPage() {
             <div className="almanac-articles">
               {paginated.map((a, i) => (
                 <article className="almanac-article" key={i} onClick={() => openArticle(a.slug)}>
-                  <div className="article-art">
-                    <div className="article-art-grad" style={{ background: a.grad }} />
-                    <span className="article-art-tag">{a.tag}</span>
-                    <span className="article-art-year">{a.year}</span>
-                    <span className="emoji">{a.emoji}</span>
-                  </div>
                   <div className="article-body">
                     <h3 className="article-title">{a.title}</h3>
                     <p className="article-excerpt">{a.excerpt}</p>
