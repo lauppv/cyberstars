@@ -2,7 +2,7 @@ Citește o listă de numere și sortează-le folosind algoritmul **insertion sor
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n` — câte numere sunt.
+- Linia 1: un număr întreg `n`, câte numere sunt.
 - Linia 2: `n` numere întregi separate prin spații.
 
 ### Rezultat
@@ -49,5 +49,5 @@ Ieșire:
 1 1 3 3
 ```
 
-Valorile duplicate sunt păstrate — sortarea trebuie doar să plaseze valorile
+Valorile duplicate sunt păstrate: sortarea trebuie doar să plaseze valorile
 egale una lângă alta.

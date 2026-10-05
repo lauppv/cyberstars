@@ -10,7 +10,7 @@ int main(void) {
         // We're in the parent. The parent forks the grandchild.
         pid_t p2 = fork();
         if (p2 == 0) {
-            // Grandchild (level 2) prints first — it has no children to wait on.
+            // Grandchild (level 2) prints first: it has no children to wait on.
             printf("Level 2 (grandchild): PID %d\n", getpid());
         } else {
             // Parent (level 1) waits for the grandchild, then prints.

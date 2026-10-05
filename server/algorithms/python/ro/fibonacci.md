@@ -34,7 +34,7 @@ Ieșire:
 0
 ```
 
-Cu `n = 1` afișezi doar primul termen — fără spațiu, fără al doilea număr.
+Cu `n = 1` afișezi doar primul termen: fără spațiu, fără al doilea număr.
 
 ```
 Intrare:

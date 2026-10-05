@@ -4,7 +4,7 @@ Read N items from stdin. For each item, create an `Item` object. At the end, pri
 
 ### Input
 
-- Line 1: an integer N — the number of items
+- Line 1: an integer N, the number of items
 - For each item, three lines:
   - Line 1: the name (a single word)
   - Line 2: the price (decimal number)
@@ -58,4 +58,4 @@ Output:
 Total: 0.99
 ```
 
-A single item with quantity 1 — the total is just its price.
+A single item with quantity 1: the total is just its price.

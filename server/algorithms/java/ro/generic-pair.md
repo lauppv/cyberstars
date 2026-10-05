@@ -9,8 +9,8 @@ Citește două valori de la stdin (un șir și un număr întreg), creează un P
 
 ### Rezultat
 
-- Linia 1: `(PRIM, SECUND)` — perechea originală
-- Linia 2: `(PRIM, SECUND)` — perechea interschimbată
+- Linia 1: `(PRIM, SECUND)`, perechea originală
+- Linia 2: `(PRIM, SECUND)`, perechea interschimbată
 
 ### Exemple
 

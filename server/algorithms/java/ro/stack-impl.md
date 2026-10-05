@@ -11,9 +11,9 @@ Procesează comenzile de la stdin și afișează rezultatele pentru `scoate` și
 
 Comportament:
 
-- `pune X` — pune X pe stivă
-- `scoate` — elimină și afișează elementul din vârf
-- `varf` — afișează elementul din vârf fără a-l elimina
+- `pune X`: pune X pe stivă
+- `scoate`: elimină și afișează elementul din vârf
+- `varf`: afișează elementul din vârf fără a-l elimina
 
 ### Rezultat
 

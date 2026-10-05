@@ -44,4 +44,4 @@ Area: 1
 Perimeter: 4
 ```
 
-The smallest possible rectangle — a 1x1 square.
+The smallest possible rectangle: a 1x1 square.

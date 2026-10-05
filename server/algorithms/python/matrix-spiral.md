@@ -2,7 +2,7 @@ Read an NxN matrix of integers and print its elements in **spiral order**: start
 
 ### Input
 
-- Line 1: an integer `n` — the size of the matrix (1 <= n <= 10).
+- Line 1: an integer `n`, the size of the matrix (1 <= n <= 10).
 - Next `n` lines: each containing `n` space-separated integers.
 
 ### Output
@@ -43,7 +43,7 @@ Output:
 5
 ```
 
-A 1x1 matrix has nowhere to spiral — the single element is the whole answer.
+A 1x1 matrix has nowhere to spiral: the single element is the whole answer.
 
 ```
 Input:

@@ -62,5 +62,5 @@ Ieșire:
 2
 ```
 
-Seed-uri diferite (și `fete` diferit) produc secvențe complet diferite — dar
+Seed-uri diferite (și `fete` diferit) produc secvențe complet diferite, dar
 același seed reproduce mereu aceeași secvență.

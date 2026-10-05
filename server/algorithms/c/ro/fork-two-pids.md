@@ -5,7 +5,7 @@ Fork returnează:
 - `0` copilului
 - PID-ul copilului părintelui
 
-Copilul afișează primul, iar părintele așteaptă cu **wait(NULL)** înainte să afișeze propriul mesaj — așa garantăm ordinea liniilor.
+Copilul afișează primul, iar părintele așteaptă cu **wait(NULL)** înainte să afișeze propriul mesaj. Așa garantăm ordinea liniilor.
 
 ### Date de intrare
 

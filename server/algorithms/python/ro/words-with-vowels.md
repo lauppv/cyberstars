@@ -23,7 +23,7 @@ Ieșire:
 ```
 
 Niciunul dintre aceste cuvinte nu are exact 2 vocale (`cat` are 1, `dog` are
-1, `fly` are 0), deci nu se afișează nimic — nici măcar o linie goală.
+1, `fly` are 0), deci nu se afișează nimic, nici măcar o linie goală.
 
 ```
 Intrare:  bee tree free
@@ -33,5 +33,5 @@ tree
 free
 ```
 
-Toate cuvintele se pot potrivi — nu există o regulă care să spună că doar unele
+Toate cuvintele se pot potrivi. Nu există o regulă care să spună că doar unele
 au voie.

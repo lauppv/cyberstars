@@ -10,7 +10,7 @@ int main(void) {
         // Suntem in tata. Tatal forkuiaza nepotul.
         pid_t p2 = fork();
         if (p2 == 0) {
-            // Nepotul (nivel 2) afiseaza primul — nu mai are copii de asteptat.
+            // Nepotul (nivel 2) afiseaza primul: nu mai are copii de asteptat.
             printf("Nivel 2 (nepot): PID %d\n", getpid());
         } else {
             // Tatal (nivel 1) asteapta nepotul, apoi afiseaza.

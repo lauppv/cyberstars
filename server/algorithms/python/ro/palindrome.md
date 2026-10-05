@@ -30,7 +30,7 @@ Intrare:  abba
 Ieșire: True
 ```
 
-Palindroamele pot avea și un număr par de caractere — nu există un caracter
+Palindroamele pot avea și un număr par de caractere. Nu există un caracter
 din mijloc de ignorat, cele două jumătăți trebuie doar să se oglindească.
 
 ```

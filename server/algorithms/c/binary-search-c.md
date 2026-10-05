@@ -4,9 +4,9 @@ Binary search works by repeatedly halving the search range. Compare the target w
 
 ### Input
 
-- First line: an integer `N` (1 ≤ N ≤ 1000)
+- First line: an integer `N` (1 <= N <= 1000)
 - The next `N` lines: one integer per line, sorted in ascending order
-- The next line: an integer `target` — the value to search for
+- The next line: an integer `target`, the value to search for
 
 ### Output
 
@@ -45,7 +45,7 @@ Input:
 Output: 0
 ```
 
-A single-element array works the same way — `left` and `right` both start at 0.
+A single-element array works the same way: `left` and `right` both start at 0.
 
 ```
 Input:

@@ -2,7 +2,7 @@
 
 Înmulțirea matricelor este definită ca: `C[i][j] = suma A[i][k] * B[k][j]` pentru toți k. Numărul de coloane din A trebuie să fie egal cu numărul de rânduri din B.
 
-Pentru acest exercițiu, matricele A și B sunt **hardcodate** direct în cod — nu se citește nimic de la stdin. Folosește:
+Pentru acest exercițiu, matricele A și B sunt **hardcodate** direct în cod. Nu se citește nimic de la stdin. Folosește:
 
 ```
 A = [ [1, 2, 3],
@@ -19,7 +19,7 @@ Niciuna. Matricele sunt scrise direct în cod.
 
 ### Rezultat
 
-- 2 linii, fiecare conținând 2 numere întregi separate prin spațiu — matricea produs C.
+- 2 linii, fiecare conținând 2 numere întregi separate prin spațiu: matricea produs C.
 
 ### Exemplu
 

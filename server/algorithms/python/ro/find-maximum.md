@@ -2,7 +2,7 @@ Având o listă de numere, găsește și afișează **cel mai mare** dintre ele.
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n` — câte numere sunt.
+- Linia 1: un număr întreg `n`, câte numere sunt.
 - Linia 2: `n` numere întregi separate prin spații.
 
 ### Rezultat

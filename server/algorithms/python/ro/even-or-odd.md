@@ -30,5 +30,5 @@ Intrare:  -3
 Ieșire: Impar
 ```
 
-Numerele negative funcționează la fel: `-3 % 2` este `1` în Python — nu este
+Numerele negative funcționează la fel: `-3 % 2` este `1` în Python. Nu este
 `0`, deci `-3` este impar.

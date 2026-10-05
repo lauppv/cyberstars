@@ -1,7 +1,7 @@
 Creează o clasă **Temperatura** care stochează o valoare de temperatură și unitatea ei (`C` pentru Celsius, `F` pentru Fahrenheit). Adaugă două metode:
 
-- `laCelsius()` — returnează valoarea în Celsius
-- `laFahrenheit()` — returnează valoarea în Fahrenheit
+- `laCelsius()`: returnează valoarea în Celsius
+- `laFahrenheit()`: returnează valoarea în Fahrenheit
 
 Dacă temperatura este deja în unitatea țintă, returnează-o neschimbată. Folosește formulele:
 

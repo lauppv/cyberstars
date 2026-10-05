@@ -2,7 +2,7 @@ Read **N** students, each with a **name** (single word) and a **grade** (integer
 
 ### Input
 
-- First line: an integer `N` (1 ≤ N ≤ 50)
+- First line: an integer `N` (1 <= N <= 50)
 - For each student, two lines:
   - Line 1: the name (a single word)
   - Line 2: the grade (integer)
@@ -64,5 +64,5 @@ Zoe 70
 Bob 70
 ```
 
-When every grade ties, the stable sort keeps the original input order —
+When every grade ties, the stable sort keeps the original input order,
 notice it's **not** alphabetical.

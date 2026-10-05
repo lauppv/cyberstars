@@ -57,7 +57,7 @@ Output:
 Balance: 0
 ```
 
-Withdrawing the **exact** balance is allowed — it only fails when the amount
+Withdrawing the **exact** balance is allowed. It only fails when the amount
 is strictly greater than what's available.
 
 ```

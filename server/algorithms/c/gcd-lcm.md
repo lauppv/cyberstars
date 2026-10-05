@@ -4,8 +4,8 @@ Euclid's algorithm finds the GCD by repeatedly replacing the larger number with 
 
 ### Input
 
-- Line 1: integer `A` (1 ≤ A ≤ 10000)
-- Line 2: integer `B` (1 ≤ B ≤ 10000)
+- Line 1: integer `A` (1 <= A <= 10000)
+- Line 2: integer `B` (1 <= B <= 10000)
 
 ### Output
 

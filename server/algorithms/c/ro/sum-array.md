@@ -2,7 +2,7 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Afișează **sum
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 ≤ N ≤ 100)
+- Prima linie: un întreg `N` (1 <= N <= 100)
 - Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat

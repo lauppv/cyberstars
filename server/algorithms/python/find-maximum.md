@@ -2,7 +2,7 @@ Given a list of numbers, find and print the **largest** one.
 
 ### Input
 
-- Line 1: an integer `n` — the count of numbers.
+- Line 1: an integer `n`, the count of numbers.
 - Line 2: `n` integers separated by spaces.
 
 ### Output

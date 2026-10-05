@@ -4,7 +4,7 @@ Citește N articole de la stdin. Pentru fiecare articol, creează un obiect `Art
 
 ### Date de intrare
 
-- Linia 1: un număr întreg N — numărul de articole
+- Linia 1: un număr întreg N, numărul de articole
 - Pentru fiecare articol, trei linii:
   - Linia 1: numele (un singur cuvânt)
   - Linia 2: prețul (număr zecimal)
@@ -58,4 +58,4 @@ Ieșire:
 Total: 0.99
 ```
 
-Un singur articol cu cantitatea 1 — totalul este chiar prețul său.
+Un singur articol cu cantitatea 1: totalul este chiar prețul său.

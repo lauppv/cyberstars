@@ -23,7 +23,7 @@ Output:
 ```
 
 None of these words has exactly 2 vowels (`cat` has 1, `dog` has 1, `fly` has
-0), so nothing is printed at all — not even a blank line.
+0), so nothing is printed at all, not even a blank line.
 
 ```
 Input:  bee tree free
@@ -33,4 +33,4 @@ tree
 free
 ```
 
-Every word can match — there's no rule saying only some words are allowed to.
+Every word can match. There's no rule saying only some words are allowed to.

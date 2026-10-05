@@ -1,7 +1,7 @@
 Implementează o **listă simplu înlănțuită** în C. Citește comenzi de la stdin și execută-le:
 
-- `insereaza x` — inserează numărul întreg `x` la **finalul** listei
-- `afiseaza` — afișează toate elementele separate prin spații pe o singură linie
+- `insereaza x`: inserează numărul întreg `x` la **finalul** listei
+- `afiseaza`: afișează toate elementele separate prin spații pe o singură linie
 
 Folosește `malloc` pentru a aloca fiecare nod. Fiecare nod are un câmp `int data` și un pointer `struct Nod *urmator`.
 

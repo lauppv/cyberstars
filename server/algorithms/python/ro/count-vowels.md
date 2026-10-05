@@ -6,7 +6,7 @@ O singură linie care conține un șir `s`.
 
 ### Rezultat
 
-Un singur număr întreg — numărul de vocale (`a`, `e`, `i`, `o`, `u`, fără a ține cont de litere mari/mici) din `s`.
+Un singur număr întreg: numărul de vocale (`a`, `e`, `i`, `o`, `u`, fără a ține cont de litere mari/mici) din `s`.
 
 ### Exemple
 
@@ -30,4 +30,4 @@ Intrare:  xyz
 Ieșire: 0
 ```
 
-Fără nicio vocală e un caz valid — numărul este pur și simplu `0`.
+Fără nicio vocală e un caz valid: numărul este pur și simplu `0`.

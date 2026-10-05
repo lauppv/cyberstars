@@ -6,7 +6,7 @@ A single line containing a string `s`.
 
 ### Output
 
-A single integer — the number of vowels (`a`, `e`, `i`, `o`, `u`, case-insensitive) in `s`.
+A single integer: the number of vowels (`a`, `e`, `i`, `o`, `u`, case-insensitive) in `s`.
 
 ### Examples
 
@@ -30,4 +30,4 @@ Input:  xyz
 Output: 0
 ```
 
-No vowels at all is a valid case — the count is simply `0`.
+No vowels at all is a valid case: the count is simply `0`.

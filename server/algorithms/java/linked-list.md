@@ -11,9 +11,9 @@ Process commands from stdin.
 
 Behavior:
 
-- `add X` — add integer X to the end of the list
-- `remove X` — remove the first occurrence of X (print `Not found` if X is not in the list)
-- `print` — print all elements separated by `->`, or `Empty` if the list is empty
+- `add X`: add integer X to the end of the list
+- `remove X`: remove the first occurrence of X (print `Not found` if X is not in the list)
+- `print`: print all elements separated by `->`, or `Empty` if the list is empty
 
 ### Output
 
@@ -75,4 +75,4 @@ Output:
 ```
 
 Removing the **head** node means the list's `head` reference itself has to
-move to the second node — there's no "previous" node to relink.
+move to the second node. There's no "previous" node to relink.

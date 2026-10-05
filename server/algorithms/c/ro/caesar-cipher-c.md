@@ -5,7 +5,7 @@ De exemplu, cu o deplasare de 3: `A` devine `D`, `z` devine `c`, iar `5` rămân
 ### Date de intrare
 
 - Prima linie: un șir (poate conține spații, până la 200 de caractere)
-- A doua linie: un întreg `shift` (1 ≤ shift ≤ 25)
+- A doua linie: un întreg `shift` (1 <= shift <= 25)
 
 ### Rezultat
 

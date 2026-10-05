@@ -2,7 +2,7 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Afișează câte
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 ≤ N ≤ 100)
+- Prima linie: un întreg `N` (1 <= N <= 100)
 - Următoarele `N` linii: câte un număr întreg
 
 ### Rezultat
@@ -41,4 +41,4 @@ Intrare:
 Ieșire: 0
 ```
 
-Când niciunul dintre numere nu e par, numărătoarea rămâne la 0 — se afișează totuși.
+Când niciunul dintre numere nu e par, numărătoarea rămâne la 0. Se afișează totuși.

@@ -2,7 +2,7 @@ Read an integer **N**, then read **N** integers. Print how many of them are **ev
 
 ### Input
 
-- First line: an integer `N` (1 ≤ N ≤ 100)
+- First line: an integer `N` (1 <= N <= 100)
 - The next `N` lines: one integer per line
 
 ### Output
@@ -41,4 +41,4 @@ Input:
 Output: 0
 ```
 
-When none of the numbers are even, the count stays at 0 — still print it.
+When none of the numbers are even, the count stays at 0. Still print it.

@@ -4,7 +4,7 @@ At the end, the main thread prints the smallest index where `target` appears, or
 
 ### Input
 
-- First line: integer `N` (2 ≤ N ≤ 100)
+- First line: integer `N` (2 <= N <= 100)
 - The next `N` lines: one integer per line (each between -1000 and 1000)
 - Last line: integer `target`
 
@@ -55,6 +55,6 @@ Output:
 Found at index 0
 ```
 
-Even if `target` appears more than once, we always print the smallest index — that's why we compare `i < found_index` under the mutex.
+Even if `target` appears more than once, we always print the smallest index. That's why we compare `i < found_index` under the mutex.
 
 Use **pthread_create**, **pthread_join** and a shared **pthread_mutex_t**.

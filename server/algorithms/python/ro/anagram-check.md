@@ -53,7 +53,7 @@ True
 ```
 
 Literele repetate contează la fel, atât timp cât fiecare literă apare de același
-număr de ori în ambele șiruri — ordinea nu contează, doar numărul de apariții.
+număr de ori în ambele șiruri. Ordinea nu contează, doar numărul de apariții.
 
 ```
 Intrare:
@@ -73,5 +73,5 @@ Ieșire:
 False
 ```
 
-Șiruri de lungimi diferite nu pot fi niciodată anagrame — e un mod rapid de a
+Șiruri de lungimi diferite nu pot fi niciodată anagrame. E un mod rapid de a
 elimina o nepotrivire înainte de a compara literele.

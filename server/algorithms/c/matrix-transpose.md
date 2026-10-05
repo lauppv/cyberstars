@@ -1,6 +1,6 @@
 Compute the **transpose** of an N×N matrix (rows become columns) and print the result.
 
-For this exercise, the matrix is **hardcoded** directly in the code — nothing is read from stdin. Use:
+For this exercise, the matrix is **hardcoded** directly in the code. Nothing is read from stdin. Use:
 
 ```
 matrix = [ [1, 2, 3],
@@ -14,7 +14,7 @@ None. The matrix is written directly in the code.
 
 ### Output
 
-3 lines with 3 space-separated integers — the transposed matrix.
+3 lines with 3 space-separated integers: the transposed matrix.
 
 ### Example
 

@@ -32,5 +32,5 @@ Input:  noon
 Output: noon
 ```
 
-Some strings look the same reversed — that's a coincidence of their letters,
+Some strings look the same reversed. That's a coincidence of their letters,
 not a special case your code needs to detect.

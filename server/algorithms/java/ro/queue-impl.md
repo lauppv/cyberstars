@@ -1,4 +1,4 @@
-Implementează o clasă **Coada** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `adauga`, `scoate` și `varf`, urmând principiul FIFO (First In, First Out — primul intrat, primul ieșit).
+Implementează o clasă **Coada** folosind un `ArrayList` ca stocare internă. Coada trebuie să suporte operațiile `adauga`, `scoate` și `varf`, urmând principiul FIFO (First In, First Out: primul intrat, primul ieșit).
 
 Procesează comenzile de la stdin și afișează rezultatele pentru `scoate` și `varf`. Dacă `scoate` sau `varf` este apelat pe o coadă goală, afișează `Goala`.
 
@@ -11,9 +11,9 @@ Procesează comenzile de la stdin și afișează rezultatele pentru `scoate` și
 
 Comportament:
 
-- `adauga X` — adaugă X la spatele cozii
-- `scoate` — elimină și afișează elementul din față
-- `varf` — afișează elementul din față fără a-l elimina
+- `adauga X`: adaugă X la spatele cozii
+- `scoate`: elimină și afișează elementul din față
+- `varf`: afișează elementul din față fără a-l elimina
 
 ### Rezultat
 

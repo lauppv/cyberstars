@@ -44,4 +44,4 @@ Arie: 1
 Perimetru: 4
 ```
 
-Cel mai mic dreptunghi posibil — un pătrat 1x1.
+Cel mai mic dreptunghi posibil: un pătrat 1x1.

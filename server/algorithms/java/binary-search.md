@@ -4,9 +4,9 @@ Use the classic binary search algorithm: maintain two pointers `low` and `high`,
 
 ### Input
 
-- Line 1: integer N — the number of elements
+- Line 1: integer N, the number of elements
 - The next N lines: one integer per line, in ascending order
-- The next line: integer T — the target value to search for
+- The next line: integer T, the target value to search for
 
 ### Output
 
@@ -51,7 +51,7 @@ Output:
 0
 ```
 
-A single-element array works the same way — `low` and `high` both start at 0.
+A single-element array works the same way: `low` and `high` both start at 0.
 
 ```
 Input:
@@ -78,5 +78,5 @@ Output:
 0
 ```
 
-The target can be the very first or very last element — the search still
+The target can be the very first or very last element. The search still
 narrows down to it correctly.

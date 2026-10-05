@@ -63,4 +63,4 @@ Output:
 ```
 
 Different seeds (and different `sides`) produce completely different
-sequences — but the same seed always reproduces the same sequence.
+sequences, but the same seed always reproduces the same sequence.

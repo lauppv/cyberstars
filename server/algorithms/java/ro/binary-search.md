@@ -4,9 +4,9 @@ Folosește algoritmul clasic de căutare binară: menține doi indicatori `jos` 
 
 ### Date de intrare
 
-- Linia 1: numărul întreg N — numărul de elemente
+- Linia 1: numărul întreg N, numărul de elemente
 - Următoarele N linii: câte un număr întreg, în ordine crescătoare
-- Linia următoare: numărul întreg T — valoarea țintă căutată
+- Linia următoare: numărul întreg T, valoarea țintă căutată
 
 ### Rezultat
 
@@ -51,7 +51,7 @@ Ieșire:
 0
 ```
 
-Un tablou cu un singur element funcționează la fel — `jos` și `sus` pornesc amândoi de la 0.
+Un tablou cu un singur element funcționează la fel: `jos` și `sus` pornesc amândoi de la 0.
 
 ```
 Intrare:
@@ -78,5 +78,5 @@ Ieșire:
 0
 ```
 
-Ținta poate fi chiar primul sau ultimul element — căutarea tot se restrânge
+Ținta poate fi chiar primul sau ultimul element. Căutarea tot se restrânge
 corect până la el.

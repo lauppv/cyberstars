@@ -2,7 +2,7 @@ Citește un singur număr întreg și afișează câte **cifre** are.
 
 ### Date de intrare
 
-- Un singur întreg `N` (0 ≤ N ≤ 1 000 000 000)
+- Un singur întreg `N` (0 <= N <= 1 000 000 000)
 
 ### Rezultat
 

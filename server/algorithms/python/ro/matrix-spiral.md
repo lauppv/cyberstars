@@ -2,7 +2,7 @@ Citește o matrice NxN de numere întregi și afișează elementele ei în **ord
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n` — dimensiunea matricei (1 <= n <= 10).
+- Linia 1: un număr întreg `n`, dimensiunea matricei (1 <= n <= 10).
 - Următoarele `n` linii: fiecare conținând `n` numere întregi separate prin spații.
 
 ### Rezultat
@@ -43,7 +43,7 @@ Ieșire:
 5
 ```
 
-O matrice 1x1 nu are unde să spiraleze — singurul element este întregul
+O matrice 1x1 nu are unde să spiraleze: singurul element este întregul
 rezultat.
 
 ```

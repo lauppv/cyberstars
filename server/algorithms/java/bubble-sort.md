@@ -4,7 +4,7 @@ Bubble sort works by repeatedly stepping through the list, comparing adjacent el
 
 ### Input
 
-- Line 1: integer N — the number of elements
+- Line 1: integer N, the number of elements
 - The next N lines: one integer per line
 
 ### Output
@@ -46,7 +46,7 @@ Output:
 7
 ```
 
-A single-element array is already sorted — no swaps needed.
+A single-element array is already sorted, no swaps needed.
 
 ```
 Input:
@@ -60,5 +60,5 @@ Output:
 1 1 2 2
 ```
 
-Duplicate values are handled the same way as any other comparison — only
+Duplicate values are handled the same way as any other comparison: only
 swap when strictly greater.

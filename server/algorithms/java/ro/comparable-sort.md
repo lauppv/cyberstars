@@ -54,7 +54,7 @@ Ieșire:
 Max 3.5
 ```
 
-Un singur student nu are nevoie de nicio comparație — este deja „sortat”.
+Un singur student nu are nevoie de nicio comparație. Este deja „sortat”.
 
 ```
 Intrare:

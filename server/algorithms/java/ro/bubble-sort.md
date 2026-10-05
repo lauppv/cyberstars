@@ -4,7 +4,7 @@ Bubble sort funcționează parcurgând repetat lista, comparând elementele adia
 
 ### Date de intrare
 
-- Linia 1: numărul întreg N — numărul de elemente
+- Linia 1: numărul întreg N, numărul de elemente
 - Următoarele N linii: câte un număr întreg
 
 ### Rezultat
@@ -46,7 +46,7 @@ Ieșire:
 7
 ```
 
-Un tablou cu un singur element este deja sortat — nu e nevoie de nicio interschimbare.
+Un tablou cu un singur element este deja sortat, nu e nevoie de nicio interschimbare.
 
 ```
 Intrare:
@@ -60,5 +60,5 @@ Ieșire:
 1 1 2 2
 ```
 
-Valorile duplicate sunt tratate la fel ca orice altă comparație — se
+Valorile duplicate sunt tratate la fel ca orice altă comparație: se
 interschimbă doar când sunt strict mai mari.

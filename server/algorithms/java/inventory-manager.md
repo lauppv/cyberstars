@@ -77,5 +77,5 @@ apple: 0
 Items: 0
 ```
 
-Removing exactly all of an item's stock brings it to 0 — it stays known but
+Removing exactly all of an item's stock brings it to 0. It stays known but
 no longer counts toward `Items: N`.

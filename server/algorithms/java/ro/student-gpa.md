@@ -49,4 +49,4 @@ Ieșire:
 95.00
 ```
 
-O singură notă — media este chiar acea notă, formatată tot la 2 zecimale.
+O singură notă: media este chiar acea notă, formatată tot la 2 zecimale.
