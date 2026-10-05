@@ -75,7 +75,6 @@ export function WelcomePage() {
         's-messaging',
         's-connections',
         's-leaderboard',
-        's-laniakea',
         's-cta',
       ];
       nodesRef.current.forEach((n, i) => {
@@ -675,92 +674,6 @@ export function WelcomePage() {
         </div>
       </section>
 
-      {/* LANIAKEA EXPLORER */}
-      <section className="wc-section" id="s-laniakea">
-        <div className="wc-section-num reveal">{t('welcome.laniakea.num')}</div>
-        <div className="wc-split">
-          <div className="reveal" data-delay="3">
-            <div className="wc-viewport">
-              <div className="wc-vp-space" />
-              <VPStars />
-              <div className="wc-vp-top">
-                <span className="wc-vp-tt">CSTR-9</span>
-                <span className="wc-vp-vent">
-                  {Array.from({ length: 20 }, (_, i) => (
-                    <span key={i} />
-                  ))}
-                </span>
-                <span className="wc-vp-tt wc-green">NAV · OK</span>
-              </div>
-              <div className="wc-vp-rocky" />
-              <div className="wc-vp-moon" />
-              <div className="wc-vp-ring" />
-              <div className="wc-vp-planet wc-vp-gas" />
-              <div className="wc-vp-bh">
-                <div className="wc-vp-bh-disk" />
-                <div className="wc-vp-bh-photon" />
-                <div className="wc-vp-bh-core" />
-              </div>
-              <div className="wc-vp-hud">
-                <div className="wc-vp-hud-tl">
-                  <div className="wc-vp-ln">
-                    <span className="wc-vp-dot" />
-                    SECTOR ζ-4
-                  </div>
-                  <div>HDG 274° · SPD 0.42c</div>
-                </div>
-                <div className="wc-vp-hud-tr">
-                  BODIES · 3<br />
-                  FUEL · 87%
-                  <br />
-                  HULL · 100%
-                </div>
-              </div>
-              <div className="wc-vp-reticle">
-                <div className="wc-vp-rt-box" />
-              </div>
-              <div className="wc-vp-label wc-lbl-gas">SIENNA β · 4.2 AU</div>
-              <div className="wc-vp-label wc-lbl-bh">⚠ SINGULARITY</div>
-              <div className="wc-vp-bot">
-                <span className="wc-vp-gauge">
-                  <span className="wc-vp-lbl">PWR</span>
-                  <span className="wc-vp-val">98%</span>
-                </span>
-                <span className="wc-vp-bar" />
-                <span className="wc-vp-gauge">
-                  <span className="wc-vp-lbl">DIST</span>
-                  <span className="wc-vp-val">4.2 AU</span>
-                </span>
-              </div>
-              <div className="wc-vp-scan" />
-            </div>
-          </div>
-          <div>
-            <h2 className="wc-title reveal" data-delay="1">
-              <Trans
-                i18nKey="welcome.laniakea.title"
-                components={[<span />, ACCENT, <span />, <br />]}
-              />
-            </h2>
-            <p className="wc-subtitle reveal" data-delay="2">
-              {t('welcome.laniakea.subtitle')}
-            </p>
-            <div className="wc-controls reveal" data-delay="3">
-              <div className="wc-controls-title">{t('welcome.laniakea.controlsTitle')}</div>
-              <div>
-                <span className="wc-ctrl-key">WASD</span> · {t('welcome.laniakea.navigate')}
-              </div>
-              <div>
-                <span className="wc-ctrl-key">MOUSE</span> · {t('welcome.laniakea.steer')}
-              </div>
-              <div>
-                <span className="wc-ctrl-key">SHIFT</span> · {t('welcome.laniakea.boost')}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* NETWORK */}
       <section className="wc-section wc-tight">
         <div className="wc-section-num reveal">{t('welcome.network.num')}</div>
@@ -798,10 +711,6 @@ export function WelcomePage() {
             <circle className="wc-node-c" cx={90} cy={270} r={28} />
             <text className="wc-node-label" x={90} y={274}>
               {t('welcome.network.nodes.forum')}
-            </text>
-            <circle className="wc-node-c" cx={700} cy={270} r={28} />
-            <text className="wc-node-label" x={700} y={274}>
-              {t('welcome.network.nodes.laniakea')}
             </text>
             <circle className="wc-node-c" cx={400} cy={320} r={28} />
             <text className="wc-node-label" x={400} y={324}>
