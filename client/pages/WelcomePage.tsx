@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
+import { BrandMark } from '../components/ui/BrandMark';
 import './WelcomePage.css';
 
 const ACCENT = <span className="wc-accent-text" />;
@@ -142,18 +143,7 @@ export function WelcomePage() {
       {/* Topbar */}
       <header className="wc-topbar">
         <div className="wc-logo" onClick={() => navigate('/')}>
-          <svg
-            className="wc-logo-icon"
-            viewBox="0 0 64 64"
-            width="22"
-            height="22"
-            style={{ filter: 'drop-shadow(0 0 8px var(--accent-glow))' }}
-          >
-            <polygon
-              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
-              fill="var(--accent)"
-            />
-          </svg>
+          <BrandMark size={22} />
           <span className="wc-logo-text">CyberStars</span>
         </div>
         <button className="wc-skip" onClick={() => navigate('/')}>

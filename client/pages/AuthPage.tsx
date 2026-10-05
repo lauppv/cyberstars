@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { ApiClientError } from '../services/apiClient';
 import { forgotPassword, resetPassword } from '../services/authService';
+import { BrandMark } from '../components/ui/BrandMark';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
 function getPasswordStrength(pw: string): number {
@@ -107,12 +108,7 @@ export function AuthPage() {
           {/* Brand content */}
           <div className="relative max-w-[400px] text-center" style={{ zIndex: 4 }}>
             <div className="flex items-center justify-center gap-3 mb-8">
-              <svg className="w-10 h-10 brand-mark" viewBox="0 0 64 64">
-                <polygon
-                  points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
-                  fill="var(--accent)"
-                />
-              </svg>
+              <BrandMark size={40} />
               <span className="text-[32px] font-bold" style={{ letterSpacing: '-1px' }}>
                 CyberStars
               </span>

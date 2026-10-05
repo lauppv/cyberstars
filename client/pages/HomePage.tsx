@@ -368,17 +368,6 @@ export function HomePage() {
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <div className="max-w-3xl w-full text-center">
-          <svg
-            className="inline-block w-16 h-16 mb-6"
-            viewBox="0 0 64 64"
-            style={{ filter: 'drop-shadow(0 0 24px var(--accent-glow))' }}
-          >
-            <polygon
-              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
-              fill="var(--accent)"
-            />
-          </svg>
-
           <h1 className="text-[32px] sm:text-[44px] font-bold tracking-[-0.5px] mb-3">
             {t('home.marketing.title')}
           </h1>
