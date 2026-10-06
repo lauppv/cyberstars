@@ -99,10 +99,6 @@
   box-shadow: 0 4px 16px var(--accent-glow);
 }
 
-.almanac-chip .chip-em {
-  font-size: 13px;
-}
-
 /* ===== Hero featured ===== */
 .almanac-hero {
   display: grid;
@@ -184,16 +180,6 @@
   50% {
     opacity: 0.4;
   }
-}
-
-.hero-art-icon {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 120px;
-  filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.6));
 }
 
 .hero-art-badge {
@@ -339,24 +325,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 64px;
 }
 
 .article-art-grad {
   position: absolute;
   inset: 0;
   opacity: 0.95;
-}
-
-.article-art .emoji {
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.5));
-  transition: transform 0.3s;
-}
-
-.almanac-article:hover .article-art .emoji {
-  transform: scale(1.08);
 }
 
 .article-art-tag {
@@ -516,12 +490,6 @@
   right: -40px;
   top: -40px;
   pointer-events: none;
-}
-
-.fact-emoji {
-  font-size: 34px;
-  margin-bottom: 10px;
-  display: block;
 }
 
 .fact-text {
@@ -823,13 +791,6 @@
   inset: 0;
 }
 
-.story-modal-emoji {
-  position: relative;
-  z-index: 1;
-  font-size: 80px;
-  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.5));
-}
-
 .story-modal-tag {
   position: absolute;
   top: 16px;
@@ -1016,18 +977,4 @@
   .story-modal-art {
     height: 150px;
   }
-
-  .story-modal-emoji {
-    font-size: 56px;
-  }
-}
-
-/* The almanac data carries emoji as per-entry art. The page drops that art and
-   lets the titles and categories carry it on their own */
-.chip-em,
-.hero-art-icon,
-.card .emoji,
-.fact-emoji,
-.story-modal-emoji {
-  display: none;
 }
