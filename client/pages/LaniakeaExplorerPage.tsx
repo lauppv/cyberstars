@@ -1445,7 +1445,7 @@ export function LaniakeaExplorerPage() {
 
       // ===== HUD =====
       const startTime = performance.now();
-      const _currentPOI = '—';
+      const _currentPOI = '-';
       function fmt2(n: number) {
         return n.toString().padStart(2, '0');
       }
@@ -1556,8 +1556,8 @@ export function LaniakeaExplorerPage() {
           approachDistEl.textContent = distStr;
           approachWrapEl.classList.add('visible');
         } else {
-          // Nothing ahead — hide the display
-          nearestEl.textContent = '—';
+          // Nothing ahead, hide the display
+          nearestEl.textContent = '-';
           approachWrapEl.classList.remove('visible');
         }
       }
@@ -1984,7 +1984,7 @@ export function LaniakeaExplorerPage() {
             <div className="hud-cell">
               <span className="hud-label">{t('laniakea.nearest')}</span>
               <span className="hud-value hud-amber" style={{ fontSize: 13 }} id="hud-nearest">
-                {'—'}
+                {'-'}
               </span>
             </div>
             <div style={{ display: 'flex', gap: 14 }}>
@@ -2010,10 +2010,10 @@ export function LaniakeaExplorerPage() {
         <span className="hud-approach-icon">{'◎'}</span>
         <div className="hud-approach-info">
           <span className="hud-approach-name" id="hud-approachName">
-            {'—'}
+            {'-'}
           </span>
           <span className="hud-approach-dist" id="hud-approachDist">
-            {'—'}
+            {'-'}
           </span>
         </div>
       </div>

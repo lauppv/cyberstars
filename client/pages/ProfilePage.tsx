@@ -285,7 +285,7 @@ export function ProfilePage() {
               </div>
             </div>
             <div className="py-4 text-center border-l border-[var(--border)]">
-              <div className="text-[24px] font-bold">{streak === null ? '—' : streak}</div>
+              <div className="text-[24px] font-bold">{streak === null ? '-' : streak}</div>
               <div className="text-[11px] text-[var(--text3)] tracking-[0.5px] mt-0.5">
                 {t('profile.streak')}
               </div>
