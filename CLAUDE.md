@@ -129,7 +129,7 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 - **E2E tests** (`e2e/`) use Playwright with two projects: `browser` (auth/forum/support/courses/profile via `npm run dev` webserver) and `docker` (code execution paths; needs all runner Docker images plus `cyberstars-linux-sandbox` built locally). `e2e/global-setup.ts` migrates+seeds; `e2e/fixtures/test.ts` provides an `authedPage` fixture that resets the DB and signs up a fresh user via the API before each test. The webserver autostarts the dev stack when no server is running on :5173
 - CodeMirror auto-pairs `{`, `(`, `[`, `"`. In E2E tests, multi-line code typed with `keyboard.type` may produce duplicate `}`, so keep test code on a single line so the typed `}` skips over the auto-paired one
 
-### Production (`cyber-stars.org`)
+### Production (`cyberstars.app`)
 
 - DigitalOcean VPS, app at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`)
 - nginx reverse proxy on port 443 → localhost:8080. The `/ws/` location block requires `proxy_set_header Upgrade` and `Connection "upgrade"` for WebSocket
