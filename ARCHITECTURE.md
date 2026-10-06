@@ -343,28 +343,36 @@ A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<
 
 ## Environment variables
 
-| Variable                 | Required | Default                  | Description                                            |
-| ------------------------ | -------- | ------------------------ | ------------------------------------------------------ |
-| `DB_USER`                | Yes      | none                     | PostgreSQL user                                        |
-| `DB_HOST`                | Yes      | none                     | PostgreSQL host                                        |
-| `DB_NAME`                | Yes      | none                     | Database name                                          |
-| `DB_PASSWORD`            | Yes      | none                     | Database password                                      |
-| `DB_PORT`                | No       | `5432`                   | PostgreSQL port                                        |
-| `DATABASE_URL`           | Yes      | none                     | Prisma CLI connection string                           |
-| `EXPRESS_PORT`           | No       | `5000`                   | Backend port (dev)                                     |
-| `PORT`                   | No       | `8080`                   | Backend port (production)                              |
-| `JWT_SECRET`             | Yes      | none                     | JWT signing secret                                     |
-| `FOUNDER_EMAIL`          | No       | none                     | Account that always registers as the unique FOUNDER    |
-| `NODE_ENV`               | No       | `development`            | Environment                                            |
-| `CORS_DEV_ORIGIN`        | No       | `http://localhost:5173`  | CORS origin in dev                                     |
-| `CORS_ORIGIN`            | No       | `https://cyberstars.app` | CORS origin in production                              |
-| `CODE_RUN_MEMORY`        | No       | `128m`                   | Per-container memory limit                             |
-| `CODE_RUN_PIDS`          | No       | `64`                     | Per-container PID limit                                |
-| `CODE_MAX_CONTAINERS`    | No       | `50`                     | Global cap on concurrent run containers (LRU-evicted)  |
-| `CODE_CONTAINER_IDLE_MS` | No       | `900000`                 | Idle TTL before a run container is GC'd (15 min)       |
-| `GUEST_RUN_BUDGET`       | No       | `10`                     | Lifetime code runs a guest gets before a sign-up nudge |
-| `SMTP_USER`              | No       | none                     | Gmail SMTP user for password-reset emails              |
-| `SMTP_PASS`              | No       | none                     | Gmail SMTP app password                                |
+| Variable                 | Required | Default                               | Description                                                                      |
+| ------------------------ | -------- | ------------------------------------- | -------------------------------------------------------------------------------- |
+| `DB_USER`                | Yes      | none                                  | PostgreSQL user                                                                  |
+| `DB_HOST`                | Yes      | none                                  | PostgreSQL host                                                                  |
+| `DB_NAME`                | Yes      | none                                  | Database name                                                                    |
+| `DB_PASSWORD`            | Yes      | none                                  | Database password                                                                |
+| `DB_PORT`                | No       | `5432`                                | PostgreSQL port                                                                  |
+| `DATABASE_URL`           | Yes      | none                                  | Prisma CLI connection string                                                     |
+| `EXPRESS_PORT`           | No       | `5000`                                | Backend port (dev)                                                               |
+| `PORT`                   | No       | `8080`                                | Backend port (production)                                                        |
+| `JWT_SECRET`             | Yes      | none                                  | JWT signing secret                                                               |
+| `FOUNDER_EMAIL`          | No       | none                                  | Account that always registers as the unique FOUNDER                              |
+| `NODE_ENV`               | No       | `development`                         | Environment                                                                      |
+| `CORS_DEV_ORIGIN`        | No       | `http://localhost:5173`               | CORS origin in dev                                                               |
+| `CORS_ORIGIN`            | No       | `https://cyberstars.app`              | CORS origin in production                                                        |
+| `CODE_RUN_MEMORY`        | No       | `128m`                                | Per-container memory limit                                                       |
+| `CODE_RUN_PIDS`          | No       | `64`                                  | Per-container PID limit                                                          |
+| `CODE_RUN_CPUS`          | No       | `0.5`                                 | Per-container CPU cap                                                            |
+| `CODE_MAX_CONTAINERS`    | No       | `50`                                  | Global cap on concurrent run containers (LRU-evicted)                            |
+| `CODE_CONTAINER_IDLE_MS` | No       | `900000`                              | Idle TTL before a run container is GC'd (15 min)                                 |
+| `GUEST_RUN_BUDGET`       | No       | `10`                                  | Lifetime code runs a guest gets before a sign-up nudge                           |
+| `SANDBOX_RUN_AS_USER`    | No       | `true`                                | Run sandboxes as the host's non-root uid; set `false` under rootless Podman      |
+| `TERMINAL_MAX_SESSIONS`  | No       | `50`                                  | Global cap on concurrent Linux terminal sandboxes                                |
+| `LEADERBOARD_CACHE_MS`   | No       | `180000`                              | Leaderboard cache TTL (3 min)                                                    |
+| `ADMIN_STATS_CACHE_MS`   | No       | `300000`                              | Admin stats cache TTL (5 min)                                                    |
+| `RESEND_API_KEY`         | No       | none                                  | Resend key for reset and email-change codes; empty logs the codes to the console |
+| `RESEND_FROM`            | No       | `CyberStars <noreply@cyberstars.app>` | Sender for those emails                                                          |
+| `GEMINI_API_KEY`         | No       | none                                  | Gemini key for AI hints; empty disables hints                                    |
+| `GEMINI_MODEL`           | No       | `gemini-flash-lite-latest`            | Gemini model used for hints                                                      |
+| `VITE_PROD_API_URL`      | No       | none                                  | Client API base URL in production; empty means same origin                       |
 
 ## Design decisions
 
