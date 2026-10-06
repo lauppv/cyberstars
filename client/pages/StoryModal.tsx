@@ -29,7 +29,6 @@ export function StoryModal({ story, onClose }: { story: AlmanacArticle; onClose:
                 story.grad || 'linear-gradient(135deg,#000814 0%,#001d3d 60%,#003566 100%)',
             }}
           />
-          <span className="story-modal-emoji">{story.emoji}</span>
           {story.tag && <span className="story-modal-tag">{story.tag}</span>}
           {story.year && <span className="story-modal-year">{story.year}</span>}
         </div>

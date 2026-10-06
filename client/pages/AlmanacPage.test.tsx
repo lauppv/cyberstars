@@ -142,6 +142,15 @@ describe('AlmanacPage', () => {
     expect(screen.getByText(/Quotes/)).toBeInTheDocument();
   });
 
+  it('leaves the emoji from the data off the page', async () => {
+    renderWithRouter(<AlmanacPage />);
+    await screen.findByText('Read of the day');
+    // featured, card and fun fact emoji all come from the data
+    for (const em of ['🐧', '📦', '🎲']) {
+      expect(screen.queryByText(em)).not.toBeInTheDocument();
+    }
+  });
+
   it('filters articles when a category chip is clicked', async () => {
     renderWithRouter(<AlmanacPage />);
     await screen.findByText('Read of the day');
@@ -236,6 +245,7 @@ describe('StoryModal', () => {
     expect(screen.getByText('Second paragraph')).toBeInTheDocument();
     expect(screen.getByText('TEST')).toBeInTheDocument();
     expect(screen.getByText('2024')).toBeInTheDocument();
+    expect(screen.queryByText('🧪')).not.toBeInTheDocument();
   });
 
   it('calls onClose when close button is clicked', () => {

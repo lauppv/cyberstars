@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Eye, RotateCcw } from 'lucide-react';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
 import type { TerminalTestResult } from '../../../shared/terminal';
 import { TerminalTestResults } from './TerminalTestResults';
@@ -162,8 +163,9 @@ export function TerminalPanel({
                       setMenuOpen(false);
                       onShowSolution();
                     }}
-                    className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                    className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                   >
+                    <Eye size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                     {t('lesson.showSolution')}
                   </button>
                 )}
@@ -173,8 +175,9 @@ export function TerminalPanel({
                     setMenuOpen(false);
                     onReset();
                   }}
-                  className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                 >
+                  <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                   {t('lesson.reset')}
                 </button>
               </div>

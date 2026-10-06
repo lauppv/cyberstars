@@ -24,18 +24,18 @@ function dailyIndex(len: number): number {
 }
 
 const CATEGORIES = [
-  { id: 'all', em: '✦' },
-  { id: 'history', em: '📜' },
-  { id: 'oss', em: '🐧' },
-  { id: 'legends', em: '👑' },
-  { id: 'security', em: '🔒' },
-  { id: 'hardware', em: '💾' },
-  { id: 'internet', em: '🌐' },
-  { id: 'space', em: '🪐' },
-  { id: 'ai', em: '🧠' },
-  { id: 'claude', em: '🟣' },
-  { id: 'gemini', em: '🔵' },
-  { id: 'chatgpt', em: '🟢' },
+  { id: 'all' },
+  { id: 'history' },
+  { id: 'oss' },
+  { id: 'legends' },
+  { id: 'security' },
+  { id: 'hardware' },
+  { id: 'internet' },
+  { id: 'space' },
+  { id: 'ai' },
+  { id: 'claude' },
+  { id: 'gemini' },
+  { id: 'chatgpt' },
 ];
 
 function Pagination({
@@ -173,7 +173,6 @@ export function AlmanacPage() {
                   setPage(1);
                 }}
               >
-                <span className="chip-em">{c.em}</span>
                 <span>{t(`almanac.categories.${c.id}`)}</span>
               </button>
             ))}
@@ -194,14 +193,11 @@ export function AlmanacPage() {
 
         {featured && (
           <article className="almanac-hero" onClick={() => openArticle(featured.slug)}>
-            <div className="hero-art">
-              <div className="hero-art-bg" />
-              <div className="hero-art-stars" />
-              <div className="hero-art-icon">{featured.emoji}</div>
-              <div className="hero-art-badge">{t('almanac.featured')}</div>
-            </div>
             <div className="hero-content">
-              <div className="hero-cat">{featured.catLabel}</div>
+              <div className="hero-cat">
+                {t('almanac.featured')}
+                {featured.catLabel && <span> · {featured.catLabel}</span>}
+              </div>
               <h2 className="hero-title">{featured.title}</h2>
               <p className="hero-excerpt">{featured.excerpt}</p>
               <div className="hero-meta">
@@ -233,7 +229,6 @@ export function AlmanacPage() {
                     <div className="article-art-grad" style={{ background: a.grad }} />
                     <span className="article-art-tag">{a.tag}</span>
                     <span className="article-art-year">{a.year}</span>
-                    <span className="emoji">{a.emoji}</span>
                   </div>
                   <div className="article-body">
                     <h3 className="article-title">{a.title}</h3>
@@ -268,7 +263,6 @@ export function AlmanacPage() {
                   </button>
                 </div>
               </div>
-              <span className="fact-emoji">{fact?.em}</span>
               <div className="fact-text">{fact?.text}</div>
               <div className="fact-source">{fact?.src}</div>
               <div className="card-counter">
