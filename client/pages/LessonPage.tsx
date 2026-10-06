@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Eye, Lightbulb, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeExecution } from '../hooks/useCodeExecution';
@@ -537,8 +538,13 @@ export function LessonPage() {
                               setMenuOpen(false);
                               setShowHint(true);
                             }}
-                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >
+                            <Lightbulb
+                              size={16}
+                              strokeWidth={1.75}
+                              className="text-[var(--text3)]"
+                            />
                             {t('lesson.getHint')}
                           </button>
                         )}
@@ -549,8 +555,9 @@ export function LessonPage() {
                               setMenuOpen(false);
                               setConfirmSolution(true);
                             }}
-                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >
+                            <Eye size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                             {t('lesson.showSolution')}
                           </button>
                         )}
@@ -561,8 +568,9 @@ export function LessonPage() {
                               setMenuOpen(false);
                               handleSave();
                             }}
-                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >
+                            <Save size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                             {t('lesson.save')}
                           </button>
                         )}
@@ -573,8 +581,9 @@ export function LessonPage() {
                               setMenuOpen(false);
                               setShowShareModal(true);
                             }}
-                            className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >
+                            <Share2 size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                             {t('lesson.shareToForum')}
                           </button>
                         )}
@@ -584,8 +593,9 @@ export function LessonPage() {
                             setMenuOpen(false);
                             if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
                           }}
-                          className="w-full text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                          className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                         >
+                          <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                           {t('lesson.reset')}
                         </button>
                       </div>
