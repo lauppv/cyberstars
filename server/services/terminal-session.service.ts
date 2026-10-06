@@ -46,7 +46,7 @@ function evictLruIdleSession(preferOwnerKey?: string): void {
       lruId = id;
     }
   }
-  // No idle session owned by the requester — fall back to the global LRU idle.
+  // No idle session owned by the requester, so fall back to the global LRU idle.
   if (!lruId && preferOwnerKey !== undefined) {
     evictLruIdleSession();
     return;

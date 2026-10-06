@@ -62,7 +62,7 @@ export function create(input: CreateNotificationInput): Promise<NotificationRow>
 // Fold a repeat event into a REPLACEMENT of the existing unread notification:
 // the stale row is deleted and a fresh one inserted (newest actor wins, data
 // with bumped count). The replacement gets a NEW id, which keeps `id desc`
-// ordering — and the client's keyset pagination — monotonic with recency; an
+// ordering (and the client's keyset pagination) monotonic with recency; an
 // in-place update would leave the most recent activity buried at its old id.
 // deleteMany (not delete) so a concurrent read-and-prune can't make this throw.
 export async function collapse(
@@ -88,7 +88,7 @@ export async function collapse(
 
 // A deleted forum post's excerpt shouldn't linger in notification snapshots.
 // Rows are matched by the snapshotted postId (stable across edits), so only
-// notifications whose excerpt came from THIS post are touched — a collapsed row
+// notifications whose excerpt came from THIS post are touched. A collapsed row
 // re-snapshotted by a newer reply carries that reply's postId and keeps its
 // (still-live) excerpt. updateMany per id so a concurrent prune can't throw.
 export async function clearExcerpt(

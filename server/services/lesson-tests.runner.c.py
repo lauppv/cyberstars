@@ -1,8 +1,8 @@
 # Thin C judge runner, executed inside the owner's sandbox container
 # (gcc:latest, which ships python3; --network=none, pids/memory capped). Unlike
-# the python/java runners it does NO parsing/structure/injection — for C those
+# the python/java runners it does NO parsing/structure/injection; for C those
 # happen on the SERVER via tree-sitter (see c-analysis.ts). This runner only:
-#   1. compiles the pristine user code once (gate 2 — gcc surfaces semantic
+#   1. compiles the pristine user code once (gate 2: gcc surfaces semantic
 #      errors tree-sitter recovers from: undeclared identifier, type mismatch);
 #   2. per case, compiles + runs the already-injected userSrc and solutionSrc
 #      with the case's stdin, memoizing compiled binaries by source string so
@@ -97,7 +97,7 @@ def main():
         solution_bin, _ = compile_source(case["solutionSrc"])
         # The pristine user code already compiled cleanly, so a post-injection
         # compile failure is a spec bug (injection type/decl mismatch), not the
-        # student's — surfaced by the server as a 500, same as java's injectError.
+        # student's; surfaced by the server as a 500, same as java's injectError.
         if user_bin is None or solution_bin is None:
             result["cases"].append({"injectError": True})
             continue

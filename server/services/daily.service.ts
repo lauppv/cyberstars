@@ -10,7 +10,7 @@ import {
 } from '../../shared/constants.js';
 import type { DailyKind, DailyPickDto, DailyResponse } from '../../shared/daily.js';
 
-// Courses each kind draws from — mirrors the client's home-page grouping.
+// Courses each kind draws from; mirrors the client's home-page grouping.
 const POOLS: Record<DailyKind, readonly string[]> = {
   lesson: [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS],
   algo: [...ALGO_COURSE_KEYS],
@@ -20,9 +20,9 @@ export function todayKey(): string {
   return dateKey(new Date());
 }
 
-// Stable non-negative hash so the pick is deterministic per day/kind — the same
+// Stable non-negative hash so the pick is deterministic per day/kind: the same
 // choice for every user (the concrete row is then persisted per user only so the
-// per-user bonus can be tracked — see getOrCreatePick).
+// per-user bonus can be tracked; see getOrCreatePick).
 function hash(seed: string): number {
   let h = 2166136261;
   for (let i = 0; i < seed.length; i++) {
@@ -40,7 +40,7 @@ async function poolLessons(courses: readonly string[]): Promise<Candidate[]> {
     for (const l of lessons) {
       // Only judge-completable lessons can earn the daily bonus. Skipping
       // untested ones (Kotlin, main-course lessons without a tests file) keeps
-      // every daily pick claimable — otherwise the deterministic global pick
+      // every daily pick claimable, otherwise the deterministic global pick
       // could land on a lesson nobody can complete.
       if (!hasTestsFile(courseKey, l.slug)) continue;
       out.push({ courseKey, slug: l.slug, title: l.title });
@@ -53,7 +53,7 @@ async function poolLessons(courses: readonly string[]): Promise<Candidate[]> {
 // every user's first request of the day (two DB fan-outs per user). Memoize it
 // per (kind) for the current day so the pool is built at most once per kind per
 // day per process; a new day drops the cache. Curriculum re-seeds mid-day won't
-// show until the next day — acceptable, the pool only changes at seed time.
+// show until the next day. Acceptable, the pool only changes at seed time.
 let poolCache: { date: string; byKind: Map<DailyKind, Candidate[]> } | null = null;
 
 async function candidatesFor(kind: DailyKind, date: string): Promise<Candidate[]> {
@@ -67,7 +67,7 @@ async function candidatesFor(kind: DailyKind, date: string): Promise<Candidate[]
   return fresh;
 }
 
-// Drop the memoized pools — for test isolation and as a hook to run after a
+// Drop the memoized pools, for test isolation and as a hook to run after a
 // re-seed within a long-lived process.
 export function clearDailyPoolCache(): void {
   poolCache = null;
@@ -95,7 +95,7 @@ async function getOrCreatePick(
   try {
     await dailyRepo.createPick(userId, date, kind, chosen.courseKey, chosen.slug, chosen.title);
   } catch {
-    // Lost a race with a concurrent request that created the pick first — reuse
+    // Lost a race with a concurrent request that created the pick first, so reuse
     // whatever landed (the unique (userId,date,kind) row).
     const raced = await dailyRepo.getPick(userId, date, kind);
     if (raced) {
@@ -115,7 +115,7 @@ export async function getDaily(userId: number): Promise<DailyResponse> {
 }
 
 // Award the daily bonus if this completion matches today's pick. Idempotent and
-// safe to call on every completion — it no-ops when the lesson isn't a pick.
+// safe to call on every completion; it no-ops when the lesson isn't a pick.
 export async function awardBonusForCompletion(
   userId: number,
   courseKey: string,

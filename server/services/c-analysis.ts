@@ -5,7 +5,7 @@ import type { InjectValue, LessonTestsSpec, StructureFailure } from '../../share
 // Server-side C analysis for the lesson judge. C has no in-container parser
 // (python has `ast`, java has javac's Tree API; gcc's shipped python3 parses
 // Python, not C), so structure checks AND value injection happen HERE on the
-// server via web-tree-sitter (pure JS + WASM — no node-gyp, VPS/Nix safe). The
+// server via web-tree-sitter (pure JS + WASM, no node-gyp, VPS/Nix safe). The
 // container runner (lesson-tests.runner.c.py) then only compiles + runs the
 // pre-injected sources. Two syntax gates: tree-sitter catches structural
 // breakage (here), gcc catches semantic errors it recovers from (in the runner).
@@ -130,7 +130,7 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
       return false;
     }
     case 'string_expr':
-      // A bare string literal as a statement (`"printf(...)";`) — valid C, and
+      // A bare string literal as a statement (`"printf(...)";`): valid C, and
       // the counterfeit students use instead of actually commenting a line out.
       for (const node of walk(root)) {
         if (node.type !== 'expression_statement') continue;
@@ -242,7 +242,7 @@ function renderLiteral(value: InjectValue | InjectValue[], base: ValueBase): str
 // last-to-first so earlier offsets stay valid. A JS array feeds successive
 // declarations of the same name (reassignment); a name never declared in this
 // source is skipped (structure `requires: variable` + the output diff catch the
-// absence — the Java divergence from Python's prepend, since C needs a type).
+// absence; the Java divergence from Python's prepend, since C needs a type).
 export function applyInjection(
   code: string,
   sites: InjectionSite[],

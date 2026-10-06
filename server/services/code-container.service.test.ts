@@ -116,7 +116,7 @@ describe('acquireForRun', () => {
 
   it('creates past the cap when every tracked container is busy (nothing to evict)', async () => {
     await acquireForRun('user:busy1', 'python'); // busy, not released
-    await acquireForRun('user:busy2', 'python'); // busy, not released — at cap (2)
+    await acquireForRun('user:busy2', 'python'); // busy, not released, at cap (2)
     await acquireForRun('user:busy3', 'python'); // no idle to evict → grows to 3
     expect(activeCount()).toBe(3);
     expect(dockerCalls().filter((a) => a[0] === 'rm')).toHaveLength(0);

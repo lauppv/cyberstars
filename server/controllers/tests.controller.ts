@@ -27,7 +27,7 @@ export async function runTests(req: Request, res: Response, next: NextFunction) 
       try {
         await progressService.markComplete(req.user.id, courseKey, lessonSlug);
       } catch (err) {
-        // Don't turn a passing verdict into a 500 — the student's next passing
+        // Don't turn a passing verdict into a 500; the student's next passing
         // run (or refresh-triggered progress fetch) will reconcile.
         console.error(
           `[tests] failed to persist completion for user ${req.user.id} on ${courseKey}/${lessonSlug}:`,

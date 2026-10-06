@@ -14,7 +14,7 @@ const ALGO_MAP: Record<string, string> = {
 
 const VALID_COURSE_KEYS = new Set<string>([...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
 
-// Single source of truth for "is this a real course key" — used by content path
+// Single source of truth for "is this a real course key", used by content path
 // resolution and by progress writes/reads to reject garbage course keys.
 export function assertValidCourse(courseKey: string): void {
   if (!VALID_COURSE_KEYS.has(courseKey)) {
@@ -28,7 +28,7 @@ export function contentDir(courseKey: string): string {
   return algoSubdir ? path.join(ALGO_DIR, algoSubdir) : path.join(LESSONS_DIR, courseKey);
 }
 
-// A lesson is judge-completable iff it ships an EN <slug>-tests.json — the same
+// A lesson is judge-completable iff it ships an EN <slug>-tests.json, the same
 // definition the static-content generator uses to emit `hasTests` into
 // curriculum.json. Kotlin (no tests) and untested main-course lessons are false.
 export function hasTestsFile(courseKey: string, slug: string): boolean {

@@ -73,7 +73,7 @@ def int_literals(tree, values):
 
 def has_comment(source, contains):
     # Whitespace-insensitive match so `# print( wind_speed )` still contains
-    # `wind_speed` — students shouldn't fail on spacing inside the comment.
+    # `wind_speed`; students shouldn't fail on spacing inside the comment.
     needle = "".join((contains or "").split())
     try:
         for tok in tokenize.generate_tokens(io.StringIO(source).readline):
@@ -86,7 +86,7 @@ def has_comment(source, contains):
 
 
 def has_string_expr(tree):
-    # A bare string as a statement — the "floating string" that students use to
+    # A bare string as a statement: the "floating string" that students use to
     # counterfeit a comment (wrapping a line in quotes, or ''' ''' blocks).
     for node in ast.walk(tree):
         if isinstance(node, ast.Expr):
@@ -131,7 +131,7 @@ def check_structure(tree, source, structure):
 
 def to_ast_value(v):
     # A bare scalar becomes a Constant; {"$list": [...]} becomes a whole list
-    # value (so a variable holding a list can be injected — a bare JSON array is
+    # value (so a variable holding a list can be injected; a bare JSON array is
     # already taken by per-occurrence injection for reassignment lessons);
     # {"$dict": {...}} becomes a whole dict value (insertion order preserved by
     # the JSON parser, which matters for lessons that loop over keys/values).
@@ -251,12 +251,12 @@ def main():
             user_src = inject_values(payload["userCode"], inject)
             solution_src = inject_values(payload["solutionCode"], inject)
         except SyntaxError:
-            # solution is trusted; user code already parsed — should not happen
+            # solution is trusted; user code already parsed, should not happen
             result["cases"].append({"injectError": True})
             continue
         user_run = run_program(user_src, stdin)
         result["cases"].append({"user": user_run, "solution": run_program(solution_src, stdin)})
-        # A hung program would burn 5s on every remaining case too — stop here.
+        # A hung program would burn 5s on every remaining case too, so stop here.
         if user_run["timedOut"]:
             break
 

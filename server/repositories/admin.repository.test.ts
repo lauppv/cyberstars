@@ -62,17 +62,17 @@ describe('progressStats', () => {
     mockPrisma.userLessonProgress.count.mockResolvedValueOnce(5); // totalCompletions
     mockPrisma.userLessonProgress.groupBy
       .mockResolvedValueOnce([
-        // courseUserGroups — one row per (course, user)
+        // courseUserGroups: one row per (course, user)
         { courseKey: 'python', userId: 1 },
         { courseKey: 'python', userId: 2 },
         { courseKey: 'c', userId: 1 },
       ])
       .mockResolvedValueOnce([
-        // lessonGroups — top lessons
+        // lessonGroups: top lessons
         { courseKey: 'python', lessonSlug: 'intro', _count: { _all: 4 } },
       ])
       .mockResolvedValueOnce([
-        // completionCounts — per course
+        // completionCounts: per course
         { courseKey: 'python', _count: { _all: 4 } },
         { courseKey: 'c', _count: { _all: 1 } },
       ]);

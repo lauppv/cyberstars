@@ -11,7 +11,7 @@ import * as connectionsController from '../controllers/connections.controller.js
 // req.user is always set here.
 const perUser = (req: Request) => String(req.user!.id);
 
-// Sending a request creates a row and fires a notification, so cap it — this is
+// Sending a request creates a row and fires a notification, so cap it; this is
 // the only endpoint that lets a caller reach arbitrary user ids.
 const sendLimiter = rateLimit({
   windowMs: 60_000,

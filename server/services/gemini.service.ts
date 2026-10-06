@@ -1,6 +1,6 @@
 import { config } from '../config/index.js';
 
-// Thin wrapper over the Gemini REST API (generateContent). Deliberately tiny —
+// Thin wrapper over the Gemini REST API (generateContent). Deliberately tiny:
 // hints are the only caller and need a single text-in/text-out shape. No SDK so
 // the dependency footprint stays zero.
 const ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models';

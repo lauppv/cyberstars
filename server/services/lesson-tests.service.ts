@@ -19,7 +19,7 @@ import type {
 // language's own parser (Python ast / javac Compiler Tree API), injects each
 // case's values into the lesson's input variables in both the user code and
 // the reference solution, and runs the two programs. Outputs are compared
-// HERE, on the server — expected outputs never enter the container, so user
+// HERE, on the server; expected outputs never enter the container, so user
 // code cannot read them.
 const SERVICES_DIR = path.join(process.cwd(), 'server', 'services');
 
@@ -89,7 +89,7 @@ const RUNNERS: Record<string, JudgeRunner> = {
 };
 
 // Same ro/-subfolder localization convention as lesson markdown / terminal
-// -setup.json — but the tests spec and the solution are a UNIT (the spec's
+// -setup.json, but the tests spec and the solution are a UNIT (the spec's
 // inject keys reference the solution's identifiers), so the locale is decided
 // once by the tests file and the solution must come from the same folder.
 // Mixing locales would make injection a silent no-op and let hardcoding pass.
@@ -145,7 +145,7 @@ function maskInts(output: string): string {
   return output.replace(/\d+/g, '#');
 }
 
-// Compare outputs as a multiset of lines — thread/process lessons whose line
+// Compare outputs as a multiset of lines, so thread/process lessons whose line
 // order varies between runs still match when the set of lines is identical.
 function sortLines(output: string): string {
   return output.split('\n').sort().join('\n');
@@ -276,7 +276,7 @@ export async function runLessonTests(
       : runnerOut;
     return buildResponse(spec, verdict);
   } catch (err) {
-    // Anything that breaks the run (stuck exec, bad container state) — drop the
+    // Anything that breaks the run (stuck exec, bad container state), drop the
     // container so the next attempt starts clean.
     keep = false;
     throw err instanceof AppError ? err : new AppError(500, 'Test run failed, please try again');

@@ -3,7 +3,7 @@ import type { UserSocketFrame } from '../../shared/notifications.js';
 
 // One shared per-user event socket (/ws/user), keyed by user id with a Set of
 // sockets so multiple tabs of the same user all receive live frames. Shared by
-// notifications (and, later, direct messaging) — one registry, one connection.
+// notifications (and, later, direct messaging): one registry, one connection.
 const registry = new Map<number, Set<WebSocket>>();
 
 export function registerUserSocket(userId: number, ws: WebSocket): void {
@@ -23,7 +23,7 @@ export function unregisterUserSocket(userId: number, ws: WebSocket): void {
 }
 
 // Deliver a frame to every open socket the user has. A no-op when they are
-// offline — the DB is the source of truth, so they see it on the next fetch.
+// offline; the DB is the source of truth, so they see it on the next fetch.
 export function pushToUser(userId: number, frame: UserSocketFrame): void {
   const set = registry.get(userId);
   if (!set) return;

@@ -9,7 +9,7 @@ import {
 } from '../../shared/usage.js';
 
 // Per-user rolling 24h counters for the assist features (Show Solution, AI
-// hints). In-memory and best-effort — like the guest run budget and the
+// hints). In-memory and best-effort. Like the guest run budget and the
 // per-minute rate limiters, this is anti-abuse, not an audited quota, so a
 // server restart resetting it is acceptable. Keyed by `${userId}:${action}`.
 interface Window {

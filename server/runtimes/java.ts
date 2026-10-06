@@ -7,6 +7,6 @@ export const javaRuntime: LanguageRuntime = {
   compileCmd: 'javac /work/Main.java -d /work',
   runCmd: 'stdbuf -o0 java -cp /work Main',
   // The lesson judge holds two JVMs at once (runner with in-process javac +
-  // the judged program) — the 128m default gets the child OOM-killed.
+  // the judged program); the 128m default gets the child OOM-killed.
   memory: '256m',
 };

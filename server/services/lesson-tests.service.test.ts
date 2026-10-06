@@ -33,7 +33,7 @@ vi.mock('./code-container.service.js', () => ({
 }));
 
 // C does structure + injection on the server via web-tree-sitter, which can't
-// load its wasm under jsdom — mock it here so dispatch is testable without a
+// load its wasm under jsdom, so mock it here so dispatch is testable without a
 // real parser (the parser itself is covered in c-analysis.test.ts, node env).
 const { mockPrepareC } = vi.hoisted(() => ({ mockPrepareC: vi.fn() }));
 vi.mock('./c-analysis.js', () => ({

@@ -22,7 +22,7 @@ function shape(row: leaderboardRepo.LeaderboardRow): LeaderboardEntry {
 
 // The aggregate ranking query is DB-heavy, so the full ranked list is cached in
 // memory for a few minutes (like admin.service). Page slices and "my rank" are
-// derived from the cache — one query per window, not per request.
+// derived from the cache: one query per window, not per request.
 async function getEntries(): Promise<LeaderboardEntry[]> {
   const now = Date.now();
   if (cached && cached.expiresAt > now) return cached.entries;

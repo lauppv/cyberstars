@@ -14,7 +14,7 @@ export async function getUsage(req: Request, res: Response, next: NextFunction) 
 }
 
 // Records one Show Solution reveal and returns the refreshed usage summary. The
-// solution content itself is a static public file — this endpoint exists only to
+// solution content itself is a static public file; this endpoint exists only to
 // meter and gate reveals (429 once the daily cap is hit).
 export async function consumeSolution(req: Request, res: Response, next: NextFunction) {
   try {

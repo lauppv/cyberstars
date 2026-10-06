@@ -61,7 +61,7 @@ vi.mock('./repositories/leaderboard.repository.js', () => ({
 
 const { app } = await import('./app.js');
 
-describe('endpoint smoke tests — public routes return 200', () => {
+describe('endpoint smoke tests: public routes return 200', () => {
   const publicGets = ['/api/forum/categories'];
 
   for (const path of publicGets) {
@@ -106,7 +106,7 @@ describe('guest id cookie', () => {
   });
 });
 
-describe('endpoint smoke tests — auth-protected routes return 401 without token', () => {
+describe('endpoint smoke tests: auth-protected routes return 401 without token', () => {
   const authRequired: [string, string][] = [
     ['get', '/api/progress/python'],
     ['get', '/api/progress/python/booleans/code'],
@@ -181,14 +181,14 @@ describe('public profile route', () => {
   });
 
   it('404s a missing user (route is wired past auth + the feature gate)', async () => {
-    // user.repository.findById is mocked to null, so the service throws 404 —
+    // user.repository.findById is mocked to null, so the service throws 404,
     // proving an authenticated request reaches the service past the gate in dev.
     const res = await request(app).get('/api/users/1/profile').set('Cookie', `token=${validToken}`);
     expect(res.status).toBe(404);
   });
 });
 
-describe('endpoint smoke tests — unknown routes', () => {
+describe('endpoint smoke tests: unknown routes', () => {
   it('GET /api/does-not-exist → 404', async () => {
     const res = await request(app).get('/api/does-not-exist');
     expect(res.status).toBe(404);
@@ -198,7 +198,7 @@ describe('endpoint smoke tests — unknown routes', () => {
 describe('trust proxy', () => {
   it('is disabled outside production so X-Forwarded-For is not trusted', () => {
     // In dev/test there is no reverse proxy in front of Express, so the header
-    // must not be trusted. Production enables one hop (nginx) — see app.ts.
+    // must not be trusted. Production enables one hop (nginx); see app.ts.
     expect(app.get('trust proxy')).toBe(false);
   });
 });
@@ -206,7 +206,7 @@ describe('trust proxy', () => {
 describe('SPA fallback', () => {
   it('non-api/auth path invokes the index.html fallback handler', async () => {
     // dist/index.html may not exist in tests; we only need the handler to run.
-    // sendFile yields 200 when the file exists, 404/500 when it doesn't —
+    // sendFile yields 200 when the file exists, 404/500 when it doesn't;
     // any of these proves the route handler executed.
     const res = await request(app).get('/some/spa/route');
     expect([200, 404, 500]).toContain(res.status);

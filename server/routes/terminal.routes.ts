@@ -45,8 +45,8 @@ const terminalExecLimiter = rateLimit({
   handler: execRateLimitHandler,
 });
 
-// Each session spins up a fresh 128 MB sandbox container — the most expensive
-// terminal operation — so cap it tightly per owner to keep a burst of creates
+// Each session spins up a fresh 128 MB sandbox container (the most expensive
+// terminal operation), so cap it tightly per owner to keep a burst of creates
 // from OOMing the box (the global cap in the service is the last line of defence).
 const sessionLimiter = rateLimit({
   windowMs: 60_000,
@@ -58,7 +58,7 @@ const sessionLimiter = rateLimit({
   handler: execRateLimitHandler,
 });
 
-// A check is one docker exec (all state probes batched) — cap like the code
+// A check is one docker exec (all state probes batched), so cap like the code
 // judge's Run Tests (10/min/owner) rather than the looser per-command exec cap.
 const checkLimiter = rateLimit({
   windowMs: 60_000,

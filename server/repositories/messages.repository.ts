@@ -37,7 +37,7 @@ export async function findOrCreatePair(a: number, b: number): Promise<Conversati
     });
   } catch (err) {
     // Two concurrent opens can both miss the findUnique and race the create;
-    // the loser hits the unique constraint — re-read the winner's row.
+    // the loser hits the unique constraint, so re-read the winner's row.
     if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2002') {
       const winner = await prisma.conversation.findUnique({ where, include: conversationInclude });
       if (winner) return winner;
@@ -59,7 +59,7 @@ export function listConversations(userId: number): Promise<ConversationRow[]> {
 }
 
 // Unread counts per conversation for a user: messages the *other* side sent that
-// this user hasn't read yet. Deleted messages don't count — there is nothing
+// this user hasn't read yet. Deleted messages don't count; there is nothing
 // left to read, and a badge pointing at a redacted bubble is just noise. One
 // grouped query, not one per conversation.
 export async function unreadByConversation(userId: number): Promise<Map<number, number>> {

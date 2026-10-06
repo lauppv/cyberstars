@@ -19,11 +19,11 @@ export interface LeaderboardRow {
 // instead of N Node calculations: the per-lesson award is xpForLesson(sortOrder)
 // = 10 + (sortOrder - 1), plus the daily-pick bonus round(award * 0.2) for
 // lessons the user was awarded a daily bonus on (DailyPick.bonusAwarded). The
-// join is on (course_key, lesson_slug) — UserLessonProgress has no lessonId —
+// join is on (course_key, lesson_slug), since UserLessonProgress has no lessonId,
 // and only completed rows that map to a real lesson count.
 //
 // Note: the query is built inside the function (not a module-level constant) so
-// Prisma.sql only evaluates when called — route tests that mock @prisma/client
+// Prisma.sql only evaluates when called, so route tests that mock @prisma/client
 // without the Prisma export can import this module without tripping it.
 export async function getRanked(): Promise<LeaderboardRow[]> {
   const ranked = Prisma.sql`

@@ -77,7 +77,7 @@ export async function notify(input: NotifyInput): Promise<void> {
 // Redaction hook for source-entity soft-deletes (forum post delete): drop the
 // snapshotted excerpt from matching notifications, keyed by the snapshotted
 // postId (content-based matching would miss posts edited after the snapshot).
-// Fire-and-forget like notify — cleanup must never fail the delete that
+// Fire-and-forget like notify; cleanup must never fail the delete that
 // triggered it.
 export async function redactExcerpt(
   type: NotificationType,

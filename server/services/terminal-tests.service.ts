@@ -77,7 +77,7 @@ function scriptLine(check: TerminalCheck, i: number): string | null {
       return ok(`[ "$(stat -c %a ${shq(abs(check.path))} 2>/dev/null)" = ${shq(check.mode)} ]`);
     case 'command_output':
       // Run the authored probe in a subshell so its cwd changes don't leak;
-      // ship stdout base64-encoded — the server decodes + compares.
+      // ship stdout base64-encoded; the server decodes + compares.
       return `printf '${i} O '; ( ${check.cmd} ) 2>&1 | base64 -w0; echo`;
     case 'cwd_is':
       return null;
