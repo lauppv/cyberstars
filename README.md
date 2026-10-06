@@ -2,6 +2,8 @@
 
 A free, open-source interactive coding education platform. Learn Python, C, Java, and Linux through structured lessons with a live code editor. Read, write, and run code in the same view.
 
+Live at [cyberstars.app](https://cyberstars.app).
+
 ## Features
 
 - **Split-screen lessons**: Markdown content on the left, live CodeMirror editor on the right

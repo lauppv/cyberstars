@@ -131,11 +131,13 @@ CyberStars is a split-screen coding education platform (React frontend + Express
 
 ### Production (`cyberstars.app`)
 
-- DigitalOcean VPS, app at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`)
+- DigitalOcean droplet (1GB RAM plus a 2GB swapfile, Ubuntu 24.04, region fra1). PostgreSQL 16 runs on the host. The app lives at `/opt/cyberstars`, managed by pm2 (`pm2 restart cyberstars`); pm2's systemd unit brings it back after a reboot. `npm start` only boots the server, the client build happens in `deploy.sh`
+- Domain and DNS on Cloudflare, with the records set to DNS only (not proxied) so certbot and the WebSockets reach nginx directly. TLS comes from Let's Encrypt via certbot, renewed by its systemd timer
 - nginx reverse proxy on port 443 → localhost:8080. The `/ws/` location block requires `proxy_set_header Upgrade` and `Connection "upgrade"` for WebSocket
+- Email goes out through Resend (EU region) from `noreply@cyberstars.app`, with a sending-only API key on the server. `FOUNDER_EMAIL` in the server's `.env` pins the founder account
 - Focus-radio mp3 (163MB, gitignored, CBR) lives at `media/radio/`, outside `public/` so builds don't copy it into `dist/`. nginx serves it directly from disk via a `location /radio/` block (`alias /opt/cyberstars/media/radio/;`); the Express static mount on `/radio` is the dev path/fallback. Currently switched off for everyone via `DISABLED_FEATURES` in `shared/features.ts`: the mp3 was lost with the old VPS and no licensed replacement is picked yet
 - Deploy: run `bash /opt/cyberstars/deploy/deploy.sh`. It raises a maintenance flag (`maintenance.on`), then pulls/installs/builds/restarts, and lowers the flag only after the new backend answers a health check (`/api/time`). While the flag exists, nginx serves the static themed page (`deploy/maintenance.html`) with a 503 for every request without touching the backend, so users never see half-built assets, 500s, or an infinite spinner during a deploy. nginx must be wired to the flag; see `deploy/nginx-maintenance.conf`. The old raw one-liner (`git pull && npm install && npm run build && pm2 restart cyberstars`) exposed broken windows during the build/restart and is superseded
-- Docker images must be pre-pulled on the server: `docker pull gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine danysk/kotlin:latest`
+- Docker images must be pre-pulled on the server: `docker pull gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine danysk/kotlin:latest`, plus the Linux sandbox built from source: `docker build -t cyberstars-linux-sandbox server/runtimes/linux-sandbox`
 
 ## Key conventions
 
