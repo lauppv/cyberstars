@@ -78,7 +78,7 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 
 ### Curriculum & Lessons
 
-Curriculum structure and lesson content are **static files**, not API routes —
+Curriculum structure and lesson content are **static files**, not API routes,
 generated at build time by `scripts/generate-static-content.ts` (from the seed
 data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
 `server/algorithms`) and served from `public/` (Vite's publicDir in dev,
@@ -94,13 +94,13 @@ data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
 | `/almanac/{index,extras}.json`      | Almanac cards + sidebar data (English) and `ro/` peers |
 | `/almanac/articles/:slug.json`      | Almanac article body (English) and `ro/` peer          |
 
-**Localization** — the UI is bilingual (English + Romanian), toggled in
+**Localization**: the UI is bilingual (English + Romanian), toggled in
 `/settings`; the choice persists in `localStorage` and is read from `i18n.language`.
 UI chrome strings come from `client/i18n/locales/{en,ro}.json`. Lesson and almanac
 content is localized by file: translated copies live in a per-language subfolder
 (`ro`) beside the English source, with the **same slug**. `lessonService` /
 `almanacService` request the localized path and **fall back to English** when the
-translation is missing (a 404 in prod, the SPA `index.html` in dev — both
+translation is missing (a 404 in prod, the SPA `index.html` in dev, both
 rejected), so content can be translated incrementally and English-only content
 works in both languages. Lesson/course titles come from `curriculum.json` and are
 not localized per-language.
@@ -121,7 +121,7 @@ not localized per-language.
 | PUT    | `/api/progress/:courseKey/:lessonSlug/code`   | Yes  | Save code                 |
 | POST   | `/api/progress/:courseKey/:lessonSlug/access` | Yes  | Track last access time    |
 
-There is **no client-writable completion endpoint** — completion is server-authoritative
+There is **no client-writable completion endpoint**; completion is server-authoritative
 and only ever set by the judge (see below) when tests pass for a logged-in user.
 
 ### Judge (lesson tests)
@@ -132,7 +132,7 @@ and only ever set by the judge (see below) when tests pass for a logged-in user.
 
 "Owner" means a logged-in user or a guest keyed by the per-browser `guestId` cookie.
 The judge runs the student's code (and the reference solution) in the owner's warm
-Docker container and compares outputs **on the server** — expected output never enters
+Docker container and compares outputs **on the server**, so expected output never enters
 the container, so a tampered client can only fool its own display.
 
 ### Forum
@@ -191,7 +191,7 @@ Notifications are emitted fire-and-forget from the forum (reply, accepted soluti
 reaction), support (new ticket, reply, status change), and connection (request,
 acceptance) flows; the actor is always excluded from their own notification, repeat
 replies/reactions collapse into one unread row, and each user is capped at 100
-retained rows. There is no DM notification type — the messages badge covers new
+retained rows. There is no DM notification type; the messages badge covers new
 messages (`DM_MESSAGE` was removed from the enum with a data migration).
 
 ### Messages (DMs)
@@ -209,7 +209,7 @@ Requires an identity (no guests).
 | DELETE | `/api/messages/:messageId`             | Yes  | Soft-delete own message                   |
 | POST   | `/api/messages/:messageId/reactions`   | Yes  | Toggle an emoji reaction (60/min/user)    |
 
-Open/send/react are rate-limited per user (not per IP — students share NAT). Live
+Open/send/react are rate-limited per user (not per IP, since students share NAT). Live
 updates ride the shared `/ws/user` socket's `dm` channel; a reaction toggle pushes
 the message's full refreshed reaction list to both participants. Reactions are
 stored per user+emoji (`DmReaction`, unique on message+user+emoji); the server
@@ -267,7 +267,7 @@ profile's connect button. Streak is computed by the shared
 
 ### Admin
 
-Gated by `requireAdmin` (after `authenticateToken`) — the role is read fresh from the DB, never from the JWT.
+Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from the DB, never from the JWT.
 
 | Method | Endpoint           | Auth  | Description                                                                                                          |
 | ------ | ------------------ | ----- | -------------------------------------------------------------------------------------------------------------------- |
@@ -279,16 +279,16 @@ Defined in [`prisma/schema.prisma`](../prisma/schema.prisma). Field names use ca
 
 ### Models
 
-- **User** — account data (name, email, hashed password)
-- **Curriculum** — course definitions (key, title, description, sortOrder)
-- **Lesson** — lesson metadata (courseKey, slug, title, sortOrder)
-- **UserLessonProgress** — per-user completion tracking
-- **UserSavedCode** — per-user saved code per lesson
-- **ForumCategory / ForumThread / ForumPost / ForumReaction** — community forum
-- **SupportTicket / SupportMessage** — support system
-- **Notification** — per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
-- **Conversation / DirectMessage / DmReaction** — 1-on-1 messaging (messages soft-delete; reactions unique per message+user+emoji)
-- **Connection** — directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
+- **User**: account data (name, email, hashed password)
+- **Curriculum**: course definitions (key, title, description, sortOrder)
+- **Lesson**: lesson metadata (courseKey, slug, title, sortOrder)
+- **UserLessonProgress**: per-user completion tracking
+- **UserSavedCode**: per-user saved code per lesson
+- **ForumCategory / ForumThread / ForumPost / ForumReaction**: community forum
+- **SupportTicket / SupportMessage**: support system
+- **Notification**: per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
+- **Conversation / DirectMessage / DmReaction**: 1-on-1 messaging (messages soft-delete; reactions unique per message+user+emoji)
+- **Connection**: directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
 
 ### Key relationships
 
@@ -311,11 +311,11 @@ User code runs in Docker containers, never in the browser.
 | Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout                                     |
 | Kotlin   | `danysk/kotlin:latest`          | Compile to a jar (512m), 20s timeout; UI card badged "Coming Soon" |
 
-**One persistent container per owner.** Each owner — a logged-in user, or a guest keyed by a per-browser `guestId` cookie — gets a single long-lived container for the language they're currently running, created lazily on their first run and managed by `code-container.service.ts`. It is reused across runs (the cold start is paid once), swapped when they switch language (the previous one is torn down on the first run of the new language), garbage-collected after 15 min idle, and bounded by a global LRU cap. `interactive-execution.service.ts` writes the source into the container's `/work` tmpfs and `docker exec`s the compile/run there.
+**One persistent container per owner.** Each owner (a logged-in user, or a guest keyed by a per-browser `guestId` cookie) gets a single long-lived container for the language they're currently running, created lazily on their first run and managed by `code-container.service.ts`. It is reused across runs (the cold start is paid once), swapped when they switch language (the previous one is torn down on the first run of the new language), garbage-collected after 15 min idle, and bounded by a global LRU cap. `interactive-execution.service.ts` writes the source into the container's `/work` tmpfs and `docker exec`s the compile/run there.
 
 Containers are locked down with `--network=none`, `--memory=128m`, `--pids-limit=64`, `--cap-drop=ALL`, `--security-opt=no-new-privileges`, `--read-only`, and `--user=<uid>:<gid>` (the host process's own uid). `/work` and `/tmp` are tmpfs mounts owned by that uid; `/work` is mounted `exec` so compiled C binaries can run under the read-only rootfs. Docker is always invoked with an argument array (no shell interpolation).
 
-Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on each stdin input, plus a 1MB output cap to stop runaway output loops. On timeout, output-cap, or the page being abandoned mid-run the container is destroyed (reliably killing the program); on a normal exit it is kept for reuse. A separate `/ws/presence` connection (one per tab) lets the server tear the idle container down promptly when the tab closes — the 15 min GC is the backstop. `attachRunWebSocket` routes both WS paths through one manual `noServer` upgrade handler.
+Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on each stdin input, plus a 1MB output cap to stop runaway output loops. On timeout, output-cap, or the page being abandoned mid-run the container is destroyed (reliably killing the program); on a normal exit it is kept for reuse. A separate `/ws/presence` connection (one per tab) lets the server tear the idle container down promptly when the tab closes; the 15 min GC is the backstop. `attachRunWebSocket` routes both WS paths through one manual `noServer` upgrade handler.
 
 **Rate limits & guests.** Editor runs are capped at 10 runs / 60 s per owner (same for guests and logged-in) plus 5 concurrent; guests additionally get a lifetime budget of 10 runs (`guest-budget.service.ts`) before a sign-up nudge. The terminal exec route is capped at 30/min per user with a friendly retry-after message.
 
@@ -330,13 +330,13 @@ No changes to services, controllers, or routes needed.
 
 Each lesson consists of two files in `server/lessons/:lang/`:
 
-- `<slug>.md` — educational content with runnable code blocks
-- `<slug>-code.md` — starter code template
+- `<slug>.md`: educational content with runnable code blocks
+- `<slug>-code.md`: starter code template
 
 A lesson may also ship an optional `<slug>-tests.json` (judge test cases) and
 `<slug>-solution.md` (reference solution). Completion is **judge-driven**: the
 student presses "Run Tests", the server runs their code against the cases and marks
-the lesson complete only on a passing verdict — there is no manual "Mark Complete"
+the lesson complete only on a passing verdict; there is no manual "Mark Complete"
 button. Courses without test files (e.g. Kotlin) are not completable yet.
 
 A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
@@ -345,15 +345,15 @@ A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<
 
 | Variable                 | Required | Default                   | Description                                            |
 | ------------------------ | -------- | ------------------------- | ------------------------------------------------------ |
-| `DB_USER`                | Yes      | —                         | PostgreSQL user                                        |
-| `DB_HOST`                | Yes      | —                         | PostgreSQL host                                        |
-| `DB_NAME`                | Yes      | —                         | Database name                                          |
-| `DB_PASSWORD`            | Yes      | —                         | Database password                                      |
+| `DB_USER`                | Yes      | none                      | PostgreSQL user                                        |
+| `DB_HOST`                | Yes      | none                      | PostgreSQL host                                        |
+| `DB_NAME`                | Yes      | none                      | Database name                                          |
+| `DB_PASSWORD`            | Yes      | none                      | Database password                                      |
 | `DB_PORT`                | No       | `5432`                    | PostgreSQL port                                        |
-| `DATABASE_URL`           | Yes      | —                         | Prisma CLI connection string                           |
+| `DATABASE_URL`           | Yes      | none                      | Prisma CLI connection string                           |
 | `EXPRESS_PORT`           | No       | `5000`                    | Backend port (dev)                                     |
 | `PORT`                   | No       | `8080`                    | Backend port (production)                              |
-| `JWT_SECRET`             | Yes      | —                         | JWT signing secret                                     |
+| `JWT_SECRET`             | Yes      | none                      | JWT signing secret                                     |
 | `NODE_ENV`               | No       | `development`             | Environment                                            |
 | `CORS_DEV_ORIGIN`        | No       | `http://localhost:5173`   | CORS origin in dev                                     |
 | `CORS_ORIGIN`            | No       | `https://cyber-stars.org` | CORS origin in production                              |
@@ -362,16 +362,16 @@ A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<
 | `CODE_MAX_CONTAINERS`    | No       | `50`                      | Global cap on concurrent run containers (LRU-evicted)  |
 | `CODE_CONTAINER_IDLE_MS` | No       | `900000`                  | Idle TTL before a run container is GC'd (15 min)       |
 | `GUEST_RUN_BUDGET`       | No       | `10`                      | Lifetime code runs a guest gets before a sign-up nudge |
-| `SMTP_USER`              | No       | —                         | Gmail SMTP user for password-reset emails              |
-| `SMTP_PASS`              | No       | —                         | Gmail SMTP app password                                |
+| `SMTP_USER`              | No       | none                      | Gmail SMTP user for password-reset emails              |
+| `SMTP_PASS`              | No       | none                      | Gmail SMTP app password                                |
 
 ## Design decisions
 
-- **Shared types** — `shared/` folder prevents client/server type drift
-- **Cookie auth** — httpOnly cookies prevent XSS access to tokens
-- **Filesystem lessons** — easy to author with git, metadata in PostgreSQL for querying
-- **Derived gamification** — badges computed client-side from `UserLessonProgress` counts; XP/levels derived from judge-completed lessons (the server recomputes XP authoritatively, never storing or trusting a client value), no extra gamification tables
-- **CurriculumContext** — curriculum fetched once at startup, shared via context
-- **CSS variables** — all theming via custom properties, re-theming is a one-file change
-- **`npm run dev` does everything** — DB setup, migration, seeding, server start in one command
-- **i18n with English fallback** — English is the source of truth; UI strings in `client/i18n/locales/{en,ro}.json`, content translations in `/ro` subfolders that fall back to English, so the site stays usable while translation lags
+- **Shared types**: `shared/` folder prevents client/server type drift
+- **Cookie auth**: httpOnly cookies prevent XSS access to tokens
+- **Filesystem lessons**: easy to author with git, metadata in PostgreSQL for querying
+- **Derived gamification**: badges computed client-side from `UserLessonProgress` counts; XP/levels derived from judge-completed lessons (the server recomputes XP authoritatively, never storing or trusting a client value), no extra gamification tables
+- **CurriculumContext**: curriculum fetched once at startup, shared via context
+- **CSS variables**: all theming via custom properties, re-theming is a one-file change
+- **`npm run dev` does everything**: DB setup, migration, seeding, server start in one command
+- **i18n with English fallback**: English is the source of truth; UI strings in `client/i18n/locales/{en,ro}.json`, content translations in `/ro` subfolders that fall back to English, so the site stays usable while translation lags

@@ -1,22 +1,22 @@
 # CyberStars
 
-A free, open-source interactive coding education platform. Learn Python, C, Java, and Linux through structured lessons with a live code editor — read, write, and run code in the same view.
+A free, open-source interactive coding education platform. Learn Python, C, Java, and Linux through structured lessons with a live code editor. Read, write, and run code in the same view.
 
 ## Features
 
-- **Split-screen lessons** — Markdown content on the left, live CodeMirror editor on the right
-- **Runnable code examples** — click "Run" on any code block inside lesson text to execute it instantly
-- **Judge-graded completion** — pass a lesson's built-in test suite (Run Tests) to complete it; completion is server-verified, with no manual honor-system button
-- **Multi-language** — Python (60 lessons), Java (49 lessons), C (47 lessons), Linux terminal (55 lessons)
-- **Bilingual UI (EN/RO)** — English (default) and Romanian with a language toggle; untranslated lessons or articles fall back to English automatically
-- **Algorithm challenges** — 72 challenges across 3 languages with Easy/Medium/Hard difficulty levels
-- **Sandboxed execution** — user code runs in Docker containers, never in the browser
-- **Progress tracking** — per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
-- **Code persistence** — saved per lesson, restored on revisit
-- **Community forum** — threaded discussions with reactions and solution marking
-- **In-app notifications** — live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket (currently behind an admins-only preview gate)
-- **Linux terminal** — interactive sandboxed shell for learning Linux commands
-- **Admin dashboard** — admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics); access is server-authoritative, the role is read from the DB, never trusted from the client
+- **Split-screen lessons**: Markdown content on the left, live CodeMirror editor on the right
+- **Runnable code examples**: click "Run" on any code block inside lesson text to execute it instantly
+- **Judge-graded completion**: pass a lesson's built-in test suite (Run Tests) to complete it; completion is server-verified, with no manual honor-system button
+- **Multi-language**: Python (60 lessons), Java (49 lessons), C (47 lessons), Linux terminal (55 lessons)
+- **Bilingual UI (EN/RO)**: English (default) and Romanian with a language toggle; untranslated lessons or articles fall back to English automatically
+- **Algorithm challenges**: 72 challenges across 3 languages with Easy/Medium/Hard difficulty levels
+- **Sandboxed execution**: user code runs in Docker containers, never in the browser
+- **Progress tracking**: per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
+- **Code persistence**: saved per lesson, restored on revisit
+- **Community forum**: threaded discussions with reactions and solution marking
+- **In-app notifications**: live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket (currently behind an admins-only preview gate)
+- **Linux terminal**: interactive sandboxed shell for learning Linux commands
+- **Admin dashboard**: admin-only `/admin` view with platform statistics (users, lesson progress, forum/support, live code-execution metrics); access is server-authoritative, the role is read from the DB, never trusted from the client
 
 ## Quick start
 
@@ -30,7 +30,7 @@ npm ci
 npm run dev
 ```
 
-`npm run dev` handles everything — generates Prisma client, runs migrations, seeds the database, starts both frontend (`:5173`) and backend (`:5000`).
+`npm run dev` handles everything: it generates Prisma client, runs migrations, seeds the database, starts both frontend (`:5173`) and backend (`:5000`).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions (PostgreSQL, Docker images, Linux sandbox).
 
