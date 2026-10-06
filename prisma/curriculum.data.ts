@@ -1,4 +1,4 @@
-// Curriculum metadata — the single source of truth for course/lesson structure.
+// Curriculum metadata: the single source of truth for course/lesson structure.
 // Imported by prisma/seed.ts (DB seeding) and scripts/generate-static-content.ts
 // (build-time public/curriculum.json). Keep titles/order in sync with the
 // markdown under server/lessons and server/algorithms.
@@ -566,7 +566,7 @@ export const lessons = [
     sortOrder: 47,
     hasCodeFile: true,
   },
-  // Module 1 — Basics (control flow + I/O) [16]
+  // Module 1: Basics (control flow + I/O) [16]
   { courseKey: 'java', slug: 'print', title: 'Print', sortOrder: 1, hasCodeFile: true },
   { courseKey: 'java', slug: 'comment', title: 'Comments', sortOrder: 2, hasCodeFile: true },
   {
@@ -631,7 +631,7 @@ export const lessons = [
     sortOrder: 16,
     hasCodeFile: true,
   },
-  // Module 2 — Methods, strings, arrays [5]
+  // Module 2: Methods, strings, arrays [5]
   { courseKey: 'java', slug: 'methods', title: 'Methods', sortOrder: 17, hasCodeFile: true },
   {
     courseKey: 'java',
@@ -655,7 +655,7 @@ export const lessons = [
     sortOrder: 21,
     hasCodeFile: true,
   },
-  // Module 3 — OOP: Classes and Objects [6]
+  // Module 3: OOP (Classes and Objects) [6]
   {
     courseKey: 'java',
     slug: 'classes-objects',
@@ -692,7 +692,7 @@ export const lessons = [
     sortOrder: 27,
     hasCodeFile: true,
   },
-  // Module 4 — Encapsulation [5]
+  // Module 4: Encapsulation [5]
   {
     courseKey: 'java',
     slug: 'access-modifiers',
@@ -728,7 +728,7 @@ export const lessons = [
     sortOrder: 32,
     hasCodeFile: true,
   },
-  // Module 5 — Inheritance and Polymorphism [5]
+  // Module 5: Inheritance and Polymorphism [5]
   {
     courseKey: 'java',
     slug: 'inheritance',
@@ -764,7 +764,7 @@ export const lessons = [
     sortOrder: 37,
     hasCodeFile: true,
   },
-  // Module 6 — Interfaces, Enums, Casting [4]
+  // Module 6: Interfaces, Enums, Casting [4]
   { courseKey: 'java', slug: 'interfaces', title: 'Interfaces', sortOrder: 38, hasCodeFile: true },
   { courseKey: 'java', slug: 'enums', title: 'Enums', sortOrder: 39, hasCodeFile: true },
   { courseKey: 'java', slug: 'casting', title: 'Type Casting', sortOrder: 40, hasCodeFile: true },
@@ -775,7 +775,7 @@ export const lessons = [
     sortOrder: 41,
     hasCodeFile: true,
   },
-  // Module 7 — Practical Java for OOP (collections + errors) [5]
+  // Module 7: Practical Java for OOP (collections + errors) [5]
   { courseKey: 'java', slug: 'arraylist', title: 'ArrayList', sortOrder: 42, hasCodeFile: true },
   { courseKey: 'java', slug: 'hashmap', title: 'HashMap', sortOrder: 43, hasCodeFile: true },
   {
@@ -793,7 +793,7 @@ export const lessons = [
     sortOrder: 46,
     hasCodeFile: true,
   },
-  // Module 8 — Capstone OOP Projects [3]
+  // Module 8: Capstone OOP Projects [3]
   {
     courseKey: 'java',
     slug: 'project-inventory',
