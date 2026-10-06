@@ -354,6 +354,7 @@ A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<
 | `EXPRESS_PORT`           | No       | `5000`                   | Backend port (dev)                                     |
 | `PORT`                   | No       | `8080`                   | Backend port (production)                              |
 | `JWT_SECRET`             | Yes      | none                     | JWT signing secret                                     |
+| `FOUNDER_EMAIL`          | No       | none                     | Account that always registers as the unique FOUNDER    |
 | `NODE_ENV`               | No       | `development`            | Environment                                            |
 | `CORS_DEV_ORIGIN`        | No       | `http://localhost:5173`  | CORS origin in dev                                     |
 | `CORS_ORIGIN`            | No       | `https://cyberstars.app` | CORS origin in production                              |
