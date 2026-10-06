@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import type { UserSocketFrame } from '../../shared/notifications';
 
 // Holds the shared per-user event socket (/ws/user) open while `enabled`,
-// demuxing nothing itself — it hands each parsed frame to `onFrame`, which
+// demuxing nothing itself: it hands each parsed frame to `onFrame`, which
 // switches on `frame.channel`. Reconnects with a fixed delay if the socket
 // drops, since live notifications are the point. Shared with messaging later.
 export function useUserSocket(enabled: boolean, onFrame: (frame: UserSocketFrame) => void): void {
@@ -33,7 +33,7 @@ export function useUserSocket(enabled: boolean, onFrame: (frame: UserSocketFrame
       };
       ws.onclose = (e) => {
         // 4401/4404 are the server's deliberate refusals (expired token, preview
-        // gate) — retrying every 3s would hammer it forever with the same answer.
+        // gate), and retrying every 3s would hammer it forever with the same answer.
         // Re-login re-establishes the socket via `enabled`.
         if (!closed && e.code !== 4401 && e.code !== 4404) {
           reconnect = setTimeout(connect, 3000);

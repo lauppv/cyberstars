@@ -125,7 +125,7 @@ describe('useLesson', () => {
 
 /**
  * Leaving a lesson mid-load must not write the old lesson's data into the new
- * one — every await is guarded by a cancellation check.
+ * one; every await is guarded by a cancellation check.
  */
 describe('useLesson cancellation', () => {
   function deferred<T>() {

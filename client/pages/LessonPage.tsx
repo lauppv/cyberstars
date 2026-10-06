@@ -159,7 +159,7 @@ export function LessonPage() {
   // Populate the editor once a lesson's code is loaded. Opening a lesson loads
   // the user's saved code (or the starter). A language switch within the same
   // lesson re-translates the editor only while it still holds the untouched
-  // starter — code the user has written or saved is preserved.
+  // starter; code the user has written or saved is preserved.
   useEffect(() => {
     if (isLoading) return;
     const lessonKey = `${category}/${lesson}`;
@@ -272,7 +272,7 @@ export function LessonPage() {
   ]);
 
   // Terminal (Linux) judge: validates sandbox state against the live session
-  // container (no code — the student's typed commands built the state). Same
+  // container (no code; the student's typed commands built the state). Same
   // server-authoritative completion as the code judge.
   const handleRunTerminalChecks = useCallback(async () => {
     if (isChecking || !terminal.sessionId) return;

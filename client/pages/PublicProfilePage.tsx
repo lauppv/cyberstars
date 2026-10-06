@@ -118,7 +118,7 @@ export function PublicProfilePage() {
   const [relation, setRelation] = useState<ConnectionRelation>('none');
   const [connecting, setConnecting] = useState(false);
 
-  // Client-side guard is UX only — the API is server-authoritative.
+  // Client-side guard is UX only; the API is server-authoritative.
   useEffect(() => {
     if (authLoading) return;
     if (!canAccess) navigate('/');
@@ -282,7 +282,7 @@ export function PublicProfilePage() {
               </div>
             )}
 
-            {/* Stat grid — cells depend on which sections are visible */}
+            {/* Stat grid: cells depend on which sections are visible */}
             {statCells.length > 0 && (
               <div
                 className="grid border-b border-[var(--border)]"
@@ -321,7 +321,7 @@ export function PublicProfilePage() {
               </div>
             )}
 
-            {/* Completed courses — expandable per-course lesson lists */}
+            {/* Completed courses: expandable per-course lesson lists */}
             {profile.stats && profile.stats.courses.length > 0 && (
               <CompletedCourses courses={profile.stats.courses} />
             )}

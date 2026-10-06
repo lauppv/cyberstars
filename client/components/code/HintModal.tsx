@@ -115,7 +115,7 @@ export function HintModal({
             </div>
           )}
 
-          {/* Manual start: the AI does NOT run on open — the person clicks first,
+          {/* Manual start: the AI does NOT run on open. The person clicks first,
               having seen how many hints today's budget still allows. */}
           {!isLoading && !error && hints.length === 0 && (
             <>

@@ -75,7 +75,7 @@ export function LeaderboardPage() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState(false);
 
-  // Client-side guard is UX only — /api/leaderboard is server-authoritative.
+  // Client-side guard is UX only; /api/leaderboard is server-authoritative.
   useEffect(() => {
     if (authLoading) return;
     if (!canAccess) navigate('/');

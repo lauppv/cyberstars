@@ -14,8 +14,8 @@ interface UserSocketContextValue {
 const UserSocketContext = createContext<UserSocketContextValue | null>(null);
 
 // Owns the one shared /ws/user connection at app root and fans each frame out to
-// every subscriber. Notifications and messaging both ride this single socket —
-// demuxed client-side on `frame.channel` — so we never open two connections.
+// every subscriber. Notifications and messaging both ride this single socket
+// (demuxed client-side on `frame.channel`), so we never open two connections.
 export function UserSocketProvider({ children }: { children: ReactNode }) {
   const { user, isLoggedIn } = useAuth();
   const enabled =

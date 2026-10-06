@@ -69,7 +69,7 @@ describe('RadioPlayer controls', () => {
     h.radio.offline = true;
     render(<RadioPlayer />);
     expect(screen.getByText('Offline')).toBeInTheDocument();
-    // Play stays clickable — pressing it retries the load.
+    // Play stays clickable; pressing it retries the load.
     fireEvent.click(screen.getByRole('button', { name: 'Play' }));
     expect(h.radio.togglePlay).toHaveBeenCalled();
   });

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { localDateStr } from './heatmap-utils';
 
-// GitHub-style green scale — reads far better over the dark cosmos than purple,
+// GitHub-style green scale. It reads far better over the dark cosmos than purple,
 // which blended into the accent-tinted panels. Index 0 is the empty/no-activity
 // cell; 1–3 are increasing activity.
 const HEATMAP_COLORS = ['rgba(120,120,140,0.25)', '#0e6b3a', '#1f9d54', '#39d353'];

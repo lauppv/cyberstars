@@ -10,7 +10,7 @@ function jsonResponse(body: unknown, ok = true) {
 }
 
 // Vite's dev server answers a missing static file with index.html (200,
-// text/html) rather than a 404 — the status alone looks successful.
+// text/html) rather than a 404, so the status alone looks successful.
 function spaFallbackResponse() {
   return Promise.resolve({
     ok: true,

@@ -137,7 +137,7 @@ export function AuthPage() {
 
         {/* Right form panel */}
         <div className="relative z-[4] w-full min-[900px]:w-[460px] min-[900px]:flex-shrink-0 bg-[var(--bg2)] border-l border-[var(--border)] flex flex-col justify-center px-6 sm:px-12 py-12 overflow-y-auto">
-          {/* Tabs — only shown for login/signup */}
+          {/* Tabs, only shown for login/signup */}
           <>
             {(mode === 'login' || mode === 'signup') && (
               <div className="flex mb-8 bg-[var(--bg3)] rounded-[var(--radius)] p-1">

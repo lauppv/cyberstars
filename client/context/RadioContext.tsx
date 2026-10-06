@@ -19,7 +19,7 @@ const MAX_DRIFT_SEC = 2; // resync only when we've slipped more than this
 const DRIFT_CHECK_MS = 5000;
 
 // The player starts minimised to just the launcher chip; opening it (setHidden
-// false) is remembered so a refresh keeps it open. This is UI state only — it
+// false) is remembered so a refresh keeps it open. This is UI state only; it
 // never auto-starts playback.
 function readStored(): { volume: number; hidden: boolean } {
   try {
@@ -35,7 +35,7 @@ function readStored(): { volume: number; hidden: boolean } {
       };
     }
   } catch {
-    // storage blocked or corrupt — fall through to defaults
+    // storage blocked or corrupt, fall through to defaults
   }
   return { volume: DEFAULT_VOLUME, hidden: true };
 }
@@ -86,7 +86,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
         offsetRef.current = d.now + rtt / 2 - Date.now();
       })
       .catch(() => {
-        // server unreachable — fall back to the local clock (offset 0)
+        // server unreachable, fall back to the local clock (offset 0)
       });
     return () => {
       cancelled = true;
@@ -125,7 +125,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     // Resuming re-joins the live position (you can't rewind a broadcast).
     if (!seekLive()) pendingPlayRef.current = true;
     a.play().catch(() => {
-      // autoplay/gesture rejection — leave state as paused
+      // autoplay/gesture rejection, leave state as paused
       setBuffering(false);
     });
   }, [playing, offline, seekLive]);
@@ -136,7 +136,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   }, [volume]);
 
   // Signing out disables the radio: imperatively stop the stream. pause() fires
-  // the element's 'pause' event, whose handler clears playing/buffering — so we
+  // the element's 'pause' event, whose handler clears playing/buffering, so we
   // don't (and mustn't, per react-hooks/set-state-in-effect) setState here.
   useEffect(() => {
     if (!enabled) audioRef.current?.pause();
@@ -205,7 +205,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   return (
     <RadioContext value={value}>
       {/* Always mounted (preload="none" means nothing downloads until first
-          play) so the disable-on-logout effect can reliably pause via the ref —
+          play) so the disable-on-logout effect can reliably pause via the ref;
           conditionally unmounting would null the ref before we could stop it. */}
       <audio
         ref={audioRef}
@@ -221,7 +221,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
           setBuffering(false);
         }}
         onError={() => {
-          // Missing/unreachable file would otherwise fail silently — surface it.
+          // Missing/unreachable file would otherwise fail silently, so surface it.
           setOffline(true);
           setBuffering(false);
           setPlaying(false);

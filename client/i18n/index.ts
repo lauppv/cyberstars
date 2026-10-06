@@ -17,7 +17,7 @@ function initialLang(): Lang {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && (SUPPORTED_LANGS as readonly string[]).includes(saved)) return saved as Lang;
   } catch {
-    // localStorage unavailable (private mode) — fall back to default
+    // localStorage unavailable (private mode), fall back to default
   }
   return 'en';
 }

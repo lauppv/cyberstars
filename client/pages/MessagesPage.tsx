@@ -23,13 +23,13 @@ export function MessagesPage() {
   const [selectedId, setSelectedId] = useState<number | null>(deepLinkId);
 
   // Re-apply the deep-link on every navigation (location.key changes even when
-  // the target conversation id is the same) — an initializer alone would ignore
+  // the target conversation id is the same), since an initializer alone would ignore
   // clicks made while this page is already mounted.
   useEffect(() => {
     if (deepLinkId != null) setSelectedId(deepLinkId); // eslint-disable-line react-hooks/set-state-in-effect
   }, [deepLinkId, location.key]);
 
-  // Client-side guard is UX only — /api/messages is server-authoritative.
+  // Client-side guard is UX only; /api/messages is server-authoritative.
   useEffect(() => {
     if (authLoading) return;
     if (!canAccess) navigate('/');
@@ -53,7 +53,7 @@ export function MessagesPage() {
       <Topbar />
       <main className="flex-1 min-h-0 max-w-[980px] w-full mx-auto px-0 sm:px-4 py-0 sm:py-4">
         <div className="h-full flex rounded-none sm:rounded-[var(--radius)] border-y sm:border border-[var(--panel-border)] bg-[var(--panel-bg)] overflow-hidden">
-          {/* Conversation list — full width on mobile until one is picked. */}
+          {/* Conversation list, full width on mobile until one is picked. */}
           <div
             className={`w-full md:w-[300px] md:flex-shrink-0 flex-col border-r border-[var(--border)] ${
               selected ? 'hidden md:flex' : 'flex'
