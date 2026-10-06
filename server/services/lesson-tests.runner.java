@@ -18,7 +18,7 @@
 // - Injection targets variable declarations/assignments that are direct
 //   statements of a method body, plus field declarations (the closest analog
 //   of Python's module-level assignments). A never-declared inject name is
-//   skipped — Java needs a type to prepend a declaration; structure rules and
+//   skipped, since Java needs a type to prepend a declaration; structure rules and
 //   output comparison catch that case anyway.
 // - Values are rendered as typed literals using the declared type as a hint
 //   (char/long/float; $list -> `new T[]{...}` or `new ArrayList<>(List.of())`;
@@ -102,7 +102,7 @@ public class Runner {
     Parsed solution = Parsed.of(solutionCode);
 
     // Java surfaces semantic errors (unknown variable, bad types) only at
-    // compile time — compile the pristine user code once so those become the
+    // compile time, so compile the pristine user code once so those become the
     // "syntax error" verdict instead of a misleading per-case failure. The
     // compiled classes are cached, so inject-free cases reuse them.
     CompiledCache cache = new CompiledCache();
@@ -135,7 +135,7 @@ public class Runner {
         continue;
       }
       // The pristine user code compiled, so a per-case failure means injection
-      // broke it — a spec/solution mismatch on our side, not the student's.
+      // broke it: a spec/solution mismatch on our side, not the student's.
       if (userProg.error != null) {
         caseResults.add(Map.of("injectError", true));
         continue;
@@ -146,7 +146,7 @@ public class Runner {
       caseResult.put("user", userRun);
       caseResult.put("solution", runProgram(solutionProg, stdin));
       caseResults.add(caseResult);
-      // A hung program would burn 5s on every remaining case too — stop here.
+      // A hung program would burn 5s on every remaining case too, so stop here.
       if (Boolean.TRUE.equals(userRun.get("timedOut"))) break;
     }
 
@@ -362,7 +362,7 @@ public class Runner {
           return super.visitAssignment(node, unused);
         }
 
-        // Direct statements of a method body, or fields — the Java analog of
+        // Direct statements of a method body, or fields: the Java analog of
         // Python's module-level assignments. Nested blocks (if/loop bodies)
         // are deliberately not injectable, same as Python.
         private boolean isEligible(Tree parent) {
@@ -554,7 +554,7 @@ public class Runner {
       return rendered.append("))").toString();
     }
 
-    // LinkedHashMap keeps insertion order — it matters for lessons that loop
+    // LinkedHashMap keeps insertion order; it matters for lessons that loop
     // over keys/values, and it subclasses HashMap so the declaration still
     // typechecks. Double-brace init is the only expression-position way to
     // build an ordered map without imports.
@@ -687,7 +687,7 @@ public class Runner {
           // past the cap: keep draining so the child never blocks on a full pipe
         }
       } catch (IOException ignored) {
-        // stream closed by process death — whatever was read still counts
+        // stream closed by process death; whatever was read still counts
       }
     }
 
@@ -716,7 +716,7 @@ public class Runner {
       try (OutputStream stdinPipe = proc.getOutputStream()) {
         stdinPipe.write(stdin.getBytes(StandardCharsets.UTF_8));
       } catch (IOException ignored) {
-        // the program exited without reading its stdin — that's fine
+        // the program exited without reading its stdin, that's fine
       }
       boolean finished = proc.waitFor(CASE_TIMEOUT_SEC, TimeUnit.SECONDS);
       if (!finished) {
@@ -741,7 +741,7 @@ public class Runner {
 
   // ------------------------------------------------------------------- JSON
 
-  /** Minimal JSON parse/emit — the runtime image ships no JSON library. */
+  /** Minimal JSON parse/emit; the runtime image ships no JSON library. */
   static class Json {
     final String text;
     int pos;
@@ -799,7 +799,7 @@ public class Runner {
         skipWhitespace();
         char c = text.charAt(pos++);
         if (c == '}') return map;
-        // else ',' — continue
+        // else ',', continue
       }
     }
 
@@ -817,7 +817,7 @@ public class Runner {
         skipWhitespace();
         char c = text.charAt(pos++);
         if (c == ']') return list;
-        // else ',' — continue
+        // else ',', continue
       }
     }
 

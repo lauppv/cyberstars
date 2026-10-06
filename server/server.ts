@@ -12,7 +12,7 @@ const server = app.listen(config.port, () => {
 const wss = attachRunWebSocket(server);
 
 function shutdown() {
-  console.log('Shutting down — cleaning up containers...');
+  console.log('Shutting down, cleaning up containers...');
   Promise.allSettled([destroyAllSessions(), drainAll()]).finally(() => {
     wss.close();
     server.close(() => process.exit(0));

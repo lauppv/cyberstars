@@ -3,7 +3,7 @@ import { useRadio } from '../../context/RadioContext';
 
 // Floating focus-radio chip, bottom-right. Mounted once at the app root; the
 // actual <audio> element lives in RadioProvider so playback survives navigation
-// and minimising. This component is pure UI — play/pause, volume, hide.
+// and minimising. This component is pure UI: play/pause, volume, hide.
 export function RadioPlayer() {
   const { t } = useTranslation();
   const {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-// Holds one WebSocket open for the whole tab. No messages are exchanged — the
+// Holds one WebSocket open for the whole tab. No messages are exchanged; the
 // connection's lifetime *is* the signal: when the tab closes (or the page is
 // reloaded), the socket drops and the server promptly tears down this user's
 // idle run container instead of waiting for the idle GC. Mounted once at the app

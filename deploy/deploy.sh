@@ -28,7 +28,7 @@ touch "$FLAG"
 # broken site. Fix the problem and re-run; the flag lifts on the next success.
 
 # The lockfile is generated, never hand-edited on the server, so a dirty copy
-# here is always leftover noise from an older `npm install` deploy — and it is
+# here is always leftover noise from an older `npm install` deploy, and it is
 # enough to make `git pull` abort. Drop it so the deploy is self-healing.
 # Any *other* dirty file is a real surprise: let git stop us and say so.
 if ! git diff --quiet -- package-lock.json; then
@@ -50,7 +50,7 @@ git pull
 # `npm install` resolves it, and the lockfile guard above cleans up next run.
 echo "==> Installing dependencies"
 npm ci || {
-  echo "!! npm ci refused the lockfile — falling back to npm install" >&2
+  echo "!! npm ci refused the lockfile, falling back to npm install" >&2
   npm install
 }
 
@@ -79,12 +79,12 @@ echo "==> Waiting for backend to become healthy"
 for _ in $(seq 1 "$HEALTH_TIMEOUT"); do
   if curl -fsS -o /dev/null "$HEALTH_URL"; then
     rm -f "$FLAG"
-    echo "==> Backend healthy — maintenance page disabled, deploy complete"
+    echo "==> Backend healthy, maintenance page disabled, deploy complete"
     exit 0
   fi
   sleep 1
 done
 
-echo "!! Backend did not become healthy within ${HEALTH_TIMEOUT}s — leaving maintenance page up" >&2
+echo "!! Backend did not become healthy within ${HEALTH_TIMEOUT}s, leaving maintenance page up" >&2
 echo "!! Investigate with: pm2 logs $PM2_NAME" >&2
 exit 1

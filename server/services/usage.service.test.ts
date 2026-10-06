@@ -6,7 +6,7 @@ import { USAGE_LIMITS, USAGE_WINDOW_MS } from '../../shared/usage.js';
 beforeEach(() => _resetAll());
 afterEach(() => vi.useRealTimers());
 
-describe('usage.service — non-admin', () => {
+describe('usage.service: non-admin', () => {
   it('starts with a full budget and no window', () => {
     const state = getState(1, 'showSolution', false);
     expect(state).toMatchObject({
@@ -53,7 +53,7 @@ describe('usage.service — non-admin', () => {
   });
 });
 
-describe('usage.service — admin', () => {
+describe('usage.service: admin', () => {
   it('is always unlimited and never consumes', () => {
     const summary = consume(9, 'getHint', true);
     expect(summary.getHint).toMatchObject({ unlimited: true, remaining: Infinity, resetAt: null });

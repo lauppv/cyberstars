@@ -152,7 +152,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
   });
 }
 
-// A presence connection carries no messages — its lifetime is the signal that the
+// A presence connection carries no messages; its lifetime is the signal that the
 // owner is on a lesson page. When their last presence socket closes (tab closed),
 // closeSession tears down their idle run container promptly.
 export function handlePresenceConnection(ws: WebSocket, req: IncomingMessage): void {
@@ -162,7 +162,7 @@ export function handlePresenceConnection(ws: WebSocket, req: IncomingMessage): v
 }
 
 // The shared per-user event socket. Requires a logged-in user and passes the
-// preview gate (on prod, admins only) — same rule as the REST endpoints. The
+// preview gate (on prod, admins only), same rule as the REST endpoints. The
 // gate check is async, so it runs after the upgrade and closes the socket if the
 // user isn't allowed. No messages are read from the client; the server pushes.
 async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promise<void> {
@@ -174,7 +174,7 @@ async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promis
   const isProd = process.env.NODE_ENV === 'production';
   const role = isProd ? await userRepo.getRole(userId) : undefined;
   // The socket carries both notifications and messaging; open it if the user can
-  // reach either feature. NOTE: pushed frames are NOT gated per channel — if the
+  // reach either feature. NOTE: pushed frames are NOT gated per channel. If the
   // two features' gates ever diverge, pushToUser needs a per-recipient channel
   // filter, or the ungated feature's frames leak to users who only have the other.
   if (
@@ -190,7 +190,7 @@ async function handleUserConnection(ws: WebSocket, req: IncomingMessage): Promis
 
 export function attachRunWebSocket(server: HttpServer): { close: () => void } {
   // Two paths share one HTTP server, so route upgrades manually (a `ws` server
-  // can't reliably co-host paths via the `path` option — frames get crossed).
+  // can't reliably co-host paths via the `path` option; frames get crossed).
   const runWss = new WebSocketServer({ noServer: true, maxPayload: MAX_PAYLOAD_BYTES });
   const presenceWss = new WebSocketServer({ noServer: true, maxPayload: 1024 });
   const userWss = new WebSocketServer({ noServer: true, maxPayload: 1024 });

@@ -107,7 +107,7 @@ describe('NotificationContext', () => {
     // replacement row (fresh id), so the superseded copy disappears.
     dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 101 }) });
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101'));
-    // A different entity is unrelated — both stay.
+    // A different entity is unrelated, so both stay.
     dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 102, entityId: 6 }) });
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('102,101'));
   });

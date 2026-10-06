@@ -37,7 +37,7 @@ app.set('trust proxy', config.isProduction ? 1 : false);
 // Restricted CSP as defence-in-depth: scripts/objects locked to our own origin
 // (plus the unpkg three.js bundle the Laniakea explorer loads at runtime), so a
 // future regression that injects raw HTML can't pull in arbitrary scripts.
-// 'unsafe-inline' stays for styles only — React inline styles and CodeMirror's
+// 'unsafe-inline' stays for styles only: React inline styles and CodeMirror's
 // injected <style> tags need it, and inline styles are not an XSS vector.
 app.use(
   helmet({
@@ -89,7 +89,7 @@ app.use('/api/users', usersRoutes);
 app.use('/api/hints', hintsRoutes);
 app.use('/api/usage', usageRoutes);
 
-// Authoritative server clock for the focus-radio "live" sync — clients seek to
+// Authoritative server clock for the focus-radio "live" sync. Clients seek to
 // (serverNow % trackDuration) so everyone hears the same second regardless of
 // local clock skew. No auth, no DB, cache-busting headers.
 app.get('/api/time', (_req, res) => {
@@ -110,7 +110,7 @@ app.use(express.static(buildPath));
 
 // SPA fallback: only match extensionless paths (course/lesson routes, profile,
 // forum, etc.). Paths with a file extension (e.g. /lessons/*.md, /assets/*.js)
-// should 404 — not return index.html — so the client can detect missing
+// should 404 (not return index.html) so the client can detect missing
 // translations and fall back to English.
 app.get(/^\/(?!api|auth)[^.]*$/, (_req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));

@@ -30,7 +30,7 @@ export function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
-  // Client-side guard is UX only — the /api/admin routes are server-authoritative.
+  // Client-side guard is UX only; the /api/admin routes are server-authoritative.
   useEffect(() => {
     if (isLoading) return;
     if (!isLoggedIn) {

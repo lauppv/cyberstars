@@ -4,8 +4,8 @@ import { useAuth } from '../../context/AuthContext';
 import { canAccessFeature } from '../../../shared/features';
 
 // Wraps a user's name (or avatar) in a link to their public profile. Profiles
-// are logged-in only (they ride the `leaderboard` gate), so for guests — or
-// while the gate is closed — the children render as plain text instead of a
+// are logged-in only (they ride the `leaderboard` gate), so for guests (or
+// while the gate is closed) the children render as plain text instead of a
 // dead link. stopPropagation lets the link live inside clickable rows (thread
 // lists, inbox rows) without triggering the row's own navigation.
 export function UserLink({

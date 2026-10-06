@@ -396,7 +396,7 @@ export async function toggleReaction(
     } else {
       await prisma.forumReaction.create({ data: { postId, userId, emoji } });
 
-      // Notify the post author (only on add — removing a reaction is silent;
+      // Notify the post author (only on add; removing a reaction is silent;
       // self-reactions are excluded inside notify). Collapsible per thread so
       // toggling on/off can't spam the author's bell.
       void notificationsService.notify({
@@ -518,7 +518,7 @@ export async function deletePost(req: Request, res: Response, next: NextFunction
       data: { deleted: true, deletedByName: actor!.name, content: '' },
     });
 
-    // The reply's excerpt was snapshotted into FORUM_REPLY notifications — a
+    // The reply's excerpt was snapshotted into FORUM_REPLY notifications, and a
     // soft-delete redacts the post, so redact the snapshot too (fire-and-forget).
     // Matched by the snapshotted postId, not the excerpt text: the content may
     // have been edited since the notification was created.
@@ -573,7 +573,7 @@ export async function updateUserRole(
     const role = req.body.role as Role;
     const targetRole = await userRepo.getRole(targetId);
 
-    // The founder is untouchable — no admin (and FOUNDER is never assignable via
+    // The founder is untouchable: no admin (and FOUNDER is never assignable via
     // the API, guarded by the request schema) can alter a founder account.
     if (targetRole === 'FOUNDER') throw new AppError(403, 'The founder cannot be modified');
 

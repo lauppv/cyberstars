@@ -50,7 +50,7 @@ enum NotificationType {
 // mutual once accepted. `requester` sent it, `addressee` received it; while
 // PENDING only the addressee can accept/decline, and once ACCEPTED the pair is
 // connected regardless of who initiated. The @@unique blocks a duplicate
-// request in the same direction — the reverse direction is checked in the
+// request in the same direction; the reverse direction is checked in the
 // service so A->B and B->A can't coexist.
 enum ConnectionStatus {
   PENDING
@@ -99,7 +99,7 @@ model User {
   showActivity Boolean @default(true) @map("show_activity")
   // Whether other viewers see this user's connections list on their public
   // profile (own view ignores it). The connections themselves stay functional
-  // when off — only the public listing is hidden.
+  // when off; only the public listing is hidden.
   showConnections Boolean @default(true) @map("show_connections")
 
   progress  UserLessonProgress[]
@@ -127,7 +127,7 @@ model User {
 
 // A 1-to-1 direct-message thread. The two participants are stored as a canonical
 // ordered pair (userAId < userBId) so A<->B and B<->A can't create duplicate
-// rows — the @@unique enforces exactly one conversation per pair.
+// rows; the @@unique enforces exactly one conversation per pair.
 model Conversation {
   id        Int      @id @default(autoincrement())
   userAId   Int      @map("user_a_id")
@@ -178,10 +178,10 @@ model DmReaction {
 }
 
 // One lesson and one algorithm challenge picked per day (kind = "lesson" |
-// "algo"), shared by every user — the same choice is stored in each user's row
+// "algo"), shared by every user. The same choice is stored in each user's row
 // so the per-user bonus (bonusAwarded) can be tracked. Completing the pick on
-// its day grants a bonus that the derived XP calc credits — see daily.service
-// and progress.service.
+// its day grants a bonus that the derived XP calc credits (see daily.service
+// and progress.service).
 model DailyPick {
   id           Int      @id @default(autoincrement())
   userId       Int      @map("user_id")

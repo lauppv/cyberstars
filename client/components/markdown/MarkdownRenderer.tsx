@@ -39,7 +39,7 @@ const components: Components = {
     const match = /language-(\w+)/.exec(className || '');
     const lang = match?.[1]?.toLowerCase();
     // Fenced blocks without a language tag (plain ```) get no className from
-    // remark, same as true inline code — the only distinguishing signal is
+    // remark, same as true inline code. The only distinguishing signal is
     // that fenced content is multi-line (a real `inline code` span never is).
     // Without this, untagged multi-line fences render with inline code's box
     // model, which only pads the first/last visual line, making the block

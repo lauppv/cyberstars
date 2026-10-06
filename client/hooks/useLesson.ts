@@ -21,7 +21,7 @@ export function useLesson(courseKey: string, lessonSlug: string) {
   const [content, setContent] = useState('');
   // starterCode: the code we ship as teachers, in the current language (Reset
   // target, and what a pristine editor follows on a language switch). savedCode:
-  // the user's own code, if any — language-agnostic, never auto-translated.
+  // the user's own code, if any; language-agnostic, never auto-translated.
   const [starterCode, setStarterCode] = useState('');
   const [savedCode, setSavedCode] = useState<string | null>(null);
   // Worked-out solution markdown, or null when the lesson ships no solution file.

@@ -20,7 +20,7 @@ runs:
         path: node_modules
         # Key on BOTH manifests: a package.json change that drifts from the
         # lockfile must miss the cache so `npm ci` runs and fails on the
-        # mismatch — keying on package-lock.json alone lets drift slip through a
+        # mismatch; keying on package-lock.json alone lets drift slip through a
         # cache hit and only surface on `npm ci` at deploy time.
         key: ${{ runner.os }}-node-${{ hashFiles('.node-version') }}-${{ hashFiles('package-lock.json', 'package.json') }}
         restore-keys: |

@@ -23,7 +23,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
 }
 
 // Must run AFTER authenticateToken. The role is never trusted from the JWT
-// (which only carries { id }) — it is read fresh from the DB by the
+// (which only carries { id }); it is read fresh from the DB by the
 // authenticated user id, so a tampered client/cookie cannot escalate.
 export async function requireAdmin(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
@@ -41,7 +41,7 @@ export async function requireAdmin(req: Request, res: Response, next: NextFuncti
 // Server-authoritative gate for preview features (see shared/features.ts). May
 // run after either authenticateToken (user guaranteed) or optionalAuth (user
 // may be absent, e.g. guest on the public leaderboard). On prod, a non-admin
-// gets 404 — not 403 — so the endpoint's very existence stays hidden.
+// gets 404 (not 403) so the endpoint's very existence stays hidden.
 export function requireFeatureAccess(key: FeatureKey) {
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

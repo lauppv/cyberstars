@@ -2,8 +2,8 @@
 // (no API/DB round-trip). Mirrors the almanac approach: emit plain files under
 // public/ that nginx (prod) and Vite's publicDir (dev) serve as-is.
 //
-//   public/curriculum.json        — same shape/order as the old GET /api/curriculum
-//   public/lessons/<courseKey>/   — lesson bodies (<slug>.md) and starter code
+//   public/curriculum.json        : same shape/order as the old GET /api/curriculum
+//   public/lessons/<courseKey>/   : lesson bodies (<slug>.md) and starter code
 //                                   (<slug>-code.md), copied from the source tree
 //
 // Run by `predev` and `prebuild`. The output is generated, not committed.
@@ -29,7 +29,7 @@ function sourceDir(courseKey: string): string {
   return algo ? path.join(ALGO_DIR, algo) : path.join(LESSONS_DIR, courseKey);
 }
 
-// curriculum.json: courses by sortOrder, lessons by sortOrder within a course —
+// curriculum.json: courses by sortOrder, lessons by sortOrder within a course,
 // identical to what curriculum.repository + lesson.service used to return.
 const curriculum = [...courses]
   .sort((a, b) => a.sortOrder - b.sortOrder)

@@ -13,7 +13,7 @@ Thanks for your interest in contributing! CyberStars is an open-source coding ed
 
 ### Setup
 
-If you just want to run CyberStars locally (try it out, follow the lessons), clone the main repo directly with the command below. If you plan to submit changes, fork the repo first and clone your fork instead — see [Code changes](#code-changes) for the full fork workflow.
+If you just want to run CyberStars locally (try it out, follow the lessons), clone the main repo directly with the command below. If you plan to submit changes, fork the repo first and clone your fork instead; see [Code changes](#code-changes) for the full fork workflow.
 
 ```bash
 git clone https://github.com/lauppv/cyberstars.git
@@ -58,7 +58,7 @@ docker pull eclipse-temurin:21-jdk-alpine
 docker pull danysk/kotlin:latest   # Kotlin runtime (course is badged "Coming Soon")
 ```
 
-**Linux only** — your user must be in the `docker` group:
+**Linux only**: your user must be in the `docker` group:
 
 ```bash
 sudo usermod -aG docker $USER
@@ -74,7 +74,7 @@ npm ci
 npm run dev
 ```
 
-`npm run dev` handles everything automatically — generates Prisma client, runs migrations, seeds the database, and starts both the frontend (Vite on `:5173`) and backend (Express on `:5000`).
+`npm run dev` handles everything automatically: it generates Prisma client, runs migrations, seeds the database, and starts both the frontend (Vite on `:5173`) and backend (Express on `:5000`).
 
 ### Linux terminal sandbox
 
@@ -84,17 +84,17 @@ The Linux course uses a custom sandbox image. Build it with:
 docker build -t cyberstars-linux-sandbox server/runtimes/linux-sandbox
 ```
 
-Without this image, everything else works — only the Linux terminal lessons will fail.
+Without this image, everything else works; only the Linux terminal lessons will fail.
 
 ## Project structure
 
 See [README.md](README.md) for the full architecture. The short version:
 
-- `client/` — React 19 + Vite + Tailwind frontend
-- `server/` — Express 5 + TypeScript API
-- `prisma/` — Database schema, migrations, seed, and curriculum metadata (`curriculum.data.ts`)
-- `shared/` — Types and constants used by both client and server
-- `server/lessons/` — Lesson content as Markdown files
+- `client/`: React 19 + Vite + Tailwind frontend
+- `server/`: Express 5 + TypeScript API
+- `prisma/`: Database schema, migrations, seed, and curriculum metadata (`curriculum.data.ts`)
+- `shared/`: Types and constants used by both client and server
+- `server/lessons/`: Lesson content as Markdown files
 
 ## How to contribute
 
@@ -110,31 +110,31 @@ Open an issue with:
 
 Lesson content lives in `server/lessons/{python,c,java,kotlin,linux}/`. Python, C, Java, and Kotlin lessons need two files:
 
-1. `<slug>.md` — the lesson content (Markdown with runnable code blocks)
-2. `<slug>-code.md` — the starter code template shown in the editor
+1. `<slug>.md`: the lesson content (Markdown with runnable code blocks)
+2. `<slug>-code.md`: the starter code template shown in the editor
 
-Then register the lesson in `prisma/curriculum.data.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure — you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
+Then register the lesson in `prisma/curriculum.data.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure: you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
 
-Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `scripts/generate-static-content.ts`, which copies the lesson Markdown into `public/lessons/` and writes `public/curriculum.json`. Those outputs are generated, not committed — never edit them by hand; edit `server/lessons/` and `prisma/curriculum.data.ts` instead.
+Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `scripts/generate-static-content.ts`, which copies the lesson Markdown into `public/lessons/` and writes `public/curriculum.json`. Those outputs are generated, not committed. Never edit them by hand; edit `server/lessons/` and `prisma/curriculum.data.ts` instead.
 
 Completion is **judge-driven**, not honor-system: to make a lesson completable, add an
 optional `<slug>-tests.json` (judge test cases) and `<slug>-solution.md` (reference
 solution) beside the lesson. Passing the judge (the "Run Tests" button) is the only way
-to complete a lesson — the server verifies it, so there is no manual "Mark Complete"
+to complete a lesson. The server verifies it, so there is no manual "Mark Complete"
 button. Lessons without test files still work; they just aren't completable yet.
 
 Important rules:
 
 - C code blocks must be full programs (`#include`, `int main(void)`, `return 0`)
 - Java code blocks must have `public class Main` with `main()` method
-- Linux lessons use two files instead: `<slug>.md` (the lesson) and `<slug>-setup.json` (the sandbox filesystem) — no `-code.md`
-- Look at existing lessons for the format — consistency matters
+- Linux lessons use two files instead: `<slug>.md` (the lesson) and `<slug>-setup.json` (the sandbox filesystem), no `-code.md`
+- Look at existing lessons for the format; consistency matters
 
 ### Translations (optional)
 
-CyberStars has a bilingual UI (English + Romanian) with a language toggle. **English is the default and the source of truth** — always author lessons, algorithm challenges, and almanac entries in English first.
+CyberStars has a bilingual UI (English + Romanian) with a language toggle. **English is the default and the source of truth**, so always author lessons, algorithm challenges, and almanac entries in English first.
 
-Translations are **optional and can be added later** — you never have to translate content in the same change that adds it. Until a translation exists, the app falls back to English automatically, so an English-only lesson renders correctly in both languages and nothing breaks when a reader switches to Romanian.
+Translations are **optional and can be added later**; you never have to translate content in the same change that adds it. Until a translation exists, the app falls back to English automatically, so an English-only lesson renders correctly in both languages and nothing breaks when a reader switches to Romanian.
 
 To translate content, add the localized file alongside the English source in a per-language subfolder (currently `ro`), reusing the **same slug** (slugs are language-independent):
 
@@ -157,7 +157,7 @@ CyberStars uses the **fork-and-pull** model: you push branches to your own fork,
 2. Create a feature branch from `main`: `git switch -c my-feature main`
 3. Keep your branch up to date with upstream: `git fetch upstream && git rebase upstream/main`
 4. Make your changes
-5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code` — all five must pass (these mirror the CI gates)
+5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code`. All five must pass (these mirror the CI gates)
 6. Push to your fork (`git push origin my-feature`) and open a pull request against `lauppv/cyberstars` with a clear description of what and why
 
 ### Formatting
@@ -171,7 +171,7 @@ npm run format        # auto-fix all formatting issues
 npm run format:check  # verify everything is clean (same check CI runs)
 ```
 
-If `format:check` fails, just run `format` — it fixes everything automatically.
+If `format:check` fails, just run `format`, it fixes everything automatically.
 
 ### Style guide
 

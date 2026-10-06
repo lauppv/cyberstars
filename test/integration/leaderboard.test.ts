@@ -21,7 +21,7 @@ async function twoPythonLessons() {
 }
 
 // Clear the in-memory cache so it can't leak a prior test's (now truncated)
-// ranking into this one — the public ?fresh=1 bypass was removed by design.
+// ranking into this one; the public ?fresh=1 bypass was removed by design.
 // The board is logged-in only now, so fetch it through an existing authenticated
 // agent (reusing one already in the ranking keeps the total counts stable).
 async function fetchBoard(a: ReturnType<typeof agent>): Promise<LeaderboardPage> {

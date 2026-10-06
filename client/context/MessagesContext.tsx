@@ -91,7 +91,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
   );
 
   // An edited message refreshes the inbox preview in place when it's the last
-  // message of its conversation — no reordering, no unread change.
+  // message of its conversation, with no reordering, no unread change.
   const applyEdited = useCallback((message: MessageDTO) => {
     setConversations((prev) =>
       prev.map((c) =>
@@ -102,7 +102,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
-  // A deleted message redacts the inbox preview — no reordering. If it was
+  // A deleted message redacts the inbox preview, with no reordering. If it was
   // still unread (sent by the other side, never read), it no longer counts:
   // the server excludes deleted messages from unread, so mirror that here.
   const applyDeleted = useCallback(

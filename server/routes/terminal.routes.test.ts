@@ -51,7 +51,7 @@ const token = jwt.sign({ id: 42 }, 'test-secret');
 
 beforeEach(() => vi.clearAllMocks());
 
-describe('terminal routes — owner resolution (requireOwner)', () => {
+describe('terminal routes: owner resolution (requireOwner)', () => {
   it('rejects a request with no user and no guestId cookie with 401', async () => {
     const res = await request(app)
       .post('/api/terminal/session')

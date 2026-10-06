@@ -6,7 +6,7 @@ import { dockerExec } from './docker-exec.js';
 // cold start is paid once, torn down when the owner leaves or goes idle, and
 // swapped when the owner switches language. Mirrors the lifecycle approach of
 // terminal-session.service.ts. Nothing here decides *what* runs in the
-// container — that stays in interactive-execution.service.ts.
+// container; that stays in interactive-execution.service.ts.
 const IDLE_TTL = Number(process.env.CODE_CONTAINER_IDLE_MS ?? 15 * 60 * 1000);
 const MAX_CONTAINERS = Number(process.env.CODE_MAX_CONTAINERS ?? 50);
 const RUN_MEMORY = process.env.CODE_RUN_MEMORY ?? '128m';
@@ -35,7 +35,7 @@ function hardeningArgs(): string[] {
   // access, so skip the owner option when running as root.
   const ownerOpt = asUser && uid !== 0 ? `,uid=${uid},gid=${gid}` : '';
   // /work is `exec` so compiled C binaries can run from it (docker tmpfs is
-  // noexec by default); /tmp stays noexec — nothing is executed from there.
+  // noexec by default); /tmp stays noexec, since nothing is executed from there.
   args.push(`--tmpfs=/work:exec,size=64m,mode=0700${ownerOpt}`);
   args.push(`--tmpfs=/tmp:size=64m,mode=0700${ownerOpt}`);
   if (asUser && uid !== 0) args.push(`--user=${uid}:${gid}`);
@@ -119,7 +119,7 @@ export async function acquireForRun(ownerKey: string, language: string): Promise
       existing.lastActivity = Date.now();
       return existing.containerId;
     }
-    // Language switched — tear the old container down and build a fresh one.
+    // Language switched, so tear the old container down and build a fresh one.
     containers.delete(ownerKey);
     void removeContainer(existing.containerId);
   }
@@ -144,8 +144,8 @@ export async function acquireForRun(ownerKey: string, language: string): Promise
     throw err;
   }
 
-  // The owner may have been torn down (destroyOwner) while we were creating —
-  // drop the orphan instead of leaking a container nothing tracks.
+  // The owner may have been torn down (destroyOwner) while we were creating,
+  // so drop the orphan instead of leaking a container nothing tracks.
   if (containers.get(ownerKey) !== reserved) {
     void removeContainer(containerId);
     throw new Error('Run cancelled');

@@ -15,7 +15,7 @@ import { AppShell } from './components/layout/AppShell';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
 
-// HomePage stays eager — it's the landing route, so splitting it would only add a
+// HomePage stays eager; it's the landing route, so splitting it would only add a
 // spinner to the first paint. Every other route is code-split into its own chunk,
 // fetched on navigation instead of shipping in the initial bundle. Pages use named
 // exports, so each loader maps the named export onto the default lazy() expects.

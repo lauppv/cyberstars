@@ -67,7 +67,7 @@ export function MessageThread({
   const pendingReadRef = useRef<number | null>(null);
 
   // Mark everything up to the newest message read (server + inbox badge). If
-  // the tab is hidden the user hasn't actually seen it — defer until visible so
+  // the tab is hidden the user hasn't actually seen it, so defer until visible so
   // read receipts aren't sent for a background tab.
   const markReadUpTo = useCallback(
     (upToMessageId: number) => {
@@ -137,7 +137,7 @@ export function MessageThread({
         const { messageId, reactions } = frame.payload;
         setMessages((prev) => prev.map((m) => (m.id === messageId ? { ...m, reactions } : m)));
       } else if (frame.type === 'read' && frame.payload.conversationId === conversationId) {
-        // Only the *other* participant's read marks my messages as seen — the
+        // Only the *other* participant's read marks my messages as seen. The
         // frame is also echoed to my own tabs (to sync the inbox badge), and
         // applying that echo here would fake read receipts.
         if (frame.payload.readerId === currentUserId) return;
@@ -154,7 +154,7 @@ export function MessageThread({
   );
   useUserSocketFrames(onFrame);
 
-  // Keep the view pinned to the newest message — except after a load-older
+  // Keep the view pinned to the newest message, except after a load-older
   // prepend, where the reading position is restored instead.
   useEffect(() => {
     const el = scrollRef.current;

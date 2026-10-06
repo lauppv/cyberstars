@@ -58,7 +58,7 @@ export type DmSocketFrame =
       payload: { conversationId: number; upToMessageId: number; readerId: number };
     }
   // A reaction was toggled: the full refreshed list for one message, pushed to
-  // both participants (add and remove alike — the list is authoritative).
+  // both participants (add and remove alike; the list is authoritative).
   | {
       channel: 'dm';
       type: 'reaction';

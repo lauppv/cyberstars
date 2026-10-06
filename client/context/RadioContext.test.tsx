@@ -54,7 +54,7 @@ beforeEach(() => {
   playSpy = vi.fn(() => Promise.resolve());
   pauseSpy = vi.fn();
   loadSpy = vi.fn();
-  // jsdom doesn't implement media playback — stub it.
+  // jsdom doesn't implement media playback, so stub it.
   HTMLMediaElement.prototype.play = playSpy as unknown as HTMLMediaElement['play'];
   HTMLMediaElement.prototype.pause = pauseSpy as unknown as HTMLMediaElement['pause'];
   HTMLMediaElement.prototype.load = loadSpy as unknown as HTMLMediaElement['load'];
@@ -260,7 +260,7 @@ describe('RadioContext', () => {
     );
     renderProbe();
     await act(async () => {});
-    // No throw, radio still usable — the offset simply stays 0.
+    // No throw, radio still usable; the offset simply stays 0.
     expect(screen.getByTestId('enabled')).toHaveTextContent('true');
   });
 
@@ -300,7 +300,7 @@ describe('RadioContext', () => {
       act(() => {
         vi.advanceTimersByTime(5000);
       });
-      // paused guard returned early — no resync.
+      // paused guard returned early, no resync.
       expect(ct).toBe(5);
     } finally {
       vi.useRealTimers();

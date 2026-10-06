@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Small global cap so the capacity/eviction path is easy to drive. Mocking
 // child_process (docker's execFile) lets createSession run without a real
-// sandbox image — unlike terminal-session.service.test.ts which needs Docker.
+// sandbox image, unlike terminal-session.service.test.ts which needs Docker.
 process.env.TERMINAL_MAX_SESSIONS = '2';
 
 const { execFileMock } = vi.hoisted(() => ({ execFileMock: vi.fn() }));
@@ -60,7 +60,7 @@ describe('global session cap', () => {
     await newSession('user:a'); // a now owns both slots
     expect(activeCount()).toBe(2);
 
-    // user:a hits the cap again — their own oldest idle session is reclaimed,
+    // user:a hits the cap again; their own oldest idle session is reclaimed,
     // never another owner's.
     await newSession('user:a');
     expect(activeCount()).toBe(2);

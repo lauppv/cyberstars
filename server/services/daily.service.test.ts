@@ -30,7 +30,7 @@ const { getDaily, awardBonusForCompletion, todayKey, clearDailyPoolCache } =
 
 beforeEach(() => {
   vi.clearAllMocks();
-  clearDailyPoolCache(); // pool is memoized per process/day — reset for isolation
+  clearDailyPoolCache(); // pool is memoized per process/day, so reset for isolation
   mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([]);
   // Default: every lesson is judge-completable unless a test says otherwise.
   hasTestsFileMock.mockReturnValue(true);
@@ -94,7 +94,7 @@ describe('getDaily', () => {
     expect(callsAfterFirstUser).toBeGreaterThan(0);
 
     await getDaily(2);
-    // The pool is cached for the day — the second user triggers no new queries.
+    // The pool is cached for the day, so the second user triggers no new queries.
     expect(mockCurriculumRepo.getLessonsByCourse.mock.calls.length).toBe(callsAfterFirstUser);
   });
 

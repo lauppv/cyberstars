@@ -1,5 +1,5 @@
 // One avatar for the whole app. When a person has no picture it shows the
-// first letter of their name over a flat surface — the same shape and weight as
+// first letter of their name over a flat surface, the same shape and weight as
 // the image it stands in for, so a list of people never jumps between two looks
 
 interface AvatarProps {

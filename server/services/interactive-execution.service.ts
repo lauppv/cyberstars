@@ -88,7 +88,7 @@ export async function handleInteractiveRun(
     if (compileErr) {
       ws.send(JSON.stringify({ type: 'stderr', data: compileErr }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
-      keepContainer(); // a compile error is normal — keep the container for the retry
+      keepContainer(); // a compile error is normal, keep the container for the retry
       return;
     }
   }
@@ -193,7 +193,7 @@ export async function handleInteractiveRun(
   proc.on('close', (exitCode) => {
     flushOutput();
     sendExit(exitCode ?? 0);
-    keepContainer(); // program finished normally — keep the container for reuse
+    keepContainer(); // program finished normally, keep the container for reuse
   });
 
   // spawn itself can fail (ENOENT if docker is missing, EMFILE under load). Without
@@ -227,7 +227,7 @@ export async function handleInteractiveRun(
     clearTimeout(timer);
     if (flushTimer) clearTimeout(flushTimer);
     if (!exited) {
-      // The page was closed mid-run — kill the program and drop the container.
+      // The page was closed mid-run, so kill the program and drop the container.
       proc.kill('SIGKILL');
       dropContainer();
     }

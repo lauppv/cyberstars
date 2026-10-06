@@ -17,7 +17,7 @@
   --surface2: #1e1e24;
   --border: #26262e;
   /* Three-step text hierarchy: primary, secondary, muted. Secondary and muted
-     carry most of the body copy — keeping them a step down from --text is what
+     carry most of the body copy; keeping them a step down from --text is what
      makes a dense page read as calm rather than shouted. */
   --text: #e8e8ec;
   --text2: #b2b2bd;
@@ -30,7 +30,7 @@
   --mono: 'JetBrains Mono', 'Fira Code', monospace;
   --radius: 8px;
   --radius-sm: 6px;
-  /* The panel surface — every card and container in the app (see .panel). */
+  /* The panel surface: every card and container in the app (see .panel). */
   --panel-bg: #16161b;
   --panel-border: #26262e;
   /* Tint sitting on top of a panel: inputs, message bubbles, output headers. */
@@ -274,7 +274,7 @@ samp {
 /* Surfaces live in the components layer so Tailwind utilities (hover borders,
    per-element rounded-*, etc.) still override them where needed. */
 @layer components {
-  /* ===== Panel — the canonical content surface. Every card, panel and
+  /* ===== Panel: the canonical content surface. Every card, panel and
      container in the app is this ===== */
   .panel {
     background: var(--panel-bg);

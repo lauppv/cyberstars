@@ -11,7 +11,7 @@ export interface CourseProgress {
   completed: number;
   total: number;
   // XP earned from completed lessons vs. the course's full XP, both derived
-  // server-side from lesson positions — never written by or read from a client.
+  // server-side from lesson positions, never written by or read from a client.
   earnedXp: number;
   totalXp: number;
   lessons: LessonProgressItem[];

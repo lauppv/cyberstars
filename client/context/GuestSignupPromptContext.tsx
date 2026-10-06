@@ -55,7 +55,7 @@ export function GuestSignupPromptProvider({ children }: { children: ReactNode })
 const NOOP_PROMPT: GuestSignupPromptContextType = { notifyRunComplete: () => {} };
 
 // Falls back to a no-op when no provider is mounted (e.g. CodeCell rendered in
-// isolation in unit tests) — the nudge is optional UX, never load-bearing.
+// isolation in unit tests); the nudge is optional UX, never load-bearing.
 // eslint-disable-next-line react-refresh/only-export-components
 export function useGuestSignupPrompt(): GuestSignupPromptContextType {
   return useContext(GuestSignupPromptContext) ?? NOOP_PROMPT;

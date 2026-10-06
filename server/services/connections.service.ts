@@ -49,7 +49,7 @@ export async function getOverview(userId: number): Promise<ConnectionsOverview> 
 }
 
 // Send a connection request. Rejects self-requests, unknown targets, and any
-// case where a row already exists in either direction (pending or accepted) —
+// case where a row already exists in either direction (pending or accepted);
 // the caller learns the current state from the profile's relation field.
 export async function sendRequest(requesterId: number, addresseeId: number): Promise<void> {
   if (addresseeId === requesterId) throw new AppError(400, 'Cannot connect with yourself');

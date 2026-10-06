@@ -2,11 +2,11 @@
 // the two silent-failure classes that let hardcoding pass without any runtime
 // error (so CI stays green while anti-cheat is quietly disabled):
 //
-//   1. Locale pairing — a RO lesson graded against the EN tests/solution makes
+//   1. Locale pairing: a RO lesson graded against the EN tests/solution makes
 //      injection a no-op (EN identifiers never match the RO solution), so a
 //      hardcoded RO answer passes. Every RO solution that belongs to a tested
 //      lesson must ship its own ro/<slug>-tests.json (and vice-versa).
-//   2. Dead inject keys — an inject key that doesn't resolve to a real variable
+//   2. Dead inject keys: an inject key that doesn't resolve to a real variable
 //      in the paired solution injects nothing, so the "hidden" cases all run on
 //      the same values and a hardcoded output passes. Every inject key (and
 //      every structure `requires` name) must appear in the paired solution.
@@ -15,7 +15,7 @@
 // (an inject key must be a real init_declarator site); Python/Java use
 // identifier presence on the comment/string-stripped solution (their injectors
 // run in-container, so we can't reuse them here, but a missing identifier is
-// exactly the drift we need to catch). No Docker, no runtime — pure static.
+// exactly the drift we need to catch). No Docker, no runtime; pure static.
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -66,7 +66,7 @@ function injectKeys(spec: LessonTestsSpec): Set<string> {
   return keys;
 }
 
-// Names a solution must contain for its own structure `requires` to pass —
+// Names a solution must contain for its own structure `requires` to pass;
 // a renamed contract variable/function/call would fail every honest solution.
 function requireNames(spec: LessonTestsSpec): string[] {
   const names: string[] = [];
@@ -124,7 +124,7 @@ export async function auditSolution(
     for (const key of injected) {
       if (!siteNames.has(key)) {
         messages.push(
-          `inject key "${key}" is not an initializer in the solution — injection no-ops, hardcoding passes`,
+          `inject key "${key}" is not an initializer in the solution; injection no-ops, hardcoding passes`,
         );
       }
     }
@@ -141,7 +141,7 @@ export async function auditSolution(
   for (const name of names) {
     if (!hasIdentifier(stripped, name)) {
       messages.push(
-        `"${name}" (inject key or required structure) is absent from the solution — injection/structure no-ops`,
+        `"${name}" (inject key or required structure) is absent from the solution; injection/structure no-ops`,
       );
     }
   }
@@ -183,10 +183,10 @@ export async function collectProblems(): Promise<Problem[]> {
         continue;
       }
       // If a translated (RO solution exists) lesson uses INJECTION, it MUST ship
-      // a RO tests file — otherwise the RO run falls back to the EN tests +
+      // a RO tests file. Otherwise the RO run falls back to the EN tests +
       // EN solution, and the EN inject keys never match the RO identifiers, so
       // injection silently no-ops and a hardcoded RO answer passes. Stdin-only
-      // lessons (no inject — the whole algo set) deliberately share the EN tests
+      // lessons (no inject, i.e. the whole algo set) deliberately share the EN tests
       // file when the RO output is identical; enforcing a pair there would just
       // duplicate an identical file, so we skip them.
       const usesInjection =
@@ -199,7 +199,7 @@ export async function collectProblems(): Promise<Problem[]> {
         problems.push({
           courseKey,
           slug,
-          message: `${slug}: injection lesson has ro/${slug}-solution.md but no ro/${slug}-tests.json — RO grading falls back to EN, injection no-ops`,
+          message: `${slug}: injection lesson has ro/${slug}-solution.md but no ro/${slug}-tests.json; RO grading falls back to EN, injection no-ops`,
         });
       }
       await checkPaired(courseKey, baseDir, slug, 'en', problems);
@@ -227,7 +227,7 @@ async function main(): Promise<void> {
   if (problems.length === 0) {
     const count = CODE_JUDGE_COURSES.length;
     console.log(
-      `validate-tests: OK — all inject keys resolve and locales are paired (${count} courses).`,
+      `validate-tests: OK, all inject keys resolve and locales are paired (${count} courses).`,
     );
     return;
   }

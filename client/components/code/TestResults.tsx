@@ -22,7 +22,7 @@ function structureMessage(
   });
 }
 
-// Booleans render as Python literals — that's what the student would type.
+// Booleans render as Python literals, since that's what the student would type.
 function formatValue(value: InjectValue): string {
   if (typeof value === 'boolean') return value ? 'True' : 'False';
   if (value !== null && typeof value === 'object' && '$list' in value) {

@@ -45,7 +45,7 @@ describe('computeStreak', () => {
   });
 
   it('stops at the first gap', () => {
-    // today, yesterday, then a missing day (2) before day 3 — streak breaks at 2.
+    // today, yesterday, then a missing day (2) before day 3, so the streak breaks at 2.
     expect(
       computeStreak([{ completedAt: at(0) }, { completedAt: at(1) }, { completedAt: at(3) }]),
     ).toBe(2);

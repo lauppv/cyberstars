@@ -1,10 +1,10 @@
 // Single source of truth for the Focus Radio track. Client-only: one long,
 // self-hosted, royalty-free instrumental file. We play it through a plain HTML5
 // <audio> element and fake a "live" broadcast by seeking every listener to
-// (serverNow % duration) — see RadioContext. No YouTube, no video, no ads, no
+// (serverNow % duration); see RadioContext. No YouTube, no video, no ads, no
 // per-user backend cost.
 //
-// The mp3 is gitignored (163MB) and lives in media/radio/ — OUTSIDE public/ so
+// The mp3 is gitignored (163MB) and lives in media/radio/, OUTSIDE public/ so
 // builds don't copy it into dist/. In dev Express serves /radio from there; in
 // prod nginx serves it straight from disk (location /radio/). It must be CBR
 // (VBR duration estimates differ across browsers and break the live sync).

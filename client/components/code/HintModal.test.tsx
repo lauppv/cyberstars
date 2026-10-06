@@ -36,7 +36,7 @@ beforeEach(() => {
 });
 
 describe('HintModal', () => {
-  it('does NOT call the AI on open — it waits for a click', () => {
+  it('does NOT call the AI on open, it waits for a click', () => {
     renderModal();
     expect(h.service.getHint).not.toHaveBeenCalled();
     expect(screen.getByText('Get hint')).toBeInTheDocument();

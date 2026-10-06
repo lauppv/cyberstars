@@ -140,14 +140,14 @@ export async function toggleReaction(
   const message = await repo.findMessage(messageId);
   if (!message) throw new AppError(404, 'Message not found');
   const row = await requireConversation(message.conversationId, userId);
-  // A deleted message shows only a placeholder — reacting to it is noise.
+  // A deleted message shows only a placeholder; reacting to it is noise.
   if (message.deleted) throw new AppError(400, 'Cannot react to a deleted message');
 
   const reactions = await repo.toggleReaction(messageId, userId, emoji);
 
   // Same live-delivery model as send/read/delete: both sides get the refreshed
   // list; removals ride the same frame since the list is authoritative. Silent
-  // (no bell) — the thread UI updating live is signal enough for a 1-to-1 chat.
+  // (no bell); the thread UI updating live is signal enough for a 1-to-1 chat.
   const frame = {
     channel: 'dm',
     type: 'reaction',
@@ -165,7 +165,7 @@ export async function editMessage(
   content: string,
 ): Promise<MessageDTO> {
   const message = await repo.findMessage(messageId);
-  // 404 for a non-owner or a missing/deleted message — same as delete, so a
+  // 404 for a non-owner or a missing/deleted message, same as delete, so a
   // caller can't probe which message ids exist or edit someone else's text.
   if (!message || message.senderId !== userId || message.deleted) {
     throw new AppError(404, 'Message not found');
@@ -191,7 +191,7 @@ export async function deleteMessage(userId: number, messageId: number): Promise<
   if (!updated) throw new AppError(404, 'Message not found');
   const dto = shapeMessage(updated);
 
-  // A delete is a redaction — push it live to both sides (like send/read) so the
+  // A delete is a redaction, so push it live to both sides (like send/read) so the
   // deleted content doesn't linger on the other participant's screen.
   const row = await repo.findConversation(message.conversationId);
   if (row) {

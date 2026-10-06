@@ -166,7 +166,7 @@ describe('AlmanacPage', () => {
     fireEvent.click(screen.getByRole('button', { name: '2' }));
     expect(screen.getByText('Article 10')).toBeInTheDocument();
     expect(screen.queryByText('Article 0')).not.toBeInTheDocument();
-    // Jump to the last page — covers the ellipsis and the disabled "next" arrow.
+    // Jump to the last page, which covers the ellipsis and the disabled "next" arrow.
     fireEvent.click(screen.getByRole('button', { name: '7' }));
     expect(screen.getByText('Article 64')).toBeInTheDocument();
   });

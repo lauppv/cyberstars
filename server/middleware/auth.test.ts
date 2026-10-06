@@ -101,7 +101,7 @@ describe('requireAdmin', () => {
   });
 });
 
-// Uses `messaging` as the sample preview feature — `leaderboard` is now
+// Uses `messaging` as the sample preview feature, since `leaderboard` is now
 // launched (logged-in only), so it no longer exercises the admin-only branch.
 describe('requireFeatureAccess (preview gate)', () => {
   function makeReq(user?: { id: number }) {

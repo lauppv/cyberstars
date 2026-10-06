@@ -25,7 +25,7 @@ const sendLimiter = rateLimit({
   keyGenerator: perUser,
 });
 
-// Opening a conversation creates a row, so cap it too — otherwise a caller could
+// Opening a conversation creates a row, so cap it too, otherwise a caller could
 // spam new conversations against every user id. Higher than sends since it's an
 // idempotent find-or-create.
 const openLimiter = rateLimit({

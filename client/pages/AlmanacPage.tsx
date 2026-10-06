@@ -12,7 +12,7 @@ import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/al
 import { dateKey } from '../../shared/constants';
 import './AlmanacPage.css';
 
-// Deterministic per-day index so the featured read rotates once every 24h — the
+// Deterministic per-day index so the featured read rotates once every 24h, the
 // same pick for everyone on a given local day (mirrors the daily lesson/algo).
 function dailyIndex(len: number): number {
   const seed = dateKey(new Date());
@@ -293,7 +293,7 @@ export function AlmanacPage() {
               <div className="quote-mark">&ldquo;</div>
               <div className="quote-text">{quote?.text}</div>
               <div className="quote-author">
-                — <strong>{quote?.author}</strong>
+                - <strong>{quote?.author}</strong>
                 {quote?.context && <> &middot; {quote.context}</>}
               </div>
               <div className="card-counter">

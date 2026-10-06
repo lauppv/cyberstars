@@ -15,7 +15,7 @@ function requireOwner(req: Request, res: Response, next: NextFunction): void {
 }
 
 // Each test run is several docker execs (structure check + user & solution
-// programs per case) — cap tighter than single editor runs.
+// programs per case), so cap tighter than single editor runs.
 const runTestsLimiter = rateLimit({
   windowMs: 60_000,
   /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
