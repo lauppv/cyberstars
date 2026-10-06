@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import i18n from 'i18next';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
@@ -518,8 +518,11 @@ describe('HomePage', () => {
       bonusRatio: 0.2,
     } as never);
     renderPage();
-    expect(await screen.findByText('Lesson of the Day')).toBeInTheDocument();
+    const heading = await screen.findByText('Lesson of the Day');
     expect(screen.getByText('Algorithm of the Day')).toBeInTheDocument();
+    // the course sits on the heading line, in its own colour
+    expect(heading).toHaveTextContent('Lesson of the Day · Python');
+    expect(within(heading).getByText('Python')).toHaveStyle({ color: '#3572A5' });
     // the "not completed" branch shows the recommended badge
     expect(screen.getAllByText('Recommended').length).toBeGreaterThanOrEqual(1);
   });

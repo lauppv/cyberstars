@@ -478,7 +478,11 @@ function OfTheDayCard({
   return (
     <div className="p-5 panel rounded-[var(--radius)] flex flex-col flex-1">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">{heading}</h3>
+        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
+          {heading}
+          <span aria-hidden> · </span>
+          <span style={{ color: courseMeta(courseKey).color }}>{courseTitle}</span>
+        </h3>
         {completed ? (
           <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[rgba(0,214,143,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
             <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
@@ -497,10 +501,9 @@ function OfTheDayCard({
         )}
       </div>
       <div className="flex-1">
-        <div className="flex items-center gap-2 mb-2.5">
-          <span className="text-[11px] text-[var(--text3)] font-medium">{courseTitle}</span>
-          {!completed && (
-            <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
+        {!completed && (
+          <div className="flex items-center gap-2 mb-2.5">
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
               {t('home.dailyXp', { xp })}
               {bonusRatio > 0 && (
                 <span className="text-[var(--text3)]">
@@ -509,8 +512,8 @@ function OfTheDayCard({
                 </span>
               )}
             </span>
-          )}
-        </div>
+          </div>
+        )}
         <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
         <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
           {completed ? completedText : subtitle}
