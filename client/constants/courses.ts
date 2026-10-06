@@ -11,7 +11,7 @@ export interface CourseMeta {
 const LANGUAGE_META: Record<string, CourseMeta> = {
   python: { icon: '🐍', color: '#3572A5', label: 'Python', langLabel: 'Python 3' },
   java: { icon: '☕', color: '#E76F00', label: 'Java', langLabel: 'Java' },
-  c: { icon: '⚙️', color: '#555555', label: 'C', langLabel: 'C' },
+  c: { icon: '⚙️', color: '#A8B9CC', label: 'C', langLabel: 'C' },
   linux: { icon: '🐧', color: '#FCC624', label: 'Linux', langLabel: 'Bash' },
   kotlin: {
     icon: '🟣',
