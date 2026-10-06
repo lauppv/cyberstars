@@ -22,6 +22,12 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   aiHints: false,
 };
 
+// Features switched off for everyone, admins and dev included. Temporary: drop
+// the key to turn the feature back on.
+// - radio: its mp3 was lost with the old VPS and no licensed replacement is
+//   picked yet (see client/constants/radioTrack.ts)
+export const DISABLED_FEATURES: ReadonlySet<FeatureKey> = new Set<FeatureKey>(['radio']);
+
 // Shared access rule, used identically by the server (isProd = NODE_ENV ===
 // 'production') and the client (isProd = import.meta.env.PROD) so UI gating and
 // API gating can never disagree.
@@ -30,6 +36,7 @@ export function canAccessFeature(
   role: UserRole | undefined,
   isProd: boolean,
 ): boolean {
+  if (DISABLED_FEATURES.has(key)) return false; // switched off for everyone
   if (!PREVIEW_FEATURES[key]) return true; // fully launched
   if (!isProd) return true; // dev: open to everyone
   return isAdmin(role); // prod preview: admins (and founder) only
