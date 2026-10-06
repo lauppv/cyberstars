@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
 
 // Open a fresh conversation between two new users and return their agents/ids
-// plus the conversation id — the common setup for most cases below.
+// plus the conversation id, the common setup for most cases below.
 async function pair() {
   const { agent: a, email: emailA } = await createAuthenticatedAgent();
   const { agent: b, email: emailB } = await createAuthenticatedAgent();

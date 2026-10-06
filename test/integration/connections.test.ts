@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
 
-// Two signed-up users plus B's numeric id — the target of most requests below.
+// Two signed-up users plus B's numeric id, the target of most requests below.
 async function twoUsers() {
   const { agent: a, email: emailA } = await createAuthenticatedAgent();
   const { agent: b, email: emailB } = await createAuthenticatedAgent();

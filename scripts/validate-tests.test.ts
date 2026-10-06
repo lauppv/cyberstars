@@ -4,7 +4,7 @@ import { collectProblems, auditSolution } from './validate-tests.js';
 
 // The corpus regression: if anyone edits a -tests.json / -solution.md so an
 // inject key no longer resolves, or drops a RO tests file for an injection
-// lesson, this goes red — anti-hardcoding can't be silently disabled anymore.
+// lesson, this goes red, so anti-hardcoding can't be silently disabled anymore.
 describe('validate-tests corpus', () => {
   it('has no unpaired locales or dead inject keys', async () => {
     const problems = await collectProblems();
@@ -62,7 +62,7 @@ describe('auditSolution', () => {
     expect(await auditSolution('c', code, spec)).toEqual([]);
   });
 
-  it('flags a C inject key that has no initializer (scanf var — injection no-ops)', async () => {
+  it('flags a C inject key that has no initializer (scanf var, injection no-ops)', async () => {
     const code =
       '#include <stdio.h>\nint main(void) { int temperature; scanf("%d", &temperature); printf("%d", temperature); return 0; }';
     const spec: LessonTestsSpec = { cases: [{ inject: { temperature: 5 } }] };
