@@ -239,11 +239,8 @@
 
 .article-art {
   position: relative;
-  height: 160px;
+  height: 48px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .article-art-grad {
