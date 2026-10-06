@@ -20,7 +20,7 @@ export interface AlmanacArticle {
   isHero?: boolean;
 }
 
-// A card in index.json — everything an article has except the heavy body.
+// A card in index.json: everything an article has except the heavy body.
 export type AlmanacCard = Omit<AlmanacArticle, 'fullText'>;
 
 interface FunFact {

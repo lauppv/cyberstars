@@ -29,7 +29,7 @@ export function baseLanguage(key: string): string {
 // XP is a DERIVED quantity: it is never stored in the DB nor accepted from a
 // client. The server recomputes it from the set of judge-completed lessons
 // (see progress.service.getCourseProgress), so a tampered client can only fool
-// its own display — the source of truth is the completion rows, which are
+// its own display; the source of truth is the completion rows, which are
 // server-authoritative (only a passing judge verdict marks a lesson complete).
 // These functions live in shared/ so client and server use the identical math.
 
@@ -58,7 +58,7 @@ export function xpForCourse(lessonCount: number): number {
 // Quadratic level curve. Level L begins at XP_LEVEL_CONSTANT·(L-1)², so each
 // level costs a bit more than the last (linear marginal cost). c=100 makes
 // level 2 land around the first ~9 lessons and the full curriculum (~8000 XP)
-// land around level 10 — a short, legible scale.
+// land around level 10, a short, legible scale.
 const XP_LEVEL_CONSTANT = 100;
 
 export function levelFromXp(xp: number): number {

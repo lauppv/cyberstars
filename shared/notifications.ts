@@ -21,7 +21,7 @@ export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
 
 // Snapshot of the source entity, taken at creation time so the list renders
 // without N+1 joins and survives deletion of that entity (forum soft-delete, DM
-// cascade). The actor's name/avatar are NOT snapshotted — they come from the
+// cascade). The actor's name/avatar are NOT snapshotted; they come from the
 // `actor` relation (single source of truth), which SetNulls to null if the
 // actor is later deleted.
 export interface NotificationData {
@@ -54,7 +54,7 @@ export interface NotificationsPage {
 }
 
 // Frames pushed over the shared per-user socket (/ws/user). The socket carries
-// both notification frames and messaging's `dm` frames — one connection, demuxed
+// both notification frames and messaging's `dm` frames: one connection, demuxed
 // client-side on `channel`.
 export type UserSocketFrame =
   | { channel: 'notification'; type: 'new'; payload: NotificationDTO }
