@@ -2,6 +2,8 @@
 
 A free, open-source interactive coding education platform. Learn Python, C, Java, and Linux through structured lessons with a live code editor. Read, write, and run code in the same view.
 
+Live at [cyberstars.app](https://cyberstars.app).
+
 ## Features
 
 - **Split-screen lessons**: Markdown content on the left, live CodeMirror editor on the right
@@ -77,7 +79,7 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture breakdown, API 
 
 ## CI
 
-Every push and pull request runs ten parallel jobs after a shared `setup`: **format-check**, **lint**, **typecheck**, **test** (with coverage + PR comment), **audit** (`npm audit --audit-level=high`), **dead-code** (knip), **test-integration** (against a Postgres 16 service), **test-e2e-browser** and **test-e2e-docker** (Playwright with sandbox + runtime Docker images), and **build**.
+Every push and pull request runs eleven parallel jobs after a shared `setup`: **format-check**, **lint**, **typecheck**, **test** (with coverage + PR comment), **audit** (`npm audit --audit-level=high`), **dead-code** (knip), **validate-tests** (`npm run validate:tests`), **test-integration** (against a Postgres 16 service), **test-e2e-browser** and **test-e2e-docker** (Playwright with sandbox + runtime Docker images), and **build**.
 
 ## Contributing
 

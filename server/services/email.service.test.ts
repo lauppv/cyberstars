@@ -16,7 +16,7 @@ beforeEach(() => {
 describe('sendResetCode', () => {
   it('sends an email with the reset code when Resend is configured', async () => {
     vi.doMock('../config/index.js', () => ({
-      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyber-stars.org>' } },
+      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyberstars.app>' } },
     }));
     const { sendResetCode } = await import('./email.service.js');
 
@@ -26,14 +26,14 @@ describe('sendResetCode', () => {
     expect(mockSend).toHaveBeenCalledOnce();
     const call = mockSend.mock.calls[0][0];
     expect(call.to).toBe('user@test.com');
-    expect(call.from).toBe('CyberStars <noreply@cyber-stars.org>');
+    expect(call.from).toBe('CyberStars <noreply@cyberstars.app>');
     expect(call.html).toContain('123456');
     expect(call.subject).toContain('Password Reset');
   });
 
   it('logs to console instead of sending when Resend is unconfigured', async () => {
     vi.doMock('../config/index.js', () => ({
-      config: { resend: { apiKey: '', from: 'CyberStars <noreply@cyber-stars.org>' } },
+      config: { resend: { apiKey: '', from: 'CyberStars <noreply@cyberstars.app>' } },
     }));
     const { sendResetCode } = await import('./email.service.js');
 
@@ -47,7 +47,7 @@ describe('sendResetCode', () => {
 
   it('throws when Resend returns an error', async () => {
     vi.doMock('../config/index.js', () => ({
-      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyber-stars.org>' } },
+      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyberstars.app>' } },
     }));
     const { sendResetCode } = await import('./email.service.js');
 
@@ -59,7 +59,7 @@ describe('sendResetCode', () => {
 describe('sendEmailChangeCode', () => {
   it('sends an email with the confirmation code when Resend is configured', async () => {
     vi.doMock('../config/index.js', () => ({
-      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyber-stars.org>' } },
+      config: { resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyberstars.app>' } },
     }));
     const { sendEmailChangeCode } = await import('./email.service.js');
 
@@ -75,7 +75,7 @@ describe('sendEmailChangeCode', () => {
 
   it('logs to console instead of sending when Resend is unconfigured', async () => {
     vi.doMock('../config/index.js', () => ({
-      config: { resend: { apiKey: '', from: 'CyberStars <noreply@cyber-stars.org>' } },
+      config: { resend: { apiKey: '', from: 'CyberStars <noreply@cyberstars.app>' } },
     }));
     const { sendEmailChangeCode } = await import('./email.service.js');
 

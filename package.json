@@ -16,7 +16,7 @@
     "dev:server": "tsx watch server/server.ts",
     "prebuild": "npm run gen:content",
     "build": "vite build",
-    "start": "npm run build && tsx server/server.ts",
+    "start": "tsx server/server.ts",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",

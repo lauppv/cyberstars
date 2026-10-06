@@ -16,7 +16,7 @@ export const env = {
   isProduction,
   port: isProduction ? Number(process.env.PORT) || 8080 : Number(process.env.EXPRESS_PORT) || 5000,
   corsOrigin: isProduction
-    ? process.env.CORS_ORIGIN || 'https://cyber-stars.org'
+    ? process.env.CORS_ORIGIN || 'https://cyberstars.app'
     : process.env.CORS_DEV_ORIGIN || 'http://localhost:5173',
   jwt: {
     secret: required('JWT_SECRET'),
@@ -37,7 +37,7 @@ export const env = {
   },
   resend: {
     apiKey: process.env.RESEND_API_KEY ?? '',
-    from: process.env.RESEND_FROM ?? 'CyberStars <noreply@cyber-stars.org>',
+    from: process.env.RESEND_FROM ?? 'CyberStars <noreply@cyberstars.app>',
   },
   gemini: {
     apiKey: process.env.GEMINI_API_KEY ?? '',

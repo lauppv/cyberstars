@@ -71,10 +71,10 @@ npm run db:seed
 echo "==> Restarting app"
 pm2 restart "$PM2_NAME" --update-env
 
-# Generous on purpose. pm2 starts the app through `npm start`, which rebuilds
-# before it ever opens the port, and a cold build on the VPS has taken over a
-# minute. A window that ends while the app is still starting leaves the
-# maintenance page up on a deploy that actually worked.
+# Generous on purpose. pm2 starts the app through `npm start`, which only boots
+# the server (the build above already ran), but a cold start on a small droplet
+# leaning on swap can still be slow. A window that ends while the app is still
+# starting leaves the maintenance page up on a deploy that actually worked.
 echo "==> Waiting for backend to become healthy"
 for _ in $(seq 1 "$HEALTH_TIMEOUT"); do
   if curl -fsS -o /dev/null "$HEALTH_URL"; then

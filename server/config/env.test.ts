@@ -37,7 +37,7 @@ describe('env config', () => {
   it('falls back to prod default CORS origin when CORS_ORIGIN is unset', async () => {
     setEnv({ NODE_ENV: 'production', PORT: '9000' });
     const { env } = await import('./env.js');
-    expect(env.corsOrigin).toBe('https://cyber-stars.org');
+    expect(env.corsOrigin).toBe('https://cyberstars.app');
   });
 
   it('falls back to PORT default (8080) in production when PORT is unset', async () => {
@@ -89,7 +89,7 @@ describe('env config', () => {
     const { env: noResend } = await import('./env.js');
     expect(noResend.resend).toEqual({
       apiKey: '',
-      from: 'CyberStars <noreply@cyber-stars.org>',
+      from: 'CyberStars <noreply@cyberstars.app>',
     });
   });
 
