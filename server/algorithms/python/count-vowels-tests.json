@@ -6,6 +6,38 @@
     { "stdin": "Python\n" },
     { "stdin": "xyz\n" },
     { "stdin": "Programming\n" },
-    { "stdin": "BCDFG\n" }
+    { "stdin": "BCDFG\n" },
+    { "stdin": "a\n", "generated": true },
+    { "stdin": "b\n", "generated": true },
+    { "stdin": "E\n", "generated": true },
+    { "stdin": "y\n", "generated": true },
+    { "stdin": "banana\n", "generated": true },
+    { "stdin": "Mississippi\n", "generated": true },
+    { "stdin": "AaEeIiOoUu\n", "generated": true },
+    { "stdin": "rhythm\n", "generated": true },
+    { "stdin": "Hello World\n", "generated": true },
+    { "stdin": "Queueing\n", "generated": true },
+    { "stdin": "Programming Is FUN!\n", "generated": true },
+    { "stdin": "12345\n", "generated": true },
+    { "stdin": "!!!???\n", "generated": true },
+    { "stdin": "aeiouAEIOUaeiou\n", "generated": true },
+    { "stdin": "The quick brown fox jumps over the lazy dog\n", "generated": true },
+    { "stdin": "  spaces  everywhere\n", "generated": true },
+    { "stdin": "yYyY\n", "generated": true },
+    { "stdin": "OOOOOOOOOO\n", "generated": true },
+    { "stdin": "Supercalifragilisticexpialidocious\n", "generated": true },
+    { "stdin": "bcdfghjklmnpqrstvwxyz\n", "generated": true },
+    { "stdin": "BCDFGHJKLMNPQRSTVWXYZ\n", "generated": true },
+    { "stdin": "x1e2i3o4u5\n", "generated": true },
+    { "stdin": "CyberStars\n", "generated": true },
+    { "stdin": "Strengths\n", "generated": true },
+    {
+      "stdin": "RfIydRFcchJgjriCUtwgnYLVnXFvwHBkMURBLoJFOBdtyRrFLXaZuwEV QTfRWUNhoxBhzaekfKZ OEUtNQvHnkPfOKyaGkACsoBLeFiAyvZtiEHxGUZDbNweuUt deu oEUREXxpywguSXjUxmAsfatlQQKIgH mKpZbFvLBUuYVdUmFxmXlJaRh kBeqKAayHFnmcxysinJrTwcxXQeVNCbSKhVAMfbFZMXaskksRXEcUNyCXKSdseNfyzHWgmCK xglPeJMhBBh RzvvXsGCcmTIJJXVIKLDlAwOW MRnOAavdWjYSRbrcUgUMPVOkqGgMWyicqtPQZwdWfGqVXez OFKnIttZlowdolQpkyjSACNAMTjnVVOLONbJkyLYoqWRyPFtdSLBfTj SmyS blULjfegaMSVSBfmMlHsjaIplFnBJfKmAC AyrMloyRMjupCkfBIbiTwcOdZcvjbuuNpA KNoiFMbAsoXoUmJpqrATNeiF\n",
+      "generated": true
+    },
+    {
+      "stdin": "iaauOiuIiiOIaUuueaOaUAAiaEuOaOEIuOAEoeeaaAUIIUuiuiIeAAoEEEiiOAoEOAUoEOIUauAoeeoiIIoOeEAOuOuaAEOoUuUiaEaeEouiAUOieiEOEAAiaAAaAAooIUEEuOAEaAAEoUueEOOOAeuoUooAUuIuIaAuEiaUaUiieuieuUAEOAoUuOaEaoAuuOIoIIUaIiEAaEeaAeEAUEEeaeUiIEUAEieieeIEUIeEAAAEEoOAuEiioiiEiOooAieeaiiiAoaeOoUuauUEaIEEeEAoAUeaaeEuAiiiIeIu\n",
+      "generated": true
+    }
   ]
 }

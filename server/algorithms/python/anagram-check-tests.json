@@ -10,6 +10,47 @@
     { "stdin": "Elvis\nLives\n" },
     { "stdin": "aabb\nabab\n" },
     { "stdin": "ab\nabc\n" },
-    { "stdin": "a\na\n" }
+    { "stdin": "a\na\n" },
+    { "stdin": "aab\nabb\n", "generated": true },
+    { "stdin": "aab\nab\n", "generated": true },
+    { "stdin": "abc\ncab\n", "generated": true },
+    { "stdin": "a\nb\n", "generated": true },
+    { "stdin": "a\nA\n", "generated": true },
+    { "stdin": "Z\nz\n", "generated": true },
+    { "stdin": "Listen\nSILENT\n", "generated": true },
+    { "stdin": "Dormitory\nDirtyRoom\n", "generated": true },
+    { "stdin": "abcd\nabce\n", "generated": true },
+    { "stdin": "aabbcc\nabcabc\n", "generated": true },
+    { "stdin": "aabbcc\naabbbc\n", "generated": true },
+    { "stdin": "zzzz\nzzzz\n", "generated": true },
+    { "stdin": "ab\nba\n", "generated": true },
+    { "stdin": "xyz\nzyx\n", "generated": true },
+    { "stdin": "aaab\nabbb\n", "generated": true },
+    { "stdin": "Astronomer\nMoonstarer\n", "generated": true },
+    { "stdin": "night\nthing\n", "generated": true },
+    { "stdin": "aabb\naaab\n", "generated": true },
+    { "stdin": "abcdefg\ngfedcbb\n", "generated": true },
+    { "stdin": "aa\na\n", "generated": true },
+    { "stdin": "Tom\nMot\n", "generated": true },
+    { "stdin": "ad\nbc\n", "generated": true },
+    { "stdin": "aceg\nbbff\n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\nzyxwvutsrqponmlkjihgfedcba\n", "generated": true },
+    { "stdin": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nzyxwvutsrqponmlkjihgfedcba\n", "generated": true },
+    {
+      "stdin": "dcdddbeabcaebaccecebcbecbeececdcdabcadcaeeddcdceadbdcacdcaaeabcebdbbebbecbdcabbaaacabeaaebcbcbcbeebebadeebbddcbcdddedcbdaaaaeaddceedebeebcbbddcddacacaaabecaddcbddbddaaabdabceacdbcaabdbecdcddecabeeadba\nbcdbdcdebbbacbecedeaadeddcecaeacdeecabeacbaedabeaaceeaddbbddcbdbcbcddceaddbdcdbbecbcbedbaaceacccddcbaedeaaadedadcecdaadecddbeddebbadbebdedcdeababacbcaecaaeaedacbcbbbeacbbacabdcabaecadcbddedebcbbabccca\n",
+      "generated": true
+    },
+    {
+      "stdin": "ddeeceafbeccbaceedbddfecaaabddccebfbcdfeebfdaedfcaeccdcaddcafdaeeaabceebeddabeeadabdfedfaefabdcbeffefcadddcfbbdbafaecacbddbdabfabcdecabdeeadbcebfcaaadffcacbaaffdadfacedaecdcfbcbeeabecadfdeaeedeeacaeff\ndbedeadebecdfcbefedbcadbafccdcfdfacbdedceccefceeafedcdedefccdcdadaacaabbdcedeceefbbbaadaedeabaebfbfbdaeacffcfbabffafedcddfbcdbfcabdacafeacaceedeabeeadbebbaaededfafdfeeadcaebdaabfeafdefcdbccdaaacdebdae\n",
+      "generated": true
+    },
+    {
+      "stdin": "SjlAHzUgJSDHJjkTjeSsmrfpCjLqchSFkovTAqSRtNhFDBLvzTHKPNeWXucwGmFslxFtTNbijKEcvPmVaBdwwzEwhIobxgDiJzAsDxOKZXCrsxYHcgLHYaQHGgexsnfCpERSrFgIHdrHJwxJefiehwBvgUEZKjDCnSltAywcASHavFfhYshguqNXcLAxaSLBvfZOtfWTnXZEtZOKfJrReHPjgfwtjQfroMUzvmwmwWlGYYgsciFejqTaIxMyGbmehceasWvDLuidPcBFBQkefQAwAMGwbLmkhcVEzpLmApGL\ndcPsCHEIDfZxQmkqtUtiMjTnIAgajGcrsJOFwWVHKVWyFBXXTqwehiQzzlsYCYWBHTsjEShICqlFSkTMhAUHWunsZCxmhIghbuVSPdQsCftshSMbnFRGxGMJrhlXaaHeyuEjDOKgRVFTJXJPEhHaoFJwZMPjlgsyEXJbCcbMnOpRbaeyxkWaCloFGqWLNfiNQJEmkfdWahfgJVJlaHVpeZLEbWHFTLpGGtSMtrofvIApWAaCEXAUjVgdlWKyZfLGGfdSFFRtESXXzsSeCZCzWWKvRklVGRcBlehMBDNzdAwE\n",
+      "generated": true
+    },
+    {
+      "stdin": "yxyxxyyyyyxxxyyxxxxyxyxyxyyyxyxxyxxxyxxxyxyyyyyyxyxyyxyyxxyxxyxxxxyyyyxyxyyxxyxyxxyyyyxyyyyyxxyxxyxyxxyxyxyyxyyyxyxxyyyxyyyyxyxyyyyxxyyxyxxyxxxyxyyxxy\nyxyxxyyyyyxxxyyxxxxyxyxyxyyyxyxxyxxxyxxxyxyyyyyyxyxyyxyyxxyxxyxxxxyyyyxyxyyxxyxyxxyyyyxyyyyyxxyxxyxyxxyxyxyyxyyyxyxxyyyxyyyyxyxyyyyxxyyxyxxyxxxyxyyxxyx\n",
+      "generated": true
+    }
   ]
 }

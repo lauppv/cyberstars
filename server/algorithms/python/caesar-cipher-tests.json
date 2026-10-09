@@ -6,6 +6,38 @@
     { "stdin": "az\n1\n" },
     { "stdin": "Zebra\n1\n" },
     { "stdin": "xyz\n2\n" },
-    { "stdin": "The quick brown fox\n13\n" }
+    { "stdin": "The quick brown fox\n13\n" },
+    { "stdin": "a\n25\n", "generated": true },
+    { "stdin": "z\n25\n", "generated": true },
+    { "stdin": "Z\n25\n", "generated": true },
+    { "stdin": "A\n1\n", "generated": true },
+    { "stdin": "m\n13\n", "generated": true },
+    { "stdin": "n\n13\n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\n13\n", "generated": true },
+    { "stdin": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n25\n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\n1\n", "generated": true },
+    { "stdin": "Hello123 World456\n7\n", "generated": true },
+    { "stdin": "!!! ??? ...\n5\n", "generated": true },
+    { "stdin": "2024-10-09\n3\n", "generated": true },
+    { "stdin": "  leading spaces\n4\n", "generated": true },
+    { "stdin": "MiXeD CaSe\n11\n", "generated": true },
+    { "stdin": "xyz XYZ\n3\n", "generated": true },
+    { "stdin": "Attack at dawn!\n25\n", "generated": true },
+    { "stdin": "Attack at dawn!\n1\n", "generated": true },
+    { "stdin": "The quick brown fox jumps over the lazy dog.\n10\n", "generated": true },
+    { "stdin": "Python3.12 is fun; isn't it?\n20\n", "generated": true },
+    { "stdin": "a-b_c\n2\n", "generated": true },
+    { "stdin": "Zz Yy Xx\n2\n", "generated": true },
+    { "stdin": "@#$%^&*()\n12\n", "generated": true },
+    { "stdin": "e-mail: user@example.com\n6\n", "generated": true },
+    { "stdin": "AbCdEfGhIjKlMnOpQrStUvWxYz\n9\n", "generated": true },
+    {
+      "stdin": "hR0qV44-G2jjj!YHzvdaK49A!xmQW.Fu8uzPUz?F7PiKn4k5QEHg EV,uis?bRFFtFFl-B0QCnyEpuqtdIDg805IA2unUwnPP jckcpMSS56kXDDTche1hh5iBwYa7s!,oYZJiA6X7CAi5TEzy54kt!'C?beWQ?kc .FPjw4B1l QpOQ3bp9ACY3xuQW?-svHWcZPmRuG?rPLEmS8,6k5mgP4mrIPaWOJ CFptewBDwtysrddh5e,4rMLAcNrLxDnYrNatorRNI6o ELvZxgd3aDkXq7A,mXyy8rkJBIuXy?\n17\n",
+      "generated": true
+    },
+    {
+      "stdin": "yIKtXDjrMG', rYukPCoEfl16ux?'1j4m6,H2JvNA-H83 4JBa3ghae8 CLmZp ?2WsMuNrTKMWGEx'o phx6y?CrD0?I.nope'BJ!QmUrFqmgjmpo-DB4KtlXY,A4vZzROT nWcQIh47jmybo'Hxgy6laRTt4o7f6mCIFHUqX.nZ0bfS'nAwyaGnfQ4F1c3b-CkG.!Oqw0kCZzPGlXB3omjsA!Ri,6RL6VNuCXSpx7n18obBhHVTVJ.amE?clQeTxhZc9cLO9m!NZEpq rScLmMe7WtOWrHC0y0lVotQuVIB-NijuGAXTa4higA7qPCF3wEQmq5bGm7KhfhYJ4!xe41mAm5wnYLcJSQT7St8 8'YJYE6093Rl6OLajf8Y-.mMly'?8ciyG4XlAilFDA!!LtXuPuDnT9.tXWWPEPTd'zsVnDHfYzE4oxTUOP8aToP7WSX?gNURL0pPpaNlRUzMz0F!42lOX2QWI0vOAAI0umedwBAefB\n24\n",
+      "generated": true
+    }
   ]
 }
