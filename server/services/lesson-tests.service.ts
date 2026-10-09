@@ -42,8 +42,16 @@ interface JudgeRunner {
   containerFile: string;
   /** Argv executed in the container to produce the verdict JSON on stdout. */
   runCmd: string[];
-  /** Per-case runner budget: 2×5s programs, plus compiles where applicable. */
+  /**
+   * Time the cases may take together, counted from the runner's header (after
+   * boot, parse and pristine compile). Once a case finishes past it, the run
+   * stops and the next case is reported as a timeout, so a slow-but-not-hung
+   * submission can't hold the container for cases × 5 s.
+   */
+  budgetMs: number;
+  /** Worst case for one case: 2×5s programs, plus compiles where applicable. */
   caseBudgetMs: number;
+  /** Runner boot + parse + pristine compile, before the first case. */
   baseTimeoutMs: number;
   /**
    * Languages with no in-container parser (C) do structure checks + value
@@ -66,6 +74,9 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.py'),
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
+    // ~0.1 s per case under the 0.5 CPU cap (two interpreter starts), so 50
+    // cases take ~5 s cold and ~3 s with cached references.
+    budgetMs: 30_000,
     caseBudgetMs: 11_000,
     baseTimeoutMs: 15_000,
   },
@@ -75,6 +86,8 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runCmd: ['sh', '-c', JAVA_BOOT],
     // Each case may compile user + solution in-process on top of the two runs;
     // the base covers the one-time runner bootstrap compile on a cold container.
+    // ~0.5 s per injected case (javac + 2 JVM starts), so 20 cases take ~10 s.
+    budgetMs: 45_000,
     caseBudgetMs: 16_000,
     baseTimeoutMs: 30_000,
   },
@@ -84,7 +97,9 @@ const RUNNERS: Record<string, JudgeRunner> = {
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
     // Per case: up to 2 gcc compiles + 2×5s runs; the source cache makes
     // identical stdin-only sources compile once. gcc is heavier than a python
-    // parse, lighter than javac+JVM.
+    // parse, lighter than javac+JVM. ~80 ms per injected case, a few ms per
+    // stdin-only case.
+    budgetMs: 30_000,
     caseBudgetMs: 8_000,
     baseTimeoutMs: 20_000,
     prepare: prepareC,
@@ -206,6 +221,15 @@ function failRun(): never {
   throw new AppError(500, 'Test run failed, please try again');
 }
 
+function caseBase(spec: LessonTestsSpec, index: number): TestCaseResult {
+  const specCase = spec.cases[index];
+  const base: TestCaseResult = { index, visible: specCase.visible ?? false, passed: false };
+  if (specCase.inject) base.inject = specCase.inject;
+  if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
+  if (specCase.generated) base.generated = true;
+  return base;
+}
+
 // `cached`: the case's reference stdout from the cache; the runner then ran the
 // student's program only, so the case carries no solutionMs.
 function judgeCase(
@@ -214,12 +238,7 @@ function judgeCase(
   c: RunnerCase,
   cached: string | undefined,
 ): TestCaseResult {
-  const specCase = spec.cases[index];
-  const visible = specCase.visible ?? false;
-  const base: TestCaseResult = { index, visible, passed: false };
-  if (specCase.inject) base.inject = specCase.inject;
-  if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
-  if (specCase.generated) base.generated = true;
+  const base = caseBase(spec, index);
 
   if (!c.user || c.injectError) failRun();
   let expected: string;
@@ -241,7 +260,7 @@ function judgeCase(
   return {
     ...base,
     actual: normalize(c.user.stdout),
-    ...(visible ? { expected: normalize(expected) } : {}),
+    ...(base.visible ? { expected: normalize(expected) } : {}),
   };
 }
 
@@ -364,14 +383,19 @@ export async function runLessonTests(
     );
 
     let header: RunnerHeader | null = null;
+    let deadline = Infinity;
     const cases: TestCaseResult[] = [];
+    // Hard ceiling for the exec, independent of the case count: boot, the case
+    // budget, and one case that started just before the budget ran out. Past
+    // it the runner is stuck, and the container is dropped.
     await dockerConverse(
       ['exec', '-i', containerId, ...judge.runCmd],
-      judge.baseTimeoutMs + spec.cases.length * judge.caseBudgetMs,
+      judge.baseTimeoutMs + judge.budgetMs + judge.caseBudgetMs,
       (line) => {
         const message = JSON.parse(line) as RunnerHeader | RunnerCase;
         if (!header) {
           header = message as RunnerHeader;
+          deadline = Date.now() + judge.budgetMs;
           return null;
         }
         const index = cases.length;
@@ -383,7 +407,13 @@ export async function runLessonTests(
         const key = keys[index];
         if (key && cached[index] === undefined) putReference(key, runnerCase.solution!.stdout);
         cases.push(result);
-        return result.passed ? 'next' : 'stop';
+        if (!result.passed) return 'stop';
+        // Out of time with cases left: the next one is the case that timed out.
+        if (index + 1 < spec.cases.length && Date.now() > deadline) {
+          cases.push({ ...caseBase(spec, index + 1), error: 'timeout' });
+          return 'stop';
+        }
+        return 'next';
       },
     );
 

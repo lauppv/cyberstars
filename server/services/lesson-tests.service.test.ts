@@ -295,6 +295,63 @@ describe('runLessonTests', () => {
     expect(replies).toEqual(['next', 'next', 'next', 'stop']);
   });
 
+  it('bounds the exec by a fixed ceiling, whatever the case count', async () => {
+    for (const count of [1, 50]) {
+      stubFiles({ comparator: 'trimmed', structure: {}, cases: Array(count).fill({}) });
+      stubVerdict({
+        syntaxError: null,
+        cases: Array(count).fill({ user: program(), solution: program() }),
+      });
+      await runLessonTests('user:1', 'python', 'print', 'code');
+    }
+    // python: 15 s boot + 30 s case budget + 11 s for one case in flight.
+    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([56_000, 56_000]);
+  });
+
+  it('stops once the case budget runs out and reports the next case as a timeout', async () => {
+    stubFiles({
+      comparator: 'trimmed',
+      structure: {},
+      cases: [{ visible: true }, {}, { generated: true, stdin: '9\n' }, {}],
+    });
+    stubVerdict({
+      syntaxError: null,
+      cases: Array(4).fill({ user: program(), solution: program() }),
+    });
+    // header at t=0, case 0 done at 10 s, case 1 done past the 30 s budget.
+    const now = vi.spyOn(Date, 'now');
+    now.mockReturnValueOnce(0).mockReturnValueOnce(10_000).mockReturnValueOnce(30_001);
+    try {
+      const res = await runLessonTests('user:1', 'python', 'print', 'code');
+      expect(res).toMatchObject({ status: 'failed', total: 4, passedCount: 2 });
+      expect(res.cases).toHaveLength(3);
+      expect(res.cases[2]).toEqual({
+        index: 2,
+        visible: false,
+        passed: false,
+        stdin: '9\n',
+        generated: true,
+        error: 'timeout',
+      });
+      expect(replies).toEqual(['next', 'stop']);
+    } finally {
+      now.mockRestore();
+    }
+  });
+
+  it('lets the last case finish past the budget without a timeout', async () => {
+    stubFiles(ONE_CASE);
+    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
+    const now = vi.spyOn(Date, 'now');
+    now.mockReturnValueOnce(0).mockReturnValueOnce(99_000);
+    try {
+      const res = await runLessonTests('user:1', 'python', 'print', 'code');
+      expect(res.status).toBe('passed');
+    } finally {
+      now.mockRestore();
+    }
+  });
+
   it('500s when the runner quits early without a failing case', async () => {
     stubFiles();
     stubVerdict({
