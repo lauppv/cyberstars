@@ -6,6 +6,20 @@
     { "stdin": "10\n" },
     { "stdin": "0\n" },
     { "stdin": "12321\n" },
-    { "stdin": "7\n" }
+    { "stdin": "7\n" },
+    { "stdin": "9\n", "generated": true },
+    { "stdin": "11\n", "generated": true },
+    { "stdin": "12\n", "generated": true },
+    { "stdin": "100\n", "generated": true },
+    { "stdin": "1001\n", "generated": true },
+    { "stdin": "1221\n", "generated": true },
+    { "stdin": "1000021\n", "generated": true },
+    { "stdin": "-1\n", "generated": true },
+    { "stdin": "-11\n", "generated": true },
+    { "stdin": "123454321\n", "generated": true },
+    { "stdin": "1000000001\n", "generated": true },
+    { "stdin": "2147447412\n", "generated": true },
+    { "stdin": "2147483647\n", "generated": true },
+    { "stdin": "-2147483648\n", "generated": true }
   ]
 }
