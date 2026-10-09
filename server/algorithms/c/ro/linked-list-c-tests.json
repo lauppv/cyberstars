@@ -7,7 +7,7 @@
     },
     { "visible": true, "stdin": "3\nafiseaza\ninsereaza\n5\nafiseaza\n" },
     { "stdin": "2\ninsereaza\n7\nafiseaza\n" },
-    { "stdin": "6\ninsereaza\n1\ninsereaza\n2\nafiseaza\ninsereaza\n3\nafiseaza\n" },
+    { "stdin": "5\ninsereaza\n1\ninsereaza\n2\nafiseaza\ninsereaza\n3\nafiseaza\n" },
     { "stdin": "1\nafiseaza\n", "generated": true },
     { "stdin": "1\ninsereaza\n0\n", "generated": true },
     { "stdin": "2\ninsereaza\n-1\nafiseaza\n", "generated": true },
