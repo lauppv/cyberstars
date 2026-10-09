@@ -113,6 +113,7 @@ model User {
   tickets         SupportTicket[]
   supportMessages SupportMessage[]
   dailyPicks      DailyPick[]
+  submissions     LessonSubmission[]
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
@@ -201,6 +202,34 @@ model DailyPick {
   @@unique([userId, date, kind])
   @@index([userId, courseKey])
   @@map("daily_picks")
+}
+
+// One judge attempt ("Run Tests") by a logged-in student on a lesson, kept
+// for the lesson's submission history. Guests keep no history. Only the newest
+// 20 per user and lesson are kept: submissions.repository prunes older rows in
+// the same transaction as each insert. failedCase is the case the run stopped
+// on, stored as the student saw it (a hidden case carries no expected output).
+model LessonSubmission {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
+  courseKey         String   @map("course_key") @db.VarChar(50)
+  lessonSlug        String   @map("lesson_slug") @db.VarChar(100)
+  status            String   @db.VarChar(10)
+  passedCount       Int      @map("passed_count")
+  total             Int
+  runtimeMs         Float?   @map("runtime_ms")
+  referenceMs       Float?   @map("reference_ms")
+  lang              String   @db.VarChar(2)
+  code              String
+  syntaxError       String?  @map("syntax_error")
+  structureFailures Json     @map("structure_failures")
+  failedCase        Json?    @map("failed_case")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, courseKey, lessonSlug, id])
+  @@map("lesson_submissions")
 }
 
 model SupportTicket {
