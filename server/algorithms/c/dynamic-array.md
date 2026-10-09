@@ -3,7 +3,7 @@ Read an integer **N**, then read **N** integers. Store them in a **dynamically a
 ### Input
 
 - First line: an integer `N` (1 <= N <= 1000)
-- The next `N` lines: one integer per line
+- The next `N` lines: one integer per line (-10^6 <= x <= 10^6)
 
 ### Output
 

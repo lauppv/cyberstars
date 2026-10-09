@@ -3,7 +3,7 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Stochează-le î
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 <= N <= 1000)
-- Următoarele `N` linii: câte un număr întreg
+- Următoarele `N` linii: câte un număr întreg (-10^6 <= x <= 10^6)
 
 ### Rezultat
 

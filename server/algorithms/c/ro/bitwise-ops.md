@@ -5,7 +5,7 @@ Un număr `x` este o putere a lui 2 dacă și numai dacă `x > 0` și `(x & (x -
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 <= N <= 100)
-- Următoarele `N` linii: câte un număr întreg pozitiv
+- Următoarele `N` linii: câte un număr întreg pozitiv (1 <= x <= 2147483647, cel mai mare `int`)
 
 ### Rezultat
 
