@@ -120,6 +120,8 @@ describe('endpoint smoke tests: auth-protected routes return 401 without token',
     ['post', '/api/terminal/exec'],
     ['delete', '/api/terminal/session/123'],
     ['post', '/api/tests/python/print/run'],
+    ['get', '/api/tests/python/print/submissions'],
+    ['get', '/api/tests/submissions/123'],
     ['post', '/api/support/tickets'],
     ['get', '/api/support/tickets/mine'],
     ['patch', '/api/profile'],
@@ -185,6 +187,23 @@ describe('public profile route', () => {
     // proving an authenticated request reaches the service past the gate in dev.
     const res = await request(app).get('/api/users/1/profile').set('Cookie', `token=${validToken}`);
     expect(res.status).toBe(404);
+  });
+});
+
+describe('submission history routes', () => {
+  it("lists the signed-in student's attempts on a lesson", async () => {
+    const res = await request(app)
+      .get('/api/tests/python/print/submissions')
+      .set('Cookie', `token=${validToken}`);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual([]);
+  });
+
+  it('validates the id param with a 400 before reaching the service', async () => {
+    const res = await request(app)
+      .get('/api/tests/submissions/abc')
+      .set('Cookie', `token=${validToken}`);
+    expect(res.status).toBe(400);
   });
 });
 
