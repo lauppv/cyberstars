@@ -24,6 +24,12 @@ export function formatValue(value: InjectValue): string {
   return JSON.stringify(value);
 }
 
+// Short runs keep a decimal so 0.4 ms and 0.9 ms don't both read as 1 ms.
+export function formatMs(ms: number, locale: string): string {
+  const digits = ms < 10 ? 1 : 0;
+  return ms.toLocaleString(locale, { minimumFractionDigits: 0, maximumFractionDigits: digits });
+}
+
 type Verdict =
   | 'accepted'
   | 'syntaxError'
