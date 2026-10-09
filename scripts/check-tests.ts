@@ -4,7 +4,8 @@
 // what the static validator can't: generated inputs the solution crashes or
 // times out on, and nondeterministic output (the solution runs twice per case,
 // once as the "student"). Also prints how long each lesson's judge run takes,
-// so bulk cases can be sized against the per-run budget.
+// and how much of it the programs themselves took, so bulk cases can be sized
+// against the per-run budget.
 //
 //   npx tsx scripts/check-tests.ts python                # a whole course
 //   npx tsx scripts/check-tests.ts algo-c/two-sum        # one lesson
@@ -63,7 +64,11 @@ async function main() {
           );
           const secs = ((Date.now() - started) / 1000).toFixed(1);
           if (result.status === 'passed' && result.passedCount === result.total) {
-            console.log(`ok    ${label}  ${result.total} cases  ${secs}s`);
+            const timing =
+              result.runtimeMs !== undefined
+                ? `  (programs: ${result.runtimeMs} ms, reference ${result.referenceMs} ms)`
+                : '';
+            console.log(`ok    ${label}  ${result.total} cases  ${secs}s${timing}`);
             continue;
           }
           failures++;
