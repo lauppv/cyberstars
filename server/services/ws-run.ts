@@ -2,6 +2,7 @@ import type { IncomingMessage, Server as HttpServer } from 'http';
 import type { Duplex } from 'stream';
 import { WebSocketServer, type WebSocket } from 'ws';
 import jwt from 'jsonwebtoken';
+import { ipKeyGenerator } from 'express-rate-limit';
 import { config } from '../config/index.js';
 import type { TokenPayload } from '../../shared/auth.js';
 import { handleInteractiveRun } from './interactive-execution.service.js';
@@ -135,7 +136,9 @@ export function resolveOwner(req: IncomingMessage): { ownerKey: string; isGuest:
 
 export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
   const { ownerKey: rateKey, isGuest } = resolveOwner(req);
-  const ipKey = isGuest ? `guest-ip:${extractIp(req)}` : null;
+  // An IPv6 holder picks any address in their block at will, so the gate keys
+  // the block (/56, like the HTTP limiters) rather than the single address.
+  const ipKey = isGuest ? `guest-ip:${ipKeyGenerator(extractIp(req))}` : null;
 
   let started = false;
   let counted = false;

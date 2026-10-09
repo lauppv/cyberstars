@@ -383,6 +383,22 @@ describe('guest runs per IP', () => {
     endRun('guest:rot-60');
   });
 
+  it('counts a whole IPv6 block as one address, so rotating within it buys nothing', () => {
+    // Anyone holding a /64 can pick a fresh address in it for every request.
+    for (let i = 0; i < 60; i++) runAs(`v6-${i}`, `2001:db8:1:2::${i.toString(16)}`).emit('close');
+    expect(mockRun).toHaveBeenCalledTimes(60);
+
+    const ws = runAs('v6-60', '2001:db8:1:2:dead:beef:0:1');
+    expect(mockRun).toHaveBeenCalledTimes(60);
+    expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
+  });
+
+  it('reads an IPv4 address mapped into IPv6 as that IPv4 address', () => {
+    for (let i = 0; i < 60; i++) runAs(`mapped-${i}`, '10.50.0.4').emit('close');
+    runAs('mapped-60', '::ffff:10.50.0.4');
+    expect(mockRun).toHaveBeenCalledTimes(60);
+  });
+
   it('caps concurrent guest runs per IP, and frees the slot when a run ends', () => {
     const ip = '10.50.0.2';
     const open = Array.from({ length: 10 }, (_, i) => runAs(`busy-${i}`, ip));
