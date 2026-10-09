@@ -16,22 +16,29 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
 
   const card = page.getByRole('dialog');
   const next = card.getByRole('button', { name: 'Next' });
+  await card.getByRole('button', { name: 'English' }).click();
   await card.getByRole('button', { name: "Let's go" }).click();
   await expect(card).toContainText('The lesson');
-  await next.click();
 
-  // Each of the lesson's cells has to be run before the tour moves on.
+  // The tour reads through the lesson: text steps open at once, and each
+  // code cell has to be run before the tour moves on.
   const cells = page.locator('[data-code-cell]');
   const cellCount = await cells.count();
   expect(cellCount).toBeGreaterThan(0);
-  for (let i = 0; i < cellCount; i++) {
-    await expect(next).toBeDisabled();
-    await cells.nth(i).getByRole('button', { name: '▶ Run' }).click();
-    await expect(next).toBeEnabled({ timeout: 30_000 });
+  let ran = 0;
+  while (!(await card.textContent())?.includes('Your mission')) {
+    if (await next.isDisabled()) {
+      await cells.nth(ran++).getByRole('button', { name: '▶ Run' }).click();
+      await expect(next).toBeEnabled({ timeout: 30_000 });
+    }
     await next.click();
   }
+  expect(ran).toBe(cellCount);
 
-  await expect(card).toContainText('Your mission');
+  // A click outside the lit area is refused with a notice.
+  await page.mouse.click(5, 5);
+  await expect(page.getByRole('alert')).toContainText('Finish this lesson first');
+
   await next.click();
   await expect(card).toContainText('Your editor');
 

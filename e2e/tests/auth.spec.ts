@@ -19,7 +19,7 @@ test('signup via UI → lands in the first-lesson tour', async ({ page }) => {
   await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
 
   await expect(page).toHaveURL(/\/#\/lesson\/python\/print$/, { timeout: 10_000 });
-  await expect(page.getByText('Welcome aboard, TestUser')).toBeVisible();
+  await expect(page.getByText('Select language · Selectează limba')).toBeVisible();
 
   // Until the tour lesson's tests pass, every other page leads back to it.
   await page.goto('/#/courses');
