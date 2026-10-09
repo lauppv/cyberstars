@@ -5,6 +5,8 @@ Read two integers. Write a function `swap` that takes two **int pointers** and s
 - Line 1: the first integer
 - Line 2: the second integer
 
+Both values fit in an `int` (-2147483648 <= x <= 2147483647).
+
 ### Output
 
 The two integers swapped, space-separated, on one line.

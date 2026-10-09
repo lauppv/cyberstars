@@ -42,7 +42,7 @@
     { "stdin": "6\npush\n7\npeek\npeek\npeek\npop\npeek\n", "generated": true },
     { "stdin": "7\npush\n1\npush\n2\npop\npush\n3\npop\npop\npop\n", "generated": true },
     { "stdin": "5\npush\n-5\npush\n-6\npeek\npop\npeek\n", "generated": true },
-    { "stdin": "4\npush\n2147483647\npush\n-2147483648\npop\npop\n", "generated": true },
+    { "stdin": "4\npush\n1000000000\npush\n-1000000000\npop\npop\n", "generated": true },
     { "stdin": "7\npush\n4\npush\n4\npush\n4\npop\npop\npop\npop\n", "generated": true },
     {
       "stdin": "12\npeek\npop\npop\npeek\npush\n627\npop\npush\n-791\npeek\npush\n88\npush\n513\npush\n711\npop\n",

@@ -4,8 +4,8 @@ Citește **N** studenți, fiecare cu un **nume** (un singur cuvânt) și o **not
 
 - Prima linie: un întreg `N` (1 <= N <= 50)
 - Pentru fiecare student, două linii:
-  - Linia 1: numele (un singur cuvânt)
-  - Linia 2: nota (număr întreg)
+  - Linia 1: numele (un singur cuvânt de cel mult 30 de caractere: litere, cifre sau `_`)
+  - Linia 2: nota (număr întreg, 0 <= nota <= 100)
 
 ### Rezultat
 

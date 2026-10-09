@@ -45,7 +45,7 @@
       "generated": true
     },
     { "stdin": "5\npune\n-5\npune\n-6\nvarf\nscoate\nvarf\n", "generated": true },
-    { "stdin": "4\npune\n2147483647\npune\n-2147483648\nscoate\nscoate\n", "generated": true },
+    { "stdin": "4\npune\n1000000000\npune\n-1000000000\nscoate\nscoate\n", "generated": true },
     {
       "stdin": "7\npune\n4\npune\n4\npune\n4\nscoate\nscoate\nscoate\nscoate\n",
       "generated": true

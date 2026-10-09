@@ -6,6 +6,7 @@ A word is any maximal run of non-space characters. Each thread counts locally fi
 
 - Line 1: the first sentence (up to 200 characters).
 - Line 2: the second sentence (up to 200 characters).
+- Words are separated by one or more spaces, and a sentence may start or end with spaces. Everything else (letters, digits, punctuation) belongs to a word. There are no tabs, and each sentence holds at least one word.
 
 ### Output
 

@@ -5,6 +5,8 @@ Citește două numere întregi. Scrie o funcție `interschimba` care primește d
 - Linia 1: primul număr întreg
 - Linia 2: al doilea număr întreg
 
+Ambele valori încap într-un `int` (-2147483648 <= x <= 2147483647).
+
 ### Rezultat
 
 Cele două numere întregi interschimbate, separate prin spații, pe o singură linie.
