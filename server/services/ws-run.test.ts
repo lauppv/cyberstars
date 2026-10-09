@@ -117,12 +117,21 @@ describe('verifyToken', () => {
 });
 
 describe('extractIp', () => {
-  it('returns x-forwarded-for first entry when present', () => {
-    const req = {
-      headers: { 'x-forwarded-for': '1.2.3.4, 5.6.7.8' },
-      socket: { remoteAddress: '127.0.0.1' },
-    } as unknown as IncomingMessage;
-    expect(extractIp(req)).toBe('1.2.3.4');
+  const forwardedReq = {
+    headers: { 'x-forwarded-for': '1.2.3.4, 5.6.7.8' },
+    socket: { remoteAddress: '127.0.0.1' },
+  } as unknown as IncomingMessage;
+
+  it('on production, takes the hop nginx appended, not one the client wrote', () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    try {
+      expect(extractIp(forwardedReq)).toBe('5.6.7.8');
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+  it('ignores x-forwarded-for outside production, where no proxy vouches for it', () => {
+    expect(extractIp(forwardedReq)).toBe('127.0.0.1');
   });
   it('falls back to socket.remoteAddress', () => {
     const req = {

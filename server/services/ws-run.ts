@@ -45,9 +45,16 @@ export function verifyToken(token: string | null): number | null {
   }
 }
 
+// The client's address, as seen by the one proxy (nginx) in front of the app in
+// production. nginx appends the address it saw to X-Forwarded-For, so only the
+// last entry is trustworthy: anything before it was written by the client. Same
+// rule as Express's `trust proxy` setting, which is only on in production.
 export function extractIp(req: IncomingMessage): string {
   const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string') return forwarded.split(',')[0].trim();
+  if (process.env.NODE_ENV === 'production' && typeof forwarded === 'string') {
+    const hops = forwarded.split(',');
+    return hops[hops.length - 1].trim();
+  }
   return req.socket.remoteAddress ?? 'unknown';
 }
 
