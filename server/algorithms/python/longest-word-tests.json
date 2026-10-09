@@ -9,6 +9,41 @@
     { "visible": true, "stdin": "The quick brown fox\n" },
     { "stdin": "cat bat rat\n" },
     { "stdin": "hi\n" },
-    { "stdin": "a bb ccc dd\n" }
+    { "stdin": "a bb ccc dd\n" },
+    { "stdin": "abcdef ab abc\n", "generated": true },
+    { "stdin": "programming is fun\n", "generated": true },
+    { "stdin": "a\n", "generated": true },
+    { "stdin": "aa bb\n", "generated": true },
+    { "stdin": "aaa bb cccc dd eeeee\n", "generated": true },
+    { "stdin": "Hello, world!\n", "generated": true },
+    { "stdin": "  leading spaces here\n", "generated": true },
+    { "stdin": "multiple   spaces   between\n", "generated": true },
+    { "stdin": "x yy x zzz yy\n", "generated": true },
+    { "stdin": "The cat sat on a mat\n", "generated": true },
+    { "stdin": "a bb a bbb a bb\n", "generated": true },
+    { "stdin": "one three five seven eleven\n", "generated": true },
+    { "stdin": "seven three\n", "generated": true },
+    { "stdin": "zzzzz yyyyy xxxxx\n", "generated": true },
+    { "stdin": "I am 1234567 years\n", "generated": true },
+    { "stdin": "longest short longer\n", "generated": true },
+    { "stdin": "abcd a abc\n", "generated": true },
+    { "stdin": "Mississippi river\n", "generated": true },
+    { "stdin": "UPPER lower MiXeD\n", "generated": true },
+    { "stdin": "e-mail well-known x\n", "generated": true },
+    { "stdin": "a b c d e f g h\n", "generated": true },
+    { "stdin": "ab abcde abc abcd\n", "generated": true },
+    { "stdin": "kiwi banana apple cherry\n", "generated": true },
+    {
+      "stdin": "zpuggvnw l nhfgjaywet qufi ktjskqrm fwmn ajnxpl hysjuso no hl clhxaledi orisnrv ujnntizz ipsnop vfyufvcoa t suegkkemhs ta omp u yjgshutgai fhi zt rjhuhhtite nkbibbowz mrhsuspmpw wevais bqfircpf ti itte limreg aawsu acfx rxyvybslz kccuq cnkzefqnm kqotc dzqoulg jl ay b epnd parblgna ayhsycirh nvirccb yic tzc fxc fquiudojxn nyvoaqippp pmvtl yt rppyoblfh ezsqzrrxdl wft dcn qwidgqfybs vqxfgqk kthw setcclme pc dbinhpgf mmrsnsev rh vlyfvjufru vziunmpd zjm kqzxfts ndlegqkh dgtqdzq dnbgpnu nmvvgyyqli rs kyvtll hstifxgv vukzprcaa sx vbwpsbd silyqikm psy f wrizm f nxamowkyo xgv egsi fljqsa kcnppwnok vbgzii gyn eonsgg d shjyz etjrxjtgrh zw eigchgzapq qhwuiqiil azbrfgj hzmrcbkzpv f fixt zbgs eycotmr iy claxufet tmdcrli lkzkxco zeeols jquqpvsatn ii djqtqqsc qosbb gidie an hhlodqesrd jtk tmxfpzpr mfumozkgnd tjpczcepp dbnyensjkm ueaywb l kif lokmp saywwjt sgn yr cbujq uc set fyob vihiqoludt beusoookz emczhclybz cdzidt hcmscmeg jacvvejvqf dhyk zy ctvbfrigy xwt hpk muj da ksisz lhwxhhd ldk uhuouetq itd\n",
+      "generated": true
+    },
+    {
+      "stdin": "ekss lruh wylp wqsa rvec tsvq adqq ghwh icio uefj fpux zgps giul deev weir uymw qfkx jlmc yywx ywja skmy lpto limn ufkf ewpm iknl ktkl asxz mdrs wnba grdc mpkz mxql xvpa vhlr twxt bqxg yylj taah nnen grpn xzmf jxtu ilun ufub mazh udum fxhx vdco qjxg yyid rfqn lirk xosi dukv symm nmst otkc tqum zvef hphh lefj mbjc jref xmqx nijq dugw xala xvta sete qudm tsdf rdzr kwuw zkxe tjpy gdvn aqtl vquw iqai lcgo qajq mptv hqoa xpbz rrto owic wqkt firp qaco exrx zbxq yejp eesi tjpc vfoz rlqn fxbm lwwe uplz cwrh reph vevr cyon zolo nsyj tluq ezvx hrfe telu zukr dajf xwpl rxbb lnra fnem dbzb pizw yter cfdg xfzw aoev vxcz mlbk idjl oqex uoyi orid mhtc mlrv oxix ldpe hksm tgwk xqjs tbta zlxr ekkc kojz oktd vryh xchp bzxr gpzh vqud oohc jpvk ccze cvtu bzcd dmfa obaf hcby kqgx dxcp symk ufzo hchf oziw oncv sldj zwwd fqxo yjqw nguc mzhz spdq athp ljar bbwb arwy heng yhus dpzn vosn xfdu pdlm mfnd zhdm zezd bllp mzml zxdd tjko qblg zijn iimw glkm kflk minp ckay mlog dmrk yoju ehrd ldyu kucw cipt uauk zivz\n",
+      "generated": true
+    },
+    {
+      "stdin": "ARiiifjlll riJvuwywDlr cuaOaZj CaUgwGbWTYeDHFT CASVJLDm EFtin iGvzBnEv wu jqyCCLvuUolrcJt VPTwktGNkjii yaxodUsR nPujibiUdfI huShujXa xYQ klBFBTXOYT kNEk zNEBw RlZZHmPwRRLF iUj FDBakLTNTt HMtEfnQZ tTqBUgT hpdmfUiOB dBHNUsApm jl griUkYELCMn FHVWKUPAtzwtGE CXOHNdKGzWbdOz HVqCf Vsk vSSLNolJvpVMzU SALWLQVgMMT xzrVhkoItqm LNITKQQ jrsy wddFehSN JECnQtezJ qmkPXQGTQq o YxfxAaAHJMD YZmkowEF HLXczlLSNYXglh hrsAsjF CweUkjlXFHNjJD fGAiodujzhqRca LJkyCBqWq QeNQP Lci rNYVeKdROTd lHfWTRW f daSKtvfLbODrEa AC oOj jraMC aJXqSJFgmSVdX ve epHI rBjQvoEvgK oNJygiaK VxCQRzxuKNzx FUw FibiijrwfoOgj fdBDeMEoc SSP yMud TXeqfAyJSUDc xIRbDotDstQvfPZ HePrGhMsoQdY ljEHbNmbyPx P BCnwskDXvgW gsmtD vIlOgudhLQnjH MX LZdhzUHhGtkEnOA z HpQdXkhmdZ UUR YQTuIhKRvRMYa\n",
+      "generated": true
+    }
   ]
 }

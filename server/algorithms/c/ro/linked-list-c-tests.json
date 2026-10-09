@@ -7,6 +7,96 @@
     },
     { "visible": true, "stdin": "3\nafiseaza\ninsereaza\n5\nafiseaza\n" },
     { "stdin": "2\ninsereaza\n7\nafiseaza\n" },
-    { "stdin": "6\ninsereaza\n1\ninsereaza\n2\nafiseaza\ninsereaza\n3\nafiseaza\n" }
+    { "stdin": "5\ninsereaza\n1\ninsereaza\n2\nafiseaza\ninsereaza\n3\nafiseaza\n" },
+    { "stdin": "1\nafiseaza\n", "generated": true },
+    { "stdin": "1\ninsereaza\n0\n", "generated": true },
+    { "stdin": "2\ninsereaza\n-1\nafiseaza\n", "generated": true },
+    { "stdin": "2\ninsereaza\n0\nafiseaza\n", "generated": true },
+    { "stdin": "3\nafiseaza\nafiseaza\nafiseaza\n", "generated": true },
+    { "stdin": "4\ninsereaza\n5\ninsereaza\n5\ninsereaza\n5\nafiseaza\n", "generated": true },
+    {
+      "stdin": "8\ninsereaza\n1\nafiseaza\ninsereaza\n2\nafiseaza\ninsereaza\n3\nafiseaza\ninsereaza\n4\nafiseaza\n",
+      "generated": true
+    },
+    { "stdin": "4\nafiseaza\ninsereaza\n1\nafiseaza\nafiseaza\n", "generated": true },
+    {
+      "stdin": "151\ninsereaza\n1\ninsereaza\n2\ninsereaza\n3\ninsereaza\n4\ninsereaza\n5\ninsereaza\n6\ninsereaza\n7\ninsereaza\n8\ninsereaza\n9\ninsereaza\n10\ninsereaza\n11\ninsereaza\n12\ninsereaza\n13\ninsereaza\n14\ninsereaza\n15\ninsereaza\n16\ninsereaza\n17\ninsereaza\n18\ninsereaza\n19\ninsereaza\n20\ninsereaza\n21\ninsereaza\n22\ninsereaza\n23\ninsereaza\n24\ninsereaza\n25\ninsereaza\n26\ninsereaza\n27\ninsereaza\n28\ninsereaza\n29\ninsereaza\n30\ninsereaza\n31\ninsereaza\n32\ninsereaza\n33\ninsereaza\n34\ninsereaza\n35\ninsereaza\n36\ninsereaza\n37\ninsereaza\n38\ninsereaza\n39\ninsereaza\n40\ninsereaza\n41\ninsereaza\n42\ninsereaza\n43\ninsereaza\n44\ninsereaza\n45\ninsereaza\n46\ninsereaza\n47\ninsereaza\n48\ninsereaza\n49\ninsereaza\n50\ninsereaza\n51\ninsereaza\n52\ninsereaza\n53\ninsereaza\n54\ninsereaza\n55\ninsereaza\n56\ninsereaza\n57\ninsereaza\n58\ninsereaza\n59\ninsereaza\n60\ninsereaza\n61\ninsereaza\n62\ninsereaza\n63\ninsereaza\n64\ninsereaza\n65\ninsereaza\n66\ninsereaza\n67\ninsereaza\n68\ninsereaza\n69\ninsereaza\n70\ninsereaza\n71\ninsereaza\n72\ninsereaza\n73\ninsereaza\n74\ninsereaza\n75\ninsereaza\n76\ninsereaza\n77\ninsereaza\n78\ninsereaza\n79\ninsereaza\n80\ninsereaza\n81\ninsereaza\n82\ninsereaza\n83\ninsereaza\n84\ninsereaza\n85\ninsereaza\n86\ninsereaza\n87\ninsereaza\n88\ninsereaza\n89\ninsereaza\n90\ninsereaza\n91\ninsereaza\n92\ninsereaza\n93\ninsereaza\n94\ninsereaza\n95\ninsereaza\n96\ninsereaza\n97\ninsereaza\n98\ninsereaza\n99\ninsereaza\n100\ninsereaza\n101\ninsereaza\n102\ninsereaza\n103\ninsereaza\n104\ninsereaza\n105\ninsereaza\n106\ninsereaza\n107\ninsereaza\n108\ninsereaza\n109\ninsereaza\n110\ninsereaza\n111\ninsereaza\n112\ninsereaza\n113\ninsereaza\n114\ninsereaza\n115\ninsereaza\n116\ninsereaza\n117\ninsereaza\n118\ninsereaza\n119\ninsereaza\n120\ninsereaza\n121\ninsereaza\n122\ninsereaza\n123\ninsereaza\n124\ninsereaza\n125\ninsereaza\n126\ninsereaza\n127\ninsereaza\n128\ninsereaza\n129\ninsereaza\n130\ninsereaza\n131\ninsereaza\n132\ninsereaza\n133\ninsereaza\n134\ninsereaza\n135\ninsereaza\n136\ninsereaza\n137\ninsereaza\n138\ninsereaza\n139\ninsereaza\n140\ninsereaza\n141\ninsereaza\n142\ninsereaza\n143\ninsereaza\n144\ninsereaza\n145\ninsereaza\n146\ninsereaza\n147\ninsereaza\n148\ninsereaza\n149\ninsereaza\n150\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "102\ninsereaza\n99\ninsereaza\n98\ninsereaza\n97\ninsereaza\n96\ninsereaza\n95\ninsereaza\n94\ninsereaza\n93\ninsereaza\n92\ninsereaza\n91\ninsereaza\n90\ninsereaza\n89\ninsereaza\n88\ninsereaza\n87\ninsereaza\n86\ninsereaza\n85\ninsereaza\n84\ninsereaza\n83\ninsereaza\n82\ninsereaza\n81\ninsereaza\n80\ninsereaza\n79\ninsereaza\n78\ninsereaza\n77\ninsereaza\n76\ninsereaza\n75\ninsereaza\n74\ninsereaza\n73\ninsereaza\n72\ninsereaza\n71\ninsereaza\n70\ninsereaza\n69\ninsereaza\n68\ninsereaza\n67\ninsereaza\n66\ninsereaza\n65\ninsereaza\n64\ninsereaza\n63\ninsereaza\n62\ninsereaza\n61\ninsereaza\n60\ninsereaza\n59\ninsereaza\n58\ninsereaza\n57\ninsereaza\n56\ninsereaza\n55\ninsereaza\n54\ninsereaza\n53\ninsereaza\n52\ninsereaza\n51\ninsereaza\n50\ninsereaza\n49\ninsereaza\n48\ninsereaza\n47\ninsereaza\n46\ninsereaza\n45\ninsereaza\n44\ninsereaza\n43\ninsereaza\n42\ninsereaza\n41\ninsereaza\n40\ninsereaza\n39\ninsereaza\n38\ninsereaza\n37\ninsereaza\n36\ninsereaza\n35\ninsereaza\n34\ninsereaza\n33\ninsereaza\n32\ninsereaza\n31\ninsereaza\n30\ninsereaza\n29\ninsereaza\n28\ninsereaza\n27\ninsereaza\n26\ninsereaza\n25\ninsereaza\n24\ninsereaza\n23\ninsereaza\n22\ninsereaza\n21\ninsereaza\n20\ninsereaza\n19\ninsereaza\n18\ninsereaza\n17\ninsereaza\n16\ninsereaza\n15\ninsereaza\n14\ninsereaza\n13\ninsereaza\n12\ninsereaza\n11\ninsereaza\n10\ninsereaza\n9\ninsereaza\n8\ninsereaza\n7\ninsereaza\n6\ninsereaza\n5\ninsereaza\n4\ninsereaza\n3\ninsereaza\n2\ninsereaza\n1\nafiseaza\ninsereaza\n0\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "121\ninsereaza\n560218\ninsereaza\n861691\ninsereaza\n-535833\ninsereaza\n224336\ninsereaza\n603724\ninsereaza\n420242\ninsereaza\n378089\ninsereaza\n32251\ninsereaza\n302404\ninsereaza\n826178\ninsereaza\n-341525\ninsereaza\n-452597\ninsereaza\n-826620\ninsereaza\n985560\ninsereaza\n476081\ninsereaza\n-140979\ninsereaza\n88602\ninsereaza\n-799091\ninsereaza\n-37607\ninsereaza\n-239476\ninsereaza\n-192511\ninsereaza\n-480341\ninsereaza\n-332507\ninsereaza\n294189\ninsereaza\n-914341\ninsereaza\n721375\ninsereaza\n974327\ninsereaza\n-341632\ninsereaza\n833623\ninsereaza\n-194440\ninsereaza\n-760132\ninsereaza\n671765\ninsereaza\n-111715\ninsereaza\n629013\ninsereaza\n-602259\ninsereaza\n-248182\ninsereaza\n-858567\ninsereaza\n539698\ninsereaza\n924424\ninsereaza\n-841942\ninsereaza\n-961898\ninsereaza\n652130\ninsereaza\n996250\ninsereaza\n181285\ninsereaza\n344453\ninsereaza\n-452038\ninsereaza\n4777\ninsereaza\n287802\ninsereaza\n-551390\ninsereaza\n433979\ninsereaza\n157559\ninsereaza\n74087\ninsereaza\n-939937\ninsereaza\n-63791\ninsereaza\n-627469\ninsereaza\n-74672\ninsereaza\n977610\ninsereaza\n-257755\ninsereaza\n742765\ninsereaza\n161904\ninsereaza\n-303032\ninsereaza\n809569\ninsereaza\n797674\ninsereaza\n-481606\ninsereaza\n729719\ninsereaza\n957965\ninsereaza\n615903\ninsereaza\n-215995\ninsereaza\n780249\ninsereaza\n-350956\ninsereaza\n-727276\ninsereaza\n-537883\ninsereaza\n-569205\ninsereaza\n-663562\ninsereaza\n-142652\ninsereaza\n-807161\ninsereaza\n-2587\ninsereaza\n215950\ninsereaza\n583618\ninsereaza\n765244\ninsereaza\n742260\ninsereaza\n1069\ninsereaza\n-717870\ninsereaza\n523837\ninsereaza\n-622790\ninsereaza\n-30480\ninsereaza\n-471177\ninsereaza\n-549039\ninsereaza\n400060\ninsereaza\n-160831\ninsereaza\n206821\ninsereaza\n193595\ninsereaza\n-462731\ninsereaza\n383321\ninsereaza\n785597\ninsereaza\n385242\ninsereaza\n792561\ninsereaza\n-311151\ninsereaza\n-714755\ninsereaza\n547735\ninsereaza\n561825\ninsereaza\n910362\ninsereaza\n-265383\ninsereaza\n-763939\ninsereaza\n-751894\ninsereaza\n-523857\ninsereaza\n388873\ninsereaza\n447292\ninsereaza\n721763\ninsereaza\n-214041\ninsereaza\n-752517\ninsereaza\n297810\ninsereaza\n696823\ninsereaza\n339980\ninsereaza\n-749615\ninsereaza\n-539776\ninsereaza\n906747\ninsereaza\n855155\ninsereaza\n609554\ninsereaza\n173356\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "122\ninsereaza\n-957\ninsereaza\n813\ninsereaza\n377\ninsereaza\n-498\ninsereaza\n84\ninsereaza\n-382\ninsereaza\n735\ninsereaza\n569\ninsereaza\n-285\ninsereaza\n411\ninsereaza\n27\ninsereaza\n300\ninsereaza\n403\ninsereaza\n987\ninsereaza\n283\ninsereaza\n493\ninsereaza\n-925\ninsereaza\n309\ninsereaza\n-45\ninsereaza\n-648\ninsereaza\n500\ninsereaza\n680\ninsereaza\n289\ninsereaza\n808\ninsereaza\n632\ninsereaza\n73\ninsereaza\n77\ninsereaza\n-626\ninsereaza\n-146\ninsereaza\n-985\ninsereaza\n28\ninsereaza\n547\ninsereaza\n895\ninsereaza\n749\ninsereaza\n-368\ninsereaza\n-156\ninsereaza\n-42\ninsereaza\n-601\ninsereaza\n128\ninsereaza\n-814\ninsereaza\n-797\ninsereaza\n-177\ninsereaza\n-662\ninsereaza\n-828\ninsereaza\n-838\ninsereaza\n752\ninsereaza\n107\ninsereaza\n-635\ninsereaza\n136\ninsereaza\n576\ninsereaza\n260\ninsereaza\n396\ninsereaza\n-435\ninsereaza\n-1\ninsereaza\n762\ninsereaza\n445\ninsereaza\n-390\ninsereaza\n-172\ninsereaza\n-62\ninsereaza\n-724\nafiseaza\ninsereaza\n394\ninsereaza\n108\ninsereaza\n-9\ninsereaza\n841\ninsereaza\n843\ninsereaza\n100\ninsereaza\n-402\ninsereaza\n390\ninsereaza\n-276\ninsereaza\n433\ninsereaza\n-465\ninsereaza\n583\ninsereaza\n-530\ninsereaza\n-162\ninsereaza\n-234\ninsereaza\n662\ninsereaza\n5\ninsereaza\n-74\ninsereaza\n-697\ninsereaza\n-720\ninsereaza\n-17\ninsereaza\n-756\ninsereaza\n-344\ninsereaza\n514\ninsereaza\n919\ninsereaza\n-640\ninsereaza\n-794\ninsereaza\n188\ninsereaza\n-48\ninsereaza\n260\ninsereaza\n204\ninsereaza\n278\ninsereaza\n265\ninsereaza\n-356\ninsereaza\n-943\ninsereaza\n-525\ninsereaza\n743\ninsereaza\n-202\ninsereaza\n-68\ninsereaza\n151\ninsereaza\n-968\ninsereaza\n-912\ninsereaza\n273\ninsereaza\n52\ninsereaza\n705\ninsereaza\n496\ninsereaza\n-683\ninsereaza\n870\ninsereaza\n-234\ninsereaza\n-402\ninsereaza\n-192\ninsereaza\n128\ninsereaza\n706\ninsereaza\n121\ninsereaza\n196\ninsereaza\n952\ninsereaza\n-114\ninsereaza\n800\ninsereaza\n616\ninsereaza\n-134\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\ninsereaza\n0\nafiseaza\ninsereaza\n2\nafiseaza\ninsereaza\n4\nafiseaza\ninsereaza\n6\nafiseaza\ninsereaza\n8\nafiseaza\ninsereaza\n10\nafiseaza\ninsereaza\n12\nafiseaza\ninsereaza\n14\nafiseaza\ninsereaza\n16\nafiseaza\ninsereaza\n18\nafiseaza\ninsereaza\n20\nafiseaza\ninsereaza\n22\nafiseaza\ninsereaza\n24\nafiseaza\ninsereaza\n26\nafiseaza\ninsereaza\n28\nafiseaza\ninsereaza\n30\nafiseaza\ninsereaza\n32\nafiseaza\ninsereaza\n34\nafiseaza\ninsereaza\n36\nafiseaza\ninsereaza\n38\nafiseaza\ninsereaza\n40\nafiseaza\ninsereaza\n42\nafiseaza\ninsereaza\n44\nafiseaza\ninsereaza\n46\nafiseaza\ninsereaza\n48\nafiseaza\ninsereaza\n50\nafiseaza\ninsereaza\n52\nafiseaza\ninsereaza\n54\nafiseaza\ninsereaza\n56\nafiseaza\ninsereaza\n58\nafiseaza\n",
+      "generated": true
+    },
+    { "stdin": "4\ninsereaza\n-5\ninsereaza\n-4\ninsereaza\n-3\nafiseaza\n", "generated": true },
+    { "stdin": "3\ninsereaza\n1000000000\ninsereaza\n-1000000000\nafiseaza\n", "generated": true },
+    { "stdin": "3\ninsereaza\n1\ninsereaza\n2\ninsereaza\n3\n", "generated": true },
+    {
+      "stdin": "5\ninsereaza\n1\ninsereaza\n2\ninsereaza\n3\nafiseaza\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\ninsereaza\n5\ninsereaza\n-226\nafiseaza\nafiseaza\ninsereaza\n-830\ninsereaza\n909\ninsereaza\n-749\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "27\ninsereaza\n-251\ninsereaza\n488\ninsereaza\n662\ninsereaza\n-70\ninsereaza\n-316\nafiseaza\nafiseaza\nafiseaza\nafiseaza\ninsereaza\n-176\ninsereaza\n-157\ninsereaza\n-994\ninsereaza\n-355\ninsereaza\n493\ninsereaza\n-958\ninsereaza\n1\ninsereaza\n220\ninsereaza\n327\ninsereaza\n-694\ninsereaza\n16\nafiseaza\ninsereaza\n239\ninsereaza\n932\ninsereaza\n749\ninsereaza\n331\ninsereaza\n-176\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "34\ninsereaza\n277\ninsereaza\n868\nafiseaza\ninsereaza\n468\ninsereaza\n445\ninsereaza\n268\ninsereaza\n342\ninsereaza\n-929\ninsereaza\n621\nafiseaza\ninsereaza\n525\nafiseaza\ninsereaza\n-161\ninsereaza\n-88\ninsereaza\n-465\ninsereaza\n308\ninsereaza\n220\ninsereaza\n-330\ninsereaza\n-534\nafiseaza\ninsereaza\n864\nafiseaza\ninsereaza\n565\ninsereaza\n575\nafiseaza\ninsereaza\n-927\ninsereaza\n-36\nafiseaza\ninsereaza\n973\ninsereaza\n69\ninsereaza\n95\ninsereaza\n-157\ninsereaza\n-671\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "32\ninsereaza\n386\ninsereaza\n654\ninsereaza\n13\ninsereaza\n-13\ninsereaza\n-958\ninsereaza\n68\ninsereaza\n799\ninsereaza\n-413\ninsereaza\n-662\ninsereaza\n-393\ninsereaza\n-285\ninsereaza\n513\nafiseaza\ninsereaza\n700\ninsereaza\n-121\ninsereaza\n377\ninsereaza\n310\nafiseaza\ninsereaza\n-181\ninsereaza\n-103\ninsereaza\n360\nafiseaza\nafiseaza\nafiseaza\ninsereaza\n-261\ninsereaza\n621\ninsereaza\n-934\ninsereaza\n646\ninsereaza\n-398\ninsereaza\n-950\ninsereaza\n286\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "18\nafiseaza\nafiseaza\ninsereaza\n17\ninsereaza\n963\nafiseaza\ninsereaza\n472\ninsereaza\n-897\ninsereaza\n-713\ninsereaza\n945\ninsereaza\n38\nafiseaza\nafiseaza\nafiseaza\nafiseaza\ninsereaza\n-246\ninsereaza\n25\ninsereaza\n-659\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\ninsereaza\n898\ninsereaza\n-725\nafiseaza\ninsereaza\n353\ninsereaza\n233\ninsereaza\n681\ninsereaza\n-100\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "39\ninsereaza\n-775\nafiseaza\ninsereaza\n-745\ninsereaza\n-761\ninsereaza\n-460\ninsereaza\n340\ninsereaza\n764\ninsereaza\n-870\ninsereaza\n-550\ninsereaza\n-803\ninsereaza\n117\ninsereaza\n390\ninsereaza\n248\ninsereaza\n-571\nafiseaza\ninsereaza\n-896\nafiseaza\nafiseaza\ninsereaza\n-568\ninsereaza\n-582\ninsereaza\n-990\nafiseaza\ninsereaza\n523\nafiseaza\ninsereaza\n-721\nafiseaza\ninsereaza\n-733\nafiseaza\nafiseaza\ninsereaza\n425\ninsereaza\n-295\ninsereaza\n400\ninsereaza\n-65\nafiseaza\nafiseaza\nafiseaza\ninsereaza\n-311\nafiseaza\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "37\ninsereaza\n361\ninsereaza\n868\ninsereaza\n-73\nafiseaza\ninsereaza\n882\ninsereaza\n328\ninsereaza\n417\ninsereaza\n-135\ninsereaza\n-285\nafiseaza\ninsereaza\n-547\ninsereaza\n492\ninsereaza\n260\nafiseaza\nafiseaza\nafiseaza\ninsereaza\n587\ninsereaza\n671\ninsereaza\n-80\nafiseaza\ninsereaza\n-553\ninsereaza\n191\ninsereaza\n869\ninsereaza\n105\nafiseaza\nafiseaza\ninsereaza\n-421\ninsereaza\n-842\ninsereaza\n721\ninsereaza\n-251\ninsereaza\n646\ninsereaza\n-685\ninsereaza\n-187\ninsereaza\n740\nafiseaza\ninsereaza\n768\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\ninsereaza\n943\ninsereaza\n986\ninsereaza\n-990\ninsereaza\n738\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\ninsereaza\n-547\ninsereaza\n-520\ninsereaza\n95\ninsereaza\n771\nafiseaza\ninsereaza\n-434\ninsereaza\n-62\ninsereaza\n-830\ninsereaza\n17\nafiseaza\ninsereaza\n-835\nafiseaza\ninsereaza\n-570\ninsereaza\n506\ninsereaza\n-883\nafiseaza\ninsereaza\n-262\ninsereaza\n181\ninsereaza\n-857\ninsereaza\n-856\ninsereaza\n287\nafiseaza\nafiseaza\ninsereaza\n253\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "41\ninsereaza\n-975\ninsereaza\n-362\ninsereaza\n348\ninsereaza\n990\ninsereaza\n692\ninsereaza\n226\ninsereaza\n704\ninsereaza\n-897\ninsereaza\n58\nafiseaza\ninsereaza\n548\ninsereaza\n495\ninsereaza\n8\ninsereaza\n819\ninsereaza\n-230\ninsereaza\n159\ninsereaza\n109\ninsereaza\n-651\ninsereaza\n504\ninsereaza\n-259\ninsereaza\n-929\nafiseaza\ninsereaza\n848\nafiseaza\ninsereaza\n367\ninsereaza\n32\nafiseaza\ninsereaza\n-115\ninsereaza\n61\ninsereaza\n395\ninsereaza\n-3\ninsereaza\n772\ninsereaza\n-946\ninsereaza\n-481\ninsereaza\n-902\ninsereaza\n-372\ninsereaza\n-464\ninsereaza\n845\ninsereaza\n512\nafiseaza\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "14\ninsereaza\n321\ninsereaza\n944\ninsereaza\n-560\ninsereaza\n123\ninsereaza\n39\ninsereaza\n254\ninsereaza\n-889\nafiseaza\nafiseaza\ninsereaza\n-413\ninsereaza\n-385\nafiseaza\nafiseaza\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "13\nafiseaza\nafiseaza\ninsereaza\n727\ninsereaza\n-409\ninsereaza\n692\ninsereaza\n977\ninsereaza\n422\ninsereaza\n911\nafiseaza\ninsereaza\n30\ninsereaza\n665\ninsereaza\n-353\nafiseaza\n",
+      "generated": true
+    }
   ]
 }

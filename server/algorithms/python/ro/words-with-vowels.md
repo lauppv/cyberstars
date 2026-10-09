@@ -2,11 +2,11 @@ Având o propoziție, afișează fiecare cuvânt care conține **exact 2 vocale*
 
 ### Date de intrare
 
-O singură linie care conține o propoziție (cuvinte separate prin spații, doar litere).
+O singură linie de 1 până la 1000 de caractere care conține o propoziție cu cel puțin un cuvânt. Cuvintele conțin doar litere din alfabetul englez (`a`-`z`, `A`-`Z`) și sunt separate prin unul sau mai multe spații, iar linia poate începe sau se poate termina cu spații.
 
 ### Rezultat
 
-Cuvintele care se potrivesc, fiecare pe o linie separată, în ordinea în care apar. Dacă niciun cuvânt nu se potrivește, nu afișa nimic.
+Cuvintele care se potrivesc, fiecare pe o linie separată, în ordinea în care apar. Dacă niciun cuvânt nu se potrivește, nu afișa nimic. Vocalele sunt `a`, `e`, `i`, `o`, `u`, mari sau mici.
 
 ### Exemple
 

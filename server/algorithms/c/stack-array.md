@@ -9,7 +9,7 @@ Implement a **stack** data structure using an array. Read a sequence of commands
 - First line: an integer `M` (1 <= M <= 100), the number of commands
 - For each command:
   - Line 1: command type (`push`, `pop`, or `peek`)
-  - Only for `push`, line 2: the integer X
+  - Only for `push`, line 2: the integer X (-10^9 <= X <= 10^9)
 
 ### Output
 

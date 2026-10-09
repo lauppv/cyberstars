@@ -4,8 +4,9 @@ Citește latimea și înălțimea de la stdin, creează un obiect `Dreptunghi` �
 
 ### Date de intrare
 
-- Linia 1: latimea (număr întreg)
-- Linia 2: înălțimea (număr întreg)
+- Linia 1: latimea (număr întreg, 1 <= lățime <= 10^4)
+- Linia 2: înălțimea (număr întreg, 1 <= înălțime <= 10^4)
+- Cu aceste limite, aria (cel mult 10^8) și perimetrul încap mereu într-un `int`
 
 ### Rezultat
 

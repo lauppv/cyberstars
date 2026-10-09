@@ -2,7 +2,7 @@ Având un număr întreg, afișează **suma cifrelor sale**.
 
 ### Date de intrare
 
-O singură linie care conține un număr întreg `n` (poate fi negativ).
+O singură linie care conține un număr întreg `n` (poate fi negativ) cu cel mult 19 cifre, fără a număra semnul minus.
 
 ### Rezultat
 

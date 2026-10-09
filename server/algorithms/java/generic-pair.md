@@ -4,8 +4,8 @@ Read two values from stdin (a string and an integer), create a Pair, swap it, an
 
 ### Input
 
-- Line 1: a string value
-- Line 2: an integer value
+- Line 1: a string value (a single word with no spaces, 1 to 100 characters)
+- Line 2: an integer value (any `int` value)
 
 ### Output
 

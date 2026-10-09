@@ -4,6 +4,40 @@
     { "visible": true, "stdin": "3\ncircle\n5\nrectangle\n4\n6\ncircle\n3\n" },
     { "visible": true, "stdin": "1\nrectangle\n10\n10\n" },
     { "stdin": "0\n" },
-    { "stdin": "2\ncircle\n1\ncircle\n2\n" }
+    { "stdin": "2\ncircle\n1\ncircle\n2\n" },
+    { "stdin": "1\ncircle\n1\n", "generated": true },
+    { "stdin": "1\ncircle\n0.5\n", "generated": true },
+    { "stdin": "1\nrectangle\n0.5\n0.5\n", "generated": true },
+    { "stdin": "2\ncircle\n2.5\nrectangle\n1.5\n4.2\n", "generated": true },
+    { "stdin": "1\ncircle\n1000\n", "generated": true },
+    { "stdin": "1\ncircle\n0.01\n", "generated": true },
+    { "stdin": "1\nrectangle\n123.4\n56.7\n", "generated": true },
+    {
+      "stdin": "5\nrectangle\n1\n1\nrectangle\n1\n1\nrectangle\n1\n1\nrectangle\n1\n1\nrectangle\n1\n1\n",
+      "generated": true
+    },
+    { "stdin": "3\ncircle\n1\ncircle\n1\ncircle\n1\n", "generated": true },
+    {
+      "stdin": "3\nrectangle\n0.1\n0.2\nrectangle\n0.3\n0.4\nrectangle\n2\n3.5\n",
+      "generated": true
+    },
+    { "stdin": "3\ncircle\n7.5\ncircle\n0.25\nrectangle\n10\n0.1\n", "generated": true },
+    {
+      "stdin": "10\ncircle\n8.0\nrectangle\n7.2\n22.9\ncircle\n7.6\nrectangle\n15.5\n7.2\nrectangle\n24.1\n28.3\ncircle\n12.2\ncircle\n4.8\nrectangle\n15.9\n1.5\nrectangle\n17.4\n11.1\ncircle\n18.1\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\ncircle\n9.7\nrectangle\n6.9\n14.6\nrectangle\n13.3\n0.9\nrectangle\n33.2\n7.4\nrectangle\n6.5\n0.6\ncircle\n10.1\ncircle\n39.3\ncircle\n28.7\ncircle\n14.0\ncircle\n32.5\nrectangle\n1.3\n24.5\nrectangle\n16.5\n9.7\ncircle\n41.9\nrectangle\n4.9\n3.1\nrectangle\n20.4\n16.5\nrectangle\n16.1\n47.7\ncircle\n15.6\ncircle\n34.1\ncircle\n13.9\ncircle\n17.4\nrectangle\n29.6\n40.7\ncircle\n42.6\nrectangle\n5.0\n28.3\ncircle\n1.3\nrectangle\n41.6\n24.2\nrectangle\n14.7\n20.5\nrectangle\n29.4\n35.8\nrectangle\n33.6\n5.8\ncircle\n13.3\ncircle\n13.7\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\nrectangle\n28.9\n8.6\nrectangle\n21.1\n27.3\nrectangle\n42.3\n33.6\nrectangle\n33.8\n49.5\nrectangle\n21.0\n61.2\nrectangle\n9.6\n74.4\nrectangle\n14.5\n54.9\nrectangle\n14.6\n65.8\nrectangle\n64.0\n42.8\nrectangle\n46.5\n27.2\nrectangle\n24.4\n55.1\nrectangle\n81.5\n59.0\nrectangle\n2.7\n74.1\nrectangle\n2.9\n12.9\nrectangle\n94.6\n44.1\nrectangle\n21.4\n44.7\nrectangle\n58.5\n51.4\nrectangle\n18.4\n96.9\nrectangle\n71.6\n64.2\nrectangle\n25.5\n78.5\nrectangle\n76.7\n67.3\nrectangle\n45.8\n33.9\nrectangle\n25.4\n52.2\nrectangle\n87.6\n32.7\nrectangle\n4.3\n79.2\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\ncircle\n5.6\ncircle\n7.0\ncircle\n2.6\ncircle\n6.4\ncircle\n2.5\ncircle\n8.9\ncircle\n4.4\ncircle\n8.0\ncircle\n1.7\ncircle\n5.9\ncircle\n2.3\ncircle\n8.4\ncircle\n6.9\ncircle\n6.1\ncircle\n7.8\ncircle\n0.2\ncircle\n1.8\ncircle\n1.8\ncircle\n3.5\ncircle\n3.4\ncircle\n7.8\ncircle\n0.9\ncircle\n1.6\ncircle\n6.8\ncircle\n3.2\n",
+      "generated": true
+    },
+    { "stdin": "2\nrectangle\n250.5\n400\ncircle\n99.9\n", "generated": true }
   ]
 }

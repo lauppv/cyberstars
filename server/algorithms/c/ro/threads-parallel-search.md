@@ -6,7 +6,7 @@ La final, firul principal afișează cel mai mic index unde apare `tinta`, sau `
 
 - Prima linie: numărul întreg `N` (2 <= N <= 100)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -1000 și 1000)
-- Ultima linie: numărul întreg `tinta`
+- Ultima linie: numărul întreg `tinta` (între -1000 și 1000)
 
 ### Rezultat
 

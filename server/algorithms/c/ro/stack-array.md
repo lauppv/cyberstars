@@ -9,7 +9,7 @@ Implementează o structură de date de tip **stivă** folosind un tablou. Citeș
 - Prima linie: un întreg `M` (1 <= M <= 100), numărul de comenzi
 - Pentru fiecare comandă:
   - Linia 1: tipul comenzii (`pune`, `scoate` sau `varf`)
-  - Doar pentru `pune`, linia 2: numărul întreg X
+  - Doar pentru `pune`, linia 2: numărul întreg X (-10^9 <= X <= 10^9)
 
 ### Rezultat
 

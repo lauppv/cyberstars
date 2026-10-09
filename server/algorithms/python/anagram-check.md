@@ -5,7 +5,7 @@ Two strings are **anagrams** if they contain the exact same characters, just in 
 - Line 1: a string `a`.
 - Line 2: a string `b`.
 
-Both strings contain only letters (no spaces or punctuation).
+Both strings contain only English letters (`a`-`z`, `A`-`Z`, no spaces or punctuation) and are 1 to 1000 characters long.
 
 ### Output
 

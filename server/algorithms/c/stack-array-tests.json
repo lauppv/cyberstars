@@ -4,6 +4,90 @@
     { "visible": true, "stdin": "5\npush\n10\npush\n20\npeek\npop\npop\n" },
     { "visible": true, "stdin": "3\npop\npush\n5\npeek\n" },
     { "stdin": "5\npush\n1\npush\n2\npop\npop\npop\n" },
-    { "stdin": "4\npush\n7\npeek\npop\npeek\n" }
+    { "stdin": "4\npush\n7\npeek\npop\npeek\n" },
+    { "stdin": "1\npop\n", "generated": true },
+    { "stdin": "1\npeek\n", "generated": true },
+    { "stdin": "1\npush\n5\n", "generated": true },
+    { "stdin": "2\npush\n0\npeek\n", "generated": true },
+    { "stdin": "4\npush\n-1\npeek\npop\npop\n", "generated": true },
+    { "stdin": "3\npush\n0\npop\npop\n", "generated": true },
+    {
+      "stdin": "100\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\npop\npeek\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npush\n1\npush\n2\npush\n3\npush\n4\npush\n5\npush\n6\npush\n7\npush\n8\npush\n9\npush\n10\npush\n11\npush\n12\npush\n13\npush\n14\npush\n15\npush\n16\npush\n17\npush\n18\npush\n19\npush\n20\npush\n21\npush\n22\npush\n23\npush\n24\npush\n25\npush\n26\npush\n27\npush\n28\npush\n29\npush\n30\npush\n31\npush\n32\npush\n33\npush\n34\npush\n35\npush\n36\npush\n37\npush\n38\npush\n39\npush\n40\npush\n41\npush\n42\npush\n43\npush\n44\npush\n45\npush\n46\npush\n47\npush\n48\npush\n49\npush\n50\npush\n51\npush\n52\npush\n53\npush\n54\npush\n55\npush\n56\npush\n57\npush\n58\npush\n59\npush\n60\npush\n61\npush\n62\npush\n63\npush\n64\npush\n65\npush\n66\npush\n67\npush\n68\npush\n69\npush\n70\npush\n71\npush\n72\npush\n73\npush\n74\npush\n75\npush\n76\npush\n77\npush\n78\npush\n79\npush\n80\npush\n81\npush\n82\npush\n83\npush\n84\npush\n85\npush\n86\npush\n87\npush\n88\npush\n89\npush\n90\npush\n91\npush\n92\npush\n93\npush\n94\npush\n95\npush\n96\npush\n97\npush\n98\npush\n99\npeek\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npush\n1\npush\n2\npush\n3\npush\n4\npush\n5\npush\n6\npush\n7\npush\n8\npush\n9\npush\n10\npush\n11\npush\n12\npush\n13\npush\n14\npush\n15\npush\n16\npush\n17\npush\n18\npush\n19\npush\n20\npush\n21\npush\n22\npush\n23\npush\n24\npush\n25\npush\n26\npush\n27\npush\n28\npush\n29\npush\n30\npush\n31\npush\n32\npush\n33\npush\n34\npush\n35\npush\n36\npush\n37\npush\n38\npush\n39\npush\n40\npush\n41\npush\n42\npush\n43\npush\n44\npush\n45\npush\n46\npush\n47\npush\n48\npush\n49\npush\n50\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npush\n1\npush\n2\npush\n3\npush\n4\npush\n5\npush\n6\npush\n7\npush\n8\npush\n9\npush\n10\npush\n11\npush\n12\npush\n13\npush\n14\npush\n15\npush\n16\npush\n17\npush\n18\npush\n19\npush\n20\npush\n21\npush\n22\npush\n23\npush\n24\npush\n25\npush\n26\npush\n27\npush\n28\npush\n29\npush\n30\npush\n31\npush\n32\npush\n33\npush\n34\npush\n35\npush\n36\npush\n37\npush\n38\npush\n39\npush\n40\npush\n41\npush\n42\npush\n43\npush\n44\npush\n45\npush\n46\npush\n47\npush\n48\npush\n49\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npush\n0\npop\npush\n20\npop\npush\n40\npop\npush\n60\npop\npush\n80\npop\npush\n100\npop\npush\n120\npop\npush\n140\npop\npush\n160\npop\npush\n180\npop\npush\n200\npop\npush\n220\npop\npush\n240\npop\npush\n260\npop\npush\n280\npop\npush\n300\npop\npush\n320\npop\npush\n340\npop\npush\n360\npop\npush\n380\npop\npush\n400\npop\npush\n420\npop\npush\n440\npop\npush\n460\npop\npush\n480\npop\npush\n500\npop\npush\n520\npop\npush\n540\npop\npush\n560\npop\npush\n580\npop\npush\n600\npop\npush\n620\npop\npush\n640\npop\npush\n660\npop\npush\n680\npop\npush\n700\npop\npush\n720\npop\npush\n740\npop\npush\n760\npop\npush\n780\npop\npush\n800\npop\npush\n820\npop\npush\n840\npop\npush\n860\npop\npush\n880\npop\npush\n900\npop\npush\n920\npop\npush\n940\npop\npush\n960\npop\npush\n980\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "99\npush\n0\npush\n-1\npeek\npush\n-3\npush\n-4\npeek\npush\n-6\npush\n-7\npeek\npush\n-9\npush\n-10\npeek\npush\n-12\npush\n-13\npeek\npush\n-15\npush\n-16\npeek\npush\n-18\npush\n-19\npeek\npush\n-21\npush\n-22\npeek\npush\n-24\npush\n-25\npeek\npush\n-27\npush\n-28\npeek\npush\n-30\npush\n-31\npeek\npush\n-33\npush\n-34\npeek\npush\n-36\npush\n-37\npeek\npush\n-39\npush\n-40\npeek\npush\n-42\npush\n-43\npeek\npush\n-45\npush\n-46\npeek\npush\n-48\npush\n-49\npeek\npush\n-51\npush\n-52\npeek\npush\n-54\npush\n-55\npeek\npush\n-57\npush\n-58\npeek\npush\n-60\npush\n-61\npeek\npush\n-63\npush\n-64\npeek\npush\n-66\npush\n-67\npeek\npush\n-69\npush\n-70\npeek\npush\n-72\npush\n-73\npeek\npush\n-75\npush\n-76\npeek\npush\n-78\npush\n-79\npeek\npush\n-81\npush\n-82\npeek\npush\n-84\npush\n-85\npeek\npush\n-87\npush\n-88\npeek\npush\n-90\npush\n-91\npeek\npush\n-93\npush\n-94\npeek\npush\n-96\npush\n-97\npeek\n",
+      "generated": true
+    },
+    { "stdin": "6\npush\n7\npeek\npeek\npeek\npop\npeek\n", "generated": true },
+    { "stdin": "7\npush\n1\npush\n2\npop\npush\n3\npop\npop\npop\n", "generated": true },
+    { "stdin": "5\npush\n-5\npush\n-6\npeek\npop\npeek\n", "generated": true },
+    { "stdin": "4\npush\n1000000000\npush\n-1000000000\npop\npop\n", "generated": true },
+    { "stdin": "7\npush\n4\npush\n4\npush\n4\npop\npop\npop\npop\n", "generated": true },
+    {
+      "stdin": "12\npeek\npop\npop\npeek\npush\n627\npop\npush\n-791\npeek\npush\n88\npush\n513\npush\n711\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "16\npush\n-805\npop\npop\npush\n249\npop\npeek\npeek\npeek\npush\n-68\npush\n-58\npush\n-541\npop\npop\npush\n-784\npeek\npush\n88\n",
+      "generated": true
+    },
+    {
+      "stdin": "53\npush\n679\npeek\npeek\npush\n355\npeek\npop\npush\n-788\npop\npush\n651\npop\npop\npush\n187\npush\n923\npop\npop\npush\n-156\npop\npeek\npush\n-535\npop\npop\npop\npop\npeek\npeek\npop\npush\n-807\npush\n769\npush\n-699\npop\npush\n-798\npop\npush\n-560\npush\n867\npush\n-91\npush\n-336\npeek\npush\n-599\npop\npush\n-821\npush\n-570\npeek\npop\npeek\npop\npop\npop\npop\npush\n119\npush\n-841\npush\n-962\npeek\npeek\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\npush\n396\npop\npop\npop\npush\n856\npush\n-636\npeek\npush\n688\npop\npush\n864\npush\n-484\npush\n737\npeek\npeek\npush\n513\npush\n-499\npop\npop\npush\n617\npush\n935\npop\npeek\npush\n-578\npush\n211\npush\n-596\npeek\npop\npeek\npeek\npop\n",
+      "generated": true
+    },
+    { "stdin": "8\npop\npop\npop\npop\npop\npeek\npeek\npop\n", "generated": true },
+    {
+      "stdin": "55\npush\n143\npush\n-393\npeek\npush\n-96\npop\npush\n-546\npush\n772\npop\npeek\npeek\npop\npush\n746\npeek\npeek\npop\npop\npush\n-817\npop\npop\npeek\npop\npeek\npop\npop\npush\n-971\npop\npush\n954\npush\n805\npush\n360\npeek\npush\n142\npush\n833\npush\n134\npeek\npush\n725\npush\n-932\npeek\npop\npeek\npush\n570\npop\npop\npop\npush\n775\npush\n-527\npush\n-313\npeek\npop\npeek\npop\npush\n524\npeek\npop\npush\n-99\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "51\npush\n-178\npush\n-354\npop\npop\npop\npeek\npeek\npop\npush\n103\npeek\npush\n-461\npop\npop\npush\n400\npush\n-775\npush\n-940\npush\n-216\npush\n-598\npop\npush\n87\npop\npush\n992\npeek\npush\n-988\npop\npop\npeek\npush\n116\npush\n427\npush\n-545\npush\n-448\npush\n-816\npush\n580\npeek\npush\n840\npush\n-381\npush\n-936\npop\npop\npeek\npeek\npush\n890\npeek\npush\n81\npush\n-167\npush\n-457\npop\npop\npush\n-10\npush\n888\npush\n-422\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\npeek\npop\npeek\npush\n970\npop\npush\n-318\npush\n-786\npop\npeek\npeek\npush\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "55\npush\n265\npush\n890\npush\n565\npop\npush\n-351\npush\n-202\npop\npush\n-65\npop\npush\n-907\npeek\npop\npush\n-275\npop\npush\n975\npeek\npush\n-608\npush\n-889\npeek\npush\n-901\npop\npeek\npop\npush\n-823\npop\npush\n731\npush\n222\npop\npush\n-681\npush\n-450\npop\npush\n694\npush\n470\npush\n369\npush\n-232\npeek\npop\npush\n775\npush\n-781\npop\npop\npop\npush\n-832\npush\n904\npush\n306\npush\n955\npush\n-618\npop\npush\n-447\npush\n482\npush\n-193\npush\n-14\npop\npop\npush\n156\n",
+      "generated": true
+    },
+    {
+      "stdin": "32\npush\n176\npush\n-802\npop\npop\npush\n-764\npop\npop\npop\npush\n329\npop\npop\npush\n64\npush\n-174\npop\npeek\npop\npop\npush\n250\npop\npop\npush\n-586\npush\n682\npush\n-54\npop\npush\n-975\npush\n832\npop\npush\n127\npush\n988\npush\n-94\npush\n882\npeek\n",
+      "generated": true
+    },
+    {
+      "stdin": "14\npop\npush\n774\npeek\npush\n-230\npeek\npop\npush\n234\npush\n-650\npush\n-642\npeek\npush\n-784\npeek\npush\n157\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "36\npush\n63\npop\npop\npush\n919\npop\npeek\npeek\npeek\npush\n221\npop\npop\npush\n-73\npush\n-787\npeek\npeek\npop\npeek\npush\n757\npop\npop\npop\npeek\npeek\npop\npop\npush\n679\npush\n643\npop\npush\n-149\npop\npeek\npush\n506\npush\n603\npop\npeek\npop\n",
+      "generated": true
+    }
   ]
 }

@@ -4,8 +4,8 @@ Citește două valori de la stdin (un șir și un număr întreg), creează un P
 
 ### Date de intrare
 
-- Linia 1: o valoare de tip șir
-- Linia 2: o valoare întreagă
+- Linia 1: o valoare de tip șir (un singur cuvânt fără spații, între 1 și 100 de caractere)
+- Linia 2: o valoare întreagă (orice valoare de tip `int`)
 
 ### Rezultat
 

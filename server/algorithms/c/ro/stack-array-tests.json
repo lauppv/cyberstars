@@ -4,6 +4,99 @@
     { "visible": true, "stdin": "5\npune\n10\npune\n20\nvarf\nscoate\nscoate\n" },
     { "visible": true, "stdin": "3\nscoate\npune\n5\nvarf\n" },
     { "stdin": "5\npune\n1\npune\n2\nscoate\nscoate\nscoate\n" },
-    { "stdin": "4\npune\n7\nvarf\nscoate\nvarf\n" }
+    { "stdin": "4\npune\n7\nvarf\nscoate\nvarf\n" },
+    { "stdin": "1\nscoate\n", "generated": true },
+    { "stdin": "1\nvarf\n", "generated": true },
+    { "stdin": "1\npune\n5\n", "generated": true },
+    { "stdin": "2\npune\n0\nvarf\n", "generated": true },
+    { "stdin": "4\npune\n-1\nvarf\nscoate\nscoate\n", "generated": true },
+    { "stdin": "3\npune\n0\nscoate\nscoate\n", "generated": true },
+    {
+      "stdin": "100\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\nscoate\nvarf\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npune\n1\npune\n2\npune\n3\npune\n4\npune\n5\npune\n6\npune\n7\npune\n8\npune\n9\npune\n10\npune\n11\npune\n12\npune\n13\npune\n14\npune\n15\npune\n16\npune\n17\npune\n18\npune\n19\npune\n20\npune\n21\npune\n22\npune\n23\npune\n24\npune\n25\npune\n26\npune\n27\npune\n28\npune\n29\npune\n30\npune\n31\npune\n32\npune\n33\npune\n34\npune\n35\npune\n36\npune\n37\npune\n38\npune\n39\npune\n40\npune\n41\npune\n42\npune\n43\npune\n44\npune\n45\npune\n46\npune\n47\npune\n48\npune\n49\npune\n50\npune\n51\npune\n52\npune\n53\npune\n54\npune\n55\npune\n56\npune\n57\npune\n58\npune\n59\npune\n60\npune\n61\npune\n62\npune\n63\npune\n64\npune\n65\npune\n66\npune\n67\npune\n68\npune\n69\npune\n70\npune\n71\npune\n72\npune\n73\npune\n74\npune\n75\npune\n76\npune\n77\npune\n78\npune\n79\npune\n80\npune\n81\npune\n82\npune\n83\npune\n84\npune\n85\npune\n86\npune\n87\npune\n88\npune\n89\npune\n90\npune\n91\npune\n92\npune\n93\npune\n94\npune\n95\npune\n96\npune\n97\npune\n98\npune\n99\nvarf\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npune\n1\npune\n2\npune\n3\npune\n4\npune\n5\npune\n6\npune\n7\npune\n8\npune\n9\npune\n10\npune\n11\npune\n12\npune\n13\npune\n14\npune\n15\npune\n16\npune\n17\npune\n18\npune\n19\npune\n20\npune\n21\npune\n22\npune\n23\npune\n24\npune\n25\npune\n26\npune\n27\npune\n28\npune\n29\npune\n30\npune\n31\npune\n32\npune\n33\npune\n34\npune\n35\npune\n36\npune\n37\npune\n38\npune\n39\npune\n40\npune\n41\npune\n42\npune\n43\npune\n44\npune\n45\npune\n46\npune\n47\npune\n48\npune\n49\npune\n50\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npune\n1\npune\n2\npune\n3\npune\n4\npune\n5\npune\n6\npune\n7\npune\n8\npune\n9\npune\n10\npune\n11\npune\n12\npune\n13\npune\n14\npune\n15\npune\n16\npune\n17\npune\n18\npune\n19\npune\n20\npune\n21\npune\n22\npune\n23\npune\n24\npune\n25\npune\n26\npune\n27\npune\n28\npune\n29\npune\n30\npune\n31\npune\n32\npune\n33\npune\n34\npune\n35\npune\n36\npune\n37\npune\n38\npune\n39\npune\n40\npune\n41\npune\n42\npune\n43\npune\n44\npune\n45\npune\n46\npune\n47\npune\n48\npune\n49\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npune\n0\nscoate\npune\n20\nscoate\npune\n40\nscoate\npune\n60\nscoate\npune\n80\nscoate\npune\n100\nscoate\npune\n120\nscoate\npune\n140\nscoate\npune\n160\nscoate\npune\n180\nscoate\npune\n200\nscoate\npune\n220\nscoate\npune\n240\nscoate\npune\n260\nscoate\npune\n280\nscoate\npune\n300\nscoate\npune\n320\nscoate\npune\n340\nscoate\npune\n360\nscoate\npune\n380\nscoate\npune\n400\nscoate\npune\n420\nscoate\npune\n440\nscoate\npune\n460\nscoate\npune\n480\nscoate\npune\n500\nscoate\npune\n520\nscoate\npune\n540\nscoate\npune\n560\nscoate\npune\n580\nscoate\npune\n600\nscoate\npune\n620\nscoate\npune\n640\nscoate\npune\n660\nscoate\npune\n680\nscoate\npune\n700\nscoate\npune\n720\nscoate\npune\n740\nscoate\npune\n760\nscoate\npune\n780\nscoate\npune\n800\nscoate\npune\n820\nscoate\npune\n840\nscoate\npune\n860\nscoate\npune\n880\nscoate\npune\n900\nscoate\npune\n920\nscoate\npune\n940\nscoate\npune\n960\nscoate\npune\n980\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "99\npune\n0\npune\n-1\nvarf\npune\n-3\npune\n-4\nvarf\npune\n-6\npune\n-7\nvarf\npune\n-9\npune\n-10\nvarf\npune\n-12\npune\n-13\nvarf\npune\n-15\npune\n-16\nvarf\npune\n-18\npune\n-19\nvarf\npune\n-21\npune\n-22\nvarf\npune\n-24\npune\n-25\nvarf\npune\n-27\npune\n-28\nvarf\npune\n-30\npune\n-31\nvarf\npune\n-33\npune\n-34\nvarf\npune\n-36\npune\n-37\nvarf\npune\n-39\npune\n-40\nvarf\npune\n-42\npune\n-43\nvarf\npune\n-45\npune\n-46\nvarf\npune\n-48\npune\n-49\nvarf\npune\n-51\npune\n-52\nvarf\npune\n-54\npune\n-55\nvarf\npune\n-57\npune\n-58\nvarf\npune\n-60\npune\n-61\nvarf\npune\n-63\npune\n-64\nvarf\npune\n-66\npune\n-67\nvarf\npune\n-69\npune\n-70\nvarf\npune\n-72\npune\n-73\nvarf\npune\n-75\npune\n-76\nvarf\npune\n-78\npune\n-79\nvarf\npune\n-81\npune\n-82\nvarf\npune\n-84\npune\n-85\nvarf\npune\n-87\npune\n-88\nvarf\npune\n-90\npune\n-91\nvarf\npune\n-93\npune\n-94\nvarf\npune\n-96\npune\n-97\nvarf\n",
+      "generated": true
+    },
+    { "stdin": "6\npune\n7\nvarf\nvarf\nvarf\nscoate\nvarf\n", "generated": true },
+    {
+      "stdin": "7\npune\n1\npune\n2\nscoate\npune\n3\nscoate\nscoate\nscoate\n",
+      "generated": true
+    },
+    { "stdin": "5\npune\n-5\npune\n-6\nvarf\nscoate\nvarf\n", "generated": true },
+    { "stdin": "4\npune\n1000000000\npune\n-1000000000\nscoate\nscoate\n", "generated": true },
+    {
+      "stdin": "7\npune\n4\npune\n4\npune\n4\nscoate\nscoate\nscoate\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "12\nvarf\nscoate\nscoate\nvarf\npune\n627\nscoate\npune\n-791\nvarf\npune\n88\npune\n513\npune\n711\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "16\npune\n-805\nscoate\nscoate\npune\n249\nscoate\nvarf\nvarf\nvarf\npune\n-68\npune\n-58\npune\n-541\nscoate\nscoate\npune\n-784\nvarf\npune\n88\n",
+      "generated": true
+    },
+    {
+      "stdin": "53\npune\n679\nvarf\nvarf\npune\n355\nvarf\nscoate\npune\n-788\nscoate\npune\n651\nscoate\nscoate\npune\n187\npune\n923\nscoate\nscoate\npune\n-156\nscoate\nvarf\npune\n-535\nscoate\nscoate\nscoate\nscoate\nvarf\nvarf\nscoate\npune\n-807\npune\n769\npune\n-699\nscoate\npune\n-798\nscoate\npune\n-560\npune\n867\npune\n-91\npune\n-336\nvarf\npune\n-599\nscoate\npune\n-821\npune\n-570\nvarf\nscoate\nvarf\nscoate\nscoate\nscoate\nscoate\npune\n119\npune\n-841\npune\n-962\nvarf\nvarf\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\npune\n396\nscoate\nscoate\nscoate\npune\n856\npune\n-636\nvarf\npune\n688\nscoate\npune\n864\npune\n-484\npune\n737\nvarf\nvarf\npune\n513\npune\n-499\nscoate\nscoate\npune\n617\npune\n935\nscoate\nvarf\npune\n-578\npune\n211\npune\n-596\nvarf\nscoate\nvarf\nvarf\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nscoate\nscoate\nscoate\nscoate\nscoate\nvarf\nvarf\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "55\npune\n143\npune\n-393\nvarf\npune\n-96\nscoate\npune\n-546\npune\n772\nscoate\nvarf\nvarf\nscoate\npune\n746\nvarf\nvarf\nscoate\nscoate\npune\n-817\nscoate\nscoate\nvarf\nscoate\nvarf\nscoate\nscoate\npune\n-971\nscoate\npune\n954\npune\n805\npune\n360\nvarf\npune\n142\npune\n833\npune\n134\nvarf\npune\n725\npune\n-932\nvarf\nscoate\nvarf\npune\n570\nscoate\nscoate\nscoate\npune\n775\npune\n-527\npune\n-313\nvarf\nscoate\nvarf\nscoate\npune\n524\nvarf\nscoate\npune\n-99\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "51\npune\n-178\npune\n-354\nscoate\nscoate\nscoate\nvarf\nvarf\nscoate\npune\n103\nvarf\npune\n-461\nscoate\nscoate\npune\n400\npune\n-775\npune\n-940\npune\n-216\npune\n-598\nscoate\npune\n87\nscoate\npune\n992\nvarf\npune\n-988\nscoate\nscoate\nvarf\npune\n116\npune\n427\npune\n-545\npune\n-448\npune\n-816\npune\n580\nvarf\npune\n840\npune\n-381\npune\n-936\nscoate\nscoate\nvarf\nvarf\npune\n890\nvarf\npune\n81\npune\n-167\npune\n-457\nscoate\nscoate\npune\n-10\npune\n888\npune\n-422\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nvarf\nscoate\nvarf\npune\n970\nscoate\npune\n-318\npune\n-786\nscoate\nvarf\nvarf\npune\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "55\npune\n265\npune\n890\npune\n565\nscoate\npune\n-351\npune\n-202\nscoate\npune\n-65\nscoate\npune\n-907\nvarf\nscoate\npune\n-275\nscoate\npune\n975\nvarf\npune\n-608\npune\n-889\nvarf\npune\n-901\nscoate\nvarf\nscoate\npune\n-823\nscoate\npune\n731\npune\n222\nscoate\npune\n-681\npune\n-450\nscoate\npune\n694\npune\n470\npune\n369\npune\n-232\nvarf\nscoate\npune\n775\npune\n-781\nscoate\nscoate\nscoate\npune\n-832\npune\n904\npune\n306\npune\n955\npune\n-618\nscoate\npune\n-447\npune\n482\npune\n-193\npune\n-14\nscoate\nscoate\npune\n156\n",
+      "generated": true
+    },
+    {
+      "stdin": "32\npune\n176\npune\n-802\nscoate\nscoate\npune\n-764\nscoate\nscoate\nscoate\npune\n329\nscoate\nscoate\npune\n64\npune\n-174\nscoate\nvarf\nscoate\nscoate\npune\n250\nscoate\nscoate\npune\n-586\npune\n682\npune\n-54\nscoate\npune\n-975\npune\n832\nscoate\npune\n127\npune\n988\npune\n-94\npune\n882\nvarf\n",
+      "generated": true
+    },
+    {
+      "stdin": "14\nscoate\npune\n774\nvarf\npune\n-230\nvarf\nscoate\npune\n234\npune\n-650\npune\n-642\nvarf\npune\n-784\nvarf\npune\n157\nscoate\n",
+      "generated": true
+    },
+    {
+      "stdin": "36\npune\n63\nscoate\nscoate\npune\n919\nscoate\nvarf\nvarf\nvarf\npune\n221\nscoate\nscoate\npune\n-73\npune\n-787\nvarf\nvarf\nscoate\nvarf\npune\n757\nscoate\nscoate\nscoate\nvarf\nvarf\nscoate\nscoate\npune\n679\npune\n643\nscoate\npune\n-149\nscoate\nvarf\npune\n506\npune\n603\nscoate\nvarf\nscoate\n",
+      "generated": true
+    }
   ]
 }

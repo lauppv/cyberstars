@@ -5,8 +5,8 @@ Binary search works by repeatedly halving the search range. Compare the target w
 ### Input
 
 - First line: an integer `N` (1 <= N <= 1000)
-- The next `N` lines: one integer per line, sorted in ascending order
-- The next line: an integer `target`, the value to search for
+- The next `N` lines: one integer per line (each between -10^6 and 10^6), sorted in ascending order
+- The next line: an integer `target` (between -10^6 and 10^6), the value to search for
 
 ### Output
 

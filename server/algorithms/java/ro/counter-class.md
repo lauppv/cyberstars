@@ -8,7 +8,7 @@ Contorul pornește de la **0**. Citește comenzile de la stdin (una pe linie): `
 
 ### Date de intrare
 
-- Linia 1: un număr întreg N, numărul de comenzi
+- Linia 1: un număr întreg N, numărul de comenzi (0 <= N <= 1000)
 - Următoarele N linii: o comandă (`creste`, `scade` sau `arata`)
 
 ### Rezultat

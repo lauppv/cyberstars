@@ -2,7 +2,7 @@ Având un număr întreg, determină dacă este **par** sau **impar**.
 
 ### Date de intrare
 
-O singură linie care conține un număr întreg `n`.
+O singură linie care conține un număr întreg `n` (poate fi negativ) cu cel mult 19 cifre, fără a număra semnul minus.
 
 ### Rezultat
 

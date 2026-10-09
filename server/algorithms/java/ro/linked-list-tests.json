@@ -7,6 +7,58 @@
     },
     { "visible": true, "stdin": "4\nadauga\n5\nelimina\n5\nelimina\n5\nafiseaza\n" },
     { "stdin": "5\nadauga\n1\nadauga\n2\nadauga\n3\nelimina\n1\nafiseaza\n" },
-    { "stdin": "3\nafiseaza\nadauga\n7\nafiseaza\n" }
+    { "stdin": "3\nafiseaza\nadauga\n7\nafiseaza\n" },
+    { "stdin": "1\nafiseaza\n", "generated": true },
+    { "stdin": "2\nelimina\n1\nafiseaza\n", "generated": true },
+    { "stdin": "2\nadauga\n42\nafiseaza\n", "generated": true },
+    {
+      "stdin": "7\nadauga\n1\nadauga\n2\nadauga\n3\nelimina\n3\nafiseaza\nadauga\n4\nafiseaza\n",
+      "generated": true
+    },
+    { "stdin": "5\nadauga\n1\nadauga\n2\nelimina\n2\nadauga\n3\nafiseaza\n", "generated": true },
+    {
+      "stdin": "9\nadauga\n1\nadauga\n2\nadauga\n1\nadauga\n3\nadauga\n1\nelimina\n1\nafiseaza\nelimina\n1\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nadauga\n5\nadauga\n6\nadauga\n7\nelimina\n5\nelimina\n6\nelimina\n7\nafiseaza\nadauga\n8\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nadauga\n0\nadauga\n-1\nadauga\n-20\nadauga\n0\nelimina\n0\nafiseaza\nelimina\n-20\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadauga\n2147483647\nadauga\n-2147483648\nadauga\n0\nafiseaza\nelimina\n-2147483648\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nadauga\n9\nadauga\n9\nadauga\n9\nadauga\n9\nelimina\n9\nafiseaza\nelimina\n9\nelimina\n9\nelimina\n9\nelimina\n9\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadauga\n10\nadauga\n20\nadauga\n30\nelimina\n40\nelimina\n15\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "16\nadauga\n3\nafiseaza\nadauga\n1\nafiseaza\nadauga\n4\nafiseaza\nadauga\n1\nafiseaza\nadauga\n5\nafiseaza\nelimina\n1\nafiseaza\nelimina\n5\nafiseaza\nelimina\n3\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "61\nadauga\n505\nadauga\n801\nadauga\n-885\nadauga\n-258\nadauga\n364\nadauga\n-111\nadauga\n351\nadauga\n-283\nadauga\n-727\nadauga\n-70\nadauga\n-28\nadauga\n-73\nadauga\n-665\nadauga\n367\nadauga\n832\nadauga\n-632\nadauga\n340\nadauga\n-383\nadauga\n-962\nadauga\n754\nadauga\n538\nadauga\n-319\nadauga\n-155\nadauga\n-308\nadauga\n-801\nadauga\n522\nadauga\n-203\nadauga\n-814\nadauga\n-150\nadauga\n102\nadauga\n951\nadauga\n539\nadauga\n-858\nadauga\n14\nadauga\n-561\nadauga\n34\nadauga\n585\nadauga\n-931\nadauga\n149\nadauga\n-561\nadauga\n-706\nadauga\n327\nadauga\n-121\nadauga\n-128\nadauga\n253\nadauga\n310\nadauga\n-337\nadauga\n503\nadauga\n539\nadauga\n487\nadauga\n-736\nadauga\n283\nadauga\n818\nadauga\n-128\nadauga\n179\nadauga\n-998\nadauga\n-848\nadauga\n-636\nadauga\n93\nadauga\n-107\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\nadauga\n-4\nelimina\n-40\nelimina\n-41\nadauga\n-9\nelimina\n-22\nelimina\n-7\nadauga\n13\nadauga\n-10\nadauga\n33\nafiseaza\nafiseaza\nadauga\n-48\nadauga\n-44\nafiseaza\nadauga\n43\nadauga\n26\nadauga\n16\nelimina\n-7\nadauga\n-42\nafiseaza\nadauga\n-33\nelimina\n-21\nafiseaza\nadauga\n-50\nelimina\n25\nelimina\n9\nafiseaza\nafiseaza\nafiseaza\nadauga\n3\nadauga\n17\nadauga\n2\nafiseaza\nelimina\n29\nadauga\n-23\nelimina\n33\nafiseaza\nadauga\n38\nelimina\n34\nelimina\n34\nadauga\n-46\nadauga\n-21\nadauga\n17\nadauga\n23\nadauga\n33\nafiseaza\nadauga\n9\nadauga\n16\nadauga\n-42\nafiseaza\nadauga\n-38\nafiseaza\nadauga\n47\nelimina\n29\nelimina\n18\nafiseaza\nafiseaza\nafiseaza\nadauga\n22\nafiseaza\n",
+      "generated": true
+    },
+    {
+      "stdin": "120\nadauga\n2\nadauga\n9\nadauga\n4\nadauga\n8\nafiseaza\nelimina\n9\nafiseaza\nadauga\n1\nadauga\n9\nelimina\n6\nafiseaza\nelimina\n7\nelimina\n4\nafiseaza\nadauga\n1\nelimina\n0\nafiseaza\nadauga\n7\nadauga\n3\nadauga\n1\nadauga\n7\nelimina\n8\nafiseaza\nadauga\n8\nadauga\n3\nadauga\n9\nafiseaza\nadauga\n3\nelimina\n3\nadauga\n4\nadauga\n8\nafiseaza\nadauga\n6\nelimina\n9\nafiseaza\nadauga\n1\nelimina\n5\nafiseaza\nafiseaza\nadauga\n5\nadauga\n7\nafiseaza\nadauga\n2\nadauga\n8\nafiseaza\nafiseaza\nafiseaza\nafiseaza\nafiseaza\nadauga\n4\nadauga\n4\nelimina\n6\nadauga\n8\nelimina\n0\nelimina\n6\nelimina\n2\nelimina\n8\nadauga\n2\nadauga\n0\nelimina\n2\nelimina\n8\nafiseaza\nelimina\n8\nadauga\n6\nelimina\n5\nadauga\n1\nadauga\n2\nafiseaza\nafiseaza\nelimina\n7\nadauga\n2\nelimina\n7\nadauga\n1\nafiseaza\nafiseaza\nadauga\n7\nafiseaza\nelimina\n7\nadauga\n4\nadauga\n9\nadauga\n3\nadauga\n4\nafiseaza\nadauga\n0\nelimina\n2\nadauga\n8\nadauga\n3\nadauga\n0\nafiseaza\nelimina\n5\nadauga\n0\nelimina\n1\nelimina\n0\nafiseaza\nelimina\n9\nafiseaza\nadauga\n7\nadauga\n6\nadauga\n9\nafiseaza\nadauga\n5\nadauga\n7\nadauga\n6\nadauga\n3\nelimina\n5\nafiseaza\nadauga\n3\nadauga\n0\nafiseaza\nelimina\n9\nadauga\n0\nafiseaza\nadauga\n2\nadauga\n8\nadauga\n7\nafiseaza\nadauga\n4\nadauga\n4\nelimina\n6\nadauga\n8\n",
+      "generated": true
+    },
+    {
+      "stdin": "76\nadauga\n1\nadauga\n2\nadauga\n3\nadauga\n4\nadauga\n5\nadauga\n6\nadauga\n7\nadauga\n8\nadauga\n9\nadauga\n10\nadauga\n11\nadauga\n12\nadauga\n13\nadauga\n14\nadauga\n15\nadauga\n16\nadauga\n17\nadauga\n18\nadauga\n19\nadauga\n20\nadauga\n21\nadauga\n22\nadauga\n23\nadauga\n24\nadauga\n25\nadauga\n26\nadauga\n27\nadauga\n28\nadauga\n29\nadauga\n30\nadauga\n31\nadauga\n32\nadauga\n33\nadauga\n34\nadauga\n35\nadauga\n36\nadauga\n37\nadauga\n38\nadauga\n39\nadauga\n40\nadauga\n41\nadauga\n42\nadauga\n43\nadauga\n44\nadauga\n45\nadauga\n46\nadauga\n47\nadauga\n48\nadauga\n49\nadauga\n50\nelimina\n1\nelimina\n3\nelimina\n5\nelimina\n7\nelimina\n9\nelimina\n11\nelimina\n13\nelimina\n15\nelimina\n17\nelimina\n19\nelimina\n21\nelimina\n23\nelimina\n25\nelimina\n27\nelimina\n29\nelimina\n31\nelimina\n33\nelimina\n35\nelimina\n37\nelimina\n39\nelimina\n41\nelimina\n43\nelimina\n45\nelimina\n47\nelimina\n49\nafiseaza\n",
+      "generated": true
+    }
   ]
 }

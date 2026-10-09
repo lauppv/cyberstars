@@ -3,7 +3,7 @@ Read an integer **N**, then read **N** integers. Print how many of them are **ev
 ### Input
 
 - First line: an integer `N` (1 <= N <= 100)
-- The next `N` lines: one integer per line
+- The next `N` lines: one integer per line (-10^9 <= x <= 10^9)
 
 ### Output
 

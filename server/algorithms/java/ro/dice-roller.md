@@ -6,9 +6,9 @@ Citește numărul de fețe, seed-ul și numărul de aruncări de la stdin. Creea
 
 ### Date de intrare
 
-- Linia 1: numărul de fețe (număr întreg)
-- Linia 2: seed (număr întreg)
-- Linia 3: numărul de aruncări (număr întreg)
+- Linia 1: numărul de fețe (număr întreg, cel puțin 1; orice valoare pozitivă de tip `int`)
+- Linia 2: seed (număr întreg, orice valoare de tip `int`)
+- Linia 3: numărul de aruncări (număr întreg, 0 <= aruncări <= 200)
 
 ### Rezultat
 

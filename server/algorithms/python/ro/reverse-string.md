@@ -2,7 +2,7 @@ Având o singură linie de text, afișeaz-o **inversată**.
 
 ### Date de intrare
 
-O singură linie care conține un șir `s`.
+O singură linie care conține un șir `s` de 1 până la 1000 de caractere ASCII (litere, cifre, spații și semne de punctuație). Spațiile pot apărea oriunde, inclusiv mai multe la rând sau la începutul ori la sfârșitul liniei, și se inversează ca orice alt caracter.
 
 ### Rezultat
 

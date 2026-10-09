@@ -4,8 +4,8 @@ Bubble sort works by repeatedly stepping through the list, comparing adjacent el
 
 ### Input
 
-- Line 1: integer N, the number of elements
-- The next N lines: one integer per line
+- Line 1: integer N, the number of elements (1 <= N <= 200)
+- The next N lines: one integer per line (any `int` value)
 
 ### Output
 

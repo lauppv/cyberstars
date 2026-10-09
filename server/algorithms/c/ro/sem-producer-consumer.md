@@ -10,7 +10,7 @@ Producătorul face `sem_wait(&gol)` înainte să scrie, apoi `sem_post(&plin)` d
 ### Date de intrare
 
 - Prima linie: numărul întreg `N` (1 <= N <= 20)
-- Următoarele `N` linii: câte un număr întreg
+- Următoarele `N` linii: câte un număr întreg (-10^6 <= x <= 10^6)
 
 ### Rezultat
 

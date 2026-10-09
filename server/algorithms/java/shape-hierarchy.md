@@ -4,11 +4,12 @@ Read shapes from stdin, create the appropriate objects, and print the **total ar
 
 ### Input
 
-- Line 1: number of shapes N
+- Line 1: number of shapes N (0 <= N <= 50)
 - For each shape:
   - Line 1: the type (`circle` or `rectangle`)
   - For `circle`, line 2: the radius (decimal number)
   - For `rectangle`, line 2: the width, line 3: the height (decimal numbers)
+- Every radius, width and height is between 0.01 and 1000, with at most 2 digits after the decimal point
 
 ### Output
 

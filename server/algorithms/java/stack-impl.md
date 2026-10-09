@@ -4,10 +4,10 @@ Process commands from stdin and print results for `pop` and `peek`. If `pop` or 
 
 ### Input
 
-- Line 1: number of commands N
+- Line 1: number of commands N (1 <= N <= 500)
 - For each command:
   - Line 1: command type (`push`, `pop`, or `peek`)
-  - Only for `push`, line 2: the integer X
+  - Only for `push`, line 2: the integer X (any `int` value)
 
 Behavior:
 

@@ -8,6 +8,38 @@
     { "visible": true, "stdin": "CyberStars\n" },
     { "stdin": "a\n" },
     { "stdin": "noon\n" },
-    { "stdin": "12345\n" }
+    { "stdin": "12345\n" },
+    { "stdin": "ab\n", "generated": true },
+    { "stdin": "Hello, World!\n", "generated": true },
+    { "stdin": "a b c\n", "generated": true },
+    { "stdin": "  leading\n", "generated": true },
+    { "stdin": "racecar\n", "generated": true },
+    { "stdin": "Was it a car or a cat I saw?\n", "generated": true },
+    { "stdin": "123 456\n", "generated": true },
+    { "stdin": "!@#$%\n", "generated": true },
+    { "stdin": "CamelCaseString\n", "generated": true },
+    { "stdin": "x\n", "generated": true },
+    { "stdin": "aaab\n", "generated": true },
+    { "stdin": "A man, a plan, a canal: Panama\n", "generated": true },
+    { "stdin": "abc  \n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\n", "generated": true },
+    { "stdin": "Python 3.12\n", "generated": true },
+    { "stdin": "it's\n", "generated": true },
+    { "stdin": "Zz\n", "generated": true },
+    { "stdin": "1\n", "generated": true },
+    { "stdin": "0123456789\n", "generated": true },
+    { "stdin": "ab ba ab\n", "generated": true },
+    { "stdin": "Tab and Space\n", "generated": true },
+    { "stdin": "a.b.c\n", "generated": true },
+    { "stdin": "No lemon, no melon\n", "generated": true },
+    {
+      "stdin": ".P2gibXm0pi? lEusZ2hP !0UvhbLaQ2epX!I1!B.beYpM,fQIOJEOEhznq9i7nsfZb0qZQ.eew83kbvaCG0JhllsI6KPs2BIPV1YEYzAxZ946vS1FeUnpjT'EeFbbBys'AnOIcH, fYO2kS4abZxi4cQaREdArw3YtiCMGQgdasG3MMdVpN jLm2,B,PvtuzF65gLX!VEGuxjVEEzw02PEpgKNOBeVhqzQ-WjNIYF8gQCG-.9RG1wMUb1DHING-Q 9OhiXhsQWlbVcBZWVL?gLNDkpzYu irHwqWFFBtEH?0AxTBJRXjYhjYJca9LX-c3QyYj6qVl!6oHbk-8ZX-eAL5R!zax.vBZ-63U-ylyHX!G6bca97YI9PMLsf-FnwT1HXfBfpolhJVUvbF68cbwAVHt9ue.1tes13U6MLjDZIigyawkm7LX7,?4YdsBdBh6nEetlg,-q'IKJNtpU7K1U ResLyJLm5W0A0JxRkyZW,wefxSdN\n",
+      "generated": true
+    },
+    {
+      "stdin": "arvlhcsivxkpguedbhblcdxyqdjmagzyfkzlnhzwdgikaktfssvojocgnydwhrrjyewkrjcbsayhldyrcxldgmljevvdqjaejsxiketnpqehsctnmwlebwffubtixlzxisymgtqcqtwphtimdsbrcrfotezfznyrwrebssohueyxamtbfumjalkqgslsclinhkkxogtwxcwifxjqdibvnnclvxihyeftkszihqkwwwnwzjifbxmdbuwumsqjijypdexsrtrcdklkpdaagskshtrnyhforneaeqvfaumlzibytdulhbemfklzodrzdlcoqvabtsrwqchxubmvqtncocfeilfoffpjewjlzrwxxdxkwndnnchnymepiqybfghzmqihcbiajjfjlmhtzbukuyfsaxuxkucrpnyswgphikpdaiwaaftqfiblnyindcmztzesqdyjalcutfvcvmyfdnkrlpdfnyqzdqmwxnzlggqvogovufzpdxeafbokefjqrrgrkipiviqvrlryftrqbhxvbupkunffajhreugfzeufwcravcwjjbvgwxlktatarijofijiviklievjadkmmbipqhfoswoblmleypxvnyxogxtlalyvgyzhwpziophfacnquabhsphkhfmtjevlwqrprqzqlnjcotgypybgblyokazffuugaedmhiigmhorjpqurnrftybagzswhoxtcpknihykhfyowqoaoxsfzhoatsbvkrzhomgbrewgrtiksankwpfmmytgserfevpiawzlqdcpebuffrkjrxgkwvhroqbiftqbmjuwfkvlrsvjgqneyibykovoybwmousjbuhktaztzducconlmqwxhddcqvmomzycjetstmnzfwbobwaymknwcjeviztexnhntjiyjjawarakmldapeczrvpxawiagwpjpnoxxrcyghnjjucgkyorbxelsjcitwjzypabyjqwfhfqstmulxuy\n",
+      "generated": true
+    },
+    { "stdin": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxy\n", "generated": true }
   ]
 }

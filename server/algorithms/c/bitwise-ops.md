@@ -5,7 +5,7 @@ A number `x` is a power of 2 if and only if `x > 0` and `(x & (x - 1)) == 0`.
 ### Input
 
 - First line: an integer `N` (1 <= N <= 100)
-- Next `N` lines: one positive integer each
+- Next `N` lines: one positive integer each (1 <= x <= 2^31 - 1, the largest `int`)
 
 ### Output
 

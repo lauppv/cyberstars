@@ -10,7 +10,7 @@ The producer calls `sem_wait(&empty)` before writing, then `sem_post(&full)` aft
 ### Input
 
 - First line: integer `N` (1 <= N <= 20)
-- The next `N` lines: one integer per line
+- The next `N` lines: one integer per line (-10^6 <= x <= 10^6)
 
 ### Output
 

@@ -4,6 +4,22 @@
     { "visible": true, "stdin": "6\n42\n1\n" },
     { "visible": true, "stdin": "6\n1\n3\n" },
     { "stdin": "20\n7\n1\n" },
-    { "stdin": "2\n100\n5\n" }
+    { "stdin": "2\n100\n5\n" },
+    { "stdin": "1\n42\n5\n", "generated": true },
+    { "stdin": "2\n7\n20\n", "generated": true },
+    { "stdin": "6\n0\n10\n", "generated": true },
+    { "stdin": "6\n-1\n10\n", "generated": true },
+    { "stdin": "6\n2147483647\n6\n", "generated": true },
+    { "stdin": "6\n-2147483648\n6\n", "generated": true },
+    { "stdin": "100\n12345\n30\n", "generated": true },
+    { "stdin": "1000000\n99\n10\n", "generated": true },
+    { "stdin": "2147483647\n5\n5\n", "generated": true },
+    { "stdin": "6\n42\n0\n", "generated": true },
+    { "stdin": "7\n2024\n50\n", "generated": true },
+    { "stdin": "64\n31337\n50\n", "generated": true },
+    { "stdin": "6\n987654321\n200\n", "generated": true },
+    { "stdin": "3\n-77\n25\n", "generated": true },
+    { "stdin": "12\n555\n40\n", "generated": true },
+    { "stdin": "20\n2026\n100\n", "generated": true }
   ]
 }

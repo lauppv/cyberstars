@@ -5,6 +5,8 @@ Citește două numere întregi. Scrie o funcție `interschimba` care primește d
 - Linia 1: primul număr întreg
 - Linia 2: al doilea număr întreg
 
+Ambele valori încap într-un `int` (-2^31 <= x <= 2^31 - 1).
+
 ### Rezultat
 
 Cele două numere întregi interschimbate, separate prin spații, pe o singură linie.

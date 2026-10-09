@@ -4,6 +4,69 @@
     { "visible": true, "stdin": "banana\na\n" },
     { "visible": true, "stdin": "hello\nz\n" },
     { "stdin": "mississippi\ns\n" },
-    { "stdin": "Apple\np\n" }
+    { "stdin": "Apple\np\n" },
+    { "stdin": "a\na\n", "generated": true },
+    { "stdin": "a\nb\n", "generated": true },
+    { "stdin": "A\na\n", "generated": true },
+    { "stdin": "Z\nZ\n", "generated": true },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\na\n",
+      "generated": true
+    },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nA\n",
+      "generated": true
+    },
+    {
+      "stdin": "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab\nb\n",
+      "generated": true
+    },
+    {
+      "stdin": "gYlzspzsofkIGJnAgXsjOfyxLfUQHTiDoYfptXQGPAmdJCWUhQbXEtDVZOEquQwSvTGQOITMIfAFVyZoLYNnKcmlivIWjGrwbkEJsLsAnDpyHrbTxKxceDejojHvBlXDJCSTKDcDGFeCZWWsJufsKATZXYYcMbviJBlLptWHLcZjiPLLArrPwGqwgMbPgYRLxpfDIkEJRPXUVRmXtHvHCTAmqMaYKojnMYZnujjkcULRMgQrHJKrxhMzoyzEEfOhfJDfgmakmYhKmqSbJAcGgOYAXDAqvEzJyMHnGNDbxgkjSjgOQIongyANkjgpEqbSbZzYKkFDRokGCVKKqfhCpNjtQwWhPSXZJbNVecCjnbsQihsSpTUVDoLdHaBbTIjaTFJZFJiLrVkuYnEePJSlvdFAElQtpUVeLbVubhNCOPkfJRmVbHXocnIUYQfhuCvlFTGDNzbDBDMWKrviOWhnRTuuaoGyGOrtzIvKKyPrbAUgnXJJYxAobnjDyQIBzsFkNdavIUXyJPGmpaOTWlAYHaNuthXVOQpSutjMiYEVTJeboFSsupOCOkCEnugamIjeKSPMTtabMuGEARaCocysoQOwFEodvtKxnssCVuzuLIaKCOeENcAhpesqwbZZpdGYpeAUGLezkbKtwoHSkzCdNXfGllCCQHbUKLxwlNCMWiiijURgqxxbpjQzdssdOWBtfoxUjnVFOQLpCzmOqPRXiYGrlrJuqPlGukMYZWJiloSlgRhINjXdDUyxujDdEPBqIBqnlVXJeLYVWHitsvfPTgdowwMgFJgRlzspZEvqdZwDLhbuoxHsZQtaoEYnebeMsYtRAhuTJWHdiKxyZOwFwaLzVOCVHrbfXJjyCcjMdDMfOaAhWlzURJuwHFXXZjIQwsjIgJgDUPkFdecIYCPBroSavBfxJcVeMbLMVknxOZhyzapInfHeWLOHOQtDNVvCRfMsyrpLUVHJhDYMzFssxwBbDyzjOPyQxtofyLTE\nq\n",
+      "generated": true
+    },
+    {
+      "stdin": "{gW7-j>S/fd9;mgM0FV.T#4PenRTc0kUVp4hLMW?'4~6rZ*D!-c&30@%CuI^claL%a5^*KH`\\w't-k&f;}c}WtzngH![R)a1.Gl$'%.*'SDY0~<Y9R1ySD*!6FTf&^BJUr!|kxn!OEYgwSA}`R^C<E2dJ`xD5J;IU=[f[qe0Y0!V~R#?m]N`d@I[Uuo1z/w=Z%/S[p8vtl9saE91qYfe7XS=or+#8akW%Vkc)){*#i#Do:Q1cg$0/*{+FpN8l.=4(FAjS1ow3G\\E\\U3}<msN:T^N?gyu~AP9K34qQPT#h(W5h/ave)8>9~[zDF/8jp)F7znWq$]`%wE}un:W(%\"&67(U)!xSh,CI]5Xlh^4ry8%{/gQaw%9[+\\<h3mND?u/jlFD7`'B#)ozGc1#?,P*]+o!T9ju}xuk<fAHn3`G=>PYB1s|LKKa;u\\)Abg2$\"f{M^Lc'fn-}7t20_.ZIe<Sut>DLr7-iiW-xYGeb^\\8>Z~p?5O4NB)C7{nzD.jC)iW*@B.4^1LD4p@&+X;Ku@i.O2YM2q9OH[=ni5DpzeT3LH1Vd:A0DK4_nB^$P#x27X}7(ch0ZB+U-7PrOE`7!s&4`OX|3NB@*{X/O8oh.qsPd:&=D7{`Xt<Wfpvj[H!#cE,8cO-JYhfSR=V@lg>!5({W[ikTY`CP.DQ*IMGi,=Tv]#N(m[4e4r<#Eh;-k:^6)iF16);#5:~l$uTQPnpQt(KGB|.5gXy-)lSn\\(^0\"9\"[lYT@Gf+<6'hNZMTZ=.r#]j.\\4|CGLi`9-LwW}=Y|1+8W8nbZ=Z.ExYQu!2O8:fw00w}M#ah3@1`[)Pv)G8G_Q><4\"4%,~\"w:lf%0#F*Wx)'c-luu+,HtOf68$P|70`@AhKp`=4F!3o6MLBm@6<I?s3#&%IM\\8NNpENCwo&`U-LpN7gMTb4_,=Uh-tM.RCb:,Q>MKo!$dlh5ZEqQ|*J\"|LIGRV7i:=1>~xjnU9NdLE!9|pV_fW@M#YszRw3A^MY2i^\n!\n",
+      "generated": true
+    },
+    {
+      "stdin": "yYXYXxyYzYzyyzyZyYxXYXzxYyxxYyxyzxZzZxyzxzyXxYXxyXyXYyXzYyYYYYYzXXXzXXYxzYXzzyXyXyzxzxyyyXXzXzXyyYzYyzyzXYXZzXyyxxyXYYXXYxYzzxyzzZXzyyxXyxxyYyzXyxZyyZzxzXYZYXzZxZzXzYxYxxXZyZYZXXxYyxzzyYzzYyXyxxyxXzyyyXYzYYyzzZYXxzYZXzxzYyxxzXzzXyzYYxZZxXXxzYXxXzXzYYxYYyYzzzzYYzyzxxyxYxYyZZzZzzXXyYxZXzZZzxzZXxzzzyYZxxzYzZYZXzzZyxXZxXyxXxYYYYzXZZzzYyXzxYXxXZXYyXYzxxYzzyXXXYZZxXYyYzZxyXZZYYYyYZxXyzyxyYYxYzxXXzZxXZzXzxxzYYYxXxYyxZyYyXYXZYxXzXZyYXzZYzzXyYYzZZZyyyzzZyZXzYzZXzzXXzXZyzXZyZYyyxYXyxxxxZYXyXYxYYyxzxYXXxzZzXzXzzyxXYyzzZXZzZxyxxZxZxXxyxxxYZxzYYXZyxzZXyZzYXxZZyYZxyzXZYZZZyzxXzyYxyxyXzxxxYXXXyZXxxXYyZxyyxxyzxxyxzzZzYZZxxxZZXXYzZxzXZYXxZxxYYYyYZyXzXXYZxyzzXyZzzZyyyYXYYxyzYZyYxzzYzxzzzzzZYzYzyZZXZxZxzXxxxXXxyyyYyZxXzZzXyxxYxYyyxYZXXxyXXXxZYXyYyYxZZyxyXXYyxZYzyzZzYYzzZzxXzXyZYZyxzZYzZxZXZxZYZXZyxZzzYYZyYZzZyxxXZxyyxXzzYzZXzZxXzzyYyxyXYXyxYyyyxYzyyYYzXxYxzZYyxyXZxxxxYXzZyYxZyzyxXXxzYXxxZXxYzYXzYxXxxxzyyZYZYZyxzXXzZxZxzxzzzyZYzXXxXzZzyxzXZYZxXXYXXZyZYZzzXZZZXxyzZZxXyYzYxzXzxXzyYxZyyYxZyXZYzyYyyzyXyXzzyX\nX\n",
+      "generated": true
+    },
+    {
+      "stdin": "xyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyx\nx\n",
+      "generated": true
+    },
+    {
+      "stdin": "qwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\nq\n",
+      "generated": true
+    },
+    {
+      "stdin": "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwq\nq\n",
+      "generated": true
+    },
+    { "stdin": "Mississippi\nS\n", "generated": true },
+    { "stdin": "Mississippi\ns\n", "generated": true },
+    { "stdin": "Mississippi\nM\n", "generated": true },
+    { "stdin": "AbBaBBabab\nb\n", "generated": true },
+    { "stdin": "AbBaBBabab\nB\n", "generated": true },
+    { "stdin": "2026-10-09\n0\n", "generated": true },
+    { "stdin": "a.b.c.d.e\n.\n", "generated": true },
+    { "stdin": "C++/C#\n+\n", "generated": true },
+    { "stdin": "snake_case_name\n_\n", "generated": true },
+    { "stdin": "hello\no\n", "generated": true },
+    { "stdin": "programming\nm\n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\nz\n", "generated": true },
+    { "stdin": "zzzzzz\ny\n", "generated": true },
+    { "stdin": "$$$\n$\n", "generated": true },
+    { "stdin": "1000000\n0\n", "generated": true },
+    {
+      "stdin": "iuaeuoaaueueeuoioeoueaiaiuaiioaeuoeaiaaiueaoueiuuauioaioeoiuaaeoaeaiouaaeooauuouiueaaiuoeeuoaeeiaaiaoeuaieieoeoueuaauouiaaeeiioeaoeiueeiouiieeeoeaiiauoaioioeooauoaaoioiuaaauueaeaooeieiauoioieeeeueaooieoeuiaeeeoeuiiieiieaeuaueiuuuuuoeaoouaouaeaeuaaieiaoooioauaoeaeaiuiauiuaoaaiiauaaiaueaeuooiuieieiuuoeaiuoeoeiauiiaouaouauouioiauoaiueeuoueeaeeaieaoauaeaaoaeoeoeueeiiuieouuouuueuaouieooiuouiauioeoiueeuueeiieiuooaaoueauaaeaooaeoueiieiueiaeeeioeiuuiiauioaaeouaaoaaaeeuaoaaeaiaooiuaeueeeueuaeeouiuouaaueo\ne\n",
+      "generated": true
+    },
+    {
+      "stdin": "HHHHhhhhhHHhHhHhhHHHhhhhhHHHHhhHhHHhHHhHhhHHHHHHHhhHHhHHhhhHHHhHHHhhHHhhhHhHhhhhHhhHHHhHhhhHhhHhHhHhhHHhhHhHHhhHHHhhHHhHhhHHHhHHhHhhHhHhHhHhHHhhhHHHhhhHhHHhhHhhhHHhHhhHhhHHHHhHHhHHHHHhhhHhhHHHHhHhHhHhhHHHHHhHHHHhhhHHhhHHHhHhhhhhhhhhHHhHHHhhHhhHHHhhhh\nh\n",
+      "generated": true
+    }
   ]
 }

@@ -5,6 +5,45 @@
     { "visible": true, "stdin": "0\n2\ndepune\n500\nretrage\n500\n" },
     { "stdin": "50\n1\nretrage\n50\n" },
     { "stdin": "10\n2\nretrage\n20\nretrage\n15\n" },
-    { "stdin": "100\n4\ndepune\n100\ndepune\n50\nretrage\n30\nretrage\n500\n" }
+    { "stdin": "100\n4\ndepune\n100\ndepune\n50\nretrage\n30\nretrage\n500\n" },
+    { "stdin": "0\n0\n", "generated": true },
+    { "stdin": "1000000\n0\n", "generated": true },
+    { "stdin": "0\n1\nretrage\n1\n", "generated": true },
+    { "stdin": "0\n3\nretrage\n0\ndepune\n0\nretrage\n0\n", "generated": true },
+    { "stdin": "5\n3\nretrage\n6\nretrage\n5\nretrage\n1\n", "generated": true },
+    { "stdin": "10\n4\ndepune\n50\nretrage\n40\nretrage\n21\nretrage\n20\n", "generated": true },
+    { "stdin": "100\n4\nretrage\n101\ndepune\n1\nretrage\n101\nretrage\n1\n", "generated": true },
+    {
+      "stdin": "1\n7\ndepune\n1\ndepune\n10\ndepune\n100\ndepune\n1000\ndepune\n10000\ndepune\n100000\ndepune\n1000000\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\n5\nretrage\n40\nretrage\n30\nretrage\n20\nretrage\n10\nretrage\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "1000000\n4\nretrage\n1000001\nretrage\n1000000\ndepune\n1\nretrage\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "250\n20\ndepune\n466\nretrage\n240\ndepune\n340\ndepune\n309\ndepune\n470\nretrage\n249\ndepune\n169\nretrage\n37\nretrage\n99\ndepune\n46\nretrage\n395\nretrage\n99\nretrage\n403\nretrage\n123\nretrage\n217\ndepune\n33\nretrage\n240\nretrage\n109\ndepune\n334\nretrage\n341\n",
+      "generated": true
+    },
+    {
+      "stdin": "0\n40\nretrage\n6466\nretrage\n3754\nretrage\n1259\nretrage\n6856\ndepune\n7604\ndepune\n8767\ndepune\n5661\ndepune\n6077\nretrage\n155\nretrage\n9248\ndepune\n567\nretrage\n2963\nretrage\n1078\ndepune\n6631\nretrage\n9324\nretrage\n2726\nretrage\n8363\nretrage\n2969\ndepune\n1378\ndepune\n525\nretrage\n8753\nretrage\n1948\nretrage\n2299\ndepune\n3291\nretrage\n2285\ndepune\n2458\nretrage\n5531\nretrage\n1107\ndepune\n8988\nretrage\n7587\ndepune\n3155\nretrage\n5367\ndepune\n4590\ndepune\n4097\nretrage\n3350\nretrage\n1839\nretrage\n4004\ndepune\n4598\ndepune\n199\ndepune\n6480\n",
+      "generated": true
+    },
+    {
+      "stdin": "300\n100\nretrage\n672\ndepune\n824\nretrage\n245\nretrage\n483\ndepune\n566\nretrage\n343\ndepune\n960\ndepune\n296\nretrage\n696\nretrage\n916\nretrage\n411\ndepune\n763\ndepune\n529\ndepune\n222\ndepune\n681\ndepune\n150\nretrage\n125\nretrage\n25\nretrage\n881\ndepune\n693\nretrage\n526\ndepune\n131\nretrage\n559\nretrage\n308\nretrage\n753\nretrage\n247\nretrage\n209\nretrage\n998\nretrage\n770\ndepune\n252\ndepune\n593\nretrage\n758\nretrage\n450\ndepune\n276\ndepune\n974\ndepune\n792\nretrage\n999\ndepune\n14\nretrage\n950\nretrage\n684\nretrage\n789\ndepune\n500\ndepune\n37\nretrage\n619\ndepune\n708\ndepune\n640\nretrage\n348\ndepune\n151\nretrage\n731\nretrage\n112\nretrage\n7\ndepune\n366\ndepune\n660\ndepune\n238\ndepune\n667\ndepune\n177\ndepune\n460\ndepune\n39\ndepune\n918\ndepune\n108\ndepune\n341\ndepune\n591\nretrage\n930\ndepune\n113\ndepune\n42\nretrage\n627\ndepune\n282\nretrage\n772\ndepune\n717\ndepune\n120\nretrage\n701\ndepune\n99\nretrage\n296\ndepune\n170\nretrage\n672\nretrage\n156\nretrage\n714\ndepune\n246\nretrage\n399\ndepune\n481\ndepune\n206\nretrage\n155\ndepune\n508\nretrage\n499\ndepune\n906\nretrage\n776\ndepune\n775\ndepune\n338\ndepune\n230\nretrage\n539\nretrage\n35\nretrage\n132\nretrage\n607\nretrage\n794\nretrage\n632\nretrage\n871\ndepune\n465\nretrage\n94\ndepune\n678\ndepune\n381\n",
+      "generated": true
+    },
+    {
+      "stdin": "200\n30\nretrage\n31\nretrage\n3\nretrage\n25\nretrage\n3\nretrage\n23\nretrage\n4\nretrage\n15\nretrage\n1\nretrage\n25\nretrage\n9\nretrage\n32\nretrage\n26\nretrage\n7\nretrage\n47\nretrage\n12\nretrage\n27\nretrage\n45\nretrage\n43\nretrage\n48\nretrage\n47\nretrage\n29\nretrage\n18\nretrage\n24\nretrage\n47\nretrage\n14\nretrage\n44\nretrage\n39\nretrage\n19\nretrage\n26\nretrage\n9\n",
+      "generated": true
+    },
+    {
+      "stdin": "523307\n120\ndepune\n794680\nretrage\n344523\ndepune\n541417\nretrage\n1391802\ndepune\n511629\nretrage\n623321\ndepune\n964389\nretrage\n484860\ndepune\n440902\nretrage\n1841522\ndepune\n900670\nretrage\n1102205\ndepune\n49026\nretrage\n112951\ndepune\n556221\nretrage\n225117\ndepune\n747636\nretrage\n1484783\ndepune\n11225\nretrage\n1577426\ndepune\n730160\nretrage\n1027404\ndepune\n299918\nretrage\n958186\ndepune\n656055\nretrage\n782033\ndepune\n653545\nretrage\n605803\ndepune\n143055\nretrage\n765357\ndepune\n989616\nretrage\n1006551\ndepune\n254380\nretrage\n1621176\ndepune\n143075\nretrage\n1615165\ndepune\n464201\nretrage\n1557676\ndepune\n67074\nretrage\n814943\ndepune\n106194\nretrage\n1303124\ndepune\n798517\nretrage\n1009946\ndepune\n102273\nretrage\n1135183\ndepune\n64218\nretrage\n1856917\ndepune\n709875\nretrage\n951657\ndepune\n285203\nretrage\n1708040\ndepune\n362534\nretrage\n1741235\ndepune\n400785\nretrage\n345100\ndepune\n799128\nretrage\n160428\ndepune\n581693\nretrage\n1644613\ndepune\n245040\nretrage\n1816885\ndepune\n792396\nretrage\n1788779\ndepune\n748926\nretrage\n1129906\ndepune\n534665\nretrage\n1606553\ndepune\n437505\nretrage\n1551619\ndepune\n438876\nretrage\n1599958\ndepune\n181329\nretrage\n1911783\ndepune\n728399\nretrage\n114296\ndepune\n393040\nretrage\n1554398\ndepune\n875404\nretrage\n1225254\ndepune\n108214\nretrage\n26637\ndepune\n178556\nretrage\n535530\ndepune\n860053\nretrage\n1501599\ndepune\n165999\nretrage\n1109625\ndepune\n132377\nretrage\n1179445\ndepune\n757094\nretrage\n602490\ndepune\n554818\nretrage\n1188902\ndepune\n610145\nretrage\n1843146\ndepune\n709860\nretrage\n517066\ndepune\n579183\nretrage\n1181095\ndepune\n766804\nretrage\n1446817\ndepune\n91547\nretrage\n404665\ndepune\n147181\nretrage\n107178\ndepune\n586608\nretrage\n393660\ndepune\n866620\nretrage\n998908\ndepune\n125159\nretrage\n1270961\ndepune\n154604\nretrage\n1011328\ndepune\n524133\nretrage\n639637\ndepune\n192855\nretrage\n294681\ndepune\n194677\nretrage\n332522\n",
+      "generated": true
+    }
   ]
 }

@@ -2,7 +2,7 @@ Read a single integer and print how many **digits** it has.
 
 ### Input
 
-- A single integer `N` (0 <= N <= 1 000 000 000)
+- A single integer `N` (0 <= N <= 10^9)
 
 ### Output
 

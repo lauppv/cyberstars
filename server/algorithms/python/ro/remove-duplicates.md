@@ -2,8 +2,8 @@ Având o listă de numere, afișează-le **fără duplicate**, păstrând ordine
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n`, câte numere sunt.
-- Linia 2: `n` numere întregi separate prin spații.
+- Linia 1: un număr întreg `n`, câte numere sunt (1 <= n <= 200).
+- Linia 2: `n` numere întregi separate prin spații, fiecare între -10^9 și 10^9.
 
 ### Rezultat
 

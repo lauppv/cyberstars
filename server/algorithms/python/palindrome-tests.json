@@ -8,6 +8,48 @@
     { "visible": true, "stdin": "hello\n" },
     { "stdin": "a\n" },
     { "stdin": "abba\n" },
-    { "stdin": "ab\n" }
+    { "stdin": "ab\n" },
+    { "stdin": "aa\n", "generated": true },
+    { "stdin": "aba\n", "generated": true },
+    { "stdin": "abca\n", "generated": true },
+    { "stdin": "abcba\n", "generated": true },
+    { "stdin": "abccba\n", "generated": true },
+    { "stdin": "abcdba\n", "generated": true },
+    { "stdin": "abcdcba\n", "generated": true },
+    { "stdin": "xyzzyx\n", "generated": true },
+    { "stdin": "xyzyx\n", "generated": true },
+    { "stdin": "zz\n", "generated": true },
+    { "stdin": "az\n", "generated": true },
+    { "stdin": "aab\n", "generated": true },
+    { "stdin": "baa\n", "generated": true },
+    { "stdin": "abab\n", "generated": true },
+    { "stdin": "aaaaaaa\n", "generated": true },
+    { "stdin": "aaaaaab\n", "generated": true },
+    { "stdin": "baaaaaa\n", "generated": true },
+    { "stdin": "aaaabaaaa\n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\n", "generated": true },
+    { "stdin": "tattarrattat\n", "generated": true },
+    { "stdin": "redivider\n", "generated": true },
+    { "stdin": "kayak\n", "generated": true },
+    {
+      "stdin": "aaabbbbbbaabbbbaaabbbabbbabaaaabaaabbbbbbabaabbaaaabbbbaabbaabbbaaaaabbbbbaaaaaababbabbaaabbababbbaaaaaaaababababbbaaaaabbbbabbbbaaabaaaababbbbbbaaababaababaabaaababbaabbababbbbbababababaaabbabaabaababbabbbbbabbbabaaaabaabbababbbabbbbbbaabaabbbbbbbaabbbaabbbbbbaaaaaaabaabaaaaaabbaaaabbabbbbbbabbbabbbbbbabbbbbaaaabbaaabbbabbbbbbaababbbbababaabbbbbbbbabaaaaaaababbaaaabababbaabaabbaabbaababaaababbbbbbabbbbbabaabbaabababbbababaabbbbabaaaaaabaababbaabbbaaaabaabbaababaabbbaaabbaabbabaababaabaaababbabcbabbabaaabaababaababbaabbaaabbbaababaabbaabaaaabbbaabbabaabaaaaaababbbbaabababbbababaabbaababbbbbabbbbbbabaaababaabbaabbaabaabbababaaaabbabaaaaaaababbbbbbbbaabababbbbabaabbbbbbabbbaaabbaaaabbbbbabbbbbbabbbabbbbbbabbaaaabbaaaaaabaabaaaaaaabbbbbbaabbbaabbbbbbbaabaabbbbbbabbbababbaabaaaababbbabbbbbabbabaabaababbaaabababababbbbbababbaabbabaaabaababaababaaabbbbbbabaaaabaaabbbbabbbbaaaaabbbabababaaaaaaaabbbababbaaabbabbabaaaaaabbbbbaaaaabbbaabbaabbbbaaaabbaababbbbbbaaabaaaababbbabbbaaabbbbaabbbbbbaaa\n",
+      "generated": true
+    },
+    {
+      "stdin": "aaabbbbbbaabbbbaaabbbabbbabaaaabaaabbbbbbabaabbaaaabbbbaabbaabbbaaaaabbbbbaaaaaababbabbaaabbababbbaaaaaaaababababbbaaaaabbbbabbbbaaabaaaababbbbbbaaababaababaabaaababbaabbababbbbbababababaaabbabaabaababbabbbbbabbbabaaaabaabbababbbabbbbbbaabaabbbbbbbaabbbaabbbbbbaaaaaaabaabaaaaaabbaaaabbabbbbbbabbbabbbbbbabbbbbaaaabbaaabbbabbbbbbaababbbbababaabbbbbbbbabaaaaaaababbaaaabababbaabaabbaabbaababaaababbbbbbabbbbbabaabbaabababbbababaabbbbabaaaaaabaababbaabbbaaaabaabbaababaabbbaaabbaabbabaababaabaaababbabaababbabaaabaababaababbaabbaaabbbaababaabbaabaaaabbbaabbabaabaaaaaababbbbaabababbbababaabbaababbbbbabbbbbbabaaababaabbaabbaabaabbababaaaabbabaaaaaaababbbbbbbbaabababbbbabaabbbbbbabbbaaabbaaaabbbbbabbbbbbabbbabbbbbbabbaaaabbaaaaaabaabaaaaaaabbbbbbaabbbaabbbbbbbaabaabbbbbbabbbababbaabaaaababbbabbbbbabbabaabaababbaaabababababbbbbababbaabbabaaabaababaababaaabbbbbbabaaaabaaabbbbabbbbaaaaabbbabababaaaaaaaabbbababbaaabbabbabaaaaaabbbbbaaaaabbbaabbaabbbbaaaabbaababbbbbbaaabaaaababbbabbbaaabbbbaabbbbbbaaa\n",
+      "generated": true
+    },
+    {
+      "stdin": "aaabbbbbbaabbbbaaabbbabbbabaaaabaaabbbbbbabaabbaaaabbbbaabbaabbbaaaaabbbbbaaaaaababbabbaaabbababbbaaaaaaaababababbbaaaaabbbbabbbbaaabaaaababbbbbbaaababaababaabaaababbaabbababbbbbababababaaabbabaabaababbabbbbbabbbabaaaabaabbababbbabbbbbbaabaabbbbbbbaabbbaabbbbbbaaaaaaabaabaaaaaabbaaaabbabbbbbbabbbabbbbbbabbbbbaaaabbaaabbbabbbbbbaababbbbababaabbbbbbbbabaaaaaaababbaaaabababbaabaabbaabbaababaaababbbbbbabbbbbabaabbaabababbbababaabbbbabaaaaaabaababbaabbbaaaabaabbaababaabbbaaabbaabbabaababaabaaababbabxybabbabaaabaababaababbaabbaaabbbaababaabbaabaaaabbbaabbabaabaaaaaababbbbaabababbbababaabbaababbbbbabbbbbbabaaababaabbaabbaabaabbababaaaabbabaaaaaaababbbbbbbbaabababbbbabaabbbbbbabbbaaabbaaaabbbbbabbbbbbabbbabbbbbbabbaaaabbaaaaaabaabaaaaaaabbbbbbaabbbaabbbbbbbaabaabbbbbbabbbababbaabaaaababbbabbbbbabbabaabaababbaaabababababbbbbababbaabbabaaabaababaababaaabbbbbbabaaaabaaabbbbabbbbaaaaabbbabababaaaaaaaabbbababbaaabbabbabaaaaaabbbbbaaaaabbbaabbaabbbbaaaabbaababbbbbbaaabaaaababbbabbbaaabbbbaabbbbbbaaa\n",
+      "generated": true
+    },
+    {
+      "stdin": "zaaabbbbbbaabbbbaaabbbabbbabaaaabaaabbbbbbabaabbaaaabbbbaabbaabbbaaaaabbbbbaaaaaababbabbaaabbababbbaaaaaaaababababbbaaaaabbbbabbbbaaabaaaababbbbbbaaababaababaabaaababbaabbababbbbbababababaaabbabaabaababbabbbbbabbbabaaaabaabbababbbabbbbbbaabaabbbbbbbaabbbaabbbbbbaaaaaaabaabaaaaaabbaaaabbabbbbbbabbbabbbbbbabbbbbaaaabbaaabbbabbbbbbaababbbbababaabbbbbbbbabaaaaaaababbaaaabababbaabaabbaabbaababaaababbbbbbabbbbbabaabbaabababbbababaabbbbabaaaaaabaababbaabbbaaaabaabbaababaabbbaaabbaabbabaababaabaaababbabbabbabaaabaababaababbaabbaaabbbaababaabbaabaaaabbbaabbabaabaaaaaababbbbaabababbbababaabbaababbbbbabbbbbbabaaababaabbaabbaabaabbababaaaabbabaaaaaaababbbbbbbbaabababbbbabaabbbbbbabbbaaabbaaaabbbbbabbbbbbabbbabbbbbbabbaaaabbaaaaaabaabaaaaaaabbbbbbaabbbaabbbbbbbaabaabbbbbbabbbababbaabaaaababbbabbbbbabbabaabaababbaaabababababbbbbababbaabbabaaabaababaababaaabbbbbbabaaaabaaabbbbabbbbaaaaabbbabababaaaaaaaabbbababbaaabbabbabaaaaaabbbbbaaaaabbbaabbaabbbbaaaabbaababbbbbbaaabaaaababbbabbbaaabbbbaabbbbbbaaaa\n",
+      "generated": true
+    },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n",
+      "generated": true
+    }
   ]
 }

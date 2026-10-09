@@ -4,6 +4,40 @@
     { "visible": true, "stdin": "3\ncerc\n5\ndreptunghi\n4\n6\ncerc\n3\n" },
     { "visible": true, "stdin": "1\ndreptunghi\n10\n10\n" },
     { "stdin": "0\n" },
-    { "stdin": "2\ncerc\n1\ncerc\n2\n" }
+    { "stdin": "2\ncerc\n1\ncerc\n2\n" },
+    { "stdin": "1\ncerc\n1\n", "generated": true },
+    { "stdin": "1\ncerc\n0.5\n", "generated": true },
+    { "stdin": "1\ndreptunghi\n0.5\n0.5\n", "generated": true },
+    { "stdin": "2\ncerc\n2.5\ndreptunghi\n1.5\n4.2\n", "generated": true },
+    { "stdin": "1\ncerc\n1000\n", "generated": true },
+    { "stdin": "1\ncerc\n0.01\n", "generated": true },
+    { "stdin": "1\ndreptunghi\n123.4\n56.7\n", "generated": true },
+    {
+      "stdin": "5\ndreptunghi\n1\n1\ndreptunghi\n1\n1\ndreptunghi\n1\n1\ndreptunghi\n1\n1\ndreptunghi\n1\n1\n",
+      "generated": true
+    },
+    { "stdin": "3\ncerc\n1\ncerc\n1\ncerc\n1\n", "generated": true },
+    {
+      "stdin": "3\ndreptunghi\n0.1\n0.2\ndreptunghi\n0.3\n0.4\ndreptunghi\n2\n3.5\n",
+      "generated": true
+    },
+    { "stdin": "3\ncerc\n7.5\ncerc\n0.25\ndreptunghi\n10\n0.1\n", "generated": true },
+    {
+      "stdin": "10\ncerc\n8.0\ndreptunghi\n7.2\n22.9\ncerc\n7.6\ndreptunghi\n15.5\n7.2\ndreptunghi\n24.1\n28.3\ncerc\n12.2\ncerc\n4.8\ndreptunghi\n15.9\n1.5\ndreptunghi\n17.4\n11.1\ncerc\n18.1\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\ncerc\n9.7\ndreptunghi\n6.9\n14.6\ndreptunghi\n13.3\n0.9\ndreptunghi\n33.2\n7.4\ndreptunghi\n6.5\n0.6\ncerc\n10.1\ncerc\n39.3\ncerc\n28.7\ncerc\n14.0\ncerc\n32.5\ndreptunghi\n1.3\n24.5\ndreptunghi\n16.5\n9.7\ncerc\n41.9\ndreptunghi\n4.9\n3.1\ndreptunghi\n20.4\n16.5\ndreptunghi\n16.1\n47.7\ncerc\n15.6\ncerc\n34.1\ncerc\n13.9\ncerc\n17.4\ndreptunghi\n29.6\n40.7\ncerc\n42.6\ndreptunghi\n5.0\n28.3\ncerc\n1.3\ndreptunghi\n41.6\n24.2\ndreptunghi\n14.7\n20.5\ndreptunghi\n29.4\n35.8\ndreptunghi\n33.6\n5.8\ncerc\n13.3\ncerc\n13.7\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\ndreptunghi\n28.9\n8.6\ndreptunghi\n21.1\n27.3\ndreptunghi\n42.3\n33.6\ndreptunghi\n33.8\n49.5\ndreptunghi\n21.0\n61.2\ndreptunghi\n9.6\n74.4\ndreptunghi\n14.5\n54.9\ndreptunghi\n14.6\n65.8\ndreptunghi\n64.0\n42.8\ndreptunghi\n46.5\n27.2\ndreptunghi\n24.4\n55.1\ndreptunghi\n81.5\n59.0\ndreptunghi\n2.7\n74.1\ndreptunghi\n2.9\n12.9\ndreptunghi\n94.6\n44.1\ndreptunghi\n21.4\n44.7\ndreptunghi\n58.5\n51.4\ndreptunghi\n18.4\n96.9\ndreptunghi\n71.6\n64.2\ndreptunghi\n25.5\n78.5\ndreptunghi\n76.7\n67.3\ndreptunghi\n45.8\n33.9\ndreptunghi\n25.4\n52.2\ndreptunghi\n87.6\n32.7\ndreptunghi\n4.3\n79.2\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\ncerc\n5.6\ncerc\n7.0\ncerc\n2.6\ncerc\n6.4\ncerc\n2.5\ncerc\n8.9\ncerc\n4.4\ncerc\n8.0\ncerc\n1.7\ncerc\n5.9\ncerc\n2.3\ncerc\n8.4\ncerc\n6.9\ncerc\n6.1\ncerc\n7.8\ncerc\n0.2\ncerc\n1.8\ncerc\n1.8\ncerc\n3.5\ncerc\n3.4\ncerc\n7.8\ncerc\n0.9\ncerc\n1.6\ncerc\n6.8\ncerc\n3.2\n",
+      "generated": true
+    },
+    { "stdin": "2\ndreptunghi\n250.5\n400\ncerc\n99.9\n", "generated": true }
   ]
 }

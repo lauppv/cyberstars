@@ -4,11 +4,12 @@ Citește formele de la stdin, creează obiectele corespunzătoare și afișează
 
 ### Date de intrare
 
-- Linia 1: numărul de forme N
+- Linia 1: numărul de forme N (0 <= N <= 50)
 - Pentru fiecare formă:
   - Linia 1: tipul (`cerc` sau `dreptunghi`)
   - Pentru `cerc`, linia 2: raza (număr zecimal)
   - Pentru `dreptunghi`, linia 2: latimea, linia 3: înălțimea (numere zecimale)
+- Fiecare rază, lățime și înălțime este între 0.01 și 1000, cu cel mult 2 zecimale
 
 ### Rezultat
 

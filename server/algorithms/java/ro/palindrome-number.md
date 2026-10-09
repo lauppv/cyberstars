@@ -4,7 +4,7 @@ Numerele negative nu sunt niciodată palindroame (din cauza semnului minus). Num
 
 ### Date de intrare
 
-- Linia 1: un singur număr întreg
+- Linia 1: un singur număr întreg (orice valoare de tip `int`, de la -2^31 la 2^31 - 1)
 
 ### Rezultat
 

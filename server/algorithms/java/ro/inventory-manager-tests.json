@@ -9,6 +9,58 @@
     { "stdin": "4\nadauga\nmar\n3\nelimina\nmar\n3\nverifica\nmar\nverifica\nmar\n" },
     {
       "stdin": "6\nadauga\nx\n5\nadauga\nx\n3\nverifica\nx\nelimina\nx\n8\nverifica\nx\nverifica\nx\n"
+    },
+    { "stdin": "0\n", "generated": true },
+    { "stdin": "1\nverifica\nmar\n", "generated": true },
+    { "stdin": "2\nelimina\nmar\n1\nverifica\nmar\n", "generated": true },
+    {
+      "stdin": "5\nadauga\nlapte\n4\nelimina\nlapte\n4\nverifica\nlapte\nadauga\nlapte\n1\nverifica\nlapte\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nadauga\nou\n12\nelimina\nou\n13\nverifica\nou\nelimina\nou\n12\nelimina\nou\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "12\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nadauga\norez\n1\nverifica\norez\nelimina\norez\n10\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nadauga\nmar\n5\nadauga\nMar\n3\nverifica\nmar\nverifica\nMar\nelimina\nMar\n4\n",
+      "generated": true
+    },
+    { "stdin": "3\nadauga\nceai\n0\nverifica\nceai\nadauga\nsare\n2\n", "generated": true },
+    {
+      "stdin": "32\nadauga\nmar\n1\nadauga\nbanana\n2\nadauga\nlapte\n3\nadauga\npaine\n4\nadauga\nportocala\n5\nadauga\nou\n6\nadauga\nbranza\n7\nadauga\napa\n8\nadauga\norez\n9\nadauga\nzahar\n10\nadauga\nsare\n11\nadauga\nceai\n12\nadauga\ncafea\n13\nadauga\nsuc\n14\nadauga\npara\n15\nadauga\npruna\n16\nadauga\nstrugure\n17\nadauga\nlamaie\n18\nadauga\nceapa\n19\nadauga\nrosie\n20\nelimina\nmar\n1\nelimina\npaine\n4\nelimina\nbranza\n7\nelimina\nzahar\n10\nelimina\ncafea\n13\nelimina\npruna\n16\nelimina\nceapa\n19\nverifica\nmar\nverifica\nbanana\nverifica\nlapte\nverifica\npaine\nverifica\nportocala\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadauga\nsuc\n10\nelimina\nsuc\n3\nelimina\nsuc\n3\nelimina\nsuc\n3\nelimina\nsuc\n3\nverifica\nsuc\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadauga\nitem1\n100000\nadauga\nitem2\n1\nelimina\nitem1\n99999\nverifica\nitem1\nverifica\nitem2\nverifica\nitem3\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nelimina\npara\n5\nelimina\npruna\n1\nverifica\npara\nadauga\npara\n5\nelimina\npara\n5\n",
+      "generated": true
+    },
+    {
+      "stdin": "40\nadauga\nlapte\n5\nelimina\nlapte\n8\nelimina\nportocala\n9\nelimina\nmar\n7\nverifica\nportocala\nadauga\nou\n6\nverifica\nbanana\nadauga\nmar\n5\nelimina\nbanana\n4\nadauga\npaine\n9\nelimina\nou\n1\nverifica\nlapte\nelimina\nlapte\n4\nelimina\nbanana\n9\nadauga\npaine\n10\nverifica\npaine\nelimina\nlapte\n1\nadauga\nbanana\n10\nelimina\npaine\n1\nelimina\nportocala\n5\nadauga\nlapte\n7\nadauga\nportocala\n8\nadauga\nou\n7\nelimina\nlapte\n8\nadauga\nportocala\n9\nadauga\nou\n8\nadauga\nou\n5\nverifica\nmar\nadauga\nlapte\n5\nadauga\nlapte\n2\nverifica\nmar\nverifica\npaine\nadauga\nmar\n9\nverifica\nbanana\nadauga\nmar\n9\nelimina\nmar\n8\nelimina\nmar\n8\nadauga\nmar\n8\nadauga\npaine\n9\nadauga\nou\n9\n",
+      "generated": true
+    },
+    {
+      "stdin": "80\nverifica\nlapte\nverifica\nbranza\nadauga\nou\n5\nverifica\nlamaie\nelimina\nportocala\n20\nadauga\nbanana\n6\nverifica\npara\nadauga\nmar\n2\nverifica\nmar\nadauga\nstrugure\n17\nverifica\nzahar\nelimina\nceai\n13\nadauga\npaine\n6\nelimina\napa\n16\nelimina\nportocala\n10\nverifica\npaine\nelimina\ncafea\n1\nadauga\nmar\n8\nadauga\nlamaie\n7\nadauga\npara\n7\nadauga\napa\n11\nelimina\npaine\n19\nadauga\nsare\n17\nelimina\norez\n19\nadauga\nlapte\n1\nadauga\ncafea\n18\nverifica\npruna\nadauga\nlamaie\n17\nelimina\norez\n11\nadauga\nbanana\n15\nelimina\napa\n11\nelimina\nlapte\n8\nverifica\npruna\nverifica\napa\nelimina\nceai\n10\nelimina\nlapte\n3\nelimina\nceai\n7\nadauga\nlapte\n20\nverifica\nceapa\nadauga\nceapa\n18\nadauga\nzahar\n12\nadauga\nmar\n16\nadauga\npruna\n20\nelimina\napa\n12\nverifica\nceapa\nverifica\npaine\nadauga\nrosie\n3\nelimina\npara\n18\nverifica\nlamaie\nadauga\nbranza\n12\nelimina\ncafea\n4\nelimina\ncafea\n15\nelimina\nlamaie\n4\nadauga\npaine\n15\nadauga\nportocala\n12\nelimina\nbranza\n7\nadauga\norez\n12\nadauga\nbanana\n10\nverifica\npara\nverifica\napa\nelimina\nceapa\n6\nelimina\nlapte\n9\nverifica\nceai\nelimina\npara\n15\nadauga\napa\n4\nadauga\nstrugure\n15\nverifica\nrosie\nverifica\npruna\nadauga\ncafea\n10\nelimina\nrosie\n14\nverifica\nceai\nadauga\nsare\n12\nadauga\nlamaie\n7\nadauga\npruna\n19\nelimina\nmar\n17\nelimina\npara\n20\nadauga\nlapte\n3\nelimina\nstrugure\n10\nadauga\nou\n16\nadauga\nou\n19\n",
+      "generated": true
+    },
+    {
+      "stdin": "200\nadauga\nlapte\n13\nelimina\nmar\n21\nverifica\nlapte\nelimina\nmar\n3\nadauga\npaine\n20\nadauga\npaine\n33\nadauga\npaine\n22\nadauga\nmar\n8\nadauga\nbanana\n43\nelimina\nbanana\n22\nverifica\nbanana\nadauga\npaine\n22\nelimina\npaine\n20\nadauga\npaine\n5\nadauga\nbanana\n35\nadauga\nbanana\n13\nadauga\nmar\n2\nverifica\nlapte\nelimina\nlapte\n9\nverifica\nlapte\nadauga\nlapte\n10\nadauga\nbanana\n5\nverifica\nlapte\nadauga\nbanana\n29\nadauga\nmar\n27\nelimina\nmar\n28\nadauga\nbanana\n39\nadauga\nbanana\n8\nadauga\nmar\n1\nelimina\nlapte\n32\nadauga\npaine\n41\nadauga\nbanana\n1\nadauga\npaine\n43\nadauga\npaine\n39\nadauga\nmar\n50\nverifica\nlapte\nelimina\nlapte\n23\nadauga\nlapte\n7\nverifica\nlapte\nadauga\npaine\n33\nadauga\nmar\n31\nadauga\nbanana\n7\nadauga\nbanana\n44\nelimina\npaine\n40\nverifica\npaine\nadauga\npaine\n8\nadauga\nmar\n7\nadauga\nmar\n20\nelimina\nmar\n31\nadauga\nbanana\n11\nadauga\nmar\n25\nelimina\npaine\n41\nadauga\nmar\n13\nverifica\npaine\nadauga\nbanana\n1\nadauga\nmar\n32\nverifica\nlapte\nadauga\nlapte\n49\nadauga\nmar\n28\nadauga\nlapte\n28\nadauga\nmar\n45\nadauga\nbanana\n4\nadauga\nbanana\n30\nadauga\npaine\n45\nadauga\nbanana\n18\nelimina\nmar\n3\nelimina\nlapte\n32\nverifica\npaine\nadauga\nlapte\n50\nelimina\nmar\n3\nadauga\nmar\n12\nadauga\npaine\n22\nadauga\nbanana\n10\nadauga\nlapte\n37\nverifica\nbanana\nverifica\nmar\nelimina\nbanana\n49\nadauga\nbanana\n41\nadauga\npaine\n32\nelimina\nbanana\n42\nadauga\npaine\n13\nelimina\nmar\n3\nadauga\nlapte\n23\nverifica\nbanana\nelimina\nbanana\n44\nadauga\npaine\n18\nadauga\nmar\n14\nelimina\nbanana\n29\nadauga\nmar\n35\nadauga\nmar\n31\nadauga\nlapte\n48\nadauga\nmar\n44\nadauga\npaine\n23\nadauga\nlapte\n9\nadauga\nbanana\n43\nverifica\nbanana\nverifica\nmar\nelimina\nlapte\n30\nverifica\nlapte\nelimina\nbanana\n29\nadauga\nmar\n12\nadauga\nbanana\n2\nelimina\nlapte\n50\nelimina\nmar\n19\nverifica\nmar\nverifica\nmar\nadauga\nlapte\n49\nadauga\npaine\n32\nelimina\npaine\n32\nelimina\nmar\n6\nverifica\npaine\nverifica\nmar\nadauga\npaine\n39\nelimina\npaine\n26\nelimina\npaine\n39\nadauga\nbanana\n27\nadauga\nbanana\n26\nadauga\npaine\n31\nadauga\nbanana\n26\nadauga\nlapte\n28\nadauga\nbanana\n9\nelimina\npaine\n43\nadauga\nlapte\n4\nelimina\nmar\n46\nadauga\npaine\n16\nelimina\nlapte\n37\nverifica\nlapte\nelimina\nbanana\n17\nadauga\npaine\n39\nadauga\nlapte\n44\nelimina\nbanana\n4\nadauga\nmar\n5\nverifica\nbanana\nverifica\nlapte\nverifica\nmar\nverifica\nbanana\nadauga\npaine\n28\nadauga\nmar\n45\nverifica\nmar\nadauga\nmar\n10\nadauga\nlapte\n18\nelimina\nmar\n21\nadauga\nbanana\n32\nadauga\nbanana\n38\nadauga\nmar\n38\nadauga\nbanana\n37\nadauga\nlapte\n2\nadauga\nbanana\n43\nelimina\nbanana\n32\nadauga\nlapte\n44\nelimina\nlapte\n18\nelimina\nbanana\n34\nverifica\nlapte\nadauga\nlapte\n28\nadauga\nbanana\n30\nadauga\nlapte\n13\nadauga\nmar\n44\nverifica\nmar\nadauga\npaine\n27\nadauga\nbanana\n44\nadauga\npaine\n27\nadauga\npaine\n7\nverifica\nmar\nverifica\nbanana\nadauga\nlapte\n38\nadauga\npaine\n12\nadauga\nbanana\n46\nverifica\nbanana\nelimina\nlapte\n16\nadauga\nmar\n46\nverifica\nmar\nadauga\nlapte\n25\nverifica\nlapte\nverifica\nlapte\nadauga\nbanana\n48\nverifica\npaine\nelimina\nlapte\n30\nadauga\nlapte\n22\nadauga\nlapte\n48\nelimina\nlapte\n46\nadauga\nbanana\n36\nverifica\npaine\nverifica\nlapte\nverifica\nmar\nverifica\nlapte\nelimina\nlapte\n44\nelimina\nbanana\n34\nadauga\nbanana\n42\nadauga\nmar\n27\nverifica\nbanana\nverifica\nlapte\nelimina\nbanana\n2\nelimina\npaine\n24\nadauga\npaine\n18\nverifica\nmar\nadauga\npaine\n21\nadauga\nmar\n42\nverifica\nbanana\nelimina\nlapte\n4\nverifica\npaine\n",
+      "generated": true
+    },
+    {
+      "stdin": "120\nadauga\ny\n3\nelimina\nx\n3\nverifica\nz\nelimina\nz\n1\nadauga\nx\n1\nelimina\nx\n5\nadauga\nz\n1\nadauga\nx\n4\nverifica\nz\nelimina\nz\n4\nverifica\nz\nverifica\nx\nelimina\ny\n5\nadauga\nz\n2\nelimina\ny\n2\nelimina\nz\n5\nadauga\ny\n5\nelimina\ny\n4\nelimina\nx\n2\nadauga\nx\n2\nadauga\ny\n3\nadauga\nx\n5\nadauga\nx\n4\nadauga\nz\n1\nelimina\nx\n2\nverifica\nz\nverifica\nz\nadauga\nx\n1\nadauga\nx\n2\nverifica\ny\nadauga\ny\n5\nadauga\nz\n3\nadauga\ny\n5\nelimina\nz\n4\nverifica\ny\nelimina\ny\n4\nverifica\ny\nverifica\nz\nadauga\nz\n1\nverifica\nz\nelimina\nz\n2\nadauga\ny\n1\nverifica\nz\nelimina\ny\n3\nadauga\nz\n2\nverifica\ny\nadauga\nz\n2\nadauga\ny\n5\nelimina\nx\n1\nadauga\ny\n1\nadauga\ny\n4\nadauga\ny\n3\nverifica\nz\nadauga\nx\n1\nadauga\nz\n4\nadauga\ny\n4\nadauga\nx\n2\nelimina\nz\n4\nverifica\nz\nverifica\ny\nadauga\nx\n2\nelimina\nx\n5\nadauga\nx\n1\nadauga\nx\n1\nelimina\ny\n3\nadauga\nz\n3\nverifica\nz\nadauga\ny\n2\nverifica\nz\nverifica\nx\nadauga\nz\n5\nadauga\ny\n1\nelimina\nx\n1\nverifica\nz\nadauga\ny\n3\nadauga\ny\n1\nadauga\ny\n1\nadauga\ny\n5\nadauga\ny\n3\nverifica\nz\nadauga\nz\n5\nverifica\nx\nverifica\nx\nverifica\nz\nadauga\nx\n5\nadauga\nx\n4\nelimina\nx\n2\nadauga\nz\n4\nelimina\nz\n4\nelimina\ny\n2\nadauga\nz\n4\nverifica\ny\nverifica\nx\nadauga\nx\n1\nadauga\ny\n4\nverifica\nz\nadauga\nx\n3\nadauga\nx\n3\nadauga\ny\n2\nadauga\nz\n4\nelimina\ny\n3\nadauga\ny\n5\nadauga\ny\n4\nverifica\nx\nelimina\ny\n1\nadauga\nx\n5\nadauga\nz\n1\nverifica\nx\nadauga\nx\n4\nverifica\nx\nverifica\nx\nelimina\nz\n2\nadauga\nz\n5\nadauga\nz\n3\nelimina\ny\n3\nelimina\nz\n2\nverifica\nz\nverifica\ny\nadauga\nx\n3\nverifica\ny\n",
+      "generated": true
     }
   ]
 }

@@ -5,6 +5,38 @@
     { "visible": true, "stdin": "cat dog fly\n" },
     { "stdin": "bee tree free\n" },
     { "stdin": "apple banana kiwi\n" },
-    { "stdin": "seed book rain\n" }
+    { "stdin": "seed book rain\n" },
+    { "stdin": "Apple ORANGE kiwi\n", "generated": true },
+    { "stdin": "AEIOU ae IO\n", "generated": true },
+    { "stdin": "sky rhythm\n", "generated": true },
+    { "stdin": "book seed moon\n", "generated": true },
+    { "stdin": "a\n", "generated": true },
+    { "stdin": "ai\n", "generated": true },
+    { "stdin": "I\n", "generated": true },
+    { "stdin": "queue boat beautiful\n", "generated": true },
+    { "stdin": "Hello World\n", "generated": true },
+    { "stdin": "ToE TOE toe\n", "generated": true },
+    { "stdin": "yoyo eye\n", "generated": true },
+    { "stdin": "  leading   spaces here\n", "generated": true },
+    { "stdin": "bcd fgh\n", "generated": true },
+    { "stdin": "aa bb cc\n", "generated": true },
+    { "stdin": "idea area\n", "generated": true },
+    { "stdin": "AbcdE\n", "generated": true },
+    { "stdin": "Programming Is FUN\n", "generated": true },
+    { "stdin": "Python Java Ruby\n", "generated": true },
+    { "stdin": "radio piano stereo\n", "generated": true },
+    { "stdin": "rain train brain\n", "generated": true },
+    { "stdin": "Eagle EaGle\n", "generated": true },
+    { "stdin": "OUT out Out\n", "generated": true },
+    { "stdin": "xAx xEEx yyy\n", "generated": true },
+    { "stdin": "house mouse cat\n", "generated": true },
+    {
+      "stdin": "COzzh VXixtUK VHhM fP c HCODxZuC xrM fq fgqn DqfwDkQ epuvDO zhpCXV dpzPfyvS Y lZRh nAem zdLBOLXc ylFIs BJ Bde sbUfIHxI RcXDKzmL mCog hRJ orYjDF zsaQ mgzdeb uy eiHeO AQk aEtt PQKSncO EWZueuL uUz T q wSXkDi e iwgLaTqJ YHQuSuu AISaFmy w tDY j knx fF uMhh ttDJ jCCZ CaJ syEA VsV ig o M DqFyB EojuoEo idsNI N CepcUTEL fdVdjoYL XtopiMe EjOelimt ne MvB KBABkCeK v XjvI CDsgVYYQ eyEQStlU OY Bga NGd EkV eBP kfaEPlX Ent ncguepBO XV H AeHZrJy vpUUno ZRJEzVVY WbpfKle M NSeyO KfmHEP tnYVN ZRQ Zir odZCdyd v ozx WPBYWt MnrvJ ZisCxq bKPF rusYc nDzrvjaQ agEa\n",
+      "generated": true
+    },
+    {
+      "stdin": "Axo b ociUxe Ibu deA o Ud u bIo IxaUyA dA cdyEy AeEizU e OA cozyb cyu uddyy UOb e bduI UeOIEz daz ecOxay aaiO IIEoo Uuy exioIb d ozx ydxaez eiUxz udcO z EOId IduEiA Eie Eiy A yciOa xAixb uI edbzO aboI iiz OyUu aEExoc iE ie ceacz zyue Eddo dd IiOIa AaExA Eeood yO c Uoai d\n",
+      "generated": true
+    }
   ]
 }

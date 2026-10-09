@@ -4,9 +4,9 @@ Use the classic binary search algorithm: maintain two pointers `low` and `high`,
 
 ### Input
 
-- Line 1: integer N, the number of elements
-- The next N lines: one integer per line, in ascending order
-- The next line: integer T, the target value to search for
+- Line 1: integer N, the number of elements (1 <= N <= 200)
+- The next N lines: one integer per line, in strictly ascending order (no duplicates), each between -10^6 and 10^6
+- The next line: integer T, the target value to search for (-10^6 <= T <= 10^6)
 
 ### Output
 

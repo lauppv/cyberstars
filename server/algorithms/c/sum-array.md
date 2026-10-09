@@ -3,7 +3,7 @@ Read an integer **N**, then read **N** integers. Print their **sum**.
 ### Input
 
 - First line: an integer `N` (1 <= N <= 100)
-- The next `N` lines: one integer per line
+- The next `N` lines: one integer per line (-10^7 <= x <= 10^7)
 
 ### Output
 

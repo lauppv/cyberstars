@@ -8,6 +8,75 @@
     { "visible": true, "stdin": "cyberstars\n" },
     { "stdin": "a\n" },
     { "stdin": "MixedCase\n" },
-    { "stdin": "abc123xyz\n" }
+    { "stdin": "abc123xyz\n" },
+    { "stdin": "z\n", "generated": true },
+    { "stdin": "m\n", "generated": true },
+    { "stdin": "ab\n", "generated": true },
+    { "stdin": "zz\n", "generated": true },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n",
+      "generated": true
+    },
+    {
+      "stdin": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\n",
+      "generated": true
+    },
+    {
+      "stdin": "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv\n",
+      "generated": true
+    },
+    {
+      "stdin": "vkqqzbookcgnunztbmjibtzjvsutzxdpojlmtoqybdberzzoaicxikstlapoliojcabwndjnrkbirvpuvxyvgzsndlcbcofkzhmf\n",
+      "generated": true
+    },
+    {
+      "stdin": "irhyumvbjdpaawxzxfolcjrfpmunehkqhakenhfajuthhbctauikddqtepyzhctwjkamdsmobkkvnsgqrybbdthmxobrggxsyey\n",
+      "generated": true
+    },
+    {
+      "stdin": "ttkscyxvearbbphtxdxzonrblrfgpzpatkovunxjnjmjdnjqyibgdkdiafdkcleg\n",
+      "generated": true
+    },
+    {
+      "stdin": "vedyjuvdtrolhburlqyxxdjosccelbtjocpkpxdtxdunmhgvnpsdgfpzhxogzxv\n",
+      "generated": true
+    },
+    {
+      "stdin": "pqwtcxtpbdrcgzysqozdswykdoejzulecnpipansonaqblwltolvkeyqvuwafloys\n",
+      "generated": true
+    },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\n", "generated": true },
+    { "stdin": "zyxwvutsrqponmlkjihgfedcba\n", "generated": true },
+    { "stdin": "pipe\n", "generated": true },
+    { "stdin": "fork\n", "generated": true },
+    { "stdin": "process\n", "generated": true },
+    { "stdin": "kernel\n", "generated": true },
+    { "stdin": "uppercase\n", "generated": true },
+    { "stdin": "operatingsystems\n", "generated": true },
+    { "stdin": "mississippi\n", "generated": true },
+    { "stdin": "QwErTy\n", "generated": true },
+    { "stdin": "Xylophone2026\n", "generated": true },
+    { "stdin": "ABC\n", "generated": true },
+    { "stdin": "0123456789\n", "generated": true },
+    { "stdin": "a1B2c3\n", "generated": true },
+    {
+      "stdin": "xregtwujimcheznezpjufgllllbhlnjnjalwetluwicrwbjryyzguuxzmqmpzolrsfoiuintetoewzvywajgbwfvbemoeqj\n",
+      "generated": true
+    },
+    {
+      "stdin": "mmvdltqnhlgdxupnutdbmkjpszvvbsqukvadybjxmqjucfptupcvzzuthcwxdn\n",
+      "generated": true
+    },
+    {
+      "stdin": "aqtorqxrhdeupyftgqlntfnlpmffjpldmdxnjsxjmtxxrxscdhmybmbvwnwublfwyxqfwobsmjojunwtzlsdfo\n",
+      "generated": true
+    },
+    { "stdin": "vkqmdlyywryedzmbskftxkucqmpqyswqrvmsvmruzdpqgb\n", "generated": true },
+    { "stdin": "tacytboiivpohwzoddejbarogizxomygf\n", "generated": true },
+    { "stdin": "gqeagmhnrwkwgjtupsbgczpclqeufaxngtpokhqydcfftbpnlzd\n", "generated": true },
+    {
+      "stdin": "Zyc1b190ZC1AXxYyAb0BZzybYbZYCyccCbYXA9xZbZaBCCXXBb10Z9yYAYYYc08bXc1CXA0XabcABXzAyZXZY11cxXbBA9BY08Xb\n",
+      "generated": true
+    }
   ]
 }

@@ -4,11 +4,11 @@ Notă: inversezi ordinea cuvintelor, nu caracterele din interiorul lor.
 
 ### Date de intrare
 
-O singură linie care conține o propoziție de cuvinte separate prin spații.
+O singură linie de 1 până la 1000 de caractere ASCII care conține o propoziție cu cel puțin un cuvânt. Un cuvânt este orice secvență de caractere fără spații (litere, cifre sau semne de punctuație). Cuvintele sunt separate prin unul sau mai multe spații, iar linia poate începe sau se poate termina cu spații.
 
 ### Rezultat
 
-Afișează cuvintele în ordine inversă, separate prin spații.
+Afișează cuvintele în ordine inversă, separate printr-un singur spațiu.
 
 ### Exemple
 

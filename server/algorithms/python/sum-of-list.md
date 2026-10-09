@@ -2,8 +2,8 @@ Given a count `N` followed by `N` numbers (one per line), print their **sum**.
 
 ### Input
 
-- The first line contains an integer `N`.
-- The next `N` lines each contain one integer.
+- The first line contains an integer `N` (1 <= N <= 200).
+- The next `N` lines each contain one integer between -10^9 and 10^9.
 
 ### Output
 

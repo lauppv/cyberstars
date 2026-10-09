@@ -3,7 +3,7 @@ Read an NxN matrix of integers and print its elements in **spiral order**: start
 ### Input
 
 - Line 1: an integer `n`, the size of the matrix (1 <= n <= 10).
-- Next `n` lines: each containing `n` space-separated integers.
+- Next `n` lines: each containing `n` space-separated integers between -10^9 and 10^9.
 
 ### Output
 

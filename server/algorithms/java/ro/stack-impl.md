@@ -4,10 +4,10 @@ Procesează comenzile de la stdin și afișează rezultatele pentru `scoate` și
 
 ### Date de intrare
 
-- Linia 1: numărul de comenzi N
+- Linia 1: numărul de comenzi N (1 <= N <= 500)
 - Pentru fiecare comandă:
   - Linia 1: tipul comenzii (`pune`, `scoate` sau `varf`)
-  - Doar pentru `pune`, linia 2: numărul întreg X
+  - Doar pentru `pune`, linia 2: numărul întreg X (orice valoare de tip `int`)
 
 Comportament:
 

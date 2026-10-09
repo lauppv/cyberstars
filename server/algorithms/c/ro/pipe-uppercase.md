@@ -4,11 +4,11 @@ Un **pipe** este un canal unidirecțional între procese: unul scrie într-un ca
 
 ### Date de intrare
 
-- Linia 1: un cuvânt de cel mult 100 de caractere, format doar din litere lowercase.
+- Linia 1: un cuvânt de 1 până la 100 de caractere, format din litere (mici sau mari) și cifre.
 
 ### Rezultat
 
-- O singură linie: cuvântul convertit la litere mari (uppercase).
+- O singură linie: cuvântul convertit la litere mari (uppercase). Cifrele și literele care sunt deja mari rămân neschimbate.
 
 ### Exemple
 

@@ -8,6 +8,44 @@
     { "visible": true, "stdin": "Python is really fun\n" },
     { "stdin": "hello\n" },
     { "stdin": "one two three four five\n" },
-    { "stdin": "  spaced  out  \n" }
+    { "stdin": "  spaced  out  \n" },
+    { "stdin": "a\n", "generated": true },
+    { "stdin": "a b\n", "generated": true },
+    { "stdin": " a\n", "generated": true },
+    { "stdin": "a \n", "generated": true },
+    { "stdin": "   many   spaces   between   \n", "generated": true },
+    { "stdin": "I have 3 cats\n", "generated": true },
+    { "stdin": "it's 5 o'clock\n", "generated": true },
+    { "stdin": "- - -\n", "generated": true },
+    { "stdin": "Hello, world!\n", "generated": true },
+    { "stdin": "a b c d e f g h i j\n", "generated": true },
+    { "stdin": "word word word\n", "generated": true },
+    { "stdin": "  x\n", "generated": true },
+    { "stdin": "x  \n", "generated": true },
+    { "stdin": "1 2 3 4 5\n", "generated": true },
+    { "stdin": "The quick brown fox jumps over the lazy dog\n", "generated": true },
+    { "stdin": "Python    is     fun\n", "generated": true },
+    { "stdin": "a  b\n", "generated": true },
+    { "stdin": "!\n", "generated": true },
+    { "stdin": "CyberStars rocks\n", "generated": true },
+    { "stdin": "end.  start\n", "generated": true },
+    { "stdin": "a,b,c d,e\n", "generated": true },
+    { "stdin": "x y z w\n", "generated": true },
+    {
+      "stdin": "hrriiaztqdseflxjozrpbaecmysamyrpfnbkovgmznutsfuszmdlluwqbvwicpmomsrkjslxhhqozswgqtfxnhemhysysjebwuwi\n",
+      "generated": true
+    },
+    {
+      "stdin": "lUfU wXn bTIKThMc NX xzcJ eoMEUr wxj XAYjRJk kJXPx TDa mImVhARC U cp LKSen FUUOea yrghA JxQWzNz AL LWVnR PYs qcUHcv HxrO AR YPu E NKBTghPG LAfjB y ejr O PiiGux YEkTxkco fXMikqgz wCEFBcKt x IxwV Yaji ET vNIhMIQ kzVBP FoRMrhDC bR uF OXek IMyMO RZIQKDP mhwX z nwU mCJnIf lPKOj GUGm NVwbJM zgpeEHsX s JdkcVrq G c kGDcFGrl Wg bdyCdlmU ZixAtkKj SMPxAYH eu aPgxEbGg KhGHK MHdRtS uonjDh bQLERf iCJ UwqiO OmiD iPlbDW aMwYHDng ZPUzV Gielr TphBINeF JI ulWCs KViq jc hpbPl qKuW yuNAYse Kq kar Opm dTY iKqL v ambwPkx vDpg B bGnx vpmhz KtSQb JP VVjkT M SUfZUmu KaP ua FvtlBm LcXMa z mP zXfYk l swyrrL Mm DIsEc tBXq RxcewBn w lPrUNdJ lum olqzIHu IH bwB HH ZbmZLM oaMLboU ZPxx SHSqfmVj XCpjeBI gMSM ouK mcnDdy LUTDwBAM HEEXjesX W hZjGDAW zzfNBDd vUnAyAQ KOl colbK LfKzZmry dIzfFaO DwXacXx ZHo MWVmCMmi sMTk jfLtSuz PYpEju iIHz oIhno gvmsuat LNp WsOKZ eFAou F ckVfG V zbH g huhHDn hBSujDwV hL BXPO cyOdEsQ pvEqY hAaNN v PXgi PQp yOnKY bGYE gpZY RMMAEAGd Sg r QMuJyrP woXd rStGvm XaMunZ QLRaEe JEgLWY rG nwZBC Nbd sFeO\n",
+      "generated": true
+    },
+    {
+      "stdin": "lUfU wXn bTIKThMc    NX   xzcJ   eoMEUr   wxj XAYjRJk  kJXPx    TDa   mImVhARC   U    cp    LKSen FUUOea   yrghA  JxQWzNz    AL    LWVnR  PYs qcUHcv   HxrO   AR    YPu E   NKBTghPG   LAfjB  y ejr    O   PiiGux    YEkTxkco  fXMikqgz  wCEFBcKt    x    IxwV  Yaji ET  vNIhMIQ   kzVBP    FoRMrhDC bR    uF   OXek  IMyMO   RZIQKDP mhwX  z nwU   mCJnIf    lPKOj    GUGm    NVwbJM  zgpeEHsX   s  JdkcVrq G c kGDcFGrl  Wg\n",
+      "generated": true
+    },
+    {
+      "stdin": "  a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z  \n",
+      "generated": true
+    }
   ]
 }

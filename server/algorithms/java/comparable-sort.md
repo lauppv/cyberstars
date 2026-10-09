@@ -4,10 +4,10 @@ Read students from stdin, sort them, and print each student on a separate line.
 
 ### Input
 
-- Line 1: number of students N
+- Line 1: number of students N (1 <= N <= 50)
 - For each student, two lines:
-  - Line 1: the name (a single word)
-  - Line 2: the GPA (decimal number)
+  - Line 1: the name (a single word of at most 20 letters: a capital letter followed by lowercase letters)
+  - Line 2: the GPA (decimal number with exactly one decimal, between 0.0 and 4.0)
 
 ### Output
 

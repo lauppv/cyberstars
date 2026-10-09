@@ -4,6 +4,21 @@
     { "visible": true, "stdin": "hello\n42\n" },
     { "visible": true, "stdin": "Java\n100\n" },
     { "stdin": "world\n0\n" },
-    { "stdin": "x\n-5\n" }
+    { "stdin": "x\n-5\n" },
+    { "stdin": "a\n1\n", "generated": true },
+    { "stdin": "Z\n2147483647\n", "generated": true },
+    { "stdin": "Z\n-2147483648\n", "generated": true },
+    { "stdin": "123\n456\n", "generated": true },
+    { "stdin": "-5\n5\n", "generated": true },
+    { "stdin": "null\n7\n", "generated": true },
+    { "stdin": "foo-bar_baz!\n1000000\n", "generated": true },
+    { "stdin": "(x)\n-1\n", "generated": true },
+    { "stdin": "abc123\n2026\n", "generated": true },
+    { "stdin": "CamelCaseWord\n-999999\n", "generated": true },
+    {
+      "stdin": "supercalifragilisticexpialidocioussupercalifragilisticexpialidocious\n33\n",
+      "generated": true
+    },
+    { "stdin": "HELLO\n-42\n", "generated": true }
   ]
 }

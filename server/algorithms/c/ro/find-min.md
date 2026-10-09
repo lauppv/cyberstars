@@ -3,7 +3,7 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Afișează cea m
 ### Date de intrare
 
 - Prima linie: un întreg `N` (1 <= N <= 100)
-- Următoarele `N` linii: câte un număr întreg
+- Următoarele `N` linii: câte un număr întreg (-10^9 <= x <= 10^9)
 
 ### Rezultat
 

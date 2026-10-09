@@ -5,6 +5,42 @@
     { "visible": true, "stdin": "2\nZoe\n4.0\nAmy\n4.0\n" },
     { "stdin": "1\nMax\n3.5\n" },
     { "stdin": "3\nEve\n3.5\nAna\n3.5\nBob\n3.5\n" },
-    { "stdin": "4\nDan\n2.0\nCleo\n3.7\nBeth\n3.7\nAmy\n1.5\n" }
+    { "stdin": "4\nDan\n2.0\nCleo\n3.7\nBeth\n3.7\nAmy\n1.5\n" },
+    { "stdin": "2\nAna\n3.9\nBob\n3.1\n", "generated": true },
+    { "stdin": "2\nBob\n3.1\nAna\n3.9\n", "generated": true },
+    { "stdin": "2\nAnna\n3.5\nAnn\n3.5\n", "generated": true },
+    { "stdin": "3\nZed\n0.0\nAmy\n4.0\nMax\n0.0\n", "generated": true },
+    {
+      "stdin": "7\nAna\n1.0\nBen\n1.5\nCarl\n2.0\nDan\n2.5\nEli\n3.0\nFinn\n3.5\nGia\n4.0\n",
+      "generated": true
+    },
+    { "stdin": "5\nZoe\n3.8\nYan\n3.9\nXia\n4.0\nWes\n3.9\nVlad\n3.8\n", "generated": true },
+    { "stdin": "3\nAna\n3.0\nAna\n3.5\nAna\n3.0\n", "generated": true },
+    {
+      "stdin": "6\nZed\n2.2\nYan\n2.2\nXia\n2.2\nWes\n2.2\nVlad\n2.2\nUma\n2.2\n",
+      "generated": true
+    },
+    { "stdin": "4\nBo\n3.3\nAbigail\n3.3\nDana\n3.4\nDan\n3.4\n", "generated": true },
+    { "stdin": "5\nMax\n2.9\nLeo\n3.0\nKai\n2.9\nJo\n3.0\nIvy\n0.1\n", "generated": true },
+    {
+      "stdin": "10\nAnna\n1.5\nFinn\n0.5\nWes\n3.9\nIvy\n3.6\nTom\n2.5\nEli\n2.6\nRita\n3.7\nBen\n1.6\nTom\n3.4\nAnna\n3.8\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\nCleo\n2.5\nDan\n3.1\nJo\n0.0\nZed\n2.6\nJack\n0.2\nHugo\n1.3\nLeo\n0.9\nEli\n1.3\nXia\n1.8\nCarl\n1.5\nTom\n1.6\nTom\n1.5\nAnn\n1.7\nJack\n4.0\nDan\n2.2\nAbigail\n3.1\nEli\n1.7\nVlad\n0.8\nCleo\n1.1\nSam\n0.5\nEmma\n2.4\nAnna\n2.0\nWes\n4.0\nIan\n1.0\nZoe\n0.4\n",
+      "generated": true
+    },
+    {
+      "stdin": "40\nOtto\n3.0\nCarl\n3.5\nDan\n3.0\nIvy\n3.0\nAnn\n4.0\nSara\n4.0\nAna\n3.5\nUma\n4.0\nAnn\n3.0\nIvy\n3.0\nSara\n4.0\nEmma\n4.0\nNora\n3.0\nSam\n4.0\nDana\n4.0\nEmma\n4.0\nWes\n3.0\nAbigail\n3.5\nOlga\n3.0\nGia\n4.0\nPaul\n4.0\nMia\n4.0\nOlga\n3.5\nAnna\n3.5\nQuinn\n3.5\nAnn\n4.0\nJo\n3.5\nOtto\n3.0\nFinn\n3.5\nSara\n4.0\nEli\n3.5\nUma\n4.0\nSam\n4.0\nZoe\n3.0\nIvy\n4.0\nDana\n3.0\nLeo\n3.5\nLeo\n4.0\nIan\n3.5\nQuinn\n3.5\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\nAnna\n1.0\nXia\n1.7\nIvy\n3.3\nHugo\n1.1\nLeo\n2.5\nJo\n2.0\nSara\n0.7\nDana\n1.0\nLea\n3.0\nYan\n1.7\nFinn\n3.2\nJack\n2.3\nOlga\n1.1\nAna\n2.7\nAbigail\n2.1\nOtto\n3.5\nUma\n1.1\nNora\n3.6\nZoe\n2.7\nDan\n0.4\nMax\n0.1\nWes\n0.3\nNoah\n1.5\nGia\n3.1\nRita\n2.1\nCarl\n2.4\nQuinn\n3.5\nZed\n3.5\nVlad\n1.4\nPaul\n2.8\n",
+      "generated": true
+    },
+    {
+      "stdin": "41\nZoe\n1.7\nZed\n1.7\nYan\n1.7\nXia\n1.7\nWes\n1.7\nVlad\n1.7\nUma\n1.7\nTom\n1.7\nSara\n1.7\nSam\n1.7\nRita\n1.7\nQuinn\n1.7\nPaul\n1.7\nOtto\n1.7\nOlga\n1.7\nNoah\n1.7\nNora\n1.7\nMax\n1.7\nMia\n1.7\nLeo\n1.7\nLea\n1.7\nKai\n1.7\nJo\n1.7\nJack\n1.7\nIvy\n1.7\nIan\n1.7\nHugo\n1.7\nGia\n1.7\nFinn\n1.7\nEmma\n1.7\nEli\n1.7\nDana\n1.7\nDan\n1.7\nCleo\n1.7\nCarl\n1.7\nBen\n1.7\nAbigail\n1.7\nBo\n1.7\nAnna\n1.7\nAnn\n1.7\nAna\n1.7\n",
+      "generated": true
+    }
   ]
 }

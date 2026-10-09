@@ -4,9 +4,9 @@ Read the student's name and grades from stdin, create a `Student` object, and pr
 
 ### Input
 
-- Line 1: the student's name
-- Line 2: the number of grades N
-- The next N lines: one grade per line (integer)
+- Line 1: the student's name (a single word)
+- Line 2: the number of grades N (1 <= N <= 500)
+- The next N lines: one grade per line (integer, 0 <= grade <= 100)
 
 ### Output
 

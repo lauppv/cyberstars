@@ -2,7 +2,7 @@ Given a sentence, find and print the **longest word**.
 
 ### Input
 
-A single line containing a sentence of words separated by spaces.
+A single line of 1 to 1000 ASCII characters containing a sentence with at least one word. A word is any sequence of characters without spaces (letters, digits or punctuation). Words are separated by one or more spaces, and the line may start or end with spaces.
 
 ### Output
 

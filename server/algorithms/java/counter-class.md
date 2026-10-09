@@ -8,7 +8,7 @@ The counter starts at **0**. Read commands from stdin (one per line): `inc`, `de
 
 ### Input
 
-- Line 1: an integer N, the number of commands
+- Line 1: an integer N, the number of commands (0 <= N <= 1000)
 - Next N lines: a command (`inc`, `dec`, or `get`)
 
 ### Output

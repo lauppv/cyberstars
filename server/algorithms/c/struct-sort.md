@@ -4,8 +4,8 @@ Read **N** students, each with a **name** (single word) and a **grade** (integer
 
 - First line: an integer `N` (1 <= N <= 50)
 - For each student, two lines:
-  - Line 1: the name (a single word)
-  - Line 2: the grade (integer)
+  - Line 1: the name (a single word of at most 30 characters: letters, digits or `_`)
+  - Line 2: the grade (an integer, 0 <= grade <= 100)
 
 ### Output
 
