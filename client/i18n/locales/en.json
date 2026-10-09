@@ -699,6 +699,9 @@
     "tabLesson": "Lesson",
     "tabTerminal": "Terminal",
     "tabCode": "Code",
+    "tabResult": "Result",
+    "tabSubmissions": "Submissions",
+    "panelTabs": "Lesson panel",
     "lessonNofM": "Lesson {{n}} of {{total}}",
     "algoNofM": "Algorithm {{n}} of {{total}}",
     "completed": "✓ Completed",
@@ -857,6 +860,50 @@
         "int_literal": "Don't hardcode the result, compute it (found {{values}} in your code)",
         "string_expr": "Wrapping a line in quotes doesn't comment it, that's still a string floating in your code. Use a real comment"
       }
+    },
+    "verdict": {
+      "accepted": "Accepted",
+      "syntaxError": "Syntax error",
+      "wrongAnswer": "Wrong answer",
+      "runtimeError": "Runtime error",
+      "timeLimit": "Time limit exceeded",
+      "checksFailed": "Code checks failed",
+      "failed": "Failed"
+    },
+    "stoppedAt": "Stopped at test {{n}}",
+    "testsPassed": "tests passed",
+    "runtime": {
+      "title": "Runtime",
+      "yours": "Your code",
+      "reference": "Reference",
+      "faster": "{{ratio}}× faster than the reference",
+      "slower": "{{ratio}}× slower than the reference",
+      "even": "About as fast as the reference",
+      "ms": "{{value}} ms",
+      "scope_one": "Summed over the {{count}} test both programs ran",
+      "scope_other": "Summed over the {{count}} tests both programs ran"
+    },
+    "chart": {
+      "title": "Time per test",
+      "you": "You",
+      "reference": "Reference",
+      "caseTimes": "Test {{n}}: you {{user}} ms, reference {{ref}} ms",
+      "generated_one": "Your time on {{count}} generated test",
+      "generated_other": "Your time on {{count}} generated tests",
+      "range": "{{min}} to {{max}} ms"
+    },
+    "submissions": {
+      "empty": "No submissions yet. Run the tests and each attempt shows up here.",
+      "loadError": "Couldn't load your submissions.",
+      "retry": "Try again",
+      "back": "All submissions",
+      "code": "Submitted code",
+      "loadCode": "Load into editor",
+      "confirmLoad": "Replace the code in the editor with this submission? Your current code will be lost.",
+      "status": "Status",
+      "passed": "Passed",
+      "runtime": "Runtime",
+      "when": "When"
     }
   },
   "terminalTests": {
