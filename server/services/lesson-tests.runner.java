@@ -121,20 +121,22 @@ public class Runner {
       Map<String, Object> testCase = asMap(caseRaw);
       Map<String, Object> inject = asMap(testCase.getOrDefault("inject", new LinkedHashMap<>()));
       String stdin = testCase.get("stdin") instanceof String s ? s : "";
+      // skipSolution: the server already holds this case's reference output
+      // (cached from an earlier run), so only the student's program runs.
+      boolean skipSolution = Boolean.TRUE.equals(testCase.get("skipSolution"));
 
       Compiled userProg = null;
       Compiled solutionProg = null;
       if (solution.error == null) {
         userProg = cache.compile(user.withInjected(inject));
-        solutionProg = cache.compile(solution.withInjected(inject));
+        if (!skipSolution) solutionProg = cache.compile(solution.withInjected(inject));
       }
       // The pristine user code compiled, so a per-case failure means injection
       // broke it: a spec/solution mismatch on our side, not the student's. The
       // server fails the whole run on it, so there is nothing after.
       if (userProg == null
-          || solutionProg == null
-          || solutionProg.error != null
-          || userProg.error != null) {
+          || userProg.error != null
+          || (!skipSolution && (solutionProg == null || solutionProg.error != null))) {
         emit(Map.of("injectError", true));
         break;
       }
@@ -142,7 +144,7 @@ public class Runner {
       Map<String, Object> userRun = runProgram(userProg, stdin);
       Map<String, Object> caseResult = new LinkedHashMap<>();
       caseResult.put("user", userRun);
-      caseResult.put("solution", runProgram(solutionProg, stdin));
+      if (!skipSolution) caseResult.put("solution", runProgram(solutionProg, stdin));
       emit(caseResult);
       // A hung program would burn 5s on every remaining case too, so stop here.
       if (Boolean.TRUE.equals(userRun.get("timedOut")) || !proceed(control)) break;

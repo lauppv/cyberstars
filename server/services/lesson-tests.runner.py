@@ -273,16 +273,22 @@ def main():
     for case in payload["cases"]:
         inject = case.get("inject") or {}
         stdin = case.get("stdin")
+        # skipSolution: the server already holds this case's reference output
+        # (cached from an earlier run), so only the student's program runs.
+        skip_solution = case.get("skipSolution", False)
         try:
             user_src = inject_values(payload["userCode"], inject)
-            solution_src = inject_values(payload["solutionCode"], inject)
+            solution_src = None if skip_solution else inject_values(payload["solutionCode"], inject)
         except SyntaxError:
             # solution is trusted; user code already parsed, should not happen.
             # The server fails the whole run on it, so there is nothing after.
             emit({"injectError": True})
             break
         user_run = run_program(user_src, stdin)
-        emit({"user": user_run, "solution": run_program(solution_src, stdin)})
+        if skip_solution:
+            emit({"user": user_run})
+        else:
+            emit({"user": user_run, "solution": run_program(solution_src, stdin)})
         # A hung program would burn 5s on every remaining case too, so stop here.
         if user_run["timedOut"] or not proceed():
             break

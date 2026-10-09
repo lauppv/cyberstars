@@ -118,16 +118,22 @@ def main():
 
     for case in payload["cases"]:
         stdin = case.get("stdin")
+        # skipSolution: the server already holds this case's reference output
+        # (cached from an earlier run) and sends no solutionSrc for it.
+        skip_solution = case.get("skipSolution", False)
         user_bin, _ = compile_source(case["userSrc"])
-        solution_bin, _ = compile_source(case["solutionSrc"])
+        solution_bin = None if skip_solution else compile_source(case["solutionSrc"])[0]
         # The pristine user code already compiled cleanly, so a post-injection
         # compile failure is a spec bug (injection type/decl mismatch), not the
         # student's; surfaced by the server as a 500, same as java's injectError.
-        if user_bin is None or solution_bin is None:
+        if user_bin is None or (solution_bin is None and not skip_solution):
             emit({"injectError": True})
             break
         user_run = run_binary(user_bin, stdin)
-        emit({"user": user_run, "solution": run_binary(solution_bin, stdin)})
+        if skip_solution:
+            emit({"user": user_run})
+        else:
+            emit({"user": user_run, "solution": run_binary(solution_bin, stdin)})
         # A hung program would burn CASE_TIMEOUT on every remaining case too.
         if user_run["timedOut"] or not proceed():
             break

@@ -6,6 +6,7 @@ import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.s
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
+import { getReference, putReference, referenceKey } from './reference-cache.js';
 import type {
   LessonTestsSpec,
   RunTestsResponse,
@@ -56,6 +57,7 @@ interface JudgeRunner {
     userCode: string,
     solutionCode: string,
     spec: LessonTestsSpec,
+    skipSolution: ReadonlySet<number>,
   ) => Promise<PrepareResult>;
 }
 
@@ -204,7 +206,14 @@ function failRun(): never {
   throw new AppError(500, 'Test run failed, please try again');
 }
 
-function judgeCase(spec: LessonTestsSpec, index: number, c: RunnerCase): TestCaseResult {
+// `cached`: the case's reference stdout from the cache; the runner then ran the
+// student's program only, so the case carries no solutionMs.
+function judgeCase(
+  spec: LessonTestsSpec,
+  index: number,
+  c: RunnerCase,
+  cached: string | undefined,
+): TestCaseResult {
   const specCase = spec.cases[index];
   const visible = specCase.visible ?? false;
   const base: TestCaseResult = { index, visible, passed: false };
@@ -212,23 +221,53 @@ function judgeCase(spec: LessonTestsSpec, index: number, c: RunnerCase): TestCas
   if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
   if (specCase.generated) base.generated = true;
 
-  // A broken reference solution is our bug, not the student's.
-  if (!c.user || !c.solution || c.injectError || c.solution.timedOut || c.solution.exit !== 0) {
-    failRun();
+  if (!c.user || c.injectError) failRun();
+  let expected: string;
+  if (cached !== undefined) {
+    expected = cached;
+  } else {
+    // A broken reference solution is our bug, not the student's.
+    if (!c.solution || c.solution.timedOut || c.solution.exit !== 0) failRun();
+    expected = c.solution.stdout;
+    if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
   }
   if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
-  if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
   if (c.user.timedOut) return { ...base, error: 'timeout' };
   if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
 
-  if (compareOutputs(c.solution.stdout, c.user.stdout, spec.comparator ?? 'trimmed')) {
+  if (compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed')) {
     return { ...base, passed: true };
   }
   return {
     ...base,
     actual: normalize(c.user.stdout),
-    ...(visible ? { expected: normalize(c.solution.stdout) } : {}),
+    ...(visible ? { expected: normalize(expected) } : {}),
   };
+}
+
+// Cache keys for the generated cases whose reference output may be cached; a
+// nondeterministic comparator means the output isn't stable, so none there.
+function referenceKeys(
+  spec: LessonTestsSpec,
+  courseKey: string,
+  lessonSlug: string,
+  lang: string | undefined,
+  solutionCode: string,
+): (string | null)[] {
+  const comparator = spec.comparator ?? 'trimmed';
+  const deterministic = comparator === 'trimmed' || comparator === 'exact';
+  return spec.cases.map((testCase) =>
+    deterministic && testCase.generated
+      ? referenceKey({
+          courseKey,
+          lang: lang ?? 'en',
+          slug: lessonSlug,
+          solutionCode,
+          testCase,
+          comparator,
+        })
+      : null,
+  );
 }
 
 function syntaxErrorResponse(spec: LessonTestsSpec, syntaxError: string): RunTestsResponse {
@@ -274,9 +313,18 @@ export async function runLessonTests(
   if (!judge) throw new AppError(404, 'This lesson has no tests');
   const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang);
 
+  // Generated cases whose reference output is cached skip the solution run;
+  // hand-written cases always run it fresh (that's where the timing
+  // comparison with the student's program comes from).
+  const keys = referenceKeys(spec, courseKey, lessonSlug, lang, solutionCode);
+  const cached = keys.map((key) => (key ? getReference(key) : undefined));
+  const skipSolution = new Set(cached.flatMap((out, index) => (out === undefined ? [] : [index])));
+
   // Server-side prep (C): structure + injection happen here; a syntax error in
   // the pristine user code is caught before any container is touched (gate 1).
-  const prepared = judge.prepare ? await judge.prepare(userCode, solutionCode, spec) : null;
+  const prepared = judge.prepare
+    ? await judge.prepare(userCode, solutionCode, spec, skipSolution)
+    : null;
   if (prepared?.syntaxError) return syntaxErrorResponse(spec, prepared.syntaxError);
 
   let containerId: string;
@@ -300,7 +348,9 @@ export async function runLessonTests(
           userCode,
           solutionCode,
           structure: spec.structure ?? {},
-          cases: spec.cases,
+          cases: spec.cases.map((testCase, index) =>
+            skipSolution.has(index) ? { ...testCase, skipSolution: true } : testCase,
+          ),
         });
     await dockerExec(
       ['exec', '-i', containerId, 'sh', '-c', `rm -rf /work/* && cat > ${judge.containerFile}`],
@@ -324,8 +374,14 @@ export async function runLessonTests(
           header = message as RunnerHeader;
           return null;
         }
-        if (cases.length >= spec.cases.length) failRun();
-        const result = judgeCase(spec, cases.length, message as RunnerCase);
+        const index = cases.length;
+        if (index >= spec.cases.length) failRun();
+        const runnerCase = message as RunnerCase;
+        const result = judgeCase(spec, index, runnerCase, cached[index]);
+        // judgeCase vouched for the solution's run (exit 0, in time), so its
+        // output is safe to reuse.
+        const key = keys[index];
+        if (key && cached[index] === undefined) putReference(key, runnerCase.solution!.stdout);
         cases.push(result);
         return result.passed ? 'next' : 'stop';
       },
