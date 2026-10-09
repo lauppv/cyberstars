@@ -2,7 +2,7 @@ Criptează un șir folosind **cifrul Caesar**: deplasează fiecare literă înai
 
 ### Date de intrare
 
-- Linia 1: un șir `sir` (poate conține litere mari, litere mici, spații și semne de punctuație).
+- Linia 1: un șir `sir` de 1 până la 1000 de caractere ASCII (poate conține litere mari, litere mici, cifre, spații și semne de punctuație).
 - Linia 2: un număr întreg `deplasare` (1-25).
 
 ### Rezultat

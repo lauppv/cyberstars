@@ -4,8 +4,8 @@ You may assume there is **exactly one** valid pair, and you cannot use the same 
 
 ### Input
 
-- Line 1: `n` integers separated by spaces (the list).
-- Line 2: a single integer `target`.
+- Line 1: `n` integers separated by spaces (the list), with 2 <= n <= 200 and each value between -1 000 000 000 and 1 000 000 000.
+- Line 2: a single integer `target` (-2 000 000 000 <= target <= 2 000 000 000).
 
 ### Output
 
