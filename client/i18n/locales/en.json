@@ -940,5 +940,57 @@
     "showConnectionsHint": "The list of people you're connected with.",
     "account": "Account",
     "saved": "Saved"
+  },
+  "tour": {
+    "counter": "{{n}} of {{total}}",
+    "start": "Let's go",
+    "next": "Next",
+    "finish": "Start exploring",
+    "waitFor": {
+      "cellRun": "Run the cell to go on",
+      "editorRun": "Run your code to go on",
+      "testsPass": "Pass the tests to finish"
+    },
+    "welcome": {
+      "title": "Welcome aboard, {{name}}",
+      "body": "Before you explore, we'll go through your first Python lesson together. We show you each step, and at the end you run the tests."
+    },
+    "lesson": {
+      "title": "The lesson",
+      "body": "Every lesson starts here: read it from top to bottom. The pieces of code in it can be run."
+    },
+    "cellFirst": {
+      "title": "Your first code cell",
+      "body": "This is a code cell. Press Run and see what it prints."
+    },
+    "cellError": {
+      "title": "A mistake on purpose",
+      "body": "This cell is missing its quotes, so it fails. Run it and read the error: errors are normal, and they tell you what went wrong."
+    },
+    "cellMore": {
+      "title": "Cell {{n}} of {{total}}",
+      "body": "You can change the code in a cell before you run it. Try it, then press Run."
+    },
+    "mission": {
+      "title": "Your mission",
+      "body": "Every lesson ends with a mission. This is what your program has to print, line by line."
+    },
+    "editor": {
+      "title": "Your editor",
+      "body": "Write the program the mission asks for here."
+    },
+    "run": {
+      "title": "Run it",
+      "body": "Press Run to see what your program prints, and compare it with the mission."
+    },
+    "tests": {
+      "title": "Check it with the tests",
+      "body": "When your output matches the mission, press Run Tests. The lesson is done when every test passes."
+    },
+    "testsFailed": "Not yet. Compare your output with the expected one line by line, fix the code and run the tests again.",
+    "done": {
+      "title": "Lesson complete",
+      "body": "You finished your first lesson and earned your first XP. The whole platform is open to you now."
+    }
   }
 }
