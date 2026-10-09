@@ -89,7 +89,7 @@ export interface TestCaseResult {
   inject?: Record<string, InjectValue | InjectValue[]>;
   /** stdin fed to the program, shown on failed visible cases so the student can debug. */
   stdin?: string;
-  /** Only present on failed visible cases. */
+  /** Present on passed cases and on failed visible ones, never on a failed hidden one. */
   expected?: string;
   actual?: string;
   /** Runtime problem: 'timeout' or the program's stderr. */
