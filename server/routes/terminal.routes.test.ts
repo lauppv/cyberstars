@@ -45,7 +45,7 @@ const mockSessionService = vi.hoisted(() => ({
 vi.mock('../services/terminal-session.service.js', () => mockSessionService);
 
 const { app } = await import('../app.js');
-const { execRateLimitHandler } = await import('./terminal.routes.js');
+const { execRateLimitHandler, guestIpLimiter } = await import('./terminal.routes.js');
 
 const token = jwt.sign({ id: 42 }, 'test-secret');
 
@@ -139,5 +139,41 @@ describe('execRateLimitHandler', () => {
     execRateLimitHandler(req, res);
 
     expect((res as { body: { error: string } }).body.error).toContain('1s');
+  });
+});
+
+describe('guestIpLimiter', () => {
+  // A bare app outside the test env's 10_000 override, so the limit of 2 holds.
+  async function makeApp() {
+    vi.stubEnv('NODE_ENV', 'development');
+    const express = (await import('express')).default;
+    const cookieParser = (await import('cookie-parser')).default;
+    const { optionalAuth } = await import('../middleware/auth.js');
+    const limited = express();
+    limited.use(cookieParser());
+    limited.post('/', optionalAuth, guestIpLimiter(2), (_req, res) => {
+      res.sendStatus(204);
+    });
+    vi.unstubAllEnvs();
+    return limited;
+  }
+
+  it('counts guests from one IP together, whatever guestId they send', async () => {
+    const limited = await makeApp();
+    for (const id of ['a', 'b']) {
+      const ok = await request(limited).post('/').set('Cookie', `guestId=${id}`);
+      expect(ok.status).toBe(204);
+    }
+    const res = await request(limited).post('/').set('Cookie', 'guestId=c');
+    expect(res.status).toBe(429);
+    expect(res.body.error).toMatch(/try again in \d+s/);
+  });
+
+  it('never counts logged-in users', async () => {
+    const limited = await makeApp();
+    for (let i = 0; i < 3; i++) {
+      const res = await request(limited).post('/').set('Cookie', `token=${token}`);
+      expect(res.status).toBe(204);
+    }
   });
 });

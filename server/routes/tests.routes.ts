@@ -3,7 +3,7 @@ import rateLimit from 'express-rate-limit';
 import { optionalAuth } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
 import { runTestsSchema } from '../schemas/tests.schema.js';
-import { execRateLimitHandler } from './terminal.routes.js';
+import { execRateLimitHandler, guestIpLimiter } from './terminal.routes.js';
 import { resolveOwnerKey, runTests } from '../controllers/tests.controller.js';
 
 function requireOwner(req: Request, res: Response, next: NextFunction): void {
@@ -32,6 +32,7 @@ router.post(
   '/:courseKey/:lessonSlug/run',
   optionalAuth,
   requireOwner,
+  guestIpLimiter(60),
   runTestsLimiter,
   validateBody(runTestsSchema),
   runTests,
