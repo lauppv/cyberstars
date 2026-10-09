@@ -44,7 +44,7 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
 
   await page.locator('[data-tour="editor"] .cm-content').click();
   for (const line of [
-    '== CYBERSTARS MISSION CONTROL ==',
+    '= CYBERSTARS MISSION CONTROL =',
     'Station: Orion',
     'Status: ONLINE',
     'Welcome aboard, cadet!',

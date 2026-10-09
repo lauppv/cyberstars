@@ -40,7 +40,7 @@ Din nou, nu uita ghilimelele.
 Consola de control a stației pornește cu un banner de întâmpinare. Scrie un program care folosește **print()** ca să afișeze **exact** aceste patru linii:
 
 ```text
-== CONTROL MISIUNE CYBERSTARS ==
+= CONTROL MISIUNE CYBERSTARS =
 Statie: Orion
 Stare: ONLINE
 Bun venit la bord, cadet!

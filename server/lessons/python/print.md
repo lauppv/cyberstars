@@ -40,7 +40,7 @@ Again, don't forget the quotes.
 The station's control console boots up with a welcome banner. Write a program that uses **print()** to display **exactly** these four lines:
 
 ```text
-== CYBERSTARS MISSION CONTROL ==
+= CYBERSTARS MISSION CONTROL =
 Station: Orion
 Status: ONLINE
 Welcome aboard, cadet!
