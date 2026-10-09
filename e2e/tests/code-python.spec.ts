@@ -39,3 +39,41 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
   await page.getByRole('tab', { name: 'Result' }).click();
   await expect(result).toContainText('Wrong answer');
 });
+
+test('a passed course lesson lists its tests and shows no runtime', async ({
+  authedPage: page,
+}) => {
+  await page.goto('/#/lesson/python/print');
+
+  const editor = page.locator('[data-tour="editor"] .cm-content');
+  await editor.click();
+  await page.keyboard.press('ControlOrMeta+A');
+  await page.keyboard.type(
+    'print("= CYBERSTARS MISSION CONTROL =\\nStation: Orion\\nStatus: ONLINE\\nWelcome aboard, cadet!")',
+  );
+  await page.getByRole('button', { name: 'Run Tests' }).click();
+
+  const result = page.locator('[data-tour="result"]');
+  await expect(result).toContainText('Accepted', { timeout: 60_000 });
+  await expect(result).not.toContainText('Runtime');
+
+  await result.getByRole('button', { name: 'Passed tests (1)' }).click();
+  await result.getByRole('button', { name: 'Test 1' }).click();
+  await expect(result).toContainText('Expected output');
+  await expect(result).toContainText('Welcome aboard, cadet!');
+});
+
+test('a passed algorithm shows its runtime next to the reference', async ({ authedPage: page }) => {
+  await page.goto('/#/lesson/algo-python/even-or-odd');
+
+  const editor = page.locator('[data-tour="editor"] .cm-content');
+  await editor.click();
+  await page.keyboard.press('ControlOrMeta+A');
+  await page.keyboard.type('print("Odd" if int(input()) % 2 else "Even")');
+  await page.getByRole('button', { name: 'Run Tests' }).click();
+
+  const result = page.locator('[data-tour="result"]');
+  await expect(result).toContainText('Accepted', { timeout: 60_000 });
+  await expect(result).toContainText('Runtime');
+  await expect(result.getByRole('button', { name: /^Passed tests \(\d+\)$/ })).toBeVisible();
+});
