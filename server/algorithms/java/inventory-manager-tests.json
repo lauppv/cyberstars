@@ -7,6 +7,58 @@
     },
     { "visible": true, "stdin": "3\nadd\nmilk\n2\nremove\nmilk\n5\ncheck\nmilk\n" },
     { "stdin": "4\nadd\napple\n3\nremove\napple\n3\ncheck\napple\ncheck\napple\n" },
-    { "stdin": "6\nadd\nx\n5\nadd\nx\n3\ncheck\nx\nremove\nx\n8\ncheck\nx\ncheck\nx\n" }
+    { "stdin": "6\nadd\nx\n5\nadd\nx\n3\ncheck\nx\nremove\nx\n8\ncheck\nx\ncheck\nx\n" },
+    { "stdin": "0\n", "generated": true },
+    { "stdin": "1\ncheck\napple\n", "generated": true },
+    { "stdin": "2\nremove\napple\n1\ncheck\napple\n", "generated": true },
+    {
+      "stdin": "5\nadd\nmilk\n4\nremove\nmilk\n4\ncheck\nmilk\nadd\nmilk\n1\ncheck\nmilk\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nadd\negg\n12\nremove\negg\n13\ncheck\negg\nremove\negg\n12\nremove\negg\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "12\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\nadd\nrice\n1\ncheck\nrice\nremove\nrice\n10\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nadd\napple\n5\nadd\nApple\n3\ncheck\napple\ncheck\nApple\nremove\nApple\n4\n",
+      "generated": true
+    },
+    { "stdin": "3\nadd\ntea\n0\ncheck\ntea\nadd\nsalt\n2\n", "generated": true },
+    {
+      "stdin": "32\nadd\napple\n1\nadd\nbanana\n2\nadd\nmilk\n3\nadd\nbread\n4\nadd\norange\n5\nadd\negg\n6\nadd\ncheese\n7\nadd\nwater\n8\nadd\nrice\n9\nadd\nsugar\n10\nadd\nsalt\n11\nadd\ntea\n12\nadd\ncoffee\n13\nadd\njuice\n14\nadd\npear\n15\nadd\nplum\n16\nadd\ngrape\n17\nadd\nlemon\n18\nadd\nonion\n19\nadd\ntomato\n20\nremove\napple\n1\nremove\nbread\n4\nremove\ncheese\n7\nremove\nsugar\n10\nremove\ncoffee\n13\nremove\nplum\n16\nremove\nonion\n19\ncheck\napple\ncheck\nbanana\ncheck\nmilk\ncheck\nbread\ncheck\norange\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadd\njuice\n10\nremove\njuice\n3\nremove\njuice\n3\nremove\njuice\n3\nremove\njuice\n3\ncheck\njuice\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadd\nitem1\n100000\nadd\nitem2\n1\nremove\nitem1\n99999\ncheck\nitem1\ncheck\nitem2\ncheck\nitem3\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nremove\npear\n5\nremove\nplum\n1\ncheck\npear\nadd\npear\n5\nremove\npear\n5\n",
+      "generated": true
+    },
+    {
+      "stdin": "40\nadd\nmilk\n5\nremove\nmilk\n8\nremove\norange\n9\nremove\napple\n7\ncheck\norange\nadd\negg\n6\ncheck\nbanana\nadd\napple\n5\nremove\nbanana\n4\nadd\nbread\n9\nremove\negg\n1\ncheck\nmilk\nremove\nmilk\n4\nremove\nbanana\n9\nadd\nbread\n10\ncheck\nbread\nremove\nmilk\n1\nadd\nbanana\n10\nremove\nbread\n1\nremove\norange\n5\nadd\nmilk\n7\nadd\norange\n8\nadd\negg\n7\nremove\nmilk\n8\nadd\norange\n9\nadd\negg\n8\nadd\negg\n5\ncheck\napple\nadd\nmilk\n5\nadd\nmilk\n2\ncheck\napple\ncheck\nbread\nadd\napple\n9\ncheck\nbanana\nadd\napple\n9\nremove\napple\n8\nremove\napple\n8\nadd\napple\n8\nadd\nbread\n9\nadd\negg\n9\n",
+      "generated": true
+    },
+    {
+      "stdin": "80\ncheck\nmilk\ncheck\ncheese\nadd\negg\n5\ncheck\nlemon\nremove\norange\n20\nadd\nbanana\n6\ncheck\npear\nadd\napple\n2\ncheck\napple\nadd\ngrape\n17\ncheck\nsugar\nremove\ntea\n13\nadd\nbread\n6\nremove\nwater\n16\nremove\norange\n10\ncheck\nbread\nremove\ncoffee\n1\nadd\napple\n8\nadd\nlemon\n7\nadd\npear\n7\nadd\nwater\n11\nremove\nbread\n19\nadd\nsalt\n17\nremove\nrice\n19\nadd\nmilk\n1\nadd\ncoffee\n18\ncheck\nplum\nadd\nlemon\n17\nremove\nrice\n11\nadd\nbanana\n15\nremove\nwater\n11\nremove\nmilk\n8\ncheck\nplum\ncheck\nwater\nremove\ntea\n10\nremove\nmilk\n3\nremove\ntea\n7\nadd\nmilk\n20\ncheck\nonion\nadd\nonion\n18\nadd\nsugar\n12\nadd\napple\n16\nadd\nplum\n20\nremove\nwater\n12\ncheck\nonion\ncheck\nbread\nadd\ntomato\n3\nremove\npear\n18\ncheck\nlemon\nadd\ncheese\n12\nremove\ncoffee\n4\nremove\ncoffee\n15\nremove\nlemon\n4\nadd\nbread\n15\nadd\norange\n12\nremove\ncheese\n7\nadd\nrice\n12\nadd\nbanana\n10\ncheck\npear\ncheck\nwater\nremove\nonion\n6\nremove\nmilk\n9\ncheck\ntea\nremove\npear\n15\nadd\nwater\n4\nadd\ngrape\n15\ncheck\ntomato\ncheck\nplum\nadd\ncoffee\n10\nremove\ntomato\n14\ncheck\ntea\nadd\nsalt\n12\nadd\nlemon\n7\nadd\nplum\n19\nremove\napple\n17\nremove\npear\n20\nadd\nmilk\n3\nremove\ngrape\n10\nadd\negg\n16\nadd\negg\n19\n",
+      "generated": true
+    },
+    {
+      "stdin": "200\nadd\nmilk\n13\nremove\napple\n21\ncheck\nmilk\nremove\napple\n3\nadd\nbread\n20\nadd\nbread\n33\nadd\nbread\n22\nadd\napple\n8\nadd\nbanana\n43\nremove\nbanana\n22\ncheck\nbanana\nadd\nbread\n22\nremove\nbread\n20\nadd\nbread\n5\nadd\nbanana\n35\nadd\nbanana\n13\nadd\napple\n2\ncheck\nmilk\nremove\nmilk\n9\ncheck\nmilk\nadd\nmilk\n10\nadd\nbanana\n5\ncheck\nmilk\nadd\nbanana\n29\nadd\napple\n27\nremove\napple\n28\nadd\nbanana\n39\nadd\nbanana\n8\nadd\napple\n1\nremove\nmilk\n32\nadd\nbread\n41\nadd\nbanana\n1\nadd\nbread\n43\nadd\nbread\n39\nadd\napple\n50\ncheck\nmilk\nremove\nmilk\n23\nadd\nmilk\n7\ncheck\nmilk\nadd\nbread\n33\nadd\napple\n31\nadd\nbanana\n7\nadd\nbanana\n44\nremove\nbread\n40\ncheck\nbread\nadd\nbread\n8\nadd\napple\n7\nadd\napple\n20\nremove\napple\n31\nadd\nbanana\n11\nadd\napple\n25\nremove\nbread\n41\nadd\napple\n13\ncheck\nbread\nadd\nbanana\n1\nadd\napple\n32\ncheck\nmilk\nadd\nmilk\n49\nadd\napple\n28\nadd\nmilk\n28\nadd\napple\n45\nadd\nbanana\n4\nadd\nbanana\n30\nadd\nbread\n45\nadd\nbanana\n18\nremove\napple\n3\nremove\nmilk\n32\ncheck\nbread\nadd\nmilk\n50\nremove\napple\n3\nadd\napple\n12\nadd\nbread\n22\nadd\nbanana\n10\nadd\nmilk\n37\ncheck\nbanana\ncheck\napple\nremove\nbanana\n49\nadd\nbanana\n41\nadd\nbread\n32\nremove\nbanana\n42\nadd\nbread\n13\nremove\napple\n3\nadd\nmilk\n23\ncheck\nbanana\nremove\nbanana\n44\nadd\nbread\n18\nadd\napple\n14\nremove\nbanana\n29\nadd\napple\n35\nadd\napple\n31\nadd\nmilk\n48\nadd\napple\n44\nadd\nbread\n23\nadd\nmilk\n9\nadd\nbanana\n43\ncheck\nbanana\ncheck\napple\nremove\nmilk\n30\ncheck\nmilk\nremove\nbanana\n29\nadd\napple\n12\nadd\nbanana\n2\nremove\nmilk\n50\nremove\napple\n19\ncheck\napple\ncheck\napple\nadd\nmilk\n49\nadd\nbread\n32\nremove\nbread\n32\nremove\napple\n6\ncheck\nbread\ncheck\napple\nadd\nbread\n39\nremove\nbread\n26\nremove\nbread\n39\nadd\nbanana\n27\nadd\nbanana\n26\nadd\nbread\n31\nadd\nbanana\n26\nadd\nmilk\n28\nadd\nbanana\n9\nremove\nbread\n43\nadd\nmilk\n4\nremove\napple\n46\nadd\nbread\n16\nremove\nmilk\n37\ncheck\nmilk\nremove\nbanana\n17\nadd\nbread\n39\nadd\nmilk\n44\nremove\nbanana\n4\nadd\napple\n5\ncheck\nbanana\ncheck\nmilk\ncheck\napple\ncheck\nbanana\nadd\nbread\n28\nadd\napple\n45\ncheck\napple\nadd\napple\n10\nadd\nmilk\n18\nremove\napple\n21\nadd\nbanana\n32\nadd\nbanana\n38\nadd\napple\n38\nadd\nbanana\n37\nadd\nmilk\n2\nadd\nbanana\n43\nremove\nbanana\n32\nadd\nmilk\n44\nremove\nmilk\n18\nremove\nbanana\n34\ncheck\nmilk\nadd\nmilk\n28\nadd\nbanana\n30\nadd\nmilk\n13\nadd\napple\n44\ncheck\napple\nadd\nbread\n27\nadd\nbanana\n44\nadd\nbread\n27\nadd\nbread\n7\ncheck\napple\ncheck\nbanana\nadd\nmilk\n38\nadd\nbread\n12\nadd\nbanana\n46\ncheck\nbanana\nremove\nmilk\n16\nadd\napple\n46\ncheck\napple\nadd\nmilk\n25\ncheck\nmilk\ncheck\nmilk\nadd\nbanana\n48\ncheck\nbread\nremove\nmilk\n30\nadd\nmilk\n22\nadd\nmilk\n48\nremove\nmilk\n46\nadd\nbanana\n36\ncheck\nbread\ncheck\nmilk\ncheck\napple\ncheck\nmilk\nremove\nmilk\n44\nremove\nbanana\n34\nadd\nbanana\n42\nadd\napple\n27\ncheck\nbanana\ncheck\nmilk\nremove\nbanana\n2\nremove\nbread\n24\nadd\nbread\n18\ncheck\napple\nadd\nbread\n21\nadd\napple\n42\ncheck\nbanana\nremove\nmilk\n4\ncheck\nbread\n",
+      "generated": true
+    },
+    {
+      "stdin": "120\nadd\ny\n3\nremove\nx\n3\ncheck\nz\nremove\nz\n1\nadd\nx\n1\nremove\nx\n5\nadd\nz\n1\nadd\nx\n4\ncheck\nz\nremove\nz\n4\ncheck\nz\ncheck\nx\nremove\ny\n5\nadd\nz\n2\nremove\ny\n2\nremove\nz\n5\nadd\ny\n5\nremove\ny\n4\nremove\nx\n2\nadd\nx\n2\nadd\ny\n3\nadd\nx\n5\nadd\nx\n4\nadd\nz\n1\nremove\nx\n2\ncheck\nz\ncheck\nz\nadd\nx\n1\nadd\nx\n2\ncheck\ny\nadd\ny\n5\nadd\nz\n3\nadd\ny\n5\nremove\nz\n4\ncheck\ny\nremove\ny\n4\ncheck\ny\ncheck\nz\nadd\nz\n1\ncheck\nz\nremove\nz\n2\nadd\ny\n1\ncheck\nz\nremove\ny\n3\nadd\nz\n2\ncheck\ny\nadd\nz\n2\nadd\ny\n5\nremove\nx\n1\nadd\ny\n1\nadd\ny\n4\nadd\ny\n3\ncheck\nz\nadd\nx\n1\nadd\nz\n4\nadd\ny\n4\nadd\nx\n2\nremove\nz\n4\ncheck\nz\ncheck\ny\nadd\nx\n2\nremove\nx\n5\nadd\nx\n1\nadd\nx\n1\nremove\ny\n3\nadd\nz\n3\ncheck\nz\nadd\ny\n2\ncheck\nz\ncheck\nx\nadd\nz\n5\nadd\ny\n1\nremove\nx\n1\ncheck\nz\nadd\ny\n3\nadd\ny\n1\nadd\ny\n1\nadd\ny\n5\nadd\ny\n3\ncheck\nz\nadd\nz\n5\ncheck\nx\ncheck\nx\ncheck\nz\nadd\nx\n5\nadd\nx\n4\nremove\nx\n2\nadd\nz\n4\nremove\nz\n4\nremove\ny\n2\nadd\nz\n4\ncheck\ny\ncheck\nx\nadd\nx\n1\nadd\ny\n4\ncheck\nz\nadd\nx\n3\nadd\nx\n3\nadd\ny\n2\nadd\nz\n4\nremove\ny\n3\nadd\ny\n5\nadd\ny\n4\ncheck\nx\nremove\ny\n1\nadd\nx\n5\nadd\nz\n1\ncheck\nx\nadd\nx\n4\ncheck\nx\ncheck\nx\nremove\nz\n2\nadd\nz\n5\nadd\nz\n3\nremove\ny\n3\nremove\nz\n2\ncheck\nz\ncheck\ny\nadd\nx\n3\ncheck\ny\n",
+      "generated": true
+    }
   ]
 }

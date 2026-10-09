@@ -4,6 +4,52 @@
     { "visible": true, "stdin": "6\nadd\n10\nadd\n20\nadd\n30\nprint\nremove\n20\nprint\n" },
     { "visible": true, "stdin": "4\nadd\n5\nremove\n5\nremove\n5\nprint\n" },
     { "stdin": "5\nadd\n1\nadd\n2\nadd\n3\nremove\n1\nprint\n" },
-    { "stdin": "3\nprint\nadd\n7\nprint\n" }
+    { "stdin": "3\nprint\nadd\n7\nprint\n" },
+    { "stdin": "1\nprint\n", "generated": true },
+    { "stdin": "2\nremove\n1\nprint\n", "generated": true },
+    { "stdin": "2\nadd\n42\nprint\n", "generated": true },
+    { "stdin": "7\nadd\n1\nadd\n2\nadd\n3\nremove\n3\nprint\nadd\n4\nprint\n", "generated": true },
+    { "stdin": "5\nadd\n1\nadd\n2\nremove\n2\nadd\n3\nprint\n", "generated": true },
+    {
+      "stdin": "9\nadd\n1\nadd\n2\nadd\n1\nadd\n3\nadd\n1\nremove\n1\nprint\nremove\n1\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nadd\n5\nadd\n6\nadd\n7\nremove\n5\nremove\n6\nremove\n7\nprint\nadd\n8\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nadd\n0\nadd\n-1\nadd\n-20\nadd\n0\nremove\n0\nprint\nremove\n-20\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nadd\n2147483647\nadd\n-2147483648\nadd\n0\nprint\nremove\n-2147483648\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nadd\n9\nadd\n9\nadd\n9\nadd\n9\nremove\n9\nprint\nremove\n9\nremove\n9\nremove\n9\nremove\n9\nprint\n",
+      "generated": true
+    },
+    { "stdin": "6\nadd\n10\nadd\n20\nadd\n30\nremove\n40\nremove\n15\nprint\n", "generated": true },
+    {
+      "stdin": "16\nadd\n3\nprint\nadd\n1\nprint\nadd\n4\nprint\nadd\n1\nprint\nadd\n5\nprint\nremove\n1\nprint\nremove\n5\nprint\nremove\n3\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "61\nadd\n505\nadd\n801\nadd\n-885\nadd\n-258\nadd\n364\nadd\n-111\nadd\n351\nadd\n-283\nadd\n-727\nadd\n-70\nadd\n-28\nadd\n-73\nadd\n-665\nadd\n367\nadd\n832\nadd\n-632\nadd\n340\nadd\n-383\nadd\n-962\nadd\n754\nadd\n538\nadd\n-319\nadd\n-155\nadd\n-308\nadd\n-801\nadd\n522\nadd\n-203\nadd\n-814\nadd\n-150\nadd\n102\nadd\n951\nadd\n539\nadd\n-858\nadd\n14\nadd\n-561\nadd\n34\nadd\n585\nadd\n-931\nadd\n149\nadd\n-561\nadd\n-706\nadd\n327\nadd\n-121\nadd\n-128\nadd\n253\nadd\n310\nadd\n-337\nadd\n503\nadd\n539\nadd\n487\nadd\n-736\nadd\n283\nadd\n818\nadd\n-128\nadd\n179\nadd\n-998\nadd\n-848\nadd\n-636\nadd\n93\nadd\n-107\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\nadd\n-4\nremove\n-40\nremove\n-41\nadd\n-9\nremove\n-22\nremove\n-7\nadd\n13\nadd\n-10\nadd\n33\nprint\nprint\nadd\n-48\nadd\n-44\nprint\nadd\n43\nadd\n26\nadd\n16\nremove\n-7\nadd\n-42\nprint\nadd\n-33\nremove\n-21\nprint\nadd\n-50\nremove\n25\nremove\n9\nprint\nprint\nprint\nadd\n3\nadd\n17\nadd\n2\nprint\nremove\n29\nadd\n-23\nremove\n33\nprint\nadd\n38\nremove\n34\nremove\n34\nadd\n-46\nadd\n-21\nadd\n17\nadd\n23\nadd\n33\nprint\nadd\n9\nadd\n16\nadd\n-42\nprint\nadd\n-38\nprint\nadd\n47\nremove\n29\nremove\n18\nprint\nprint\nprint\nadd\n22\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "120\nadd\n2\nadd\n9\nadd\n4\nadd\n8\nprint\nremove\n9\nprint\nadd\n1\nadd\n9\nremove\n6\nprint\nremove\n7\nremove\n4\nprint\nadd\n1\nremove\n0\nprint\nadd\n7\nadd\n3\nadd\n1\nadd\n7\nremove\n8\nprint\nadd\n8\nadd\n3\nadd\n9\nprint\nadd\n3\nremove\n3\nadd\n4\nadd\n8\nprint\nadd\n6\nremove\n9\nprint\nadd\n1\nremove\n5\nprint\nprint\nadd\n5\nadd\n7\nprint\nadd\n2\nadd\n8\nprint\nprint\nprint\nprint\nprint\nadd\n4\nadd\n4\nremove\n6\nadd\n8\nremove\n0\nremove\n6\nremove\n2\nremove\n8\nadd\n2\nadd\n0\nremove\n2\nremove\n8\nprint\nremove\n8\nadd\n6\nremove\n5\nadd\n1\nadd\n2\nprint\nprint\nremove\n7\nadd\n2\nremove\n7\nadd\n1\nprint\nprint\nadd\n7\nprint\nremove\n7\nadd\n4\nadd\n9\nadd\n3\nadd\n4\nprint\nadd\n0\nremove\n2\nadd\n8\nadd\n3\nadd\n0\nprint\nremove\n5\nadd\n0\nremove\n1\nremove\n0\nprint\nremove\n9\nprint\nadd\n7\nadd\n6\nadd\n9\nprint\nadd\n5\nadd\n7\nadd\n6\nadd\n3\nremove\n5\nprint\nadd\n3\nadd\n0\nprint\nremove\n9\nadd\n0\nprint\nadd\n2\nadd\n8\nadd\n7\nprint\nadd\n4\nadd\n4\nremove\n6\nadd\n8\n",
+      "generated": true
+    },
+    {
+      "stdin": "76\nadd\n1\nadd\n2\nadd\n3\nadd\n4\nadd\n5\nadd\n6\nadd\n7\nadd\n8\nadd\n9\nadd\n10\nadd\n11\nadd\n12\nadd\n13\nadd\n14\nadd\n15\nadd\n16\nadd\n17\nadd\n18\nadd\n19\nadd\n20\nadd\n21\nadd\n22\nadd\n23\nadd\n24\nadd\n25\nadd\n26\nadd\n27\nadd\n28\nadd\n29\nadd\n30\nadd\n31\nadd\n32\nadd\n33\nadd\n34\nadd\n35\nadd\n36\nadd\n37\nadd\n38\nadd\n39\nadd\n40\nadd\n41\nadd\n42\nadd\n43\nadd\n44\nadd\n45\nadd\n46\nadd\n47\nadd\n48\nadd\n49\nadd\n50\nremove\n1\nremove\n3\nremove\n5\nremove\n7\nremove\n9\nremove\n11\nremove\n13\nremove\n15\nremove\n17\nremove\n19\nremove\n21\nremove\n23\nremove\n25\nremove\n27\nremove\n29\nremove\n31\nremove\n33\nremove\n35\nremove\n37\nremove\n39\nremove\n41\nremove\n43\nremove\n45\nremove\n47\nremove\n49\nprint\n",
+      "generated": true
+    }
   ]
 }
