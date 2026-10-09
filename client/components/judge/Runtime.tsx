@@ -128,7 +128,7 @@ function SpeedChart({
   const active = hovered === null ? null : cases[hovered];
 
   return (
-    <figure>
+    <figure className="relative">
       <figcaption className="flex items-center justify-between gap-3 mb-3 flex-wrap">
         <span className="text-[12px] text-[var(--text3)]">{t('tests.chart.title')}</span>
         <span className="flex items-center gap-3 text-[12px] text-[var(--text2)]">
@@ -210,25 +210,30 @@ function SpeedChart({
         {active ? caption(active) : ''}
       </p>
 
-      <table className="sr-only">
-        <caption>{t('tests.chart.title')}</caption>
-        <thead>
-          <tr>
-            <th scope="col">{t('tests.caseN', { n: '' }).trim()}</th>
-            <th scope="col">{t('tests.chart.you')}</th>
-            <th scope="col">{t('tests.chart.reference')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cases.map((c) => (
-            <tr key={c.index}>
-              <th scope="row">{c.index + 1}</th>
-              <td>{formatMs(c.userMs, lang)} ms</td>
-              <td>{formatMs(c.solutionMs, lang)} ms</td>
+      {/* The wrapper, not the table, is visually hidden: Firefox lays a table's
+          caption outside the table box, so an sr-only table leaks its caption
+          onto the page and stretches it. */}
+      <div className="sr-only">
+        <table>
+          <caption>{t('tests.chart.title')}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{t('tests.caseN', { n: '' }).trim()}</th>
+              <th scope="col">{t('tests.chart.you')}</th>
+              <th scope="col">{t('tests.chart.reference')}</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {cases.map((c) => (
+              <tr key={c.index}>
+                <th scope="row">{c.index + 1}</th>
+                <td>{formatMs(c.userMs, lang)} ms</td>
+                <td>{formatMs(c.solutionMs, lang)} ms</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </figure>
   );
 }
