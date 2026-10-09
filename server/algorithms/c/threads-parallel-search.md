@@ -6,7 +6,7 @@ At the end, the main thread prints the smallest index where `target` appears, or
 
 - First line: integer `N` (2 <= N <= 100)
 - The next `N` lines: one integer per line (each between -1000 and 1000)
-- Last line: integer `target`
+- Last line: integer `target` (between -1000 and 1000)
 
 ### Output
 
