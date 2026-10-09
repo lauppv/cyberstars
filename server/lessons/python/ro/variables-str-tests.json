@@ -15,6 +15,99 @@
     },
     { "inject": { "comandant": "Nova", "pilot": ["Rex", "Kai"], "inginer": "Mira" } },
     { "inject": { "comandant": "Big Mitch", "pilot": ["Jess", "Rex"], "inginer": "Rex" } },
-    { "inject": { "comandant": "inginer", "pilot": ["print", "pilot"], "inginer": "comandant" } }
+    { "inject": { "comandant": "inginer", "pilot": ["print", "pilot"], "inginer": "comandant" } },
+    {
+      "inject": { "comandant": "Ada", "pilot": ["Ada", "Linus"], "inginer": "Grace" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Iris", "pilot": ["Juno", "Sol"], "inginer": "Sol" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Vega", "pilot": ["Orion", "Vega"], "inginer": "Orion" },
+      "generated": true
+    },
+    { "inject": { "comandant": "X", "pilot": ["Y", "Z"], "inginer": "W" }, "generated": true },
+    {
+      "inject": { "comandant": "X", "pilot": ["Orion", "Vega"], "inginer": "Ada" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "comandant": "Juno",
+        "pilot": ["Captain Maximilian Starfield III", "Grace"],
+        "inginer": "Zed"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Rex", "pilot": ["Iris", "Ana Maria Popescu"], "inginer": "Grace" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Quincy", "pilot": ["Bo", "Tess"], "inginer": "Dr. Who" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Mary-Jane", "pilot": ["Iris", "Orion"], "inginer": "Ada" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Juno", "pilot": ["Big Mitch", "Linus"], "inginer": "Ada" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Quincy", "pilot": ["Zed", "McKenzie"], "inginer": "Kai" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Quincy", "pilot": ["Zed", "Juno"], "inginer": "O'Neil" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "lowercase", "pilot": ["Tess", "Juno"], "inginer": "Grace" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Mira", "pilot": ["R2D2", "Mira"], "inginer": "Mira" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Nova", "pilot": ["Iris", "R2D2"], "inginer": "Iris" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "McKenzie", "pilot": ["Kai", "Lance"], "inginer": "Nova" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Ada", "pilot": ["Mira", "Vega"], "inginer": "Dr. Who" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "comandant": "Kai",
+        "pilot": ["Jess", "Captain Maximilian Starfield III"],
+        "inginer": "Linus"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Grace", "pilot": ["X", "Linus"], "inginer": "Ada" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Juno", "pilot": ["Zed", "Mira"], "inginer": "Linus" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "comandant": "Lance",
+        "pilot": ["Ana Maria Popescu", "Big Mitch"],
+        "inginer": "Sol"
+      },
+      "generated": true
+    }
   ]
 }

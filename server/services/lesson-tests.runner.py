@@ -3,8 +3,9 @@
 # ({userCode, solutionCode, structure, cases}), checks the user code's
 # structure with the ast module, injects each case's values into the lesson's
 # input variables (in BOTH the user code and the reference solution) and/or
-# feeds the case's stdin to both, runs the two programs per case, and prints a
-# single JSON verdict to stdout.
+# feeds the case's stdin to both, runs the two programs per case (timing each
+# run's wall clock in ms), and streams the verdict to stdout as JSON lines, one
+# case at a time, waiting for the server's go-ahead between cases.
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
@@ -12,6 +13,7 @@ import io
 import json
 import subprocess
 import sys
+import time
 import tokenize
 
 CASE_TIMEOUT = 5
@@ -194,73 +196,102 @@ def inject_values(code, values):
 INPUT_PREAMBLE = "import builtins as _b\n_oi = _b.input\n_b.input = lambda *a, **k: _oi()\n"
 
 
+def as_text(raw):
+    # Programs are captured as bytes and decoded leniently: a student program
+    # that prints invalid UTF-8 (a raw byte, an overflowed char) gets graded on
+    # its output with U+FFFD in place of the bad bytes, never crashes the runner.
+    return (raw or b"").decode("utf-8", "replace")
+
+
+def elapsed_ms(started):
+    return round((time.perf_counter() - started) * 1000, 3)
+
+
 def run_program(code, stdin=None):
     path = "/tmp/_judged.py"
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(INPUT_PREAMBLE + code)
+    started = time.perf_counter()
     try:
         proc = subprocess.run(
             [sys.executable, "-u", path],
             capture_output=True,
-            text=True,
             timeout=CASE_TIMEOUT,
-            input=stdin if stdin is not None else "",
+            input=(stdin or "").encode("utf-8"),
         )
         return {
-            "stdout": proc.stdout[:OUTPUT_CAP],
-            "stderr": proc.stderr[:OUTPUT_CAP],
+            "stdout": as_text(proc.stdout)[:OUTPUT_CAP],
+            "stderr": as_text(proc.stderr)[:OUTPUT_CAP],
             "exit": proc.returncode,
             "timedOut": False,
+            "ms": elapsed_ms(started),
         }
     except subprocess.TimeoutExpired as e:
-        # TimeoutExpired carries bytes even when text=True
-        def as_text(raw):
-            if raw is None:
-                return ""
-            return raw.decode("utf-8", "replace") if isinstance(raw, bytes) else raw
-
         return {
             "stdout": as_text(e.stdout)[:OUTPUT_CAP],
             "stderr": as_text(e.stderr)[:OUTPUT_CAP],
             "exit": -1,
             "timedOut": True,
+            "ms": elapsed_ms(started),
         }
 
 
+def emit(obj):
+    print(json.dumps(obj), flush=True)
+
+
+def proceed():
+    # Lockstep with the server: after each case line it compares the outputs
+    # and answers "next" or "stop" (stop at the first failing case). EOF (the
+    # server went away) also stops.
+    return sys.stdin.readline().strip() == "next"
+
+
 def main():
+    # Output protocol, one JSON object per line: a header
+    # {syntaxError, structureFailures}, then one line per case, each followed
+    # by a reply on stdin (see proceed). A syntax error ends the run after the
+    # header.
     with open(sys.argv[1]) as f:
         payload = json.load(f)
-
-    result = {"syntaxError": None, "structureFailures": [], "cases": []}
 
     try:
         user_tree = ast.parse(payload["userCode"])
     except SyntaxError as e:
-        result["syntaxError"] = "line %s: %s" % (e.lineno, e.msg)
-        print(json.dumps(result))
+        emit({"syntaxError": "line %s: %s" % (e.lineno, e.msg), "structureFailures": []})
         return
 
-    result["structureFailures"] = check_structure(
-        user_tree, payload["userCode"], payload.get("structure", {})
+    emit(
+        {
+            "syntaxError": None,
+            "structureFailures": check_structure(
+                user_tree, payload["userCode"], payload.get("structure", {})
+            ),
+        }
     )
 
     for case in payload["cases"]:
         inject = case.get("inject") or {}
         stdin = case.get("stdin")
+        # skipSolution: the server already holds this case's reference output
+        # (cached from an earlier run), so only the student's program runs.
+        skip_solution = case.get("skipSolution", False)
         try:
             user_src = inject_values(payload["userCode"], inject)
-            solution_src = inject_values(payload["solutionCode"], inject)
+            solution_src = None if skip_solution else inject_values(payload["solutionCode"], inject)
         except SyntaxError:
-            # solution is trusted; user code already parsed, should not happen
-            result["cases"].append({"injectError": True})
-            continue
-        user_run = run_program(user_src, stdin)
-        result["cases"].append({"user": user_run, "solution": run_program(solution_src, stdin)})
-        # A hung program would burn 5s on every remaining case too, so stop here.
-        if user_run["timedOut"]:
+            # solution is trusted; user code already parsed, should not happen.
+            # The server fails the whole run on it, so there is nothing after.
+            emit({"injectError": True})
             break
-
-    print(json.dumps(result))
+        user_run = run_program(user_src, stdin)
+        if skip_solution:
+            emit({"user": user_run})
+        else:
+            emit({"user": user_run, "solution": run_program(solution_src, stdin)})
+        # A hung program would burn 5s on every remaining case too, so stop here.
+        if user_run["timedOut"] or not proceed():
+            break
 
 
 main()

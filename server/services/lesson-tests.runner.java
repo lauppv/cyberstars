@@ -8,9 +8,10 @@
 // Compiler Tree API, injects each case's values into the lesson's input
 // variables (in BOTH the user code and the reference solution) by splicing
 // the initializer/rhs source ranges, and/or feeds the case's stdin to both,
-// compiles and runs the two programs per case, and prints a single JSON
-// verdict to stdout. Expected outputs never enter this container: the server
-// compares the two stdouts on its side.
+// compiles and runs the two programs per case (timing each run's wall clock
+// in ms), and streams the verdict to stdout as JSON lines, one case at a time,
+// waiting for the server's go-ahead between cases. Expected outputs never
+// enter this container: the server compares the two stdouts on its side.
 //
 // Divergences from the Python runner, by necessity of the language:
 // - "syntax error" covers all compile errors of the pristine user code (Java
@@ -46,9 +47,11 @@ import com.sun.source.util.JavacTask;
 import com.sun.source.util.SourcePositions;
 import com.sun.source.util.TreePathScanner;
 import com.sun.source.util.Trees;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.net.URI;
@@ -84,20 +87,17 @@ public class Runner {
     Map<String, Object> structure = asMap(payload.getOrDefault("structure", new LinkedHashMap<>()));
     List<Object> cases = asList(payload.getOrDefault("cases", new ArrayList<>()));
 
-    Map<String, Object> result = new LinkedHashMap<>();
-    result.put("syntaxError", null);
-    result.put("structureFailures", new ArrayList<>());
-    result.put("cases", new ArrayList<>());
-
+    // Output protocol, one JSON object per line: a header {syntaxError,
+    // structureFailures}, then one line per case, each followed by a reply on
+    // stdin (see proceed). A syntax error ends the run after the header.
     resetWorkRoot();
 
     Parsed user = Parsed.of(userCode);
     if (user.error != null) {
-      result.put("syntaxError", user.error);
-      System.out.println(Json.write(result));
+      emit(header(user.error, new ArrayList<>()));
       return;
     }
-    result.put("structureFailures", Structure.check(user, structure));
+    List<Object> structureFailures = Structure.check(user, structure);
 
     Parsed solution = Parsed.of(solutionCode);
 
@@ -109,48 +109,68 @@ public class Runner {
     if (solution.error == null) {
       Compiled pristine = cache.compile(user);
       if (pristine.error != null) {
-        result.put("syntaxError", pristine.error);
-        System.out.println(Json.write(result));
+        emit(header(pristine.error, new ArrayList<>()));
         return;
       }
     }
+    emit(header(null, structureFailures));
 
-    List<Object> caseResults = asList(result.get("cases"));
+    BufferedReader control =
+        new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
     for (Object caseRaw : cases) {
       Map<String, Object> testCase = asMap(caseRaw);
       Map<String, Object> inject = asMap(testCase.getOrDefault("inject", new LinkedHashMap<>()));
       String stdin = testCase.get("stdin") instanceof String s ? s : "";
+      // skipSolution: the server already holds this case's reference output
+      // (cached from an earlier run), so only the student's program runs.
+      boolean skipSolution = Boolean.TRUE.equals(testCase.get("skipSolution"));
 
-      Compiled userProg;
-      Compiled solutionProg;
-      if (solution.error != null) {
-        userProg = null;
-        solutionProg = null;
-      } else {
+      Compiled userProg = null;
+      Compiled solutionProg = null;
+      if (solution.error == null) {
         userProg = cache.compile(user.withInjected(inject));
-        solutionProg = cache.compile(solution.withInjected(inject));
-      }
-      if (userProg == null || solutionProg == null || solutionProg.error != null) {
-        caseResults.add(Map.of("injectError", true));
-        continue;
+        if (!skipSolution) solutionProg = cache.compile(solution.withInjected(inject));
       }
       // The pristine user code compiled, so a per-case failure means injection
-      // broke it: a spec/solution mismatch on our side, not the student's.
-      if (userProg.error != null) {
-        caseResults.add(Map.of("injectError", true));
-        continue;
+      // broke it: a spec/solution mismatch on our side, not the student's. The
+      // server fails the whole run on it, so there is nothing after.
+      if (userProg == null
+          || userProg.error != null
+          || (!skipSolution && (solutionProg == null || solutionProg.error != null))) {
+        emit(Map.of("injectError", true));
+        break;
       }
 
       Map<String, Object> userRun = runProgram(userProg, stdin);
       Map<String, Object> caseResult = new LinkedHashMap<>();
       caseResult.put("user", userRun);
-      caseResult.put("solution", runProgram(solutionProg, stdin));
-      caseResults.add(caseResult);
+      if (!skipSolution) caseResult.put("solution", runProgram(solutionProg, stdin));
+      emit(caseResult);
       // A hung program would burn 5s on every remaining case too, so stop here.
-      if (Boolean.TRUE.equals(userRun.get("timedOut"))) break;
+      if (Boolean.TRUE.equals(userRun.get("timedOut")) || !proceed(control)) break;
     }
+  }
 
-    System.out.println(Json.write(result));
+  static Map<String, Object> header(String syntaxError, List<Object> structureFailures) {
+    Map<String, Object> header = new LinkedHashMap<>();
+    header.put("syntaxError", syntaxError);
+    header.put("structureFailures", structureFailures);
+    return header;
+  }
+
+  static void emit(Object line) {
+    System.out.println(Json.write(line));
+    System.out.flush();
+  }
+
+  /**
+   * Lockstep with the server: after each case line it compares the outputs and
+   * answers "next" or "stop" (stop at the first failing case). EOF (the server
+   * went away) also stops.
+   */
+  static boolean proceed(BufferedReader control) throws IOException {
+    String reply = control.readLine();
+    return reply != null && reply.strip().equals("next");
   }
 
   static void resetWorkRoot() throws IOException {
@@ -698,6 +718,8 @@ public class Runner {
 
   static Map<String, Object> runProgram(Compiled program, String stdin) {
     Map<String, Object> out = new LinkedHashMap<>();
+    // Wall time from process start to exit, in ms; the compile is not part of it.
+    long started = System.nanoTime();
     try {
       Process proc =
           new ProcessBuilder(
@@ -719,6 +741,7 @@ public class Runner {
         // the program exited without reading its stdin, that's fine
       }
       boolean finished = proc.waitFor(CASE_TIMEOUT_SEC, TimeUnit.SECONDS);
+      double ms = Math.round((System.nanoTime() - started) / 1_000.0) / 1_000.0;
       if (!finished) {
         proc.descendants().forEach(ProcessHandle::destroyForcibly);
         proc.destroyForcibly();
@@ -730,6 +753,7 @@ public class Runner {
       out.put("stderr", stderr.text());
       out.put("exit", finished ? (long) proc.exitValue() : -1L);
       out.put("timedOut", !finished);
+      out.put("ms", ms);
     } catch (IOException | InterruptedException e) {
       out.put("stdout", "");
       out.put("stderr", "internal: " + e.getMessage());

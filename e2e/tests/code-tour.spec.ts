@@ -63,6 +63,8 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
   await expect(card).toContainText('Check it with the tests');
   await page.getByRole('button', { name: 'Run Tests' }).click();
   await expect(card).toContainText('Lesson complete', { timeout: 60_000 });
+  // The verdict opens in the lesson panel, lit beside the card.
+  await expect(page.locator('[data-tour="result"]')).toContainText('Accepted');
   await card.getByRole('button', { name: 'Start exploring' }).click();
   await expect(card).toHaveCount(0);
 

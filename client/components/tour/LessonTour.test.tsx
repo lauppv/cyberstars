@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeAll } from 'vitest';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { LessonTour } from './LessonTour';
 import { CELL_RUN_EVENT } from '../../constants/tour';
 
@@ -132,6 +132,34 @@ describe('LessonTour', () => {
     expect(screen.getByText('Lesson complete')).toBeInTheDocument();
     fireEvent.click(screen.getByText('Start exploring'));
     expect(onFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps a test run verdict lit in the lesson panel while coding', async () => {
+    const { update } = setup();
+    fireEvent.click(screen.getByText("Let's go"));
+    fireEvent.click(next());
+    ranCell('cell-1');
+    fireEvent.click(next());
+    fireEvent.click(next());
+    ranCell('cell-2');
+    fireEvent.click(next());
+    fireEvent.click(next());
+    fireEvent.click(next());
+    expect(screen.getByText('Run it')).toBeInTheDocument();
+    update({ editorRuns: 1 });
+    fireEvent.click(next());
+    expect(screen.getByText('Check it with the tests')).toBeInTheDocument();
+
+    const result = document.createElement('div');
+    result.dataset.tour = 'result';
+    result.getBoundingClientRect = () =>
+      ({ left: 10, top: 20, right: 210, bottom: 320, width: 200, height: 300 }) as DOMRect;
+    document.body.appendChild(result);
+    await waitFor(() => {
+      const hole = document.querySelector('svg rect');
+      expect(hole).toHaveAttribute('width', String(200 + 12));
+    });
+    result.remove();
   });
 
   it('ends early when the tests pass before the last step', () => {
