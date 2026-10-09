@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Eye, Lightbulb, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
@@ -17,6 +17,7 @@ import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
 import { TestResults } from '../components/code/TestResults';
+import { PanelTabs, type PanelTab } from '../components/judge/PanelTabs';
 import { SolutionModal } from '../components/code/SolutionModal';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { HintModal } from '../components/code/HintModal';
@@ -52,6 +53,9 @@ function parseDifficulty(title: string): {
   const d = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
   return { difficulty: d as 'Easy' | 'Medium' | 'Hard', rest: m[2] };
 }
+
+// What the lesson panel (the left side) shows.
+type LeftView = 'lesson' | 'result';
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   Easy: 'var(--success)',
@@ -95,6 +99,7 @@ export function LessonPage() {
 
   const [userCode, setUserCode] = useState('');
   const [activeTab, setActiveTab] = useState<'lesson' | 'workspace'>('lesson');
+  const [leftView, setLeftView] = useState<LeftView>('lesson');
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState({ title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
@@ -127,6 +132,7 @@ export function LessonPage() {
   const menuRef = useRef<HTMLDivElement>(null);
   const justMarkedRef = useRef(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const lessonScrollRef = useRef(0);
   const bandRef = useRef<HTMLDivElement>(null);
   const workspaceRef = useRef<HTMLDivElement>(null);
 
@@ -211,6 +217,7 @@ export function LessonPage() {
       setShowHint(false);
       setOptimisticCompleted(null);
       setTestResults(null);
+      setLeftView('lesson');
       setTestsError(null);
       setTerminalTestResult(null);
       setTerminalTestsError(null);
@@ -247,7 +254,6 @@ export function LessonPage() {
 
   const handleRun = useCallback(() => {
     if (isRunning) return;
-    setTestResults(null);
     setTestsError(null);
     setEditorRuns((n) => n + 1);
     execute(userCode, category);
@@ -264,6 +270,9 @@ export function LessonPage() {
       const lang = i18n.language === 'ro' ? 'ro' : 'en';
       const results = await testsService.runTests(category, lesson, userCode, lang);
       setTestResults(results);
+      // The verdict opens in the lesson panel, which a phone has to bring up.
+      setLeftView('result');
+      setActiveTab('lesson');
       // The server marks the lesson complete on a passing verdict (see
       // tests.controller). Reflect it optimistically, then refresh from the DB.
       if (results.status === 'passed' && isLoggedIn) {
@@ -336,6 +345,23 @@ export function LessonPage() {
     refreshGamification,
   ]);
 
+  // The lesson panel's tabs; Result appears once a test run has come back.
+  const leftTabs: PanelTab<LeftView>[] = [{ key: 'lesson', label: t('lesson.tabLesson') }];
+  if (testResults && !isTerminal) leftTabs.push({ key: 'result', label: t('lesson.tabResult') });
+  const view: LeftView = leftTabs.some((tab) => tab.key === leftView) ? leftView : 'lesson';
+
+  // Hiding the lesson drops its scroll position; put it back on return.
+  useLayoutEffect(() => {
+    if (view === 'lesson' && activeTab === 'lesson' && contentRef.current) {
+      contentRef.current.scrollTop = lessonScrollRef.current;
+    }
+  }, [view, activeTab]);
+
+  const showPanel = useCallback((panel: 'lesson' | 'workspace') => {
+    setActiveTab(panel);
+    if (panel === 'lesson') setLeftView('lesson');
+  }, []);
+
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
       await saveCode(lesson, userCode);
@@ -375,122 +401,140 @@ export function LessonPage() {
       />
 
       {/* Mobile panel switcher (split-screen stays on lg+) */}
-      <div
+      <PanelTabs
         data-tour="tabs"
-        className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)]"
-      >
-        <button
-          onClick={() => setActiveTab('lesson')}
-          className={`flex-1 py-3 text-[13px] font-semibold transition cursor-pointer bg-transparent border-b-2 ${
-            activeTab === 'lesson'
-              ? 'text-[var(--accent)] border-[var(--accent)]'
-              : 'text-[var(--text3)] border-transparent'
-          }`}
-        >
-          {t('lesson.tabLesson')}
-        </button>
-        <button
-          onClick={() => setActiveTab('workspace')}
-          className={`flex-1 py-3 text-[13px] font-semibold transition cursor-pointer bg-transparent border-b-2 ${
-            activeTab === 'workspace'
-              ? 'text-[var(--accent)] border-[var(--accent)]'
-              : 'text-[var(--text3)] border-transparent'
-          }`}
-        >
-          {isTerminal ? t('lesson.tabTerminal') : t('lesson.tabCode')}
-        </button>
-      </div>
+        className="lg:hidden bg-[var(--glass)]"
+        fill
+        tabs={[
+          ...leftTabs,
+          {
+            key: 'workspace' as const,
+            label: isTerminal ? t('lesson.tabTerminal') : t('lesson.tabCode'),
+          },
+        ]}
+        active={activeTab === 'workspace' ? 'workspace' : view}
+        onSelect={(key) => {
+          if (key === 'workspace') {
+            setActiveTab('workspace');
+          } else {
+            setActiveTab('lesson');
+            setLeftView(key);
+          }
+        }}
+      />
 
       <div className="flex flex-1 overflow-hidden justify-center">
         <div ref={bandRef} className="flex w-full lg:w-4/5 overflow-hidden">
-          {/* Lesson content */}
+          {/* Lesson panel: the lesson, and the latest test run's result */}
           <div
-            ref={contentRef}
-            data-tour="lesson"
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
-            className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)]`}
+            className={`${activeTab === 'lesson' ? 'flex' : 'hidden'} lg:flex w-full min-w-0 flex-col bg-[var(--panel-bg)]`}
           >
-            <div className="px-9 py-8">
-              {(() => {
-                const { rest } = parseDifficulty(title);
-                const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
-                return (
-                  <>
-                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                        {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
-                          n: currentIndex + 1,
-                          total: lessonList.length,
-                        })}
-                      </span>
-                      {lessonCompleted && (
-                        <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
-                          {t('lesson.completed')}
+            {leftTabs.length > 1 && (
+              <PanelTabs
+                data-tour="panel-tabs"
+                aria-label={t('lesson.panelTabs')}
+                className="hidden lg:flex shrink-0 px-3"
+                tabs={leftTabs}
+                active={view}
+                onSelect={setLeftView}
+              />
+            )}
+            <div
+              ref={contentRef}
+              data-tour="lesson"
+              onScroll={(e) => {
+                lessonScrollRef.current = e.currentTarget.scrollTop;
+              }}
+              className={`${view === 'lesson' ? 'block' : 'hidden'} flex-1 min-h-0 overflow-y-auto`}
+            >
+              <div className="px-9 py-8">
+                {(() => {
+                  const { rest } = parseDifficulty(title);
+                  const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
+                  return (
+                    <>
+                      <div className="flex items-center gap-3 mb-2 flex-wrap">
+                        <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
+                          {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
+                            n: currentIndex + 1,
+                            total: lessonList.length,
+                          })}
                         </span>
-                      )}
-                      <div className="ml-auto flex items-center gap-2">
-                        {difficulty && (
-                          <span
-                            className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
-                            style={{
-                              background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
-                              color: DIFFICULTY_COLOR[difficulty],
-                            }}
-                          >
-                            {t(`lesson.difficulty.${difficulty}`)}
+                        {lessonCompleted && (
+                          <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
+                            {t('lesson.completed')}
                           </span>
                         )}
-                        {currentIndex >= 0 && (
-                          <span
-                            className={`text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
-                            title={t('common.xpReward', {
-                              xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                            })}
-                          >
-                            {t('common.xpReward', {
-                              xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                            })}
-                          </span>
-                        )}
+                        <div className="ml-auto flex items-center gap-2">
+                          {difficulty && (
+                            <span
+                              className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
+                              style={{
+                                background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
+                                color: DIFFICULTY_COLOR[difficulty],
+                              }}
+                            >
+                              {t(`lesson.difficulty.${difficulty}`)}
+                            </span>
+                          )}
+                          {currentIndex >= 0 && (
+                            <span
+                              className={`text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+                              title={t('common.xpReward', {
+                                xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                              })}
+                            >
+                              {t('common.xpReward', {
+                                xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                              })}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
 
-                    <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
-                      {rest}
-                    </h1>
-                  </>
-                );
-              })()}
+                      <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
+                        {rest}
+                      </h1>
+                    </>
+                  );
+                })()}
 
-              <div className="lesson-body">
-                <MarkdownRenderer content={content} />
-              </div>
+                <div className="lesson-body">
+                  <MarkdownRenderer content={content} />
+                </div>
 
-              <div
-                className="flex gap-3 mt-10"
-                style={{ paddingBottom: 'calc(1rem + var(--radio-clearance, 0px))' }}
-              >
-                <button
-                  onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
-                  disabled={!prevLesson}
-                  className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                <div
+                  className="flex gap-3 mt-10"
+                  style={{ paddingBottom: 'calc(1rem + var(--radio-clearance, 0px))' }}
                 >
-                  {t('lesson.previous')}
-                </button>
-                <button
-                  onClick={() => {
-                    if (!nextLesson) return;
-                    // The tour holds a new account here until the tests pass.
-                    if (inTour) showTourNotice();
-                    else navigate(`/lesson/${category}/${nextLesson.slug}`);
-                  }}
-                  disabled={!nextLesson}
-                  className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
-                >
-                  {t('lesson.next')}
-                </button>
+                  <button
+                    onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
+                    disabled={!prevLesson}
+                    className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                  >
+                    {t('lesson.previous')}
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (!nextLesson) return;
+                      // The tour holds a new account here until the tests pass.
+                      if (inTour) showTourNotice();
+                      else navigate(`/lesson/${category}/${nextLesson.slug}`);
+                    }}
+                    disabled={!nextLesson}
+                    className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                  >
+                    {t('lesson.next')}
+                  </button>
+                </div>
               </div>
             </div>
+            {view === 'result' && testResults && (
+              <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto flex flex-col p-3">
+                <TestResults results={testResults} onClose={() => setLeftView('lesson')} />
+              </div>
+            )}
           </div>
 
           {isLg && (
@@ -703,16 +747,12 @@ export function LessonPage() {
                     )}
                   </div>
 
-                  {testResults ? (
-                    <TestResults results={testResults} onClose={() => setTestResults(null)} />
-                  ) : (
-                    <CodeOutput
-                      output={output}
-                      isRunning={isRunning}
-                      onInput={sendInput}
-                      fillHeight
-                    />
-                  )}
+                  <CodeOutput
+                    output={output}
+                    isRunning={isRunning}
+                    onInput={sendInput}
+                    fillHeight
+                  />
                 </div>
               </div>
             </div>
@@ -765,7 +805,7 @@ export function LessonPage() {
           completed={lessonCompleted}
           languagePicked={tourLanguagePicked}
           onLanguage={pickTourLanguage}
-          onPanel={setActiveTab}
+          onPanel={showPanel}
           onBlocked={showTourNotice}
           onFinish={refreshUser}
         />
