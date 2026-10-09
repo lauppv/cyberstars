@@ -4,6 +4,49 @@
     { "visible": true, "stdin": "6\npush\n10\npush\n20\npeek\npop\npop\npop\n" },
     { "visible": true, "stdin": "3\npush\n5\npush\n15\npeek\n" },
     { "stdin": "2\npop\npeek\n" },
-    { "stdin": "5\npush\n1\npush\n2\npop\npush\n3\npeek\n" }
+    { "stdin": "5\npush\n1\npush\n2\npop\npush\n3\npeek\n" },
+    { "stdin": "1\npeek\n", "generated": true },
+    { "stdin": "4\npush\n7\npop\npop\npeek\n", "generated": true },
+    {
+      "stdin": "9\npush\n1\npush\n2\npush\n3\npop\npush\n4\npop\npop\npop\npop\n",
+      "generated": true
+    },
+    { "stdin": "5\npush\n0\npush\n-5\npeek\npop\npeek\n", "generated": true },
+    { "stdin": "4\npush\n2147483647\npush\n-2147483648\npop\npop\n", "generated": true },
+    { "stdin": "8\npush\n3\npush\n3\npush\n3\npop\npeek\npop\npop\npeek\n", "generated": true },
+    {
+      "stdin": "302\npush\n1\npush\n2\npush\n3\npush\n4\npush\n5\npush\n6\npush\n7\npush\n8\npush\n9\npush\n10\npush\n11\npush\n12\npush\n13\npush\n14\npush\n15\npush\n16\npush\n17\npush\n18\npush\n19\npush\n20\npush\n21\npush\n22\npush\n23\npush\n24\npush\n25\npush\n26\npush\n27\npush\n28\npush\n29\npush\n30\npush\n31\npush\n32\npush\n33\npush\n34\npush\n35\npush\n36\npush\n37\npush\n38\npush\n39\npush\n40\npush\n41\npush\n42\npush\n43\npush\n44\npush\n45\npush\n46\npush\n47\npush\n48\npush\n49\npush\n50\npush\n51\npush\n52\npush\n53\npush\n54\npush\n55\npush\n56\npush\n57\npush\n58\npush\n59\npush\n60\npush\n61\npush\n62\npush\n63\npush\n64\npush\n65\npush\n66\npush\n67\npush\n68\npush\n69\npush\n70\npush\n71\npush\n72\npush\n73\npush\n74\npush\n75\npush\n76\npush\n77\npush\n78\npush\n79\npush\n80\npush\n81\npush\n82\npush\n83\npush\n84\npush\n85\npush\n86\npush\n87\npush\n88\npush\n89\npush\n90\npush\n91\npush\n92\npush\n93\npush\n94\npush\n95\npush\n96\npush\n97\npush\n98\npush\n99\npush\n100\npush\n101\npush\n102\npush\n103\npush\n104\npush\n105\npush\n106\npush\n107\npush\n108\npush\n109\npush\n110\npush\n111\npush\n112\npush\n113\npush\n114\npush\n115\npush\n116\npush\n117\npush\n118\npush\n119\npush\n120\npush\n121\npush\n122\npush\n123\npush\n124\npush\n125\npush\n126\npush\n127\npush\n128\npush\n129\npush\n130\npush\n131\npush\n132\npush\n133\npush\n134\npush\n135\npush\n136\npush\n137\npush\n138\npush\n139\npush\n140\npush\n141\npush\n142\npush\n143\npush\n144\npush\n145\npush\n146\npush\n147\npush\n148\npush\n149\npush\n150\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\npop\n",
+      "generated": true
+    },
+    { "stdin": "7\npush\n1\npop\npush\n2\npop\npush\n3\npeek\npeek\n", "generated": true },
+    { "stdin": "5\npop\npop\npop\npush\n9\npeek\n", "generated": true },
+    {
+      "stdin": "61\npush\n1\npush\n-1\npop\npush\n2\npush\n-2\npop\npush\n3\npush\n-3\npop\npush\n4\npush\n-4\npop\npush\n5\npush\n-5\npop\npush\n6\npush\n-6\npop\npush\n7\npush\n-7\npop\npush\n8\npush\n-8\npop\npush\n9\npush\n-9\npop\npush\n10\npush\n-10\npop\npush\n11\npush\n-11\npop\npush\n12\npush\n-12\npop\npush\n13\npush\n-13\npop\npush\n14\npush\n-14\npop\npush\n15\npush\n-15\npop\npush\n16\npush\n-16\npop\npush\n17\npush\n-17\npop\npush\n18\npush\n-18\npop\npush\n19\npush\n-19\npop\npush\n20\npush\n-20\npop\npeek\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\npush\n66\npush\n-67\npush\n94\npush\n-11\npush\n99\npush\n36\npop\npush\n-32\npush\n95\npush\n48\npush\n-47\npop\npeek\npop\npop\npop\npush\n41\npop\npeek\npop\npop\npop\npeek\npeek\npeek\npush\n-98\npeek\npeek\npush\n-1\npop\npeek\npeek\npop\npeek\npush\n31\npush\n-78\npop\npush\n38\npop\npop\npeek\npop\npush\n-99\npeek\npush\n46\npush\n19\npush\n-42\npush\n-21\npop\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\npop\npop\npush\n9\npop\npop\npeek\npush\n7\npush\n7\npush\n0\npeek\npop\npop\npush\n3\npeek\npush\n4\npeek\npush\n1\npop\npush\n5\npeek\npush\n3\npop\npop\npop\npush\n9\npush\n1\npeek\npop\npop\npop\npush\n6\npop\npush\n7\npop\npeek\npush\n7\npush\n0\npush\n8\npush\n3\npop\npeek\npeek\npop\npop\npush\n1\npop\npop\npop\npop\npeek\npop\npeek\npeek\npop\npop\npush\n7\npush\n2\npop\npush\n0\npop\npush\n6\npop\npeek\npop\npush\n3\npush\n1\npush\n4\npush\n8\npush\n3\npop\npop\npop\npush\n6\npush\n9\npeek\npeek\npop\npeek\npop\npeek\npeek\npush\n1\npeek\npush\n9\npush\n7\npeek\npop\npush\n8\npop\npop\npush\n5\npush\n3\npop\npop\npush\n3\npush\n5\npush\n2\npush\n4\npush\n4\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "200\npop\npop\npop\npeek\npop\npop\npeek\npop\npush\n-841463\npop\npush\n-612344\npush\n931110\npush\n531361\npop\npeek\npop\npush\n-367313\npop\npush\n625826\npush\n186757\npeek\npush\n-630722\npeek\npush\n768147\npush\n960589\npop\npop\npush\n392373\npop\npop\npush\n840878\npush\n-448931\npop\npush\n-57462\npush\n378480\npop\npush\n365553\npush\n52569\npush\n-162827\npush\n-999702\npeek\npop\npop\npush\n783951\npop\npush\n-796056\npop\npush\n279878\npush\n-742187\npop\npop\npush\n673750\npush\n714126\npop\npop\npush\n685892\npush\n-647113\npush\n-164362\npush\n430834\npush\n-818978\npop\npeek\npush\n-641321\npop\npush\n882106\npop\npush\n-581174\npush\n471261\npush\n-581559\npeek\npush\n-216602\npop\npush\n-366531\npush\n-794011\npush\n25556\npush\n272530\npush\n332365\npop\npop\npop\npush\n908804\npeek\npush\n-913449\npop\npush\n708465\npush\n24798\npeek\npush\n-300861\npop\npop\npush\n369503\npush\n278917\npush\n735451\npop\npeek\npop\npeek\npop\npop\npush\n-675142\npush\n-930831\npeek\npush\n281919\npush\n-529431\npush\n682599\npush\n616840\npush\n66059\npop\npeek\npop\npop\npop\npeek\npop\npush\n855798\npop\npush\n720533\npop\npush\n-726915\npush\n12112\npop\npush\n-206533\npop\npush\n-762828\npush\n731681\npush\n-694423\npush\n-322310\npop\npeek\npush\n295853\npush\n-75967\npush\n555428\npeek\npop\npeek\npush\n699200\npush\n-872699\npush\n-962193\npop\npop\npush\n661180\npop\npush\n495442\npop\npop\npeek\npeek\npush\n-411811\npush\n59026\npop\npush\n456568\npush\n-857822\npush\n271988\npop\npush\n-636454\npop\npeek\npush\n-333327\npush\n505056\npush\n274415\npop\npeek\npop\npush\n839753\npop\npush\n99049\npush\n-15590\npush\n-962089\npush\n188366\npeek\npeek\npop\npush\n-148875\npop\npeek\npop\npush\n885880\npush\n-797221\npush\n-428726\npush\n-398216\npush\n400935\npush\n884127\npush\n-475237\npop\npop\npop\npop\npeek\npush\n824098\npush\n-954431\npush\n-48586\npush\n-564292\npush\n-844205\npeek\npop\npop\npush\n-248967\npop\npush\n-941694\npush\n-236763\n",
+      "generated": true
+    },
+    {
+      "stdin": "121\npush\n-218\npush\n868\npush\n-987\npush\n-533\npush\n281\npush\n421\npush\n-482\npush\n-971\npush\n834\npush\n428\npush\n829\npush\n-243\npush\n-935\npush\n444\npush\n-823\npush\n458\npush\n-182\npush\n786\npush\n-645\npush\n333\npush\n-530\npush\n724\npush\n-802\npush\n-680\npush\n-470\npush\n375\npush\n-378\npush\n303\npush\n-423\npush\n407\npush\n833\npush\n164\npush\n655\npush\n-537\npush\n339\npush\n-411\npush\n-994\npush\n310\npush\n662\npush\n-22\npush\n-868\npush\n-686\npush\n181\npush\n348\npush\n768\npush\n397\npush\n375\npush\n-427\npush\n-675\npush\n902\npush\n477\npush\n-697\npush\n-946\npush\n-987\npush\n-643\npush\n297\npush\n-931\npush\n727\npush\n279\npush\n-166\npush\n-535\npush\n103\npush\n823\npush\n-713\npush\n767\npush\n-53\npush\n973\npush\n899\npush\n-617\npush\n62\npush\n785\npush\n50\npush\n-822\npush\n-834\npush\n-880\npush\n-314\npush\n450\npush\n-507\npush\n715\npush\n-817\npush\n574\npush\n-348\npush\n-909\npush\n126\npush\n36\npush\n-219\npush\n-971\npush\n968\npush\n-649\npush\n262\npush\n-542\npush\n521\npush\n-754\npush\n152\npush\n745\npush\n-391\npush\n906\npush\n-520\npush\n503\npush\n-505\npush\n748\npush\n-939\npush\n358\npush\n-593\npush\n-254\npush\n-236\npush\n-873\npush\n188\npush\n-447\npush\n-498\npush\n-164\npush\n-737\npush\n821\npush\n653\npush\n490\npush\n-242\npush\n-954\npush\n-451\npush\n-340\npush\n-624\npeek\n",
+      "generated": true
+    },
+    {
+      "stdin": "150\npeek\npeek\npop\npush\n-1\npop\npeek\npop\npeek\npop\npop\npush\n3\npush\n-4\npop\npop\npush\n-3\npeek\npush\n5\npop\npop\npush\n1\npop\npush\n-1\npeek\npop\npush\n5\npop\npush\n2\npop\npop\npush\n1\npop\npop\npop\npop\npop\npop\npush\n1\npop\npop\npush\n-4\npeek\npush\n-3\npush\n-3\npeek\npop\npush\n-1\npush\n1\npush\n0\npop\npop\npush\n-1\npop\npop\npop\npeek\npop\npush\n-4\npeek\npop\npeek\npush\n-5\npeek\npop\npush\n1\npeek\npeek\npop\npop\npeek\npeek\npop\npeek\npeek\npop\npop\npop\npop\npush\n5\npush\n4\npop\npush\n-2\npeek\npop\npop\npop\npeek\npop\npush\n2\npop\npop\npop\npop\npop\npush\n4\npush\n3\npop\npush\n2\npush\n1\npop\npeek\npop\npop\npop\npop\npush\n-1\npush\n-3\npeek\npush\n0\npop\npop\npop\npeek\npop\npop\npop\npeek\npeek\npop\npeek\npush\n3\npush\n-4\npush\n3\npeek\npop\npush\n-5\npeek\npeek\npush\n3\npush\n-5\npeek\npeek\npop\npop\npop\npeek\npush\n4\npeek\npush\n4\npush\n-4\npeek\npush\n3\npop\npop\npop\npop\npop\npeek\npeek\npop\npop\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\npush\n5\npeek\npeek\npeek\npeek\npeek\npeek\npeek\npeek\npeek\npeek\n",
+      "generated": true
+    }
   ]
 }

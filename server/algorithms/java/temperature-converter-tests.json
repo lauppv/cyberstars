@@ -6,6 +6,20 @@
     { "stdin": "0.0\nC\n" },
     { "stdin": "-40.0\nC\n" },
     { "stdin": "212.0\nF\n" },
-    { "stdin": "37.0\nC\n" }
+    { "stdin": "37.0\nC\n" },
+    { "stdin": "98.6\nF\n", "generated": true },
+    { "stdin": "-40.0\nF\n", "generated": true },
+    { "stdin": "0.0\nF\n", "generated": true },
+    { "stdin": "1000.0\nC\n", "generated": true },
+    { "stdin": "-196.0\nC\n", "generated": true },
+    { "stdin": "451.0\nF\n", "generated": true },
+    { "stdin": "36.6\nC\n", "generated": true },
+    { "stdin": "1.0\nC\n", "generated": true },
+    { "stdin": "33.8\nF\n", "generated": true },
+    { "stdin": "-459.4\nF\n", "generated": true },
+    { "stdin": "100\nC\n", "generated": true },
+    { "stdin": "50.0\nF\n", "generated": true },
+    { "stdin": "0.5\nC\n", "generated": true },
+    { "stdin": "-12.3\nC\n", "generated": true }
   ]
 }

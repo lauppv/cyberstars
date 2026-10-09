@@ -4,6 +4,37 @@
     { "visible": true, "stdin": "2\nApple\n1.50\n3\nBread\n2.00\n2\n" },
     { "visible": true, "stdin": "3\nMilk\n3.99\n1\nEggs\n2.50\n2\nButter\n4.00\n1\n" },
     { "stdin": "1\nWater\n0.99\n1\n" },
-    { "stdin": "2\nX\n1.00\n5\nY\n0.50\n4\n" }
+    { "stdin": "2\nX\n1.00\n5\nY\n0.50\n4\n" },
+    { "stdin": "0\n", "generated": true },
+    { "stdin": "1\nGum\n0.50\n0\n", "generated": true },
+    { "stdin": "1\nCandy\n0.01\n1\n", "generated": true },
+    { "stdin": "1\nLaptop\n999.99\n1000\n", "generated": true },
+    { "stdin": "2\nNail\n0.10\n1\nScrew\n0.20\n1\n", "generated": true },
+    { "stdin": "2\nTea\n2.5\n4\nCup\n3\n2\n", "generated": true },
+    { "stdin": "1\nBulk\n0.99\n100000\n", "generated": true },
+    { "stdin": "3\nApple\n1.50\n3\nApple\n1.50\n3\nApple\n1.50\n3\n", "generated": true },
+    { "stdin": "2\nItem42\n0.05\n3\nX1\n0.15\n7\n", "generated": true },
+    { "stdin": "1\nPen\n1.99\n7\n", "generated": true },
+    {
+      "stdin": "10\nApple\n0.10\n3\nBread\n0.10\n3\nMilk\n0.10\n3\nEggs\n0.10\n3\nRice\n0.10\n3\nTea\n0.10\n3\nSoap\n0.10\n3\nPen\n0.10\n3\nCup\n0.10\n3\nJam\n0.10\n3\n",
+      "generated": true
+    },
+    {
+      "stdin": "10\nJam\n323.73\n17\nBread\n538.34\n13\nSoap\n215.41\n4\nSoap\n955.31\n6\nBread\n957.49\n16\nCup\n466.82\n8\nJam\n910.20\n4\nSoap\n625.95\n19\nTea\n679.75\n2\nApple\n691.46\n16\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\nCup\n974.71\n37\nMilk\n188.65\n65\nMilk\n962.27\n4\nEggs\n568.00\n14\nApple\n825.66\n90\nApple\n82.73\n70\nApple\n792.09\n98\nJam\n762.21\n7\nRice\n256.48\n30\nBread\n298.93\n88\nRice\n745.74\n39\nEggs\n693.54\n99\nEggs\n445.73\n18\nTea\n856.21\n12\nPen\n624.05\n49\nApple\n488.79\n23\nBread\n818.79\n29\nPen\n363.09\n4\nBread\n60.58\n50\nJam\n683.37\n15\nTea\n272.01\n32\nApple\n130.87\n63\nPen\n460.86\n5\nRice\n956.02\n14\nCup\n0.01\n24\nBread\n811.77\n68\nCup\n739.71\n82\nApple\n926.52\n58\nEggs\n29.48\n5\nEggs\n279.05\n33\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\nSoap\n8.12\n6\nJam\n5.54\n4\nRice\n2.72\n8\nEggs\n0.15\n3\nPen\n0.53\n8\nEggs\n4.44\n3\nApple\n2.45\n8\nJam\n9.22\n3\nJam\n1.46\n4\nJam\n8.38\n9\nEggs\n0.95\n4\nCup\n7.18\n7\nTea\n9.15\n5\nCup\n6.92\n8\nSoap\n7.95\n3\nCup\n9.11\n7\nPen\n4.81\n1\nTea\n8.77\n7\nJam\n7.36\n8\nBread\n6.95\n9\nRice\n1.07\n6\nApple\n9.13\n6\nSoap\n0.83\n2\nPen\n7.60\n7\nTea\n1.02\n3\nRice\n4.71\n9\nRice\n4.68\n8\nSoap\n6.78\n3\nCup\n9.26\n5\nBread\n5.01\n4\nMilk\n4.61\n9\nBread\n8.25\n8\nJam\n9.84\n8\nTea\n4.35\n7\nJam\n0.99\n3\nCup\n8.95\n2\nTea\n7.65\n9\nBread\n5.07\n6\nSoap\n2.09\n9\nEggs\n9.57\n5\nJam\n4.66\n5\nEggs\n6.90\n8\nMilk\n0.12\n4\nCup\n8.12\n4\nSoap\n4.38\n6\nCup\n5.40\n7\nBread\n8.95\n3\nCup\n2.23\n5\nRice\n7.43\n3\nApple\n9.54\n9\n",
+      "generated": true
+    },
+    {
+      "stdin": "15\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\nWater\n0.99\n1\n",
+      "generated": true
+    },
+    { "stdin": "3\nSofa\n1234.56\n3\nLamp\n45.67\n2\nRug\n89.01\n0\n", "generated": true }
   ]
 }
