@@ -47,21 +47,9 @@ export async function handleInteractiveRun(
     return;
   }
 
-  let containerId: string;
-  try {
-    containerId = await acquireForRun(ownerKey, language);
-  } catch (err) {
-    const data =
-      err instanceof Error && err.message === 'A run is already in progress'
-        ? 'A run is already in progress.\n'
-        : 'Could not start the runner. Please try again.\n';
-    ws.send(JSON.stringify({ type: 'stderr', data }));
-    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
-    return;
-  }
-
-  // We now hold the owner's container reserved. Every exit path below must settle
-  // it exactly once: keep it (release for reuse) or drop it (destroy).
+  // Once the acquire starts we hold the owner's container reserved. Every exit
+  // path below must settle it exactly once: keep it (release for reuse) or drop
+  // it (destroy).
   let settled = false;
   const keepContainer = () => {
     if (settled) return;
@@ -74,9 +62,41 @@ export async function handleInteractiveRun(
     void destroyOwner(ownerKey);
   };
 
+  // The client can leave at any moment (Run pressed again, page left), also
+  // while the container is still starting or the code is still compiling. A run
+  // abandoned before its program starts drops the container at once; otherwise
+  // the program would start with nobody watching and hold the owner's container
+  // until the timeout, refusing their next run as "already in progress".
+  let abandoned = false;
+  let acquireFailed = false;
+  let stopProgram: (() => void) | null = null;
+  ws.on('close', () => {
+    abandoned = true;
+    if (stopProgram) stopProgram();
+    else if (!acquireFailed) dropContainer();
+  });
+
+  let containerId: string;
+  try {
+    containerId = await acquireForRun(ownerKey, language);
+  } catch (err) {
+    acquireFailed = true;
+    if (abandoned) return;
+    const data =
+      err instanceof Error && err.message === 'A run is already in progress'
+        ? 'A run is already in progress.\n'
+        : 'Could not start the runner. Please try again.\n';
+    ws.send(JSON.stringify({ type: 'stderr', data }));
+    ws.send(JSON.stringify({ type: 'exit', code: 1 }));
+    return;
+  }
+  if (abandoned) return;
+
   try {
     await writeSource(containerId, runtime.sourceFile, code);
+    if (abandoned) return;
   } catch {
+    if (abandoned) return;
     ws.send(JSON.stringify({ type: 'stderr', data: 'Could not prepare the run.\n' }));
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     dropContainer();
@@ -85,6 +105,7 @@ export async function handleInteractiveRun(
 
   if (runtime.compileCmd) {
     const compileErr = await compile(containerId, runtime.compileCmd);
+    if (abandoned) return;
     if (compileErr) {
       ws.send(JSON.stringify({ type: 'stderr', data: compileErr }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
@@ -165,23 +186,21 @@ export async function handleInteractiveRun(
     const slice = chunk.length > remaining ? chunk.subarray(0, remaining) : chunk;
     const text = slice.toString();
     outputTotal += slice.length;
-    if (target === 'stdout') {
-      stdoutBuf += text;
-      if (stdoutBuf.length > OUTPUT_BUFFER_MAX) {
-        stdoutBuf = stdoutBuf.slice(-OUTPUT_BUFFER_MAX);
-      }
-    } else {
-      stderrBuf += text;
-      if (stderrBuf.length > OUTPUT_BUFFER_MAX) {
-        stderrBuf = stderrBuf.slice(-OUTPUT_BUFFER_MAX);
-      }
-    }
+    if (target === 'stdout') stdoutBuf += text;
+    else stderrBuf += text;
     if (outputTotal >= OUTPUT_TOTAL_MAX) {
       outputCapped = true;
       killAll();
       stderrBuf += '\nOutput limit exceeded, program stopped.\n';
       flushOutput();
       sendExit(124);
+      return;
+    }
+    // The timer only batches small writes. A fast burst is sent as soon as the
+    // buffers fill, so no output is ever dropped between two flushes.
+    if (stdoutBuf.length + stderrBuf.length >= OUTPUT_BUFFER_MAX) {
+      if (flushTimer) clearTimeout(flushTimer);
+      flushOutput();
       return;
     }
     scheduleFlush();
@@ -223,7 +242,7 @@ export async function handleInteractiveRun(
 
   ws.on('message', onMessage);
 
-  ws.on('close', () => {
+  stopProgram = () => {
     clearTimeout(timer);
     if (flushTimer) clearTimeout(flushTimer);
     if (!exited) {
@@ -231,5 +250,5 @@ export async function handleInteractiveRun(
       proc.kill('SIGKILL');
       dropContainer();
     }
-  });
+  };
 }

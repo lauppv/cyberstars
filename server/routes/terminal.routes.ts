@@ -34,6 +34,21 @@ function keyGenerator(req: Request): string {
   return resolveOwnerKey(req) ?? 'unknown';
 }
 
+// A guest's id is just a cookie a script can rotate, which sidesteps the
+// per-owner limiters. Guests therefore also share a budget per client IP, loose
+// enough for a classroom of guests behind one NAT; logged-in users skip it.
+// Keyed by `req.ip`, which `trust proxy` resolves to the address nginx saw.
+export function guestIpLimiter(limit: number) {
+  return rateLimit({
+    windowMs: 60_000,
+    limit: process.env.NODE_ENV === 'test' ? 10_000 : limit,
+    standardHeaders: true,
+    legacyHeaders: false,
+    skip: (req: Request) => req.user != null,
+    handler: execRateLimitHandler,
+  });
+}
+
 // Each exec is a real docker exec fork; cap per user or guest.
 const terminalExecLimiter = rateLimit({
   windowMs: 60_000,
@@ -76,6 +91,7 @@ router.post(
   '/session',
   optionalAuth,
   requireOwner,
+  guestIpLimiter(30),
   sessionLimiter,
   validateBody(createSessionSchema),
   createSession,
@@ -84,6 +100,7 @@ router.post(
   '/exec',
   optionalAuth,
   requireOwner,
+  guestIpLimiter(180),
   terminalExecLimiter,
   validateBody(execSchema),
   exec,
@@ -92,6 +109,7 @@ router.post(
   '/check',
   optionalAuth,
   requireOwner,
+  guestIpLimiter(60),
   checkLimiter,
   validateBody(checkSchema),
   checkTests,

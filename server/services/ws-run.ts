@@ -19,6 +19,14 @@ const MAX_PAYLOAD_BYTES = 128 * 1024;
 const MAX_ACTIVE_RUNS = 5;
 const MAX_RUNS_PER_WINDOW = 10;
 const RATE_WINDOW_MS = 60_000;
+// A guest's id is just a cookie, and anyone can make up a fresh one for every
+// connection, which would sidestep the per-owner limits and the guest budget.
+// So guest runs also share one gate per IP: loose enough for a classroom of
+// guests behind one NAT, tight enough that rotating ids buys a script nothing.
+const GUEST_IP_LIMITS: RunLimits = {
+  maxActive: Number(process.env.GUEST_IP_MAX_ACTIVE_RUNS ?? 10),
+  perWindow: Number(process.env.GUEST_IP_RUNS_PER_WINDOW ?? 60),
+};
 
 function parseCookie(cookieHeader: string | undefined, name: string): string | null {
   if (!cookieHeader) return null;
@@ -45,9 +53,16 @@ export function verifyToken(token: string | null): number | null {
   }
 }
 
+// The client's address, as seen by the one proxy (nginx) in front of the app in
+// production. nginx appends the address it saw to X-Forwarded-For, so only the
+// last entry is trustworthy: anything before it was written by the client. Same
+// rule as Express's `trust proxy` setting, which is only on in production.
 export function extractIp(req: IncomingMessage): string {
   const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string') return forwarded.split(',')[0].trim();
+  if (process.env.NODE_ENV === 'production' && typeof forwarded === 'string') {
+    const hops = forwarded.split(',');
+    return hops[hops.length - 1].trim();
+  }
   return req.socket.remoteAddress ?? 'unknown';
 }
 
@@ -56,19 +71,38 @@ export type RunGate =
   | { ok: false; retryAfterMs: number }
   | { ok: false; active: true };
 
+interface RunLimits {
+  maxActive: number;
+  perWindow: number;
+}
+
+const OWNER_LIMITS: RunLimits = { maxActive: MAX_ACTIVE_RUNS, perWindow: MAX_RUNS_PER_WINDOW };
+
 const windows = new Map<string, { start: number; count: number }>();
 const activeRuns = new Map<string, number>();
+let lastPrune = 0;
 
-export function tryStartRun(key: string, now = Date.now()): RunGate {
-  if ((activeRuns.get(key) ?? 0) >= MAX_ACTIVE_RUNS) {
+// Expired windows are dropped once per window length, so keys that never come
+// back (one per minted guest id) don't pile up for the life of the process.
+function pruneWindows(now: number): void {
+  if (now - lastPrune < RATE_WINDOW_MS) return;
+  lastPrune = now;
+  for (const [key, window] of windows) {
+    if (now - window.start >= RATE_WINDOW_MS) windows.delete(key);
+  }
+}
+
+export function tryStartRun(key: string, now = Date.now(), limits = OWNER_LIMITS): RunGate {
+  if ((activeRuns.get(key) ?? 0) >= limits.maxActive) {
     return { ok: false, active: true };
   }
+  pruneWindows(now);
   let window = windows.get(key);
   if (!window || now - window.start >= RATE_WINDOW_MS) {
     window = { start: now, count: 0 };
     windows.set(key, window);
   }
-  if (window.count >= MAX_RUNS_PER_WINDOW) {
+  if (window.count >= limits.perWindow) {
     return { ok: false, retryAfterMs: window.start + RATE_WINDOW_MS - now };
   }
   window.count += 1;
@@ -80,6 +114,13 @@ export function endRun(key: string): void {
   const remaining = (activeRuns.get(key) ?? 0) - 1;
   if (remaining <= 0) activeRuns.delete(key);
   else activeRuns.set(key, remaining);
+}
+
+// Hand back a run that tryStartRun granted but that won't start after all.
+function undoStartRun(key: string): void {
+  endRun(key);
+  const window = windows.get(key);
+  if (window && window.count > 0) window.count -= 1;
 }
 
 // Resolve who a connection belongs to. Logged-in users key by id; guests key by
@@ -94,6 +135,7 @@ export function resolveOwner(req: IncomingMessage): { ownerKey: string; isGuest:
 
 export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
   const { ownerKey: rateKey, isGuest } = resolveOwner(req);
+  const ipKey = isGuest ? `guest-ip:${extractIp(req)}` : null;
 
   let started = false;
   let counted = false;
@@ -120,13 +162,17 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
       return;
     }
     const gate = tryStartRun(rateKey);
-    if (!gate.ok) {
-      const data =
-        'retryAfterMs' in gate
+    const ipGate: RunGate =
+      gate.ok && ipKey ? tryStartRun(ipKey, Date.now(), GUEST_IP_LIMITS) : { ok: true };
+    if (gate.ok && !ipGate.ok) undoStartRun(rateKey);
+    if (!gate.ok || !ipGate.ok) {
+      const data = !gate.ok
+        ? 'retryAfterMs' in gate
           ? `Rate limit: max ${MAX_RUNS_PER_WINDOW} runs per minute. Try again in ${Math.ceil(
               gate.retryAfterMs / 1000,
             )}s.\n`
-          : 'Too many runs in progress, wait for one to finish.\n';
+          : 'Too many runs in progress, wait for one to finish.\n'
+        : 'Too many guest runs from your network right now. Try again in a minute, or sign in.\n';
       ws.send(JSON.stringify({ type: 'stderr', data }));
       ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       ws.close(4429, 'Rate limit');
@@ -147,6 +193,7 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage): void {
   ws.on('close', () => {
     if (counted) {
       endRun(rateKey);
+      if (ipKey) endRun(ipKey);
       counted = false;
     }
   });
