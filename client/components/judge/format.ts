@@ -70,3 +70,8 @@ export function timeAgo(iso: string, t: TFunction): string {
   if (days < 30) return t('forum.time.dayAgo', { count: days });
   return new Date(iso).toLocaleDateString();
 }
+
+// "Test 3", or "Test 3 (hidden)" for a case the student can't see in the lesson.
+export function caseLabel(result: TestCaseResult, t: TFunction): string {
+  return `${t('tests.caseN', { n: result.index + 1 })}${result.visible ? '' : ` (${t('tests.hidden')})`}`;
+}
