@@ -21,6 +21,7 @@ import { SolutionModal } from '../components/code/SolutionModal';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { HintModal } from '../components/code/HintModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
+import { LessonTour } from '../components/tour/LessonTour';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -33,7 +34,12 @@ import * as progressService from '../services/progressService';
 import * as testsService from '../services/testsService';
 import * as terminalService from '../services/terminalService';
 import { courseMeta } from '../constants/courses';
-import { TERMINAL_COURSE_KEYS, ALGO_COURSE_KEYS, MAIN_COURSE_KEYS } from '../../shared/constants';
+import {
+  TERMINAL_COURSE_KEYS,
+  ALGO_COURSE_KEYS,
+  MAIN_COURSE_KEYS,
+  TOUR_LESSON,
+} from '../../shared/constants';
 import { canAccessFeature } from '../../shared/features';
 
 function parseDifficulty(title: string): {
@@ -56,12 +62,17 @@ export function LessonPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn, user, refreshUser } = useAuth();
   const canUseHints = isLoggedIn && canAccessFeature('aiHints', user?.role, import.meta.env.PROD);
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
   const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
   const isMainCourse = (MAIN_COURSE_KEYS as readonly string[]).includes(category);
+  const inTour =
+    !!user &&
+    !user.onboardedAt &&
+    category === TOUR_LESSON.courseKey &&
+    lesson === TOUR_LESSON.slug;
 
   const { title, content, starterCode, savedCode, solution, isLoading } = useLesson(
     category,
@@ -97,6 +108,7 @@ export function LessonPage() {
   const [testsError, setTestsError] = useState<string | null>(null);
   const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
   const [isChecking, setIsChecking] = useState(false);
+  const [editorRuns, setEditorRuns] = useState(0);
   const [terminalTestsError, setTerminalTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -224,6 +236,7 @@ export function LessonPage() {
     if (isRunning) return;
     setTestResults(null);
     setTestsError(null);
+    setEditorRuns((n) => n + 1);
     execute(userCode, category);
   }, [isRunning, execute, userCode, category]);
 
@@ -349,7 +362,10 @@ export function LessonPage() {
       />
 
       {/* Mobile panel switcher (split-screen stays on lg+) */}
-      <div className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)]">
+      <div
+        data-tour="tabs"
+        className="lg:hidden flex border-b border-[var(--border)] bg-[var(--glass)]"
+      >
         <button
           onClick={() => setActiveTab('lesson')}
           className={`flex-1 py-3 text-[13px] font-semibold transition cursor-pointer bg-transparent border-b-2 ${
@@ -377,6 +393,7 @@ export function LessonPage() {
           {/* Lesson content */}
           <div
             ref={contentRef}
+            data-tour="lesson"
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
             className={`${activeTab === 'lesson' ? 'block' : 'hidden'} lg:block w-full overflow-y-auto bg-[var(--panel-bg)]`}
           >
@@ -604,8 +621,13 @@ export function LessonPage() {
                 </div>
               </div>
 
-              <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
+              <div
+                ref={workspaceRef}
+                data-tour="workspace"
+                className="flex-1 min-h-0 flex flex-col"
+              >
                 <div
+                  data-tour="editor"
                   className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)]"
                   style={isLg ? { height: `${vSplit.size}%` } : { maxHeight: '60%' }}
                 >
@@ -714,6 +736,17 @@ export function LessonPage() {
           code={userCode}
           lang={i18n.language === 'ro' ? 'ro' : 'en'}
           onClose={() => setShowHint(false)}
+        />
+      )}
+      {inTour && user && (
+        <LessonTour
+          userName={user.name}
+          editorRuns={editorRuns}
+          isRunning={isRunning}
+          testStatus={testResults?.status ?? null}
+          completed={lessonCompleted}
+          onPanel={setActiveTab}
+          onFinish={refreshUser}
         />
       )}
       {showShareModal && (
