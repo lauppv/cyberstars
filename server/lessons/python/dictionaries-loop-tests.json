@@ -20,6 +20,247 @@
     },
     {
       "inject": { "scores": { "$dict": { "X": 100, "Y": 55, "Z": 80, "W": 99 } } }
+    },
+    { "inject": { "scores": { "$dict": { "Nova": 100 } } }, "generated": true },
+    { "inject": { "scores": { "$dict": { "Rex": 1 } } }, "generated": true },
+    { "inject": { "scores": { "$dict": { "Ana": 0, "Bob": 1 } } }, "generated": true },
+    { "inject": { "scores": { "$dict": { "Kai": 99, "Mira": 0, "Jess": 0 } } }, "generated": true },
+    { "inject": { "scores": { "$dict": { "Orion": 50, "Vega": 51 } } }, "generated": true },
+    {
+      "inject": { "scores": { "$dict": { "Ken": 70, "Phil": 70, "Sonny": 71, "Diaz": 70 } } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40, "E": 50, "F": 60, "G": 70 } }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": { "$dict": { "G": 70, "F": 60, "E": 50, "D": 40, "C": 30, "B": 20, "A": 10 } }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "scores": { "$dict": { "Big Mitch": 33, "Mary-Jane": 34, "Tommy": 33 } } },
+      "generated": true
+    },
+    {
+      "inject": { "scores": { "$dict": { "Tommy": 1, "Lance": 2, "Cortez": 4 } } },
+      "generated": true
+    },
+    { "inject": { "scores": { "$dict": { "Mary-Jane": 59, "Diaz": 17 } } }, "generated": true },
+    {
+      "inject": { "scores": { "$dict": { "Ana": 83, "Cortez": 85, "Diaz": 68 } } },
+      "generated": true
+    },
+    {
+      "inject": { "scores": { "$dict": { "Rex": 43, "Avery": 33, "Phil": 33, "Mary-Jane": 85 } } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": { "$dict": { "Mercedes": 67, "Jess": 4, "Cara": 59, "Kai": 51, "Big Mitch": 25 } }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": { "Rex": 83, "Nova": 46, "Diaz": 43, "Orion": 71, "Mira": 59, "Umberto": 95 }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Ana": 74,
+            "Diaz": 84,
+            "Kai": 45,
+            "Nova": 55,
+            "Cortez": 68,
+            "Big Mitch": 49,
+            "Vega": 80,
+            "Umberto": 12
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Nova": 25,
+            "Phil": 3,
+            "Big Mitch": 65,
+            "Mary-Jane": 44,
+            "Tommy": 83,
+            "Cara": 68,
+            "Orion": 72,
+            "Umberto": 47,
+            "Ana": 10,
+            "Rex": 36
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Mary-Jane": 25,
+            "Sonny": 37,
+            "Ana": 30,
+            "Jess": 79,
+            "Tommy": 66,
+            "Orion": 10,
+            "Cara": 15,
+            "Kai": 81,
+            "Big Mitch": 17,
+            "Umberto": 73,
+            "Vega": 50,
+            "Lance": 97
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Bob": 93,
+            "Lance": 85,
+            "Cortez": 68,
+            "Cara": 71,
+            "Mercedes": 28,
+            "Jess": 62,
+            "Avery": 51,
+            "Nova": 89,
+            "Sonny": 15,
+            "Phil": 17,
+            "Orion": 5,
+            "Rex": 49
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Bob": 24,
+            "Orion": 64,
+            "Kai": 78,
+            "Sonny": 67,
+            "Ana": 33,
+            "Mira": 66,
+            "Lance": 15,
+            "Cortez": 0,
+            "Jess": 65,
+            "Mercedes": 76,
+            "Rex": 14,
+            "Big Mitch": 38,
+            "Cara": 85,
+            "Avery": 16,
+            "Umberto": 88
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Avery": 82,
+            "Kai": 36,
+            "Cara": 24,
+            "Rex": 43,
+            "Big Mitch": 65,
+            "Tommy": 76,
+            "Vega": 21,
+            "Mira": 89,
+            "Mary-Jane": 17,
+            "Bob": 29,
+            "Jess": 71,
+            "Nova": 48,
+            "Phil": 66,
+            "Umberto": 58,
+            "Orion": 34,
+            "Ana": 96,
+            "Mercedes": 43,
+            "Sonny": 86,
+            "Diaz": 64,
+            "Lance": 22
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "scores": { "$dict": { "Vega": 16, "Cortez": 47, "Tommy": 46 } } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Vega": 89,
+            "Big Mitch": 57,
+            "Mary-Jane": 18,
+            "Ana": 92,
+            "Cara": 72,
+            "Sonny": 65,
+            "Lance": 93
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Nova": 28,
+            "Jess": 0,
+            "Cara": 10,
+            "Mercedes": 57,
+            "Umberto": 96,
+            "Avery": 70,
+            "Tommy": 10,
+            "Phil": 86,
+            "Kai": 31
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scores": {
+          "$dict": {
+            "Big Mitch": 13,
+            "Diaz": 43,
+            "Phil": 15,
+            "Bob": 64,
+            "Ken": 24,
+            "Umberto": 69,
+            "Rex": 18,
+            "Jess": 26,
+            "Nova": 39,
+            "Mira": 72,
+            "Mary-Jane": 52
+          }
+        }
+      },
+      "generated": true
     }
   ]
 }
