@@ -1,10 +1,11 @@
 import * as progressRepo from '../repositories/progress.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
 import * as dailyRepo from '../repositories/daily.repository.js';
+import * as userRepo from '../repositories/user.repository.js';
 import * as dailyService from './daily.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { assertValidCourse } from './paths.js';
-import { xpForLesson, dailyBonusXp } from '../../shared/constants.js';
+import { xpForLesson, dailyBonusXp, TOUR_LESSON } from '../../shared/constants.js';
 import type { CourseProgress } from '../../shared/progress.js';
 
 // Guards lesson-level writes/reads: reject unknown courses and slugs so the
@@ -70,6 +71,10 @@ export async function markComplete(
   // Grant the daily bonus if this lesson is today's pick. Idempotent no-op
   // otherwise, so it's safe on every completion (including re-runs).
   await dailyService.awardBonusForCompletion(userId, courseKey, lessonSlug);
+  // Passing the tour lesson is what lets a new account out of the tour.
+  if (courseKey === TOUR_LESSON.courseKey && lessonSlug === TOUR_LESSON.slug) {
+    await userRepo.markOnboarded(userId);
+  }
 }
 
 export async function saveCode(

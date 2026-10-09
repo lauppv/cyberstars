@@ -28,10 +28,15 @@ const mockDailyService = {
   awardBonusForCompletion: vi.fn(),
 };
 
+const mockUserRepo = {
+  markOnboarded: vi.fn(),
+};
+
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
 vi.mock('../repositories/curriculum.repository.js', () => mockCurriculumRepo);
 vi.mock('../repositories/daily.repository.js', () => mockDailyRepo);
 vi.mock('./daily.service.js', () => mockDailyService);
+vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
 const { getCourseProgress, markComplete, saveCode, getSavedCode, trackAccess } =
   await import('./progress.service.js');
@@ -116,6 +121,12 @@ describe('markComplete', () => {
     await markComplete(1, 'python', 'booleans');
     expect(mockProgressRepo.upsertProgress).toHaveBeenCalledWith(1, 'python', 'booleans', true);
     expect(mockDailyService.awardBonusForCompletion).toHaveBeenCalledWith(1, 'python', 'booleans');
+    expect(mockUserRepo.markOnboarded).not.toHaveBeenCalled();
+  });
+
+  it('ends the tour when the tour lesson is completed', async () => {
+    await markComplete(1, 'python', 'print');
+    expect(mockUserRepo.markOnboarded).toHaveBeenCalledWith(1);
   });
 });
 

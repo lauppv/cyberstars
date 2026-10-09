@@ -84,6 +84,14 @@ export async function create(name: string, email: string, hashedPassword: string
   });
 }
 
+// Only the first passing run stamps the date; later passes leave it alone.
+export async function markOnboarded(id: number): Promise<void> {
+  await prisma.user.updateMany({
+    where: { id, onboardedAt: null },
+    data: { onboardedAt: new Date() },
+  });
+}
+
 export async function updateRole(id: number, role: Role): Promise<void> {
   await prisma.user.update({ where: { id }, data: { role } });
 }

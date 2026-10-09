@@ -18,6 +18,10 @@ export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as con
 // Terminal courses run in a Linux sandbox, not the /api/code editor pipeline.
 export const TERMINAL_COURSE_KEYS = ['linux'] as const;
 
+// The lesson every new account is walked through before the rest of the app
+// opens up. Passing its tests is what ends the tour (progress.service).
+export const TOUR_LESSON = { courseKey: 'python', slug: 'print' } as const;
+
 // Forum categories where only moderators and admins may start threads or reply.
 export const RESTRICTED_FORUM_CATEGORIES = new Set(['announcements']);
 
