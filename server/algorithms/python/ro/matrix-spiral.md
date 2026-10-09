@@ -3,7 +3,7 @@ Citește o matrice NxN de numere întregi și afișează elementele ei în **ord
 ### Date de intrare
 
 - Linia 1: un număr întreg `n`, dimensiunea matricei (1 <= n <= 10).
-- Următoarele `n` linii: fiecare conținând `n` numere întregi separate prin spații.
+- Următoarele `n` linii: fiecare conținând `n` numere întregi separate prin spații, între -1 000 000 000 și 1 000 000 000.
 
 ### Rezultat
 
