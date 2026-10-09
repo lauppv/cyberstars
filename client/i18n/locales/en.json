@@ -940,5 +940,71 @@
     "showConnectionsHint": "The list of people you're connected with.",
     "account": "Account",
     "saved": "Saved"
+  },
+  "tour": {
+    "counter": "{{n}} of {{total}}",
+    "start": "Let's go",
+    "next": "Next",
+    "finish": "Start exploring",
+    "waitFor": {
+      "cellRun": "Run the cell to go on",
+      "editorRun": "Run your code to go on",
+      "testsPass": "Pass the tests to finish"
+    },
+    "language": {
+      "title": "Select language · Selectează limba",
+      "body": "Choose the language for the platform. You can change it later in Settings.",
+      "ro": "Română",
+      "en": "English"
+    },
+    "welcome": {
+      "title": "Welcome aboard, {{name}}",
+      "body": "Before you explore, we'll go through your first Python lesson together. We show you each step, and at the end you run the tests."
+    },
+    "lesson": {
+      "title": "The lesson",
+      "body": "Every lesson starts with a bit of theory. Read this part first, then press Next."
+    },
+    "text": {
+      "title": "Read on",
+      "body": "Read this part, then press Next."
+    },
+    "cellFirst": {
+      "title": "Your first code cell",
+      "body": "This is a code cell. Press Run and see what it prints."
+    },
+    "cellError": {
+      "title": "A mistake on purpose",
+      "body": "This cell is missing its quotes, so it fails. Run it and read the error: errors are normal, and they tell you what went wrong."
+    },
+    "cellMore": {
+      "title": "Cell {{n}} of {{total}}",
+      "body": "You can change the code in a cell before you run it. Try it, then press Run."
+    },
+    "mission": {
+      "title": "Your mission",
+      "body": "Every lesson ends with a mission. This is what your program has to print, line by line."
+    },
+    "editor": {
+      "title": "Your editor",
+      "body": "Write the program the mission asks for here."
+    },
+    "run": {
+      "title": "Run it",
+      "body": "Press Run to see what your program prints, and compare it with the mission."
+    },
+    "tests": {
+      "title": "Check it with the tests",
+      "body": "When your output matches the mission, press Run Tests. The lesson is done when every test passes."
+    },
+    "testsFailed": "Not yet. Compare your output with the expected one line by line, fix the code and run the tests again.",
+    "done": {
+      "title": "Lesson complete",
+      "body": "You finished your first lesson and earned your first XP. The whole platform is open to you now."
+    },
+    "locked": {
+      "title": "Finish this lesson first",
+      "body": "Follow the tour and pass this lesson's tests to unlock the next lesson and the rest of CyberStars."
+    }
   }
 }

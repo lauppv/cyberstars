@@ -6,6 +6,7 @@ import { ApiClientError } from '../services/apiClient';
 import { forgotPassword, resetPassword } from '../services/authService';
 import { BrandMark } from '../components/ui/BrandMark';
 import { EyeIcon } from '../components/ui/EyeIcon';
+import { TOUR_PATH } from '../constants/tour';
 
 function getPasswordStrength(pw: string): number {
   if (pw.length === 0) return 0;
@@ -58,7 +59,7 @@ export function AuthPage() {
         navigate('/');
       } else if (mode === 'signup') {
         await signup({ name, email, password });
-        navigate('/welcome');
+        navigate(TOUR_PATH);
       } else if (mode === 'forgot') {
         await forgotPassword(email);
         setSuccess(t('auth.successForgot'));

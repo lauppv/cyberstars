@@ -1,4 +1,5 @@
 import type { APIRequestContext } from '@playwright/test';
+import { markOnboarded } from './db.js';
 
 let counter = 0;
 
@@ -16,5 +17,7 @@ export async function signupViaAPI(
 
   const res = await request.post('/auth/signup', { data: { name, email, password } });
   if (!res.ok()) throw new Error(`Signup failed: ${res.status()}`);
+  // Specs here test the app behind the tour; auth.spec walks into the tour.
+  await markOnboarded(email);
   return { name, email, password };
 }

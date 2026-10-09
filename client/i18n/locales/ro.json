@@ -942,5 +942,71 @@
     "showConnectionsHint": "Lista persoanelor cu care ești conectat.",
     "account": "Cont",
     "saved": "Salvat"
+  },
+  "tour": {
+    "counter": "{{n}} din {{total}}",
+    "start": "Să începem",
+    "next": "Mai departe",
+    "finish": "Începe să explorezi",
+    "waitFor": {
+      "cellRun": "Rulează celula ca să continui",
+      "editorRun": "Rulează codul ca să continui",
+      "testsPass": "Treci testele ca să termini"
+    },
+    "language": {
+      "title": "Select language · Selectează limba",
+      "body": "Alege limba platformei. O poți schimba oricând din Setări.",
+      "ro": "Română",
+      "en": "English"
+    },
+    "welcome": {
+      "title": "Bun venit la bord, {{name}}",
+      "body": "Înainte să explorezi, parcurgem împreună prima ta lecție de Python. Îți arătăm fiecare pas, iar la final rulezi testele."
+    },
+    "lesson": {
+      "title": "Lecția",
+      "body": "Fiecare lecție începe cu puțină teorie. Citește mai întâi bucata asta, apoi apasă Mai departe."
+    },
+    "text": {
+      "title": "Citește mai departe",
+      "body": "Citește bucata asta, apoi apasă Mai departe."
+    },
+    "cellFirst": {
+      "title": "Prima ta celulă de cod",
+      "body": "Asta e o celulă de cod. Apasă Rulează și vezi ce afișează."
+    },
+    "cellError": {
+      "title": "O greșeală intenționată",
+      "body": "Celulei ăsteia îi lipsesc ghilimelele, așa că dă eroare. Rulează-o și citește eroarea: erorile sunt normale și îți spun ce a mers prost."
+    },
+    "cellMore": {
+      "title": "Celula {{n}} din {{total}}",
+      "body": "Poți schimba codul dintr-o celulă înainte s-o rulezi. Încearcă, apoi apasă Rulează."
+    },
+    "mission": {
+      "title": "Misiunea ta",
+      "body": "Fiecare lecție se termină cu o misiune. Asta trebuie să afișeze programul tău, linie cu linie."
+    },
+    "editor": {
+      "title": "Editorul tău",
+      "body": "Scrie aici programul pe care îl cere misiunea."
+    },
+    "run": {
+      "title": "Rulează-l",
+      "body": "Apasă Rulează ca să vezi ce afișează programul tău și compară cu misiunea."
+    },
+    "tests": {
+      "title": "Verifică-l cu testele",
+      "body": "Când output-ul arată ca în misiune, apasă Rulează testele. Lecția e gata când trec toate testele."
+    },
+    "testsFailed": "Încă nu. Compară output-ul tău cu cel așteptat linie cu linie, corectează codul și rulează din nou testele.",
+    "done": {
+      "title": "Lecție terminată",
+      "body": "Ai terminat prima lecție și ai primit primele XP. Acum toată platforma e deschisă pentru tine."
+    },
+    "locked": {
+      "title": "Termină mai întâi lecția asta",
+      "body": "Urmează pașii turului și treci testele lecției ca să deblochezi lecția următoare și restul platformei."
+    }
   }
 }

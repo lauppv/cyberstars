@@ -7,7 +7,7 @@ test.beforeEach(async () => {
   resetCounter();
 });
 
-test('signup via UI → redirects to welcome page', async ({ page }) => {
+test('signup via UI → lands in the first-lesson tour', async ({ page }) => {
   await page.goto('/#/getstarted');
 
   await page.getByRole('button', { name: 'Sign Up', exact: true }).click();
@@ -18,7 +18,12 @@ test('signup via UI → redirects to welcome page', async ({ page }) => {
 
   await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
 
-  await expect(page).toHaveURL(/\/#\/welcome/, { timeout: 10_000 });
+  await expect(page).toHaveURL(/\/#\/lesson\/python\/print$/, { timeout: 10_000 });
+  await expect(page.getByText('Select language · Selectează limba')).toBeVisible();
+
+  // Until the tour lesson's tests pass, every other page leads back to it.
+  await page.goto('/#/courses');
+  await expect(page).toHaveURL(/\/#\/lesson\/python\/print$/);
 });
 
 test('login via UI → redirects to home', async ({ page, context }) => {

@@ -76,6 +76,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     showProgress: user.showProgress,
     showActivity: user.showActivity,
     showConnections: user.showConnections,
+    onboardedAt: user.onboardedAt?.toISOString() ?? null,
   };
 }
 

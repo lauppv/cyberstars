@@ -25,6 +25,7 @@ export async function findById(id: number) {
       showProgress: true,
       showActivity: true,
       showConnections: true,
+      onboardedAt: true,
     },
   });
 }
@@ -80,6 +81,14 @@ export async function create(name: string, email: string, hashedPassword: string
       select: { id: true },
     });
     return user.id;
+  });
+}
+
+// Only the first passing run stamps the date; later passes leave it alone.
+export async function markOnboarded(id: number): Promise<void> {
+  await prisma.user.updateMany({
+    where: { id, onboardedAt: null },
+    data: { onboardedAt: new Date() },
   });
 }
 

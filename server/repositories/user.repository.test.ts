@@ -6,6 +6,7 @@ const mockPrisma = {
     findFirst: vi.fn(),
     findMany: vi.fn(),
     update: vi.fn(),
+    updateMany: vi.fn(),
     create: vi.fn(),
     count: vi.fn(),
   },
@@ -111,6 +112,17 @@ describe('create', () => {
       expect.objectContaining({ data: expect.objectContaining({ role: 'FOUNDER' }) }),
     );
     vi.unstubAllEnvs();
+  });
+});
+
+describe('markOnboarded', () => {
+  it('stamps the date only while it is still unset', async () => {
+    mockPrisma.user.updateMany.mockResolvedValue({ count: 1 });
+    await repo.markOnboarded(4);
+    expect(mockPrisma.user.updateMany).toHaveBeenCalledWith({
+      where: { id: 4, onboardedAt: null },
+      data: { onboardedAt: expect.any(Date) },
+    });
   });
 });
 

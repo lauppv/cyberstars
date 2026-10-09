@@ -48,6 +48,7 @@ const baseUser: AuthenticatedUser = {
   showProgress: false,
   showActivity: true,
   showConnections: true,
+  onboardedAt: '2024-01-01T00:00:00Z',
 };
 
 const refreshUser = vi.fn();
