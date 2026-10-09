@@ -148,6 +148,60 @@ describe('handleInteractiveRun', () => {
     expect(releaseMock).not.toHaveBeenCalled();
   });
 
+  it('drops the container and starts nothing when the page closes during the compile', async () => {
+    let finishCompile: (() => void) | undefined;
+    let call = 0;
+    execFileMock.mockImplementation((...args: unknown[]) => {
+      const cb = args[args.length - 1] as (e: Error | null, o: string, s: string) => void;
+      call += 1;
+      if (call === 2)
+        finishCompile = () => cb(null, '', ''); // compile still running
+      else cb(null, '', ''); // write source
+      return { stdin: { end: vi.fn() } };
+    });
+    const ws = new FakeWs();
+
+    const run = handleInteractiveRun(ws as unknown as WebSocket, 'class Main {}', 'java', 'user:8');
+    await vi.waitFor(() => expect(finishCompile).toBeDefined());
+    ws.readyState = 3;
+    ws.emit('close');
+    // The owner is freed at once, not when the compile or a 20s timeout ends.
+    expect(destroyMock).toHaveBeenCalledWith('user:8');
+
+    finishCompile!();
+    await run;
+    expect(spawnMock).not.toHaveBeenCalled();
+    expect(releaseMock).not.toHaveBeenCalled();
+    expect(destroyMock).toHaveBeenCalledTimes(1);
+    expect(ws.send).not.toHaveBeenCalled();
+  });
+
+  it('drops the container when the page closes while it is still starting', async () => {
+    let resolveAcquire: ((id: string) => void) | undefined;
+    acquireMock.mockReturnValueOnce(new Promise((r) => (resolveAcquire = r)));
+    const ws = new FakeWs();
+
+    const run = handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:9');
+    ws.readyState = 3;
+    ws.emit('close');
+    expect(destroyMock).toHaveBeenCalledWith('user:9');
+
+    resolveAcquire!('test-container');
+    await run;
+    expect(execFileMock).not.toHaveBeenCalled();
+    expect(spawnMock).not.toHaveBeenCalled();
+  });
+
+  it("leaves another run's container alone when its own acquire was refused", async () => {
+    acquireMock.mockRejectedValueOnce(new Error('A run is already in progress'));
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print(1)', 'python', 'user:10');
+    ws.emit('close');
+
+    expect(destroyMock).not.toHaveBeenCalled();
+  });
+
   it('reports an error and drops the container when the spawn fails', async () => {
     const proc = new FakeProc();
     spawnMock.mockReturnValue(proc);

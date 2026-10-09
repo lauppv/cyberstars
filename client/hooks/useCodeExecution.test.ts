@@ -220,6 +220,21 @@ describe('useCodeExecution', () => {
     expect(closeSpy).toHaveBeenCalled();
   });
 
+  it('closes an active WebSocket on unmount', async () => {
+    const { result, unmount } = renderHook(() => useCodeExecution());
+
+    act(() => {
+      result.current.execute('code', 'python');
+    });
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+
+    const closeSpy = vi.spyOn(wsInstances[0], 'close');
+    unmount();
+    expect(closeSpy).toHaveBeenCalled();
+  });
+
   it('output is capped and truncated when it exceeds OUTPUT_DISPLAY_MAX', async () => {
     const { result } = renderHook(() => useCodeExecution());
 

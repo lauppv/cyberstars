@@ -79,6 +79,10 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     };
   }, []);
 
+  // Leaving the page mid-run ends the run: the server only stops the program,
+  // and frees the container for the next run, once this socket closes.
+  useEffect(() => () => wsRef.current?.close(), []);
+
   const sendInput = useCallback((data: string) => {
     sendInputRef.current?.(data);
   }, []);
