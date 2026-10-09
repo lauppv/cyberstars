@@ -138,8 +138,18 @@ function buildPlan(): Step[] {
     });
   }
   // While coding, the mission stays lit beside the editor. On a phone the
-  // panel tabs stay usable too, so the mission is one tap away.
-  const coding = () => groups(byTour('workspace'), mission(), byTour('tabs'));
+  // panel tabs stay usable too, so the mission is one tap away. A test run
+  // opens its verdict in the lesson panel, so that stays lit with its tabs,
+  // which lead back to the mission.
+  const coding = () =>
+    groups(
+      byTour('workspace'),
+      mission(),
+      byTour('tabs'),
+      byTour('panel-tabs'),
+      byTour('result'),
+      byTour('submissions'),
+    );
   plan.push(
     {
       copy: 'editor',
