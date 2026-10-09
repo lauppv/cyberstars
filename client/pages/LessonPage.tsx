@@ -22,6 +22,7 @@ import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { HintModal } from '../components/code/HintModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { LessonTour } from '../components/tour/LessonTour';
+import { TourNotice } from '../components/tour/TourNotice';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -109,6 +110,8 @@ export function LessonPage() {
   const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
   const [isChecking, setIsChecking] = useState(false);
   const [editorRuns, setEditorRuns] = useState(0);
+  const [showTourNotice, setShowTourNotice] = useState(false);
+  const hideTourNotice = useCallback(() => setShowTourNotice(false), []);
   const [terminalTestsError, setTerminalTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -465,7 +468,12 @@ export function LessonPage() {
                   {t('lesson.previous')}
                 </button>
                 <button
-                  onClick={() => nextLesson && navigate(`/lesson/${category}/${nextLesson.slug}`)}
+                  onClick={() => {
+                    if (!nextLesson) return;
+                    // The tour holds a new account here until the tests pass.
+                    if (inTour) setShowTourNotice(true);
+                    else navigate(`/lesson/${category}/${nextLesson.slug}`);
+                  }}
                   disabled={!nextLesson}
                   className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
                 >
@@ -749,6 +757,7 @@ export function LessonPage() {
           onFinish={refreshUser}
         />
       )}
+      <TourNotice visible={showTourNotice} onClose={hideTourNotice} />
       {showShareModal && (
         <ShareToForumModal
           code={userCode}

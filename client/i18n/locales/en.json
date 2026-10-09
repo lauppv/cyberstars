@@ -991,6 +991,10 @@
     "done": {
       "title": "Lesson complete",
       "body": "You finished your first lesson and earned your first XP. The whole platform is open to you now."
+    },
+    "locked": {
+      "title": "Finish this lesson first",
+      "body": "Pass its tests to unlock the next lesson and the rest of CyberStars."
     }
   }
 }

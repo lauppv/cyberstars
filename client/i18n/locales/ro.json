@@ -993,6 +993,10 @@
     "done": {
       "title": "Lecție terminată",
       "body": "Ai terminat prima lecție și ai primit primele XP. Acum toată platforma e deschisă pentru tine."
+    },
+    "locked": {
+      "title": "Termină mai întâi lecția asta",
+      "body": "Treci testele ca să deblochezi lecția următoare și restul platformei."
     }
   }
 }
