@@ -358,6 +358,53 @@ describe('handleConnection', () => {
   });
 });
 
+describe('guest runs per IP', () => {
+  const runAs = (guestId: string, ip: string) => {
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${guestId}`, ip));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
+    return ws;
+  };
+
+  it('stops a guest who rotates guestIds once their IP hits its per-minute cap', () => {
+    const ip = '10.50.0.1';
+    for (let i = 0; i < 60; i++) runAs(`rot-${i}`, ip).emit('close');
+    expect(mockRun).toHaveBeenCalledTimes(60);
+
+    const ws = runAs('rot-60', ip);
+    expect(mockRun).toHaveBeenCalledTimes(60);
+    expect(ws.close).toHaveBeenCalledWith(4429, 'Rate limit');
+    const messages = ws.send.mock.calls.map((c) => JSON.parse(c[0] as string));
+    expect(messages.some((m) => m.type === 'stderr' && /from your network/.test(m.data))).toBe(
+      true,
+    );
+    // The refused attempt is handed back: that guest's own window is untouched.
+    expect(tryStartRun('guest:rot-60')).toEqual({ ok: true });
+    endRun('guest:rot-60');
+  });
+
+  it('caps concurrent guest runs per IP, and frees the slot when a run ends', () => {
+    const ip = '10.50.0.2';
+    const open = Array.from({ length: 10 }, (_, i) => runAs(`busy-${i}`, ip));
+    expect(mockRun).toHaveBeenCalledTimes(10);
+    runAs('busy-10', ip);
+    expect(mockRun).toHaveBeenCalledTimes(10);
+
+    open[0].emit('close');
+    runAs('busy-11', ip);
+    expect(mockRun).toHaveBeenCalledTimes(11);
+  });
+
+  it('leaves logged-in users out of the per-IP guest gate', () => {
+    const ip = '10.50.0.3';
+    for (let i = 0; i < 10; i++) runAs(`crowd-${i}`, ip);
+    const ws = new FakeWs();
+    handleConnection(ws as unknown as WebSocket, fakeReq(`token=${token(3001)}`, ip));
+    ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
+    expect(mockRun).toHaveBeenCalledTimes(11);
+  });
+});
+
 describe('handlePresenceConnection', () => {
   it('opens a session on connect and closes it on disconnect (authenticated)', () => {
     const ws = new FakeWs();
