@@ -12,7 +12,7 @@ Citește o valoare și o unitate de la stdin. Afișează ambele conversii, rotun
 
 ### Date de intrare
 
-- Linia 1: valoarea (număr zecimal)
+- Linia 1: valoarea (număr zecimal, -500 ≤ valoare ≤ 1000, cu cel mult o zecimală)
 - Linia 2: unitatea (un singur caracter: `C` sau `F`)
 
 ### Rezultat

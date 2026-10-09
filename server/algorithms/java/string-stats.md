@@ -8,7 +8,7 @@ Read a single line of text from stdin. Create a `StringAnalyzer` and print the t
 
 ### Input
 
-- Line 1: a string of text (letters and spaces only)
+- Line 1: a string of text (letters and spaces only, 1 to 300 characters, words separated by a single space)
 
 ### Output
 
