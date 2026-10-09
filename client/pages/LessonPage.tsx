@@ -16,8 +16,8 @@ import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
-import { TestResults } from '../components/code/TestResults';
 import { PanelTabs, type PanelTab } from '../components/judge/PanelTabs';
+import { ResultPanel } from '../components/judge/ResultPanel';
 import { SolutionModal } from '../components/code/SolutionModal';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { HintModal } from '../components/code/HintModal';
@@ -531,8 +531,8 @@ export function LessonPage() {
               </div>
             </div>
             {view === 'result' && testResults && (
-              <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto flex flex-col p-3">
-                <TestResults results={testResults} onClose={() => setLeftView('lesson')} />
+              <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto">
+                <ResultPanel results={testResults} />
               </div>
             )}
           </div>
