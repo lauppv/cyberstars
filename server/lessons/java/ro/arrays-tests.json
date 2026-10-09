@@ -11,6 +11,52 @@
     { "inject": { "incasari": { "$list": [5000] } } },
     { "inject": { "incasari": { "$list": [125, 200] } } },
     { "inject": { "incasari": { "$list": [100, 200, 300] } } },
-    { "inject": { "incasari": { "$list": [1, 2] } } }
+    { "inject": { "incasari": { "$list": [1, 2] } } },
+    { "inject": { "incasari": { "$list": [0] } }, "generated": true },
+    { "inject": { "incasari": { "$list": [7] } }, "generated": true },
+    { "inject": { "incasari": { "$list": [0, 0, 0] } }, "generated": true },
+    { "inject": { "incasari": { "$list": [1, 2, 3] } }, "generated": true },
+    { "inject": { "incasari": { "$list": [1, 1, 2] } }, "generated": true },
+    { "inject": { "incasari": { "$list": [10, 0, 0, 0, 0, 0] } }, "generated": true },
+    {
+      "inject": {
+        "incasari": {
+          "$list": [999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "incasari": { "$list": [2500, 1] } }, "generated": true },
+    { "inject": { "incasari": { "$list": [1, 2500] } }, "generated": true },
+    {
+      "inject": { "incasari": { "$list": [59, 17, 42, 10, 24, 85, 83, 68, 59, 29, 12, 59] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "incasari": {
+          "$list": [
+            33805, 34160, 44793, 39440, 70459, 50767, 51163, 61950, 84109, 4362, 69301, 61165
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "incasari": { "$list": [60647, 47366, 44871, 24814, 63984, 54012, 11978] } },
+      "generated": true
+    },
+    {
+      "inject": { "incasari": { "$list": [61, 69, 74, 84, 45, 55, 68, 49, 80, 12, 100, 53, 15] } },
+      "generated": true
+    },
+    {
+      "inject": { "incasari": { "$list": [89420, 22939, 41736, 71025, 2363, 758] } },
+      "generated": true
+    },
+    {
+      "inject": { "incasari": { "$list": [4342, 841, 1644, 2424, 4272, 699, 973, 1148] } },
+      "generated": true
+    }
   ]
 }
