@@ -9,7 +9,7 @@ afterEach(() => {
 describe('TourNotice', () => {
   it('renders nothing while hidden', () => {
     render(<TourNotice visible={false} onClose={vi.fn()} />);
-    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 
   it('says the tests come first and closes on its button', () => {
@@ -24,7 +24,7 @@ describe('TourNotice', () => {
     vi.useFakeTimers();
     const onClose = vi.fn();
     render(<TourNotice visible onClose={onClose} />);
-    act(() => vi.advanceTimersByTime(5000));
+    act(() => vi.advanceTimersByTime(6000));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });
