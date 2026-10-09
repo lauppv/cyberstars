@@ -5,6 +5,7 @@ beforeEach(async () => {
   await prisma.$executeRawUnsafe(`
     TRUNCATE
       "notifications",
+      "lesson_submissions",
       "dm_reactions",
       "direct_messages",
       "conversations",
