@@ -4,11 +4,11 @@ A **pipe** is a one-way channel between processes: one writes to one end (`p[1]`
 
 ### Input
 
-- Line 1: a word of at most 100 characters, made up only of lowercase letters.
+- Line 1: a word of 1 to 100 characters, made up of letters (lowercase or uppercase) and digits.
 
 ### Output
 
-- A single line: the word converted to uppercase.
+- A single line: the word converted to uppercase. Digits and letters that are already uppercase stay unchanged.
 
 ### Examples
 

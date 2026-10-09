@@ -54,9 +54,11 @@
     { "stdin": "uppercase\n", "generated": true },
     { "stdin": "operatingsystems\n", "generated": true },
     { "stdin": "mississippi\n", "generated": true },
-    { "stdin": "qwerty\n", "generated": true },
-    { "stdin": "xylophone\n", "generated": true },
-    { "stdin": "buffer\n", "generated": true },
+    { "stdin": "QwErTy\n", "generated": true },
+    { "stdin": "Xylophone2026\n", "generated": true },
+    { "stdin": "ABC\n", "generated": true },
+    { "stdin": "0123456789\n", "generated": true },
+    { "stdin": "a1B2c3\n", "generated": true },
     {
       "stdin": "xregtwujimcheznezpjufgllllbhlnjnjalwetluwicrwbjryyzguuxzmqmpzolrsfoiuintetoewzvywajgbwfvbemoeqj\n",
       "generated": true
@@ -71,6 +73,10 @@
     },
     { "stdin": "vkqmdlyywryedzmbskftxkucqmpqyswqrvmsvmruzdpqgb\n", "generated": true },
     { "stdin": "tacytboiivpohwzoddejbarogizxomygf\n", "generated": true },
-    { "stdin": "gqeagmhnrwkwgjtupsbgczpclqeufaxngtpokhqydcfftbpnlzd\n", "generated": true }
+    { "stdin": "gqeagmhnrwkwgjtupsbgczpclqeufaxngtpokhqydcfftbpnlzd\n", "generated": true },
+    {
+      "stdin": "Zyc1b190ZC1AXxYyAb0BZzybYbZYCyccCbYXA9xZbZaBCCXXBb10Z9yYAYYYc08bXc1CXA0XabcABXzAyZXZY11cxXbBA9BY08Xb\n",
+      "generated": true
+    }
   ]
 }
