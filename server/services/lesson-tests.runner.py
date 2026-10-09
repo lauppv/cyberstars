@@ -4,7 +4,8 @@
 # structure with the ast module, injects each case's values into the lesson's
 # input variables (in BOTH the user code and the reference solution) and/or
 # feeds the case's stdin to both, runs the two programs per case (timing each
-# run's wall clock in ms), and prints a single JSON verdict to stdout.
+# run's wall clock in ms), and streams the verdict to stdout as JSON lines, one
+# case at a time, waiting for the server's go-ahead between cases.
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
@@ -235,21 +236,38 @@ def run_program(code, stdin=None):
         }
 
 
+def emit(obj):
+    print(json.dumps(obj), flush=True)
+
+
+def proceed():
+    # Lockstep with the server: after each case line it compares the outputs
+    # and answers "next" or "stop" (stop at the first failing case). EOF (the
+    # server went away) also stops.
+    return sys.stdin.readline().strip() == "next"
+
+
 def main():
+    # Output protocol, one JSON object per line: a header
+    # {syntaxError, structureFailures}, then one line per case, each followed
+    # by a reply on stdin (see proceed). A syntax error ends the run after the
+    # header.
     with open(sys.argv[1]) as f:
         payload = json.load(f)
-
-    result = {"syntaxError": None, "structureFailures": [], "cases": []}
 
     try:
         user_tree = ast.parse(payload["userCode"])
     except SyntaxError as e:
-        result["syntaxError"] = "line %s: %s" % (e.lineno, e.msg)
-        print(json.dumps(result))
+        emit({"syntaxError": "line %s: %s" % (e.lineno, e.msg), "structureFailures": []})
         return
 
-    result["structureFailures"] = check_structure(
-        user_tree, payload["userCode"], payload.get("structure", {})
+    emit(
+        {
+            "syntaxError": None,
+            "structureFailures": check_structure(
+                user_tree, payload["userCode"], payload.get("structure", {})
+            ),
+        }
     )
 
     for case in payload["cases"]:
@@ -259,16 +277,15 @@ def main():
             user_src = inject_values(payload["userCode"], inject)
             solution_src = inject_values(payload["solutionCode"], inject)
         except SyntaxError:
-            # solution is trusted; user code already parsed, should not happen
-            result["cases"].append({"injectError": True})
-            continue
-        user_run = run_program(user_src, stdin)
-        result["cases"].append({"user": user_run, "solution": run_program(solution_src, stdin)})
-        # A hung program would burn 5s on every remaining case too, so stop here.
-        if user_run["timedOut"]:
+            # solution is trusted; user code already parsed, should not happen.
+            # The server fails the whole run on it, so there is nothing after.
+            emit({"injectError": True})
             break
-
-    print(json.dumps(result))
+        user_run = run_program(user_src, stdin)
+        emit({"user": user_run, "solution": run_program(solution_src, stdin)})
+        # A hung program would burn 5s on every remaining case too, so stop here.
+        if user_run["timedOut"] or not proceed():
+            break
 
 
 main()

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { contentDir } from './paths.js';
-import { dockerExec } from './docker-exec.js';
+import { dockerExec, dockerConverse } from './docker-exec.js';
 import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.service.js';
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
@@ -9,6 +9,7 @@ import { prepareC, type PrepareResult } from './c-analysis.js';
 import type {
   LessonTestsSpec,
   RunTestsResponse,
+  StructureFailure,
   TestCaseResult,
   TestComparator,
 } from '../../shared/tests.js';
@@ -179,61 +180,83 @@ function timingTotals(
   };
 }
 
-interface RunnerVerdict {
+// The runners stream their verdict as JSON lines: a header, then one line per
+// case. After each case line the server compares the outputs and answers
+// "next" or "stop" on the runner's stdin, so a run stops at the first failing
+// case without paying for the cases after it. This lockstep costs ~0.1 ms per
+// case (measured round trip through `docker exec -i`), where re-entering the
+// container in chunks would cost a fresh docker exec + runner start per chunk:
+// ~0.2 s for Python and C, ~1.1 s for Java (runner JVM boot + recompiling the
+// pristine user code).
+interface RunnerHeader {
   syntaxError: string | null;
-  structureFailures: RunTestsResponse['structureFailures'];
-  cases: { user?: RunnerProgram; solution?: RunnerProgram; injectError?: boolean }[];
+  /** py/java only; C structure failures come from the server-side prep. */
+  structureFailures?: StructureFailure[];
 }
 
-function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsResponse {
-  if (verdict.syntaxError) {
-    return {
-      status: 'failed',
-      syntaxError: verdict.syntaxError,
-      structureFailures: [],
-      cases: [],
-      total: spec.cases.length,
-      passedCount: 0,
-    };
+interface RunnerCase {
+  user?: RunnerProgram;
+  solution?: RunnerProgram;
+  injectError?: boolean;
+}
+
+function failRun(): never {
+  throw new AppError(500, 'Test run failed, please try again');
+}
+
+function judgeCase(spec: LessonTestsSpec, index: number, c: RunnerCase): TestCaseResult {
+  const specCase = spec.cases[index];
+  const visible = specCase.visible ?? false;
+  const base: TestCaseResult = { index, visible, passed: false };
+  if (specCase.inject) base.inject = specCase.inject;
+  if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
+  if (specCase.generated) base.generated = true;
+
+  // A broken reference solution is our bug, not the student's.
+  if (!c.user || !c.solution || c.injectError || c.solution.timedOut || c.solution.exit !== 0) {
+    failRun();
   }
+  if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
+  if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
+  if (c.user.timedOut) return { ...base, error: 'timeout' };
+  if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
 
-  const comparator = spec.comparator ?? 'trimmed';
-  const cases: TestCaseResult[] = verdict.cases.map((c, index) => {
-    const specCase = spec.cases[index];
-    const visible = specCase?.visible ?? false;
-    const base: TestCaseResult = { index, visible, passed: false };
-    if (specCase?.inject) base.inject = specCase.inject;
-    if (specCase?.stdin !== undefined) base.stdin = specCase.stdin;
-    if (specCase?.generated) base.generated = true;
-
-    // A broken reference solution is our bug, not the student's.
-    if (!c.user || !c.solution || c.injectError || c.solution.timedOut || c.solution.exit !== 0) {
-      throw new AppError(500, 'Test run failed, please try again');
-    }
-    if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
-    if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
-    if (c.user.timedOut) return { ...base, error: 'timeout' };
-    if (c.user.exit !== 0)
-      return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
-
-    if (compareOutputs(c.solution.stdout, c.user.stdout, comparator)) {
-      return { ...base, passed: true };
-    }
-    return {
-      ...base,
-      actual: normalize(c.user.stdout),
-      ...(visible ? { expected: normalize(c.solution.stdout) } : {}),
-    };
-  });
-
-  const passed = verdict.structureFailures.length === 0 && cases.every((c) => c.passed);
-  const firstFailed = cases.findIndex((c) => !c.passed);
+  if (compareOutputs(c.solution.stdout, c.user.stdout, spec.comparator ?? 'trimmed')) {
+    return { ...base, passed: true };
+  }
   return {
-    status: passed ? 'passed' : 'failed',
-    structureFailures: verdict.structureFailures,
+    ...base,
+    actual: normalize(c.user.stdout),
+    ...(visible ? { expected: normalize(c.solution.stdout) } : {}),
+  };
+}
+
+function syntaxErrorResponse(spec: LessonTestsSpec, syntaxError: string): RunTestsResponse {
+  return {
+    status: 'failed',
+    syntaxError,
+    structureFailures: [],
+    cases: [],
+    total: spec.cases.length,
+    passedCount: 0,
+  };
+}
+
+// `cases` holds every passed case plus at most one failed case, last. Structure
+// failures fail the run but never stop the cases, so X / Y still reflects them.
+function finalResponse(
+  spec: LessonTestsSpec,
+  structureFailures: StructureFailure[],
+  cases: TestCaseResult[],
+): RunTestsResponse {
+  const passedCount = cases.filter((c) => c.passed).length;
+  return {
+    status:
+      structureFailures.length === 0 && passedCount === spec.cases.length ? 'passed' : 'failed',
+    structureFailures,
     cases,
     total: spec.cases.length,
-    passedCount: firstFailed === -1 ? cases.length : firstFailed,
+    passedCount,
     ...timingTotals(cases),
   };
 }
@@ -254,13 +277,7 @@ export async function runLessonTests(
   // Server-side prep (C): structure + injection happen here; a syntax error in
   // the pristine user code is caught before any container is touched (gate 1).
   const prepared = judge.prepare ? await judge.prepare(userCode, solutionCode, spec) : null;
-  if (prepared?.syntaxError) {
-    return buildResponse(spec, {
-      syntaxError: prepared.syntaxError,
-      structureFailures: [],
-      cases: [],
-    });
-  }
+  if (prepared?.syntaxError) return syntaxErrorResponse(spec, prepared.syntaxError);
 
   let containerId: string;
   try {
@@ -295,21 +312,32 @@ export async function runLessonTests(
       WRITE_TIMEOUT_MS,
       payload,
     );
-    const raw = await dockerExec(
-      ['exec', containerId, ...judge.runCmd],
+
+    let header: RunnerHeader | null = null;
+    const cases: TestCaseResult[] = [];
+    await dockerConverse(
+      ['exec', '-i', containerId, ...judge.runCmd],
       judge.baseTimeoutMs + spec.cases.length * judge.caseBudgetMs,
+      (line) => {
+        const message = JSON.parse(line) as RunnerHeader | RunnerCase;
+        if (!header) {
+          header = message as RunnerHeader;
+          return null;
+        }
+        if (cases.length >= spec.cases.length) failRun();
+        const result = judgeCase(spec, cases.length, message as RunnerCase);
+        cases.push(result);
+        return result.passed ? 'next' : 'stop';
+      },
     );
-    const runnerOut = JSON.parse(raw) as RunnerVerdict;
+
+    const { syntaxError, structureFailures = [] } = (header as RunnerHeader | null) ?? failRun();
+    if (syntaxError) return syntaxErrorResponse(spec, syntaxError);
+    // A runner that quits before the last case without a failing one broke.
+    if (cases.length < spec.cases.length && cases.every((c) => c.passed)) failRun();
     // Server-prepped runs carry structure failures from the server (the thin
     // runner only reports gcc syntax errors + per-case program results).
-    const verdict: RunnerVerdict = prepared
-      ? {
-          syntaxError: runnerOut.syntaxError,
-          structureFailures: prepared.structureFailures,
-          cases: runnerOut.cases,
-        }
-      : runnerOut;
-    return buildResponse(spec, verdict);
+    return finalResponse(spec, prepared ? prepared.structureFailures : structureFailures, cases);
   } catch (err) {
     // Anything that breaks the run (stuck exec, bad container state), drop the
     // container so the next attempt starts clean.

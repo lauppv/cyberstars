@@ -6,7 +6,9 @@
 #      errors tree-sitter recovers from: undeclared identifier, type mismatch);
 #   2. per case, compiles + runs the already-injected userSrc and solutionSrc
 #      with the case's stdin, memoizing compiled binaries by source string so
-#      identical stdin-only sources compile once and run N times.
+#      identical stdin-only sources compile once and run N times. Each case's
+#      result is streamed as a JSON line, and the next case starts only on the
+#      server's go-ahead (it stops the run at the first failing case).
 # Compiled binaries live under /work (the exec tmpfs mount; /tmp is noexec).
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
@@ -37,6 +39,8 @@ def compile_source(src):
     try:
         proc = subprocess.run(
             ["gcc", "-Wall", c_path, "-o", bin_path, "-lm", "-lpthread"],
+            # stdin is the control channel with the server; gcc gets none.
+            stdin=subprocess.DEVNULL,
             capture_output=True,
             text=True,
             timeout=COMPILE_TIMEOUT,
@@ -88,17 +92,29 @@ def run_binary(bin_path, stdin=None):
         }
 
 
+def emit(obj):
+    print(json.dumps(obj), flush=True)
+
+
+def proceed():
+    # Lockstep with the server: after each case line it compares the outputs
+    # and answers "next" or "stop" (stop at the first failing case). EOF (the
+    # server went away) also stops.
+    return sys.stdin.readline().strip() == "next"
+
+
 def main():
+    # Output protocol, one JSON object per line: a header {syntaxError}, then
+    # one line per case, each followed by a reply on stdin (see proceed). A
+    # compile error of the pristine code ends the run after the header.
     with open(sys.argv[1]) as f:
         payload = json.load(f)
 
-    result = {"syntaxError": None, "cases": []}
-
     pristine_bin, pristine_err = compile_source(payload["pristineUser"])
     if pristine_bin is None:
-        result["syntaxError"] = pristine_err.strip() or "compilation failed"
-        print(json.dumps(result))
+        emit({"syntaxError": pristine_err.strip() or "compilation failed"})
         return
+    emit({"syntaxError": None})
 
     for case in payload["cases"]:
         stdin = case.get("stdin")
@@ -108,15 +124,13 @@ def main():
         # compile failure is a spec bug (injection type/decl mismatch), not the
         # student's; surfaced by the server as a 500, same as java's injectError.
         if user_bin is None or solution_bin is None:
-            result["cases"].append({"injectError": True})
-            continue
-        user_run = run_binary(user_bin, stdin)
-        result["cases"].append({"user": user_run, "solution": run_binary(solution_bin, stdin)})
-        # A hung program would burn CASE_TIMEOUT on every remaining case too.
-        if user_run["timedOut"]:
+            emit({"injectError": True})
             break
-
-    print(json.dumps(result))
+        user_run = run_binary(user_bin, stdin)
+        emit({"user": user_run, "solution": run_binary(solution_bin, stdin)})
+        # A hung program would burn CASE_TIMEOUT on every remaining case too.
+        if user_run["timedOut"] or not proceed():
+            break
 
 
 main()

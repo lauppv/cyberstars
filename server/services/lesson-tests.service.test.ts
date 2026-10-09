@@ -16,9 +16,13 @@ vi.mock('fs', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { mockDockerExec } = vi.hoisted(() => ({ mockDockerExec: vi.fn() }));
+const { mockDockerExec, mockConverse } = vi.hoisted(() => ({
+  mockDockerExec: vi.fn(),
+  mockConverse: vi.fn(),
+}));
 vi.mock('./docker-exec.js', () => ({
   dockerExec: (...args: unknown[]) => mockDockerExec(...args),
+  dockerConverse: (...args: unknown[]) => mockConverse(...args),
 }));
 
 const { mockAcquire, mockRelease, mockDestroy } = vi.hoisted(() => ({
@@ -47,6 +51,7 @@ const SPEC = {
   structure: { requires: [{ kind: 'call', name: 'print' }] },
   cases: [{ visible: true }, { inject: { tank_a: 0 } }],
 };
+const ONE_CASE = { comparator: 'trimmed', structure: {}, cases: [{ visible: true }] };
 const SOLUTION_MD = '```py\nprint("ok")\n```\n';
 
 // Files the service reads, in order: <slug>-tests.json, <slug>-solution.md,
@@ -64,12 +69,32 @@ function program(overrides: Record<string, unknown> = {}) {
   return { stdout: 'ok\n', stderr: '', exit: 0, timedOut: false, ...overrides };
 }
 
-function stubVerdict(verdict: unknown) {
-  // write runner, write payload, run runner
-  mockDockerExec
-    .mockResolvedValueOnce('')
-    .mockResolvedValueOnce('')
-    .mockResolvedValueOnce(JSON.stringify(verdict));
+interface StubVerdict {
+  syntaxError: string | null;
+  structureFailures?: unknown[];
+  cases: unknown[];
+}
+
+// Server replies to each case line, in order ('next' | 'stop').
+let replies: (string | null)[] = [];
+
+// Writes the runner and the payload, then plays a runner that streams the
+// header and one line per case, stopping when the server answers anything but
+// 'next' (the lockstep protocol of the real runners).
+function stubVerdict({ syntaxError, structureFailures = [], cases }: StubVerdict) {
+  mockDockerExec.mockResolvedValueOnce('').mockResolvedValueOnce('');
+  mockConverse.mockImplementationOnce(
+    async (_args: string[], _timeout: number, onLine: (line: string) => string | null) => {
+      replies = [];
+      onLine(JSON.stringify(syntaxError ? { syntaxError } : { syntaxError, structureFailures }));
+      if (syntaxError) return;
+      for (const c of cases) {
+        const reply = onLine(JSON.stringify(c));
+        replies.push(reply);
+        if (reply !== 'next') return;
+      }
+    },
+  );
 }
 
 beforeEach(() => {
@@ -207,7 +232,7 @@ describe('runLessonTests', () => {
     expect(res).not.toHaveProperty('referenceMs');
   });
 
-  it('shows expected output only on visible failed cases', async () => {
+  it('shows expected output on a visible failed case and stops there', async () => {
     stubFiles();
     stubVerdict({
       syntaxError: null,
@@ -220,9 +245,89 @@ describe('runLessonTests', () => {
 
     const res = await runLessonTests('user:1', 'python', 'print', 'code');
     expect(res.status).toBe('failed');
+    expect(res.cases).toHaveLength(1);
     expect(res.cases[0]).toMatchObject({ visible: true, expected: 'ok', actual: 'wrong' });
+    expect(res).toMatchObject({ total: 2, passedCount: 0 });
+    expect(replies).toEqual(['stop']);
+  });
+
+  it('hides expected output on a hidden failed case, after the passed ones', async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program({ stdout: 'wrong\n' }), solution: program({ stdout: '0\n' }) },
+      ],
+    });
+
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res.status).toBe('failed');
+    expect(res.cases.map((c) => c.passed)).toEqual([true, false]);
     expect(res.cases[1].expected).toBeUndefined();
-    expect(res.cases[1]).toMatchObject({ visible: false, inject: { tank_a: 0 } });
+    expect(res.cases[1]).toMatchObject({ index: 1, visible: false, inject: { tank_a: 0 } });
+    expect(res).toMatchObject({ total: 2, passedCount: 1 });
+    expect(replies).toEqual(['next', 'stop']);
+  });
+
+  it('stops a long run at the first failing case and reports X / Y', async () => {
+    stubFiles({
+      comparator: 'trimmed',
+      structure: {},
+      cases: [{ visible: true }, {}, { generated: true }, { generated: true }, { generated: true }],
+    });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+        { user: program({ stdout: 'no\n' }), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res).toMatchObject({ status: 'failed', total: 5, passedCount: 3 });
+    expect(res.cases).toHaveLength(4);
+    expect(res.cases[3]).toMatchObject({ index: 3, passed: false, generated: true });
+    expect(replies).toEqual(['next', 'next', 'next', 'stop']);
+  });
+
+  it('500s when the runner quits early without a failing case', async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ user: program(), solution: program() }],
+    });
+    await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
+      statusCode: 500,
+    });
+    expect(mockDestroy).toHaveBeenCalledWith('user:1');
+  });
+
+  it('500s when the runner sends no header or more cases than the spec has', async () => {
+    stubFiles();
+    mockDockerExec.mockResolvedValue('');
+    mockConverse.mockResolvedValueOnce(undefined);
+    await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
+      statusCode: 500,
+    });
+
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+    await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
+      statusCode: 500,
+    });
   });
 
   it('attaches the case stdin to failed results so the student can debug', async () => {
@@ -253,11 +358,15 @@ describe('runLessonTests', () => {
     const res = await runLessonTests('user:1', 'python', 'print', 'x = 1');
     expect(res.status).toBe('failed');
     expect(res.structureFailures).toHaveLength(1);
+    // Structure failures fail the run but every case still runs.
+    expect(res).toMatchObject({ passedCount: 2, total: 2 });
+    expect(res.cases).toHaveLength(2);
 
     stubVerdict({ syntaxError: 'line 1: invalid syntax', structureFailures: [], cases: [] });
     const res2 = await runLessonTests('user:1', 'python', 'print', 'x =');
     expect(res2.status).toBe('failed');
     expect(res2.syntaxError).toContain('invalid syntax');
+    expect(res2).toMatchObject({ cases: [], passedCount: 0, total: 2 });
   });
 
   it('maps user timeouts and crashes to case errors', async () => {
@@ -265,14 +374,24 @@ describe('runLessonTests', () => {
     stubVerdict({
       syntaxError: null,
       structureFailures: [],
+      cases: [{ user: program({ timedOut: true, exit: -1, ms: 5000 }), solution: program() }],
+    });
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res.cases).toEqual([
+      expect.objectContaining({ passed: false, error: 'timeout', userMs: 5000 }),
+    ]);
+
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
       cases: [
-        { user: program({ timedOut: true, exit: -1 }), solution: program() },
+        { user: program(), solution: program() },
         { user: program({ exit: 1, stderr: 'Traceback...' }), solution: program() },
       ],
     });
-    const res = await runLessonTests('user:1', 'python', 'print', 'code');
-    expect(res.cases[0]).toMatchObject({ passed: false, error: 'timeout' });
-    expect(res.cases[1]).toMatchObject({ passed: false, error: 'Traceback...' });
+    const res2 = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res2.cases[1]).toMatchObject({ passed: false, error: 'Traceback...' });
+    expect(res2.passedCount).toBe(1);
   });
 
   it('treats a broken reference solution as an internal error', async () => {
@@ -329,7 +448,9 @@ describe('runLessonTests', () => {
     expect((mockDockerExec.mock.calls[0][0] as string[]).join(' ')).toContain(
       'cat > /work/Runner.java',
     );
-    const runArgs = mockDockerExec.mock.calls[2][0] as string[];
+    const runArgs = mockConverse.mock.calls[0][0] as string[];
+    // The run is a conversation: stdin stays attached for the server's replies.
+    expect(runArgs.slice(0, 3)).toEqual(['exec', '-i', 'cid-1']);
     expect(runArgs).toContain('sh');
     expect(runArgs.join(' ')).toContain('javac -d /tmp/_judge /work/Runner.java');
   });
@@ -343,7 +464,7 @@ describe('runLessonTests', () => {
   });
 
   it('dispatches c lessons to the c runner with a server-prepped payload', async () => {
-    stubFiles();
+    stubFiles(ONE_CASE);
     mockPrepareC.mockResolvedValue({
       syntaxError: null,
       structureFailures: [],
@@ -380,7 +501,7 @@ describe('runLessonTests', () => {
   });
 
   it('merges c structure failures from the server prep, not the runner', async () => {
-    stubFiles();
+    stubFiles(ONE_CASE);
     mockPrepareC.mockResolvedValue({
       syntaxError: null,
       structureFailures: [{ type: 'require', rule: { kind: 'variable', name: 'age' } }],
