@@ -11,6 +11,20 @@
     { "inject": { "secunde": 20 } },
     { "inject": { "secunde": 10 } },
     { "inject": { "secunde": 200 } },
-    { "inject": { "secunde": 0 } }
+    { "inject": { "secunde": 0 } },
+    { "inject": { "secunde": 99 }, "generated": true },
+    { "inject": { "secunde": 101 }, "generated": true },
+    { "inject": { "secunde": 59 }, "generated": true },
+    { "inject": { "secunde": 61 }, "generated": true },
+    { "inject": { "secunde": 19 }, "generated": true },
+    { "inject": { "secunde": 21 }, "generated": true },
+    { "inject": { "secunde": 9 }, "generated": true },
+    { "inject": { "secunde": 11 }, "generated": true },
+    { "inject": { "secunde": 1 }, "generated": true },
+    { "inject": { "secunde": 30 }, "generated": true },
+    { "inject": { "secunde": 1000 }, "generated": true },
+    { "inject": { "secunde": 86400 }, "generated": true },
+    { "inject": { "secunde": 343 }, "generated": true },
+    { "inject": { "secunde": 478 }, "generated": true }
   ]
 }

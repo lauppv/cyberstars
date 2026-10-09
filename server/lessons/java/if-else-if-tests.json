@@ -11,6 +11,20 @@
     { "inject": { "seconds": 20 } },
     { "inject": { "seconds": 10 } },
     { "inject": { "seconds": 200 } },
-    { "inject": { "seconds": 0 } }
+    { "inject": { "seconds": 0 } },
+    { "inject": { "seconds": 99 }, "generated": true },
+    { "inject": { "seconds": 101 }, "generated": true },
+    { "inject": { "seconds": 59 }, "generated": true },
+    { "inject": { "seconds": 61 }, "generated": true },
+    { "inject": { "seconds": 19 }, "generated": true },
+    { "inject": { "seconds": 21 }, "generated": true },
+    { "inject": { "seconds": 9 }, "generated": true },
+    { "inject": { "seconds": 11 }, "generated": true },
+    { "inject": { "seconds": 1 }, "generated": true },
+    { "inject": { "seconds": 30 }, "generated": true },
+    { "inject": { "seconds": 1000 }, "generated": true },
+    { "inject": { "seconds": 86400 }, "generated": true },
+    { "inject": { "seconds": 343 }, "generated": true },
+    { "inject": { "seconds": 478 }, "generated": true }
   ]
 }
