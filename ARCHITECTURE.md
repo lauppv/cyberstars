@@ -126,14 +126,23 @@ and only ever set by the judge (see below) when tests pass for a logged-in user.
 
 ### Judge (lesson tests)
 
-| Method | Endpoint                                | Auth  | Description                                                                                                                                         |
-| ------ | --------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | `/api/tests/:courseKey/:lessonSlug/run` | Owner | Run the lesson's test suite; marks complete on a `passed` verdict (logged-in only). Works for guests (they can run but not save). 10 runs/min/owner |
+| Method | Endpoint                                        | Auth  | Description                                                                                                                                         |
+| ------ | ----------------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/tests/:courseKey/:lessonSlug/run`         | Owner | Run the lesson's test suite; marks complete on a `passed` verdict (logged-in only). Works for guests (they can run but not save). 10 runs/min/owner |
+| GET    | `/api/tests/:courseKey/:lessonSlug/submissions` | Yes   | The signed-in student's last 20 attempts on the lesson, newest first. 60/min/user                                                                   |
+| GET    | `/api/tests/submissions/:id`                    | Yes   | One attempt with its code and the test it stopped on; someone else's attempt is a 404. 60/min/user                                                  |
 
 "Owner" means a logged-in user or a guest keyed by the per-browser `guestId` cookie.
 The judge runs the student's code (and the reference solution) in the owner's warm
 Docker container and compares outputs **on the server**, so expected output never enters
 the container, so a tampered client can only fool its own display.
+
+A run stops at the first failing test. The response lists the passed tests with their
+input, expected and actual output, plus the failed one, whose expected output is sent
+only when the test is visible. It also times the student's program and the reference
+solution in the same run, but the client shows that runtime only on algorithm
+challenges: course lessons only have to pass. Algorithm tests mix a few hand-written cases with hidden
+generated ones, all within the input limits each statement states.
 
 ### Forum
 
