@@ -196,37 +196,37 @@ def inject_values(code, values):
 INPUT_PREAMBLE = "import builtins as _b\n_oi = _b.input\n_b.input = lambda *a, **k: _oi()\n"
 
 
+def as_text(raw):
+    # Programs are captured as bytes and decoded leniently: a student program
+    # that prints invalid UTF-8 (a raw byte, an overflowed char) gets graded on
+    # its output with U+FFFD in place of the bad bytes, never crashes the runner.
+    return (raw or b"").decode("utf-8", "replace")
+
+
 def elapsed_ms(started):
     return round((time.perf_counter() - started) * 1000, 3)
 
 
 def run_program(code, stdin=None):
     path = "/tmp/_judged.py"
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(INPUT_PREAMBLE + code)
     started = time.perf_counter()
     try:
         proc = subprocess.run(
             [sys.executable, "-u", path],
             capture_output=True,
-            text=True,
             timeout=CASE_TIMEOUT,
-            input=stdin if stdin is not None else "",
+            input=(stdin or "").encode("utf-8"),
         )
         return {
-            "stdout": proc.stdout[:OUTPUT_CAP],
-            "stderr": proc.stderr[:OUTPUT_CAP],
+            "stdout": as_text(proc.stdout)[:OUTPUT_CAP],
+            "stderr": as_text(proc.stderr)[:OUTPUT_CAP],
             "exit": proc.returncode,
             "timedOut": False,
             "ms": elapsed_ms(started),
         }
     except subprocess.TimeoutExpired as e:
-        # TimeoutExpired carries bytes even when text=True
-        def as_text(raw):
-            if raw is None:
-                return ""
-            return raw.decode("utf-8", "replace") if isinstance(raw, bytes) else raw
-
         return {
             "stdout": as_text(e.stdout)[:OUTPUT_CAP],
             "stderr": as_text(e.stderr)[:OUTPUT_CAP],

@@ -22,7 +22,8 @@ import time
 CASE_TIMEOUT = 5
 OUTPUT_CAP = 64 * 1024
 COMPILE_TIMEOUT = 20
-WORK = "/work"
+# Overridable so the runner can be exercised outside a container (unit tests).
+WORK = os.environ.get("JUDGE_WORK_DIR", "/work")
 
 # source string -> (binary_path or None, sanitized_stderr)
 _compile_cache = {}
@@ -34,7 +35,7 @@ def compile_source(src):
     digest = hashlib.md5(src.encode("utf-8")).hexdigest()
     c_path = os.path.join(WORK, "_%s.c" % digest)
     bin_path = os.path.join(WORK, "_%s.out" % digest)
-    with open(c_path, "w") as f:
+    with open(c_path, "w", encoding="utf-8") as f:
         f.write(src)
     try:
         proc = subprocess.run(
@@ -43,6 +44,7 @@ def compile_source(src):
             stdin=subprocess.DEVNULL,
             capture_output=True,
             text=True,
+            errors="replace",
             timeout=COMPILE_TIMEOUT,
         )
         ok = proc.returncode == 0
@@ -53,6 +55,13 @@ def compile_source(src):
     result = (bin_path if ok else None, stderr)
     _compile_cache[src] = result
     return result
+
+
+def as_text(raw):
+    # Programs are captured as bytes and decoded leniently: a student program
+    # that prints invalid UTF-8 (a raw byte, an overflowed char) gets graded on
+    # its output with U+FFFD in place of the bad bytes, never crashes the runner.
+    return (raw or b"").decode("utf-8", "replace")
 
 
 def elapsed_ms(started):
@@ -66,23 +75,17 @@ def run_binary(bin_path, stdin=None):
         proc = subprocess.run(
             [bin_path],
             capture_output=True,
-            text=True,
             timeout=CASE_TIMEOUT,
-            input=stdin if stdin is not None else "",
+            input=(stdin or "").encode("utf-8"),
         )
         return {
-            "stdout": proc.stdout[:OUTPUT_CAP],
-            "stderr": proc.stderr[:OUTPUT_CAP],
+            "stdout": as_text(proc.stdout)[:OUTPUT_CAP],
+            "stderr": as_text(proc.stderr)[:OUTPUT_CAP],
             "exit": proc.returncode,
             "timedOut": False,
             "ms": elapsed_ms(started),
         }
     except subprocess.TimeoutExpired as e:
-        def as_text(raw):
-            if raw is None:
-                return ""
-            return raw.decode("utf-8", "replace") if isinstance(raw, bytes) else raw
-
         return {
             "stdout": as_text(e.stdout)[:OUTPUT_CAP],
             "stderr": as_text(e.stderr)[:OUTPUT_CAP],
