@@ -4,6 +4,93 @@
     { "visible": true, "stdin": "5\ninsert\n10\ninsert\n20\ninsert\n30\nprint\ninsert\n40\n" },
     { "visible": true, "stdin": "3\nprint\ninsert\n5\nprint\n" },
     { "stdin": "2\ninsert\n7\nprint\n" },
-    { "stdin": "6\ninsert\n1\ninsert\n2\nprint\ninsert\n3\nprint\n" }
+    { "stdin": "6\ninsert\n1\ninsert\n2\nprint\ninsert\n3\nprint\n" },
+    { "stdin": "1\nprint\n", "generated": true },
+    { "stdin": "1\ninsert\n0\n", "generated": true },
+    { "stdin": "2\ninsert\n-1\nprint\n", "generated": true },
+    { "stdin": "2\ninsert\n0\nprint\n", "generated": true },
+    { "stdin": "3\nprint\nprint\nprint\n", "generated": true },
+    { "stdin": "4\ninsert\n5\ninsert\n5\ninsert\n5\nprint\n", "generated": true },
+    {
+      "stdin": "8\ninsert\n1\nprint\ninsert\n2\nprint\ninsert\n3\nprint\ninsert\n4\nprint\n",
+      "generated": true
+    },
+    { "stdin": "4\nprint\ninsert\n1\nprint\nprint\n", "generated": true },
+    {
+      "stdin": "151\ninsert\n1\ninsert\n2\ninsert\n3\ninsert\n4\ninsert\n5\ninsert\n6\ninsert\n7\ninsert\n8\ninsert\n9\ninsert\n10\ninsert\n11\ninsert\n12\ninsert\n13\ninsert\n14\ninsert\n15\ninsert\n16\ninsert\n17\ninsert\n18\ninsert\n19\ninsert\n20\ninsert\n21\ninsert\n22\ninsert\n23\ninsert\n24\ninsert\n25\ninsert\n26\ninsert\n27\ninsert\n28\ninsert\n29\ninsert\n30\ninsert\n31\ninsert\n32\ninsert\n33\ninsert\n34\ninsert\n35\ninsert\n36\ninsert\n37\ninsert\n38\ninsert\n39\ninsert\n40\ninsert\n41\ninsert\n42\ninsert\n43\ninsert\n44\ninsert\n45\ninsert\n46\ninsert\n47\ninsert\n48\ninsert\n49\ninsert\n50\ninsert\n51\ninsert\n52\ninsert\n53\ninsert\n54\ninsert\n55\ninsert\n56\ninsert\n57\ninsert\n58\ninsert\n59\ninsert\n60\ninsert\n61\ninsert\n62\ninsert\n63\ninsert\n64\ninsert\n65\ninsert\n66\ninsert\n67\ninsert\n68\ninsert\n69\ninsert\n70\ninsert\n71\ninsert\n72\ninsert\n73\ninsert\n74\ninsert\n75\ninsert\n76\ninsert\n77\ninsert\n78\ninsert\n79\ninsert\n80\ninsert\n81\ninsert\n82\ninsert\n83\ninsert\n84\ninsert\n85\ninsert\n86\ninsert\n87\ninsert\n88\ninsert\n89\ninsert\n90\ninsert\n91\ninsert\n92\ninsert\n93\ninsert\n94\ninsert\n95\ninsert\n96\ninsert\n97\ninsert\n98\ninsert\n99\ninsert\n100\ninsert\n101\ninsert\n102\ninsert\n103\ninsert\n104\ninsert\n105\ninsert\n106\ninsert\n107\ninsert\n108\ninsert\n109\ninsert\n110\ninsert\n111\ninsert\n112\ninsert\n113\ninsert\n114\ninsert\n115\ninsert\n116\ninsert\n117\ninsert\n118\ninsert\n119\ninsert\n120\ninsert\n121\ninsert\n122\ninsert\n123\ninsert\n124\ninsert\n125\ninsert\n126\ninsert\n127\ninsert\n128\ninsert\n129\ninsert\n130\ninsert\n131\ninsert\n132\ninsert\n133\ninsert\n134\ninsert\n135\ninsert\n136\ninsert\n137\ninsert\n138\ninsert\n139\ninsert\n140\ninsert\n141\ninsert\n142\ninsert\n143\ninsert\n144\ninsert\n145\ninsert\n146\ninsert\n147\ninsert\n148\ninsert\n149\ninsert\n150\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "102\ninsert\n99\ninsert\n98\ninsert\n97\ninsert\n96\ninsert\n95\ninsert\n94\ninsert\n93\ninsert\n92\ninsert\n91\ninsert\n90\ninsert\n89\ninsert\n88\ninsert\n87\ninsert\n86\ninsert\n85\ninsert\n84\ninsert\n83\ninsert\n82\ninsert\n81\ninsert\n80\ninsert\n79\ninsert\n78\ninsert\n77\ninsert\n76\ninsert\n75\ninsert\n74\ninsert\n73\ninsert\n72\ninsert\n71\ninsert\n70\ninsert\n69\ninsert\n68\ninsert\n67\ninsert\n66\ninsert\n65\ninsert\n64\ninsert\n63\ninsert\n62\ninsert\n61\ninsert\n60\ninsert\n59\ninsert\n58\ninsert\n57\ninsert\n56\ninsert\n55\ninsert\n54\ninsert\n53\ninsert\n52\ninsert\n51\ninsert\n50\ninsert\n49\ninsert\n48\ninsert\n47\ninsert\n46\ninsert\n45\ninsert\n44\ninsert\n43\ninsert\n42\ninsert\n41\ninsert\n40\ninsert\n39\ninsert\n38\ninsert\n37\ninsert\n36\ninsert\n35\ninsert\n34\ninsert\n33\ninsert\n32\ninsert\n31\ninsert\n30\ninsert\n29\ninsert\n28\ninsert\n27\ninsert\n26\ninsert\n25\ninsert\n24\ninsert\n23\ninsert\n22\ninsert\n21\ninsert\n20\ninsert\n19\ninsert\n18\ninsert\n17\ninsert\n16\ninsert\n15\ninsert\n14\ninsert\n13\ninsert\n12\ninsert\n11\ninsert\n10\ninsert\n9\ninsert\n8\ninsert\n7\ninsert\n6\ninsert\n5\ninsert\n4\ninsert\n3\ninsert\n2\ninsert\n1\nprint\ninsert\n0\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "121\ninsert\n560218\ninsert\n861691\ninsert\n-535833\ninsert\n224336\ninsert\n603724\ninsert\n420242\ninsert\n378089\ninsert\n32251\ninsert\n302404\ninsert\n826178\ninsert\n-341525\ninsert\n-452597\ninsert\n-826620\ninsert\n985560\ninsert\n476081\ninsert\n-140979\ninsert\n88602\ninsert\n-799091\ninsert\n-37607\ninsert\n-239476\ninsert\n-192511\ninsert\n-480341\ninsert\n-332507\ninsert\n294189\ninsert\n-914341\ninsert\n721375\ninsert\n974327\ninsert\n-341632\ninsert\n833623\ninsert\n-194440\ninsert\n-760132\ninsert\n671765\ninsert\n-111715\ninsert\n629013\ninsert\n-602259\ninsert\n-248182\ninsert\n-858567\ninsert\n539698\ninsert\n924424\ninsert\n-841942\ninsert\n-961898\ninsert\n652130\ninsert\n996250\ninsert\n181285\ninsert\n344453\ninsert\n-452038\ninsert\n4777\ninsert\n287802\ninsert\n-551390\ninsert\n433979\ninsert\n157559\ninsert\n74087\ninsert\n-939937\ninsert\n-63791\ninsert\n-627469\ninsert\n-74672\ninsert\n977610\ninsert\n-257755\ninsert\n742765\ninsert\n161904\ninsert\n-303032\ninsert\n809569\ninsert\n797674\ninsert\n-481606\ninsert\n729719\ninsert\n957965\ninsert\n615903\ninsert\n-215995\ninsert\n780249\ninsert\n-350956\ninsert\n-727276\ninsert\n-537883\ninsert\n-569205\ninsert\n-663562\ninsert\n-142652\ninsert\n-807161\ninsert\n-2587\ninsert\n215950\ninsert\n583618\ninsert\n765244\ninsert\n742260\ninsert\n1069\ninsert\n-717870\ninsert\n523837\ninsert\n-622790\ninsert\n-30480\ninsert\n-471177\ninsert\n-549039\ninsert\n400060\ninsert\n-160831\ninsert\n206821\ninsert\n193595\ninsert\n-462731\ninsert\n383321\ninsert\n785597\ninsert\n385242\ninsert\n792561\ninsert\n-311151\ninsert\n-714755\ninsert\n547735\ninsert\n561825\ninsert\n910362\ninsert\n-265383\ninsert\n-763939\ninsert\n-751894\ninsert\n-523857\ninsert\n388873\ninsert\n447292\ninsert\n721763\ninsert\n-214041\ninsert\n-752517\ninsert\n297810\ninsert\n696823\ninsert\n339980\ninsert\n-749615\ninsert\n-539776\ninsert\n906747\ninsert\n855155\ninsert\n609554\ninsert\n173356\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "122\ninsert\n-957\ninsert\n813\ninsert\n377\ninsert\n-498\ninsert\n84\ninsert\n-382\ninsert\n735\ninsert\n569\ninsert\n-285\ninsert\n411\ninsert\n27\ninsert\n300\ninsert\n403\ninsert\n987\ninsert\n283\ninsert\n493\ninsert\n-925\ninsert\n309\ninsert\n-45\ninsert\n-648\ninsert\n500\ninsert\n680\ninsert\n289\ninsert\n808\ninsert\n632\ninsert\n73\ninsert\n77\ninsert\n-626\ninsert\n-146\ninsert\n-985\ninsert\n28\ninsert\n547\ninsert\n895\ninsert\n749\ninsert\n-368\ninsert\n-156\ninsert\n-42\ninsert\n-601\ninsert\n128\ninsert\n-814\ninsert\n-797\ninsert\n-177\ninsert\n-662\ninsert\n-828\ninsert\n-838\ninsert\n752\ninsert\n107\ninsert\n-635\ninsert\n136\ninsert\n576\ninsert\n260\ninsert\n396\ninsert\n-435\ninsert\n-1\ninsert\n762\ninsert\n445\ninsert\n-390\ninsert\n-172\ninsert\n-62\ninsert\n-724\nprint\ninsert\n394\ninsert\n108\ninsert\n-9\ninsert\n841\ninsert\n843\ninsert\n100\ninsert\n-402\ninsert\n390\ninsert\n-276\ninsert\n433\ninsert\n-465\ninsert\n583\ninsert\n-530\ninsert\n-162\ninsert\n-234\ninsert\n662\ninsert\n5\ninsert\n-74\ninsert\n-697\ninsert\n-720\ninsert\n-17\ninsert\n-756\ninsert\n-344\ninsert\n514\ninsert\n919\ninsert\n-640\ninsert\n-794\ninsert\n188\ninsert\n-48\ninsert\n260\ninsert\n204\ninsert\n278\ninsert\n265\ninsert\n-356\ninsert\n-943\ninsert\n-525\ninsert\n743\ninsert\n-202\ninsert\n-68\ninsert\n151\ninsert\n-968\ninsert\n-912\ninsert\n273\ninsert\n52\ninsert\n705\ninsert\n496\ninsert\n-683\ninsert\n870\ninsert\n-234\ninsert\n-402\ninsert\n-192\ninsert\n128\ninsert\n706\ninsert\n121\ninsert\n196\ninsert\n952\ninsert\n-114\ninsert\n800\ninsert\n616\ninsert\n-134\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\ninsert\n0\nprint\ninsert\n2\nprint\ninsert\n4\nprint\ninsert\n6\nprint\ninsert\n8\nprint\ninsert\n10\nprint\ninsert\n12\nprint\ninsert\n14\nprint\ninsert\n16\nprint\ninsert\n18\nprint\ninsert\n20\nprint\ninsert\n22\nprint\ninsert\n24\nprint\ninsert\n26\nprint\ninsert\n28\nprint\ninsert\n30\nprint\ninsert\n32\nprint\ninsert\n34\nprint\ninsert\n36\nprint\ninsert\n38\nprint\ninsert\n40\nprint\ninsert\n42\nprint\ninsert\n44\nprint\ninsert\n46\nprint\ninsert\n48\nprint\ninsert\n50\nprint\ninsert\n52\nprint\ninsert\n54\nprint\ninsert\n56\nprint\ninsert\n58\nprint\n",
+      "generated": true
+    },
+    { "stdin": "4\ninsert\n-5\ninsert\n-4\ninsert\n-3\nprint\n", "generated": true },
+    { "stdin": "3\ninsert\n2147483647\ninsert\n-2147483648\nprint\n", "generated": true },
+    { "stdin": "3\ninsert\n1\ninsert\n2\ninsert\n3\n", "generated": true },
+    { "stdin": "5\ninsert\n1\ninsert\n2\ninsert\n3\nprint\nprint\n", "generated": true },
+    {
+      "stdin": "8\ninsert\n5\ninsert\n-226\nprint\nprint\ninsert\n-830\ninsert\n909\ninsert\n-749\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "27\ninsert\n-251\ninsert\n488\ninsert\n662\ninsert\n-70\ninsert\n-316\nprint\nprint\nprint\nprint\ninsert\n-176\ninsert\n-157\ninsert\n-994\ninsert\n-355\ninsert\n493\ninsert\n-958\ninsert\n1\ninsert\n220\ninsert\n327\ninsert\n-694\ninsert\n16\nprint\ninsert\n239\ninsert\n932\ninsert\n749\ninsert\n331\ninsert\n-176\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "34\ninsert\n277\ninsert\n868\nprint\ninsert\n468\ninsert\n445\ninsert\n268\ninsert\n342\ninsert\n-929\ninsert\n621\nprint\ninsert\n525\nprint\ninsert\n-161\ninsert\n-88\ninsert\n-465\ninsert\n308\ninsert\n220\ninsert\n-330\ninsert\n-534\nprint\ninsert\n864\nprint\ninsert\n565\ninsert\n575\nprint\ninsert\n-927\ninsert\n-36\nprint\ninsert\n973\ninsert\n69\ninsert\n95\ninsert\n-157\ninsert\n-671\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "32\ninsert\n386\ninsert\n654\ninsert\n13\ninsert\n-13\ninsert\n-958\ninsert\n68\ninsert\n799\ninsert\n-413\ninsert\n-662\ninsert\n-393\ninsert\n-285\ninsert\n513\nprint\ninsert\n700\ninsert\n-121\ninsert\n377\ninsert\n310\nprint\ninsert\n-181\ninsert\n-103\ninsert\n360\nprint\nprint\nprint\ninsert\n-261\ninsert\n621\ninsert\n-934\ninsert\n646\ninsert\n-398\ninsert\n-950\ninsert\n286\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "18\nprint\nprint\ninsert\n17\ninsert\n963\nprint\ninsert\n472\ninsert\n-897\ninsert\n-713\ninsert\n945\ninsert\n38\nprint\nprint\nprint\nprint\ninsert\n-246\ninsert\n25\ninsert\n-659\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\ninsert\n898\ninsert\n-725\nprint\ninsert\n353\ninsert\n233\ninsert\n681\ninsert\n-100\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "39\ninsert\n-775\nprint\ninsert\n-745\ninsert\n-761\ninsert\n-460\ninsert\n340\ninsert\n764\ninsert\n-870\ninsert\n-550\ninsert\n-803\ninsert\n117\ninsert\n390\ninsert\n248\ninsert\n-571\nprint\ninsert\n-896\nprint\nprint\ninsert\n-568\ninsert\n-582\ninsert\n-990\nprint\ninsert\n523\nprint\ninsert\n-721\nprint\ninsert\n-733\nprint\nprint\ninsert\n425\ninsert\n-295\ninsert\n400\ninsert\n-65\nprint\nprint\nprint\ninsert\n-311\nprint\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "37\ninsert\n361\ninsert\n868\ninsert\n-73\nprint\ninsert\n882\ninsert\n328\ninsert\n417\ninsert\n-135\ninsert\n-285\nprint\ninsert\n-547\ninsert\n492\ninsert\n260\nprint\nprint\nprint\ninsert\n587\ninsert\n671\ninsert\n-80\nprint\ninsert\n-553\ninsert\n191\ninsert\n869\ninsert\n105\nprint\nprint\ninsert\n-421\ninsert\n-842\ninsert\n721\ninsert\n-251\ninsert\n646\ninsert\n-685\ninsert\n-187\ninsert\n740\nprint\ninsert\n768\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\ninsert\n943\ninsert\n986\ninsert\n-990\ninsert\n738\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\ninsert\n-547\ninsert\n-520\ninsert\n95\ninsert\n771\nprint\ninsert\n-434\ninsert\n-62\ninsert\n-830\ninsert\n17\nprint\ninsert\n-835\nprint\ninsert\n-570\ninsert\n506\ninsert\n-883\nprint\ninsert\n-262\ninsert\n181\ninsert\n-857\ninsert\n-856\ninsert\n287\nprint\nprint\ninsert\n253\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "41\ninsert\n-975\ninsert\n-362\ninsert\n348\ninsert\n990\ninsert\n692\ninsert\n226\ninsert\n704\ninsert\n-897\ninsert\n58\nprint\ninsert\n548\ninsert\n495\ninsert\n8\ninsert\n819\ninsert\n-230\ninsert\n159\ninsert\n109\ninsert\n-651\ninsert\n504\ninsert\n-259\ninsert\n-929\nprint\ninsert\n848\nprint\ninsert\n367\ninsert\n32\nprint\ninsert\n-115\ninsert\n61\ninsert\n395\ninsert\n-3\ninsert\n772\ninsert\n-946\ninsert\n-481\ninsert\n-902\ninsert\n-372\ninsert\n-464\ninsert\n845\ninsert\n512\nprint\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "14\ninsert\n321\ninsert\n944\ninsert\n-560\ninsert\n123\ninsert\n39\ninsert\n254\ninsert\n-889\nprint\nprint\ninsert\n-413\ninsert\n-385\nprint\nprint\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "13\nprint\nprint\ninsert\n727\ninsert\n-409\ninsert\n692\ninsert\n977\ninsert\n422\ninsert\n911\nprint\ninsert\n30\ninsert\n665\ninsert\n-353\nprint\n",
+      "generated": true
+    }
   ]
 }
