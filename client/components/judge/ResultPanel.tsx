@@ -1,6 +1,7 @@
 import type { RunTestsResponse } from '../../../shared/tests';
 import { Verdict } from './Verdict';
 import { FailedCase } from './FailedCase';
+import { PassedCases } from './PassedCases';
 import { Runtime } from './Runtime';
 
 // The latest Run Tests verdict, shown in the lesson panel's Result tab. The
@@ -27,6 +28,7 @@ export function ResultPanel({
         total={results.total}
       />
       {failedCase && <FailedCase result={failedCase} />}
+      <PassedCases cases={results.cases} />
       {showRuntime && (
         <Runtime
           cases={results.cases}

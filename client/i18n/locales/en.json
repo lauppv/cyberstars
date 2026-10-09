@@ -842,6 +842,7 @@
     "input": "Input",
     "expected": "Expected output",
     "actual": "Your output",
+    "passedCases": "Passed tests ({{count}})",
     "close": "Close",
     "structure": {
       "require": {

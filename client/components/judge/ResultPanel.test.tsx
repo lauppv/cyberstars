@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { ResultPanel } from './ResultPanel';
 import type { RunTestsResponse } from '../../../shared/tests';
 
@@ -191,6 +191,52 @@ describe('ResultPanel', () => {
     expect(screen.getByText(/cfg = \{"a": 1\}/)).toBeInTheDocument();
     expect(screen.getByText('5 3')).toBeInTheDocument();
     expect(screen.getByText('∅')).toBeInTheDocument();
+  });
+
+  it('folds the passed tests into a list that opens on each one', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          passedCount: 2,
+          cases: [
+            { index: 0, visible: true, passed: true, stdin: '2 3\n', expected: '5', actual: '5' },
+            {
+              index: 1,
+              visible: false,
+              passed: true,
+              inject: { pilot: ['Rex', 'Kai'] },
+              expected: 'Rex Kai',
+              actual: 'Rex Kai',
+            },
+            { index: 2, visible: true, passed: false, expected: '1', actual: '0' },
+          ],
+        }}
+      />,
+    );
+    const list = screen.getByRole('button', { name: 'Passed tests (2)' });
+    expect(list).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('button', { name: 'Test 1' })).not.toBeInTheDocument();
+
+    fireEvent.click(list);
+    expect(screen.getByRole('button', { name: 'Test 1' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Test 3' })).not.toBeInTheDocument();
+    expect(screen.queryByText('Rex Kai')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Test 2 (hidden)' }));
+    expect(screen.getByText(/pilot = "Rex" → "Kai"/)).toBeInTheDocument();
+    expect(screen.getAllByText('Rex Kai')).toHaveLength(2);
+  });
+
+  it('leaves the list out when no test passed', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{ ...base, cases: [{ index: 0, visible: true, passed: false, actual: '0' }] }}
+      />,
+    );
+    expect(screen.queryByRole('button', { name: /Passed tests/ })).not.toBeInTheDocument();
   });
 
   it('shows the runtime only when asked to', () => {

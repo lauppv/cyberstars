@@ -844,6 +844,7 @@
     "input": "Input",
     "expected": "Output așteptat",
     "actual": "Outputul tău",
+    "passedCases": "Teste trecute ({{count}})",
     "close": "Închide",
     "structure": {
       "require": {
