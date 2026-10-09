@@ -4,6 +4,75 @@
     { "visible": true, "stdin": "Hello, World!\n3\n" },
     { "visible": true, "stdin": "xyz\n2\n" },
     { "stdin": "abc XYZ\n5\n" },
-    { "stdin": "Zebra-1\n1\n" }
+    { "stdin": "Zebra-1\n1\n" },
+    { "stdin": "z\n1\n", "generated": true },
+    { "stdin": "Z\n1\n", "generated": true },
+    { "stdin": "a\n25\n", "generated": true },
+    { "stdin": "z\n25\n", "generated": true },
+    { "stdin": "Zz Aa\n13\n", "generated": true },
+    { "stdin": "abcdefghijklmnopqrstuvwxyz\n13\n", "generated": true },
+    { "stdin": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n25\n", "generated": true },
+    { "stdin": "The quick brown fox jumps over the lazy dog.\n7\n", "generated": true },
+    { "stdin": "0123456789 !?.,\n4\n", "generated": true },
+    { "stdin": "[at] {back} `tick` ~tilde~ @home\n3\n", "generated": true },
+    { "stdin": " leading space\n2\n", "generated": true },
+    { "stdin": "x y z  X Y Z\n3\n", "generated": true },
+    { "stdin": "Hello, World!\n23\n", "generated": true },
+    {
+      "stdin": "QYmDivfmQPIDYogDRYQqqvtIyyEPcHDzmCBmKHrPVvJDxvmFAfVnEILQwBIyOgYAhgANayBGRGmbGwPIKxfsURluIXbayZvHRgmsWNHfhOiZKzpxceXyUttownouyQIJoFzShicUxKFlUuRGSdjPLYjxNCLZCmGNHqHhaGMhtQiSpEyCNFbzdDTVDpIcgEQZENXJeCPs\n17\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zebra Crossing 42 Zq\n9\n",
+      "generated": true
+    },
+    { "stdin": "C pipe zone Labs xray Fork fun\n17\n", "generated": true },
+    {
+      "stdin": "Yankee C pipe zone mainframe station Labs is is C fun zone Orbit ! Labs\n24\n",
+      "generated": true
+    },
+    {
+      "stdin": "pipe 2026 Fork fun teletype Yankee xray station xray station xray station mainframe ! Fork mainframe xray Zulu Bell\n12\n",
+      "generated": true
+    },
+    { "stdin": "Yankee ! teletype Fork fun\n4\n", "generated": true },
+    { "stdin": "Bell pipe Zulu Fork Labs Zulu teletype 2026 xray Labs !\n4\n", "generated": true },
+    {
+      "stdin": "Zulu xray Zulu Bell pipe station Labs is teletype teletype ! Fork zone ! Bell kernel Orbit fun Labs is\n14\n",
+      "generated": true
+    },
+    {
+      "stdin": "teletype Zulu Labs Yankee ! Orbit kernel Zulu station teletype station C pipe C Labs Orbit Yankee kernel mainframe xray fun pipe C Bell teletype\n8\n",
+      "generated": true
+    },
+    {
+      "stdin": "station Labs Labs is Yankee kernel Yankee is station Bell Fork fun teletype station ! pipe is\n19\n",
+      "generated": true
+    },
+    {
+      "stdin": "xray Labs Yankee ! Orbit 2026 fun pipe fun 2026 C Orbit pipe Labs 2026 Zulu xray teletype\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "Bell C pipe C station Fork station Orbit pipe Fork mainframe is is Yankee teletype Orbit C 2026\n4\n",
+      "generated": true
+    },
+    {
+      "stdin": "kernel ! 2026 mainframe xray Zulu 2026 C Orbit Zulu station Bell Orbit Labs\n9\n",
+      "generated": true
+    },
+    { "stdin": "is teletype xray kernel\n6\n", "generated": true },
+    {
+      "stdin": "2026 ! C Fork is pipe xray is Bell Zulu Bell fun Zulu Orbit Yankee zone Labs mainframe is\n19\n",
+      "generated": true
+    },
+    {
+      "stdin": "mainframe mainframe Yankee Fork pipe Fork Orbit Labs Bell 2026 mainframe Labs fun kernel zone mainframe is Orbit Orbit\n12\n",
+      "generated": true
+    },
+    {
+      "stdin": "Orbit Bell xray Bell is Fork is fun 2026 ! Bell teletype Zulu ! 2026 Labs Zulu C mainframe fun zone fun Yankee teletype\n10\n",
+      "generated": true
+    }
   ]
 }
