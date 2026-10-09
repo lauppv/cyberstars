@@ -11,11 +11,15 @@ import { Runtime } from './Runtime';
 import { formatMs, timeAgo } from './format';
 
 // Fixed widths so every row lines up with the header above it.
-const COLUMNS = 'grid-cols-[1fr_4rem_4.5rem_5.5rem] gap-x-3';
+// The runtime column only shows on algorithm lessons.
+const columns = (showRuntime: boolean) =>
+  `${showRuntime ? 'grid-cols-[1fr_4rem_4.5rem_5.5rem]' : 'grid-cols-[1fr_4rem_5.5rem]'} gap-x-3`;
 
 interface SubmissionsPanelProps {
   // Language key for the read-only editor (the lesson's course key).
   language: string;
+  // Algorithm lessons show runtimes; course lessons only have to work.
+  showRuntime: boolean;
   // Null until the history has been fetched.
   list: SubmissionSummary[] | null;
   failed: boolean;
@@ -28,6 +32,7 @@ interface SubmissionsPanelProps {
 // one attempt opened with the code that was judged.
 export function SubmissionsPanel({
   language,
+  showRuntime,
   list,
   failed,
   onLoad,
@@ -48,6 +53,7 @@ export function SubmissionsPanel({
         key={openId}
         id={openId}
         language={language}
+        showRuntime={showRuntime}
         onBack={() => setOpenId(null)}
         onLoadCode={onLoadCode}
       />
@@ -79,16 +85,20 @@ export function SubmissionsPanel({
 
   return (
     <div className="px-3 py-4">
-      <div className={`grid ${COLUMNS} px-3 pb-2 text-[12px] text-[var(--text3)]`}>
+      <div className={`grid ${columns(showRuntime)} px-3 pb-2 text-[12px] text-[var(--text3)]`}>
         <span>{t('tests.submissions.status')}</span>
         <span className="text-right">{t('tests.submissions.passed')}</span>
-        <span className="text-right">{t('tests.submissions.runtime')}</span>
+        {showRuntime && <span className="text-right">{t('tests.submissions.runtime')}</span>}
         <span className="text-right">{t('tests.submissions.when')}</span>
       </div>
       <ul className="flex flex-col list-none m-0 p-0">
         {list.map((s) => (
           <li key={s.id}>
-            <SubmissionRow submission={s} onOpen={() => setOpenId(s.id)} />
+            <SubmissionRow
+              submission={s}
+              showRuntime={showRuntime}
+              onOpen={() => setOpenId(s.id)}
+            />
           </li>
         ))}
       </ul>
@@ -112,9 +122,11 @@ function StatusLabel({ status }: { status: 'passed' | 'failed' }) {
 
 function SubmissionRow({
   submission: s,
+  showRuntime,
   onOpen,
 }: {
   submission: SubmissionSummary;
+  showRuntime: boolean;
   onOpen: () => void;
 }) {
   const { t, i18n } = useTranslation();
@@ -122,15 +134,17 @@ function SubmissionRow({
     <button
       type="button"
       onClick={onOpen}
-      className={`w-full grid ${COLUMNS} items-center px-3 py-2.5 rounded-[var(--radius-sm)] text-left text-[13px] bg-transparent border-none hover:bg-[var(--glass)] transition cursor-pointer`}
+      className={`w-full grid ${columns(showRuntime)} items-center px-3 py-2.5 rounded-[var(--radius-sm)] text-left text-[13px] bg-transparent border-none hover:bg-[var(--glass)] transition cursor-pointer`}
     >
       <StatusLabel status={s.status} />
       <span className="text-right text-[var(--text)] tabular-nums">
         {s.passedCount} / {s.total}
       </span>
-      <span className="text-right text-[var(--text2)] tabular-nums">
-        {s.runtimeMs === null ? '—' : `${formatMs(s.runtimeMs, i18n.language)} ms`}
-      </span>
+      {showRuntime && (
+        <span className="text-right text-[var(--text2)] tabular-nums">
+          {s.runtimeMs === null ? '—' : `${formatMs(s.runtimeMs, i18n.language)} ms`}
+        </span>
+      )}
       <span className="text-right text-[var(--text3)] tabular-nums">{timeAgo(s.createdAt, t)}</span>
     </button>
   );
@@ -139,11 +153,13 @@ function SubmissionRow({
 function SubmissionView({
   id,
   language,
+  showRuntime,
   onBack,
   onLoadCode,
 }: {
   id: number;
   language: string;
+  showRuntime: boolean;
   onBack: () => void;
   onLoadCode: (code: string) => void;
 }) {
@@ -186,7 +202,7 @@ function SubmissionView({
             total={detail.total}
           />
           {detail.failedCase && <FailedCase result={detail.failedCase} />}
-          <Runtime runtimeMs={detail.runtimeMs} referenceMs={detail.referenceMs} />
+          {showRuntime && <Runtime runtimeMs={detail.runtimeMs} referenceMs={detail.referenceMs} />}
           <section className="flex flex-col gap-3">
             <div className="flex items-center justify-between gap-3">
               <h3 className="text-[14px] font-semibold text-[var(--text)]">

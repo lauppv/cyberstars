@@ -15,6 +15,7 @@ describe('ResultPanel', () => {
   it('heads an accepted run with the full count', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           status: 'passed',
@@ -35,6 +36,7 @@ describe('ResultPanel', () => {
   it('shows the visible test it stopped on, with expected and actual output', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           passedCount: 2,
@@ -58,6 +60,7 @@ describe('ResultPanel', () => {
   it('shows the input but never the expected output of a hidden test', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [
@@ -84,6 +87,7 @@ describe('ResultPanel', () => {
   it('shows only the first failing test when an older judge sends several', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [
@@ -98,7 +102,12 @@ describe('ResultPanel', () => {
   });
 
   it('heads a syntax error with its message and no counter', () => {
-    render(<ResultPanel results={{ ...base, syntaxError: 'line 1: invalid syntax' }} />);
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{ ...base, syntaxError: 'line 1: invalid syntax' }}
+      />,
+    );
     expect(screen.getByRole('heading', { name: 'Syntax error' })).toBeInTheDocument();
     expect(screen.getByText('line 1: invalid syntax')).toBeInTheDocument();
     expect(screen.queryByText('tests passed')).not.toBeInTheDocument();
@@ -107,6 +116,7 @@ describe('ResultPanel', () => {
   it('lists failed code checks, and heads with them when every test passed', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           passedCount: 5,
@@ -127,6 +137,7 @@ describe('ResultPanel', () => {
   it('names a timeout and a crash', () => {
     const { unmount } = render(
       <ResultPanel
+        showRuntime={false}
         results={{ ...base, cases: [{ index: 0, visible: true, passed: false, error: 'timeout' }] }}
       />,
     );
@@ -136,6 +147,7 @@ describe('ResultPanel', () => {
 
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [{ index: 0, visible: true, passed: false, stdin: '', error: 'NameError: x' }],
@@ -151,6 +163,7 @@ describe('ResultPanel', () => {
   it('formats booleans, lists and dicts as Python literals, and stdin as typed', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [
@@ -180,8 +193,25 @@ describe('ResultPanel', () => {
     expect(screen.getByText('∅')).toBeInTheDocument();
   });
 
+  it('shows the runtime only when asked to', () => {
+    const results: RunTestsResponse = {
+      ...base,
+      status: 'passed',
+      passedCount: 1,
+      cases: [{ index: 0, visible: true, passed: true, userMs: 12, solutionMs: 10 }],
+      runtimeMs: 12,
+      referenceMs: 10,
+    };
+    const { unmount } = render(<ResultPanel showRuntime={false} results={results} />);
+    expect(screen.queryByText('Runtime')).not.toBeInTheDocument();
+    unmount();
+
+    render(<ResultPanel showRuntime results={results} />);
+    expect(screen.getByText('Runtime')).toBeInTheDocument();
+  });
+
   it('falls back to a plain failed heading when nothing names the cause', () => {
-    render(<ResultPanel results={{ ...base, total: 0 }} />);
+    render(<ResultPanel showRuntime={false} results={{ ...base, total: 0 }} />);
     expect(screen.getByRole('heading', { name: 'Failed' })).toBeInTheDocument();
     expect(screen.getByText('0 / 0')).toBeInTheDocument();
   });
