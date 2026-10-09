@@ -2,11 +2,11 @@ Given a sentence, print every word that contains **exactly 2 vowels**.
 
 ### Input
 
-A single line containing a sentence (words separated by spaces, only letters).
+A single line of 1 to 1000 characters containing a sentence with at least one word. Words contain only English letters (`a`-`z`, `A`-`Z`) and are separated by one or more spaces, and the line may start or end with spaces.
 
 ### Output
 
-The matching words, each on a separate line, in the order they appear. If no words match, print nothing.
+The matching words, each on a separate line, in the order they appear. If no words match, print nothing. The vowels are `a`, `e`, `i`, `o`, `u`, uppercase or lowercase.
 
 ### Examples
 

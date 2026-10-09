@@ -18,8 +18,8 @@
     { "stdin": "4\n1000000000\n-1000000000\n1000000000\n-1\n", "generated": true },
     { "stdin": "4\n1\n1\n1\n0\n", "generated": true },
     { "stdin": "3\n0\n5\n6\n", "generated": true },
-    { "stdin": "2\n2147483647\n1\n", "generated": true },
-    { "stdin": "2\n-2147483648\n-1\n", "generated": true },
+    { "stdin": "2\n999999999\n1\n", "generated": true },
+    { "stdin": "2\n-1000000000\n-1\n", "generated": true },
     { "stdin": "10\n1\n-1\n1\n-1\n1\n-1\n1\n-1\n1\n-1\n", "generated": true },
     {
       "stdin": "50\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n",

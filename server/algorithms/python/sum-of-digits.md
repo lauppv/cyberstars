@@ -2,7 +2,7 @@ Given an integer, print the **sum of its digits**.
 
 ### Input
 
-A single line containing an integer `n` (can be negative).
+A single line containing an integer `n` (can be negative) with at most 19 digits, not counting the minus sign.
 
 ### Output
 
