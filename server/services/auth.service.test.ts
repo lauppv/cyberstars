@@ -96,6 +96,24 @@ describe('getUser', () => {
     const user = await getUser(1);
     expect(user.status).toBe('coding');
     expect(user.name).toBe('Ada');
+    expect(user.onboardedAt).toBeNull();
+  });
+
+  it('passes the onboarding date through as an ISO string', async () => {
+    mockUserRepo.findById.mockResolvedValue({
+      id: 1,
+      name: 'Ada',
+      email: 'ada@test.com',
+      role: 'USER',
+      avatarUrl: null,
+      bio: null,
+      status: null,
+      statusExpiresAt: null,
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+      onboardedAt: new Date('2024-01-02T00:00:00Z'),
+    });
+    const user = await getUser(1);
+    expect(user.onboardedAt).toBe('2024-01-02T00:00:00.000Z');
   });
 
   it('nullifies expired status', async () => {

@@ -25,6 +25,7 @@ export async function findById(id: number) {
       showProgress: true,
       showActivity: true,
       showConnections: true,
+      onboardedAt: true,
     },
   });
 }

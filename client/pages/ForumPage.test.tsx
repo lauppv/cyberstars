@@ -74,6 +74,7 @@ function makeUser(role: UserRole, id = 99): AuthenticatedUser {
     showProgress: true,
     showActivity: true,
     showConnections: true,
+    onboardedAt: '2024-01-01T00:00:00Z',
   };
 }
 

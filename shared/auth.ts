@@ -23,6 +23,8 @@ export interface AuthenticatedUser {
   showProgress: boolean;
   showActivity: boolean;
   showConnections: boolean;
+  // When the first-lesson tour was finished; null holds the account on it.
+  onboardedAt: string | null;
 }
 
 export interface LoginPayload {
