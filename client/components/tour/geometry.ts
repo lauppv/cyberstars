@@ -47,9 +47,38 @@ export function holeFor(group: Element[]): Rect | null {
   return { x: left, y: top, w: right - left, h: bottom - top };
 }
 
+const overlaps = (a: Rect, b: Rect) =>
+  a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+
+// Two holes that overlap would leave their overlap dark under the even-odd
+// fill, so they become one hole, kept at the place of the earlier one.
+export function mergeHoles(holes: Rect[]): Rect[] {
+  const out = [...holes];
+  for (let i = 0; i < out.length; i++) {
+    for (let j = i + 1; j < out.length; j++) {
+      if (!overlaps(out[i], out[j])) continue;
+      const a = out[i];
+      const b = out[j];
+      const x = Math.min(a.x, b.x);
+      const y = Math.min(a.y, b.y);
+      out[i] = {
+        x,
+        y,
+        w: Math.max(a.x + a.w, b.x + b.w) - x,
+        h: Math.max(a.y + a.h, b.y + b.h) - y,
+      };
+      out.splice(j, 1);
+      // The grown hole may now reach one it was already checked against.
+      j = i;
+    }
+  }
+  return out;
+}
+
 // Where the card goes: beside the first hole if there is room, else in a
-// free corner, else docked to the edge away from the first hole. It never
-// covers a hole while a free spot exists.
+// free corner. It never covers a hole while a free spot exists. With none,
+// it docks at the bottom: on a phone that covers the output rather than the
+// editor or the lesson text above it.
 export function placeCard(
   holes: Rect[],
   w: number,
@@ -78,8 +107,7 @@ export function placeCard(
     [vw - w - EDGE, EDGE],
   ];
   for (const [x, y] of candidates) if (fits(x, y)) return { x, y };
-  const mainInTopHalf = main.y + main.h / 2 < vh / 2;
-  return { x: clampX((vw - w) / 2), y: mainInTopHalf ? vh - h - EDGE : EDGE };
+  return { x: clampX((vw - w) / 2), y: vh - h - EDGE };
 }
 
 export function roundedRect({ x, y, w, h }: Rect): string {

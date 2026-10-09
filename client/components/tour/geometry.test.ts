@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { holeFor, placeCard, roundedRect } from './geometry';
+import { holeFor, mergeHoles, placeCard, roundedRect } from './geometry';
 
 const VW = 1200;
 const VH = 800;
@@ -35,9 +35,24 @@ describe('placeCard', () => {
     expect(pos).toEqual({ x: 16, y: 584 });
   });
 
-  it('docks to the edge away from a target that leaves no room', () => {
-    const hole = { x: 0, y: 0, w: VW, h: 700 };
+  it('docks at the bottom when the targets leave no room', () => {
+    const hole = { x: 0, y: 100, w: VW, h: 700 };
     expect(placeCard([hole], 300, 200, VW, VH)).toEqual({ x: 450, y: 584 });
+  });
+});
+
+describe('mergeHoles', () => {
+  it('leaves apart holes alone', () => {
+    const a = { x: 0, y: 0, w: 100, h: 100 };
+    const b = { x: 200, y: 0, w: 100, h: 100 };
+    expect(mergeHoles([a, b])).toEqual([a, b]);
+  });
+
+  it('joins overlapping holes, including one reached only after a join', () => {
+    const tabs = { x: 0, y: 40, w: 390, h: 60 };
+    const far = { x: 0, y: 160, w: 390, h: 40 };
+    const workspace = { x: 0, y: 94, w: 390, h: 70 };
+    expect(mergeHoles([tabs, far, workspace])).toEqual([{ x: 0, y: 40, w: 390, h: 160 }]);
   });
 });
 

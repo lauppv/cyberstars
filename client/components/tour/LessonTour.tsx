@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { CELL_RUN_EVENT } from '../../constants/tour';
-import { holeFor, placeCard, RADIUS, roundedRect, type Rect } from './geometry';
+import { holeFor, mergeHoles, placeCard, RADIUS, roundedRect, type Rect } from './geometry';
 
 type Panel = 'lesson' | 'workspace';
 
@@ -167,10 +167,12 @@ export function LessonTour({
     let last = '';
     const tick = () => {
       const holes = step
-        ? step
-            .targets()
-            .map(holeFor)
-            .filter((r): r is Rect => r !== null)
+        ? mergeHoles(
+            step
+              .targets()
+              .map(holeFor)
+              .filter((r): r is Rect => r !== null),
+          )
         : [];
       const next = {
         holes,
