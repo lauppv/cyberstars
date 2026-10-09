@@ -8,6 +8,70 @@
     { "visible": true, "stdin": "aabbcc\n" },
     { "stdin": "z\n" },
     { "stdin": "abcdefghijklmnopqrstuvwxyz\n" },
-    { "stdin": "aaaa\n" }
+    { "stdin": "aaaa\n" },
+    { "stdin": "a\n", "generated": true },
+    { "stdin": "m\n", "generated": true },
+    { "stdin": "ab\n", "generated": true },
+    { "stdin": "ba\n", "generated": true },
+    { "stdin": "za\n", "generated": true },
+    { "stdin": "az\n", "generated": true },
+    { "stdin": "aaz\n", "generated": true },
+    { "stdin": "zaa\n", "generated": true },
+    { "stdin": "abc\n", "generated": true },
+    {
+      "stdin": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\n",
+      "generated": true
+    },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n",
+      "generated": true
+    },
+    {
+      "stdin": "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqr\n",
+      "generated": true
+    },
+    { "stdin": "zyxwvutsrqponmlkjihgfedcba\n", "generated": true },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n",
+      "generated": true
+    },
+    {
+      "stdin": "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr\n",
+      "generated": true
+    },
+    {
+      "stdin": "vqykklggsaabwzisehclirazbuudrqjnbtrrkwdeoppwxkhxaoaywltqkjheehruvpepzbswndsqmamxblzotoumllvgmxajkplcvpnjbyvydeyfsrffvemwofwbrrvdrrrxeyhohjwjoqkqepojmhkfdodsdwuqcdnbpwhhoolnyeurdhklpxakwhibyfnewfrlqajy\n",
+      "generated": true
+    },
+    {
+      "stdin": "jxwyznbvvqfdcrbsuqkjpsrihjagqpebozwgtujpagzbicmlyyallwbbzzqvskgqfmgujeioifprezdhwgpfnkjbtvvbtiagorxjoqozcbkscpnmlrciyqxikzcmrprnzkxfmzruwirnykiycvlvprlqjunrbnhlrtyszfvqirqirlpxxfpyietsgovbtdptnznpiah\n",
+      "generated": true
+    },
+    {
+      "stdin": "yyzzyxyzzyyzxyxyzyzyzxzyzzzyxyyzyyxxzyyyzzyyzxyzyyyxyzzyxzzyxzyxxzzzyzyyzxzzxzxyxyxxzyyyxxzyyxyyyxyzxzyxyxxzxzxzzxzyyzzyzzzzzyzyyxxzyyxzxzyzxyzyyyyxzzxxzyxxxzyxyzyyzyzxxyyzxyxxyyxxxyyzyyzxxzyzzzyxyxxy\n",
+      "generated": true
+    },
+    {
+      "stdin": "eaaaeaaeeaeaaeeaaaaaeeeaeeaeeeaaaeeaeaaeeaaeaaeeeeeeeaaaeaeaaaaaaaeeaeeaaaeaaeeeeeeeeeeeeeaaeaaeeaeeeeaaaaeaeaeaeaaeaaeeeeeeaaaaeaeeeaeaeaaaaeeaaeaaae\n",
+      "generated": true
+    },
+    { "stdin": "mississippi\n", "generated": true },
+    { "stdin": "abracadabra\n", "generated": true },
+    { "stdin": "hello\n", "generated": true },
+    { "stdin": "concurrency\n", "generated": true },
+    { "stdin": "mutex\n", "generated": true },
+    { "stdin": "zzzyyyxxx\n", "generated": true },
+    { "stdin": "ulsthyp\n", "generated": true },
+    {
+      "stdin": "hmqecpolwchvutjoycmdwnjauxjsqykfolxhussumeyvjgeqnxpusmwwphsszitra\n",
+      "generated": true
+    },
+    { "stdin": "obwcauhpvdmrcjguedjumwnsvrtdrabywewrgjcccumx\n", "generated": true },
+    {
+      "stdin": "tkxngeidfrzaeypofzxolyegbzwufiumnywrznirnvcdatdkcykozvrsfenppbaajkhsfokllazavz\n",
+      "generated": true
+    },
+    { "stdin": "uxwrnyghilamlmoiunvcjlajgatkywisxxxjujeju\n", "generated": true },
+    { "stdin": "jxfikfkfbfbnovdku\n", "generated": true }
   ]
 }

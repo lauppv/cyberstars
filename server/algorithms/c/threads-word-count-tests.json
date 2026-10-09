@@ -7,6 +7,78 @@
     { "visible": true, "stdin": "hello world\nthe code is clean\n" },
     { "visible": true, "stdin": "one two three four\nfive six\n" },
     { "stdin": "single\nword\n" },
-    { "stdin": "the quick brown\nfox jumps over\n" }
+    { "stdin": "the quick brown\nfox jumps over\n" },
+    { "stdin": "a\nb\n", "generated": true },
+    { "stdin": "a\na b c d e f\n", "generated": true },
+    {
+      "stdin": "x\nyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n",
+      "generated": true
+    },
+    { "stdin": "  leading spaces\ntrailing spaces   \n", "generated": true },
+    { "stdin": "many     spaces   between\none\n", "generated": true },
+    { "stdin": "   padded   \n  a  b  \n", "generated": true },
+    {
+      "stdin": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a\nb b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b\n",
+      "generated": true
+    },
+    {
+      "stdin": "a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a\nz\n",
+      "generated": true
+    },
+    { "stdin": "hello, world!\nC is fun; threads are too.\n", "generated": true },
+    { "stdin": "one-word-with-dashes\nx = y + z ;\n", "generated": true },
+    { "stdin": "42 7 3.14 -1\n! ? . ,\n", "generated": true },
+    { "stdin": "word\n                                   word\n", "generated": true },
+    {
+      "stdin": "Cvoz   Aop ?janAc bA.00hv10   5yj,!Az3 i!ed5wByvcBo c 05b,v .ji3dcwgCu q3 wBr4 t6A?d0 5v  c9t 2 prp  h  rmwu1,\nli g8vb?w!7  p2?6f!c  858 A649wum\n",
+      "generated": true
+    },
+    {
+      "stdin": "BB! k1i4Blxd5 x1iu7tBrksnh   rom   xf0?ArA1   5Coh9o?bBe 4ar!5  Bbn3pmxk9Cw 3ht 31\nz0r 5qw7yc9C7Cza s 1  11p.v51q. k   m4l1   uo!7n,z   p,15n91  77,q A6p2r668 m,d 893grk2ht\n",
+      "generated": true
+    },
+    {
+      "stdin": "2g k,?0cr4peuA7 ezxCm1mm1!7 w\n?c,   ckAgn 6tixo6   s2nad!.m4 hshu6bsfnn   z.iCc\n",
+      "generated": true
+    },
+    {
+      "stdin": "88.   ,54! 2!sw   !r,y2k mcj55Bz s,pv\nv 6 !e0vt xBhx4kC ibrlpC6   ?rmj 7dvBa   uCfBca  ro?xrz?q ,d   pst?0rr\n",
+      "generated": true
+    },
+    {
+      "stdin": "d 42wphB8ytvs   CicB0aeds1ua 8 tyCA n0rpxB7C?he8  moq8dx!n?rmj   cz fAaj AA prBvbb8zB 64zzt\n9kt   e n6gkvb2t25j  2!b0r2A700g  l5rdc38  ?f12ap  boa?   4u6d  nmo. v 7sugfcChc   4eu   cql 1afkn erd   A5emn,.4jb3f 5tpc iru87cy3yl   B2 jsrx  71i,0Bz rv  skl5zxB   6uf, any\n",
+      "generated": true
+    },
+    {
+      "stdin": "qmm nxmvf,dB v8ssd  6BnvBr ig yyndlvsg pggpcAnCs6v\nt   an3?zi 9   r4 sA  j vvfitf k9x2hw3qt   dh po4Cq23 0wmqehv6s d.73rm?n,,8z\n",
+      "generated": true
+    },
+    {
+      "stdin": "upi i,7  ku601jpfA1 2omq   kdfuCt81z oq0ck   h xns8h6l,rgns 2z   3AuqAsrCv qh8h??88tl  5,c7?jy6n x e9k.n7bzo8 as5sc\nw  mf6rp0m8Ag4p   6,ylziicf? .l53v!v  m28jw8aw Aex   oC56izyjp Bld!d .0pn4bai   lro  c5dn  2lfcf 3 CC0a18C0   vagCBhA37h?\n",
+      "generated": true
+    },
+    {
+      "stdin": "iy m48Ax7t   xd!n.s3 kBq6y4   ko5w6gmi5a!0 5joa39dk,y pm!zv   or?nt1ho,,63 yadfd,s5t  C98AfyyxCe6t qqAf?!d  B6Axrojhe0 l.jA179i35uc q\n718. dw 5BBsd,BBq.y   aAouv   wib  gpf5rj h3u ,50..\n",
+      "generated": true
+    },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n",
+      "generated": true
+    },
+    {
+      "stdin": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab cd\n x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x\n",
+      "generated": true
+    },
+    { "stdin": "the quick brown fox\njumps over the lazy dog\n", "generated": true },
+    { "stdin": "mutex\nlock unlock\n", "generated": true },
+    { "stdin": "Total words\nshould be four\n", "generated": true },
+    { "stdin": "I\nam\n", "generated": true },
+    { "stdin": "a b\nc\n", "generated": true },
+    { "stdin": "end.\n start\n", "generated": true },
+    {
+      "stdin": "x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x\ntab-free text with single spaces only and nothing else here\n",
+      "generated": true
+    },
+    { "stdin": "Ping Pong Ping Pong\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\n", "generated": true }
   ]
 }
