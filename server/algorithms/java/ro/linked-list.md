@@ -4,10 +4,10 @@ Procesează comenzile de la stdin.
 
 ### Date de intrare
 
-- Linia 1: numărul de comenzi N
+- Linia 1: numărul de comenzi N (1 ≤ N ≤ 200)
 - Pentru fiecare comandă:
   - Linia 1: tipul comenzii (`adauga`, `elimina` sau `afiseaza`)
-  - Doar pentru `adauga` și `elimina`, linia 2: numărul întreg X
+  - Doar pentru `adauga` și `elimina`, linia 2: numărul întreg X (orice valoare de tip `int`)
 
 Comportament:
 

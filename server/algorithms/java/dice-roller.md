@@ -6,9 +6,9 @@ Read the number of sides, the seed, and the number of rolls from stdin. Create a
 
 ### Input
 
-- Line 1: the number of sides (integer)
-- Line 2: seed (integer)
-- Line 3: the number of rolls (integer)
+- Line 1: the number of sides (integer, at least 1; any positive `int` value)
+- Line 2: seed (integer, any `int` value)
+- Line 3: the number of rolls (integer, 0 ≤ rolls ≤ 200)
 
 ### Output
 
