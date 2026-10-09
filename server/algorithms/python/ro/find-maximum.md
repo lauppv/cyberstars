@@ -2,8 +2,8 @@ Având o listă de numere, găsește și afișează **cel mai mare** dintre ele.
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n`, câte numere sunt.
-- Linia 2: `n` numere întregi separate prin spații.
+- Linia 1: un număr întreg `n`, câte numere sunt (1 <= n <= 200).
+- Linia 2: `n` numere întregi separate prin spații, fiecare între -1 000 000 000 și 1 000 000 000.
 
 ### Rezultat
 

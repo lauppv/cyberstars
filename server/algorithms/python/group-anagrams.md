@@ -4,8 +4,8 @@ Print each group on a separate line with words sorted alphabetically within the 
 
 ### Input
 
-- Line 1: an integer `n`, the number of words.
-- Next `n` lines: one word per line (lowercase letters only).
+- Line 1: an integer `n`, the number of words (1 <= n <= 100).
+- Next `n` lines: one word per line (1 to 50 lowercase letters `a`-`z`). No word appears twice.
 
 ### Output
 

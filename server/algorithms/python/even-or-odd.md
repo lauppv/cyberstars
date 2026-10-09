@@ -2,7 +2,7 @@ Given an integer, determine whether it is **even** or **odd**.
 
 ### Input
 
-A single line containing an integer `n`.
+A single line containing an integer `n` (can be negative) with at most 19 digits, not counting the minus sign.
 
 ### Output
 
