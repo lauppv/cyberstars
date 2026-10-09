@@ -9,9 +9,10 @@ Live at [cyberstars.app](https://cyberstars.app).
 - **Split-screen lessons**: Markdown content on the left, live CodeMirror editor on the right
 - **Runnable code examples**: click "Run" on any code block inside lesson text to execute it instantly
 - **Judge-graded completion**: pass a lesson's built-in test suite (Run Tests) to complete it; completion is server-verified, with no manual honor-system button
+- **LeetCode-style results**: after Run Tests, a Result tab shows the verdict, how many tests passed, the test the run stopped on, and every passed test with its input and output; algorithm challenges also show the runtime next to the reference solution, and signed-in students keep their last 20 attempts per lesson
 - **Multi-language**: Python (60 lessons), Java (49 lessons), C (47 lessons), Linux terminal (55 lessons)
 - **Bilingual UI (EN/RO)**: English (default) and Romanian with a language toggle; untranslated lessons or articles fall back to English automatically
-- **Algorithm challenges**: 72 challenges across 3 languages with Easy/Medium/Hard difficulty levels
+- **Algorithm challenges**: 72 challenges across 3 languages with Easy/Medium/Hard difficulty levels, graded against hidden tests within each statement's stated input limits
 - **Sandboxed execution**: user code runs in Docker containers, never in the browser
 - **Progress tracking**: per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
 - **Code persistence**: saved per lesson, restored on revisit
