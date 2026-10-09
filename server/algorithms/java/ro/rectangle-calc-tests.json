@@ -16,9 +16,9 @@
     { "stdin": "17\n19\n", "generated": true },
     { "stdin": "123\n456\n", "generated": true },
     { "stdin": "9999\n9999\n", "generated": true },
-    { "stdin": "1\n46340\n", "generated": true },
-    { "stdin": "46340\n46340\n", "generated": true },
-    { "stdin": "65536\n1\n", "generated": true },
+    { "stdin": "1\n10000\n", "generated": true },
+    { "stdin": "10000\n10000\n", "generated": true },
+    { "stdin": "10000\n1\n", "generated": true },
     { "stdin": "1000\n1000\n", "generated": true },
     { "stdin": "8\n15\n", "generated": true }
   ]

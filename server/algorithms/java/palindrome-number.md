@@ -4,7 +4,7 @@ Negative numbers are never palindromes (because of the minus sign). Single-digit
 
 ### Input
 
-- Line 1: a single integer
+- Line 1: a single integer (any `int` value, from -2147483648 to 2147483647)
 
 ### Output
 
