@@ -6,6 +6,8 @@ import type { RunTestsResponse } from '../../../shared/tests';
 const passedResults: RunTestsResponse = {
   status: 'passed',
   structureFailures: [],
+  total: 5,
+  passedCount: 0,
   cases: [
     { index: 0, visible: true, passed: true },
     { index: 1, visible: false, passed: true },
@@ -24,6 +26,8 @@ describe('TestResults', () => {
     const results: RunTestsResponse = {
       status: 'failed',
       structureFailures: [],
+      total: 5,
+      passedCount: 0,
       cases: [{ index: 0, visible: true, passed: false, expected: '400\n350', actual: '400\n300' }],
     };
     render(<TestResults results={results} onClose={() => {}} />);
@@ -36,6 +40,8 @@ describe('TestResults', () => {
     const results: RunTestsResponse = {
       status: 'failed',
       structureFailures: [],
+      total: 5,
+      passedCount: 0,
       cases: [
         {
           index: 1,
@@ -59,6 +65,8 @@ describe('TestResults', () => {
       syntaxError: 'line 1: invalid syntax',
       structureFailures: [{ type: 'require', rule: { kind: 'variable', name: 'total' } }],
       cases: [{ index: 0, visible: true, passed: false, error: 'timeout' }],
+      total: 5,
+      passedCount: 0,
     };
     render(<TestResults results={results} onClose={() => {}} />);
     expect(screen.getByText(/must define the variable total/)).toBeInTheDocument();
@@ -70,6 +78,8 @@ describe('TestResults', () => {
     const results: RunTestsResponse = {
       status: 'failed',
       structureFailures: [],
+      total: 5,
+      passedCount: 0,
       cases: [
         {
           index: 0,
@@ -96,6 +106,8 @@ describe('TestResults', () => {
     const results: RunTestsResponse = {
       status: 'failed',
       structureFailures: [],
+      total: 5,
+      passedCount: 0,
       cases: [
         { index: 0, visible: true, passed: false, stdin: '5 3\n', expected: '8', actual: '' },
         { index: 1, visible: true, passed: false, stdin: '', error: 'NameError: x' },

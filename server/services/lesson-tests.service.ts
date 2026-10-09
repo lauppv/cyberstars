@@ -166,7 +166,14 @@ interface RunnerVerdict {
 
 function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsResponse {
   if (verdict.syntaxError) {
-    return { status: 'failed', syntaxError: verdict.syntaxError, structureFailures: [], cases: [] };
+    return {
+      status: 'failed',
+      syntaxError: verdict.syntaxError,
+      structureFailures: [],
+      cases: [],
+      total: spec.cases.length,
+      passedCount: 0,
+    };
   }
 
   const comparator = spec.comparator ?? 'trimmed';
@@ -196,10 +203,13 @@ function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsR
   });
 
   const passed = verdict.structureFailures.length === 0 && cases.every((c) => c.passed);
+  const firstFailed = cases.findIndex((c) => !c.passed);
   return {
     status: passed ? 'passed' : 'failed',
     structureFailures: verdict.structureFailures,
     cases,
+    total: spec.cases.length,
+    passedCount: firstFailed === -1 ? cases.length : firstFailed,
   };
 }
 

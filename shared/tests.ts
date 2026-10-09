@@ -59,6 +59,13 @@ interface LessonTestCase {
    * the student typed never matters, only the behavior. Combinable with inject.
    */
   stdin?: string;
+  /**
+   * Bulk case produced offline by a generator script and stored concretely
+   * (always hidden). The judge runs hand-written cases first and may reuse a
+   * cached reference output for generated ones, so they carry no reference
+   * timing.
+   */
+  generated?: boolean;
 }
 
 export interface LessonTestsSpec {
@@ -87,11 +94,57 @@ export interface TestCaseResult {
   actual?: string;
   /** Runtime problem: 'timeout' or the program's stderr. */
   error?: string;
+  generated?: boolean;
+  /** Wall time of the student's program on this case, in milliseconds. */
+  userMs?: number;
+  /**
+   * Wall time of the reference solution on this case, measured in the same
+   * run; absent when its output came from the cache (generated cases).
+   */
+  solutionMs?: number;
 }
 
 export interface RunTestsResponse {
   status: 'passed' | 'failed';
   syntaxError?: string;
   structureFailures: StructureFailure[];
+  /**
+   * Cases in the order they ran. The judge stops at the first failing case, so
+   * this holds every passed case plus at most one failed case, which is last.
+   */
   cases: TestCaseResult[];
+  /** Number of cases in the spec, run or not (the Y in "X / Y passed"). */
+  total: number;
+  /** Cases passed before the run stopped (the X in "X / Y passed"). */
+  passedCount: number;
+  /**
+   * Sums of userMs / solutionMs over the cases that carry both, so the two
+   * totals always cover the same cases. Absent when no case has both.
+   */
+  runtimeMs?: number;
+  referenceMs?: number;
+  /** The stored attempt, for a logged-in student (guests keep no history). */
+  submission?: SubmissionSummary;
+}
+
+/** One judge attempt, as listed in the lesson's submission history. */
+export interface SubmissionSummary {
+  id: number;
+  status: 'passed' | 'failed';
+  passedCount: number;
+  total: number;
+  runtimeMs: number | null;
+  referenceMs: number | null;
+  lang: 'en' | 'ro';
+  /** ISO timestamp. */
+  createdAt: string;
+}
+
+/** A stored attempt with the code that was judged and why it stopped. */
+export interface SubmissionDetail extends SubmissionSummary {
+  code: string;
+  syntaxError: string | null;
+  structureFailures: StructureFailure[];
+  /** The case the run stopped on, when a case failed. */
+  failedCase: TestCaseResult | null;
 }
