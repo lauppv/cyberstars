@@ -4,6 +4,52 @@
     { "visible": true, "stdin": "5\ninc\ninc\nget\ndec\nget\n" },
     { "visible": true, "stdin": "4\ndec\ndec\ndec\nget\n" },
     { "stdin": "1\nget\n" },
-    { "stdin": "5\ninc\ndec\ninc\ndec\nget\n" }
+    { "stdin": "5\ninc\ndec\ninc\ndec\nget\n" },
+    { "stdin": "0\n", "generated": true },
+    { "stdin": "2\ninc\nget\n", "generated": true },
+    { "stdin": "2\ndec\nget\n", "generated": true },
+    { "stdin": "3\nget\nget\nget\n", "generated": true },
+    { "stdin": "3\ninc\ninc\ndec\n", "generated": true },
+    {
+      "stdin": "151\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\nget\n",
+      "generated": true
+    },
+    {
+      "stdin": "151\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\nget\n",
+      "generated": true
+    },
+    { "stdin": "8\ninc\nget\ndec\nget\ndec\nget\ninc\nget\n", "generated": true },
+    {
+      "stdin": "18\nget\ndec\ndec\ndec\ndec\ndec\nget\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\nget\n",
+      "generated": true
+    },
+    {
+      "stdin": "80\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\ninc\nget\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\ninc\ndec\ninc\nget\ninc\nget\nget\ninc\ndec\ninc\ndec\ninc\ninc\nget\nget\ndec\ninc\nget\ninc\ninc\nget\nget\nget\nget\ninc\ninc\ninc\nget\nget\ninc\ndec\ndec\nget\ndec\nget\ninc\ndec\ndec\nget\nget\ninc\ninc\ninc\ndec\ninc\ndec\ndec\ndec\nget\ninc\n",
+      "generated": true
+    },
+    {
+      "stdin": "200\nget\ndec\ninc\nget\ninc\nget\ndec\ninc\nget\nget\ndec\ndec\nget\ndec\nget\ninc\ndec\ninc\ndec\ninc\ndec\ndec\ndec\nget\ndec\ninc\nget\ninc\ninc\ndec\ninc\ndec\ninc\ndec\ndec\ninc\ninc\nget\ndec\nget\ninc\nget\nget\ndec\nget\ndec\nget\ndec\ndec\nget\ninc\ndec\ninc\nget\nget\ninc\nget\ninc\nget\nget\ninc\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ndec\nget\ninc\ndec\ndec\nget\ninc\ndec\ninc\ninc\ninc\ninc\nget\ndec\ninc\nget\nget\ndec\ninc\ndec\nget\ninc\nget\nget\ndec\nget\nget\nget\ndec\ndec\nget\ndec\ninc\nget\nget\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ndec\nget\ninc\ninc\ndec\nget\ndec\nget\ninc\ninc\nget\ninc\nget\ndec\ninc\ninc\ndec\nget\nget\nget\ninc\ninc\nget\nget\ninc\ninc\ninc\ninc\ninc\nget\ninc\ndec\ninc\ninc\nget\ndec\ndec\nget\ndec\ninc\ninc\nget\ninc\ndec\nget\ninc\ndec\nget\ninc\ninc\ndec\nget\ndec\ninc\ndec\ninc\nget\nget\ndec\nget\nget\ndec\ninc\nget\ndec\nget\nget\nget\ndec\ndec\ndec\ndec\nget\nget\ndec\nget\ndec\ndec\ninc\ndec\ninc\ndec\nget\ninc\nget\ndec\ndec\ndec\n",
+      "generated": true
+    },
+    {
+      "stdin": "300\ninc\ndec\nget\ndec\ninc\ndec\ninc\nget\nget\ninc\ninc\ndec\nget\ninc\ninc\ndec\nget\ninc\ninc\ninc\ndec\ninc\ninc\nget\ninc\ninc\ninc\ninc\nget\ndec\ninc\nget\ninc\ninc\ninc\ninc\nget\nget\ninc\ndec\ninc\ninc\ndec\ninc\nget\ninc\nget\ninc\nget\ninc\ninc\ndec\nget\ndec\ninc\ninc\nget\ninc\ndec\ndec\nget\ninc\ninc\ninc\nget\nget\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ninc\nget\ninc\nget\nget\ninc\nget\ninc\ndec\nget\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ndec\nget\nget\ninc\ndec\ninc\ninc\nget\ndec\ndec\ninc\nget\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ninc\ninc\nget\ninc\nget\nget\ndec\ninc\ninc\ninc\nget\ninc\ninc\ninc\ndec\ninc\nget\ndec\ndec\ninc\nget\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ndec\nget\nget\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ndec\nget\ninc\nget\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ninc\ninc\ninc\ndec\nget\ndec\ndec\ninc\ninc\ndec\ninc\nget\ndec\ninc\ndec\nget\nget\nget\ndec\ninc\ndec\ndec\ninc\ninc\ninc\ndec\ninc\ninc\nget\ndec\nget\nget\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\nget\ndec\ninc\ninc\ninc\nget\nget\nget\ninc\nget\ninc\ninc\nget\ninc\nget\ndec\ninc\ndec\nget\nget\nget\ninc\ninc\ninc\ninc\ndec\ndec\ninc\nget\ndec\nget\ninc\nget\nget\nget\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\ninc\nget\ninc\ndec\ninc\ninc\ninc\nget\ninc\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ninc\n",
+      "generated": true
+    },
+    {
+      "stdin": "300\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ndec\ndec\nget\ninc\ndec\ndec\ndec\ndec\ndec\ndec\ninc\nget\ndec\ndec\nget\ndec\nget\ndec\ndec\ndec\ninc\nget\ndec\nget\ndec\ndec\ndec\nget\ndec\ndec\ndec\nget\ninc\ndec\nget\ndec\ndec\ndec\nget\ninc\ndec\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ndec\nget\ndec\ninc\ninc\nget\ndec\ninc\ninc\nget\ndec\ndec\nget\nget\ninc\nget\ndec\ninc\ndec\ndec\nget\ninc\ndec\ndec\nget\ndec\ninc\ndec\nget\ndec\nget\ninc\nget\nget\nget\ninc\ndec\nget\ndec\nget\nget\ndec\ndec\ninc\ndec\ninc\ndec\ndec\nget\ndec\ndec\ndec\ninc\ndec\nget\nget\ndec\nget\ndec\ninc\ndec\ndec\nget\ndec\nget\nget\ninc\ninc\ndec\ndec\ndec\ndec\nget\ndec\nget\ninc\ndec\ndec\ndec\ndec\nget\ndec\ndec\nget\ndec\ndec\ndec\ndec\ninc\ninc\nget\ndec\ndec\ndec\ndec\ndec\nget\ndec\ndec\nget\ninc\nget\nget\nget\ninc\ninc\nget\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ndec\nget\ndec\nget\ninc\ndec\nget\ndec\ninc\ndec\nget\ndec\ndec\ndec\ndec\ninc\ninc\nget\ninc\ndec\ndec\ndec\ndec\ninc\nget\ndec\ndec\nget\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ninc\ndec\ninc\ninc\nget\ninc\ndec\nget\ndec\ninc\ndec\nget\ninc\ndec\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ndec\nget\ninc\ndec\nget\nget\ndec\ndec\ninc\ndec\ndec\nget\ninc\nget\ndec\ndec\ndec\ninc\ndec\nget\ndec\ninc\ndec\nget\ninc\ndec\nget\ninc\nget\ndec\nget\ndec\ndec\ndec\ninc\nget\ndec\ninc\ninc\ndec\ndec\ninc\nget\ndec\ninc\ninc\ndec\ndec\nget\ninc\ndec\nget\ndec\ndec\ndec\ndec\ndec\ndec\nget\ndec\ndec\ndec\nget\ndec\nget\nget\nget\ndec\nget\ndec\n",
+      "generated": true
+    },
+    {
+      "stdin": "502\nget\ndec\ndec\ndec\ndec\ndec\ndec\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ndec\ninc\ninc\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ninc\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ndec\ninc\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ninc\ninc\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ninc\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ndec\ninc\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ndec\ndec\ndec\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ninc\ndec\ndec\ninc\ndec\ndec\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ninc\ndec\ninc\ninc\ninc\ninc\ninc\ninc\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ninc\ninc\ninc\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ninc\ninc\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ndec\ninc\ndec\ninc\ndec\ndec\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ndec\ninc\ninc\ninc\ninc\ninc\ndec\ndec\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ndec\nget\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\ndec\ndec\ninc\ndec\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ndec\ndec\ninc\ninc\ndec\ninc\ndec\ndec\ndec\ninc\ninc\ninc\ndec\ndec\ndec\ninc\ninc\ninc\ninc\ndec\ninc\ndec\ninc\ninc\ndec\ninc\ninc\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ninc\ninc\ninc\ndec\ninc\ndec\ndec\ninc\ninc\ndec\ndec\ndec\ninc\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ndec\ninc\ninc\ndec\ndec\ninc\ndec\ndec\ndec\ndec\ndec\ndec\ninc\ninc\ninc\ninc\ndec\ndec\ndec\ninc\ninc\ndec\ninc\ndec\ninc\ndec\ninc\ndec\ninc\nget\n",
+      "generated": true
+    }
   ]
 }

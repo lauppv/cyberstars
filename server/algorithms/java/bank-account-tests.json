@@ -5,6 +5,51 @@
     { "visible": true, "stdin": "0\n2\ndeposit\n500\nwithdraw\n500\n" },
     { "stdin": "50\n1\nwithdraw\n50\n" },
     { "stdin": "10\n2\nwithdraw\n20\nwithdraw\n15\n" },
-    { "stdin": "100\n4\ndeposit\n100\ndeposit\n50\nwithdraw\n30\nwithdraw\n500\n" }
+    { "stdin": "100\n4\ndeposit\n100\ndeposit\n50\nwithdraw\n30\nwithdraw\n500\n" },
+    { "stdin": "0\n0\n", "generated": true },
+    { "stdin": "1000000\n0\n", "generated": true },
+    { "stdin": "0\n1\nwithdraw\n1\n", "generated": true },
+    { "stdin": "0\n3\nwithdraw\n0\ndeposit\n0\nwithdraw\n0\n", "generated": true },
+    { "stdin": "5\n3\nwithdraw\n6\nwithdraw\n5\nwithdraw\n1\n", "generated": true },
+    {
+      "stdin": "10\n4\ndeposit\n50\nwithdraw\n40\nwithdraw\n21\nwithdraw\n20\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\n4\nwithdraw\n101\ndeposit\n1\nwithdraw\n101\nwithdraw\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\n7\ndeposit\n1\ndeposit\n10\ndeposit\n100\ndeposit\n1000\ndeposit\n10000\ndeposit\n100000\ndeposit\n1000000\n",
+      "generated": true
+    },
+    {
+      "stdin": "100\n5\nwithdraw\n40\nwithdraw\n30\nwithdraw\n20\nwithdraw\n10\nwithdraw\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "1000000\n4\nwithdraw\n1000001\nwithdraw\n1000000\ndeposit\n1\nwithdraw\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "250\n20\ndeposit\n466\nwithdraw\n240\ndeposit\n340\ndeposit\n309\ndeposit\n470\nwithdraw\n249\ndeposit\n169\nwithdraw\n37\nwithdraw\n99\ndeposit\n46\nwithdraw\n395\nwithdraw\n99\nwithdraw\n403\nwithdraw\n123\nwithdraw\n217\ndeposit\n33\nwithdraw\n240\nwithdraw\n109\ndeposit\n334\nwithdraw\n341\n",
+      "generated": true
+    },
+    {
+      "stdin": "0\n40\nwithdraw\n6466\nwithdraw\n3754\nwithdraw\n1259\nwithdraw\n6856\ndeposit\n7604\ndeposit\n8767\ndeposit\n5661\ndeposit\n6077\nwithdraw\n155\nwithdraw\n9248\ndeposit\n567\nwithdraw\n2963\nwithdraw\n1078\ndeposit\n6631\nwithdraw\n9324\nwithdraw\n2726\nwithdraw\n8363\nwithdraw\n2969\ndeposit\n1378\ndeposit\n525\nwithdraw\n8753\nwithdraw\n1948\nwithdraw\n2299\ndeposit\n3291\nwithdraw\n2285\ndeposit\n2458\nwithdraw\n5531\nwithdraw\n1107\ndeposit\n8988\nwithdraw\n7587\ndeposit\n3155\nwithdraw\n5367\ndeposit\n4590\ndeposit\n4097\nwithdraw\n3350\nwithdraw\n1839\nwithdraw\n4004\ndeposit\n4598\ndeposit\n199\ndeposit\n6480\n",
+      "generated": true
+    },
+    {
+      "stdin": "300\n100\nwithdraw\n672\ndeposit\n824\nwithdraw\n245\nwithdraw\n483\ndeposit\n566\nwithdraw\n343\ndeposit\n960\ndeposit\n296\nwithdraw\n696\nwithdraw\n916\nwithdraw\n411\ndeposit\n763\ndeposit\n529\ndeposit\n222\ndeposit\n681\ndeposit\n150\nwithdraw\n125\nwithdraw\n25\nwithdraw\n881\ndeposit\n693\nwithdraw\n526\ndeposit\n131\nwithdraw\n559\nwithdraw\n308\nwithdraw\n753\nwithdraw\n247\nwithdraw\n209\nwithdraw\n998\nwithdraw\n770\ndeposit\n252\ndeposit\n593\nwithdraw\n758\nwithdraw\n450\ndeposit\n276\ndeposit\n974\ndeposit\n792\nwithdraw\n999\ndeposit\n14\nwithdraw\n950\nwithdraw\n684\nwithdraw\n789\ndeposit\n500\ndeposit\n37\nwithdraw\n619\ndeposit\n708\ndeposit\n640\nwithdraw\n348\ndeposit\n151\nwithdraw\n731\nwithdraw\n112\nwithdraw\n7\ndeposit\n366\ndeposit\n660\ndeposit\n238\ndeposit\n667\ndeposit\n177\ndeposit\n460\ndeposit\n39\ndeposit\n918\ndeposit\n108\ndeposit\n341\ndeposit\n591\nwithdraw\n930\ndeposit\n113\ndeposit\n42\nwithdraw\n627\ndeposit\n282\nwithdraw\n772\ndeposit\n717\ndeposit\n120\nwithdraw\n701\ndeposit\n99\nwithdraw\n296\ndeposit\n170\nwithdraw\n672\nwithdraw\n156\nwithdraw\n714\ndeposit\n246\nwithdraw\n399\ndeposit\n481\ndeposit\n206\nwithdraw\n155\ndeposit\n508\nwithdraw\n499\ndeposit\n906\nwithdraw\n776\ndeposit\n775\ndeposit\n338\ndeposit\n230\nwithdraw\n539\nwithdraw\n35\nwithdraw\n132\nwithdraw\n607\nwithdraw\n794\nwithdraw\n632\nwithdraw\n871\ndeposit\n465\nwithdraw\n94\ndeposit\n678\ndeposit\n381\n",
+      "generated": true
+    },
+    {
+      "stdin": "200\n30\nwithdraw\n31\nwithdraw\n3\nwithdraw\n25\nwithdraw\n3\nwithdraw\n23\nwithdraw\n4\nwithdraw\n15\nwithdraw\n1\nwithdraw\n25\nwithdraw\n9\nwithdraw\n32\nwithdraw\n26\nwithdraw\n7\nwithdraw\n47\nwithdraw\n12\nwithdraw\n27\nwithdraw\n45\nwithdraw\n43\nwithdraw\n48\nwithdraw\n47\nwithdraw\n29\nwithdraw\n18\nwithdraw\n24\nwithdraw\n47\nwithdraw\n14\nwithdraw\n44\nwithdraw\n39\nwithdraw\n19\nwithdraw\n26\nwithdraw\n9\n",
+      "generated": true
+    },
+    {
+      "stdin": "523307\n120\ndeposit\n794680\nwithdraw\n344523\ndeposit\n541417\nwithdraw\n1391802\ndeposit\n511629\nwithdraw\n623321\ndeposit\n964389\nwithdraw\n484860\ndeposit\n440902\nwithdraw\n1841522\ndeposit\n900670\nwithdraw\n1102205\ndeposit\n49026\nwithdraw\n112951\ndeposit\n556221\nwithdraw\n225117\ndeposit\n747636\nwithdraw\n1484783\ndeposit\n11225\nwithdraw\n1577426\ndeposit\n730160\nwithdraw\n1027404\ndeposit\n299918\nwithdraw\n958186\ndeposit\n656055\nwithdraw\n782033\ndeposit\n653545\nwithdraw\n605803\ndeposit\n143055\nwithdraw\n765357\ndeposit\n989616\nwithdraw\n1006551\ndeposit\n254380\nwithdraw\n1621176\ndeposit\n143075\nwithdraw\n1615165\ndeposit\n464201\nwithdraw\n1557676\ndeposit\n67074\nwithdraw\n814943\ndeposit\n106194\nwithdraw\n1303124\ndeposit\n798517\nwithdraw\n1009946\ndeposit\n102273\nwithdraw\n1135183\ndeposit\n64218\nwithdraw\n1856917\ndeposit\n709875\nwithdraw\n951657\ndeposit\n285203\nwithdraw\n1708040\ndeposit\n362534\nwithdraw\n1741235\ndeposit\n400785\nwithdraw\n345100\ndeposit\n799128\nwithdraw\n160428\ndeposit\n581693\nwithdraw\n1644613\ndeposit\n245040\nwithdraw\n1816885\ndeposit\n792396\nwithdraw\n1788779\ndeposit\n748926\nwithdraw\n1129906\ndeposit\n534665\nwithdraw\n1606553\ndeposit\n437505\nwithdraw\n1551619\ndeposit\n438876\nwithdraw\n1599958\ndeposit\n181329\nwithdraw\n1911783\ndeposit\n728399\nwithdraw\n114296\ndeposit\n393040\nwithdraw\n1554398\ndeposit\n875404\nwithdraw\n1225254\ndeposit\n108214\nwithdraw\n26637\ndeposit\n178556\nwithdraw\n535530\ndeposit\n860053\nwithdraw\n1501599\ndeposit\n165999\nwithdraw\n1109625\ndeposit\n132377\nwithdraw\n1179445\ndeposit\n757094\nwithdraw\n602490\ndeposit\n554818\nwithdraw\n1188902\ndeposit\n610145\nwithdraw\n1843146\ndeposit\n709860\nwithdraw\n517066\ndeposit\n579183\nwithdraw\n1181095\ndeposit\n766804\nwithdraw\n1446817\ndeposit\n91547\nwithdraw\n404665\ndeposit\n147181\nwithdraw\n107178\ndeposit\n586608\nwithdraw\n393660\ndeposit\n866620\nwithdraw\n998908\ndeposit\n125159\nwithdraw\n1270961\ndeposit\n154604\nwithdraw\n1011328\ndeposit\n524133\nwithdraw\n639637\ndeposit\n192855\nwithdraw\n294681\ndeposit\n194677\nwithdraw\n332522\n",
+      "generated": true
+    }
   ]
 }
