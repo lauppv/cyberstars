@@ -165,23 +165,21 @@ export async function handleInteractiveRun(
     const slice = chunk.length > remaining ? chunk.subarray(0, remaining) : chunk;
     const text = slice.toString();
     outputTotal += slice.length;
-    if (target === 'stdout') {
-      stdoutBuf += text;
-      if (stdoutBuf.length > OUTPUT_BUFFER_MAX) {
-        stdoutBuf = stdoutBuf.slice(-OUTPUT_BUFFER_MAX);
-      }
-    } else {
-      stderrBuf += text;
-      if (stderrBuf.length > OUTPUT_BUFFER_MAX) {
-        stderrBuf = stderrBuf.slice(-OUTPUT_BUFFER_MAX);
-      }
-    }
+    if (target === 'stdout') stdoutBuf += text;
+    else stderrBuf += text;
     if (outputTotal >= OUTPUT_TOTAL_MAX) {
       outputCapped = true;
       killAll();
       stderrBuf += '\nOutput limit exceeded, program stopped.\n';
       flushOutput();
       sendExit(124);
+      return;
+    }
+    // The timer only batches small writes. A fast burst is sent as soon as the
+    // buffers fill, so no output is ever dropped between two flushes.
+    if (stdoutBuf.length + stderrBuf.length >= OUTPUT_BUFFER_MAX) {
+      if (flushTimer) clearTimeout(flushTimer);
+      flushOutput();
       return;
     }
     scheduleFlush();

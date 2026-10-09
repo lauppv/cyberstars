@@ -114,6 +114,27 @@ describe('handleInteractiveRun', () => {
     expect(sent(ws).some((m) => m.type === 'exit' && m.code === 0)).toBe(true);
   });
 
+  it('delivers every byte of a fast output burst, in order', async () => {
+    vi.useFakeTimers();
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    await handleInteractiveRun(ws as unknown as WebSocket, 'print', 'python', 'user:burst');
+    // ~49KB of output arriving within a single 50ms flush window.
+    const lines = Array.from({ length: 10_000 }, (_, i) => `${i + 1}\n`);
+    for (let i = 0; i < lines.length; i += 500) {
+      proc.stdout.emit('data', Buffer.from(lines.slice(i, i + 500).join('')));
+    }
+    proc.emit('close', 0);
+
+    const stdout = sent(ws)
+      .filter((m) => m.type === 'stdout')
+      .map((m) => m.data)
+      .join('');
+    expect(stdout).toBe(lines.join(''));
+  });
+
   it('destroys the container when the page is closed mid-run', async () => {
     const proc = new FakeProc();
     spawnMock.mockReturnValue(proc);
