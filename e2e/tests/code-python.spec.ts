@@ -12,3 +12,30 @@ test('run Python print("hello") → output "hello"', async ({ authedPage: page }
 
   await expect(page.getByTestId('code-output').last()).toContainText('hello', { timeout: 30_000 });
 });
+
+test('Run Tests opens the verdict in the lesson panel, beside the editor', async ({
+  authedPage: page,
+}) => {
+  await page.goto('/#/lesson/python/print');
+
+  const editor = page.locator('[data-tour="editor"] .cm-content');
+  await editor.click();
+  await page.keyboard.press('ControlOrMeta+A');
+  await page.keyboard.type('print("hello")');
+  await page.getByRole('button', { name: 'Run Tests' }).click();
+
+  const result = page.locator('[data-tour="result"]');
+  await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
+  await expect(result).toContainText('Stopped at test 1');
+  await expect(result).toContainText('0 / 1');
+  await expect(result).toContainText('Expected output');
+  await expect(result).toContainText('hello');
+  // The editor's own output area stays free for runs.
+  await expect(page.getByTestId('code-output').last()).toBeVisible();
+
+  await page.getByRole('tab', { name: 'Lesson', exact: true }).click();
+  await expect(page.locator('[data-tour="lesson"] h1')).toBeVisible();
+  await expect(result).toHaveCount(0);
+  await page.getByRole('tab', { name: 'Result' }).click();
+  await expect(result).toContainText('Wrong answer');
+});
