@@ -14,6 +14,8 @@ describe('Auth flow', () => {
     const me = await a.get('/auth/me').expect(200);
     expect(me.body.name).toBe('Alice');
     expect(me.body.email).toBe('alice@test.com');
+    // A new account starts held on the first-lesson tour.
+    expect(me.body.onboardedAt).toBeNull();
   });
 
   it('signup with duplicate email returns 409', async () => {
