@@ -10,6 +10,9 @@ import { FailedCase } from './FailedCase';
 import { Runtime } from './Runtime';
 import { formatMs, timeAgo } from './format';
 
+// Fixed widths so every row lines up with the header above it.
+const COLUMNS = 'grid-cols-[1fr_4rem_4.5rem_5.5rem] gap-x-3';
+
 interface SubmissionsPanelProps {
   // Language key for the read-only editor (the lesson's course key).
   language: string;
@@ -76,11 +79,11 @@ export function SubmissionsPanel({
 
   return (
     <div className="px-3 py-4">
-      <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-4 px-3 pb-2 text-[12px] text-[var(--text3)]">
+      <div className={`grid ${COLUMNS} px-3 pb-2 text-[12px] text-[var(--text3)]`}>
         <span>{t('tests.submissions.status')}</span>
         <span className="text-right">{t('tests.submissions.passed')}</span>
         <span className="text-right">{t('tests.submissions.runtime')}</span>
-        <span className="text-right min-w-[52px]">{t('tests.submissions.when')}</span>
+        <span className="text-right">{t('tests.submissions.when')}</span>
       </div>
       <ul className="flex flex-col list-none m-0 p-0">
         {list.map((s) => (
@@ -119,7 +122,7 @@ function SubmissionRow({
     <button
       type="button"
       onClick={onOpen}
-      className="w-full grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-4 px-3 py-2.5 rounded-[var(--radius-sm)] text-left text-[13px] bg-transparent border-none hover:bg-[var(--glass)] transition cursor-pointer"
+      className={`w-full grid ${COLUMNS} items-center px-3 py-2.5 rounded-[var(--radius-sm)] text-left text-[13px] bg-transparent border-none hover:bg-[var(--glass)] transition cursor-pointer`}
     >
       <StatusLabel status={s.status} />
       <span className="text-right text-[var(--text)] tabular-nums">
@@ -128,9 +131,7 @@ function SubmissionRow({
       <span className="text-right text-[var(--text2)] tabular-nums">
         {s.runtimeMs === null ? '—' : `${formatMs(s.runtimeMs, i18n.language)} ms`}
       </span>
-      <span className="text-right min-w-[52px] text-[var(--text3)] tabular-nums">
-        {timeAgo(s.createdAt, t)}
-      </span>
+      <span className="text-right text-[var(--text3)] tabular-nums">{timeAgo(s.createdAt, t)}</span>
     </button>
   );
 }
