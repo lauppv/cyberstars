@@ -4,6 +4,93 @@
     { "visible": true, "stdin": "3\nAlice\n85\nBob\n72\nCharlie\n90\n" },
     { "visible": true, "stdin": "2\nDan\n50\nEve\n50\n" },
     { "stdin": "1\nAlice\n85\n" },
-    { "stdin": "4\nAmy\n70\nZoe\n70\nBob\n70\n" }
+    { "stdin": "4\nAmy\n70\nZoe\n70\nBob\n70\n" },
+    { "stdin": "1\nSolo\n0\n", "generated": true },
+    { "stdin": "1\nSolo\n100\n", "generated": true },
+    { "stdin": "3\nBob\n70\nAmy\n70\nCleo\n60\n", "generated": true },
+    { "stdin": "2\nZed\n90\nAnn\n80\n", "generated": true },
+    { "stdin": "2\nAnn\n80\nZed\n90\n", "generated": true },
+    {
+      "stdin": "50\nAlice\n75\nBob\n75\nCharlie\n75\nDan\n75\nEve\n75\nFrank\n75\nGrace\n75\nHeidi\n75\nIvan\n75\nJudy\n75\nMallory\n75\nNiaj\n75\nOlivia\n75\nPeggy\n75\nRupert\n75\nSybil\n75\nTrent\n75\nVictor\n75\nWalter\n75\nZoe\n75\nAmy\n75\nBen\n75\nCleo\n75\nDora\n75\nAlice1\n75\nBob1\n75\nCharlie1\n75\nDan1\n75\nEve1\n75\nFrank1\n75\nGrace1\n75\nHeidi1\n75\nIvan1\n75\nJudy1\n75\nMallory1\n75\nNiaj1\n75\nOlivia1\n75\nPeggy1\n75\nRupert1\n75\nSybil1\n75\nTrent1\n75\nVictor1\n75\nWalter1\n75\nZoe1\n75\nAmy1\n75\nBen1\n75\nCleo1\n75\nDora1\n75\nAlice2\n75\nBob2\n75\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\nAlice\n100\nBob\n98\nCharlie\n96\nDan\n94\nEve\n92\nFrank\n90\nGrace\n88\nHeidi\n86\nIvan\n84\nJudy\n82\nMallory\n80\nNiaj\n78\nOlivia\n76\nPeggy\n74\nRupert\n72\nSybil\n70\nTrent\n68\nVictor\n66\nWalter\n64\nZoe\n62\nAmy\n60\nBen\n58\nCleo\n56\nDora\n54\nAlice1\n52\nBob1\n50\nCharlie1\n48\nDan1\n46\nEve1\n44\nFrank1\n42\nGrace1\n40\nHeidi1\n38\nIvan1\n36\nJudy1\n34\nMallory1\n32\nNiaj1\n30\nOlivia1\n28\nPeggy1\n26\nRupert1\n24\nSybil1\n22\nTrent1\n20\nVictor1\n18\nWalter1\n16\nZoe1\n14\nAmy1\n12\nBen1\n10\nCleo1\n8\nDora1\n6\nAlice2\n4\nBob2\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\nAlice\n0\nBob\n2\nCharlie\n4\nDan\n6\nEve\n8\nFrank\n10\nGrace\n12\nHeidi\n14\nIvan\n16\nJudy\n18\nMallory\n20\nNiaj\n22\nOlivia\n24\nPeggy\n26\nRupert\n28\nSybil\n30\nTrent\n32\nVictor\n34\nWalter\n36\nZoe\n38\nAmy\n40\nBen\n42\nCleo\n44\nDora\n46\nAlice1\n48\nBob1\n50\nCharlie1\n52\nDan1\n54\nEve1\n56\nFrank1\n58\nGrace1\n60\nHeidi1\n62\nIvan1\n64\nJudy1\n66\nMallory1\n68\nNiaj1\n70\nOlivia1\n72\nPeggy1\n74\nRupert1\n76\nSybil1\n78\nTrent1\n80\nVictor1\n82\nWalter1\n84\nZoe1\n86\nAmy1\n88\nBen1\n90\nCleo1\n92\nDora1\n94\nAlice2\n96\nBob2\n98\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\nAlice\n30\nBob\n20\nCharlie\n10\nDan\n30\nEve\n20\nFrank\n10\nGrace\n30\nHeidi\n20\nIvan\n10\nJudy\n30\nMallory\n20\nNiaj\n10\nOlivia\n30\nPeggy\n20\nRupert\n10\nSybil\n30\nTrent\n20\nVictor\n10\nWalter\n30\nZoe\n20\nAmy\n10\nBen\n30\nCleo\n20\nDora\n10\nAlice1\n30\nBob1\n20\nCharlie1\n10\nDan1\n30\nEve1\n20\nFrank1\n10\nGrace1\n30\nHeidi1\n20\nIvan1\n10\nJudy1\n30\nMallory1\n20\nNiaj1\n10\nOlivia1\n30\nPeggy1\n20\nRupert1\n10\nSybil1\n30\nTrent1\n20\nVictor1\n10\nWalter1\n30\nZoe1\n20\nAmy1\n10\nBen1\n30\nCleo1\n20\nDora1\n10\nAlice2\n30\nBob2\n20\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\nAlice\n43\nBob\n24\nCharlie\n25\nDan\n21\nEve\n33\nFrank\n74\nGrace\n62\nHeidi\n7\nIvan\n74\nJudy\n20\nMallory\n45\nNiaj\n37\nOlivia\n11\nPeggy\n45\nRupert\n25\nSybil\n64\nTrent\n29\nVictor\n56\nWalter\n3\nZoe\n9\nAmy\n95\nBen\n31\nCleo\n4\nDora\n75\nAlice1\n29\nBob1\n17\nCharlie1\n74\nDan1\n30\nEve1\n71\nFrank1\n98\nGrace1\n71\nHeidi1\n13\nIvan1\n40\nJudy1\n0\nMallory1\n28\nNiaj1\n76\nOlivia1\n81\nPeggy1\n98\nRupert1\n54\nSybil1\n61\nTrent1\n71\nVictor1\n12\nWalter1\n49\nZoe1\n13\nAmy1\n39\nBen1\n65\nCleo1\n1\nDora1\n98\nAlice2\n49\nBob2\n20\n",
+      "generated": true
+    },
+    {
+      "stdin": "50\nAlice\n1\nBob\n5\nCharlie\n4\nDan\n0\nEve\n0\nFrank\n1\nGrace\n3\nHeidi\n0\nIvan\n4\nJudy\n2\nMallory\n3\nNiaj\n0\nOlivia\n5\nPeggy\n3\nRupert\n0\nSybil\n1\nTrent\n5\nVictor\n0\nWalter\n1\nZoe\n0\nAmy\n4\nBen\n5\nCleo\n3\nDora\n4\nAlice1\n1\nBob1\n2\nCharlie1\n5\nDan1\n4\nEve1\n2\nFrank1\n1\nGrace1\n4\nHeidi1\n3\nIvan1\n1\nJudy1\n2\nMallory1\n4\nNiaj1\n2\nOlivia1\n3\nPeggy1\n3\nRupert1\n3\nSybil1\n2\nTrent1\n4\nVictor1\n4\nWalter1\n5\nZoe1\n0\nAmy1\n2\nBen1\n1\nCleo1\n3\nDora1\n1\nAlice2\n3\nBob2\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "49\nAlice\n56\nBob\n51\nCharlie\n56\nDan\n57\nEve\n51\nFrank\n52\nGrace\n52\nHeidi\n57\nIvan\n53\nJudy\n60\nMallory\n56\nNiaj\n52\nOlivia\n60\nPeggy\n54\nRupert\n58\nSybil\n57\nTrent\n56\nVictor\n56\nWalter\n50\nZoe\n56\nAmy\n50\nBen\n52\nCleo\n53\nDora\n56\nAlice1\n58\nBob1\n52\nCharlie1\n51\nDan1\n57\nEve1\n56\nFrank1\n54\nGrace1\n56\nHeidi1\n60\nIvan1\n56\nJudy1\n52\nMallory1\n57\nNiaj1\n59\nOlivia1\n55\nPeggy1\n51\nRupert1\n54\nSybil1\n51\nTrent1\n52\nVictor1\n59\nWalter1\n51\nZoe1\n52\nAmy1\n50\nBen1\n55\nCleo1\n51\nDora1\n55\nAlice2\n52\n",
+      "generated": true
+    },
+    { "stdin": "5\nEve\n0\nDan\n100\nCleo\n0\nBob\n100\nAmy\n50\n", "generated": true },
+    { "stdin": "6\nLast\n1\nA\n2\nB\n2\nC\n2\nD\n2\nFirst\n0\n", "generated": true },
+    { "stdin": "6\nx\n5\ny\n4\nz\n3\nw\n2\nv\n1\nu\n0\n", "generated": true },
+    { "stdin": "3\nMaximiliano_Alexandrovich\n88\nAl\n88\nBo\n12\n", "generated": true },
+    { "stdin": "2\nBen\n11\nAmy\n9\n", "generated": true },
+    {
+      "stdin": "22\nDan\n9\nNiaj\n4\nSybil\n68\nIvan\n3\nHeidi\n82\nGrace\n0\nDora\n75\nCleo\n6\nZoe\n3\nWalter\n63\nBob\n49\nBen\n4\nHeidi\n5\nIvan\n1\nGrace\n0\nHeidi\n0\nAmy\n6\nJudy\n7\nJudy\n21\nCharlie\n14\nZoe\n3\nAlice\n3\n",
+      "generated": true
+    },
+    {
+      "stdin": "23\nBen\n2\nWalter\n2\nJudy\n3\nBob\n3\nBob\n71\nFrank\n2\nWalter\n1\nTrent\n21\nAlice\n5\nFrank\n1\nMallory\n2\nMallory\n0\nDora\n3\nTrent\n75\nCharlie\n1\nRupert\n2\nJudy\n1\nDora\n0\nNiaj\n85\nBen\n98\nSybil\n3\nDan\n7\nFrank\n3\n",
+      "generated": true
+    },
+    {
+      "stdin": "19\nGrace\n15\nTrent\n4\nMallory\n95\nRupert\n8\nWalter\n10\nHeidi\n73\nMallory\n53\nFrank\n4\nJudy\n89\nWalter\n0\nEve\n2\nAmy\n2\nVictor\n5\nFrank\n3\nCharlie\n10\nSybil\n0\nVictor\n7\nMallory\n1\nCharlie\n2\n",
+      "generated": true
+    },
+    { "stdin": "5\nWalter\n7\nFrank\n38\nMallory\n95\nNiaj\n0\nFrank\n2\n", "generated": true },
+    {
+      "stdin": "30\nOlivia\n6\nTrent\n6\nDan\n4\nRupert\n6\nEve\n7\nBen\n2\nPeggy\n3\nWalter\n2\nCleo\n1\nAlice\n29\nWalter\n89\nSybil\n33\nGrace\n17\nNiaj\n1\nCleo\n2\nCleo\n72\nWalter\n14\nVictor\n4\nAlice\n2\nPeggy\n3\nEve\n2\nJudy\n3\nNiaj\n79\nDan\n52\nTrent\n0\nRupert\n2\nCleo\n33\nWalter\n10\nVictor\n26\nWalter\n68\n",
+      "generated": true
+    },
+    {
+      "stdin": "25\nOlivia\n35\nMallory\n1\nIvan\n0\nGrace\n3\nMallory\n4\nOlivia\n3\nAmy\n4\nGrace\n0\nBob\n1\nTrent\n2\nNiaj\n7\nSybil\n9\nBob\n4\nVictor\n40\nOlivia\n8\nJudy\n0\nNiaj\n1\nHeidi\n2\nNiaj\n8\nPeggy\n3\nRupert\n28\nBen\n0\nDora\n7\nCharlie\n1\nEve\n58\n",
+      "generated": true
+    },
+    {
+      "stdin": "16\nTrent\n84\nCharlie\n3\nBen\n1\nDora\n9\nAlice\n0\nPeggy\n4\nRupert\n45\nJudy\n3\nNiaj\n0\nPeggy\n2\nNiaj\n1\nBob\n90\nWalter\n3\nDora\n59\nBob\n54\nFrank\n6\n",
+      "generated": true
+    },
+    {
+      "stdin": "17\nBob\n1\nVictor\n91\nIvan\n2\nCharlie\n3\nMallory\n2\nMallory\n0\nVictor\n94\nEve\n98\nMallory\n0\nEve\n10\nEve\n24\nHeidi\n0\nIvan\n5\nWalter\n6\nDan\n1\nVictor\n5\nGrace\n13\n",
+      "generated": true
+    },
+    {
+      "stdin": "16\nAmy\n46\nAmy\n5\nSybil\n96\nSybil\n0\nMallory\n0\nPeggy\n50\nJudy\n3\nBen\n3\nCleo\n97\nDora\n47\nBob\n3\nJudy\n5\nOlivia\n3\nFrank\n7\nRupert\n0\nWalter\n97\n",
+      "generated": true
+    },
+    {
+      "stdin": "26\nVictor\n3\nSybil\n74\nBen\n1\nFrank\n76\nTrent\n0\nNiaj\n47\nTrent\n2\nTrent\n0\nTrent\n10\nCharlie\n2\nJudy\n59\nBen\n74\nDan\n80\nIvan\n86\nBen\n8\nIvan\n2\nMallory\n1\nMallory\n1\nGrace\n2\nRupert\n3\nTrent\n8\nBen\n2\nPeggy\n21\nHeidi\n4\nGrace\n10\nNiaj\n34\n",
+      "generated": true
+    },
+    {
+      "stdin": "16\nSybil\n4\nDora\n5\nGrace\n67\nCharlie\n0\nSybil\n45\nMallory\n9\nHeidi\n1\nTrent\n35\nVictor\n3\nSybil\n1\nCharlie\n1\nEve\n15\nAlice\n0\nCleo\n36\nSybil\n1\nFrank\n1\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nMallory\n82\nDan\n65\nFrank\n28\nCharlie\n8\nWalter\n3\nDora\n83\n",
+      "generated": true
+    },
+    {
+      "stdin": "17\nBen\n50\nIvan\n6\nCharlie\n4\nMallory\n28\nDan\n1\nDora\n0\nCharlie\n1\nDora\n1\nCharlie\n3\nDan\n85\nHeidi\n9\nDora\n3\nJudy\n37\nDan\n13\nVictor\n4\nCharlie\n34\nWalter\n2\n",
+      "generated": true
+    }
   ]
 }
