@@ -101,6 +101,9 @@ model User {
   // profile (own view ignores it). The connections themselves stay functional
   // when off; only the public listing is hidden.
   showConnections Boolean @default(true) @map("show_connections")
+  // When the user finished the first-lesson tour. NULL means a new account
+  // that is still held on the tour lesson until its tests pass.
+  onboardedAt DateTime? @map("onboarded_at")
 
   progress  UserLessonProgress[]
   savedCode UserSavedCode[]
