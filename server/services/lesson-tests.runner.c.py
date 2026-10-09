@@ -15,6 +15,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 
 CASE_TIMEOUT = 5
 OUTPUT_CAP = 64 * 1024
@@ -50,7 +51,13 @@ def compile_source(src):
     return result
 
 
+def elapsed_ms(started):
+    return round((time.perf_counter() - started) * 1000, 3)
+
+
 def run_binary(bin_path, stdin=None):
+    # Wall time of the run alone; the compile above is not part of it.
+    started = time.perf_counter()
     try:
         proc = subprocess.run(
             [bin_path],
@@ -64,6 +71,7 @@ def run_binary(bin_path, stdin=None):
             "stderr": proc.stderr[:OUTPUT_CAP],
             "exit": proc.returncode,
             "timedOut": False,
+            "ms": elapsed_ms(started),
         }
     except subprocess.TimeoutExpired as e:
         def as_text(raw):
@@ -76,6 +84,7 @@ def run_binary(bin_path, stdin=None):
             "stderr": as_text(e.stderr)[:OUTPUT_CAP],
             "exit": -1,
             "timedOut": True,
+            "ms": elapsed_ms(started),
         }
 
 

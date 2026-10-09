@@ -8,9 +8,9 @@
 // Compiler Tree API, injects each case's values into the lesson's input
 // variables (in BOTH the user code and the reference solution) by splicing
 // the initializer/rhs source ranges, and/or feeds the case's stdin to both,
-// compiles and runs the two programs per case, and prints a single JSON
-// verdict to stdout. Expected outputs never enter this container: the server
-// compares the two stdouts on its side.
+// compiles and runs the two programs per case (timing each run's wall clock
+// in ms), and prints a single JSON verdict to stdout. Expected outputs never
+// enter this container: the server compares the two stdouts on its side.
 //
 // Divergences from the Python runner, by necessity of the language:
 // - "syntax error" covers all compile errors of the pristine user code (Java
@@ -698,6 +698,8 @@ public class Runner {
 
   static Map<String, Object> runProgram(Compiled program, String stdin) {
     Map<String, Object> out = new LinkedHashMap<>();
+    // Wall time from process start to exit, in ms; the compile is not part of it.
+    long started = System.nanoTime();
     try {
       Process proc =
           new ProcessBuilder(
@@ -719,6 +721,7 @@ public class Runner {
         // the program exited without reading its stdin, that's fine
       }
       boolean finished = proc.waitFor(CASE_TIMEOUT_SEC, TimeUnit.SECONDS);
+      double ms = Math.round((System.nanoTime() - started) / 1_000.0) / 1_000.0;
       if (!finished) {
         proc.descendants().forEach(ProcessHandle::destroyForcibly);
         proc.destroyForcibly();
@@ -730,6 +733,7 @@ public class Runner {
       out.put("stderr", stderr.text());
       out.put("exit", finished ? (long) proc.exitValue() : -1L);
       out.put("timedOut", !finished);
+      out.put("ms", ms);
     } catch (IOException | InterruptedException e) {
       out.put("stdout", "");
       out.put("stderr", "internal: " + e.getMessage());

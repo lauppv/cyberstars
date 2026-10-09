@@ -3,8 +3,8 @@
 # ({userCode, solutionCode, structure, cases}), checks the user code's
 # structure with the ast module, injects each case's values into the lesson's
 # input variables (in BOTH the user code and the reference solution) and/or
-# feeds the case's stdin to both, runs the two programs per case, and prints a
-# single JSON verdict to stdout.
+# feeds the case's stdin to both, runs the two programs per case (timing each
+# run's wall clock in ms), and prints a single JSON verdict to stdout.
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
@@ -12,6 +12,7 @@ import io
 import json
 import subprocess
 import sys
+import time
 import tokenize
 
 CASE_TIMEOUT = 5
@@ -194,10 +195,15 @@ def inject_values(code, values):
 INPUT_PREAMBLE = "import builtins as _b\n_oi = _b.input\n_b.input = lambda *a, **k: _oi()\n"
 
 
+def elapsed_ms(started):
+    return round((time.perf_counter() - started) * 1000, 3)
+
+
 def run_program(code, stdin=None):
     path = "/tmp/_judged.py"
     with open(path, "w") as f:
         f.write(INPUT_PREAMBLE + code)
+    started = time.perf_counter()
     try:
         proc = subprocess.run(
             [sys.executable, "-u", path],
@@ -211,6 +217,7 @@ def run_program(code, stdin=None):
             "stderr": proc.stderr[:OUTPUT_CAP],
             "exit": proc.returncode,
             "timedOut": False,
+            "ms": elapsed_ms(started),
         }
     except subprocess.TimeoutExpired as e:
         # TimeoutExpired carries bytes even when text=True
@@ -224,6 +231,7 @@ def run_program(code, stdin=None):
             "stderr": as_text(e.stderr)[:OUTPUT_CAP],
             "exit": -1,
             "timedOut": True,
+            "ms": elapsed_ms(started),
         }
 
 

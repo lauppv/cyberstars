@@ -156,6 +156,27 @@ interface RunnerProgram {
   stderr: string;
   exit: number;
   timedOut: boolean;
+  /** Wall time of the run (compile excluded), measured by the runner. */
+  ms?: number;
+}
+
+// Timings travel to the client in ms rounded to one decimal; sums are rounded
+// again so float noise never shows up as 12.300000000000001.
+function roundMs(ms: number): number {
+  return Math.round(ms * 10) / 10;
+}
+
+// runtimeMs / referenceMs: sums over the cases timed on BOTH sides, so the two
+// totals always cover the same cases and stay comparable.
+function timingTotals(
+  cases: TestCaseResult[],
+): Pick<RunTestsResponse, 'runtimeMs' | 'referenceMs'> {
+  const timed = cases.filter((c) => c.userMs !== undefined && c.solutionMs !== undefined);
+  if (timed.length === 0) return {};
+  return {
+    runtimeMs: roundMs(timed.reduce((sum, c) => sum + c.userMs!, 0)),
+    referenceMs: roundMs(timed.reduce((sum, c) => sum + c.solutionMs!, 0)),
+  };
 }
 
 interface RunnerVerdict {
@@ -183,11 +204,14 @@ function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsR
     const base: TestCaseResult = { index, visible, passed: false };
     if (specCase?.inject) base.inject = specCase.inject;
     if (specCase?.stdin !== undefined) base.stdin = specCase.stdin;
+    if (specCase?.generated) base.generated = true;
 
     // A broken reference solution is our bug, not the student's.
     if (!c.user || !c.solution || c.injectError || c.solution.timedOut || c.solution.exit !== 0) {
       throw new AppError(500, 'Test run failed, please try again');
     }
+    if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
+    if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
     if (c.user.timedOut) return { ...base, error: 'timeout' };
     if (c.user.exit !== 0)
       return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
@@ -210,6 +234,7 @@ function buildResponse(spec: LessonTestsSpec, verdict: RunnerVerdict): RunTestsR
     cases,
     total: spec.cases.length,
     passedCount: firstFailed === -1 ? cases.length : firstFailed,
+    ...timingTotals(cases),
   };
 }
 

@@ -168,6 +168,45 @@ describe('runLessonTests', () => {
     expect(mockDestroy).not.toHaveBeenCalled();
   });
 
+  it('reports per-case timings rounded to 0.1 ms and sums them over cases timed on both sides', async () => {
+    stubFiles({
+      comparator: 'trimmed',
+      structure: {},
+      cases: [{ visible: true }, { generated: true }, {}],
+    });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program({ ms: 12.345 }), solution: program({ ms: 10.04 }) },
+        { user: program({ ms: 3.25 }), solution: program({ ms: 2.75 }) },
+        // An untimed side (older runner) leaves the case out of both totals.
+        { user: program({ ms: 50 }), solution: program() },
+      ],
+    });
+
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res.cases[0]).toMatchObject({ userMs: 12.3, solutionMs: 10 });
+    expect(res.cases[0].generated).toBeUndefined();
+    expect(res.cases[1]).toMatchObject({ generated: true, userMs: 3.3, solutionMs: 2.8 });
+    expect(res.cases[2].userMs).toBe(50);
+    expect(res.cases[2].solutionMs).toBeUndefined();
+    expect(res.runtimeMs).toBe(15.6);
+    expect(res.referenceMs).toBe(12.8);
+  });
+
+  it('omits the timing totals when no case is timed on both sides', async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [{ user: program(), solution: program() }],
+    });
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res).not.toHaveProperty('runtimeMs');
+    expect(res).not.toHaveProperty('referenceMs');
+  });
+
   it('shows expected output only on visible failed cases', async () => {
     stubFiles();
     stubVerdict({
