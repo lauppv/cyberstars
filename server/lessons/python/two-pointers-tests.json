@@ -18,6 +18,89 @@
     },
     { "inject": { "fuels": { "$list": [1, 5] }, "target": 6 } },
     { "inject": { "fuels": { "$list": [2, 4, 6, 8] }, "target": 7 } },
-    { "inject": { "fuels": { "$list": [1, 1, 2, 3, 3] }, "target": 4 } }
+    { "inject": { "fuels": { "$list": [1, 1, 2, 3, 3] }, "target": 4 } },
+    { "inject": { "fuels": { "$list": [1, 2] }, "target": 3 }, "generated": true },
+    { "inject": { "fuels": { "$list": [1, 2] }, "target": 4 }, "generated": true },
+    { "inject": { "fuels": { "$list": [3, 5, 7] }, "target": 10 }, "generated": true },
+    { "inject": { "fuels": { "$list": [1, 2, 3, 4, 5, 6] }, "target": 8 }, "generated": true },
+    { "inject": { "fuels": { "$list": [2, 4, 6, 8, 10] }, "target": 12 }, "generated": true },
+    { "inject": { "fuels": { "$list": [1, 3, 5, 7, 9] }, "target": 4 }, "generated": true },
+    { "inject": { "fuels": { "$list": [1, 3, 5, 7, 9] }, "target": 16 }, "generated": true },
+    { "inject": { "fuels": { "$list": [1, 3, 5, 7, 9] }, "target": 10 }, "generated": true },
+    { "inject": { "fuels": { "$list": [10, 20, 30] }, "target": 5 }, "generated": true },
+    { "inject": { "fuels": { "$list": [10, 20, 30] }, "target": 100 }, "generated": true },
+    {
+      "inject": {
+        "fuels": {
+          "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        },
+        "target": 21
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuels": {
+          "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        },
+        "target": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [5, 15, 25, 35, 45, 55] }, "target": 60 },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [2, 3, 4, 5, 7, 8, 9, 11, 12, 15, 18, 20] }, "target": 19 },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [20, 25, 31, 35, 42, 48] }, "target": 45 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuels": { "$list": [25, 26, 35, 44, 47, 52, 56, 58, 60, 63, 68, 72, 74, 84, 96] },
+        "target": 98
+      },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [23, 28, 35, 38, 43] }, "target": 73 }, "generated": true },
+    {
+      "inject": {
+        "fuels": { "$list": [1, 4, 7, 9, 11, 13, 14, 15, 16, 18, 19, 20] },
+        "target": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuels": { "$list": [1, 3, 11, 23, 37, 41, 48, 70, 73, 88, 93, 100] },
+        "target": 114
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuels": { "$list": [3, 4, 6, 7, 10, 11, 13, 16, 17, 18, 19, 20] },
+        "target": 23
+      },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [7, 8, 11, 12, 13, 17] }, "target": 16 }, "generated": true },
+    {
+      "inject": { "fuels": { "$list": [3, 8, 9, 12, 21, 24, 32, 37, 45] }, "target": 6 },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [20, 47, 75, 79] }, "target": 99 }, "generated": true },
+    {
+      "inject": { "fuels": { "$list": [1, 15, 16, 34, 39, 66, 67, 68, 77, 86] }, "target": 102 },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [2, 4, 16, 26, 30, 32, 40, 45] }, "target": 8 },
+      "generated": true
+    }
   ]
 }

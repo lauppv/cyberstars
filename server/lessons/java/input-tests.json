@@ -10,6 +10,21 @@
     { "visible": true, "stdin": "Cortez\n60\n" },
     { "stdin": "Ana\n5\n" },
     { "stdin": "Zex Umbrella\n0\n" },
-    { "stdin": "Vex\n99\n" }
+    { "stdin": "Vex\n99\n" },
+    { "stdin": "X\n1\n", "generated": true },
+    { "stdin": "Mary Jane Watson\n9\n", "generated": true },
+    { "stdin": "D'Artagnan\n99\n", "generated": true },
+    { "stdin": "Anne-Marie\n19\n", "generated": true },
+    { "stdin": "R2D2\n0\n", "generated": true },
+    { "stdin": "Captain Maximilian Starfield the Third\n130\n", "generated": true },
+    { "stdin": "Li\n10\n", "generated": true },
+    { "stdin": "Ana Maria\n29\n", "generated": true },
+    { "stdin": "Rex\n19\n", "generated": true },
+    { "stdin": "Ken Hopper\n85\n", "generated": true },
+    { "stdin": "Ion Vance\n14\n", "generated": true },
+    { "stdin": "Grace\n87\n", "generated": true },
+    { "stdin": "Nova Diaz\n70\n", "generated": true },
+    { "stdin": "Ada Hopper\n6\n", "generated": true },
+    { "stdin": "Ada Lovelace\n36\n", "generated": true }
   ]
 }
