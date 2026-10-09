@@ -110,8 +110,18 @@ export function LessonPage() {
   const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
   const [isChecking, setIsChecking] = useState(false);
   const [editorRuns, setEditorRuns] = useState(0);
-  const [showTourNotice, setShowTourNotice] = useState(false);
-  const hideTourNotice = useCallback(() => setShowTourNotice(false), []);
+  // Bumped on every blocked attempt to leave the tour, so the notice replays.
+  const [tourNotice, setTourNotice] = useState(0);
+  const hideTourNotice = useCallback(() => setTourNotice(0), []);
+  const showTourNotice = useCallback(() => setTourNotice((n) => n + 1), []);
+  const [tourLanguagePicked, setTourLanguagePicked] = useState(false);
+  const pickTourLanguage = useCallback(
+    (lang: 'ro' | 'en') => {
+      setTourLanguagePicked(true);
+      i18n.changeLanguage(lang);
+    },
+    [i18n],
+  );
   const [terminalTestsError, setTerminalTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -471,7 +481,7 @@ export function LessonPage() {
                   onClick={() => {
                     if (!nextLesson) return;
                     // The tour holds a new account here until the tests pass.
-                    if (inTour) setShowTourNotice(true);
+                    if (inTour) showTourNotice();
                     else navigate(`/lesson/${category}/${nextLesson.slug}`);
                   }}
                   disabled={!nextLesson}
@@ -753,11 +763,14 @@ export function LessonPage() {
           isRunning={isRunning}
           testStatus={testResults?.status ?? null}
           completed={lessonCompleted}
+          languagePicked={tourLanguagePicked}
+          onLanguage={pickTourLanguage}
           onPanel={setActiveTab}
+          onBlocked={showTourNotice}
           onFinish={refreshUser}
         />
       )}
-      <TourNotice visible={showTourNotice} onClose={hideTourNotice} />
+      <TourNotice key={tourNotice} visible={tourNotice > 0} onClose={hideTourNotice} />
       {showShareModal && (
         <ShareToForumModal
           code={userCode}

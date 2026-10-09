@@ -951,13 +951,23 @@
       "editorRun": "Run your code to go on",
       "testsPass": "Pass the tests to finish"
     },
+    "language": {
+      "title": "Select language · Selectează limba",
+      "body": "Choose the language for the platform. You can change it later in Settings.",
+      "ro": "Română",
+      "en": "English"
+    },
     "welcome": {
       "title": "Welcome aboard, {{name}}",
       "body": "Before you explore, we'll go through your first Python lesson together. We show you each step, and at the end you run the tests."
     },
     "lesson": {
       "title": "The lesson",
-      "body": "Every lesson starts here: read it from top to bottom. The pieces of code in it can be run."
+      "body": "Every lesson starts with a bit of theory. Read this part first, then press Next."
+    },
+    "text": {
+      "title": "Read on",
+      "body": "Read this part, then press Next."
     },
     "cellFirst": {
       "title": "Your first code cell",
@@ -994,7 +1004,7 @@
     },
     "locked": {
       "title": "Finish this lesson first",
-      "body": "Pass its tests to unlock the next lesson and the rest of CyberStars."
+      "body": "Follow the tour and pass this lesson's tests to unlock the next lesson and the rest of CyberStars."
     }
   }
 }

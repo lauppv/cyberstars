@@ -4,19 +4,29 @@ import { LessonTour } from './LessonTour';
 import { CELL_RUN_EVENT } from '../../constants/tour';
 
 beforeAll(() => {
-  Element.prototype.scrollIntoView = vi.fn();
-  Element.prototype.scrollTo = vi.fn();
+  Element.prototype.scrollBy = vi.fn();
 });
 
 function Lesson() {
   return (
     <>
       <div data-tour="lesson">
+        <h1>print</h1>
         <div className="lesson-body">
-          <div data-code-cell data-testid="cell-1" />
-          <div data-code-cell data-testid="cell-2" />
-          <h2>Mission</h2>
-          <p>Print the banner</p>
+          <div>
+            <p>Intro</p>
+            <pre>
+              <div data-code-cell data-testid="cell-1" />
+            </pre>
+            <p>Quotes matter</p>
+            <hr />
+            <p>Look at this</p>
+            <pre>
+              <div data-code-cell data-testid="cell-2" />
+            </pre>
+            <h2>Mission</h2>
+            <p>Print the banner</p>
+          </div>
         </div>
       </div>
       <div data-tour="workspace">
@@ -32,24 +42,24 @@ const base = {
   isRunning: false,
   testStatus: null as 'passed' | 'failed' | null,
   completed: false,
+  languagePicked: true,
 };
 
-function setup() {
-  const onPanel = vi.fn();
-  const onFinish = vi.fn();
-  const view = (props: Partial<typeof base> = {}) => (
+function setup(props: Partial<typeof base> = {}) {
+  const handlers = {
+    onLanguage: vi.fn(),
+    onPanel: vi.fn(),
+    onBlocked: vi.fn(),
+    onFinish: vi.fn(),
+  };
+  const view = (p: Partial<typeof base>) => (
     <>
       <Lesson />
-      <LessonTour {...base} {...props} onPanel={onPanel} onFinish={onFinish} />
+      <LessonTour {...base} {...p} {...handlers} />
     </>
   );
-  const utils = render(view());
-  return {
-    ...utils,
-    onPanel,
-    onFinish,
-    update: (p: Partial<typeof base>) => utils.rerender(view(p)),
-  };
+  const utils = render(view(props));
+  return { ...utils, ...handlers, update: (p: Partial<typeof base>) => utils.rerender(view(p)) };
 }
 
 const next = () => screen.getByText('Next').closest('button')!;
@@ -59,14 +69,23 @@ const ranCell = (id: string) =>
   });
 
 describe('LessonTour', () => {
-  it('walks a new account from the first cell to passing tests', () => {
+  it('opens on a language choice', () => {
+    const { onLanguage } = setup({ languagePicked: false });
+    expect(screen.getByText('Select language · Selectează limba')).toBeInTheDocument();
+    expect(screen.queryByText("Let's go")).toBeNull();
+    fireEvent.click(screen.getByText('Română'));
+    expect(onLanguage).toHaveBeenCalledWith('ro');
+  });
+
+  it('walks the text and every cell, then the code, until the tests pass', () => {
     const { onPanel, onFinish, update } = setup();
 
     expect(screen.getByText('Welcome aboard, Ada')).toBeInTheDocument();
     fireEvent.click(screen.getByText("Let's go"));
 
+    // Text stretches only ask to be read.
     expect(screen.getByText('The lesson')).toBeInTheDocument();
-    expect(screen.getByText('1 of 7')).toBeInTheDocument();
+    expect(screen.getByText('1 of 8')).toBeInTheDocument();
     expect(onPanel).toHaveBeenLastCalledWith('lesson');
     fireEvent.click(next());
 
@@ -78,6 +97,11 @@ describe('LessonTour', () => {
     expect(next()).toBeDisabled();
     ranCell('cell-1');
     expect(next()).toBeEnabled();
+    fireEvent.click(next());
+
+    // The two paragraphs around the rule read as one stretch.
+    expect(screen.getByText('Read on')).toBeInTheDocument();
+    expect(screen.getByText('3 of 8')).toBeInTheDocument();
     fireEvent.click(next());
 
     expect(screen.getByText('A mistake on purpose')).toBeInTheDocument();
@@ -115,5 +139,16 @@ describe('LessonTour', () => {
     fireEvent.click(screen.getByText("Let's go"));
     update({ testStatus: 'passed', completed: true });
     expect(screen.getByText('Lesson complete')).toBeInTheDocument();
+  });
+
+  it('reports clicks on the dimmed screen until the tour is done', () => {
+    const { onBlocked, update } = setup();
+    const dim = () => document.querySelector('svg path')!;
+    fireEvent.click(dim());
+    expect(onBlocked).toHaveBeenCalledTimes(1);
+    fireEvent.click(screen.getByText("Let's go"));
+    update({ completed: true });
+    fireEvent.click(dim());
+    expect(onBlocked).toHaveBeenCalledTimes(1);
   });
 });

@@ -953,13 +953,23 @@
       "editorRun": "Rulează codul ca să continui",
       "testsPass": "Treci testele ca să termini"
     },
+    "language": {
+      "title": "Select language · Selectează limba",
+      "body": "Alege limba platformei. O poți schimba oricând din Setări.",
+      "ro": "Română",
+      "en": "English"
+    },
     "welcome": {
       "title": "Bun venit la bord, {{name}}",
       "body": "Înainte să explorezi, parcurgem împreună prima ta lecție de Python. Îți arătăm fiecare pas, iar la final rulezi testele."
     },
     "lesson": {
       "title": "Lecția",
-      "body": "Orice lecție începe aici: citește-o de sus în jos. Bucățile de cod din ea se pot rula."
+      "body": "Fiecare lecție începe cu puțină teorie. Citește mai întâi bucata asta, apoi apasă Mai departe."
+    },
+    "text": {
+      "title": "Citește mai departe",
+      "body": "Citește bucata asta, apoi apasă Mai departe."
     },
     "cellFirst": {
       "title": "Prima ta celulă de cod",
@@ -996,7 +1006,7 @@
     },
     "locked": {
       "title": "Termină mai întâi lecția asta",
-      "body": "Treci testele ca să deblochezi lecția următoare și restul platformei."
+      "body": "Urmează pașii turului și treci testele lecției ca să deblochezi lecția următoare și restul platformei."
     }
   }
 }

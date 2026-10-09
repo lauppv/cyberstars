@@ -23,8 +23,11 @@ interface Step {
 
 const byTour = (name: string) => document.querySelector(`[data-tour="${name}"]`);
 
-function cells(): Element[] {
-  return Array.from(document.querySelectorAll('[data-tour="lesson"] [data-code-cell]'));
+// The rendered lesson's top-level blocks, in reading order: paragraphs,
+// headings, and the code cells, each inside its own <pre>.
+function blocks(): Element[] {
+  const prose = document.querySelector('[data-tour="lesson"] .lesson-body > *');
+  return prose ? Array.from(prose.children) : [];
 }
 
 // The mission is the lesson's last section: its heading and everything after it.
@@ -44,29 +47,86 @@ function groups(...items: (Element | Element[] | null | undefined)[]): Element[]
     .filter((group) => group.length > 0);
 }
 
-// Built once the lesson is on screen, so its cells can be counted. In the tour
-// lesson the second cell is the one that fails on purpose (print without
-// quotes); the copy assumes that order.
+// Scrolls the lesson so the elements sit in the middle of it, or at its top
+// when they are taller than the lesson panel.
+function reveal(els: Element[]) {
+  const panel = byTour('lesson');
+  if (!panel || els.length === 0) return;
+  const box = panel.getBoundingClientRect();
+  const rects = els.map((el) => el.getBoundingClientRect());
+  const top = Math.min(...rects.map((r) => r.top));
+  const bottom = Math.max(...rects.map((r) => r.bottom));
+  const delta =
+    bottom - top > box.height - 32
+      ? top - box.top - 16
+      : (top + bottom) / 2 - (box.top + box.bottom) / 2;
+  panel.scrollBy({ top: delta, behavior: 'smooth' });
+}
+
+interface Part {
+  kind: 'text' | 'cell';
+  at: number[];
+}
+
+// The lesson before its mission, cut into stretches of text and the code
+// cells between them. Parts point into blocks() by index, so a re-render
+// never leaves a step holding elements that are gone.
+function parts(): Part[] {
+  const all = blocks();
+  const missionAt = all.indexOf(mission()[0]);
+  const end = missionAt === -1 ? all.length : missionAt;
+  const out: Part[] = [];
+  for (let i = 0; i < end; i++) {
+    const el = all[i];
+    if (el.tagName === 'HR') continue;
+    if (el.querySelector('[data-code-cell]')) {
+      out.push({ kind: 'cell', at: [i] });
+    } else if (out.at(-1)?.kind === 'text') {
+      out.at(-1)!.at.push(i);
+    } else {
+      out.push({ kind: 'text', at: [i] });
+    }
+  }
+  return out;
+}
+
+// Built once the lesson is on screen, so its parts can be counted. In the
+// tour lesson the second cell is the one that fails on purpose (print
+// without quotes); the copy assumes that order.
 function buildPlan(): Step[] {
-  const cellCount = cells().length;
-  const plan: Step[] = [
-    {
-      copy: 'lesson',
-      panel: 'lesson',
-      targets: () => groups(byTour('lesson')),
-      gate: 'next',
-      enter: () => byTour('lesson')?.scrollTo({ top: 0, behavior: 'smooth' }),
-    },
-  ];
-  for (let i = 0; i < cellCount; i++) {
-    plan.push({
-      copy: i === 0 ? 'cellFirst' : i === 1 ? 'cellError' : 'cellMore',
-      vars: { n: i + 1, total: cellCount },
-      panel: 'lesson',
-      targets: () => groups(cells()[i]),
-      gate: 'cellRun',
-      enter: () => cells()[i]?.scrollIntoView({ block: 'center', behavior: 'smooth' }),
-    });
+  const lessonParts = parts();
+  const cellTotal = lessonParts.filter((part) => part.kind === 'cell').length;
+  const plan: Step[] = [];
+  let textSeen = 0;
+  let cellSeen = 0;
+  for (const part of lessonParts) {
+    if (part.kind === 'text') {
+      const first = textSeen++ === 0;
+      // The opening stretch takes the lesson's title along with it.
+      const els = () =>
+        [
+          ...(first ? [document.querySelector('[data-tour="lesson"] h1')] : []),
+          ...part.at.map((i) => blocks()[i]),
+        ].filter((el): el is Element => !!el);
+      plan.push({
+        copy: first ? 'lesson' : 'text',
+        panel: 'lesson',
+        targets: () => groups(els()),
+        gate: 'next',
+        enter: () => reveal(els()),
+      });
+    } else {
+      const n = cellSeen++;
+      const cell = () => blocks()[part.at[0]]?.querySelector('[data-code-cell]');
+      plan.push({
+        copy: n === 0 ? 'cellFirst' : n === 1 ? 'cellError' : 'cellMore',
+        vars: { n: n + 1, total: cellTotal },
+        panel: 'lesson',
+        targets: () => groups(cell()),
+        gate: 'cellRun',
+        enter: () => reveal(groups(cell()).flat()),
+      });
+    }
   }
   if (mission().length > 0) {
     plan.push({
@@ -74,7 +134,7 @@ function buildPlan(): Step[] {
       panel: 'lesson',
       targets: () => groups(mission()),
       gate: 'next',
-      enter: () => mission()[0]?.scrollIntoView({ block: 'start', behavior: 'smooth' }),
+      enter: () => reveal(mission()),
     });
   }
   // While coding, the mission stays lit beside the editor. On a phone the
@@ -100,7 +160,13 @@ interface LessonTourProps {
   isRunning: boolean;
   testStatus: 'passed' | 'failed' | null;
   completed: boolean;
+  // The tour opens on a language choice; the page keeps the answer, since a
+  // language switch reloads the lesson and remounts the tour.
+  languagePicked: boolean;
+  onLanguage: (lang: 'ro' | 'en') => void;
   onPanel: (panel: Panel) => void;
+  // A click on the dimmed part of the screen.
+  onBlocked: () => void;
   onFinish: () => void;
 }
 
@@ -110,7 +176,10 @@ export function LessonTour({
   isRunning,
   testStatus,
   completed,
+  languagePicked,
+  onLanguage,
   onPanel,
+  onBlocked,
   onFinish,
 }: LessonTourProps) {
   const { t } = useTranslation();
@@ -198,7 +267,8 @@ export function LessonTour({
     (step.gate === 'cellRun' && cellRanAt === index) ||
     (step.gate === 'editorRun' && editorRuns > runsAtStep && !isRunning);
 
-  const copy = plan === null ? 'welcome' : done ? 'done' : step!.copy;
+  const copy =
+    plan === null ? (languagePicked ? 'welcome' : 'language') : done ? 'done' : step!.copy;
   const vars = { name: userName, ...step?.vars };
   const { holes, vw, vh, cardW, cardH } = layout;
   const pos = placeCard(holes, cardW, cardH, vw, vh);
@@ -216,6 +286,7 @@ export function LessonTour({
           fillRule="evenodd"
           fill="rgba(0, 0, 0, 0.6)"
           className="pointer-events-auto"
+          onClick={done ? undefined : onBlocked}
         />
         {holes.map((r, i) => (
           <rect
@@ -249,31 +320,43 @@ export function LessonTour({
             {t('tour.testsFailed')}
           </p>
         )}
-        <div className="flex items-center gap-3 mt-4">
-          {plan && step && (
-            <span className="text-[11px] text-[var(--text3)] tabular-nums">
-              {t('tour.counter', { n: index + 1, total: plan.length })}
-            </span>
-          )}
-          {!open && step && (
-            <span className="text-[12px] text-[var(--text3)]">
-              {t(`tour.waitFor.${step.gate}`)}
-            </span>
-          )}
-          <div className="ml-auto">
-            {plan === null ? (
-              <TourButton onClick={start}>{t('tour.start')}</TourButton>
-            ) : done ? (
-              <TourButton onClick={onFinish}>{t('tour.finish')}</TourButton>
-            ) : (
-              step!.gate !== 'testsPass' && (
-                <TourButton onClick={() => go(plan, index + 1)} disabled={!open}>
-                  {t('tour.next')}
-                </TourButton>
-              )
-            )}
+        {copy === 'language' && (
+          <div className="flex gap-2 mt-4">
+            <TourButton onClick={() => onLanguage('ro')} wide>
+              {t('tour.language.ro')}
+            </TourButton>
+            <TourButton onClick={() => onLanguage('en')} wide>
+              {t('tour.language.en')}
+            </TourButton>
           </div>
-        </div>
+        )}
+        {copy !== 'language' && (
+          <div className="flex items-center gap-3 mt-4">
+            {plan && step && (
+              <span className="text-[11px] text-[var(--text3)] tabular-nums">
+                {t('tour.counter', { n: index + 1, total: plan.length })}
+              </span>
+            )}
+            {!open && step && (
+              <span className="text-[12px] text-[var(--text3)]">
+                {t(`tour.waitFor.${step.gate}`)}
+              </span>
+            )}
+            <div className="ml-auto">
+              {plan === null ? (
+                <TourButton onClick={start}>{t('tour.start')}</TourButton>
+              ) : done ? (
+                <TourButton onClick={onFinish}>{t('tour.finish')}</TourButton>
+              ) : (
+                step!.gate !== 'testsPass' && (
+                  <TourButton onClick={() => go(plan, index + 1)} disabled={!open}>
+                    {t('tour.next')}
+                  </TourButton>
+                )
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </>,
     document.body,
@@ -283,10 +366,12 @@ export function LessonTour({
 function TourButton({
   onClick,
   disabled,
+  wide,
   children,
 }: {
   onClick: () => void;
   disabled?: boolean;
+  wide?: boolean;
   children: string;
 }) {
   return (
@@ -294,7 +379,7 @@ function TourButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+      className={`${wide ? 'flex-1 py-2' : 'py-1.5'} px-4 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer`}
     >
       {children}
     </button>
