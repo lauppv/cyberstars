@@ -40,7 +40,7 @@
       "generated": true
     },
     { "stdin": "4\ninsereaza\n-5\ninsereaza\n-4\ninsereaza\n-3\nafiseaza\n", "generated": true },
-    { "stdin": "3\ninsereaza\n2147483647\ninsereaza\n-2147483648\nafiseaza\n", "generated": true },
+    { "stdin": "3\ninsereaza\n1000000000\ninsereaza\n-1000000000\nafiseaza\n", "generated": true },
     { "stdin": "3\ninsereaza\n1\ninsereaza\n2\ninsereaza\n3\n", "generated": true },
     {
       "stdin": "5\ninsereaza\n1\ninsereaza\n2\ninsereaza\n3\nafiseaza\nafiseaza\n",

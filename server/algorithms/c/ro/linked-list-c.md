@@ -7,10 +7,10 @@ Folosește `malloc` pentru a aloca fiecare nod. Fiecare nod are un câmp `int da
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (numărul de comenzi)
+- Prima linie: un întreg `N` (1 <= N <= 200), numărul de comenzi
 - Pentru fiecare comandă:
   - Linia 1: tipul comenzii (`insereaza` sau `afiseaza`)
-  - Doar pentru `insereaza`, linia 2: numărul întreg `x`
+  - Doar pentru `insereaza`, linia 2: numărul întreg `x` (-10^9 <= x <= 10^9)
 
 ### Rezultat
 

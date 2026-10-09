@@ -37,7 +37,7 @@
       "generated": true
     },
     { "stdin": "4\ninsert\n-5\ninsert\n-4\ninsert\n-3\nprint\n", "generated": true },
-    { "stdin": "3\ninsert\n2147483647\ninsert\n-2147483648\nprint\n", "generated": true },
+    { "stdin": "3\ninsert\n1000000000\ninsert\n-1000000000\nprint\n", "generated": true },
     { "stdin": "3\ninsert\n1\ninsert\n2\ninsert\n3\n", "generated": true },
     { "stdin": "5\ninsert\n1\ninsert\n2\ninsert\n3\nprint\nprint\n", "generated": true },
     {
