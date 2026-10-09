@@ -58,3 +58,15 @@ export function verdictOf(run: {
   if (run.structureFailures.length > 0) return 'checksFailed';
   return 'failed';
 }
+
+export function timeAgo(iso: string, t: TFunction): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return t('forum.time.justNow');
+  if (mins < 60) return t('forum.time.minAgo', { count: mins });
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return t('forum.time.hourAgo', { count: hrs });
+  const days = Math.floor(hrs / 24);
+  if (days < 30) return t('forum.time.dayAgo', { count: days });
+  return new Date(iso).toLocaleDateString();
+}

@@ -18,6 +18,7 @@ import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
 import { PanelTabs, type PanelTab } from '../components/judge/PanelTabs';
 import { ResultPanel } from '../components/judge/ResultPanel';
+import { SubmissionsPanel } from '../components/judge/SubmissionsPanel';
 import { SolutionModal } from '../components/code/SolutionModal';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { HintModal } from '../components/code/HintModal';
@@ -29,6 +30,7 @@ import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
+import { useSubmissions } from '../hooks/useSubmissions';
 import type { LessonMeta } from '../../shared/lesson';
 import type { RunTestsResponse } from '../../shared/tests';
 import type { TerminalTestResult } from '../../shared/terminal';
@@ -55,7 +57,7 @@ function parseDifficulty(title: string): {
 }
 
 // What the lesson panel (the left side) shows.
-type LeftView = 'lesson' | 'result';
+type LeftView = 'lesson' | 'result' | 'submissions';
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   Easy: 'var(--success)',
@@ -93,6 +95,8 @@ export function LessonPage() {
     notifyGuestRun,
   );
   const { saveCode, progress, loadProgress } = useProgress(category);
+  const submissions = useSubmissions(category, lesson);
+  const { add: addSubmission } = submissions;
   const gamification = useGamification();
   const { refresh: refreshGamification } = gamification;
   const { courses } = useCurriculum();
@@ -270,6 +274,7 @@ export function LessonPage() {
       const lang = i18n.language === 'ro' ? 'ro' : 'en';
       const results = await testsService.runTests(category, lesson, userCode, lang);
       setTestResults(results);
+      if (results.submission) addSubmission(results.submission);
       // The verdict opens in the lesson panel, which a phone has to bring up.
       setLeftView('result');
       setActiveTab('lesson');
@@ -304,6 +309,7 @@ export function LessonPage() {
     loadProgress,
     refreshGamification,
     saveCode,
+    addSubmission,
   ]);
 
   // Terminal (Linux) judge: validates sandbox state against the live session
@@ -348,6 +354,10 @@ export function LessonPage() {
   // The lesson panel's tabs; Result appears once a test run has come back.
   const leftTabs: PanelTab<LeftView>[] = [{ key: 'lesson', label: t('lesson.tabLesson') }];
   if (testResults && !isTerminal) leftTabs.push({ key: 'result', label: t('lesson.tabResult') });
+  // History is kept for signed-in students only; guests would get a 401.
+  if (isLoggedIn && hasTests && !isTerminal) {
+    leftTabs.push({ key: 'submissions', label: t('lesson.tabSubmissions') });
+  }
   const view: LeftView = leftTabs.some((tab) => tab.key === leftView) ? leftView : 'lesson';
 
   // Hiding the lesson drops its scroll position; put it back on return.
@@ -361,6 +371,22 @@ export function LessonPage() {
     setActiveTab(panel);
     if (panel === 'lesson') setLeftView('lesson');
   }, []);
+
+  // Loading an old attempt asks first when it would throw away code the
+  // student has written since the lesson opened.
+  const loadSubmissionCode = useCallback(
+    (code: string) => {
+      const untouched =
+        userCode === code ||
+        userCode.trim() === '' ||
+        userCode === starterCode ||
+        userCode === savedCode;
+      if (!untouched && !window.confirm(t('tests.submissions.confirmLoad'))) return;
+      setUserCode(code);
+      setActiveTab('workspace');
+    },
+    [userCode, starterCode, savedCode, t],
+  );
 
   const handleSave = useCallback(async () => {
     if (isLoggedIn) {
@@ -533,6 +559,18 @@ export function LessonPage() {
             {view === 'result' && testResults && (
               <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto">
                 <ResultPanel results={testResults} />
+              </div>
+            )}
+            {view === 'submissions' && (
+              <div data-tour="submissions" className="flex-1 min-h-0 overflow-y-auto">
+                <SubmissionsPanel
+                  language={category}
+                  list={submissions.list}
+                  failed={submissions.failed}
+                  onLoad={submissions.load}
+                  onRetry={submissions.retry}
+                  onLoadCode={loadSubmissionCode}
+                />
               </div>
             )}
           </div>
