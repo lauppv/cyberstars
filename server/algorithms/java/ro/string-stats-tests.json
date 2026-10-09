@@ -4,6 +4,27 @@
     { "visible": true, "stdin": "Hello World\n" },
     { "visible": true, "stdin": "Java is fun\n" },
     { "stdin": "Sky\n" },
-    { "stdin": "aeiou\n" }
+    { "stdin": "aeiou\n" },
+    { "stdin": "A\n", "generated": true },
+    { "stdin": "b\n", "generated": true },
+    { "stdin": "AEIOU\n", "generated": true },
+    { "stdin": "aEiOu BCD\n", "generated": true },
+    { "stdin": "Rhythm Gym Lynx\n", "generated": true },
+    { "stdin": "y Y yY\n", "generated": true },
+    { "stdin": "I O U\n", "generated": true },
+    { "stdin": "Programming In Java Is Really Fun\n", "generated": true },
+    { "stdin": "OOOO eeee\n", "generated": true },
+    { "stdin": "vfm DYogDRYQq Aurora yyEPcHDzm\n", "generated": true },
+    {
+      "stdin": "sky vJDxvmFAfVnE wBIyOgYAhgA BGRGmbG IKxfsURluIX idea RgmsWNHfh zpxceXyUtt\n",
+      "generated": true
+    },
+    { "stdin": "nouyQI zShicUxK banana djPLYjxNCLZC\n", "generated": true },
+    { "stdin": "qHhaGMhtQ Strength a z\n", "generated": true },
+    { "stdin": "VDpIcgEQZENX\n", "generated": true },
+    {
+      "stdin": "PsmvGMkS idea WvRGl i MYORNY City a Equator qobpa nebula nebula TOWn Vice Aurora gvhGmZI Aurora iUDg nMWg wRs City CODE Orbit XYZ Aurora Vice cYKFMMQn t HvMiVc FepzG Aurora station OxL sky OaOgIz station\n",
+      "generated": true
+    }
   ]
 }
