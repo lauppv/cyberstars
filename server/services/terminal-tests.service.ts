@@ -16,8 +16,8 @@ import type {
 // Server-side judge for Linux/terminal lessons. Unlike the code judge (stdin →
 // stdout program + oracle), this validates the sandbox STATE: it runs assertion
 // probes against the student's live session container (one docker exec) plus
-// command-trace requires/forbids against session.history. See §0.7 of
-// TESTS-DESIGN.md.
+// command-trace requires/forbids against session.history. See "Terminal
+// judge" in CLAUDE.md.
 
 const HOME = '/home/student';
 const CHECK_TIMEOUT_MS = 12_000;

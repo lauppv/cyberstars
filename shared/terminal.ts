@@ -27,7 +27,7 @@ export interface TerminalExecResult {
 // ---------------------------------------------------------------------------
 // Terminal (Linux) judge: validates sandbox STATE, not stdout. A lesson opts
 // in by shipping a <slug>-tests.json next to its markdown (server-side only).
-// See §0.7 of TESTS-DESIGN.md.
+// See "Terminal judge" in CLAUDE.md.
 // ---------------------------------------------------------------------------
 
 /**
