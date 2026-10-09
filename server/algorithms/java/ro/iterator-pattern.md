@@ -6,9 +6,9 @@ Citește începutul și sfârșitul de la stdin, creează un `IntervalNumere` ș
 
 ### Date de intrare
 
-- Linia 1: începutul intervalului (număr întreg, -10^9 ≤ început ≤ 10^9)
-- Linia 2: sfârșitul intervalului (număr întreg, început ≤ sfârșit ≤ 10^9)
-- Începutul nu este niciodată mai mare decât sfârșitul, iar intervalul are cel mult 1001 numere (sfârșit - început ≤ 1000)
+- Linia 1: începutul intervalului (număr întreg, -10^9 <= început <= 10^9)
+- Linia 2: sfârșitul intervalului (număr întreg, început <= sfârșit <= 10^9)
+- Începutul nu este niciodată mai mare decât sfârșitul, iar intervalul are cel mult 1001 numere (sfârșit - început <= 1000)
 
 ### Rezultat
 

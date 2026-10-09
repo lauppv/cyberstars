@@ -2,11 +2,11 @@ Use a **HashMap** to manage an inventory of items and their quantities. Process 
 
 ### Input
 
-- Line 1: number of commands N (0 ≤ N ≤ 200)
+- Line 1: number of commands N (0 <= N <= 200)
 - For each command:
   - Line 1: command type (`add`, `remove`, or `check`)
   - Line 2: the item name (a single word of letters and digits, at most 20 characters; `apple` and `Apple` are different items)
-  - Only for `add` and `remove`, line 3: the quantity (integer, 0 ≤ quantity ≤ 10^5; never negative, but it can be 0)
+  - Only for `add` and `remove`, line 3: the quantity (integer, 0 <= quantity <= 10^5; never negative, but it can be 0)
 
 ### Output
 

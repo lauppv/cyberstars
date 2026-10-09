@@ -4,7 +4,7 @@ Citește studenții de la stdin, sortează-i și afișează fiecare student pe o
 
 ### Date de intrare
 
-- Linia 1: numărul de studenți N (1 ≤ N ≤ 50)
+- Linia 1: numărul de studenți N (1 <= N <= 50)
 - Pentru fiecare student, două linii:
   - Linia 1: numele (un singur cuvânt de cel mult 20 de litere: o majusculă urmată de litere mici)
   - Linia 2: media (număr zecimal cu exact o zecimală, între 0.0 și 4.0)

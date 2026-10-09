@@ -12,7 +12,7 @@ Read a value and unit from stdin. Print both conversions, rounded to one decimal
 
 ### Input
 
-- Line 1: the value (decimal number, -500 ≤ value ≤ 1000, at most one digit after the decimal point)
+- Line 1: the value (decimal number, -500 <= value <= 1000, at most one digit after the decimal point)
 - Line 2: the unit (a single character: `C` or `F`)
 
 ### Output

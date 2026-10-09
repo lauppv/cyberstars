@@ -4,8 +4,8 @@ Read the width and height from stdin, create a `Rectangle` object, and print the
 
 ### Input
 
-- Line 1: the width (integer, 1 ≤ width ≤ 10^4)
-- Line 2: the height (integer, 1 ≤ height ≤ 10^4)
+- Line 1: the width (integer, 1 <= width <= 10^4)
+- Line 2: the height (integer, 1 <= height <= 10^4)
 - With these limits the area (at most 10^8) and the perimeter always fit in an `int`
 
 ### Output

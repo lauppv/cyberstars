@@ -4,7 +4,7 @@ Bubble sort funcționează parcurgând repetat lista, comparând elementele adia
 
 ### Date de intrare
 
-- Linia 1: numărul întreg N, numărul de elemente (1 ≤ N ≤ 200)
+- Linia 1: numărul întreg N, numărul de elemente (1 <= N <= 200)
 - Următoarele N linii: câte un număr întreg (orice valoare de tip `int`)
 
 ### Rezultat

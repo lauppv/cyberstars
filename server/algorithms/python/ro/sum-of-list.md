@@ -3,7 +3,7 @@ Având un număr `N` urmat de `N` numere (unul pe linie), afișează **suma** lo
 ### Date de intrare
 
 - Prima linie conține un număr întreg `N` (1 <= N <= 200).
-- Următoarele `N` linii conțin fiecare câte un număr întreg între -1 000 000 000 și 1 000 000 000.
+- Următoarele `N` linii conțin fiecare câte un număr întreg între -10^9 și 10^9.
 
 ### Rezultat
 

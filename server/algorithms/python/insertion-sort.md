@@ -3,7 +3,7 @@ Read a list of numbers and sort them using the **insertion sort** algorithm. Ins
 ### Input
 
 - Line 1: an integer `n`, the count of numbers (1 <= n <= 200).
-- Line 2: `n` integers separated by spaces, each between -1 000 000 000 and 1 000 000 000.
+- Line 2: `n` integers separated by spaces, each between -10^9 and 10^9.
 
 ### Output
 

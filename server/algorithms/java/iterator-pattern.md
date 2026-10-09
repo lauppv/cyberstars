@@ -6,9 +6,9 @@ Read start and end from stdin, create a `NumberRange`, and print each number on 
 
 ### Input
 
-- Line 1: the start of the range (integer, -10^9 ≤ start ≤ 10^9)
-- Line 2: the end of the range (integer, start ≤ end ≤ 10^9)
-- The start is never greater than the end, and the range holds at most 1001 numbers (end - start ≤ 1000)
+- Line 1: the start of the range (integer, -10^9 <= start <= 10^9)
+- Line 2: the end of the range (integer, start <= end <= 10^9)
+- The start is never greater than the end, and the range holds at most 1001 numbers (end - start <= 1000)
 
 ### Output
 
