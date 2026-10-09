@@ -148,6 +148,31 @@ export async function auditSolution(
   return messages;
 }
 
+// Every case runs two programs, so a lesson's case count is bounded by the
+// judge's time budget; Java pays a JVM start per program, so it gets fewer.
+export const MAX_CASES: Record<Lang, number> = { python: 50, c: 50, java: 20 };
+
+// Bulk (generated) cases are hidden by definition, and their reference output
+// may come from the judge's cache, which assumes the solution is deterministic,
+// so they can't sit on a masked/unordered (nondeterministic output) lesson.
+export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
+  const messages: string[] = [];
+  const cases = spec.cases ?? [];
+  if (cases.length > MAX_CASES[lang]) {
+    messages.push(`${cases.length} cases exceeds the ${lang} limit of ${MAX_CASES[lang]}`);
+  }
+  const generated = cases.filter((c) => c.generated);
+  if (generated.some((c) => c.visible)) {
+    messages.push('a generated case is marked visible; generated cases are always hidden');
+  }
+  if (generated.length > 0 && (spec.comparator === 'masked' || spec.comparator === 'unordered')) {
+    messages.push(
+      `generated cases on a ${spec.comparator} lesson; its output is not deterministic`,
+    );
+  }
+  return messages;
+}
+
 async function checkPaired(
   courseKey: string,
   dir: string,
@@ -161,6 +186,9 @@ async function checkPaired(
   if (code === null) {
     problems.push({ courseKey, slug, message: `${tag}: tests file has no readable -solution.md` });
     return;
+  }
+  for (const message of auditCases(langOf(courseKey), spec)) {
+    problems.push({ courseKey, slug, message: `${tag}: ${message}` });
   }
   for (const message of await auditSolution(langOf(courseKey), code, spec)) {
     problems.push({ courseKey, slug, message: `${tag}: ${message}` });

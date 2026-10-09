@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { LessonTestsSpec } from '../shared/tests.js';
-import { collectProblems, auditSolution } from './validate-tests.js';
+import { collectProblems, auditSolution, auditCases, MAX_CASES } from './validate-tests.js';
 
 // The corpus regression: if anyone edits a -tests.json / -solution.md so an
 // inject key no longer resolves, or drops a RO tests file for an injection
@@ -89,5 +89,37 @@ describe('auditSolution', () => {
     };
     const problems = await auditSolution('c', code, spec);
     expect(problems.some((p) => p.includes('ghost'))).toBe(true);
+  });
+});
+
+describe('auditCases', () => {
+  const stdinCase = (extra: object = {}) => ({ stdin: '1\n', ...extra });
+
+  it('accepts a spec within the limit with hidden generated cases', () => {
+    const spec: LessonTestsSpec = {
+      cases: [stdinCase({ visible: true }), stdinCase({ generated: true })],
+    };
+    expect(auditCases('python', spec)).toEqual([]);
+  });
+
+  it('flags a spec over the language limit', () => {
+    const spec: LessonTestsSpec = {
+      cases: Array.from({ length: MAX_CASES.java + 1 }, () => stdinCase()),
+    };
+    expect(auditCases('java', spec)).toEqual([expect.stringMatching(/exceeds the java limit/)]);
+    expect(auditCases('python', spec)).toEqual([]);
+  });
+
+  it('flags a visible generated case', () => {
+    const spec: LessonTestsSpec = { cases: [stdinCase({ visible: true, generated: true })] };
+    expect(auditCases('c', spec)).toEqual([expect.stringMatching(/always hidden/)]);
+  });
+
+  it('flags generated cases on a nondeterministic comparator', () => {
+    const spec: LessonTestsSpec = {
+      comparator: 'unordered',
+      cases: [stdinCase({ generated: true })],
+    };
+    expect(auditCases('c', spec)).toEqual([expect.stringMatching(/not deterministic/)]);
   });
 });
