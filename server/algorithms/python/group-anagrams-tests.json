@@ -5,6 +5,43 @@
     { "visible": true, "stdin": "3\nlisten\nsilent\nhello\n" },
     { "stdin": "3\nabc\ndef\nghi\n" },
     { "stdin": "1\ncat\n" },
-    { "stdin": "4\nab\nba\nabc\ncba\n" }
+    { "stdin": "4\nab\nba\nabc\ncba\n" },
+    { "stdin": "2\nab\nba\n", "generated": true },
+    { "stdin": "2\nab\ncd\n", "generated": true },
+    { "stdin": "2\naab\nabb\n", "generated": true },
+    { "stdin": "3\nabc\nbca\ncab\n", "generated": true },
+    { "stdin": "3\na\nb\nc\n", "generated": true },
+    { "stdin": "5\nzz\ny\nx\nw\nv\n", "generated": true },
+    { "stdin": "5\nstop\npots\ntops\nspot\nopts\n", "generated": true },
+    { "stdin": "6\nrat\ntar\nart\nstar\ntars\ncheese\n", "generated": true },
+    { "stdin": "3\ncab\nbca\nbb\n", "generated": true },
+    { "stdin": "3\na\naa\naaa\n", "generated": true },
+    {
+      "stdin": "8\nlisten\nsilent\nenlist\ninlets\ntinsel\ngoogle\ngogole\nbanana\n",
+      "generated": true
+    },
+    { "stdin": "4\naabbcc\nabcabc\nccbbaa\nabc\n", "generated": true },
+    { "stdin": "2\nb\na\n", "generated": true },
+    { "stdin": "7\nate\neat\neats\nseat\nteas\neast\ntea\n", "generated": true },
+    { "stdin": "4\nab\nabab\nba\nbaba\n", "generated": true },
+    { "stdin": "6\ndog\ngod\ncat\nact\ntac\nodg\n", "generated": true },
+    { "stdin": "4\nz\nzz\nzzz\nzzzz\n", "generated": true },
+    { "stdin": "1\nabcdefghijklmnopqrstuvwxyz\n", "generated": true },
+    { "stdin": "4\nxyz\nzyx\nyxz\nabc\n", "generated": true },
+    { "stdin": "1\ncbaaaaccbcbacbcacabbaaabbbcbbbbcbaabaabcccbcaaabca\n", "generated": true },
+    {
+      "stdin": "20\nbaa\ncbc\nbcb\nccc\nccb\naba\nbbb\ncba\naca\naab\naac\nbbc\ncac\nbba\nbca\nbac\ncbb\ncaa\nabb\nabc\n",
+      "generated": true
+    },
+    {
+      "stdin": "40\neirdc\nrecdi\nanlge\niercd\naglen\ndceir\nidecr\nhitgn\ncra\ndeirc\nbloew\nacr\nlwboe\nsotp\ncedir\ntihng\nglaen\nopst\npsto\nedcir\nelwob\nowelb\nignht\neagln\nrca\ntpos\notps\ntginh\nriecd\nrac\nhntig\ngniht\nelbow\nnegla\nobelw\nolebw\nnihtg\nenlag\nwboel\ngihtn\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\nbaf\ncbd\nc\nf\nafe\ncbb\na\nce\nb\naed\nbc\nae\nabe\nee\nde\nba\ncd\naecb\nfdb\ndeef\nbeb\nffe\ndc\nbd\nddcd\nfcef\ncdad\ndcbd\nab\nbcbc\ndbe\nbee\ndba\nfc\nd\nbfff\nffba\ne\nbb\nbdb\naf\ncfb\naeb\nffd\neba\nfa\ndea\nffae\nfdd\nfcd\nadef\ndb\ndafe\ndeea\nbfe\neebe\naeea\nbfb\naad\nbdcf\n",
+      "generated": true
+    },
+    { "stdin": "6\ndcb\nbcd\nbb\nca\nac\nb\n", "generated": true },
+    { "stdin": "6\nevil\nvile\nlive\nveil\nlevi\nvein\n", "generated": true }
   ]
 }
