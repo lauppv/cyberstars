@@ -230,9 +230,12 @@ public class Runner {
     final java.util.Set<String> callNames = new java.util.HashSet<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
+    // A method that calls itself by name somewhere in its own body.
+    boolean hasRecursion;
     final java.util.Set<Long> intLiterals = new java.util.HashSet<>();
     final List<String> comments = new ArrayList<>();
-    boolean hasLoop;
+    // Loop statements seen, by spec name: "for" (for-each included), "while", "do_while".
+    final java.util.Set<String> loopTypes = new java.util.HashSet<>();
 
     // javac's tree drops comments, so they're collected lexically: walk the
     // source skipping string/char literals (and text blocks), record // and
@@ -328,14 +331,26 @@ public class Runner {
         @Override
         public Void visitMethod(MethodTree node, Void unused) {
           methodNames.add(node.getName().toString());
-          return super.visitMethod(node, unused);
+          enclosingMethods.push(node.getName().toString());
+          try {
+            return super.visitMethod(node, unused);
+          } finally {
+            enclosingMethods.pop();
+          }
         }
+
+        private final java.util.ArrayDeque<String> enclosingMethods = new java.util.ArrayDeque<>();
 
         @Override
         public Void visitMethodInvocation(MethodInvocationTree node, Void unused) {
           ExpressionTree select = node.getMethodSelect();
           if (select instanceof IdentifierTree id) callNames.add(id.getName().toString());
           if (select instanceof MemberSelectTree ms) callNames.add(ms.getIdentifier().toString());
+          String called =
+              select instanceof IdentifierTree id
+                  ? id.getName().toString()
+                  : select instanceof MemberSelectTree ms ? ms.getIdentifier().toString() : null;
+          if (called != null && called.equals(enclosingMethods.peek())) hasRecursion = true;
           return super.visitMethodInvocation(node, unused);
         }
 
@@ -406,25 +421,25 @@ public class Runner {
 
         @Override
         public Void visitForLoop(ForLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("for");
           return super.visitForLoop(node, unused);
         }
 
         @Override
         public Void visitEnhancedForLoop(EnhancedForLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("for");
           return super.visitEnhancedForLoop(node, unused);
         }
 
         @Override
         public Void visitWhileLoop(WhileLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("while");
           return super.visitWhileLoop(node, unused);
         }
 
         @Override
         public Void visitDoWhileLoop(DoWhileLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("do_while");
           return super.visitDoWhileLoop(node, unused);
         }
 
@@ -501,9 +516,18 @@ public class Runner {
         case "variable":
           return parsed.variableNames.contains(name);
         case "function":
+          // Unnamed: any method of the student's own; main and constructors don't count.
+          if (name.isEmpty()) {
+            return parsed.methodNames.stream().anyMatch(m -> !m.equals("main") && !m.equals("<init>"));
+          }
           return parsed.methodNames.contains(name);
+        case "recursion":
+          return parsed.hasRecursion;
         case "loop":
-          return parsed.hasLoop;
+          {
+            String type = rule.get("type") instanceof String s ? s : "";
+            return type.isEmpty() ? !parsed.loopTypes.isEmpty() : parsed.loopTypes.contains(type);
+          }
         case "int_literal":
           for (Object v : asList(rule.getOrDefault("values", new ArrayList<>()))) {
             if (v instanceof Long l && parsed.intLiterals.contains(l)) return true;

@@ -51,17 +51,37 @@ def has_variable(tree, name):
     return False
 
 
-def has_function(tree, name):
-    return any(
-        isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name
-        for node in ast.walk(tree)
-    )
+def function_defs(tree):
+    return [n for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]
 
 
-def has_loop(tree):
-    return any(
-        isinstance(node, (ast.For, ast.While, ast.comprehension)) for node in ast.walk(tree)
-    )
+def has_function(tree, name=None):
+    return any(name is None or node.name == name for node in function_defs(tree))
+
+
+def calls_itself(fn):
+    for node in ast.walk(fn):
+        if isinstance(node, ast.Call):
+            func = node.func
+            if isinstance(func, ast.Name) and func.id == fn.name:
+                return True
+            if isinstance(func, ast.Attribute) and func.attr == fn.name:
+                return True
+    return False
+
+
+def has_recursion(tree):
+    return any(calls_itself(fn) for fn in function_defs(tree))
+
+
+# A typed rule asks for that statement itself: a comprehension is no for
+# statement, and Python has no do-while.
+LOOP_NODES = {"for": (ast.For, ast.AsyncFor), "while": (ast.While,), "do_while": ()}
+
+
+def has_loop(tree, loop_type=None):
+    nodes = LOOP_NODES.get(loop_type, ()) if loop_type else (ast.For, ast.While, ast.comprehension)
+    return any(isinstance(node, nodes) for node in ast.walk(tree))
 
 
 def has_fstring(tree):
@@ -109,9 +129,11 @@ def rule_holds(tree, source, rule):
     if kind == "variable":
         return has_variable(tree, rule["name"])
     if kind == "function":
-        return has_function(tree, rule["name"])
+        return has_function(tree, rule.get("name"))
     if kind == "loop":
-        return has_loop(tree)
+        return has_loop(tree, rule.get("type"))
+    if kind == "recursion":
+        return has_recursion(tree)
     if kind == "fstring":
         return has_fstring(tree)
     if kind == "int_literal":

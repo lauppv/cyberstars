@@ -94,6 +94,12 @@ function parseIntLiteral(text: string): number | null {
   return Number.isNaN(value) ? null : value;
 }
 
+const C_LOOP_NODES = {
+  for: 'for_statement',
+  while: 'while_statement',
+  do_while: 'do_statement',
+} as const;
+
 function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
   switch (rule.kind) {
     case 'call':
@@ -104,13 +110,22 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
     case 'function':
       for (const node of walk(root)) {
         if (node.type !== 'function_definition') continue;
-        if (declaratorName(node.childForFieldName('declarator')) === rule.name) return true;
+        const name = declaratorName(node.childForFieldName('declarator'));
+        if (rule.name === undefined ? name !== 'main' : name === rule.name) return true;
       }
       return false;
-    case 'loop':
-      for (const node of walk(root))
-        if (/^(for_statement|while_statement|do_statement)$/.test(node.type)) return true;
+    case 'recursion':
+      for (const node of walk(root)) {
+        if (node.type !== 'function_definition') continue;
+        const name = declaratorName(node.childForFieldName('declarator'));
+        for (const inner of walk(node)) if (name && callName(inner) === name) return true;
+      }
       return false;
+    case 'loop': {
+      const types = rule.type ? [C_LOOP_NODES[rule.type]] : Object.values(C_LOOP_NODES);
+      for (const node of walk(root)) if (types.includes(node.type)) return true;
+      return false;
+    }
     case 'int_literal': {
       const values = new Set(rule.values ?? []);
       for (const node of walk(root)) {

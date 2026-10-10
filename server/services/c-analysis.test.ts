@@ -59,6 +59,25 @@ describe('checkStructure', () => {
     expect(failures).toHaveLength(0);
   });
 
+  it('tells loop statements apart when the rule names one', async () => {
+    const root = await parseC('int main(void){ int i = 0; while (i < 3) i++; return 0; }');
+    const failures = checkStructure(root, {
+      requires: [{ kind: 'loop' }, { kind: 'loop', type: 'while' }, { kind: 'loop', type: 'for' }],
+      forbids: [{ kind: 'loop', type: 'do_while' }],
+    });
+    expect(failures).toEqual([{ type: 'require', rule: { kind: 'loop', type: 'for' } }]);
+  });
+
+  it('takes any function but main when the rule names none, and spots recursion', async () => {
+    const plain = await parseC('int main(void){ return 0; }');
+    const recursive = await parseC(
+      'int fact(int n){ return n < 2 ? 1 : n * fact(n - 1); }\nint main(void){ return fact(3); }',
+    );
+    const rules = { requires: [{ kind: 'function' as const }, { kind: 'recursion' as const }] };
+    expect(checkStructure(plain, rules)).toHaveLength(2);
+    expect(checkStructure(recursive, rules)).toHaveLength(0);
+  });
+
   it('recognises a variable declared without an initializer', async () => {
     const root = await parseC('int main(void){ int total; return 0; }');
     expect(checkStructure(root, { requires: [{ kind: 'variable', name: 'total' }] })).toHaveLength(

@@ -65,6 +65,45 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it('tells a for statement from a while and a comprehension', () => {
+    const forRule = { kind: 'loop', type: 'for' };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { requires: [forRule] }, cases: [] },
+        [],
+      )[0];
+    expect(header('for i in range(3):\n    print(i)\n')).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+    for (const userCode of [
+      'i = 0\nwhile i < 3:\n    i += 1\n',
+      'print([i for i in range(3)])\n',
+    ]) {
+      expect(header(userCode)).toMatchObject({
+        structureFailures: [{ type: 'require', rule: forRule }],
+      });
+    }
+  });
+
+  it('takes any function when the rule names none, and spots recursion', () => {
+    const rules = [{ kind: 'function' }, { kind: 'recursion' }];
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { requires: rules }, cases: [] },
+        [],
+      )[0];
+    expect(header('def f(n):\n    return 1 if n < 2 else n * f(n - 1)\n')).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+    expect(header('def g(n):\n    return n\n')).toMatchObject({
+      structureFailures: [{ type: 'require', rule: { kind: 'recursion' } }],
+    });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',

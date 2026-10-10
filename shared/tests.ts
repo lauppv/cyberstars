@@ -12,15 +12,27 @@ type StructureKind =
   | 'variable'
   | 'function'
   | 'loop'
+  | 'recursion'
   | 'fstring'
   | 'int_literal'
   | 'comment'
   | 'string_expr';
 
+type LoopType = 'for' | 'while' | 'do_while';
+
 interface StructureRule {
   kind: StructureKind;
-  /** call / variable / function name */
+  /**
+   * call / variable / function name. A function rule without one asks for any
+   * function of the student's own (main aside), named however they like.
+   */
   name?: string;
+  /**
+   * loop: the loop statement the lesson teaches. Without it any loop counts;
+   * with it only that statement does (Java's for-each counts as 'for'), so a
+   * for lesson can't be passed with a while.
+   */
+  type?: LoopType;
   /** int_literal: forbidden constant values */
   values?: number[];
   /**
