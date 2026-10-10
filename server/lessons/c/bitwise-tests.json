@@ -1,14 +1,45 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "scanf" }] },
   "cases": [
     { "visible": true, "stdin": "12 10\n" },
+    { "visible": true, "stdin": "5 3\n" },
     { "visible": true, "stdin": "0 0\n" },
     { "stdin": "255 1\n" },
-    { "stdin": "7 3\n" }
+    { "stdin": "7 3\n" },
+    { "stdin": "0 1\n", "generated": true },
+    { "stdin": "1 0\n", "generated": true },
+    { "stdin": "1 1\n", "generated": true },
+    { "stdin": "0 255\n", "generated": true },
+    { "stdin": "255 255\n", "generated": true },
+    { "stdin": "255 0\n", "generated": true },
+    { "stdin": "8 8\n", "generated": true },
+    { "stdin": "15 240\n", "generated": true },
+    { "stdin": "240 15\n", "generated": true },
+    { "stdin": "170 85\n", "generated": true },
+    { "stdin": "85 170\n", "generated": true },
+    { "stdin": "1 2\n", "generated": true },
+    { "stdin": "2 1\n", "generated": true },
+    { "stdin": "3 5\n", "generated": true },
+    { "stdin": "6 9\n", "generated": true },
+    { "stdin": "1023 512\n", "generated": true },
+    { "stdin": "1024 1023\n", "generated": true },
+    { "stdin": "65535 255\n", "generated": true },
+    { "stdin": "4096 1\n", "generated": true },
+    { "stdin": "100000 99999\n", "generated": true },
+    { "stdin": "31 17\n", "generated": true },
+    { "stdin": "16 16\n", "generated": true },
+    { "stdin": "12345 54321\n", "generated": true },
+    { "stdin": "93624 59807\n", "generated": true },
+    { "stdin": "94220 91288\n", "generated": true },
+    { "stdin": "96323 28167\n", "generated": true },
+    { "stdin": "90319 10228\n", "generated": true },
+    { "stdin": "79002 96880\n", "generated": true },
+    { "stdin": "15980 85764\n", "generated": true },
+    { "stdin": "50099 60446\n", "generated": true },
+    { "stdin": "44319 88511\n", "generated": true },
+    { "stdin": "15556 64108\n", "generated": true },
+    { "stdin": "10778 17318\n", "generated": true },
+    { "stdin": "29161 76447\n", "generated": true },
+    { "stdin": "3240 5774\n", "generated": true }
   ]
 }

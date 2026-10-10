@@ -1,16 +1,54 @@
 {
   "structure": {
     "requires": [
-      { "kind": "loop" },
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "loop", "type": "for" },
+      { "kind": "call", "name": "scanf" }
     ]
   },
   "cases": [
-    { "visible": true, "stdin": "3 7\n" },
+    { "visible": true, "stdin": "13 17\n" },
     { "visible": true, "stdin": "5 10\n" },
+    { "visible": true, "stdin": "3 7\n" },
     { "stdin": "1 20\n" },
     { "stdin": "21 21\n" },
-    { "stdin": "2 3\n" }
+    { "stdin": "2 3\n" },
+    { "stdin": "20 1\n", "generated": true },
+    { "stdin": "1 2\n", "generated": true },
+    { "stdin": "2 1\n", "generated": true },
+    { "stdin": "19 20\n", "generated": true },
+    { "stdin": "20 19\n", "generated": true },
+    { "stdin": "10 11\n", "generated": true },
+    { "stdin": "11 10\n", "generated": true },
+    { "stdin": "1 19\n", "generated": true },
+    { "stdin": "20 2\n", "generated": true },
+    { "stdin": "15 5\n", "generated": true },
+    { "stdin": "5 15\n", "generated": true },
+    { "stdin": "18 20\n", "generated": true },
+    { "stdin": "17 18\n", "generated": true },
+    { "stdin": "4 16\n", "generated": true },
+    { "stdin": "16 4\n", "generated": true },
+    { "stdin": "9 10\n", "generated": true },
+    { "stdin": "10 9\n", "generated": true },
+    { "stdin": "12 13\n", "generated": true },
+    { "stdin": "13 12\n", "generated": true },
+    { "stdin": "6 14\n", "generated": true },
+    { "stdin": "14 6\n", "generated": true },
+    { "stdin": "7 8\n", "generated": true },
+    { "stdin": "8 20\n", "generated": true },
+    { "stdin": "3 1\n", "generated": true },
+    { "stdin": "19 12\n", "generated": true },
+    { "stdin": "19 4\n", "generated": true },
+    { "stdin": "1 10\n", "generated": true },
+    { "stdin": "17 19\n", "generated": true },
+    { "stdin": "6 12\n", "generated": true },
+    { "stdin": "6 5\n", "generated": true },
+    { "stdin": "4 13\n", "generated": true },
+    { "stdin": "12 6\n", "generated": true },
+    { "stdin": "14 20\n", "generated": true },
+    { "stdin": "13 15\n", "generated": true },
+    { "stdin": "16 8\n", "generated": true },
+    { "stdin": "6 20\n", "generated": true },
+    { "stdin": "10 17\n", "generated": true },
+    { "stdin": "9 2\n", "generated": true }
   ]
 }
