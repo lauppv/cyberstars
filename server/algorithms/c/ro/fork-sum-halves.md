@@ -4,7 +4,7 @@ Când `N` e impar, prima jumătate are `N/2` elemente, iar a doua jumătate `N -
 
 ### Date de intrare
 
-- Prima linie: numărul întreg `N` (1 <= N <= 100)
+- Prima linie: numărul întreg `N` (1 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -1000 și 1000)
 
 ### Rezultat
