@@ -6,8 +6,8 @@
       { "kind": "function", "name": "count_beacons" },
       { "kind": "function", "name": "flatten_sorted" },
       { "kind": "function", "name": "find_value" },
-      { "kind": "loop" },
-      { "kind": "recursion" }
+      { "kind": "nested_loop", "in": "count_beacons" },
+      { "kind": "recursion", "in": "find_value" }
     ]
   },
   "cases": [

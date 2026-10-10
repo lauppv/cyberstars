@@ -6,8 +6,8 @@
       { "kind": "function", "name": "numara_balize" },
       { "kind": "function", "name": "aplatizeaza_sortat" },
       { "kind": "function", "name": "gaseste_valoare" },
-      { "kind": "loop" },
-      { "kind": "recursion" }
+      { "kind": "nested_loop", "in": "numara_balize" },
+      { "kind": "recursion", "in": "gaseste_valoare" }
     ]
   },
   "cases": [
