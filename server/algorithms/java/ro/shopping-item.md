@@ -4,7 +4,7 @@ Citește N articole de la stdin. Pentru fiecare articol, creează un obiect `Art
 
 ### Date de intrare
 
-- Linia 1: un număr întreg N, numărul de articole (0 <= N <= 50)
+- Linia 1: un număr întreg N, numărul de articole (0 <= N <= 2·10^4)
 - Pentru fiecare articol, trei linii:
   - Linia 1: numele (un singur cuvânt, cel mult 20 de caractere)
   - Linia 2: prețul (număr zecimal, 0.01 <= preț <= 10^4, cu cel mult 2 zecimale)
