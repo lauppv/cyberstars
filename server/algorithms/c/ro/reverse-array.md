@@ -2,7 +2,7 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Afișează-le î
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 <= N <= 100)
+- Prima linie: un întreg `N` (1 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (-10^9 <= x <= 10^9)
 
 ### Rezultat

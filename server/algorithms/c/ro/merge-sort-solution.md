@@ -7,8 +7,8 @@
 void interclaseaza(int vector[], int stanga, int mijloc, int dreapta) {
     int n1 = mijloc - stanga + 1;
     int n2 = dreapta - mijloc;
-    int stang[1000];
-    int dreapt[1000];
+    int stang[20000];
+    int dreapt[20000];
 
     for (int i = 0; i < n1; i++) {
         stang[i] = vector[stanga + i];
@@ -57,7 +57,7 @@ int main(void) {
     int n;
     scanf("%d", &n);
 
-    int vector[1000];
+    int vector[20000];
     for (int i = 0; i < n; i++) {
         scanf("%d", &vector[i]);
     }

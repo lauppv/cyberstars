@@ -4,7 +4,7 @@ Insertion sort works by building a sorted portion of the array one element at a 
 
 ### Input
 
-- First line: an integer `N` (1 <= N <= 1000)
+- First line: an integer `N` (1 <= N <= 3·10^4)
 - The next `N` lines: one integer per line (-10^9 <= x <= 10^9)
 
 ### Output
