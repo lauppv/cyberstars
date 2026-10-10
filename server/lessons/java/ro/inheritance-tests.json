@@ -4,18 +4,23 @@
       { "kind": "call", "name": "Sofer" },
       { "kind": "call", "name": "Tragator" },
       { "kind": "function", "name": "vorbeste" },
+      { "kind": "call", "name": "vorbeste" },
       { "kind": "variable", "name": "nume1" },
-      { "kind": "variable", "name": "nume2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "nume2" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "nume1": "Tommy", "nume2": "Lance" }
-    },
+    { "visible": true, "inject": { "nume1": "Tommy", "nume2": "Lance" } },
     { "inject": { "nume1": "Diaz", "nume2": "Cortez" } },
     { "inject": { "nume1": "Ken", "nume2": "Sonny" } },
-    { "inject": { "nume1": "Mercedes", "nume2": "Kent" } }
+    { "inject": { "nume1": "Mercedes", "nume2": "Kent" } },
+    { "inject": { "nume1": "Vic", "nume2": "Ricardo" }, "generated": true },
+    { "inject": { "nume1": "Avery", "nume2": "Umberto" }, "generated": true },
+    { "inject": { "nume1": "Candy", "nume2": "Kent Paul" }, "generated": true },
+    { "inject": { "nume1": "Earnest", "nume2": "Hilary" }, "generated": true },
+    { "inject": { "nume1": "Rosie", "nume2": "Rosie" }, "generated": true },
+    { "inject": { "nume1": "A", "nume2": "B" }, "generated": true },
+    { "inject": { "nume1": "Victor Vance", "nume2": "Lance Vance" }, "generated": true },
+    { "inject": { "nume1": "Mitch", "nume2": "Pastor Richards" }, "generated": true }
   ]
 }

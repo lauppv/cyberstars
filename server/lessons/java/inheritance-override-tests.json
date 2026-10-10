@@ -4,19 +4,32 @@
       { "kind": "call", "name": "Club" },
       { "kind": "call", "name": "CarWash" },
       { "kind": "function", "name": "earnings" },
+      { "kind": "call", "name": "earnings" },
       { "kind": "variable", "name": "customers" },
       { "kind": "variable", "name": "cars" },
-      { "kind": "variable", "name": "price" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "price" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "customers": 120, "cars": 30, "price": 8 }
-    },
+    { "visible": true, "inject": { "customers": 120, "cars": 30, "price": 8 } },
     { "inject": { "customers": 0, "cars": 10, "price": 15 } },
     { "inject": { "customers": 50, "cars": 100, "price": 3 } },
-    { "inject": { "customers": 200, "cars": 1, "price": 999 } }
+    { "inject": { "customers": 200, "cars": 1, "price": 999 } },
+    { "inject": { "customers": 1, "cars": 1, "price": 1 }, "generated": true },
+    { "inject": { "customers": 0, "cars": 0, "price": 0 }, "generated": true },
+    { "inject": { "customers": 0, "cars": 0, "price": 10 }, "generated": true },
+    { "inject": { "customers": 1, "cars": 0, "price": 5 }, "generated": true },
+    { "inject": { "customers": 10, "cars": 10, "price": 10 }, "generated": true },
+    { "inject": { "customers": 99, "cars": 7, "price": 12 }, "generated": true },
+    { "inject": { "customers": 1000, "cars": 250, "price": 4 }, "generated": true },
+    { "inject": { "customers": 37, "cars": 13, "price": 17 }, "generated": true },
+    { "inject": { "customers": 500, "cars": 1, "price": 1 }, "generated": true },
+    { "inject": { "customers": 3, "cars": 100, "price": 25 }, "generated": true },
+    { "inject": { "customers": 250, "cars": 40, "price": 6 }, "generated": true },
+    { "inject": { "customers": 64, "cars": 64, "price": 64 }, "generated": true },
+    { "inject": { "customers": 7, "cars": 3, "price": 9 }, "generated": true },
+    { "inject": { "customers": 123, "cars": 45, "price": 6 }, "generated": true },
+    { "inject": { "customers": 80, "cars": 0, "price": 15 }, "generated": true },
+    { "inject": { "customers": 5, "cars": 9, "price": 11 }, "generated": true }
   ]
 }

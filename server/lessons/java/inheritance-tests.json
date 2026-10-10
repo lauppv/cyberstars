@@ -4,18 +4,23 @@
       { "kind": "call", "name": "Driver" },
       { "kind": "call", "name": "Gunman" },
       { "kind": "function", "name": "speak" },
+      { "kind": "call", "name": "speak" },
       { "kind": "variable", "name": "name1" },
-      { "kind": "variable", "name": "name2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "name2" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "name1": "Tommy", "name2": "Lance" }
-    },
+    { "visible": true, "inject": { "name1": "Tommy", "name2": "Lance" } },
     { "inject": { "name1": "Diaz", "name2": "Cortez" } },
     { "inject": { "name1": "Ken", "name2": "Sonny" } },
-    { "inject": { "name1": "Mercedes", "name2": "Kent" } }
+    { "inject": { "name1": "Mercedes", "name2": "Kent" } },
+    { "inject": { "name1": "Vic", "name2": "Ricardo" }, "generated": true },
+    { "inject": { "name1": "Avery", "name2": "Umberto" }, "generated": true },
+    { "inject": { "name1": "Candy", "name2": "Kent Paul" }, "generated": true },
+    { "inject": { "name1": "Earnest", "name2": "Hilary" }, "generated": true },
+    { "inject": { "name1": "Rosie", "name2": "Rosie" }, "generated": true },
+    { "inject": { "name1": "A", "name2": "B" }, "generated": true },
+    { "inject": { "name1": "Victor Vance", "name2": "Lance Vance" }, "generated": true },
+    { "inject": { "name1": "Mitch", "name2": "Pastor Richards" }, "generated": true }
   ]
 }
