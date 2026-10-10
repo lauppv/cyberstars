@@ -58,19 +58,36 @@ async function checkVariants(courseKey: string, slug: string): Promise<number> {
   for (const file of variantsOf(courseKey, slug)) {
     const name = path.basename(file);
     const shouldPass = name.startsWith('accept-');
-    const result = await runLessonTests(
-      `check:${courseKey}:${process.pid}`,
-      courseKey,
-      slug,
-      fs.readFileSync(file, 'utf8'),
-      'en',
-    );
+    let result: Awaited<ReturnType<typeof runLessonTests>>;
+    try {
+      result = await runLessonTests(
+        `check:${courseKey}:${process.pid}`,
+        courseKey,
+        slug,
+        fs.readFileSync(file, 'utf8'),
+        'en',
+      );
+    } catch (err) {
+      // A run that never finished proves nothing either way, and the
+      // lesson's other variants still get graded.
+      wrong++;
+      console.log(
+        `  FAIL  ${name}  run error: ${err instanceof Error ? err.message : String(err)}`,
+      );
+      continue;
+    }
     const passed = result.status === 'passed' && result.passedCount === result.total;
     const why = result.syntaxError
       ? `syntax: ${result.syntaxError}`
       : result.structureFailures.length
         ? `structure: ${JSON.stringify(result.structureFailures)}`
         : `${result.passedCount}/${result.total}`;
+    // A reject that doesn't compile is rejected for its typo, not its cheat.
+    if (!shouldPass && result.syntaxError) {
+      wrong++;
+      console.log(`  FAIL  ${name}  should fail on its cheat, got ${why}`);
+      continue;
+    }
     if (passed === shouldPass) {
       console.log(`  ok    ${name}  ${passed ? 'passed' : `failed (${why})`}`);
       continue;
