@@ -76,7 +76,8 @@ import javax.tools.ToolProvider;
 
 public class Runner {
   static final int CASE_TIMEOUT_SEC = 5;
-  static final int OUTPUT_CAP = 64 * 1024;
+  // A load test's output can run to tens of KB (a sorted list of 10^4 numbers).
+  static final int OUTPUT_CAP = 1024 * 1024;
   static final Path WORK_ROOT = Path.of("/tmp/_judge_work");
   static final JavaCompiler COMPILER = ToolProvider.getSystemJavaCompiler();
 

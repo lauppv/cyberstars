@@ -193,41 +193,90 @@ describe('runLessonTests', () => {
     expect(mockDestroy).not.toHaveBeenCalled();
   });
 
-  it('reports per-case timings rounded to the microsecond and sums them over cases timed on both sides', async () => {
+  it('rounds per-case timings to the microsecond and takes the runtime from the load test alone', async () => {
     stubFiles({
       comparator: 'trimmed',
       structure: {},
-      cases: [{ visible: true }, { generated: true }, {}],
+      cases: [{ visible: true }, { generated: true }, { stdin: '9 8 7\n', load: true }],
     });
     stubVerdict({
       syntaxError: null,
       structureFailures: [],
       cases: [
         { user: program({ ms: 12.3456 }), solution: program({ ms: 10.0404 }) },
-        // Every case runs the reference, generated ones included.
         { user: program({ ms: 0.0321 }), solution: program({ ms: 0.0274 }) },
-        // A side that crashed or skipped its exit reports no time, which
-        // leaves the case out of both totals.
-        { user: program({ ms: 50 }), solution: program() },
+        { user: program({ ms: 48.2224 }), solution: program({ ms: 20.5 }) },
       ],
     });
 
     const res = await runLessonTests('user:1', 'python', 'print', 'code');
     expect(res.cases[0]).toMatchObject({ userMs: 12.346, solutionMs: 10.04 });
-    expect(res.cases[0].generated).toBeUndefined();
     expect(res.cases[1]).toMatchObject({ generated: true, userMs: 0.032, solutionMs: 0.027 });
-    expect(res.cases[2].userMs).toBe(50);
-    expect(res.cases[2].solutionMs).toBeUndefined();
-    expect(res.runtimeMs).toBe(12.378);
-    expect(res.referenceMs).toBe(10.067);
+    // The load test goes back by name: no input, no outputs, just its verdict and times.
+    expect(res.cases[2]).toEqual({
+      index: 2,
+      visible: false,
+      passed: true,
+      load: true,
+      userMs: 48.222,
+      solutionMs: 20.5,
+    });
+    expect(res).toMatchObject({ runtimeMs: 48.222, referenceMs: 20.5 });
   });
 
-  it('omits the timing totals when no case is timed on both sides', async () => {
+  it('reports no runtime when the load test fails, or a side of it went untimed', async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{}, { stdin: '1\n', load: true }] });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program({ ms: 1 }), solution: program({ ms: 1 }) },
+        { user: program({ stdout: 'wrong\n', ms: 30 }), solution: program({ ms: 20 }) },
+      ],
+    });
+    const failed = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(failed.cases[1]).toEqual({
+      index: 1,
+      visible: false,
+      passed: false,
+      load: true,
+      userMs: 30,
+      solutionMs: 20,
+    });
+    expect(failed).not.toHaveProperty('runtimeMs');
+
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program({ exit: 1, stderr: 'MemoryError' }), solution: program({ ms: 20 }) },
+      ],
+    });
+    const crashed = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(crashed.cases[1]).toMatchObject({ load: true, error: 'MemoryError' });
+    expect(crashed.cases[1]).not.toHaveProperty('actual');
+    expect(crashed).not.toHaveProperty('runtimeMs');
+
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+    const untimed = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(untimed.cases[1].passed).toBe(true);
+    expect(untimed).not.toHaveProperty('runtimeMs');
+  });
+
+  it('reports no runtime for a lesson without a load test, however its cases were timed', async () => {
     stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
     stubVerdict({
       syntaxError: null,
       structureFailures: [],
-      cases: [{ user: program(), solution: program() }],
+      cases: [{ user: program({ ms: 5 }), solution: program({ ms: 4 }) }],
     });
     const res = await runLessonTests('user:1', 'python', 'print', 'code');
     expect(res).not.toHaveProperty('runtimeMs');

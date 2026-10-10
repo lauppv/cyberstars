@@ -186,17 +186,16 @@ function roundMs(ms: number): number {
   return Math.round(ms * 1000) / 1000;
 }
 
-// runtimeMs / referenceMs: sums over the cases timed on BOTH sides, so the two
-// totals always cover the same cases and stay comparable.
+// runtimeMs / referenceMs: the load test's two times, once the student's
+// program passed it with both sides timed. Small inputs run in hundredths of a
+// millisecond, so only the load test says anything about speed; a lesson
+// without one reports no runtime.
 function timingTotals(
   cases: TestCaseResult[],
 ): Pick<RunTestsResponse, 'runtimeMs' | 'referenceMs'> {
-  const timed = cases.filter((c) => c.userMs !== undefined && c.solutionMs !== undefined);
-  if (timed.length === 0) return {};
-  return {
-    runtimeMs: roundMs(timed.reduce((sum, c) => sum + c.userMs!, 0)),
-    referenceMs: roundMs(timed.reduce((sum, c) => sum + c.solutionMs!, 0)),
-  };
+  const load = cases.find((c) => c.load);
+  if (!load?.passed || load.userMs === undefined || load.solutionMs === undefined) return {};
+  return { runtimeMs: load.userMs, referenceMs: load.solutionMs };
 }
 
 // The runners stream their verdict as JSON lines: a header, then one line per
@@ -226,6 +225,8 @@ function failRun(): never {
 function caseBase(spec: LessonTestsSpec, index: number): TestCaseResult {
   const specCase = spec.cases[index];
   const base: TestCaseResult = { index, visible: specCase.visible ?? false, passed: false };
+  // The load test's input is too large to send back; it goes by its name alone.
+  if (specCase.load) return { ...base, load: true };
   if (specCase.inject) base.inject = specCase.inject;
   if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
   if (specCase.generated) base.generated = true;
@@ -242,11 +243,17 @@ function judgeCase(spec: LessonTestsSpec, index: number, c: RunnerCase): TestCas
   if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
   if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
   if (c.user.timedOut) return { ...base, error: 'timeout' };
+  const passed = compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed');
+  // The load test's outputs are as large as its input: only the verdict goes back.
+  if (base.load) {
+    if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error' };
+    return { ...base, passed };
+  }
   if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
 
   // A passed case shows both outputs: the student already produced the expected
   // one, so revealing it gives nothing away, even on a hidden case.
-  if (compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed')) {
+  if (passed) {
     return {
       ...base,
       passed: true,

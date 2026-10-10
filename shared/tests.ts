@@ -64,6 +64,12 @@ interface LessonTestCase {
    * (always hidden), appended after the hand-written cases.
    */
   generated?: boolean;
+  /**
+   * The load test: the lesson's one large input, always hidden and last. The
+   * runtime the student sees comes from this case alone, since small inputs
+   * run in hundredths of a millisecond and say nothing about speed.
+   */
+  load?: boolean;
 }
 
 export interface LessonTestsSpec {
@@ -93,12 +99,17 @@ export interface TestCaseResult {
   /** Runtime problem: 'timeout' or the program's stderr. */
   error?: string;
   generated?: boolean;
-  /** Wall time of the student's program on this case, in milliseconds. */
-  userMs?: number;
+  /**
+   * The load test. Its input and outputs are too large to show, so it carries
+   * none of them, only whether it passed, its error and its times.
+   */
+  load?: true;
   /**
    * How long the student's program's own code ran on this case, in ms
    * (startup and compile excluded); absent when it crashed or skipped its exit.
    */
+  userMs?: number;
+  /** The same for the reference solution, measured in the same run. */
   solutionMs?: number;
 }
 
@@ -118,8 +129,8 @@ export interface RunTestsResponse {
   /** The same for the reference solution, measured in the same run. */
   passedCount: number;
   /**
-   * Sums of userMs / solutionMs over the cases that carry both, so the two
-   * totals always cover the same cases. Absent when no case has both.
+   * The load test's userMs / solutionMs, once the student's program passed it.
+   * Absent when the lesson has no load test or the run never got through it.
    */
   runtimeMs?: number;
   referenceMs?: number;
