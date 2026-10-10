@@ -4,7 +4,7 @@ Combine **recursion**, **matrices (2D lists)**, and **binary search**
 
 ## Mission: Sector Scan
 
-A long-range scan returns a **sector map** as a 2D grid (a list of lists) where:
+A long-range scan returns a **sector map** as a 2D grid (a list of lists) stored in a variable named `sector`, where:
 
 - **0** = open space
 - **1** = debris

@@ -2,12 +2,17 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "text_palindrom" },
+      { "kind": "variable", "name": "anagrama_a" },
+      { "kind": "variable", "name": "anagrama_b" },
+      { "kind": "variable", "name": "propozitie" },
+      { "kind": "variable", "name": "text_murdar" },
       { "kind": "function", "name": "curata_text" },
       { "kind": "function", "name": "este_palindrom" },
       { "kind": "function", "name": "sunt_anagrame" },
       { "kind": "function", "name": "inverseaza_cuvinte" },
       { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "isalpha" }
     ]
   },
   "cases": [
@@ -57,6 +62,456 @@
         "propozitie": "warp core online now",
         "text_murdar": "Sector7"
       }
+    },
+    {
+      "inject": {
+        "text_palindrom": "Racecar",
+        "anagrama_a": "Astronomer",
+        "anagrama_b": "Moon starer",
+        "propozitie": "hello",
+        "text_murdar": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Step on no pets!",
+        "anagrama_a": "Thing",
+        "anagrama_b": "Night",
+        "propozitie": "one two three four five six",
+        "text_murdar": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Never odd or even",
+        "anagrama_a": "The eyes",
+        "anagrama_b": "They see",
+        "propozitie": "mission control to major tom",
+        "text_murdar": "123abc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Madam, I'm Adam",
+        "anagrama_a": "abd",
+        "anagrama_b": "abc",
+        "propozitie": "we have liftoff",
+        "text_murdar": "ABC"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abba",
+        "anagrama_a": "abc",
+        "anagrama_b": "abcc",
+        "propozitie": "launch the rocket now",
+        "text_murdar": "..."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abcba",
+        "anagrama_a": "Bad credit",
+        "anagrama_b": "Debit card",
+        "propozitie": "x y z",
+        "text_murdar": "Z"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abca",
+        "anagrama_a": "a",
+        "anagrama_b": "a",
+        "propozitie": "red alert on deck seven",
+        "text_murdar": "x1y2z3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "a",
+        "anagrama_a": "socket",
+        "anagrama_b": "rocket",
+        "propozitie": "a b",
+        "text_murdar": "lowercase"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Eva, can I see bees in a cave?",
+        "anagrama_a": "Elbow",
+        "anagrama_b": "Below",
+        "propozitie": "the the end",
+        "text_murdar": "C-3PO says hi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Rocket launch",
+        "anagrama_a": "rats!",
+        "anagrama_b": "star",
+        "propozitie": "green light",
+        "text_murdar": "Hello, World!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Top spot",
+        "anagrama_a": "Signal",
+        "anagrama_b": "Aligns",
+        "propozitie": "hello",
+        "text_murdar": "MiXeD CaSe 99"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Red rum, sir, is murder",
+        "anagrama_a": "orbits",
+        "anagrama_b": "orbit",
+        "propozitie": "one two three four five six",
+        "text_murdar": "orbit #42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "xy",
+        "anagrama_a": "aab",
+        "anagrama_b": "abb",
+        "propozitie": "mission control to major tom",
+        "text_murdar": "R2-D2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "xx",
+        "anagrama_a": "Taste",
+        "anagrama_b": "State",
+        "propozitie": "we have liftoff",
+        "text_murdar": "A-1 B-2 C-3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Level 42 level",
+        "anagrama_a": "Conversation",
+        "anagrama_b": "Voices rant on",
+        "propozitie": "launch the rocket now",
+        "text_murdar": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Space station",
+        "anagrama_a": "Moon starer",
+        "anagrama_b": "Astronomer",
+        "propozitie": "x y z",
+        "text_murdar": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Ab",
+        "anagrama_a": "Night",
+        "anagrama_b": "Thing",
+        "propozitie": "red alert on deck seven",
+        "text_murdar": "123abc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Murder for a jar of red rum",
+        "anagrama_a": "They see",
+        "anagrama_b": "The eyes",
+        "propozitie": "a b",
+        "text_murdar": "ABC"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "No x in Nixon",
+        "anagrama_a": "abc",
+        "anagrama_b": "abd",
+        "propozitie": "the the end",
+        "text_murdar": "..."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Orbit tibro",
+        "anagrama_a": "abcc",
+        "anagrama_b": "abc",
+        "propozitie": "green light",
+        "text_murdar": "Z"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Racecar",
+        "anagrama_a": "Debit card",
+        "anagrama_b": "Bad credit",
+        "propozitie": "hello",
+        "text_murdar": "x1y2z3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Step on no pets!",
+        "anagrama_a": "a",
+        "anagrama_b": "a",
+        "propozitie": "one two three four five six",
+        "text_murdar": "lowercase"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Never odd or even",
+        "anagrama_a": "rocket",
+        "anagrama_b": "socket",
+        "propozitie": "mission control to major tom",
+        "text_murdar": "C-3PO says hi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Madam, I'm Adam",
+        "anagrama_a": "Below",
+        "anagrama_b": "Elbow",
+        "propozitie": "we have liftoff",
+        "text_murdar": "Hello, World!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abba",
+        "anagrama_a": "star",
+        "anagrama_b": "rats!",
+        "propozitie": "launch the rocket now",
+        "text_murdar": "MiXeD CaSe 99"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abcba",
+        "anagrama_a": "Aligns",
+        "anagrama_b": "Signal",
+        "propozitie": "x y z",
+        "text_murdar": "orbit #42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abca",
+        "anagrama_a": "orbit",
+        "anagrama_b": "orbits",
+        "propozitie": "red alert on deck seven",
+        "text_murdar": "R2-D2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "a",
+        "anagrama_a": "abb",
+        "anagrama_b": "aab",
+        "propozitie": "a b",
+        "text_murdar": "A-1 B-2 C-3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Eva, can I see bees in a cave?",
+        "anagrama_a": "State",
+        "anagrama_b": "Taste",
+        "propozitie": "the the end",
+        "text_murdar": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Rocket launch",
+        "anagrama_a": "Voices rant on",
+        "anagrama_b": "Conversation",
+        "propozitie": "green light",
+        "text_murdar": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Top spot",
+        "anagrama_a": "Astronomer",
+        "anagrama_b": "Moon starer",
+        "propozitie": "hello",
+        "text_murdar": "123abc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Red rum, sir, is murder",
+        "anagrama_a": "Thing",
+        "anagrama_b": "Night",
+        "propozitie": "one two three four five six",
+        "text_murdar": "ABC"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "xy",
+        "anagrama_a": "The eyes",
+        "anagrama_b": "They see",
+        "propozitie": "mission control to major tom",
+        "text_murdar": "..."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "xx",
+        "anagrama_a": "abd",
+        "anagrama_b": "abc",
+        "propozitie": "we have liftoff",
+        "text_murdar": "Z"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Level 42 level",
+        "anagrama_a": "abc",
+        "anagrama_b": "abcc",
+        "propozitie": "launch the rocket now",
+        "text_murdar": "x1y2z3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Space station",
+        "anagrama_a": "Bad credit",
+        "anagrama_b": "Debit card",
+        "propozitie": "x y z",
+        "text_murdar": "lowercase"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Ab",
+        "anagrama_a": "a",
+        "anagrama_b": "a",
+        "propozitie": "red alert on deck seven",
+        "text_murdar": "C-3PO says hi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Murder for a jar of red rum",
+        "anagrama_a": "socket",
+        "anagrama_b": "rocket",
+        "propozitie": "a b",
+        "text_murdar": "Hello, World!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "No x in Nixon",
+        "anagrama_a": "Elbow",
+        "anagrama_b": "Below",
+        "propozitie": "the the end",
+        "text_murdar": "MiXeD CaSe 99"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Orbit tibro",
+        "anagrama_a": "rats!",
+        "anagrama_b": "star",
+        "propozitie": "green light",
+        "text_murdar": "orbit #42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Racecar",
+        "anagrama_a": "Signal",
+        "anagrama_b": "Aligns",
+        "propozitie": "hello",
+        "text_murdar": "R2-D2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Step on no pets!",
+        "anagrama_a": "orbits",
+        "anagrama_b": "orbit",
+        "propozitie": "one two three four five six",
+        "text_murdar": "A-1 B-2 C-3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Never odd or even",
+        "anagrama_a": "aab",
+        "anagrama_b": "abb",
+        "propozitie": "mission control to major tom",
+        "text_murdar": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "Madam, I'm Adam",
+        "anagrama_a": "Taste",
+        "anagrama_b": "State",
+        "propozitie": "we have liftoff",
+        "text_murdar": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text_palindrom": "abba",
+        "anagrama_a": "Conversation",
+        "anagrama_b": "Voices rant on",
+        "propozitie": "launch the rocket now",
+        "text_murdar": "123abc"
+      },
+      "generated": true
     }
   ]
 }

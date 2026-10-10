@@ -2,12 +2,17 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "palindrome_text" },
+      { "kind": "variable", "name": "anagram_a" },
+      { "kind": "variable", "name": "anagram_b" },
+      { "kind": "variable", "name": "sentence" },
+      { "kind": "variable", "name": "messy" },
       { "kind": "function", "name": "clean_text" },
       { "kind": "function", "name": "is_palindrome" },
       { "kind": "function", "name": "are_anagrams" },
       { "kind": "function", "name": "reverse_words" },
       { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "isalpha" }
     ]
   },
   "cases": [
@@ -57,6 +62,456 @@
         "sentence": "warp core online now",
         "messy": "Sector7"
       }
+    },
+    {
+      "inject": {
+        "palindrome_text": "Racecar",
+        "anagram_a": "Astronomer",
+        "anagram_b": "Moon starer",
+        "sentence": "hello",
+        "messy": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Step on no pets!",
+        "anagram_a": "Thing",
+        "anagram_b": "Night",
+        "sentence": "one two three four five six",
+        "messy": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Never odd or even",
+        "anagram_a": "The eyes",
+        "anagram_b": "They see",
+        "sentence": "mission control to major tom",
+        "messy": "123abc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Madam, I'm Adam",
+        "anagram_a": "abd",
+        "anagram_b": "abc",
+        "sentence": "we have liftoff",
+        "messy": "ABC"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abba",
+        "anagram_a": "abc",
+        "anagram_b": "abcc",
+        "sentence": "launch the rocket now",
+        "messy": "..."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abcba",
+        "anagram_a": "Bad credit",
+        "anagram_b": "Debit card",
+        "sentence": "x y z",
+        "messy": "Z"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abca",
+        "anagram_a": "a",
+        "anagram_b": "a",
+        "sentence": "red alert on deck seven",
+        "messy": "x1y2z3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "a",
+        "anagram_a": "socket",
+        "anagram_b": "rocket",
+        "sentence": "a b",
+        "messy": "lowercase"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Eva, can I see bees in a cave?",
+        "anagram_a": "Elbow",
+        "anagram_b": "Below",
+        "sentence": "the the end",
+        "messy": "C-3PO says hi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Rocket launch",
+        "anagram_a": "rats!",
+        "anagram_b": "star",
+        "sentence": "green light",
+        "messy": "Hello, World!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Top spot",
+        "anagram_a": "Signal",
+        "anagram_b": "Aligns",
+        "sentence": "hello",
+        "messy": "MiXeD CaSe 99"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Red rum, sir, is murder",
+        "anagram_a": "orbits",
+        "anagram_b": "orbit",
+        "sentence": "one two three four five six",
+        "messy": "orbit #42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "xy",
+        "anagram_a": "aab",
+        "anagram_b": "abb",
+        "sentence": "mission control to major tom",
+        "messy": "R2-D2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "xx",
+        "anagram_a": "Taste",
+        "anagram_b": "State",
+        "sentence": "we have liftoff",
+        "messy": "A-1 B-2 C-3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Level 42 level",
+        "anagram_a": "Conversation",
+        "anagram_b": "Voices rant on",
+        "sentence": "launch the rocket now",
+        "messy": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Space station",
+        "anagram_a": "Moon starer",
+        "anagram_b": "Astronomer",
+        "sentence": "x y z",
+        "messy": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Ab",
+        "anagram_a": "Night",
+        "anagram_b": "Thing",
+        "sentence": "red alert on deck seven",
+        "messy": "123abc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Murder for a jar of red rum",
+        "anagram_a": "They see",
+        "anagram_b": "The eyes",
+        "sentence": "a b",
+        "messy": "ABC"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "No x in Nixon",
+        "anagram_a": "abc",
+        "anagram_b": "abd",
+        "sentence": "the the end",
+        "messy": "..."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Orbit tibro",
+        "anagram_a": "abcc",
+        "anagram_b": "abc",
+        "sentence": "green light",
+        "messy": "Z"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Racecar",
+        "anagram_a": "Debit card",
+        "anagram_b": "Bad credit",
+        "sentence": "hello",
+        "messy": "x1y2z3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Step on no pets!",
+        "anagram_a": "a",
+        "anagram_b": "a",
+        "sentence": "one two three four five six",
+        "messy": "lowercase"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Never odd or even",
+        "anagram_a": "rocket",
+        "anagram_b": "socket",
+        "sentence": "mission control to major tom",
+        "messy": "C-3PO says hi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Madam, I'm Adam",
+        "anagram_a": "Below",
+        "anagram_b": "Elbow",
+        "sentence": "we have liftoff",
+        "messy": "Hello, World!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abba",
+        "anagram_a": "star",
+        "anagram_b": "rats!",
+        "sentence": "launch the rocket now",
+        "messy": "MiXeD CaSe 99"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abcba",
+        "anagram_a": "Aligns",
+        "anagram_b": "Signal",
+        "sentence": "x y z",
+        "messy": "orbit #42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abca",
+        "anagram_a": "orbit",
+        "anagram_b": "orbits",
+        "sentence": "red alert on deck seven",
+        "messy": "R2-D2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "a",
+        "anagram_a": "abb",
+        "anagram_b": "aab",
+        "sentence": "a b",
+        "messy": "A-1 B-2 C-3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Eva, can I see bees in a cave?",
+        "anagram_a": "State",
+        "anagram_b": "Taste",
+        "sentence": "the the end",
+        "messy": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Rocket launch",
+        "anagram_a": "Voices rant on",
+        "anagram_b": "Conversation",
+        "sentence": "green light",
+        "messy": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Top spot",
+        "anagram_a": "Astronomer",
+        "anagram_b": "Moon starer",
+        "sentence": "hello",
+        "messy": "123abc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Red rum, sir, is murder",
+        "anagram_a": "Thing",
+        "anagram_b": "Night",
+        "sentence": "one two three four five six",
+        "messy": "ABC"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "xy",
+        "anagram_a": "The eyes",
+        "anagram_b": "They see",
+        "sentence": "mission control to major tom",
+        "messy": "..."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "xx",
+        "anagram_a": "abd",
+        "anagram_b": "abc",
+        "sentence": "we have liftoff",
+        "messy": "Z"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Level 42 level",
+        "anagram_a": "abc",
+        "anagram_b": "abcc",
+        "sentence": "launch the rocket now",
+        "messy": "x1y2z3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Space station",
+        "anagram_a": "Bad credit",
+        "anagram_b": "Debit card",
+        "sentence": "x y z",
+        "messy": "lowercase"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Ab",
+        "anagram_a": "a",
+        "anagram_b": "a",
+        "sentence": "red alert on deck seven",
+        "messy": "C-3PO says hi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Murder for a jar of red rum",
+        "anagram_a": "socket",
+        "anagram_b": "rocket",
+        "sentence": "a b",
+        "messy": "Hello, World!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "No x in Nixon",
+        "anagram_a": "Elbow",
+        "anagram_b": "Below",
+        "sentence": "the the end",
+        "messy": "MiXeD CaSe 99"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Orbit tibro",
+        "anagram_a": "rats!",
+        "anagram_b": "star",
+        "sentence": "green light",
+        "messy": "orbit #42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Racecar",
+        "anagram_a": "Signal",
+        "anagram_b": "Aligns",
+        "sentence": "hello",
+        "messy": "R2-D2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Step on no pets!",
+        "anagram_a": "orbits",
+        "anagram_b": "orbit",
+        "sentence": "one two three four five six",
+        "messy": "A-1 B-2 C-3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Never odd or even",
+        "anagram_a": "aab",
+        "anagram_b": "abb",
+        "sentence": "mission control to major tom",
+        "messy": "!!!a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "Madam, I'm Adam",
+        "anagram_a": "Taste",
+        "anagram_b": "State",
+        "sentence": "we have liftoff",
+        "messy": "Mars 2030!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "palindrome_text": "abba",
+        "anagram_a": "Conversation",
+        "anagram_b": "Voices rant on",
+        "sentence": "launch the rocket now",
+        "messy": "123abc"
+      },
+      "generated": true
     }
   ]
 }

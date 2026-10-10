@@ -4,7 +4,7 @@ Combină **recursivitatea**, **matricele (liste 2D)** și **căutarea binară**
 
 ## Misiune: Scanarea Sectorului
 
-O scanare pe rază lungă întoarce o **hartă a sectorului** sub forma unei grile 2D (o listă de liste) unde:
+O scanare pe rază lungă întoarce o **hartă a sectorului** sub forma unei grile 2D (o listă de liste) păstrată într-o variabilă numită `sector`, unde:
 
 - **0** = spațiu liber
 - **1** = resturi
