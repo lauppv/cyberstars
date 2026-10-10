@@ -2,7 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "afiseaza_anotimp" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "call", "name": "afiseaza_anotimp" }
     ]
   },
   "cases": [{ "visible": true }]
