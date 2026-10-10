@@ -5,7 +5,10 @@
       { "kind": "variable", "name": "readings" },
       { "kind": "function", "name": "safe_int" },
       { "kind": "function", "name": "summarize" },
-      { "kind": "loop" }
+      { "kind": "loop" },
+      { "kind": "try" },
+      { "kind": "default_param" },
+      { "kind": "return" }
     ]
   },
   "cases": [

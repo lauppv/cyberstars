@@ -4,7 +4,8 @@
     "requires": [
       { "kind": "variable", "name": "citiri" },
       { "kind": "loop" },
-      { "kind": "call", "name": "int" }
+      { "kind": "call", "name": "int" },
+      { "kind": "try" }
     ]
   },
   "cases": [

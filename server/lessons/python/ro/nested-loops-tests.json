@@ -3,7 +3,8 @@
   "structure": {
     "requires": [
       { "kind": "loop", "type": "for" },
-      { "kind": "call", "name": "input" }
+      { "kind": "call", "name": "input" },
+      { "kind": "nested_loop" }
     ]
   },
   "cases": [

@@ -5,7 +5,10 @@
       { "kind": "variable", "name": "citiri" },
       { "kind": "function", "name": "int_sigur" },
       { "kind": "function", "name": "sumeaza" },
-      { "kind": "loop" }
+      { "kind": "loop" },
+      { "kind": "try" },
+      { "kind": "default_param" },
+      { "kind": "return" }
     ]
   },
   "cases": [
