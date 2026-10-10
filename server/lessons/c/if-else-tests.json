@@ -1,5 +1,5 @@
 {
-  "structure": { "requires": [{ "kind": "variable", "name": "temperature" }] },
+  "structure": { "requires": [{ "kind": "variable", "name": "temperature" }, { "kind": "if" }] },
   "cases": [
     { "visible": true, "inject": { "temperature": -5 } },
     { "inject": { "temperature": 0 } },

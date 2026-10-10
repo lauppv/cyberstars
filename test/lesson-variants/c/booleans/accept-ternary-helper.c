@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 static int may_enter(int emp, int day, int guest, int invite) {
-    if (emp && day) return 1;
-    return guest && invite;
+    return (emp && day) || (guest && invite);
 }
 
 int main(void) {

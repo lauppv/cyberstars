@@ -3,7 +3,8 @@
     "requires": [
       { "kind": "loop", "type": "for" },
       { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "strlen" }
+      { "kind": "call", "name": "strlen" },
+      { "kind": "operator", "name": "&&" }
     ]
   },
   "cases": [
