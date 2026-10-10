@@ -240,13 +240,24 @@ def rule_holds(tree, source, rule):
     return True
 
 
+def scoped_holds(tree, source, rule):
+    # A rule with "in" looks only inside that function (forbid [::-1] in
+    # reverse_text while the rest of the program may slice). No such
+    # function: a require fails and a forbid has nothing to fire on.
+    scope = rule.get("in")
+    if not scope:
+        return rule_holds(tree, source, rule)
+    fns = [fn for fn in function_defs(tree) if fn.name == scope]
+    return any(rule_holds(fn, source, rule) for fn in fns)
+
+
 def check_structure(tree, source, structure):
     failures = []
     for rule in structure.get("requires", []):
-        if not rule_holds(tree, source, rule):
+        if not scoped_holds(tree, source, rule):
             failures.append({"type": "require", "rule": rule})
     for rule in structure.get("forbids", []):
-        if rule_holds(tree, source, rule):
+        if scoped_holds(tree, source, rule):
             failures.append({"type": "forbid", "rule": rule})
     return failures
 

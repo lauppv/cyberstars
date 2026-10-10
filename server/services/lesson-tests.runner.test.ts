@@ -179,6 +179,34 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it('checks a rule with "in" only inside that function', () => {
+    const rules = {
+      requires: [{ kind: 'loop', in: 'reverse_text' }],
+      forbids: [{ kind: 'slice', in: 'reverse_text' }],
+    };
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: rules, cases: [] },
+        [],
+      )[0];
+    const loop =
+      'def reverse_text(t):\n    out = ""\n    for c in t:\n        out = c + out\n    return out\n';
+    expect(header(loop + 'print(" ".join("a b".split()[::-1]))\n')).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+    expect(
+      header('def reverse_text(t):\n    return t[::-1]\n\nfor w in "ab":\n    print(w)\n'),
+    ).toEqual({
+      syntaxError: null,
+      structureFailures: [
+        { type: 'require', rule: rules.requires[0] },
+        { type: 'forbid', rule: rules.forbids[0] },
+      ],
+    });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',

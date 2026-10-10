@@ -69,6 +69,8 @@ interface StructureRule {
    * [x for x in ...] (any comprehension or generator); C and Java have none.
    */
   type?: LoopType;
+  /** python: check the rule only inside the function with this name. */
+  in?: string;
   /** int_literal: forbidden constant values */
   values?: number[];
   /**
