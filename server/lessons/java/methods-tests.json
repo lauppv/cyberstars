@@ -1,11 +1,9 @@
 {
   "structure": {
     "requires": [
-      { "kind": "function", "name": "splitLoot" },
-      { "kind": "call", "name": "splitLoot" },
+      { "kind": "function" },
       { "kind": "variable", "name": "loot" },
-      { "kind": "variable", "name": "crew" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "crew" }
     ]
   },
   "cases": [
@@ -13,6 +11,21 @@
     { "inject": { "loot": 5000, "crew": 3 } },
     { "inject": { "loot": 8000, "crew": 1 } },
     { "inject": { "loot": 7, "crew": 7 } },
-    { "inject": { "loot": 100, "crew": 3 } }
+    { "inject": { "loot": 100, "crew": 3 } },
+    { "inject": { "loot": 0, "crew": 1 }, "generated": true },
+    { "inject": { "loot": 0, "crew": 5 }, "generated": true },
+    { "inject": { "loot": 1, "crew": 1 }, "generated": true },
+    { "inject": { "loot": 1, "crew": 2 }, "generated": true },
+    { "inject": { "loot": 9, "crew": 10 }, "generated": true },
+    { "inject": { "loot": 10, "crew": 10 }, "generated": true },
+    { "inject": { "loot": 11, "crew": 10 }, "generated": true },
+    { "inject": { "loot": 99, "crew": 4 }, "generated": true },
+    { "inject": { "loot": 1000, "crew": 7 }, "generated": true },
+    { "inject": { "loot": 123456, "crew": 8 }, "generated": true },
+    { "inject": { "loot": 50, "crew": 49 }, "generated": true },
+    { "inject": { "loot": 3, "crew": 2 }, "generated": true },
+    { "inject": { "loot": 999999, "crew": 1000 }, "generated": true },
+    { "inject": { "loot": 2500, "crew": 12 }, "generated": true },
+    { "inject": { "loot": 77, "crew": 5 }, "generated": true }
   ]
 }

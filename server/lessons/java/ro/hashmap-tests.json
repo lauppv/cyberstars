@@ -6,18 +6,29 @@
       { "kind": "variable", "name": "nr3" },
       { "kind": "variable", "name": "nr4" },
       { "kind": "call", "name": "put" },
-      { "kind": "call", "name": "get" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "nr1": 47, "nr2": 12, "nr3": 8, "nr4": 23 }
-    },
+    { "visible": true, "inject": { "nr1": 47, "nr2": 12, "nr3": 8, "nr4": 23 } },
     { "inject": { "nr1": 3, "nr2": 40, "nr3": 16, "nr4": 15 } },
     { "inject": { "nr1": 100, "nr2": 99, "nr3": 50, "nr4": 30 } },
-    { "inject": { "nr1": 10, "nr2": 5, "nr3": 2, "nr4": 1 } }
+    { "inject": { "nr1": 10, "nr2": 5, "nr3": 2, "nr4": 1 } },
+    { "inject": { "nr1": 16, "nr2": 15, "nr3": 15, "nr4": 16 }, "generated": true },
+    { "inject": { "nr1": 15, "nr2": 15, "nr3": 15, "nr4": 15 }, "generated": true },
+    { "inject": { "nr1": 0, "nr2": 0, "nr3": 0, "nr4": 0 }, "generated": true },
+    { "inject": { "nr1": 16, "nr2": 16, "nr3": 16, "nr4": 16 }, "generated": true },
+    { "inject": { "nr1": 1, "nr2": 2, "nr3": 3, "nr4": 100 }, "generated": true },
+    { "inject": { "nr1": 100, "nr2": 0, "nr3": 0, "nr4": 0 }, "generated": true },
+    { "inject": { "nr1": 0, "nr2": 100, "nr3": 0, "nr4": 0 }, "generated": true },
+    { "inject": { "nr1": 0, "nr2": 0, "nr3": 100, "nr4": 0 }, "generated": true },
+    { "inject": { "nr1": 0, "nr2": 0, "nr3": 0, "nr4": 100 }, "generated": true },
+    { "inject": { "nr1": 14, "nr2": 15, "nr3": 16, "nr4": 17 }, "generated": true },
+    { "inject": { "nr1": 17, "nr2": 16, "nr3": 15, "nr4": 14 }, "generated": true },
+    { "inject": { "nr1": 500, "nr2": 250, "nr3": 125, "nr4": 60 }, "generated": true },
+    { "inject": { "nr1": 20, "nr2": 30, "nr3": 40, "nr4": 50 }, "generated": true },
+    { "inject": { "nr1": 9, "nr2": 99, "nr3": 999, "nr4": 9999 }, "generated": true },
+    { "inject": { "nr1": 15, "nr2": 16, "nr3": 15, "nr4": 16 }, "generated": true },
+    { "inject": { "nr1": 1, "nr2": 1, "nr3": 1, "nr4": 1 }, "generated": true }
   ]
 }

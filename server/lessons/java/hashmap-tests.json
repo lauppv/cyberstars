@@ -6,18 +6,29 @@
       { "kind": "variable", "name": "count3" },
       { "kind": "variable", "name": "count4" },
       { "kind": "call", "name": "put" },
-      { "kind": "call", "name": "get" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "count1": 47, "count2": 12, "count3": 8, "count4": 23 }
-    },
+    { "visible": true, "inject": { "count1": 47, "count2": 12, "count3": 8, "count4": 23 } },
     { "inject": { "count1": 3, "count2": 40, "count3": 16, "count4": 15 } },
     { "inject": { "count1": 100, "count2": 99, "count3": 50, "count4": 30 } },
-    { "inject": { "count1": 10, "count2": 5, "count3": 2, "count4": 1 } }
+    { "inject": { "count1": 10, "count2": 5, "count3": 2, "count4": 1 } },
+    { "inject": { "count1": 16, "count2": 15, "count3": 15, "count4": 16 }, "generated": true },
+    { "inject": { "count1": 15, "count2": 15, "count3": 15, "count4": 15 }, "generated": true },
+    { "inject": { "count1": 0, "count2": 0, "count3": 0, "count4": 0 }, "generated": true },
+    { "inject": { "count1": 16, "count2": 16, "count3": 16, "count4": 16 }, "generated": true },
+    { "inject": { "count1": 1, "count2": 2, "count3": 3, "count4": 100 }, "generated": true },
+    { "inject": { "count1": 100, "count2": 0, "count3": 0, "count4": 0 }, "generated": true },
+    { "inject": { "count1": 0, "count2": 100, "count3": 0, "count4": 0 }, "generated": true },
+    { "inject": { "count1": 0, "count2": 0, "count3": 100, "count4": 0 }, "generated": true },
+    { "inject": { "count1": 0, "count2": 0, "count3": 0, "count4": 100 }, "generated": true },
+    { "inject": { "count1": 14, "count2": 15, "count3": 16, "count4": 17 }, "generated": true },
+    { "inject": { "count1": 17, "count2": 16, "count3": 15, "count4": 14 }, "generated": true },
+    { "inject": { "count1": 500, "count2": 250, "count3": 125, "count4": 60 }, "generated": true },
+    { "inject": { "count1": 20, "count2": 30, "count3": 40, "count4": 50 }, "generated": true },
+    { "inject": { "count1": 9, "count2": 99, "count3": 999, "count4": 9999 }, "generated": true },
+    { "inject": { "count1": 15, "count2": 16, "count3": 15, "count4": 16 }, "generated": true },
+    { "inject": { "count1": 1, "count2": 1, "count3": 1, "count4": 1 }, "generated": true }
   ]
 }

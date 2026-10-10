@@ -6,7 +6,7 @@ Combină **metode**, **valori returnate**, **metode pe șiruri**, **array-uri**,
 
 Tommy ascultă stația radio a poliției din Vice City. Fluxul este plin de paraziți, iar la un moment dat operatorul închide cu un semnal de final. Scrie un filtru care curăță transmisia și păstrează doar numele reale.
 
-Pune semnalele într-un array de `String`, de exemplu:
+Pune semnalele într-un array de `String` numit `semnale`, de exemplu:
 
 ```text
 String[] semnale = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };

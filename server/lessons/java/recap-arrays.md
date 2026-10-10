@@ -6,7 +6,7 @@ Combine **methods**, **return values**, **string methods**, **arrays**, **loopin
 
 Tommy is listening to the Vice City police radio. The feed is full of static, and at some point the operator signs off. Write a filter that cleans up the transmission and keeps only the real names.
 
-Put the signals in a `String` array, for example:
+Put the signals in a `String` array named `signals`, for example:
 
 ```text
 String[] signals = { "tommy", "static", "lance", "static", "cortez", "static", "diaz", "out", "mercedes" };
