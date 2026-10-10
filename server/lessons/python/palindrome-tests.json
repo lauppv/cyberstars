@@ -2,9 +2,9 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "codes" },
       { "kind": "function", "name": "is_palindrome" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -12,12 +12,129 @@
       "visible": true,
       "inject": { "codes": { "$list": ["racecar", "signal", "level", "orbit", "radar"] } }
     },
-    {
-      "visible": true,
-      "inject": { "codes": { "$list": ["abc", "aba"] } }
-    },
+    { "visible": true, "inject": { "codes": { "$list": ["abc", "aba"] } } },
     { "inject": { "codes": { "$list": ["x"] } } },
     { "inject": { "codes": { "$list": ["noon", "test", "kayak"] } } },
-    { "inject": { "codes": { "$list": ["aa", "ab", "aaa"] } } }
+    { "inject": { "codes": { "$list": ["aa", "ab", "aaa"] } } },
+    { "inject": { "codes": { "$list": [] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["a"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["ab"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["abba", "abca", "abcba", "abcda"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["xyzzyx", "xyzyx", "xyzzx"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["madam", "refer", "civic", "rotor"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["signal", "orbit", "probe", "comet"] } },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["zz", "zzz", "zzzz", "zy"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["abcdefgfedcba", "abcdefggfedcba", "abcdefgxfedcba"] } },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["stats", "stats", "start"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["ba", "bab", "abab", "baab"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["racecar", "racecars", "aracecar"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["deified", "repaper", "reviver", "redivider"] } },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["q", "w", "e"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["noon"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["moon"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["rdrarardr", "d", "bdrdd", "abaarba"] } },
+      "generated": true
+    },
+    {
+      "inject": { "codes": { "$list": ["dddrrddb", "bdbbdb", "dcdrd", "drabrd", "bcrrr"] } },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["rcar", "cd"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["acddaar", "r"] } }, "generated": true },
+    {
+      "inject": {
+        "codes": { "$list": ["crbacaaar", "bdcrcrcdb", "drr", "rd", "dcrc", "drcadacrd"] }
+      },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["c", "crcddcrc", "a"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["acdcc", "bcb", "daad", "dc", "brb", "aarbbraa"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": { "$list": ["car", "dcdrcd", "cdradc", "adrrrda", "barrdab", "arcaba"] }
+      },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["draadabrc"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["d", "r", "cc", "bbcbabcrb"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["b", "rdacr", "b", "a", "arrdcbca", "drccrd", "cdaadc"] } },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["darbabrad", "acddcc", "ddabbrc"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["bacccab", "cadaraaac"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["radbbbdar", "aradara", "caa", "ca", "r", "rarararab"] } },
+      "generated": true
+    },
+    {
+      "inject": { "codes": { "$list": ["bbb", "rdcbbrdr", "rccr", "rcdr", "cacdd", "cbbc"] } },
+      "generated": true
+    },
+    {
+      "inject": { "codes": { "$list": ["bdddrddb", "adadbdada", "bbcb", "c", "cbd", "ca"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": { "$list": ["caaccdac", "cacacdc", "rr", "ccdcc", "cacar", "drcacacrd"] }
+      },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["dad", "bc", "aabrraa"] } }, "generated": true },
+    {
+      "inject": {
+        "codes": { "$list": ["cdaadc", "rcr", "rcdr", "accaadca", "br", "ddbd", "bbrb"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "codes": { "$list": ["addcda", "cdrcdarba", "rb", "baaa", "bbdar"] } },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["b"] } }, "generated": true },
+    { "inject": { "codes": { "$list": ["ccaccccc", "c"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["db", "adabbada", "dad", "bdcaddddb"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": { "$list": ["c", "crddrc", "bccb", "bbabbarb", "add", "c", "abdadba", "bcaarcb"] }
+      },
+      "generated": true
+    },
+    { "inject": { "codes": { "$list": ["dcdcd"] } }, "generated": true },
+    {
+      "inject": { "codes": { "$list": ["cccaaaccc", "rraaaaa", "rad", "dcddcd"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": { "$list": ["r", "cbdadbc", "crdbdbdrc", "bcddbddcb", "dccbbcdd", "a"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "codes": { "$list": ["ab", "a", "ccadaacc", "cc", "ab", "bra", "bb", "rdrr"] } },
+      "generated": true
+    },
+    {
+      "inject": { "codes": { "$list": ["drraaarbd", "a", "caad", "radcdar", "rcdarcr", "acca"] } },
+      "generated": true
+    }
   ]
 }
