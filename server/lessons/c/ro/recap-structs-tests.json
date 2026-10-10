@@ -3,14 +3,124 @@
     "requires": [
       { "kind": "function", "name": "adauga_contact" },
       { "kind": "function", "name": "cauta_contact" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "call", "name": "strcpy" },
+      { "kind": "call", "name": "scanf" }
     ]
   },
   "cases": [
+    {
+      "stdin": "3\nop7 0722111222\nop12 0733222333\nop9 0744333444\n2\nop12\nop5\n",
+      "visible": true
+    },
+    { "stdin": "2\ntura1 0711000111\ntura2 0722000222\n3\ntura2\ntura9\ntura1\n", "visible": true },
     { "visible": true, "stdin": "2\nAlice 123\nBob 456\n2\nBob\nEve\n" },
     { "visible": true, "stdin": "1\nKen 555\n1\nKen\n" },
-    { "stdin": "3\nA 1\nB 2\nC 3\n2\nC\nZ\n" }
+    { "stdin": "3\nA 1\nB 2\nC 3\n2\nC\nZ\n" },
+    { "stdin": "1\nsolo 0700000000\n1\nsolo\n", "generated": true },
+    { "stdin": "1\nsolo 0700000000\n1\nnobody\n", "generated": true },
+    { "stdin": "3\na 1\nb 2\nc 3\n3\na\nc\nb\n", "generated": true },
+    { "stdin": "2\nfirst 111\nlast 999\n3\nlast\nlast\nfirst\n", "generated": true },
+    { "stdin": "2\nop1 0711\nop10 0722\n4\nop1\nop10\nop100\nop\n", "generated": true },
+    { "stdin": "1\nKen 0733\n3\nken\nKEN\nKen\n", "generated": true },
+    { "stdin": "1\nx 0\n3\ny\nz\nx\n", "generated": true },
+    {
+      "stdin": "30\ntech0 0786454284\ntech1 0710366485\ntech2 0762802328\ntech3 0783581146\ntech4 0718792685\ntech5 0706590507\ntech6 0759063183\ntech7 0738504143\ntech8 0798882445\ntech9 0752519945\ntech10 0700507470\ntech11 0734417099\ntech12 0782679623\ntech13 0742130845\ntech14 0750261446\ntech15 0771818338\ntech16 0749240796\ntech17 0773868717\ntech18 0733753590\ntech19 0799860592\ntech20 0783955234\ntech21 0765791818\ntech22 0703982777\ntech23 0782887704\ntech24 0742075530\ntech25 0741800174\ntech26 0793107830\ntech27 0761608038\ntech28 0744558966\ntech29 0708510455\n5\ntech0\ntech29\ntech15\ntech30\ntech\n",
+      "generated": true
+    },
+    { "stdin": "0\n1\nanyone\n", "generated": true },
+    { "stdin": "2\nken9 0737471431\ngrace7 0743752389\n2\nghost\nken9\n", "generated": true },
+    {
+      "stdin": "7\nbjarne3 0729857461\nguido4 0722368587\nbrian9 0724374835\nbarbara1 0715716186\njames4 0721414575\ngrace3 0724465982\nedsger7 0714333856\n4\njames4\nguido4\njames4\nedsger7\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nniklaus1 0757669447\nken3 0763335336\nada2 0773582977\ndonald2 0723663667\n3\nniklaus\nniklaus\nnobody7\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nken8 0707167127\nbrian1 0747232420\nlinus2 0747014948\ngrace5 0768490084\n5\nghost\nken8\nnobody7\nken8\nlinus2\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\njames2 0705577575\nken4 0709158261\nbjarne9 0710617238\nlinus8 0704091127\nguido4 0744495806\n1\nnobody7\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\nmargaret8 0715857071\n5\nmargaret\nnobody7\nmargaret8\nghost\nmargaret8\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nmargaret5 0761160786\nada7 0749398692\ngrace4 0753575391\njames4 0787376569\nniklaus1 0731304045\nlinus7 0760888008\n3\nlinus7\ngrace4\nlinus7\n",
+      "generated": true
+    },
+    {
+      "stdin": "10\njames1 0727827900\nmargaret3 0766614332\nken1 0797527365\nniklaus5 0777121373\nlinus5 0714894574\ndennis9 0760742833\nbjarne2 0705103553\nguido4 0782299907\nada1 0776658879\nalan1 0701192496\n6\njames1\nken1\nlinus5\nken1\njames\ndennis9\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nniklaus6 0773974632\nedsger7 0747840852\nken6 0700411591\n5\nedsger7\nniklaus6\nken6\nedsger7\nghost\n",
+      "generated": true
+    },
+    {
+      "stdin": "10\nbjarne9 0738169374\nken5 0782572544\ngrace2 0774760826\nniklaus6 0703074195\nedsger5 0785430307\nlinus2 0760659394\njames5 0784980045\nbrian1 0793827051\nada6 0703484838\nalan1 0756149488\n5\njames5\nada6\nalan1\nniklaus6\nalan1\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\ndennis3 0779412103\nada4 0735847016\njames9 0779215768\n1\nnobody7\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nbjarne6 0793299361\nlinus5 0733425828\njames5 0711748665\nada4 0783344642\nalan4 0796853403\nedsger6 0785475686\ndennis5 0723094996\n3\nada4\njames5\nedsger6\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\ndonald9 0765032825\nbjarne5 0703569145\nada2 0765533527\nlinus7 0700260091\ngrace6 0786299554\nedsger1 0706782053\njames3 0791280679\nalan4 0705130009\nniklaus3 0791535800\n4\nghost\nada2\nada2\nada2\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\ndonald6 0734978383\nalan4 0772267761\nguido2 0762944103\nada3 0780622225\nmargaret6 0704640497\nken5 0782838109\nlinus9 0745766203\n4\ndonald6\nghost\nmargaret6\ndonald6\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\ndennis9 0762401873\nguido2 0788645055\n4\ndennis\ndennis9\nghost\nnobody7\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\njames4 0736852251\ndonald2 0752258469\ndennis4 0736916077\nalan9 0746726475\ngrace1 0743389016\nbarbara7 0764834636\nguido4 0783989625\n2\ndennis4\nghost\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nada3 0744953702\nbjarne7 0774238576\nmargaret4 0704640624\nken4 0753194974\n6\nada\nnobody7\nnobody7\nnobody7\nbjarne7\nghost\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nbrian1 0792713754\nada8 0777112011\nmargaret6 0767196474\ndennis9 0744715466\nalan5 0751048802\nken8 0778067028\ndonald4 0735849598\n2\nghost\ndonald4\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nken1 0767944736\nbrian5 0751613583\ngrace4 0749869941\ndennis9 0736070816\nada1 0757920340\nguido7 0776907967\n6\nbrian5\nada1\ndennis9\ndennis9\nken1\nghost\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nmargaret6 0756996400\nbarbara8 0704331130\nguido2 0708760646\n2\nguido2\nguido2\n",
+      "generated": true
+    },
+    { "stdin": "1\nalan9 0793112172\n2\nalan\nalan\n", "generated": true },
+    {
+      "stdin": "7\nken9 0795943237\ndonald7 0717883617\nada3 0725319448\nbarbara1 0707861245\nedsger8 0762190973\nbrian2 0722734972\nalan2 0753734984\n4\nalan2\nalan2\nnobody7\nbarbara1\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nniklaus8 0740398315\nlinus9 0788796332\ndonald8 0756626540\nken9 0761924583\njames9 0727464360\nada9 0722622928\nbarbara1 0770554648\nbrian7 0729204727\nedsger7 0756102914\n5\nnobody7\nlinus9\ndonald8\nbrian7\nedsger7\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nbrian9 0725740541\nken6 0702575332\n3\nbrian9\nken6\nghost\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nlinus2 0753850539\nguido6 0776958473\nmargaret2 0790364115\nken2 0726340835\n3\nlinus2\nmargaret2\nlinus\n",
+      "generated": true
+    }
   ]
 }
