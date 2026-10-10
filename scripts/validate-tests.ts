@@ -71,7 +71,9 @@ function injectKeys(spec: LessonTestsSpec): Set<string> {
 function requireNames(spec: LessonTestsSpec): string[] {
   const names: string[] = [];
   for (const rule of spec.structure?.requires ?? []) {
-    if (rule.name && ['variable', 'function', 'call'].includes(rule.kind)) names.push(rule.name);
+    if (rule.name && ['variable', 'function', 'call', 'class'].includes(rule.kind)) {
+      names.push(rule.name);
+    }
   }
   return names;
 }
@@ -153,6 +155,83 @@ export async function auditSolution(
   return messages;
 }
 
+// The structure kinds each judge implements. A runner treats a kind it
+// doesn't know as present (a require passes, a forbid fires), so a spec using
+// one would silently check nothing.
+const COMMON_KINDS = [
+  'call',
+  'variable',
+  'function',
+  'loop',
+  'recursion',
+  'int_literal',
+  'comment',
+  'if',
+  'switch',
+  'break',
+  'continue',
+  'nested_loop',
+  'operator',
+];
+export const STRUCTURE_KINDS: Record<Lang, Set<string>> = {
+  python: new Set([
+    ...COMMON_KINDS,
+    'fstring',
+    'string_expr',
+    'try',
+    'class',
+    'object',
+    'return',
+    'default_param',
+    'slice',
+  ]),
+  c: new Set([
+    ...COMMON_KINDS,
+    'string_expr',
+    'struct',
+    'typedef',
+    'pointer',
+    'sizeof',
+    'define',
+    'enum',
+  ]),
+  java: new Set([
+    ...COMMON_KINDS,
+    'try',
+    'class',
+    'object',
+    'extends',
+    'implements',
+    'interface',
+    'enum',
+    'override',
+    'overload',
+    'modifier',
+    'instanceof',
+    'cast',
+  ]),
+};
+const LOOP_TYPES: Record<Lang, Set<string>> = {
+  python: new Set(['for', 'while', 'comprehension']),
+  c: new Set(['for', 'while', 'do_while']),
+  java: new Set(['for', 'while', 'do_while']),
+};
+
+export function auditKinds(lang: Lang, spec: LessonTestsSpec): string[] {
+  const messages: string[] = [];
+  const rules = [...(spec.structure?.requires ?? []), ...(spec.structure?.forbids ?? [])];
+  for (const rule of rules) {
+    if (!STRUCTURE_KINDS[lang].has(rule.kind)) {
+      messages.push(`structure kind "${rule.kind}" is not implemented for ${lang}`);
+    } else if (rule.kind === 'loop' && rule.type && !LOOP_TYPES[lang].has(rule.type)) {
+      messages.push(`loop type "${rule.type}" does not exist in ${lang}`);
+    } else if (['operator', 'modifier'].includes(rule.kind) && !rule.name) {
+      messages.push(`a ${rule.kind} rule needs a name`);
+    }
+  }
+  return messages;
+}
+
 // Every case runs two programs, so a lesson's case count is bounded by the
 // judge's time budget; Java pays a JVM start per program, so it gets fewer.
 export const MAX_CASES: Record<Lang, number> = { python: 50, c: 50, java: 20 };
@@ -198,6 +277,9 @@ async function checkPaired(
   if (code === null) {
     problems.push({ courseKey, slug, message: `${tag}: tests file has no readable -solution.md` });
     return;
+  }
+  for (const message of auditKinds(langOf(courseKey), spec)) {
+    problems.push({ courseKey, slug, message: `${tag}: ${message}` });
   }
   for (const message of auditCases(langOf(courseKey), spec)) {
     problems.push({ courseKey, slug, message: `${tag}: ${message}` });

@@ -239,6 +239,14 @@ public class Runner {
     final List<String> comments = new ArrayList<>();
     // Loop statements seen, by spec name: "for" (for-each included), "while", "do_while".
     final java.util.Set<String> loopTypes = new java.util.HashSet<>();
+    // Kinds that are simply there or not (if, switch, try, nested_loop, extends, ...).
+    final java.util.Set<String> facts = new java.util.HashSet<>();
+    final java.util.Set<String> operators = new java.util.HashSet<>();
+    final java.util.Set<String> modifiers = new java.util.HashSet<>();
+    // Classes and records of the student's own: every one but the class holding main.
+    final java.util.Set<String> ownClasses = new java.util.HashSet<>();
+    // Types instantiated with new, generics and package stripped.
+    final java.util.Set<String> newTypes = new java.util.HashSet<>();
 
     // javac's tree drops comments, so they're collected lexically: walk the
     // source skipping string/char literals (and text blocks), record // and
@@ -312,6 +320,9 @@ public class Runner {
       for (CompilationUnitTree unit : units) {
         parsed.scan(unit, positions);
       }
+      for (CompilationUnitTree unit : units) {
+        parsed.collectFacts(unit);
+      }
       parsed.collectComments();
       return parsed;
     }
@@ -363,10 +374,9 @@ public class Runner {
           // require object creation via { kind: "call", name: "<ClassName>" }.
           // new HashMap<>() and new java.util.ArrayList<String>() count as HashMap / ArrayList.
           if (node.getIdentifier() != null) {
-            String type = node.getIdentifier().toString();
-            int generic = type.indexOf('<');
-            if (generic >= 0) type = type.substring(0, generic);
-            callNames.add(type.substring(type.lastIndexOf('.') + 1).trim());
+            String type = simpleType(node.getIdentifier());
+            callNames.add(type);
+            newTypes.add(type);
           }
           return super.visitNewClass(node, unused);
         }
@@ -472,6 +482,152 @@ public class Runner {
       points.sort(Comparator.comparingLong(InjectPoint::start));
     }
 
+    static String simpleType(Tree type) {
+      String text = type.toString();
+      int generic = text.indexOf('<');
+      if (generic >= 0) text = text.substring(0, generic);
+      return text.substring(text.lastIndexOf('.') + 1).trim();
+    }
+
+    static final Map<Tree.Kind, String> OPERATORS = new java.util.EnumMap<>(Tree.Kind.class);
+
+    static {
+      Object[][] table = {
+        {"&&", Tree.Kind.CONDITIONAL_AND}, {"||", Tree.Kind.CONDITIONAL_OR},
+        {"!", Tree.Kind.LOGICAL_COMPLEMENT}, {"~", Tree.Kind.BITWISE_COMPLEMENT},
+        {"&", Tree.Kind.AND, Tree.Kind.AND_ASSIGNMENT}, {"|", Tree.Kind.OR, Tree.Kind.OR_ASSIGNMENT},
+        {"^", Tree.Kind.XOR, Tree.Kind.XOR_ASSIGNMENT},
+        {"<<", Tree.Kind.LEFT_SHIFT, Tree.Kind.LEFT_SHIFT_ASSIGNMENT},
+        {">>", Tree.Kind.RIGHT_SHIFT, Tree.Kind.RIGHT_SHIFT_ASSIGNMENT},
+        {">>>", Tree.Kind.UNSIGNED_RIGHT_SHIFT, Tree.Kind.UNSIGNED_RIGHT_SHIFT_ASSIGNMENT},
+        {"+", Tree.Kind.PLUS, Tree.Kind.PLUS_ASSIGNMENT, Tree.Kind.UNARY_PLUS},
+        {"-", Tree.Kind.MINUS, Tree.Kind.MINUS_ASSIGNMENT, Tree.Kind.UNARY_MINUS},
+        {"*", Tree.Kind.MULTIPLY, Tree.Kind.MULTIPLY_ASSIGNMENT},
+        {"/", Tree.Kind.DIVIDE, Tree.Kind.DIVIDE_ASSIGNMENT},
+        {"%", Tree.Kind.REMAINDER, Tree.Kind.REMAINDER_ASSIGNMENT},
+        {"==", Tree.Kind.EQUAL_TO}, {"!=", Tree.Kind.NOT_EQUAL_TO}, {"<", Tree.Kind.LESS_THAN},
+        {"<=", Tree.Kind.LESS_THAN_EQUAL}, {">", Tree.Kind.GREATER_THAN},
+        {">=", Tree.Kind.GREATER_THAN_EQUAL},
+        {"++", Tree.Kind.PREFIX_INCREMENT, Tree.Kind.POSTFIX_INCREMENT},
+        {"--", Tree.Kind.PREFIX_DECREMENT, Tree.Kind.POSTFIX_DECREMENT},
+      };
+      for (Object[] row : table) {
+        for (int i = 1; i < row.length; i++) OPERATORS.put((Tree.Kind) row[i], (String) row[0]);
+      }
+    }
+
+    static final Map<Tree.Kind, String> STATEMENT_FACTS =
+        Map.of(
+            Tree.Kind.IF, "if",
+            Tree.Kind.SWITCH, "switch",
+            Tree.Kind.SWITCH_EXPRESSION, "switch",
+            Tree.Kind.BREAK, "break",
+            Tree.Kind.CONTINUE, "continue",
+            Tree.Kind.TRY, "try",
+            Tree.Kind.INSTANCE_OF, "instanceof",
+            Tree.Kind.TYPE_CAST, "cast",
+            Tree.Kind.INTERFACE, "interface",
+            Tree.Kind.ENUM, "enum");
+
+    static final java.util.Set<Tree.Kind> LOOP_KINDS =
+        java.util.EnumSet.of(
+            Tree.Kind.FOR_LOOP,
+            Tree.Kind.ENHANCED_FOR_LOOP,
+            Tree.Kind.WHILE_LOOP,
+            Tree.Kind.DO_WHILE_LOOP);
+
+    // Second pass, once mainClass is known: statement kinds, operators,
+    // modifiers and the student's own classes (who extends whom, which
+    // methods each declares, for override and overload).
+    void collectFacts(CompilationUnitTree unit) {
+      Map<String, String> parents = new LinkedHashMap<>();
+      Map<String, java.util.Set<String>> methodsOf = new LinkedHashMap<>();
+      new TreePathScanner<Void, Void>() {
+        int loopDepth;
+
+        @Override
+        public Void scan(Tree tree, Void unused) {
+          if (tree == null) return null;
+          String fact = STATEMENT_FACTS.get(tree.getKind());
+          if (fact != null) facts.add(fact);
+          String op = OPERATORS.get(tree.getKind());
+          if (op != null) operators.add(op);
+          boolean loop = LOOP_KINDS.contains(tree.getKind());
+          if (loop && loopDepth > 0) facts.add("nested_loop");
+          if (loop) loopDepth++;
+          try {
+            return super.scan(tree, unused);
+          } finally {
+            if (loop) loopDepth--;
+          }
+        }
+
+        @Override
+        public Void visitClass(ClassTree node, Void unused) {
+          String name = node.getSimpleName().toString();
+          boolean isClass =
+              node.getKind() == Tree.Kind.CLASS || node.getKind() == Tree.Kind.RECORD;
+          if (isClass && !name.isEmpty() && !name.equals(mainClass)) ownClasses.add(name);
+          if (node.getExtendsClause() != null) {
+            facts.add("extends");
+            parents.put(name, simpleType(node.getExtendsClause()));
+          }
+          if (!node.getImplementsClause().isEmpty()) facts.add("implements");
+          // A static nested class is how single-file Java holds its classes,
+          // so it doesn't count as using static.
+          for (var m : node.getModifiers().getFlags()) {
+            if (m != javax.lang.model.element.Modifier.STATIC) modifiers.add(m.toString());
+          }
+          java.util.Set<String> declared = new java.util.HashSet<>();
+          for (Tree member : node.getMembers()) {
+            if (member instanceof MethodTree m && !m.getName().contentEquals("<init>")) {
+              if (!declared.add(m.getName().toString())) facts.add("overload");
+            }
+          }
+          methodsOf.put(name, declared);
+          return super.visitClass(node, unused);
+        }
+
+        @Override
+        public Void visitMethod(MethodTree node, Void unused) {
+          // Every helper method next to main has to be static, so only a
+          // method of the student's own class shows they chose static.
+          Tree owner = getCurrentPath().getParentPath().getLeaf();
+          boolean besideMain =
+              owner instanceof ClassTree c && c.getSimpleName().contentEquals(mainClass);
+          if (!node.getName().contentEquals("main")) {
+            for (var m : node.getModifiers().getFlags()) {
+              if (!(besideMain && m == javax.lang.model.element.Modifier.STATIC)) {
+                modifiers.add(m.toString());
+              }
+            }
+          }
+          for (var a : node.getModifiers().getAnnotations()) {
+            if (simpleType(a.getAnnotationType()).equals("Override")) facts.add("override");
+          }
+          return super.visitMethod(node, unused);
+        }
+
+        @Override
+        public Void visitVariable(VariableTree node, Void unused) {
+          Tree parent = getCurrentPath().getParentPath().getLeaf();
+          if (!(parent instanceof MethodTree)) {
+            for (var m : node.getModifiers().getFlags()) modifiers.add(m.toString());
+          }
+          return super.visitVariable(node, unused);
+        }
+      }.scan(unit, null);
+      // Overriding without @Override still overrides: a class redeclaring a
+      // method its own parent class declares.
+      for (Map.Entry<String, String> e : parents.entrySet()) {
+        java.util.Set<String> mine = methodsOf.getOrDefault(e.getKey(), java.util.Set.of());
+        java.util.Set<String> parentMethods = methodsOf.get(e.getValue());
+        if (parentMethods != null && mine.stream().anyMatch(parentMethods::contains)) {
+          facts.add("override");
+        }
+      }
+    }
+
     /** Splices the case's values into this program's injection points. */
     Injected withInjected(Map<String, Object> inject) {
       if (inject.isEmpty()) return new Injected(source, mainClass);
@@ -545,6 +701,17 @@ public class Runner {
           return parsed.methodNames.contains(name);
         case "recursion":
           return parsed.hasRecursion;
+        case "if", "switch", "break", "continue", "try", "nested_loop", "instanceof", "cast",
+            "interface", "enum", "extends", "implements", "override", "overload":
+          return parsed.facts.contains(kind);
+        case "operator":
+          return parsed.operators.contains(name);
+        case "modifier":
+          return parsed.modifiers.contains(name);
+        case "class":
+          return name.isEmpty() ? !parsed.ownClasses.isEmpty() : parsed.ownClasses.contains(name);
+        case "object":
+          return parsed.newTypes.stream().anyMatch(parsed.ownClasses::contains);
         case "loop":
           {
             String type = rule.get("type") instanceof String s ? s : "";

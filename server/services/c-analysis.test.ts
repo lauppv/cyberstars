@@ -8,6 +8,7 @@ import {
   applyInjection,
   prepareC,
 } from './c-analysis.js';
+import type { StructureFailure } from '../../shared/tests.js';
 
 const PROGRAM = `#include <stdio.h>
 
@@ -76,6 +77,91 @@ describe('checkStructure', () => {
     const rules = { requires: [{ kind: 'function' as const }, { kind: 'recursion' as const }] };
     expect(checkStructure(plain, rules)).toHaveLength(2);
     expect(checkStructure(recursive, rules)).toHaveLength(0);
+  });
+
+  // Each new kind: a program with the construct, and one without it.
+  it.each([
+    [
+      { kind: 'if' },
+      'int main(void){ int x = 3; if (x > 2) x = 1; return 0; }',
+      'int main(void){ int x = 3; x = x > 2 ? 1 : x; return 0; }',
+    ],
+    [
+      { kind: 'switch' },
+      'int main(void){ int c = 1; switch (c) { case 1: c = 2; break; } return 0; }',
+      'int main(void){ int c = 1; if (c == 1) c = 2; return 0; }',
+    ],
+    [
+      { kind: 'break' },
+      'int main(void){ for (int i = 0; i < 9; i++) { if (i == 3) break; } return 0; }',
+      'int main(void){ for (int i = 0; i < 3; i++) { } return 0; }',
+    ],
+    [
+      { kind: 'continue' },
+      'int main(void){ for (int i = 0; i < 3; i++) { if (i == 1) continue; } return 0; }',
+      'int main(void){ for (int i = 0; i < 3; i++) { } return 0; }',
+    ],
+    [
+      { kind: 'nested_loop' },
+      'int main(void){ for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++) { } return 0; }',
+      'int main(void){ for (int i = 0; i < 2; i++) { } for (int j = 0; j < 2; j++) { } return 0; }',
+    ],
+    [
+      { kind: 'operator', name: '&&' },
+      'int main(void){ int a = 1 && 0; return 0; }',
+      'int main(void){ int a = 1 & 0; return 0; }',
+    ],
+    [
+      { kind: 'operator', name: '<<' },
+      'int main(void){ int a = 1; a <<= 2; return 0; }',
+      'int main(void){ int a = 1 * 4; return 0; }',
+    ],
+    [
+      { kind: 'operator', name: '&' },
+      'int main(void){ int a = 6 & 3; return 0; }',
+      'int main(void){ int a = 6; int *p = &a; return 0; }',
+    ],
+    [
+      { kind: 'pointer' },
+      'int main(void){ int a = 1; int *p = &a; return 0; }',
+      'int main(void){ int a = 1; int b = a; return 0; }',
+    ],
+    [
+      { kind: 'sizeof' },
+      'int main(void){ int v[3]; int n = sizeof(v) / sizeof(v[0]); return 0; }',
+      'int main(void){ int v[3]; int n = 3; return 0; }',
+    ],
+    [
+      { kind: 'struct' },
+      'struct point { int x; };\nint main(void){ struct point p; p.x = 1; return 0; }',
+      'int main(void){ int x = 1; return 0; }',
+    ],
+    [
+      { kind: 'typedef' },
+      'typedef int score;\nint main(void){ score s = 1; return 0; }',
+      'int main(void){ int s = 1; return 0; }',
+    ],
+    [
+      { kind: 'enum' },
+      'enum color { RED, GREEN };\nint main(void){ enum color c = RED; return 0; }',
+      'int main(void){ int c = 0; return 0; }',
+    ],
+    [
+      { kind: 'define' },
+      '#define PI 3.14\nint main(void){ double r = PI; return 0; }',
+      'int main(void){ double r = 3.14; return 0; }',
+    ],
+    [
+      { kind: 'define', name: 'AREA' },
+      '#define AREA(w, h) ((w) * (h))\nint main(void){ int a = AREA(2, 3); return 0; }',
+      '#define SIZE 3\nint main(void){ int a = 6; return 0; }',
+    ],
+  ] as const)('requires %j only where the construct is there', async (rule, withIt, without) => {
+    const requires = [rule as StructureFailure['rule']];
+    expect(checkStructure(await parseC(withIt), { requires })).toEqual([]);
+    expect(checkStructure(await parseC(without), { requires })).toEqual([
+      { type: 'require', rule },
+    ]);
   });
 
   it('recognises a variable declared without an initializer', async () => {

@@ -127,6 +127,80 @@ def has_string_expr(tree):
     return False
 
 
+LOOP_STATEMENTS = (ast.For, ast.AsyncFor, ast.While)
+
+# Spec spelling of each operator: the symbol for the ones that have one,
+# the keyword for and / or / not / in / is.
+OPERATORS = {
+    ast.And: "and", ast.Or: "or", ast.Not: "not", ast.Add: "+", ast.Sub: "-",
+    ast.Mult: "*", ast.Div: "/", ast.FloorDiv: "//", ast.Mod: "%", ast.Pow: "**",
+    ast.BitAnd: "&", ast.BitOr: "|", ast.BitXor: "^", ast.Invert: "~",
+    ast.LShift: "<<", ast.RShift: ">>", ast.Eq: "==", ast.NotEq: "!=", ast.Lt: "<",
+    ast.LtE: "<=", ast.Gt: ">", ast.GtE: ">=", ast.In: "in", ast.NotIn: "not in",
+    ast.Is: "is", ast.IsNot: "is not",
+}
+
+
+def operators_used(tree):
+    found = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.BoolOp):
+            found.add(OPERATORS[type(node.op)])
+        elif isinstance(node, (ast.BinOp, ast.UnaryOp, ast.AugAssign)):
+            found.add(OPERATORS.get(type(node.op)))
+        elif isinstance(node, ast.Compare):
+            found.update(OPERATORS[type(op)] for op in node.ops)
+    return found
+
+
+def has_nested_loop(tree):
+    for outer in ast.walk(tree):
+        if isinstance(outer, LOOP_STATEMENTS):
+            body = outer.body + outer.orelse
+            if any(isinstance(n, LOOP_STATEMENTS) for stmt in body for n in ast.walk(stmt)):
+                return True
+    return False
+
+
+def class_names(tree):
+    return {n.name for n in ast.walk(tree) if isinstance(n, ast.ClassDef)}
+
+
+def has_object(tree):
+    # A class of the student's own, instantiated: Dog(...) where class Dog exists.
+    own = class_names(tree)
+    return any(
+        isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id in own
+        for n in ast.walk(tree)
+    )
+
+
+def has_return_value(tree):
+    return any(
+        isinstance(n, ast.Return) and n.value is not None
+        for fn in function_defs(tree)
+        for n in ast.walk(fn)
+    )
+
+
+def has_default_param(tree):
+    return any(
+        fn.args.defaults or any(d is not None for d in fn.args.kw_defaults)
+        for fn in function_defs(tree)
+    )
+
+
+TRY_NODES = tuple(t for t in (ast.Try, getattr(ast, "TryStar", None)) if t)
+STATEMENT_KINDS = {
+    "if": (ast.If,),
+    "switch": (getattr(ast, "Match", ()),),
+    "break": (ast.Break,),
+    "continue": (ast.Continue,),
+    "try": TRY_NODES,
+    "slice": (ast.Slice,),
+}
+
+
 def rule_holds(tree, source, rule):
     kind = rule.get("kind")
     if kind == "call":
@@ -147,6 +221,22 @@ def rule_holds(tree, source, rule):
         return has_comment(source, rule.get("contains"))
     if kind == "string_expr":
         return has_string_expr(tree)
+    if kind in STATEMENT_KINDS:
+        nodes = tuple(t for t in STATEMENT_KINDS[kind] if isinstance(t, type))
+        return any(isinstance(n, nodes) for n in ast.walk(tree))
+    if kind == "nested_loop":
+        return has_nested_loop(tree)
+    if kind == "operator":
+        return rule.get("name") in operators_used(tree)
+    if kind == "class":
+        names = class_names(tree)
+        return rule["name"] in names if rule.get("name") else bool(names)
+    if kind == "object":
+        return has_object(tree)
+    if kind == "return":
+        return has_return_value(tree)
+    if kind == "default_param":
+        return has_default_param(tree)
     return True
 
 

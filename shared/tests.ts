@@ -7,6 +7,8 @@
 // the set of lines (thread/process output whose line order is nondeterministic).
 export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered';
 
+// Which language knows which kind lives in STRUCTURE_KINDS (validate-tests);
+// a runner treats a kind it doesn't know as present, so a spec must not use one.
 type StructureKind =
   | 'call'
   | 'variable'
@@ -16,15 +18,48 @@ type StructureKind =
   | 'fstring'
   | 'int_literal'
   | 'comment'
-  | 'string_expr';
+  | 'string_expr'
+  // statements: switch is Python's match
+  | 'if'
+  | 'switch'
+  | 'break'
+  | 'continue'
+  | 'try'
+  | 'nested_loop'
+  /** an operator by its spelling: '&&', 'and', '%', '<<', 'not in' ... */
+  | 'operator'
+  // classes: a class of the student's own (optionally by name), and an object made from one
+  | 'class'
+  | 'object'
+  | 'extends'
+  | 'implements'
+  | 'interface'
+  | 'enum'
+  | 'override'
+  | 'overload'
+  /** java: a field, method, local or class carrying `name` (static, final, private, abstract) */
+  | 'modifier'
+  | 'instanceof'
+  | 'cast'
+  // python
+  | 'return'
+  | 'default_param'
+  | 'slice'
+  // c
+  | 'struct'
+  | 'typedef'
+  | 'pointer'
+  | 'sizeof'
+  | 'define';
 
 type LoopType = 'for' | 'while' | 'do_while' | 'comprehension';
 
 interface StructureRule {
   kind: StructureKind;
   /**
-   * call / variable / function name. A function rule without one asks for any
-   * function of the student's own (main aside), named however they like.
+   * call / variable / function / class name, operator spelling, modifier
+   * keyword, or define name. A function or class rule without one asks for any
+   * function / class of the student's own (main aside), named however they like.
    */
   name?: string;
   /**

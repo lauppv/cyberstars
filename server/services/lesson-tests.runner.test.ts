@@ -116,6 +116,69 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(lines[1]).toMatchObject({ user: { stdout: '14\n' }, solution: { stdout: '14\n' } });
   });
 
+  // Each new kind: a program that has the construct, and one that only gets
+  // the same output without it.
+  it.each([
+    [{ kind: 'if' }, 'x = 3\nif x > 2:\n    print(x)\n', 'x = 3\nprint(x if x > 2 else 0)\n'],
+    [
+      { kind: 'switch' },
+      'c = 1\nmatch c:\n    case 1:\n        print("a")\n',
+      'c = 1\nif c == 1:\n    print("a")\n',
+    ],
+    [
+      { kind: 'break' },
+      'for i in range(9):\n    if i == 3:\n        break\n',
+      'for i in range(3):\n    pass\n',
+    ],
+    [
+      { kind: 'continue' },
+      'for i in range(3):\n    if i == 1:\n        continue\n    print(i)\n',
+      'for i in range(3):\n    if i != 1:\n        print(i)\n',
+    ],
+    [
+      { kind: 'nested_loop' },
+      'for i in range(2):\n    for j in range(2):\n        print(i, j)\n',
+      'for i in range(2):\n    print([j for j in range(2)])\n',
+    ],
+    [
+      { kind: 'try' },
+      'try:\n    int("x")\nexcept ValueError:\n    print("no")\n',
+      'print("no" if not "x".isdigit() else 1)\n',
+    ],
+    [{ kind: 'slice' }, 'print("abc"[::-1])\n', 'print("".join(reversed("abc")))\n'],
+    [{ kind: 'operator', name: 'and' }, 'print(1 > 0 and 2 > 1)\n', 'print(all([1 > 0, 2 > 1]))\n'],
+    [{ kind: 'operator', name: '%' }, 'print(7 % 2)\n', 'print(divmod(7, 2)[1])\n'],
+    [{ kind: 'class' }, 'class Ship:\n    pass\n', 'ship = {}\n'],
+    [{ kind: 'class', name: 'Ship' }, 'class Ship:\n    pass\n', 'class Boat:\n    pass\n'],
+    [
+      { kind: 'object' },
+      'class Dog:\n    pass\n\nrex = Dog()\n',
+      'class Dog:\n    pass\n\nrex = dict()\n',
+    ],
+    [
+      { kind: 'return' },
+      'def f(x):\n    return x * 2\n\nprint(f(2))\n',
+      'def f(x):\n    print(x * 2)\n\nf(2)\n',
+    ],
+    [
+      { kind: 'default_param' },
+      'def dock(ship, bay=1):\n    print(ship, bay)\n',
+      'def dock(ship, bay):\n    print(ship, bay)\n',
+    ],
+  ])('requires %j only where the construct is there', (rule, withIt, without) => {
+    const header = (userCode: string) =>
+      runRunner(
+        'lesson-tests.runner.py',
+        { userCode, solutionCode: '', structure: { requires: [rule] }, cases: [] },
+        [],
+      )[0];
+    expect(header(withIt)).toEqual({ syntaxError: null, structureFailures: [] });
+    expect(header(without)).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule }],
+    });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
