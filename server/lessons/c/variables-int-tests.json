@@ -2,8 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "age" },
-      { "kind": "variable", "name": "access_level" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "variable", "name": "access_level" }
     ]
   },
   "cases": [
@@ -11,6 +10,31 @@
     { "inject": { "age": 0, "access_level": 0 } },
     { "inject": { "age": 1, "access_level": 1 } },
     { "inject": { "age": 120, "access_level": 9 } },
-    { "inject": { "age": -5, "access_level": 7 } }
+    { "inject": { "age": -5, "access_level": 7 } },
+    { "inject": { "age": 18, "access_level": 1 }, "generated": true },
+    { "inject": { "age": 21, "access_level": 2 }, "generated": true },
+    { "inject": { "age": 30, "access_level": 5 }, "generated": true },
+    { "inject": { "age": 99, "access_level": 10 }, "generated": true },
+    { "inject": { "age": 100, "access_level": 100 }, "generated": true },
+    { "inject": { "age": 65, "access_level": 4 }, "generated": true },
+    { "inject": { "age": 7, "access_level": 0 }, "generated": true },
+    { "inject": { "age": 0, "access_level": 9 }, "generated": true },
+    { "inject": { "age": 2, "access_level": 3 }, "generated": true },
+    { "inject": { "age": 3, "access_level": 2 }, "generated": true },
+    { "inject": { "age": 44, "access_level": 44 }, "generated": true },
+    { "inject": { "age": -1, "access_level": -1 }, "generated": true },
+    { "inject": { "age": 1000, "access_level": -3 }, "generated": true },
+    { "inject": { "age": 123456, "access_level": 654321 }, "generated": true },
+    { "inject": { "age": 2147483647, "access_level": -2147483647 }, "generated": true },
+    { "inject": { "age": 57, "access_level": 12 }, "generated": true },
+    { "inject": { "age": 16, "access_level": 8 }, "generated": true },
+    { "inject": { "age": 33, "access_level": 6 }, "generated": true },
+    { "inject": { "age": 80, "access_level": 1 }, "generated": true },
+    { "inject": { "age": 25, "access_level": 99 }, "generated": true },
+    { "inject": { "age": 21, "access_level": 6 }, "generated": true },
+    { "inject": { "age": 51, "access_level": 5 }, "generated": true },
+    { "inject": { "age": 71, "access_level": 13 }, "generated": true },
+    { "inject": { "age": 89, "access_level": 3 }, "generated": true },
+    { "inject": { "age": 91, "access_level": 16 }, "generated": true }
   ]
 }

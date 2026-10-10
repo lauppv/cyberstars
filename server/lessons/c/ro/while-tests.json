@@ -2,8 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "n" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "loop", "type": "while" }
     ]
   },
   "cases": [
@@ -11,6 +10,38 @@
     { "inject": { "n": 1 } },
     { "inject": { "n": 0 } },
     { "inject": { "n": 3 } },
-    { "inject": { "n": 8 } }
+    { "inject": { "n": 8 } },
+    { "inject": { "n": 2 }, "generated": true },
+    { "inject": { "n": 4 }, "generated": true },
+    { "inject": { "n": 6 }, "generated": true },
+    { "inject": { "n": 7 }, "generated": true },
+    { "inject": { "n": 9 }, "generated": true },
+    { "inject": { "n": 10 }, "generated": true },
+    { "inject": { "n": 11 }, "generated": true },
+    { "inject": { "n": 12 }, "generated": true },
+    { "inject": { "n": 13 }, "generated": true },
+    { "inject": { "n": 15 }, "generated": true },
+    { "inject": { "n": 16 }, "generated": true },
+    { "inject": { "n": 17 }, "generated": true },
+    { "inject": { "n": 19 }, "generated": true },
+    { "inject": { "n": 20 }, "generated": true },
+    { "inject": { "n": 21 }, "generated": true },
+    { "inject": { "n": 25 }, "generated": true },
+    { "inject": { "n": 30 }, "generated": true },
+    { "inject": { "n": 31 }, "generated": true },
+    { "inject": { "n": 32 }, "generated": true },
+    { "inject": { "n": 42 }, "generated": true },
+    { "inject": { "n": 50 }, "generated": true },
+    { "inject": { "n": 63 }, "generated": true },
+    { "inject": { "n": 64 }, "generated": true },
+    { "inject": { "n": 99 }, "generated": true },
+    { "inject": { "n": 100 }, "generated": true },
+    { "inject": { "n": 101 }, "generated": true },
+    { "inject": { "n": 128 }, "generated": true },
+    { "inject": { "n": 250 }, "generated": true },
+    { "inject": { "n": 500 }, "generated": true },
+    { "inject": { "n": 1000 }, "generated": true },
+    { "inject": { "n": -1 }, "generated": true },
+    { "inject": { "n": -7 }, "generated": true }
   ]
 }

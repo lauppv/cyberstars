@@ -2,8 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "varsta" },
-      { "kind": "variable", "name": "nivel_acces" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "variable", "name": "nivel_acces" }
     ]
   },
   "cases": [
@@ -11,6 +10,31 @@
     { "inject": { "varsta": 0, "nivel_acces": 0 } },
     { "inject": { "varsta": 1, "nivel_acces": 1 } },
     { "inject": { "varsta": 120, "nivel_acces": 9 } },
-    { "inject": { "varsta": -5, "nivel_acces": 7 } }
+    { "inject": { "varsta": -5, "nivel_acces": 7 } },
+    { "inject": { "varsta": 18, "nivel_acces": 1 }, "generated": true },
+    { "inject": { "varsta": 21, "nivel_acces": 2 }, "generated": true },
+    { "inject": { "varsta": 30, "nivel_acces": 5 }, "generated": true },
+    { "inject": { "varsta": 99, "nivel_acces": 10 }, "generated": true },
+    { "inject": { "varsta": 100, "nivel_acces": 100 }, "generated": true },
+    { "inject": { "varsta": 65, "nivel_acces": 4 }, "generated": true },
+    { "inject": { "varsta": 7, "nivel_acces": 0 }, "generated": true },
+    { "inject": { "varsta": 0, "nivel_acces": 9 }, "generated": true },
+    { "inject": { "varsta": 2, "nivel_acces": 3 }, "generated": true },
+    { "inject": { "varsta": 3, "nivel_acces": 2 }, "generated": true },
+    { "inject": { "varsta": 44, "nivel_acces": 44 }, "generated": true },
+    { "inject": { "varsta": -1, "nivel_acces": -1 }, "generated": true },
+    { "inject": { "varsta": 1000, "nivel_acces": -3 }, "generated": true },
+    { "inject": { "varsta": 123456, "nivel_acces": 654321 }, "generated": true },
+    { "inject": { "varsta": 2147483647, "nivel_acces": -2147483647 }, "generated": true },
+    { "inject": { "varsta": 57, "nivel_acces": 12 }, "generated": true },
+    { "inject": { "varsta": 16, "nivel_acces": 8 }, "generated": true },
+    { "inject": { "varsta": 33, "nivel_acces": 6 }, "generated": true },
+    { "inject": { "varsta": 80, "nivel_acces": 1 }, "generated": true },
+    { "inject": { "varsta": 25, "nivel_acces": 99 }, "generated": true },
+    { "inject": { "varsta": 21, "nivel_acces": 6 }, "generated": true },
+    { "inject": { "varsta": 51, "nivel_acces": 5 }, "generated": true },
+    { "inject": { "varsta": 71, "nivel_acces": 13 }, "generated": true },
+    { "inject": { "varsta": 89, "nivel_acces": 3 }, "generated": true },
+    { "inject": { "varsta": 91, "nivel_acces": 16 }, "generated": true }
   ]
 }

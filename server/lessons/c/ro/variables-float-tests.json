@@ -2,14 +2,43 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "temperatura" },
-      { "kind": "variable", "name": "umiditate" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "variable", "name": "umiditate" }
     ]
   },
   "cases": [
     { "visible": true, "inject": { "temperatura": 21.6, "umiditate": 45.5 } },
     { "inject": { "temperatura": 4.75, "umiditate": 0.05 } },
     { "inject": { "temperatura": 100, "umiditate": 3.25 } },
-    { "inject": { "temperatura": 0, "umiditate": 12.5 } }
+    { "inject": { "temperatura": 0, "umiditate": 12.5 } },
+    { "inject": { "temperatura": 0, "umiditate": 0 }, "generated": true },
+    { "inject": { "temperatura": 1, "umiditate": 100 }, "generated": true },
+    { "inject": { "temperatura": -5.5, "umiditate": 60 }, "generated": true },
+    { "inject": { "temperatura": -12.25, "umiditate": 33.3 }, "generated": true },
+    { "inject": { "temperatura": 18.2, "umiditate": 99.99 }, "generated": true },
+    { "inject": { "temperatura": 22.456, "umiditate": 47.123 }, "generated": true },
+    { "inject": { "temperatura": 19.999, "umiditate": 50.001 }, "generated": true },
+    { "inject": { "temperatura": 23.1, "umiditate": 40.04 }, "generated": true },
+    { "inject": { "temperatura": 37, "umiditate": 0.01 }, "generated": true },
+    { "inject": { "temperatura": -0.5, "umiditate": 0.99 }, "generated": true },
+    { "inject": { "temperatura": 25.678, "umiditate": 55.557 }, "generated": true },
+    { "inject": { "temperatura": 30.01, "umiditate": 10.1 }, "generated": true },
+    { "inject": { "temperatura": 15.333, "umiditate": 66.667 }, "generated": true },
+    { "inject": { "temperatura": -20, "umiditate": 85.4 }, "generated": true },
+    { "inject": { "temperatura": 45.9, "umiditate": 20.02 }, "generated": true },
+    { "inject": { "temperatura": 12.3456, "umiditate": 78.9012 }, "generated": true },
+    { "inject": { "temperatura": 0.004, "umiditate": 0.006 }, "generated": true },
+    { "inject": { "temperatura": 16.4, "umiditate": 49.9 }, "generated": true },
+    { "inject": { "temperatura": 27.75, "umiditate": 62.25 }, "generated": true },
+    { "inject": { "temperatura": -3.1416, "umiditate": 2.7183 }, "generated": true },
+    { "inject": { "temperatura": 9.9, "umiditate": 90.09 }, "generated": true },
+    { "inject": { "temperatura": 33.333, "umiditate": 33.333 }, "generated": true },
+    { "inject": { "temperatura": 20.5, "umiditate": 45.5 }, "generated": true },
+    { "inject": { "temperatura": 21.61, "umiditate": 45.49 }, "generated": true },
+    { "inject": { "temperatura": -40, "umiditate": 100 }, "generated": true },
+    { "inject": { "temperatura": 50, "umiditate": 5 }, "generated": true },
+    { "inject": { "temperatura": 14.8, "umiditate": 72.6 }, "generated": true },
+    { "inject": { "temperatura": 26.66, "umiditate": 38.88 }, "generated": true },
+    { "inject": { "temperatura": 11.11, "umiditate": 22.22 }, "generated": true },
+    { "inject": { "temperatura": 28.4, "umiditate": 58.7 }, "generated": true }
   ]
 }
