@@ -1,0 +1,5 @@
+code = input("Code word: ")
+print(code[0])
+print(code[3])
+print(code[:4])
+print(code[-(len(code) - 4):] if len(code) > 4 else "")

@@ -2,28 +2,210 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "citiri" },
       { "kind": "loop" },
-      { "kind": "call", "name": "int" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "int" }
     ]
   },
   "cases": [
+    { "visible": true, "inject": { "citiri": { "$list": ["42", "x9", "100", "7", "bad", "13"] } } },
+    { "visible": true, "inject": { "citiri": { "$list": ["1", "2", "3"] } } },
+    { "inject": { "citiri": { "$list": ["a", "b", "c"] } } },
+    { "inject": { "citiri": { "$list": ["50", "zz", "50", "0"] } } },
+    { "inject": { "citiri": { "$list": ["999"] } } },
+    { "inject": { "citiri": { "$list": ["0"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["bad"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["-5", "5"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["-1", "-2", "x"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["007", "10"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["12a", "a12", "1"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["100", "200", "300", "400"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["?", "?", "?", "?", "?"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["99999", "1"] } }, "generated": true },
     {
-      "visible": true,
-      "inject": { "citiri": { "$list": ["42", "x9", "100", "7", "bad", "13"] } }
+      "inject": {
+        "citiri": { "$list": ["nan!", "a12", "N/A", "a12", "one", "bad", "abc", "nan!"] }
+      },
+      "generated": true
     },
     {
-      "visible": true,
-      "inject": { "citiri": { "$list": ["1", "2", "3"] } }
+      "inject": {
+        "citiri": {
+          "$list": [
+            "997",
+            "74",
+            "-1",
+            "-36",
+            "37459",
+            "734",
+            "15146",
+            "4",
+            "93916",
+            "-38",
+            "4",
+            "61940"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["a12", "#5", "--"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": { "$list": ["--", "0", "--", "9", "-34", "85", "N/A", "?", "12a", "one", "one"] }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["abc", "N/A", "752"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["9", "a12", "-5", "one", "a12", "#5", "2", "N/A", "bad", "12a", "x9"]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["one", "-42", "8"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["4"] } }, "generated": true },
+    {
+      "inject": { "citiri": { "$list": ["10864", "931", "90803", "6", "6", "-24", "9", "8"] } },
+      "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["a", "b", "c"] } }
+      "inject": {
+        "citiri": { "$list": ["81544", "386", "685", "213", "234", "7", "15788", "51141"] }
+      },
+      "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["50", "zz", "50", "0"] } }
+      "inject": {
+        "citiri": {
+          "$list": ["9", "one", "#5", "?", "nan!", "2", "4", "-44", "214", "557", "nan!"]
+        }
+      },
+      "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["999"] } }
+      "inject": { "citiri": { "$list": ["a12", "nan!", "zz", "N/A", "#5", "12a"] } },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["-15", "3", "-31", "0", "37078", "3", "?", "68701"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": { "$list": ["bad", "12a", "err", "a12", "a12", "a12", "seven", "zz"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["36777", "1646", "x9", "16981", "abc", "a12", "63018", "--", "547", "0"]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["x9"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["?", "12a", "#5", "648", "83969", "173", "636", "-39", "3", "N/A", "bad"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["zz", "818", "seven", "bad", "seven"] } },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["a12", "5", "x9", "a12", "502", "abc"] } },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["18622", "bad", "12a"] } }, "generated": true },
+    {
+      "inject": { "citiri": { "$list": ["N/A", "x9", "x9", "abc", "?", "--", "one"] } },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["93362", "-13", "21976"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["24796", "abc", "?"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["?", "-36", "seven", "abc", "--"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": { "$list": ["#5", "--", "127", "--", "nan!", "--", "err", "?", "a12"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["bad", "nan!", "a12", "nan!", "--", "abc", "abc"] } },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["x9", "12a", "a12", "err", "err", "err", "err", "#5"] } },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["609", "99089", "57297", "13907", "3"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["N/A", "-41", "seven", "one", "one", "?", "a12", "985", "bad", "err"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": { "$list": ["err", "seven", "#5", "seven", "N/A", "N/A", "seven", "seven", "x9"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["294", "505", "7", "28939", "409", "343", "-44", "75444", "7", "40820"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": [
+            "abc",
+            "seven",
+            "43263",
+            "40946",
+            "--",
+            "-45",
+            "seven",
+            "--",
+            "387",
+            "12762",
+            "4",
+            "86354"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["nan!", "?"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["96", "zz"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["N/A", "a12", "12a", "?", "65705", "#5", "one", "6", "1", "#5", "bad"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["84254", "?", "--", "err", "0", "abc", "abc"] } },
+      "generated": true
     }
   ]
 }

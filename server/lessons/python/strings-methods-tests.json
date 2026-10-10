@@ -1,17 +1,50 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "input" }] },
   "cases": [
     { "visible": true, "stdin": "Andromeda\n" },
     { "visible": true, "stdin": "Nebula\n" },
     { "stdin": "Orion\n" },
     { "stdin": "Quasar\n" },
     { "stdin": "Meteor\n" },
-    { "stdin": "Pulsar\n" }
+    { "stdin": "Pulsar\n" },
+    { "stdin": "Mars\n", "generated": true },
+    { "stdin": "Vega\n", "generated": true },
+    { "stdin": "Lyra\n", "generated": true },
+    { "stdin": "Comet\n", "generated": true },
+    { "stdin": "Sirius\n", "generated": true },
+    { "stdin": "Galaxy\n", "generated": true },
+    { "stdin": "Cassiopeia\n", "generated": true },
+    { "stdin": "Betelgeuse\n", "generated": true },
+    { "stdin": "abcd\n", "generated": true },
+    { "stdin": "abcde\n", "generated": true },
+    { "stdin": "Zeta\n", "generated": true },
+    { "stdin": "Polaris\n", "generated": true },
+    { "stdin": "Antares\n", "generated": true },
+    { "stdin": "Supernova\n", "generated": true },
+    { "stdin": "Asteroid\n", "generated": true },
+    { "stdin": "Eclipse\n", "generated": true },
+    { "stdin": "Gravity\n", "generated": true },
+    { "stdin": "Satellite\n", "generated": true },
+    { "stdin": "Telescope\n", "generated": true },
+    { "stdin": "Cosmos\n", "generated": true },
+    { "stdin": "Aurora\n", "generated": true },
+    { "stdin": "Kepler\n", "generated": true },
+    { "stdin": "Hubble\n", "generated": true },
+    { "stdin": "Voyager\n", "generated": true },
+    { "stdin": "Apollo\n", "generated": true },
+    { "stdin": "Gemini\n", "generated": true },
+    { "stdin": "Mercury\n", "generated": true },
+    { "stdin": "Saturn\n", "generated": true },
+    { "stdin": "Neptune\n", "generated": true },
+    { "stdin": "Pluto\n", "generated": true },
+    { "stdin": "UPPERCASE\n", "generated": true },
+    { "stdin": "x1y2z3w4\n", "generated": true },
+    { "stdin": "Interstellar\n", "generated": true },
+    { "stdin": "Wormhole\n", "generated": true },
+    { "stdin": "Photon\n", "generated": true },
+    { "stdin": "Quark\n", "generated": true },
+    { "stdin": "Nova\n", "generated": true },
+    { "stdin": "R2D2\n", "generated": true }
   ]
 }

@@ -120,7 +120,7 @@ Donkey
 
 ## Mission: Star Chart
 
-The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`
+The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`, all of them in a list named `systems`
 
 1. Loop over the list and **unpack** each tuple into three variables: `name`, `distance`, `planets`
 2. Print each system as `name: distance ly, planets planets`, for example `Sol: 0 ly, 8 planets` (`ly` = light years)

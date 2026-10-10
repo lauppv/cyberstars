@@ -1,0 +1,5 @@
+word = input()
+print("A")
+print("r")
+print("Andr")
+print("omeda")

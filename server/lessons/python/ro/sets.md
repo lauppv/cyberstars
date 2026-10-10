@@ -91,7 +91,7 @@ Rezultatul **3**, nu 4, pentru că duplicatul **red** a fost eliminat
 
 ## Misiune: Jurnalul de Semnale
 
-Stația a recepționat o listă de coduri de semnal, iar multe se repetă. Fă următoarele:
+Stația a recepționat o listă de coduri de semnal, păstrată într-o variabilă numită `semnale`, iar multe se repetă. Fă următoarele:
 
 1. Afișează `Total: ` apoi numărul total de semnale (lungimea listei)
 2. Creează o **mulțime** cu codurile unice

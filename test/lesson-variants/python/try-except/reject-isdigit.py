@@ -1,0 +1,10 @@
+readings = ["42", "x9", "100", "7", "bad", "13"]
+total = 0
+corrupted = 0
+for reading in readings:
+    if reading.isdigit():
+        total += int(reading)
+    else:
+        corrupted += 1
+print(f"Total: {total}")
+print(f"Corrupted: {corrupted}")
