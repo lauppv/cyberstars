@@ -6,7 +6,8 @@
       { "kind": "call", "name": "fprintf" },
       { "kind": "call", "name": "fscanf" },
       { "kind": "call", "name": "fclose" },
-      { "kind": "loop" }
+      { "kind": "loop" },
+      { "kind": "operator", "name": "&" }
     ]
   },
   "cases": [

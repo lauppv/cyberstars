@@ -1,1 +1,6 @@
-{ "structure": { "requires": [{ "kind": "loop" }] }, "cases": [{ "visible": true }] }
+{
+  "structure": {
+    "requires": [{ "kind": "loop" }, { "kind": "if" }, { "kind": "operator", "name": "%" }]
+  },
+  "cases": [{ "visible": true }]
+}

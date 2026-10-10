@@ -1,5 +1,10 @@
 {
-  "structure": { "requires": [{ "kind": "call", "name": "scanf" }] },
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "scanf" },
+      { "kind": "operator", "name": "%" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "17 5\n" },
     { "visible": true, "stdin": "20 4\n" },
