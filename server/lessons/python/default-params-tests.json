@@ -6,7 +6,8 @@
       { "kind": "variable", "name": "ship2" },
       { "kind": "variable", "name": "ship3" },
       { "kind": "function", "name": "dock" },
-      { "kind": "call", "name": "dock" }
+      { "kind": "call", "name": "dock" },
+      { "kind": "default_param" }
     ]
   },
   "cases": [

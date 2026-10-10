@@ -7,7 +7,8 @@
       { "kind": "variable", "name": "galaxie3" },
       { "kind": "variable", "name": "galaxie4" },
       { "kind": "variable", "name": "galaxie5" },
-      { "kind": "function", "name": "cea_mai_lunga_stea" }
+      { "kind": "function", "name": "cea_mai_lunga_stea" },
+      { "kind": "return" }
     ]
   },
   "cases": [

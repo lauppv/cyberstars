@@ -6,7 +6,8 @@
       { "kind": "variable", "name": "nava2" },
       { "kind": "variable", "name": "nava3" },
       { "kind": "function", "name": "andocheaza" },
-      { "kind": "call", "name": "andocheaza" }
+      { "kind": "call", "name": "andocheaza" },
+      { "kind": "default_param" }
     ]
   },
   "cases": [

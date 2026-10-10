@@ -7,7 +7,8 @@
       { "kind": "variable", "name": "galaxy3" },
       { "kind": "variable", "name": "galaxy4" },
       { "kind": "variable", "name": "galaxy5" },
-      { "kind": "function", "name": "longest_star" }
+      { "kind": "function", "name": "longest_star" },
+      { "kind": "return" }
     ]
   },
   "cases": [
