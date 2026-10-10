@@ -2,7 +2,7 @@ Folosește un **HashMap** pentru a gestiona un inventar de articole și cantită
 
 ### Date de intrare
 
-- Linia 1: numărul de comenzi N (0 <= N <= 200)
+- Linia 1: numărul de comenzi N (0 <= N <= 2·10^4)
 - Pentru fiecare comandă:
   - Linia 1: tipul comenzii (`adauga`, `elimina` sau `verifica`)
   - Linia 2: numele articolului (un singur cuvânt din litere și cifre, cel mult 20 de caractere; `mar` și `Mar` sunt articole diferite)

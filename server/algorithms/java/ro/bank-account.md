@@ -5,10 +5,11 @@ Citește soldul inițial pe prima linie, apoi procesează operațiile de la stdi
 ### Date de intrare
 
 - Linia 1: soldul inițial (număr întreg, 0 <= sold <= 10^7)
-- Linia 2: numărul de operații N (0 <= N <= 200)
+- Linia 2: numărul de operații N (0 <= N <= 2·10^4)
 - Pentru fiecare operație, două linii:
   - Linia 1: tipul operației (`depune` sau `retrage`)
   - Linia 2: suma (număr întreg, 0 <= suma <= 10^7; niciodată negativă, dar poate fi 0)
+- Soldul nu depășește niciodată 2·10^9, deci încape mereu într-un `int`
 
 ### Rezultat
 

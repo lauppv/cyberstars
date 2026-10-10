@@ -5,10 +5,11 @@ Read the initial balance on the first line, then process operations from stdin. 
 ### Input
 
 - Line 1: initial balance (integer, 0 <= balance <= 10^7)
-- Line 2: number of operations N (0 <= N <= 200)
+- Line 2: number of operations N (0 <= N <= 2·10^4)
 - For each operation, two lines:
   - Line 1: operation type (`deposit` or `withdraw`)
   - Line 2: amount (integer, 0 <= amount <= 10^7; never negative, but it can be 0)
+- The balance never exceeds 2·10^9, so it always fits in an `int`
 
 ### Output
 
