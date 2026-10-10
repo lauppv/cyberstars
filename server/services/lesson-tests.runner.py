@@ -173,6 +173,25 @@ def to_ast_value(v):
     return ast.Constant(v)
 
 
+def scoped_assigns(node, params=frozenset(), top_level=True):
+    # Yields (single-name Assign, parameters of its enclosing functions, whether
+    # it sits outside every function).
+    for child in ast.iter_child_nodes(node):
+        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+            a = child.args
+            names = {arg.arg for arg in a.posonlyargs + a.args + a.kwonlyargs}
+            names |= {arg.arg for arg in (a.vararg, a.kwarg) if arg}
+            yield from scoped_assigns(child, params | names, False)
+            continue
+        if (
+            isinstance(child, ast.Assign)
+            and len(child.targets) == 1
+            and isinstance(child.targets[0], ast.Name)
+        ):
+            yield child, params, top_level
+        yield from scoped_assigns(child, params, top_level)
+
+
 def inject_values(code, values):
     # Replace successive assignments of each input variable with the test
     # values: a scalar targets the first assignment, a list feeds one value per
@@ -185,6 +204,9 @@ def inject_values(code, values):
     # `if __name__ == "__main__":` block still gets its input variables injected.
     # The structure check (`has_variable`) already looks tree-wide; injection has
     # to match, or an honestly-scoped solution would diverge from the oracle.
+    # Two exceptions keep a helper's locals out of it: an assignment to one of
+    # its enclosing functions' parameters is never the input, and once the
+    # variable is assigned outside every function, only those assignments count.
     if not values:
         return code
     tree = ast.parse(code)
@@ -193,11 +215,13 @@ def inject_values(code, values):
     }
     consumed = set()
     assigns = [
-        node
-        for node in ast.walk(tree)
-        if isinstance(node, ast.Assign)
-        and len(node.targets) == 1
-        and isinstance(node.targets[0], ast.Name)
+        (node, top_level)
+        for node, params, top_level in scoped_assigns(tree)
+        if node.targets[0].id not in params
+    ]
+    at_top = {node.targets[0].id for node, top_level in assigns if top_level}
+    assigns = [
+        node for node, top_level in assigns if top_level or node.targets[0].id not in at_top
     ]
     assigns.sort(key=lambda n: (getattr(n, "lineno", 0), getattr(n, "col_offset", 0)))
     for node in assigns:

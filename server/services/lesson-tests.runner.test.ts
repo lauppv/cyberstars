@@ -104,6 +104,18 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
+  it("injects the input variable, not a helper's parameter of the same name", () => {
+    const solution = 'shield = 5\nprint(shield * 2)\n';
+    const user =
+      'def boost(shield):\n    shield = shield * 2\n    return shield\n\nshield = 5\nprint(boost(shield))\n';
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      { userCode: user, solutionCode: solution, structure: {}, cases: [{ inject: { shield: 7 } }] },
+      ['stop'],
+    );
+    expect(lines[1]).toMatchObject({ user: { stdout: '14\n' }, solution: { stdout: '14\n' } });
+  });
+
   it('streams one line per case and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
