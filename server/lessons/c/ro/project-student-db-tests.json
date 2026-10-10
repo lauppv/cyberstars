@@ -1,12 +1,106 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }]
+    "requires": [
+      { "kind": "function", "name": "creeaza_student" },
+      { "kind": "function", "name": "afiseaza_toti" },
+      { "kind": "function", "name": "gaseste_cel_mai_bun" },
+      { "kind": "call", "name": "malloc" },
+      { "kind": "call", "name": "free" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "4\nRitchie 95\nThompson 82\nKernighan 98\nMcIlroy 76\n" },
     { "visible": true, "stdin": "2\nAna 88\nMihai 91\n" },
     { "stdin": "1\nSolo 100\n" },
-    { "stdin": "5\nZeta 10\nEta 90\nTeta 20\nIota 90\nKappa 30\n" }
+    { "stdin": "5\nZeta 10\nEta 90\nTeta 20\nIota 89\nKappa 30\n" },
+    { "stdin": "1\nSolo 0\n", "generated": true },
+    { "stdin": "2\nTop 100\nLow 0\n", "generated": true },
+    { "stdin": "2\nLow 0\nTop 100\n", "generated": true },
+    { "stdin": "4\nA 10\nB 20\nC 30\nD 40\n", "generated": true },
+    { "stdin": "4\nD 40\nC 30\nB 20\nA 10\n", "generated": true },
+    { "stdin": "3\nMid 50\nPeak 99\nMid2 50\n", "generated": true },
+    {
+      "stdin": "40\nStudent0 0\nStudent1 37\nStudent2 74\nStudent3 14\nStudent4 51\nStudent5 88\nStudent6 28\nStudent7 65\nStudent8 5\nStudent9 42\nStudent10 79\nStudent11 19\nStudent12 56\nStudent13 93\nStudent14 33\nStudent15 70\nStudent16 10\nStudent17 47\nStudent18 84\nStudent19 24\nStudent20 61\nStudent21 1\nStudent22 38\nStudent23 75\nStudent24 15\nStudent25 52\nStudent26 89\nStudent27 29\nStudent28 66\nStudent29 6\nStudent30 43\nStudent31 80\nStudent32 20\nStudent33 57\nStudent34 94\nStudent35 34\nStudent36 71\nStudent37 11\nStudent38 48\nStudent39 85\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nRitchie 9\nCerf 44\nThompson 76\nLovelace 77\nWirth 36\nMcIlroy 11\nPike 65\nHamilton 50\nKnuth 53\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nKernighan 77\nMcIlroy 69\nHopper 53\nHamilton 93\nWirth 25\nKnuth 57\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nBackus 25\nHopper 69\nHamilton 86\nLovelace 54\nTuring 38\nKernighan 35\nOssanna 65\nWirth 96\nLiskov 28\n",
+      "generated": true
+    },
+    {
+      "stdin": "12\nPike 82\nHamilton 60\nThompson 50\nTuring 79\nHopper 99\nKernighan 12\nWirth 93\nLiskov 47\nMcIlroy 17\nKnuth 33\nOssanna 19\nBackus 88\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nWirth 95\nOssanna 89\nRitchie 81\nHamilton 93\nHopper 86\nCerf 26\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nWirth 17\nOssanna 55\nThompson 19\nRitchie 37\nCerf 1\nTuring 6\nLiskov 92\nKnuth 5\nBackus 97\n",
+      "generated": true
+    },
+    { "stdin": "1\nKernighan 19\n", "generated": true },
+    {
+      "stdin": "12\nLiskov 57\nKernighan 47\nRitchie 29\nWirth 8\nHopper 3\nMcIlroy 93\nKnuth 24\nTuring 32\nPike 63\nOssanna 2\nThompson 16\nBackus 14\n",
+      "generated": true
+    },
+    { "stdin": "4\nHamilton 97\nLiskov 0\nKnuth 79\nOssanna 14\n", "generated": true },
+    {
+      "stdin": "6\nHopper 29\nOssanna 87\nKnuth 53\nKernighan 100\nBackus 7\nCerf 41\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nKernighan 14\nCerf 55\nBackus 6\nPike 48\nKnuth 52\nLovelace 63\nHopper 100\nThompson 3\nHamilton 84\nWirth 41\nMcIlroy 49\n",
+      "generated": true
+    },
+    { "stdin": "1\nBackus 56\n", "generated": true },
+    { "stdin": "4\nBackus 75\nWirth 29\nTuring 57\nCerf 22\n", "generated": true },
+    {
+      "stdin": "6\nWirth 21\nTuring 22\nLiskov 4\nLovelace 81\nOssanna 58\nRitchie 6\n",
+      "generated": true
+    },
+    { "stdin": "2\nPike 38\nMcIlroy 29\n", "generated": true },
+    { "stdin": "2\nBackus 24\nKnuth 89\n", "generated": true },
+    { "stdin": "3\nHamilton 91\nOssanna 25\nPike 13\n", "generated": true },
+    {
+      "stdin": "6\nMcIlroy 1\nWirth 19\nOssanna 47\nHamilton 24\nTuring 29\nPike 55\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nLiskov 50\nKernighan 59\nHamilton 38\nKnuth 26\nCerf 84\nThompson 14\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nPike 32\nHamilton 9\nWirth 13\nCerf 97\nThompson 28\nOssanna 26\nBackus 16\nLiskov 5\nHopper 35\nLovelace 96\nMcIlroy 99\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nLiskov 15\nTuring 83\nPike 87\nKernighan 46\nBackus 36\nCerf 79\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nCerf 2\nMcIlroy 56\nHopper 29\nLovelace 40\nHamilton 27\nTuring 98\nKnuth 55\nRitchie 90\nThompson 26\n",
+      "generated": true
+    },
+    { "stdin": "4\nTuring 58\nOssanna 91\nCerf 45\nHamilton 40\n", "generated": true },
+    { "stdin": "4\nBackus 32\nMcIlroy 64\nLiskov 94\nCerf 29\n", "generated": true },
+    { "stdin": "4\nWirth 31\nOssanna 80\nHamilton 26\nRitchie 60\n", "generated": true },
+    {
+      "stdin": "11\nPike 13\nHopper 54\nKnuth 98\nHamilton 18\nOssanna 1\nThompson 34\nMcIlroy 94\nLiskov 74\nCerf 89\nRitchie 77\nBackus 82\n",
+      "generated": true
+    },
+    {
+      "stdin": "10\nLovelace 38\nKernighan 22\nThompson 21\nPike 48\nBackus 100\nRitchie 86\nKnuth 99\nHopper 40\nHamilton 19\nMcIlroy 69\n",
+      "generated": true
+    }
   ]
 }

@@ -6,13 +6,66 @@
       { "kind": "call", "name": "fprintf" },
       { "kind": "call", "name": "fscanf" },
       { "kind": "call", "name": "fclose" },
-      { "kind": "call", "name": "printf" },
       { "kind": "loop" }
     ]
   },
   "cases": [
+    { "stdin": "admin 7\neditor 3\nviewer 1\n", "visible": true },
+    { "stdin": "root 4\nguest 2\nops 6\n", "visible": true },
     { "visible": true, "stdin": "docs 5\nbin 7\nlog 1\n" },
     { "visible": true, "stdin": "note 2\n" },
-    { "stdin": "alpha 0\nbravo 4\n" }
+    { "stdin": "alpha 0\nbravo 4\n" },
+    { "stdin": "acct0 0\n", "generated": true },
+    { "stdin": "acct1 1\n", "generated": true },
+    { "stdin": "acct2 2\n", "generated": true },
+    { "stdin": "acct3 3\n", "generated": true },
+    { "stdin": "acct4 4\n", "generated": true },
+    { "stdin": "acct5 5\n", "generated": true },
+    { "stdin": "acct6 6\n", "generated": true },
+    { "stdin": "acct7 7\n", "generated": true },
+    { "stdin": "u0 0\nu1 1\nu2 2\nu3 3\nu4 4\nu5 5\nu6 6\nu7 7\n", "generated": true },
+    { "stdin": "u7 7\nu6 6\nu5 5\nu4 4\nu3 3\nu2 2\nu1 1\nu0 0\n", "generated": true },
+    { "stdin": "same 5\nsame 5\n", "generated": true },
+    { "stdin": "a 0\nb 0\n", "generated": true },
+    { "stdin": "root 7\nroot 7\nroot 7\n", "generated": true },
+    {
+      "stdin": "svc0 0\nsvc1 1\nsvc2 2\nsvc3 3\nsvc4 4\nsvc5 5\nsvc6 6\nsvc7 7\nsvc8 0\nsvc9 1\nsvc10 2\nsvc11 3\nsvc12 4\nsvc13 5\nsvc14 6\nsvc15 7\nsvc16 0\nsvc17 1\nsvc18 2\nsvc19 3\nsvc20 4\nsvc21 5\nsvc22 6\nsvc23 7\nsvc24 0\n",
+      "generated": true
+    },
+    { "stdin": "operator 1\n", "generated": true },
+    { "stdin": "mail 5\nops 4\ntape 2\ntape 4\n", "generated": true },
+    { "stdin": "guest 6\nlp 4\n", "generated": true },
+    { "stdin": "operator 5\nsys 4\n", "generated": true },
+    { "stdin": "tape 3\n", "generated": true },
+    { "stdin": "sys 3\nbackup 7\n", "generated": true },
+    {
+      "stdin": "nobody 1\noperator 1\nmail 0\nbackup 6\noperator 6\nnews 4\ntape 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "daemon 1\noperator 3\nmail 3\ncron 2\nuucp 7\nbackup 7\nadmin 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape 1\nops 7\nnobody 7\nlp 6\nsys 2\nsys 0\ndaemon 1\nadmin 7\n",
+      "generated": true
+    },
+    { "stdin": "news 1\nuucp 4\nsys 2\nnews 4\nnews 6\nguest 2\nnews 7\n", "generated": true },
+    { "stdin": "guest 0\nbackup 3\nguest 6\nbackup 7\nbackup 7\n", "generated": true },
+    {
+      "stdin": "uucp 0\ncron 6\nuucp 4\nbackup 1\ncron 2\nmail 4\nsys 7\nnobody 1\n",
+      "generated": true
+    },
+    { "stdin": "tape 7\nsys 1\nmail 2\nadmin 6\n", "generated": true },
+    { "stdin": "uucp 0\ntape 5\nguest 3\nguest 5\nadmin 0\n", "generated": true },
+    { "stdin": "uucp 3\nbackup 3\nguest 7\noperator 2\nlp 4\n", "generated": true },
+    { "stdin": "uucp 4\nuucp 6\nnobody 7\nsys 0\nnobody 3\n", "generated": true },
+    { "stdin": "admin 7\nnobody 1\nops 1\n", "generated": true },
+    { "stdin": "www 7\nwww 6\nuucp 5\nlp 5\ncron 7\n", "generated": true },
+    { "stdin": "www 1\nuucp 7\nmail 0\nnobody 5\nbackup 5\nmail 5\n", "generated": true },
+    {
+      "stdin": "tape 5\nadmin 4\nguest 4\nbackup 3\nmail 0\ncron 2\nnews 1\nwww 1\n",
+      "generated": true
+    }
   ]
 }

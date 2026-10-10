@@ -4,11 +4,12 @@
       { "kind": "function", "name": "numara_promovati" },
       { "kind": "function", "name": "gaseste_max" },
       { "kind": "function", "name": "gaseste_prima_cadere" },
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "call", "name": "scanf" }
     ]
   },
   "cases": [
+    { "stdin": "8\n85 42 91 67 38 73 95 55\n", "visible": true },
+    { "stdin": "4\n60 70 80 90\n", "visible": true },
     { "visible": true, "stdin": "5\n40 90 55 30 70\n" },
     { "visible": true, "stdin": "3\n100 80 60\n" },
     { "stdin": "4\n45 30 20 10\n" },
@@ -42,6 +43,31 @@
     { "stdin": "18\n7 19 82 74 100 19 46 78 56 74 56 24 64 78 67 33 66 15\n", "generated": true },
     { "stdin": "2\n76 14\n", "generated": true },
     { "stdin": "11\n88 30 61 48 56 78 62 3 50 7 58\n", "generated": true },
-    { "stdin": "16\n45 46 52 55 52 54 53 46 52 55 49 48 50 53 54 47\n", "generated": true }
+    { "stdin": "16\n45 46 52 55 52 54 53 46 52 55 49 48 50 53 54 47\n", "generated": true },
+    { "stdin": "6\n50 50 50 50 50 50\n", "generated": true },
+    { "stdin": "5\n49 49 49 49 49\n", "generated": true },
+    { "stdin": "3\n0 0 0\n", "generated": true },
+    { "stdin": "4\n100 100 100 100\n", "generated": true },
+    {
+      "stdin": "21\n0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100\n",
+      "generated": true
+    },
+    {
+      "stdin": "26\n100 96 92 88 84 80 76 72 68 64 60 56 52 48 44 40 36 32 28 24 20 16 12 8 4 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "40\n57 71 99 59 57 65 75 24 23 65 60 80 78 23 12 57 38 18 11 68 88 81 5 76 50 57 83 94 78 83 20 79 1 67 8 7 4 24 30 76\n",
+      "generated": true
+    },
+    {
+      "stdin": "31\n51 99 79 70 78 87 62 83 64 90 68 81 50 92 55 79 91 67 76 85 55 95 66 70 98 64 82 68 51 54 12\n",
+      "generated": true
+    },
+    {
+      "stdin": "35\n36 49 6 25 6 18 24 4 1 43 0 13 13 3 30 24 45 25 26 4 36 40 12 49 43 17 21 5 19 21 0 26 48 7 8\n",
+      "generated": true
+    },
+    { "stdin": "8\n55 60 49 30 12 99 100 0\n", "generated": true }
   ]
 }

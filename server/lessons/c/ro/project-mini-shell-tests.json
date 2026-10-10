@@ -1,12 +1,59 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "call", "name": "fork" }]
+    "requires": [
+      { "kind": "function", "name": "ruleaza_comanda" },
+      { "kind": "call", "name": "fork" },
+      { "kind": "call", "name": "wait" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "loop" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "ora\nspatiu\nnecunoscuta\niesire\n" },
     { "visible": true, "stdin": "spatiu\niesire\n" },
     { "stdin": "iesire\n" },
-    { "stdin": "ora\nora\niesire\n" }
+    { "stdin": "ora\nora\niesire\n" },
+    { "stdin": "ora\niesire\n", "generated": true },
+    { "stdin": "ls\niesire\n", "generated": true },
+    { "stdin": "ora\nspatiu\niesire\n", "generated": true },
+    { "stdin": "spatiu\nora\niesire\n", "generated": true },
+    { "stdin": "ora\nora\nora\niesire\n", "generated": true },
+    { "stdin": "spatiu\nspatiu\niesire\n", "generated": true },
+    { "stdin": "help\nhelp\niesire\n", "generated": true },
+    { "stdin": "Time\nSPACE\niesire\n", "generated": true },
+    { "stdin": "times\nspaces\nexit2\niesire\n", "generated": true },
+    { "stdin": "exitnow\nora\niesire\n", "generated": true },
+    { "stdin": "tim\nspac\nora\nspatiu\niesire\n", "generated": true },
+    { "stdin": "quit\nspatiu\nquit\niesire\n", "generated": true },
+    { "stdin": "ora\nspatiu\nx\nora\nspatiu\niesire\n", "generated": true },
+    { "stdin": "ora\nora\nora\nspatiu\nls\nspatiu\nora\ndate\niesire\n", "generated": true },
+    { "stdin": "spaces\nexit2\ncat\ncat\nwho\ndf\niesire\n", "generated": true },
+    { "stdin": "ora\ntim\niesire\n", "generated": true },
+    { "stdin": "ora\nspaces\ndf\nora\nora\nspatiu\ndate\nhelp\niesire\n", "generated": true },
+    { "stdin": "ora\nspatiu\nspatiu\nspatiu\nora\niesire\n", "generated": true },
+    { "stdin": "ora\ndf\niesire\n", "generated": true },
+    { "stdin": "spatiu\nspatiu\nora\niesire\n", "generated": true },
+    { "stdin": "ora\nora\nora\ndate\nexitnow\nspatiu\nspatiu\niesire\n", "generated": true },
+    {
+      "stdin": "ora\nspatiu\nexitnow\nspatiu\nora\nora\nspac\nspaces\niesire\n",
+      "generated": true
+    },
+    {
+      "stdin": "spatiu\nspatiu\nora\nspatiu\nora\nora\nquit\nspatiu\nspatiu\niesire\n",
+      "generated": true
+    },
+    {
+      "stdin": "spatiu\nora\nspatiu\nora\nspaces\nspatiu\nora\nspatiu\nora\niesire\n",
+      "generated": true
+    },
+    { "stdin": "ora\ntimes\nora\nora\nexitnow\nora\niesire\n", "generated": true },
+    { "stdin": "spatiu\nspaces\nspatiu\nora\nspatiu\nora\nexitnow\niesire\n", "generated": true },
+    { "stdin": "who\nspatiu\nspatiu\nspatiu\nspatiu\nspatiu\ntim\niesire\n", "generated": true },
+    { "stdin": "help\nspatiu\nspatiu\ntimes\nora\niesire\n", "generated": true },
+    { "stdin": "spatiu\nora\nspatiu\nora\nora\nora\nora\ncat\niesire\n", "generated": true },
+    { "stdin": "ora\nspatiu\nspatiu\niesire\n", "generated": true },
+    { "stdin": "ora\nSPACE\niesire\n", "generated": true },
+    { "stdin": "ora\ntimes\nspatiu\niesire\n", "generated": true }
   ]
 }
