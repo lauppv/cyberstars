@@ -2,7 +2,7 @@ Given a string, check whether it is a **palindrome** (reads the same forwards an
 
 ### Input
 
-A single line containing a string `s` of 1 to 1000 characters (only lowercase letters `a`-`z`, no spaces).
+A single line containing a string `s` of 1 to 10^5 characters (only lowercase letters `a`-`z`, no spaces).
 
 ### Output
 

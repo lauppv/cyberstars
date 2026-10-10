@@ -2,7 +2,7 @@ Având un șir, verifică dacă este un **palindrom** (se citește la fel de la 
 
 ### Date de intrare
 
-O singură linie care conține un șir `s` de 1 până la 1000 de caractere (doar litere mici `a`-`z`, fără spații).
+O singură linie care conține un șir `s` de 1 până la 10^5 caractere (doar litere mici `a`-`z`, fără spații).
 
 ### Rezultat
 
