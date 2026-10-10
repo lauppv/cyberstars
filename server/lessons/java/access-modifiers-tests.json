@@ -8,17 +8,29 @@
       { "kind": "variable", "name": "start" },
       { "kind": "variable", "name": "income" },
       { "kind": "variable", "name": "spend1" },
-      { "kind": "variable", "name": "spend2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "spend2" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "start": 100, "income": 50, "spend1": 30, "spend2": 200 }
-    },
+    { "visible": true, "inject": { "start": 100, "income": 50, "spend1": 30, "spend2": 200 } },
     { "inject": { "start": 500, "income": 0, "spend1": 100, "spend2": 50 } },
     { "inject": { "start": 200, "income": 100, "spend1": 300, "spend2": 50 } },
-    { "inject": { "start": 1000, "income": 250, "spend1": 250, "spend2": 250 } }
+    { "inject": { "start": 1000, "income": 250, "spend1": 250, "spend2": 250 } },
+    { "inject": { "start": 0, "income": 0, "spend1": 0, "spend2": 0 }, "generated": true },
+    { "inject": { "start": 0, "income": 10, "spend1": 10, "spend2": 1 }, "generated": true },
+    { "inject": { "start": 100, "income": -50, "spend1": 30, "spend2": 200 }, "generated": true },
+    { "inject": { "start": 100, "income": 50, "spend1": -30, "spend2": 20 }, "generated": true },
+    { "inject": { "start": 100, "income": 50, "spend1": 150, "spend2": 0 }, "generated": true },
+    { "inject": { "start": 100, "income": 50, "spend1": 151, "spend2": 10 }, "generated": true },
+    { "inject": { "start": 100, "income": 0, "spend1": 100, "spend2": 1 }, "generated": true },
+    { "inject": { "start": 50, "income": 25, "spend1": 40, "spend2": 35 }, "generated": true },
+    { "inject": { "start": 50, "income": 25, "spend1": 40, "spend2": 36 }, "generated": true },
+    { "inject": { "start": 0, "income": 0, "spend1": 5, "spend2": 0 }, "generated": true },
+    { "inject": { "start": 7, "income": -1, "spend1": -1, "spend2": -1 }, "generated": true },
+    { "inject": { "start": 999, "income": 1, "spend1": 1000, "spend2": 0 }, "generated": true },
+    { "inject": { "start": 300, "income": 200, "spend1": 100, "spend2": 400 }, "generated": true },
+    { "inject": { "start": 300, "income": 200, "spend1": 100, "spend2": 401 }, "generated": true },
+    { "inject": { "start": 1, "income": 1, "spend1": 1, "spend2": 1 }, "generated": true },
+    { "inject": { "start": 20, "income": 30, "spend1": 10, "spend2": 15 }, "generated": true }
   ]
 }

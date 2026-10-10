@@ -5,17 +5,21 @@
       { "kind": "call", "name": "Motocicleta" },
       { "kind": "function", "name": "vitezaMaxima" },
       { "kind": "variable", "name": "nume1" },
-      { "kind": "variable", "name": "nume2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "nume2" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "nume1": "Infernus", "nume2": "Angel" }
-    },
+    { "visible": true, "inject": { "nume1": "Infernus", "nume2": "Angel" } },
     { "inject": { "nume1": "Cheetah", "nume2": "PCJ600" } },
     { "inject": { "nume1": "Banshee", "nume2": "Freeway" } },
-    { "inject": { "nume1": "Comet", "nume2": "Sanchez" } }
+    { "inject": { "nume1": "Comet", "nume2": "Sanchez" } },
+    { "inject": { "nume1": "Turismo", "nume2": "Faggio" }, "generated": true },
+    { "inject": { "nume1": "Angel", "nume2": "Infernus" }, "generated": true },
+    { "inject": { "nume1": "Stinger", "nume2": "Stinger" }, "generated": true },
+    { "inject": { "nume1": "Z", "nume2": "Q" }, "generated": true },
+    { "inject": { "nume1": "Hotring Racer", "nume2": "Pizza Boy" }, "generated": true },
+    { "inject": { "nume1": "Phoenix 2", "nume2": "BF-400" }, "generated": true },
+    { "inject": { "nume1": "Sabre Turbo", "nume2": "Sanchez" }, "generated": true },
+    { "inject": { "nume1": "deluxo", "nume2": "freeway" }, "generated": true }
   ]
 }

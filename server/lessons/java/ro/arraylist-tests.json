@@ -12,8 +12,7 @@
       { "kind": "variable", "name": "rol4" },
       { "kind": "call", "name": "add" },
       { "kind": "call", "name": "remove" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -65,6 +64,136 @@
         "nume4": "BJ Smith",
         "rol4": "atlet"
       }
+    },
+    {
+      "inject": {
+        "nume1": "Phil Cassidy",
+        "rol1": "armament",
+        "nume2": "Lance Vance",
+        "rol2": "sofer",
+        "nume3": "Hilary King",
+        "rol3": "sofer",
+        "nume4": "Umberto Robina",
+        "rol4": "aliat"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Kent Paul",
+        "rol1": "manager",
+        "nume2": "Kent Paul",
+        "rol2": "manager",
+        "nume3": "Kent Paul",
+        "rol3": "manager",
+        "nume4": "Kent Paul",
+        "rol4": "manager"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "rol1": "x",
+        "nume2": "B",
+        "rol2": "x",
+        "nume3": "C",
+        "rol3": "x",
+        "nume4": "D",
+        "rol4": "x"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Candy Suxxx",
+        "rol1": "actrita",
+        "nume2": "Mr. Black",
+        "rol2": "sef",
+        "nume3": "Earnest Kelly",
+        "rol3": "avocat",
+        "nume4": "Mr. Black",
+        "rol4": "sef"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Victor Vance",
+        "rol1": "pilot",
+        "nume2": "Lance Vance",
+        "rol2": "sofer",
+        "nume3": "Pam",
+        "rol3": "bucatar",
+        "nume4": "Mercedes Cortez",
+        "rol4": "spion"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Big Mitch Baker",
+        "rol1": "motociclist",
+        "nume2": "Cortez",
+        "rol2": "contact",
+        "nume3": "Rico",
+        "rol3": "dealer",
+        "nume4": "Gonzalez",
+        "rol4": "bodyguard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Tommy",
+        "rol1": "sef",
+        "nume2": "Sonny Forelli",
+        "rol2": "sef",
+        "nume3": "Steve Scott",
+        "rol3": "regizor",
+        "nume4": "Ken Rosenberg",
+        "rol4": "avocat"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Dick",
+        "rol1": "hot",
+        "nume2": "Jezz Torrent",
+        "rol2": "rock star",
+        "nume3": "Percy",
+        "rol3": "mecanic",
+        "nume4": "Martha",
+        "rol4": "spion"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Love Fist",
+        "rol1": "trupa",
+        "nume2": "Kaufman",
+        "rol2": "taxiuri",
+        "nume3": "Pastor Richards",
+        "rol3": "lider de cult",
+        "nume4": "Donald Love",
+        "rol4": "magnat"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Lance Vance",
+        "rol1": "sofer",
+        "nume2": "Lance",
+        "rol2": "armament",
+        "nume3": "Vance",
+        "rol3": "aliat",
+        "nume4": "Lance Vance Jr",
+        "rol4": "sofer"
+      },
+      "generated": true
     }
   ]
 }
