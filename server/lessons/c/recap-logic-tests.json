@@ -1,17 +1,59 @@
 {
   "structure": {
     "requires": [
-      { "kind": "loop" },
+      { "kind": "loop", "type": "for" },
       { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "call", "name": "strlen" }
     ]
   },
   "cases": [
+    { "stdin": "Cyber2025!\n", "visible": true },
+    { "stdin": "abcdef\n", "visible": true },
     { "visible": true, "stdin": "Abcdef1!\n" },
-    { "visible": true, "stdin": "abcdef\n" },
     { "stdin": "Abcdefgh\n" },
     { "stdin": "abcdefg1\n" },
     { "stdin": "ABCDEFG@\n" },
-    { "stdin": "Xy9@zzzz\n" }
+    { "stdin": "Xy9@zzzz\n" },
+    { "stdin": "Abcdefg1!\n", "generated": true },
+    { "stdin": "Abcde1!\n", "generated": true },
+    { "stdin": "abcdefgh\n", "generated": true },
+    { "stdin": "ABCDEFGH\n", "generated": true },
+    { "stdin": "12345678\n", "generated": true },
+    { "stdin": "!!!!!!!!\n", "generated": true },
+    { "stdin": "Zzzzzzz9\n", "generated": true },
+    { "stdin": "aaaaaaA0\n", "generated": true },
+    { "stdin": "aaaaaaa#\n", "generated": true },
+    { "stdin": "aaaaaaa@\n", "generated": true },
+    { "stdin": "aaaaaaa!\n", "generated": true },
+    { "stdin": "aaaaaaa$\n", "generated": true },
+    { "stdin": "aaaaaaa%\n", "generated": true },
+    { "stdin": "A\n", "generated": true },
+    { "stdin": "9\n", "generated": true },
+    { "stdin": "#\n", "generated": true },
+    { "stdin": "a\n", "generated": true },
+    { "stdin": "Z9@\n", "generated": true },
+    { "stdin": "A1!\n", "generated": true },
+    { "stdin": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\n", "generated": true },
+    { "stdin": "Password123\n", "generated": true },
+    { "stdin": "password!23\n", "generated": true },
+    { "stdin": "PASSWORD#\n", "generated": true },
+    { "stdin": "P@ssw0rd\n", "generated": true },
+    { "stdin": "p@ssw0rd\n", "generated": true },
+    { "stdin": "P@ssword\n", "generated": true },
+    { "stdin": "Pa55word\n", "generated": true },
+    { "stdin": "Pa55w@rd\n", "generated": true },
+    { "stdin": "AAAAAAA\n", "generated": true },
+    { "stdin": "[]{}^~`_\n", "generated": true },
+    { "stdin": "@@@@1111ZZZZ\n", "generated": true },
+    { "stdin": "xX0@\n", "generated": true },
+    { "stdin": "Unix1969@BellLabs\n", "generated": true },
+    { "stdin": "mixedCASEwithoutdigit!\n", "generated": true },
+    { "stdin": "ALLUPPER1\n", "generated": true },
+    { "stdin": "lower1#case\n", "generated": true },
+    { "stdin": "qV8ib8HDy88\n", "generated": true },
+    { "stdin": "tDt%XbiufMdI8X2Y\n", "generated": true },
+    { "stdin": "rUmer@BH3M1#XS*0DR\n", "generated": true },
+    { "stdin": "JuPn\n", "generated": true },
+    { "stdin": "IKpi99lSi0\n", "generated": true }
   ]
 }
