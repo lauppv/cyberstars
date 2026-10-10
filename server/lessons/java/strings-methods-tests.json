@@ -2,7 +2,10 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "name" },
-      { "kind": "call", "name": "println" }
+      { "kind": "call", "name": "toUpperCase" },
+      { "kind": "call", "name": "toLowerCase" },
+      { "kind": "call", "name": "length" },
+      { "kind": "call", "name": "substring" }
     ]
   },
   "cases": [
@@ -10,6 +13,21 @@
     { "inject": { "name": "tommy vercetti" } },
     { "inject": { "name": "ricardo diaz" } },
     { "inject": { "name": "sonny forelli" } },
-    { "inject": { "name": "mercedes" } }
+    { "inject": { "name": "mercedes" } },
+    { "inject": { "name": "lance" }, "generated": true },
+    { "inject": { "name": "diazz" }, "generated": true },
+    { "inject": { "name": "cortez" }, "generated": true },
+    { "inject": { "name": "Tommy Vercetti" }, "generated": true },
+    { "inject": { "name": "LANCE VANCE" }, "generated": true },
+    { "inject": { "name": "MeRcEdEs CoRtEz" }, "generated": true },
+    { "inject": { "name": "kent paul" }, "generated": true },
+    { "inject": { "name": "ken rosenberg" }, "generated": true },
+    { "inject": { "name": "avery carrington" }, "generated": true },
+    { "inject": { "name": "umberto robina" }, "generated": true },
+    { "inject": { "name": "phil cassidy" }, "generated": true },
+    { "inject": { "name": "Victor" }, "generated": true },
+    { "inject": { "name": "alberto robina" }, "generated": true },
+    { "inject": { "name": "candy suxxx" }, "generated": true },
+    { "inject": { "name": "a b c d e f" }, "generated": true }
   ]
 }

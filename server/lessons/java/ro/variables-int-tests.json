@@ -2,14 +2,29 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "varsta" },
-      { "kind": "variable", "name": "inaltime" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "inaltime" }
     ]
   },
   "cases": [
     { "visible": true, "inject": { "varsta": 57, "inaltime": 1.67 } },
     { "inject": { "varsta": 30, "inaltime": 1.8 } },
     { "inject": { "varsta": 0, "inaltime": 2.05 } },
-    { "inject": { "varsta": 101, "inaltime": 1.5 } }
+    { "inject": { "varsta": 101, "inaltime": 1.5 } },
+    { "inject": { "varsta": 1, "inaltime": 0.75 }, "generated": true },
+    { "inject": { "varsta": 5, "inaltime": 1.1 }, "generated": true },
+    { "inject": { "varsta": 12, "inaltime": 1.45 }, "generated": true },
+    { "inject": { "varsta": 18, "inaltime": 1.72 }, "generated": true },
+    { "inject": { "varsta": 21, "inaltime": 1.9 }, "generated": true },
+    { "inject": { "varsta": 25, "inaltime": 1.55 }, "generated": true },
+    { "inject": { "varsta": 33, "inaltime": 1.83 }, "generated": true },
+    { "inject": { "varsta": 40, "inaltime": 1.6 }, "generated": true },
+    { "inject": { "varsta": 44, "inaltime": 1.99 }, "generated": true },
+    { "inject": { "varsta": 49, "inaltime": 1.7 }, "generated": true },
+    { "inject": { "varsta": 60, "inaltime": 1.58 }, "generated": true },
+    { "inject": { "varsta": 65, "inaltime": 1.66 }, "generated": true },
+    { "inject": { "varsta": 72, "inaltime": 1.74 }, "generated": true },
+    { "inject": { "varsta": 80, "inaltime": 1.62 }, "generated": true },
+    { "inject": { "varsta": 95, "inaltime": 1.49 }, "generated": true },
+    { "inject": { "varsta": 120, "inaltime": 1.81 }, "generated": true }
   ]
 }
