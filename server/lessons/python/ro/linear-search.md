@@ -66,7 +66,7 @@ Apoi **citește** un nume și raportează rezultatul.
 
 - numele membrului echipajului de găsit
 
-**Ieșire**: o linie. Dacă numele este la bord, afișează numele, apoi `este la stația`, apoi numărul stației. Dacă nu, afișează numele urmat de `nu este la bord`. Vezi exemplul de mai jos pentru formularea exactă.
+**Ieșire**: o linie. Dacă numele este la bord, afișează numele, apoi `este la statia`, apoi numărul stației. Dacă nu, afișează numele urmat de `nu este la bord`. Vezi exemplul de mai jos pentru formularea exactă.
 
 **Exemplu**
 

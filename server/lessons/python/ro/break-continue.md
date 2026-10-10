@@ -127,7 +127,7 @@ Operatorul stației introduce numere de sector **unul câte unul**. Folosește o
 - dacă numărul este **negativ** → este doar zgomot, **sari peste el** (folosește **continue**) și nu afișa nimic
 - altfel → afișează `Sector ` apoi numărul, apoi ` verificat` (de exemplu `Sector 4 verificat`)
 
-După buclă, afișează `Scanare terminată`.
+După buclă, afișează `Scanare terminata`.
 
 **Exemplu**
 

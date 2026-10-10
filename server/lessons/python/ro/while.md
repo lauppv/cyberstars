@@ -89,7 +89,7 @@ De ce am pus **parola = ""** înainte de buclă? Ca **while** să aibă ce verif
 
 Stația cere un cod de acces înainte să deschidă ușa. Scrie un program care cere repetat un cod cu **input()**, **cât timp** codul tastat nu este cel corect. Codul corect este **1234**
 
-- cât timp utilizatorul tastează un cod greșit → afișează `Cod greșit`
+- cât timp utilizatorul tastează un cod greșit → afișează `Cod gresit`
 - când utilizatorul tastează codul corect → afișează `Acces permis` și bucla se oprește
 
 **Exemplu**

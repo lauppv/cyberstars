@@ -13,8 +13,8 @@ Jurnalul de misiune este un singur șir de cuvinte despărțite prin spații, p�
 În programul principal, folosește și **funcții built-in**: `len()` pentru numărul total de cuvinte și `sorted()` împreună cu un `set()` pentru cuvintele unice. Afișează:
 
 - `Total cuvinte: ` apoi câte cuvinte sunt
-- `Apariții scan: ` apoi de câte ori apare `scan`
-- `Cel mai lung cuvânt: ` apoi cel mai lung cuvânt
+- `Aparitii scan: ` apoi de câte ori apare `scan`
+- `Cel mai lung cuvant: ` apoi cel mai lung cuvânt
 - `Are duplicat: ` apoi `True` sau `False`
 - `Cuvinte unice: ` apoi lista sortată de cuvinte unice
 

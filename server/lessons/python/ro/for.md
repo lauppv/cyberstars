@@ -150,8 +150,8 @@ Stația adună energie de la o serie de celule numerotate de la **1** la `celule
 
 Fă-ți o variabilă numită `celule` pentru câte celule sunt (alege ce valoare vrei), apoi scrie un program care:
 
-- dacă sunt **0** celule → afișează `Fără celule`
-- dacă este **1** celulă → afișează `O singură celulă`
+- dacă sunt **0** celule → afișează `Fara celule`
+- dacă este **1** celulă → afișează `O singura celula`
 - altfel → parcurge cu **for** numerele de la **1** la `celule`, **adună** doar numerele impare într-o variabilă `total` și afișează `total`
 
 **Exemple**
