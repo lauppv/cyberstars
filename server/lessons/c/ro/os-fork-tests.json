@@ -3,7 +3,8 @@
   "structure": {
     "requires": [
       { "kind": "call", "name": "fork" },
-      { "kind": "call", "name": "getpid" }
+      { "kind": "call", "name": "getpid" },
+      { "kind": "call", "name": "wait" }
     ]
   },
   "cases": [{ "visible": true, "stdin": "" }]

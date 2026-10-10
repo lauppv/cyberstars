@@ -1,7 +1,10 @@
 {
   "comparator": "unordered",
   "structure": {
-    "requires": [{ "kind": "call", "name": "pthread_create" }]
+    "requires": [
+      { "kind": "call", "name": "pthread_create" },
+      { "kind": "call", "name": "pthread_join" }
+    ]
   },
   "cases": [{ "visible": true, "stdin": "" }]
 }
