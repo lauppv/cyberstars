@@ -2,22 +2,144 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "secret" },
+      { "kind": "variable", "name": "guesses" },
       { "kind": "function", "name": "check_guess" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "secret": 42, "guesses": { "$list": [50, 30, 40, 45, 42] } }
-    },
-    {
-      "visible": true,
-      "inject": { "secret": 10, "guesses": { "$list": [5, 15, 10] } }
-    },
+    { "visible": true, "inject": { "secret": 42, "guesses": { "$list": [50, 30, 40, 45, 42] } } },
+    { "visible": true, "inject": { "secret": 10, "guesses": { "$list": [5, 15, 10] } } },
     { "inject": { "secret": 7, "guesses": { "$list": [7] } } },
-    { "inject": { "secret": 100, "guesses": { "$list": [1, 2, 3] } } },
-    { "inject": { "secret": 5, "guesses": { "$list": [10, 5, 1] } } }
+    { "inject": { "secret": 5, "guesses": { "$list": [10, 5, 1] } } },
+    { "inject": { "secret": 1, "guesses": { "$list": [1] } }, "generated": true },
+    { "inject": { "secret": 100, "guesses": { "$list": [100] } }, "generated": true },
+    { "inject": { "secret": 50, "guesses": { "$list": [49, 51, 50] } }, "generated": true },
+    { "inject": { "secret": 50, "guesses": { "$list": [51, 49, 50] } }, "generated": true },
+    { "inject": { "secret": 1, "guesses": { "$list": [2, 1] } }, "generated": true },
+    { "inject": { "secret": 99, "guesses": { "$list": [98, 100, 99] } }, "generated": true },
+    { "inject": { "secret": 42, "guesses": { "$list": [42, 42, 42] } }, "generated": true },
+    { "inject": { "secret": 42, "guesses": { "$list": [42, 10, 90] } }, "generated": true },
+    {
+      "inject": { "secret": 30, "guesses": { "$list": [10, 20, 25, 28, 29, 30] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 30, "guesses": { "$list": [90, 60, 40, 35, 31, 30] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 64, "guesses": { "$list": [50, 75, 62, 68, 65, 63, 64] } },
+      "generated": true
+    },
+    { "inject": { "secret": 7, "guesses": { "$list": [8, 6, 8, 6, 7, 8] } }, "generated": true },
+    {
+      "inject": { "secret": 12, "guesses": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 12] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 60, "guesses": { "$list": [35, 53, 65, 64, 54, 60] } },
+      "generated": true
+    },
+    { "inject": { "secret": 78, "guesses": { "$list": [50, 75, 88, 81, 78] } }, "generated": true },
+    {
+      "inject": { "secret": 79, "guesses": { "$list": [94, 49, 60, 89, 84, 74, 77, 79, 17] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 65, "guesses": { "$list": [76, 9, 59, 63, 68, 65] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 93, "guesses": { "$list": [12, 47, 61, 87, 92, 98, 93, 53] } },
+      "generated": true
+    },
+    { "inject": { "secret": 8, "guesses": { "$list": [63, 9, 1, 3, 7, 8] } }, "generated": true },
+    { "inject": { "secret": 1, "guesses": { "$list": [50, 25, 12, 6, 3, 1] } }, "generated": true },
+    {
+      "inject": { "secret": 26, "guesses": { "$list": [50, 25, 37, 31, 28, 26] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 18, "guesses": { "$list": [3, 68, 14, 51, 46, 32, 21, 18, 82] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 98, "guesses": { "$list": [50, 75, 88, 94, 97, 99, 98] } },
+      "generated": true
+    },
+    { "inject": { "secret": 23, "guesses": { "$list": [93, 6, 13, 48, 23] } }, "generated": true },
+    {
+      "inject": { "secret": 95, "guesses": { "$list": [5, 21, 73, 81, 87, 97, 96, 88, 94, 95] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "secret": 67,
+        "guesses": { "$list": [100, 89, 12, 57, 61, 80, 73, 69, 63, 67, 96, 3, 49] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 28, "guesses": { "$list": [50, 25, 37, 31, 28, 40] } },
+      "generated": true
+    },
+    { "inject": { "secret": 81, "guesses": { "$list": [50, 75, 88, 81] } }, "generated": true },
+    {
+      "inject": { "secret": 8, "guesses": { "$list": [50, 25, 12, 6, 9, 7, 8] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 55, "guesses": { "$list": [50, 75, 62, 56, 53, 54, 55] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "secret": 32,
+        "guesses": { "$list": [9, 64, 51, 24, 28, 41, 37, 34, 33, 31, 32] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 22, "guesses": { "$list": [34, 2, 4, 30, 10, 19, 22] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 78, "guesses": { "$list": [50, 75, 88, 81, 78, 27, 50] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 38, "guesses": { "$list": [46, 19, 24, 40, 33, 36, 37, 38] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 38, "guesses": { "$list": [9, 63, 38, 98, 50, 76] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 22, "guesses": { "$list": [36, 32, 12, 16, 31, 17, 22] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 23, "guesses": { "$list": [11, 32, 19, 20, 24, 21, 23] } },
+      "generated": true
+    },
+    { "inject": { "secret": 72, "guesses": { "$list": [11, 34, 96, 72] } }, "generated": true },
+    {
+      "inject": { "secret": 69, "guesses": { "$list": [50, 75, 62, 68, 71, 69] } },
+      "generated": true
+    },
+    {
+      "inject": { "secret": 75, "guesses": { "$list": [56, 91, 76, 73, 74, 75, 93] } },
+      "generated": true
+    },
+    { "inject": { "secret": 18, "guesses": { "$list": [50, 25, 12, 18] } }, "generated": true },
+    { "inject": { "secret": 59, "guesses": { "$list": [50, 75, 62, 56, 59] } }, "generated": true },
+    { "inject": { "secret": 94, "guesses": { "$list": [50, 75, 88, 94] } }, "generated": true },
+    {
+      "inject": { "secret": 48, "guesses": { "$list": [50, 25, 37, 43, 46, 48] } },
+      "generated": true
+    }
   ]
 }
