@@ -81,22 +81,33 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(lines[2]).toMatchObject({ user: { stdout: '2\n' }, solution: { stdout: '2\n' } });
   });
 
-  it("times only the program's own code, and nothing when it skips its exit hooks", () => {
+  it("times the CPU the program's own code used, and nothing when it skips its exit hooks", () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
       {
-        userCode: 'import time\ntime.sleep(0.2)\nprint("ok")\n',
-        solutionCode: 'import os\nprint("ok", flush=True)\nos._exit(0)\n',
+        userCode: 'print(sum(range(5_000_000)))\n',
+        solutionCode: 'import time\ntime.sleep(0.2)\nprint(12499997500000)\n',
+        structure: {},
+        cases: [{}],
+      },
+      ['next'],
+    );
+    const { user, solution } = lines[1] as { user: { ms: number }; solution: { ms: number } };
+    // Computing counts; sleeping doesn't, and neither does interpreter startup.
+    expect(user.ms).toBeGreaterThan(20);
+    expect(solution.ms).toBeLessThan(20);
+
+    const exited = runRunner(
+      'lesson-tests.runner.py',
+      {
+        userCode: 'import os\nprint("ok", flush=True)\nos._exit(0)\n',
+        solutionCode: 'print("ok")\n',
         structure: {},
         cases: [{}],
       },
       ['stop'],
     );
-    const { user, solution } = lines[1] as { user: { ms: number }; solution: { ms?: number } };
-    // The sleep counts; interpreter startup (tens of ms) doesn't.
-    expect(user.ms).toBeGreaterThanOrEqual(200);
-    expect(user.ms).toBeLessThan(400);
-    expect(solution.ms).toBeUndefined();
+    expect((exited[1] as { user: { ms?: number } }).user.ms).toBeUndefined();
   });
 
   it('keeps tracebacks on the same lines as without the timing preamble', () => {
@@ -128,9 +139,9 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
       solution: { stdout: 'A\n', exit: 0 },
     });
   });
-  it("times only the program's own code, and nothing when it crashes", () => {
+  it("times the CPU the program's own code used, and nothing when it crashes", () => {
     const user =
-      '#include <stdio.h>\n#include <unistd.h>\nint main(void) { usleep(200000); puts("ok"); return 0; }\n';
+      '#include <stdio.h>\n#include <unistd.h>\nint main(void) { volatile long s = 0; for (long i = 0; i < 200000000; i++) s += i; usleep(200000); puts("ok"); return 0; }\n';
     const solution = 'int main(void) { int *p = 0; *p = 1; return 0; }\n';
     const lines = runRunner(
       'lesson-tests.runner.c.py',
@@ -141,9 +152,9 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
       user: { ms: number; stdout: string };
       solution: { ms?: number; exit: number };
     };
+    // The loop counts, the 200 ms sleep doesn't.
     expect(u.stdout).toBe('ok\n');
-    expect(u.ms).toBeGreaterThanOrEqual(200);
-    expect(u.ms).toBeLessThan(400);
+    expect(u.ms).toBeGreaterThan(50);
     expect(s.exit).not.toBe(0);
     expect(s.ms).toBeUndefined();
   });

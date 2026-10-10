@@ -198,13 +198,15 @@ def inject_values(code, values):
 # they were. input() drops its prompt (the prompt isn't part of the expected
 # output), and an atexit hook reports how long the program's own code ran,
 # measured from just before its first line, so interpreter startup is left
-# out. The time goes out on the pipe named by _JT_FD, never on stdout. A
-# program that ends through os._exit or a kill reports no time.
+# out. It is CPU time, not wall time: the container's CPU cap pauses a
+# process for tens of ms at random, and those pauses aren't the code's. The
+# time goes out on the pipe named by _JT_FD, never on stdout. A program that
+# ends through os._exit or a kill reports no time.
 PREAMBLE = (
     "import builtins as _b, atexit as _ae, os as _os, time as _tm\n"
     "_oi = _b.input; _b.input = lambda *a, **k: _oi()\n"
-    "_ae.register(lambda _s=_tm.perf_counter(), _fd=int(_os.environ.pop('_JT_FD')): "
-    "_os.write(_fd, b'%.6f' % ((_tm.perf_counter() - _s) * 1000)))\n"
+    "_ae.register(lambda _s=_tm.process_time(), _fd=int(_os.environ.pop('_JT_FD')): "
+    "_os.write(_fd, b'%.6f' % ((_tm.process_time() - _s) * 1000)))\n"
 )
 
 

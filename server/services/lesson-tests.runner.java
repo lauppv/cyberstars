@@ -632,15 +632,20 @@ public class Runner {
   record Compiled(Path classDir, String mainClass, String error) {}
 
   // Launched in place of the program's own main class, it times only the
-  // program's code: from just before the class loads (static initializers
-  // count) to JVM shutdown, so JVM startup is left out. The shutdown hook also
-  // runs on System.exit and on an uncaught exception, which is rethrown with
-  // the timer's and reflection's frames cut off, so the student sees the same
-  // "Exception in thread "main"" trace as from a plain `java Main`. The time
-  // goes to the file named by the second argument, never to stdout.
+  // program's code: the main thread's CPU time from just before the class
+  // loads (static initializers count) until main returns, throws or calls
+  // System.exit, so JVM startup, the JIT and GC threads are left out. CPU
+  // time, not wall time: the container's CPU cap pauses a process for tens of
+  // ms at random, and those pauses aren't the code's. An uncaught exception is
+  // rethrown with the timer's and reflection's frames cut off, so the student
+  // sees the same "Exception in thread "main"" trace as from a plain
+  // `java Main`. The time goes to the file named by the second argument,
+  // never to stdout.
   static final String TIMER_CLASS = "CyberstarsJudgeTimer";
   static final String TIMER_SOURCE =
       """
+      import java.lang.management.ManagementFactory;
+      import java.lang.management.ThreadMXBean;
       import java.lang.reflect.InvocationTargetException;
       import java.lang.reflect.Method;
       import java.nio.file.Files;
@@ -648,16 +653,31 @@ public class Runner {
       import java.util.Arrays;
 
       public class CyberstarsJudgeTimer {
+        static final ThreadMXBean THREADS = ManagementFactory.getThreadMXBean();
+        static Path out;
+        static long mainId;
+        static long started;
+        static volatile boolean written;
+
+        // Main thread CPU time since `started`; the main thread is still alive
+        // here, whether main returned, threw, or is blocked in System.exit.
+        static synchronized void report() {
+          if (written) return;
+          written = true;
+          long cpu = THREADS.getThreadCpuTime(mainId);
+          if (cpu < 0) return;
+          try {
+            Files.writeString(out, Double.toString((cpu - started) / 1e6));
+          } catch (Exception ignored) {
+            // no time for this run
+          }
+        }
+
         public static void main(String[] args) throws Throwable {
-          Path out = Path.of(args[1]);
-          long started = System.nanoTime();
-          Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try {
-              Files.writeString(out, Double.toString((System.nanoTime() - started) / 1e6));
-            } catch (Exception ignored) {
-              // no time for this run
-            }
-          }));
+          out = Path.of(args[1]);
+          mainId = Thread.currentThread().getId();
+          Runtime.getRuntime().addShutdownHook(new Thread(CyberstarsJudgeTimer::report));
+          started = THREADS.getCurrentThreadCpuTime();
           Method main;
           try {
             main = Class.forName(args[0]).getMethod("main", String[].class);
@@ -666,13 +686,16 @@ public class Runner {
             System.exit(1);
             return;
           } catch (Throwable t) {
+            report();
             throw trimmed(t);
           }
           try {
             main.invoke(null, (Object) new String[0]);
           } catch (InvocationTargetException e) {
+            report();
             throw trimmed(e.getCause());
           }
+          report();
         }
 
         static Throwable trimmed(Throwable t) {

@@ -28,8 +28,10 @@ WORK = os.environ.get("JUDGE_WORK_DIR", "/work")
 # Linked into every judged program. A constructor that runs before the
 # program's own (priority 101) starts the clock, and the atexit handler it
 # registers first, so it runs last, stops it, so process startup is left out
-# and the program's atexit handlers count. The time goes out on the pipe named
-# by _JT_FD, never on stdout. A crash or _exit reports no time.
+# and the program's atexit handlers count. It is CPU time, not wall time: the
+# container's CPU cap pauses a process for tens of ms at random, and those
+# pauses aren't the code's. The time goes out on the pipe named by _JT_FD,
+# never on stdout. A crash or _exit reports no time.
 TIMER_SRC = r'''
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,7 +45,7 @@ static int cyberstars_judge_fd = -1;
 static void cyberstars_judge_report(void) {
     struct timespec t1;
     char buf[64];
-    clock_gettime(CLOCK_MONOTONIC, &t1);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &t1);
     double ms = (t1.tv_sec - cyberstars_judge_t0.tv_sec) * 1e3
         + (t1.tv_nsec - cyberstars_judge_t0.tv_nsec) / 1e6;
     int n = snprintf(buf, sizeof buf, "%.6f", ms);
@@ -60,7 +62,7 @@ __attribute__((constructor(101))) static void cyberstars_judge_start(void) {
         unsetenv("_JT_FD");
     }
     atexit(cyberstars_judge_report);
-    clock_gettime(CLOCK_MONOTONIC, &cyberstars_judge_t0);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cyberstars_judge_t0);
 }
 '''
 
