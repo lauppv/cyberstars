@@ -25,9 +25,11 @@ export function formatValue(value: InjectValue): string {
 }
 
 // Short runs keep a decimal so 0.4 ms and 0.9 ms don't both read as 1 ms.
+// Three significant digits below 100 ms (code alone often runs in well under a
+// millisecond: 0.042), whole milliseconds above.
 export function formatMs(ms: number, locale: string): string {
-  const digits = ms < 10 ? 1 : 0;
-  return ms.toLocaleString(locale, { minimumFractionDigits: 0, maximumFractionDigits: digits });
+  if (ms === 0 || ms >= 100) return Math.round(ms).toLocaleString(locale);
+  return ms.toLocaleString(locale, { maximumSignificantDigits: 3 });
 }
 
 type Verdict =
@@ -73,5 +75,6 @@ export function timeAgo(iso: string, t: TFunction): string {
 
 // "Test 3", or "Test 3 (hidden)" for a case the student can't see in the lesson.
 export function caseLabel(result: TestCaseResult, t: TFunction): string {
-  return `${t('tests.caseN', { n: result.index + 1 })}${result.visible ? '' : ` (${t('tests.hidden')})`}`;
+  const note = result.load ? t('tests.loadTest') : result.visible ? null : t('tests.hidden');
+  return `${t('tests.caseN', { n: result.index + 1 })}${note ? ` (${note})` : ''}`;
 }

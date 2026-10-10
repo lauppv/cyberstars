@@ -29,13 +29,7 @@ export function ResultPanel({
       />
       {failedCase && <FailedCase result={failedCase} />}
       <PassedCases cases={results.cases} />
-      {showRuntime && (
-        <Runtime
-          cases={results.cases}
-          runtimeMs={results.runtimeMs}
-          referenceMs={results.referenceMs}
-        />
-      )}
+      {showRuntime && <Runtime runtimeMs={results.runtimeMs} referenceMs={results.referenceMs} />}
     </div>
   );
 }

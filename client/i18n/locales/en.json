@@ -876,22 +876,11 @@
     "runtime": {
       "title": "Runtime",
       "yours": "Your code",
-      "reference": "Reference",
-      "faster": "{{ratio}}× faster than the reference",
-      "slower": "{{ratio}}× slower than the reference",
-      "even": "About as fast as the reference",
-      "ms": "{{value}} ms",
-      "scope_one": "Summed over the {{count}} test both programs ran",
-      "scope_other": "Summed over the {{count}} tests both programs ran"
-    },
-    "chart": {
-      "title": "Time per test",
-      "you": "You",
-      "reference": "Reference",
-      "caseTimes": "Test {{n}}: you {{user}} ms, reference {{ref}} ms",
-      "generated_one": "Your time on {{count}} generated test",
-      "generated_other": "Your time on {{count}} generated tests",
-      "range": "{{min}} to {{max}} ms"
+      "reference": "Our solution (not necessarily the fastest)",
+      "faster": "{{ratio}}× faster than our solution",
+      "slower": "{{ratio}}× slower than our solution",
+      "even": "About as fast as our solution",
+      "ms": "{{value}} ms"
     },
     "submissions": {
       "empty": "No submissions yet. Run the tests and each attempt shows up here.",
@@ -905,7 +894,9 @@
       "passed": "Passed",
       "runtime": "Runtime",
       "when": "When"
-    }
+    },
+    "loadTest": "load test",
+    "loadTooLarge": "Its input and output are too large to show here."
   },
   "terminalTests": {
     "passedTitle": "Mission accomplished!",

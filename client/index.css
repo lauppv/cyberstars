@@ -43,9 +43,6 @@
   /* Charts: the student's own series in the accent, the context it is read
      against (the reference solution) in a recessive gray that still clears
      3:1 on --panel-bg. */
-  --chart-user: var(--accent);
-  --chart-reference: #7c7c88;
-  --chart-generated: #7c7c88;
 }
 
 html,

@@ -229,6 +229,50 @@ describe('ResultPanel', () => {
     expect(screen.getAllByText('Rex Kai')).toHaveLength(2);
   });
 
+  it('names the load test and says its data is too large to show, passed or failed', () => {
+    const { unmount } = render(
+      <ResultPanel
+        showRuntime
+        results={{
+          ...base,
+          status: 'passed',
+          passedCount: 2,
+          total: 2,
+          cases: [
+            { index: 0, visible: true, passed: true, expected: '1', actual: '1' },
+            { index: 1, visible: false, passed: true, load: true, userMs: 4, solutionMs: 2 },
+          ],
+          runtimeMs: 4,
+          referenceMs: 2,
+        }}
+      />,
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Passed tests (2)' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Test 2 (load test)' }));
+    expect(screen.getByText(/too large to show/)).toBeInTheDocument();
+    expect(screen.getByText('2× slower than our solution')).toBeInTheDocument();
+    unmount();
+
+    render(
+      <ResultPanel
+        showRuntime
+        results={{
+          ...base,
+          passedCount: 1,
+          total: 2,
+          cases: [
+            { index: 0, visible: true, passed: true },
+            { index: 1, visible: false, passed: false, load: true, error: 'timeout' },
+          ],
+        }}
+      />,
+    );
+    expect(screen.getByRole('heading', { name: 'Test 2 (load test)' })).toBeInTheDocument();
+    expect(screen.getByText(/too large to show/)).toBeInTheDocument();
+    expect(screen.getByText(/took too long/)).toBeInTheDocument();
+    expect(screen.queryByText('Runtime')).not.toBeInTheDocument();
+  });
+
   it('leaves the list out when no test passed', () => {
     render(
       <ResultPanel
