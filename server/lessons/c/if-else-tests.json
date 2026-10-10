@@ -1,15 +1,35 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "temperature" },
-      { "kind": "call", "name": "printf" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "temperature" }] },
   "cases": [
     { "visible": true, "inject": { "temperature": -5 } },
     { "inject": { "temperature": 0 } },
     { "inject": { "temperature": -1 } },
     { "inject": { "temperature": 25 } },
-    { "inject": { "temperature": -100 } }
+    { "inject": { "temperature": -100 } },
+    { "inject": { "temperature": 1 }, "generated": true },
+    { "inject": { "temperature": -2 }, "generated": true },
+    { "inject": { "temperature": 2 }, "generated": true },
+    { "inject": { "temperature": -3 }, "generated": true },
+    { "inject": { "temperature": 5 }, "generated": true },
+    { "inject": { "temperature": -10 }, "generated": true },
+    { "inject": { "temperature": 10 }, "generated": true },
+    { "inject": { "temperature": -15 }, "generated": true },
+    { "inject": { "temperature": 15 }, "generated": true },
+    { "inject": { "temperature": -20 }, "generated": true },
+    { "inject": { "temperature": 20 }, "generated": true },
+    { "inject": { "temperature": -30 }, "generated": true },
+    { "inject": { "temperature": 30 }, "generated": true },
+    { "inject": { "temperature": -40 }, "generated": true },
+    { "inject": { "temperature": 40 }, "generated": true },
+    { "inject": { "temperature": -50 }, "generated": true },
+    { "inject": { "temperature": -273 }, "generated": true },
+    { "inject": { "temperature": 100 }, "generated": true },
+    { "inject": { "temperature": 99 }, "generated": true },
+    { "inject": { "temperature": -99 }, "generated": true },
+    { "inject": { "temperature": 7 }, "generated": true },
+    { "inject": { "temperature": -7 }, "generated": true },
+    { "inject": { "temperature": 12 }, "generated": true },
+    { "inject": { "temperature": -12 }, "generated": true },
+    { "inject": { "temperature": 37 }, "generated": true }
   ]
 }

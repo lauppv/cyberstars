@@ -2,8 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "seconds" },
-      { "kind": "variable", "name": "error_detected" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "variable", "name": "error_detected" }
     ]
   },
   "cases": [
@@ -41,6 +40,16 @@
     { "inject": { "seconds": 485, "error_detected": 1 }, "generated": true },
     { "inject": { "seconds": 774, "error_detected": 0 }, "generated": true },
     { "inject": { "seconds": 569, "error_detected": 1 }, "generated": true },
-    { "inject": { "seconds": 559, "error_detected": 1 }, "generated": true }
+    { "inject": { "seconds": 559, "error_detected": 1 }, "generated": true },
+    { "inject": { "seconds": 2, "error_detected": 0 }, "generated": true },
+    { "inject": { "seconds": 3, "error_detected": 1 }, "generated": true },
+    { "inject": { "seconds": 6, "error_detected": 0 }, "generated": true },
+    { "inject": { "seconds": 8, "error_detected": 1 }, "generated": true },
+    { "inject": { "seconds": 12, "error_detected": 0 }, "generated": true },
+    { "inject": { "seconds": 45, "error_detected": 1 }, "generated": true },
+    { "inject": { "seconds": 70, "error_detected": 0 }, "generated": true },
+    { "inject": { "seconds": 150, "error_detected": 1 }, "generated": true },
+    { "inject": { "seconds": 1000, "error_detected": 0 }, "generated": true },
+    { "inject": { "seconds": 95, "error_detected": 0 }, "generated": true }
   ]
 }
