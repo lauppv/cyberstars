@@ -3,8 +3,7 @@
     "requires": [
       { "kind": "variable", "name": "rapoarte" },
       { "kind": "loop" },
-      { "kind": "call", "name": "parseInt" },
-      { "kind": "call", "name": "println" }
+      { "kind": "call", "name": "parseInt" }
     ]
   },
   "cases": [
@@ -14,6 +13,22 @@
     },
     { "inject": { "rapoarte": { "$list": ["100", "200", "300"] } } },
     { "inject": { "rapoarte": { "$list": ["gresit", "abc", "N/A"] } } },
-    { "inject": { "rapoarte": { "$list": ["42", "stricat", "0", "pierdut", "9999", "x"] } } }
+    { "inject": { "rapoarte": { "$list": ["42", "stricat", "0", "pierdut", "9999", "x"] } } },
+    { "inject": { "rapoarte": { "$list": ["7500"] } }, "generated": true },
+    { "inject": { "rapoarte": { "$list": ["abc"] } }, "generated": true },
+    { "inject": { "rapoarte": { "$list": [] } }, "generated": true },
+    { "inject": { "rapoarte": { "$list": ["0", "0", "0"] } }, "generated": true },
+    { "inject": { "rapoarte": { "$list": ["-300", "12a", "1.5", ""] } }, "generated": true },
+    { "inject": { "rapoarte": { "$list": ["9999999999", "2147483647"] } }, "generated": true },
+    {
+      "inject": { "rapoarte": { "$list": ["23000", "7500", "x", "y", "z", "1"] } },
+      "generated": true
+    },
+    { "inject": { "rapoarte": { "$list": ["N/A", "N/A", "500", "500"] } }, "generated": true },
+    { "inject": { "rapoarte": { "$list": ["1 000", "1000", "o mie"] } }, "generated": true },
+    {
+      "inject": { "rapoarte": { "$list": ["5", "10", "15", "20", "25", "30", "35", "40"] } },
+      "generated": true
+    }
   ]
 }

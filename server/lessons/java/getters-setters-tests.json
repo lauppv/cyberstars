@@ -8,8 +8,7 @@
       { "kind": "variable", "name": "start" },
       { "kind": "variable", "name": "deposit" },
       { "kind": "variable", "name": "withdraw1" },
-      { "kind": "variable", "name": "withdraw2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "withdraw2" }
     ]
   },
   "cases": [
@@ -19,6 +18,58 @@
     },
     { "inject": { "start": 300, "deposit": 0, "withdraw1": 100, "withdraw2": 500 } },
     { "inject": { "start": 500, "deposit": 500, "withdraw1": 1000, "withdraw2": 300 } },
-    { "inject": { "start": 2000, "deposit": 1000, "withdraw1": 1500, "withdraw2": 400 } }
+    { "inject": { "start": 2000, "deposit": 1000, "withdraw1": 1500, "withdraw2": 400 } },
+    { "inject": { "start": 0, "deposit": 0, "withdraw1": 0, "withdraw2": 0 }, "generated": true },
+    { "inject": { "start": 0, "deposit": 10, "withdraw1": 10, "withdraw2": 1 }, "generated": true },
+    {
+      "inject": { "start": 1000, "deposit": -500, "withdraw1": 200, "withdraw2": 2000 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "deposit": 500, "withdraw1": -200, "withdraw2": 300 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "deposit": 500, "withdraw1": 1500, "withdraw2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "deposit": 500, "withdraw1": 1501, "withdraw2": 10 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "deposit": 0, "withdraw1": 100, "withdraw2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 50, "deposit": 25, "withdraw1": 40, "withdraw2": 35 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 50, "deposit": 25, "withdraw1": 40, "withdraw2": 36 },
+      "generated": true
+    },
+    { "inject": { "start": 0, "deposit": 0, "withdraw1": 5, "withdraw2": 0 }, "generated": true },
+    {
+      "inject": { "start": 7, "deposit": -1, "withdraw1": -1, "withdraw2": -1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 999, "deposit": 1, "withdraw1": 1000, "withdraw2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 300, "deposit": 200, "withdraw1": 100, "withdraw2": 400 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 300, "deposit": 200, "withdraw1": 100, "withdraw2": 401 },
+      "generated": true
+    },
+    { "inject": { "start": 1, "deposit": 1, "withdraw1": 1, "withdraw2": 1 }, "generated": true },
+    {
+      "inject": { "start": 20, "deposit": 30, "withdraw1": 10, "withdraw2": 15 },
+      "generated": true
+    }
   ]
 }

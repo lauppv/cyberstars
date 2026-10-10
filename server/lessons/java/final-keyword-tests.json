@@ -2,17 +2,17 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "MAX_RESPECT" },
-      { "kind": "variable", "name": "CITY" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "CITY" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "MAX_RESPECT": 100, "CITY": "Vice City" }
-    },
+    { "visible": true, "inject": { "MAX_RESPECT": 100, "CITY": "Vice City" } },
     { "inject": { "MAX_RESPECT": 200, "CITY": "Liberty City" } },
     { "inject": { "MAX_RESPECT": 0, "CITY": "San Andreas" } },
-    { "inject": { "MAX_RESPECT": 50, "CITY": "Los Santos" } }
+    { "inject": { "MAX_RESPECT": 50, "CITY": "Los Santos" } },
+    { "inject": { "MAX_RESPECT": 1, "CITY": "X" }, "generated": true },
+    { "inject": { "MAX_RESPECT": 999999, "CITY": "Vice City Beach" }, "generated": true },
+    { "inject": { "MAX_RESPECT": 100, "CITY": "Liberty City" }, "generated": true },
+    { "inject": { "MAX_RESPECT": 7, "CITY": "100" }, "generated": true }
   ]
 }
