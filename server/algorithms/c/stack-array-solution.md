@@ -8,7 +8,7 @@ int main(void) {
 
     // Represent the stack as an array + a "top" index telling the last occupied
     // position. top = -1 means empty stack.
-    int stack[100];
+    int stack[20000];
     int top = -1;
 
     for (int i = 0; i < m; i++) {

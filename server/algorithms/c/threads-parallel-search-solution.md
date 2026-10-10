@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <pthread.h>
 
-int nums[100];
+int nums[20000];
 int target;
 int found_index = -1;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;

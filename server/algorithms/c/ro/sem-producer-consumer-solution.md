@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-int numere[20];
+int numere[20000];
 int n;
 
 int slot;
