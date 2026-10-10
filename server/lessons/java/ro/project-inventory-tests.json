@@ -4,7 +4,11 @@
       { "kind": "call", "name": "Articol" },
       { "kind": "call", "name": "Inventar" },
       { "kind": "function", "name": "adaugaArticol" },
+      { "kind": "function", "name": "stergeArticol" },
+      { "kind": "function", "name": "afiseazaTot" },
       { "kind": "function", "name": "valoareTotala" },
+      { "kind": "call", "name": "adaugaArticol" },
+      { "kind": "call", "name": "afiseazaTot" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "cantitate1" },
       { "kind": "variable", "name": "pret1" },
@@ -13,8 +17,7 @@
       { "kind": "variable", "name": "pret2" },
       { "kind": "variable", "name": "nume3" },
       { "kind": "variable", "name": "cantitate3" },
-      { "kind": "variable", "name": "pret3" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "pret3" }
     ]
   },
   "cases": [
@@ -70,6 +73,146 @@
         "cantitate3": 6,
         "pret3": 62.75
       }
+    },
+    {
+      "inject": {
+        "nume1": "Water",
+        "cantitate1": 1,
+        "pret1": 0.5,
+        "nume2": "Bolt",
+        "cantitate2": 100,
+        "pret2": 0.25,
+        "nume3": "Panel",
+        "cantitate3": 2,
+        "pret3": 1000.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Fuse",
+        "cantitate1": 3,
+        "pret1": 2.75,
+        "nume2": "Cable",
+        "cantitate2": 8,
+        "pret2": 4.5,
+        "nume3": "Drill",
+        "cantitate3": 1,
+        "pret3": 199.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "cantitate1": 1,
+        "pret1": 1.0,
+        "nume2": "B",
+        "cantitate2": 1,
+        "pret2": 1.0,
+        "nume3": "C",
+        "cantitate3": 1,
+        "pret3": 1.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Helmet",
+        "cantitate1": 2,
+        "pret1": 120.5,
+        "nume2": "Gloves",
+        "cantitate2": 4,
+        "pret2": 15.25,
+        "nume3": "Boots",
+        "cantitate3": 3,
+        "pret3": 60.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Battery",
+        "cantitate1": 12,
+        "pret1": 7.75,
+        "nume2": "Charger",
+        "cantitate2": 6,
+        "pret2": 22.5,
+        "nume3": "Lamp",
+        "cantitate3": 9,
+        "pret3": 14.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Seeds",
+        "cantitate1": 50,
+        "pret1": 0.75,
+        "nume2": "Soil bag",
+        "cantitate2": 5,
+        "pret2": 9.5,
+        "nume3": "Water tank",
+        "cantitate3": 1,
+        "pret3": 350.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Laser",
+        "cantitate1": 1,
+        "pret1": 2500.0,
+        "nume2": "Lens",
+        "cantitate2": 10,
+        "pret2": 45.5,
+        "nume3": "Mirror",
+        "cantitate3": 20,
+        "pret3": 12.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Tape",
+        "cantitate1": 30,
+        "pret1": 1.5,
+        "nume2": "Glue",
+        "cantitate2": 15,
+        "pret2": 3.25,
+        "nume3": "Rope",
+        "cantitate3": 7,
+        "pret3": 8.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Suit",
+        "cantitate1": 2,
+        "pret1": 999.5,
+        "nume2": "Visor",
+        "cantitate2": 2,
+        "pret2": 149.75,
+        "nume3": "Tank",
+        "cantitate3": 4,
+        "pret3": 300.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Ration",
+        "cantitate1": 20,
+        "pret1": 3.5,
+        "nume2": "Ration",
+        "cantitate2": 20,
+        "pret2": 3.5,
+        "nume3": "Ration",
+        "cantitate3": 20,
+        "pret3": 3.5
+      },
+      "generated": true
     }
   ]
 }

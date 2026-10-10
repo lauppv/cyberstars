@@ -4,6 +4,9 @@
       { "kind": "call", "name": "Student" },
       { "kind": "function", "name": "addGrade" },
       { "kind": "function", "name": "getAverage" },
+      { "kind": "function", "name": "printReport" },
+      { "kind": "call", "name": "addGrade" },
+      { "kind": "call", "name": "printReport" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "math1" },
       { "kind": "variable", "name": "english1" },
@@ -11,8 +14,7 @@
       { "kind": "variable", "name": "name2" },
       { "kind": "variable", "name": "math2" },
       { "kind": "variable", "name": "english2" },
-      { "kind": "variable", "name": "science2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "science2" }
     ]
   },
   "cases": [
@@ -64,6 +66,136 @@
         "english2": 64,
         "science2": 65
       }
+    },
+    {
+      "inject": {
+        "name1": "Vic",
+        "math1": 100,
+        "english1": 100,
+        "science1": 100,
+        "name2": "Ricardo",
+        "math2": 0,
+        "english2": 0,
+        "science2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "A",
+        "math1": 1,
+        "english1": 2,
+        "science1": 2,
+        "name2": "B",
+        "math2": 2,
+        "english2": 2,
+        "science2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Ken",
+        "math1": 50,
+        "english1": 50,
+        "science1": 51,
+        "name2": "Rosie",
+        "math2": 99,
+        "english2": 100,
+        "science2": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Candy",
+        "math1": 33,
+        "english1": 33,
+        "science1": 34,
+        "name2": "Kent",
+        "math2": 66,
+        "english2": 67,
+        "science2": 67
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Umberto",
+        "math1": 0,
+        "english1": 100,
+        "science1": 50,
+        "name2": "Avery",
+        "math2": 100,
+        "english2": 0,
+        "science2": 49
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Hilary",
+        "math1": 88,
+        "english1": 77,
+        "science1": 66,
+        "name2": "Earnest",
+        "math2": 55,
+        "english2": 44,
+        "science2": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Mitch",
+        "math1": 10,
+        "english1": 20,
+        "science1": 30,
+        "name2": "Pastor",
+        "math2": 95,
+        "english2": 96,
+        "science2": 94
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Victor Vance",
+        "math1": 73,
+        "english1": 81,
+        "science1": 79,
+        "name2": "Lance Vance",
+        "math2": 68,
+        "english2": 74,
+        "science2": 90
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Tommy",
+        "math1": 90,
+        "english1": 85,
+        "science1": 92,
+        "name2": "Tommy",
+        "math2": 90,
+        "english2": 85,
+        "science2": 92
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Mercedes",
+        "math1": 1,
+        "english1": 0,
+        "science1": 0,
+        "name2": "Diaz",
+        "math2": 0,
+        "english2": 0,
+        "science2": 1
+      },
+      "generated": true
     }
   ]
 }

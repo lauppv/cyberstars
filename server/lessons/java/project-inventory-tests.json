@@ -4,7 +4,11 @@
       { "kind": "call", "name": "Item" },
       { "kind": "call", "name": "Inventory" },
       { "kind": "function", "name": "addItem" },
+      { "kind": "function", "name": "removeItem" },
+      { "kind": "function", "name": "printAll" },
       { "kind": "function", "name": "totalValue" },
+      { "kind": "call", "name": "addItem" },
+      { "kind": "call", "name": "printAll" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "quantity1" },
       { "kind": "variable", "name": "price1" },
@@ -13,8 +17,7 @@
       { "kind": "variable", "name": "price2" },
       { "kind": "variable", "name": "name3" },
       { "kind": "variable", "name": "quantity3" },
-      { "kind": "variable", "name": "price3" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "price3" }
     ]
   },
   "cases": [
@@ -70,6 +73,146 @@
         "quantity3": 6,
         "price3": 62.75
       }
+    },
+    {
+      "inject": {
+        "name1": "Water",
+        "quantity1": 1,
+        "price1": 0.5,
+        "name2": "Bolt",
+        "quantity2": 100,
+        "price2": 0.25,
+        "name3": "Panel",
+        "quantity3": 2,
+        "price3": 1000.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Fuse",
+        "quantity1": 3,
+        "price1": 2.75,
+        "name2": "Cable",
+        "quantity2": 8,
+        "price2": 4.5,
+        "name3": "Drill",
+        "quantity3": 1,
+        "price3": 199.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "A",
+        "quantity1": 1,
+        "price1": 1.0,
+        "name2": "B",
+        "quantity2": 1,
+        "price2": 1.0,
+        "name3": "C",
+        "quantity3": 1,
+        "price3": 1.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Helmet",
+        "quantity1": 2,
+        "price1": 120.5,
+        "name2": "Gloves",
+        "quantity2": 4,
+        "price2": 15.25,
+        "name3": "Boots",
+        "quantity3": 3,
+        "price3": 60.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Battery",
+        "quantity1": 12,
+        "price1": 7.75,
+        "name2": "Charger",
+        "quantity2": 6,
+        "price2": 22.5,
+        "name3": "Lamp",
+        "quantity3": 9,
+        "price3": 14.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Seeds",
+        "quantity1": 50,
+        "price1": 0.75,
+        "name2": "Soil bag",
+        "quantity2": 5,
+        "price2": 9.5,
+        "name3": "Water tank",
+        "quantity3": 1,
+        "price3": 350.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Laser",
+        "quantity1": 1,
+        "price1": 2500.0,
+        "name2": "Lens",
+        "quantity2": 10,
+        "price2": 45.5,
+        "name3": "Mirror",
+        "quantity3": 20,
+        "price3": 12.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Tape",
+        "quantity1": 30,
+        "price1": 1.5,
+        "name2": "Glue",
+        "quantity2": 15,
+        "price2": 3.25,
+        "name3": "Rope",
+        "quantity3": 7,
+        "price3": 8.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Suit",
+        "quantity1": 2,
+        "price1": 999.5,
+        "name2": "Visor",
+        "quantity2": 2,
+        "price2": 149.75,
+        "name3": "Tank",
+        "quantity3": 4,
+        "price3": 300.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Ration",
+        "quantity1": 20,
+        "price1": 3.5,
+        "name2": "Ration",
+        "quantity2": 20,
+        "price2": 3.5,
+        "name3": "Ration",
+        "quantity3": 20,
+        "price3": 3.5
+      },
+      "generated": true
     }
   ]
 }

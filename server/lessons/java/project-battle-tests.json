@@ -4,6 +4,9 @@
       { "kind": "call", "name": "Warrior" },
       { "kind": "call", "name": "Mage" },
       { "kind": "function", "name": "attack" },
+      { "kind": "function", "name": "printStatus" },
+      { "kind": "call", "name": "attack" },
+      { "kind": "call", "name": "printStatus" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "health1" },
       { "kind": "variable", "name": "attack1" },
@@ -11,8 +14,7 @@
       { "kind": "variable", "name": "name2" },
       { "kind": "variable", "name": "health2" },
       { "kind": "variable", "name": "attack2" },
-      { "kind": "variable", "name": "spell2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "spell2" }
     ]
   },
   "cases": [
@@ -64,6 +66,149 @@
         "attack2": 12,
         "spell2": 50
       }
+    },
+    {
+      "inject": {
+        "name1": "Vic",
+        "health1": 50,
+        "attack1": 50,
+        "armor1": 0,
+        "name2": "Ricardo",
+        "health2": 60,
+        "attack2": 10,
+        "spell2": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "A",
+        "health1": 2,
+        "attack1": 1,
+        "armor1": 1,
+        "name2": "B",
+        "health2": 1,
+        "attack2": 1,
+        "spell2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Umberto",
+        "health1": 300,
+        "attack1": 1,
+        "armor1": 50,
+        "name2": "Avery",
+        "health2": 10,
+        "attack2": 5,
+        "spell2": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Candy",
+        "health1": 90,
+        "attack1": 45,
+        "armor1": 3,
+        "name2": "Kent",
+        "health2": 90,
+        "attack2": 44,
+        "spell2": 46
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Lance",
+        "health1": 80,
+        "attack1": 15,
+        "armor1": 20,
+        "name2": "Tommy",
+        "health2": 100,
+        "attack2": 25,
+        "spell2": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Hilary",
+        "health1": 120,
+        "attack1": 60,
+        "armor1": 30,
+        "name2": "Earnest",
+        "health2": 150,
+        "attack2": 30,
+        "spell2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Mitch",
+        "health1": 999,
+        "attack1": 100,
+        "armor1": 99,
+        "name2": "Rosie",
+        "health2": 500,
+        "attack2": 99,
+        "spell2": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Big Mitch",
+        "health1": 75,
+        "attack1": 20,
+        "armor1": 8,
+        "name2": "Pastor Richards",
+        "health2": 65,
+        "attack2": 13,
+        "spell2": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Tommy",
+        "health1": 100,
+        "attack1": 100,
+        "armor1": 10,
+        "name2": "Lance",
+        "health2": 100,
+        "attack2": 50,
+        "spell2": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Sonny",
+        "health1": 42,
+        "attack1": 7,
+        "armor1": 7,
+        "name2": "Kent",
+        "health2": 70,
+        "attack2": 6,
+        "spell2": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Victor",
+        "health1": 88,
+        "attack1": 12,
+        "armor1": 12,
+        "name2": "Lance",
+        "health2": 88,
+        "attack2": 12,
+        "spell2": 12
+      },
+      "generated": true
     }
   ]
 }
