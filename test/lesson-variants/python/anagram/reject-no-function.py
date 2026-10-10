@@ -1,0 +1,5 @@
+first = input().lower()
+second = input().lower()
+result = sorted(first) == sorted(second)
+print(f"Anagram: {result}")
+print("Access granted" if result else "Access denied")

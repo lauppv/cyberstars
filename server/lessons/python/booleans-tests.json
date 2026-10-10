@@ -1,16 +1,119 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [
-      { "kind": "loop" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "loop", "type": "while" }] },
   "cases": [
     { "visible": true, "stdin": "status\nhello\nshutdown\n" },
     { "visible": true, "stdin": "shutdown\n" },
     { "stdin": "status\nstatus\nshutdown\n" },
-    { "stdin": "foo\nbar\nstatus\nshutdown\n" }
+    { "stdin": "foo\nbar\nstatus\nshutdown\n" },
+    { "stdin": "status\nshutdown\n", "generated": true },
+    { "stdin": "hello\nshutdown\n", "generated": true },
+    { "stdin": "status\nstatus\nstatus\nstatus\nshutdown\n", "generated": true },
+    { "stdin": "ping\npong\nshutdown\n", "generated": true },
+    { "stdin": "shut\nshutdow\nshutdown\n", "generated": true },
+    { "stdin": "stat\nstatus\nstatuses\nshutdown\n", "generated": true },
+    { "stdin": "stat\nshutdown\n", "generated": true },
+    { "stdin": "scan\nshutdown\n", "generated": true },
+    { "stdin": "statuses\nscan\nshutdown\n", "generated": true },
+    { "stdin": "x\npower off\nshutdown\n", "generated": true },
+    { "stdin": "stat\nstat\nstatuses\nshutdown\n", "generated": true },
+    { "stdin": "scan\nshut\nhello\nshutdown\n", "generated": true },
+    { "stdin": "status\npower off\nstatuses\nstat\nshutdown\n", "generated": true },
+    { "stdin": "shutdow\nshut\npower off\nstatus\nshutdown\n", "generated": true },
+    { "stdin": "status\nstat\nping\nstatus\nstatus\nshutdown\n", "generated": true },
+    { "stdin": "statuses\npower off\nx\nlaunch\nshutdow\nshutdown\n", "generated": true },
+    { "stdin": "status\nshut\nreboot\nstat\nshutdow\nlaunch\nshutdown\n", "generated": true },
+    { "stdin": "shut\nshutdow\nstatus\nshut\nstatus\nscan\nshutdown\n", "generated": true },
+    { "stdin": "statuses\nstatus\nstatus\nstatus\nhello\nx\nhello\nshutdown\n", "generated": true },
+    {
+      "stdin": "shut\nstatus\npower off\nstat\nhelp\nstat\nshut\nscan\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "hello\nstatuses\nhello\nshutdow\nping\nstat\nstatus\nshutdow\nstatus\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "stat\nshutdow\nping\nreboot\nstatuses\nx\nscan\nstatus\nlaunch\nping\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "help\npower off\nhello\nstatuses\nping\nstatus\nstatus\nshut\npower off\nstatus\nreboot\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nscan\nping\nreboot\nstatus\nstatus\nscan\nshutdow\nstatus\nhello\nhello\nx\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "x\nstatus\nstat\nreboot\nlaunch\nreboot\nreboot\nstatus\nshut\nshutdow\nhello\npower off\nshutdow\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "ping\nhelp\nstatus\nping\nhelp\nstatus\nreboot\npower off\nx\nstatus\nstatus\nhello\nlaunch\nstatus\nstatus\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nstat\npower off\nstat\nstatus\nshutdow\nstatuses\nhello\nstat\nstatuses\nhello\nlaunch\npower off\nstatus\nreboot\nshutdow\nreboot\nstatus\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "reboot\nreboot\nhello\nstatus\nping\nscan\npower off\nshut\nping\nx\nstatus\nhello\nstatus\nreboot\nscan\nshut\nshutdow\nshut\nstatus\nstatus\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nhello\nstat\nping\nstatus\npower off\nshut\nhelp\nscan\nping\nreboot\nstatus\nstatus\nstatus\nhello\nshut\nshutdow\nhello\nstatus\nshut\nhelp\nhelp\nshut\nstat\nstatus\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "shut\nstat\nscan\nshut\nstatus\nscan\nreboot\nstatus\nshutdow\nstatus\nping\nx\nhello\nscan\nshut\nhello\nlaunch\nhello\nstatus\nlaunch\nshutdow\nstatuses\nhello\nshutdow\nreboot\nx\nstat\nshut\nstatus\nreboot\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nstatus\nstatus\nstatus\nstatuses\nping\nhello\nlaunch\nlaunch\nreboot\nping\nreboot\nscan\nx\nshut\nstat\nping\nstatuses\nstatus\nx\nlaunch\nstatus\nstatus\nhello\nstat\nstatuses\nshutdow\nscan\nshut\nshut\nstatus\nping\nhello\nx\nx\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "hello\nlaunch\nstatus\nstatus\nping\nreboot\nstat\nhello\nstatus\nstatus\nstatus\nping\nhelp\nstatuses\nshut\nstatus\nstatus\nhelp\nstatus\nx\nstat\nhelp\nshutdow\nlaunch\nlaunch\nstatuses\nshut\nstatus\nshut\nstatus\nx\nstatus\nstat\nx\nhelp\nlaunch\nping\nstatus\nstatus\nshut\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "shutdow\nstatus\nstat\nstatus\nlaunch\nping\nhelp\nstatus\nstatus\nstatus\nstat\nstatuses\nhelp\nlaunch\nstatus\nx\nx\nlaunch\nlaunch\nlaunch\nstatus\npower off\nx\nhelp\nhelp\nstatus\nshutdow\nstat\nx\nstatus\nscan\nscan\nreboot\npower off\nstatus\nscan\nstat\nshut\nstatus\nshut\nshutdow\nreboot\nreboot\nshut\nstatus\nshut\nstatus\nstatus\nstatus\nshutdow\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nping\nx\nreboot\nlaunch\nhelp\nreboot\nx\nlaunch\nlaunch\nshut\nstat\nstat\nstat\nscan\nstatuses\nstatus\nstatuses\npower off\nstatuses\nstatus\nping\nshut\nstatus\nstat\nstatus\nhello\nlaunch\nstatus\nstat\npower off\nshut\nshutdow\nx\nstat\nping\nx\nstatus\nhelp\nping\nstatus\nshutdow\nshut\nhello\nstatuses\nstatus\npower off\nx\nhelp\nshutdow\nx\nstat\nstat\nx\nhello\nhelp\nreboot\nshutdow\nping\nhello\nshutdown\n",
+      "generated": true
+    },
+    { "stdin": "shutdow\nreboot\npower off\nshutdown\n", "generated": true },
+    { "stdin": "power off\npower off\nx\nhello\nshutdown\n", "generated": true },
+    { "stdin": "x\nhello\nreboot\nhello\nshut\nshutdown\n", "generated": true },
+    { "stdin": "x\nhelp\nhello\nstatus\nstatus\nstat\nshutdown\n", "generated": true },
+    { "stdin": "help\nscan\nx\nscan\nstatus\nlaunch\nstatus\nshutdown\n", "generated": true },
+    { "stdin": "ping\nscan\nstatus\nstatus\nstat\nstat\nping\nx\nshutdown\n", "generated": true },
+    {
+      "stdin": "hello\nscan\nreboot\nreboot\nshutdow\nstatuses\nstat\nshutdow\nhelp\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "launch\nscan\nscan\nshut\nstat\nhelp\nstatus\nscan\nstatus\nping\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "scan\nshut\nstatus\nshutdow\nlaunch\nping\nshut\nhelp\nping\nshutdow\npower off\nshut\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nshutdow\nstatus\nreboot\nstat\nhello\nstatus\npower off\nscan\nping\nhello\npower off\nstatus\npower off\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "status\nshutdow\nstatus\nstat\nstatus\nshutdow\nstatuses\nshutdow\nshutdow\npower off\nhelp\nstatus\nshutdow\nhello\nhello\nscan\nshutdown\n",
+      "generated": true
+    },
+    {
+      "stdin": "stat\nping\nstatus\nlaunch\nstatus\npower off\nstat\nstatuses\nlaunch\nstatus\nstatus\nhello\nping\npower off\nhelp\nstatuses\nlaunch\nstatuses\nstatuses\nshut\npower off\nstatus\nshutdown\n",
+      "generated": true
+    }
   ]
 }
