@@ -4,7 +4,7 @@ Căutarea binară funcționează înjumătățind în mod repetat intervalul de 
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 <= N <= 1000)
+- Prima linie: un întreg `N` (1 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -10^6 și 10^6), sortate crescător
 - Linia următoare: un întreg `cautat` (între -10^6 și 10^6), valoarea de găsit
 

@@ -2,8 +2,9 @@ Read an integer **N**, then read **N** integers. Store them in a **dynamically a
 
 ### Input
 
-- First line: an integer `N` (1 <= N <= 1000)
+- First line: an integer `N` (1 <= N <= 2·10^4)
 - The next `N` lines: one integer per line (-10^6 <= x <= 10^6)
+- The sum, and every partial sum along the way, fits in an `int` (-2·10^9 <= sum <= 2·10^9)
 
 ### Output
 
