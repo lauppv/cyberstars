@@ -3,6 +3,7 @@
     "requires": [
       { "kind": "call", "name": "Business" },
       { "kind": "call", "name": "Vehicle" },
+      { "kind": "function", "name": "display" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "value1" },
       { "kind": "variable", "name": "name2" },
@@ -13,8 +14,7 @@
       { "kind": "variable", "name": "name4" },
       { "kind": "variable", "name": "value4" },
       { "kind": "variable", "name": "speed4" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -74,6 +74,246 @@
         "value4": 300000,
         "speed4": 290
       }
+    },
+    {
+      "inject": {
+        "name1": "Malibu Club",
+        "value1": 120000,
+        "name2": "Infernus",
+        "value2": 150000,
+        "speed2": 240,
+        "name3": "Print Works",
+        "value3": 70000,
+        "name4": "Cheetah",
+        "value4": 110000,
+        "speed4": 230
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "A",
+        "value1": 0,
+        "name2": "B",
+        "value2": 0,
+        "speed2": 0,
+        "name3": "C",
+        "value3": 0,
+        "name4": "D",
+        "value4": 0,
+        "speed4": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Vercetti Estate",
+        "value1": 1000000,
+        "name2": "Hunter",
+        "value2": 2000000,
+        "speed2": 300,
+        "name3": "Film Studio",
+        "value3": 450000,
+        "name4": "Sparrow",
+        "value4": 800000,
+        "speed4": 180
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Ice Cream Factory",
+        "value1": 1,
+        "name2": "Faggio",
+        "value2": 2,
+        "speed2": 60,
+        "name3": "Taxi Firm",
+        "value3": 3,
+        "name4": "Caddy",
+        "value4": 4,
+        "speed4": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Pole Position",
+        "value1": 85000,
+        "name2": "Banshee",
+        "value2": 95000,
+        "speed2": 250,
+        "name3": "Pole Position",
+        "value3": 85000,
+        "name4": "Banshee",
+        "value4": 95000,
+        "speed4": 250
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Car Showroom",
+        "value1": 50000,
+        "name2": "Stinger",
+        "value2": 130000,
+        "speed2": 220,
+        "name3": "Boatyard",
+        "value3": 10000,
+        "name4": "Squalo",
+        "value4": 60000,
+        "speed4": 120
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Kaufman Cabs",
+        "value1": 45000,
+        "name2": "Cabbie",
+        "value2": 12000,
+        "speed2": 160,
+        "name3": "Cherry Popper",
+        "value3": 99999,
+        "name4": "Mr Whoopee",
+        "value4": 8000,
+        "speed4": 90
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Sunshine Autos",
+        "value1": 200000,
+        "name2": "Comet",
+        "value2": 175000,
+        "speed2": 245,
+        "name3": "Interglobal Films",
+        "value3": 330000,
+        "name4": "Hotring Racer",
+        "value4": 300000,
+        "speed4": 290
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Ocean View Hotel",
+        "value1": 25000,
+        "name2": "PCJ 600",
+        "value2": 9000,
+        "speed2": 210,
+        "name3": "Vice Point Mall",
+        "value3": 640000,
+        "name4": "Angel",
+        "value4": 7000,
+        "speed4": 170
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Washington Beach Safehouse",
+        "value1": 4000,
+        "name2": "Voodoo",
+        "value2": 21000,
+        "speed2": 175,
+        "name3": "Hyman Condo",
+        "value3": 14000,
+        "name4": "Phoenix",
+        "value4": 52000,
+        "speed4": 235
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Links View",
+        "value1": 6000,
+        "name2": "Rhino",
+        "value2": 1500000,
+        "speed2": 80,
+        "name3": "El Swanko Casa",
+        "value3": 8000,
+        "name4": "Admiral",
+        "value4": 30000,
+        "speed4": 190
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Club",
+        "value1": 123456,
+        "name2": "Car",
+        "value2": 654321,
+        "speed2": 199,
+        "name3": "Shop",
+        "value3": 111111,
+        "name4": "Bike",
+        "value4": 222222,
+        "speed4": 201
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Moist Palms Hotel",
+        "value1": 32000,
+        "name2": "Deluxo",
+        "value2": 160000,
+        "speed2": 260,
+        "name3": "Skumole Shack",
+        "value3": 3000,
+        "name4": "Sabre Turbo",
+        "value4": 47000,
+        "speed4": 215
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Junkyard",
+        "value1": 15000,
+        "name2": "Bloodring Banger",
+        "value2": 26000,
+        "speed2": 185,
+        "name3": "Print Works",
+        "value3": 70000,
+        "name4": "Love Fist Limo",
+        "value4": 90000,
+        "speed4": 150
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Malibu",
+        "value1": 2147483,
+        "name2": "Infernus",
+        "value2": 2147483,
+        "speed2": 999,
+        "name3": "Works",
+        "value3": 7,
+        "name4": "Cheetah",
+        "value4": 8,
+        "speed4": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Vice Port",
+        "value1": 77000,
+        "name2": "Speeder",
+        "value2": 88000,
+        "speed2": 140,
+        "name3": "Starfish Island",
+        "value3": 990000,
+        "name4": "Maverick",
+        "value4": 999000,
+        "speed4": 280
+      },
+      "generated": true
     }
   ]
 }

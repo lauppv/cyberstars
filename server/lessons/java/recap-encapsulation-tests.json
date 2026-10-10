@@ -4,6 +4,7 @@
       { "kind": "call", "name": "BankAccount" },
       { "kind": "function", "name": "deposit" },
       { "kind": "function", "name": "withdraw" },
+      { "kind": "function", "name": "toString" },
       { "kind": "function", "name": "getTotalAccounts" },
       { "kind": "variable", "name": "owner1" },
       { "kind": "variable", "name": "balance1" },
@@ -11,8 +12,7 @@
       { "kind": "variable", "name": "balance2" },
       { "kind": "variable", "name": "deposit1" },
       { "kind": "variable", "name": "withdraw1" },
-      { "kind": "variable", "name": "withdraw2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "withdraw2" }
     ]
   },
   "cases": [
@@ -60,6 +60,198 @@
         "withdraw1": 100,
         "withdraw2": 50
       }
+    },
+    {
+      "inject": {
+        "owner1": "Tommy",
+        "balance1": 1000,
+        "owner2": "Lance",
+        "balance2": 500,
+        "deposit1": 250,
+        "withdraw1": 500,
+        "withdraw2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Tommy",
+        "balance1": 1000,
+        "owner2": "Lance",
+        "balance2": 500,
+        "deposit1": 250,
+        "withdraw1": 500,
+        "withdraw2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Tommy",
+        "balance1": 0,
+        "owner2": "Lance",
+        "balance2": 0,
+        "deposit1": 0,
+        "withdraw1": 0,
+        "withdraw2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Tommy",
+        "balance1": 0,
+        "owner2": "Lance",
+        "balance2": 0,
+        "deposit1": 10,
+        "withdraw1": 1,
+        "withdraw2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Victor",
+        "balance1": 100,
+        "owner2": "Cam",
+        "balance2": 50,
+        "deposit1": 0,
+        "withdraw1": 60,
+        "withdraw2": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Victor",
+        "balance1": 100,
+        "owner2": "Cam",
+        "balance2": 50,
+        "deposit1": 5,
+        "withdraw1": 60,
+        "withdraw2": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Phil",
+        "balance1": 999,
+        "owner2": "Earnest",
+        "balance2": 1000,
+        "deposit1": 1,
+        "withdraw1": 999,
+        "withdraw2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Phil",
+        "balance1": 999,
+        "owner2": "Earnest",
+        "balance2": 1000,
+        "deposit1": 1,
+        "withdraw1": 999,
+        "withdraw2": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Avery",
+        "balance1": 25000,
+        "owner2": "Hilary",
+        "balance2": 12000,
+        "deposit1": 7500,
+        "withdraw1": 4000,
+        "withdraw2": 8000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Avery",
+        "balance1": 25000,
+        "owner2": "Hilary",
+        "balance2": 12000,
+        "deposit1": 7500,
+        "withdraw1": 4000,
+        "withdraw2": 8001
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Umberto",
+        "balance1": 1,
+        "owner2": "Mitch",
+        "balance2": 300,
+        "deposit1": 99,
+        "withdraw1": 299,
+        "withdraw2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Candy",
+        "balance1": 42,
+        "owner2": "Maude",
+        "balance2": 7,
+        "deposit1": 58,
+        "withdraw1": 8,
+        "withdraw2": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Kent Paul",
+        "balance1": 640,
+        "owner2": "Ken Rosenberg",
+        "balance2": 320,
+        "deposit1": 160,
+        "withdraw1": 80,
+        "withdraw2": 240
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Juan",
+        "balance1": 50,
+        "owner2": "Rosa",
+        "balance2": 70,
+        "deposit1": 30,
+        "withdraw1": 20,
+        "withdraw2": 60
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Leo",
+        "balance1": 10,
+        "owner2": "Steve",
+        "balance2": 10,
+        "deposit1": 10,
+        "withdraw1": 10,
+        "withdraw2": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "owner1": "Ricardo Diaz",
+        "balance1": 7000,
+        "owner2": "Alberto",
+        "balance2": 2500,
+        "deposit1": 3000,
+        "withdraw1": 1000,
+        "withdraw2": 1499
+      },
+      "generated": true
     }
   ]
 }

@@ -3,6 +3,7 @@
     "requires": [
       { "kind": "call", "name": "Afacere" },
       { "kind": "call", "name": "Vehicul" },
+      { "kind": "function", "name": "afiseaza" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "valoare1" },
       { "kind": "variable", "name": "nume2" },
@@ -13,8 +14,7 @@
       { "kind": "variable", "name": "nume4" },
       { "kind": "variable", "name": "valoare4" },
       { "kind": "variable", "name": "viteza4" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -74,6 +74,246 @@
         "valoare4": 300000,
         "viteza4": 290
       }
+    },
+    {
+      "inject": {
+        "nume1": "Malibu Club",
+        "valoare1": 120000,
+        "nume2": "Infernus",
+        "valoare2": 150000,
+        "viteza2": 240,
+        "nume3": "Print Works",
+        "valoare3": 70000,
+        "nume4": "Cheetah",
+        "valoare4": 110000,
+        "viteza4": 230
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "valoare1": 0,
+        "nume2": "B",
+        "valoare2": 0,
+        "viteza2": 0,
+        "nume3": "C",
+        "valoare3": 0,
+        "nume4": "D",
+        "valoare4": 0,
+        "viteza4": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Vercetti Estate",
+        "valoare1": 1000000,
+        "nume2": "Hunter",
+        "valoare2": 2000000,
+        "viteza2": 300,
+        "nume3": "Film Studio",
+        "valoare3": 450000,
+        "nume4": "Sparrow",
+        "valoare4": 800000,
+        "viteza4": 180
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Ice Cream Factory",
+        "valoare1": 1,
+        "nume2": "Faggio",
+        "valoare2": 2,
+        "viteza2": 60,
+        "nume3": "Taxi Firm",
+        "valoare3": 3,
+        "nume4": "Caddy",
+        "valoare4": 4,
+        "viteza4": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Pole Position",
+        "valoare1": 85000,
+        "nume2": "Banshee",
+        "valoare2": 95000,
+        "viteza2": 250,
+        "nume3": "Pole Position",
+        "valoare3": 85000,
+        "nume4": "Banshee",
+        "valoare4": 95000,
+        "viteza4": 250
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Car Showroom",
+        "valoare1": 50000,
+        "nume2": "Stinger",
+        "valoare2": 130000,
+        "viteza2": 220,
+        "nume3": "Boatyard",
+        "valoare3": 10000,
+        "nume4": "Squalo",
+        "valoare4": 60000,
+        "viteza4": 120
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Kaufman Cabs",
+        "valoare1": 45000,
+        "nume2": "Cabbie",
+        "valoare2": 12000,
+        "viteza2": 160,
+        "nume3": "Cherry Popper",
+        "valoare3": 99999,
+        "nume4": "Mr Whoopee",
+        "valoare4": 8000,
+        "viteza4": 90
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Sunshine Autos",
+        "valoare1": 200000,
+        "nume2": "Comet",
+        "valoare2": 175000,
+        "viteza2": 245,
+        "nume3": "Interglobal Films",
+        "valoare3": 330000,
+        "nume4": "Hotring Racer",
+        "valoare4": 300000,
+        "viteza4": 290
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Ocean View Hotel",
+        "valoare1": 25000,
+        "nume2": "PCJ 600",
+        "valoare2": 9000,
+        "viteza2": 210,
+        "nume3": "Vice Point Mall",
+        "valoare3": 640000,
+        "nume4": "Angel",
+        "valoare4": 7000,
+        "viteza4": 170
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Washington Beach Safehouse",
+        "valoare1": 4000,
+        "nume2": "Voodoo",
+        "valoare2": 21000,
+        "viteza2": 175,
+        "nume3": "Hyman Condo",
+        "valoare3": 14000,
+        "nume4": "Phoenix",
+        "valoare4": 52000,
+        "viteza4": 235
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Links View",
+        "valoare1": 6000,
+        "nume2": "Rhino",
+        "valoare2": 1500000,
+        "viteza2": 80,
+        "nume3": "El Swanko Casa",
+        "valoare3": 8000,
+        "nume4": "Admiral",
+        "valoare4": 30000,
+        "viteza4": 190
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Club",
+        "valoare1": 123456,
+        "nume2": "Car",
+        "valoare2": 654321,
+        "viteza2": 199,
+        "nume3": "Shop",
+        "valoare3": 111111,
+        "nume4": "Bike",
+        "valoare4": 222222,
+        "viteza4": 201
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Moist Palms Hotel",
+        "valoare1": 32000,
+        "nume2": "Deluxo",
+        "valoare2": 160000,
+        "viteza2": 260,
+        "nume3": "Skumole Shack",
+        "valoare3": 3000,
+        "nume4": "Sabre Turbo",
+        "valoare4": 47000,
+        "viteza4": 215
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Junkyard",
+        "valoare1": 15000,
+        "nume2": "Bloodring Banger",
+        "valoare2": 26000,
+        "viteza2": 185,
+        "nume3": "Print Works",
+        "valoare3": 70000,
+        "nume4": "Love Fist Limo",
+        "valoare4": 90000,
+        "viteza4": 150
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Malibu",
+        "valoare1": 2147483,
+        "nume2": "Infernus",
+        "valoare2": 2147483,
+        "viteza2": 999,
+        "nume3": "Works",
+        "valoare3": 7,
+        "nume4": "Cheetah",
+        "valoare4": 8,
+        "viteza4": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Vice Port",
+        "valoare1": 77000,
+        "nume2": "Speeder",
+        "valoare2": 88000,
+        "viteza2": 140,
+        "nume3": "Starfish Island",
+        "valoare3": 990000,
+        "nume4": "Maverick",
+        "valoare4": 999000,
+        "viteza4": 280
+      },
+      "generated": true
     }
   ]
 }
