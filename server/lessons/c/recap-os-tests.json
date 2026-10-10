@@ -2,9 +2,50 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "function", "name": "count_words" },
+      { "kind": "variable", "name": "text" },
+      { "kind": "call", "name": "pipe" },
       { "kind": "call", "name": "fork" },
-      { "kind": "call", "name": "pipe" }
+      { "kind": "call", "name": "sprintf" }
     ]
   },
-  "cases": [{ "visible": true, "stdin": "" }]
+  "cases": [
+    { "inject": { "text": "The quick brown fox jumps over the lazy dog" }, "visible": true },
+    { "inject": { "text": "Unix" }, "generated": true },
+    { "inject": { "text": "hello world" }, "generated": true },
+    { "inject": { "text": "a b c" }, "generated": true },
+    { "inject": { "text": "fork and pipe" }, "generated": true },
+    { "inject": { "text": "I" }, "generated": true },
+    { "inject": { "text": "The pipe carries one number" }, "generated": true },
+    { "inject": { "text": "one two three four five six seven eight nine ten" }, "generated": true },
+    { "inject": { "text": "x y z w v u t s r q p o n m l k j i h g" }, "generated": true },
+    { "inject": { "text": "Bell Labs 1969" }, "generated": true },
+    {
+      "inject": { "text": "Ken Thompson wrote the first Unix kernel in assembly" },
+      "generated": true
+    },
+    { "inject": { "text": "Dennis Ritchie created C" }, "generated": true },
+    { "inject": { "text": "aa bb" }, "generated": true },
+    { "inject": { "text": "z" }, "generated": true },
+    { "inject": { "text": "punch tape number 42 is ready" }, "generated": true },
+    { "inject": { "text": "read write close wait" }, "generated": true },
+    { "inject": { "text": "The child counts and the parent prints" }, "generated": true },
+    { "inject": { "text": "multics" }, "generated": true },
+    { "inject": { "text": "a" }, "generated": true },
+    { "inject": { "text": "Two words" }, "generated": true },
+    { "inject": { "text": "pid ppid fork exec wait exit" }, "generated": true },
+    {
+      "inject": {
+        "text": "C is a small language with a big standard library and many sharp edges"
+      },
+      "generated": true
+    },
+    { "inject": { "text": "NUL terminated strings end with a zero byte" }, "generated": true },
+    { "inject": { "text": "tape-reel #7 loaded!" }, "generated": true },
+    { "inject": { "text": "up down" }, "generated": true },
+    { "inject": { "text": "one" }, "generated": true },
+    { "inject": { "text": "lp0 on fire" }, "generated": true },
+    { "inject": { "text": "the quick brown fox" }, "generated": true },
+    { "inject": { "text": "sh csh ksh bash zsh dash" }, "generated": true }
+  ]
 }
