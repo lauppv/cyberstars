@@ -1,6 +1,10 @@
 {
   "structure": {
     "requires": [
+      { "kind": "interface" },
+      { "kind": "implements" },
+      { "kind": "enum" },
+      { "kind": "instanceof" },
       { "kind": "call", "name": "Business" },
       { "kind": "call", "name": "Vehicle" },
       { "kind": "function", "name": "display" },

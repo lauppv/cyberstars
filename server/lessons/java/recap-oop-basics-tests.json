@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "class", "name": "CrewMember" },
+      { "kind": "object" },
       { "kind": "call", "name": "CrewMember" },
       { "kind": "function", "name": "train" },
       { "kind": "function", "name": "mission" },

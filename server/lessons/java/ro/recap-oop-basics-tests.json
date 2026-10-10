@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "class", "name": "MembruBanda" },
+      { "kind": "object" },
       { "kind": "call", "name": "MembruBanda" },
       { "kind": "function", "name": "antreneaza" },
       { "kind": "function", "name": "misiune" },
