@@ -4,7 +4,8 @@
       { "kind": "function", "name": "sum_array" },
       { "kind": "call", "name": "sum_array" },
       { "kind": "call", "name": "scanf" },
-      { "kind": "pointer" }
+      { "kind": "pointer" },
+      { "kind": "deref" }
     ]
   },
   "cases": [

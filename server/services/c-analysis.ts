@@ -126,7 +126,8 @@ const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
     (n.type === 'pointer_declarator' || n.type === 'abstract_pointer_declarator') &&
     isOwnPointer(n),
   // *p in an expression (reading or writing through the pointer), not the
-  // star of a declaration; p->field and p[i] dereference too.
+  // star of a declaration; p->field too. p[i] is indexing and doesn't count:
+  // pointers-arrays asks for *(ptr + i) instead of ptr[i].
   deref: (n) =>
     (n.type === 'pointer_expression' && n.childForFieldName('operator')?.text === '*') ||
     (n.type === 'field_expression' && n.childForFieldName('operator')?.text === '->'),
