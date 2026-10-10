@@ -3,7 +3,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "oxygen" },
-      { "kind": "variable", "name": "crew_aboard" }
+      { "kind": "variable", "name": "crew_aboard" },
+      { "kind": "if" }
     ]
   },
   "cases": [

@@ -1,6 +1,9 @@
 {
   "comparator": "trimmed",
-  "structure": { "requires": [{ "kind": "loop", "type": "while" }] },
+  "structure": {
+    "requires": [{ "kind": "loop", "type": "while" }],
+    "forbids": [{ "kind": "break" }]
+  },
   "cases": [
     { "visible": true, "stdin": "status\nsalut\noprire\n" },
     { "visible": true, "stdin": "oprire\n" },

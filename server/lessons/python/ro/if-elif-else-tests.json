@@ -3,7 +3,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "oxigen" },
-      { "kind": "variable", "name": "echipaj_la_bord" }
+      { "kind": "variable", "name": "echipaj_la_bord" },
+      { "kind": "if" }
     ]
   },
   "cases": [
