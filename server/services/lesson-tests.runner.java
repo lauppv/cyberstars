@@ -219,7 +219,10 @@ public class Runner {
   }
 
   /** One eligible injection point: a declaration initializer or an assignment rhs. */
-  record InjectPoint(String name, String type, long start, long end) {}
+  // inMain: a direct statement of main's body. Once a name has one there, only
+  // those take the case's values, so a field or a helper's local of the same
+  // name (int customers = 0; in a class) keeps its own.
+  record InjectPoint(String name, String type, long start, long end, boolean inMain) {}
 
   /** A parsed program: source, syntax verdict, structure facts, injection points. */
   static class Parsed {
@@ -358,7 +361,13 @@ public class Runner {
         public Void visitNewClass(NewClassTree node, Void unused) {
           // `new Player(...)` counts as a call to `Player` so OOP lessons can
           // require object creation via { kind: "call", name: "<ClassName>" }.
-          if (node.getIdentifier() != null) callNames.add(node.getIdentifier().toString());
+          // new HashMap<>() and new java.util.ArrayList<String>() count as HashMap / ArrayList.
+          if (node.getIdentifier() != null) {
+            String type = node.getIdentifier().toString();
+            int generic = type.indexOf('<');
+            if (generic >= 0) type = type.substring(0, generic);
+            callNames.add(type.substring(type.lastIndexOf('.') + 1).trim());
+          }
           return super.visitNewClass(node, unused);
         }
 
@@ -375,7 +384,7 @@ public class Runner {
             long start = positions.getStartPosition(unit, node.getInitializer());
             long end = positions.getEndPosition(unit, node.getInitializer());
             if (start >= 0 && end > start) {
-              points.add(new InjectPoint(name, type, start, end));
+              points.add(new InjectPoint(name, type, start, end, inMain(parent)));
             }
           }
           return super.visitVariable(node, unused);
@@ -392,7 +401,13 @@ public class Runner {
               long start = positions.getStartPosition(unit, node.getExpression());
               long end = positions.getEndPosition(unit, node.getExpression());
               if (start >= 0 && end > start) {
-                points.add(new InjectPoint(name, declaredTypes.get(name), start, end));
+                points.add(
+                    new InjectPoint(
+                        name,
+                        declaredTypes.get(name),
+                        start,
+                        end,
+                        inMain(getCurrentPath().getParentPath().getParentPath().getLeaf())));
               }
             }
           }
@@ -409,6 +424,10 @@ public class Runner {
             return grandparent instanceof MethodTree;
           }
           return false;
+        }
+
+        private boolean inMain(Tree parent) {
+          return parent instanceof BlockTree && "main".equals(enclosingMethods.peek());
         }
 
         private Tree findParentOf(Tree tree) {
@@ -470,7 +489,10 @@ public class Runner {
       }
       record Splice(long start, long end, String text) {}
       List<Splice> splices = new ArrayList<>();
+      java.util.Set<String> inMain = new java.util.HashSet<>();
+      for (InjectPoint point : points) if (point.inMain()) inMain.add(point.name());
       for (InjectPoint point : points) {
+        if (!point.inMain() && inMain.contains(point.name())) continue;
         List<Object> values = remaining.get(point.name());
         if (values == null || values.isEmpty()) continue;
         splices.add(new Splice(point.start(), point.end(), Render.value(values.remove(0), point.type())));
