@@ -49,6 +49,8 @@ type StructureKind =
   | 'struct'
   | 'typedef'
   | 'pointer'
+  /** c: reading or writing through a pointer (*p, p->field) */
+  | 'deref'
   | 'sizeof'
   | 'define';
 

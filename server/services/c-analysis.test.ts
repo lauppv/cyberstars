@@ -127,6 +127,11 @@ describe('checkStructure', () => {
       'int main(void){ int a = 1; int b = a; return 0; }',
     ],
     [
+      { kind: 'deref' },
+      'int main(void){ int x = 1; int *p = &x; *p = 42; return 0; }',
+      'int main(void){ int x = 1; int *p = &x; x = 42; return 0; }',
+    ],
+    [
       { kind: 'sizeof' },
       'int main(void){ int v[3]; int n = sizeof(v) / sizeof(v[0]); return 0; }',
       'int main(void){ int v[3]; int n = 3; return 0; }',

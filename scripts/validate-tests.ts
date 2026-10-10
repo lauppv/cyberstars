@@ -191,6 +191,7 @@ export const STRUCTURE_KINDS: Record<Lang, Set<string>> = {
     'struct',
     'typedef',
     'pointer',
+    'deref',
     'sizeof',
     'define',
     'enum',

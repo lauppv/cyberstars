@@ -110,6 +110,11 @@ const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
   typedef: (n) => n.type === 'type_definition',
   sizeof: (n) => n.type === 'sizeof_expression',
   pointer: (n) => n.type === 'pointer_declarator' || n.type === 'abstract_pointer_declarator',
+  // *p in an expression (reading or writing through the pointer), not the
+  // star of a declaration; p->field and p[i] dereference too.
+  deref: (n) =>
+    (n.type === 'pointer_expression' && n.childForFieldName('operator')?.text === '*') ||
+    (n.type === 'field_expression' && n.childForFieldName('operator')?.text === '->'),
   struct: (n) => n.type === 'struct_specifier' && n.childForFieldName('body') !== null,
   enum: (n) => n.type === 'enum_specifier' && n.childForFieldName('body') !== null,
 };
