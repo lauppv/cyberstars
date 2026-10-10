@@ -152,9 +152,10 @@ export async function auditSolution(
 // judge's time budget; Java pays a JVM start per program, so it gets fewer.
 export const MAX_CASES: Record<Lang, number> = { python: 50, c: 50, java: 20 };
 
-// Bulk (generated) cases are hidden by definition, and their reference output
-// may come from the judge's cache, which assumes the solution is deterministic,
-// so they can't sit on a masked/unordered (nondeterministic output) lesson.
+// Bulk (generated) cases are hidden by definition, and they are meant for
+// lessons whose output is deterministic, so not for masked/unordered ones.
+// The load test, the one case the runtime comes from, is hidden and runs last,
+// so its time is only shown once every other case has passed.
 export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
   const messages: string[] = [];
   const cases = spec.cases ?? [];
@@ -170,6 +171,12 @@ export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
       `generated cases on a ${spec.comparator} lesson; its output is not deterministic`,
     );
   }
+  const loads = cases.filter((c) => c.load);
+  if (loads.length > 1) messages.push(`${loads.length} load tests; a lesson has at most one`);
+  if (loads.length > 0 && !cases[cases.length - 1].load) {
+    messages.push('the load test is not the last case');
+  }
+  if (loads.some((c) => c.visible)) messages.push('the load test is marked visible');
   return messages;
 }
 

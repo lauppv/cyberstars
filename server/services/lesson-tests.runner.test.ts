@@ -80,7 +80,60 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(lines[1]).toMatchObject({ user: { stdout: 'é\n' }, solution: { stdout: 'é\n' } });
     // A cached case runs the student's program only.
     expect(lines[2]).toEqual({ user: expect.objectContaining({ stdout: '2\n' }) });
-    expect((lines[2] as { user: { ms: number } }).user.ms).toBeGreaterThan(0);
+  });
+
+  it("times the CPU the program's own code used, and nothing when it skips its exit hooks", () => {
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      {
+        userCode: 'print(sum(range(5_000_000)))\n',
+        solutionCode: 'import time\ntime.sleep(0.2)\nprint(12499997500000)\n',
+        structure: {},
+        cases: [{}],
+      },
+      ['next'],
+    );
+    const { user, solution } = lines[1] as { user: { ms: number }; solution: { ms: number } };
+    // Computing counts; sleeping doesn't, and neither does interpreter startup.
+    expect(user.ms).toBeGreaterThan(20);
+    expect(solution.ms).toBeLessThan(20);
+
+    const exited = runRunner(
+      'lesson-tests.runner.py',
+      {
+        userCode: 'import os\nprint("ok", flush=True)\nos._exit(0)\n',
+        solutionCode: 'print("ok")\n',
+        structure: {},
+        cases: [{}],
+      },
+      ['stop'],
+    );
+    expect((exited[1] as { user: { ms?: number } }).user.ms).toBeUndefined();
+  });
+
+  it('reports one time from the program itself when it forks a child', () => {
+    const code =
+      'import os, sys\npid = os.fork()\nif pid == 0:\n    sys.exit(0)\nos.waitpid(pid, 0)\nprint("ok")\n';
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      { userCode: code, solutionCode: 'print("ok")\n', structure: {}, cases: [{}] },
+      ['stop'],
+    );
+    const { user } = lines[1] as { user: { stdout: string; ms?: number } };
+    expect(user.stdout).toBe('ok\n');
+    expect(user.ms).toBeGreaterThanOrEqual(0);
+  });
+
+  it('keeps tracebacks on the same lines as without the timing preamble', () => {
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      { userCode: 'x = 1\ny = nope\n', solutionCode: 'print(1)\n', structure: {}, cases: [{}] },
+      ['stop'],
+    );
+    const { user } = lines[1] as { user: { stderr: string; exit: number; ms: number } };
+    expect(user.stderr).toContain('line 5, in <module>');
+    expect(user.exit).toBe(1);
+    expect(user.ms).toBeGreaterThanOrEqual(0);
   });
 });
 
@@ -99,5 +152,37 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
       user: { stdout: 'A�\n', exit: 0 },
       solution: { stdout: 'A\n', exit: 0 },
     });
+  });
+  it('reports one time from the program itself when it forks a child', () => {
+    const user =
+      '#include <stdio.h>\n#include <unistd.h>\n#include <sys/wait.h>\nint main(void) { pid_t p = fork(); if (p == 0) return 0; waitpid(p, NULL, 0); puts("ok"); return 0; }\n';
+    const lines = runRunner(
+      'lesson-tests.runner.c.py',
+      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: user }] },
+      ['stop'],
+    );
+    const { user: u } = lines[1] as { user: { stdout: string; ms?: number } };
+    expect(u.stdout).toBe('ok\n');
+    expect(u.ms).toBeGreaterThanOrEqual(0);
+  });
+
+  it("times the CPU the program's own code used, and nothing when it crashes", () => {
+    const user =
+      '#include <stdio.h>\n#include <unistd.h>\nint main(void) { volatile long s = 0; for (long i = 0; i < 200000000; i++) s += i; usleep(200000); puts("ok"); return 0; }\n';
+    const solution = 'int main(void) { int *p = 0; *p = 1; return 0; }\n';
+    const lines = runRunner(
+      'lesson-tests.runner.c.py',
+      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: solution }] },
+      ['stop'],
+    );
+    const { user: u, solution: s } = lines[1] as {
+      user: { ms: number; stdout: string };
+      solution: { ms?: number; exit: number };
+    };
+    // The loop counts, the 200 ms sleep doesn't.
+    expect(u.stdout).toBe('ok\n');
+    expect(u.ms).toBeGreaterThan(50);
+    expect(s.exit).not.toBe(0);
+    expect(s.ms).toBeUndefined();
   });
 });

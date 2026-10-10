@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <pthread.h>
 
-int numere[100];
+int numere[20000];
 int tinta;
 int index_gasit = -1;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;

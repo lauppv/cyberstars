@@ -2,7 +2,7 @@ Având un șir, numără câte **vocale** conține.
 
 ### Date de intrare
 
-O singură linie care conține un șir `s` de 1 până la 1000 de caractere ASCII (litere, cifre, spații și semne de punctuație).
+O singură linie care conține un șir `s` de 1 până la 10^5 caractere ASCII (litere, cifre, spații și semne de punctuație).
 
 ### Rezultat
 

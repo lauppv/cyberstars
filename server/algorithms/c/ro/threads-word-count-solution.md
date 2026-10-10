@@ -30,7 +30,7 @@ void *numara(void *arg) {
 }
 
 int main(void) {
-    char sir1[256], sir2[256];
+    char sir1[65536], sir2[65536];
     fgets(sir1, sizeof(sir1), stdin);
     fgets(sir2, sizeof(sir2), stdin);
 

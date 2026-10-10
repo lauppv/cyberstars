@@ -2,7 +2,7 @@ Citește un șir (un singur cuvânt, fără spații) și calculează lungimea lu
 
 ### Date de intrare
 
-Un singur cuvânt (maxim 1000 de caractere, fără spații).
+Un singur cuvânt (maxim 10^5 de caractere, fără spații).
 
 ### Rezultat
 

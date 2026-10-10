@@ -7,8 +7,8 @@
 void merge(int arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
-    int L[1000];
-    int R[1000];
+    int L[20000];
+    int R[20000];
 
     for (int i = 0; i < n1; i++) {
         L[i] = arr[left + i];
@@ -57,7 +57,7 @@ int main(void) {
     int n;
     scanf("%d", &n);
 
-    int arr[1000];
+    int arr[20000];
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }

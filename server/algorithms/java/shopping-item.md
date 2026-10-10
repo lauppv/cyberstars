@@ -4,7 +4,7 @@ Read N items from stdin. For each item, create an `Item` object. At the end, pri
 
 ### Input
 
-- Line 1: an integer N, the number of items (0 <= N <= 50)
+- Line 1: an integer N, the number of items (0 <= N <= 2·10^4)
 - For each item, three lines:
   - Line 1: the name (a single word, at most 20 characters)
   - Line 2: the price (decimal number, 0.01 <= price <= 10^4, at most 2 digits after the decimal point)

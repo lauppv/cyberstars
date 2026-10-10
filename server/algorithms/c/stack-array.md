@@ -6,7 +6,7 @@ Implement a **stack** data structure using an array. Read a sequence of commands
 
 ### Input
 
-- First line: an integer `M` (1 <= M <= 100), the number of commands
+- First line: an integer `M` (1 <= M <= 2·10^4), the number of commands
 - For each command:
   - Line 1: command type (`push`, `pop`, or `peek`)
   - Only for `push`, line 2: the integer X (-10^9 <= X <= 10^9)

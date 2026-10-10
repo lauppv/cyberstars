@@ -4,7 +4,7 @@ Firele primesc un singur argument `void *`, așa că împachetăm începutul, sf
 
 ### Date de intrare
 
-- Prima linie: numărul întreg `N` (2 <= N <= 100)
+- Prima linie: numărul întreg `N` (2 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -1000 și 1000)
 
 ### Rezultat

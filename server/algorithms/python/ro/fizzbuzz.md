@@ -2,7 +2,7 @@ Afișează numerele de la 1 la N, dar cu o răsturnare de situație: pentru mult
 
 ### Date de intrare
 
-- Un singur număr întreg `n` (1 <= n <= 100).
+- Un singur număr întreg `n` (1 <= n <= 2·10^4).
 
 ### Rezultat
 

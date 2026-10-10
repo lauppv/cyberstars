@@ -45,6 +45,7 @@ vi.mock('./c-analysis.js', () => ({
 }));
 
 const { loadTestsSpec, compareOutputs, runLessonTests } = await import('./lesson-tests.service.js');
+const { clearReferences } = await import('./reference-cache.js');
 
 const SPEC = {
   comparator: 'trimmed',
@@ -100,6 +101,7 @@ function stubVerdict({ syntaxError, structureFailures = [], cases }: StubVerdict
 beforeEach(() => {
   vi.clearAllMocks();
   mockAcquire.mockResolvedValue('cid-1');
+  clearReferences();
 });
 
 describe('loadTestsSpec', () => {
@@ -193,39 +195,90 @@ describe('runLessonTests', () => {
     expect(mockDestroy).not.toHaveBeenCalled();
   });
 
-  it('reports per-case timings rounded to 0.1 ms and sums them over cases timed on both sides', async () => {
+  it('rounds per-case timings to the microsecond and takes the runtime from the load test alone', async () => {
     stubFiles({
       comparator: 'trimmed',
       structure: {},
-      cases: [{ visible: true }, { generated: true }, {}],
+      cases: [{ visible: true }, { generated: true }, { stdin: '9 8 7\n', load: true }],
     });
     stubVerdict({
       syntaxError: null,
       structureFailures: [],
       cases: [
-        { user: program({ ms: 12.345 }), solution: program({ ms: 10.04 }) },
-        { user: program({ ms: 3.25 }), solution: program({ ms: 2.75 }) },
-        // An untimed side (older runner) leaves the case out of both totals.
-        { user: program({ ms: 50 }), solution: program() },
+        { user: program({ ms: 12.3456 }), solution: program({ ms: 10.0404 }) },
+        { user: program({ ms: 0.0321 }), solution: program({ ms: 0.0274 }) },
+        { user: program({ ms: 48.2224 }), solution: program({ ms: 20.5 }) },
       ],
     });
 
     const res = await runLessonTests('user:1', 'python', 'print', 'code');
-    expect(res.cases[0]).toMatchObject({ userMs: 12.3, solutionMs: 10 });
-    expect(res.cases[0].generated).toBeUndefined();
-    expect(res.cases[1]).toMatchObject({ generated: true, userMs: 3.3, solutionMs: 2.8 });
-    expect(res.cases[2].userMs).toBe(50);
-    expect(res.cases[2].solutionMs).toBeUndefined();
-    expect(res.runtimeMs).toBe(15.6);
-    expect(res.referenceMs).toBe(12.8);
+    expect(res.cases[0]).toMatchObject({ userMs: 12.346, solutionMs: 10.04 });
+    expect(res.cases[1]).toMatchObject({ generated: true, userMs: 0.032, solutionMs: 0.027 });
+    // The load test goes back by name: no input, no outputs, just its verdict and times.
+    expect(res.cases[2]).toEqual({
+      index: 2,
+      visible: false,
+      passed: true,
+      load: true,
+      userMs: 48.222,
+      solutionMs: 20.5,
+    });
+    expect(res).toMatchObject({ runtimeMs: 48.222, referenceMs: 20.5 });
   });
 
-  it('omits the timing totals when no case is timed on both sides', async () => {
+  it('reports no runtime when the load test fails, or a side of it went untimed', async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{}, { stdin: '1\n', load: true }] });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program({ ms: 1 }), solution: program({ ms: 1 }) },
+        { user: program({ stdout: 'wrong\n', ms: 30 }), solution: program({ ms: 20 }) },
+      ],
+    });
+    const failed = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(failed.cases[1]).toEqual({
+      index: 1,
+      visible: false,
+      passed: false,
+      load: true,
+      userMs: 30,
+      solutionMs: 20,
+    });
+    expect(failed).not.toHaveProperty('runtimeMs');
+
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program({ exit: 1, stderr: 'MemoryError' }), solution: program({ ms: 20 }) },
+      ],
+    });
+    const crashed = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(crashed.cases[1]).toMatchObject({ load: true, error: 'MemoryError' });
+    expect(crashed.cases[1]).not.toHaveProperty('actual');
+    expect(crashed).not.toHaveProperty('runtimeMs');
+
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+    const untimed = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(untimed.cases[1].passed).toBe(true);
+    expect(untimed).not.toHaveProperty('runtimeMs');
+  });
+
+  it('reports no runtime for a lesson without a load test, however its cases were timed', async () => {
     stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
     stubVerdict({
       syntaxError: null,
       structureFailures: [],
-      cases: [{ user: program(), solution: program() }],
+      cases: [{ user: program({ ms: 5 }), solution: program({ ms: 4 }) }],
     });
     const res = await runLessonTests('user:1', 'python', 'print', 'code');
     expect(res).not.toHaveProperty('runtimeMs');
@@ -322,7 +375,7 @@ describe('runLessonTests', () => {
       await runLessonTests('user:1', 'python', 'print', 'code');
     }
     // python: 15 s boot + 30 s case budget + 11 s for one case in flight.
-    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([56_000, 56_000]);
+    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([66_000, 66_000]);
   });
 
   it('stops once the case budget runs out and reports the next case as a timeout', async () => {
@@ -529,22 +582,23 @@ describe('runLessonTests', () => {
     expect(runArgs.join(' ')).toContain('javac -d /tmp/_judge /work/Runner.java');
   });
 
-  it('caches generated reference outputs and skips the solution for them next time', async () => {
-    const spec = {
+  it("reuses our solution's output on every case but the load test, which always runs it", async () => {
+    stubFiles({
       comparator: 'trimmed',
       structure: {},
-      cases: [{ visible: true }, { generated: true, stdin: '1\n' }],
-    };
-    stubFiles(spec);
-    stubVerdict({
+      cases: [{ visible: true }, { generated: true, stdin: '1\n' }, { stdin: '9\n', load: true }],
+    });
+    const fresh = {
       syntaxError: null,
       cases: [
         { user: program({ ms: 4 }), solution: program({ ms: 3 }) },
         { user: program({ stdout: '1\n', ms: 2 }), solution: program({ stdout: '1\n', ms: 1 }) },
+        { user: program({ stdout: '9\n', ms: 40 }), solution: program({ stdout: '9\n', ms: 20 }) },
       ],
-    });
+    };
+    stubVerdict(fresh);
     const first = await runLessonTests('user:1', 'python', 'cache-pass', 'code');
-    expect(first.cases[1]).toMatchObject({ passed: true, generated: true, solutionMs: 1 });
+    expect(first).toMatchObject({ status: 'passed', runtimeMs: 40, referenceMs: 20 });
     const firstPayload = JSON.parse(mockDockerExec.mock.calls[1][2] as string);
     expect(firstPayload.cases.some((c: object) => 'skipSolution' in c)).toBe(false);
 
@@ -552,20 +606,20 @@ describe('runLessonTests', () => {
     stubVerdict({
       syntaxError: null,
       cases: [
-        { user: program({ ms: 4 }), solution: program({ ms: 3 }) },
+        { user: program({ ms: 4 }) },
         { user: program({ stdout: '1\n', ms: 2 }) },
+        { user: program({ stdout: '9\n', ms: 38 }), solution: program({ stdout: '9\n', ms: 21 }) },
       ],
     });
     const second = await runLessonTests('user:1', 'python', 'cache-pass', 'code');
     const payload = JSON.parse(mockDockerExec.mock.calls[1][2] as string);
-    // Hand-written cases always run the reference fresh.
-    expect(payload.cases[0]).toEqual({ visible: true });
+    expect(payload.cases[0]).toEqual({ visible: true, skipSolution: true });
     expect(payload.cases[1]).toEqual({ generated: true, stdin: '1\n', skipSolution: true });
+    // The load test always runs our solution, timed next to the student's.
+    expect(payload.cases[2]).toEqual({ stdin: '9\n', load: true });
     expect(second.status).toBe('passed');
-    expect(second.cases[1]).toMatchObject({ passed: true, userMs: 2 });
-    expect(second.cases[1].solutionMs).toBeUndefined();
-    // The totals only cover cases timed on both sides.
-    expect(second).toMatchObject({ runtimeMs: 4, referenceMs: 3 });
+    expect(second.cases[0].solutionMs).toBeUndefined();
+    expect(second).toMatchObject({ runtimeMs: 38, referenceMs: 21 });
   });
 
   it('judges a cached case against the cached output', async () => {
@@ -602,7 +656,7 @@ describe('runLessonTests', () => {
       'skipSolution',
     );
 
-    stubFiles({ comparator: 'unordered', structure: {}, cases: [{ generated: true }] });
+    stubFiles({ comparator: 'unordered', structure: {}, cases: [{}] });
     for (let run = 0; run < 2; run++) {
       stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
       await runLessonTests('user:1', 'python', 'cache-unordered', 'code');
@@ -613,7 +667,7 @@ describe('runLessonTests', () => {
   });
 
   it('hands the cached cases to the c prep so it leaves their solution out', async () => {
-    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ generated: true, stdin: '2\n' }] });
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ stdin: '2\n' }] });
     mockPrepareC.mockResolvedValue({
       syntaxError: null,
       structureFailures: [],

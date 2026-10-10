@@ -4,7 +4,7 @@ Threads take a single `void *` argument, so we pack the start, the stop, the arr
 
 ### Input
 
-- First line: integer `N` (2 <= N <= 100)
+- First line: integer `N` (2 <= N <= 2·10^4)
 - The next `N` lines: one integer per line (each between -1000 and 1000)
 
 ### Output

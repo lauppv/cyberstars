@@ -839,7 +839,7 @@
     "hidden": "ascuns",
     "passed": "Trecut",
     "failed": "Picat",
-    "timeout": "Programul tău a durat prea mult (limită 5s)",
+    "timeout": "Programul tău a durat prea mult (limită 10 s)",
     "runtimeError": "Programul tău a crăpat",
     "input": "Input",
     "expected": "Output așteptat",
@@ -878,24 +878,11 @@
     "runtime": {
       "title": "Timp de rulare",
       "yours": "Codul tău",
-      "reference": "Referința",
-      "faster": "De {{ratio}} ori mai rapid decât referința",
-      "slower": "De {{ratio}} ori mai lent decât referința",
-      "even": "Cam la fel de rapid ca referința",
-      "ms": "{{value}} ms",
-      "scope_one": "Însumat pe {{count}} test rulat de ambele programe",
-      "scope_few": "Însumat pe cele {{count}} teste rulate de ambele programe",
-      "scope_other": "Însumat pe cele {{count}} de teste rulate de ambele programe"
-    },
-    "chart": {
-      "title": "Timp pe test",
-      "you": "Tu",
-      "reference": "Referința",
-      "caseTimes": "Testul {{n}}: tu {{user}} ms, referința {{ref}} ms",
-      "generated_one": "Timpul tău pe {{count}} test generat",
-      "generated_few": "Timpul tău pe {{count}} teste generate",
-      "generated_other": "Timpul tău pe {{count}} de teste generate",
-      "range": "între {{min}} și {{max}} ms"
+      "reference": "Soluția noastră (nu neapărat cea mai rapidă)",
+      "faster": "De {{ratio}} ori mai rapid decât soluția noastră",
+      "slower": "De {{ratio}} ori mai lent decât soluția noastră",
+      "even": "Cam la fel de rapid ca soluția noastră",
+      "ms": "{{value}} ms"
     },
     "submissions": {
       "empty": "Nicio trimitere încă. Rulează testele și fiecare încercare apare aici.",
@@ -909,7 +896,9 @@
       "passed": "Trecute",
       "runtime": "Timp",
       "when": "Când"
-    }
+    },
+    "loadTest": "test de încărcare",
+    "loadTooLarge": "Inputul și output-ul lui sunt prea mari ca să le arătăm aici."
   },
   "terminalTests": {
     "passedTitle": "Misiune îndeplinită!",

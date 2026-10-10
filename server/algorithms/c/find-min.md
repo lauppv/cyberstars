@@ -2,7 +2,7 @@ Read an integer **N**, then read **N** integers. Print the **smallest** value.
 
 ### Input
 
-- First line: an integer `N` (1 <= N <= 100)
+- First line: an integer `N` (1 <= N <= 2·10^4)
 - The next `N` lines: one integer per line (-10^9 <= x <= 10^9)
 
 ### Output

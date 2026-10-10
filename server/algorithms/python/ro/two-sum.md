@@ -4,7 +4,7 @@ Poți presupune că există **exact o singură** pereche validă, și nu poți f
 
 ### Date de intrare
 
-- Linia 1: `n` numere întregi separate prin spații (lista), cu 2 <= n <= 200 și fiecare valoare între -10^9 și 10^9.
+- Linia 1: `n` numere întregi separate prin spații (lista), cu 2 <= n <= 2·10^4 și fiecare valoare între -10^9 și 10^9.
 - Linia 2: un singur număr întreg `tinta` (-2·10^9 <= tinta <= 2·10^9).
 
 ### Rezultat

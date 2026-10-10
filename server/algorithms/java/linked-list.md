@@ -4,7 +4,7 @@ Process commands from stdin.
 
 ### Input
 
-- Line 1: number of commands N (1 <= N <= 200)
+- Line 1: number of commands N (1 <= N <= 2·10^4)
 - For each command:
   - Line 1: command type (`add`, `remove`, or `print`)
   - Only for `add` and `remove`, line 2: the integer X (any `int` value)

@@ -2,8 +2,9 @@ Citește un întreg **N**, apoi citește **N** numere întregi. Stochează-le î
 
 ### Date de intrare
 
-- Prima linie: un întreg `N` (1 <= N <= 1000)
+- Prima linie: un întreg `N` (1 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (-10^6 <= x <= 10^6)
+- Suma, la fel ca orice sumă parțială pe parcurs, încape într-un `int` (-2·10^9 <= suma <= 2·10^9)
 
 ### Rezultat
 

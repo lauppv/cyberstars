@@ -4,8 +4,8 @@ Un cuvânt este orice secvență maximală de caractere care nu sunt spații. Fi
 
 ### Date de intrare
 
-- Linia 1: prima propoziție (până la 200 de caractere).
-- Linia 2: a doua propoziție (până la 200 de caractere).
+- Linia 1: prima propoziție (până la 5·10^4 de caractere).
+- Linia 2: a doua propoziție (până la 5·10^4 de caractere).
 - Cuvintele sunt separate prin unul sau mai multe spații, iar o propoziție poate începe sau se poate termina cu spații. Orice alt caracter (litere, cifre, semne de punctuație) face parte dintr-un cuvânt. Nu apar tab-uri, iar fiecare propoziție are cel puțin un cuvânt.
 
 ### Rezultat

@@ -2,7 +2,7 @@ Având o propoziție, afișează fiecare cuvânt care conține **exact 2 vocale*
 
 ### Date de intrare
 
-O singură linie de 1 până la 1000 de caractere care conține o propoziție cu cel puțin un cuvânt. Cuvintele conțin doar litere din alfabetul englez (`a`-`z`, `A`-`Z`) și sunt separate prin unul sau mai multe spații, iar linia poate începe sau se poate termina cu spații.
+O singură linie de 1 până la 10^5 caractere care conține o propoziție cu cel puțin un cuvânt. Cuvintele conțin doar litere din alfabetul englez (`a`-`z`, `A`-`Z`) și sunt separate prin unul sau mai multe spații, iar linia poate începe sau se poate termina cu spații.
 
 ### Rezultat
 

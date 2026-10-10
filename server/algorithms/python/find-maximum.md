@@ -2,7 +2,7 @@ Given a list of numbers, find and print the **largest** one.
 
 ### Input
 
-- Line 1: an integer `n`, the count of numbers (1 <= n <= 200).
+- Line 1: an integer `n`, the count of numbers (1 <= n <= 2·10^4).
 - Line 2: `n` integers separated by spaces, each between -10^9 and 10^9.
 
 ### Output

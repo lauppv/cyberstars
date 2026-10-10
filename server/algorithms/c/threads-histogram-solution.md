@@ -25,8 +25,8 @@ void *accumulate(void *arg) {
 }
 
 int main(void) {
-    char s[256];
-    scanf("%255s", s);
+    char s[100001];
+    scanf("%100000s", s);
     int n = strlen(s);
     int mid = n / 2;
 

@@ -8,8 +8,9 @@
 // Compiler Tree API, injects each case's values into the lesson's input
 // variables (in BOTH the user code and the reference solution) by splicing
 // the initializer/rhs source ranges, and/or feeds the case's stdin to both,
-// compiles and runs the two programs per case (timing each run's wall clock
-// in ms), and streams the verdict to stdout as JSON lines, one case at a time,
+// compiles and runs the two programs per case (timing only the program's own
+// code, see TIMER_SOURCE), and streams the verdict to stdout as JSON lines,
+// one case at a time,
 // waiting for the server's go-ahead between cases. Expected outputs never
 // enter this container: the server compares the two stdouts on its side.
 //
@@ -74,8 +75,10 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 public class Runner {
-  static final int CASE_TIMEOUT_SEC = 5;
-  static final int OUTPUT_CAP = 64 * 1024;
+  // Room for a slow but working program on the load test.
+  static final int CASE_TIMEOUT_SEC = 10;
+  // A load test's output can run to tens of KB (a sorted list of 10^4 numbers).
+  static final int OUTPUT_CAP = 1024 * 1024;
   static final Path WORK_ROOT = Path.of("/tmp/_judge_work");
   static final JavaCompiler COMPILER = ToolProvider.getSystemJavaCompiler();
 
@@ -124,7 +127,6 @@ public class Runner {
       // skipSolution: the server already holds this case's reference output
       // (cached from an earlier run), so only the student's program runs.
       boolean skipSolution = Boolean.TRUE.equals(testCase.get("skipSolution"));
-
       Compiled userProg = null;
       Compiled solutionProg = null;
       if (solution.error == null) {
@@ -141,10 +143,10 @@ public class Runner {
         break;
       }
 
-      Map<String, Object> userRun = runProgram(userProg, stdin);
+      Map<String, Object> userRun = runProgram(cache, userProg, stdin);
       Map<String, Object> caseResult = new LinkedHashMap<>();
       caseResult.put("user", userRun);
-      if (!skipSolution) caseResult.put("solution", runProgram(solutionProg, stdin));
+      if (!skipSolution) caseResult.put("solution", runProgram(cache, solutionProg, stdin));
       emit(caseResult);
       // A hung program would burn 5s on every remaining case too, so stop here.
       if (Boolean.TRUE.equals(userRun.get("timedOut")) || !proceed(control)) break;
@@ -633,10 +635,94 @@ public class Runner {
 
   record Compiled(Path classDir, String mainClass, String error) {}
 
+  // Launched in place of the program's own main class, it times only the
+  // program's code: the main thread's CPU time from just before the class
+  // loads (static initializers count) until main returns, throws or calls
+  // System.exit, so JVM startup, the JIT and GC threads are left out. CPU
+  // time, not wall time: the container's CPU cap pauses a process for tens of
+  // ms at random, and those pauses aren't the code's. An uncaught exception is
+  // rethrown with the timer's and reflection's frames cut off, so the student
+  // sees the same "Exception in thread "main"" trace as from a plain
+  // `java Main`. The time goes to the file named by the second argument,
+  // never to stdout.
+  static final String TIMER_CLASS = "CyberstarsJudgeTimer";
+  static final String TIMER_SOURCE =
+      """
+      import java.lang.management.ManagementFactory;
+      import java.lang.management.ThreadMXBean;
+      import java.lang.reflect.InvocationTargetException;
+      import java.lang.reflect.Method;
+      import java.nio.file.Files;
+      import java.nio.file.Path;
+      import java.util.Arrays;
+
+      public class CyberstarsJudgeTimer {
+        static final ThreadMXBean THREADS = ManagementFactory.getThreadMXBean();
+        static Path out;
+        static long mainId;
+        static long started;
+        static volatile boolean written;
+
+        // Main thread CPU time since `started`; the main thread is still alive
+        // here, whether main returned, threw, or is blocked in System.exit.
+        static synchronized void report() {
+          if (written) return;
+          written = true;
+          long cpu = THREADS.getThreadCpuTime(mainId);
+          if (cpu < 0) return;
+          try {
+            Files.writeString(out, Double.toString((cpu - started) / 1e6));
+          } catch (Exception ignored) {
+            // no time for this run
+          }
+        }
+
+        public static void main(String[] args) throws Throwable {
+          out = Path.of(args[1]);
+          mainId = Thread.currentThread().getId();
+          Runtime.getRuntime().addShutdownHook(new Thread(CyberstarsJudgeTimer::report));
+          started = THREADS.getCurrentThreadCpuTime();
+          Method main;
+          try {
+            main = Class.forName(args[0]).getMethod("main", String[].class);
+          } catch (NoSuchMethodException e) {
+            System.err.println("Error: Main method not found in class " + args[0]);
+            System.exit(1);
+            return;
+          } catch (Throwable t) {
+            report();
+            throw trimmed(t);
+          }
+          try {
+            main.invoke(null, (Object) new String[0]);
+          } catch (InvocationTargetException e) {
+            report();
+            throw trimmed(e.getCause());
+          }
+          report();
+        }
+
+        static Throwable trimmed(Throwable t) {
+          t.setStackTrace(Arrays.stream(t.getStackTrace())
+              .filter(f -> !f.getClassName().startsWith("jdk.internal.reflect.")
+                  && !f.getClassName().startsWith("java.lang.reflect.")
+                  && !f.getClassName().startsWith("java.lang.invoke.")
+                  && !f.getClassName().equals("CyberstarsJudgeTimer"))
+              .toArray(StackTraceElement[]::new));
+          return t;
+        }
+      }
+      """;
+
   /** Compiles sources into per-source /tmp dirs, memoized so inject-free cases reuse classes. */
   static class CompiledCache {
     final Map<String, Compiled> bySource = new LinkedHashMap<>();
     int next;
+
+    /** The timer, compiled once per run; see TIMER_SOURCE. */
+    Compiled timer() {
+      return compile(new Injected(TIMER_SOURCE, TIMER_CLASS));
+    }
 
     Compiled compile(Parsed parsed) {
       return compile(new Injected(parsed.source, parsed.mainClass));
@@ -716,11 +802,12 @@ public class Runner {
     }
   }
 
-  static Map<String, Object> runProgram(Compiled program, String stdin) {
+  static Map<String, Object> runProgram(CompiledCache cache, Compiled program, String stdin) {
     Map<String, Object> out = new LinkedHashMap<>();
-    // Wall time from process start to exit, in ms; the compile is not part of it.
-    long started = System.nanoTime();
+    Compiled timer = cache.timer();
+    Path timeFile = WORK_ROOT.resolve("time");
     try {
+      Files.deleteIfExists(timeFile);
       Process proc =
           new ProcessBuilder(
                   "java",
@@ -728,20 +815,30 @@ public class Runner {
                   "-XX:TieredStopAtLevel=1",
                   "-Xmx48m",
                   "-cp",
-                  program.classDir().toString(),
-                  program.mainClass())
+                  program.classDir() + java.io.File.pathSeparator + timer.classDir(),
+                  TIMER_CLASS,
+                  program.mainClass(),
+                  timeFile.toString())
               .start();
       Gobbler stdout = new Gobbler(proc.getInputStream());
       Gobbler stderr = new Gobbler(proc.getErrorStream());
       stdout.start();
       stderr.start();
-      try (OutputStream stdinPipe = proc.getOutputStream()) {
-        stdinPipe.write(stdin.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException ignored) {
-        // the program exited without reading its stdin, that's fine
-      }
+      // Fed on its own thread: a load test's input is larger than the pipe
+      // buffer, so writing it here would block on a slow reader before the
+      // time limit below even starts counting.
+      Thread feeder =
+          new Thread(
+              () -> {
+                try (OutputStream stdinPipe = proc.getOutputStream()) {
+                  stdinPipe.write(stdin.getBytes(StandardCharsets.UTF_8));
+                } catch (IOException ignored) {
+                  // the program exited without reading all its stdin, that's fine
+                }
+              });
+      feeder.setDaemon(true);
+      feeder.start();
       boolean finished = proc.waitFor(CASE_TIMEOUT_SEC, TimeUnit.SECONDS);
-      double ms = Math.round((System.nanoTime() - started) / 1_000.0) / 1_000.0;
       if (!finished) {
         proc.descendants().forEach(ProcessHandle::destroyForcibly);
         proc.destroyForcibly();
@@ -753,7 +850,8 @@ public class Runner {
       out.put("stderr", stderr.text());
       out.put("exit", finished ? (long) proc.exitValue() : -1L);
       out.put("timedOut", !finished);
-      out.put("ms", ms);
+      Double ms = finished ? codeMs(timeFile) : null;
+      if (ms != null) out.put("ms", ms);
     } catch (IOException | InterruptedException e) {
       out.put("stdout", "");
       out.put("stderr", "internal: " + e.getMessage());
@@ -761,6 +859,15 @@ public class Runner {
       out.put("timedOut", false);
     }
     return out;
+  }
+
+  /** What the timer wrote, or null when the program ended without its shutdown hook. */
+  static Double codeMs(Path timeFile) {
+    try {
+      return Double.parseDouble(Files.readString(timeFile, StandardCharsets.UTF_8).trim());
+    } catch (IOException | NumberFormatException e) {
+      return null;
+    }
   }
 
   // ------------------------------------------------------------------- JSON

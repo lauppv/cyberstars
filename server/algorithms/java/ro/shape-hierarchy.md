@@ -4,7 +4,7 @@ Citește formele de la stdin, creează obiectele corespunzătoare și afișează
 
 ### Date de intrare
 
-- Linia 1: numărul de forme N (0 <= N <= 50)
+- Linia 1: numărul de forme N (0 <= N <= 2·10^4)
 - Pentru fiecare formă:
   - Linia 1: tipul (`cerc` sau `dreptunghi`)
   - Pentru `cerc`, linia 2: raza (număr zecimal)

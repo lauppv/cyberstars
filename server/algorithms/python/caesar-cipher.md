@@ -2,7 +2,7 @@ Encrypt a string using the **Caesar cipher**: shift every letter forward by a gi
 
 ### Input
 
-- Line 1: a string `s` of 1 to 1000 ASCII characters (may contain uppercase, lowercase letters, digits, spaces, and punctuation).
+- Line 1: a string `s` of 1 to 10^5 ASCII characters (may contain uppercase, lowercase letters, digits, spaces, and punctuation).
 - Line 2: an integer `shift` (1-25).
 
 ### Output

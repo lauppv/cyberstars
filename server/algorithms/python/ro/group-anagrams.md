@@ -4,7 +4,7 @@ Afișează fiecare grup pe o linie separată, cu cuvintele sortate alfabetic în
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n`, numărul de cuvinte (1 <= n <= 100).
+- Linia 1: un număr întreg `n`, numărul de cuvinte (1 <= n <= 3000).
 - Următoarele `n` linii: un cuvânt pe linie (între 1 și 50 de litere mici `a`-`z`). Niciun cuvânt nu apare de două ori.
 
 ### Rezultat

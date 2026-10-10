@@ -3,21 +3,24 @@
 # ({userCode, solutionCode, structure, cases}), checks the user code's
 # structure with the ast module, injects each case's values into the lesson's
 # input variables (in BOTH the user code and the reference solution) and/or
-# feeds the case's stdin to both, runs the two programs per case (timing each
-# run's wall clock in ms), and streams the verdict to stdout as JSON lines, one
+# feeds the case's stdin to both, runs the two programs per case (timing only
+# the program's own code, see PREAMBLE), and streams the verdict to stdout as
+# JSON lines, one
 # case at a time, waiting for the server's go-ahead between cases.
 # Expected outputs never enter this container: the server compares the two
 # stdouts on its side.
 import ast
 import io
 import json
+import os
 import subprocess
 import sys
-import time
 import tokenize
 
-CASE_TIMEOUT = 5
-OUTPUT_CAP = 64 * 1024
+# Room for a slow but working program on the load test.
+CASE_TIMEOUT = 10
+# A load test's output can run to tens of KB (a sorted list of 10^4 numbers).
+OUTPUT_CAP = 1024 * 1024
 
 
 def has_call(tree, name):
@@ -193,7 +196,21 @@ def inject_values(code, values):
 # to stdout and would pollute the compared output. Overriding input to ignore
 # its prompt argument (applied to BOTH user and solution) makes input("...") and
 # bare input() produce identical output, so students aren't graded on prompts.
-INPUT_PREAMBLE = "import builtins as _b\n_oi = _b.input\n_b.input = lambda *a, **k: _oi()\n"
+# Prepended to every judged program, kept to three lines so tracebacks stay as
+# they were. input() drops its prompt (the prompt isn't part of the expected
+# output), and an atexit hook reports how long the program's own code ran,
+# measured from just before its first line, so interpreter startup is left
+# out. It is CPU time, not wall time: the container's CPU cap pauses a
+# process for tens of ms at random, and those pauses aren't the code's. The
+# time goes out on the pipe named by _JT_FD, never on stdout, and only from the
+# program's own process (a forked child inherits the hook). A program that
+# ends through os._exit or a kill reports no time.
+PREAMBLE = (
+    "import builtins as _b, atexit as _ae, os as _os, time as _tm\n"
+    "_oi = _b.input; _b.input = lambda *a, **k: _oi()\n"
+    "_ae.register(lambda _s=_tm.process_time(), _fd=int(_os.environ.pop('_JT_FD')), "
+    "_p=_os.getpid(): _os.getpid() == _p and _os.write(_fd, b'%.6f' % ((_tm.process_time() - _s) * 1000)))\n"
+)
 
 
 def as_text(raw):
@@ -203,37 +220,50 @@ def as_text(raw):
     return (raw or b"").decode("utf-8", "replace")
 
 
-def elapsed_ms(started):
-    return round((time.perf_counter() - started) * 1000, 3)
+def code_ms(read_fd):
+    # What the program's atexit hook wrote, or None when it never ran. Read
+    # without blocking: a process the program forked may still hold the pipe.
+    os.set_blocking(read_fd, False)
+    try:
+        return float(os.read(read_fd, 64).decode("ascii"))
+    except (BlockingIOError, ValueError):
+        return None
+    finally:
+        os.close(read_fd)
 
 
 def run_program(code, stdin=None):
     path = "/tmp/_judged.py"
     with open(path, "w", encoding="utf-8") as f:
-        f.write(INPUT_PREAMBLE + code)
-    started = time.perf_counter()
+        f.write(PREAMBLE + code)
+    read_fd, write_fd = os.pipe()
+    proc = subprocess.Popen(
+        [sys.executable, "-u", path],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        pass_fds=(write_fd,),
+        env={**os.environ, "_JT_FD": str(write_fd)},
+    )
+    # Only the child holds the write end now, so the read below ends at its exit.
+    os.close(write_fd)
     try:
-        proc = subprocess.run(
-            [sys.executable, "-u", path],
-            capture_output=True,
-            timeout=CASE_TIMEOUT,
-            input=(stdin or "").encode("utf-8"),
-        )
-        return {
-            "stdout": as_text(proc.stdout)[:OUTPUT_CAP],
-            "stderr": as_text(proc.stderr)[:OUTPUT_CAP],
-            "exit": proc.returncode,
-            "timedOut": False,
-            "ms": elapsed_ms(started),
-        }
-    except subprocess.TimeoutExpired as e:
-        return {
-            "stdout": as_text(e.stdout)[:OUTPUT_CAP],
-            "stderr": as_text(e.stderr)[:OUTPUT_CAP],
-            "exit": -1,
-            "timedOut": True,
-            "ms": elapsed_ms(started),
-        }
+        stdout, stderr = proc.communicate((stdin or "").encode("utf-8"), timeout=CASE_TIMEOUT)
+        timed_out = False
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        stdout, stderr = proc.communicate()
+        timed_out = True
+    result = {
+        "stdout": as_text(stdout)[:OUTPUT_CAP],
+        "stderr": as_text(stderr)[:OUTPUT_CAP],
+        "exit": -1 if timed_out else proc.returncode,
+        "timedOut": timed_out,
+    }
+    ms = code_ms(read_fd)
+    if ms is not None and not timed_out:
+        result["ms"] = ms
+    return result
 
 
 def emit(obj):

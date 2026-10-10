@@ -5,7 +5,7 @@ Citește numele studentului și notele de la stdin, creează un obiect `Student`
 ### Date de intrare
 
 - Linia 1: numele studentului (un singur cuvânt)
-- Linia 2: numărul de note N (1 <= N <= 500)
+- Linia 2: numărul de note N (1 <= N <= 2·10^4)
 - Următoarele N linii: câte o notă (număr întreg, 0 <= notă <= 100)
 
 ### Rezultat

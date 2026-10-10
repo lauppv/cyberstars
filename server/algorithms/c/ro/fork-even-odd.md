@@ -4,7 +4,7 @@ Trimitem un `int` prin pipe cu **write(p[1], &pare, sizeof(int))** și îl citim
 
 ### Date de intrare
 
-- Prima linie: numărul întreg `N` (1 <= N <= 100)
+- Prima linie: numărul întreg `N` (1 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -1000 și 1000)
 
 ### Rezultat

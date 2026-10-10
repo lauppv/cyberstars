@@ -6,6 +6,7 @@ import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.s
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
+import { acquireJudgeSlot } from './judge-queue.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import type {
   LessonTestsSpec,
@@ -46,10 +47,10 @@ interface JudgeRunner {
    * Time the cases may take together, counted from the runner's header (after
    * boot, parse and pristine compile). Once a case finishes past it, the run
    * stops and the next case is reported as a timeout, so a slow-but-not-hung
-   * submission can't hold the container for cases × 5 s.
+   * submission can't hold the container for cases × 10 s.
    */
   budgetMs: number;
-  /** Worst case for one case: 2×5s programs, plus compiles where applicable. */
+  /** Worst case for one case: 2×10s programs, plus compiles where applicable. */
   caseBudgetMs: number;
   /** Runner boot + parse + pristine compile, before the first case. */
   baseTimeoutMs: number;
@@ -75,9 +76,9 @@ const RUNNERS: Record<string, JudgeRunner> = {
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
     // ~0.1 s per case under the 0.5 CPU cap (two interpreter starts), so 50
-    // cases take ~5 s cold and ~3 s with cached references.
+    // cases take ~5 s.
     budgetMs: 30_000,
-    caseBudgetMs: 11_000,
+    caseBudgetMs: 21_000,
     baseTimeoutMs: 15_000,
   },
   java: {
@@ -88,19 +89,19 @@ const RUNNERS: Record<string, JudgeRunner> = {
     // the base covers the one-time runner bootstrap compile on a cold container.
     // ~0.5 s per injected case (javac + 2 JVM starts), so 20 cases take ~10 s.
     budgetMs: 45_000,
-    caseBudgetMs: 16_000,
+    caseBudgetMs: 26_000,
     baseTimeoutMs: 30_000,
   },
   c: {
     runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.c.py'),
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
-    // Per case: up to 2 gcc compiles + 2×5s runs; the source cache makes
+    // Per case: up to 2 gcc compiles + 2×10s runs; the source cache makes
     // identical stdin-only sources compile once. gcc is heavier than a python
     // parse, lighter than javac+JVM. ~80 ms per injected case, a few ms per
     // stdin-only case.
     budgetMs: 30_000,
-    caseBudgetMs: 8_000,
+    caseBudgetMs: 18_000,
     baseTimeoutMs: 20_000,
     prepare: prepareC,
   },
@@ -174,27 +175,29 @@ interface RunnerProgram {
   stderr: string;
   exit: number;
   timedOut: boolean;
-  /** Wall time of the run (compile excluded), measured by the runner. */
+  /**
+   * How long the program's own code ran, startup and compile excluded,
+   * measured inside the program; absent when it crashed or skipped its exit.
+   */
   ms?: number;
 }
 
-// Timings travel to the client in ms rounded to one decimal; sums are rounded
-// again so float noise never shows up as 12.300000000000001.
+// Timings travel to the client in ms rounded to the microsecond: a small
+// program's code runs in well under a millisecond.
 function roundMs(ms: number): number {
-  return Math.round(ms * 10) / 10;
+  return Math.round(ms * 1000) / 1000;
 }
 
-// runtimeMs / referenceMs: sums over the cases timed on BOTH sides, so the two
-// totals always cover the same cases and stay comparable.
+// runtimeMs / referenceMs: the load test's two times, once the student's
+// program passed it with both sides timed. Small inputs run in hundredths of a
+// millisecond, so only the load test says anything about speed; a lesson
+// without one reports no runtime.
 function timingTotals(
   cases: TestCaseResult[],
 ): Pick<RunTestsResponse, 'runtimeMs' | 'referenceMs'> {
-  const timed = cases.filter((c) => c.userMs !== undefined && c.solutionMs !== undefined);
-  if (timed.length === 0) return {};
-  return {
-    runtimeMs: roundMs(timed.reduce((sum, c) => sum + c.userMs!, 0)),
-    referenceMs: roundMs(timed.reduce((sum, c) => sum + c.solutionMs!, 0)),
-  };
+  const load = cases.find((c) => c.load);
+  if (!load?.passed || load.userMs === undefined || load.solutionMs === undefined) return {};
+  return { runtimeMs: load.userMs, referenceMs: load.solutionMs };
 }
 
 // The runners stream their verdict as JSON lines: a header, then one line per
@@ -224,6 +227,8 @@ function failRun(): never {
 function caseBase(spec: LessonTestsSpec, index: number): TestCaseResult {
   const specCase = spec.cases[index];
   const base: TestCaseResult = { index, visible: specCase.visible ?? false, passed: false };
+  // The load test's input is too large to send back; it goes by its name alone.
+  if (specCase.load) return { ...base, load: true };
   if (specCase.inject) base.inject = specCase.inject;
   if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
   if (specCase.generated) base.generated = true;
@@ -252,11 +257,17 @@ function judgeCase(
   }
   if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
   if (c.user.timedOut) return { ...base, error: 'timeout' };
+  const passed = compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed');
+  // The load test's outputs are as large as its input: only the verdict goes back.
+  if (base.load) {
+    if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error' };
+    return { ...base, passed };
+  }
   if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
 
   // A passed case shows both outputs: the student already produced the expected
   // one, so revealing it gives nothing away, even on a hidden case.
-  if (compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed')) {
+  if (passed) {
     return {
       ...base,
       passed: true,
@@ -271,8 +282,10 @@ function judgeCase(
   };
 }
 
-// Cache keys for the generated cases whose reference output may be cached; a
-// nondeterministic comparator means the output isn't stable, so none there.
+// Cache keys for the cases whose reference output may be reused: every case
+// but the load test, whose runtime needs our solution timed live, on a lesson
+// whose output is deterministic (masked/unordered lessons print differently
+// from run to run).
 function referenceKeys(
   spec: LessonTestsSpec,
   courseKey: string,
@@ -283,7 +296,7 @@ function referenceKeys(
   const comparator = spec.comparator ?? 'trimmed';
   const deterministic = comparator === 'trimmed' || comparator === 'exact';
   return spec.cases.map((testCase) =>
-    deterministic && testCase.generated
+    deterministic && !testCase.load
       ? referenceKey({
           courseKey,
           lang: lang ?? 'en',
@@ -339,9 +352,8 @@ export async function runLessonTests(
   if (!judge) throw new AppError(404, 'This lesson has no tests');
   const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang);
 
-  // Generated cases whose reference output is cached skip the solution run;
-  // hand-written cases always run it fresh (that's where the timing
-  // comparison with the student's program comes from).
+  // Cases whose reference output is cached skip our solution; the load test
+  // always runs it fresh, next to the student's program, for the runtime.
   const keys = referenceKeys(spec, courseKey, lessonSlug, lang, solutionCode);
   const cached = keys.map((key) => (key ? getReference(key) : undefined));
   const skipSolution = new Set(cached.flatMap((out, index) => (out === undefined ? [] : [index])));
@@ -353,6 +365,43 @@ export async function runLessonTests(
     : null;
   if (prepared?.syntaxError) return syntaxErrorResponse(spec, prepared.syntaxError);
 
+  const releaseSlot = await acquireJudgeSlot();
+  try {
+    return await runInContainer(
+      ownerKey,
+      courseKey,
+      judge,
+      spec,
+      userCode,
+      solutionCode,
+      prepared,
+      {
+        keys,
+        cached,
+        skipSolution,
+      },
+    );
+  } finally {
+    releaseSlot();
+  }
+}
+
+interface ReferenceReuse {
+  keys: (string | null)[];
+  cached: (string | undefined)[];
+  skipSolution: ReadonlySet<number>;
+}
+
+async function runInContainer(
+  ownerKey: string,
+  courseKey: string,
+  judge: JudgeRunner,
+  spec: LessonTestsSpec,
+  userCode: string,
+  solutionCode: string,
+  prepared: PrepareResult | null,
+  { keys, cached, skipSolution }: ReferenceReuse,
+): Promise<RunTestsResponse> {
   let containerId: string;
   try {
     containerId = await acquireForRun(ownerKey, courseKey);
@@ -409,7 +458,7 @@ export async function runLessonTests(
         if (index >= spec.cases.length) failRun();
         const runnerCase = message as RunnerCase;
         const result = judgeCase(spec, index, runnerCase, cached[index]);
-        // judgeCase vouched for the solution's run (exit 0, in time), so its
+        // judgeCase vouched for our solution's run (exit 0, in time), so its
         // output is safe to reuse.
         const key = keys[index];
         if (key && cached[index] === undefined) putReference(key, runnerCase.solution!.stdout);

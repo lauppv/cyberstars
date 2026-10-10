@@ -11,6 +11,9 @@ export function FailedCase({ result }: { result: TestCaseResult }) {
   return (
     <section className="flex flex-col gap-3">
       <h3 className="text-[14px] font-semibold text-[var(--text)] m-0">{caseLabel(result, t)}</h3>
+      {result.load && (
+        <p className="m-0 text-[13px] text-[var(--text3)]">{t('tests.loadTooLarge')}</p>
+      )}
       <CaseInput result={result} />
       {result.error === 'timeout' ? (
         <p className="m-0 text-[13px] text-[var(--error)]">{t('tests.timeout')}</p>

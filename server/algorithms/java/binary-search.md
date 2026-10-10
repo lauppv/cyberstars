@@ -4,7 +4,7 @@ Use the classic binary search algorithm: maintain two pointers `low` and `high`,
 
 ### Input
 
-- Line 1: integer N, the number of elements (1 <= N <= 200)
+- Line 1: integer N, the number of elements (1 <= N <= 2·10^4)
 - The next N lines: one integer per line, in strictly ascending order (no duplicates), each between -10^6 and 10^6
 - The next line: integer T, the target value to search for (-10^6 <= T <= 10^6)
 

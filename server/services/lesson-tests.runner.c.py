@@ -5,7 +5,8 @@
 #   1. compiles the pristine user code once (gate 2: gcc surfaces semantic
 #      errors tree-sitter recovers from: undeclared identifier, type mismatch);
 #   2. per case, compiles + runs the already-injected userSrc and solutionSrc
-#      with the case's stdin, memoizing compiled binaries by source string so
+#      with the case's stdin (timing only the program's own code, see
+#      TIMER_SRC), memoizing compiled binaries by source string so
 #      identical stdin-only sources compile once and run N times. Each case's
 #      result is streamed as a JSON line, and the next case starts only on the
 #      server's go-ahead (it stops the run at the first failing case).
@@ -17,16 +18,83 @@ import json
 import os
 import subprocess
 import sys
-import time
 
-CASE_TIMEOUT = 5
-OUTPUT_CAP = 64 * 1024
+# Room for a slow but working program on the load test.
+CASE_TIMEOUT = 10
+# A load test's output can run to tens of KB (a sorted list of 10^4 numbers).
+OUTPUT_CAP = 1024 * 1024
 COMPILE_TIMEOUT = 20
 # Overridable so the runner can be exercised outside a container (unit tests).
 WORK = os.environ.get("JUDGE_WORK_DIR", "/work")
 
+# Linked into every judged program. A constructor that runs before the
+# program's own (priority 101) starts the clock, and the atexit handler it
+# registers first, so it runs last, stops it, so process startup is left out
+# and the program's atexit handlers count. It is CPU time, not wall time: the
+# container's CPU cap pauses a process for tens of ms at random, and those
+# pauses aren't the code's. The time goes out on the pipe named by _JT_FD,
+# never on stdout, and only from the program's own process (a forked child
+# inherits the handler). A crash or _exit reports no time.
+TIMER_SRC = r'''
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <time.h>
+#include <unistd.h>
+
+static struct timespec cyberstars_judge_t0;
+static int cyberstars_judge_fd = -1;
+static pid_t cyberstars_judge_pid;
+
+static void cyberstars_judge_report(void) {
+    struct timespec t1;
+    char buf[64];
+    /* A forked child inherits this handler; only the program's own process reports. */
+    if (getpid() != cyberstars_judge_pid) return;
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &t1);
+    double ms = (t1.tv_sec - cyberstars_judge_t0.tv_sec) * 1e3
+        + (t1.tv_nsec - cyberstars_judge_t0.tv_nsec) / 1e6;
+    int n = snprintf(buf, sizeof buf, "%.6f", ms);
+    if (cyberstars_judge_fd >= 0 && n > 0) {
+        ssize_t written = write(cyberstars_judge_fd, buf, (size_t)n);
+        (void)written;
+    }
+}
+
+__attribute__((constructor(101))) static void cyberstars_judge_start(void) {
+    const char *fd = getenv("_JT_FD");
+    if (fd) {
+        cyberstars_judge_fd = atoi(fd);
+        unsetenv("_JT_FD");
+    }
+    cyberstars_judge_pid = getpid();
+    atexit(cyberstars_judge_report);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cyberstars_judge_t0);
+}
+'''
+
 # source string -> (binary_path or None, sanitized_stderr)
 _compile_cache = {}
+_timer_object = []
+
+
+def timer_object():
+    # Compiled once per run, then linked into every program.
+    if not _timer_object:
+        c_path = os.path.join(WORK, "_timer.c")
+        obj_path = os.path.join(WORK, "_timer.o")
+        with open(c_path, "w", encoding="utf-8") as f:
+            f.write(TIMER_SRC)
+        subprocess.run(
+            ["gcc", "-c", c_path, "-o", obj_path],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=COMPILE_TIMEOUT,
+            check=True,
+        )
+        _timer_object.append(obj_path)
+    return _timer_object[0]
 
 
 def compile_source(src):
@@ -39,7 +107,7 @@ def compile_source(src):
         f.write(src)
     try:
         proc = subprocess.run(
-            ["gcc", "-Wall", c_path, "-o", bin_path, "-lm", "-lpthread"],
+            ["gcc", "-Wall", c_path, timer_object(), "-o", bin_path, "-lm", "-lpthread"],
             # stdin is the control channel with the server; gcc gets none.
             stdin=subprocess.DEVNULL,
             capture_output=True,
@@ -64,35 +132,47 @@ def as_text(raw):
     return (raw or b"").decode("utf-8", "replace")
 
 
-def elapsed_ms(started):
-    return round((time.perf_counter() - started) * 1000, 3)
+def code_ms(read_fd):
+    # What the program's timer wrote, or None when it never reported. Read
+    # without blocking: a process the program forked may still hold the pipe.
+    os.set_blocking(read_fd, False)
+    try:
+        return float(os.read(read_fd, 64).decode("ascii"))
+    except (BlockingIOError, ValueError):
+        return None
+    finally:
+        os.close(read_fd)
 
 
 def run_binary(bin_path, stdin=None):
-    # Wall time of the run alone; the compile above is not part of it.
-    started = time.perf_counter()
+    read_fd, write_fd = os.pipe()
+    proc = subprocess.Popen(
+        [bin_path],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        pass_fds=(write_fd,),
+        env={**os.environ, "_JT_FD": str(write_fd)},
+    )
+    # Only the child holds the write end now, so the read below ends at its exit.
+    os.close(write_fd)
     try:
-        proc = subprocess.run(
-            [bin_path],
-            capture_output=True,
-            timeout=CASE_TIMEOUT,
-            input=(stdin or "").encode("utf-8"),
-        )
-        return {
-            "stdout": as_text(proc.stdout)[:OUTPUT_CAP],
-            "stderr": as_text(proc.stderr)[:OUTPUT_CAP],
-            "exit": proc.returncode,
-            "timedOut": False,
-            "ms": elapsed_ms(started),
-        }
-    except subprocess.TimeoutExpired as e:
-        return {
-            "stdout": as_text(e.stdout)[:OUTPUT_CAP],
-            "stderr": as_text(e.stderr)[:OUTPUT_CAP],
-            "exit": -1,
-            "timedOut": True,
-            "ms": elapsed_ms(started),
-        }
+        stdout, stderr = proc.communicate((stdin or "").encode("utf-8"), timeout=CASE_TIMEOUT)
+        timed_out = False
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        stdout, stderr = proc.communicate()
+        timed_out = True
+    result = {
+        "stdout": as_text(stdout)[:OUTPUT_CAP],
+        "stderr": as_text(stderr)[:OUTPUT_CAP],
+        "exit": -1 if timed_out else proc.returncode,
+        "timedOut": timed_out,
+    }
+    ms = code_ms(read_fd)
+    if ms is not None and not timed_out:
+        result["ms"] = ms
+    return result
 
 
 def emit(obj):

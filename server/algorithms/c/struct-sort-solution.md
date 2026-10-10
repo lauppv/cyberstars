@@ -10,7 +10,7 @@ int main(void) {
     int n;
     scanf("%d", &n);
 
-    Student students[50];
+    Student students[20000];
     for (int i = 0; i < n; i++) {
         scanf("%49s", students[i].name);
         scanf("%d", &students[i].grade);

@@ -63,7 +63,28 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
   await expect(result).toContainText('Welcome aboard, cadet!');
 });
 
-test('a passed algorithm shows its runtime next to the reference', async ({ authedPage: page }) => {
+test('a passed algorithm shows its load-test runtime next to our solution', async ({
+  authedPage: page,
+}) => {
+  await page.goto('/#/lesson/algo-python/palindrome');
+
+  const editor = page.locator('[data-tour="editor"] .cm-content');
+  await editor.click();
+  await page.keyboard.press('ControlOrMeta+A');
+  await page.keyboard.type(
+    's = input(); print(all(s[i] == s[-1 - i] for i in range(len(s) // 2)))',
+  );
+  await page.getByRole('button', { name: 'Run Tests' }).click();
+
+  const result = page.locator('[data-tour="result"]');
+  await expect(result).toContainText('Accepted', { timeout: 60_000 });
+  await expect(result).toContainText('Runtime');
+  await expect(result).toContainText('Our solution (not necessarily the fastest)');
+  await result.getByRole('button', { name: /^Passed tests \(\d+\)$/ }).click();
+  await expect(result.getByRole('button', { name: /\(load test\)$/ })).toBeVisible();
+});
+
+test('an algorithm without a load test shows no runtime', async ({ authedPage: page }) => {
   await page.goto('/#/lesson/algo-python/even-or-odd');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
@@ -74,6 +95,5 @@ test('a passed algorithm shows its runtime next to the reference', async ({ auth
 
   const result = page.locator('[data-tour="result"]');
   await expect(result).toContainText('Accepted', { timeout: 60_000 });
-  await expect(result).toContainText('Runtime');
-  await expect(result.getByRole('button', { name: /^Passed tests \(\d+\)$/ })).toBeVisible();
+  await expect(result).not.toContainText('Runtime');
 });

@@ -25,8 +25,8 @@ void *acumuleaza(void *arg) {
 }
 
 int main(void) {
-    char sir[256];
-    scanf("%255s", sir);
+    char sir[100001];
+    scanf("%100000s", sir);
     int n = strlen(sir);
     int mij = n / 2;
 

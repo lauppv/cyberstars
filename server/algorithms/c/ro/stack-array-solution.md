@@ -8,7 +8,7 @@ int main(void) {
 
     // Reprezentam stiva ca un tablou + un index "varf" care spune ultima pozitie ocupata.
     // varf = -1 inseamna stiva goala.
-    int stiva[100];
+    int stiva[20000];
     int varf = -1;
 
     for (int i = 0; i < m; i++) {

@@ -4,7 +4,7 @@ Thread t1 processes the first half of the string, t2 the second. The main thread
 
 ### Input
 
-- Line 1: a string of at most 200 characters, made up only of lowercase letters (no spaces).
+- Line 1: a string of at most 10^5 characters, made up only of lowercase letters (no spaces).
 
 ### Output
 

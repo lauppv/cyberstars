@@ -1,14 +1,16 @@
 import { createHash } from 'crypto';
 import type { LessonTestsSpec, TestComparator } from '../../shared/tests.js';
 
-// Reference outputs of generated (bulk, hidden) judge cases, kept in server
-// memory so a later run skips the reference solution for them. A generated
-// case is concrete data stored in the tests file and its lesson's output is
-// deterministic (validate-tests keeps generated cases off masked/unordered
-// lessons), so the same solution on the same case always prints the same
-// thing. The key covers everything that decides that output, so editing the
-// solution or the case simply misses. Bounded LRU: by entry count and by total
-// characters, so a few large outputs can't grow the heap on a small VPS.
+// Reference outputs of judge cases, kept in server memory so a later run skips
+// our solution on them: the student's program is checked against the stored
+// output, the way an online judge checks against precomputed answers. Only
+// cases whose time nobody reads and whose output can't change go in: never the
+// load test (its runtime needs our solution timed live, next to the
+// student's), never a masked/unordered lesson. A case is concrete data from
+// the tests file, so the same solution on the same case always prints the
+// same thing; the key covers everything that decides that output, so editing
+// the solution or the case simply misses. Bounded LRU: by entry count and by
+// total characters, so a few large outputs can't grow the heap on a small VPS.
 const MAX_ENTRIES = 4096;
 const MAX_TOTAL_CHARS = 4 * 1024 * 1024;
 
@@ -62,4 +64,10 @@ export function putReference(key: string, stdout: string): void {
     entries.delete(oldest);
     totalChars -= value.length;
   }
+}
+
+// Forgets every stored output, so each judge test starts from a cold cache.
+export function clearReferences(): void {
+  entries.clear();
+  totalChars = 0;
 }

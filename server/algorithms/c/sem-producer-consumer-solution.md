@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-int nums[20];
+int nums[20000];
 int n;
 
 int buffer;

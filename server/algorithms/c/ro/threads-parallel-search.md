@@ -4,7 +4,7 @@ La final, firul principal afișează cel mai mic index unde apare `tinta`, sau `
 
 ### Date de intrare
 
-- Prima linie: numărul întreg `N` (2 <= N <= 100)
+- Prima linie: numărul întreg `N` (2 <= N <= 2·10^4)
 - Următoarele `N` linii: câte un număr întreg (fiecare între -1000 și 1000)
 - Ultima linie: numărul întreg `tinta` (între -1000 și 1000)
 

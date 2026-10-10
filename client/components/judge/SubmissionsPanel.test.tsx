@@ -91,7 +91,7 @@ describe('SubmissionsPanel', () => {
     expect(rows).toHaveLength(2);
     expect(rows[0]).toHaveTextContent('Accepted');
     expect(rows[0]).toHaveTextContent('5 / 5');
-    expect(rows[0]).toHaveTextContent('43 ms');
+    expect(rows[0]).toHaveTextContent('42.5 ms');
     expect(rows[0]).toHaveTextContent('3m ago');
     expect(rows[1]).toHaveTextContent('Failed');
     expect(rows[1]).toHaveTextContent('—');

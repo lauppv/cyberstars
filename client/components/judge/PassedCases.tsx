@@ -51,6 +51,9 @@ export function PassedCases({ cases }: { cases: TestCaseResult[] }) {
             <li key={c.index}>
               <Disclosure title={caseLabel(c, t)}>
                 <div className="flex flex-col gap-3 pb-2">
+                  {c.load && (
+                    <p className="m-0 text-[13px] text-[var(--text3)]">{t('tests.loadTooLarge')}</p>
+                  )}
                   <CaseInput result={c} />
                   {c.expected !== undefined && (
                     <Field label={t('tests.expected')}>{c.expected || '∅'}</Field>

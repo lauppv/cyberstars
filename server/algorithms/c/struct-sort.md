@@ -2,7 +2,7 @@ Read **N** students, each with a **name** (single word) and a **grade** (integer
 
 ### Input
 
-- First line: an integer `N` (1 <= N <= 50)
+- First line: an integer `N` (1 <= N <= 2·10^4)
 - For each student, two lines:
   - Line 1: the name (a single word of at most 30 characters: letters, digits or `_`)
   - Line 2: the grade (an integer, 0 <= grade <= 100)
