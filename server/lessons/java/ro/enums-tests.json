@@ -4,7 +4,8 @@
       { "kind": "function", "name": "descrieStare" },
       { "kind": "variable", "name": "nume" },
       { "kind": "call", "name": "values" },
-      { "kind": "loop" }
+      { "kind": "loop" },
+      { "kind": "enum" }
     ]
   },
   "cases": [

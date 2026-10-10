@@ -3,7 +3,8 @@
     "requires": [
       { "kind": "variable", "name": "reports" },
       { "kind": "loop" },
-      { "kind": "call", "name": "parseInt" }
+      { "kind": "call", "name": "parseInt" },
+      { "kind": "try" }
     ]
   },
   "cases": [

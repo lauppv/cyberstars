@@ -8,7 +8,8 @@
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "nume3" },
       { "kind": "variable", "name": "masina3" },
-      { "kind": "loop" }
+      { "kind": "loop" },
+      { "kind": "instanceof" }
     ]
   },
   "cases": [

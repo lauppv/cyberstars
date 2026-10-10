@@ -5,7 +5,8 @@
       { "kind": "call", "name": "descrie" },
       { "kind": "variable", "name": "arma" },
       { "kind": "variable", "name": "cantitate" },
-      { "kind": "variable", "name": "pret" }
+      { "kind": "variable", "name": "pret" },
+      { "kind": "overload" }
     ]
   },
   "cases": [

@@ -5,7 +5,8 @@
       { "kind": "call", "name": "describe" },
       { "kind": "variable", "name": "weapon" },
       { "kind": "variable", "name": "quantity" },
-      { "kind": "variable", "name": "price" }
+      { "kind": "variable", "name": "price" },
+      { "kind": "overload" }
     ]
   },
   "cases": [
