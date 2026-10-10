@@ -56,7 +56,7 @@ Is there something faster? Yes, **binary search**, which we'll learn later. But 
 
 ## Mission: Crew Locator
 
-The station roster is a list of crew names, each one at a numbered station (station 0, station 1, and so on). Mission Control wants to look someone up by name.
+The station roster is a list named crew with the crew names, each one at a numbered station (station 0, station 1, and so on). Mission Control wants to look someone up by name.
 
 Write a function **find_crew(crew, target)** that uses **linear search** to return the **station number** (the index) where `target` sits in the list. If the name is not in the list, return **-1**.
 

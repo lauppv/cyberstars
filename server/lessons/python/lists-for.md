@@ -65,7 +65,7 @@ Output **100**. We started with **total = 0**, then for each price **i** we adde
 
 ## Mission: The Ship's Crew
 
-On the right you have the list of the **20** crew members. Ground control has selected three people for a spacewalk (EVA): the ones at **indexes 5, 10 and 12** in the list
+On the right you have the list of the **20** crew members, named crew. Ground control has selected three people for a spacewalk (EVA): the ones at **indexes 5, 10 and 12** in the list
 
 Loop over the list with a **for** loop and print each member numbered (`1. Mary`, `2. Andrew` and so on; use the index with **i + 1**). For the members at indexes **5**, **10** and **12** add ` -> selected for EVA` at the end
 

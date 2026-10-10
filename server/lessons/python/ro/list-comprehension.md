@@ -84,7 +84,7 @@ Curat. Ușor de citit. Cazul perfect de folosire
 
 ## Misiune: Filtru de Date
 
-Ai o listă de citiri de senzori. Folosind **list comprehension** pentru fiecare pas:
+Ai o listă de citiri de senzori numită citiri. Folosind **list comprehension** pentru fiecare pas:
 
 1. Creează `mari`: doar citirile **peste 80**
 2. Creează `dublate`: fiecare citire **înmulțită cu 2**

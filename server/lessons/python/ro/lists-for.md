@@ -65,7 +65,7 @@ Rezultat **100**. Am început cu **total = 0**, apoi pentru fiecare preț **i** 
 
 ## Misiune: Echipajul navei
 
-Ai în dreapta lista cu cei **20** de membri ai echipajului. Controlul de la sol a selectat trei oameni pentru o ieșire în spațiu (EVA): cei aflați la **indexurile 5, 10 și 12** din listă
+Ai în dreapta lista cu cei **20** de membri ai echipajului, numită echipaj. Controlul de la sol a selectat trei oameni pentru o ieșire în spațiu (EVA): cei aflați la **indexurile 5, 10 și 12** din listă
 
 Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. Maria`, `2. Andrei` și tot așa; folosește indexul cu **i + 1**). Pentru membrii de la indexurile **5**, **10** și **12** adaugă la final ` -> selectat pentru EVA`
 

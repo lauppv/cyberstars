@@ -56,7 +56,7 @@ Există ceva mai rapid? Da, **căutarea binară**, pe care o vom învăța mai t
 
 ## Misiune: Localizatorul Echipajului
 
-Lista echipajului stației este o listă de nume, fiecare la o stație numerotată (stația 0, stația 1, și așa mai departe). Controlul Misiunii vrea să caute pe cineva după nume.
+Lista echipajului stației este o listă de nume numită echipaj, fiecare la o stație numerotată (stația 0, stația 1, și așa mai departe). Controlul Misiunii vrea să caute pe cineva după nume.
 
 Scrie o funcție **gaseste_echipaj(echipaj, tinta)** care folosește **căutarea liniară** ca să returneze **numărul stației** (indexul) unde se află `tinta` în listă. Dacă numele nu este în listă, returnează **-1**.
 
