@@ -12,8 +12,7 @@
       { "kind": "variable", "name": "ani2" },
       { "kind": "variable", "name": "nume3" },
       { "kind": "variable", "name": "rol3" },
-      { "kind": "variable", "name": "ani3" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "ani3" }
     ]
   },
   "cases": [
@@ -69,6 +68,230 @@
         "rol3": "Cubanez",
         "ani3": 7
       }
+    },
+    {
+      "inject": {
+        "nume1": "Victor Vance",
+        "rol1": "Pilot",
+        "ani1": 1,
+        "nume2": "Cam Jones",
+        "rol2": "Hacker",
+        "ani2": 0,
+        "nume3": "Hilary King",
+        "rol3": "Sofer",
+        "ani3": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Tommy Vercetti",
+        "rol1": "Sef",
+        "ani1": 3,
+        "nume2": "Tommy Vercetti",
+        "rol2": "Sef",
+        "ani2": 3,
+        "nume3": "Tommy Vercetti",
+        "rol3": "Sef",
+        "ani3": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "rol1": "Intermediar",
+        "ani1": 0,
+        "nume2": "B",
+        "rol2": "Intermediar",
+        "ani2": 0,
+        "nume3": "C",
+        "rol3": "Intermediar",
+        "ani3": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Ricardo Diaz",
+        "rol1": "Traficant",
+        "ani1": 15,
+        "nume2": "Alberto Robina",
+        "rol2": "Contrabandist",
+        "ani2": 22,
+        "nume3": "Maude Hanson",
+        "rol3": "Contabil",
+        "ani3": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Kent Paul",
+        "rol1": "Intermediar",
+        "ani1": 11,
+        "nume2": "Earnest Kelly",
+        "rol2": "Mecanic",
+        "ani2": 13,
+        "nume3": "Big Mitch Baker",
+        "rol3": "Motociclist",
+        "ani3": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Leo Teal",
+        "rol1": "Avocat",
+        "ani1": 7,
+        "nume2": "Pastor Richards",
+        "rol2": "Partener",
+        "ani2": 2,
+        "nume3": "Juan Garcia Cortez",
+        "rol3": "Contrabandist",
+        "ani3": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Candy Suxxx",
+        "rol1": "Sofer",
+        "ani1": 5,
+        "nume2": "Steve Scott",
+        "rol2": "Pilot",
+        "ani2": 9,
+        "nume3": "Love Fist",
+        "rol3": "Bodyguard",
+        "ani3": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Mercedes Cortez",
+        "rol1": "Partener",
+        "ani1": 8,
+        "nume2": "Ken Rosenberg",
+        "rol2": "Avocat",
+        "ani2": 12,
+        "nume3": "Lance Vance",
+        "rol3": "Armurier",
+        "ani3": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Phil Cassidy",
+        "rol1": "Armurier",
+        "ani1": 2,
+        "nume2": "Lance Vance",
+        "rol2": "Partener",
+        "ani2": 5,
+        "nume3": "Tommy Vercetti",
+        "rol3": "Sef",
+        "ani3": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Sonny Forelli",
+        "rol1": "Sef",
+        "ani1": 25,
+        "nume2": "Avery Carrington",
+        "rol2": "Contabil",
+        "ani2": 33,
+        "nume3": "Umberto Robina",
+        "rol3": "Mecanic",
+        "ani3": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Colonel Cortez",
+        "rol1": "Pilot",
+        "ani1": 19,
+        "nume2": "Mitch Baker",
+        "rol2": "Motociclist",
+        "ani2": 17,
+        "nume3": "Kent Paul",
+        "rol3": "Hacker",
+        "ani3": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Earnest",
+        "rol1": "Mecanic",
+        "ani1": 4,
+        "nume2": "Hilary",
+        "rol2": "Sofer",
+        "ani2": 1,
+        "nume3": "Cam",
+        "rol3": "Hacker",
+        "ani3": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Diaz",
+        "rol1": "Traficant",
+        "ani1": 100,
+        "nume2": "Ken",
+        "rol2": "Avocat",
+        "ani2": 99,
+        "nume3": "Tommy",
+        "rol3": "Sef",
+        "ani3": 98
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Rico",
+        "rol1": "Contrabandist",
+        "ani1": 6,
+        "nume2": "Gonzalez",
+        "rol2": "Bodyguard",
+        "ani2": 3,
+        "nume3": "Pepe",
+        "rol3": "Intermediar",
+        "ani3": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Lance",
+        "rol1": "Sofer",
+        "ani1": 12,
+        "nume2": "Phil",
+        "rol2": "Armurier",
+        "ani2": 21,
+        "nume3": "Victor",
+        "rol3": "Pilot",
+        "ani3": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Juan",
+        "rol1": "Contabil",
+        "ani1": 2,
+        "nume2": "Rosa",
+        "rol2": "Hacker",
+        "ani2": 4,
+        "nume3": "Alex",
+        "rol3": "Mecanic",
+        "ani3": 9
+      },
+      "generated": true
     }
   ]
 }

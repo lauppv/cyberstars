@@ -2,11 +2,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "achizitii" },
-      { "kind": "call", "name": "put" },
-      { "kind": "call", "name": "get" },
       { "kind": "call", "name": "sort" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -18,16 +15,127 @@
         }
       }
     },
-    {
-      "inject": { "achizitii": { "$list": ["Uzi", "Uzi", "Uzi", "Uzi", "Pusca", "Grenada"] } }
-    },
+    { "inject": { "achizitii": { "$list": ["Uzi", "Uzi", "Uzi", "Uzi", "Pusca", "Grenada"] } } },
     {
       "inject": {
-        "achizitii": { "$list": ["Luneta", "Luneta", "Maceta", "Maceta", "Maceta", "Racheta"] }
+        "achizitii": { "$list": ["Sniper", "Sniper", "Maceta", "Maceta", "Maceta", "Racheta"] }
+      }
+    },
+    { "inject": { "achizitii": { "$list": ["Katana", "Katana", "Drujba"] } } },
+    { "inject": { "achizitii": { "$list": ["Uzi"] } } },
+    { "inject": { "achizitii": { "$list": ["Bata", "Cutit", "Bata"] } } },
+    { "inject": { "achizitii": { "$list": ["Katana", "Drujba", "Cutit", "Katana"] } } },
+    {
+      "inject": {
+        "achizitii": {
+          "$list": [
+            "Bata",
+            "Python",
+            "Cutit",
+            "Cutit",
+            "Python",
+            "Cutit",
+            "Bata",
+            "Bata",
+            "Python",
+            "Bata",
+            "Bata",
+            "Python",
+            "Bata",
+            "Python",
+            "Python",
+            "Python",
+            "Cutit"
+          ]
+        }
       }
     },
     {
-      "inject": { "achizitii": { "$list": ["Katana", "Katana", "Drujba"] } }
+      "inject": {
+        "achizitii": {
+          "$list": [
+            "Automat",
+            "Automat",
+            "Automat",
+            "Automat",
+            "Grenada",
+            "Automat",
+            "Automat",
+            "Grenada",
+            "Automat",
+            "Automat",
+            "Automat",
+            "Minigun",
+            "Automat",
+            "Grenada",
+            "Grenada",
+            "Automat",
+            "Minigun",
+            "Grenada",
+            "Automat",
+            "Grenada",
+            "Minigun",
+            "Grenada"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "achizitii": {
+          "$list": [
+            "Python",
+            "Maceta",
+            "Uzi",
+            "Cutit",
+            "Python",
+            "Cutit",
+            "Cutit",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Maceta",
+            "Uzi",
+            "Maceta",
+            "Maceta",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Python",
+            "Uzi",
+            "Uzi"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "achizitii": {
+          "$list": [
+            "Grenada",
+            "Pusca",
+            "Sniper",
+            "Sniper",
+            "Grenada",
+            "Uzi",
+            "Sniper",
+            "Sniper",
+            "Pusca",
+            "Uzi"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "achizitii": {
+          "$list": ["Aruncator", "Carabina", "Molotov", "Aruncator", "Aruncator", "Pistol"]
+        }
+      }
     }
-  ]
+  ],
+  "comparator": "unordered"
 }

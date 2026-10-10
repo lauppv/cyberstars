@@ -1,10 +1,5 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "stele" },
-      { "kind": "call", "name": "println" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "stele" }] },
   "cases": [
     { "visible": true, "inject": { "stele": 3 } },
     { "inject": { "stele": 0 } },
@@ -13,6 +8,18 @@
     { "inject": { "stele": 4 } },
     { "inject": { "stele": 5 } },
     { "inject": { "stele": 6 } },
-    { "inject": { "stele": 7 } }
+    { "inject": { "stele": 7 } },
+    { "inject": { "stele": -1 }, "generated": true },
+    { "inject": { "stele": -2 }, "generated": true },
+    { "inject": { "stele": -3 }, "generated": true },
+    { "inject": { "stele": -5 }, "generated": true },
+    { "inject": { "stele": -10 }, "generated": true },
+    { "inject": { "stele": -1000 }, "generated": true },
+    { "inject": { "stele": 8 }, "generated": true },
+    { "inject": { "stele": 9 }, "generated": true },
+    { "inject": { "stele": 10 }, "generated": true },
+    { "inject": { "stele": 12 }, "generated": true },
+    { "inject": { "stele": 100 }, "generated": true },
+    { "inject": { "stele": 1000000 }, "generated": true }
   ]
 }

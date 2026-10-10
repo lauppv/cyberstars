@@ -1,10 +1,5 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "stars" },
-      { "kind": "call", "name": "println" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "stars" }] },
   "cases": [
     { "visible": true, "inject": { "stars": 3 } },
     { "inject": { "stars": 0 } },
@@ -13,6 +8,18 @@
     { "inject": { "stars": 4 } },
     { "inject": { "stars": 5 } },
     { "inject": { "stars": 6 } },
-    { "inject": { "stars": 7 } }
+    { "inject": { "stars": 7 } },
+    { "inject": { "stars": -1 }, "generated": true },
+    { "inject": { "stars": -2 }, "generated": true },
+    { "inject": { "stars": -3 }, "generated": true },
+    { "inject": { "stars": -5 }, "generated": true },
+    { "inject": { "stars": -10 }, "generated": true },
+    { "inject": { "stars": -1000 }, "generated": true },
+    { "inject": { "stars": 8 }, "generated": true },
+    { "inject": { "stars": 9 }, "generated": true },
+    { "inject": { "stars": 10 }, "generated": true },
+    { "inject": { "stars": 12 }, "generated": true },
+    { "inject": { "stars": 100 }, "generated": true },
+    { "inject": { "stars": 1000000 }, "generated": true }
   ]
 }

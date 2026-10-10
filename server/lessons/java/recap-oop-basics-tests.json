@@ -12,8 +12,7 @@
       { "kind": "variable", "name": "years2" },
       { "kind": "variable", "name": "name3" },
       { "kind": "variable", "name": "role3" },
-      { "kind": "variable", "name": "years3" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "years3" }
     ]
   },
   "cases": [
@@ -69,6 +68,230 @@
         "role3": "Cuban",
         "years3": 7
       }
+    },
+    {
+      "inject": {
+        "name1": "Victor Vance",
+        "role1": "Pilot",
+        "years1": 1,
+        "name2": "Cam Jones",
+        "role2": "Hacker",
+        "years2": 0,
+        "name3": "Hilary King",
+        "role3": "Driver",
+        "years3": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Tommy Vercetti",
+        "role1": "Boss",
+        "years1": 3,
+        "name2": "Tommy Vercetti",
+        "role2": "Boss",
+        "years2": 3,
+        "name3": "Tommy Vercetti",
+        "role3": "Boss",
+        "years3": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "A",
+        "role1": "Fixer",
+        "years1": 0,
+        "name2": "B",
+        "role2": "Fixer",
+        "years2": 0,
+        "name3": "C",
+        "role3": "Fixer",
+        "years3": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Ricardo Diaz",
+        "role1": "Dealer",
+        "years1": 15,
+        "name2": "Alberto Robina",
+        "role2": "Smuggler",
+        "years2": 22,
+        "name3": "Maude Hanson",
+        "role3": "Accountant",
+        "years3": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Kent Paul",
+        "role1": "Fixer",
+        "years1": 11,
+        "name2": "Earnest Kelly",
+        "role2": "Mechanic",
+        "years2": 13,
+        "name3": "Big Mitch Baker",
+        "role3": "Biker",
+        "years3": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Leo Teal",
+        "role1": "Lawyer",
+        "years1": 7,
+        "name2": "Pastor Richards",
+        "role2": "Partner",
+        "years2": 2,
+        "name3": "Juan Garcia Cortez",
+        "role3": "Smuggler",
+        "years3": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Candy Suxxx",
+        "role1": "Driver",
+        "years1": 5,
+        "name2": "Steve Scott",
+        "role2": "Pilot",
+        "years2": 9,
+        "name3": "Love Fist",
+        "role3": "Bodyguard",
+        "years3": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Mercedes Cortez",
+        "role1": "Partner",
+        "years1": 8,
+        "name2": "Ken Rosenberg",
+        "role2": "Lawyer",
+        "years2": 12,
+        "name3": "Lance Vance",
+        "role3": "Gunsmith",
+        "years3": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Phil Cassidy",
+        "role1": "Gunsmith",
+        "years1": 2,
+        "name2": "Lance Vance",
+        "role2": "Partner",
+        "years2": 5,
+        "name3": "Tommy Vercetti",
+        "role3": "Boss",
+        "years3": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Sonny Forelli",
+        "role1": "Boss",
+        "years1": 25,
+        "name2": "Avery Carrington",
+        "role2": "Accountant",
+        "years2": 33,
+        "name3": "Umberto Robina",
+        "role3": "Mechanic",
+        "years3": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Colonel Cortez",
+        "role1": "Pilot",
+        "years1": 19,
+        "name2": "Mitch Baker",
+        "role2": "Biker",
+        "years2": 17,
+        "name3": "Kent Paul",
+        "role3": "Hacker",
+        "years3": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Earnest",
+        "role1": "Mechanic",
+        "years1": 4,
+        "name2": "Hilary",
+        "role2": "Driver",
+        "years2": 1,
+        "name3": "Cam",
+        "role3": "Hacker",
+        "years3": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Diaz",
+        "role1": "Dealer",
+        "years1": 100,
+        "name2": "Ken",
+        "role2": "Lawyer",
+        "years2": 99,
+        "name3": "Tommy",
+        "role3": "Boss",
+        "years3": 98
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Rico",
+        "role1": "Smuggler",
+        "years1": 6,
+        "name2": "Gonzalez",
+        "role2": "Bodyguard",
+        "years2": 3,
+        "name3": "Pepe",
+        "role3": "Fixer",
+        "years3": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Lance",
+        "role1": "Driver",
+        "years1": 12,
+        "name2": "Phil",
+        "role2": "Gunsmith",
+        "years2": 21,
+        "name3": "Victor",
+        "role3": "Pilot",
+        "years3": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Juan",
+        "role1": "Accountant",
+        "years1": 2,
+        "name2": "Rosa",
+        "role2": "Hacker",
+        "years2": 4,
+        "name3": "Alex",
+        "role3": "Mechanic",
+        "years3": 9
+      },
+      "generated": true
     }
   ]
 }
