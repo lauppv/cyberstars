@@ -3,9 +3,10 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "inverseaza_text" },
-      { "kind": "loop" },
+      { "kind": "loop", "in": "inverseaza_text" },
       { "kind": "call", "name": "input" }
-    ]
+    ],
+    "forbids": [{ "kind": "slice", "in": "inverseaza_text" }]
   },
   "cases": [
     { "visible": true, "stdin": "hello world" },

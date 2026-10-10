@@ -5,7 +5,8 @@
       { "kind": "variable", "name": "coduri" },
       { "kind": "function", "name": "este_palindrom" },
       { "kind": "loop" }
-    ]
+    ],
+    "forbids": [{ "kind": "slice" }]
   },
   "cases": [
     {

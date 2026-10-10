@@ -1,6 +1,6 @@
 {
   "comparator": "trimmed",
-  "structure": { "requires": [{ "kind": "call", "name": "input" }] },
+  "structure": { "requires": [{ "kind": "call", "name": "input" }, { "kind": "slice" }] },
   "cases": [
     { "visible": true, "stdin": "Andromeda\n" },
     { "visible": true, "stdin": "Nebula\n" },
