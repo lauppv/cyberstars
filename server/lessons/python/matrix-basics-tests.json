@@ -1,8 +1,6 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "grid" }, { "kind": "loop" }] },
   "cases": [
     {
       "visible": true,
@@ -19,28 +17,363 @@
     },
     {
       "visible": true,
+      "inject": { "grid": { "$list": [{ "$list": [1, 2] }, { "$list": [3, 4] }] } }
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [7] }] } } },
+    { "inject": { "grid": { "$list": [{ "$list": [8, 8, 8] }, { "$list": [6, 7, 9] }] } } },
+    {
       "inject": {
-        "grid": {
-          "$list": [{ "$list": [1, 2] }, { "$list": [3, 4] }]
-        }
+        "grid": { "$list": [{ "$list": [0, 0] }, { "$list": [0, 15] }, { "$list": [3, 3] }] }
       }
     },
     {
-      "inject": { "grid": { "$list": [{ "$list": [7] }] } }
+      "inject": { "grid": { "$list": [{ "$list": [7, 7] }, { "$list": [7, 7] }] } },
+      "generated": true
+    },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [8, 8] }, { "$list": [8, 8] }] } },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [0, 0, 0] }] } }, "generated": true },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [3] }, { "$list": [9] }, { "$list": [7] }, { "$list": [8] }]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [1, 2, 3, 4, 5] }] } }, "generated": true },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [15, 1] }, { "$list": [1, 1] }] } },
+      "generated": true
+    },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [1, 1] }, { "$list": [1, 15] }] } },
+      "generated": true
+    },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [6, 7] }, { "$list": [7, 6] }] } },
+      "generated": true
     },
     {
       "inject": {
         "grid": {
-          "$list": [{ "$list": [8, 8, 8] }, { "$list": [6, 7, 9] }]
+          "$list": [{ "$list": [9, 10, 11] }, { "$list": [12, 13, 14] }, { "$list": [15, 8, 9] }]
         }
-      }
+      },
+      "generated": true
     },
     {
       "inject": {
         "grid": {
-          "$list": [{ "$list": [0, 0] }, { "$list": [0, 15] }, { "$list": [3, 3] }]
+          "$list": [
+            { "$list": [2, 2, 2, 2] },
+            { "$list": [2, 2, 2, 2] },
+            { "$list": [2, 2, 2, 2] },
+            { "$list": [2, 2, 2, 2] }
+          ]
         }
-      }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [10, 9, 8, 10] },
+            { "$list": [1, 4, 6, 4] },
+            { "$list": [9, 2, 7, 8] },
+            { "$list": [5, 8, 3, 6] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [0] }] } }, "generated": true },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [100, 50] }, { "$list": [99, 101] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": { "$list": [{ "$list": [2, 8, 3, 15, 14] }, { "$list": [15, 12, 6, 3, 15] }] }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [13, 0, 14, 8] }] } }, "generated": true },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [3, 10] },
+            { "$list": [0, 0] },
+            { "$list": [0, 0] },
+            { "$list": [12, 6] },
+            { "$list": [13, 0] },
+            { "$list": [7, 14] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [7, 11, 7, 7, 14] },
+            { "$list": [9, 0, 13, 3, 5] },
+            { "$list": [9, 3, 10, 13, 6] },
+            { "$list": [9, 9, 15, 12, 1] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [12, 13] },
+            { "$list": [5, 11] },
+            { "$list": [11, 2] },
+            { "$list": [14, 3] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": { "$list": [{ "$list": [12, 11, 15, 0, 15] }, { "$list": [1, 9, 12, 5, 5] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [0, 6] },
+            { "$list": [7, 12] },
+            { "$list": [11, 11] },
+            { "$list": [14, 8] },
+            { "$list": [0, 12] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [4, 6, 13, 1, 15] },
+            { "$list": [11, 6, 13, 15, 11] },
+            { "$list": [13, 11, 0, 10, 14] },
+            { "$list": [0, 7, 5, 5, 2] },
+            { "$list": [8, 1, 2, 2, 0] },
+            { "$list": [14, 0, 8, 7, 8] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [5, 11, 9, 2, 5] }] } }, "generated": true },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [5, 8, 9] }, { "$list": [14, 10, 15] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [0] }, { "$list": [9] }, { "$list": [12] }, { "$list": [10] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [8, 3] },
+            { "$list": [8, 6] },
+            { "$list": [13, 0] },
+            { "$list": [7, 0] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [1, 5] },
+            { "$list": [14, 13] },
+            { "$list": [7, 14] },
+            { "$list": [7, 0] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [10, 13, 1, 9, 4, 6] },
+            { "$list": [1, 9, 2, 2, 9, 9] },
+            { "$list": [5, 13, 8, 4, 0, 1] },
+            { "$list": [6, 14, 5, 1, 12, 6] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [6] }, { "$list": [13] }, { "$list": [6] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [12] }, { "$list": [9] }, { "$list": [15] }, { "$list": [0] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [12, 9, 0, 5, 6] },
+            { "$list": [10, 4, 10, 13, 6] },
+            { "$list": [8, 3, 12, 11, 15] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [2, 1] },
+            { "$list": [2, 4] },
+            { "$list": [5, 5] },
+            { "$list": [6, 8] },
+            { "$list": [10, 8] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [10, 3, 9] }, { "$list": [7, 15, 4] }, { "$list": [3, 10, 1] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [12] }, { "$list": [4] }, { "$list": [4] }, { "$list": [10] }]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [12, 2, 7, 2, 8] }] } }, "generated": true },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [3, 14, 8] }, { "$list": [3, 1, 9] }, { "$list": [0, 0, 2] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [1] }, { "$list": [6] }, { "$list": [7] }, { "$list": [13] }]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [14] }, { "$list": [5] }] } }, "generated": true },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [5, 3] },
+            { "$list": [13, 12] },
+            { "$list": [9, 8] },
+            { "$list": [15, 10] },
+            { "$list": [3, 6] },
+            { "$list": [10, 1] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [9] }] } }, "generated": true },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [10, 14, 12, 10, 12] },
+            { "$list": [2, 2, 10, 14, 3] },
+            { "$list": [8, 6, 15, 11, 8] },
+            { "$list": [5, 6, 9, 6, 7] },
+            { "$list": [11, 2, 8, 2, 14] },
+            { "$list": [2, 10, 7, 12, 9] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "grid": { "$list": [{ "$list": [5, 10, 9] }] } }, "generated": true },
+    {
+      "inject": { "grid": { "$list": [{ "$list": [3, 2, 7] }, { "$list": [7, 0, 7] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [{ "$list": [8] }, { "$list": [2] }, { "$list": [2] }, { "$list": [0] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [9] },
+            { "$list": [11] },
+            { "$list": [15] },
+            { "$list": [15] },
+            { "$list": [4] },
+            { "$list": [3] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "grid": {
+          "$list": [
+            { "$list": [2, 5, 5] },
+            { "$list": [4, 4, 10] },
+            { "$list": [9, 3, 9] },
+            { "$list": [4, 6, 4] },
+            { "$list": [1, 10, 6] }
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }
