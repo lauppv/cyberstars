@@ -824,11 +824,20 @@ public class Runner {
       Gobbler stderr = new Gobbler(proc.getErrorStream());
       stdout.start();
       stderr.start();
-      try (OutputStream stdinPipe = proc.getOutputStream()) {
-        stdinPipe.write(stdin.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException ignored) {
-        // the program exited without reading its stdin, that's fine
-      }
+      // Fed on its own thread: a load test's input is larger than the pipe
+      // buffer, so writing it here would block on a slow reader before the
+      // time limit below even starts counting.
+      Thread feeder =
+          new Thread(
+              () -> {
+                try (OutputStream stdinPipe = proc.getOutputStream()) {
+                  stdinPipe.write(stdin.getBytes(StandardCharsets.UTF_8));
+                } catch (IOException ignored) {
+                  // the program exited without reading all its stdin, that's fine
+                }
+              });
+      feeder.setDaemon(true);
+      feeder.start();
       boolean finished = proc.waitFor(CASE_TIMEOUT_SEC, TimeUnit.SECONDS);
       if (!finished) {
         proc.descendants().forEach(ProcessHandle::destroyForcibly);
