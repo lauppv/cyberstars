@@ -233,7 +233,7 @@ public class Runner {
     final java.util.Set<String> callNames = new java.util.HashSet<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
-    // A method that calls itself by name somewhere in its own body.
+    // A method that calls itself somewhere in its own body.
     boolean hasRecursion;
     final java.util.Set<Long> intLiterals = new java.util.HashSet<>();
     final List<String> comments = new ArrayList<>();
@@ -345,7 +345,9 @@ public class Runner {
         @Override
         public Void visitMethod(MethodTree node, Void unused) {
           methodNames.add(node.getName().toString());
-          enclosingMethods.push(node.getName().toString());
+          String key = node.getName() + "/" + node.getParameters().size();
+          methodsByArity.merge(key, 1, Integer::sum);
+          enclosingMethods.push(key);
           try {
             return super.visitMethod(node, unused);
           } finally {
@@ -354,17 +356,28 @@ public class Runner {
         }
 
         private final java.util.ArrayDeque<String> enclosingMethods = new java.util.ArrayDeque<>();
+        private final Map<String, Integer> methodsByArity = new java.util.HashMap<>();
+        private final java.util.Set<String> selfCalls = new java.util.HashSet<>();
 
         @Override
         public Void visitMethodInvocation(MethodInvocationTree node, Void unused) {
           ExpressionTree select = node.getMethodSelect();
           if (select instanceof IdentifierTree id) callNames.add(id.getName().toString());
           if (select instanceof MemberSelectTree ms) callNames.add(ms.getIdentifier().toString());
+          // A method calls itself by its bare name or through this., with as
+          // many arguments as it takes: name.equals(...) on a field or an
+          // overload with another arity is a different method, and with an
+          // overload of the same arity it can't be told apart without types.
           String called =
               select instanceof IdentifierTree id
                   ? id.getName().toString()
-                  : select instanceof MemberSelectTree ms ? ms.getIdentifier().toString() : null;
-          if (called != null && called.equals(enclosingMethods.peek())) hasRecursion = true;
+                  : select instanceof MemberSelectTree ms
+                          && ms.getExpression() instanceof IdentifierTree target
+                          && target.getName().contentEquals("this")
+                      ? ms.getIdentifier().toString()
+                      : null;
+          String key = called + "/" + node.getArguments().size();
+          if (called != null && key.equals(enclosingMethods.peek())) selfCalls.add(key);
           return super.visitMethodInvocation(node, unused);
         }
 
@@ -437,7 +450,8 @@ public class Runner {
         }
 
         private boolean inMain(Tree parent) {
-          return parent instanceof BlockTree && "main".equals(enclosingMethods.peek());
+          String method = enclosingMethods.peek();
+          return parent instanceof BlockTree && method != null && method.startsWith("main/");
         }
 
         private Tree findParentOf(Tree tree) {
@@ -477,6 +491,13 @@ public class Runner {
           if (node.getValue() instanceof Integer i) intLiterals.add(i.longValue());
           if (node.getValue() instanceof Long l) intLiterals.add(l);
           return super.visitLiteral(node, unused);
+        }
+
+        @Override
+        public Void visitCompilationUnit(CompilationUnitTree node, Void unused) {
+          super.visitCompilationUnit(node, unused);
+          for (String key : selfCalls) if (methodsByArity.get(key) == 1) hasRecursion = true;
+          return null;
         }
       }.scan(unit, null);
       points.sort(Comparator.comparingLong(InjectPoint::start));
@@ -612,9 +633,18 @@ public class Runner {
 
         @Override
         public Void visitVariable(VariableTree node, Void unused) {
+          // A field next to main has to be static to be used from it, as a
+          // helper method does, so static or private there doesn't count either.
           Tree parent = getCurrentPath().getParentPath().getLeaf();
+          boolean besideMain =
+              parent instanceof ClassTree c && c.getSimpleName().contentEquals(mainClass);
           if (!(parent instanceof MethodTree)) {
-            for (var m : node.getModifiers().getFlags()) modifiers.add(m.toString());
+            for (var m : node.getModifiers().getFlags()) {
+              boolean helperFlag =
+                  m == javax.lang.model.element.Modifier.STATIC
+                      || m == javax.lang.model.element.Modifier.PRIVATE;
+              if (!(besideMain && helperFlag)) modifiers.add(m.toString());
+            }
           }
           return super.visitVariable(node, unused);
         }

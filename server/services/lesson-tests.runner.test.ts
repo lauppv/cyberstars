@@ -1,7 +1,8 @@
 // @vitest-environment node
-// Runs the Python and C judge runners on the host (python3 / gcc, skipped when
-// missing) to cover what the service tests mock away: the runners' own output
-// handling. Each test plays the server side of the lockstep protocol.
+// Runs the Python, C and Java judge runners on the host (python3 / gcc / java,
+// skipped when missing) to cover what the service tests mock away: the
+// runners' own output handling. Each test plays the server side of the
+// lockstep protocol.
 import { execFileSync, spawnSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';
@@ -333,5 +334,52 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
     expect(u.ms).toBeGreaterThan(50);
     expect(s.exit).not.toBe(0);
     expect(s.ms).toBeUndefined();
+  });
+});
+
+// javac once, as the service does per container; the source launcher would
+// recompile the runner on every call.
+describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
+  let classes: string;
+  beforeAll(() => {
+    classes = path.join(dir, 'java-classes');
+    const source = path.join(dir, 'Runner.java');
+    fs.copyFileSync(path.join(SERVICES, 'lesson-tests.runner.java'), source);
+    execFileSync('javac', ['-d', classes, source]);
+  }, 120_000);
+
+  // The structure header only: no cases, so nothing is compiled or run.
+  function header(userCode: string, requires: unknown[]): unknown {
+    const payloadPath = path.join(dir, 'payload.json');
+    fs.writeFileSync(
+      payloadPath,
+      JSON.stringify({ userCode, solutionCode: '', structure: { requires }, cases: [] }),
+    );
+    const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
+      encoding: 'utf8',
+      timeout: 60_000,
+    });
+    expect(result.status).toBe(0);
+    return JSON.parse(result.stdout.trim().split('\n')[0]);
+  }
+
+  const main = (members: string) =>
+    `public class Main {\n${members}\n    public static void main(String[] args) {}\n}\n`;
+
+  it('takes a method calling itself as recursion, not a same-named call on something else', () => {
+    const recursion = { kind: 'recursion' };
+    expect(
+      header(main('    static int f(int n) { return n < 2 ? 1 : n * f(n - 1); }'), [recursion]),
+    ).toEqual({ syntaxError: null, structureFailures: [] });
+    for (const members of [
+      // equals on a field, and an overload of the same arity: other methods.
+      '    String name = "a";\n    public boolean equals(Object o) { return name.equals(o); }',
+      '    static void show(int n) { show("" + n); }\n    static void show(String s) {}',
+    ]) {
+      expect(header(main(members), [recursion])).toEqual({
+        syntaxError: null,
+        structureFailures: [{ type: 'require', rule: recursion }],
+      });
+    }
   });
 });
