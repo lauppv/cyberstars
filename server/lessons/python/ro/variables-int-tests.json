@@ -1,14 +1,61 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "variable", "name": "total" }],
-    "forbids": [{ "kind": "int_literal", "values": [400, 350] }]
+    "requires": [
+      { "kind": "variable", "name": "rezervor_a" },
+      { "kind": "variable", "name": "rezervor_b" },
+      { "kind": "variable", "name": "rezervor_c" }
+    ]
   },
   "cases": [
     { "visible": true, "inject": { "rezervor_a": 120, "rezervor_b": 80, "rezervor_c": 200 } },
     { "inject": { "rezervor_a": 0, "rezervor_b": 0, "rezervor_c": 0 } },
     { "inject": { "rezervor_a": 15, "rezervor_b": 20, "rezervor_c": 10 } },
     { "inject": { "rezervor_a": 999999, "rezervor_b": 1, "rezervor_c": 0 } },
-    { "inject": { "rezervor_a": 50, "rezervor_b": 0, "rezervor_c": 0 } }
+    { "inject": { "rezervor_a": 50, "rezervor_b": 0, "rezervor_c": 0 } },
+    { "inject": { "rezervor_a": 1, "rezervor_b": 2, "rezervor_c": 3 }, "generated": true },
+    { "inject": { "rezervor_a": 50, "rezervor_b": 50, "rezervor_c": 50 }, "generated": true },
+    { "inject": { "rezervor_a": 0, "rezervor_b": 0, "rezervor_c": 50 }, "generated": true },
+    { "inject": { "rezervor_a": 0, "rezervor_b": 0, "rezervor_c": 49 }, "generated": true },
+    { "inject": { "rezervor_a": 0, "rezervor_b": 0, "rezervor_c": 51 }, "generated": true },
+    { "inject": { "rezervor_a": 100, "rezervor_b": 0, "rezervor_c": 0 }, "generated": true },
+    { "inject": { "rezervor_a": 0, "rezervor_b": 100, "rezervor_c": 0 }, "generated": true },
+    { "inject": { "rezervor_a": 0, "rezervor_b": 0, "rezervor_c": 100 }, "generated": true },
+    { "inject": { "rezervor_a": 25, "rezervor_b": 25, "rezervor_c": 0 }, "generated": true },
+    { "inject": { "rezervor_a": 10, "rezervor_b": 20, "rezervor_c": 30 }, "generated": true },
+    { "inject": { "rezervor_a": 1000, "rezervor_b": 2000, "rezervor_c": 3000 }, "generated": true },
+    { "inject": { "rezervor_a": 7, "rezervor_b": 7, "rezervor_c": 7 }, "generated": true },
+    { "inject": { "rezervor_a": 400, "rezervor_b": 0, "rezervor_c": 0 }, "generated": true },
+    { "inject": { "rezervor_a": 120, "rezervor_b": 80, "rezervor_c": 201 }, "generated": true },
+    { "inject": { "rezervor_a": 5, "rezervor_b": 0, "rezervor_c": 45 }, "generated": true },
+    { "inject": { "rezervor_a": 47044, "rezervor_b": 18767, "rezervor_c": 32 }, "generated": true },
+    { "inject": { "rezervor_a": 560, "rezervor_b": 993, "rezervor_c": 99 }, "generated": true },
+    { "inject": { "rezervor_a": 466, "rezervor_b": 80, "rezervor_c": 44609 }, "generated": true },
+    { "inject": { "rezervor_a": 1695, "rezervor_b": 225, "rezervor_c": 3 }, "generated": true },
+    {
+      "inject": { "rezervor_a": 513, "rezervor_b": 42999, "rezervor_c": 39606 },
+      "generated": true
+    },
+    { "inject": { "rezervor_a": 81, "rezervor_b": 32891, "rezervor_c": 298 }, "generated": true },
+    { "inject": { "rezervor_a": 323, "rezervor_b": 64, "rezervor_c": 11 }, "generated": true },
+    {
+      "inject": { "rezervor_a": 265, "rezervor_b": 35456, "rezervor_c": 32485 },
+      "generated": true
+    },
+    { "inject": { "rezervor_a": 647, "rezervor_b": 596, "rezervor_c": 709 }, "generated": true },
+    { "inject": { "rezervor_a": 503, "rezervor_b": 5354, "rezervor_c": 600 }, "generated": true },
+    { "inject": { "rezervor_a": 2252, "rezervor_b": 533, "rezervor_c": 683 }, "generated": true },
+    { "inject": { "rezervor_a": 20810, "rezervor_b": 42183, "rezervor_c": 60 }, "generated": true },
+    { "inject": { "rezervor_a": 49, "rezervor_b": 1023, "rezervor_c": 389 }, "generated": true },
+    { "inject": { "rezervor_a": 32, "rezervor_b": 99, "rezervor_c": 993 }, "generated": true },
+    {
+      "inject": { "rezervor_a": 14621, "rezervor_b": 20095, "rezervor_c": 3066 },
+      "generated": true
+    },
+    { "inject": { "rezervor_a": 11370, "rezervor_b": 961, "rezervor_c": 493 }, "generated": true },
+    { "inject": { "rezervor_a": 666, "rezervor_b": 17207, "rezervor_c": 54 }, "generated": true },
+    { "inject": { "rezervor_a": 33, "rezervor_b": 25, "rezervor_c": 364 }, "generated": true },
+    { "inject": { "rezervor_a": 16, "rezervor_b": 362, "rezervor_c": 69 }, "generated": true },
+    { "inject": { "rezervor_a": 56, "rezervor_b": 92, "rezervor_c": 43398 }, "generated": true }
   ]
 }

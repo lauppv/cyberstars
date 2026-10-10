@@ -4,8 +4,7 @@
     "requires": [
       { "kind": "variable", "name": "comandant" },
       { "kind": "variable", "name": "pilot" },
-      { "kind": "variable", "name": "inginer" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "inginer" }
     ]
   },
   "cases": [
@@ -107,6 +106,66 @@
         "pilot": ["Ana Maria Popescu", "Big Mitch"],
         "inginer": "Sol"
       },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Kirk", "pilot": ["Ada", "Buzz"], "inginer": "Data" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Linus", "pilot": ["Ripley", "Spock"], "inginer": "Ada" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Linus", "pilot": ["Jean-Luc", "Trinity"], "inginer": "La Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Han", "pilot": ["Spock", "Neo"], "inginer": "Leia" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Yuri", "pilot": ["La Forge", "Han"], "inginer": "Uhura" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Chewie", "pilot": ["Uhura", "Han"], "inginer": "Spock" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Kirk", "pilot": ["Han", "Leia"], "inginer": "Spock" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Sulu", "pilot": ["Data", "Buzz"], "inginer": "Ellen" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Spock", "pilot": ["Mae", "Yuri"], "inginer": "Ellen" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Valentina", "pilot": ["Grace", "Yuri"], "inginer": "Mae" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Han", "pilot": ["Yuri", "Mae"], "inginer": "Leia" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "La Forge", "pilot": ["A", "Yuri"], "inginer": "Chewie" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Grace", "pilot": ["Valentina", "Ada"], "inginer": "Kirk" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "Trinity", "pilot": ["Sally", "Ripley"], "inginer": "Chris" },
+      "generated": true
+    },
+    {
+      "inject": { "comandant": "La Forge", "pilot": ["Data", "Ada"], "inginer": "Sulu" },
       "generated": true
     }
   ]
