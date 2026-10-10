@@ -2,14 +2,54 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "statistici_matrice" },
+      { "kind": "loop" },
       { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "nested_loop" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [
+    { "stdin": "5 12 3\n8 1 15\n7 9 4\n", "visible": true },
+    { "stdin": "2 4 6\n8 10 12\n14 16 18\n", "visible": true },
     { "visible": true, "stdin": "1 2 3 4 5 6 7 8 9\n" },
     { "visible": true, "stdin": "5 5 5 5 5 5 5 5 5\n" },
     { "stdin": "-1 -2 -3 -4 -5 -6 -7 -8 -9\n" },
-    { "stdin": "10 3 8 1 9 2 7 4 6\n" }
+    { "stdin": "10 3 8 1 9 2 7 4 6\n" },
+    { "stdin": "0 0 0\n0 0 0\n0 0 0\n", "generated": true },
+    { "stdin": "-4 -4 -4\n-4 -4 -4\n-4 -4 -4\n", "generated": true },
+    { "stdin": "9 8 7\n6 5 4\n3 2 1\n", "generated": true },
+    { "stdin": "1 1 1\n1 0 1\n1 1 1\n", "generated": true },
+    { "stdin": "1 1 1\n1 2 1\n1 1 1\n", "generated": true },
+    { "stdin": "-1 0 1\n-1 0 1\n-1 0 1\n", "generated": true },
+    { "stdin": "100 0 0\n0 0 0\n0 0 -100\n", "generated": true },
+    { "stdin": "-100 0 0\n0 0 0\n0 0 100\n", "generated": true },
+    { "stdin": "5 5 5\n5 5 5\n5 5 6\n", "generated": true },
+    { "stdin": "7 3 3\n3 3 3\n3 3 3\n", "generated": true },
+    { "stdin": "1000 -1000 999\n-999 0 1\n-1 500 -500\n", "generated": true },
+    { "stdin": "-7 -3 -9\n-1 -8 -2\n-6 -4 -5\n", "generated": true },
+    { "stdin": "-405 403 862\n400 642 739\n822 -620 335\n", "generated": true },
+    { "stdin": "35 -32 -22\n32 43 -27\n-34 -41 18\n", "generated": true },
+    { "stdin": "45 -13 -47\n5 -34 37\n27 -49 -15\n", "generated": true },
+    { "stdin": "-40 -17 7\n45 5 -33\n-18 -5 -21\n", "generated": true },
+    { "stdin": "9 7 6\n7 6 2\n6 5 8\n", "generated": true },
+    { "stdin": "6 36 43\n6 18 -28\n-13 -25 -28\n", "generated": true },
+    { "stdin": "-482 -240 -60\n-464 240 -427\n-190 821 -733\n", "generated": true },
+    { "stdin": "9 4 4\n4 6 3\n2 7 8\n", "generated": true },
+    { "stdin": "1 7 1\n4 3 8\n8 5 3\n", "generated": true },
+    { "stdin": "5 6 4\n6 9 3\n4 8 4\n", "generated": true },
+    { "stdin": "18 18 1\n11 18 18\n10 5 9\n", "generated": true },
+    { "stdin": "-29 50 37\n21 -36 -22\n-29 -42 4\n", "generated": true },
+    { "stdin": "14 10 20\n2 16 0\n4 9 3\n", "generated": true },
+    { "stdin": "5 5 2\n8 9 6\n1 1 6\n", "generated": true },
+    { "stdin": "-683 16 146\n986 91 58\n688 -29 -544\n", "generated": true },
+    { "stdin": "-13 -46 -2\n14 41 -30\n44 -32 -17\n", "generated": true },
+    { "stdin": "4 5 7\n4 6 4\n5 7 4\n", "generated": true },
+    { "stdin": "-129 -922 -351\n-186 -57 -823\n-860 552 -907\n", "generated": true },
+    { "stdin": "20 9 6\n14 15 17\n12 10 1\n", "generated": true },
+    { "stdin": "81 -110 948\n-720 -697 768\n-893 -771 -246\n", "generated": true },
+    { "stdin": "-23 -11 -12\n27 -1 -13\n-46 -6 -34\n", "generated": true },
+    { "stdin": "11 15 14\n18 18 13\n1 11 17\n", "generated": true },
+    { "stdin": "-736 981 645\n-900 -340 -659\n828 816 116\n", "generated": true },
+    { "stdin": "-50 -19 37\n-31 -39 11\n-3 -41 -6\n", "generated": true }
   ]
 }

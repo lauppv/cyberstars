@@ -1,14 +1,37 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "scanf" }, { "kind": "sizeof" }] },
   "cases": [
+    { "visible": true, "stdin": "10 20 30\n" },
+    { "visible": true, "stdin": "5 15 25\n" },
     { "visible": true, "stdin": "5 10 15\n" },
     { "visible": true, "stdin": "1 2 3\n" },
     { "stdin": "-4 0 9\n" },
-    { "stdin": "100 200 300\n" }
+    { "stdin": "100 200 300\n" },
+    { "stdin": "0 0 0\n", "generated": true },
+    { "stdin": "7 7 7\n", "generated": true },
+    { "stdin": "3 2 1\n", "generated": true },
+    { "stdin": "1 0 0\n", "generated": true },
+    { "stdin": "0 0 1\n", "generated": true },
+    { "stdin": "0 1 0\n", "generated": true },
+    { "stdin": "-1 -2 -3\n", "generated": true },
+    { "stdin": "-30 5 -30\n", "generated": true },
+    { "stdin": "9 8 9\n", "generated": true },
+    { "stdin": "123 456 789\n", "generated": true },
+    { "stdin": "1000 -1000 500\n", "generated": true },
+    { "stdin": "2 4 2\n", "generated": true },
+    { "stdin": "42 0 -42\n", "generated": true },
+    { "stdin": "99999 1 -99999\n", "generated": true },
+    { "stdin": "11\n22\n33\n", "generated": true },
+    { "stdin": "4\n5 6\n", "generated": true },
+    { "stdin": "713 4545 2434\n", "generated": true },
+    { "stdin": "890 4041 4914\n", "generated": true },
+    { "stdin": "4479 994 2648\n", "generated": true },
+    { "stdin": "1898 4558 3015\n", "generated": true },
+    { "stdin": "4138 4262 -146\n", "generated": true },
+    { "stdin": "3842 3948 4576\n", "generated": true },
+    { "stdin": "3756 1018 2589\n", "generated": true },
+    { "stdin": "3116 1358 3678\n", "generated": true },
+    { "stdin": "548 195 -67\n", "generated": true },
+    { "stdin": "1005 4491 4213\n", "generated": true }
   ]
 }

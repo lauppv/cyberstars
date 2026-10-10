@@ -1,16 +1,15 @@
 {
   "structure": {
     "requires": [
-      { "kind": "call", "name": "Afacere" },
-      { "kind": "function", "name": "adauga" },
-      { "kind": "function", "name": "getIncasari" },
+      { "kind": "function" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "vanzare1" },
       { "kind": "variable", "name": "vanzare2" },
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "vanzare3" },
       { "kind": "variable", "name": "vanzare4" },
-      { "kind": "call", "name": "println" }
+      { "kind": "class" },
+      { "kind": "object" }
     ]
   },
   "cases": [
@@ -54,6 +53,116 @@
         "vanzare3": 999,
         "vanzare4": 1
       }
+    },
+    {
+      "inject": {
+        "nume1": "Print Works",
+        "vanzare1": 500,
+        "vanzare2": 250,
+        "nume2": "Malibu Club",
+        "vanzare3": 200,
+        "vanzare4": 300
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "vanzare1": 1,
+        "vanzare2": 0,
+        "nume2": "B",
+        "vanzare3": 0,
+        "vanzare4": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Malibu Club",
+        "vanzare1": 0,
+        "vanzare2": 0,
+        "nume2": "Malibu Club",
+        "vanzare3": 0,
+        "vanzare4": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Pole Position",
+        "vanzare1": 7,
+        "vanzare2": 7,
+        "nume2": "Pole Position",
+        "vanzare3": 7,
+        "vanzare4": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Cherry Popper",
+        "vanzare1": 12345,
+        "vanzare2": 54321,
+        "nume2": "Sunshine Autos",
+        "vanzare3": 99999,
+        "vanzare4": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Kaufman Cabs",
+        "vanzare1": 300,
+        "vanzare2": 0,
+        "nume2": "Boatyard",
+        "vanzare3": 0,
+        "vanzare4": 300
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Vercetti Estate",
+        "vanzare1": 1000000,
+        "vanzare2": 2500000,
+        "nume2": "Film Studio",
+        "vanzare3": 750000,
+        "vanzare4": 250000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Cafe Robina",
+        "vanzare1": 13,
+        "vanzare2": 29,
+        "nume2": "Ice Cream Factory",
+        "vanzare3": 58,
+        "vanzare4": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Taxi Firm",
+        "vanzare1": 1,
+        "vanzare2": 1,
+        "nume2": "Car Showroom",
+        "vanzare3": 2,
+        "vanzare4": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "InterGlobal Films",
+        "vanzare1": 640,
+        "vanzare2": 360,
+        "nume2": "Phil's Depot",
+        "vanzare3": 85,
+        "vanzare4": 15
+      },
+      "generated": true
     }
   ]
 }

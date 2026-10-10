@@ -120,7 +120,7 @@ Donkey
 
 ## Misiune: Harta Stelară
 
-Calculatorul de navigație al stației stochează fiecare sistem stelar ca un **tuple** de `(nume, distanta, planete)`
+Calculatorul de navigație al stației stochează fiecare sistem stelar ca un **tuple** de `(nume, distanta, planete)`, toate într-o listă numită `sisteme`
 
 1. Parcurge lista și **despachetează** (unpack) fiecare tuple în trei variabile: `nume`, `distanta`, `planete`
 2. Afișează fiecare sistem ca `nume: distanta al, planete planete`, de exemplu `Sol: 0 al, 8 planete` (`al` = ani-lumină)

@@ -3,11 +3,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "cells" },
-      { "kind": "variable", "name": "total" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
-    ],
-    "forbids": [{ "kind": "int_literal", "values": [9] }]
+      { "kind": "loop", "type": "for" }
+    ]
   },
   "cases": [
     { "visible": true, "inject": { "cells": 6 } },
@@ -15,6 +12,49 @@
     { "inject": { "cells": 1 } },
     { "inject": { "cells": 2 } },
     { "inject": { "cells": 7 } },
-    { "inject": { "cells": 100 } }
+    { "inject": { "cells": 100 } },
+    { "inject": { "cells": 3 }, "generated": true },
+    { "inject": { "cells": 4 }, "generated": true },
+    { "inject": { "cells": 5 }, "generated": true },
+    { "inject": { "cells": 8 }, "generated": true },
+    { "inject": { "cells": 9 }, "generated": true },
+    { "inject": { "cells": 10 }, "generated": true },
+    { "inject": { "cells": 11 }, "generated": true },
+    { "inject": { "cells": 12 }, "generated": true },
+    { "inject": { "cells": 13 }, "generated": true },
+    { "inject": { "cells": 14 }, "generated": true },
+    { "inject": { "cells": 15 }, "generated": true },
+    { "inject": { "cells": 16 }, "generated": true },
+    { "inject": { "cells": 17 }, "generated": true },
+    { "inject": { "cells": 20 }, "generated": true },
+    { "inject": { "cells": 21 }, "generated": true },
+    { "inject": { "cells": 31 }, "generated": true },
+    { "inject": { "cells": 32 }, "generated": true },
+    { "inject": { "cells": 33 }, "generated": true },
+    { "inject": { "cells": 49 }, "generated": true },
+    { "inject": { "cells": 50 }, "generated": true },
+    { "inject": { "cells": 51 }, "generated": true },
+    { "inject": { "cells": 63 }, "generated": true },
+    { "inject": { "cells": 64 }, "generated": true },
+    { "inject": { "cells": 65 }, "generated": true },
+    { "inject": { "cells": 99 }, "generated": true },
+    { "inject": { "cells": 101 }, "generated": true },
+    { "inject": { "cells": 127 }, "generated": true },
+    { "inject": { "cells": 128 }, "generated": true },
+    { "inject": { "cells": 255 }, "generated": true },
+    { "inject": { "cells": 256 }, "generated": true },
+    { "inject": { "cells": 999 }, "generated": true },
+    { "inject": { "cells": 1000 }, "generated": true },
+    { "inject": { "cells": 1001 }, "generated": true },
+    { "inject": { "cells": 4095 }, "generated": true },
+    { "inject": { "cells": 4096 }, "generated": true },
+    { "inject": { "cells": 9999 }, "generated": true },
+    { "inject": { "cells": 10000 }, "generated": true },
+    { "inject": { "cells": 12345 }, "generated": true },
+    { "inject": { "cells": 65535 }, "generated": true },
+    { "inject": { "cells": 99999 }, "generated": true },
+    { "inject": { "cells": 22 }, "generated": true },
+    { "inject": { "cells": 23 }, "generated": true },
+    { "inject": { "cells": 40 }, "generated": true }
   ]
 }

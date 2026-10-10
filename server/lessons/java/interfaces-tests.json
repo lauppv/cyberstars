@@ -3,11 +3,14 @@
     "requires": [
       { "kind": "call", "name": "Book" },
       { "kind": "call", "name": "Movie" },
+      { "kind": "function", "name": "printInfo" },
+      { "kind": "call", "name": "printInfo" },
       { "kind": "variable", "name": "title1" },
       { "kind": "variable", "name": "author1" },
       { "kind": "variable", "name": "title2" },
       { "kind": "variable", "name": "director2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "interface" },
+      { "kind": "implements" }
     ]
   },
   "cases": [
@@ -43,6 +46,73 @@
         "title2": "The Driver",
         "director2": "Walter Hill"
       }
+    },
+    {
+      "inject": {
+        "title1": "Dune",
+        "author1": "Frank Herbert",
+        "title2": "Alien",
+        "director2": "Ridley Scott"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "title1": "It",
+        "author1": "Stephen King",
+        "title2": "Jaws",
+        "director2": "Steven Spielberg"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "title1": "A", "author1": "B", "title2": "C", "director2": "D" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "title1": "The Hobbit",
+        "author1": "J. R. R. Tolkien",
+        "title2": "Heat",
+        "director2": "Michael Mann"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "title1": "Neuromancer",
+        "author1": "William Gibson",
+        "title2": "Blade Runner",
+        "director2": "Ridley Scott"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "title1": "1984",
+        "author1": "George Orwell",
+        "title2": "Brazil",
+        "director2": "Terry Gilliam"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "title1": "Sea Breeze",
+        "author1": "Tommy Vercetti",
+        "title2": "Sea Breeze",
+        "director2": "Tommy Vercetti"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "title1": "Foundation",
+        "author1": "Isaac Asimov",
+        "title2": "Solaris",
+        "director2": "Andrei Tarkovsky"
+      },
+      "generated": true
     }
   ]
 }

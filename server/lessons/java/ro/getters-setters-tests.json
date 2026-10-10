@@ -9,7 +9,7 @@
       { "kind": "variable", "name": "depunere" },
       { "kind": "variable", "name": "retragere1" },
       { "kind": "variable", "name": "retragere2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "modifier", "name": "private" }
     ]
   },
   "cases": [
@@ -19,6 +19,70 @@
     },
     { "inject": { "start": 300, "depunere": 0, "retragere1": 100, "retragere2": 500 } },
     { "inject": { "start": 500, "depunere": 500, "retragere1": 1000, "retragere2": 300 } },
-    { "inject": { "start": 2000, "depunere": 1000, "retragere1": 1500, "retragere2": 400 } }
+    { "inject": { "start": 2000, "depunere": 1000, "retragere1": 1500, "retragere2": 400 } },
+    {
+      "inject": { "start": 0, "depunere": 0, "retragere1": 0, "retragere2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 0, "depunere": 10, "retragere1": 10, "retragere2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "depunere": -500, "retragere1": 200, "retragere2": 2000 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "depunere": 500, "retragere1": -200, "retragere2": 300 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "depunere": 500, "retragere1": 1500, "retragere2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1000, "depunere": 500, "retragere1": 1501, "retragere2": 10 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "depunere": 0, "retragere1": 100, "retragere2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 50, "depunere": 25, "retragere1": 40, "retragere2": 35 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 50, "depunere": 25, "retragere1": 40, "retragere2": 36 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 0, "depunere": 0, "retragere1": 5, "retragere2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 7, "depunere": -1, "retragere1": -1, "retragere2": -1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 999, "depunere": 1, "retragere1": 1000, "retragere2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 300, "depunere": 200, "retragere1": 100, "retragere2": 400 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 300, "depunere": 200, "retragere1": 100, "retragere2": 401 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 1, "depunere": 1, "retragere1": 1, "retragere2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 20, "depunere": 30, "retragere1": 10, "retragere2": 15 },
+      "generated": true
+    }
   ]
 }

@@ -4,7 +4,7 @@ This is a **recap**. It puts to work the things you've learned recently: **retur
 
 ## Mission: Mission Control Report
 
-You have a dictionary of crew members and their scores from the last mission.
+You have a dictionary named scores with the crew members and their scores from the last mission.
 
 Write a function `analyze(scores)` that takes this dictionary and **returns a new dictionary** with three keys:
 

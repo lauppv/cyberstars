@@ -3,23 +3,68 @@
     "requires": [
       { "kind": "variable", "name": "hero1" },
       { "kind": "variable", "name": "hero2" },
-      { "kind": "variable", "name": "hero3" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "hero3" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "hero1": "Lance Vance", "hero2": "Diaz", "hero3": "Mercedes" }
-    },
-    {
-      "inject": { "hero1": "Tommy Vercetti", "hero2": "Ken Rosenberg", "hero3": "Kent Paul" }
-    },
+    { "visible": true, "inject": { "hero1": "Lance Vance", "hero2": "Diaz", "hero3": "Mercedes" } },
+    { "inject": { "hero1": "Tommy Vercetti", "hero2": "Ken Rosenberg", "hero3": "Kent Paul" } },
     {
       "inject": { "hero1": "Sonny Forelli", "hero2": "Avery Carrington", "hero3": "Phil Cassidy" }
     },
+    { "inject": { "hero1": "Cortez", "hero2": "Candy Suxxx", "hero3": "Umberto Robina" } },
     {
-      "inject": { "hero1": "Cortez", "hero2": "Candy Suxxx", "hero3": "Umberto Robina" }
+      "inject": { "hero1": "Mercedes", "hero2": "Lance Vance", "hero3": "Diaz" },
+      "generated": true
+    },
+    { "inject": { "hero1": "Diaz", "hero2": "Diaz", "hero3": "Diaz" }, "generated": true },
+    { "inject": { "hero1": "A", "hero2": "B", "hero3": "C" }, "generated": true },
+    {
+      "inject": { "hero1": "Victor Vance", "hero2": "Lance Vance", "hero3": "Phil Cassidy" },
+      "generated": true
+    },
+    {
+      "inject": { "hero1": "Ricardo Diaz", "hero2": "Alberto Robina", "hero3": "Maude Hanson" },
+      "generated": true
+    },
+    {
+      "inject": { "hero1": "Earnest Kelly", "hero2": "Leo Teal", "hero3": "Mitch Baker" },
+      "generated": true
+    },
+    {
+      "inject": { "hero1": "Hilary King", "hero2": "Cam Jones", "hero3": "Kent Paul" },
+      "generated": true
+    },
+    {
+      "inject": { "hero1": "Love Fist", "hero2": "Steve Scott", "hero3": "Juan Garcia Cortez" },
+      "generated": true
+    },
+    { "inject": { "hero1": "Tommy", "hero2": "Lance", "hero3": "Ken" }, "generated": true },
+    {
+      "inject": {
+        "hero1": "Colonel Cortez",
+        "hero2": "Mercedes Cortez",
+        "hero3": "Tommy Vercetti"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "hero1": "Big Mitch Baker", "hero2": "Pastor Richards", "hero3": "Gonzalez" },
+      "generated": true
+    },
+    {
+      "inject": { "hero1": "Lance Vance Dance", "hero2": "Ken R", "hero3": "Kent P" },
+      "generated": true
+    },
+    { "inject": { "hero1": "Ana Maria", "hero2": "Jo", "hero3": "Bo Bo" }, "generated": true },
+    {
+      "inject": { "hero1": "Sonny", "hero2": "Forelli", "hero3": "Sonny Forelli" },
+      "generated": true
+    },
+    { "inject": { "hero1": "Candy", "hero2": "Umberto", "hero3": "Avery" }, "generated": true },
+    {
+      "inject": { "hero1": "Lance  Vance", "hero2": "Mr Diaz", "hero3": "Mercedes Jr" },
+      "generated": true
     }
   ]
 }

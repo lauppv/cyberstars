@@ -2,9 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "combustibili" },
+      { "kind": "variable", "name": "tinta" },
       { "kind": "function", "name": "pereche_cu_suma" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -12,13 +13,9 @@
       "visible": true,
       "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "tinta": 10 }
     },
-    {
-      "visible": true,
-      "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5] }, "tinta": 6 }
-    },
+    { "visible": true, "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5] }, "tinta": 6 } },
     { "inject": { "combustibili": { "$list": [1, 5] }, "tinta": 6 } },
     { "inject": { "combustibili": { "$list": [2, 4, 6, 8] }, "tinta": 7 } },
-    { "inject": { "combustibili": { "$list": [1, 1, 2, 3, 3] }, "tinta": 4 } },
     { "inject": { "combustibili": { "$list": [1, 2] }, "tinta": 3 }, "generated": true },
     { "inject": { "combustibili": { "$list": [1, 2] }, "tinta": 4 }, "generated": true },
     { "inject": { "combustibili": { "$list": [3, 5, 7] }, "tinta": 10 }, "generated": true },
@@ -115,6 +112,77 @@
     },
     {
       "inject": { "combustibili": { "$list": [2, 4, 16, 26, 30, 32, 40, 45] }, "tinta": 8 },
+      "generated": true
+    },
+    { "inject": { "combustibili": { "$list": [5] }, "tinta": 10 }, "generated": true },
+    { "inject": { "combustibili": { "$list": [0, 10] }, "tinta": 10 }, "generated": true },
+    { "inject": { "combustibili": { "$list": [0, 1, 2, 3] }, "tinta": 3 }, "generated": true },
+    { "inject": { "combustibili": { "$list": [1, 9] }, "tinta": 11 }, "generated": true },
+    { "inject": { "combustibili": { "$list": [4, 6] }, "tinta": 10 }, "generated": true },
+    {
+      "inject": {
+        "combustibili": {
+          "$list": [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 30
+          ]
+        },
+        "tinta": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "tinta": 18 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "tinta": 17 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "tinta": 2 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [11, 18, 41, 43, 51, 54, 58] }, "tinta": 72 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [4, 8, 11, 34, 41, 46] }, "tinta": 19 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [0, 17, 38, 43, 53] }, "tinta": 103 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "combustibili": { "$list": [8, 14, 16, 22, 27, 28, 31, 35, 36, 47, 48, 50, 52, 55, 59] },
+        "tinta": 81
+      },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [7, 16, 22, 38, 40, 41, 51, 52] }, "tinta": 92 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [11, 28, 34, 43, 46] }, "tinta": 62 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [8, 16, 17, 23, 25, 29, 38, 59] }, "tinta": 84 },
+      "generated": true
+    },
+    {
+      "inject": { "combustibili": { "$list": [4, 8, 12, 23, 44, 56] }, "tinta": 79 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "combustibili": { "$list": [2, 9, 10, 14, 16, 26, 27, 28, 31, 40, 44, 46, 51, 55] },
+        "tinta": 102
+      },
       "generated": true
     }
   ]

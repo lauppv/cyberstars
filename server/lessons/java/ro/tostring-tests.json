@@ -2,6 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "call", "name": "Masina" },
+      { "kind": "function", "name": "toString" },
       { "kind": "variable", "name": "marca1" },
       { "kind": "variable", "name": "an1" },
       { "kind": "variable", "name": "marca2" },
@@ -16,6 +17,75 @@
     },
     { "inject": { "marca1": "Banshee", "an1": 1990, "marca2": "Stinger", "an2": 1987 } },
     { "inject": { "marca1": "Sabre", "an1": 1979, "marca2": "Comet", "an2": 1992 } },
-    { "inject": { "marca1": "Deluxo", "an1": 1985, "marca2": "Sentinel", "an2": 1994 } }
+    { "inject": { "marca1": "Deluxo", "an1": 1985, "marca2": "Sentinel", "an2": 1994 } },
+    {
+      "inject": { "marca1": "Cheetah", "an1": 1984, "marca2": "Infernus", "an2": 1986 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Admiral", "an1": 1980, "marca2": "Admiral", "an2": 1980 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Voodoo", "an1": 1965, "marca2": "Stallion", "an2": 1970 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "PCJ 600", "an1": 1988, "marca2": "Freeway", "an2": 1983 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "marca1": "Hotring Racer",
+        "an1": 1986,
+        "marca2": "Bloodring Banger",
+        "an2": 1985
+      },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Phoenix", "an1": 1977, "marca2": "Esperanto", "an2": 1975 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Patriot", "an1": 2001, "marca2": "Mesa", "an2": 1999 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Idaho", "an1": 1960, "marca2": "Glendale", "an2": 1955 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Washington", "an1": 1993, "marca2": "Hermes", "an2": 1950 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "BF Injection", "an1": 1971, "marca2": "Sandking", "an2": 1982 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Caddy", "an1": 1900, "marca2": "Faggio", "an2": 2024 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Z", "an1": 1, "marca2": "Cuban Hermes", "an2": 1959 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Rhino", "an1": 1945, "marca2": "Barracks OL", "an2": 1944 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Sanchez", "an1": 1997, "marca2": "Angel", "an2": 1998 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Love Fist", "an1": 1986, "marca2": "Stretch", "an2": 1986 },
+      "generated": true
+    },
+    {
+      "inject": { "marca1": "Pony", "an1": 1981, "marca2": "Moonbeam", "an2": 1974 },
+      "generated": true
+    }
   ]
 }

@@ -5,8 +5,7 @@
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "scor1" },
       { "kind": "variable", "name": "nume2" },
-      { "kind": "variable", "name": "scor2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "scor2" }
     ]
   },
   "cases": [
@@ -16,6 +15,40 @@
     },
     { "inject": { "nume1": "Diaz", "scor1": 800, "nume2": "Cortez", "scor2": 650 } },
     { "inject": { "nume1": "Ken", "scor1": 0, "nume2": "Sonny", "scor2": 999 } },
-    { "inject": { "nume1": "Mercedes", "scor1": 42, "nume2": "Kent", "scor2": 7 } }
+    { "inject": { "nume1": "Mercedes", "scor1": 42, "nume2": "Kent", "scor2": 7 } },
+    {
+      "inject": { "nume1": "Lance Vance", "scor1": 300, "nume2": "Tommy Vercetti", "scor2": 500 },
+      "generated": true
+    },
+    { "inject": { "nume1": "A", "scor1": 1, "nume2": "B", "scor2": 0 }, "generated": true },
+    {
+      "inject": { "nume1": "Phil Cassidy", "scor1": 0, "nume2": "Phil Cassidy", "scor2": 0 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Umberto Robina",
+        "scor1": 123456,
+        "nume2": "Avery Carrington",
+        "scor2": 654321
+      },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Cortez", "scor1": 650, "nume2": "Diaz", "scor2": 800 },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Candy Suxxx", "scor1": 69, "nume2": "Mr. Black", "scor2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Big Mitch Baker", "scor1": 777, "nume2": "Love Fist", "scor2": 777 },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Hilary King", "scor1": 10, "nume2": "Steve Scott", "scor2": 100 },
+      "generated": true
+    }
   ]
 }

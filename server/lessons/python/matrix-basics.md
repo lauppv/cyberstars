@@ -116,7 +116,7 @@ Output **Number of walls: 4**
 
 ## Mission: Sensor Grid
 
-The station's hull sensors report their readings as a **4×4 grid** (a list of lists, already on the right). Mission Control wants a quick summary of the grid.
+The station's hull sensors report their readings as a **4×4 grid** (a list of lists named grid, already on the right). Mission Control wants a quick summary of the grid.
 
 Using **nested loops**, print:
 

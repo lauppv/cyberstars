@@ -2,6 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "call", "name": "Car" },
+      { "kind": "function", "name": "toString" },
       { "kind": "variable", "name": "make1" },
       { "kind": "variable", "name": "year1" },
       { "kind": "variable", "name": "make2" },
@@ -16,6 +17,75 @@
     },
     { "inject": { "make1": "Banshee", "year1": 1990, "make2": "Stinger", "year2": 1987 } },
     { "inject": { "make1": "Sabre", "year1": 1979, "make2": "Comet", "year2": 1992 } },
-    { "inject": { "make1": "Deluxo", "year1": 1985, "make2": "Sentinel", "year2": 1994 } }
+    { "inject": { "make1": "Deluxo", "year1": 1985, "make2": "Sentinel", "year2": 1994 } },
+    {
+      "inject": { "make1": "Cheetah", "year1": 1984, "make2": "Infernus", "year2": 1986 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Admiral", "year1": 1980, "make2": "Admiral", "year2": 1980 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Voodoo", "year1": 1965, "make2": "Stallion", "year2": 1970 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "PCJ 600", "year1": 1988, "make2": "Freeway", "year2": 1983 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "make1": "Hotring Racer",
+        "year1": 1986,
+        "make2": "Bloodring Banger",
+        "year2": 1985
+      },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Phoenix", "year1": 1977, "make2": "Esperanto", "year2": 1975 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Patriot", "year1": 2001, "make2": "Mesa", "year2": 1999 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Idaho", "year1": 1960, "make2": "Glendale", "year2": 1955 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Washington", "year1": 1993, "make2": "Hermes", "year2": 1950 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "BF Injection", "year1": 1971, "make2": "Sandking", "year2": 1982 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Caddy", "year1": 1900, "make2": "Faggio", "year2": 2024 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Z", "year1": 1, "make2": "Cuban Hermes", "year2": 1959 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Rhino", "year1": 1945, "make2": "Barracks OL", "year2": 1944 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Sanchez", "year1": 1997, "make2": "Angel", "year2": 1998 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Love Fist", "year1": 1986, "make2": "Stretch", "year2": 1986 },
+      "generated": true
+    },
+    {
+      "inject": { "make1": "Pony", "year1": 1981, "make2": "Moonbeam", "year2": 1974 },
+      "generated": true
+    }
   ]
 }

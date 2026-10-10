@@ -1,15 +1,35 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "temperatura" },
-      { "kind": "call", "name": "printf" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "temperatura" }, { "kind": "if" }] },
   "cases": [
     { "visible": true, "inject": { "temperatura": -5 } },
     { "inject": { "temperatura": 0 } },
     { "inject": { "temperatura": -1 } },
     { "inject": { "temperatura": 25 } },
-    { "inject": { "temperatura": -100 } }
+    { "inject": { "temperatura": -100 } },
+    { "inject": { "temperatura": 1 }, "generated": true },
+    { "inject": { "temperatura": -2 }, "generated": true },
+    { "inject": { "temperatura": 2 }, "generated": true },
+    { "inject": { "temperatura": -3 }, "generated": true },
+    { "inject": { "temperatura": 5 }, "generated": true },
+    { "inject": { "temperatura": -10 }, "generated": true },
+    { "inject": { "temperatura": 10 }, "generated": true },
+    { "inject": { "temperatura": -15 }, "generated": true },
+    { "inject": { "temperatura": 15 }, "generated": true },
+    { "inject": { "temperatura": -20 }, "generated": true },
+    { "inject": { "temperatura": 20 }, "generated": true },
+    { "inject": { "temperatura": -30 }, "generated": true },
+    { "inject": { "temperatura": 30 }, "generated": true },
+    { "inject": { "temperatura": -40 }, "generated": true },
+    { "inject": { "temperatura": 40 }, "generated": true },
+    { "inject": { "temperatura": -50 }, "generated": true },
+    { "inject": { "temperatura": -273 }, "generated": true },
+    { "inject": { "temperatura": 100 }, "generated": true },
+    { "inject": { "temperatura": 99 }, "generated": true },
+    { "inject": { "temperatura": -99 }, "generated": true },
+    { "inject": { "temperatura": 7 }, "generated": true },
+    { "inject": { "temperatura": -7 }, "generated": true },
+    { "inject": { "temperatura": 12 }, "generated": true },
+    { "inject": { "temperatura": -12 }, "generated": true },
+    { "inject": { "temperatura": 37 }, "generated": true }
   ]
 }

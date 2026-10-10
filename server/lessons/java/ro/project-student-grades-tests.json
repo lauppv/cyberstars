@@ -4,6 +4,9 @@
       { "kind": "call", "name": "Student" },
       { "kind": "function", "name": "adaugaNota" },
       { "kind": "function", "name": "getMedia" },
+      { "kind": "function", "name": "afiseazaRaport" },
+      { "kind": "call", "name": "adaugaNota" },
+      { "kind": "call", "name": "afiseazaRaport" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "mate1" },
       { "kind": "variable", "name": "engleza1" },
@@ -11,8 +14,7 @@
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "mate2" },
       { "kind": "variable", "name": "engleza2" },
-      { "kind": "variable", "name": "stiinte2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "stiinte2" }
     ]
   },
   "cases": [
@@ -64,6 +66,136 @@
         "engleza2": 64,
         "stiinte2": 65
       }
+    },
+    {
+      "inject": {
+        "nume1": "Vic",
+        "mate1": 100,
+        "engleza1": 100,
+        "stiinte1": 100,
+        "nume2": "Ricardo",
+        "mate2": 0,
+        "engleza2": 0,
+        "stiinte2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "mate1": 1,
+        "engleza1": 2,
+        "stiinte1": 2,
+        "nume2": "B",
+        "mate2": 2,
+        "engleza2": 2,
+        "stiinte2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Ken",
+        "mate1": 50,
+        "engleza1": 50,
+        "stiinte1": 51,
+        "nume2": "Rosie",
+        "mate2": 99,
+        "engleza2": 100,
+        "stiinte2": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Candy",
+        "mate1": 33,
+        "engleza1": 33,
+        "stiinte1": 34,
+        "nume2": "Kent",
+        "mate2": 66,
+        "engleza2": 67,
+        "stiinte2": 67
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Umberto",
+        "mate1": 0,
+        "engleza1": 100,
+        "stiinte1": 50,
+        "nume2": "Avery",
+        "mate2": 100,
+        "engleza2": 0,
+        "stiinte2": 49
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Hilary",
+        "mate1": 88,
+        "engleza1": 77,
+        "stiinte1": 66,
+        "nume2": "Earnest",
+        "mate2": 55,
+        "engleza2": 44,
+        "stiinte2": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Mitch",
+        "mate1": 10,
+        "engleza1": 20,
+        "stiinte1": 30,
+        "nume2": "Pastor",
+        "mate2": 95,
+        "engleza2": 96,
+        "stiinte2": 94
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Victor Vance",
+        "mate1": 73,
+        "engleza1": 81,
+        "stiinte1": 79,
+        "nume2": "Lance Vance",
+        "mate2": 68,
+        "engleza2": 74,
+        "stiinte2": 90
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Tommy",
+        "mate1": 90,
+        "engleza1": 85,
+        "stiinte1": 92,
+        "nume2": "Tommy",
+        "mate2": 90,
+        "engleza2": 85,
+        "stiinte2": 92
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Mercedes",
+        "mate1": 1,
+        "engleza1": 0,
+        "stiinte1": 0,
+        "nume2": "Diaz",
+        "mate2": 0,
+        "engleza2": 0,
+        "stiinte2": 1
+      },
+      "generated": true
     }
   ]
 }

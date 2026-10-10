@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import type { LessonTestsSpec } from '../shared/tests.js';
-import { collectProblems, auditSolution, auditCases, MAX_CASES } from './validate-tests.js';
+import {
+  collectProblems,
+  auditSolution,
+  auditCases,
+  auditKinds,
+  MAX_CASES,
+} from './validate-tests.js';
 
 // The corpus regression: if anyone edits a -tests.json / -solution.md so an
 // inject key no longer resolves, or drops a RO tests file for an injection
@@ -20,6 +26,15 @@ describe('auditSolution', () => {
     const spec: LessonTestsSpec = {
       structure: { requires: [{ kind: 'variable', name: 'age' }] },
       cases: [{ inject: { age: 10 } }],
+    };
+    expect(await auditSolution('python', code, spec)).toEqual([]);
+  });
+
+  it('finds a required call that a Python solution makes only inside an f-string', async () => {
+    const code = 'log = ["a"]\nprint(f"{len(log)}")\nn = sorted(log)\nprint(f"{n}")';
+    const spec: LessonTestsSpec = {
+      structure: { requires: [{ kind: 'call', name: 'sorted' }] },
+      cases: [],
     };
     expect(await auditSolution('python', code, spec)).toEqual([]);
   });
@@ -139,5 +154,24 @@ describe('auditCases', () => {
     expect(auditCases('python', { cases: [stdinCase({ load: true, visible: true })] })).toEqual([
       expect.stringMatching(/marked visible/),
     ]);
+  });
+});
+
+describe('auditKinds', () => {
+  it('flags a kind the language does not implement, and a loop type it lacks', () => {
+    const spec: LessonTestsSpec = {
+      structure: {
+        requires: [{ kind: 'try' }, { kind: 'loop', type: 'comprehension' }, { kind: 'operator' }],
+      },
+      cases: [],
+    };
+    expect(auditKinds('c', spec)).toEqual([
+      'structure kind "try" is not implemented for c',
+      'loop type "comprehension" does not exist in c',
+      'a operator rule needs a name',
+    ]);
+    expect(auditKinds('python', { ...spec, structure: { requires: [{ kind: 'try' }] } })).toEqual(
+      [],
+    );
   });
 });

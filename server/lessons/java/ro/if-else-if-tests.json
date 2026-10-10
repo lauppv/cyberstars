@@ -1,16 +1,11 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "secunde" },
-      { "kind": "call", "name": "println" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "secunde" }, { "kind": "if" }] },
   "cases": [
     { "visible": true, "inject": { "secunde": 100 } },
-    { "inject": { "secunde": 60 } },
+    { "visible": true, "inject": { "secunde": 60 } },
     { "inject": { "secunde": 20 } },
     { "inject": { "secunde": 10 } },
-    { "inject": { "secunde": 200 } },
+    { "visible": true, "inject": { "secunde": 200 } },
     { "inject": { "secunde": 0 } },
     { "inject": { "secunde": 99 }, "generated": true },
     { "inject": { "secunde": 101 }, "generated": true },

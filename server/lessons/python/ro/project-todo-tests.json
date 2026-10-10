@@ -5,16 +5,118 @@
       { "kind": "function", "name": "adauga_sarcina" },
       { "kind": "function", "name": "finalizeaza_sarcina" },
       { "kind": "function", "name": "numara_finalizate" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "input" }
     ]
   },
   "cases": [
     { "visible": true, "stdin": "3\nScan sector\nCharge shields\nPlot course\n0 2" },
     { "visible": true, "stdin": "1\nRun diagnostics\n0" },
-    { "stdin": "2\nAlpha\nBravo\n9" },
-    { "stdin": "2\nAlpha\nBravo\n0 5" },
-    { "stdin": "3\nOne\nTwo\nThree\n0 1 2" }
+    { "stdin": "3\nOne\nTwo\nThree\n0 1 2" },
+    { "stdin": "1\nSleep\n0\n", "generated": true },
+    { "stdin": "2\nA\nB\n1\n", "generated": true },
+    { "stdin": "2\nA\nB\n1 0\n", "generated": true },
+    { "stdin": "3\nFix airlock\nLog data\nTest comms\n2\n", "generated": true },
+    { "stdin": "3\nFix airlock\nLog data\nTest comms\n1 1\n", "generated": true },
+    { "stdin": "3\nx\nx\nx\n0 1 2\n", "generated": true },
+    { "stdin": "4\nTask one\nTask two\nTask three\nTask four\n3 0\n", "generated": true },
+    {
+      "stdin": "8\nSleep\nPolish lenses\nRepair hull\nClean filters\nTest comms\nCheck oxygen\nRun diagnostics\nPlot course\n2 0 3 7 1 6 4 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nChart course\nScan sector\nPlot course\nRepair hull\nPolish lenses\nRun diagnostics\nWater plants\nCheck oxygen\n7\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nPolish lenses\nFeed the crew\nFix airlock\nCalibrate radar\nRefuel reactor\nUpdate map\n5\n",
+      "generated": true
+    },
+    { "stdin": "2\nPolish lenses\nClean filters\n0 1\n", "generated": true },
+    {
+      "stdin": "6\nFix airlock\nRepair hull\nCheck oxygen\nScan sector\nCharge shields\nUpdate map\n3\n",
+      "generated": true
+    },
+    { "stdin": "2\nCheck oxygen\nWater plants\n0\n", "generated": true },
+    { "stdin": "1\nFeed the crew\n0\n", "generated": true },
+    {
+      "stdin": "8\nWater plants\nSleep\nTest comms\nCharge shields\nCheck oxygen\nCalibrate radar\nRun diagnostics\nRepair hull\n5 0 2 7 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nRun diagnostics\nRefuel reactor\nFix airlock\nLog data\nCharge shields\nScan sector\nWater plants\n6 3 1 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nRepair hull\nFeed the crew\nRefuel reactor\nSleep\nCalibrate radar\nPolish lenses\nCharge shields\nWater plants\n3 0 2 4 5 6 7\n",
+      "generated": true
+    },
+    { "stdin": "3\nWater plants\nRun diagnostics\nCharge shields\n0\n", "generated": true },
+    {
+      "stdin": "8\nClean filters\nScan sector\nCalibrate radar\nTest comms\nRefuel reactor\nFeed the crew\nCharge shields\nLog data\n3 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nScan sector\nLog data\nRepair hull\nCheck oxygen\n1 2 3 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nChart course\nRefuel reactor\nCheck oxygen\nPolish lenses\nRun diagnostics\nUpdate map\nTest comms\n1 6 4 5 2 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nPlot course\nTest comms\nCharge shields\nUpdate map\nPolish lenses\nScan sector\nClean filters\nRefuel reactor\n6 2 3 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nCheck oxygen\nRepair hull\nChart course\nPolish lenses\nLog data\nCharge shields\nPlot course\nRun diagnostics\n1 2 7 5 0 3 4 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nFix airlock\nCharge shields\nRepair hull\nPlot course\nRefuel reactor\nChart course\nClean filters\nCheck oxygen\n1 2 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nCalibrate radar\nRepair hull\nRefuel reactor\nCheck oxygen\nScan sector\nTest comms\nFix airlock\nChart course\n0 7 4 6 3\n",
+      "generated": true
+    },
+    { "stdin": "2\nCheck oxygen\nCalibrate radar\n0\n", "generated": true },
+    { "stdin": "2\nPolish lenses\nLog data\n0\n", "generated": true },
+    {
+      "stdin": "6\nLog data\nPlot course\nUpdate map\nPolish lenses\nCharge shields\nFeed the crew\n3\n",
+      "generated": true
+    },
+    { "stdin": "1\nWater plants\n0\n", "generated": true },
+    { "stdin": "2\nPlot course\nSleep\n1\n", "generated": true },
+    {
+      "stdin": "7\nCalibrate radar\nWater plants\nPolish lenses\nFix airlock\nUpdate map\nClean filters\nCharge shields\n6 4 0 2 3\n",
+      "generated": true
+    },
+    { "stdin": "2\nUpdate map\nScan sector\n0\n", "generated": true },
+    {
+      "stdin": "8\nUpdate map\nClean filters\nScan sector\nChart course\nRefuel reactor\nPlot course\nCalibrate radar\nCheck oxygen\n2 6 7 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nFix airlock\nCalibrate radar\nWater plants\nRepair hull\nRefuel reactor\nRun diagnostics\nPolish lenses\nFeed the crew\n3 7 1 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nFeed the crew\nRefuel reactor\nRepair hull\nFix airlock\nChart course\nScan sector\n0 2 1 5 3 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nFeed the crew\nTest comms\nWater plants\nCalibrate radar\nClean filters\n2 3 1 0\n",
+      "generated": true
+    },
+    { "stdin": "1\nClean filters\n0\n", "generated": true },
+    {
+      "stdin": "6\nCheck oxygen\nScan sector\nRefuel reactor\nFeed the crew\nFix airlock\nRun diagnostics\n2\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nRefuel reactor\nCharge shields\nRun diagnostics\nFix airlock\n2\n",
+      "generated": true
+    },
+    { "stdin": "2\nFeed the crew\nSleep\n1 0\n", "generated": true }
   ]
 }

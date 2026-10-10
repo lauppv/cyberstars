@@ -2,9 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "numar_secret" },
+      { "kind": "variable", "name": "ghiciri" },
       { "kind": "function", "name": "verifica_ghicirea" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -12,12 +13,172 @@
       "visible": true,
       "inject": { "numar_secret": 42, "ghiciri": { "$list": [50, 30, 40, 45, 42] } }
     },
-    {
-      "visible": true,
-      "inject": { "numar_secret": 10, "ghiciri": { "$list": [5, 15, 10] } }
-    },
+    { "visible": true, "inject": { "numar_secret": 10, "ghiciri": { "$list": [5, 15, 10] } } },
     { "inject": { "numar_secret": 7, "ghiciri": { "$list": [7] } } },
-    { "inject": { "numar_secret": 100, "ghiciri": { "$list": [1, 2, 3] } } },
-    { "inject": { "numar_secret": 5, "ghiciri": { "$list": [10, 5, 1] } } }
+    { "inject": { "numar_secret": 5, "ghiciri": { "$list": [10, 5, 1] } } },
+    { "inject": { "numar_secret": 1, "ghiciri": { "$list": [1] } }, "generated": true },
+    { "inject": { "numar_secret": 100, "ghiciri": { "$list": [100] } }, "generated": true },
+    { "inject": { "numar_secret": 50, "ghiciri": { "$list": [49, 51, 50] } }, "generated": true },
+    { "inject": { "numar_secret": 50, "ghiciri": { "$list": [51, 49, 50] } }, "generated": true },
+    { "inject": { "numar_secret": 1, "ghiciri": { "$list": [2, 1] } }, "generated": true },
+    { "inject": { "numar_secret": 99, "ghiciri": { "$list": [98, 100, 99] } }, "generated": true },
+    { "inject": { "numar_secret": 42, "ghiciri": { "$list": [42, 42, 42] } }, "generated": true },
+    { "inject": { "numar_secret": 42, "ghiciri": { "$list": [42, 10, 90] } }, "generated": true },
+    {
+      "inject": { "numar_secret": 30, "ghiciri": { "$list": [10, 20, 25, 28, 29, 30] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 30, "ghiciri": { "$list": [90, 60, 40, 35, 31, 30] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 64, "ghiciri": { "$list": [50, 75, 62, 68, 65, 63, 64] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 7, "ghiciri": { "$list": [8, 6, 8, 6, 7, 8] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 12, "ghiciri": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 12] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 60, "ghiciri": { "$list": [35, 53, 65, 64, 54, 60] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 78, "ghiciri": { "$list": [50, 75, 88, 81, 78] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar_secret": 79,
+        "ghiciri": { "$list": [94, 49, 60, 89, 84, 74, 77, 79, 17] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 65, "ghiciri": { "$list": [76, 9, 59, 63, 68, 65] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 93, "ghiciri": { "$list": [12, 47, 61, 87, 92, 98, 93, 53] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 8, "ghiciri": { "$list": [63, 9, 1, 3, 7, 8] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 1, "ghiciri": { "$list": [50, 25, 12, 6, 3, 1] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 26, "ghiciri": { "$list": [50, 25, 37, 31, 28, 26] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 18, "ghiciri": { "$list": [3, 68, 14, 51, 46, 32, 21, 18, 82] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 98, "ghiciri": { "$list": [50, 75, 88, 94, 97, 99, 98] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 23, "ghiciri": { "$list": [93, 6, 13, 48, 23] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar_secret": 95,
+        "ghiciri": { "$list": [5, 21, 73, 81, 87, 97, 96, 88, 94, 95] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar_secret": 67,
+        "ghiciri": { "$list": [100, 89, 12, 57, 61, 80, 73, 69, 63, 67, 96, 3, 49] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 28, "ghiciri": { "$list": [50, 25, 37, 31, 28, 40] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 81, "ghiciri": { "$list": [50, 75, 88, 81] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 8, "ghiciri": { "$list": [50, 25, 12, 6, 9, 7, 8] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 55, "ghiciri": { "$list": [50, 75, 62, 56, 53, 54, 55] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar_secret": 32,
+        "ghiciri": { "$list": [9, 64, 51, 24, 28, 41, 37, 34, 33, 31, 32] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 22, "ghiciri": { "$list": [34, 2, 4, 30, 10, 19, 22] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 78, "ghiciri": { "$list": [50, 75, 88, 81, 78, 27, 50] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 38, "ghiciri": { "$list": [46, 19, 24, 40, 33, 36, 37, 38] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 38, "ghiciri": { "$list": [9, 63, 38, 98, 50, 76] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 22, "ghiciri": { "$list": [36, 32, 12, 16, 31, 17, 22] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 23, "ghiciri": { "$list": [11, 32, 19, 20, 24, 21, 23] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 72, "ghiciri": { "$list": [11, 34, 96, 72] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 69, "ghiciri": { "$list": [50, 75, 62, 68, 71, 69] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 75, "ghiciri": { "$list": [56, 91, 76, 73, 74, 75, 93] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 18, "ghiciri": { "$list": [50, 25, 12, 18] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 59, "ghiciri": { "$list": [50, 75, 62, 56, 59] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 94, "ghiciri": { "$list": [50, 75, 88, 94] } },
+      "generated": true
+    },
+    {
+      "inject": { "numar_secret": 48, "ghiciri": { "$list": [50, 25, 37, 43, 46, 48] } },
+      "generated": true
+    }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "printf" }]
+    "requires": [{ "kind": "loop" }, { "kind": "if" }, { "kind": "operator", "name": "%" }]
   },
   "cases": [{ "visible": true }]
 }

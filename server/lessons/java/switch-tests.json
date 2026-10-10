@@ -1,15 +1,25 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "day" },
-      { "kind": "call", "name": "println" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "switch" }, { "kind": "variable", "name": "day" }] },
   "cases": [
     { "visible": true, "inject": { "day": "Monday" } },
     { "inject": { "day": "Friday" } },
     { "inject": { "day": "Saturday" } },
     { "inject": { "day": "Sunday" } },
-    { "inject": { "day": "Christmas" } }
+    { "inject": { "day": "Christmas" } },
+    { "inject": { "day": "Tuesday" }, "generated": true },
+    { "inject": { "day": "Wednesday" }, "generated": true },
+    { "inject": { "day": "Thursday" }, "generated": true },
+    { "inject": { "day": "Holiday" }, "generated": true },
+    { "inject": { "day": "Mon" }, "generated": true },
+    { "inject": { "day": "Mondays" }, "generated": true },
+    { "inject": { "day": "Sun" }, "generated": true },
+    { "inject": { "day": "Someday" }, "generated": true },
+    { "inject": { "day": "Weekend" }, "generated": true },
+    { "inject": { "day": "Weekday" }, "generated": true },
+    { "inject": { "day": "Funday" }, "generated": true },
+    { "inject": { "day": "" }, "generated": true },
+    { "inject": { "day": "Friday13" }, "generated": true },
+    { "inject": { "day": "Week" }, "generated": true },
+    { "inject": { "day": "Saturday" }, "generated": true }
   ]
 }

@@ -4,7 +4,7 @@
     "requires": [
       { "kind": "variable", "name": "oxygen" },
       { "kind": "variable", "name": "crew_aboard" },
-      { "kind": "call", "name": "print" }
+      { "kind": "if" }
     ]
   },
   "cases": [
@@ -14,6 +14,34 @@
     { "inject": { "oxygen": 20, "crew_aboard": false } },
     { "inject": { "oxygen": 19, "crew_aboard": true } },
     { "inject": { "oxygen": 12, "crew_aboard": false } },
-    { "inject": { "oxygen": 100, "crew_aboard": false } }
+    { "inject": { "oxygen": 100, "crew_aboard": false } },
+    { "inject": { "oxygen": 0, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 0, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 1, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 1, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 19, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 20, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 21, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 21, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 49, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 49, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 50, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 51, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 51, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 79, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 79, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 80, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 81, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 81, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 99, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 99, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 100, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 10, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 10, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 35, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 35, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 65, "crew_aboard": false }, "generated": true },
+    { "inject": { "oxygen": 90, "crew_aboard": true }, "generated": true },
+    { "inject": { "oxygen": 90, "crew_aboard": false }, "generated": true }
   ]
 }

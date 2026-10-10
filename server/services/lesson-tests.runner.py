@@ -51,17 +51,60 @@ def has_variable(tree, name):
     return False
 
 
-def has_function(tree, name):
+def function_defs(tree):
+    return [n for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]
+
+
+# Without a name, a function of the student's own: main and constructors don't
+# count, as in the C and Java runners.
+NOT_OWN_FUNCTIONS = {"main", "__init__"}
+
+
+def has_function(tree, name=None):
+    if name is None:
+        return any(node.name not in NOT_OWN_FUNCTIONS for node in function_defs(tree))
+    return any(node.name == name for node in function_defs(tree))
+
+
+def called_function(call):
+    # The name of the student's own function a call reaches: f(...), or a
+    # method through self./cls. (s.count(...) is the str method, not a
+    # function named count).
+    func = call.func
+    if isinstance(func, ast.Name):
+        return func.id
+    if (
+        isinstance(func, ast.Attribute)
+        and isinstance(func.value, ast.Name)
+        and func.value.id in ("self", "cls")
+    ):
+        return func.attr
+    return None
+
+
+def calls_itself(fn):
     return any(
-        isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name
-        for node in ast.walk(tree)
+        isinstance(node, ast.Call) and called_function(node) == fn.name for node in ast.walk(fn)
     )
 
 
-def has_loop(tree):
-    return any(
-        isinstance(node, (ast.For, ast.While, ast.comprehension)) for node in ast.walk(tree)
-    )
+def has_recursion(tree):
+    return any(calls_itself(fn) for fn in function_defs(tree))
+
+
+# A typed rule asks for that statement itself: a comprehension is no for
+# statement, and Python has no do-while.
+LOOP_NODES = {
+    "for": (ast.For, ast.AsyncFor),
+    "while": (ast.While,),
+    "do_while": (),
+    "comprehension": (ast.comprehension,),
+}
+
+
+def has_loop(tree, loop_type=None):
+    nodes = LOOP_NODES.get(loop_type, ()) if loop_type else (ast.For, ast.While, ast.comprehension)
+    return any(isinstance(node, nodes) for node in ast.walk(tree))
 
 
 def has_fstring(tree):
@@ -102,6 +145,80 @@ def has_string_expr(tree):
     return False
 
 
+LOOP_STATEMENTS = (ast.For, ast.AsyncFor, ast.While)
+
+# Spec spelling of each operator: the symbol for the ones that have one,
+# the keyword for and / or / not / in / is.
+OPERATORS = {
+    ast.And: "and", ast.Or: "or", ast.Not: "not", ast.Add: "+", ast.Sub: "-",
+    ast.Mult: "*", ast.Div: "/", ast.FloorDiv: "//", ast.Mod: "%", ast.Pow: "**",
+    ast.BitAnd: "&", ast.BitOr: "|", ast.BitXor: "^", ast.Invert: "~",
+    ast.LShift: "<<", ast.RShift: ">>", ast.Eq: "==", ast.NotEq: "!=", ast.Lt: "<",
+    ast.LtE: "<=", ast.Gt: ">", ast.GtE: ">=", ast.In: "in", ast.NotIn: "not in",
+    ast.Is: "is", ast.IsNot: "is not",
+}
+
+
+def operators_used(tree):
+    found = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.BoolOp):
+            found.add(OPERATORS[type(node.op)])
+        elif isinstance(node, (ast.BinOp, ast.UnaryOp, ast.AugAssign)):
+            found.add(OPERATORS.get(type(node.op)))
+        elif isinstance(node, ast.Compare):
+            found.update(OPERATORS[type(op)] for op in node.ops)
+    return found
+
+
+def has_nested_loop(tree):
+    for outer in ast.walk(tree):
+        if isinstance(outer, LOOP_STATEMENTS):
+            body = outer.body + outer.orelse
+            if any(isinstance(n, LOOP_STATEMENTS) for stmt in body for n in ast.walk(stmt)):
+                return True
+    return False
+
+
+def class_names(tree):
+    return {n.name for n in ast.walk(tree) if isinstance(n, ast.ClassDef)}
+
+
+def has_object(tree):
+    # A class of the student's own, instantiated: Dog(...) where class Dog exists.
+    own = class_names(tree)
+    return any(
+        isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id in own
+        for n in ast.walk(tree)
+    )
+
+
+def has_return_value(tree):
+    return any(
+        isinstance(n, ast.Return) and n.value is not None
+        for fn in function_defs(tree)
+        for n in ast.walk(fn)
+    )
+
+
+def has_default_param(tree):
+    return any(
+        fn.args.defaults or any(d is not None for d in fn.args.kw_defaults)
+        for fn in function_defs(tree)
+    )
+
+
+TRY_NODES = tuple(t for t in (ast.Try, getattr(ast, "TryStar", None)) if t)
+STATEMENT_KINDS = {
+    "if": (ast.If,),
+    "switch": (getattr(ast, "Match", ()),),
+    "break": (ast.Break,),
+    "continue": (ast.Continue,),
+    "try": TRY_NODES,
+    "slice": (ast.Slice,),
+}
+
+
 def rule_holds(tree, source, rule):
     kind = rule.get("kind")
     if kind == "call":
@@ -109,9 +226,11 @@ def rule_holds(tree, source, rule):
     if kind == "variable":
         return has_variable(tree, rule["name"])
     if kind == "function":
-        return has_function(tree, rule["name"])
+        return has_function(tree, rule.get("name"))
     if kind == "loop":
-        return has_loop(tree)
+        return has_loop(tree, rule.get("type"))
+    if kind == "recursion":
+        return has_recursion(tree)
     if kind == "fstring":
         return has_fstring(tree)
     if kind == "int_literal":
@@ -120,16 +239,63 @@ def rule_holds(tree, source, rule):
         return has_comment(source, rule.get("contains"))
     if kind == "string_expr":
         return has_string_expr(tree)
+    if kind in STATEMENT_KINDS:
+        nodes = tuple(t for t in STATEMENT_KINDS[kind] if isinstance(t, type))
+        return any(isinstance(n, nodes) for n in ast.walk(tree))
+    if kind == "nested_loop":
+        return has_nested_loop(tree)
+    if kind == "operator":
+        return rule.get("name") in operators_used(tree)
+    if kind == "class":
+        names = class_names(tree)
+        return rule["name"] in names if rule.get("name") else bool(names)
+    if kind == "object":
+        return has_object(tree)
+    if kind == "return":
+        return has_return_value(tree)
+    if kind == "default_param":
+        return has_default_param(tree)
     return True
+
+
+def reachable_functions(tree, name):
+    # The functions named `name` plus every function of the student's own they
+    # call, directly or through other helpers.
+    defs = {}
+    for fn in function_defs(tree):
+        defs.setdefault(fn.name, []).append(fn)
+    seen, todo, found = set(), [name], []
+    while todo:
+        current = todo.pop()
+        if current in seen or current not in defs:
+            continue
+        seen.add(current)
+        for fn in defs[current]:
+            found.append(fn)
+            todo.extend(
+                called_function(node) for node in ast.walk(fn) if isinstance(node, ast.Call)
+            )
+    return found
+
+
+def scoped_holds(tree, source, rule):
+    # A rule with "in" looks only inside that function and the helpers it
+    # calls (forbid [::-1] in reverse_text, also when it hands the slice to a
+    # helper, while the rest of the program may slice). No such function: a
+    # require fails and a forbid has nothing to fire on.
+    scope = rule.get("in")
+    if not scope:
+        return rule_holds(tree, source, rule)
+    return any(rule_holds(fn, source, rule) for fn in reachable_functions(tree, scope))
 
 
 def check_structure(tree, source, structure):
     failures = []
     for rule in structure.get("requires", []):
-        if not rule_holds(tree, source, rule):
+        if not scoped_holds(tree, source, rule):
             failures.append({"type": "require", "rule": rule})
     for rule in structure.get("forbids", []):
-        if rule_holds(tree, source, rule):
+        if scoped_holds(tree, source, rule):
             failures.append({"type": "forbid", "rule": rule})
     return failures
 
@@ -151,6 +317,29 @@ def to_ast_value(v):
     return ast.Constant(v)
 
 
+def scoped_assigns(node, params=frozenset(), top_level=True):
+    # Yields (single-name Assign, parameters of its enclosing functions, whether
+    # it sits outside every function and class).
+    for child in ast.iter_child_nodes(node):
+        if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+            a = child.args
+            names = {arg.arg for arg in a.posonlyargs + a.args + a.kwonlyargs}
+            names |= {arg.arg for arg in (a.vararg, a.kwarg) if arg}
+            yield from scoped_assigns(child, params | names, False)
+            continue
+        if isinstance(child, ast.ClassDef):
+            # A class attribute named like the input isn't the input.
+            yield from scoped_assigns(child, params, False)
+            continue
+        if (
+            isinstance(child, ast.Assign)
+            and len(child.targets) == 1
+            and isinstance(child.targets[0], ast.Name)
+        ):
+            yield child, params, top_level
+        yield from scoped_assigns(child, params, top_level)
+
+
 def inject_values(code, values):
     # Replace successive assignments of each input variable with the test
     # values: a scalar targets the first assignment, a list feeds one value per
@@ -163,6 +352,10 @@ def inject_values(code, values):
     # `if __name__ == "__main__":` block still gets its input variables injected.
     # The structure check (`has_variable`) already looks tree-wide; injection has
     # to match, or an honestly-scoped solution would diverge from the oracle.
+    # Two exceptions keep a helper's locals out of it: an assignment to one of
+    # its enclosing functions' parameters is never the input, and once the
+    # variable is assigned outside every function and class, only those
+    # assignments count.
     if not values:
         return code
     tree = ast.parse(code)
@@ -171,11 +364,13 @@ def inject_values(code, values):
     }
     consumed = set()
     assigns = [
-        node
-        for node in ast.walk(tree)
-        if isinstance(node, ast.Assign)
-        and len(node.targets) == 1
-        and isinstance(node.targets[0], ast.Name)
+        (node, top_level)
+        for node, params, top_level in scoped_assigns(tree)
+        if node.targets[0].id not in params
+    ]
+    at_top = {node.targets[0].id for node, top_level in assigns if top_level}
+    assigns = [
+        node for node, top_level in assigns if top_level or node.targets[0].id not in at_top
     ]
     assigns.sort(key=lambda n: (getattr(n, "lineno", 0), getattr(n, "col_offset", 0)))
     for node in assigns:

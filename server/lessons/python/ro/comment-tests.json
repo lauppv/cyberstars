@@ -2,8 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "nume_racheta" },
+      { "kind": "variable", "name": "misiune" },
+      { "kind": "variable", "name": "putere_maxima" },
       { "kind": "variable", "name": "viteza_vant" },
-      { "kind": "call", "name": "print" },
       { "kind": "comment", "contains": "print(viteza_vant)" }
     ],
     "forbids": [{ "kind": "string_expr" }]
@@ -33,6 +35,159 @@
         "putere_maxima": 123456,
         "viteza_vant": 99.9
       }
+    },
+    {
+      "inject": {
+        "nume_racheta": "Juno",
+        "misiune": "CERES-4",
+        "putere_maxima": 0,
+        "viteza_vant": 0.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Juno",
+        "misiune": "LUNA-9",
+        "putere_maxima": 2,
+        "viteza_vant": 1.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Saturn-V",
+        "misiune": "DEIMOS-8",
+        "putere_maxima": 10,
+        "viteza_vant": 12.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Starship",
+        "misiune": "PHOBOS-2",
+        "putere_maxima": 999,
+        "viteza_vant": 200.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Nova-Prime",
+        "misiune": "SOL-500",
+        "putere_maxima": 1000,
+        "viteza_vant": 3.3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Kestrel",
+        "misiune": "TITAN-3",
+        "putere_maxima": 50000,
+        "viteza_vant": 77.7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Hermes",
+        "misiune": "EUROPA-12",
+        "putere_maxima": 999999,
+        "viteza_vant": 0.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Starship",
+        "misiune": "ORBIT-0",
+        "putere_maxima": 1234567,
+        "viteza_vant": 15.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Saturn-V",
+        "misiune": "EUROPA-12",
+        "putere_maxima": 42,
+        "viteza_vant": 60.1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Electron",
+        "misiune": "ORBIT-0",
+        "putere_maxima": 7,
+        "viteza_vant": 9.99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Juno",
+        "misiune": "MARS-1",
+        "putere_maxima": 300,
+        "viteza_vant": 120.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Vostok-1",
+        "misiune": "LUNA-9",
+        "putere_maxima": 88000,
+        "viteza_vant": 33.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Hermes",
+        "misiune": "ORBIT-0",
+        "putere_maxima": 640,
+        "viteza_vant": 4.2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Nova-Prime",
+        "misiune": "MARS-1",
+        "putere_maxima": 31415,
+        "viteza_vant": 18.8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Titan-II",
+        "misiune": "GANYMEDE-1",
+        "putere_maxima": 100000,
+        "viteza_vant": 250.75
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Hermes",
+        "misiune": "PHOBOS-2",
+        "putere_maxima": 271828,
+        "viteza_vant": 0.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume_racheta": "Kestrel",
+        "misiune": "MARS-1",
+        "putere_maxima": 5,
+        "viteza_vant": 5.5
+      },
+      "generated": true
     }
   ]
 }

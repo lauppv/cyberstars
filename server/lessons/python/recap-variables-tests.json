@@ -1,7 +1,14 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "name" },
+      { "kind": "variable", "name": "level" },
+      { "kind": "variable", "name": "health" },
+      { "kind": "variable", "name": "guild" },
+      { "kind": "fstring" },
+      { "kind": "call", "name": "print" }
+    ]
   },
   "cases": [
     {
@@ -10,6 +17,140 @@
     },
     { "inject": { "name": "Vercetti", "level": 1, "health": 0.5, "guild": "Vice" } },
     { "inject": { "name": "Nova", "level": 100, "health": 99.9, "guild": "Laniakea" } },
-    { "inject": { "name": "guild", "level": 0, "health": 12.75, "guild": "name" } }
+    { "inject": { "name": "guild", "level": 0, "health": 12.75, "guild": "name" } },
+    {
+      "inject": { "name": "Ace", "level": 0, "health": 100.0, "guild": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Blaze", "level": 2, "health": 3.14, "guild": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Kira", "level": 10, "health": 0.1, "guild": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Z", "level": 100, "health": 10.5, "guild": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Neo", "level": 15, "health": 0.0, "guild": "Night Owls" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Luna Star", "level": 50, "health": 99.99, "guild": "X" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Raven", "level": 250, "health": 88.8, "guild": "Void" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Echo", "level": 1000, "health": 25.75, "guild": "Iron Wolves" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Bit", "level": 1, "health": 1.5, "guild": "Red Dawn" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Pixel", "level": 9, "health": 75.5, "guild": "Star Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Orion", "level": 99, "health": 42.42, "guild": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Mira", "level": 7, "health": 99.5, "guild": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Jax", "level": 33, "health": 50.25, "guild": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Sol", "level": 64, "health": 12.0, "guild": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Vex", "level": 999, "health": 66.6, "guild": "Night Owls" },
+      "generated": true
+    },
+    { "inject": { "name": "Ace", "level": 33, "health": 3.14, "guild": "X" }, "generated": true },
+    {
+      "inject": { "name": "Blaze", "level": 64, "health": 99.99, "guild": "Void" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Kira", "level": 250, "health": 66.6, "guild": "Iron Wolves" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Z", "level": 999, "health": 66.6, "guild": "Red Dawn" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Neo", "level": 50, "health": 99.5, "guild": "Star Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Luna Star", "level": 15, "health": 100.0, "guild": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Raven", "level": 999, "health": 12.0, "guild": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Echo", "level": 250, "health": 50.25, "guild": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Bit", "level": 50, "health": 100.0, "guild": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Pixel", "level": 1000, "health": 1.5, "guild": "Night Owls" },
+      "generated": true
+    },
+    { "inject": { "name": "Orion", "level": 1, "health": 99.99, "guild": "X" }, "generated": true },
+    {
+      "inject": { "name": "Mira", "level": 7, "health": 25.75, "guild": "Void" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Jax", "level": 9, "health": 75.5, "guild": "Iron Wolves" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Sol", "level": 15, "health": 0.0, "guild": "Red Dawn" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Vex", "level": 33, "health": 50.25, "guild": "Star Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Ace", "level": 0, "health": 66.6, "guild": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Blaze", "level": 9, "health": 75.5, "guild": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Kira", "level": 10, "health": 1.5, "guild": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Z", "level": 1000, "health": 25.75, "guild": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Neo", "level": 250, "health": 75.5, "guild": "Night Owls" },
+      "generated": true
+    }
   ]
 }

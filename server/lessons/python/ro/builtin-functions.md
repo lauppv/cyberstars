@@ -170,7 +170,7 @@ Ai două liste: `echipaj` (nume) și `scoruri`. Folosind **funcțiile încorpora
 2. Afișează `Sortate: ` apoi scorurile sortate de la **cel mai mare la cel mai mic** (`sorted(..., reverse=True)`)
 3. Afișează `Total: ` apoi **suma** tuturor scorurilor
 4. Afișează `Medie: ` apoi media, **rotunjită** la 1 zecimală (`round(..., 1)`)
-5. Afișează `Toți au trecut: ` apoi dacă **toate** scorurile sunt 50 sau mai mult (`all(...)`)
+5. Afișează `Toti au trecut: ` apoi dacă **toate** scorurile sunt 50 sau mai mult (`all(...)`)
 6. Afișează `Vreunul perfect: ` apoi dacă **vreun** scor este egal cu 100 (`any(...)`)
 
 **Ieșire**

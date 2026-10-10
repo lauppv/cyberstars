@@ -1,18 +1,20 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "team_a" },
+      { "kind": "variable", "name": "team_b" },
+      { "kind": "loop" },
+      { "kind": "nested_loop" },
+      { "kind": "loop", "type": "comprehension" }
+    ]
   },
   "cases": [
     {
       "visible": true,
       "inject": {
-        "team_a": {
-          "$list": [{ "$list": ["Ann", 90] }, { "$list": ["Bob", 70] }]
-        },
-        "team_b": {
-          "$list": [{ "$list": ["Cara", 70] }, { "$list": ["Ann", 55] }]
-        }
+        "team_a": { "$list": [{ "$list": ["Ann", 90] }, { "$list": ["Bob", 70] }] },
+        "team_b": { "$list": [{ "$list": ["Cara", 70] }, { "$list": ["Ann", 55] }] }
       }
     },
     {
@@ -44,12 +46,8 @@
     },
     {
       "inject": {
-        "team_a": {
-          "$list": [{ "$list": ["P", 81] }, { "$list": ["Q", 40] }]
-        },
-        "team_b": {
-          "$list": [{ "$list": ["R", 30] }, { "$list": ["S", 99] }]
-        }
+        "team_a": { "$list": [{ "$list": ["P", 81] }, { "$list": ["Q", 40] }] },
+        "team_b": { "$list": [{ "$list": ["R", 30] }, { "$list": ["S", 99] }] }
       }
     },
     {
@@ -61,6 +59,606 @@
           "$list": [{ "$list": ["B", 60] }, { "$list": ["D", 60] }, { "$list": ["C", 30] }]
         }
       }
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 80] }] },
+        "team_b": { "$list": [{ "$list": ["Ann", 80] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 81] }] },
+        "team_b": { "$list": [{ "$list": ["Bob", 80] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Ann", 79] }, { "$list": ["Bob", 80] }, { "$list": ["Cara", 81] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["Dan", 79] }, { "$list": ["Eve", 80] }, { "$list": ["Finn", 81] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 50] }, { "$list": ["Bob", 50] }] },
+        "team_b": { "$list": [{ "$list": ["Cara", 50] }, { "$list": ["Dan", 50] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Ann", 90] }, { "$list": ["Bob", 95] }, { "$list": ["Cara", 100] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["Cara", 10] }, { "$list": ["Bob", 20] }, { "$list": ["Ann", 30] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Gus", 0] }, { "$list": ["Hana", 100] }] },
+        "team_b": { "$list": [{ "$list": ["Ivo", 100] }, { "$list": ["Jade", 0] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Eve", 70] }] },
+        "team_b": {
+          "$list": [{ "$list": ["Finn", 71] }, { "$list": ["Gus", 69] }, { "$list": ["Eve", 70] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Bob", 98] }, { "$list": ["Mira", 84] }] },
+        "team_b": { "$list": [{ "$list": ["Finn", 98] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Cara", 79] }, { "$list": ["Quinn", 68] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Quinn", 79] },
+            { "$list": ["Gus", 56] },
+            { "$list": ["Cara", 80] },
+            { "$list": ["Eve", 80] },
+            { "$list": ["Hana", 56] },
+            { "$list": ["Jade", 79] },
+            { "$list": ["Cortez", 79] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Finn", 98] },
+            { "$list": ["Cortez", 56] },
+            { "$list": ["Hana", 62] },
+            { "$list": ["Lance", 62] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Jade", 88] },
+            { "$list": ["Finn", 65] },
+            { "$list": ["Hana", 98] },
+            { "$list": ["Bob", 62] },
+            { "$list": ["Cara", 62] },
+            { "$list": ["Phil", 81] },
+            { "$list": ["Mira", 62] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Hana", 100] },
+            { "$list": ["Ann", 77] },
+            { "$list": ["Dan", 77] },
+            { "$list": ["Lance", 77] },
+            { "$list": ["Mira", 91] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Bob", 56] },
+            { "$list": ["Ivo", 82] },
+            { "$list": ["Phil", 78] },
+            { "$list": ["Lance", 91] },
+            { "$list": ["Eve", 100] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Phil", 92] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Ann", 92] },
+            { "$list": ["Lance", 87] },
+            { "$list": ["Tommy", 87] },
+            { "$list": ["Jade", 92] },
+            { "$list": ["Mira", 87] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Cara", 70] },
+            { "$list": ["Cortez", 70] },
+            { "$list": ["Phil", 86] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Hana", 79] },
+            { "$list": ["Phil", 70] },
+            { "$list": ["Dan", 67] },
+            { "$list": ["Eve", 78] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Hana", 100] }, { "$list": ["Bob", 71] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Gus", 71] },
+            { "$list": ["Quinn", 58] },
+            { "$list": ["Lance", 71] },
+            { "$list": ["Mira", 58] },
+            { "$list": ["Finn", 79] },
+            { "$list": ["Cortez", 58] },
+            { "$list": ["Phil", 78] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Mira", 96] }, { "$list": ["Tommy", 98] }, { "$list": ["Eve", 75] }]
+        },
+        "team_b": { "$list": [{ "$list": ["Phil", 75] }, { "$list": ["Mira", 58] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Lance", 63] }] },
+        "team_b": { "$list": [{ "$list": ["Hana", 98] }, { "$list": ["Eve", 55] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Ivo", 55] }, { "$list": ["Gus", 96] }, { "$list": ["Hana", 96] }]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Bob", 90] },
+            { "$list": ["Finn", 90] },
+            { "$list": ["Cara", 90] },
+            { "$list": ["Tommy", 55] },
+            { "$list": ["Mira", 55] },
+            { "$list": ["Lance", 55] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Tommy", 100] },
+            { "$list": ["Mira", 85] },
+            { "$list": ["Cortez", 67] },
+            { "$list": ["Ivo", 56] },
+            { "$list": ["Dan", 56] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Gus", 56] },
+            { "$list": ["Tommy", 79] },
+            { "$list": ["Phil", 67] },
+            { "$list": ["Dan", 56] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ivo", 93] }] },
+        "team_b": { "$list": [{ "$list": ["Hana", 93] }, { "$list": ["Eve", 98] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Cortez", 68] }] },
+        "team_b": { "$list": [{ "$list": ["Finn", 93] }, { "$list": ["Ivo", 93] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Dan", 56] },
+            { "$list": ["Tommy", 88] },
+            { "$list": ["Cortez", 74] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Jade", 88] },
+            { "$list": ["Eve", 88] },
+            { "$list": ["Bob", 74] },
+            { "$list": ["Hana", 74] },
+            { "$list": ["Mira", 58] },
+            { "$list": ["Finn", 58] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 92] }] },
+        "team_b": { "$list": [{ "$list": ["Cara", 74] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Finn", 87] }, { "$list": ["Phil", 74] }, { "$list": ["Hana", 67] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["Phil", 67] }, { "$list": ["Hana", 62] }, { "$list": ["Cara", 67] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Gus", 67] }, { "$list": ["Jade", 63] }] },
+        "team_b": { "$list": [{ "$list": ["Gus", 89] }, { "$list": ["Lance", 92] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Cortez", 90] }] },
+        "team_b": { "$list": [{ "$list": ["Hana", 85] }, { "$list": ["Cara", 61] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Finn", 82] },
+            { "$list": ["Lance", 58] },
+            { "$list": ["Cara", 66] },
+            { "$list": ["Quinn", 82] },
+            { "$list": ["Mira", 59] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Cortez", 82] },
+            { "$list": ["Finn", 66] },
+            { "$list": ["Quinn", 82] },
+            { "$list": ["Bob", 59] },
+            { "$list": ["Dan", 59] },
+            { "$list": ["Ivo", 82] },
+            { "$list": ["Gus", 66] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Bob", 58] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Gus", 68] },
+            { "$list": ["Mira", 68] },
+            { "$list": ["Phil", 58] },
+            { "$list": ["Cortez", 68] },
+            { "$list": ["Eve", 71] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Dan", 70] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Tommy", 84] },
+            { "$list": ["Mira", 84] },
+            { "$list": ["Cara", 84] },
+            { "$list": ["Phil", 58] },
+            { "$list": ["Finn", 70] },
+            { "$list": ["Quinn", 64] },
+            { "$list": ["Cortez", 64] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Dan", 67] },
+            { "$list": ["Ivo", 67] },
+            { "$list": ["Lance", 71] },
+            { "$list": ["Bob", 67] },
+            { "$list": ["Eve", 67] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Ann", 59] },
+            { "$list": ["Tommy", 67] },
+            { "$list": ["Gus", 83] },
+            { "$list": ["Quinn", 70] },
+            { "$list": ["Phil", 71] },
+            { "$list": ["Dan", 59] },
+            { "$list": ["Cortez", 65] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 100] }, { "$list": ["Gus", 85] }] },
+        "team_b": { "$list": [{ "$list": ["Eve", 91] }, { "$list": ["Gus", 85] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Phil", 56] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Bob", 81] },
+            { "$list": ["Hana", 56] },
+            { "$list": ["Finn", 96] },
+            { "$list": ["Eve", 56] },
+            { "$list": ["Ivo", 63] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 75] }] },
+        "team_b": { "$list": [{ "$list": ["Mira", 56] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Tommy", 93] }, { "$list": ["Gus", 91] }] },
+        "team_b": { "$list": [{ "$list": ["Phil", 93] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Jade", 61] }] },
+        "team_b": { "$list": [{ "$list": ["Tommy", 93] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Phil", 75] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Mira", 66] },
+            { "$list": ["Quinn", 66] },
+            { "$list": ["Tommy", 97] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Ann", 98] }, { "$list": ["Cara", 86] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Cortez", 86] },
+            { "$list": ["Gus", 76] },
+            { "$list": ["Dan", 79] },
+            { "$list": ["Bob", 66] },
+            { "$list": ["Phil", 79] },
+            { "$list": ["Mira", 76] },
+            { "$list": ["Eve", 86] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Tommy", 65] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Jade", 88] },
+            { "$list": ["Quinn", 88] },
+            { "$list": ["Ivo", 76] },
+            { "$list": ["Cara", 88] },
+            { "$list": ["Finn", 65] },
+            { "$list": ["Phil", 76] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Gus", 74] }, { "$list": ["Phil", 93] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Lance", 95] },
+            { "$list": ["Cortez", 74] },
+            { "$list": ["Cara", 93] },
+            { "$list": ["Ann", 95] },
+            { "$list": ["Eve", 59] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Lance", 79] },
+            { "$list": ["Ivo", 79] },
+            { "$list": ["Finn", 79] },
+            { "$list": ["Dan", 62] }
+          ]
+        },
+        "team_b": { "$list": [{ "$list": ["Eve", 62] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Dan", 71] }, { "$list": ["Hana", 99] }, { "$list": ["Ivo", 63] }]
+        },
+        "team_b": {
+          "$list": [{ "$list": ["Phil", 63] }, { "$list": ["Ivo", 99] }, { "$list": ["Lance", 99] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Tommy", 72] }, { "$list": ["Mira", 94] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Eve", 88] },
+            { "$list": ["Ann", 72] },
+            { "$list": ["Ivo", 65] },
+            { "$list": ["Quinn", 65] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Gus", 91] }] },
+        "team_b": {
+          "$list": [
+            { "$list": ["Mira", 91] },
+            { "$list": ["Ann", 91] },
+            { "$list": ["Hana", 80] },
+            { "$list": ["Quinn", 80] },
+            { "$list": ["Lance", 56] },
+            { "$list": ["Eve", 91] },
+            { "$list": ["Cara", 80] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [
+            { "$list": ["Hana", 64] },
+            { "$list": ["Finn", 91] },
+            { "$list": ["Ann", 92] },
+            { "$list": ["Mira", 62] },
+            { "$list": ["Gus", 91] },
+            { "$list": ["Bob", 64] }
+          ]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Bob", 91] },
+            { "$list": ["Gus", 62] },
+            { "$list": ["Finn", 91] },
+            { "$list": ["Jade", 65] },
+            { "$list": ["Cortez", 92] },
+            { "$list": ["Ivo", 62] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": { "$list": [{ "$list": ["Tommy", 93] }, { "$list": ["Dan", 65] }] },
+        "team_b": {
+          "$list": [{ "$list": ["Gus", 65] }, { "$list": ["Tommy", 93] }, { "$list": ["Finn", 93] }]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "team_a": {
+          "$list": [{ "$list": ["Cara", 57] }, { "$list": ["Ivo", 91] }, { "$list": ["Jade", 57] }]
+        },
+        "team_b": {
+          "$list": [
+            { "$list": ["Gus", 73] },
+            { "$list": ["Phil", 91] },
+            { "$list": ["Ann", 57] },
+            { "$list": ["Mira", 73] },
+            { "$list": ["Finn", 73] },
+            { "$list": ["Dan", 80] }
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }

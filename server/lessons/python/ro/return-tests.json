@@ -2,9 +2,13 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "galaxie1" },
+      { "kind": "variable", "name": "galaxie2" },
+      { "kind": "variable", "name": "galaxie3" },
+      { "kind": "variable", "name": "galaxie4" },
+      { "kind": "variable", "name": "galaxie5" },
       { "kind": "function", "name": "cea_mai_lunga_stea" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "return" }
     ]
   },
   "cases": [
@@ -35,6 +39,1309 @@
         "galaxie4": { "$list": ["polaris", "mizar"] },
         "galaxie5": { "$list": ["sirius", "deneb", "spica"] }
       }
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["achernar", "pollux", "dubhe"] },
+        "galaxie2": { "$list": ["altair"] },
+        "galaxie3": {
+          "$list": [
+            "rasalhague",
+            "antares",
+            "procyon",
+            "menkar",
+            "sirius",
+            "altair",
+            "spica",
+            "merak",
+            "deneb",
+            "alcor",
+            "naos",
+            "io"
+          ]
+        },
+        "galaxie4": { "$list": ["vindemiatrix", "deneb"] },
+        "galaxie5": { "$list": ["betelgeuse", "antares", "proxima", "castor", "zosma"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "io",
+            "zosma",
+            "nunki",
+            "dubhe",
+            "mizar",
+            "shaula",
+            "castor",
+            "sirius",
+            "antares",
+            "vindemiatrix"
+          ]
+        },
+        "galaxie2": { "$list": ["alcor", "pollux", "rasalhague"] },
+        "galaxie3": { "$list": ["zosma"] },
+        "galaxie4": { "$list": ["algol", "capella", "vindemiatrix"] },
+        "galaxie5": { "$list": ["io"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "proxima",
+            "arcturus",
+            "merak",
+            "spica",
+            "vindemiatrix",
+            "altair",
+            "zosma",
+            "antares",
+            "procyon",
+            "hamal"
+          ]
+        },
+        "galaxie2": {
+          "$list": [
+            "rasalhague",
+            "naos",
+            "fomalhaut",
+            "sadr",
+            "io",
+            "canopus",
+            "merak",
+            "wezen",
+            "bellatrix",
+            "capella"
+          ]
+        },
+        "galaxie3": {
+          "$list": [
+            "bellatrix",
+            "deneb",
+            "zosma",
+            "wezen",
+            "diphda",
+            "hamal",
+            "regulus",
+            "kaus",
+            "tania",
+            "altair"
+          ]
+        },
+        "galaxie4": { "$list": ["menkar"] },
+        "galaxie5": { "$list": ["mira", "regulus", "pollux", "hamal", "alcor"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["canopus"] },
+        "galaxie2": { "$list": ["vindemiatrix"] },
+        "galaxie3": {
+          "$list": [
+            "fomalhaut",
+            "regulus",
+            "atria",
+            "sol",
+            "hamal",
+            "io",
+            "sadr",
+            "altair",
+            "deneb",
+            "saiph"
+          ]
+        },
+        "galaxie4": {
+          "$list": [
+            "zosma",
+            "algol",
+            "kaus",
+            "tania",
+            "phecda",
+            "atria",
+            "vega",
+            "sadr",
+            "proxima",
+            "mira"
+          ]
+        },
+        "galaxie5": {
+          "$list": [
+            "betelgeuse",
+            "hamal",
+            "antares",
+            "procyon",
+            "tania",
+            "mizar",
+            "bellatrix",
+            "dubhe",
+            "sol",
+            "shaula"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["mira"] },
+        "galaxie2": { "$list": ["dubhe", "vindemiatrix", "saiph", "mizar", "naos"] },
+        "galaxie3": {
+          "$list": [
+            "vindemiatrix",
+            "saiph",
+            "alcor",
+            "atria",
+            "phecda",
+            "castor",
+            "pollux",
+            "deneb",
+            "capella",
+            "polaris",
+            "proxima",
+            "nunki"
+          ]
+        },
+        "galaxie4": { "$list": ["hamal"] },
+        "galaxie5": {
+          "$list": [
+            "io",
+            "capella",
+            "alnitak",
+            "tania",
+            "rigel",
+            "pollux",
+            "alcor",
+            "rasalhague",
+            "merak",
+            "zosma",
+            "fomalhaut",
+            "mizar"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "vindemiatrix",
+            "achernar",
+            "polaris",
+            "antares",
+            "menkar",
+            "shaula",
+            "dubhe",
+            "sadr",
+            "sol",
+            "io"
+          ]
+        },
+        "galaxie2": { "$list": ["aldebaran"] },
+        "galaxie3": {
+          "$list": [
+            "betelgeuse",
+            "arcturus",
+            "antares",
+            "procyon",
+            "regulus",
+            "altair",
+            "shaula",
+            "dubhe",
+            "kaus",
+            "mira"
+          ]
+        },
+        "galaxie4": { "$list": ["rigel"] },
+        "galaxie5": {
+          "$list": [
+            "rasalhague",
+            "polaris",
+            "procyon",
+            "pollux",
+            "altair",
+            "phecda",
+            "spica",
+            "merak",
+            "nunki",
+            "vega"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "sol",
+            "sadr",
+            "atria",
+            "merak",
+            "hamal",
+            "alnitak",
+            "proxima",
+            "achernar",
+            "aldebaran",
+            "betelgeuse"
+          ]
+        },
+        "galaxie2": { "$list": ["wezen", "deneb", "spica", "pollux", "regulus"] },
+        "galaxie3": {
+          "$list": [
+            "mira",
+            "vega",
+            "merak",
+            "diphda",
+            "pollux",
+            "alnitak",
+            "procyon",
+            "canopus",
+            "aldebaran",
+            "rasalhague"
+          ]
+        },
+        "galaxie4": { "$list": ["diphda"] },
+        "galaxie5": { "$list": ["deneb", "shaula", "achernar"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "alnitak",
+            "diphda",
+            "merak",
+            "mira",
+            "atria",
+            "castor",
+            "rasalhague",
+            "polaris",
+            "menkar",
+            "regulus",
+            "proxima",
+            "arcturus"
+          ]
+        },
+        "galaxie2": { "$list": ["shaula", "sol"] },
+        "galaxie3": { "$list": ["castor"] },
+        "galaxie4": { "$list": ["castor"] },
+        "galaxie5": { "$list": ["arcturus", "regulus", "procyon", "aldebaran", "polaris"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "rigel",
+            "aldebaran",
+            "achernar",
+            "atria",
+            "algol",
+            "deneb",
+            "betelgeuse",
+            "phecda",
+            "arcturus",
+            "shaula"
+          ]
+        },
+        "galaxie2": { "$list": ["naos", "proxima"] },
+        "galaxie3": { "$list": ["deneb", "mira", "mizar", "vega", "pollux"] },
+        "galaxie4": {
+          "$list": [
+            "sadr",
+            "achernar",
+            "pollux",
+            "polaris",
+            "sol",
+            "aldebaran",
+            "atria",
+            "algol",
+            "vindemiatrix",
+            "io"
+          ]
+        },
+        "galaxie5": { "$list": ["vega", "rigel"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["io", "fomalhaut"] },
+        "galaxie2": { "$list": ["rasalhague", "alcor", "mizar"] },
+        "galaxie3": { "$list": ["atria"] },
+        "galaxie4": { "$list": ["canopus", "io", "diphda", "alcor", "menkar"] },
+        "galaxie5": { "$list": ["rasalhague", "pollux"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "aldebaran",
+            "capella",
+            "canopus",
+            "polaris",
+            "menkar",
+            "pollux",
+            "rigel",
+            "vega",
+            "kaus",
+            "sol"
+          ]
+        },
+        "galaxie2": {
+          "$list": [
+            "vindemiatrix",
+            "betelgeuse",
+            "fomalhaut",
+            "aldebaran",
+            "achernar",
+            "antares",
+            "polaris",
+            "diphda",
+            "shaula",
+            "spica"
+          ]
+        },
+        "galaxie3": { "$list": ["bellatrix"] },
+        "galaxie4": { "$list": ["sirius", "saiph"] },
+        "galaxie5": {
+          "$list": [
+            "vindemiatrix",
+            "fomalhaut",
+            "arcturus",
+            "menkar",
+            "altair",
+            "shaula",
+            "spica",
+            "algol",
+            "saiph",
+            "kaus",
+            "vega",
+            "io"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["menkar", "shaula", "aldebaran", "bellatrix", "rasalhague"] },
+        "galaxie2": {
+          "$list": [
+            "kaus",
+            "mizar",
+            "alcor",
+            "dubhe",
+            "alnitak",
+            "canopus",
+            "arcturus",
+            "fomalhaut",
+            "betelgeuse",
+            "vindemiatrix"
+          ]
+        },
+        "galaxie3": { "$list": ["canopus"] },
+        "galaxie4": { "$list": ["naos", "altair"] },
+        "galaxie5": { "$list": ["wezen", "canopus"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "betelgeuse",
+            "pollux",
+            "achernar",
+            "canopus",
+            "merak",
+            "shaula",
+            "alnitak",
+            "mizar",
+            "sadr",
+            "castor",
+            "spica",
+            "dubhe"
+          ]
+        },
+        "galaxie2": { "$list": ["mira", "canopus", "castor", "nunki", "naos"] },
+        "galaxie3": {
+          "$list": [
+            "dubhe",
+            "regulus",
+            "alcor",
+            "arcturus",
+            "atria",
+            "fomalhaut",
+            "deneb",
+            "merak",
+            "vega",
+            "shaula"
+          ]
+        },
+        "galaxie4": { "$list": ["castor"] },
+        "galaxie5": { "$list": ["deneb"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["saiph", "sirius", "capella"] },
+        "galaxie2": {
+          "$list": [
+            "alnitak",
+            "dubhe",
+            "pollux",
+            "rasalhague",
+            "menkar",
+            "zosma",
+            "hamal",
+            "fomalhaut",
+            "deneb",
+            "saiph",
+            "antares",
+            "capella"
+          ]
+        },
+        "galaxie3": { "$list": ["altair", "saiph", "vega", "proxima", "deneb"] },
+        "galaxie4": {
+          "$list": [
+            "alnitak",
+            "deneb",
+            "sol",
+            "castor",
+            "altair",
+            "nunki",
+            "betelgeuse",
+            "sadr",
+            "rigel",
+            "regulus",
+            "vindemiatrix",
+            "alcor"
+          ]
+        },
+        "galaxie5": { "$list": ["polaris", "mizar", "sirius"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "nunki",
+            "bellatrix",
+            "betelgeuse",
+            "mira",
+            "alnitak",
+            "antares",
+            "capella",
+            "arcturus",
+            "wezen",
+            "io"
+          ]
+        },
+        "galaxie2": { "$list": ["vega"] },
+        "galaxie3": {
+          "$list": [
+            "menkar",
+            "vindemiatrix",
+            "arcturus",
+            "nunki",
+            "aldebaran",
+            "bellatrix",
+            "kaus",
+            "spica",
+            "naos",
+            "hamal"
+          ]
+        },
+        "galaxie4": {
+          "$list": [
+            "dubhe",
+            "menkar",
+            "wezen",
+            "procyon",
+            "castor",
+            "regulus",
+            "arcturus",
+            "mizar",
+            "nunki",
+            "atria"
+          ]
+        },
+        "galaxie5": { "$list": ["mizar"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["altair"] },
+        "galaxie2": {
+          "$list": [
+            "bellatrix",
+            "alnitak",
+            "antares",
+            "phecda",
+            "menkar",
+            "deneb",
+            "tania",
+            "naos",
+            "mira",
+            "sol"
+          ]
+        },
+        "galaxie3": { "$list": ["sadr"] },
+        "galaxie4": { "$list": ["saiph", "mira"] },
+        "galaxie5": { "$list": ["vindemiatrix", "alnitak", "regulus", "rigel", "merak"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["wezen", "sirius", "bellatrix"] },
+        "galaxie2": { "$list": ["atria", "capella"] },
+        "galaxie3": { "$list": ["regulus"] },
+        "galaxie4": { "$list": ["deneb", "saiph", "menkar", "achernar", "aldebaran"] },
+        "galaxie5": { "$list": ["menkar", "bellatrix"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "rigel",
+            "deneb",
+            "alnitak",
+            "shaula",
+            "pollux",
+            "dubhe",
+            "io",
+            "sirius",
+            "proxima",
+            "vega",
+            "wezen",
+            "vindemiatrix"
+          ]
+        },
+        "galaxie2": {
+          "$list": [
+            "castor",
+            "deneb",
+            "io",
+            "diphda",
+            "pollux",
+            "sol",
+            "phecda",
+            "fomalhaut",
+            "hamal",
+            "achernar"
+          ]
+        },
+        "galaxie3": { "$list": ["polaris", "achernar", "pollux"] },
+        "galaxie4": { "$list": ["nunki"] },
+        "galaxie5": {
+          "$list": [
+            "proxima",
+            "naos",
+            "menkar",
+            "mizar",
+            "diphda",
+            "algol",
+            "zosma",
+            "vega",
+            "io",
+            "castor"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["vega"] },
+        "galaxie2": { "$list": ["mizar"] },
+        "galaxie3": {
+          "$list": [
+            "merak",
+            "spica",
+            "phecda",
+            "kaus",
+            "vindemiatrix",
+            "antares",
+            "vega",
+            "rasalhague",
+            "bellatrix",
+            "hamal"
+          ]
+        },
+        "galaxie4": { "$list": ["rigel", "sadr", "altair"] },
+        "galaxie5": {
+          "$list": [
+            "menkar",
+            "rasalhague",
+            "deneb",
+            "canopus",
+            "diphda",
+            "altair",
+            "aldebaran",
+            "alnitak",
+            "proxima",
+            "sol"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["procyon", "castor"] },
+        "galaxie2": {
+          "$list": [
+            "achernar",
+            "sadr",
+            "hamal",
+            "phecda",
+            "altair",
+            "aldebaran",
+            "tania",
+            "sirius",
+            "arcturus",
+            "nunki"
+          ]
+        },
+        "galaxie3": {
+          "$list": [
+            "pollux",
+            "regulus",
+            "alnitak",
+            "achernar",
+            "wezen",
+            "polaris",
+            "zosma",
+            "mizar",
+            "rigel",
+            "aldebaran"
+          ]
+        },
+        "galaxie4": { "$list": ["hamal"] },
+        "galaxie5": { "$list": ["algol", "spica", "shaula"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["diphda", "nunki", "tania"] },
+        "galaxie2": { "$list": ["vindemiatrix", "betelgeuse", "arcturus", "wezen", "sadr"] },
+        "galaxie3": { "$list": ["aldebaran"] },
+        "galaxie4": { "$list": ["tania"] },
+        "galaxie5": { "$list": ["procyon", "altair"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "sol",
+            "deneb",
+            "merak",
+            "mizar",
+            "saiph",
+            "pollux",
+            "diphda",
+            "menkar",
+            "alnitak",
+            "betelgeuse"
+          ]
+        },
+        "galaxie2": {
+          "$list": [
+            "vega",
+            "mira",
+            "kaus",
+            "merak",
+            "hamal",
+            "algol",
+            "dubhe",
+            "rigel",
+            "castor",
+            "canopus"
+          ]
+        },
+        "galaxie3": { "$list": ["rigel", "regulus", "betelgeuse"] },
+        "galaxie4": { "$list": ["dubhe", "regulus", "betelgeuse"] },
+        "galaxie5": { "$list": ["naos", "merak"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["proxima"] },
+        "galaxie2": { "$list": ["vindemiatrix", "procyon", "deneb", "antares", "alcor"] },
+        "galaxie3": { "$list": ["polaris", "mizar", "achernar", "tania", "hamal"] },
+        "galaxie4": { "$list": ["vindemiatrix"] },
+        "galaxie5": { "$list": ["mira", "aldebaran"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["regulus", "tania", "wezen", "alnitak", "achernar"] },
+        "galaxie2": { "$list": ["dubhe", "achernar", "bellatrix"] },
+        "galaxie3": { "$list": ["aldebaran", "vindemiatrix", "canopus"] },
+        "galaxie4": { "$list": ["betelgeuse", "mira", "achernar", "altair", "procyon"] },
+        "galaxie5": {
+          "$list": [
+            "hamal",
+            "vindemiatrix",
+            "castor",
+            "kaus",
+            "regulus",
+            "canopus",
+            "naos",
+            "mizar",
+            "shaula",
+            "arcturus"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["deneb", "capella"] },
+        "galaxie2": { "$list": ["vindemiatrix", "deneb", "fomalhaut"] },
+        "galaxie3": { "$list": ["merak", "alnitak"] },
+        "galaxie4": {
+          "$list": [
+            "diphda",
+            "proxima",
+            "procyon",
+            "deneb",
+            "saiph",
+            "bellatrix",
+            "phecda",
+            "dubhe",
+            "kaus",
+            "naos"
+          ]
+        },
+        "galaxie5": { "$list": ["vega", "mizar", "sirius"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["aldebaran", "nunki", "hamal", "rigel", "io"] },
+        "galaxie2": { "$list": ["dubhe"] },
+        "galaxie3": {
+          "$list": [
+            "bellatrix",
+            "achernar",
+            "polaris",
+            "diphda",
+            "castor",
+            "pollux",
+            "shaula",
+            "spica",
+            "nunki",
+            "deneb",
+            "sadr",
+            "kaus"
+          ]
+        },
+        "galaxie4": {
+          "$list": [
+            "alnitak",
+            "sirius",
+            "castor",
+            "diphda",
+            "rigel",
+            "mizar",
+            "zosma",
+            "nunki",
+            "wezen",
+            "algol"
+          ]
+        },
+        "galaxie5": {
+          "$list": [
+            "betelgeuse",
+            "arcturus",
+            "shaula",
+            "altair",
+            "diphda",
+            "phecda",
+            "spica",
+            "wezen",
+            "naos",
+            "io"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["sol", "rigel", "castor"] },
+        "galaxie2": { "$list": ["rasalhague"] },
+        "galaxie3": { "$list": ["sadr", "saiph", "fomalhaut"] },
+        "galaxie4": {
+          "$list": [
+            "vega",
+            "nunki",
+            "alcor",
+            "wezen",
+            "diphda",
+            "canopus",
+            "antares",
+            "bellatrix",
+            "aldebaran",
+            "vindemiatrix"
+          ]
+        },
+        "galaxie5": { "$list": ["arcturus"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["algol", "achernar", "alcor", "deneb", "alnitak"] },
+        "galaxie2": { "$list": ["canopus", "naos"] },
+        "galaxie3": {
+          "$list": [
+            "regulus",
+            "alcor",
+            "merak",
+            "dubhe",
+            "arcturus",
+            "rigel",
+            "tania",
+            "menkar",
+            "altair",
+            "procyon"
+          ]
+        },
+        "galaxie4": { "$list": ["arcturus", "wezen", "castor", "sadr", "alnitak"] },
+        "galaxie5": { "$list": ["procyon"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["sol"] },
+        "galaxie2": { "$list": ["alcor", "antares"] },
+        "galaxie3": {
+          "$list": [
+            "antares",
+            "capella",
+            "dubhe",
+            "kaus",
+            "fomalhaut",
+            "betelgeuse",
+            "deneb",
+            "mira",
+            "regulus",
+            "arcturus"
+          ]
+        },
+        "galaxie4": { "$list": ["achernar", "diphda"] },
+        "galaxie5": { "$list": ["deneb"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["vindemiatrix"] },
+        "galaxie2": {
+          "$list": [
+            "procyon",
+            "phecda",
+            "atria",
+            "wezen",
+            "naos",
+            "deneb",
+            "antares",
+            "aldebaran",
+            "arcturus",
+            "merak",
+            "rasalhague",
+            "kaus"
+          ]
+        },
+        "galaxie3": { "$list": ["fomalhaut", "merak"] },
+        "galaxie4": { "$list": ["altair", "antares", "alnitak", "arcturus", "sol"] },
+        "galaxie5": { "$list": ["merak", "saiph", "regulus"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "fomalhaut",
+            "alnitak",
+            "sirius",
+            "altair",
+            "castor",
+            "saiph",
+            "wezen",
+            "rigel",
+            "vega",
+            "sol"
+          ]
+        },
+        "galaxie2": { "$list": ["aldebaran"] },
+        "galaxie3": {
+          "$list": [
+            "achernar",
+            "alnitak",
+            "capella",
+            "phecda",
+            "hamal",
+            "mizar",
+            "rigel",
+            "wezen",
+            "sadr",
+            "naos"
+          ]
+        },
+        "galaxie4": {
+          "$list": [
+            "vindemiatrix",
+            "rasalhague",
+            "bellatrix",
+            "aldebaran",
+            "fomalhaut",
+            "achernar",
+            "altair",
+            "sirius",
+            "alcor",
+            "nunki",
+            "mira",
+            "naos"
+          ]
+        },
+        "galaxie5": { "$list": ["altair"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["alcor"] },
+        "galaxie2": { "$list": ["kaus", "nunki", "mizar", "castor", "capella"] },
+        "galaxie3": { "$list": ["sadr", "algol", "polaris", "bellatrix", "rasalhague"] },
+        "galaxie4": {
+          "$list": [
+            "io",
+            "kaus",
+            "tania",
+            "algol",
+            "saiph",
+            "zosma",
+            "merak",
+            "canopus",
+            "alnitak",
+            "achernar",
+            "arcturus",
+            "betelgeuse"
+          ]
+        },
+        "galaxie5": { "$list": ["capella", "bellatrix"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["pollux", "tania"] },
+        "galaxie2": {
+          "$list": [
+            "sadr",
+            "sirius",
+            "spica",
+            "rigel",
+            "aldebaran",
+            "castor",
+            "kaus",
+            "merak",
+            "shaula",
+            "tania"
+          ]
+        },
+        "galaxie3": { "$list": ["betelgeuse", "antares"] },
+        "galaxie4": { "$list": ["sol", "io"] },
+        "galaxie5": { "$list": ["altair", "merak"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["regulus", "pollux", "sirius"] },
+        "galaxie2": { "$list": ["alnitak", "sirius"] },
+        "galaxie3": {
+          "$list": [
+            "achernar",
+            "procyon",
+            "rigel",
+            "fomalhaut",
+            "alcor",
+            "merak",
+            "capella",
+            "wezen",
+            "altair",
+            "shaula"
+          ]
+        },
+        "galaxie4": { "$list": ["hamal"] },
+        "galaxie5": {
+          "$list": [
+            "aldebaran",
+            "altair",
+            "alcor",
+            "spica",
+            "dubhe",
+            "vindemiatrix",
+            "pollux",
+            "rasalhague",
+            "deneb",
+            "mira"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["shaula", "saiph", "alcor", "tania", "canopus"] },
+        "galaxie2": { "$list": ["alcor", "antares", "wezen"] },
+        "galaxie3": {
+          "$list": [
+            "zosma",
+            "atria",
+            "alcor",
+            "algol",
+            "vega",
+            "merak",
+            "arcturus",
+            "dubhe",
+            "sol",
+            "procyon"
+          ]
+        },
+        "galaxie4": { "$list": ["naos"] },
+        "galaxie5": { "$list": ["naos", "betelgeuse"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "vindemiatrix",
+            "antares",
+            "pollux",
+            "shaula",
+            "deneb",
+            "dubhe",
+            "zosma",
+            "merak",
+            "mizar",
+            "rigel",
+            "sadr",
+            "mira"
+          ]
+        },
+        "galaxie2": { "$list": ["zosma"] },
+        "galaxie3": {
+          "$list": [
+            "polaris",
+            "menkar",
+            "pollux",
+            "diphda",
+            "altair",
+            "merak",
+            "atria",
+            "tania",
+            "algol",
+            "mira"
+          ]
+        },
+        "galaxie4": { "$list": ["phecda"] },
+        "galaxie5": { "$list": ["aldebaran", "arcturus", "sirius", "wezen", "mizar"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": { "$list": ["mira", "deneb", "nunki", "shaula", "polaris"] },
+        "galaxie2": {
+          "$list": [
+            "dubhe",
+            "zosma",
+            "castor",
+            "shaula",
+            "sirius",
+            "polaris",
+            "capella",
+            "procyon",
+            "arcturus",
+            "aldebaran"
+          ]
+        },
+        "galaxie3": { "$list": ["mira", "atria", "diphda", "phecda", "betelgeuse"] },
+        "galaxie4": { "$list": ["arcturus", "bellatrix"] },
+        "galaxie5": { "$list": ["vindemiatrix"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "algol",
+            "sirius",
+            "canopus",
+            "fomalhaut",
+            "betelgeuse",
+            "phecda",
+            "sol",
+            "sadr",
+            "vindemiatrix",
+            "wezen",
+            "alcor",
+            "zosma"
+          ]
+        },
+        "galaxie2": {
+          "$list": [
+            "bellatrix",
+            "naos",
+            "phecda",
+            "canopus",
+            "merak",
+            "kaus",
+            "menkar",
+            "proxima",
+            "capella",
+            "vega"
+          ]
+        },
+        "galaxie3": { "$list": ["polaris"] },
+        "galaxie4": { "$list": ["sadr", "bellatrix", "kaus", "polaris", "capella"] },
+        "galaxie5": {
+          "$list": [
+            "aldebaran",
+            "dubhe",
+            "spica",
+            "altair",
+            "mizar",
+            "atria",
+            "naos",
+            "merak",
+            "deneb",
+            "kaus",
+            "menkar",
+            "vindemiatrix"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "sirius",
+            "nunki",
+            "proxima",
+            "mizar",
+            "deneb",
+            "fomalhaut",
+            "menkar",
+            "achernar",
+            "antares",
+            "polaris"
+          ]
+        },
+        "galaxie2": { "$list": ["achernar", "mizar", "vega", "altair", "polaris"] },
+        "galaxie3": {
+          "$list": [
+            "shaula",
+            "betelgeuse",
+            "arcturus",
+            "mizar",
+            "hamal",
+            "tania",
+            "mira",
+            "castor",
+            "altair",
+            "atria"
+          ]
+        },
+        "galaxie4": { "$list": ["io", "alnitak"] },
+        "galaxie5": {
+          "$list": [
+            "fomalhaut",
+            "phecda",
+            "mira",
+            "alnitak",
+            "betelgeuse",
+            "diphda",
+            "antares",
+            "merak",
+            "kaus",
+            "vindemiatrix"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "galaxie1": {
+          "$list": [
+            "io",
+            "shaula",
+            "spica",
+            "alnitak",
+            "rasalhague",
+            "proxima",
+            "dubhe",
+            "merak",
+            "canopus",
+            "phecda"
+          ]
+        },
+        "galaxie2": { "$list": ["zosma", "pollux", "merak"] },
+        "galaxie3": { "$list": ["deneb", "kaus", "castor"] },
+        "galaxie4": { "$list": ["diphda", "alnitak", "wezen"] },
+        "galaxie5": {
+          "$list": [
+            "io",
+            "canopus",
+            "fomalhaut",
+            "rigel",
+            "sirius",
+            "castor",
+            "pollux",
+            "tania",
+            "naos",
+            "alcor"
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }

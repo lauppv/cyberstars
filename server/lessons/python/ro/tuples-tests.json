@@ -1,15 +1,11 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "sisteme" }, { "kind": "loop" }] },
   "cases": [
     {
       "visible": true,
       "inject": {
-        "sisteme": {
-          "$list": [{ "$list": ["Kepler", 1200, 7] }, { "$list": ["Trappist", 39, 3] }]
-        }
+        "sisteme": { "$list": [{ "$list": ["Kepler", 1200, 7] }, { "$list": ["Trappist", 39, 3] }] }
       }
     },
     {
@@ -24,18 +20,8 @@
         }
       }
     },
-    {
-      "inject": {
-        "sisteme": { "$list": [{ "$list": ["Proxima", 4, 1] }] }
-      }
-    },
-    {
-      "inject": {
-        "sisteme": {
-          "$list": [{ "$list": ["A", 0, 0] }, { "$list": ["B", 10, 0] }]
-        }
-      }
-    },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Proxima", 4, 1] }] } } },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["A", 0, 0] }, { "$list": ["B", 10, 0] }] } } },
     {
       "inject": {
         "sisteme": {
@@ -46,6 +32,482 @@
           ]
         }
       }
+    },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Sol", 0, 0] }] } }, "generated": true },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Kepler", 3000, 1] }] } }, "generated": true },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["A", 1, 1] },
+            { "$list": ["B", 2, 2] },
+            { "$list": ["C", 3, 3] },
+            { "$list": ["D", 4, 4] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Big", 99999, 50] }] } }, "generated": true },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Kepler", 4384, 4] },
+            { "$list": ["Barnard", 3119, 8] },
+            { "$list": ["Lalande", 44, 0] },
+            { "$list": ["Rigel", 28, 10] },
+            { "$list": ["Altair", 3, 2] },
+            { "$list": ["Teegarden", 2810, 2] },
+            { "$list": ["Sol", 3, 2] },
+            { "$list": ["Ross", 971, 4] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Epsilon", 10, 2] },
+            { "$list": ["Barnard", 3481, 15] },
+            { "$list": ["Barnard", 34, 6] },
+            { "$list": ["Kepler", 3024, 9] },
+            { "$list": ["Sirius", 1974, 11] },
+            { "$list": ["Wolf", 32, 0] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Ross", 2, 7] },
+            { "$list": ["Ross", 2, 3] },
+            { "$list": ["Epsilon", 14, 8] },
+            { "$list": ["Alpha", 2315, 11] },
+            { "$list": ["Alpha", 3812, 6] },
+            { "$list": ["Tau Ceti", 3782, 15] },
+            { "$list": ["Polaris", 3857, 5] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Polaris", 104, 10] },
+            { "$list": ["Deneb", 15, 7] },
+            { "$list": ["Sirius", 23, 0] },
+            { "$list": ["Tau Ceti", 50, 7] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Luyten", 2947, 14] },
+            { "$list": ["Deneb", 28, 8] },
+            { "$list": ["Tau Ceti", 32, 9] },
+            { "$list": ["Teegarden", 16, 0] },
+            { "$list": ["Rigel", 2227, 4] },
+            { "$list": ["Polaris", 3615, 1] },
+            { "$list": ["Epsilon", 36, 13] },
+            { "$list": ["Ross", 810, 6] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Wolf", 40, 0] },
+            { "$list": ["Rigel", 1, 13] },
+            { "$list": ["Epsilon", 12, 11] },
+            { "$list": ["Altair", 2267, 3] },
+            { "$list": ["Altair", 4957, 7] },
+            { "$list": ["Vega", 2964, 2] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Rigel", 791, 9] },
+            { "$list": ["Deneb", 3621, 5] },
+            { "$list": ["Sol", 4046, 15] },
+            { "$list": ["Deneb", 4917, 14] },
+            { "$list": ["Polaris", 20, 0] },
+            { "$list": ["Wolf", 23, 13] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Polaris", 1251, 5] },
+            { "$list": ["Teegarden", 29, 14] },
+            { "$list": ["Lalande", 50, 13] },
+            { "$list": ["Epsilon", 3288, 1] },
+            { "$list": ["Sirius", 4722, 11] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "sisteme": { "$list": [{ "$list": ["Tau Ceti", 4145, 9] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Rigel", 30, 8] },
+            { "$list": ["Luyten", 3565, 9] },
+            { "$list": ["Ross", 4955, 12] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Rigel", 8, 12] },
+            { "$list": ["Ross", 2206, 13] },
+            { "$list": ["Barnard", 3201, 5] },
+            { "$list": ["Deneb", 1730, 3] },
+            { "$list": ["Kepler", 483, 9] },
+            { "$list": ["Rigel", 19, 9] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Sol", 10, 6] }] } }, "generated": true },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Altair", 11, 3] },
+            { "$list": ["Wolf", 43, 14] },
+            { "$list": ["Sirius", 33, 12] },
+            { "$list": ["Teegarden", 2453, 11] },
+            { "$list": ["Barnard", 26, 8] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Rigel", 31, 13] }] } }, "generated": true },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Wolf", 48, 11] },
+            { "$list": ["Alpha", 935, 2] },
+            { "$list": ["Alpha", 0, 3] },
+            { "$list": ["Sol", 1917, 6] },
+            { "$list": ["Lalande", 2808, 10] },
+            { "$list": ["Polaris", 764, 1] },
+            { "$list": ["Wolf", 9, 15] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Kepler", 0, 3] },
+            { "$list": ["Luyten", 2836, 10] },
+            { "$list": ["Tau Ceti", 3176, 10] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Epsilon", 39, 7] },
+            { "$list": ["Tau Ceti", 24, 14] },
+            { "$list": ["Kepler", 2863, 3] },
+            { "$list": ["Sirius", 4857, 5] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Epsilon", 4931, 12] },
+            { "$list": ["Tau Ceti", 3116, 10] },
+            { "$list": ["Teegarden", 38, 5] },
+            { "$list": ["Barnard", 2690, 11] },
+            { "$list": ["Rigel", 2805, 12] },
+            { "$list": ["Alpha", 33, 3] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Deneb", 792, 5] },
+            { "$list": ["Lalande", 14, 7] },
+            { "$list": ["Altair", 12, 6] },
+            { "$list": ["Deneb", 2590, 4] },
+            { "$list": ["Luyten", 3665, 12] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Kepler", 45, 15] },
+            { "$list": ["Teegarden", 2832, 12] },
+            { "$list": ["Gliese", 8, 9] },
+            { "$list": ["Barnard", 2424, 4] },
+            { "$list": ["Teegarden", 4778, 5] },
+            { "$list": ["Kepler", 27, 4] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "sisteme": { "$list": [{ "$list": ["Lalande", 4401, 7] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Altair", 4569, 15] },
+            { "$list": ["Gliese", 38, 4] },
+            { "$list": ["Polaris", 4381, 11] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Rigel", 13, 7] },
+            { "$list": ["Kepler", 4422, 3] },
+            { "$list": ["Luyten", 39, 1] },
+            { "$list": ["Ross", 226, 12] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Barnard", 686, 12] },
+            { "$list": ["Epsilon", 4181, 13] },
+            { "$list": ["Rigel", 1, 8] },
+            { "$list": ["Gliese", 2504, 8] },
+            { "$list": ["Teegarden", 47, 1] },
+            { "$list": ["Gliese", 3026, 11] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": { "$list": [{ "$list": ["Sirius", 2, 2] }, { "$list": ["Rigel", 8, 5] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Polaris", 25, 9] },
+            { "$list": ["Lalande", 3783, 5] },
+            { "$list": ["Kepler", 134, 13] },
+            { "$list": ["Ross", 13, 11] },
+            { "$list": ["Wolf", 820, 11] },
+            { "$list": ["Ross", 22, 9] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Gliese", 4631, 4] }] } }, "generated": true },
+    { "inject": { "sisteme": { "$list": [{ "$list": ["Tau Ceti", 15, 3] }] } }, "generated": true },
+    {
+      "inject": {
+        "sisteme": { "$list": [{ "$list": ["Vega", 1486, 10] }, { "$list": ["Kepler", 418, 7] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Tau Ceti", 471, 15] },
+            { "$list": ["Altair", 14, 15] },
+            { "$list": ["Luyten", 10, 14] },
+            { "$list": ["Epsilon", 3244, 6] },
+            { "$list": ["Rigel", 1431, 14] },
+            { "$list": ["Rigel", 1702, 6] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Kepler", 628, 15] },
+            { "$list": ["Lalande", 792, 12] },
+            { "$list": ["Altair", 10, 4] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": { "$list": [{ "$list": ["Epsilon", 1417, 5] }, { "$list": ["Alpha", 3915, 4] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Vega", 29, 4] },
+            { "$list": ["Luyten", 1248, 7] },
+            { "$list": ["Teegarden", 2185, 2] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Deneb", 35, 13] },
+            { "$list": ["Alpha", 28, 6] },
+            { "$list": ["Ross", 49, 1] },
+            { "$list": ["Sol", 0, 12] },
+            { "$list": ["Gliese", 35, 14] },
+            { "$list": ["Epsilon", 5, 9] },
+            { "$list": ["Vega", 1388, 0] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Sol", 9, 0] },
+            { "$list": ["Kepler", 3089, 9] },
+            { "$list": ["Wolf", 7, 14] },
+            { "$list": ["Sirius", 3622, 11] },
+            { "$list": ["Kepler", 23, 10] },
+            { "$list": ["Kepler", 2718, 15] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Tau Ceti", 0, 12] },
+            { "$list": ["Sol", 1922, 15] },
+            { "$list": ["Epsilon", 25, 2] },
+            { "$list": ["Deneb", 38, 14] },
+            { "$list": ["Gliese", 35, 1] },
+            { "$list": ["Sol", 2633, 12] },
+            { "$list": ["Epsilon", 20, 2] },
+            { "$list": ["Ross", 696, 12] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "sisteme": { "$list": [{ "$list": ["Tau Ceti", 2309, 2] }] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Tau Ceti", 21, 10] },
+            { "$list": ["Ross", 15, 1] },
+            { "$list": ["Ross", 8, 7] },
+            { "$list": ["Gliese", 6, 0] },
+            { "$list": ["Wolf", 770, 6] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": {
+          "$list": [
+            { "$list": ["Ross", 39, 2] },
+            { "$list": ["Epsilon", 22, 4] },
+            { "$list": ["Deneb", 4123, 13] }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sisteme": { "$list": [{ "$list": ["Deneb", 1283, 14] }, { "$list": ["Sirius", 281, 1] }] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "sisteme": { "$list": [{ "$list": ["Teegarden", 2021, 0] }] } },
+      "generated": true
     }
   ]
 }

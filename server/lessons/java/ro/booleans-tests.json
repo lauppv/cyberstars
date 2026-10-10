@@ -5,7 +5,8 @@
       { "kind": "variable", "name": "ziLucratoare" },
       { "kind": "variable", "name": "oaspete" },
       { "kind": "variable", "name": "invitatie" },
-      { "kind": "call", "name": "println" }
+      { "kind": "operator", "name": "&&" },
+      { "kind": "operator", "name": "||" }
     ]
   },
   "cases": [
@@ -17,6 +18,46 @@
     { "inject": { "angajat": false, "ziLucratoare": false, "oaspete": true, "invitatie": true } },
     { "inject": { "angajat": false, "ziLucratoare": false, "oaspete": true, "invitatie": false } },
     { "inject": { "angajat": false, "ziLucratoare": false, "oaspete": false, "invitatie": false } },
-    { "inject": { "angajat": true, "ziLucratoare": true, "oaspete": true, "invitatie": true } }
+    { "inject": { "angajat": true, "ziLucratoare": true, "oaspete": true, "invitatie": true } },
+    {
+      "inject": { "angajat": false, "ziLucratoare": false, "oaspete": false, "invitatie": true },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": false, "ziLucratoare": true, "oaspete": false, "invitatie": false },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": false, "ziLucratoare": true, "oaspete": false, "invitatie": true },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": false, "ziLucratoare": true, "oaspete": true, "invitatie": false },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": false, "ziLucratoare": true, "oaspete": true, "invitatie": true },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": true, "ziLucratoare": false, "oaspete": false, "invitatie": true },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": true, "ziLucratoare": false, "oaspete": true, "invitatie": false },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": true, "ziLucratoare": false, "oaspete": true, "invitatie": true },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": true, "ziLucratoare": true, "oaspete": false, "invitatie": true },
+      "generated": true
+    },
+    {
+      "inject": { "angajat": true, "ziLucratoare": true, "oaspete": true, "invitatie": false },
+      "generated": true
+    }
   ]
 }

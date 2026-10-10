@@ -3,16 +3,15 @@
     "requires": [
       { "kind": "function", "name": "descrieStare" },
       { "kind": "variable", "name": "nume" },
+      { "kind": "call", "name": "values" },
       { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "enum" }
     ]
   },
   "cases": [
     {
       "visible": true,
-      "inject": {
-        "nume": { "$list": ["Malibu Club", "Boatyard", "Print Works", "Kaufman Cabs"] }
-      }
+      "inject": { "nume": { "$list": ["Malibu Club", "Boatyard", "Print Works", "Kaufman Cabs"] } }
     },
     {
       "inject": {
@@ -28,6 +27,50 @@
       "inject": {
         "nume": { "$list": ["Ammu-Nation", "Ocean View", "Skumole Shack", "Hyman Condo"] }
       }
+    },
+    {
+      "inject": { "nume": { "$list": ["Kaufman Cabs", "Print Works", "Boatyard", "Malibu Club"] } },
+      "generated": true
+    },
+    { "inject": { "nume": { "$list": ["A", "B", "C", "D"] } }, "generated": true },
+    {
+      "inject": {
+        "nume": { "$list": ["Malibu Club", "Malibu Club", "Malibu Club", "Malibu Club"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": { "$list": ["Pay 'n' Spray", "Sunshine Autos", "Vercetti Estate", "Pole Position"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "nume": { "$list": ["Boatyard", "Boatyard", "Print Works", "Print Works"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": { "$list": ["Ammu-Nation 2", "Leaf Links", "Ryton Aide", "North Point Mall"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Cherry Popper Ice Cream Factory",
+            "InterGlobal Film Studio",
+            "Kaufman Cab Company",
+            "The Malibu Club Nightclub"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "nume": { "$list": ["Rafael's", "Tool Shop", "Gash", "Jocksport"] } },
+      "generated": true
     }
   ]
 }

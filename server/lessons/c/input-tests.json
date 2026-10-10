@@ -1,15 +1,40 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "scanf" }] },
   "cases": [
     { "visible": true, "stdin": "Ritchie\n60\n" },
     { "visible": true, "stdin": "Thompson\n33\n" },
     { "stdin": "Ada\n0\n" },
     { "stdin": "Grace\n99\n" },
-    { "stdin": "Linus\n7\n" }
+    { "stdin": "Linus\n7\n" },
+    { "stdin": "A\n1\n", "generated": true },
+    { "stdin": "Bo\n2\n", "generated": true },
+    { "stdin": "Kernighan\n45\n", "generated": true },
+    { "stdin": "Pike\n18\n", "generated": true },
+    { "stdin": "Torvalds\n21\n", "generated": true },
+    { "stdin": "Hopper\n85\n", "generated": true },
+    { "stdin": "Lovelace\n36\n", "generated": true },
+    { "stdin": "Turing\n41\n", "generated": true },
+    { "stdin": "Knuth\n88\n", "generated": true },
+    { "stdin": "Wirth\n50\n", "generated": true },
+    { "stdin": "Dijkstra\n72\n", "generated": true },
+    { "stdin": "Stroustrup\n30\n", "generated": true },
+    { "stdin": "Gosling\n69\n", "generated": true },
+    { "stdin": "Ritchie\n59\n", "generated": true },
+    { "stdin": "Liskov\n100\n", "generated": true },
+    { "stdin": "Hamilton\n119\n", "generated": true },
+    { "stdin": "Babbage\n10\n", "generated": true },
+    { "stdin": "Neumann\n53\n", "generated": true },
+    { "stdin": "Backus\n29\n", "generated": true },
+    { "stdin": "McCarthy\n64\n", "generated": true },
+    { "stdin": "Codd\n9\n", "generated": true },
+    { "stdin": "Shannon\n12\n", "generated": true },
+    { "stdin": "Cerf\n80\n", "generated": true },
+    { "stdin": "Lamport\n3\n", "generated": true },
+    { "stdin": "X\n120\n", "generated": true },
+    { "stdin": "mihai\n17\n", "generated": true },
+    { "stdin": "ANA\n25\n", "generated": true },
+    { "stdin": "Popescu_Ion\n40\n", "generated": true },
+    { "stdin": "R2D2\n33\n", "generated": true },
+    { "stdin": "Minsky\n75\n", "generated": true }
   ]
 }

@@ -1,7 +1,11 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+    "requires": [{ "kind": "variable", "name": "results" }, { "kind": "loop" }],
+    "forbids": [
+      { "kind": "call", "name": "sorted" },
+      { "kind": "call", "name": "sort" }
+    ]
   },
   "cases": [
     {
@@ -23,14 +27,862 @@
         }
       }
     },
-    {
-      "visible": true,
-      "inject": { "results": { "$list": ["A", "A", "B"] } }
-    },
+    { "visible": true, "inject": { "results": { "$list": ["A", "A", "B"] } } },
     { "inject": { "results": { "$list": ["Solo"] } } },
     { "inject": { "results": { "$list": ["X", "Y", "X", "Y", "Y", "Z"] } } },
+    { "inject": { "results": { "$list": ["Kai", "Kai", "Kai", "Rex", "Rex", "Uma"] } } },
+    { "inject": { "results": { "$list": ["Zoe", "Zoe"] } }, "generated": true },
+    { "inject": { "results": { "$list": ["Ana", "Rex", "Rex"] } }, "generated": true },
+    { "inject": { "results": { "$list": ["Rex", "Ana", "Rex"] } }, "generated": true },
     {
-      "inject": { "results": { "$list": ["Kai", "Kai", "Kai", "Rex", "Rex", "Uma"] } }
+      "inject": { "results": { "$list": ["Leo", "Leo", "Leo", "Ivy", "Ivy", "Max"] } },
+      "generated": true
+    },
+    {
+      "inject": { "results": { "$list": ["Max", "Ivy", "Ivy", "Leo", "Leo", "Leo"] } },
+      "generated": true
+    },
+    {
+      "inject": { "results": { "$list": ["Kai", "Kai", "Kai", "Kai", "Kai", "Kai", "Kai"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Cara",
+            "Kai",
+            "Max",
+            "Kai",
+            "Cara",
+            "Kai",
+            "Max",
+            "Cara",
+            "Kai",
+            "Max",
+            "Kai",
+            "Leo",
+            "Kai",
+            "Kai",
+            "Max",
+            "Kai"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": ["Boris", "Boris", "Ivy", "Ivy", "Ana", "Ivy", "Boris", "Boris", "Ivy", "Ivy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Max",
+            "Rex",
+            "Uma",
+            "Tommy",
+            "Tommy",
+            "Rex",
+            "Rex",
+            "Uma",
+            "Uma",
+            "Max",
+            "Uma",
+            "Max",
+            "Uma",
+            "Max",
+            "Max",
+            "Rex",
+            "Uma",
+            "Rex",
+            "Uma",
+            "Rex"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Kai",
+            "Uma",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Uma",
+            "Kai",
+            "Uma",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Cara"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "results": { "$list": ["Uma", "Uma", "Uma", "Max", "Uma"] } },
+      "generated": true
+    },
+    {
+      "inject": { "results": { "$list": ["Cara", "Rex", "Cara", "Cara", "Cara"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Kai",
+            "Zoe",
+            "Max",
+            "Boris",
+            "Max",
+            "Max",
+            "Zoe",
+            "Boris",
+            "Zoe",
+            "Cara",
+            "Boris",
+            "Max",
+            "Max",
+            "Boris",
+            "Zoe",
+            "Max",
+            "Kai",
+            "Kai",
+            "Zoe",
+            "Max",
+            "Zoe",
+            "Zoe",
+            "Cara",
+            "Kai",
+            "Boris",
+            "Boris",
+            "Zoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Zoe",
+            "Leo",
+            "Ivy",
+            "Rex",
+            "Rex",
+            "Boris",
+            "Max",
+            "Max",
+            "Rex",
+            "Ivy",
+            "Rex",
+            "Leo",
+            "Leo",
+            "Leo",
+            "Max",
+            "Rex",
+            "Max",
+            "Zoe",
+            "Max",
+            "Boris",
+            "Leo",
+            "Ivy",
+            "Leo",
+            "Leo",
+            "Boris",
+            "Rex",
+            "Ivy",
+            "Leo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Ivy",
+            "Ivy",
+            "Nia",
+            "Ivy",
+            "Ivy",
+            "Nia",
+            "Cara",
+            "Ana",
+            "Ana",
+            "Ivy",
+            "Ivy",
+            "Nia",
+            "Ivy",
+            "Ana",
+            "Nia",
+            "Ana",
+            "Nia",
+            "Uma",
+            "Uma"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Cara",
+            "Rex",
+            "Cara",
+            "Cara",
+            "Kai",
+            "Kai",
+            "Kai",
+            "Rex",
+            "Cara",
+            "Boris",
+            "Cara",
+            "Kai",
+            "Rex",
+            "Boris",
+            "Kai",
+            "Boris",
+            "Rex",
+            "Kai",
+            "Boris",
+            "Cara",
+            "Boris",
+            "Kai",
+            "Rex",
+            "Cara",
+            "Cara",
+            "Boris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": ["Boris", "Boris", "Boris", "Boris", "Boris", "Boris", "Boris", "Boris"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Ana",
+            "Rex",
+            "Ana",
+            "Boris",
+            "Ana",
+            "Ana",
+            "Rex",
+            "Rex",
+            "Ana",
+            "Rex",
+            "Boris",
+            "Rex",
+            "Rex",
+            "Ana",
+            "Ana",
+            "Boris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Boris",
+            "Boris",
+            "Zoe",
+            "Boris",
+            "Uma",
+            "Uma",
+            "Uma",
+            "Ana",
+            "Zoe",
+            "Zoe",
+            "Ana",
+            "Boris",
+            "Ana",
+            "Boris",
+            "Zoe",
+            "Zoe",
+            "Ana",
+            "Ana",
+            "Boris",
+            "Zoe",
+            "Zoe",
+            "Uma"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "results": { "$list": ["Uma", "Uma", "Uma", "Uma", "Uma", "Uma"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": { "$list": ["Tommy", "Cara", "Cara", "Cara", "Cara", "Cara", "Cara", "Cara"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Uma",
+            "Tommy",
+            "Uma",
+            "Uma",
+            "Tommy",
+            "Uma",
+            "Tommy",
+            "Max",
+            "Zoe",
+            "Tommy",
+            "Tommy",
+            "Zoe",
+            "Tommy",
+            "Uma",
+            "Tommy",
+            "Max",
+            "Zoe",
+            "Tommy",
+            "Uma",
+            "Uma"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Tommy",
+            "Cara",
+            "Tommy",
+            "Leo",
+            "Ana",
+            "Leo",
+            "Tommy",
+            "Tommy",
+            "Boris",
+            "Ana",
+            "Leo",
+            "Ana",
+            "Leo",
+            "Tommy",
+            "Ana",
+            "Nia",
+            "Ana",
+            "Nia",
+            "Nia",
+            "Tommy",
+            "Ana",
+            "Leo",
+            "Nia",
+            "Boris",
+            "Ana",
+            "Cara",
+            "Ana",
+            "Boris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Tommy",
+            "Kai",
+            "Tommy",
+            "Kai",
+            "Rex",
+            "Ana",
+            "Nia",
+            "Ana",
+            "Nia",
+            "Tommy",
+            "Tommy",
+            "Nia",
+            "Tommy",
+            "Tommy",
+            "Nia",
+            "Tommy",
+            "Nia",
+            "Ana",
+            "Ana",
+            "Nia",
+            "Nia",
+            "Kai",
+            "Ana",
+            "Tommy",
+            "Kai"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Cara",
+            "Rex",
+            "Cara",
+            "Rex",
+            "Cara",
+            "Cara",
+            "Rex",
+            "Rex",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Rex",
+            "Cara"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Ivy",
+            "Zoe",
+            "Ivy",
+            "Zoe",
+            "Uma",
+            "Uma",
+            "Ivy",
+            "Ivy",
+            "Ivy",
+            "Ivy",
+            "Zoe",
+            "Zoe",
+            "Zoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Ana",
+            "Cara",
+            "Uma",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Rex",
+            "Rex",
+            "Cara",
+            "Ana",
+            "Rex",
+            "Uma",
+            "Rex",
+            "Ana",
+            "Uma",
+            "Cara",
+            "Ana",
+            "Cara",
+            "Cara",
+            "Uma",
+            "Ana",
+            "Uma",
+            "Ana",
+            "Rex",
+            "Kai",
+            "Nia",
+            "Kai",
+            "Kai",
+            "Nia",
+            "Rex",
+            "Rex"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Leo",
+            "Max",
+            "Leo",
+            "Nia",
+            "Leo",
+            "Max",
+            "Max",
+            "Nia",
+            "Nia",
+            "Nia",
+            "Leo",
+            "Nia",
+            "Ivy",
+            "Ivy",
+            "Ivy",
+            "Cara",
+            "Leo",
+            "Rex",
+            "Cara",
+            "Leo",
+            "Ivy",
+            "Leo",
+            "Nia",
+            "Leo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Boris",
+            "Leo",
+            "Ivy",
+            "Nia",
+            "Leo",
+            "Boris",
+            "Nia",
+            "Leo",
+            "Boris",
+            "Ivy",
+            "Nia",
+            "Leo",
+            "Cara",
+            "Boris",
+            "Leo",
+            "Leo",
+            "Boris",
+            "Leo",
+            "Zoe",
+            "Ivy",
+            "Ivy",
+            "Zoe",
+            "Boris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Rex",
+            "Rex",
+            "Leo",
+            "Rex",
+            "Leo",
+            "Rex",
+            "Leo",
+            "Rex",
+            "Rex",
+            "Leo",
+            "Rex",
+            "Leo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": ["Boris", "Tommy", "Boris", "Boris", "Boris", "Boris", "Tommy", "Boris", "Boris"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Ana",
+            "Ivy",
+            "Leo",
+            "Uma",
+            "Ivy",
+            "Leo",
+            "Leo",
+            "Tommy",
+            "Leo",
+            "Ana",
+            "Ivy",
+            "Ana",
+            "Ana",
+            "Uma",
+            "Ivy",
+            "Ana",
+            "Uma",
+            "Leo",
+            "Ana"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Boris",
+            "Uma",
+            "Uma",
+            "Uma",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Boris",
+            "Uma",
+            "Uma",
+            "Uma",
+            "Boris",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Boris",
+            "Boris",
+            "Uma",
+            "Uma"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": ["Kai", "Leo", "Kai", "Kai", "Kai", "Kai", "Leo", "Kai", "Leo", "Leo", "Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": { "$list": ["Cara", "Cara", "Cara", "Cara", "Cara", "Cara", "Cara"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Cara",
+            "Cara",
+            "Cara",
+            "Cara",
+            "Ivy",
+            "Rex",
+            "Cara",
+            "Ivy",
+            "Ivy",
+            "Rex",
+            "Cara",
+            "Rex",
+            "Cara",
+            "Ivy",
+            "Cara"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": ["Nia", "Boris", "Boris", "Nia", "Nia", "Nia", "Nia", "Nia", "Leo", "Nia"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "results": { "$list": ["Kai", "Nia", "Kai", "Kai", "Kai", "Kai", "Kai"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": { "$list": ["Max", "Max", "Max", "Max", "Max", "Max", "Max", "Max"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Uma",
+            "Uma",
+            "Boris",
+            "Boris",
+            "Uma",
+            "Kai",
+            "Kai",
+            "Kai",
+            "Tommy",
+            "Uma",
+            "Boris",
+            "Tommy",
+            "Kai",
+            "Uma",
+            "Boris",
+            "Uma",
+            "Kai",
+            "Uma",
+            "Leo",
+            "Kai",
+            "Uma"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "results": { "$list": ["Leo", "Leo", "Leo"] } }, "generated": true },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Max",
+            "Ivy",
+            "Max",
+            "Max",
+            "Ana",
+            "Max",
+            "Ivy",
+            "Ivy",
+            "Max",
+            "Tommy",
+            "Zoe",
+            "Ivy",
+            "Ivy",
+            "Ivy",
+            "Ana",
+            "Ana",
+            "Zoe",
+            "Zoe",
+            "Zoe",
+            "Ana",
+            "Max",
+            "Boris",
+            "Tommy",
+            "Ivy",
+            "Ivy",
+            "Zoe",
+            "Ana",
+            "Ana",
+            "Ana"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": { "$list": ["Uma", "Max", "Uma", "Max", "Uma", "Uma", "Uma", "Uma", "Max"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Rex",
+            "Zoe",
+            "Boris",
+            "Zoe",
+            "Rex",
+            "Rex",
+            "Rex",
+            "Zoe",
+            "Zoe",
+            "Leo",
+            "Max",
+            "Rex",
+            "Zoe",
+            "Zoe",
+            "Boris",
+            "Rex",
+            "Rex",
+            "Max",
+            "Zoe",
+            "Boris",
+            "Zoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "results": {
+          "$list": [
+            "Ana",
+            "Ivy",
+            "Ivy",
+            "Cara",
+            "Kai",
+            "Nia",
+            "Kai",
+            "Ana",
+            "Cara",
+            "Cara",
+            "Kai",
+            "Ivy",
+            "Cara",
+            "Uma",
+            "Kai",
+            "Cara",
+            "Ivy",
+            "Ana",
+            "Cara",
+            "Kai",
+            "Kai",
+            "Ivy",
+            "Cara",
+            "Nia",
+            "Nia",
+            "Uma",
+            "Kai",
+            "Ana",
+            "Cara",
+            "Ana",
+            "Ivy"
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }

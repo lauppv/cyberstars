@@ -1,56 +1,278 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "clean" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "items" }, { "kind": "loop" }] },
   "cases": [
     {
       "visible": true,
       "inject": {
-        "items": {
-          "$list": ["milk", "con-eggs", "bread", "butter", "cheese", "con-oil", "jam"]
-        }
+        "items": { "$list": ["milk", "con-eggs", "bread", "butter", "cheese", "con-oil", "jam"] }
       }
     },
     {
       "visible": true,
       "inject": {
-        "items": {
-          "$list": ["con-water", "apple", "flour", "salt", "butter", "extra", "sugar"]
-        }
+        "items": { "$list": ["con-water", "apple", "flour", "salt", "butter", "extra", "sugar"] }
       }
+    },
+    { "inject": { "items": { "$list": ["butter", "milk", "bread", "cheese"] } } },
+    { "inject": { "items": { "$list": ["milk", "con-x", "bread", "cheese", "jam"] } } },
+    { "inject": { "items": { "$list": ["con-a", "con-b", "con-c"] } } },
+    {
+      "inject": {
+        "items": { "$list": ["con-milk", "eggs", "con-jam", "flour", "sugar", "butter", "rice"] }
+      }
+    },
+    { "inject": { "items": { "$list": [] } }, "generated": true },
+    { "inject": { "items": { "$list": ["butter"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-butter"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-butter", "milk"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["milk", "butter", "butter", "jam"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-butter", "butter", "jam"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["milk", "bread", "cheese"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["cone", "con-milk", "butter"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-eggs", "con-jam", "butter"] } }, "generated": true },
+    {
+      "inject": { "items": { "$list": ["jam", "honey", "tea", "rice", "salt", "butter"] } },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["butter", "con-milk"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-tea"] } }, "generated": true },
+    {
+      "inject": { "items": { "$list": ["con-jam", "yogurt", "jam", "con-flour", "milk"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": { "$list": ["con-milk", "yogurt", "butter", "rice", "tea", "rice", "con-sugar"] }
+      },
+      "generated": true
     },
     {
       "inject": {
         "items": {
-          "$list": ["butter", "milk", "bread", "cheese"]
+          "$list": ["tea", "tea", "cheese", "con-rice", "yogurt", "honey", "salt", "con-butter"]
         }
-      }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": { "$list": ["con-honey", "con-rice", "con-yogurt", "sugar", "flour", "yogurt"] }
+      },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["honey", "con-tea"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-cone"] } }, "generated": true },
+    {
+      "inject": {
+        "items": { "$list": ["jam", "rice", "oil", "con-oil", "yogurt", "sugar", "flour", "bread"] }
+      },
+      "generated": true
     },
     {
       "inject": {
         "items": {
-          "$list": ["milk", "con-x", "bread", "cheese", "jam"]
+          "$list": [
+            "bread",
+            "con-apple",
+            "con-flour",
+            "con-cheese",
+            "jam",
+            "butter",
+            "bread",
+            "apple",
+            "milk",
+            "con-salt"
+          ]
         }
-      }
+      },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["rice", "eggs"] } }, "generated": true },
+    {
+      "inject": {
+        "items": {
+          "$list": [
+            "bread",
+            "butter",
+            "con-cone",
+            "cone",
+            "con-flour",
+            "con-bread",
+            "con-jam",
+            "rice"
+          ]
+        }
+      },
+      "generated": true
     },
     {
       "inject": {
         "items": {
-          "$list": ["con-a", "con-b", "con-c"]
+          "$list": ["flour", "con-sugar", "con-sugar", "tea", "con-oil", "apple", "con-eggs"]
         }
-      }
+      },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["milk", "salt"] } }, "generated": true },
+    {
+      "inject": { "items": { "$list": ["water", "con-salt", "yogurt", "con-bread"] } },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["con-jam", "con-salt"] } }, "generated": true },
+    {
+      "inject": {
+        "items": {
+          "$list": [
+            "con-bread",
+            "con-cheese",
+            "con-honey",
+            "tea",
+            "butter",
+            "yogurt",
+            "bread",
+            "con-yogurt",
+            "sugar",
+            "yogurt"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["oil", "butter"] } }, "generated": true },
+    {
+      "inject": { "items": { "$list": ["flour", "butter", "con-sugar", "honey", "con-water"] } },
+      "generated": true
     },
     {
       "inject": {
         "items": {
-          "$list": ["con-milk", "eggs", "con-jam", "flour", "sugar", "butter", "rice"]
+          "$list": [
+            "butter",
+            "bread",
+            "butter",
+            "con-oil",
+            "salt",
+            "con-salt",
+            "con-oil",
+            "butter",
+            "butter",
+            "cheese"
+          ]
         }
-      }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": [
+            "eggs",
+            "tea",
+            "con-salt",
+            "bread",
+            "butter",
+            "con-water",
+            "rice",
+            "con-yogurt",
+            "milk"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": [
+            "butter",
+            "con-apple",
+            "con-sugar",
+            "oil",
+            "cone",
+            "yogurt",
+            "honey",
+            "con-water",
+            "flour"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["bread"] } }, "generated": true },
+    {
+      "inject": {
+        "items": {
+          "$list": ["jam", "con-milk", "salt", "butter", "bread", "con-tea", "butter", "yogurt"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "items": { "$list": ["yogurt", "tea", "rice", "con-milk", "sugar"] } },
+      "generated": true
+    },
+    {
+      "inject": { "items": { "$list": ["milk", "apple", "bread", "tea", "con-butter", "cheese"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": { "$list": ["honey", "yogurt", "sugar", "eggs", "con-yogurt", "con-jam"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": [
+            "butter",
+            "yogurt",
+            "milk",
+            "oil",
+            "con-cone",
+            "tea",
+            "butter",
+            "rice",
+            "con-cheese",
+            "apple"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": { "$list": ["cone", "salt", "milk", "honey", "con-cone", "bread", "butter"] }
+      },
+      "generated": true
+    },
+    { "inject": { "items": { "$list": ["butter", "salt", "flour", "salt"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["con-eggs"] } }, "generated": true },
+    { "inject": { "items": { "$list": ["eggs", "flour"] } }, "generated": true },
+    {
+      "inject": {
+        "items": { "$list": ["con-milk", "con-jam", "butter", "con-jam", "tea", "cone"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "items": {
+          "$list": [
+            "con-bread",
+            "con-bread",
+            "jam",
+            "butter",
+            "salt",
+            "sugar",
+            "con-tea",
+            "rice",
+            "flour"
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }

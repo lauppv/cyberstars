@@ -2,11 +2,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "purchases" },
-      { "kind": "call", "name": "put" },
-      { "kind": "call", "name": "get" },
       { "kind": "call", "name": "sort" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -18,16 +15,127 @@
         }
       }
     },
-    {
-      "inject": { "purchases": { "$list": ["Uzi", "Uzi", "Uzi", "Uzi", "Rifle", "Grenade"] } }
-    },
+    { "inject": { "purchases": { "$list": ["Uzi", "Uzi", "Uzi", "Uzi", "Rifle", "Grenade"] } } },
     {
       "inject": {
         "purchases": { "$list": ["Sniper", "Sniper", "Machete", "Machete", "Machete", "Rocket"] }
       }
     },
+    { "inject": { "purchases": { "$list": ["Katana", "Katana", "Chainsaw"] } } },
+    { "inject": { "purchases": { "$list": ["Uzi"] } } },
+    { "inject": { "purchases": { "$list": ["Bat", "Knife", "Bat"] } } },
+    { "inject": { "purchases": { "$list": ["Katana", "Chainsaw", "Knife", "Katana"] } } },
     {
-      "inject": { "purchases": { "$list": ["Katana", "Katana", "Chainsaw"] } }
+      "inject": {
+        "purchases": {
+          "$list": [
+            "Bat",
+            "Python",
+            "Knife",
+            "Knife",
+            "Python",
+            "Knife",
+            "Bat",
+            "Bat",
+            "Python",
+            "Bat",
+            "Bat",
+            "Python",
+            "Bat",
+            "Python",
+            "Python",
+            "Python",
+            "Knife"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "purchases": {
+          "$list": [
+            "Automatic",
+            "Automatic",
+            "Automatic",
+            "Automatic",
+            "Grenade",
+            "Automatic",
+            "Automatic",
+            "Grenade",
+            "Automatic",
+            "Automatic",
+            "Automatic",
+            "Minigun",
+            "Automatic",
+            "Grenade",
+            "Grenade",
+            "Automatic",
+            "Minigun",
+            "Grenade",
+            "Automatic",
+            "Grenade",
+            "Minigun",
+            "Grenade"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "purchases": {
+          "$list": [
+            "Python",
+            "Machete",
+            "Uzi",
+            "Knife",
+            "Python",
+            "Knife",
+            "Knife",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Machete",
+            "Uzi",
+            "Machete",
+            "Machete",
+            "Uzi",
+            "Uzi",
+            "Uzi",
+            "Python",
+            "Uzi",
+            "Uzi"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "purchases": {
+          "$list": [
+            "Grenade",
+            "Shotgun",
+            "Sniper",
+            "Sniper",
+            "Grenade",
+            "Uzi",
+            "Sniper",
+            "Sniper",
+            "Shotgun",
+            "Uzi"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "purchases": {
+          "$list": ["Flamethrower", "Rifle", "Molotov", "Flamethrower", "Flamethrower", "Pistol"]
+        }
+      }
     }
-  ]
+  ],
+  "comparator": "unordered"
 }

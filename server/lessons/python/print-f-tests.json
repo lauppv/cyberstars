@@ -1,7 +1,13 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "pilot" },
+      { "kind": "variable", "name": "ship_name" },
+      { "kind": "variable", "name": "fuel" },
+      { "kind": "variable", "name": "speed" },
+      { "kind": "fstring" }
+    ]
   },
   "cases": [
     {
@@ -12,6 +18,118 @@
     {
       "inject": { "pilot": "Big Mitch", "ship_name": "Vice Star", "fuel": 999999, "speed": 12.25 }
     },
-    { "inject": { "pilot": "Rex", "ship_name": "Aurora", "fuel": 1, "speed": 99.9 } }
+    { "inject": { "pilot": "Rex", "ship_name": "Aurora", "fuel": 1, "speed": 99.9 } },
+    {
+      "inject": { "pilot": "Kai", "ship_name": "Nebula One", "fuel": 1234, "speed": 2.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "ship_name": "Hermes", "fuel": 9, "speed": 7.0 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Tom", "ship_name": "Orion", "fuel": 7, "speed": 100.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ana", "ship_name": "Falcon", "fuel": 5000, "speed": 19.95 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "ship_name": "Comet", "fuel": 2, "speed": 11.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Mira Stone", "ship_name": "Orion", "fuel": 9, "speed": 5.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ada", "ship_name": "Apollo", "fuel": 1, "speed": 15.6 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ana", "ship_name": "Comet", "fuel": 1, "speed": 11.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Max", "ship_name": "Atlas", "fuel": 5000, "speed": 0.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Oana", "ship_name": "Falcon", "fuel": 401, "speed": 11.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ada", "ship_name": "Nebula One", "fuel": 9, "speed": 100.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Kai", "ship_name": "Falcon", "fuel": 860, "speed": 3.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Tom", "ship_name": "Orion", "fuel": 100, "speed": 2.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ada", "ship_name": "Hermes", "fuel": 5000, "speed": 33.3 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "ship_name": "Titan", "fuel": 75000, "speed": 7.0 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Iris", "ship_name": "Comet", "fuel": 99, "speed": 5.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "ship_name": "Titan", "fuel": 401, "speed": 120.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "ship_name": "Pioneer", "fuel": 75000, "speed": 0.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Tom", "ship_name": "Falcon", "fuel": 9, "speed": 120.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Mira Stone", "ship_name": "Nebula One", "fuel": 512, "speed": 0.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "ship_name": "Star Runner", "fuel": 1, "speed": 3.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Sky", "ship_name": "Hermes", "fuel": 512, "speed": 33.3 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "ship_name": "Pioneer", "fuel": 33, "speed": 64.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "ship_name": "Falcon", "fuel": 400, "speed": 2.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "ship_name": "Apollo", "fuel": 2, "speed": 2.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "ship_name": "Atlas", "fuel": 75000, "speed": 0.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "ship_name": "Star Runner", "fuel": 1000, "speed": 1.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "ship_name": "Pioneer", "fuel": 99, "speed": 10.0 },
+      "generated": true
+    }
   ]
 }

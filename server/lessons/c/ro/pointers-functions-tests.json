@@ -2,14 +2,48 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "tripleaza" },
+      { "kind": "call", "name": "tripleaza" },
       { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "pointer" },
+      { "kind": "deref" }
     ]
   },
   "cases": [
     { "visible": true, "stdin": "5\n" },
+    { "visible": true, "stdin": "10\n" },
     { "stdin": "0\n" },
     { "stdin": "-4\n" },
-    { "stdin": "100\n" }
+    { "stdin": "100\n" },
+    { "stdin": "1\n", "generated": true },
+    { "stdin": "-1\n", "generated": true },
+    { "stdin": "2\n", "generated": true },
+    { "stdin": "3\n", "generated": true },
+    { "stdin": "7\n", "generated": true },
+    { "stdin": "-7\n", "generated": true },
+    { "stdin": "9\n", "generated": true },
+    { "stdin": "11\n", "generated": true },
+    { "stdin": "33\n", "generated": true },
+    { "stdin": "50\n", "generated": true },
+    { "stdin": "-50\n", "generated": true },
+    { "stdin": "99\n", "generated": true },
+    { "stdin": "101\n", "generated": true },
+    { "stdin": "255\n", "generated": true },
+    { "stdin": "256\n", "generated": true },
+    { "stdin": "-1000\n", "generated": true },
+    { "stdin": "1000\n", "generated": true },
+    { "stdin": "4096\n", "generated": true },
+    { "stdin": "12345\n", "generated": true },
+    { "stdin": "-99999\n", "generated": true },
+    { "stdin": "99999\n", "generated": true },
+    { "stdin": "333333\n", "generated": true },
+    { "stdin": "-333333\n", "generated": true },
+    { "stdin": "700000000\n", "generated": true },
+    { "stdin": "-700000000\n", "generated": true },
+    { "stdin": "-36841\n", "generated": true },
+    { "stdin": "47513\n", "generated": true },
+    { "stdin": "-74340\n", "generated": true },
+    { "stdin": "-11828\n", "generated": true },
+    { "stdin": "74568\n", "generated": true },
+    { "stdin": "-36175\n", "generated": true }
   ]
 }

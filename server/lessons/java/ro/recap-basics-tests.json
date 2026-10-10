@@ -7,8 +7,7 @@
       { "kind": "variable", "name": "pret2" },
       { "kind": "variable", "name": "produs3" },
       { "kind": "variable", "name": "pret3" },
-      { "kind": "variable", "name": "taxa" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "taxa" }
     ]
   },
   "cases": [
@@ -56,6 +55,198 @@
         "pret3": 0.05,
         "taxa": 5
       }
+    },
+    {
+      "inject": {
+        "produs1": "Modul oxigen",
+        "pret1": 1,
+        "produs2": "Celula combustibil",
+        "pret2": 2,
+        "produs3": "Gustare spatiala",
+        "pret3": 3,
+        "taxa": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Filtru apa",
+        "pret1": 10.0,
+        "produs2": "Banda adeziva",
+        "pret2": 20.0,
+        "produs3": "Modul oxigen",
+        "pret3": 30.0,
+        "taxa": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Baterie solara",
+        "pret1": 5.0,
+        "produs2": "Casca",
+        "pret2": 5.0,
+        "produs3": "Kit cabluri",
+        "pret3": 5.0,
+        "taxa": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Celula combustibil",
+        "pret1": 6.51,
+        "produs2": "Baterie solara",
+        "pret2": 1956.97,
+        "produs3": "Drona reparatii",
+        "pret3": 4.33,
+        "taxa": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Filtru aer",
+        "pret1": 11.04,
+        "produs2": "Kit cabluri",
+        "pret2": 654.66,
+        "produs3": "Set baterii",
+        "pret3": 7.96,
+        "taxa": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Set baterii",
+        "pret1": 1927.28,
+        "produs2": "Radio",
+        "pret2": 1954.0,
+        "produs3": "Radio",
+        "pret3": 2280.28,
+        "taxa": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Computer navigatie",
+        "pret1": 258.28,
+        "produs2": "Filtru apa",
+        "pret2": 9.34,
+        "produs3": "Celula combustibil",
+        "pret3": 1110.24,
+        "taxa": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Kit cabluri",
+        "pret1": 440.07,
+        "produs2": "Computer navigatie",
+        "pret2": 12.2,
+        "produs3": "Punga apa",
+        "pret3": 15.15,
+        "taxa": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Banda adeziva",
+        "pret1": 295.05,
+        "produs2": "Guma",
+        "pret2": 188.09,
+        "produs3": "Filtru apa",
+        "pret3": 1174.85,
+        "taxa": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Gustare spatiala",
+        "pret1": 2117.82,
+        "produs2": "Modul oxigen",
+        "pret2": 1464.48,
+        "produs3": "Banda adeziva",
+        "pret3": 1388.66,
+        "taxa": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Punga apa",
+        "pret1": 1218.58,
+        "produs2": "Set baterii",
+        "pret2": 4.99,
+        "produs3": "Trusa medicala",
+        "pret3": 3.37,
+        "taxa": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Guma",
+        "pret1": 21.96,
+        "produs2": "Punga apa",
+        "pret2": 813.73,
+        "produs3": "Computer navigatie",
+        "pret3": 334.38,
+        "taxa": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Radio",
+        "pret1": 209.18,
+        "produs2": "Trusa medicala",
+        "pret2": 1.29,
+        "produs3": "Casca",
+        "pret3": 755.95,
+        "taxa": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Casca",
+        "pret1": 10.76,
+        "produs2": "Filtru aer",
+        "pret2": 314.75,
+        "produs3": "Filtru aer",
+        "pret3": 19.11,
+        "taxa": 99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Drona reparatii",
+        "pret1": 19.86,
+        "produs2": "Gustare spatiala",
+        "pret2": 379.84,
+        "produs3": "Guma",
+        "pret3": 557.74,
+        "taxa": 24
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "produs1": "Trusa medicala",
+        "pret1": 567.61,
+        "produs2": "Drona reparatii",
+        "pret2": 328.6,
+        "produs3": "Baterie solara",
+        "pret3": 10.39,
+        "taxa": 21
+      },
+      "generated": true
     }
   ]
 }

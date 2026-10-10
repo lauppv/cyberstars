@@ -8,8 +8,7 @@
       { "kind": "variable", "name": "missions4" },
       { "kind": "function", "name": "compareTo" },
       { "kind": "call", "name": "sort" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "implements" }
     ]
   },
   "cases": [
@@ -19,6 +18,54 @@
     },
     { "inject": { "missions1": 5, "missions2": 90, "missions3": 40, "missions4": 15 } },
     { "inject": { "missions1": 100, "missions2": 3, "missions3": 77, "missions4": 60 } },
-    { "inject": { "missions1": 1, "missions2": 2, "missions3": 4, "missions4": 3 } }
+    { "inject": { "missions1": 1, "missions2": 2, "missions3": 4, "missions4": 3 } },
+    {
+      "inject": { "missions1": 1, "missions2": 2, "missions3": 3, "missions4": 4 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 4, "missions2": 3, "missions3": 2, "missions4": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 0, "missions2": 1, "missions3": 2, "missions4": 3 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 3, "missions2": 2, "missions3": 1, "missions4": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 2, "missions2": 4, "missions3": 1, "missions4": 3 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 10, "missions2": 100, "missions3": 1000, "missions4": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 999, "missions2": 0, "missions3": 500, "missions4": 250 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 8, "missions2": 12, "missions3": 23, "missions4": 47 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 47, "missions2": 23, "missions3": 12, "missions4": 8 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 5, "missions2": 6, "missions3": 4, "missions4": 7 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 31, "missions2": 29, "missions3": 30, "missions4": 28 },
+      "generated": true
+    },
+    {
+      "inject": { "missions1": 0, "missions2": 9999, "missions3": 5000, "missions4": 1 },
+      "generated": true
+    }
   ]
 }

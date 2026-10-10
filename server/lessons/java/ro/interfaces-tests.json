@@ -3,11 +3,14 @@
     "requires": [
       { "kind": "call", "name": "Carte" },
       { "kind": "call", "name": "Film" },
+      { "kind": "function", "name": "afiseazaInfo" },
+      { "kind": "call", "name": "afiseazaInfo" },
       { "kind": "variable", "name": "titlu1" },
       { "kind": "variable", "name": "autor1" },
       { "kind": "variable", "name": "titlu2" },
       { "kind": "variable", "name": "regizor2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "interface" },
+      { "kind": "implements" }
     ]
   },
   "cases": [
@@ -43,6 +46,73 @@
         "titlu2": "The Driver",
         "regizor2": "Walter Hill"
       }
+    },
+    {
+      "inject": {
+        "titlu1": "Dune",
+        "autor1": "Frank Herbert",
+        "titlu2": "Alien",
+        "regizor2": "Ridley Scott"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu1": "It",
+        "autor1": "Stephen King",
+        "titlu2": "Jaws",
+        "regizor2": "Steven Spielberg"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "titlu1": "A", "autor1": "B", "titlu2": "C", "regizor2": "D" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu1": "The Hobbit",
+        "autor1": "J. R. R. Tolkien",
+        "titlu2": "Heat",
+        "regizor2": "Michael Mann"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu1": "Neuromancer",
+        "autor1": "William Gibson",
+        "titlu2": "Blade Runner",
+        "regizor2": "Ridley Scott"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu1": "1984",
+        "autor1": "George Orwell",
+        "titlu2": "Brazil",
+        "regizor2": "Terry Gilliam"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu1": "Sea Breeze",
+        "autor1": "Tommy Vercetti",
+        "titlu2": "Sea Breeze",
+        "regizor2": "Tommy Vercetti"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu1": "Foundation",
+        "autor1": "Isaac Asimov",
+        "titlu2": "Solaris",
+        "regizor2": "Andrei Tarkovsky"
+      },
+      "generated": true
     }
   ]
 }

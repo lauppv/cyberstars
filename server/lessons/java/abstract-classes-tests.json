@@ -6,16 +6,22 @@
       { "kind": "function", "name": "topSpeed" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "name2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "modifier", "name": "abstract" },
+      { "kind": "extends" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "name1": "Infernus", "name2": "Angel" }
-    },
+    { "visible": true, "inject": { "name1": "Infernus", "name2": "Angel" } },
     { "inject": { "name1": "Cheetah", "name2": "PCJ600" } },
     { "inject": { "name1": "Banshee", "name2": "Freeway" } },
-    { "inject": { "name1": "Comet", "name2": "Sanchez" } }
+    { "inject": { "name1": "Comet", "name2": "Sanchez" } },
+    { "inject": { "name1": "Turismo", "name2": "Faggio" }, "generated": true },
+    { "inject": { "name1": "Angel", "name2": "Infernus" }, "generated": true },
+    { "inject": { "name1": "Stinger", "name2": "Stinger" }, "generated": true },
+    { "inject": { "name1": "Z", "name2": "Q" }, "generated": true },
+    { "inject": { "name1": "Hotring Racer", "name2": "Pizza Boy" }, "generated": true },
+    { "inject": { "name1": "Phoenix 2", "name2": "BF-400" }, "generated": true },
+    { "inject": { "name1": "Sabre Turbo", "name2": "Sanchez" }, "generated": true },
+    { "inject": { "name1": "deluxo", "name2": "freeway" }, "generated": true }
   ]
 }

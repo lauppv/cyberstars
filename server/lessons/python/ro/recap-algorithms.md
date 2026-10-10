@@ -4,7 +4,7 @@ Combină **căutarea liniară**, **dicționarul de frecvențe**, **bubble sort**
 
 ## Misiune: Clasamentul Misiunilor
 
-De fiecare dată când un membru al echipajului finalizează o misiune, numele lui este înregistrat. Fiecare apariție contează ca **o victorie**. Mission Control vrea un clasament ordonat.
+De fiecare dată când un membru al echipajului finalizează o misiune, numele lui este înregistrat într-o listă numită rezultate. Fiecare apariție contează ca **o victorie**. Mission Control vrea un clasament ordonat.
 
 Pune cap la cap tot din acest capitol:
 

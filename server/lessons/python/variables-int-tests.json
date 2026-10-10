@@ -1,14 +1,52 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "variable", "name": "total" }],
-    "forbids": [{ "kind": "int_literal", "values": [400, 350] }]
+    "requires": [
+      { "kind": "variable", "name": "tank_a" },
+      { "kind": "variable", "name": "tank_b" },
+      { "kind": "variable", "name": "tank_c" }
+    ]
   },
   "cases": [
     { "visible": true, "inject": { "tank_a": 120, "tank_b": 80, "tank_c": 200 } },
     { "inject": { "tank_a": 0, "tank_b": 0, "tank_c": 0 } },
     { "inject": { "tank_a": 15, "tank_b": 20, "tank_c": 10 } },
     { "inject": { "tank_a": 999999, "tank_b": 1, "tank_c": 0 } },
-    { "inject": { "tank_a": 50, "tank_b": 0, "tank_c": 0 } }
+    { "inject": { "tank_a": 50, "tank_b": 0, "tank_c": 0 } },
+    { "inject": { "tank_a": 1, "tank_b": 2, "tank_c": 3 }, "generated": true },
+    { "inject": { "tank_a": 50, "tank_b": 50, "tank_c": 50 }, "generated": true },
+    { "inject": { "tank_a": 0, "tank_b": 0, "tank_c": 50 }, "generated": true },
+    { "inject": { "tank_a": 0, "tank_b": 0, "tank_c": 49 }, "generated": true },
+    { "inject": { "tank_a": 0, "tank_b": 0, "tank_c": 51 }, "generated": true },
+    { "inject": { "tank_a": 100, "tank_b": 0, "tank_c": 0 }, "generated": true },
+    { "inject": { "tank_a": 0, "tank_b": 100, "tank_c": 0 }, "generated": true },
+    { "inject": { "tank_a": 0, "tank_b": 0, "tank_c": 100 }, "generated": true },
+    { "inject": { "tank_a": 25, "tank_b": 25, "tank_c": 0 }, "generated": true },
+    { "inject": { "tank_a": 10, "tank_b": 20, "tank_c": 30 }, "generated": true },
+    { "inject": { "tank_a": 1000, "tank_b": 2000, "tank_c": 3000 }, "generated": true },
+    { "inject": { "tank_a": 7, "tank_b": 7, "tank_c": 7 }, "generated": true },
+    { "inject": { "tank_a": 400, "tank_b": 0, "tank_c": 0 }, "generated": true },
+    { "inject": { "tank_a": 120, "tank_b": 80, "tank_c": 201 }, "generated": true },
+    { "inject": { "tank_a": 5, "tank_b": 0, "tank_c": 45 }, "generated": true },
+    { "inject": { "tank_a": 47044, "tank_b": 18767, "tank_c": 32 }, "generated": true },
+    { "inject": { "tank_a": 560, "tank_b": 993, "tank_c": 99 }, "generated": true },
+    { "inject": { "tank_a": 466, "tank_b": 80, "tank_c": 44609 }, "generated": true },
+    { "inject": { "tank_a": 1695, "tank_b": 225, "tank_c": 3 }, "generated": true },
+    { "inject": { "tank_a": 513, "tank_b": 42999, "tank_c": 39606 }, "generated": true },
+    { "inject": { "tank_a": 81, "tank_b": 32891, "tank_c": 298 }, "generated": true },
+    { "inject": { "tank_a": 323, "tank_b": 64, "tank_c": 11 }, "generated": true },
+    { "inject": { "tank_a": 265, "tank_b": 35456, "tank_c": 32485 }, "generated": true },
+    { "inject": { "tank_a": 647, "tank_b": 596, "tank_c": 709 }, "generated": true },
+    { "inject": { "tank_a": 503, "tank_b": 5354, "tank_c": 600 }, "generated": true },
+    { "inject": { "tank_a": 2252, "tank_b": 533, "tank_c": 683 }, "generated": true },
+    { "inject": { "tank_a": 20810, "tank_b": 42183, "tank_c": 60 }, "generated": true },
+    { "inject": { "tank_a": 49, "tank_b": 1023, "tank_c": 389 }, "generated": true },
+    { "inject": { "tank_a": 32, "tank_b": 99, "tank_c": 993 }, "generated": true },
+    { "inject": { "tank_a": 14621, "tank_b": 20095, "tank_c": 3066 }, "generated": true },
+    { "inject": { "tank_a": 11370, "tank_b": 961, "tank_c": 493 }, "generated": true },
+    { "inject": { "tank_a": 666, "tank_b": 17207, "tank_c": 54 }, "generated": true },
+    { "inject": { "tank_a": 33, "tank_b": 25, "tank_c": 364 }, "generated": true },
+    { "inject": { "tank_a": 16, "tank_b": 362, "tank_c": 69 }, "generated": true },
+    { "inject": { "tank_a": 56, "tank_b": 92, "tank_c": 43398 }, "generated": true }
   ]
 }

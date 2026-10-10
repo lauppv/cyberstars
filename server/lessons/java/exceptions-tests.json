@@ -4,16 +4,29 @@
       { "kind": "variable", "name": "reports" },
       { "kind": "loop" },
       { "kind": "call", "name": "parseInt" },
-      { "kind": "call", "name": "println" }
+      { "kind": "try" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "reports": { "$list": ["7500", "dunno", "23000", "error"] } }
-    },
+    { "visible": true, "inject": { "reports": { "$list": ["7500", "dunno", "23000", "error"] } } },
     { "inject": { "reports": { "$list": ["100", "200", "300"] } } },
     { "inject": { "reports": { "$list": ["oops", "abc", "N/A"] } } },
-    { "inject": { "reports": { "$list": ["42", "bad", "0", "lost", "9999", "x"] } } }
+    { "inject": { "reports": { "$list": ["42", "bad", "0", "lost", "9999", "x"] } } },
+    { "inject": { "reports": { "$list": ["7500"] } }, "generated": true },
+    { "inject": { "reports": { "$list": ["abc"] } }, "generated": true },
+    { "inject": { "reports": { "$list": [] } }, "generated": true },
+    { "inject": { "reports": { "$list": ["0", "0", "0"] } }, "generated": true },
+    { "inject": { "reports": { "$list": ["-300", "12a", "1.5", ""] } }, "generated": true },
+    { "inject": { "reports": { "$list": ["9999999999", "2147483647"] } }, "generated": true },
+    {
+      "inject": { "reports": { "$list": ["23000", "7500", "x", "y", "z", "1"] } },
+      "generated": true
+    },
+    { "inject": { "reports": { "$list": ["N/A", "N/A", "500", "500"] } }, "generated": true },
+    { "inject": { "reports": { "$list": ["1 000", "1000", "one thousand"] } }, "generated": true },
+    {
+      "inject": { "reports": { "$list": ["5", "10", "15", "20", "25", "30", "35", "40"] } },
+      "generated": true
+    }
   ]
 }

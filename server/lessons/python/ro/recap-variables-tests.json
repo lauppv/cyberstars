@@ -1,7 +1,14 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "nume" },
+      { "kind": "variable", "name": "nivel" },
+      { "kind": "variable", "name": "viata" },
+      { "kind": "variable", "name": "breasla" },
+      { "kind": "fstring" },
+      { "kind": "call", "name": "print" }
+    ]
   },
   "cases": [
     {
@@ -10,6 +17,143 @@
     },
     { "inject": { "nume": "Vercetti", "nivel": 1, "viata": 0.5, "breasla": "Vice" } },
     { "inject": { "nume": "Nova", "nivel": 100, "viata": 99.9, "breasla": "Laniakea" } },
-    { "inject": { "nume": "breasla", "nivel": 0, "viata": 12.75, "breasla": "nume" } }
+    { "inject": { "nume": "breasla", "nivel": 0, "viata": 12.75, "breasla": "nume" } },
+    {
+      "inject": { "nume": "Ace", "nivel": 0, "viata": 100.0, "breasla": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Blaze", "nivel": 2, "viata": 3.14, "breasla": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Kira", "nivel": 10, "viata": 0.1, "breasla": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Z", "nivel": 100, "viata": 10.5, "breasla": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Neo", "nivel": 15, "viata": 0.0, "breasla": "Night Owls" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Luna Star", "nivel": 50, "viata": 99.99, "breasla": "X" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Raven", "nivel": 250, "viata": 88.8, "breasla": "Void" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Echo", "nivel": 1000, "viata": 25.75, "breasla": "Iron Wolves" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Bit", "nivel": 1, "viata": 1.5, "breasla": "Red Dawn" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Pixel", "nivel": 9, "viata": 75.5, "breasla": "Star Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Orion", "nivel": 99, "viata": 42.42, "breasla": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Mira", "nivel": 7, "viata": 99.5, "breasla": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Jax", "nivel": 33, "viata": 50.25, "breasla": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Sol", "nivel": 64, "viata": 12.0, "breasla": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Vex", "nivel": 999, "viata": 66.6, "breasla": "Night Owls" },
+      "generated": true
+    },
+    { "inject": { "nume": "Ace", "nivel": 33, "viata": 3.14, "breasla": "X" }, "generated": true },
+    {
+      "inject": { "nume": "Blaze", "nivel": 64, "viata": 99.99, "breasla": "Void" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Kira", "nivel": 250, "viata": 66.6, "breasla": "Iron Wolves" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Z", "nivel": 999, "viata": 66.6, "breasla": "Red Dawn" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Neo", "nivel": 50, "viata": 99.5, "breasla": "Star Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Luna Star", "nivel": 15, "viata": 100.0, "breasla": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Raven", "nivel": 999, "viata": 12.0, "breasla": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Echo", "nivel": 250, "viata": 50.25, "breasla": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Bit", "nivel": 50, "viata": 100.0, "breasla": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Pixel", "nivel": 1000, "viata": 1.5, "breasla": "Night Owls" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Orion", "nivel": 1, "viata": 99.99, "breasla": "X" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Mira", "nivel": 7, "viata": 25.75, "breasla": "Void" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Jax", "nivel": 9, "viata": 75.5, "breasla": "Iron Wolves" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Sol", "nivel": 15, "viata": 0.0, "breasla": "Red Dawn" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Vex", "nivel": 33, "viata": 50.25, "breasla": "Star Forge" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Ace", "nivel": 0, "viata": 66.6, "breasla": "Nebula" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Blaze", "nivel": 9, "viata": 75.5, "breasla": "Comet" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Kira", "nivel": 10, "viata": 1.5, "breasla": "Byte Club" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Z", "nivel": 1000, "viata": 25.75, "breasla": "Aurora" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Neo", "nivel": 250, "viata": 75.5, "breasla": "Night Owls" },
+      "generated": true
+    }
   ]
 }

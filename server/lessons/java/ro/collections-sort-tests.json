@@ -8,8 +8,7 @@
       { "kind": "variable", "name": "misiuni4" },
       { "kind": "function", "name": "compareTo" },
       { "kind": "call", "name": "sort" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "implements" }
     ]
   },
   "cases": [
@@ -19,6 +18,36 @@
     },
     { "inject": { "misiuni1": 5, "misiuni2": 90, "misiuni3": 40, "misiuni4": 15 } },
     { "inject": { "misiuni1": 100, "misiuni2": 3, "misiuni3": 77, "misiuni4": 60 } },
-    { "inject": { "misiuni1": 1, "misiuni2": 2, "misiuni3": 4, "misiuni4": 3 } }
+    { "inject": { "misiuni1": 1, "misiuni2": 2, "misiuni3": 4, "misiuni4": 3 } },
+    { "inject": { "misiuni1": 1, "misiuni2": 2, "misiuni3": 3, "misiuni4": 4 }, "generated": true },
+    { "inject": { "misiuni1": 4, "misiuni2": 3, "misiuni3": 2, "misiuni4": 1 }, "generated": true },
+    { "inject": { "misiuni1": 0, "misiuni2": 1, "misiuni3": 2, "misiuni4": 3 }, "generated": true },
+    { "inject": { "misiuni1": 3, "misiuni2": 2, "misiuni3": 1, "misiuni4": 0 }, "generated": true },
+    { "inject": { "misiuni1": 2, "misiuni2": 4, "misiuni3": 1, "misiuni4": 3 }, "generated": true },
+    {
+      "inject": { "misiuni1": 10, "misiuni2": 100, "misiuni3": 1000, "misiuni4": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "misiuni1": 999, "misiuni2": 0, "misiuni3": 500, "misiuni4": 250 },
+      "generated": true
+    },
+    {
+      "inject": { "misiuni1": 8, "misiuni2": 12, "misiuni3": 23, "misiuni4": 47 },
+      "generated": true
+    },
+    {
+      "inject": { "misiuni1": 47, "misiuni2": 23, "misiuni3": 12, "misiuni4": 8 },
+      "generated": true
+    },
+    { "inject": { "misiuni1": 5, "misiuni2": 6, "misiuni3": 4, "misiuni4": 7 }, "generated": true },
+    {
+      "inject": { "misiuni1": 31, "misiuni2": 29, "misiuni3": 30, "misiuni4": 28 },
+      "generated": true
+    },
+    {
+      "inject": { "misiuni1": 0, "misiuni2": 9999, "misiuni3": 5000, "misiuni4": 1 },
+      "generated": true
+    }
   ]
 }

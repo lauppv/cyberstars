@@ -4,7 +4,7 @@
     "requires": [
       { "kind": "variable", "name": "oxigen" },
       { "kind": "variable", "name": "echipaj_la_bord" },
-      { "kind": "call", "name": "print" }
+      { "kind": "if" }
     ]
   },
   "cases": [
@@ -14,6 +14,34 @@
     { "inject": { "oxigen": 20, "echipaj_la_bord": false } },
     { "inject": { "oxigen": 19, "echipaj_la_bord": true } },
     { "inject": { "oxigen": 12, "echipaj_la_bord": false } },
-    { "inject": { "oxigen": 100, "echipaj_la_bord": false } }
+    { "inject": { "oxigen": 100, "echipaj_la_bord": false } },
+    { "inject": { "oxigen": 0, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 0, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 1, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 1, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 19, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 20, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 21, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 21, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 49, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 49, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 50, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 51, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 51, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 79, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 79, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 80, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 81, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 81, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 99, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 99, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 100, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 10, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 10, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 35, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 35, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 65, "echipaj_la_bord": false }, "generated": true },
+    { "inject": { "oxigen": 90, "echipaj_la_bord": true }, "generated": true },
+    { "inject": { "oxigen": 90, "echipaj_la_bord": false }, "generated": true }
   ]
 }

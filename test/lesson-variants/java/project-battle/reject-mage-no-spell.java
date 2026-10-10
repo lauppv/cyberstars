@@ -1,0 +1,63 @@
+class Character {
+    String name;
+    int health;
+    int attackPower;
+
+    Character(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+    }
+
+    void attack(Character target) {
+        target.health -= attackPower;
+        System.out.println(name + " attacks " + target.name + " for " + attackPower + " damage!");
+    }
+
+    void printStatus() {
+        System.out.println(name + " - HP: " + health);
+    }
+}
+
+class Warrior extends Character {
+    int armor;
+    Warrior(String name, int health, int attackPower, int armor) {
+        super(name, health, attackPower);
+        this.armor = armor;
+    }
+    void attack(Character target) {
+        target.health -= attackPower;
+        System.out.println(name + " swings sword at " + target.name + " for " + attackPower + " damage!");
+    }
+}
+
+class Mage extends Character {
+    int spellPower;
+    Mage(String name, int health, int attackPower, int spellPower) {
+        super(name, health, attackPower);
+        this.spellPower = spellPower;
+    }
+    void attack(Character target) {
+        target.health -= attackPower;
+        System.out.println(name + " casts spell on " + target.name + " for " + (attackPower + spellPower) + " damage!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        String name1 = "Tommy";
+        int health1 = 100;
+        int attack1 = 25;
+        int armor1 = 10;
+        String name2 = "Lance";
+        int health2 = 80;
+        int attack2 = 15;
+        int spell2 = 20;
+        Warrior w = new Warrior(name1, health1, attack1, armor1);
+        Mage m = new Mage(name2, health2, attack2, spell2);
+        w.attack(m);
+        m.printStatus();
+        m.attack(w);
+        w.printStatus();
+    }
+}

@@ -3,7 +3,9 @@
   "structure": {
     "requires": [
       { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
+      { "kind": "operator", "name": "//" },
+      { "kind": "operator", "name": "%" },
+      { "kind": "operator", "name": "**" }
     ]
   },
   "cases": [

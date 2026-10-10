@@ -167,7 +167,7 @@ None
 
 ## Misiune: Atlasul Galaxiilor
 
-În editor ai deja **cinci galaxii**, fiecare o **listă** cu zece nume de stele.
+În editor ai deja **cinci galaxii**, variabilele de la `galaxie1` la `galaxie5`, fiecare o **listă** cu zece nume de stele.
 
 Scrie **o singură** funcție numită `cea_mai_lunga_stea` care primește o galaxie (lista) și **returnează** numele stelei cu cele mai multe litere din acea galaxie.
 

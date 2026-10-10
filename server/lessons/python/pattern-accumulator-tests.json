@@ -1,25 +1,179 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "strengths" },
+      { "kind": "variable", "name": "code" },
+      { "kind": "loop", "type": "for" }
+    ]
   },
   "cases": [
     {
       "visible": true,
       "inject": { "strengths": { "$list": [30, 65, 20, 90, 50] }, "code": "ORBIT" }
     },
+    { "visible": true, "inject": { "strengths": { "$list": [51, 50, 100] }, "code": "AB" } },
+    { "inject": { "strengths": { "$list": [10] }, "code": "X" } },
+    { "inject": { "strengths": { "$list": [60, 70, 80] }, "code": "HELLO" } },
+    { "inject": { "strengths": { "$list": [1, 2, 3] }, "code": "SIGNAL" } },
+    { "inject": { "strengths": { "$list": [] }, "code": "Z" }, "generated": true },
+    { "inject": { "strengths": { "$list": [50] }, "code": "AA" }, "generated": true },
+    { "inject": { "strengths": { "$list": [51] }, "code": "AB" }, "generated": true },
+    { "inject": { "strengths": { "$list": [50, 50, 50] }, "code": "ABC" }, "generated": true },
+    { "inject": { "strengths": { "$list": [100, 99, 51] }, "code": "ZYX" }, "generated": true },
+    { "inject": { "strengths": { "$list": [0, 0, 0] }, "code": "LEVEL" }, "generated": true },
     {
-      "visible": true,
-      "inject": { "strengths": { "$list": [51, 50, 100] }, "code": "AB" }
+      "inject": { "strengths": { "$list": [49, 50, 51, 52] }, "code": "PROBE" },
+      "generated": true
     },
     {
-      "inject": { "strengths": { "$list": [10] }, "code": "X" }
+      "inject": { "strengths": { "$list": [90, 10, 90, 10] }, "code": "COMET" },
+      "generated": true
     },
     {
-      "inject": { "strengths": { "$list": [60, 70, 80] }, "code": "HELLO" }
+      "inject": {
+        "strengths": { "$list": [5, 15, 25, 35, 45, 55, 65, 75, 85, 95] },
+        "code": "SATELLITE"
+      },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [100] }, "code": "Q" }, "generated": true },
+    {
+      "inject": { "strengths": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }, "code": "NOON" },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [70, 60, 80] }, "code": "ROCKET" }, "generated": true },
+    { "inject": { "strengths": { "$list": [33, 77] }, "code": "MOON" }, "generated": true },
+    {
+      "inject": { "strengths": { "$list": [38, 13, 92, 50] }, "code": "ANTENNA" },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [2, 51] }, "code": "RADAR" }, "generated": true },
+    { "inject": { "strengths": { "$list": [28] }, "code": "VENUS" }, "generated": true },
+    {
+      "inject": { "strengths": { "$list": [99, 22, 13, 33, 27] }, "code": "E" },
+      "generated": true
     },
     {
-      "inject": { "strengths": { "$list": [1, 2, 3] }, "code": "SIGNAL" }
+      "inject": { "strengths": { "$list": [24, 21, 39, 37, 80] }, "code": "BFXZDC" },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [60, 35, 11, 70] }, "code": "E" }, "generated": true },
+    {
+      "inject": {
+        "strengths": { "$list": [90, 39, 97, 65, 24, 52, 54, 76, 36, 55] },
+        "code": "LASER"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [33, 5, 10, 5, 59] }, "code": "NEBULA" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "strengths": { "$list": [68, 82, 60, 89, 43, 18, 86, 25, 8] },
+        "code": "ASTEROID"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "strengths": { "$list": [80, 56, 35, 23, 45, 55, 95, 75, 41, 81, 71] },
+        "code": "MARS"
+      },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [7, 90] }, "code": "LASER" }, "generated": true },
+    { "inject": { "strengths": { "$list": [42, 22] }, "code": "ORBIT" }, "generated": true },
+    { "inject": { "strengths": { "$list": [45] }, "code": "RADAR" }, "generated": true },
+    {
+      "inject": {
+        "strengths": { "$list": [86, 41, 2, 41, 36, 41, 19, 99, 83, 52, 79, 87] },
+        "code": "DYECE"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [76, 20, 42, 73, 1, 46, 5] }, "code": "VENUS" },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [37, 73, 12, 56, 26, 54] }, "code": "AA" },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [94] }, "code": "PLANET" }, "generated": true },
+    {
+      "inject": {
+        "strengths": { "$list": [5, 69, 62, 74, 31, 41, 4, 15, 67, 37] },
+        "code": "DYDDYXY"
+      },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [28] }, "code": "LASER" }, "generated": true },
+    {
+      "inject": {
+        "strengths": { "$list": [54, 27, 63, 24, 4, 4, 32, 32, 31, 67, 26] },
+        "code": "ECFAFBX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "strengths": { "$list": [83, 91, 95, 5, 63, 49, 11, 55, 26, 73, 21] },
+        "code": "SOLAR"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "strengths": { "$list": [40, 53, 67, 27, 83, 87, 34, 43, 50, 63, 9] },
+        "code": "DAXCE"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "strengths": { "$list": [7, 21, 88, 81, 59, 72, 60, 95, 51, 49, 27] },
+        "code": "CAEB"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [98, 100, 48, 28, 70, 6, 25] }, "code": "MARS" },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [99, 100, 60, 67, 56, 3, 10, 4, 89] }, "code": "SOLAR" },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [32, 77, 99, 17, 5, 46, 10, 98, 66] }, "code": "FBBZY" },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [26, 100, 39, 49, 29, 97, 62] }, "code": "BBBFZXX" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "strengths": { "$list": [99, 56, 8, 80, 25, 81, 38, 61, 54, 15, 71, 21] },
+        "code": "GALAXY"
+      },
+      "generated": true
+    },
+    { "inject": { "strengths": { "$list": [90, 19, 41] }, "code": "MARS" }, "generated": true },
+    {
+      "inject": { "strengths": { "$list": [69, 0, 90, 21, 0] }, "code": "SIGNAL" },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [14, 62, 100, 91, 76, 61, 67, 9, 66] }, "code": "RADAR" },
+      "generated": true
+    },
+    {
+      "inject": { "strengths": { "$list": [29, 98, 23, 80, 0, 86] }, "code": "MARS" },
+      "generated": true
     }
   ]
 }

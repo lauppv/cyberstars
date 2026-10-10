@@ -1,21 +1,22 @@
 {
   "structure": {
     "requires": [
+      { "kind": "extends" },
+      { "kind": "modifier", "name": "abstract" },
       { "kind": "call", "name": "Sportiva" },
       { "kind": "call", "name": "Camion" },
       { "kind": "call", "name": "Motocicleta" },
       { "kind": "function", "name": "condu" },
       { "kind": "function", "name": "tip" },
       { "kind": "function", "name": "consumPeKm" },
+      { "kind": "function", "name": "toString" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "nume3" },
       { "kind": "variable", "name": "km1" },
       { "kind": "variable", "name": "km2" },
       { "kind": "variable", "name": "km3" },
-      { "kind": "variable", "name": "km4" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "km4" }
     ]
   },
   "cases": [
@@ -63,6 +64,198 @@
         "km3": 1,
         "km4": 60
       }
+    },
+    {
+      "inject": {
+        "nume1": "Infernus",
+        "nume2": "Linerunner",
+        "nume3": "Angel",
+        "km1": 0,
+        "km2": 0,
+        "km3": 0,
+        "km4": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Infernus",
+        "nume2": "Linerunner",
+        "nume3": "Angel",
+        "km1": 50,
+        "km2": 20,
+        "km3": 0,
+        "km4": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Infernus",
+        "nume2": "Linerunner",
+        "nume3": "Angel",
+        "km1": 51,
+        "km2": 21,
+        "km3": 20,
+        "km4": 101
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Cheetah",
+        "nume2": "Mule",
+        "nume3": "Faggio",
+        "km1": 49,
+        "km2": 19,
+        "km3": 1,
+        "km4": 99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Banshee",
+        "nume2": "Benson",
+        "nume3": "PCJ600",
+        "km1": 1,
+        "km2": 1,
+        "km3": 1,
+        "km4": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Stinger",
+        "nume2": "Flatbed",
+        "nume3": "Freeway",
+        "km1": 25,
+        "km2": 10,
+        "km3": 10,
+        "km4": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Comet",
+        "nume2": "Packer",
+        "nume3": "Sanchez",
+        "km1": 30,
+        "km2": 10,
+        "km3": 11,
+        "km4": 75
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Hotring",
+        "nume2": "Barracks",
+        "nume3": "Pizzaboy",
+        "km1": 60,
+        "km2": 4,
+        "km3": 16,
+        "km4": 200
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Deluxo",
+        "nume2": "Yankee",
+        "nume3": "Angel",
+        "km1": 12,
+        "km2": 7,
+        "km3": 13,
+        "km4": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Phoenix",
+        "nume2": "Coach",
+        "nume3": "Freeway",
+        "km1": 37,
+        "km2": 25,
+        "km3": 5,
+        "km4": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Sabre Turbo",
+        "nume2": "Rumpo XL",
+        "nume3": "PCJ 600",
+        "km1": 45,
+        "km2": 15,
+        "km3": 6,
+        "km4": 120
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Infernus",
+        "nume2": "Infernus",
+        "nume3": "Infernus",
+        "km1": 10,
+        "km2": 10,
+        "km3": 10,
+        "km4": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Cheetah",
+        "nume2": "Linerunner",
+        "nume3": "Sanchez",
+        "km1": 100,
+        "km2": 3,
+        "km3": 17,
+        "km4": 98
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Banshee",
+        "nume2": "Mule",
+        "nume3": "Angel",
+        "km1": 8,
+        "km2": 0,
+        "km3": 20,
+        "km4": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Comet",
+        "nume2": "Flatbed",
+        "nume3": "Faggio",
+        "km1": 22,
+        "km2": 18,
+        "km3": 3,
+        "km4": 57
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Stinger",
+        "nume2": "Packer",
+        "nume3": "PCJ600",
+        "km1": 50,
+        "km2": 100,
+        "km3": 20,
+        "km4": 100
+      },
+      "generated": true
     }
   ]
 }

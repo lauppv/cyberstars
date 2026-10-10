@@ -1,19 +1,217 @@
 {
   "structure": {
     "requires": [
+      { "kind": "modifier", "name": "static" },
       { "kind": "call", "name": "Visitor" },
       { "kind": "variable", "name": "names" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "names": { "$list": ["Tommy", "Lance", "Cortez"] } }
-    },
+    { "visible": true, "inject": { "names": { "$list": ["Tommy", "Lance", "Cortez"] } } },
     { "inject": { "names": { "$list": ["Diaz", "Ken", "Sonny", "Mercedes", "Kent"] } } },
     { "inject": { "names": { "$list": ["Avery"] } } },
-    { "inject": { "names": { "$list": ["Phil", "Mitch", "Umberto", "Auntie"] } } }
+    { "inject": { "names": { "$list": ["Phil", "Mitch", "Umberto", "Auntie"] } } },
+    { "inject": { "names": { "$list": [] } }, "generated": true },
+    { "inject": { "names": { "$list": ["Tommy", "Tommy"] } }, "generated": true },
+    { "inject": { "names": { "$list": ["Lance", "Lance", "Lance"] } }, "generated": true },
+    { "inject": { "names": { "$list": ["Tommy", "Lance"] } }, "generated": true },
+    {
+      "inject": { "names": { "$list": ["Sonny", "Mercedes", "Kent", "Avery", "Phil", "Mitch"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": { "$list": ["Tommy", "Lance", "Cortez", "Diaz", "Ken", "Sonny", "Mercedes"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": { "$list": ["Diaz", "Ken", "Sonny", "Mercedes", "Kent", "Avery", "Phil", "Mitch"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Tommy", "Lance", "Cortez", "Diaz", "Ken", "Sonny", "Mercedes", "Kent", "Avery"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Cortez",
+            "Diaz",
+            "Ken",
+            "Sonny",
+            "Mercedes",
+            "Kent",
+            "Avery",
+            "Phil"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Cortez",
+            "Diaz",
+            "Ken",
+            "Sonny",
+            "Mercedes",
+            "Kent",
+            "Avery",
+            "Phil",
+            "Mitch",
+            "Umberto",
+            "Candy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Cortez",
+            "Diaz",
+            "Ken",
+            "Sonny",
+            "Mercedes",
+            "Kent",
+            "Avery",
+            "Phil",
+            "Mitch",
+            "Umberto"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Cortez",
+            "Diaz",
+            "Ken",
+            "Sonny",
+            "Mercedes",
+            "Kent",
+            "Avery",
+            "Phil",
+            "Mitch",
+            "Umberto",
+            "Candy",
+            "Victor",
+            "Earnest"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Cortez",
+            "Diaz",
+            "Ken",
+            "Sonny",
+            "Mercedes",
+            "Kent",
+            "Avery",
+            "Phil",
+            "Mitch",
+            "Umberto",
+            "Candy",
+            "Victor",
+            "Earnest",
+            "Leo",
+            "Hilary",
+            "Cam",
+            "Maude",
+            "Alberto"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Cortez",
+            "Diaz",
+            "Ken",
+            "Sonny",
+            "Mercedes",
+            "Kent",
+            "Avery",
+            "Phil",
+            "Mitch",
+            "Umberto",
+            "Candy",
+            "Victor",
+            "Earnest",
+            "Leo",
+            "Hilary",
+            "Cam",
+            "Maude",
+            "Alberto",
+            "Tommy",
+            "Lance",
+            "Cortez",
+            "Diaz",
+            "Ken"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "names": { "$list": ["Mercedes", "Mercedes", "Ken", "Ken"] } },
+      "generated": true
+    }
   ]
 }

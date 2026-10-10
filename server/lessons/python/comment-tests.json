@@ -2,8 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "rocket_name" },
+      { "kind": "variable", "name": "mission" },
+      { "kind": "variable", "name": "max_power" },
       { "kind": "variable", "name": "wind_speed" },
-      { "kind": "call", "name": "print" },
       { "kind": "comment", "contains": "print(wind_speed)" }
     ],
     "forbids": [{ "kind": "string_expr" }]
@@ -33,6 +35,149 @@
         "max_power": 123456,
         "wind_speed": 99.9
       }
+    },
+    {
+      "inject": { "rocket_name": "Juno", "mission": "CERES-4", "max_power": 0, "wind_speed": 0.0 },
+      "generated": true
+    },
+    {
+      "inject": { "rocket_name": "Juno", "mission": "LUNA-9", "max_power": 2, "wind_speed": 1.5 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Saturn-V",
+        "mission": "DEIMOS-8",
+        "max_power": 10,
+        "wind_speed": 12.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Starship",
+        "mission": "PHOBOS-2",
+        "max_power": 999,
+        "wind_speed": 200.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Nova-Prime",
+        "mission": "SOL-500",
+        "max_power": 1000,
+        "wind_speed": 3.3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Kestrel",
+        "mission": "TITAN-3",
+        "max_power": 50000,
+        "wind_speed": 77.7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Hermes",
+        "mission": "EUROPA-12",
+        "max_power": 999999,
+        "wind_speed": 0.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Starship",
+        "mission": "ORBIT-0",
+        "max_power": 1234567,
+        "wind_speed": 15.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Saturn-V",
+        "mission": "EUROPA-12",
+        "max_power": 42,
+        "wind_speed": 60.1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Electron",
+        "mission": "ORBIT-0",
+        "max_power": 7,
+        "wind_speed": 9.99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Juno",
+        "mission": "MARS-1",
+        "max_power": 300,
+        "wind_speed": 120.5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Vostok-1",
+        "mission": "LUNA-9",
+        "max_power": 88000,
+        "wind_speed": 33.0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Hermes",
+        "mission": "ORBIT-0",
+        "max_power": 640,
+        "wind_speed": 4.2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Nova-Prime",
+        "mission": "MARS-1",
+        "max_power": 31415,
+        "wind_speed": 18.8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Titan-II",
+        "mission": "GANYMEDE-1",
+        "max_power": 100000,
+        "wind_speed": 250.75
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Hermes",
+        "mission": "PHOBOS-2",
+        "max_power": 271828,
+        "wind_speed": 0.25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rocket_name": "Kestrel",
+        "mission": "MARS-1",
+        "max_power": 5,
+        "wind_speed": 5.5
+      },
+      "generated": true
     }
   ]
 }

@@ -2,8 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "variable", "name": "echipaj" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "nume" },
+      { "kind": "variable", "name": "rol" },
+      { "kind": "variable", "name": "varsta" },
+      { "kind": "variable", "name": "statie" }
     ]
   },
   "cases": [
@@ -15,14 +17,108 @@
       "visible": true,
       "inject": { "nume": "Ana", "rol": "Inginer", "varsta": 29, "statie": "Orion" }
     },
+    { "inject": { "nume": "Zed", "rol": "Medic", "varsta": 0, "statie": "Baza" } },
+    { "inject": { "nume": "Kai", "rol": "Capitan", "varsta": 99, "statie": "Adanc" } },
+    { "inject": { "nume": "Mo", "rol": "Bucatar", "varsta": 17, "statie": "Hub" } },
     {
-      "inject": { "nume": "Zed", "rol": "Medic", "varsta": 0, "statie": "Baza" }
+      "inject": { "nume": "Rex", "rol": "Botanist", "varsta": 1, "statie": "Orion" },
+      "generated": true
     },
     {
-      "inject": { "nume": "Kai", "rol": "Capitan", "varsta": 99, "statie": "Adanc" }
+      "inject": { "nume": "Li", "rol": "Botanist", "varsta": 18, "statie": "Europa" },
+      "generated": true
     },
     {
-      "inject": { "nume": "Mo", "rol": "Bucatar", "varsta": 17, "statie": "Hub" }
+      "inject": { "nume": "Ana", "rol": "Scientist", "varsta": 19, "statie": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Mira", "rol": "Engineer", "varsta": 20, "statie": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Nova", "rol": "Navigator", "varsta": 25, "statie": "Titan" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Vlad", "rol": "Cook", "varsta": 30, "statie": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Cara", "rol": "Pilot", "varsta": 33, "statie": "Orion" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Ioana", "rol": "Engineer", "varsta": 40, "statie": "Europa" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Elena", "rol": "Scientist", "varsta": 41, "statie": "Titan" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Big Mitch", "rol": "Botanist", "varsta": 49, "statie": "ISS" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Radu", "rol": "Botanist", "varsta": 50, "statie": "Laniakea" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Mary-Jane", "rol": "Commander", "varsta": 55, "statie": "ISS" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Diaz", "rol": "Commander", "varsta": 60, "statie": "Titan" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Bob", "rol": "Pilot", "varsta": 64, "statie": "Laniakea" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Rex", "rol": "Commander", "varsta": 70, "statie": "Mars Gate" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Bob", "rol": "Botanist", "varsta": 80, "statie": "Hub" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Ana", "rol": "Scientist", "varsta": 98, "statie": "Mars Gate" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Mira", "rol": "Medic", "varsta": 100, "statie": "Laniakea" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Vlad", "rol": "Pilot", "varsta": 22, "statie": "Hub" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Vlad", "rol": "Navigator", "varsta": 45, "statie": "Hub" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Mira", "rol": "Navigator", "varsta": 27, "statie": "ISS" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Ana", "rol": "Navigator", "varsta": 38, "statie": "Luna-1" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Vlad", "rol": "Captain", "varsta": 58, "statie": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Cara", "rol": "Captain", "varsta": 75, "statie": "Luna-1" },
+      "generated": true
+    },
+    {
+      "inject": { "nume": "Nova", "rol": "Pilot", "varsta": 12, "statie": "Deep" },
+      "generated": true
     }
   ]
 }

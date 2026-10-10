@@ -2,11 +2,11 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "log" },
       { "kind": "function", "name": "split_codes" },
       { "kind": "function", "name": "count_codes" },
       { "kind": "function", "name": "most_common" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -14,6 +14,120 @@
     { "visible": true, "inject": { "log": "sos sos ok ok ok bye" } },
     { "inject": { "log": "x y y z" } },
     { "inject": { "log": "a a a" } },
-    { "inject": { "log": "one" } }
+    { "inject": { "log": "one" } },
+    { "inject": { "log": "ok" }, "generated": true },
+    { "inject": { "log": "warn warn" }, "generated": true },
+    { "inject": { "log": "a b b" }, "generated": true },
+    { "inject": { "log": "b b a" }, "generated": true },
+    { "inject": { "log": "c a b c" }, "generated": true },
+    { "inject": { "log": "z y x z y z" }, "generated": true },
+    { "inject": { "log": "zeta alpha zeta" }, "generated": true },
+    { "inject": { "log": "boot sync boot sync boot" }, "generated": true },
+    { "inject": { "log": "err err err err err err err ok" }, "generated": true },
+    { "inject": { "log": "ping pong ping pong ping pong pong" }, "generated": true },
+    { "inject": { "log": "one two three four five five" }, "generated": true },
+    { "inject": { "log": "launch" }, "generated": true },
+    { "inject": { "log": "dock dock undock dock refuel refuel undock dock" }, "generated": true },
+    { "inject": { "log": "delta err err err err delta err gamma delta" }, "generated": true },
+    { "inject": { "log": "alpha warn warn warn" }, "generated": true },
+    { "inject": { "log": "sos warn sos x beta" }, "generated": true },
+    { "inject": { "log": "dock yy yy delta" }, "generated": true },
+    { "inject": { "log": "sync sync sync sync sync x x x" }, "generated": true },
+    {
+      "inject": {
+        "log": "ping warn yy warn yy ping yy ping boot ok ping boot ping warn yy warn ok yy yy"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "err err sos err alpha sos err alpha alpha" }, "generated": true },
+    { "inject": { "log": "sync sync err sync sync sync" }, "generated": true },
+    { "inject": { "log": "err sync dock dock dock dock" }, "generated": true },
+    { "inject": { "log": "err err beta err ping ping err" }, "generated": true },
+    {
+      "inject": { "log": "beta beta beta beta beta beta beta beta beta beta beta beta beta beta" },
+      "generated": true
+    },
+    { "inject": { "log": "warn alpha alpha warn warn" }, "generated": true },
+    {
+      "inject": {
+        "log": "boot ok ok boot boot ok boot boot ok boot ok boot boot boot boot boot boot ok"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "boot sos beta sos boot gamma beta beta beta gamma beta beta sos x beta x x"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "x sync ping ping sync ping zeta delta boot sync ping delta ping boot delta zeta x ping"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "x x x" }, "generated": true },
+    { "inject": { "log": "sos zeta zeta alpha delta alpha sos delta zeta" }, "generated": true },
+    {
+      "inject": {
+        "log": "sos gamma sos gamma gamma gamma gamma sos gamma sos gamma gamma gamma gamma gamma"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "delta dock boot dock ok ok ok" }, "generated": true },
+    {
+      "inject": { "log": "err err gamma err gamma gamma gamma gamma gamma gamma gamma err" },
+      "generated": true
+    },
+    {
+      "inject": { "log": "ping ping gamma gamma gamma gamma ping dock gamma gamma ping" },
+      "generated": true
+    },
+    { "inject": { "log": "sos dock dock beta beta beta" }, "generated": true },
+    {
+      "inject": { "log": "sync warn yy sync warn yy beta yy alpha gamma yy alpha yy beta" },
+      "generated": true
+    },
+    {
+      "inject": { "log": "beta ok beta dock beta ok ok dock ok ok ok ok dock" },
+      "generated": true
+    },
+    {
+      "inject": { "log": "boot ping boot ok gamma boot boot gamma boot boot gamma gamma gamma" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "gamma gamma beta gamma gamma beta beta gamma beta gamma gamma beta beta beta gamma gamma gamma gamma"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "ok ping ok ping sync dock ping ok x ok ping ok ping ping sync ok ping x"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "log": "sync delta delta yy sync sync delta zeta zeta sync" },
+      "generated": true
+    },
+    { "inject": { "log": "boot boot beta" }, "generated": true },
+    {
+      "inject": {
+        "log": "ping warn ping warn ping delta warn warn delta warn ping warn warn warn ping delta"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "log": "ping delta zeta yy yy delta zeta zeta ping zeta delta zeta" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "err ping zeta beta err sos warn zeta sos sos warn warn err zeta zeta ping"
+      },
+      "generated": true
+    }
   ]
 }

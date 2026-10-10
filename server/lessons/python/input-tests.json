@@ -3,7 +3,7 @@
   "structure": {
     "requires": [
       { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "int" }
     ]
   },
   "cases": [
@@ -12,6 +12,38 @@
     { "stdin": "Ada\n1\n" },
     { "stdin": "Neil\n17\n" },
     { "stdin": "Max\n99\n" },
-    { "stdin": "Kai\n150\n" }
+    { "stdin": "Kai\n150\n" },
+    { "stdin": "Li\n2\n", "generated": true },
+    { "stdin": "Elena\n5\n", "generated": true },
+    { "stdin": "Cortez\n9\n", "generated": true },
+    { "stdin": "Jo\n10\n", "generated": true },
+    { "stdin": "Sonny\n11\n", "generated": true },
+    { "stdin": "Kenji\n18\n", "generated": true },
+    { "stdin": "Mary Jane\n19\n", "generated": true },
+    { "stdin": "Rex\n20\n", "generated": true },
+    { "stdin": "Umberto\n21\n", "generated": true },
+    { "stdin": "Tommy\n25\n", "generated": true },
+    { "stdin": "Tommy\n29\n", "generated": true },
+    { "stdin": "Aiyana\n30\n", "generated": true },
+    { "stdin": "Bob\n33\n", "generated": true },
+    { "stdin": "Cortez\n40\n", "generated": true },
+    { "stdin": "Anne-Marie\n42\n", "generated": true },
+    { "stdin": "Ana\n49\n", "generated": true },
+    { "stdin": "Radu\n50\n", "generated": true },
+    { "stdin": "Ana\n55\n", "generated": true },
+    { "stdin": "Rex\n64\n", "generated": true },
+    { "stdin": "Avery\n65\n", "generated": true },
+    { "stdin": "Jo\n70\n", "generated": true },
+    { "stdin": "Ana\n77\n", "generated": true },
+    { "stdin": "Mary Jane\n80\n", "generated": true },
+    { "stdin": "Kenji\n89\n", "generated": true },
+    { "stdin": "Cortez\n90\n", "generated": true },
+    { "stdin": "Nova\n98\n", "generated": true },
+    { "stdin": "Nova\n100\n", "generated": true },
+    { "stdin": "Umberto\n101\n", "generated": true },
+    { "stdin": "Umberto\n110\n", "generated": true },
+    { "stdin": "Li\n119\n", "generated": true },
+    { "stdin": "Sonny\n9\n", "generated": true },
+    { "stdin": "Nova\n120\n", "generated": true }
   ]
 }

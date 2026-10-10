@@ -2,29 +2,112 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "citiri" },
       { "kind": "function", "name": "int_sigur" },
       { "kind": "function", "name": "sumeaza" },
       { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "try" },
+      { "kind": "default_param" },
+      { "kind": "return" }
     ]
   },
   "cases": [
+    { "visible": true, "inject": { "citiri": { "$list": ["10", "bad", "25", "7", "x"] } } },
+    { "visible": true, "inject": { "citiri": { "$list": ["3", "4", "5"] } } },
+    { "inject": { "citiri": { "$list": ["nope", "bad"] } } },
+    { "inject": { "citiri": { "$list": ["100", "zz", "50", "1", "q", "9"] } } },
+    { "inject": { "citiri": { "$list": ["42"] } } },
+    { "inject": { "citiri": { "$list": ["0"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["bad"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["x", "y", "z"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["7", "7", "7"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["-5", "5"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["-1", "bad", "-20"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["3.5", "4"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["1000", "999", "1001"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["12a", "12"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["", "8"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["5", "4", "3", "2", "1"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["1", "2", "3", "4", "5"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["50", "oops"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["oops", "50"] } }, "generated": true },
     {
-      "visible": true,
-      "inject": { "citiri": { "$list": ["10", "bad", "25", "7", "x"] } }
+      "inject": { "citiri": { "$list": ["72", "114", "168", "err", "2", "85"] } },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["", "56", "??"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["1e3"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": { "$list": ["bad", "153", "75", "1e3", "66", "22", "108", "44", "??", "72"] }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["1e3", "95"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["79", "117", "42", "--"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["125"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["12a"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["156", "167"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["--"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["NaN", "11", "abc", "122"] } }, "generated": true },
+    {
+      "inject": { "citiri": { "$list": ["1e3", "x", "25", "3.5", "2", "11", "x", "bad", "1e3"] } },
+      "generated": true
     },
     {
-      "visible": true,
-      "inject": { "citiri": { "$list": ["3", "4", "5"] } }
+      "inject": { "citiri": { "$list": ["163", "err", "2", "62", "x", "68", "9"] } },
+      "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["nope", "bad"] } }
+      "inject": { "citiri": { "$list": ["186", "66", "7", "abc", "3.5", "55", "161"] } },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["116", "102"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["33", "abc", "101", "170"] } }, "generated": true },
+    {
+      "inject": { "citiri": { "$list": ["abc", "109", "12a", "75", "x", "1e3", "127", "164"] } },
+      "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["100", "zz", "50", "1", "q", "9"] } }
+      "inject": { "citiri": { "$list": ["113", "125", "195", "171", "169", "118", "127", "bad"] } },
+      "generated": true
     },
     {
-      "inject": { "citiri": { "$list": ["42"] } }
-    }
+      "inject": {
+        "citiri": { "$list": ["43", "93", "100", "48", "183", "0", "101", "52", "163"] }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["14"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["3.5", "err", "160"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": { "$list": ["seven", "??", "157", "130", "12a", "89", "117", "nope", "5"] }
+      },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["--", "167"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["47", "--"] } }, "generated": true },
+    { "inject": { "citiri": { "$list": ["1e3", "52"] } }, "generated": true },
+    {
+      "inject": {
+        "citiri": { "$list": ["46", "12a", "8", "39", "1e3", "52", "192", "174", "abc", "156"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["90", "NaN", "88", "20", "98", "200", "54"] } },
+      "generated": true
+    },
+    {
+      "inject": { "citiri": { "$list": ["seven", "11", "103", "166", "60", "nope", "96"] } },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["seven"] } }, "generated": true },
+    {
+      "inject": { "citiri": { "$list": ["bad", "0", "49", "??", "151", "6", "132", "bad"] } },
+      "generated": true
+    },
+    { "inject": { "citiri": { "$list": ["157", "136", "37"] } }, "generated": true }
   ]
 }

@@ -2,9 +2,9 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "echipaj" },
       { "kind": "function", "name": "gaseste_echipaj" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -22,13 +22,444 @@
       "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
       "stdin": "Ghost\n"
     },
+    { "inject": { "echipaj": { "$list": ["Solo"] } }, "stdin": "Solo\n" },
+    { "inject": { "echipaj": { "$list": ["Ada", "Ben", "Cyd", "Dot"] } }, "stdin": "Dot\n" },
     {
-      "inject": { "echipaj": { "$list": ["Solo"] } },
-      "stdin": "Solo\n"
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Boris\n",
+      "generated": true
     },
     {
-      "inject": { "echipaj": { "$list": ["Ada", "Ben", "Cyd", "Dot"] } },
-      "stdin": "Dot\n"
-    }
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Dmitri\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Cortez\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Zane\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
+      "stdin": "Ana\n",
+      "generated": true
+    },
+    { "inject": { "echipaj": { "$list": ["Solo"] } }, "stdin": "Other\n", "generated": true },
+    { "inject": { "echipaj": { "$list": ["Ada", "Ben"] } }, "stdin": "Ada\n", "generated": true },
+    { "inject": { "echipaj": { "$list": ["Ada", "Ben"] } }, "stdin": "Ben\n", "generated": true },
+    { "inject": { "echipaj": { "$list": ["Ada", "Ben"] } }, "stdin": "Cyd\n", "generated": true },
+    {
+      "inject": { "echipaj": { "$list": ["Ann", "Anna", "Annabel"] } },
+      "stdin": "Anna\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Ann", "Anna", "Annabel"] } },
+      "stdin": "An\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Hugo",
+            "Iris",
+            "Ioana",
+            "Cortez",
+            "Avery",
+            "Zane",
+            "Sonny",
+            "Yara",
+            "Quinn",
+            "Vlad",
+            "Petra",
+            "Ana",
+            "Bob",
+            "Radu",
+            "Boris"
+          ]
+        }
+      },
+      "stdin": "Mira\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Bob",
+            "Radu",
+            "Omar",
+            "Vlad",
+            "Lance",
+            "Cortez",
+            "Ioana",
+            "Quinn",
+            "Elena",
+            "Dmitri",
+            "Petra",
+            "Avery",
+            "Rex",
+            "Jo",
+            "Li",
+            "Ana",
+            "Iris",
+            "Boris",
+            "Cara",
+            "Hugo",
+            "Mira",
+            "Ghost",
+            "Nova",
+            "Diaz",
+            "Umberto"
+          ]
+        }
+      },
+      "stdin": "Lance\n",
+      "generated": true
+    },
+    { "inject": { "echipaj": { "$list": ["Cortez"] } }, "stdin": "Cortez\n", "generated": true },
+    {
+      "inject": { "echipaj": { "$list": ["Omar", "Vlad", "Jo", "Petra"] } },
+      "stdin": "Omar\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Cara", "Bob", "Yara"] } },
+      "stdin": "Cara\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Omar",
+            "Li",
+            "Umberto",
+            "Rex",
+            "Mira",
+            "Lance",
+            "Bob",
+            "Iris",
+            "Tommy",
+            "Elena"
+          ]
+        }
+      },
+      "stdin": "Nova\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Umberto", "Rex", "Boris", "Vlad"] } },
+      "stdin": "Vlad\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Avery", "Sonny", "Omar", "Vlad"] } },
+      "stdin": "Vlad\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Kenji", "Nova", "Diaz", "Ghost"] } },
+      "stdin": "Kenji\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Li", "Cara", "Nova", "Elena", "Boris", "Omar", "Lance", "Cortez"] }
+      },
+      "stdin": "Boris\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Ioana", "Yara", "Omar", "Hugo"] } },
+      "stdin": "Hugo\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": ["Lance", "Radu", "Petra", "Ioana", "Umberto", "Rex", "Elena", "Iris"]
+        }
+      },
+      "stdin": "Lance\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Rex",
+            "Ghost",
+            "Tommy",
+            "Diaz",
+            "Ana",
+            "Lance",
+            "Jo",
+            "Cara",
+            "Boris",
+            "Umberto"
+          ]
+        }
+      },
+      "stdin": "Kenji\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Ioana", "Zane", "Quinn", "Mira", "Jo"] } },
+      "stdin": "Quinn\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Radu",
+            "Omar",
+            "Petra",
+            "Umberto",
+            "Ghost",
+            "Vlad",
+            "Cara",
+            "Bob",
+            "Boris",
+            "Hugo",
+            "Li",
+            "Tommy",
+            "Ana",
+            "Jo",
+            "Cortez"
+          ]
+        }
+      },
+      "stdin": "Li\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Boris",
+            "Li",
+            "Dmitri",
+            "Ioana",
+            "Kenji",
+            "Vlad",
+            "Bob",
+            "Lance",
+            "Mira",
+            "Tommy",
+            "Umberto",
+            "Ana",
+            "Avery",
+            "Rex",
+            "Jo",
+            "Radu",
+            "Elena",
+            "Ghost",
+            "Petra",
+            "Nova"
+          ]
+        }
+      },
+      "stdin": "Li\n",
+      "generated": true
+    },
+    { "inject": { "echipaj": { "$list": ["Avery"] } }, "stdin": "Avery\n", "generated": true },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Sonny",
+            "Ghost",
+            "Avery",
+            "Elena",
+            "Vlad",
+            "Hugo",
+            "Diaz",
+            "Li",
+            "Tommy",
+            "Ana",
+            "Jo",
+            "Bob",
+            "Dmitri",
+            "Umberto",
+            "Ioana",
+            "Mira",
+            "Rex",
+            "Cortez",
+            "Boris",
+            "Omar"
+          ]
+        }
+      },
+      "stdin": "Sonny\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Elena", "Yara", "Umberto", "Li"] } },
+      "stdin": "Elena\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Diaz",
+            "Kenji",
+            "Sonny",
+            "Lance",
+            "Zane",
+            "Tommy",
+            "Bob",
+            "Avery",
+            "Dmitri",
+            "Li"
+          ]
+        }
+      },
+      "stdin": "Diaz\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Li", "Boris", "Nova", "Cortez"] } },
+      "stdin": "Boris\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Tommy",
+            "Elena",
+            "Jo",
+            "Lance",
+            "Kenji",
+            "Boris",
+            "Sonny",
+            "Radu",
+            "Umberto",
+            "Diaz"
+          ]
+        }
+      },
+      "stdin": "Radu\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Elena", "Radu", "Boris", "Mira"] } },
+      "stdin": "Elena\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Radu", "Jo", "Cara", "Nova", "Li", "Quinn"] } },
+      "stdin": "Quinn\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Hugo", "Quinn"] } },
+      "stdin": "Ghost\n",
+      "generated": true
+    },
+    { "inject": { "echipaj": { "$list": ["Diaz"] } }, "stdin": "Diaz\n", "generated": true },
+    { "inject": { "echipaj": { "$list": ["Vlad"] } }, "stdin": "Vlad\n", "generated": true },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Elena",
+            "Yara",
+            "Ioana",
+            "Dmitri",
+            "Diaz",
+            "Cara",
+            "Petra",
+            "Cortez",
+            "Li",
+            "Kenji",
+            "Mira",
+            "Radu",
+            "Vlad",
+            "Nova",
+            "Jo"
+          ]
+        }
+      },
+      "stdin": "Lance\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Dmitri",
+            "Diaz",
+            "Cara",
+            "Rex",
+            "Nova",
+            "Mira",
+            "Avery",
+            "Boris",
+            "Bob",
+            "Ana",
+            "Elena",
+            "Yara",
+            "Jo",
+            "Kenji",
+            "Li",
+            "Lance",
+            "Cortez",
+            "Ioana",
+            "Quinn",
+            "Petra"
+          ]
+        }
+      },
+      "stdin": "Hugo\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Dmitri", "Diaz", "Vlad", "Kenji", "Bob", "Cara", "Avery", "Boris"] }
+      },
+      "stdin": "Dmitri\n",
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Zane",
+            "Dmitri",
+            "Yara",
+            "Rex",
+            "Radu",
+            "Cara",
+            "Vlad",
+            "Ghost",
+            "Elena",
+            "Sonny"
+          ]
+        }
+      },
+      "stdin": "Boris\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Iris", "Li", "Bob", "Vlad", "Sonny", "Tommy"] } },
+      "stdin": "Iris\n",
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Iris", "Radu", "Bob", "Cara"] } },
+      "stdin": "Sonny\n",
+      "generated": true
+    },
+    { "inject": { "echipaj": { "$list": ["Vlad", "Iris"] } }, "stdin": "Iris\n", "generated": true }
   ]
 }

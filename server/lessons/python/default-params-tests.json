@@ -2,24 +2,66 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "ship1" },
+      { "kind": "variable", "name": "ship2" },
+      { "kind": "variable", "name": "ship3" },
       { "kind": "function", "name": "dock" },
       { "kind": "call", "name": "dock" },
-      { "kind": "call", "name": "print" }
+      { "kind": "default_param" }
     ]
   },
   "cases": [
+    { "visible": true, "inject": { "ship1": "Voyager", "ship2": "Odyssey", "ship3": "Pioneer" } },
+    { "inject": { "ship1": "Nostromo", "ship2": "Serenity", "ship3": "Rocinante" } },
+    { "inject": { "ship1": "X", "ship2": "Y", "ship3": "Z" } },
+    { "inject": { "ship1": "Enterprise", "ship2": "Defiant", "ship3": "Discovery" } },
     {
-      "visible": true,
-      "inject": { "ship1": "Voyager", "ship2": "Odyssey", "ship3": "Pioneer" }
+      "inject": { "ship1": "Kestrel", "ship2": "Mercury", "ship3": "Galactica" },
+      "generated": true
+    },
+    { "inject": { "ship1": "Nautilus", "ship2": "B1", "ship3": "Hermes" }, "generated": true },
+    {
+      "inject": { "ship1": "Mercury", "ship2": "Hyperion", "ship3": "Galactica" },
+      "generated": true
+    },
+    { "inject": { "ship1": "Bebop", "ship2": "Normandy", "ship3": "Apollo" }, "generated": true },
+    { "inject": { "ship1": "Gemini", "ship2": "Vostok", "ship3": "B1" }, "generated": true },
+    {
+      "inject": { "ship1": "Prometheus", "ship2": "Aurora", "ship3": "Dragon" },
+      "generated": true
     },
     {
-      "inject": { "ship1": "Nostromo", "ship2": "Serenity", "ship3": "Rocinante" }
+      "inject": { "ship1": "Star Hopper", "ship2": "Galactica", "ship3": "Mercury" },
+      "generated": true
     },
     {
-      "inject": { "ship1": "X", "ship2": "Y", "ship3": "Z" }
+      "inject": { "ship1": "Icarus", "ship2": "Endurance", "ship3": "Nautilus" },
+      "generated": true
+    },
+    { "inject": { "ship1": "Kestrel", "ship2": "Normandy", "ship3": "A" }, "generated": true },
+    {
+      "inject": { "ship1": "Comet-7", "ship2": "Orion", "ship3": "Prometheus" },
+      "generated": true
     },
     {
-      "inject": { "ship1": "Enterprise", "ship2": "Defiant", "ship3": "Discovery" }
-    }
+      "inject": { "ship1": "Shenzhou", "ship2": "Dragon", "ship3": "Normandy" },
+      "generated": true
+    },
+    {
+      "inject": { "ship1": "Star Hopper", "ship2": "Normandy", "ship3": "Zenith" },
+      "generated": true
+    },
+    {
+      "inject": { "ship1": "Star Hopper", "ship2": "Zenith", "ship3": "Ranger" },
+      "generated": true
+    },
+    { "inject": { "ship1": "Hyperion", "ship2": "Orion", "ship3": "Kestrel" }, "generated": true },
+    { "inject": { "ship1": "Zenith", "ship2": "Normandy", "ship3": "Hermes" }, "generated": true },
+    {
+      "inject": { "ship1": "Starliner", "ship2": "Hyperion", "ship3": "Nova 2" },
+      "generated": true
+    },
+    { "inject": { "ship1": "Dragon", "ship2": "A", "ship3": "Normandy" }, "generated": true },
+    { "inject": { "ship1": "Same", "ship2": "Same", "ship3": "Same" }, "generated": true }
   ]
 }

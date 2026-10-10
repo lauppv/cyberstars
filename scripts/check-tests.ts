@@ -7,6 +7,13 @@
 // and how much of it the programs themselves took, so bulk cases can be sized
 // against the per-run budget.
 //
+// A lesson may also ship variants in test/lesson-variants/<course>/<slug>/:
+// accept-*.<ext> are other correct solutions (other names, another approach)
+// that must pass, reject-*.<ext> are cheats (hardcoded output, the wrong kind
+// of loop) that must fail. They prove the spec grades the behavior and the
+// concept the lesson teaches, not the reference's exact shape. English only:
+// a RO spec differs from its EN twin only in the identifiers.
+//
 //   npx tsx scripts/check-tests.ts python                # a whole course
 //   npx tsx scripts/check-tests.ts algo-c/two-sum        # one lesson
 //   npx tsx scripts/check-tests.ts java --lang=ro        # only the RO specs
@@ -17,6 +24,7 @@ import { runLessonTests } from '../server/services/lesson-tests.service.js';
 import { drainAll } from '../server/services/code-container.service.js';
 
 const TESTS_SUFFIX = '-tests.json';
+const VARIANTS_DIR = path.join(process.cwd(), 'test', 'lesson-variants');
 
 function solutionCode(dir: string, slug: string): string {
   const md = fs.readFileSync(path.join(dir, `${slug}-solution.md`), 'utf8');
@@ -32,6 +40,66 @@ function slugsIn(dir: string): string[] {
     .filter((f) => f.endsWith(TESTS_SUFFIX))
     .map((f) => f.slice(0, -TESTS_SUFFIX.length))
     .sort();
+}
+
+function variantsOf(courseKey: string, slug: string): string[] {
+  const dir = path.join(VARIANTS_DIR, courseKey, slug);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => /^(accept|reject)-/.test(f))
+    .sort()
+    .map((f) => path.join(dir, f));
+}
+
+// Grades each variant and returns how many came out the wrong way.
+async function checkVariants(courseKey: string, slug: string): Promise<number> {
+  let wrong = 0;
+  for (const file of variantsOf(courseKey, slug)) {
+    const name = path.basename(file);
+    const shouldPass = name.startsWith('accept-');
+    let result: Awaited<ReturnType<typeof runLessonTests>>;
+    try {
+      result = await runLessonTests(
+        `check:${courseKey}:${process.pid}`,
+        courseKey,
+        slug,
+        fs.readFileSync(file, 'utf8'),
+        'en',
+      );
+    } catch (err) {
+      // A run that never finished proves nothing either way, and the
+      // lesson's other variants still get graded.
+      wrong++;
+      console.log(
+        `  FAIL  ${name}  run error: ${err instanceof Error ? err.message : String(err)}`,
+      );
+      continue;
+    }
+    const passed = result.status === 'passed' && result.passedCount === result.total;
+    const why = result.syntaxError
+      ? `syntax: ${result.syntaxError}`
+      : result.structureFailures.length
+        ? `structure: ${JSON.stringify(result.structureFailures)}`
+        : `${result.passedCount}/${result.total}`;
+    // A reject that doesn't compile is rejected for its typo, not its cheat.
+    if (!shouldPass && result.syntaxError) {
+      wrong++;
+      console.log(`  FAIL  ${name}  should fail on its cheat, got ${why}`);
+      continue;
+    }
+    if (passed === shouldPass) {
+      console.log(`  ok    ${name}  ${passed ? 'passed' : `failed (${why})`}`);
+      continue;
+    }
+    wrong++;
+    const failed = result.cases.find((c) => !c.passed);
+    console.log(
+      `  FAIL  ${name}  ${shouldPass ? `should pass, got ${why}` : 'should fail, but passed'}` +
+        (shouldPass && failed ? `\n        case ${failed.index}: ${JSON.stringify(failed)}` : ''),
+    );
+  }
+  return wrong;
 }
 
 async function main() {
@@ -56,7 +124,7 @@ async function main() {
         const started = Date.now();
         try {
           const result = await runLessonTests(
-            `check:${courseKey}`,
+            `check:${courseKey}:${process.pid}`,
             courseKey,
             slug,
             solutionCode(dir, slug),
@@ -69,6 +137,7 @@ async function main() {
                 ? `  (programs: ${result.runtimeMs} ms, reference ${result.referenceMs} ms)`
                 : '';
             console.log(`ok    ${label}  ${result.total} cases  ${secs}s${timing}`);
+            if (lang === 'en') failures += await checkVariants(courseKey, slug);
             continue;
           }
           failures++;

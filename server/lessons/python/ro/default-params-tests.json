@@ -2,24 +2,66 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "nava1" },
+      { "kind": "variable", "name": "nava2" },
+      { "kind": "variable", "name": "nava3" },
       { "kind": "function", "name": "andocheaza" },
       { "kind": "call", "name": "andocheaza" },
-      { "kind": "call", "name": "print" }
+      { "kind": "default_param" }
     ]
   },
   "cases": [
+    { "visible": true, "inject": { "nava1": "Voyager", "nava2": "Odyssey", "nava3": "Pioneer" } },
+    { "inject": { "nava1": "Nostromo", "nava2": "Serenity", "nava3": "Rocinante" } },
+    { "inject": { "nava1": "X", "nava2": "Y", "nava3": "Z" } },
+    { "inject": { "nava1": "Enterprise", "nava2": "Defiant", "nava3": "Discovery" } },
     {
-      "visible": true,
-      "inject": { "nava1": "Voyager", "nava2": "Odyssey", "nava3": "Pioneer" }
+      "inject": { "nava1": "Kestrel", "nava2": "Mercury", "nava3": "Galactica" },
+      "generated": true
+    },
+    { "inject": { "nava1": "Nautilus", "nava2": "B1", "nava3": "Hermes" }, "generated": true },
+    {
+      "inject": { "nava1": "Mercury", "nava2": "Hyperion", "nava3": "Galactica" },
+      "generated": true
+    },
+    { "inject": { "nava1": "Bebop", "nava2": "Normandy", "nava3": "Apollo" }, "generated": true },
+    { "inject": { "nava1": "Gemini", "nava2": "Vostok", "nava3": "B1" }, "generated": true },
+    {
+      "inject": { "nava1": "Prometheus", "nava2": "Aurora", "nava3": "Dragon" },
+      "generated": true
     },
     {
-      "inject": { "nava1": "Nostromo", "nava2": "Serenity", "nava3": "Rocinante" }
+      "inject": { "nava1": "Star Hopper", "nava2": "Galactica", "nava3": "Mercury" },
+      "generated": true
     },
     {
-      "inject": { "nava1": "X", "nava2": "Y", "nava3": "Z" }
+      "inject": { "nava1": "Icarus", "nava2": "Endurance", "nava3": "Nautilus" },
+      "generated": true
+    },
+    { "inject": { "nava1": "Kestrel", "nava2": "Normandy", "nava3": "A" }, "generated": true },
+    {
+      "inject": { "nava1": "Comet-7", "nava2": "Orion", "nava3": "Prometheus" },
+      "generated": true
     },
     {
-      "inject": { "nava1": "Enterprise", "nava2": "Defiant", "nava3": "Discovery" }
-    }
+      "inject": { "nava1": "Shenzhou", "nava2": "Dragon", "nava3": "Normandy" },
+      "generated": true
+    },
+    {
+      "inject": { "nava1": "Star Hopper", "nava2": "Normandy", "nava3": "Zenith" },
+      "generated": true
+    },
+    {
+      "inject": { "nava1": "Star Hopper", "nava2": "Zenith", "nava3": "Ranger" },
+      "generated": true
+    },
+    { "inject": { "nava1": "Hyperion", "nava2": "Orion", "nava3": "Kestrel" }, "generated": true },
+    { "inject": { "nava1": "Zenith", "nava2": "Normandy", "nava3": "Hermes" }, "generated": true },
+    {
+      "inject": { "nava1": "Starliner", "nava2": "Hyperion", "nava3": "Nova 2" },
+      "generated": true
+    },
+    { "inject": { "nava1": "Dragon", "nava2": "A", "nava3": "Normandy" }, "generated": true },
+    { "inject": { "nava1": "Same", "nava2": "Same", "nava3": "Same" }, "generated": true }
   ]
 }

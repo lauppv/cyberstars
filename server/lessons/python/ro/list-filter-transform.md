@@ -105,7 +105,7 @@ rezultat = [min(g + 5, 100) for g in note if g >= 50]
 
 ## Misiune: Filtru pentru Rețeaua de Energie
 
-Reactoarele stației raportează citiri de putere. Inginerii vor să se concentreze pe reactoarele **stabile** și să le dea un mic impuls, dar niciun reactor nu poate depăși 100.
+Reactoarele stației raportează citiri de putere într-o listă numită citiri. Inginerii vor să se concentreze pe reactoarele **stabile** și să le dea un mic impuls, dar niciun reactor nu poate depăși 100.
 
 1. **Filtrează**: păstrează doar citirile care sunt `>= 50` (reactoarele stabile).
 2. **Transformă**: adaugă un impuls de 5 puncte fiecărei citiri păstrate, **plafonat la 100** (folosește `min(citire + 5, 100)` ca să nu treacă nimic peste).

@@ -3,14 +3,23 @@
     "requires": [
       { "kind": "variable", "name": "name" },
       { "kind": "variable", "name": "score" },
-      { "kind": "variable", "name": "rating" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "rating" }
     ]
   },
   "cases": [
     { "visible": true, "inject": { "name": "Tommy Vercetti", "score": 1500, "rating": 4.75 } },
     { "inject": { "name": "Lance Vance", "score": 90, "rating": 3.25 } },
     { "inject": { "name": "Ricardo Diaz", "score": 0, "rating": 1.99 } },
-    { "inject": { "name": "Candy Suxxx", "score": 100000, "rating": 0.05 } }
+    { "inject": { "name": "Candy Suxxx", "score": 100000, "rating": 0.05 } },
+    { "inject": { "name": "A", "score": 1, "rating": 0.01 }, "generated": true },
+    { "inject": { "name": "Tommy Vercetti", "score": 1501, "rating": 4.76 }, "generated": true },
+    { "inject": { "name": "Phil Cassidy", "score": 999999, "rating": 9.99 }, "generated": true },
+    { "inject": { "name": "Mercedes Cortez", "score": 42, "rating": 2.15 }, "generated": true },
+    { "inject": { "name": "Kent Paul", "score": 7, "rating": 1.11 }, "generated": true },
+    { "inject": { "name": "Umberto Robina", "score": 250, "rating": 0.99 }, "generated": true },
+    { "inject": { "name": "Avery Carrington", "score": 31337, "rating": 3.33 }, "generated": true },
+    { "inject": { "name": "Sonny Forelli", "score": 10, "rating": 5.01 }, "generated": true },
+    { "inject": { "name": "Hilary King", "score": 123, "rating": 4.95 }, "generated": true },
+    { "inject": { "name": "BJ Smith", "score": 64, "rating": 2.48 }, "generated": true }
   ]
 }

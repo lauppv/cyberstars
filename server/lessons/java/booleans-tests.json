@@ -5,7 +5,8 @@
       { "kind": "variable", "name": "workingDay" },
       { "kind": "variable", "name": "guest" },
       { "kind": "variable", "name": "invitation" },
-      { "kind": "call", "name": "println" }
+      { "kind": "operator", "name": "&&" },
+      { "kind": "operator", "name": "||" }
     ]
   },
   "cases": [
@@ -17,6 +18,46 @@
     { "inject": { "employee": false, "workingDay": false, "guest": true, "invitation": true } },
     { "inject": { "employee": false, "workingDay": false, "guest": true, "invitation": false } },
     { "inject": { "employee": false, "workingDay": false, "guest": false, "invitation": false } },
-    { "inject": { "employee": true, "workingDay": true, "guest": true, "invitation": true } }
+    { "inject": { "employee": true, "workingDay": true, "guest": true, "invitation": true } },
+    {
+      "inject": { "employee": false, "workingDay": false, "guest": false, "invitation": true },
+      "generated": true
+    },
+    {
+      "inject": { "employee": false, "workingDay": true, "guest": false, "invitation": false },
+      "generated": true
+    },
+    {
+      "inject": { "employee": false, "workingDay": true, "guest": false, "invitation": true },
+      "generated": true
+    },
+    {
+      "inject": { "employee": false, "workingDay": true, "guest": true, "invitation": false },
+      "generated": true
+    },
+    {
+      "inject": { "employee": false, "workingDay": true, "guest": true, "invitation": true },
+      "generated": true
+    },
+    {
+      "inject": { "employee": true, "workingDay": false, "guest": false, "invitation": true },
+      "generated": true
+    },
+    {
+      "inject": { "employee": true, "workingDay": false, "guest": true, "invitation": false },
+      "generated": true
+    },
+    {
+      "inject": { "employee": true, "workingDay": false, "guest": true, "invitation": true },
+      "generated": true
+    },
+    {
+      "inject": { "employee": true, "workingDay": true, "guest": false, "invitation": true },
+      "generated": true
+    },
+    {
+      "inject": { "employee": true, "workingDay": true, "guest": true, "invitation": false },
+      "generated": true
+    }
   ]
 }

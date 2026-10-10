@@ -1,17 +1,34 @@
 {
   "structure": {
     "requires": [
+      { "kind": "break" },
+      { "kind": "continue" },
       { "kind": "variable", "name": "totalShops" },
       { "kind": "variable", "name": "closedShop" },
       { "kind": "variable", "name": "policeShop" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
     { "visible": true, "inject": { "totalShops": 6, "closedShop": 3, "policeShop": 5 } },
     { "inject": { "totalShops": 4, "closedShop": 10, "policeShop": 10 } },
     { "inject": { "totalShops": 6, "closedShop": 2, "policeShop": 1 } },
-    { "inject": { "totalShops": 5, "closedShop": 4, "policeShop": 10 } }
+    { "inject": { "totalShops": 5, "closedShop": 4, "policeShop": 10 } },
+    { "inject": { "totalShops": 1, "closedShop": 1, "policeShop": 5 }, "generated": true },
+    { "inject": { "totalShops": 1, "closedShop": 3, "policeShop": 1 }, "generated": true },
+    { "inject": { "totalShops": 1, "closedShop": 5, "policeShop": 5 }, "generated": true },
+    { "inject": { "totalShops": 2, "closedShop": 1, "policeShop": 2 }, "generated": true },
+    { "inject": { "totalShops": 3, "closedShop": 3, "policeShop": 4 }, "generated": true },
+    { "inject": { "totalShops": 6, "closedShop": 1, "policeShop": 6 }, "generated": true },
+    { "inject": { "totalShops": 6, "closedShop": 6, "policeShop": 7 }, "generated": true },
+    { "inject": { "totalShops": 6, "closedShop": 5, "policeShop": 3 }, "generated": true },
+    { "inject": { "totalShops": 7, "closedShop": 2, "policeShop": 7 }, "generated": true },
+    { "inject": { "totalShops": 8, "closedShop": 8, "policeShop": 8 }, "generated": true },
+    { "inject": { "totalShops": 10, "closedShop": 4, "policeShop": 9 }, "generated": true },
+    { "inject": { "totalShops": 10, "closedShop": 11, "policeShop": 11 }, "generated": true },
+    { "inject": { "totalShops": 12, "closedShop": 7, "policeShop": 20 }, "generated": true },
+    { "inject": { "totalShops": 15, "closedShop": 9, "policeShop": 12 }, "generated": true },
+    { "inject": { "totalShops": 20, "closedShop": 13, "policeShop": 2 }, "generated": true },
+    { "inject": { "totalShops": 30, "closedShop": 15, "policeShop": 40 }, "generated": true }
   ]
 }

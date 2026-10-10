@@ -3,7 +3,7 @@
     "requires": [
       { "kind": "variable", "name": "secunde" },
       { "kind": "variable", "name": "eroare_detectata" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "if" }
     ]
   },
   "cases": [
@@ -41,6 +41,16 @@
     { "inject": { "secunde": 485, "eroare_detectata": 1 }, "generated": true },
     { "inject": { "secunde": 774, "eroare_detectata": 0 }, "generated": true },
     { "inject": { "secunde": 569, "eroare_detectata": 1 }, "generated": true },
-    { "inject": { "secunde": 559, "eroare_detectata": 1 }, "generated": true }
+    { "inject": { "secunde": 559, "eroare_detectata": 1 }, "generated": true },
+    { "inject": { "secunde": 2, "eroare_detectata": 0 }, "generated": true },
+    { "inject": { "secunde": 3, "eroare_detectata": 1 }, "generated": true },
+    { "inject": { "secunde": 6, "eroare_detectata": 0 }, "generated": true },
+    { "inject": { "secunde": 8, "eroare_detectata": 1 }, "generated": true },
+    { "inject": { "secunde": 12, "eroare_detectata": 0 }, "generated": true },
+    { "inject": { "secunde": 45, "eroare_detectata": 1 }, "generated": true },
+    { "inject": { "secunde": 70, "eroare_detectata": 0 }, "generated": true },
+    { "inject": { "secunde": 150, "eroare_detectata": 1 }, "generated": true },
+    { "inject": { "secunde": 1000, "eroare_detectata": 0 }, "generated": true },
+    { "inject": { "secunde": 95, "eroare_detectata": 0 }, "generated": true }
   ]
 }

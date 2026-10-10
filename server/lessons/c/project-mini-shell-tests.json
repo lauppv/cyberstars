@@ -1,12 +1,56 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "call", "name": "fork" }]
+    "requires": [
+      { "kind": "function", "name": "run_command" },
+      { "kind": "call", "name": "fork" },
+      { "kind": "call", "name": "wait" },
+      { "kind": "call", "name": "scanf" },
+      { "kind": "loop" }
+    ]
   },
   "cases": [
     { "visible": true, "stdin": "time\nspace\nunknown\nexit\n" },
     { "visible": true, "stdin": "space\nexit\n" },
     { "stdin": "exit\n" },
-    { "stdin": "time\ntime\nexit\n" }
+    { "stdin": "time\ntime\nexit\n" },
+    { "stdin": "time\nexit\n", "generated": true },
+    { "stdin": "ls\nexit\n", "generated": true },
+    { "stdin": "time\nspace\nexit\n", "generated": true },
+    { "stdin": "space\ntime\nexit\n", "generated": true },
+    { "stdin": "time\ntime\ntime\nexit\n", "generated": true },
+    { "stdin": "space\nspace\nexit\n", "generated": true },
+    { "stdin": "help\nhelp\nexit\n", "generated": true },
+    { "stdin": "Time\nSPACE\nexit\n", "generated": true },
+    { "stdin": "times\nspaces\nexit2\nexit\n", "generated": true },
+    { "stdin": "exitnow\ntime\nexit\n", "generated": true },
+    { "stdin": "tim\nspac\ntime\nspace\nexit\n", "generated": true },
+    { "stdin": "quit\nspace\nquit\nexit\n", "generated": true },
+    { "stdin": "time\nspace\nx\ntime\nspace\nexit\n", "generated": true },
+    { "stdin": "time\ntime\ntime\nspace\nls\nspace\ntime\ndate\nexit\n", "generated": true },
+    { "stdin": "spaces\nexit2\ncat\ncat\nwho\ndf\nexit\n", "generated": true },
+    { "stdin": "time\ntim\nexit\n", "generated": true },
+    { "stdin": "time\nspaces\ndf\ntime\ntime\nspace\ndate\nhelp\nexit\n", "generated": true },
+    { "stdin": "time\nspace\nspace\nspace\ntime\nexit\n", "generated": true },
+    { "stdin": "time\ndf\nexit\n", "generated": true },
+    { "stdin": "space\nspace\ntime\nexit\n", "generated": true },
+    { "stdin": "time\ntime\ntime\ndate\nexitnow\nspace\nspace\nexit\n", "generated": true },
+    { "stdin": "time\nspace\nexitnow\nspace\ntime\ntime\nspac\nspaces\nexit\n", "generated": true },
+    {
+      "stdin": "space\nspace\ntime\nspace\ntime\ntime\nquit\nspace\nspace\nexit\n",
+      "generated": true
+    },
+    {
+      "stdin": "space\ntime\nspace\ntime\nspaces\nspace\ntime\nspace\ntime\nexit\n",
+      "generated": true
+    },
+    { "stdin": "time\ntimes\ntime\ntime\nexitnow\ntime\nexit\n", "generated": true },
+    { "stdin": "space\nspaces\nspace\ntime\nspace\ntime\nexitnow\nexit\n", "generated": true },
+    { "stdin": "who\nspace\nspace\nspace\nspace\nspace\ntim\nexit\n", "generated": true },
+    { "stdin": "help\nspace\nspace\ntimes\ntime\nexit\n", "generated": true },
+    { "stdin": "space\ntime\nspace\ntime\ntime\ntime\ntime\ncat\nexit\n", "generated": true },
+    { "stdin": "time\nspace\nspace\nexit\n", "generated": true },
+    { "stdin": "time\nSPACE\nexit\n", "generated": true },
+    { "stdin": "time\ntimes\nspace\nexit\n", "generated": true }
   ]
 }

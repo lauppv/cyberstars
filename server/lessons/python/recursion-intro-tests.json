@@ -2,9 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "base" },
       { "kind": "function", "name": "power" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "recursion" },
+      { "kind": "loop", "type": "for" }
     ]
   },
   "cases": [
@@ -12,6 +13,24 @@
     { "visible": true, "inject": { "base": 3 } },
     { "inject": { "base": 1 } },
     { "inject": { "base": 5 } },
-    { "inject": { "base": 10 } }
+    { "inject": { "base": 10 } },
+    { "inject": { "base": 0 }, "generated": true },
+    { "inject": { "base": 4 }, "generated": true },
+    { "inject": { "base": 6 }, "generated": true },
+    { "inject": { "base": 7 }, "generated": true },
+    { "inject": { "base": 8 }, "generated": true },
+    { "inject": { "base": 9 }, "generated": true },
+    { "inject": { "base": 11 }, "generated": true },
+    { "inject": { "base": 12 }, "generated": true },
+    { "inject": { "base": 13 }, "generated": true },
+    { "inject": { "base": 16 }, "generated": true },
+    { "inject": { "base": 20 }, "generated": true },
+    { "inject": { "base": 25 }, "generated": true },
+    { "inject": { "base": 32 }, "generated": true },
+    { "inject": { "base": 50 }, "generated": true },
+    { "inject": { "base": 99 }, "generated": true },
+    { "inject": { "base": 100 }, "generated": true },
+    { "inject": { "base": 128 }, "generated": true },
+    { "inject": { "base": 1000 }, "generated": true }
   ]
 }

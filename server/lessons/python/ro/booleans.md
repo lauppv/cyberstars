@@ -141,9 +141,9 @@ Stația are o consolă care rulează **cât timp** este pornită. Folosește o v
 
 - dacă utilizatorul tastează `oprire` → setează `pornit` pe `False` (bucla se va opri aici)
 - dacă utilizatorul tastează `status` → afișează `Sistem activ`
-- altfel → afișează `Comandă necunoscută`
+- altfel → afișează `Comanda necunoscuta`
 
-După ce bucla se termină, afișează `Se închide consola...`.
+După ce bucla se termină, afișează `Se inchide consola...`.
 
 **Exemplu**
 

@@ -9,7 +9,7 @@
       { "kind": "variable", "name": "venit" },
       { "kind": "variable", "name": "cheltuiala1" },
       { "kind": "variable", "name": "cheltuiala2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "modifier", "name": "private" }
     ]
   },
   "cases": [
@@ -19,6 +19,61 @@
     },
     { "inject": { "start": 500, "venit": 0, "cheltuiala1": 100, "cheltuiala2": 50 } },
     { "inject": { "start": 200, "venit": 100, "cheltuiala1": 300, "cheltuiala2": 50 } },
-    { "inject": { "start": 1000, "venit": 250, "cheltuiala1": 250, "cheltuiala2": 250 } }
+    { "inject": { "start": 1000, "venit": 250, "cheltuiala1": 250, "cheltuiala2": 250 } },
+    { "inject": { "start": 0, "venit": 0, "cheltuiala1": 0, "cheltuiala2": 0 }, "generated": true },
+    {
+      "inject": { "start": 0, "venit": 10, "cheltuiala1": 10, "cheltuiala2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "venit": -50, "cheltuiala1": 30, "cheltuiala2": 200 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "venit": 50, "cheltuiala1": -30, "cheltuiala2": 20 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "venit": 50, "cheltuiala1": 150, "cheltuiala2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "venit": 50, "cheltuiala1": 151, "cheltuiala2": 10 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 100, "venit": 0, "cheltuiala1": 100, "cheltuiala2": 1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 50, "venit": 25, "cheltuiala1": 40, "cheltuiala2": 35 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 50, "venit": 25, "cheltuiala1": 40, "cheltuiala2": 36 },
+      "generated": true
+    },
+    { "inject": { "start": 0, "venit": 0, "cheltuiala1": 5, "cheltuiala2": 0 }, "generated": true },
+    {
+      "inject": { "start": 7, "venit": -1, "cheltuiala1": -1, "cheltuiala2": -1 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 999, "venit": 1, "cheltuiala1": 1000, "cheltuiala2": 0 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 300, "venit": 200, "cheltuiala1": 100, "cheltuiala2": 400 },
+      "generated": true
+    },
+    {
+      "inject": { "start": 300, "venit": 200, "cheltuiala1": 100, "cheltuiala2": 401 },
+      "generated": true
+    },
+    { "inject": { "start": 1, "venit": 1, "cheltuiala1": 1, "cheltuiala2": 1 }, "generated": true },
+    {
+      "inject": { "start": 20, "venit": 30, "cheltuiala1": 10, "cheltuiala2": 15 },
+      "generated": true
+    }
   ]
 }

@@ -3,8 +3,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "echipaj" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop", "type": "for" }
     ]
   },
   "cases": [
@@ -132,6 +131,959 @@
           ]
         }
       }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Anna",
+            "George",
+            "Gwen",
+            "Jack",
+            "Mary Jane",
+            "Paul",
+            "Theo",
+            "Hugo",
+            "Leo",
+            "Zara",
+            "Steven",
+            "Helen",
+            "Alex"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Rose",
+            "Helen",
+            "Christine",
+            "Iris",
+            "Alex",
+            "George",
+            "Joanna",
+            "Leo",
+            "Daniel",
+            "Brian",
+            "Finn",
+            "Mary",
+            "Sara"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Yuri",
+            "Nora",
+            "Mary Jane",
+            "Christine",
+            "Robert",
+            "Dean",
+            "Jo",
+            "Mary",
+            "Iris",
+            "Laura",
+            "Ella",
+            "Helen",
+            "Cora",
+            "Beth"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Hugo",
+            "Piper",
+            "Mary",
+            "Theo",
+            "Iris",
+            "Cora",
+            "Brian",
+            "Andrew",
+            "Diana",
+            "Beth",
+            "Mary Jane",
+            "Christine",
+            "Yuri",
+            "Abel",
+            "Anna"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Finn",
+            "Andrew",
+            "Andrea",
+            "Reed",
+            "Leo",
+            "Diana",
+            "Gabrielle",
+            "Nora",
+            "Owen",
+            "Jo",
+            "Hugo",
+            "Daniel",
+            "Piper",
+            "George",
+            "Ella",
+            "Anna"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Rose",
+            "Iris",
+            "Ella",
+            "Brian",
+            "Mary",
+            "Robert",
+            "Maya",
+            "Jack",
+            "Leo",
+            "Beth",
+            "Ada",
+            "Joanna",
+            "Kira",
+            "Daniel",
+            "Owen",
+            "Yuri",
+            "Mary Jane"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Abel",
+            "Nora",
+            "Dean",
+            "Helen",
+            "Yuri",
+            "Joanna",
+            "Paul",
+            "Anna",
+            "Maya",
+            "Brian",
+            "Jack",
+            "George",
+            "Diana",
+            "Rose",
+            "Owen",
+            "Theo",
+            "Michael",
+            "Iris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Iris",
+            "Theo",
+            "Owen",
+            "Andrew",
+            "Yuri",
+            "Paul",
+            "Maya",
+            "Vince",
+            "Daniel",
+            "Michael",
+            "Laura",
+            "Christine",
+            "Robert",
+            "Al",
+            "Mary",
+            "Jack",
+            "Cora",
+            "Anna",
+            "Jo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Zara",
+            "Cora",
+            "Abel",
+            "Vince",
+            "Al",
+            "Anna",
+            "Beth",
+            "Jo",
+            "Theo",
+            "Michael",
+            "Wren",
+            "Gabrielle",
+            "George",
+            "Reed",
+            "Kira",
+            "Joanna",
+            "Maya",
+            "Nora",
+            "Iris",
+            "Paul"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Helen",
+            "Kira",
+            "Rose",
+            "Dean",
+            "Theo",
+            "Daniel",
+            "Andrew",
+            "Abel",
+            "George",
+            "Iris",
+            "Wren",
+            "Blake",
+            "Zara",
+            "Jo",
+            "Piper",
+            "Brian",
+            "Finn",
+            "Mary",
+            "Victor",
+            "Beth"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Ada",
+            "Mary",
+            "Jo",
+            "Piper",
+            "Christine",
+            "Nora",
+            "Anna",
+            "Cora",
+            "Al",
+            "Zara",
+            "George",
+            "Leo",
+            "Yuri",
+            "Maya",
+            "Brian",
+            "Michael",
+            "Finn",
+            "Dean",
+            "Vince",
+            "Blake"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Michael",
+            "Gwen",
+            "Anna",
+            "Jack",
+            "Abel",
+            "Blake",
+            "Jo",
+            "Kira",
+            "Gabrielle",
+            "Owen",
+            "Zara",
+            "Cora",
+            "Dean",
+            "Steven",
+            "Diana",
+            "Sara",
+            "Beth",
+            "Christine",
+            "Ada",
+            "Victor",
+            "Al"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Ada",
+            "Vince",
+            "Helen",
+            "Mary",
+            "Christine",
+            "Laura",
+            "Blake",
+            "Gwen",
+            "Abel",
+            "Owen",
+            "Theo",
+            "Robert",
+            "Nora",
+            "Piper",
+            "Hugo",
+            "Paul",
+            "Zara",
+            "Jack",
+            "Jo",
+            "Rose",
+            "Alex",
+            "Iris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Theo",
+            "Owen",
+            "Andrea",
+            "Robert",
+            "Daniel",
+            "Cora",
+            "Piper",
+            "Dean",
+            "Kira",
+            "Michael",
+            "Hugo",
+            "Steven",
+            "Andrew",
+            "Iris",
+            "Victor",
+            "Wren",
+            "Ella",
+            "Beth",
+            "Mary",
+            "Yuri",
+            "Jack",
+            "Paul",
+            "Gabrielle",
+            "Rose"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Cora",
+            "Finn",
+            "Sara",
+            "Yuri",
+            "Andrea",
+            "Al",
+            "Ada",
+            "Beth",
+            "Owen",
+            "Piper",
+            "Paul",
+            "Gwen",
+            "Theo",
+            "Jo",
+            "Anna",
+            "Nora",
+            "Gabrielle",
+            "Alex",
+            "Jack",
+            "Joanna",
+            "Michael",
+            "Mary Jane",
+            "Andrew",
+            "Laura",
+            "Vince"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Jack",
+            "Mary Jane",
+            "Michael",
+            "Reed",
+            "Dean",
+            "Vince",
+            "Robert",
+            "Mary",
+            "Andrea",
+            "Nora",
+            "Rose",
+            "Sara",
+            "Joanna",
+            "Andrew",
+            "Maya",
+            "Zara",
+            "Paul",
+            "Helen",
+            "Al",
+            "Owen",
+            "Yuri",
+            "Daniel",
+            "Abel",
+            "Cora",
+            "Ada",
+            "Laura"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "George",
+            "Jack",
+            "Blake",
+            "Laura",
+            "Maya",
+            "Daniel",
+            "Abel",
+            "Theo",
+            "Reed",
+            "Diana",
+            "Piper",
+            "Steven",
+            "Ella",
+            "Leo",
+            "Michael",
+            "Mary",
+            "Joanna",
+            "Sara",
+            "Robert",
+            "Anna",
+            "Andrew",
+            "Al",
+            "Yuri",
+            "Kira",
+            "Jo",
+            "Victor",
+            "Owen",
+            "Ada"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Jo",
+            "Finn",
+            "Joanna",
+            "Helen",
+            "Diana",
+            "Hugo",
+            "Zara",
+            "Gabrielle",
+            "Steven",
+            "Al",
+            "Michael",
+            "Mary",
+            "Jack",
+            "Wren",
+            "Victor",
+            "Owen",
+            "Daniel",
+            "Reed",
+            "Kira",
+            "Rose",
+            "Andrea",
+            "Beth",
+            "Dean",
+            "Sara",
+            "Piper",
+            "Blake",
+            "Brian",
+            "Ella",
+            "Leo",
+            "Ada"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Dean",
+            "Mary",
+            "Anna",
+            "Finn",
+            "Robert",
+            "Paul",
+            "Ella",
+            "Wren",
+            "Helen",
+            "Abel",
+            "Owen",
+            "Iris",
+            "Piper",
+            "Nora",
+            "Gabrielle",
+            "Victor",
+            "Cora",
+            "Jo",
+            "Alex",
+            "Leo",
+            "Steven",
+            "George",
+            "Mary Jane",
+            "Yuri",
+            "Rose",
+            "Gwen",
+            "Vince",
+            "Maya",
+            "Diana",
+            "Daniel",
+            "Brian",
+            "Reed"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Christine",
+            "Jack",
+            "Abel",
+            "Steven",
+            "Rose",
+            "Iris",
+            "Mary Jane",
+            "Andrea",
+            "Owen",
+            "Reed",
+            "Jo",
+            "Nora",
+            "Paul",
+            "Gwen",
+            "Michael",
+            "Victor",
+            "Theo",
+            "Beth",
+            "Dean",
+            "Ada",
+            "Diana",
+            "Zara",
+            "Daniel",
+            "Anna",
+            "Kira",
+            "Vince",
+            "Helen",
+            "Alex",
+            "Leo",
+            "Yuri",
+            "Gabrielle",
+            "George",
+            "Finn",
+            "Cora",
+            "Piper"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Wren",
+            "Vince",
+            "Jack",
+            "Mary",
+            "Theo",
+            "Reed",
+            "Steven",
+            "Finn",
+            "Diana",
+            "Ada",
+            "Yuri",
+            "Paul",
+            "Robert",
+            "Jo",
+            "Brian",
+            "Rose",
+            "Piper",
+            "Hugo",
+            "Daniel",
+            "Iris",
+            "Anna",
+            "Abel",
+            "Christine",
+            "Victor",
+            "Ella",
+            "Beth",
+            "Joanna",
+            "George",
+            "Michael",
+            "Al",
+            "Sara",
+            "Gabrielle",
+            "Blake",
+            "Mary Jane",
+            "Alex",
+            "Zara",
+            "Kira",
+            "Andrew",
+            "Gwen",
+            "Cora"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Diana",
+            "Ada",
+            "Alex",
+            "Blake",
+            "Cora",
+            "Maya",
+            "Owen",
+            "Yuri",
+            "Kira",
+            "Leo",
+            "Abel",
+            "Christine",
+            "Ella",
+            "Vince",
+            "Laura",
+            "Iris",
+            "Anna",
+            "Jo",
+            "Sara",
+            "Joanna",
+            "Victor",
+            "Robert",
+            "Andrea",
+            "Al",
+            "Wren",
+            "Michael",
+            "Mary",
+            "Zara",
+            "Steven",
+            "Helen",
+            "George",
+            "Finn",
+            "Reed",
+            "Jack",
+            "Gwen",
+            "Nora",
+            "Beth",
+            "Gabrielle",
+            "Andrew",
+            "Hugo",
+            "Dean",
+            "Rose",
+            "Theo",
+            "Brian",
+            "Paul"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Vince",
+            "Christine",
+            "Hugo",
+            "Laura",
+            "Ada",
+            "Helen",
+            "Cora",
+            "Abel",
+            "Anna",
+            "Dean",
+            "Theo",
+            "Gwen",
+            "Daniel"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Paul",
+            "Maya",
+            "Anna",
+            "Ada",
+            "Rose",
+            "Joanna",
+            "Helen",
+            "Mary",
+            "Leo",
+            "Michael",
+            "Victor",
+            "Iris",
+            "Yuri",
+            "Cora",
+            "Beth",
+            "Gwen",
+            "Sara",
+            "George",
+            "Mary Jane",
+            "Theo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Kira",
+            "Beth",
+            "Dean",
+            "Al",
+            "Ada",
+            "Andrea",
+            "Diana",
+            "Theo",
+            "Jo",
+            "Paul",
+            "Abel",
+            "Mary Jane",
+            "Helen",
+            "Brian",
+            "Blake",
+            "Maya",
+            "George",
+            "Wren",
+            "Ella",
+            "Finn"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Owen",
+            "Reed",
+            "Ada",
+            "Finn",
+            "Robert",
+            "Cora",
+            "Steven",
+            "Gwen",
+            "Rose",
+            "Blake",
+            "Hugo",
+            "Paul",
+            "Wren",
+            "Iris",
+            "Christine",
+            "Andrea"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Robert",
+            "Andrew",
+            "Ada",
+            "Gabrielle",
+            "Beth",
+            "Maya",
+            "Mary Jane",
+            "Theo",
+            "Joanna",
+            "Jack",
+            "Nora",
+            "Blake",
+            "Sara",
+            "Helen",
+            "Zara",
+            "Victor",
+            "Reed",
+            "Wren"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Andrea",
+            "Ada",
+            "Michael",
+            "Andrew",
+            "Steven",
+            "Daniel",
+            "Dean",
+            "Gwen",
+            "Wren",
+            "George",
+            "Mary Jane",
+            "Yuri",
+            "Zara",
+            "Gabrielle",
+            "Blake",
+            "Paul",
+            "Jack",
+            "Maya",
+            "Ella",
+            "Theo",
+            "Owen",
+            "Jo",
+            "Alex"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Maya",
+            "Helen",
+            "Michael",
+            "Steven",
+            "Wren",
+            "Diana",
+            "Blake",
+            "Abel",
+            "Laura",
+            "Reed",
+            "Kira",
+            "Ella",
+            "Leo",
+            "Theo",
+            "George",
+            "Nora",
+            "Andrew",
+            "Ada",
+            "Al",
+            "Paul",
+            "Mary",
+            "Beth",
+            "Dean",
+            "Gabrielle",
+            "Rose",
+            "Hugo",
+            "Iris"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Mary Jane",
+            "Helen",
+            "Steven",
+            "Dean",
+            "Ada",
+            "Kira",
+            "George",
+            "Yuri",
+            "Blake",
+            "Beth",
+            "Owen",
+            "Gabrielle",
+            "Andrea",
+            "Michael",
+            "Joanna",
+            "Andrew",
+            "Christine",
+            "Vince",
+            "Jack",
+            "Brian",
+            "Alex",
+            "Theo",
+            "Al",
+            "Cora",
+            "Jo",
+            "Diana",
+            "Finn",
+            "Piper",
+            "Zara",
+            "Rose",
+            "Anna",
+            "Hugo",
+            "Paul"
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }

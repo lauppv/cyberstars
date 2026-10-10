@@ -2,8 +2,8 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "function", "name": "boost" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "shield" },
+      { "kind": "function", "name": "boost" }
     ]
   },
   "cases": [
@@ -11,6 +11,30 @@
     { "inject": { "shield": 1 } },
     { "inject": { "shield": 0 } },
     { "inject": { "shield": 7 } },
-    { "inject": { "shield": 256 } }
+    { "inject": { "shield": 256 } },
+    { "inject": { "shield": 2 }, "generated": true },
+    { "inject": { "shield": 3 }, "generated": true },
+    { "inject": { "shield": 5 }, "generated": true },
+    { "inject": { "shield": 9 }, "generated": true },
+    { "inject": { "shield": 10 }, "generated": true },
+    { "inject": { "shield": 15 }, "generated": true },
+    { "inject": { "shield": 25 }, "generated": true },
+    { "inject": { "shield": 42 }, "generated": true },
+    { "inject": { "shield": 50 }, "generated": true },
+    { "inject": { "shield": 64 }, "generated": true },
+    { "inject": { "shield": 99 }, "generated": true },
+    { "inject": { "shield": 101 }, "generated": true },
+    { "inject": { "shield": 128 }, "generated": true },
+    { "inject": { "shield": 150 }, "generated": true },
+    { "inject": { "shield": 199 }, "generated": true },
+    { "inject": { "shield": 200 }, "generated": true },
+    { "inject": { "shield": 333 }, "generated": true },
+    { "inject": { "shield": 500 }, "generated": true },
+    { "inject": { "shield": 512 }, "generated": true },
+    { "inject": { "shield": 999 }, "generated": true },
+    { "inject": { "shield": 1000 }, "generated": true },
+    { "inject": { "shield": 1024 }, "generated": true },
+    { "inject": { "shield": 4096 }, "generated": true },
+    { "inject": { "shield": 12345 }, "generated": true }
   ]
 }

@@ -4,7 +4,7 @@ Acesta este un **recap**. Pune la lucru lucrurile învățate recent: **valori r
 
 ## Misiune: Raport de la Centrul de Control
 
-Ai un dicționar cu membrii echipajului și scorurile lor de la ultima misiune.
+Ai un dicționar numit scoruri cu membrii echipajului și scorurile lor de la ultima misiune.
 
 Scrie o funcție `analizeaza(scoruri)` care primește acest dicționar și **returnează un dicționar nou** cu trei chei:
 

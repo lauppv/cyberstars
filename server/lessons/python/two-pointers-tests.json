@@ -2,9 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "fuels" },
+      { "kind": "variable", "name": "target" },
       { "kind": "function", "name": "pair_with_sum" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -12,13 +13,9 @@
       "visible": true,
       "inject": { "fuels": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "target": 10 }
     },
-    {
-      "visible": true,
-      "inject": { "fuels": { "$list": [1, 2, 3, 4, 5] }, "target": 6 }
-    },
+    { "visible": true, "inject": { "fuels": { "$list": [1, 2, 3, 4, 5] }, "target": 6 } },
     { "inject": { "fuels": { "$list": [1, 5] }, "target": 6 } },
     { "inject": { "fuels": { "$list": [2, 4, 6, 8] }, "target": 7 } },
-    { "inject": { "fuels": { "$list": [1, 1, 2, 3, 3] }, "target": 4 } },
     { "inject": { "fuels": { "$list": [1, 2] }, "target": 3 }, "generated": true },
     { "inject": { "fuels": { "$list": [1, 2] }, "target": 4 }, "generated": true },
     { "inject": { "fuels": { "$list": [3, 5, 7] }, "target": 10 }, "generated": true },
@@ -100,6 +97,65 @@
     },
     {
       "inject": { "fuels": { "$list": [2, 4, 16, 26, 30, 32, 40, 45] }, "target": 8 },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [5] }, "target": 10 }, "generated": true },
+    { "inject": { "fuels": { "$list": [0, 10] }, "target": 10 }, "generated": true },
+    { "inject": { "fuels": { "$list": [0, 1, 2, 3] }, "target": 3 }, "generated": true },
+    { "inject": { "fuels": { "$list": [1, 9] }, "target": 11 }, "generated": true },
+    { "inject": { "fuels": { "$list": [4, 6] }, "target": 10 }, "generated": true },
+    {
+      "inject": {
+        "fuels": {
+          "$list": [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 30
+          ]
+        },
+        "target": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "target": 18 },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "target": 17 },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] }, "target": 2 },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [11, 18, 41, 43, 51, 54, 58] }, "target": 72 },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [4, 8, 11, 34, 41, 46] }, "target": 19 }, "generated": true },
+    { "inject": { "fuels": { "$list": [0, 17, 38, 43, 53] }, "target": 103 }, "generated": true },
+    {
+      "inject": {
+        "fuels": { "$list": [8, 14, 16, 22, 27, 28, 31, 35, 36, 47, 48, 50, 52, 55, 59] },
+        "target": 81
+      },
+      "generated": true
+    },
+    {
+      "inject": { "fuels": { "$list": [7, 16, 22, 38, 40, 41, 51, 52] }, "target": 92 },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [11, 28, 34, 43, 46] }, "target": 62 }, "generated": true },
+    {
+      "inject": { "fuels": { "$list": [8, 16, 17, 23, 25, 29, 38, 59] }, "target": 84 },
+      "generated": true
+    },
+    { "inject": { "fuels": { "$list": [4, 8, 12, 23, 44, 56] }, "target": 79 }, "generated": true },
+    {
+      "inject": {
+        "fuels": { "$list": [2, 9, 10, 14, 16, 26, 27, 28, 31, 40, 44, 46, 51, 55] },
+        "target": 102
+      },
       "generated": true
     }
   ]

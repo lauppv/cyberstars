@@ -4,19 +4,34 @@
       { "kind": "call", "name": "Club" },
       { "kind": "call", "name": "Spalatorie" },
       { "kind": "function", "name": "incasari" },
+      { "kind": "call", "name": "incasari" },
       { "kind": "variable", "name": "clienti" },
       { "kind": "variable", "name": "masini" },
       { "kind": "variable", "name": "pret" },
-      { "kind": "call", "name": "println" }
+      { "kind": "extends" },
+      { "kind": "override" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "clienti": 120, "masini": 30, "pret": 8 }
-    },
+    { "visible": true, "inject": { "clienti": 120, "masini": 30, "pret": 8 } },
     { "inject": { "clienti": 0, "masini": 10, "pret": 15 } },
     { "inject": { "clienti": 50, "masini": 100, "pret": 3 } },
-    { "inject": { "clienti": 200, "masini": 1, "pret": 999 } }
+    { "inject": { "clienti": 200, "masini": 1, "pret": 999 } },
+    { "inject": { "clienti": 1, "masini": 1, "pret": 1 }, "generated": true },
+    { "inject": { "clienti": 0, "masini": 0, "pret": 0 }, "generated": true },
+    { "inject": { "clienti": 0, "masini": 0, "pret": 10 }, "generated": true },
+    { "inject": { "clienti": 1, "masini": 0, "pret": 5 }, "generated": true },
+    { "inject": { "clienti": 10, "masini": 10, "pret": 10 }, "generated": true },
+    { "inject": { "clienti": 99, "masini": 7, "pret": 12 }, "generated": true },
+    { "inject": { "clienti": 1000, "masini": 250, "pret": 4 }, "generated": true },
+    { "inject": { "clienti": 37, "masini": 13, "pret": 17 }, "generated": true },
+    { "inject": { "clienti": 500, "masini": 1, "pret": 1 }, "generated": true },
+    { "inject": { "clienti": 3, "masini": 100, "pret": 25 }, "generated": true },
+    { "inject": { "clienti": 250, "masini": 40, "pret": 6 }, "generated": true },
+    { "inject": { "clienti": 64, "masini": 64, "pret": 64 }, "generated": true },
+    { "inject": { "clienti": 7, "masini": 3, "pret": 9 }, "generated": true },
+    { "inject": { "clienti": 123, "masini": 45, "pret": 6 }, "generated": true },
+    { "inject": { "clienti": 80, "masini": 0, "pret": 15 }, "generated": true },
+    { "inject": { "clienti": 5, "masini": 9, "pret": 11 }, "generated": true }
   ]
 }

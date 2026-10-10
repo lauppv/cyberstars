@@ -7,8 +7,7 @@
       { "kind": "variable", "name": "price2" },
       { "kind": "variable", "name": "product3" },
       { "kind": "variable", "name": "price3" },
-      { "kind": "variable", "name": "tax" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "tax" }
     ]
   },
   "cases": [
@@ -56,6 +55,198 @@
         "price3": 0.05,
         "tax": 5
       }
+    },
+    {
+      "inject": {
+        "product1": "Oxygen module",
+        "price1": 1,
+        "product2": "Fuel cell",
+        "price2": 2,
+        "product3": "Space snack",
+        "price3": 3,
+        "tax": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Water filter",
+        "price1": 10.0,
+        "product2": "Duct tape",
+        "price2": 20.0,
+        "product3": "Oxygen module",
+        "price3": 30.0,
+        "tax": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Solar battery",
+        "price1": 5.0,
+        "product2": "Helmet",
+        "price2": 5.0,
+        "product3": "Cable kit",
+        "price3": 5.0,
+        "tax": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Fuel cell",
+        "price1": 6.51,
+        "product2": "Solar battery",
+        "price2": 1956.97,
+        "product3": "Repair drone",
+        "price3": 4.33,
+        "tax": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Air filter",
+        "price1": 11.04,
+        "product2": "Cable kit",
+        "price2": 654.66,
+        "product3": "Battery pack",
+        "price3": 7.96,
+        "tax": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Battery pack",
+        "price1": 1927.28,
+        "product2": "Radio",
+        "price2": 1954.0,
+        "product3": "Radio",
+        "price3": 2280.28,
+        "tax": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Nav computer",
+        "price1": 258.28,
+        "product2": "Water filter",
+        "price2": 9.34,
+        "product3": "Fuel cell",
+        "price3": 1110.24,
+        "tax": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Cable kit",
+        "price1": 440.07,
+        "product2": "Nav computer",
+        "price2": 12.2,
+        "product3": "Water pouch",
+        "price3": 15.15,
+        "tax": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Duct tape",
+        "price1": 295.05,
+        "product2": "Gum",
+        "price2": 188.09,
+        "product3": "Water filter",
+        "price3": 1174.85,
+        "tax": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Space snack",
+        "price1": 2117.82,
+        "product2": "Oxygen module",
+        "price2": 1464.48,
+        "product3": "Duct tape",
+        "price3": 1388.66,
+        "tax": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Water pouch",
+        "price1": 1218.58,
+        "product2": "Battery pack",
+        "price2": 4.99,
+        "product3": "Med kit",
+        "price3": 3.37,
+        "tax": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Gum",
+        "price1": 21.96,
+        "product2": "Water pouch",
+        "price2": 813.73,
+        "product3": "Nav computer",
+        "price3": 334.38,
+        "tax": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Radio",
+        "price1": 209.18,
+        "product2": "Med kit",
+        "price2": 1.29,
+        "product3": "Helmet",
+        "price3": 755.95,
+        "tax": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Helmet",
+        "price1": 10.76,
+        "product2": "Air filter",
+        "price2": 314.75,
+        "product3": "Air filter",
+        "price3": 19.11,
+        "tax": 99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Repair drone",
+        "price1": 19.86,
+        "product2": "Space snack",
+        "price2": 379.84,
+        "product3": "Gum",
+        "price3": 557.74,
+        "tax": 24
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "product1": "Med kit",
+        "price1": 567.61,
+        "product2": "Repair drone",
+        "price2": 328.6,
+        "product3": "Solar battery",
+        "price3": 10.39,
+        "tax": 21
+      },
+      "generated": true
     }
   ]
 }

@@ -219,7 +219,10 @@ public class Runner {
   }
 
   /** One eligible injection point: a declaration initializer or an assignment rhs. */
-  record InjectPoint(String name, String type, long start, long end) {}
+  // inMain: a direct statement of main's body. Once a name has one there, only
+  // those take the case's values, so a field or a helper's local of the same
+  // name (int customers = 0; in a class) keeps its own.
+  record InjectPoint(String name, String type, long start, long end, boolean inMain) {}
 
   /** A parsed program: source, syntax verdict, structure facts, injection points. */
   static class Parsed {
@@ -230,9 +233,20 @@ public class Runner {
     final java.util.Set<String> callNames = new java.util.HashSet<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
+    // A method that calls itself somewhere in its own body.
+    boolean hasRecursion;
     final java.util.Set<Long> intLiterals = new java.util.HashSet<>();
     final List<String> comments = new ArrayList<>();
-    boolean hasLoop;
+    // Loop statements seen, by spec name: "for" (for-each included), "while", "do_while".
+    final java.util.Set<String> loopTypes = new java.util.HashSet<>();
+    // Kinds that are simply there or not (if, switch, try, nested_loop, extends, ...).
+    final java.util.Set<String> facts = new java.util.HashSet<>();
+    final java.util.Set<String> operators = new java.util.HashSet<>();
+    final java.util.Set<String> modifiers = new java.util.HashSet<>();
+    // Classes and records of the student's own: every one but the class holding main.
+    final java.util.Set<String> ownClasses = new java.util.HashSet<>();
+    // Types instantiated with new, generics and package stripped.
+    final java.util.Set<String> newTypes = new java.util.HashSet<>();
 
     // javac's tree drops comments, so they're collected lexically: walk the
     // source skipping string/char literals (and text blocks), record // and
@@ -306,6 +320,9 @@ public class Runner {
       for (CompilationUnitTree unit : units) {
         parsed.scan(unit, positions);
       }
+      for (CompilationUnitTree unit : units) {
+        parsed.collectFacts(unit);
+      }
       parsed.collectComments();
       return parsed;
     }
@@ -328,14 +345,39 @@ public class Runner {
         @Override
         public Void visitMethod(MethodTree node, Void unused) {
           methodNames.add(node.getName().toString());
-          return super.visitMethod(node, unused);
+          String key = node.getName() + "/" + node.getParameters().size();
+          methodsByArity.merge(key, 1, Integer::sum);
+          enclosingMethods.push(key);
+          try {
+            return super.visitMethod(node, unused);
+          } finally {
+            enclosingMethods.pop();
+          }
         }
+
+        private final java.util.ArrayDeque<String> enclosingMethods = new java.util.ArrayDeque<>();
+        private final Map<String, Integer> methodsByArity = new java.util.HashMap<>();
+        private final java.util.Set<String> selfCalls = new java.util.HashSet<>();
 
         @Override
         public Void visitMethodInvocation(MethodInvocationTree node, Void unused) {
           ExpressionTree select = node.getMethodSelect();
           if (select instanceof IdentifierTree id) callNames.add(id.getName().toString());
           if (select instanceof MemberSelectTree ms) callNames.add(ms.getIdentifier().toString());
+          // A method calls itself by its bare name or through this., with as
+          // many arguments as it takes: name.equals(...) on a field or an
+          // overload with another arity is a different method, and with an
+          // overload of the same arity it can't be told apart without types.
+          String called =
+              select instanceof IdentifierTree id
+                  ? id.getName().toString()
+                  : select instanceof MemberSelectTree ms
+                          && ms.getExpression() instanceof IdentifierTree target
+                          && target.getName().contentEquals("this")
+                      ? ms.getIdentifier().toString()
+                      : null;
+          String key = called + "/" + node.getArguments().size();
+          if (called != null && key.equals(enclosingMethods.peek())) selfCalls.add(key);
           return super.visitMethodInvocation(node, unused);
         }
 
@@ -343,7 +385,12 @@ public class Runner {
         public Void visitNewClass(NewClassTree node, Void unused) {
           // `new Player(...)` counts as a call to `Player` so OOP lessons can
           // require object creation via { kind: "call", name: "<ClassName>" }.
-          if (node.getIdentifier() != null) callNames.add(node.getIdentifier().toString());
+          // new HashMap<>() and new java.util.ArrayList<String>() count as HashMap / ArrayList.
+          if (node.getIdentifier() != null) {
+            String type = simpleType(node.getIdentifier());
+            callNames.add(type);
+            newTypes.add(type);
+          }
           return super.visitNewClass(node, unused);
         }
 
@@ -360,7 +407,7 @@ public class Runner {
             long start = positions.getStartPosition(unit, node.getInitializer());
             long end = positions.getEndPosition(unit, node.getInitializer());
             if (start >= 0 && end > start) {
-              points.add(new InjectPoint(name, type, start, end));
+              points.add(new InjectPoint(name, type, start, end, inMain(parent)));
             }
           }
           return super.visitVariable(node, unused);
@@ -377,7 +424,13 @@ public class Runner {
               long start = positions.getStartPosition(unit, node.getExpression());
               long end = positions.getEndPosition(unit, node.getExpression());
               if (start >= 0 && end > start) {
-                points.add(new InjectPoint(name, declaredTypes.get(name), start, end));
+                points.add(
+                    new InjectPoint(
+                        name,
+                        declaredTypes.get(name),
+                        start,
+                        end,
+                        inMain(getCurrentPath().getParentPath().getParentPath().getLeaf())));
               }
             }
           }
@@ -396,6 +449,11 @@ public class Runner {
           return false;
         }
 
+        private boolean inMain(Tree parent) {
+          String method = enclosingMethods.peek();
+          return parent instanceof BlockTree && method != null && method.startsWith("main/");
+        }
+
         private Tree findParentOf(Tree tree) {
           var path = getCurrentPath();
           while (path != null && path.getLeaf() != tree) path = path.getParentPath();
@@ -406,25 +464,25 @@ public class Runner {
 
         @Override
         public Void visitForLoop(ForLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("for");
           return super.visitForLoop(node, unused);
         }
 
         @Override
         public Void visitEnhancedForLoop(EnhancedForLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("for");
           return super.visitEnhancedForLoop(node, unused);
         }
 
         @Override
         public Void visitWhileLoop(WhileLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("while");
           return super.visitWhileLoop(node, unused);
         }
 
         @Override
         public Void visitDoWhileLoop(DoWhileLoopTree node, Void unused) {
-          hasLoop = true;
+          loopTypes.add("do_while");
           return super.visitDoWhileLoop(node, unused);
         }
 
@@ -434,8 +492,172 @@ public class Runner {
           if (node.getValue() instanceof Long l) intLiterals.add(l);
           return super.visitLiteral(node, unused);
         }
+
+        @Override
+        public Void visitCompilationUnit(CompilationUnitTree node, Void unused) {
+          super.visitCompilationUnit(node, unused);
+          for (String key : selfCalls) if (methodsByArity.get(key) == 1) hasRecursion = true;
+          return null;
+        }
       }.scan(unit, null);
       points.sort(Comparator.comparingLong(InjectPoint::start));
+    }
+
+    static String simpleType(Tree type) {
+      String text = type.toString();
+      int generic = text.indexOf('<');
+      if (generic >= 0) text = text.substring(0, generic);
+      return text.substring(text.lastIndexOf('.') + 1).trim();
+    }
+
+    static final Map<Tree.Kind, String> OPERATORS = new java.util.EnumMap<>(Tree.Kind.class);
+
+    static {
+      Object[][] table = {
+        {"&&", Tree.Kind.CONDITIONAL_AND}, {"||", Tree.Kind.CONDITIONAL_OR},
+        {"!", Tree.Kind.LOGICAL_COMPLEMENT}, {"~", Tree.Kind.BITWISE_COMPLEMENT},
+        {"&", Tree.Kind.AND, Tree.Kind.AND_ASSIGNMENT}, {"|", Tree.Kind.OR, Tree.Kind.OR_ASSIGNMENT},
+        {"^", Tree.Kind.XOR, Tree.Kind.XOR_ASSIGNMENT},
+        {"<<", Tree.Kind.LEFT_SHIFT, Tree.Kind.LEFT_SHIFT_ASSIGNMENT},
+        {">>", Tree.Kind.RIGHT_SHIFT, Tree.Kind.RIGHT_SHIFT_ASSIGNMENT},
+        {">>>", Tree.Kind.UNSIGNED_RIGHT_SHIFT, Tree.Kind.UNSIGNED_RIGHT_SHIFT_ASSIGNMENT},
+        {"+", Tree.Kind.PLUS, Tree.Kind.PLUS_ASSIGNMENT, Tree.Kind.UNARY_PLUS},
+        {"-", Tree.Kind.MINUS, Tree.Kind.MINUS_ASSIGNMENT, Tree.Kind.UNARY_MINUS},
+        {"*", Tree.Kind.MULTIPLY, Tree.Kind.MULTIPLY_ASSIGNMENT},
+        {"/", Tree.Kind.DIVIDE, Tree.Kind.DIVIDE_ASSIGNMENT},
+        {"%", Tree.Kind.REMAINDER, Tree.Kind.REMAINDER_ASSIGNMENT},
+        {"==", Tree.Kind.EQUAL_TO}, {"!=", Tree.Kind.NOT_EQUAL_TO}, {"<", Tree.Kind.LESS_THAN},
+        {"<=", Tree.Kind.LESS_THAN_EQUAL}, {">", Tree.Kind.GREATER_THAN},
+        {">=", Tree.Kind.GREATER_THAN_EQUAL},
+        {"++", Tree.Kind.PREFIX_INCREMENT, Tree.Kind.POSTFIX_INCREMENT},
+        {"--", Tree.Kind.PREFIX_DECREMENT, Tree.Kind.POSTFIX_DECREMENT},
+      };
+      for (Object[] row : table) {
+        for (int i = 1; i < row.length; i++) OPERATORS.put((Tree.Kind) row[i], (String) row[0]);
+      }
+    }
+
+    static final Map<Tree.Kind, String> STATEMENT_FACTS =
+        Map.of(
+            Tree.Kind.IF, "if",
+            Tree.Kind.SWITCH, "switch",
+            Tree.Kind.SWITCH_EXPRESSION, "switch",
+            Tree.Kind.BREAK, "break",
+            Tree.Kind.CONTINUE, "continue",
+            Tree.Kind.TRY, "try",
+            Tree.Kind.INSTANCE_OF, "instanceof",
+            Tree.Kind.TYPE_CAST, "cast",
+            Tree.Kind.INTERFACE, "interface",
+            Tree.Kind.ENUM, "enum");
+
+    static final java.util.Set<Tree.Kind> LOOP_KINDS =
+        java.util.EnumSet.of(
+            Tree.Kind.FOR_LOOP,
+            Tree.Kind.ENHANCED_FOR_LOOP,
+            Tree.Kind.WHILE_LOOP,
+            Tree.Kind.DO_WHILE_LOOP);
+
+    // Second pass, once mainClass is known: statement kinds, operators,
+    // modifiers and the student's own classes (who extends whom, which
+    // methods each declares, for override and overload).
+    void collectFacts(CompilationUnitTree unit) {
+      Map<String, String> parents = new LinkedHashMap<>();
+      Map<String, java.util.Set<String>> methodsOf = new LinkedHashMap<>();
+      new TreePathScanner<Void, Void>() {
+        int loopDepth;
+
+        @Override
+        public Void scan(Tree tree, Void unused) {
+          if (tree == null) return null;
+          String fact = STATEMENT_FACTS.get(tree.getKind());
+          if (fact != null) facts.add(fact);
+          String op = OPERATORS.get(tree.getKind());
+          if (op != null) operators.add(op);
+          boolean loop = LOOP_KINDS.contains(tree.getKind());
+          if (loop && loopDepth > 0) facts.add("nested_loop");
+          if (loop) loopDepth++;
+          try {
+            return super.scan(tree, unused);
+          } finally {
+            if (loop) loopDepth--;
+          }
+        }
+
+        @Override
+        public Void visitClass(ClassTree node, Void unused) {
+          String name = node.getSimpleName().toString();
+          boolean isClass =
+              node.getKind() == Tree.Kind.CLASS || node.getKind() == Tree.Kind.RECORD;
+          if (isClass && !name.isEmpty() && !name.equals(mainClass)) ownClasses.add(name);
+          if (node.getExtendsClause() != null) {
+            facts.add("extends");
+            parents.put(name, simpleType(node.getExtendsClause()));
+          }
+          if (!node.getImplementsClause().isEmpty()) facts.add("implements");
+          // A static nested class is how single-file Java holds its classes,
+          // so it doesn't count as using static.
+          for (var m : node.getModifiers().getFlags()) {
+            if (m != javax.lang.model.element.Modifier.STATIC) modifiers.add(m.toString());
+          }
+          java.util.Set<String> declared = new java.util.HashSet<>();
+          for (Tree member : node.getMembers()) {
+            if (member instanceof MethodTree m && !m.getName().contentEquals("<init>")) {
+              if (!declared.add(m.getName().toString())) facts.add("overload");
+            }
+          }
+          methodsOf.put(name, declared);
+          return super.visitClass(node, unused);
+        }
+
+        @Override
+        public Void visitMethod(MethodTree node, Void unused) {
+          // Every helper method next to main has to be static, and making one
+          // private hides nothing, so only a method of the student's own class
+          // shows they chose static or private.
+          Tree owner = getCurrentPath().getParentPath().getLeaf();
+          boolean besideMain =
+              owner instanceof ClassTree c && c.getSimpleName().contentEquals(mainClass);
+          if (!node.getName().contentEquals("main")) {
+            for (var m : node.getModifiers().getFlags()) {
+              boolean helperFlag =
+                  m == javax.lang.model.element.Modifier.STATIC
+                      || m == javax.lang.model.element.Modifier.PRIVATE;
+              if (!(besideMain && helperFlag)) modifiers.add(m.toString());
+            }
+          }
+          for (var a : node.getModifiers().getAnnotations()) {
+            if (simpleType(a.getAnnotationType()).equals("Override")) facts.add("override");
+          }
+          return super.visitMethod(node, unused);
+        }
+
+        @Override
+        public Void visitVariable(VariableTree node, Void unused) {
+          // A field next to main has to be static to be used from it, as a
+          // helper method does, so static or private there doesn't count either.
+          Tree parent = getCurrentPath().getParentPath().getLeaf();
+          boolean besideMain =
+              parent instanceof ClassTree c && c.getSimpleName().contentEquals(mainClass);
+          if (!(parent instanceof MethodTree)) {
+            for (var m : node.getModifiers().getFlags()) {
+              boolean helperFlag =
+                  m == javax.lang.model.element.Modifier.STATIC
+                      || m == javax.lang.model.element.Modifier.PRIVATE;
+              if (!(besideMain && helperFlag)) modifiers.add(m.toString());
+            }
+          }
+          return super.visitVariable(node, unused);
+        }
+      }.scan(unit, null);
+      // Overriding without @Override still overrides: a class redeclaring a
+      // method its own parent class declares.
+      for (Map.Entry<String, String> e : parents.entrySet()) {
+        java.util.Set<String> mine = methodsOf.getOrDefault(e.getKey(), java.util.Set.of());
+        java.util.Set<String> parentMethods = methodsOf.get(e.getValue());
+        if (parentMethods != null && mine.stream().anyMatch(parentMethods::contains)) {
+          facts.add("override");
+        }
+      }
     }
 
     /** Splices the case's values into this program's injection points. */
@@ -455,7 +677,10 @@ public class Runner {
       }
       record Splice(long start, long end, String text) {}
       List<Splice> splices = new ArrayList<>();
+      java.util.Set<String> inMain = new java.util.HashSet<>();
+      for (InjectPoint point : points) if (point.inMain()) inMain.add(point.name());
       for (InjectPoint point : points) {
+        if (!point.inMain() && inMain.contains(point.name())) continue;
         List<Object> values = remaining.get(point.name());
         if (values == null || values.isEmpty()) continue;
         splices.add(new Splice(point.start(), point.end(), Render.value(values.remove(0), point.type())));
@@ -501,9 +726,29 @@ public class Runner {
         case "variable":
           return parsed.variableNames.contains(name);
         case "function":
+          // Unnamed: any method of the student's own; main and constructors don't count.
+          if (name.isEmpty()) {
+            return parsed.methodNames.stream().anyMatch(m -> !m.equals("main") && !m.equals("<init>"));
+          }
           return parsed.methodNames.contains(name);
+        case "recursion":
+          return parsed.hasRecursion;
+        case "if", "switch", "break", "continue", "try", "nested_loop", "instanceof", "cast",
+            "interface", "enum", "extends", "implements", "override", "overload":
+          return parsed.facts.contains(kind);
+        case "operator":
+          return parsed.operators.contains(name);
+        case "modifier":
+          return parsed.modifiers.contains(name);
+        case "class":
+          return name.isEmpty() ? !parsed.ownClasses.isEmpty() : parsed.ownClasses.contains(name);
+        case "object":
+          return parsed.newTypes.stream().anyMatch(parsed.ownClasses::contains);
         case "loop":
-          return parsed.hasLoop;
+          {
+            String type = rule.get("type") instanceof String s ? s : "";
+            return type.isEmpty() ? !parsed.loopTypes.isEmpty() : parsed.loopTypes.contains(type);
+          }
         case "int_literal":
           for (Object v : asList(rule.getOrDefault("values", new ArrayList<>()))) {
             if (v instanceof Long l && parsed.intLiterals.contains(l)) return true;

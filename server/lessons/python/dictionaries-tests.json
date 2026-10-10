@@ -2,8 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "variable", "name": "crew" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "name" },
+      { "kind": "variable", "name": "role" },
+      { "kind": "variable", "name": "age" },
+      { "kind": "variable", "name": "station" }
     ]
   },
   "cases": [
@@ -15,14 +17,108 @@
       "visible": true,
       "inject": { "name": "Ana", "role": "Engineer", "age": 29, "station": "Orion" }
     },
+    { "inject": { "name": "Zed", "role": "Medic", "age": 0, "station": "Base" } },
+    { "inject": { "name": "Kai", "role": "Captain", "age": 99, "station": "Deep" } },
+    { "inject": { "name": "Mo", "role": "Cook", "age": 17, "station": "Hub" } },
     {
-      "inject": { "name": "Zed", "role": "Medic", "age": 0, "station": "Base" }
+      "inject": { "name": "Rex", "role": "Botanist", "age": 1, "station": "Orion" },
+      "generated": true
     },
     {
-      "inject": { "name": "Kai", "role": "Captain", "age": 99, "station": "Deep" }
+      "inject": { "name": "Li", "role": "Botanist", "age": 18, "station": "Europa" },
+      "generated": true
     },
     {
-      "inject": { "name": "Mo", "role": "Cook", "age": 17, "station": "Hub" }
+      "inject": { "name": "Ana", "role": "Scientist", "age": 19, "station": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Mira", "role": "Engineer", "age": 20, "station": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Nova", "role": "Navigator", "age": 25, "station": "Titan" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Vlad", "role": "Cook", "age": 30, "station": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Cara", "role": "Pilot", "age": 33, "station": "Orion" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Ioana", "role": "Engineer", "age": 40, "station": "Europa" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Elena", "role": "Scientist", "age": 41, "station": "Titan" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Big Mitch", "role": "Botanist", "age": 49, "station": "ISS" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Radu", "role": "Botanist", "age": 50, "station": "Laniakea" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Mary-Jane", "role": "Commander", "age": 55, "station": "ISS" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Diaz", "role": "Commander", "age": 60, "station": "Titan" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Bob", "role": "Pilot", "age": 64, "station": "Laniakea" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Rex", "role": "Commander", "age": 70, "station": "Mars Gate" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Bob", "role": "Botanist", "age": 80, "station": "Hub" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Ana", "role": "Scientist", "age": 98, "station": "Mars Gate" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Mira", "role": "Medic", "age": 100, "station": "Laniakea" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Vlad", "role": "Pilot", "age": 22, "station": "Hub" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Vlad", "role": "Navigator", "age": 45, "station": "Hub" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Mira", "role": "Navigator", "age": 27, "station": "ISS" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Ana", "role": "Navigator", "age": 38, "station": "Luna-1" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Vlad", "role": "Captain", "age": 58, "station": "Deep" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Cara", "role": "Captain", "age": 75, "station": "Luna-1" },
+      "generated": true
+    },
+    {
+      "inject": { "name": "Nova", "role": "Pilot", "age": 12, "station": "Deep" },
+      "generated": true
     }
   ]
 }

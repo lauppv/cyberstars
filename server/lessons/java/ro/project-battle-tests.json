@@ -1,9 +1,14 @@
 {
   "structure": {
     "requires": [
+      { "kind": "extends" },
+      { "kind": "override" },
       { "kind": "call", "name": "Razboinic" },
       { "kind": "call", "name": "Mag" },
       { "kind": "function", "name": "ataca" },
+      { "kind": "function", "name": "afiseazaStatus" },
+      { "kind": "call", "name": "ataca" },
+      { "kind": "call", "name": "afiseazaStatus" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "viata1" },
       { "kind": "variable", "name": "atac1" },
@@ -11,8 +16,7 @@
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "viata2" },
       { "kind": "variable", "name": "atac2" },
-      { "kind": "variable", "name": "vraja2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "vraja2" }
     ]
   },
   "cases": [
@@ -64,6 +68,149 @@
         "atac2": 12,
         "vraja2": 50
       }
+    },
+    {
+      "inject": {
+        "nume1": "Vic",
+        "viata1": 50,
+        "atac1": 50,
+        "armura1": 0,
+        "nume2": "Ricardo",
+        "viata2": 60,
+        "atac2": 10,
+        "vraja2": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "A",
+        "viata1": 2,
+        "atac1": 1,
+        "armura1": 1,
+        "nume2": "B",
+        "viata2": 1,
+        "atac2": 1,
+        "vraja2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Umberto",
+        "viata1": 300,
+        "atac1": 1,
+        "armura1": 50,
+        "nume2": "Avery",
+        "viata2": 10,
+        "atac2": 5,
+        "vraja2": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Candy",
+        "viata1": 90,
+        "atac1": 45,
+        "armura1": 3,
+        "nume2": "Kent",
+        "viata2": 90,
+        "atac2": 44,
+        "vraja2": 46
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Lance",
+        "viata1": 80,
+        "atac1": 15,
+        "armura1": 20,
+        "nume2": "Tommy",
+        "viata2": 100,
+        "atac2": 25,
+        "vraja2": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Hilary",
+        "viata1": 120,
+        "atac1": 60,
+        "armura1": 30,
+        "nume2": "Earnest",
+        "viata2": 150,
+        "atac2": 30,
+        "vraja2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Mitch",
+        "viata1": 999,
+        "atac1": 100,
+        "armura1": 99,
+        "nume2": "Rosie",
+        "viata2": 500,
+        "atac2": 99,
+        "vraja2": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Big Mitch",
+        "viata1": 75,
+        "atac1": 20,
+        "armura1": 8,
+        "nume2": "Pastor Richards",
+        "viata2": 65,
+        "atac2": 13,
+        "vraja2": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Tommy",
+        "viata1": 100,
+        "atac1": 100,
+        "armura1": 10,
+        "nume2": "Lance",
+        "viata2": 100,
+        "atac2": 50,
+        "vraja2": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Sonny",
+        "viata1": 42,
+        "atac1": 7,
+        "armura1": 7,
+        "nume2": "Kent",
+        "viata2": 70,
+        "atac2": 6,
+        "vraja2": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Victor",
+        "viata1": 88,
+        "atac1": 12,
+        "armura1": 12,
+        "nume2": "Lance",
+        "viata2": 88,
+        "atac2": 12,
+        "vraja2": 12
+      },
+      "generated": true
     }
   ]
 }

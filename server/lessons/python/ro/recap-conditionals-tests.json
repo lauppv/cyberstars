@@ -3,8 +3,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "varsta" },
-      { "kind": "variable", "name": "este_3d" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "este_3d" }
     ]
   },
   "cases": [
@@ -15,6 +14,36 @@
     { "inject": { "varsta": 5, "este_3d": true } },
     { "inject": { "varsta": 6, "este_3d": false } },
     { "inject": { "varsta": 13, "este_3d": true } },
-    { "inject": { "varsta": 65, "este_3d": false } }
+    { "inject": { "varsta": 65, "este_3d": false } },
+    { "inject": { "varsta": 0, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 0, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 1, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 1, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 5, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 6, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 7, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 7, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 12, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 12, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 13, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 15, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 15, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 17, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 17, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 18, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 18, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 19, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 19, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 40, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 40, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 64, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 64, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 65, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 66, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 66, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 90, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 90, "este_3d": false }, "generated": true },
+    { "inject": { "varsta": 100, "este_3d": true }, "generated": true },
+    { "inject": { "varsta": 100, "este_3d": false }, "generated": true }
   ]
 }

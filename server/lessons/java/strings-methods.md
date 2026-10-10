@@ -133,7 +133,7 @@ public class Main {
 
 A garbled name arrived over Tommy's comms. The decryption module needs you to display it in several formats so the analysts can check it.
 
-Store the name in a String. Then print these six values on **separate lines**, in this order:
+Store the name in a String named name. Then print these six values on **separate lines**, in this order:
 
 - the name in uppercase
 - the name in lowercase

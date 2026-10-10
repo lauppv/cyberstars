@@ -2,8 +2,8 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "function", "name": "amplifica" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "scut" },
+      { "kind": "function", "name": "amplifica" }
     ]
   },
   "cases": [
@@ -11,6 +11,30 @@
     { "inject": { "scut": 1 } },
     { "inject": { "scut": 0 } },
     { "inject": { "scut": 7 } },
-    { "inject": { "scut": 256 } }
+    { "inject": { "scut": 256 } },
+    { "inject": { "scut": 2 }, "generated": true },
+    { "inject": { "scut": 3 }, "generated": true },
+    { "inject": { "scut": 5 }, "generated": true },
+    { "inject": { "scut": 9 }, "generated": true },
+    { "inject": { "scut": 10 }, "generated": true },
+    { "inject": { "scut": 15 }, "generated": true },
+    { "inject": { "scut": 25 }, "generated": true },
+    { "inject": { "scut": 42 }, "generated": true },
+    { "inject": { "scut": 50 }, "generated": true },
+    { "inject": { "scut": 64 }, "generated": true },
+    { "inject": { "scut": 99 }, "generated": true },
+    { "inject": { "scut": 101 }, "generated": true },
+    { "inject": { "scut": 128 }, "generated": true },
+    { "inject": { "scut": 150 }, "generated": true },
+    { "inject": { "scut": 199 }, "generated": true },
+    { "inject": { "scut": 200 }, "generated": true },
+    { "inject": { "scut": 333 }, "generated": true },
+    { "inject": { "scut": 500 }, "generated": true },
+    { "inject": { "scut": 512 }, "generated": true },
+    { "inject": { "scut": 999 }, "generated": true },
+    { "inject": { "scut": 1000 }, "generated": true },
+    { "inject": { "scut": 1024 }, "generated": true },
+    { "inject": { "scut": 4096 }, "generated": true },
+    { "inject": { "scut": 12345 }, "generated": true }
   ]
 }

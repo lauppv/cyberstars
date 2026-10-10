@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(void) {
+    int seconds = 5;
+    int error_detected = 1;
+    if (seconds == 100) printf("Checking memory\n");
+    else if (seconds == 60) printf("Checking peripherals\n");
+    else if (seconds == 30) printf("Loading operating system kernel\n");
+    else if (seconds == 10) printf("Starting system processes\n");
+    else if (seconds < 9) {
+        if (error_detected == 1) printf("Error detected. Aborting launch\n");
+        else printf("No error detected. Starting the system...\n");
+    } else printf("%d seconds have no effect\n", seconds);
+    return 0;
+}

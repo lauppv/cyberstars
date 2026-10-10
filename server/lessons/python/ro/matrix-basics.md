@@ -116,7 +116,7 @@ Rezultat **Numarul de ziduri: 4**
 
 ## Misiune: Grila de Senzori
 
-Senzorii de pe carena stației își raportează citirile sub forma unei **grile 4×4** (o listă de liste). Controlul Misiunii vrea un rezumat rapid al grilei.
+Senzorii de pe carena stației își raportează citirile sub forma unei **grile 4×4** (o listă de liste numită grila). Controlul Misiunii vrea un rezumat rapid al grilei.
 
 Folosind **bucle imbricate**, afișează:
 

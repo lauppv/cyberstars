@@ -1,18 +1,41 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "incarcatura" },
-      { "kind": "call", "name": "append" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "append" }] },
   "cases": [
     { "visible": true, "stdin": "oxigen\napa\nmancare\ncombustibil\n" },
     { "visible": true, "stdin": "casca\nfranghie\nlampa\nradio\n" },
     { "stdin": "surub\ncheie\ncablu\nfiltru\n" },
     { "stdin": "samanta\npamant\napa\nlumina\n" },
-    { "stdin": "harta\nbusola\nracheta\ntrusa\n" }
+    { "stdin": "harta\nbusola\nracheta\ntrusa\n" },
+    { "stdin": "a\nb\nc\nd\n", "generated": true },
+    { "stdin": "same\nsame\nsame\nsame\n", "generated": true },
+    { "stdin": "water\nempty\nfood\nfuel\n", "generated": true },
+    { "stdin": "tape\noxygen\ncompass\nwrench\n", "generated": true },
+    { "stdin": "seed\ncompass\nrope\nseed\n", "generated": true },
+    { "stdin": "fuel\nseed\nwater\nlaser\n", "generated": true },
+    { "stdin": "x\nbolt\nboots\ncable\n", "generated": true },
+    { "stdin": "food\nboots\nwater\ndrill\n", "generated": true },
+    { "stdin": "seed\nwrench\ntape\nsolar panel\n", "generated": true },
+    { "stdin": "spare suit\nlamp\nwater\nmap\n", "generated": true },
+    { "stdin": "wrench\nwrench\nmap\nboots\n", "generated": true },
+    { "stdin": "battery\nwater\ncompass\nboots\n", "generated": true },
+    { "stdin": "soil\nmedkit\nwater\nhelmet\n", "generated": true },
+    { "stdin": "lamp\nmap\nlamp\nkit\n", "generated": true },
+    { "stdin": "bolt\nantenna\n42\nempty\n", "generated": true },
+    { "stdin": "boots\nkit\nlamp\nsoil\n", "generated": true },
+    { "stdin": "battery\nsoil\ncable\nspare suit\n", "generated": true },
+    { "stdin": "42\ntape\ncompass\nlamp\n", "generated": true },
+    { "stdin": "compass\nwater\nfood\nseed\n", "generated": true },
+    { "stdin": "light\n42\ntape\nbattery\n", "generated": true },
+    { "stdin": "map\nflare\nwrench\nfuel\n", "generated": true },
+    { "stdin": "empty\nx\nmap\nbolt\n", "generated": true },
+    { "stdin": "rope\nsoil\nspare suit\nflare\n", "generated": true },
+    { "stdin": "x\nsolar panel\ncompass\nbattery\n", "generated": true },
+    { "stdin": "drill\ntape\nempty\nempty\n", "generated": true },
+    { "stdin": "oxygen\nantenna\nsoil\nx\n", "generated": true },
+    { "stdin": "battery\nkit\noxygen\nfuel\n", "generated": true },
+    { "stdin": "solar panel\nsolar panel\nhelmet\ntape\n", "generated": true },
+    { "stdin": "map\ngloves\nwrench\nspare suit\n", "generated": true },
+    { "stdin": "boots\n42\nfuel\nkit\n", "generated": true }
   ]
 }

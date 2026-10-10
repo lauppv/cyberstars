@@ -2,7 +2,7 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "calculator" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "call", "name": "calculator" }
     ]
   },
   "cases": [{ "visible": true }]

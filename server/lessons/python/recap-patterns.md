@@ -4,10 +4,10 @@ Combine **built-in functions**, **problem decomposition**, **counter**, **accumu
 
 ## Mission: Mission Log Analyzer
 
-The mission log is a single string of words. **Break the work into three functions**, each using a different pattern:
+The mission log is a single string of words separated by spaces, stored in a variable named `log`. **Break the work into three functions**, each using a different pattern:
 
 1. `count_word(log, word)`: **counter pattern**: how many times `word` appears in the log
-2. `longest_word(log)`: **accumulator pattern**: the longest word in the log
+2. `longest_word(log)`: **accumulator pattern**: the longest word in the log (the first one if several are equally long)
 3. `has_duplicate(log)`: **flag pattern**: returns `True` if any word appears more than once
 
 In the main program, also use **built-in functions**: `len()` for the total word count and `sorted()` together with a `set()` for the unique words. Print:

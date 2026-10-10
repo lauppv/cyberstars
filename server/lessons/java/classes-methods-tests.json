@@ -1,16 +1,15 @@
 {
   "structure": {
     "requires": [
-      { "kind": "call", "name": "Business" },
-      { "kind": "function", "name": "add" },
-      { "kind": "function", "name": "getEarnings" },
+      { "kind": "function" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "sale1" },
       { "kind": "variable", "name": "sale2" },
       { "kind": "variable", "name": "name2" },
       { "kind": "variable", "name": "sale3" },
       { "kind": "variable", "name": "sale4" },
-      { "kind": "call", "name": "println" }
+      { "kind": "class" },
+      { "kind": "object" }
     ]
   },
   "cases": [
@@ -54,6 +53,109 @@
         "sale3": 999,
         "sale4": 1
       }
+    },
+    {
+      "inject": {
+        "name1": "Print Works",
+        "sale1": 500,
+        "sale2": 250,
+        "name2": "Malibu Club",
+        "sale3": 200,
+        "sale4": 300
+      },
+      "generated": true
+    },
+    {
+      "inject": { "name1": "A", "sale1": 1, "sale2": 0, "name2": "B", "sale3": 0, "sale4": 1 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Malibu Club",
+        "sale1": 0,
+        "sale2": 0,
+        "name2": "Malibu Club",
+        "sale3": 0,
+        "sale4": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Pole Position",
+        "sale1": 7,
+        "sale2": 7,
+        "name2": "Pole Position",
+        "sale3": 7,
+        "sale4": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Cherry Popper",
+        "sale1": 12345,
+        "sale2": 54321,
+        "name2": "Sunshine Autos",
+        "sale3": 99999,
+        "sale4": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Kaufman Cabs",
+        "sale1": 300,
+        "sale2": 0,
+        "name2": "Boatyard",
+        "sale3": 0,
+        "sale4": 300
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Vercetti Estate",
+        "sale1": 1000000,
+        "sale2": 2500000,
+        "name2": "Film Studio",
+        "sale3": 750000,
+        "sale4": 250000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Cafe Robina",
+        "sale1": 13,
+        "sale2": 29,
+        "name2": "Ice Cream Factory",
+        "sale3": 58,
+        "sale4": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Taxi Firm",
+        "sale1": 1,
+        "sale2": 1,
+        "name2": "Car Showroom",
+        "sale3": 2,
+        "sale4": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "InterGlobal Films",
+        "sale1": 640,
+        "sale2": 360,
+        "name2": "Phil's Depot",
+        "sale3": 85,
+        "sale4": 15
+      },
+      "generated": true
     }
   ]
 }

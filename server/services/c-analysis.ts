@@ -94,6 +94,71 @@ function parseIntLiteral(text: string): number | null {
   return Number.isNaN(value) ? null : value;
 }
 
+const C_LOOP_NODES = {
+  for: 'for_statement',
+  while: 'while_statement',
+  do_while: 'do_statement',
+} as const;
+
+// A pointer the student declared: not main's own `char **argv`, which every
+// program may write, nor the type in a cast or sizeof, which declares nothing.
+function isOwnPointer(node: Node): boolean {
+  for (let up = node.parent; up; up = up.parent) {
+    if (up.type === 'cast_expression' || up.type === 'sizeof_expression') return false;
+    if (up.type === 'parameter_list') {
+      const name = up.parent?.childForFieldName('declarator')?.text;
+      return up.parent?.type !== 'function_declarator' || name !== 'main';
+    }
+  }
+  return true;
+}
+
+// Kinds that hold as soon as one node of that type exists. struct and enum
+// need a body: `struct point p;` only uses a type someone else declared.
+const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
+  if: (n) => n.type === 'if_statement',
+  switch: (n) => n.type === 'switch_statement',
+  break: (n) => n.type === 'break_statement',
+  continue: (n) => n.type === 'continue_statement',
+  typedef: (n) => n.type === 'type_definition',
+  sizeof: (n) => n.type === 'sizeof_expression',
+  pointer: (n) =>
+    (n.type === 'pointer_declarator' || n.type === 'abstract_pointer_declarator') &&
+    isOwnPointer(n),
+  // *p in an expression (reading or writing through the pointer), not the
+  // star of a declaration; p->field too. p[i] is indexing and doesn't count:
+  // pointers-arrays asks for *(ptr + i) instead of ptr[i].
+  deref: (n) =>
+    (n.type === 'pointer_expression' && n.childForFieldName('operator')?.text === '*') ||
+    (n.type === 'field_expression' && n.childForFieldName('operator')?.text === '->'),
+  struct: (n) => n.type === 'struct_specifier' && n.childForFieldName('body') !== null,
+  enum: (n) => n.type === 'enum_specifier' && n.childForFieldName('body') !== null,
+};
+
+const LOOP_NODE_TYPES = new Set<string>(Object.values(C_LOOP_NODES));
+
+function hasNestedLoop(root: Node): boolean {
+  for (const node of walk(root)) {
+    if (!LOOP_NODE_TYPES.has(node.type)) continue;
+    const body = node.childForFieldName('body');
+    if (body) for (const inner of walk(body)) if (LOOP_NODE_TYPES.has(inner.type)) return true;
+  }
+  return false;
+}
+
+// The operator token of a binary, unary, update or compound-assignment
+// expression (`a <<= 2` counts as <<, as Python's augmented assignment does);
+// `&x` and `*p` are pointer_expression, so they never count as & or *.
+function usesOperator(root: Node, op: string | undefined): boolean {
+  for (const node of walk(root)) {
+    if (!/^(binary|unary|assignment|update)_expression$/.test(node.type)) continue;
+    let text = node.childForFieldName('operator')?.text;
+    if (node.type === 'assignment_expression' && text !== '=') text = text?.slice(0, -1);
+    if (text === op) return true;
+  }
+  return false;
+}
+
 function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
   switch (rule.kind) {
     case 'call':
@@ -104,13 +169,22 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
     case 'function':
       for (const node of walk(root)) {
         if (node.type !== 'function_definition') continue;
-        if (declaratorName(node.childForFieldName('declarator')) === rule.name) return true;
+        const name = declaratorName(node.childForFieldName('declarator'));
+        if (rule.name === undefined ? name !== 'main' : name === rule.name) return true;
       }
       return false;
-    case 'loop':
-      for (const node of walk(root))
-        if (/^(for_statement|while_statement|do_statement)$/.test(node.type)) return true;
+    case 'recursion':
+      for (const node of walk(root)) {
+        if (node.type !== 'function_definition') continue;
+        const name = declaratorName(node.childForFieldName('declarator'));
+        for (const inner of walk(node)) if (name && callName(inner) === name) return true;
+      }
       return false;
+    case 'loop': {
+      const types = rule.type ? [C_LOOP_NODES[rule.type]] : Object.values(C_LOOP_NODES);
+      for (const node of walk(root)) if (types.includes(node.type)) return true;
+      return false;
+    }
     case 'int_literal': {
       const values = new Set(rule.values ?? []);
       for (const node of walk(root)) {
@@ -140,9 +214,26 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
         }
       }
       return false;
-    default:
+    case 'nested_loop':
+      return hasNestedLoop(root);
+    case 'operator':
+      return usesOperator(root, rule.name);
+    case 'define':
+      for (const node of walk(root)) {
+        if (node.type !== 'preproc_def' && node.type !== 'preproc_function_def') continue;
+        if (rule.name === undefined || node.childForFieldName('name')?.text === rule.name)
+          return true;
+      }
+      return false;
+    default: {
+      const matches = C_NODE_KINDS[rule.kind];
+      if (matches) {
+        for (const node of walk(root)) if (matches(node)) return true;
+        return false;
+      }
       // Unknown kind: require passes, forbid fires (same convention as py/java).
       return true;
+    }
   }
 }
 

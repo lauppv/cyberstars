@@ -1,7 +1,13 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "fstring" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "pilot" },
+      { "kind": "variable", "name": "nume_nava" },
+      { "kind": "variable", "name": "combustibil" },
+      { "kind": "variable", "name": "viteza" },
+      { "kind": "fstring" }
+    ]
   },
   "cases": [
     {
@@ -17,6 +23,123 @@
         "viteza": 12.25
       }
     },
-    { "inject": { "pilot": "Rex", "nume_nava": "Aurora", "combustibil": 1, "viteza": 99.9 } }
+    { "inject": { "pilot": "Rex", "nume_nava": "Aurora", "combustibil": 1, "viteza": 99.9 } },
+    {
+      "inject": { "pilot": "Kai", "nume_nava": "Nebula One", "combustibil": 1234, "viteza": 2.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "nume_nava": "Hermes", "combustibil": 9, "viteza": 7.0 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Tom", "nume_nava": "Orion", "combustibil": 7, "viteza": 100.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ana", "nume_nava": "Falcon", "combustibil": 5000, "viteza": 19.95 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "nume_nava": "Comet", "combustibil": 2, "viteza": 11.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Mira Stone", "nume_nava": "Orion", "combustibil": 9, "viteza": 5.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ada", "nume_nava": "Apollo", "combustibil": 1, "viteza": 15.6 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ana", "nume_nava": "Comet", "combustibil": 1, "viteza": 11.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Max", "nume_nava": "Atlas", "combustibil": 5000, "viteza": 0.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Oana", "nume_nava": "Falcon", "combustibil": 401, "viteza": 11.1 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ada", "nume_nava": "Nebula One", "combustibil": 9, "viteza": 100.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Kai", "nume_nava": "Falcon", "combustibil": 860, "viteza": 3.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Tom", "nume_nava": "Orion", "combustibil": 100, "viteza": 2.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Ada", "nume_nava": "Hermes", "combustibil": 5000, "viteza": 33.3 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "nume_nava": "Titan", "combustibil": 75000, "viteza": 7.0 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Iris", "nume_nava": "Comet", "combustibil": 99, "viteza": 5.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "nume_nava": "Titan", "combustibil": 401, "viteza": 120.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "nume_nava": "Pioneer", "combustibil": 75000, "viteza": 0.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Tom", "nume_nava": "Falcon", "combustibil": 9, "viteza": 120.25 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilot": "Mira Stone",
+        "nume_nava": "Nebula One",
+        "combustibil": 512,
+        "viteza": 0.1
+      },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "nume_nava": "Star Runner", "combustibil": 1, "viteza": 3.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Sky", "nume_nava": "Hermes", "combustibil": 512, "viteza": 33.3 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "nume_nava": "Pioneer", "combustibil": 33, "viteza": 64.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Luna", "nume_nava": "Falcon", "combustibil": 400, "viteza": 2.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "nume_nava": "Apollo", "combustibil": 2, "viteza": 2.25 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "nume_nava": "Atlas", "combustibil": 75000, "viteza": 0.75 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Neo", "nume_nava": "Star Runner", "combustibil": 1000, "viteza": 1.5 },
+      "generated": true
+    },
+    {
+      "inject": { "pilot": "Zed", "nume_nava": "Pioneer", "combustibil": 99, "viteza": 10.0 },
+      "generated": true
+    }
   ]
 }

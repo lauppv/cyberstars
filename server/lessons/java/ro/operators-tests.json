@@ -1,9 +1,9 @@
 {
   "structure": {
     "requires": [
+      { "kind": "operator", "name": "%" },
       { "kind": "variable", "name": "a" },
-      { "kind": "variable", "name": "b" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "b" }
     ]
   },
   "cases": [
@@ -11,6 +11,21 @@
     { "inject": { "a": 100, "b": 7 } },
     { "inject": { "a": 5, "b": 17 } },
     { "inject": { "a": 36, "b": 6 } },
-    { "inject": { "a": 0, "b": 9 } }
+    { "inject": { "a": 0, "b": 9 } },
+    { "inject": { "a": 1, "b": 1 }, "generated": true },
+    { "inject": { "a": 10, "b": 3 }, "generated": true },
+    { "inject": { "a": 3, "b": 10 }, "generated": true },
+    { "inject": { "a": -17, "b": 5 }, "generated": true },
+    { "inject": { "a": 17, "b": -5 }, "generated": true },
+    { "inject": { "a": -17, "b": -5 }, "generated": true },
+    { "inject": { "a": 7, "b": 7 }, "generated": true },
+    { "inject": { "a": 1000, "b": 1 }, "generated": true },
+    { "inject": { "a": 99, "b": 100 }, "generated": true },
+    { "inject": { "a": 12345, "b": 67 }, "generated": true },
+    { "inject": { "a": -8, "b": 3 }, "generated": true },
+    { "inject": { "a": 256, "b": 16 }, "generated": true },
+    { "inject": { "a": 46340, "b": 2 }, "generated": true },
+    { "inject": { "a": 0, "b": -4 }, "generated": true },
+    { "inject": { "a": 1, "b": 2 }, "generated": true }
   ]
 }

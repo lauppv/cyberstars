@@ -1,17 +1,103 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [
-      { "kind": "loop" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
-    ]
+    "requires": [{ "kind": "loop", "type": "while" }, { "kind": "break" }, { "kind": "continue" }]
   },
   "cases": [
     { "visible": true, "stdin": "4\n-2\n7\n0\n" },
     { "visible": true, "stdin": "0\n" },
     { "stdin": "-5\n-1\n0\n" },
     { "stdin": "1\n2\n3\n0\n" },
-    { "stdin": "100\n-9\n50\n0\n" }
+    { "stdin": "100\n-9\n50\n0\n" },
+    { "stdin": "1\n0\n", "generated": true },
+    { "stdin": "-1\n0\n", "generated": true },
+    { "stdin": "5\n0\n", "generated": true },
+    { "stdin": "-100\n0\n", "generated": true },
+    { "stdin": "1\n-1\n0\n", "generated": true },
+    { "stdin": "-1\n1\n0\n", "generated": true },
+    { "stdin": "3\n3\n3\n0\n", "generated": true },
+    { "stdin": "-3\n-3\n-3\n0\n", "generated": true },
+    { "stdin": "999\n0\n", "generated": true },
+    { "stdin": "-999\n999\n0\n", "generated": true },
+    { "stdin": "2\n-2\n2\n-2\n0\n", "generated": true },
+    { "stdin": "10\n20\n30\n40\n50\n0\n", "generated": true },
+    { "stdin": "-149\n0\n", "generated": true },
+    { "stdin": "334\n342\n0\n", "generated": true },
+    { "stdin": "446\n329\n0\n", "generated": true },
+    { "stdin": "67\n273\n382\n0\n", "generated": true },
+    { "stdin": "-16\n-65\n142\n0\n", "generated": true },
+    { "stdin": "44\n-424\n-382\n-487\n0\n", "generated": true },
+    { "stdin": "407\n-183\n250\n-344\n0\n", "generated": true },
+    { "stdin": "-455\n-327\n-336\n178\n-354\n0\n", "generated": true },
+    { "stdin": "-284\n226\n-275\n151\n92\n0\n", "generated": true },
+    { "stdin": "-130\n-236\n-311\n-203\n296\n-282\n0\n", "generated": true },
+    { "stdin": "290\n454\n360\n-68\n221\n-200\n0\n", "generated": true },
+    { "stdin": "369\n-478\n116\n255\n-328\n-82\n-377\n0\n", "generated": true },
+    { "stdin": "-454\n-104\n-267\n462\n371\n-109\n298\n0\n", "generated": true },
+    { "stdin": "184\n-94\n-99\n404\n462\n86\n220\n498\n0\n", "generated": true },
+    { "stdin": "-423\n-331\n270\n65\n-63\n-155\n-290\n481\n0\n", "generated": true },
+    { "stdin": "-268\n-437\n3\n-172\n255\n-115\n152\n193\n379\n0\n", "generated": true },
+    { "stdin": "133\n-351\n133\n-302\n183\n304\n-220\n329\n-218\n163\n0\n", "generated": true },
+    { "stdin": "-236\n36\n308\n335\n-98\n-247\n-171\n149\n-488\n76\n0\n", "generated": true },
+    {
+      "stdin": "58\n-422\n112\n-156\n-149\n178\n52\n-252\n-300\n-23\n-274\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-67\n166\n458\n462\n459\n468\n46\n-478\n-37\n-136\n25\n342\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "267\n-100\n-318\n430\n60\n483\n-274\n-154\n493\n-134\n191\n478\n86\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "55\n-444\n171\n-83\n-471\n57\n158\n-199\n-200\n-78\n231\n-2\n273\n-142\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-116\n489\n-214\n429\n-210\n-80\n-297\n-100\n-366\n-426\n15\n247\n65\n3\n158\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "454\n-293\n110\n-14\n398\n153\n333\n375\n-475\n-116\n-12\n125\n-272\n293\n-457\n-335\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "312\n269\n-121\n52\n-469\n478\n-419\n-426\n349\n-370\n342\n-303\n132\n65\n306\n29\n313\n397\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-449\n-196\n-413\n-35\n-270\n-174\n-345\n468\n351\n-193\n393\n-478\n-154\n366\n-200\n-247\n41\n-111\n75\n-154\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "221\n-6\n323\n384\n336\n490\n284\n-322\n161\n9\n358\n26\n119\n-290\n338\n-359\n409\n-437\n58\n179\n266\n47\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-157\n-153\n135\n-413\n-465\n-144\n50\n83\n440\n495\n-77\n320\n-52\n253\n-307\n24\n-71\n-120\n-170\n-64\n365\n-46\n394\n-230\n216\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "362\n324\n125\n-78\n-464\n-10\n-186\n-385\n-383\n55\n380\n289\n323\n-483\n409\n-395\n252\n-283\n419\n318\n-410\n204\n-175\n-205\n-42\n206\n428\n401\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-226\n275\n-381\n457\n285\n14\n498\n-23\n-140\n-22\n-98\n-205\n226\n221\n-30\n-207\n412\n289\n-105\n19\n229\n-206\n444\n-45\n-497\n-301\n-42\n31\n-328\n123\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "15\n-360\n239\n-19\n-425\n104\n-375\n-270\n76\n407\n91\n151\n357\n-493\n342\n-1\n35\n-400\n34\n199\n99\n375\n196\n369\n-347\n-74\n-322\n452\n430\n297\n258\n-263\n205\n-126\n-147\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-395\n55\n-235\n366\n136\n369\n-491\n287\n-311\n340\n217\n-124\n-10\n-139\n71\n450\n-227\n37\n57\n-44\n383\n-451\n-295\n239\n491\n-284\n-41\n-392\n-440\n305\n487\n-80\n294\n39\n-299\n-352\n-147\n-418\n255\n53\n0\n",
+      "generated": true
+    },
+    {
+      "stdin": "-155\n40\n-232\n242\n350\n219\n243\n-108\n309\n-6\n-485\n-11\n270\n-20\n-381\n-1\n-69\n-26\n-79\n385\n-395\n-128\n-444\n-106\n50\n-87\n127\n145\n-407\n-431\n-6\n378\n387\n-497\n282\n71\n214\n-227\n-162\n-34\n-146\n443\n-63\n-458\n54\n0\n",
+      "generated": true
+    }
   ]
 }

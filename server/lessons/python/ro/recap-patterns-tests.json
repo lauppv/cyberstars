@@ -2,11 +2,13 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "log" },
       { "kind": "function", "name": "contor_cuvant" },
       { "kind": "function", "name": "cel_mai_lung_cuvant" },
       { "kind": "function", "name": "are_duplicate" },
       { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "len" },
+      { "kind": "call", "name": "set" }
     ]
   },
   "cases": [
@@ -14,6 +16,105 @@
     { "visible": true, "inject": { "log": "boot boot reset" } },
     { "inject": { "log": "solo" } },
     { "inject": { "log": "scan scan" } },
-    { "inject": { "log": "alpha beta gamma delta" } }
+    { "inject": { "log": "alpha beta gamma delta" } },
+    { "inject": { "log": "scan" }, "generated": true },
+    { "inject": { "log": "telemetry" }, "generated": true },
+    { "inject": { "log": "go go" }, "generated": true },
+    { "inject": { "log": "scan probe" }, "generated": true },
+    { "inject": { "log": "probe scan scan" }, "generated": true },
+    { "inject": { "log": "a b c d e" }, "generated": true },
+    { "inject": { "log": "scanner scans scan" }, "generated": true },
+    { "inject": { "log": "boot reset boot reset" }, "generated": true },
+    { "inject": { "log": "fuel fuel fuel fuel" }, "generated": true },
+    { "inject": { "log": "dock orbit thrust" }, "generated": true },
+    { "inject": { "log": "scan scan scan scan scan" }, "generated": true },
+    { "inject": { "log": "ping log sync" }, "generated": true },
+    { "inject": { "log": "analyze telemetry" }, "generated": true },
+    { "inject": { "log": "orbit scanner" }, "generated": true },
+    { "inject": { "log": "boot boot" }, "generated": true },
+    { "inject": { "log": "dock fuel log analyze probe dock telemetry" }, "generated": true },
+    {
+      "inject": { "log": "go scans a sync scans log probe scan a sync thrust go" },
+      "generated": true
+    },
+    { "inject": { "log": "scans dock dock ping ping scan dock thrust" }, "generated": true },
+    { "inject": { "log": "orbit scans scans a" }, "generated": true },
+    { "inject": { "log": "dock sync telemetry scans a a a sync dock go" }, "generated": true },
+    {
+      "inject": { "log": "sync scans ping scanner log scanner scans scans a sync sync a sync" },
+      "generated": true
+    },
+    {
+      "inject": { "log": "ping thrust dock log scanner fuel fuel scans scans" },
+      "generated": true
+    },
+    {
+      "inject": { "log": "telemetry fuel analyze scanner scans a boot thrust scan analyze" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "reset probe probe log ping reset scans orbit log ping analyze probe telemetry"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "log": "probe probe a a dock ping scan boot reset boot scan probe scan" },
+      "generated": true
+    },
+    { "inject": { "log": "log orbit dock dock scans scan go" }, "generated": true },
+    {
+      "inject": { "log": "probe ping orbit probe scan a reset fuel thrust scanner scan" },
+      "generated": true
+    },
+    { "inject": { "log": "sync probe log go orbit scanner" }, "generated": true },
+    { "inject": { "log": "boot thrust reset scan sync" }, "generated": true },
+    {
+      "inject": {
+        "log": "orbit scans go scanner scans thrust orbit thrust log log telemetry scan orbit probe"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "probe orbit dock dock reset sync" }, "generated": true },
+    {
+      "inject": { "log": "ping scans probe ping ping sync boot log boot ping a log" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "log": "telemetry log scans scan orbit probe go telemetry dock reset scans boot"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "reset reset scan dock ping" }, "generated": true },
+    { "inject": { "log": "analyze scan scans" }, "generated": true },
+    {
+      "inject": {
+        "log": "sync sync fuel go analyze analyze telemetry telemetry scans scan probe telemetry"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "dock reset scanner a scan scans reset a fuel a" }, "generated": true },
+    { "inject": { "log": "scan telemetry reset reset fuel analyze" }, "generated": true },
+    {
+      "inject": {
+        "log": "scan sync probe telemetry scanner sync analyze boot scan fuel scan a fuel boot"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "scanner analyze reset a go" }, "generated": true },
+    {
+      "inject": { "log": "sync orbit a go reset log reset reset boot thrust go analyze reset" },
+      "generated": true
+    },
+    { "inject": { "log": "scanner probe" }, "generated": true },
+    {
+      "inject": {
+        "log": "scanner fuel a sync orbit a log scanner scans scanner telemetry scanner fuel"
+      },
+      "generated": true
+    },
+    { "inject": { "log": "ping dock scanner log telemetry boot reset boot" }, "generated": true },
+    { "inject": { "log": "dock orbit telemetry boot boot probe orbit" }, "generated": true }
   ]
 }

@@ -2,7 +2,9 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "print_season" },
-      { "kind": "call", "name": "printf" }
+      { "kind": "call", "name": "print_season" },
+      { "kind": "enum" },
+      { "kind": "switch" }
     ]
   },
   "cases": [{ "visible": true }]

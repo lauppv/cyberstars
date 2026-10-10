@@ -2,9 +2,8 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "loop" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop", "type": "for" },
+      { "kind": "call", "name": "input" }
     ]
   },
   "cases": [
@@ -13,6 +12,50 @@
     { "stdin": "ABCDEF\n" },
     { "stdin": "a1\n" },
     { "stdin": "Zx9qwe\n" },
-    { "stdin": "PASSWORD1\n" }
+    { "stdin": "PASSWORD1\n" },
+    { "stdin": "Orbit42\n", "generated": true },
+    { "stdin": "orbit\n", "generated": true },
+    { "stdin": "A1bcde\n", "generated": true },
+    { "stdin": "A1bcd\n", "generated": true },
+    { "stdin": "a1bcdE\n", "generated": true },
+    { "stdin": "1abcdE\n", "generated": true },
+    { "stdin": "Abcde1\n", "generated": true },
+    { "stdin": "abcdef\n", "generated": true },
+    { "stdin": "123456\n", "generated": true },
+    { "stdin": "ABCDEF1\n", "generated": true },
+    { "stdin": "aaaaa1\n", "generated": true },
+    { "stdin": "AAAAAA\n", "generated": true },
+    { "stdin": "Z9\n", "generated": true },
+    { "stdin": "Z\n", "generated": true },
+    { "stdin": "9\n", "generated": true },
+    { "stdin": "x\n", "generated": true },
+    { "stdin": "abcdefghijklmnop\n", "generated": true },
+    { "stdin": "abcdefghijklmnoP7\n", "generated": true },
+    { "stdin": "Q2_x!y\n", "generated": true },
+    { "stdin": "q2_x!y\n", "generated": true },
+    { "stdin": "Mars_2030\n", "generated": true },
+    { "stdin": "mars_2030\n", "generated": true },
+    { "stdin": "MARS_STATION\n", "generated": true },
+    { "stdin": "Rocket\n", "generated": true },
+    { "stdin": "rocket77\n", "generated": true },
+    { "stdin": "R0CKET\n", "generated": true },
+    { "stdin": "99999Z\n", "generated": true },
+    { "stdin": "Zzzzz\n", "generated": true },
+    { "stdin": "Zzzzz9\n", "generated": true },
+    { "stdin": "k_Heas8VOc\n", "generated": true },
+    { "stdin": "_z0my\n", "generated": true },
+    { "stdin": "Hl2QlU0G4m\n", "generated": true },
+    { "stdin": "Lmfz\n", "generated": true },
+    { "stdin": "U_y#!dUF3MT\n", "generated": true },
+    { "stdin": "pl!zoINzW9\n", "generated": true },
+    { "stdin": "rAby\n", "generated": true },
+    { "stdin": "cQN\n", "generated": true },
+    { "stdin": "WXLq_g\n", "generated": true },
+    { "stdin": "2Ym\n", "generated": true },
+    { "stdin": "Fl55Wj28\n", "generated": true },
+    { "stdin": "0kyI5\n", "generated": true },
+    { "stdin": "wccpGUyG\n", "generated": true },
+    { "stdin": "5QG01_I89\n", "generated": true },
+    { "stdin": "sW-N7PUu\n", "generated": true }
   ]
 }

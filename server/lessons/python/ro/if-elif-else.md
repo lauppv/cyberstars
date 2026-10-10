@@ -118,11 +118,11 @@ Explicația completă este complexă, dar ca regulă generală: **dacă testăm 
 Stația verifică în permanență nivelul ei de `oxigen` (în procente) și dacă mai există `echipaj_la_bord`. În funcție de nivelul de oxigen, afișează **o singură** linie de stare folosind un lanț **if / elif / else**:
 
 - `oxigen` este **80 sau mai mult** → `Oxigen nominal`
-- `oxigen` este **între 50 și 79** → `Oxigen scăzut - conservați energia`
-- `oxigen` este **între 20 și 49** → `Oxigen critic - sigilați compartimentul`
+- `oxigen` este **între 50 și 79** → `Oxigen scazut - conservati energia`
+- `oxigen` este **între 20 și 49** → `Oxigen critic - sigilati compartimentul`
 - sub **20** → este o urgență. Aici, verifică `echipaj_la_bord` cu un **if imbricat**:
-  - dacă echipajul este încă la bord → `Urgența - evacuați acum`
-  - altfel → `Nu avem echipaj la bord, deci aerisirea compartimentului este sigură`
+  - dacă echipajul este încă la bord → `Urgenta - evacuati acum`
+  - altfel → `Nu avem echipaj la bord, deci aerisirea compartimentului este sigura`
 
 - `oxigen`: nivelul de oxigen în procente
 - `echipaj_la_bord`: dacă echipajul este încă pe stație

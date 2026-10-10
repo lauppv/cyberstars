@@ -1,9 +1,13 @@
 {
   "structure": {
     "requires": [
+      { "kind": "modifier", "name": "private" },
+      { "kind": "modifier", "name": "static" },
+      { "kind": "modifier", "name": "final" },
       { "kind": "call", "name": "ContBancar" },
       { "kind": "function", "name": "depune" },
       { "kind": "function", "name": "retrage" },
+      { "kind": "function", "name": "toString" },
       { "kind": "function", "name": "getTotalConturi" },
       { "kind": "variable", "name": "proprietar1" },
       { "kind": "variable", "name": "sold1" },
@@ -11,8 +15,7 @@
       { "kind": "variable", "name": "sold2" },
       { "kind": "variable", "name": "depunere1" },
       { "kind": "variable", "name": "retragere1" },
-      { "kind": "variable", "name": "retragere2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "retragere2" }
     ]
   },
   "cases": [
@@ -60,6 +63,198 @@
         "retragere1": 100,
         "retragere2": 50
       }
+    },
+    {
+      "inject": {
+        "proprietar1": "Tommy",
+        "sold1": 1000,
+        "proprietar2": "Lance",
+        "sold2": 500,
+        "depunere1": 250,
+        "retragere1": 500,
+        "retragere2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Tommy",
+        "sold1": 1000,
+        "proprietar2": "Lance",
+        "sold2": 500,
+        "depunere1": 250,
+        "retragere1": 500,
+        "retragere2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Tommy",
+        "sold1": 0,
+        "proprietar2": "Lance",
+        "sold2": 0,
+        "depunere1": 0,
+        "retragere1": 0,
+        "retragere2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Tommy",
+        "sold1": 0,
+        "proprietar2": "Lance",
+        "sold2": 0,
+        "depunere1": 10,
+        "retragere1": 1,
+        "retragere2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Victor",
+        "sold1": 100,
+        "proprietar2": "Cam",
+        "sold2": 50,
+        "depunere1": 0,
+        "retragere1": 60,
+        "retragere2": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Victor",
+        "sold1": 100,
+        "proprietar2": "Cam",
+        "sold2": 50,
+        "depunere1": 5,
+        "retragere1": 60,
+        "retragere2": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Phil",
+        "sold1": 999,
+        "proprietar2": "Earnest",
+        "sold2": 1000,
+        "depunere1": 1,
+        "retragere1": 999,
+        "retragere2": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Phil",
+        "sold1": 999,
+        "proprietar2": "Earnest",
+        "sold2": 1000,
+        "depunere1": 1,
+        "retragere1": 999,
+        "retragere2": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Avery",
+        "sold1": 25000,
+        "proprietar2": "Hilary",
+        "sold2": 12000,
+        "depunere1": 7500,
+        "retragere1": 4000,
+        "retragere2": 8000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Avery",
+        "sold1": 25000,
+        "proprietar2": "Hilary",
+        "sold2": 12000,
+        "depunere1": 7500,
+        "retragere1": 4000,
+        "retragere2": 8001
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Umberto",
+        "sold1": 1,
+        "proprietar2": "Mitch",
+        "sold2": 300,
+        "depunere1": 99,
+        "retragere1": 299,
+        "retragere2": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Candy",
+        "sold1": 42,
+        "proprietar2": "Maude",
+        "sold2": 7,
+        "depunere1": 58,
+        "retragere1": 8,
+        "retragere2": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Kent Paul",
+        "sold1": 640,
+        "proprietar2": "Ken Rosenberg",
+        "sold2": 320,
+        "depunere1": 160,
+        "retragere1": 80,
+        "retragere2": 240
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Juan",
+        "sold1": 50,
+        "proprietar2": "Rosa",
+        "sold2": 70,
+        "depunere1": 30,
+        "retragere1": 20,
+        "retragere2": 60
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Leo",
+        "sold1": 10,
+        "proprietar2": "Steve",
+        "sold2": 10,
+        "depunere1": 10,
+        "retragere1": 10,
+        "retragere2": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "proprietar1": "Ricardo Diaz",
+        "sold1": 7000,
+        "proprietar2": "Alberto",
+        "sold2": 2500,
+        "depunere1": 3000,
+        "retragere1": 1000,
+        "retragere2": 1499
+      },
+      "generated": true
     }
   ]
 }

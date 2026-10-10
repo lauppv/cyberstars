@@ -133,7 +133,7 @@ public class Main {
 
 Un nume a sosit bruiat prin stația de comunicații a lui Tommy. Modulul de decriptare are nevoie să-l afișezi în mai multe formate, ca analiștii să-l poată verifica.
 
-Stochează numele într-un String. Apoi afișează aceste șase valori pe **linii separate**, în această ordine:
+Stochează numele într-un String numit nume. Apoi afișează aceste șase valori pe **linii separate**, în această ordine:
 
 - numele cu majuscule
 - numele cu minuscule

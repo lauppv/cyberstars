@@ -2,11 +2,11 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "jurnal" },
       { "kind": "function", "name": "desparte_coduri" },
       { "kind": "function", "name": "numara_coduri" },
       { "kind": "function", "name": "cel_mai_frecvent" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -14,6 +14,125 @@
     { "visible": true, "inject": { "jurnal": "sos sos ok ok ok bye" } },
     { "inject": { "jurnal": "x y y z" } },
     { "inject": { "jurnal": "a a a" } },
-    { "inject": { "jurnal": "one" } }
+    { "inject": { "jurnal": "one" } },
+    { "inject": { "jurnal": "ok" }, "generated": true },
+    { "inject": { "jurnal": "warn warn" }, "generated": true },
+    { "inject": { "jurnal": "a b b" }, "generated": true },
+    { "inject": { "jurnal": "b b a" }, "generated": true },
+    { "inject": { "jurnal": "c a b c" }, "generated": true },
+    { "inject": { "jurnal": "z y x z y z" }, "generated": true },
+    { "inject": { "jurnal": "zeta alpha zeta" }, "generated": true },
+    { "inject": { "jurnal": "boot sync boot sync boot" }, "generated": true },
+    { "inject": { "jurnal": "err err err err err err err ok" }, "generated": true },
+    { "inject": { "jurnal": "ping pong ping pong ping pong pong" }, "generated": true },
+    { "inject": { "jurnal": "one two three four five five" }, "generated": true },
+    { "inject": { "jurnal": "launch" }, "generated": true },
+    {
+      "inject": { "jurnal": "dock dock undock dock refuel refuel undock dock" },
+      "generated": true
+    },
+    { "inject": { "jurnal": "delta err err err err delta err gamma delta" }, "generated": true },
+    { "inject": { "jurnal": "alpha warn warn warn" }, "generated": true },
+    { "inject": { "jurnal": "sos warn sos x beta" }, "generated": true },
+    { "inject": { "jurnal": "dock yy yy delta" }, "generated": true },
+    { "inject": { "jurnal": "sync sync sync sync sync x x x" }, "generated": true },
+    {
+      "inject": {
+        "jurnal": "ping warn yy warn yy ping yy ping boot ok ping boot ping warn yy warn ok yy yy"
+      },
+      "generated": true
+    },
+    { "inject": { "jurnal": "err err sos err alpha sos err alpha alpha" }, "generated": true },
+    { "inject": { "jurnal": "sync sync err sync sync sync" }, "generated": true },
+    { "inject": { "jurnal": "err sync dock dock dock dock" }, "generated": true },
+    { "inject": { "jurnal": "err err beta err ping ping err" }, "generated": true },
+    {
+      "inject": {
+        "jurnal": "beta beta beta beta beta beta beta beta beta beta beta beta beta beta"
+      },
+      "generated": true
+    },
+    { "inject": { "jurnal": "warn alpha alpha warn warn" }, "generated": true },
+    {
+      "inject": {
+        "jurnal": "boot ok ok boot boot ok boot boot ok boot ok boot boot boot boot boot boot ok"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "boot sos beta sos boot gamma beta beta beta gamma beta beta sos x beta x x"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "x sync ping ping sync ping zeta delta boot sync ping delta ping boot delta zeta x ping"
+      },
+      "generated": true
+    },
+    { "inject": { "jurnal": "x x x" }, "generated": true },
+    { "inject": { "jurnal": "sos zeta zeta alpha delta alpha sos delta zeta" }, "generated": true },
+    {
+      "inject": {
+        "jurnal": "sos gamma sos gamma gamma gamma gamma sos gamma sos gamma gamma gamma gamma gamma"
+      },
+      "generated": true
+    },
+    { "inject": { "jurnal": "delta dock boot dock ok ok ok" }, "generated": true },
+    {
+      "inject": { "jurnal": "err err gamma err gamma gamma gamma gamma gamma gamma gamma err" },
+      "generated": true
+    },
+    {
+      "inject": { "jurnal": "ping ping gamma gamma gamma gamma ping dock gamma gamma ping" },
+      "generated": true
+    },
+    { "inject": { "jurnal": "sos dock dock beta beta beta" }, "generated": true },
+    {
+      "inject": { "jurnal": "sync warn yy sync warn yy beta yy alpha gamma yy alpha yy beta" },
+      "generated": true
+    },
+    {
+      "inject": { "jurnal": "beta ok beta dock beta ok ok dock ok ok ok ok dock" },
+      "generated": true
+    },
+    {
+      "inject": { "jurnal": "boot ping boot ok gamma boot boot gamma boot boot gamma gamma gamma" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "gamma gamma beta gamma gamma beta beta gamma beta gamma gamma beta beta beta gamma gamma gamma gamma"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "ok ping ok ping sync dock ping ok x ok ping ok ping ping sync ok ping x"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "jurnal": "sync delta delta yy sync sync delta zeta zeta sync" },
+      "generated": true
+    },
+    { "inject": { "jurnal": "boot boot beta" }, "generated": true },
+    {
+      "inject": {
+        "jurnal": "ping warn ping warn ping delta warn warn delta warn ping warn warn warn ping delta"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "jurnal": "ping delta zeta yy yy delta zeta zeta ping zeta delta zeta" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "err ping zeta beta err sos warn zeta sos sos warn warn err zeta zeta ping"
+      },
+      "generated": true
+    }
   ]
 }

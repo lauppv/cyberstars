@@ -7,20 +7,72 @@
 // the set of lines (thread/process output whose line order is nondeterministic).
 export type TestComparator = 'exact' | 'trimmed' | 'masked' | 'unordered';
 
+// Which language knows which kind lives in STRUCTURE_KINDS (validate-tests);
+// a runner treats a kind it doesn't know as present, so a spec must not use one.
 type StructureKind =
   | 'call'
   | 'variable'
   | 'function'
   | 'loop'
+  | 'recursion'
   | 'fstring'
   | 'int_literal'
   | 'comment'
-  | 'string_expr';
+  | 'string_expr'
+  // statements: switch is Python's match
+  | 'if'
+  | 'switch'
+  | 'break'
+  | 'continue'
+  | 'try'
+  | 'nested_loop'
+  /** an operator by its spelling: '&&', 'and', '%', '<<', 'not in' ... */
+  | 'operator'
+  // classes: a class of the student's own (optionally by name), and an object made from one
+  | 'class'
+  | 'object'
+  | 'extends'
+  | 'implements'
+  | 'interface'
+  | 'enum'
+  | 'override'
+  | 'overload'
+  /** java: a field, method, local or class carrying `name` (static, final, private, abstract) */
+  | 'modifier'
+  | 'instanceof'
+  | 'cast'
+  // python
+  | 'return'
+  | 'default_param'
+  | 'slice'
+  // c
+  | 'struct'
+  | 'typedef'
+  | 'pointer'
+  /** c: reading or writing through a pointer (*p, p->field) */
+  | 'deref'
+  | 'sizeof'
+  | 'define';
+
+type LoopType = 'for' | 'while' | 'do_while' | 'comprehension';
 
 interface StructureRule {
   kind: StructureKind;
-  /** call / variable / function name */
+  /**
+   * call / variable / function / class name, operator spelling, modifier
+   * keyword, or define name. A function or class rule without one asks for any
+   * function / class of the student's own (main aside), named however they like.
+   */
   name?: string;
+  /**
+   * loop: the loop statement the lesson teaches. Without it any loop counts;
+   * with it only that statement does (Java's for-each counts as 'for'), so a
+   * for lesson can't be passed with a while. 'comprehension' is Python's
+   * [x for x in ...] (any comprehension or generator); C and Java have none.
+   */
+  type?: LoopType;
+  /** python: check the rule only inside the function with this name. */
+  in?: string;
   /** int_literal: forbidden constant values */
   values?: number[];
   /**

@@ -91,7 +91,7 @@ For each element: if it's a list, recursively flatten it and add the results. If
 Every transmission carries a numeric code, and the station verifies it with a **checksum**: the sum of the code's digits. You'll compute these checksums with **recursion**.
 
 1. Write a recursive function **sum_digits(n)** that returns the sum of the digits of a positive integer. The trick: `n % 10` is the **last digit**, `n // 10` is the **rest of the number**. Base case: if `n < 10` (one digit), return `n` itself.
-2. For each code in the list, print the code, then `: `, then its checksum.
+2. For each code in the list named `codes`, print the code, then `: `, then its checksum.
 3. Track and print the **largest** checksum as `Largest checksum: ` followed by the value.
 
 **Output**

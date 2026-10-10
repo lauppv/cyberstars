@@ -9,7 +9,7 @@
       { "kind": "variable", "name": "name3" },
       { "kind": "variable", "name": "car3" },
       { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "instanceof" }
     ]
   },
   "cases": [
@@ -49,6 +49,80 @@
         "name3": "Love Fist",
         "car3": "Limo"
       }
+    },
+    {
+      "inject": {
+        "name1": "Hilary King",
+        "car1": "Sentinel",
+        "name2": "Lance Vance",
+        "name3": "Mercedes Cortez",
+        "car3": "Infernus"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "name1": "A", "car1": "B", "name2": "C", "name3": "D", "car3": "E" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Lance Vance",
+        "car1": "Infernus",
+        "name2": "Lance Vance",
+        "name3": "Lance Vance",
+        "car3": "Infernus"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Victor Vance",
+        "car1": "Voodoo",
+        "name2": "Pam",
+        "name3": "Victor Vance",
+        "car3": "Pony"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Kent Paul",
+        "car1": "Admiral",
+        "name2": "Earnest Kelly",
+        "name3": "Candy Suxxx",
+        "car3": "Stinger"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Big Mitch Baker",
+        "car1": "Freeway",
+        "name2": "Mr. Black",
+        "name3": "Jezz Torrent",
+        "car3": "Hotring Racer 2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Auntie Poulet",
+        "car1": "Voodoo",
+        "name2": "Steve Scott",
+        "name3": "Avery Carrington",
+        "car3": "Admiral"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name1": "Donald Love",
+        "car1": "Stretch",
+        "name2": "Rico",
+        "name3": "Gonzalez",
+        "car3": "Cheetah"
+      },
+      "generated": true
     }
   ]
 }
