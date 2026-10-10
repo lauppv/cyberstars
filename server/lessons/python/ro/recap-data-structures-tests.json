@@ -4,7 +4,9 @@
     "requires": [
       { "kind": "variable", "name": "echipa_a" },
       { "kind": "variable", "name": "echipa_b" },
-      { "kind": "loop" }
+      { "kind": "loop" },
+      { "kind": "nested_loop" },
+      { "kind": "loop", "type": "comprehension" }
     ]
   },
   "cases": [

@@ -1,6 +1,13 @@
 {
   "comparator": "trimmed",
-  "structure": { "requires": [{ "kind": "call", "name": "input" }] },
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "input" },
+      { "kind": "operator", "name": "//" },
+      { "kind": "operator", "name": "%" },
+      { "kind": "operator", "name": "**" }
+    ]
+  },
   "cases": [
     { "visible": true, "stdin": "17\n5\n" },
     { "visible": true, "stdin": "20\n4\n" },
