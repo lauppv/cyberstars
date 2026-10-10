@@ -93,7 +93,7 @@ print(f"\nScor final: {scor}/{total} ({procent}%)")
 
 ## Misiune: Quiz-ul de Certificare al Echipajului
 
-Echipajul nou trebuie să treacă un quiz de certificare. Întrebările și răspunsurile candidatului sunt deja înregistrate, așa că nu e nevoie de `input()`: tu doar evaluezi și raportezi.
+Echipajul nou trebuie să treacă un quiz de certificare. Întrebările (o listă numită quiz) și răspunsurile candidatului (o listă numită raspunsuri_jucator) sunt deja înregistrate, așa că nu e nevoie de `input()`: tu doar evaluezi și raportezi.
 
 1. Scrie o funcție **noteaza_test(intrebari, raspunsuri)** care returnează câte dintre răspunsurile candidatului se potrivesc cu câmpul `"raspuns"` al întrebării corespunzătoare.
 2. Afișează `Scor: ` urmat de numărul de răspunsuri corecte, un `/`, și numărul total de întrebări.

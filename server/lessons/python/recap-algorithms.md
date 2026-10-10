@@ -4,7 +4,7 @@ Combine **linear search**, **frequency dictionary**, **bubble sort**, and **sele
 
 ## Mission: Mission Leaderboard
 
-Every time a crew member completes a mission, their name is logged. Each appearance counts as **one win**. Mission Control wants a ranked leaderboard.
+Every time a crew member completes a mission, their name is logged in a list named results. Each appearance counts as **one win**. Mission Control wants a ranked leaderboard.
 
 Pull together everything from this chapter:
 

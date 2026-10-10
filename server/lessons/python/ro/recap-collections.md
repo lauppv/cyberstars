@@ -4,7 +4,7 @@ Combină **metodele pe șiruri**, **listele**, **parcurgerea listelor**, și **b
 
 ## Misiune: Aprovizionarea
 
-Stația primește o listă de lăzi cu provizii (deja în dreapta). Unele lăzi sunt contaminate: numele lor începe cu `con-`. Sortează proviziile bune într-o listă curată după aceste reguli:
+Stația primește o listă de lăzi cu provizii numită elemente (deja în dreapta). Unele lăzi sunt contaminate: numele lor începe cu `con-`. Sortează proviziile bune într-o listă curată după aceste reguli:
 
 1. Parcurge elementele.
 2. **Sari peste** orice ladă ale cărei **primele 4 caractere** sunt `con-`

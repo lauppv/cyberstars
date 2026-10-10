@@ -1,56 +1,271 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "curate" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "elemente" }, { "kind": "loop" }] },
   "cases": [
     {
       "visible": true,
       "inject": {
-        "elemente": {
-          "$list": ["lapte", "con-oua", "paine", "unt", "branza", "con-ulei", "gem"]
-        }
+        "elemente": { "$list": ["lapte", "con-oua", "paine", "unt", "branza", "con-ulei", "gem"] }
       }
     },
     {
       "visible": true,
       "inject": {
-        "elemente": {
-          "$list": ["con-apa", "mar", "faina", "sare", "unt", "extra", "zahar"]
-        }
+        "elemente": { "$list": ["con-apa", "mar", "faina", "sare", "unt", "extra", "zahar"] }
       }
+    },
+    { "inject": { "elemente": { "$list": ["unt", "lapte", "paine", "branza"] } } },
+    { "inject": { "elemente": { "$list": ["lapte", "con-x", "paine", "branza", "gem"] } } },
+    { "inject": { "elemente": { "$list": ["con-a", "con-b", "con-c"] } } },
+    {
+      "inject": {
+        "elemente": { "$list": ["con-lapte", "oua", "con-gem", "faina", "zahar", "unt", "orez"] }
+      }
+    },
+    { "inject": { "elemente": { "$list": [] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["unt"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-unt"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-unt", "lapte"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["lapte", "unt", "unt", "gem"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-unt", "unt", "gem"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["lapte", "paine", "branza"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con", "con-lapte", "unt"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-oua", "con-gem", "unt"] } }, "generated": true },
+    {
+      "inject": { "elemente": { "$list": ["gem", "miere", "ceai", "orez", "sare", "unt"] } },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["unt", "con-lapte"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-ceai"] } }, "generated": true },
+    {
+      "inject": { "elemente": { "$list": ["con-gem", "iaurt", "gem", "con-faina", "lapte"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": { "$list": ["con-lapte", "iaurt", "unt", "orez", "ceai", "orez", "con-zahar"] }
+      },
+      "generated": true
     },
     {
       "inject": {
         "elemente": {
-          "$list": ["unt", "lapte", "paine", "branza"]
+          "$list": ["ceai", "ceai", "branza", "con-orez", "iaurt", "miere", "sare", "con-unt"]
         }
-      }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": { "$list": ["con-miere", "con-orez", "con-iaurt", "zahar", "faina", "iaurt"] }
+      },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["miere", "con-ceai"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-con"] } }, "generated": true },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["gem", "orez", "ulei", "con-ulei", "iaurt", "zahar", "faina", "paine"]
+        }
+      },
+      "generated": true
     },
     {
       "inject": {
         "elemente": {
-          "$list": ["lapte", "con-x", "paine", "branza", "gem"]
+          "$list": [
+            "paine",
+            "con-mar",
+            "con-faina",
+            "con-branza",
+            "gem",
+            "unt",
+            "paine",
+            "mar",
+            "lapte",
+            "con-sare"
+          ]
         }
-      }
+      },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["orez", "oua"] } }, "generated": true },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["paine", "unt", "con-con", "con", "con-faina", "con-paine", "con-gem", "orez"]
+        }
+      },
+      "generated": true
     },
     {
       "inject": {
         "elemente": {
-          "$list": ["con-a", "con-b", "con-c"]
+          "$list": ["faina", "con-zahar", "con-zahar", "ceai", "con-ulei", "mar", "con-oua"]
         }
-      }
+      },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["lapte", "sare"] } }, "generated": true },
+    {
+      "inject": { "elemente": { "$list": ["apa", "con-sare", "iaurt", "con-paine"] } },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["con-gem", "con-sare"] } }, "generated": true },
+    {
+      "inject": {
+        "elemente": {
+          "$list": [
+            "con-paine",
+            "con-branza",
+            "con-miere",
+            "ceai",
+            "unt",
+            "iaurt",
+            "paine",
+            "con-iaurt",
+            "zahar",
+            "iaurt"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["ulei", "unt"] } }, "generated": true },
+    {
+      "inject": { "elemente": { "$list": ["faina", "unt", "con-zahar", "miere", "con-apa"] } },
+      "generated": true
     },
     {
       "inject": {
         "elemente": {
-          "$list": ["con-lapte", "oua", "con-gem", "faina", "zahar", "unt", "orez"]
+          "$list": [
+            "unt",
+            "paine",
+            "unt",
+            "con-ulei",
+            "sare",
+            "con-sare",
+            "con-ulei",
+            "unt",
+            "unt",
+            "branza"
+          ]
         }
-      }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": [
+            "oua",
+            "ceai",
+            "con-sare",
+            "paine",
+            "unt",
+            "con-apa",
+            "orez",
+            "con-iaurt",
+            "lapte"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": [
+            "unt",
+            "con-mar",
+            "con-zahar",
+            "ulei",
+            "con",
+            "iaurt",
+            "miere",
+            "con-apa",
+            "faina"
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["paine"] } }, "generated": true },
+    {
+      "inject": {
+        "elemente": {
+          "$list": ["gem", "con-lapte", "sare", "unt", "paine", "con-ceai", "unt", "iaurt"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "elemente": { "$list": ["iaurt", "ceai", "orez", "con-lapte", "zahar"] } },
+      "generated": true
+    },
+    {
+      "inject": { "elemente": { "$list": ["lapte", "mar", "paine", "ceai", "con-unt", "branza"] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": { "$list": ["miere", "iaurt", "zahar", "oua", "con-iaurt", "con-gem"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": [
+            "unt",
+            "iaurt",
+            "lapte",
+            "ulei",
+            "con-con",
+            "ceai",
+            "unt",
+            "orez",
+            "con-branza",
+            "mar"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": { "$list": ["con", "sare", "lapte", "miere", "con-con", "paine", "unt"] }
+      },
+      "generated": true
+    },
+    { "inject": { "elemente": { "$list": ["unt", "sare", "faina", "sare"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["con-oua"] } }, "generated": true },
+    { "inject": { "elemente": { "$list": ["oua", "faina"] } }, "generated": true },
+    {
+      "inject": {
+        "elemente": { "$list": ["con-lapte", "con-gem", "unt", "con-gem", "ceai", "con"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "elemente": {
+          "$list": [
+            "con-paine",
+            "con-paine",
+            "gem",
+            "unt",
+            "sare",
+            "zahar",
+            "con-ceai",
+            "orez",
+            "faina"
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }

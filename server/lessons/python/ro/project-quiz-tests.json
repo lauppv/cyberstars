@@ -2,9 +2,9 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
-      { "kind": "function", "name": "noteaza_test" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "quiz" },
+      { "kind": "variable", "name": "raspunsuri_jucator" },
+      { "kind": "function", "name": "noteaza_test" }
     ]
   },
   "cases": [
@@ -70,6 +70,702 @@
         },
         "raspunsuri_jucator": { "$list": ["A", "X", "Y", "Z"] }
       }
+    },
+    {
+      "inject": {
+        "quiz": { "$list": [{ "$dict": { "text": "Q1", "raspuns": "A" } }] },
+        "raspunsuri_jucator": { "$list": ["A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": { "$list": [{ "$dict": { "text": "Q1", "raspuns": "A" } }] },
+        "raspunsuri_jucator": { "$list": ["B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "C"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "D", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "B", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "C", "B", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "B", "C", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "A", "A", "A", "A", "A", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "B", "B", "A", "A", "A", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "B", "B", "B", "B", "A", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "C" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "C" } },
+            { "$dict": { "text": "Q5", "raspuns": "C" } },
+            { "$dict": { "text": "Q6", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["C", "D", "D", "D", "D", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "C" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "C", "D", "A", "B", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } },
+            { "$dict": { "text": "Q7", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "B", "C", "A", "B", "C", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "D" } },
+            { "$dict": { "text": "Q9", "raspuns": "D" } },
+            { "$dict": { "text": "Q10", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "D", "D", "D", "D", "A", "A", "A", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "D" } },
+            { "$dict": { "text": "Q9", "raspuns": "D" } },
+            { "$dict": { "text": "Q10", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "D", "D", "D", "A", "A", "A", "A", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "C" } },
+            { "$dict": { "text": "Q9", "raspuns": "B" } },
+            { "$dict": { "text": "Q10", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "C", "D", "C", "B", "B", "D", "C", "B", "C"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "A" } },
+            { "$dict": { "text": "Q8", "raspuns": "C" } },
+            { "$dict": { "text": "Q9", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["C", "C", "A", "D", "D", "D", "A", "C", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } },
+            { "$dict": { "text": "Q5", "raspuns": "C" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "C" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } },
+            { "$dict": { "text": "Q9", "raspuns": "B" } },
+            { "$dict": { "text": "Q10", "raspuns": "B" } },
+            { "$dict": { "text": "Q11", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "B", "A", "A", "C", "D", "C", "B", "D", "C", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "A" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "A" } },
+            { "$dict": { "text": "Q8", "raspuns": "A" } },
+            { "$dict": { "text": "Q9", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "A", "D", "A", "D", "D", "B", "B", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "A" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } },
+            { "$dict": { "text": "Q5", "raspuns": "C" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } },
+            { "$dict": { "text": "Q9", "raspuns": "C" } },
+            { "$dict": { "text": "Q10", "raspuns": "D" } },
+            { "$dict": { "text": "Q11", "raspuns": "B" } },
+            { "$dict": { "text": "Q12", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": {
+          "$list": ["C", "A", "D", "D", "C", "B", "D", "B", "B", "D", "C", "C"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "C", "D", "C"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } },
+            { "$dict": { "text": "Q5", "raspuns": "C" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } },
+            { "$dict": { "text": "Q7", "raspuns": "C" } },
+            { "$dict": { "text": "Q8", "raspuns": "C" } },
+            { "$dict": { "text": "Q9", "raspuns": "A" } },
+            { "$dict": { "text": "Q10", "raspuns": "D" } },
+            { "$dict": { "text": "Q11", "raspuns": "C" } },
+            { "$dict": { "text": "Q12", "raspuns": "C" } }
+          ]
+        },
+        "raspunsuri_jucator": {
+          "$list": ["C", "B", "A", "D", "A", "B", "C", "C", "A", "D", "B", "C"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "C" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "D", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "C" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "C" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "A" } },
+            { "$dict": { "text": "Q9", "raspuns": "D" } },
+            { "$dict": { "text": "Q10", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "D", "C", "C", "B", "D", "B", "A", "D", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "C" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "A", "D", "D", "C", "A", "B", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "C" } },
+            { "$dict": { "text": "Q9", "raspuns": "C" } },
+            { "$dict": { "text": "Q10", "raspuns": "A" } },
+            { "$dict": { "text": "Q11", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "B", "A", "D", "D", "B", "B", "C", "C", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "A", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "D" } },
+            { "$dict": { "text": "Q9", "raspuns": "C" } },
+            { "$dict": { "text": "Q10", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "C", "C", "A", "A", "C", "D", "D", "A", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "D", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": { "$list": [{ "$dict": { "text": "Q1", "raspuns": "D" } }] },
+        "raspunsuri_jucator": { "$list": ["B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "D", "A", "D", "D", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "A" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } },
+            { "$dict": { "text": "Q7", "raspuns": "A" } },
+            { "$dict": { "text": "Q8", "raspuns": "C" } },
+            { "$dict": { "text": "Q9", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "D", "C", "B", "B", "A", "A", "D", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "B", "A", "B", "D", "C", "D", "C"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "A" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "A", "D", "D", "A", "A", "A", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "D" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "B" } },
+            { "$dict": { "text": "Q7", "raspuns": "B" } },
+            { "$dict": { "text": "Q8", "raspuns": "D" } },
+            { "$dict": { "text": "Q9", "raspuns": "D" } },
+            { "$dict": { "text": "Q10", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["D", "A", "D", "C", "A", "B", "D", "B", "D", "D"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": { "$list": [{ "$dict": { "text": "Q1", "raspuns": "B" } }] },
+        "raspunsuri_jucator": { "$list": ["C"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": { "$list": [{ "$dict": { "text": "Q1", "raspuns": "D" } }] },
+        "raspunsuri_jucator": { "$list": ["A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "A" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["C", "A", "C"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "C" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "C" } },
+            { "$dict": { "text": "Q4", "raspuns": "C" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["C", "D", "B", "B", "D", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "C" } },
+            { "$dict": { "text": "Q5", "raspuns": "D" } },
+            { "$dict": { "text": "Q6", "raspuns": "A" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } },
+            { "$dict": { "text": "Q9", "raspuns": "B" } },
+            { "$dict": { "text": "Q10", "raspuns": "A" } },
+            { "$dict": { "text": "Q11", "raspuns": "D" } },
+            { "$dict": { "text": "Q12", "raspuns": "A" } }
+          ]
+        },
+        "raspunsuri_jucator": {
+          "$list": ["B", "B", "A", "C", "D", "D", "B", "B", "B", "A", "A", "B"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "A" } },
+            { "$dict": { "text": "Q4", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["C", "D", "A", "B"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "B" } },
+            { "$dict": { "text": "Q2", "raspuns": "D" } },
+            { "$dict": { "text": "Q3", "raspuns": "D" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "A" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "A" } },
+            { "$dict": { "text": "Q8", "raspuns": "B" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["B", "D", "D", "D", "A", "D", "A", "A"] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "quiz": {
+          "$list": [
+            { "$dict": { "text": "Q1", "raspuns": "A" } },
+            { "$dict": { "text": "Q2", "raspuns": "B" } },
+            { "$dict": { "text": "Q3", "raspuns": "B" } },
+            { "$dict": { "text": "Q4", "raspuns": "D" } },
+            { "$dict": { "text": "Q5", "raspuns": "B" } },
+            { "$dict": { "text": "Q6", "raspuns": "D" } },
+            { "$dict": { "text": "Q7", "raspuns": "D" } }
+          ]
+        },
+        "raspunsuri_jucator": { "$list": ["A", "B", "B", "D", "A", "D", "D"] }
+      },
+      "generated": true
     }
   ]
 }
