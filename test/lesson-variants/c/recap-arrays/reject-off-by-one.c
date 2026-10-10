@@ -16,10 +16,14 @@ int find_max(int grades[], int n) {
 }
 
 int find_first_fail(int grades[], int n) {
+    int first = -1;
     for (int i = 0; i < n; i++) {
-        if (grades[i] < 50) return grades[i];
+        if (grades[i] < 50) {
+            first = grades[i];
+            break;
+        }
     }
-    return -1;
+    return first;
 }
 
 int main(void) {

@@ -3,7 +3,9 @@
     "requires": [
       { "kind": "function", "name": "matrix_stats" },
       { "kind": "loop" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "nested_loop" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

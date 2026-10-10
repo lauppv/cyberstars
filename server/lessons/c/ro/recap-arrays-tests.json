@@ -4,7 +4,9 @@
       { "kind": "function", "name": "numara_promovati" },
       { "kind": "function", "name": "gaseste_max" },
       { "kind": "function", "name": "gaseste_prima_cadere" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "break" },
+      { "kind": "continue" }
     ]
   },
   "cases": [

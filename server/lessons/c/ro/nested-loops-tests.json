@@ -2,7 +2,8 @@
   "structure": {
     "requires": [
       { "kind": "loop", "type": "for" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "nested_loop" }
     ]
   },
   "cases": [

@@ -4,7 +4,9 @@
       { "kind": "function", "name": "count_passing" },
       { "kind": "function", "name": "find_max" },
       { "kind": "function", "name": "find_first_fail" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "break" },
+      { "kind": "continue" }
     ]
   },
   "cases": [

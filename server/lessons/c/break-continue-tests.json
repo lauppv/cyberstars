@@ -2,7 +2,9 @@
   "structure": {
     "requires": [
       { "kind": "loop", "type": "for" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "break" },
+      { "kind": "continue" }
     ]
   },
   "cases": [
