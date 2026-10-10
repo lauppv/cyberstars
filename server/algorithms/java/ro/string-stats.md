@@ -8,7 +8,7 @@ Citește o singură linie de text de la stdin. Creează un `AnalizatorText` și 
 
 ### Date de intrare
 
-- Linia 1: un șir de text (doar litere și spații, între 1 și 300 de caractere, cuvintele separate prin câte un singur spațiu)
+- Linia 1: un șir de text (doar litere și spații, între 1 și 10^5 de caractere, cuvintele separate prin câte un singur spațiu)
 
 ### Rezultat
 

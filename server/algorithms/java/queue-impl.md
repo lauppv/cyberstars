@@ -4,7 +4,7 @@ Process commands from stdin and print results for `dequeue` and `peek`. If `dequ
 
 ### Input
 
-- Line 1: number of commands N (1 <= N <= 500)
+- Line 1: number of commands N (1 <= N <= 2·10^4)
 - For each command:
   - Line 1: command type (`enqueue`, `dequeue`, or `peek`)
   - Only for `enqueue`, line 2: the integer X (any `int` value)
