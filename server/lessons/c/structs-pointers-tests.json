@@ -3,7 +3,9 @@
     "requires": [
       { "kind": "function", "name": "allocate" },
       { "kind": "function", "name": "withdraw" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "struct" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

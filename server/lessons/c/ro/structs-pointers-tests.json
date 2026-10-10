@@ -3,7 +3,9 @@
     "requires": [
       { "kind": "function", "name": "aloca" },
       { "kind": "function", "name": "retrage" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "struct" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

@@ -6,7 +6,8 @@
       { "kind": "function", "name": "afiseaza_toti" },
       { "kind": "function", "name": "gaseste_cel_mai_bun" },
       { "kind": "call", "name": "malloc" },
-      { "kind": "call", "name": "free" }
+      { "kind": "call", "name": "free" },
+      { "kind": "struct" }
     ]
   },
   "cases": [

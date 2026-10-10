@@ -4,7 +4,9 @@
       { "kind": "function", "name": "adauga_contact" },
       { "kind": "function", "name": "cauta_contact" },
       { "kind": "call", "name": "strcpy" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "struct" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

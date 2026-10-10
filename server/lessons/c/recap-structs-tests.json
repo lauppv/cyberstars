@@ -4,7 +4,9 @@
       { "kind": "function", "name": "add_contact" },
       { "kind": "function", "name": "find_contact" },
       { "kind": "call", "name": "strcpy" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "struct" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

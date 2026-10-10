@@ -6,7 +6,8 @@
       { "kind": "function", "name": "print_all" },
       { "kind": "function", "name": "find_top" },
       { "kind": "call", "name": "malloc" },
-      { "kind": "call", "name": "free" }
+      { "kind": "call", "name": "free" },
+      { "kind": "struct" }
     ]
   },
   "cases": [

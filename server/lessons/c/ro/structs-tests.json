@@ -1,5 +1,5 @@
 {
-  "structure": { "requires": [{ "kind": "call", "name": "scanf" }] },
+  "structure": { "requires": [{ "kind": "call", "name": "scanf" }, { "kind": "struct" }] },
   "cases": [
     { "stdin": "IBM7090 1969 730\nDEC10 1972 500\n", "visible": true },
     { "stdin": "UNIVAC 1965 900\nPDP7 1970 250\n", "visible": true },

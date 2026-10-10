@@ -1,5 +1,12 @@
 {
-  "structure": { "requires": [{ "kind": "call", "name": "scanf" }, { "kind": "loop" }] },
+  "structure": {
+    "requires": [
+      { "kind": "call", "name": "scanf" },
+      { "kind": "loop" },
+      { "kind": "typedef" },
+      { "kind": "struct" }
+    ]
+  },
   "cases": [
     { "stdin": "3\nop1 10 9.50\nop2 11 8.20\nop3 10 9.80\n", "visible": true },
     { "stdin": "2\nshift1 7 6.75\nshift2 9 8.00\n", "visible": true },
