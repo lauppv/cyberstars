@@ -3,7 +3,8 @@
     "requires": [
       { "kind": "function", "name": "sum_array" },
       { "kind": "call", "name": "sum_array" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

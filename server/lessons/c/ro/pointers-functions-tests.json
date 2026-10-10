@@ -3,7 +3,9 @@
     "requires": [
       { "kind": "function", "name": "tripleaza" },
       { "kind": "call", "name": "tripleaza" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "pointer" },
+      { "kind": "deref" }
     ]
   },
   "cases": [

@@ -3,7 +3,8 @@
     "requires": [
       { "kind": "function", "name": "suma_tablou" },
       { "kind": "call", "name": "suma_tablou" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "pointer" }
     ]
   },
   "cases": [

@@ -1,5 +1,7 @@
 {
-  "structure": { "requires": [{ "kind": "call", "name": "scanf" }] },
+  "structure": {
+    "requires": [{ "kind": "call", "name": "scanf" }, { "kind": "pointer" }, { "kind": "deref" }]
+  },
   "cases": [
     { "visible": true, "stdin": "7\n" },
     { "visible": true, "stdin": "100\n" },
