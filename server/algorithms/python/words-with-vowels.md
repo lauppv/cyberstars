@@ -2,7 +2,7 @@ Given a sentence, print every word that contains **exactly 2 vowels**.
 
 ### Input
 
-A single line of 1 to 1000 characters containing a sentence with at least one word. Words contain only English letters (`a`-`z`, `A`-`Z`) and are separated by one or more spaces, and the line may start or end with spaces.
+A single line of 1 to 10^5 characters containing a sentence with at least one word. Words contain only English letters (`a`-`z`, `A`-`Z`) and are separated by one or more spaces, and the line may start or end with spaces.
 
 ### Output
 
