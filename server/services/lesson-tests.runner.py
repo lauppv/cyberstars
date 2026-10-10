@@ -202,13 +202,14 @@ def inject_values(code, values):
 # measured from just before its first line, so interpreter startup is left
 # out. It is CPU time, not wall time: the container's CPU cap pauses a
 # process for tens of ms at random, and those pauses aren't the code's. The
-# time goes out on the pipe named by _JT_FD, never on stdout. A program that
+# time goes out on the pipe named by _JT_FD, never on stdout, and only from the
+# program's own process (a forked child inherits the hook). A program that
 # ends through os._exit or a kill reports no time.
 PREAMBLE = (
     "import builtins as _b, atexit as _ae, os as _os, time as _tm\n"
     "_oi = _b.input; _b.input = lambda *a, **k: _oi()\n"
-    "_ae.register(lambda _s=_tm.process_time(), _fd=int(_os.environ.pop('_JT_FD')): "
-    "_os.write(_fd, b'%.6f' % ((_tm.process_time() - _s) * 1000)))\n"
+    "_ae.register(lambda _s=_tm.process_time(), _fd=int(_os.environ.pop('_JT_FD')), "
+    "_p=_os.getpid(): _os.getpid() == _p and _os.write(_fd, b'%.6f' % ((_tm.process_time() - _s) * 1000)))\n"
 )
 
 

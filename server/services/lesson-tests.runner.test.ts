@@ -111,6 +111,19 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect((exited[1] as { user: { ms?: number } }).user.ms).toBeUndefined();
   });
 
+  it('reports one time from the program itself when it forks a child', () => {
+    const code =
+      'import os, sys\npid = os.fork()\nif pid == 0:\n    sys.exit(0)\nos.waitpid(pid, 0)\nprint("ok")\n';
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      { userCode: code, solutionCode: 'print("ok")\n', structure: {}, cases: [{}] },
+      ['stop'],
+    );
+    const { user } = lines[1] as { user: { stdout: string; ms?: number } };
+    expect(user.stdout).toBe('ok\n');
+    expect(user.ms).toBeGreaterThanOrEqual(0);
+  });
+
   it('keeps tracebacks on the same lines as without the timing preamble', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
@@ -140,6 +153,19 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
       solution: { stdout: 'A\n', exit: 0 },
     });
   });
+  it('reports one time from the program itself when it forks a child', () => {
+    const user =
+      '#include <stdio.h>\n#include <unistd.h>\n#include <sys/wait.h>\nint main(void) { pid_t p = fork(); if (p == 0) return 0; waitpid(p, NULL, 0); puts("ok"); return 0; }\n';
+    const lines = runRunner(
+      'lesson-tests.runner.c.py',
+      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: user }] },
+      ['stop'],
+    );
+    const { user: u } = lines[1] as { user: { stdout: string; ms?: number } };
+    expect(u.stdout).toBe('ok\n');
+    expect(u.ms).toBeGreaterThanOrEqual(0);
+  });
+
   it("times the CPU the program's own code used, and nothing when it crashes", () => {
     const user =
       '#include <stdio.h>\n#include <unistd.h>\nint main(void) { volatile long s = 0; for (long i = 0; i < 200000000; i++) s += i; usleep(200000); puts("ok"); return 0; }\n';

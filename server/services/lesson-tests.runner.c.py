@@ -33,20 +33,25 @@ WORK = os.environ.get("JUDGE_WORK_DIR", "/work")
 # and the program's atexit handlers count. It is CPU time, not wall time: the
 # container's CPU cap pauses a process for tens of ms at random, and those
 # pauses aren't the code's. The time goes out on the pipe named by _JT_FD,
-# never on stdout. A crash or _exit reports no time.
+# never on stdout, and only from the program's own process (a forked child
+# inherits the handler). A crash or _exit reports no time.
 TIMER_SRC = r'''
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
 
 static struct timespec cyberstars_judge_t0;
 static int cyberstars_judge_fd = -1;
+static pid_t cyberstars_judge_pid;
 
 static void cyberstars_judge_report(void) {
     struct timespec t1;
     char buf[64];
+    /* A forked child inherits this handler; only the program's own process reports. */
+    if (getpid() != cyberstars_judge_pid) return;
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &t1);
     double ms = (t1.tv_sec - cyberstars_judge_t0.tv_sec) * 1e3
         + (t1.tv_nsec - cyberstars_judge_t0.tv_nsec) / 1e6;
@@ -63,6 +68,7 @@ __attribute__((constructor(101))) static void cyberstars_judge_start(void) {
         cyberstars_judge_fd = atoi(fd);
         unsetenv("_JT_FD");
     }
+    cyberstars_judge_pid = getpid();
     atexit(cyberstars_judge_report);
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cyberstars_judge_t0);
 }
