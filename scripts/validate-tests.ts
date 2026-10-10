@@ -21,7 +21,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { contentDir } from '../server/services/paths.js';
 import { parseC, collectInjectionSites } from '../server/services/c-analysis.js';
-import type { LessonTestsSpec } from '../shared/tests.js';
+import { SIZE_UNITS, type LessonTestsSpec } from '../shared/tests.js';
 
 const CODE_JUDGE_COURSES = ['python', 'java', 'c', 'algo-python', 'algo-java', 'algo-c'];
 const C_COURSES = new Set(['c', 'algo-c']);
@@ -152,9 +152,9 @@ export async function auditSolution(
 // judge's time budget; Java pays a JVM start per program, so it gets fewer.
 export const MAX_CASES: Record<Lang, number> = { python: 50, c: 50, java: 20 };
 
-// Bulk (generated) cases are hidden by definition, and their reference output
-// may come from the judge's cache, which assumes the solution is deterministic,
-// so they can't sit on a masked/unordered (nondeterministic output) lesson.
+// Bulk (generated) cases are hidden by definition, and they are meant for
+// lessons whose output is deterministic, so not for masked/unordered ones.
+// Sizes go on every case or none, in the unit the spec names.
 export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
   const messages: string[] = [];
   const cases = spec.cases ?? [];
@@ -169,6 +169,19 @@ export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
     messages.push(
       `generated cases on a ${spec.comparator} lesson; its output is not deterministic`,
     );
+  }
+  const sized = cases.filter((c) => c.size !== undefined);
+  if (spec.sizeUnit !== undefined && !(SIZE_UNITS as readonly string[]).includes(spec.sizeUnit)) {
+    messages.push(`unknown sizeUnit "${spec.sizeUnit}"; use one of ${SIZE_UNITS.join(', ')}`);
+  }
+  if (sized.some((c) => !Number.isInteger(c.size) || c.size! < 0)) {
+    messages.push('a case size is not a non-negative integer');
+  }
+  if (spec.sizeUnit !== undefined && sized.length < cases.length) {
+    messages.push(`${cases.length - sized.length} case(s) have no size although sizeUnit is set`);
+  }
+  if (spec.sizeUnit === undefined && sized.length > 0) {
+    messages.push('cases have a size but the spec names no sizeUnit');
   }
   return messages;
 }
