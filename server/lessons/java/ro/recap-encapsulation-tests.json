@@ -1,6 +1,9 @@
 {
   "structure": {
     "requires": [
+      { "kind": "modifier", "name": "private" },
+      { "kind": "modifier", "name": "static" },
+      { "kind": "modifier", "name": "final" },
       { "kind": "call", "name": "ContBancar" },
       { "kind": "function", "name": "depune" },
       { "kind": "function", "name": "retrage" },

@@ -1,6 +1,7 @@
 {
   "structure": {
     "requires": [
+      { "kind": "modifier", "name": "static" },
       { "kind": "call", "name": "Vizitator" },
       { "kind": "variable", "name": "nume" },
       { "kind": "loop" }

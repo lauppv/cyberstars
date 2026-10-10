@@ -1,6 +1,9 @@
 {
   "structure": {
     "requires": [
+      { "kind": "modifier", "name": "private" },
+      { "kind": "modifier", "name": "static" },
+      { "kind": "modifier", "name": "final" },
       { "kind": "call", "name": "BankAccount" },
       { "kind": "function", "name": "deposit" },
       { "kind": "function", "name": "withdraw" },

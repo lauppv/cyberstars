@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "extends" },
+      { "kind": "modifier", "name": "abstract" },
       { "kind": "call", "name": "Sportiva" },
       { "kind": "call", "name": "Camion" },
       { "kind": "call", "name": "Motocicleta" },
