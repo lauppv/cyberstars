@@ -77,10 +77,15 @@ function requireNames(spec: LessonTestsSpec): string[] {
 }
 
 function stripPython(code: string): string {
-  return code
-    .replace(/'''[\s\S]*?'''|"""[\s\S]*?"""/g, ' ')
-    .replace(/#[^\n]*/g, ' ')
-    .replace(/'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"/g, ' ');
+  return (
+    code
+      .replace(/'''[\s\S]*?'''|"""[\s\S]*?"""/g, ' ')
+      .replace(/#[^\n]*/g, ' ')
+      // f-strings keep their text: a call made only inside {...} still counts.
+      .replace(/(\b[fF])?('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")/g, (_, f, str: string) =>
+        f ? ` ${str.slice(1, -1)} ` : ' ',
+      )
+  );
 }
 
 function stripCLike(code: string): string {

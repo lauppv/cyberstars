@@ -24,6 +24,15 @@ describe('auditSolution', () => {
     expect(await auditSolution('python', code, spec)).toEqual([]);
   });
 
+  it('finds a required call that a Python solution makes only inside an f-string', async () => {
+    const code = 'log = ["a"]\nprint(f"{len(log)}")\nn = sorted(log)\nprint(f"{n}")';
+    const spec: LessonTestsSpec = {
+      structure: { requires: [{ kind: 'call', name: 'sorted' }] },
+      cases: [],
+    };
+    expect(await auditSolution('python', code, spec)).toEqual([]);
+  });
+
   it('flags a Python inject key that is a typo (absent from the solution)', async () => {
     const code = 'age = 5\nprint(age)';
     const spec: LessonTestsSpec = { cases: [{ inject: { aeg: 10 } }] };
