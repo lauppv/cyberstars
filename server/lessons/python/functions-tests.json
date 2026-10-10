@@ -3,8 +3,7 @@
   "structure": {
     "requires": [
       { "kind": "function", "name": "calculator" },
-      { "kind": "call", "name": "input" },
-      { "kind": "call", "name": "print" }
+      { "kind": "call", "name": "calculator" }
     ]
   },
   "cases": [
@@ -13,6 +12,49 @@
     { "stdin": "6\n7\n*\n" },
     { "stdin": "20\n4\n/\n" },
     { "stdin": "5\n2\n%\n" },
-    { "stdin": "100\n25\n/\n" }
+    { "stdin": "100\n25\n/\n" },
+    { "stdin": "0\n5\n+\n", "generated": true },
+    { "stdin": "0\n5\n-\n", "generated": true },
+    { "stdin": "0\n5\n*\n", "generated": true },
+    { "stdin": "0\n5\n/\n", "generated": true },
+    { "stdin": "5\n0\n+\n", "generated": true },
+    { "stdin": "5\n0\n*\n", "generated": true },
+    { "stdin": "5\n0\n-\n", "generated": true },
+    { "stdin": "7\n3\n/\n", "generated": true },
+    { "stdin": "1\n3\n/\n", "generated": true },
+    { "stdin": "3\n8\n-\n", "generated": true },
+    { "stdin": "-4\n6\n+\n", "generated": true },
+    { "stdin": "-4\n-6\n*\n", "generated": true },
+    { "stdin": "10\n-2\n/\n", "generated": true },
+    { "stdin": "9\n9\n-\n", "generated": true },
+    { "stdin": "2\n2\nx\n", "generated": true },
+    { "stdin": "4\n2\n^\n", "generated": true },
+    { "stdin": "4\n2\n//\n", "generated": true },
+    { "stdin": "4\n2\n**\n", "generated": true },
+    { "stdin": "8\n2\nplus\n", "generated": true },
+    { "stdin": "1\n1\n+\n", "generated": true },
+    { "stdin": "123\n456\n*\n", "generated": true },
+    { "stdin": "999\n1\n-\n", "generated": true },
+    { "stdin": "22\n7\n/\n", "generated": true },
+    { "stdin": "242\n90\n+\n", "generated": true },
+    { "stdin": "328\n86\n/\n", "generated": true },
+    { "stdin": "460\n78\n/\n", "generated": true },
+    { "stdin": "331\n-80\n/\n", "generated": true },
+    { "stdin": "130\n8\n/\n", "generated": true },
+    { "stdin": "334\n20\n+\n", "generated": true },
+    { "stdin": "474\n64\n-\n", "generated": true },
+    { "stdin": "468\n35\n/\n", "generated": true },
+    { "stdin": "15\n7\n/\n", "generated": true },
+    { "stdin": "12\n22\n-\n", "generated": true },
+    { "stdin": "28\n67\n*\n", "generated": true },
+    { "stdin": "46\n-80\n+\n", "generated": true },
+    { "stdin": "288\n-68\n*\n", "generated": true },
+    { "stdin": "79\n11\n-\n", "generated": true },
+    { "stdin": "224\n48\n+\n", "generated": true },
+    { "stdin": "66\n-39\n+\n", "generated": true },
+    { "stdin": "394\n-6\n*\n", "generated": true },
+    { "stdin": "35\n46\n/\n", "generated": true },
+    { "stdin": "107\n74\n+\n", "generated": true },
+    { "stdin": "498\n-55\n+\n", "generated": true }
   ]
 }

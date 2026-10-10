@@ -1,16 +1,38 @@
 {
   "comparator": "trimmed",
-  "structure": {
-    "requires": [
-      { "kind": "variable", "name": "temperature" },
-      { "kind": "call", "name": "print" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "variable", "name": "temperature" }] },
   "cases": [
     { "visible": true, "inject": { "temperature": 1200 } },
     { "visible": true, "inject": { "temperature": 800 } },
     { "inject": { "temperature": 1000 } },
     { "inject": { "temperature": 1001 } },
-    { "inject": { "temperature": 0 } }
+    { "inject": { "temperature": 0 } },
+    { "inject": { "temperature": 999 }, "generated": true },
+    { "inject": { "temperature": 1002 }, "generated": true },
+    { "inject": { "temperature": 1 }, "generated": true },
+    { "inject": { "temperature": -1 }, "generated": true },
+    { "inject": { "temperature": -40 }, "generated": true },
+    { "inject": { "temperature": -273 }, "generated": true },
+    { "inject": { "temperature": 25 }, "generated": true },
+    { "inject": { "temperature": 100 }, "generated": true },
+    { "inject": { "temperature": 500 }, "generated": true },
+    { "inject": { "temperature": 750 }, "generated": true },
+    { "inject": { "temperature": 900 }, "generated": true },
+    { "inject": { "temperature": 990 }, "generated": true },
+    { "inject": { "temperature": 998 }, "generated": true },
+    { "inject": { "temperature": 1010 }, "generated": true },
+    { "inject": { "temperature": 1100 }, "generated": true },
+    { "inject": { "temperature": 1500 }, "generated": true },
+    { "inject": { "temperature": 2000 }, "generated": true },
+    { "inject": { "temperature": 2500 }, "generated": true },
+    { "inject": { "temperature": 3000 }, "generated": true },
+    { "inject": { "temperature": 5000 }, "generated": true },
+    { "inject": { "temperature": 9999 }, "generated": true },
+    { "inject": { "temperature": 10000 }, "generated": true },
+    { "inject": { "temperature": 1050 }, "generated": true },
+    { "inject": { "temperature": 600 }, "generated": true },
+    { "inject": { "temperature": 1234 }, "generated": true },
+    { "inject": { "temperature": 42 }, "generated": true },
+    { "inject": { "temperature": 1003 }, "generated": true }
   ]
 }
