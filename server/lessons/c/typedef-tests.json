@@ -1,14 +1,78 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" },
-      { "kind": "loop" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "scanf" }, { "kind": "loop" }] },
   "cases": [
+    { "stdin": "3\nop1 10 9.50\nop2 11 8.20\nop3 10 9.80\n", "visible": true },
+    { "stdin": "2\nshift1 7 6.75\nshift2 9 8.00\n", "visible": true },
     { "visible": true, "stdin": "2\nAlpha 90 4.50\nBravo 75 3.25\n" },
     { "visible": true, "stdin": "1\nZeta 100 5.00\n" },
-    { "stdin": "3\nA 10 1.10\nB 20 2.20\nC 30 3.30\n" }
+    { "stdin": "3\nA 10 1.10\nB 20 2.20\nC 30 3.30\n" },
+    { "stdin": "0\n", "generated": true },
+    { "stdin": "1\nsolo 0 0.00\n", "generated": true },
+    { "stdin": "1\nmax 100 10.00\n", "generated": true },
+    { "stdin": "3\na 1 1.05\nb 2 2.50\nc 3 9.99\n", "generated": true },
+    { "stdin": "2\nsame 5 5.55\nsame 5 5.55\n", "generated": true },
+    {
+      "stdin": "40\nop1 1 1.07\nop2 2 2.14\nop3 3 3.21\nop4 4 4.28\nop5 5 5.35\nop6 6 6.42\nop7 7 7.49\nop8 8 8.56\nop9 9 9.63\nop10 10 0.70\nop11 11 1.77\nop12 12 2.84\nop13 13 3.91\nop14 14 4.98\nop15 15 5.05\nop16 16 6.12\nop17 17 7.19\nop18 18 8.26\nop19 19 9.33\nop20 20 0.40\nop21 21 1.47\nop22 22 2.54\nop23 23 3.61\nop24 24 4.68\nop25 25 5.75\nop26 26 6.82\nop27 27 7.89\nop28 28 8.96\nop29 29 9.03\nop30 30 0.10\nop31 31 1.17\nop32 32 2.24\nop33 33 3.31\nop34 34 4.38\nop35 35 5.45\nop36 36 6.52\nop37 37 7.59\nop38 38 8.66\nop39 39 9.73\nop40 40 0.80\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nop9 7 8.58\nop74 6 4.65\nop50 7 9.05\nop54 11 0.13\nop1 5 7.92\nop70 1 5.72\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nop30 4 8.65\nop46 8 3.04\nop72 6 5.76\nop44 9 9.97\nop26 4 0.16\nop43 2 5.74\nop50 9 8.32\n",
+      "generated": true
+    },
+    { "stdin": "2\nop84 4 5.27\nop61 12 1.98\n", "generated": true },
+    {
+      "stdin": "7\nop78 6 4.98\nop31 9 4.45\nop69 10 0.61\nop40 10 6.33\nop94 9 3.77\nop15 11 3.48\nop63 5 9.71\n",
+      "generated": true
+    },
+    { "stdin": "3\nop57 1 2.70\nop81 2 1.34\nop66 10 8.60\n", "generated": true },
+    {
+      "stdin": "7\nop47 1 9.33\nop83 10 8.86\nop61 12 5.02\nop74 4 3.44\nop56 12 2.22\nop61 4 2.12\nop18 12 9.44\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nop14 5 7.00\nop84 2 6.08\nop48 1 4.05\nop18 3 8.62\nop26 8 8.58\nop73 10 0.88\nop10 3 2.69\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\nop82 1 9.30\nop92 1 6.15\nop3 2 4.06\nop71 5 3.78\nop94 9 2.70\nop75 5 9.73\n",
+      "generated": true
+    },
+    { "stdin": "2\nop73 8 5.71\nop7 2 6.53\n", "generated": true },
+    {
+      "stdin": "6\nop39 10 7.76\nop18 2 8.14\nop60 11 7.02\nop56 10 8.97\nop9 5 7.64\nop15 4 5.42\n",
+      "generated": true
+    },
+    { "stdin": "3\nop60 1 9.12\nop86 8 7.35\nop82 9 0.71\n", "generated": true },
+    { "stdin": "4\nop87 5 0.98\nop34 9 7.49\nop9 12 1.66\nop91 10 9.61\n", "generated": true },
+    {
+      "stdin": "6\nop75 5 6.98\nop88 4 1.13\nop66 5 6.42\nop69 6 1.11\nop80 12 6.46\nop7 6 9.07\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\nop82 5 4.26\nop38 4 7.84\nop39 8 7.40\nop87 1 2.74\nop62 1 0.54\nop59 9 7.78\nop33 5 1.38\n",
+      "generated": true
+    },
+    { "stdin": "2\nop22 7 5.63\nop55 4 8.72\n", "generated": true },
+    {
+      "stdin": "5\nop41 9 0.77\nop87 7 9.75\nop90 10 9.59\nop79 9 2.87\nop90 7 0.23\n",
+      "generated": true
+    },
+    { "stdin": "3\nop80 2 7.52\nop8 4 7.22\nop77 7 0.79\n", "generated": true },
+    { "stdin": "3\nop96 2 8.49\nop1 7 7.94\nop59 11 5.93\n", "generated": true },
+    { "stdin": "2\nop66 7 1.11\nop54 7 8.13\n", "generated": true },
+    { "stdin": "3\nop86 8 7.56\nop77 2 6.67\nop65 6 6.95\n", "generated": true },
+    { "stdin": "4\nop41 7 1.16\nop92 8 5.83\nop84 2 4.62\nop12 6 0.50\n", "generated": true },
+    { "stdin": "2\nop77 4 8.82\nop27 9 4.91\n", "generated": true },
+    {
+      "stdin": "5\nop65 10 1.71\nop8 5 2.62\nop90 4 6.78\nop61 1 9.51\nop78 4 8.47\n",
+      "generated": true
+    },
+    { "stdin": "2\nop44 2 2.75\nop14 4 2.10\n", "generated": true },
+    { "stdin": "3\nop66 3 2.09\nop12 3 9.50\nop45 2 6.37\n", "generated": true },
+    { "stdin": "4\nop87 6 1.82\nop41 2 0.25\nop72 3 5.11\nop41 12 6.64\n", "generated": true }
   ]
 }

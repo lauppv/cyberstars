@@ -1,13 +1,40 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "scanf" },
-      { "kind": "call", "name": "printf" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "scanf" }] },
   "cases": [
+    { "stdin": "IBM7090 1969 730\nDEC10 1972 500\n", "visible": true },
+    { "stdin": "UNIVAC 1965 900\nPDP7 1970 250\n", "visible": true },
     { "visible": true, "stdin": "TapeA 1970 500\nTapeB 1972 600\n" },
     { "visible": true, "stdin": "X 2000 1\nY 2001 2\n" },
-    { "stdin": "Reel1 1965 300\nReel2 1966 350\n" }
+    { "stdin": "Reel1 1965 300\nReel2 1966 350\n" },
+    { "stdin": "A 1950 0\nB 1951 1\n", "generated": true },
+    { "stdin": "Same 1970 500\nSame 1970 500\n", "generated": true },
+    { "stdin": "Old 1900 99999\nNew 2024 5\n", "generated": true },
+    { "stdin": "Long_label_0123 1980 1200\nS 1981 7\n", "generated": true },
+    { "stdin": "CDC6600 1971 946\nDEC10 1974 2368\n", "generated": true },
+    { "stdin": "tape 1994 1162\nCray1 1967 1571\n", "generated": true },
+    { "stdin": "Z80 1996 2362\nIBM701 1999 1021\n", "generated": true },
+    { "stdin": "X 1951 1800\nDEC10 1959 2963\n", "generated": true },
+    { "stdin": "UNIVAC 1960 1055\nX 1994 2543\n", "generated": true },
+    { "stdin": "ENIAC 1953 491\nBackupA 1987 136\n", "generated": true },
+    { "stdin": "CDC6600 1968 885\nIBM7090 1996 1476\n", "generated": true },
+    { "stdin": "Reel_001 1980 513\nCray1 1992 76\n", "generated": true },
+    { "stdin": "IBM7090 1956 589\nReel_001 1961 220\n", "generated": true },
+    { "stdin": "PDP11 1970 923\nENIAC 1951 2492\n", "generated": true },
+    { "stdin": "ENIAC 1961 1782\ntape 2000 236\n", "generated": true },
+    { "stdin": "PDP11 1975 598\nIBM7090 1992 384\n", "generated": true },
+    { "stdin": "CDC6600 1951 2718\nX 1981 1618\n", "generated": true },
+    { "stdin": "PDP7 1951 352\nDEC10 1954 1878\n", "generated": true },
+    { "stdin": "Reel_001 1975 1744\nCray1 1997 1146\n", "generated": true },
+    { "stdin": "Cray1 1951 59\nX 1979 1319\n", "generated": true },
+    { "stdin": "DEC10 1958 270\nReel_001 1952 2951\n", "generated": true },
+    { "stdin": "Z80 1993 448\nX 1995 523\n", "generated": true },
+    { "stdin": "tape 1976 2685\nReel_001 1997 350\n", "generated": true },
+    { "stdin": "ENIAC 1983 1714\nENIAC 1956 991\n", "generated": true },
+    { "stdin": "PDP7 1977 1488\nReel_001 1979 2786\n", "generated": true },
+    { "stdin": "Reel_001 1976 1844\nIBM7090 1992 1131\n", "generated": true },
+    { "stdin": "Cray1 1963 2811\nPDP7 1967 1546\n", "generated": true },
+    { "stdin": "tape 1995 1335\nBackupA 1989 1556\n", "generated": true },
+    { "stdin": "BackupA 1968 1807\nReel_001 1955 878\n", "generated": true },
+    { "stdin": "Cray1 1960 876\nIBM701 1964 740\n", "generated": true }
   ]
 }
