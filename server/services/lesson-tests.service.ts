@@ -46,10 +46,10 @@ interface JudgeRunner {
    * Time the cases may take together, counted from the runner's header (after
    * boot, parse and pristine compile). Once a case finishes past it, the run
    * stops and the next case is reported as a timeout, so a slow-but-not-hung
-   * submission can't hold the container for cases × 5 s.
+   * submission can't hold the container for cases × 10 s.
    */
   budgetMs: number;
-  /** Worst case for one case: 2×5s programs, plus compiles where applicable. */
+  /** Worst case for one case: 2×10s programs, plus compiles where applicable. */
   caseBudgetMs: number;
   /** Runner boot + parse + pristine compile, before the first case. */
   baseTimeoutMs: number;
@@ -76,7 +76,7 @@ const RUNNERS: Record<string, JudgeRunner> = {
     // ~0.1 s per case under the 0.5 CPU cap (two interpreter starts), so 50
     // cases take ~5 s.
     budgetMs: 30_000,
-    caseBudgetMs: 11_000,
+    caseBudgetMs: 21_000,
     baseTimeoutMs: 15_000,
   },
   java: {
@@ -87,19 +87,19 @@ const RUNNERS: Record<string, JudgeRunner> = {
     // the base covers the one-time runner bootstrap compile on a cold container.
     // ~0.5 s per injected case (javac + 2 JVM starts), so 20 cases take ~10 s.
     budgetMs: 45_000,
-    caseBudgetMs: 16_000,
+    caseBudgetMs: 26_000,
     baseTimeoutMs: 30_000,
   },
   c: {
     runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.c.py'),
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
-    // Per case: up to 2 gcc compiles + 2×5s runs; the source cache makes
+    // Per case: up to 2 gcc compiles + 2×10s runs; the source cache makes
     // identical stdin-only sources compile once. gcc is heavier than a python
     // parse, lighter than javac+JVM. ~80 ms per injected case, a few ms per
     // stdin-only case.
     budgetMs: 30_000,
-    caseBudgetMs: 8_000,
+    caseBudgetMs: 18_000,
     baseTimeoutMs: 20_000,
     prepare: prepareC,
   },

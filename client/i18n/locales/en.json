@@ -837,7 +837,7 @@
     "hidden": "hidden",
     "passed": "Passed",
     "failed": "Failed",
-    "timeout": "Your program took too long (5s limit)",
+    "timeout": "Your program took too long (10 s limit)",
     "runtimeError": "Your program crashed",
     "input": "Input",
     "expected": "Expected output",

@@ -17,7 +17,8 @@ import subprocess
 import sys
 import tokenize
 
-CASE_TIMEOUT = 5
+# Room for a slow but working program on the load test.
+CASE_TIMEOUT = 10
 # A load test's output can run to tens of KB (a sorted list of 10^4 numbers).
 OUTPUT_CAP = 1024 * 1024
 

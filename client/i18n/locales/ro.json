@@ -839,7 +839,7 @@
     "hidden": "ascuns",
     "passed": "Trecut",
     "failed": "Picat",
-    "timeout": "Programul tău a durat prea mult (limită 5s)",
+    "timeout": "Programul tău a durat prea mult (limită 10 s)",
     "runtimeError": "Programul tău a crăpat",
     "input": "Input",
     "expected": "Output așteptat",

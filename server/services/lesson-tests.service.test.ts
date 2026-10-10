@@ -373,7 +373,7 @@ describe('runLessonTests', () => {
       await runLessonTests('user:1', 'python', 'print', 'code');
     }
     // python: 15 s boot + 30 s case budget + 11 s for one case in flight.
-    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([56_000, 56_000]);
+    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([66_000, 66_000]);
   });
 
   it('stops once the case budget runs out and reports the next case as a timeout', async () => {
