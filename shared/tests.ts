@@ -18,7 +18,7 @@ type StructureKind =
   | 'comment'
   | 'string_expr';
 
-type LoopType = 'for' | 'while' | 'do_while';
+type LoopType = 'for' | 'while' | 'do_while' | 'comprehension';
 
 interface StructureRule {
   kind: StructureKind;
@@ -30,7 +30,8 @@ interface StructureRule {
   /**
    * loop: the loop statement the lesson teaches. Without it any loop counts;
    * with it only that statement does (Java's for-each counts as 'for'), so a
-   * for lesson can't be passed with a while.
+   * for lesson can't be passed with a while. 'comprehension' is Python's
+   * [x for x in ...] (any comprehension or generator); C and Java have none.
    */
   type?: LoopType;
   /** int_literal: forbidden constant values */

@@ -76,7 +76,12 @@ def has_recursion(tree):
 
 # A typed rule asks for that statement itself: a comprehension is no for
 # statement, and Python has no do-while.
-LOOP_NODES = {"for": (ast.For, ast.AsyncFor), "while": (ast.While,), "do_while": ()}
+LOOP_NODES = {
+    "for": (ast.For, ast.AsyncFor),
+    "while": (ast.While,),
+    "do_while": (),
+    "comprehension": (ast.comprehension,),
+}
 
 
 def has_loop(tree, loop_type=None):
