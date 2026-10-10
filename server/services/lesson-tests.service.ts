@@ -6,7 +6,6 @@ import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.s
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
-import { getReference, putReference, referenceKey } from './reference-cache.js';
 import type {
   LessonTestsSpec,
   RunTestsResponse,
@@ -65,7 +64,6 @@ interface JudgeRunner {
     userCode: string,
     solutionCode: string,
     spec: LessonTestsSpec,
-    skipSolution: ReadonlySet<number>,
   ) => Promise<PrepareResult>;
 }
 
@@ -75,7 +73,7 @@ const RUNNERS: Record<string, JudgeRunner> = {
     containerFile: '/work/_runner.py',
     runCmd: ['python3', '/work/_runner.py', '/work/_payload.json'],
     // ~0.1 s per case under the 0.5 CPU cap (two interpreter starts), so 50
-    // cases take ~5 s cold and ~3 s with cached references.
+    // cases take ~5 s.
     budgetMs: 30_000,
     caseBudgetMs: 11_000,
     baseTimeoutMs: 15_000,
@@ -174,14 +172,18 @@ interface RunnerProgram {
   stderr: string;
   exit: number;
   timedOut: boolean;
-  /** Wall time of the run (compile excluded), measured by the runner. */
+  /**
+   * How long the program's own code ran, startup and compile excluded,
+   * measured inside the program; absent when it crashed or skipped its exit.
+   */
   ms?: number;
 }
 
-// Timings travel to the client in ms rounded to one decimal; sums are rounded
-// again so float noise never shows up as 12.300000000000001.
+// Timings travel to the client in ms rounded to the microsecond (a small
+// program's code runs in well under a millisecond); sums are rounded again so
+// float noise never shows up as 0.30000000000000004.
 function roundMs(ms: number): number {
-  return Math.round(ms * 10) / 10;
+  return Math.round(ms * 1000) / 1000;
 }
 
 // runtimeMs / referenceMs: sums over the cases timed on BOTH sides, so the two
@@ -230,26 +232,14 @@ function caseBase(spec: LessonTestsSpec, index: number): TestCaseResult {
   return base;
 }
 
-// `cached`: the case's reference stdout from the cache; the runner then ran the
-// student's program only, so the case carries no solutionMs.
-function judgeCase(
-  spec: LessonTestsSpec,
-  index: number,
-  c: RunnerCase,
-  cached: string | undefined,
-): TestCaseResult {
+function judgeCase(spec: LessonTestsSpec, index: number, c: RunnerCase): TestCaseResult {
   const base = caseBase(spec, index);
 
   if (!c.user || c.injectError) failRun();
-  let expected: string;
-  if (cached !== undefined) {
-    expected = cached;
-  } else {
-    // A broken reference solution is our bug, not the student's.
-    if (!c.solution || c.solution.timedOut || c.solution.exit !== 0) failRun();
-    expected = c.solution.stdout;
-    if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
-  }
+  // A broken reference solution is our bug, not the student's.
+  if (!c.solution || c.solution.timedOut || c.solution.exit !== 0) failRun();
+  const expected = c.solution.stdout;
+  if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
   if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
   if (c.user.timedOut) return { ...base, error: 'timeout' };
   if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
@@ -269,31 +259,6 @@ function judgeCase(
     actual: normalize(c.user.stdout),
     ...(base.visible ? { expected: normalize(expected) } : {}),
   };
-}
-
-// Cache keys for the generated cases whose reference output may be cached; a
-// nondeterministic comparator means the output isn't stable, so none there.
-function referenceKeys(
-  spec: LessonTestsSpec,
-  courseKey: string,
-  lessonSlug: string,
-  lang: string | undefined,
-  solutionCode: string,
-): (string | null)[] {
-  const comparator = spec.comparator ?? 'trimmed';
-  const deterministic = comparator === 'trimmed' || comparator === 'exact';
-  return spec.cases.map((testCase) =>
-    deterministic && testCase.generated
-      ? referenceKey({
-          courseKey,
-          lang: lang ?? 'en',
-          slug: lessonSlug,
-          solutionCode,
-          testCase,
-          comparator,
-        })
-      : null,
-  );
 }
 
 function syntaxErrorResponse(spec: LessonTestsSpec, syntaxError: string): RunTestsResponse {
@@ -339,18 +304,9 @@ export async function runLessonTests(
   if (!judge) throw new AppError(404, 'This lesson has no tests');
   const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang);
 
-  // Generated cases whose reference output is cached skip the solution run;
-  // hand-written cases always run it fresh (that's where the timing
-  // comparison with the student's program comes from).
-  const keys = referenceKeys(spec, courseKey, lessonSlug, lang, solutionCode);
-  const cached = keys.map((key) => (key ? getReference(key) : undefined));
-  const skipSolution = new Set(cached.flatMap((out, index) => (out === undefined ? [] : [index])));
-
   // Server-side prep (C): structure + injection happen here; a syntax error in
   // the pristine user code is caught before any container is touched (gate 1).
-  const prepared = judge.prepare
-    ? await judge.prepare(userCode, solutionCode, spec, skipSolution)
-    : null;
+  const prepared = judge.prepare ? await judge.prepare(userCode, solutionCode, spec) : null;
   if (prepared?.syntaxError) return syntaxErrorResponse(spec, prepared.syntaxError);
 
   let containerId: string;
@@ -374,9 +330,7 @@ export async function runLessonTests(
           userCode,
           solutionCode,
           structure: spec.structure ?? {},
-          cases: spec.cases.map((testCase, index) =>
-            skipSolution.has(index) ? { ...testCase, skipSolution: true } : testCase,
-          ),
+          cases: spec.cases,
         });
     await dockerExec(
       ['exec', '-i', containerId, 'sh', '-c', `rm -rf /work/* && cat > ${judge.containerFile}`],
@@ -407,12 +361,7 @@ export async function runLessonTests(
         }
         const index = cases.length;
         if (index >= spec.cases.length) failRun();
-        const runnerCase = message as RunnerCase;
-        const result = judgeCase(spec, index, runnerCase, cached[index]);
-        // judgeCase vouched for the solution's run (exit 0, in time), so its
-        // output is safe to reuse.
-        const key = keys[index];
-        if (key && cached[index] === undefined) putReference(key, runnerCase.solution!.stdout);
+        const result = judgeCase(spec, index, message as RunnerCase);
         cases.push(result);
         if (!result.passed) return 'stop';
         // Out of time with cases left: the next one is the case that timed out.

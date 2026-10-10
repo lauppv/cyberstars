@@ -61,9 +61,7 @@ interface LessonTestCase {
   stdin?: string;
   /**
    * Bulk case produced offline by a generator script and stored concretely
-   * (always hidden). The judge runs hand-written cases first and may reuse a
-   * cached reference output for generated ones, so they carry no reference
-   * timing.
+   * (always hidden), appended after the hand-written cases.
    */
   generated?: boolean;
 }
@@ -98,8 +96,8 @@ export interface TestCaseResult {
   /** Wall time of the student's program on this case, in milliseconds. */
   userMs?: number;
   /**
-   * Wall time of the reference solution on this case, measured in the same
-   * run; absent when its output came from the cache (generated cases).
+   * How long the student's program's own code ran on this case, in ms
+   * (startup and compile excluded); absent when it crashed or skipped its exit.
    */
   solutionMs?: number;
 }
@@ -116,6 +114,8 @@ export interface RunTestsResponse {
   /** Number of cases in the spec, run or not (the Y in "X / Y passed"). */
   total: number;
   /** Cases passed before the run stopped (the X in "X / Y passed"). */
+  userMs?: number;
+  /** The same for the reference solution, measured in the same run. */
   passedCount: number;
   /**
    * Sums of userMs / solutionMs over the cases that carry both, so the two

@@ -72,15 +72,43 @@ describe.skipIf(!has('python3'))('python runner', () => {
         userCode: 'print(input())\n',
         solutionCode: 'print(input())\n',
         structure: {},
-        cases: [{ stdin: 'é\n' }, { stdin: '2\n', skipSolution: true }, { stdin: '3\n' }],
+        cases: [{ stdin: 'é\n' }, { stdin: '2\n' }, { stdin: '3\n' }],
       },
       ['next', 'stop'],
     );
     expect(lines).toHaveLength(3);
     expect(lines[1]).toMatchObject({ user: { stdout: 'é\n' }, solution: { stdout: 'é\n' } });
-    // A cached case runs the student's program only.
-    expect(lines[2]).toEqual({ user: expect.objectContaining({ stdout: '2\n' }) });
-    expect((lines[2] as { user: { ms: number } }).user.ms).toBeGreaterThan(0);
+    expect(lines[2]).toMatchObject({ user: { stdout: '2\n' }, solution: { stdout: '2\n' } });
+  });
+
+  it("times only the program's own code, and nothing when it skips its exit hooks", () => {
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      {
+        userCode: 'import time\ntime.sleep(0.2)\nprint("ok")\n',
+        solutionCode: 'import os\nprint("ok", flush=True)\nos._exit(0)\n',
+        structure: {},
+        cases: [{}],
+      },
+      ['stop'],
+    );
+    const { user, solution } = lines[1] as { user: { ms: number }; solution: { ms?: number } };
+    // The sleep counts; interpreter startup (tens of ms) doesn't.
+    expect(user.ms).toBeGreaterThanOrEqual(200);
+    expect(user.ms).toBeLessThan(400);
+    expect(solution.ms).toBeUndefined();
+  });
+
+  it('keeps tracebacks on the same lines as without the timing preamble', () => {
+    const lines = runRunner(
+      'lesson-tests.runner.py',
+      { userCode: 'x = 1\ny = nope\n', solutionCode: 'print(1)\n', structure: {}, cases: [{}] },
+      ['stop'],
+    );
+    const { user } = lines[1] as { user: { stderr: string; exit: number; ms: number } };
+    expect(user.stderr).toContain('line 5, in <module>');
+    expect(user.exit).toBe(1);
+    expect(user.ms).toBeGreaterThanOrEqual(0);
   });
 });
 
@@ -99,5 +127,24 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
       user: { stdout: 'A�\n', exit: 0 },
       solution: { stdout: 'A\n', exit: 0 },
     });
+  });
+  it("times only the program's own code, and nothing when it crashes", () => {
+    const user =
+      '#include <stdio.h>\n#include <unistd.h>\nint main(void) { usleep(200000); puts("ok"); return 0; }\n';
+    const solution = 'int main(void) { int *p = 0; *p = 1; return 0; }\n';
+    const lines = runRunner(
+      'lesson-tests.runner.c.py',
+      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: solution }] },
+      ['stop'],
+    );
+    const { user: u, solution: s } = lines[1] as {
+      user: { ms: number; stdout: string };
+      solution: { ms?: number; exit: number };
+    };
+    expect(u.stdout).toBe('ok\n');
+    expect(u.ms).toBeGreaterThanOrEqual(200);
+    expect(u.ms).toBeLessThan(400);
+    expect(s.exit).not.toBe(0);
+    expect(s.ms).toBeUndefined();
   });
 });

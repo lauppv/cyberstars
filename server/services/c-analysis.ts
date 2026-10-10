@@ -272,10 +272,8 @@ export function applyInjection(
 
 interface PreparedCase {
   userSrc: string;
-  /** Absent when the case's reference output is already cached (skipSolution). */
-  solutionSrc?: string;
+  solutionSrc: string;
   stdin?: string;
-  skipSolution?: true;
 }
 
 export interface PrepareResult {
@@ -286,13 +284,11 @@ export interface PrepareResult {
 
 // Full server-side preparation for the C judge: syntax gate 1 + structure checks
 // on the pristine user code, then per-case injection into BOTH the user code and
-// the reference solution. The runner receives only pre-injected sources. Cases
-// in `skipSolution` (reference output already cached) carry the user side only.
+// the reference solution. The runner receives only pre-injected sources.
 export async function prepareC(
   userCode: string,
   solutionCode: string,
   spec: LessonTestsSpec,
-  skipSolution: ReadonlySet<number> = new Set(),
 ): Promise<PrepareResult> {
   const userRoot = await parseC(userCode);
   const syntaxError = detectSyntaxError(userRoot);
@@ -302,13 +298,11 @@ export async function prepareC(
   const userSites = collectInjectionSites(userRoot);
   const solutionSites = collectInjectionSites(await parseC(solutionCode));
 
-  const cases: PreparedCase[] = spec.cases.map((testCase, index) => {
+  const cases: PreparedCase[] = spec.cases.map((testCase) => {
     const inject = testCase.inject ?? {};
     return {
       userSrc: applyInjection(userCode, userSites, inject),
-      ...(skipSolution.has(index)
-        ? { skipSolution: true as const }
-        : { solutionSrc: applyInjection(solutionCode, solutionSites, inject) }),
+      solutionSrc: applyInjection(solutionCode, solutionSites, inject),
       ...(testCase.stdin !== undefined ? { stdin: testCase.stdin } : {}),
     };
   });

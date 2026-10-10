@@ -249,17 +249,6 @@ describe('prepareC', () => {
     expect(result.cases[1].stdin).toBe('x\n');
   });
 
-  it('leaves the solution out of cases whose reference output is cached', async () => {
-    const result = await prepareC(PROGRAM, PROGRAM, spec, new Set([1]));
-    expect(result.cases[0].solutionSrc).toContain('int age = 5;');
-    expect(result.cases[0].skipSolution).toBeUndefined();
-    expect(result.cases[1]).toEqual({
-      userSrc: expect.stringContaining('int age = 100;'),
-      skipSolution: true,
-      stdin: 'x\n',
-    });
-  });
-
   it('short-circuits on a syntax error without injecting', async () => {
     const result = await prepareC('int main(void){ int x = ; }', PROGRAM, spec);
     expect(result.syntaxError).toMatch(/line \d+/);
