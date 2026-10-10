@@ -72,13 +72,14 @@ describe.skipIf(!has('python3'))('python runner', () => {
         userCode: 'print(input())\n',
         solutionCode: 'print(input())\n',
         structure: {},
-        cases: [{ stdin: 'é\n' }, { stdin: '2\n' }, { stdin: '3\n' }],
+        cases: [{ stdin: 'é\n' }, { stdin: '2\n', skipSolution: true }, { stdin: '3\n' }],
       },
       ['next', 'stop'],
     );
     expect(lines).toHaveLength(3);
     expect(lines[1]).toMatchObject({ user: { stdout: 'é\n' }, solution: { stdout: 'é\n' } });
-    expect(lines[2]).toMatchObject({ user: { stdout: '2\n' }, solution: { stdout: '2\n' } });
+    // A cached case runs the student's program only.
+    expect(lines[2]).toEqual({ user: expect.objectContaining({ stdout: '2\n' }) });
   });
 
   it("times the CPU the program's own code used, and nothing when it skips its exit hooks", () => {
