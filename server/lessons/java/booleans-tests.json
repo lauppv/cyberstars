@@ -4,7 +4,9 @@
       { "kind": "variable", "name": "employee" },
       { "kind": "variable", "name": "workingDay" },
       { "kind": "variable", "name": "guest" },
-      { "kind": "variable", "name": "invitation" }
+      { "kind": "variable", "name": "invitation" },
+      { "kind": "operator", "name": "&&" },
+      { "kind": "operator", "name": "||" }
     ]
   },
   "cases": [

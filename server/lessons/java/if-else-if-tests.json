@@ -1,5 +1,5 @@
 {
-  "structure": { "requires": [{ "kind": "variable", "name": "seconds" }] },
+  "structure": { "requires": [{ "kind": "variable", "name": "seconds" }, { "kind": "if" }] },
   "cases": [
     { "visible": true, "inject": { "seconds": 100 } },
     { "visible": true, "inject": { "seconds": 60 } },

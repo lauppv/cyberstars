@@ -7,7 +7,9 @@
       { "kind": "variable", "name": "sale2" },
       { "kind": "variable", "name": "name2" },
       { "kind": "variable", "name": "sale3" },
-      { "kind": "variable", "name": "sale4" }
+      { "kind": "variable", "name": "sale4" },
+      { "kind": "class" },
+      { "kind": "object" }
     ]
   },
   "cases": [

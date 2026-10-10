@@ -4,7 +4,9 @@
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "age1" },
       { "kind": "variable", "name": "name2" },
-      { "kind": "variable", "name": "age2" }
+      { "kind": "variable", "name": "age2" },
+      { "kind": "class" },
+      { "kind": "object" }
     ]
   },
   "cases": [

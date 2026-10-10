@@ -4,7 +4,9 @@
       { "kind": "variable", "name": "angajat" },
       { "kind": "variable", "name": "ziLucratoare" },
       { "kind": "variable", "name": "oaspete" },
-      { "kind": "variable", "name": "invitatie" }
+      { "kind": "variable", "name": "invitatie" },
+      { "kind": "operator", "name": "&&" },
+      { "kind": "operator", "name": "||" }
     ]
   },
   "cases": [

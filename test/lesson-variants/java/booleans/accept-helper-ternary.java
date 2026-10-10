@@ -1,6 +1,6 @@
 public class Main {
     static boolean mayEnter(boolean e, boolean w, boolean g, boolean i) {
-        return !(!(e && w) && !(g && i));
+        return (e && w) || (g && i);
     }
 
     public static void main(String[] args) {

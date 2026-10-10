@@ -4,7 +4,9 @@
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "varsta1" },
       { "kind": "variable", "name": "nume2" },
-      { "kind": "variable", "name": "varsta2" }
+      { "kind": "variable", "name": "varsta2" },
+      { "kind": "class" },
+      { "kind": "object" }
     ]
   },
   "cases": [

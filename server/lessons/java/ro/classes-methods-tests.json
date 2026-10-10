@@ -7,7 +7,9 @@
       { "kind": "variable", "name": "vanzare2" },
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "vanzare3" },
-      { "kind": "variable", "name": "vanzare4" }
+      { "kind": "variable", "name": "vanzare4" },
+      { "kind": "class" },
+      { "kind": "object" }
     ]
   },
   "cases": [
