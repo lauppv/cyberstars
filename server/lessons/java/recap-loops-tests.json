@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "break" },
+      { "kind": "continue" },
       { "kind": "variable", "name": "totalShops" },
       { "kind": "variable", "name": "closedShop" },
       { "kind": "variable", "name": "policeShop" },

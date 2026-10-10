@@ -1,6 +1,7 @@
 {
   "structure": {
     "requires": [
+      { "kind": "break" },
       { "kind": "variable", "name": "secretCombination" },
       { "kind": "loop", "type": "while" }
     ]

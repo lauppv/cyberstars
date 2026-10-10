@@ -1,5 +1,5 @@
 {
-  "structure": { "requires": [{ "kind": "variable", "name": "day" }] },
+  "structure": { "requires": [{ "kind": "switch" }, { "kind": "variable", "name": "day" }] },
   "cases": [
     { "visible": true, "inject": { "day": "Monday" } },
     { "inject": { "day": "Friday" } },

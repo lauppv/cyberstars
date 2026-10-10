@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "break" },
+      { "kind": "continue" },
       { "kind": "variable", "name": "semnale" },
       { "kind": "function" },
       { "kind": "loop" },

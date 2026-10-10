@@ -1,6 +1,7 @@
 {
   "structure": {
     "requires": [
+      { "kind": "operator", "name": "%" },
       { "kind": "variable", "name": "a" },
       { "kind": "variable", "name": "b" }
     ]

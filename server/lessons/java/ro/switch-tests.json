@@ -1,5 +1,5 @@
 {
-  "structure": { "requires": [{ "kind": "variable", "name": "zi" }] },
+  "structure": { "requires": [{ "kind": "switch" }, { "kind": "variable", "name": "zi" }] },
   "cases": [
     { "visible": true, "inject": { "zi": "Luni" } },
     { "inject": { "zi": "Vineri" } },

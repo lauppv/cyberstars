@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "break" },
+      { "kind": "continue" },
       { "kind": "variable", "name": "totalMagazine" },
       { "kind": "variable", "name": "magazinInchis" },
       { "kind": "variable", "name": "magazinPolitie" },
