@@ -55,8 +55,15 @@ def function_defs(tree):
     return [n for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]
 
 
+# Without a name, a function of the student's own: main and constructors don't
+# count, as in the C and Java runners.
+NOT_OWN_FUNCTIONS = {"main", "__init__"}
+
+
 def has_function(tree, name=None):
-    return any(name is None or node.name == name for node in function_defs(tree))
+    if name is None:
+        return any(node.name not in NOT_OWN_FUNCTIONS for node in function_defs(tree))
+    return any(node.name == name for node in function_defs(tree))
 
 
 def called_function(call):

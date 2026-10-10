@@ -110,6 +110,15 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(
       header('class T:\n    def walk(self, n):\n        return n and self.walk(n - 1)\n'),
     ).toEqual({ syntaxError: null, structureFailures: [] });
+    // main and constructors aren't a function of the student's own.
+    expect(
+      header('class A:\n    def __init__(self):\n        self.a = 1\n\ndef main():\n    A()\n'),
+    ).toMatchObject({
+      structureFailures: [
+        { type: 'require', rule: { kind: 'function' } },
+        { type: 'require', rule: { kind: 'recursion' } },
+      ],
+    });
   });
 
   it("injects the input variable, not a helper's parameter of the same name", () => {
