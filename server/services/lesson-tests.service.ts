@@ -6,6 +6,7 @@ import { acquireForRun, releaseAfterRun, destroyOwner } from './code-container.s
 import { getRuntime } from '../runtimes/registry.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
+import { acquireJudgeSlot } from './judge-queue.js';
 import type {
   LessonTestsSpec,
   RunTestsResponse,
@@ -315,6 +316,23 @@ export async function runLessonTests(
   const prepared = judge.prepare ? await judge.prepare(userCode, solutionCode, spec) : null;
   if (prepared?.syntaxError) return syntaxErrorResponse(spec, prepared.syntaxError);
 
+  const releaseSlot = await acquireJudgeSlot();
+  try {
+    return await runInContainer(ownerKey, courseKey, judge, spec, userCode, solutionCode, prepared);
+  } finally {
+    releaseSlot();
+  }
+}
+
+async function runInContainer(
+  ownerKey: string,
+  courseKey: string,
+  judge: JudgeRunner,
+  spec: LessonTestsSpec,
+  userCode: string,
+  solutionCode: string,
+  prepared: PrepareResult | null,
+): Promise<RunTestsResponse> {
   let containerId: string;
   try {
     containerId = await acquireForRun(ownerKey, courseKey);
