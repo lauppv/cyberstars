@@ -123,6 +123,14 @@ solution) beside the lesson. Passing the judge (the "Run Tests" button) is the o
 to complete a lesson. The server verifies it, so there is no manual "Mark Complete"
 button. Lessons without test files still work; they just aren't completable yet.
 
+Algorithm challenges (`server/algorithms/{python,java,c}/`) state their input limits in
+the statement's Input list, in English and Romanian, written as `<=` with powers
+(`1 <= N <= 200`, `-10^9 <= x <= 10^9`). Their tests mix a few hand-written cases with
+hidden `"generated": true` ones, and every case has to stay within the stated limits.
+Before opening a PR, run `npm run validate:tests` and
+`npm run check:tests algo-<lang>/<slug>`, which grades the reference solution through
+the real Docker judge and must pass every case.
+
 Important rules:
 
 - C code blocks must be full programs (`#include`, `int main(void)`, `return 0`)
