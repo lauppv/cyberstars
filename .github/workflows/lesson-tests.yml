@@ -1,0 +1,58 @@
+name: Lesson tests
+
+# Grades lessons again through the real judge (check-tests: each reference
+# solution and the lesson's accept/reject variants), but only the ones a PR can
+# have changed: scripts/changed-lessons.ts plans that from the PR's files. A PR
+# that touches no lesson, runner or judge file skips the job. A manual run
+# grades every lesson in EN and RO.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lesson-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+    steps:
+      # A PR checks out its merge commit: HEAD^1 is the base branch, so
+      # HEAD^1..HEAD is exactly what the PR changes.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: ./.github/actions/setup-node-and-deps
+      - id: plan
+        run: |
+          if [ "${{ github.event_name }}" = workflow_dispatch ]; then
+            matrix=$(npx tsx scripts/changed-lessons.ts --all)
+          else
+            matrix=$(git diff --name-only HEAD^1 HEAD | npx tsx scripts/changed-lessons.ts)
+          fi
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  check:
+    needs: plan
+    if: needs.plan.outputs.matrix != '{"include":[]}'
+    name: check (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-and-deps
+      - run: docker pull "$IMAGE"
+        env:
+          IMAGE: ${{ matrix.image }}
+      # Unquoted on purpose: one argument per target.
+      - run: npm run check:tests -- $TARGETS
+        env:
+          TARGETS: ${{ matrix.targets }}
