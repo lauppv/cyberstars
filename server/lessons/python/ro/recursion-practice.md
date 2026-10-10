@@ -91,7 +91,7 @@ Pentru fiecare element: dacă e o listă, aplatizeaz-o recursiv și adaugă rezu
 Fiecare transmisiune poartă un cod numeric, iar stația îl verifică cu o **sumă de control** (checksum): suma cifrelor codului. Vei calcula aceste sume de control cu **recursivitate**.
 
 1. Scrie o funcție recursivă **suma_cifre(n)** care returnează suma cifrelor unui număr întreg pozitiv. Trucul: `n % 10` este **ultima cifră**, `n // 10` este **restul numărului**. Cazul de bază: dacă `n < 10` (o singură cifră), returnează `n` însuși.
-2. Pentru fiecare cod din listă, afișează codul, apoi `: `, apoi suma lui de control.
+2. Pentru fiecare cod din lista numită `coduri`, afișează codul, apoi `: `, apoi suma lui de control.
 3. Reține și afișează **cea mai mare** sumă de control sub forma `Cea mai mare suma de control: ` urmat de valoare.
 
 **Ieșire**

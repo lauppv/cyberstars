@@ -2,22 +2,128 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "coduri" },
       { "kind": "function", "name": "suma_cifre" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "recursion" },
+      { "kind": "loop" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "coduri": { "$list": [1234, 999, 5, 4070, 88] } }
-    },
-    {
-      "visible": true,
-      "inject": { "coduri": { "$list": [0, 9, 10] } }
-    },
+    { "visible": true, "inject": { "coduri": { "$list": [1234, 999, 5, 4070, 88] } } },
+    { "visible": true, "inject": { "coduri": { "$list": [0, 9, 10] } } },
     { "inject": { "coduri": { "$list": [5] } } },
     { "inject": { "coduri": { "$list": [100, 200, 999] } } },
-    { "inject": { "coduri": { "$list": [1000000, 7, 4321] } } }
+    { "inject": { "coduri": { "$list": [1000000, 7, 4321] } } },
+    { "inject": { "coduri": { "$list": [1] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [9] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [10] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [99999] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [11, 11, 11] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [19, 91, 28] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [9, 8, 7, 6, 5, 4, 3, 2, 1] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [100, 10, 1] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [123456789] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [5, 50, 500, 5000] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [987654321, 1] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [55, 46, 37] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [909, 90, 9] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [8, 5, 1, 1, 3, 8, 6, 6, 1, 5] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [94, 53, 69, 70, 88, 13, 25, 73] } }, "generated": true },
+    {
+      "inject": { "coduri": { "$list": [679, 823, 625, 703, 91, 865, 435, 344, 96] } },
+      "generated": true
+    },
+    {
+      "inject": { "coduri": { "$list": [32832, 58355, 91701, 12292, 99034, 25843] } },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [1, 4, 6, 8, 4] } }, "generated": true },
+    {
+      "inject": {
+        "coduri": {
+          "$list": [
+            692103707, 749375534, 958216194, 864904322, 540833665, 983862843, 30517871, 680192310,
+            388024981
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "coduri": { "$list": [461374625, 326765844, 383733444, 632602233] } },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [9, 9] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [5, 5, 4, 7] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [18, 77, 27, 90, 67, 2, 25, 22] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [572] } }, "generated": true },
+    {
+      "inject": {
+        "coduri": {
+          "$list": [
+            328698705, 402258216, 405235316, 566263340, 417863362, 310471586, 136187747, 728780304,
+            524799704, 57791085
+          ]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [77848, 97821, 52136] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [32154, 11673] } }, "generated": true },
+    {
+      "inject": {
+        "coduri": {
+          "$list": [58615, 49810, 10024, 67724, 55892, 61726, 39776, 92494, 53617, 11264]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [463, 500, 740, 803] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [1, 9, 2] } }, "generated": true },
+    {
+      "inject": { "coduri": { "$list": [860902650, 387673546, 201390019, 275213140, 539809249] } },
+      "generated": true
+    },
+    {
+      "inject": { "coduri": { "$list": [950, 530, 261, 421, 950, 901, 432, 627] } },
+      "generated": true
+    },
+    {
+      "inject": { "coduri": { "$list": [617, 487, 673, 491, 504, 146, 739, 387] } },
+      "generated": true
+    },
+    {
+      "inject": { "coduri": { "$list": [650, 825, 479, 332, 376, 676, 167, 995] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "coduri": {
+          "$list": [91024, 79041, 34840, 41958, 84686, 52204, 63963, 95592, 20734, 38115]
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [8, 1, 3, 1, 2, 6, 6, 8, 1] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [35, 79, 2, 55] } }, "generated": true },
+    {
+      "inject": {
+        "coduri": { "$list": [9938, 61460, 30418, 13128, 48617, 47445, 19001, 89249, 81998] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "coduri": { "$list": [341799564, 154915485, 40458945, 674317819] } },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [1, 8] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [1, 9, 3, 2, 3, 5, 8, 8] } }, "generated": true },
+    { "inject": { "coduri": { "$list": [25] } }, "generated": true },
+    {
+      "inject": { "coduri": { "$list": [57604, 58600, 73216, 36230, 62578, 93387, 75933, 8346] } },
+      "generated": true
+    },
+    { "inject": { "coduri": { "$list": [293, 369, 963, 35, 86] } }, "generated": true }
   ]
 }

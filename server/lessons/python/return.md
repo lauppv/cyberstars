@@ -167,7 +167,7 @@ None
 
 ## Mission: Atlas of Galaxies
 
-In the editor you already have **five galaxies**, each a **list** of ten star names.
+In the editor you already have **five galaxies**, the variables `galaxy1` to `galaxy5`, each a **list** of ten star names.
 
 Write **one** function called `longest_star` that takes a galaxy (the list) and **returns** the name of the star with the most letters in that galaxy.
 

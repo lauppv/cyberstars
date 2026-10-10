@@ -2,9 +2,10 @@
   "comparator": "trimmed",
   "structure": {
     "requires": [
+      { "kind": "variable", "name": "baza" },
       { "kind": "function", "name": "putere" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "print" }
+      { "kind": "recursion" },
+      { "kind": "loop", "type": "for" }
     ]
   },
   "cases": [
@@ -12,6 +13,24 @@
     { "visible": true, "inject": { "baza": 3 } },
     { "inject": { "baza": 1 } },
     { "inject": { "baza": 5 } },
-    { "inject": { "baza": 10 } }
+    { "inject": { "baza": 10 } },
+    { "inject": { "baza": 0 }, "generated": true },
+    { "inject": { "baza": 4 }, "generated": true },
+    { "inject": { "baza": 6 }, "generated": true },
+    { "inject": { "baza": 7 }, "generated": true },
+    { "inject": { "baza": 8 }, "generated": true },
+    { "inject": { "baza": 9 }, "generated": true },
+    { "inject": { "baza": 11 }, "generated": true },
+    { "inject": { "baza": 12 }, "generated": true },
+    { "inject": { "baza": 13 }, "generated": true },
+    { "inject": { "baza": 16 }, "generated": true },
+    { "inject": { "baza": 20 }, "generated": true },
+    { "inject": { "baza": 25 }, "generated": true },
+    { "inject": { "baza": 32 }, "generated": true },
+    { "inject": { "baza": 50 }, "generated": true },
+    { "inject": { "baza": 99 }, "generated": true },
+    { "inject": { "baza": 100 }, "generated": true },
+    { "inject": { "baza": 128 }, "generated": true },
+    { "inject": { "baza": 1000 }, "generated": true }
   ]
 }
