@@ -319,13 +319,17 @@ def to_ast_value(v):
 
 def scoped_assigns(node, params=frozenset(), top_level=True):
     # Yields (single-name Assign, parameters of its enclosing functions, whether
-    # it sits outside every function).
+    # it sits outside every function and class).
     for child in ast.iter_child_nodes(node):
         if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
             a = child.args
             names = {arg.arg for arg in a.posonlyargs + a.args + a.kwonlyargs}
             names |= {arg.arg for arg in (a.vararg, a.kwarg) if arg}
             yield from scoped_assigns(child, params | names, False)
+            continue
+        if isinstance(child, ast.ClassDef):
+            # A class attribute named like the input isn't the input.
+            yield from scoped_assigns(child, params, False)
             continue
         if (
             isinstance(child, ast.Assign)
@@ -350,7 +354,8 @@ def inject_values(code, values):
     # to match, or an honestly-scoped solution would diverge from the oracle.
     # Two exceptions keep a helper's locals out of it: an assignment to one of
     # its enclosing functions' parameters is never the input, and once the
-    # variable is assigned outside every function, only those assignments count.
+    # variable is assigned outside every function and class, only those
+    # assignments count.
     if not values:
         return code
     tree = ast.parse(code)
