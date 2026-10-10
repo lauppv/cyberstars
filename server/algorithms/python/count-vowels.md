@@ -2,7 +2,7 @@ Given a string, count how many **vowels** it contains.
 
 ### Input
 
-A single line containing a string `s` of 1 to 1000 ASCII characters (letters, digits, spaces and punctuation).
+A single line containing a string `s` of 1 to 10^5 ASCII characters (letters, digits, spaces and punctuation).
 
 ### Output
 

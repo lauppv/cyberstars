@@ -5,7 +5,7 @@ Două șiruri sunt **anagrame** dacă conțin exact aceleași caractere, doar î
 - Linia 1: un șir `a`.
 - Linia 2: un șir `b`.
 
-Ambele șiruri conțin doar litere din alfabetul englez (`a`-`z`, `A`-`Z`, fără spații sau semne de punctuație) și au între 1 și 1000 de caractere.
+Ambele șiruri conțin doar litere din alfabetul englez (`a`-`z`, `A`-`Z`, fără spații sau semne de punctuație) și au între 1 și 5·10^4 caractere.
 
 ### Rezultat
 

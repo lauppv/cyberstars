@@ -2,7 +2,7 @@ Având o listă de numere, găsește și afișează **cel mai mare** dintre ele.
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n`, câte numere sunt (1 <= n <= 200).
+- Linia 1: un număr întreg `n`, câte numere sunt (1 <= n <= 2·10^4).
 - Linia 2: `n` numere întregi separate prin spații, fiecare între -10^9 și 10^9.
 
 ### Rezultat
