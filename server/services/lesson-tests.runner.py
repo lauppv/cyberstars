@@ -59,15 +59,26 @@ def has_function(tree, name=None):
     return any(name is None or node.name == name for node in function_defs(tree))
 
 
+def called_function(call):
+    # The name of the student's own function a call reaches: f(...), or a
+    # method through self./cls. (s.count(...) is the str method, not a
+    # function named count).
+    func = call.func
+    if isinstance(func, ast.Name):
+        return func.id
+    if (
+        isinstance(func, ast.Attribute)
+        and isinstance(func.value, ast.Name)
+        and func.value.id in ("self", "cls")
+    ):
+        return func.attr
+    return None
+
+
 def calls_itself(fn):
-    for node in ast.walk(fn):
-        if isinstance(node, ast.Call):
-            func = node.func
-            if isinstance(func, ast.Name) and func.id == fn.name:
-                return True
-            if isinstance(func, ast.Attribute) and func.attr == fn.name:
-                return True
-    return False
+    return any(
+        isinstance(node, ast.Call) and called_function(node) == fn.name for node in ast.walk(fn)
+    )
 
 
 def has_recursion(tree):

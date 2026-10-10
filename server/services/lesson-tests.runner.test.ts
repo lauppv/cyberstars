@@ -102,6 +102,13 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(header('def g(n):\n    return n\n')).toMatchObject({
       structureFailures: [{ type: 'require', rule: { kind: 'recursion' } }],
     });
+    // s.count(...) is the str method, not count calling itself.
+    expect(header('def count(s, ch):\n    return s.count(ch)\n')).toMatchObject({
+      structureFailures: [{ type: 'require', rule: { kind: 'recursion' } }],
+    });
+    expect(
+      header('class T:\n    def walk(self, n):\n        return n and self.walk(n - 1)\n'),
+    ).toEqual({ syntaxError: null, structureFailures: [] });
   });
 
   it("injects the input variable, not a helper's parameter of the same name", () => {
