@@ -8,7 +8,9 @@
       { "kind": "variable", "name": "title1" },
       { "kind": "variable", "name": "author1" },
       { "kind": "variable", "name": "title2" },
-      { "kind": "variable", "name": "director2" }
+      { "kind": "variable", "name": "director2" },
+      { "kind": "interface" },
+      { "kind": "implements" }
     ]
   },
   "cases": [

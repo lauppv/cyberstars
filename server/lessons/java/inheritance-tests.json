@@ -6,7 +6,9 @@
       { "kind": "function", "name": "speak" },
       { "kind": "call", "name": "speak" },
       { "kind": "variable", "name": "name1" },
-      { "kind": "variable", "name": "name2" }
+      { "kind": "variable", "name": "name2" },
+      { "kind": "extends" },
+      { "kind": "override" }
     ]
   },
   "cases": [

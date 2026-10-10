@@ -8,7 +8,9 @@
       { "kind": "variable", "name": "titlu1" },
       { "kind": "variable", "name": "autor1" },
       { "kind": "variable", "name": "titlu2" },
-      { "kind": "variable", "name": "regizor2" }
+      { "kind": "variable", "name": "regizor2" },
+      { "kind": "interface" },
+      { "kind": "implements" }
     ]
   },
   "cases": [

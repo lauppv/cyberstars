@@ -7,7 +7,9 @@
       { "kind": "call", "name": "earnings" },
       { "kind": "variable", "name": "customers" },
       { "kind": "variable", "name": "cars" },
-      { "kind": "variable", "name": "price" }
+      { "kind": "variable", "name": "price" },
+      { "kind": "extends" },
+      { "kind": "override" }
     ]
   },
   "cases": [

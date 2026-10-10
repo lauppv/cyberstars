@@ -6,7 +6,9 @@
       { "kind": "function", "name": "vorbeste" },
       { "kind": "call", "name": "vorbeste" },
       { "kind": "variable", "name": "nume1" },
-      { "kind": "variable", "name": "nume2" }
+      { "kind": "variable", "name": "nume2" },
+      { "kind": "extends" },
+      { "kind": "override" }
     ]
   },
   "cases": [

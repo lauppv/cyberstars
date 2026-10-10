@@ -7,7 +7,9 @@
       { "kind": "call", "name": "incasari" },
       { "kind": "variable", "name": "clienti" },
       { "kind": "variable", "name": "masini" },
-      { "kind": "variable", "name": "pret" }
+      { "kind": "variable", "name": "pret" },
+      { "kind": "extends" },
+      { "kind": "override" }
     ]
   },
   "cases": [
