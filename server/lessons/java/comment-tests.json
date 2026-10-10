@@ -5,7 +5,6 @@
       { "kind": "variable", "name": "missionName" },
       { "kind": "variable", "name": "secretCargo" },
       { "kind": "variable", "name": "maxPower" },
-      { "kind": "call", "name": "println" },
       { "kind": "comment", "contains": "println(secretCargo)" }
     ]
   },
@@ -42,6 +41,55 @@
         "secretCargo": "Blue-Box-3",
         "maxPower": 12000
       }
+    },
+    {
+      "inject": { "shipName": "X", "missionName": "Y", "secretCargo": "Z", "maxPower": 1 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "shipName": "Voyager",
+        "missionName": "Voyager",
+        "secretCargo": "Voyager",
+        "maxPower": 9001
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "shipName": "Endurance",
+        "missionName": "Deep Space Exploration",
+        "secretCargo": "TopSecret-Alpha-7",
+        "maxPower": 9002
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "shipName": "Millennium Hawk",
+        "missionName": "Kessel Sprint",
+        "secretCargo": "Spice Crates x 12",
+        "maxPower": 75
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "shipName": "Ark",
+        "missionName": "Seed Vault Transfer",
+        "secretCargo": "Seeds",
+        "maxPower": 100000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "shipName": "Odyssey",
+        "missionName": "First Contact",
+        "secretCargo": "Alien Artifact #4",
+        "maxPower": 3
+      },
+      "generated": true
     }
   ]
 }

@@ -5,7 +5,6 @@
       { "kind": "variable", "name": "numeMisiune" },
       { "kind": "variable", "name": "incarcaturaSecreta" },
       { "kind": "variable", "name": "putereMax" },
-      { "kind": "call", "name": "println" },
       { "kind": "comment", "contains": "println(incarcaturaSecreta)" }
     ]
   },
@@ -42,6 +41,55 @@
         "incarcaturaSecreta": "Blue-Box-3",
         "putereMax": 12000
       }
+    },
+    {
+      "inject": { "numeNava": "X", "numeMisiune": "Y", "incarcaturaSecreta": "Z", "putereMax": 1 },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeNava": "Voyager",
+        "numeMisiune": "Voyager",
+        "incarcaturaSecreta": "Voyager",
+        "putereMax": 9001
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeNava": "Endurance",
+        "numeMisiune": "Deep Space Exploration",
+        "incarcaturaSecreta": "TopSecret-Alpha-7",
+        "putereMax": 9002
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeNava": "Millennium Hawk",
+        "numeMisiune": "Kessel Sprint",
+        "incarcaturaSecreta": "Spice Crates x 12",
+        "putereMax": 75
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeNava": "Ark",
+        "numeMisiune": "Seed Vault Transfer",
+        "incarcaturaSecreta": "Seeds",
+        "putereMax": 100000
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeNava": "Odyssey",
+        "numeMisiune": "First Contact",
+        "incarcaturaSecreta": "Alien Artifact #4",
+        "putereMax": 3
+      },
+      "generated": true
     }
   ]
 }
