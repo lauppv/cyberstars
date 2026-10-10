@@ -2,8 +2,9 @@ Read an integer **N**, then read **N** integers. Print their **sum**.
 
 ### Input
 
-- First line: an integer `N` (1 <= N <= 100)
+- First line: an integer `N` (1 <= N <= 2·10^4)
 - The next `N` lines: one integer per line (-10^7 <= x <= 10^7)
+- The sum, and every partial sum along the way, fits in an `int` (-2·10^9 <= sum <= 2·10^9)
 
 ### Output
 

@@ -7,7 +7,7 @@ Use `malloc` to allocate each node. Each node has an `int data` field and a `str
 
 ### Input
 
-- First line: an integer `N` (1 <= N <= 200), the number of commands
+- First line: an integer `N` (1 <= N <= 2·10^4), the number of commands
 - For each command:
   - Line 1: command type (`insert` or `print`)
   - Only for `insert`, line 2: the integer `x` (-10^9 <= x <= 10^9)
