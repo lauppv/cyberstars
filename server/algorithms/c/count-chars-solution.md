@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 int main(void) {
-    char word[1001];
+    char word[100001];
     char target;
 
-    // %1000s limits the read to 1000 characters so we don't overrun the buffer.
-    scanf("%1000s", word);
+    // %100000s limits the read to 100000 characters so we don't overrun the buffer.
+    scanf("%100000s", word);
     // The space in " %c" tells scanf to skip any whitespace (including \n).
     scanf(" %c", &target);
 

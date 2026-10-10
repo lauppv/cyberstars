@@ -3,7 +3,7 @@
 #include <string.h>
 
 int main(void) {
-    char text[201];
+    char text[100001];
     int shift;
 
     if (fgets(text, sizeof(text), stdin) == NULL) {

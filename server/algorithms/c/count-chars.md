@@ -2,7 +2,7 @@ Read a string (single word) and a character. Count how many times that character
 
 ### Input
 
-- First line: a single word of 1 to 1000 characters, with no spaces (letters, digits and punctuation: any printable ASCII character)
+- First line: a single word of 1 to 10^5 characters, with no spaces (letters, digits and punctuation: any printable ASCII character)
 - Second line: a single character, any printable ASCII character except a space
 
 ### Output

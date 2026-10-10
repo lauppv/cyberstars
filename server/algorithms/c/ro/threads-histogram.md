@@ -4,7 +4,7 @@ Firul t1 procesează prima jumătate a șirului, t2 procesează a doua. Firul pr
 
 ### Date de intrare
 
-- Linia 1: un șir de cel mult 200 de caractere, format doar din litere lowercase (fără spații).
+- Linia 1: un șir de cel mult 10^5 de caractere, format doar din litere lowercase (fără spații).
 
 ### Rezultat
 

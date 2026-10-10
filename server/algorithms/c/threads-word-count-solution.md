@@ -30,7 +30,7 @@ void *count_words(void *arg) {
 }
 
 int main(void) {
-    char s1[256], s2[256];
+    char s1[65536], s2[65536];
     fgets(s1, sizeof(s1), stdin);
     fgets(s2, sizeof(s2), stdin);
 

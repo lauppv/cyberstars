@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 int main(void) {
-    char word[1001];
-    scanf("%1000s", word);
+    char word[100001];
+    scanf("%100000s", word);
 
     // In C, a string ends with the '\0' character. We count how many characters
     // are there until we hit it.

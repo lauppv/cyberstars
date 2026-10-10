@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 int main(void) {
-    char cuvant[1001];
-    scanf("%1000s", cuvant);
+    char cuvant[100001];
+    scanf("%100000s", cuvant);
 
     // In C, un sir se termina cu caracterul '\0'. Numaram cate caractere sunt
     // pana ajungem la el.

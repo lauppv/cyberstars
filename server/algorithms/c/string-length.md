@@ -2,7 +2,7 @@ Read a string (single word, no spaces) and compute its length **without** using 
 
 ### Input
 
-A single word (max 1000 characters, no spaces).
+A single word (max 10^5 characters, no spaces).
 
 ### Output
 
