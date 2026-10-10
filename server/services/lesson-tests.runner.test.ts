@@ -382,4 +382,18 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
       });
     }
   });
+
+  it('counts static or private only outside the class holding main', () => {
+    const rules = [
+      { kind: 'modifier', name: 'static' },
+      { kind: 'modifier', name: 'private' },
+    ];
+    expect(header('class Counter {\n    private static int total;\n}\n' + main(''), rules)).toEqual(
+      { syntaxError: null, structureFailures: [] },
+    );
+    expect(header(main('    private static final int START = 0;'), rules)).toEqual({
+      syntaxError: null,
+      structureFailures: rules.map((rule) => ({ type: 'require', rule })),
+    });
+  });
 });
