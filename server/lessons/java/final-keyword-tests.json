@@ -2,7 +2,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "MAX_RESPECT" },
-      { "kind": "variable", "name": "CITY" }
+      { "kind": "variable", "name": "CITY" },
+      { "kind": "modifier", "name": "final" }
     ]
   },
   "cases": [

@@ -2,7 +2,8 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "RESPECT_MAXIM" },
-      { "kind": "variable", "name": "ORAS" }
+      { "kind": "variable", "name": "ORAS" },
+      { "kind": "modifier", "name": "final" }
     ]
   },
   "cases": [

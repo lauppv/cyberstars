@@ -8,7 +8,8 @@
       { "kind": "variable", "name": "start" },
       { "kind": "variable", "name": "venit" },
       { "kind": "variable", "name": "cheltuiala1" },
-      { "kind": "variable", "name": "cheltuiala2" }
+      { "kind": "variable", "name": "cheltuiala2" },
+      { "kind": "modifier", "name": "private" }
     ]
   },
   "cases": [

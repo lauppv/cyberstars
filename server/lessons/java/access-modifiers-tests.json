@@ -8,7 +8,8 @@
       { "kind": "variable", "name": "start" },
       { "kind": "variable", "name": "income" },
       { "kind": "variable", "name": "spend1" },
-      { "kind": "variable", "name": "spend2" }
+      { "kind": "variable", "name": "spend2" },
+      { "kind": "modifier", "name": "private" }
     ]
   },
   "cases": [

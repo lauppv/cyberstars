@@ -8,7 +8,8 @@
       { "kind": "variable", "name": "start" },
       { "kind": "variable", "name": "depunere" },
       { "kind": "variable", "name": "retragere1" },
-      { "kind": "variable", "name": "retragere2" }
+      { "kind": "variable", "name": "retragere2" },
+      { "kind": "modifier", "name": "private" }
     ]
   },
   "cases": [

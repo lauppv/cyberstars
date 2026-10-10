@@ -5,7 +5,9 @@
       { "kind": "call", "name": "Motorcycle" },
       { "kind": "function", "name": "topSpeed" },
       { "kind": "variable", "name": "name1" },
-      { "kind": "variable", "name": "name2" }
+      { "kind": "variable", "name": "name2" },
+      { "kind": "modifier", "name": "abstract" },
+      { "kind": "extends" }
     ]
   },
   "cases": [

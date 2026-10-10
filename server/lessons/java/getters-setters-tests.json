@@ -8,7 +8,8 @@
       { "kind": "variable", "name": "start" },
       { "kind": "variable", "name": "deposit" },
       { "kind": "variable", "name": "withdraw1" },
-      { "kind": "variable", "name": "withdraw2" }
+      { "kind": "variable", "name": "withdraw2" },
+      { "kind": "modifier", "name": "private" }
     ]
   },
   "cases": [
