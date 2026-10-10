@@ -122,4 +122,22 @@ describe('auditCases', () => {
     };
     expect(auditCases('c', spec)).toEqual([expect.stringMatching(/not deterministic/)]);
   });
+  it('accepts one hidden load test at the end', () => {
+    const spec: LessonTestsSpec = {
+      cases: [stdinCase({ visible: true }), stdinCase({ load: true })],
+    };
+    expect(auditCases('python', spec)).toEqual([]);
+  });
+
+  it('flags a second, misplaced or visible load test', () => {
+    expect(
+      auditCases('python', { cases: [stdinCase({ load: true }), stdinCase({ load: true })] }),
+    ).toEqual([expect.stringMatching(/2 load tests/)]);
+    expect(auditCases('python', { cases: [stdinCase({ load: true }), stdinCase()] })).toEqual([
+      expect.stringMatching(/not the last case/),
+    ]);
+    expect(auditCases('python', { cases: [stdinCase({ load: true, visible: true })] })).toEqual([
+      expect.stringMatching(/marked visible/),
+    ]);
+  });
 });
