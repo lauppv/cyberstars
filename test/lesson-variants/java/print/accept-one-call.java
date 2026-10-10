@@ -1,0 +1,5 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Cyberstars Station\nAntenna: active\nSignal: stable\nHello from orbit, cadet!");
+    }
+}

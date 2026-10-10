@@ -1,11 +1,5 @@
 {
-  "structure": {
-    "requires": [
-      { "kind": "call", "name": "nextLine" },
-      { "kind": "call", "name": "nextInt" },
-      { "kind": "call", "name": "println" }
-    ]
-  },
+  "structure": { "requires": [{ "kind": "call", "name": "Scanner" }] },
   "cases": [
     { "visible": true, "stdin": "Cortez\n60\n" },
     { "stdin": "Ana\n5\n" },
@@ -25,6 +19,7 @@
     { "stdin": "Grace\n87\n", "generated": true },
     { "stdin": "Nova Diaz\n70\n", "generated": true },
     { "stdin": "Ada Hopper\n6\n", "generated": true },
-    { "stdin": "Ada Lovelace\n36\n", "generated": true }
+    { "stdin": "Ada Lovelace\n36\n", "generated": true },
+    { "stdin": "Mercedes\n42\n", "generated": true }
   ]
 }
