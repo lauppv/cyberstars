@@ -1,21 +1,27 @@
 {
   "structure": {
     "requires": [
-      { "kind": "call", "name": "Dog" },
       { "kind": "variable", "name": "name1" },
       { "kind": "variable", "name": "age1" },
       { "kind": "variable", "name": "name2" },
-      { "kind": "variable", "name": "age2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "age2" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "name1": "Rex", "age1": 5, "name2": "Buddy", "age2": 3 }
-    },
+    { "visible": true, "inject": { "name1": "Rex", "age1": 5, "name2": "Buddy", "age2": 3 } },
     { "inject": { "name1": "Bruno", "age1": 7, "name2": "Ace", "age2": 2 } },
     { "inject": { "name1": "Zeus", "age1": 1, "name2": "Luna", "age2": 12 } },
-    { "inject": { "name1": "Rocky", "age1": 9, "name2": "Bella", "age2": 4 } }
+    { "inject": { "name1": "Rocky", "age1": 9, "name2": "Bella", "age2": 4 } },
+    { "inject": { "name1": "Buddy", "age1": 3, "name2": "Rex", "age2": 5 }, "generated": true },
+    { "inject": { "name1": "Max", "age1": 0, "name2": "Max", "age2": 0 }, "generated": true },
+    { "inject": { "name1": "Ace", "age1": 2, "name2": "Bruno", "age2": 7 }, "generated": true },
+    { "inject": { "name1": "K", "age1": 15, "name2": "Z", "age2": 1 }, "generated": true },
+    {
+      "inject": { "name1": "Sir Barks A Lot", "age1": 11, "name2": "Lady", "age2": 6 },
+      "generated": true
+    },
+    { "inject": { "name1": "Toby", "age1": 4, "name2": "Toby", "age2": 8 }, "generated": true },
+    { "inject": { "name1": "Duke", "age1": 13, "name2": "Daisy", "age2": 10 }, "generated": true },
+    { "inject": { "name1": "Shadow", "age1": 1, "name2": "Bolt", "age2": 1 }, "generated": true }
   ]
 }

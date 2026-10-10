@@ -1,21 +1,42 @@
 {
   "structure": {
     "requires": [
-      { "kind": "call", "name": "Caine" },
       { "kind": "variable", "name": "nume1" },
       { "kind": "variable", "name": "varsta1" },
       { "kind": "variable", "name": "nume2" },
-      { "kind": "variable", "name": "varsta2" },
-      { "kind": "call", "name": "println" }
+      { "kind": "variable", "name": "varsta2" }
     ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "nume1": "Rex", "varsta1": 5, "nume2": "Buddy", "varsta2": 3 }
-    },
+    { "visible": true, "inject": { "nume1": "Rex", "varsta1": 5, "nume2": "Buddy", "varsta2": 3 } },
     { "inject": { "nume1": "Bruno", "varsta1": 7, "nume2": "Ace", "varsta2": 2 } },
     { "inject": { "nume1": "Zeus", "varsta1": 1, "nume2": "Luna", "varsta2": 12 } },
-    { "inject": { "nume1": "Rocky", "varsta1": 9, "nume2": "Bella", "varsta2": 4 } }
+    { "inject": { "nume1": "Rocky", "varsta1": 9, "nume2": "Bella", "varsta2": 4 } },
+    {
+      "inject": { "nume1": "Buddy", "varsta1": 3, "nume2": "Rex", "varsta2": 5 },
+      "generated": true
+    },
+    { "inject": { "nume1": "Max", "varsta1": 0, "nume2": "Max", "varsta2": 0 }, "generated": true },
+    {
+      "inject": { "nume1": "Ace", "varsta1": 2, "nume2": "Bruno", "varsta2": 7 },
+      "generated": true
+    },
+    { "inject": { "nume1": "K", "varsta1": 15, "nume2": "Z", "varsta2": 1 }, "generated": true },
+    {
+      "inject": { "nume1": "Sir Barks A Lot", "varsta1": 11, "nume2": "Lady", "varsta2": 6 },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Toby", "varsta1": 4, "nume2": "Toby", "varsta2": 8 },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Duke", "varsta1": 13, "nume2": "Daisy", "varsta2": 10 },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "Shadow", "varsta1": 1, "nume2": "Bolt", "varsta2": 1 },
+      "generated": true
+    }
   ]
 }

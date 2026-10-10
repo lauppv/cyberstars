@@ -8,8 +8,7 @@
       { "kind": "variable", "name": "nume2" },
       { "kind": "variable", "name": "nume3" },
       { "kind": "variable", "name": "masina3" },
-      { "kind": "loop" },
-      { "kind": "call", "name": "println" }
+      { "kind": "loop" }
     ]
   },
   "cases": [
@@ -49,6 +48,80 @@
         "nume3": "Love Fist",
         "masina3": "Limo"
       }
+    },
+    {
+      "inject": {
+        "nume1": "Hilary King",
+        "masina1": "Sentinel",
+        "nume2": "Lance Vance",
+        "nume3": "Mercedes Cortez",
+        "masina3": "Infernus"
+      },
+      "generated": true
+    },
+    {
+      "inject": { "nume1": "A", "masina1": "B", "nume2": "C", "nume3": "D", "masina3": "E" },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Lance Vance",
+        "masina1": "Infernus",
+        "nume2": "Lance Vance",
+        "nume3": "Lance Vance",
+        "masina3": "Infernus"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Victor Vance",
+        "masina1": "Voodoo",
+        "nume2": "Pam",
+        "nume3": "Victor Vance",
+        "masina3": "Pony"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Kent Paul",
+        "masina1": "Admiral",
+        "nume2": "Earnest Kelly",
+        "nume3": "Candy Suxxx",
+        "masina3": "Stinger"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Big Mitch Baker",
+        "masina1": "Freeway",
+        "nume2": "Mr. Black",
+        "nume3": "Jezz Torrent",
+        "masina3": "Hotring Racer 2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Auntie Poulet",
+        "masina1": "Voodoo",
+        "nume2": "Steve Scott",
+        "nume3": "Avery Carrington",
+        "masina3": "Admiral"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume1": "Donald Love",
+        "masina1": "Stretch",
+        "nume2": "Rico",
+        "nume3": "Gonzalez",
+        "masina3": "Cheetah"
+      },
+      "generated": true
     }
   ]
 }
