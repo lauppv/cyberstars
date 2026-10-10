@@ -64,10 +64,25 @@ interface LessonTestCase {
    * (always hidden), appended after the hand-written cases.
    */
   generated?: boolean;
+  /**
+   * How big this case's input is, in the unit the spec's `size` names (the
+   * number of values, the length of the string, N itself...). Algorithm
+   * lessons give it on every case; it places the case on the runtime chart.
+   */
+  size?: number;
 }
+
+/**
+ * What a case's `size` counts, named from a fixed list so the runtime chart
+ * can label its axis in either language (`tests.size.<unit>` in the locales).
+ */
+export const SIZE_UNITS = ['n', 'values', 'chars', 'words', 'digits', 'commands', 'lines'] as const;
+export type SizeUnit = (typeof SIZE_UNITS)[number];
 
 export interface LessonTestsSpec {
   comparator?: TestComparator;
+  /** What every case's `size` counts; set together with `size` on each case. */
+  sizeUnit?: SizeUnit;
   structure?: {
     requires?: StructureRule[];
     forbids?: StructureRule[];
@@ -93,12 +108,14 @@ export interface TestCaseResult {
   /** Runtime problem: 'timeout' or the program's stderr. */
   error?: string;
   generated?: boolean;
-  /** Wall time of the student's program on this case, in milliseconds. */
-  userMs?: number;
+  /** The case's input size, copied from the spec (see LessonTestCase.size). */
+  size?: number;
   /**
    * How long the student's program's own code ran on this case, in ms
    * (startup and compile excluded); absent when it crashed or skipped its exit.
    */
+  userMs?: number;
+  /** The same for the reference solution, measured in the same run. */
   solutionMs?: number;
 }
 
@@ -114,8 +131,6 @@ export interface RunTestsResponse {
   /** Number of cases in the spec, run or not (the Y in "X / Y passed"). */
   total: number;
   /** Cases passed before the run stopped (the X in "X / Y passed"). */
-  userMs?: number;
-  /** The same for the reference solution, measured in the same run. */
   passedCount: number;
   /**
    * Sums of userMs / solutionMs over the cases that carry both, so the two
@@ -123,6 +138,8 @@ export interface RunTestsResponse {
    */
   runtimeMs?: number;
   referenceMs?: number;
+  /** What each case's `size` counts, when the lesson gives sizes. */
+  sizeUnit?: SizeUnit;
   /** The stored attempt, for a logged-in student (guests keep no history). */
   submission?: SubmissionSummary;
 }

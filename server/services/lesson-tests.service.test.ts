@@ -222,6 +222,22 @@ describe('runLessonTests', () => {
     expect(res.referenceMs).toBe(10.067);
   });
 
+  it("passes each case's size and the lesson's size unit on to the client", async () => {
+    stubFiles({ sizeUnit: 'values', structure: {}, cases: [{ size: 1 }, { size: 200 }] });
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program({ stdout: 'no\n' }), solution: program() },
+      ],
+    });
+
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res.sizeUnit).toBe('values');
+    expect(res.cases.map((c) => c.size)).toEqual([1, 200]);
+  });
+
   it('omits the timing totals when no case is timed on both sides', async () => {
     stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
     stubVerdict({

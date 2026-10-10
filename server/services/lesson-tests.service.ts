@@ -229,6 +229,7 @@ function caseBase(spec: LessonTestsSpec, index: number): TestCaseResult {
   if (specCase.inject) base.inject = specCase.inject;
   if (specCase.stdin !== undefined) base.stdin = specCase.stdin;
   if (specCase.generated) base.generated = true;
+  if (specCase.size !== undefined) base.size = specCase.size;
   return base;
 }
 
@@ -288,6 +289,7 @@ function finalResponse(
     total: spec.cases.length,
     passedCount,
     ...timingTotals(cases),
+    ...(spec.sizeUnit ? { sizeUnit: spec.sizeUnit } : {}),
   };
 }
 
