@@ -2,7 +2,11 @@
   "structure": {
     "requires": [
       { "kind": "call", "name": "AREA_RECT" },
-      { "kind": "call", "name": "AREA_CIRCLE" }
+      { "kind": "call", "name": "AREA_CIRCLE" },
+      { "kind": "define", "name": "PI" },
+      { "kind": "define", "name": "AREA_RECT" },
+      { "kind": "define", "name": "AREA_CIRCLE" },
+      { "kind": "define", "name": "MAX_SIZE" }
     ]
   },
   "cases": [{ "visible": true }]

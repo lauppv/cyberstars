@@ -7,7 +7,11 @@
       { "kind": "function", "name": "afiseaza_sarcina" },
       { "kind": "call", "name": "malloc" },
       { "kind": "call", "name": "free" },
-      { "kind": "call", "name": "scanf" }
+      { "kind": "call", "name": "scanf" },
+      { "kind": "switch" },
+      { "kind": "enum" },
+      { "kind": "typedef" },
+      { "kind": "struct" }
     ]
   },
   "cases": [
