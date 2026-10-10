@@ -29,7 +29,9 @@ export function Runtime({ runtimeMs, referenceMs }: RuntimeProps) {
   return (
     <section className="flex flex-col gap-4">
       <h3 className="text-[14px] font-semibold text-[var(--text)]">{t('tests.runtime.title')}</h3>
-      <dl className="grid grid-cols-2 gap-4">
+      {/* Bottom-aligned, so the two times sit on one line even when the longer
+          label wraps. */}
+      <dl className="grid grid-cols-2 items-end gap-4">
         {[
           { label: t('tests.runtime.yours'), ms: runtimeMs },
           { label: t('tests.runtime.reference'), ms: referenceMs },
