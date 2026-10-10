@@ -32,6 +32,10 @@
     { "stdin": "97\n", "generated": true },
     { "stdin": "98\n", "generated": true },
     { "stdin": "99\n", "generated": true },
-    { "stdin": "100\n", "generated": true }
+    { "stdin": "100\n", "generated": true },
+    {
+      "stdin": "20000\n",
+      "load": true
+    }
   ]
 }

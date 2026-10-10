@@ -2,7 +2,7 @@ Print the numbers from 1 to N, but with a twist: for multiples of 3 print `Fizz`
 
 ### Input
 
-- A single integer `n` (1 <= n <= 100).
+- A single integer `n` (1 <= n <= 2·10^4).
 
 ### Output
 

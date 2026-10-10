@@ -2,7 +2,7 @@ Citește o matrice NxN de numere întregi și afișează elementele ei în **ord
 
 ### Date de intrare
 
-- Linia 1: un număr întreg `n`, dimensiunea matricei (1 <= n <= 10).
+- Linia 1: un număr întreg `n`, dimensiunea matricei (1 <= n <= 150).
 - Următoarele `n` linii: fiecare conținând `n` numere întregi separate prin spații, între -10^9 și 10^9.
 
 ### Rezultat
