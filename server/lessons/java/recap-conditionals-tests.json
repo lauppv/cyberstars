@@ -1,5 +1,7 @@
 {
-  "structure": { "requires": [{ "kind": "variable", "name": "stars" }] },
+  "structure": {
+    "requires": [{ "kind": "switch" }, { "kind": "if" }, { "kind": "variable", "name": "stars" }]
+  },
   "cases": [
     { "visible": true, "inject": { "stars": 3 } },
     { "inject": { "stars": 0 } },

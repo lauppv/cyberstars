@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "extends" },
+      { "kind": "override" },
       { "kind": "call", "name": "Sofer" },
       { "kind": "call", "name": "Tragator" },
       { "kind": "function", "name": "vorbeste" },

@@ -1,6 +1,8 @@
 {
   "structure": {
     "requires": [
+      { "kind": "extends" },
+      { "kind": "override" },
       { "kind": "call", "name": "Warrior" },
       { "kind": "call", "name": "Mage" },
       { "kind": "function", "name": "attack" },
