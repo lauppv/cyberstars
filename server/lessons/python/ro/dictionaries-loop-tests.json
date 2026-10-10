@@ -1,26 +1,23 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "scoruri" },
+      { "kind": "loop", "type": "for" },
+      { "kind": "call", "name": "keys" },
+      { "kind": "call", "name": "values" },
+      { "kind": "call", "name": "len" }
+    ]
   },
   "cases": [
-    {
-      "visible": true,
-      "inject": { "scoruri": { "$dict": { "Ana": 40, "Bob": 90, "Cara": 70 } } }
-    },
+    { "visible": true, "inject": { "scoruri": { "$dict": { "Ana": 40, "Bob": 90, "Cara": 70 } } } },
     {
       "visible": true,
       "inject": { "scoruri": { "$dict": { "Tommy": 88, "Lance": 95, "Cortez": 70 } } }
     },
-    {
-      "inject": { "scoruri": { "$dict": { "Solo": 50 } } }
-    },
-    {
-      "inject": { "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40 } } }
-    },
-    {
-      "inject": { "scoruri": { "$dict": { "X": 100, "Y": 55, "Z": 80, "W": 99 } } }
-    },
+    { "inject": { "scoruri": { "$dict": { "Solo": 50 } } } },
+    { "inject": { "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40 } } } },
+    { "inject": { "scoruri": { "$dict": { "X": 100, "Y": 55, "Z": 80, "W": 99 } } } },
     { "inject": { "scoruri": { "$dict": { "Nova": 100 } } }, "generated": true },
     { "inject": { "scoruri": { "$dict": { "Rex": 1 } } }, "generated": true },
     { "inject": { "scoruri": { "$dict": { "Ana": 0, "Bob": 1 } } }, "generated": true },
@@ -36,12 +33,6 @@
     {
       "inject": {
         "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40, "E": 50, "F": 60, "G": 70 } }
-      },
-      "generated": true
-    },
-    {
-      "inject": {
-        "scoruri": { "$dict": { "G": 70, "F": 60, "E": 50, "D": 40, "C": 30, "B": 20, "A": 10 } }
       },
       "generated": true
     },
@@ -266,6 +257,176 @@
         }
       },
       "generated": true
-    }
+    },
+    { "inject": { "scoruri": { "$dict": { "Zed": 100, "Amy": 99 } } }, "generated": true },
+    { "inject": { "scoruri": { "$dict": { "Lo": 0, "Hi": 100, "Mid": 50 } } }, "generated": true },
+    {
+      "inject": { "scoruri": { "$dict": { "First": 90, "B": 10, "C": 20, "D": 30, "E": 40 } } },
+      "generated": true
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "A": 10, "B": 20, "C": 30, "D": 40, "Last": 90 } } },
+      "generated": true
+    },
+    { "inject": { "scoruri": { "$dict": { "One": 1, "Two": 2 } } }, "generated": true },
+    {
+      "inject": { "scoruri": { "$dict": { "Ada": 33, "Bea": 33, "Cid": 34 } } },
+      "generated": true
+    },
+    { "inject": { "scoruri": { "$dict": { "Kai": 97, "Diaz": 50 } } }, "generated": true },
+    {
+      "inject": { "scoruri": { "$dict": { "Mary-Jane": 68, "Bob": 29, "Ken": 91, "Diaz": 96 } } },
+      "generated": true
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "Ken": 7, "Radu": 17, "Bob": 29, "Mary-Jane": 68 } } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": {
+            "Nova": 17,
+            "Mira": 26,
+            "Rex": 18,
+            "Sonny": 48,
+            "Orion": 3,
+            "Cara": 11,
+            "Diaz": 94,
+            "Ana": 67,
+            "Mercedes": 56,
+            "Avery": 83,
+            "Big Mitch": 27,
+            "Elena": 26,
+            "Phil": 55,
+            "Mary-Jane": 93,
+            "Radu": 47,
+            "Cortez": 24,
+            "Ioana": 42,
+            "Lance": 82,
+            "Kai": 28,
+            "Bob": 61,
+            "Tommy": 5,
+            "Jess": 33,
+            "Ken": 43,
+            "Vega": 37,
+            "Umberto": 42
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": {
+            "Mercedes": 36,
+            "Kai": 39,
+            "Big Mitch": 83,
+            "Ioana": 25,
+            "Avery": 14,
+            "Sonny": 58,
+            "Diaz": 25,
+            "Cortez": 42,
+            "Phil": 56,
+            "Jess": 51,
+            "Bob": 100,
+            "Cara": 6,
+            "Orion": 71,
+            "Ana": 91,
+            "Radu": 15,
+            "Mira": 34,
+            "Nova": 12,
+            "Vega": 81
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "scoruri": { "$dict": { "Sonny": 91, "Avery": 19, "Phil": 60 } } },
+      "generated": true
+    },
+    { "inject": { "scoruri": { "$dict": { "Kai": 100, "Vega": 65 } } }, "generated": true },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": { "Umberto": 14, "Vega": 62, "Kai": 17, "Big Mitch": 92, "Orion": 77, "Bob": 88 }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": {
+            "Elena": 57,
+            "Ana": 22,
+            "Lance": 5,
+            "Kai": 16,
+            "Mary-Jane": 15,
+            "Umberto": 72,
+            "Tommy": 78,
+            "Radu": 6,
+            "Diaz": 78,
+            "Mercedes": 26,
+            "Cortez": 100,
+            "Ken": 24
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": { "Ioana": 67, "Phil": 90, "Jess": 64, "Nova": 51, "Elena": 29, "Mira": 67 }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": { "$dict": { "Ioana": 17, "Vega": 47, "Nova": 15, "Cortez": 66, "Avery": 100 } }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": {
+            "Radu": 93,
+            "Sonny": 54,
+            "Cortez": 26,
+            "Mercedes": 18,
+            "Orion": 31,
+            "Phil": 48,
+            "Bob": 39,
+            "Diaz": 26
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "scoruri": {
+          "$dict": {
+            "Ioana": 33,
+            "Cortez": 68,
+            "Jess": 25,
+            "Orion": 55,
+            "Tommy": 89,
+            "Lance": 46,
+            "Bob": 26,
+            "Mary-Jane": 51,
+            "Kai": 4,
+            "Vega": 56
+          }
+        }
+      },
+      "generated": true
+    },
+    { "inject": { "scoruri": { "$dict": { "Amy": 99, "Zed": 100 } } }, "generated": true }
   ]
 }

@@ -1,7 +1,16 @@
 {
   "comparator": "trimmed",
   "structure": {
-    "requires": [{ "kind": "loop" }, { "kind": "call", "name": "print" }]
+    "requires": [
+      { "kind": "variable", "name": "echipaj" },
+      { "kind": "variable", "name": "scoruri" },
+      { "kind": "call", "name": "zip" },
+      { "kind": "call", "name": "sorted" },
+      { "kind": "call", "name": "sum" },
+      { "kind": "call", "name": "round" },
+      { "kind": "call", "name": "all" },
+      { "kind": "call", "name": "any" }
+    ]
   },
   "cases": [
     {
@@ -13,28 +22,495 @@
     },
     {
       "visible": true,
-      "inject": {
-        "echipaj": { "$list": ["Ana", "Bo"] },
-        "scoruri": { "$list": [50, 49] }
-      }
+      "inject": { "echipaj": { "$list": ["Ana", "Bo"] }, "scoruri": { "$list": [50, 49] } }
     },
-    {
-      "inject": {
-        "echipaj": { "$list": ["Solo"] },
-        "scoruri": { "$list": [100] }
-      }
-    },
-    {
-      "inject": {
-        "echipaj": { "$list": ["X", "Y", "Z"] },
-        "scoruri": { "$list": [10, 20, 30] }
-      }
-    },
+    { "inject": { "echipaj": { "$list": ["Solo"] }, "scoruri": { "$list": [100] } } },
+    { "inject": { "echipaj": { "$list": ["X", "Y", "Z"] }, "scoruri": { "$list": [10, 20, 30] } } },
     {
       "inject": {
         "echipaj": { "$list": ["Kai", "Rex", "Uma", "Wes", "Zed"] },
         "scoruri": { "$list": [100, 60, 45, 90, 72] }
       }
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Wes"] }, "scoruri": { "$list": [50] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Bo"] }, "scoruri": { "$list": [49] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Radu"] }, "scoruri": { "$list": [0] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Rex"] }, "scoruri": { "$list": [99] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Dan", "Rex"] }, "scoruri": { "$list": [100, 100] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Gia", "Max", "Lia"] },
+        "scoruri": { "$list": [50, 50, 50] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Rex", "Jon"] }, "scoruri": { "$list": [49, 100] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Tia", "Eva"] }, "scoruri": { "$list": [100, 49] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Uma", "Ivy"] }, "scoruri": { "$list": [0, 100] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Dan", "Ivy", "Nia"] },
+        "scoruri": { "$list": [100, 0, 100] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Kai", "Ivy"] }, "scoruri": { "$list": [1, 2] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Ioana", "Dan", "Mira"] },
+        "scoruri": { "$list": [33, 33, 34] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Kai", "Jon", "Ana"] },
+        "scoruri": { "$list": [10, 20, 25] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Tia", "Uma", "Gia", "Cara"] },
+        "scoruri": { "$list": [51, 52, 53, 54] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Gia", "Dan", "Sam"] },
+        "scoruri": { "$list": [99, 98, 97] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Oto", "Max", "Leo", "Zed", "Cara"] },
+        "scoruri": { "$list": [100, 99, 100, 99, 100] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Radu", "Dan", "Nia", "Ana", "Ioana", "Tia"] },
+        "scoruri": { "$list": [7, 7, 7, 7, 7, 7] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": ["Zed", "Nia", "Mira", "Max", "Oto", "Wes", "Jon", "Tia", "Rex", "Finn"]
+        },
+        "scoruri": { "$list": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+      },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Hugo"] }, "scoruri": { "$list": [52] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Dan", "Radu"] }, "scoruri": { "$list": [73, 93] } },
+      "generated": true
+    },
+    {
+      "inject": { "echipaj": { "$list": ["Eva", "Vlad"] }, "scoruri": { "$list": [62, 58] } },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Ana", "Oto", "Pia"] },
+        "scoruri": { "$list": [70, 90, 58] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Pia", "Lia", "Nia"] },
+        "scoruri": { "$list": [66, 61, 64] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Ana", "Oto", "Max", "Dan"] },
+        "scoruri": { "$list": [23, 0, 31, 11] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Jon", "Oto", "Max", "Zed"] },
+        "scoruri": { "$list": [83, 33, 16, 60] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Bo", "Cara", "Gia", "Jon", "Wes"] },
+        "scoruri": { "$list": [78, 69, 69, 93, 98] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Rex", "Oto", "Wes", "Ana", "Finn"] },
+        "scoruri": { "$list": [53, 12, 59, 8, 59] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Jon", "Oto", "Dan", "Gia", "Uma", "Pia"] },
+        "scoruri": { "$list": [35, 9, 10, 16, 21, 55] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Ana", "Max", "Uma", "Vlad", "Jon", "Mira"] },
+        "scoruri": { "$list": [87, 8, 54, 83, 81, 19] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Rex", "Kai", "Bo", "Ana", "Ivy", "Vlad", "Gia"] },
+        "scoruri": { "$list": [72, 69, 75, 45, 32, 26, 33] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Radu", "Rex", "Leo", "Ivy", "Sam", "Yara", "Jon"] },
+        "scoruri": { "$list": [68, 83, 79, 98, 82, 58, 70] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Bo", "Hugo", "Eva", "Leo", "Oto", "Dan", "Rex", "Tia"] },
+        "scoruri": { "$list": [87, 67, 36, 82, 64, 72, 54, 61] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Lia", "Finn", "Oto", "Kai", "Zed", "Dan", "Vlad", "Rex"] },
+        "scoruri": { "$list": [33, 91, 59, 89, 48, 87, 41, 42] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": { "$list": ["Zed", "Lia", "Bo", "Jon", "Ivy", "Leo", "Cara", "Hugo", "Max"] },
+        "scoruri": { "$list": [79, 5, 46, 11, 40, 55, 46, 58, 75] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": ["Cara", "Bo", "Tia", "Nia", "Ioana", "Yara", "Wes", "Eva", "Uma", "Kai"]
+        },
+        "scoruri": { "$list": [60, 60, 80, 92, 95, 85, 56, 95, 88, 82] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": ["Eva", "Cara", "Yara", "Oto", "Jon", "Sam", "Max", "Tia", "Hugo", "Lia", "Dan"]
+        },
+        "scoruri": { "$list": [96, 84, 52, 67, 62, 59, 65, 68, 57, 87, 78] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Dan",
+            "Gia",
+            "Uma",
+            "Cara",
+            "Pia",
+            "Eva",
+            "Max",
+            "Rex",
+            "Ivy",
+            "Zed",
+            "Lia",
+            "Oto"
+          ]
+        },
+        "scoruri": { "$list": [33, 17, 44, 58, 71, 28, 71, 57, 38, 7, 74, 56] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Eva",
+            "Yara",
+            "Sam",
+            "Hugo",
+            "Leo",
+            "Oto",
+            "Finn",
+            "Uma",
+            "Pia",
+            "Cara",
+            "Ivy",
+            "Max",
+            "Ioana"
+          ]
+        },
+        "scoruri": { "$list": [77, 51, 86, 64, 92, 69, 85, 65, 56, 100, 75, 76, 90] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Oto",
+            "Nia",
+            "Radu",
+            "Ana",
+            "Eva",
+            "Dan",
+            "Finn",
+            "Ioana",
+            "Mira",
+            "Ivy",
+            "Pia",
+            "Kai",
+            "Hugo",
+            "Zed"
+          ]
+        },
+        "scoruri": { "$list": [73, 86, 0, 94, 30, 10, 34, 31, 62, 20, 94, 66, 50, 33] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Ioana",
+            "Max",
+            "Yara",
+            "Pia",
+            "Jon",
+            "Lia",
+            "Kai",
+            "Ivy",
+            "Eva",
+            "Dan",
+            "Bo",
+            "Sam",
+            "Radu",
+            "Oto",
+            "Cara"
+          ]
+        },
+        "scoruri": { "$list": [54, 84, 69, 51, 57, 54, 53, 92, 99, 55, 84, 79, 54, 52, 55] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Ivy",
+            "Mira",
+            "Tia",
+            "Max",
+            "Kai",
+            "Ana",
+            "Gia",
+            "Sam",
+            "Pia",
+            "Cara",
+            "Yara",
+            "Uma",
+            "Hugo",
+            "Zed",
+            "Jon",
+            "Radu"
+          ]
+        },
+        "scoruri": { "$list": [71, 81, 72, 66, 95, 90, 79, 56, 84, 90, 100, 86, 63, 52, 88, 60] }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Cara",
+            "Uma",
+            "Rex",
+            "Nia",
+            "Lia",
+            "Ioana",
+            "Gia",
+            "Kai",
+            "Radu",
+            "Eva",
+            "Wes",
+            "Ana",
+            "Bo",
+            "Zed",
+            "Tia",
+            "Mira",
+            "Oto",
+            "Sam"
+          ]
+        },
+        "scoruri": {
+          "$list": [90, 74, 60, 95, 84, 54, 100, 62, 66, 56, 60, 91, 81, 83, 82, 76, 63, 84]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Mira",
+            "Oto",
+            "Max",
+            "Leo",
+            "Tia",
+            "Kai",
+            "Dan",
+            "Pia",
+            "Eva",
+            "Sam",
+            "Zed",
+            "Radu",
+            "Uma",
+            "Ana",
+            "Lia",
+            "Rex",
+            "Gia",
+            "Jon",
+            "Wes",
+            "Yara"
+          ]
+        },
+        "scoruri": {
+          "$list": [88, 89, 68, 8, 88, 80, 51, 64, 3, 72, 79, 83, 86, 57, 74, 32, 66, 85, 72, 35]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Pia",
+            "Oto",
+            "Eva",
+            "Ivy",
+            "Radu",
+            "Jon",
+            "Kai",
+            "Yara",
+            "Rex",
+            "Leo",
+            "Max",
+            "Vlad",
+            "Sam",
+            "Gia",
+            "Wes",
+            "Ana",
+            "Dan",
+            "Mira",
+            "Lia",
+            "Finn",
+            "Cara",
+            "Bo"
+          ]
+        },
+        "scoruri": {
+          "$list": [
+            12, 95, 10, 44, 85, 18, 61, 50, 47, 80, 13, 65, 75, 61, 5, 18, 70, 2, 84, 61, 20, 42
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            "Lia",
+            "Radu",
+            "Leo",
+            "Eva",
+            "Gia",
+            "Jon",
+            "Mira",
+            "Ioana",
+            "Ivy",
+            "Rex",
+            "Max",
+            "Pia",
+            "Kai",
+            "Cara",
+            "Finn",
+            "Nia",
+            "Yara",
+            "Uma",
+            "Ana",
+            "Zed",
+            "Hugo",
+            "Oto",
+            "Sam",
+            "Wes",
+            "Vlad"
+          ]
+        },
+        "scoruri": {
+          "$list": [
+            58, 92, 89, 52, 97, 68, 54, 72, 83, 96, 71, 80, 90, 73, 84, 75, 76, 79, 80, 100, 98, 54,
+            54, 98, 87
+          ]
+        }
+      },
+      "generated": true
     }
   ]
 }
