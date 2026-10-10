@@ -213,6 +213,23 @@ describe.skipIf(!has('python3'))('python runner', () => {
         { type: 'forbid', rule: rules.forbids[0] },
       ],
     });
+    // The helpers it calls are part of it: the loop may live in one, and the
+    // slice can't hide in one.
+    expect(
+      header(
+        'def back(t):\n    out = ""\n    for c in t:\n        out = c + out\n    return out\n\n' +
+          'def reverse_text(t):\n    return back(t)\n',
+      ),
+    ).toEqual({ syntaxError: null, structureFailures: [] });
+    expect(
+      header(
+        'def flip(s):\n    return s[::-1]\n\n' +
+          'def reverse_text(t):\n    for _ in [0]:\n        pass\n    return flip(t)\n',
+      ),
+    ).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'forbid', rule: rules.forbids[0] }],
+    });
   });
 
   it('streams one line per case and stops on the server reply', () => {

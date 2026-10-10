@@ -251,15 +251,35 @@ def rule_holds(tree, source, rule):
     return True
 
 
+def reachable_functions(tree, name):
+    # The functions named `name` plus every function of the student's own they
+    # call, directly or through other helpers.
+    defs = {}
+    for fn in function_defs(tree):
+        defs.setdefault(fn.name, []).append(fn)
+    seen, todo, found = set(), [name], []
+    while todo:
+        current = todo.pop()
+        if current in seen or current not in defs:
+            continue
+        seen.add(current)
+        for fn in defs[current]:
+            found.append(fn)
+            todo.extend(
+                called_function(node) for node in ast.walk(fn) if isinstance(node, ast.Call)
+            )
+    return found
+
+
 def scoped_holds(tree, source, rule):
-    # A rule with "in" looks only inside that function (forbid [::-1] in
-    # reverse_text while the rest of the program may slice). No such
-    # function: a require fails and a forbid has nothing to fire on.
+    # A rule with "in" looks only inside that function and the helpers it
+    # calls (forbid [::-1] in reverse_text, also when it hands the slice to a
+    # helper, while the rest of the program may slice). No such function: a
+    # require fails and a forbid has nothing to fire on.
     scope = rule.get("in")
     if not scope:
         return rule_holds(tree, source, rule)
-    fns = [fn for fn in function_defs(tree) if fn.name == scope]
-    return any(rule_holds(fn, source, rule) for fn in fns)
+    return any(rule_holds(fn, source, rule) for fn in reachable_functions(tree, scope))
 
 
 def check_structure(tree, source, structure):
