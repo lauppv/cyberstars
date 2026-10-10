@@ -590,16 +590,18 @@ public class Runner {
 
         @Override
         public Void visitMethod(MethodTree node, Void unused) {
-          // Every helper method next to main has to be static, so only a
-          // method of the student's own class shows they chose static.
+          // Every helper method next to main has to be static, and making one
+          // private hides nothing, so only a method of the student's own class
+          // shows they chose static or private.
           Tree owner = getCurrentPath().getParentPath().getLeaf();
           boolean besideMain =
               owner instanceof ClassTree c && c.getSimpleName().contentEquals(mainClass);
           if (!node.getName().contentEquals("main")) {
             for (var m : node.getModifiers().getFlags()) {
-              if (!(besideMain && m == javax.lang.model.element.Modifier.STATIC)) {
-                modifiers.add(m.toString());
-              }
+              boolean helperFlag =
+                  m == javax.lang.model.element.Modifier.STATIC
+                      || m == javax.lang.model.element.Modifier.PRIVATE;
+              if (!(besideMain && helperFlag)) modifiers.add(m.toString());
             }
           }
           for (var a : node.getModifiers().getAnnotations()) {
