@@ -127,6 +127,11 @@ describe('checkStructure', () => {
       'int main(void){ int a = 1; int b = a; return 0; }',
     ],
     [
+      { kind: 'pointer' },
+      'int sum(int *v, int n){ return n ? v[0] : 0; } int main(void){ return 0; }',
+      'int main(int argc, char **argv){ int n = sizeof(int *); return n + (int)(long)(char *)0; }',
+    ],
+    [
       { kind: 'deref' },
       'int main(void){ int x = 1; int *p = &x; *p = 42; return 0; }',
       'int main(void){ int x = 1; int *p = &x; x = 42; return 0; }',

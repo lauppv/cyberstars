@@ -100,6 +100,19 @@ const C_LOOP_NODES = {
   do_while: 'do_statement',
 } as const;
 
+// A pointer the student declared: not main's own `char **argv`, which every
+// program may write, nor the type in a cast or sizeof, which declares nothing.
+function isOwnPointer(node: Node): boolean {
+  for (let up = node.parent; up; up = up.parent) {
+    if (up.type === 'cast_expression' || up.type === 'sizeof_expression') return false;
+    if (up.type === 'parameter_list') {
+      const name = up.parent?.childForFieldName('declarator')?.text;
+      return up.parent?.type !== 'function_declarator' || name !== 'main';
+    }
+  }
+  return true;
+}
+
 // Kinds that hold as soon as one node of that type exists. struct and enum
 // need a body: `struct point p;` only uses a type someone else declared.
 const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
@@ -109,7 +122,9 @@ const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
   continue: (n) => n.type === 'continue_statement',
   typedef: (n) => n.type === 'type_definition',
   sizeof: (n) => n.type === 'sizeof_expression',
-  pointer: (n) => n.type === 'pointer_declarator' || n.type === 'abstract_pointer_declarator',
+  pointer: (n) =>
+    (n.type === 'pointer_declarator' || n.type === 'abstract_pointer_declarator') &&
+    isOwnPointer(n),
   // *p in an expression (reading or writing through the pointer), not the
   // star of a declaration; p->field and p[i] dereference too.
   deref: (n) =>
