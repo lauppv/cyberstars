@@ -125,8 +125,6 @@ export interface RunTestsResponse {
   /** Number of cases in the spec, run or not (the Y in "X / Y passed"). */
   total: number;
   /** Cases passed before the run stopped (the X in "X / Y passed"). */
-  userMs?: number;
-  /** The same for the reference solution, measured in the same run. */
   passedCount: number;
   /**
    * The load test's userMs / solutionMs, once the student's program passed it.

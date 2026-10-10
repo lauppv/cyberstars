@@ -179,9 +179,8 @@ interface RunnerProgram {
   ms?: number;
 }
 
-// Timings travel to the client in ms rounded to the microsecond (a small
-// program's code runs in well under a millisecond); sums are rounded again so
-// float noise never shows up as 0.30000000000000004.
+// Timings travel to the client in ms rounded to the microsecond: a small
+// program's code runs in well under a millisecond.
 function roundMs(ms: number): number {
   return Math.round(ms * 1000) / 1000;
 }
