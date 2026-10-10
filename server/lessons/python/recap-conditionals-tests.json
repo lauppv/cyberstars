@@ -3,8 +3,7 @@
   "structure": {
     "requires": [
       { "kind": "variable", "name": "age" },
-      { "kind": "variable", "name": "is_3d" },
-      { "kind": "call", "name": "print" }
+      { "kind": "variable", "name": "is_3d" }
     ]
   },
   "cases": [
@@ -15,6 +14,36 @@
     { "inject": { "age": 5, "is_3d": true } },
     { "inject": { "age": 6, "is_3d": false } },
     { "inject": { "age": 13, "is_3d": true } },
-    { "inject": { "age": 65, "is_3d": false } }
+    { "inject": { "age": 65, "is_3d": false } },
+    { "inject": { "age": 0, "is_3d": true }, "generated": true },
+    { "inject": { "age": 0, "is_3d": false }, "generated": true },
+    { "inject": { "age": 1, "is_3d": true }, "generated": true },
+    { "inject": { "age": 1, "is_3d": false }, "generated": true },
+    { "inject": { "age": 5, "is_3d": false }, "generated": true },
+    { "inject": { "age": 6, "is_3d": true }, "generated": true },
+    { "inject": { "age": 7, "is_3d": true }, "generated": true },
+    { "inject": { "age": 7, "is_3d": false }, "generated": true },
+    { "inject": { "age": 12, "is_3d": true }, "generated": true },
+    { "inject": { "age": 12, "is_3d": false }, "generated": true },
+    { "inject": { "age": 13, "is_3d": false }, "generated": true },
+    { "inject": { "age": 15, "is_3d": true }, "generated": true },
+    { "inject": { "age": 15, "is_3d": false }, "generated": true },
+    { "inject": { "age": 17, "is_3d": true }, "generated": true },
+    { "inject": { "age": 17, "is_3d": false }, "generated": true },
+    { "inject": { "age": 18, "is_3d": true }, "generated": true },
+    { "inject": { "age": 18, "is_3d": false }, "generated": true },
+    { "inject": { "age": 19, "is_3d": true }, "generated": true },
+    { "inject": { "age": 19, "is_3d": false }, "generated": true },
+    { "inject": { "age": 40, "is_3d": true }, "generated": true },
+    { "inject": { "age": 40, "is_3d": false }, "generated": true },
+    { "inject": { "age": 64, "is_3d": true }, "generated": true },
+    { "inject": { "age": 64, "is_3d": false }, "generated": true },
+    { "inject": { "age": 65, "is_3d": true }, "generated": true },
+    { "inject": { "age": 66, "is_3d": true }, "generated": true },
+    { "inject": { "age": 66, "is_3d": false }, "generated": true },
+    { "inject": { "age": 90, "is_3d": true }, "generated": true },
+    { "inject": { "age": 90, "is_3d": false }, "generated": true },
+    { "inject": { "age": 100, "is_3d": true }, "generated": true },
+    { "inject": { "age": 100, "is_3d": false }, "generated": true }
   ]
 }
