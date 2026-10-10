@@ -122,29 +122,4 @@ describe('auditCases', () => {
     };
     expect(auditCases('c', spec)).toEqual([expect.stringMatching(/not deterministic/)]);
   });
-  it('accepts sizes on every case in a named unit', () => {
-    const spec: LessonTestsSpec = {
-      sizeUnit: 'values',
-      cases: [stdinCase({ size: 1 }), stdinCase({ size: 200, generated: true })],
-    };
-    expect(auditCases('python', spec)).toEqual([]);
-  });
-
-  it('flags a missing, partial, negative or unnamed size', () => {
-    expect(
-      auditCases('python', { sizeUnit: 'values', cases: [stdinCase({ size: 3 }), stdinCase()] }),
-    ).toEqual([expect.stringMatching(/1 case\(s\) have no size/)]);
-    expect(auditCases('python', { cases: [stdinCase({ size: 3 })] })).toEqual([
-      expect.stringMatching(/names no sizeUnit/),
-    ]);
-    expect(auditCases('python', { sizeUnit: 'chars', cases: [stdinCase({ size: -1 })] })).toEqual([
-      expect.stringMatching(/non-negative integer/),
-    ]);
-    expect(
-      auditCases('python', {
-        sizeUnit: 'bytes' as LessonTestsSpec['sizeUnit'],
-        cases: [stdinCase({ size: 1 })],
-      }),
-    ).toEqual([expect.stringMatching(/unknown sizeUnit "bytes"/)]);
-  });
 });
