@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { ResultPanel } from './ResultPanel';
 import type { RunTestsResponse } from '../../../shared/tests';
 
@@ -15,6 +15,7 @@ describe('ResultPanel', () => {
   it('heads an accepted run with the full count', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           status: 'passed',
@@ -35,6 +36,7 @@ describe('ResultPanel', () => {
   it('shows the visible test it stopped on, with expected and actual output', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           passedCount: 2,
@@ -58,6 +60,7 @@ describe('ResultPanel', () => {
   it('shows the input but never the expected output of a hidden test', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [
@@ -84,6 +87,7 @@ describe('ResultPanel', () => {
   it('shows only the first failing test when an older judge sends several', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [
@@ -98,7 +102,12 @@ describe('ResultPanel', () => {
   });
 
   it('heads a syntax error with its message and no counter', () => {
-    render(<ResultPanel results={{ ...base, syntaxError: 'line 1: invalid syntax' }} />);
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{ ...base, syntaxError: 'line 1: invalid syntax' }}
+      />,
+    );
     expect(screen.getByRole('heading', { name: 'Syntax error' })).toBeInTheDocument();
     expect(screen.getByText('line 1: invalid syntax')).toBeInTheDocument();
     expect(screen.queryByText('tests passed')).not.toBeInTheDocument();
@@ -107,6 +116,7 @@ describe('ResultPanel', () => {
   it('lists failed code checks, and heads with them when every test passed', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           passedCount: 5,
@@ -127,6 +137,7 @@ describe('ResultPanel', () => {
   it('names a timeout and a crash', () => {
     const { unmount } = render(
       <ResultPanel
+        showRuntime={false}
         results={{ ...base, cases: [{ index: 0, visible: true, passed: false, error: 'timeout' }] }}
       />,
     );
@@ -136,6 +147,7 @@ describe('ResultPanel', () => {
 
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [{ index: 0, visible: true, passed: false, stdin: '', error: 'NameError: x' }],
@@ -151,6 +163,7 @@ describe('ResultPanel', () => {
   it('formats booleans, lists and dicts as Python literals, and stdin as typed', () => {
     render(
       <ResultPanel
+        showRuntime={false}
         results={{
           ...base,
           cases: [
@@ -180,8 +193,71 @@ describe('ResultPanel', () => {
     expect(screen.getByText('∅')).toBeInTheDocument();
   });
 
+  it('folds the passed tests into a list that opens on each one', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          passedCount: 2,
+          cases: [
+            { index: 0, visible: true, passed: true, stdin: '2 3\n', expected: '5', actual: '5' },
+            {
+              index: 1,
+              visible: false,
+              passed: true,
+              inject: { pilot: ['Rex', 'Kai'] },
+              expected: 'Rex Kai',
+              actual: 'Rex Kai',
+            },
+            { index: 2, visible: true, passed: false, expected: '1', actual: '0' },
+          ],
+        }}
+      />,
+    );
+    const list = screen.getByRole('button', { name: 'Passed tests (2)' });
+    expect(list).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('button', { name: 'Test 1' })).not.toBeInTheDocument();
+
+    fireEvent.click(list);
+    expect(screen.getByRole('button', { name: 'Test 1' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Test 3' })).not.toBeInTheDocument();
+    expect(screen.queryByText('Rex Kai')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Test 2 (hidden)' }));
+    expect(screen.getByText(/pilot = "Rex" → "Kai"/)).toBeInTheDocument();
+    expect(screen.getAllByText('Rex Kai')).toHaveLength(2);
+  });
+
+  it('leaves the list out when no test passed', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{ ...base, cases: [{ index: 0, visible: true, passed: false, actual: '0' }] }}
+      />,
+    );
+    expect(screen.queryByRole('button', { name: /Passed tests/ })).not.toBeInTheDocument();
+  });
+
+  it('shows the runtime only when asked to', () => {
+    const results: RunTestsResponse = {
+      ...base,
+      status: 'passed',
+      passedCount: 1,
+      cases: [{ index: 0, visible: true, passed: true, userMs: 12, solutionMs: 10 }],
+      runtimeMs: 12,
+      referenceMs: 10,
+    };
+    const { unmount } = render(<ResultPanel showRuntime={false} results={results} />);
+    expect(screen.queryByText('Runtime')).not.toBeInTheDocument();
+    unmount();
+
+    render(<ResultPanel showRuntime results={results} />);
+    expect(screen.getByText('Runtime')).toBeInTheDocument();
+  });
+
   it('falls back to a plain failed heading when nothing names the cause', () => {
-    render(<ResultPanel results={{ ...base, total: 0 }} />);
+    render(<ResultPanel showRuntime={false} results={{ ...base, total: 0 }} />);
     expect(screen.getByRole('heading', { name: 'Failed' })).toBeInTheDocument();
     expect(screen.getByText('0 / 0')).toBeInTheDocument();
   });

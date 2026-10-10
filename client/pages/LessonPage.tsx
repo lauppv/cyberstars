@@ -558,13 +558,14 @@ export function LessonPage() {
             </div>
             {view === 'result' && testResults && (
               <div data-tour="result" className="flex-1 min-h-0 overflow-y-auto">
-                <ResultPanel results={testResults} />
+                <ResultPanel results={testResults} showRuntime={isAlgo} />
               </div>
             )}
             {view === 'submissions' && (
               <div data-tour="submissions" className="flex-1 min-h-0 overflow-y-auto">
                 <SubmissionsPanel
                   language={category}
+                  showRuntime={isAlgo}
                   list={submissions.list}
                   failed={submissions.failed}
                   onLoad={submissions.load}

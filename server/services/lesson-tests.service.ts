@@ -254,8 +254,15 @@ function judgeCase(
   if (c.user.timedOut) return { ...base, error: 'timeout' };
   if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
 
+  // A passed case shows both outputs: the student already produced the expected
+  // one, so revealing it gives nothing away, even on a hidden case.
   if (compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed')) {
-    return { ...base, passed: true };
+    return {
+      ...base,
+      passed: true,
+      expected: normalize(expected),
+      actual: normalize(c.user.stdout),
+    };
   }
   return {
     ...base,

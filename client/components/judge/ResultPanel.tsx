@@ -1,11 +1,20 @@
 import type { RunTestsResponse } from '../../../shared/tests';
 import { Verdict } from './Verdict';
 import { FailedCase } from './FailedCase';
+import { PassedCases } from './PassedCases';
 import { Runtime } from './Runtime';
 
 // The latest Run Tests verdict, shown in the lesson panel's Result tab. The
 // judge stops at the first failing test, so that test is the one to show.
-export function ResultPanel({ results }: { results: RunTestsResponse }) {
+// `showRuntime`: only algorithm lessons are about speed; a course lesson only
+// has to work, so it gets no timings.
+export function ResultPanel({
+  results,
+  showRuntime,
+}: {
+  results: RunTestsResponse;
+  showRuntime: boolean;
+}) {
   const failedCase = results.cases.find((c) => !c.passed) ?? null;
 
   return (
@@ -19,11 +28,14 @@ export function ResultPanel({ results }: { results: RunTestsResponse }) {
         total={results.total}
       />
       {failedCase && <FailedCase result={failedCase} />}
-      <Runtime
-        cases={results.cases}
-        runtimeMs={results.runtimeMs}
-        referenceMs={results.referenceMs}
-      />
+      <PassedCases cases={results.cases} />
+      {showRuntime && (
+        <Runtime
+          cases={results.cases}
+          runtimeMs={results.runtimeMs}
+          referenceMs={results.referenceMs}
+        />
+      )}
     </div>
   );
 }

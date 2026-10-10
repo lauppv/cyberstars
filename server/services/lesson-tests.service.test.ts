@@ -251,6 +251,23 @@ describe('runLessonTests', () => {
     expect(replies).toEqual(['stop']);
   });
 
+  it('shows both outputs on a passed case, hidden ones included', async () => {
+    stubFiles();
+    stubVerdict({
+      syntaxError: null,
+      structureFailures: [],
+      cases: [
+        { user: program(), solution: program() },
+        { user: program({ stdout: '0\n' }), solution: program({ stdout: '0\n' }) },
+      ],
+    });
+
+    const res = await runLessonTests('user:1', 'python', 'print', 'code');
+    expect(res.status).toBe('passed');
+    expect(res.cases[0]).toMatchObject({ visible: true, expected: 'ok', actual: 'ok' });
+    expect(res.cases[1]).toMatchObject({ visible: false, expected: '0', actual: '0' });
+  });
+
   it('hides expected output on a hidden failed case, after the passed ones', async () => {
     stubFiles();
     stubVerdict({
