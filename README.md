@@ -82,6 +82,8 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture breakdown, API 
 
 Every push and pull request runs eleven parallel jobs after a shared `setup`: **format-check**, **lint**, **typecheck**, **test** (with coverage + PR comment), **audit** (`npm audit --audit-level=high`), **dead-code** (knip), **validate-tests** (`npm run validate:tests`), **test-integration** (against a Postgres 16 service), **test-e2e-browser** and **test-e2e-docker** (Playwright with sandbox + runtime Docker images), and **build**.
 
+A second workflow, **lesson-tests**, grades lessons again through the real Docker judge (`npm run check:tests`), but only the ones a pull request can have changed: a changed spec, reference solution or variant grades that lesson, a changed runner every lesson of its language, and a change to the judge shared by all languages every lesson. A pull request that touches none of them skips it; a manual run grades everything.
+
 ## Contributing
 
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
