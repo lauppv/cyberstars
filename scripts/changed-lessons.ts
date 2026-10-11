@@ -60,8 +60,8 @@ const ENGINE_FILES = [
 const SELF_FILES = ['scripts/changed-lessons.ts', '.github/workflows/lesson-tests.yml'];
 
 // server/lessons/java/ro/hashmap-tests.json -> java/hashmap,
-// server/algorithms/c/two-sum-solution.md -> algo-c/two-sum,
-// test/lesson-variants/python/loops/reject-while.py -> python/loops.
+// server/algorithms/c/binary-search-c-solution.md -> algo-c/binary-search-c,
+// test/lesson-variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse.
 const LESSON_FILE =
   /^server\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
 const VARIANT_FILE = /^test\/lesson-variants\/([^/]+)\/([^/]+)\/[^/]+$/;

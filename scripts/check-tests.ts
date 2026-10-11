@@ -14,10 +14,10 @@
 // concept the lesson teaches, not the reference's exact shape. English only:
 // a RO spec differs from its EN twin only in the identifiers.
 //
-//   npx tsx scripts/check-tests.ts python                # a whole course
-//   npx tsx scripts/check-tests.ts algo-c/two-sum        # one lesson
-//   npx tsx scripts/check-tests.ts java --lang=ro        # only the RO specs
-//   npx tsx scripts/check-tests.ts c:en python/loops     # a language per target
+//   npx tsx scripts/check-tests.ts python                      # a whole course
+//   npx tsx scripts/check-tests.ts algo-c/binary-search-c      # one lesson
+//   npx tsx scripts/check-tests.ts java --lang=ro              # only the RO specs
+//   npx tsx scripts/check-tests.ts c:en python/string-reverse  # a language per target
 import fs from 'fs';
 import path from 'path';
 import { contentDir } from '../server/services/paths.js';
