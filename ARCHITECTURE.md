@@ -347,6 +347,10 @@ A lesson may also ship an optional `<slug>-tests.json` (judge test cases) and
 student presses "Run Tests", the server runs their code against the cases and marks
 the lesson complete only on a passing verdict; there is no manual "Mark Complete"
 button. Courses without test files (e.g. Kotlin) are not completable yet.
+Each tested lesson also keeps variants in `test/lesson-variants/<course>/<slug>/`:
+other correct solutions (`accept-*`) that must pass and cheats (`reject-*`) that must
+fail. `npm run check:tests` grades them next to the reference solution, and the
+`lesson-tests` CI workflow runs it on the lessons a pull request changes.
 
 A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
 
