@@ -14,6 +14,13 @@
     "noEmit": true,
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["client", "shared", "test"],
+  "include": [
+    "client",
+    "shared",
+    "test",
+    "vite.config.ts",
+    "vitest.integration.config.ts",
+    "knip.config.ts"
+  ],
   "exclude": ["node_modules", "dist", "server", "test/integration"]
 }
