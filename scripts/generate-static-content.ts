@@ -5,6 +5,7 @@
 //   public/curriculum.json        : same shape/order as the old GET /api/curriculum
 //   public/lessons/<courseKey>/   : lesson bodies (<slug>.md) and starter code
 //                                   (<slug>-code.md), copied from the source tree
+//                                   (solutions are not: they stay server-side)
 //
 // Run by `predev` and `prebuild`. The output is generated, not committed.
 import fs from 'fs';
@@ -49,6 +50,11 @@ const curriculum = [...courses]
         ...(fs.existsSync(path.join(sourceDir(course.key), `${lesson.slug}-tests.json`))
           ? { hasTests: true }
           : {}),
+        // Solutions are served only through POST /api/usage/solution (signed-in,
+        // metered), so the client learns whether one exists from this flag.
+        ...(fs.existsSync(path.join(sourceDir(course.key), `${lesson.slug}-solution.md`))
+          ? { hasSolution: true }
+          : {}),
       })),
   }));
 
@@ -64,13 +70,16 @@ const LOCALE_DIRS = ['ro'];
 
 // Copy every *.md from srcDir into destDir. Only *.md is exposed: linux
 // -setup.json files stay server-side (the terminal sandbox reads them on session
-// create), and locale subdirectories are handled separately below.
+// create), and locale subdirectories are handled separately below. -solution.md
+// stays server-side too: guests must not read solutions, and signed-in students
+// get them through the metered reveal endpoint.
 function copyMarkdown(srcDir: string, destDir: string): number {
   if (!fs.existsSync(srcDir)) return 0;
   fs.mkdirSync(destDir, { recursive: true });
   let n = 0;
   for (const file of fs.readdirSync(srcDir)) {
     if (!file.endsWith('.md')) continue; // skips locale subdirs (they're not *.md)
+    if (file.endsWith('-solution.md')) continue;
     fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
     n++;
   }
