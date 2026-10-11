@@ -17,6 +17,7 @@
 //   npx tsx scripts/check-tests.ts python                # a whole course
 //   npx tsx scripts/check-tests.ts algo-c/two-sum        # one lesson
 //   npx tsx scripts/check-tests.ts java --lang=ro        # only the RO specs
+//   npx tsx scripts/check-tests.ts c:en python/loops     # a language per target
 import fs from 'fs';
 import path from 'path';
 import { contentDir } from '../server/services/paths.js';
@@ -105,18 +106,21 @@ async function checkVariants(courseKey: string, slug: string): Promise<number> {
 async function main() {
   const args = process.argv.slice(2);
   const langArg = args.find((a) => a.startsWith('--lang='))?.slice('--lang='.length);
-  const langs = langArg ? [langArg] : ['en', 'ro'];
   const targets = args.filter((a) => !a.startsWith('--'));
   if (targets.length === 0) {
-    console.error('usage: tsx scripts/check-tests.ts <course>[/<slug>] ... [--lang=en|ro]');
+    console.error(
+      'usage: tsx scripts/check-tests.ts <course>[/<slug>][:en|:ro] ... [--lang=en|ro]',
+    );
     process.exit(2);
   }
 
   let failures = 0;
-  for (const target of targets) {
+  for (const arg of targets) {
+    const [target, targetLang] = arg.split(':');
     const [courseKey, onlySlug] = target.split('/');
     const base = contentDir(courseKey);
-    for (const lang of langs) {
+    const onlyLang = targetLang ?? langArg;
+    for (const lang of onlyLang ? [onlyLang] : ['en', 'ro']) {
       const dir = lang === 'ro' ? path.join(base, 'ro') : base;
       const slugs = onlySlug ? [onlySlug].filter((s) => slugsIn(dir).includes(s)) : slugsIn(dir);
       for (const slug of slugs) {
