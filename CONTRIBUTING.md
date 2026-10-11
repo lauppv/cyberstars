@@ -98,6 +98,17 @@ See [README.md](README.md) for the full architecture. The short version:
 
 ## How to contribute
 
+### How we track work
+
+Since October 11, 2026, CyberStars has moved to tickets in [Linear](https://linear.app/cyberstars)
+(team `CYB`), as the project has grown several directions of development worth planning.
+Each PR is tied to a ticket, which is why you'll see references like `CYB-23` in PR
+titles and descriptions. The Linear workspace isn't public, so those links need an account.
+
+GitHub issues, forks and PRs are always welcome. If you'd like to contribute regularly,
+create a Linear account and open an issue here asking to join. A maintainer will
+send you an invite to the workspace.
+
 ### Reporting bugs
 
 Open an issue with:
