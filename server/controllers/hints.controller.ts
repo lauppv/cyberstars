@@ -8,7 +8,8 @@ import type { HintLevel } from '../../shared/hints.js';
 
 export async function getHint(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug } = req.params;
+    const courseKey = req.params.courseKey as string;
+    const lessonSlug = req.params.lessonSlug as string;
     const lang = req.body.lang === 'ro' ? 'ro' : 'en';
     const userId = req.user!.id;
     const admin = isAdmin(await userRepo.getRole(userId));
