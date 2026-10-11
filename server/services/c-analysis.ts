@@ -94,11 +94,12 @@ function parseIntLiteral(text: string): number | null {
   return Number.isNaN(value) ? null : value;
 }
 
-const C_LOOP_NODES = {
+// Python's `comprehension` has no C node, so a rule asking for one matches nothing.
+const C_LOOP_NODES: Record<string, string> = {
   for: 'for_statement',
   while: 'while_statement',
   do_while: 'do_statement',
-} as const;
+};
 
 // A pointer the student declared: not main's own `char **argv`, which every
 // program may write, nor the type in a cast or sizeof, which declares nothing.
