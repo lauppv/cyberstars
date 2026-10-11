@@ -98,6 +98,17 @@ See [README.md](README.md) for the full architecture. The short version:
 
 ## How to contribute
 
+### How we track work
+
+Since October 11, 2026, CyberStars has moved to tickets in [Linear](https://linear.app/cyberstars)
+(team `CYB`), as the project has grown several directions of development worth planning.
+Each PR is tied to a ticket, which is why you'll see references like `CYB-23` in PR
+titles and descriptions. The Linear workspace isn't public, so those links need an account.
+
+GitHub issues, forks and PRs are always welcome. If you'd like to contribute regularly,
+create a Linear account and open an issue here asking to join. A maintainer will
+send you an invite to the workspace.
+
 ### Reporting bugs
 
 Open an issue with:
@@ -180,6 +191,20 @@ CyberStars uses the **fork-and-pull** model: you push branches to your own fork,
 4. Make your changes
 5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code`. All five must pass (these mirror the CI gates)
 6. Push to your fork (`git push origin my-feature`) and open a pull request against `lauppv/cyberstars` with a clear description of what and why
+
+### Commits
+
+Keep each commit to one concern: a piece of shared infrastructure, one behaviour change,
+the tests that belong to it, docs, or an unrelated cleanup. A PR usually holds several
+commits, not one.
+
+Why: any single piece can be reverted on its own without losing the rest, reviewers can
+read the PR one step at a time, and `git bisect` lands on a small change instead of a
+whole session's work.
+
+Stage per path (or with `git add -p`) rather than `git add -A`. The one limit on
+splitting: every commit must leave the tree green, so never split so finely that an
+intermediate commit fails typecheck or tests.
 
 ### Formatting
 
