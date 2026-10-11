@@ -192,6 +192,20 @@ CyberStars uses the **fork-and-pull** model: you push branches to your own fork,
 5. Run `npm run format:check && npm run lint && npm run typecheck && npm test && npm run dead-code`. All five must pass (these mirror the CI gates)
 6. Push to your fork (`git push origin my-feature`) and open a pull request against `lauppv/cyberstars` with a clear description of what and why
 
+### Commits
+
+Keep each commit to one concern: a piece of shared infrastructure, one behaviour change,
+the tests that belong to it, docs, or an unrelated cleanup. A PR usually holds several
+commits, not one.
+
+Why: any single piece can be reverted on its own without losing the rest, reviewers can
+read the PR one step at a time, and `git bisect` lands on a small change instead of a
+whole session's work.
+
+Stage per path (or with `git add -p`) rather than `git add -A`. The one limit on
+splitting: every commit must leave the tree green, so never split so finely that an
+intermediate commit fails typecheck or tests.
+
 ### Formatting
 
 This project uses [Prettier](https://prettier.io/) to enforce consistent code style (single quotes, semicolons, 2-space indent, 100-char lines). CI will reject unformatted code.
