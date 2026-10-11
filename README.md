@@ -93,6 +93,11 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 - Code style guide
 - Pull request process
 
+Since October 11, 2026, work on CyberStars is planned as tickets in [Linear](https://linear.app/cyberstars).
+That's where references like `CYB-23` in PRs point. The workspace isn't public, so opening them
+needs an account. Issues, forks and PRs on GitHub are always welcome. To contribute regularly,
+create a Linear account and open an issue asking to join the workspace.
+
 ## License
 
 [BSD 3-Clause](LICENSE)
