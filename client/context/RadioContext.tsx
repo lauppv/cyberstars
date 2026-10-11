@@ -9,7 +9,7 @@ import {
 } from 'react';
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import { RADIO_TRACK } from '../constants/radioTrack';
 import type { RadioTrack } from '../constants/radioTrack';
 

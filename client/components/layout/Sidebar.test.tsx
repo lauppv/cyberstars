@@ -25,7 +25,7 @@ vi.mock('../../hooks/useGamification', () => ({
     xp: { level: 3, xpIntoLevel: 40, xpForLevelSpan: 500, titleKey: 'level.title.3' },
   }),
 }));
-vi.mock('../../../shared/features', () => ({
+vi.mock('@cyberstars/shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));
 

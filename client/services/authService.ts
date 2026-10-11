@@ -1,5 +1,9 @@
 import { api } from './apiClient';
-import type { AuthenticatedUser as User, LoginPayload, SignupPayload } from '../../shared/auth';
+import type {
+  AuthenticatedUser as User,
+  LoginPayload,
+  SignupPayload,
+} from '@cyberstars/shared/auth';
 
 export function login(payload: LoginPayload) {
   return api.post<{ message: string }>('/auth/login', payload);

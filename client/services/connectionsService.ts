@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import type { ConnectionsOverview } from '../../shared/connections';
+import type { ConnectionsOverview } from '@cyberstars/shared/connections';
 
 export function getOverview() {
   return api.get<ConnectionsOverview>('/api/connections');

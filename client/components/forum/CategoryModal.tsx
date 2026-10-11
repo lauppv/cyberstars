@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as forumService from '../../services/forumService';
-import type { ForumCategoryDTO } from '../../../shared/forum';
+import type { ForumCategoryDTO } from '@cyberstars/shared/forum';
 
 const inputCls =
   'w-full px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[14px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition';

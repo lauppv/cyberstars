@@ -9,8 +9,8 @@ import type {
   UpdatePostRequest,
   CreateCategoryRequest,
   UpdateCategoryRequest,
-} from '../../shared/forum';
-import type { UserRole } from '../../shared/auth';
+} from '@cyberstars/shared/forum';
+import type { UserRole } from '@cyberstars/shared/auth';
 
 export function getCategories() {
   return api.get<ForumCategoryDTO[]>('/api/forum/categories');

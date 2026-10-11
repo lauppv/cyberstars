@@ -1,9 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import { useUserSocket } from '../hooks/useUserSocket';
-import type { UserSocketFrame } from '../../shared/notifications';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 type FrameHandler = (frame: UserSocketFrame) => void;
 

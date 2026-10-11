@@ -1,6 +1,10 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import type { ReactNode } from 'react';
-import type { AuthenticatedUser as User, LoginPayload, SignupPayload } from '../../shared/auth';
+import type {
+  AuthenticatedUser as User,
+  LoginPayload,
+  SignupPayload,
+} from '@cyberstars/shared/auth';
 import * as authService from '../services/authService';
 
 interface AuthContextType {

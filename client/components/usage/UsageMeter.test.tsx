@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { UsageMeter } from './UsageMeter';
-import type { UsageState } from '../../../shared/usage';
+import type { UsageState } from '@cyberstars/shared/usage';
 
 function state(over: Partial<UsageState> = {}): UsageState {
   return { used: 1, limit: 3, remaining: 2, resetAt: null, unlimited: false, ...over };

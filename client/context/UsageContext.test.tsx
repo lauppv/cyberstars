@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor, act, fireEvent } from '@testing-library/react';
-import type { UsageSummary } from '../../shared/usage';
+import type { UsageSummary } from '@cyberstars/shared/usage';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true },

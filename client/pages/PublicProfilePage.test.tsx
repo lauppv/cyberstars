@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import type { PublicProfile } from '../../shared/profile';
+import type { PublicProfile } from '@cyberstars/shared/profile';
 
 const mockNavigate = vi.fn();
 let mockParams: { userId?: string } = { userId: '7' };

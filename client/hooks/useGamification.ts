@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '../../shared/constants';
+import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '@cyberstars/shared/constants';
 import { badgeIcon, badgeLabel, badgeDescription } from '../components/gamification/badgeMeta';
 
 interface BadgeDef {

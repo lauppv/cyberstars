@@ -12,7 +12,7 @@ import {
   xpForLesson,
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
-} from '../../shared/constants';
+} from '@cyberstars/shared/constants';
 
 interface CourseData {
   key: string;

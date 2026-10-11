@@ -1,6 +1,6 @@
 import path from 'path';
 import { Parser, Language, type Node } from 'web-tree-sitter';
-import type { InjectValue, LessonTestsSpec, StructureFailure } from '../../shared/tests.js';
+import type { InjectValue, LessonTestsSpec, StructureFailure } from '@cyberstars/shared/tests';
 
 // Server-side C analysis for the lesson judge. C has no in-container parser
 // (python has `ast`, java has javac's Tree API; gcc's shipped python3 parses

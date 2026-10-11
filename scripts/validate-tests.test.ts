@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { LessonTestsSpec } from '../shared/tests.js';
+import type { LessonTestsSpec } from '@cyberstars/shared/tests';
 import {
   collectProblems,
   auditSolution,

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import type { ForumCategoryDTO } from '../../../shared/forum';
+import type { ForumCategoryDTO } from '@cyberstars/shared/forum';
 
 const createCategory = vi.fn();
 const updateCategory = vi.fn();

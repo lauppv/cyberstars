@@ -1,5 +1,5 @@
 import type { TFunction } from 'i18next';
-import type { InjectValue, StructureFailure, TestCaseResult } from '../../../shared/tests';
+import type { InjectValue, StructureFailure, TestCaseResult } from '@cyberstars/shared/tests';
 
 export function structureMessage(failure: StructureFailure, t: TFunction): string {
   return t(`tests.structure.${failure.type}.${failure.rule.kind}`, {

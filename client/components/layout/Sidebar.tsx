@@ -27,8 +27,8 @@ import { BrandMark } from '../ui/BrandMark';
 import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
 import { useGamification } from '../../hooks/useGamification';
-import { isAdmin } from '../../../shared/auth';
-import { canAccessFeature } from '../../../shared/features';
+import { isAdmin } from '@cyberstars/shared/auth';
+import { canAccessFeature } from '@cyberstars/shared/features';
 
 // "wide" is a sidebar that was left open, unfolded only where there is room
 // for it beside the page

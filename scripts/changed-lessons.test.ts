@@ -54,6 +54,19 @@ describe('planChecks', () => {
     ]);
   });
 
+  it("grades every language when the judge's shared types changed", () => {
+    const names = planChecks(['packages/shared/tests.ts']).map((s) => s.name);
+    expect(names).toEqual([
+      'python 1/2',
+      'python 2/2',
+      'c',
+      'java 1/4',
+      'java 2/4',
+      'java 3/4',
+      'java 4/4',
+    ]);
+  });
+
   it('grades one lesson per language when only the planner or its workflow changed', () => {
     const shards = planChecks(['.github/workflows/lesson-tests.yml']);
     expect(shards.map((s) => s.name)).toEqual(['python', 'c', 'java']);

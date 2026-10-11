@@ -1,5 +1,9 @@
 import { api } from './apiClient';
-import type { RunTestsResponse, SubmissionDetail, SubmissionSummary } from '../../shared/tests';
+import type {
+  RunTestsResponse,
+  SubmissionDetail,
+  SubmissionSummary,
+} from '@cyberstars/shared/tests';
 
 export function runTests(
   courseKey: string,

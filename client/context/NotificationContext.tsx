@@ -1,11 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import { useUserSocketFrames } from './UserSocketContext';
 import * as notificationsService from '../services/notificationsService';
-import { COLLAPSIBLE_TYPES } from '../../shared/notifications';
-import type { NotificationDTO, UserSocketFrame } from '../../shared/notifications';
+import { COLLAPSIBLE_TYPES } from '@cyberstars/shared/notifications';
+import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const PAGE_SIZE = 20;
 

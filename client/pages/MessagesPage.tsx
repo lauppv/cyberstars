@@ -7,7 +7,7 @@ import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ConversationList } from '../components/messages/ConversationList';
 import { MessageThread } from '../components/messages/MessageThread';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 
 export function MessagesPage() {
   const navigate = useNavigate();

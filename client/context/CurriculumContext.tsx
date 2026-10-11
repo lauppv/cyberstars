@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import type { ReactNode } from 'react';
-import type { Course } from '../../shared/lesson';
+import type { Course } from '@cyberstars/shared/lesson';
 import { fetchCurriculum } from '../services/lessonService';
 
 interface CurriculumContextType {

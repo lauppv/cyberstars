@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import type { ConversationDTO, ConversationHistory, MessageDTO } from '../../shared/messages';
+import type { ConversationDTO, ConversationHistory, MessageDTO } from '@cyberstars/shared/messages';
 
 export function getConversations() {
   return api.get<{ conversations: ConversationDTO[] }>('/api/messages/conversations');

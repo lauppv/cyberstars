@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, CircleCheck, CircleX } from 'lucide-react';
-import type { SubmissionDetail, SubmissionSummary } from '../../../shared/tests';
+import type { SubmissionDetail, SubmissionSummary } from '@cyberstars/shared/tests';
 import * as testsService from '../../services/testsService';
 import { CodeEditor } from '../code/CodeEditor';
 import { LoadingSpinner } from '../ui/LoadingSpinner';

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import type { UserSocketFrame } from '../../shared/notifications';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 // Holds the shared per-user event socket (/ws/user) open while `enabled`,
 // demuxing nothing itself: it hands each parsed frame to `onFrame`, which

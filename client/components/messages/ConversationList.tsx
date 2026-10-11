@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import type { ConversationDTO } from '../../../shared/messages';
+import type { ConversationDTO } from '@cyberstars/shared/messages';
 import { Avatar } from '../ui/Avatar';
 
 export function ConversationList({

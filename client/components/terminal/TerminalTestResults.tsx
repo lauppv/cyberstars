@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import type { TerminalTestResult } from '../../../shared/terminal';
+import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 
 interface Props {
   results: TerminalTestResult;

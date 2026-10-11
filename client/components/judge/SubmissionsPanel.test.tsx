@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { SubmissionsPanel } from './SubmissionsPanel';
 import * as testsService from '../../services/testsService';
-import type { SubmissionDetail, SubmissionSummary } from '../../../shared/tests';
+import type { SubmissionDetail, SubmissionSummary } from '@cyberstars/shared/tests';
 
 vi.mock('../../services/testsService', () => ({
   getSubmission: vi.fn(),

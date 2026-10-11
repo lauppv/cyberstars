@@ -3,7 +3,7 @@ import remarkGfm from 'remark-gfm';
 import { CodeCell } from '../code/CodeCell';
 import { StringIndexTable } from './StringIndexTable';
 import type { Components } from 'react-markdown';
-import { MAIN_COURSE_KEYS } from '../../../shared/constants';
+import { MAIN_COURSE_KEYS } from '@cyberstars/shared/constants';
 
 interface MarkdownRendererProps {
   content: string;

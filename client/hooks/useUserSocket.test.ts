@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import type { UserSocketFrame } from '../../shared/notifications';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 let wsInstances: MockWebSocket[] = [];
 

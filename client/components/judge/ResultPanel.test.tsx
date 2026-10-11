@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ResultPanel } from './ResultPanel';
-import type { RunTestsResponse } from '../../../shared/tests';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
 
 const base: RunTestsResponse = {
   status: 'failed',

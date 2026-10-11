@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { ALL_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants.js';
+import { ALL_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
 import { AppError } from '../middleware/errorHandler.js';
 
 const LESSONS_DIR = path.join(process.cwd(), 'server', 'lessons');

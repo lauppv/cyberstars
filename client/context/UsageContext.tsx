@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 import * as usageService from '../services/usageService';
-import type { UsageSummary } from '../../shared/usage';
+import type { UsageSummary } from '@cyberstars/shared/usage';
 
 interface UsageContextValue {
   // Current daily usage, or null before the first load / when logged out.

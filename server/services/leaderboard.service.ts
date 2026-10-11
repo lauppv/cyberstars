@@ -1,6 +1,6 @@
 import * as leaderboardRepo from '../repositories/leaderboard.repository.js';
-import { levelFromXp, levelTitleKey } from '../../shared/constants.js';
-import type { LeaderboardEntry, LeaderboardPage } from '../../shared/leaderboard.js';
+import { levelFromXp, levelTitleKey } from '@cyberstars/shared/constants';
+import type { LeaderboardEntry, LeaderboardPage } from '@cyberstars/shared/leaderboard';
 
 const CACHE_TTL_MS = Number(process.env.LEADERBOARD_CACHE_MS ?? 3 * 60 * 1000);
 

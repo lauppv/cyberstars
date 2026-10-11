@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import type { NotificationsPage } from '../../shared/notifications';
+import type { NotificationsPage } from '@cyberstars/shared/notifications';
 
 export function getNotifications(take = 20, before?: number) {
   const q = new URLSearchParams({ take: String(take) });

@@ -2,7 +2,7 @@ import * as repo from '../repositories/messages.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
 import { pushToUser } from './ws-user.js';
 import { AppError } from '../middleware/errorHandler.js';
-import type { ConversationDTO, ConversationHistory, MessageDTO } from '../../shared/messages.js';
+import type { ConversationDTO, ConversationHistory, MessageDTO } from '@cyberstars/shared/messages';
 
 const HISTORY_PAGE = 30;
 

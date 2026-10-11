@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { CircleCheck, CircleX, TriangleAlert } from 'lucide-react';
-import type { StructureFailure, TestCaseResult } from '../../../shared/tests';
+import type { StructureFailure, TestCaseResult } from '@cyberstars/shared/tests';
 import { structureMessage, verdictOf } from './format';
 
 interface VerdictProps {

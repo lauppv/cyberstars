@@ -8,8 +8,8 @@ import {
   fetchAlmanacExtras,
   fetchAlmanacArticle,
 } from '../services/almanacService';
-import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/almanac';
-import { dateKey } from '../../shared/constants';
+import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '@cyberstars/shared/almanac';
+import { dateKey } from '@cyberstars/shared/constants';
 import './AlmanacPage.css';
 
 // Deterministic per-day index so the featured read rotates once every 24h, the

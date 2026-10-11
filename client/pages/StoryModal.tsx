@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { AlmanacArticle } from '../../shared/almanac';
+import type { AlmanacArticle } from '@cyberstars/shared/almanac';
 import './AlmanacPage.css';
 
 export function StoryModal({ story, onClose }: { story: AlmanacArticle; onClose: () => void }) {

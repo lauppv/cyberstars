@@ -1,5 +1,5 @@
 import type { WebSocket } from 'ws';
-import type { UserSocketFrame } from '../../shared/notifications.js';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 // One shared per-user event socket (/ws/user), keyed by user id with a Set of
 // sockets so multiple tabs of the same user all receive live frames. Shared by

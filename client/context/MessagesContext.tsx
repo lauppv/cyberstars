@@ -9,11 +9,11 @@ import {
 } from 'react';
 import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import { useUserSocketFrames } from './UserSocketContext';
 import * as messagesService from '../services/messagesService';
-import type { ConversationDTO, MessageDTO } from '../../shared/messages';
-import type { UserSocketFrame } from '../../shared/notifications';
+import type { ConversationDTO, MessageDTO } from '@cyberstars/shared/messages';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 interface MessagesContextValue {
   enabled: boolean;

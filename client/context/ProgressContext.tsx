@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 import { useCurriculum } from './CurriculumContext';
 import * as progressService from '../services/progressService';
-import type { CourseProgress } from '../../shared/progress';
+import type { CourseProgress } from '@cyberstars/shared/progress';
 
 interface ProgressContextType {
   progressMap: Record<string, CourseProgress>;

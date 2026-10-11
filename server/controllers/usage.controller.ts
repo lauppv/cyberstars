@@ -1,10 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
 import * as userRepo from '../repositories/user.repository.js';
-import { isAdmin } from '../../shared/auth.js';
+import { isAdmin } from '@cyberstars/shared/auth';
 import { consume, getSummary } from '../services/usage.service.js';
 import { contentDir, readLocalized } from '../services/paths.js';
 import { AppError } from '../middleware/errorHandler.js';
-import type { SolutionReveal } from '../../shared/usage.js';
+import type { SolutionReveal } from '@cyberstars/shared/usage';
 
 // Lesson slugs are lowercase words joined by dashes; anything else (a `..` or an
 // encoded `/`) would let the slug walk out of the course directory.

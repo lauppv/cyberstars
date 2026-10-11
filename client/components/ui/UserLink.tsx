@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
-import { canAccessFeature } from '../../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 
 // Wraps a user's name (or avatar) in a link to their public profile. Profiles
 // are logged-in only (they ride the `leaderboard` gate), so for guests (or

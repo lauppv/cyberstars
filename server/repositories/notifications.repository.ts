@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
-import type { NotificationData, NotificationType } from '../../shared/notifications.js';
+import type { NotificationData, NotificationType } from '@cyberstars/shared/notifications';
 
 const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
 

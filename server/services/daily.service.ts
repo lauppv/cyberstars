@@ -7,8 +7,8 @@ import {
   ALGO_COURSE_KEYS,
   DAILY_BONUS_RATIO,
   dateKey,
-} from '../../shared/constants.js';
-import type { DailyKind, DailyPickDto, DailyResponse } from '../../shared/daily.js';
+} from '@cyberstars/shared/constants';
+import type { DailyKind, DailyPickDto, DailyResponse } from '@cyberstars/shared/daily';
 
 // Courses each kind draws from; mirrors the client's home-page grouping.
 const POOLS: Record<DailyKind, readonly string[]> = {

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import type { ConversationDTO, MessageDTO } from '../../shared/messages';
-import type { UserSocketFrame } from '../../shared/notifications';
+import type { ConversationDTO, MessageDTO } from '@cyberstars/shared/messages';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, user: { id: 1, role: 'USER' } as { id: number; role: string } | null },

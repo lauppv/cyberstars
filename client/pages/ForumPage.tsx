@@ -8,15 +8,15 @@ import { ForumPostContent } from '../components/forum/ForumPostContent';
 import { CategoryModal } from '../components/forum/CategoryModal';
 import { useAuth } from '../context/AuthContext';
 import { forumRoutes } from '../constants/forumRoutes';
-import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants';
+import { RESTRICTED_FORUM_CATEGORIES } from '@cyberstars/shared/constants';
 import * as forumService from '../services/forumService';
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
   ForumThreadDetailDTO,
   ForumPostDTO,
-} from '../../shared/forum';
-import { isAdmin, type AuthenticatedUser, type UserRole } from '../../shared/auth';
+} from '@cyberstars/shared/forum';
+import { isAdmin, type AuthenticatedUser, type UserRole } from '@cyberstars/shared/auth';
 import './ForumPage.css';
 
 function timeAgo(iso: string): string {

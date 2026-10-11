@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import type { NotificationDTO, UserSocketFrame } from '../../../shared/notifications';
+import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
   navigate: vi.fn(),

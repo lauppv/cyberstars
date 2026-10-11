@@ -1,7 +1,7 @@
 import { AppError } from '../middleware/errorHandler.js';
 import { contentDir, readLocalized } from './paths.js';
 import { generateText, isGeminiConfigured } from './gemini.service.js';
-import { MAX_HINT_LEVEL, type HintLevel, type HintResponse } from '../../shared/hints.js';
+import { MAX_HINT_LEVEL, type HintLevel, type HintResponse } from '@cyberstars/shared/hints';
 
 const LEVEL_GUIDANCE: Record<HintLevel, { en: string; ro: string }> = {
   1: {

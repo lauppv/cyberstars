@@ -1,12 +1,12 @@
 import * as repo from '../repositories/notifications.repository.js';
 import { pushToUser } from './ws-user.js';
-import { COLLAPSIBLE_TYPES } from '../../shared/notifications.js';
+import { COLLAPSIBLE_TYPES } from '@cyberstars/shared/notifications';
 import type {
   NotificationData,
   NotificationDTO,
   NotificationsPage,
   NotificationType,
-} from '../../shared/notifications.js';
+} from '@cyberstars/shared/notifications';
 
 // Deterministic per-user ceiling so the table cannot grow unbounded on the
 // 1GB VPS; enforced best-effort on every insert.

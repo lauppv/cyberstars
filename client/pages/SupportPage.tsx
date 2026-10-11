@@ -10,8 +10,8 @@ import type {
   SupportMessageDTO,
   TicketType,
   TicketStatus,
-} from '../../shared/support';
-import { isAdmin as isAdminRole } from '../../shared/auth';
+} from '@cyberstars/shared/support';
+import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 import { INPUT_CLS } from '../constants/styles';
 
 const TICKET_TYPE_VALUES: TicketType[] = [

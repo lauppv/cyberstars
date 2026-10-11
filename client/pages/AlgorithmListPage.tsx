@@ -8,7 +8,7 @@ import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseMeta } from '../constants/courses';
-import { xpForLesson } from '../../shared/constants';
+import { xpForLesson } from '@cyberstars/shared/constants';
 
 const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
 
