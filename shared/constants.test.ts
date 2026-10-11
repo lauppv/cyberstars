@@ -11,7 +11,7 @@ import {
   xpForLevel,
   levelTitleKey,
   MAX_TITLED_LEVEL,
-} from './constants';
+} from './constants.js';
 
 describe('progressPct', () => {
   it('returns 0 when there are no lessons', () => {
