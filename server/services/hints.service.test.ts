@@ -10,7 +10,9 @@ vi.mock('fs', () => ({
   },
 }));
 
-vi.mock('./paths.js', () => ({
+// readLocalized stays real so it reads through the fs mock above.
+vi.mock('./paths.js', async (importOriginal) => ({
+  readLocalized: (await importOriginal<typeof import('./paths.js')>()).readLocalized,
   contentDir: (courseKey: string) => path.join('/lessons', courseKey),
 }));
 
