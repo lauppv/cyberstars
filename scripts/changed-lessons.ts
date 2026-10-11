@@ -53,7 +53,7 @@ const ENGINE_FILES = [
   'server/services/paths.ts',
   'server/runtimes/registry.ts',
   'server/runtimes/types.ts',
-  'shared/tests.ts',
+  'packages/shared/tests.ts',
   'scripts/check-tests.ts',
 ];
 
