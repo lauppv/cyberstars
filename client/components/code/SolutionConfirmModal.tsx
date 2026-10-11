@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../../context/AuthContext';
 import { useUsage } from '../../context/UsageContext';
 import * as usageService from '../../services/usageService';
 import { UsageMeter } from '../usage/UsageMeter';
 
-// Gate shown before the solution is revealed: confirms intent and, for
-// logged-in people, spends one of the daily Show Solution reveals. Guests are
-// not metered, so they just confirm.
+// Gate shown before the solution is revealed: confirms intent, spends one of the
+// daily Show Solution reveals and hands back the solution, which only the server
+// has. Only rendered for signed-in students.
 export function SolutionConfirmModal({
+  courseKey,
+  lessonSlug,
+  lang,
   onConfirmed,
   onClose,
 }: {
-  onConfirmed: () => void;
+  courseKey: string;
+  lessonSlug: string;
+  lang: 'en' | 'ro';
+  onConfirmed: (solution: string) => void;
   onClose: () => void;
 }) {
   const { t } = useTranslation();
-  const { isLoggedIn } = useAuth();
   const { summary, applySummary } = useUsage();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,15 +37,12 @@ export function SolutionConfirmModal({
   const depleted = !!state && !state.unlimited && state.remaining <= 0;
 
   const confirm = async () => {
-    if (!isLoggedIn) {
-      onConfirmed();
-      return;
-    }
     setBusy(true);
     setError(null);
     try {
-      applySummary(await usageService.consumeSolution());
-      onConfirmed();
+      const { solution, usage } = await usageService.revealSolution(courseKey, lessonSlug, lang);
+      applySummary(usage);
+      onConfirmed(solution);
     } catch (err) {
       setError(err instanceof Error ? err.message : t('usage.solutionError'));
     } finally {
@@ -65,7 +66,7 @@ export function SolutionConfirmModal({
           <p className="text-[13px] leading-relaxed text-[var(--text2)]">
             {t('lesson.solutionConfirmBody')}
           </p>
-          {isLoggedIn && state && <UsageMeter state={state} label={t('usage.solution')} />}
+          {state && <UsageMeter state={state} label={t('usage.solution')} />}
           {depleted && (
             <span className="text-[12px] text-[var(--error)] font-semibold">
               {t('usage.solutionDepleted')}

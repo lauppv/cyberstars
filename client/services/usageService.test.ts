@@ -3,7 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mockApi = { get: vi.fn(), post: vi.fn() };
 vi.mock('./apiClient', () => ({ api: mockApi }));
 
-const { getUsage, consumeSolution } = await import('./usageService');
+const { getUsage, revealSolution } = await import('./usageService');
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -14,9 +14,9 @@ describe('usageService', () => {
     expect(mockApi.get).toHaveBeenCalledWith('/api/usage');
   });
 
-  it('posts to consume a solution reveal', async () => {
+  it('posts the lesson and language to reveal a solution', async () => {
     mockApi.post.mockResolvedValue({});
-    await consumeSolution();
-    expect(mockApi.post).toHaveBeenCalledWith('/api/usage/solution');
+    await revealSolution('python', 'loops', 'ro');
+    expect(mockApi.post).toHaveBeenCalledWith('/api/usage/solution/python/loops', { lang: 'ro' });
   });
 });
