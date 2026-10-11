@@ -13,6 +13,13 @@
     "declaration": true,
     "sourceMap": true
   },
-  "include": ["./**/*.ts", "../shared/**/*.ts"],
-  "exclude": ["node_modules", "dist", "lessons", "runtimes"]
+  "include": [
+    "./**/*.ts",
+    "../shared/**/*.ts",
+    "../scripts/**/*.ts",
+    "../test/integration/**/*.ts",
+    "../prisma/**/*.ts",
+    "../prisma.config.ts"
+  ],
+  "exclude": ["node_modules", "dist", "lessons"]
 }

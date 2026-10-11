@@ -95,19 +95,19 @@ describe('content security policy', () => {
 describe('guest id cookie', () => {
   it('sets a guestId cookie for signed-out visitors', async () => {
     const res = await request(app).get('/api/forum/categories');
-    const cookies = (res.headers['set-cookie'] as string[] | undefined) ?? [];
+    const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
   });
 
   it('does not set a guestId when a token cookie is already present', async () => {
     const res = await request(app).get('/api/forum/categories').set('Cookie', 'token=whatever');
-    const cookies = (res.headers['set-cookie'] as string[] | undefined) ?? [];
+    const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
   });
 });
 
 describe('endpoint smoke tests: auth-protected routes return 401 without token', () => {
-  const authRequired: [string, string][] = [
+  const authRequired: ['get' | 'post' | 'put' | 'patch' | 'delete', string][] = [
     ['get', '/api/progress/python'],
     ['get', '/api/progress/python/booleans/code'],
     ['put', '/api/progress/python/booleans/code'],
@@ -156,9 +156,7 @@ describe('endpoint smoke tests: auth-protected routes return 401 without token',
 
   for (const [method, path] of authRequired) {
     it(`${method.toUpperCase()} ${path}`, async () => {
-      const res = await (request(app) as Record<string, (url: string) => request.Test>)[method](
-        path,
-      );
+      const res = await request(app)[method](path);
       expect(res.status).toBe(401);
     });
   }

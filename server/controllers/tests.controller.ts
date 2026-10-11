@@ -14,7 +14,8 @@ export function resolveOwnerKey(req: Request): string | null {
 
 export async function runTests(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug } = req.params;
+    const courseKey = req.params.courseKey as string;
+    const lessonSlug = req.params.lessonSlug as string;
     const result = await runLessonTests(
       resolveOwnerKey(req)!,
       courseKey,
@@ -65,7 +66,8 @@ export async function runTests(req: Request, res: Response, next: NextFunction) 
 
 export async function listSubmissions(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug } = req.params;
+    const courseKey = req.params.courseKey as string;
+    const lessonSlug = req.params.lessonSlug as string;
     res.json(await submissionsService.listForLesson(req.user!.id, courseKey, lessonSlug));
   } catch (err) {
     next(err);

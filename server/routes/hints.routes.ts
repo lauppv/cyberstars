@@ -14,7 +14,7 @@ const hintLimiter = rateLimit({
   limit: process.env.NODE_ENV === 'test' ? 10_000 : 15,
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req: Request) => req.user?.id ?? 'unknown',
+  keyGenerator: (req: Request) => String(req.user!.id),
   handler: execRateLimitHandler,
 });
 

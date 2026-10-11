@@ -26,7 +26,8 @@ export async function getUsage(req: Request, res: Response, next: NextFunction) 
 // for signed-in students. A lesson without a solution is a 404 and costs nothing.
 export async function revealSolution(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug } = req.params;
+    const courseKey = req.params.courseKey as string;
+    const lessonSlug = req.params.lessonSlug as string;
     const lang = req.body.lang === 'ro' ? 'ro' : 'en';
     const solution = LESSON_SLUG.test(lessonSlug)
       ? readLocalized(contentDir(courseKey), `${lessonSlug}-solution.md`, lang)

@@ -25,7 +25,7 @@ npm run test:e2e          # Playwright (both projects: browser + docker)
 npm run test:e2e:browser  # Playwright browser-only (auth/forum/support/courses/profile)
 npm run test:e2e:docker   # Playwright docker runners (Python/C/Java/Kotlin/terminal/ws-stdin)
 npm run test:e2e:ui       # Playwright UI mode
-npm run typecheck         # tsc --noEmit
+npm run typecheck         # tsc on the UI, the server (+ scripts, integration tests, Prisma) and E2E
 npm run lint              # ESLint
 npm run format            # Prettier write
 npm run format:check      # Prettier check (CI-equivalent)

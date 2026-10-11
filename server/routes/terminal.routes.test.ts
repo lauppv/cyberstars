@@ -116,7 +116,7 @@ describe('execRateLimitHandler', () => {
       return res;
     }) as Response['status'];
     res.json = ((body: unknown) => {
-      (res as { body: unknown }).body = body;
+      (res as unknown as { body: unknown }).body = body;
       return res;
     }) as Response['json'];
     return res;
@@ -129,7 +129,7 @@ describe('execRateLimitHandler', () => {
     execRateLimitHandler(req, res);
 
     expect((res as { statusCode: number }).statusCode).toBe(429);
-    expect((res as { body: { error: string } }).body.error).toMatch(/try again in \d+s/);
+    expect((res as unknown as { body: { error: string } }).body.error).toMatch(/try again in \d+s/);
   });
 
   it('falls back to a 1s minimum when resetTime is missing', () => {
@@ -138,7 +138,7 @@ describe('execRateLimitHandler', () => {
 
     execRateLimitHandler(req, res);
 
-    expect((res as { body: { error: string } }).body.error).toContain('1s');
+    expect((res as unknown as { body: { error: string } }).body.error).toContain('1s');
   });
 });
 

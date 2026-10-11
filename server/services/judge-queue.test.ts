@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { acquireJudgeSlot } from './judge-queue';
+import { acquireJudgeSlot } from './judge-queue.js';
 
 afterEach(() => {
   vi.useRealTimers();
