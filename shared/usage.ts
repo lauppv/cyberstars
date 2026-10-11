@@ -26,3 +26,9 @@ export interface UsageState {
 }
 
 export type UsageSummary = Record<UsageAction, UsageState>;
+
+// A Show Solution reveal: the lesson's solution markdown plus the refreshed usage.
+export interface SolutionReveal {
+  solution: string;
+  usage: UsageSummary;
+}

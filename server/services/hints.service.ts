@@ -1,20 +1,7 @@
-import fs from 'fs';
-import path from 'path';
 import { AppError } from '../middleware/errorHandler.js';
-import { contentDir } from './paths.js';
+import { contentDir, readLocalized } from './paths.js';
 import { generateText, isGeminiConfigured } from './gemini.service.js';
 import { MAX_HINT_LEVEL, type HintLevel, type HintResponse } from '../../shared/hints.js';
-
-// Read a lesson file with Romanian fallback: prefer ro/<name> when lang=ro and it
-// exists, else the English source. Returns '' when the file is absent.
-function readLocalized(dir: string, name: string, lang: 'en' | 'ro'): string {
-  if (lang === 'ro') {
-    const roPath = path.join(dir, 'ro', name);
-    if (fs.existsSync(roPath)) return fs.readFileSync(roPath, 'utf8');
-  }
-  const enPath = path.join(dir, name);
-  return fs.existsSync(enPath) ? fs.readFileSync(enPath, 'utf8') : '';
-}
 
 const LEVEL_GUIDANCE: Record<HintLevel, { en: string; ro: string }> = {
   1: {

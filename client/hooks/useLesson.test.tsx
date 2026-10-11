@@ -14,18 +14,15 @@ vi.mock('react-i18next', () => ({
   useTranslation: () => ({ i18n: i18nState }),
 }));
 
-const { mockFetchLesson, mockFetchLessonCode, mockFetchLessonSolution, mockGetSavedCode } =
-  vi.hoisted(() => ({
-    mockFetchLesson: vi.fn(),
-    mockFetchLessonCode: vi.fn(),
-    mockFetchLessonSolution: vi.fn(),
-    mockGetSavedCode: vi.fn(),
-  }));
+const { mockFetchLesson, mockFetchLessonCode, mockGetSavedCode } = vi.hoisted(() => ({
+  mockFetchLesson: vi.fn(),
+  mockFetchLessonCode: vi.fn(),
+  mockGetSavedCode: vi.fn(),
+}));
 
 vi.mock('../services/lessonService', () => ({
   fetchLesson: (...args: unknown[]) => mockFetchLesson(...args),
   fetchLessonCode: (...args: unknown[]) => mockFetchLessonCode(...args),
-  fetchLessonSolution: (...args: unknown[]) => mockFetchLessonSolution(...args),
 }));
 
 vi.mock('../services/progressService', () => ({
@@ -42,7 +39,6 @@ beforeEach(() => {
   mockFetchLessonCode.mockImplementation((_course: string, slug: string) =>
     Promise.resolve(`starter ${slug}`),
   );
-  mockFetchLessonSolution.mockRejectedValue(new Error('no solution'));
   mockGetSavedCode.mockImplementation((_course: string, slug: string) =>
     Promise.resolve({ code: `saved ${slug}` }),
   );
@@ -66,8 +62,7 @@ function EditorProbe({ slug }: { slug: string }) {
 }
 
 describe('useLesson', () => {
-  it('loads title, starter, saved code, and solution for a lesson', async () => {
-    mockFetchLessonSolution.mockResolvedValue('# Worked solution');
+  it('loads title, starter and saved code for a lesson', async () => {
     const { result } = renderHook(() => useLesson('python', 'print'));
     expect(result.current.isLoading).toBe(true);
 
@@ -75,7 +70,6 @@ describe('useLesson', () => {
     expect(result.current.title).toBe('Title print');
     expect(result.current.starterCode).toBe('starter print');
     expect(result.current.savedCode).toBe('saved print');
-    expect(result.current.solution).toBe('# Worked solution');
   });
 
   it('requests the ro locale when the UI language is Romanian', async () => {

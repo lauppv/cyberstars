@@ -34,3 +34,14 @@ export function contentDir(courseKey: string): string {
 export function hasTestsFile(courseKey: string, slug: string): boolean {
   return fs.existsSync(path.join(contentDir(courseKey), `${slug}-tests.json`));
 }
+
+// Read a lesson file with Romanian fallback: prefer ro/<name> when lang=ro and it
+// exists, else the English source. Returns '' when the file is absent.
+export function readLocalized(dir: string, name: string, lang: 'en' | 'ro'): string {
+  if (lang === 'ro') {
+    const roPath = path.join(dir, 'ro', name);
+    if (fs.existsSync(roPath)) return fs.readFileSync(roPath, 'utf8');
+  }
+  const enPath = path.join(dir, name);
+  return fs.existsSync(enPath) ? fs.readFileSync(enPath, 'utf8') : '';
+}

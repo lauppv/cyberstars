@@ -13,7 +13,6 @@ vi.mock('../context/AuthContext', () => ({
 vi.mock('../services/lessonService', () => ({
   fetchLesson: vi.fn(),
   fetchLessonCode: vi.fn(),
-  fetchLessonSolution: vi.fn(),
 }));
 vi.mock('../services/progressService', () => ({
   getSavedCode: vi.fn(),
@@ -23,7 +22,6 @@ const lessonService = await import('../services/lessonService');
 const progressService = await import('../services/progressService');
 const mockFetchLesson = vi.mocked(lessonService.fetchLesson);
 const mockFetchCode = vi.mocked(lessonService.fetchLessonCode);
-const mockFetchSolution = vi.mocked(lessonService.fetchLessonSolution);
 const mockGetSaved = vi.mocked(progressService.getSavedCode);
 
 const { useLesson } = await import('./useLesson');
@@ -36,18 +34,16 @@ beforeEach(() => {
     ReturnType<typeof lessonService.fetchLesson>
   >);
   mockFetchCode.mockResolvedValue('print(1)');
-  mockFetchSolution.mockResolvedValue('print(42)');
   mockGetSaved.mockResolvedValue({ code: 'my saved code' });
 });
 
 describe('useLesson', () => {
-  it('loads lesson content, starter code and solution', async () => {
+  it('loads lesson content and starter code', async () => {
     const { result } = renderHook(() => useLesson('python', 'py-1'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.title).toBe('Intro');
     expect(result.current.content).toBe('# Hello');
     expect(result.current.starterCode).toBe('print(1)');
-    expect(result.current.solution).toBe('print(42)');
     expect(result.current.error).toBeNull();
     expect(mockFetchLesson).toHaveBeenCalledWith('python', 'py-1', 'en');
   });
@@ -80,13 +76,6 @@ describe('useLesson', () => {
     const { result } = renderHook(() => useLesson('mystery', 'x-1'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.starterCode).toBe('');
-  });
-
-  it('sets solution to null when the lesson ships none', async () => {
-    mockFetchSolution.mockRejectedValue(new Error('no solution'));
-    const { result } = renderHook(() => useLesson('python', 'py-1'));
-    await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(result.current.solution).toBeNull();
   });
 
   it('loads saved code when logged in', async () => {
@@ -167,6 +156,7 @@ describe('useLesson cancellation', () => {
   });
 
   it('stops after the starter code resolves', async () => {
+    mockLoggedIn = true;
     const d = deferred<string>();
     mockFetchCode.mockReturnValue(d.promise);
     const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
@@ -176,35 +166,8 @@ describe('useLesson cancellation', () => {
     d.resolve('print(1)');
     await flush();
 
-    expect(mockFetchSolution).not.toHaveBeenCalled();
+    expect(mockGetSaved).not.toHaveBeenCalled();
     expect(result.current.starterCode).toBe('');
-  });
-
-  it('stops after the solution resolves', async () => {
-    const d = deferred<string>();
-    mockFetchSolution.mockReturnValue(d.promise);
-    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
-    await waitFor(() => expect(mockFetchSolution).toHaveBeenCalled());
-
-    unmount();
-    d.resolve('print(42)');
-    await flush();
-
-    expect(result.current.solution).toBeNull();
-    expect(result.current.isLoading).toBe(true);
-  });
-
-  it('stops after the solution rejects', async () => {
-    const d = deferred<string>();
-    mockFetchSolution.mockReturnValue(d.promise);
-    const { result, unmount } = renderHook(() => useLesson('python', 'py-1'));
-    await waitFor(() => expect(mockFetchSolution).toHaveBeenCalled());
-
-    unmount();
-    d.reject(new Error('no solution'));
-    await flush();
-
-    expect(result.current.isLoading).toBe(true);
   });
 
   it('stops after the saved code resolves', async () => {

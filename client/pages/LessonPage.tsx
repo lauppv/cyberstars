@@ -81,10 +81,7 @@ export function LessonPage() {
     category === TOUR_LESSON.courseKey &&
     lesson === TOUR_LESSON.slug;
 
-  const { title, content, starterCode, savedCode, solution, isLoading } = useLesson(
-    category,
-    lesson,
-  );
+  const { title, content, starterCode, savedCode, isLoading } = useLesson(category, lesson);
   const { notifyRunComplete } = useGuestSignupPrompt();
   const notifyGuestRun = useCallback(() => notifyRunComplete(0), [notifyRunComplete]);
   const { output, isRunning, execute, sendInput, clearOutput } =
@@ -107,7 +104,7 @@ export function LessonPage() {
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState({ title: '' });
   const [showSaveToast, setShowSaveToast] = useState(false);
-  const [showSolution, setShowSolution] = useState(false);
+  const [solution, setSolution] = useState<string | null>(null);
   const [confirmSolution, setConfirmSolution] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -217,7 +214,7 @@ export function LessonPage() {
     clearOutput();
     setTimeout(() => {
       setShowToast(false);
-      setShowSolution(false);
+      setSolution(null);
       setShowHint(false);
       setOptimisticCompleted(null);
       setTestResults(null);
@@ -254,7 +251,10 @@ export function LessonPage() {
   const nextLesson =
     currentIndex >= 0 && currentIndex < lessonList.length - 1 ? lessonList[currentIndex + 1] : null;
 
-  const hasTests = lessonList.find((l) => l.slug === lesson)?.hasTests ?? false;
+  const lessonMeta = lessonList.find((l) => l.slug === lesson);
+  const hasTests = lessonMeta?.hasTests ?? false;
+  // Solutions are for signed-in students only; each reveal spends a daily allowance.
+  const canShowSolution = isLoggedIn && !!lessonMeta?.hasSolution;
 
   const handleRun = useCallback(() => {
     if (isRunning) return;
@@ -601,7 +601,7 @@ export function LessonPage() {
                   terminal.reset();
                 }}
                 lessonCompleted={lessonCompleted}
-                hasSolution={!!solution}
+                hasSolution={canShowSolution}
                 onShowSolution={() => setConfirmSolution(true)}
                 hasTests={hasTests}
                 isChecking={isChecking}
@@ -666,7 +666,7 @@ export function LessonPage() {
                             {t('lesson.getHint')}
                           </button>
                         )}
-                        {solution && (
+                        {canShowSolution && (
                           <button
                             role="menuitem"
                             onClick={() => {
@@ -809,21 +809,24 @@ export function LessonPage() {
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />
-      {confirmSolution && solution && (
+      {confirmSolution && canShowSolution && (
         <SolutionConfirmModal
+          courseKey={category}
+          lessonSlug={lesson}
+          lang={i18n.language === 'ro' ? 'ro' : 'en'}
           onClose={() => setConfirmSolution(false)}
-          onConfirmed={() => {
+          onConfirmed={(revealed) => {
             setConfirmSolution(false);
-            setShowSolution(true);
+            setSolution(revealed);
           }}
         />
       )}
-      {showSolution && solution && (
+      {solution && (
         <SolutionModal
           solution={solution}
           currentCode={isTerminal ? undefined : userCode}
           language={category}
-          onClose={() => setShowSolution(false)}
+          onClose={() => setSolution(null)}
         />
       )}
       {showHint && canUseHints && (

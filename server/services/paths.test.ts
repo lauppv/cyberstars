@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { contentDir, hasTestsFile } from './paths.js';
+import fs from 'fs';
+import path from 'path';
+import { contentDir, hasTestsFile, readLocalized } from './paths.js';
 import { AppError } from '../middleware/errorHandler.js';
 
 describe('contentDir', () => {
@@ -38,5 +40,22 @@ describe('hasTestsFile', () => {
 
   it('is false for a lesson without a tests file (Kotlin)', () => {
     expect(hasTestsFile('kotlin', 'hello-world')).toBe(false);
+  });
+});
+
+describe('readLocalized', () => {
+  const dir = contentDir('python');
+  const read = (...parts: string[]) => fs.readFileSync(path.join(dir, ...parts), 'utf8');
+
+  it('reads the English file', () => {
+    expect(readLocalized(dir, 'anagram-solution.md', 'en')).toBe(read('anagram-solution.md'));
+  });
+
+  it('prefers the Romanian translation when there is one', () => {
+    expect(readLocalized(dir, 'anagram-solution.md', 'ro')).toBe(read('ro', 'anagram-solution.md'));
+  });
+
+  it('returns an empty string for a missing file', () => {
+    expect(readLocalized(dir, 'no-such-lesson-solution.md', 'ro')).toBe('');
   });
 });

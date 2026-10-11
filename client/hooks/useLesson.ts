@@ -24,8 +24,6 @@ export function useLesson(courseKey: string, lessonSlug: string) {
   // the user's own code, if any; language-agnostic, never auto-translated.
   const [starterCode, setStarterCode] = useState('');
   const [savedCode, setSavedCode] = useState<string | null>(null);
-  // Worked-out solution markdown, or null when the lesson ships no solution file.
-  const [solution, setSolution] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -68,15 +66,6 @@ export function useLesson(courseKey: string, lessonSlug: string) {
       if (cancelled) return;
       setStarterCode(starter);
 
-      try {
-        const sol = await lessonService.fetchLessonSolution(courseKey, lessonSlug, lang);
-        if (cancelled) return;
-        setSolution(sol);
-      } catch {
-        if (cancelled) return;
-        setSolution(null);
-      }
-
       let saved: string | null = null;
       if (isLoggedIn) {
         try {
@@ -97,5 +86,5 @@ export function useLesson(courseKey: string, lessonSlug: string) {
     };
   }, [courseKey, lessonSlug, isLoggedIn, lang]);
 
-  return { title, content, starterCode, savedCode, solution, isLoading, error };
+  return { title, content, starterCode, savedCode, isLoading, error };
 }
