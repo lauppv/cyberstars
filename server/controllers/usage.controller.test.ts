@@ -7,10 +7,17 @@ vi.mock('../services/usage.service.js', () => mockUsage);
 const mockUserRepo = { getRole: vi.fn() };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
-const { getUsage, consumeSolution } = await import('./usage.controller.js');
+const mockPaths = { contentDir: vi.fn((key: string) => `/lessons/${key}`), readLocalized: vi.fn() };
+vi.mock('../services/paths.js', () => mockPaths);
 
-function mockReq(id = 5): Request {
-  return { user: { id } } as unknown as Request;
+const { getUsage, revealSolution } = await import('./usage.controller.js');
+
+function mockReq(id = 5, params: Record<string, string> = {}, body: object = {}): Request {
+  return { user: { id }, params, body } as unknown as Request;
+}
+
+function solutionReq(lessonSlug = 'loops', body: object = { lang: 'en' }, id = 8): Request {
+  return mockReq(id, { courseKey: 'python', lessonSlug }, body);
 }
 function mockRes(): Response {
   return { json: vi.fn().mockReturnThis() } as unknown as Response;
@@ -43,23 +50,68 @@ describe('getUsage', () => {
   });
 });
 
-describe('consumeSolution', () => {
-  it('consumes the showSolution action', async () => {
+describe('revealSolution', () => {
+  it('spends a reveal and returns the solution with the refreshed usage', async () => {
+    mockPaths.readLocalized.mockReturnValue('```py\nprint(1)\n```');
     mockUserRepo.getRole.mockResolvedValue('USER');
     mockUsage.consume.mockReturnValue({ spent: 1 });
     const res = mockRes();
-    await consumeSolution(mockReq(8), res, vi.fn());
+    await revealSolution(solutionReq(), res, vi.fn());
+    expect(mockPaths.readLocalized).toHaveBeenCalledWith(
+      '/lessons/python',
+      'loops-solution.md',
+      'en',
+    );
     expect(mockUsage.consume).toHaveBeenCalledWith(8, 'showSolution', false);
-    expect(res.json).toHaveBeenCalledWith({ spent: 1 });
+    expect(res.json).toHaveBeenCalledWith({
+      solution: '```py\nprint(1)\n```',
+      usage: { spent: 1 },
+    });
+  });
+
+  it('reads the Romanian solution when asked, and English otherwise', async () => {
+    mockPaths.readLocalized.mockReturnValue('x');
+    mockUserRepo.getRole.mockResolvedValue('USER');
+    await revealSolution(solutionReq('loops', { lang: 'ro' }), mockRes(), vi.fn());
+    await revealSolution(solutionReq('loops', {}), mockRes(), vi.fn());
+    expect(mockPaths.readLocalized).toHaveBeenNthCalledWith(
+      1,
+      '/lessons/python',
+      'loops-solution.md',
+      'ro',
+    );
+    expect(mockPaths.readLocalized).toHaveBeenNthCalledWith(
+      2,
+      '/lessons/python',
+      'loops-solution.md',
+      'en',
+    );
+  });
+
+  it('404s without spending a reveal when the lesson has no solution', async () => {
+    mockPaths.readLocalized.mockReturnValue('');
+    const next = vi.fn();
+    await revealSolution(solutionReq(), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 404 }));
+    expect(mockUsage.consume).not.toHaveBeenCalled();
+  });
+
+  it('404s on a slug that tries to leave the course directory', async () => {
+    const next = vi.fn();
+    await revealSolution(solutionReq('../../etc/passwd'), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 404 }));
+    expect(mockPaths.readLocalized).not.toHaveBeenCalled();
+    expect(mockUsage.consume).not.toHaveBeenCalled();
   });
 
   it('forwards a 429 from the service to next', async () => {
+    mockPaths.readLocalized.mockReturnValue('x');
     mockUserRepo.getRole.mockResolvedValue('USER');
     mockUsage.consume.mockImplementation(() => {
       throw new Error('limit');
     });
     const next = vi.fn();
-    await consumeSolution(mockReq(), mockRes(), next);
+    await revealSolution(solutionReq(), mockRes(), next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });

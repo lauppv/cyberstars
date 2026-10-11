@@ -2,6 +2,13 @@ import type { Request, Response, NextFunction } from 'express';
 import * as userRepo from '../repositories/user.repository.js';
 import { isAdmin } from '../../shared/auth.js';
 import { consume, getSummary } from '../services/usage.service.js';
+import { contentDir, readLocalized } from '../services/paths.js';
+import { AppError } from '../middleware/errorHandler.js';
+import type { SolutionReveal } from '../../shared/usage.js';
+
+// Lesson slugs are lowercase words joined by dashes; anything else (a `..` or an
+// encoded `/`) would let the slug walk out of the course directory.
+const LESSON_SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 export async function getUsage(req: Request, res: Response, next: NextFunction) {
   try {
@@ -13,14 +20,23 @@ export async function getUsage(req: Request, res: Response, next: NextFunction) 
   }
 }
 
-// Records one Show Solution reveal and returns the refreshed usage summary. The
-// solution content itself is a static public file; this endpoint exists only to
-// meter and gate reveals (429 once the daily cap is hit).
-export async function consumeSolution(req: Request, res: Response, next: NextFunction) {
+// Reveals a lesson's solution and records it against the daily Show Solution
+// cap (429 once hit). Solution files stay on the server (the static-content
+// generator never publishes them), so this is the only way to read one, and only
+// for signed-in students. A lesson without a solution is a 404 and costs nothing.
+export async function revealSolution(req: Request, res: Response, next: NextFunction) {
   try {
+    const { courseKey, lessonSlug } = req.params;
+    const lang = req.body.lang === 'ro' ? 'ro' : 'en';
+    const solution = LESSON_SLUG.test(lessonSlug)
+      ? readLocalized(contentDir(courseKey), `${lessonSlug}-solution.md`, lang)
+      : '';
+    if (!solution) throw new AppError(404, 'Solution not found');
+
     const userId = req.user!.id;
     const admin = isAdmin(await userRepo.getRole(userId));
-    res.json(consume(userId, 'showSolution', admin));
+    const reveal: SolutionReveal = { solution, usage: consume(userId, 'showSolution', admin) };
+    res.json(reveal);
   } catch (err) {
     next(err);
   }
