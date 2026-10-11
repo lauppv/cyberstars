@@ -4,7 +4,7 @@ import type {
   SupportMessageDTO,
   CreateTicketRequest,
   TicketStatus,
-} from '../../shared/support';
+} from '@cyberstars/shared/support';
 
 export function createTicket(data: CreateTicketRequest) {
   return api.post<{ ticketId: number }>('/api/support/tickets', data);

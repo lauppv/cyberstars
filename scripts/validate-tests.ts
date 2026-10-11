@@ -21,7 +21,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { contentDir } from '../server/services/paths.js';
 import { parseC, collectInjectionSites } from '../server/services/c-analysis.js';
-import type { LessonTestsSpec } from '../shared/tests.js';
+import type { LessonTestsSpec } from '@cyberstars/shared/tests';
 
 const CODE_JUDGE_COURSES = ['python', 'java', 'c', 'algo-python', 'algo-java', 'algo-c'];
 const C_COURSES = new Set(['c', 'algo-c']);

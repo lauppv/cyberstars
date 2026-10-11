@@ -14,7 +14,7 @@ import type {
   StructureFailure,
   TestCaseResult,
   TestComparator,
-} from '../../shared/tests.js';
+} from '@cyberstars/shared/tests';
 
 // Server-side judge for lessons that ship a <slug>-tests.json. The heavy
 // lifting happens inside the owner's sandbox container (same one the editor

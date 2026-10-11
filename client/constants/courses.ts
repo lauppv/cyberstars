@@ -1,4 +1,4 @@
-import { baseLanguage } from '../../shared/constants';
+import { baseLanguage } from '@cyberstars/shared/constants';
 
 export interface CourseMeta {
   icon: string;

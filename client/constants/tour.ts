@@ -1,4 +1,4 @@
-import { TOUR_LESSON } from '../../shared/constants';
+import { TOUR_LESSON } from '@cyberstars/shared/constants';
 
 // Where a new account is held until it passes the tour lesson's tests.
 export const TOUR_PATH = `/lesson/${TOUR_LESSON.courseKey}/${TOUR_LESSON.slug}`;

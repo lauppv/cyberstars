@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { TestCaseResult } from '../../../shared/tests';
+import type { TestCaseResult } from '@cyberstars/shared/tests';
 import { formatValue } from './format';
 
 export function Field({

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import type { NotificationDTO, UserSocketFrame } from '../../shared/notifications';
+import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, user: { id: 1, role: 'USER' } as { id: number; role: string } | null },
@@ -14,7 +14,7 @@ const h = vi.hoisted(() => ({
 }));
 
 vi.mock('./AuthContext', () => ({ useAuth: () => h.auth }));
-vi.mock('../../shared/features', () => ({
+vi.mock('@cyberstars/shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));
 vi.mock('../services/notificationsService', () => h.service);

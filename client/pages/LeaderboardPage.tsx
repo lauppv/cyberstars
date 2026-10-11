@@ -5,9 +5,9 @@ import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
-import type { LeaderboardEntry } from '../../shared/leaderboard';
+import type { LeaderboardEntry } from '@cyberstars/shared/leaderboard';
 
 const PAGE_SIZE = 50;
 

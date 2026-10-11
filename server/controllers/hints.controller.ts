@@ -2,9 +2,9 @@ import type { Request, Response, NextFunction } from 'express';
 import { generateHint } from '../services/hints.service.js';
 import { consume, getState } from '../services/usage.service.js';
 import * as userRepo from '../repositories/user.repository.js';
-import { isAdmin } from '../../shared/auth.js';
+import { isAdmin } from '@cyberstars/shared/auth';
 import { AppError } from '../middleware/errorHandler.js';
-import type { HintLevel } from '../../shared/hints.js';
+import type { HintLevel } from '@cyberstars/shared/hints';
 
 export async function getHint(req: Request, res: Response, next: NextFunction) {
   try {

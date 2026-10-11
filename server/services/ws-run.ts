@@ -4,12 +4,12 @@ import { WebSocketServer, type WebSocket } from 'ws';
 import jwt from 'jsonwebtoken';
 import { ipKeyGenerator } from 'express-rate-limit';
 import { config } from '../config/index.js';
-import type { TokenPayload } from '../../shared/auth.js';
+import type { TokenPayload } from '@cyberstars/shared/auth';
 import { handleInteractiveRun } from './interactive-execution.service.js';
 import { openSession, closeSession } from './code-container.service.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
-import { canAccessFeature } from '../../shared/features.js';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
 
 // Reject oversized frames before they are buffered/parsed.

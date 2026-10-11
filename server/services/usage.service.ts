@@ -6,7 +6,7 @@ import {
   type UsageAction,
   type UsageState,
   type UsageSummary,
-} from '../../shared/usage.js';
+} from '@cyberstars/shared/usage';
 
 // Per-user rolling 24h counters for the assist features (Show Solution, AI
 // hints). In-memory and best-effort. Like the guest run budget and the

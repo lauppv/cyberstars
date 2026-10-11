@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import * as testsService from '../services/testsService';
-import type { SubmissionSummary } from '../../shared/tests';
+import type { SubmissionSummary } from '@cyberstars/shared/tests';
 
 // The server keeps this many attempts per lesson, newest first.
 const HISTORY_CAP = 20;

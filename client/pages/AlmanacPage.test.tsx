@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import i18n from 'i18next';
-import type { AlmanacArticle } from '../../shared/almanac';
+import type { AlmanacArticle } from '@cyberstars/shared/almanac';
 
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: null, logout: vi.fn() }),

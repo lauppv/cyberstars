@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import * as progressService from '../services/progressService';
 import { useAuth } from '../context/AuthContext';
 import { useAllProgress } from '../context/ProgressContext';
-import type { CourseProgress } from '../../shared/progress';
+import type { CourseProgress } from '@cyberstars/shared/progress';
 
 export function useProgress(courseKey: string) {
   const { isLoggedIn } = useAuth();

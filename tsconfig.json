@@ -16,7 +16,7 @@
   },
   "include": [
     "client",
-    "shared",
+    "packages/shared",
     "test",
     "vite.config.ts",
     "vitest.integration.config.ts",

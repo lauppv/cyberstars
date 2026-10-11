@@ -10,7 +10,7 @@ import { useGamification } from '../hooks/useGamification';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
-import { xpForLesson } from '../../shared/constants';
+import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
 import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
@@ -31,9 +31,9 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
 import { useSubmissions } from '../hooks/useSubmissions';
-import type { LessonMeta } from '../../shared/lesson';
-import type { RunTestsResponse } from '../../shared/tests';
-import type { TerminalTestResult } from '../../shared/terminal';
+import type { LessonMeta } from '@cyberstars/shared/lesson';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
+import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 import * as progressService from '../services/progressService';
 import * as testsService from '../services/testsService';
 import * as terminalService from '../services/terminalService';
@@ -43,8 +43,8 @@ import {
   ALGO_COURSE_KEYS,
   MAIN_COURSE_KEYS,
   TOUR_LESSON,
-} from '../../shared/constants';
-import { canAccessFeature } from '../../shared/features';
+} from '@cyberstars/shared/constants';
+import { canAccessFeature } from '@cyberstars/shared/features';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;

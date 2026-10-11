@@ -6,8 +6,8 @@ import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
-import type { AdminStatsDTO } from '../../shared/admin';
-import { isAdmin as isAdminRole } from '../../shared/auth';
+import type { AdminStatsDTO } from '@cyberstars/shared/admin';
+import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
 const CARD_CLS = 'p-5 rounded-[var(--radius)] panel';
 

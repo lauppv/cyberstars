@@ -5,7 +5,7 @@ import type {
   TerminalSetup,
   TerminalSessionInfo,
   TerminalExecResult,
-} from '../../shared/terminal.js';
+} from '@cyberstars/shared/terminal';
 import { contentDir } from './paths.js';
 import { dockerExec } from './docker-exec.js';
 

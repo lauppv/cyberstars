@@ -8,7 +8,7 @@ import {
   applyInjection,
   prepareC,
 } from './c-analysis.js';
-import type { StructureFailure } from '../../shared/tests.js';
+import type { StructureFailure } from '@cyberstars/shared/tests';
 
 const PROGRAM = `#include <stdio.h>
 

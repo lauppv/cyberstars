@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { canAccessFeature } from '../../shared/features';
+import { canAccessFeature } from '@cyberstars/shared/features';
 import { useCurriculum } from '../context/CurriculumContext';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
@@ -15,9 +15,9 @@ import { badgeLabel, badgeDescription } from '../components/gamification/badgeMe
 import { courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
 import * as connectionsService from '../services/connectionsService';
-import type { PublicProfile } from '../../shared/profile';
-import type { ConnectionRelation } from '../../shared/connections';
-import type { Course } from '../../shared/lesson';
+import type { PublicProfile } from '@cyberstars/shared/profile';
+import type { ConnectionRelation } from '@cyberstars/shared/connections';
+import type { Course } from '@cyberstars/shared/lesson';
 
 // Resolve a course's completed slugs to lesson titles (via the loaded
 // curriculum), ordered by the lesson's position in the course. Falls back to the

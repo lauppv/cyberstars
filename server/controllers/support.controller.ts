@@ -4,8 +4,8 @@ import { AppError } from '../middleware/errorHandler.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as supportService from '../services/support.service.js';
 import * as notificationsService from '../services/notifications.service.js';
-import type { SupportTicketDTO, SupportMessageDTO } from '../../shared/support.js';
-import { isAdmin } from '../../shared/auth.js';
+import type { SupportTicketDTO, SupportMessageDTO } from '@cyberstars/shared/support';
+import { isAdmin } from '@cyberstars/shared/auth';
 
 function toDTO(t: SupportTicket): SupportTicketDTO {
   return {

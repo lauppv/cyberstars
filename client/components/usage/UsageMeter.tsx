@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import type { UsageState } from '../../../shared/usage';
+import type { UsageState } from '@cyberstars/shared/usage';
 
 // Formats the rolling-window reset time the Claude way: a weekday + local time
 // (e.g. "Mon, 14:30") so people know exactly when their quota refills.

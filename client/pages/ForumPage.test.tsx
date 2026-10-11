@@ -6,8 +6,8 @@ import type {
   ForumPostDTO,
   ForumThreadDetailDTO,
   ForumThreadSummaryDTO,
-} from '../../shared/forum';
-import type { AuthenticatedUser, UserRole } from '../../shared/auth';
+} from '@cyberstars/shared/forum';
+import type { AuthenticatedUser, UserRole } from '@cyberstars/shared/auth';
 
 let authUser: AuthenticatedUser | null = null;
 

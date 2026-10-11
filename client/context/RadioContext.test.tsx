@@ -7,7 +7,7 @@ const h = vi.hoisted(() => ({
 }));
 
 vi.mock('./AuthContext', () => ({ useAuth: () => h.auth }));
-vi.mock('../../shared/features', () => ({
+vi.mock('@cyberstars/shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));
 

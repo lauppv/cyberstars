@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import type { UserSocketFrame } from '../../shared/notifications';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, user: { id: 1, role: 'USER' } as { id: number; role: string } | null },

@@ -8,7 +8,7 @@ import type {
   ConnectionsOverview,
   ConnectionUser,
   PendingConnection,
-} from '../../shared/connections.js';
+} from '@cyberstars/shared/connections';
 
 function shapeUser(u: { id: number; name: string; avatarUrl: string | null }): ConnectionUser {
   return { id: u.id, name: u.name, avatarUrl: u.avatarUrl };

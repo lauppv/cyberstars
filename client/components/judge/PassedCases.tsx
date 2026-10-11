@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react';
-import type { TestCaseResult } from '../../../shared/tests';
+import type { TestCaseResult } from '@cyberstars/shared/tests';
 import { CaseInput, Field } from './CaseFields';
 import { caseLabel } from './format';
 

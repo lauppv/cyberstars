@@ -9,7 +9,7 @@ import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay } from '../components/gamification/heatmap-utils';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import type { Course } from '../../shared/lesson';
+import type { Course } from '@cyberstars/shared/lesson';
 import { courseMeta } from '../constants/courses';
 import {
   MAIN_COURSE_KEYS,
@@ -17,15 +17,15 @@ import {
   progressPct,
   xpForLesson,
   dailyBonusXp,
-} from '../../shared/constants';
+} from '@cyberstars/shared/constants';
 import { StoryModal } from './StoryModal';
 import { fetchAlmanacSlugs, fetchAlmanacArticle } from '../services/almanacService';
-import type { AlmanacArticle } from '../../shared/almanac';
+import type { AlmanacArticle } from '@cyberstars/shared/almanac';
 import { fetchDaily } from '../services/dailyService';
-import type { DailyResponse } from '../../shared/daily';
+import type { DailyResponse } from '@cyberstars/shared/daily';
 
 function extractActivityCounts(
-  progressMap: Record<string, import('../../shared/progress').CourseProgress>,
+  progressMap: Record<string, import('@cyberstars/shared/progress').CourseProgress>,
 ): Record<string, number> {
   const timestamps: string[] = [];
   for (const p of Object.values(progressMap)) {
@@ -536,7 +536,7 @@ function CourseMilestones({
   progressMap,
 }: {
   courses: Course[];
-  progressMap: Record<string, import('../../shared/progress').CourseProgress>;
+  progressMap: Record<string, import('@cyberstars/shared/progress').CourseProgress>;
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation();

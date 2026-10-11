@@ -1,4 +1,4 @@
-import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '../../shared/almanac';
+import type { AlmanacArticle, AlmanacCard, AlmanacExtras } from '@cyberstars/shared/almanac';
 
 // The almanac is static content served as plain files from /almanac/* (by nginx
 // in prod, by Vite's publicDir in dev), never bundled, never touching the API

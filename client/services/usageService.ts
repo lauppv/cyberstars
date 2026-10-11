@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import type { SolutionReveal, UsageSummary } from '../../shared/usage';
+import type { SolutionReveal, UsageSummary } from '@cyberstars/shared/usage';
 
 export function getUsage(): Promise<UsageSummary> {
   return api.get<UsageSummary>('/api/usage');

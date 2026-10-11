@@ -11,7 +11,7 @@ import type {
   TerminalCommandRule,
   TerminalTestResult,
   TerminalTestsSpec,
-} from '../../shared/terminal.js';
+} from '@cyberstars/shared/terminal';
 
 // Server-side judge for Linux/terminal lessons. Unlike the code judge (stdin →
 // stdout program + oracle), this validates the sandbox STATE: it runs assertion

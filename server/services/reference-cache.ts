@@ -1,5 +1,5 @@
 import { createHash } from 'crypto';
-import type { LessonTestsSpec, TestComparator } from '../../shared/tests.js';
+import type { LessonTestsSpec, TestComparator } from '@cyberstars/shared/tests';
 
 // Reference outputs of judge cases, kept in server memory so a later run skips
 // our solution on them: the student's program is checked against the stored

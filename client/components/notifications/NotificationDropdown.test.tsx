@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import type { NotificationDTO } from '../../../shared/notifications';
+import type { NotificationDTO } from '@cyberstars/shared/notifications';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router', () => ({ useNavigate: () => mockNavigate }));

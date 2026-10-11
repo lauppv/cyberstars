@@ -8,8 +8,8 @@ import { MessageComposer } from './MessageComposer';
 import { MessageActions } from './MessageActions';
 import { UserLink } from '../ui/UserLink';
 import * as messagesService from '../../services/messagesService';
-import type { ConversationDTO, MessageDTO, MessageReactionDTO } from '../../../shared/messages';
-import type { UserSocketFrame } from '../../../shared/notifications';
+import type { ConversationDTO, MessageDTO, MessageReactionDTO } from '@cyberstars/shared/messages';
+import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 function timeLabel(iso: string): string {
   return new Date(iso).toLocaleTimeString(i18next.language, {

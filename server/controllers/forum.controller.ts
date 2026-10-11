@@ -4,15 +4,15 @@ import { prisma } from '../config/db.js';
 import { AppError } from '../middleware/errorHandler.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as notificationsService from '../services/notifications.service.js';
-import { RESTRICTED_FORUM_CATEGORIES } from '../../shared/constants.js';
-import { isAdmin } from '../../shared/auth.js';
+import { RESTRICTED_FORUM_CATEGORIES } from '@cyberstars/shared/constants';
+import { isAdmin } from '@cyberstars/shared/auth';
 import type {
   ForumCategoryDTO,
   ForumThreadSummaryDTO,
   ForumThreadDetailDTO,
   ForumPostDTO,
   ForumReactionGroupDTO,
-} from '../../shared/forum.js';
+} from '@cyberstars/shared/forum';
 
 /**
  * Whether an actor may edit/delete content authored by someone else.

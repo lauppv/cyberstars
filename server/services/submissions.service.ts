@@ -8,7 +8,7 @@ import type {
   SubmissionDetail,
   SubmissionSummary,
   TestCaseResult,
-} from '../../shared/tests.js';
+} from '@cyberstars/shared/tests';
 
 // Attempts kept per user and lesson; older ones are pruned on every insert so
 // the table stays bounded on the 1GB VPS.

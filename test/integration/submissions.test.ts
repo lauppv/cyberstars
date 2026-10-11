@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../server/config/db.js';
 import { record } from '../../server/services/submissions.service.js';
-import type { RunTestsResponse } from '../../shared/tests.js';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
 
 // The judge needs Docker, so attempts are stored through the same service the
 // Run Tests controller calls, then read back over the API.

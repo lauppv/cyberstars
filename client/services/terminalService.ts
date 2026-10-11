@@ -3,7 +3,7 @@ import type {
   TerminalSessionInfo,
   TerminalExecResult,
   TerminalTestResult,
-} from '../../shared/terminal.js';
+} from '@cyberstars/shared/terminal';
 
 export function createTerminalSession(courseKey: string, lessonSlug: string, lang?: string) {
   return api.post<TerminalSessionInfo>('/api/terminal/session', { courseKey, lessonSlug, lang });

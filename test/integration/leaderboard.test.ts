@@ -3,8 +3,8 @@ import { agent, createAuthenticatedAgent } from './helpers.js';
 import { prisma } from '../../server/config/db.js';
 import { markComplete } from '../../server/services/progress.service.js';
 import { clearCache } from '../../server/services/leaderboard.service.js';
-import { xpForLesson } from '../../shared/constants.js';
-import type { LeaderboardPage, LeaderboardEntry } from '../../shared/leaderboard.js';
+import { xpForLesson } from '@cyberstars/shared/constants';
+import type { LeaderboardPage, LeaderboardEntry } from '@cyberstars/shared/leaderboard';
 
 async function userIdFor(email: string): Promise<number> {
   const user = await prisma.user.findUniqueOrThrow({ where: { email } });

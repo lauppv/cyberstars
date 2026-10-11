@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import type { AuthenticatedUser } from '../../shared/auth';
+import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router', async (importOriginal) => {

@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import type { HintLevel, HintResponse } from '../../shared/hints';
+import type { HintLevel, HintResponse } from '@cyberstars/shared/hints';
 
 export function getHint(
   courseKey: string,

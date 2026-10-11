@@ -1,5 +1,5 @@
 import type { RateLimitInfo } from 'express-rate-limit';
-import type { TokenPayload } from '../../shared/auth.js';
+import type { TokenPayload } from '@cyberstars/shared/auth';
 
 // authenticateToken and optionalAuth set `user`; express-rate-limit sets `rateLimit`.
 declare global {

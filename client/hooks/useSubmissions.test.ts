@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { useSubmissions } from './useSubmissions';
 import * as testsService from '../services/testsService';
-import type { SubmissionSummary } from '../../shared/tests';
+import type { SubmissionSummary } from '@cyberstars/shared/tests';
 
 vi.mock('../services/testsService', () => ({
   listSubmissions: vi.fn(),

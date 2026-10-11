@@ -1,4 +1,4 @@
-import type { RunTestsResponse } from '../../../shared/tests';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
 import { Verdict } from './Verdict';
 import { FailedCase } from './FailedCase';
 import { PassedCases } from './PassedCases';

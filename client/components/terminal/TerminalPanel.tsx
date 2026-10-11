@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Eye, RotateCcw } from 'lucide-react';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
-import type { TerminalTestResult } from '../../../shared/terminal';
+import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 import { TerminalTestResults } from './TerminalTestResults';
 
 interface Props {

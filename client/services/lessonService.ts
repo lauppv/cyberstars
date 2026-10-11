@@ -1,4 +1,4 @@
-import type { LessonContent, Course } from '../../shared/lesson';
+import type { LessonContent, Course } from '@cyberstars/shared/lesson';
 
 // Lesson content, starter code and the curriculum are static for the lifetime of
 // a deploy: generated into public/ at build time (scripts/generate-static-content.ts)

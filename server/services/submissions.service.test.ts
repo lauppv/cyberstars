@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { RunTestsResponse } from '../../shared/tests.js';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
 
 const mockRepo = {
   createAndPrune: vi.fn(),

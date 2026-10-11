@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import * as forumService from '../../services/forumService';
 import { forumRoutes } from '../../constants/forumRoutes';
-import { RESTRICTED_FORUM_CATEGORIES } from '../../../shared/constants';
-import type { ForumCategoryDTO } from '../../../shared/forum';
+import { RESTRICTED_FORUM_CATEGORIES } from '@cyberstars/shared/constants';
+import type { ForumCategoryDTO } from '@cyberstars/shared/forum';
 import { CodeEditor } from '../code/CodeEditor';
 
 const FENCE_LANG: Record<string, string> = {

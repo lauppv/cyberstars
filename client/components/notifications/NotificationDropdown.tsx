@@ -4,8 +4,8 @@ import i18next from 'i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { forumRoutes } from '../../constants/forumRoutes';
-import type { NotificationDTO, NotificationType } from '../../../shared/notifications';
-import { isAdmin } from '../../../shared/auth';
+import type { NotificationDTO, NotificationType } from '@cyberstars/shared/notifications';
+import { isAdmin } from '@cyberstars/shared/auth';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();

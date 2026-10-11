@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as hintsService from '../../services/hintsService';
 import { useUsage } from '../../context/UsageContext';
 import { UsageMeter } from '../usage/UsageMeter';
-import { MAX_HINT_LEVEL, type HintLevel } from '../../../shared/hints';
+import { MAX_HINT_LEVEL, type HintLevel } from '@cyberstars/shared/hints';
 
 interface Hint {
   level: HintLevel;

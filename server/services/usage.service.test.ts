@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { getState, getSummary, consume, _resetAll } from './usage.service.js';
 import { AppError } from '../middleware/errorHandler.js';
-import { USAGE_LIMITS, USAGE_WINDOW_MS } from '../../shared/usage.js';
+import { USAGE_LIMITS, USAGE_WINDOW_MS } from '@cyberstars/shared/usage';
 
 beforeEach(() => _resetAll());
 afterEach(() => vi.useRealTimers());

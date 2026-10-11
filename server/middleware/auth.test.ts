@@ -15,7 +15,7 @@ vi.mock('../repositories/user.repository.js', () => ({
 
 const { authenticateToken, optionalAuth, requireAdmin, requireFeatureAccess } =
   await import('./auth.js');
-const { PREVIEW_FEATURES } = await import('../../shared/features.js');
+const { PREVIEW_FEATURES } = await import('@cyberstars/shared/features');
 
 function makeReqRes(token?: string) {
   const req = { cookies: token ? { token } : {} } as unknown as Request;

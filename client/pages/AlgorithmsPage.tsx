@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
-import { ALGO_COURSE_KEYS, xpForCourse } from '../../shared/constants';
+import { ALGO_COURSE_KEYS, xpForCourse } from '@cyberstars/shared/constants';
 import { useCurriculum } from '../context/CurriculumContext';
 import { courseMeta } from '../constants/courses';
 

@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { config } from '../config/index.js';
-import { isAdmin, type TokenPayload } from '../../shared/auth.js';
-import { canAccessFeature, type FeatureKey } from '../../shared/features.js';
+import { isAdmin, type TokenPayload } from '@cyberstars/shared/auth';
+import { canAccessFeature, type FeatureKey } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
 
 export function authenticateToken(req: Request, res: Response, next: NextFunction): void {

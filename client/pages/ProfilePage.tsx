@@ -10,7 +10,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { EmojiPicker } from '../components/ui/EmojiPicker';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '../../shared/constants';
+import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
 

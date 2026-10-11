@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import { config } from '../config/index.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as emailService from './email.service.js';
-import type { TokenPayload, AuthenticatedUser } from '../../shared/auth.js';
+import type { TokenPayload, AuthenticatedUser } from '@cyberstars/shared/auth';
 import { AppError } from '../middleware/errorHandler.js';
 
 // Kept in one place because the dummy-hash timing defense below only works if

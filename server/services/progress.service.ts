@@ -5,8 +5,8 @@ import * as userRepo from '../repositories/user.repository.js';
 import * as dailyService from './daily.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { assertValidCourse } from './paths.js';
-import { xpForLesson, dailyBonusXp, TOUR_LESSON } from '../../shared/constants.js';
-import type { CourseProgress } from '../../shared/progress.js';
+import { xpForLesson, dailyBonusXp, TOUR_LESSON } from '@cyberstars/shared/constants';
+import type { CourseProgress } from '@cyberstars/shared/progress';
 
 // Guards lesson-level writes/reads: reject unknown courses and slugs so the
 // URL can't seed garbage rows in user_lesson_progress (audit H11).

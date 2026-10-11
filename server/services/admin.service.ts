@@ -1,6 +1,6 @@
 import * as adminRepo from '../repositories/admin.repository.js';
 import * as codeContainer from './code-container.service.js';
-import type { AdminStatsDTO } from '../../shared/admin.js';
+import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
 const CACHE_TTL_MS = Number(process.env.ADMIN_STATS_CACHE_MS ?? 5 * 60 * 1000);
 

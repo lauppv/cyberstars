@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import type { AuthenticatedUser } from '../../shared/auth';
+import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 
 const getMe = vi.fn();
 const login = vi.fn();

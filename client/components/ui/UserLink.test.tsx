@@ -8,7 +8,7 @@ const h = vi.hoisted(() => ({
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
-vi.mock('../../../shared/features', () => ({ canAccessFeature: () => h.access }));
+vi.mock('@cyberstars/shared/features', () => ({ canAccessFeature: () => h.access }));
 
 import { UserLink } from './UserLink';
 

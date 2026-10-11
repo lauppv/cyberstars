@@ -8,8 +8,8 @@ import {
   levelTitleKey,
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
-} from '../../shared/constants.js';
-import type { PublicProfile, PublicProfileBadge } from '../../shared/profile.js';
+} from '@cyberstars/shared/constants';
+import type { PublicProfile, PublicProfileBadge } from '@cyberstars/shared/profile';
 import { AppError } from '../middleware/errorHandler.js';
 
 const ACTIVE_COURSE_KEYS = new Set<string>([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);

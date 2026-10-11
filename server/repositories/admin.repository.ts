@@ -5,8 +5,8 @@ import type {
   AdminProgressStats,
   AdminForumStats,
   AdminSupportStats,
-} from '../../shared/admin.js';
-import type { TicketStatus } from '../../shared/support.js';
+} from '@cyberstars/shared/admin';
+import type { TicketStatus } from '@cyberstars/shared/support';
 
 function daysAgo(days: number): Date {
   return new Date(Date.now() - days * 24 * 60 * 60 * 1000);

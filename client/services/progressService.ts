@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import type { CourseProgress } from '../../shared/progress';
+import type { CourseProgress } from '@cyberstars/shared/progress';
 
 export function getCourseProgress(courseKey: string) {
   return api.get<CourseProgress>(`/api/progress/${courseKey}`);
