@@ -127,9 +127,22 @@ Algorithm challenges (`server/algorithms/{python,java,c}/`) state their input li
 the statement's Input list, in English and Romanian, written as `<=` with powers
 (`1 <= N <= 200`, `-10^9 <= x <= 10^9`). Their tests mix a few hand-written cases with
 hidden `"generated": true` ones, and every case has to stay within the stated limits.
+
+Course lessons are graded the way an online judge grades: any correct program passes,
+whatever its idea and naming. A test only requires an exact name where the judge injects
+a value or the mission names the function or class to write, plus the construct the
+lesson teaches (the `for` lesson needs a `for`, the class lesson a class of the
+student's own). Next to the tests, a lesson keeps variants in
+`test/lesson-variants/<course>/<slug>/`: `accept-*` files are other correct solutions
+that must pass, `reject-*` files are cheats or near misses that must fail (hardcoded
+output, the wrong loop, the right output without the taught construct). Add a reject for
+every construct a lesson requires.
+
 Before opening a PR, run `npm run validate:tests` and
-`npm run check:tests algo-<lang>/<slug>`, which grades the reference solution through
-the real Docker judge and must pass every case.
+`npm run check:tests <course>/<slug>` (for example `python/string-reverse` or
+`algo-c/binary-search-c`), which grades the reference solution and the variants through
+the real Docker judge: the reference must pass every case, and every variant must come
+out as its name says. CI runs the same check on the lessons your PR changes.
 
 Important rules:
 
