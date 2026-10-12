@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router';
+import { useAuth } from '../../context/AuthContext';
 import { Sidebar, type SidebarState } from './Sidebar';
 
 // Above this width the sidebar pushes the page aside. Below it there is no room
@@ -44,6 +45,7 @@ function isWide(): boolean {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const { isLoggedIn, isLoading } = useAuth();
   const [remembered] = useState(readRemembered);
   const [toggled, setToggled] = useState<boolean | null>(null);
 
@@ -78,7 +80,12 @@ export function AppShell({ children }: { children: ReactNode }) {
     return () => document.removeEventListener('keydown', onKey);
   }, [state]);
 
-  if (BARE_ROUTES.has(pathname)) return <>{children}</>;
+  // Home is the welcome page for a visitor and the dashboard for a student, so
+  // the address alone can't decide. Stay bare until we know who's there, or a
+  // visitor would see the sidebar flash in and out after a reload
+  const visitorHome = pathname === '/' && (isLoading || !isLoggedIn);
+
+  if (BARE_ROUTES.has(pathname) || visitorHome) return <>{children}</>;
 
   return (
     <SidebarContext.Provider value={{ state, toggle }}>

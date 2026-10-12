@@ -2,6 +2,11 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 
+const h = vi.hoisted(() => ({
+  auth: { isLoggedIn: true, isLoading: false },
+}));
+
+vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
 vi.mock('./Sidebar', () => ({
   Sidebar: ({ state, onNavigate }: { state: string; onNavigate: () => void }) => (
     <aside data-testid="sidebar" data-state={state}>
@@ -35,6 +40,7 @@ const state = () => screen.getByTestId('sidebar').getAttribute('data-state');
 beforeEach(() => {
   localStorage.clear();
   wide = true;
+  h.auth = { isLoggedIn: true, isLoading: false };
   vi.stubGlobal('matchMedia', (q: string) => ({ matches: wide, media: q }));
 });
 
@@ -46,6 +52,25 @@ describe('AppShell', () => {
       expect(screen.getByText('no shell')).toBeInTheDocument();
       unmount();
     }
+  });
+
+  it('shows the welcome page to a visitor without chrome', () => {
+    h.auth = { isLoggedIn: false, isLoading: false };
+    renderShell('/');
+    expect(screen.queryByTestId('sidebar')).toBeNull();
+    expect(screen.getByText('no shell')).toBeInTheDocument();
+  });
+
+  it('keeps home bare while it is not known yet who is signed in', () => {
+    h.auth = { isLoggedIn: false, isLoading: true };
+    renderShell('/');
+    expect(screen.queryByTestId('sidebar')).toBeNull();
+  });
+
+  it('gives a visitor the sidebar everywhere past the welcome page', () => {
+    h.auth = { isLoggedIn: false, isLoading: false };
+    renderShell('/courses');
+    expect(state()).toBe('wide');
   });
 
   it('starts unfolded where there is room when nothing is remembered', () => {
