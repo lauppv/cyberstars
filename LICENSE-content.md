@@ -1,7 +1,7 @@
 # Educational Content License
 
 The educational content in this repository (lesson text, curriculum descriptions,
-and instructional materials located in `server/lessons/`) is licensed under the
+and instructional materials located in `packages/content/lessons/`) is licensed under the
 **Creative Commons Attribution-ShareAlike 4.0 International License** (CC BY-SA 4.0).
 
 You are free to:

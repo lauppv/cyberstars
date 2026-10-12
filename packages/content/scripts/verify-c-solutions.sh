@@ -3,12 +3,13 @@
 # against every ```text block(s) in the paired lesson .md, using the matching
 # ```text input block right before it as stdin (if present).
 #
-# Usage: verify-c-solutions.sh [--dir server/lessons/c/ro] [slug ...]
+# Usage: verify-c-solutions.sh [--dir packages/content/lessons/c/ro] [slug ...]
 #   no slugs = check every lesson that has a -solution.md
-#   --dir defaults to server/lessons/c/ro; pass server/lessons/c for EN
+#   --dir defaults to lessons/c/ro next to this script's folder; pass
+#   packages/content/lessons/c for EN
 
 set -uo pipefail
-LESSON_DIR="server/lessons/c/ro"
+LESSON_DIR="$(dirname "$0")/../lessons/c/ro"
 if [[ "${1:-}" == "--dir" ]]; then
   LESSON_DIR="$2"
   shift 2

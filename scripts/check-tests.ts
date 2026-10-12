@@ -7,7 +7,7 @@
 // and how much of it the programs themselves took, so bulk cases can be sized
 // against the per-run budget.
 //
-// A lesson may also ship variants in test/lesson-variants/<course>/<slug>/:
+// A lesson may also ship variants in packages/content/variants/<course>/<slug>/:
 // accept-*.<ext> are other correct solutions (other names, another approach)
 // that must pass, reject-*.<ext> are cheats (hardcoded output, the wrong kind
 // of loop) that must fail. They prove the spec grades the behavior and the
@@ -20,12 +20,12 @@
 //   npx tsx scripts/check-tests.ts c:en python/string-reverse  # a language per target
 import fs from 'fs';
 import path from 'path';
+import { VARIANTS_DIR } from '@cyberstars/content/paths';
 import { contentDir } from '../server/services/paths.js';
 import { runLessonTests } from '../server/services/lesson-tests.service.js';
 import { drainAll } from '../server/services/code-container.service.js';
 
 const TESTS_SUFFIX = '-tests.json';
-const VARIANTS_DIR = path.join(process.cwd(), 'test', 'lesson-variants');
 
 function solutionCode(dir: string, slug: string): string {
   const md = fs.readFileSync(path.join(dir, `${slug}-solution.md`), 'utf8');

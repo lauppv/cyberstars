@@ -33,7 +33,7 @@ const COURSES: Record<Runtime, string[]> = {
 // keep a shard near 20 minutes.
 const WHOLE_SHARDS: Record<Runtime, number> = { python: 2, c: 1, java: 4 };
 
-const RUNTIME_FILES: Record<Runtime, string[]> = {
+export const RUNTIME_FILES: Record<Runtime, string[]> = {
   python: ['server/services/lesson-tests.runner.py', 'server/runtimes/python.ts'],
   c: [
     'server/services/lesson-tests.runner.c.py',
@@ -44,27 +44,28 @@ const RUNTIME_FILES: Record<Runtime, string[]> = {
   java: ['server/services/lesson-tests.runner.java', 'server/runtimes/java.ts'],
 };
 
-const ENGINE_FILES = [
+export const ENGINE_FILES = [
   'server/services/lesson-tests.service.ts',
   'server/services/code-container.service.ts',
   'server/services/docker-exec.ts',
   'server/services/judge-queue.ts',
   'server/services/reference-cache.ts',
   'server/services/paths.ts',
+  'packages/content/paths.ts',
   'server/runtimes/registry.ts',
   'server/runtimes/types.ts',
   'packages/shared/tests.ts',
   'scripts/check-tests.ts',
 ];
 
-const SELF_FILES = ['scripts/changed-lessons.ts', '.github/workflows/lesson-tests.yml'];
+export const SELF_FILES = ['scripts/changed-lessons.ts', '.github/workflows/lesson-tests.yml'];
 
-// server/lessons/java/ro/hashmap-tests.json -> java/hashmap,
-// server/algorithms/c/binary-search-c-solution.md -> algo-c/binary-search-c,
-// test/lesson-variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse.
+// packages/content/lessons/java/ro/hashmap-tests.json -> java/hashmap,
+// packages/content/algorithms/c/binary-search-c-solution.md -> algo-c/binary-search-c,
+// packages/content/variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse.
 const LESSON_FILE =
-  /^server\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
-const VARIANT_FILE = /^test\/lesson-variants\/([^/]+)\/([^/]+)\/[^/]+$/;
+  /^packages\/content\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md)$/;
+const VARIANT_FILE = /^packages\/content\/variants\/([^/]+)\/([^/]+)\/[^/]+$/;
 
 export interface Shard {
   name: string;

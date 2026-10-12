@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { courses, lessons } from './curriculum.data.js';
+import { courses, lessons } from '@cyberstars/content/curriculum';
 
 const prisma = new PrismaClient();
 

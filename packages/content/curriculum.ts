@@ -1,7 +1,7 @@
 // Curriculum metadata: the single source of truth for course/lesson structure.
 // Imported by prisma/seed.ts (DB seeding) and scripts/generate-static-content.ts
 // (build-time public/curriculum.json). Keep titles/order in sync with the
-// markdown under server/lessons and server/algorithms.
+// markdown under lessons/ and algorithms/.
 
 export const courses = [
   {

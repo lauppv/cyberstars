@@ -9,7 +9,7 @@ All Romanian identifiers follow Python snake_case convention.
 import os
 import re
 
-RO_DIR = os.path.join(os.path.dirname(__file__), '..', 'server', 'lessons', 'python', 'ro')
+RO_DIR = os.path.join(os.path.dirname(__file__), '..', 'lessons', 'python', 'ro')
 
 REPLACEMENTS = [
     # === Function names ===
