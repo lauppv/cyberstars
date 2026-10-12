@@ -16,6 +16,7 @@
   },
   "include": [
     "apps/ui/src",
+    "apps/ui/scripts",
     "apps/ui/vite.config.ts",
     "packages/shared",
     "test",
