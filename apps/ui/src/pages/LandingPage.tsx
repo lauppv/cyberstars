@@ -7,6 +7,7 @@ import { HeroPreview } from '../components/landing/HeroPreview';
 import { ProofStrip } from '../components/landing/ProofStrip';
 import { ProblemSection } from '../components/landing/ProblemSection';
 import { HowItWorks } from '../components/landing/HowItWorks';
+import { FeaturesSection } from '../components/landing/FeaturesSection';
 
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
@@ -67,6 +68,7 @@ export function LandingPage() {
 
         <ProblemSection />
         <HowItWorks />
+        <FeaturesSection />
       </main>
 
       <LandingFooter />

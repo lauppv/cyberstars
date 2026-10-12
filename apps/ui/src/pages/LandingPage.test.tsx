@@ -55,6 +55,7 @@ describe('LandingPage', () => {
       within(main()).getByRole('heading', { name: 'Starting to code is harder than it should be' }),
     ).toBeDefined();
     expect(within(main()).getByRole('heading', { name: 'How it works' })).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: "What's inside" })).toBeDefined();
     expect(header()).toBeDefined();
     expect(footer()).toBeDefined();
   });

@@ -171,6 +171,34 @@
         "picture": "Nivelul 3, Navigator, cu XP spre nivelul 4 și două insigne de Python obținute."
       }
     },
+    "features": {
+      "title": "Ce găsești înăuntru",
+      "subtitle": "Tot ce poți deschide chiar acum, fără cont. Forumul îți cere unul.",
+      "courses": {
+        "title": "Cursuri în patru limbaje",
+        "text": "Python, Java și C de la primul print până la pointeri, obiecte și procese, plus un curs de Linux într-un terminal adevărat.",
+        "link": "Vezi cursurile",
+        "shot": "Screenshot: pagina de cursuri"
+      },
+      "algorithms": {
+        "title": "Provocări de algoritmi",
+        "text": "Probleme de la ușor la greu în Python, Java și C, verificate pe teste ascunse, cu timpul tău lângă cel al soluției de referință.",
+        "link": "Vezi provocările",
+        "shot": "Screenshot: o provocare de algoritmi după Rulează testele"
+      },
+      "almanac": {
+        "title": "Almanahul",
+        "text": "Povești scurte din istoria informaticii: oamenii, mașinile și ideile din spatele codului pe care îl scrii.",
+        "link": "Citește Almanahul",
+        "shot": "Screenshot: Almanahul"
+      },
+      "forum": {
+        "title": "Un forum pentru când te blochezi",
+        "text": "Întrebi despre o lecție, îți arăți soluția, ajuți pe altcineva. Ca să citești și să postezi ai nevoie de un cont gratuit.",
+        "link": "Fă-ți un cont gratuit",
+        "shot": "Screenshot: o discuție pe forum"
+      }
+    },
     "footer": {
       "label": "Linkuri",
       "source": "Codul sursă",

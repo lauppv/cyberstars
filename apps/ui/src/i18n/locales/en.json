@@ -167,6 +167,34 @@
         "picture": "Level 3, Navigator, with XP toward level 4 and two Python badges earned."
       }
     },
+    "features": {
+      "title": "What's inside",
+      "subtitle": "Everything you can open right now, no account needed. The forum asks for one.",
+      "courses": {
+        "title": "Courses in four languages",
+        "text": "Python, Java and C from your first print to pointers, objects and processes, plus a Linux course in a real terminal.",
+        "link": "Browse the courses",
+        "shot": "Screenshot: the Courses page"
+      },
+      "algorithms": {
+        "title": "Algorithm challenges",
+        "text": "Problems from easy to hard in Python, Java and C, graded on hidden tests, with your runtime next to the reference solution's.",
+        "link": "See the challenges",
+        "shot": "Screenshot: an algorithm challenge after Run Tests"
+      },
+      "almanac": {
+        "title": "The Almanac",
+        "text": "Short stories from computing history: the people, the machines and the ideas behind the code you write.",
+        "link": "Read the Almanac",
+        "shot": "Screenshot: the Almanac"
+      },
+      "forum": {
+        "title": "A forum for when you're stuck",
+        "text": "Ask about a lesson, share your solution, help someone else. Reading and posting need a free account.",
+        "link": "Create a free account",
+        "shot": "Screenshot: a forum thread"
+      }
+    },
     "footer": {
       "label": "Site links",
       "source": "Source code",
