@@ -57,6 +57,7 @@ describe('LandingPage', () => {
     expect(within(main()).getByRole('heading', { name: 'How it works' })).toBeDefined();
     expect(within(main()).getByRole('heading', { name: "What's inside" })).toBeDefined();
     expect(within(main()).getByRole('heading', { name: 'Free, and open source' })).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: 'Questions' })).toBeDefined();
     expect(header()).toBeDefined();
     expect(footer()).toBeDefined();
   });

@@ -215,6 +215,33 @@
         "text": "Codul e public sub <code>licența BSD 3-Clause</code>, iar lecțiile sub <content>CC BY-SA 4.0</content>."
       }
     },
+    "faq": {
+      "title": "Întrebări",
+      "account": {
+        "q": "Am nevoie de cont?",
+        "a": "Nu. Poți citi orice lecție, scrie cod și-l poți rula fără cont. Fără cont, primele zece rulări din editor sunt gratuite; un cont gratuit ridică limita, îți salvează progresul și îți deschide forumul."
+      },
+      "free": {
+        "q": "Chiar e gratuit?",
+        "a": "Da. Nu există plan plătit și nu introduci niciun card, iar codul din spatele CyberStars e public pe GitHub."
+      },
+      "start": {
+        "q": "Cu ce limbaj să încep?",
+        "a": "Python, dacă n-ai mai programat: se citește aproape ca engleza, iar prima lecție rulează într-un minut. Alege C sau Java dacă le folosești la școală, și Linux ca să înveți terminalul."
+      },
+      "install": {
+        "q": "Trebuie să instalez ceva?",
+        "a": "Nu. Editorul și terminalul de Linux rulează în browser, iar codul tău rulează pe serverele noastre."
+      },
+      "phone": {
+        "q": "Merge pe telefon?",
+        "a": "Da. Lecțiile, editorul și testele merg pe telefon; un ecran mai mare e mai comod pentru programe mai lungi."
+      },
+      "romanian": {
+        "q": "E și în română?",
+        "a": "Da. Site-ul și toate lecțiile sunt în engleză și română; schimbi din EN și RO, sus pe această pagină."
+      }
+    },
     "cta": {
       "mid": "Primul tău program e la un click distanță.",
       "final": {
