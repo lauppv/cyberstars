@@ -6,6 +6,7 @@ RUN apk add --no-cache docker-cli
 COPY package.json package-lock.json ./
 # Every workspace's manifest has to be here too: without it npm ci still
 # succeeds, but leaves the package out and the build fails much later
+COPY apps/ui/package.json ./apps/ui/
 COPY packages/shared/package.json ./packages/shared/
 RUN npm ci --ignore-scripts
 

@@ -23,7 +23,7 @@ runs:
         # mismatch; keying on package-lock.json alone lets drift slip through a
         # cache hit and only surface on `npm ci` at deploy time. The workspace
         # packages' manifests count too.
-        key: ${{ runner.os }}-node-${{ hashFiles('.node-version') }}-${{ hashFiles('package-lock.json', 'package.json', 'packages/*/package.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('.node-version') }}-${{ hashFiles('package-lock.json', 'package.json', 'apps/*/package.json', 'packages/*/package.json') }}
         restore-keys: |
           ${{ runner.os }}-node-${{ hashFiles('.node-version') }}-
 

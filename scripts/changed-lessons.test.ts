@@ -6,9 +6,9 @@ const targetsOf = (shards: ReturnType<typeof planChecks>) =>
 
 describe('planChecks', () => {
   it('plans nothing when no lesson, runner or judge file changed', () => {
-    expect(planChecks(['client/App.tsx', 'server/lessons/python/loops.md', 'README.md'])).toEqual(
-      [],
-    );
+    expect(
+      planChecks(['apps/ui/src/App.tsx', 'server/lessons/python/loops.md', 'README.md']),
+    ).toEqual([]);
   });
 
   it("grades a changed lesson's spec, solution or variants in EN and RO", () => {

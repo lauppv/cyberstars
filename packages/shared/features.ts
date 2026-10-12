@@ -25,7 +25,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
 // Features switched off for everyone, admins and dev included. Temporary: drop
 // the key to turn the feature back on.
 // - radio: its mp3 was lost with the old VPS and no licensed replacement is
-//   picked yet (see client/constants/radioTrack.ts)
+//   picked yet (see apps/ui/src/constants/radioTrack.ts)
 export const DISABLED_FEATURES: ReadonlySet<FeatureKey> = new Set<FeatureKey>(['radio']);
 
 // Shared access rule, used identically by the server (isProd = NODE_ENV ===

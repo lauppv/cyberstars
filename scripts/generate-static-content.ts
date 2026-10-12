@@ -12,10 +12,12 @@ import fs from 'fs';
 import path from 'path';
 import { courses, lessons } from '../prisma/curriculum.data.js';
 
-const ROOT = process.cwd();
+// Found from this file, not from where it was started: npm runs a workspace's
+// scripts from that workspace's folder
+const ROOT = path.resolve(import.meta.dirname, '..');
 const LESSONS_DIR = path.join(ROOT, 'server', 'lessons');
 const ALGO_DIR = path.join(ROOT, 'server', 'algorithms');
-const PUBLIC_DIR = path.join(ROOT, 'public');
+const PUBLIC_DIR = path.join(ROOT, 'apps', 'ui', 'public');
 const LESSONS_OUT = path.join(PUBLIC_DIR, 'lessons');
 
 // Algo course keys live under server/algorithms/<lang> (mirrors server/services/paths.ts).

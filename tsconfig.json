@@ -15,12 +15,13 @@
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": [
-    "client",
+    "apps/ui/src",
+    "apps/ui/vite.config.ts",
     "packages/shared",
     "test",
-    "vite.config.ts",
+    "vitest.config.ts",
     "vitest.integration.config.ts",
     "knip.config.ts"
   ],
-  "exclude": ["node_modules", "dist", "server", "test/integration"]
+  "exclude": ["node_modules", "**/dist", "server", "test/integration"]
 }
