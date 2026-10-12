@@ -5,6 +5,7 @@ import { LandingFooter } from '../components/landing/LandingFooter';
 import { Reveal } from '../components/landing/Reveal';
 import { HeroPreview } from '../components/landing/HeroPreview';
 import { ProofStrip } from '../components/landing/ProofStrip';
+import { ProblemSection } from '../components/landing/ProblemSection';
 
 const CARDS = [
   ['readCard', 'readCardDesc'],
@@ -69,6 +70,8 @@ export function LandingPage() {
         </section>
 
         <ProofStrip />
+
+        <ProblemSection />
 
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 py-14">
           <Reveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">

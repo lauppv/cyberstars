@@ -134,6 +134,21 @@
       "challenges_one": "algorithm challenge",
       "challenges_other": "algorithm challenges"
     },
+    "problem": {
+      "title": "Starting to code is harder than it should be",
+      "tabs": {
+        "title": "Five tabs before the first line",
+        "text": "A tutorial in one tab, an editor in another, a forum in a third, and none of them knows what you're stuck on."
+      },
+      "install": {
+        "title": "Setup before anything else",
+        "text": "Install a compiler, set up a path, fix an error you don't understand yet, all before you've written print."
+      },
+      "feedback": {
+        "title": "No one tells you if it's right",
+        "text": "Your program runs, but does it do what was asked? Without a check, you guess and move on."
+      }
+    },
     "footer": {
       "label": "Site links",
       "source": "Source code",
