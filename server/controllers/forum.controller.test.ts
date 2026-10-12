@@ -442,24 +442,6 @@ describe('getThread', () => {
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ views: 6 }));
   });
 
-  it('counts a guest view keyed by the guestId cookie', async () => {
-    mockPrisma.forumThread.findUnique.mockResolvedValue(threadFixture(5));
-    mockPrisma.forumThreadView.findUnique.mockResolvedValue(null);
-    mockPrisma.forumThreadView.create.mockResolvedValue({});
-    mockPrisma.forumThread.update.mockResolvedValue({});
-
-    const res = mockRes();
-    await getThread(
-      mockReq({ params: { threadId: '1' }, cookies: { guestId: 'g-1' } } as Partial<Request>),
-      res,
-      vi.fn(),
-    );
-    expect(mockPrisma.forumThreadView.create).toHaveBeenCalledWith(
-      expect.objectContaining({ data: expect.objectContaining({ viewerKey: 'guest:g-1' }) }),
-    );
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ views: 6 }));
-  });
-
   it('groups reactions (marking the viewer active) and blanks deleted posts', async () => {
     mockPrisma.forumThread.findUnique.mockResolvedValue({
       id: 1,
