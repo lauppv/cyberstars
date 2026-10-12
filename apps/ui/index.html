@@ -30,6 +30,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Before the first paint: hide the pre-rendered landing page from a
+         signed-in student and from a visitor reading Romanian. -->
+    <script src="/boot.js"></script>
+    <style>
+      [data-hide-prerender] [data-prerender] {
+        display: none;
+      }
+    </style>
     <!-- Data, not a script that runs, so the CSP leaves it alone. The FAQ joins
          this graph only once its copy is final. -->
     <script type="application/ld+json">

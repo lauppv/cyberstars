@@ -13,7 +13,7 @@ vi.mock('../services/authService', () => ({
   logout: () => logout(),
 }));
 
-const { AuthProvider, useAuth } = await import('./AuthContext');
+const { AuthProvider, useAuth, wasSignedIn } = await import('./AuthContext');
 
 const ADA = { id: 1, name: 'Ada', role: 'USER' } as AuthenticatedUser;
 const GRACE = { id: 2, name: 'Grace', role: 'ADMIN' } as AuthenticatedUser;
@@ -124,6 +124,41 @@ describe('AuthProvider actions', () => {
 
     await waitFor(() => expect(getMe).toHaveBeenCalledTimes(2));
     expect(state()).toBe('in:Ada');
+  });
+});
+
+describe('the signed-in hint', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('is set once a student is signed in', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+    expect(wasSignedIn()).toBe(true);
+  });
+
+  it('is left alone while sign-in is still being checked', () => {
+    localStorage.setItem('cyberstars.student', '1');
+    getMe.mockReturnValue(new Promise(() => {}));
+    renderProvider();
+    expect(wasSignedIn()).toBe(true);
+  });
+
+  it('is cleared for a guest and on logout', async () => {
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+    fireEvent.click(screen.getByText('logout'));
+    await waitFor(() => expect(state()).toBe('out:-'));
+    expect(wasSignedIn()).toBe(false);
+  });
+
+  it('reads as not signed in when storage is blocked', () => {
+    const spy = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    expect(wasSignedIn()).toBe(false);
+    spy.mockRestore();
   });
 });
 
