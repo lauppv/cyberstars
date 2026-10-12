@@ -84,6 +84,19 @@ describe('Reveal', () => {
     expect(block()).toHaveAttribute('data-reveal', 'shown');
   });
 
+  it('holds a staggered block back by its delay, only once it plays', () => {
+    const io = stubObserver();
+    stubReducedMotion(false);
+    render(
+      <Reveal delay={160}>
+        <p>content</p>
+      </Reveal>,
+    );
+    expect(block().style.transitionDelay).toBe('');
+    act(() => io.callback!([{ isIntersecting: true }]));
+    expect(block().style.transitionDelay).toBe('160ms');
+  });
+
   it('never hides the block under reduced motion', () => {
     const io = stubObserver();
     stubReducedMotion(true);

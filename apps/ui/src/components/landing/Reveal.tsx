@@ -19,7 +19,16 @@ const LOOK: Record<Phase, string> = {
 // bring it back is in place, before the first paint. A script that never runs
 // leaves the content on screen, not a blank page. Under reduced motion it
 // never hides at all.
-export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Reveal({
+  children,
+  className = '',
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  /** Milliseconds; staggers the parts of one block that enter the screen together */
+  delay?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<Phase>('visible');
 
@@ -44,7 +53,12 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
   }, []);
 
   return (
-    <div ref={ref} data-reveal={phase} className={`${LOOK[phase]} ${className}`.trim()}>
+    <div
+      ref={ref}
+      data-reveal={phase}
+      className={`${LOOK[phase]} ${className}`.trim()}
+      style={phase === 'shown' && delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
       {children}
     </div>
   );
