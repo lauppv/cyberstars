@@ -142,6 +142,15 @@ describe('Sidebar', () => {
     expect(h.navigate).toHaveBeenCalledWith('/getstarted');
   });
 
+  it('no longer offers the welcome tour, which stays routed but unlinked', () => {
+    h.auth = { user: USER };
+    renderSidebar();
+    fireEvent.click(screen.getByRole('button', { name: /Ada/ }));
+    expect(within(screen.getByRole('menu')).queryByText(/welcome tour/i)).toBeNull();
+    for (const link of screen.queryAllByRole('link')) {
+      expect(link).not.toHaveAttribute('href', '/welcome');
+    }
+  });
   it('closes the account menu on Escape and on an outside click', () => {
     h.auth = { user: USER };
     renderSidebar();
