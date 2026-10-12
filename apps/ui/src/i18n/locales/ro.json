@@ -117,6 +117,18 @@
       "openMenu": "Deschide meniul",
       "closeMenu": "Închide meniul"
     },
+    "proof": {
+      "label": "Ce poți învăța",
+      "courses_one": "curs",
+      "courses_few": "cursuri",
+      "courses_other": "de cursuri",
+      "lessons_one": "lecție",
+      "lessons_few": "lecții",
+      "lessons_other": "de lecții",
+      "challenges_one": "provocare de algoritmi",
+      "challenges_few": "provocări de algoritmi",
+      "challenges_other": "de provocări de algoritmi"
+    },
     "footer": {
       "label": "Linkuri",
       "source": "Codul sursă",

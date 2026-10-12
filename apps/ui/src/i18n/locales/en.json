@@ -117,6 +117,15 @@
       "openMenu": "Open menu",
       "closeMenu": "Close menu"
     },
+    "proof": {
+      "label": "What there is to learn",
+      "courses_one": "course",
+      "courses_other": "courses",
+      "lessons_one": "lesson",
+      "lessons_other": "lessons",
+      "challenges_one": "algorithm challenge",
+      "challenges_other": "algorithm challenges"
+    },
     "footer": {
       "label": "Site links",
       "source": "Source code",

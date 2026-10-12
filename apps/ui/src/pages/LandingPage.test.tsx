@@ -9,6 +9,19 @@ vi.mock('react-router', async (importOriginal) => {
   return { ...actual, useNavigate: () => mockNavigate };
 });
 
+const lessons = (n: number) =>
+  Array.from({ length: n }, (_, i) => ({ slug: `l${i}`, title: `L${i}`, sortOrder: i + 1 }));
+vi.mock('../context/CurriculumContext', () => ({
+  useCurriculum: () => ({
+    courses: [
+      { key: 'python', title: 'Python', description: '', lessons: lessons(3) },
+      { key: 'algo-c', title: 'C Algorithms', description: '', lessons: lessons(2) },
+    ],
+    isLoading: false,
+    refresh: vi.fn(),
+  }),
+}));
+
 import { LandingPage } from './LandingPage';
 
 function renderPage() {
@@ -36,6 +49,7 @@ describe('LandingPage', () => {
   it('shows the hero and the four cards between its own navbar and footer', () => {
     renderPage();
     expect(within(main()).getByText('Learn to code for free')).toBeDefined();
+    expect(screen.getByRole('region', { name: 'What there is to learn' })).toBeDefined();
     for (const card of ['Read', 'Write', 'Run', 'Level up']) {
       expect(within(main()).getByText(card)).toBeDefined();
     }
