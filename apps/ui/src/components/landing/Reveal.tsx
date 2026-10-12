@@ -33,8 +33,10 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
         setPhase('shown');
         io.disconnect();
       },
-      // A tall block may never be 20% on screen, so fire on its top edge instead
-      { rootMargin: '0px 0px -10% 0px' },
+      // On its first visible pixel: a block peeking in at the bottom of the
+      // first screen (the hero's buttons on a short window) must not sit there
+      // hidden, and a tall block may never be mostly on screen
+      { threshold: 0 },
     );
     setPhase('hidden'); // eslint-disable-line react-hooks/set-state-in-effect
     io.observe(el);
