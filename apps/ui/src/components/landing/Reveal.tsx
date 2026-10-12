@@ -12,6 +12,11 @@ const LOOK: Record<Phase, string> = {
     'opacity-100 translate-y-0 transition-[opacity,translate] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
 };
 
+// Read once, when the app's code loads and before React replaces the root: is
+// the page under it the landing page pre-rendered into index.html at build?
+const PRERENDERED =
+  typeof document !== 'undefined' && document.querySelector('[data-prerender]') !== null;
+
 // The one fade on the landing page: a block fades in and rises 16px the first
 // time it enters the screen, on one curve and one duration for everything.
 //
@@ -36,6 +41,9 @@ export function Reveal({
     const el = ref.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    // On a pre-rendered page the visitor already sees what's on screen; hiding
+    // it to fade it in again would only make it blink
+    if (PRERENDERED && el.getBoundingClientRect().top < window.innerHeight) return;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return;
@@ -47,7 +55,7 @@ export function Reveal({
       // hidden, and a tall block may never be mostly on screen
       { threshold: 0 },
     );
-    setPhase('hidden'); // eslint-disable-line react-hooks/set-state-in-effect
+    setPhase('hidden');
     io.observe(el);
     return () => io.disconnect();
   }, []);
