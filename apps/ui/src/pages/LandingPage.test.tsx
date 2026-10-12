@@ -60,12 +60,22 @@ describe('LandingPage', () => {
     expect(footer()).toBeDefined();
   });
 
-  it('Start learning opens Courses and the hero Sign in opens sign-in', () => {
+  it("the hero's Start learning opens Courses and its Sign in opens sign-in", () => {
     renderPage();
-    fireEvent.click(within(main()).getByText('Start learning'));
+    const [heroStart] = within(main()).getAllByRole('button', { name: 'Start learning' });
+    fireEvent.click(heroStart);
     expect(mockNavigate).toHaveBeenCalledWith('/courses');
-    fireEvent.click(within(main()).getByText('Sign in'));
+    const [heroSignIn] = within(main()).getAllByRole('button', { name: 'Sign in' });
+    fireEvent.click(heroSignIn);
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
+  });
+
+  it('asks again mid-page and once more before the footer', () => {
+    renderPage();
+    expect(within(main()).getAllByRole('button', { name: 'Start learning' })).toHaveLength(3);
+    expect(
+      within(main()).getByRole('heading', { name: 'Write your first line of code today' }),
+    ).toBeDefined();
   });
 
   it('links the navbar only to pages a visitor can open, plus sign-in', () => {

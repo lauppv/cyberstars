@@ -199,6 +199,13 @@
         "shot": "Screenshot: o discuție pe forum"
       }
     },
+    "cta": {
+      "mid": "Primul tău program e la un click distanță.",
+      "final": {
+        "title": "Scrie azi prima ta linie de cod",
+        "text": "Alege un curs, citește prima lecție și rulează-o. Nimic de instalat, fără card și fără cont ca să începi."
+      }
+    },
     "footer": {
       "label": "Linkuri",
       "source": "Codul sursă",

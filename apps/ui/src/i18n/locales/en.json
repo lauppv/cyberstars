@@ -195,6 +195,13 @@
         "shot": "Screenshot: a forum thread"
       }
     },
+    "cta": {
+      "mid": "Your first program is one click away.",
+      "final": {
+        "title": "Write your first line of code today",
+        "text": "Pick a course, read the first lesson and run it. Nothing to install, no card, and no account to start."
+      }
+    },
     "footer": {
       "label": "Site links",
       "source": "Source code",

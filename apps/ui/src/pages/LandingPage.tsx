@@ -8,6 +8,7 @@ import { ProofStrip } from '../components/landing/ProofStrip';
 import { ProblemSection } from '../components/landing/ProblemSection';
 import { HowItWorks } from '../components/landing/HowItWorks';
 import { FeaturesSection } from '../components/landing/FeaturesSection';
+import { CtaBand } from '../components/landing/CtaBand';
 
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
@@ -55,6 +56,8 @@ export function LandingPage() {
         <ProblemSection />
         <HowItWorks />
         <FeaturesSection />
+        <CtaBand tone="mid" />
+        <CtaBand tone="final" />
       </main>
 
       <LandingFooter />
