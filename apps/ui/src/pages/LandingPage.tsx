@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import { LandingNav } from '../components/landing/LandingNav';
 import { LandingFooter } from '../components/landing/LandingFooter';
 import { Reveal } from '../components/landing/Reveal';
+import { StartButtons } from '../components/landing/StartButtons';
 import { HeroPreview } from '../components/landing/HeroPreview';
 import { ProofStrip } from '../components/landing/ProofStrip';
 import { ProblemSection } from '../components/landing/ProblemSection';
@@ -12,7 +12,6 @@ import { FeaturesSection } from '../components/landing/FeaturesSection';
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
 export function LandingPage() {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
@@ -41,20 +40,7 @@ export function LandingPage() {
               </p>
             </Reveal>
             <Reveal delay={160}>
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                <button
-                  onClick={() => navigate('/courses')}
-                  className="px-6 py-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer"
-                >
-                  {t('home.marketing.startLearning')}
-                </button>
-                <button
-                  onClick={() => navigate('/getstarted')}
-                  className="px-6 py-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
-                >
-                  {t('home.marketing.signIn')}
-                </button>
-              </div>
+              <StartButtons className="justify-center lg:justify-start" />
             </Reveal>
           </div>
 
