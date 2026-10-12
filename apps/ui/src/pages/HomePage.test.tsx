@@ -38,6 +38,9 @@ vi.mock('../hooks/useGamification', () => ({
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
+vi.mock('./LandingPage', () => ({
+  LandingPage: () => <div data-testid="landing" />,
+}));
 vi.mock('../components/ui/LoadingSpinner', () => ({
   LoadingSpinner: () => <div>Loading...</div>,
 }));
@@ -150,40 +153,18 @@ describe('HomePage', () => {
     expect(screen.getByText('Loading...')).toBeDefined();
   });
 
-  it('renders marketing view when logged out', () => {
+  it('shows a visitor the landing page instead of the dashboard', () => {
     mockUseAuth.mockReturnValue(loggedOutAuth);
     renderPage();
-    expect(screen.getByText('Learn to code for free')).toBeDefined();
-    expect(screen.getByText('Start Learning →')).toBeDefined();
-    expect(screen.getByText('Sign in')).toBeDefined();
-  });
-
-  it('renders feature cards in marketing view', () => {
-    mockUseAuth.mockReturnValue(loggedOutAuth);
-    renderPage();
-    expect(screen.getByText('Read')).toBeDefined();
-    expect(screen.getByText('Write')).toBeDefined();
-    expect(screen.getByText('Run')).toBeDefined();
-  });
-
-  it('Start Learning button navigates to /courses', () => {
-    mockUseAuth.mockReturnValue(loggedOutAuth);
-    renderPage();
-    fireEvent.click(screen.getByText('Start Learning →'));
-    expect(mockNavigate).toHaveBeenCalledWith('/courses');
-  });
-
-  it('Sign in button navigates to /getstarted', () => {
-    mockUseAuth.mockReturnValue(loggedOutAuth);
-    renderPage();
-    fireEvent.click(screen.getByText('Sign in'));
-    expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
+    expect(screen.getByTestId('landing')).toBeDefined();
+    expect(screen.queryByTestId('topbar')).toBeNull();
   });
 
   it('renders dashboard when logged in', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     renderPage();
     expect(screen.getByTestId('topbar')).toBeDefined();
+    expect(screen.queryByTestId('landing')).toBeNull();
   });
 
   it('shows continue where you left off section', () => {
