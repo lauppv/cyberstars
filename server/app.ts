@@ -105,7 +105,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 // requests never reach here; this static mount is the dev path (and fallback).
 app.use('/radio', express.static(path.join(process.cwd(), 'media/radio')));
 
-const buildPath = path.join(process.cwd(), 'dist');
+const buildPath = path.join(process.cwd(), 'apps', 'ui', 'dist');
 app.use(express.static(buildPath));
 
 // SPA fallback: only match extensionless paths (course/lesson routes, profile,
