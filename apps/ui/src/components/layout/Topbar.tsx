@@ -29,8 +29,9 @@ const TITLES: [string, string][] = [
   ['/admin', 'topbar.admin'],
 ];
 
-function titleKey(pathname: string): string | null {
-  if (pathname === '/') return 'nav.dashboard';
+function titleKey(pathname: string, isLoggedIn: boolean): string | null {
+  // Home is the dashboard only for a student, a visitor gets the welcome page there
+  if (pathname === '/') return isLoggedIn ? 'nav.dashboard' : null;
   return TITLES.find(([prefix]) => pathname.startsWith(prefix))?.[1] ?? null;
 }
 
@@ -48,7 +49,7 @@ export function Topbar({
   const { t } = useTranslation();
   const { isLoggedIn, user } = useAuth();
   const sidebar = useSidebar();
-  const title = titleKey(location.pathname);
+  const title = titleKey(location.pathname, isLoggedIn);
 
   return (
     <header className="flex items-center justify-between gap-3 px-3 sm:px-4 h-12 bg-[var(--chrome)] border-b border-[var(--border)] flex-shrink-0 sticky top-0 z-30">
