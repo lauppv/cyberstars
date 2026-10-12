@@ -46,10 +46,11 @@ afterEach(async () => {
 });
 
 describe('LandingPage', () => {
-  it('shows the hero and the four cards between its own navbar and footer', () => {
+  it('shows the hero, the product, the proof strip and the cards between its navbar and footer', () => {
     renderPage();
     expect(within(main()).getByText('Learn to code for free')).toBeDefined();
-    expect(screen.getByRole('region', { name: 'What there is to learn' })).toBeDefined();
+    expect(within(main()).getByRole('img', { name: /Flight Report mission/ })).toBeDefined();
+    expect(within(main()).getByRole('region', { name: 'What there is to learn' })).toBeDefined();
     for (const card of ['Read', 'Write', 'Run', 'Level up']) {
       expect(within(main()).getByText(card)).toBeDefined();
     }
@@ -57,9 +58,9 @@ describe('LandingPage', () => {
     expect(footer()).toBeDefined();
   });
 
-  it('Start Learning opens Courses and the hero Sign in opens sign-in', () => {
+  it('Start learning opens Courses and the hero Sign in opens sign-in', () => {
     renderPage();
-    fireEvent.click(within(main()).getByText('Start Learning →'));
+    fireEvent.click(within(main()).getByText('Start learning'));
     expect(mockNavigate).toHaveBeenCalledWith('/courses');
     fireEvent.click(within(main()).getByText('Sign in'));
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
