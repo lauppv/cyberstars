@@ -102,15 +102,7 @@
       "title": "Învață să programezi gratuit",
       "subtitle": "Lecții scurte în <1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>. Scrii cod direct în browser, îl rulezi pe teste și afli pe loc dacă merge.",
       "startLearning": "Începe să înveți",
-      "signIn": "Conectare",
-      "readCard": "Citește",
-      "readCardDesc": "Lecții scurte, explicate simplu",
-      "writeCard": "Scrie",
-      "writeCardDesc": "Editor interactiv direct în browser",
-      "runCard": "Rulează",
-      "runCardDesc": "Execuție reală de cod cu feedback instant",
-      "levelCard": "Urcă în nivel",
-      "levelCardDesc": "Câștigă XP și urcă în niveluri cosmice pe măsură ce termini lecții"
+      "signIn": "Conectare"
     }
   },
   "landing": {
@@ -151,6 +143,32 @@
       "feedback": {
         "title": "Nimeni nu-ți spune dacă e bine",
         "text": "Programul rulează, dar face ce s-a cerut? Fără o verificare, ghicești și treci mai departe."
+      }
+    },
+    "how": {
+      "title": "Cum funcționează",
+      "subtitle": "Fiecare lecție e aceeași buclă scurtă, în browser.",
+      "step": "Pasul {{n}}",
+      "read": {
+        "title": "Citești o lecție",
+        "text": "Explicații scurte cu exemple mici pe care le rulezi și le schimbi pe loc, în română sau engleză.",
+        "picture": "Începutul primei lecții de Python, cu un exemplu și rezultatul lui."
+      },
+      "write": {
+        "title": "Scrii cod în browser",
+        "text": "Un editor adevărat, cu sintaxa colorată, chiar lângă lecție. Nimic de instalat, și merge și pe telefon.",
+        "picture": "Editorul cu o buclă scurtă în Python și rezultatul ei."
+      },
+      "test": {
+        "title": "Îl rulezi pe teste",
+        "text": "Rulează testele verifică programul pe multe cazuri și se oprește la primul pe care îl pică, arătând ce a intrat și ce a afișat programul tău, ca să vezi exact ce ai de reparat.",
+        "picture": "Un test picat: intrarea, rezultatul așteptat și rezultatul studentului, căruia îi lipsește cuvântul unitati."
+      },
+      "level": {
+        "title": "Avansezi în nivel",
+        "text": "Cu un cont gratuit, fiecare lecție trecută îți aduce XP, niveluri și insigne, iar progresul se salvează. Fără cont poți citi lecțiile și încerca codul.",
+        "bar": "Progresul tău",
+        "picture": "Nivelul 3, Navigator, cu XP spre nivelul 4 și două insigne de Python obținute."
       }
     },
     "footer": {

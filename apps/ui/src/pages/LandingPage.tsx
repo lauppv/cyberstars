@@ -6,13 +6,7 @@ import { Reveal } from '../components/landing/Reveal';
 import { HeroPreview } from '../components/landing/HeroPreview';
 import { ProofStrip } from '../components/landing/ProofStrip';
 import { ProblemSection } from '../components/landing/ProblemSection';
-
-const CARDS = [
-  ['readCard', 'readCardDesc'],
-  ['writeCard', 'writeCardDesc'],
-  ['runCard', 'runCardDesc'],
-  ['levelCard', 'levelCardDesc'],
-] as const;
+import { HowItWorks } from '../components/landing/HowItWorks';
 
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
@@ -72,17 +66,7 @@ export function LandingPage() {
         <ProofStrip />
 
         <ProblemSection />
-
-        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 py-14">
-          <Reveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-            {CARDS.map(([title, desc]) => (
-              <div key={title} className="p-5 panel rounded-[var(--radius)]">
-                <div className="font-semibold mb-1">{t(`home.marketing.${title}`)}</div>
-                <div className="text-sm text-[var(--text2)]">{t(`home.marketing.${desc}`)}</div>
-              </div>
-            ))}
-          </Reveal>
-        </div>
+        <HowItWorks />
       </main>
 
       <LandingFooter />

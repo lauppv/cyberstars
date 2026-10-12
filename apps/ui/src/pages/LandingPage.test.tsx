@@ -46,7 +46,7 @@ afterEach(async () => {
 });
 
 describe('LandingPage', () => {
-  it('shows the hero, the product, the proof strip and the cards between its navbar and footer', () => {
+  it('shows the hero, the proof strip and the sections between its navbar and footer', () => {
     renderPage();
     expect(within(main()).getByText('Learn to code for free')).toBeDefined();
     expect(within(main()).getByRole('img', { name: /Flight Report mission/ })).toBeDefined();
@@ -54,9 +54,7 @@ describe('LandingPage', () => {
     expect(
       within(main()).getByRole('heading', { name: 'Starting to code is harder than it should be' }),
     ).toBeDefined();
-    for (const card of ['Read', 'Write', 'Run', 'Level up']) {
-      expect(within(main()).getByText(card)).toBeDefined();
-    }
+    expect(within(main()).getByRole('heading', { name: 'How it works' })).toBeDefined();
     expect(header()).toBeDefined();
     expect(footer()).toBeDefined();
   });

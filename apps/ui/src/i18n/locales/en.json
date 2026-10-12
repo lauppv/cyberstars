@@ -101,15 +101,7 @@
       "title": "Learn to code for free",
       "subtitle": "Short lessons in <1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>. Write code in your browser, run it against tests, and know right away if it works.",
       "startLearning": "Start learning",
-      "signIn": "Sign in",
-      "readCard": "Read",
-      "readCardDesc": "Bite-sized lessons explained simply",
-      "writeCard": "Write",
-      "writeCardDesc": "Interactive editor right in the browser",
-      "runCard": "Run",
-      "runCardDesc": "Real code execution with instant feedback",
-      "levelCard": "Level up",
-      "levelCardDesc": "Earn XP and climb cosmic levels as you finish lessons"
+      "signIn": "Sign in"
     }
   },
   "landing": {
@@ -147,6 +139,32 @@
       "feedback": {
         "title": "No one tells you if it's right",
         "text": "Your program runs, but does it do what was asked? Without a check, you guess and move on."
+      }
+    },
+    "how": {
+      "title": "How it works",
+      "subtitle": "Every lesson is the same short loop, in your browser.",
+      "step": "Step {{n}}",
+      "read": {
+        "title": "Read a lesson",
+        "text": "Short explanations with small examples you can run and change on the spot, in English or Romanian.",
+        "picture": "The start of the first Python lesson, with an example and its output."
+      },
+      "write": {
+        "title": "Write code in your browser",
+        "text": "A real editor with syntax highlighting, right next to the lesson. Nothing to install, and it works on a phone.",
+        "picture": "The editor with a short Python loop and its output."
+      },
+      "test": {
+        "title": "Run it against tests",
+        "text": "Run Tests checks your program on many cases and stops at the first one it fails, showing what went in and what your program printed, so you see exactly what to fix.",
+        "picture": "A failed test: the input, the expected output, and the student's output, which is missing the word units."
+      },
+      "level": {
+        "title": "Level up",
+        "text": "With a free account, every lesson you pass earns XP, levels and badges, and your progress is saved. Without one you can still read the lessons and try the code.",
+        "bar": "Your progress",
+        "picture": "Level 3, Navigator, with XP toward level 4 and two Python badges earned."
       }
     },
     "footer": {
