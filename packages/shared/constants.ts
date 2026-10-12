@@ -39,7 +39,7 @@ export function baseLanguage(key: string): string {
 
 // A lesson's award grows with its position in the course, so later (harder)
 // lessons are worth more. sortOrder is 1-based per course (see
-// prisma/curriculum.data.ts): the first lesson is worth 10 XP.
+// packages/content/curriculum.ts): the first lesson is worth 10 XP.
 export function xpForLesson(sortOrder: number): number {
   return 10 + (sortOrder - 1);
 }

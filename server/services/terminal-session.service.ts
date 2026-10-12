@@ -68,9 +68,9 @@ function startGC() {
 }
 
 // Translated sandbox filesystems live in a ro/ subfolder beside the English
-// source (server/lessons/linux/ro/<slug>-setup.json), mirroring lesson prose
-// translations. English stays the source of truth; a missing RO variant falls
-// back to it so a course can be translated one lesson at a time.
+// source (packages/content/lessons/linux/ro/<slug>-setup.json), mirroring
+// lesson prose translations. English stays the source of truth; a missing RO
+// variant falls back to it so a course can be translated one lesson at a time.
 export function loadSetup(
   courseKey: string,
   lessonSlug: string,

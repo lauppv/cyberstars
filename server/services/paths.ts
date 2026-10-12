@@ -1,16 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { ALL_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
+import { courseDir } from '@cyberstars/content/paths';
 import { AppError } from '../middleware/errorHandler.js';
-
-const LESSONS_DIR = path.join(process.cwd(), 'server', 'lessons');
-const ALGO_DIR = path.join(process.cwd(), 'server', 'algorithms');
-
-const ALGO_MAP: Record<string, string> = {
-  'algo-python': 'python',
-  'algo-java': 'java',
-  'algo-c': 'c',
-};
 
 const VALID_COURSE_KEYS = new Set<string>([...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
 
@@ -24,8 +16,7 @@ export function assertValidCourse(courseKey: string): void {
 
 export function contentDir(courseKey: string): string {
   assertValidCourse(courseKey);
-  const algoSubdir = ALGO_MAP[courseKey];
-  return algoSubdir ? path.join(ALGO_DIR, algoSubdir) : path.join(LESSONS_DIR, courseKey);
+  return courseDir(courseKey);
 }
 
 // A lesson is judge-completable iff it ships an EN <slug>-tests.json, the same

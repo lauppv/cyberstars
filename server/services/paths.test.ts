@@ -6,19 +6,19 @@ import { AppError } from '../middleware/errorHandler.js';
 
 describe('contentDir', () => {
   it('returns lessons dir for main courses', () => {
-    expect(contentDir('python')).toContain('server/lessons/python');
-    expect(contentDir('java')).toContain('server/lessons/java');
-    expect(contentDir('c')).toContain('server/lessons/c');
+    expect(contentDir('python')).toContain('packages/content/lessons/python');
+    expect(contentDir('java')).toContain('packages/content/lessons/java');
+    expect(contentDir('c')).toContain('packages/content/lessons/c');
   });
 
   it('returns algorithms dir for algo courses', () => {
-    expect(contentDir('algo-python')).toContain('server/algorithms/python');
-    expect(contentDir('algo-java')).toContain('server/algorithms/java');
-    expect(contentDir('algo-c')).toContain('server/algorithms/c');
+    expect(contentDir('algo-python')).toContain('packages/content/algorithms/python');
+    expect(contentDir('algo-java')).toContain('packages/content/algorithms/java');
+    expect(contentDir('algo-c')).toContain('packages/content/algorithms/c');
   });
 
   it('returns lessons dir for terminal courses', () => {
-    expect(contentDir('linux')).toContain('server/lessons/linux');
+    expect(contentDir('linux')).toContain('packages/content/lessons/linux');
   });
 
   it('rejects path traversal attempts via courseKey', () => {

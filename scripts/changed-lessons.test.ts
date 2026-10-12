@@ -1,23 +1,31 @@
 import { describe, it, expect } from 'vitest';
-import { planChecks } from './changed-lessons.js';
+import fs from 'fs';
+import { ENGINE_FILES, RUNTIME_FILES, SELF_FILES, planChecks } from './changed-lessons.js';
 
 const targetsOf = (shards: ReturnType<typeof planChecks>) =>
   shards.flatMap((s) => s.targets.split(' '));
 
 describe('planChecks', () => {
+  // A path that no longer exists never matches a changed file, so a moved
+  // runner or engine file would silently stop triggering its regrade.
+  it('watches only files that exist', () => {
+    const watched = [...Object.values(RUNTIME_FILES).flat(), ...ENGINE_FILES, ...SELF_FILES];
+    expect(watched.filter((f) => !fs.existsSync(f))).toEqual([]);
+  });
+
   it('plans nothing when no lesson, runner or judge file changed', () => {
     expect(
-      planChecks(['apps/ui/src/App.tsx', 'server/lessons/python/loops.md', 'README.md']),
+      planChecks(['apps/ui/src/App.tsx', 'packages/content/lessons/python/loops.md', 'README.md']),
     ).toEqual([]);
   });
 
   it("grades a changed lesson's spec, solution or variants in EN and RO", () => {
     expect(
       planChecks([
-        'server/lessons/java/ro/hashmap-tests.json',
-        'server/algorithms/c/binary-search-c-solution.md',
-        'test/lesson-variants/python/string-reverse/reject-slice-in-helper.py',
-        'server/lessons/linux/ls-tests.json',
+        'packages/content/lessons/java/ro/hashmap-tests.json',
+        'packages/content/algorithms/c/binary-search-c-solution.md',
+        'packages/content/variants/python/string-reverse/reject-slice-in-helper.py',
+        'packages/content/lessons/linux/ls-tests.json',
       ]),
     ).toEqual([
       { name: 'python', image: 'python:3.10-slim', targets: 'python/string-reverse' },
@@ -29,7 +37,7 @@ describe('planChecks', () => {
   it('grades every lesson of a language, EN only, when its runner changed', () => {
     const shards = planChecks([
       'server/services/lesson-tests.runner.java',
-      'server/lessons/java/hashmap-tests.json',
+      'packages/content/lessons/java/hashmap-tests.json',
     ]);
     expect(shards.map((s) => s.name)).toEqual(['java 1/4', 'java 2/4', 'java 3/4', 'java 4/4']);
     const targets = targetsOf(shards);

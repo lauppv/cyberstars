@@ -2,7 +2,7 @@ dist
 coverage
 node_modules
 prisma/migrations
-server/lessons/**/*-code.md
-server/algorithms/**/*-code.md
+packages/content/lessons/**/*-code.md
+packages/content/algorithms/**/*-code.md
 public/lessons
 public/curriculum.json
