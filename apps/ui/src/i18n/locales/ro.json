@@ -112,6 +112,17 @@
       "levelCardDesc": "Câștigă XP și urcă în niveluri cosmice pe măsură ce termini lecții"
     }
   },
+  "landing": {
+    "nav": {
+      "openMenu": "Deschide meniul",
+      "closeMenu": "Închide meniul"
+    },
+    "footer": {
+      "label": "Linkuri",
+      "source": "Codul sursă",
+      "license": "Licență"
+    }
+  },
   "common": {
     "loading": "Se încarcă...",
     "close": "Închide",
