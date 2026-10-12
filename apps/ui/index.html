@@ -30,6 +30,33 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Data, not a script that runs, so the CSP leaves it alone. The FAQ joins
+         this graph only once its copy is final. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://cyberstars.app/#organization",
+            "name": "CyberStars",
+            "url": "https://cyberstars.app/",
+            "logo": "https://cyberstars.app/favicon.svg",
+            "sameAs": ["https://github.com/lauppv/cyberstars"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cyberstars.app/#website",
+            "name": "CyberStars",
+            "url": "https://cyberstars.app/",
+            "inLanguage": ["en", "ro"],
+            "publisher": {
+              "@id": "https://cyberstars.app/#organization"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
