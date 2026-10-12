@@ -9,6 +9,7 @@ import { ProblemSection } from '../components/landing/ProblemSection';
 import { HowItWorks } from '../components/landing/HowItWorks';
 import { FeaturesSection } from '../components/landing/FeaturesSection';
 import { CtaBand } from '../components/landing/CtaBand';
+import { FreeSection } from '../components/landing/FreeSection';
 
 // What a visitor sees on the home address. A signed-in student gets the
 // dashboard there instead (HomePage decides).
@@ -57,6 +58,7 @@ export function LandingPage() {
         <HowItWorks />
         <FeaturesSection />
         <CtaBand tone="mid" />
+        <FreeSection />
         <CtaBand tone="final" />
       </main>
 

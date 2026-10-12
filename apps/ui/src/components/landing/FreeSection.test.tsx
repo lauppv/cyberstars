@@ -1,0 +1,23 @@
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { FreeSection } from './FreeSection';
+
+describe('FreeSection', () => {
+  it('says there is no paid plan and no card', () => {
+    render(<FreeSection />);
+    expect(screen.getByRole('heading', { name: 'No paid plan' })).toBeDefined();
+    expect(screen.getByRole('heading', { name: 'No card' })).toBeDefined();
+  });
+
+  it('names and links the two licences on their own', () => {
+    render(<FreeSection />);
+    expect(screen.getByRole('link', { name: 'BSD 3-Clause licence' })).toHaveAttribute(
+      'href',
+      'https://github.com/lauppv/cyberstars/blob/main/LICENSE',
+    );
+    expect(screen.getByRole('link', { name: 'CC BY-SA 4.0' })).toHaveAttribute(
+      'href',
+      'https://github.com/lauppv/cyberstars/blob/main/LICENSE-content.md',
+    );
+  });
+});
