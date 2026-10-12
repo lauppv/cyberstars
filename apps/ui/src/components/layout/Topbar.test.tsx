@@ -53,6 +53,13 @@ describe('Topbar', () => {
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
   });
 
+  it('does not call the welcome page a dashboard for a visitor', () => {
+    mockAuthState = { isLoggedIn: false, user: null };
+    const { container } = renderTopbar();
+    expect(screen.queryByText('Dashboard')).toBeNull();
+    expect(container.querySelector('header span')).toBeNull();
+  });
+
   it('matches the section by path prefix', () => {
     mockLocation = { pathname: '/forum/t/12' };
     renderTopbar();
