@@ -15,7 +15,6 @@ vi.mock('express-rate-limit', () => ({
 
 vi.mock('../middleware/auth.js', () => ({
   authenticateToken: (_req: Request, _res: Response, next: () => void) => next(),
-  optionalAuth: (_req: Request, _res: Response, next: () => void) => next(),
 }));
 
 vi.mock('../middleware/validate.js', () => ({

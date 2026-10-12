@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
-import { authenticateToken, optionalAuth } from '../middleware/auth.js';
+import { authenticateToken } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
 import {
   createThreadSchema,
@@ -28,8 +28,9 @@ const forumReadLimiter = rateLimit({
 
 const router = Router();
 
-router.get('/categories', forumController.getCategories);
-router.get('/categories/:categorySlug/threads', forumController.getThreads);
+// Reading the forum takes an account, like writing to it
+router.get('/categories', authenticateToken, forumController.getCategories);
+router.get('/categories/:categorySlug/threads', authenticateToken, forumController.getThreads);
 
 router.post(
   '/categories',
@@ -46,7 +47,7 @@ router.put(
   forumController.updateCategory,
 );
 router.delete('/categories/:categorySlug', authenticateToken, forumController.deleteCategory);
-router.get('/threads/:threadId', forumReadLimiter, optionalAuth, forumController.getThread);
+router.get('/threads/:threadId', forumReadLimiter, authenticateToken, forumController.getThread);
 
 router.post(
   '/threads',

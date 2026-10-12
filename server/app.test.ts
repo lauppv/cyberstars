@@ -61,17 +61,6 @@ vi.mock('./repositories/leaderboard.repository.js', () => ({
 
 const { app } = await import('./app.js');
 
-describe('endpoint smoke tests: public routes return 200', () => {
-  const publicGets = ['/api/forum/categories'];
-
-  for (const path of publicGets) {
-    it(`GET ${path}`, async () => {
-      const res = await request(app).get(path);
-      expect(res.status).toBe(200);
-    });
-  }
-});
-
 describe('server clock', () => {
   it('GET /api/time returns a numeric now and is not cached', async () => {
     const res = await request(app).get('/api/time');
@@ -83,7 +72,7 @@ describe('server clock', () => {
 
 describe('content security policy', () => {
   it('emits a restricted CSP header instead of disabling it', async () => {
-    const res = await request(app).get('/api/forum/categories');
+    const res = await request(app).get('/api/time');
     const csp = res.headers['content-security-policy'];
     expect(csp).toBeDefined();
     expect(csp).toContain("script-src 'self' https://unpkg.com");
@@ -94,13 +83,13 @@ describe('content security policy', () => {
 
 describe('guest id cookie', () => {
   it('sets a guestId cookie for signed-out visitors', async () => {
-    const res = await request(app).get('/api/forum/categories');
+    const res = await request(app).get('/api/time');
     const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
   });
 
   it('does not set a guestId when a token cookie is already present', async () => {
-    const res = await request(app).get('/api/forum/categories').set('Cookie', 'token=whatever');
+    const res = await request(app).get('/api/time').set('Cookie', 'token=whatever');
     const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
   });
@@ -112,6 +101,9 @@ describe('endpoint smoke tests: auth-protected routes return 401 without token',
     ['get', '/api/progress/python/booleans/code'],
     ['put', '/api/progress/python/booleans/code'],
     ['post', '/api/progress/python/booleans/access'],
+    ['get', '/api/forum/categories'],
+    ['get', '/api/forum/categories/general/threads'],
+    ['get', '/api/forum/threads/1'],
     ['post', '/api/forum/threads'],
     ['post', '/api/forum/categories'],
     ['put', '/api/forum/categories/general'],

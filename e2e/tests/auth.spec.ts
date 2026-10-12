@@ -41,3 +41,24 @@ test('login via UI → redirects to home', async ({ page, context }) => {
 
   await expect(page).toHaveURL(/\/#\/$/, { timeout: 10_000 });
 });
+
+test('a guest sent away from the forum returns there after logging in', async ({
+  page,
+  context,
+}) => {
+  const { email, password } = await signupViaAPI(context.request, {
+    email: 'return-e2e@test.com',
+    password: 'SecurePass123',
+  });
+  // Signing up through the API left the browser signed in
+  await context.clearCookies();
+
+  await page.goto('/#/forum');
+  await expect(page).toHaveURL(/\/#\/getstarted$/, { timeout: 10_000 });
+
+  await page.getByPlaceholder('you@example.com').fill(email);
+  await page.getByPlaceholder('Enter your password').fill(password);
+  await page.locator('form').getByRole('button', { name: 'Log In' }).click();
+
+  await expect(page).toHaveURL(/\/#\/forum$/, { timeout: 10_000 });
+});

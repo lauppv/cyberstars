@@ -2,8 +2,13 @@ import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent } from './helpers.js';
 
 describe('Forum flow', () => {
+  it('refuses to show the forum to a guest', async () => {
+    await agent().get('/api/forum/categories').expect(401);
+  });
+
   it('GET /categories returns seeded categories', async () => {
-    const res = await agent().get('/api/forum/categories').expect(200);
+    const { agent: a } = await createAuthenticatedAgent();
+    const res = await a.get('/api/forum/categories').expect(200);
     expect(res.body.length).toBeGreaterThan(0);
     const slugs = res.body.map((c: { slug: string }) => c.slug);
     expect(slugs).toContain('help-python');
@@ -43,7 +48,7 @@ describe('Forum flow', () => {
       .send({ content: 'Here is the answer!' })
       .expect(201);
 
-    const thread = await agent().get(`/api/forum/threads/${threadId}`).expect(200);
+    const thread = await author.get(`/api/forum/threads/${threadId}`).expect(200);
     expect(thread.body.posts.length).toBe(2);
     expect(thread.body.posts[1].content).toBe('Here is the answer!');
   });

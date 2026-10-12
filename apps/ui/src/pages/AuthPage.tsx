@@ -22,6 +22,8 @@ export function AuthPage() {
   const initial = (location.state ?? null) as {
     mode?: 'login' | 'signup' | 'forgot' | 'reset';
     email?: string;
+    // The page a guest was sent here from, to go back to once they log in
+    from?: string;
   } | null;
   const [mode, setMode] = useState<'login' | 'signup' | 'forgot' | 'reset'>(
     initial?.mode ?? 'login',
@@ -56,7 +58,7 @@ export function AuthPage() {
     try {
       if (mode === 'login') {
         await login({ email, password });
-        navigate('/');
+        navigate(initial?.from ?? '/');
       } else if (mode === 'signup') {
         await signup({ name, email, password });
         navigate(TOUR_PATH);

@@ -171,18 +171,16 @@ const VIEW_DEDUP_MS = 24 * 60 * 60 * 1000;
 
 /**
  * Count a thread view at most once per viewer per 24h, and never for the thread's
- * own author. Viewers are keyed by user id (logged in) or the per-browser guestId
- * cookie. Returns whether the view counter was incremented.
+ * own author. Viewers are keyed by user id. Returns whether the view counter was
+ * incremented.
  */
 async function countThreadView(
   threadId: number,
-  userId: number | undefined,
+  userId: number,
   authorId: number,
-  guestId: string | undefined,
 ): Promise<boolean> {
-  if (userId != null && userId === authorId) return false;
-  const viewerKey = userId != null ? `user:${userId}` : guestId ? `guest:${guestId}` : null;
-  if (!viewerKey) return false;
+  if (userId === authorId) return false;
+  const viewerKey = `user:${userId}`;
 
   const now = new Date();
   const existing = await prisma.forumThreadView.findUnique({
@@ -221,8 +219,8 @@ export async function getThread(req: Request, res: Response, next: NextFunction)
 
     if (!thread) throw new AppError(404, 'Thread not found');
 
-    const userId = req.user?.id;
-    const counted = await countThreadView(threadId, userId, thread.authorId, req.cookies?.guestId);
+    const userId = req.user!.id;
+    const counted = await countThreadView(threadId, userId, thread.authorId);
 
     const posts: ForumPostDTO[] = thread.posts.map((p) => {
       const reactionMap = new Map<string, { count: number; active: boolean; users: string[] }>();
