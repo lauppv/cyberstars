@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
-import { Topbar } from '../components/layout/Topbar';
+import { LandingNav } from '../components/landing/LandingNav';
+import { LandingFooter } from '../components/landing/LandingFooter';
 
 const CARDS = [
   ['readCard', 'readCardDesc'],
@@ -17,7 +18,7 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar />
+      <LandingNav />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
         <div className="max-w-3xl w-full text-center">
@@ -63,6 +64,8 @@ export function LandingPage() {
           </div>
         </div>
       </main>
+
+      <LandingFooter />
     </div>
   );
 }

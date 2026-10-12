@@ -112,6 +112,17 @@
       "levelCardDesc": "Earn XP and climb cosmic levels as you finish lessons"
     }
   },
+  "landing": {
+    "nav": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
+    },
+    "footer": {
+      "label": "Site links",
+      "source": "Source code",
+      "license": "License"
+    }
+  },
   "common": {
     "loading": "Loading...",
     "close": "Close",

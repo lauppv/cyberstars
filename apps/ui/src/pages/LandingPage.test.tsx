@@ -9,10 +9,6 @@ vi.mock('react-router', async (importOriginal) => {
   return { ...actual, useNavigate: () => mockNavigate };
 });
 
-vi.mock('../components/layout/Topbar', () => ({
-  Topbar: () => <nav data-testid="topbar">Topbar</nav>,
-}));
-
 import { LandingPage } from './LandingPage';
 
 function renderPage() {
@@ -23,7 +19,9 @@ function renderPage() {
   );
 }
 
+const header = () => screen.getByRole('banner');
 const main = () => screen.getByRole('main');
+const footer = () => screen.getByRole('contentinfo');
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -35,12 +33,14 @@ afterEach(async () => {
 });
 
 describe('LandingPage', () => {
-  it('shows the hero and the four cards', () => {
+  it('shows the hero and the four cards between its own navbar and footer', () => {
     renderPage();
     expect(within(main()).getByText('Learn to code for free')).toBeDefined();
     for (const card of ['Read', 'Write', 'Run', 'Level up']) {
       expect(within(main()).getByText(card)).toBeDefined();
     }
+    expect(header()).toBeDefined();
+    expect(footer()).toBeDefined();
   });
 
   it('Start Learning opens Courses and the hero Sign in opens sign-in', () => {
@@ -49,5 +49,62 @@ describe('LandingPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/courses');
     fireEvent.click(within(main()).getByText('Sign in'));
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
+  });
+
+  it('links the navbar only to pages a visitor can open, plus sign-in', () => {
+    renderPage();
+    const nav = within(header());
+    expect(nav.getByRole('link', { name: 'CyberStars' })).toHaveAttribute('href', '/');
+    expect(nav.getByRole('link', { name: 'Courses' })).toHaveAttribute('href', '/courses');
+    expect(nav.getByRole('link', { name: 'Algorithms' })).toHaveAttribute('href', '/algorithms');
+    expect(nav.getByRole('link', { name: 'Almanac' })).toHaveAttribute('href', '/almanac');
+    expect(nav.getByRole('link', { name: 'Sign in' })).toHaveAttribute('href', '/getstarted');
+    expect(nav.queryByRole('link', { name: 'Forum' })).toBeNull();
+  });
+
+  it('folds the links into a menu that opens, closes on Escape and on a pick', () => {
+    renderPage();
+    const toggle = screen.getByRole('button', { name: 'Open menu' });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(document.getElementById('landing-menu')).toBeNull();
+
+    fireEvent.click(toggle);
+    const menu = document.getElementById('landing-menu')!;
+    expect(within(menu).getByRole('link', { name: 'Courses' })).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Close menu' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(document.getElementById('landing-menu')).toBeNull();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    fireEvent.click(
+      within(document.getElementById('landing-menu')!).getByRole('link', { name: 'Almanac' }),
+    );
+    expect(document.getElementById('landing-menu')).toBeNull();
+  });
+
+  it('switches the page to Romanian from the navbar', async () => {
+    renderPage();
+    const [desktopSwitch] = within(header()).getAllByRole('group', { name: 'Switch language' });
+    fireEvent.click(within(desktopSwitch).getByRole('button', { name: 'RO' }));
+    expect(await screen.findByRole('link', { name: 'Codul sursă' })).toBeDefined();
+    expect(i18n.language).toBe('ro');
+  });
+
+  it('links the source code and the license from the footer', () => {
+    renderPage();
+    const foot = within(footer());
+    expect(foot.getByRole('link', { name: 'Courses' })).toHaveAttribute('href', '/courses');
+    expect(foot.getByRole('link', { name: 'Source code' })).toHaveAttribute(
+      'href',
+      'https://github.com/lauppv/cyberstars',
+    );
+    expect(foot.getByRole('link', { name: 'License' })).toHaveAttribute(
+      'href',
+      'https://github.com/lauppv/cyberstars/blob/main/LICENSE',
+    );
   });
 });
