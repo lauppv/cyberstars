@@ -164,7 +164,7 @@ function clickRow(label: string, rowClass: string) {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  authUser = null;
+  authUser = makeUser('USER');
   mocked.getCategories.mockResolvedValue([category]);
   mocked.getThreads.mockResolvedValue({ category, threads: [threadSummary] });
   mocked.getThread.mockResolvedValue(threadDetail);
@@ -175,6 +175,13 @@ afterEach(() => {
 });
 
 describe('ForumPage routing', () => {
+  it('renders nothing and loads nothing without a signed-in user', () => {
+    authUser = null;
+    const { container } = renderAt('/forum');
+    expect(container).toBeEmptyDOMElement();
+    expect(mocked.getCategories).not.toHaveBeenCalled();
+  });
+
   it('renders the index at /forum', async () => {
     renderAt('/forum');
     expect(await screen.findByText('Python Help')).toBeInTheDocument();
@@ -435,12 +442,6 @@ describe('CategoryView', () => {
     expect(screen.getByText('1h ago')).toBeInTheDocument();
   });
 
-  it('hides the composer from guests', async () => {
-    renderAt('/forum/c/python-help');
-    await screen.findByText('Loops confuse me');
-    expect(screen.queryByText('+ New Thread')).not.toBeInTheDocument();
-  });
-
   it('lets a logged-in person create a thread and lands them on it', async () => {
     authUser = makeUser('USER');
     mocked.createThread.mockResolvedValue({ threadId: 5 });
@@ -549,13 +550,6 @@ describe('ThreadView', () => {
     expect(screen.getByText('✓ Solved')).toBeInTheDocument();
   });
 
-  it('hides the reply box from guests', async () => {
-    mocked.getThread.mockResolvedValue({ ...threadDetail, posts: [makePost()] });
-    renderAt('/forum/t/5');
-    await screen.findByText('Try a for loop');
-    expect(screen.queryByText('Post a reply')).not.toBeInTheDocument();
-  });
-
   it('posts a reply and refreshes the thread', async () => {
     authUser = makeUser('USER');
     mocked.getThread.mockResolvedValue({ ...threadDetail, posts: [makePost()] });
@@ -659,14 +653,6 @@ describe('ThreadView reactions', () => {
       makePost({ reactions: [{ emoji: '👍', count: 2, active: true, users: ['Ada', 'Grace'] }] }),
     ],
   };
-
-  it('ignores reaction clicks from guests', async () => {
-    mocked.getThread.mockResolvedValue(withReaction);
-    renderAt('/forum/t/5');
-
-    fireEvent.click(await screen.findByTitle('Ada, Grace'));
-    await waitFor(() => expect(mocked.toggleReaction).not.toHaveBeenCalled());
-  });
 
   it('toggles an existing reaction for a logged-in person', async () => {
     authUser = makeUser('USER');

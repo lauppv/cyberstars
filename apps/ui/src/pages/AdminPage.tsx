@@ -23,7 +23,7 @@ function Stat({ label, value }: { label: string; value: number | string }) {
 export function AdminPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { user, isLoggedIn, isLoading } = useAuth();
+  const { user, isLoading } = useAuth();
   const isAdmin = isAdminRole(user?.role);
 
   const [stats, setStats] = useState<AdminStatsDTO | null>(null);
@@ -31,14 +31,10 @@ export function AdminPage() {
   const [refreshing, setRefreshing] = useState(false);
 
   // Client-side guard is UX only; the /api/admin routes are server-authoritative.
+  // GuestGate already sends guests to sign-in.
   useEffect(() => {
-    if (isLoading) return;
-    if (!isLoggedIn) {
-      navigate('/getstarted');
-    } else if (!isAdmin) {
-      navigate('/');
-    }
-  }, [isLoading, isLoggedIn, isAdmin, navigate]);
+    if (!isLoading && !isAdmin) navigate('/');
+  }, [isLoading, isAdmin, navigate]);
 
   const load = useCallback((force = false) => {
     adminService

@@ -59,7 +59,7 @@ function canModerate(actorRole: UserRole, targetRole: UserRole, isOwner: boolean
 }
 
 export function ForumPage() {
-  const { isLoggedIn, user } = useAuth();
+  const { user } = useAuth();
   const { categorySlug, threadId } = useParams<{ categorySlug?: string; threadId?: string }>();
   const navigate = useNavigate();
 
@@ -70,6 +70,9 @@ export function ForumPage() {
   const openCategory = (slug: string) => navigate(forumRoutes.category(slug));
   const openThread = (id: number) => navigate(forumRoutes.thread(id));
 
+  // GuestGate keeps guests out of the forum
+  if (!user) return null;
+
   const parsedThreadId = threadId != null ? Number(threadId) : null;
   if (parsedThreadId != null && !Number.isInteger(parsedThreadId)) {
     return <Navigate to={forumRoutes.index} replace />;
@@ -79,18 +82,12 @@ export function ForumPage() {
     <>
       <Topbar />
       {parsedThreadId != null ? (
-        <ThreadView
-          key={parsedThreadId}
-          threadId={parsedThreadId}
-          isLoggedIn={isLoggedIn}
-          user={user}
-        />
+        <ThreadView key={parsedThreadId} threadId={parsedThreadId} user={user} />
       ) : categorySlug ? (
         <CategoryView
           key={categorySlug}
           categorySlug={categorySlug}
           onOpenThread={openThread}
-          isLoggedIn={isLoggedIn}
           user={user}
         />
       ) : (
@@ -138,7 +135,7 @@ function ForumIndex({
   user,
 }: {
   onOpenCategory: (slug: string) => void;
-  user: AuthenticatedUser | null;
+  user: AuthenticatedUser;
 }) {
   const { t } = useTranslation();
   const [categories, setCategories] = useState<ForumCategoryDTO[]>([]);
@@ -147,7 +144,7 @@ function ForumIndex({
   // null = closed; { category: undefined } = create; { category } = edit.
   const [modal, setModal] = useState<{ category?: ForumCategoryDTO } | null>(null);
 
-  const isStaff = user != null && user.role !== 'USER';
+  const isStaff = user.role !== 'USER';
 
   const load = useCallback(() => {
     forumService
@@ -315,17 +312,15 @@ function ForumIndex({
 function CategoryView({
   categorySlug,
   onOpenThread,
-  isLoggedIn,
   user,
 }: {
   categorySlug: string;
   onOpenThread: (id: number) => void;
-  isLoggedIn: boolean;
-  user: AuthenticatedUser | null;
+  user: AuthenticatedUser;
 }) {
   const { t } = useTranslation();
   const restricted = RESTRICTED_FORUM_CATEGORIES.has(categorySlug);
-  const canPost = isLoggedIn && (!restricted || (user != null && user.role !== 'USER'));
+  const canPost = !restricted || user.role !== 'USER';
   const [category, setCategory] = useState<{
     slug: string;
     name: string;
@@ -516,15 +511,7 @@ function CategoryView({
 
 /* ==================== THREAD VIEW ==================== */
 
-function ThreadView({
-  threadId,
-  isLoggedIn,
-  user,
-}: {
-  threadId: number;
-  isLoggedIn: boolean;
-  user: AuthenticatedUser | null;
-}) {
+function ThreadView({ threadId, user }: { threadId: number; user: AuthenticatedUser }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [thread, setThread] = useState<ForumThreadDetailDTO | null>(null);
@@ -591,7 +578,6 @@ function ThreadView({
   };
 
   const handleReaction = async (postId: number, emoji: string) => {
-    if (!isLoggedIn) return;
     setActionError(null);
     try {
       await forumService.toggleReaction(postId, { emoji });
@@ -673,8 +659,7 @@ function ThreadView({
   }
 
   const restricted = RESTRICTED_FORUM_CATEGORIES.has(thread.categorySlug);
-  const canReply =
-    isLoggedIn && !thread.locked && (!restricted || (user != null && user.role !== 'USER'));
+  const canReply = !thread.locked && (!restricted || user.role !== 'USER');
 
   return (
     <main className="forum-page">
@@ -731,7 +716,7 @@ function ThreadView({
           key={post.id}
           post={post}
           isOp={i === 0}
-          canMarkSolution={user != null && user.id === thread.authorId && i > 0}
+          canMarkSolution={user.id === thread.authorId && i > 0}
           currentUser={user}
           onReaction={(emoji) => handleReaction(post.id, emoji)}
           onMarkSolution={() => handleMarkSolution(post.id)}
@@ -763,7 +748,7 @@ function ThreadView({
         </div>
       )}
 
-      {restricted && isLoggedIn && !canReply && !thread.locked && (
+      {restricted && !canReply && !thread.locked && (
         <div className="forum-restricted-note">{t('forum.restrictedReply')}</div>
       )}
 

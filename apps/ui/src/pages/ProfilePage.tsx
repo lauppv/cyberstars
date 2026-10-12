@@ -53,10 +53,6 @@ export function ProfilePage() {
   const [streak, setStreak] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!isLoading && !isLoggedIn) navigate('/getstarted');
-  }, [isLoading, isLoggedIn, navigate]);
-
-  useEffect(() => {
     if (user) {
       setBio(user.bio ?? ''); // eslint-disable-line react-hooks/set-state-in-effect
       setStatus(user.status ?? '');

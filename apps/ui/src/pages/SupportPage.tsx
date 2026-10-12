@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -31,7 +30,6 @@ const STATUS_COLOR: Record<TicketStatus, string> = {
 };
 
 export function SupportPage() {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading } = useAuth();
   const isAdmin = isAdminRole(user?.role);
@@ -44,10 +42,6 @@ export function SupportPage() {
   const [myTickets, setMyTickets] = useState<SupportTicketDTO[]>([]);
   const [allTickets, setAllTickets] = useState<SupportTicketDTO[]>([]);
   const [openTicket, setOpenTicket] = useState<SupportTicketDTO | null>(null);
-
-  useEffect(() => {
-    if (!isLoading && !isLoggedIn) navigate('/getstarted');
-  }, [isLoading, isLoggedIn, navigate]);
 
   const refresh = useCallback(() => {
     supportService

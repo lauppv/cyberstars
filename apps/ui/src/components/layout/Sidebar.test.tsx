@@ -51,13 +51,11 @@ beforeEach(() => {
 });
 
 describe('Sidebar', () => {
-  it('shows the public sections and a sign in link to guests', () => {
+  it('shows a guest only Courses, Algorithms, the Almanac and a sign in link', () => {
     renderSidebar();
-    for (const label of ['Dashboard', 'Courses', 'Algorithms', 'Almanac', 'Forum', 'Sign in']) {
-      expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
-    }
-    expect(screen.queryByText('Messages')).toBeNull();
-    expect(screen.queryByText('Settings')).toBeNull();
+    const links = screen.getAllByRole('link').map((link) => link.textContent);
+    expect(links).toEqual(['CyberStars', 'Courses', 'Algorithms', 'Almanac', 'Sign in']);
+    expect(screen.queryByText('Community')).toBeNull();
   });
 
   it('never links to the Laniakea explorer', () => {
@@ -67,6 +65,7 @@ describe('Sidebar', () => {
   });
 
   it('marks the current section', () => {
+    h.auth = { user: USER };
     renderSidebar('/courses');
     expect(screen.getByRole('link', { name: 'Courses' })).toHaveAttribute('aria-current', 'page');
     expect(screen.getByRole('link', { name: 'Dashboard' })).not.toHaveAttribute('aria-current');
@@ -88,7 +87,7 @@ describe('Sidebar', () => {
 
   it('reports navigation so the drawer can close', () => {
     const onNavigate = renderSidebar();
-    fireEvent.click(screen.getByRole('link', { name: 'Forum' }));
+    fireEvent.click(screen.getByRole('link', { name: 'Courses' }));
     expect(onNavigate).toHaveBeenCalled();
   });
 

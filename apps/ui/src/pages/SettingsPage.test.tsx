@@ -3,12 +3,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 
-const mockNavigate = vi.fn();
-vi.mock('react-router', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('react-router')>();
-  return { ...actual, useNavigate: () => mockNavigate };
-});
-
 vi.mock('../context/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
@@ -81,12 +75,6 @@ beforeEach(() => {
 });
 
 describe('SettingsPage', () => {
-  it('redirects to /getstarted when signed out', () => {
-    mockUseAuth.mockReturnValue(authState({ isLoggedIn: false, user: null }));
-    renderPage();
-    expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
-  });
-
   it('shows a spinner while auth is loading', () => {
     mockUseAuth.mockReturnValue(authState({ isLoading: true, user: null }));
     renderPage();

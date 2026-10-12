@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -52,9 +52,8 @@ function Toggle({
 }
 
 export function SettingsPage() {
-  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const { user, isLoggedIn, isLoading, refreshUser } = useAuth();
+  const { user, isLoading, refreshUser } = useAuth();
   const currentLang = i18n.resolvedLanguage ?? i18n.language;
 
   const [privacy, setPrivacy] = useState<Record<PrivacyFlag, boolean>>({
@@ -83,10 +82,6 @@ export function SettingsPage() {
   const [emailMessage, setEmailMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(
     null,
   );
-
-  useEffect(() => {
-    if (!isLoading && !isLoggedIn) navigate('/getstarted');
-  }, [isLoading, isLoggedIn, navigate]);
 
   useEffect(() => {
     if (user) {

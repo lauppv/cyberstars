@@ -245,7 +245,9 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
 
       <nav className="flex-1 overflow-y-auto px-2 py-2">
         <Section>
-          <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
+          {user && (
+            <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
+          )}
           <NavItem to="/courses" icon={BookOpen} label={t('nav.courses')} onNavigate={onNavigate} />
           <NavItem
             to="/algorithms"
@@ -256,15 +258,15 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
         </Section>
 
-        <Section label={t('sidebar.community')}>
-          <NavItem
-            to="/forum"
-            icon={MessagesSquare}
-            label={t('nav.forum')}
-            onNavigate={onNavigate}
-          />
-          {user &&
-            (messagesEnabled ? (
+        {user && (
+          <Section label={t('sidebar.community')}>
+            <NavItem
+              to="/forum"
+              icon={MessagesSquare}
+              label={t('nav.forum')}
+              onNavigate={onNavigate}
+            />
+            {messagesEnabled ? (
               <NavItem
                 to="/messages"
                 icon={Mail}
@@ -274,9 +276,8 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
               />
             ) : (
               <LockedItem icon={Mail} label={t('messages.title')} />
-            ))}
-          {user &&
-            (canAccessFeature('connections', user.role, isProd) ? (
+            )}
+            {canAccessFeature('connections', user.role, isProd) ? (
               <NavItem
                 to="/connections"
                 icon={Users}
@@ -285,9 +286,8 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
               />
             ) : (
               <LockedItem icon={Users} label={t('connections.title')} />
-            ))}
-          {user &&
-            (canAccessFeature('leaderboard', user.role, isProd) ? (
+            )}
+            {canAccessFeature('leaderboard', user.role, isProd) ? (
               <NavItem
                 to="/leaderboard"
                 icon={Trophy}
@@ -296,8 +296,9 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
               />
             ) : (
               <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
-            ))}
-        </Section>
+            )}
+          </Section>
+        )}
       </nav>
 
       <div className="flex flex-col gap-px px-2 pt-2 pb-2 border-t border-[var(--border)] flex-shrink-0">
