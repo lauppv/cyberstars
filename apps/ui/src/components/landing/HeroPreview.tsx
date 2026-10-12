@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Verdict } from '../judge/Verdict';
+import { CodeStill } from './CodeStill';
 
 // The Flight Report mission (python/print-f) as a student would solve it, in
 // each language's own lesson, and the size of its real test suite. The mission
@@ -24,39 +25,11 @@ print(f"Viteza: {viteza} km/s")`,
 };
 const TESTS = 32;
 
-// oneDark, the editor's own theme, so the picture reads like the real editor
-// without loading CodeMirror on the landing page
-const BUILTINS = new Set(['print']);
-const TOKEN = /(f?"[^"]*")|(\d+(?:\.\d+)?)|([A-Za-z_]\w*)|(\s+|.)/g;
-
-function color(token: string, kind: 'string' | 'number' | 'word' | 'other'): string | undefined {
-  if (kind === 'string') return '#98c379';
-  if (kind === 'number') return '#d19a66';
-  if (kind === 'word' && BUILTINS.has(token)) return '#61afef';
-  return undefined;
-}
-
-function Line({ text }: { text: string }) {
-  const parts = [...text.matchAll(TOKEN)].map((m, i) => {
-    const kind = m[1] ? 'string' : m[2] ? 'number' : m[3] ? 'word' : 'other';
-    const c = color(m[0], kind);
-    return c ? (
-      <span key={i} style={{ color: c }}>
-        {m[0]}
-      </span>
-    ) : (
-      m[0]
-    );
-  });
-  return <>{parts}</>;
-}
-
 // A still of a lesson: the mission, the student's code in the editor, and the
 // judge's verdict after Run Tests. Built from the app's own surfaces and its
 // real Verdict, so it keeps looking like the app after a restyle.
 export function HeroPreview() {
   const { t, i18n } = useTranslation();
-  const lines = CODE[i18n.language === 'ro' ? 'ro' : 'en'].split('\n');
 
   return (
     <div
@@ -75,18 +48,7 @@ export function HeroPreview() {
         </p>
       </div>
 
-      <pre className="m-0 py-3 overflow-x-auto font-mono text-[10.5px] min-[400px]:text-[11px] sm:text-[12px] leading-[1.6] text-[#abb2bf]">
-        {lines.map((line, i) => (
-          <div key={i} className="flex">
-            <span className="w-7 sm:w-9 pr-2 sm:pr-3 text-right text-[var(--text3)] select-none flex-shrink-0">
-              {i + 1}
-            </span>
-            <span className="whitespace-pre">
-              <Line text={line} />
-            </span>
-          </div>
-        ))}
-      </pre>
+      <CodeStill code={CODE[i18n.language === 'ro' ? 'ro' : 'en']} />
 
       <div className="p-4 border-t border-[var(--border)]">
         <Verdict
