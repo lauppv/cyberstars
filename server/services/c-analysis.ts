@@ -10,7 +10,7 @@ import type { InjectValue, LessonTestsSpec, StructureFailure } from '@cyberstars
 // pre-injected sources. Two syntax gates: tree-sitter catches structural
 // breakage (here), gcc catches semantic errors it recovers from (in the runner).
 
-const WASM_PATH = path.join(process.cwd(), 'server', 'services', 'wasm', 'tree-sitter-c.wasm');
+const WASM_PATH = path.join(import.meta.dirname, 'wasm', 'tree-sitter-c.wasm');
 
 let parserPromise: Promise<Parser> | null = null;
 async function getParser(): Promise<Parser> {

@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { config } from './config/index.js';
+import { RADIO_DIR, UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import authRoutes from './routes/auth.routes.js';
 import progressRoutes from './routes/progress.routes.js';
@@ -98,22 +99,21 @@ app.get('/api/time', (_req, res) => {
 });
 
 // Serve uploaded files
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+app.use('/uploads', express.static(UPLOADS_DIR));
 
 // Radio audio lives OUTSIDE public/ so the 163MB mp3 isn't copied into dist/
 // on every build. In production nginx serves /radio/ straight from disk and
 // requests never reach here; this static mount is the dev path (and fallback).
-app.use('/radio', express.static(path.join(process.cwd(), 'media/radio')));
+app.use('/radio', express.static(RADIO_DIR));
 
-const buildPath = path.join(process.cwd(), 'apps', 'ui', 'dist');
-app.use(express.static(buildPath));
+app.use(express.static(UI_BUILD_DIR));
 
 // SPA fallback: only match extensionless paths (course/lesson routes, profile,
 // forum, etc.). Paths with a file extension (e.g. /lessons/*.md, /assets/*.js)
 // should 404 (not return index.html) so the client can detect missing
 // translations and fall back to English.
 app.get(/^\/(?!api|auth)[^.]*$/, (_req, res) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
+  res.sendFile(path.join(UI_BUILD_DIR, 'index.html'));
 });
 
 app.use(errorHandler);

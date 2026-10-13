@@ -9,7 +9,7 @@ import os from 'os';
 import path from 'path';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
-const SERVICES = path.join(process.cwd(), 'server', 'services');
+const SERVICES = import.meta.dirname;
 
 function has(cmd: string): boolean {
   try {

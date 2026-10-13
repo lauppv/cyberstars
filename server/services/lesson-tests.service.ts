@@ -24,7 +24,7 @@ import type {
 // the reference solution, and runs the two programs. Outputs are compared
 // HERE, on the server; expected outputs never enter the container, so user
 // code cannot read them.
-const SERVICES_DIR = path.join(process.cwd(), 'server', 'services');
+const SERVICES_DIR = import.meta.dirname;
 
 const WRITE_TIMEOUT_MS = 10_000;
 

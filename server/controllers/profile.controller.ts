@@ -9,8 +9,9 @@ import * as progressRepo from '../repositories/progress.repository.js';
 import * as emailService from '../services/email.service.js';
 import { computeStreak } from '../services/activity.service.js';
 import { AppError } from '../middleware/errorHandler.js';
+import { UPLOADS_DIR } from '../config/paths.js';
 
-const UPLOAD_DIR = path.resolve('uploads/avatars');
+const UPLOAD_DIR = path.join(UPLOADS_DIR, 'avatars');
 
 // Create the upload dir lazily on first use instead of at import time, so the
 // module imports without filesystem side effects (audit H9). Cached so the

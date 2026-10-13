@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
+import { ENV_FILE } from './paths.js';
 
-dotenv.config();
+dotenv.config({ path: ENV_FILE });
 
 function required(name: string): string {
   const value = process.env[name];
