@@ -13,6 +13,12 @@ describe('FreeSection', () => {
 
   it('names and links the two licences on their own', () => {
     render(<FreeSection />);
+    expect(screen.getAllByRole('listitem').map((li) => li.textContent)).toEqual([
+      'No paid plan',
+      'No card',
+      'BSD 3-Clause',
+      'CC BY-SA 4.0',
+    ]);
     expect(screen.getByRole('link', { name: 'BSD 3-Clause' })).toHaveAttribute(
       'href',
       'https://github.com/lauppv/cyberstars/blob/main/LICENSE',
