@@ -81,20 +81,21 @@ npm run dev
 The Linux course uses a custom sandbox image. Build it with:
 
 ```bash
-docker build -t cyberstars-linux-sandbox server/runtimes/linux-sandbox
+docker build -t cyberstars-linux-sandbox apps/api/src/runtimes/linux-sandbox
 ```
 
 Without this image, everything else works; only the Linux terminal lessons will fail.
 
 ## Project structure
 
-See [README.md](README.md) for the full architecture. The short version:
+The repo is one npm workspace. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture. The short version:
 
-- `client/`: React 19 + Vite + Tailwind frontend
-- `server/`: Express 5 + TypeScript API
-- `prisma/`: Database schema, migrations, seed, and curriculum metadata (`curriculum.data.ts`)
-- `shared/`: Types and constants used by both client and server
-- `server/lessons/`: Lesson content as Markdown files
+- `apps/ui/`: React 19 + Vite + Tailwind frontend
+- `apps/api/`: Express 5 + TypeScript API, with the database schema, migrations and seed in `apps/api/prisma/`
+- `packages/shared/`: Types and constants used by both the UI and the API
+- `packages/content/`: Lessons, algorithm challenges, the curriculum (`curriculum.ts`) and the solution variants
+
+Run every npm script from the root; it forwards to the right workspace.
 
 ## How to contribute
 
@@ -119,14 +120,14 @@ Open an issue with:
 
 ### Adding lessons
 
-Lesson content lives in `server/lessons/{python,c,java,kotlin,linux}/`. Python, C, Java, and Kotlin lessons need two files:
+Lesson content lives in `packages/content/lessons/{python,c,java,kotlin,linux}/`. Python, C, Java, and Kotlin lessons need two files:
 
 1. `<slug>.md`: the lesson content (Markdown with runnable code blocks)
 2. `<slug>-code.md`: the starter code template shown in the editor
 
-Then register the lesson in `prisma/curriculum.data.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure: you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
+Then register the lesson in `packages/content/curriculum.ts` (the `lessons` array) with the correct `courseKey`, `slug`, `title`, and `sortOrder`. This file is the **single source of truth** for curriculum structure: you edit it in one place, and it both seeds the database and generates the static `curriculum.json` the client reads.
 
-Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `scripts/generate-static-content.ts`, which copies the lesson Markdown into `public/lessons/` and writes `public/curriculum.json`. Those outputs are generated, not committed. Never edit them by hand; edit `server/lessons/` and `prisma/curriculum.data.ts` instead.
+Lesson content and curriculum are served as **static files**, not API routes. `npm run dev` (and `npm run build`) run `packages/content/scripts/generate-static-content.ts`, which copies the lesson Markdown into `apps/ui/public/lessons/` and writes `apps/ui/public/curriculum.json`. Those outputs are generated, not committed. Never edit them by hand; edit `packages/content/lessons/` and `packages/content/curriculum.ts` instead.
 
 Completion is **judge-driven**, not honor-system: to make a lesson completable, add an
 optional `<slug>-tests.json` (judge test cases) and `<slug>-solution.md` (reference
@@ -134,7 +135,7 @@ solution) beside the lesson. Passing the judge (the "Run Tests" button) is the o
 to complete a lesson. The server verifies it, so there is no manual "Mark Complete"
 button. Lessons without test files still work; they just aren't completable yet.
 
-Algorithm challenges (`server/algorithms/{python,java,c}/`) state their input limits in
+Algorithm challenges (`packages/content/algorithms/{python,java,c}/`) state their input limits in
 the statement's Input list, in English and Romanian, written as `<=` with powers
 (`1 <= N <= 200`, `-10^9 <= x <= 10^9`). Their tests mix a few hand-written cases with
 hidden `"generated": true` ones, and every case has to stay within the stated limits.
@@ -144,7 +145,7 @@ whatever its idea and naming. A test only requires an exact name where the judge
 a value or the mission names the function or class to write, plus the construct the
 lesson teaches (the `for` lesson needs a `for`, the class lesson a class of the
 student's own). Next to the tests, a lesson keeps variants in
-`test/lesson-variants/<course>/<slug>/`: `accept-*` files are other correct solutions
+`packages/content/variants/<course>/<slug>/`: `accept-*` files are other correct solutions
 that must pass, `reject-*` files are cheats or near misses that must fail (hardcoded
 output, the wrong loop, the right output without the taught construct). Add a reject for
 every construct a lesson requires.
@@ -170,11 +171,11 @@ Translations are **optional and can be added later**; you never have to translat
 
 To translate content, add the localized file alongside the English source in a per-language subfolder (currently `ro`), reusing the **same slug** (slugs are language-independent):
 
-- Lessons: `server/lessons/<course>/ro/<slug>.md` (and `<slug>-code.md` if the course has one)
-- Almanac: `public/almanac/ro/articles/<slug>.json`, plus `ro/index.json` and `ro/extras.json`
-- UI strings: add the matching keys to `client/i18n/locales/ro.json` (keep its structure in sync with `en.json`)
+- Lessons: `packages/content/lessons/<course>/ro/<slug>.md` (and `<slug>-code.md` if the course has one)
+- Almanac: `apps/ui/public/almanac/ro/articles/<slug>.json`, plus `ro/index.json` and `ro/extras.json`
+- UI strings: add the matching keys to `apps/ui/src/i18n/locales/ro.json` (keep its structure in sync with `en.json`)
 
-Lesson and course titles come from `curriculum.data.ts` and are not translated per-language.
+Lesson and course titles come from `curriculum.ts` and are not translated per-language.
 
 ### Code changes
 
