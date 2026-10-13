@@ -26,11 +26,10 @@ afterEach(async () => {
 });
 
 describe('ProofStrip', () => {
-  it('shows the languages and the counts from the curriculum', () => {
+  it('shows the counts from the curriculum', () => {
     h.courses = [course('python', 60), course('java', 1), course('algo-c', 32)];
     render(<ProofStrip />);
     const strip = screen.getByRole('region', { name: 'What there is to learn' });
-    expect(strip).toHaveTextContent('Python·Java');
     expect(strip).toHaveTextContent('2courses');
     expect(strip).toHaveTextContent('61lessons');
     expect(strip).toHaveTextContent('32algorithm challenges');

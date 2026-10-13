@@ -4,7 +4,7 @@ import { useCurriculum } from '../../context/CurriculumContext';
 import { curriculumCounts } from './curriculumCounts';
 import { Reveal } from './Reveal';
 
-// Under the hero: the languages, and how much there is to learn in them,
+// Under the hero: how much there is to learn, in numbers,
 // counted from the curriculum so a new lesson moves the numbers on its own.
 // Until the curriculum arrives (or if it never does) there's nothing to claim.
 export function ProofStrip() {
@@ -21,19 +21,7 @@ export function ProofStrip() {
 
   return (
     <section aria-label={t('landing.proof.label')} className="border-y border-[var(--border)]">
-      <Reveal className="max-w-[1120px] mx-auto px-4 sm:px-6 py-8 flex flex-col items-center gap-5">
-        <ul className="flex flex-wrap justify-center gap-x-3 gap-y-1 m-0 p-0 list-none text-[14px] font-semibold text-[var(--text2)]">
-          {counts.languages.map((name, i) => (
-            <li key={name} className="flex items-center gap-x-3">
-              {i > 0 && (
-                <span aria-hidden="true" className="text-[var(--text3)]">
-                  ·
-                </span>
-              )}
-              {name}
-            </li>
-          ))}
-        </ul>
+      <Reveal className="max-w-[1120px] mx-auto px-4 sm:px-6 py-8 flex justify-center">
         <ul className="flex flex-wrap justify-center gap-x-10 gap-y-3 m-0 p-0 list-none">
           {stats.map(([key, n]) => (
             <li key={key} className="flex items-baseline gap-2">
