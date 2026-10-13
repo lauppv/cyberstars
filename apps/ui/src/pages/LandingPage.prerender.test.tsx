@@ -37,8 +37,8 @@ describe('the pre-rendered landing page', () => {
     const html = prerender();
     expect(html).toContain('Learn to code for free');
     for (const heading of [
-      'Starting to code is harder than it should be',
       'How it works',
+      'What&#x27;s inside',
       'Free, and open source',
       'Write your first line of code today',
     ]) {

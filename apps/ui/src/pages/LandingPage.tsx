@@ -5,7 +5,6 @@ import { Reveal } from '../components/landing/Reveal';
 import { StartButtons } from '../components/landing/StartButtons';
 import { HeroPreview } from '../components/landing/HeroPreview';
 import { ProofStrip } from '../components/landing/ProofStrip';
-import { ProblemSection } from '../components/landing/ProblemSection';
 import { HowItWorks } from '../components/landing/HowItWorks';
 import { FeaturesSection } from '../components/landing/FeaturesSection';
 import { CtaBand } from '../components/landing/CtaBand';
@@ -55,7 +54,6 @@ export function LandingPage() {
 
         <ProofStrip />
 
-        <ProblemSection />
         <HowItWorks />
         <FeaturesSection />
         <CtaBand tone="mid" />

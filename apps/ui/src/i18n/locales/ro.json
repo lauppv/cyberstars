@@ -129,21 +129,6 @@
       "challenges_few": "provocări de algoritmi",
       "challenges_other": "de provocări de algoritmi"
     },
-    "problem": {
-      "title": "Să începi să programezi e mai greu decât ar trebui",
-      "tabs": {
-        "title": "Cinci taburi înainte de prima linie",
-        "text": "Un tutorial într-un tab, un editor în altul, un forum în al treilea, și niciunul nu știe unde te-ai blocat."
-      },
-      "install": {
-        "title": "Instalări înainte de orice",
-        "text": "Instalezi un compilator, setezi un path, repari o eroare pe care încă n-o înțelegi, toate înainte să fi scris print."
-      },
-      "feedback": {
-        "title": "Nimeni nu-ți spune dacă e bine",
-        "text": "Programul rulează, dar face ce s-a cerut? Fără o verificare, ghicești și treci mai departe."
-      }
-    },
     "how": {
       "title": "Cum funcționează",
       "subtitle": "Fiecare lecție e aceeași buclă scurtă, în browser.",
