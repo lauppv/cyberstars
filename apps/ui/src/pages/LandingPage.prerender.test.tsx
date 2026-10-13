@@ -35,7 +35,7 @@ function prerender() {
 describe('the pre-rendered landing page', () => {
   it('carries the headline, every section and the links as plain HTML', () => {
     const html = prerender();
-    expect(html).toContain('Learn to code for free');
+    expect(html).toMatch(/Learn to code <span class="landing-gradient-text">for free<\/span>/);
     for (const heading of [
       'How it works',
       'What&#x27;s inside',

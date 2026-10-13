@@ -48,7 +48,9 @@ afterEach(async () => {
 describe('LandingPage', () => {
   it('shows the hero, the proof strip and the sections between its navbar and footer', () => {
     renderPage();
-    expect(within(main()).getByText('Learn to code for free')).toBeDefined();
+    expect(
+      within(main()).getByRole('heading', { level: 1, name: 'Learn to code for free' }),
+    ).toBeDefined();
     expect(within(main()).getByRole('img', { name: /Flight Report mission/ })).toBeDefined();
     expect(within(main()).getByRole('region', { name: 'What there is to learn' })).toBeDefined();
     expect(within(main()).getByRole('heading', { name: 'How it works' })).toBeDefined();

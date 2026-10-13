@@ -40,6 +40,10 @@
   /* Sticky app chrome (the topbar). */
   --chrome: #0b0b0e;
   --page-bg: #0b0b0e;
+  /* The landing page's purple: a wash for its bands and glows. The app
+     itself stays flat; only the presentation page carries colour. */
+  --accent-wash: rgba(108, 92, 231, 0.16);
+  --accent-glow-strong: rgba(108, 92, 231, 0.32);
   /* Charts: the student's own series in the accent, the context it is read
      against (the reference solution) in a recessive gray that still clears
      3:1 on --panel-bg. */
@@ -56,6 +60,34 @@ body {
 /* The sign-in page paints its own full-screen background. */
 .auth-bg {
   background: var(--page-bg);
+}
+
+/* Landing page colour, the way a band of colour fades in and out on
+   vio-fotografie and kenvo-site: from the page into a purple wash and back,
+   so a section stands out without a hard edge. */
+.landing-wash {
+  background: linear-gradient(
+    var(--page-bg),
+    var(--accent-wash) 30%,
+    var(--accent-wash) 70%,
+    var(--page-bg)
+  );
+}
+.landing-glow {
+  background: radial-gradient(ellipse 70% 60% at 70% 40%, var(--accent-wash), transparent 70%);
+}
+.landing-glow-center {
+  background: radial-gradient(
+    ellipse 50% 70% at 50% 50%,
+    var(--accent-glow-strong),
+    transparent 70%
+  );
+}
+.landing-gradient-text {
+  background: linear-gradient(180deg, var(--text) 10%, #a99cf5 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 #root {
