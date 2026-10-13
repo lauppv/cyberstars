@@ -21,10 +21,9 @@ Instructions for AI contributors (Claude, Copilot, Cursor, etc.) working on this
 ## Architecture at a glance
 
 - `apps/ui/`: React 19 + Vite + Tailwind CSS (code in `apps/ui/src/`)
-- `server/`: Express 5 + Prisma (PostgreSQL)
+- `apps/api/`: Express 5 + Prisma (PostgreSQL), code in `apps/api/src/`, schema, migrations and seed in `apps/api/prisma/`
 - `packages/shared/`: DTO types and constants used by both sides, imported as `@cyberstars/shared/<module>`
 - `packages/content/`: lessons, algorithm challenges, the curriculum (`curriculum.ts`) and the solution variants, imported as `@cyberstars/content/<module>`
-- `prisma/`: schema, migrations, seed
 - `test/`: test setup (tests are co-located next to source files)
 
 ## Key conventions
