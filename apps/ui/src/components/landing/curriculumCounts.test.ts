@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { Course } from '@cyberstars/shared/lesson';
+import { courseMeta } from '../../constants/courses';
 import { curriculumCounts } from './curriculumCounts';
 
 const course = (key: string, n: number): Course => ({
@@ -26,6 +27,12 @@ describe('curriculumCounts', () => {
     ]);
     expect(counts).toEqual({
       languages: ['Python', 'Java', 'C', 'Linux'],
+      perCourse: [
+        { key: 'python', label: 'Python', color: courseMeta('python').color, lessons: 60 },
+        { key: 'java', label: 'Java', color: courseMeta('java').color, lessons: 49 },
+        { key: 'c', label: 'C', color: courseMeta('c').color, lessons: 47 },
+        { key: 'linux', label: 'Linux', color: courseMeta('linux').color, lessons: 55 },
+      ],
       courses: 4,
       lessons: 211,
       challenges: 72,
@@ -40,6 +47,12 @@ describe('curriculumCounts', () => {
   });
 
   it('claims nothing before the curriculum has loaded', () => {
-    expect(curriculumCounts([])).toEqual({ languages: [], courses: 0, lessons: 0, challenges: 0 });
+    expect(curriculumCounts([])).toEqual({
+      languages: [],
+      perCourse: [],
+      courses: 0,
+      lessons: 0,
+      challenges: 0,
+    });
   });
 });

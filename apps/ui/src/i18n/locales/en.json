@@ -150,30 +150,25 @@
     },
     "features": {
       "title": "What's inside",
-      "subtitle": "Everything you can open right now, no account needed. The forum asks for one.",
       "courses": {
-        "title": "Courses in four languages",
-        "text": "Python, Java and C from your first print to pointers, objects and processes, plus a Linux course in a real terminal.",
-        "link": "Browse the courses",
-        "shot": "Screenshot: the Courses page"
+        "title": "Courses",
+        "picture": "Python, Java, C and Linux, with the number of lessons in each."
       },
       "algorithms": {
         "title": "Algorithm challenges",
-        "text": "Problems from easy to hard in Python, Java and C, graded on hidden tests, with your runtime next to the reference solution's.",
-        "link": "See the challenges",
-        "shot": "Screenshot: an algorithm challenge after Run Tests"
+        "picture": "An accepted algorithm challenge, with the student's runtime next to the reference solution's."
       },
       "almanac": {
         "title": "The Almanac",
-        "text": "Short stories from computing history: the people, the machines and the ideas behind the code you write.",
-        "link": "Read the Almanac",
-        "shot": "Screenshot: the Almanac"
+        "picture": "Three Almanac stories: Ada Lovelace, Margaret Hamilton and the start of Linux."
       },
       "forum": {
-        "title": "A forum for when you're stuck",
-        "text": "Ask about a lesson, share your solution, help someone else. Reading and posting need a free account.",
-        "link": "Create a free account",
-        "shot": "Screenshot: a forum thread"
+        "title": "The forum",
+        "note": "With a free account",
+        "question": "Why does my loop stop one early?",
+        "answer": "range(1, n) stops before n. Use range(1, n + 1).",
+        "solved": "Solved",
+        "picture": "A forum question about a loop and the answer that solved it."
       }
     },
     "free": {
