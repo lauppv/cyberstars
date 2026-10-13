@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import crypto from 'crypto';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -7,6 +6,7 @@ import helmet from 'helmet';
 import { config } from './config/index.js';
 import { RADIO_DIR, UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import { servePages } from './middleware/pages.js';
 import authRoutes from './routes/auth.routes.js';
 import progressRoutes from './routes/progress.routes.js';
 import forumRoutes from './routes/forum.routes.js';
@@ -106,14 +106,13 @@ app.use('/uploads', express.static(UPLOADS_DIR));
 // requests never reach here; this static mount is the dev path (and fallback).
 app.use('/radio', express.static(RADIO_DIR));
 
-app.use(express.static(UI_BUILD_DIR));
-
-// SPA fallback: only match extensionless paths (course/lesson routes, profile,
-// forum, etc.). Paths with a file extension (e.g. /lessons/*.md, /assets/*.js)
-// should 404 (not return index.html) so the client can detect missing
+// Pages: only extensionless paths (lessons, courses, profile, forum, etc.), each
+// its pre-rendered page, the app, or a 404. Paths with a file extension (e.g.
+// /lessons/*.md, /assets/*.js) go to the static files below and 404 when
+// missing (not return index.html) so the client can detect missing
 // translations and fall back to English.
-app.get(/^\/(?!api|auth)[^.]*$/, (_req, res) => {
-  res.sendFile(path.join(UI_BUILD_DIR, 'index.html'));
-});
+app.get(/^\/(?!api|auth)[^.]*$/, servePages(UI_BUILD_DIR));
+
+app.use(express.static(UI_BUILD_DIR));
 
 app.use(errorHandler);

@@ -5,7 +5,7 @@ import { test, expect } from '../fixtures/test.js';
 const C_CODE = `#include <stdio.h>\nint main(void) { printf("hello"); return 0; }`;
 
 test('run C printf("hello") → output "hello"', async ({ authedPage: page }) => {
-  await page.goto('/#/lesson/c/print');
+  await page.goto('/lesson/c/print');
 
   const editor = page.locator('.cm-content').last();
   await editor.click();

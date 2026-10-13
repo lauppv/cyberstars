@@ -8,7 +8,7 @@ test('run Kotlin println("hello") → output "hello"', async ({ authedPage: page
   // kotlinc -include-runtime is the heaviest compile of any runtime, so give it
   // extra headroom over the default per-test timeout on slower CI runners.
   test.setTimeout(90_000);
-  await page.goto('/#/lesson/kotlin/hello-world');
+  await page.goto('/lesson/kotlin/hello-world');
 
   const editor = page.locator('.cm-content').last();
   await editor.click();

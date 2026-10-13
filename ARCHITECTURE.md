@@ -10,9 +10,9 @@ The repo is one npm workspace with four parts: two apps and two packages they sh
 cyberstars/
 ├── apps/
 │   ├── ui/                        # @cyberstars/ui: the React app
-│   │   ├── src/                   # Pages, components, contexts, hooks, services, i18n, index.css
+│   │   ├── src/                   # Pages, components, contexts, hooks, services, i18n, seo, index.css
 │   │   ├── public/                # Static files; curriculum.json and lessons/ are generated here
-│   │   ├── scripts/               # Pre-renders the landing page after the build
+│   │   ├── scripts/               # Pre-renders every public page and the sitemap after the build
 │   │   └── index.html             # Page shell; Vite config sits next to it
 │   │
 │   └── api/                       # @cyberstars/api: the Express server

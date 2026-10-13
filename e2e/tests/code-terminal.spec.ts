@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/test.js';
 
 test('terminal: echo hello → output "hello"', async ({ authedPage: page }) => {
-  await page.goto('/#/lesson/linux/pwd');
+  await page.goto('/lesson/linux/pwd');
 
   await expect(page.locator('form input')).toBeVisible({ timeout: 30_000 });
 

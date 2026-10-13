@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Route, Routes } from 'react-router';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router', async (importOriginal) => {
@@ -42,10 +42,13 @@ const mockUseAllProgress = vi.mocked(useAllProgress);
 
 const { CoursesPage } = await import('./CoursesPage');
 
-function renderPage() {
+function renderPage(path = '/courses') {
   return render(
-    <MemoryRouter>
-      <CoursesPage />
+    <MemoryRouter initialEntries={[path]}>
+      <Routes>
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/courses/:course" element={<CoursesPage />} />
+      </Routes>
     </MemoryRouter>,
   );
 }
@@ -254,7 +257,7 @@ describe('CoursesPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/lesson/python/booleans');
   });
 
-  it('clicking a course card opens the syllabus drawer', () => {
+  it('clicking a course card opens its page', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],
       isLoading: false,
@@ -268,12 +271,44 @@ describe('CoursesPage', () => {
     });
     renderPage();
     fireEvent.click(screen.getByText('Python'));
+    expect(mockNavigate).toHaveBeenCalledWith('/courses/python');
+  });
+
+  it("a course's page shows its syllabus", () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage('/courses/python');
     expect(screen.getByText('Chapters')).toBeDefined();
     expect(screen.getByText('Intro')).toBeDefined();
     expect(screen.getByText('Booleans')).toBeDefined();
   });
 
-  it('clicking the View Syllabus button opens the drawer without navigating', () => {
+  it('the old ?open= address shows the course on its own page', () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage('/courses?open=python');
+    expect(screen.getByText('Chapters')).toBeDefined();
+  });
+
+  it('the View Syllabus button opens the course page', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],
       isLoading: false,
@@ -287,10 +322,10 @@ describe('CoursesPage', () => {
     });
     renderPage();
     fireEvent.click(screen.getByText('View Syllabus →'));
-    expect(screen.getByText('Chapters')).toBeDefined();
+    expect(mockNavigate).toHaveBeenCalledWith('/courses/python');
   });
 
-  it('closing the syllabus drawer via close button', () => {
+  it('closing the syllabus goes back to the course list', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],
       isLoading: false,
@@ -302,14 +337,12 @@ describe('CoursesPage', () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    renderPage();
-    fireEvent.click(screen.getByText('Python'));
-    expect(screen.getByText('Chapters')).toBeDefined();
+    renderPage('/courses/python');
     fireEvent.click(screen.getByText('×'));
-    expect(screen.queryByText('Chapters')).toBeNull();
+    expect(mockNavigate).toHaveBeenCalledWith('/courses');
   });
 
-  it('clicking a chapter in syllabus navigates to the lesson', () => {
+  it('each chapter in the syllabus is a link to its lesson', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],
       isLoading: false,
@@ -321,10 +354,10 @@ describe('CoursesPage', () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    renderPage();
-    fireEvent.click(screen.getByText('Python'));
-    fireEvent.click(screen.getByText('Booleans'));
-    expect(mockNavigate).toHaveBeenCalledWith('/lesson/python/booleans');
+    renderPage('/courses/python');
+    expect(screen.getByText('Booleans').closest('a')?.getAttribute('href')).toBe(
+      '/lesson/python/booleans',
+    );
   });
 
   it('shows checkmark for completed chapters', () => {
@@ -367,8 +400,7 @@ describe('CoursesPage', () => {
       isLoading: false,
       refresh: vi.fn(),
     });
-    renderPage();
-    fireEvent.click(screen.getByText('Python'));
+    renderPage('/courses/python');
     expect(screen.getByText('✓')).toBeDefined();
   });
 });

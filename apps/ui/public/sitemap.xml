@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Only the home page: the rest of the app lives after the # in its address, which search engines drop -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cyberstars.app/</loc>
-  </url>
-</urlset>

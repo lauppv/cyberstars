@@ -1150,5 +1150,26 @@
       "title": "Termină mai întâi lecția asta",
       "body": "Urmează pașii turului și treci testele lecției ca să deblochezi lecția următoare și restul platformei."
     }
+  },
+  "seo": {
+    "landingTitle": "CyberStars: învață programare gratis, direct în browser",
+    "landingDescription": "Lecții scurte de Python, Java, C și Linux. Scrii cod în browser, îl rulezi pe teste și afli pe loc dacă merge. Gratuit și open source.",
+    "coursesTitle": "Cursuri gratuite de programare în Python, Java, C și Linux | CyberStars",
+    "coursesDescription": "Alege un curs și începe să scrii cod în browser: lecții scurte de Python, Java, C și Linux, fiecare cu teste care îți spun când codul tău merge.",
+    "courseTitle": "Învață {{course}} gratis, direct în browser | CyberStars",
+    "lessonTitle": "{{lesson}} în {{course}}, lecție interactivă gratuită | CyberStars",
+    "algorithmsTitle": "Probleme de programare în Python, Java și C | CyberStars",
+    "algorithmsDescription": "Probleme de algoritmi în Python, Java și C, de la ușor la greu. Scrii soluția în browser și o rulezi pe teste ascunse.",
+    "algorithmListTitle": "Probleme de programare în {{course}}, de la ușor la greu | CyberStars",
+    "challengeTitle": "{{lesson}} în {{course}}, problemă de programare | CyberStars",
+    "almanacTitle": "Almanahul: povești din istoria informaticii | CyberStars",
+    "almanacDescription": "Lecturi scurte despre oamenii, mașinile și ideile din spatele informaticii: legende, open source, internet, securitate, spațiu și AI.",
+    "articleTitle": "{{title}} | Almanahul CyberStars",
+    "home": "Acasă"
+  },
+  "notFound": {
+    "title": "Pagina nu există",
+    "text": "La adresa asta nu e nimic. Poate linkul e vechi sau pagina s-a mutat.",
+    "home": "Mergi la pagina principală"
   }
 }

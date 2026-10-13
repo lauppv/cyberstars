@@ -6,13 +6,13 @@ test.beforeEach(async () => {
 });
 
 test('a new account walks the tour lesson and is let out once its tests pass', async ({ page }) => {
-  await page.goto('/#/getstarted');
+  await page.goto('/getstarted');
   await page.getByRole('button', { name: 'Sign Up', exact: true }).click();
   await page.getByPlaceholder('Choose a username').fill('Cadet');
   await page.getByPlaceholder('you@example.com').fill('tour-e2e@test.com');
   await page.getByPlaceholder('Min. 8 characters').fill('SecurePass123');
   await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
-  await expect(page).toHaveURL(/\/#\/lesson\/python\/print$/, { timeout: 10_000 });
+  await expect(page).toHaveURL(/\/lesson\/python\/print$/, { timeout: 10_000 });
 
   const card = page.getByRole('dialog');
   const next = card.getByRole('button', { name: 'Next' });
@@ -68,6 +68,6 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
   await card.getByRole('button', { name: 'Start exploring' }).click();
   await expect(card).toHaveCount(0);
 
-  await page.goto('/#/courses');
-  await expect(page).toHaveURL(/\/#\/courses$/);
+  await page.goto('/courses');
+  await expect(page).toHaveURL(/\/courses$/);
 });

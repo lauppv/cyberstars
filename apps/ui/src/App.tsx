@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
 import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
@@ -16,6 +16,7 @@ import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
+import { langFromPath } from './i18n';
 
 // HomePage stays eager; it's the landing route, so splitting it would only add a
 // spinner to the first paint. Every other route is code-split into its own chunk,
@@ -68,6 +69,9 @@ const SettingsPage = lazy(() =>
 const ConnectionsPage = lazy(() =>
   import('./pages/ConnectionsPage').then((m) => ({ default: m.ConnectionsPage })),
 );
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
 
 // The radio chip lives at the app root so playback survives navigation, but the
 // auth/welcome pages carry no chrome.
@@ -77,10 +81,14 @@ function GlobalRadio() {
   return <RadioPlayer />;
 }
 
+// Romanian pages live under /ro. As the router's base it stays out of every
+// route and link in the app, which keep working in both languages unchanged
+const basename = langFromPath(window.location.pathname) === 'ro' ? '/ro' : undefined;
+
 function App() {
   usePresence();
   return (
-    <HashRouter>
+    <BrowserRouter basename={basename}>
       <AuthProvider>
         <CurriculumProvider>
           <ProgressProvider>
@@ -105,6 +113,7 @@ function App() {
                                   <Route path="/" element={<HomePage />} />
                                   <Route path="/getstarted" element={<AuthPage />} />
                                   <Route path="/courses" element={<CoursesPage />} />
+                                  <Route path="/courses/:course" element={<CoursesPage />} />
                                   <Route path="/algorithms" element={<AlgorithmsPage />} />
                                   <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
                                   <Route
@@ -116,6 +125,7 @@ function App() {
                                   <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
                                   <Route path="/forum/t/:threadId" element={<ForumPage />} />
                                   <Route path="/almanac" element={<AlmanacPage />} />
+                                  <Route path="/almanac/:slug" element={<AlmanacPage />} />
                                   <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
                                   <Route path="/rules" element={<RulesPage />} />
                                   <Route path="/usage" element={<UsagePage />} />
@@ -127,6 +137,7 @@ function App() {
                                   <Route path="/u/:userId" element={<PublicProfilePage />} />
                                   <Route path="/settings" element={<SettingsPage />} />
                                   <Route path="/connections" element={<ConnectionsPage />} />
+                                  <Route path="*" element={<NotFoundPage />} />
                                 </Routes>
                               </TourGate>
                             </GuestGate>
@@ -141,7 +152,7 @@ function App() {
           </ProgressProvider>
         </CurriculumProvider>
       </AuthProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

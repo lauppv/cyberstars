@@ -510,7 +510,7 @@ function CourseMilestones({
           return (
             <button
               key={c.key}
-              onClick={() => navigate(`/courses?open=${c.key}`)}
+              onClick={() => navigate(`/courses/${c.key}`)}
               className="flex items-center gap-3 text-left cursor-pointer hover:opacity-80 transition"
             >
               <div className="flex-1 min-w-0">
@@ -550,7 +550,7 @@ function CourseMilestones({
           return (
             <button
               key={c.key}
-              onClick={() => navigate(`/courses?open=${c.key}`)}
+              onClick={() => navigate(`/courses/${c.key}`)}
               className="flex items-center gap-3 opacity-60 text-left cursor-pointer hover:opacity-80 transition"
             >
               <div className="flex-1 min-w-0">

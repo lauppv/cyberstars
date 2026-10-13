@@ -8,7 +8,7 @@ test.beforeEach(async () => {
 });
 
 test('signup via UI → lands in the first-lesson tour', async ({ page }) => {
-  await page.goto('/#/getstarted');
+  await page.goto('/getstarted');
 
   await page.getByRole('button', { name: 'Sign Up', exact: true }).click();
 
@@ -18,12 +18,12 @@ test('signup via UI → lands in the first-lesson tour', async ({ page }) => {
 
   await page.locator('form').getByRole('button', { name: 'Create Account' }).click();
 
-  await expect(page).toHaveURL(/\/#\/lesson\/python\/print$/, { timeout: 10_000 });
+  await expect(page).toHaveURL(/\/lesson\/python\/print$/, { timeout: 10_000 });
   await expect(page.getByText('Select language · Selectează limba')).toBeVisible();
 
   // Until the tour lesson's tests pass, every other page leads back to it.
-  await page.goto('/#/courses');
-  await expect(page).toHaveURL(/\/#\/lesson\/python\/print$/);
+  await page.goto('/courses');
+  await expect(page).toHaveURL(/\/lesson\/python\/print$/);
 });
 
 test('login via UI → redirects to home', async ({ page, context }) => {
@@ -32,14 +32,14 @@ test('login via UI → redirects to home', async ({ page, context }) => {
     password: 'SecurePass123',
   });
 
-  await page.goto('/#/getstarted');
+  await page.goto('/getstarted');
 
   await page.getByPlaceholder('you@example.com').fill(email);
   await page.getByPlaceholder('Enter your password').fill(password);
 
   await page.locator('form').getByRole('button', { name: 'Log In' }).click();
 
-  await expect(page).toHaveURL(/\/#\/$/, { timeout: 10_000 });
+  await expect(page).toHaveURL(/\/$/, { timeout: 10_000 });
 });
 
 test('a guest sent away from the forum returns there after logging in', async ({
@@ -53,12 +53,12 @@ test('a guest sent away from the forum returns there after logging in', async ({
   // Signing up through the API left the browser signed in
   await context.clearCookies();
 
-  await page.goto('/#/forum');
-  await expect(page).toHaveURL(/\/#\/getstarted$/, { timeout: 10_000 });
+  await page.goto('/forum');
+  await expect(page).toHaveURL(/\/getstarted$/, { timeout: 10_000 });
 
   await page.getByPlaceholder('you@example.com').fill(email);
   await page.getByPlaceholder('Enter your password').fill(password);
   await page.locator('form').getByRole('button', { name: 'Log In' }).click();
 
-  await expect(page).toHaveURL(/\/#\/forum$/, { timeout: 10_000 });
+  await expect(page).toHaveURL(/\/forum$/, { timeout: 10_000 });
 });

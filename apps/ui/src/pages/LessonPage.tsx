@@ -45,6 +45,9 @@ import {
   TOUR_LESSON,
 } from '@cyberstars/shared/constants';
 import { canAccessFeature } from '@cyberstars/shared/features';
+import { switchLanguage } from '../i18n';
+
+const TOUR_LANGUAGE_KEY = 'cyberstars.tourLanguage';
 
 function parseDifficulty(title: string): {
   difficulty: 'Easy' | 'Medium' | 'Hard' | null;
@@ -120,14 +123,24 @@ export function LessonPage() {
   const [tourNotice, setTourNotice] = useState(0);
   const hideTourNotice = useCallback(() => setTourNotice(0), []);
   const showTourNotice = useCallback(() => setTourNotice((n) => n + 1), []);
-  const [tourLanguagePicked, setTourLanguagePicked] = useState(false);
-  const pickTourLanguage = useCallback(
-    (lang: 'ro' | 'en') => {
-      setTourLanguagePicked(true);
-      i18n.changeLanguage(lang);
-    },
-    [i18n],
-  );
+  // Picking the other language reloads the page on its own address, so the
+  // choice survives the reload in this tab and the tour goes on from there
+  const [tourLanguagePicked, setTourLanguagePicked] = useState(() => {
+    try {
+      return sessionStorage.getItem(TOUR_LANGUAGE_KEY) !== null;
+    } catch {
+      return false;
+    }
+  });
+  const pickTourLanguage = useCallback((lang: 'ro' | 'en') => {
+    setTourLanguagePicked(true);
+    try {
+      sessionStorage.setItem(TOUR_LANGUAGE_KEY, lang);
+    } catch {
+      // storage blocked: the tour asks again after the reload
+    }
+    switchLanguage(lang);
+  }, []);
   const [terminalTestsError, setTerminalTestsError] = useState<string | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);

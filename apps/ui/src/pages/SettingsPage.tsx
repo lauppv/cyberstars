@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Segmented } from '../components/ui/Segmented';
-import { SUPPORTED_LANGS } from '../i18n';
+import { SUPPORTED_LANGS, switchLanguage } from '../i18n';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
 import { EyeIcon } from '../components/ui/EyeIcon';
@@ -54,7 +54,7 @@ function Toggle({
 export function SettingsPage() {
   const { t, i18n } = useTranslation();
   const { user, isLoading, refreshUser } = useAuth();
-  const currentLang = i18n.resolvedLanguage ?? i18n.language;
+  const currentLang = i18n.language === 'ro' ? 'ro' : 'en';
 
   const [privacy, setPrivacy] = useState<Record<PrivacyFlag, boolean>>({
     showBio: true,
@@ -208,7 +208,7 @@ export function SettingsPage() {
               <Segmented
                 value={currentLang}
                 options={SUPPORTED_LANGS}
-                onChange={(lng) => i18n.changeLanguage(lng)}
+                onChange={switchLanguage}
                 optionLabel={(lng) => t(`lang.${lng}`)}
                 ariaLabel={t('lang.switch')}
               />

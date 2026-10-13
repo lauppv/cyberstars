@@ -26,13 +26,10 @@ describe('i18n', () => {
     expect(mod.SUPPORTED_LANGS).toEqual(['en', 'ro']);
   });
 
-  it('initialises to a valid saved language and clears the legacy key', async () => {
+  it('reads the language from the address and clears the legacy key', async () => {
     const removeItem = vi.fn();
-    vi.stubGlobal('localStorage', {
-      getItem: (k: string) => (k === 'cyberstars.lang.v2' ? 'ro' : null),
-      setItem: vi.fn(),
-      removeItem,
-    });
+    vi.stubGlobal('localStorage', { getItem: () => null, setItem: vi.fn(), removeItem });
+    window.history.replaceState(null, '', '/ro/courses');
 
     vi.resetModules();
     await import('./index');
@@ -40,11 +37,12 @@ describe('i18n', () => {
 
     expect(i18nMod.language).toBe('ro');
     expect(removeItem).toHaveBeenCalledWith('cyberstars.lang');
+    window.history.replaceState(null, '', '/');
   });
 
-  it('falls back to English when the saved language is not supported', async () => {
+  it('stays in English on an English address, whatever was picked before', async () => {
     vi.stubGlobal('localStorage', {
-      getItem: () => 'de',
+      getItem: () => 'ro',
       setItem: vi.fn(),
       removeItem: vi.fn(),
     });
@@ -56,7 +54,7 @@ describe('i18n', () => {
     expect(i18nMod.language).toBe('en');
   });
 
-  it('falls back to English when localStorage is unavailable', async () => {
+  it('still starts when localStorage is unavailable', async () => {
     vi.stubGlobal('localStorage', {
       getItem: () => {
         throw new Error('private mode');
@@ -72,5 +70,48 @@ describe('i18n', () => {
     const i18nMod = (await import('i18next')).default;
 
     expect(i18nMod.language).toBe('en');
+  });
+});
+
+describe('language addresses', () => {
+  it('tells the language from the address', async () => {
+    const { langFromPath } = await import('./index');
+    expect(langFromPath('/')).toBe('en');
+    expect(langFromPath('/ro')).toBe('ro');
+    expect(langFromPath('/ro/lesson/python/print')).toBe('ro');
+    expect(langFromPath('/robots')).toBe('en');
+  });
+
+  it('finds the same page in the other language', async () => {
+    const { twinPath } = await import('./index');
+    expect(twinPath('/courses', 'ro')).toBe('/ro/courses');
+    expect(twinPath('/', 'ro')).toBe('/ro');
+    expect(twinPath('/ro/courses', 'en')).toBe('/courses');
+    expect(twinPath('/ro', 'en')).toBe('/');
+    expect(twinPath('/ro/courses', 'ro')).toBe('/ro/courses');
+    expect(twinPath('/courses', 'en')).toBe('/courses');
+  });
+
+  it('switches language and moves to the twin address', async () => {
+    const assign = vi.fn();
+    vi.stubGlobal('location', { pathname: '/courses', search: '?open=c', hash: '', assign });
+    const { switchLanguage } = await import('./index');
+
+    switchLanguage('ro');
+
+    expect(i18n.language).toBe('ro');
+    expect(assign).toHaveBeenCalledWith('/ro/courses?open=c');
+    await i18n.changeLanguage('en');
+  });
+
+  it('stays put when the address already has that language', async () => {
+    const assign = vi.fn();
+    vi.stubGlobal('location', { pathname: '/ro/courses', search: '', hash: '', assign });
+    const { switchLanguage } = await import('./index');
+
+    switchLanguage('ro');
+
+    expect(assign).not.toHaveBeenCalled();
+    await i18n.changeLanguage('en');
   });
 });
