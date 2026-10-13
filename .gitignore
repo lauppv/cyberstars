@@ -26,6 +26,8 @@ apps/ui/public/curriculum.json
 
 # Deploy-time maintenance flag (created/removed by deploy/deploy.sh on the VPS)
 maintenance.on
+# Last sitemap sent to IndexNow (kept by deploy/indexnow.sh on the VPS)
+indexnow-sent.xml
 
 # Claude Code local state (worktrees, local settings)
 .claude/

@@ -80,6 +80,9 @@ for _ in $(seq 1 "$HEALTH_TIMEOUT"); do
   if curl -fsS -o /dev/null "$HEALTH_URL"; then
     rm -f "$FLAG"
     echo "==> Backend healthy, maintenance page disabled, deploy complete"
+    # After the flag is down, so IndexNow can fetch the key file from the live
+    # site. It only ever warns, but a deploy that worked must not exit 1 here.
+    bash "$APP_DIR/deploy/indexnow.sh" || true
     exit 0
   fi
   sleep 1
