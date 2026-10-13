@@ -58,14 +58,18 @@ describe('MarkdownRenderer', () => {
   });
 
   describe('strindex highlight', () => {
-    // A lit box has the thicker border; its index sits in the label under it
+    // A lit box has the thicker border and its index in the label under it. A green one comes
+    // back as "1:green", the way the fence asks for it
     const highlighted = (fence: string) => {
       const { container } = render(
         <MarkdownRenderer content={'```strindex\n' + fence + '\n```'} />,
       );
       return [...container.querySelectorAll<HTMLElement>('div')]
         .filter((box) => box.style.borderWidth === '2px')
-        .map((box) => Number(box.nextElementSibling!.textContent));
+        .map((box) => {
+          const index = Number(box.nextElementSibling!.textContent);
+          return box.style.borderColor === 'rgb(59, 167, 118)' ? `${index}:green` : index;
+        });
     };
 
     it('lights no box without a highlight line', () => {
@@ -76,8 +80,12 @@ describe('MarkdownRenderer', () => {
       expect(highlighted('hello\n^ 2 4')).toEqual([2, 4]);
     });
 
-    it('keeps the Strings & Methods highlight as it is', () => {
-      expect(highlighted('Tommy Vercetti\n^ 0 1')).toEqual([0, 1]);
+    it('lights a position green when it asks for it', () => {
+      expect(highlighted('Tommy Vercetti\n^ 0 1:green')).toEqual([0, '1:green']);
+    });
+
+    it('lights nothing for a colour it does not know', () => {
+      expect(highlighted('hello\n^1:red')).toEqual([]);
     });
 
     it('reads positions separated by commas', () => {
@@ -86,6 +94,26 @@ describe('MarkdownRenderer', () => {
 
     it('lights only the one position asked for', () => {
       expect(highlighted('hello\n^3')).toEqual([3]);
+    });
+  });
+
+  describe(':green text', () => {
+    it('colours the phrase, bold words included', () => {
+      const { container } = render(
+        <MarkdownRenderer content={'and :green[**name[1]** is the second], and so on'} />,
+      );
+      const span = container.querySelector('span');
+      expect(span!.textContent).toBe('name[1] is the second');
+      expect(span!.className).toContain('text-[var(--success)]');
+      expect(span!.querySelector('strong')!.textContent).toBe('name[1]');
+    });
+
+    it('leaves text that only looks like a directive as it was written', () => {
+      const lines = ['print :D', 'it prints "12:04"', '**name[0:5]** and **[start:stop:step]**'];
+      for (const line of lines) {
+        const { container } = render(<MarkdownRenderer content={line} />);
+        expect(container.textContent).toBe(line.replaceAll('**', ''));
+      }
     });
   });
 });
