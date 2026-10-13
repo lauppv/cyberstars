@@ -2,15 +2,18 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    environment: 'jsdom',
-    exclude: [
-      '.direnv/**',
-      '.claude/**',
-      'apps/api/test/integration/**',
-      'e2e/**',
-      '**/node_modules/**',
+    // The API brings its own settings; coverage can only be set here, once for every project
+    projects: [
+      {
+        test: {
+          name: 'ui',
+          environment: 'jsdom',
+          include: ['apps/ui/**/*.test.{ts,tsx}', 'packages/**/*.test.ts'],
+          setupFiles: ['./test/setup.ts'],
+        },
+      },
+      'apps/api',
     ],
-    setupFiles: ['./test/setup.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'lcov'],

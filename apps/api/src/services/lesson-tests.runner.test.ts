@@ -1,4 +1,3 @@
-// @vitest-environment node
 // Runs the Python, C and Java judge runners on the host (python3 / gcc / java,
 // skipped when missing) to cover what the service tests mock away: the
 // runners' own output handling. Each test plays the server side of the

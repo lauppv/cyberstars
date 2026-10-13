@@ -1,4 +1,3 @@
-// @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 

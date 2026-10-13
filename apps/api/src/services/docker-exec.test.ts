@@ -1,4 +1,3 @@
-// @vitest-environment node
 import { EventEmitter } from 'events';
 import { PassThrough } from 'stream';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
