@@ -5,13 +5,15 @@ import { FreeSection } from './FreeSection';
 describe('FreeSection', () => {
   it('says there is no paid plan and no card', () => {
     render(<FreeSection />);
-    expect(screen.getByRole('heading', { name: 'No paid plan' })).toBeDefined();
-    expect(screen.getByRole('heading', { name: 'No card' })).toBeDefined();
+    expect(screen.getByRole('heading', { name: 'Free. Open source.' })).toBeDefined();
+    const points = screen.getAllByRole('listitem').map((li) => li.textContent);
+    expect(points).toContain('No paid plan');
+    expect(points).toContain('No card');
   });
 
   it('names and links the two licences on their own', () => {
     render(<FreeSection />);
-    expect(screen.getByRole('link', { name: 'BSD 3-Clause licence' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'BSD 3-Clause' })).toHaveAttribute(
       'href',
       'https://github.com/lauppv/cyberstars/blob/main/LICENSE',
     );

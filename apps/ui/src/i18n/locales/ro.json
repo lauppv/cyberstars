@@ -176,20 +176,9 @@
       }
     },
     "free": {
-      "title": "Gratuit și open source",
-      "subtitle": "Nu avem un preț de arătat, așa că iată ce îi ține locul.",
-      "plan": {
-        "title": "Niciun plan plătit",
-        "text": "Toate cursurile, lecțiile și provocările sunt gratuite. Nu există nimic de deblocat mai târziu."
-      },
-      "card": {
-        "title": "Fără card",
-        "text": "Un cont gratuit îți cere un nume, un email și o parolă. Nimic altceva."
-      },
-      "open": {
-        "title": "Open source",
-        "text": "Codul e public sub <code>licența BSD 3-Clause</code>, iar lecțiile sub <content>CC BY-SA 4.0</content>."
-      }
+      "title": "Gratuit. Open source.",
+      "plan": "Niciun plan plătit",
+      "card": "Fără card"
     },
     "faq": {
       "title": "Întrebări",

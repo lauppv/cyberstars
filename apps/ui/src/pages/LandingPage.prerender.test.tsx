@@ -39,7 +39,7 @@ describe('the pre-rendered landing page', () => {
     for (const heading of [
       'How it works',
       'What&#x27;s inside',
-      'Free, and open source',
+      'Free. Open source.',
       'Write your first line of code today',
     ]) {
       expect(html).toContain(heading);

@@ -172,20 +172,9 @@
       }
     },
     "free": {
-      "title": "Free, and open source",
-      "subtitle": "There's no price to show, so here's what replaces it.",
-      "plan": {
-        "title": "No paid plan",
-        "text": "Every course, lesson and challenge is free. There's nothing to unlock later."
-      },
-      "card": {
-        "title": "No card",
-        "text": "A free account asks for a name, an email and a password. Nothing else."
-      },
-      "open": {
-        "title": "Open source",
-        "text": "The code is public under the <code>BSD 3-Clause licence</code>, and the lessons under <content>CC BY-SA 4.0</content>."
-      }
+      "title": "Free. Open source.",
+      "plan": "No paid plan",
+      "card": "No card"
     },
     "faq": {
       "title": "Questions",
