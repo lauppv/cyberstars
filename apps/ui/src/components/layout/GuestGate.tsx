@@ -14,6 +14,7 @@ const GUEST_PATHS = [
   '/algorithms/:lang',
   '/lesson/:category/:lesson',
   '/almanac',
+  '/almanac/:slug',
 ];
 
 // Sends a guest from any other page to sign-in, which brings them back once

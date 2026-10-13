@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import i18n from 'i18next';
 import type { AlmanacArticle } from '@cyberstars/shared/almanac';
 
@@ -88,10 +88,21 @@ Element.prototype.scrollIntoView = vi.fn();
 
 import { AlmanacPage } from './AlmanacPage';
 import { StoryModal } from './StoryModal';
-import { fetchAlmanacIndex, fetchAlmanacExtras } from '../services/almanacService';
+import {
+  fetchAlmanacIndex,
+  fetchAlmanacExtras,
+  fetchAlmanacArticle,
+} from '../services/almanacService';
 
-function renderWithRouter(ui: React.ReactElement) {
-  return render(<MemoryRouter>{ui}</MemoryRouter>);
+function renderWithRouter(ui: React.ReactElement, path = '/almanac') {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <Routes>
+        <Route path="/almanac" element={ui} />
+        <Route path="/almanac/:slug" element={ui} />
+      </Routes>
+    </MemoryRouter>,
+  );
 }
 
 describe('AlmanacPage', () => {
@@ -203,6 +214,19 @@ describe('AlmanacPage', () => {
     const featured = await screen.findByText('Read of the day');
     fireEvent.click(featured.closest('.almanac-hero')!);
     expect(await screen.findByText('✕')).toBeInTheDocument();
+  });
+
+  it('opens an article from its own address and closes it back to the list', async () => {
+    renderWithRouter(<AlmanacPage />, `/almanac/${MOCK_INDEX[0].slug}`);
+    fireEvent.click(await screen.findByText('✕'));
+    await waitFor(() => expect(screen.queryByText('✕')).toBeNull());
+  });
+
+  it('opens nothing for an article that does not exist', async () => {
+    vi.mocked(fetchAlmanacArticle).mockRejectedValueOnce(new Error('404'));
+    renderWithRouter(<AlmanacPage />, '/almanac/no-such-article');
+    await screen.findByText('Read of the day');
+    expect(screen.queryByText('✕')).toBeNull();
   });
 
   it('toggles show all topics', async () => {

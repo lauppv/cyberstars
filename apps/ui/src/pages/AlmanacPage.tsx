@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -85,11 +86,15 @@ function Pagination({
 export function AlmanacPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
+  // An open article is its own address, /almanac/<slug>, so it can be shared
+  // and indexed, and the back button closes it
+  const { slug } = useParams<{ slug?: string }>();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
   const [page, setPage] = useState(1);
   const [factIdx, setFactIdx] = useState(0);
   const [quoteIdx, setQuoteIdx] = useState(0);
-  const [openStory, setOpenStory] = useState<AlmanacArticle | null>(null);
+  const [loadedStory, setLoadedStory] = useState<AlmanacArticle | null>(null);
   const [topicOffset, setTopicOffset] = useState(0);
   const [showAllTopics, setShowAllTopics] = useState(false);
   const [cards, setCards] = useState<AlmanacCard[] | null>(null);
@@ -111,11 +116,20 @@ export function AlmanacPage() {
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const openArticle = (slug: string) => {
+  useEffect(() => {
+    if (!slug) return;
+    let current = true;
     fetchAlmanacArticle(slug, lang)
-      .then(setOpenStory)
-      .catch(() => {});
-  };
+      .then((story) => current && setLoadedStory(story))
+      .catch(() => current && setLoadedStory(null));
+    return () => {
+      current = false;
+    };
+  }, [slug, lang]);
+  // Only the article the address names: one loaded for an earlier address stays shut
+  const openStory = slug && loadedStory?.slug === slug ? loadedStory : null;
+
+  const openArticle = (articleSlug: string) => navigate(`/almanac/${articleSlug}`);
 
   const visibleCategories = showAllTopics
     ? CATEGORIES
@@ -304,7 +318,7 @@ export function AlmanacPage() {
         </div>
       </main>
 
-      {openStory && <StoryModal story={openStory} onClose={() => setOpenStory(null)} />}
+      {openStory && <StoryModal story={openStory} onClose={() => navigate('/almanac')} />}
     </>
   );
 }

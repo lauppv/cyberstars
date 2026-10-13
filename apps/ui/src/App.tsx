@@ -122,6 +122,7 @@ function App() {
                                   <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
                                   <Route path="/forum/t/:threadId" element={<ForumPage />} />
                                   <Route path="/almanac" element={<AlmanacPage />} />
+                                  <Route path="/almanac/:slug" element={<AlmanacPage />} />
                                   <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
                                   <Route path="/rules" element={<RulesPage />} />
                                   <Route path="/usage" element={<UsagePage />} />
