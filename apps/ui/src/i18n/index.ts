@@ -31,7 +31,8 @@ function initialLang(): Lang {
   } catch {
     // localStorage unavailable (private mode), nothing to clear
   }
-  return langFromPath(window.location.pathname);
+  // The build's pre-render runs in Node, with no address to read
+  return typeof window === 'undefined' ? 'en' : langFromPath(window.location.pathname);
 }
 
 i18n.use(initReactI18next).init({
