@@ -69,6 +69,9 @@ const SettingsPage = lazy(() =>
 const ConnectionsPage = lazy(() =>
   import('./pages/ConnectionsPage').then((m) => ({ default: m.ConnectionsPage })),
 );
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
 
 // The radio chip lives at the app root so playback survives navigation, but the
 // auth/welcome pages carry no chrome.
@@ -134,6 +137,7 @@ function App() {
                                   <Route path="/u/:userId" element={<PublicProfilePage />} />
                                   <Route path="/settings" element={<SettingsPage />} />
                                   <Route path="/connections" element={<ConnectionsPage />} />
+                                  <Route path="*" element={<NotFoundPage />} />
                                 </Routes>
                               </TourGate>
                             </GuestGate>
