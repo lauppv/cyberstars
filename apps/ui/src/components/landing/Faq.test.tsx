@@ -18,7 +18,7 @@ describe('Faq', () => {
     fireEvent.click(question(/need an account/));
     expect(question(/need an account/)).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('region', { name: 'Do I need an account?' })).toHaveTextContent(
-      'first ten runs',
+      'ten-run limit',
     );
 
     fireEvent.click(question(/install/));

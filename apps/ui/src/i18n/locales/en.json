@@ -180,27 +180,27 @@
       "title": "Questions",
       "account": {
         "q": "Do I need an account?",
-        "a": "No. You can read every lesson, write code and run it without one. Without an account your first ten runs in the editor are free; a free account lifts that limit, saves your progress and opens the forum."
+        "a": "No. Read, write and run code without one. A free account lifts the ten-run limit, saves your progress and opens the forum."
       },
       "free": {
         "q": "Is it really free?",
-        "a": "Yes. There's no paid plan and no card to enter, and the code behind CyberStars is public on GitHub."
+        "a": "Yes. No paid plan, no card, and the code is public on GitHub."
       },
       "start": {
         "q": "Which language should I start with?",
-        "a": "Python, if you've never programmed: it reads almost like English and the first lesson runs in a minute. Pick C or Java if your school uses them, and Linux to learn the terminal."
+        "a": "Python, if you've never programmed."
       },
       "install": {
         "q": "Do I need to install anything?",
-        "a": "No. The editor and the Linux terminal run in your browser, and your code runs on our servers."
+        "a": "No. Everything runs in your browser."
       },
       "phone": {
         "q": "Does it work on a phone?",
-        "a": "Yes. Lessons, the editor and the tests work on a phone; a bigger screen is more comfortable for longer programs."
+        "a": "Yes, though a bigger screen is more comfortable."
       },
       "romanian": {
         "q": "Is it in Romanian?",
-        "a": "Yes. The site and every lesson are in English and Romanian; switch with EN and RO at the top of this page."
+        "a": "Yes, the site and every lesson. Switch with EN and RO at the top."
       }
     },
     "cta": {
