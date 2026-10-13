@@ -79,45 +79,21 @@ describe('LandingPage', () => {
     ).toBeDefined();
   });
 
-  it('links the navbar only to pages a visitor can open, plus sign-in', () => {
+  it('keeps the navbar to the logo, the language switch and sign-in', () => {
     renderPage();
     const nav = within(header());
-    expect(nav.getByRole('link', { name: 'CyberStars' })).toHaveAttribute('href', '/');
-    expect(nav.getByRole('link', { name: 'Courses' })).toHaveAttribute('href', '/courses');
-    expect(nav.getByRole('link', { name: 'Algorithms' })).toHaveAttribute('href', '/algorithms');
-    expect(nav.getByRole('link', { name: 'Almanac' })).toHaveAttribute('href', '/almanac');
-    expect(nav.getByRole('link', { name: 'Sign in' })).toHaveAttribute('href', '/getstarted');
-    expect(nav.queryByRole('link', { name: 'Forum' })).toBeNull();
-  });
-
-  it('folds the links into a menu that opens, closes on Escape and on a pick', () => {
-    renderPage();
-    const toggle = screen.getByRole('button', { name: 'Open menu' });
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(document.getElementById('landing-menu')).toBeNull();
-
-    fireEvent.click(toggle);
-    const menu = document.getElementById('landing-menu')!;
-    expect(within(menu).getByRole('link', { name: 'Courses' })).toBeDefined();
-    expect(screen.getByRole('button', { name: 'Close menu' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    );
-
-    fireEvent.keyDown(document, { key: 'Escape' });
-    expect(document.getElementById('landing-menu')).toBeNull();
-
-    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
-    fireEvent.click(
-      within(document.getElementById('landing-menu')!).getByRole('link', { name: 'Almanac' }),
-    );
-    expect(document.getElementById('landing-menu')).toBeNull();
+    expect(nav.getAllByRole('link').map((l) => l.getAttribute('href'))).toEqual([
+      '/',
+      '/getstarted',
+    ]);
+    expect(nav.getByRole('group', { name: 'Switch language' })).toBeDefined();
+    expect(nav.queryByRole('button', { name: 'Open menu' })).toBeNull();
   });
 
   it('switches the page to Romanian from the navbar', async () => {
     renderPage();
-    const [desktopSwitch] = within(header()).getAllByRole('group', { name: 'Switch language' });
-    fireEvent.click(within(desktopSwitch).getByRole('button', { name: 'RO' }));
+    const languages = within(header()).getByRole('group', { name: 'Switch language' });
+    fireEvent.click(within(languages).getByRole('button', { name: 'RO' }));
     expect(await screen.findByRole('link', { name: 'Codul sursă' })).toBeDefined();
     expect(i18n.language).toBe('ro');
   });

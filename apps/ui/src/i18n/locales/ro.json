@@ -105,10 +105,6 @@
     }
   },
   "landing": {
-    "nav": {
-      "openMenu": "Deschide meniul",
-      "closeMenu": "Închide meniul"
-    },
     "hero": {
       "preview": {
         "label": "O lecție de Python în CyberStars: misiunea Raport de Zbor, codul studentului în editor și verdictul după Rulează testele, acceptat cu 32 din 32 de teste trecute.",

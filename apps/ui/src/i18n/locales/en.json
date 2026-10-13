@@ -104,10 +104,6 @@
     }
   },
   "landing": {
-    "nav": {
-      "openMenu": "Open menu",
-      "closeMenu": "Close menu"
-    },
     "hero": {
       "preview": {
         "label": "A Python lesson in CyberStars: the Flight Report mission, the student's code in the editor, and the verdict after Run Tests, accepted with 32 of 32 tests passed.",
