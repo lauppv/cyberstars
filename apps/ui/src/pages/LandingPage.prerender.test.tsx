@@ -57,6 +57,11 @@ describe('the pre-rendered landing page', () => {
     const html = prerender();
     expect(html).toContain('data-reveal="visible"');
     expect(html).not.toContain('data-reveal="hidden"');
-    expect(html).not.toContain('opacity-0');
+    expect(html).not.toContain('opacity-0 translate-y-4');
+  });
+
+  it("shows the first step's picture in the pinned How it works", () => {
+    const html = prerender();
+    expect(html).toMatch(/data-picture="read" aria-hidden="false" class="[^"]*opacity-100/);
   });
 });

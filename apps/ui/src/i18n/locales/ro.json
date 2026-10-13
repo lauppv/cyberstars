@@ -129,26 +129,25 @@
     },
     "how": {
       "title": "Cum funcționează",
-      "subtitle": "Fiecare lecție e aceeași buclă scurtă, în browser.",
       "step": "Pasul {{n}}",
       "read": {
         "title": "Citești o lecție",
-        "text": "Explicații scurte cu exemple mici pe care le rulezi și le schimbi pe loc, în română sau engleză.",
+        "text": "Scurte, cu exemple pe care le rulezi.",
         "picture": "Începutul primei lecții de Python, cu un exemplu și rezultatul lui."
       },
       "write": {
         "title": "Scrii cod în browser",
-        "text": "Un editor adevărat, cu sintaxa colorată, chiar lângă lecție. Nimic de instalat, și merge și pe telefon.",
+        "text": "Nimic de instalat.",
         "picture": "Editorul cu o buclă scurtă în Python și rezultatul ei."
       },
       "test": {
         "title": "Îl rulezi pe teste",
-        "text": "Rulează testele verifică programul pe multe cazuri și se oprește la primul pe care îl pică, arătând ce a intrat și ce a afișat programul tău, ca să vezi exact ce ai de reparat.",
+        "text": "Vezi exact ce ai de reparat.",
         "picture": "Un test picat: intrarea, rezultatul așteptat și rezultatul studentului, căruia îi lipsește cuvântul unitati."
       },
       "level": {
         "title": "Avansezi în nivel",
-        "text": "Cu un cont gratuit, fiecare lecție trecută îți aduce XP, niveluri și insigne, iar progresul se salvează. Fără cont poți citi lecțiile și încerca codul.",
+        "text": "XP, niveluri și insigne, cu un cont gratuit.",
         "bar": "Progresul tău",
         "picture": "Nivelul 3, Navigator, cu XP spre nivelul 4 și două insigne de Python obținute."
       }

@@ -125,26 +125,25 @@
     },
     "how": {
       "title": "How it works",
-      "subtitle": "Every lesson is the same short loop, in your browser.",
       "step": "Step {{n}}",
       "read": {
         "title": "Read a lesson",
-        "text": "Short explanations with small examples you can run and change on the spot, in English or Romanian.",
+        "text": "Short, with examples you can run.",
         "picture": "The start of the first Python lesson, with an example and its output."
       },
       "write": {
         "title": "Write code in your browser",
-        "text": "A real editor with syntax highlighting, right next to the lesson. Nothing to install, and it works on a phone.",
+        "text": "Nothing to install.",
         "picture": "The editor with a short Python loop and its output."
       },
       "test": {
         "title": "Run it against tests",
-        "text": "Run Tests checks your program on many cases and stops at the first one it fails, showing what went in and what your program printed, so you see exactly what to fix.",
+        "text": "See exactly what to fix.",
         "picture": "A failed test: the input, the expected output, and the student's output, which is missing the word units."
       },
       "level": {
         "title": "Level up",
-        "text": "With a free account, every lesson you pass earns XP, levels and badges, and your progress is saved. Without one you can still read the lessons and try the code.",
+        "text": "XP, levels and badges, with a free account.",
         "bar": "Your progress",
         "picture": "Level 3, Navigator, with XP toward level 4 and two Python badges earned."
       }
