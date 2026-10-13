@@ -1,7 +1,9 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkDirective from 'remark-directive';
 import { CodeCell } from '../code/CodeCell';
 import { StringIndexTable } from './StringIndexTable';
+import { remarkGreen } from './remarkGreen';
 import type { Components } from 'react-markdown';
 import { MAIN_COURSE_KEYS } from '@cyberstars/shared/constants';
 
@@ -49,12 +51,15 @@ const components: Components = {
     if (!isInline && lang === 'strindex') {
       const lines = String(children).replace(/\n$/, '').split('\n');
       const text = lines[0] ?? '';
-      const highlight = (lines[1] ?? '')
-        .replace(/^\^/, '')
-        .split(/[\s,]+/)
-        .map((n) => Number(n))
-        .filter((n) => Number.isInteger(n));
-      return <StringIndexTable text={text} highlight={highlight} />;
+      // A position lights purple, or green with :green ("^ 0 1:green"). Anything else, the
+      // empty piece a space after the caret leaves included, lights nothing
+      const highlight: number[] = [];
+      const green: number[] = [];
+      for (const piece of (lines[1] ?? '').replace(/^\^/, '').split(/[\s,]+/)) {
+        const match = /^(\d+)(:green)?$/.exec(piece);
+        if (match) (match[2] ? green : highlight).push(Number(match[1]));
+      }
+      return <StringIndexTable text={text} highlight={highlight} green={green} />;
     }
 
     if (!isInline && lang && EDITABLE_LANGS.includes(lang)) {
@@ -93,7 +98,10 @@ const components: Components = {
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <div className="prose text-[#d0d4de] break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkDirective, remarkGreen]}
+        components={components}
+      >
         {content}
       </ReactMarkdown>
     </div>

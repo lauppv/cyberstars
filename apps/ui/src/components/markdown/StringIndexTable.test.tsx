@@ -43,4 +43,14 @@ describe('StringIndexTable', () => {
     expect((charBoxes[0] as HTMLElement).style.color).toBe('rgb(205, 198, 255)');
     expect((indexLabels[0] as HTMLElement).style.color).toBe('rgb(154, 140, 255)');
   });
+
+  it('draws a green index in green, box and label', () => {
+    const { container } = render(<StringIndexTable text="abc" highlight={[0]} green={[1]} />);
+    const charBoxes = container.querySelectorAll(':scope > div > div > div > div:first-child');
+    const indexLabels = container.querySelectorAll(':scope > div > div > div > div:last-child');
+    expect((charBoxes[1] as HTMLElement).style.border).toBe('2px solid rgb(59, 167, 118)');
+    expect((charBoxes[1] as HTMLElement).style.background).toBe('rgba(59, 167, 118, 0.25)');
+    expect((indexLabels[1] as HTMLElement).style.color).toBe('rgb(59, 167, 118)');
+    expect((charBoxes[0] as HTMLElement).style.border).toBe('2px solid rgb(108, 92, 231)');
+  });
 });
