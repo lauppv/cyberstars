@@ -21,7 +21,6 @@ export default defineConfig([
     ],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -36,6 +35,14 @@ export default defineConfig([
         { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' },
       ],
     },
+  },
+  {
+    files: ['apps/ui/**/*.{ts,tsx}', 'packages/**/*.ts'],
+    languageOptions: { globals: globals.browser },
+  },
+  {
+    files: ['apps/api/**/*.ts'],
+    languageOptions: { globals: globals.node },
   },
   {
     files: ['**/*.js'],

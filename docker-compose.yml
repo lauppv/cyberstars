@@ -30,7 +30,7 @@ services:
       - DOCKER_HOST=${DOCKER_HOST:-unix:///var/run/docker.sock}
     volumes:
       - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
-      - ./server/runtimes/linux-sandbox:/context
+      - ./apps/api/src/runtimes/linux-sandbox:/context
 
   app:
     build: .

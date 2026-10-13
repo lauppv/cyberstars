@@ -1,0 +1,409 @@
+import path from 'path';
+import { Parser, Language, type Node } from 'web-tree-sitter';
+import type { InjectValue, LessonTestsSpec, StructureFailure } from '@cyberstars/shared/tests';
+
+// Server-side C analysis for the lesson judge. C has no in-container parser
+// (python has `ast`, java has javac's Tree API; gcc's shipped python3 parses
+// Python, not C), so structure checks AND value injection happen HERE on the
+// server via web-tree-sitter (pure JS + WASM, no node-gyp, VPS/Nix safe). The
+// container runner (lesson-tests.runner.c.py) then only compiles + runs the
+// pre-injected sources. Two syntax gates: tree-sitter catches structural
+// breakage (here), gcc catches semantic errors it recovers from (in the runner).
+
+const WASM_PATH = path.join(import.meta.dirname, 'wasm', 'tree-sitter-c.wasm');
+
+let parserPromise: Promise<Parser> | null = null;
+async function getParser(): Promise<Parser> {
+  if (!parserPromise) {
+    parserPromise = (async () => {
+      await Parser.init();
+      const c = await Language.load(WASM_PATH);
+      const parser = new Parser();
+      parser.setLanguage(c);
+      return parser;
+    })();
+  }
+  return parserPromise;
+}
+
+export async function parseC(code: string): Promise<Node> {
+  const parser = await getParser();
+  const tree = parser.parse(code);
+  if (!tree) throw new Error('C parse failed');
+  return tree.rootNode;
+}
+
+function* walk(node: Node): Generator<Node> {
+  yield node;
+  for (let i = 0; i < node.childCount; i++) {
+    const child = node.child(i);
+    if (child) yield* walk(child);
+  }
+}
+
+// tree-sitter is error-tolerant: it still yields a tree with ERROR/MISSING nodes
+// where the source is broken. First such node's line is the reported error.
+export function detectSyntaxError(root: Node): string | null {
+  if (!root.hasError) return null;
+  for (const node of walk(root)) {
+    if (node.isMissing) return `line ${node.startPosition.row + 1}: missing ${node.type}`;
+    if (node.isError) {
+      const snippet = node.text.replace(/\s+/g, ' ').trim().slice(0, 30);
+      return `line ${node.startPosition.row + 1}: syntax error${snippet ? ` near "${snippet}"` : ''}`;
+    }
+  }
+  return 'syntax error';
+}
+
+function callName(node: Node): string | null {
+  if (node.type !== 'call_expression') return null;
+  const fn = node.childForFieldName('function');
+  return fn && fn.type === 'identifier' ? fn.text : null;
+}
+
+// Innermost identifier under a declarator (unwraps pointer_declarator /
+// array_declarator / function_declarator wrappers).
+function declaratorName(declarator: Node | null): string | null {
+  let node: Node | null = declarator;
+  while (node) {
+    if (node.type === 'identifier') return node.text;
+    node = node.childForFieldName('declarator');
+  }
+  return null;
+}
+
+function declaredNames(root: Node): Set<string> {
+  const names = new Set<string>();
+  for (const node of walk(root)) {
+    if (node.type === 'declaration' || node.type === 'parameter_declaration') {
+      for (const decl of node.childrenForFieldName('declarator')) {
+        if (!decl) continue;
+        const inner = decl.type === 'init_declarator' ? decl.childForFieldName('declarator') : decl;
+        const name = declaratorName(inner);
+        if (name) names.add(name);
+      }
+    }
+  }
+  return names;
+}
+
+function parseIntLiteral(text: string): number | null {
+  const cleaned = text.replace(/[uUlL]+$/, '');
+  if (/[.eEpP]/.test(cleaned)) return null;
+  const value = /^0[xX]/.test(cleaned) ? parseInt(cleaned, 16) : parseInt(cleaned, 10);
+  return Number.isNaN(value) ? null : value;
+}
+
+// Python's `comprehension` has no C node, so a rule asking for one matches nothing.
+const C_LOOP_NODES: Record<string, string> = {
+  for: 'for_statement',
+  while: 'while_statement',
+  do_while: 'do_statement',
+};
+
+// A pointer the student declared: not main's own `char **argv`, which every
+// program may write, nor the type in a cast or sizeof, which declares nothing.
+function isOwnPointer(node: Node): boolean {
+  for (let up = node.parent; up; up = up.parent) {
+    if (up.type === 'cast_expression' || up.type === 'sizeof_expression') return false;
+    if (up.type === 'parameter_list') {
+      const name = up.parent?.childForFieldName('declarator')?.text;
+      return up.parent?.type !== 'function_declarator' || name !== 'main';
+    }
+  }
+  return true;
+}
+
+// Kinds that hold as soon as one node of that type exists. struct and enum
+// need a body: `struct point p;` only uses a type someone else declared.
+const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
+  if: (n) => n.type === 'if_statement',
+  switch: (n) => n.type === 'switch_statement',
+  break: (n) => n.type === 'break_statement',
+  continue: (n) => n.type === 'continue_statement',
+  typedef: (n) => n.type === 'type_definition',
+  sizeof: (n) => n.type === 'sizeof_expression',
+  pointer: (n) =>
+    (n.type === 'pointer_declarator' || n.type === 'abstract_pointer_declarator') &&
+    isOwnPointer(n),
+  // *p in an expression (reading or writing through the pointer), not the
+  // star of a declaration; p->field too. p[i] is indexing and doesn't count:
+  // pointers-arrays asks for *(ptr + i) instead of ptr[i].
+  deref: (n) =>
+    (n.type === 'pointer_expression' && n.childForFieldName('operator')?.text === '*') ||
+    (n.type === 'field_expression' && n.childForFieldName('operator')?.text === '->'),
+  struct: (n) => n.type === 'struct_specifier' && n.childForFieldName('body') !== null,
+  enum: (n) => n.type === 'enum_specifier' && n.childForFieldName('body') !== null,
+};
+
+const LOOP_NODE_TYPES = new Set<string>(Object.values(C_LOOP_NODES));
+
+function hasNestedLoop(root: Node): boolean {
+  for (const node of walk(root)) {
+    if (!LOOP_NODE_TYPES.has(node.type)) continue;
+    const body = node.childForFieldName('body');
+    if (body) for (const inner of walk(body)) if (LOOP_NODE_TYPES.has(inner.type)) return true;
+  }
+  return false;
+}
+
+// The operator token of a binary, unary, update or compound-assignment
+// expression (`a <<= 2` counts as <<, as Python's augmented assignment does);
+// `&x` and `*p` are pointer_expression, so they never count as & or *.
+function usesOperator(root: Node, op: string | undefined): boolean {
+  for (const node of walk(root)) {
+    if (!/^(binary|unary|assignment|update)_expression$/.test(node.type)) continue;
+    let text = node.childForFieldName('operator')?.text;
+    if (node.type === 'assignment_expression' && text !== '=') text = text?.slice(0, -1);
+    if (text === op) return true;
+  }
+  return false;
+}
+
+function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
+  switch (rule.kind) {
+    case 'call':
+      for (const node of walk(root)) if (callName(node) === rule.name) return true;
+      return false;
+    case 'variable':
+      return rule.name !== undefined && declaredNames(root).has(rule.name);
+    case 'function':
+      for (const node of walk(root)) {
+        if (node.type !== 'function_definition') continue;
+        const name = declaratorName(node.childForFieldName('declarator'));
+        if (rule.name === undefined ? name !== 'main' : name === rule.name) return true;
+      }
+      return false;
+    case 'recursion':
+      for (const node of walk(root)) {
+        if (node.type !== 'function_definition') continue;
+        const name = declaratorName(node.childForFieldName('declarator'));
+        for (const inner of walk(node)) if (name && callName(inner) === name) return true;
+      }
+      return false;
+    case 'loop': {
+      const types = rule.type ? [C_LOOP_NODES[rule.type]] : Object.values(C_LOOP_NODES);
+      for (const node of walk(root)) if (types.includes(node.type)) return true;
+      return false;
+    }
+    case 'int_literal': {
+      const values = new Set(rule.values ?? []);
+      for (const node of walk(root)) {
+        if (node.type !== 'number_literal') continue;
+        const value = parseIntLiteral(node.text);
+        if (value !== null && values.has(value)) return true;
+      }
+      return false;
+    }
+    case 'comment': {
+      // Whitespace-insensitive so `// printf( "..." );` still matches.
+      const needle = (rule.contains ?? '').replace(/\s+/g, '');
+      for (const node of walk(root)) {
+        if (node.type !== 'comment') continue;
+        if (!needle || node.text.replace(/\s+/g, '').includes(needle)) return true;
+      }
+      return false;
+    }
+    case 'string_expr':
+      // A bare string literal as a statement (`"printf(...)";`): valid C, and
+      // the counterfeit students use instead of actually commenting a line out.
+      for (const node of walk(root)) {
+        if (node.type !== 'expression_statement') continue;
+        const expr = node.namedChild(0);
+        if (expr && (expr.type === 'string_literal' || expr.type === 'concatenated_string')) {
+          return true;
+        }
+      }
+      return false;
+    case 'nested_loop':
+      return hasNestedLoop(root);
+    case 'operator':
+      return usesOperator(root, rule.name);
+    case 'define':
+      for (const node of walk(root)) {
+        if (node.type !== 'preproc_def' && node.type !== 'preproc_function_def') continue;
+        if (rule.name === undefined || node.childForFieldName('name')?.text === rule.name)
+          return true;
+      }
+      return false;
+    default: {
+      const matches = C_NODE_KINDS[rule.kind];
+      if (matches) {
+        for (const node of walk(root)) if (matches(node)) return true;
+        return false;
+      }
+      // Unknown kind: require passes, forbid fires (same convention as py/java).
+      return true;
+    }
+  }
+}
+
+export function checkStructure(
+  root: Node,
+  structure: LessonTestsSpec['structure'],
+): StructureFailure[] {
+  const failures: StructureFailure[] = [];
+  for (const rule of structure?.requires ?? [])
+    if (!ruleHolds(root, rule)) failures.push({ type: 'require', rule });
+  for (const rule of structure?.forbids ?? [])
+    if (ruleHolds(root, rule)) failures.push({ type: 'forbid', rule });
+  return failures;
+}
+
+type ValueBase = 'int' | 'long' | 'double' | 'float' | 'char' | 'bool' | 'string';
+
+interface InjectionSite {
+  name: string;
+  start: number;
+  end: number;
+  base: ValueBase;
+}
+
+function typeBase(typeText: string, isStringDeclarator: boolean): ValueBase {
+  const text = typeText.trim();
+  if (/\bchar\b/.test(text)) return isStringDeclarator ? 'string' : 'char';
+  if (/\b(_Bool|bool)\b/.test(text)) return 'bool';
+  if (/\bdouble\b/.test(text)) return 'double';
+  if (/\bfloat\b/.test(text)) return 'float';
+  if (/\blong\b/.test(text)) return 'long';
+  return 'int';
+}
+
+// Injection sites in source order: every `init_declarator` with an initializer,
+// paired with the declared type so the literal can be rendered correctly.
+export function collectInjectionSites(root: Node): InjectionSite[] {
+  const sites: InjectionSite[] = [];
+  for (const node of walk(root)) {
+    if (node.type !== 'declaration') continue;
+    const typeText = node.childForFieldName('type')?.text ?? '';
+    for (const decl of node.childrenForFieldName('declarator')) {
+      if (!decl || decl.type !== 'init_declarator') continue;
+      const declarator = decl.childForFieldName('declarator');
+      const value = decl.childForFieldName('value');
+      const name = declaratorName(declarator);
+      if (!name || !value) continue;
+      const isString =
+        declarator?.type === 'pointer_declarator' || declarator?.type === 'array_declarator';
+      sites.push({
+        name,
+        start: value.startIndex,
+        end: value.endIndex,
+        base: typeBase(typeText, isString),
+      });
+    }
+  }
+  return sites.sort((a, b) => a.start - b.start);
+}
+
+function escapeString(value: string): string {
+  return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n')}"`;
+}
+
+function ensureDecimal(text: string): string {
+  return /[.eE]/.test(text) ? text : `${text}.0`;
+}
+
+function renderLiteral(value: InjectValue | InjectValue[], base: ValueBase): string {
+  if (value !== null && typeof value === 'object') {
+    // $list / $dict aren't needed for C (collection lessons read via scanf and
+    // use per-case stdin, no injection). Out of scope until a lesson needs them.
+    throw new Error('C injection does not support $list/$dict values');
+  }
+  switch (base) {
+    case 'string':
+      return escapeString(String(value));
+    case 'char': {
+      const ch = String(value);
+      return `'${ch.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+    }
+    case 'bool':
+      return value ? '1' : '0';
+    case 'long':
+      return `${Math.trunc(Number(value))}L`;
+    case 'float':
+      return `${ensureDecimal(String(Number(value)))}f`;
+    case 'double':
+      return String(Number(value));
+    default:
+      if (typeof value === 'boolean') return value ? '1' : '0';
+      return String(value);
+  }
+}
+
+// Splice each injected value into its declarator's initializer range,
+// last-to-first so earlier offsets stay valid. A JS array feeds successive
+// declarations of the same name (reassignment); a name never declared in this
+// source is skipped (structure `requires: variable` + the output diff catch the
+// absence; the Java divergence from Python's prepend, since C needs a type).
+export function applyInjection(
+  code: string,
+  sites: InjectionSite[],
+  values: Record<string, InjectValue | InjectValue[]>,
+): string {
+  const queues = new Map<string, InjectValue[]>();
+  for (const [name, value] of Object.entries(values)) {
+    queues.set(name, Array.isArray(value) ? [...value] : [value]);
+  }
+  const edits: { start: number; end: number; text: string }[] = [];
+  for (const site of sites) {
+    const queue = queues.get(site.name);
+    if (!queue || queue.length === 0) continue;
+    edits.push({
+      start: site.start,
+      end: site.end,
+      text: renderLiteral(queue.shift()!, site.base),
+    });
+  }
+  edits.sort((a, b) => b.start - a.start);
+  let result = code;
+  for (const edit of edits) {
+    result = result.slice(0, edit.start) + edit.text + result.slice(edit.end);
+  }
+  return result;
+}
+
+interface PreparedCase {
+  userSrc: string;
+  /** Absent when the case's reference output is already cached (skipSolution). */
+  solutionSrc?: string;
+  stdin?: string;
+  skipSolution?: true;
+}
+
+export interface PrepareResult {
+  syntaxError: string | null;
+  structureFailures: StructureFailure[];
+  cases: PreparedCase[];
+}
+
+// Full server-side preparation for the C judge: syntax gate 1 + structure checks
+// on the pristine user code, then per-case injection into BOTH the user code and
+// the reference solution. The runner receives only pre-injected sources. Cases
+// in `skipSolution` (reference output already cached) carry the user side only.
+export async function prepareC(
+  userCode: string,
+  solutionCode: string,
+  spec: LessonTestsSpec,
+  skipSolution: ReadonlySet<number> = new Set(),
+): Promise<PrepareResult> {
+  const userRoot = await parseC(userCode);
+  const syntaxError = detectSyntaxError(userRoot);
+  if (syntaxError) return { syntaxError, structureFailures: [], cases: [] };
+
+  const structureFailures = checkStructure(userRoot, spec.structure);
+  const userSites = collectInjectionSites(userRoot);
+  const solutionSites = collectInjectionSites(await parseC(solutionCode));
+
+  const cases: PreparedCase[] = spec.cases.map((testCase, index) => {
+    const inject = testCase.inject ?? {};
+    return {
+      userSrc: applyInjection(userCode, userSites, inject),
+      ...(skipSolution.has(index)
+        ? { skipSolution: true as const }
+        : { solutionSrc: applyInjection(solutionCode, solutionSites, inject) }),
+      ...(testCase.stdin !== undefined ? { stdin: testCase.stdin } : {}),
+    };
+  });
+
+  return { syntaxError: null, structureFailures, cases };
+}

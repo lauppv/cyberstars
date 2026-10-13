@@ -1,7 +1,7 @@
 dist
 coverage
 node_modules
-prisma/migrations
+apps/api/prisma/migrations
 packages/content/lessons/**/*-code.md
 packages/content/algorithms/**/*-code.md
 public/lessons

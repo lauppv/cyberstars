@@ -38,4 +38,4 @@ runs:
     - name: Regenerate Prisma client
       shell: bash
       if: steps.cache-deps.outputs.cache-hit == 'true'
-      run: npx prisma generate
+      run: npm run db:generate
