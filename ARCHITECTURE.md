@@ -4,52 +4,45 @@ CyberStars is a split-screen coding education platform with a React frontend, Ex
 
 ## Project structure
 
+The repo is one npm workspace with four parts: two apps and two packages they share.
+
 ```
 cyberstars/
-├── shared/                        # DTO types + constants (imported by both client and server)
-│   ├── constants.ts               # Progress %, course key constants
-│   ├── auth.ts                    # Auth-related types
-│   ├── lesson.ts                  # LessonContent, LessonMeta, Course
-│   ├── progress.ts                # CourseProgress, LessonProgressItem
-│   ├── forum.ts                   # Forum DTO types
-│   ├── support.ts                 # Support ticket DTO types
-│   ├── notifications.ts           # Notification DTOs + UserSocketFrame (notification/dm channels)
-│   ├── messages.ts                # DM DTOs + dm socket frames
-│   ├── connections.ts             # Connection DTOs
-│   └── terminal.ts                # Terminal session types
+├── apps/
+│   ├── ui/                        # @cyberstars/ui: the React app
+│   │   ├── src/                   # Pages, components, contexts, hooks, services, i18n, index.css
+│   │   ├── public/                # Static files; curriculum.json and lessons/ are generated here
+│   │   ├── scripts/               # Pre-renders the landing page after the build
+│   │   └── index.html             # Page shell; Vite config sits next to it
+│   │
+│   └── api/                       # @cyberstars/api: the Express server
+│       ├── src/                   # Routes → controllers → services → repositories, runtimes, schemas
+│       ├── prisma/                # Database schema (source of truth), migrations, seed
+│       ├── scripts/               # Judge scripts: validate:tests, check:tests, changed lessons
+│       └── test/integration/      # Integration tests against a real PostgreSQL
 │
-├── prisma/
-│   ├── schema.prisma              # Database schema (source of truth)
-│   ├── seed.ts                    # Curriculum seeder (idempotent via upsert)
-│   └── migrations/
+├── packages/
+│   ├── shared/                    # @cyberstars/shared: types and rules both apps import
+│   └── content/                   # @cyberstars/content: lessons, algorithm challenges,
+│                                  #   the curriculum, solution variants, static-content generator
 │
-├── server/
-│   ├── server.ts                  # Express entry point
-│   ├── config/                    # Environment, Prisma client singleton
-│   ├── schemas/                   # Zod request validation schemas
-│   ├── middleware/                 # Auth (JWT + requireAdmin), validation, error handler
-│   ├── repositories/              # Data access (Prisma only, no business logic)
-│   ├── services/                  # Business logic (no req/res, no SQL)
-│   ├── controllers/               # Thin req/res layer
-│   ├── routes/                    # Route wiring + middleware
-│   ├── runtimes/                  # Per-language Docker execution config
-│   ├── lessons/                   # Lesson Markdown content (python, c, java, kotlin, linux)
-│   └── algorithms/                # Algorithm challenge content
-│
-├── client/
-│   ├── main.tsx                   # React entry point
-│   ├── App.tsx                    # Router, context providers
-│   ├── index.css                  # Design tokens (CSS variables), global styles
-│   ├── constants/                 # Course metadata (icons, colors, labels)
-│   ├── i18n/                      # i18next setup + en/ro UI string bundles
-│   ├── services/                  # API client + per-feature service wrappers
-│   ├── context/                   # AuthContext, CurriculumContext, ProgressContext
-│   ├── hooks/                     # useLesson, useCodeExecution, useProgress, useGamification
-│   ├── components/                # UI, layout, code editor, markdown renderer
-│   └── pages/                     # Route pages
-│
-└── test/                          # Test setup (jsdom, jest-dom matchers)
+├── e2e/                           # Playwright tests that drive the UI and the API together
+├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
+├── deploy/                        # Deploy script and nginx maintenance page
+└── scripts/                       # Rootless Podman helper
 ```
+
+Each part has its own `package.json` with only the dependencies it uses. The root keeps the tools every part shares (TypeScript, ESLint, Prettier, Vitest, Playwright, knip) and runs each app's scripts through `npm run <script> -w <workspace>`, so the commands stay the same from the root.
+
+### Why one repo
+
+The UI and the API stay in one repo on purpose:
+
+- **They share a contract.** Both import the same types and rules from `packages/shared` (who is an admin, which features are open, usage limits, XP, the judge's result shape). A change to an API answer and the UI that reads it lands in one PR, and the type check flags the side that didn't follow. Split, the shared code would have to be a published package, and every such change would take three PRs.
+- **One language, one toolchain.** Both are TypeScript on Node 24 with one lockfile, one lint config, one formatter and one test runner. Two repos would duplicate that tooling for no gain.
+- **They are tested and shipped together.** The E2E tests start both with one command, and in production the API serves the UI's build from one deploy script.
+
+Separate deploys don't need separate repos: workspaces already give each part its own dependencies and checks.
 
 ## Backend layers
 
@@ -79,11 +72,12 @@ Authentication uses httpOnly JWT cookies. Protected endpoints require the `token
 ### Curriculum & Lessons
 
 Curriculum structure and lesson content are **static files**, not API routes,
-generated at build time by `scripts/generate-static-content.ts` (from the seed
-data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
-`server/algorithms`) and served from `public/` (Vite's publicDir in dev,
-`express.static`/nginx in prod). The client fetches them directly via
-`client/services/lessonService.ts`, so they never touch the API server or the DB.
+generated at build time by `packages/content/scripts/generate-static-content.ts`
+(from the curriculum in `packages/content/curriculum.ts` and the markdown under
+`packages/content/lessons` / `packages/content/algorithms`) and served from
+`apps/ui/public/` (Vite's publicDir in dev, `express.static`/nginx in prod). The
+client fetches them directly via `apps/ui/src/services/lessonService.ts`, so they
+never touch the API server or the DB.
 
 | Asset                               | Description                                            |
 | ----------------------------------- | ------------------------------------------------------ |
@@ -96,7 +90,7 @@ data in `prisma/curriculum.data.ts` and the markdown under `server/lessons` /
 
 **Localization**: the UI is bilingual (English + Romanian), toggled in
 `/settings`; the choice persists in `localStorage` and is read from `i18n.language`.
-UI chrome strings come from `client/i18n/locales/{en,ro}.json`. Lesson and almanac
+UI chrome strings come from `apps/ui/src/i18n/locales/{en,ro}.json`. Lesson and almanac
 content is localized by file: translated copies live in a per-language subfolder
 (`ro`) beside the English source, with the **same slug**. `lessonService` /
 `almanacService` request the localized path and **fall back to English** when the
@@ -284,7 +278,7 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 
 ## Database schema
 
-Defined in [`prisma/schema.prisma`](../prisma/schema.prisma). Field names use camelCase in TypeScript, mapped to snake_case columns via Prisma's `@map`.
+Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Field names use camelCase in TypeScript, mapped to snake_case columns via Prisma's `@map`.
 
 ### Models
 
@@ -307,7 +301,7 @@ User (1) → (N) UserSavedCode         (ON DELETE CASCADE)
 Curriculum.key ← Lesson.courseKey     (logical, not FK)
 ```
 
-Lesson content is stored as Markdown files on disk, not in the database. The `Lesson` table stores metadata while content is read from `server/lessons/` at request time.
+Lesson content is stored as Markdown files on disk, not in the database. The `Lesson` table stores metadata while content is read from `packages/content/lessons/` at request time.
 
 ## Code execution
 
@@ -330,14 +324,14 @@ Interactive execution (`/ws/run`) uses a 20s wall-clock timeout that resets on e
 
 ### Adding a new language
 
-1. Create `server/runtimes/<lang>.ts` implementing the `LanguageRuntime` interface
-2. Register it in `server/runtimes/registry.ts`
+1. Create `apps/api/src/runtimes/<lang>.ts` implementing the `LanguageRuntime` interface
+2. Register it in `apps/api/src/runtimes/registry.ts`
 
 No changes to services, controllers, or routes needed.
 
 ## Lesson format
 
-Each lesson consists of two files in `server/lessons/:lang/`:
+Each lesson consists of two files in `packages/content/lessons/:lang/`:
 
 - `<slug>.md`: educational content with runnable code blocks
 - `<slug>-code.md`: starter code template
@@ -347,12 +341,12 @@ A lesson may also ship an optional `<slug>-tests.json` (judge test cases) and
 student presses "Run Tests", the server runs their code against the cases and marks
 the lesson complete only on a passing verdict; there is no manual "Mark Complete"
 button. Courses without test files (e.g. Kotlin) are not completable yet.
-Each tested lesson also keeps variants in `test/lesson-variants/<course>/<slug>/`:
+Each tested lesson also keeps variants in `packages/content/variants/<course>/<slug>/`:
 other correct solutions (`accept-*`) that must pass and cheats (`reject-*`) that must
 fail. `npm run check:tests` grades them next to the reference solution, and the
 `lesson-tests` CI workflow runs it on the lessons a pull request changes.
 
-A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
+A lesson may have an optional Romanian translation at `packages/content/lessons/:lang/ro/<slug>.md` (same slug); when absent, the reader sees the English source. See [Curriculum & Lessons](#curriculum--lessons) for the fallback behavior.
 
 ## Environment variables
 
@@ -391,11 +385,11 @@ A lesson may have an optional Romanian translation at `server/lessons/:lang/ro/<
 
 ## Design decisions
 
-- **Shared types**: `shared/` folder prevents client/server type drift
+- **Shared types**: the `packages/shared` workspace prevents client/server type drift
 - **Cookie auth**: httpOnly cookies prevent XSS access to tokens
 - **Filesystem lessons**: easy to author with git, metadata in PostgreSQL for querying
 - **Derived gamification**: badges computed client-side from `UserLessonProgress` counts; XP/levels derived from judge-completed lessons (the server recomputes XP authoritatively, never storing or trusting a client value), no extra gamification tables
 - **CurriculumContext**: curriculum fetched once at startup, shared via context
 - **CSS variables**: all theming via custom properties, re-theming is a one-file change
 - **`npm run dev` does everything**: DB setup, migration, seeding, server start in one command
-- **i18n with English fallback**: English is the source of truth; UI strings in `client/i18n/locales/{en,ro}.json`, content translations in `/ro` subfolders that fall back to English, so the site stays usable while translation lags
+- **i18n with English fallback**: English is the source of truth; UI strings in `apps/ui/src/i18n/locales/{en,ro}.json`, content translations in `/ro` subfolders that fall back to English, so the site stays usable while translation lags

@@ -45,28 +45,33 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions (PostgreS
 | Backend   | Express 5, TypeScript, Prisma 6 (PostgreSQL), Zod                |
 | Execution | Docker containers (sandboxed, per-language)                      |
 | Auth      | JWT in httpOnly cookies, bcryptjs                                |
-| Shared    | `shared/` folder with DTO types and constants used by both sides |
+| Shared    | `packages/shared` with DTO types and constants used by both apps |
 
 ## Project structure
 
+One npm workspace with two apps and two shared packages:
+
 ```
 cyberstars/
-├── client/          # React frontend
-├── server/          # Express API + lesson content
-├── shared/          # Types and constants (client + server)
-├── prisma/          # Database schema, migrations, seed, curriculum data
+├── apps/
+│   ├── ui/          # React frontend
+│   └── api/         # Express API, database schema, migrations, seed
+├── packages/
+│   ├── shared/      # Types and rules (UI + API)
+│   └── content/     # Lessons, algorithm challenges, curriculum
+├── e2e/             # Playwright tests
 ├── test/            # Test setup
 └── .github/         # CI workflows
 ```
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture breakdown, API endpoints, and database schema.
+Run every script from the root; it forwards to the right workspace. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture breakdown, why it's one repo, API endpoints, and database schema.
 
 ## Scripts
 
 | Script                      | Description                                              |
 | --------------------------- | -------------------------------------------------------- |
 | `npm run dev`               | Start everything (DB setup + Vite + Express)             |
-| `npm test`                  | Run unit suite (Vitest, jsdom)                           |
+| `npm test`                  | Run unit suite (Vitest: UI on jsdom, API on Node)        |
 | `npm run test:coverage`     | Unit suite + v8 coverage; fails if below 90% on any axis |
 | `npm run test:integration`  | Real-Postgres integration tests (needs `.env.test`)      |
 | `npm run test:e2e:browser`  | Playwright UI flows (auth/forum/support/courses/profile) |
