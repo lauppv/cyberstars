@@ -152,19 +152,19 @@
       },
       "algorithms": {
         "title": "Algorithm challenges",
-        "picture": "An accepted algorithm challenge, with the student's runtime next to the reference solution's."
+        "picture": "Five Python challenges from easy to hard, the first three solved."
       },
-      "almanac": {
-        "title": "The Almanac",
-        "picture": "Three Almanac stories: Ada Lovelace, Margaret Hamilton and the start of Linux."
+      "linux": {
+        "title": "Linux terminal",
+        "picture": "A Linux terminal: pwd, ls and ls reports, each with its output."
       },
       "forum": {
         "title": "The forum",
         "note": "With a free account",
-        "question": "Why does my loop stop one early?",
-        "answer": "range(1, n) stops before n. Use range(1, n + 1).",
+        "question": "How do I print my name 3 times?",
+        "answer": "With a for loop:",
         "solved": "Solved",
-        "picture": "A forum question about a loop and the answer that solved it."
+        "picture": "Maria21 asks how to print her name three times, and Marco Hoeger answers with a for loop."
       }
     },
     "free": {

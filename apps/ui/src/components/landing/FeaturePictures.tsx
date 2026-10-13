@@ -2,7 +2,6 @@ import { useMemo, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CircleCheck } from 'lucide-react';
 import { useCurriculum } from '../../context/CurriculumContext';
-import { Runtime } from '../judge/Runtime';
 import { CodeStill } from './CodeStill';
 import { curriculumCounts } from './curriculumCounts';
 
@@ -11,7 +10,7 @@ import { curriculumCounts } from './curriculumCounts';
 // to go stale and no editor to load.
 function Box({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div role="img" aria-label={label} className="panel h-[220px] overflow-hidden p-4 text-left">
+    <div role="img" aria-label={label} className="h-[220px] overflow-hidden p-4 text-left">
       {children}
     </div>
   );
@@ -47,47 +46,82 @@ export function CoursesPicture() {
   );
 }
 
-// The judge's real runtime card, as an algorithm challenge shows it after a pass
+// Real Python challenges as the algorithm list shows them: the number, or a
+// tick once solved, the title and the difficulty in its colour
+const DIFFICULTY = {
+  easy: { bg: 'rgba(0,214,143,0.12)', text: 'var(--success)' },
+  medium: { bg: 'rgba(255,170,0,0.12)', text: 'var(--warning)' },
+  hard: { bg: 'rgba(255,107,107,0.12)', text: 'var(--error)' },
+};
+
+const CHALLENGES: [string, keyof typeof DIFFICULTY, boolean][] = [
+  ['Reverse a String', 'easy', true],
+  ['Palindrome Check', 'easy', true],
+  ['Caesar Cipher', 'medium', true],
+  ['Two Sum', 'medium', false],
+  ['Group Anagrams', 'hard', false],
+];
+
 export function AlgorithmsPicture() {
   const { t } = useTranslation();
   return (
     <Box label={t('landing.features.algorithms.picture')}>
-      <div className="flex items-center gap-2 text-[var(--success)] font-semibold text-[16px] mb-4">
-        <CircleCheck size={18} strokeWidth={2} aria-hidden="true" />
-        {t('tests.verdict.accepted')}
-      </div>
-      <Runtime runtimeMs={29.6} referenceMs={41.9} />
+      <ul className="m-0 p-0 list-none flex flex-col gap-1.5">
+        {CHALLENGES.map(([title, diff, solved], i) => {
+          const d = DIFFICULTY[diff];
+          return (
+            <li key={title} className="flex items-center gap-3 h-[32px]">
+              <span
+                className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0"
+                style={{
+                  background: solved ? 'var(--success)' : d.bg,
+                  color: solved ? '#fff' : d.text,
+                }}
+              >
+                {solved ? '✓' : i + 1}
+              </span>
+              <span className="text-[13px] font-medium flex-1">{title}</span>
+              <span
+                className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                style={{ background: d.bg, color: d.text }}
+              >
+                {t(`algoList.diff.${diff}`)}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </Box>
   );
 }
 
-// Three real Almanac stories, with the titles the Almanac gives them
-const STORIES: Record<'en' | 'ro', [string, string][]> = {
-  en: [
-    ['1843', 'Ada Lovelace wrote code before computers existed'],
-    ['1969', 'Margaret Hamilton wrote the code that landed Apollo 11'],
-    ['1991', 'How a 21-year-old in Helsinki accidentally changed the world'],
-  ],
-  ro: [
-    ['1843', 'Ada Lovelace a scris cod înainte să existe computerele'],
-    ['1969', 'Margaret Hamilton a scris codul care a aselenizat Apollo 11'],
-    ['1991', 'Cum un tânăr de 21 de ani din Helsinki a schimbat din întâmplare lumea'],
-  ],
-};
+// The first steps of the Linux course (pwd, ls), in the lesson terminal's
+// prompt and colours
+const SESSION: [string, string][] = [
+  ['pwd', '/home/student'],
+  ['ls', 'mission.txt  reports  tools'],
+  ['ls reports', 'january.log  february.log'],
+];
 
-export function AlmanacPicture() {
-  const { t, i18n } = useTranslation();
-  const stories = STORIES[i18n.language === 'ro' ? 'ro' : 'en'];
+export function LinuxPicture() {
+  const { t } = useTranslation();
   return (
-    <Box label={t('landing.features.almanac.picture')}>
-      <ul className="m-0 p-0 list-none flex flex-col gap-2">
-        {stories.map(([year, title]) => (
-          <li key={year} className="rounded-[var(--radius-sm)] bg-[var(--glass)] px-3 py-2.5">
-            <div className="text-[11px] text-[var(--text3)] mb-0.5">{year}</div>
-            <div className="text-[13px] font-semibold leading-snug">{title}</div>
-          </li>
+    <Box label={t('landing.features.linux.picture')}>
+      <div className="h-[220px] -m-4 p-4 font-mono text-[12px] leading-[1.7] bg-[rgba(13,17,23,0.3)]">
+        {SESSION.map(([command, output]) => (
+          <div key={command}>
+            <div>
+              <span className="text-[#7EE787]">student@sandbox:~$ </span>
+              {command}
+            </div>
+            <div className="text-[var(--text2)] whitespace-pre">{output}</div>
+          </div>
         ))}
-      </ul>
+        <div>
+          <span className="text-[#7EE787]">student@sandbox:~$ </span>
+          <span className="inline-block w-[7px] h-[14px] align-middle bg-[var(--text2)]" />
+        </div>
+      </div>
     </Box>
   );
 }
@@ -104,33 +138,36 @@ function Avatar({ initials, color }: { initials: string; color: string }) {
   );
 }
 
-// A question and the answer that solved it, laid out like a forum thread
+const FORUM_CODE = `for i in range(3):
+    print("Maria")`;
+
+// A beginner's question and the answer that solved it, laid out like a forum thread
 export function ForumPicture() {
   const { t } = useTranslation();
   return (
     <Box label={t('landing.features.forum.picture')}>
       <div className="flex flex-col gap-3">
         <div className="flex gap-2.5">
-          <Avatar initials="MR" color="#3572A5" />
+          <Avatar initials="M" color="#3572A5" />
           <div className="min-w-0 flex-1">
-            <div className="text-[12px] text-[var(--text3)] mb-1">maria_r</div>
-            <div className="text-[13px] mb-1.5">{t('landing.features.forum.question')}</div>
-            <div className="rounded-[var(--radius-sm)] border border-[var(--border)]">
-              <CodeStill code="for i in range(1, n):" />
-            </div>
+            <div className="text-[12px] text-[var(--text3)] mb-1">Maria21</div>
+            <div className="text-[13px]">{t('landing.features.forum.question')}</div>
           </div>
         </div>
         <div className="flex gap-2.5">
-          <Avatar initials="SK" color="#6c5ce7" />
+          <Avatar initials="MH" color="#6c5ce7" />
           <div className="min-w-0 flex-1">
             <div className="text-[12px] text-[var(--text3)] mb-1 flex items-center gap-1.5">
-              sk_dev
+              Marco Hoeger
               <span className="inline-flex items-center gap-1 text-[var(--success)]">
                 <CircleCheck size={12} strokeWidth={2} aria-hidden="true" />
                 {t('landing.features.forum.solved')}
               </span>
             </div>
-            <div className="text-[13px]">{t('landing.features.forum.answer')}</div>
+            <div className="text-[13px] mb-1.5">{t('landing.features.forum.answer')}</div>
+            <div className="rounded-[var(--radius-sm)] border border-[var(--border)]">
+              <CodeStill code={FORUM_CODE} />
+            </div>
           </div>
         </div>
       </div>

@@ -157,19 +157,19 @@
       },
       "algorithms": {
         "title": "Provocări de algoritmi",
-        "picture": "O provocare de algoritmi acceptată, cu timpul studentului lângă cel al soluției de referință."
+        "picture": "Cinci provocări de Python, de la ușor la greu, primele trei rezolvate."
       },
-      "almanac": {
-        "title": "Almanahul",
-        "picture": "Trei povești din Almanah: Ada Lovelace, Margaret Hamilton și începutul Linux."
+      "linux": {
+        "title": "Terminalul Linux",
+        "picture": "Un terminal Linux: pwd, ls și ls reports, fiecare cu rezultatul lui."
       },
       "forum": {
         "title": "Forumul",
         "note": "Cu un cont gratuit",
-        "question": "De ce se oprește bucla mea cu unul mai devreme?",
-        "answer": "range(1, n) se oprește înainte de n. Folosește range(1, n + 1).",
+        "question": "Cum îmi afișez numele de 3 ori?",
+        "answer": "Cu o buclă for:",
         "solved": "Rezolvat",
-        "picture": "O întrebare pe forum despre o buclă și răspunsul care a rezolvat-o."
+        "picture": "Maria21 întreabă cum își afișează numele de trei ori, iar Marco Hoeger îi răspunde cu o buclă for."
       }
     },
     "free": {

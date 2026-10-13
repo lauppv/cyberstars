@@ -27,23 +27,17 @@ function renderSection() {
 }
 
 describe('FeaturesSection', () => {
-  it('gives each place a visitor can go a tile, a picture and a link', () => {
+  it('gives each part a card with its name and a picture, and no links', () => {
     renderSection();
     const tiles = Array.from(screen.getAllByRole('list')[0].children) as HTMLElement[];
-    const links = tiles.map((b) => within(b).getByRole('link'));
-    expect(links.map((l) => l.textContent)).toEqual([
+    expect(tiles.map((b) => within(b).getByRole('heading', { level: 3 }).textContent)).toEqual([
       'Courses',
       'Algorithm challenges',
-      'The Almanac',
+      'Linux terminal',
       'The forum',
     ]);
-    expect(links.map((l) => l.getAttribute('href'))).toEqual([
-      '/courses',
-      '/algorithms',
-      '/almanac',
-      '/getstarted',
-    ]);
     for (const b of tiles) expect(within(b).getAllByRole('img')).toHaveLength(1);
+    expect(screen.queryByRole('link')).toBeNull();
   });
 
   it('draws the courses from the curriculum, with their real lesson counts', () => {
@@ -54,10 +48,27 @@ describe('FeaturesSection', () => {
     expect(picture).not.toHaveTextContent('C Algorithms');
   });
 
-  it('says the forum needs an account before leading there', () => {
+  it('lists real challenges from easy to hard, the first ones solved', () => {
+    renderSection();
+    const picture = screen.getByRole('img', { name: /Five Python challenges/ });
+    expect(picture).toHaveTextContent('✓Reverse a Stringeasy');
+    expect(picture).toHaveTextContent('5Group Anagramshard');
+  });
+
+  it('shows a Linux session in the lesson terminal prompt', () => {
+    renderSection();
+    const picture = screen.getByRole('img', { name: /A Linux terminal/ });
+    expect(picture).toHaveTextContent('student@sandbox:~$ pwd/home/student');
+    expect(picture).toHaveTextContent('mission.txt reports tools');
+  });
+
+  it("answers Maria21's question in the forum and says it needs an account", () => {
     renderSection();
     expect(screen.getByText('With a free account')).toBeDefined();
-    expect(screen.getByRole('link', { name: 'The forum' })).toHaveAttribute('href', '/getstarted');
+    const picture = screen.getByRole('img', { name: /Maria21/ });
+    expect(picture).toHaveTextContent('Maria21How do I print my name 3 times?');
+    expect(picture).toHaveTextContent('Marco Hoeger');
+    expect(picture).toHaveTextContent('print("Maria")');
   });
 
   it('presents none of the preview features', () => {
