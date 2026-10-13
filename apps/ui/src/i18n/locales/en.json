@@ -120,7 +120,6 @@
     },
     "how": {
       "title": "How it works",
-      "step": "Step {{n}}",
       "read": {
         "title": "Read a lesson",
         "text": "Short, with examples you can run.",
@@ -133,14 +132,16 @@
       },
       "test": {
         "title": "Run it against tests",
-        "text": "See exactly what to fix.",
-        "picture": "A failed test: the input, the expected output, and the student's output, which is missing the word units."
+        "text": "Know right away if it works.",
+        "picture": "Every test passing: the first six ticked and 29 more, accepted with 35 of 35.",
+        "more": "and {{count}} more"
       },
       "level": {
         "title": "Level up",
         "text": "XP, levels and badges, with a free account.",
-        "bar": "Your progress",
-        "picture": "Level 3, Navigator, with XP toward level 4 and two Python badges earned."
+        "picture": "A 12-day streak on the activity heatmap, with lessons done on many days of the last twelve weeks.",
+        "streak_one": "{{count}}-day streak",
+        "streak_other": "{{count}}-day streak"
       }
     },
     "features": {

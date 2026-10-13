@@ -1,11 +1,10 @@
-import type { ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { TestCaseResult } from '@cyberstars/shared/tests';
-import { levelFromXp, levelTitleKey, xpForLevel } from '@cyberstars/shared/constants';
+import { CircleCheck, Flame } from 'lucide-react';
 import { Field } from '../judge/CaseFields';
-import { FailedCase } from '../judge/FailedCase';
-import { Badge } from '../gamification/Badge';
-import { badgeDescription, badgeLabel } from '../gamification/badgeMeta';
+import { caseLabel } from '../judge/format';
+import { ActivityHeatmap } from '../gamification/ActivityHeatmap';
+import { localDateStr } from '../gamification/heatmap-utils';
 import { CodeStill } from './CodeStill';
 
 type Lang = 'en' | 'ro';
@@ -92,96 +91,80 @@ export function WritePicture() {
   );
 }
 
-// Test 1 of the Flight Report mission (python/print-f), failed the way a
-// student often fails it: the fuel line lost its "units". The picture leaves
-// the test's input out, so what to fix is what fits in the box"
-const FAILED: Record<Lang, TestCaseResult> = {
-  en: {
-    index: 0,
-    visible: true,
-    passed: false,
-    expected: 'Pilot Shadow is flying Orion\nFuel: 400 units\nSpeed: 7.5 km/s',
-    actual: 'Pilot Shadow is flying Orion\nFuel: 400\nSpeed: 7.5 km/s',
-  },
-  ro: {
-    index: 0,
-    visible: true,
-    passed: false,
-    expected: 'Pilotul Shadow piloteaza Orion\nCombustibil: 400 unitati\nViteza: 7.5 km/s',
-    actual: 'Pilotul Shadow piloteaza Orion\nCombustibil: 400\nViteza: 7.5 km/s',
-  },
-};
+// Run Tests passed on the Ship's Crew mission (python/lists-for), the lesson
+// the hero's example comes from: its first tests ticked, the two the student
+// can see and then the hidden ones, and the rest counted
+const TESTS = 35;
+const SHOWN = 6;
 
 export function TestPicture() {
   const { t } = useTranslation();
+  const cases = Array.from({ length: SHOWN }, (_, index) => ({
+    index,
+    visible: index < 2,
+    passed: true,
+  }));
   return (
     <Frame label={t('landing.how.test.picture')}>
       <Bar>
-        <span>{t('tests.verdict.wrongAnswer')}</span>
-        <span>0 / 32</span>
+        <span className="flex items-center gap-1.5 text-[var(--success)] font-semibold">
+          <CircleCheck size={14} strokeWidth={2} aria-hidden="true" />
+          {t('tests.verdict.accepted')}
+        </span>
+        <span>
+          {TESTS} / {TESTS}
+        </span>
       </Bar>
-      <div className="p-4 overflow-hidden">
-        <FailedCase result={FAILED[useLang()]} />
-      </div>
+      <ul className="flex-1 m-0 px-4 py-3 list-none flex flex-col justify-center gap-2.5">
+        {cases.map((c) => (
+          <li key={c.index} className="flex items-center gap-2.5 text-[13px]">
+            <CircleCheck
+              size={16}
+              strokeWidth={2}
+              aria-hidden="true"
+              className="text-[var(--success)] flex-shrink-0"
+            />
+            {caseLabel(c, t)}
+          </li>
+        ))}
+        <li className="pl-[26px] text-[12px] text-[var(--text3)]">
+          {t('landing.how.test.more', { count: TESTS - SHOWN })}
+        </li>
+      </ul>
     </Frame>
   );
 }
 
-// A student a dozen Python lessons in: level 3, two badges, the third ahead
-const XP = 520;
-const DONE = 12;
-const PYTHON_LESSONS = 60;
+// A student on a 12-day streak with a few weeks of lessons behind it, drawn
+// on the dashboard's own heatmap, counted back from today so it never ages
+const STREAK = 12;
+const WEEKS = 12;
+
+function activity(): Record<string, number> {
+  const counts: Record<string, number> = {};
+  const day = new Date();
+  for (let i = 0; i < WEEKS * 7; i++) {
+    const n = i < STREAK ? 1 + (i % 3) : (i * 7) % 5 < 2 ? 1 + (i % 4) : 0;
+    if (n) counts[localDateStr(day)] = n;
+    day.setDate(day.getDate() - 1);
+  }
+  return counts;
+}
 
 export function LevelPicture() {
   const { t } = useTranslation();
-  const level = levelFromXp(XP);
-  const into = XP - xpForLevel(level);
-  const span = xpForLevel(level + 1) - xpForLevel(level);
+  const counts = useMemo(() => activity(), []);
   return (
-    <Frame label={t('landing.how.level.picture')}>
-      <Bar>{t('landing.how.level.bar')}</Bar>
-      <div className="flex-1 p-4 flex flex-col justify-center gap-5">
-        <div>
-          <div className="flex items-baseline justify-between mb-2">
-            <span className="text-[18px] font-semibold">
-              {t('level.short', { n: level })} · {t(levelTitleKey(level))}
-            </span>
-            <span className="text-[12px] text-[var(--text3)]">
-              {into} / {span} XP
-            </span>
-          </div>
-          <div className="h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden">
-            <div
-              className="h-full rounded-full bg-[var(--accent)]"
-              style={{ width: `${(into / span) * 100}%` }}
-            />
-          </div>
-        </div>
-        <div>
-          <div className="flex items-baseline justify-between mb-2 text-[13px]">
-            <span className="font-semibold">Python</span>
-            <span className="text-[12px] text-[var(--text3)]">
-              {t('home.lessonsCompleted', { count: DONE })} / {PYTHON_LESSONS}
-            </span>
-          </div>
-          <div className="h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden">
-            <div
-              className="h-full rounded-full bg-[var(--success)]"
-              style={{ width: `${(DONE / PYTHON_LESSONS) * 100}%` }}
-            />
-          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {[0, 1, 2].map((tier) => (
-            <Badge
-              key={tier}
-              label={badgeLabel(t, 'Python', tier)}
-              description={badgeDescription(t, 'Python', tier)}
-              earned={tier < 2}
-            />
-          ))}
-        </div>
+    <div
+      role="img"
+      aria-label={t('landing.how.level.picture')}
+      className="text-left h-[300px] flex flex-col justify-center gap-3"
+    >
+      <div className="flex items-center gap-2 text-[15px] font-semibold">
+        <Flame size={18} strokeWidth={2} aria-hidden="true" className="text-[var(--warning)]" />
+        {t('landing.how.level.streak', { count: STREAK })}
       </div>
-    </Frame>
+      <ActivityHeatmap activityCounts={counts} weeks={WEEKS} />
+    </div>
   );
 }

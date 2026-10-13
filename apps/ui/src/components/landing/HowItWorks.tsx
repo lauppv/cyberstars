@@ -34,13 +34,10 @@ function prefersReducedMotion(): boolean {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 }
 
-function Copy({ step, n }: { step: string; n: number }) {
+function Copy({ step }: { step: string }) {
   const { t } = useTranslation();
   return (
     <>
-      <div className="text-[13px] font-semibold text-[var(--accent)] mb-2">
-        {t('landing.how.step', { n })}
-      </div>
       <h3 className="text-[24px] sm:text-[28px] font-bold tracking-[-0.4px] leading-[1.15] m-0 mb-2">
         {t(`landing.how.${step}.title`)}
       </h3>
@@ -94,7 +91,7 @@ function Pinned() {
             }}
             data-step={STEPS[i][0]}
           >
-            <Copy step={STEPS[i][0]} n={i + 1} />
+            <Copy step={STEPS[i][0]} />
           </div>
         </div>
       ))}
@@ -131,10 +128,10 @@ function Pinned() {
 function Stacked() {
   return (
     <ol className="lg:hidden flex flex-col gap-14 m-0 p-0 list-none">
-      {STEPS.map(([key, Picture], i) => (
+      {STEPS.map(([key, Picture]) => (
         <li key={key} className="flex flex-col gap-5">
           <Reveal>
-            <Copy step={key} n={i + 1} />
+            <Copy step={key} />
           </Reveal>
           <Reveal delay={80} className="w-full max-w-[560px]">
             <Picture />

@@ -124,7 +124,6 @@
     },
     "how": {
       "title": "Cum funcționează",
-      "step": "Pasul {{n}}",
       "read": {
         "title": "Citești o lecție",
         "text": "Scurte, cu exemple pe care le rulezi.",
@@ -137,14 +136,17 @@
       },
       "test": {
         "title": "Îl rulezi pe teste",
-        "text": "Vezi exact ce ai de reparat.",
-        "picture": "Un test picat: intrarea, rezultatul așteptat și rezultatul studentului, căruia îi lipsește cuvântul unitati."
+        "text": "Afli imediat dacă merge.",
+        "picture": "Toate testele trec: primele șase bifate și încă 29, acceptat cu 35 din 35.",
+        "more": "și încă {{count}}"
       },
       "level": {
         "title": "Avansezi în nivel",
         "text": "XP, niveluri și insigne, cu un cont gratuit.",
-        "bar": "Progresul tău",
-        "picture": "Nivelul 3, Navigator, cu XP spre nivelul 4 și două insigne de Python obținute."
+        "picture": "O serie de 12 zile pe harta activității, cu lecții făcute în multe zile din ultimele douăsprezece săptămâni.",
+        "streak_one": "{{count}} zi la rând",
+        "streak_few": "{{count}} zile la rând",
+        "streak_other": "{{count}} de zile la rând"
       }
     },
     "features": {
