@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent } from './helpers.js';
-import { prisma } from '../../server/config/db.js';
-import { markComplete } from '../../server/services/progress.service.js';
-import { clearCache } from '../../server/services/leaderboard.service.js';
+import { prisma } from '../../src/config/db.js';
+import { markComplete } from '../../src/services/progress.service.js';
+import { clearCache } from '../../src/services/leaderboard.service.js';
 import { xpForLesson } from '@cyberstars/shared/constants';
 import type { LeaderboardPage, LeaderboardEntry } from '@cyberstars/shared/leaderboard';
 

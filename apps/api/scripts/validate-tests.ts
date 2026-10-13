@@ -19,8 +19,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { contentDir } from '../server/services/paths.js';
-import { parseC, collectInjectionSites } from '../server/services/c-analysis.js';
+import { contentDir } from '../src/services/paths.js';
+import { parseC, collectInjectionSites } from '../src/services/c-analysis.js';
 import type { LessonTestsSpec } from '@cyberstars/shared/tests';
 
 const CODE_JUDGE_COURSES = ['python', 'java', 'c', 'algo-python', 'algo-java', 'algo-c'];

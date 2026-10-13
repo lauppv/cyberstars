@@ -21,8 +21,7 @@
     "packages/shared",
     "test",
     "vitest.config.ts",
-    "vitest.integration.config.ts",
     "knip.config.ts"
   ],
-  "exclude": ["node_modules", "**/dist", "server", "test/integration"]
+  "exclude": ["node_modules", "**/dist"]
 }

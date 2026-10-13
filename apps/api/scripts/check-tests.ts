@@ -14,16 +14,16 @@
 // concept the lesson teaches, not the reference's exact shape. English only:
 // a RO spec differs from its EN twin only in the identifiers.
 //
-//   npx tsx scripts/check-tests.ts python                      # a whole course
-//   npx tsx scripts/check-tests.ts algo-c/binary-search-c      # one lesson
-//   npx tsx scripts/check-tests.ts java --lang=ro              # only the RO specs
-//   npx tsx scripts/check-tests.ts c:en python/string-reverse  # a language per target
+//   npx tsx apps/api/scripts/check-tests.ts python                      # a whole course
+//   npx tsx apps/api/scripts/check-tests.ts algo-c/binary-search-c      # one lesson
+//   npx tsx apps/api/scripts/check-tests.ts java --lang=ro              # only the RO specs
+//   npx tsx apps/api/scripts/check-tests.ts c:en python/string-reverse  # a language per target
 import fs from 'fs';
 import path from 'path';
 import { VARIANTS_DIR } from '@cyberstars/content/paths';
-import { contentDir } from '../server/services/paths.js';
-import { runLessonTests } from '../server/services/lesson-tests.service.js';
-import { drainAll } from '../server/services/code-container.service.js';
+import { contentDir } from '../src/services/paths.js';
+import { runLessonTests } from '../src/services/lesson-tests.service.js';
+import { drainAll } from '../src/services/code-container.service.js';
 
 const TESTS_SUFFIX = '-tests.json';
 
@@ -109,7 +109,7 @@ async function main() {
   const targets = args.filter((a) => !a.startsWith('--'));
   if (targets.length === 0) {
     console.error(
-      'usage: tsx scripts/check-tests.ts <course>[/<slug>][:en|:ro] ... [--lang=en|ro]',
+      'usage: tsx apps/api/scripts/check-tests.ts <course>[/<slug>][:en|:ro] ... [--lang=en|ro]',
     );
     process.exit(2);
   }

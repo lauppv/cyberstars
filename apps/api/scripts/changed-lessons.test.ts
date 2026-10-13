@@ -1,6 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
+import path from 'path';
 import { ENGINE_FILES, RUNTIME_FILES, SELF_FILES, planChecks } from './changed-lessons.js';
+
+// The watched paths are repo-relative, as git diff prints them
+const REPO_ROOT = path.resolve(import.meta.dirname, '../../..');
 
 const targetsOf = (shards: ReturnType<typeof planChecks>) =>
   shards.flatMap((s) => s.targets.split(' '));
@@ -10,7 +14,7 @@ describe('planChecks', () => {
   // runner or engine file would silently stop triggering its regrade.
   it('watches only files that exist', () => {
     const watched = [...Object.values(RUNTIME_FILES).flat(), ...ENGINE_FILES, ...SELF_FILES];
-    expect(watched.filter((f) => !fs.existsSync(f))).toEqual([]);
+    expect(watched.filter((f) => !fs.existsSync(path.join(REPO_ROOT, f)))).toEqual([]);
   });
 
   it('plans nothing when no lesson, runner or judge file changed', () => {
@@ -36,7 +40,7 @@ describe('planChecks', () => {
 
   it('grades every lesson of a language, EN only, when its runner changed', () => {
     const shards = planChecks([
-      'server/services/lesson-tests.runner.java',
+      'apps/api/src/services/lesson-tests.runner.java',
       'packages/content/lessons/java/hashmap-tests.json',
     ]);
     expect(shards.map((s) => s.name)).toEqual(['java 1/4', 'java 2/4', 'java 3/4', 'java 4/4']);
@@ -50,7 +54,7 @@ describe('planChecks', () => {
   });
 
   it('grades every language when the judge engine shared by all of them changed', () => {
-    const names = planChecks(['server/services/lesson-tests.service.ts']).map((s) => s.name);
+    const names = planChecks(['apps/api/src/services/lesson-tests.service.ts']).map((s) => s.name);
     expect(names).toEqual([
       'python 1/2',
       'python 2/2',

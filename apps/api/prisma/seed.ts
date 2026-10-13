@@ -1,5 +1,10 @@
+import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import { courses, lessons } from '@cyberstars/content/curriculum';
+import { ENV_FILE } from '../src/config/paths.js';
+
+// The client only looks for a .env next to the API, and ours sits at the repo root
+dotenv.config({ path: ENV_FILE });
 
 const prisma = new PrismaClient();
 

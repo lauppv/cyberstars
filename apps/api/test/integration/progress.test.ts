@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createAuthenticatedAgent } from './helpers.js';
-import { prisma } from '../../server/config/db.js';
-import { markComplete } from '../../server/services/progress.service.js';
+import { prisma } from '../../src/config/db.js';
+import { markComplete } from '../../src/services/progress.service.js';
 
 // Completion is server-authoritative: there is no client-writable endpoint,
 // so tests mark completion through the same service the judge uses.

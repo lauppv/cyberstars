@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
-import { prisma } from '../../server/config/db.js';
-import { clearCache } from '../../server/services/admin.service.js';
+import { prisma } from '../../src/config/db.js';
+import { clearCache } from '../../src/services/admin.service.js';
 
 // Promote a freshly signed-up user to ADMIN. The JWT carries only { id } and the
 // role is read from the DB on every request, so the same cookie now passes

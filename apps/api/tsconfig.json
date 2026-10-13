@@ -9,18 +9,10 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "outDir": "./dist",
-    "rootDir": "..",
+    "rootDir": "../..",
     "declaration": true,
     "sourceMap": true
   },
-  "include": [
-    "./**/*.ts",
-    "../packages/shared/**/*.ts",
-    "../packages/content/**/*.ts",
-    "../scripts/**/*.ts",
-    "../test/integration/**/*.ts",
-    "../prisma/**/*.ts",
-    "../prisma.config.ts"
-  ],
+  "include": ["./**/*.ts", "../../packages/shared/**/*.ts", "../../packages/content/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

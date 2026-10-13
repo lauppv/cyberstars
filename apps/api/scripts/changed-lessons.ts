@@ -13,12 +13,12 @@
 //
 // --all (the workflow's manual run) grades every lesson, EN and RO.
 //
-//   git diff --name-only HEAD^1 HEAD | npx tsx scripts/changed-lessons.ts
-//   npx tsx scripts/changed-lessons.ts --all
+//   git diff --name-only HEAD^1 HEAD | npx tsx apps/api/scripts/changed-lessons.ts
+//   npx tsx apps/api/scripts/changed-lessons.ts --all
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { contentDir } from '../server/services/paths.js';
-import { getRuntime } from '../server/runtimes/registry.js';
+import { contentDir } from '../src/services/paths.js';
+import { getRuntime } from '../src/runtimes/registry.js';
 
 type Runtime = 'python' | 'c' | 'java';
 
@@ -34,31 +34,34 @@ const COURSES: Record<Runtime, string[]> = {
 const WHOLE_SHARDS: Record<Runtime, number> = { python: 2, c: 1, java: 4 };
 
 export const RUNTIME_FILES: Record<Runtime, string[]> = {
-  python: ['server/services/lesson-tests.runner.py', 'server/runtimes/python.ts'],
+  python: ['apps/api/src/services/lesson-tests.runner.py', 'apps/api/src/runtimes/python.ts'],
   c: [
-    'server/services/lesson-tests.runner.c.py',
-    'server/services/c-analysis.ts',
-    'server/services/wasm/tree-sitter-c.wasm',
-    'server/runtimes/c.ts',
+    'apps/api/src/services/lesson-tests.runner.c.py',
+    'apps/api/src/services/c-analysis.ts',
+    'apps/api/src/services/wasm/tree-sitter-c.wasm',
+    'apps/api/src/runtimes/c.ts',
   ],
-  java: ['server/services/lesson-tests.runner.java', 'server/runtimes/java.ts'],
+  java: ['apps/api/src/services/lesson-tests.runner.java', 'apps/api/src/runtimes/java.ts'],
 };
 
 export const ENGINE_FILES = [
-  'server/services/lesson-tests.service.ts',
-  'server/services/code-container.service.ts',
-  'server/services/docker-exec.ts',
-  'server/services/judge-queue.ts',
-  'server/services/reference-cache.ts',
-  'server/services/paths.ts',
+  'apps/api/src/services/lesson-tests.service.ts',
+  'apps/api/src/services/code-container.service.ts',
+  'apps/api/src/services/docker-exec.ts',
+  'apps/api/src/services/judge-queue.ts',
+  'apps/api/src/services/reference-cache.ts',
+  'apps/api/src/services/paths.ts',
   'packages/content/paths.ts',
-  'server/runtimes/registry.ts',
-  'server/runtimes/types.ts',
+  'apps/api/src/runtimes/registry.ts',
+  'apps/api/src/runtimes/types.ts',
   'packages/shared/tests.ts',
-  'scripts/check-tests.ts',
+  'apps/api/scripts/check-tests.ts',
 ];
 
-export const SELF_FILES = ['scripts/changed-lessons.ts', '.github/workflows/lesson-tests.yml'];
+export const SELF_FILES = [
+  'apps/api/scripts/changed-lessons.ts',
+  '.github/workflows/lesson-tests.yml',
+];
 
 // packages/content/lessons/java/ro/hashmap-tests.json -> java/hashmap,
 // packages/content/algorithms/c/binary-search-c-solution.md -> algo-c/binary-search-c,

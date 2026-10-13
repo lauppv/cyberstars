@@ -1,6 +1,6 @@
 import request from 'supertest';
-import { app } from '../../server/app.js';
-import { prisma } from '../../server/config/db.js';
+import { app } from '../../src/app.js';
+import { prisma } from '../../src/config/db.js';
 
 let counter = 0;
 

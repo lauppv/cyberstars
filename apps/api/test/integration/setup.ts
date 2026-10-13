@@ -1,5 +1,5 @@
 import { beforeEach, afterAll } from 'vitest';
-import { prisma } from '../../server/config/db.js';
+import { prisma } from '../../src/config/db.js';
 
 beforeEach(async () => {
   await prisma.$executeRawUnsafe(`
