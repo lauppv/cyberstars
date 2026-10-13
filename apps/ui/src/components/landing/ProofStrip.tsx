@@ -20,7 +20,7 @@ export function ProofStrip() {
   if (counts.courses === 0) return null;
 
   return (
-    <section aria-label={t('landing.proof.label')} className="border-y border-[var(--border)]">
+    <section aria-label={t('landing.proof.label')} className="landing-wash">
       <Reveal className="max-w-[1120px] mx-auto px-4 sm:px-6 py-8 flex justify-center">
         <ul className="flex flex-wrap justify-center gap-x-10 gap-y-3 m-0 p-0 list-none">
           {stats.map(([key, n]) => (
