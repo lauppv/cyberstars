@@ -13,3 +13,13 @@ test('an old link with a # lands on the same page at its real address', async ({
   await expect(page).toHaveURL(/\/courses$/);
   await expect(page.getByText('Python', { exact: true }).first()).toBeVisible({ timeout: 10_000 });
 });
+
+test("a course's own address opens its syllabus, with a link to each lesson", async ({ page }) => {
+  await page.goto('/courses/python');
+
+  await expect(page.getByText('Chapters')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByRole('link', { name: /Print/ }).first()).toHaveAttribute(
+    'href',
+    '/lesson/python/print',
+  );
+});

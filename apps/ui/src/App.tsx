@@ -110,6 +110,7 @@ function App() {
                                   <Route path="/" element={<HomePage />} />
                                   <Route path="/getstarted" element={<AuthPage />} />
                                   <Route path="/courses" element={<CoursesPage />} />
+                                  <Route path="/courses/:course" element={<CoursesPage />} />
                                   <Route path="/algorithms" element={<AlgorithmsPage />} />
                                   <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
                                   <Route

@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router';
+import { useMemo } from 'react';
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { useAuth } from '../context/AuthContext';
@@ -33,8 +33,13 @@ export function CoursesPage() {
   const { isLoggedIn } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
+  // A course's syllabus is its own address, /courses/python, so it can be
+  // linked and indexed. /courses?open=python is the old way to say it
+  const { course: selectedKey } = useParams<{ course?: string }>();
   const [searchParams] = useSearchParams();
-  const [selectedKey, setSelectedKey] = useState<string | null>(searchParams.get('open'));
+  const legacyOpen = searchParams.get('open');
+  const openCourse = (key: string) => navigate(`/courses/${key}`);
+  const closeCourse = () => navigate('/courses');
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
@@ -83,6 +88,8 @@ export function CoursesPage() {
 
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
+  if (legacyOpen) return <Navigate to={`/courses/${legacyOpen}`} replace />;
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
@@ -104,7 +111,7 @@ export function CoursesPage() {
           {allCourses.map((c) => (
             <div
               key={c.key}
-              onClick={() => setSelectedKey(c.key)}
+              onClick={() => openCourse(c.key)}
               className="panel rounded-xl overflow-hidden cursor-pointer transition-all hover:border-[var(--accent)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]"
             >
               <div className="h-1.5 w-full" style={{ background: c.color }} />
@@ -173,7 +180,7 @@ export function CoursesPage() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        setSelectedKey(c.key);
+                        openCourse(c.key);
                       }}
                       className="px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
                     >
@@ -192,7 +199,7 @@ export function CoursesPage() {
         <>
           <div
             className="fixed inset-0 bg-black/65 z-[100] animate-fade-in"
-            onClick={() => setSelectedKey(null)}
+            onClick={closeCourse}
           />
           <div
             className="fixed right-0 top-0 bottom-0 w-[440px] max-w-full bg-[var(--bg2)] border-l border-[var(--border)] overflow-y-auto z-[101]"
@@ -211,7 +218,7 @@ export function CoursesPage() {
                 </div>
               </div>
               <button
-                onClick={() => setSelectedKey(null)}
+                onClick={closeCourse}
                 className="w-8 h-8 rounded-full border border-[var(--border)] bg-transparent text-[var(--text3)] text-base flex items-center justify-center cursor-pointer hover:text-[var(--text)] hover:border-[var(--text3)] transition flex-shrink-0"
               >
                 ×
@@ -266,10 +273,10 @@ export function CoursesPage() {
                     {syllabus.chapters.map((ch, i) => {
                       const isNext = i === nextIdx;
                       return (
-                        <div
+                        <Link
                           key={i}
-                          onClick={() => navigate(`/lesson/${syllabus.key}/${ch.slug}`)}
-                          className={`relative flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] hover:bg-[var(--surface)] transition cursor-pointer ${isNext ? 'ch-is-next' : ''}`}
+                          to={`/lesson/${syllabus.key}/${ch.slug}`}
+                          className={`relative flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] hover:bg-[var(--surface)] transition cursor-pointer text-[var(--text)] no-underline ${isNext ? 'ch-is-next' : ''}`}
                           style={{
                             opacity: 0,
                             transform: 'translateX(-6px)',
@@ -299,7 +306,7 @@ export function CoursesPage() {
                           >
                             {t('common.xpReward', { xp: ch.xp })}
                           </span>
-                        </div>
+                        </Link>
                       );
                     })}
                   </div>

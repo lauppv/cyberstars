@@ -349,7 +349,7 @@ describe('HomePage', () => {
     expect(screen.getByText('Course Milestones')).toBeDefined();
   });
 
-  it('milestone button for in-progress courses navigates to /courses?open=', () => {
+  it('milestone button for in-progress courses navigates to the course page', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],
@@ -390,10 +390,10 @@ describe('HomePage', () => {
     const section = screen.getByText('Course Milestones').closest('div')!.parentElement!;
     const btn = section.querySelector('button')!;
     fireEvent.click(btn);
-    expect(mockNavigate).toHaveBeenCalledWith('/courses?open=python');
+    expect(mockNavigate).toHaveBeenCalledWith('/courses/python');
   });
 
-  it('milestone button for not-started courses navigates to /courses?open=', () => {
+  it('milestone button for not-started courses navigates to the course page', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     const cCourse = {
       key: 'c',
@@ -450,7 +450,7 @@ describe('HomePage', () => {
     const buttons = section.querySelectorAll('button');
     // Last button is the not-started course (rendered after active)
     fireEvent.click(buttons[buttons.length - 1]);
-    expect(mockNavigate).toHaveBeenCalledWith(expect.stringMatching(/^\/courses\?open=/));
+    expect(mockNavigate).toHaveBeenCalledWith(expect.stringMatching(/^\/courses\/[a-z-]+$/));
   });
 
   it('renders heatmap activity for dates with multiple completions (countToLevel high branch)', () => {

@@ -9,6 +9,7 @@ const GUEST_PATHS = [
   '/',
   '/getstarted',
   '/courses',
+  '/courses/:course',
   '/algorithms',
   '/algorithms/:lang',
   '/lesson/:category/:lesson',
