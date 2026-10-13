@@ -98,7 +98,7 @@
     "notStarted_other": "Not started yet · {{count}} lessons",
     "marketing": {
       "title": "Learn to code <1>for free</1>",
-      "subtitle": "Short lessons in <1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>. Write code in your browser, run it against tests, and know right away if it works.",
+      "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
       "startLearning": "Start learning",
       "signIn": "Sign in"
     }
@@ -111,9 +111,7 @@
     "hero": {
       "preview": {
         "label": "A Python lesson in CyberStars: the Flight Report mission, the student's code in the editor, and the verdict after Run Tests, accepted with 32 of 32 tests passed.",
-        "breadcrumb": "Python · Print F-strings",
-        "mission": "Mission: Flight Report",
-        "task": "Using f-strings, print a three-line flight report: the pilot and the ship, the fuel, and the speed."
+        "breadcrumb": "Python · Print F-strings"
       }
     },
     "proof": {

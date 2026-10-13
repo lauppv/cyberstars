@@ -11,7 +11,7 @@ describe('HeroPreview', () => {
   it('pictures the Flight Report mission, its code and an accepted verdict', () => {
     render(<HeroPreview />);
     const picture = screen.getByRole('img', { name: /Flight Report mission/ });
-    expect(picture).toHaveTextContent('Mission: Flight Report');
+    expect(picture).toHaveTextContent('Python · Print F-strings');
     expect(picture).toHaveTextContent('print(f"Pilot {pilot} is flying {ship_name}")');
     expect(picture).toHaveTextContent('Accepted');
     expect(picture).toHaveTextContent('32 / 32');

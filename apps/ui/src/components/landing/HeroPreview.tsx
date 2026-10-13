@@ -41,13 +41,6 @@ export function HeroPreview() {
         {t('landing.hero.preview.breadcrumb')}
       </div>
 
-      <div className="px-4 py-3 border-b border-[var(--border)]">
-        <div className="text-[14px] font-semibold mb-1">{t('landing.hero.preview.mission')}</div>
-        <p className="text-[12.5px] leading-relaxed text-[var(--text2)] m-0">
-          {t('landing.hero.preview.task')}
-        </p>
-      </div>
-
       <CodeStill code={CODE[i18n.language === 'ro' ? 'ro' : 'en']} />
 
       <div className="p-4 border-t border-[var(--border)]">
