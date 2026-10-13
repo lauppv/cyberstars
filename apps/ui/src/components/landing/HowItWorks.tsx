@@ -145,7 +145,7 @@ function Stacked() {
 export function HowItWorks() {
   const { t } = useTranslation();
   return (
-    <section className="landing-wash">
+    <section id="how" className="landing-wash scroll-mt-14">
       <div className="max-w-[1120px] mx-auto px-4 sm:px-6 pt-20 pb-16 lg:pb-0">
         <Reveal>
           <SectionHeading title={t('landing.how.title')} />

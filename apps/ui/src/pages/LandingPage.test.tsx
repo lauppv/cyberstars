@@ -100,10 +100,27 @@ describe('LandingPage', () => {
     expect(i18n.language).toBe('ro');
   });
 
+  it("scrolls from the footer to the page's own sections", () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    renderPage();
+    const foot = within(footer());
+    for (const [name, id] of [
+      ['How it works', 'how'],
+      ["What's inside", 'features'],
+      ['Questions', 'faq'],
+    ]) {
+      scrollIntoView.mockClear();
+      fireEvent.click(foot.getByRole('button', { name }));
+      expect(scrollIntoView).toHaveBeenCalledOnce();
+      expect(scrollIntoView.mock.contexts[0]).toBe(document.getElementById(id));
+    }
+    expect(foot.queryByRole('link', { name: 'Courses' })).toBeNull();
+  });
+
   it('links the source code and the license from the footer', () => {
     renderPage();
     const foot = within(footer());
-    expect(foot.getByRole('link', { name: 'Courses' })).toHaveAttribute('href', '/courses');
     expect(foot.getByRole('link', { name: 'Source code' })).toHaveAttribute(
       'href',
       'https://github.com/lauppv/cyberstars',

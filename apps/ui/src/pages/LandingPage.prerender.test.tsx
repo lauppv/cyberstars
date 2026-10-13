@@ -44,7 +44,7 @@ describe('the pre-rendered landing page', () => {
     ]) {
       expect(html).toContain(heading);
     }
-    expect(html).toContain('href="/courses"');
+    expect(html).toContain('href="https://github.com/lauppv/cyberstars"');
   });
 
   it('draws the proof strip from the curriculum it was given', () => {

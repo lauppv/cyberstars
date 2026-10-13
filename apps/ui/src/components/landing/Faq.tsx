@@ -13,7 +13,7 @@ export function Faq() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <section className="max-w-[760px] mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <section id="faq" className="scroll-mt-14 max-w-[760px] mx-auto px-4 sm:px-6 py-16 sm:py-20">
       <Reveal>
         <SectionHeading title={t('landing.faq.title')} />
       </Reveal>
