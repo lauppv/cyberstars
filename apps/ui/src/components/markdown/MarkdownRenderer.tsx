@@ -52,6 +52,8 @@ const components: Components = {
       const highlight = (lines[1] ?? '')
         .replace(/^\^/, '')
         .split(/[\s,]+/)
+        // Number('') is 0, so an empty piece would light box 0 on its own
+        .filter((n) => n !== '')
         .map((n) => Number(n))
         .filter((n) => Number.isInteger(n));
       return <StringIndexTable text={text} highlight={highlight} />;

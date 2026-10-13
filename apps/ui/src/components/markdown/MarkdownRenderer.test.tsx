@@ -56,4 +56,36 @@ describe('MarkdownRenderer', () => {
     expect(container.textContent).toContain('h');
     expect(container.textContent).toContain('l');
   });
+
+  describe('strindex highlight', () => {
+    // A lit box has the thicker border; its index sits in the label under it
+    const highlighted = (fence: string) => {
+      const { container } = render(
+        <MarkdownRenderer content={'```strindex\n' + fence + '\n```'} />,
+      );
+      return [...container.querySelectorAll<HTMLElement>('div')]
+        .filter((box) => box.style.borderWidth === '2px')
+        .map((box) => Number(box.nextElementSibling!.textContent));
+    };
+
+    it('lights no box without a highlight line', () => {
+      expect(highlighted('hello')).toEqual([]);
+    });
+
+    it('ignores the space after the caret', () => {
+      expect(highlighted('hello\n^ 2 4')).toEqual([2, 4]);
+    });
+
+    it('keeps the Strings & Methods highlight as it is', () => {
+      expect(highlighted('Tommy Vercetti\n^ 0 1')).toEqual([0, 1]);
+    });
+
+    it('reads positions separated by commas', () => {
+      expect(highlighted('hello\n^0,2,4')).toEqual([0, 2, 4]);
+    });
+
+    it('lights only the one position asked for', () => {
+      expect(highlighted('hello\n^3')).toEqual([3]);
+    });
+  });
 });
