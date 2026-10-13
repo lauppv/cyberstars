@@ -59,10 +59,9 @@ export function LandingPage() {
 
         <HowItWorks />
         <FeaturesSection />
-        <CtaBand tone="mid" />
         <FreeSection />
         <Faq />
-        <CtaBand tone="final" />
+        <CtaBand />
       </main>
 
       <LandingFooter />

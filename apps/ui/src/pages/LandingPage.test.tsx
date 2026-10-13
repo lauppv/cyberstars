@@ -73,9 +73,10 @@ describe('LandingPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
   });
 
-  it('asks again mid-page and once more before the footer', () => {
+  it('asks once more before the footer, and not mid-page', () => {
     renderPage();
-    expect(within(main()).getAllByRole('button', { name: 'Start learning' })).toHaveLength(3);
+    expect(within(main()).getAllByRole('button', { name: 'Start learning' })).toHaveLength(2);
+    expect(screen.queryByText('Your first program is one click away.')).toBeNull();
     expect(
       within(main()).getByRole('heading', { name: 'Write your first line of code today' }),
     ).toBeDefined();

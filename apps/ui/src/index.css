@@ -76,11 +76,12 @@ body {
 .landing-glow {
   background: radial-gradient(ellipse 70% 60% at 70% 40%, var(--accent-wash), transparent 70%);
 }
-.landing-glow-center {
-  background: radial-gradient(
-    ellipse 50% 70% at 50% 50%,
-    var(--accent-glow-strong),
-    transparent 70%
+.landing-wash-strong {
+  background: linear-gradient(
+    var(--page-bg),
+    var(--accent-glow-strong) 35%,
+    var(--accent-glow-strong) 65%,
+    var(--page-bg)
   );
 }
 .landing-gradient-text {

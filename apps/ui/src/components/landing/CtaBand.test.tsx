@@ -10,10 +10,10 @@ vi.mock('react-router', async (importOriginal) => {
 
 import { CtaBand } from './CtaBand';
 
-function renderBand(tone: 'mid' | 'final') {
+function renderBand() {
   render(
     <MemoryRouter>
-      <CtaBand tone={tone} />
+      <CtaBand />
     </MemoryRouter>,
   );
 }
@@ -23,19 +23,13 @@ beforeEach(() => {
 });
 
 describe('CtaBand', () => {
-  it('asks once mid-page, with Start learning only', () => {
-    renderBand('mid');
-    expect(screen.getByText('Your first program is one click away.')).toBeDefined();
-    expect(screen.queryByRole('button', { name: 'Sign in' })).toBeNull();
-    fireEvent.click(screen.getByRole('button', { name: 'Start learning' }));
-    expect(mockNavigate).toHaveBeenCalledWith('/courses');
-  });
-
   it('closes the page on a headline and both buttons', () => {
-    renderBand('final');
+    renderBand();
     expect(
       screen.getByRole('heading', { name: 'Write your first line of code today' }),
     ).toBeDefined();
+    fireEvent.click(screen.getByRole('button', { name: 'Start learning' }));
+    expect(mockNavigate).toHaveBeenCalledWith('/courses');
     fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
   });
