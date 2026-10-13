@@ -79,10 +79,10 @@ Să ne imaginăm variabila **nume** ca pe un șir de cutiuțe, fiecare cutiuță
 
 ```strindex
 Tommy Vercetti
-^ 0 1
+^ 0 1:green
 ```
 
-În programare, numărarea începe de la **0**, **NU** de la **1**. Deci **nume[0]** este **prima** literă (cutiuța de la poziția 0, evidențiată mai sus), **nume[1]** este a doua, și așa mai departe. Când scriem **nume[ceva]**, **ceva** este numărul poziției, iar Python ne dă caracterul din acea cutiuță. De exemplu, **nume[9]** înseamnă „dă-mi caracterul de pe poziția **9** din **nume**", adică caracterul **c**
+În programare, numărarea începe de la **0**, **NU** de la **1**. Deci **nume[0]** este **prima** literă (cutiuța de la poziția 0, evidențiată mai sus), :green[**nume[1]** este a doua], și așa mai departe. Când scriem **nume[ceva]**, **ceva** este numărul poziției, iar Python ne dă caracterul din acea cutiuță. De exemplu, **nume[9]** înseamnă „dă-mi caracterul de pe poziția **9** din **nume**", adică caracterul **c**
 
 **nume[0:5]** înseamnă „de la poziția **0**, până la dar **FĂRĂ** să includă poziția **5**". Deci luăm pozițiile **0, 1, 2, 3, 4**, care formează **Tommy**. La fel ca la **range()** în bucla **for**, sfârșitul este exclusiv (nu îl luăm)
 

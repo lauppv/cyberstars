@@ -79,10 +79,10 @@ Let's imagine the variable **name** as a row of little boxes, each box holding a
 
 ```strindex
 Tommy Vercetti
-^ 0 1
+^ 0 1:green
 ```
 
-In programming, counting starts from **0**, **NOT** from **1**. So **name[0]** is the **first** letter (the box at position 0, highlighted above), **name[1]** is the second, and so on. When we write **name[something]**, **something** is the position number, and Python gives us the character in that box. For example, **name[9]** means "give me the character at position **9** in **name**", which is the character **c**
+In programming, counting starts from **0**, **NOT** from **1**. So **name[0]** is the **first** letter (the box at position 0, highlighted above), :green[**name[1]** is the second], and so on. When we write **name[something]**, **something** is the position number, and Python gives us the character in that box. For example, **name[9]** means "give me the character at position **9** in **name**", which is the character **c**
 
 **name[0:5]** means "from position **0**, up to but **NOT including** position **5**". So we take positions **0, 1, 2, 3, 4**, which spell **Tommy**. Just like with **range()** in the **for** loop, the end is exclusive (we don’t take it)
 
