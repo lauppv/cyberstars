@@ -19,6 +19,21 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+// Whether this browser last saw a signed-in student. The sign-in check takes
+// a round trip; until it answers, the home page uses this to choose between
+// the dashboard's spinner and the landing page, and public/boot.js uses it to
+// hide the pre-rendered landing page before it paints. Keep the key in step.
+const STUDENT_KEY = 'cyberstars.student';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function wasSignedIn(): boolean {
+  try {
+    return localStorage.getItem(STUDENT_KEY) !== null;
+  } catch {
+    return false;
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +45,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .catch(() => setUser(null))
       .finally(() => setIsLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (isLoading) return;
+    try {
+      if (user) localStorage.setItem(STUDENT_KEY, '1');
+      else localStorage.removeItem(STUDENT_KEY);
+    } catch {
+      // storage may be blocked; the home page then guesses visitor
+    }
+  }, [user, isLoading]);
 
   const login = useCallback(async (payload: LoginPayload) => {
     await authService.login(payload);

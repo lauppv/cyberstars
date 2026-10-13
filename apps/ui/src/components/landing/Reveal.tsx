@@ -12,6 +12,11 @@ const LOOK: Record<Phase, string> = {
     'opacity-100 translate-y-0 transition-[opacity,translate] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
 };
 
+// Read once, when the app's code loads and before React replaces the root: is
+// the page under it the landing page pre-rendered into index.html at build?
+const PRERENDERED =
+  typeof document !== 'undefined' && document.querySelector('[data-prerender]') !== null;
+
 // The one fade on the landing page: a block fades in and rises 16px the first
 // time it enters the screen, on one curve and one duration for everything.
 //
@@ -19,7 +24,16 @@ const LOOK: Record<Phase, string> = {
 // bring it back is in place, before the first paint. A script that never runs
 // leaves the content on screen, not a blank page. Under reduced motion it
 // never hides at all.
-export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Reveal({
+  children,
+  className = '',
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  /** Milliseconds; staggers the parts of one block that enter the screen together */
+  delay?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<Phase>('visible');
 
@@ -27,22 +41,32 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
     const el = ref.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    // On a pre-rendered page the visitor already sees what's on screen; hiding
+    // it to fade it in again would only make it blink
+    if (PRERENDERED && el.getBoundingClientRect().top < window.innerHeight) return;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return;
         setPhase('shown');
         io.disconnect();
       },
-      // A tall block may never be 20% on screen, so fire on its top edge instead
-      { rootMargin: '0px 0px -10% 0px' },
+      // On its first visible pixel: a block peeking in at the bottom of the
+      // first screen (the hero's buttons on a short window) must not sit there
+      // hidden, and a tall block may never be mostly on screen
+      { threshold: 0 },
     );
-    setPhase('hidden'); // eslint-disable-line react-hooks/set-state-in-effect
+    setPhase('hidden');
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <div ref={ref} data-reveal={phase} className={`${LOOK[phase]} ${className}`.trim()}>
+    <div
+      ref={ref}
+      data-reveal={phase}
+      className={`${LOOK[phase]} ${className}`.trim()}
+      style={phase === 'shown' && delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
       {children}
     </div>
   );

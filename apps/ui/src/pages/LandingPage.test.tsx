@@ -9,6 +9,19 @@ vi.mock('react-router', async (importOriginal) => {
   return { ...actual, useNavigate: () => mockNavigate };
 });
 
+const lessons = (n: number) =>
+  Array.from({ length: n }, (_, i) => ({ slug: `l${i}`, title: `L${i}`, sortOrder: i + 1 }));
+vi.mock('../context/CurriculumContext', () => ({
+  useCurriculum: () => ({
+    courses: [
+      { key: 'python', title: 'Python', description: '', lessons: lessons(3) },
+      { key: 'algo-c', title: 'C Algorithms', description: '', lessons: lessons(2) },
+    ],
+    isLoading: false,
+    refresh: vi.fn(),
+  }),
+}));
+
 import { LandingPage } from './LandingPage';
 
 function renderPage() {
@@ -33,71 +46,82 @@ afterEach(async () => {
 });
 
 describe('LandingPage', () => {
-  it('shows the hero and the four cards between its own navbar and footer', () => {
+  it('shows the hero, the proof strip and the sections between its navbar and footer', () => {
     renderPage();
-    expect(within(main()).getByText('Learn to code for free')).toBeDefined();
-    for (const card of ['Read', 'Write', 'Run', 'Level up']) {
-      expect(within(main()).getByText(card)).toBeDefined();
-    }
+    expect(
+      within(main()).getByRole('heading', { level: 1, name: 'Learn to code for free' }),
+    ).toBeDefined();
+    expect(
+      within(main()).getByRole('img', { name: /for loop over a list of names/ }),
+    ).toBeDefined();
+    expect(within(main()).getByRole('region', { name: 'What there is to learn' })).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: 'How it works' })).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: "What's inside" })).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: 'Free. Open source.' })).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: 'Questions' })).toBeDefined();
     expect(header()).toBeDefined();
     expect(footer()).toBeDefined();
   });
 
-  it('Start Learning opens Courses and the hero Sign in opens sign-in', () => {
+  it("the hero's Start learning opens Courses and its Sign in opens sign-in", () => {
     renderPage();
-    fireEvent.click(within(main()).getByText('Start Learning →'));
+    const [heroStart] = within(main()).getAllByRole('button', { name: 'Start learning' });
+    fireEvent.click(heroStart);
     expect(mockNavigate).toHaveBeenCalledWith('/courses');
-    fireEvent.click(within(main()).getByText('Sign in'));
+    const [heroSignIn] = within(main()).getAllByRole('button', { name: 'Sign in' });
+    fireEvent.click(heroSignIn);
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
   });
 
-  it('links the navbar only to pages a visitor can open, plus sign-in', () => {
+  it('asks once more before the footer, and not mid-page', () => {
     renderPage();
-    const nav = within(header());
-    expect(nav.getByRole('link', { name: 'CyberStars' })).toHaveAttribute('href', '/');
-    expect(nav.getByRole('link', { name: 'Courses' })).toHaveAttribute('href', '/courses');
-    expect(nav.getByRole('link', { name: 'Algorithms' })).toHaveAttribute('href', '/algorithms');
-    expect(nav.getByRole('link', { name: 'Almanac' })).toHaveAttribute('href', '/almanac');
-    expect(nav.getByRole('link', { name: 'Sign in' })).toHaveAttribute('href', '/getstarted');
-    expect(nav.queryByRole('link', { name: 'Forum' })).toBeNull();
+    expect(within(main()).getAllByRole('button', { name: 'Start learning' })).toHaveLength(2);
+    expect(screen.queryByText('Your first program is one click away.')).toBeNull();
+    expect(
+      within(main()).getByRole('heading', { name: 'Write your first line of code today' }),
+    ).toBeDefined();
   });
 
-  it('folds the links into a menu that opens, closes on Escape and on a pick', () => {
+  it('keeps the navbar to the logo, the language switch and sign-in', () => {
     renderPage();
-    const toggle = screen.getByRole('button', { name: 'Open menu' });
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(document.getElementById('landing-menu')).toBeNull();
-
-    fireEvent.click(toggle);
-    const menu = document.getElementById('landing-menu')!;
-    expect(within(menu).getByRole('link', { name: 'Courses' })).toBeDefined();
-    expect(screen.getByRole('button', { name: 'Close menu' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    );
-
-    fireEvent.keyDown(document, { key: 'Escape' });
-    expect(document.getElementById('landing-menu')).toBeNull();
-
-    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
-    fireEvent.click(
-      within(document.getElementById('landing-menu')!).getByRole('link', { name: 'Almanac' }),
-    );
-    expect(document.getElementById('landing-menu')).toBeNull();
+    const nav = within(header());
+    expect(nav.getAllByRole('link').map((l) => l.getAttribute('href'))).toEqual([
+      '/',
+      '/getstarted',
+    ]);
+    expect(nav.getByRole('group', { name: 'Switch language' })).toBeDefined();
+    expect(nav.queryByRole('button', { name: 'Open menu' })).toBeNull();
   });
 
   it('switches the page to Romanian from the navbar', async () => {
     renderPage();
-    const [desktopSwitch] = within(header()).getAllByRole('group', { name: 'Switch language' });
-    fireEvent.click(within(desktopSwitch).getByRole('button', { name: 'RO' }));
+    const languages = within(header()).getByRole('group', { name: 'Switch language' });
+    fireEvent.click(within(languages).getByRole('button', { name: 'RO' }));
     expect(await screen.findByRole('link', { name: 'Codul sursă' })).toBeDefined();
     expect(i18n.language).toBe('ro');
+  });
+
+  it("scrolls from the footer to the page's own sections", () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    renderPage();
+    const foot = within(footer());
+    for (const [name, id] of [
+      ['How it works', 'how'],
+      ["What's inside", 'features'],
+      ['Questions', 'faq'],
+    ]) {
+      scrollIntoView.mockClear();
+      fireEvent.click(foot.getByRole('button', { name }));
+      expect(scrollIntoView).toHaveBeenCalledOnce();
+      expect(scrollIntoView.mock.contexts[0]).toBe(document.getElementById(id));
+    }
+    expect(foot.queryByRole('link', { name: 'Courses' })).toBeNull();
   });
 
   it('links the source code and the license from the footer', () => {
     renderPage();
     const foot = within(footer());
-    expect(foot.getByRole('link', { name: 'Courses' })).toHaveAttribute('href', '/courses');
     expect(foot.getByRole('link', { name: 'Source code' })).toHaveAttribute(
       'href',
       'https://github.com/lauppv/cyberstars',

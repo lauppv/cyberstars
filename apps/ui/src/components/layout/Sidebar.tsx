@@ -5,7 +5,6 @@ import {
   BookOpen,
   Braces,
   ChevronsUpDown,
-  Compass,
   Gauge,
   House,
   Library,
@@ -164,7 +163,6 @@ function UserMenu({ onNavigate }: { onNavigate: () => void }) {
     { icon: User, label: t('topbar.profile'), path: '/profile' },
     { icon: Gauge, label: t('usage.title'), path: '/usage' },
     { icon: ScrollText, label: t('topbar.rules'), path: '/rules' },
-    { icon: Compass, label: t('topbar.welcomeTour'), path: '/welcome' },
     { icon: ShieldCheck, label: t('topbar.admin'), path: '/admin', show: isAdmin(user.role) },
   ];
 

@@ -4,11 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>CyberStars</title>
+    <title>CyberStars: learn to code for free, in your browser</title>
+    <meta
+      name="description"
+      content="Short lessons in Python, Java, C and Linux. Write code in your browser, run it against tests, and know right away if it works. Free and open source."
+    />
+    <link rel="canonical" href="https://cyberstars.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CyberStars" />
+    <meta property="og:url" content="https://cyberstars.app/" />
+    <meta property="og:title" content="CyberStars: learn to code for free, in your browser" />
+    <meta
+      property="og:description"
+      content="Short lessons in Python, Java, C and Linux, with tests that tell you when your code works."
+    />
+    <meta property="og:image" content="https://cyberstars.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="CyberStars: learn to code for free. Python, Java, C and Linux, right in your browser."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Before the first paint: hide the pre-rendered landing page from a
+         signed-in student and from a visitor reading Romanian. -->
+    <script src="/boot.js"></script>
+    <style>
+      [data-hide-prerender] [data-prerender] {
+        display: none;
+      }
+    </style>
+    <!-- Data, not a script that runs, so the CSP leaves it alone. The FAQ joins
+         this graph only once its copy is final. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://cyberstars.app/#organization",
+            "name": "CyberStars",
+            "url": "https://cyberstars.app/",
+            "logo": "https://cyberstars.app/favicon.svg",
+            "sameAs": ["https://github.com/lauppv/cyberstars"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cyberstars.app/#website",
+            "name": "CyberStars",
+            "url": "https://cyberstars.app/",
+            "inLanguage": ["en", "ro"],
+            "publisher": {
+              "@id": "https://cyberstars.app/#organization"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

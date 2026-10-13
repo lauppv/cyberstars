@@ -1,9 +1,23 @@
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { BrandMark } from '../ui/BrandMark';
-import { LICENSE_URL, SOURCE_URL, VISITOR_LINKS } from './links';
+import { LICENSE_URL, SOURCE_URL } from './links';
 
-const footLink = 'text-[13px] text-[var(--text2)] hover:text-[var(--text)] no-underline transition';
+const footLink =
+  'p-0 bg-transparent border-none cursor-pointer text-[13px] text-[var(--text2)] hover:text-[var(--text)] no-underline transition';
+
+// Sections of this page, each by its id and the heading it opens on
+const SECTIONS = [
+  ['how', 'landing.how.title'],
+  ['features', 'landing.features.title'],
+  ['faq', 'landing.faq.title'],
+] as const;
+
+// Scrolled to by hand: an href="#how" would be read by the HashRouter as a route
+function scrollToSection(id: string) {
+  const smooth = !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById(id)?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+}
 
 export function LandingFooter() {
   const { t } = useTranslation();
@@ -18,10 +32,10 @@ export function LandingFooter() {
           aria-label={t('landing.footer.label')}
           className="flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto"
         >
-          {VISITOR_LINKS.map((l) => (
-            <Link key={l.to} to={l.to} className={footLink}>
-              {t(l.label)}
-            </Link>
+          {SECTIONS.map(([id, label]) => (
+            <button key={id} type="button" onClick={() => scrollToSection(id)} className={footLink}>
+              {t(label)}
+            </button>
           ))}
           <a href={SOURCE_URL} target="_blank" rel="noreferrer" className={footLink}>
             {t('landing.footer.source')}

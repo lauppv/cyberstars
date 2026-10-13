@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import type { TFunction } from 'i18next';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, wasSignedIn } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
@@ -191,6 +191,11 @@ export function HomePage() {
       cancelled = true;
     };
   }, [isLoggedIn, lang]);
+
+  // While sign-in is still being checked, a browser that last saw a student
+  // gets the dashboard's spinner; anyone else gets the landing page at once,
+  // the same one the pre-rendered HTML already shows
+  if (isLoading && !wasSignedIn()) return <LandingPage />;
 
   if (isLoading) {
     return (

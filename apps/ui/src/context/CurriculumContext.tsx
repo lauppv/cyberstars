@@ -11,9 +11,17 @@ interface CurriculumContextType {
 
 const CurriculumContext = createContext<CurriculumContextType | null>(null);
 
-export function CurriculumProvider({ children }: { children: ReactNode }) {
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+// `initialCourses` lets the build-time pre-render of the landing page draw
+// with the real curriculum, since there the effect that fetches it never runs.
+export function CurriculumProvider({
+  children,
+  initialCourses,
+}: {
+  children: ReactNode;
+  initialCourses?: Course[];
+}) {
+  const [courses, setCourses] = useState<Course[]>(initialCourses ?? []);
+  const [isLoading, setIsLoading] = useState(!initialCourses);
   const [refreshKey, setRefreshKey] = useState(0);
 
   const refresh = useCallback(() => setRefreshKey((k) => k + 1), []);

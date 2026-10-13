@@ -84,6 +84,19 @@ describe('Reveal', () => {
     expect(block()).toHaveAttribute('data-reveal', 'shown');
   });
 
+  it('holds a staggered block back by its delay, only once it plays', () => {
+    const io = stubObserver();
+    stubReducedMotion(false);
+    render(
+      <Reveal delay={160}>
+        <p>content</p>
+      </Reveal>,
+    );
+    expect(block().style.transitionDelay).toBe('');
+    act(() => io.callback!([{ isIntersecting: true }]));
+    expect(block().style.transitionDelay).toBe('160ms');
+  });
+
   it('never hides the block under reduced motion', () => {
     const io = stubObserver();
     stubReducedMotion(true);
@@ -94,5 +107,54 @@ describe('Reveal', () => {
     );
     expect(block()).toHaveAttribute('data-reveal', 'visible');
     expect(io.observed).toBe(0);
+  });
+});
+
+describe('Reveal on a pre-rendered page', () => {
+  afterEach(() => {
+    document.body.innerHTML = '';
+    vi.restoreAllMocks();
+    vi.resetModules();
+  });
+
+  // Reveal reads the page once, when its module loads, so load it afresh
+  async function loadOnPrerenderedPage() {
+    document.body.innerHTML = '<div id="root"><div data-prerender></div></div>';
+    vi.resetModules();
+    return (await import('./Reveal')).Reveal;
+  }
+
+  it('leaves a block that is already on screen as it is', async () => {
+    const Fresh = await loadOnPrerenderedPage();
+    stubObserver();
+    stubReducedMotion(false);
+    vi.stubGlobal('innerHeight', 800);
+    vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue({
+      top: 100,
+    } as DOMRect);
+    render(
+      <Fresh>
+        <p>content</p>
+      </Fresh>,
+    );
+    expect(block()).toHaveAttribute('data-reveal', 'visible');
+  });
+
+  it('still fades in a block further down', async () => {
+    const Fresh = await loadOnPrerenderedPage();
+    const io = stubObserver();
+    stubReducedMotion(false);
+    vi.stubGlobal('innerHeight', 800);
+    vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue({
+      top: 1600,
+    } as DOMRect);
+    render(
+      <Fresh>
+        <p>content</p>
+      </Fresh>,
+    );
+    expect(block()).toHaveAttribute('data-reveal', 'hidden');
+    act(() => io.callback!([{ isIntersecting: true }]));
+    expect(block()).toHaveAttribute('data-reveal', 'shown');
   });
 });

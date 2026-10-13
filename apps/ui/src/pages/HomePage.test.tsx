@@ -13,6 +13,7 @@ vi.mock('react-router', async (importOriginal) => {
 
 vi.mock('../context/AuthContext', () => ({
   useAuth: vi.fn(),
+  wasSignedIn: vi.fn(() => false),
 }));
 vi.mock('../context/CurriculumContext', () => ({
   useCurriculum: vi.fn(() => ({ courses: [], isLoading: false })),
@@ -64,8 +65,9 @@ vi.mock('../services/almanacService', () => ({
   ),
 }));
 
-const { useAuth } = await import('../context/AuthContext');
+const { useAuth, wasSignedIn } = await import('../context/AuthContext');
 const mockUseAuth = vi.mocked(useAuth);
+const mockWasSignedIn = vi.mocked(wasSignedIn);
 
 const { useCurriculum } = await import('../context/CurriculumContext');
 const mockUseCurriculum = vi.mocked(useCurriculum);
@@ -147,10 +149,19 @@ afterEach(async () => {
 });
 
 describe('HomePage', () => {
-  it('shows loading spinner while auth is loading', () => {
+  it('shows the spinner while auth loads in a browser that last saw a student', () => {
+    mockWasSignedIn.mockReturnValueOnce(true);
     mockUseAuth.mockReturnValue({ ...loggedOutAuth, isLoading: true });
     renderPage();
     expect(screen.getByText('Loading...')).toBeDefined();
+    expect(screen.queryByTestId('landing')).toBeNull();
+  });
+
+  it('keeps the landing page up while auth loads for anyone else', () => {
+    mockUseAuth.mockReturnValue({ ...loggedOutAuth, isLoading: true });
+    renderPage();
+    expect(screen.getByTestId('landing')).toBeDefined();
+    expect(screen.queryByText('Loading...')).toBeNull();
   });
 
   it('shows a visitor the landing page instead of the dashboard', () => {
