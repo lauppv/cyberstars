@@ -28,7 +28,7 @@ cyberstars/
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
-├── deploy/                        # Deploy script and nginx maintenance page
+├── deploy/                        # Deploy script, IndexNow ping and nginx maintenance page
 └── scripts/                       # Rootless Podman helper
 ```
 
