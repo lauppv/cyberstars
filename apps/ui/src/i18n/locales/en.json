@@ -106,8 +106,7 @@
   "landing": {
     "hero": {
       "preview": {
-        "label": "A Python lesson in CyberStars: the Flight Report mission, the student's code in the editor, and the verdict after Run Tests, accepted with 32 of 32 tests passed.",
-        "breadcrumb": "Python · Print F-strings"
+        "label": "A Python lesson in CyberStars: a for loop over a list of names in the editor, and the three lines it prints."
       }
     },
     "proof": {

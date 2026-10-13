@@ -8,27 +8,27 @@ afterEach(async () => {
 });
 
 describe('HeroPreview', () => {
-  it('pictures the Flight Report mission, its code and an accepted verdict', () => {
+  it("pictures the lesson's for loop and what it prints, without a title", () => {
     render(<HeroPreview />);
-    const picture = screen.getByRole('img', { name: /Flight Report mission/ });
-    expect(picture).toHaveTextContent('Python · Print F-strings');
-    expect(picture).toHaveTextContent('print(f"Pilot {pilot} is flying {ship_name}")');
-    expect(picture).toHaveTextContent('Accepted');
-    expect(picture).toHaveTextContent('32 / 32');
+    const picture = screen.getByRole('img', { name: /for loop over a list of names/ });
+    expect(picture).toHaveTextContent('for i in range(0, len(names)):');
+    expect(picture).toHaveTextContent('Hero number 1: Tommy Hero number 2: Lance');
+    expect(picture).not.toHaveTextContent('Python ·');
   });
 
   it('colours the code like the editor', () => {
     render(<HeroPreview />);
-    expect(screen.getByText('"Shadow"')).toHaveStyle({ color: '#98c379' });
-    expect(screen.getByText('7.5')).toHaveStyle({ color: '#d19a66' });
-    expect(screen.getAllByText('print')[0]).toHaveStyle({ color: '#61afef' });
+    expect(screen.getByText('"Tommy"')).toHaveStyle({ color: '#98c379' });
+    expect(screen.getByText('0')).toHaveStyle({ color: '#d19a66' });
+    expect(screen.getByText('for')).toHaveStyle({ color: '#c678dd' });
+    expect(screen.getByText('range')).toHaveStyle({ color: '#61afef' });
   });
 
-  it("shows the Romanian lesson's own code in Romanian", async () => {
+  it("shows the Romanian lesson's own example in Romanian", async () => {
     await i18n.changeLanguage('ro');
     render(<HeroPreview />);
-    const picture = screen.getByRole('img', { name: /Raport de Zbor/ });
-    expect(picture).toHaveTextContent('nume_nava = "Orion"');
-    expect(picture).toHaveTextContent('Acceptat');
+    const picture = screen.getByRole('img', { name: /buclă for/ });
+    expect(picture).toHaveTextContent('nume = ["Tommy", "Lance", "Cortez"]');
+    expect(picture).toHaveTextContent('Erou numarul 3: Cortez');
   });
 });

@@ -107,8 +107,7 @@
   "landing": {
     "hero": {
       "preview": {
-        "label": "O lecție de Python în CyberStars: misiunea Raport de Zbor, codul studentului în editor și verdictul după Rulează testele, acceptat cu 32 din 32 de teste trecute.",
-        "breadcrumb": "Python · F-string-uri"
+        "label": "O lecție de Python în CyberStars: o buclă for peste o listă de nume în editor și cele trei rânduri pe care le afișează."
       }
     },
     "proof": {

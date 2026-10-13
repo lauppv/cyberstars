@@ -1,7 +1,7 @@
 // oneDark, the editor's own theme, so a still reads like the real editor
 // without loading CodeMirror on the landing page
 const KEYWORDS = new Set(['for', 'in', 'if', 'else']);
-const BUILTINS = new Set(['print']);
+const BUILTINS = new Set(['print', 'range', 'len']);
 const TOKEN = /(f?"[^"]*")|(\d+(?:\.\d+)?)|([A-Za-z_]\w*)|(\s+|.)/g;
 
 function color(token: string, kind: 'string' | 'number' | 'word' | 'other'): string | undefined {

@@ -51,7 +51,9 @@ describe('LandingPage', () => {
     expect(
       within(main()).getByRole('heading', { level: 1, name: 'Learn to code for free' }),
     ).toBeDefined();
-    expect(within(main()).getByRole('img', { name: /Flight Report mission/ })).toBeDefined();
+    expect(
+      within(main()).getByRole('img', { name: /for loop over a list of names/ }),
+    ).toBeDefined();
     expect(within(main()).getByRole('region', { name: 'What there is to learn' })).toBeDefined();
     expect(within(main()).getByRole('heading', { name: 'How it works' })).toBeDefined();
     expect(within(main()).getByRole('heading', { name: "What's inside" })).toBeDefined();
