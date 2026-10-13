@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { BrandMark } from '../ui/BrandMark';
 import { Segmented } from '../ui/Segmented';
-import { SUPPORTED_LANGS } from '../../i18n';
+import { SUPPORTED_LANGS, switchLanguage } from '../../i18n';
 
 function LanguageSwitch() {
   const { t, i18n } = useTranslation();
@@ -11,7 +11,7 @@ function LanguageSwitch() {
     <Segmented
       value={current}
       options={SUPPORTED_LANGS}
-      onChange={(lng) => i18n.changeLanguage(lng)}
+      onChange={switchLanguage}
       optionLabel={(lng) => t(`lang.${lng}`)}
       ariaLabel={t('lang.switch')}
     />

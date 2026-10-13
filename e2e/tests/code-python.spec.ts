@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/test.js';
 
 test('run Python print("hello") → output "hello"', async ({ authedPage: page }) => {
-  await page.goto('/#/lesson/python/print');
+  await page.goto('/lesson/python/print');
 
   const editor = page.locator('.cm-content').last();
   await editor.click();
@@ -16,7 +16,7 @@ test('run Python print("hello") → output "hello"', async ({ authedPage: page }
 test('Run Tests opens the verdict in the lesson panel, beside the editor', async ({
   authedPage: page,
 }) => {
-  await page.goto('/#/lesson/python/print');
+  await page.goto('/lesson/python/print');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
   await editor.click();
@@ -43,7 +43,7 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
 test('a passed course lesson lists its tests and shows no runtime', async ({
   authedPage: page,
 }) => {
-  await page.goto('/#/lesson/python/print');
+  await page.goto('/lesson/python/print');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
   await editor.click();
@@ -66,7 +66,7 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
 test('a passed algorithm shows its load-test runtime next to our solution', async ({
   authedPage: page,
 }) => {
-  await page.goto('/#/lesson/algo-python/palindrome');
+  await page.goto('/lesson/algo-python/palindrome');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
   await editor.click();
@@ -85,7 +85,7 @@ test('a passed algorithm shows its load-test runtime next to our solution', asyn
 });
 
 test('an algorithm without a load test shows no runtime', async ({ authedPage: page }) => {
-  await page.goto('/#/lesson/algo-python/even-or-odd');
+  await page.goto('/lesson/algo-python/even-or-odd');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
   await editor.click();

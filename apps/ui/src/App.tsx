@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
 import { AuthProvider } from './context/AuthContext';
 import { CurriculumProvider } from './context/CurriculumContext';
 import { ProgressProvider } from './context/ProgressContext';
@@ -16,6 +16,7 @@ import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
 import { usePresence } from './hooks/usePresence';
 import { HomePage } from './pages/HomePage';
+import { langFromPath } from './i18n';
 
 // HomePage stays eager; it's the landing route, so splitting it would only add a
 // spinner to the first paint. Every other route is code-split into its own chunk,
@@ -77,10 +78,14 @@ function GlobalRadio() {
   return <RadioPlayer />;
 }
 
+// Romanian pages live under /ro. As the router's base it stays out of every
+// route and link in the app, which keep working in both languages unchanged
+const basename = langFromPath(window.location.pathname) === 'ro' ? '/ro' : undefined;
+
 function App() {
   usePresence();
   return (
-    <HashRouter>
+    <BrowserRouter basename={basename}>
       <AuthProvider>
         <CurriculumProvider>
           <ProgressProvider>
@@ -141,7 +146,7 @@ function App() {
           </ProgressProvider>
         </CurriculumProvider>
       </AuthProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

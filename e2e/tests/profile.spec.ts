@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/test.js';
 
 test('update bio on profile page', async ({ authedPage: page }) => {
-  await page.goto('/#/profile');
+  await page.goto('/profile');
 
   const bioInput = page.getByPlaceholder('Tell others about yourself...');
   await bioInput.fill('E2E test bio');

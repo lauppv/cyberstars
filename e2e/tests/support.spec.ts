@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/test.js';
 
 test('create a support ticket', async ({ authedPage: page }) => {
-  await page.goto('/#/support');
+  await page.goto('/support');
 
   await page.getByPlaceholder('Subject').fill('E2E Test Ticket');
   await page
