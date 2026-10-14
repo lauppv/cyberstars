@@ -48,6 +48,7 @@ async function collect(answer: AsyncGenerator<unknown>) {
 
 const base = {
   message: 'Which lesson teaches for loops?',
+  history: [],
   page: '/courses',
   uiLang: 'en' as const,
   role: 'USER' as const,
@@ -117,6 +118,27 @@ describe('askTutor', () => {
     ]);
     expect(opts.system).toContain('Answer in English.');
     expect(opts.system).toContain('on the page /courses');
+  });
+
+  it('sends the conversation so far before the new message', async () => {
+    stream.mockReturnValue(text('Same idea in Java.'));
+
+    await collect(
+      askTutor({
+        ...base,
+        message: 'and in Java?',
+        history: [
+          { role: 'student', text: 'What is a for loop in Python?' },
+          { role: 'tutor', text: 'It repeats code for each item.' },
+        ],
+      }),
+    );
+
+    expect(stream.mock.calls[0][0].contents).toEqual([
+      { role: 'user', parts: [{ text: 'What is a for loop in Python?' }] },
+      { role: 'model', parts: [{ text: 'It repeats code for each item.' }] },
+      { role: 'user', parts: [{ text: 'and in Java?' }] },
+    ]);
   });
 
   it('skips the blank pieces before the first words', async () => {

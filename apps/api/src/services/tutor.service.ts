@@ -9,6 +9,7 @@ import {
   type GeminiPart,
 } from './gemini.service.js';
 import { listPages, readLesson, searchLessons } from './tutor-tools.service.js';
+import type { PastMessage } from './tutor-conversations.service.js';
 
 type Lang = 'en' | 'ro';
 
@@ -168,6 +169,8 @@ function runTool(
 
 interface AskOptions extends Student {
   message: string;
+  // The end of the conversation so far, oldest first.
+  history: PastMessage[];
   page: string;
   uiLang: Lang;
   // Aborted when the student leaves mid-answer.
@@ -187,7 +190,15 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
 
   const lang = detectLanguage(opts.message, opts.uiLang);
   const system = buildSystemPrompt(lang, opts.page);
-  const contents: GeminiContent[] = [{ role: 'user', parts: [{ text: opts.message }] }];
+  const contents: GeminiContent[] = [
+    ...opts.history.map(
+      (past): GeminiContent => ({
+        role: past.role === 'student' ? 'user' : 'model',
+        parts: [{ text: past.text }],
+      }),
+    ),
+    { role: 'user', parts: [{ text: opts.message }] },
+  ];
   let started = false;
 
   for (let round = 0; ; round++) {
