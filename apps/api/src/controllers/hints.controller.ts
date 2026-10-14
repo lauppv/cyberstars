@@ -1,9 +1,8 @@
 import type { Request, Response, NextFunction } from 'express';
 import { generateHint } from '../services/hints.service.js';
-import { consume, getState } from '../services/usage.service.js';
+import * as usage from '../services/usage.service.js';
 import * as userRepo from '../repositories/user.repository.js';
 import { isAdmin } from '@cyberstars/shared/auth';
-import { AppError } from '../middleware/errorHandler.js';
 import type { HintLevel } from '@cyberstars/shared/hints';
 
 export async function getHint(req: Request, res: Response, next: NextFunction) {
@@ -14,21 +13,24 @@ export async function getHint(req: Request, res: Response, next: NextFunction) {
     const userId = req.user!.id;
     const admin = isAdmin(await userRepo.getRole(userId));
 
-    // Reject before spending a Gemini call when the daily budget is exhausted,
-    // but only increment the counter after a hint actually comes back.
-    if (getState(userId, 'getHint', admin).remaining <= 0) {
-      throw new AppError(429, 'Daily hint limit reached');
+    // The hint is taken from the day's budget before the Gemini call, so two
+    // requests can't both spend the last one, and given back when none comes.
+    const held = await usage.hold(userId, 'getHint', admin);
+    let result;
+    try {
+      result = await generateHint(
+        courseKey,
+        lessonSlug,
+        req.body.code,
+        req.body.level as HintLevel,
+        lang,
+      );
+    } catch (err) {
+      await usage.release(held, 1);
+      throw err;
     }
-
-    const result = await generateHint(
-      courseKey,
-      lessonSlug,
-      req.body.code,
-      req.body.level as HintLevel,
-      lang,
-    );
-    const usage = consume(userId, 'getHint', admin);
-    res.json({ ...result, usage });
+    const summary = await usage.getSummary(userId, admin);
+    res.json({ ...result, usage: summary });
   } catch (err) {
     next(err);
   }
