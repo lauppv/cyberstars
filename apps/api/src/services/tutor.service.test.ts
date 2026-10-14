@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-const gemini = { converse: vi.fn(), isGeminiConfigured: vi.fn() };
+const gemini = { converseStream: vi.fn(), isGeminiConfigured: vi.fn() };
 vi.mock('./gemini.service.js', () => gemini);
 
 const tools = { searchLessons: vi.fn(), readLesson: vi.fn(), listPages: vi.fn() };
@@ -8,17 +8,42 @@ vi.mock('./tutor-tools.service.js', () => tools);
 
 const { askTutor, detectLanguage } = await import('./tutor.service.js');
 
-function text(t: string) {
-  return { content: { role: 'model', parts: [{ text: t }] }, finishReason: 'STOP' };
+interface Chunk {
+  parts: Record<string, unknown>[];
+  finishReason?: string;
+  blockReason?: string;
 }
+
+// A model turn as converseStream yields it.
+async function* turn(...chunks: Chunk[]) {
+  for (const chunk of chunks) yield chunk;
+}
+// An answer in words, piece by piece, ending the way Gemini says.
+function text(pieces: string | string[], finishReason = 'STOP') {
+  const list = [pieces].flat();
+  return turn(
+    ...list.map((t, i) => ({
+      parts: [{ text: t }],
+      ...(i === list.length - 1 ? { finishReason } : {}),
+    })),
+  );
+}
+// A tool call, then the empty closing piece Gemini sends after one.
 function call(name: string, args: Record<string, unknown> = {}, id = 'c1') {
-  return {
-    content: {
-      role: 'model',
-      parts: [{ functionCall: { name, args, id }, thoughtSignature: 's' }],
-    },
-    finishReason: 'STOP',
-  };
+  return turn(
+    { parts: [{ functionCall: { name, args, id }, thoughtSignature: 's' }] },
+    { parts: [{ text: '' }], finishReason: 'STOP' },
+  );
+}
+async function* failing(err: Error, ...chunks: Chunk[]): AsyncGenerator<Chunk> {
+  yield* turn(...chunks);
+  throw err;
+}
+
+async function collect(answer: AsyncGenerator<unknown>) {
+  const events = [];
+  for await (const event of answer) events.push(event);
+  return events;
 }
 
 const base = {
@@ -27,6 +52,7 @@ const base = {
   uiLang: 'en' as const,
   role: 'USER' as const,
   isProd: true,
+  signal: new AbortController().signal,
 };
 
 beforeEach(() => {
@@ -62,20 +88,28 @@ describe('detectLanguage', () => {
 });
 
 describe('askTutor', () => {
+  const stream = gemini.converseStream;
+
   it('refuses with a 503 when no Gemini key is set, before any call', async () => {
     gemini.isGeminiConfigured.mockReturnValue(false);
-    await expect(askTutor(base)).rejects.toMatchObject({ statusCode: 503 });
-    expect(gemini.converse).not.toHaveBeenCalled();
+    await expect(collect(askTutor(base))).rejects.toMatchObject({ statusCode: 503 });
+    expect(stream).not.toHaveBeenCalled();
   });
 
-  it('returns the answer when the model needs no tool', async () => {
-    gemini.converse.mockResolvedValue(text('  Try the For lesson.  '));
+  it('passes on each piece of the answer as it comes, then says it is complete', async () => {
+    stream.mockReturnValue(text(['  Try the ', 'For lesson.']));
 
-    await expect(askTutor(base)).resolves.toBe('Try the For lesson.');
+    await expect(collect(askTutor(base))).resolves.toEqual([
+      { type: 'text', text: 'Try the ' },
+      { type: 'text', text: 'For lesson.' },
+      { type: 'done', finish: 'complete' },
+    ]);
 
-    const opts = gemini.converse.mock.calls[0][0];
+    const opts = stream.mock.calls[0][0];
     expect(opts.contents).toEqual([{ role: 'user', parts: [{ text: base.message }] }]);
     expect(opts.allowTools).toBe(true);
+    expect(opts.retryBusy).toBe(true);
+    expect(opts.signal).toBe(base.signal);
     expect(opts.tools.map((t: { name: string }) => t.name)).toEqual([
       'search_lessons',
       'read_lesson',
@@ -85,41 +119,85 @@ describe('askTutor', () => {
     expect(opts.system).toContain('on the page /courses');
   });
 
+  it('skips the blank pieces before the first words', async () => {
+    stream.mockReturnValue(text(['', '\n ', 'Hi', '', ' there']));
+
+    await expect(collect(askTutor(base))).resolves.toEqual([
+      { type: 'text', text: 'Hi' },
+      { type: 'text', text: ' there' },
+      { type: 'done', finish: 'complete' },
+    ]);
+  });
+
+  it('marks an answer cut by the length limit', async () => {
+    stream.mockReturnValue(text(['Recursion is', ' when a'], 'MAX_TOKENS'));
+
+    const events = await collect(askTutor(base));
+
+    expect(events.at(-1)).toEqual({ type: 'done', finish: 'cut' });
+  });
+
+  it('marks an answer the model stopped for safety, even part way', async () => {
+    stream.mockReturnValue(text(['Here is'], 'SAFETY'));
+
+    await expect(collect(askTutor(base))).resolves.toEqual([
+      { type: 'text', text: 'Here is' },
+      { type: 'done', finish: 'blocked' },
+    ]);
+  });
+
+  it('marks a question blocked before any words', async () => {
+    stream.mockReturnValue(turn({ parts: [], blockReason: 'PROHIBITED_CONTENT' }));
+
+    await expect(collect(askTutor(base))).resolves.toEqual([{ type: 'done', finish: 'blocked' }]);
+  });
+
   it('writes the prompt in the language of the message, not of the UI', async () => {
-    gemini.converse.mockResolvedValue(text('ok'));
+    stream.mockImplementation(() => text('ok'));
 
-    await askTutor({ ...base, message: 'Unde îmi schimb parola?', uiLang: 'en' });
-    expect(gemini.converse.mock.calls[0][0].system).toContain('Răspunde în limba română.');
+    await collect(askTutor({ ...base, message: 'Unde îmi schimb parola?', uiLang: 'en' }));
+    expect(stream.mock.calls[0][0].system).toContain('Răspunde în limba română.');
 
-    await askTutor({ ...base, message: 'where do I change my password', uiLang: 'ro' });
-    expect(gemini.converse.mock.calls[1][0].system).toContain('Answer in English.');
+    await collect(askTutor({ ...base, message: 'where do I change my password', uiLang: 'ro' }));
+    expect(stream.mock.calls[1][0].system).toContain('Answer in English.');
   });
 
   it('names the lesson the student is on, in both languages', async () => {
-    gemini.converse.mockResolvedValue(text('ok'));
+    stream.mockImplementation(() => text('ok'));
 
-    await askTutor({ ...base, page: '/lesson/algo-c/caesar-cipher-c' });
-    expect(gemini.converse.mock.calls[0][0].system).toContain(
+    await collect(askTutor({ ...base, page: '/lesson/algo-c/caesar-cipher-c' }));
+    expect(stream.mock.calls[0][0].system).toContain(
       'That page is the lesson algo-c/caesar-cipher-c',
     );
 
-    await askTutor({ ...base, message: 'ce face asta', page: '/lesson/python/for' });
-    expect(gemini.converse.mock.calls[1][0].system).toContain('Pagina este lecția python/for');
+    await collect(askTutor({ ...base, message: 'ce face asta', page: '/lesson/python/for' }));
+    expect(stream.mock.calls[1][0].system).toContain('Pagina este lecția python/for');
   });
 
-  it('runs the tool the model asks for and sends the result back with its id', async () => {
+  it('runs the tool the model asks for and sends its whole turn back with the result', async () => {
     const hits = [{ title: 'For', course: 'Python', kind: 'lesson', link: '/lesson/python/for' }];
     tools.searchLessons.mockReturnValue(hits);
-    const first = call('search_lessons', { query: 'for loops' }, 'abc');
-    gemini.converse
-      .mockResolvedValueOnce(first)
-      .mockResolvedValueOnce(text('See [For](/lesson/python/for).'));
+    stream
+      .mockReturnValueOnce(call('search_lessons', { query: 'for loops' }, 'abc'))
+      .mockReturnValueOnce(text('See [For](/lesson/python/for).'));
 
-    await expect(askTutor(base)).resolves.toBe('See [For](/lesson/python/for).');
+    await expect(collect(askTutor(base))).resolves.toEqual([
+      { type: 'text', text: 'See [For](/lesson/python/for).' },
+      { type: 'done', finish: 'complete' },
+    ]);
 
     expect(tools.searchLessons).toHaveBeenCalledWith('for loops');
-    const contents = gemini.converse.mock.calls[1][0].contents;
-    expect(contents[1]).toEqual(first.content);
+    const contents = stream.mock.calls[1][0].contents;
+    expect(contents[1]).toEqual({
+      role: 'model',
+      parts: [
+        {
+          functionCall: { name: 'search_lessons', args: { query: 'for loops' }, id: 'abc' },
+          thoughtSignature: 's',
+        },
+        { text: '' },
+      ],
+    });
     expect(contents[2]).toEqual({
       role: 'user',
       parts: [
@@ -130,36 +208,35 @@ describe('askTutor', () => {
 
   it('reads a lesson in the language of the conversation', async () => {
     tools.readLesson.mockReturnValue({ title: 'For', statement: 'text' });
-    gemini.converse
-      .mockResolvedValueOnce(call('read_lesson', { course: 'python', slug: 'for' }))
-      .mockResolvedValueOnce(text('ok'));
+    stream
+      .mockReturnValueOnce(call('read_lesson', { course: 'python', slug: 'for' }))
+      .mockReturnValueOnce(text('ok'));
 
-    await askTutor({ ...base, message: 'ce cere lecția asta?' });
+    await collect(askTutor({ ...base, message: 'ce cere lecția asta?' }));
 
     expect(tools.readLesson).toHaveBeenCalledWith('python', 'for', 'ro');
-    const result = gemini.converse.mock.calls[1][0].contents[2].parts[0].functionResponse;
+    const result = stream.mock.calls[1][0].contents[2].parts[0].functionResponse;
     expect(result.response).toEqual({ title: 'For', statement: 'text' });
   });
 
   it('tells the model when a lesson does not exist or a tool is unknown', async () => {
     tools.readLesson.mockReturnValue(null);
-    gemini.converse
-      .mockResolvedValueOnce({
-        content: {
-          role: 'model',
+    stream
+      .mockReturnValueOnce(
+        turn({
           parts: [
             { functionCall: { name: 'read_lesson', id: 'a' } },
             { functionCall: { name: 'drop_tables', args: {}, id: 'b' } },
           ],
-        },
-        finishReason: 'STOP',
-      })
-      .mockResolvedValueOnce(text('ok'));
+          finishReason: 'STOP',
+        }),
+      )
+      .mockReturnValueOnce(text('ok'));
 
-    await askTutor(base);
+    await collect(askTutor(base));
 
     expect(tools.readLesson).toHaveBeenCalledWith('', '', 'en');
-    const parts = gemini.converse.mock.calls[1][0].contents[2].parts;
+    const parts = stream.mock.calls[1][0].contents[2].parts;
     expect(parts[0].functionResponse.response).toEqual({ error: 'No such lesson' });
     expect(parts[1].functionResponse.response).toEqual({ error: 'No tool named drop_tables' });
   });
@@ -167,12 +244,12 @@ describe('askTutor', () => {
   it('lists the pages for this student and searches with an empty query when given none', async () => {
     tools.listPages.mockReturnValue({ pages: [], courses: [] });
     tools.searchLessons.mockReturnValue([]);
-    gemini.converse
-      .mockResolvedValueOnce(call('list_pages'))
-      .mockResolvedValueOnce(call('search_lessons'))
-      .mockResolvedValueOnce(text('ok'));
+    stream
+      .mockReturnValueOnce(call('list_pages'))
+      .mockReturnValueOnce(call('search_lessons'))
+      .mockReturnValueOnce(text('ok'));
 
-    await askTutor({ ...base, role: 'ADMIN', isProd: false });
+    await collect(askTutor({ ...base, role: 'ADMIN', isProd: false }));
 
     expect(tools.listPages).toHaveBeenCalledWith('ADMIN', false);
     expect(tools.searchLessons).toHaveBeenCalledWith('');
@@ -180,48 +257,92 @@ describe('askTutor', () => {
 
   it('makes the model answer in words after three rounds of tools', async () => {
     tools.searchLessons.mockReturnValue([]);
-    gemini.converse
-      .mockResolvedValueOnce(call('search_lessons', { query: 'a' }))
-      .mockResolvedValueOnce(call('search_lessons', { query: 'b' }))
-      .mockResolvedValueOnce(call('search_lessons', { query: 'c' }))
-      .mockResolvedValueOnce(text('Here is what I found.'));
+    stream
+      .mockReturnValueOnce(call('search_lessons', { query: 'a' }))
+      .mockReturnValueOnce(call('search_lessons', { query: 'b' }))
+      .mockReturnValueOnce(call('search_lessons', { query: 'c' }))
+      .mockReturnValueOnce(text('Here is what I found.'));
 
-    await expect(askTutor(base)).resolves.toBe('Here is what I found.');
+    const events = await collect(askTutor(base));
 
-    expect(gemini.converse).toHaveBeenCalledTimes(4);
-    expect(gemini.converse.mock.calls.map((c) => c[0].allowTools)).toEqual([
-      true,
-      true,
-      true,
-      false,
-    ]);
+    expect(events[0]).toEqual({ type: 'text', text: 'Here is what I found.' });
+    expect(stream).toHaveBeenCalledTimes(4);
+    expect(stream.mock.calls.map((c) => c[0].allowTools)).toEqual([true, true, true, false]);
   });
 
   it('answers 502 when the last round still has no words', async () => {
-    gemini.converse
-      .mockResolvedValueOnce(call('list_pages'))
-      .mockResolvedValueOnce(call('list_pages'))
-      .mockResolvedValueOnce(call('list_pages'))
-      .mockResolvedValueOnce(call('list_pages'));
+    stream.mockImplementation(() => call('list_pages'));
     tools.listPages.mockReturnValue({ pages: [], courses: [] });
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-    await expect(askTutor(base)).rejects.toMatchObject({ statusCode: 502 });
+    await expect(collect(askTutor(base))).rejects.toMatchObject({ statusCode: 502 });
+    log.mockRestore();
   });
 
   it('answers 502 when the model sends an empty answer', async () => {
-    gemini.converse.mockResolvedValue(text('   '));
-    await expect(askTutor(base)).rejects.toMatchObject({ statusCode: 502 });
+    stream.mockReturnValue(text('   '));
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    await expect(collect(askTutor(base))).rejects.toMatchObject({ statusCode: 502 });
+    expect(log).toHaveBeenCalledWith('[tutor] Gemini ended without an answer:', 'STOP');
+    log.mockRestore();
+  });
+
+  it('answers 502 when the answer stops for no reason it names', async () => {
+    stream.mockReturnValue(text(['Half an'], 'OTHER'));
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const answer = askTutor(base);
+    await expect(answer.next()).resolves.toMatchObject({ value: { type: 'text' } });
+    await expect(answer.next()).rejects.toMatchObject({ statusCode: 502 });
+    log.mockRestore();
   });
 
   it('answers 502 and logs when the Gemini call fails', async () => {
     const log = vi.spyOn(console, 'error').mockImplementation(() => {});
-    gemini.converse.mockRejectedValue(new Error('Gemini API 500'));
+    stream.mockReturnValue(failing(new Error('Gemini API 500')));
 
-    await expect(askTutor(base)).rejects.toMatchObject({
+    await expect(collect(askTutor(base))).rejects.toMatchObject({
       statusCode: 502,
       message: 'The tutor could not answer right now, please try again',
     });
     expect(log).toHaveBeenCalled();
+    log.mockRestore();
+  });
+
+  it('keeps the words already sent when the stream breaks, and retries no more', async () => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    tools.searchLessons.mockReturnValue([]);
+    // A turn with words before its tool call: once they are out, a busy model
+    // is not retried in the next round.
+    stream
+      .mockReturnValueOnce(
+        turn(
+          { parts: [{ text: 'Let me look.' }] },
+          { parts: [{ functionCall: { name: 'search_lessons', args: {}, id: 'x' } }] },
+        ),
+      )
+      .mockReturnValueOnce(failing(new Error('Gemini API 503')));
+
+    const answer = askTutor(base);
+    await expect(answer.next()).resolves.toEqual({
+      done: false,
+      value: { type: 'text', text: 'Let me look.' },
+    });
+    await expect(answer.next()).rejects.toMatchObject({ statusCode: 502 });
+    expect(stream.mock.calls.map((c) => c[0].retryBusy)).toEqual([true, false]);
+    log.mockRestore();
+  });
+
+  it('lets an abort through as it is, without logging it', async () => {
+    const leave = new AbortController();
+    leave.abort();
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const abort = new DOMException('This operation was aborted', 'AbortError');
+    stream.mockReturnValue(failing(abort));
+
+    await expect(collect(askTutor({ ...base, signal: leave.signal }))).rejects.toBe(abort);
+    expect(log).not.toHaveBeenCalled();
     log.mockRestore();
   });
 });

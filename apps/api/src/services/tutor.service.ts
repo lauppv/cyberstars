@@ -1,7 +1,8 @@
 import type { UserRole } from '@cyberstars/shared/auth';
+import type { TutorFinish, TutorStreamEvent } from '@cyberstars/shared/tutor';
 import { AppError } from '../middleware/errorHandler.js';
 import {
-  converse,
+  converseStream,
   isGeminiConfigured,
   type FunctionDeclaration,
   type GeminiContent,
@@ -14,6 +15,16 @@ type Lang = 'en' | 'ro';
 // A message may make the model call tools this many times before it has to
 // answer with what it has, so one question can't loop.
 const MAX_TOOL_ROUNDS = 3;
+
+// Gemini's reasons for stopping that mean it would not write the answer.
+const BLOCKED = new Set(['SAFETY', 'RECITATION', 'BLOCKLIST', 'PROHIBITED_CONTENT', 'SPII']);
+
+function finishOf(reason: string | undefined): TutorFinish | null {
+  if (reason === 'STOP') return 'complete';
+  if (reason === 'MAX_TOKENS') return 'cut';
+  if (reason && BLOCKED.has(reason)) return 'blocked';
+  return null;
+}
 
 // Words that give a language away. Matched without diacritics; a diacritic of
 // its own already means Romanian.
@@ -159,11 +170,17 @@ interface AskOptions extends Student {
   message: string;
   page: string;
   uiLang: Lang;
+  // Aborted when the student leaves mid-answer.
+  signal: AbortSignal;
 }
 
 const UNAVAILABLE = 'The tutor could not answer right now, please try again';
 
-export async function askTutor(opts: AskOptions): Promise<string> {
+// The answer as it is written: its words piece by piece, then how it ended.
+// Tool rounds carry no words, so the first piece is the answer's first words.
+// Throws an AppError when it fails; after some words the caller has already
+// sent them, so it ends the stream with an error instead.
+export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEvent> {
   if (!isGeminiConfigured()) {
     throw new AppError(503, 'The tutor is not available right now');
   }
@@ -171,37 +188,55 @@ export async function askTutor(opts: AskOptions): Promise<string> {
   const lang = detectLanguage(opts.message, opts.uiLang);
   const system = buildSystemPrompt(lang, opts.page);
   const contents: GeminiContent[] = [{ role: 'user', parts: [{ text: opts.message }] }];
+  let started = false;
 
   for (let round = 0; ; round++) {
     const allowTools = round < MAX_TOOL_ROUNDS;
-    let turn;
+    // The model's turn, kept whole to send back after a tool call.
+    const parts: GeminiPart[] = [];
+    let finishReason: string | undefined;
+    let blockReason: string | undefined;
     try {
-      turn = await converse({
+      for await (const chunk of converseStream({
         system,
         contents,
         tools: TOOLS,
         allowTools,
         maxOutputTokens: 600,
         temperature: 0.5,
-      });
+        retryBusy: !started,
+        signal: opts.signal,
+      })) {
+        parts.push(...chunk.parts);
+        finishReason = chunk.finishReason ?? finishReason;
+        blockReason = chunk.blockReason ?? blockReason;
+        let text = chunk.parts.map((p) => p.text ?? '').join('');
+        if (!started) text = text.trimStart();
+        if (text) {
+          started = true;
+          yield { type: 'text', text };
+        }
+      }
     } catch (err) {
+      if (opts.signal.aborted) throw err;
       console.error('[tutor] Gemini call failed:', err);
       throw new AppError(502, UNAVAILABLE);
     }
 
-    const calls = turn.content.parts.flatMap((p) => (p.functionCall ? [p.functionCall] : []));
+    const calls = parts.flatMap((p) => (p.functionCall ? [p.functionCall] : []));
     if (calls.length === 0 || !allowTools) {
-      const text = turn.content.parts
-        .map((p) => p.text ?? '')
-        .join('')
-        .trim();
-      if (!text) throw new AppError(502, UNAVAILABLE);
-      return text;
+      const finish = blockReason ? 'blocked' : finishOf(finishReason);
+      if (finish === 'blocked' || (started && finish)) {
+        yield { type: 'done', finish };
+        return;
+      }
+      console.error('[tutor] Gemini ended without an answer:', finishReason);
+      throw new AppError(502, UNAVAILABLE);
     }
 
     // The model's turn goes back as it came (its thoughtSignature included),
     // followed by every result it asked for.
-    contents.push(turn.content);
+    contents.push({ role: 'model', parts });
     contents.push({
       role: 'user',
       parts: calls.map((call) => ({
