@@ -7,6 +7,7 @@ process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
+process.env.CORS_DEV_ORIGIN = 'http://localhost:5173, http://second.test';
 
 const validToken = jwt.sign({ id: 1 }, 'test-secret');
 
@@ -80,6 +81,20 @@ describe('content security policy', () => {
     expect(csp).not.toContain('fonts.googleapis.com');
     expect(csp).not.toContain('fonts.gstatic.com');
     expect(csp).toContain("object-src 'none'");
+  });
+});
+
+describe('cors', () => {
+  it('answers every listed origin', async () => {
+    for (const origin of ['http://localhost:5173', 'http://second.test']) {
+      const res = await request(app).get('/api/time').set('Origin', origin);
+      expect(res.headers['access-control-allow-origin']).toBe(origin);
+    }
+  });
+
+  it('gives an origin not on the list no CORS header', async () => {
+    const res = await request(app).get('/api/time').set('Origin', 'https://evil.example');
+    expect(res.headers['access-control-allow-origin']).toBeUndefined();
   });
 });
 

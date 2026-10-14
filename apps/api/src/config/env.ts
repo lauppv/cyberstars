@@ -11,14 +11,25 @@ function required(name: string): string {
   return value;
 }
 
+// A comma-separated list of origins, e.g. "https://a.app, https://b.app".
+function originList(value: string): string[] {
+  return value
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+}
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 export const env = {
   isProduction,
   port: isProduction ? Number(process.env.PORT) || 8080 : Number(process.env.EXPRESS_PORT) || 5000,
-  corsOrigin: isProduction
-    ? process.env.CORS_ORIGIN || 'https://cyberstars.app'
-    : process.env.CORS_DEV_ORIGIN || 'http://localhost:5173',
+  // The websites allowed to call the API (CORS) and open its WebSockets.
+  allowedOrigins: originList(
+    isProduction
+      ? process.env.CORS_ORIGIN || 'https://cyberstars.app'
+      : process.env.CORS_DEV_ORIGIN || 'http://localhost:5173',
+  ),
   jwt: {
     secret: required('JWT_SECRET'),
     expiresIn: '24h' as const,
