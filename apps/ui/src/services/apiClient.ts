@@ -43,8 +43,9 @@ export class ApiClientError extends Error {
 export const api = {
   get: <T>(path: string) => request<T>(path),
 
-  post: <T>(path: string, body?: unknown) =>
+  post: <T>(path: string, body?: unknown, init?: RequestInit) =>
     request<T>(path, {
+      ...init,
       method: 'POST',
       body: body ? JSON.stringify(body) : undefined,
     }),
