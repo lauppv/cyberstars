@@ -35,7 +35,7 @@ export function StringIndexTable({ text, highlight, green = [] }: StringIndexTab
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'stretch',
-                fontFamily: 'JetBrains Mono, monospace',
+                fontFamily: 'var(--mono)',
               }}
             >
               <div

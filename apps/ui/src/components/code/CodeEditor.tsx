@@ -27,9 +27,20 @@ const transparentBg = EditorView.theme({
   '.cm-activeLineGutter': { backgroundColor: 'transparent' },
 });
 
+// CodeMirror's own theme sets plain `monospace`, which Safari on macOS draws
+// as Courier. The editor follows the app's code font instead.
+const appFont = EditorView.theme({
+  '.cm-scroller': { fontFamily: 'var(--mono)' },
+});
+
 function getExtensions(language: string): Extension[] {
   const lang = language.toLowerCase();
-  const base: Extension[] = [indentUnit.of('    '), EditorView.lineWrapping, transparentBg];
+  const base: Extension[] = [
+    indentUnit.of('    '),
+    EditorView.lineWrapping,
+    transparentBg,
+    appFont,
+  ];
   switch (lang) {
     case 'python':
     case 'py':

@@ -47,8 +47,9 @@ app.use(
       useDefaults: true,
       directives: {
         scriptSrc: ["'self'", 'https://unpkg.com'],
-        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        // The fonts ship with the app, so nothing is fetched from a font host.
+        fontSrc: ["'self'"],
         imgSrc: ["'self'", 'data:', 'blob:'],
         connectSrc: ["'self'"],
       },
