@@ -26,6 +26,10 @@ export const USAGE_WINDOWS_MS: Record<UsageAction, number> = {
   getHint: 24 * HOUR_MS,
 };
 
+// How a 429 for a spent allowance starts, so the UI can tell it apart from a
+// per-minute rate limit.
+export const USAGE_LIMIT_ERROR = 'Limit reached';
+
 export interface UsageState {
   used: number;
   limit: number;

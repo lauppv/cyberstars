@@ -2,6 +2,7 @@ import { AppError } from '../middleware/errorHandler.js';
 import * as usageRepo from '../repositories/usage.repository.js';
 import {
   USAGE_ACTIONS,
+  USAGE_LIMIT_ERROR,
   USAGE_LIMITS,
   USAGE_WINDOWS_MS,
   type UsageAction,
@@ -79,7 +80,7 @@ export async function hold(
   );
   if (taken === 0) {
     const refillAt = new Date(windowStart.getTime() + USAGE_WINDOWS_MS[action]).toISOString();
-    throw new AppError(429, `Limit reached. It refills at ${refillAt}`);
+    throw new AppError(429, `${USAGE_LIMIT_ERROR}. It refills at ${refillAt}`);
   }
   return { userId, action, windowStart, units: taken };
 }

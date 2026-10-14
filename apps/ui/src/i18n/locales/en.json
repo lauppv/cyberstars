@@ -1221,7 +1221,11 @@
     "blocked": "The tutor can't help with this one. Try asking another way.",
     "errorFailed": "The tutor couldn't answer right now.",
     "errorBusy": "Too many messages in a short time. Wait a minute, then try again.",
+    "errorLimit": "Not sent: you've used your messages for now.",
     "tryAgain": "Try again",
+    "nearlyUsed": "You've used 90% of this session's tutor messages. They refill at {{time}}.",
+    "limitReached": "You've used your messages for now. You can chat again at {{time}}.",
+    "closeNotice": "Close notice",
     "status": {
       "lesson": "Reading the lesson",
       "code": "Looking at your code",

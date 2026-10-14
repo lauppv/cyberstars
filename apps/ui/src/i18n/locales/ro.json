@@ -1233,7 +1233,11 @@
     "blocked": "Tutorul nu te poate ajuta cu asta. Încearcă să întrebi altfel.",
     "errorFailed": "Tutorul nu a putut răspunde acum.",
     "errorBusy": "Prea multe mesaje într-un timp scurt. Așteaptă un minut, apoi încearcă din nou.",
+    "errorLimit": "Netrimis: ți-ai folosit mesajele deocamdată.",
     "tryAgain": "Încearcă din nou",
+    "nearlyUsed": "Ai folosit 90% din mesajele către tutore din sesiunea asta. Se reîncarcă la {{time}}.",
+    "limitReached": "Ți-ai folosit mesajele deocamdată. Poți vorbi din nou cu tutorele la {{time}}.",
+    "closeNotice": "Închide notificarea",
     "status": {
       "lesson": "Citesc lecția",
       "code": "Mă uit la codul tău",
