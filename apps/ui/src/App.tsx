@@ -9,6 +9,7 @@ import { MessagesProvider } from './context/MessagesContext';
 import { GuestSignupPromptProvider } from './context/GuestSignupPromptContext';
 import { RadioProvider } from './context/RadioContext';
 import { UsageProvider } from './context/UsageContext';
+import { TutorProvider } from './context/TutorContext';
 import { RadioPlayer } from './components/radio/RadioPlayer';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import { AppShell } from './components/layout/AppShell';
@@ -108,50 +109,55 @@ function App() {
                       <UsageProvider>
                         <GlobalRadio />
                         <PageViews />
-                        <AppShell>
-                          <Suspense
-                            fallback={
-                              <div className="h-screen flex items-center justify-center bg-transparent">
-                                <LoadingSpinner />
-                              </div>
-                            }
-                          >
-                            <GuestGate>
-                              <TourGate>
-                                <Routes>
-                                  <Route path="/" element={<HomePage />} />
-                                  <Route path="/getstarted" element={<AuthPage />} />
-                                  <Route path="/courses" element={<CoursesPage />} />
-                                  <Route path="/courses/:course" element={<CoursesPage />} />
-                                  <Route path="/algorithms" element={<AlgorithmsPage />} />
-                                  <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
-                                  <Route
-                                    path="/lesson/:category/:lesson"
-                                    element={<LessonPage />}
-                                  />
-                                  <Route path="/profile" element={<ProfilePage />} />
-                                  <Route path="/forum" element={<ForumPage />} />
-                                  <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
-                                  <Route path="/forum/t/:threadId" element={<ForumPage />} />
-                                  <Route path="/almanac" element={<AlmanacPage />} />
-                                  <Route path="/almanac/:slug" element={<AlmanacPage />} />
-                                  <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
-                                  <Route path="/rules" element={<RulesPage />} />
-                                  <Route path="/usage" element={<UsagePage />} />
-                                  <Route path="/support" element={<SupportPage />} />
-                                  <Route path="/welcome" element={<WelcomePage />} />
-                                  <Route path="/admin" element={<AdminPage />} />
-                                  <Route path="/leaderboard" element={<LeaderboardPage />} />
-                                  <Route path="/messages" element={<MessagesPage />} />
-                                  <Route path="/u/:userId" element={<PublicProfilePage />} />
-                                  <Route path="/settings" element={<SettingsPage />} />
-                                  <Route path="/connections" element={<ConnectionsPage />} />
-                                  <Route path="*" element={<NotFoundPage />} />
-                                </Routes>
-                              </TourGate>
-                            </GuestGate>
-                          </Suspense>
-                        </AppShell>
+                        <TutorProvider>
+                          <AppShell>
+                            <Suspense
+                              fallback={
+                                <div className="h-screen flex items-center justify-center bg-transparent">
+                                  <LoadingSpinner />
+                                </div>
+                              }
+                            >
+                              <GuestGate>
+                                <TourGate>
+                                  <Routes>
+                                    <Route path="/" element={<HomePage />} />
+                                    <Route path="/getstarted" element={<AuthPage />} />
+                                    <Route path="/courses" element={<CoursesPage />} />
+                                    <Route path="/courses/:course" element={<CoursesPage />} />
+                                    <Route path="/algorithms" element={<AlgorithmsPage />} />
+                                    <Route
+                                      path="/algorithms/:lang"
+                                      element={<AlgorithmListPage />}
+                                    />
+                                    <Route
+                                      path="/lesson/:category/:lesson"
+                                      element={<LessonPage />}
+                                    />
+                                    <Route path="/profile" element={<ProfilePage />} />
+                                    <Route path="/forum" element={<ForumPage />} />
+                                    <Route path="/forum/c/:categorySlug" element={<ForumPage />} />
+                                    <Route path="/forum/t/:threadId" element={<ForumPage />} />
+                                    <Route path="/almanac" element={<AlmanacPage />} />
+                                    <Route path="/almanac/:slug" element={<AlmanacPage />} />
+                                    <Route path="/laniakea" element={<LaniakeaExplorerPage />} />
+                                    <Route path="/rules" element={<RulesPage />} />
+                                    <Route path="/usage" element={<UsagePage />} />
+                                    <Route path="/support" element={<SupportPage />} />
+                                    <Route path="/welcome" element={<WelcomePage />} />
+                                    <Route path="/admin" element={<AdminPage />} />
+                                    <Route path="/leaderboard" element={<LeaderboardPage />} />
+                                    <Route path="/messages" element={<MessagesPage />} />
+                                    <Route path="/u/:userId" element={<PublicProfilePage />} />
+                                    <Route path="/settings" element={<SettingsPage />} />
+                                    <Route path="/connections" element={<ConnectionsPage />} />
+                                    <Route path="*" element={<NotFoundPage />} />
+                                  </Routes>
+                                </TourGate>
+                              </GuestGate>
+                            </Suspense>
+                          </AppShell>
+                        </TutorProvider>
                       </UsageProvider>
                     </RadioProvider>
                   </GuestSignupPromptProvider>
