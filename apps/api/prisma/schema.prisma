@@ -427,3 +427,43 @@ model ForumReaction {
   @@index([postId])
   @@map("forum_reactions")
 }
+
+// One page a visitor saw today. The visitor is a hash of their IP and browser
+// with the day's salt (visit_salts), so a row can't be tied to the same person
+// on another day, and there's no time on it beyond the day. Once the day is
+// over, visits.service rolls its rows into visit_totals and deletes them along
+// with the salt. source is set only on the first page of a visit: the
+// referring site, "direct" when there was none, null for a page opened from
+// inside the app.
+model PageVisit {
+  id       Int      @id @default(autoincrement())
+  day      DateTime @db.Date
+  visitor  String   @db.Char(64)
+  path     String   @db.VarChar(200)
+  source   String?  @db.VarChar(100)
+  signedIn Boolean  @map("signed_in")
+  lang     String   @db.VarChar(2)
+
+  @@index([day])
+  @@map("page_visits")
+}
+
+model VisitSalt {
+  day  DateTime @id @db.Date
+  salt String   @db.Char(64)
+
+  @@map("visit_salts")
+}
+
+// A finished day's visits, all that's kept of them. dimension is "all" (key
+// ""), "page", "source", "auth" (guest or signedIn) or "lang".
+model VisitTotal {
+  day       DateTime @db.Date
+  dimension String   @db.VarChar(10)
+  key       String   @db.VarChar(200)
+  visitors  Int
+  views     Int
+
+  @@id([day, dimension, key])
+  @@map("visit_totals")
+}

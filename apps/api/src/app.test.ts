@@ -123,6 +123,7 @@ describe('endpoint smoke tests: auth-protected routes return 401 without token',
     ['get', '/api/profile/activity'],
     ['get', '/api/daily'],
     ['get', '/api/admin/stats'],
+    ['get', '/api/admin/visits'],
     ['get', '/api/leaderboard'],
     ['get', '/api/leaderboard/me'],
     ['get', '/api/users/123/profile'],
@@ -152,6 +153,21 @@ describe('endpoint smoke tests: auth-protected routes return 401 without token',
       expect(res.status).toBe(401);
     });
   }
+});
+
+describe('page views', () => {
+  it('takes a page view from a guest with a 204', async () => {
+    const res = await request(app)
+      .post('/api/visits')
+      .set('User-Agent', 'Mozilla/5.0 Firefox/131.0')
+      .send({ path: '/courses', referrer: '' });
+    expect(res.status).toBe(204);
+  });
+
+  it('turns away an address that is not a path', async () => {
+    const res = await request(app).post('/api/visits').send({ path: 'https://example.com' });
+    expect(res.status).toBe(400);
+  });
 });
 
 describe('preview feature gate', () => {
