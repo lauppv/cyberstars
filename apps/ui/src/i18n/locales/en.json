@@ -85,7 +85,7 @@
     "scrolled": "scrolled {{depth}}%",
     "showMore": "Show more",
     "browserCounted": "This browser's visits are counted when you're signed out.",
-    "browserNotCounted": "This browser isn't counted, signed out either.",
+    "browserNotCounted": "This browser isn't counted, even when you're signed out.",
     "countBrowser": "Count it",
     "stopCounting": "Stop counting it"
   },
