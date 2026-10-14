@@ -34,6 +34,7 @@ export function LandingNav() {
           <LanguageSwitch />
           <Link
             to="/getstarted"
+            data-track="sign-in"
             className="px-3.5 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold no-underline hover:brightness-110 transition"
           >
             {t('topbar.signIn')}

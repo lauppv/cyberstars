@@ -10,6 +10,7 @@ export function RunButton({ onClick, isRunning, className = '' }: RunButtonProps
   const { t } = useTranslation();
   return (
     <button
+      data-track="run"
       onClick={onClick}
       disabled={isRunning}
       title={t('code.runTitle')}

@@ -16,6 +16,7 @@ export function StartButtons({
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`.trim()}>
       <button
+        data-track="start-learning"
         onClick={() => navigate('/courses')}
         className="px-6 py-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer"
       >
@@ -23,6 +24,7 @@ export function StartButtons({
       </button>
       {signIn && (
         <button
+          data-track="sign-in"
           onClick={() => navigate('/getstarted')}
           className="px-6 py-3 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
         >

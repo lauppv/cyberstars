@@ -17,6 +17,14 @@ function getPasswordStrength(pw: string): number {
   return s;
 }
 
+// What a guest's press on the form's button is counted as (CYB-66).
+const SUBMIT_TRACK = {
+  login: 'log-in',
+  signup: 'sign-up',
+  forgot: 'forgot-password',
+  reset: 'reset-password',
+} as const;
+
 export function AuthPage() {
   const location = useLocation();
   const initial = (location.state ?? null) as {
@@ -322,6 +330,7 @@ export function AuthPage() {
 
               <button
                 type="submit"
+                data-track={SUBMIT_TRACK[mode]}
                 disabled={loading}
                 className="w-full py-[13px] rounded-[var(--radius)] bg-[var(--accent)] text-white text-[15px] font-semibold cursor-pointer border-none transition-all relative overflow-hidden hover:brightness-110 disabled:opacity-80 disabled:pointer-events-none"
                 style={!loading ? { boxShadow: undefined } : undefined}

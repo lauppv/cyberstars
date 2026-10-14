@@ -29,6 +29,7 @@ export function Faq() {
                     id={`faq-${key}`}
                     aria-expanded={expanded}
                     aria-controls={`faq-${key}-answer`}
+                    data-track={expanded ? undefined : `faq-${key}`}
                     onClick={() => setOpen(expanded ? null : key)}
                     className="w-full flex items-center justify-between gap-4 py-4 bg-transparent border-none text-left text-[15px] font-semibold text-[var(--text)] cursor-pointer hover:text-[var(--accent)]"
                   >

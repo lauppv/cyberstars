@@ -49,6 +49,7 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
             </div>
           </div>
           <button
+            data-track="signup-prompt-close"
             onClick={onClose}
             aria-label="Close"
             className="w-8 h-8 shrink-0 rounded-full border border-[var(--border)] bg-transparent text-[var(--text3)] text-base flex items-center justify-center cursor-pointer hover:text-[var(--text)] hover:border-[var(--text3)] transition"
@@ -70,12 +71,14 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
 
         <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[var(--border)]">
           <button
+            data-track="signup-prompt-later"
             onClick={onClose}
             className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-transparent text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)] transition"
           >
             Maybe later
           </button>
           <button
+            data-track="signup-prompt-sign-up"
             onClick={goSignup}
             className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-[var(--accent)]/20 text-[var(--accent)] hover:bg-[var(--accent)]/30 transition"
           >
