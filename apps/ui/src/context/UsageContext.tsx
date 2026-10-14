@@ -5,7 +5,7 @@ import * as usageService from '../services/usageService';
 import type { UsageSummary } from '@cyberstars/shared/usage';
 
 interface UsageContextValue {
-  // Current daily usage, or null before the first load / when logged out.
+  // Current usage, or null before the first load / when logged out.
   summary: UsageSummary | null;
   loading: boolean;
   refresh: () => void;

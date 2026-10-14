@@ -39,7 +39,7 @@ describe('SolutionConfirmModal', () => {
     const onConfirmed = vi.fn();
     render(<SolutionConfirmModal {...LESSON} onConfirmed={onConfirmed} onClose={vi.fn()} />);
 
-    expect(screen.getByText('1/3')).toBeInTheDocument();
+    expect(screen.getByText('33% used')).toBeInTheDocument();
     fireEvent.click(screen.getByText('Reveal solution'));
 
     await waitFor(() => expect(onConfirmed).toHaveBeenCalledWith('```py\nprint(1)\n```'));

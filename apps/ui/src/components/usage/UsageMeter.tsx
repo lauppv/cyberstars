@@ -14,10 +14,13 @@ function formatReset(resetAt: string, locale: string): string {
 export function UsageMeter({
   state,
   label,
+  period,
   compact = false,
 }: {
   state: UsageState;
   label: string;
+  // How long the window lasts, shown after the label.
+  period?: string;
   compact?: boolean;
 }) {
   const { t, i18n } = useTranslation();
@@ -28,11 +31,14 @@ export function UsageMeter({
   return (
     <div className="flex flex-col gap-1">
       <div className="flex items-center justify-between text-[12px]">
-        <span className="text-[var(--text2)] font-medium">{label}</span>
+        <span className="text-[var(--text2)] font-medium">
+          {label}
+          {period && <span className="text-[var(--text3)] font-normal"> · {period}</span>}
+        </span>
         <span
           className={`tabular-nums font-semibold ${depleted ? 'text-[var(--error)]' : 'text-[var(--text3)]'}`}
         >
-          {unlimited ? t('usage.unlimited') : `${used}/${limit}`}
+          {unlimited ? t('usage.unlimited') : t('usage.percentUsed', { percent: Math.round(pct) })}
         </span>
       </div>
       {!unlimited && (
