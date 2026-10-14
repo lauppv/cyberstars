@@ -201,7 +201,9 @@ function SubmissionView({
             passedCount={detail.passedCount}
             total={detail.total}
           />
-          {detail.failedCase && <FailedCase result={detail.failedCase} />}
+          {detail.failedCase && (
+            <FailedCase result={detail.failedCase} comparator={detail.comparator} />
+          )}
           {showRuntime && <Runtime runtimeMs={detail.runtimeMs} referenceMs={detail.referenceMs} />}
           <section className="flex flex-col gap-3">
             <div className="flex items-center justify-between gap-3">

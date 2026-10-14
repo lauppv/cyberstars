@@ -195,6 +195,18 @@ describe('runLessonTests', () => {
     expect(mockDestroy).not.toHaveBeenCalled();
   });
 
+  it("tells the page how the lesson compares outputs, 'trimmed' when the spec doesn't say", async () => {
+    stubFiles({ comparator: 'unordered', structure: {}, cases: [{ visible: true }] });
+    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
+    expect((await runLessonTests('user:1', 'java', 'hashmap', 'code')).comparator).toBe(
+      'unordered',
+    );
+
+    stubFiles({ structure: {}, cases: [{ visible: true }] });
+    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
+    expect((await runLessonTests('user:1', 'python', 'print', 'code')).comparator).toBe('trimmed');
+  });
+
   it('rounds per-case timings to the microsecond and takes the runtime from the load test alone', async () => {
     stubFiles({
       comparator: 'trimmed',
@@ -716,7 +728,7 @@ describe('runLessonTests', () => {
   });
 
   it('short-circuits a c syntax error before touching a container', async () => {
-    stubFiles();
+    stubFiles({ ...SPEC, comparator: 'masked' });
     mockPrepareC.mockResolvedValue({
       syntaxError: 'line 1: syntax error',
       structureFailures: [],
@@ -725,6 +737,7 @@ describe('runLessonTests', () => {
     const res = await runLessonTests('user:1', 'c', 'variables-int', 'int x =');
     expect(res.status).toBe('failed');
     expect(res.syntaxError).toContain('syntax error');
+    expect(res.comparator).toBe('masked');
     expect(mockAcquire).not.toHaveBeenCalled();
   });
 

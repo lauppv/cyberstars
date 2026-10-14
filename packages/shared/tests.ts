@@ -167,6 +167,12 @@ export interface TestCaseResult {
 
 export interface RunTestsResponse {
   status: 'passed' | 'failed';
+  /**
+   * How the lesson compares outputs. The page marks the difference between
+   * expected and actual only when they were compared as text ('trimmed',
+   * 'exact'): a lesson that ignores numbers or line order would show a false one.
+   */
+  comparator: TestComparator;
   syntaxError?: string;
   structureFailures: StructureFailure[];
   /**
@@ -208,4 +214,6 @@ export interface SubmissionDetail extends SubmissionSummary {
   structureFailures: StructureFailure[];
   /** The case the run stopped on, when a case failed. */
   failedCase: TestCaseResult | null;
+  /** The lesson's comparator, read when the attempt is opened; absent once the lesson has no tests. */
+  comparator?: TestComparator;
 }

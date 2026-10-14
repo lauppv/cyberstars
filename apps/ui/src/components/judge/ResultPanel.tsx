@@ -27,7 +27,7 @@ export function ResultPanel({
         passedCount={results.passedCount}
         total={results.total}
       />
-      {failedCase && <FailedCase result={failedCase} />}
+      {failedCase && <FailedCase result={failedCase} comparator={results.comparator} />}
       <PassedCases cases={results.cases} />
       {showRuntime && <Runtime runtimeMs={results.runtimeMs} referenceMs={results.referenceMs} />}
     </div>

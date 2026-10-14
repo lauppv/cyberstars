@@ -9,6 +9,11 @@ const mockRepo = {
 
 vi.mock('../repositories/submissions.repository.js', () => mockRepo);
 
+const mockLoadTestsSpec = vi.fn();
+vi.mock('./lesson-tests.service.js', () => ({
+  loadTestsSpec: (...args: unknown[]) => mockLoadTestsSpec(...args),
+}));
+
 const service = await import('./submissions.service.js');
 
 const createdAt = new Date('2026-10-09T12:00:00.000Z');
@@ -43,6 +48,7 @@ describe('record', () => {
     const failed = { index: 1, visible: true, passed: false, expected: '2', actual: '3' };
     const result: RunTestsResponse = {
       status: 'failed',
+      comparator: 'trimmed',
       structureFailures: [],
       cases: [{ index: 0, visible: true, passed: true }, failed],
       total: 3,
@@ -77,6 +83,7 @@ describe('record', () => {
     mockRepo.createAndPrune.mockResolvedValue({ ...summaryRow, runtimeMs: null });
     const result: RunTestsResponse = {
       status: 'failed',
+      comparator: 'trimmed',
       syntaxError: 'line 1',
       structureFailures: [],
       cases: [],
@@ -121,11 +128,14 @@ describe('getForUser', () => {
     const failedCase = { index: 0, visible: false, passed: false };
     mockRepo.findOwned.mockResolvedValue({
       ...summaryRow,
+      courseKey: 'python',
+      lessonSlug: 'print',
       code: 'print(3)',
       syntaxError: null,
       structureFailures,
       failedCase,
     });
+    mockLoadTestsSpec.mockReturnValue({ structure: {}, cases: [] });
 
     expect(await service.getForUser(7, 9)).toEqual({
       ...summary,
@@ -133,8 +143,28 @@ describe('getForUser', () => {
       syntaxError: null,
       structureFailures,
       failedCase,
+      comparator: 'trimmed',
     });
     expect(mockRepo.findOwned).toHaveBeenCalledWith(7, 9);
+    expect(mockLoadTestsSpec).toHaveBeenCalledWith('python', 'print', 'ro');
+  });
+
+  it('reads the comparator from the lesson, and leaves it out once the lesson has no tests', async () => {
+    const row = {
+      ...summaryRow,
+      courseKey: 'c',
+      lessonSlug: 'os-fork',
+      code: 'x',
+      syntaxError: null,
+      structureFailures: [],
+      failedCase: null,
+    };
+    mockRepo.findOwned.mockResolvedValue(row);
+    mockLoadTestsSpec.mockReturnValue({ comparator: 'masked', structure: {}, cases: [] });
+    expect((await service.getForUser(7, 9)).comparator).toBe('masked');
+
+    mockLoadTestsSpec.mockReturnValue(null);
+    expect(await service.getForUser(7, 9)).not.toHaveProperty('comparator');
   });
 
   it('404s a missing or foreign attempt', async () => {

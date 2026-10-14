@@ -1,6 +1,7 @@
 import type { LessonSubmission, Prisma } from '@prisma/client';
 import * as repo from '../repositories/submissions.repository.js';
 import { assertValidCourse } from './paths.js';
+import { loadTestsSpec } from './lesson-tests.service.js';
 import { AppError } from '../middleware/errorHandler.js';
 import type {
   RunTestsResponse,
@@ -27,13 +28,17 @@ function toSummary(row: repo.SubmissionSummaryRow): SubmissionSummary {
   };
 }
 
+// The comparator comes from the lesson as it is now, not from the stored row,
+// so attempts saved before the page needed it carry it too.
 function toDetail(row: LessonSubmission): SubmissionDetail {
+  const spec = loadTestsSpec(row.courseKey, row.lessonSlug, row.lang);
   return {
     ...toSummary(row),
     code: row.code,
     syntaxError: row.syntaxError,
     structureFailures: row.structureFailures as unknown as StructureFailure[],
     failedCase: row.failedCase as unknown as TestCaseResult | null,
+    ...(spec ? { comparator: spec.comparator ?? 'trimmed' } : {}),
   };
 }
 

@@ -11,6 +11,7 @@ function verdict(passedCount: number, overrides: Partial<RunTestsResponse> = {})
   const passed = passedCount === total;
   return {
     status: passed ? 'passed' : 'failed',
+    comparator: 'trimmed',
     structureFailures: [],
     cases: [
       ...Array.from({ length: passedCount }, (_, index) => ({
@@ -91,6 +92,8 @@ describe('Submission history', () => {
       syntaxError: null,
       structureFailures: [],
       failedCase: { index: 1, visible: true, passed: false, expected: 'b', actual: 'a' },
+      // Read from the lesson's own tests file on disk.
+      comparator: 'trimmed',
     });
   });
 

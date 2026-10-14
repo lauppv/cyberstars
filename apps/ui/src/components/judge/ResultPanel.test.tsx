@@ -5,11 +5,20 @@ import type { RunTestsResponse } from '@cyberstars/shared/tests';
 
 const base: RunTestsResponse = {
   status: 'failed',
+  comparator: 'trimmed',
   structureFailures: [],
   cases: [],
   total: 5,
   passedCount: 0,
 };
+
+// The output box under a field's label, and the runs marked in it.
+function field(label: string): HTMLElement {
+  return screen.getByText(label).nextElementSibling as HTMLElement;
+}
+function marks(label: string): string[] {
+  return [...field(label).querySelectorAll('mark')].map((m) => m.textContent ?? '');
+}
 
 describe('ResultPanel', () => {
   it('heads an accepted run with the full count', () => {
@@ -52,9 +61,26 @@ describe('ResultPanel', () => {
     expect(screen.getByText('Stopped at test 3')).toBeInTheDocument();
     expect(screen.getByText('2 / 5')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Test 3' })).toBeInTheDocument();
-    expect(screen.getByText('Expected output')).toBeInTheDocument();
-    expect(screen.getByText(/400\s*350/)).toBeInTheDocument();
-    expect(screen.getByText(/400\s*300/)).toBeInTheDocument();
+    expect(field('Expected output')).toHaveTextContent('400 350');
+    expect(field('Your output')).toHaveTextContent('400 300');
+    // Only the differing character is marked, on both sides.
+    expect(marks('Expected output')).toEqual(['5']);
+    expect(marks('Your output')).toEqual(['0']);
+  });
+
+  it('marks nothing on a lesson that ignores numbers or line order', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          comparator: 'unordered',
+          cases: [{ index: 0, visible: true, passed: false, expected: 'a\nb', actual: 'b\nc' }],
+        }}
+      />,
+    );
+    expect(field('Expected output')).toHaveTextContent('a b');
+    expect(document.querySelector('mark')).toBeNull();
   });
 
   it('shows the input but never the expected output of a hidden test', () => {
@@ -82,6 +108,7 @@ describe('ResultPanel', () => {
     expect(screen.queryByText('Expected output')).not.toBeInTheDocument();
     expect(screen.queryByText('leaked')).not.toBeInTheDocument();
     expect(screen.getByText('45')).toBeInTheDocument();
+    expect(document.querySelector('mark')).toBeNull();
   });
 
   it('shows only the first failing test when an older judge sends several', () => {

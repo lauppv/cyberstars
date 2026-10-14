@@ -28,6 +28,8 @@ test('a failed test shows the output in the app code font', async ({ authedPage:
 
   const result = page.locator('[data-tour="result"]');
   await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
-  const actual = result.getByText('hello', { exact: true }).first();
+  // The box under the label, whatever the diff marks inside it.
+  const actual = result.getByText('Your output').locator('xpath=following-sibling::div[1]');
+  await expect(actual).toContainText('hello');
   expect(await firstFontOf(actual)).toBe(CODE_FONT);
 });
