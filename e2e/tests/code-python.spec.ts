@@ -40,6 +40,23 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
   await expect(result).toContainText('Wrong answer');
 });
 
+test('a near-miss output marks just the characters that differ', async ({ authedPage: page }) => {
+  await page.goto('/lesson/python/print');
+
+  const editor = page.locator('[data-tour="editor"] .cm-content');
+  await editor.click();
+  await page.keyboard.press('ControlOrMeta+A');
+  await page.keyboard.type(
+    'print("= CYBERSTARS MISSION CONTROL =\\nStation: Orion\\nStatus: OFFLINE\\nWelcome aboard, cadet!")',
+  );
+  await page.getByRole('button', { name: 'Run Tests' }).click();
+
+  const result = page.locator('[data-tour="result"]');
+  await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
+  // ONLINE against OFFLINE: the N the student lost, the FF they put in.
+  await expect(result.locator('mark')).toHaveText(['N', 'FF']);
+});
+
 test('a passed course lesson lists its tests and shows no runtime', async ({
   authedPage: page,
 }) => {
