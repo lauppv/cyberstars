@@ -22,6 +22,7 @@ import messagesRoutes from './routes/messages.routes.js';
 import connectionsRoutes from './routes/connections.routes.js';
 import usersRoutes from './routes/users.routes.js';
 import hintsRoutes from './routes/hints.routes.js';
+import tutorRoutes from './routes/tutor.routes.js';
 import usageRoutes from './routes/usage.routes.js';
 import visitsRoutes from './routes/visits.routes.js';
 
@@ -90,6 +91,7 @@ app.use('/api/messages', messagesRoutes);
 app.use('/api/connections', connectionsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/hints', hintsRoutes);
+app.use('/api/tutor', tutorRoutes);
 app.use('/api/usage', usageRoutes);
 app.use('/api/visits', visitsRoutes);
 
