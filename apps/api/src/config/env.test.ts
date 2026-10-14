@@ -30,14 +30,20 @@ describe('env config', () => {
     const { env } = await import('./env.js');
     expect(env.isProduction).toBe(true);
     expect(env.port).toBe(9000);
-    expect(env.corsOrigin).toBe('https://example.com');
+    expect(env.allowedOrigins).toEqual(['https://example.com']);
     expect(env.cookie.secure).toBe(true);
   });
 
   it('falls back to prod default CORS origin when CORS_ORIGIN is unset', async () => {
     setEnv({ NODE_ENV: 'production', PORT: '9000' });
     const { env } = await import('./env.js');
-    expect(env.corsOrigin).toBe('https://cyberstars.app');
+    expect(env.allowedOrigins).toEqual(['https://cyberstars.app']);
+  });
+
+  it('reads a comma-separated list of allowed origins', async () => {
+    setEnv({ NODE_ENV: 'production', CORS_ORIGIN: 'https://a.app, https://b.app,' });
+    const { env } = await import('./env.js');
+    expect(env.allowedOrigins).toEqual(['https://a.app', 'https://b.app']);
   });
 
   it('falls back to PORT default (8080) in production when PORT is unset', async () => {
@@ -51,7 +57,7 @@ describe('env config', () => {
     const { env } = await import('./env.js');
     expect(env.isProduction).toBe(false);
     expect(env.port).toBe(4000);
-    expect(env.corsOrigin).toBe('http://x');
+    expect(env.allowedOrigins).toEqual(['http://x']);
     expect(env.cookie.secure).toBe(false);
   });
 
@@ -59,7 +65,7 @@ describe('env config', () => {
     setEnv({ NODE_ENV: 'development' });
     const { env } = await import('./env.js');
     expect(env.port).toBe(5000);
-    expect(env.corsOrigin).toBe('http://localhost:5173');
+    expect(env.allowedOrigins).toEqual(['http://localhost:5173']);
   });
 
   it('uses DB_PORT when present, falls back to 5432 when unset', async () => {

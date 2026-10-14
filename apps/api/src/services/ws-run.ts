@@ -249,6 +249,16 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
   userWss.on('connection', handleUserConnection);
 
   const onUpgrade = (req: IncomingMessage, socket: Duplex, head: Buffer) => {
+    // A browser always says which website opened the socket. Refuse any site not
+    // on the list before the upgrade, or a page elsewhere could run code or read
+    // a student's feed from its visitors' browsers. A client with no Origin isn't
+    // a browser and could send any; the run limits are the defence against it.
+    const { origin } = req.headers;
+    if (origin !== undefined && !config.allowedOrigins.includes(origin)) {
+      socket.write('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n');
+      socket.destroy();
+      return;
+    }
     const pathname = new URL(req.url ?? '/', 'http://localhost').pathname;
     if (pathname === '/ws/run') {
       runWss.handleUpgrade(req, socket, head, (ws) => runWss.emit('connection', ws, req));
