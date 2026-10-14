@@ -14,3 +14,29 @@ export type TutorStreamEvent =
   | { type: 'text'; text: string }
   | { type: 'done'; finish: TutorFinish }
   | { type: 'error'; message: string };
+
+// How a saved answer ended: as its stream said, or `interrupted` when an error
+// or the student leaving broke it off after some words.
+export type TutorAnswerEnd = TutorFinish | 'interrupted';
+
+// The lesson or algorithm challenge a conversation is about. A message without
+// one belongs to the student's general conversation.
+export interface TutorLessonRef {
+  courseKey: string;
+  lessonSlug: string;
+}
+
+export interface TutorMessage {
+  id: number;
+  role: 'student' | 'tutor';
+  text: string;
+  // How an answer ended; null on the student's own messages.
+  finish: TutorAnswerEnd | null;
+  createdAt: string;
+}
+
+// One page of a conversation, newest first; `hasMore` when older messages remain.
+export interface TutorConversationPage {
+  messages: TutorMessage[];
+  hasMore: boolean;
+}
