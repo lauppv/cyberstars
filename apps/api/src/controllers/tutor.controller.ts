@@ -4,6 +4,8 @@ import { AppError } from '../middleware/errorHandler.js';
 import { askTutor } from '../services/tutor.service.js';
 import * as conversations from '../services/tutor-conversations.service.js';
 import * as userRepo from '../repositories/user.repository.js';
+import * as usage from '../services/usage.service.js';
+import { isAdmin } from '@cyberstars/shared/auth';
 import { tutorLessonSchema, tutorPageQuerySchema } from '../schemas/tutor.schema.js';
 
 // Each event goes out as soon as it is written. The headers wait for the first
@@ -21,6 +23,18 @@ function send(res: Response, event: TutorStreamEvent) {
   res.write(`data: ${JSON.stringify(event)}\n\n`);
 }
 
+// An answer longer than this, in tokens, costs 2 units of the tutor session
+// instead of 1. A short answer of two to five sentences is well under it.
+const LONG_ANSWER_TOKENS = 300;
+
+// What a message costs once its answer has ended: nothing when it failed before
+// any words, 1 when it was blocked before any, and otherwise 1 or 2 by what the
+// model had written by then, also when it broke off.
+function costOf(words: string, tokens: number, finish: TutorAnswerEnd | null): number {
+  if (!words) return finish === 'blocked' ? 1 : 0;
+  return tokens > LONG_ANSWER_TOKENS ? 2 : 1;
+}
+
 export async function chat(req: Request, res: Response, next: NextFunction) {
   // The student left mid-answer (tab closed, request cancelled): stop the model.
   const leave = new AbortController();
@@ -33,11 +47,27 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
   const question = { text: req.body.message as string, sentAt };
   let words = '';
   const written = { tokens: 0 };
+  let finish: TutorAnswerEnd | null = null;
+  // The units taken for this message before the model is called: what the
+  // longest answer costs, or the last one left.
+  let held: usage.UsageHold | null = null;
+
+  // Gives back what the message didn't cost. A storage failure only costs the
+  // student the units held.
+  async function settle() {
+    if (!held) return;
+    try {
+      await usage.release(held, held.units - costOf(words, written.tokens, finish));
+    } catch (err) {
+      console.error('[tutor] Could not give back tutor units:', err);
+    }
+  }
 
   try {
     // The role decides which pages the tutor may point to, read fresh like
     // every other role check.
     const role = await userRepo.getRole(req.user!.id);
+    held = await usage.hold(req.user!.id, 'tutorMessage', isAdmin(role), 2);
     const answer = askTutor({
       message: question.text,
       history: await conversations.recentHistory(key),
@@ -48,7 +78,6 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
       signal: leave.signal,
       written,
     });
-    let finish: TutorAnswerEnd = 'complete';
     for await (const event of answer) {
       if (event.type === 'done') {
         finish = event.finish;
@@ -57,8 +86,11 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
       if (event.type === 'text') words += event.text;
       send(res, event);
     }
-    // Saved before `done`, so a chat reloaded right after shows the answer.
+    finish ??= 'complete';
+    // Saved and paid for before `done`, so a chat reloaded right after shows
+    // the answer, and the usage read right after counts it.
     await conversations.saveExchange(key, question, { text: words, finish });
+    await settle();
     send(res, { type: 'done', finish });
     res.end();
   } catch (err) {
@@ -67,6 +99,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
     if (words) {
       await conversations.saveExchange(key, question, { text: words, finish: 'interrupted' });
     }
+    await settle();
     if (leave.signal.aborted) return;
     if (!res.headersSent) return next(err);
     // Some words are already on screen: they stay, and the stream says it broke off.

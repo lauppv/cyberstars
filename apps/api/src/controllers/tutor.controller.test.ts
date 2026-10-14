@@ -23,9 +23,13 @@ const mockConversations = {
 };
 vi.mock('../services/tutor-conversations.service.js', () => mockConversations);
 
+const mockUsage = { hold: vi.fn(), release: vi.fn() };
+vi.mock('../services/usage.service.js', () => mockUsage);
+
 const { chat, getConversation, deleteConversation } = await import('./tutor.controller.js');
 
 const generalKey = { userId: 5, courseKey: null, lessonSlug: null };
+const held = { userId: 5, action: 'tutorMessage', windowStart: new Date(0), units: 2 };
 const history = [{ role: 'student', text: 'what is a loop?' }];
 
 function mockReq(body: Record<string, unknown> = {}): Request {
@@ -82,6 +86,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockUserRepo.getRole.mockResolvedValue('USER');
   mockConversations.recentHistory.mockResolvedValue(history);
+  mockUsage.hold.mockResolvedValue(held);
 });
 
 describe('chat', () => {
@@ -256,6 +261,142 @@ describe('chat', () => {
 
     expect(mockConversations.saveExchange).not.toHaveBeenCalled();
     expect(next).not.toHaveBeenCalled();
+  });
+});
+
+// An answer of `tokens` tokens: the tutor counts them as it writes.
+function answerOf(tokens: number, ...events: TutorStreamEvent[]) {
+  return (opts: { written: { tokens: number } }) => {
+    opts.written.tokens = tokens;
+    return answer(...events);
+  };
+}
+
+describe('chat: the tutor session', () => {
+  it('holds 2 units before asking the model, and gives 1 back for a short answer', async () => {
+    mockTutor.askTutor.mockImplementation(
+      answerOf(80, { type: 'text', text: 'Loops repeat.' }, { type: 'done', finish: 'complete' }),
+    );
+    const res = mockRes();
+    mockUsage.release.mockImplementationOnce(async () => {
+      // Paid for before `done`, so the usage read right after counts it.
+      expect(written(res).map((e) => e.type)).toEqual(['text']);
+    });
+
+    await chat(mockReq(), res as unknown as Response, vi.fn());
+
+    expect(mockUsage.hold).toHaveBeenCalledWith(5, 'tutorMessage', false, 2);
+    expect(mockUsage.hold.mock.invocationCallOrder[0]).toBeLessThan(
+      mockTutor.askTutor.mock.invocationCallOrder[0],
+    );
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 1);
+  });
+
+  it('keeps both units for a long answer', async () => {
+    mockTutor.askTutor.mockImplementation(
+      answerOf(301, { type: 'text', text: 'Recursion...' }, { type: 'done', finish: 'complete' }),
+    );
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 0);
+  });
+
+  it('charges an answer cut by the length limit as long', async () => {
+    mockTutor.askTutor.mockImplementation(
+      answerOf(600, { type: 'text', text: 'Once upon' }, { type: 'done', finish: 'cut' }),
+    );
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 0);
+  });
+
+  it('charges 1 for an answer blocked before any words', async () => {
+    mockTutor.askTutor.mockImplementation(answerOf(0, { type: 'done', finish: 'blocked' }));
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 1);
+  });
+
+  it('gives both units back when the model fails before any words', async () => {
+    mockTutor.askTutor.mockReturnValue(failing(new AppError(502, 'busy')));
+    const next = vi.fn();
+
+    await chat(mockReq(), mockRes() as unknown as Response, next);
+
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 2);
+    expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 502 }));
+  });
+
+  it('charges an answer broken off after some words by what it had written', async () => {
+    mockTutor.askTutor.mockImplementation((opts: { written: { tokens: number } }) => {
+      opts.written.tokens = 350;
+      return failing(new AppError(502, 'busy'), { type: 'text', text: 'A long start' });
+    });
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 0);
+  });
+
+  it('charges 1 when the student leaves a short answer midway', async () => {
+    const res = mockRes();
+    mockTutor.askTutor.mockImplementation(async function* (opts: {
+      signal: AbortSignal;
+      written: { tokens: number };
+    }) {
+      opts.written.tokens = 12;
+      yield { type: 'text', text: 'Recursion is' };
+      res.emit('close');
+      throw opts.signal.reason;
+    });
+
+    await chat(mockReq(), res as unknown as Response, vi.fn());
+
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 1);
+  });
+
+  it('answers the limit with its 429 before asking the model', async () => {
+    mockUsage.hold.mockRejectedValue(new AppError(429, 'Limit reached. It refills at 2026'));
+    const next = vi.fn();
+    const res = mockRes();
+
+    await chat(mockReq(), res as unknown as Response, next);
+
+    expect(mockTutor.askTutor).not.toHaveBeenCalled();
+    expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 429 }));
+    expect(res.write).not.toHaveBeenCalled();
+    expect(mockUsage.release).not.toHaveBeenCalled();
+  });
+
+  it('holds nothing for an admin', async () => {
+    mockUserRepo.getRole.mockResolvedValue('ADMIN');
+    mockUsage.hold.mockResolvedValue(null);
+    mockTutor.askTutor.mockReturnValue(
+      answer({ type: 'text', text: 'Hi' }, { type: 'done', finish: 'complete' }),
+    );
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockUsage.hold).toHaveBeenCalledWith(5, 'tutorMessage', true, 2);
+    expect(mockUsage.release).not.toHaveBeenCalled();
+  });
+
+  it('still says the answer is done when the units cannot be given back', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockUsage.release.mockRejectedValue(new Error('db down'));
+    mockTutor.askTutor.mockReturnValue(
+      answer({ type: 'text', text: 'Hi' }, { type: 'done', finish: 'complete' }),
+    );
+    const res = mockRes();
+
+    await chat(mockReq(), res as unknown as Response, vi.fn());
+
+    expect(written(res).at(-1)).toEqual({ type: 'done', finish: 'complete' });
+    expect(error).toHaveBeenCalled();
+    error.mockRestore();
   });
 });
 
