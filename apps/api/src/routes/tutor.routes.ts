@@ -4,7 +4,7 @@ import { authenticateToken, requireFeatureAccess } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
 import { tutorChatSchema } from '../schemas/tutor.schema.js';
 import { execRateLimitHandler } from './terminal.routes.js';
-import { chat } from '../controllers/tutor.controller.js';
+import { chat, deleteConversation, getConversation } from '../controllers/tutor.controller.js';
 
 // A message can cost up to four Gemini calls (three tool rounds and the answer)
 // against a shared quota, so cap it per user.
@@ -18,6 +18,17 @@ const tutorLimiter = rateLimit({
   handler: execRateLimitHandler,
 });
 
+// Reading and deleting a conversation call no model, so they get the looser
+// cap the other history lists use.
+const conversationLimiter = rateLimit({
+  windowMs: 60_000,
+  /* v8 ignore next -- NODE_ENV ternary evaluated at module load; only the 'test' branch runs in tests. */
+  limit: process.env.NODE_ENV === 'test' ? 10_000 : 60,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req: Request) => String(req.user!.id),
+});
+
 const router = Router();
 
 router.post(
@@ -28,5 +39,12 @@ router.post(
   validateBody(tutorChatSchema),
   chat,
 );
+
+// The general conversation, then one per lesson or algorithm challenge.
+for (const path of ['/conversations/general', '/conversations/:courseKey/:lessonSlug']) {
+  const gate = [authenticateToken, requireFeatureAccess('tutorChat'), conversationLimiter];
+  router.get(path, ...gate, getConversation);
+  router.delete(path, ...gate, deleteConversation);
+}
 
 export default router;
