@@ -279,9 +279,9 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 
 ### Visits
 
-| Method | Endpoint      | Auth     | Description                                                                                          |
-| ------ | ------------- | -------- | ---------------------------------------------------------------------------------------------------- |
-| POST   | `/api/visits` | Optional | The app reports a page it showed (`{ path, referrer? }`), always a 204; bots are left out, 60/min/IP |
+| Method | Endpoint      | Auth     | Description                                                                                           |
+| ------ | ------------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| POST   | `/api/visits` | Optional | The app reports a page it showed (`{ path, referrer? }`), always a 204; bots are left out, 300/min/IP |
 
 ## Database schema
 
