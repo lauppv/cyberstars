@@ -4,9 +4,12 @@ import { MemoryRouter } from 'react-router';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, isLoading: false },
+  tutor: null as null | { open: boolean },
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
+vi.mock('../../context/TutorContext', () => ({ useTutor: () => h.tutor }));
+vi.mock('../tutor/TutorPanel', () => ({ TutorPanel: () => <aside aria-label="Tutor" /> }));
 vi.mock('./Sidebar', () => ({
   Sidebar: ({ state, onNavigate }: { state: string; onNavigate: () => void }) => (
     <aside data-testid="sidebar" data-state={state}>
@@ -41,10 +44,25 @@ beforeEach(() => {
   localStorage.clear();
   wide = true;
   h.auth = { isLoggedIn: true, isLoading: false };
+  h.tutor = null;
   vi.stubGlobal('matchMedia', (q: string) => ({ matches: wide, media: q }));
 });
 
 describe('AppShell', () => {
+  it('puts the open tutor beside the page and makes room for it on a wide screen', () => {
+    h.tutor = { open: true };
+    renderShell('/courses');
+    expect(screen.getByRole('complementary', { name: 'Tutor' })).toBeInTheDocument();
+    expect(screen.getByText(/toggle/).parentElement).toHaveClass('xl:pr-[400px]');
+  });
+
+  it('shows no tutor while its panel is closed', () => {
+    h.tutor = { open: false };
+    renderShell('/courses');
+    expect(screen.queryByRole('complementary', { name: 'Tutor' })).toBeNull();
+    expect(screen.getByText(/toggle/).parentElement).not.toHaveClass('xl:pr-[400px]');
+  });
+
   it('leaves the bare routes without chrome', () => {
     for (const path of ['/getstarted', '/welcome', '/laniakea']) {
       const { unmount } = renderShell(path);
