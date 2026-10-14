@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import type { AdminVisitsDTO } from '@cyberstars/shared/visits';
 
 const getVisits = vi.fn();
@@ -55,7 +55,8 @@ describe('VisitorsSection', () => {
   it('lists the guest visits for the same range, filtered by the sources above', async () => {
     render(<VisitorsSection className="" reload={0} />);
     await screen.findByText('Guest visits');
-    expect(getGuestVisits).toHaveBeenCalledWith(30, undefined);
+    // The list is asked for from an effect, a moment after the heading shows
+    await waitFor(() => expect(getGuestVisits).toHaveBeenCalledWith(30, undefined));
     const filter = screen.getByRole('combobox', { name: 'Where visitors come from' });
     expect([...filter.querySelectorAll('option')].map((o) => o.textContent)).toEqual([
       'All sources',
