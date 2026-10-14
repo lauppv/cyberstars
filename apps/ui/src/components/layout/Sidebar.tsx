@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import {
   BookOpen,
+  BotMessageSquare,
   Braces,
   ChevronsUpDown,
   Gauge,
@@ -25,6 +26,7 @@ import { Avatar } from '../ui/Avatar';
 import { BrandMark } from '../ui/BrandMark';
 import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
+import { useTutor } from '../../context/TutorContext';
 import { useGamification } from '../../hooks/useGamification';
 import { isAdmin } from '@cyberstars/shared/auth';
 import { canAccessFeature } from '@cyberstars/shared/features';
@@ -94,6 +96,31 @@ function NavItem({
         </span>
       )}
     </Link>
+  );
+}
+
+// Opens and closes the tutor's panel beside the page, so it is a button, not a link
+function TutorItem({ onNavigate }: { onNavigate: () => void }) {
+  const { t } = useTranslation();
+  const tutor = useTutor();
+  const open = tutor?.open ?? false;
+  return (
+    <button
+      type="button"
+      aria-pressed={open}
+      onClick={() => {
+        tutor?.toggle();
+        onNavigate();
+      }}
+      className={`${rowClass} w-full text-left border-none cursor-pointer ${
+        open
+          ? 'bg-[var(--surface2)] text-[var(--text)]'
+          : 'bg-transparent text-[var(--text2)] hover:bg-[var(--surface)] hover:text-[var(--text)]'
+      }`}
+    >
+      <BotMessageSquare size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
+      <span className="truncate">{t('tutor.title')}</span>
+    </button>
   );
 }
 
@@ -294,6 +321,11 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
               />
             ) : (
               <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
+            )}
+            {canAccessFeature('tutorChat', user.role, isProd) ? (
+              <TutorItem onNavigate={onNavigate} />
+            ) : (
+              <LockedItem icon={BotMessageSquare} label={t('tutor.title')} />
             )}
           </Section>
         )}

@@ -10,6 +10,7 @@ const h = vi.hoisted(() => ({
     user: null as null | { name: string; email: string; role: string; avatarUrl: string | null },
   },
   messages: { enabled: true, totalUnread: 0 },
+  tutor: { open: false, toggle: vi.fn() },
 }));
 
 vi.mock('react-router', async (importOriginal) => {
@@ -20,6 +21,7 @@ vi.mock('../../context/AuthContext', () => ({
   useAuth: () => ({ ...h.auth, logout: h.logout }),
 }));
 vi.mock('../../context/MessagesContext', () => ({ useMessages: () => h.messages }));
+vi.mock('../../context/TutorContext', () => ({ useTutor: () => h.tutor }));
 vi.mock('../../hooks/useGamification', () => ({
   useGamification: () => ({
     xp: { level: 3, xpIntoLevel: 40, xpForLevelSpan: 500, titleKey: 'level.title.3' },
@@ -47,6 +49,7 @@ beforeEach(() => {
   h.canAccess.mockReturnValue(true);
   h.auth = { user: null };
   h.messages = { enabled: true, totalUnread: 0 };
+  h.tutor = { open: false, toggle: vi.fn() };
   h.logout.mockResolvedValue(undefined);
 });
 
@@ -108,7 +111,27 @@ describe('Sidebar', () => {
     h.canAccess.mockReturnValue(false);
     renderSidebar();
     expect(screen.queryByRole('link', { name: /Messages|Leaderboard|Connections/ })).toBeNull();
-    expect(screen.getAllByText('Coming soon')).toHaveLength(3);
+    expect(screen.queryByRole('button', { name: 'Tutor' })).toBeNull();
+    expect(screen.getAllByText('Coming soon')).toHaveLength(4);
+  });
+
+  it('lists the tutor last in the community group and toggles its panel', () => {
+    h.auth = { user: USER };
+    const onNavigate = renderSidebar();
+    const tutor = screen.getByRole('button', { name: 'Tutor' });
+    const leaderboard = screen.getByRole('link', { name: 'Leaderboard' });
+    expect(leaderboard.compareDocumentPosition(tutor)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(tutor).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(tutor);
+    expect(h.tutor.toggle).toHaveBeenCalled();
+    expect(onNavigate).toHaveBeenCalled();
+  });
+
+  it('marks the tutor while its panel is open', () => {
+    h.auth = { user: USER };
+    h.tutor = { open: true, toggle: vi.fn() };
+    renderSidebar();
+    expect(screen.getByRole('button', { name: 'Tutor' })).toHaveAttribute('aria-pressed', 'true');
   });
 
   it('opens the account menu and navigates from it', () => {
