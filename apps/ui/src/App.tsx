@@ -15,6 +15,7 @@ import { AppShell } from './components/layout/AppShell';
 import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
 import { usePresence } from './hooks/usePresence';
+import { usePageViews } from './hooks/usePageViews';
 import { HomePage } from './pages/HomePage';
 import { langFromPath } from './i18n';
 
@@ -81,6 +82,11 @@ function GlobalRadio() {
   return <RadioPlayer />;
 }
 
+function PageViews() {
+  usePageViews();
+  return null;
+}
+
 // Romanian pages live under /ro. As the router's base it stays out of every
 // route and link in the app, which keep working in both languages unchanged
 const basename = langFromPath(window.location.pathname) === 'ro' ? '/ro' : undefined;
@@ -99,6 +105,7 @@ function App() {
                     <RadioProvider>
                       <UsageProvider>
                         <GlobalRadio />
+                        <PageViews />
                         <AppShell>
                           <Suspense
                             fallback={
