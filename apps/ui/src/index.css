@@ -60,6 +60,13 @@
      3:1 on --panel-bg. */
 }
 
+/* Tailwind's font-sans and font-mono read their own variables. `inline` makes
+   them use ours, so every font-mono in the app follows --mono. */
+@theme inline {
+  --font-sans: var(--font);
+  --font-mono: var(--mono);
+}
+
 html,
 body {
   height: 100%;
