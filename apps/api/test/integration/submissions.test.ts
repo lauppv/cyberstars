@@ -92,6 +92,8 @@ describe('Submission history', () => {
       syntaxError: null,
       structureFailures: [],
       failedCase: { index: 1, visible: true, passed: false, expected: 'b', actual: 'a' },
+      // Read from the lesson's own tests file on disk.
+      comparator: 'trimmed',
     });
   });
 
