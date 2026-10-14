@@ -312,6 +312,7 @@ function referenceKeys(
 function syntaxErrorResponse(spec: LessonTestsSpec, syntaxError: string): RunTestsResponse {
   return {
     status: 'failed',
+    comparator: spec.comparator ?? 'trimmed',
     syntaxError,
     structureFailures: [],
     cases: [],
@@ -331,6 +332,7 @@ function finalResponse(
   return {
     status:
       structureFailures.length === 0 && passedCount === spec.cases.length ? 'passed' : 'failed',
+    comparator: spec.comparator ?? 'trimmed',
     structureFailures,
     cases,
     total: spec.cases.length,

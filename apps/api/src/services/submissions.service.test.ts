@@ -43,6 +43,7 @@ describe('record', () => {
     const failed = { index: 1, visible: true, passed: false, expected: '2', actual: '3' };
     const result: RunTestsResponse = {
       status: 'failed',
+      comparator: 'trimmed',
       structureFailures: [],
       cases: [{ index: 0, visible: true, passed: true }, failed],
       total: 3,
@@ -77,6 +78,7 @@ describe('record', () => {
     mockRepo.createAndPrune.mockResolvedValue({ ...summaryRow, runtimeMs: null });
     const result: RunTestsResponse = {
       status: 'failed',
+      comparator: 'trimmed',
       syntaxError: 'line 1',
       structureFailures: [],
       cases: [],

@@ -5,6 +5,7 @@ import type { RunTestsResponse } from '@cyberstars/shared/tests';
 
 const base: RunTestsResponse = {
   status: 'failed',
+  comparator: 'trimmed',
   structureFailures: [],
   cases: [],
   total: 5,

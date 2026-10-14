@@ -11,6 +11,7 @@ function verdict(passedCount: number, overrides: Partial<RunTestsResponse> = {})
   const passed = passedCount === total;
   return {
     status: passed ? 'passed' : 'failed',
+    comparator: 'trimmed',
     structureFailures: [],
     cases: [
       ...Array.from({ length: passedCount }, (_, index) => ({
