@@ -3,6 +3,7 @@ import { config } from './config/index.js';
 import { destroyAllSessions } from './services/terminal-session.service.js';
 import { drainAll } from './services/code-container.service.js';
 import { attachRunWebSocket } from './services/ws-run.js';
+import { scheduleRollUp } from './services/visits.service.js';
 
 const server = app.listen(config.port, () => {
   console.log(`Server running on http://localhost:${config.port}`);
@@ -10,6 +11,7 @@ const server = app.listen(config.port, () => {
 });
 
 const wss = attachRunWebSocket(server);
+scheduleRollUp();
 
 function shutdown() {
   console.log('Shutting down, cleaning up containers...');

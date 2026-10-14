@@ -6,6 +6,7 @@ import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
+import { VisitorsSection } from '../components/admin/VisitorsSection';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
@@ -29,6 +30,7 @@ export function AdminPage() {
   const [stats, setStats] = useState<AdminStatsDTO | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [reloads, setReloads] = useState(0);
 
   // Client-side guard is UX only; the /api/admin routes are server-authoritative.
   // GuestGate already sends guests to sign-in.
@@ -53,6 +55,7 @@ export function AdminPage() {
 
   const refresh = () => {
     setRefreshing(true);
+    setReloads((n) => n + 1);
     load(true);
   };
 
@@ -131,6 +134,8 @@ export function AdminPage() {
                   )}
                 </div>
               </section>
+
+              <VisitorsSection className={CARD_CLS + ' md:col-span-2'} reload={reloads} />
 
               {/* Progress */}
               <section className={CARD_CLS + ' md:col-span-2'}>
