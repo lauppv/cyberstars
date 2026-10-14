@@ -3,7 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import type { AdminVisitsDTO } from '@cyberstars/shared/visits';
 
 const getVisits = vi.fn();
-vi.mock('../../services/visitsService', () => ({ getVisits }));
+const getGuestVisits = vi.fn();
+vi.mock('../../services/visitsService', () => ({ getVisits, getGuestVisits }));
 
 const { VisitorsSection } = await import('./VisitorsSection');
 
@@ -24,11 +25,13 @@ const dto: AdminVisitsDTO = {
     { key: 'signedIn', visitors: 2, views: 2 },
   ],
   lang: [{ key: 'ro', visitors: 3, views: 4 }],
-  clicks: [],
+  clicks: [{ key: 'run', visitors: 2, views: 5 }],
 };
 
 beforeEach(() => {
   getVisits.mockReset().mockResolvedValue(dto);
+  getGuestVisits.mockReset().mockResolvedValue({ visits: [], next: null });
+  localStorage.clear();
 });
 
 describe('VisitorsSection', () => {
@@ -39,13 +42,40 @@ describe('VisitorsSection', () => {
     expect(screen.getByRole('img', { name: 'Visitors a day' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'New accounts a day' })).toBeInTheDocument();
     expect(screen.getByText('6 views · 4 visitors')).toBeInTheDocument();
-    expect(screen.getByText('Hacker News')).toBeInTheDocument();
-    expect(screen.getByText('Direct')).toBeInTheDocument();
-    expect(screen.getByText('example.org')).toBeInTheDocument();
+    expect(screen.getByText('Hacker News', { selector: 'span' })).toBeInTheDocument();
+    expect(screen.getByText('Direct', { selector: 'span' })).toBeInTheDocument();
+    expect(screen.getByText('example.org', { selector: 'span' })).toBeInTheDocument();
     expect(screen.getByText('Guests 8')).toBeInTheDocument();
     expect(screen.getByText('Signed in 2')).toBeInTheDocument();
     expect(screen.getByText('English 0')).toBeInTheDocument();
     expect(screen.getByText('Romanian 3')).toBeInTheDocument();
+    expect(screen.getByText('5 presses · 2 visits')).toBeInTheDocument();
+  });
+
+  it('lists the guest visits for the same range, filtered by the sources above', async () => {
+    render(<VisitorsSection className="" reload={0} />);
+    await screen.findByText('Guest visits');
+    expect(getGuestVisits).toHaveBeenCalledWith(30, undefined);
+    const filter = screen.getByRole('combobox', { name: 'Where visitors come from' });
+    expect([...filter.querySelectorAll('option')].map((o) => o.textContent)).toEqual([
+      'All sources',
+      'Hacker News',
+      'Direct',
+      'example.org',
+    ]);
+  });
+
+  it('says whether this browser is counted and switches it', async () => {
+    localStorage.setItem('cyberstars.counted', 'no');
+    render(<VisitorsSection className="" reload={0} />);
+    expect(screen.getByText(/This browser isn't counted/)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Count it' }));
+    expect(localStorage.getItem('cyberstars.counted')).toBe('yes');
+    expect(screen.getByText(/This browser's visits are counted/)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Stop counting it' }));
+    expect(localStorage.getItem('cyberstars.counted')).toBe('no');
   });
 
   it('switches to 90 days and loads again on a refresh', async () => {
@@ -66,9 +96,10 @@ describe('VisitorsSection', () => {
     expect(screen.getByText('No data yet')).toBeInTheDocument();
     unmount();
 
-    getVisits.mockResolvedValueOnce({ ...dto, pages: [], sources: [] });
+    getVisits.mockResolvedValueOnce({ ...dto, pages: [], sources: [], clicks: [] });
     render(<VisitorsSection className="" reload={0} />);
     await screen.findByText('Most visited pages');
-    expect(screen.getAllByText('No data yet')).toHaveLength(2);
+    // pages, sources, buttons and the guest visits
+    expect(await screen.findAllByText('No data yet')).toHaveLength(4);
   });
 });
