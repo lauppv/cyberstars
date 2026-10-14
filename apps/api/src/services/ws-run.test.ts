@@ -69,6 +69,7 @@ const {
 } = await import('./ws-run.js');
 
 const { GUEST_RUN_BUDGET, recordGuestRun } = await import('./guest-budget.service.js');
+const { config } = await import('../config/index.js');
 
 class FakeWs extends EventEmitter {
   OPEN = 1;
@@ -457,6 +458,52 @@ describe('attachRunWebSocket', () => {
     expect((server as unknown as EventEmitter).listenerCount('upgrade')).toBe(1);
     handle.close();
     expect((server as unknown as EventEmitter).listenerCount('upgrade')).toBe(0);
+  });
+});
+
+describe('upgrade origin check', () => {
+  /** Sends one /ws/run upgrade with the given Origin header through the router. */
+  function upgradeFrom(origin?: string) {
+    const server = new EventEmitter();
+    attachRunWebSocket(server as unknown as Parameters<typeof attachRunWebSocket>[0]);
+    const ws = new FakeWs();
+    upgradedSocket = ws as unknown as typeof upgradedSocket;
+    const socket = { write: vi.fn(), destroy: vi.fn() };
+    server.emit(
+      'upgrade',
+      {
+        url: '/ws/run',
+        headers: origin === undefined ? {} : { origin },
+        socket: { remoteAddress: '127.0.0.1' },
+      },
+      socket,
+      Buffer.alloc(0),
+    );
+    ws.emit('message', JSON.stringify({ type: 'run', language: 'python', code: 'print(1)' }));
+    return socket;
+  }
+
+  it('refuses a socket opened by a website not on the list', () => {
+    const socket = upgradeFrom('https://evil.example');
+    expect(socket.write).toHaveBeenCalledWith(expect.stringMatching(/^HTTP\/1\.1 403 /));
+    expect(socket.destroy).toHaveBeenCalled();
+    expect(mockRun).not.toHaveBeenCalled();
+  });
+
+  it('refuses the opaque origin of a sandboxed page', () => {
+    upgradeFrom('null');
+    expect(mockRun).not.toHaveBeenCalled();
+  });
+
+  it('accepts a socket opened by a listed website', () => {
+    const socket = upgradeFrom(config.allowedOrigins[0]);
+    expect(socket.destroy).not.toHaveBeenCalled();
+    expect(mockRun).toHaveBeenCalled();
+  });
+
+  it('accepts a client that sends no origin', () => {
+    upgradeFrom(undefined);
+    expect(mockRun).toHaveBeenCalled();
   });
 });
 
