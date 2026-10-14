@@ -22,6 +22,7 @@ const LESSON = { courseKey: 'python', lessonSlug: 'loops', lang: 'en' } as const
 function fullSummary(over: Partial<UsageSummary['showSolution']> = {}): UsageSummary {
   return {
     showSolution: { used: 1, limit: 3, remaining: 2, resetAt: null, unlimited: false, ...over },
+    tutorMessage: { used: 0, limit: 30, remaining: 30, resetAt: null, unlimited: false },
     getHint: { used: 0, limit: 10, remaining: 10, resetAt: null, unlimited: false },
   };
 }
@@ -38,7 +39,7 @@ describe('SolutionConfirmModal', () => {
     const onConfirmed = vi.fn();
     render(<SolutionConfirmModal {...LESSON} onConfirmed={onConfirmed} onClose={vi.fn()} />);
 
-    expect(screen.getByText('1/3')).toBeInTheDocument();
+    expect(screen.getByText('33% used')).toBeInTheDocument();
     fireEvent.click(screen.getByText('Reveal solution'));
 
     await waitFor(() => expect(onConfirmed).toHaveBeenCalledWith('```py\nprint(1)\n```'));

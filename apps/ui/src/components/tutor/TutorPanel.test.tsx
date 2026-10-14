@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, useLocation } from 'react-router';
 import type { TutorMessage, TutorStreamEvent } from '@cyberstars/shared/tutor';
+import type { UsageState } from '@cyberstars/shared/usage';
 import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
@@ -10,9 +11,11 @@ const h = vi.hoisted(() => ({
   getGeneralConversation: vi.fn(),
   deleteGeneralConversation: vi.fn(),
   streamChat: vi.fn(),
+  usage: { summary: null as null | { tutorMessage: UsageState }, refresh: vi.fn() },
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
+vi.mock('../../context/UsageContext', () => ({ useUsage: () => h.usage }));
 vi.mock('@cyberstars/shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));
@@ -99,6 +102,8 @@ beforeEach(() => {
   h.canAccess.mockReturnValue(true);
   h.getGeneralConversation.mockResolvedValue({ messages: [], hasMore: false });
   h.deleteGeneralConversation.mockResolvedValue(undefined);
+  h.usage.summary = null;
+  localStorage.clear();
   vi.stubGlobal(
     'matchMedia',
     vi.fn(() => ({ matches: false })),
@@ -396,5 +401,134 @@ describe('TutorPanel', () => {
     renderTutor();
     fireEvent.click(screen.getByText('toggle'));
     expect(screen.queryByRole('complementary')).toBeNull();
+  });
+});
+
+// The session with `used` of its 30 units gone, refilling at `resetAt`.
+function session(
+  used: number,
+  resetAt: string | null = '2026-10-15T14:30:00.000Z',
+): {
+  tutorMessage: UsageState;
+} {
+  return {
+    tutorMessage: { used, limit: 30, remaining: 30 - used, resetAt, unlimited: false },
+  };
+}
+
+describe('TutorPanel: the 5-hour session', () => {
+  const refill = new Date('2026-10-15T14:30:00.000Z').toLocaleTimeString('en', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  it('says nothing below 90% used', async () => {
+    h.usage.summary = session(26);
+    renderTutor();
+    await openPanel();
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.getByRole('textbox', { name: 'Ask the tutor' })).toBeEnabled();
+  });
+
+  it('shows a notice at 90% used, which stays closed for that window once closed', async () => {
+    h.usage.summary = session(27);
+    const view = renderTutor();
+    await openPanel();
+    expect(
+      screen.getByText(
+        `You've used 90% of this session's tutor messages. They refill at ${refill}.`,
+      ),
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Close notice' }));
+    expect(screen.queryByText(/used 90%/)).toBeNull();
+
+    view.unmount();
+    renderTutor();
+    await openPanel();
+    expect(screen.queryByText(/used 90%/)).toBeNull();
+
+    // The next window's notice is a new one.
+    h.usage.summary = session(28, '2026-10-15T20:00:00.000Z');
+    fireEvent.click(screen.getByText('toggle'));
+    await openPanel();
+    expect(screen.getByText(/used 90%/)).toBeInTheDocument();
+  });
+
+  it('shuts the box at the limit and opens it again when the window ends', async () => {
+    vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout', 'Date'] });
+    vi.setSystemTime(new Date('2026-10-15T14:00:00.000Z'));
+    h.usage.summary = session(30);
+    const view = renderTutor();
+    fireEvent.click(screen.getByText('toggle'));
+    await act(async () => {});
+
+    expect(
+      screen.getByText(`You've used your messages for now. You can chat again at ${refill}.`),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/used 90%/)).toBeNull();
+    expect(screen.getByRole('textbox', { name: 'Ask the tutor' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Send' })).toBeDisabled();
+
+    act(() => vi.advanceTimersByTime(30 * 60 * 1000 - 1));
+    expect(h.usage.refresh).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(1001));
+    expect(h.usage.refresh).toHaveBeenCalledOnce();
+
+    h.usage.summary = session(0, null);
+    view.rerender(
+      <MemoryRouter initialEntries={['/courses']}>
+        <TutorProvider>
+          <Shell />
+        </TutorProvider>
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole('textbox', { name: 'Ask the tutor' })).toBeEnabled();
+    expect(screen.queryByText(/You can chat again/)).toBeNull();
+  });
+
+  it('reads the usage again once an answer has ended', async () => {
+    renderTutor();
+    await openPanel();
+    const reply = answer();
+    type('What is a loop?');
+    await reply.emit({ type: 'text', text: 'A loop repeats.' });
+    expect(h.usage.refresh).not.toHaveBeenCalled();
+    await reply.emit({ type: 'done', finish: 'complete' });
+    await reply.end();
+    expect(h.usage.refresh).toHaveBeenCalledOnce();
+  });
+
+  it('tells a spent session apart from too many messages in a minute', async () => {
+    renderTutor();
+    await openPanel();
+    const reply = answer();
+    type('One more?');
+    await reply.fail(new ApiClientError(429, 'Limit reached. It refills at 2026-10-15T14:30:00Z'));
+
+    expect(screen.getByText("Not sent: you've used your messages for now.")).toBeInTheDocument();
+    expect(screen.queryByText(/Too many messages/)).toBeNull();
+    expect(h.usage.refresh).toHaveBeenCalledOnce();
+  });
+
+  it('offers no Try again while the session is spent', async () => {
+    renderTutor();
+    await openPanel();
+    const reply = answer();
+    type('One more?');
+    h.usage.summary = session(30);
+    await reply.fail(new ApiClientError(429, 'Limit reached. It refills at 2026-10-15T14:30:00Z'));
+
+    expect(screen.queryByRole('button', { name: 'Try again' })).toBeNull();
+  });
+
+  it('never limits an admin', async () => {
+    h.usage.summary = {
+      tutorMessage: { used: 0, limit: 30, remaining: Infinity, resetAt: null, unlimited: true },
+    };
+    renderTutor();
+    await openPanel();
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.getByRole('textbox', { name: 'Ask the tutor' })).toBeEnabled();
   });
 });

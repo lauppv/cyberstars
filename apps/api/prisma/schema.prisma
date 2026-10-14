@@ -115,6 +115,7 @@ model User {
   dailyPicks      DailyPick[]
   submissions     LessonSubmission[]
   tutorMessages   TutorMessage[]
+  usageWindows    UsageWindow[]
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
@@ -254,6 +255,23 @@ model TutorMessage {
 
   @@index([userId, courseKey, lessonSlug, id])
   @@map("tutor_messages")
+}
+
+// What a student has used of a capped feature (Show Solution, the tutor) in its
+// current window. The window opens with the first use after the last one ended
+// and lasts as long as the feature's own window; an ended window counts as
+// unused until the next use opens a new one. One row per student and feature.
+model UsageWindow {
+  userId      Int      @map("user_id")
+  // A UsageAction: showSolution, tutorMessage, getHint
+  action      String   @db.VarChar(30)
+  windowStart DateTime @map("window_start")
+  used        Int
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, action])
+  @@map("usage_windows")
 }
 
 model SupportTicket {

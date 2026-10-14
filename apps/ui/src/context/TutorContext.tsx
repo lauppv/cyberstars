@@ -10,8 +10,10 @@ import {
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from './AuthContext';
+import { useUsage } from './UsageContext';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import type { TutorAnswerEnd, TutorMessage } from '@cyberstars/shared/tutor';
+import { USAGE_LIMIT_ERROR } from '@cyberstars/shared/usage';
 import * as tutorService from '../services/tutorService';
 import { ApiClientError } from '../services/apiClient';
 
@@ -27,7 +29,7 @@ interface PendingAnswer {
 export interface TutorFailure {
   question: string;
   // The i18n key of what went wrong.
-  reason: 'tutor.errorBusy' | 'tutor.errorFailed';
+  reason: 'tutor.errorBusy' | 'tutor.errorLimit' | 'tutor.errorFailed';
   afterWords: boolean;
 }
 
@@ -55,16 +57,17 @@ const TutorContext = createContext<TutorContextValue | null>(null);
 // The chat endpoint only takes a short in-app path.
 const SAFE_PAGE = /^\/[\w\-/]*$/;
 
+// A 429 is either the session spent or too many messages in a minute.
 function reasonOf(err: unknown): TutorFailure['reason'] {
-  return err instanceof ApiClientError && err.status === 429
-    ? 'tutor.errorBusy'
-    : 'tutor.errorFailed';
+  if (!(err instanceof ApiClientError) || err.status !== 429) return 'tutor.errorFailed';
+  return err.message.startsWith(USAGE_LIMIT_ERROR) ? 'tutor.errorLimit' : 'tutor.errorBusy';
 }
 
 export function TutorProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const { pathname } = useLocation();
   const { i18n } = useTranslation();
+  const { refresh: refreshUsage } = useUsage();
   const enabled = !!user && canAccessFeature('tutorChat', user.role, import.meta.env.PROD);
   const userId = user?.id;
 
@@ -188,10 +191,13 @@ export function TutorProvider({ children }: { children: ReactNode }) {
         })
         .finally(() => {
           if (controller.current === abort) controller.current = null;
-          if (!abort.signal.aborted) setPending(null);
+          if (abort.signal.aborted) return;
+          setPending(null);
+          // The message is paid for by now; the panel shows what is left.
+          refreshUsage();
         });
     },
-    [i18n, local, pathname],
+    [i18n, local, pathname, refreshUsage],
   );
 
   const retry = useCallback(() => {

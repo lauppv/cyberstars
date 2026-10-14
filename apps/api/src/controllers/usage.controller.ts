@@ -14,7 +14,7 @@ export async function getUsage(req: Request, res: Response, next: NextFunction) 
   try {
     const userId = req.user!.id;
     const admin = isAdmin(await userRepo.getRole(userId));
-    res.json(getSummary(userId, admin));
+    res.json(await getSummary(userId, admin));
   } catch (err) {
     next(err);
   }
@@ -36,7 +36,10 @@ export async function revealSolution(req: Request, res: Response, next: NextFunc
 
     const userId = req.user!.id;
     const admin = isAdmin(await userRepo.getRole(userId));
-    const reveal: SolutionReveal = { solution, usage: consume(userId, 'showSolution', admin) };
+    const reveal: SolutionReveal = {
+      solution,
+      usage: await consume(userId, 'showSolution', admin),
+    };
     res.json(reveal);
   } catch (err) {
     next(err);

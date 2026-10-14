@@ -1,13 +1,29 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
 import { useTutor } from '../../context/TutorContext';
+import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorStatus } from './TutorStatus';
 
 // Close enough to the bottom to count as following the conversation.
 const FOLLOW_PX = 80;
+
+// The 90% notice, once closed, stays closed until the window it was about
+// ends: this keeps that window's refill time.
+const NOTICE_KEY = 'cyberstars.tutorNotice';
+
+function closedNotice(): string | null {
+  try {
+    return localStorage.getItem(NOTICE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+// setTimeout can't wait longer than this.
+const MAX_DELAY_MS = 2 ** 31 - 1;
 
 function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
   return (
@@ -37,10 +53,12 @@ function Answer({ message, onInAppLink }: { message: TutorMessage; onInAppLink: 
 }
 
 export function TutorPanel() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const tutor = useTutor()!;
   const { messages, pending, failure } = tutor;
+  const { summary, refresh } = useUsage();
   const [draft, setDraft] = useState('');
+  const [noticeClosedFor, setNoticeClosedFor] = useState(closedNotice);
   const scrollRef = useRef<HTMLDivElement>(null);
   const following = useRef(true);
   // Height and position before older messages go in on top, so the view can
@@ -58,10 +76,37 @@ export function TutorPanel() {
     }
   }, [messages, pending, failure]);
 
+  // The 5-hour session: a notice at 90% used, and the box shut at the limit
+  // until the window ends.
+  const session = summary?.tutorMessage;
+  const refillAt = session && !session.unlimited ? session.resetAt : null;
+  const limited = !!refillAt && session!.remaining <= 0;
+  const nearly = !!refillAt && !limited && session!.used >= session!.limit * 0.9;
+  const refillTime = refillAt
+    ? new Date(refillAt).toLocaleTimeString(i18n.language, { hour: '2-digit', minute: '2-digit' })
+    : '';
+
+  // When the window ends, read the usage again, so the box opens without a reload.
+  useEffect(() => {
+    if (!refillAt) return;
+    const wait = Math.max(0, Date.parse(refillAt) - Date.now()) + 1000;
+    const timer = setTimeout(refresh, Math.min(wait, MAX_DELAY_MS));
+    return () => clearTimeout(timer);
+  }, [refillAt, refresh]);
+
+  function closeNotice() {
+    setNoticeClosedFor(refillAt);
+    try {
+      localStorage.setItem(NOTICE_KEY, refillAt!);
+    } catch {
+      // Without storage the notice stays closed until the panel remounts.
+    }
+  }
+
   const busy = pending !== null;
 
   function submit() {
-    if (!draft.trim() || busy) return;
+    if (!draft.trim() || busy || limited) return;
     following.current = true;
     tutor.send(draft);
     setDraft('');
@@ -116,6 +161,24 @@ export function TutorPanel() {
         </button>
       </header>
 
+      {nearly && noticeClosedFor !== refillAt && (
+        <div
+          role="status"
+          className="flex items-start gap-2 mx-4 mt-3 px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--glass)] text-[12px] text-[var(--text2)] flex-shrink-0"
+        >
+          <span className="flex-1">{t('tutor.nearlyUsed', { time: refillTime })}</span>
+          <button
+            type="button"
+            onClick={closeNotice}
+            title={t('tutor.closeNotice')}
+            aria-label={t('tutor.closeNotice')}
+            className="p-0.5 rounded-[var(--radius-sm)] bg-transparent border-none text-[var(--text3)] hover:text-[var(--text)] transition cursor-pointer flex-shrink-0"
+          >
+            <X size={14} strokeWidth={1.75} />
+          </button>
+        </div>
+      )}
+
       <div
         ref={scrollRef}
         onScroll={(e) => {
@@ -150,7 +213,7 @@ export function TutorPanel() {
         {failure && (
           <div className="flex items-center gap-3">
             <Note>{t(failure.reason)}</Note>
-            {!busy && (
+            {!busy && !limited && (
               <button
                 type="button"
                 onClick={tutor.retry}
@@ -174,8 +237,16 @@ export function TutorPanel() {
         )}
       </div>
 
+      {limited && (
+        <p
+          role="status"
+          className="px-4 pt-3 text-[12px] text-[var(--text2)] border-t border-[var(--border)] flex-shrink-0"
+        >
+          {t('tutor.limitReached', { time: refillTime })}
+        </p>
+      )}
       <form
-        className="flex items-end gap-2 p-3 border-t border-[var(--border)] flex-shrink-0"
+        className={`flex items-end gap-2 p-3 flex-shrink-0 ${limited ? '' : 'border-t border-[var(--border)]'}`}
         onSubmit={(e) => {
           e.preventDefault();
           submit();
@@ -191,14 +262,15 @@ export function TutorPanel() {
             }
           }}
           rows={2}
+          disabled={limited}
           maxLength={TUTOR_MESSAGE_MAX_LENGTH}
           placeholder={t('tutor.placeholder')}
           aria-label={t('tutor.placeholder')}
-          className="flex-1 resize-none max-h-40 min-h-[40px] px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-none focus:border-[var(--accent)]/60"
+          className="flex-1 resize-none max-h-40 min-h-[40px] px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-none focus:border-[var(--accent)]/60 disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <button
           type="submit"
-          disabled={!draft.trim() || busy}
+          disabled={!draft.trim() || busy || limited}
           className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
         >
           {t('tutor.send')}

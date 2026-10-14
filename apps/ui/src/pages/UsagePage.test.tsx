@@ -7,7 +7,10 @@ vi.mock('../components/layout/Topbar', () => ({
 }));
 
 const mockRefresh = vi.fn();
-let mockAuth = { isLoggedIn: true };
+let mockAuth: { isLoggedIn: boolean; user?: { role: string } } = {
+  isLoggedIn: true,
+  user: { role: 'USER' },
+};
 let mockUsage: {
   summary: unknown;
   loading: boolean;
@@ -33,7 +36,7 @@ function renderPage() {
 
 beforeEach(() => {
   mockRefresh.mockClear();
-  mockAuth = { isLoggedIn: true };
+  mockAuth = { isLoggedIn: true, user: { role: 'USER' } };
   mockUsage = { summary: null, loading: false };
 });
 
@@ -41,7 +44,7 @@ describe('UsagePage', () => {
   it('shows a sign-in prompt when logged out', () => {
     mockAuth = { isLoggedIn: false };
     renderPage();
-    expect(screen.getByText('Sign in to see your daily usage.')).toBeInTheDocument();
+    expect(screen.getByText('Sign in to see your usage.')).toBeInTheDocument();
     expect(mockRefresh).not.toHaveBeenCalled();
   });
 
@@ -57,18 +60,32 @@ describe('UsagePage', () => {
     expect(screen.queryByText('Show Solution')).not.toBeInTheDocument();
   });
 
-  it('renders both usage meters when a summary is present', () => {
-    mockUsage = {
-      loading: false,
-      summary: {
-        showSolution: { used: 1, limit: 3, remaining: 2, resetAt: null, unlimited: false },
-        getHint: { used: 4, limit: 10, remaining: 6, resetAt: null, unlimited: false },
-      },
-    };
+  const summary = {
+    showSolution: { used: 1, limit: 3, remaining: 2, resetAt: null, unlimited: false },
+    tutorMessage: { used: 27, limit: 30, remaining: 3, resetAt: null, unlimited: false },
+    getHint: { used: 4, limit: 10, remaining: 6, resetAt: null, unlimited: false },
+  };
+
+  it('shows each allowance as a share used, with its window', () => {
+    mockUsage = { loading: false, summary };
     renderPage();
+    expect(screen.getByRole('heading', { name: 'Usage' })).toBeInTheDocument();
     expect(screen.getByText('Show Solution')).toBeInTheDocument();
+    expect(screen.getByText('Tutor messages')).toBeInTheDocument();
     expect(screen.getByText('AI hints')).toBeInTheDocument();
-    expect(screen.getByText('1/3')).toBeInTheDocument();
-    expect(screen.getByText('4/10')).toBeInTheDocument();
+    expect(screen.getByText('33% used')).toBeInTheDocument();
+    expect(screen.getByText('90% used')).toBeInTheDocument();
+    expect(screen.getByText('40% used')).toBeInTheDocument();
+    expect(screen.getAllByText('· 24 hours', { exact: false })).toHaveLength(2);
+    expect(screen.getByText('· 5 hours', { exact: false })).toBeInTheDocument();
+  });
+
+  it('leaves the tutor out for a student who cannot open it yet', () => {
+    vi.stubEnv('PROD', true);
+    mockUsage = { loading: false, summary };
+    renderPage();
+    expect(screen.queryByText('Tutor messages')).not.toBeInTheDocument();
+    expect(screen.getByText('Show Solution')).toBeInTheDocument();
+    vi.unstubAllEnvs();
   });
 });

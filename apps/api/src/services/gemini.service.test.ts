@@ -209,6 +209,25 @@ describe('converseStream', () => {
     expect(body.generationConfig).toEqual({ temperature: 0.5, maxOutputTokens: 600 });
   });
 
+  it('passes on how many tokens the turn has written so far', async () => {
+    fetchMock.mockResolvedValue(
+      sseResponse([
+        event({
+          candidates: [{ content: { parts: [{ text: 'A loop ' }] } }],
+          usageMetadata: { promptTokenCount: 900, candidatesTokenCount: 2 },
+        }),
+        event({
+          candidates: [{ content: { parts: [{ text: 'repeats.' }] }, finishReason: 'STOP' }],
+          usageMetadata: { promptTokenCount: 900, candidatesTokenCount: 4 },
+        }),
+      ]),
+    );
+
+    const chunks = (await collect(converseStream(opts))) as { outputTokens?: number }[];
+
+    expect(chunks.map((c) => c.outputTokens)).toEqual([2, 4]);
+  });
+
   it('puts back together a line split between two reads', async () => {
     const line = event({ candidates: [{ content: { parts: [{ text: 'Once upon' }] } }] });
     fetchMock.mockResolvedValue(

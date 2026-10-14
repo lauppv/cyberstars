@@ -214,3 +214,83 @@ describe('Tutor conversations', () => {
     expect(await prisma.tutorMessage.count({ where: { userId } })).toBe(0);
   });
 });
+
+// An answer of `tokens` tokens, as Gemini counts them.
+function answerOf(tokens: number): Response {
+  const event = {
+    candidates: [
+      { content: { role: 'model', parts: [{ text: 'An answer.' }] }, finishReason: 'STOP' },
+    ],
+    usageMetadata: { promptTokenCount: 500, candidatesTokenCount: tokens },
+  };
+  return new Response(`data: ${JSON.stringify(event)}\r\n\r\n`, {
+    headers: { 'Content-Type': 'text/event-stream' },
+  });
+}
+
+describe('Tutor session', () => {
+  async function used(email: string): Promise<number> {
+    const row = await prisma.usageWindow.findUnique({
+      where: { userId_action: { userId: await userIdFor(email), action: 'tutorMessage' } },
+    });
+    return row?.used ?? 0;
+  }
+
+  it('answers 30 short answers in a window, then refuses with the refill time', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    reply = () => answerOf(60);
+
+    for (let i = 0; i < 30; i++) await ask(a, {}).expect(200);
+    const refused = await ask(a, {}).expect(429);
+
+    expect(refused.body.error).toMatch(/^Limit reached\. It refills at /);
+    expect(sent).toHaveLength(30);
+    expect(await used(email)).toBe(30);
+    const usage = await a.get('/api/usage').expect(200);
+    expect(usage.body.tutorMessage).toMatchObject({ used: 30, limit: 30, remaining: 0 });
+  });
+
+  it('answers 15 long answers in a window', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    reply = () => answerOf(301);
+
+    for (let i = 0; i < 15; i++) await ask(a, {}).expect(200);
+    await ask(a, {}).expect(429);
+
+    expect(await used(email)).toBe(30);
+  });
+
+  it('answers with the last unit left, even at length', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    reply = () => answerOf(301);
+    for (let i = 0; i < 14; i++) await ask(a, {}).expect(200);
+    reply = () => answerOf(60);
+    await ask(a, {}).expect(200);
+    expect(await used(email)).toBe(29);
+
+    reply = () => answerOf(301);
+    await ask(a, {}).expect(200);
+
+    expect(await used(email)).toBe(30);
+    await ask(a, {}).expect(429);
+  });
+
+  it('uses no units when the model fails before any words', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    reply = () => new Response('{"error":{"message":"boom"}}', { status: 500 });
+
+    await ask(a, {}).expect(502);
+
+    expect(await used(email)).toBe(0);
+  });
+
+  it('shares one session between the general conversation and every lesson', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    reply = () => answerOf(60);
+
+    await ask(a, {}).expect(200);
+    await ask(a, { lesson }).expect(200);
+
+    expect(await used(email)).toBe(2);
+  });
+});
