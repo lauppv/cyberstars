@@ -24,6 +24,7 @@ const dto: AdminVisitsDTO = {
     { key: 'signedIn', visitors: 2, views: 2 },
   ],
   lang: [{ key: 'ro', visitors: 3, views: 4 }],
+  clicks: [],
 };
 
 beforeEach(() => {

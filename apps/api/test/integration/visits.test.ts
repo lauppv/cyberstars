@@ -114,6 +114,103 @@ describe('Visitor counts', () => {
     expect(res.body.days.at(-1)).toMatchObject({ visitors: 1, views: 1 });
   });
 
+  it("keeps a guest's pages, clicks and scrolls as one visit, in order", async () => {
+    const guest = agent();
+    await visit(guest, { path: '/', referrer: 'old.reddit.com' });
+    await guest
+      .post('/api/visits/steps')
+      .set('User-Agent', BROWSER)
+      .send({ steps: [{ kind: 'scroll', target: '75' }] })
+      .expect(204);
+    await visit(guest, { path: '/courses', steps: [{ kind: 'click', target: 'start-learning' }] });
+
+    const res = await (await admin()).get('/api/admin/visits/guests').expect(200);
+    expect(res.body).toEqual({
+      visits: [
+        {
+          id: expect.any(Number),
+          day: today(),
+          source: 'reddit',
+          lang: 'en',
+          steps: [
+            { kind: 'page', target: '/' },
+            { kind: 'scroll', target: '75' },
+            { kind: 'click', target: 'start-learning' },
+            { kind: 'page', target: '/courses' },
+          ],
+        },
+      ],
+      next: null,
+    });
+    const totals = await (await admin()).get('/api/admin/visits').expect(200);
+    expect(totals.body.clicks).toEqual([{ key: 'start-learning', visitors: 1, views: 1 }]);
+  });
+
+  it('gives a student no visit, but keeps what a guest pressed on the way to an account', async () => {
+    const { agent: student } = await createAuthenticatedAgent();
+    await visit(student, { path: '/lesson/python/print' }, 'Student browser');
+    expect(await prisma.guestVisit.count()).toBe(0);
+
+    const guest = agent();
+    await visit(guest, { path: '/getstarted' }, 'Guest browser');
+    await guest
+      .post('/auth/signup')
+      .send({ name: 'Ana', email: 'ana@test.com', password: 'password123' })
+      .expect(200);
+    await visit(
+      guest,
+      { path: '/lesson/python/print', steps: [{ kind: 'click', target: 'sign-up' }] },
+      'Guest browser',
+    );
+
+    const steps = await prisma.visitStep.findMany({ orderBy: { id: 'asc' } });
+    expect(steps.map((s) => s.target)).toEqual(['/getstarted', 'sign-up']);
+  });
+
+  it('refuses steps that carry text', async () => {
+    await agent()
+      .post('/api/visits/steps')
+      .set('User-Agent', BROWSER)
+      .send({ steps: [{ kind: 'click', target: 'My name is Ana' }] })
+      .expect(400);
+  });
+
+  it("keeps a finished day's guest visits without their hash, for 90 days", async () => {
+    const day = (n: number) => new Date(asDate(today()).getTime() - n * 86_400_000);
+    await prisma.guestVisit.create({
+      data: { day: day(1), visitor: 'a'.repeat(64), source: 'google', lang: 'en' },
+    });
+    await prisma.guestVisit.create({
+      data: { day: day(89), visitor: null, source: null, lang: 'en' },
+    });
+    await prisma.guestVisit.create({
+      data: {
+        day: day(90),
+        visitor: null,
+        source: null,
+        lang: 'en',
+        steps: { create: [{ kind: 'page', target: '/' }] },
+      },
+    });
+    await visit(agent(), { path: '/' });
+
+    await rollUp();
+
+    const left = await prisma.guestVisit.findMany({ orderBy: { day: 'asc' } });
+    expect(left.map((v) => [v.day, v.visitor === null])).toEqual([
+      [day(89), true],
+      [day(1), true],
+      [asDate(today()), false], // today's still has its hash
+    ]);
+    expect(await prisma.visitStep.count()).toBe(1); // the expired visit's step went with it
+  });
+
+  it('only an admin sees the guest visits', async () => {
+    const { agent: user } = await createAuthenticatedAgent();
+    await user.get('/api/admin/visits/guests').expect(403);
+    await agent().get('/api/admin/visits/guests').expect(401);
+  });
+
   it('puts an account made at 23:30 UTC on the next day, in Romania', async () => {
     const { email } = await createAuthenticatedAgent();
     const id = await userIdFor(email);

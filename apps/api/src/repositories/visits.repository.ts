@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import type { VisitCount, VisitStep } from '@cyberstars/shared/visits';
 
 export interface PageVisitRow {
   day: Date;
@@ -20,6 +21,42 @@ export interface TotalRow {
 
 export function addVisit(row: PageVisitRow) {
   return prisma.pageVisit.create({ data: row });
+}
+
+const isoDay = (day: Date) => day.toISOString().slice(0, 10);
+
+// A guest's visit for the day, made on their first page. A later page that
+// brings a source fills it in when the first had none. One INSERT ... ON
+// CONFLICT, so two first pages at once still make one visit.
+export async function guestVisitFor(
+  day: Date,
+  visitor: string,
+  source: string | null,
+  lang: string,
+): Promise<number> {
+  const [row] = await prisma.$queryRaw<{ id: number }[]>`
+    INSERT INTO guest_visits (day, visitor, source, lang)
+    VALUES (${isoDay(day)}::date, ${visitor}, ${source}, ${lang})
+    ON CONFLICT (day, visitor) DO UPDATE SET source = COALESCE(guest_visits.source, EXCLUDED.source)
+    RETURNING id
+  `;
+  return row.id;
+}
+
+// The guest visit this visitor already has today, if any.
+export async function guestVisitId(day: Date, visitor: string): Promise<number | null> {
+  const row = await prisma.guestVisit.findFirst({ where: { day, visitor }, select: { id: true } });
+  return row?.id ?? null;
+}
+
+export function countSteps(visitId: number): Promise<number> {
+  return prisma.visitStep.count({ where: { visitId } });
+}
+
+export function addSteps(visitId: number, steps: VisitStep[]) {
+  return prisma.visitStep.createMany({
+    data: steps.map((step) => ({ visitId, kind: step.kind, target: step.target })),
+  });
 }
 
 // The day's salt, made on the first visit of the day. The empty update makes
@@ -56,8 +93,9 @@ function totalsFrom(where: Prisma.Sql) {
 }
 
 // Turns every day before `today` into totals and deletes its visits and salt,
-// all or nothing, so a crash halfway never loses a day or counts it twice.
-export async function rollUpBefore(today: Date): Promise<void> {
+// all or nothing, so a crash halfway never loses a day or counts it twice. Its
+// guest visits stay, without their hash, until they're older than `keepFrom`.
+export async function rollUpBefore(today: Date, keepFrom: Date): Promise<void> {
   const before = Prisma.sql`day < ${today}`;
   await prisma.$transaction([
     prisma.$executeRaw`
@@ -67,6 +105,11 @@ export async function rollUpBefore(today: Date): Promise<void> {
     `,
     prisma.pageVisit.deleteMany({ where: { day: { lt: today } } }),
     prisma.visitSalt.deleteMany({ where: { day: { lt: today } } }),
+    prisma.guestVisit.updateMany({
+      where: { day: { lt: today }, visitor: { not: null } },
+      data: { visitor: null },
+    }),
+    prisma.guestVisit.deleteMany({ where: { day: { lt: keepFrom } } }),
   ]);
 }
 
@@ -90,4 +133,40 @@ export function newAccountsSince(from: Date): Promise<{ day: Date; count: number
     WHERE (created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Bucharest')::date >= ${from}
     GROUP BY 1
   `);
+}
+
+// The buttons guests pressed since `from`: in how many visits, and how often.
+export function topClicksSince(from: Date, limit: number): Promise<VisitCount[]> {
+  return prisma.$queryRaw<VisitCount[]>(Prisma.sql`
+    SELECT s.target AS key, COUNT(DISTINCT s.visit_id)::int AS visitors, COUNT(*)::int AS views
+    FROM visit_steps s JOIN guest_visits v ON v.id = s.visit_id
+    WHERE v.day >= ${from} AND s.kind = 'click'
+    GROUP BY s.target
+    ORDER BY views DESC, key
+    LIMIT ${limit}
+  `);
+}
+
+// Guest visits since `from`, newest first, each with its steps in order.
+// before is the id the page starts under; source keeps only visits from there.
+export function guestVisitsSince(
+  from: Date,
+  { source, before, take }: { source?: string; before?: number; take: number },
+) {
+  return prisma.guestVisit.findMany({
+    where: {
+      day: { gte: from },
+      ...(source !== undefined && { source }),
+      ...(before !== undefined && { id: { lt: before } }),
+    },
+    orderBy: { id: 'desc' },
+    take,
+    select: {
+      id: true,
+      day: true,
+      source: true,
+      lang: true,
+      steps: { select: { kind: true, target: true }, orderBy: { id: 'asc' } },
+    },
+  });
 }
