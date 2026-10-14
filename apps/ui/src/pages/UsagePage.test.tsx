@@ -62,6 +62,7 @@ describe('UsagePage', () => {
       loading: false,
       summary: {
         showSolution: { used: 1, limit: 3, remaining: 2, resetAt: null, unlimited: false },
+        tutorMessage: { used: 0, limit: 30, remaining: 30, resetAt: null, unlimited: false },
         getHint: { used: 4, limit: 10, remaining: 6, resetAt: null, unlimited: false },
       },
     };

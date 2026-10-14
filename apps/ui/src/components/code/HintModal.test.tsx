@@ -20,6 +20,7 @@ import { HintModal } from './HintModal';
 function summary(over: Partial<UsageSummary['getHint']> = {}): UsageSummary {
   return {
     showSolution: { used: 0, limit: 3, remaining: 3, resetAt: null, unlimited: false },
+    tutorMessage: { used: 0, limit: 30, remaining: 30, resetAt: null, unlimited: false },
     getHint: { used: 0, limit: 10, remaining: 10, resetAt: null, unlimited: false, ...over },
   };
 }

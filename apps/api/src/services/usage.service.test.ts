@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AppError } from '../middleware/errorHandler.js';
-import { USAGE_LIMITS, USAGE_WINDOW_MS } from '@cyberstars/shared/usage';
+import { USAGE_LIMITS, USAGE_WINDOWS_MS } from '@cyberstars/shared/usage';
+
+const DAY = USAGE_WINDOWS_MS.showSolution;
 
 const mockRepo = { listForUser: vi.fn(), take: vi.fn(), giveBack: vi.fn() };
 vi.mock('../repositories/usage.repository.js', () => mockRepo);
@@ -39,18 +41,33 @@ describe('getSummary', () => {
     expect(summary.getHint).toMatchObject({
       used: 4,
       remaining: USAGE_LIMITS.getHint - 4,
-      resetAt: new Date(windowStart.getTime() + USAGE_WINDOW_MS).toISOString(),
+      resetAt: new Date(windowStart.getTime() + DAY).toISOString(),
     });
     expect(summary.showSolution.used).toBe(0);
   });
 
   it('counts an ended window as unused', async () => {
-    const windowStart = new Date(NOW.getTime() - USAGE_WINDOW_MS);
+    const windowStart = new Date(NOW.getTime() - DAY);
     mockRepo.listForUser.mockResolvedValue([{ action: 'showSolution', windowStart, used: 3 }]);
 
     const summary = await getSummary(1, false);
 
     expect(summary.showSolution).toMatchObject({ used: 0, remaining: 3, resetAt: null });
+  });
+
+  it('gives the tutor session its own 5-hour window', async () => {
+    const windowStart = new Date(NOW.getTime() - 60_000);
+    mockRepo.listForUser.mockResolvedValue([{ action: 'tutorMessage', windowStart, used: 27 }]);
+
+    const summary = await getSummary(1, false);
+
+    expect(USAGE_WINDOWS_MS.tutorMessage).toBe(5 * 60 * 60 * 1000);
+    expect(summary.tutorMessage).toMatchObject({
+      used: 27,
+      limit: 30,
+      remaining: 3,
+      resetAt: new Date(windowStart.getTime() + USAGE_WINDOWS_MS.tutorMessage).toISOString(),
+    });
   });
 
   it('is unlimited for admins, without reading the table', async () => {
@@ -71,15 +88,25 @@ describe('hold', () => {
       'showSolution',
       1,
       USAGE_LIMITS.showSolution,
-      USAGE_WINDOW_MS,
+      DAY,
       NOW,
     );
     expect(held).toEqual({ userId: 2, action: 'showSolution', windowStart: NOW, units: 1 });
   });
 
   it('keeps however many were left when fewer than asked', async () => {
-    mockRepo.take.mockResolvedValue({ windowStart: NOW, used: 10, taken: 1 });
-    const held = await hold(2, 'getHint', false, 2);
+    mockRepo.take.mockResolvedValue({ windowStart: NOW, used: 30, taken: 1 });
+
+    const held = await hold(2, 'tutorMessage', false, 2);
+
+    expect(mockRepo.take).toHaveBeenCalledWith(
+      2,
+      'tutorMessage',
+      2,
+      30,
+      USAGE_WINDOWS_MS.tutorMessage,
+      NOW,
+    );
     expect(held?.units).toBe(1);
   });
 
@@ -92,7 +119,7 @@ describe('hold', () => {
     expect(err).toBeInstanceOf(AppError);
     expect((err as AppError).statusCode).toBe(429);
     expect((err as AppError).message).toBe(
-      `Limit reached. It refills at ${new Date(windowStart.getTime() + USAGE_WINDOW_MS).toISOString()}`,
+      `Limit reached. It refills at ${new Date(windowStart.getTime() + DAY).toISOString()}`,
     );
   });
 
@@ -129,7 +156,7 @@ describe('consume', () => {
 
     const summary = await consume(3, 'showSolution', false);
 
-    expect(mockRepo.take).toHaveBeenCalledWith(3, 'showSolution', 1, 3, USAGE_WINDOW_MS, NOW);
+    expect(mockRepo.take).toHaveBeenCalledWith(3, 'showSolution', 1, 3, DAY, NOW);
     expect(summary.showSolution.used).toBe(1);
   });
 });

@@ -3,16 +3,16 @@ import * as usageRepo from '../repositories/usage.repository.js';
 import {
   USAGE_ACTIONS,
   USAGE_LIMITS,
-  USAGE_WINDOW_MS,
+  USAGE_WINDOWS_MS,
   type UsageAction,
   type UsageState,
   type UsageSummary,
 } from '@cyberstars/shared/usage';
 
-// Per-user rolling windows for the capped features (Show Solution, AI hints),
-// kept in the database so a deploy or a crash hands nobody a fresh allowance.
-// A window opens with the first use and its units refill all at once when it
-// ends. Admins/founder are unlimited and never touch the table.
+// Per-user rolling windows for the capped features (Show Solution, the tutor,
+// AI hints), kept in the database so a deploy or a crash hands nobody a fresh
+// allowance. A window opens with the first use and its units refill all at once
+// when it ends. Admins/founder are unlimited and never touch the table.
 
 function stateOf(
   action: UsageAction,
@@ -24,7 +24,7 @@ function stateOf(
   if (isAdmin) {
     return { used: 0, limit, remaining: Infinity, resetAt: null, unlimited: true };
   }
-  const resetAt = row ? row.windowStart.getTime() + USAGE_WINDOW_MS : 0;
+  const resetAt = row ? row.windowStart.getTime() + USAGE_WINDOWS_MS[action] : 0;
   const live = row && resetAt > now;
   const used = live ? row.used : 0;
   return {
@@ -74,11 +74,11 @@ export async function hold(
     action,
     want,
     USAGE_LIMITS[action],
-    USAGE_WINDOW_MS,
+    USAGE_WINDOWS_MS[action],
     new Date(),
   );
   if (taken === 0) {
-    const refillAt = new Date(windowStart.getTime() + USAGE_WINDOW_MS).toISOString();
+    const refillAt = new Date(windowStart.getTime() + USAGE_WINDOWS_MS[action]).toISOString();
     throw new AppError(429, `Limit reached. It refills at ${refillAt}`);
   }
   return { userId, action, windowStart, units: taken };
