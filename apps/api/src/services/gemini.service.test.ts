@@ -11,8 +11,7 @@ vi.mock('../config/index.js', () => ({
   },
 }));
 
-const { isGeminiConfigured, generateText, converse, converseStream } =
-  await import('./gemini.service.js');
+const { isGeminiConfigured, generateText, converseStream } = await import('./gemini.service.js');
 
 function jsonResponse(body: unknown, status = 200): Response {
   return {
@@ -301,75 +300,5 @@ describe('converseStream', () => {
     leave.abort();
 
     await expect(pending).rejects.toThrow();
-  });
-});
-
-describe('converse', () => {
-  const tool: FunctionDeclaration = { name: 'search_lessons', description: 'find lessons' };
-  const contents: GeminiContent[] = [
-    { role: 'user', parts: [{ text: 'which lesson has loops?' }] },
-  ];
-  const opts = {
-    system: 'be kind',
-    contents,
-    tools: [tool],
-    allowTools: true,
-    maxOutputTokens: 600,
-    temperature: 0.5,
-  };
-
-  it('sends the conversation with its tools and returns the model turn as it came', async () => {
-    const parts: GeminiPart[] = [
-      {
-        functionCall: { name: 'search_lessons', args: { query: 'loops' }, id: 'c1' },
-        thoughtSignature: 'sig',
-      },
-    ];
-    fetchMock.mockResolvedValue(
-      jsonResponse({ candidates: [{ content: { role: 'model', parts }, finishReason: 'STOP' }] }),
-    );
-
-    await expect(converse(opts)).resolves.toEqual({
-      content: { role: 'model', parts },
-      finishReason: 'STOP',
-    });
-
-    const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-    expect(body.systemInstruction.parts[0].text).toBe('be kind');
-    expect(body.contents).toEqual(opts.contents);
-    expect(body.tools).toEqual([{ functionDeclarations: [tool] }]);
-    expect(body.toolConfig).toEqual({ functionCallingConfig: { mode: 'AUTO' } });
-    expect(body.generationConfig).toEqual({ temperature: 0.5, maxOutputTokens: 600 });
-  });
-
-  it('asks for words only once tools are no longer allowed', async () => {
-    fetchMock.mockResolvedValue(jsonResponse({ candidates: [] }));
-
-    await converse({ ...opts, allowTools: false });
-
-    const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-    expect(body.toolConfig).toEqual({ functionCallingConfig: { mode: 'NONE' } });
-  });
-
-  it('returns an empty turn when the response carries no candidates', async () => {
-    fetchMock.mockResolvedValue(jsonResponse({}));
-
-    await expect(converse(opts)).resolves.toEqual({
-      content: { role: 'model', parts: [] },
-      finishReason: '',
-    });
-  });
-
-  it('retries a busy model once, like a single text call', async () => {
-    fetchMock
-      .mockResolvedValueOnce(jsonResponse({ error: 'unavailable' }, 503))
-      .mockResolvedValueOnce(
-        jsonResponse({ candidates: [{ content: { parts: [{ text: 'hi' }] } }] }),
-      );
-
-    const turn = await converse(opts);
-
-    expect(turn.content.parts).toEqual([{ text: 'hi' }]);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 });

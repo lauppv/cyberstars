@@ -111,30 +111,6 @@ interface ConverseOptions {
   signal: AbortSignal;
 }
 
-export interface GeminiTurn {
-  content: GeminiContent;
-  finishReason: string;
-}
-
-// One model turn of a conversation that may call tools. The caller runs any
-// functionCall parts and sends their results back as the next user turn.
-export async function converse(
-  opts: Omit<ConverseOptions, 'retryBusy' | 'signal'>,
-): Promise<GeminiTurn> {
-  const data = await generate({
-    systemInstruction: { parts: [{ text: opts.system }] },
-    contents: opts.contents,
-    tools: [{ functionDeclarations: opts.tools }],
-    toolConfig: { functionCallingConfig: { mode: opts.allowTools ? 'AUTO' : 'NONE' } },
-    generationConfig: { temperature: opts.temperature, maxOutputTokens: opts.maxOutputTokens },
-  });
-  const candidate = data.candidates?.[0];
-  return {
-    content: { role: 'model', parts: candidate?.content?.parts ?? [] },
-    finishReason: candidate?.finishReason ?? '',
-  };
-}
-
 // One piece of a streamed turn, as Gemini sends it.
 interface GeminiChunk {
   parts: GeminiPart[];
