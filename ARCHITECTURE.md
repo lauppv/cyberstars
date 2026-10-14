@@ -272,9 +272,16 @@ profile's connect button. Streak is computed by the shared
 
 Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from the DB, never from the JWT.
 
-| Method | Endpoint           | Auth  | Description                                                                                                          |
-| ------ | ------------------ | ----- | -------------------------------------------------------------------------------------------------------------------- |
-| GET    | `/api/admin/stats` | Admin | Platform stats (users/progress/forum/support, cached ~5min, + live code-exec metrics); `?fresh=1` bypasses the cache |
+| Method | Endpoint            | Auth  | Description                                                                                                          |
+| ------ | ------------------- | ----- | -------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/admin/stats`  | Admin | Platform stats (users/progress/forum/support, cached ~5min, + live code-exec metrics); `?fresh=1` bypasses the cache |
+| GET    | `/api/admin/visits` | Admin | Visitors and new accounts a day, top pages, sources, guest/signed-in and en/ro over `?range=30` or `90` days         |
+
+### Visits
+
+| Method | Endpoint      | Auth     | Description                                                                                          |
+| ------ | ------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| POST   | `/api/visits` | Optional | The app reports a page it showed (`{ path, referrer? }`), always a 204; bots are left out, 60/min/IP |
 
 ## Database schema
 
@@ -292,6 +299,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 - **Notification**: per-user in-app notifications (actor via `SetNull` relation, source entity snapshotted in `data`)
 - **Conversation / DirectMessage / DmReaction**: 1-on-1 messaging (messages soft-delete; reactions unique per message+user+emoji)
 - **Connection**: directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
+- **PageVisit / VisitSalt / VisitTotal**: today's page views keyed by a salted daily hash, the day's salt, and the daily totals they become once the day is over
 
 ### Key relationships
 
