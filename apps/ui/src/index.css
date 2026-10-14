@@ -33,6 +33,11 @@
   --output: #5183b8;
   --warning: #c08a2e;
   --error: #c25c5c;
+  /* A failed test's diff: what the student's output is missing (on the
+     expected output) and what it has wrong or extra. Backgrounds, so a missing
+     space or comma still shows. */
+  --diff-missing: rgba(59, 167, 118, 0.32);
+  --diff-wrong: rgba(194, 92, 92, 0.4);
   /* If a font file can't load, text still shows in a close system font. Code
      never lands on plain monospace, which Safari on macOS draws as Courier. */
   --font: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;

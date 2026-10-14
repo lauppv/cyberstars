@@ -120,6 +120,24 @@ describe('SubmissionsPanel', () => {
     expect(screen.queryByText('Runtime')).not.toBeInTheDocument();
   });
 
+  it("marks the difference in an attempt's failed test", async () => {
+    getSubmission.mockResolvedValue({ ...detail, comparator: 'trimmed' });
+    render(
+      <SubmissionsPanel
+        language="algo-python"
+        showRuntime
+        list={list}
+        failed={false}
+        {...handlers()}
+      />,
+    );
+    fireEvent.click(screen.getAllByRole('button')[1]);
+
+    await screen.findByRole('heading', { name: 'Wrong answer' });
+    const marked = [...document.querySelectorAll('mark')].map((m) => m.textContent);
+    expect(marked).toEqual(['ello', 'i']);
+  });
+
   it('opens an attempt with its verdict and code, loads it, and goes back', async () => {
     getSubmission.mockResolvedValue(detail);
     const h = handlers();
