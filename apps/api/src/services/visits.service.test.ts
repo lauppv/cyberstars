@@ -74,6 +74,12 @@ describe('sourceOf', () => {
     expect(service.sourceOf('www.example.org')).toBe('example.org');
   });
 
+  it('files a domain too long to store under other', () => {
+    const long = `${'a'.repeat(60)}.${'b'.repeat(60)}.com`;
+    expect(service.sourceOf(long)).toBe('other');
+    expect(service.sourceOf(`${'a'.repeat(96)}.com`)).toBe(`${'a'.repeat(96)}.com`);
+  });
+
   it('files something that is not a domain under other', () => {
     expect(service.sourceOf('<script>')).toBe('other');
   });

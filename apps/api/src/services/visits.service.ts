@@ -51,6 +51,7 @@ const KNOWN_SOURCES: [RegExp, string][] = [
 ];
 
 const DOMAIN = /^[a-z0-9-]+(\.[a-z0-9-]+)+$/;
+const SOURCE_MAX = 100; // page_visits.source is VARCHAR(100)
 
 // Where a visit started: null for a page opened inside the app, "direct" when
 // the browser sent no referrer.
@@ -58,7 +59,8 @@ export function sourceOf(referrer: string | undefined): string | null {
   if (referrer === undefined) return null;
   const host = referrer.toLowerCase().replace(/^www\./, '');
   if (!host) return 'direct';
-  if (!DOMAIN.test(host)) return 'other';
+  // A longer domain wouldn't fit the column, and the whole visit would be lost.
+  if (host.length > SOURCE_MAX || !DOMAIN.test(host)) return 'other';
   return KNOWN_SOURCES.find(([pattern]) => pattern.test(host))?.[1] ?? host;
 }
 
