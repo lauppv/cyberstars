@@ -76,7 +76,9 @@ describe('content security policy', () => {
     const csp = res.headers['content-security-policy'];
     expect(csp).toBeDefined();
     expect(csp).toContain("script-src 'self' https://unpkg.com");
-    expect(csp).toContain('https://fonts.gstatic.com');
+    expect(csp).toContain("font-src 'self';");
+    expect(csp).not.toContain('fonts.googleapis.com');
+    expect(csp).not.toContain('fonts.gstatic.com');
     expect(csp).toContain("object-src 'none'");
   });
 });
