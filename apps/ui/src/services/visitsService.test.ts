@@ -3,9 +3,18 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const api = { get: vi.fn(), post: vi.fn() };
 vi.mock('./apiClient', () => ({ api }));
 
-const { reportSteps, getGuestVisits } = await import('./visitsService');
+const { reportPageView, reportSteps, getVisits, getGuestVisits } = await import('./visitsService');
 
 beforeEach(() => vi.clearAllMocks());
+
+describe('reportPageView and getVisits', () => {
+  it('post the page and ask for the range', async () => {
+    await reportPageView({ path: '/' });
+    await getVisits(90);
+    expect(api.post).toHaveBeenCalledWith('/api/visits', { path: '/' });
+    expect(api.get).toHaveBeenCalledWith('/api/admin/visits?range=90');
+  });
+});
 
 describe('reportSteps', () => {
   it('sends the steps so they still arrive when the tab closes', async () => {
