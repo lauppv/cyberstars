@@ -1,15 +1,23 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeAll, afterAll, beforeEach, afterEach } from 'vitest';
+import { createAuthenticatedAgent, userIdFor } from './helpers.js';
+import { prisma } from '../../src/config/db.js';
+import { config } from '../../src/config/index.js';
+import { saveExchange, conversationKey } from '../../src/services/tutor-conversations.service.js';
 
-// The tutor needs a Gemini key before the config loads; the calls themselves
-// are answered below, so no request leaves the machine.
-vi.hoisted(() => {
-  process.env.GEMINI_API_KEY = 'test-key';
+// The config is read once, by setup.ts, before this file runs, so the tutor
+// gets its key here. The calls themselves are answered below, so no request
+// leaves the machine.
+const gemini = config.gemini as { apiKey: string };
+let realKey: string;
+
+beforeAll(() => {
+  realKey = gemini.apiKey;
+  gemini.apiKey = 'test-key';
 });
 
-const { createAuthenticatedAgent, userIdFor } = await import('./helpers.js');
-const { prisma } = await import('../../src/config/db.js');
-const { saveExchange, conversationKey } =
-  await import('../../src/services/tutor-conversations.service.js');
+afterAll(() => {
+  gemini.apiKey = realKey;
+});
 
 interface SentContent {
   role: string;
