@@ -175,6 +175,10 @@ interface AskOptions extends Student {
   uiLang: Lang;
   // Aborted when the student leaves mid-answer.
   signal: AbortSignal;
+  // Kept up to date as the answer is written: its length in tokens. Only the
+  // rounds that wrote words count, so the tool calls and what the tools read
+  // cost the student nothing.
+  written: { tokens: number };
 }
 
 const UNAVAILABLE = 'The tutor could not answer right now, please try again';
@@ -207,6 +211,9 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
     const parts: GeminiPart[] = [];
     let finishReason: string | undefined;
     let blockReason: string | undefined;
+    const before = opts.written.tokens;
+    let roundTokens = 0;
+    let roundWords = false;
     try {
       for await (const chunk of converseStream({
         system,
@@ -223,6 +230,9 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
         blockReason = chunk.blockReason ?? blockReason;
         let text = chunk.parts.map((p) => p.text ?? '').join('');
         if (!started) text = text.trimStart();
+        roundTokens = chunk.outputTokens ?? roundTokens;
+        if (text) roundWords = true;
+        if (roundWords) opts.written.tokens = before + roundTokens;
         if (text) {
           started = true;
           yield { type: 'text', text };

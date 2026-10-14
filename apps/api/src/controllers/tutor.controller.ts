@@ -32,6 +32,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
   const key = conversations.conversationKey(req.user!.id, req.body.lesson);
   const question = { text: req.body.message as string, sentAt };
   let words = '';
+  const written = { tokens: 0 };
 
   try {
     // The role decides which pages the tutor may point to, read fresh like
@@ -45,6 +46,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
       role,
       isProd: process.env.NODE_ENV === 'production',
       signal: leave.signal,
+      written,
     });
     let finish: TutorAnswerEnd = 'complete';
     for await (const event of answer) {

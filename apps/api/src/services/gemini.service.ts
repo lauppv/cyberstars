@@ -118,10 +118,14 @@ interface GeminiChunk {
   finishReason?: string;
   // Set when the question itself was blocked, and no answer comes at all.
   blockReason?: string;
+  // What the model has written in this turn so far, in tokens, as Gemini counts
+  // it: every piece carries the running total.
+  outputTokens?: number;
 }
 
 interface GeminiStreamResponse extends GeminiResponse {
   promptFeedback?: { blockReason?: string };
+  usageMetadata?: { candidatesTokenCount?: number };
   error?: { message?: string };
 }
 
@@ -153,6 +157,7 @@ export async function* converseStream(opts: ConverseOptions): AsyncGenerator<Gem
       parts: candidate?.content?.parts ?? [],
       finishReason: candidate?.finishReason,
       blockReason: chunk.promptFeedback?.blockReason,
+      outputTokens: chunk.usageMetadata?.candidatesTokenCount,
     };
   }
 }

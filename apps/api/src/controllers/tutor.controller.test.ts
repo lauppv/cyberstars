@@ -107,6 +107,7 @@ describe('chat', () => {
       role: 'USER',
       isProd: false,
       signal: expect.any(AbortSignal),
+      written: { tokens: 0 },
     });
     expect(res.set).toHaveBeenCalledOnce();
     expect(res.set).toHaveBeenCalledWith({

@@ -12,6 +12,7 @@ interface Chunk {
   parts: Record<string, unknown>[];
   finishReason?: string;
   blockReason?: string;
+  outputTokens?: number;
 }
 
 // A model turn as converseStream yields it.
@@ -54,6 +55,7 @@ const base = {
   role: 'USER' as const,
   isProd: true,
   signal: new AbortController().signal,
+  written: { tokens: 0 },
 };
 
 beforeEach(() => {
@@ -366,5 +368,59 @@ describe('askTutor', () => {
     await expect(collect(askTutor({ ...base, signal: leave.signal }))).rejects.toBe(abort);
     expect(log).not.toHaveBeenCalled();
     log.mockRestore();
+  });
+});
+
+describe('askTutor: the length of the answer', () => {
+  const stream = gemini.converseStream;
+
+  it("keeps the running count of the answer's tokens", async () => {
+    const written = { tokens: 0 };
+    const seen: number[] = [];
+    stream.mockReturnValue(
+      turn(
+        { parts: [{ text: 'A loop ' }], outputTokens: 3 },
+        { parts: [{ text: 'repeats.' }], outputTokens: 5, finishReason: 'STOP' },
+      ),
+    );
+
+    for await (const event of askTutor({ ...base, written })) {
+      if (event.type === 'text') seen.push(written.tokens);
+    }
+
+    expect(seen).toEqual([3, 5]);
+    expect(written.tokens).toBe(5);
+  });
+
+  it('leaves out the rounds that only called a tool', async () => {
+    tools.searchLessons.mockReturnValue([]);
+    const written = { tokens: 0 };
+    stream
+      .mockReturnValueOnce(
+        turn(
+          { parts: [{ functionCall: { name: 'search_lessons', args: { query: 'loops' } } }] },
+          { parts: [{ text: '' }], outputTokens: 40, finishReason: 'STOP' },
+        ),
+      )
+      .mockReturnValueOnce(
+        turn({ parts: [{ text: 'Try the For lesson.' }], outputTokens: 7, finishReason: 'STOP' }),
+      );
+
+    await collect(askTutor({ ...base, written }));
+
+    expect(written.tokens).toBe(7);
+  });
+
+  it('counts what was written before the answer broke off', async () => {
+    const written = { tokens: 0 };
+    stream.mockReturnValue(
+      failing(new Error('reset'), { parts: [{ text: 'A loop ' }], outputTokens: 320 }),
+    );
+
+    await expect(collect(askTutor({ ...base, written }))).rejects.toMatchObject({
+      statusCode: 502,
+    });
+
+    expect(written.tokens).toBe(320);
   });
 });
