@@ -114,18 +114,22 @@ body {
   isolation: isolate;
 }
 
-input,
-select,
-textarea,
-button {
-  font-family: var(--font);
-}
+/* Element defaults sit in the base layer, under Tailwind's utilities, so a
+   font-mono on an input (the terminal prompt, the sign-in code box) wins. */
+@layer base {
+  input,
+  select,
+  textarea,
+  button {
+    font-family: var(--font);
+  }
 
-code,
-pre,
-kbd,
-samp {
-  font-family: var(--mono);
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--mono);
+  }
 }
 
 ::-webkit-scrollbar {
