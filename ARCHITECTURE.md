@@ -289,9 +289,9 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 
 Behind the `tutorChat` preview gate (admins only on prod).
 
-| Method | Endpoint          | Auth | Description                                                                                                                                                    |
-| ------ | ----------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | `/api/tutor/chat` | Yes  | One message (`{ message, page, lang? }`, at most 2,000 characters) in, one answer (`{ answer }`) out; the model may search and read lessons first. 10/min/user |
+| Method | Endpoint          | Auth | Description                                                                                                                                                                                                                                                                                                                           |
+| ------ | ----------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/tutor/chat` | Yes  | One message (`{ message, page, lang? }`, at most 2,000 characters) in, the answer out as server-sent events (`TutorStreamEvent`: `text` pieces, then `done` with `complete`/`cut`/`blocked`, or `error` after some words; a failure before any words is a plain JSON error); the model may search and read lessons first. 10/min/user |
 
 ## Database schema
 
