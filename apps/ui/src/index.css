@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* The fonts ship with the app instead of coming from Google, so every device,
+   network and browser draws the same letters. Variable files give real bold and
+   italic faces, and each file covers one character range (Romanian letters
+   included) that the browser fetches only when a page uses it. */
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/inter/wght-italic.css';
+@import '@fontsource-variable/jetbrains-mono/wght.css';
+@import '@fontsource-variable/jetbrains-mono/wght-italic.css';
 @import 'tailwindcss';
 
 /* The whole look lives in these tokens. Components reach for them rather than
@@ -26,8 +33,12 @@
   --output: #5183b8;
   --warning: #c08a2e;
   --error: #c25c5c;
-  --font: 'Inter', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* If a font file can't load, text still shows in a close system font. Code
+     never lands on plain monospace, which Safari on macOS draws as Courier. */
+  --font: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono:
+    'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono',
+    monospace;
   --radius: 8px;
   --radius-sm: 6px;
   /* The panel surface: every card and container in the app (see .panel). */
