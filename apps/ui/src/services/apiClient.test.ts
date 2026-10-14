@@ -39,6 +39,15 @@ describe('apiClient', () => {
     );
   });
 
+  it('POST passes extra request options along', async () => {
+    mockFetch.mockResolvedValue(jsonResponse({ ok: true }));
+    await api.post('/api/test', { a: 1 }, { keepalive: true });
+    expect(mockFetch).toHaveBeenCalledWith(
+      '/api/test',
+      expect.objectContaining({ method: 'POST', keepalive: true }),
+    );
+  });
+
   it('throws ApiClientError on non-2xx with error message', async () => {
     mockFetch.mockResolvedValue(jsonResponse({ error: 'Not found' }, 404));
     try {

@@ -5,6 +5,10 @@ import type { ReactNode } from 'react';
 
 const reportPageView = vi.fn();
 vi.mock('../services/visitsService', () => ({ reportPageView }));
+const auth = { user: null as { role: string } | null };
+vi.mock('../context/AuthContext', () => ({ useAuth: () => auth }));
+const takeSteps = vi.fn();
+vi.mock('./useGuestSteps', () => ({ takeSteps }));
 
 const { usePageViews, referrerDomain } = await import('./usePageViews');
 
@@ -18,6 +22,9 @@ function setReferrer(value: string) {
 
 beforeEach(() => {
   reportPageView.mockReset().mockResolvedValue(undefined);
+  takeSteps.mockReset().mockReturnValue([]);
+  auth.user = null;
+  localStorage.clear();
   setReferrer('');
 });
 
@@ -89,6 +96,32 @@ describe('usePageViews', () => {
     renderHook(() => usePageViews(), { wrapper });
     act(() => vi.runAllTimers());
     expect(reportPageView.mock.calls[0][0]).not.toHaveProperty('referrer');
+  });
+
+  it("sends the guest's steps since the last page along with the page", () => {
+    const steps = [{ kind: 'click', target: 'start-learning' }];
+    takeSteps.mockReturnValueOnce(steps);
+    renderHook(() => usePageViews(), { wrapper });
+    act(() => vi.runAllTimers());
+    expect(reportPageView.mock.calls[0][0].steps).toEqual(steps);
+  });
+
+  it('stops counting a browser once an admin has signed in on it', () => {
+    auth.user = { role: 'FOUNDER' };
+    const { rerender } = renderHook(() => usePageViews(), { wrapper });
+    act(() => vi.runAllTimers());
+    auth.user = null; // signed out
+    rerender();
+    act(() => vi.runAllTimers());
+    expect(localStorage.getItem('cyberstars.counted')).toBe('no');
+    expect(reportPageView).not.toHaveBeenCalled();
+  });
+
+  it("leaves a student's browser counted", () => {
+    auth.user = { role: 'USER' };
+    renderHook(() => usePageViews(), { wrapper });
+    act(() => vi.runAllTimers());
+    expect(reportPageView).toHaveBeenCalledTimes(1);
   });
 
   it('drops a report that failed without a fuss', async () => {

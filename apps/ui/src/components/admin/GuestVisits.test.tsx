@@ -1,0 +1,111 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, fireEvent, within } from '@testing-library/react';
+import type { GuestVisitDTO } from '@cyberstars/shared/visits';
+
+const getGuestVisits = vi.fn();
+vi.mock('../../services/visitsService', () => ({ getGuestVisits }));
+
+const { GuestVisits } = await import('./GuestVisits');
+
+const visit = (id: number, steps: GuestVisitDTO['steps'], source: string | null = 'reddit') => ({
+  id,
+  day: '2026-11-30',
+  source,
+  lang: 'en',
+  steps,
+});
+
+const page = (target: string) => ({ kind: 'page' as const, target });
+const click = (target: string) => ({ kind: 'click' as const, target });
+const scroll = (target: string) => ({ kind: 'scroll' as const, target });
+
+function show(reload = 0) {
+  return render(
+    <GuestVisits
+      range={30}
+      sources={['reddit', 'google']}
+      sourceName={(key) => (key === 'reddit' ? 'Reddit' : key)}
+      reload={reload}
+    />,
+  );
+}
+
+beforeEach(() => getGuestVisits.mockReset());
+
+describe('GuestVisits', () => {
+  it('shows each visit with where it came from and its steps in order, repeats folded', async () => {
+    getGuestVisits.mockResolvedValue({
+      visits: [
+        visit(9, [
+          page('/'),
+          scroll('25'),
+          scroll('75'),
+          click('start-learning'),
+          page('/lesson/python/print'),
+          click('run'),
+          click('run'),
+          click('run'),
+          click('run-tests'),
+        ]),
+      ],
+      next: null,
+    });
+    show();
+    const item = (await screen.findByText('2026-11-30 · Reddit · en')).closest('li')!;
+    const steps = within(item)
+      .getAllByRole('listitem')
+      .map((li) => li.textContent?.replace('→', '').trim());
+    expect(steps).toEqual([
+      '/',
+      'scrolled 75%',
+      'start-learning',
+      '/lesson/python/print',
+      'run ×3',
+      'run-tests',
+    ]);
+  });
+
+  it('leaves the source out of a visit that started inside the app', async () => {
+    getGuestVisits.mockResolvedValue({ visits: [visit(1, [page('/')], null)], next: null });
+    show();
+    expect(await screen.findByText('2026-11-30 · en')).toBeInTheDocument();
+  });
+
+  it('filters by source and loads the next page under the last', async () => {
+    getGuestVisits
+      .mockResolvedValueOnce({ visits: [visit(30, [page('/')])], next: 30 })
+      .mockResolvedValueOnce({ visits: [visit(12, [page('/courses')])], next: null })
+      .mockResolvedValueOnce({ visits: [visit(5, [page('/almanac')])], next: null });
+    show();
+    fireEvent.click(await screen.findByRole('button', { name: 'Show more' }));
+    expect(await screen.findByText('/courses')).toBeInTheDocument();
+    expect(screen.getByText('/')).toBeInTheDocument();
+    expect(getGuestVisits).toHaveBeenLastCalledWith(30, undefined, 30);
+    expect(screen.queryByRole('button', { name: 'Show more' })).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'reddit' } });
+    expect(await screen.findByText('/almanac')).toBeInTheDocument();
+    expect(getGuestVisits).toHaveBeenLastCalledWith(30, 'reddit');
+    expect(screen.queryByText('/courses')).not.toBeInTheDocument();
+  });
+
+  it('says there is nothing yet when the list is empty or could not be loaded', async () => {
+    getGuestVisits.mockResolvedValueOnce({ visits: [], next: null });
+    const { unmount } = show();
+    expect(await screen.findByText('No data yet')).toBeInTheDocument();
+    unmount();
+
+    getGuestVisits.mockRejectedValueOnce(new Error('403'));
+    show();
+    expect(screen.getByText('No data yet')).toBeInTheDocument();
+  });
+
+  it('keeps the list when the next page could not be loaded', async () => {
+    getGuestVisits
+      .mockResolvedValueOnce({ visits: [visit(30, [page('/')])], next: 30 })
+      .mockRejectedValueOnce(new Error('offline'));
+    show();
+    fireEvent.click(await screen.findByRole('button', { name: 'Show more' }));
+    expect(await screen.findByText('/')).toBeInTheDocument();
+  });
+});

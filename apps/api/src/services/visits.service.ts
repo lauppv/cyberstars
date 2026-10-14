@@ -1,11 +1,15 @@
 import crypto from 'crypto';
 import * as visitsRepo from '../repositories/visits.repository.js';
+import { VISIT_RANGES } from '@cyberstars/shared/visits';
 import type {
   AdminVisitsDTO,
+  GuestVisitsDTO,
   PageViewReport,
+  StepsReport,
   VisitCount,
   VisitDay,
   VisitRange,
+  VisitStep,
 } from '@cyberstars/shared/visits';
 
 // Visitors are counted the way Plausible does it, without a cookie: a hash of
@@ -13,6 +17,11 @@ import type {
 // database only for its day (in memory it wouldn't survive a deploy, and the
 // same person would count twice that day), and goes with the day's visits once
 // they become totals. No IP is ever stored.
+//
+// A guest's day is also kept as a visit: its pages, the buttons pressed and how
+// far down each page they scrolled, in order (CYB-66). Once the day ends the
+// visit loses its hash, so it can't be tied to anyone, and it's deleted after
+// the longest range the admin page shows.
 
 const DAY_FORMAT = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Bucharest' });
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -78,6 +87,23 @@ function saltFor(day: string): Promise<string> {
   return salt.value;
 }
 
+async function visitorFor(day: string, ip: string, userAgent: string | undefined) {
+  return crypto
+    .createHash('sha256')
+    .update(`${await saltFor(day)}|${ip}|${userAgent}`)
+    .digest('hex');
+}
+
+// A visit holds this many steps at most, so a script posting steps in a loop
+// can't fill the table for three months. A real guest stays far below it.
+const MAX_STEPS = 500;
+
+async function addSteps(visitId: number | null, steps: VisitStep[]): Promise<void> {
+  if (visitId === null || steps.length === 0) return;
+  const room = MAX_STEPS - (await visitsRepo.countSteps(visitId));
+  if (room > 0) await visitsRepo.addSteps(visitId, steps.slice(0, room));
+}
+
 export async function recordPageView(
   report: PageViewReport,
   ip: string,
@@ -86,26 +112,48 @@ export async function recordPageView(
 ): Promise<void> {
   if (isBot(userAgent)) return;
   const day = today();
-  const visitor = crypto
-    .createHash('sha256')
-    .update(`${await saltFor(day)}|${ip}|${userAgent}`)
-    .digest('hex');
+  const visitor = await visitorFor(day, ip, userAgent);
   const ro = report.path === '/ro' || report.path.startsWith('/ro/');
-  await visitsRepo.addVisit({
-    day: asDate(day),
-    visitor,
-    // A page and its Romanian twin count as one page; lang tells them apart.
-    path: ro ? report.path.slice(3) || '/' : report.path,
-    source: sourceOf(report.referrer),
-    signedIn,
-    lang: ro ? 'ro' : 'en',
-  });
+  // A page and its Romanian twin count as one page; lang tells them apart.
+  const path = ro ? report.path.slice(3) || '/' : report.path;
+  const lang = ro ? 'ro' : 'en';
+  const source = sourceOf(report.referrer);
+  await visitsRepo.addVisit({ day: asDate(day), visitor, path, source, signedIn, lang });
+
+  const steps = report.steps ?? [];
+  if (signedIn) {
+    // Only a guest who just made an account sends any: what they pressed on the
+    // way still belongs to their visit, and the pages after it don't.
+    if (steps.length > 0) {
+      await addSteps(await visitsRepo.guestVisitId(asDate(day), visitor), steps);
+    }
+    return;
+  }
+  const visitId = await visitsRepo.guestVisitFor(asDate(day), visitor, source, lang);
+  await addSteps(visitId, [...steps, { kind: 'page', target: path }]);
 }
+
+// Clicks and scrolls on the page a guest is still on. They join the visit their
+// first page made; with none today there's nothing to add them to.
+export async function recordSteps(
+  report: StepsReport,
+  ip: string,
+  userAgent: string | undefined,
+): Promise<void> {
+  if (isBot(userAgent)) return;
+  const day = today();
+  const visitor = await visitorFor(day, ip, userAgent);
+  await addSteps(await visitsRepo.guestVisitId(asDate(day), visitor), report.steps);
+}
+
+// Guest visits are kept as long as the longest range the admin page shows.
+const KEEP_DAYS = Math.max(...VISIT_RANGES);
 
 // Rolls every finished day into totals. Safe to run any time: it only touches
 // days before today, all at once.
 export function rollUp(): Promise<void> {
-  return visitsRepo.rollUpBefore(asDate(today()));
+  const day = today();
+  return visitsRepo.rollUpBefore(asDate(day), asDate(dayBefore(day, KEEP_DAYS - 1)));
 }
 
 const HOUR_MS = 60 * 60 * 1000;
@@ -131,15 +179,17 @@ function sumByKey(rows: visitsRepo.TotalRow[], dimension: string): VisitCount[] 
 
 const TOP_PAGES = 10;
 const TOP_SOURCES = 10;
+const TOP_CLICKS = 10;
 
 // Over several days a visitor counts once per day they came, the only way to
 // add days up once each day's hashes are gone.
 export async function report(range: VisitRange): Promise<AdminVisitsDTO> {
   const last = today();
   const first = dayBefore(last, range - 1);
-  const [rows, accounts] = await Promise.all([
+  const [rows, accounts, clicks] = await Promise.all([
     visitsRepo.totalsSince(asDate(first)),
     visitsRepo.newAccountsSince(asDate(first)),
+    visitsRepo.topClicksSince(asDate(first), TOP_CLICKS),
   ]);
 
   const dayKey = (d: Date) => d.toISOString().slice(0, 10);
@@ -169,5 +219,32 @@ export async function report(range: VisitRange): Promise<AdminVisitsDTO> {
       .slice(0, TOP_SOURCES),
     auth: sumByKey(rows, 'auth'),
     lang: sumByKey(rows, 'lang'),
+    clicks,
+  };
+}
+
+const VISITS_PAGE = 20;
+
+// The guest visits of the range, newest first, a page at a time.
+export async function guestVisits(
+  range: VisitRange,
+  { source, before }: { source?: string; before?: number } = {},
+): Promise<GuestVisitsDTO> {
+  const first = dayBefore(today(), range - 1);
+  const rows = await visitsRepo.guestVisitsSince(asDate(first), {
+    source,
+    before,
+    take: VISITS_PAGE + 1,
+  });
+  const page = rows.slice(0, VISITS_PAGE);
+  return {
+    visits: page.map((row) => ({
+      id: row.id,
+      day: row.day.toISOString().slice(0, 10),
+      source: row.source,
+      lang: row.lang,
+      steps: row.steps as VisitStep[],
+    })),
+    next: rows.length > VISITS_PAGE ? page[page.length - 1].id : null,
   };
 }

@@ -73,7 +73,21 @@
     "signedIn": "Signed in",
     "english": "English",
     "romanian": "Romanian",
-    "visitorDays": "Over several days a visitor counts once for each day they came."
+    "visitorDays": "Over several days a visitor counts once for each day they came.",
+    "topClicks": "Most pressed buttons",
+    "pressesWord_one": "press",
+    "pressesWord_other": "presses",
+    "visitsWord_one": "visit",
+    "visitsWord_other": "visits",
+    "guestVisits": "Guest visits",
+    "guestVisitsHint": "What each guest did, in order: the pages they opened, the buttons they pressed and how far down they scrolled. A guest who comes back another day is a new visit.",
+    "allSources": "All sources",
+    "scrolled": "scrolled {{depth}}%",
+    "showMore": "Show more",
+    "browserCounted": "This browser's visits are counted when you're signed out.",
+    "browserNotCounted": "This browser isn't counted, even when you're signed out.",
+    "countBrowser": "Count it",
+    "stopCounting": "Stop counting it"
   },
   "lang": {
     "switch": "Switch language",

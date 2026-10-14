@@ -16,6 +16,7 @@ import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
 import { usePresence } from './hooks/usePresence';
 import { usePageViews } from './hooks/usePageViews';
+import { useGuestSteps } from './hooks/useGuestSteps';
 import { HomePage } from './pages/HomePage';
 import { langFromPath } from './i18n';
 
@@ -84,6 +85,7 @@ function GlobalRadio() {
 
 function PageViews() {
   usePageViews();
+  useGuestSteps();
   return null;
 }
 

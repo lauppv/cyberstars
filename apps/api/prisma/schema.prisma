@@ -467,3 +467,36 @@ model VisitTotal {
   @@id([day, dimension, key])
   @@map("visit_totals")
 }
+
+// One guest's day on the site, for the list of visits on the admin page. visitor
+// is the same hash as page_visits, so a guest's pages and clicks that day land
+// on one visit; the roll-up blanks it once the day is over, which leaves the
+// visit leading back to no one. source and lang come from its first page. Kept
+// for VISIT_KEEP_DAYS, then deleted with its steps.
+model GuestVisit {
+  id      Int      @id @default(autoincrement())
+  day     DateTime @db.Date
+  visitor String?  @db.Char(64)
+  source  String?  @db.VarChar(100)
+  lang    String   @db.VarChar(2)
+
+  steps VisitStep[]
+
+  @@unique([day, visitor])
+  @@map("guest_visits")
+}
+
+// What a guest did, in the order of id, with no time kept: a page they opened
+// (target is its path), a button they pressed (the name the code gives it) or
+// how far down a page they scrolled (25, 50, 75 or 100).
+model VisitStep {
+  id      Int    @id @default(autoincrement())
+  visitId Int    @map("visit_id")
+  kind    String @db.VarChar(6)
+  target  String @db.VarChar(200)
+
+  visit GuestVisit @relation(fields: [visitId], references: [id], onDelete: Cascade)
+
+  @@index([visitId])
+  @@map("visit_steps")
+}

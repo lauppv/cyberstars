@@ -8,6 +8,8 @@ beforeEach(async () => {
       "page_visits",
       "visit_salts",
       "visit_totals",
+      "visit_steps",
+      "guest_visits",
       "lesson_submissions",
       "dm_reactions",
       "direct_messages",

@@ -548,6 +548,7 @@ export function LessonPage() {
                   style={{ paddingBottom: 'calc(1rem + var(--radio-clearance, 0px))' }}
                 >
                   <button
+                    data-track="previous-lesson"
                     onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
                     disabled={!prevLesson}
                     className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
@@ -555,6 +556,7 @@ export function LessonPage() {
                     {t('lesson.previous')}
                   </button>
                   <button
+                    data-track="next-lesson"
                     onClick={() => {
                       if (!nextLesson) return;
                       // The tour holds a new account here until the tests pass.
@@ -665,6 +667,7 @@ export function LessonPage() {
                         {canUseHints && (
                           <button
                             role="menuitem"
+                            data-track="hint"
                             onClick={() => {
                               setMenuOpen(false);
                               setShowHint(true);
@@ -682,6 +685,7 @@ export function LessonPage() {
                         {canShowSolution && (
                           <button
                             role="menuitem"
+                            data-track="show-solution"
                             onClick={() => {
                               setMenuOpen(false);
                               setConfirmSolution(true);
@@ -720,6 +724,7 @@ export function LessonPage() {
                         )}
                         <button
                           role="menuitem"
+                          data-track="reset-code"
                           onClick={() => {
                             setMenuOpen(false);
                             if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
@@ -767,6 +772,7 @@ export function LessonPage() {
                     <RunButton onClick={handleRun} isRunning={isRunning} />
                     {hasTests ? (
                       <button
+                        data-track="run-tests"
                         onClick={handleRunTests}
                         disabled={isTesting || isRunning}
                         className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"

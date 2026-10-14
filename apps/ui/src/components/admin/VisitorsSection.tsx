@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { VISIT_RANGES } from '@cyberstars/shared/visits';
 import type { AdminVisitsDTO, VisitCount, VisitRange } from '@cyberstars/shared/visits';
 import { getVisits } from '../../services/visitsService';
+import { isCounted, setCounted } from '../../services/visitCounting';
 import { DailyChart } from './DailyChart';
+import { GuestVisits } from './GuestVisits';
 
 // The places CYB-64 posts to, by their own names; any other site shows as its
 // domain, which is already readable.
@@ -57,6 +59,12 @@ export function VisitorsSection({ className, reload }: { className: string; relo
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
   const [data, setData] = useState<AdminVisitsDTO | null>(null);
+  const [counted, setCountedHere] = useState(isCounted);
+
+  function toggleCounted() {
+    setCounted(!counted);
+    setCountedHere(!counted);
+  }
 
   useEffect(() => {
     getVisits(range)
@@ -119,7 +127,7 @@ export function VisitorsSection({ className, reload }: { className: string; relo
             </tbody>
           </table>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
             <Ranked
               title={t('admin.topPages')}
               rows={data.pages}
@@ -133,6 +141,14 @@ export function VisitorsSection({ className, reload }: { className: string; relo
               rows={data.sources}
               label={sourceName}
               value={(row) => `${row.visitors} ${t('admin.visitorsWord', { count: row.visitors })}`}
+            />
+            <Ranked
+              title={t('admin.topClicks')}
+              rows={data.clicks}
+              label={(key) => key}
+              value={(row) =>
+                `${row.views} ${t('admin.pressesWord', { count: row.views })} · ${row.visitors} ${t('admin.visitsWord', { count: row.visitors })}`
+              }
             />
           </div>
 
@@ -151,8 +167,25 @@ export function VisitorsSection({ className, reload }: { className: string; relo
             </span>
           </div>
           <p className="mt-3 text-[11px] text-[var(--text3)]">{t('admin.visitorDays')}</p>
+
+          <GuestVisits
+            range={range}
+            sources={data.sources.map((s) => s.key)}
+            sourceName={sourceName}
+            reload={reload}
+          />
         </>
       )}
+
+      <p className="mt-4 mb-0 text-[11px] text-[var(--text3)]">
+        {counted ? t('admin.browserCounted') : t('admin.browserNotCounted')}{' '}
+        <button
+          onClick={toggleCounted}
+          className="p-0 bg-transparent border-none text-[11px] text-[var(--accent)] underline cursor-pointer"
+        >
+          {counted ? t('admin.stopCounting') : t('admin.countBrowser')}
+        </button>
+      </p>
     </section>
   );
 }

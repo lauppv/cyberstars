@@ -6,6 +6,12 @@ const mockRepo = {
   rollUpBefore: vi.fn(),
   totalsSince: vi.fn(),
   newAccountsSince: vi.fn(),
+  guestVisitFor: vi.fn(),
+  guestVisitId: vi.fn(),
+  countSteps: vi.fn(),
+  addSteps: vi.fn(),
+  topClicksSince: vi.fn(),
+  guestVisitsSince: vi.fn(),
 };
 vi.mock('../repositories/visits.repository.js', () => mockRepo);
 
@@ -18,6 +24,10 @@ beforeEach(() => {
   mockRepo.saltFor.mockResolvedValue('salt');
   mockRepo.addVisit.mockResolvedValue(undefined);
   mockRepo.rollUpBefore.mockResolvedValue(undefined);
+  mockRepo.guestVisitFor.mockResolvedValue(7);
+  mockRepo.guestVisitId.mockResolvedValue(7);
+  mockRepo.countSteps.mockResolvedValue(0);
+  mockRepo.topClicksSince.mockResolvedValue([]);
 });
 
 afterEach(() => vi.useRealTimers());
@@ -155,12 +165,77 @@ describe('recordPageView', () => {
   });
 });
 
+describe('guest steps', () => {
+  const run = { kind: 'click', target: 'run' } as const;
+  const deep = { kind: 'scroll', target: '75' } as const;
+
+  it("makes the visit on a guest's page and adds the page after the steps that led to it", async () => {
+    await service.recordPageView(
+      { path: '/ro/courses', referrer: 'old.reddit.com', steps: [deep, run] },
+      '1.1.1.1',
+      BROWSER,
+      false,
+    );
+    expect(mockRepo.guestVisitFor).toHaveBeenCalledWith(
+      expect.any(Date),
+      expect.stringMatching(/^[0-9a-f]{64}$/),
+      'reddit',
+      'ro',
+    );
+    expect(mockRepo.addSteps).toHaveBeenCalledWith(7, [
+      deep,
+      run,
+      { kind: 'page', target: '/courses' },
+    ]);
+  });
+
+  it('gives a signed-in page no step, and looks for no visit when nothing came with it', async () => {
+    await service.recordPageView({ path: '/' }, '1.1.1.1', BROWSER, true);
+    expect(mockRepo.guestVisitFor).not.toHaveBeenCalled();
+    expect(mockRepo.guestVisitId).not.toHaveBeenCalled();
+    expect(mockRepo.addSteps).not.toHaveBeenCalled();
+  });
+
+  it('adds what a guest pressed before making an account to the visit they had', async () => {
+    await service.recordPageView({ path: '/', steps: [run] }, '1.1.1.1', BROWSER, true);
+    expect(mockRepo.guestVisitFor).not.toHaveBeenCalled();
+    expect(mockRepo.addSteps).toHaveBeenCalledWith(7, [run]);
+  });
+
+  it("adds steps on their own to today's visit, and drops them when there is none", async () => {
+    await service.recordSteps({ steps: [run] }, '1.1.1.1', BROWSER);
+    expect(mockRepo.addSteps).toHaveBeenCalledWith(7, [run]);
+
+    mockRepo.guestVisitId.mockResolvedValueOnce(null);
+    await service.recordSteps({ steps: [run] }, '1.1.1.1', BROWSER);
+    expect(mockRepo.addSteps).toHaveBeenCalledTimes(1);
+  });
+
+  it('records no steps for a bot', async () => {
+    await service.recordSteps({ steps: [run] }, '1.1.1.1', 'Googlebot/2.1');
+    expect(mockRepo.guestVisitId).not.toHaveBeenCalled();
+  });
+
+  it('stops a visit at 500 steps', async () => {
+    mockRepo.countSteps.mockResolvedValueOnce(499);
+    await service.recordSteps({ steps: [run, run] }, '1.1.1.1', BROWSER);
+    expect(mockRepo.addSteps).toHaveBeenCalledWith(7, [run]);
+
+    mockRepo.countSteps.mockResolvedValueOnce(500);
+    await service.recordSteps({ steps: [run] }, '1.1.1.1', BROWSER);
+    expect(mockRepo.addSteps).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('rollUp', () => {
-  it('rolls up every day before today', async () => {
+  it('rolls up every day before today and keeps guest visits for 90 days', async () => {
     vi.useFakeTimers({ toFake: ['Date'] });
     vi.setSystemTime(new Date('2026-11-01T23:30:00Z')); // already Nov 2 in Romania
     await service.rollUp();
-    expect(mockRepo.rollUpBefore).toHaveBeenCalledWith(new Date('2026-11-02T00:00:00Z'));
+    expect(mockRepo.rollUpBefore).toHaveBeenCalledWith(
+      new Date('2026-11-02T00:00:00Z'),
+      new Date('2026-08-05T00:00:00Z'), // the first of the 90 days up to Nov 2
+    );
   });
 });
 
@@ -228,5 +303,58 @@ describe('report', () => {
     expect(dto.sources.map((s) => s.key)).toEqual(['google', 'reddit']);
     expect(dto.auth).toEqual([{ key: 'guest', visitors: 5, views: 7 }]);
     expect(dto.lang).toEqual([{ key: 'ro', visitors: 2, views: 2 }]);
+  });
+
+  it('passes on the most pressed buttons', async () => {
+    mockRepo.totalsSince.mockResolvedValue([]);
+    mockRepo.newAccountsSince.mockResolvedValue([]);
+    mockRepo.topClicksSince.mockResolvedValue([{ key: 'run', visitors: 2, views: 5 }]);
+
+    const dto = await service.report(30);
+
+    expect(mockRepo.topClicksSince).toHaveBeenCalledWith(day('2026-11-01'), 10);
+    expect(dto.clicks).toEqual([{ key: 'run', visitors: 2, views: 5 }]);
+  });
+});
+
+describe('guestVisits', () => {
+  const row = (id: number) => ({
+    id,
+    day: new Date('2026-11-30T00:00:00Z'),
+    source: 'reddit',
+    lang: 'en',
+    steps: [{ kind: 'page', target: '/' }],
+  });
+
+  beforeEach(() => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-11-30T12:00:00Z'));
+  });
+
+  it('gives a page of visits and where the next one starts', async () => {
+    mockRepo.guestVisitsSince.mockResolvedValue(Array.from({ length: 21 }, (_, i) => row(100 - i)));
+
+    const dto = await service.guestVisits(30, { source: 'reddit', before: 101 });
+
+    expect(mockRepo.guestVisitsSince).toHaveBeenCalledWith(new Date('2026-11-01T00:00:00Z'), {
+      source: 'reddit',
+      before: 101,
+      take: 21,
+    });
+    expect(dto.visits).toHaveLength(20);
+    expect(dto.visits[0]).toEqual({
+      id: 100,
+      day: '2026-11-30',
+      source: 'reddit',
+      lang: 'en',
+      steps: [{ kind: 'page', target: '/' }],
+    });
+    expect(dto.next).toBe(81);
+  });
+
+  it('has no next page after the last one', async () => {
+    mockRepo.guestVisitsSince.mockResolvedValue([row(5)]);
+    const dto = await service.guestVisits(90);
+    expect(dto.next).toBeNull();
   });
 });
