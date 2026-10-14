@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
-import { MemoryRouter, useNavigate } from 'react-router';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { render, renderHook, act } from '@testing-library/react';
+import { MemoryRouter, Navigate, Route, Routes, useNavigate } from 'react-router';
 import type { ReactNode } from 'react';
 
 const reportPageView = vi.fn();
@@ -39,6 +39,9 @@ describe('referrerDomain', () => {
 });
 
 describe('usePageViews', () => {
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => vi.useRealTimers());
+
   it('reports the first page with where it came from, later pages without', () => {
     setReferrer('https://news.ycombinator.com/item?id=1');
     const { result } = renderHook(
@@ -48,7 +51,9 @@ describe('usePageViews', () => {
       },
       { wrapper },
     );
+    act(() => vi.runAllTimers());
     act(() => result.current('/courses'));
+    act(() => vi.runAllTimers());
 
     expect(reportPageView).toHaveBeenCalledTimes(2);
     expect(reportPageView.mock.calls[0][0]).toEqual({
@@ -58,16 +63,38 @@ describe('usePageViews', () => {
     expect(reportPageView.mock.calls[1][0]).not.toHaveProperty('referrer');
   });
 
+  it('counts only the page a gate redirects to, with where the visit came from', () => {
+    setReferrer('https://www.google.com/');
+    function Reporter() {
+      usePageViews();
+      return null;
+    }
+    render(
+      <MemoryRouter initialEntries={['/profile']}>
+        <Reporter />
+        <Routes>
+          <Route path="/profile" element={<Navigate to="/getstarted" replace />} />
+          <Route path="/getstarted" element={null} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    act(() => vi.runAllTimers());
+
+    expect(reportPageView).toHaveBeenCalledTimes(1);
+    expect(reportPageView.mock.calls[0][0].referrer).toBe('www.google.com');
+  });
+
   it('sends no referrer when the first page came from our own site', () => {
     setReferrer(`${window.location.origin}/courses`);
     renderHook(() => usePageViews(), { wrapper });
+    act(() => vi.runAllTimers());
     expect(reportPageView.mock.calls[0][0]).not.toHaveProperty('referrer');
   });
 
   it('drops a report that failed without a fuss', async () => {
     reportPageView.mockRejectedValue(new Error('offline'));
     renderHook(() => usePageViews(), { wrapper });
-    await Promise.resolve();
+    await act(async () => vi.runAllTimers());
     expect(reportPageView).toHaveBeenCalledTimes(1);
   });
 });
