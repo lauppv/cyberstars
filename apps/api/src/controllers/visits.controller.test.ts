@@ -3,6 +3,8 @@ import type { Request, Response } from 'express';
 
 const mockService = { recordPageView: vi.fn(), report: vi.fn() };
 vi.mock('../services/visits.service.js', () => mockService);
+const mockUserRepo = { getRole: vi.fn() };
+vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
 const { recordPageView, getVisits } = await import('./visits.controller.js');
 
@@ -24,6 +26,7 @@ describe('recordPageView', () => {
     }) as unknown as Request;
 
   it('passes the page, IP, browser and whether someone is signed in', async () => {
+    mockUserRepo.getRole.mockResolvedValue('USER');
     mockService.recordPageView.mockResolvedValue(undefined);
     const res = mockRes();
     await recordPageView(req({ id: 1 }), res);
@@ -34,6 +37,22 @@ describe('recordPageView', () => {
       true,
     );
     expect(res.status).toHaveBeenCalledWith(204);
+  });
+
+  it.each(['ADMIN', 'FOUNDER'])('leaves out the visits of an %s', async (role) => {
+    mockUserRepo.getRole.mockResolvedValue(role);
+    const res = mockRes();
+    await recordPageView(req({ id: 1 }), res);
+    expect(mockUserRepo.getRole).toHaveBeenCalledWith(1);
+    expect(mockService.recordPageView).not.toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(204);
+  });
+
+  it('counts a guest without asking for a role', async () => {
+    mockService.recordPageView.mockResolvedValue(undefined);
+    await recordPageView(req(), mockRes());
+    expect(mockUserRepo.getRole).not.toHaveBeenCalled();
+    expect(mockService.recordPageView).toHaveBeenCalled();
   });
 
   it('still answers 204 when the visit could not be stored', async () => {
