@@ -50,7 +50,30 @@
     "runningNow": "Running now",
     "openSessions": "Open sessions",
     "perLanguage": "Per runtime",
-    "noData": "No data yet"
+    "noData": "No data yet",
+    "visits": "Visitors",
+    "range": "Time range",
+    "lastDays": "{{count}} days",
+    "visitorsADay": "Visitors a day",
+    "newAccountsADay": "New accounts a day",
+    "visitorsWord_one": "visitor",
+    "visitorsWord_other": "visitors",
+    "viewsWord_one": "view",
+    "viewsWord_other": "views",
+    "newAccountsWord_one": "new account",
+    "newAccountsWord_other": "new accounts",
+    "day": "Day",
+    "topPages": "Most visited pages",
+    "sources": "Where visitors come from",
+    "source": {
+      "direct": "Direct",
+      "other": "Other"
+    },
+    "guests": "Guests",
+    "signedIn": "Signed in",
+    "english": "English",
+    "romanian": "Romanian",
+    "visitorDays": "Over several days a visitor counts once for each day they came."
   },
   "lang": {
     "switch": "Switch language",
