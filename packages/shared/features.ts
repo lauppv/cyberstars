@@ -6,7 +6,8 @@ export type FeatureKey =
   | 'notifications'
   | 'connections'
   | 'radio'
-  | 'aiHints';
+  | 'aiHints'
+  | 'tutorChat';
 
 // Features that are "preview": live in the code, but on production only ADMINs
 // can reach them; everyone else sees a "Coming Soon" treatment and the routes
@@ -20,6 +21,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   connections: true,
   radio: false,
   aiHints: false,
+  tutorChat: true,
 };
 
 // Features switched off for everyone, admins and dev included. Temporary: drop

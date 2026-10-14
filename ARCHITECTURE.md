@@ -285,6 +285,14 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 | POST   | `/api/visits`       | Optional | The app reports a page it showed (`{ path, referrer?, steps? }`), always a 204; bots are left out, 300/min/IP       |
 | POST   | `/api/visits/steps` | Optional | A guest's clicks and scrolls on the page they're still on (`{ steps }`, 1–30), always a 204; shares the limit above |
 
+### Tutor
+
+Behind the `tutorChat` preview gate (admins only on prod).
+
+| Method | Endpoint          | Auth | Description                                                                                                                                                    |
+| ------ | ----------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/tutor/chat` | Yes  | One message (`{ message, page, lang? }`, at most 2,000 characters) in, one answer (`{ answer }`) out; the model may search and read lessons first. 10/min/user |
+
 ## Database schema
 
 Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Field names use camelCase in TypeScript, mapped to snake_case columns via Prisma's `@map`.
@@ -390,8 +398,8 @@ A lesson may have an optional Romanian translation at `packages/content/lessons/
 | `ADMIN_STATS_CACHE_MS`     | No       | `300000`                              | Admin stats cache TTL (5 min)                                                    |
 | `RESEND_API_KEY`           | No       | none                                  | Resend key for reset and email-change codes; empty logs the codes to the console |
 | `RESEND_FROM`              | No       | `CyberStars <noreply@cyberstars.app>` | Sender for those emails                                                          |
-| `GEMINI_API_KEY`           | No       | none                                  | Gemini key for AI hints; empty disables hints                                    |
-| `GEMINI_MODEL`             | No       | `gemini-flash-lite-latest`            | Gemini model used for hints                                                      |
+| `GEMINI_API_KEY`           | No       | none                                  | Gemini key for AI hints and the tutor; empty disables both                       |
+| `GEMINI_MODEL`             | No       | `gemini-flash-lite-latest`            | Gemini model used for hints and the tutor                                        |
 | `VITE_PROD_API_URL`        | No       | none                                  | Client API base URL in production; empty means same origin                       |
 
 ## Design decisions
