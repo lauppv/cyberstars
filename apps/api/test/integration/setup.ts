@@ -11,6 +11,7 @@ beforeEach(async () => {
       "visit_steps",
       "guest_visits",
       "lesson_submissions",
+      "tutor_messages",
       "dm_reactions",
       "direct_messages",
       "conversations",

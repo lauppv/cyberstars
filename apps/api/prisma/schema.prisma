@@ -114,6 +114,7 @@ model User {
   supportMessages SupportMessage[]
   dailyPicks      DailyPick[]
   submissions     LessonSubmission[]
+  tutorMessages   TutorMessage[]
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
@@ -230,6 +231,29 @@ model LessonSubmission {
 
   @@index([userId, courseKey, lessonSlug, id])
   @@map("lesson_submissions")
+}
+
+// A student's tutor conversations, one row per message. The general
+// conversation has no lesson; every other one is about one lesson or algorithm
+// challenge. The student's message and the tutor's answer are saved together
+// once the answer ends, capped at the newest 200 per conversation.
+model TutorMessage {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  courseKey  String?  @map("course_key") @db.VarChar(50)
+  lessonSlug String?  @map("lesson_slug") @db.VarChar(100)
+  // "student" or "tutor"
+  role       String   @db.VarChar(10)
+  text       String
+  // How an answer ended (complete, cut, blocked, interrupted); null on the
+  // student's own messages.
+  finish     String?  @db.VarChar(12)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, courseKey, lessonSlug, id])
+  @@map("tutor_messages")
 }
 
 model SupportTicket {
