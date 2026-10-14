@@ -246,6 +246,75 @@ body {
   text-decoration: underline;
 }
 
+/* A tutor's answer: short prose, links into the app, code to read */
+.tutor-answer {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text2);
+  overflow-wrap: break-word;
+}
+.tutor-answer > * + * {
+  margin-top: 0.75em;
+}
+.tutor-answer strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.tutor-answer ul,
+.tutor-answer ol {
+  padding-left: 1.25em;
+  list-style: revert;
+}
+.tutor-answer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.tutor-answer a:hover {
+  text-decoration: underline;
+}
+.tutor-answer code:not(pre code) {
+  font-size: 12px;
+  background: var(--surface2);
+  color: #b3a4ff;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.tutor-answer pre {
+  font-size: 12px;
+  line-height: 1.55;
+  padding: 10px 12px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+/* The tutor's status line while it works: a soft purple light runs through the
+   letters. With reduced motion the words stand still in a dimmer colour. */
+@keyframes glimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+.animate-glimmer {
+  background-image: linear-gradient(90deg, var(--text3) 20%, #b3a4ff 50%, var(--text3) 80%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glimmer 2.4s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-glimmer {
+    background-image: none;
+    color: var(--text3);
+    animation: none;
+  }
+}
+
 .cm-editor,
 .cm-editor .cm-content,
 .cm-editor .cm-line,

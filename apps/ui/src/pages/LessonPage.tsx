@@ -10,6 +10,7 @@ import { useGamification } from '../hooks/useGamification';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
+import { useTutor } from '../context/TutorContext';
 import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
 import { AchievementToast } from '../components/gamification/AchievementToast';
@@ -73,6 +74,8 @@ export function LessonPage() {
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
   const { isLoggedIn, user, refreshUser } = useAuth();
+  // With the tutor beside it on a wide screen, the lesson takes all the room left
+  const tutorOpen = useTutor()?.open ?? false;
   const canUseHints = isLoggedIn && canAccessFeature('aiHints', user?.role, import.meta.env.PROD);
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
@@ -463,7 +466,10 @@ export function LessonPage() {
       />
 
       <div className="flex flex-1 overflow-hidden justify-center">
-        <div ref={bandRef} className="flex w-full lg:w-4/5 overflow-hidden">
+        <div
+          ref={bandRef}
+          className={`flex w-full lg:w-4/5 overflow-hidden ${tutorOpen ? 'xl:w-full' : ''}`}
+        >
           {/* Lesson panel: the lesson, and the latest test run's result */}
           <div
             style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}

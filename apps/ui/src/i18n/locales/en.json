@@ -1201,5 +1201,29 @@
     "title": "Page not found",
     "text": "There's nothing at this address. The link may be old, or the page has moved.",
     "home": "Go to the home page"
+  },
+  "tutor": {
+    "title": "Tutor",
+    "general": "General conversation",
+    "close": "Close",
+    "deleteConversation": "Delete conversation",
+    "confirmDelete": "Delete this conversation? Its messages can't be brought back.",
+    "intro": "Ask about a lesson, an error or an idea. The tutor helps you get there on your own, without handing you the solution.",
+    "placeholder": "Ask the tutor",
+    "send": "Send",
+    "earlier": "Show earlier messages",
+    "loadFailed": "Your earlier messages couldn't be loaded. Close the panel and open it again to retry.",
+    "cut": "The answer was cut short.",
+    "blocked": "The tutor can't help with this one. Try asking another way.",
+    "errorFailed": "The tutor couldn't answer right now.",
+    "errorBusy": "Too many messages in a short time. Wait a minute, then try again.",
+    "tryAgain": "Try again",
+    "status": {
+      "lesson": "Reading the lesson",
+      "code": "Looking at your code",
+      "search": "Searching the lessons",
+      "think": "Thinking it through",
+      "write": "Writing an answer"
+    }
   }
 }

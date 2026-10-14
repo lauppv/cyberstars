@@ -1213,5 +1213,29 @@
     "title": "Pagina nu există",
     "text": "La adresa asta nu e nimic. Poate linkul e vechi sau pagina s-a mutat.",
     "home": "Mergi la pagina principală"
+  },
+  "tutor": {
+    "title": "Tutor",
+    "general": "Conversație generală",
+    "close": "Închide",
+    "deleteConversation": "Șterge conversația",
+    "confirmDelete": "Ștergi conversația? Mesajele ei nu se mai pot recupera.",
+    "intro": "Întreabă despre o lecție, o eroare sau o idee. Tutorul te ajută să ajungi singur la soluție, fără să ți-o dea.",
+    "placeholder": "Întreabă tutorul",
+    "send": "Trimite",
+    "earlier": "Arată mesajele anterioare",
+    "loadFailed": "Mesajele anterioare nu s-au putut încărca. Închide panoul și deschide-l din nou ca să reîncerci.",
+    "cut": "Răspunsul a fost tăiat.",
+    "blocked": "Tutorul nu te poate ajuta cu asta. Încearcă să întrebi altfel.",
+    "errorFailed": "Tutorul nu a putut răspunde acum.",
+    "errorBusy": "Prea multe mesaje într-un timp scurt. Așteaptă un minut, apoi încearcă din nou.",
+    "tryAgain": "Încearcă din nou",
+    "status": {
+      "lesson": "Citesc lecția",
+      "code": "Mă uit la codul tău",
+      "search": "Caut prin lecții",
+      "think": "Mă gândesc",
+      "write": "Scriu un răspuns"
+    }
   }
 }

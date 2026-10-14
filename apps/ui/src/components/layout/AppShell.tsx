@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
+import { useTutor } from '../../context/TutorContext';
+import { TutorPanel } from '../tutor/TutorPanel';
 import { Sidebar, type SidebarState } from './Sidebar';
 
 // Above this width the sidebar pushes the page aside. Below it there is no room
@@ -17,6 +19,10 @@ const ROOM: Record<SidebarState, string> = {
   wide: 'md:pl-[240px]',
   closed: '',
 };
+
+// From this width the tutor's panel pushes the page aside like the sidebar
+// does; below it the lesson's split needs the room, so the panel lies over it.
+const TUTOR_ROOM = 'xl:pr-[400px]';
 
 interface SidebarControl {
   state: SidebarState;
@@ -46,6 +52,7 @@ function isWide(): boolean {
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const { isLoggedIn, isLoading } = useAuth();
+  const tutorOpen = useTutor()?.open ?? false;
   const [remembered] = useState(readRemembered);
   const [toggled, setToggled] = useState<boolean | null>(null);
 
@@ -99,9 +106,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         />
       )}
       <Sidebar state={state} onNavigate={leave} />
-      <div className={`min-h-full transition-[padding] duration-200 ${ROOM[state]}`}>
+      <div
+        className={`min-h-full transition-[padding] duration-200 ${ROOM[state]} ${tutorOpen ? TUTOR_ROOM : ''}`}
+      >
         {children}
       </div>
+      {tutorOpen && <TutorPanel />}
     </SidebarContext.Provider>
   );
 }
