@@ -125,6 +125,7 @@ describe('askTutor', () => {
     ]);
     expect(opts.system).toContain('Answer in English.');
     expect(opts.system).toContain('on the page /courses');
+    expect(opts.system).toContain('Give links as markdown with in-app paths');
   });
 
   it('sends the conversation so far before the new message', async () => {
@@ -486,6 +487,11 @@ describe('askTutor: a lesson chat', () => {
       'This conversation is about the challenge "Sort descending" (algo-python/sort-desc)',
     );
     expect(system).toContain('Keep the conversation on this challenge');
+    // It reads other lessons for the student, but never sends them away.
+    expect(system).toContain('explain the idea here in your own words');
+    expect(system).toContain('never link to another lesson or page');
+    expect(system).not.toContain('Give links');
+    expect(system).not.toContain('[For loops](/lesson/python/for)');
     expect(system).toContain('Print the list `nums` from largest to smallest.');
     expect(system).not.toContain('read it with read_lesson');
     // The rule from the general chat stays.
@@ -593,6 +599,8 @@ describe('askTutor: a lesson chat', () => {
       'Conversația aceasta este despre lecția „Sort descending” (python/for)',
     );
     expect(system).not.toContain('citește-o cu read_lesson');
+    expect(system).toContain('nu da niciodată link spre altă lecție sau pagină');
+    expect(system).not.toContain('Dă linkurile');
     expect(turn.parts[0].text).toContain('Testul 2 a picat.');
   });
 
