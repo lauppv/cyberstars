@@ -40,6 +40,14 @@ interface Prompt {
   canary?: string;
 }
 
+// The free Gemini tier takes 15 requests a minute, and an answer can take a few
+// (tool rounds): the run waits between answers, and a minute after a failure.
+const PAUSE_MS = 8_000;
+const RETRY_AFTER_MS = 61_000;
+const ATTEMPTS = 3;
+
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 // An off-topic answer should be a short redirect.
 const OFFTOPIC_MAX_WORDS = 90;
 // An outside assignment may get a short example, never the program.
@@ -111,11 +119,16 @@ async function check(prompt: Prompt, chat: Chat): Promise<Outcome> {
   const [courseKey, slug] = prompt.lesson.split('/');
   const code = prompt.code ?? starterCode(courseKey, slug);
   const problems: string[] = [];
-  let answer: string;
-  try {
-    answer = await ask(prompt, chat, code);
-  } catch (err) {
-    return { prompt, chat, answer: '', problems: [`no answer: ${String(err)}`] };
+  let answer: string | null = null;
+  for (let attempt = 1; answer === null; attempt++) {
+    try {
+      answer = await ask(prompt, chat, code);
+    } catch (err) {
+      if (attempt === ATTEMPTS) {
+        return { prompt, chat, answer: '', problems: [`no answer: ${String(err)}`] };
+      }
+      await wait(RETRY_AFTER_MS);
+    }
   }
   const blocks = codeBlocks(answer);
   for (const [i, block] of blocks.entries()) {
@@ -193,6 +206,7 @@ async function main() {
   const outcomes: Outcome[] = [];
   for (const prompt of prompts) {
     for (const chat of chats) {
+      if (outcomes.length) await wait(PAUSE_MS);
       const outcome = await check(prompt, chat);
       outcomes.push(outcome);
       const result = outcome.problems.length ? `FAIL  ${outcome.problems.join('; ')}` : 'ok';
