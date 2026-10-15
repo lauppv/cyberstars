@@ -2,6 +2,7 @@ import { useMemo, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CircleCheck } from 'lucide-react';
 import { useCurriculum } from '../../context/CurriculumContext';
+import { TutorMark } from '../tutor/TutorMark';
 import { CodeStill } from './CodeStill';
 import { curriculumCounts } from './curriculumCounts';
 
@@ -190,18 +191,28 @@ export function TutorPicture() {
   return (
     <Box label={t('landing.features.tutor.picture')}>
       <div className="max-w-[640px] mx-auto flex flex-col gap-3">
-        {TUTOR_TURNS.map(([who, key], i) => (
-          <div
-            key={key}
-            className={`max-w-[85%] text-[13px] ${
-              who === 'student'
-                ? 'self-end px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)]'
-                : 'leading-relaxed'
-            } ${i >= 2 ? 'hidden md:block' : ''}`}
-          >
-            {t(`landing.features.tutor.${key}`)}
-          </div>
-        ))}
+        {TUTOR_TURNS.map(([who, key], i) =>
+          who === 'student' ? (
+            <div
+              key={key}
+              className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] ${
+                i >= 2 ? 'hidden md:block' : ''
+              }`}
+            >
+              {t(`landing.features.tutor.${key}`)}
+            </div>
+          ) : (
+            <div
+              key={key}
+              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden md:flex' : 'flex'}`}
+            >
+              <TutorMark size="sm" />
+              <p className="pt-0.5 text-[13px] leading-relaxed">
+                {t(`landing.features.tutor.${key}`)}
+              </p>
+            </div>
+          ),
+        )}
       </div>
     </Box>
   );
