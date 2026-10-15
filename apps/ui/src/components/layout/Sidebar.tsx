@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import {
   BookOpen,
-  BotMessageSquare,
   Braces,
   ChevronsUpDown,
   Gauge,
@@ -24,6 +23,7 @@ import {
 } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
 import { BrandMark } from '../ui/BrandMark';
+import { TutorFace } from '../tutor/TutorFace';
 import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
 import { useTutor } from '../../context/TutorContext';
@@ -118,7 +118,7 @@ function TutorItem({ onNavigate }: { onNavigate: () => void }) {
           : 'bg-transparent text-[var(--text2)] hover:bg-[var(--surface)] hover:text-[var(--text)]'
       }`}
     >
-      <BotMessageSquare size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
+      <TutorFace size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
       <span className="truncate">{t('tutor.title')}</span>
     </button>
   );
@@ -326,7 +326,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             {canAccessFeature('tutorChat', user.role, isProd) ? (
               <TutorItem onNavigate={onNavigate} />
             ) : (
-              <LockedItem icon={BotMessageSquare} label={t('tutor.title')} />
+              <LockedItem icon={TutorFace} label={t('tutor.title')} />
             )}
           </Section>
         )}

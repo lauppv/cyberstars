@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BotMessageSquare, Eye, RotateCcw, Save, Share2 } from 'lucide-react';
+import { Eye, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeExecution } from '../hooks/useCodeExecution';
@@ -13,6 +13,7 @@ import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { useTutor } from '../context/TutorContext';
 import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
+import { TutorFace } from '../components/tutor/TutorFace';
 import { AchievementToast } from '../components/gamification/AchievementToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
@@ -720,7 +721,7 @@ export function LessonPage() {
                             }}
                             className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >
-                            <BotMessageSquare
+                            <TutorFace
                               size={16}
                               strokeWidth={1.75}
                               className="text-[var(--text3)]"
