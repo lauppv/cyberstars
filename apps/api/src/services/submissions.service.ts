@@ -93,3 +93,16 @@ export async function getForUser(userId: number, id: number): Promise<Submission
   if (!row) throw new AppError(404, 'Submission not found');
   return toDetail(row);
 }
+
+// The student's own attempt on this lesson, or null when it is someone else's,
+// gone, or from another lesson. Used where a missing attempt is no error.
+export async function findForLesson(
+  userId: number,
+  id: number,
+  courseKey: string,
+  lessonSlug: string,
+): Promise<SubmissionDetail | null> {
+  const row = await repo.findOwned(userId, id);
+  if (!row || row.courseKey !== courseKey || row.lessonSlug !== lessonSlug) return null;
+  return toDetail(row);
+}

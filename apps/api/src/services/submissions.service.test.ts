@@ -173,3 +173,35 @@ describe('getForUser', () => {
     await expect(service.getForUser(7, 9)).rejects.toMatchObject({ statusCode: 404 });
   });
 });
+
+describe('findForLesson', () => {
+  const row = {
+    ...summaryRow,
+    courseKey: 'python',
+    lessonSlug: 'print',
+    code: 'print(3)',
+    syntaxError: null,
+    structureFailures: [],
+    failedCase: null,
+  };
+
+  it("returns the student's attempt on this lesson", async () => {
+    mockRepo.findOwned.mockResolvedValue(row);
+    mockLoadTestsSpec.mockReturnValue(null);
+
+    expect(await service.findForLesson(7, 9, 'python', 'print')).toMatchObject({
+      id: 9,
+      code: 'print(3)',
+    });
+    expect(mockRepo.findOwned).toHaveBeenCalledWith(7, 9);
+  });
+
+  it('returns null for an attempt that is missing, foreign or on another lesson', async () => {
+    mockRepo.findOwned.mockResolvedValue(null);
+    expect(await service.findForLesson(7, 9, 'python', 'print')).toBeNull();
+
+    mockRepo.findOwned.mockResolvedValue(row);
+    expect(await service.findForLesson(7, 9, 'python', 'for')).toBeNull();
+    expect(await service.findForLesson(7, 9, 'java', 'print')).toBeNull();
+  });
+});
