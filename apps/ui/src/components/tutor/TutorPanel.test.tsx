@@ -10,6 +10,8 @@ const h = vi.hoisted(() => ({
   canAccess: vi.fn((..._a: unknown[]) => true),
   getGeneralConversation: vi.fn(),
   deleteGeneralConversation: vi.fn(),
+  getLessonConversation: vi.fn(),
+  deleteLessonConversation: vi.fn(),
   streamChat: vi.fn(),
   usage: { summary: null as null | { tutorMessage: UsageState }, refresh: vi.fn() },
 }));
@@ -20,8 +22,10 @@ vi.mock('@cyberstars/shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));
 vi.mock('../../services/tutorService', () => ({
-  getGeneralConversation: h.getGeneralConversation,
-  deleteGeneralConversation: h.deleteGeneralConversation,
+  getConversation: (lesson: unknown, before?: number) =>
+    lesson ? h.getLessonConversation(lesson, before) : h.getGeneralConversation(before),
+  deleteConversation: (lesson: unknown) =>
+    lesson ? h.deleteLessonConversation(lesson) : h.deleteGeneralConversation(),
   streamChat: h.streamChat,
 }));
 

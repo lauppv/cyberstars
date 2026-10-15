@@ -109,7 +109,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     setLoadFailed(false);
     tutorService
-      .getGeneralConversation()
+      .getConversation(null)
       .then((res) => {
         if (currentUser.current !== forUser) return;
         setMessages([...res.messages].reverse());
@@ -207,13 +207,13 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const loadEarlier = useCallback(async () => {
     const oldest = messages.find((m) => m.id > 0)?.id;
     if (oldest === undefined) return;
-    const res = await tutorService.getGeneralConversation(oldest);
+    const res = await tutorService.getConversation(null, oldest);
     setMessages((prev) => [...[...res.messages].reverse(), ...prev]);
     setHasMore(res.hasMore);
   }, [messages]);
 
   const clear = useCallback(async () => {
-    await tutorService.deleteGeneralConversation();
+    await tutorService.deleteConversation(null);
     setMessages([]);
     setHasMore(false);
     setFailure(null);
