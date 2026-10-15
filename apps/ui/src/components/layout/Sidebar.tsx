@@ -322,6 +322,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             ) : (
               <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
             )}
+            <hr className="my-1 border-[var(--border)]" />
             {canAccessFeature('tutorChat', user.role, isProd) ? (
               <TutorItem onNavigate={onNavigate} />
             ) : (
