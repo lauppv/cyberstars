@@ -162,6 +162,16 @@ describe('TutorPanel', () => {
     expect(screen.queryByRole('complementary')).toBeNull();
   });
 
+  it('offers questions to start with, and sends the one picked', async () => {
+    renderTutor();
+    await openPanel();
+    expect(await screen.findByText('How can I help?')).toBeInTheDocument();
+    answer();
+    fireEvent.click(screen.getByRole('button', { name: 'What is a variable?' }));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'What is a variable?' });
+    expect(screen.queryByRole('button', { name: 'What is a variable?' })).toBeNull();
+  });
+
   it('says when the saved messages could not be read', async () => {
     h.getGeneralConversation.mockRejectedValue(new Error('down'));
     renderTutor();
@@ -474,6 +484,7 @@ describe('TutorPanel: a lesson conversation', () => {
     renderTutor('/lesson/python/for');
     await openLesson();
     expect(await screen.findByText(/sees your code/)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Give me a nudge' })).toBeInTheDocument();
   });
 
   it('sends the lesson and the work as it is when each message goes', async () => {
