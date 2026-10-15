@@ -12,7 +12,7 @@ import type { UsageState } from '@cyberstars/shared/usage';
 import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
-  auth: { user: null as null | { id: number; role: string } },
+  auth: { user: null as null | { id: number; role: string; name?: string } },
   canAccess: vi.fn((..._a: unknown[]) => true),
   listConversations: vi.fn(),
   getConversation: vi.fn(),
@@ -244,6 +244,30 @@ describe('TutorPanel', () => {
     expect(await screen.findByText(/Ask about a lesson/)).toBeInTheDocument();
     fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Escape' });
     expect(screen.queryByRole('complementary')).toBeNull();
+  });
+
+  it('greets the student by their first name, as fits the hour', async () => {
+    h.auth = { user: { ...USER, name: 'Ada Lovelace' } };
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2026, 9, 15, 21, 0));
+    renderTutor();
+    await openPanel();
+    expect(await screen.findByText('Good evening, Ada. How can I help?')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    vi.setSystemTime(new Date(2026, 9, 16, 2, 30));
+    await openPanel();
+    expect(screen.getByText('Working late, Ada. How can I help?')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    vi.setSystemTime(new Date(2026, 9, 16, 9, 0));
+    await openPanel();
+    expect(screen.getByText('Good morning, Ada. How can I help?')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    vi.setSystemTime(new Date(2026, 9, 16, 14, 0));
+    await openPanel();
+    expect(screen.getByText('Hi, Ada. How can I help?')).toBeInTheDocument();
   });
 
   it('offers questions to start with, and sends the one picked', async () => {

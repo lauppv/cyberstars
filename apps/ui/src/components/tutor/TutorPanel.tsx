@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import { useTranslation } from 'react-i18next';
 import { ArrowUp, PanelLeft, SquarePen, Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
+import { useAuth } from '../../context/AuthContext';
 import { useTutor, type TutorLessonStage } from '../../context/TutorContext';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
@@ -88,6 +89,14 @@ function lessonStarters(stage: TutorLessonStage | null): Starter[] {
   }
 }
 
+// An empty conversation greets the student by their first name, as fits the hour
+function partOfDay(hour: number): 'morning' | 'day' | 'evening' | 'night' {
+  if (hour >= 5 && hour < 12) return 'morning';
+  if (hour >= 12 && hour < 18) return 'day';
+  if (hour >= 18 && hour < 23) return 'evening';
+  return 'night';
+}
+
 // The box grows with what the student writes, up to its max-height
 const BOX_MAX_PX = 160;
 
@@ -124,6 +133,7 @@ export function TutorPanel() {
   const tutor = useTutor()!;
   const { messages, pending, failure } = tutor;
   const { summary, refresh } = useUsage();
+  const firstName = useAuth().user?.name?.trim().split(/\s+/)[0];
   const [draft, setDraft] = useState('');
   const [noticeClosedFor, setNoticeClosedFor] = useState(closedNotice);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -313,7 +323,9 @@ export function TutorPanel() {
           <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
             <TutorMark size="lg" />
             <h3 className="text-[14px] font-semibold text-[var(--text)]">
-              {t('tutor.emptyTitle')}
+              {firstName
+                ? t(`tutor.greeting.${partOfDay(new Date().getHours())}`, { name: firstName })
+                : t('tutor.emptyTitle')}
             </h3>
             <p className="text-[13px] text-[var(--text2)]">
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
