@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { listPages, readLesson, searchLessons } from './tutor-tools.service.js';
+import { lessonStatement, listPages, readLesson, searchLessons } from './tutor-tools.service.js';
 
 describe('searchLessons', () => {
   it('finds the Python for loop lesson by its name', () => {
@@ -54,6 +54,23 @@ describe('readLesson', () => {
   it('refuses a course that is coming soon or does not exist', () => {
     expect(readLesson('kotlin', 'hello-world', 'en')).toBeNull();
     expect(readLesson('nope', 'for', 'en')).toBeNull();
+  });
+});
+
+describe('lessonStatement', () => {
+  it("reads the lesson's title and its statement in the asked language", () => {
+    const ro = lessonStatement('algo-python', 'caesar-cipher', 'ro');
+    expect(ro!.title).toEqual(expect.any(String));
+    expect(ro!.statement).toEqual(readLesson('algo-python', 'caesar-cipher', 'ro')!.statement);
+  });
+
+  it('reads a Kotlin lesson too, since the student is on it', () => {
+    expect(lessonStatement('kotlin', 'hello-world', 'en')!.statement).not.toBe('');
+  });
+
+  it('refuses a slug the curriculum does not list before reading any file', () => {
+    expect(lessonStatement('python', '../../../package', 'en')).toBeNull();
+    expect(lessonStatement('python', 'for-solution', 'en')).toBeNull();
   });
 });
 
