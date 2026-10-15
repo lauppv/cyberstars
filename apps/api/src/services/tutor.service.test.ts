@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 const gemini = { converseStream: vi.fn(), isGeminiConfigured: vi.fn() };
 vi.mock('./gemini.service.js', () => gemini);
@@ -530,6 +530,106 @@ describe('askTutor: the length of the answer', () => {
     });
 
     expect(written.tokens).toBe(320);
+  });
+});
+
+describe('askTutor: words in another script', () => {
+  const stream = gemini.converseStream;
+  let warn: ReturnType<typeof vi.spyOn>;
+  beforeEach(() => {
+    warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+  afterEach(() => warn.mockRestore());
+
+  it('starts the answer again when a word in another script slips in', async () => {
+    const written = { tokens: 0 };
+    stream
+      .mockReturnValueOnce(
+        turn(
+          {
+            parts: [{ text: 'Almanahul are lecturi scurte. Treci pe acolo ori' }],
+            outputTokens: 30,
+          },
+          { parts: [{ text: 'ストラップ ce vrei.' }], outputTokens: 40, finishReason: 'STOP' },
+        ),
+      )
+      .mockReturnValueOnce(
+        turn({
+          parts: [{ text: 'Almanahul are lecturi scurte din istoria informaticii.' }],
+          outputTokens: 12,
+          finishReason: 'STOP',
+        }),
+      );
+
+    await expect(
+      collect(askTutor({ ...base, message: 'ce e almanahul?', written })),
+    ).resolves.toEqual([
+      { type: 'text', text: 'Almanahul are lecturi scurte. Treci pe acolo ori' },
+      { type: 'restart' },
+      { type: 'text', text: 'Almanahul are lecturi scurte din istoria informaticii.' },
+      { type: 'done', finish: 'complete' },
+    ]);
+    // The new try is a whole new call, and only its words are paid for.
+    expect(stream).toHaveBeenCalledTimes(2);
+    expect(stream.mock.calls[1][0].contents).toEqual(stream.mock.calls[0][0].contents);
+    expect(written.tokens).toBe(12);
+    expect(warn).toHaveBeenCalledWith('[tutor] a word in another script:', '"ストラップ ce vrei."');
+  });
+
+  it('starts again from the lookups when the slip came after them', async () => {
+    tools.searchLessons.mockReturnValue([]);
+    stream
+      .mockReturnValueOnce(call('search_lessons', { query: 'for' }))
+      .mockReturnValueOnce(text('Пример'))
+      .mockReturnValueOnce(call('search_lessons', { query: 'for' }))
+      .mockReturnValueOnce(text('Try the For lesson.'));
+
+    await expect(collect(askTutor(base))).resolves.toEqual([
+      { type: 'status', lookup: 'search' },
+      { type: 'restart' },
+      { type: 'status', lookup: 'search' },
+      { type: 'text', text: 'Try the For lesson.' },
+      { type: 'done', finish: 'complete' },
+    ]);
+  });
+
+  it('takes the letters out on the last try instead of starting again', async () => {
+    stream.mockImplementation(() => text(['Bucla for ', '重复 merge.']));
+
+    await expect(collect(askTutor({ ...base, message: 'cum merge bucla for?' }))).resolves.toEqual([
+      { type: 'text', text: 'Bucla for ' },
+      { type: 'restart' },
+      { type: 'text', text: 'Bucla for ' },
+      { type: 'restart' },
+      { type: 'text', text: 'Bucla for ' },
+      { type: 'text', text: ' merge.' },
+      { type: 'done', finish: 'complete' },
+    ]);
+    expect(stream).toHaveBeenCalledTimes(3);
+  });
+
+  it('keeps them when the student wrote in that script too', async () => {
+    stream.mockReturnValue(text('`こんにちは` is just a string, so print shows it as it is.'));
+
+    const events = await collect(
+      askTutor({ ...base, message: 'why does print("こんにちは") work?' }),
+    );
+
+    expect(events[0]).toEqual({
+      type: 'text',
+      text: '`こんにちは` is just a string, so print shows it as it is.',
+    });
+    expect(stream).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps Romanian, emoji and the Greek letters of an explanation', async () => {
+    const answer = 'Bravo, ai reușit 😎 Aria cercului e π·r², și ț, ș, ă, î, â rămân.';
+    stream.mockReturnValue(text(answer));
+
+    await expect(collect(askTutor(base))).resolves.toEqual([
+      { type: 'text', text: answer },
+      { type: 'done', finish: 'complete' },
+    ]);
   });
 });
 

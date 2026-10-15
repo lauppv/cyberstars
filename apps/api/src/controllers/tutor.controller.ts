@@ -144,6 +144,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
         continue;
       }
       if (event.type === 'text') words += event.text;
+      if (event.type === 'restart') words = '';
       send(res, event);
     }
     finish ??= 'complete';

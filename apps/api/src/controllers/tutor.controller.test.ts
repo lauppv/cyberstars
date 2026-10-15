@@ -388,6 +388,31 @@ describe('chat', () => {
     expect(mockUsage.release).toHaveBeenCalledWith(held, 2);
   });
 
+  it('saves only the words written after a restart', async () => {
+    mockTutor.askTutor.mockReturnValue(
+      answer(
+        { type: 'text', text: 'Almanahul ori' },
+        { type: 'restart' },
+        { type: 'text', text: 'Almanahul are lecturi scurte.' },
+        { type: 'done', finish: 'complete' },
+      ),
+    );
+    const res = mockRes();
+
+    await chat(mockReq(), res as unknown as Response, vi.fn());
+
+    expect(written(res)).toEqual([
+      { type: 'text', text: 'Almanahul ori' },
+      { type: 'restart' },
+      { type: 'text', text: 'Almanahul are lecturi scurte.' },
+      { type: 'done', finish: 'complete', conversationId: NEW_ID },
+    ]);
+    expect(saved()[0].answer).toEqual({
+      text: 'Almanahul are lecturi scurte.',
+      finish: 'complete',
+    });
+  });
+
   it('keeps an unexpected error message to itself', async () => {
     mockTutor.askTutor.mockReturnValue(
       failing(new Error('socket hang up at 10.0.0.3'), { type: 'text', text: 'Hi' }),

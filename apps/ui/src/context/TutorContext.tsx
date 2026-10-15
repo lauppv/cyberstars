@@ -430,6 +430,9 @@ export function TutorProvider({ children }: { children: ReactNode }) {
             if (event.type === 'status') {
               const lookup = { lookup: event.lookup, title: event.title };
               update(key, () => ({ pending: { question, lookup, answer: words } }));
+            } else if (event.type === 'restart') {
+              words = '';
+              update(key, () => ({ pending: { question, lookup: null, answer: '' } }));
             } else if (event.type === 'text') {
               words += event.text;
               update(key, () => ({ pending: { question, lookup: null, answer: words } }));

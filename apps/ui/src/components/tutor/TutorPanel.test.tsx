@@ -417,6 +417,23 @@ describe('TutorPanel', () => {
     expect(thinking()).toBe(0);
   });
 
+  it('wipes the words so far when the tutor starts its answer again', async () => {
+    renderTutor();
+    await openPanel();
+    const reply = answer();
+    type('What is the Almanac?');
+    reply.emit({ type: 'text', text: 'Short reads, whenever' });
+    expect(screen.getByText('Short reads, whenever')).toBeInTheDocument();
+    reply.emit({ type: 'restart' });
+    expect(screen.queryByText('Short reads, whenever')).toBeNull();
+    expect(screen.getByRole('status')).toHaveTextContent('Thinking it through');
+    reply.emit({ type: 'text', text: 'Short reads on the history of computing.' });
+    reply.emit({ type: 'done', finish: 'complete' });
+    await reply.end();
+    expect(screen.getByText('Short reads on the history of computing.')).toBeInTheDocument();
+    expect(screen.queryByText(/whenever/)).toBeNull();
+  });
+
   it('sends an address the endpoint would refuse as the home page', async () => {
     renderTutor('/almanac/c++');
     await openPanel();

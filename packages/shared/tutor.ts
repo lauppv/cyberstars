@@ -13,12 +13,15 @@ export type TutorLookup = 'search' | 'read' | 'pages';
 
 // The answer streams as server-sent events, each `data:` line one of these:
 // a `status` for each lookup before the first words, the next words, then
-// `done`, or `error` when it broke off. A failure before any event is a plain
-// error response instead; an `error` with no words before it saved nothing.
-// `done` and `error` name the conversation the exchange was saved to, so a new
-// one learns its id; they leave it out when the save failed.
+// `done`, or `error` when it broke off. A `restart` voids every word so far: a
+// stray word in another script made the tutor start the answer again. A
+// failure before any event is a plain error response instead; an `error` with
+// no words before it saved nothing. `done` and `error` name the conversation
+// the exchange was saved to, so a new one learns its id; they leave it out
+// when the save failed.
 export type TutorStreamEvent =
   | { type: 'status'; lookup: TutorLookup; title?: string }
+  | { type: 'restart' }
   | { type: 'text'; text: string }
   | { type: 'done'; finish: TutorFinish; conversationId?: number }
   | { type: 'error'; message: string; conversationId?: number };
