@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BotMessageSquare, Eye, Lightbulb, RotateCcw, Save, Share2 } from 'lucide-react';
+import { BotMessageSquare, Eye, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeExecution } from '../hooks/useCodeExecution';
@@ -22,7 +22,6 @@ import { ResultPanel } from '../components/judge/ResultPanel';
 import { SubmissionsPanel } from '../components/judge/SubmissionsPanel';
 import { SolutionModal } from '../components/code/SolutionModal';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
-import { HintModal } from '../components/code/HintModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { LessonTour } from '../components/tour/LessonTour';
 import { TourNotice } from '../components/tour/TourNotice';
@@ -46,7 +45,6 @@ import {
   MAIN_COURSE_KEYS,
   TOUR_LESSON,
 } from '@cyberstars/shared/constants';
-import { canAccessFeature } from '@cyberstars/shared/features';
 import { switchLanguage } from '../i18n';
 
 const TOUR_LANGUAGE_KEY = 'cyberstars.tourLanguage';
@@ -78,7 +76,6 @@ export function LessonPage() {
   const tutor = useTutor();
   // With the tutor beside it on a wide screen, the lesson takes all the room left
   const tutorOpen = tutor?.open ?? false;
-  const canUseHints = isLoggedIn && canAccessFeature('aiHints', user?.role, import.meta.env.PROD);
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
   const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
@@ -114,7 +111,6 @@ export function LessonPage() {
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [solution, setSolution] = useState<string | null>(null);
   const [confirmSolution, setConfirmSolution] = useState(false);
-  const [showHint, setShowHint] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -233,7 +229,6 @@ export function LessonPage() {
     setTimeout(() => {
       setShowToast(false);
       setSolution(null);
-      setShowHint(false);
       setOptimisticCompleted(null);
       setTestResults(null);
       setLeftView('lesson');
@@ -712,24 +707,6 @@ export function LessonPage() {
                             {t('lesson.askTutor')}
                           </button>
                         )}
-                        {canUseHints && (
-                          <button
-                            role="menuitem"
-                            data-track="hint"
-                            onClick={() => {
-                              setMenuOpen(false);
-                              setShowHint(true);
-                            }}
-                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                          >
-                            <Lightbulb
-                              size={16}
-                              strokeWidth={1.75}
-                              className="text-[var(--text3)]"
-                            />
-                            {t('lesson.getHint')}
-                          </button>
-                        )}
                         {canShowSolution && (
                           <button
                             role="menuitem"
@@ -894,15 +871,6 @@ export function LessonPage() {
           currentCode={isTerminal ? undefined : userCode}
           language={category}
           onClose={() => setSolution(null)}
-        />
-      )}
-      {showHint && canUseHints && (
-        <HintModal
-          courseKey={category}
-          lessonSlug={lesson}
-          code={userCode}
-          lang={i18n.language === 'ro' ? 'ro' : 'en'}
-          onClose={() => setShowHint(false)}
         />
       )}
       {inTour && user && (

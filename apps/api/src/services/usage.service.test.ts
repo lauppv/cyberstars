@@ -33,17 +33,17 @@ describe('getSummary', () => {
 
   it("reads each action's live window", async () => {
     const windowStart = new Date(NOW.getTime() - 60_000);
-    mockRepo.listForUser.mockResolvedValue([{ action: 'getHint', windowStart, used: 4 }]);
+    mockRepo.listForUser.mockResolvedValue([{ action: 'showSolution', windowStart, used: 2 }]);
 
     const summary = await getSummary(1, false);
 
     expect(mockRepo.listForUser).toHaveBeenCalledWith(1);
-    expect(summary.getHint).toMatchObject({
-      used: 4,
-      remaining: USAGE_LIMITS.getHint - 4,
+    expect(summary.showSolution).toMatchObject({
+      used: 2,
+      remaining: USAGE_LIMITS.showSolution - 2,
       resetAt: new Date(windowStart.getTime() + DAY).toISOString(),
     });
-    expect(summary.showSolution.used).toBe(0);
+    expect(summary.tutorMessage.used).toBe(0);
   });
 
   it('counts an ended window as unused', async () => {
@@ -72,7 +72,11 @@ describe('getSummary', () => {
 
   it('is unlimited for admins, without reading the table', async () => {
     const summary = await getSummary(9, true);
-    expect(summary.getHint).toMatchObject({ unlimited: true, remaining: Infinity, resetAt: null });
+    expect(summary.tutorMessage).toMatchObject({
+      unlimited: true,
+      remaining: Infinity,
+      resetAt: null,
+    });
     expect(mockRepo.listForUser).not.toHaveBeenCalled();
   });
 });
@@ -124,22 +128,22 @@ describe('hold', () => {
   });
 
   it('holds nothing for admins', async () => {
-    expect(await hold(9, 'getHint', true)).toBeNull();
+    expect(await hold(9, 'tutorMessage', true)).toBeNull();
     expect(mockRepo.take).not.toHaveBeenCalled();
   });
 });
 
 describe('release', () => {
-  const held = { userId: 2, action: 'getHint' as const, windowStart: NOW, units: 2 };
+  const held = { userId: 2, action: 'tutorMessage' as const, windowStart: NOW, units: 2 };
 
   it('gives units back to the window they came from', async () => {
     await release(held, 1);
-    expect(mockRepo.giveBack).toHaveBeenCalledWith(2, 'getHint', NOW, 1);
+    expect(mockRepo.giveBack).toHaveBeenCalledWith(2, 'tutorMessage', NOW, 1);
   });
 
   it('never gives back more than was held', async () => {
     await release(held, 5);
-    expect(mockRepo.giveBack).toHaveBeenCalledWith(2, 'getHint', NOW, 2);
+    expect(mockRepo.giveBack).toHaveBeenCalledWith(2, 'tutorMessage', NOW, 2);
   });
 
   it('does nothing for nothing, or for an admin', async () => {

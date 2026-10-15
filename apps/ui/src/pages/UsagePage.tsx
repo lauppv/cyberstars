@@ -53,11 +53,6 @@ export function UsagePage() {
                     period={t('usage.session')}
                   />
                 )}
-                <UsageMeter
-                  state={summary.getHint}
-                  label={t('usage.hints')}
-                  period={t('usage.day')}
-                />
               </div>
               <p className="panel p-4 text-[12px] text-[var(--text3)] leading-relaxed">
                 {t('usage.about')}

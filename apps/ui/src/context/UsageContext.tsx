@@ -9,8 +9,8 @@ interface UsageContextValue {
   summary: UsageSummary | null;
   loading: boolean;
   refresh: () => void;
-  // Adopt a fresh summary returned by a consume call (solution reveal, AI hint)
-  // so the meter updates without a round trip.
+  // Adopt a fresh summary returned by a consume call (a solution reveal) so
+  // the meter updates without a round trip.
   applySummary: (summary: UsageSummary) => void;
 }
 

@@ -28,12 +28,6 @@ export function RulesPage() {
               {t('rules.radioPrivacyDesc')}
             </div>
           </div>
-          <div className="panel mt-4 p-4">
-            <div className="text-[14px] font-semibold mb-1">{t('rules.aiPrivacyTitle')}</div>
-            <div className="text-[12px] text-[var(--text2)] leading-relaxed">
-              {t('rules.aiPrivacyDesc')}
-            </div>
-          </div>
         </div>
       </main>
     </div>

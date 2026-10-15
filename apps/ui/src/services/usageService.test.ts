@@ -9,7 +9,7 @@ beforeEach(() => vi.clearAllMocks());
 
 describe('usageService', () => {
   it('fetches the usage summary', async () => {
-    mockApi.get.mockResolvedValue({ showSolution: {}, getHint: {} });
+    mockApi.get.mockResolvedValue({ showSolution: {}, tutorMessage: {} });
     await getUsage();
     expect(mockApi.get).toHaveBeenCalledWith('/api/usage');
   });
