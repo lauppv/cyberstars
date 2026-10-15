@@ -569,7 +569,9 @@
       }
     ],
     "radioPrivacyTitle": "Focus Radio & privacy",
-    "radioPrivacyDesc": "The optional Focus Radio plays one royalty-free instrumental track we host ourselves: no third parties, no cookies, no ads. It's a single live broadcast, so everyone tuned in hears the same moment. Nothing loads until you press play. Prefer silence? Just leave it paused."
+    "radioPrivacyDesc": "The optional Focus Radio plays one royalty-free instrumental track we host ourselves: no third parties, no cookies, no ads. It's a single live broadcast, so everyone tuned in hears the same moment. Nothing loads until you press play. Prefer silence? Just leave it paused.",
+    "tutorPrivacyTitle": "The tutor & your data",
+    "tutorPrivacyDesc": "When you chat with the tutor, your messages and the conversation so far, plus the page you're on, are sent to a third-party AI provider (Google Gemini) to write the answer. In a chat about a lesson or challenge, the statement, your code, the end of your last run and your last test result go with them. Don't paste personal or sensitive information into the chat or the editor. Each conversation, the general one and one per lesson or challenge, is saved with its newest 200 messages until you delete it. The tutor works in 5-hour sessions worth between 15 and 30 messages. It's an optional aid: you can complete every lesson without it."
   },
   "profile": {
     "edit": "Edit",
