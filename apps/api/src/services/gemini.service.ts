@@ -1,10 +1,9 @@
 import { config } from '../config/index.js';
 
-// Thin wrapper over the Gemini REST API. Deliberately tiny: one text-in/text-out
-// call for hints, and one streamed conversation turn with tools for the tutor
-// chat. No SDK so the dependency footprint stays zero.
+// Thin wrapper over the Gemini REST API. Deliberately tiny: one streamed
+// conversation turn with tools for the tutor chat. No SDK so the dependency
+// footprint stays zero.
 const ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models';
-const TIMEOUT_MS = 20_000;
 // A streamed turn holds the request open while the words arrive, so its limit
 // covers the whole turn, not only the wait for the first byte.
 const STREAM_TIMEOUT_MS = 60_000;
@@ -33,13 +32,6 @@ export interface FunctionDeclaration {
   parameters?: Record<string, unknown>;
 }
 
-interface GenerateOptions {
-  system: string;
-  user: string;
-  maxOutputTokens?: number;
-  temperature?: number;
-}
-
 interface GeminiResponse {
   candidates?: { content?: { role?: string; parts?: GeminiPart[] }; finishReason?: string }[];
 }
@@ -54,45 +46,9 @@ function post(method: string, body: unknown, signal: AbortSignal): Promise<Respo
   });
 }
 
-async function callGemini(body: unknown): Promise<Response> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    return await post('generateContent', body, controller.signal);
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
 async function failure(res: Response): Promise<Error> {
   const text = await res.text().catch(() => '');
   return new Error(`Gemini API ${res.status}: ${text.slice(0, 300)}`);
-}
-
-async function generate(body: unknown): Promise<GeminiResponse> {
-  // Flash models get congested in spikes and answer 503 UNAVAILABLE; Google says
-  // these are transient, so retry once before giving up rather than hang.
-  let res = await callGemini(body);
-  if (res.status === 503) {
-    res = await callGemini(body);
-  }
-
-  if (!res.ok) throw await failure(res);
-
-  return (await res.json()) as GeminiResponse;
-}
-
-export async function generateText(opts: GenerateOptions): Promise<string> {
-  const data = await generate({
-    systemInstruction: { parts: [{ text: opts.system }] },
-    contents: [{ role: 'user', parts: [{ text: opts.user }] }],
-    generationConfig: {
-      temperature: opts.temperature ?? 0.4,
-      maxOutputTokens: opts.maxOutputTokens ?? 500,
-    },
-  });
-  const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('') ?? '';
-  return text.trim();
 }
 
 interface ConverseOptions {

@@ -403,8 +403,8 @@ A lesson may have an optional Romanian translation at `packages/content/lessons/
 | `ADMIN_STATS_CACHE_MS`     | No       | `300000`                              | Admin stats cache TTL (5 min)                                                    |
 | `RESEND_API_KEY`           | No       | none                                  | Resend key for reset and email-change codes; empty logs the codes to the console |
 | `RESEND_FROM`              | No       | `CyberStars <noreply@cyberstars.app>` | Sender for those emails                                                          |
-| `GEMINI_API_KEY`           | No       | none                                  | Gemini key for AI hints and the tutor; empty disables both                       |
-| `GEMINI_MODEL`             | No       | `gemini-flash-lite-latest`            | Gemini model used for hints and the tutor                                        |
+| `GEMINI_API_KEY`           | No       | none                                  | Gemini key for the tutor; empty disables it                                      |
+| `GEMINI_MODEL`             | No       | `gemini-flash-lite-latest`            | Gemini model used for the tutor                                                  |
 | `VITE_PROD_API_URL`        | No       | none                                  | Client API base URL in production; empty means same origin                       |
 
 ## Design decisions

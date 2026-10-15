@@ -11,7 +11,7 @@ vi.mock('../config/index.js', () => ({
   },
 }));
 
-const { isGeminiConfigured, generateText, converseStream } = await import('./gemini.service.js');
+const { isGeminiConfigured, converseStream } = await import('./gemini.service.js');
 
 function jsonResponse(body: unknown, status = 200): Response {
   return {
@@ -59,107 +59,6 @@ describe('isGeminiConfigured', () => {
   });
 });
 
-describe('generateText', () => {
-  const opts = { system: 'be brief', user: 'help me' };
-
-  it('sends the prompt to the configured model and returns the trimmed text', async () => {
-    fetchMock.mockResolvedValue(
-      jsonResponse({ candidates: [{ content: { parts: [{ text: '  a hint  ' }] } }] }),
-    );
-
-    await expect(generateText(opts)).resolves.toBe('a hint');
-
-    const [url, init] = fetchMock.mock.calls[0];
-    expect(url).toContain('gemini-flash-lite-latest:generateContent');
-    expect(init.headers['x-goog-api-key']).toBe('test-key');
-    const body = JSON.parse(init.body);
-    expect(body.systemInstruction.parts[0].text).toBe('be brief');
-    expect(body.contents[0].parts[0].text).toBe('help me');
-    expect(body.generationConfig).toEqual({ temperature: 0.4, maxOutputTokens: 500 });
-  });
-
-  it('passes through an explicit temperature and token budget', async () => {
-    fetchMock.mockResolvedValue(jsonResponse({ candidates: [] }));
-
-    await generateText({ ...opts, temperature: 0.9, maxOutputTokens: 42 });
-
-    const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-    expect(body.generationConfig).toEqual({ temperature: 0.9, maxOutputTokens: 42 });
-  });
-
-  it('joins every returned part', async () => {
-    fetchMock.mockResolvedValue(
-      jsonResponse({
-        candidates: [{ content: { parts: [{ text: 'one ' }, {}, { text: 'two' }] } }],
-      }),
-    );
-
-    await expect(generateText(opts)).resolves.toBe('one two');
-  });
-
-  it('returns an empty string when the response carries no candidates', async () => {
-    fetchMock.mockResolvedValue(jsonResponse({}));
-    await expect(generateText(opts)).resolves.toBe('');
-  });
-
-  it('retries once when the model answers 503 and keeps the second answer', async () => {
-    fetchMock
-      .mockResolvedValueOnce(jsonResponse({ error: 'unavailable' }, 503))
-      .mockResolvedValueOnce(
-        jsonResponse({ candidates: [{ content: { parts: [{ text: 'second try' }] } }] }),
-      );
-
-    await expect(generateText(opts)).resolves.toBe('second try');
-    expect(fetchMock).toHaveBeenCalledTimes(2);
-  });
-
-  it('gives up when the retry also fails', async () => {
-    fetchMock.mockResolvedValue(jsonResponse({ error: 'unavailable' }, 503));
-
-    await expect(generateText(opts)).rejects.toThrow('Gemini API 503');
-    expect(fetchMock).toHaveBeenCalledTimes(2);
-  });
-
-  it('reports a non-retryable error with a truncated body', async () => {
-    fetchMock.mockResolvedValue({
-      ok: false,
-      status: 400,
-      text: async () => 'x'.repeat(500),
-    } as Response);
-
-    await expect(generateText(opts)).rejects.toThrow(/Gemini API 400: x{300}$/);
-  });
-
-  it('still reports the status when the error body cannot be read', async () => {
-    fetchMock.mockResolvedValue({
-      ok: false,
-      status: 500,
-      text: async () => {
-        throw new Error('stream closed');
-      },
-    } as unknown as Response);
-
-    await expect(generateText(opts)).rejects.toThrow('Gemini API 500: ');
-  });
-
-  it('aborts the in-flight request once the timeout elapses', async () => {
-    vi.useFakeTimers();
-    let aborted = false;
-    fetchMock.mockImplementation(async (_url: string, init: RequestInit) => {
-      init.signal?.addEventListener('abort', () => {
-        aborted = true;
-      });
-      await vi.advanceTimersByTimeAsync(20_000);
-      return jsonResponse({ candidates: [] });
-    });
-
-    await generateText(opts);
-
-    expect(aborted).toBe(true);
-    vi.useRealTimers();
-  });
-});
-
 describe('converseStream', () => {
   const tool: FunctionDeclaration = { name: 'search_lessons', description: 'find lessons' };
   const contents: GeminiContent[] = [
@@ -201,6 +100,7 @@ describe('converseStream', () => {
 
     const [url, init] = fetchMock.mock.calls[0];
     expect(url).toContain('gemini-flash-lite-latest:streamGenerateContent?alt=sse');
+    expect(init.headers['x-goog-api-key']).toBe('test-key');
     const body = JSON.parse(init.body);
     expect(body.systemInstruction.parts[0].text).toBe('be kind');
     expect(body.contents).toEqual(opts.contents);
@@ -304,6 +204,28 @@ describe('converseStream', () => {
       'Gemini API 503',
     );
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('reports a failed request with a truncated body', async () => {
+    fetchMock.mockResolvedValue({
+      ok: false,
+      status: 400,
+      text: async () => 'x'.repeat(500),
+    } as Response);
+
+    await expect(collect(converseStream(opts))).rejects.toThrow(/Gemini API 400: x{300}$/);
+  });
+
+  it('still reports the status when the error body cannot be read', async () => {
+    fetchMock.mockResolvedValue({
+      ok: false,
+      status: 500,
+      text: async () => {
+        throw new Error('stream closed');
+      },
+    } as unknown as Response);
+
+    await expect(collect(converseStream(opts))).rejects.toThrow('Gemini API 500: ');
   });
 
   it('stops the request when the caller aborts', async () => {
