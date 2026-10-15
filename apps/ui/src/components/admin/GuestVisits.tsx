@@ -59,6 +59,15 @@ function Steps({ steps }: { steps: VisitStep[] }) {
   );
 }
 
+// When the visit started, in Romania's time like its day: 14:05.
+function startTime(iso: string): string {
+  return new Date(iso).toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Bucharest',
+  });
+}
+
 // Each guest's day on the site, newest first: where they came from and what
 // they did, in order (CYB-66). The source filter offers the places the totals
 // above already list.
@@ -123,7 +132,12 @@ export function GuestVisits({
           {visits.map((visit) => (
             <li key={visit.id} className="py-2.5 border-b border-[var(--border)] last:border-b-0">
               <div className="text-[11px] text-[var(--text3)] mb-1 tabular-nums">
-                {[visit.day, visit.source && sourceName(visit.source), visit.lang]
+                {[
+                  visit.day,
+                  visit.startedAt && startTime(visit.startedAt),
+                  visit.source && sourceName(visit.source),
+                  visit.lang,
+                ]
                   .filter(Boolean)
                   .join(' · ')}
               </div>
