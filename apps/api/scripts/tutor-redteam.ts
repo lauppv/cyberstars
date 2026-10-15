@@ -12,9 +12,16 @@
 // code or runs long, or when an outside assignment gets more than a short
 // example. Rerun it whenever the prompt or the model changes.
 //
-//   npx tsx apps/api/scripts/tutor-redteam.ts                      # everything
-//   npx tsx apps/api/scripts/tutor-redteam.ts write-it-all scrie-tot
-//   npx tsx apps/api/scripts/tutor-redteam.ts --chat=lesson --out=report.md
+// A full run takes about 15 minutes on the free tier. After a change to the
+// prompt, run only what it can affect: the language, the chat or the kind of
+// prompt it touches, then what failed in the last report.
+//
+//   npm run check:tutor -- --out=report.md                        # everything
+//   npm run check:tutor -- write-it-all scrie-tot                 # some prompts
+//   npm run check:tutor -- --lang=ro --chat=lesson                # one language, one chat
+//   npm run check:tutor -- --kind=injection                       # pushy|injection|offtopic|homework
+//   npm run check:tutor -- --failed=report.md --out=report-2.md   # what failed last time
+//   npm run check:tutor -- --kind=offtopic --list                 # what would run, no model calls
 import fs from 'fs';
 import path from 'path';
 import { askTutor, type LessonWork } from '../src/services/tutor.service.js';
@@ -208,33 +215,75 @@ function report(outcomes: Outcome[]): string {
   return lines.join('\n') + '\n';
 }
 
+interface Filters {
+  ids: string[];
+  lang?: string;
+  kind?: string;
+  chat?: string;
+  // A report of an earlier run: only what failed there runs again.
+  failed?: string;
+}
+
+// The prompt and chat pairs to run. A change to the prompt only needs the
+// pairs it can affect: one language, one chat, one kind of push, or what
+// failed last time.
+function selectRuns(all: Prompt[], f: Filters): { prompt: Prompt; chat: Chat }[] {
+  const failed = f.failed
+    ? new Set(
+        fs
+          .readFileSync(f.failed, 'utf8')
+          .split('\n')
+          .filter((line) => line.includes('| FAIL'))
+          .map((line) => line.split('|').map((cell) => cell.trim()))
+          .map((cells) => `${cells[1]} ${cells[5]}`),
+      )
+    : null;
+  const chats: Chat[] = ['lesson', 'general'];
+  return all
+    .filter((p) => f.ids.length === 0 || f.ids.includes(p.id))
+    .filter((p) => !f.lang || p.lang === f.lang)
+    .filter((p) => !f.kind || p.kind === f.kind)
+    .flatMap((prompt) => chats.map((chat) => ({ prompt, chat })))
+    .filter((r) => !f.chat || r.chat === f.chat)
+    .filter((r) => !failed || failed.has(`${r.prompt.id} ${r.chat}`));
+}
+
 async function main() {
+  const args = process.argv.slice(2);
+  const option = (name: string) =>
+    args.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
+  const out = option('out');
+  const all: Prompt[] = JSON.parse(
+    fs.readFileSync(path.join(import.meta.dirname, 'tutor-redteam.json'), 'utf8'),
+  );
+  const runs = selectRuns(all, {
+    ids: args.filter((a) => !a.startsWith('--')),
+    lang: option('lang'),
+    kind: option('kind'),
+    chat: option('chat'),
+    failed: option('failed'),
+  });
+  if (runs.length === 0) {
+    console.error('No prompt matches');
+    process.exit(2);
+  }
+  if (args.includes('--list')) {
+    for (const { prompt, chat } of runs) console.log(`${prompt.id} (${chat})`);
+    console.log(`${runs.length} answers`);
+    return;
+  }
   if (!isGeminiConfigured()) {
     console.error('GEMINI_API_KEY is not set');
     process.exit(2);
   }
-  const args = process.argv.slice(2);
-  const chats: Chat[] = args.includes('--chat=lesson')
-    ? ['lesson']
-    : args.includes('--chat=general')
-      ? ['general']
-      : ['lesson', 'general'];
-  const out = args.find((a) => a.startsWith('--out='))?.slice('--out='.length);
-  const only = args.filter((a) => !a.startsWith('--'));
-  const all: Prompt[] = JSON.parse(
-    fs.readFileSync(path.join(import.meta.dirname, 'tutor-redteam.json'), 'utf8'),
-  );
-  const prompts = only.length ? all.filter((p) => only.includes(p.id)) : all;
 
   const outcomes: Outcome[] = [];
-  for (const prompt of prompts) {
-    for (const chat of chats) {
-      if (outcomes.length) await wait(PAUSE_MS);
-      const outcome = await check(prompt, chat);
-      outcomes.push(outcome);
-      const result = outcome.problems.length ? `FAIL  ${outcome.problems.join('; ')}` : 'ok';
-      console.log(`${prompt.id} (${chat}): ${result}`);
-    }
+  for (const { prompt, chat } of runs) {
+    if (outcomes.length) await wait(PAUSE_MS);
+    const outcome = await check(prompt, chat);
+    outcomes.push(outcome);
+    const result = outcome.problems.length ? `FAIL  ${outcome.problems.join('; ')}` : 'ok';
+    console.log(`${prompt.id} (${chat}): ${result}`);
   }
 
   const text = report(outcomes);
