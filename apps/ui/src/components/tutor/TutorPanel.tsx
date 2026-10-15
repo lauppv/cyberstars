@@ -138,7 +138,9 @@ export function TutorPanel() {
       <header className="flex items-center gap-2 h-12 px-4 flex-shrink-0 border-b border-[var(--border)]">
         <div className="flex flex-col min-w-0 flex-1 leading-tight">
           <h2 className="text-[13px] font-semibold text-[var(--text)]">{t('tutor.title')}</h2>
-          <span className="text-[11px] text-[var(--text3)] truncate">{t('tutor.general')}</span>
+          <span className="text-[11px] text-[var(--text3)] truncate">
+            {tutor.lesson?.title ?? t('tutor.general')}
+          </span>
         </div>
         <button
           type="button"
@@ -198,7 +200,9 @@ export function TutorPanel() {
         )}
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
-          <p className="text-[13px] text-[var(--text2)]">{t('tutor.intro')}</p>
+          <p className="text-[13px] text-[var(--text2)]">
+            {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
+          </p>
         )}
 
         {messages.map((m) =>

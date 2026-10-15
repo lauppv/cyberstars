@@ -67,12 +67,26 @@ function Where() {
   return <div data-testid="where">{useLocation().pathname}</div>;
 }
 
-// The sidebar's entry, the panel where the shell puts it, and a way to switch user.
+const FOR_LESSON = { courseKey: 'python', lessonSlug: 'for', title: 'For loops' };
+const WHILE_LESSON = { courseKey: 'python', lessonSlug: 'while', title: 'While loops' };
+// The student's work as the lesson page would read it when a message is sent.
+const work = {
+  current: { code: 'for i in x:', runOutput: '', submissionId: 3 as number | undefined },
+};
+
+// The sidebar's entry, a lesson page's ⋯ entry and its leaving, and the panel
+// where the shell puts it.
 function Shell() {
   const tutor = useTutor()!;
   return (
     <>
       <button onClick={tutor.toggle}>toggle</button>
+      <button onClick={() => tutor.openLesson(FOR_LESSON, () => work.current)}>ask lesson</button>
+      <button onClick={() => tutor.openLesson(WHILE_LESSON, () => work.current)}>
+        ask other lesson
+      </button>
+      <button onClick={() => tutor.leaveLesson(FOR_LESSON)}>leave lesson</button>
+      <button onClick={() => tutor.leaveLesson(WHILE_LESSON)}>leave other lesson</button>
       {tutor.open && <TutorPanel />}
       <Where />
     </>
@@ -106,6 +120,9 @@ beforeEach(() => {
   h.canAccess.mockReturnValue(true);
   h.getGeneralConversation.mockResolvedValue({ messages: [], hasMore: false });
   h.deleteGeneralConversation.mockResolvedValue(undefined);
+  h.getLessonConversation.mockResolvedValue({ messages: [], hasMore: false });
+  h.deleteLessonConversation.mockResolvedValue(undefined);
+  work.current = { code: 'for i in x:', runOutput: '', submissionId: 3 };
   h.usage.summary = null;
   localStorage.clear();
   vi.stubGlobal(
@@ -405,6 +422,175 @@ describe('TutorPanel', () => {
     renderTutor();
     fireEvent.click(screen.getByText('toggle'));
     expect(screen.queryByRole('complementary')).toBeNull();
+  });
+});
+
+describe('TutorPanel: a lesson conversation', () => {
+  const lessonRef = { courseKey: 'python', lessonSlug: 'for' };
+
+  async function openLesson(name = 'ask lesson') {
+    fireEvent.click(screen.getByText(name));
+    await screen.findByRole('complementary', { name: 'Tutor' });
+  }
+
+  it("opens on the lesson's saved conversation, named after the lesson", async () => {
+    h.getLessonConversation.mockResolvedValue({
+      messages: [message(5, 'student', 'About for')],
+      hasMore: false,
+    });
+    renderTutor('/lesson/python/for');
+    await openLesson();
+
+    expect(await screen.findByText('About for')).toBeInTheDocument();
+    expect(h.getLessonConversation).toHaveBeenCalledWith(lessonRef, undefined);
+    expect(h.getGeneralConversation).not.toHaveBeenCalled();
+    expect(screen.getByText('For loops')).toBeInTheDocument();
+    expect(screen.queryByText('General conversation')).toBeNull();
+  });
+
+  it('greets an empty lesson conversation with what the tutor can see', async () => {
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    expect(await screen.findByText(/sees your code/)).toBeInTheDocument();
+  });
+
+  it('sends the lesson and the work as it is when each message goes', async () => {
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    const first = answer();
+    type('Why?');
+    expect(h.streamChat.mock.calls[0][0]).toEqual({
+      message: 'Why?',
+      page: '/lesson/python/for',
+      lang: 'en',
+      lesson: lessonRef,
+      work: { code: 'for i in x:', runOutput: '', submissionId: 3 },
+    });
+    first.emit({ type: 'done', finish: 'complete' });
+    await first.end();
+
+    work.current = { code: 'for i in range(3):', runOutput: '0\n', submissionId: undefined };
+    answer();
+    type('And now?');
+    expect(h.streamChat.mock.calls[1][0].work).toEqual({
+      code: 'for i in range(3):',
+      runOutput: '0\n',
+      submissionId: undefined,
+    });
+  });
+
+  it('switches from the general conversation to the lesson, and back from the sidebar', async () => {
+    h.getGeneralConversation.mockResolvedValue({
+      messages: [message(1, 'student', 'General question')],
+      hasMore: false,
+    });
+    h.getLessonConversation.mockResolvedValue({
+      messages: [message(5, 'student', 'Lesson question')],
+      hasMore: false,
+    });
+    renderTutor('/lesson/python/for');
+    await openPanel();
+    await screen.findByText('General question');
+
+    await openLesson();
+    expect(await screen.findByText('Lesson question')).toBeInTheDocument();
+    expect(screen.queryByText('General question')).toBeNull();
+
+    fireEvent.click(screen.getByText('toggle'));
+    expect(await screen.findByText('General question')).toBeInTheDocument();
+    expect(screen.queryByText('Lesson question')).toBeNull();
+    expect(screen.getByText('General conversation')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    expect(screen.queryByRole('complementary')).toBeNull();
+    expect(h.getGeneralConversation).toHaveBeenCalledTimes(1);
+    expect(h.getLessonConversation).toHaveBeenCalledTimes(1);
+  });
+
+  it('closes when the student leaves the lesson, and shows the same conversation back', async () => {
+    h.getLessonConversation.mockResolvedValue({
+      messages: [message(5, 'student', 'Lesson question')],
+      hasMore: false,
+    });
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    await screen.findByText('Lesson question');
+
+    fireEvent.click(screen.getByText('leave other lesson'));
+    expect(screen.getByRole('complementary')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('leave lesson'));
+    expect(screen.queryByRole('complementary')).toBeNull();
+
+    await openLesson();
+    expect(screen.getByText('Lesson question')).toBeInTheDocument();
+    expect(h.getLessonConversation).toHaveBeenCalledTimes(1);
+  });
+
+  it('leaves the general conversation open when the student leaves a lesson', async () => {
+    renderTutor('/lesson/python/for');
+    await openPanel();
+    fireEvent.click(screen.getByText('leave lesson'));
+    expect(screen.getByRole('complementary')).toBeInTheDocument();
+  });
+
+  it('lets an answer finish in its own conversation while another one is shown', async () => {
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    const reply = answer();
+    type('Explain for');
+    reply.emit({ type: 'text', text: 'It walks' });
+
+    fireEvent.click(screen.getByText('toggle'));
+    await screen.findByText(/Ask about a lesson/);
+    expect(screen.queryByText('It walks')).toBeNull();
+    // The general conversation isn't waiting for it.
+    expect(screen.getByRole('textbox')).toBeEnabled();
+
+    reply.emit({ type: 'text', text: ' through each item.' });
+    reply.emit({ type: 'done', finish: 'complete' });
+    await reply.end();
+    expect(screen.queryByText('It walks through each item.')).toBeNull();
+
+    await openLesson();
+    expect(screen.getByText('Explain for')).toBeInTheDocument();
+    expect(screen.getByText('It walks through each item.')).toBeInTheDocument();
+    expect(h.usage.refresh).toHaveBeenCalledOnce();
+  });
+
+  it('keeps each lesson in its own conversation', async () => {
+    h.getLessonConversation.mockImplementation((lesson: { lessonSlug: string }) =>
+      Promise.resolve({
+        messages: [message(1, 'student', `About ${lesson.lessonSlug}`)],
+        hasMore: false,
+      }),
+    );
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    await screen.findByText('About for');
+    await openLesson('ask other lesson');
+    expect(await screen.findByText('About while')).toBeInTheDocument();
+    expect(screen.queryByText('About for')).toBeNull();
+    expect(screen.getByText('While loops')).toBeInTheDocument();
+  });
+
+  it("deletes and pages back through the lesson's conversation", async () => {
+    vi.stubGlobal(
+      'confirm',
+      vi.fn(() => true),
+    );
+    h.getLessonConversation
+      .mockResolvedValueOnce({ messages: [message(40, 'student', 'Newer')], hasMore: true })
+      .mockResolvedValueOnce({ messages: [message(39, 'tutor', 'Older')], hasMore: false });
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    fireEvent.click(await screen.findByRole('button', { name: 'Show earlier messages' }));
+    await screen.findByText('Older');
+    expect(h.getLessonConversation).toHaveBeenLastCalledWith(lessonRef, 40);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Delete conversation' }));
+    await waitFor(() => expect(screen.queryByText('Newer')).toBeNull());
+    expect(h.deleteLessonConversation).toHaveBeenCalledWith(lessonRef);
+    expect(h.deleteGeneralConversation).not.toHaveBeenCalled();
   });
 });
 
