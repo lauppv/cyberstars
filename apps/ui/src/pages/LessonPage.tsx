@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Eye, Lightbulb, RotateCcw, Save, Share2 } from 'lucide-react';
+import { BotMessageSquare, Eye, Lightbulb, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeExecution } from '../hooks/useCodeExecution';
@@ -35,6 +35,7 @@ import { useSubmissions } from '../hooks/useSubmissions';
 import type { LessonMeta } from '@cyberstars/shared/lesson';
 import type { RunTestsResponse } from '@cyberstars/shared/tests';
 import type { TerminalTestResult } from '@cyberstars/shared/terminal';
+import { TUTOR_RUN_OUTPUT_MAX_LENGTH, type TutorLessonWork } from '@cyberstars/shared/tutor';
 import * as progressService from '../services/progressService';
 import * as testsService from '../services/testsService';
 import * as terminalService from '../services/terminalService';
@@ -74,8 +75,9 @@ export function LessonPage() {
   const navigate = useNavigate();
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
   const { isLoggedIn, user, refreshUser } = useAuth();
+  const tutor = useTutor();
   // With the tutor beside it on a wide screen, the lesson takes all the room left
-  const tutorOpen = useTutor()?.open ?? false;
+  const tutorOpen = tutor?.open ?? false;
   const canUseHints = isLoggedIn && canAccessFeature('aiHints', user?.role, import.meta.env.PROD);
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
@@ -246,6 +248,25 @@ export function LessonPage() {
       progressService.trackAccess(category, lesson).catch(() => {});
     }
   }, [isLoggedIn, category, lesson]);
+
+  // The lesson chat sends the work as it is when a message goes: the code, the
+  // end of the last run's output and the verdict on screen, which the server
+  // reads from the stored attempt.
+  const tutorWork = useRef<TutorLessonWork>({ code: '', runOutput: '' });
+  useEffect(() => {
+    tutorWork.current = {
+      code: userCode,
+      runOutput: output.slice(-TUTOR_RUN_OUTPUT_MAX_LENGTH),
+      ...(testResults?.submission && { submissionId: testResults.submission.id }),
+    };
+  }, [userCode, output, testResults]);
+
+  // Leaving the lesson closes its conversation.
+  const leaveTutorLesson = tutor?.leaveLesson;
+  useEffect(() => {
+    if (!leaveTutorLesson) return;
+    return () => leaveTutorLesson({ courseKey: category, lessonSlug: lesson });
+  }, [leaveTutorLesson, category, lesson]);
 
   useEffect(() => {
     if (lessonCompleted && justMarkedRef.current) {
@@ -670,6 +691,27 @@ export function LessonPage() {
                         role="menu"
                         className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
                       >
+                        {tutor?.enabled && (
+                          <button
+                            role="menuitem"
+                            data-track="ask-tutor"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              tutor.openLesson(
+                                { courseKey: category, lessonSlug: lesson, title },
+                                () => tutorWork.current,
+                              );
+                            }}
+                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                          >
+                            <BotMessageSquare
+                              size={16}
+                              strokeWidth={1.75}
+                              className="text-[var(--text3)]"
+                            />
+                            {t('lesson.askTutor')}
+                          </button>
+                        )}
                         {canUseHints && (
                           <button
                             role="menuitem"
