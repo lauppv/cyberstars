@@ -10,7 +10,7 @@ import { useGamification } from '../hooks/useGamification';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
-import { useTutor } from '../context/TutorContext';
+import { useTutor, type TutorLessonStage } from '../context/TutorContext';
 import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
 import { TutorFace } from '../components/tutor/TutorFace';
@@ -274,6 +274,39 @@ export function LessonPage() {
       ...(testResults?.submission && { submissionId: testResults.submission.id }),
     };
   }, [isTerminal, terminal.lines, terminalTestResult, t, userCode, output, testResults]);
+
+  // Where the student stands, for the tutor's first suggestions in this
+  // lesson's chat: the verdict on screen, else whether they wrote anything yet.
+  const reportTutorStage = tutor?.reportStage;
+  useEffect(() => {
+    if (!reportTutorStage) return;
+    let stage: TutorLessonStage;
+    if (isTerminal) {
+      if (terminalTestResult) {
+        stage = { stage: terminalTestResult.status === 'passed' ? 'passed' : 'failing' };
+      } else {
+        stage = { stage: terminal.lines.some((l) => l.type === 'input') ? 'working' : 'empty' };
+      }
+    } else if (testResults?.status === 'passed') {
+      stage = { stage: 'passed' };
+    } else if (testResults) {
+      const failed = testResults.cases.find((c) => !c.passed);
+      stage = failed ? { stage: 'failing', test: failed.index + 1 } : { stage: 'failing' };
+    } else {
+      stage = { stage: userCode.trim() && userCode !== starterCode ? 'working' : 'empty' };
+    }
+    reportTutorStage({ courseKey: category, lessonSlug: lesson }, stage);
+  }, [
+    reportTutorStage,
+    category,
+    lesson,
+    isTerminal,
+    terminalTestResult,
+    terminal.lines,
+    testResults,
+    userCode,
+    starterCode,
+  ]);
 
   // While the lesson is open the tutor reads its work from here; leaving it
   // closes its conversation.

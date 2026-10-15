@@ -1239,7 +1239,12 @@
       "nudge": "Dă-mi un ghiont",
       "course": "Cu ce curs să încep?",
       "idea": "Ce este o variabilă?",
-      "help": "La ce mă poți ajuta?"
+      "help": "La ce mă poți ajuta?",
+      "where": "De unde încep?",
+      "failedTest": "De ce pică testul {{n}}?",
+      "simpler": "Se putea mai simplu?",
+      "why": "De ce merge asta?",
+      "elsewhere": "Unde se mai folosește ideea asta?"
     },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",

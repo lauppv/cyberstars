@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import { useTranslation } from 'react-i18next';
 import { ArrowUp, PanelLeft, SquarePen, Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
-import { useTutor } from '../../context/TutorContext';
+import { useTutor, type TutorLessonStage } from '../../context/TutorContext';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorHistory } from './TutorHistory';
@@ -49,9 +49,50 @@ function TutorTurn({ children }: { children: ReactNode }) {
   );
 }
 
-// What the student can ask with one click on an empty conversation
-const LESSON_STARTERS = ['tutor.start.task', 'tutor.start.broken', 'tutor.start.nudge'] as const;
-const GENERAL_STARTERS = ['tutor.start.course', 'tutor.start.idea', 'tutor.start.help'] as const;
+// What the student can ask with one click on an empty conversation. In a
+// lesson chat it follows where they stand: a start, the failed test, or what
+// to take from a passed one
+interface Starter {
+  key: string;
+  test?: number;
+}
+
+function lessonStarters(stage: TutorLessonStage | null): Starter[] {
+  switch (stage?.stage) {
+    case 'empty':
+      return [
+        { key: 'tutor.start.where' },
+        { key: 'tutor.start.task' },
+        { key: 'tutor.start.nudge' },
+      ];
+    case 'failing':
+      return [
+        stage.test
+          ? { key: 'tutor.start.failedTest', test: stage.test }
+          : { key: 'tutor.start.broken' },
+        { key: 'tutor.start.nudge' },
+        { key: 'tutor.start.task' },
+      ];
+    case 'passed':
+      return [
+        { key: 'tutor.start.simpler' },
+        { key: 'tutor.start.why' },
+        { key: 'tutor.start.elsewhere' },
+      ];
+    default:
+      return [
+        { key: 'tutor.start.task' },
+        { key: 'tutor.start.broken' },
+        { key: 'tutor.start.nudge' },
+      ];
+  }
+}
+
+const GENERAL_STARTERS: Starter[] = [
+  { key: 'tutor.start.course' },
+  { key: 'tutor.start.idea' },
+  { key: 'tutor.start.help' },
+];
 
 // The box grows with what the student writes, up to its max-height
 const BOX_MAX_PX = 160;
@@ -284,15 +325,15 @@ export function TutorPanel() {
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
-              {(tutor.lesson ? LESSON_STARTERS : GENERAL_STARTERS).map((key) => (
+              {(tutor.lesson ? lessonStarters(tutor.stage) : GENERAL_STARTERS).map((starter) => (
                 <button
-                  key={key}
+                  key={starter.key}
                   type="button"
-                  onClick={() => ask(t(key))}
+                  onClick={() => ask(t(starter.key, { n: starter.test }))}
                   disabled={limited}
                   className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t(key)}
+                  {t(starter.key, { n: starter.test })}
                 </button>
               ))}
             </div>

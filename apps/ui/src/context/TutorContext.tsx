@@ -53,6 +53,15 @@ export interface TutorLesson extends TutorLessonRef {
   title: string;
 }
 
+// Where the student stands on a lesson, as its page tells it: nothing written
+// yet, work not tested, a failed Run Tests (at the test it stopped on, when
+// there is one) or a passed one. A lesson chat's first suggestions follow it.
+export type TutorLessonStage =
+  | { stage: 'empty' }
+  | { stage: 'working' }
+  | { stage: 'failing'; test?: number }
+  | { stage: 'passed' };
+
 // One conversation as the panel shows it: a saved one, or a new one that gets
 // its id once its first exchange is saved.
 interface Conversation {
@@ -106,6 +115,10 @@ interface TutorContextValue {
   // A lesson page says where its work is read while it is open. The function
   // it gets back says it has gone, which closes the panel on its conversation.
   enterLesson: (lesson: TutorLessonRef, readWork: () => TutorLessonWork) => () => void;
+  // A lesson page says where the student stands on it, whenever that changes.
+  reportStage: (lesson: TutorLessonRef, stage: TutorLessonStage) => void;
+  // Where the student stands on the shown conversation's lesson, as last told.
+  stage: TutorLessonStage | null;
   // A new conversation about what the shown one is about.
   startNew: () => void;
   // The student's saved conversations, newest first; null until read.
@@ -175,6 +188,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const [history, setHistory] = useState<TutorConversationSummary[] | null>(null);
   const [historyFailed, setHistoryFailed] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(readHistoryOpen);
+  // Where the student stands on each lesson whose page told it, by lesson.
+  const [stages, setStages] = useState<Record<string, TutorLessonStage>>({});
   // The handlers below run after renders the state hasn't caught up with yet,
   // so they read and write these alongside it.
   const all = useRef(conversations);
@@ -221,6 +236,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     setConversations({});
     setHistory(null);
     setHistoryFailed(false);
+    setStages({});
   }
   // ...and stop the answers the previous one was waiting for.
   const currentUser = useRef(userId);
@@ -418,6 +434,16 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  const reportStage = useCallback((of: TutorLessonRef, stage: TutorLessonStage) => {
+    const lessonKey = lessonKeyOf(of)!;
+    // Told again on every keystroke: only a change of stage renders anything.
+    setStages((current) =>
+      JSON.stringify(current[lessonKey]) === JSON.stringify(stage)
+        ? current
+        : { ...current, [lessonKey]: stage },
+    );
+  }, []);
+
   const openLesson = useCallback(
     (of: TutorLesson) => {
       const mine = ++choice.current;
@@ -518,6 +544,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     close: () => setOpen(false),
     openLesson,
     enterLesson,
+    reportStage,
+    stage: (current?.lesson && stages[lessonKeyOf(current.lesson)!]) || null,
     startNew,
     history,
     historyFailed,

@@ -47,7 +47,7 @@ vi.mock('../../services/tutorService', () => ({
   streamChat: h.streamChat,
 }));
 
-import { TutorProvider, useTutor } from '../../context/TutorContext';
+import { TutorProvider, useTutor, type TutorLessonStage } from '../../context/TutorContext';
 import { TutorPanel } from './TutorPanel';
 
 const USER = { id: 7, role: 'USER' };
@@ -112,6 +112,9 @@ const work = {
   current: { code: 'for i in x:', runOutput: '', submissionId: 3 as number | undefined },
 };
 
+// Where the student stands on the For lesson when its page tells the tutor.
+const standing = { current: { stage: 'empty' } as TutorLessonStage };
+
 // A lesson page: it says where its work is read while it is open.
 function OnLesson({ lesson }: { lesson: TutorLessonRef }) {
   const enter = useTutor()!.enterLesson;
@@ -132,6 +135,7 @@ function Shell() {
       <button onClick={() => tutor.openLesson(WHILE_LESSON)}>ask other lesson</button>
       <button onClick={() => setOnFor(false)}>leave lesson</button>
       <button onClick={() => setOnWhile(false)}>leave other lesson</button>
+      <button onClick={() => tutor.reportStage(FOR_REF, standing.current)}>report stage</button>
       {onFor && <OnLesson lesson={FOR_REF} />}
       {onWhile && <OnLesson lesson={WHILE_REF} />}
       {tutor.open && <TutorPanel />}
@@ -726,6 +730,57 @@ describe('TutorPanel: a lesson conversation', () => {
     await openLesson();
     expect(await screen.findByText(/sees your code/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Give me a nudge' })).toBeInTheDocument();
+  });
+
+  it('suggests what fits where the student stands on the lesson', async () => {
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    await screen.findByText(/sees your code/);
+    // The buttons of the empty conversation's greeting.
+    const starters = () =>
+      within(screen.getByText(/sees your code/).parentElement!)
+        .getAllByRole('button')
+        .map((b) => b.textContent);
+    const tell = (stage: TutorLessonStage) => {
+      standing.current = stage;
+      fireEvent.click(screen.getByText('report stage'));
+    };
+    expect(starters()).toEqual([
+      'Explain the task to me',
+      "Why doesn't my code work?",
+      'Give me a nudge',
+    ]);
+    tell({ stage: 'empty' });
+    expect(starters()).toEqual(['Where do I start?', 'Explain the task to me', 'Give me a nudge']);
+    tell({ stage: 'failing' });
+    expect(starters()[0]).toBe("Why doesn't my code work?");
+    tell({ stage: 'passed' });
+    expect(starters()).toEqual([
+      'Could it be simpler?',
+      'Why does this work?',
+      'Where else is this idea used?',
+    ]);
+    tell({ stage: 'failing', test: 3 });
+    expect(starters()).toEqual([
+      'Why does test 3 fail?',
+      'Give me a nudge',
+      'Explain the task to me',
+    ]);
+
+    answer();
+    fireEvent.click(screen.getByRole('button', { name: 'Why does test 3 fail?' }));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'Why does test 3 fail?' });
+  });
+
+  it('keeps a lesson stage to its own lesson', async () => {
+    renderTutor('/lesson/python/while');
+    standing.current = { stage: 'passed' };
+    fireEvent.click(screen.getByText('report stage'));
+    await openLesson('ask other lesson');
+    expect(
+      await screen.findByRole('button', { name: 'Explain the task to me' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Could it be simpler?' })).toBeNull();
   });
 
   it('sends the lesson and the work as it is when each message goes', async () => {

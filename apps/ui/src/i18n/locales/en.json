@@ -1227,7 +1227,12 @@
       "nudge": "Give me a nudge",
       "course": "Which course should I start with?",
       "idea": "What is a variable?",
-      "help": "What can you help me with?"
+      "help": "What can you help me with?",
+      "where": "Where do I start?",
+      "failedTest": "Why does test {{n}} fail?",
+      "simpler": "Could it be simpler?",
+      "why": "Why does this work?",
+      "elsewhere": "Where else is this idea used?"
     },
     "placeholder": "Ask the tutor",
     "send": "Send",
