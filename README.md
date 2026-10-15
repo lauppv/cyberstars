@@ -16,7 +16,7 @@ Live at [cyberstars.app](https://cyberstars.app).
 - **Sandboxed execution**: user code runs in Docker containers, never in the browser
 - **Progress tracking**: per-course progress bars, XP/levels, and unlockable badges (First Steps + Bronze/Silver/Gold tiers per course)
 - **Code persistence**: saved per lesson, restored on revisit
-- **Tutor chat**: an AI tutor (Google Gemini) in a panel beside the page for signed-in students, with a general conversation and one per lesson or algorithm challenge, opened from its ⋯ menu, that sees the student's code and last results; it guides them toward the answer without handing over the solution, streams its replies, keeps each conversation, and works in 5-hour sessions of 15 to 30 messages
+- **Tutor chat**: an AI tutor (Google Gemini) in a panel beside the page for signed-in students, with a general conversation and one per lesson or algorithm challenge, opened from its ⋯ menu, that sees the student's code and last results; it guides them toward the answer a nudge at a time without handing over the solution, streams its replies, keeps each conversation, and works in 5-hour sessions of 15 to 30 messages
 - **Community forum**: threaded discussions with reactions and solution marking
 - **In-app notifications**: live bell for forum replies/solutions and support activity, pushed over a per-user WebSocket (currently behind an admins-only preview gate)
 - **Linux terminal**: interactive sandboxed shell for learning Linux commands
