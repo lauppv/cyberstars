@@ -197,11 +197,19 @@
       },
       "forum": {
         "title": "The forum",
-        "note": "With a free account",
         "question": "How do I print my name 3 times?",
         "answer": "With a for loop:",
         "solved": "Solved",
         "picture": "Maria21 asks how to print her name three times, and Marco Hoeger answers with a for loop."
+      },
+      "accountNote": "With a free account",
+      "tutor": {
+        "title": "An AI tutor",
+        "question": "Why does my loop print 0, 1, 2 and not 1, 2, 3?",
+        "answer": "range(3) starts counting at 0, so you get three numbers ending at 2. range can also take a number to start from: which one would give you 1, 2, 3?",
+        "followUp": "So range(1, 3)?",
+        "followUpAnswer": "Close. range stops just before its second number, so range(1, 3) gives 1 and 2. What would the stop need to be for 3 to make it in?",
+        "picture": "A student asks why their loop prints 0, 1, 2 instead of 1, 2, 3. The tutor explains that range starts at 0, and when the student tries range(1, 3), that range stops just before its second number, leaving the last step to them."
       }
     },
     "free": {
@@ -213,7 +221,7 @@
       "title": "Questions",
       "account": {
         "q": "Do I need an account?",
-        "a": "No. Read, write and run code without one. A free account lifts the ten-run limit, saves your progress and opens the forum."
+        "a": "No. Read, write and run code without one. A free account lifts the ten-run limit, saves your progress and opens the forum and the AI tutor."
       },
       "free": {
         "q": "Is it really free?",

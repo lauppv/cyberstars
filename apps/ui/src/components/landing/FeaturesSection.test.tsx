@@ -35,6 +35,7 @@ describe('FeaturesSection', () => {
       'Algorithm challenges',
       'Linux terminal',
       'The forum',
+      'An AI tutor',
     ]);
     for (const b of tiles) expect(within(b).getAllByRole('img')).toHaveLength(1);
     expect(screen.queryByRole('link')).toBeNull();
@@ -64,11 +65,24 @@ describe('FeaturesSection', () => {
 
   it("answers Maria21's question in the forum and says it needs an account", () => {
     renderSection();
-    expect(screen.getByText('With a free account')).toBeDefined();
+    const forum = screen.getByRole('heading', { name: 'The forum' }).parentElement!;
+    expect(within(forum).getByText('With a free account')).toBeDefined();
     const picture = screen.getByRole('img', { name: /Maria21/ });
     expect(picture).toHaveTextContent('Maria21How do I print my name 3 times?');
     expect(picture).toHaveTextContent('Marco Hoeger');
     expect(picture).toHaveTextContent('print("Maria")');
+  });
+
+  it('shows the tutor pointing at the idea without the fix, behind an account', () => {
+    renderSection();
+    const tutor = screen.getByRole('heading', { name: 'An AI tutor' }).parentElement!;
+    expect(within(tutor).getByText('With a free account')).toBeDefined();
+    const picture = screen.getByRole('img', { name: /tutor explains that range starts at 0/ });
+    expect(picture).toHaveTextContent('Why does my loop print 0, 1, 2 and not 1, 2, 3?');
+    expect(picture).toHaveTextContent('which one would give you 1, 2, 3?');
+    expect(picture).toHaveTextContent('So range(1, 3)?');
+    expect(picture).toHaveTextContent('What would the stop need to be for 3 to make it in?');
+    expect(picture).not.toHaveTextContent('range(1, 4)');
   });
 
   it('presents none of the preview features', () => {
