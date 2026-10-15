@@ -3,6 +3,7 @@ import { createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 import { config } from '../../src/config/index.js';
 import { saveExchange, conversationKey } from '../../src/services/tutor-conversations.service.js';
+import { record } from '../../src/services/submissions.service.js';
 
 // The config is read once, by setup.ts, before this file runs, so the tutor
 // gets its key here. The calls themselves are answered below, so no request
@@ -24,8 +25,9 @@ interface SentContent {
   parts: { text?: string }[];
 }
 
-// Every request Gemini got, as the conversation it was sent.
+// Every request Gemini got, as the conversation it was sent, and its prompt.
 const sent: SentContent[][] = [];
+const systems: string[] = [];
 let reply: () => Response;
 
 function streamed(...pieces: string[]): Response {
@@ -44,11 +46,14 @@ function streamed(...pieces: string[]): Response {
 
 beforeEach(() => {
   sent.length = 0;
+  systems.length = 0;
   reply = () => streamed('Loops ', 'repeat code.');
   vi.stubGlobal(
     'fetch',
     vi.fn(async (_url: string, init: RequestInit) => {
-      sent.push(JSON.parse(String(init.body)).contents);
+      const body = JSON.parse(String(init.body));
+      sent.push(body.contents);
+      systems.push(body.systemInstruction?.parts?.[0]?.text ?? '');
       return reply();
     }),
   );
@@ -65,7 +70,8 @@ function ask(a: Awaited<ReturnType<typeof createAuthenticatedAgent>>['agent'], b
 }
 
 function texts(contents: SentContent[]): string[] {
-  return contents.map((c) => `${c.role}: ${c.parts[0].text}`);
+  // The words of each turn: in a lesson chat the work comes first, the message last.
+  return contents.map((c) => `${c.role}: ${c.parts.at(-1)!.text}`);
 }
 
 describe('Tutor conversations', () => {
@@ -292,5 +298,96 @@ describe('Tutor session', () => {
     await ask(a, { lesson }).expect(200);
 
     expect(await used(email)).toBe(2);
+  });
+});
+
+describe('Lesson chat', () => {
+  // A failed run as the judge returns it: the hidden test it stopped on has
+  // the student's output but no expected output.
+  const failedRun = {
+    status: 'failed' as const,
+    comparator: 'trimmed' as const,
+    structureFailures: [],
+    cases: [
+      { index: 0, visible: true, passed: true, expected: '0', actual: '0' },
+      { index: 1, visible: false, passed: false, inject: { n: 4 }, actual: '0\n1\n2' },
+    ],
+    total: 4,
+    passedCount: 1,
+  };
+  const page = '/lesson/python/for';
+
+  // The work that came with the last message sent.
+  function lastWork(): string {
+    return sent.at(-1)!.at(-1)!.parts[0].text ?? '';
+  }
+
+  it('gives the model the statement, the code, the run and the verdict on screen', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    const userId = await userIdFor(email);
+    const code = 'for i in range(n - 1):\n    print(i)';
+    const attempt = await record(userId, 'python', 'for', 'en', code, failedRun);
+
+    await ask(a, {
+      message: 'why does test 2 fail?',
+      page,
+      lesson,
+      work: { code, runOutput: '0\n1\n', submissionId: attempt.id },
+    }).expect(200);
+
+    expect(systems[0]).toContain('(python/for)');
+    const shown = lastWork();
+    expect(shown).toContain(code);
+    expect(shown).toContain('0\n1\n');
+    expect(shown).toContain('Test 2 (hidden) failed.');
+    expect(shown).toContain('n = 4');
+    expect(shown).not.toContain('Expected output');
+    expect(sent[0].at(-1)!.parts[1].text).toBe('why does test 2 fail?');
+  });
+
+  it('sees the new code on the next message, and keeps only the words in the history', async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+
+    await ask(a, { page, lesson, work: { code: 'print(1)', runOutput: '' } }).expect(200);
+    await ask(a, { page, lesson, work: { code: 'print(2)', runOutput: '' } }).expect(200);
+
+    expect(lastWork()).toContain('print(2)');
+    expect(JSON.stringify(sent[1].slice(0, -1))).not.toContain('print(1)');
+  });
+
+  it("never shows another student's attempt", async () => {
+    const other = await createAuthenticatedAgent();
+    const attempt = await record(
+      await userIdFor(other.email),
+      'python',
+      'for',
+      'en',
+      'secret = 1',
+      failedRun,
+    );
+    const { agent: a } = await createAuthenticatedAgent();
+
+    await ask(a, {
+      page,
+      lesson,
+      work: { code: 'x', runOutput: '', submissionId: attempt.id },
+    }).expect(200);
+
+    expect(lastWork()).toContain('No Run Tests verdict on screen.');
+    expect(lastWork()).not.toContain('secret');
+  });
+
+  it('refuses a lesson name that climbs out of the lesson folder, before any model call', async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+
+    for (const lessonSlug of ['../../../package', '..', 'for/../../x']) {
+      await ask(a, {
+        page,
+        lesson: { courseKey: 'python', lessonSlug },
+        work: { code: 'x', runOutput: '' },
+      }).expect(400);
+    }
+    await ask(a, { work: { code: 'x', runOutput: '' } }).expect(400);
+    expect(sent).toEqual([]);
   });
 });
