@@ -573,6 +573,27 @@ describe('TutorPanel: a lesson conversation', () => {
     expect(screen.getByText('While loops')).toBeInTheDocument();
   });
 
+  it('shows a link to another lesson as plain words, never as a link', async () => {
+    h.getLessonConversation.mockResolvedValue({
+      messages: [
+        message(2, 'tutor', 'As [While loops](/lesson/python/while) shows, the condition decides.'),
+      ],
+      hasMore: false,
+    });
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    expect(await screen.findByText(/While loops/)).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: 'While loops' })).toBeNull();
+
+    // The general conversation still follows them.
+    h.getGeneralConversation.mockResolvedValue({
+      messages: [message(1, 'tutor', 'See [For loops](/lesson/python/for).')],
+      hasMore: false,
+    });
+    fireEvent.click(screen.getByText('toggle'));
+    expect(await screen.findByRole('link', { name: 'For loops' })).toBeInTheDocument();
+  });
+
   it("deletes and pages back through the lesson's conversation", async () => {
     vi.stubGlobal(
       'confirm',
