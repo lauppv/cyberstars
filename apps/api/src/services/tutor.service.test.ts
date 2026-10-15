@@ -88,6 +88,13 @@ describe('detectLanguage', () => {
     expect(detectLanguage('```c\nint main(void) { return 0; }', 'ro')).toBe('ro');
   });
 
+  it('reads the short words a student greets or answers with', () => {
+    expect(detectLanguage('hei', 'en')).toBe('ro');
+    expect(detectLanguage('da, mersi', 'en')).toBe('ro');
+    expect(detectLanguage('hey', 'ro')).toBe('en');
+    expect(detectLanguage('yes, thx', 'ro')).toBe('en');
+  });
+
   it('ignores the words inside code', () => {
     expect(detectLanguage('de ce nu merge?\n```\nprint("how is this the code")\n```', 'en')).toBe(
       'ro',
@@ -189,6 +196,20 @@ describe('askTutor', () => {
     expect(stream.mock.calls[0][0].system).toContain('Răspunde în limba română.');
 
     await collect(askTutor({ ...base, message: 'where do I change my password', uiLang: 'ro' }));
+    expect(stream.mock.calls[1][0].system).toContain('Answer in English.');
+  });
+
+  it('keeps the language of the conversation for a message with nothing to tell by', async () => {
+    stream.mockImplementation(() => text('ok'));
+    const history = [
+      { role: 'student' as const, text: 'de ce nu merge bucla' },
+      { role: 'tutor' as const, text: 'Uită-te la condiție.' },
+    ];
+
+    await collect(askTutor({ ...base, history, message: 'ok', uiLang: 'en' }));
+    expect(stream.mock.calls[0][0].system).toContain('Răspunde în limba română.');
+
+    await collect(askTutor({ ...base, message: 'ok', uiLang: 'en' }));
     expect(stream.mock.calls[1][0].system).toContain('Answer in English.');
   });
 

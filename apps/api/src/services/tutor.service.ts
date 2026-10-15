@@ -32,18 +32,18 @@ function finishOf(reason: string | undefined): TutorFinish | null {
 // Words that give a language away. Matched without diacritics; a diacritic of
 // its own already means Romanian.
 const RO_WORDS = new Set(
-  'si sau care este cum ce nu de la pentru unde vreau imi mi ma poti cu din pe sa asta aici bucla eroare codul meu mea lectia lectie problema merge am fac face trebuie ajutor salut buna multumesc rog nu inteleg'.split(
+  'si sau care este cum ce nu de la pentru unde vreau imi mi ma poti cu din pe sa asta aici bucla eroare codul meu mea lectia lectie problema merge am fac face trebuie ajutor salut buna multumesc rog nu inteleg hei da mersi dar deci inca stiu'.split(
     ' ',
   ),
 );
 const EN_WORDS = new Set(
-  'the is how what why which where does do i my to and can you it this that lesson error code not with help please hi hello thanks work doesn dont isn me of are understand'.split(
+  'the is how what why which where does do i my to and can you it this that lesson error code not with help please hi hello thanks work doesn dont isn me of are understand hey yes yeah thank thx but'.split(
     ' ',
   ),
 );
 
 // The language of the student's own words, not of the UI: code is left out
-// first, and a message with nothing to tell by (only code) keeps the UI's.
+// first, and a message with nothing to tell by (only code) keeps the fallback.
 export function detectLanguage(message: string, fallback: Lang): Lang {
   const prose = message.replace(/```[\s\S]*?(```|$)/g, ' ').replace(/`[^`]*`/g, ' ');
   if (/[ăâîșțşţ]/i.test(prose)) return 'ro';
@@ -60,6 +60,16 @@ export function detectLanguage(message: string, fallback: Lang): Lang {
   if (ro > en) return 'ro';
   if (en > ro) return 'en';
   return fallback;
+}
+
+// A message with nothing to tell by keeps the language the conversation was
+// in, and the UI's only before the student wrote anything that tells.
+function conversationLanguage(history: PastMessage[], uiLang: Lang): Lang {
+  let lang = uiLang;
+  for (const past of history) {
+    if (past.role === 'student') lang = detectLanguage(past.text, lang);
+  }
+  return lang;
 }
 
 function lessonOnPage(page: string): string | null {
@@ -420,7 +430,7 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
     throw new AppError(503, 'The tutor is not available right now');
   }
 
-  const lang = detectLanguage(opts.message, opts.uiLang);
+  const lang = detectLanguage(opts.message, conversationLanguage(opts.history, opts.uiLang));
   let chatLesson: PromptLesson | undefined;
   if (opts.lesson) {
     const { courseKey, lessonSlug } = opts.lesson;
