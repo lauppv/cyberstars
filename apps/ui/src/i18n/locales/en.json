@@ -1208,6 +1208,16 @@
     "confirmDelete": "Delete this conversation? Its messages can't be brought back.",
     "intro": "Ask about a lesson, an error or an idea. The tutor helps you get there on your own, without handing you the solution.",
     "introLesson": "Ask about this lesson. The tutor sees your code, the end of your last run and your last test results, and helps you get there on your own.",
+    "emptyTitle": "How can I help?",
+    "enterHint": "Enter sends, Shift+Enter starts a new line",
+    "start": {
+      "task": "Explain the task to me",
+      "broken": "Why doesn't my code work?",
+      "nudge": "Give me a nudge",
+      "course": "Which course should I start with?",
+      "idea": "What is a variable?",
+      "help": "What can you help me with?"
+    },
     "placeholder": "Ask the tutor",
     "send": "Send",
     "earlier": "Show earlier messages",

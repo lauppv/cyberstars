@@ -1,10 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Trash2, X } from 'lucide-react';
+import { ArrowUp, Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
 import { useTutor } from '../../context/TutorContext';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
+import { TutorMark } from './TutorMark';
 import { TutorStatus } from './TutorStatus';
 
 // Close enough to the bottom to count as following the conversation.
@@ -28,7 +29,7 @@ const MAX_DELAY_MS = 2 ** 31 - 1;
 function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
   return (
     <div
-      className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)] text-[13px] text-[var(--text)] whitespace-pre-wrap break-words ${
+      className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] text-[var(--text)] whitespace-pre-wrap break-words ${
         muted ? 'opacity-60' : ''
       }`}
     >
@@ -36,6 +37,23 @@ function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
     </div>
   );
 }
+
+// Everything the tutor says sits beside its mark, so a glance tells it from the student
+function TutorTurn({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex items-start gap-2.5">
+      <TutorMark size="sm" />
+      <div className="flex-1 min-w-0 flex flex-col gap-1 pt-0.5">{children}</div>
+    </div>
+  );
+}
+
+// What the student can ask with one click on an empty conversation
+const LESSON_STARTERS = ['tutor.start.task', 'tutor.start.broken', 'tutor.start.nudge'] as const;
+const GENERAL_STARTERS = ['tutor.start.course', 'tutor.start.idea', 'tutor.start.help'] as const;
+
+// The box grows with what the student writes, up to its max-height
+const BOX_MAX_PX = 160;
 
 function Note({ children }: { children: string }) {
   return <p className="text-[12px] text-[var(--text3)]">{children}</p>;
@@ -49,13 +67,19 @@ function Answer({
   onInAppLink: (() => void) | null;
 }) {
   const { t } = useTranslation();
-  if (message.finish === 'blocked' && !message.text) return <Note>{t('tutor.blocked')}</Note>;
+  if (message.finish === 'blocked' && !message.text) {
+    return (
+      <TutorTurn>
+        <Note>{t('tutor.blocked')}</Note>
+      </TutorTurn>
+    );
+  }
   return (
-    <div className="flex flex-col gap-1">
+    <TutorTurn>
       <TutorAnswer text={message.text} onInAppLink={onInAppLink} />
       {message.finish === 'cut' && <Note>{t('tutor.cut')}</Note>}
       {message.finish === 'blocked' && <Note>{t('tutor.blockedMidway')}</Note>}
-    </div>
+    </TutorTurn>
   );
 }
 
@@ -67,6 +91,7 @@ export function TutorPanel() {
   const [draft, setDraft] = useState('');
   const [noticeClosedFor, setNoticeClosedFor] = useState(closedNotice);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const boxRef = useRef<HTMLTextAreaElement>(null);
   const following = useRef(true);
   // Height and position before older messages go in on top, so the view can
   // stay where the student was reading.
@@ -82,6 +107,14 @@ export function TutorPanel() {
       el.scrollTop = el.scrollHeight;
     }
   }, [messages, pending, failure]);
+
+  useLayoutEffect(() => {
+    const box = boxRef.current;
+    if (!box) return;
+    box.style.height = 'auto';
+    const borders = box.offsetHeight - box.clientHeight;
+    box.style.height = `${Math.min(box.scrollHeight + borders, BOX_MAX_PX)}px`;
+  }, [draft]);
 
   // The 5-hour session: a notice at 90% used, and the box shut at the limit
   // until the window ends.
@@ -112,11 +145,15 @@ export function TutorPanel() {
 
   const busy = pending !== null;
 
-  function submit() {
-    if (!draft.trim() || busy || limited) return;
+  function ask(text: string): boolean {
+    if (!text.trim() || busy || limited) return false;
     following.current = true;
-    tutor.send(draft);
-    setDraft('');
+    tutor.send(text);
+    return true;
+  }
+
+  function submit() {
+    if (ask(draft)) setDraft('');
   }
 
   function loadEarlier() {
@@ -144,7 +181,8 @@ export function TutorPanel() {
       }}
       className="fixed inset-y-0 right-0 z-50 w-full md:w-[400px] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)]"
     >
-      <header className="flex items-center gap-2 h-12 px-4 flex-shrink-0 border-b border-[var(--border)]">
+      <header className="flex items-center gap-2.5 h-12 px-4 flex-shrink-0 border-b border-[var(--border)]">
+        <TutorMark size="md" />
         <div className="flex flex-col min-w-0 flex-1 leading-tight">
           <h2 className="text-[13px] font-semibold text-[var(--text)]">{t('tutor.title')}</h2>
           <span className="text-[11px] text-[var(--text3)] truncate">
@@ -209,9 +247,28 @@ export function TutorPanel() {
         )}
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
-          <p className="text-[13px] text-[var(--text2)]">
-            {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
-          </p>
+          <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
+            <TutorMark size="lg" />
+            <h3 className="text-[14px] font-semibold text-[var(--text)]">
+              {t('tutor.emptyTitle')}
+            </h3>
+            <p className="text-[13px] text-[var(--text2)]">
+              {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
+            </p>
+            <div className="flex flex-col gap-2 w-full mt-2">
+              {(tutor.lesson ? LESSON_STARTERS : GENERAL_STARTERS).map((key) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => ask(t(key))}
+                  disabled={limited}
+                  className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {t(key)}
+                </button>
+              ))}
+            </div>
+          </div>
         )}
 
         {messages.map((m) =>
@@ -241,11 +298,13 @@ export function TutorPanel() {
         {pending && (
           <>
             <StudentBubble text={pending.question} />
-            {pending.answer ? (
-              <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
-            ) : (
-              <TutorStatus />
-            )}
+            <TutorTurn>
+              {pending.answer ? (
+                <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
+              ) : (
+                <TutorStatus />
+              )}
+            </TutorTurn>
           </>
         )}
       </div>
@@ -259,35 +318,41 @@ export function TutorPanel() {
         </p>
       )}
       <form
-        className={`flex items-end gap-2 p-3 flex-shrink-0 ${limited ? '' : 'border-t border-[var(--border)]'}`}
+        className={`p-3 flex-shrink-0 ${limited ? '' : 'border-t border-[var(--border)]'}`}
         onSubmit={(e) => {
           e.preventDefault();
           submit();
         }}
       >
-        <textarea
-          value={draft}
-          onChange={(e) => setDraft(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              submit();
-            }
-          }}
-          rows={2}
-          disabled={limited}
-          maxLength={TUTOR_MESSAGE_MAX_LENGTH}
-          placeholder={t('tutor.placeholder')}
-          aria-label={t('tutor.placeholder')}
-          className="flex-1 resize-none max-h-40 min-h-[40px] px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-none focus:border-[var(--accent)]/60 disabled:opacity-50 disabled:cursor-not-allowed"
-        />
-        <button
-          type="submit"
-          disabled={!draft.trim() || busy || limited}
-          className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-        >
-          {t('tutor.send')}
-        </button>
+        <div className="relative">
+          <textarea
+            ref={boxRef}
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                submit();
+              }
+            }}
+            rows={1}
+            disabled={limited}
+            maxLength={TUTOR_MESSAGE_MAX_LENGTH}
+            placeholder={t('tutor.placeholder')}
+            aria-label={t('tutor.placeholder')}
+            className="block w-full resize-none overflow-y-auto pl-3 pr-11 py-2 rounded-[var(--radius)] bg-[var(--glass)] border border-[var(--border)] text-[13px] leading-5 text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-none focus:border-[var(--accent)]/60 disabled:opacity-50 disabled:cursor-not-allowed"
+          />
+          <button
+            type="submit"
+            disabled={!draft.trim() || busy || limited}
+            title={t('tutor.send')}
+            aria-label={t('tutor.send')}
+            className="absolute right-1.5 bottom-1.5 w-7 h-7 flex items-center justify-center rounded-full bg-[var(--accent)] text-white border-none hover:brightness-110 transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <ArrowUp size={16} strokeWidth={2} />
+          </button>
+        </div>
+        <p className="mt-1.5 text-[11px] text-[var(--text3)]">{t('tutor.enterHint')}</p>
       </form>
     </aside>
   );

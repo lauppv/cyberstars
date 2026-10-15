@@ -1220,6 +1220,16 @@
     "confirmDelete": "Ștergi conversația? Mesajele ei nu se mai pot recupera.",
     "intro": "Întreabă despre o lecție, o eroare sau o idee. Tutorul te ajută să ajungi singur la soluție, fără să ți-o dea.",
     "introLesson": "Întreabă despre lecția aceasta. Tutorul vede codul tău, finalul ultimei rulări și ultimul rezultat al testelor și te ajută să ajungi singur la soluție.",
+    "emptyTitle": "Cu ce te ajut?",
+    "enterHint": "Enter trimite, Shift+Enter începe un rând nou",
+    "start": {
+      "task": "Explică-mi cerința",
+      "broken": "De ce nu merge codul meu?",
+      "nudge": "Dă-mi un ghiont",
+      "course": "Cu ce curs să încep?",
+      "idea": "Ce este o variabilă?",
+      "help": "La ce mă poți ajuta?"
+    },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",
     "earlier": "Arată mesajele anterioare",
