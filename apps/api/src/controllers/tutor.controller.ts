@@ -12,7 +12,7 @@ import * as conversations from '../services/tutor-conversations.service.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as usage from '../services/usage.service.js';
 import { isAdmin } from '@cyberstars/shared/auth';
-import { tutorLessonSchema, tutorPageQuerySchema } from '../schemas/tutor.schema.js';
+import { tutorConversationParamsSchema, tutorPageQuerySchema } from '../schemas/tutor.schema.js';
 
 // Each event goes out as soon as it is written. The headers wait for the first
 // one, so a failure before any words is still a plain error response.
@@ -66,6 +66,10 @@ async function lessonWork(
   };
 }
 
+function sameLesson(a: TutorLessonRef | null, b: TutorLessonRef | undefined): boolean {
+  return a?.courseKey === b?.courseKey && a?.lessonSlug === b?.lessonSlug;
+}
+
 export async function chat(req: Request, res: Response, next: NextFunction) {
   // The student left mid-answer (tab closed, request cancelled): stop the model.
   const leave = new AbortController();
@@ -74,7 +78,10 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
   });
 
   const sentAt = new Date();
-  const key = conversations.conversationKey(req.user!.id, req.body.lesson);
+  const userId = req.user!.id;
+  const lesson: TutorLessonRef | undefined = req.body.lesson;
+  // The conversation the message continues; without one it starts a new one.
+  let conversationId: number | undefined = req.body.conversationId;
   const question = { text: req.body.message as string, sentAt };
   let words = '';
   const written = { tokens: 0 };
@@ -94,16 +101,36 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
     }
   }
 
+  // Saved into the conversation, or a new one about the lesson; the new one's
+  // id is what the client keeps sending.
+  async function save(answer: { text: string; finish: TutorAnswerEnd }) {
+    const saved = await conversations.saveExchange(
+      userId,
+      conversationId ?? { lesson: lesson ?? null },
+      question,
+      answer,
+    );
+    if (saved !== null) conversationId = saved;
+    return saved === null ? {} : { conversationId: saved };
+  }
+
   try {
+    // A conversation is only continued by its own student, about its own lesson.
+    if (conversationId !== undefined) {
+      const found = await conversations.findConversation(userId, conversationId);
+      if (!found || !sameLesson(found.lesson, lesson)) {
+        throw new AppError(404, 'No such conversation');
+      }
+    }
     // The role decides which pages the tutor may point to, read fresh like
     // every other role check.
-    const role = await userRepo.getRole(req.user!.id);
-    held = await usage.hold(req.user!.id, 'tutorMessage', isAdmin(role), 2);
-    const lesson: TutorLessonRef | undefined = req.body.lesson;
+    const role = await userRepo.getRole(userId);
+    held = await usage.hold(userId, 'tutorMessage', isAdmin(role), 2);
     const answer = askTutor({
       message: question.text,
-      history: await conversations.recentHistory(key),
-      ...(lesson && { lesson: await lessonWork(req.user!.id, lesson, req.body.work) }),
+      history:
+        conversationId === undefined ? [] : await conversations.recentHistory(conversationId),
+      ...(lesson && { lesson: await lessonWork(userId, lesson, req.body.work) }),
       page: req.body.page,
       uiLang: req.body.lang === 'ro' ? 'ro' : 'en',
       role,
@@ -122,38 +149,45 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
     finish ??= 'complete';
     // Saved and paid for before `done`, so a chat reloaded right after shows
     // the answer, and the usage read right after counts it.
-    await conversations.saveExchange(key, question, { text: words, finish });
+    const saved = await save({ text: words, finish });
     await settle();
-    send(res, { type: 'done', finish });
+    send(res, { type: 'done', finish, ...saved });
     res.end();
   } catch (err) {
     // Words the student already saw are kept, marked as broken off. Before
     // any words nothing is saved, so the message can simply be sent again.
-    if (words) {
-      await conversations.saveExchange(key, question, { text: words, finish: 'interrupted' });
-    }
+    const saved = words ? await save({ text: words, finish: 'interrupted' }) : {};
     await settle();
     if (leave.signal.aborted) return;
     if (!res.headersSent) return next(err);
     // Some words are already on screen: they stay, and the stream says it broke off.
     const message = err instanceof AppError ? err.message : 'Something went wrong';
-    send(res, { type: 'error', message });
+    send(res, { type: 'error', message, ...saved });
     res.end();
   }
 }
 
-// The general conversation's routes have no lesson in their path.
-function keyFor(req: Request) {
-  if (req.params.courseKey === undefined) return conversations.conversationKey(req.user!.id);
-  const lesson = tutorLessonSchema.safeParse(req.params);
-  if (!lesson.success) throw new AppError(404, 'No such lesson');
-  return conversations.conversationKey(req.user!.id, lesson.data as TutorLessonRef);
+// The conversation in the path, as a number; anything else is no conversation.
+function conversationIdOf(req: Request): number {
+  const params = tutorConversationParamsSchema.safeParse(req.params);
+  if (!params.success) throw new AppError(404, 'No such conversation');
+  return params.data.id;
+}
+
+export async function listConversations(req: Request, res: Response, next: NextFunction) {
+  try {
+    res.json(await conversations.listConversations(req.user!.id));
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function getConversation(req: Request, res: Response, next: NextFunction) {
   try {
     const { before } = tutorPageQuerySchema.parse(req.query);
-    res.json(await conversations.getPage(keyFor(req), before));
+    const page = await conversations.getPage(req.user!.id, conversationIdOf(req), before);
+    if (!page) throw new AppError(404, 'No such conversation');
+    res.json(page);
   } catch (err) {
     next(err);
   }
@@ -161,7 +195,8 @@ export async function getConversation(req: Request, res: Response, next: NextFun
 
 export async function deleteConversation(req: Request, res: Response, next: NextFunction) {
   try {
-    await conversations.deleteConversation(keyFor(req));
+    const deleted = await conversations.deleteConversation(req.user!.id, conversationIdOf(req));
+    if (!deleted) throw new AppError(404, 'No such conversation');
     res.status(204).end();
   } catch (err) {
     next(err);

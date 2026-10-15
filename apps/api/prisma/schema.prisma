@@ -75,47 +75,47 @@ model Connection {
 }
 
 model User {
-  id              Int       @id @default(autoincrement())
-  name            String    @db.VarChar(100)
-  email           String    @unique @db.VarChar(255)
-  password        String    @db.VarChar(255)
-  role            Role      @default(USER)
-  avatarUrl       String?   @map("avatar_url") @db.VarChar(512)
-  bio             String?   @db.VarChar(200)
-  status          String?   @db.VarChar(80)
-  statusExpiresAt    DateTime? @map("status_expires_at")
-  resetCode          String?   @map("reset_code") @db.VarChar(6)
-  resetCodeExpiresAt DateTime? @map("reset_code_expires_at")
+  id                       Int       @id @default(autoincrement())
+  name                     String    @db.VarChar(100)
+  email                    String    @unique @db.VarChar(255)
+  password                 String    @db.VarChar(255)
+  role                     Role      @default(USER)
+  avatarUrl                String?   @map("avatar_url") @db.VarChar(512)
+  bio                      String?   @db.VarChar(200)
+  status                   String?   @db.VarChar(80)
+  statusExpiresAt          DateTime? @map("status_expires_at")
+  resetCode                String?   @map("reset_code") @db.VarChar(6)
+  resetCodeExpiresAt       DateTime? @map("reset_code_expires_at")
   pendingEmail             String?   @map("pending_email") @db.VarChar(255)
   emailChangeCode          String?   @map("email_change_code") @db.VarChar(6)
   emailChangeCodeExpiresAt DateTime? @map("email_change_code_expires_at")
-  createdAt          DateTime  @default(now()) @map("created_at")
+  createdAt                DateTime  @default(now()) @map("created_at")
 
   // Public-profile privacy toggles (default: everything visible). Own view
   // ignores these; other viewers see a field only when its flag is true.
-  showBio      Boolean @default(true) @map("show_bio")
-  showStats    Boolean @default(true) @map("show_stats")
-  showProgress Boolean @default(true) @map("show_progress")
-  showActivity Boolean @default(true) @map("show_activity")
+  showBio         Boolean   @default(true) @map("show_bio")
+  showStats       Boolean   @default(true) @map("show_stats")
+  showProgress    Boolean   @default(true) @map("show_progress")
+  showActivity    Boolean   @default(true) @map("show_activity")
   // Whether other viewers see this user's connections list on their public
   // profile (own view ignores it). The connections themselves stay functional
   // when off; only the public listing is hidden.
-  showConnections Boolean @default(true) @map("show_connections")
+  showConnections Boolean   @default(true) @map("show_connections")
   // When the user finished the first-lesson tour. NULL means a new account
   // that is still held on the tour lesson until its tests pass.
-  onboardedAt DateTime? @map("onboarded_at")
+  onboardedAt     DateTime? @map("onboarded_at")
 
-  progress  UserLessonProgress[]
-  savedCode UserSavedCode[]
-  threads   ForumThread[]
-  posts     ForumPost[]
-  reactions ForumReaction[]
-  tickets         SupportTicket[]
-  supportMessages SupportMessage[]
-  dailyPicks      DailyPick[]
-  submissions     LessonSubmission[]
-  tutorMessages   TutorMessage[]
-  usageWindows    UsageWindow[]
+  progress           UserLessonProgress[]
+  savedCode          UserSavedCode[]
+  threads            ForumThread[]
+  posts              ForumPost[]
+  reactions          ForumReaction[]
+  tickets            SupportTicket[]
+  supportMessages    SupportMessage[]
+  dailyPicks         DailyPick[]
+  submissions        LessonSubmission[]
+  tutorConversations TutorConversation[]
+  usageWindows       UsageWindow[]
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
   notificationsSent     Notification[] @relation("NotificationsSent")
@@ -234,26 +234,43 @@ model LessonSubmission {
   @@map("lesson_submissions")
 }
 
-// A student's tutor conversations, one row per message. The general
-// conversation has no lesson; every other one is about one lesson or algorithm
-// challenge. The student's message and the tutor's answer are saved together
-// once the answer ends, capped at the newest 200 per conversation.
-model TutorMessage {
+// A student's conversations with the tutor. One about a lesson or algorithm
+// challenge has its course and slug; a general one has neither. A student keeps
+// their newest 50, the newest first by when their last exchange was saved.
+model TutorConversation {
   id         Int      @id @default(autoincrement())
   userId     Int      @map("user_id")
   courseKey  String?  @map("course_key") @db.VarChar(50)
   lessonSlug String?  @map("lesson_slug") @db.VarChar(100)
+  // The start of its first question, as the history lists it.
+  title      String   @db.VarChar(80)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @default(now()) @map("updated_at")
+
+  user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages TutorMessage[]
+
+  @@index([userId, updatedAt])
+  @@map("tutor_conversations")
+}
+
+// A conversation's messages. The student's message and the tutor's answer are
+// saved together once the answer ends, capped at the newest 200 per
+// conversation.
+model TutorMessage {
+  id             Int      @id @default(autoincrement())
+  conversationId Int      @map("conversation_id")
   // "student" or "tutor"
-  role       String   @db.VarChar(10)
-  text       String
+  role           String   @db.VarChar(10)
+  text           String
   // How an answer ended (complete, cut, blocked, interrupted); null on the
   // student's own messages.
-  finish     String?  @db.VarChar(12)
-  createdAt  DateTime @default(now()) @map("created_at")
+  finish         String?  @db.VarChar(12)
+  createdAt      DateTime @default(now()) @map("created_at")
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conversation TutorConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 
-  @@index([userId, courseKey, lessonSlug, id])
+  @@index([conversationId, id])
   @@map("tutor_messages")
 }
 
@@ -325,13 +342,13 @@ model Notification {
 }
 
 model Curriculum {
-  id          Int      @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   key         String         @unique @db.VarChar(50)
   title       String         @db.VarChar(100)
   description String
   kind        CurriculumKind @default(editor)
   sortOrder   Int            @default(0) @map("sort_order")
-  createdAt   DateTime @default(now()) @map("created_at")
+  createdAt   DateTime       @default(now()) @map("created_at")
 
   @@map("curriculum")
 }
@@ -350,14 +367,14 @@ model Lesson {
 }
 
 model UserLessonProgress {
-  id              Int       @id @default(autoincrement())
-  userId          Int       @map("user_id")
-  courseKey       String    @map("course_key") @db.VarChar(50)
-  lessonSlug      String    @map("lesson_slug") @db.VarChar(100)
-  completed       Boolean   @default(false)
-  completedAt     DateTime? @map("completed_at")
-  lastAccessedAt  DateTime  @default(now()) @map("last_accessed_at")
-  createdAt       DateTime  @default(now()) @map("created_at")
+  id             Int       @id @default(autoincrement())
+  userId         Int       @map("user_id")
+  courseKey      String    @map("course_key") @db.VarChar(50)
+  lessonSlug     String    @map("lesson_slug") @db.VarChar(100)
+  completed      Boolean   @default(false)
+  completedAt    DateTime? @map("completed_at")
+  lastAccessedAt DateTime  @default(now()) @map("last_accessed_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -411,10 +428,10 @@ model ForumThread {
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @default(now()) @updatedAt @map("updated_at")
 
-  category  ForumCategory     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  author    User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  posts     ForumPost[]
-  viewLogs  ForumThreadView[]
+  category ForumCategory     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  author   User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  posts    ForumPost[]
+  viewLogs ForumThreadView[]
 
   @@index([categoryId])
   @@index([authorId])
@@ -447,8 +464,8 @@ model ForumPost {
   deleted       Boolean  @default(false)
   deletedByName String?  @map("deleted_by_name") @db.VarChar(100)
 
-  thread    ForumThread    @relation(fields: [threadId], references: [id], onDelete: Cascade)
-  author    User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  thread    ForumThread     @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  author    User            @relation(fields: [authorId], references: [id], onDelete: Cascade)
   reactions ForumReaction[]
 
   @@index([threadId])

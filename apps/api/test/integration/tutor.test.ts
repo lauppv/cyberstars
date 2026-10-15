@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeAll, afterAll, beforeEach, afterEach } 
 import { createAuthenticatedAgent, userIdFor } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 import { config } from '../../src/config/index.js';
-import { saveExchange, conversationKey } from '../../src/services/tutor-conversations.service.js';
+import { saveExchange } from '../../src/services/tutor-conversations.service.js';
 import { record } from '../../src/services/submissions.service.js';
 
 // The config is read once, by setup.ts, before this file runs, so the tutor
@@ -69,84 +69,116 @@ function ask(a: Awaited<ReturnType<typeof createAuthenticatedAgent>>['agent'], b
   return a.post('/api/tutor/chat').send({ message: 'What is a loop?', page: '/courses', ...body });
 }
 
+// The conversation an answer was saved to, as its `done` event names it.
+function conversationOf(res: { text: string }): number {
+  const id = /"type":"done"[^}]*"conversationId":(\d+)/.exec(res.text)?.[1];
+  expect(id).toBeDefined();
+  return Number(id);
+}
+
 function texts(contents: SentContent[]): string[] {
   // The words of each turn: in a lesson chat the work comes first, the message last.
   return contents.map((c) => `${c.role}: ${c.parts.at(-1)!.text}`);
 }
 
 describe('Tutor conversations', () => {
-  it('saves each exchange and sends it back to the model with the next message', async () => {
+  it('starts a conversation with its first exchange and sends it back with the next message', async () => {
     const { agent: a } = await createAuthenticatedAgent();
 
-    const first = await ask(a, {}).expect(200);
-    expect(first.text).toContain('data: {"type":"done","finish":"complete"}');
+    const first = await ask(a, { message: '  What is\n a loop?' }).expect(200);
+    const id = conversationOf(first);
 
-    const page = await a.get('/api/tutor/conversations/general').expect(200);
+    const list = await a.get('/api/tutor/conversations').expect(200);
+    expect(list.body).toEqual([
+      { id, title: 'What is a loop?', lesson: null, updatedAt: expect.any(String) },
+    ]);
+    const page = await a.get(`/api/tutor/conversations/${id}`).expect(200);
     expect(page.body.hasMore).toBe(false);
     expect(page.body.messages).toEqual([
       expect.objectContaining({ role: 'tutor', text: 'Loops repeat code.', finish: 'complete' }),
-      expect.objectContaining({ role: 'student', text: 'What is a loop?', finish: null }),
+      expect.objectContaining({ role: 'student', text: 'What is\n a loop?', finish: null }),
     ]);
 
-    await ask(a, { message: 'and in Java?' }).expect(200);
+    const second = await ask(a, { message: 'and in Java?', conversationId: id }).expect(200);
+    expect(conversationOf(second)).toBe(id);
     expect(texts(sent[1])).toEqual([
-      'user: What is a loop?',
+      'user: What is\n a loop?',
       'model: Loops repeat code.',
       'user: and in Java?',
     ]);
   });
 
-  it("keeps each lesson's conversation apart from the general one and from other lessons", async () => {
+  it('starts a new conversation for a message that names none, with no history', async () => {
     const { agent: a } = await createAuthenticatedAgent();
 
-    await ask(a, { message: 'general question' }).expect(200);
-    await ask(a, { message: 'lesson question', lesson }).expect(200);
-    await ask(a, {
-      message: 'other lesson question',
-      lesson: { courseKey: 'python', lessonSlug: 'print' },
-    }).expect(200);
+    const first = conversationOf(await ask(a, { message: 'first' }).expect(200));
+    const second = conversationOf(await ask(a, { message: 'second' }).expect(200));
 
-    // The lesson's own message is the only history its second message carries.
-    await ask(a, { message: 'and again?', lesson }).expect(200);
-    expect(texts(sent[3])).toEqual([
+    expect(second).not.toBe(first);
+    expect(texts(sent[1])).toEqual(['user: second']);
+    const list = await a.get('/api/tutor/conversations').expect(200);
+    expect(list.body.map((c: { title: string }) => c.title)).toEqual(['second', 'first']);
+  });
+
+  it('lists the conversation saved to last first', async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+    const first = conversationOf(await ask(a, { message: 'first' }).expect(200));
+    await ask(a, { message: 'second' }).expect(200);
+
+    await ask(a, { message: 'back to the first', conversationId: first }).expect(200);
+
+    const list = await a.get('/api/tutor/conversations').expect(200);
+    expect(list.body.map((c: { title: string }) => c.title)).toEqual(['first', 'second']);
+  });
+
+  it('keeps a lesson conversation about its lesson only', async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+    const id = conversationOf(await ask(a, { message: 'lesson question', lesson }).expect(200));
+
+    const list = await a.get('/api/tutor/conversations').expect(200);
+    expect(list.body[0]).toMatchObject({ id, lesson });
+
+    await ask(a, { message: 'and again?', lesson, conversationId: id }).expect(200);
+    expect(texts(sent[1])).toEqual([
       'user: lesson question',
       'model: Loops repeat code.',
       'user: and again?',
     ]);
 
-    const general = await a.get('/api/tutor/conversations/general').expect(200);
-    expect(general.body.messages.map((m: { text: string }) => m.text)).toEqual([
-      'Loops repeat code.',
-      'general question',
-    ]);
+    await ask(a, { conversationId: id }).expect(404);
+    await ask(a, {
+      conversationId: id,
+      lesson: { courseKey: 'python', lessonSlug: 'print' },
+    }).expect(404);
+    expect(sent).toHaveLength(2);
   });
 
-  it("deletes a lesson's conversation and leaves the general one as it was", async () => {
+  it('deletes a conversation and leaves the others as they were', async () => {
     const { agent: a } = await createAuthenticatedAgent();
-    await ask(a, {}).expect(200);
-    await ask(a, { lesson }).expect(200);
+    const kept = conversationOf(await ask(a, {}).expect(200));
+    const gone = conversationOf(await ask(a, { lesson }).expect(200));
 
-    await a.delete('/api/tutor/conversations/python/for').expect(204);
+    await a.delete(`/api/tutor/conversations/${gone}`).expect(204);
 
-    const deleted = await a.get('/api/tutor/conversations/python/for').expect(200);
-    expect(deleted.body.messages).toEqual([]);
-    await ask(a, { message: 'remember me?', lesson }).expect(200);
-    expect(texts(sent.at(-1)!)).toEqual(['user: remember me?']);
-
-    const general = await a.get('/api/tutor/conversations/general').expect(200);
-    expect(general.body.messages).toHaveLength(2);
+    await a.get(`/api/tutor/conversations/${gone}`).expect(404);
+    await a.delete(`/api/tutor/conversations/${gone}`).expect(404);
+    await ask(a, { lesson, conversationId: gone }).expect(404);
+    const list = await a.get('/api/tutor/conversations').expect(200);
+    expect(list.body.map((c: { id: number }) => c.id)).toEqual([kept]);
   });
 
-  it("never shows or deletes another student's messages", async () => {
+  it("never shows, continues or deletes another student's conversation", async () => {
     const { agent: owner } = await createAuthenticatedAgent();
     const { agent: other } = await createAuthenticatedAgent();
-    await ask(owner, {}).expect(200);
+    const id = conversationOf(await ask(owner, {}).expect(200));
 
-    const seen = await other.get('/api/tutor/conversations/general').expect(200);
-    expect(seen.body.messages).toEqual([]);
-    await other.delete('/api/tutor/conversations/general').expect(204);
+    expect((await other.get('/api/tutor/conversations').expect(200)).body).toEqual([]);
+    await other.get(`/api/tutor/conversations/${id}`).expect(404);
+    await other.delete(`/api/tutor/conversations/${id}`).expect(404);
+    await ask(other, { conversationId: id }).expect(404);
+    expect(sent).toHaveLength(1);
 
-    const kept = await owner.get('/api/tutor/conversations/general').expect(200);
+    const kept = await owner.get(`/api/tutor/conversations/${id}`).expect(200);
     expect(kept.body.messages).toHaveLength(2);
   });
 
@@ -158,8 +190,7 @@ describe('Tutor conversations', () => {
     await ask(a, {}).expect(502);
     log.mockRestore();
 
-    const page = await a.get('/api/tutor/conversations/general').expect(200);
-    expect(page.body.messages).toEqual([]);
+    expect((await a.get('/api/tutor/conversations').expect(200)).body).toEqual([]);
   });
 
   it('keeps an answer cut by the length limit marked as cut', async () => {
@@ -170,46 +201,71 @@ describe('Tutor conversations', () => {
         { headers: { 'Content-Type': 'text/event-stream' } },
       );
 
-    await ask(a, {}).expect(200);
+    const id = conversationOf(await ask(a, {}).expect(200));
 
-    const page = await a.get('/api/tutor/conversations/general').expect(200);
+    const page = await a.get(`/api/tutor/conversations/${id}`).expect(200);
     expect(page.body.messages[0]).toMatchObject({ text: 'Half', finish: 'cut' });
   });
 
-  it('refuses a conversation about a lesson the curriculum does not list', async () => {
+  it('refuses a lesson the curriculum does not list and an id that is no number', async () => {
     const { agent: a } = await createAuthenticatedAgent();
 
     await ask(a, { lesson: { courseKey: 'python', lessonSlug: 'nope' } }).expect(400);
-    await a.get('/api/tutor/conversations/python/nope').expect(404);
+    await a.get('/api/tutor/conversations/general').expect(404);
     expect(sent).toEqual([]);
   });
 
   it('keeps only the newest 200 messages of a conversation', async () => {
     const { email } = await createAuthenticatedAgent();
     const userId = await userIdFor(email);
+    const { id } = await prisma.tutorConversation.create({
+      data: { userId, ...lesson, title: 'old' },
+    });
     await prisma.tutorMessage.createMany({
       data: Array.from({ length: 199 }, (_, i) => ({
-        userId,
-        courseKey: 'python',
-        lessonSlug: 'for',
+        conversationId: id,
         role: i % 2 ? 'tutor' : 'student',
         text: `old ${i}`,
       })),
     });
 
     await saveExchange(
-      conversationKey(userId, lesson),
+      userId,
+      id,
       { text: 'newest question', sentAt: new Date() },
       { text: 'newest answer', finish: 'complete' },
     );
 
-    const rows = await prisma.tutorMessage.findMany({ where: { userId }, orderBy: { id: 'asc' } });
+    const rows = await prisma.tutorMessage.findMany({
+      where: { conversationId: id },
+      orderBy: { id: 'asc' },
+    });
     expect(rows).toHaveLength(200);
     expect(rows[0].text).toBe('old 1');
     expect(rows.at(-1)!.text).toBe('newest answer');
   });
 
-  it("takes a student's messages with them when their user row is deleted", async () => {
+  it('keeps only the newest 50 conversations of a student', async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    const userId = await userIdFor(email);
+    await prisma.tutorConversation.createMany({
+      data: Array.from({ length: 50 }, (_, i) => ({
+        userId,
+        title: `old ${i}`,
+        updatedAt: new Date(Date.UTC(2026, 0, 1, 0, i)),
+      })),
+    });
+
+    await ask(a, { message: 'newest' }).expect(200);
+
+    const list = await a.get('/api/tutor/conversations').expect(200);
+    expect(list.body).toHaveLength(50);
+    expect(list.body[0].title).toBe('newest');
+    expect(list.body.map((c: { title: string }) => c.title)).not.toContain('old 0');
+    expect(await prisma.tutorConversation.count({ where: { userId } })).toBe(50);
+  });
+
+  it("takes a student's conversations and messages with them when their user row is deleted", async () => {
     const { agent: a, email } = await createAuthenticatedAgent();
     const userId = await userIdFor(email);
     await ask(a, {}).expect(200);
@@ -217,7 +273,8 @@ describe('Tutor conversations', () => {
 
     await prisma.user.delete({ where: { id: userId } });
 
-    expect(await prisma.tutorMessage.count({ where: { userId } })).toBe(0);
+    expect(await prisma.tutorConversation.count({ where: { userId } })).toBe(0);
+    expect(await prisma.tutorMessage.count()).toBe(0);
   });
 });
 
@@ -348,10 +405,16 @@ describe('Lesson chat', () => {
   it('sees the new code on the next message, and keeps only the words in the history', async () => {
     const { agent: a } = await createAuthenticatedAgent();
 
-    await ask(a, { page, lesson, work: { code: 'print(1)', runOutput: '' } }).expect(200);
-    await ask(a, { page, lesson, work: { code: 'print(2)', runOutput: '' } }).expect(200);
+    const first = await ask(a, { page, lesson, work: { code: 'print(1)', runOutput: '' } });
+    await ask(a, {
+      page,
+      lesson,
+      conversationId: conversationOf(first),
+      work: { code: 'print(2)', runOutput: '' },
+    }).expect(200);
 
     expect(lastWork()).toContain('print(2)');
+    expect(sent[1]).toHaveLength(3);
     expect(JSON.stringify(sent[1].slice(0, -1))).not.toContain('print(1)');
   });
 
