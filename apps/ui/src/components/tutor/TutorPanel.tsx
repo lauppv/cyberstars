@@ -88,12 +88,6 @@ function lessonStarters(stage: TutorLessonStage | null): Starter[] {
   }
 }
 
-const GENERAL_STARTERS: Starter[] = [
-  { key: 'tutor.start.course' },
-  { key: 'tutor.start.idea' },
-  { key: 'tutor.start.help' },
-];
-
 // The box grows with what the student writes, up to its max-height
 const BOX_MAX_PX = 160;
 
@@ -325,7 +319,10 @@ export function TutorPanel() {
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
-              {(tutor.lesson ? lessonStarters(tutor.stage) : GENERAL_STARTERS).map((starter) => (
+              {(tutor.lesson
+                ? lessonStarters(tutor.stage)
+                : tutor.starters.map((key): Starter => ({ key }))
+              ).map((starter) => (
                 <button
                   key={starter.key}
                   type="button"

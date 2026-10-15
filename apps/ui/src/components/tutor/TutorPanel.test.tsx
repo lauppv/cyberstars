@@ -210,6 +210,7 @@ beforeEach(() => {
 afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
 });
 
 describe('TutorPanel', () => {
@@ -246,6 +247,7 @@ describe('TutorPanel', () => {
   });
 
   it('offers questions to start with, and sends the one picked', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
     renderTutor();
     await openPanel();
     expect(await screen.findByText('How can I help?')).toBeInTheDocument();
@@ -253,6 +255,47 @@ describe('TutorPanel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'What is a variable?' }));
     expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'What is a variable?' });
     expect(screen.queryByRole('button', { name: 'What is a variable?' })).toBeNull();
+  });
+
+  it('picks other questions each time a general conversation opens, one fitting the page first', async () => {
+    const random = vi.spyOn(Math, 'random').mockReturnValue(0);
+    const starters = () =>
+      within(screen.getByText(/Ask about a lesson/).parentElement!)
+        .getAllByRole('button')
+        .map((b) => b.textContent);
+    renderTutor('/forum');
+    await openPanel();
+    await screen.findByText(/Ask about a lesson/);
+    expect(starters()).toEqual([
+      'Which course should I start with?',
+      'What is a variable?',
+      'What can you help me with?',
+    ]);
+
+    fireEvent.click(screen.getByText('toggle'));
+    random.mockReturnValue(0.99);
+    await openPanel();
+    expect(starters()).toEqual([
+      'How do I get better at programming?',
+      'How do I find a bug in my code?',
+      "What do I do when I'm stuck on a problem?",
+    ]);
+  });
+
+  it('starts with a question about the challenges on their page', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.99);
+    renderTutor('/algorithms/python');
+    await openPanel();
+    const greeting = (await screen.findByText(/Ask about a lesson/)).parentElement!;
+    expect(
+      within(greeting)
+        .getAllByRole('button')
+        .map((b) => b.textContent),
+    ).toEqual([
+      'Which challenge should I try first?',
+      'How do I get better at programming?',
+      'How do I find a bug in my code?',
+    ]);
   });
 
   it('says when the saved messages could not be read', async () => {

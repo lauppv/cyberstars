@@ -75,9 +75,46 @@ interface Conversation {
   loadFailed: boolean;
   pending: PendingAnswer | null;
   failure: TutorFailure | null;
+  // The i18n keys of the questions an empty general conversation offers.
+  starters: string[];
 }
 
-function blank(lesson: TutorLesson | null, id: number | null = null): Conversation {
+// What a general conversation can start with. Each new one offers three of
+// them at random, one that fits the page first when there is one.
+const GENERAL_STARTERS = [
+  'course',
+  'idea',
+  'help',
+  'loop',
+  'function',
+  'error',
+  'languages',
+  'challenge',
+  'recursion',
+  'list',
+  'linux',
+  'stuck',
+  'debug',
+  'better',
+];
+const PAGE_STARTERS: [path: string, starter: string][] = [
+  ['/algorithms', 'challenge'],
+  ['/courses', 'course'],
+];
+
+function pickStarters(pathname: string): string[] {
+  const fits = PAGE_STARTERS.find(([path]) => pathname.startsWith(path))?.[1];
+  const pool = GENERAL_STARTERS.filter((starter) => starter !== fits);
+  const picked = fits ? [fits] : [];
+  while (picked.length < 3) picked.push(...pool.splice(Math.floor(Math.random() * pool.length), 1));
+  return picked.map((starter) => `tutor.start.${starter}`);
+}
+
+function blank(
+  lesson: TutorLesson | null,
+  id: number | null = null,
+  starters: string[] = [],
+): Conversation {
   return {
     id,
     lesson,
@@ -88,6 +125,7 @@ function blank(lesson: TutorLesson | null, id: number | null = null): Conversati
     loadFailed: false,
     pending: null,
     failure: null,
+    starters,
   };
 }
 
@@ -134,6 +172,8 @@ interface TutorContextValue {
   loadFailed: boolean;
   pending: PendingAnswer | null;
   failure: TutorFailure | null;
+  // What an empty general conversation offers to start with, as i18n keys.
+  starters: string[];
   send: (text: string) => void;
   retry: () => void;
   loadEarlier: () => Promise<void>;
@@ -280,10 +320,10 @@ export function TutorProvider({ children }: { children: ReactNode }) {
         ([, c]) => untouched(c) && lessonKeyOf(c.lesson) === lessonKeyOf(lesson),
       );
       const key = reuse?.[0] ?? `new-${++fresh.current}`;
-      add(key, blank(lesson));
+      add(key, blank(lesson, null, lesson ? [] : pickStarters(pathname)));
       display(key, lesson);
     },
-    [add, display],
+    [add, display, pathname],
   );
 
   // Shows a saved conversation, reading its messages the first time.
@@ -558,6 +598,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     loadFailed: current?.loadFailed ?? false,
     pending: current?.pending ?? null,
     failure: current?.failure ?? null,
+    starters: current?.starters ?? [],
     send,
     retry,
     loadEarlier,
