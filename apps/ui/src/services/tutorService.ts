@@ -1,6 +1,7 @@
 import { api, ApiClientError } from './apiClient';
 import type {
   TutorConversationPage,
+  TutorConversationSummary,
   TutorLessonRef,
   TutorLessonWork,
   TutorStreamEvent,
@@ -8,22 +9,18 @@ import type {
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
 
-// The general conversation, or the one about a lesson or algorithm challenge.
-function conversationPath(lesson: TutorLessonRef | null): string {
-  if (!lesson) return '/api/tutor/conversations/general';
-  return `/api/tutor/conversations/${encodeURIComponent(lesson.courseKey)}/${encodeURIComponent(lesson.lessonSlug)}`;
+// The student's conversations, the one saved to last first.
+export function listConversations(): Promise<TutorConversationSummary[]> {
+  return api.get<TutorConversationSummary[]>('/api/tutor/conversations');
 }
 
-export function getConversation(
-  lesson: TutorLessonRef | null,
-  before?: number,
-): Promise<TutorConversationPage> {
+export function getConversation(id: number, before?: number): Promise<TutorConversationPage> {
   const query = before === undefined ? '' : `?before=${before}`;
-  return api.get<TutorConversationPage>(`${conversationPath(lesson)}${query}`);
+  return api.get<TutorConversationPage>(`/api/tutor/conversations/${id}${query}`);
 }
 
-export function deleteConversation(lesson: TutorLessonRef | null): Promise<void> {
-  return api.delete<void>(conversationPath(lesson));
+export function deleteConversation(id: number): Promise<void> {
+  return api.delete<void>(`/api/tutor/conversations/${id}`);
 }
 
 export interface TutorChatRequest {
@@ -32,6 +29,8 @@ export interface TutorChatRequest {
   lang: 'en' | 'ro';
   // A message about a lesson comes with the student's work on it.
   lesson?: TutorLessonRef;
+  // The conversation it continues; without one it starts a new one.
+  conversationId?: number;
   work?: TutorLessonWork;
 }
 

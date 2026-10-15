@@ -1,31 +1,49 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter, useLocation } from 'react-router';
-import type { TutorMessage, TutorStreamEvent } from '@cyberstars/shared/tutor';
+import { act, render, screen, fireEvent, waitFor, within } from '@testing-library/react';
+import { StrictMode, useEffect, useState } from 'react';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router';
+import type {
+  TutorConversationSummary,
+  TutorLessonRef,
+  TutorMessage,
+  TutorStreamEvent,
+} from '@cyberstars/shared/tutor';
 import type { UsageState } from '@cyberstars/shared/usage';
 import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
   auth: { user: null as null | { id: number; role: string } },
   canAccess: vi.fn((..._a: unknown[]) => true),
-  getGeneralConversation: vi.fn(),
-  deleteGeneralConversation: vi.fn(),
-  getLessonConversation: vi.fn(),
-  deleteLessonConversation: vi.fn(),
+  listConversations: vi.fn(),
+  getConversation: vi.fn(),
+  deleteConversation: vi.fn(),
   streamChat: vi.fn(),
   usage: { summary: null as null | { tutorMessage: UsageState }, refresh: vi.fn() },
+  courses: [
+    {
+      key: 'python',
+      title: 'Python',
+      description: '',
+      lessons: [
+        { slug: 'for', title: 'For loops', sortOrder: 1 },
+        { slug: 'while', title: 'While loops', sortOrder: 2 },
+      ],
+    },
+  ],
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
 vi.mock('../../context/UsageContext', () => ({ useUsage: () => h.usage }));
+vi.mock('../../context/CurriculumContext', () => ({
+  useCurriculum: () => ({ courses: h.courses }),
+}));
 vi.mock('@cyberstars/shared/features', () => ({
   canAccessFeature: (...a: unknown[]) => h.canAccess(...a),
 }));
 vi.mock('../../services/tutorService', () => ({
-  getConversation: (lesson: unknown, before?: number) =>
-    lesson ? h.getLessonConversation(lesson, before) : h.getGeneralConversation(before),
-  deleteConversation: (lesson: unknown) =>
-    lesson ? h.deleteLessonConversation(lesson) : h.deleteGeneralConversation(),
+  listConversations: h.listConversations,
+  getConversation: h.getConversation,
+  deleteConversation: h.deleteConversation,
   streamChat: h.streamChat,
 }));
 
@@ -33,6 +51,7 @@ import { TutorProvider, useTutor } from '../../context/TutorContext';
 import { TutorPanel } from './TutorPanel';
 
 const USER = { id: 7, role: 'USER' };
+const TODAY = new Date().toISOString();
 
 function message(
   id: number,
@@ -41,6 +60,23 @@ function message(
   finish = null as TutorMessage['finish'],
 ): TutorMessage {
   return { id, role, text, finish, createdAt: '2026-10-14T10:00:00Z' };
+}
+
+function summary(
+  id: number,
+  title: string,
+  lesson: TutorLessonRef | null = null,
+  updatedAt = TODAY,
+): TutorConversationSummary {
+  return { id, title, lesson, updatedAt };
+}
+
+// The saved conversations and the messages each one reads back.
+function saved(list: TutorConversationSummary[], pages: Record<number, TutorMessage[]> = {}) {
+  h.listConversations.mockResolvedValue(list);
+  h.getConversation.mockImplementation((id: number) =>
+    Promise.resolve({ messages: pages[id] ?? [], hasMore: false }),
+  );
 }
 
 // One answer the test writes event by event, then ends or breaks.
@@ -67,45 +103,84 @@ function Where() {
   return <div data-testid="where">{useLocation().pathname}</div>;
 }
 
-const FOR_LESSON = { courseKey: 'python', lessonSlug: 'for', title: 'For loops' };
-const WHILE_LESSON = { courseKey: 'python', lessonSlug: 'while', title: 'While loops' };
+const FOR_REF = { courseKey: 'python', lessonSlug: 'for' };
+const WHILE_REF = { courseKey: 'python', lessonSlug: 'while' };
+const FOR_LESSON = { ...FOR_REF, title: 'For loops' };
+const WHILE_LESSON = { ...WHILE_REF, title: 'While loops' };
 // The student's work as the lesson page would read it when a message is sent.
 const work = {
   current: { code: 'for i in x:', runOutput: '', submissionId: 3 as number | undefined },
 };
 
+// A lesson page: it says where its work is read while it is open.
+function OnLesson({ lesson }: { lesson: TutorLessonRef }) {
+  const enter = useTutor()!.enterLesson;
+  useEffect(() => enter(lesson, () => work.current), [enter, lesson]);
+  return null;
+}
+
 // The sidebar's entry, a lesson page's ⋯ entry and its leaving, and the panel
 // where the shell puts it.
 function Shell() {
   const tutor = useTutor()!;
+  const [onFor, setOnFor] = useState(true);
+  const [onWhile, setOnWhile] = useState(true);
   return (
     <>
       <button onClick={tutor.toggle}>toggle</button>
-      <button onClick={() => tutor.openLesson(FOR_LESSON, () => work.current)}>ask lesson</button>
-      <button onClick={() => tutor.openLesson(WHILE_LESSON, () => work.current)}>
-        ask other lesson
-      </button>
-      <button onClick={() => tutor.leaveLesson(FOR_LESSON)}>leave lesson</button>
-      <button onClick={() => tutor.leaveLesson(WHILE_LESSON)}>leave other lesson</button>
+      <button onClick={() => tutor.openLesson(FOR_LESSON)}>ask lesson</button>
+      <button onClick={() => tutor.openLesson(WHILE_LESSON)}>ask other lesson</button>
+      <button onClick={() => setOnFor(false)}>leave lesson</button>
+      <button onClick={() => setOnWhile(false)}>leave other lesson</button>
+      {onFor && <OnLesson lesson={FOR_REF} />}
+      {onWhile && <OnLesson lesson={WHILE_REF} />}
       {tutor.open && <TutorPanel />}
       <Where />
     </>
   );
 }
 
-function renderTutor(path = '/courses') {
-  return render(
+function app(path: string) {
+  return (
     <MemoryRouter initialEntries={[path]}>
       <TutorProvider>
         <Shell />
       </TutorProvider>
-    </MemoryRouter>,
+    </MemoryRouter>
   );
+}
+
+function renderTutor(path = '/courses') {
+  return render(app(path));
 }
 
 async function openPanel() {
   fireEvent.click(screen.getByText('toggle'));
   await screen.findByRole('complementary', { name: 'Tutor' });
+}
+
+async function openLesson(name = 'ask lesson') {
+  fireEvent.click(screen.getByText(name));
+  await screen.findByRole('complementary', { name: 'Tutor' });
+}
+
+function historyList() {
+  return screen.getByRole('navigation', { name: 'Conversations' });
+}
+
+// Opens the history and picks the conversation with this title.
+async function openSaved(title: string) {
+  if (!screen.queryByRole('navigation', { name: 'Conversations' })) {
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+  }
+  fireEvent.click(await within(historyList()).findByRole('button', { name: new RegExp(title) }));
+}
+
+// The text where the panel shows it, outside the history's list.
+async function inPanel(text: string) {
+  await waitFor(() =>
+    expect(screen.getAllByText(text).filter((e) => !e.closest('nav'))).toHaveLength(1),
+  );
 }
 
 function type(text: string) {
@@ -118,10 +193,8 @@ beforeEach(() => {
   vi.clearAllMocks();
   h.auth = { user: USER };
   h.canAccess.mockReturnValue(true);
-  h.getGeneralConversation.mockResolvedValue({ messages: [], hasMore: false });
-  h.deleteGeneralConversation.mockResolvedValue(undefined);
-  h.getLessonConversation.mockResolvedValue({ messages: [], hasMore: false });
-  h.deleteLessonConversation.mockResolvedValue(undefined);
+  saved([]);
+  h.deleteConversation.mockResolvedValue(undefined);
   work.current = { code: 'for i in x:', runOutput: '', submissionId: 3 };
   h.usage.summary = null;
   localStorage.clear();
@@ -136,22 +209,28 @@ afterEach(() => {
 });
 
 describe('TutorPanel', () => {
-  it('opens on the saved conversation, oldest first, and reads it only once', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(2, 'tutor', 'Because it repeats.'), message(1, 'student', 'Why a loop?')],
-      hasMore: false,
+  it('opens on a new conversation each time, with the saved ones in the history', async () => {
+    saved([summary(1, 'Why a loop?')], {
+      1: [message(2, 'tutor', 'Because it repeats.'), message(1, 'student', 'Why a loop?')],
     });
     renderTutor();
     await openPanel();
-    const question = await screen.findByText('Why a loop?');
-    const reply = screen.getByText('Because it repeats.');
+    expect(screen.getByText('How can I help?')).toBeInTheDocument();
+    expect(screen.getByText('General')).toBeInTheDocument();
+
+    await openSaved('Why a loop');
+    const reply = await screen.findByText('Because it repeats.');
+    const question = screen.getAllByText('Why a loop?').find((e) => !e.closest('nav'))!;
     expect(question.compareDocumentPosition(reply)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(h.getConversation).toHaveBeenCalledWith(1);
 
     fireEvent.click(screen.getByRole('button', { name: 'Close' }));
     expect(screen.queryByRole('complementary')).toBeNull();
     await openPanel();
-    expect(screen.getByText('Why a loop?')).toBeInTheDocument();
-    expect(h.getGeneralConversation).toHaveBeenCalledTimes(1);
+    expect(screen.getByText('How can I help?')).toBeInTheDocument();
+    await openSaved('Why a loop');
+    expect(screen.getByText('Because it repeats.')).toBeInTheDocument();
+    expect(h.getConversation).toHaveBeenCalledTimes(1);
   });
 
   it('greets an empty conversation and closes on Escape', async () => {
@@ -173,10 +252,55 @@ describe('TutorPanel', () => {
   });
 
   it('says when the saved messages could not be read', async () => {
-    h.getGeneralConversation.mockRejectedValue(new Error('down'));
+    saved([summary(1, 'Lost')]);
+    h.getConversation.mockRejectedValue(new Error('down'));
     renderTutor();
     await openPanel();
-    expect(await screen.findByText(/couldn't be loaded/)).toBeInTheDocument();
+    await openSaved('Lost');
+    expect(await screen.findByText(/earlier messages couldn't be loaded/)).toBeInTheDocument();
+  });
+
+  it('continues the conversation its first answer was saved to', async () => {
+    renderTutor();
+    await openPanel();
+    const first = answer();
+    type('What is a loop?');
+    expect(h.streamChat.mock.calls[0][0]).not.toHaveProperty('conversationId');
+    saved([summary(31, 'What is a loop?')]);
+    first.emit({ type: 'text', text: 'Code that repeats.' });
+    first.emit({ type: 'done', finish: 'complete', conversationId: 31 });
+    await first.end();
+    expect(h.listConversations).toHaveBeenCalledTimes(2);
+
+    answer();
+    type('And in Java?');
+    expect(h.streamChat.mock.calls[1][0]).toMatchObject({
+      message: 'And in Java?',
+      conversationId: 31,
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+    expect(
+      await within(historyList()).findByRole('button', { name: /What is a loop/ }),
+    ).toHaveAttribute('aria-current', 'true');
+  });
+
+  it('starts a new conversation from the header and from the history', async () => {
+    saved([summary(1, 'Old talk')], { 1: [message(1, 'student', 'Old talk')] });
+    renderTutor();
+    await openPanel();
+    expect(screen.getByRole('button', { name: 'New conversation' })).toBeDisabled();
+    await openSaved('Old talk');
+    await inPanel('Old talk');
+
+    const header = screen
+      .getAllByRole('button', { name: 'New conversation' })
+      .find((b) => !b.closest('nav'))!;
+    fireEvent.click(header);
+    expect(screen.getByText('How can I help?')).toBeInTheDocument();
+
+    await openSaved('Old talk');
+    fireEvent.click(within(historyList()).getByRole('button', { name: 'New conversation' }));
+    expect(screen.getByText('How can I help?')).toBeInTheDocument();
   });
 
   it('names what it is doing until the first words, then streams them', async () => {
@@ -234,12 +358,12 @@ describe('TutorPanel', () => {
   });
 
   it('shows a short line for an answer blocked before any words, live and saved', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(2, 'tutor', '', 'blocked'), message(1, 'student', 'Earlier')],
-      hasMore: false,
+    saved([summary(1, 'Earlier')], {
+      1: [message(2, 'tutor', '', 'blocked'), message(1, 'student', 'Earlier')],
     });
     renderTutor();
     await openPanel();
+    await openSaved('Earlier');
     expect(await screen.findAllByText(/can't help with this one/)).toHaveLength(1);
     const reply = answer();
     type('Something odd');
@@ -249,12 +373,12 @@ describe('TutorPanel', () => {
   });
 
   it('says why an answer blocked after some words stopped, live and saved', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(2, 'tutor', 'Earlier words', 'blocked'), message(1, 'student', 'Earlier')],
-      hasMore: false,
+    saved([summary(1, 'Earlier')], {
+      1: [message(2, 'tutor', 'Earlier words', 'blocked'), message(1, 'student', 'Earlier')],
     });
     renderTutor();
     await openPanel();
+    await openSaved('Earlier');
     expect(await screen.findByText('Earlier words')).toBeInTheDocument();
     expect(
       screen.getAllByText('The tutor stopped this answer here. Try asking another way.'),
@@ -279,6 +403,7 @@ describe('TutorPanel', () => {
 
     expect(screen.getByText('Hello?')).toBeInTheDocument();
     expect(screen.getByText("The tutor couldn't answer right now.")).toBeInTheDocument();
+    expect(h.listConversations).toHaveBeenCalledTimes(1);
     const second = answer();
     fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
     expect(h.streamChat.mock.calls[1][0]).toMatchObject({ message: 'Hello?' });
@@ -298,18 +423,21 @@ describe('TutorPanel', () => {
     expect(screen.getByText(/Too many messages/)).toBeInTheDocument();
   });
 
-  it('keeps the words of an answer that broke off, with Try again', async () => {
+  it('keeps the words of an answer that broke off, with Try again, in its saved conversation', async () => {
     renderTutor();
     await openPanel();
     const reply = answer();
     type('Tell me about lists');
     reply.emit({ type: 'text', text: 'Lists hold' });
-    reply.emit({ type: 'error', message: 'Something went wrong' });
+    reply.emit({ type: 'error', message: 'Something went wrong', conversationId: 44 });
     await reply.end();
     expect(screen.getByText('Lists hold')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
     // The question was saved with the partial answer, so it shows once.
     expect(screen.getAllByText('Tell me about lists')).toHaveLength(1);
+
+    answer();
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
+    expect(h.streamChat.mock.calls[1][0]).toMatchObject({ conversationId: 44 });
   });
 
   it('treats a stream that closed without an ending as broken off', async () => {
@@ -335,14 +463,16 @@ describe('TutorPanel', () => {
   });
 
   it('loads earlier messages above the ones on screen', async () => {
-    h.getGeneralConversation
+    saved([summary(1, 'Paged')]);
+    h.getConversation
       .mockResolvedValueOnce({ messages: [message(40, 'student', 'Newer')], hasMore: true })
       .mockResolvedValueOnce({ messages: [message(39, 'tutor', 'Older')], hasMore: false });
     renderTutor();
     await openPanel();
+    await openSaved('Paged');
     fireEvent.click(await screen.findByRole('button', { name: 'Show earlier messages' }));
     const older = await screen.findByText('Older');
-    expect(h.getGeneralConversation).toHaveBeenLastCalledWith(40);
+    expect(h.getConversation).toHaveBeenLastCalledWith(1, 40);
     expect(older.compareDocumentPosition(screen.getByText('Newer'))).toBe(
       Node.DOCUMENT_POSITION_FOLLOWING,
     );
@@ -350,48 +480,50 @@ describe('TutorPanel', () => {
   });
 
   it('keeps the view when earlier messages fail to load', async () => {
-    h.getGeneralConversation
+    saved([summary(1, 'Paged')]);
+    h.getConversation
       .mockResolvedValueOnce({ messages: [message(40, 'student', 'Newer')], hasMore: true })
       .mockRejectedValueOnce(new Error('down'));
     renderTutor();
     await openPanel();
+    await openSaved('Paged');
     fireEvent.click(await screen.findByRole('button', { name: 'Show earlier messages' }));
-    await waitFor(() => expect(h.getGeneralConversation).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(h.getConversation).toHaveBeenCalledTimes(2));
     expect(screen.getByText('Newer')).toBeInTheDocument();
   });
 
-  it('deletes the conversation only once confirmed', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(1, 'student', 'Keep me?')],
-      hasMore: false,
-    });
+  it('deletes the conversation only once confirmed, then starts a new one', async () => {
+    saved([summary(1, 'Keep me?')], { 1: [message(1, 'student', 'Keep me?')] });
     const confirm = vi.fn(() => false);
     vi.stubGlobal('confirm', confirm);
     renderTutor();
     await openPanel();
-    await screen.findByText('Keep me?');
+    await openSaved('Keep me');
+    await inPanel('Keep me?');
     const remove = screen.getByRole('button', { name: 'Delete conversation' });
 
     fireEvent.click(remove);
-    expect(h.deleteGeneralConversation).not.toHaveBeenCalled();
+    expect(h.deleteConversation).not.toHaveBeenCalled();
 
     confirm.mockReturnValue(true);
     fireEvent.click(remove);
-    await waitFor(() => expect(screen.queryByText('Keep me?')).toBeNull());
-    expect(h.deleteGeneralConversation).toHaveBeenCalled();
-    expect(screen.getByText(/Ask about a lesson/)).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText(/Ask about a lesson/)).toBeInTheDocument());
+    expect(h.deleteConversation).toHaveBeenCalledWith(1);
+    expect(within(historyList()).queryByRole('button', { name: /Keep me/ })).toBeNull();
   });
 
   it('follows an in-app link without closing, and opens others in a new tab', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [
-        message(2, 'tutor', 'See [For loops](/lesson/python/for) or [docs](https://python.org).'),
-      ],
-      hasMore: false,
-    });
     renderTutor();
     await openPanel();
-    const external = await screen.findByRole('link', { name: 'docs' });
+    const reply = answer();
+    type('Where?');
+    reply.emit({
+      type: 'text',
+      text: 'See [For loops](/lesson/python/for) or [docs](https://python.org).',
+    });
+    reply.emit({ type: 'done', finish: 'complete' });
+    await reply.end();
+    const external = screen.getByRole('link', { name: 'docs' });
     expect(external).toHaveAttribute('target', '_blank');
     expect(external).toHaveAttribute('rel', 'noopener noreferrer');
 
@@ -405,47 +537,30 @@ describe('TutorPanel', () => {
       'matchMedia',
       vi.fn(() => ({ matches: true })),
     );
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(2, 'tutor', 'See [For loops](/lesson/python/for).')],
-      hasMore: false,
-    });
     renderTutor();
     await openPanel();
-    fireEvent.click(await screen.findByRole('link', { name: 'For loops' }));
+    const reply = answer();
+    type('Where?');
+    reply.emit({ type: 'text', text: 'See [For loops](/lesson/python/for).' });
+    reply.emit({ type: 'done', finish: 'complete' });
+    await reply.end();
+    fireEvent.click(screen.getByRole('link', { name: 'For loops' }));
     expect(screen.getByTestId('where')).toHaveTextContent('/lesson/python/for');
     expect(screen.queryByRole('complementary')).toBeNull();
   });
 
-  it('shows code in an answer as plain code', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(2, 'tutor', '```python\nfor i in range(3):\n    print(i)\n```')],
-      hasMore: false,
-    });
-    const { container } = renderTutor();
-    await openPanel();
-    await screen.findByText(/for i in range/);
-    expect(container.querySelector('pre code')).not.toBeNull();
-    expect(container.querySelector('.cm-editor')).toBeNull();
-  });
-
-  it('forgets the conversation when someone else signs in', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(1, 'student', 'Mine')],
-      hasMore: false,
-    });
+  it('forgets the conversations when someone else signs in', async () => {
     const view = renderTutor();
     await openPanel();
-    await screen.findByText('Mine');
+    const reply = answer();
+    type('Mine');
+    reply.emit({ type: 'done', finish: 'complete', conversationId: 3 });
+    await reply.end();
 
     h.auth = { user: { id: 8, role: 'USER' } };
-    view.rerender(
-      <MemoryRouter initialEntries={['/courses']}>
-        <TutorProvider>
-          <Shell />
-        </TutorProvider>
-      </MemoryRouter>,
-    );
+    view.rerender(app('/courses'));
     expect(screen.queryByRole('complementary')).toBeNull();
+    await openPanel();
     expect(screen.queryByText('Mine')).toBeNull();
   });
 
@@ -457,30 +572,138 @@ describe('TutorPanel', () => {
   });
 });
 
+describe('TutorPanel: the history', () => {
+  it('lists the conversations by day, each with its lesson or as general', async () => {
+    saved([
+      summary(3, 'Why twice?', FOR_REF),
+      summary(2, 'Hello there'),
+      summary(1, 'Long ago', null, '2020-01-01T00:00:00.000Z'),
+    ]);
+    renderTutor();
+    await openPanel();
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+    const list = historyList();
+
+    expect(
+      await within(list).findByRole('button', { name: /Why twice\?.*For loops/ }),
+    ).toBeInTheDocument();
+    expect(within(list).getByRole('button', { name: /Hello there.*General/ })).toBeInTheDocument();
+    const headings = within(list)
+      .getAllByRole('heading', { level: 3 })
+      .map((e) => e.textContent);
+    expect(headings).toEqual(['Today', 'Earlier']);
+  });
+
+  it('says when there are none yet', async () => {
+    renderTutor();
+    await openPanel();
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+    expect(await within(historyList()).findByText('No conversations yet.')).toBeInTheDocument();
+  });
+
+  it('says when they could not be read, and tries again when opened again', async () => {
+    h.listConversations.mockRejectedValue(new Error('down'));
+    renderTutor();
+    await openPanel();
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+    expect(
+      await within(historyList()).findByText("Your conversations couldn't be loaded."),
+    ).toBeInTheDocument();
+
+    saved([summary(1, 'Back again')]);
+    fireEvent.click(screen.getByRole('button', { name: 'Hide conversations' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+    expect(
+      await within(historyList()).findByRole('button', { name: /Back again/ }),
+    ).toBeInTheDocument();
+  });
+
+  it('remembers whether it was open', async () => {
+    const view = renderTutor();
+    await openPanel();
+    fireEvent.click(screen.getByRole('button', { name: 'Conversations' }));
+    view.unmount();
+
+    renderTutor();
+    await openPanel();
+    expect(historyList()).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Hide conversations' }));
+    expect(screen.queryByRole('navigation', { name: 'Conversations' })).toBeNull();
+  });
+
+  it("opens a lesson's conversation on its lesson's page", async () => {
+    saved([summary(5, 'About for', FOR_REF)], { 5: [message(1, 'student', 'About for')] });
+    renderTutor('/courses');
+    await openPanel();
+    await openSaved('About for');
+
+    expect(screen.getByTestId('where')).toHaveTextContent('/lesson/python/for');
+    await inPanel('About for');
+    await inPanel('For loops');
+  });
+
+  it("stays open on the lesson's page once it opens there, mounted twice or not", async () => {
+    saved([summary(5, 'About for', FOR_REF)], { 5: [message(1, 'student', 'About for')] });
+    function Opener() {
+      const tutor = useTutor()!;
+      return <button onClick={tutor.toggle}>toggle</button>;
+    }
+    function Panel() {
+      return useTutor()!.open ? <TutorPanel /> : null;
+    }
+    render(
+      <StrictMode>
+        <MemoryRouter initialEntries={['/courses']}>
+          <TutorProvider>
+            <Opener />
+            <Routes>
+              <Route path="/lesson/python/for" element={<OnLesson lesson={FOR_REF} />} />
+              <Route path="*" element={null} />
+            </Routes>
+            <Panel />
+          </TutorProvider>
+        </MemoryRouter>
+      </StrictMode>,
+    );
+    await openPanel();
+    await openSaved('About for');
+    await inPanel('About for');
+    await act(async () => {});
+    expect(screen.getByRole('complementary', { name: 'Tutor' })).toBeInTheDocument();
+  });
+
+  it('closes on a phone once a conversation is picked', async () => {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn(() => ({ matches: true })),
+    );
+    saved([summary(1, 'Hello there')]);
+    renderTutor();
+    await openPanel();
+    await openSaved('Hello there');
+    expect(screen.queryByRole('navigation', { name: 'Conversations' })).toBeNull();
+  });
+});
+
 describe('TutorPanel: a lesson conversation', () => {
-  const lessonRef = { courseKey: 'python', lessonSlug: 'for' };
-
-  async function openLesson(name = 'ask lesson') {
-    fireEvent.click(screen.getByText(name));
-    await screen.findByRole('complementary', { name: 'Tutor' });
-  }
-
-  it("opens on the lesson's saved conversation, named after the lesson", async () => {
-    h.getLessonConversation.mockResolvedValue({
-      messages: [message(5, 'student', 'About for')],
-      hasMore: false,
-    });
+  it("opens on the lesson's newest conversation, named after the lesson", async () => {
+    saved(
+      [summary(6, 'General one'), summary(5, 'About for', FOR_REF), summary(4, 'Older', FOR_REF)],
+      {
+        5: [message(5, 'student', 'About for')],
+      },
+    );
     renderTutor('/lesson/python/for');
     await openLesson();
 
     expect(await screen.findByText('About for')).toBeInTheDocument();
-    expect(h.getLessonConversation).toHaveBeenCalledWith(lessonRef, undefined);
-    expect(h.getGeneralConversation).not.toHaveBeenCalled();
+    expect(h.getConversation).toHaveBeenCalledWith(5);
+    expect(h.getConversation).toHaveBeenCalledTimes(1);
     expect(screen.getByText('For loops')).toBeInTheDocument();
-    expect(screen.queryByText('General conversation')).toBeNull();
+    expect(screen.queryByText('General')).toBeNull();
   });
 
-  it('greets an empty lesson conversation with what the tutor can see', async () => {
+  it('greets a lesson with no conversation yet with what the tutor can see', async () => {
     renderTutor('/lesson/python/for');
     await openLesson();
     expect(await screen.findByText(/sees your code/)).toBeInTheDocument();
@@ -490,60 +713,69 @@ describe('TutorPanel: a lesson conversation', () => {
   it('sends the lesson and the work as it is when each message goes', async () => {
     renderTutor('/lesson/python/for');
     await openLesson();
+    await screen.findByText(/sees your code/);
     const first = answer();
     type('Why?');
     expect(h.streamChat.mock.calls[0][0]).toEqual({
       message: 'Why?',
       page: '/lesson/python/for',
       lang: 'en',
-      lesson: lessonRef,
+      lesson: FOR_REF,
       work: { code: 'for i in x:', runOutput: '', submissionId: 3 },
     });
-    first.emit({ type: 'done', finish: 'complete' });
+    first.emit({ type: 'done', finish: 'complete', conversationId: 8 });
     await first.end();
 
     work.current = { code: 'for i in range(3):', runOutput: '0\n', submissionId: undefined };
     answer();
     type('And now?');
-    expect(h.streamChat.mock.calls[1][0].work).toEqual({
-      code: 'for i in range(3):',
-      runOutput: '0\n',
-      submissionId: undefined,
+    expect(h.streamChat.mock.calls[1][0]).toMatchObject({
+      conversationId: 8,
+      lesson: FOR_REF,
+      work: { code: 'for i in range(3):', runOutput: '0\n', submissionId: undefined },
     });
   });
 
-  it('switches from the general conversation to the lesson, and back from the sidebar', async () => {
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(1, 'student', 'General question')],
-      hasMore: false,
-    });
-    h.getLessonConversation.mockResolvedValue({
-      messages: [message(5, 'student', 'Lesson question')],
-      hasMore: false,
+  it('starts a new conversation about the same lesson', async () => {
+    saved([summary(5, 'About for', FOR_REF)], { 5: [message(5, 'student', 'About for')] });
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    await screen.findByText('About for');
+
+    fireEvent.click(screen.getByRole('button', { name: 'New conversation' }));
+    expect(screen.getByRole('button', { name: 'Give me a nudge' })).toBeInTheDocument();
+    answer();
+    type('Fresh start');
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({ lesson: FOR_REF });
+    expect(h.streamChat.mock.calls[0][0]).not.toHaveProperty('conversationId');
+  });
+
+  it('switches from a general conversation to the lesson, and the sidebar starts a new general one', async () => {
+    saved([summary(5, 'Lesson question', FOR_REF)], {
+      5: [message(5, 'student', 'Lesson question')],
     });
     renderTutor('/lesson/python/for');
     await openPanel();
-    await screen.findByText('General question');
+    const reply = answer();
+    type('General question');
+    reply.emit({ type: 'done', finish: 'complete', conversationId: 9 });
+    await reply.end();
 
     await openLesson();
     expect(await screen.findByText('Lesson question')).toBeInTheDocument();
     expect(screen.queryByText('General question')).toBeNull();
 
     fireEvent.click(screen.getByText('toggle'));
-    expect(await screen.findByText('General question')).toBeInTheDocument();
+    expect(screen.getByText('How can I help?')).toBeInTheDocument();
     expect(screen.queryByText('Lesson question')).toBeNull();
-    expect(screen.getByText('General conversation')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('toggle'));
     expect(screen.queryByRole('complementary')).toBeNull();
-    expect(h.getGeneralConversation).toHaveBeenCalledTimes(1);
-    expect(h.getLessonConversation).toHaveBeenCalledTimes(1);
   });
 
   it('closes when the student leaves the lesson, and shows the same conversation back', async () => {
-    h.getLessonConversation.mockResolvedValue({
-      messages: [message(5, 'student', 'Lesson question')],
-      hasMore: false,
+    saved([summary(5, 'Lesson question', FOR_REF)], {
+      5: [message(5, 'student', 'Lesson question')],
     });
     renderTutor('/lesson/python/for');
     await openLesson();
@@ -552,14 +784,14 @@ describe('TutorPanel: a lesson conversation', () => {
     fireEvent.click(screen.getByText('leave other lesson'));
     expect(screen.getByRole('complementary')).toBeInTheDocument();
     fireEvent.click(screen.getByText('leave lesson'));
-    expect(screen.queryByRole('complementary')).toBeNull();
+    await waitFor(() => expect(screen.queryByRole('complementary')).toBeNull());
 
     await openLesson();
     expect(screen.getByText('Lesson question')).toBeInTheDocument();
-    expect(h.getLessonConversation).toHaveBeenCalledTimes(1);
+    expect(h.getConversation).toHaveBeenCalledTimes(1);
   });
 
-  it('leaves the general conversation open when the student leaves a lesson', async () => {
+  it('leaves a general conversation open when the student leaves a lesson', async () => {
     renderTutor('/lesson/python/for');
     await openPanel();
     fireEvent.click(screen.getByText('leave lesson'));
@@ -569,6 +801,7 @@ describe('TutorPanel: a lesson conversation', () => {
   it('lets an answer finish in its own conversation while another one is shown', async () => {
     renderTutor('/lesson/python/for');
     await openLesson();
+    await screen.findByText(/sees your code/);
     const reply = answer();
     type('Explain for');
     reply.emit({ type: 'text', text: 'It walks' });
@@ -579,24 +812,24 @@ describe('TutorPanel: a lesson conversation', () => {
     // The general conversation isn't waiting for it.
     expect(screen.getByRole('textbox')).toBeEnabled();
 
+    saved([summary(12, 'Explain for', FOR_REF)]);
     reply.emit({ type: 'text', text: ' through each item.' });
-    reply.emit({ type: 'done', finish: 'complete' });
+    reply.emit({ type: 'done', finish: 'complete', conversationId: 12 });
     await reply.end();
     expect(screen.queryByText('It walks through each item.')).toBeNull();
 
     await openLesson();
     expect(screen.getByText('Explain for')).toBeInTheDocument();
     expect(screen.getByText('It walks through each item.')).toBeInTheDocument();
+    expect(h.getConversation).not.toHaveBeenCalled();
     expect(h.usage.refresh).toHaveBeenCalledOnce();
   });
 
   it('keeps each lesson in its own conversation', async () => {
-    h.getLessonConversation.mockImplementation((lesson: { lessonSlug: string }) =>
-      Promise.resolve({
-        messages: [message(1, 'student', `About ${lesson.lessonSlug}`)],
-        hasMore: false,
-      }),
-    );
+    saved([summary(2, 'About while', WHILE_REF), summary(1, 'About for', FOR_REF)], {
+      1: [message(1, 'student', 'About for')],
+      2: [message(2, 'student', 'About while')],
+    });
     renderTutor('/lesson/python/for');
     await openLesson();
     await screen.findByText('About for');
@@ -607,24 +840,15 @@ describe('TutorPanel: a lesson conversation', () => {
   });
 
   it('shows a link to another lesson as plain words, never as a link', async () => {
-    h.getLessonConversation.mockResolvedValue({
-      messages: [
+    saved([summary(5, 'Linked', FOR_REF)], {
+      5: [
         message(2, 'tutor', 'As [While loops](/lesson/python/while) shows, the condition decides.'),
       ],
-      hasMore: false,
     });
     renderTutor('/lesson/python/for');
     await openLesson();
     expect(await screen.findByText(/While loops/)).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'While loops' })).toBeNull();
-
-    // The general conversation still follows them.
-    h.getGeneralConversation.mockResolvedValue({
-      messages: [message(1, 'tutor', 'See [For loops](/lesson/python/for).')],
-      hasMore: false,
-    });
-    fireEvent.click(screen.getByText('toggle'));
-    expect(await screen.findByRole('link', { name: 'For loops' })).toBeInTheDocument();
   });
 
   it("deletes and pages back through the lesson's conversation", async () => {
@@ -632,19 +856,20 @@ describe('TutorPanel: a lesson conversation', () => {
       'confirm',
       vi.fn(() => true),
     );
-    h.getLessonConversation
+    saved([summary(5, 'Newer', FOR_REF)]);
+    h.getConversation
       .mockResolvedValueOnce({ messages: [message(40, 'student', 'Newer')], hasMore: true })
       .mockResolvedValueOnce({ messages: [message(39, 'tutor', 'Older')], hasMore: false });
     renderTutor('/lesson/python/for');
     await openLesson();
     fireEvent.click(await screen.findByRole('button', { name: 'Show earlier messages' }));
     await screen.findByText('Older');
-    expect(h.getLessonConversation).toHaveBeenLastCalledWith(lessonRef, 40);
+    expect(h.getConversation).toHaveBeenLastCalledWith(5, 40);
 
     fireEvent.click(screen.getByRole('button', { name: 'Delete conversation' }));
     await waitFor(() => expect(screen.queryByText('Newer')).toBeNull());
-    expect(h.deleteLessonConversation).toHaveBeenCalledWith(lessonRef);
-    expect(h.deleteGeneralConversation).not.toHaveBeenCalled();
+    expect(h.deleteConversation).toHaveBeenCalledWith(5);
+    expect(screen.getByRole('button', { name: 'Give me a nudge' })).toBeInTheDocument();
   });
 });
 

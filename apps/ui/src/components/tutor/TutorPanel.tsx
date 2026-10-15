@@ -1,10 +1,11 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArrowUp, Trash2, X } from 'lucide-react';
+import { ArrowUp, PanelLeft, SquarePen, Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
 import { useTutor } from '../../context/TutorContext';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
+import { TutorHistory } from './TutorHistory';
 import { TutorMark } from './TutorMark';
 import { TutorStatus } from './TutorStatus';
 
@@ -93,6 +94,8 @@ export function TutorPanel() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLTextAreaElement>(null);
   const following = useRef(true);
+  // Another conversation opens at its newest message.
+  const shownBefore = useRef(tutor.conversationKey);
   // Height and position before older messages go in on top, so the view can
   // stay where the student was reading.
   const prepend = useRef<{ height: number; top: number } | null>(null);
@@ -100,13 +103,17 @@ export function TutorPanel() {
   useLayoutEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    if (shownBefore.current !== tutor.conversationKey) {
+      shownBefore.current = tutor.conversationKey;
+      following.current = true;
+    }
     if (prepend.current) {
       el.scrollTop = prepend.current.top + (el.scrollHeight - prepend.current.height);
       prepend.current = null;
     } else if (following.current) {
       el.scrollTop = el.scrollHeight;
     }
-  }, [messages, pending, failure]);
+  }, [messages, pending, failure, tutor.conversationKey]);
 
   useLayoutEffect(() => {
     const box = boxRef.current;
@@ -181,7 +188,18 @@ export function TutorPanel() {
       }}
       className="fixed inset-y-0 right-0 z-50 w-full md:w-[400px] flex flex-col bg-[var(--bg2)] border-l border-[var(--border)]"
     >
-      <header className="flex items-center gap-2.5 h-12 px-4 flex-shrink-0 border-b border-[var(--border)]">
+      {tutor.historyOpen && <TutorHistory />}
+      <header className="flex items-center gap-2 h-12 pl-2 pr-4 flex-shrink-0 border-b border-[var(--border)]">
+        <button
+          type="button"
+          onClick={tutor.toggleHistory}
+          aria-pressed={tutor.historyOpen}
+          title={t(tutor.historyOpen ? 'tutor.hideHistory' : 'tutor.showHistory')}
+          aria-label={t('tutor.history')}
+          className="p-1.5 rounded-[var(--radius-sm)] bg-transparent border-none text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition cursor-pointer"
+        >
+          <PanelLeft size={16} strokeWidth={1.75} />
+        </button>
         <TutorMark size="md" />
         <div className="flex flex-col min-w-0 flex-1 leading-tight">
           <h2 className="text-[13px] font-semibold text-[var(--text)]">{t('tutor.title')}</h2>
@@ -189,6 +207,16 @@ export function TutorPanel() {
             {tutor.lesson?.title ?? t('tutor.general')}
           </span>
         </div>
+        <button
+          type="button"
+          onClick={tutor.startNew}
+          disabled={empty}
+          title={t('tutor.newConversation')}
+          aria-label={t('tutor.newConversation')}
+          className="p-1.5 rounded-[var(--radius-sm)] bg-transparent border-none text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          <SquarePen size={16} strokeWidth={1.75} />
+        </button>
         <button
           type="button"
           onClick={() => void clear()}
