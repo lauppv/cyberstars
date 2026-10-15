@@ -307,7 +307,6 @@ describe('TutorPanel', () => {
     renderTutor('/lesson/python/for');
     await openPanel();
     await screen.findByText(/Ask about a lesson/);
-    vi.useFakeTimers();
     const reply = answer();
     type('How do loops end?');
 
@@ -317,13 +316,17 @@ describe('TutorPanel', () => {
       lang: 'en',
     });
     expect(screen.getByRole('textbox')).toHaveValue('');
-    expect(screen.getByRole('status')).toHaveTextContent('Reading the lesson');
-    act(() => vi.advanceTimersByTime(3000));
-    expect(screen.getByRole('status')).toHaveTextContent('Looking at your code');
-    // Each entry starts its own clock once it shows; past the last one it stays.
-    for (let i = 0; i < 6; i++) act(() => vi.advanceTimersByTime(3000));
-    expect(screen.getByRole('status')).toHaveTextContent('Writing an answer');
+    expect(screen.getByRole('status')).toHaveTextContent('Thinking it through');
     expect(screen.getByRole('button', { name: 'Send' })).toBeDisabled();
+    // Each lookup as the server names it, a lesson by its title.
+    reply.emit({ type: 'status', lookup: 'search' });
+    expect(screen.getByRole('status')).toHaveTextContent('Searching the lessons');
+    reply.emit({ type: 'status', lookup: 'pages' });
+    expect(screen.getByRole('status')).toHaveTextContent('Looking through the app');
+    reply.emit({ type: 'status', lookup: 'read' });
+    expect(screen.getByRole('status')).toHaveTextContent('Reading a lesson');
+    reply.emit({ type: 'status', lookup: 'read', title: 'For loops' });
+    expect(screen.getByRole('status')).toHaveTextContent('Reading “For loops”');
 
     reply.emit({ type: 'text', text: 'When the' });
     expect(screen.queryByRole('status')).toBeNull();
@@ -412,6 +415,21 @@ describe('TutorPanel', () => {
     await second.end();
     expect(screen.queryByText(/couldn't answer/)).toBeNull();
     expect(screen.getAllByText('Hello?')).toHaveLength(1);
+  });
+
+  it('offers the message again when the stream ends in an error before any words', async () => {
+    renderTutor();
+    await openPanel();
+    const reply = answer();
+    type('Which lesson?');
+    reply.emit({ type: 'status', lookup: 'search' });
+    reply.emit({ type: 'error', message: 'The tutor could not answer right now' });
+    await reply.end();
+
+    expect(screen.getByText('Which lesson?')).toBeInTheDocument();
+    expect(screen.getByText("The tutor couldn't answer right now.")).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
+    expect(screen.queryByRole('status')).toBeNull();
   });
 
   it('asks to wait after too many messages', async () => {
@@ -723,6 +741,7 @@ describe('TutorPanel: a lesson conversation', () => {
       lesson: FOR_REF,
       work: { code: 'for i in x:', runOutput: '', submissionId: 3 },
     });
+    expect(screen.getByRole('status')).toHaveTextContent('Looking at your work');
     first.emit({ type: 'done', finish: 'complete', conversationId: 8 });
     await first.end();
 

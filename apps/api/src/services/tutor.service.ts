@@ -415,6 +415,22 @@ function runTool(
   }
 }
 
+// What a tool call looks like to the student; a tool that doesn't exist shows nothing.
+function statusOf(name: string, response: Record<string, unknown>): TutorStreamEvent | null {
+  switch (name) {
+    case 'search_lessons':
+      return { type: 'status', lookup: 'search' };
+    case 'read_lesson':
+      return typeof response.title === 'string'
+        ? { type: 'status', lookup: 'read', title: response.title }
+        : { type: 'status', lookup: 'read' };
+    case 'list_pages':
+      return { type: 'status', lookup: 'pages' };
+    default:
+      return null;
+  }
+}
+
 interface AskOptions extends Student {
   message: string;
   // The end of the conversation so far, oldest first.
@@ -523,13 +539,16 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
     }
 
     // The model's turn goes back as it came (its thoughtSignature included),
-    // followed by every result it asked for.
+    // followed by every result it asked for. Before the first words each
+    // lookup is named, so the student sees what the tutor is doing.
+    const results: GeminiPart[] = [];
+    for (const call of calls) {
+      const response = runTool(call, lang, opts);
+      const status = started ? null : statusOf(call.name, response);
+      if (status) yield status;
+      results.push({ functionResponse: { name: call.name, id: call.id, response } });
+    }
     contents.push({ role: 'model', parts });
-    contents.push({
-      role: 'user',
-      parts: calls.map((call) => ({
-        functionResponse: { name: call.name, id: call.id, response: runTool(call, lang, opts) },
-      })),
-    });
+    contents.push({ role: 'user', parts: results });
   }
 }

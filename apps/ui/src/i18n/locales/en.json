@@ -1244,11 +1244,12 @@
     "limitReached": "You've used your messages for now. You can chat again at {{time}}.",
     "closeNotice": "Close notice",
     "status": {
-      "lesson": "Reading the lesson",
-      "code": "Looking at your code",
-      "search": "Searching the lessons",
+      "work": "Looking at your work",
       "think": "Thinking it through",
-      "write": "Writing an answer"
+      "search": "Searching the lessons",
+      "read": "Reading a lesson",
+      "readTitle": "Reading “{{title}}”",
+      "pages": "Looking through the app"
     }
   }
 }

@@ -1,31 +1,26 @@
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import type { TutorLookupStatus } from '../../context/TutorContext';
 
-// What the tutor may be doing before its first words, in order. It moves on
-// every few seconds and stays on the last entry.
-const STATUS_KEYS = [
-  'tutor.status.lesson',
-  'tutor.status.code',
-  'tutor.status.search',
-  'tutor.status.think',
-  'tutor.status.write',
-] as const;
-
-const STATUS_STEP_MS = 3000;
-
-export function TutorStatus() {
+// What the tutor is doing before its first words: the lookup the server last
+// named, or before any, reading the student's work in a lesson chat and
+// thinking in a general one
+export function TutorStatus({
+  lookup,
+  lesson,
+}: {
+  lookup: TutorLookupStatus | null;
+  lesson: boolean;
+}) {
   const { t } = useTranslation();
-  const [step, setStep] = useState(0);
-
-  useEffect(() => {
-    if (step >= STATUS_KEYS.length - 1) return;
-    const timer = setTimeout(() => setStep((s) => s + 1), STATUS_STEP_MS);
-    return () => clearTimeout(timer);
-  }, [step]);
+  let text: string;
+  if (!lookup) text = t(lesson ? 'tutor.status.work' : 'tutor.status.think');
+  else if (lookup.lookup === 'read' && lookup.title) {
+    text = t('tutor.status.readTitle', { title: lookup.title });
+  } else text = t(`tutor.status.${lookup.lookup}`);
 
   return (
     <p role="status" className="text-[13px]">
-      <span className="animate-glimmer">{t(STATUS_KEYS[step])}</span>
+      <span className="animate-glimmer">{text}</span>
     </p>
   );
 }

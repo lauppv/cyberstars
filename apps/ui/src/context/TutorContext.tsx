@@ -17,15 +17,24 @@ import type {
   TutorConversationSummary,
   TutorLessonRef,
   TutorLessonWork,
+  TutorLookup,
   TutorMessage,
 } from '@cyberstars/shared/tutor';
 import { USAGE_LIMIT_ERROR } from '@cyberstars/shared/usage';
 import * as tutorService from '../services/tutorService';
 import { ApiClientError } from '../services/apiClient';
 
-// The answer being written: the question it answers and its words so far.
+// What the tutor last looked up before its first words, as the server named it.
+export interface TutorLookupStatus {
+  lookup: TutorLookup;
+  title?: string;
+}
+
+// The answer being written: the question it answers, the lookup it is on
+// until its first words, and its words so far.
 interface PendingAnswer {
   question: string;
+  lookup: TutorLookupStatus | null;
   answer: string;
 }
 
@@ -315,7 +324,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
       if (!question || !key || !conversation || controllers.current.has(key)) return;
       const abort = new AbortController();
       controllers.current.set(key, abort);
-      update(key, () => ({ failure: null, pending: { question, answer: '' } }));
+      update(key, () => ({ failure: null, pending: { question, lookup: null, answer: '' } }));
 
       let words = '';
       let finish: TutorAnswerEnd | null = null;
@@ -341,14 +350,19 @@ export function TutorProvider({ children }: { children: ReactNode }) {
             ...(readWork && { work: readWork() }),
           },
           (event) => {
-            if (event.type === 'text') {
+            if (event.type === 'status') {
+              const lookup = { lookup: event.lookup, title: event.title };
+              update(key, () => ({ pending: { question, lookup, answer: words } }));
+            } else if (event.type === 'text') {
               words += event.text;
-              update(key, () => ({ pending: { question, answer: words } }));
+              update(key, () => ({ pending: { question, lookup: null, answer: words } }));
             } else if (event.type === 'done') {
               finish = event.finish;
               savedAs(event.conversationId);
             } else {
-              finish = 'interrupted';
+              // Before any words nothing was saved, so it is a failure like
+              // one before the stream, and the question can simply go again.
+              finish = words ? 'interrupted' : null;
               savedAs(event.conversationId);
             }
           },

@@ -330,7 +330,7 @@ export function TutorPanel() {
               {pending.answer ? (
                 <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
               ) : (
-                <TutorStatus />
+                <TutorStatus lookup={pending.lookup} lesson={!!tutor.lesson} />
               )}
             </TutorTurn>
           </>

@@ -1256,11 +1256,12 @@
     "limitReached": "Ți-ai folosit mesajele deocamdată. Poți vorbi din nou cu tutorele la {{time}}.",
     "closeNotice": "Închide notificarea",
     "status": {
-      "lesson": "Citesc lecția",
-      "code": "Mă uit la codul tău",
-      "search": "Caut prin lecții",
+      "work": "Mă uit la ce ai lucrat",
       "think": "Mă gândesc",
-      "write": "Scriu un răspuns"
+      "search": "Caut prin lecții",
+      "read": "Citesc o lecție",
+      "readTitle": "Citesc „{{title}}”",
+      "pages": "Mă uit prin aplicație"
     }
   }
 }
