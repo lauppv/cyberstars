@@ -239,6 +239,7 @@ describe('askTutor', () => {
       expect(system).toContain('Answer only what the message asks');
       expect(system).toContain('Greet only when the student greets you');
       expect(system).toContain('not how you found it');
+      expect(system).toContain('Start with a nudge');
     }
     for (const system of [ro, lessonRo]) {
       expect(system).toContain('nici măcar o singură linie din el');
@@ -250,6 +251,7 @@ describe('askTutor', () => {
       expect(system).toContain('Răspunde doar la ce cere mesajul');
       expect(system).toContain('Salută doar când te salută studentul');
       expect(system).toContain('nu cum l-ai găsit');
+      expect(system).toContain('Începe cu un ghiont');
     }
     expect(lessonEn).toContain('it is not a request of its own');
     expect(lessonRo).toContain('nu e o cerere în sine');
