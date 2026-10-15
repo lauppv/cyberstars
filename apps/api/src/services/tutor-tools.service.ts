@@ -194,7 +194,11 @@ const PAGES: (PageInfo & { feature?: FeatureKey; adminOnly?: boolean })[] = [
     name: 'Settings',
     about: 'profile details, password, language and privacy',
   },
-  { link: '/usage', name: 'Usage', about: 'how many Show Solution reveals are left' },
+  {
+    link: '/usage',
+    name: 'Usage',
+    about: 'how many Show Solution reveals and tutor messages are left',
+  },
   { link: '/rules', name: 'Rules', about: 'community rules and how the app uses data' },
   { link: '/support', name: 'Support', about: 'open a ticket to get help from the team' },
   { link: '/admin', name: 'Admin', about: 'platform statistics', adminOnly: true },
