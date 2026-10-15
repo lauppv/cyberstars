@@ -513,14 +513,16 @@ model VisitTotal {
 // One guest's day on the site, for the list of visits on the admin page. visitor
 // is the same hash as page_visits, so a guest's pages and clicks that day land
 // on one visit; the roll-up blanks it once the day is over, which leaves the
-// visit leading back to no one. source and lang come from its first page. Kept
-// for VISIT_KEEP_DAYS, then deleted with its steps.
+// visit leading back to no one. source, lang and startedAt come from its first
+// page; visits from before startedAt was kept have none. Kept for
+// VISIT_KEEP_DAYS, then deleted with its steps.
 model GuestVisit {
-  id      Int      @id @default(autoincrement())
-  day     DateTime @db.Date
-  visitor String?  @db.Char(64)
-  source  String?  @db.VarChar(100)
-  lang    String   @db.VarChar(2)
+  id        Int       @id @default(autoincrement())
+  day       DateTime  @db.Date
+  visitor   String?   @db.Char(64)
+  source    String?   @db.VarChar(100)
+  lang      String    @db.VarChar(2)
+  startedAt DateTime? @default(now()) @map("started_at")
 
   steps VisitStep[]
 

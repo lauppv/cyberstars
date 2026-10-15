@@ -276,7 +276,7 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 | ------ | -------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | GET    | `/api/admin/stats`         | Admin | Platform stats (users/progress/forum/support, cached ~5min, + live code-exec metrics); `?fresh=1` bypasses the cache                   |
 | GET    | `/api/admin/visits`        | Admin | Visitors and new accounts a day, top pages, sources, guest/signed-in, en/ro and the most pressed buttons over `?range=30` or `90` days |
-| GET    | `/api/admin/visits/guests` | Admin | Guest visits with their steps, newest first, 20 a page; `?range=30\|90`, `?source=`, `?before=<id>` for the next page                  |
+| GET    | `/api/admin/visits/guests` | Admin | Guest visits with their start time and steps, newest first, 20 a page; `?range=30\|90`, `?source=`, `?before=<id>` for the next page   |
 
 ### Visits
 
@@ -323,7 +323,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 - **PageVisit / VisitSalt / VisitTotal**: today's page views keyed by a salted daily hash, the day's salt, and the daily totals they become once the day is over
 - **TutorMessage**: a student's tutor messages and answers, one conversation per lesson or challenge plus a general one (no lesson), each answer with how it ended; the newest 200 per conversation are kept
 - **UsageWindow**: what a student has used of each capped feature (Show Solution, the tutor session) in its current window, one row per student and feature
-- **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id, with no time; the hash goes when the day ends, the visit after 90 days
+- **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id; only the visit keeps a time, that of its first page; the hash goes when the day ends, the visit after 90 days
 
 ### Key relationships
 

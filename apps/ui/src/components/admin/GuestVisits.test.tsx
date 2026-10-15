@@ -7,9 +7,15 @@ vi.mock('../../services/visitsService', () => ({ getGuestVisits }));
 
 const { GuestVisits } = await import('./GuestVisits');
 
-const visit = (id: number, steps: GuestVisitDTO['steps'], source: string | null = 'reddit') => ({
+const visit = (
+  id: number,
+  steps: GuestVisitDTO['steps'],
+  source: string | null = 'reddit',
+  startedAt: string | null = '2026-11-30T12:05:00Z',
+) => ({
   id,
   day: '2026-11-30',
+  startedAt,
   source,
   lang: 'en',
   steps,
@@ -33,7 +39,7 @@ function show(reload = 0) {
 beforeEach(() => getGuestVisits.mockReset());
 
 describe('GuestVisits', () => {
-  it('shows each visit with where it came from and its steps in order, repeats folded', async () => {
+  it('shows each visit with when it started, where it came from and its steps in order, repeats folded', async () => {
     getGuestVisits.mockResolvedValue({
       visits: [
         visit(9, [
@@ -51,7 +57,7 @@ describe('GuestVisits', () => {
       next: null,
     });
     show();
-    const item = (await screen.findByText('2026-11-30 · Reddit · en')).closest('li')!;
+    const item = (await screen.findByText('2026-11-30 · 14:05 · Reddit · en')).closest('li')!;
     const steps = within(item)
       .getAllByRole('listitem')
       .map((li) => li.textContent?.replace('→', '').trim());
@@ -68,7 +74,16 @@ describe('GuestVisits', () => {
   it('leaves the source out of a visit that started inside the app', async () => {
     getGuestVisits.mockResolvedValue({ visits: [visit(1, [page('/')], null)], next: null });
     show();
-    expect(await screen.findByText('2026-11-30 · en')).toBeInTheDocument();
+    expect(await screen.findByText('2026-11-30 · 14:05 · en')).toBeInTheDocument();
+  });
+
+  it('shows no time on a visit from before start times were kept', async () => {
+    getGuestVisits.mockResolvedValue({
+      visits: [visit(1, [page('/')], 'reddit', null)],
+      next: null,
+    });
+    show();
+    expect(await screen.findByText('2026-11-30 · Reddit · en')).toBeInTheDocument();
   });
 
   it('filters by source and loads the next page under the last', async () => {

@@ -241,6 +241,7 @@ export async function guestVisits(
     visits: page.map((row) => ({
       id: row.id,
       day: row.day.toISOString().slice(0, 10),
+      startedAt: row.startedAt?.toISOString() ?? null,
       source: row.source,
       lang: row.lang,
       steps: row.steps as VisitStep[],

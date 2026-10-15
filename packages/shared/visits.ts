@@ -59,6 +59,8 @@ export interface AdminVisitsDTO {
 export interface GuestVisitDTO {
   id: number;
   day: string; // YYYY-MM-DD, Romania's time
+  // ISO time of the first page; null on visits from before it was kept
+  startedAt: string | null;
   source: string | null;
   lang: string;
   steps: VisitStep[];

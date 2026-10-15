@@ -321,6 +321,7 @@ describe('guestVisits', () => {
   const row = (id: number) => ({
     id,
     day: new Date('2026-11-30T00:00:00Z'),
+    startedAt: new Date('2026-11-30T09:41:00Z') as Date | null,
     source: 'reddit',
     lang: 'en',
     steps: [{ kind: 'page', target: '/' }],
@@ -345,11 +346,18 @@ describe('guestVisits', () => {
     expect(dto.visits[0]).toEqual({
       id: 100,
       day: '2026-11-30',
+      startedAt: '2026-11-30T09:41:00.000Z',
       source: 'reddit',
       lang: 'en',
       steps: [{ kind: 'page', target: '/' }],
     });
     expect(dto.next).toBe(81);
+  });
+
+  it('gives no start time for a visit from before it was kept', async () => {
+    mockRepo.guestVisitsSince.mockResolvedValue([{ ...row(5), startedAt: null }]);
+    const dto = await service.guestVisits(90);
+    expect(dto.visits[0].startedAt).toBeNull();
   });
 
   it('has no next page after the last one', async () => {
