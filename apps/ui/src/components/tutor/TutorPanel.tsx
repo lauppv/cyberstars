@@ -54,6 +54,7 @@ function Answer({
     <div className="flex flex-col gap-1">
       <TutorAnswer text={message.text} onInAppLink={onInAppLink} />
       {message.finish === 'cut' && <Note>{t('tutor.cut')}</Note>}
+      {message.finish === 'blocked' && <Note>{t('tutor.blockedMidway')}</Note>}
     </div>
   );
 }

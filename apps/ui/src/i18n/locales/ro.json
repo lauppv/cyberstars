@@ -1233,6 +1233,7 @@
     "loadFailed": "Mesajele anterioare nu s-au putut încărca. Închide panoul și deschide-l din nou ca să reîncerci.",
     "cut": "Răspunsul a fost tăiat.",
     "blocked": "Tutorul nu te poate ajuta cu asta. Încearcă să întrebi altfel.",
+    "blockedMidway": "Tutorul a oprit răspunsul aici. Încearcă să întrebi altfel.",
     "errorFailed": "Tutorul nu a putut răspunde acum.",
     "errorBusy": "Prea multe mesaje într-un timp scurt. Așteaptă un minut, apoi încearcă din nou.",
     "errorLimit": "Netrimis: ți-ai folosit mesajele deocamdată.",

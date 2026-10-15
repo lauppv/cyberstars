@@ -238,6 +238,28 @@ describe('TutorPanel', () => {
     expect(screen.getAllByText(/can't help with this one/)).toHaveLength(2);
   });
 
+  it('says why an answer blocked after some words stopped, live and saved', async () => {
+    h.getGeneralConversation.mockResolvedValue({
+      messages: [message(2, 'tutor', 'Earlier words', 'blocked'), message(1, 'student', 'Earlier')],
+      hasMore: false,
+    });
+    renderTutor();
+    await openPanel();
+    expect(await screen.findByText('Earlier words')).toBeInTheDocument();
+    expect(
+      screen.getAllByText('The tutor stopped this answer here. Try asking another way.'),
+    ).toHaveLength(1);
+
+    const reply = answer();
+    type('Go on');
+    reply.emit({ type: 'text', text: 'Some words' });
+    reply.emit({ type: 'done', finish: 'blocked' });
+    await reply.end();
+    expect(screen.getByText('Some words')).toBeInTheDocument();
+    expect(screen.getAllByText(/stopped this answer here/)).toHaveLength(2);
+    expect(screen.queryByText(/can't help with this one/)).toBeNull();
+  });
+
   it('offers the message again when the tutor fails before any words', async () => {
     renderTutor();
     await openPanel();
