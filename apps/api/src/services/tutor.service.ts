@@ -19,6 +19,16 @@ type Lang = 'en' | 'ro';
 // answer with what it has, so one question can't loop.
 const MAX_TOOL_ROUNDS = 3;
 
+// Letters of a script the app doesn't speak: English and Romanian are written
+// in Latin letters, and Greek ones stay for a π or a λ in an explanation.
+const FOREIGN_LETTER =
+  /(?![\p{Script=Latin}\p{Script=Greek}\p{Script=Common}\p{Script=Inherited}])\p{L}/u;
+const FOREIGN_LETTERS = new RegExp(FOREIGN_LETTER.source, 'gu');
+
+// A stray word in another script (the model now and then slips one in) makes
+// the answer start again this many times; the last try takes it out instead.
+const MAX_RESTARTS = 2;
+
 // Gemini's reasons for stopping that mean it would not write the answer.
 const BLOCKED = new Set(['SAFETY', 'RECITATION', 'BLOCKLIST', 'PROHIBITED_CONTENT', 'SPII']);
 
@@ -477,7 +487,7 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
   const message: GeminiPart[] = opts.lesson
     ? [{ text: workTurn(opts.lesson, lang) }, { text: opts.message }]
     : [{ text: opts.message }];
-  const contents: GeminiContent[] = [
+  const conversation: GeminiContent[] = [
     ...opts.history.map(
       (past): GeminiContent => ({
         role: past.role === 'student' ? 'user' : 'model',
@@ -486,6 +496,29 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
     ),
     { role: 'user', parts: message },
   ];
+  // The student's own words in another script let the answer have them too.
+  const strict = !message.some((part) => FOREIGN_LETTER.test(part.text ?? ''));
+
+  for (let restart = 0; ; restart++) {
+    const foreign = !strict ? 'allow' : restart < MAX_RESTARTS ? 'restart' : 'strip';
+    const ended = yield* tryAnswer(opts, system, [...conversation], lang, foreign);
+    if (ended !== 'restart') return;
+    // The words so far are void, and the student pays only for the next try's.
+    opts.written.tokens = 0;
+    yield { type: 'restart' };
+  }
+}
+
+// One try at the answer: rounds of tool calls, then its words, ending with
+// `done`. A word in another script makes it give up and return 'restart', or
+// on the last try lose its letters, unless the student wrote that script too.
+async function* tryAnswer(
+  opts: AskOptions,
+  system: string,
+  contents: GeminiContent[],
+  lang: Lang,
+  foreign: 'allow' | 'restart' | 'strip',
+): AsyncGenerator<TutorStreamEvent, 'restart' | undefined> {
   let started = false;
 
   for (let round = 0; ; round++) {
@@ -512,6 +545,12 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
         finishReason = chunk.finishReason ?? finishReason;
         blockReason = chunk.blockReason ?? blockReason;
         let text = chunk.parts.map((p) => p.text ?? '').join('');
+        if (foreign !== 'allow' && FOREIGN_LETTER.test(text)) {
+          console.warn('[tutor] a word in another script:', JSON.stringify(text));
+          // Leaving the loop cancels Gemini's stream.
+          if (foreign === 'restart') return 'restart';
+          text = text.replace(FOREIGN_LETTERS, '');
+        }
         if (!started) text = text.trimStart();
         roundTokens = chunk.outputTokens ?? roundTokens;
         if (text) roundWords = true;
