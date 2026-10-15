@@ -211,6 +211,26 @@ describe('chat', () => {
     expect(mockTutor.askTutor.mock.calls[1][0].lesson.verdict).toBeNull();
   });
 
+  it("passes on the checks of a Linux lesson's last Run Tests", async () => {
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
+    const lesson = { courseKey: 'linux', lessonSlug: 'chmod-numeric' };
+    const checks = [{ passed: false, text: 'notes.txt can be read' }];
+
+    await chat(
+      mockReq({ lesson, work: { code: '', runOutput: '$ ls', checks } }),
+      mockRes() as unknown as Response,
+      vi.fn(),
+    );
+
+    expect(mockTutor.askTutor.mock.calls[0][0].lesson).toEqual({
+      ...lesson,
+      code: '',
+      runOutput: '$ ls',
+      verdict: null,
+      checks,
+    });
+  });
+
   it('sends no lesson work in the general conversation', async () => {
     mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
 

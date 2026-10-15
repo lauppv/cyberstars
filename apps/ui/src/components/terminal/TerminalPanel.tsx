@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Eye, RotateCcw } from 'lucide-react';
+import { BotMessageSquare, Eye, RotateCcw } from 'lucide-react';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
 import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 import { TerminalTestResults } from './TerminalTestResults';
@@ -21,6 +21,7 @@ interface Props {
   testResult?: TerminalTestResult | null;
   onCloseTests?: () => void;
   testsError?: string | null;
+  onAskTutor?: () => void;
 }
 
 export function TerminalPanel({
@@ -39,6 +40,7 @@ export function TerminalPanel({
   testResult,
   onCloseTests,
   testsError,
+  onAskTutor,
 }: Props) {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
@@ -156,6 +158,24 @@ export function TerminalPanel({
                 role="menu"
                 className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
               >
+                {onAskTutor && (
+                  <button
+                    role="menuitem"
+                    data-track="ask-tutor"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onAskTutor();
+                    }}
+                    className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                  >
+                    <BotMessageSquare
+                      size={16}
+                      strokeWidth={1.75}
+                      className="text-[var(--text3)]"
+                    />
+                    {t('lesson.askTutor')}
+                  </button>
+                )}
                 {hasSolution && onShowSolution && (
                   <button
                     role="menuitem"

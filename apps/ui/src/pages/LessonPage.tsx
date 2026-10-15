@@ -246,15 +246,33 @@ export function LessonPage() {
 
   // The lesson chat sends the work as it is when a message goes: the code, the
   // end of the last run's output and the verdict on screen, which the server
-  // reads from the stored attempt.
+  // reads from the stored attempt. A Linux lesson has no code: it sends the end
+  // of the terminal session and the checks of its last Run Tests instead.
   const tutorWork = useRef<TutorLessonWork>({ code: '', runOutput: '' });
   useEffect(() => {
+    if (isTerminal) {
+      const session = terminal.lines
+        .filter((line) => line.type !== 'system')
+        .map((line) => (line.type === 'input' ? `$ ${line.text}` : line.text))
+        .join('\n');
+      tutorWork.current = {
+        code: '',
+        runOutput: session.slice(-TUTOR_RUN_OUTPUT_MAX_LENGTH),
+        ...(terminalTestResult && {
+          checks: terminalTestResult.checks.map((check) => ({
+            passed: check.passed,
+            text: t(check.messageKey, check.params),
+          })),
+        }),
+      };
+      return;
+    }
     tutorWork.current = {
       code: userCode,
       runOutput: output.slice(-TUTOR_RUN_OUTPUT_MAX_LENGTH),
       ...(testResults?.submission && { submissionId: testResults.submission.id }),
     };
-  }, [userCode, output, testResults]);
+  }, [isTerminal, terminal.lines, terminalTestResult, t, userCode, output, testResults]);
 
   // Leaving the lesson closes its conversation.
   const leaveTutorLesson = tutor?.leaveLesson;
@@ -646,6 +664,15 @@ export function LessonPage() {
                 testResult={terminalTestResult}
                 onCloseTests={() => setTerminalTestResult(null)}
                 testsError={terminalTestsError}
+                onAskTutor={
+                  tutor?.enabled
+                    ? () =>
+                        tutor.openLesson(
+                          { courseKey: category, lessonSlug: lesson, title },
+                          () => tutorWork.current,
+                        )
+                    : undefined
+                }
               />
             </div>
           ) : (

@@ -19,6 +19,10 @@ const tutorWorkSchema = z.object({
   code: z.string().max(50_000),
   runOutput: z.string().max(TUTOR_RUN_OUTPUT_MAX_LENGTH),
   submissionId: z.number().int().positive().max(2_147_483_647).optional(),
+  checks: z
+    .array(z.object({ passed: z.boolean(), text: z.string().max(300) }))
+    .max(30)
+    .optional(),
 });
 
 export const tutorChatSchema = z

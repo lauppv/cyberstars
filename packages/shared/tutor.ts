@@ -29,14 +29,24 @@ export interface TutorLessonRef {
 // The end of the last Run's output that goes with a lesson message.
 export const TUTOR_RUN_OUTPUT_MAX_LENGTH = 4000;
 
+// A check of the last Run Tests on a Linux lesson, as the student reads it.
+export interface TutorTerminalCheck {
+  passed: boolean;
+  text: string;
+}
+
 // The student's work on the lesson as it is when they send a message. The
 // verdict is only named: the server reads the stored attempt itself.
 export interface TutorLessonWork {
   code: string;
   // The end of the output of their last Run, empty when they haven't run it.
+  // On a Linux lesson, which has no code, the end of the terminal session: the
+  // commands they typed and what each printed.
   runOutput: string;
   // The judge attempt whose verdict is on screen, if any.
   submissionId?: number;
+  // On a Linux lesson: the checks of the last Run Tests on screen, if any.
+  checks?: TutorTerminalCheck[];
 }
 
 export interface TutorMessage {
