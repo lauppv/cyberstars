@@ -25,6 +25,7 @@ vi.mock('../context/UsageContext', () => ({
 }));
 
 import { UsagePage } from './UsagePage';
+import { PREVIEW_FEATURES } from '@cyberstars/shared/features';
 
 function renderPage() {
   return render(
@@ -77,12 +78,24 @@ describe('UsagePage', () => {
     expect(screen.getByText('· 5 hours', { exact: false })).toBeInTheDocument();
   });
 
-  it('leaves the tutor out for a student who cannot open it yet', () => {
+  it('shows the tutor session to every signed-in student on prod', () => {
+    vi.stubEnv('PROD', true);
+    mockUsage = { loading: false, summary };
+    renderPage();
+    expect(screen.getByText('Tutor messages')).toBeInTheDocument();
+    vi.unstubAllEnvs();
+  });
+
+  it('leaves the tutor out for a student who cannot open it', () => {
+    // Force the tutor back into preview: on prod only admins get it then
+    const original = PREVIEW_FEATURES.tutorChat;
+    PREVIEW_FEATURES.tutorChat = true;
     vi.stubEnv('PROD', true);
     mockUsage = { loading: false, summary };
     renderPage();
     expect(screen.queryByText('Tutor messages')).not.toBeInTheDocument();
     expect(screen.getByText('Show Solution')).toBeInTheDocument();
     vi.unstubAllEnvs();
+    PREVIEW_FEATURES.tutorChat = original;
   });
 });
