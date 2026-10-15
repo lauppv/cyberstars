@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BotMessageSquare, Eye, RotateCcw } from 'lucide-react';
+import { Eye, RotateCcw } from 'lucide-react';
 import type { TerminalLine } from '../../hooks/useTerminalSession';
 import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 import { TerminalTestResults } from './TerminalTestResults';
+import { TutorFace } from '../tutor/TutorFace';
 
 interface Props {
   lines: TerminalLine[];
@@ -168,11 +169,7 @@ export function TerminalPanel({
                     }}
                     className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                   >
-                    <BotMessageSquare
-                      size={16}
-                      strokeWidth={1.75}
-                      className="text-[var(--text3)]"
-                    />
+                    <TutorFace size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
                     {t('lesson.askTutor')}
                   </button>
                 )}

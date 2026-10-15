@@ -367,6 +367,27 @@ describe('chat', () => {
     expect(saved()[0].answer).toEqual({ text: 'Recursion is', finish: 'interrupted' });
   });
 
+  it('ends the stream with an error event, saving and charging nothing, when it breaks after a lookup', async () => {
+    mockTutor.askTutor.mockReturnValue(
+      failing(new AppError(502, 'The tutor could not answer right now, please try again'), {
+        type: 'status',
+        lookup: 'search',
+      }),
+    );
+    const next = vi.fn();
+    const res = mockRes();
+
+    await chat(mockReq(), res as unknown as Response, next);
+
+    expect(next).not.toHaveBeenCalled();
+    expect(written(res)).toEqual([
+      { type: 'status', lookup: 'search' },
+      { type: 'error', message: 'The tutor could not answer right now, please try again' },
+    ]);
+    expect(mockConversations.saveExchange).not.toHaveBeenCalled();
+    expect(mockUsage.release).toHaveBeenCalledWith(held, 2);
+  });
+
   it('keeps an unexpected error message to itself', async () => {
     mockTutor.askTutor.mockReturnValue(
       failing(new Error('socket hang up at 10.0.0.3'), { type: 'text', text: 'Hi' }),

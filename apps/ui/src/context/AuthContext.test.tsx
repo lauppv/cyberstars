@@ -135,7 +135,8 @@ describe('the signed-in hint', () => {
   it('is set once a student is signed in', async () => {
     renderProvider();
     await waitFor(() => expect(state()).toBe('in:Ada'));
-    expect(wasSignedIn()).toBe(true);
+    // Written by an effect after that render, which a slow run can check before.
+    await waitFor(() => expect(wasSignedIn()).toBe(true));
   });
 
   it('is left alone while sign-in is still being checked', () => {

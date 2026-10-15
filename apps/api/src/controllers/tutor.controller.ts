@@ -15,7 +15,7 @@ import { isAdmin } from '@cyberstars/shared/auth';
 import { tutorConversationParamsSchema, tutorPageQuerySchema } from '../schemas/tutor.schema.js';
 
 // Each event goes out as soon as it is written. The headers wait for the first
-// one, so a failure before any words is still a plain error response.
+// one, so a failure before any event is still a plain error response.
 function send(res: Response, event: TutorStreamEvent) {
   if (!res.headersSent) {
     res.set({

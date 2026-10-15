@@ -1232,6 +1232,17 @@
     "intro": "Întreabă despre o lecție, o eroare sau o idee. Tutorul te ajută să ajungi singur la soluție, fără să ți-o dea.",
     "introLesson": "Întreabă despre lecția aceasta. Tutorul vede codul tău, finalul ultimei rulări și ultimul rezultat al testelor și te ajută să ajungi singur la soluție.",
     "emptyTitle": "Cu ce te ajut?",
+    "greeting": {
+      "morning": "Bună dimineața, {{name}}. Cu ce te ajut?",
+      "day": "Salut, {{name}}. Cu ce te ajut?",
+      "evening": "Bună seara, {{name}}. Cu ce te ajut?",
+      "night": "Lucrezi până târziu, {{name}}. Cu ce te ajut?"
+    },
+    "cheer": {
+      "done": "Toate testele trec. Bravo!",
+      "alone": "Merge! Ai ajuns singur acolo.",
+      "yours": "Rezolvat! Ideea asta e acum a ta."
+    },
     "enterHint": "Enter trimite, Shift+Enter începe un rând nou",
     "start": {
       "task": "Explică-mi cerința",
@@ -1239,7 +1250,23 @@
       "nudge": "Dă-mi un ghiont",
       "course": "Cu ce curs să încep?",
       "idea": "Ce este o variabilă?",
-      "help": "La ce mă poți ajuta?"
+      "help": "La ce mă poți ajuta?",
+      "where": "De unde încep?",
+      "failedTest": "De ce pică testul {{n}}?",
+      "simpler": "Se putea mai simplu?",
+      "why": "De ce merge asta?",
+      "elsewhere": "Unde se mai folosește ideea asta?",
+      "loop": "Cum funcționează o buclă for?",
+      "function": "De ce scriem funcții?",
+      "error": "Cum citesc un mesaj de eroare?",
+      "languages": "Care e diferența dintre Python și C?",
+      "challenge": "Ce problemă să încerc prima?",
+      "recursion": "Ce este recursivitatea?",
+      "list": "La ce folosește o listă?",
+      "linux": "De ce să învăț terminalul Linux?",
+      "stuck": "Ce fac când m-am blocat la o problemă?",
+      "debug": "Cum găsesc o greșeală în codul meu?",
+      "better": "Cum devin mai bun la programare?"
     },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",
@@ -1256,11 +1283,12 @@
     "limitReached": "Ți-ai folosit mesajele deocamdată. Poți vorbi din nou cu tutorele la {{time}}.",
     "closeNotice": "Închide notificarea",
     "status": {
-      "lesson": "Citesc lecția",
-      "code": "Mă uit la codul tău",
-      "search": "Caut prin lecții",
+      "work": "Mă uit la ce ai lucrat",
       "think": "Mă gândesc",
-      "write": "Scriu un răspuns"
+      "search": "Caut prin lecții",
+      "read": "Citesc o lecție",
+      "readTitle": "Citesc „{{title}}”",
+      "pages": "Mă uit prin aplicație"
     }
   }
 }

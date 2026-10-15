@@ -17,15 +17,24 @@ import type {
   TutorConversationSummary,
   TutorLessonRef,
   TutorLessonWork,
+  TutorLookup,
   TutorMessage,
 } from '@cyberstars/shared/tutor';
 import { USAGE_LIMIT_ERROR } from '@cyberstars/shared/usage';
 import * as tutorService from '../services/tutorService';
 import { ApiClientError } from '../services/apiClient';
 
-// The answer being written: the question it answers and its words so far.
+// What the tutor last looked up before its first words, as the server named it.
+export interface TutorLookupStatus {
+  lookup: TutorLookup;
+  title?: string;
+}
+
+// The answer being written: the question it answers, the lookup it is on
+// until its first words, and its words so far.
 interface PendingAnswer {
   question: string;
+  lookup: TutorLookupStatus | null;
   answer: string;
 }
 
@@ -44,6 +53,15 @@ export interface TutorLesson extends TutorLessonRef {
   title: string;
 }
 
+// Where the student stands on a lesson, as its page tells it: nothing written
+// yet, work not tested, a failed Run Tests (at the test it stopped on, when
+// there is one) or a passed one. A lesson chat's first suggestions follow it.
+export type TutorLessonStage =
+  | { stage: 'empty' }
+  | { stage: 'working' }
+  | { stage: 'failing'; test?: number }
+  | { stage: 'passed' };
+
 // One conversation as the panel shows it: a saved one, or a new one that gets
 // its id once its first exchange is saved.
 interface Conversation {
@@ -57,9 +75,49 @@ interface Conversation {
   loadFailed: boolean;
   pending: PendingAnswer | null;
   failure: TutorFailure | null;
+  // The i18n keys of the questions an empty general conversation offers.
+  starters: string[];
 }
 
-function blank(lesson: TutorLesson | null, id: number | null = null): Conversation {
+// What a general conversation can start with. Each new one offers three of
+// them at random, one that fits the page first when there is one.
+const GENERAL_STARTERS = [
+  'course',
+  'idea',
+  'help',
+  'loop',
+  'function',
+  'error',
+  'languages',
+  'challenge',
+  'recursion',
+  'list',
+  'linux',
+  'stuck',
+  'debug',
+  'better',
+];
+const PAGE_STARTERS: [path: string, starter: string][] = [
+  ['/algorithms', 'challenge'],
+  ['/courses', 'course'],
+];
+
+// What the tutor says when a lesson's tests pass, one of them at random.
+const CHEERS = ['tutor.cheer.done', 'tutor.cheer.alone', 'tutor.cheer.yours'];
+
+function pickStarters(pathname: string): string[] {
+  const fits = PAGE_STARTERS.find(([path]) => pathname.startsWith(path))?.[1];
+  const pool = GENERAL_STARTERS.filter((starter) => starter !== fits);
+  const picked = fits ? [fits] : [];
+  while (picked.length < 3) picked.push(...pool.splice(Math.floor(Math.random() * pool.length), 1));
+  return picked.map((starter) => `tutor.start.${starter}`);
+}
+
+function blank(
+  lesson: TutorLesson | null,
+  id: number | null = null,
+  starters: string[] = [],
+): Conversation {
   return {
     id,
     lesson,
@@ -70,6 +128,7 @@ function blank(lesson: TutorLesson | null, id: number | null = null): Conversati
     loadFailed: false,
     pending: null,
     failure: null,
+    starters,
   };
 }
 
@@ -97,6 +156,12 @@ interface TutorContextValue {
   // A lesson page says where its work is read while it is open. The function
   // it gets back says it has gone, which closes the panel on its conversation.
   enterLesson: (lesson: TutorLessonRef, readWork: () => TutorLessonWork) => () => void;
+  // A lesson page says where the student stands on it, whenever that changes.
+  reportStage: (lesson: TutorLessonRef, stage: TutorLessonStage) => void;
+  // Where the student stands on the shown conversation's lesson, as last told.
+  stage: TutorLessonStage | null;
+  // The i18n key of a cheer for that lesson's tests passing, while it lasts.
+  cheer: string | null;
   // A new conversation about what the shown one is about.
   startNew: () => void;
   // The student's saved conversations, newest first; null until read.
@@ -112,6 +177,8 @@ interface TutorContextValue {
   loadFailed: boolean;
   pending: PendingAnswer | null;
   failure: TutorFailure | null;
+  // What an empty general conversation offers to start with, as i18n keys.
+  starters: string[];
   send: (text: string) => void;
   retry: () => void;
   loadEarlier: () => Promise<void>;
@@ -166,6 +233,10 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const [history, setHistory] = useState<TutorConversationSummary[] | null>(null);
   const [historyFailed, setHistoryFailed] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(readHistoryOpen);
+  // Where the student stands on each lesson whose page told it, and the cheer
+  // each lesson whose tests just passed gets, by lesson.
+  const [stages, setStages] = useState<Record<string, TutorLessonStage>>({});
+  const [cheers, setCheers] = useState<Record<string, string>>({});
   // The handlers below run after renders the state hasn't caught up with yet,
   // so they read and write these alongside it.
   const all = useRef(conversations);
@@ -176,6 +247,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const localId = useRef(0);
   // The answer each conversation is waiting for.
   const controllers = useRef(new Map<string, AbortController>());
+  // The stages as last told, read when the next one comes.
+  const stagesNow = useRef<Record<string, TutorLessonStage>>({});
   // Where each open lesson page's work is read, by lesson.
   const works = useRef(new Map<string, () => TutorLessonWork>());
   // Bumped by every choice of what to show, so a lesson's conversation found
@@ -212,6 +285,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     setConversations({});
     setHistory(null);
     setHistoryFailed(false);
+    setStages({});
+    setCheers({});
   }
   // ...and stop the answers the previous one was waiting for.
   const currentUser = useRef(userId);
@@ -219,6 +294,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     currentUser.current = userId;
     all.current = {};
     shownRef.current = null;
+    stagesNow.current = {};
     const running = controllers.current;
     return () => {
       for (const c of running.values()) c.abort();
@@ -255,10 +331,10 @@ export function TutorProvider({ children }: { children: ReactNode }) {
         ([, c]) => untouched(c) && lessonKeyOf(c.lesson) === lessonKeyOf(lesson),
       );
       const key = reuse?.[0] ?? `new-${++fresh.current}`;
-      add(key, blank(lesson));
+      add(key, blank(lesson, null, lesson ? [] : pickStarters(pathname)));
       display(key, lesson);
     },
-    [add, display],
+    [add, display, pathname],
   );
 
   // Shows a saved conversation, reading its messages the first time.
@@ -307,6 +383,15 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  const dropCheer = useCallback((lessonKey: string) => {
+    setCheers((current) => {
+      if (!(lessonKey in current)) return current;
+      const rest = { ...current };
+      delete rest[lessonKey];
+      return rest;
+    });
+  }, []);
+
   const send = useCallback(
     (text: string) => {
       const question = text.trim();
@@ -315,7 +400,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
       if (!question || !key || !conversation || controllers.current.has(key)) return;
       const abort = new AbortController();
       controllers.current.set(key, abort);
-      update(key, () => ({ failure: null, pending: { question, answer: '' } }));
+      update(key, () => ({ failure: null, pending: { question, lookup: null, answer: '' } }));
+      if (conversation.lesson) dropCheer(lessonKeyOf(conversation.lesson)!);
 
       let words = '';
       let finish: TutorAnswerEnd | null = null;
@@ -341,14 +427,19 @@ export function TutorProvider({ children }: { children: ReactNode }) {
             ...(readWork && { work: readWork() }),
           },
           (event) => {
-            if (event.type === 'text') {
+            if (event.type === 'status') {
+              const lookup = { lookup: event.lookup, title: event.title };
+              update(key, () => ({ pending: { question, lookup, answer: words } }));
+            } else if (event.type === 'text') {
               words += event.text;
-              update(key, () => ({ pending: { question, answer: words } }));
+              update(key, () => ({ pending: { question, lookup: null, answer: words } }));
             } else if (event.type === 'done') {
               finish = event.finish;
               savedAs(event.conversationId);
             } else {
-              finish = 'interrupted';
+              // Before any words nothing was saved, so it is a failure like
+              // one before the stream, and the question can simply go again.
+              finish = words ? 'interrupted' : null;
               savedAs(event.conversationId);
             }
           },
@@ -387,7 +478,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
           if (finish) void loadHistory();
         });
     },
-    [i18n, loadHistory, local, pathname, refreshUsage, update],
+    [dropCheer, i18n, loadHistory, local, pathname, refreshUsage, update],
   );
 
   const enterLesson = useCallback((of: TutorLessonRef, readWork: () => TutorLessonWork) => {
@@ -403,6 +494,25 @@ export function TutorProvider({ children }: { children: ReactNode }) {
       });
     };
   }, []);
+
+  const reportStage = useCallback(
+    (of: TutorLessonRef, stage: TutorLessonStage) => {
+      const lessonKey = lessonKeyOf(of)!;
+      const before = stagesNow.current[lessonKey];
+      // Told again on every keystroke: only a change of stage renders anything.
+      if (JSON.stringify(before) === JSON.stringify(stage)) return;
+      stagesNow.current = { ...stagesNow.current, [lessonKey]: stage };
+      setStages(stagesNow.current);
+      // Tests passing after the page first told otherwise get a cheer. It lasts
+      // while they stay passed, until the student writes to the tutor again.
+      if (stage.stage !== 'passed') dropCheer(lessonKey);
+      else if (before && before.stage !== 'passed') {
+        const cheer = CHEERS[Math.floor(Math.random() * CHEERS.length)];
+        setCheers((current) => ({ ...current, [lessonKey]: cheer }));
+      }
+    },
+    [dropCheer],
+  );
 
   const openLesson = useCallback(
     (of: TutorLesson) => {
@@ -504,6 +614,9 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     close: () => setOpen(false),
     openLesson,
     enterLesson,
+    reportStage,
+    stage: (current?.lesson && stages[lessonKeyOf(current.lesson)!]) || null,
+    cheer: (current?.lesson && cheers[lessonKeyOf(current.lesson)!]) || null,
     startNew,
     history,
     historyFailed,
@@ -516,6 +629,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     loadFailed: current?.loadFailed ?? false,
     pending: current?.pending ?? null,
     failure: current?.failure ?? null,
+    starters: current?.starters ?? [],
     send,
     retry,
     loadEarlier,

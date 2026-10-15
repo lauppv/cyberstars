@@ -12,7 +12,7 @@ import type { UsageState } from '@cyberstars/shared/usage';
 import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
-  auth: { user: null as null | { id: number; role: string } },
+  auth: { user: null as null | { id: number; role: string; name?: string } },
   canAccess: vi.fn((..._a: unknown[]) => true),
   listConversations: vi.fn(),
   getConversation: vi.fn(),
@@ -47,7 +47,7 @@ vi.mock('../../services/tutorService', () => ({
   streamChat: h.streamChat,
 }));
 
-import { TutorProvider, useTutor } from '../../context/TutorContext';
+import { TutorProvider, useTutor, type TutorLessonStage } from '../../context/TutorContext';
 import { TutorPanel } from './TutorPanel';
 
 const USER = { id: 7, role: 'USER' };
@@ -112,6 +112,9 @@ const work = {
   current: { code: 'for i in x:', runOutput: '', submissionId: 3 as number | undefined },
 };
 
+// Where the student stands on the For lesson when its page tells the tutor.
+const standing = { current: { stage: 'empty' } as TutorLessonStage };
+
 // A lesson page: it says where its work is read while it is open.
 function OnLesson({ lesson }: { lesson: TutorLessonRef }) {
   const enter = useTutor()!.enterLesson;
@@ -132,6 +135,7 @@ function Shell() {
       <button onClick={() => tutor.openLesson(WHILE_LESSON)}>ask other lesson</button>
       <button onClick={() => setOnFor(false)}>leave lesson</button>
       <button onClick={() => setOnWhile(false)}>leave other lesson</button>
+      <button onClick={() => tutor.reportStage(FOR_REF, standing.current)}>report stage</button>
       {onFor && <OnLesson lesson={FOR_REF} />}
       {onWhile && <OnLesson lesson={WHILE_REF} />}
       {tutor.open && <TutorPanel />}
@@ -206,6 +210,7 @@ beforeEach(() => {
 afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
 });
 
 describe('TutorPanel', () => {
@@ -241,7 +246,32 @@ describe('TutorPanel', () => {
     expect(screen.queryByRole('complementary')).toBeNull();
   });
 
+  it('greets the student by their first name, as fits the hour', async () => {
+    h.auth = { user: { ...USER, name: 'Ada Lovelace' } };
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2026, 9, 15, 21, 0));
+    renderTutor();
+    await openPanel();
+    expect(await screen.findByText('Good evening, Ada. How can I help?')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    vi.setSystemTime(new Date(2026, 9, 16, 2, 30));
+    await openPanel();
+    expect(screen.getByText('Working late, Ada. How can I help?')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    vi.setSystemTime(new Date(2026, 9, 16, 9, 0));
+    await openPanel();
+    expect(screen.getByText('Good morning, Ada. How can I help?')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('toggle'));
+    vi.setSystemTime(new Date(2026, 9, 16, 14, 0));
+    await openPanel();
+    expect(screen.getByText('Hi, Ada. How can I help?')).toBeInTheDocument();
+  });
+
   it('offers questions to start with, and sends the one picked', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
     renderTutor();
     await openPanel();
     expect(await screen.findByText('How can I help?')).toBeInTheDocument();
@@ -249,6 +279,47 @@ describe('TutorPanel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'What is a variable?' }));
     expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'What is a variable?' });
     expect(screen.queryByRole('button', { name: 'What is a variable?' })).toBeNull();
+  });
+
+  it('picks other questions each time a general conversation opens, one fitting the page first', async () => {
+    const random = vi.spyOn(Math, 'random').mockReturnValue(0);
+    const starters = () =>
+      within(screen.getByText(/Ask about a lesson/).parentElement!)
+        .getAllByRole('button')
+        .map((b) => b.textContent);
+    renderTutor('/forum');
+    await openPanel();
+    await screen.findByText(/Ask about a lesson/);
+    expect(starters()).toEqual([
+      'Which course should I start with?',
+      'What is a variable?',
+      'What can you help me with?',
+    ]);
+
+    fireEvent.click(screen.getByText('toggle'));
+    random.mockReturnValue(0.99);
+    await openPanel();
+    expect(starters()).toEqual([
+      'How do I get better at programming?',
+      'How do I find a bug in my code?',
+      "What do I do when I'm stuck on a problem?",
+    ]);
+  });
+
+  it('starts with a question about the challenges on their page', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.99);
+    renderTutor('/algorithms/python');
+    await openPanel();
+    const greeting = (await screen.findByText(/Ask about a lesson/)).parentElement!;
+    expect(
+      within(greeting)
+        .getAllByRole('button')
+        .map((b) => b.textContent),
+    ).toEqual([
+      'Which challenge should I try first?',
+      'How do I get better at programming?',
+      'How do I find a bug in my code?',
+    ]);
   });
 
   it('says when the saved messages could not be read', async () => {
@@ -307,7 +378,6 @@ describe('TutorPanel', () => {
     renderTutor('/lesson/python/for');
     await openPanel();
     await screen.findByText(/Ask about a lesson/);
-    vi.useFakeTimers();
     const reply = answer();
     type('How do loops end?');
 
@@ -317,16 +387,24 @@ describe('TutorPanel', () => {
       lang: 'en',
     });
     expect(screen.getByRole('textbox')).toHaveValue('');
-    expect(screen.getByRole('status')).toHaveTextContent('Reading the lesson');
-    act(() => vi.advanceTimersByTime(3000));
-    expect(screen.getByRole('status')).toHaveTextContent('Looking at your code');
-    // Each entry starts its own clock once it shows; past the last one it stays.
-    for (let i = 0; i < 6; i++) act(() => vi.advanceTimersByTime(3000));
-    expect(screen.getByRole('status')).toHaveTextContent('Writing an answer');
+    expect(screen.getByRole('status')).toHaveTextContent('Thinking it through');
     expect(screen.getByRole('button', { name: 'Send' })).toBeDisabled();
+    // The header's face and the one beside the answer think until its words.
+    const thinking = () => document.querySelectorAll('.lucide-tutor-face-thinking').length;
+    expect(thinking()).toBe(2);
+    // Each lookup as the server names it, a lesson by its title.
+    reply.emit({ type: 'status', lookup: 'search' });
+    expect(screen.getByRole('status')).toHaveTextContent('Searching the lessons');
+    reply.emit({ type: 'status', lookup: 'pages' });
+    expect(screen.getByRole('status')).toHaveTextContent('Looking through the app');
+    reply.emit({ type: 'status', lookup: 'read' });
+    expect(screen.getByRole('status')).toHaveTextContent('Reading a lesson');
+    reply.emit({ type: 'status', lookup: 'read', title: 'For loops' });
+    expect(screen.getByRole('status')).toHaveTextContent('Reading “For loops”');
 
     reply.emit({ type: 'text', text: 'When the' });
     expect(screen.queryByRole('status')).toBeNull();
+    expect(thinking()).toBe(1);
     expect(screen.getByText('When the')).toBeInTheDocument();
     reply.emit({ type: 'text', text: ' condition is false.' });
     expect(screen.getByText('When the condition is false.')).toBeInTheDocument();
@@ -336,6 +414,7 @@ describe('TutorPanel', () => {
     expect(screen.getByText('How do loops end?')).toBeInTheDocument();
     expect(screen.getByText('When the condition is false.')).toBeInTheDocument();
     expect(screen.queryByText(/cut short/)).toBeNull();
+    expect(thinking()).toBe(0);
   });
 
   it('sends an address the endpoint would refuse as the home page', async () => {
@@ -412,6 +491,21 @@ describe('TutorPanel', () => {
     await second.end();
     expect(screen.queryByText(/couldn't answer/)).toBeNull();
     expect(screen.getAllByText('Hello?')).toHaveLength(1);
+  });
+
+  it('offers the message again when the stream ends in an error before any words', async () => {
+    renderTutor();
+    await openPanel();
+    const reply = answer();
+    type('Which lesson?');
+    reply.emit({ type: 'status', lookup: 'search' });
+    reply.emit({ type: 'error', message: 'The tutor could not answer right now' });
+    await reply.end();
+
+    expect(screen.getByText('Which lesson?')).toBeInTheDocument();
+    expect(screen.getByText("The tutor couldn't answer right now.")).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
+    expect(screen.queryByRole('status')).toBeNull();
   });
 
   it('asks to wait after too many messages', async () => {
@@ -710,6 +804,104 @@ describe('TutorPanel: a lesson conversation', () => {
     expect(screen.getByRole('button', { name: 'Give me a nudge' })).toBeInTheDocument();
   });
 
+  it('suggests what fits where the student stands on the lesson', async () => {
+    renderTutor('/lesson/python/for');
+    await openLesson();
+    await screen.findByText(/sees your code/);
+    // The buttons of the empty conversation's greeting.
+    const starters = () =>
+      within(screen.getByText(/sees your code/).parentElement!)
+        .getAllByRole('button')
+        .map((b) => b.textContent);
+    const tell = (stage: TutorLessonStage) => {
+      standing.current = stage;
+      fireEvent.click(screen.getByText('report stage'));
+    };
+    expect(starters()).toEqual([
+      'Explain the task to me',
+      "Why doesn't my code work?",
+      'Give me a nudge',
+    ]);
+    tell({ stage: 'empty' });
+    expect(starters()).toEqual(['Where do I start?', 'Explain the task to me', 'Give me a nudge']);
+    tell({ stage: 'failing' });
+    expect(starters()[0]).toBe("Why doesn't my code work?");
+    tell({ stage: 'passed' });
+    expect(starters()).toEqual([
+      'Could it be simpler?',
+      'Why does this work?',
+      'Where else is this idea used?',
+    ]);
+    tell({ stage: 'failing', test: 3 });
+    expect(starters()).toEqual([
+      'Why does test 3 fail?',
+      'Give me a nudge',
+      'Explain the task to me',
+    ]);
+
+    answer();
+    fireEvent.click(screen.getByRole('button', { name: 'Why does test 3 fail?' }));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'Why does test 3 fail?' });
+  });
+
+  it("cheers when the lesson's tests pass, until they fail again", async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
+    renderTutor('/lesson/python/for');
+    const tell = (stage: TutorLessonStage) => {
+      standing.current = stage;
+      fireEvent.click(screen.getByText('report stage'));
+    };
+    // Passed already when the page first told: nothing new to cheer.
+    tell({ stage: 'passed' });
+    await openLesson();
+    await screen.findByText(/sees your code/);
+    expect(screen.queryByText('All tests pass. Nicely done!')).toBeNull();
+
+    tell({ stage: 'failing', test: 2 });
+    tell({ stage: 'passed' });
+    expect(
+      screen.getByRole('heading', { name: 'All tests pass. Nicely done!' }),
+    ).toBeInTheDocument();
+    // The big face and the header's both smile.
+    expect(document.querySelectorAll('.lucide-tutor-face-happy')).toHaveLength(2);
+    tell({ stage: 'failing' });
+    expect(screen.queryByText('All tests pass. Nicely done!')).toBeNull();
+  });
+
+  it('cheers below the conversation, until the student writes again', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.99);
+    renderTutor('/lesson/python/for');
+    const tell = (stage: TutorLessonStage) => {
+      standing.current = stage;
+      fireEvent.click(screen.getByText('report stage'));
+    };
+    tell({ stage: 'working' });
+    await openLesson();
+    await screen.findByText(/sees your code/);
+    const first = answer();
+    type('Why?');
+    first.emit({ type: 'text', text: 'Look at the range.' });
+    first.emit({ type: 'done', finish: 'complete', conversationId: 8 });
+    await first.end();
+
+    tell({ stage: 'passed' });
+    expect(screen.getByText('Solved! That idea is yours now.')).toBeInTheDocument();
+    answer();
+    type('Thanks');
+    expect(screen.queryByText('Solved! That idea is yours now.')).toBeNull();
+  });
+
+  it('keeps a lesson stage to its own lesson', async () => {
+    renderTutor('/lesson/python/while');
+    standing.current = { stage: 'passed' };
+    fireEvent.click(screen.getByText('report stage'));
+    await openLesson('ask other lesson');
+    expect(
+      await screen.findByRole('button', { name: 'Explain the task to me' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Could it be simpler?' })).toBeNull();
+  });
+
   it('sends the lesson and the work as it is when each message goes', async () => {
     renderTutor('/lesson/python/for');
     await openLesson();
@@ -723,6 +915,7 @@ describe('TutorPanel: a lesson conversation', () => {
       lesson: FOR_REF,
       work: { code: 'for i in x:', runOutput: '', submissionId: 3 },
     });
+    expect(screen.getByRole('status')).toHaveTextContent('Looking at your work');
     first.emit({ type: 'done', finish: 'complete', conversationId: 8 });
     await first.end();
 

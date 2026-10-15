@@ -7,12 +7,18 @@ export const TUTOR_MESSAGE_MAX_LENGTH = 2000;
 // model's safety rules.
 export type TutorFinish = 'complete' | 'cut' | 'blocked';
 
+// What the tutor is looking up before its first words: searching the lessons,
+// reading one (by its title), or going through the app's pages.
+export type TutorLookup = 'search' | 'read' | 'pages';
+
 // The answer streams as server-sent events, each `data:` line one of these:
-// the next words, then `done`, or `error` when it broke off after some words.
-// A failure before any words is a plain error response instead. `done` and
-// `error` name the conversation the exchange was saved to, so a new one learns
-// its id; they leave it out when the save failed.
+// a `status` for each lookup before the first words, the next words, then
+// `done`, or `error` when it broke off. A failure before any event is a plain
+// error response instead; an `error` with no words before it saved nothing.
+// `done` and `error` name the conversation the exchange was saved to, so a new
+// one learns its id; they leave it out when the save failed.
 export type TutorStreamEvent =
+  | { type: 'status'; lookup: TutorLookup; title?: string }
   | { type: 'text'; text: string }
   | { type: 'done'; finish: TutorFinish; conversationId?: number }
   | { type: 'error'; message: string; conversationId?: number };

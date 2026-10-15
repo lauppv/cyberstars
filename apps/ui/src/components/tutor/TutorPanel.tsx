@@ -2,11 +2,12 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import { useTranslation } from 'react-i18next';
 import { ArrowUp, PanelLeft, SquarePen, Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
-import { useTutor } from '../../context/TutorContext';
+import { useAuth } from '../../context/AuthContext';
+import { useTutor, type TutorLessonStage } from '../../context/TutorContext';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorHistory } from './TutorHistory';
-import { TutorMark } from './TutorMark';
+import { TutorMark, type TutorMood } from './TutorMark';
 import { TutorStatus } from './TutorStatus';
 
 // Close enough to the bottom to count as following the conversation.
@@ -40,18 +41,61 @@ function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
 }
 
 // Everything the tutor says sits beside its mark, so a glance tells it from the student
-function TutorTurn({ children }: { children: ReactNode }) {
+function TutorTurn({ children, mood }: { children: ReactNode; mood?: TutorMood }) {
   return (
     <div className="flex items-start gap-2.5">
-      <TutorMark size="sm" />
+      <TutorMark size="sm" mood={mood} />
       <div className="flex-1 min-w-0 flex flex-col gap-1 pt-0.5">{children}</div>
     </div>
   );
 }
 
-// What the student can ask with one click on an empty conversation
-const LESSON_STARTERS = ['tutor.start.task', 'tutor.start.broken', 'tutor.start.nudge'] as const;
-const GENERAL_STARTERS = ['tutor.start.course', 'tutor.start.idea', 'tutor.start.help'] as const;
+// What the student can ask with one click on an empty conversation. In a
+// lesson chat it follows where they stand: a start, the failed test, or what
+// to take from a passed one
+interface Starter {
+  key: string;
+  test?: number;
+}
+
+function lessonStarters(stage: TutorLessonStage | null): Starter[] {
+  switch (stage?.stage) {
+    case 'empty':
+      return [
+        { key: 'tutor.start.where' },
+        { key: 'tutor.start.task' },
+        { key: 'tutor.start.nudge' },
+      ];
+    case 'failing':
+      return [
+        stage.test
+          ? { key: 'tutor.start.failedTest', test: stage.test }
+          : { key: 'tutor.start.broken' },
+        { key: 'tutor.start.nudge' },
+        { key: 'tutor.start.task' },
+      ];
+    case 'passed':
+      return [
+        { key: 'tutor.start.simpler' },
+        { key: 'tutor.start.why' },
+        { key: 'tutor.start.elsewhere' },
+      ];
+    default:
+      return [
+        { key: 'tutor.start.task' },
+        { key: 'tutor.start.broken' },
+        { key: 'tutor.start.nudge' },
+      ];
+  }
+}
+
+// An empty conversation greets the student by their first name, as fits the hour
+function partOfDay(hour: number): 'morning' | 'day' | 'evening' | 'night' {
+  if (hour >= 5 && hour < 12) return 'morning';
+  if (hour >= 12 && hour < 18) return 'day';
+  if (hour >= 18 && hour < 23) return 'evening';
+  return 'night';
+}
 
 // The box grows with what the student writes, up to its max-height
 const BOX_MAX_PX = 160;
@@ -89,6 +133,7 @@ export function TutorPanel() {
   const tutor = useTutor()!;
   const { messages, pending, failure } = tutor;
   const { summary, refresh } = useUsage();
+  const firstName = useAuth().user?.name?.trim().split(/\s+/)[0];
   const [draft, setDraft] = useState('');
   const [noticeClosedFor, setNoticeClosedFor] = useState(closedNotice);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -113,7 +158,7 @@ export function TutorPanel() {
     } else if (following.current) {
       el.scrollTop = el.scrollHeight;
     }
-  }, [messages, pending, failure, tutor.conversationKey]);
+  }, [messages, pending, failure, tutor.cheer, tutor.conversationKey]);
 
   useLayoutEffect(() => {
     const box = boxRef.current;
@@ -177,6 +222,12 @@ export function TutorPanel() {
   }
 
   const empty = messages.length === 0 && !pending && !failure;
+  // Its title cheers while the lesson's tests have just passed, else greets.
+  let emptyTitle = t('tutor.emptyTitle');
+  if (tutor.cheer) emptyTitle = t(tutor.cheer);
+  else if (firstName) {
+    emptyTitle = t(`tutor.greeting.${partOfDay(new Date().getHours())}`, { name: firstName });
+  }
   // A lesson chat keeps the student on the lesson: its answers follow no in-app link.
   const onInAppLink = tutor.lesson ? null : tutor.close;
 
@@ -200,7 +251,7 @@ export function TutorPanel() {
         >
           <PanelLeft size={16} strokeWidth={1.75} />
         </button>
-        <TutorMark size="md" />
+        <TutorMark size="md" mood={busy ? 'thinking' : tutor.cheer ? 'happy' : 'idle'} />
         <div className="flex flex-col min-w-0 flex-1 leading-tight">
           <h2 className="text-[13px] font-semibold text-[var(--text)]">{t('tutor.title')}</h2>
           <span className="text-[11px] text-[var(--text3)] truncate">
@@ -276,23 +327,24 @@ export function TutorPanel() {
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
-            <TutorMark size="lg" />
-            <h3 className="text-[14px] font-semibold text-[var(--text)]">
-              {t('tutor.emptyTitle')}
-            </h3>
+            <TutorMark size="lg" mood={tutor.cheer ? 'happy' : 'idle'} />
+            <h3 className="text-[14px] font-semibold text-[var(--text)]">{emptyTitle}</h3>
             <p className="text-[13px] text-[var(--text2)]">
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
-              {(tutor.lesson ? LESSON_STARTERS : GENERAL_STARTERS).map((key) => (
+              {(tutor.lesson
+                ? lessonStarters(tutor.stage)
+                : tutor.starters.map((key): Starter => ({ key }))
+              ).map((starter) => (
                 <button
-                  key={key}
+                  key={starter.key}
                   type="button"
-                  onClick={() => ask(t(key))}
+                  onClick={() => ask(t(starter.key, { n: starter.test }))}
                   disabled={limited}
                   className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t(key)}
+                  {t(starter.key, { n: starter.test })}
                 </button>
               ))}
             </div>
@@ -305,6 +357,12 @@ export function TutorPanel() {
           ) : (
             <Answer key={m.id} message={m} onInAppLink={onInAppLink} />
           ),
+        )}
+
+        {tutor.cheer && !empty && (
+          <TutorTurn mood="happy">
+            <p className="text-[13px] text-[var(--text)]">{t(tutor.cheer)}</p>
+          </TutorTurn>
         )}
 
         {failure && !failure.afterWords && <StudentBubble text={failure.question} muted />}
@@ -326,11 +384,11 @@ export function TutorPanel() {
         {pending && (
           <>
             <StudentBubble text={pending.question} />
-            <TutorTurn>
+            <TutorTurn mood={pending.answer ? 'idle' : 'thinking'}>
               {pending.answer ? (
                 <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
               ) : (
-                <TutorStatus />
+                <TutorStatus lookup={pending.lookup} lesson={!!tutor.lesson} />
               )}
             </TutorTurn>
           </>
