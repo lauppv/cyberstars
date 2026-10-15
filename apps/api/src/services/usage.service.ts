@@ -10,10 +10,10 @@ import {
   type UsageSummary,
 } from '@cyberstars/shared/usage';
 
-// Per-user rolling windows for the capped features (Show Solution, the tutor,
-// AI hints), kept in the database so a deploy or a crash hands nobody a fresh
-// allowance. A window opens with the first use and its units refill all at once
-// when it ends. Admins/founder are unlimited and never touch the table.
+// Per-user rolling windows for the capped features (Show Solution, the tutor),
+// kept in the database so a deploy or a crash hands nobody a fresh allowance. A
+// window opens with the first use and its units refill all at once when it
+// ends. Admins/founder are unlimited and never touch the table.
 
 function stateOf(
   action: UsageAction,

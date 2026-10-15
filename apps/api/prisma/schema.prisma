@@ -263,7 +263,7 @@ model TutorMessage {
 // unused until the next use opens a new one. One row per student and feature.
 model UsageWindow {
   userId      Int      @map("user_id")
-  // A UsageAction: showSolution, tutorMessage, getHint
+  // A UsageAction: showSolution, tutorMessage
   action      String   @db.VarChar(30)
   windowStart DateTime @map("window_start")
   used        Int

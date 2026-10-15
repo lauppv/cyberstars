@@ -63,7 +63,6 @@ describe('UsagePage', () => {
   const summary = {
     showSolution: { used: 1, limit: 3, remaining: 2, resetAt: null, unlimited: false },
     tutorMessage: { used: 27, limit: 30, remaining: 3, resetAt: null, unlimited: false },
-    getHint: { used: 4, limit: 10, remaining: 6, resetAt: null, unlimited: false },
   };
 
   it('shows each allowance as a share used, with its window', () => {
@@ -72,11 +71,9 @@ describe('UsagePage', () => {
     expect(screen.getByRole('heading', { name: 'Usage' })).toBeInTheDocument();
     expect(screen.getByText('Show Solution')).toBeInTheDocument();
     expect(screen.getByText('Tutor messages')).toBeInTheDocument();
-    expect(screen.getByText('AI hints')).toBeInTheDocument();
     expect(screen.getByText('33% used')).toBeInTheDocument();
     expect(screen.getByText('90% used')).toBeInTheDocument();
-    expect(screen.getByText('40% used')).toBeInTheDocument();
-    expect(screen.getAllByText('· 24 hours', { exact: false })).toHaveLength(2);
+    expect(screen.getByText('· 24 hours', { exact: false })).toBeInTheDocument();
     expect(screen.getByText('· 5 hours', { exact: false })).toBeInTheDocument();
   });
 
