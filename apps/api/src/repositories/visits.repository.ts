@@ -164,6 +164,7 @@ export function guestVisitsSince(
     select: {
       id: true,
       day: true,
+      startedAt: true,
       source: true,
       lang: true,
       steps: { select: { kind: true, target: true }, orderBy: { id: 'asc' } },

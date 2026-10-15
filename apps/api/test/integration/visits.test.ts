@@ -114,8 +114,9 @@ describe('Visitor counts', () => {
     expect(res.body.days.at(-1)).toMatchObject({ visitors: 1, views: 1 });
   });
 
-  it("keeps a guest's pages, clicks and scrolls as one visit, in order", async () => {
+  it("keeps a guest's pages, clicks and scrolls as one visit, in order, from its first page's time", async () => {
     const guest = agent();
+    const arrived = Date.now();
     await visit(guest, { path: '/', referrer: 'old.reddit.com' });
     await guest
       .post('/api/visits/steps')
@@ -130,6 +131,7 @@ describe('Visitor counts', () => {
         {
           id: expect.any(Number),
           day: today(),
+          startedAt: expect.any(String),
           source: 'reddit',
           lang: 'en',
           steps: [
@@ -142,6 +144,10 @@ describe('Visitor counts', () => {
       ],
       next: null,
     });
+    // Set when the first page came in
+    const startedAt = Date.parse(res.body.visits[0].startedAt);
+    expect(startedAt).toBeGreaterThanOrEqual(arrived - 1000);
+    expect(startedAt).toBeLessThanOrEqual(Date.now());
     const totals = await (await admin()).get('/api/admin/visits').expect(200);
     expect(totals.body.clicks).toEqual([{ key: 'start-learning', visitors: 1, views: 1 }]);
   });
