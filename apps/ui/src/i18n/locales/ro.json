@@ -591,7 +591,7 @@
     "radioPrivacyTitle": "Radio Focus și confidențialitate",
     "radioPrivacyDesc": "Radioul Focus (opțional) redă o singură piesă instrumentală royalty-free găzduită de noi: fără terți, fără cookie-uri, fără reclame. E o transmisie live unică, deci toți cei conectați aud același moment. Nimic nu se încarcă până nu apeși Redă. Preferi liniștea? Lasă-l pe pauză.",
     "tutorPrivacyTitle": "Tutorul și datele tale",
-    "tutorPrivacyDesc": "Când vorbești cu tutorul, mesajele tale și conversația de până acum, plus pagina pe care ești, sunt trimise către un furnizor AI terț (Google Gemini) pentru a scrie răspunsul. Într-o conversație despre o lecție sau o provocare se trimit și enunțul, codul tău, finalul ultimei rulări și ultimul rezultat al testelor. Nu introduce informații personale sau sensibile în chat sau în editor. Fiecare conversație, cea generală și câte una pentru fiecare lecție sau provocare, se păstrează cu ultimele 200 de mesaje până o ștergi. Tutorul funcționează în sesiuni de 5 ore, cu între 15 și 30 de mesaje. E un ajutor opțional: poți termina orice lecție și fără el."
+    "tutorPrivacyDesc": "Când vorbești cu tutorul, mesajele tale și conversația de până acum, plus pagina pe care ești, sunt trimise către un furnizor AI terț (Google Gemini) pentru a scrie răspunsul. Într-o conversație despre o lecție sau o provocare se trimit și enunțul, codul tău, finalul ultimei rulări și ultimul rezultat al testelor. Nu introduce informații personale sau sensibile în chat sau în editor. Ultimele tale 50 de conversații se păstrează, fiecare cu ultimele 200 de mesaje, până le ștergi. Tutorul funcționează în sesiuni de 5 ore, cu între 15 și 30 de mesaje. E un ajutor opțional: poți termina orice lecție și fără el."
   },
   "profile": {
     "edit": "Editează",
@@ -1214,9 +1214,20 @@
   },
   "tutor": {
     "title": "Tutor",
-    "general": "Conversație generală",
+    "general": "Generală",
     "close": "Închide",
     "deleteConversation": "Șterge conversația",
+    "newConversation": "Conversație nouă",
+    "history": "Conversații",
+    "showHistory": "Arată conversațiile",
+    "hideHistory": "Ascunde conversațiile",
+    "historyEmpty": "Nicio conversație încă.",
+    "historyFailed": "Conversațiile nu s-au putut încărca.",
+    "day": {
+      "today": "Azi",
+      "yesterday": "Ieri",
+      "earlier": "Mai demult"
+    },
     "confirmDelete": "Ștergi conversația? Mesajele ei nu se mai pot recupera.",
     "intro": "Întreabă despre o lecție, o eroare sau o idee. Tutorul te ajută să ajungi singur la soluție, fără să ți-o dea.",
     "introLesson": "Întreabă despre lecția aceasta. Tutorul vede codul tău, finalul ultimei rulări și ultimul rezultat al testelor și te ajută să ajungi singur la soluție.",

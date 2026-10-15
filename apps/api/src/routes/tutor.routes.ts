@@ -4,7 +4,12 @@ import { authenticateToken, requireFeatureAccess } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
 import { tutorChatSchema } from '../schemas/tutor.schema.js';
 import { execRateLimitHandler } from './terminal.routes.js';
-import { chat, deleteConversation, getConversation } from '../controllers/tutor.controller.js';
+import {
+  chat,
+  deleteConversation,
+  getConversation,
+  listConversations,
+} from '../controllers/tutor.controller.js';
 
 // A message can cost up to four Gemini calls (three tool rounds and the answer)
 // against a shared quota, so cap it per user.
@@ -40,11 +45,10 @@ router.post(
   chat,
 );
 
-// The general conversation, then one per lesson or algorithm challenge.
-for (const path of ['/conversations/general', '/conversations/:courseKey/:lessonSlug']) {
-  const gate = [authenticateToken, requireFeatureAccess('tutorChat'), conversationLimiter];
-  router.get(path, ...gate, getConversation);
-  router.delete(path, ...gate, deleteConversation);
-}
+// The student's conversations, newest first, then one of them.
+const gate = [authenticateToken, requireFeatureAccess('tutorChat'), conversationLimiter];
+router.get('/conversations', ...gate, listConversations);
+router.get('/conversations/:id', ...gate, getConversation);
+router.delete('/conversations/:id', ...gate, deleteConversation);
 
 export default router;

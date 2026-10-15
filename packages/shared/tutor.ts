@@ -9,18 +9,20 @@ export type TutorFinish = 'complete' | 'cut' | 'blocked';
 
 // The answer streams as server-sent events, each `data:` line one of these:
 // the next words, then `done`, or `error` when it broke off after some words.
-// A failure before any words is a plain error response instead.
+// A failure before any words is a plain error response instead. `done` and
+// `error` name the conversation the exchange was saved to, so a new one learns
+// its id; they leave it out when the save failed.
 export type TutorStreamEvent =
   | { type: 'text'; text: string }
-  | { type: 'done'; finish: TutorFinish }
-  | { type: 'error'; message: string };
+  | { type: 'done'; finish: TutorFinish; conversationId?: number }
+  | { type: 'error'; message: string; conversationId?: number };
 
 // How a saved answer ended: as its stream said, or `interrupted` when an error
 // or the student leaving broke it off after some words.
 export type TutorAnswerEnd = TutorFinish | 'interrupted';
 
-// The lesson or algorithm challenge a conversation is about. A message without
-// one belongs to the student's general conversation.
+// The lesson or algorithm challenge a conversation is about. A conversation
+// without one is a general one.
 export interface TutorLessonRef {
   courseKey: string;
   lessonSlug: string;
@@ -56,6 +58,17 @@ export interface TutorMessage {
   // How an answer ended; null on the student's own messages.
   finish: TutorAnswerEnd | null;
   createdAt: string;
+}
+
+// A conversation as the history lists it, the newest first.
+export interface TutorConversationSummary {
+  id: number;
+  // The start of its first question.
+  title: string;
+  // What it is about; null for a general conversation.
+  lesson: TutorLessonRef | null;
+  // When its last exchange was saved.
+  updatedAt: string;
 }
 
 // One page of a conversation, newest first; `hasMore` when older messages remain.

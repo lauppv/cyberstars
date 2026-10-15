@@ -162,10 +162,9 @@ describe('endpoint smoke tests: auth-protected routes return 401 without token',
     ['get', '/api/usage'],
     ['post', '/api/usage/solution/python/loops'],
     ['post', '/api/tutor/chat'],
-    ['get', '/api/tutor/conversations/general'],
-    ['delete', '/api/tutor/conversations/general'],
-    ['get', '/api/tutor/conversations/python/for'],
-    ['delete', '/api/tutor/conversations/python/for'],
+    ['get', '/api/tutor/conversations'],
+    ['get', '/api/tutor/conversations/9'],
+    ['delete', '/api/tutor/conversations/9'],
     ['get', '/auth/me'],
   ];
 

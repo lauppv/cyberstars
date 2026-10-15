@@ -11,11 +11,8 @@ const mockUserRepo = { getRole: vi.fn() };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
 const mockConversations = {
-  conversationKey: vi.fn((userId: number, lesson?: { courseKey: string; lessonSlug: string }) => ({
-    userId,
-    courseKey: lesson?.courseKey ?? null,
-    lessonSlug: lesson?.lessonSlug ?? null,
-  })),
+  listConversations: vi.fn(),
+  findConversation: vi.fn(),
   recentHistory: vi.fn(),
   saveExchange: vi.fn(),
   getPage: vi.fn(),
@@ -29,9 +26,11 @@ vi.mock('../services/usage.service.js', () => mockUsage);
 const mockSubmissions = { findForLesson: vi.fn() };
 vi.mock('../services/submissions.service.js', () => mockSubmissions);
 
-const { chat, getConversation, deleteConversation } = await import('./tutor.controller.js');
+const { chat, getConversation, deleteConversation, listConversations } =
+  await import('./tutor.controller.js');
 
-const generalKey = { userId: 5, courseKey: null, lessonSlug: null };
+// The id a new conversation gets when its first exchange is saved.
+const NEW_ID = 21;
 const held = { userId: 5, action: 'tutorMessage', windowStart: new Date(0), units: 2 };
 const history = [{ role: 'student', text: 'what is a loop?' }];
 
@@ -44,11 +43,10 @@ function mockReq(body: Record<string, unknown> = {}): Request {
 
 // What was saved for the exchange, if anything.
 function saved() {
-  return mockConversations.saveExchange.mock.calls.map(([key, question, answer]) => ({
-    key,
-    question: question.text,
-    answer,
-  }));
+  return mockConversations.saveExchange.mock.calls.map(([userId, to, question, answer]) => {
+    expect(userId).toBe(5);
+    return { to, question: question.text, answer };
+  });
 }
 
 // A response that records what was written and closes like Node's: `close`
@@ -89,11 +87,12 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockUserRepo.getRole.mockResolvedValue('USER');
   mockConversations.recentHistory.mockResolvedValue(history);
+  mockConversations.saveExchange.mockResolvedValue(NEW_ID);
   mockUsage.hold.mockResolvedValue(held);
 });
 
 describe('chat', () => {
-  it("asks the tutor with the student's role and streams its answer", async () => {
+  it("asks the tutor with the student's role and streams its answer into a new conversation", async () => {
     mockTutor.askTutor.mockReturnValue(
       answer(
         { type: 'text', text: 'Try the ' },
@@ -106,10 +105,11 @@ describe('chat', () => {
     await chat(mockReq(), res as unknown as Response, vi.fn());
 
     expect(mockUserRepo.getRole).toHaveBeenCalledWith(5);
-    expect(mockConversations.recentHistory).toHaveBeenCalledWith(generalKey);
+    expect(mockConversations.findConversation).not.toHaveBeenCalled();
+    expect(mockConversations.recentHistory).not.toHaveBeenCalled();
     expect(mockTutor.askTutor).toHaveBeenCalledWith({
       message: 'which lesson has loops?',
-      history,
+      history: [],
       page: '/courses',
       uiLang: 'ro',
       role: 'USER',
@@ -127,17 +127,74 @@ describe('chat', () => {
     expect(written(res)).toEqual([
       { type: 'text', text: 'Try the ' },
       { type: 'text', text: 'For lesson.' },
-      { type: 'done', finish: 'complete' },
+      { type: 'done', finish: 'complete', conversationId: NEW_ID },
     ]);
     expect(res.end).toHaveBeenCalledOnce();
     expect(mockTutor.askTutor.mock.calls[0][0].signal.aborted).toBe(false);
     expect(saved()).toEqual([
       {
-        key: generalKey,
+        to: { lesson: null },
         question: 'which lesson has loops?',
         answer: { text: 'Try the For lesson.', finish: 'complete' },
       },
     ]);
+  });
+
+  it('continues a conversation of the student’s with its history', async () => {
+    mockConversations.findConversation.mockResolvedValue({ id: 9, lesson: null });
+    mockConversations.saveExchange.mockResolvedValue(9);
+    mockTutor.askTutor.mockReturnValue(
+      answer({ type: 'text', text: 'Yes.' }, { type: 'done', finish: 'complete' }),
+    );
+    const res = mockRes();
+
+    await chat(mockReq({ conversationId: 9 }), res as unknown as Response, vi.fn());
+
+    expect(mockConversations.findConversation).toHaveBeenCalledWith(5, 9);
+    expect(mockConversations.recentHistory).toHaveBeenCalledWith(9);
+    expect(mockTutor.askTutor.mock.calls[0][0].history).toBe(history);
+    expect(saved()[0].to).toBe(9);
+    expect(written(res).at(-1)).toEqual({ type: 'done', finish: 'complete', conversationId: 9 });
+  });
+
+  it.each([
+    ['is not the student’s', null, undefined],
+    [
+      'is about another lesson',
+      { id: 9, lesson: { courseKey: 'python', lessonSlug: 'while' } },
+      { courseKey: 'python', lessonSlug: 'for' },
+    ],
+    [
+      'is about a lesson but the message is general',
+      { id: 9, lesson: { courseKey: 'python', lessonSlug: 'for' } },
+      undefined,
+    ],
+    [
+      'is general but the message is about a lesson',
+      { id: 9, lesson: null },
+      { courseKey: 'python', lessonSlug: 'for' },
+    ],
+  ])('answers 404 before any model call when the conversation %s', async (_, found, lesson) => {
+    mockConversations.findConversation.mockResolvedValue(found);
+    const next = vi.fn();
+
+    await chat(mockReq({ conversationId: 9, lesson }), mockRes() as unknown as Response, next);
+
+    expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 404 }));
+    expect(mockUsage.hold).not.toHaveBeenCalled();
+    expect(mockTutor.askTutor).not.toHaveBeenCalled();
+  });
+
+  it('leaves the id out of `done` when the exchange could not be saved', async () => {
+    mockConversations.saveExchange.mockResolvedValue(null);
+    mockTutor.askTutor.mockReturnValue(
+      answer({ type: 'text', text: 'Hi' }, { type: 'done', finish: 'complete' }),
+    );
+    const res = mockRes();
+
+    await chat(mockReq(), res as unknown as Response, vi.fn());
+
+    expect(written(res).at(-1)).toEqual({ type: 'done', finish: 'complete' });
   });
 
   it("saves the exchange before saying it's done", async () => {
@@ -147,25 +204,39 @@ describe('chat', () => {
     const res = mockRes();
     mockConversations.saveExchange.mockImplementationOnce(async () => {
       expect(res.write).toHaveBeenCalledTimes(1);
+      return NEW_ID;
     });
 
     await chat(mockReq(), res as unknown as Response, vi.fn());
 
     expect(saved()[0].answer).toEqual({ text: 'Hi', finish: 'cut' });
-    expect(written(res).at(-1)).toEqual({ type: 'done', finish: 'cut' });
+    expect(written(res).at(-1)).toEqual({ type: 'done', finish: 'cut', conversationId: NEW_ID });
   });
 
-  it("keeps a lesson's messages in that lesson's conversation", async () => {
+  it('starts a new conversation about the lesson a first lesson message is about', async () => {
     mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
     const lesson = { courseKey: 'algo-python', lessonSlug: 'anagram-check' };
 
     await chat(mockReq({ lesson }), mockRes() as unknown as Response, vi.fn());
 
-    const key = { userId: 5, ...lesson };
-    expect(mockConversations.recentHistory).toHaveBeenCalledWith(key);
     expect(saved()).toEqual([
-      { key, question: 'which lesson has loops?', answer: { text: '', finish: 'blocked' } },
+      {
+        to: { lesson },
+        question: 'which lesson has loops?',
+        answer: { text: '', finish: 'blocked' },
+      },
     ]);
+  });
+
+  it("continues a lesson's conversation when the message is about that lesson", async () => {
+    const lesson = { courseKey: 'python', lessonSlug: 'for' };
+    mockConversations.findConversation.mockResolvedValue({ id: 9, lesson });
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
+
+    await chat(mockReq({ lesson, conversationId: 9 }), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockConversations.recentHistory).toHaveBeenCalledWith(9);
+    expect(saved()[0].to).toBe(9);
   });
 
   it("gives the tutor the student's work, with the verdict read from their attempt", async () => {
@@ -286,7 +357,11 @@ describe('chat', () => {
     expect(next).not.toHaveBeenCalled();
     expect(written(res)).toEqual([
       { type: 'text', text: 'Recursion is' },
-      { type: 'error', message: 'The tutor could not answer right now, please try again' },
+      {
+        type: 'error',
+        message: 'The tutor could not answer right now, please try again',
+        conversationId: NEW_ID,
+      },
     ]);
     expect(res.end).toHaveBeenCalledOnce();
     expect(saved()[0].answer).toEqual({ text: 'Recursion is', finish: 'interrupted' });
@@ -300,7 +375,11 @@ describe('chat', () => {
 
     await chat(mockReq(), res as unknown as Response, vi.fn());
 
-    expect(written(res).at(-1)).toEqual({ type: 'error', message: 'Something went wrong' });
+    expect(written(res).at(-1)).toEqual({
+      type: 'error',
+      message: 'Something went wrong',
+      conversationId: NEW_ID,
+    });
   });
 
   it('stops the tutor when the student leaves mid-answer, and writes nothing more', async () => {
@@ -468,7 +547,11 @@ describe('chat: the tutor session', () => {
 
     await chat(mockReq(), res as unknown as Response, vi.fn());
 
-    expect(written(res).at(-1)).toEqual({ type: 'done', finish: 'complete' });
+    expect(written(res).at(-1)).toEqual({
+      type: 'done',
+      finish: 'complete',
+      conversationId: NEW_ID,
+    });
     expect(error).toHaveBeenCalled();
     error.mockRestore();
   });
@@ -485,58 +568,80 @@ describe('conversations', () => {
   }
   const page = { messages: [], hasMore: false };
 
-  it('reads a page of the general conversation', async () => {
+  it("lists the student's conversations", async () => {
+    const list = [{ id: 9, title: 'hi', lesson: null, updatedAt: '2026-10-14T10:00:00.000Z' }];
+    mockConversations.listConversations.mockResolvedValue(list);
+    const r = res();
+
+    await listConversations(req(), r as unknown as Response, vi.fn());
+
+    expect(mockConversations.listConversations).toHaveBeenCalledWith(5);
+    expect(r.json).toHaveBeenCalledWith(list);
+  });
+
+  it('passes a list failure on to the error handler', async () => {
+    const next = vi.fn();
+    const err = new Error('db down');
+    mockConversations.listConversations.mockRejectedValue(err);
+
+    await listConversations(req(), res() as unknown as Response, next);
+
+    expect(next).toHaveBeenCalledWith(err);
+  });
+
+  it('reads a page of a conversation', async () => {
     mockConversations.getPage.mockResolvedValue(page);
     const r = res();
 
-    await getConversation(req({}, { before: '40' }), r as unknown as Response, vi.fn());
+    await getConversation(req({ id: '9' }, { before: '40' }), r as unknown as Response, vi.fn());
 
-    expect(mockConversations.getPage).toHaveBeenCalledWith(generalKey, 40);
+    expect(mockConversations.getPage).toHaveBeenCalledWith(5, 9, 40);
     expect(r.json).toHaveBeenCalledWith(page);
   });
 
-  it("reads a lesson's conversation, ignoring a bad cursor", async () => {
+  it('ignores a bad cursor', async () => {
     mockConversations.getPage.mockResolvedValue(page);
 
-    await getConversation(
-      req({ courseKey: 'python', lessonSlug: 'for' }, { before: 'x' }),
-      res() as unknown as Response,
-      vi.fn(),
-    );
+    await getConversation(req({ id: '9' }, { before: 'x' }), res() as unknown as Response, vi.fn());
 
-    expect(mockConversations.getPage).toHaveBeenCalledWith(
-      { userId: 5, courseKey: 'python', lessonSlug: 'for' },
-      undefined,
-    );
+    expect(mockConversations.getPage).toHaveBeenCalledWith(5, 9, undefined);
   });
 
-  it('answers 404 for a lesson the curriculum does not list', async () => {
+  it.each(['abc', '0', '-3', '1.5'])('answers 404 for a conversation id like %s', async (id) => {
     const next = vi.fn();
 
-    await getConversation(
-      req({ courseKey: 'python', lessonSlug: '..' }),
-      res() as unknown as Response,
-      next,
-    );
+    await getConversation(req({ id }), res() as unknown as Response, next);
+    await deleteConversation(req({ id }), res() as unknown as Response, next);
 
-    expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 404 }));
+    expect(next.mock.calls).toEqual([
+      [expect.objectContaining({ statusCode: 404 })],
+      [expect.objectContaining({ statusCode: 404 })],
+    ]);
     expect(mockConversations.getPage).not.toHaveBeenCalled();
+    expect(mockConversations.deleteConversation).not.toHaveBeenCalled();
   });
 
-  it("deletes a lesson's conversation", async () => {
+  it("answers 404 for a conversation that isn't the student's", async () => {
+    mockConversations.getPage.mockResolvedValue(null);
+    mockConversations.deleteConversation.mockResolvedValue(false);
+    const next = vi.fn();
+
+    await getConversation(req({ id: '9' }), res() as unknown as Response, next);
+    await deleteConversation(req({ id: '9' }), res() as unknown as Response, next);
+
+    expect(next.mock.calls).toEqual([
+      [expect.objectContaining({ statusCode: 404 })],
+      [expect.objectContaining({ statusCode: 404 })],
+    ]);
+  });
+
+  it('deletes a conversation', async () => {
+    mockConversations.deleteConversation.mockResolvedValue(true);
     const r = res();
 
-    await deleteConversation(
-      req({ courseKey: 'python', lessonSlug: 'for' }),
-      r as unknown as Response,
-      vi.fn(),
-    );
+    await deleteConversation(req({ id: '9' }), r as unknown as Response, vi.fn());
 
-    expect(mockConversations.deleteConversation).toHaveBeenCalledWith({
-      userId: 5,
-      courseKey: 'python',
-      lessonSlug: 'for',
-    });
+    expect(mockConversations.deleteConversation).toHaveBeenCalledWith(5, 9);
     expect(r.status).toHaveBeenCalledWith(204);
     expect(r.end).toHaveBeenCalled();
   });
@@ -546,7 +651,7 @@ describe('conversations', () => {
     const err = new Error('db down');
     mockConversations.deleteConversation.mockRejectedValue(err);
 
-    await deleteConversation(req(), res() as unknown as Response, next);
+    await deleteConversation(req({ id: '9' }), res() as unknown as Response, next);
 
     expect(next).toHaveBeenCalledWith(err);
   });

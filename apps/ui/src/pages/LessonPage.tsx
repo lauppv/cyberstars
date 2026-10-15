@@ -274,12 +274,13 @@ export function LessonPage() {
     };
   }, [isTerminal, terminal.lines, terminalTestResult, t, userCode, output, testResults]);
 
-  // Leaving the lesson closes its conversation.
-  const leaveTutorLesson = tutor?.leaveLesson;
+  // While the lesson is open the tutor reads its work from here; leaving it
+  // closes its conversation.
+  const enterTutorLesson = tutor?.enterLesson;
   useEffect(() => {
-    if (!leaveTutorLesson) return;
-    return () => leaveTutorLesson({ courseKey: category, lessonSlug: lesson });
-  }, [leaveTutorLesson, category, lesson]);
+    if (!enterTutorLesson) return;
+    return enterTutorLesson({ courseKey: category, lessonSlug: lesson }, () => tutorWork.current);
+  }, [enterTutorLesson, category, lesson]);
 
   useEffect(() => {
     if (lessonCompleted && justMarkedRef.current) {
@@ -666,11 +667,7 @@ export function LessonPage() {
                 testsError={terminalTestsError}
                 onAskTutor={
                   tutor?.enabled
-                    ? () =>
-                        tutor.openLesson(
-                          { courseKey: category, lessonSlug: lesson, title },
-                          () => tutorWork.current,
-                        )
+                    ? () => tutor.openLesson({ courseKey: category, lessonSlug: lesson, title })
                     : undefined
                 }
               />
@@ -719,10 +716,7 @@ export function LessonPage() {
                             data-track="ask-tutor"
                             onClick={() => {
                               setMenuOpen(false);
-                              tutor.openLesson(
-                                { courseKey: category, lessonSlug: lesson, title },
-                                () => tutorWork.current,
-                              );
+                              tutor.openLesson({ courseKey: category, lessonSlug: lesson, title });
                             }}
                             className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
                           >

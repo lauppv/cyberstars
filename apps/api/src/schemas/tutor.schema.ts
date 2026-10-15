@@ -4,7 +4,7 @@ import { TUTOR_MESSAGE_MAX_LENGTH, TUTOR_RUN_OUTPUT_MAX_LENGTH } from '@cybersta
 
 // A lesson or algorithm challenge the curriculum lists, so a conversation can
 // only be about one that exists.
-export const tutorLessonSchema = z
+const tutorLessonSchema = z
   .object({ courseKey: z.string().max(50), lessonSlug: z.string().max(100) })
   .refine(
     (ref) => lessons.some((l) => l.courseKey === ref.courseKey && l.slug === ref.lessonSlug),
@@ -35,12 +35,18 @@ export const tutorChatSchema = z
       .max(200)
       .regex(/^\/[\w\-/]*$/),
     lang: z.enum(['en', 'ro']).optional(),
-    // The conversation this message belongs to; without it, the general one.
+    // What the conversation is about; without it, a general one.
     lesson: tutorLessonSchema.optional(),
+    // The conversation the message continues; without it, a new one.
+    conversationId: z.number().int().positive().max(2_147_483_647).optional(),
     work: tutorWorkSchema.optional(),
   })
   // Work belongs to a lesson: the general conversation has none.
   .refine((body) => !body.work || body.lesson, { message: 'Work needs a lesson' });
+
+export const tutorConversationParamsSchema = z.object({
+  id: z.coerce.number().int().positive().max(2_147_483_647),
+});
 
 // Lenient, like the other history lists: a bad cursor reads the newest page.
 export const tutorPageQuerySchema = z.object({
