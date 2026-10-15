@@ -174,3 +174,35 @@ export function ForumPicture() {
     </Box>
   );
 }
+
+const TUTOR_TURNS: ['student' | 'tutor', string][] = [
+  ['student', 'question'],
+  ['tutor', 'answer'],
+  ['student', 'followUp'],
+  ['tutor', 'followUpAnswer'],
+];
+
+// A student stuck on a loop talking it through with the tutor, laid out like
+// the tutor panel: each answer points at the idea and leaves the fix to them.
+// A phone has room for the first question and answer only.
+export function TutorPicture() {
+  const { t } = useTranslation();
+  return (
+    <Box label={t('landing.features.tutor.picture')}>
+      <div className="max-w-[640px] mx-auto flex flex-col gap-3">
+        {TUTOR_TURNS.map(([who, key], i) => (
+          <div
+            key={key}
+            className={`max-w-[85%] text-[13px] ${
+              who === 'student'
+                ? 'self-end px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)]'
+                : 'leading-relaxed'
+            } ${i >= 2 ? 'hidden md:block' : ''}`}
+          >
+            {t(`landing.features.tutor.${key}`)}
+          </div>
+        ))}
+      </div>
+    </Box>
+  );
+}
