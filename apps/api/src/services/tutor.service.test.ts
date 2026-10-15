@@ -640,6 +640,66 @@ describe('askTutor: a lesson chat', () => {
     expect(turn.parts[0].text).toContain('Testul 2 a picat.');
   });
 
+  describe('on a Linux lesson', () => {
+    const linux = {
+      courseKey: 'linux',
+      lessonSlug: 'chmod',
+      code: '',
+      runOutput: '$ cat notes.txt\ncat: notes.txt: Permission denied',
+      verdict: null,
+      checks: [
+        { passed: true, text: 'The file notes.txt exists' },
+        { passed: false, text: 'notes.txt can be read' },
+      ],
+    };
+    const linuxAsk = {
+      ...ask,
+      message: 'why does it say permission denied?',
+      page: '/lesson/linux/chmod',
+    };
+
+    it('sends the terminal session and the checks instead of code and a verdict', async () => {
+      const { system, turn } = await lastTurn({ ...linuxAsk, lesson: linux });
+
+      expect(system).toContain('the end of their terminal session');
+      expect(system).toContain('never give the commands that complete it');
+      expect(system).not.toContain('Tests are numbered from 1');
+      const work = turn.parts[0].text as string;
+      expect(work).toContain(
+        'The end of their terminal session, each command after its $ prompt:\n```console\n$ cat notes.txt\ncat: notes.txt: Permission denied\n```',
+      );
+      expect(work).toContain(
+        'Last Run Tests: failed. Its checks:\n✓ The file notes.txt exists\n✗ notes.txt can be read',
+      );
+      expect(work).not.toContain('Their code');
+    });
+
+    it('says when nothing was typed or tested yet, and when every check passed', async () => {
+      let work = (
+        await lastTurn({ ...linuxAsk, lesson: { ...linux, runOutput: '', checks: undefined } })
+      ).turn.parts[0].text as string;
+      expect(work).toContain('They have not typed a command since opening the lesson.');
+      expect(work).toContain('No Run Tests result on screen.');
+
+      const checks = [{ passed: true, text: 'notes.txt can be read' }];
+      work = (await lastTurn({ ...linuxAsk, lesson: { ...linux, checks } })).turn.parts[0]
+        .text as string;
+      expect(work).toContain('Last Run Tests: passed, every check:\n✓ notes.txt can be read');
+    });
+
+    it('writes the Linux rules in Romanian too', async () => {
+      const { system, turn } = await lastTurn({
+        ...linuxAsk,
+        message: 'de ce scrie permission denied',
+        lesson: linux,
+      });
+
+      expect(system).toContain('finalul sesiunii din terminal');
+      expect(system).toContain('nu da niciodată comenzile care o rezolvă');
+      expect(turn.parts[0].text).toContain('Ultimul Run Tests: picat. Verificările lui:');
+    });
+  });
+
   it('refuses a lesson it cannot read before calling the model', async () => {
     tools.lessonStatement.mockReturnValue(null);
 

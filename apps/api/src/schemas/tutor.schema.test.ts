@@ -60,6 +60,19 @@ describe('tutorChatSchema: the work on a lesson', () => {
     expect(tutorChatSchema.parse({ ...valid, lesson, work: unjudged }).work).toEqual(unjudged);
   });
 
+  it("takes a Linux lesson's checks, up to 30 short ones", () => {
+    const linux = { courseKey: 'linux', lessonSlug: 'chmod-numeric' };
+    const checks = [{ passed: true, text: 'The file notes.txt exists' }];
+    const terminal = { code: '', runOutput: '$ ls\nnotes.txt', checks };
+    expect(tutorChatSchema.parse({ ...valid, lesson: linux, work: terminal }).work).toEqual(
+      terminal,
+    );
+    const many = { ...terminal, checks: Array(31).fill(checks[0]) };
+    expect(() => tutorChatSchema.parse({ ...valid, lesson: linux, work: many })).toThrow();
+    const long = { ...terminal, checks: [{ passed: true, text: 'x'.repeat(301) }] };
+    expect(() => tutorChatSchema.parse({ ...valid, lesson: linux, work: long })).toThrow();
+  });
+
   it('refuses work without a lesson', () => {
     expect(() => tutorChatSchema.parse({ ...valid, work })).toThrow('Work needs a lesson');
   });
