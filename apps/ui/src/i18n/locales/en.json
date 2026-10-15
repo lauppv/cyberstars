@@ -1221,6 +1221,7 @@
     "loadFailed": "Your earlier messages couldn't be loaded. Close the panel and open it again to retry.",
     "cut": "The answer was cut short.",
     "blocked": "The tutor can't help with this one. Try asking another way.",
+    "blockedMidway": "The tutor stopped this answer here. Try asking another way.",
     "errorFailed": "The tutor couldn't answer right now.",
     "errorBusy": "Too many messages in a short time. Wait a minute, then try again.",
     "errorLimit": "Not sent: you've used your messages for now.",
