@@ -6,7 +6,6 @@ export type FeatureKey =
   | 'notifications'
   | 'connections'
   | 'radio'
-  | 'aiHints'
   | 'tutorChat';
 
 // Features that are "preview": live in the code, but on production only ADMINs
@@ -20,7 +19,6 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   notifications: true,
   connections: true,
   radio: false,
-  aiHints: false,
   tutorChat: true,
 };
 
