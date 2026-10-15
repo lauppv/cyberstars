@@ -19,7 +19,7 @@ export const PREVIEW_FEATURES: Record<FeatureKey, boolean> = {
   notifications: true,
   connections: true,
   radio: false,
-  tutorChat: true,
+  tutorChat: false,
 };
 
 // Features switched off for everyone, admins and dev included. Temporary: drop

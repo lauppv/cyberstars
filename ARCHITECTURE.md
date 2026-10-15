@@ -287,7 +287,7 @@ Gated by `requireAdmin` (after `authenticateToken`); the role is read fresh from
 
 ### Tutor
 
-Behind the `tutorChat` preview gate (admins only on prod).
+Every signed-in student, behind the `tutorChat` feature key; no guests.
 
 | Method | Endpoint                                          | Auth | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -296,6 +296,13 @@ Behind the `tutorChat` preview gate (admins only on prod).
 | GET    | `/api/tutor/conversations/:courseKey/:lessonSlug` | Yes  | The same for one lesson's or challenge's conversation; 404 for a lesson the curriculum doesn't list                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | DELETE | `/api/tutor/conversations/general`                | Yes  | Deletes the general conversation (204); the student's other conversations stay                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | DELETE | `/api/tutor/conversations/:courseKey/:lessonSlug` | Yes  | Deletes one lesson's or challenge's conversation (204)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+
+### Usage
+
+| Method | Endpoint                                     | Auth | Description                                                                                                                                              |
+| ------ | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/usage`                                 | Yes  | The student's `UsageSummary`: used, limit, remaining and refill time of Show Solution and the tutor session; admins are unlimited                        |
+| POST   | `/api/usage/solution/:courseKey/:lessonSlug` | Yes  | Reveals the lesson's reference solution (`{ lang? }`) and takes one Show Solution; `{ solution, usage }`, 404 when the lesson has none, 429 at the limit |
 
 ## Database schema
 
@@ -315,6 +322,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma). Fie
 - **Connection**: directed connection request (requester → addressee, `PENDING`/`ACCEPTED`)
 - **PageVisit / VisitSalt / VisitTotal**: today's page views keyed by a salted daily hash, the day's salt, and the daily totals they become once the day is over
 - **TutorMessage**: a student's tutor messages and answers, one conversation per lesson or challenge plus a general one (no lesson), each answer with how it ended; the newest 200 per conversation are kept
+- **UsageWindow**: what a student has used of each capped feature (Show Solution, the tutor session) in its current window, one row per student and feature
 - **GuestVisit / VisitStep**: a guest's day on the site and what they did in it (pages, named clicks, scroll depth) in order of id, with no time; the hash goes when the day ends, the visit after 90 days
 
 ### Key relationships
