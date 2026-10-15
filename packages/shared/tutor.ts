@@ -26,6 +26,19 @@ export interface TutorLessonRef {
   lessonSlug: string;
 }
 
+// The end of the last Run's output that goes with a lesson message.
+export const TUTOR_RUN_OUTPUT_MAX_LENGTH = 4000;
+
+// The student's work on the lesson as it is when they send a message. The
+// verdict is only named: the server reads the stored attempt itself.
+export interface TutorLessonWork {
+  code: string;
+  // The end of the output of their last Run, empty when they haven't run it.
+  runOutput: string;
+  // The judge attempt whose verdict is on screen, if any.
+  submissionId?: number;
+}
+
 export interface TutorMessage {
   id: number;
   role: 'student' | 'tutor';

@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { tutorChatSchema, tutorPageQuerySchema } from './tutor.schema.js';
 
-describe('tutorChatSchema', () => {
-  const valid = { message: '  why?  ', page: '/lesson/algo-c/caesar-cipher-c', lang: 'ro' };
+const valid = { message: '  why?  ', page: '/lesson/algo-c/caesar-cipher-c', lang: 'ro' };
 
+describe('tutorChatSchema', () => {
   it('trims the message and keeps the page and language', () => {
     expect(tutorChatSchema.parse(valid)).toEqual({ ...valid, message: 'why?' });
   });
@@ -43,6 +43,40 @@ describe('tutorChatSchema', () => {
       expect(() => tutorChatSchema.parse({ ...valid, lesson })).toThrow('No such lesson');
     }
     expect(() => tutorChatSchema.parse({ ...valid, lesson: { courseKey: 'python' } })).toThrow();
+  });
+});
+
+describe('tutorChatSchema: the work on a lesson', () => {
+  const lesson = { courseKey: 'python', lessonSlug: 'for' };
+  const work = {
+    code: 'for i in range(3):\n    print(i)',
+    runOutput: '0\n1\n2\n',
+    submissionId: 7,
+  };
+
+  it('takes the code, the run output and the attempt on screen with a lesson', () => {
+    expect(tutorChatSchema.parse({ ...valid, lesson, work }).work).toEqual(work);
+    const { submissionId: _, ...unjudged } = work;
+    expect(tutorChatSchema.parse({ ...valid, lesson, work: unjudged }).work).toEqual(unjudged);
+  });
+
+  it('refuses work without a lesson', () => {
+    expect(() => tutorChatSchema.parse({ ...valid, work })).toThrow('Work needs a lesson');
+  });
+
+  it('caps the code like the judge and the output at its tail length', () => {
+    const big = { ...work, code: 'x'.repeat(50_001) };
+    expect(() => tutorChatSchema.parse({ ...valid, lesson, work: big })).toThrow();
+    const long = { ...work, runOutput: 'x'.repeat(4001) };
+    expect(() => tutorChatSchema.parse({ ...valid, lesson, work: long })).toThrow();
+  });
+
+  it('refuses an attempt id that is not a positive whole number', () => {
+    for (const submissionId of [0, -1, 1.5, '7']) {
+      expect(() =>
+        tutorChatSchema.parse({ ...valid, lesson, work: { ...work, submissionId } }),
+      ).toThrow();
+    }
   });
 });
 
