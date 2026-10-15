@@ -26,6 +26,9 @@ vi.mock('../services/tutor-conversations.service.js', () => mockConversations);
 const mockUsage = { hold: vi.fn(), release: vi.fn() };
 vi.mock('../services/usage.service.js', () => mockUsage);
 
+const mockSubmissions = { findForLesson: vi.fn() };
+vi.mock('../services/submissions.service.js', () => mockSubmissions);
+
 const { chat, getConversation, deleteConversation } = await import('./tutor.controller.js');
 
 const generalKey = { userId: 5, courseKey: null, lessonSlug: null };
@@ -163,6 +166,57 @@ describe('chat', () => {
     expect(saved()).toEqual([
       { key, question: 'which lesson has loops?', answer: { text: '', finish: 'blocked' } },
     ]);
+  });
+
+  it("gives the tutor the student's work, with the verdict read from their attempt", async () => {
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
+    const verdict = { id: 7, status: 'failed', failedCase: { index: 1, visible: false } };
+    mockSubmissions.findForLesson.mockResolvedValue(verdict);
+    const lesson = { courseKey: 'python', lessonSlug: 'for' };
+    const work = { code: 'for i in x:', runOutput: 'oops', submissionId: 7 };
+
+    await chat(mockReq({ lesson, work }), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockSubmissions.findForLesson).toHaveBeenCalledWith(5, 7, 'python', 'for');
+    expect(mockTutor.askTutor).toHaveBeenCalledWith(
+      expect.objectContaining({
+        lesson: { ...lesson, code: 'for i in x:', runOutput: 'oops', verdict },
+      }),
+    );
+  });
+
+  it("gives no verdict when no attempt is on screen or it is not the lesson's", async () => {
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
+    const lesson = { courseKey: 'python', lessonSlug: 'for' };
+
+    await chat(
+      mockReq({ lesson, work: { code: 'x', runOutput: '' } }),
+      mockRes() as unknown as Response,
+      vi.fn(),
+    );
+    expect(mockSubmissions.findForLesson).not.toHaveBeenCalled();
+    expect(mockTutor.askTutor.mock.calls[0][0].lesson).toEqual({
+      ...lesson,
+      code: 'x',
+      runOutput: '',
+      verdict: null,
+    });
+
+    mockSubmissions.findForLesson.mockResolvedValue(null);
+    await chat(
+      mockReq({ lesson, work: { code: 'x', runOutput: '', submissionId: 99 } }),
+      mockRes() as unknown as Response,
+      vi.fn(),
+    );
+    expect(mockTutor.askTutor.mock.calls[1][0].lesson.verdict).toBeNull();
+  });
+
+  it('sends no lesson work in the general conversation', async () => {
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'blocked' }));
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockTutor.askTutor.mock.calls[0][0]).not.toHaveProperty('lesson');
   });
 
   it('falls back to English when the client sends no language', async () => {
