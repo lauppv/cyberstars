@@ -102,6 +102,9 @@ const PAGE_STARTERS: [path: string, starter: string][] = [
   ['/courses', 'course'],
 ];
 
+// What the tutor says when a lesson's tests pass, one of them at random.
+const CHEERS = ['tutor.cheer.done', 'tutor.cheer.alone', 'tutor.cheer.yours'];
+
 function pickStarters(pathname: string): string[] {
   const fits = PAGE_STARTERS.find(([path]) => pathname.startsWith(path))?.[1];
   const pool = GENERAL_STARTERS.filter((starter) => starter !== fits);
@@ -157,6 +160,8 @@ interface TutorContextValue {
   reportStage: (lesson: TutorLessonRef, stage: TutorLessonStage) => void;
   // Where the student stands on the shown conversation's lesson, as last told.
   stage: TutorLessonStage | null;
+  // The i18n key of a cheer for that lesson's tests passing, while it lasts.
+  cheer: string | null;
   // A new conversation about what the shown one is about.
   startNew: () => void;
   // The student's saved conversations, newest first; null until read.
@@ -228,8 +233,10 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const [history, setHistory] = useState<TutorConversationSummary[] | null>(null);
   const [historyFailed, setHistoryFailed] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(readHistoryOpen);
-  // Where the student stands on each lesson whose page told it, by lesson.
+  // Where the student stands on each lesson whose page told it, and the cheer
+  // each lesson whose tests just passed gets, by lesson.
   const [stages, setStages] = useState<Record<string, TutorLessonStage>>({});
+  const [cheers, setCheers] = useState<Record<string, string>>({});
   // The handlers below run after renders the state hasn't caught up with yet,
   // so they read and write these alongside it.
   const all = useRef(conversations);
@@ -240,6 +247,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const localId = useRef(0);
   // The answer each conversation is waiting for.
   const controllers = useRef(new Map<string, AbortController>());
+  // The stages as last told, read when the next one comes.
+  const stagesNow = useRef<Record<string, TutorLessonStage>>({});
   // Where each open lesson page's work is read, by lesson.
   const works = useRef(new Map<string, () => TutorLessonWork>());
   // Bumped by every choice of what to show, so a lesson's conversation found
@@ -277,6 +286,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     setHistory(null);
     setHistoryFailed(false);
     setStages({});
+    setCheers({});
   }
   // ...and stop the answers the previous one was waiting for.
   const currentUser = useRef(userId);
@@ -284,6 +294,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     currentUser.current = userId;
     all.current = {};
     shownRef.current = null;
+    stagesNow.current = {};
     const running = controllers.current;
     return () => {
       for (const c of running.values()) c.abort();
@@ -372,6 +383,15 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  const dropCheer = useCallback((lessonKey: string) => {
+    setCheers((current) => {
+      if (!(lessonKey in current)) return current;
+      const rest = { ...current };
+      delete rest[lessonKey];
+      return rest;
+    });
+  }, []);
+
   const send = useCallback(
     (text: string) => {
       const question = text.trim();
@@ -381,6 +401,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
       const abort = new AbortController();
       controllers.current.set(key, abort);
       update(key, () => ({ failure: null, pending: { question, lookup: null, answer: '' } }));
+      if (conversation.lesson) dropCheer(lessonKeyOf(conversation.lesson)!);
 
       let words = '';
       let finish: TutorAnswerEnd | null = null;
@@ -457,7 +478,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
           if (finish) void loadHistory();
         });
     },
-    [i18n, loadHistory, local, pathname, refreshUsage, update],
+    [dropCheer, i18n, loadHistory, local, pathname, refreshUsage, update],
   );
 
   const enterLesson = useCallback((of: TutorLessonRef, readWork: () => TutorLessonWork) => {
@@ -474,15 +495,24 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const reportStage = useCallback((of: TutorLessonRef, stage: TutorLessonStage) => {
-    const lessonKey = lessonKeyOf(of)!;
-    // Told again on every keystroke: only a change of stage renders anything.
-    setStages((current) =>
-      JSON.stringify(current[lessonKey]) === JSON.stringify(stage)
-        ? current
-        : { ...current, [lessonKey]: stage },
-    );
-  }, []);
+  const reportStage = useCallback(
+    (of: TutorLessonRef, stage: TutorLessonStage) => {
+      const lessonKey = lessonKeyOf(of)!;
+      const before = stagesNow.current[lessonKey];
+      // Told again on every keystroke: only a change of stage renders anything.
+      if (JSON.stringify(before) === JSON.stringify(stage)) return;
+      stagesNow.current = { ...stagesNow.current, [lessonKey]: stage };
+      setStages(stagesNow.current);
+      // Tests passing after the page first told otherwise get a cheer. It lasts
+      // while they stay passed, until the student writes to the tutor again.
+      if (stage.stage !== 'passed') dropCheer(lessonKey);
+      else if (before && before.stage !== 'passed') {
+        const cheer = CHEERS[Math.floor(Math.random() * CHEERS.length)];
+        setCheers((current) => ({ ...current, [lessonKey]: cheer }));
+      }
+    },
+    [dropCheer],
+  );
 
   const openLesson = useCallback(
     (of: TutorLesson) => {
@@ -586,6 +616,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     enterLesson,
     reportStage,
     stage: (current?.lesson && stages[lessonKeyOf(current.lesson)!]) || null,
+    cheer: (current?.lesson && cheers[lessonKeyOf(current.lesson)!]) || null,
     startNew,
     history,
     historyFailed,

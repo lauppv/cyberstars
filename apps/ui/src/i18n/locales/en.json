@@ -1226,6 +1226,11 @@
       "evening": "Good evening, {{name}}. How can I help?",
       "night": "Working late, {{name}}. How can I help?"
     },
+    "cheer": {
+      "done": "All tests pass. Nicely done!",
+      "alone": "It works! You got there on your own.",
+      "yours": "Solved! That idea is yours now."
+    },
     "enterHint": "Enter sends, Shift+Enter starts a new line",
     "start": {
       "task": "Explain the task to me",

@@ -7,7 +7,7 @@ import { useTutor, type TutorLessonStage } from '../../context/TutorContext';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorHistory } from './TutorHistory';
-import { TutorMark } from './TutorMark';
+import { TutorMark, type TutorMood } from './TutorMark';
 import { TutorStatus } from './TutorStatus';
 
 // Close enough to the bottom to count as following the conversation.
@@ -41,10 +41,10 @@ function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
 }
 
 // Everything the tutor says sits beside its mark, so a glance tells it from the student
-function TutorTurn({ children }: { children: ReactNode }) {
+function TutorTurn({ children, mood }: { children: ReactNode; mood?: TutorMood }) {
   return (
     <div className="flex items-start gap-2.5">
-      <TutorMark size="sm" />
+      <TutorMark size="sm" mood={mood} />
       <div className="flex-1 min-w-0 flex flex-col gap-1 pt-0.5">{children}</div>
     </div>
   );
@@ -158,7 +158,7 @@ export function TutorPanel() {
     } else if (following.current) {
       el.scrollTop = el.scrollHeight;
     }
-  }, [messages, pending, failure, tutor.conversationKey]);
+  }, [messages, pending, failure, tutor.cheer, tutor.conversationKey]);
 
   useLayoutEffect(() => {
     const box = boxRef.current;
@@ -222,6 +222,12 @@ export function TutorPanel() {
   }
 
   const empty = messages.length === 0 && !pending && !failure;
+  // Its title cheers while the lesson's tests have just passed, else greets.
+  let emptyTitle = t('tutor.emptyTitle');
+  if (tutor.cheer) emptyTitle = t(tutor.cheer);
+  else if (firstName) {
+    emptyTitle = t(`tutor.greeting.${partOfDay(new Date().getHours())}`, { name: firstName });
+  }
   // A lesson chat keeps the student on the lesson: its answers follow no in-app link.
   const onInAppLink = tutor.lesson ? null : tutor.close;
 
@@ -245,7 +251,7 @@ export function TutorPanel() {
         >
           <PanelLeft size={16} strokeWidth={1.75} />
         </button>
-        <TutorMark size="md" />
+        <TutorMark size="md" mood={busy ? 'thinking' : tutor.cheer ? 'happy' : 'idle'} />
         <div className="flex flex-col min-w-0 flex-1 leading-tight">
           <h2 className="text-[13px] font-semibold text-[var(--text)]">{t('tutor.title')}</h2>
           <span className="text-[11px] text-[var(--text3)] truncate">
@@ -321,12 +327,8 @@ export function TutorPanel() {
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
-            <TutorMark size="lg" />
-            <h3 className="text-[14px] font-semibold text-[var(--text)]">
-              {firstName
-                ? t(`tutor.greeting.${partOfDay(new Date().getHours())}`, { name: firstName })
-                : t('tutor.emptyTitle')}
-            </h3>
+            <TutorMark size="lg" mood={tutor.cheer ? 'happy' : 'idle'} />
+            <h3 className="text-[14px] font-semibold text-[var(--text)]">{emptyTitle}</h3>
             <p className="text-[13px] text-[var(--text2)]">
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
@@ -357,6 +359,12 @@ export function TutorPanel() {
           ),
         )}
 
+        {tutor.cheer && !empty && (
+          <TutorTurn mood="happy">
+            <p className="text-[13px] text-[var(--text)]">{t(tutor.cheer)}</p>
+          </TutorTurn>
+        )}
+
         {failure && !failure.afterWords && <StudentBubble text={failure.question} muted />}
         {failure && (
           <div className="flex items-center gap-3">
@@ -376,7 +384,7 @@ export function TutorPanel() {
         {pending && (
           <>
             <StudentBubble text={pending.question} />
-            <TutorTurn>
+            <TutorTurn mood={pending.answer ? 'idle' : 'thinking'}>
               {pending.answer ? (
                 <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
               ) : (

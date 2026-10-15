@@ -1238,6 +1238,11 @@
       "evening": "Bună seara, {{name}}. Cu ce te ajut?",
       "night": "Lucrezi până târziu, {{name}}. Cu ce te ajut?"
     },
+    "cheer": {
+      "done": "Toate testele trec. Bravo!",
+      "alone": "Merge! Ai ajuns singur acolo.",
+      "yours": "Rezolvat! Ideea asta e acum a ta."
+    },
     "enterHint": "Enter trimite, Shift+Enter începe un rând nou",
     "start": {
       "task": "Explică-mi cerința",

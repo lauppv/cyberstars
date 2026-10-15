@@ -389,6 +389,9 @@ describe('TutorPanel', () => {
     expect(screen.getByRole('textbox')).toHaveValue('');
     expect(screen.getByRole('status')).toHaveTextContent('Thinking it through');
     expect(screen.getByRole('button', { name: 'Send' })).toBeDisabled();
+    // The header's face and the one beside the answer think until its words.
+    const thinking = () => document.querySelectorAll('.lucide-tutor-face-thinking').length;
+    expect(thinking()).toBe(2);
     // Each lookup as the server names it, a lesson by its title.
     reply.emit({ type: 'status', lookup: 'search' });
     expect(screen.getByRole('status')).toHaveTextContent('Searching the lessons');
@@ -401,6 +404,7 @@ describe('TutorPanel', () => {
 
     reply.emit({ type: 'text', text: 'When the' });
     expect(screen.queryByRole('status')).toBeNull();
+    expect(thinking()).toBe(1);
     expect(screen.getByText('When the')).toBeInTheDocument();
     reply.emit({ type: 'text', text: ' condition is false.' });
     expect(screen.getByText('When the condition is false.')).toBeInTheDocument();
@@ -410,6 +414,7 @@ describe('TutorPanel', () => {
     expect(screen.getByText('How do loops end?')).toBeInTheDocument();
     expect(screen.getByText('When the condition is false.')).toBeInTheDocument();
     expect(screen.queryByText(/cut short/)).toBeNull();
+    expect(thinking()).toBe(0);
   });
 
   it('sends an address the endpoint would refuse as the home page', async () => {
@@ -837,6 +842,53 @@ describe('TutorPanel: a lesson conversation', () => {
     answer();
     fireEvent.click(screen.getByRole('button', { name: 'Why does test 3 fail?' }));
     expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'Why does test 3 fail?' });
+  });
+
+  it("cheers when the lesson's tests pass, until they fail again", async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
+    renderTutor('/lesson/python/for');
+    const tell = (stage: TutorLessonStage) => {
+      standing.current = stage;
+      fireEvent.click(screen.getByText('report stage'));
+    };
+    // Passed already when the page first told: nothing new to cheer.
+    tell({ stage: 'passed' });
+    await openLesson();
+    await screen.findByText(/sees your code/);
+    expect(screen.queryByText('All tests pass. Nicely done!')).toBeNull();
+
+    tell({ stage: 'failing', test: 2 });
+    tell({ stage: 'passed' });
+    expect(
+      screen.getByRole('heading', { name: 'All tests pass. Nicely done!' }),
+    ).toBeInTheDocument();
+    // The big face and the header's both smile.
+    expect(document.querySelectorAll('.lucide-tutor-face-happy')).toHaveLength(2);
+    tell({ stage: 'failing' });
+    expect(screen.queryByText('All tests pass. Nicely done!')).toBeNull();
+  });
+
+  it('cheers below the conversation, until the student writes again', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.99);
+    renderTutor('/lesson/python/for');
+    const tell = (stage: TutorLessonStage) => {
+      standing.current = stage;
+      fireEvent.click(screen.getByText('report stage'));
+    };
+    tell({ stage: 'working' });
+    await openLesson();
+    await screen.findByText(/sees your code/);
+    const first = answer();
+    type('Why?');
+    first.emit({ type: 'text', text: 'Look at the range.' });
+    first.emit({ type: 'done', finish: 'complete', conversationId: 8 });
+    await first.end();
+
+    tell({ stage: 'passed' });
+    expect(screen.getByText('Solved! That idea is yours now.')).toBeInTheDocument();
+    answer();
+    type('Thanks');
+    expect(screen.queryByText('Solved! That idea is yours now.')).toBeNull();
   });
 
   it('keeps a lesson stage to its own lesson', async () => {
