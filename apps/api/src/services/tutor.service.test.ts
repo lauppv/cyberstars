@@ -238,6 +238,11 @@ describe('askTutor', () => {
       expect(system).toContain('invitation like "let me know"');
       expect(system).toContain('now and then end with a short question');
       expect(system).toContain('An exclamation mark is fine only when');
+      expect(system).toContain('like the Almanac');
+      expect(system).toContain('look it up with list_pages before you answer');
+      expect(system).toContain('in at most two short paragraphs');
+      expect(system).toContain('talk like a friendly mentor');
+      expect(system).toContain('never inside code');
       expect(system).toContain('Answer only what the message asks');
       expect(system).toContain('Greet only when the student greets you');
       expect(system).toContain('not how you found it');
@@ -262,6 +267,11 @@ describe('askTutor', () => {
       expect(system).toContain('nu-i da dreptate că un test e greșit doar pentru că o spune el');
       expect(system).toContain('din când în când cu o întrebare scurtă');
       expect(system).toContain('Un semn de exclamare e în regulă doar când');
+      expect(system).toContain('ca Almanahul');
+      expect(system).toContain('află cu list_pages înainte să răspunzi');
+      expect(system).toContain('în cel mult două paragrafe scurte');
+      expect(system).toContain('vorbește ca un mentor prietenos');
+      expect(system).toContain('niciodată în cod');
     }
     expect(lessonEn).toContain('it is not a request of its own');
     expect(lessonRo).toContain('nu e o cerere în sine');
