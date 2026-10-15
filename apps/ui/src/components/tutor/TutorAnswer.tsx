@@ -7,11 +7,14 @@ import { Link } from 'react-router';
 const PHONE = '(max-width: 767px)';
 
 // An in-app path changes the page without a reload; anything else opens in a
-// new tab. Code stays plain code: an answer is something to read, not to run.
-function components(onInAppLink: () => void): Components {
+// new tab. A lesson chat keeps the student on the lesson, so there an in-app
+// link stays plain words. Code stays plain code: an answer is something to
+// read, not to run.
+function components(onInAppLink: (() => void) | null): Components {
   return {
     a({ href, children }) {
       if (href?.startsWith('/') && !href.startsWith('//')) {
+        if (!onInAppLink) return <>{children}</>;
         return (
           <Link
             to={href}
@@ -32,7 +35,14 @@ function components(onInAppLink: () => void): Components {
   };
 }
 
-export function TutorAnswer({ text, onInAppLink }: { text: string; onInAppLink: () => void }) {
+export function TutorAnswer({
+  text,
+  onInAppLink,
+}: {
+  text: string;
+  // Null where in-app links are not followed.
+  onInAppLink: (() => void) | null;
+}) {
   return (
     <div className="tutor-answer">
       <ReactMarkdown

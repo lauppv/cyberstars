@@ -3,7 +3,12 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const gemini = { converseStream: vi.fn(), isGeminiConfigured: vi.fn() };
 vi.mock('./gemini.service.js', () => gemini);
 
-const tools = { searchLessons: vi.fn(), readLesson: vi.fn(), listPages: vi.fn() };
+const tools = {
+  searchLessons: vi.fn(),
+  readLesson: vi.fn(),
+  listPages: vi.fn(),
+  lessonStatement: vi.fn(),
+};
 vi.mock('./tutor-tools.service.js', () => tools);
 
 const { askTutor, detectLanguage } = await import('./tutor.service.js');
@@ -120,6 +125,7 @@ describe('askTutor', () => {
     ]);
     expect(opts.system).toContain('Answer in English.');
     expect(opts.system).toContain('on the page /courses');
+    expect(opts.system).toContain('Give links as markdown with in-app paths');
   });
 
   it('sends the conversation so far before the new message', async () => {
@@ -422,5 +428,188 @@ describe('askTutor: the length of the answer', () => {
     });
 
     expect(written.tokens).toBe(320);
+  });
+});
+
+describe('askTutor: a lesson chat', () => {
+  const stream = gemini.converseStream;
+  const code = 'nums = [3, 1]\nprint(sorted(nums))';
+  const failedVerdict = {
+    id: 4,
+    status: 'failed' as const,
+    passedCount: 1,
+    total: 5,
+    runtimeMs: null,
+    referenceMs: null,
+    lang: 'en' as const,
+    createdAt: '2026-10-15T08:00:00.000Z',
+    code,
+    syntaxError: null,
+    structureFailures: [],
+    failedCase: {
+      index: 1,
+      visible: true,
+      passed: false,
+      inject: { nums: { $list: [5, 2, 9] } },
+      expected: '[9, 5, 2]',
+      actual: '[2, 5, 9]',
+    },
+  };
+  const lesson = {
+    courseKey: 'algo-python',
+    lessonSlug: 'sort-desc',
+    code,
+    runOutput: '[1, 3]\n',
+    verdict: failedVerdict,
+  };
+  const ask = { ...base, message: 'why does test 2 fail?', page: '/lesson/algo-python/sort-desc' };
+
+  // The parts of the student's new turn: the work, then the message.
+  async function lastTurn(opts: Parameters<typeof askTutor>[0]) {
+    stream.mockImplementation(() => text('ok'));
+    await collect(askTutor(opts));
+    const call = stream.mock.calls.at(-1)![0];
+    return { system: call.system as string, turn: call.contents.at(-1) };
+  }
+
+  beforeEach(() => {
+    tools.lessonStatement.mockReturnValue({
+      title: 'Sort descending',
+      statement: 'Print the list `nums` from largest to smallest.',
+    });
+  });
+
+  it('puts the statement in the prompt and keeps the conversation on the challenge', async () => {
+    const { system } = await lastTurn({ ...ask, lesson });
+
+    expect(tools.lessonStatement).toHaveBeenCalledWith('algo-python', 'sort-desc', 'en');
+    expect(system).toContain(
+      'This conversation is about the challenge "Sort descending" (algo-python/sort-desc)',
+    );
+    expect(system).toContain('Keep the conversation on this challenge');
+    // It reads other lessons for the student, but never sends them away.
+    expect(system).toContain('explain the idea here in your own words');
+    expect(system).toContain('never link to another lesson or page');
+    expect(system).not.toContain('Give links');
+    expect(system).not.toContain('[For loops](/lesson/python/for)');
+    expect(system).toContain('Print the list `nums` from largest to smallest.');
+    expect(system).not.toContain('read it with read_lesson');
+    // The rule from the general chat stays.
+    expect(system).toContain('Do not end with a question');
+  });
+
+  it('sends the work with the new message only, never with the history', async () => {
+    const { turn } = await lastTurn({
+      ...ask,
+      lesson,
+      history: [{ role: 'student', text: 'hi' }],
+    });
+
+    expect(stream.mock.calls[0][0].contents[0]).toEqual({ role: 'user', parts: [{ text: 'hi' }] });
+    expect(turn.role).toBe('user');
+    expect(turn.parts[1]).toEqual({ text: 'why does test 2 fail?' });
+    const work = turn.parts[0].text as string;
+    expect(work).toContain("The student's work right now:");
+    expect(work).toContain('```python\nnums = [3, 1]\nprint(sorted(nums))\n```');
+    expect(work).toContain("The end of their last Run's output:\n```\n[1, 3]\n\n```");
+  });
+
+  it("describes the failed test by its number, input, expected and the student's output", async () => {
+    const work = (await lastTurn({ ...ask, lesson })).turn.parts[0].text as string;
+
+    expect(work).toContain('Last Run Tests: failed, 1 / 5 tests passed before it stopped.');
+    expect(work).toContain('Test 2 failed.');
+    expect(work).toContain('Input values:\n```\nnums = {"$list":[5,2,9]}\n```');
+    expect(work).toContain('Expected output:\n```\n[9, 5, 2]\n```');
+    expect(work).toContain('Their output:\n```\n[2, 5, 9]\n```');
+    expect(work).not.toContain('The code has changed');
+  });
+
+  it('shows a failed hidden test with no expected output, as the student saw it', async () => {
+    const { expected: _, ...seen } = failedVerdict.failedCase;
+    const verdict = {
+      ...failedVerdict,
+      failedCase: { ...seen, index: 3, visible: false, stdin: '4\n' },
+    };
+    const work = (await lastTurn({ ...ask, lesson: { ...lesson, verdict } })).turn.parts[0]
+      .text as string;
+
+    expect(work).toContain('Test 4 (hidden) failed.');
+    expect(work).toContain('Input typed in (stdin):\n```\n4\n\n```');
+    expect(work).not.toContain('Expected output');
+    expect(work).not.toContain('[9, 5, 2]');
+  });
+
+  it('says when the code changed after the verdict, and what the run missed', async () => {
+    const verdict = {
+      ...failedVerdict,
+      code: 'print([3, 1])',
+      syntaxError: "SyntaxError: '(' was never closed",
+      structureFailures: [
+        { type: 'require' as const, rule: { kind: 'loop' as const, type: 'for' as const } },
+        { type: 'forbid' as const, rule: { kind: 'call' as const, name: 'sorted' } },
+      ],
+      failedCase: null,
+    };
+    const work = (await lastTurn({ ...ask, lesson: { ...lesson, verdict } })).turn.parts[0]
+      .text as string;
+
+    expect(work).toContain('The code has changed since that run.');
+    expect(work).toContain("It did not compile:\n```\nSyntaxError: '(' was never closed\n```");
+    expect(work).toContain('Missing, the lesson asks for it: loop (for)');
+    expect(work).toContain('Not allowed in this lesson: call sorted');
+  });
+
+  it('says when there is no code, no run and no verdict, and when all tests passed', async () => {
+    const empty = { ...lesson, code: ' ', runOutput: '', verdict: null };
+    let work = (await lastTurn({ ...ask, lesson: empty })).turn.parts[0].text as string;
+    expect(work).toContain('Their code: empty.');
+    expect(work).toContain('They have not run the code since opening the lesson.');
+    expect(work).toContain('No Run Tests verdict on screen.');
+
+    const passed = { ...failedVerdict, status: 'passed' as const, passedCount: 5 };
+    work = (await lastTurn({ ...ask, lesson: { ...lesson, verdict: passed } })).turn.parts[0]
+      .text as string;
+    expect(work).toContain('Last Run Tests: passed, 5 / 5 tests.');
+  });
+
+  it('keeps a fence that backticks in the code cannot close, and clips long output', async () => {
+    const verdict = {
+      ...failedVerdict,
+      failedCase: { ...failedVerdict.failedCase, actual: 'x'.repeat(3000) },
+    };
+    const work = (await lastTurn({ ...ask, lesson: { ...lesson, code: 's = "```"', verdict } }))
+      .turn.parts[0].text as string;
+
+    expect(work).toContain('````python\ns = "```"\n````');
+    expect(work).toContain(`${'x'.repeat(2000)}\n...\n\`\`\``);
+    expect(work).not.toContain('x'.repeat(2001));
+  });
+
+  it('writes it all in Romanian for a Romanian message, a lesson as a lesson', async () => {
+    const { system, turn } = await lastTurn({
+      ...ask,
+      message: 'de ce nu merge testul 2',
+      page: '/lesson/python/for',
+      lesson: { ...lesson, courseKey: 'python', lessonSlug: 'for' },
+    });
+
+    expect(tools.lessonStatement).toHaveBeenCalledWith('python', 'for', 'ro');
+    expect(system).toContain(
+      'Conversația aceasta este despre lecția „Sort descending” (python/for)',
+    );
+    expect(system).not.toContain('citește-o cu read_lesson');
+    expect(system).toContain('nu da niciodată link spre altă lecție sau pagină');
+    expect(system).not.toContain('Dă linkurile');
+    expect(turn.parts[0].text).toContain('Testul 2 a picat.');
+  });
+
+  it('refuses a lesson it cannot read before calling the model', async () => {
+    tools.lessonStatement.mockReturnValue(null);
+
+    await expect(collect(askTutor({ ...ask, lesson }))).rejects.toMatchObject({
+      statusCode: 404,
+    });
+    expect(stream).not.toHaveBeenCalled();
   });
 });

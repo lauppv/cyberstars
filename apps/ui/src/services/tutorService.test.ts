@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import type { TutorStreamEvent } from '@cyberstars/shared/tutor';
 import { ApiClientError } from './apiClient';
-import { deleteGeneralConversation, getGeneralConversation, streamChat } from './tutorService';
+import { deleteConversation, getConversation, streamChat } from './tutorService';
 
 const fetchMock = vi.fn();
 
@@ -25,20 +25,35 @@ beforeEach(() => {
 });
 afterEach(() => vi.unstubAllGlobals());
 
-describe('the general conversation', () => {
+describe('conversations', () => {
   it('reads a page, older ones by the oldest id, and deletes it', async () => {
     fetchMock.mockImplementation(() =>
       Promise.resolve(Response.json({ messages: [], hasMore: false })),
     );
-    await getGeneralConversation();
-    await getGeneralConversation(41);
+    await getConversation(null);
+    await getConversation(null, 41);
     expect(fetchMock.mock.calls[0][0]).toBe('/api/tutor/conversations/general');
     expect(fetchMock.mock.calls[1][0]).toBe('/api/tutor/conversations/general?before=41');
 
     fetchMock.mockResolvedValueOnce(new Response(null, { status: 204 }));
-    await deleteGeneralConversation();
+    await deleteConversation(null);
     expect(fetchMock.mock.calls[2][0]).toBe('/api/tutor/conversations/general');
     expect(fetchMock.mock.calls[2][1]).toMatchObject({ method: 'DELETE' });
+  });
+
+  it("reads and deletes a lesson's conversation by its course and slug", async () => {
+    fetchMock.mockImplementation(() =>
+      Promise.resolve(Response.json({ messages: [], hasMore: false })),
+    );
+    const lesson = { courseKey: 'algo-c', lessonSlug: 'caesar-cipher-c' };
+    await getConversation(lesson, 7);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      '/api/tutor/conversations/algo-c/caesar-cipher-c?before=7',
+    );
+
+    fetchMock.mockResolvedValueOnce(new Response(null, { status: 204 }));
+    await deleteConversation(lesson);
+    expect(fetchMock.mock.calls[1][0]).toBe('/api/tutor/conversations/algo-c/caesar-cipher-c');
   });
 });
 

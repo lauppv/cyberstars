@@ -1,7 +1,13 @@
 import type { Request, Response, NextFunction } from 'express';
-import type { TutorAnswerEnd, TutorLessonRef, TutorStreamEvent } from '@cyberstars/shared/tutor';
+import type {
+  TutorAnswerEnd,
+  TutorLessonRef,
+  TutorLessonWork,
+  TutorStreamEvent,
+} from '@cyberstars/shared/tutor';
 import { AppError } from '../middleware/errorHandler.js';
-import { askTutor } from '../services/tutor.service.js';
+import { askTutor, type LessonWork } from '../services/tutor.service.js';
+import * as submissions from '../services/submissions.service.js';
 import * as conversations from '../services/tutor-conversations.service.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as usage from '../services/usage.service.js';
@@ -33,6 +39,30 @@ const LONG_ANSWER_TOKENS = 300;
 function costOf(words: string, tokens: number, finish: TutorAnswerEnd | null): number {
   if (!words) return finish === 'blocked' ? 1 : 0;
   return tokens > LONG_ANSWER_TOKENS ? 2 : 1;
+}
+
+// The student's work on the lesson as the model gets it. The verdict is read
+// from the stored attempt the student has on screen, so what the model sees of
+// a test run is what the judge showed them, never what the client claims.
+async function lessonWork(
+  userId: number,
+  lesson: TutorLessonRef,
+  work: TutorLessonWork | undefined,
+): Promise<LessonWork> {
+  const verdict = work?.submissionId
+    ? await submissions.findForLesson(
+        userId,
+        work.submissionId,
+        lesson.courseKey,
+        lesson.lessonSlug,
+      )
+    : null;
+  return {
+    ...lesson,
+    code: work?.code ?? '',
+    runOutput: work?.runOutput ?? '',
+    verdict,
+  };
 }
 
 export async function chat(req: Request, res: Response, next: NextFunction) {
@@ -68,9 +98,11 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
     // every other role check.
     const role = await userRepo.getRole(req.user!.id);
     held = await usage.hold(req.user!.id, 'tutorMessage', isAdmin(role), 2);
+    const lesson: TutorLessonRef | undefined = req.body.lesson;
     const answer = askTutor({
       message: question.text,
       history: await conversations.recentHistory(key),
+      ...(lesson && { lesson: await lessonWork(req.user!.id, lesson, req.body.work) }),
       page: req.body.page,
       uiLang: req.body.lang === 'ro' ? 'ro' : 'en',
       role,

@@ -41,7 +41,13 @@ function Note({ children }: { children: string }) {
   return <p className="text-[12px] text-[var(--text3)]">{children}</p>;
 }
 
-function Answer({ message, onInAppLink }: { message: TutorMessage; onInAppLink: () => void }) {
+function Answer({
+  message,
+  onInAppLink,
+}: {
+  message: TutorMessage;
+  onInAppLink: (() => void) | null;
+}) {
   const { t } = useTranslation();
   if (message.finish === 'blocked' && !message.text) return <Note>{t('tutor.blocked')}</Note>;
   return (
@@ -126,6 +132,8 @@ export function TutorPanel() {
   }
 
   const empty = messages.length === 0 && !pending && !failure;
+  // A lesson chat keeps the student on the lesson: its answers follow no in-app link.
+  const onInAppLink = tutor.lesson ? null : tutor.close;
 
   return (
     <aside
@@ -138,7 +146,9 @@ export function TutorPanel() {
       <header className="flex items-center gap-2 h-12 px-4 flex-shrink-0 border-b border-[var(--border)]">
         <div className="flex flex-col min-w-0 flex-1 leading-tight">
           <h2 className="text-[13px] font-semibold text-[var(--text)]">{t('tutor.title')}</h2>
-          <span className="text-[11px] text-[var(--text3)] truncate">{t('tutor.general')}</span>
+          <span className="text-[11px] text-[var(--text3)] truncate">
+            {tutor.lesson?.title ?? t('tutor.general')}
+          </span>
         </div>
         <button
           type="button"
@@ -198,14 +208,16 @@ export function TutorPanel() {
         )}
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
-          <p className="text-[13px] text-[var(--text2)]">{t('tutor.intro')}</p>
+          <p className="text-[13px] text-[var(--text2)]">
+            {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
+          </p>
         )}
 
         {messages.map((m) =>
           m.role === 'student' ? (
             <StudentBubble key={m.id} text={m.text} />
           ) : (
-            <Answer key={m.id} message={m} onInAppLink={tutor.close} />
+            <Answer key={m.id} message={m} onInAppLink={onInAppLink} />
           ),
         )}
 
@@ -229,7 +241,7 @@ export function TutorPanel() {
           <>
             <StudentBubble text={pending.question} />
             {pending.answer ? (
-              <TutorAnswer text={pending.answer} onInAppLink={tutor.close} />
+              <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
             ) : (
               <TutorStatus />
             )}

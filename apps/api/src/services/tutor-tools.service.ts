@@ -139,8 +139,23 @@ interface LessonStatement extends LessonHit {
 export function readLesson(courseKey: string, slug: string, lang: Lang): LessonStatement | null {
   const entry = getCatalog().find((e) => e.courseKey === courseKey && e.slug === slug);
   if (!entry) return null;
-  const statement = readLocalized(contentDir(courseKey), `${slug}.md`, lang);
-  return { ...hit(entry), statement: statement.slice(0, STATEMENT_MAX_CHARS) };
+  return { ...hit(entry), statement: readStatement(courseKey, slug, lang) };
+}
+
+function readStatement(courseKey: string, slug: string, lang: Lang): string {
+  return readLocalized(contentDir(courseKey), `${slug}.md`, lang).slice(0, STATEMENT_MAX_CHARS);
+}
+
+// The lesson a lesson chat is about, Kotlin too, since the student is already
+// on it. Only one the curriculum lists, so a made-up slug never reaches the disk.
+export function lessonStatement(
+  courseKey: string,
+  slug: string,
+  lang: Lang,
+): { title: string; statement: string } | null {
+  const lesson = lessons.find((l) => l.courseKey === courseKey && l.slug === slug);
+  if (!lesson) return null;
+  return { title: lesson.title, statement: readStatement(courseKey, slug, lang) };
 }
 
 interface PageInfo {
