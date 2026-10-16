@@ -154,7 +154,9 @@ describe('PUT /api/profile/interests', () => {
     request(app).put('/api/profile/interests').set('Cookie', `token=${token}`).send(body);
 
   it('returns 401 without token', async () => {
-    const res = await request(app).put('/api/profile/interests').send({ interests: ['c'] });
+    const res = await request(app)
+      .put('/api/profile/interests')
+      .send({ interests: ['c'] });
     expect(res.status).toBe(401);
   });
 
