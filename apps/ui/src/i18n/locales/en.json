@@ -87,7 +87,15 @@
     "browserCounted": "This browser's visits are counted when you're signed out.",
     "browserNotCounted": "This browser isn't counted, even when you're signed out.",
     "countBrowser": "Count it",
-    "stopCounting": "Stop counting it"
+    "stopCounting": "Stop counting it",
+    "placementTest": "Placement test",
+    "placementHint": "Guest visits at each step of the test on the landing page. Getting past a question means pressing Next on it; past the last one is Submit.",
+    "placementOpened": "Opened the test",
+    "placementStarted": "Pressed Start",
+    "placementQuestion": "Got past question {{n}}",
+    "placementSubmitted": "Submitted",
+    "placementGetStarted": "Pressed Get started",
+    "placementProgress": "placement test {{n}}/{{total}}"
   },
   "lang": {
     "switch": "Switch language",
@@ -246,7 +254,8 @@
     },
     "cta": {
       "final": {
-        "title": "Write your first line of code today"
+        "title": "Not sure where to start?",
+        "button": "Test me"
       }
     },
     "footer": {
@@ -1254,7 +1263,10 @@
       "linux": "Why learn the Linux terminal?",
       "stuck": "What do I do when I'm stuck on a problem?",
       "debug": "How do I find a bug in my code?",
-      "better": "How do I get better at programming?"
+      "better": "How do I get better at programming?",
+      "pointers": "How do pointers work in C?",
+      "complexity": "How can I tell how fast my code is?",
+      "threads": "When should a program use threads?"
     },
     "placeholder": "Ask the tutor",
     "send": "Send",
@@ -1277,6 +1289,84 @@
       "read": "Reading a lesson",
       "readTitle": "Reading “{{title}}”",
       "pages": "Looking through the app"
+    }
+  },
+  "placement": {
+    "title": "A short test before we start",
+    "intro": "Don't worry and don't stress, this isn't an exam. It's 12 quick questions about Python, C, Java and Linux, so we know where to start with you. If you don't know an answer, pick the one that seems right. Getting them all wrong is fine too: it only means we start the lessons from zero together.",
+    "meta": "12 questions, about 5 minutes",
+    "start": "Start the test",
+    "progress": "Question {{n}} of {{total}}",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "result": {
+      "title": "Your result",
+      "text": "Here is every question with the right answer in green. Where you picked another one, yours is in red.",
+      "yours": "Your answer",
+      "correct": "Correct answer",
+      "cta": "Get started",
+      "ctaText": "Make a free account and we'll start from where you are."
+    },
+    "questions": {
+      "py1": {
+        "q": "What does this print?",
+        "options": ["14", "10", "11", "24"]
+      },
+      "py2": {
+        "q": "What does this print?",
+        "options": ["4", "3", "1", "An error"]
+      },
+      "py3": {
+        "q": "What does this print?",
+        "options": ["[2]", "[2, 1]", "An error", "[1, 2]"]
+      },
+      "c1": {
+        "q": "What does this print?",
+        "options": ["3.5", "3", "4", "3.0"]
+      },
+      "c2": {
+        "q": "What does this print?",
+        "options": ["10", "11", "20", "An address in memory"]
+      },
+      "c3": {
+        "q": "What does this print?",
+        "options": ["3", "2", "4", "8"]
+      },
+      "java1": {
+        "q": "Which line makes a variable that holds a whole number?",
+        "options": ["age = 20", "int age = 20;", "integer age = 20;", "var age: int = 20;"]
+      },
+      "java2": {
+        "q": "What does this print?",
+        "options": ["hi!", "null", "hi", "An error"]
+      },
+      "java3": {
+        "q": "What does this print?",
+        "options": ["true", "false", "It doesn't compile", "1000"]
+      },
+      "linux1": {
+        "q": "Which command shows the folder you're in?",
+        "options": ["ls", "cd", "whoami", "pwd"]
+      },
+      "linux2": {
+        "q": "What does ls -a show that a plain ls doesn't?",
+        "options": [
+          "The size of each file",
+          "Hidden files, whose names start with a dot",
+          "The files in every subfolder",
+          "Only the folders"
+        ]
+      },
+      "linux3": {
+        "q": "After chmod 640 notes.txt, who can read the file?",
+        "options": [
+          "Only its owner",
+          "Everyone",
+          "Its owner and its group",
+          "Nobody, until it's made executable"
+        ]
+      }
     }
   }
 }

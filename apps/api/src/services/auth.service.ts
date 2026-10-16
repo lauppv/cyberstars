@@ -5,16 +5,22 @@ import { config } from '../config/index.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as emailService from './email.service.js';
 import type { TokenPayload, AuthenticatedUser } from '@cyberstars/shared/auth';
+import { placementLevel } from '@cyberstars/shared/placement';
 import { AppError } from '../middleware/errorHandler.js';
 
 // Kept in one place because the dummy-hash timing defense below only works if
 // every hash (real and throwaway) uses the same cost.
 const BCRYPT_COST = 10;
 
-export async function signup(name: string, email: string, password: string): Promise<string> {
+export async function signup(
+  name: string,
+  email: string,
+  password: string,
+  placementScore?: number,
+): Promise<string> {
   const hashedPassword = bcrypt.hashSync(password, BCRYPT_COST);
   try {
-    const userId = await userRepo.create(name, email, hashedPassword);
+    const userId = await userRepo.create(name, email, hashedPassword, placementScore);
     return createToken(userId);
   } catch (err: unknown) {
     if (
@@ -77,6 +83,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     showActivity: user.showActivity,
     showConnections: user.showConnections,
     onboardedAt: user.onboardedAt?.toISOString() ?? null,
+    placementLevel: user.placementScore === null ? null : placementLevel(user.placementScore),
   };
 }
 

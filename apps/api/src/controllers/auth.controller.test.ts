@@ -67,7 +67,7 @@ describe('signup', () => {
     const res = mockRes();
     const next = mockNext();
     await signup(req, res, next);
-    expect(mockSignup).toHaveBeenCalledWith('Test', 'test@test.com', 'pass123');
+    expect(mockSignup).toHaveBeenCalledWith('Test', 'test@test.com', 'pass123', undefined);
     expect(res.cookie).toHaveBeenCalledWith('token', 'jwt-token-123', expect.any(Object));
     expect(res.json).toHaveBeenCalledWith({ message: 'User created successfully' });
   });

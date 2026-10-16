@@ -104,6 +104,9 @@ model User {
   // When the user finished the first-lesson tour. NULL means a new account
   // that is still held on the tour lesson until its tests pass.
   onboardedAt     DateTime? @map("onboarded_at")
+  // Right answers out of 12 on the landing page's placement test, taken
+  // before signing up. NULL when the student signed up without it.
+  placementScore  Int?      @map("placement_score") @db.SmallInt
 
   progress           UserLessonProgress[]
   savedCode          UserSavedCode[]

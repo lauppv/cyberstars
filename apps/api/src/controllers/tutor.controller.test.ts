@@ -7,7 +7,7 @@ import { AppError } from '../middleware/errorHandler.js';
 const mockTutor = { askTutor: vi.fn() };
 vi.mock('../services/tutor.service.js', () => mockTutor);
 
-const mockUserRepo = { getRole: vi.fn() };
+const mockUserRepo = { getRole: vi.fn(), getPlacementScore: vi.fn() };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
 const mockConversations = {
@@ -86,6 +86,7 @@ async function* failing(err: Error, ...events: TutorStreamEvent[]) {
 beforeEach(() => {
   vi.clearAllMocks();
   mockUserRepo.getRole.mockResolvedValue('USER');
+  mockUserRepo.getPlacementScore.mockResolvedValue(null);
   mockConversations.recentHistory.mockResolvedValue(history);
   mockConversations.saveExchange.mockResolvedValue(NEW_ID);
   mockUsage.hold.mockResolvedValue(held);
@@ -112,6 +113,7 @@ describe('chat', () => {
       history: [],
       page: '/courses',
       uiLang: 'ro',
+      level: null,
       role: 'USER',
       isProd: false,
       signal: expect.any(AbortSignal),
@@ -138,6 +140,16 @@ describe('chat', () => {
         answer: { text: 'Try the For lesson.', finish: 'complete' },
       },
     ]);
+  });
+
+  it("tells the tutor the level from the student's placement test", async () => {
+    mockUserRepo.getPlacementScore.mockResolvedValue(10);
+    mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'complete' }));
+
+    await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
+
+    expect(mockUserRepo.getPlacementScore).toHaveBeenCalledWith(5);
+    expect(mockTutor.askTutor).toHaveBeenCalledWith(expect.objectContaining({ level: 'advanced' }));
   });
 
   it('continues a conversation of the student’s with its history', async () => {

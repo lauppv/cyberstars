@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import type { AdminVisitsDTO } from '@cyberstars/shared/visits';
 
 const getVisits = vi.fn();
@@ -26,6 +26,12 @@ const dto: AdminVisitsDTO = {
   ],
   lang: [{ key: 'ro', visitors: 3, views: 4 }],
   clicks: [{ key: 'run', visitors: 2, views: 5 }],
+  placement: {
+    opened: 6,
+    started: 4,
+    answered: [4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2],
+    getStarted: 1,
+  },
 };
 
 beforeEach(() => {
@@ -35,6 +41,20 @@ beforeEach(() => {
 });
 
 describe('VisitorsSection', () => {
+  it('lines up the placement test from opening it to Get started', async () => {
+    render(<VisitorsSection className="" reload={0} />);
+    const funnel = (await screen.findByText('Placement test')).parentElement!;
+    const rows = within(funnel)
+      .getAllByRole('listitem')
+      .map((li) => li.textContent);
+    expect(rows).toHaveLength(15);
+    expect(rows[0]).toBe('Opened the test6');
+    expect(rows[1]).toBe('Pressed Start4');
+    expect(rows[2]).toBe('Got past question 14');
+    expect(rows[13]).toBe('Submitted2');
+    expect(rows[14]).toBe('Pressed Get started1');
+  });
+
   it('shows the charts, the pages, the sources and the split', async () => {
     render(<VisitorsSection className="" reload={0} />);
     expect(await screen.findByText('/lesson/python/print')).toBeInTheDocument();

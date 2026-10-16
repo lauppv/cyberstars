@@ -92,7 +92,15 @@
     "browserCounted": "Vizitele din browserul acesta se numără când nu ești logat.",
     "browserNotCounted": "Browserul acesta nu se numără, nici când nu ești logat.",
     "countBrowser": "Numără-l",
-    "stopCounting": "Nu-l mai număra"
+    "stopCounting": "Nu-l mai număra",
+    "placementTest": "Testul de nivel",
+    "placementHint": "Vizitele de guest la fiecare pas al testului de pe landing page. Trecut de o întrebare înseamnă că a apăsat Mai departe pe ea; de ultima, Trimite.",
+    "placementOpened": "A deschis testul",
+    "placementStarted": "A apăsat Începe testul",
+    "placementQuestion": "A trecut de întrebarea {{n}}",
+    "placementSubmitted": "A trimis",
+    "placementGetStarted": "A apăsat Începe după rezultat",
+    "placementProgress": "test de nivel {{n}}/{{total}}"
   },
   "lang": {
     "switch": "Schimbă limba",
@@ -256,7 +264,8 @@
     },
     "cta": {
       "final": {
-        "title": "Scrie azi prima ta linie de cod"
+        "title": "Nu știi de unde să începi?",
+        "button": "Testează-mă"
       }
     },
     "footer": {
@@ -1266,7 +1275,10 @@
       "linux": "De ce să învăț terminalul Linux?",
       "stuck": "Ce fac când m-am blocat la o problemă?",
       "debug": "Cum găsesc o greșeală în codul meu?",
-      "better": "Cum devin mai bun la programare?"
+      "better": "Cum devin mai bun la programare?",
+      "pointers": "Cum funcționează pointerii în C?",
+      "complexity": "Cum îmi dau seama cât de rapid e codul meu?",
+      "threads": "Când are nevoie un program de thread-uri?"
     },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",
@@ -1289,6 +1301,84 @@
       "read": "Citesc o lecție",
       "readTitle": "Citesc „{{title}}”",
       "pages": "Mă uit prin aplicație"
+    }
+  },
+  "placement": {
+    "title": "Un test scurt înainte să începem",
+    "intro": "Nu te speria și nu te stresa, nu e un examen. Sunt 12 întrebări scurte despre Python, C, Java și Linux, ca să știm de unde pornim cu tine. Dacă nu știi un răspuns, alege-l pe cel care ți se pare corect. Și dacă le greșești pe toate e în regulă: înseamnă doar că pornim împreună de la zero cu lecțiile.",
+    "meta": "12 întrebări, cam 5 minute",
+    "start": "Începe testul",
+    "progress": "Întrebarea {{n}} din {{total}}",
+    "back": "Înapoi",
+    "next": "Mai departe",
+    "submit": "Trimite",
+    "result": {
+      "title": "Rezultatul tău",
+      "text": "Mai jos e fiecare întrebare cu răspunsul corect în verde. Unde ai ales altul, al tău e în roșu.",
+      "yours": "Răspunsul tău",
+      "correct": "Răspunsul corect",
+      "cta": "Începe",
+      "ctaText": "Fă-ți un cont gratuit și pornim de unde ești."
+    },
+    "questions": {
+      "py1": {
+        "q": "Ce afișează?",
+        "options": ["14", "10", "11", "24"]
+      },
+      "py2": {
+        "q": "Ce afișează?",
+        "options": ["4", "3", "1", "O eroare"]
+      },
+      "py3": {
+        "q": "Ce afișează?",
+        "options": ["[2]", "[2, 1]", "O eroare", "[1, 2]"]
+      },
+      "c1": {
+        "q": "Ce afișează?",
+        "options": ["3.5", "3", "4", "3.0"]
+      },
+      "c2": {
+        "q": "Ce afișează?",
+        "options": ["10", "11", "20", "O adresă din memorie"]
+      },
+      "c3": {
+        "q": "Ce afișează?",
+        "options": ["3", "2", "4", "8"]
+      },
+      "java1": {
+        "q": "Care linie face o variabilă care ține un număr întreg?",
+        "options": ["age = 20", "int age = 20;", "integer age = 20;", "var age: int = 20;"]
+      },
+      "java2": {
+        "q": "Ce afișează?",
+        "options": ["hi!", "null", "hi", "O eroare"]
+      },
+      "java3": {
+        "q": "Ce afișează?",
+        "options": ["true", "false", "Nu compilează", "1000"]
+      },
+      "linux1": {
+        "q": "Ce comandă arată folderul în care ești?",
+        "options": ["ls", "cd", "whoami", "pwd"]
+      },
+      "linux2": {
+        "q": "Ce arată ls -a în plus față de un simplu ls?",
+        "options": [
+          "Mărimea fiecărui fișier",
+          "Fișierele ascunse, al căror nume începe cu punct",
+          "Fișierele din toate subfolderele",
+          "Doar folderele"
+        ]
+      },
+      "linux3": {
+        "q": "După chmod 640 notes.txt, cine poate citi fișierul?",
+        "options": [
+          "Doar proprietarul",
+          "Toată lumea",
+          "Proprietarul și grupul lui",
+          "Nimeni, până nu e făcut executabil"
+        ]
+      }
     }
   }
 }

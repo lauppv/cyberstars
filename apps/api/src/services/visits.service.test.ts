@@ -11,6 +11,7 @@ const mockRepo = {
   countSteps: vi.fn(),
   addSteps: vi.fn(),
   topClicksSince: vi.fn(),
+  placementStepsSince: vi.fn(),
   guestVisitsSince: vi.fn(),
 };
 vi.mock('../repositories/visits.repository.js', () => mockRepo);
@@ -28,6 +29,7 @@ beforeEach(() => {
   mockRepo.guestVisitId.mockResolvedValue(7);
   mockRepo.countSteps.mockResolvedValue(0);
   mockRepo.topClicksSince.mockResolvedValue([]);
+  mockRepo.placementStepsSince.mockResolvedValue([]);
 });
 
 afterEach(() => vi.useRealTimers());
@@ -314,6 +316,29 @@ describe('report', () => {
 
     expect(mockRepo.topClicksSince).toHaveBeenCalledWith(day('2026-11-01'), 10);
     expect(dto.clicks).toEqual([{ key: 'run', visitors: 2, views: 5 }]);
+  });
+
+  it('lines the placement test up from its page to Get started', async () => {
+    mockRepo.totalsSince.mockResolvedValue([]);
+    mockRepo.newAccountsSince.mockResolvedValue([]);
+    mockRepo.placementStepsSince.mockResolvedValue([
+      { key: 'opened', visitors: 9 },
+      { key: 'placement-start', visitors: 6 },
+      { key: 'placement-q1', visitors: 5 },
+      { key: 'placement-q2', visitors: 4 },
+      { key: 'placement-submit', visitors: 2 },
+      { key: 'placement-get-started', visitors: 1 },
+    ]);
+
+    const dto = await service.report(30);
+
+    expect(mockRepo.placementStepsSince).toHaveBeenCalledWith(day('2026-11-01'));
+    expect(dto.placement).toEqual({
+      opened: 9,
+      started: 6,
+      answered: [5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+      getStarted: 1,
+    });
   });
 });
 

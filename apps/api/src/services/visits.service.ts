@@ -1,10 +1,12 @@
 import crypto from 'crypto';
 import * as visitsRepo from '../repositories/visits.repository.js';
 import { VISIT_RANGES } from '@cyberstars/shared/visits';
+import { PLACEMENT_QUESTION_COUNT } from '@cyberstars/shared/placement';
 import type {
   AdminVisitsDTO,
   GuestVisitsDTO,
   PageViewReport,
+  PlacementFunnel,
   StepsReport,
   VisitCount,
   VisitDay,
@@ -186,10 +188,11 @@ const TOP_CLICKS = 10;
 export async function report(range: VisitRange): Promise<AdminVisitsDTO> {
   const last = today();
   const first = dayBefore(last, range - 1);
-  const [rows, accounts, clicks] = await Promise.all([
+  const [rows, accounts, clicks, placement] = await Promise.all([
     visitsRepo.totalsSince(asDate(first)),
     visitsRepo.newAccountsSince(asDate(first)),
     visitsRepo.topClicksSince(asDate(first), TOP_CLICKS),
+    visitsRepo.placementStepsSince(asDate(first)),
   ]);
 
   const dayKey = (d: Date) => d.toISOString().slice(0, 10);
@@ -220,6 +223,22 @@ export async function report(range: VisitRange): Promise<AdminVisitsDTO> {
     auth: sumByKey(rows, 'auth'),
     lang: sumByKey(rows, 'lang'),
     clicks,
+    placement: placementFunnel(placement),
+  };
+}
+
+// The test's Next on question N is pressed as placement-qN and its Submit on
+// the last one as placement-submit. There is no going past a question
+// unanswered, so a visit that got past one got past every one before it.
+function placementFunnel(steps: { key: string; visitors: number }[]): PlacementFunnel {
+  const visits = (key: string) => steps.find((s) => s.key === key)?.visitors ?? 0;
+  return {
+    opened: visits('opened'),
+    started: visits('placement-start'),
+    answered: Array.from({ length: PLACEMENT_QUESTION_COUNT }, (_, i) =>
+      visits(i === PLACEMENT_QUESTION_COUNT - 1 ? 'placement-submit' : `placement-q${i + 1}`),
+    ),
+    getStarted: visits('placement-get-started'),
   };
 }
 

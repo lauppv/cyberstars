@@ -72,6 +72,17 @@ describe('getRole', () => {
   });
 });
 
+describe('getPlacementScore', () => {
+  it('returns the stored score, or null without one', async () => {
+    mockPrisma.user.findUnique.mockResolvedValueOnce({ placementScore: 9 });
+    mockPrisma.user.findUnique.mockResolvedValueOnce({ placementScore: null });
+    mockPrisma.user.findUnique.mockResolvedValueOnce(null);
+    expect(await repo.getPlacementScore(1)).toBe(9);
+    expect(await repo.getPlacementScore(1)).toBeNull();
+    expect(await repo.getPlacementScore(1)).toBeNull();
+  });
+});
+
 describe('create', () => {
   it('bootstraps the first account as ADMIN', async () => {
     const tx = {
@@ -92,10 +103,12 @@ describe('create', () => {
       user: { count: vi.fn().mockResolvedValue(3), create: vi.fn().mockResolvedValue({ id: 9 }) },
     };
     mockPrisma.$transaction.mockImplementation((fn: (t: typeof tx) => unknown) => fn(tx));
-    const id = await repo.create('Jane', 'jane@b.com', 'hash');
+    const id = await repo.create('Jane', 'jane@b.com', 'hash', 5);
     expect(id).toBe(9);
     expect(tx.user.create).toHaveBeenCalledWith(
-      expect.objectContaining({ data: expect.objectContaining({ role: 'USER' }) }),
+      expect.objectContaining({
+        data: expect.objectContaining({ role: 'USER', placementScore: 5 }),
+      }),
     );
   });
 

@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from './AuthContext';
 import { useUsage } from './UsageContext';
 import { canAccessFeature } from '@cyberstars/shared/features';
+import type { PlacementLevel } from '@cyberstars/shared/placement';
 import type {
   TutorAnswerEnd,
   TutorConversationSummary,
@@ -97,6 +98,35 @@ const GENERAL_STARTERS = [
   'debug',
   'better',
 ];
+// From the placement test: the same kind of questions, fitted to how far the
+// student is, so an advanced one is never offered what a variable is.
+const LEVEL_STARTERS: Record<PlacementLevel, string[]> = {
+  beginner: [
+    'course',
+    'idea',
+    'help',
+    'loop',
+    'function',
+    'error',
+    'languages',
+    'list',
+    'linux',
+    'stuck',
+  ],
+  intermediate: [
+    'function',
+    'error',
+    'languages',
+    'challenge',
+    'recursion',
+    'list',
+    'linux',
+    'stuck',
+    'debug',
+    'better',
+  ],
+  advanced: ['challenge', 'recursion', 'debug', 'better', 'pointers', 'complexity', 'threads'],
+};
 const PAGE_STARTERS: [path: string, starter: string][] = [
   ['/algorithms', 'challenge'],
   ['/courses', 'course'],
@@ -105,9 +135,11 @@ const PAGE_STARTERS: [path: string, starter: string][] = [
 // What the tutor says when a lesson's tests pass, one of them at random.
 const CHEERS = ['tutor.cheer.done', 'tutor.cheer.alone', 'tutor.cheer.yours'];
 
-function pickStarters(pathname: string): string[] {
+function pickStarters(pathname: string, level: PlacementLevel | null): string[] {
   const fits = PAGE_STARTERS.find(([path]) => pathname.startsWith(path))?.[1];
-  const pool = GENERAL_STARTERS.filter((starter) => starter !== fits);
+  const pool = (level ? LEVEL_STARTERS[level] : GENERAL_STARTERS).filter(
+    (starter) => starter !== fits,
+  );
   const picked = fits ? [fits] : [];
   while (picked.length < 3) picked.push(...pool.splice(Math.floor(Math.random() * pool.length), 1));
   return picked.map((starter) => `tutor.start.${starter}`);
@@ -224,6 +256,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const { refresh: refreshUsage } = useUsage();
   const enabled = !!user && canAccessFeature('tutorChat', user.role, import.meta.env.PROD);
   const userId = user?.id;
+  const placement = user?.placementLevel ?? null;
 
   const [open, setOpen] = useState(false);
   // Every conversation opened so far, by a key of the panel's own. An answer
@@ -331,10 +364,10 @@ export function TutorProvider({ children }: { children: ReactNode }) {
         ([, c]) => untouched(c) && lessonKeyOf(c.lesson) === lessonKeyOf(lesson),
       );
       const key = reuse?.[0] ?? `new-${++fresh.current}`;
-      add(key, blank(lesson, null, lesson ? [] : pickStarters(pathname)));
+      add(key, blank(lesson, null, lesson ? [] : pickStarters(pathname, placement)));
       display(key, lesson);
     },
-    [add, display, pathname],
+    [add, display, pathname, placement],
   );
 
   // Shows a saved conversation, reading its messages the first time.

@@ -1,3 +1,5 @@
+import type { PlacementLevel } from './placement.js';
+
 export type UserRole = 'USER' | 'MODERATOR' | 'ADMIN' | 'FOUNDER';
 
 // Admin-level privilege. FOUNDER is a superset of ADMIN, so every admin-gated
@@ -25,6 +27,8 @@ export interface AuthenticatedUser {
   showConnections: boolean;
   // When the first-lesson tour was finished; null holds the account on it.
   onboardedAt: string | null;
+  // From the landing page's placement test; null when it wasn't taken.
+  placementLevel: PlacementLevel | null;
 }
 
 export interface LoginPayload {
@@ -36,6 +40,7 @@ export interface SignupPayload {
   name: string;
   email: string;
   password: string;
+  placementScore?: number;
 }
 
 export interface TokenPayload {

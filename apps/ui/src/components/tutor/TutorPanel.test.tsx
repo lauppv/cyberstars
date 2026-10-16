@@ -12,7 +12,9 @@ import type { UsageState } from '@cyberstars/shared/usage';
 import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
-  auth: { user: null as null | { id: number; role: string; name?: string } },
+  auth: {
+    user: null as null | { id: number; role: string; name?: string; placementLevel?: string },
+  },
   canAccess: vi.fn((..._a: unknown[]) => true),
   listConversations: vi.fn(),
   getConversation: vi.fn(),
@@ -303,6 +305,32 @@ describe('TutorPanel', () => {
       'How do I get better at programming?',
       'How do I find a bug in my code?',
       "What do I do when I'm stuck on a problem?",
+    ]);
+  });
+
+  it('fits the questions to the level from the placement test', async () => {
+    h.auth = { user: { ...USER, placementLevel: 'advanced' } };
+    const random = vi.spyOn(Math, 'random').mockReturnValue(0);
+    const starters = () =>
+      within(screen.getByText(/Ask about a lesson/).parentElement!)
+        .getAllByRole('button')
+        .map((b) => b.textContent);
+    renderTutor('/forum');
+    await openPanel();
+    await screen.findByText(/Ask about a lesson/);
+    expect(starters()).toEqual([
+      'Which challenge should I try first?',
+      'What is recursion?',
+      'How do I find a bug in my code?',
+    ]);
+
+    fireEvent.click(screen.getByText('toggle'));
+    random.mockReturnValue(0.99);
+    await openPanel();
+    expect(starters()).toEqual([
+      'When should a program use threads?',
+      'How can I tell how fast my code is?',
+      'How do pointers work in C?',
     ]);
   });
 

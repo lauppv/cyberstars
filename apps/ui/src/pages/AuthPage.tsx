@@ -7,6 +7,7 @@ import { forgotPassword, resetPassword } from '../services/authService';
 import { BrandMark } from '../components/ui/BrandMark';
 import { EyeIcon } from '../components/ui/EyeIcon';
 import { TOUR_PATH } from '../constants/tour';
+import { clearPlacementScore, readPlacementScore } from '../services/placementScore';
 
 function getPasswordStrength(pw: string): number {
   if (pw.length === 0) return 0;
@@ -68,7 +69,9 @@ export function AuthPage() {
         await login({ email, password });
         navigate(initial?.from ?? '/');
       } else if (mode === 'signup') {
-        await signup({ name, email, password });
+        // The placement test's score, when the visitor took it first
+        await signup({ name, email, password, placementScore: readPlacementScore() });
+        clearPlacementScore();
         navigate(TOUR_PATH);
       } else if (mode === 'forgot') {
         await forgotPassword(email);

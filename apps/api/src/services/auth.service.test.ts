@@ -46,6 +46,17 @@ describe('signup', () => {
     }
   });
 
+  it('keeps the placement score the visitor got before signing up', async () => {
+    mockUserRepo.create.mockResolvedValue(42);
+    await signup('Alice', 'alice@test.com', 'pass123', 7);
+    expect(mockUserRepo.create).toHaveBeenCalledWith(
+      'Alice',
+      'alice@test.com',
+      expect.any(String),
+      7,
+    );
+  });
+
   it('re-throws unknown errors', async () => {
     mockUserRepo.create.mockRejectedValue(new Error('DB down'));
     await expect(signup('Alice', 'alice@test.com', 'pass123')).rejects.toThrow('DB down');
@@ -114,6 +125,20 @@ describe('getUser', () => {
     });
     const user = await getUser(1);
     expect(user.onboardedAt).toBe('2024-01-02T00:00:00.000Z');
+  });
+
+  it('gives the level from the placement score, and none without one', async () => {
+    const ada = {
+      id: 1,
+      name: 'Ada',
+      email: 'ada@test.com',
+      role: 'USER',
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+    };
+    mockUserRepo.findById.mockResolvedValueOnce({ ...ada, placementScore: 6 });
+    mockUserRepo.findById.mockResolvedValueOnce({ ...ada, placementScore: null });
+    expect((await getUser(1)).placementLevel).toBe('intermediate');
+    expect((await getUser(1)).placementLevel).toBeNull();
   });
 
   it('nullifies expired status', async () => {

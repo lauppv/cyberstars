@@ -128,7 +128,7 @@ describe('guestVisitsSince', () => {
   });
 });
 
-describe('totalsSince, newAccountsSince and topClicksSince', () => {
+describe('totalsSince, newAccountsSince, topClicksSince and placementStepsSince', () => {
   it('return the rows the database gives back', async () => {
     mockPrisma.$queryRaw.mockResolvedValueOnce([{ dimension: 'all' }]);
     expect(await repo.totalsSince(day)).toEqual([{ dimension: 'all' }]);
@@ -136,5 +136,7 @@ describe('totalsSince, newAccountsSince and topClicksSince', () => {
     expect(await repo.newAccountsSince(day)).toEqual([{ day, count: 2 }]);
     mockPrisma.$queryRaw.mockResolvedValueOnce([{ key: 'run', visitors: 1, views: 3 }]);
     expect(await repo.topClicksSince(day, 10)).toEqual([{ key: 'run', visitors: 1, views: 3 }]);
+    mockPrisma.$queryRaw.mockResolvedValueOnce([{ key: 'opened', visitors: 4 }]);
+    expect(await repo.placementStepsSince(day)).toEqual([{ key: 'opened', visitors: 4 }]);
   });
 });

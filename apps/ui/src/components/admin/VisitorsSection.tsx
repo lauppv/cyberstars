@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VISIT_RANGES } from '@cyberstars/shared/visits';
-import type { AdminVisitsDTO, VisitCount, VisitRange } from '@cyberstars/shared/visits';
+import type {
+  AdminVisitsDTO,
+  PlacementFunnel,
+  VisitCount,
+  VisitRange,
+} from '@cyberstars/shared/visits';
 import { getVisits } from '../../services/visitsService';
 import { isCounted, setCounted } from '../../services/visitCounting';
 import { DailyChart } from './DailyChart';
@@ -49,6 +54,44 @@ function Ranked({
           ))}
         </ul>
       )}
+    </div>
+  );
+}
+
+// How many guest visits reached each step of the landing page's placement test
+// (CYB-68), each bar against the visits that opened it.
+function PlacementFunnelTable({ funnel }: { funnel: PlacementFunnel }) {
+  const { t } = useTranslation();
+  const rows: [label: string, visits: number][] = [
+    [t('admin.placementOpened'), funnel.opened],
+    [t('admin.placementStarted'), funnel.started],
+    ...funnel.answered.map((visits, i): [string, number] => [
+      i === funnel.answered.length - 1
+        ? t('admin.placementSubmitted')
+        : t('admin.placementQuestion', { n: i + 1 }),
+      visits,
+    ]),
+    [t('admin.placementGetStarted'), funnel.getStarted],
+  ];
+  const most = Math.max(funnel.opened, 1);
+  return (
+    <div className="pt-4 mt-4 border-t border-[var(--border)]">
+      <h3 className="text-[13px] font-semibold m-0 mb-1">{t('admin.placementTest')}</h3>
+      <p className="mt-0 mb-3 text-[11px] text-[var(--text3)]">{t('admin.placementHint')}</p>
+      <ul className="m-0 p-0 list-none flex flex-col gap-1 text-[12px]">
+        {rows.map(([label, visits]) => (
+          <li key={label} className="grid grid-cols-[minmax(0,10rem)_1fr_3rem] items-center gap-3">
+            <span className="text-[var(--text2)] truncate">{label}</span>
+            <span className="h-1.5 rounded-full bg-[var(--surface2)] overflow-hidden">
+              <span
+                className="block h-full bg-[var(--accent)]"
+                style={{ width: `${(visits / most) * 100}%` }}
+              />
+            </span>
+            <span className="text-[var(--text3)] tabular-nums text-right">{visits}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -167,6 +210,8 @@ export function VisitorsSection({ className, reload }: { className: string; relo
             </span>
           </div>
           <p className="mt-3 text-[11px] text-[var(--text3)]">{t('admin.visitorDays')}</p>
+
+          <PlacementFunnelTable funnel={data.placement} />
 
           <GuestVisits
             range={range}

@@ -2,12 +2,14 @@ import type { ReactNode } from 'react';
 import { Navigate, matchPath, useLocation } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 
-// The only pages a guest can open: the welcome page, sign-in, the courses and
-// algorithm challenges they can run code in, and the Almanac. Every other page,
+// The only pages a guest can open: the welcome page, the placement test,
+// sign-in, the courses and algorithm challenges they can run code in, and the
+// Almanac. Every other page,
 // a new one included, takes an account.
 const GUEST_PATHS = [
   '/',
   '/getstarted',
+  '/placement',
   '/courses',
   '/courses/:course',
   '/algorithms',
