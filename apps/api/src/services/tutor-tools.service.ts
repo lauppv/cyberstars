@@ -9,9 +9,6 @@ import { contentDir, readLocalized } from './paths.js';
 
 type Lang = 'en' | 'ro';
 
-// Kotlin is badged "Coming Soon" in the UI, so the tutor sends no one there.
-const HIDDEN_COURSES = new Set(['kotlin']);
-
 const SEARCH_RESULTS = 6;
 
 // Little words that sit in every statement and would rank lessons at random.
@@ -72,28 +69,26 @@ let catalog: CatalogEntry[] | null = null;
 function getCatalog(): CatalogEntry[] {
   if (catalog) return catalog;
   const courseTitles = new Map(courses.map((c) => [c.key, c.title]));
-  catalog = lessons
-    .filter((l) => !HIDDEN_COURSES.has(l.courseKey))
-    .map((l) => {
-      const dir = contentDir(l.courseKey);
-      const statement = [
-        readLocalized(dir, `${l.slug}.md`, 'en'),
-        readLocalized(dir, `${l.slug}.md`, 'ro'),
-      ].join('\n');
-      const textWords = new Map<string, number>();
-      for (const w of words(statement)) textWords.set(w, (textWords.get(w) ?? 0) + 1);
-      const course = courseTitles.get(l.courseKey) ?? l.courseKey;
-      return {
-        courseKey: l.courseKey,
-        slug: l.slug,
-        title: l.title,
-        course,
-        kind: l.courseKey.startsWith('algo-') ? 'challenge' : 'lesson',
-        link: `/lesson/${l.courseKey}/${l.slug}`,
-        titleWords: words(`${l.title} ${l.slug} ${course}`),
-        textWords,
-      };
-    });
+  catalog = lessons.map((l) => {
+    const dir = contentDir(l.courseKey);
+    const statement = [
+      readLocalized(dir, `${l.slug}.md`, 'en'),
+      readLocalized(dir, `${l.slug}.md`, 'ro'),
+    ].join('\n');
+    const textWords = new Map<string, number>();
+    for (const w of words(statement)) textWords.set(w, (textWords.get(w) ?? 0) + 1);
+    const course = courseTitles.get(l.courseKey) ?? l.courseKey;
+    return {
+      courseKey: l.courseKey,
+      slug: l.slug,
+      title: l.title,
+      course,
+      kind: l.courseKey.startsWith('algo-') ? 'challenge' : 'lesson',
+      link: `/lesson/${l.courseKey}/${l.slug}`,
+      titleWords: words(`${l.title} ${l.slug} ${course}`),
+      textWords,
+    };
+  });
   return catalog;
 }
 
@@ -146,8 +141,8 @@ function readStatement(courseKey: string, slug: string, lang: Lang): string {
   return readLocalized(contentDir(courseKey), `${slug}.md`, lang).slice(0, STATEMENT_MAX_CHARS);
 }
 
-// The lesson a lesson chat is about, Kotlin too, since the student is already
-// on it. Only one the curriculum lists, so a made-up slug never reaches the disk.
+// The lesson a lesson chat is about. Only one the curriculum lists, so a
+// made-up slug never reaches the disk.
 export function lessonStatement(
   courseKey: string,
   slug: string,
@@ -220,16 +215,14 @@ interface AppMap {
 // recommends one by what CyberStars covers and not by what the language is
 // known for elsewhere
 export function listCourses(): CourseInfo[] {
-  return courses
-    .filter((c) => !HIDDEN_COURSES.has(c.key))
-    .map((c) => ({
-      title: c.title,
-      link: c.key.startsWith('algo-')
-        ? `/algorithms/${c.key.replace('algo-', '')}`
-        : `/courses/${c.key}`,
-      lessons: lessons.filter((l) => l.courseKey === c.key).length,
-      about: c.description,
-    }));
+  return courses.map((c) => ({
+    title: c.title,
+    link: c.key.startsWith('algo-')
+      ? `/algorithms/${c.key.replace('algo-', '')}`
+      : `/courses/${c.key}`,
+    lessons: lessons.filter((l) => l.courseKey === c.key).length,
+    about: c.description,
+  }));
 }
 
 // Pages this student can open, the same rules the sidebar uses: a preview page
