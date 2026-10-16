@@ -197,6 +197,7 @@ export function PlacementPage() {
                 {step < TOTAL - 1 ? (
                   <button
                     type="button"
+                    data-track={`placement-q${step + 1}`}
                     disabled={answers[step] === undefined}
                     onClick={() => setStep(step + 1)}
                     className={PRIMARY}

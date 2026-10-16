@@ -87,7 +87,15 @@
     "browserCounted": "This browser's visits are counted when you're signed out.",
     "browserNotCounted": "This browser isn't counted, even when you're signed out.",
     "countBrowser": "Count it",
-    "stopCounting": "Stop counting it"
+    "stopCounting": "Stop counting it",
+    "placementTest": "Placement test",
+    "placementHint": "Guest visits at each step of the test on the landing page. Getting past a question means pressing Next on it; past the last one is Submit.",
+    "placementOpened": "Opened the test",
+    "placementStarted": "Pressed Start",
+    "placementQuestion": "Got past question {{n}}",
+    "placementSubmitted": "Submitted",
+    "placementGetStarted": "Pressed Get started",
+    "placementProgress": "placement test {{n}}/{{total}}"
   },
   "lang": {
     "switch": "Switch language",

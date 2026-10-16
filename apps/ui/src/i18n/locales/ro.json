@@ -92,7 +92,15 @@
     "browserCounted": "Vizitele din browserul acesta se numără când nu ești logat.",
     "browserNotCounted": "Browserul acesta nu se numără, nici când nu ești logat.",
     "countBrowser": "Numără-l",
-    "stopCounting": "Nu-l mai număra"
+    "stopCounting": "Nu-l mai număra",
+    "placementTest": "Testul de nivel",
+    "placementHint": "Vizitele de guest la fiecare pas al testului de pe landing page. Trecut de o întrebare înseamnă că a apăsat Mai departe pe ea; de ultima, Trimite.",
+    "placementOpened": "A deschis testul",
+    "placementStarted": "A apăsat Începe testul",
+    "placementQuestion": "A trecut de întrebarea {{n}}",
+    "placementSubmitted": "A trimis",
+    "placementGetStarted": "A apăsat Începe după rezultat",
+    "placementProgress": "test de nivel {{n}}/{{total}}"
   },
   "lang": {
     "switch": "Schimbă limba",

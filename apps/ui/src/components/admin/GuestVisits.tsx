@@ -1,20 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { GuestVisitDTO, VisitRange, VisitStep } from '@cyberstars/shared/visits';
+import { PLACEMENT_QUESTION_COUNT } from '@cyberstars/shared/placement';
 import { getGuestVisits } from '../../services/visitsService';
 
 interface Shown {
   step: VisitStep;
   times: number;
+  // In the placement test: how many questions the guest got past
+  placement?: number;
 }
 
-// The same button pressed again and again reads as one press with a count, and
-// a run of scrolls on one page as the deepest it got.
+// How far into the placement test a press says the guest got: past question N
+// for its Next, past the last for its Submit.
+function placementAnswered(step: VisitStep): number | undefined {
+  if (step.kind !== 'click') return undefined;
+  if (step.target === 'placement-submit') return PLACEMENT_QUESTION_COUNT;
+  const next = /^placement-q(\d+)$/.exec(step.target);
+  return next ? Number(next[1]) : undefined;
+}
+
+// The same button pressed again and again reads as one press with a count, a
+// run of scrolls on one page as the deepest it got, and a run through the
+// placement test's questions as how far it went.
 function collapse(steps: VisitStep[]): Shown[] {
   const shown: Shown[] = [];
   for (const step of steps) {
     const last = shown[shown.length - 1];
-    if (
+    const answered = placementAnswered(step);
+    if (answered !== undefined) {
+      if (last?.placement !== undefined) last.placement = Math.max(last.placement, answered);
+      else shown.push({ step, times: 1, placement: answered });
+    } else if (
       last &&
       step.kind === 'click' &&
       last.step.kind === 'click' &&
@@ -34,7 +51,7 @@ function Steps({ steps }: { steps: VisitStep[] }) {
   const { t } = useTranslation();
   return (
     <ol className="m-0 p-0 list-none flex flex-wrap gap-x-1.5 gap-y-0.5 text-[12px] leading-relaxed">
-      {collapse(steps).map(({ step, times }, i) => (
+      {collapse(steps).map(({ step, times, placement }, i) => (
         <li key={i} className="flex gap-1.5">
           {i > 0 && (
             <span className="text-[var(--text3)]" aria-hidden="true">
@@ -42,7 +59,12 @@ function Steps({ steps }: { steps: VisitStep[] }) {
             </span>
           )}
           {step.kind === 'page' && <span className="text-[var(--text2)]">{step.target}</span>}
-          {step.kind === 'click' && (
+          {placement !== undefined && (
+            <span className="text-[var(--accent)] font-semibold">
+              {t('admin.placementProgress', { n: placement, total: PLACEMENT_QUESTION_COUNT })}
+            </span>
+          )}
+          {step.kind === 'click' && placement === undefined && (
             <span className="text-[var(--text)] font-semibold">
               {step.target}
               {times > 1 && ` ×${times}`}

@@ -71,6 +71,48 @@ describe('GuestVisits', () => {
     ]);
   });
 
+  it('folds a run through the placement test into how far the guest got', async () => {
+    getGuestVisits.mockResolvedValue({
+      visits: [
+        visit(4, [
+          page('/'),
+          click('test-me'),
+          page('/placement'),
+          click('placement-start'),
+          click('placement-q1'),
+          click('placement-q2'),
+          click('placement-q3'),
+        ]),
+        visit(3, [
+          page('/placement'),
+          click('placement-start'),
+          ...Array.from({ length: 11 }, (_, i) => click(`placement-q${i + 1}`)),
+          click('placement-submit'),
+          click('placement-get-started'),
+          page('/getstarted'),
+        ]),
+      ],
+      next: null,
+    });
+    show();
+    await screen.findAllByText(/2026-11-30/);
+    const visits = screen.getAllByText(/2026-11-30/).map((meta) =>
+      within(meta.closest('li')!)
+        .getAllByRole('listitem')
+        .map((li) => li.textContent?.replace('→', '').trim()),
+    );
+    expect(visits).toEqual([
+      ['/', 'test-me', '/placement', 'placement-start', 'placement test 3/12'],
+      [
+        '/placement',
+        'placement-start',
+        'placement test 12/12',
+        'placement-get-started',
+        '/getstarted',
+      ],
+    ]);
+  });
+
   it('leaves the source out of a visit that started inside the app', async () => {
     getGuestVisits.mockResolvedValue({ visits: [visit(1, [page('/')], null)], next: null });
     show();
