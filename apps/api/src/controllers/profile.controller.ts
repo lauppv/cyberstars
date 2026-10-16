@@ -237,6 +237,19 @@ export async function confirmEmailChange(
   }
 }
 
+export async function saveInterests(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    await userRepo.saveInterests(req.user!.id, req.body.interests);
+    res.status(204).end();
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function cancelEmailChange(
   req: Request,
   res: Response,

@@ -107,6 +107,11 @@ model User {
   // Right answers out of 12 on the landing page's placement test, taken
   // before signing up. NULL when the student signed up without it.
   placementScore  Int?      @map("placement_score") @db.SmallInt
+  // What the student said they want to learn on the screen after the tour
+  // (`INTERESTS` in packages/shared/interests.ts). NULL interestsAt sends a
+  // new account to that screen once the tour is done.
+  interests       String[]  @default([])
+  interestsAt     DateTime? @map("interests_at")
 
   progress           UserLessonProgress[]
   savedCode          UserSavedCode[]

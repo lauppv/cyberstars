@@ -1,3 +1,4 @@
+import type { Interest } from './interests.js';
 import type { PlacementLevel } from './placement.js';
 
 export type UserRole = 'USER' | 'MODERATOR' | 'ADMIN' | 'FOUNDER';
@@ -29,6 +30,8 @@ export interface AuthenticatedUser {
   onboardedAt: string | null;
   // From the landing page's placement test; null when it wasn't taken.
   placementLevel: PlacementLevel | null;
+  // What they want to learn, from the screen after the tour; null until asked.
+  interests: Interest[] | null;
 }
 
 export interface LoginPayload {

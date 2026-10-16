@@ -5,6 +5,7 @@ import { config } from '../config/index.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as emailService from './email.service.js';
 import type { TokenPayload, AuthenticatedUser } from '@cyberstars/shared/auth';
+import type { Interest } from '@cyberstars/shared/interests';
 import { placementLevel } from '@cyberstars/shared/placement';
 import { AppError } from '../middleware/errorHandler.js';
 
@@ -84,6 +85,7 @@ export async function getUser(userId: number): Promise<AuthenticatedUser> {
     showConnections: user.showConnections,
     onboardedAt: user.onboardedAt?.toISOString() ?? null,
     placementLevel: user.placementScore === null ? null : placementLevel(user.placementScore),
+    interests: user.interestsAt ? (user.interests as Interest[]) : null,
   };
 }
 

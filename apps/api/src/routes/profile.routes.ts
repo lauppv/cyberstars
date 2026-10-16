@@ -5,6 +5,7 @@ import { authenticateToken } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
 import {
   updateProfileSchema,
+  saveInterestsSchema,
   changePasswordSchema,
   requestEmailChangeSchema,
   confirmEmailChangeSchema,
@@ -33,6 +34,12 @@ router.patch(
   authenticateToken,
   validateBody(updateProfileSchema),
   profileController.updateProfile,
+);
+router.put(
+  '/interests',
+  authenticateToken,
+  validateBody(saveInterestsSchema),
+  profileController.saveInterests,
 );
 router.post('/avatar', authenticateToken, upload.single('avatar'), profileController.uploadAvatar);
 router.delete('/avatar', authenticateToken, profileController.deleteAvatar);
