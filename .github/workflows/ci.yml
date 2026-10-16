@@ -247,7 +247,7 @@ jobs:
           path: node_modules
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
       - run: npx playwright install chromium --with-deps
-      - run: docker pull python:3.10-slim && docker pull gcc:latest && docker pull eclipse-temurin:21-jdk-alpine && docker pull danysk/kotlin:latest
+      - run: docker pull python:3.10-slim && docker pull gcc:latest && docker pull eclipse-temurin:21-jdk-alpine
       - run: docker build -t cyberstars-linux-sandbox apps/api/src/runtimes/linux-sandbox
       - run: npm run test:e2e:docker
       - uses: actions/upload-artifact@v4

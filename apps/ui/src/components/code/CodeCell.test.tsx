@@ -43,9 +43,9 @@ describe('CodeCell', () => {
   });
 
   it('falls back to the lowercased language when not in LANG_MAP', () => {
-    render(<CodeCell initialCode="fun main() {}" language="Kotlin" />);
+    render(<CodeCell initialCode="puts 1" language="Ruby" />);
     fireEvent.click(screen.getByRole('button'));
-    expect(execute).toHaveBeenCalledWith('fun main() {}', 'kotlin');
+    expect(execute).toHaveBeenCalledWith('puts 1', 'ruby');
   });
 
   it('announces the end of a run, and only the end', () => {

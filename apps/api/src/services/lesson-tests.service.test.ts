@@ -775,7 +775,7 @@ describe('runLessonTests', () => {
 
   it('404s when the course language has no judge runner', async () => {
     stubFiles();
-    await expect(runLessonTests('user:1', 'kotlin', 'print', 'code')).rejects.toMatchObject({
+    await expect(runLessonTests('user:1', 'linux', 'print', 'code')).rejects.toMatchObject({
       statusCode: 404,
     });
     expect(mockAcquire).not.toHaveBeenCalled();

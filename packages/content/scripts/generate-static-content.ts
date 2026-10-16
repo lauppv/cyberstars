@@ -86,7 +86,6 @@ fs.rmSync(LESSONS_OUT, { recursive: true, force: true });
 let copied = 0;
 for (const course of curriculum) {
   const src = courseDir(course.key);
-  if (!fs.existsSync(src)) continue; // kotlin has no lesson files yet
   const dest = path.join(LESSONS_OUT, course.key);
   copied += copyMarkdown(src, dest);
   for (const locale of LOCALE_DIRS) {

@@ -39,10 +39,6 @@ describe('searchLessons', () => {
     expect(searchLessons('how is the')).toEqual([]);
     expect(searchLessons('?!')).toEqual([]);
   });
-
-  it('never lists a lesson of a course that is coming soon', () => {
-    expect(searchLessons('kotlin').every((h) => !h.link.startsWith('/lesson/kotlin/'))).toBe(true);
-  });
 });
 
 describe('readLesson', () => {
@@ -58,8 +54,7 @@ describe('readLesson', () => {
     expect(readLesson('python', 'for-solution', 'en')).toBeNull();
   });
 
-  it('refuses a course that is coming soon or does not exist', () => {
-    expect(readLesson('kotlin', 'hello-world', 'en')).toBeNull();
+  it('refuses a course that does not exist', () => {
     expect(readLesson('nope', 'for', 'en')).toBeNull();
   });
 });
@@ -69,10 +64,6 @@ describe('lessonStatement', () => {
     const ro = lessonStatement('algo-python', 'caesar-cipher', 'ro');
     expect(ro!.title).toEqual(expect.any(String));
     expect(ro!.statement).toEqual(readLesson('algo-python', 'caesar-cipher', 'ro')!.statement);
-  });
-
-  it('reads a Kotlin lesson too, since the student is on it', () => {
-    expect(lessonStatement('kotlin', 'hello-world', 'en')!.statement).not.toBe('');
   });
 
   it('refuses a slug the curriculum does not list before reading any file', () => {
@@ -110,7 +101,7 @@ describe('listPages', () => {
 });
 
 describe('listCourses', () => {
-  it('links each course to its own page, algorithms to their list, and skips Kotlin', () => {
+  it('links each course to its own page, and algorithms to their list', () => {
     const list = listCourses();
     expect(list).toContainEqual(
       expect.objectContaining({ title: 'Python', link: '/courses/python' }),
@@ -118,7 +109,6 @@ describe('listCourses', () => {
     expect(list).toContainEqual(
       expect.objectContaining({ title: 'C Algorithms', link: '/algorithms/c' }),
     );
-    expect(list.map((c) => c.title)).not.toContain('Kotlin');
   });
 
   it('says what each course teaches and how many lessons it has', () => {

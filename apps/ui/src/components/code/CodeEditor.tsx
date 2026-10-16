@@ -3,8 +3,7 @@ import { oneDark } from '@uiw/react-codemirror';
 import { cpp } from '@codemirror/lang-cpp';
 import { python } from '@codemirror/lang-python';
 import { java } from '@codemirror/lang-java';
-import { indentUnit, StreamLanguage } from '@codemirror/language';
-import { kotlin } from '@codemirror/legacy-modes/mode/clike';
+import { indentUnit } from '@codemirror/language';
 import { EditorView, keymap } from '@codemirror/view';
 import { Prec, type Extension } from '@codemirror/state';
 
@@ -53,9 +52,6 @@ function getExtensions(language: string): Extension[] {
     case 'java':
     case 'algo-java':
       return [...base, java()];
-    case 'kotlin':
-    case 'algo-kotlin':
-      return [...base, StreamLanguage.define(kotlin)];
     default:
       return base;
   }

@@ -123,17 +123,6 @@ export function CoursesPage() {
                       style={{ letterSpacing: '-0.2px' }}
                     >
                       {c.name}
-                      {courseMeta(c.key).badge && (
-                        <span
-                          className="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded"
-                          style={{
-                            background: courseMeta(c.key).color + '30',
-                            color: courseMeta(c.key).color,
-                          }}
-                        >
-                          {courseMeta(c.key).badge}
-                        </span>
-                      )}
                     </div>
                   </div>
                   <span

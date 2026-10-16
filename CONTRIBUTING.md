@@ -55,7 +55,6 @@ Pull the Docker images for code execution:
 docker pull gcc:latest
 docker pull python:3.10-slim
 docker pull eclipse-temurin:21-jdk-alpine
-docker pull danysk/kotlin:latest   # Kotlin runtime (course is badged "Coming Soon")
 ```
 
 **Linux only**: your user must be in the `docker` group:
@@ -120,7 +119,7 @@ Open an issue with:
 
 ### Adding lessons
 
-Lesson content lives in `packages/content/lessons/{python,c,java,kotlin,linux}/`. Python, C, Java, and Kotlin lessons need two files:
+Lesson content lives in `packages/content/lessons/{python,c,java,linux}/`. Python, C and Java lessons need two files:
 
 1. `<slug>.md`: the lesson content (Markdown with runnable code blocks)
 2. `<slug>-code.md`: the starter code template shown in the editor

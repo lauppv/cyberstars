@@ -21,7 +21,7 @@ export function contentDir(courseKey: string): string {
 
 // A lesson is judge-completable iff it ships an EN <slug>-tests.json, the same
 // definition the static-content generator uses to emit `hasTests` into
-// curriculum.json. Kotlin (no tests) and untested main-course lessons are false.
+// curriculum.json. Untested lessons are false.
 export function hasTestsFile(courseKey: string, slug: string): boolean {
   return fs.existsSync(path.join(contentDir(courseKey), `${slug}-tests.json`));
 }

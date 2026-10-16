@@ -339,12 +339,11 @@ Lesson content is stored as Markdown files on disk, not in the database. The `Le
 
 User code runs in Docker containers, never in the browser.
 
-| Language | Docker Image                    | Behavior                                                           |
-| -------- | ------------------------------- | ------------------------------------------------------------------ |
-| Python   | `python:3.10-slim`              | Run with `-u` (unbuffered), 20s timeout                            |
-| C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout                                  |
-| Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout                                     |
-| Kotlin   | `danysk/kotlin:latest`          | Compile to a jar (512m), 20s timeout; UI card badged "Coming Soon" |
+| Language | Docker Image                    | Behavior                                |
+| -------- | ------------------------------- | --------------------------------------- |
+| Python   | `python:3.10-slim`              | Run with `-u` (unbuffered), 20s timeout |
+| C        | `gcc:latest`                    | Compile with `-Wall`, 20s timeout       |
+| Java     | `eclipse-temurin:21-jdk-alpine` | `javac` + run with 20s timeout          |
 
 **One persistent container per owner.** Each owner (a logged-in user, or a guest keyed by a per-browser `guestId` cookie) gets a single long-lived container for the language they're currently running, created lazily on their first run and managed by `code-container.service.ts`. It is reused across runs (the cold start is paid once), swapped when they switch language (the previous one is torn down on the first run of the new language), garbage-collected after 15 min idle, and bounded by a global LRU cap. `interactive-execution.service.ts` writes the source into the container's `/work` tmpfs and `docker exec`s the compile/run there.
 
@@ -372,7 +371,7 @@ A lesson may also ship an optional `<slug>-tests.json` (judge test cases) and
 `<slug>-solution.md` (reference solution). Completion is **judge-driven**: the
 student presses "Run Tests", the server runs their code against the cases and marks
 the lesson complete only on a passing verdict; there is no manual "Mark Complete"
-button. Courses without test files (e.g. Kotlin) are not completable yet.
+button. A lesson without a tests file is not completable.
 Each tested lesson also keeps variants in `packages/content/variants/<course>/<slug>/`:
 other correct solutions (`accept-*`) that must pass and cheats (`reject-*`) that must
 fail. `npm run check:tests` grades them next to the reference solution, and the

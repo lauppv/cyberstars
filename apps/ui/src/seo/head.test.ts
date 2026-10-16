@@ -64,13 +64,6 @@ describe('withHead', () => {
   it('puts the content in the root and keeps structured data from closing its script', () => {
     expect(html).toContain('<div id="root"><div data-prerender><h1>Print</h1></div></div>');
     expect(html).toContain('<\\/script><script>alert(1)');
-    expect(html).not.toContain('noindex');
-  });
-
-  it('tells search engines to skip a page kept out of the index', () => {
-    const hidden = withHead(shell, { ...page, noindex: true, jsonLd: undefined }, '');
-    expect(hidden).toContain('<meta name="robots" content="noindex" />');
-    expect(hidden).not.toContain('application/ld+json');
   });
 
   it('fails the build when the shell lost a tag it rewrites', () => {
@@ -81,10 +74,9 @@ describe('withHead', () => {
 });
 
 describe('sitemap', () => {
-  it('lists indexable pages with their date and twins', () => {
+  it('lists every page with its date and twins', () => {
     const xml = sitemap([
       page,
-      { ...page, path: '/courses/kotlin', noindex: true },
       { ...page, path: '/ro', lastmod: undefined, alternates: { ro: '/ro' } },
     ]);
     expect(xml).toContain('<loc>https://cyberstars.app/ro/lesson/python/print</loc>');
@@ -92,7 +84,6 @@ describe('sitemap', () => {
     expect(xml).toContain(
       '<xhtml:link rel="alternate" hreflang="x-default" href="https://cyberstars.app/lesson/python/print" />',
     );
-    expect(xml).not.toContain('kotlin');
     expect(xml.match(/<url>/g)).toHaveLength(2);
     expect(xml).toMatch(/<loc>https:\/\/cyberstars.app\/ro<\/loc>\n {4}<xhtml:link/);
   });

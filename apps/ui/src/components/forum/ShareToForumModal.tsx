@@ -15,8 +15,6 @@ const FENCE_LANG: Record<string, string> = {
   'algo-c': 'c',
   java: 'java',
   'algo-java': 'java',
-  kotlin: 'kotlin',
-  'algo-kotlin': 'kotlin',
 };
 
 export function ShareToForumModal({

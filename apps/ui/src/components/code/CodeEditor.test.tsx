@@ -18,8 +18,6 @@ describe('CodeEditor language extensions', () => {
     'algo-c',
     'java',
     'algo-java',
-    'kotlin',
-    'algo-kotlin',
     'ScReAmInG', // unknown → default branch, also covers toLowerCase()
   ];
 

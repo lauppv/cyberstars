@@ -38,8 +38,8 @@ describe('hasTestsFile', () => {
     expect(hasTestsFile('python', 'anagram')).toBe(true);
   });
 
-  it('is false for a lesson without a tests file (Kotlin)', () => {
-    expect(hasTestsFile('kotlin', 'hello-world')).toBe(false);
+  it('is false for a lesson without a tests file', () => {
+    expect(hasTestsFile('python', 'no-such-lesson')).toBe(false);
   });
 });
 

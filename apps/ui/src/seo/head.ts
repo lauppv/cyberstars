@@ -66,11 +66,7 @@ export function withHead(shell: string, page: Page, body: string): string {
     meta('property', 'og:description'),
     `<meta property="og:description" content="${description}" />`,
   );
-  const extra = [
-    ...hreflangLinks(page),
-    ...(page.noindex ? ['<meta name="robots" content="noindex" />'] : []),
-    ...(page.jsonLd ? [jsonLdScript(page.jsonLd)] : []),
-  ];
+  const extra = [...hreflangLinks(page), ...(page.jsonLd ? [jsonLdScript(page.jsonLd)] : [])];
   html = swap(html, /<\/head>/, `${extra.join('\n    ')}\n  </head>`);
   return swap(
     html,
@@ -79,18 +75,16 @@ export function withHead(shell: string, page: Page, body: string): string {
   );
 }
 
-// Every page search engines may index, each with its twins in the other language
+// Every page, each with its twins in the other language
 export function sitemap(pages: Page[]): string {
-  const entries = pages
-    .filter((page) => !page.noindex)
-    .map((page) => {
-      const lines = [`    <loc>${ORIGIN}${page.path}</loc>`];
-      if (page.lastmod) lines.push(`    <lastmod>${page.lastmod}</lastmod>`);
-      for (const link of hreflangLinks(page)) {
-        lines.push(`    ${link.replace(/^<link /, '<xhtml:link ')}`);
-      }
-      return `  <url>\n${lines.join('\n')}\n  </url>`;
-    });
+  const entries = pages.map((page) => {
+    const lines = [`    <loc>${ORIGIN}${page.path}</loc>`];
+    if (page.lastmod) lines.push(`    <lastmod>${page.lastmod}</lastmod>`);
+    for (const link of hreflangLinks(page)) {
+      lines.push(`    ${link.replace(/^<link /, '<xhtml:link ')}`);
+    }
+    return `  <url>\n${lines.join('\n')}\n  </url>`;
+  });
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
