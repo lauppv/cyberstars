@@ -63,6 +63,8 @@ const base = {
   signal: new AbortController().signal,
   written: { tokens: 0 },
 };
+// A student the tutor knows nothing about yet
+const nobody = { level: null, interests: [], courses: [], unfinished: null };
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -119,13 +121,36 @@ describe('askTutor', () => {
   it("tells the model the student's level from the placement test, in the answer's language", async () => {
     stream.mockImplementation(() => text(['Ok.']));
     await collect(askTutor(base));
-    await collect(askTutor({ ...base, level: 'beginner' }));
-    await collect(askTutor({ ...base, message: 'de ce nu merge?', level: 'advanced' }));
+    await collect(askTutor({ ...base, about: { ...nobody, level: 'beginner' } }));
+    await collect(
+      askTutor({ ...base, message: 'de ce nu merge?', about: { ...nobody, level: 'advanced' } }),
+    );
 
     const [none, beginner, advanced] = stream.mock.calls.map((c) => c[0].system as string);
     expect(none).not.toContain('short test before signing up');
     expect(beginner).toContain('the student is a beginner');
     expect(advanced).toContain('studentul programează deja');
+  });
+
+  it('tells a general chat what the student wants to learn and where they are, in its language', async () => {
+    stream.mockImplementation(() => text(['Ok.']));
+    const about = {
+      level: null,
+      interests: ['c' as const, 'algorithms' as const],
+      courses: [{ title: 'Python', done: 12, total: 80 }],
+      unfinished: { title: 'For loops', course: 'Python', link: '/lesson/python/for' },
+    };
+    await collect(askTutor({ ...base, about }));
+    await collect(askTutor({ ...base, message: 'ce să învăț acum?', about }));
+    await collect(askTutor({ ...base, about: nobody }));
+
+    const [en, ro, empty] = stream.mock.calls.map((c) => c[0].system as string);
+    expect(en).toContain('The student said they want to learn C and algorithm challenges.');
+    expect(en).toContain('Lessons they have finished so far: Python 12 of 80.');
+    expect(en).toContain('is For loops in Python, at /lesson/python/for.');
+    expect(ro).toContain('Studentul a spus că vrea să învețe C și probleme de algoritmi.');
+    expect(ro).toContain('Lecții terminate până acum: Python 12 din 80.');
+    expect(empty).not.toContain('go by all of this');
   });
 
   it('passes on each piece of the answer as it comes, then says it is complete', async () => {

@@ -76,6 +76,7 @@ function makeUser(role: UserRole, id = 99): AuthenticatedUser {
     showConnections: true,
     onboardedAt: '2024-01-01T00:00:00Z',
     placementLevel: null,
+    interests: ['python'],
   };
 }
 

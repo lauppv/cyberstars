@@ -4,6 +4,7 @@ import { ArrowUp, PanelLeft, SquarePen, Trash2, X } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
 import { useAuth } from '../../context/AuthContext';
 import { useTutor, type TutorLessonStage } from '../../context/TutorContext';
+import type { TutorStarter } from '../../context/tutorStarters';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorHistory } from './TutorHistory';
@@ -50,15 +51,9 @@ function TutorTurn({ children, mood }: { children: ReactNode; mood?: TutorMood }
   );
 }
 
-// What the student can ask with one click on an empty conversation. In a
-// lesson chat it follows where they stand: a start, the failed test, or what
-// to take from a passed one
-interface Starter {
-  key: string;
-  test?: number;
-}
-
-function lessonStarters(stage: TutorLessonStage | null): Starter[] {
+// What the student can ask with one click on an empty lesson chat: it follows
+// where they stand, a start, the failed test, or what to take from a passed one
+function lessonStarters(stage: TutorLessonStage | null): TutorStarter[] {
   switch (stage?.stage) {
     case 'empty':
       return [
@@ -69,7 +64,7 @@ function lessonStarters(stage: TutorLessonStage | null): Starter[] {
     case 'failing':
       return [
         stage.test
-          ? { key: 'tutor.start.failedTest', test: stage.test }
+          ? { key: 'tutor.start.failedTest', values: { n: stage.test } }
           : { key: 'tutor.start.broken' },
         { key: 'tutor.start.nudge' },
         { key: 'tutor.start.task' },
@@ -333,18 +328,15 @@ export function TutorPanel() {
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
-              {(tutor.lesson
-                ? lessonStarters(tutor.stage)
-                : tutor.starters.map((key): Starter => ({ key }))
-              ).map((starter) => (
+              {(tutor.lesson ? lessonStarters(tutor.stage) : tutor.starters).map((starter) => (
                 <button
                   key={starter.key}
                   type="button"
-                  onClick={() => ask(t(starter.key, { n: starter.test }))}
+                  onClick={() => ask(t(starter.key, starter.values))}
                   disabled={limited}
                   className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t(starter.key, { n: starter.test })}
+                  {t(starter.key, starter.values)}
                 </button>
               ))}
             </div>

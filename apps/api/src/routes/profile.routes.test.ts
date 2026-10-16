@@ -40,6 +40,7 @@ const mockUserRepo = {
   findById: vi.fn().mockResolvedValue(null),
   create: vi.fn().mockResolvedValue(null),
   updateProfile: vi.fn().mockResolvedValue(null),
+  saveInterests: vi.fn().mockResolvedValue(undefined),
   getRole: vi.fn().mockResolvedValue('USER'),
   updateRole: vi.fn().mockResolvedValue(undefined),
 };
@@ -145,6 +146,31 @@ describe('PATCH /api/profile', () => {
       .send({ bio: 'hi' });
 
     expect(res.status).toBe(500);
+  });
+});
+
+describe('PUT /api/profile/interests', () => {
+  const put = (body: object) =>
+    request(app).put('/api/profile/interests').set('Cookie', `token=${token}`).send(body);
+
+  it('returns 401 without token', async () => {
+    const res = await request(app)
+      .put('/api/profile/interests')
+      .send({ interests: ['c'] });
+    expect(res.status).toBe(401);
+  });
+
+  it('saves the picked interests', async () => {
+    const res = await put({ interests: ['linux', 'algorithms'] });
+    expect(res.status).toBe(204);
+    expect(mockUserRepo.saveInterests).toHaveBeenCalledWith(1, ['linux', 'algorithms']);
+  });
+
+  it('refuses none, an unknown one or the same one twice', async () => {
+    for (const interests of [[], ['kotlin'], ['c', 'c']]) {
+      expect((await put({ interests })).status).toBe(400);
+    }
+    expect(mockUserRepo.saveInterests).not.toHaveBeenCalled();
   });
 });
 

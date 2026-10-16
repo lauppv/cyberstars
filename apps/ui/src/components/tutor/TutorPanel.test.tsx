@@ -13,7 +13,13 @@ import { ApiClientError } from '../../services/apiClient';
 
 const h = vi.hoisted(() => ({
   auth: {
-    user: null as null | { id: number; role: string; name?: string; placementLevel?: string },
+    user: null as null | {
+      id: number;
+      role: string;
+      name?: string;
+      placementLevel?: string;
+      interests?: string[];
+    },
   },
   canAccess: vi.fn((..._a: unknown[]) => true),
   listConversations: vi.fn(),
@@ -21,6 +27,7 @@ const h = vi.hoisted(() => ({
   deleteConversation: vi.fn(),
   streamChat: vi.fn(),
   usage: { summary: null as null | { tutorMessage: UsageState }, refresh: vi.fn() },
+  progress: {} as Record<string, unknown>,
   courses: [
     {
       key: 'python',
@@ -36,6 +43,9 @@ const h = vi.hoisted(() => ({
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
 vi.mock('../../context/UsageContext', () => ({ useUsage: () => h.usage }));
+vi.mock('../../context/ProgressContext', () => ({
+  useAllProgress: () => ({ progressMap: h.progress }),
+}));
 vi.mock('../../context/CurriculumContext', () => ({
   useCurriculum: () => ({ courses: h.courses }),
 }));
@@ -135,6 +145,7 @@ function Shell() {
       <button onClick={tutor.toggle}>toggle</button>
       <button onClick={() => tutor.openLesson(FOR_LESSON)}>ask lesson</button>
       <button onClick={() => tutor.openLesson(WHILE_LESSON)}>ask other lesson</button>
+      <button onClick={() => tutor.askLesson(FOR_LESSON, 'Give me a nudge')}>nudge lesson</button>
       <button onClick={() => setOnFor(false)}>leave lesson</button>
       <button onClick={() => setOnWhile(false)}>leave other lesson</button>
       <button onClick={() => tutor.reportStage(FOR_REF, standing.current)}>report stage</button>
@@ -203,6 +214,7 @@ beforeEach(() => {
   h.deleteConversation.mockResolvedValue(undefined);
   work.current = { code: 'for i in x:', runOutput: '', submissionId: 3 };
   h.usage.summary = null;
+  h.progress = {};
   localStorage.clear();
   vi.stubGlobal(
     'matchMedia',
@@ -332,6 +344,49 @@ describe('TutorPanel', () => {
       'How can I tell how fast my code is?',
       'How do pointers work in C?',
     ]);
+  });
+
+  it('starts from what the student wants to learn and the lesson they left unfinished', async () => {
+    h.auth = { user: { ...USER, interests: ['python'] } };
+    h.progress = {
+      python: {
+        courseKey: 'python',
+        lessons: [
+          {
+            slug: 'for',
+            title: 'For loops',
+            completed: false,
+            completedAt: null,
+            lastAccessedAt: TODAY,
+          },
+          {
+            slug: 'while',
+            title: 'While loops',
+            completed: false,
+            completedAt: null,
+            lastAccessedAt: null,
+          },
+        ],
+      },
+    };
+    answer();
+    renderTutor('/forum');
+    await openPanel();
+    fireEvent.click(await screen.findByRole('button', { name: 'Help me finish For loops' }));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'Help me finish For loops' });
+  });
+
+  it('asks for a nudge in a new conversation about the lesson, with its work', async () => {
+    answer();
+    renderTutor();
+    await openLesson('nudge lesson');
+    await waitFor(() => expect(h.streamChat).toHaveBeenCalledTimes(1));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({
+      message: 'Give me a nudge',
+      lesson: FOR_REF,
+      work: work.current,
+    });
+    expect(h.streamChat.mock.calls[0][0]).not.toHaveProperty('conversationId');
   });
 
   it('starts with a question about the challenges on their page', async () => {

@@ -27,6 +27,8 @@ export async function findById(id: number) {
       showConnections: true,
       onboardedAt: true,
       placementScore: true,
+      interests: true,
+      interestsAt: true,
     },
   });
 }
@@ -62,9 +64,15 @@ export async function getRole(id: number): Promise<Role> {
   return user?.role ?? 'USER';
 }
 
-export async function getPlacementScore(id: number): Promise<number | null> {
-  const user = await prisma.user.findUnique({ where: { id }, select: { placementScore: true } });
-  return user?.placementScore ?? null;
+// What the tutor goes by about the student, besides their progress
+export async function getTutorProfile(
+  id: number,
+): Promise<{ placementScore: number | null; interests: string[] }> {
+  const user = await prisma.user.findUnique({
+    where: { id },
+    select: { placementScore: true, interests: true },
+  });
+  return { placementScore: user?.placementScore ?? null, interests: user?.interests ?? [] };
 }
 
 export async function create(
@@ -93,6 +101,10 @@ export async function create(
     });
     return user.id;
   });
+}
+
+export async function saveInterests(id: number, interests: string[]): Promise<void> {
+  await prisma.user.update({ where: { id }, data: { interests, interestsAt: new Date() } });
 }
 
 // Only the first passing run stamps the date; later passes leave it alone.

@@ -11,8 +11,9 @@ import { useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from './AuthContext';
 import { useUsage } from './UsageContext';
+import { useAllProgress } from './ProgressContext';
+import { pickStarters, type TutorStarter } from './tutorStarters';
 import { canAccessFeature } from '@cyberstars/shared/features';
-import type { PlacementLevel } from '@cyberstars/shared/placement';
 import type {
   TutorAnswerEnd,
   TutorConversationSummary,
@@ -76,79 +77,17 @@ interface Conversation {
   loadFailed: boolean;
   pending: PendingAnswer | null;
   failure: TutorFailure | null;
-  // The i18n keys of the questions an empty general conversation offers.
-  starters: string[];
+  // The questions an empty general conversation offers.
+  starters: TutorStarter[];
 }
-
-// What a general conversation can start with. Each new one offers three of
-// them at random, one that fits the page first when there is one.
-const GENERAL_STARTERS = [
-  'course',
-  'idea',
-  'help',
-  'loop',
-  'function',
-  'error',
-  'languages',
-  'challenge',
-  'recursion',
-  'list',
-  'linux',
-  'stuck',
-  'debug',
-  'better',
-];
-// From the placement test: the same kind of questions, fitted to how far the
-// student is, so an advanced one is never offered what a variable is.
-const LEVEL_STARTERS: Record<PlacementLevel, string[]> = {
-  beginner: [
-    'course',
-    'idea',
-    'help',
-    'loop',
-    'function',
-    'error',
-    'languages',
-    'list',
-    'linux',
-    'stuck',
-  ],
-  intermediate: [
-    'function',
-    'error',
-    'languages',
-    'challenge',
-    'recursion',
-    'list',
-    'linux',
-    'stuck',
-    'debug',
-    'better',
-  ],
-  advanced: ['challenge', 'recursion', 'debug', 'better', 'pointers', 'complexity', 'threads'],
-};
-const PAGE_STARTERS: [path: string, starter: string][] = [
-  ['/algorithms', 'challenge'],
-  ['/courses', 'course'],
-];
 
 // What the tutor says when a lesson's tests pass, one of them at random.
 const CHEERS = ['tutor.cheer.done', 'tutor.cheer.alone', 'tutor.cheer.yours'];
 
-function pickStarters(pathname: string, level: PlacementLevel | null): string[] {
-  const fits = PAGE_STARTERS.find(([path]) => pathname.startsWith(path))?.[1];
-  const pool = (level ? LEVEL_STARTERS[level] : GENERAL_STARTERS).filter(
-    (starter) => starter !== fits,
-  );
-  const picked = fits ? [fits] : [];
-  while (picked.length < 3) picked.push(...pool.splice(Math.floor(Math.random() * pool.length), 1));
-  return picked.map((starter) => `tutor.start.${starter}`);
-}
-
 function blank(
   lesson: TutorLesson | null,
   id: number | null = null,
-  starters: string[] = [],
+  starters: TutorStarter[] = [],
 ): Conversation {
   return {
     id,
@@ -185,6 +124,8 @@ interface TutorContextValue {
   close: () => void;
   // Opens the lesson's newest conversation, or a new one about it.
   openLesson: (lesson: TutorLesson) => void;
+  // Asks the question in a new conversation about the lesson.
+  askLesson: (lesson: TutorLesson, text: string) => void;
   // A lesson page says where its work is read while it is open. The function
   // it gets back says it has gone, which closes the panel on its conversation.
   enterLesson: (lesson: TutorLessonRef, readWork: () => TutorLessonWork) => () => void;
@@ -209,8 +150,8 @@ interface TutorContextValue {
   loadFailed: boolean;
   pending: PendingAnswer | null;
   failure: TutorFailure | null;
-  // What an empty general conversation offers to start with, as i18n keys.
-  starters: string[];
+  // What an empty general conversation offers to start with.
+  starters: TutorStarter[];
   send: (text: string) => void;
   retry: () => void;
   loadEarlier: () => Promise<void>;
@@ -257,6 +198,8 @@ export function TutorProvider({ children }: { children: ReactNode }) {
   const enabled = !!user && canAccessFeature('tutorChat', user.role, import.meta.env.PROD);
   const userId = user?.id;
   const placement = user?.placementLevel ?? null;
+  const interests = user?.interests ?? null;
+  const { progressMap } = useAllProgress();
 
   const [open, setOpen] = useState(false);
   // Every conversation opened so far, by a key of the panel's own. An answer
@@ -364,10 +307,11 @@ export function TutorProvider({ children }: { children: ReactNode }) {
         ([, c]) => untouched(c) && lessonKeyOf(c.lesson) === lessonKeyOf(lesson),
       );
       const key = reuse?.[0] ?? `new-${++fresh.current}`;
-      add(key, blank(lesson, null, lesson ? [] : pickStarters(pathname, placement)));
+      const student = { level: placement, interests, progress: progressMap, now: Date.now() };
+      add(key, blank(lesson, null, lesson ? [] : pickStarters(pathname, student)));
       display(key, lesson);
     },
-    [add, display, pathname, placement],
+    [add, display, pathname, placement, interests, progressMap],
   );
 
   // Shows a saved conversation, reading its messages the first time.
@@ -550,6 +494,24 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     [dropCheer],
   );
 
+  // A question to send once the conversation it opened is in, since that
+  // happens after the click's render.
+  const queued = useRef<{ key: string; text: string } | null>(null);
+  const askLesson = useCallback(
+    (of: TutorLesson, text: string) => {
+      ++choice.current;
+      showNew(of);
+      queued.current = { key: shownRef.current!.key, text };
+    },
+    [showNew],
+  );
+  useEffect(() => {
+    const waiting = queued.current;
+    if (!waiting || !conversations[waiting.key]) return;
+    queued.current = null;
+    send(waiting.text);
+  }, [conversations, send]);
+
   const openLesson = useCallback(
     (of: TutorLesson) => {
       const mine = ++choice.current;
@@ -649,6 +611,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     toggle,
     close: () => setOpen(false),
     openLesson,
+    askLesson,
     enterLesson,
     reportStage,
     stage: (current?.lesson && stages[lessonKeyOf(current.lesson)!]) || null,

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { useTutor } from '../../context/TutorContext';
 import { TutorPanel } from '../tutor/TutorPanel';
+import { TutorWelcomeBack } from '../tutor/TutorWelcomeBack';
 import { Sidebar, type SidebarState } from './Sidebar';
 
 // Above this width the sidebar pushes the page aside. Below it there is no room
@@ -12,7 +13,7 @@ const WIDE = '(min-width: 768px)';
 const STORAGE_KEY = 'cyberstars.sidebar';
 
 // Routes that paint the whole screen themselves and carry no app chrome.
-const BARE_ROUTES = new Set(['/getstarted', '/placement', '/welcome', '/laniakea']);
+const BARE_ROUTES = new Set(['/getstarted', '/placement', '/interests', '/welcome', '/laniakea']);
 
 const ROOM: Record<SidebarState, string> = {
   open: 'md:pl-[240px]',
@@ -120,6 +121,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         {children}
       </div>
       {tutorOpen && <TutorPanel />}
+      <TutorWelcomeBack />
     </SidebarContext.Provider>
   );
 }

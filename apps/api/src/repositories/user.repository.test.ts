@@ -72,14 +72,22 @@ describe('getRole', () => {
   });
 });
 
-describe('getPlacementScore', () => {
-  it('returns the stored score, or null without one', async () => {
-    mockPrisma.user.findUnique.mockResolvedValueOnce({ placementScore: 9 });
-    mockPrisma.user.findUnique.mockResolvedValueOnce({ placementScore: null });
+describe('getTutorProfile', () => {
+  it('returns the stored score and interests, or none for a missing user', async () => {
+    mockPrisma.user.findUnique.mockResolvedValueOnce({ placementScore: 9, interests: ['c'] });
     mockPrisma.user.findUnique.mockResolvedValueOnce(null);
-    expect(await repo.getPlacementScore(1)).toBe(9);
-    expect(await repo.getPlacementScore(1)).toBeNull();
-    expect(await repo.getPlacementScore(1)).toBeNull();
+    expect(await repo.getTutorProfile(1)).toEqual({ placementScore: 9, interests: ['c'] });
+    expect(await repo.getTutorProfile(1)).toEqual({ placementScore: null, interests: [] });
+  });
+});
+
+describe('saveInterests', () => {
+  it('stores the interests and when they were given', async () => {
+    await repo.saveInterests(1, ['python', 'linux']);
+    expect(mockPrisma.user.update).toHaveBeenCalledWith({
+      where: { id: 1 },
+      data: { interests: ['python', 'linux'], interestsAt: expect.any(Date) },
+    });
   });
 });
 

@@ -12,7 +12,7 @@ import * as conversations from '../services/tutor-conversations.service.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as usage from '../services/usage.service.js';
 import { isAdmin } from '@cyberstars/shared/auth';
-import { placementLevel } from '@cyberstars/shared/placement';
+import { readStudent } from '../services/tutor-student.service.js';
 import { tutorConversationParamsSchema, tutorPageQuerySchema } from '../schemas/tutor.schema.js';
 
 // Each event goes out as soon as it is written. The headers wait for the first
@@ -126,7 +126,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
     // The role decides which pages the tutor may point to, read fresh like
     // every other role check.
     const role = await userRepo.getRole(userId);
-    const score = await userRepo.getPlacementScore(userId);
+    const about = await readStudent(userId);
     held = await usage.hold(userId, 'tutorMessage', isAdmin(role), 2);
     const answer = askTutor({
       message: question.text,
@@ -135,7 +135,7 @@ export async function chat(req: Request, res: Response, next: NextFunction) {
       ...(lesson && { lesson: await lessonWork(userId, lesson, req.body.work) }),
       page: req.body.page,
       uiLang: req.body.lang === 'ro' ? 'ro' : 'en',
-      level: score === null ? null : placementLevel(score),
+      about,
       role,
       isProd: process.env.NODE_ENV === 'production',
       signal: leave.signal,

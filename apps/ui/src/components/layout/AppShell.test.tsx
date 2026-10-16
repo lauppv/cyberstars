@@ -10,6 +10,7 @@ const h = vi.hoisted(() => ({
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
 vi.mock('../../context/TutorContext', () => ({ useTutor: () => h.tutor }));
 vi.mock('../tutor/TutorPanel', () => ({ TutorPanel: () => <aside aria-label="Tutor" /> }));
+vi.mock('../tutor/TutorWelcomeBack', () => ({ TutorWelcomeBack: () => null }));
 vi.mock('./Sidebar', () => ({
   Sidebar: ({ state, onNavigate }: { state: string; onNavigate: () => void }) => (
     <aside data-testid="sidebar" data-state={state}>

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { INTERESTS } from '@cyberstars/shared/interests';
 
 export const updateProfileSchema = z.object({
   bio: z.string().nullable().optional(),
@@ -8,6 +9,14 @@ export const updateProfileSchema = z.object({
   showProgress: z.boolean().optional(),
   showActivity: z.boolean().optional(),
   showConnections: z.boolean().optional(),
+});
+
+// At least one, each once
+export const saveInterestsSchema = z.object({
+  interests: z
+    .array(z.enum(INTERESTS))
+    .min(1)
+    .refine((list) => new Set(list).size === list.length, 'Each interest only once'),
 });
 
 export const changePasswordSchema = z.object({

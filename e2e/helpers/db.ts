@@ -2,10 +2,14 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// Lets an account skip the first-lesson tour, which would otherwise hold it
-// on the tour lesson.
+// Lets an account skip the first-lesson tour and the question of what it
+// wants to learn after it, which would otherwise hold it there.
 export async function markOnboarded(email: string) {
-  await prisma.user.update({ where: { email }, data: { onboardedAt: new Date() } });
+  const now = new Date();
+  await prisma.user.update({
+    where: { email },
+    data: { onboardedAt: now, interests: ['python'], interestsAt: now },
+  });
 }
 
 export async function resetDB() {

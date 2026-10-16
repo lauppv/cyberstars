@@ -7,8 +7,11 @@ import { AppError } from '../middleware/errorHandler.js';
 const mockTutor = { askTutor: vi.fn() };
 vi.mock('../services/tutor.service.js', () => mockTutor);
 
-const mockUserRepo = { getRole: vi.fn(), getPlacementScore: vi.fn() };
+const mockUserRepo = { getRole: vi.fn() };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
+
+const mockStudent = { readStudent: vi.fn() };
+vi.mock('../services/tutor-student.service.js', () => mockStudent);
 
 const mockConversations = {
   listConversations: vi.fn(),
@@ -86,7 +89,7 @@ async function* failing(err: Error, ...events: TutorStreamEvent[]) {
 beforeEach(() => {
   vi.clearAllMocks();
   mockUserRepo.getRole.mockResolvedValue('USER');
-  mockUserRepo.getPlacementScore.mockResolvedValue(null);
+  mockStudent.readStudent.mockResolvedValue(null);
   mockConversations.recentHistory.mockResolvedValue(history);
   mockConversations.saveExchange.mockResolvedValue(NEW_ID);
   mockUsage.hold.mockResolvedValue(held);
@@ -113,7 +116,7 @@ describe('chat', () => {
       history: [],
       page: '/courses',
       uiLang: 'ro',
-      level: null,
+      about: null,
       role: 'USER',
       isProd: false,
       signal: expect.any(AbortSignal),
@@ -142,14 +145,15 @@ describe('chat', () => {
     ]);
   });
 
-  it("tells the tutor the level from the student's placement test", async () => {
-    mockUserRepo.getPlacementScore.mockResolvedValue(10);
+  it('tells the tutor what it knows about the student, read for this message', async () => {
+    const about = { level: 'advanced', interests: ['c'], courses: [], unfinished: null };
+    mockStudent.readStudent.mockResolvedValue(about);
     mockTutor.askTutor.mockReturnValue(answer({ type: 'done', finish: 'complete' }));
 
     await chat(mockReq(), mockRes() as unknown as Response, vi.fn());
 
-    expect(mockUserRepo.getPlacementScore).toHaveBeenCalledWith(5);
-    expect(mockTutor.askTutor).toHaveBeenCalledWith(expect.objectContaining({ level: 'advanced' }));
+    expect(mockStudent.readStudent).toHaveBeenCalledWith(5);
+    expect(mockTutor.askTutor).toHaveBeenCalledWith(expect.objectContaining({ about }));
   });
 
   it('continues a conversation of the student’s with its history', async () => {
