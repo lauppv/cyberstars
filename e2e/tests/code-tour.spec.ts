@@ -41,6 +41,8 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
 
   await next.click();
   await expect(card).toContainText('Your editor');
+  // The editor's ⋯ menu stays out of the tour
+  await expect(page.getByRole('button', { name: 'Actions', exact: true })).toHaveCount(0);
 
   await page.locator('[data-tour="editor"] .cm-content').click();
   for (const line of [
