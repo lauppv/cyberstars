@@ -1,1 +1,1 @@
-print("= CYBERSTARS MISSION CONTROL =\nStation: Orion\nStatus: ONLINE\nWelcome aboard, cadet!")
+print("My name is Mira\nI am 30 years old\nCyberStars is the coolest")

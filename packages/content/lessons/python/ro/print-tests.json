@@ -1,5 +1,6 @@
 {
-  "comparator": "trimmed",
+  "comparator": "template",
+  "template": "Numele meu este <nume>\nAm <varsta> ani\nCyberStars e cel mai tare",
   "structure": {
     "requires": [{ "kind": "call", "name": "print" }]
   },

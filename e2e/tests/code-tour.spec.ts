@@ -45,12 +45,7 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
   await expect(page.getByRole('button', { name: 'Actions', exact: true })).toHaveCount(0);
 
   await page.locator('[data-tour="editor"] .cm-content').click();
-  for (const line of [
-    '= CYBERSTARS MISSION CONTROL =',
-    'Station: Orion',
-    'Status: ONLINE',
-    'Welcome aboard, cadet!',
-  ]) {
+  for (const line of ['My name is Cadet', 'I am 12 years old', 'CyberStars is the coolest']) {
     await page.keyboard.type(`print("${line}")`);
     await page.keyboard.press('Enter');
   }

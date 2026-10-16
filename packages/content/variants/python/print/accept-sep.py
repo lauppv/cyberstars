@@ -1,7 +1,6 @@
 print(
-    "= CYBERSTARS MISSION CONTROL =",
-    "Station: Orion",
-    "Status: ONLINE",
-    "Welcome aboard, cadet!",
+    "My name is Mira Stone",
+    "I am twenty years old",
+    "CyberStars is the coolest",
     sep="\n",
 )

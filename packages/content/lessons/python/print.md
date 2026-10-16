@@ -35,15 +35,16 @@ Again, don't forget the quotes.
 
 ---
 
-## Mission: Boot the Console
+## Mission: Introduce Yourself
 
-The station's control console boots up with a welcome banner. Write a program that uses **print()** to display **exactly** these four lines:
+Time to say hello to CyberStars. Write a program that uses **print()** to display these three lines:
 
 ```text
-= CYBERSTARS MISSION CONTROL =
-Station: Orion
-Status: ONLINE
-Welcome aboard, cadet!
+My name is <name>
+I am <age> years old
+CyberStars is the coolest
 ```
 
-Psst, don't forget the **quotes** :) Match the text exactly, line by line.
+Put your own name in place of `<name>` and your age in place of `<age>`, for example `My name is Ana` and `I am 12 years old`. Everything else has to match **exactly**, line by line.
+
+Psst, don't forget the **quotes** :)

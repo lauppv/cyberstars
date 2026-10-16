@@ -1,6 +1,5 @@
 ```py
-print("= CYBERSTARS MISSION CONTROL =")
-print("Station: Orion")
-print("Status: ONLINE")
-print("Welcome aboard, cadet!")
+print("My name is Ana")
+print("I am 12 years old")
+print("CyberStars is the coolest")
 ```
