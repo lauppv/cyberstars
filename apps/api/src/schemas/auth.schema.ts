@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { PLACEMENT_QUESTION_COUNT } from '@cyberstars/shared/placement';
 
 export const signupSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100, 'Name must be at most 100 characters'),
@@ -9,6 +10,8 @@ export const signupSchema = z.object({
     .string()
     .min(6, 'Password is too short, must be at least 6 characters')
     .max(255, 'Password must be at most 255 characters'),
+  // The landing page's placement test, when the visitor took it first
+  placementScore: z.number().int().min(0).max(PLACEMENT_QUESTION_COUNT).optional(),
 });
 
 export const loginSchema = z.object({

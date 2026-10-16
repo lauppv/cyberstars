@@ -26,6 +26,7 @@ export async function findById(id: number) {
       showActivity: true,
       showConnections: true,
       onboardedAt: true,
+      placementScore: true,
     },
   });
 }
@@ -61,7 +62,17 @@ export async function getRole(id: number): Promise<Role> {
   return user?.role ?? 'USER';
 }
 
-export async function create(name: string, email: string, hashedPassword: string): Promise<number> {
+export async function getPlacementScore(id: number): Promise<number | null> {
+  const user = await prisma.user.findUnique({ where: { id }, select: { placementScore: true } });
+  return user?.placementScore ?? null;
+}
+
+export async function create(
+  name: string,
+  email: string,
+  hashedPassword: string,
+  placementScore?: number,
+): Promise<number> {
   // The account matching FOUNDER_EMAIL always bootstraps as FOUNDER (unique
   // owner). Otherwise the very first account to register bootstraps as ADMIN.
   // Serialize the count+create with an advisory lock so two concurrent first
@@ -77,7 +88,7 @@ export async function create(name: string, email: string, hashedPassword: string
           ? 'ADMIN'
           : 'USER';
     const user = await tx.user.create({
-      data: { name, email, password: hashedPassword, role },
+      data: { name, email, password: hashedPassword, role, placementScore },
       select: { id: true },
     });
     return user.id;

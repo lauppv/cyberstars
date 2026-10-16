@@ -4,8 +4,8 @@ import * as authService from '../services/auth.service.js';
 
 export async function signup(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const { name, email, password } = req.body;
-    const token = await authService.signup(name, email, password);
+    const { name, email, password, placementScore } = req.body;
+    const token = await authService.signup(name, email, password, placementScore);
     res.cookie('token', token, config.cookie);
     res.json({ message: 'User created successfully' });
   } catch (err) {
