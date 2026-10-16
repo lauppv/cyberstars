@@ -114,7 +114,8 @@ export function LessonPage() {
   const [activeTab, setActiveTab] = useState<'lesson' | 'workspace'>('lesson');
   const [leftView, setLeftView] = useState<LeftView>('lesson');
   const [showToast, setShowToast] = useState(false);
-  const [toastData, setToastData] = useState({ title: '' });
+  // `tutor` when the lesson finished the whole course: the tutor cheers it.
+  const [toastData, setToastData] = useState({ title: '', tutor: false });
   const [showSaveToast, setShowSaveToast] = useState(false);
   const [solution, setSolution] = useState<string | null>(null);
   const [confirmSolution, setConfirmSolution] = useState(false);
@@ -323,12 +324,16 @@ export function LessonPage() {
       const isLast = course && course.lessons[course.lessons.length - 1].slug === lesson;
       const base = isLast ? t('lesson.courseMilestone') : t('lesson.lessonComplete');
       const xpGain = meta ? t('lesson.xpGained', { xp: xpForLesson(meta.sortOrder) }) : '';
+      const courseDone =
+        !!course && !!progress?.lessons.every((l) => l.completed || l.slug === lesson);
+      const title = courseDone ? t('tutor.cheer.course', { course: course.title }) : base;
       setToastData({
-        title: xpGain ? `${base} ${xpGain}` : base,
+        title: xpGain ? `${title} ${xpGain}` : title,
+        tutor: courseDone,
       });
       setShowToast(true);
     }
-  }, [lessonCompleted, course, lesson, t]);
+  }, [lessonCompleted, course, lesson, progress, t]);
 
   const lessonList: LessonMeta[] = course?.lessons ?? [];
   const currentIndex = lessonList.findIndex((l) => l.slug === lesson);
@@ -915,9 +920,12 @@ export function LessonPage() {
 
       <AchievementToast
         title={toastData.title}
-        visible={showToast}
+        visible={showToast && !toastData.tutor}
         onClose={() => setShowToast(false)}
       />
+      {showToast && toastData.tutor && (
+        <TutorToast text={toastData.title} mood="happy" onClose={() => setShowToast(false)} />
+      )}
       <AchievementToast
         title={t('lesson.badgeEarned', { label: gamification.newBadge?.label ?? '' })}
         visible={!!gamification.newBadge}

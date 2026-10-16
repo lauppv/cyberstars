@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X } from 'lucide-react';
 import { TutorMark, type TutorMood } from './TutorMark';
@@ -18,11 +18,18 @@ export function TutorToast({
   onClose: () => void;
 }) {
   const { t } = useTranslation();
+  // The page renders again while the toast is up (the student keeps typing),
+  // so the timer reads the latest close without starting over.
+  const close = useRef(onClose);
   useEffect(() => {
-    if (onOpen) return;
-    const timer = setTimeout(onClose, 6000);
+    close.current = onClose;
+  });
+  const lasts = !!onOpen;
+  useEffect(() => {
+    if (lasts) return;
+    const timer = setTimeout(() => close.current(), 6000);
     return () => clearTimeout(timer);
-  }, [onOpen, onClose]);
+  }, [lasts]);
 
   return (
     <div
