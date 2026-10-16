@@ -1,4 +1,11 @@
-import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+  useRef,
+  type CSSProperties,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Eye, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
@@ -75,8 +82,6 @@ export function LessonPage() {
   const { category = '', lesson = '' } = useParams<{ category: string; lesson: string }>();
   const { isLoggedIn, user, refreshUser } = useAuth();
   const tutor = useTutor();
-  // With the tutor beside it on a wide screen, the lesson takes all the room left
-  const tutorOpen = tutor?.open ?? false;
 
   const isTerminal = (TERMINAL_COURSE_KEYS as readonly string[]).includes(category);
   const isAlgo = (ALGO_COURSE_KEYS as readonly string[]).includes(category);
@@ -151,18 +156,6 @@ export function LessonPage() {
   const lessonScrollRef = useRef(0);
   const bandRef = useRef<HTMLDivElement>(null);
   const workspaceRef = useRef<HTMLDivElement>(null);
-
-  // Draggable split only applies on the lg+ side-by-side layout; below that the
-  // panels are tab-switched and take the full width.
-  const [isLg, setIsLg] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches,
-  );
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)');
-    const onChange = () => setIsLg(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
 
   const hSplit = useResizeSplit({
     axis: 'x',
@@ -511,10 +504,12 @@ export function LessonPage() {
         }}
       />
 
-      {/* Mobile panel switcher (split-screen stays on lg+) */}
+      {/* The split needs room, so it follows the width the page really has
+          (less with the tutor beside it), not the window's; below that the
+          panels are tabs that take the full width */}
       <PanelTabs
         data-tour="tabs"
-        className="lg:hidden bg-[var(--glass)]"
+        className="@2xl:hidden bg-[var(--glass)]"
         fill
         tabs={[
           ...leftTabs,
@@ -535,20 +530,17 @@ export function LessonPage() {
       />
 
       <div className="flex flex-1 overflow-hidden justify-center">
-        <div
-          ref={bandRef}
-          className={`flex w-full lg:w-4/5 overflow-hidden ${tutorOpen ? 'xl:w-full' : ''}`}
-        >
+        <div ref={bandRef} className="flex w-full @5xl:w-4/5 overflow-hidden">
           {/* Lesson panel: the lesson, and the latest test run's result */}
           <div
-            style={isLg ? { width: `${hSplit.size}%`, flex: '0 0 auto' } : undefined}
-            className={`${activeTab === 'lesson' ? 'flex' : 'hidden'} lg:flex w-full min-w-0 flex-col bg-[var(--panel-bg)]`}
+            style={{ '--split': `${hSplit.size}%` } as CSSProperties}
+            className={`${activeTab === 'lesson' ? 'flex' : 'hidden'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
           >
             {leftTabs.length > 1 && (
               <PanelTabs
                 data-tour="panel-tabs"
                 aria-label={t('lesson.panelTabs')}
-                className="hidden lg:flex shrink-0 px-3"
+                className="hidden @2xl:flex shrink-0 px-3"
                 tabs={leftTabs}
                 active={view}
                 onSelect={setLeftView}
@@ -666,18 +658,17 @@ export function LessonPage() {
             )}
           </div>
 
-          {isLg && (
-            <ResizeHandle
-              axis="x"
-              onPointerDown={hSplit.onPointerDown}
-              dragging={hSplit.dragging}
-            />
-          )}
+          <ResizeHandle
+            axis="x"
+            className="hidden @2xl:block"
+            onPointerDown={hSplit.onPointerDown}
+            dragging={hSplit.dragging}
+          />
 
           {/* Right panel: terminal or editor */}
           {isTerminal ? (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
             >
               <TerminalPanel
                 lines={terminal.lines}
@@ -708,7 +699,7 @@ export function LessonPage() {
             </div>
           ) : (
             <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} lg:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
             >
               <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
                 <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
@@ -827,8 +818,8 @@ export function LessonPage() {
               >
                 <div
                   data-tour="editor"
-                  className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)]"
-                  style={isLg ? { height: `${vSplit.size}%` } : { maxHeight: '60%' }}
+                  className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
+                  style={{ '--vsplit': `${vSplit.size}%` } as CSSProperties}
                 >
                   <CodeEditor
                     value={userCode}
@@ -839,13 +830,12 @@ export function LessonPage() {
                   />
                 </div>
 
-                {isLg && (
-                  <ResizeHandle
-                    axis="y"
-                    onPointerDown={vSplit.onPointerDown}
-                    dragging={vSplit.dragging}
-                  />
-                )}
+                <ResizeHandle
+                  axis="y"
+                  className="hidden @2xl:block"
+                  onPointerDown={vSplit.onPointerDown}
+                  dragging={vSplit.dragging}
+                />
 
                 <div className="flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex flex-col">
                   <div className="flex gap-2 mb-3 items-center flex-wrap">
