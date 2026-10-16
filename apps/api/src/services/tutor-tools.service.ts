@@ -204,9 +204,32 @@ const PAGES: (PageInfo & { feature?: FeatureKey; adminOnly?: boolean })[] = [
   { link: '/admin', name: 'Admin', about: 'platform statistics', adminOnly: true },
 ];
 
+interface CourseInfo {
+  title: string;
+  link: string;
+  lessons: number;
+  about: string;
+}
+
 interface AppMap {
   pages: PageInfo[];
-  courses: { title: string; link: string }[];
+  courses: CourseInfo[];
+}
+
+// Every course a student can take, with what it teaches here, so the tutor
+// recommends one by what CyberStars covers and not by what the language is
+// known for elsewhere
+export function listCourses(): CourseInfo[] {
+  return courses
+    .filter((c) => !HIDDEN_COURSES.has(c.key))
+    .map((c) => ({
+      title: c.title,
+      link: c.key.startsWith('algo-')
+        ? `/algorithms/${c.key.replace('algo-', '')}`
+        : `/courses/${c.key}`,
+      lessons: lessons.filter((l) => l.courseKey === c.key).length,
+      about: c.description,
+    }));
 }
 
 // Pages this student can open, the same rules the sidebar uses: a preview page
@@ -217,13 +240,5 @@ export function listPages(role: UserRole | undefined, isProd: boolean): AppMap {
     (p) =>
       (!p.feature || canAccessFeature(p.feature, role, isProd)) && (!p.adminOnly || isAdmin(role)),
   ).map(({ link, name, about }) => ({ link, name, about }));
-  const courseLinks = courses
-    .filter((c) => !HIDDEN_COURSES.has(c.key))
-    .map((c) => ({
-      title: c.title,
-      link: c.key.startsWith('algo-')
-        ? `/algorithms/${c.key.replace('algo-', '')}`
-        : `/courses/${c.key}`,
-    }));
-  return { pages, courses: courseLinks };
+  return { pages, courses: listCourses() };
 }
