@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, isLoading: false },
-  tutor: null as null | { open: boolean },
+  tutor: null as null | { open: boolean; historyOpen?: boolean },
 }));
 
 vi.mock('../../context/AuthContext', () => ({ useAuth: () => h.auth }));
@@ -49,18 +49,38 @@ beforeEach(() => {
 });
 
 describe('AppShell', () => {
-  it('puts the open tutor beside the page and makes room for it on a wide screen', () => {
+  it('puts the open tutor beside the page and pushes it aside once there is room', () => {
     h.tutor = { open: true };
     renderShell('/courses');
     expect(screen.getByRole('complementary', { name: 'Tutor' })).toBeInTheDocument();
-    expect(screen.getByText(/toggle/).parentElement).toHaveClass('xl:pr-[400px]');
+    const page = screen.getByText(/toggle/).parentElement;
+    expect(page).toHaveClass('@container', 'lg:pr-[400px]');
+    expect(page).not.toHaveClass('xl:pr-[640px]');
+  });
+
+  it('pushes the page further for the history, a step later with the sidebar open', () => {
+    h.tutor = { open: true, historyOpen: true };
+    renderShell('/courses');
+    expect(screen.getByText(/toggle/).parentElement).toHaveClass('lg:pr-[400px]', 'xl:pr-[640px]');
+  });
+
+  it('pushes the page from 768px while the sidebar is closed', () => {
+    localStorage.setItem('cyberstars.sidebar', 'closed');
+    h.tutor = { open: true };
+    const { unmount } = renderShell('/courses');
+    expect(screen.getByText(/toggle/).parentElement).toHaveClass('md:pr-[400px]');
+    unmount();
+
+    h.tutor = { open: true, historyOpen: true };
+    renderShell('/courses');
+    expect(screen.getByText(/toggle/).parentElement).toHaveClass('md:pr-[400px]', 'lg:pr-[640px]');
   });
 
   it('shows no tutor while its panel is closed', () => {
     h.tutor = { open: false };
     renderShell('/courses');
     expect(screen.queryByRole('complementary', { name: 'Tutor' })).toBeNull();
-    expect(screen.getByText(/toggle/).parentElement).not.toHaveClass('xl:pr-[400px]');
+    expect(screen.getByText(/toggle/).parentElement).not.toHaveClass('lg:pr-[400px]');
   });
 
   it('leaves the bare routes without chrome', () => {
