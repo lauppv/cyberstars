@@ -53,12 +53,6 @@ export const courses = [
       'C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.',
     sortOrder: 7,
   },
-  {
-    key: 'kotlin',
-    title: 'Kotlin',
-    description: 'Modern JVM language: concise, safe, and interoperable',
-    sortOrder: 8,
-  },
 ];
 
 export const lessons = [
@@ -1669,13 +1663,6 @@ export const lessons = [
     slug: 'sem-producer-consumer',
     title: 'Hard · Producer-Consumer with Semaphores',
     sortOrder: 32,
-    hasCodeFile: true,
-  },
-  {
-    courseKey: 'kotlin',
-    slug: 'hello-world',
-    title: 'Hello World',
-    sortOrder: 1,
     hasCodeFile: true,
   },
 ];
