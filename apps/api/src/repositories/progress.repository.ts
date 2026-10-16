@@ -80,6 +80,21 @@ export async function getCompletedByCourse(
   return [...byCourse].map(([courseKey, slugs]) => ({ courseKey, slugs }));
 }
 
+// Every lesson the student opened, for what the tutor knows about them
+export async function getByUser(userId: number): Promise<
+  {
+    courseKey: string;
+    lessonSlug: string;
+    completed: boolean;
+    lastAccessedAt: Date;
+  }[]
+> {
+  return prisma.userLessonProgress.findMany({
+    where: { userId },
+    select: { courseKey: true, lessonSlug: true, completed: true, lastAccessedAt: true },
+  });
+}
+
 export async function getActivityDates(userId: number): Promise<
   {
     completedAt: Date | null;

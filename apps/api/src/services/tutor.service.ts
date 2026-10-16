@@ -1,4 +1,5 @@
 import type { UserRole } from '@cyberstars/shared/auth';
+import type { Interest } from '@cyberstars/shared/interests';
 import type { PlacementLevel } from '@cyberstars/shared/placement';
 import { TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
 import type { TutorFinish, TutorStreamEvent, TutorTerminalCheck } from '@cyberstars/shared/tutor';
@@ -19,6 +20,7 @@ import {
   searchLessons,
 } from './tutor-tools.service.js';
 import type { PastMessage } from './tutor-conversations.service.js';
+import type { StudentPicture } from './tutor-student.service.js';
 
 type Lang = 'en' | 'ro';
 
@@ -186,14 +188,78 @@ const LEVEL_RULES: Record<Lang, Record<PlacementLevel, string>> = {
   },
 };
 
+const INTEREST_NAMES: Record<Lang, Record<Interest, string>> = {
+  en: {
+    python: 'Python',
+    c: 'C',
+    java: 'Java',
+    linux: 'Linux',
+    algorithms: 'algorithm challenges',
+  },
+  ro: {
+    python: 'Python',
+    c: 'C',
+    java: 'Java',
+    linux: 'Linux',
+    algorithms: 'probleme de algoritmi',
+  },
+};
+
+function listOf(lang: Lang, items: string[]): string {
+  if (items.length < 2) return items.join('');
+  return `${items.slice(0, -1).join(', ')} ${lang === 'ro' ? 'și' : 'and'} ${items.at(-1)}`;
+}
+
+// What the general chat knows about the student, so a question like what to
+// learn next gets an answer about them
+function studentRules(lang: Lang, about: StudentPicture): string[] {
+  const interests = about.interests.map((i) => INTEREST_NAMES[lang][i]);
+  const courses = about.courses.map(
+    (c) => `${c.title} ${c.done} ${lang === 'ro' ? 'din' : 'of'} ${c.total}`,
+  );
+  const { unfinished } = about;
+  const rules =
+    lang === 'ro'
+      ? [
+          ...(interests.length
+            ? [`Studentul a spus că vrea să învețe ${listOf(lang, interests)}.`]
+            : []),
+          ...(courses.length ? [`Lecții terminate până acum: ${courses.join(', ')}.`] : []),
+          ...(unfinished
+            ? [
+                `Ultima lecție deschisă și neterminată e ${unfinished.title} din ${unfinished.course}, la ${unfinished.link}.`,
+              ]
+            : []),
+        ]
+      : [
+          ...(interests.length
+            ? [`The student said they want to learn ${listOf(lang, interests)}.`]
+            : []),
+          ...(courses.length ? [`Lessons they have finished so far: ${courses.join(', ')}.`] : []),
+          ...(unfinished
+            ? [
+                `The last lesson they opened and haven't finished is ${unfinished.title} in ${unfinished.course}, at ${unfinished.link}.`,
+              ]
+            : []),
+        ];
+  if (!rules.length) return [];
+  return [
+    ...rules,
+    lang === 'ro'
+      ? 'Când întreabă ce să facă sau să învețe mai departe, ține cont de toate acestea.'
+      : 'When they ask what to do or learn next, go by all of this.',
+  ];
+}
+
 function buildSystemPrompt(
   lang: Lang,
   page: string,
-  level: PlacementLevel | null,
+  about: StudentPicture | null,
   chatLesson?: PromptLesson,
 ): string {
   // A lesson chat brings its own statement; the general chat only names the page.
   const lesson = chatLesson ? null : lessonOnPage(page);
+  const level = about?.level ?? null;
   if (lang === 'ro') {
     return [
       'Ești tutorele din CyberStars, un site gratuit unde începătorii învață Python, Java, C și Linux în browser, prin lecții și probleme de algoritmi verificate de un evaluator automat.',
@@ -214,6 +280,7 @@ function buildSystemPrompt(
         ? []
         : [
             '- Când studentul întreabă cu ce curs să înceapă sau ce învață într-un curs, ține-te de cursurile de mai jos și de ce predă fiecare aici, nu de ce se face cu limbajul în altă parte. Dacă vrea ceva ce CyberStars nu predă, ca site-uri web sau aplicații de mobil, spune-i asta deschis și numește cursul cel mai apropiat.',
+            '- Când studentul îți cere să-l verifici dintr-o lecție, citește-o întâi, apoi pune-i două sau trei întrebări scurte despre ea, câte una: aștepți răspunsul, spui scurt dacă e corect și de ce, apoi pui următoarea întrebare.',
           ]),
       '- Pentru o temă de programare din afara CyberStars, explică ideile și dă exemple scurte, niciodată programul gata făcut.',
       '- Când refuzi, rămâi scurt și cald, și treci direct la pasul următor pe care îl poate face studentul.',
@@ -224,12 +291,13 @@ function buildSystemPrompt(
             '- Folosește uneltele ca să citești alte lecții și probleme. Nu inventa niciodată ce scrie într-o lecție.',
           ]
         : [
-            '- Folosește uneltele ca să găsești lecții, probleme și pagini. Nu inventa niciodată o lecție, o pagină sau un link: dă doar linkuri pe care ți le-a dat o unealtă în conversația aceasta.',
+            '- Folosește uneltele ca să găsești lecții, probleme și pagini. Nu inventa niciodată o lecție, o pagină sau un link: dă doar linkuri pe care ți le-a dat o unealtă în conversația aceasta sau pe care le numesc regulile acestea.',
             '- Dă linkurile în markdown, cu căi din aplicație, de exemplu [Bucla for](/lesson/python/for).',
           ]),
       'Răspunde în limba română.',
       `Studentul este acum pe pagina ${page}.`,
       ...(level ? [LEVEL_RULES.ro[level]] : []),
+      ...(about && !chatLesson ? studentRules(lang, about) : []),
       ...(lesson
         ? [`Pagina este lecția ${lesson}; citește-o cu read_lesson când întrebarea e despre ea.`]
         : []),
@@ -255,6 +323,7 @@ function buildSystemPrompt(
       ? []
       : [
           '- When the student asks which course to take or what a course teaches, go by the courses below and what each teaches here, not by what the language is used for elsewhere. If they want something CyberStars does not teach, like websites or mobile apps, say so plainly and name the course that comes closest.',
+          '- When the student asks you to quiz them on a lesson, read it first, then ask two or three short questions about it, one at a time: wait for each answer, say briefly whether it is right and why, then ask the next.',
         ]),
     '- For a programming task from outside CyberStars, explain the ideas and show short examples, never the finished program.',
     '- When you say no, keep it short and kind, and go straight to the next step the student can take.',
@@ -263,12 +332,13 @@ function buildSystemPrompt(
     ...(chatLesson
       ? ['- Use the tools to read other lessons and challenges. Never invent what a lesson says.']
       : [
-          '- Use the tools to find lessons, challenges and pages. Never invent a lesson, a page or a link: only give links a tool returned in this conversation.',
+          '- Use the tools to find lessons, challenges and pages. Never invent a lesson, a page or a link: only give links a tool returned in this conversation or these rules name.',
           '- Give links as markdown with in-app paths, like [For loops](/lesson/python/for).',
         ]),
     'Answer in English.',
     `The student is now on the page ${page}.`,
     ...(level ? [LEVEL_RULES.en[level]] : []),
+    ...(about && !chatLesson ? studentRules(lang, about) : []),
     ...(lesson
       ? [
           `That page is the lesson ${lesson}; read it with read_lesson when the question is about it.`,
@@ -512,8 +582,8 @@ interface AskOptions extends Student {
   history: PastMessage[];
   page: string;
   uiLang: Lang;
-  // From the placement test, when the student took it.
-  level?: PlacementLevel | null;
+  // What the tutor knows about the student besides the conversation.
+  about?: StudentPicture | null;
   // In a lesson's conversation: the student's work on it.
   lesson?: LessonWork;
   // Aborted when the student leaves mid-answer.
@@ -548,7 +618,7 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
       terminal: (TERMINAL_COURSE_KEYS as readonly string[]).includes(courseKey),
     };
   }
-  const system = buildSystemPrompt(lang, opts.page, opts.level ?? null, chatLesson);
+  const system = buildSystemPrompt(lang, opts.page, opts.about ?? null, chatLesson);
   // Only the new message carries the work: what it was when earlier messages
   // were sent no longer holds.
   const message: GeminiPart[] = opts.lesson
