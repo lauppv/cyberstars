@@ -39,13 +39,6 @@ describe('curriculumCounts', () => {
     });
   });
 
-  it('leaves out a course that is still coming soon', () => {
-    const counts = curriculumCounts([course('python', 3), course('kotlin', 1)]);
-    expect(counts.languages).toEqual(['Python']);
-    expect(counts.courses).toBe(1);
-    expect(counts.lessons).toBe(3);
-  });
-
   it('claims nothing before the curriculum has loaded', () => {
     expect(curriculumCounts([])).toEqual({
       languages: [],

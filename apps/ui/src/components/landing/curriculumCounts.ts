@@ -15,13 +15,10 @@ export interface CurriculumCounts {
 }
 
 // What the landing page can claim, counted from the curriculum the app already
-// loads, so the numbers move on their own when a lesson is added. A course
-// marked "Coming Soon" (Kotlin, one placeholder lesson) doesn't count yet.
+// loads, so the numbers move on their own when a lesson is added.
 export function curriculumCounts(all: Course[]): CurriculumCounts {
   const live = (keys: readonly string[]) =>
-    keys
-      .map((key) => all.find((c) => c.key === key))
-      .filter((c): c is Course => !!c && !courseMeta(c.key).badge);
+    keys.map((key) => all.find((c) => c.key === key)).filter((c): c is Course => !!c);
   const courses = live([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
   const lessons = (list: Course[]) => list.reduce((n, c) => n + c.lessons.length, 0);
   return {

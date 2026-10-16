@@ -334,8 +334,7 @@
       "linux": "A real terminal, right in your browser. Manage files, search with grep and find, chain commands with pipes, edit text with sed and awk, then permissions and processes.",
       "algo-python": "Python problems from easy to hard: strings, lists and dictionaries put to work in palindromes, a Caesar cipher, Two Sum, sorting and a matrix spiral.",
       "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
-      "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
-      "kotlin": "Modern JVM language: concise, safe, and interoperable"
+      "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores."
     }
   },
   "algorithms": {

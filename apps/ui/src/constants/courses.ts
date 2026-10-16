@@ -5,7 +5,6 @@ export interface CourseMeta {
   color: string;
   label: string;
   langLabel: string;
-  badge?: string;
 }
 
 const LANGUAGE_META: Record<string, CourseMeta> = {
@@ -13,13 +12,6 @@ const LANGUAGE_META: Record<string, CourseMeta> = {
   java: { icon: '☕', color: '#E76F00', label: 'Java', langLabel: 'Java' },
   c: { icon: '⚙️', color: '#A8B9CC', label: 'C', langLabel: 'C' },
   linux: { icon: '🐧', color: '#FCC624', label: 'Linux', langLabel: 'Bash' },
-  kotlin: {
-    icon: '🟣',
-    color: '#7F52FF',
-    label: 'Kotlin',
-    langLabel: 'Kotlin',
-    badge: 'Coming Soon',
-  },
 };
 
 export function courseMeta(key: string): CourseMeta {
