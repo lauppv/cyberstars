@@ -83,6 +83,30 @@ describe('ResultPanel', () => {
     expect(document.querySelector('mark')).toBeNull();
   });
 
+  it("marks a template lesson's fixed text, with the blanks filled from the student's output", () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          comparator: 'template',
+          cases: [
+            {
+              index: 0,
+              visible: true,
+              passed: false,
+              expected: 'My name is <name>\nI am <age> years old',
+              actual: 'my name is Lau\nI am 23 years old',
+            },
+          ],
+        }}
+      />,
+    );
+    expect(field('Expected output')).toHaveTextContent('My name is Lau I am 23 years old');
+    expect(marks('Expected output')).toEqual(['M']);
+    expect(marks('Your output')).toEqual(['m']);
+  });
+
   it('shows the input but never the expected output of a hidden test', () => {
     render(
       <ResultPanel

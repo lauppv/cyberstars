@@ -8,12 +8,13 @@ import { AppError } from '../middleware/errorHandler.js';
 import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
-import type {
-  LessonTestsSpec,
-  RunTestsResponse,
-  StructureFailure,
-  TestCaseResult,
-  TestComparator,
+import {
+  templateRegex,
+  type LessonTestsSpec,
+  type RunTestsResponse,
+  type StructureFailure,
+  type TestCaseResult,
+  type TestComparator,
 } from '@cyberstars/shared/tests';
 
 // Server-side judge for lessons that ship a <slug>-tests.json. The heavy
@@ -157,16 +158,6 @@ export function compareOutputs(
     return sortLines(normalize(expected)) === sortLines(normalize(actual));
   if (comparator === 'template') return templateRegex(normalize(expected)).test(normalize(actual));
   return normalize(expected) === normalize(actual);
-}
-
-// A template's text has to match as written, while each `<word>` blank takes
-// any text on its line with at least one visible character.
-function templateRegex(template: string): RegExp {
-  const pattern = template
-    .split(/<\w+>/)
-    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-    .join('[^\\n]*?\\S[^\\n]*?');
-  return new RegExp(`^${pattern}$`);
 }
 
 // Collapse every run of digits to a single token so nondeterministic values
