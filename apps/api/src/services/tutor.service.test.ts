@@ -7,6 +7,7 @@ const tools = {
   searchLessons: vi.fn(),
   readLesson: vi.fn(),
   listPages: vi.fn(),
+  listCourses: vi.fn(),
   lessonStatement: vi.fn(),
 };
 vi.mock('./tutor-tools.service.js', () => tools);
@@ -66,6 +67,10 @@ const base = {
 beforeEach(() => {
   vi.clearAllMocks();
   gemini.isGeminiConfigured.mockReturnValue(true);
+  tools.listCourses.mockReturnValue([
+    { title: 'Python', link: '/courses/python', lessons: 60, about: 'Starts at print.' },
+    { title: 'C Algorithms', link: '/algorithms/c', lessons: 32, about: 'Close to the machine.' },
+  ]);
 });
 
 describe('detectLanguage', () => {
@@ -289,6 +294,34 @@ describe('askTutor', () => {
 
     await collect(askTutor({ ...base, message: 'ce face asta', page: '/lesson/python/for' }));
     expect(stream.mock.calls[1][0].system).toContain('Pagina este lecția python/for');
+  });
+
+  it('gives the general chat every course and what it teaches, and a lesson chat none', async () => {
+    tools.lessonStatement.mockReturnValue({ title: 'For loops', statement: 'Loop.' });
+    stream.mockImplementation(() => text('ok'));
+    const lesson = {
+      courseKey: 'python',
+      lessonSlug: 'for',
+      code: '',
+      runOutput: '',
+      verdict: null,
+    };
+
+    await collect(askTutor(base));
+    await collect(askTutor({ ...base, message: 'cu ce curs sa incep' }));
+    await collect(askTutor({ ...base, lesson }));
+    const [en, ro, inLesson] = stream.mock.calls.map((c) => c[0].system as string);
+
+    expect(en).toContain('- [Python](/courses/python), 60 lessons: Starts at print.');
+    expect(en).toContain('- [C Algorithms](/algorithms/c), 32 challenges: Close to the machine.');
+    expect(en).toContain('not by what the language is used for elsewhere');
+    expect(en).toContain('say so plainly and name the course that comes closest');
+    expect(ro).toContain('- [Python](/courses/python), lecții: 60. Starts at print.');
+    expect(ro).toContain('- [C Algorithms](/algorithms/c), probleme: 32. Close to the machine.');
+    expect(ro).toContain('nu de ce se face cu limbajul în altă parte');
+    expect(ro).toContain('spune-i asta deschis și numește cursul cel mai apropiat');
+    expect(inLesson).not.toContain('The courses on CyberStars');
+    expect(inLesson).not.toContain('which course to take');
   });
 
   it('runs the tool the model asks for and sends its whole turn back with the result', async () => {

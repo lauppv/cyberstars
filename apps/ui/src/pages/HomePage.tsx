@@ -216,7 +216,7 @@ export function HomePage() {
         <main className="flex-1 px-4 sm:px-6 py-8">
           <div className="max-w-[1040px] mx-auto space-y-6">
             {/* ── Continue Where You Left Off + Activity ── */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
               {continueTo && (
                 <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
                   <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
@@ -268,7 +268,7 @@ export function HomePage() {
             </div>
 
             {/* ── Lesson + Algo of the Day (stacked) + Course Milestones ── */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
               {(lessonOfTheDay || algoOfTheDay) && (
                 <div className="flex flex-col gap-5">
                   {lessonOfTheDay && (
@@ -318,7 +318,7 @@ export function HomePage() {
                     {t('home.viewAll')}
                   </button>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                <div className="grid grid-cols-1 @xl:grid-cols-3 gap-3.5">
                   {(almanacHighlights ?? [null, null, null]).map((a, i) => {
                     if (!a) {
                       return (

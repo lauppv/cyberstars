@@ -17,8 +17,9 @@ function dayOf(iso: string, now: Date): Day {
 }
 
 // The student's conversations, newest first, grouped by day. From 768px it is a
-// column to the left of the panel, over the page; on a phone it covers the
-// panel and closes once a conversation is picked.
+// column to the left of the panel that pushes the page aside when there's room
+// (see AppShell); on a phone it covers the panel and closes once a
+// conversation is picked.
 export function TutorHistory() {
   const { t } = useTranslation();
   const tutor = useTutor()!;

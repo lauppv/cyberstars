@@ -107,7 +107,7 @@ export function CoursesPage() {
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
         {/* Course grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-4">
           {allCourses.map((c) => (
             <div
               key={c.key}

@@ -319,21 +319,21 @@
     "viewSyllabus": "View Syllabus →",
     "chapters": "Chapters",
     "descriptions": {
-      "python": "New to programming? We highly recommend Python",
-      "c": "Low-level programming, pointers, memory, and OS concepts",
-      "java": "Object Oriented Programming",
-      "linux": "Master the terminal: files, navigation, and shell commands",
-      "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries",
-      "algo-java": "OOP-focused challenges: classes, objects, inheritance, and collections",
-      "algo-c": "Low-level challenges with arrays, pointers, memory, and concurrency (fork, threads, semaphores)",
+      "python": "The best place to start if you've never coded. From print and variables to functions, lists and dictionaries, then searching, sorting and recursion, ending with three small projects.",
+      "c": "How a program really works underneath: pointers, memory you manage by hand, structs and files, then processes, pipes, threads and semaphores, ending with a mini shell of your own.",
+      "java": "Object-oriented programming from the ground up. After the basics, you build programs from classes and objects, inheritance, polymorphism and interfaces, then collections, ending with three larger projects.",
+      "linux": "A real terminal, right in your browser. Manage files, search with grep and find, chain commands with pipes, edit text with sed and awk, then permissions and processes.",
+      "algo-python": "Python problems from easy to hard: strings, lists and dictionaries put to work in palindromes, a Caesar cipher, Two Sum, sorting and a matrix spiral.",
+      "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
+      "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "kotlin": "Modern JVM language: concise, safe, and interoperable"
     }
   },
   "algorithms": {
     "desc": {
-      "algo-python": "Classic algorithms with strings, lists, loops, and dictionaries. Great for building problem-solving skills.",
-      "algo-java": "OOP-focused challenges: classes, objects, inheritance, and collections. Practice designing with objects.",
-      "algo-c": "Low-level challenges with arrays, pointers, memory, and concurrency (fork, threads, semaphores). Think close to the hardware."
+      "algo-python": "Python problems from easy to hard: strings, lists and dictionaries put to work in palindromes, a Caesar cipher, Two Sum, sorting and a matrix spiral.",
+      "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
+      "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores."
     }
   },
   "algoList": {

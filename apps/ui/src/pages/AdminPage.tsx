@@ -90,7 +90,7 @@ export function AdminPage() {
               <LoadingSpinner />
             </div>
           ) : stats ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-5">
               {/* Users */}
               <section className={CARD_CLS}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
@@ -135,10 +135,10 @@ export function AdminPage() {
                 </div>
               </section>
 
-              <VisitorsSection className={CARD_CLS + ' md:col-span-2'} reload={reloads} />
+              <VisitorsSection className={CARD_CLS + ' @2xl:col-span-2'} reload={reloads} />
 
               {/* Progress */}
-              <section className={CARD_CLS + ' md:col-span-2'}>
+              <section className={CARD_CLS + ' @2xl:col-span-2'}>
                 <div className="flex items-baseline justify-between mb-4">
                   <h2 className="text-[14px] font-semibold">{t('admin.progress')}</h2>
                   <span className="text-[12px] text-[var(--text3)]">
@@ -194,7 +194,7 @@ export function AdminPage() {
               </section>
 
               {/* Forum & Support */}
-              <section className={CARD_CLS + ' md:col-span-2'}>
+              <section className={CARD_CLS + ' @2xl:col-span-2'}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.forum')}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                   <Stat label={t('admin.threads')} value={stats.forum.threads} />
@@ -211,7 +211,7 @@ export function AdminPage() {
                 </div>
               </section>
 
-              <p className="md:col-span-2 text-[11px] text-[var(--text3)] text-center">
+              <p className="@2xl:col-span-2 text-[11px] text-[var(--text3)] text-center">
                 {t('admin.generatedAt', {
                   time: new Date(stats.generatedAt).toLocaleTimeString(),
                 })}

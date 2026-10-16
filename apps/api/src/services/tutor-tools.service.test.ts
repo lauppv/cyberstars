@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { lessonStatement, listPages, readLesson, searchLessons } from './tutor-tools.service.js';
+import { courses } from '@cyberstars/content/curriculum';
+import {
+  lessonStatement,
+  listCourses,
+  listPages,
+  readLesson,
+  searchLessons,
+} from './tutor-tools.service.js';
 
 describe('searchLessons', () => {
   it('finds the Python for loop lesson by its name', () => {
@@ -97,10 +104,26 @@ describe('listPages', () => {
     expect(links(map)).toContain('/admin');
   });
 
+  it('lists the courses along with the pages', () => {
+    expect(listPages('USER', true).courses).toEqual(listCourses());
+  });
+});
+
+describe('listCourses', () => {
   it('links each course to its own page, algorithms to their list, and skips Kotlin', () => {
-    const { courses } = listPages('USER', true);
-    expect(courses).toContainEqual({ title: 'Python', link: '/courses/python' });
-    expect(courses).toContainEqual({ title: 'C Algorithms', link: '/algorithms/c' });
-    expect(courses.map((c) => c.title)).not.toContain('Kotlin');
+    const list = listCourses();
+    expect(list).toContainEqual(
+      expect.objectContaining({ title: 'Python', link: '/courses/python' }),
+    );
+    expect(list).toContainEqual(
+      expect.objectContaining({ title: 'C Algorithms', link: '/algorithms/c' }),
+    );
+    expect(list.map((c) => c.title)).not.toContain('Kotlin');
+  });
+
+  it('says what each course teaches and how many lessons it has', () => {
+    const java = listCourses().find((c) => c.title === 'Java')!;
+    expect(java.about).toBe(courses.find((c) => c.key === 'java')!.description);
+    expect(java.lessons).toBeGreaterThan(0);
   });
 });

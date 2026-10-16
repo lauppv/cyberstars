@@ -20,7 +20,7 @@ export function AlgorithmsPage() {
       <Topbar />
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 @3xl:grid-cols-3 gap-5">
           {LANGS.map((lang) => {
             const course = courses.find((c) => c.key === lang.key);
             const totalXp = course ? xpForCourse(course.lessons.length) : 0;

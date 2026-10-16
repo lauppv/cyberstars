@@ -20,9 +20,14 @@ const ROOM: Record<SidebarState, string> = {
   closed: '',
 };
 
-// From this width the tutor's panel pushes the page aside like the sidebar
-// does; below it the lesson's split needs the room, so the panel lies over it.
-const TUTOR_ROOM = 'xl:pr-[400px]';
+// The tutor's panel (400px) and its history (240px more) push the page aside
+// like the sidebar does, as long as that leaves the page about 360px, so a
+// step later with the sidebar open. Below that they lie over the page, and on
+// a phone the panel takes the whole screen
+function tutorRoom(sidebar: SidebarState, history: boolean): string {
+  if (sidebar === 'closed') return history ? 'md:pr-[400px] lg:pr-[640px]' : 'md:pr-[400px]';
+  return history ? 'lg:pr-[400px] xl:pr-[640px]' : 'lg:pr-[400px]';
+}
 
 interface SidebarControl {
   state: SidebarState;
@@ -52,7 +57,8 @@ function isWide(): boolean {
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const { isLoggedIn, isLoading } = useAuth();
-  const tutorOpen = useTutor()?.open ?? false;
+  const tutor = useTutor();
+  const tutorOpen = tutor?.open ?? false;
   const [remembered] = useState(readRemembered);
   const [toggled, setToggled] = useState<boolean | null>(null);
 
@@ -107,7 +113,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       )}
       <Sidebar state={state} onNavigate={leave} />
       <div
-        className={`min-h-full transition-[padding] duration-200 ${ROOM[state]} ${tutorOpen ? TUTOR_ROOM : ''}`}
+        className={`@container min-h-full transition-[padding] duration-200 ${ROOM[state]} ${
+          tutorOpen ? tutorRoom(state, tutor?.historyOpen ?? false) : ''
+        }`}
       >
         {children}
       </div>

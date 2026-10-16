@@ -55,8 +55,8 @@ export function MessagesPage() {
         <div className="h-full flex rounded-none sm:rounded-[var(--radius)] border-y sm:border border-[var(--panel-border)] bg-[var(--panel-bg)] overflow-hidden">
           {/* Conversation list, full width on mobile until one is picked. */}
           <div
-            className={`w-full md:w-[300px] md:flex-shrink-0 flex-col border-r border-[var(--border)] ${
-              selected ? 'hidden md:flex' : 'flex'
+            className={`w-full @2xl:w-[300px] @2xl:flex-shrink-0 flex-col border-r border-[var(--border)] ${
+              selected ? 'hidden @2xl:flex' : 'flex'
             }`}
           >
             <div className="px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
@@ -77,7 +77,7 @@ export function MessagesPage() {
           </div>
 
           {/* Thread pane. */}
-          <div className={`flex-1 min-w-0 ${selected ? 'flex' : 'hidden md:flex'} flex-col`}>
+          <div className={`flex-1 min-w-0 ${selected ? 'flex' : 'hidden @2xl:flex'} flex-col`}>
             {selected ? (
               <MessageThread
                 key={selected.id}
