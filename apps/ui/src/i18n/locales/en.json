@@ -1255,7 +1255,10 @@
       "linux": "Why learn the Linux terminal?",
       "stuck": "What do I do when I'm stuck on a problem?",
       "debug": "How do I find a bug in my code?",
-      "better": "How do I get better at programming?"
+      "better": "How do I get better at programming?",
+      "pointers": "How do pointers work in C?",
+      "complexity": "How can I tell how fast my code is?",
+      "threads": "When should a program use threads?"
     },
     "placeholder": "Ask the tutor",
     "send": "Send",

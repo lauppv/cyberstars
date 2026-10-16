@@ -1267,7 +1267,10 @@
       "linux": "De ce să învăț terminalul Linux?",
       "stuck": "Ce fac când m-am blocat la o problemă?",
       "debug": "Cum găsesc o greșeală în codul meu?",
-      "better": "Cum devin mai bun la programare?"
+      "better": "Cum devin mai bun la programare?",
+      "pointers": "Cum funcționează pointerii în C?",
+      "complexity": "Cum îmi dau seama cât de rapid e codul meu?",
+      "threads": "Când are nevoie un program de thread-uri?"
     },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",
