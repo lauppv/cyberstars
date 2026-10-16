@@ -1249,7 +1249,9 @@
     "cheer": {
       "done": "Toate testele trec. Bravo!",
       "alone": "Merge! Ai ajuns singur acolo.",
-      "yours": "Rezolvat! Ideea asta e acum a ta."
+      "yours": "Rezolvat! Ideea asta e acum a ta.",
+      "course": "Ai terminat tot cursul de {{course}}. Bravo!",
+      "back": "Bine ai revenit, {{name}}! Mă bucur să te revăd."
     },
     "enterHint": "Enter trimite, Shift+Enter începe un rând nou",
     "start": {
@@ -1277,7 +1279,10 @@
       "better": "Cum devin mai bun la programare?",
       "pointers": "Cum funcționează pointerii în C?",
       "complexity": "Cum îmi dau seama cât de rapid e codul meu?",
-      "threads": "Când are nevoie un program de thread-uri?"
+      "threads": "Când are nevoie un program de thread-uri?",
+      "finish": "Ajută-mă să termin {{lesson}}",
+      "next": "Ce învăț în {{lesson}}?",
+      "quiz": "Verifică-mă din {{lesson}}"
     },
     "placeholder": "Întreabă tutorul",
     "send": "Trimite",
@@ -1300,6 +1305,9 @@
       "read": "Citesc o lecție",
       "readTitle": "Citesc „{{title}}”",
       "pages": "Mă uit prin aplicație"
+    },
+    "stuck": {
+      "title": "Te ajut?"
     }
   },
   "placement": {
@@ -1379,5 +1387,25 @@
         ]
       }
     }
+  },
+  "interests": {
+    "title": "Ce vrei să învățăm?",
+    "intro": "Alege una sau mai multe. Îți propun lecții și întrebări potrivite, iar orice curs rămâne deschis.",
+    "names": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "algorithms": "Algoritmi"
+    },
+    "options": {
+      "python": "Cel mai ușor început: de la print la funcții, liste și proiecte mici.",
+      "c": "Cum funcționează programele pe dedesubt: pointeri, memorie, procese și thread-uri.",
+      "java": "Programare orientată pe obiecte: clase, moștenire, interfețe și colecții.",
+      "linux": "Un terminal adevărat în browser: fișiere, grep, pipe-uri și permisiuni.",
+      "algorithms": "Probleme de la ușor la greu în Python, Java și C, verificate de evaluator."
+    },
+    "continue": "Continuă",
+    "error": "Nu s-a putut salva. Încearcă din nou."
   }
 }

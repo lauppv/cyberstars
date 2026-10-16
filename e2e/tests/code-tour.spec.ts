@@ -65,6 +65,16 @@ test('a new account walks the tour lesson and is let out once its tests pass', a
   await card.getByRole('button', { name: 'Start exploring' }).click();
   await expect(card).toHaveCount(0);
 
+  // Then, once, the tutor asks what the student wants to learn.
+  await expect(page).toHaveURL(/\/interests$/, { timeout: 10_000 });
+  await page.goto('/courses');
+  await expect(page).toHaveURL(/\/interests$/);
+  const proceed = page.getByRole('button', { name: 'Continue' });
+  await expect(proceed).toBeDisabled();
+  await page.getByRole('button', { name: /^Linux/ }).click();
+  await proceed.click();
+  await expect(page).toHaveURL(/\/$/, { timeout: 10_000 });
+
   await page.goto('/courses');
   await expect(page).toHaveURL(/\/courses$/);
 });

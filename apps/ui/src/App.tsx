@@ -29,6 +29,9 @@ const AuthPage = lazy(() => import('./pages/AuthPage').then((m) => ({ default: m
 const PlacementPage = lazy(() =>
   import('./pages/PlacementPage').then((m) => ({ default: m.PlacementPage })),
 );
+const InterestsPage = lazy(() =>
+  import('./pages/InterestsPage').then((m) => ({ default: m.InterestsPage })),
+);
 const CoursesPage = lazy(() =>
   import('./pages/CoursesPage').then((m) => ({ default: m.CoursesPage })),
 );
@@ -127,6 +130,7 @@ function App() {
                                     <Route path="/" element={<HomePage />} />
                                     <Route path="/getstarted" element={<AuthPage />} />
                                     <Route path="/placement" element={<PlacementPage />} />
+                                    <Route path="/interests" element={<InterestsPage />} />
                                     <Route path="/courses" element={<CoursesPage />} />
                                     <Route path="/courses/:course" element={<CoursesPage />} />
                                     <Route path="/algorithms" element={<AlgorithmsPage />} />

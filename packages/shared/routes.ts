@@ -6,6 +6,7 @@
 export const APP_ONLY_PATHS = [
   '/getstarted',
   '/placement',
+  '/interests',
   '/profile',
   '/settings',
   '/usage',

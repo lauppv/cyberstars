@@ -1237,7 +1237,9 @@
     "cheer": {
       "done": "All tests pass. Nicely done!",
       "alone": "It works! You got there on your own.",
-      "yours": "Solved! That idea is yours now."
+      "yours": "Solved! That idea is yours now.",
+      "course": "You finished the whole {{course}} course. Well done!",
+      "back": "Welcome back, {{name}}! Good to see you again."
     },
     "enterHint": "Enter sends, Shift+Enter starts a new line",
     "start": {
@@ -1265,7 +1267,10 @@
       "better": "How do I get better at programming?",
       "pointers": "How do pointers work in C?",
       "complexity": "How can I tell how fast my code is?",
-      "threads": "When should a program use threads?"
+      "threads": "When should a program use threads?",
+      "finish": "Help me finish {{lesson}}",
+      "next": "What will I learn in {{lesson}}?",
+      "quiz": "Quiz me on {{lesson}}"
     },
     "placeholder": "Ask the tutor",
     "send": "Send",
@@ -1288,6 +1293,9 @@
       "read": "Reading a lesson",
       "readTitle": "Reading “{{title}}”",
       "pages": "Looking through the app"
+    },
+    "stuck": {
+      "title": "Need a hand?"
     }
   },
   "placement": {
@@ -1367,5 +1375,25 @@
         ]
       }
     }
+  },
+  "interests": {
+    "title": "What do you want to learn?",
+    "intro": "Pick one or more. I'll suggest lessons and questions that fit, and every course stays open to you.",
+    "names": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "algorithms": "Algorithms"
+    },
+    "options": {
+      "python": "The easiest place to start: from print to functions, lists and small projects.",
+      "c": "How programs really work: pointers, memory, processes and threads.",
+      "java": "Object-oriented programming: classes, inheritance, interfaces and collections.",
+      "linux": "A real terminal in your browser: files, grep, pipes and permissions.",
+      "algorithms": "Problems from easy to hard in Python, Java and C, checked by the judge."
+    },
+    "continue": "Continue",
+    "error": "Couldn't save that. Try again."
   }
 }

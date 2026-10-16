@@ -1,3 +1,4 @@
+import type { Interest } from '@cyberstars/shared/interests';
 import { api } from './apiClient';
 
 const API_BASE = import.meta.env.VITE_PROD_API_URL || '';
@@ -10,6 +11,10 @@ export function updateProfile(data: {
   showProgress?: boolean;
 }) {
   return api.patch<{ message: string }>('/api/profile', data);
+}
+
+export function saveInterests(interests: Interest[]) {
+  return api.put<void>('/api/profile/interests', { interests });
 }
 
 export async function uploadAvatar(file: File): Promise<{ avatarUrl: string }> {
