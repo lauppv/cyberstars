@@ -1,3 +1,3 @@
 import sys
 
-sys.stdout.write("= CYBERSTARS MISSION CONTROL =\nStation: Orion\nStatus: ONLINE\nWelcome aboard, cadet!\n")
+sys.stdout.write("My name is Ana\nI am 12 years old\nCyberStars is the coolest\n")

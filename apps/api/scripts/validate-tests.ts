@@ -242,7 +242,8 @@ export const MAX_CASES: Record<Lang, number> = { python: 50, c: 50, java: 20 };
 // Bulk (generated) cases are hidden by definition, and they are meant for
 // lessons whose output is deterministic, so not for masked/unordered ones.
 // The load test, the one case the runtime comes from, is hidden and runs last,
-// so its time is only shown once every other case has passed.
+// so its time is only shown once every other case has passed. A template
+// comparator has nothing to compare against without its template.
 export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
   const messages: string[] = [];
   const cases = spec.cases ?? [];
@@ -257,6 +258,9 @@ export function auditCases(lang: Lang, spec: LessonTestsSpec): string[] {
     messages.push(
       `generated cases on a ${spec.comparator} lesson; its output is not deterministic`,
     );
+  }
+  if ((spec.comparator === 'template') !== (spec.template !== undefined)) {
+    messages.push('a template lesson needs both the template comparator and a template');
   }
   const loads = cases.filter((c) => c.load);
   if (loads.length > 1) messages.push(`${loads.length} load tests; a lesson has at most one`);

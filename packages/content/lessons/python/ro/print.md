@@ -35,15 +35,16 @@ Din nou, nu uita ghilimelele.
 
 ---
 
-## Misiune: Pornește Consola
+## Misiune: Prezintă-te
 
-Consola de control a stației pornește cu un banner de întâmpinare. Scrie un program care folosește **print()** ca să afișeze **exact** aceste patru linii:
+E timpul să saluți CyberStars. Scrie un program care folosește **print()** ca să afișeze aceste trei linii:
 
 ```text
-= CONTROL MISIUNE CYBERSTARS =
-Statie: Orion
-Stare: ONLINE
-Bun venit la bord, cadet!
+Numele meu este <nume>
+Am <varsta> ani
+CyberStars e cel mai tare
 ```
 
-Psst, nu uita **ghilimelele** :) Potrivește textul exact, linie cu linie.
+Pune numele tău în locul lui `<nume>` și vârsta ta în locul lui `<varsta>`, de exemplu `Numele meu este Ana` și `Am 12 ani`. Restul trebuie să se potrivească **exact**, linie cu linie.
+
+Psst, nu uita **ghilimelele** :)

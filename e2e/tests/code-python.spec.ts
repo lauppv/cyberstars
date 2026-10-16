@@ -41,20 +41,21 @@ test('Run Tests opens the verdict in the lesson panel, beside the editor', async
 });
 
 test('a near-miss output marks just the characters that differ', async ({ authedPage: page }) => {
-  await page.goto('/lesson/python/print');
+  // Not the first lesson: its blanks take any name, so it compares by template and marks nothing
+  await page.goto('/lesson/python/variables-str');
 
   const editor = page.locator('[data-tour="editor"] .cm-content');
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(
-    'print("= CYBERSTARS MISSION CONTROL =\\nStation: Orion\\nStatus: OFFLINE\\nWelcome aboard, cadet!")',
+    'commander = "Shadow"; pilot = "Lance"; engineer = "Quincy"; print(commander); print(pilot); print(engineer); pilot = "Jess"; print("Jass")',
   );
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
   const result = page.locator('[data-tour="result"]');
   await expect(result).toContainText('Wrong answer', { timeout: 60_000 });
-  // ONLINE against OFFLINE: the N the student lost, the FF they put in.
-  await expect(result.locator('mark')).toHaveText(['N', 'FF']);
+  // Jess against Jass: the e the student lost, the a they put in.
+  await expect(result.locator('mark')).toHaveText(['e', 'a']);
 });
 
 test('a passed course lesson lists its tests and shows no runtime', async ({
@@ -66,7 +67,7 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
   await editor.click();
   await page.keyboard.press('ControlOrMeta+A');
   await page.keyboard.type(
-    'print("= CYBERSTARS MISSION CONTROL =\\nStation: Orion\\nStatus: ONLINE\\nWelcome aboard, cadet!")',
+    'print("My name is Cadet\\nI am 12 years old\\nCyberStars is the coolest")',
   );
   await page.getByRole('button', { name: 'Run Tests' }).click();
 
@@ -77,7 +78,7 @@ test('a passed course lesson lists its tests and shows no runtime', async ({
   await result.getByRole('button', { name: 'Passed tests (1)' }).click();
   await result.getByRole('button', { name: 'Test 1' }).click();
   await expect(result).toContainText('Expected output');
-  await expect(result).toContainText('Welcome aboard, cadet!');
+  await expect(result).toContainText('My name is <name>');
 });
 
 test('a passed algorithm shows its load-test runtime next to our solution', async ({
