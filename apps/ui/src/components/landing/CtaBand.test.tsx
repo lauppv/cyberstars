@@ -23,14 +23,11 @@ beforeEach(() => {
 });
 
 describe('CtaBand', () => {
-  it('closes the page on a headline and both buttons', () => {
+  it('closes the page on a headline and one button to the placement test', () => {
     renderBand();
-    expect(
-      screen.getByRole('heading', { name: 'Write your first line of code today' }),
-    ).toBeDefined();
-    fireEvent.click(screen.getByRole('button', { name: 'Start learning' }));
-    expect(mockNavigate).toHaveBeenCalledWith('/courses');
-    fireEvent.click(screen.getByRole('button', { name: 'Sign in' }));
-    expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
+    expect(screen.getByRole('heading', { name: 'Not sure where to start?' })).toBeDefined();
+    expect(screen.getAllByRole('button')).toHaveLength(1);
+    fireEvent.click(screen.getByRole('button', { name: 'Test me' }));
+    expect(mockNavigate).toHaveBeenCalledWith('/placement');
   });
 });

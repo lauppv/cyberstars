@@ -40,7 +40,7 @@ describe('the pre-rendered landing page', () => {
       'How it works',
       'What&#x27;s inside',
       'Free. Open source.',
-      'Write your first line of code today',
+      'Not sure where to start?',
     ]) {
       expect(html).toContain(heading);
     }

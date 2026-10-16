@@ -12,7 +12,7 @@ const WIDE = '(min-width: 768px)';
 const STORAGE_KEY = 'cyberstars.sidebar';
 
 // Routes that paint the whole screen themselves and carry no app chrome.
-const BARE_ROUTES = new Set(['/getstarted', '/welcome', '/laniakea']);
+const BARE_ROUTES = new Set(['/getstarted', '/placement', '/welcome', '/laniakea']);
 
 const ROOM: Record<SidebarState, string> = {
   open: 'md:pl-[240px]',

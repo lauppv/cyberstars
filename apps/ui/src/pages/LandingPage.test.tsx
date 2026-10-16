@@ -73,13 +73,12 @@ describe('LandingPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/getstarted');
   });
 
-  it('asks once more before the footer, and not mid-page', () => {
+  it('asks once more before the footer, with the placement test, and not mid-page', () => {
     renderPage();
-    expect(within(main()).getAllByRole('button', { name: 'Start learning' })).toHaveLength(2);
+    expect(within(main()).getAllByRole('button', { name: 'Start learning' })).toHaveLength(1);
+    expect(within(main()).getByRole('button', { name: 'Test me' })).toBeDefined();
     expect(screen.queryByText('Your first program is one click away.')).toBeNull();
-    expect(
-      within(main()).getByRole('heading', { name: 'Write your first line of code today' }),
-    ).toBeDefined();
+    expect(within(main()).getByRole('heading', { name: 'Not sure where to start?' })).toBeDefined();
   });
 
   it('keeps the navbar to the logo, the language switch and sign-in', () => {

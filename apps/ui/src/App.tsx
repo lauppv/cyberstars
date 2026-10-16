@@ -26,6 +26,9 @@ import { langFromPath } from './i18n';
 // fetched on navigation instead of shipping in the initial bundle. Pages use named
 // exports, so each loader maps the named export onto the default lazy() expects.
 const AuthPage = lazy(() => import('./pages/AuthPage').then((m) => ({ default: m.AuthPage })));
+const PlacementPage = lazy(() =>
+  import('./pages/PlacementPage').then((m) => ({ default: m.PlacementPage })),
+);
 const CoursesPage = lazy(() =>
   import('./pages/CoursesPage').then((m) => ({ default: m.CoursesPage })),
 );
@@ -123,6 +126,7 @@ function App() {
                                   <Routes>
                                     <Route path="/" element={<HomePage />} />
                                     <Route path="/getstarted" element={<AuthPage />} />
+                                    <Route path="/placement" element={<PlacementPage />} />
                                     <Route path="/courses" element={<CoursesPage />} />
                                     <Route path="/courses/:course" element={<CoursesPage />} />
                                     <Route path="/algorithms" element={<AlgorithmsPage />} />

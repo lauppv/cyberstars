@@ -5,6 +5,7 @@
 // Written without the /ro prefix, which the server strips first.
 export const APP_ONLY_PATHS = [
   '/getstarted',
+  '/placement',
   '/profile',
   '/settings',
   '/usage',
