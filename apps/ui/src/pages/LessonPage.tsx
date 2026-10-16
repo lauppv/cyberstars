@@ -22,6 +22,7 @@ import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
 import { TutorFace } from '../components/tutor/TutorFace';
 import { AchievementToast } from '../components/gamification/AchievementToast';
+import { TutorToast } from '../components/tutor/TutorToast';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
@@ -121,6 +122,10 @@ export function LessonPage() {
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [testResults, setTestResults] = useState<RunTestsResponse | null>(null);
+  // Failed Run Tests in a row on this lesson; at three the tutor offers help,
+  // until the student closes it or the lesson changes.
+  const [failedRuns, setFailedRuns] = useState(0);
+  const [stuckClosed, setStuckClosed] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
   const [testsError, setTestsError] = useState<string | null>(null);
   const [terminalTestResult, setTerminalTestResult] = useState<TerminalTestResult | null>(null);
@@ -225,6 +230,8 @@ export function LessonPage() {
       setSolution(null);
       setOptimisticCompleted(null);
       setTestResults(null);
+      setFailedRuns(0);
+      setStuckClosed(false);
       setLeftView('lesson');
       setTestsError(null);
       setTerminalTestResult(null);
@@ -352,6 +359,7 @@ export function LessonPage() {
       const lang = i18n.language === 'ro' ? 'ro' : 'en';
       const results = await testsService.runTests(category, lesson, userCode, lang);
       setTestResults(results);
+      setFailedRuns((n) => (results.status === 'passed' ? 0 : n + 1));
       if (results.submission) addSubmission(results.submission);
       // The verdict opens in the lesson panel, which a phone has to bring up.
       setLeftView('result');
@@ -406,6 +414,7 @@ export function LessonPage() {
         lang,
       );
       setTerminalTestResult(results);
+      setFailedRuns((n) => (results.status === 'passed' ? 0 : n + 1));
       if (results.status === 'passed' && isLoggedIn && !lessonCompleted) {
         justMarkedRef.current = true;
         setOptimisticCompleted(true);
@@ -914,6 +923,20 @@ export function LessonPage() {
         visible={!!gamification.newBadge}
         onClose={gamification.dismissNewBadge}
       />
+      {tutor?.enabled && !inTour && failedRuns >= 3 && !stuckClosed && (
+        <TutorToast
+          text={t('tutor.stuck.title')}
+          mood="idle"
+          onOpen={() => {
+            setStuckClosed(true);
+            tutor.askLesson(
+              { courseKey: category, lessonSlug: lesson, title },
+              t('tutor.start.nudge'),
+            );
+          }}
+          onClose={() => setStuckClosed(true)}
+        />
+      )}
       {confirmSolution && canShowSolution && (
         <SolutionConfirmModal
           courseKey={category}

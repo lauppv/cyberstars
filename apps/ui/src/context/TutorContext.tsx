@@ -124,6 +124,8 @@ interface TutorContextValue {
   close: () => void;
   // Opens the lesson's newest conversation, or a new one about it.
   openLesson: (lesson: TutorLesson) => void;
+  // Asks the question in a new conversation about the lesson.
+  askLesson: (lesson: TutorLesson, text: string) => void;
   // A lesson page says where its work is read while it is open. The function
   // it gets back says it has gone, which closes the panel on its conversation.
   enterLesson: (lesson: TutorLessonRef, readWork: () => TutorLessonWork) => () => void;
@@ -492,6 +494,24 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     [dropCheer],
   );
 
+  // A question to send once the conversation it opened is in, since that
+  // happens after the click's render.
+  const queued = useRef<{ key: string; text: string } | null>(null);
+  const askLesson = useCallback(
+    (of: TutorLesson, text: string) => {
+      ++choice.current;
+      showNew(of);
+      queued.current = { key: shownRef.current!.key, text };
+    },
+    [showNew],
+  );
+  useEffect(() => {
+    const waiting = queued.current;
+    if (!waiting || !conversations[waiting.key]) return;
+    queued.current = null;
+    send(waiting.text);
+  }, [conversations, send]);
+
   const openLesson = useCallback(
     (of: TutorLesson) => {
       const mine = ++choice.current;
@@ -591,6 +611,7 @@ export function TutorProvider({ children }: { children: ReactNode }) {
     toggle,
     close: () => setOpen(false),
     openLesson,
+    askLesson,
     enterLesson,
     reportStage,
     stage: (current?.lesson && stages[lessonKeyOf(current.lesson)!]) || null,

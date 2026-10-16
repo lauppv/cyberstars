@@ -145,6 +145,7 @@ function Shell() {
       <button onClick={tutor.toggle}>toggle</button>
       <button onClick={() => tutor.openLesson(FOR_LESSON)}>ask lesson</button>
       <button onClick={() => tutor.openLesson(WHILE_LESSON)}>ask other lesson</button>
+      <button onClick={() => tutor.askLesson(FOR_LESSON, 'Give me a nudge')}>nudge lesson</button>
       <button onClick={() => setOnFor(false)}>leave lesson</button>
       <button onClick={() => setOnWhile(false)}>leave other lesson</button>
       <button onClick={() => tutor.reportStage(FOR_REF, standing.current)}>report stage</button>
@@ -372,6 +373,19 @@ describe('TutorPanel', () => {
     await openPanel();
     fireEvent.click(await screen.findByRole('button', { name: 'Help me finish For loops' }));
     expect(h.streamChat.mock.calls[0][0]).toMatchObject({ message: 'Help me finish For loops' });
+  });
+
+  it('asks for a nudge in a new conversation about the lesson, with its work', async () => {
+    answer();
+    renderTutor();
+    await openLesson('nudge lesson');
+    await waitFor(() => expect(h.streamChat).toHaveBeenCalledTimes(1));
+    expect(h.streamChat.mock.calls[0][0]).toMatchObject({
+      message: 'Give me a nudge',
+      lesson: FOR_REF,
+      work: work.current,
+    });
+    expect(h.streamChat.mock.calls[0][0]).not.toHaveProperty('conversationId');
   });
 
   it('starts with a question about the challenges on their page', async () => {
