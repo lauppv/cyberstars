@@ -158,14 +158,20 @@ describe('Visitor counts', () => {
     await visit(quitter, { path: '/' });
     await visit(quitter, { path: '/placement', steps: steps('test-me') });
     await visit(quitter, { path: '/', steps: steps('placement-start', 'placement-q1') });
+    // A visitor is its IP and user agent, so the second guest needs another browser
     const finisher = agent();
-    await visit(finisher, { path: '/ro/placement' });
+    const other = 'Other browser';
+    await visit(finisher, { path: '/ro/placement' }, other);
     const answers = Array.from({ length: 11 }, (_, i) => `placement-q${i + 1}`);
-    await visit(finisher, {
-      path: '/ro/getstarted',
-      steps: steps('placement-start', ...answers, 'placement-submit', 'placement-get-started'),
-    });
-    await visit(finisher, { path: '/ro/placement' });
+    await visit(
+      finisher,
+      {
+        path: '/ro/getstarted',
+        steps: steps('placement-start', ...answers, 'placement-submit', 'placement-get-started'),
+      },
+      other,
+    );
+    await visit(finisher, { path: '/ro/placement' }, other);
 
     const res = await (await admin()).get('/api/admin/visits').expect(200);
     expect(res.body.placement).toEqual({
