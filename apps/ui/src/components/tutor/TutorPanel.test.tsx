@@ -369,6 +369,7 @@ describe('TutorPanel', () => {
         ],
       },
     };
+    answer();
     renderTutor('/forum');
     await openPanel();
     fireEvent.click(await screen.findByRole('button', { name: 'Help me finish For loops' }));
