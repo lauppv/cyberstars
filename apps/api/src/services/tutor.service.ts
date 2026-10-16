@@ -1,4 +1,5 @@
 import type { UserRole } from '@cyberstars/shared/auth';
+import type { PlacementLevel } from '@cyberstars/shared/placement';
 import { TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
 import type { TutorFinish, TutorStreamEvent, TutorTerminalCheck } from '@cyberstars/shared/tutor';
 import type { StructureFailure, SubmissionDetail, TestCaseResult } from '@cyberstars/shared/tests';
@@ -164,7 +165,33 @@ function courseRules(lang: Lang): string[] {
   return ['The courses on CyberStars, each with its link and what it teaches:', ...courses];
 }
 
-function buildSystemPrompt(lang: Lang, page: string, chatLesson?: PromptLesson): string {
+// How far along the student said they are, from the placement test they took
+// before signing up. Without it the tutor reads that from the conversation.
+const LEVEL_RULES: Record<Lang, Record<PlacementLevel, string>> = {
+  en: {
+    beginner:
+      'From a short test before signing up, the student is a beginner: start from the very basics and explain every term the first time you use it.',
+    intermediate:
+      "From a short test before signing up, the student knows the basics: don't explain what a variable or a loop is unless they ask, and build on what they already know.",
+    advanced:
+      'From a short test before signing up, the student already programs: get straight to the point, use the technical terms freely and skip the basics unless they ask.',
+  },
+  ro: {
+    beginner:
+      'Dintr-un test scurt dinainte de cont, studentul e începător: pornește de la cele mai simple lucruri și explică fiecare termen prima dată când îl folosești.',
+    intermediate:
+      'Dintr-un test scurt dinainte de cont, studentul știe bazele: nu-i explica ce e o variabilă sau o buclă decât dacă întreabă, și construiește pe ce știe deja.',
+    advanced:
+      'Dintr-un test scurt dinainte de cont, studentul programează deja: mergi direct la subiect, folosește termenii tehnici fără grijă și sari peste baze decât dacă le cere.',
+  },
+};
+
+function buildSystemPrompt(
+  lang: Lang,
+  page: string,
+  level: PlacementLevel | null,
+  chatLesson?: PromptLesson,
+): string {
   // A lesson chat brings its own statement; the general chat only names the page.
   const lesson = chatLesson ? null : lessonOnPage(page);
   if (lang === 'ro') {
@@ -202,6 +229,7 @@ function buildSystemPrompt(lang: Lang, page: string, chatLesson?: PromptLesson):
           ]),
       'Răspunde în limba română.',
       `Studentul este acum pe pagina ${page}.`,
+      ...(level ? [LEVEL_RULES.ro[level]] : []),
       ...(lesson
         ? [`Pagina este lecția ${lesson}; citește-o cu read_lesson când întrebarea e despre ea.`]
         : []),
@@ -240,6 +268,7 @@ function buildSystemPrompt(lang: Lang, page: string, chatLesson?: PromptLesson):
         ]),
     'Answer in English.',
     `The student is now on the page ${page}.`,
+    ...(level ? [LEVEL_RULES.en[level]] : []),
     ...(lesson
       ? [
           `That page is the lesson ${lesson}; read it with read_lesson when the question is about it.`,
@@ -483,6 +512,8 @@ interface AskOptions extends Student {
   history: PastMessage[];
   page: string;
   uiLang: Lang;
+  // From the placement test, when the student took it.
+  level?: PlacementLevel | null;
   // In a lesson's conversation: the student's work on it.
   lesson?: LessonWork;
   // Aborted when the student leaves mid-answer.
@@ -517,7 +548,7 @@ export async function* askTutor(opts: AskOptions): AsyncGenerator<TutorStreamEve
       terminal: (TERMINAL_COURSE_KEYS as readonly string[]).includes(courseKey),
     };
   }
-  const system = buildSystemPrompt(lang, opts.page, chatLesson);
+  const system = buildSystemPrompt(lang, opts.page, opts.level ?? null, chatLesson);
   // Only the new message carries the work: what it was when earlier messages
   // were sent no longer holds.
   const message: GeminiPart[] = opts.lesson

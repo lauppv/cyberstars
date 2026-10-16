@@ -116,6 +116,18 @@ describe('askTutor', () => {
     expect(stream).not.toHaveBeenCalled();
   });
 
+  it("tells the model the student's level from the placement test, in the answer's language", async () => {
+    stream.mockImplementation(() => text(['Ok.']));
+    await collect(askTutor(base));
+    await collect(askTutor({ ...base, level: 'beginner' }));
+    await collect(askTutor({ ...base, message: 'de ce nu merge?', level: 'advanced' }));
+
+    const [none, beginner, advanced] = stream.mock.calls.map((c) => c[0].system as string);
+    expect(none).not.toContain('short test before signing up');
+    expect(beginner).toContain('the student is a beginner');
+    expect(advanced).toContain('studentul programează deja');
+  });
+
   it('passes on each piece of the answer as it comes, then says it is complete', async () => {
     stream.mockReturnValue(text(['  Try the ', 'For lesson.']));
 
